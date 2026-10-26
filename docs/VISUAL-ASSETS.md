@@ -238,6 +238,163 @@ Do not commit. List the files when done.
 
 ---
 
+## Prompt 4b — Souvenir cards, redo (one card per image, native resolution)
+
+Use this instead of prompt 4. The first try split one small sheet into ten cards and blew each up about 3x, and a colour filter turned the green leaves orange.
+
+```text
+Redo the souvenir card illustrations for "Kabar", an Indonesian + Javanese learning
+app. Each finished lesson stop gives the learner a collectible card; you make ONLY the
+artwork, the app overlays the title and the culture note.
+
+HOW TO GENERATE (strict):
+- Generate EACH card as its own separate image request, directly at 1024x1536
+  (portrait). Thirteen cards = thirteen separate generations.
+- Never generate a sheet, grid or collage and split it. Never upscale a smaller image.
+  If the tool can't output 1024x1536, generate the nearest native portrait size
+  (e.g. 1024x1536 from 2:3) and only crop, never enlarge.
+- No post-processing recolour, hue shift or filter on the artwork. Get the colours
+  right in the generation itself.
+- Delete the previous batch first: assets/src/souvenirs/*, assets/export/souvenirs/*,
+  scripts/assets/prepare_souvenirs.py.
+
+STYLE (identical for every card, so they look like one collection; generate them in
+one session and reuse the same wording):
+- Calm, warm, grown-up travel-journal illustration. Flat vector-like shapes, soft
+  layered depth, gentle paper grain, minimal gradients, clean edges. Feels like a
+  collectible travel stamp crossed with a postcard.
+- Never childish, never noisy, no glossy 3D, no photorealism.
+- Palette led by: Merapi charcoal #22201E, sawah green #4F8A3C, Bromo orange #EE8A5A,
+  Bromo pink #E9A3A0, batik indigo #2B3A70, warm paper #F5EFE3. Plants and leaves stay
+  green. No gold or yellow-metallic highlights (gold is reserved in the app).
+- Respectful, accurate depiction of Indonesian culture; no stereotypes or caricature.
+
+COMPOSITION (every card):
+- The illustration fills the upper two thirds of the card.
+- A thin rounded border with a subtle ORIGINAL kawung (four-petal circles) or parang
+  (diagonal bands) pattern in batik indigo at low contrast. Never copy a real batik.
+- Bottom third: calm, plain warm paper #F5EFE3 with no detail (text goes there).
+
+HARD RULES: no text, letters, numbers or script anywhere (not on signs, packaging or
+cloth). No logos, watermarks, signatures, brands, or existing characters. Do not
+imitate any named artist.
+
+CARDS (filename: subject):
+- batik.png: hands drawing wax lines with a canting (a tiny copper cup with a thin
+  spout on a bamboo handle) on white cloth, a small pot of warm wax beside it
+- wayang.png: a shadow-puppet silhouette cast on a glowing screen by an oil lamp; an
+  original puppet design, not a known character
+- gamelan.png: a row of bronze bonang kettle gongs on a carved wooden frame
+- rendang.png: a clay bowl of dark rendang with a banana leaf and red chillies
+- angklung.png: three bamboo angklung instruments of different heights
+- kawung.png: an elegant original kawung motif tile, like a ceramic tile
+- becak.png: a cycle rickshaw parked under a green tree in soft morning light
+- kopi-tubruk.png: a glass of thick Javanese coffee with grounds settling, on a saucer
+- sate.png: skewers of satay on a small charcoal grill with soft smoke
+- tongkonan.png: a Toraja tongkonan house with its sweeping boat-shaped roof
+- rumah-gadang.png: a Minangkabau house with horn-shaped roof peaks
+- raja-ampat.png: small green karst islets in turquoise water seen from above
+- kotagede-silver.png: a small silver filigree brooch on a cloth
+
+SAVE: masters to assets/src/souvenirs/<name>.png (1024x1536). Then, with the existing
+scripts/assets/export_souvenirs.py (update its NAMES list to all 13), export to
+assets/export/souvenirs/: <name>.webp at 768x1152 (quality 85) and
+<name>-thumb.webp at 256x384. Make assets/src/souvenirs/contact-sheet.png with all
+13 cards in a grid; regenerate any card that doesn't match the others.
+
+Do not commit. List the files when done, and confirm each master was generated
+natively at its final size.
+```
+
+---
+
+## Prompt 4c — Souvenir cards, six to redo
+
+Review of the 4b batch: batik, rendang, angklung, kawung, kopi-tubruk, sate and tongkonan are approved and already in the repo. Three cards drifted into a detailed, painterly style (rumah-gadang, raja-ampat, kotagede-silver) and three have accuracy problems (becak, gamelan, wayang). This prompt redoes only those six.
+
+```text
+Redo SIX souvenir card illustrations for "Kabar", an Indonesian + Javanese learning
+app. Seven cards of this set are already approved; the six new ones must look like
+they belong to the same collection.
+
+BEFORE YOU START:
+- Pull the latest main. Open the approved masters in assets/src/souvenirs/ (batik.png,
+  rendang.png, angklung.png, kawung.png, kopi-tubruk.png, sate.png, tongkonan.png) and
+  assets/src/souvenirs/contact-sheet.png. Match them exactly: the same flat shapes,
+  the same thick dark outlines, the same pink sky with a pale sun disc, the same
+  rolling hills, the same card frame with a thin rounded border and small indigo
+  marks, the same plain warm paper bottom area, and the same picture size and
+  position on the card.
+
+HOW TO GENERATE (strict):
+- Generate EACH card as its own separate image request, directly at 1024x1536
+  (portrait). Six cards = six separate generations.
+- Never generate a sheet, grid or collage and split it. Never upscale a smaller image.
+  Only crop, never enlarge.
+- No post-processing recolour, hue shift or filter. Get the colours right in the
+  generation itself.
+
+STYLE (identical to the approved cards):
+- Calm, warm, grown-up travel-journal illustration. FLAT vector-like shapes with
+  bold dark outlines, a few large colour areas, very little texture, minimal
+  gradients. NOT painterly, NOT detailed rendering, NOT realistic lighting, no fine
+  filigree shading, no photographic water. If a card looks more detailed than
+  tongkonan.png or sate.png, simplify it.
+- Palette led by: Merapi charcoal #22201E, sawah green #4F8A3C, Bromo orange #EE8A5A,
+  Bromo pink #E9A3A0, batik indigo #2B3A70, warm paper #F5EFE3. Plants and leaves stay
+  green. No gold or yellow-metallic highlights (gold is reserved in the app).
+- Respectful, accurate depiction of Indonesian culture; no stereotypes or caricature.
+
+COMPOSITION (as on the approved cards):
+- Picture in a rounded panel in the upper part of the card, same size and position
+  as the approved cards.
+- Thin rounded border with the same small indigo marks as the approved cards.
+- Bottom area: calm, plain warm paper #F5EFE3 with no detail (text goes there).
+
+HARD RULES: no text, letters, numbers or script anywhere (not on signs, packaging or
+cloth). No logos, watermarks, signatures, brands, or existing characters. Do not
+imitate any named artist.
+
+CARDS (filename: subject, with what must be right):
+- becak.png: an Indonesian becak parked under a green tree in soft morning light.
+  It must be the Indonesian kind: the hooded PASSENGER SEAT IS AT THE FRONT, between
+  two front wheels, and the rider's bicycle seat and pedals are BEHIND it over a
+  single rear wheel. Three wheels in total. Not an Indian/Bangladeshi rickshaw (cab
+  behind the bike), not a motorbike.
+- gamelan.png: a bonang, a row of bronze kettle gongs resting on crossed cords in a
+  long, low carved wooden frame. Each kettle is a rounded bronze pot with a raised
+  knob (pencu) ON TOP, seen from slightly above and to the side, so the knobs read
+  as round bosses on the top of each pot. They must NOT look like eyes or faces.
+  Two padded beaters lie beside the frame.
+- wayang.png: a wayang kulit shadow on a glowing white screen (kelir), lit by an oil
+  lamp (blencong) hanging in front. The puppet is an ORIGINAL design in the wayang
+  kulit manner: a flat, finely pierced figure seen in strict profile, long slender
+  arms on thin control rods, a stylised head with a long nose and a headdress, and
+  a central handle rod going down into a banana-trunk base. A pure dark shadow with
+  no face drawn on it. Not a stick figure or robot, not a known character.
+- rumah-gadang.png: a Minangkabau rumah gadang with several horn-shaped (gonjong)
+  roof peaks sweeping up, a long wooden house on stilts, green rice fields in
+  front. Flat style like tongkonan.png, not detailed.
+- raja-ampat.png: small green karst islets in turquoise water seen from above.
+  Flat style: islets as simple rounded green shapes with a darker outline and a
+  pale ring of shallow water, water as two or three flat turquoise tones. Not
+  painterly, not photographic.
+- kotagede-silver.png: a small silver filigree brooch (a flower) lying on an indigo
+  cloth. Draw the silver as a light grey shape with simple dark outlines and a few
+  curled line details, like the other flat cards. Not a detailed 3D render.
+
+SAVE: masters to assets/src/souvenirs/<name>.png (1024x1536), replacing nothing else.
+Then run: python3 scripts/assets/export_souvenirs.py
+It exports all 13 cards to assets/export/souvenirs/ and rebuilds
+assets/src/souvenirs/contact-sheet.png. Look at the contact sheet: if any of the six
+new cards stands out from the seven approved ones, regenerate it.
+
+Do not commit. List the files when done, and confirm each master was generated
+natively at its final size.
+```
+
+---
+
 ## Prompt 5 — Journey Map decorations
 
 ```text
