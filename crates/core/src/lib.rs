@@ -5,12 +5,14 @@
 pub mod ai;
 pub mod clock;
 pub mod coach;
+pub mod games;
 pub mod journey;
 pub mod lang;
 pub mod layout;
 pub mod learn;
 pub mod lesson;
 pub mod locale;
+pub mod pagi;
 pub mod penlab;
 pub mod reader;
 pub mod review;

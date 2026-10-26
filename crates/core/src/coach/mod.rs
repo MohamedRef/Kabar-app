@@ -10,6 +10,7 @@
 //! [`ActivityEvent`]: kabar_protocol::coach::ActivityEvent
 
 pub mod history;
+pub mod level;
 pub mod onboarding;
 pub mod plan;
 pub mod recap;

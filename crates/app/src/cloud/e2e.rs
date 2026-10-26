@@ -115,6 +115,45 @@ fn phone_and_tablet_sync_through_kabar_cloud() {
     assert!(devices.iter().any(|d| d.current && d.name == "Galaxy S24 Ultra"));
     assert!(devices.iter().any(|d| d.device_id == tablet_id && d.last_sync_ms.is_some()));
 
+    // The AI and TTS proxies answer the app with its session. Neither has
+    // a provider key in the local Worker, so both say so, from the server.
+    let link = super::link::CloudLink::default();
+    link.connect(phone.handle.commands.clone());
+    let runtime = tokio::runtime::Builder::new_current_thread().enable_all().build().unwrap();
+    let call = kabar_protocol::ai::EngineCall {
+        cache_key: kabar_protocol::ai::CacheKey {
+            task: kabar_protocol::ai::Task::RoleplayTurn,
+            input_hash: "e2e".into(),
+            engine: kabar_protocol::ai::EngineId::WorkersAi,
+            prompt_version: 1,
+        },
+        system: "You are Mbak Gadis.".into(),
+        user: "Halo, Mbak!".into(),
+        image_sha256: None,
+        is_repair: false,
+        json: true,
+        max_tokens: None,
+        personal: false,
+    };
+    let reply = runtime.block_on(link.ai(call));
+    match &reply {
+        Err(kabar_protocol::ai::EngineError::Unavailable { reason }) => {
+            assert!(!reason.contains("not signed in") && !reason.contains("isn't set up"), "{reason}")
+        }
+        other => panic!("expected the proxy's own answer, got {other:?}"),
+    }
+    let audio =
+        runtime.block_on(link.tts(crate::audio::line(kabar_protocol::cloud::Voice::IdGadis, "Halo!", 0, 0)));
+    assert!(
+        matches!(&audio, Err(super::link::Unreachable::Server(m)) if m.contains("NotConfigured")),
+        "{audio:?}"
+    );
+
+    // Vision: an image goes up once, named by its hash.
+    let png = b"\x89PNG\r\n\x1a\nkabar-e2e".to_vec();
+    let sha = runtime.block_on(link.put_blob(png)).unwrap();
+    assert_eq!(sha.len(), 64);
+
     phone.send(Command::RevokeDevice(tablet_id));
     tablet.wait("signed out", |e| match e {
         Event::Status(s) if s.sync == SyncState::SignedOut => {

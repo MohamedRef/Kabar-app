@@ -87,6 +87,8 @@ just apk && just install <serial>   # same on the S24 Ultra and the Tab S11
 
 Check it: save a word in **Try sync** on the phone; it appears on the tablet within seconds. The Devices list shows every signed-in device and can sign one out.
 
+Once signed in, AI features (Teach Kabar, and later the persona chats) run through Kabar Cloud's AI proxy. Lesson and review audio switches to Azure's neural voices after `wrangler secret put AZURE_SPEECH_KEY` (CLOUD.md §3.3). Each line is fetched once and then kept on the device, so replays work offline. Without the key, or when the monthly free characters run out, the device's own voice reads the line.
+
 ## 6. Content pipeline (vocabulary, Arabic Bridge)
 
 Details in `docs/CONTENT.md`. On the Mac:
@@ -154,8 +156,24 @@ Then on the device:
 The Screenshot Decoder uses Apple Vision (built into macOS, nothing to install). It recognizes Indonesian when your macOS supports it and falls back to its general Latin model otherwise; language auto-correction is only on when Indonesian is supported, so Javanese and slang aren't "corrected" into English. Try it with `just run-mac` Reader → "Open a screenshot", or drag an image onto the Reader.
 
 Tesseract (`ind`/`jav`) as a third OCR engine is phased for later.
+## 10. Play: Arabic Bridge games, Kabar Pagi, Rupiah Reader, Pasar! (M10)
 
-## 10. Troubleshooting
+Open **Play** (ألعاب) in the sidebar or the phone's bottom bar.
+
+- **Kamu sudah tahu N kata**: the Arabic loans you already understand. Tap a card to flip it; "I know it" adds the word to your log.
+- **Sound-Shift Detective**: pick a sound change (ف → p, خ → k, ة → -at …) or all, then 10 rounds.
+- **False Friends Alarm**: words that look Arabic but mean something else (kalimat, mungkin).
+- **Rupiah Reader**: type how a price is read (Rp26.000.000 → *dua puluh enam juta rupiah*). Speed counts, accuracy more.
+- **Pasar!**: haggle within a budget. The iPhone listing is the bonus round; Javanese sellers are marked unverified.
+- **Kabar Pagi**: the morning story from your due words plus a few new ones. On Today it appears every morning until you've read it. Audio uses the Mac's Indonesian voice (System Settings → Accessibility → Spoken Content → System voice → Manage Voices → Indonesian "Damayanti", if it isn't installed). Android's WebView has no voices, so on the Galaxy devices audio arrives with Kabar Cloud's TTS (follow-up).
+
+### Javanese manners and sounds (M11)
+
+- **Unggah-Ungguh**: talk with Bayu (a friend, J1), Bu Darmi at the market (J2), and Mbah, a teacher and an elder neighbour (J3). Each turn gives the same thing said at different speech levels. The Respect Meter rises when the choice fits the person and dips when it doesn't, and Kak Nur always explains why. Scenes above your Javanese target level show which level opens them. The lesson j3.u01.l03 ends with a button that opens this game.
+- **d/dh · t/th**: tell Javanese *wedi* (afraid) from *wedhi* (sand), and Indonesian *dada* from Javanese *dhadha*. **Listen** mode appears only when the device has a Javanese voice; Indonesian voices can't make the curled sound, so Kabar never uses one for this. Without a Javanese voice you get **Read** mode, where you see the meaning and pick the spelling. Javanese audio from Kabar Cloud's TTS (jv-ID voices) is a follow-up.
+- All Javanese here is marked unverified until you approve it (`content/games/unggah-ungguh.toml`, `content/games/minimal-pairs.toml`).
+
+## 11. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.

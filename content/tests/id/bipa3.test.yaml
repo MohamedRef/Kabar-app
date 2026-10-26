@@ -1,0 +1,600 @@
+schema: kabar.test/v1
+id: bipa3.test
+language: id
+kind: level
+title:
+  ar_eg: اختبار مستوى BIPA 3 — لومبوك
+  ar: اختبار مستوى BIPA 3 — لومبوك
+  en: BIPA 3 level test — Lombok
+intro:
+  ar_eg: |
+    لفّيت لومبوك من Mataram لحد Labuhan Lombok! هنا هتسمع نشرة أخبار من الراديو وكلام الناس العادي، وتقرا حكاية Putri Mandalika ورسالة شكوى لفندق ونص بيشرح الزلازل، وتكتب شكوى مؤدبة، وتقول رأيك بأسبابه.
+    خد وقتك؛ مفيش حاجة هنا تكسفك، وكل إجابة بتورّينا نركّز على إيه بعد كده.
+    ولو جاي من "Take a flight" عشان تعدّي BIPA 3، أهلًا بيك — نفس الأسئلة.
+  ar: |
+    جُبتَ لومبوك من Mataram إلى Labuhan Lombok! ستستمع هنا إلى نشرة أخبار إذاعية وحوارات يومية، وتقرأ حكاية Putri Mandalika ورسالة شكوى إلى فندق ونصًّا يشرح الزلازل، وتكتب شكوى مهذبة، وتعبّر عن رأيك مع أسبابه.
+    خذ وقتك؛ لا شيء هنا يُحرجك، وكل إجابة تُرينا ما نركّز عليه لاحقًا.
+    وإن جئت من "Take a flight" لتتجاوز BIPA 3، فأهلًا بك؛ الأسئلة نفسها.
+  en: |
+    You've travelled Lombok from Mataram to Labuhan Lombok! Here you'll hear radio news and everyday talk, read the legend of Putri Mandalika, a complaint to a hotel and a text explaining earthquakes, write a polite complaint, and give your opinion with reasons.
+    Take your time; nothing here is embarrassing, and every answer shows us what to focus on next.
+    If you came through "Take a flight" to skip BIPA 3, welcome: these are the same questions.
+minutes: 40
+pass_mark: 0.7
+scoring: >-
+  Score = points earned / points available (closed items 1 point unless set;
+  translate items are graded against reference answers first, then AI grade_answer;
+  writing_task and speaking_task are graded by AI against their rubric, each
+  criterion an equal share of the item's points). Pass at >= 0.7. Passing marks
+  BIPA 3 complete and opens BIPA 4; the same rule applies when the test is taken
+  as the "Take a flight" skip-ahead over BIPA 3. Below the mark, show the per-skill
+  results and suggest the units behind the missed items, with no penalty and an
+  open retry.
+sections:
+  - id: listening
+    skill: listening
+    title:
+      ar_eg: الاستماع
+      ar: الاستماع
+      en: Listening
+    instructions:
+      ar_eg: نشرة أخبار من راديو Mataram وكلام ناس في الشارع. اسمع، وعيد براحتك، واختار اللي سمعته بالظبط — ركّز على المعلومة المهمة — أو اكتبه.
+      ar: نشرة أخبار من إذاعة Mataram وأحاديث يومية. استمع وأعِد كما تشاء، ثم اختر ما سمعته بالضبط — ركّز على المعلومة الأساسية — أو اكتبه.
+      en: News from a Mataram radio station and everyday talk. Listen, replay as you like, then pick exactly what you heard (watch the key fact) or write it.
+    items:
+      - id: t01
+        type: listen
+        text: Hujan deras semalam menyebabkan banjir di tiga desa, tetapi tidak ada korban jiwa.
+        options:
+          - Angin kencang semalam menyebabkan banjir di tiga desa, tetapi tidak ada korban jiwa.
+          - Hujan deras semalam menyebabkan banjir di tiga kota, tetapi tidak ada korban jiwa.
+          - Hujan deras semalam menyebabkan banjir di tiga desa, tetapi tidak ada korban jiwa.
+        answer: 2
+        words: [hujan deras, banjir, korban]
+      - id: t02
+        type: listen
+        text: Pemerintah daerah mengimbau warga supaya tidak membuang sampah plastik ke laut.
+        options:
+          - Pemerintah daerah mengimbau warga supaya tidak membuang sampah plastik ke laut.
+          - Pemerintah daerah mengimbau warga supaya tidak membuang sampah plastik ke sungai.
+          - Pemerintah daerah mengimbau warga supaya tidak membakar sampah plastik di pantai.
+        answer: 0
+        words: [mengimbau, supaya, sampah]
+      - id: t03
+        type: listen
+        text: Rencananya kami akan menyeberang ke Sumbawa naik kapal feri hari Sabtu.
+        options:
+          - Rencananya kami akan terbang ke Sumbawa naik pesawat hari Sabtu.
+          - Rencananya kami akan menyeberang ke Sumbawa naik kapal feri hari Sabtu.
+          - Rencananya kami akan menyeberang ke Sumbawa naik kapal feri hari Senin.
+        answer: 1
+        words: [rencananya, akan, menyeberang]
+      - id: t04
+        type: listen
+        text: Kalau terjadi gempa, jangan panik, dan segera keluar dari gedung.
+        options:
+          - Kalau terjadi gempa, jangan panik, dan tetap di dalam gedung.
+          - Kalau terjadi banjir, jangan panik, dan segera keluar dari gedung.
+          - Kalau terjadi gempa, jangan panik, dan segera keluar dari gedung.
+        answer: 2
+        words: [kalau, gempa, segera]
+      - id: t05
+        type: listen
+        text: Mohon maaf lahir dan batin, ya. Semoga kita semua sehat dan diberi berkah.
+        options:
+          - Mohon maaf lahir dan batin, ya. Semoga kita semua sukses dan diberi berkah.
+          - Mohon maaf lahir dan batin, ya. Semoga kita semua sehat dan diberi berkah.
+          - Selamat Idulfitri, ya. Semoga kita semua sehat dan diberi berkah.
+        answer: 1
+        words: [mohon maaf lahir dan batin, semoga, berkah]
+      - id: t06
+        type: dictation
+        text: Saya sedang membaca buku tentang Putri Mandalika.
+        meaning:
+          ar_eg: أنا بقرا كتاب عن Putri Mandalika.
+          ar: أقرأ كتابًا عن Putri Mandalika.
+          en: I'm reading a book about Putri Mandalika.
+        words: [sedang, membaca, tentang]
+      - id: t07
+        type: dictation
+        text: Anak-anak berlari-larian di pantai sambil tertawa.
+        meaning:
+          ar_eg: العيال بيجروا ورا بعض على الشط وهما بيضحكوا.
+          ar: الأطفال يتراكضون على الشاطئ وهم يضحكون.
+          en: The children are running about on the beach, laughing.
+        words: [anak-anak, berlari-larian, sambil]
+  - id: reading
+    skill: reading
+    title:
+      ar_eg: القراية
+      ar: القراءة
+      en: Reading
+    instructions:
+      ar_eg: اقرا الحكاية، ورسالة الشكوى، والنص اللي بيشرح، وجاوب من اللي مكتوب فيهم.
+      ar: اقرأ الحكاية ورسالة الشكوى والنص التفسيري، وأجب مما ورد فيها.
+      en: Read the legend, the complaint letter and the explanatory text, and answer from what they say.
+    items:
+      - id: t08
+        type: multiple_choice
+        question: |
+          PUTRI MANDALIKA
+          Pada zaman dahulu, di pantai selatan Lombok hiduplah seorang putri yang cantik dan baik hati bernama Putri Mandalika. Banyak pangeran ingin menikahinya. Akan tetapi, Putri Mandalika tidak mau memilih salah satu dari mereka karena ia tidak ingin terjadi perang di antara kerajaan-kerajaan itu.
+          Akhirnya, ia mengundang semua pangeran ke pantai. Dari atas sebuah batu, ia berkata bahwa ia akan menjadi milik semua orang. Lalu ia melompat ke laut dan menghilang.
+          Tidak lama kemudian, muncullah ribuan cacing laut berwarna-warni. Masyarakat percaya bahwa cacing itu, yang disebut nyale, adalah jelmaan sang putri. Sampai sekarang, setiap tahun orang Sasak datang berbondong-bondong ke pantai untuk menangkap nyale.
+        question_meaning:
+          ar_eg: ليه Putri Mandalika ما اختارتش أمير منهم؟
+          ar: لماذا لم تختر Putri Mandalika أحد الأمراء؟
+          en: Why didn't Putri Mandalika choose one of the princes?
+        options: ["Karena ayahnya melarangnya.", "Karena ia tidak ingin ada perang.", "Karena semua pangeran jahat."]
+        answer: 1
+        words: [memilih, perang, kerajaan]
+      - id: t09
+        type: multiple_choice
+        question: |
+          PUTRI MANDALIKA
+          Pada zaman dahulu, di pantai selatan Lombok hiduplah seorang putri yang cantik dan baik hati bernama Putri Mandalika. Banyak pangeran ingin menikahinya. Akan tetapi, Putri Mandalika tidak mau memilih salah satu dari mereka karena ia tidak ingin terjadi perang di antara kerajaan-kerajaan itu.
+          Akhirnya, ia mengundang semua pangeran ke pantai. Dari atas sebuah batu, ia berkata bahwa ia akan menjadi milik semua orang. Lalu ia melompat ke laut dan menghilang.
+          Tidak lama kemudian, muncullah ribuan cacing laut berwarna-warni. Masyarakat percaya bahwa cacing itu, yang disebut nyale, adalah jelmaan sang putri. Sampai sekarang, setiap tahun orang Sasak datang berbondong-bondong ke pantai untuk menangkap nyale.
+        question_meaning:
+          ar_eg: إيه اللي ظهر في البحر بعد ما الأميرة اختفت؟
+          ar: ماذا ظهر في البحر بعد اختفاء الأميرة؟
+          en: What appeared in the sea after the princess disappeared?
+        options: ["seekor penyu besar", "sebuah kapal", "ribuan cacing laut"]
+        answer: 2
+        words: [muncul, cacing laut, nyale]
+      - id: t10
+        type: multiple_choice
+        question: |
+          Banyak pangeran ingin menikahinya.
+        question_meaning:
+          ar_eg: في الجملة دي من الحكاية، الـ -nya في menikahinya راجعة على مين؟
+          ar: في هذه الجملة من الحكاية، على من يعود الضمير -nya في menikahinya؟
+          en: In this sentence from the legend, who does -nya in menikahinya refer to?
+        options: ["Putri Mandalika", "para pangeran", "orang Sasak"]
+        answer: 0
+        explain:
+          ar_eg: الأمراء عايزين يتجوزوها هي، Putri Mandalika؛ -nya هنا مفعول بيه.
+          ar: الأمراء يريدون الزواج منها هي، Putri Mandalika؛ فـ -nya هنا ضمير مفعول.
+          en: The princes want to marry her, Putri Mandalika; -nya is the object here.
+        words: [-nya, menikahi]
+      - id: t11
+        type: multiple_choice
+        question: |
+          Kepada Yth. Manajer Hotel Pantai Kuta
+          di Kuta Mandalika
+
+          Dengan hormat,
+          Saya Mohamed, tamu di kamar 204 dari tanggal 12 sampai 15 Mei. Mohon maaf sebelumnya, saya ingin menyampaikan keluhan.
+          Pertama, pendingin ruangan di kamar saya rusak sejak malam pertama sehingga saya tidak bisa tidur. Saya sudah melaporkannya ke resepsionis dua kali, tetapi sampai sekarang belum diperbaiki. Kedua, sarapan yang dijanjikan di situs web hotel tidak disediakan pada hari Minggu.
+          Karena itu, saya mohon agar pendingin ruangan segera diperbaiki atau saya dipindahkan ke kamar lain. Saya juga berharap mendapat pengembalian uang untuk sarapan hari Minggu.
+          Atas perhatian Bapak/Ibu, saya ucapkan terima kasih.
+
+          Hormat saya,
+          Mohamed
+        question_meaning:
+          ar_eg: إيه المشكلة الأولى اللي محمد بيشتكي منها؟
+          ar: ما المشكلة الأولى التي يشكو منها محمد؟
+          en: What is the first problem Mohamed complains about?
+        options: ["Kamarnya terlalu kecil.", "Pendingin ruangannya rusak.", "Resepsionisnya tidak ramah."]
+        answer: 1
+        words: [keluhan, pendingin ruangan, rusak]
+      - id: t12
+        type: multiple_choice
+        question: |
+          Kepada Yth. Manajer Hotel Pantai Kuta
+          di Kuta Mandalika
+
+          Dengan hormat,
+          Saya Mohamed, tamu di kamar 204 dari tanggal 12 sampai 15 Mei. Mohon maaf sebelumnya, saya ingin menyampaikan keluhan.
+          Pertama, pendingin ruangan di kamar saya rusak sejak malam pertama sehingga saya tidak bisa tidur. Saya sudah melaporkannya ke resepsionis dua kali, tetapi sampai sekarang belum diperbaiki. Kedua, sarapan yang dijanjikan di situs web hotel tidak disediakan pada hari Minggu.
+          Karena itu, saya mohon agar pendingin ruangan segera diperbaiki atau saya dipindahkan ke kamar lain. Saya juga berharap mendapat pengembalian uang untuk sarapan hari Minggu.
+          Atas perhatian Bapak/Ibu, saya ucapkan terima kasih.
+
+          Hormat saya,
+          Mohamed
+        question_meaning:
+          ar_eg: محمد طالب إيه من الفندق؟
+          ar: ماذا يطلب محمد من الفندق؟
+          en: What does Mohamed ask the hotel to do?
+        options:
+          - Memberinya dua malam gratis.
+          - Memecat resepsionis.
+          - Memperbaiki pendingin ruangan atau memindahkannya ke kamar lain.
+        answer: 2
+        words: [mohon, diperbaiki, dipindahkan]
+      - id: t13
+        type: multiple_choice
+        question: |
+          Mohon maaf sebelumnya, saya ingin menyampaikan keluhan.
+        question_meaning:
+          ar_eg: محمد كاتب الجملة دي في أول الشكوى ليه؟
+          ar: لماذا كتب محمد هذه الجملة في بداية الشكوى؟
+          en: Why does Mohamed open his complaint with this sentence?
+        options:
+          - Untuk membuat keluhannya terdengar sopan dan lembut.
+          - Karena ia merusak pendingin ruangan.
+          - Karena ia terlambat membayar hotel.
+        answer: 0
+        explain:
+          ar_eg: الشكوى في إندونيسيا بتبدأ بأدب وبطريقة غير مباشرة؛ "mohon maaf sebelumnya" يعني "آسف مقدمًا" عشان تليّن الكلام، مش اعتراف بغلطة.
+          ar: تبدأ الشكوى في إندونيسيا بأدب وبصورة غير مباشرة؛ فعبارة "mohon maaf sebelumnya" (أعتذر مسبقًا) تليّن الكلام، وليست اعترافًا بخطأ.
+          en: Indonesian complaints open politely and indirectly; "mohon maaf sebelumnya" (sorry in advance) softens the start; it doesn't admit any fault.
+        words: [sebelumnya, menyampaikan]
+      - id: t14
+        type: multiple_choice
+        question: |
+          GEMPA BUMI
+          Gempa bumi merupakan getaran di permukaan bumi yang disebabkan oleh pergerakan lempeng. Indonesia sering mengalami gempa karena terletak di Cincin Api Pasifik.
+          Jika terjadi gempa saat Anda berada di dalam rumah, berlindunglah di bawah meja yang kuat supaya kepala Anda terlindung. Jangan berdiri di dekat jendela. Setelah getaran berhenti, segera keluar dan berkumpul di tempat terbuka. Jangan menggunakan lift.
+        question_meaning:
+          ar_eg: لو الزلزال حصل وإنت في البيت، تستخبى فين؟
+          ar: إذا وقع الزلزال وأنت في البيت، أين تحتمي؟
+          en: If an earthquake hits while you're at home, where do you shelter?
+        options: ["di dekat jendela", "di dalam lift", "di bawah meja yang kuat"]
+        answer: 2
+        words: [berlindung, meja, getaran]
+      - id: t15
+        type: multiple_choice
+        question: |
+          GEMPA BUMI
+          Gempa bumi merupakan getaran di permukaan bumi yang disebabkan oleh pergerakan lempeng. Indonesia sering mengalami gempa karena terletak di Cincin Api Pasifik.
+          Jika terjadi gempa saat Anda berada di dalam rumah, berlindunglah di bawah meja yang kuat supaya kepala Anda terlindung. Jangan berdiri di dekat jendela. Setelah getaran berhenti, segera keluar dan berkumpul di tempat terbuka. Jangan menggunakan lift.
+        question_meaning:
+          ar_eg: حسب النص، ليه إندونيسيا بيحصل فيها زلازل كتير؟
+          ar: بحسب النص، لماذا تكثر الزلازل في إندونيسيا؟
+          en: According to the text, why does Indonesia have so many earthquakes?
+        options:
+          - karena sering turun hujan deras
+          - karena terletak di Cincin Api Pasifik
+          - karena banyak gedung tinggi
+        answer: 1
+        words: [merupakan, disebabkan, terletak]
+  - id: vocabulary
+    skill: vocabulary
+    title:
+      ar_eg: الكلمات
+      ar: المفردات
+      en: Vocabulary
+    items:
+      - id: t16
+        type: match_pairs
+        pairs:
+          - text: terumbu karang
+            ar_eg: الشعاب المرجانية
+            ar: الشعاب المرجانية
+            en: coral reef
+          - text: penyu
+            ar_eg: سلحفاة بحرية
+            ar: سلحفاة بحرية
+            en: sea turtle
+          - text: sampah
+            ar_eg: زبالة
+            ar: نفايات
+            en: rubbish
+          - text: melestarikan
+            ar_eg: يحافظ على (الطبيعة)
+            ar: يصون، يحافظ على
+            en: to preserve
+        words: [terumbu karang, penyu, sampah, melestarikan]
+      - id: t17
+        type: match_pairs
+        pairs:
+          - text: sutradara
+            ar_eg: المخرج
+            ar: المخرج
+            en: film director
+          - text: pemeran utama
+            ar_eg: البطل / البطلة
+            ar: الممثل الرئيسي
+            en: lead actor
+          - text: alur
+            ar_eg: الحبكة، الأحداث
+            ar: الحبكة
+            en: plot
+          - text: ulasan
+            ar_eg: ريفيو، نقد
+            ar: مراجعة نقدية
+            en: review
+        words: [sutradara, pemeran utama, alur, ulasan]
+      - id: t18
+        type: fill_blank
+        sentence: Ketika gunung meletus, warga harus ___ ke tempat yang aman.
+        meaning:
+          ar_eg: لما البركان بيثور، الناس لازم تنزح لمكان أمان.
+          ar: عندما يثور البركان، على السكان أن ينزحوا إلى مكان آمن.
+          en: When the volcano erupts, residents must evacuate to a safe place.
+        options: ["menangkap", "mengungsi", "menyimpan"]
+        answers: [mengungsi]
+        words: [mengungsi, meletus]
+      - id: t19
+        type: fill_blank
+        sentence: Saya ingin menyampaikan ___ karena kamar saya kotor dan airnya mati.
+        meaning:
+          ar_eg: عايز أقدّم شكوى عشان أوضتي وسخة والمية مقطوعة.
+          ar: أودّ تقديم شكوى لأن غرفتي متسخة والماء مقطوع.
+          en: I'd like to make a complaint because my room is dirty and the water is off.
+        options: ["keluhan", "ucapan selamat", "sinopsis"]
+        answers: [keluhan]
+        words: [keluhan]
+      - id: t20
+        type: fill_blank
+        sentence: Menjelang Lebaran, jutaan orang ___ ke kampung halaman mereka.
+        meaning:
+          ar_eg: قبل العيد، ملايين الناس بيرجعوا بلادهم (mudik).
+          ar: قبيل العيد، يعود ملايين الناس إلى قراهم ومسقط رأسهم.
+          en: Before Lebaran, millions of people go home to their villages.
+        options: ["menabung", "mengeluh", "mudik"]
+        answers: [mudik]
+        words: [mudik, kampung halaman]
+  - id: grammar
+    skill: grammar
+    title:
+      ar_eg: القواعد
+      ar: القواعد
+      en: Grammar
+    items:
+      - id: t21
+        type: fill_blank
+        sentence: Kartu Lebaran ini saya kirim ___ Bu Sari dan keluarganya.
+        meaning:
+          ar_eg: كارت العيد ده أنا باعته لـ Bu Sari وعيلتها.
+          ar: أرسلتُ بطاقة العيد هذه إلى Bu Sari وأسرتها.
+          en: I'm sending this Eid card to Bu Sari and her family.
+        options: ["tentang", "kepada", "oleh"]
+        answers: [kepada]
+        explain:
+          ar_eg: kepada قبل الناس (لـ / إلى)؛ tentang = عن؛ oleh = بواسطة.
+          ar: kepada تأتي قبل الأشخاص (إلى)، وtentang = عن، وoleh = بواسطة.
+          en: kepada goes before people (to); tentang = about; oleh = by.
+        words: [kepada]
+      - id: t22
+        type: fill_blank
+        sentence: Selamat menempuh hidup baru! ___ menjadi keluarga yang bahagia.
+        meaning:
+          ar_eg: ألف مبروك على الجواز! ربنا يجعلكم أسرة سعيدة.
+          ar: مبارك الزواج! نرجو أن تكونا أسرة سعيدة.
+          en: Congratulations on your marriage! May you be a happy family.
+        options: ["Supaya", "Semoga", "Sehingga"]
+        answers: [Semoga]
+        words: [semoga, selamat]
+      - id: t23
+        type: fill_blank
+        sentence: ___ Anda setuju dengan larangan kantong plastik di Gili?
+        meaning:
+          ar_eg: هل حضرتك موافق على منع الأكياس البلاستيك في جزر Gili؟
+          ar: هل توافق على حظر الأكياس البلاستيكية في جزر Gili؟
+          en: Do you agree with the plastic-bag ban on the Gili islands?
+        options: ["Apakah", "Apalah", "Apa pun"]
+        answers: [Apakah]
+        words: [apakah, larangan]
+      - id: t24
+        type: fill_blank
+        sentence: Semua orang sibuk. Dimas ___ tidak sempat makan siang.
+        meaning:
+          ar_eg: الكل مشغول. حتى ديماس ما لحقش ياكل الغدا.
+          ar: الجميع مشغولون. حتى ديماس لم يتمكّن من تناول الغداء.
+          en: Everyone is busy. Even Dimas didn't get time for lunch.
+        options: ["-lah", "-kah", "pun"]
+        answers: [pun]
+        words: [pun]
+      - id: t25
+        type: multiple_choice
+        question_meaning:
+          ar_eg: إنت في نقاش عن البلاستيك ومش موافق قوي على رأي حد، بس عايز تفضل مؤدب. تقول إيه؟
+          ar: أنت في نقاش عن البلاستيك ولا توافق تمامًا على رأي أحدهم، لكنك تريد أن تبقى مهذبًا. ماذا تقول؟
+          en: In a discussion about plastic you don't quite agree with someone, but you want to stay polite. What do you say?
+        options:
+          - Pendapatmu salah total!
+          - Terserah kamu saja.
+          - Maaf, saya kurang setuju, karena plastik masih dibutuhkan pedagang kecil.
+        answer: 2
+        words: [kurang setuju, pendapat]
+      - id: t26
+        type: fill_blank
+        sentence: Setiap tahun ribuan wisatawan ___ Gili Trawangan.
+        meaning:
+          ar_eg: كل سنة آلاف السياح بيزوروا جيلي تراوانجان.
+          ar: كل عام يقصد آلاف السياح جزيرة غيلي تراوانغان.
+          en: Every year thousands of tourists visit Gili Trawangan.
+        options: ["datang", "mendatangi", "didatangkan"]
+        answers: [mendatangi]
+        explain:
+          ar_eg: "datang لازم (من غير مفعول): datang ke Gili. مع -i بيبقى متعدي وياخد المكان مفعول: mendatangi Gili."
+          ar: "datang فعل لازم (datang ke Gili)، وبإضافة -i يصبح متعديًا ويأخذ المكان مفعولًا: mendatangi Gili."
+          en: datang is intransitive (datang ke Gili); with -i it takes the place as its object (mendatangi Gili).
+        words: [mendatangi]
+      - id: t27
+        type: fill_blank
+        sentence: Nyale ___ cacing laut yang muncul setiap tahun di pantai selatan Lombok.
+        meaning:
+          ar_eg: الـ nyale هي ديدان بحرية بتظهر كل سنة على الشط الجنوبي للومبوك.
+          ar: النيالي ديدان بحرية تظهر كل عام على الساحل الجنوبي للومبوك.
+          en: Nyale are sea worms that appear every year on Lombok's south coast.
+        options: ["merupakan", "sehingga", "karena"]
+        answers: [merupakan]
+        words: [merupakan]
+      - id: t28
+        type: fill_blank
+        sentence: Sayuran segar dari Sembalun ___ tubuh kita.
+        meaning:
+          ar_eg: الخضار الطازة اللي من Sembalun بتخلّي جسمنا صحي.
+          ar: الخضروات الطازجة من Sembalun تجعل أجسامنا صحية.
+          en: Fresh vegetables from Sembalun make our bodies healthy.
+        options: ["kesehatan", "menyehatkan", "sehat-sehat"]
+        answers: [menyehatkan]
+        words: [menyehatkan]
+      - id: t29
+        type: multiple_choice
+        question: Warga membersihkan pantai Senggigi kemarin.
+        question_meaning:
+          ar_eg: أنهي جملة هي المبني للمجهول الصح للجملة دي؟
+          ar: أيّ جملة هي صيغة المبني للمجهول الصحيحة لهذه الجملة؟
+          en: Which sentence is the correct passive of this one?
+        options:
+          - Pantai Senggigi membersihkan warga kemarin.
+          - Pantai Senggigi dibersihkan oleh warga kemarin.
+          - Pantai Senggigi bersih warga kemarin.
+        answer: 1
+        words: [dibersihkan, oleh]
+      - id: t30
+        type: fill_blank
+        sentence: Buku biografi itu sudah ___ baca dua kali.
+        meaning:
+          ar_eg: كتاب السيرة ده أنا قريته مرتين.
+          ar: قرأتُ كتاب السيرة ذاك مرتين.
+          en: I've read that biography twice.
+        options: ["saya", "di", "oleh"]
+        answers: [saya]
+        explain:
+          ar_eg: "مجهول بالضمير: المفعول الأول + الفاعل (saya) + الفعل من غير meN-: Buku itu saya baca."
+          ar: "المبني للمجهول بالضمير: المفعول أولًا، ثم الفاعل (saya)، ثم الفعل بلا meN-: Buku itu saya baca."
+          en: "Pronoun passive: object first, then the doer (saya), then the bare verb: Buku itu saya baca."
+        words: [saya baca]
+      - id: t31
+        type: fill_blank
+        sentence: Hujan turun deras sekali ___ jalan-jalan di Tetebatu banjir.
+        meaning:
+          ar_eg: المطر نزل جامد جدًا لدرجة إن شوارع Tetebatu غرقت.
+          ar: هطل المطر بغزارة شديدة حتى غمرت المياه شوارع Tetebatu.
+          en: It rained so hard that the roads in Tetebatu flooded.
+        options: ["supaya", "jika", "sehingga"]
+        answers: [sehingga]
+        explain:
+          ar_eg: sehingga = لدرجة إن / فـ (نتيجة)؛ supaya = عشان (هدف)؛ jika = لو.
+          ar: sehingga = حتى / فـ (نتيجة)، وsupaya = لكي (غاية)، وjika = إذا.
+          en: sehingga = so that, as a result; supaya = in order to (purpose); jika = if.
+        words: [sehingga]
+      - id: t32
+        type: fill_blank
+        sentence: Gempa itu bukan hanya merusak rumah, ___ juga sekolah dan masjid.
+        meaning:
+          ar_eg: الزلزال ده ما خرّبش البيوت بس، لا ده كمان المدارس والجوامع.
+          ar: لم يُتلف الزلزال البيوت فحسب، بل المدارس والمساجد أيضًا.
+          en: The earthquake damaged not only houses but also schools and mosques.
+        options: ["tetapi", "supaya", "sehingga"]
+        answers: [tetapi]
+        words: [bukan hanya, tetapi juga]
+      - id: t33
+        type: multiple_choice
+        question_meaning:
+          ar_eg: أنهي كلمة معناها "بيجروا هنا وهناك ورا بعض (وهما بيلعبوا)"؟
+          ar: أيّ كلمة تعني "يتراكضون هنا وهناك (لعبًا)"؟
+          en: Which word means "running about (playfully, in all directions)"?
+        options: ["berlari", "pelarian", "berlari-larian"]
+        answer: 2
+        words: [berlari-larian]
+      - id: t34
+        type: fill_blank
+        sentence: Gunung Rinjani tidak ___ Gunung Everest.
+        meaning:
+          ar_eg: جبل رينجاني مش عالي قد جبل إيفرست.
+          ar: جبل رينجاني ليس بارتفاع جبل إيفرست.
+          en: Mount Rinjani is not as high as Mount Everest.
+        options: ["tertinggi", "setinggi", "ketinggian"]
+        answers: [setinggi]
+        words: [setinggi]
+      - id: t35
+        type: build_sentence
+        source:
+          ar_eg: بعد ما الزلزال وقف، خرجنا من البيت على طول.
+          ar: بعد أن توقّف الزلزال، خرجنا من البيت فورًا.
+          en: After the earthquake stopped, we immediately left the house.
+        answer: Setelah gempa berhenti, kami segera keluar dari rumah.
+        alternatives:
+          - Kami segera keluar dari rumah setelah gempa berhenti.
+        distractors: [sebelum, supaya]
+        words: [setelah, segera]
+  - id: writing
+    skill: writing
+    title:
+      ar_eg: الكتابة
+      ar: الكتابة
+      en: Writing
+    items:
+      - id: t36
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: الأجازة الجاية، ناوي أطلع جبل Rinjani مع صحابي.
+          ar: في العطلة القادمة، أنوي صعود جبل Rinjani مع أصدقائي.
+          en: Next holiday, I plan to climb Mount Rinjani with my friends.
+        answers:
+          - Liburan nanti, saya akan mendaki Gunung Rinjani bersama teman-teman saya.
+          - Liburan nanti, saya akan mendaki Gunung Rinjani bersama teman-teman saya
+          - Liburan berikutnya, saya akan mendaki Gunung Rinjani bersama teman-teman saya.
+          - Liburan berikutnya, saya akan mendaki Gunung Rinjani bersama teman-teman saya
+          - Liburan yang akan datang, saya akan mendaki Gunung Rinjani bersama teman-teman saya.
+          - Rencananya, liburan nanti saya akan mendaki Gunung Rinjani bersama teman-teman saya.
+          - Rencananya liburan nanti saya akan mendaki Gunung Rinjani bersama teman-teman saya.
+          - Liburan nanti, saya berencana mendaki Gunung Rinjani bersama teman-teman saya.
+          - Liburan nanti saya berencana mendaki Gunung Rinjani dengan teman-teman saya.
+          - Liburan nanti, saya akan naik Gunung Rinjani bersama teman-teman saya.
+          - Liburan nanti, aku akan mendaki Gunung Rinjani bersama teman-temanku.
+          - Liburan nanti aku mau mendaki Gunung Rinjani sama teman-temanku.
+        words: [rencananya, akan, mendaki]
+      - id: t37
+        type: writing_task
+        points: 5
+        prompt:
+          ar_eg: "اكتب رسالة شكوى مؤدبة (١٢٠–١٨٠ كلمة) لمدير فندق في Kuta Mandalika. قول إنت مين وكنت قاعد إمتى، اشرح مشكلتين بالتفصيل وإيه اللي عملته، واطلب حل واضح، واقفل الرسالة بأدب."
+          ar: "اكتب رسالة شكوى مهذبة (١٢٠–١٨٠ كلمة) إلى مدير فندق في Kuta Mandalika: عرّف بنفسك ومدة إقامتك، واشرح مشكلتين بالتفصيل وما فعلته حيالهما، واطلب حلًّا واضحًا، واختم الرسالة بأدب."
+          en: Write a polite complaint letter (120–180 words) to the manager of a hotel in Kuta Mandalika. Say who you are and when you stayed, explain two problems in detail and what you already did, ask for a clear solution, and close politely.
+        rubric:
+          - "Uses the formal letter frame: Kepada Yth. …, Dengan hormat, an opening (mohon maaf sebelumnya), Atas perhatian …, terima kasih, Hormat saya."
+          - States two specific problems with when and how they happened, and what was already tried.
+          - Makes a clear, polite request (mohon agar …, saya berharap …) without rudeness or threats.
+          - Uses BIPA 3 grammar accurately (passive di- and pronoun passive, se-, sehingga / supaya, transitive verbs with objects); 120–180 words.
+        sample: |
+          Kepada Yth. Manajer Hotel Pantai Kuta
+          di Kuta Mandalika
+
+          Dengan hormat,
+          Saya Mohamed, tamu di kamar 108 dari tanggal 3 sampai 6 Juni. Mohon maaf sebelumnya, saya ingin menyampaikan dua keluhan.
+          Pertama, air panas di kamar mandi tidak menyala selama dua hari sehingga saya harus mandi dengan air dingin. Saya sudah melaporkannya ke resepsionis pada hari pertama, tetapi masalah itu belum diperbaiki.
+          Kedua, kamar saya tidak sebersih foto di situs web hotel. Seprainya tidak diganti dan sampah di kamar tidak dibuang selama dua hari.
+          Saya memesan kamar ini karena ulasan hotel ini sangat baik. Oleh sebab itu, saya mohon agar pihak hotel memberikan potongan harga untuk dua malam tersebut. Saya juga berharap masalah ini tidak terjadi lagi kepada tamu lain.
+          Atas perhatian Bapak/Ibu, saya ucapkan terima kasih.
+
+          Hormat saya,
+          Mohamed
+        words: [dengan hormat, keluhan, mohon]
+  - id: speaking
+    skill: speaking
+    title:
+      ar_eg: الكلام
+      ar: المحادثة
+      en: Speaking
+    instructions:
+      ar_eg: اتكلم براحتك. المهم إن اللي بيسمعك يفهم رأيك وأسبابك، مش إنك تكون مثالي.
+      ar: تكلّم بارتياح. المهم أن يفهم السامع رأيك وأسبابه، لا أن تكون مثاليًّا.
+      en: Speak at ease. What matters is that a listener follows your view and your reasons, not perfection.
+    items:
+      - id: t38
+        type: speaking
+        text: Menurut saya, larangan kantong plastik sangat penting, karena laut kita penuh sampah.
+        meaning:
+          ar_eg: في رأيي، منع الأكياس البلاستيك مهم جدًا، عشان بحرنا مليان زبالة.
+          ar: في رأيي، حظر الأكياس البلاستيكية مهم جدًا، لأن بحرنا مليء بالنفايات.
+          en: In my opinion, the plastic-bag ban is very important, because our sea is full of rubbish.
+        words: [menurut saya, larangan, karena]
+      - id: t39
+        type: speaking_task
+        points: 5
+        prompt:
+          ar_eg: "Ni Luh بتسألك: 'المفروض لومبوك تمنع الأكياس البلاستيك زي جزر Gili؟' اتكلم حوالي ٢–٣ دقايق: قول رأيك بسببين على الأقل، رد على رأي مخالف بأدب، وبعدين قول إنت شخصيًا ناوي تعمل إيه عشان البحر يفضل نضيف."
+          ar: "تسألك Ni Luh: 'هل ينبغي أن تحظر لومبوك الأكياس البلاستيكية كما فعلت جزر Gili؟' تحدّث نحو دقيقتين أو ثلاث: اذكر رأيك مع سببين على الأقل، وردّ بأدب على رأي مخالف، ثم قل ما تنوي فعله أنت شخصيًّا ليبقى البحر نظيفًا."
+          en: "Ni Luh asks: 'Should Lombok ban plastic bags like the Gili islands do?' Talk for about 2–3 minutes: give your opinion with at least two reasons, answer an opposing view politely, then say what you yourself plan to do to keep the sea clean."
+        rubric:
+          - States a clear opinion (menurut saya, saya setuju / kurang setuju) supported by at least two reasons.
+          - Acknowledges and answers an opposing view politely (memang …, tetapi …; saya mengerti, namun …).
+          - Describes personal plans with akan / nanti / rencananya and links ideas with supaya, sehingga, bukan hanya … tetapi juga.
+          - Speaks in connected, mostly accurate sentences a patient listener can follow; pauses are fine.
+        sample: |
+          Menurut saya, Lombok sebaiknya melarang kantong plastik, seperti di Gili. Pertama, banyak sampah plastik masuk ke laut sehingga penyu dan ikan mati. Kedua, terumbu karang rusak, padahal turis datang ke Lombok untuk melihat laut yang indah.
+          Memang ada orang yang berkata bahwa pedagang kecil masih membutuhkan plastik. Saya mengerti, tetapi pedagang bisa memakai tas kain atau daun pisang, seperti dulu.
+          Larangan ini bukan hanya baik untuk alam, tetapi juga untuk pariwisata.
+          Rencananya, saya akan selalu membawa tas kain dan botol minum sendiri. Bulan depan saya juga akan ikut membersihkan pantai Senggigi bersama teman-teman.
+        words: [menurut saya, sebaiknya, rencananya]
+review:
+  status: draft
+  verified: false
