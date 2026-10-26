@@ -1,0 +1,132 @@
+schema: kabar.grammar/v1
+id: jv.pegon.basics
+language: jv
+level: j6
+title:
+  target: Pegon — ڠ nga · چ ca · ڤ pa · ڎ dha · ڟ tha · ڮ / ݢ ga · ۑ / ڽ nya
+  en: Pegon — Javanese written in Arabic letters
+  ar_eg: البيجون — الجاوي مكتوب بالحروف العربية
+  ar: البيجون — الجاوية بالحرف العربي
+summary:
+  ar_eg: "البيجون ملعبك: حروف عربية عادية + شوية حروف منقّطة لأصوات جاوية: ڠ = ng، چ = c، ڤ = p، ڎ = dh، ڟ = th، ڮ أو ݢ = g، ۑ أو ڽ = ny. والحركات بتتكتب حروف (ا ي و) أكتر من العربي. مثال: اكو ڠاجي = aku ngaji."
+  ar: "البيجون ميدانك: حروف عربية مع حروف منقوطة لأصوات جاوية: ڠ = ng، وچ = c، وڤ = p، وڎ = dh، وڟ = th، وڮ أو ݢ = g، وۑ أو ڽ = ny؛ وتُكتب الصوائت بالحروف (ا ي و) أكثر مما في العربية: اكو ڠاجي = aku ngaji."
+  en: "Pegon is your home turf: ordinary Arabic letters plus a few dotted letters for Javanese sounds: ڠ = ng, چ = c, ڤ = p, ڎ = dh, ڟ = th, ڮ or ݢ = g, ۑ or ڽ = ny. Vowels are written with letters (ا ي و) far more than in Arabic. Example: اكو ڠاجي = aku ngaji."
+pattern:
+  - "ng → ڠ (ع + three dots): ڠاجي ngaji"
+  - "c → چ (ج + three dots): چارا cara"
+  - "p → ڤ (ف + three dots): ساڤا sapa"
+  - "dh → ڎ (د + three dots): ڎاڎا dhadha · th → ڟ (ط + three dots): ڤاڟي pathi"
+  - "g → ڮ (ك + three dots below; common in Java) or ݢ (ك + one dot above; Malay Jawi style)"
+  - "ny → ۑ (ي + three dots below; common in Java) or ڽ (ن + three dots above; Malay Jawi style)"
+  - "plain Arabic letters for the rest: ك k · ت t · د d · س s · ج j · ر r · ل l · م m · ن n · ب b · و w · ي y · ه h"
+  - "vowels as letters: a → ا · i / é → ي · u / o → و · word-initial vowel on alif: اكو aku · ايكي iki · اورا ora"
+explanation:
+  ar_eg: |
+    آخر درس في الرحلة، وأسهلهم عليك. البيجون (Pegon) هي الجاوي مكتوب بالحروف العربية. المدارس الدينية (pesantren) في جاوة بتكتب بيها من قرون.
+    الفكرة: الحروف العربية بتغطي أغلب الأصوات. اللي ناقص (ng، c، p، dh، th، g، ny) بيتعمل بإضافة نقط على حرف عربي قريب — نفس اللعبة اللي الفارسي عملها (پ، چ، گ) واللي شفتها في aksara rekan:
+    - ڠ = ng: عين بتلات نقط. ڠاجي = ngaji (يقرا قرآن / يدرس في الكُتّاب).
+    - چ = c (تش): زي الفارسي. چارا = cara (طريقة).
+    - ڤ = p: فا بتلات نقط. ساڤا = sapa (مين).
+    - ڎ = dh: دال بتلات نقط. ڎاڎا = dhadha (صدر).
+    - ڟ = th: طا بتلات نقط. ڤاڟي = pathi (نشا).
+    - g: في جاوة غالبًا ڮ (كاف بتلات نقط تحت)، وفي الملايو ݢ (كاف بنقطة فوق). ڮولا = gula (سكر).
+    - ny: في جاوة غالبًا ۑ (يا بتلات نقط تحت)، وفي الملايو ڽ (نون بتلات نقط فوق). ۑاتا = nyata (حقيقي).
+    لاحظ: ڎ وڟ بيأكدوا اللي قلناه في الإملا — الجاويين حاسين dh وth «تقال» زي د وط، مش ذ وث.
+    أهم فرق عن العربي: الحركات. العربي بيسيب الفتحة والكسرة والضمة من غير كتابة. البيجون بتكتبهم حروف: a = ا، i أو é = ي، u أو o = و. والكلمة اللي بتبدأ بحركة بتبدأ بألف: اكو = aku، ايكي = iki، اورا = ora.
+    والكلمات العربية الأصل غالبًا بتفضل بإملاها العربي.
+    وفي الـ pesantren فيه «makna gandul»: ترجمة كلمة بكلمة مكتوبة بالبيجون تحت النص العربي بخط مايل. مثلًا «الحمد لله» بتتشرح: utawi sakabehe puji iku kagungane Allah = «أما كل الحمد فهو ملك لله». utawi بتعلّم المبتدأ وiku بتعلّم الخبر — وبيختصروهم برموز (م للمبتدأ، خ للخبر).
+  ar: |
+    البيجون هي الجاوية بالحرف العربي، وقد كتبت بها المدارس الدينية (pesantren) قرونًا.
+    والحروف العربية تغطي أكثر الأصوات، ويُصنع الناقص بزيادة النقاط على حرف قريب كما فعلت الفارسية:
+    - ڠ = ng: ڠاجي = ngaji.
+    - چ = c: چارا = cara.
+    - ڤ = p: ساڤا = sapa.
+    - ڎ = dh: ڎاڎا = dhadha، وڟ = th: ڤاڟي = pathi.
+    - g: ڮ في جاوة غالبًا، وݢ في الكتابة الملايوية: ڮولا = gula.
+    - ny: ۑ في جاوة غالبًا، وڽ في الملايوية: ۑاتا = nyata.
+    وفي ڎ وڟ دليل على أن الجاويين يسمعون dh وth قريبتين من الدال والطاء لا الذال والثاء.
+    والفرق الأهم أن البيجون تكتب الصوائت حروفًا: a = ا، وi / é = ي، وu / o = و، والمبدوء بصائت يبدأ بألف: اكو = aku.
+    ويبقى الدخيل العربي غالبًا بإملائه الأصلي.
+    وفي «makna gandul» تُكتب ترجمة حرفية بالبيجون تحت النص العربي، فيُشرح «الحمد لله»: utawi sakabehe puji iku kagungane Allah، وutawi علامة المبتدأ وiku علامة الخبر، ويُرمز لهما بـ م وخ.
+  en: |
+    Last lesson of the journey, and the easiest for you. Pegon is Javanese written in Arabic letters; pesantren (Islamic boarding schools) in Java have used it for centuries.
+    The idea: Arabic letters cover most sounds. The missing ones (ng, c, p, dh, th, g, ny) are made by adding dots to a nearby Arabic letter — the same trick Persian used (پ, چ, گ) and that you saw in aksara rekan:
+    - ڠ = ng: ع with three dots. ڠاجي = ngaji (recite the Qur'an / study at a pesantren).
+    - چ = c (ch): as in Persian. چارا = cara (way).
+    - ڤ = p: ف with three dots. ساڤا = sapa (who).
+    - ڎ = dh: د with three dots. ڎاڎا = dhadha (chest).
+    - ڟ = th: ط with three dots. ڤاڟي = pathi (starch).
+    - g: in Java usually ڮ (ك with three dots below); in Malay Jawi ݢ (ك with one dot above). ڮولا = gula (sugar).
+    - ny: in Java usually ۑ (ي with three dots below); in Malay Jawi ڽ (ن with three dots above). ۑاتا = nyata (real).
+    Notice: ڎ and ڟ confirm the spelling unit — Javanese hear dh and th as "heavy" like د and ط, not as ذ and ث.
+    The biggest difference from Arabic is vowels. Arabic leaves short vowels unwritten; Pegon writes them as letters: a = ا, i or é = ي, u or o = و. A word starting with a vowel starts with alif: اكو = aku, ايكي = iki, اورا = ora.
+    Arabic loanwords usually keep their Arabic spelling.
+    Pesantren also use "makna gandul": a word-by-word Pegon translation hung diagonally under the Arabic text. «الحمد لله» is glossed: utawi sakabehe puji iku kagungane Allah = "as for all praise, it belongs to God". utawi marks the subject (mubtada) and iku the predicate (khabar), often abbreviated as م and خ.
+examples:
+  - text: اكو ڠاجي (aku ngaji)
+    breakdown: اكو = aku (alif carries the opening a) · ڠاجي = ngaji (ڠ = ng)
+    en: I'm studying the Qur'an / I'm reciting.
+    ar_eg: أنا بقرا قرآن / بدرس في الكُتّاب.
+    ar: أنا أقرأ القرآن / أدرس.
+  - text: ساڤا (sapa)
+    breakdown: س s + ا a · ڤ p + ا a
+    en: who?
+    ar_eg: مين؟
+    ar: من؟
+  - text: چارا جاوا (cara Jawa)
+    breakdown: چ c + ا · ر + ا = cara · ج + ا · و + ا = Jawa
+    en: the Javanese way
+    ar_eg: الطريقة الجاوية
+    ar: الطريقة الجاوية
+  - text: ڎاڎا (dhadha)
+    breakdown: ڎ dh + ا a · ڎ dh + ا a
+    en: chest
+    ar_eg: صدر
+    ar: صدر
+  - text: ڮولا (gula) · also written ݢولا
+    breakdown: ڮ g (Java style) / ݢ g (Malay style) + و u · ل + ا
+    en: sugar
+    ar_eg: سكر
+    ar: سكر
+  - text: utawi sakabehe puji iku kagungane Allah
+    breakdown: utawi (اوتاوي, marks the mubtada) · sakabehe = semua · puji = pujian · iku (ايكو, marks the khabar) · kagungane = milik (krama inggil) · Allah
+    en: "As for all praise, it belongs to God. (makna gandul gloss of «الحمد لله»)"
+    ar_eg: «الحمد لله» بالشرح الجاوي كلمة بكلمة
+    ar: شرح «الحمد لله» كلمةً كلمة على طريقة makna gandul
+    register: formal
+mistakes:
+  - wrong: Reading ڤ as Arabic ف (f).
+    right: ڤ = p in Pegon.
+    why:
+      ar_eg: التلات نقط بتحوّل ف لـ p. وكذلك في الملايو والفارسي.
+      ar: النقاط الثلاث تجعل الفاء p.
+      en: The three dots turn ف into p.
+  - wrong: Reading ڎ as ذ (dh in English "this").
+    right: ڎ = Javanese dh, a heavy retroflex d.
+    why:
+      ar_eg: ڎ مبنية على د مش ذ. الصوت «د تقيلة».
+      ar: ڎ مبنية على الدال لا الذال، فهي دال ارتدادية.
+      en: ڎ is built on د, not ذ; it's a retroflex d.
+  - wrong: Skipping the vowels as in Arabic (writing aku as اك).
+    right: اكو — Pegon writes the vowels.
+    why:
+      ar_eg: البيجون بتكتب الحركات حروف عشان الجاوي مالوش جذور زي العربي تساعدك تخمّن.
+      ar: تكتب البيجون الصوائت لأن الجاوية لا تقوم على جذور تعين على التخمين.
+      en: Pegon spells out vowels; Javanese has no Arabic-style roots to help you guess them.
+arabic_bridge:
+  ar_eg: "دي أقرب حاجة لبيتك في الرحلة كلها: حروفك نفسها، بس بنقط زيادة: ڠ (عين بتلات نقط) = ng، ڤ = p، چ = تش، ڎ وڟ = د وط تقال. ولو بتعرف تقرا «پ» و«چ» الفارسي أو «ڤ» اللي بنكتب بيها الـ v في «ڤيتامين» (هنا بس بتتقري p)، إنت أصلًا نص الطريق."
+  ar: "هذا أقرب ما في الرحلة إليك: حروفك نفسها بنقاط زائدة: ڠ = ng، وڤ = p، وچ = تش، وڎ وڟ دال وطاء ارتداديتان؛ ومن قرأ پ وچ الفارسيتين قطع نصف الطريق."
+  en: "This is the closest thing to home on the whole journey: your own letters with extra dots — ڠ (ع + three dots) = ng, ڤ = p, چ = ch, ڎ and ڟ = heavy د / ط. If you can read Persian پ and چ, or the ڤ Egyptians use for v in «ڤيتامين» (here it reads p), you're halfway there."
+tags: [pegon, script, arabic-script, pesantren, arabic-bridge, j6]
+prerequisites: [jv.aksara.murda-rekan, jv.orthography]
+see_also: [jv.aksara.nglegena]
+review:
+  status: draft
+  verified: false
+  notes: >-
+    Draft by Claude; awaits review by a Javanese speaker who reads Pegon. Only letters Claude is confident of are included.
+    Please check: ga as ڮ (U+06AE) vs ݢ (U+0762) and nya as ۑ (U+06D1) vs ڽ (U+06BD) — the curriculum lists ڮ and ڽ; this
+    entry gives ڮ and ۑ as the usual Java forms and ݢ / ڽ as Malay Jawi forms, which needs confirming; vowel spelling (é with ي,
+    o with و, word-initial alif) since conventions vary between pesantren; the example spellings اكو ڠاجي، ساڤا، چارا جاوا، ڎاڎا،
+    ڤاڟي، ڮولا، ۑاتا، ايكي، اورا; the makna gandul gloss "utawi sakabehe puji iku kagungane Allah" and the م / خ abbreviations;
+    and the claim that Arabic loanwords keep their Arabic spelling.

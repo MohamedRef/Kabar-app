@@ -9,9 +9,11 @@ pub mod content;
 pub mod detective;
 pub mod logic;
 pub mod pagi;
+pub mod pairs;
 pub mod pasar;
 pub mod rupiah;
 pub mod speech;
+pub mod unggah;
 
 use dioxus::prelude::*;
 use kabar_core::games::bridge;
@@ -32,6 +34,8 @@ pub enum Route {
     Alarm,
     Rupiah,
     Pasar,
+    Unggah,
+    Pairs,
 }
 
 /// The open Play screen, shared through context so Today can open Kabar Pagi.
@@ -63,6 +67,8 @@ pub fn Play() -> Element {
         Route::Alarm => rsx! { alarm::Alarm {} },
         Route::Rupiah => rsx! { rupiah::RupiahReader {} },
         Route::Pasar => rsx! { pasar::Pasar {} },
+        Route::Unggah => rsx! { unggah::Unggah {} },
+        Route::Pairs => rsx! { pairs::Pairs {} },
     }
 }
 
@@ -74,7 +80,7 @@ struct GameCard {
     accent: &'static str,
 }
 
-const GAMES: [GameCard; 6] = [
+const GAMES: [GameCard; 8] = [
     GameCard { route: Route::Pagi, title: Msg::PagiTitle, blurb: Msg::PagiBlurb, accent: "indigo" },
     GameCard { route: Route::Deck, title: Msg::DeckTitle, blurb: Msg::DeckBlurb, accent: "gold" },
     GameCard {
@@ -86,6 +92,8 @@ const GAMES: [GameCard; 6] = [
     GameCard { route: Route::Alarm, title: Msg::AlarmTitle, blurb: Msg::AlarmBlurb, accent: "dawn" },
     GameCard { route: Route::Rupiah, title: Msg::RupiahTitle, blurb: Msg::RupiahBlurb, accent: "sawah" },
     GameCard { route: Route::Pasar, title: Msg::PasarTitle, blurb: Msg::PasarBlurb, accent: "sawah" },
+    GameCard { route: Route::Unggah, title: Msg::UnggahTitle, blurb: Msg::UnggahBlurb, accent: "indigo" },
+    GameCard { route: Route::Pairs, title: Msg::PairsTitle, blurb: Msg::PairsBlurb, accent: "indigo" },
 ];
 
 #[component]

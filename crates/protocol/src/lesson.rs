@@ -54,6 +54,10 @@ pub struct LessonContent {
     /// Earned when the lesson is finished; kept in the Suitcase.
     #[serde(default)]
     pub souvenir: Option<Souvenir>,
+    /// A Play game this lesson opens at its end: an Unggah-Ungguh scene
+    /// (`uu.grandmother`) or a Minimal Pairs pair (`mp.wedi-wedhi`).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub game: Option<String>,
     #[serde(default)]
     pub review: ContentReview,
 }
