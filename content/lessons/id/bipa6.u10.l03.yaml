@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: bipa6.u10.l03
+language: id
+title: Mengutip sumber
+can_do:
+  ar_eg: تذكر مصدرك جوّه النص وتكتبه في قايمة المراجع.
+  ar: أن تذكر مصدرك داخل النصّ وتدوّنه في قائمة المراجع.
+  en: Cite a source in your text and list it in the bibliography.
+slides:
+  - title: Dari teks ke daftar pustaka
+    body:
+      ar_eg: |
+        لما تقتبس (mengutip) من rujukan (مرجع)، اذكره مرتين:
+        1. جوّه النص: اسم الكاتب + سنة النشر + الصفحة (halaman، مختصرها hlm.):
+           Menurut Sitepu (2021, hlm. 45), … أو … (Sitepu, 2021, hlm. 45).
+        2. في الآخر، في الـ daftar pustaka (قايمة المراجع)، بالترتيب الأبجدي:
+           Sitepu, R. (2021). Bertani di Lereng Sinabung. Medan: Pustaka Karo.
+        (المصدر ده متألّف للدرس.) الـ terbit = اتنشر: buku itu terbit tahun 2021.
+      ar: |
+        حين تقتبس (mengutip) من rujukan (مرجع)، اذكره مرّتين:
+        1. داخل النصّ: اسم المؤلّف + سنة النشر + الصفحة (halaman، واختصارها hlm.):
+           Menurut Sitepu (2021, hlm. 45), … أو … (Sitepu, 2021, hlm. 45).
+        2. في النهاية في الـ daftar pustaka (قائمة المراجع) مرتّبةً أبجديًّا:
+           Sitepu, R. (2021). Bertani di Lereng Sinabung. Medan: Pustaka Karo.
+        (المصدر مؤلَّف لأجل الدرس.) وterbit = صدر / نُشر: buku itu terbit tahun 2021.
+      en: |
+        When you quote (mengutip) from a rujukan (reference), name it twice:
+        1. In the text: author + year + page (halaman, short hlm.):
+           Menurut Sitepu (2021, hlm. 45), … or … (Sitepu, 2021, hlm. 45).
+        2. At the end, in the daftar pustaka (bibliography), in alphabetical order:
+           Sitepu, R. (2021). Bertani di Lereng Sinabung. Medan: Pustaka Karo.
+        (This source is invented for the lesson.) terbit = to be published: buku itu terbit tahun 2021.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: daftar pustaka
+        ar_eg: قايمة المراجع
+        ar: قائمة المراجع
+        en: bibliography, reference list
+      - text: rujukan
+        ar_eg: مرجع
+        ar: مرجع
+        en: reference, source
+      - text: terbit
+        ar_eg: يتنشر / يصدر
+        ar: يصدر / يُنشر
+        en: to be published, to come out
+      - text: mengutip
+        ar_eg: يقتبس / ينقل عن
+        ar: يقتبس
+        en: to quote, to cite
+      - text: halaman
+        ar_eg: صفحة
+        ar: صفحة
+        en: page
+    words: [daftar pustaka, rujukan, terbit, mengutip, halaman]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في «(Sitepu, 2021, hlm. 45)»، الرقم 45 إيه؟
+      ar: في «(Sitepu, 2021, hlm. 45)»، ما الرقم 45؟
+      en: In "(Sitepu, 2021, hlm. 45)", what is 45?
+    options:
+      - سنة النشر.
+      - رقم الصفحة.
+      - عدد الصفحات كلها.
+    answer: 1
+    words: [halaman]
+  - id: e03
+    type: fill_blank
+    sentence: Semua sumber yang kamu kutip harus ada di ___.
+    meaning:
+      ar_eg: كل المصادر اللي اقتبست منها لازم تبقى في قايمة المراجع.
+      ar: يجب أن ترد كلّ المصادر التي اقتبست منها في قائمة المراجع.
+      en: Every source you quote must appear in the bibliography.
+    options: [daftar pustaka, halaman, rujukan]
+    answers: [daftar pustaka]
+    words: [daftar pustaka]
+  - id: e04
+    type: listen
+    text: Buku ini terbit pertama kali pada tahun dua ribu dua puluh satu.
+    question:
+      ar_eg: الكتاب اتنشر أول مرة إمتى؟
+      ar: متى صدر الكتاب أوّل مرّة؟
+      en: When was the book first published?
+    options:
+      - سنة 2021.
+      - سنة 2012.
+      - سنة 1921.
+    answer: 0
+    words: [terbit]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: اقتبست الجملة دي من صفحة عشرين.
+      ar: اقتبستُ هذه الجملة من الصفحة العشرين.
+      en: I quoted this sentence from page twenty.
+    answer: Saya mengutip kalimat ini dari halaman dua puluh.
+    distractors: [terbit, pustaka]
+    words: [mengutip, halaman]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي rujukan أنسب لمقال أكاديمي؟
+      ar: أيّ مرجع أنسب لمقالة أكاديمية؟
+      en: Which reference best suits an academic essay?
+    options:
+      - Komentar anonim di media sosial.
+      - Pesan berantai di WhatsApp.
+      - Artikel jurnal yang terbit tahun 2022.
+    answer: 2
+    words: [rujukan, terbit]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: المقال ده عنده مراجع كتير.
+      ar: لهذه المقالة مراجع كثيرة.
+      en: This article has many references.
+    answers:
+      - Artikel ini memiliki banyak rujukan.
+      - Artikel ini mempunyai banyak rujukan.
+      - Artikel ini punya banyak rujukan.
+      - Rujukan artikel ini banyak.
+    words: [rujukan]
+  - id: e08
+    type: speaking
+    text: Kalau mengutip, tulis nama penulis, tahun, dan halaman.
+    meaning:
+      ar_eg: لما تقتبس، اكتب اسم الكاتب والسنة والصفحة.
+      ar: إذا اقتبست فاكتب اسم المؤلّف والسنة والصفحة.
+      en: When you quote, write the author's name, the year and the page.
+    words: [mengutip, halaman]
+  - id: e09
+    type: dictation
+    text: Daftar pustaka disusun menurut abjad.
+    meaning:
+      ar_eg: قايمة المراجع بتترتّب أبجديًا.
+      ar: تُرتَّب قائمة المراجع أبجديًّا.
+      en: The bibliography is arranged alphabetically.
+    words: [daftar pustaka]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Ia mengutip sebuah rujukan yang belum terbit.
+    answers_meaning:
+      ar_eg:
+        - اقتبس من مرجع لسه ما اتنشرش.
+        - نقل عن مصدر لسه ماطلعش.
+      ar:
+        - اقتبس من مرجع لم يُنشر بعدُ.
+        - نقل عن مصدر لم يصدر بعدُ.
+      en:
+        - He quoted a reference that hasn't been published yet.
+        - She cited a source that isn't out yet.
+    words: [mengutip, rujukan, terbit]
+dialogue:
+  title: Di perpustakaan kampus
+  lines:
+    - speaker: Rani
+      text: Kamu mengutip Sitepu, tapi namanya tidak ada di daftar pustaka.
+      ar_eg: إنت اقتبست من سيتيبو، بس اسمه مش موجود في قايمة المراجع.
+      ar: اقتبست من سيتيبو، لكنّ اسمه غير موجود في قائمة المراجع.
+      en: You quoted Sitepu, but his name isn't in the bibliography.
+    - speaker: Mohamed
+      text: Aduh, lupa. Bukunya terbit tahun berapa, ya?
+      ar_eg: يا خبر، نسيت. الكتاب اتنشر سنة كام؟
+      ar: نسيت! في أيّ سنة صدر الكتاب؟
+      en: Oh no, I forgot. What year did the book come out?
+    - speaker: Rani
+      text: Tahun 2021. Dan jangan lupa nomor halamannya di dalam teks.
+      ar_eg: سنة 2021. وماتنساش رقم الصفحة جوّه النص.
+      ar: عام 2021، ولا تنسَ رقم الصفحة داخل النصّ.
+      en: 2021. And don't forget the page number in the text.
+    - speaker: Mohamed
+      text: Siap. Untuk kata baku, rujukan saya KBBI saja.
+      ar_eg: تمام. وللكلمات الفصحى، مرجعي هيبقى القاموس الكبير KBBI.
+      ar: حسنًا، ومرجعي في الألفاظ الفصيحة معجم KBBI.
+      en: Got it. And for standard spellings, my reference is the KBBI.
+new_words:
+  - word: daftar pustaka
+    pos: noun
+    ar_eg: قايمة المراجع
+    ar: قائمة المراجع
+    en: bibliography, reference list
+  - word: rujukan
+    pos: noun
+    ar_eg: مرجع
+    ar: مرجع
+    en: reference, source
+  - word: terbit
+    pos: verb
+    ar_eg: يتنشر / يصدر
+    ar: يصدر / يُنشر
+    en: to be published, to come out
+  - word: mengutip
+    pos: verb
+    ar_eg: يقتبس / ينقل عن
+    ar: يقتبس
+    en: to quote, to cite
+  - word: halaman
+    pos: noun
+    ar_eg: صفحة
+    ar: صفحة
+    en: page
+review:
+  status: draft
+  verified: false
