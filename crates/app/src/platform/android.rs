@@ -57,6 +57,76 @@ pub fn files_dir() -> Result<String, String> {
     })
 }
 
+/// `Settings.Global.DEVICE_NAME`: the name the user sees in Settings → About
+/// phone, e.g. "Galaxy S24 Ultra".
+pub fn device_name() -> Result<Option<String>, String> {
+    with_activity(|env, activity| {
+        let resolver = env
+            .call_method(
+                activity,
+                jni_str!("getContentResolver"),
+                jni_sig!("()Landroid/content/ContentResolver;"),
+                &[],
+            )?
+            .l()?;
+        let key = env.new_string("device_name")?;
+        let value = env
+            .call_static_method(
+                jni_str!("android/provider/Settings$Global"),
+                jni_str!("getString"),
+                jni_sig!("(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;"),
+                &[(&resolver).into(), (&key).into()],
+            )?
+            .l()?;
+        if value.is_null() {
+            return Ok(None);
+        }
+        let value = env.cast_local::<JString>(value)?;
+        Ok(Some(value.mutf8_chars(env)?.to_string()).filter(|s| !s.is_empty()))
+    })
+}
+
+/// Opens `url` in the browser with an `ACTION_VIEW` intent.
+pub fn open_url(url: &str) -> Result<(), String> {
+    with_activity(|env, activity| {
+        let action = env
+            .get_static_field(
+                jni_str!("android/content/Intent"),
+                jni_str!("ACTION_VIEW"),
+                jni_sig!("Ljava/lang/String;"),
+            )?
+            .l()?;
+        let url = env.new_string(url)?;
+        let uri = env
+            .call_static_method(
+                jni_str!("android/net/Uri"),
+                jni_str!("parse"),
+                jni_sig!("(Ljava/lang/String;)Landroid/net/Uri;"),
+                &[(&url).into()],
+            )?
+            .l()?;
+        let intent = env.new_object(
+            jni_str!("android/content/Intent"),
+            jni_sig!("(Ljava/lang/String;Landroid/net/Uri;)V"),
+            &[(&action).into(), (&uri).into()],
+        )?;
+        // FLAG_ACTIVITY_NEW_TASK
+        env.call_method(
+            &intent,
+            jni_str!("addFlags"),
+            jni_sig!("(I)Landroid/content/Intent;"),
+            &[0x1000_0000.into()],
+        )?;
+        env.call_method(
+            activity,
+            jni_str!("startActivity"),
+            jni_sig!("(Landroid/content/Intent;)V"),
+            &[(&intent).into()],
+        )?;
+        Ok(())
+    })
+}
+
 // ---------------------------------------------------------------- text-to-speech
 //
 // Android's System WebView has no `speechSynthesis`, so lesson and review
