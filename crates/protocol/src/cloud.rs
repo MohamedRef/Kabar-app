@@ -29,6 +29,9 @@ pub enum ErrorCode {
     QuotaExhausted,
     /// The upstream TTS service failed.
     Upstream,
+    /// `EngineCall::image_sha256` names an image the server doesn't have
+    /// (never uploaded, or older than a week): upload it and retry.
+    BlobMissing,
     Internal,
 }
 
