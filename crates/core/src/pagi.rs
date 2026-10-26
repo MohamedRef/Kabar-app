@@ -112,6 +112,10 @@ pub struct Story {
     pub sentences: Vec<StorySentence>,
     /// The target words the story uses, as dictionary forms.
     pub words: Vec<String>,
+    /// Sinetron only: 1–3 plain English sentences, passed to the next episode
+    /// as `previous_summary`.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub summary: Option<String>,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
@@ -214,13 +218,17 @@ impl AiOutput for Story {
     }
 }
 
-/// The router input for `story_episode`.
+/// Indonesian words to aim for: about two minutes at a slow pace.
+pub const LENGTH_WORDS: u32 = 90;
+
+/// The router input for `story_episode`, in the golden set's field names.
 pub fn story_request(words: &PagiWords, level: &str) -> serde_json::Value {
     json!({
+        "series": "kabar_pagi",
         "level": level,
+        "target_words": words.new,
         "due_words": words.due,
-        "new_words": words.new,
-        "length": "6-10 short sentences",
+        "length_words": LENGTH_WORDS,
     })
 }
 
@@ -421,6 +429,7 @@ mod tests {
                 sentence("Bukunya dibaca lagi."),
             ],
             words: s(&["baca", "bersih", "anak", "main", "sehat", "kabar"]),
+            summary: None,
         }
     }
 
@@ -530,7 +539,13 @@ mod tests {
         let w = PagiWords { due: s(&["pasar", "beli"]), new: s(&["murah"]) };
         assert_eq!(
             story_request(&w, "bipa1"),
-            json!({"level": "bipa1", "due_words": ["pasar", "beli"], "new_words": ["murah"], "length": "6-10 short sentences"})
+            json!({
+                "series": "kabar_pagi",
+                "level": "bipa1",
+                "target_words": ["murah"],
+                "due_words": ["pasar", "beli"],
+                "length_words": LENGTH_WORDS,
+            })
         );
     }
 
@@ -626,6 +641,7 @@ mod tests {
             level: "bipa1".into(),
             sentences: (0..6).map(|i| sentence(words[i % words.len()])).collect(),
             words: words.iter().map(|w| w.to_lowercase()).collect(),
+            summary: None,
         };
         let a = mk("A", &["Pasar", "Kopi", "Teh"]);
         let b = mk("B", &["Ikan"]);

@@ -329,6 +329,7 @@ mod tests {
             fair: 75_000,
             javanese: false,
             bonus: false,
+            seller_lines: kabar_core::games::pasar::LineBank::new(Vec::new()),
         };
         assert_eq!(seller_lang(&item), "id");
         item.javanese = true;

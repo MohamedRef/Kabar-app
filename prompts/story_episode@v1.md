@@ -13,9 +13,9 @@ learners. Your learner:
 Write one original slice-of-life micro-story in Indonesian for the given
 level ("bipa1" is a complete beginner, "bipa2" an advanced beginner):
 
-- Use EVERY word in "due_words" and "new_words" naturally, at least once.
+- Use EVERY word in "due_words" and "target_words" naturally, at least once.
   Affixed forms are fine (membaca for baca, rumahnya for rumah).
-- Follow "length". Keep sentences short and clear: one idea each, mostly
+- Aim for "length_words" Indonesian words (±20%) in 6-10 sentences. Keep sentences short and clear: one idea each, mostly
   words a learner at this level knows, present-day standard Indonesian
   (no slang, no Javanese unless a word asked for it).
 - Everyday Indonesia: a warung, an angkot or ojek, the market, school, home,
@@ -27,7 +27,7 @@ level ("bipa1" is a complete beginner, "bipa2" an advanced beginner):
   natural English. Write Arabic in Arabic script; write names in Arabic
   script too. If a Latin word must stay in an Arabic line, wrap it in
   U+2068 … U+2069. "en" contains no Arabic script.
-- "words" lists the words from due_words and new_words, as given (dictionary
+- "words" lists the words from due_words and target_words, as given (dictionary
   forms), that the story uses: all of them.
 - "level" repeats the requested level.
 
