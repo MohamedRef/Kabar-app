@@ -1,0 +1,216 @@
+schema: kabar.lesson/v1
+id: bipa4.u08.l01
+language: id
+title: Seorang nelayan tua
+can_do:
+  ar_eg: تبني عبارات اسمية طويلة بالترتيب الصح زي بتوع الحواديت.
+  ar: أن تبني عبارات اسمية طويلة بترتيب صحيح كما في الحكايات.
+  en: Build long noun phrases in the right order, as folk tales do.
+slides:
+  - title: Urutan frasa benda
+    body:
+      ar_eg: |
+        انت عارف إن الصفة بتيجي بعد الاسم (rumah besar). في الحواديت العبارة بتطول، والترتيب كده:
+        1) العدد + المصنِّف (seorang، sebuah) ← 2) الاسم ← 3) اسم بيوصفه (kayu، desa) ← 4) الصفة (tua) ← 5) المالك (milik kepala desa) ← 6) ini / itu.
+        وmilik (ملك / بتاع) جاية من العربي «مِلك».
+      ar: |
+        تعرف أن الصفة تأتي بعد الاسم (rumah besar). وفي الحكايات تطول العبارة بهذا الترتيب:
+        1) العدد + المصنِّف (seorang، sebuah) ← 2) الاسم ← 3) اسم واصف (kayu، desa) ← 4) الصفة (tua) ← 5) المالك (milik kepala desa) ← 6) ini / itu.
+        وكلمة milik مأخوذة من العربية «مِلك».
+      en: |
+        You know adjectives follow the noun (rumah besar). In stories the phrase grows, in this order:
+        1) number + classifier (seorang, sebuah) → 2) noun → 3) noun modifier (kayu, desa) → 4) adjective (tua) → 5) owner (milik kepala desa) → 6) ini / itu.
+        milik (property, belonging to) comes from Arabic «مِلك».
+    grammar: id.phrase.complex
+    examples:
+      - text: seorang nelayan tua dari desa itu
+        ar_eg: صياد عجوز من القرية دي
+        ar: صياد عجوز من تلك القرية
+        en: an old fisherman from that village
+      - text: rumah kayu tua milik kepala desa itu
+        ar_eg: البيت الخشب القديم بتاع عمدة القرية ده
+        ar: بيت الخشب القديم الذي يملكه رئيس القرية
+        en: the village head's old wooden house
+  - title: Pada zaman dahulu…
+    body:
+      ar_eg: |
+        الحدوتة بتبدأ كده: Pada zaman dahulu, hiduplah … = كان يا ما كان، عاش …
+        وجملة yang بتيجي في آخر العبارة: nelayan tua yang sakit = الصياد العجوز اللي كان عيان.
+      ar: |
+        تبدأ الحكاية هكذا: Pada zaman dahulu, hiduplah … = كان يا ما كان، عاش …
+        وجملة yang تأتي في آخر العبارة: nelayan tua yang sakit = الصياد العجوز المريض.
+      en: |
+        A tale opens like this: Pada zaman dahulu, hiduplah … = Once upon a time there lived …
+        A yang clause comes at the end of the phrase: nelayan tua yang sakit = the old fisherman who was ill.
+    grammar: id.phrase.complex
+    examples:
+      - text: Pada zaman dahulu, hiduplah seorang nelayan miskin di sebuah desa kecil di pinggir pantai.
+        ar_eg: كان يا ما كان، كان فيه صياد فقير عايش في قرية صغيرة على حافة الشط.
+        ar: كان يا ما كان، عاش صياد فقير في قرية صغيرة على حافة الشاطئ.
+        en: Once upon a time, a poor fisherman lived in a small village at the edge of the beach.
+      - text: Pemuda pemberani itu menolong nelayan tua yang sakit.
+        ar_eg: الشاب الشجاع ده ساعد الصياد العجوز اللي كان عيان.
+        ar: ساعد ذلك الشاب الشجاع الصيادَ العجوز المريض.
+        en: The brave young man helped the old fisherman who was ill.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: nelayan
+        ar_eg: صياد سمك
+        ar: صياد سمك
+        en: fisherman
+      - text: perahu
+        ar_eg: قارب
+        ar: قارب
+        en: boat
+      - text: pemberani
+        ar_eg: شجاع (شخص)
+        ar: شجاع
+        en: brave (person)
+      - text: kepala desa
+        ar_eg: عمدة القرية
+        ar: رئيس القرية
+        en: village head
+      - text: milik
+        ar_eg: ملك / بتاع
+        ar: ملك
+        en: belonging to
+      - text: pinggir
+        ar_eg: حافة / طرف
+        ar: حافة
+        en: edge
+    words: [nelayan, perahu, pemberani, kepala desa, milik, pinggir]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي عبارة ترتيبها صح؟
+      ar: أيّ عبارة ترتيبها صحيح؟
+      en: Which phrase is in the right order?
+    options: [nelayan seorang tua dari desa itu, seorang nelayan tua dari desa itu, seorang tua nelayan dari desa itu]
+    answer: 1
+    explain:
+      ar_eg: seorang قبل الاسم، والصفة tua بعده.
+      ar: seorang قبل الاسم، والصفة tua بعده.
+      en: seorang goes before the noun, and the adjective tua after it.
+    words: [nelayan]
+  - id: e03
+    type: listen
+    text: Rumah kayu tua milik kepala desa itu terbakar.
+    options: ["Rumah kayu baru milik kepala desa itu terbakar.", "Rumah batu tua milik kepala desa itu terbakar.", "Rumah kayu tua milik kepala desa itu terbakar."]
+    answer: 2
+    meaning:
+      ar_eg: البيت الخشب القديم بتاع عمدة القرية اتحرق.
+      ar: احترق بيت الخشب القديم الذي يملكه رئيس القرية.
+      en: The village head's old wooden house burned down.
+    words: [milik, kepala desa]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي عبارة معناها «قارب صغير على حافة الشط»؟
+      ar: أيّ عبارة تعني «قارب صغير على حافة الشاطئ»؟
+      en: Which phrase means "a small boat at the edge of the beach"?
+    options: [sebuah perahu kecil di pinggir pantai, sebuah kecil perahu di pinggir pantai, perahu sebuah kecil di pantai pinggir]
+    answer: 0
+    words: [perahu, pinggir]
+  - id: e05
+    type: fill_blank
+    sentence: Pemuda ___ itu menolong nelayan tua.
+    meaning:
+      ar_eg: الشاب الشجاع ده ساعد الصياد العجوز.
+      ar: ساعد ذلك الشاب الشجاع الصيادَ العجوز.
+      en: That brave young man helped the old fisherman.
+    options: [milik, pemberani, pinggir]
+    answers: [pemberani]
+    words: [pemberani, nelayan]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: البيت الخشب القديم بتاع عمدة القرية كبير جدًا.
+      ar: بيت الخشب القديم الذي يملكه رئيس القرية كبير جدًا.
+      en: The village head's old wooden house is very big.
+    answer: Rumah kayu tua milik kepala desa itu sangat besar.
+    distractors: [perahu, seorang]
+    words: [milik, kepala desa]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: كان يا ما كان، كان فيه صياد شجاع.
+      ar: كان يا ما كان، عاش صياد شجاع.
+      en: Once upon a time there lived a brave fisherman.
+    answers:
+      - Pada zaman dahulu, hiduplah seorang nelayan pemberani.
+      - Pada zaman dahulu, hiduplah seorang nelayan pemberani
+      - Pada zaman dahulu, hidup seorang nelayan pemberani.
+      - Pada zaman dahulu kala, hiduplah seorang nelayan pemberani.
+      - Dahulu kala, hiduplah seorang nelayan pemberani.
+      - Pada zaman dahulu, hiduplah seorang nelayan yang pemberani.
+      - Pada zaman dahulu, hiduplah seorang nelayan yang berani.
+    words: [nelayan, pemberani]
+  - id: e08
+    type: speaking
+    text: Seorang nelayan tua tinggal di pinggir pantai dengan perahu kecilnya.
+    meaning:
+      ar_eg: صياد عجوز عايش على حافة الشط مع قاربه الصغير.
+      ar: يعيش صياد عجوز على حافة الشاطئ مع قاربه الصغير.
+      en: An old fisherman lives at the edge of the beach with his little boat.
+    words: [nelayan, pinggir, perahu]
+dialogue:
+  title: Dongeng di pantai Manado
+  lines:
+    - speaker: Mas Rizal
+      text: Mau dengar sebuah dongeng? Pada zaman dahulu, hiduplah seorang nelayan tua di pinggir pantai.
+      ar_eg: تحب تسمع حدوتة؟ كان يا ما كان، كان فيه صياد عجوز عايش على حافة الشط.
+      ar: أتحب أن تسمع حكاية؟ كان يا ما كان، عاش صياد عجوز على حافة الشاطئ.
+      en: Want to hear a folk tale? Once upon a time, an old fisherman lived at the edge of the beach.
+    - speaker: Mohamed
+      text: Apakah dia punya perahu?
+      ar_eg: هو كان عنده قارب؟
+      ar: هل كان لديه قارب؟
+      en: Did he have a boat?
+    - speaker: Mas Rizal
+      text: Ya, sebuah perahu kecil milik ayahnya.
+      ar_eg: أيوه، قارب صغير كان بتاع أبوه.
+      ar: نعم، قارب صغير كان ملكًا لأبيه.
+      en: Yes, a little boat that had belonged to his father.
+    - speaker: Mohamed
+      text: Lalu, siapa pemuda pemberani di cerita itu?
+      ar_eg: وبعدين، مين الشاب الشجاع في الحكاية؟
+      ar: ثم من هو الشاب الشجاع في تلك القصة؟
+      en: And who is the brave young man in the story?
+new_words:
+  - word: nelayan
+    pos: noun
+    ar_eg: صياد سمك
+    ar: صياد سمك
+    en: fisherman
+  - word: perahu
+    pos: noun
+    ar_eg: قارب / فلوكة
+    ar: قارب
+    en: boat
+  - word: pemberani
+    pos: noun
+    ar_eg: شجاع (شخص شجاع)
+    ar: شجاع
+    en: brave person; brave
+  - word: kepala desa
+    pos: noun
+    ar_eg: عمدة القرية
+    ar: رئيس القرية
+    en: village head
+  - word: milik
+    pos: noun
+    ar_eg: ملك / بتاع (milik X = بتاع X)
+    ar: ملك (milik X = يملكه X)
+    en: property; belonging to
+    arabic: ملك
+  - word: pinggir
+    pos: noun
+    ar_eg: حافة / طرف
+    ar: حافة، طرف
+    en: edge, side
+review:
+  status: draft
+  verified: false

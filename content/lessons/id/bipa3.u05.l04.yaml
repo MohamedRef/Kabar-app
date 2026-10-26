@@ -1,0 +1,235 @@
+schema: kabar.lesson/v1
+id: bipa3.u05.l04
+language: id
+title: Minggu lalu
+can_do:
+  ar_eg: ترتّب حكاية عن اللي عملته (بداية، أحداث بالترتيب، ونهاية).
+  ar: أن ترتّب سردًا لما فعلته (تمهيد، وأحداث متتابعة، وخاتمة).
+  en: Structure a recount.
+slides:
+  - title: Teks recount
+    body:
+      ar_eg: |
+        الحكاية عن اللي حصل (recount) ليها تلات أجزاء:
+        ١) البداية: إمتى وفين: Akhir pekan lalu, saya … = آخر الأسبوع اللي فات …
+        ٢) الأحداث بالترتيب: Pertama, … Setelah itu, … (اللي انت عارفهم من BIPA 2).
+        ٣) النهاية، إحساسك: Pengalaman itu sangat berkesan = التجربة دي فضلت في بالي.
+      ar: |
+        للسرد (recount) ثلاثة أجزاء:
+        ١) التمهيد: متى وأين: Akhir pekan lalu, saya … = في عطلة نهاية الأسبوع الماضية …
+        ٢) الأحداث مرتّبة: Pertama, … Setelah itu, … (تعرفها من BIPA 2).
+        ٣) الخاتمة وانطباعك: Pengalaman itu sangat berkesan = كانت تلك التجربة لا تُنسى.
+      en: |
+        A recount has three parts:
+        1) Orientation, when and where: Akhir pekan lalu, saya … = Last weekend, I …
+        2) Events in order: Pertama, … Setelah itu, … (which you know from BIPA 2).
+        3) Closing, how you felt: Pengalaman itu sangat berkesan = That experience was unforgettable.
+    examples:
+      - text: Akhir pekan lalu, saya mengunjungi Senaru.
+        ar_eg: آخر الأسبوع اللي فات، زرت سنارو.
+        ar: في عطلة نهاية الأسبوع الماضية زرتُ سنارو.
+        en: Last weekend, I visited Senaru.
+      - text: Pengalaman itu sangat berkesan bagi saya.
+        ar_eg: التجربة دي فضلت في بالي جدًا.
+        ar: كانت تلك التجربة مؤثّرة جدًا بالنسبة إليّ.
+        en: That experience really stayed with me.
+  - title: Sesampainya, keesokan harinya
+    body:
+      ar_eg: |
+        كلمتين بيربطوا الأحداث في الحكاية:
+        sesampainya di … = أول ما وصلنا …
+        keesokan harinya = تاني يوم.
+      ar: |
+        كلمتان تربطان الأحداث في السرد:
+        sesampainya di … = حين وصلنا إلى …
+        keesokan harinya = في اليوم التالي.
+      en: |
+        Two linkers for recounts:
+        sesampainya di … = on arriving at …
+        keesokan harinya = the next day.
+    examples:
+      - text: Sesampainya di Senaru, kami makan siang.
+        ar_eg: أول ما وصلنا سنارو، اتغدّينا.
+        ar: حين وصلنا إلى سنارو تناولنا الغداء.
+        en: When we got to Senaru, we had lunch.
+      - text: Keesokan harinya, kami mendaki gunung.
+        ar_eg: تاني يوم، طلعنا الجبل.
+        ar: في اليوم التالي صعدنا الجبل.
+        en: The next day, we climbed the mountain.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: akhir pekan
+        ar_eg: آخر الأسبوع (الويك إند)
+        ar: عطلة نهاية الأسبوع
+        en: weekend
+      - text: sesampainya
+        ar_eg: أول ما وصل
+        ar: حين وصل
+        en: on arriving
+      - text: keesokan harinya
+        ar_eg: تاني يوم
+        ar: في اليوم التالي
+        en: the next day
+      - text: rutinitas
+        ar_eg: الروتين
+        ar: الروتين اليومي
+        en: routine
+      - text: pengalaman
+        ar_eg: تجربة
+        ar: تجربة
+        en: experience
+      - text: berkesan
+        ar_eg: بيفضل في البال، مؤثّر
+        ar: لا يُنسى، مؤثّر
+        en: memorable
+    words: [akhir pekan, sesampainya, keesokan harinya, rutinitas, pengalaman, berkesan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة تنفع أول الحكاية؟
+      ar: أيّ جملة تصلح بدايةً للسرد؟
+      en: Which sentence can open a recount?
+    options: ["Jadi, kesimpulannya, sayur sehat.", "Akhir pekan lalu, saya mengunjungi Senaru.", "Selamat menikah!"]
+    answer: 1
+    explain:
+      ar_eg: البداية بتقول إمتى وفين.
+      ar: يذكر التمهيد متى وأين.
+      en: The opening says when and where.
+    words: [akhir pekan]
+  - id: e03
+    type: listen
+    text: Sesampainya di Senaru, kami makan siang.
+    options: ["Sebelum ke Senaru, kami makan siang.", "Sesampainya di Senaru, kami tidur siang.", "Sesampainya di Senaru, kami makan siang."]
+    answer: 2
+    meaning:
+      ar_eg: أول ما وصلنا سنارو، اتغدّينا.
+      ar: حين وصلنا إلى سنارو تناولنا الغداء.
+      en: When we got to Senaru, we had lunch.
+    words: [sesampainya]
+  - id: e04
+    type: multiple_choice
+    question: Hari Sabtu kami tiba di Senaru. ___, hari Minggu, kami mendaki gunung.
+    options: [Keesokan harinya, Minggu lalu, Sesampainya]
+    answer: 0
+    words: [keesokan harinya]
+  - id: e05
+    type: fill_blank
+    sentence: Setiap hari saya bangun jam lima. Itu ___ saya.
+    meaning:
+      ar_eg: كل يوم بصحى الساعة خمسة. ده الروتين بتاعي.
+      ar: أستيقظ كل يوم في الخامسة؛ هذا روتيني.
+      en: I get up at five every day. That's my routine.
+    options: [akhir pekan, rutinitas, pengalaman]
+    answers: [rutinitas]
+    words: [rutinitas]
+  - id: e06
+    type: fill_blank
+    sentence: Mendaki Rinjani adalah ___ yang sangat berkesan.
+    meaning:
+      ar_eg: طلوع رينجاني تجربة بتفضل في البال جدًا.
+      ar: صعود رينجاني تجربة لا تُنسى.
+      en: Climbing Rinjani is a truly memorable experience.
+    options: [rutinitas, tagihan, pengalaman]
+    answers: [pengalaman]
+    words: [pengalaman, berkesan]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: آخر الأسبوع اللي فات زرت سنارو.
+      ar: في عطلة نهاية الأسبوع الماضية زرتُ سنارو.
+      en: Last weekend I visited Senaru.
+    answer: Akhir pekan lalu saya mengunjungi Senaru.
+    alternatives: ["Saya mengunjungi Senaru akhir pekan lalu."]
+    distractors: [ke, sesampainya]
+    words: [akhir pekan]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: تاني يوم طلعنا الجبل.
+      ar: في اليوم التالي صعدنا الجبل.
+      en: The next day we climbed the mountain.
+    answers:
+      - Keesokan harinya, kami mendaki gunung.
+      - Keesokan harinya, kami mendaki gunung
+      - Keesokan harinya kami mendaki gunung.
+      - Keesokan harinya kami mendaki gunung
+      - Keesokan harinya, kita mendaki gunung.
+      - Kami mendaki gunung keesokan harinya.
+      - Keesokan harinya, kami mendaki gunungnya.
+    words: [keesokan harinya]
+  - id: e09
+    type: speaking
+    text: Sesampainya di puncak, saya melihat matahari terbit. Pengalaman itu sangat berkesan!
+    meaning:
+      ar_eg: أول ما وصلت القمّة، شفت الشروق. التجربة دي فضلت في بالي جدًا!
+      ar: حين وصلتُ إلى القمّة رأيتُ شروق الشمس. كانت تجربة لا تُنسى!
+      en: When I reached the summit, I saw the sunrise. That experience was unforgettable!
+    words: [sesampainya, pengalaman, berkesan]
+  - id: e10
+    type: dictation
+    text: Rutinitas saya di kota sangat sibuk.
+    meaning:
+      ar_eg: الروتين بتاعي في المدينة مشغول جدًا.
+      ar: روتيني في المدينة مزدحم جدًا.
+      en: My routine in the city is very busy.
+    words: [rutinitas]
+dialogue:
+  title: Telepon dari Rina
+  lines:
+    - speaker: Rina
+      text: Mohamed, bagaimana minggumu di Senaru?
+      ar_eg: يا محمد، أسبوعك في سنارو كان عامل إزاي؟
+      ar: يا محمد، كيف كان أسبوعك في سنارو؟
+      en: Mohamed, how was your week in Senaru?
+    - speaker: Mohamed
+      text: Seru! Hari Senin saya tiba di Senaru. Sesampainya di sana, saya bertemu Pak Sahdan.
+      ar_eg: جامد! يوم الاتنين وصلت سنارو. أول ما وصلت، قابلت عم سهدان.
+      ar: رائع! وصلتُ إلى سنارو يوم الاثنين، وحين وصلت قابلتُ السيد سهدان.
+      en: Great! On Monday I arrived in Senaru. When I got there, I met Pak Sahdan.
+    - speaker: Rina
+      text: Lalu?
+      ar_eg: وبعدين؟
+      ar: ثم؟
+      en: And then?
+    - speaker: Mohamed
+      text: Keesokan harinya kami mendaki Rinjani. Pengalaman itu sangat berkesan!
+      ar_eg: تاني يوم طلعنا رينجاني. التجربة دي فضلت في بالي جدًا!
+      ar: في اليوم التالي صعدنا رينجاني. كانت تجربة لا تُنسى!
+      en: The next day we climbed Rinjani. It was an unforgettable experience!
+new_words:
+  - word: akhir pekan
+    pos: noun
+    ar_eg: آخر الأسبوع (الويك إند)
+    ar: عطلة نهاية الأسبوع
+    en: weekend
+  - word: sesampainya
+    pos: adverb
+    ar_eg: أول ما وصل (sesampainya di …)
+    ar: حين وصل (sesampainya di …)
+    en: on arriving (sesampainya di …)
+  - word: keesokan harinya
+    pos: adverb
+    ar_eg: تاني يوم
+    ar: في اليوم التالي
+    en: the next day
+  - word: rutinitas
+    pos: noun
+    ar_eg: الروتين
+    ar: الروتين
+    en: routine
+  - word: pengalaman
+    pos: noun
+    ar_eg: تجربة
+    ar: تجربة
+    en: experience
+  - word: berkesan
+    pos: adjective
+    ar_eg: بيفضل في البال، مؤثّر
+    ar: لا يُنسى، مؤثّر
+    en: memorable
+review:
+  status: draft
+  verified: false

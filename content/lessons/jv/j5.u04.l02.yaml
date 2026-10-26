@@ -1,0 +1,233 @@
+schema: kabar.lesson/v1
+id: j5.u04.l02
+language: jv
+title: Dishare, HP-ne
+can_do:
+  ar_eg: تقرا البادئات والنهايات الجاوي على كلمات أجنبي.
+  ar: أن تقرأ السوابق واللواحق الجاوية على كلمات أجنبية.
+  en: Read Javanese affixes on foreign words.
+slides:
+  - title: Ater-ater Jawa, tembung manca
+    body:
+      ar_eg: |
+        الجاوي «بيبلع» الكلمة الأجنبية ويحطلها بادئاته: di- + share = dishare (اتشيّر)، tak + follow = tak follow (أنا هتابعه / تابعته).
+        زي ما إحنا بنقول «شيّرته» و«عملتله فولو»: تصريف عربي على كلمة إنجليزي. لما تلاقي dishare متدوّرش عليها في القاموس الجاوي: افصلها الأول، di- + share.
+      ar: |
+        تبتلع الجاوية الكلمة الأجنبية وتُلبسها سوابقها: di- + share = dishare (شوركت)، وtak + follow = tak follow (أتابعه).
+        كما نقول «شيّرته» و«عملتله فولو»: تصريف عربي على جذر إنجليزي. فإذا صادفت dishare فلا تبحث عنها في المعجم الجاوي، بل افصلها أولًا: di- + share.
+      en: |
+        Javanese swallows foreign words and gives them its own prefixes: di- + share = dishare (got shared), tak + follow = tak follow (I'll follow / I followed).
+        Like Egyptian «شيّرته», «عملتله فولو»: Arabic grammar on an English word. When you see dishare, don't look it up in a Javanese dictionary; split it first: di- + share.
+    grammar: jv.codemix
+    examples:
+      - text: Videone wis dishare neng grup.
+        ar_eg: الفيديو اتشيّر على الجروب.
+        ar: شوركَ الفيديو في المجموعة.
+        en: The video has been shared in the group.
+      - text: Akunmu wis tak follow.
+        ar_eg: تابعت أكونتك خلاص.
+        ar: تابعتُ حسابك.
+        en: I've followed your account.
+  - title: HP-ne, videone
+    body:
+      ar_eg: |
+        والنهاية -ne / -e (بتاعه / الـ…) بتلزق في أي كلمة: HP-ne = الموبايل، videone = الفيديو، laptop-e = اللابتوب.
+        وفيه اختصارات إندونيسي كتير: bgt = banget (أوي)، udh = sudah، blm = belum.
+        وكلمة قديمة صاحبتنا: kabari = بلّغه / عرّفه (من kabar ← «خبر»). tak kabari = هبلّغك.
+      ar: |
+        وتلتصق اللاحقة -ne / -e (أداة التعريف أو الإضافة) بأي كلمة: HP-ne = الهاتف، وvideone = الفيديو، وlaptop-e = الحاسوب المحمول.
+        وتكثر الاختصارات الإندونيسية: bgt = banget (جدًا)، وudh = sudah، وblm = belum.
+        وصديقة قديمة: kabari = أخبِره (من kabar ← «خبر»)، وtak kabari = سأخبرك.
+      en: |
+        The ending -ne / -e (the, his) sticks to any word: HP-ne = the phone, videone = the video, laptop-e = the laptop.
+        Indonesian shorthand is everywhere: bgt = banget (really), udh = sudah, blm = belum.
+        And an old friend: kabari = let someone know (from kabar ← «خبر»). tak kabari = I'll let you know.
+    grammar: jv.codemix
+    examples:
+      - text: HP-ne lowbat, mengko tak kabari.
+        ar_eg: الموبايل فاصل شحن، هبقى أبلّغك بعدين.
+        ar: بطارية الهاتف ضعيفة، سأخبرك لاحقًا.
+        en: My phone's battery is low; I'll let you know later.
+      - text: Videone apik bgt, ojo lali like.
+        ar_eg: الفيديو حلو أوي، ماتنساش اللايك.
+        ar: الفيديو رائع جدًا، لا تنسَ الإعجاب.
+        en: The video is really good, don't forget to like it.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: lowbat
+        ar_eg: فاصل شحن
+        ar: البطارية ضعيفة
+        en: low battery
+      - text: kabari
+        ar_eg: بلّغه (من kabar)
+        ar: أخبِره (من kabar)
+        en: let someone know (from kabar)
+      - text: akun
+        ar_eg: أكونت / حساب
+        ar: حساب
+        en: account
+      - text: bgt
+        ar_eg: أوي (= banget)
+        ar: جدًا (= banget)
+        en: really (= banget)
+    words: [lowbat, kabari, akun, bgt]
+  - id: e02
+    type: multiple_choice
+    question: dishare
+    question_meaning:
+      ar_eg: إزاي تفصل الكلمة دي؟
+      ar: كيف تفصل هذه الكلمة؟
+      en: How do you split this word?
+    options: [di- + share, dis- + hare, dish + are]
+    answer: 0
+    explain:
+      ar_eg: di- بادئة المجهول الجاوي، وshare إنجليزي. dishare = اتشيّر.
+      ar: "di- سابقة المجهول الجاوية، وshare إنجليزية: dishare = شوركَ."
+      en: di- is the Javanese passive prefix; share is English. dishare = got shared.
+  - id: e03
+    type: multiple_choice
+    question: HP-ne lowbat, mengko tak kabari.
+    question_meaning:
+      ar_eg: المشكلة إيه؟
+      ar: ما المشكلة؟
+      en: What's the problem?
+    options: ['HP-nya hilang.', 'Baterai HP-nya lemah.', 'HP-nya baru.']
+    answer: 1
+    words: [lowbat, kabari]
+  - id: e04
+    type: listen
+    text: Akunmu wis tak follow.
+    options: ['Akunmu wis dishare.', 'Akunmu durung tak follow.', 'Akunmu wis tak follow.']
+    answer: 2
+    meaning:
+      ar_eg: تابعت أكونتك خلاص.
+      ar: تابعتُ حسابك.
+      en: I've followed your account.
+    words: [akun]
+  - id: e05
+    type: fill_blank
+    sentence: HP-ne ___, mengko tak kabari.
+    meaning:
+      ar_eg: الموبايل فاصل شحن، هبقى أبلّغك بعدين.
+      ar: بطارية الهاتف ضعيفة، سأخبرك لاحقًا.
+      en: My phone's battery is low; I'll let you know later.
+    options: [akun, lowbat, bgt]
+    answers: [lowbat]
+    words: [lowbat]
+  - id: e06
+    type: fill_blank
+    sentence: Mengko tak ___, ya.
+    meaning:
+      ar_eg: هبقى أبلّغك بعدين.
+      ar: سأخبرك لاحقًا.
+      en: I'll let you know later.
+    options: [lowbat, akun, kabari]
+    answers: [kabari]
+    words: [kabari]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: (تعليق) الفيديو حلو أوي، ماتنساش اللايك.
+      ar: (تعليق) الفيديو رائع جدًا، لا تنسَ الإعجاب.
+      en: (a comment) The video is really good, don't forget to like it.
+    answer: Videone apik bgt, ojo lali like.
+    distractors: [akun, dishare]
+    words: [bgt]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: HP-ne lowbat, mengko tak kabari.
+    answers_meaning:
+      ar_eg:
+        - الموبايل فاصل شحن، هبقى أبلّغك بعدين.
+        - موبايلي فاصل شحن، هكلمك بعدين.
+        - الموبايل فاصل شحن، هبلّغك بعدين.
+        - موبايلي فاصل شحن، هبقى أقولك بعدين.
+        - الموبايل فاصل شحن، هقولك بعدين.
+      ar:
+        - بطارية الهاتف ضعيفة، سأخبرك لاحقًا.
+        - بطارية هاتفي ضعيفة، سأخبرك لاحقًا.
+        - هاتفي بطاريته ضعيفة، سأخبرك لاحقًا.
+      en:
+        - My phone's battery is low; I'll let you know later.
+        - My phone's battery is low, I'll let you know later.
+        - My phone is low on battery; I'll let you know later.
+        - My phone is low on battery, I'll let you know later.
+        - The phone battery is low, I'll let you know later.
+        - My battery's low, I'll let you know later.
+    words: [lowbat, kabari]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (شات) تابعت أكونتك خلاص.
+      ar: (دردشة) تابعتُ حسابك.
+      en: (chat) I've followed your account.
+    answers:
+      - Akunmu wis tak follow.
+      - Akunmu wis takfollow.
+      - Akunmu wis tak-follow.
+      - Wis tak follow akunmu.
+      - Akunmu wes tak follow.
+      - Aku wis follow akunmu.
+    words: [akun]
+  - id: e10
+    type: multiple_choice
+    question: bgt
+    question_meaning:
+      ar_eg: bgt اختصار لإيه؟
+      ar: bgt اختصار لأي كلمة؟
+      en: What is bgt short for?
+    options: [banget, begitu, bagus]
+    answer: 0
+    words: [bgt]
+dialogue:
+  title: Videone wis dishare?
+  lines:
+    - speaker: Mohamed
+      text: Mas, videone wis dishare?
+      ar_eg: يا بايو، الفيديو اتشيّر؟
+      ar: يا بايو، هل شُورك الفيديو؟
+      en: Bayu, has the video been shared?
+    - speaker: Mas Bayu
+      text: Durung. HP-ne lowbat. Mengko tak kabari.
+      ar_eg: لسه. الموبايل فاصل شحن. هبلّغك بعدين.
+      ar: ليس بعد. بطارية الهاتف ضعيفة. سأخبرك لاحقًا.
+      en: Not yet. My phone's battery is low. I'll let you know later.
+    - speaker: Mohamed
+      text: Oke. Akunmu wis tak follow.
+      ar_eg: ماشي. تابعت أكونتك خلاص.
+      ar: حسنًا. تابعتُ حسابك.
+      en: Okay. I've followed your account.
+    - speaker: Mas Bayu
+      text: Suwun, bro!
+      ar_eg: شكرًا يا صاحبي!
+      ar: شكرًا يا صديقي!
+      en: Thanks, bro!
+new_words:
+  - word: lowbat
+    pos: adjective
+    ar_eg: فاصل شحن (من الإنجليزي low battery)
+    ar: البطارية ضعيفة (من الإنجليزية low battery)
+    en: low on battery (from English) = baterai lemah
+  - word: kabari
+    pos: verb
+    ar_eg: بلّغه / عرّفه (من kabar ← خبر)
+    ar: أخبِره (من kabar ← خبر)
+    en: let someone know (from kabar) = kabari
+    arabic: خبر
+  - word: akun
+    pos: noun
+    ar_eg: أكونت / حساب
+    ar: حساب
+    en: account = akun
+  - word: bgt
+    pos: adverb
+    ar_eg: أوي (اختصار banget)
+    ar: جدًا (اختصار banget)
+    en: really (short for banget)
+review:
+  status: draft
+  verified: false
