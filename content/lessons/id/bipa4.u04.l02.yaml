@@ -1,0 +1,223 @@
+schema: kabar.lesson/v1
+id: bipa4.u04.l02
+language: id
+title: Berkat dan gara-gara
+can_do:
+  ar_eg: تفرّق بين السبب الحلو (بفضل) والسبب الوحش (بسبب).
+  ar: أن تميّز بين السبب المحمود والسبب السلبي.
+  en: Name good and bad causes.
+slides:
+  - title: Berkat atau gara-gara?
+    body:
+      ar_eg: |
+        السبب ليه كذا كلمة حسب نوعه:
+        berkat + سبب حلو = بفضل (من العربي «بركة»، فطبيعي تبقى للحاجات الحلوة بس!)
+        gara-gara + سبب وحش = بسبب (كلام عادي)
+        akibat + اسم = نتيجةً لـ (رسمي، حاجة وحشة)
+      ar: |
+        تختلف كلمة السبب بحسب نوعه:
+        berkat + سبب محمود = بفضل (من العربية «بركة»، ولذا لا تكون إلا للخير)
+        gara-gara + سبب سلبي = بسبب (عامية)
+        akibat + اسم = نتيجةً لـ (رسمية، للسلبي)
+      en: |
+        The cause word depends on the kind of cause:
+        berkat + good cause = thanks to (from Arabic «بركة» blessing — so only good things!)
+        gara-gara + bad cause = because of (casual)
+        akibat + noun = as a result of (formal, negative)
+    grammar: id.conjunction.cause-effect
+    examples:
+      - text: Berkat beasiswa, Andi bisa kuliah di Makassar.
+        ar_eg: بفضل المنحة، أندي قدر يدخل الجامعة في ماكاسار.
+        ar: بفضل المنحة الدراسية استطاع أندي الدراسة في جامعة بماكاسار.
+        en: Thanks to a scholarship, Andi could go to university in Makassar.
+      - text: Gara-gara macet, saya terlambat.
+        ar_eg: بسبب الزحمة اتأخرت.
+        ar: تأخرتُ بسبب الزحام.
+        en: Because of the traffic, I was late.
+  - title: Menyebabkan
+    body:
+      ar_eg: |
+        الفعل: X menyebabkan Y = X بيسبب Y. والعكس: Y disebabkan oleh X.
+        وsebab نفسها من العربي «سبب».
+        غلط شهير: Berkat banjir … — الفيضان مش «بركة»! قول Akibat banjir …
+      ar: |
+        الفعل: X menyebabkan Y = يسبّب X الأمرَ Y، وعكسه Y disebabkan oleh X.
+        وsebab من العربية «سبب».
+        ومن الأخطاء: Berkat banjir … فالفيضان ليس «بركة»، والصواب Akibat banjir …
+      en: |
+        The verb: X menyebabkan Y = X causes Y; reversed, Y disebabkan oleh X.
+        sebab itself comes from Arabic «سبب».
+        Classic mistake: Berkat banjir … — a flood is no blessing! Say Akibat banjir …
+    grammar: id.conjunction.cause-effect
+    examples:
+      - text: Kemiskinan menyebabkan banyak anak putus sekolah.
+        ar_eg: الفقر بيخلي عيال كتير يسيبوا المدرسة.
+        ar: يتسبب الفقر في انقطاع كثير من الأطفال عن الدراسة.
+        en: Poverty causes many children to drop out of school.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: berkat
+        ar_eg: بفضل
+        ar: بفضل
+        en: thanks to
+      - text: gara-gara
+        ar_eg: بسبب (حاجة وحشة)
+        ar: بسبب (لأمر سلبي)
+        en: because of (bad)
+      - text: beasiswa
+        ar_eg: منحة دراسية
+        ar: منحة دراسية
+        en: scholarship
+      - text: kebijakan
+        ar_eg: سياسة / قرار حكومي
+        ar: سياسة (حكومية)
+        en: policy
+      - text: menyebabkan
+        ar_eg: يسبّب
+        ar: يسبّب
+        en: cause
+      - text: putus sekolah
+        ar_eg: يسيب المدرسة
+        ar: ينقطع عن الدراسة
+        en: drop out of school
+    words: [berkat, gara-gara, beasiswa, kebijakan, menyebabkan, putus sekolah]
+  - id: e02
+    type: listen
+    text: Berkat beasiswa, Andi bisa kuliah di Makassar.
+    options: ["Berkat beasiswa, Andi bisa kuliah di Makassar.", "Gara-gara beasiswa, Andi bisa kuliah di Makassar.", "Berkat beasiswa, Andi bisa bekerja di Makassar."]
+    answer: 0
+    meaning:
+      ar_eg: بفضل المنحة، أندي قدر يدخل الجامعة في ماكاسار.
+      ar: بفضل المنحة استطاع أندي الدراسة الجامعية في ماكاسار.
+      en: Thanks to a scholarship, Andi could study at university in Makassar.
+    words: [berkat, beasiswa]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: صاحبك اتأخر بسبب الزحمة. يقولك إيه في الكلام العادي؟
+      ar: تأخر صديقك بسبب الزحام. ماذا يقول في الحديث اليومي؟
+      en: Your friend was late because of the traffic. What does he say, casually?
+    options: ["Berkat macet, aku terlambat.", "Macet, maka aku terlambat.", "Gara-gara macet, aku terlambat."]
+    answer: 2
+    explain:
+      ar_eg: الزحمة حاجة وحشة، وفي الكلام العادي = gara-gara. berkat للحاجات الحلوة بس.
+      ar: الزحام أمر سلبي، وفي العامية gara-gara، أما berkat فللخير فقط.
+      en: Traffic is a bad cause, casually gara-gara; berkat is only for good causes.
+    words: [gara-gara, berkat]
+  - id: e04
+    type: fill_blank
+    sentence: Kemiskinan ___ banyak anak putus sekolah.
+    meaning:
+      ar_eg: الفقر بيخلي عيال كتير يسيبوا المدرسة.
+      ar: يتسبب الفقر في انقطاع كثير من الأطفال عن الدراسة.
+      en: Poverty causes many children to drop out of school.
+    options: [menyebabkan, berkat, disebabkan]
+    answers: [menyebabkan]
+    words: [menyebabkan, putus sekolah]
+  - id: e05
+    type: fill_blank
+    sentence: Pemerintah daerah membuat ___ baru tentang beasiswa.
+    meaning:
+      ar_eg: الحكومة المحلية عملت سياسة جديدة للمنح الدراسية.
+      ar: وضعت الحكومة المحلية سياسة جديدة بشأن المنح الدراسية.
+      en: The local government made a new policy on scholarships.
+    options: [kebijakan, gara-gara, berkat]
+    answers: [kebijakan]
+    words: [kebijakan, beasiswa]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: بفضل السياسة دي، عيال كتير يقدروا يروحوا المدرسة.
+      ar: بفضل تلك السياسة يستطيع كثير من الأطفال الذهاب إلى المدرسة.
+      en: Thanks to that policy, many children can go to school.
+    answer: Berkat kebijakan itu, banyak anak bisa sekolah.
+    distractors: [gara-gara, akibat]
+    words: [berkat, kebijakan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الفقر بيخلي العيال يسيبوا المدرسة.
+      ar: يتسبب الفقر في انقطاع الأطفال عن الدراسة.
+      en: Poverty causes children to drop out of school.
+    answers:
+      - Kemiskinan menyebabkan anak-anak putus sekolah.
+      - Kemiskinan menyebabkan anak-anak putus sekolah
+      - Kemiskinan menyebabkan anak putus sekolah.
+      - Kemiskinan menyebabkan banyak anak putus sekolah.
+      - Kemiskinan mengakibatkan anak-anak putus sekolah.
+    words: [menyebabkan, putus sekolah]
+  - id: e08
+    type: speaking
+    text: Gara-gara main HP terus, adik saya malas belajar!
+    meaning:
+      ar_eg: بسبب إنه قاعد على الموبايل على طول، أخويا الصغير كسلان يذاكر!
+      ar: بسبب انشغاله الدائم بالهاتف صار أخي الصغير كسولًا عن الدراسة!
+      en: Because he's always on his phone, my little brother is too lazy to study!
+    words: [gara-gara]
+dialogue:
+  title: Berita pendidikan
+  lines:
+    - speaker: Kak Ayu
+      text: Berita hari ini, pemerintah daerah membuat kebijakan beasiswa baru.
+      ar_eg: "خبر النهارده: الحكومة المحلية عملت سياسة منح دراسية جديدة."
+      ar: "خبر اليوم: وضعت الحكومة المحلية سياسة جديدة للمنح الدراسية."
+      en: Today's news — the local government has a new scholarship policy.
+    - speaker: Mohamed
+      text: Bagus! Berkat beasiswa, anak dari keluarga miskin bisa kuliah.
+      ar_eg: حلو! بفضل المنح، عيال العيلات الفقيرة يقدروا يدخلوا الجامعة.
+      ar: رائع! بفضل المنح يستطيع أبناء الأسر الفقيرة الدراسة الجامعية.
+      en: Great! Thanks to scholarships, children from poor families can go to university.
+    - speaker: Kak Ayu
+      text: Betul. Dulu banyak anak putus sekolah gara-gara biaya.
+      ar_eg: صح. زمان عيال كتير كانوا بيسيبوا المدرسة بسبب المصاريف.
+      ar: صحيح. في الماضي انقطع كثير من الأطفال عن الدراسة بسبب التكاليف.
+      en: Right. Many children used to drop out because of the costs.
+    - speaker: Mohamed
+      text: Jadi biaya sekolah menyebabkan masalah besar, ya.
+      ar_eg: يعني مصاريف المدرسة كانت بتسبب مشكلة كبيرة.
+      ar: إذن كانت تكاليف الدراسة تسبب مشكلة كبيرة.
+      en: So school costs caused a big problem.
+    - speaker: Kak Ayu
+      text: Iya. Semoga kebijakan ini berhasil.
+      ar_eg: أيوه. إن شاء الله السياسة دي تنجح.
+      ar: نعم. نرجو أن تنجح هذه السياسة.
+      en: Yes. Let's hope this policy works.
+new_words:
+  - word: berkat
+    pos: preposition
+    ar_eg: بفضل (لحاجة حلوة)
+    ar: بفضل
+    en: thanks to
+    arabic: بركة
+  - word: gara-gara
+    pos: preposition
+    ar_eg: بسبب (حاجة وحشة، كلام عادي)
+    ar: بسبب (لأمر سلبي، عامية)
+    en: because of (bad cause, casual)
+  - word: beasiswa
+    pos: noun
+    ar_eg: منحة دراسية
+    ar: منحة دراسية
+    en: scholarship
+  - word: kebijakan
+    pos: noun
+    ar_eg: سياسة / قرار حكومي
+    ar: سياسة (حكومية)
+    en: policy
+  - word: menyebabkan
+    pos: verb
+    ar_eg: يسبّب
+    ar: يسبّب
+    en: cause
+    arabic: سبب
+  - word: putus sekolah
+    pos: phrase
+    ar_eg: يسيب المدرسة
+    ar: ينقطع عن الدراسة
+    en: drop out of school
+review:
+  status: draft
+  verified: false

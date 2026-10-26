@@ -1,0 +1,193 @@
+schema: kabar.lesson/v1
+id: bipa4.u02.l05
+language: id
+title: Jalan rusak
+can_do:
+  ar_eg: تكتب رسالة قرّاء عن مشكلة في حتتك وتطلب حل.
+  ar: أن تكتب رسالة إلى بريد القرّاء عن مشكلة محلية وتطلب حلًا.
+  en: Write a letter about a local problem.
+slides:
+  - title: Masalah, akibat, permohonan
+    body:
+      ar_eg: |
+        في نص الرسالة رتّب كلامك كده:
+        1) المشكلة: Jalan di depan sekolah berlubang.
+        2) نتيجتها: membahayakan pengendara، ada kecelakaan.
+        3) الطلب: Kami mohon … secepat-cepatnya / sebaik-baiknya.
+        والتكرار اللي اتعلمته بيدي الوصف حياة: truk bolak-balik، warga tolong-menolong.
+      ar: |
+        رتّب مضمون الرسالة هكذا:
+        1) المشكلة: Jalan di depan sekolah berlubang.
+        2) أثرها: membahayakan pengendara، ada kecelakaan.
+        3) الطلب: Kami mohon … secepat-cepatnya / sebaik-baiknya.
+        والتكرار الذي تعلمته يُحيي الوصف: truk bolak-balik، warga tolong-menolong.
+      en: |
+        Order the body of your letter like this:
+        1) The problem: Jalan di depan sekolah berlubang.
+        2) Its effect: membahayakan pengendara, ada kecelakaan.
+        3) The request: Kami mohon … secepat-cepatnya / sebaik-baiknya.
+        The doubles you've learned bring it to life: truk bolak-balik, warga tolong-menolong.
+    grammar: id.reduplication.advanced
+    examples:
+      - text: Jalan di depan sekolah berlubang dan membahayakan pengendara.
+        ar_eg: الطريق اللي قدام المدرسة مليان حفر وبيعرّض السواقين للخطر.
+        ar: الطريق أمام المدرسة مليء بالحفر ويعرّض السائقين للخطر.
+        en: The road in front of the school is full of potholes and endangers drivers.
+      - text: Kami mohon jalan ini diperbaiki secepat-cepatnya.
+        ar_eg: بنطلب إن الطريق ده يتصلح بأسرع ما يمكن.
+        ar: نرجو إصلاح هذا الطريق بأسرع ما يمكن.
+        en: We ask for this road to be repaired as quickly as possible.
+exercises:
+  - id: e01
+    type: listen
+    text: Jalan di depan sekolah berlubang.
+    options: ["Jalan di depan sekolah bolak-balik.", "Jalan di depan sekolah berlubang.", "Jalan di depan pasar berlubang."]
+    answer: 1
+    meaning:
+      ar_eg: الطريق اللي قدام المدرسة فيه حفر.
+      ar: الطريق أمام المدرسة مليء بالحفر.
+      en: The road in front of the school has potholes.
+    words: [berlubang]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة تنفع لجزء «الطلب» في الرسالة؟
+      ar: أيّ جملة تصلح لجزء «الطلب» في الرسالة؟
+      en: Which sentence belongs in the "request" part of the letter?
+    options: ["Hormat saya, Mohamed.", "Yth. Redaksi Kabar Sulawesi", "Kami mohon jalan ini diperbaiki secepat-cepatnya."]
+    answer: 2
+    words: [secepat-cepatnya]
+  - id: e03
+    type: match_pairs
+    pairs:
+      - text: berlubang
+        ar_eg: فيه حفر
+        ar: مليء بالحفر
+        en: potholed
+      - text: kecelakaan
+        ar_eg: حادثة
+        ar: حادث
+        en: accident
+      - text: pengendara
+        ar_eg: سواق (موتوسيكل / عربية)
+        ar: سائق / راكب دراجة
+        en: rider, driver
+      - text: membahayakan
+        ar_eg: يعرّض للخطر
+        ar: يعرّض للخطر
+        en: endanger
+      - text: bolak-balik
+        ar_eg: رايح جاي
+        ar: ذهابًا وإيابًا
+        en: back and forth
+    words: [berlubang, kecelakaan, pengendara, membahayakan, bolak-balik]
+  - id: e04
+    type: fill_blank
+    sentence: Bulan lalu ada tiga ___ di jalan itu.
+    meaning:
+      ar_eg: الشهر اللي فات حصل تلات حوادث في الطريق ده.
+      ar: وقعت ثلاثة حوادث في ذلك الطريق الشهر الماضي.
+      en: Last month there were three accidents on that road.
+    options: [kecelakaan, pengendara, berlubang]
+    answers: [kecelakaan]
+    words: [kecelakaan]
+  - id: e05
+    type: fill_blank
+    sentence: Lubang besar itu ___ pengendara motor.
+    meaning:
+      ar_eg: (اكتب الفعل) الحفرة الكبيرة دي بتعرّض سواقين الموتوسيكلات للخطر.
+      ar: (اكتب الفعل) تلك الحفرة الكبيرة تعرّض راكبي الدراجات النارية للخطر.
+      en: (Type the verb.) That big hole endangers motorbike riders.
+    answers: [membahayakan]
+    words: [membahayakan, pengendara]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: عربيات الرمل رايحة جاية، فالطريق ده بقى مليان حفر.
+      ar: تذهب شاحنات الرمل وتجيء، فامتلأ هذا الطريق بالحفر.
+      en: Sand trucks go back and forth, so this road is full of potholes.
+    answer: Truk pasir bolak-balik sehingga jalan ini berlubang.
+    distractors: [lubang-lubang, akibatnya]
+    words: [bolak-balik, berlubang]
+  - id: e07
+    type: dictation
+    text: Jalan rusak itu membahayakan pengendara dan anak-anak sekolah.
+    meaning:
+      ar_eg: الطريق البايظ ده بيعرّض السواقين وعيال المدارس للخطر.
+      ar: يعرّض ذلك الطريق المتضرر السائقين وتلاميذ المدارس للخطر.
+      en: That broken road endangers drivers and schoolchildren.
+    words: [membahayakan, pengendara]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: امبارح حصلت حادثة قدام السوق.
+      ar: وقع حادث أمام السوق أمس.
+      en: There was an accident in front of the market yesterday.
+    answers:
+      - Kemarin ada kecelakaan di depan pasar.
+      - Kemarin ada kecelakaan di depan pasar
+      - Ada kecelakaan di depan pasar kemarin.
+      - Kemarin terjadi kecelakaan di depan pasar.
+      - Terjadi kecelakaan di depan pasar kemarin.
+    words: [kecelakaan]
+  - id: e09
+    type: speaking
+    text: Kami mohon pemerintah daerah memperbaiki jalan ini sebaik-baiknya.
+    meaning:
+      ar_eg: بنطلب من الحكومة المحلية تصلح الطريق ده على أحسن وجه.
+      ar: نرجو من الحكومة المحلية أن تُصلح هذا الطريق على أحسن وجه.
+      en: We ask the local government to repair this road as well as possible.
+    words: [pemerintah daerah, sebaik-baiknya]
+dialogue:
+  title: Draf surat pembaca
+  lines:
+    - speaker: Mohamed
+      text: Bu Hasnah, ini draf surat saya. Boleh saya baca?
+      ar_eg: يا طنط حسنة، دي مسودة جوابي. ممكن أقراهولك؟
+      ar: يا سيدة حسنة، هذه مسودة رسالتي. هل أقرؤها؟
+      en: Bu Hasnah, here's my draft letter. May I read it?
+    - speaker: Bu Hasnah
+      text: Silakan, Nak.
+      ar_eg: اتفضل يا ابني.
+      ar: تفضّل يا بني.
+      en: Go ahead, dear.
+    - speaker: Mohamed
+      text: 'Jalan desa kami berlubang dan membahayakan pengendara. Bulan lalu ada dua kecelakaan.'
+      ar_eg: طريق قريتنا مليان حفر وبيعرّض السواقين للخطر. الشهر اللي فات حصلت حادثتين.
+      ar: طريق قريتنا مليء بالحفر ويعرّض السائقين للخطر، ووقع فيه حادثان الشهر الماضي.
+      en: Our village road is full of potholes and endangers drivers. Last month there were two accidents.
+    - speaker: Bu Hasnah
+      text: Bagus, jelas sekali. Tulis juga bahwa truk tambang bolak-balik setiap hari.
+      ar_eg: حلو، واضح جدًا. واكتب كمان إن عربيات المحجر رايحة جاية كل يوم.
+      ar: جيد وواضح جدًا. واكتب أيضًا أن شاحنات المحجر تذهب وتجيء كل يوم.
+      en: Good, very clear. Also write that the quarry trucks go back and forth every day.
+    - speaker: Mohamed
+      text: Baik. Di akhir saya minta jalan ini diperbaiki secepat-cepatnya.
+      ar_eg: ماشي. وفي الآخر هطلب إن الطريق يتصلح بأسرع ما يمكن.
+      ar: حسنًا. وفي الختام أطلب إصلاح الطريق بأسرع ما يمكن.
+      en: OK. At the end I'll ask for the road to be repaired as quickly as possible.
+new_words:
+  - word: berlubang
+    pos: adjective
+    ar_eg: فيه حفر / مخرّم
+    ar: مليء بالحفر
+    en: potholed, full of holes
+  - word: kecelakaan
+    pos: noun
+    ar_eg: حادثة
+    ar: حادث
+    en: accident
+  - word: pengendara
+    pos: noun
+    ar_eg: سواق (موتوسيكل / عربية)
+    ar: سائق / راكب
+    en: rider, driver
+  - word: membahayakan
+    pos: verb
+    ar_eg: يعرّض للخطر
+    ar: يعرّض للخطر
+    en: endanger
+review:
+  status: draft
+  verified: false

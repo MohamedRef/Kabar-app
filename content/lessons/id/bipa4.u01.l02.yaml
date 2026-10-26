@@ -1,0 +1,247 @@
+schema: kabar.lesson/v1
+id: bipa4.u01.l02
+language: id
+title: Terletak, terbuat dari
+can_do:
+  ar_eg: توصف مكان حاجة وحالتها ومعمولة من إيه بـ ter-.
+  ar: أن تصف موقع الشيء وحالته ومادته بالسابقة ter-.
+  en: Describe places and states with ter-.
+slides:
+  - title: ter- = الحالة
+    body:
+      ar_eg: |
+        ter- كمان بتوصف «الوضع» مش العملية، ومن غير ما نعرف مين عمل:
+        letak (مكان) → terletak di = موجود / واقع في
+        buat (عمل) → terbuat dari = معمول من
+        tutup (قفل) → tertutup = مقفول
+        قارن: Pintu itu ditutup (حد قفله) — Pintu itu tertutup (ده وضعه دلوقتي).
+      ar: |
+        تصف ter- أيضًا الحالة لا الحدث، دون ذكر الفاعل:
+        letak (موضع) → terletak di = يقع في
+        buat (صنع) → terbuat dari = مصنوع من
+        tutup (أغلق) → tertutup = مغلق
+        قارن: Pintu itu ditutup (أغلقه أحدهم) وPintu itu tertutup (هو مغلق الآن).
+      en: |
+        ter- also describes a state, not an action, with no doer in view:
+        letak (place) → terletak di = is located in
+        buat (make) → terbuat dari = is made of
+        tutup (close) → tertutup = closed
+        Compare: Pintu itu ditutup (someone closed it) vs Pintu itu tertutup (it is closed).
+    grammar: id.prefix.ter
+    examples:
+      - text: Benteng Rotterdam terletak di pusat Kota Makassar.
+        ar_eg: قلعة روتردام موجودة في وسط مدينة ماكاسار.
+        ar: تقع قلعة روتردام في وسط مدينة ماكاسار.
+        en: Fort Rotterdam is located in the centre of Makassar.
+      - text: Kapal pinisi terbuat dari kayu.
+        ar_eg: مراكب البينيسي معمولة من الخشب.
+        ar: تُصنع سفن البينيسي من الخشب.
+        en: Pinisi ships are made of wood.
+  - title: Terbuat dari, bukan oleh
+    body:
+      ar_eg: |
+        «معمول من» = terbuat dari، مش oleh (oleh = بواسطة شخص).
+        ومع النفي ter- ممكن تعني «ما ينفعش يتعمل»: tidak terlihat = مش باين.
+        وكلمة ahli (خبير) جاية من العربي «أهل»، زي «أهل الخبرة».
+      ar: |
+        «مصنوع من» = terbuat dari، لا oleh (فـoleh للفاعل).
+        ومع النفي قد تفيد ter- عدم الإمكان: tidak terlihat = لا يُرى.
+        وكلمة ahli (خبير) من العربية «أهل»، كما في «أهل الخبرة».
+      en: |
+        "Made of" is terbuat dari, not oleh (oleh marks a person doing it).
+        With a negative, ter- can mean "can't be": tidak terlihat = can't be seen.
+        And ahli (expert) comes from Arabic «أهل», as in «أهل الخبرة» (people of expertise).
+    grammar: id.prefix.ter
+    examples:
+      - text: Hari ini kantor pelabuhan tertutup untuk umum.
+        ar_eg: مكتب الميناء النهارده مقفول قدام الناس.
+        ar: مكتب الميناء مغلق أمام الجمهور اليوم.
+        en: Today the harbour office is closed to the public.
+      - text: Dari sini, pulau itu tidak terlihat.
+        ar_eg: من هنا الجزيرة دي مش باينة.
+        ar: لا تُرى تلك الجزيرة من هنا.
+        en: From here, that island can't be seen.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: terletak
+        ar_eg: موجود / واقع في
+        ar: يقع في
+        en: is located
+      - text: terbuat dari
+        ar_eg: معمول من
+        ar: مصنوع من
+        en: made of
+      - text: tertutup
+        ar_eg: مقفول
+        ar: مغلق
+        en: closed
+      - text: ahli
+        ar_eg: خبير
+        ar: خبير
+        en: expert
+      - text: pelaut
+        ar_eg: بحّار
+        ar: بحّار
+        en: sailor
+      - text: tukang kayu
+        ar_eg: نجّار
+        ar: نجّار
+        en: carpenter
+    words: [terletak, terbuat dari, tertutup, ahli, pelaut, tukang kayu]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز توصف وضع الباب دلوقتي بس (مقفول)، من غير ما تقول مين قفله. تقول إيه؟
+      ar: تريد وصف حال الباب الآن فقط (مغلق) دون ذكر من أغلقه. ماذا تقول؟
+      en: You only want to describe how the door is now (closed), not who closed it. What do you say?
+    options: ["Pintunya ditutup oleh Daeng Basri.", "Pintunya tertutup.", "Pintunya menutup."]
+    answer: 1
+    explain:
+      ar_eg: tertutup = الحالة. ditutup oleh … = العملية ومين عملها.
+      ar: tertutup للحالة، وditutup oleh … للحدث وفاعله.
+      en: tertutup = the state; ditutup oleh … = the action and who did it.
+    words: [tertutup]
+  - id: e03
+    type: listen
+    text: Benteng Rotterdam terletak di pusat Kota Makassar.
+    options: ["Benteng Rotterdam terletak di pusat Kota Makassar.", "Benteng Rotterdam terletak di dekat Kota Makassar.", "Benteng Rotterdam tertutup di pusat Kota Makassar."]
+    answer: 0
+    meaning:
+      ar_eg: قلعة روتردام موجودة في وسط مدينة ماكاسار.
+      ar: تقع قلعة روتردام في وسط مدينة ماكاسار.
+      en: Fort Rotterdam is located in the centre of Makassar.
+    words: [terletak]
+  - id: e04
+    type: multiple_choice
+    question: Daeng Basri sudah empat puluh tahun membuat kapal. Dia ___ membuat pinisi.
+    question_meaning:
+      ar_eg: داينج باسري بقاله ٤٠ سنة بيعمل مراكب. هو … في صناعة البينيسي.
+      ar: يصنع داينغ باسري السفن منذ أربعين عامًا. إنه … في صناعة البينيسي.
+      en: Daeng Basri has been building ships for forty years. He is … at building pinisi.
+    options: ["pelaut", "tertutup", "ahli"]
+    answer: 2
+    explain:
+      ar_eg: "ahli + فعل = شاطر / خبير في: ahli membuat pinisi."
+      ar: "ahli + فعل = بارع في: ahli membuat pinisi."
+      en: "ahli + verb = expert at: ahli membuat pinisi."
+    words: [ahli]
+  - id: e05
+    type: fill_blank
+    sentence: Pelabuhan Paotere ___ di utara Kota Makassar.
+    meaning:
+      ar_eg: ميناء باوتيري موجود في شمال مدينة ماكاسار.
+      ar: يقع ميناء باوتيري في شمال مدينة ماكاسار.
+      en: Paotere Harbour is located in the north of Makassar.
+    options: [terletak, terbuat, tertutup]
+    answers: [terletak]
+    words: [terletak]
+  - id: e06
+    type: fill_blank
+    sentence: Rumah tukang kayu itu ___ dari bambu.
+    meaning:
+      ar_eg: (اكتب الكلمة) بيت النجار ده معمول من البامبو.
+      ar: (اكتب الكلمة) بيت ذلك النجار مصنوع من الخيزران.
+      en: (Type the word.) That carpenter's house is made of bamboo.
+    answers: [terbuat]
+    words: [terbuat dari, tukang kayu]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: مركب البحّار ده معمول من الخشب.
+      ar: سفينة ذلك البحّار مصنوعة من الخشب.
+      en: That sailor's ship is made of wood.
+    answer: Kapal pelaut itu terbuat dari kayu.
+    distractors: [oleh, terletak]
+    words: [pelaut, terbuat dari]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: مكتب الميناء مقفول قدام الناس.
+      ar: مكتب الميناء مغلق أمام الجمهور.
+      en: The harbour office is closed to the public.
+    answers:
+      - Kantor pelabuhan tertutup untuk umum.
+      - Kantor pelabuhan tertutup untuk umum
+      - Kantor pelabuhan itu tertutup untuk umum.
+      - Kantor pelabuhannya tertutup untuk umum.
+      - Kantor pelabuhan tertutup bagi umum.
+    words: [tertutup]
+  - id: e09
+    type: speaking
+    text: Dulu Daeng Basri pelaut. Sekarang dia tukang kayu yang ahli membuat pinisi.
+    meaning:
+      ar_eg: داينج باسري كان زمان بحّار. دلوقتي هو نجار شاطر في عمل البينيسي.
+      ar: كان داينغ باسري بحّارًا، وهو الآن نجار بارع في صناعة البينيسي.
+      en: Daeng Basri used to be a sailor. Now he's a carpenter who's an expert at building pinisi.
+    words: [pelaut, tukang kayu, ahli]
+dialogue:
+  title: Di Pelabuhan Paotere
+  lines:
+    - speaker: Mas Rizal
+      text: Mohamed, ini Daeng Basri. Dulu beliau pelaut, sekarang tukang kayu.
+      ar_eg: يا محمد، ده داينج باسري. كان بحّار زمان، ودلوقتي نجار.
+      ar: يا محمد، هذا داينغ باسري. كان بحّارًا، وهو الآن نجار.
+      en: Mohamed, this is Daeng Basri. He used to be a sailor; now he's a carpenter.
+    - speaker: Daeng Basri
+      text: Selamat datang! Saya ahli membuat kapal pinisi.
+      ar_eg: أهلًا وسهلًا! أنا خبير في عمل مراكب البينيسي.
+      ar: أهلًا بك! أنا خبير في صناعة سفن البينيسي.
+      en: Welcome! I'm an expert at building pinisi ships.
+    - speaker: Mohamed
+      text: Kapal sebesar ini terbuat dari apa, Daeng?
+      ar_eg: مركب كبير كده معمول من إيه يا داينج؟
+      ar: مِمَّ صُنعت سفينة بهذا الحجم يا داينغ؟
+      en: What's a ship this big made of, Daeng?
+    - speaker: Daeng Basri
+      text: Hampir semuanya terbuat dari kayu.
+      ar_eg: تقريبًا كله معمول من الخشب.
+      ar: كلها تقريبًا مصنوعة من الخشب.
+      en: Almost all of it is made of wood.
+    - speaker: Mohamed
+      text: Tempat pembuatannya terletak di mana?
+      ar_eg: والمكان اللي بيتعمل فيه موجود فين؟
+      ar: وأين يقع مكان صناعتها؟
+      en: Where is the place they're built?
+    - speaker: Daeng Basri
+      text: Di Bulukumba, kira-kira empat jam dari sini. Tapi hari Minggu tempatnya tertutup untuk tamu.
+      ar_eg: في بولوكومبا، حوالي أربع ساعات من هنا. بس يوم الحد المكان بيبقى مقفول قدام الزوار.
+      ar: في بولوكومبا، على بعد أربع ساعات تقريبًا من هنا، لكن المكان مغلق أمام الزوار يوم الأحد.
+      en: In Bulukumba, about four hours from here. But on Sundays it's closed to visitors.
+new_words:
+  - word: terletak
+    pos: verb
+    ar_eg: موجود / واقع (في مكان)
+    ar: يقع
+    en: be located
+  - word: terbuat dari
+    pos: phrase
+    ar_eg: معمول من
+    ar: مصنوع من
+    en: made of
+  - word: tertutup
+    pos: adjective
+    ar_eg: مقفول
+    ar: مغلق
+    en: closed
+  - word: ahli
+    pos: noun
+    ar_eg: خبير (ahli + فعل = شاطر في)
+    ar: خبير
+    en: expert (ahli + verb = good at)
+    arabic: أهل
+  - word: pelaut
+    pos: noun
+    ar_eg: بحّار
+    ar: بحّار
+    en: sailor
+  - word: tukang kayu
+    pos: noun
+    ar_eg: نجّار
+    ar: نجّار
+    en: carpenter
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,236 @@
+schema: kabar.lesson/v1
+id: bipa3.u05.l02
+language: id
+title: Menyapu dan menjemur
+can_do:
+  ar_eg: تتكلم عن شغل البيت والمشاوير، وتحط كلمات الوقت في مكانها الصح.
+  ar: أن تتحدث عن أعمال المنزل والمشاوير، وتضع ظروف الزمان في موضعها الصحيح.
+  en: Talk about chores and errands, with time words in the right place.
+slides:
+  - title: Waktu di awal atau di akhir
+    grammar: id.verb.transitive
+    body:
+      ar_eg: |
+        الفعل والمفعول لازقين في بعض، ماتفصلش بينهم:
+        Kemarin saya membayar tagihan listrik. ✓  أو  Saya membayar tagihan listrik kemarin. ✓
+        Saya membayar kemarin tagihan listrik. ✗
+        كلمة الوقت تيجي في الأول أو في الآخر.
+      ar: |
+        الفعل ومفعوله متلازمان فلا تفصل بينهما:
+        Kemarin saya membayar tagihan listrik. ✓  أو  Saya membayar tagihan listrik kemarin. ✓
+        Saya membayar kemarin tagihan listrik. ✗
+        فظرف الزمان يأتي في أول الجملة أو آخرها.
+      en: |
+        Verb and object stick together; don't split them:
+        Kemarin saya membayar tagihan listrik. ✓  or  Saya membayar tagihan listrik kemarin. ✓
+        Saya membayar kemarin tagihan listrik. ✗
+        Time words go first or last.
+    examples:
+      - text: Setiap pagi Bu Sari menyapu halaman.
+        ar_eg: كل يوم الصبح مدام ساري بتكنس الحوش.
+        ar: تكنس السيدة ساري الفناء كل صباح.
+        en: Every morning Bu Sari sweeps the yard.
+      - text: Saya membayar tagihan listrik kemarin.
+        ar_eg: دفعت فاتورة الكهربا إمبارح.
+        ar: دفعتُ فاتورة الكهرباء أمس.
+        en: I paid the electricity bill yesterday.
+  - title: Pekerjaan rumah
+    grammar: id.verb.transitive
+    body:
+      ar_eg: |
+        شغل البيت كله أفعال meN- متعدية، والمفعول بعدها على طول:
+        menjemur cucian = ينشر الغسيل، menyetrika baju = يكوي الهدوم، mengantar anak = يوصّل العيل.
+      ar: |
+        أعمال المنزل أفعال متعدية بـmeN- يليها المفعول مباشرة:
+        menjemur cucian = ينشر الغسيل، menyetrika baju = يكوي الثياب، mengantar anak = يوصل الطفل.
+      en: |
+        Chores are transitive meN- verbs with the object right after:
+        menjemur cucian = hang out the washing, menyetrika baju = iron clothes, mengantar anak = take a child somewhere.
+    examples:
+      - text: Rina menjemur cucian di belakang rumah.
+        ar_eg: رينا بتنشر الغسيل ورا البيت.
+        ar: تنشر رينا الغسيل خلف البيت.
+        en: Rina hangs out the washing behind the house.
+      - text: Dimas menyetrika baju setiap hari Minggu.
+        ar_eg: ديماس بيكوي هدومه كل يوم حد.
+        ar: يكوي ديماس ثيابه كل يوم أحد.
+        en: Dimas irons his clothes every Sunday.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: menjemur
+        ar_eg: ينشر (الغسيل في الشمس)
+        ar: ينشر (الغسيل في الشمس)
+        en: to hang out to dry
+      - text: cucian
+        ar_eg: غسيل (الهدوم)
+        ar: الغسيل
+        en: laundry, washing
+      - text: menyetrika
+        ar_eg: يكوي
+        ar: يكوي
+        en: to iron
+      - text: tagihan
+        ar_eg: فاتورة
+        ar: فاتورة
+        en: bill
+      - text: membayar
+        ar_eg: يدفع
+        ar: يدفع
+        en: to pay
+      - text: mengantar
+        ar_eg: يوصّل (حد)
+        ar: يوصل (شخصًا)
+        en: to take, drop off (someone)
+    words: [menjemur, cucian, menyetrika, tagihan, membayar, mengantar]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة ترتيبها صح؟
+      ar: أيّ جملة ترتيبها صحيح؟
+      en: Which sentence has the right word order?
+    options: ["Saya membayar kemarin tagihan listrik.", "Kemarin saya membayar tagihan listrik.", "Saya kemarin tagihan listrik membayar."]
+    answer: 1
+    explain:
+      ar_eg: ماتفصلش بين membayar والمفعول؛ الوقت في الأول أو الآخر.
+      ar: لا تفصل بين membayar ومفعوله؛ الزمان أولًا أو آخرًا.
+      en: Don't split membayar from its object; time goes first or last.
+    words: [membayar, tagihan]
+  - id: e03
+    type: listen
+    text: Rina menjemur cucian di belakang rumah.
+    options: ["Rina menjemur cucian di belakang rumah.", "Rina mencuci cucian di belakang rumah.", "Rina menjemur cucian di depan rumah."]
+    answer: 0
+    meaning:
+      ar_eg: رينا بتنشر الغسيل ورا البيت.
+      ar: تنشر رينا الغسيل خلف البيت.
+      en: Rina hangs out the washing behind the house.
+    words: [menjemur, cucian]
+  - id: e04
+    type: multiple_choice
+    question: Pagi ini saya ___ adik ke sekolah.
+    options: [menjemur, menyetrika, mengantar]
+    answer: 2
+    words: [mengantar]
+  - id: e05
+    type: fill_blank
+    sentence: Dimas ___ baju setiap hari Minggu.
+    meaning:
+      ar_eg: ديماس بيكوي هدومه كل يوم حد.
+      ar: يكوي ديماس ثيابه كل يوم أحد.
+      en: Dimas irons his clothes every Sunday.
+    options: [membayar, menyetrika, mengantar]
+    answers: [menyetrika]
+    words: [menyetrika]
+  - id: e06
+    type: fill_blank
+    sentence: Jangan lupa membayar ___ listrik bulan ini.
+    meaning:
+      ar_eg: ماتنساش تدفع فاتورة الكهربا الشهر ده.
+      ar: لا تنسَ أن تدفع فاتورة الكهرباء هذا الشهر.
+      en: Don't forget to pay this month's electricity bill.
+    options: [cucian, jalur, tagihan]
+    answers: [tagihan]
+    words: [tagihan, membayar]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: كل يوم الصبح مدام ساري بتنشر الغسيل.
+      ar: تنشر السيدة ساري الغسيل كل صباح.
+      en: Every morning Bu Sari hangs out the washing.
+    answer: Setiap pagi Bu Sari menjemur cucian.
+    alternatives: ["Bu Sari menjemur cucian setiap pagi."]
+    distractors: [di, ke]
+    words: [menjemur, cucian]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: إمبارح وصّلت رينا المحطة.
+      ar: أمس أوصلتُ رينا إلى المحطة.
+      en: Yesterday I took Rina to the station.
+    answers:
+      - Kemarin saya mengantar Rina ke stasiun.
+      - Kemarin saya mengantar Rina ke stasiun
+      - Saya mengantar Rina ke stasiun kemarin.
+      - Kemarin aku mengantar Rina ke stasiun.
+      - Aku mengantar Rina ke stasiun kemarin.
+      - Kemarin saya mengantarkan Rina ke stasiun.
+      - Saya mengantarkan Rina ke stasiun kemarin.
+    words: [mengantar]
+  - id: e09
+    type: speaking
+    text: Hari Sabtu saya menyetrika baju dan membayar tagihan.
+    meaning:
+      ar_eg: يوم السبت بكوي الهدوم وبدفع الفواتير.
+      ar: يوم السبت أكوي الثياب وأدفع الفواتير.
+      en: On Saturday I iron clothes and pay the bills.
+    words: [menyetrika, membayar, tagihan]
+dialogue:
+  title: Hari libur Pak Sahdan
+  lines:
+    - speaker: Mohamed
+      text: Pak Sahdan, kalau tidak naik gunung, apa kegiatan Bapak?
+      ar_eg: يا عم سهدان، لما مش بتطلع الجبل، بتعمل إيه؟
+      ar: يا سيد سهدان، ماذا تفعل حين لا تصعد الجبل؟
+      en: Pak Sahdan, what do you do when you're not up the mountain?
+    - speaker: Pak Sahdan
+      text: Pagi-pagi saya mengantar anak ke sekolah.
+      ar_eg: الصبح بدري بوصّل العيال المدرسة.
+      ar: في الصباح الباكر أوصل الأولاد إلى المدرسة.
+      en: Early in the morning I take the kids to school.
+    - speaker: Mohamed
+      text: Lalu?
+      ar_eg: وبعدين؟
+      ar: ثم؟
+      en: And then?
+    - speaker: Pak Sahdan
+      text: Saya menyapu halaman, dan istri saya menjemur cucian.
+      ar_eg: بكنس الحوش، ومراتي بتنشر الغسيل.
+      ar: أكنس الفناء، وتنشر زوجتي الغسيل.
+      en: I sweep the yard, and my wife hangs out the washing.
+    - speaker: Mohamed
+      text: Siangnya?
+      ar_eg: وبعد الضهر؟
+      ar: وفي الظهيرة؟
+      en: And at midday?
+    - speaker: Pak Sahdan
+      text: Siang saya membayar tagihan listrik di kantor pos. Sibuk juga, ya!
+      ar_eg: الضهر بدفع فاتورة الكهربا في البوسطة. مشغول برضه!
+      ar: ظهرًا أدفع فاتورة الكهرباء في مكتب البريد. مشغول أيضًا!
+      en: At midday I pay the electricity bill at the post office. Busy too!
+new_words:
+  - word: menjemur
+    pos: verb
+    ar_eg: ينشر (الغسيل في الشمس)
+    ar: ينشر (الغسيل في الشمس)
+    en: to hang out to dry
+  - word: cucian
+    pos: noun
+    ar_eg: غسيل (الهدوم)
+    ar: الغسيل
+    en: laundry, washing
+  - word: menyetrika
+    pos: verb
+    ar_eg: يكوي
+    ar: يكوي
+    en: to iron
+  - word: tagihan
+    pos: noun
+    ar_eg: فاتورة
+    ar: فاتورة
+    en: bill
+  - word: membayar
+    pos: verb
+    ar_eg: يدفع
+    ar: يدفع
+    en: to pay
+  - word: mengantar
+    pos: verb
+    ar_eg: يوصّل (حد لمكان)
+    ar: يوصل (شخصًا إلى مكان)
+    en: to take, drop off (someone)
+review:
+  status: draft
+  verified: false

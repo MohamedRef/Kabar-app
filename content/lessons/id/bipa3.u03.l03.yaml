@@ -1,0 +1,232 @@
+schema: kabar.lesson/v1
+id: bipa3.u03.l03
+language: id
+title: Tokoh dan alur
+can_do:
+  ar_eg: توصف أبطال الفيلم وأحداثه ومكانه.
+  ar: أن تصف شخصيات الفيلم وحبكته ومكانه وزمانه.
+  en: Describe a film's characters and plot.
+slides:
+  - title: Tokoh, latar, kisah
+    body:
+      ar_eg: |
+        الكلام عن فيلم محتاج كلمات زي دي:
+        tokoh utama = البطل (الشخصية الرئيسية).
+        latar = المكان والزمان اللي القصة فيهم.
+        kisah = قصة، وجاية من العربي «قصة»! (cerita كمان = حكاية).
+      ar: |
+        للحديث عن فيلم تحتاج إلى هذه الكلمات:
+        tokoh utama = الشخصية الرئيسية.
+        latar = مكان القصة وزمانها.
+        kisah = قصة، وهي من العربية «قصة»! (وcerita = حكاية).
+      en: |
+        To talk about a film you need these words:
+        tokoh utama = the main character.
+        latar = the setting (where and when the story happens).
+        kisah = story, from Arabic «قصة»! (cerita also means story.)
+    examples:
+      - text: Tokoh utamanya seorang nelayan muda.
+        ar_eg: البطل صياد شاب.
+        ar: الشخصية الرئيسية صيّاد شاب.
+        en: The main character is a young fisherman.
+      - text: Latar film ini Gili Trawangan.
+        ar_eg: الفيلم ده أحداثه في جيلي تراوانجان.
+        ar: تدور أحداث هذا الفيلم في جيلي تراوانغان.
+        en: This film is set on Gili Trawangan.
+  - title: Alur, konflik, berakhir
+    body:
+      ar_eg: |
+        alur = الأحداث (الحبكة)، konflik = الصراع / المشكلة، berakhir = بيخلص (berakhir bahagia = نهايته سعيدة).
+        ولو الفيلم شدّك: menarik = مشوّق / حلو.
+      ar: |
+        alur = الحبكة، وkonflik = الصراع، وberakhir = ينتهي (berakhir bahagia = نهايته سعيدة).
+        وإن شدّك الفيلم فهو menarik = مشوّق.
+      en: |
+        alur = plot, konflik = conflict, berakhir = to end (berakhir bahagia = has a happy ending).
+        If a film grips you, it's menarik = interesting.
+    examples:
+      - text: Alurnya cepat dan konfliknya menarik.
+        ar_eg: الأحداث سريعة والصراع مشوّق.
+        ar: الحبكة سريعة والصراع مشوّق.
+        en: The plot is fast and the conflict is interesting.
+      - text: Kisah ini berakhir bahagia.
+        ar_eg: القصة دي نهايتها سعيدة.
+        ar: تنتهي هذه القصة نهاية سعيدة.
+        en: This story has a happy ending.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tokoh utama
+        ar_eg: البطل، الشخصية الرئيسية
+        ar: الشخصية الرئيسية
+        en: main character
+      - text: kisah
+        ar_eg: قصة
+        ar: قصة
+        en: story
+      - text: alur
+        ar_eg: الأحداث، الحبكة
+        ar: الحبكة
+        en: plot
+      - text: latar
+        ar_eg: مكان وزمان القصة
+        ar: مكان القصة وزمانها
+        en: setting
+      - text: konflik
+        ar_eg: صراع، مشكلة
+        ar: صراع
+        en: conflict
+      - text: menarik
+        ar_eg: مشوّق، حلو
+        ar: مشوّق، ممتع
+        en: interesting
+    words: [tokoh utama, kisah, alur, latar, konflik, menarik]
+  - id: e02
+    type: multiple_choice
+    question: Film ini bercerita tentang Ari. Ari adalah ___ film ini.
+    options: [tokoh utama, latar, alur]
+    answer: 0
+    words: [tokoh utama]
+  - id: e03
+    type: listen
+    text: Kisah ini berakhir bahagia.
+    options: ["Kisah ini berakhir sedih.", "Kisah ini berakhir bahagia.", "Kisah itu belum berakhir."]
+    answer: 1
+    meaning:
+      ar_eg: القصة دي نهايتها سعيدة.
+      ar: تنتهي هذه القصة نهاية سعيدة.
+      en: This story has a happy ending.
+    words: [kisah, berakhir]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مكان وزمان القصة اسمهم إيه؟
+      ar: ما اسم مكان القصة وزمانها؟
+      en: What do you call where and when a story happens?
+    options: [konflik, alur, latar]
+    answer: 2
+    words: [latar]
+  - id: e05
+    type: fill_blank
+    sentence: Dalam film ini ada ___ besar antara ayah dan anak.
+    meaning:
+      ar_eg: في الفيلم ده فيه صراع كبير بين الأب وابنه.
+      ar: في هذا الفيلم صراع كبير بين الأب وابنه.
+      en: In this film there's a big conflict between a father and his son.
+    options: [latar, konflik, tokoh]
+    answers: [konflik]
+    words: [konflik]
+  - id: e06
+    type: fill_blank
+    sentence: ___ film ini pelan, tetapi akhirnya seru.
+    meaning:
+      ar_eg: أحداث الفيلم ده بطيئة، بس في الآخر بتبقى مشوّقة.
+      ar: حبكة هذا الفيلم بطيئة، لكنها تصبح مثيرة في النهاية.
+      en: This film's plot is slow, but in the end it gets exciting.
+    options: [Penonton, Alur, Latar]
+    answers: [Alur]
+    words: [alur]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: الصراع بين البطل وأبوه.
+      ar: الصراع بين الشخصية الرئيسية وأبيها.
+      en: The conflict is between the main character and his father.
+    answer: Konfliknya antara tokoh utama dan ayahnya.
+    distractors: [latar, alur]
+    words: [konflik, tokoh utama]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: القصة مشوّقة ونهايتها سعيدة.
+      ar: القصة مشوّقة وتنتهي نهاية سعيدة.
+      en: The story is interesting and has a happy ending.
+    answers:
+      - Kisahnya menarik dan berakhir bahagia.
+      - Kisahnya menarik dan berakhir bahagia
+      - Kisahnya menarik dan berakhir dengan bahagia.
+      - Ceritanya menarik dan berakhir bahagia.
+      - Ceritanya menarik dan berakhir dengan bahagia.
+      - Kisah itu menarik dan berakhir bahagia.
+      - Kisah ini menarik dan berakhir bahagia.
+      - Cerita itu menarik dan berakhir bahagia.
+    words: [kisah, menarik, berakhir]
+  - id: e09
+    type: speaking
+    text: Latarnya Gili Trawangan, alurnya menarik, dan kisahnya berakhir bahagia.
+    meaning:
+      ar_eg: الأحداث في جيلي تراوانجان، والحبكة مشوّقة، والقصة نهايتها سعيدة.
+      ar: تدور الأحداث في جيلي تراوانغان، والحبكة مشوّقة، والقصة تنتهي نهاية سعيدة.
+      en: It's set on Gili Trawangan, the plot is interesting, and the story has a happy ending.
+    words: [latar, alur, menarik, berakhir, kisah]
+dialogue:
+  title: Setelah film
+  lines:
+    - speaker: Ni Luh
+      text: Bagaimana filmnya, Mohamed?
+      ar_eg: إيه رأيك في الفيلم يا محمد؟
+      ar: ما رأيك في الفيلم يا محمد؟
+      en: How was the film, Mohamed?
+    - speaker: Mohamed
+      text: Menarik! Tokoh utamanya seorang nelayan muda di Gili.
+      ar_eg: مشوّق! البطل صياد شاب في جيلي.
+      ar: مشوّق! الشخصية الرئيسية صيّاد شاب في جيلي.
+      en: Interesting! The main character is a young fisherman on Gili.
+    - speaker: Ni Luh
+      text: Ya, dan konfliknya antara dia dan ayahnya.
+      ar_eg: أيوه، والصراع بينه وبين أبوه.
+      ar: نعم، والصراع بينه وبين أبيه.
+      en: Yes, and the conflict is between him and his father.
+    - speaker: Mohamed
+      text: Alurnya agak pelan, tetapi kisahnya berakhir bahagia.
+      ar_eg: الأحداث بطيئة شوية، بس القصة نهايتها سعيدة.
+      ar: الحبكة بطيئة قليلًا، لكنّ القصة تنتهي نهاية سعيدة.
+      en: The plot is a bit slow, but the story has a happy ending.
+    - speaker: Ni Luh
+      text: Latarnya juga indah sekali, kan?
+      ar_eg: والمكان كمان حلو أوي، مش كده؟
+      ar: والمكان جميل جدًا أيضًا، أليس كذلك؟
+      en: And the setting is gorgeous too, isn't it?
+new_words:
+  - word: tokoh utama
+    pos: noun
+    ar_eg: البطل، الشخصية الرئيسية
+    ar: الشخصية الرئيسية
+    en: main character
+  - word: kisah
+    pos: noun
+    ar_eg: قصة
+    ar: قصة
+    en: story
+    arabic: قصة
+  - word: alur
+    pos: noun
+    ar_eg: الأحداث، الحبكة
+    ar: الحبكة
+    en: plot
+  - word: latar
+    pos: noun
+    ar_eg: مكان وزمان القصة
+    ar: مكان القصة وزمانها
+    en: setting
+  - word: konflik
+    pos: noun
+    ar_eg: صراع، مشكلة
+    ar: صراع
+    en: conflict
+  - word: berakhir
+    pos: verb
+    ar_eg: يخلص، ينتهي
+    ar: ينتهي
+    en: to end
+    arabic: آخر
+  - word: menarik
+    pos: adjective
+    ar_eg: مشوّق، حلو
+    ar: مشوّق، ممتع
+    en: interesting
+review:
+  status: draft
+  verified: false

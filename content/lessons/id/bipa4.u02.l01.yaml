@@ -1,0 +1,220 @@
+schema: kabar.lesson/v1
+id: bipa4.u02.l01
+language: id
+title: Bolak-balik, lalu-lalang
+can_do:
+  ar_eg: توصف شارع زحمة ودوشة بكلمات مكررة بتغيير الصوت.
+  ar: أن تصف شارعًا مزدحمًا بألفاظ مكررة متغيرة الصوت.
+  en: Describe a busy street with rhyming doubles.
+slides:
+  - title: Bolak-balik, lalu-lalang
+    body:
+      ar_eg: |
+        إنت عارف sayur-mayur (خضار من كل نوع). نفس الفكرة: الكلمة بتتكرر بس صوت بيتغير، والمعنى «حركة رايحة جاية» أو «تنوع»:
+        bolak-balik = رايح جاي (نفس الحاجة بتروح وترجع)
+        lalu-lalang = رايحين جايين (حاجات كتير بتعدي)
+        mondar-mandir = يتمشى رايح جاي (من القلق مثلًا)
+      ar: |
+        عرفتَ sayur-mayur (خضار متنوعة). وعلى المنوال نفسه تتكرر الكلمة مع تغيّر صوت، فتدل على الذهاب والإياب أو التنوع:
+        bolak-balik = ذهابًا وإيابًا (الشيء نفسه يذهب ويعود)
+        lalu-lalang = غادين ورائحين (أشياء كثيرة تمر)
+        mondar-mandir = يروح ويجيء (من القلق مثلًا)
+      en: |
+        You know sayur-mayur (all kinds of vegetables). Same idea: the word repeats with a sound change, meaning back-and-forth movement or variety:
+        bolak-balik = back and forth (the same thing going and returning)
+        lalu-lalang = coming and going (many things passing)
+        mondar-mandir = pace up and down (e.g. when worried)
+    grammar: id.reduplication.advanced
+    examples:
+      - text: Truk pasir bolak-balik di jalan desa kami setiap hari.
+        ar_eg: عربيات الرمل رايحة جاية في طريق قريتنا كل يوم.
+        ar: تذهب شاحنات الرمل وتجيء في طريق قريتنا كل يوم.
+        en: Sand trucks go back and forth on our village road every day.
+      - text: Kendaraan lalu-lalang di depan sekolah.
+        ar_eg: العربيات رايحة جاية قدام المدرسة.
+        ar: تغدو السيارات وتروح أمام المدرسة.
+        en: Vehicles come and go in front of the school.
+  - title: Banyak truk, bukan banyak truk-truk
+    body:
+      ar_eg: |
+        بعد كلمة كمية (banyak، semua، tiga) ما تكررش الاسم: banyak truk، مش banyak truk-truk.
+        وعلى فكرة، العربي عنده نفس اللعبة واسمها «الإتباع»: «حَسَن بَسَن»، «هَرْج ومَرْج» — زي bolak-balik بالظبط.
+      ar: |
+        لا يُكرَّر الاسم بعد ألفاظ الكم (banyak، semua، tiga): banyak truk لا banyak truk-truk.
+        وفي العربية ما يشبه ذلك ويُسمّى «الإتباع»: «حَسَنٌ بَسَنٌ»، «هَرْجٌ ومَرْج».
+      en: |
+        No doubling after a quantity word (banyak, semua, tiga): banyak truk, not banyak truk-truk.
+        Arabic has the same game, called itbāʿ: «حَسَن بَسَن», «هَرْج ومَرْج» — just like bolak-balik.
+    grammar: id.reduplication.advanced
+    examples:
+      - text: Ada banyak truk tambang di jalan.
+        ar_eg: فيه عربيات محجر كتير في الطريق.
+        ar: في الطريق شاحنات محاجر كثيرة.
+        en: There are lots of quarry trucks on the road.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: bolak-balik
+        ar_eg: رايح جاي
+        ar: ذهابًا وإيابًا
+        en: back and forth
+      - text: lalu-lalang
+        ar_eg: رايحين جايين (ناس / عربيات كتير)
+        ar: غادون ورائحون
+        en: coming and going
+      - text: warga
+        ar_eg: السكان / أهل المنطقة
+        ar: السكان
+        en: residents
+      - text: debu
+        ar_eg: تراب / غبار
+        ar: غبار
+        en: dust
+      - text: bising
+        ar_eg: دوشة / مزعج (صوت)
+        ar: صاخب
+        en: noisy
+      - text: tambang
+        ar_eg: محجر / منجم
+        ar: محجر / منجم
+        en: quarry, mine
+    words: [bolak-balik, lalu-lalang, warga, debu, bising, tambang]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة صح؟
+      ar: أيّ جملة صحيحة؟
+      en: Which sentence is correct?
+    options: ["Ada banyak truk-truk tambang di jalan.", "Ada banyak truk tambang di jalan.", "Ada truk-truk tambang banyak-banyak di jalan."]
+    answer: 1
+    explain:
+      ar_eg: banyak بتقول الجمع خلاص، فما تكررش truk.
+      ar: تدل banyak على الكثرة فلا يُكرَّر truk.
+      en: banyak already marks the plural, so don't double truk.
+    words: [tambang]
+  - id: e03
+    type: listen
+    text: Kendaraan lalu-lalang di depan rumah warga.
+    options: ["Kendaraan lalu-lalang di depan rumah warga.", "Kendaraan bolak-balik di depan rumah warga.", "Kendaraan lalu-lalang di depan rumah sakit."]
+    answer: 0
+    meaning:
+      ar_eg: العربيات رايحة جاية قدام بيوت السكان.
+      ar: تغدو السيارات وتروح أمام بيوت السكان.
+      en: Vehicles come and go in front of the residents' houses.
+    words: [lalu-lalang, warga]
+  - id: e04
+    type: multiple_choice
+    question: Suara truk itu sangat ___. Kami tidak bisa tidur.
+    question_meaning:
+      ar_eg: صوت العربية دي … جدًا. مش عارفين ننام.
+      ar: صوت تلك الشاحنة … جدًا، لا نستطيع النوم.
+      en: That truck is very … . We can't sleep.
+    options: ["warga", "debu", "bising"]
+    answer: 2
+    words: [bising]
+  - id: e05
+    type: fill_blank
+    sentence: Truk tambang ___ di jalan desa dari pagi sampai malam.
+    meaning:
+      ar_eg: عربيات المحجر رايحة جاية في طريق القرية من الصبح لبالليل.
+      ar: تذهب شاحنات المحجر وتجيء في طريق القرية من الصباح حتى المساء.
+      en: Quarry trucks go back and forth on the village road from morning till night.
+    options: [bolak-balik, warna-warni, sayur-mayur]
+    answers: [bolak-balik]
+    words: [bolak-balik, tambang]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: العربيات رايحة جاية قدام المدرسة.
+      ar: تغدو السيارات وتروح أمام المدرسة.
+      en: Vehicles come and go in front of the school.
+    answer: Kendaraan lalu-lalang di depan sekolah.
+    distractors: [banyak-banyak, mondar-mandir]
+    words: [lalu-lalang]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: السكان بيشتكوا من التراب والدوشة.
+      ar: يشتكي السكان من الغبار والضجيج.
+      en: The residents complain about the dust and the noise.
+    answers:
+      - Warga mengeluh tentang debu dan suara bising.
+      - Warga mengeluh tentang debu dan suara bising
+      - Warga mengeluhkan debu dan suara bising.
+      - Warga mengeluh karena debu dan suara bising.
+      - Warga mengeluh soal debu dan suara bising.
+      - Warga mengeluh tentang debu dan bising.
+      - Para warga mengeluh tentang debu dan suara bising.
+    words: [warga, debu, bising]
+  - id: e08
+    type: speaking
+    text: Truk tambang bolak-balik di depan rumah kami, jadi jalannya penuh debu.
+    meaning:
+      ar_eg: عربيات المحجر رايحة جاية قدام بيتنا، فالطريق مليان تراب.
+      ar: تذهب شاحنات المحجر وتجيء أمام بيتنا، فامتلأ الطريق غبارًا.
+      en: Quarry trucks go back and forth in front of our house, so the road is full of dust.
+    words: [tambang, bolak-balik, debu]
+dialogue:
+  title: Jalan desa di Maros
+  lines:
+    - speaker: Mohamed
+      text: Bu Hasnah, kenapa jendelanya ditutup?
+      ar_eg: يا طنط حسنة، الشباك مقفول ليه؟
+      ar: يا سيدة حسنة، لماذا أُغلقت النافذة؟
+      en: Bu Hasnah, why is the window shut?
+    - speaker: Bu Hasnah
+      text: Banyak debu, Nak. Truk tambang bolak-balik dari pagi.
+      ar_eg: تراب كتير يا ابني. عربيات المحجر رايحة جاية من الصبح.
+      ar: الغبار كثير يا بني، فشاحنات المحجر تذهب وتجيء منذ الصباح.
+      en: Too much dust, dear. The quarry trucks have been going back and forth since morning.
+    - speaker: Mohamed
+      text: Kendaraan lalu-lalang terus, ya. Suaranya bising sekali.
+      ar_eg: العربيات رايحة جاية على طول، والصوت مزعج جدًا.
+      ar: السيارات تغدو وتروح باستمرار، وصوتها صاخب جدًا.
+      en: Vehicles keep coming and going. It's really noisy.
+    - speaker: Bu Hasnah
+      text: Iya. Anak-anak susah belajar di rumah.
+      ar_eg: أيوه. العيال مش عارفين يذاكروا في البيت.
+      ar: نعم، ويصعب على الأطفال أن يذاكروا في البيت.
+      en: Yes. The children find it hard to study at home.
+    - speaker: Mohamed
+      text: Apakah warga sudah mengeluh?
+      ar_eg: هو السكان اشتكوا؟
+      ar: هل اشتكى السكان؟
+      en: Have the residents complained?
+new_words:
+  - word: bolak-balik
+    pos: adverb
+    ar_eg: رايح جاي
+    ar: ذهابًا وإيابًا
+    en: back and forth
+  - word: lalu-lalang
+    pos: verb
+    ar_eg: رايحين جايين (ناس / عربيات كتير)
+    ar: يغدون ويروحون
+    en: come and go (crowds, traffic)
+  - word: warga
+    pos: noun
+    ar_eg: السكان / أهل المنطقة
+    ar: السكان / المواطنون
+    en: residents, citizens
+  - word: debu
+    pos: noun
+    ar_eg: تراب / غبار
+    ar: غبار
+    en: dust
+  - word: bising
+    pos: adjective
+    ar_eg: دوشة / مزعج
+    ar: صاخب
+    en: noisy
+  - word: tambang
+    pos: noun
+    ar_eg: محجر / منجم
+    ar: محجر / منجم
+    en: quarry, mine
+review:
+  status: draft
+  verified: false

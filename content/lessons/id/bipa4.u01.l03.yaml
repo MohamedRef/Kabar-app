@@ -1,0 +1,246 @@
+schema: kabar.lesson/v1
+id: bipa4.u01.l03
+language: id
+title: Kehujanan, kesiangan
+can_do:
+  ar_eg: تحكي إيه اللي حصلك وبوّظ يومك بـ ke-…-an.
+  ar: أن تعبّر عمّا أصابك من أمور مزعجة بـ ke-…-an.
+  en: Say what went wrong with ke-…-an.
+slides:
+  - title: ke-…-an = جراله حاجة
+    body:
+      ar_eg: |
+        ke- + كلمة + -an بعد الشخص = «حاجة وحشة حصلتله، من غير ما يقصد»:
+        hujan (مطر) → kehujanan = المطر نزل عليه
+        siang (الضهر) → kesiangan = صحي متأخر / راحت عليه نومة
+        tinggal → ketinggalan = فاته (الأتوبيس، الطيارة)
+        copet (نشّال) → kecopetan = اتنشل
+        الجزئين لازم مع بعض: kehujanan، مش kehujan.
+      ar: |
+        ke- + الكلمة + -an بعد الشخص = «أصابه أمر مكروه دون قصد»:
+        hujan (مطر) → kehujanan = أصابه المطر
+        siang (الظهر) → kesiangan = تأخر في النوم
+        tinggal → ketinggalan = فاته (الحافلة، الطائرة)
+        copet (نشّال) → kecopetan = تعرّض للنشل
+        ولا بد من الجزأين معًا: kehujanan لا kehujan.
+      en: |
+        Person + ke- + word + -an = "something unpleasant happened to them":
+        hujan (rain) → kehujanan = got caught in the rain
+        siang (midday) → kesiangan = overslept
+        tinggal → ketinggalan = missed (the bus, the plane)
+        copet (pickpocket) → kecopetan = got pickpocketed
+        Both parts are required: kehujanan, not kehujan.
+    grammar: id.confix.ke-an
+    examples:
+      - text: Kemarin saya kehujanan di jalan ke kantor.
+        ar_eg: امبارح المطر نزل عليّ وأنا رايح الشغل.
+        ar: أصابني المطر أمس في طريقي إلى العمل.
+        en: Yesterday I got caught in the rain on the way to the office.
+      - text: Saya bangun kesiangan, jadi ketinggalan pete-pete.
+        ar_eg: صحيت متأخر، فالميكروباص فاتني.
+        ar: تأخرت في النوم ففاتتني الحافلة الصغيرة.
+        en: I overslept, so I missed the minibus.
+  - title: Minta izin kepada atasan
+    body:
+      ar_eg: |
+        لما حاجة زي دي تحصل في يوم شغل، بتكلم atasan (المدير / الريّس بتاعك) وتطلب izin (إذن).
+        izin جاية من العربي «إذن» على طول!
+        ومش لازم تقول مين اللي عمل: Saya kecopetan = اتنشلت (النشال مش مهم).
+      ar: |
+        إذا حدث ذلك في يوم عمل، تخاطب atasan (رئيسك في العمل) وتطلب izin (إذنًا).
+        وizin مأخوذة مباشرة من العربية «إذن».
+        ولا يلزم ذكر الفاعل: Saya kecopetan = نُشلت.
+      en: |
+        When this happens on a workday, you call your atasan (boss) and ask for izin (permission).
+        izin comes straight from Arabic «إذن».
+        No doer needed: Saya kecopetan = I got pickpocketed.
+    grammar: id.confix.ke-an
+    examples:
+      - text: Maaf, Bu, saya minta izin datang terlambat. Tadi saya kecopetan.
+        ar_eg: آسف يا مدام، بستأذن إني أتأخر. أصلي اتنشلت من شوية.
+        ar: آسف يا سيدتي، أستأذن في التأخر؛ فقد نُشلت قبل قليل.
+        en: Sorry, ma'am, may I come in late? I just got pickpocketed.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kehujanan
+        ar_eg: المطر نزل عليه
+        ar: أصابه المطر
+        en: caught in the rain
+      - text: kesiangan
+        ar_eg: صحي متأخر
+        ar: تأخر في النوم
+        en: overslept
+      - text: ketinggalan
+        ar_eg: فاته (أتوبيس / طيارة)
+        ar: فاته
+        en: missed (a bus, a plane)
+      - text: kecopetan
+        ar_eg: اتنشل
+        ar: تعرّض للنشل
+        en: pickpocketed
+      - text: atasan
+        ar_eg: المدير / الريّس في الشغل
+        ar: الرئيس في العمل
+        en: boss
+      - text: izin
+        ar_eg: إذن
+        ar: إذن
+        en: permission
+    words: [kehujanan, kesiangan, ketinggalan, kecopetan, atasan, izin]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حسن كان ماشي للشغل والمطر نزل عليه. حسن …
+      ar: كان حسن في طريقه إلى العمل فأصابه المطر. حسن …
+      en: Hasan was walking to work and got caught in the rain. Hasan …
+    options: ["dihujani", "kehujanan", "kehujan"]
+    answer: 1
+    explain:
+      ar_eg: kehujanan هي الطبيعية. dihujani كأن حد قاصد يرمي عليه، وkehujan ناقصة -an.
+      ar: kehujanan هي الصيغة الطبيعية، وdihujani توحي بفاعل قاصد، وkehujan تنقصها -an.
+      en: kehujanan is the natural form; dihujani sounds deliberate, and kehujan is missing -an.
+    words: [kehujanan]
+  - id: e03
+    type: listen
+    text: Tadi pagi saya kecopetan di pete-pete.
+    options: ["Tadi pagi saya kehujanan di pete-pete.", "Tadi pagi saya kesiangan di pete-pete.", "Tadi pagi saya kecopetan di pete-pete."]
+    answer: 2
+    meaning:
+      ar_eg: الصبح اتنشلت في الميكروباص.
+      ar: نُشلتُ صباح اليوم في الحافلة الصغيرة.
+      en: This morning I got pickpocketed on the minibus.
+    words: [kecopetan]
+  - id: e04
+    type: multiple_choice
+    question: Pak, boleh saya minta ___ pulang lebih awal?
+    question_meaning:
+      ar_eg: "عايز تروّح بدري، فبتقول للمدير بتاعك: «يا أستاذ، ممكن آخد … أمشي بدري؟»"
+      ar: "تريد الانصراف مبكرًا، فتقول لرئيسك: «هل لي أن أطلب … للانصراف مبكرًا؟»"
+      en: You want to leave early, so you say to your boss, "Sir, may I ask for … to go home early?"
+    options: ["izin", "atasan", "kesiangan"]
+    answer: 0
+    words: [izin, atasan]
+  - id: e05
+    type: fill_blank
+    sentence: Saya bangun ___, jadi terlambat ke kantor.
+    meaning:
+      ar_eg: صحيت متأخر، فاتأخرت على الشغل.
+      ar: تأخرت في النوم، فتأخرت عن العمل.
+      en: I overslept, so I was late for work.
+    options: [kesiangan, kehujanan, kecopetan]
+    answers: [kesiangan]
+    words: [kesiangan]
+  - id: e06
+    type: fill_blank
+    sentence: Karena macet, saya ___ pesawat ke Jakarta.
+    meaning:
+      ar_eg: بسبب الزحمة، الطيارة لجاكرتا فاتتني.
+      ar: بسبب الزحام فاتتني الطائرة إلى جاكرتا.
+      en: Because of the traffic, I missed the plane to Jakarta.
+    options: [ketinggalan, kehujanan, kesiangan]
+    answers: [ketinggalan]
+    words: [ketinggalan]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: استأذنت من المدير عشان اتنشلت.
+      ar: استأذنتُ رئيسي لأنني نُشلت.
+      en: I asked my boss for permission because I got pickpocketed.
+    answer: Saya minta izin kepada atasan karena kecopetan.
+    alternatives: ["Karena kecopetan, saya minta izin kepada atasan."]
+    distractors: [ketinggalan, kehujanan]
+    words: [izin, atasan, kecopetan]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: امبارح المطر نزل عليّ وأنا رايح المكتب.
+      ar: أصابني المطر أمس في طريقي إلى المكتب.
+      en: Yesterday I got caught in the rain on the way to the office.
+    answers:
+      - Kemarin saya kehujanan di jalan ke kantor.
+      - Kemarin saya kehujanan di jalan ke kantor
+      - Saya kehujanan kemarin di jalan ke kantor.
+      - Kemarin saya kehujanan dalam perjalanan ke kantor.
+      - Kemarin aku kehujanan di jalan ke kantor.
+      - Kemarin saya kehujanan waktu ke kantor.
+      - Kemarin saya kehujanan saat ke kantor.
+    words: [kehujanan]
+  - id: e09
+    type: speaking
+    text: Maaf, Pak, tadi saya kesiangan dan ketinggalan pete-pete.
+    meaning:
+      ar_eg: آسف يا أستاذ، صحيت متأخر والميكروباص فاتني.
+      ar: آسف يا سيدي، تأخرت في النوم وفاتتني الحافلة.
+      en: Sorry, sir, I overslept and missed the minibus.
+    words: [kesiangan, ketinggalan]
+dialogue:
+  title: Hari yang sial
+  lines:
+    - speaker: Mohamed
+      text: Mas Rizal, akhirnya datang! Ada apa?
+      ar_eg: يا مَس رزال، أخيرًا جيت! حصل إيه؟
+      ar: يا ماس رزال، وصلتَ أخيرًا! ماذا حدث؟
+      en: Mas Rizal, you're finally here! What happened?
+    - speaker: Mas Rizal
+      text: Maaf, saya bangun kesiangan, lalu ketinggalan pete-pete.
+      ar_eg: آسف، صحيت متأخر، وبعدين الميكروباص فاتني.
+      ar: آسف، تأخرت في النوم ثم فاتتني الحافلة.
+      en: Sorry, I overslept, and then I missed the minibus.
+    - speaker: Mohamed
+      text: Wah, bajumu basah. Kehujanan juga?
+      ar_eg: يا ساتر، هدومك مبلولة. والمطر نزل عليك كمان؟
+      ar: ثيابك مبللة! هل أصابك المطر أيضًا؟
+      en: Wow, your clothes are wet. Caught in the rain too?
+    - speaker: Mas Rizal
+      text: Iya! Untung saya sudah minta izin kepada atasan.
+      ar_eg: أيوه! الحمد لله إني استأذنت من المدير.
+      ar: نعم! ولحسن الحظ استأذنتُ رئيسي.
+      en: Yes! Luckily I'd already asked my boss for permission.
+    - speaker: Mohamed
+      text: Yang penting kamu tidak kecopetan, Mas!
+      ar_eg: المهم إنك ما اتنشلتش!
+      ar: المهم أنك لم تتعرض للنشل!
+      en: The main thing is you didn't get pickpocketed!
+    - speaker: Mas Rizal
+      text: Betul. Dompet saya masih aman.
+      ar_eg: صح. المحفظة لسه في أمان.
+      ar: صحيح. محفظتي ما زالت في أمان.
+      en: True. My wallet is still safe.
+new_words:
+  - word: kehujanan
+    pos: verb
+    ar_eg: المطر نزل عليه
+    ar: أصابه المطر
+    en: get caught in the rain
+  - word: kesiangan
+    pos: verb
+    ar_eg: صحي متأخر
+    ar: تأخر في النوم
+    en: oversleep
+  - word: ketinggalan
+    pos: verb
+    ar_eg: فاته (المواصلة)
+    ar: فاته
+    en: miss (a bus, a plane); be left behind
+  - word: kecopetan
+    pos: verb
+    ar_eg: اتنشل
+    ar: تعرّض للنشل
+    en: get pickpocketed
+  - word: atasan
+    pos: noun
+    ar_eg: المدير / الريّس في الشغل
+    ar: الرئيس في العمل
+    en: boss, superior
+  - word: izin
+    pos: noun
+    ar_eg: إذن
+    ar: إذن
+    en: permission
+    arabic: إذن
+review:
+  status: draft
+  verified: false

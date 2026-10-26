@@ -1,0 +1,240 @@
+schema: kabar.lesson/v1
+id: j4.u02.l02
+language: jv
+title: Dalem
+can_do:
+  ar_eg: تتكلم عن بيت الشخص الكبير ومراته وأكله.
+  ar: أن تتحدث عن بيت الكبير وزوجه وطعامه.
+  en: Talk about an elder's home, spouse and food.
+slides:
+  - title: Omah → griya → dalem
+    body:
+      ar_eg: |
+        البيت: omah (نغوكو) → griya (كراما، عرفتها في J3) → dalem (krama inggil). بالإندونيسي: rumah.
+        «Dalemipun wonten pundi?» = حضرتك ساكن فين؟ (حرفيًا: بيت حضرتك فين؟)
+        و«wonten dalem» = في البيت (بيت الكبير).
+        بيتك إنت griya: «Griya kula caket kaliyan Malioboro» = بيتي قريب من ماليوبورو. caket = cedhak (قريب)، وعكسها tebih اللي عرفتها.
+        dalem كمان معناها «أنا» المتواضعة والرد «أفندم؟» لما كبير يناديك (من J3). السياق بيفرّق.
+      ar: |
+        البيت: omah (نغوكو) → griya (كراما، من J3) → dalem (krama inggil)، وبالإندونيسية rumah.
+        «Dalemipun wonten pundi?» = أين تسكنون؟ و«wonten dalem» = في البيت (بيت الكبير).
+        وبيتك أنت griya: «Griya kula caket kaliyan Malioboro» = بيتي قريب من ماليوبورو. وcaket = cedhak (قريب)، وضدها tebih.
+        ولكلمة dalem أيضًا معنى «أنا» المتواضعة وجواب النداء (من J3)، والسياق يفرّق.
+      en: |
+        House: omah (ngoko) → griya (krama, from J3) → dalem (krama inggil). Indonesian: rumah.
+        "Dalemipun wonten pundi?" = Where do you live? (lit. where is your home?). "wonten dalem" = at (the elder's) home.
+        Your own house is griya: "Griya kula caket kaliyan Malioboro" = My house is near Malioboro. caket = cedhak (near), the opposite of tebih.
+        dalem is also humble "I" and the reply "yes?" when an elder calls you (J3). Context decides.
+    grammar: jv.krama-inggil.nouns
+    examples:
+      - text: Dalemipun Bapak wonten pundi?
+        ar_eg: بيت حضرتك فين يا أستاذ؟
+        ar: أين بيتكم يا سيدي؟
+        en: Where is your house, sir?
+      - text: Griya kula caket kaliyan Malioboro.
+        ar_eg: بيتي قريب من ماليوبورو.
+        ar: بيتي قريب من ماليوبورو.
+        en: My house is near Malioboro.
+  - title: Garwa, dhaharan, kagem
+    body:
+      ar_eg: |
+        تلات كلمات كمان بتكرّم الكبير:
+        - مراته / جوزها: bojo → semah → garwa. وعن مراتك إنت: semah kula (أو bojo kula).
+        - أكله: panganan → tedhan → dhaharan (من dhahar).
+        - «عشان / لـ»: kanggo → kangge (J3) → kagem. «Menika kagem Ibu» = ده عشان حضرتك.
+        زي «حرمك المصون» عندنا، بس عند الجاويين ده كلام كل يوم.
+      ar: |
+        ثلاث كلمات أخرى تكرّم الكبير:
+        - زوجه: bojo → semah → garwa، وعن زوجك: semah kula (أو bojo kula).
+        - طعامه: panganan → tedhan → dhaharan (من dhahar).
+        - «لأجل»: kanggo → kangge (J3) → kagem: «Menika kagem Ibu» = هذا لكِ يا سيدتي.
+        كـ«حرمكم المصون» عندنا، لكنها عند الجاويين كلام يومي.
+      en: |
+        Three more words that honour the elder:
+        - their spouse: bojo → semah → garwa. Your own spouse: semah kula (or bojo kula).
+        - their food: panganan → tedhan → dhaharan (from dhahar).
+        - "for": kanggo → kangge (J3) → kagem. "Menika kagem Ibu" = This is for you, ma'am.
+        Like «حرمك المصون», except in Javanese it's everyday speech.
+    grammar: jv.krama-inggil.nouns
+    examples:
+      - text: Menika kagem Ibu.
+        ar_eg: ده عشان حضرتك يا هانم.
+        ar: هذا لكِ يا سيدتي.
+        en: This is for you, ma'am.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: dalem
+        ar_eg: بيت (الكبير)
+        ar: بيت (الكبير)
+        en: home (of the elder)
+      - text: garwa
+        ar_eg: مراته / جوزها (الكبير)
+        ar: زوج / زوجة (الكبير)
+        en: spouse (of the elder)
+      - text: kagem
+        ar_eg: عشان / لـ (الكبير)
+        ar: لأجل (الكبير)
+        en: for (the elder)
+      - text: dhaharan
+        ar_eg: أكل (الكبير)
+        ar: طعام (الكبير)
+        en: food (of the elder)
+      - text: caket
+        ar_eg: قريب
+        ar: قريب
+        en: near
+    words: [dalem, garwa, kagem, dhaharan, caket]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: تسأل Pak Slamet هو ساكن فين. تقول إيه؟
+      ar: تسأل Pak Slamet أين يسكن. ماذا تقول؟
+      en: You ask Pak Slamet where he lives. What do you say?
+    options: ['Griya kula wonten pundi?', 'Dalemipun wonten pundi, Pak?', 'Omahmu ngendi?']
+    answer: 1
+    explain:
+      ar_eg: بيته هو، يبقى dalem. «Griya kula» يعني بيتي أنا، وomahmu ngendi نغوكو.
+      ar: بيته هو فيكون dalem، و«Griya kula» بيتي أنا، وomahmu ngendi نغوكو.
+      en: It's his home, so dalem. "Griya kula" is my house; omahmu ngendi is ngoko.
+    words: [dalem]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: بتدّي Bu Harsono علبة bakpia (فطاير يوجيا الصغيرة بحشو الفول الأخضر). تقول «ده عشان حضرتك» إزاي؟
+      ar: تقدّم لـ Bu Harsono علبة bakpia (فطائر يوغيا الصغيرة المحشوة بالفول الأخضر). كيف تقول «هذا لكِ»؟
+      en: You hand Bu Harsono a box of bakpia (Yogya's little mung-bean pastries). How do you say "This is for you"?
+    options: ['Menika kagem Ibu.', 'Menika kangge kula, Bu.', 'Iki kanggo kowe.']
+    answer: 0
+    explain:
+      ar_eg: لـ حد كبير kagem. «kangge kula» يعني «عشاني أنا»، وiki kanggo kowe نغوكو.
+      ar: للكبير kagem، و«kangge kula» = لي أنا، وiki kanggo kowe نغوكو.
+      en: For an elder, kagem. "kangge kula" means "for me"; iki kanggo kowe is ngoko.
+    words: [kagem]
+  - id: e04
+    type: listen
+    text: Garwanipun Bapak saweg tindak dhateng peken.
+    options: ['Garwanipun Bapak saweg sare.', 'Putranipun Bapak saweg tindak dhateng peken.', 'Garwanipun Bapak saweg tindak dhateng peken.']
+    answer: 2
+    meaning:
+      ar_eg: مرات الأستاذ راحت السوق.
+      ar: زوجة الأستاذ ذاهبة إلى السوق.
+      en: Your wife has gone to the market, sir. / His wife has gone to the market.
+    words: [garwa]
+  - id: e05
+    type: fill_blank
+    sentence: Griya kula ___ kaliyan Malioboro.
+    meaning:
+      ar_eg: بيتي قريب من ماليوبورو.
+      ar: بيتي قريب من ماليوبورو.
+      en: My house is near Malioboro.
+    options: [caket, kagem, dalem]
+    answers: [caket]
+    words: [caket]
+  - id: e06
+    type: fill_blank
+    sentence: Menika ___ kagem Simbah.
+    meaning:
+      ar_eg: ده أكل عشان تيتة.
+      ar: هذا طعام للجدة.
+      en: This is food for Grandma.
+    options: [dhaharan, panganan, dalem]
+    answers: [dhaharan]
+    explain:
+      ar_eg: أكل الكبير dhaharan. panganan نغوكو.
+      ar: طعام الكبير dhaharan، وpanganan نغوكو.
+      en: An elder's food is dhaharan; panganan is ngoko.
+    words: [dhaharan, kagem]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: بيت حضرتك قريب من هنا يا أستاذ؟
+      ar: هل بيتكم قريب من هنا يا سيدي؟
+      en: Is your house near here, sir?
+    answer: Dalemipun Bapak caket saking mriki?
+    distractors: [griyanipun, omahe]
+    words: [dalem, caket]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (لـ Pak Slamet) مراتك في البيت يا حاج؟
+      ar: (إلى Pak Slamet) هل زوجتك في البيت يا سيدي؟
+      en: (to Pak Slamet) Is your wife at home, sir?
+    answers: ['Garwanipun wonten dalem, Pak?', 'Pak, garwanipun wonten dalem?', 'Garwanipun Bapak wonten dalem?', 'Garwa panjenengan wonten dalem, Pak?', 'Garwanipun wonten dalem?']
+    explain:
+      ar_eg: garwa + -nipun (مراته) + wonten dalem (في بيته). الاتنين krama inggil لأنهم بتوعه هو.
+      ar: garwanipun + wonten dalem، وكلاهما krama inggil لأنهما له.
+      en: garwanipun (his wife) + wonten dalem (at his home); both krama inggil because they're his.
+    words: [garwa, dalem]
+  - id: e09
+    type: speaking
+    text: Menika dhaharan kagem Simbah.
+    meaning:
+      ar_eg: ده أكل عشان تيتة.
+      ar: هذا طعام للجدة.
+      en: This is food for Grandma.
+    words: [dhaharan, kagem]
+dialogue:
+  title: Bakpia kagem garwanipun
+  lines:
+    - speaker: Mohamed
+      text: Pak Slamet, dalemipun wonten pundi?
+      ar_eg: يا حاج سلامت، حضرتك ساكن فين؟
+      ar: يا سيد سلامت، أين تسكن؟
+      en: Pak Slamet, where do you live?
+    - speaker: Pak Slamet
+      text: Griya kula caket kaliyan Malioboro, Mas.
+      ar_eg: بيتي قريب من ماليوبورو يا ابني.
+      ar: بيتي قريب من ماليوبورو يا بني.
+      en: My house is near Malioboro.
+    - speaker: Mohamed
+      text: Garwanipun wonten dalem, Pak?
+      ar_eg: والمدام في البيت يا حاج؟
+      ar: وهل زوجتك في البيت يا سيدي؟
+      en: Is your wife at home, sir?
+    - speaker: Pak Slamet
+      text: Inggih, Mas. Semah kula wonten griya.
+      ar_eg: أيوه يا ابني. مراتي في البيت.
+      ar: نعم يا بني. زوجتي في البيت.
+      en: Yes. My wife is at home.
+    - speaker: Mohamed
+      text: Menika bakpia kagem garwanipun, Pak.
+      ar_eg: ودي bakpia عشان المدام يا حاج.
+      ar: وهذه bakpia لزوجتك يا سيدي.
+      en: Here's some bakpia for your wife, sir.
+    - speaker: Pak Slamet
+      text: Wah, matur nuwun sanget, Mas!
+      ar_eg: الله، متشكر أوي يا ابني!
+      ar: شكرًا جزيلًا يا بني!
+      en: Oh, thank you so much!
+new_words:
+  - word: dalem
+    pos: noun
+    ar_eg: بيت (krama inggil، بيت الكبير؛ ngoko omah، krama griya). وكمان «أنا» المتواضعة
+    ar: بيت (krama inggil لبيت الكبير؛ ngoko omah، وkrama griya)، وتأتي بمعنى «أنا» المتواضعة
+    en: home (krama inggil, the elder's; ngoko omah, krama griya); also humble "I" = rumah
+  - word: garwa
+    pos: noun
+    ar_eg: مرات / جوز الكبير (krama inggil؛ ngoko bojo، krama semah)
+    ar: زوج / زوجة الكبير (krama inggil؛ ngoko bojo، وkrama semah)
+    en: spouse (krama inggil, the elder's; ngoko bojo, krama semah) = istri, suami
+  - word: kagem
+    pos: preposition
+    ar_eg: عشان / لـ (krama inggil؛ ngoko kanggo، krama kangge)
+    ar: لأجل (krama inggil؛ ngoko kanggo، وkrama kangge)
+    en: for (krama inggil; ngoko kanggo, krama kangge) = untuk
+  - word: dhaharan
+    pos: noun
+    ar_eg: أكل الكبير (krama inggil؛ ngoko panganan)
+    ar: طعام الكبير (krama inggil؛ ngoko panganan)
+    en: food (krama inggil; ngoko panganan) = makanan
+  - word: caket
+    pos: adjective
+    ar_eg: قريب (كراما لـ cedhak)
+    ar: قريب (كراما لـ cedhak)
+    en: near (krama for cedhak) = dekat
+review:
+  status: draft
+  verified: false

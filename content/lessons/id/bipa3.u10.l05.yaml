@@ -1,0 +1,194 @@
+schema: kabar.lesson/v1
+id: bipa3.u10.l05
+language: id
+title: Rencana liburan
+can_do:
+  ar_eg: تخطط لرحلة وتقول أسبابك.
+  ar: أن تخطط لرحلة وتذكر أسبابك.
+  en: Plan a trip and give your reasons.
+slides:
+  - title: Rencana + alasan
+    body:
+      ar_eg: |
+        الخطة الكويسة = خطة + سبب:
+        Rencananya / Saya berencana … + karena … (عشان / لأن) أو supaya … (عشان يحصل).
+        وsekalian = «وأنا في السكة / بالمرة»: نعمل حاجة تانية في نفس الرحلة.
+      ar: |
+        الخطة الجيدة = خطة + سبب:
+        Rencananya / Saya berencana … + karena … (لأن) أو supaya … (لكي).
+        وsekalian = «في الطريق نفسه / بالمرّة»: نفعل شيئًا آخر في الرحلة ذاتها.
+      en: |
+        A good plan = plan + reason:
+        Rencananya / Saya berencana … + karena … (because) or supaya … (so that).
+        sekalian = "while I'm at it": doing something else on the same trip.
+    grammar: id.time.future-plans
+    examples:
+      - text: Saya berencana ke Sumbawa karena ingin melihat pulau yang lebih sepi.
+        ar_eg: بخطط أروح سومباوا عشان عايز أشوف جزيرة أهدى.
+        ar: أخطط للذهاب إلى سومباوا لأني أريد رؤية جزيرة أهدأ.
+        en: I'm planning to go to Sumbawa because I want to see a quieter island.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: menyeberang
+        ar_eg: يعدّي (بحر / شارع)
+        ar: يعبر
+        en: to cross (over)
+      - text: sekalian
+        ar_eg: بالمرة / وأنا في السكة
+        ar: بالمرّة / في الطريق نفسه
+        en: while at it, at the same time
+      - text: rencana
+        ar_eg: خطة
+        ar: خطة
+        en: plan
+      - text: berniat
+        ar_eg: ينوي
+        ar: ينوي
+        en: to intend to
+      - text: cuti
+        ar_eg: أجازة (من الشغل)
+        ar: إجازة من العمل
+        en: time off work
+    words: [menyeberang, sekalian, rencana, berniat, cuti]
+  - id: e02
+    type: listen
+    text: Besok kami akan menyeberang ke Sumbawa.
+    options:
+      - Besok kami akan berenang di Sumbawa.
+      - Kemarin kami menyeberang ke Sumbawa.
+      - Besok kami akan menyeberang ke Sumbawa.
+    answer: 2
+    meaning:
+      ar_eg: بكرة هنعدّي لسومباوا.
+      ar: سنعبر إلى سومباوا غدًا.
+      en: Tomorrow we'll cross over to Sumbawa.
+    words: [menyeberang]
+  - id: e03
+    type: multiple_choice
+    question: Saya ke Mataram, ___ membeli oleh-oleh.
+    options: [sekalian, sebentar lagi, lusa]
+    answer: 0
+    explain:
+      ar_eg: 'sekalian = بالمرة: رايح ماتارام وبالمرة أشتري هدايا.'
+      ar: 'sekalian = بالمرّة: أذهب إلى ماتارام وأشتري الهدايا في الطريق.'
+      en: 'sekalian = while I''m at it: going to Mataram and buying souvenirs on the same trip.'
+    words: [sekalian]
+  - id: e04
+    type: fill_blank
+    sentence: Saya ___ mendaki Rinjani tahun depan.
+    meaning:
+      ar_eg: (اكتب «بخطط») بخطط أطلع رينجاني السنة الجاية.
+      ar: (اكتب «أخطط») أخطط لتسلّق رينجاني العام القادم.
+      en: (Write "plan to".) I'm planning to climb Rinjani next year.
+    answers: [berencana]
+    words: [berencana, mendaki]
+  - id: e05
+    type: fill_blank
+    sentence: Kami berangkat pagi-pagi ___ tidak terlambat.
+    meaning:
+      ar_eg: هنطلع بدري عشان ما نتأخرش.
+      ar: سننطلق باكرًا لكي لا نتأخر.
+      en: We'll set off early so we're not late.
+    options: [sehingga, supaya, maupun]
+    answers: [supaya]
+    explain:
+      ar_eg: إننا ما نتأخرش ده هدف، فـ supaya.
+      ar: عدم التأخر غاية، فالأداة supaya.
+      en: Not being late is the goal, so supaya.
+    words: [berangkat]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: الخطة إننا نعدّي لسومباوا بعد بكرة.
+      ar: نعتزم العبور إلى سومباوا بعد غد.
+      en: The plan is to cross over to Sumbawa the day after tomorrow.
+    answer: Rencananya, kami menyeberang ke Sumbawa lusa.
+    alternatives:
+      - Rencananya, lusa kami menyeberang ke Sumbawa.
+    distractors: [tadi, berencana]
+    words: [rencana, menyeberang, lusa]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الشهر الجاي واخد أجازة عشان أقدر أرجع مصر.
+      ar: سآخذ إجازة الشهر القادم لكي أستطيع العودة إلى مصر.
+      en: Next month I'm taking leave so I can go home to Egypt.
+    answers:
+      - Bulan depan saya cuti supaya bisa pulang ke Mesir.
+      - Bulan depan saya cuti supaya bisa pulang ke Mesir
+      - Bulan depan saya cuti agar bisa pulang ke Mesir.
+      - Bulan depan saya cuti agar bisa pulang ke Mesir
+      - Bulan depan saya akan cuti supaya bisa pulang ke Mesir.
+      - Bulan depan saya akan cuti agar bisa pulang ke Mesir.
+      - Saya cuti bulan depan supaya bisa pulang ke Mesir.
+      - Saya akan cuti bulan depan supaya bisa pulang ke Mesir.
+      - Bulan depan aku cuti supaya bisa pulang ke Mesir.
+      - Bulan depan saya cuti supaya saya bisa pulang ke Mesir.
+      - Bulan depan saya mau cuti supaya bisa pulang ke Mesir.
+    words: [cuti]
+  - id: e08
+    type: dictation
+    text: Kami ke Sumbawa sekalian mengunjungi keluarga Mas Rizal.
+    meaning:
+      ar_eg: رايحين سومباوا وبالمرة نزور عيلة ماس ريزال.
+      ar: نذهب إلى سومباوا ونزور أسرة ماس ريزال بالمرّة.
+      en: We're going to Sumbawa and visiting Mas Rizal's family while we're at it.
+    words: [sekalian, mengunjungi]
+  - id: e09
+    type: speaking
+    text: Insya Allah, saya berniat menyeberang ke Sumbawa minggu depan.
+    meaning:
+      ar_eg: إن شاء الله ناوي أعدّي لسومباوا الأسبوع الجاي.
+      ar: إن شاء الله أنوي العبور إلى سومباوا الأسبوع القادم.
+      en: God willing, I intend to cross over to Sumbawa next week.
+    words: [berniat, menyeberang, minggu depan]
+dialogue:
+  title: Liburan ke Sumbawa
+  lines:
+    - speaker: Mas Rizal
+      text: Jadi, apa rencanamu untuk liburan ini?
+      ar_eg: ها، إيه خطتك للأجازة دي؟
+      ar: إذن، ما خطتك لهذه العطلة؟
+      en: So, what's your plan for this holiday?
+    - speaker: Mohamed
+      text: Rencananya, lusa kita menyeberang ke Sumbawa.
+      ar_eg: الخطة إننا نعدّي لسومباوا بعد بكرة.
+      ar: نعتزم العبور إلى سومباوا بعد غد.
+      en: The plan is that we cross to Sumbawa the day after tomorrow.
+    - speaker: Mas Rizal
+      text: Bagus. Kenapa ke Sumbawa?
+      ar_eg: حلو. ليه سومباوا؟
+      ar: جميل. لماذا سومباوا؟
+      en: Great. Why Sumbawa?
+    - speaker: Mohamed
+      text: Karena saya ingin melihat pulau yang lebih sepi. Sekalian, saya mau bertemu keluargamu.
+      ar_eg: عشان عايز أشوف جزيرة أهدى. وبالمرة عايز أقابل عيلتك.
+      ar: لأني أريد رؤية جزيرة أهدأ، وأريد أن ألتقي بأسرتك بالمرّة.
+      en: Because I want to see a quieter island. And while I'm there, I'd like to meet your family.
+    - speaker: Mas Rizal
+      text: Wah, ibu saya pasti senang! Kita berangkat pagi supaya tidak macet di pelabuhan.
+      ar_eg: الله، أمي أكيد هتفرح! نطلع بدري عشان ما نتزنقش في زحمة الميناء.
+      ar: رائع، ستفرح أمي بالتأكيد! سننطلق باكرًا لكي لا نعلق في زحام الميناء.
+      en: Oh, my mother will be so happy! We'll leave early so we don't get stuck in traffic at the port.
+    - speaker: Mohamed
+      text: Siap! Insya Allah.
+      ar_eg: تمام! إن شاء الله.
+      ar: حسنًا! إن شاء الله.
+      en: Ready! God willing.
+new_words:
+  - word: menyeberang
+    pos: verb
+    ar_eg: يعدّي (بحر / شارع)
+    ar: يعبر
+    en: to cross (over)
+  - word: sekalian
+    pos: adverb
+    ar_eg: بالمرة / وأنا في السكة
+    ar: بالمرّة / في الطريق نفسه
+    en: while at it, at the same time
+review:
+  status: draft
+  verified: false

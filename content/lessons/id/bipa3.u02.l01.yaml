@@ -1,0 +1,228 @@
+schema: kabar.lesson/v1
+id: bipa3.u02.l01
+language: id
+title: -nya di mana-mana
+can_do:
+  ar_eg: تفهم -nya بمعنى «الـ» أو «بتاعه» أو «ـه» بعد الفعل.
+  ar: أن تفهم -nya بمعنى أداة التعريف أو ضمير الغائب المتصل.
+  en: Read -nya as 'the', 'his / her / its' and 'it'.
+slides:
+  - title: -nya = بتاعه / الـ
+    grammar: id.clitic.nya
+    body:
+      ar_eg: |
+        انت عارف -nya بمعنى «بتاعه»: tasnya = شنطته. بس ليها شغلانة تانية مهمة أوي: «الـ» للحاجة المعروفة.
+        على البحر تقول Pantainya bersih = الشط نضيف (الشط اللي احنا فيه).
+        Ni Luh membawa tas. Tasnya dari kain = الشنطة (اللي اتكلمنا عنها) من القماش.
+        وعلى فكرة: alam (الطبيعة) جاية من العربي «عالَم».
+      ar: |
+        تعرف -nya بمعنى ضمير الغائب: tasnya = حقيبته. ولها وظيفة أخرى مهمة: التعريف بالشيء المعلوم.
+        على الشاطئ تقول: Pantainya bersih = الشاطئ نظيف (الشاطئ الذي نحن فيه).
+        Ni Luh membawa tas. Tasnya dari kain = الحقيبة (المذكورة) من القماش.
+        وكلمة alam (الطبيعة) من العربية «عالَم».
+      en: |
+        You know -nya as "his / her": tasnya = her bag. It has another big job: "the", for something already known.
+        At the beach: Pantainya bersih = The beach is clean (the one we're on).
+        Ni Luh membawa tas. Tasnya dari kain = She brings a bag. The bag is made of cloth.
+        By the way, alam (nature) comes from Arabic «عالَم».
+    examples:
+      - text: Pantainya bersih sekali.
+        ar_eg: الشط نضيف أوي.
+        ar: الشاطئ نظيف جدًا.
+        en: The beach is really clean.
+      - text: Ni Luh membawa tas. Tasnya dari kain.
+        ar_eg: ني لوه جايبة شنطة. الشنطة من القماش.
+        ar: تحمل ني لوه حقيبة، والحقيبة من القماش.
+        en: Ni Luh brings a bag. The bag is made of cloth.
+  - title: -nya = ـه (بعد الفعل)
+    grammar: id.clitic.nya
+    body:
+      ar_eg: |
+        بعد الفعل أو حرف الجر، -nya = «ـه / ـها» بالظبط زي العربي: شُفته = melihatnya، معاه = dengannya.
+        وبتتكتب لازقة، من غير شَرطة: melihatnya مش melihat-nya.
+      ar: |
+        بعد الفعل أو حرف الجر تكون -nya ضميرًا متصلًا مثل «ـه / ـها» في العربية: رأيتُه = melihatnya، معه = dengannya.
+        وتُكتب متصلة بلا شرطة: melihatnya لا melihat-nya.
+      en: |
+        After a verb or a preposition, -nya = him / her / it, just like the Arabic attached ـه: melihatnya (saw it), dengannya (with him).
+        It's written joined, with no hyphen: melihatnya, not melihat-nya.
+    examples:
+      - text: Penyu itu lucu. Saya ingin melihatnya lagi.
+        ar_eg: السلحفاة دي لذيذة. عايز أشوفها تاني.
+        ar: تلك السلحفاة لطيفة، أريد أن أراها مرة أخرى.
+        en: That turtle is cute. I want to see it again.
+      - text: Terumbu karang itu indah. Kita harus menjaganya.
+        ar_eg: الشعاب المرجانية دي حلوة. لازم نحافظ عليها.
+        ar: تلك الشعاب المرجانية جميلة، ويجب أن نحافظ عليها.
+        en: That coral reef is beautiful. We must protect it.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: alam
+        ar_eg: الطبيعة
+        ar: الطبيعة
+        en: nature
+      - text: lingkungan
+        ar_eg: البيئة
+        ar: البيئة
+        en: environment
+      - text: sampah
+        ar_eg: زبالة
+        ar: نفايات، قمامة
+        en: rubbish
+      - text: terumbu karang
+        ar_eg: شعاب مرجانية
+        ar: شعاب مرجانية
+        en: coral reef
+      - text: penyu
+        ar_eg: سلحفاة بحرية
+        ar: سلحفاة بحرية
+        en: sea turtle
+      - text: menjaga
+        ar_eg: يحافظ على، يحرس
+        ar: يحافظ على
+        en: to look after, protect
+    words: [alam, lingkungan, sampah, terumbu karang, penyu, menjaga]
+  - id: e02
+    type: multiple_choice
+    question: Penyu itu lucu. Saya ingin ___ lagi.
+    options: [melihat-nya, melihatnya, nya melihat]
+    answer: 1
+    explain:
+      ar_eg: -nya بتلزق في الفعل على طول من غير شَرطة.
+      ar: تتصل -nya بالفعل مباشرة بلا شرطة.
+      en: -nya attaches straight to the verb, with no hyphen.
+    words: [penyu]
+  - id: e03
+    type: listen
+    text: Terumbu karangnya indah sekali.
+    options: ["Terumbu karang saya indah sekali.", "Terumbu karangnya jauh sekali.", "Terumbu karangnya indah sekali."]
+    answer: 2
+    meaning:
+      ar_eg: الشعاب المرجانية حلوة أوي.
+      ar: الشعاب المرجانية جميلة جدًا.
+      en: The coral reef is really beautiful.
+    words: [terumbu karang]
+  - id: e04
+    type: multiple_choice
+    question: Kita harus menjaga ___ kita. Jangan buang sampah di laut!
+    options: [lingkungan, penyu, kain]
+    answer: 0
+    words: [lingkungan, menjaga, sampah]
+  - id: e05
+    type: fill_blank
+    sentence: Kita harus menjaga ___ dan tidak membuang sampah di pantai.
+    meaning:
+      ar_eg: لازم نحافظ على الطبيعة ومانرميش زبالة على الشط.
+      ar: يجب أن نحافظ على الطبيعة وألّا نرمي النفايات على الشاطئ.
+      en: We must protect nature and not throw rubbish on the beach.
+    options: [alam, penyu, tas]
+    answers: [alam]
+    words: [alam, menjaga, sampah]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: الشط نضيف، مفيش زبالة.
+      ar: الشاطئ نظيف، ولا توجد نفايات.
+      en: The beach is clean; there's no rubbish.
+    answer: Pantainya bersih, tidak ada sampah.
+    distractors: [penyu, dia]
+    words: [sampah]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: السلحفاة لذيذة. عايز أشوفها تاني.
+      ar: السلحفاة لطيفة، أريد أن أراها مرة أخرى.
+      en: The turtle is cute. I want to see it again.
+    answers:
+      - Penyunya lucu. Saya ingin melihatnya lagi.
+      - Penyunya lucu. Saya ingin melihatnya lagi
+      - Penyunya lucu. Saya mau melihatnya lagi.
+      - Penyunya lucu. Aku ingin melihatnya lagi.
+      - Penyunya lucu. Aku mau melihatnya lagi.
+      - Penyu itu lucu. Saya ingin melihatnya lagi.
+      - Penyu itu lucu. Saya mau melihatnya lagi.
+      - Penyu itu lucu. Aku ingin melihatnya lagi.
+      - Penyunya lucu, saya ingin melihatnya lagi.
+    words: [penyu]
+  - id: e08
+    type: speaking
+    text: Terumbu karang itu indah. Kita harus menjaganya.
+    meaning:
+      ar_eg: الشعاب المرجانية دي حلوة. لازم نحافظ عليها.
+      ar: تلك الشعاب المرجانية جميلة، ويجب أن نحافظ عليها.
+      en: That coral reef is beautiful. We must protect it.
+    words: [terumbu karang, menjaga]
+  - id: e09
+    type: dictation
+    text: Kita harus menjaga alam dan lingkungan.
+    meaning:
+      ar_eg: لازم نحافظ على الطبيعة والبيئة.
+      ar: يجب أن نحافظ على الطبيعة والبيئة.
+      en: We must protect nature and the environment.
+    words: [alam, lingkungan, menjaga]
+dialogue:
+  title: Snorkeling di Senggigi
+  lines:
+    - speaker: Mas Rizal
+      text: Selamat datang di Senggigi! Pantainya bersih, ya?
+      ar_eg: أهلًا بيك في سنجيجي! الشط نضيف، صح؟
+      ar: أهلًا بك في سنغيغي! الشاطئ نظيف، أليس كذلك؟
+      en: Welcome to Senggigi! The beach is clean, isn't it?
+    - speaker: Mohamed
+      text: Ya, bersih sekali. Tidak ada sampah.
+      ar_eg: أيوه، نضيف أوي. مفيش زبالة خالص.
+      ar: نعم، نظيف جدًا، ولا توجد نفايات.
+      en: Yes, very clean. There's no rubbish.
+    - speaker: Mas Rizal
+      text: Di sana ada terumbu karang. Kadang-kadang ada penyu juga.
+      ar_eg: هناك فيه شعاب مرجانية. وساعات بيبقى فيه سلاحف كمان.
+      ar: هناك شعاب مرجانية، وأحيانًا توجد سلاحف بحرية أيضًا.
+      en: Over there is a coral reef. Sometimes there are turtles too.
+    - speaker: Mohamed
+      text: Wah, saya ingin melihatnya!
+      ar_eg: واو، نفسي أشوفها!
+      ar: رائع، أريد أن أراها!
+      en: Wow, I want to see them!
+    - speaker: Mas Rizal
+      text: Boleh, tapi jangan pegang karangnya. Kita harus menjaga alam.
+      ar_eg: ماشي، بس ماتلمسش المرجان. لازم نحافظ على الطبيعة.
+      ar: حسنًا، لكن لا تلمس المرجان. يجب أن نحافظ على الطبيعة.
+      en: Sure, but don't touch the coral. We have to protect nature.
+new_words:
+  - word: alam
+    pos: noun
+    ar_eg: الطبيعة
+    ar: الطبيعة
+    en: nature
+    arabic: عالم
+  - word: lingkungan
+    pos: noun
+    ar_eg: البيئة، المحيط
+    ar: البيئة
+    en: environment, surroundings
+  - word: sampah
+    pos: noun
+    ar_eg: زبالة
+    ar: نفايات، قمامة
+    en: rubbish, litter
+  - word: terumbu karang
+    pos: noun
+    ar_eg: شعاب مرجانية
+    ar: شعاب مرجانية
+    en: coral reef
+  - word: penyu
+    pos: noun
+    ar_eg: سلحفاة بحرية
+    ar: سلحفاة بحرية
+    en: sea turtle
+  - word: menjaga
+    pos: verb
+    ar_eg: يحافظ على، يحرس
+    ar: يحافظ على، يحرس
+    en: to look after, protect
+review:
+  status: draft
+  verified: false
