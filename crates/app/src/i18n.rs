@@ -463,6 +463,7 @@ pub enum Msg {
     Listen,
     Unverified,
     NoLocalGloss,
+    EnglishInChat,
     InThisSentence,
     Breakdown,
     Normalized,
@@ -1952,6 +1953,13 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (NoLocalGloss, En) => {
             "This word isn't in the local dictionary yet. You can teach it to Kabar from a source you trust."
         }
+        (EnglishInChat, ArEg) => {
+            "كلمة إنجليزي داخلة في الكلام، زي ما بنعمل إحنا كمان. إنت عارفها، فمش هتتحسب في كلماتك الجديدة."
+        }
+        (EnglishInChat, Ar) => "كلمة إنجليزية ممزوجة بالكلام. أنت تعرفها، فلن تُحسب ضمن كلماتك الجديدة.",
+        (EnglishInChat, En) => {
+            "An English word mixed into the chat. You know it, so it doesn't count as a new word."
+        }
         (InThisSentence, ArEg) => "في الجملة دي",
         (InThisSentence, Ar) => "في هذه الجملة",
         (InThisSentence, En) => "In this sentence",
@@ -2294,7 +2302,7 @@ pub fn part_of_speech(lang: UiLanguage, pos: &str) -> &str {
     use UiLanguage::*;
     let [arz, ar, en] = match pos {
         "noun" => ["اسم", "اسم", "noun"],
-        "proper_noun" => ["اسم علم", "اسم علم", "proper noun"],
+        "proper_noun" | "proper noun" => ["اسم علم", "اسم علم", "proper noun"],
         "verb" => ["فعل", "فعل", "verb"],
         "adjective" => ["صفة", "صفة", "adjective"],
         "adverb" => ["ظرف", "ظرف", "adverb"],

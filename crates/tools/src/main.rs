@@ -10,6 +10,7 @@ use std::path::PathBuf;
 use anyhow::Result;
 use clap::{Parser, Subcommand};
 
+mod bakeoff;
 mod bridge;
 mod freq;
 mod gloss;
@@ -51,6 +52,9 @@ enum Command {
     /// Golden sets for the runtime AI tasks.
     #[command(subcommand)]
     Golden(golden::Cmd),
+    /// The engine bake-off: run the golden sets, blind-judge, report routes.
+    #[command(subcommand)]
+    Bakeoff(bakeoff::Cmd),
     /// Offline packs per unit: manifests, Azure audio within the free quota, release tars.
     #[command(subcommand)]
     Packs(packs::Cmd),
@@ -74,6 +78,7 @@ fn main() -> Result<()> {
         Command::Bridge(cmd) => bridge::run(&root, cmd),
         Command::Levels(cmd) => levels::run(&root, cmd),
         Command::Golden(cmd) => golden::run(&root, cmd),
+        Command::Bakeoff(cmd) => bakeoff::run(&root, cmd),
         Command::Packs(cmd) => packs::run(&root, cmd),
         Command::Schemas { check } => schemas::run(&root, check),
         Command::Validate => {

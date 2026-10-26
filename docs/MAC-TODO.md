@@ -138,9 +138,11 @@ Uses the same Azure F0 key as step 5.4 (free; F0 never bills). All of BIPA 1–2
 
 This decides which free engine answers each AI task. Until it runs, every route in `prompts/routes.toml` is *provisional*, and its answers show a badge.
 
-- [ ] `brew install ollama`, then pull the two 4B SEA-LION v4 models (Gemma-SEA-LION-v4-4B-VL and Qwen-SEA-LION-v4-4B-VL at Q4). Exact `ollama pull` names will be in BAKEOFF.md with the runner.
-- [ ] Optional: add `DAYTONA_API_KEY` as an environment secret so the heavy 8–9B check can run there instead of the Mac.
-- [ ] Run the bake-off runner (command will be in BAKEOFF.md once it lands) and send me `bakeoff/runs/`. I score it blind with you, then write `docs/bakeoff-report.md` and the final `prompts/routes.toml`.
+- [ ] Add `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_API_TOKEN` (template "Workers AI") and `GEMINI_API_KEY` to `.env` ([BAKEOFF.md](BAKEOFF.md) "Running it" step 1).
+- [ ] `brew install ollama`, start it, then `ollama pull aisingapore/Gemma-SEA-LION-v4-4B-VL` (and the Qwen 4B if you find its tag; BAKEOFF.md step 2).
+- [ ] `just bakeoff-smoke`: a few minutes, 3 items per task. Send me the last lines if anything says *stopped* or *unreachable*.
+- [ ] `just bakeoff` overnight. If it stops on Workers AI's daily limit, run it again the next day; it carries on where it stopped.
+- [ ] Push `bakeoff/runs/<date>/` or zip and send it. I judge it blind, then write `docs/bakeoff-report.md` and the final `prompts/routes.toml`.
 - [ ] Spot-check at least 10% of the scored items, plus every Javanese one.
 
 ## 7b. Teach Kabar (~10 min, after Kabar Cloud is up) — [RUN.md §8](RUN.md)
