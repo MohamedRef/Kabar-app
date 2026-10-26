@@ -1,0 +1,72 @@
+schema: kabar.grammar/v1
+id: id.time.calendar
+language: id
+level: bipa1
+title:
+  target: hari, tanggal, bulan, tahun
+  en: Days, dates, months and years
+  ar_eg: الأيام والتواريخ والشهور
+  ar: الأيام والتواريخ والشهور والسنوات
+summary:
+  ar_eg: "أغلب أيام الأسبوع عربي! والتاريخ بيتكتب يوم/شهر/سنة: Senin, 17 Agustus 2026."
+  ar: معظم أسماء أيام الأسبوع عربية، والتاريخ يُكتب يومًا ثم شهرًا ثم سنة.
+  en: Most weekday names come from Arabic; dates go day–month–year.
+pattern:
+  - hari + day name (hari Senin)
+  - tanggal + number + month + tahun + year
+  - "Hari ini hari apa? · Tanggal berapa?"
+explanation:
+  ar_eg: |
+    أيام الأسبوع: Senin (الاتنين)، Selasa (التلات)، Rabu (الأربع)، Kamis (الخميس)، Jumat (الجمعة)، Sabtu (السبت)، Minggu (الحد).
+    شايف؟ ستة من سبعة عربي. Minggu من البرتغالي (domingo)، وفيه Ahad كمان بس أقل.
+    الشهور شبه الإنجليزي: Januari، Februari، Maret، April، Mei، Juni، Juli، Agustus، September، Oktober، November، Desember.
+    التاريخ: tanggal 17 Agustus 2026 = ١٧ أغسطس ٢٠٢٦ (اليوم الأول، زي عندنا).
+    السنة: tahun dua ribu dua puluh enam = سنة ٢٠٢٦.
+    أسئلة: Hari ini hari apa? = النهارده إيه؟ — Tanggal berapa? = النهارده كام في الشهر؟
+  ar: |
+    أيام الأسبوع: Senin (الاثنين)، Selasa (الثلاثاء)، Rabu (الأربعاء)، Kamis (الخميس)، Jumat (الجمعة)، Sabtu (السبت)، Minggu (الأحد).
+    ستة منها عربية الأصل، وMinggu برتغالية (domingo)، ويقال Ahad أيضًا.
+    والشهور قريبة من الإنجليزية: Januari ... Desember.
+    ويُكتب التاريخ يومًا فشهرًا فسنة: tanggal 17 Agustus 2026.
+    والسنة تُقرأ عددًا: tahun dua ribu dua puluh enam.
+    ويُسأل: Hari ini hari apa؟ = ما اليوم؟ — Tanggal berapa؟ = ما التاريخ؟
+  en: |
+    Weekdays: Senin (Mon), Selasa (Tue), Rabu (Wed), Kamis (Thu), Jumat (Fri), Sabtu (Sat), Minggu (Sun).
+    Six of seven are Arabic; Minggu is Portuguese (domingo), and Ahad also exists.
+    Months look like English: Januari, Februari, Maret, April, Mei, Juni, Juli, Agustus, September, Oktober, November, Desember.
+    Dates: tanggal 17 Agustus 2026 (day first).
+    Years are read as numbers: tahun dua ribu dua puluh enam.
+    Questions: Hari ini hari apa? = What day is it? — Tanggal berapa? = What's the date?
+examples:
+  - text: Hari ini hari Jumat.
+    en: Today is Friday.
+    ar_eg: النهارده الجمعة.
+    ar: اليوم يوم الجمعة.
+  - text: Ulang tahun saya tanggal dua belas Maret.
+    en: My birthday is on 12 March.
+    ar_eg: عيد ميلادي يوم ١٢ مارس.
+    ar: عيد ميلادي في الثاني عشر من مارس.
+  - text: Indonesia merdeka pada tanggal 17 Agustus 1945.
+    en: Indonesia became independent on 17 August 1945.
+    ar_eg: إندونيسيا استقلت يوم ١٧ أغسطس ١٩٤٥.
+    ar: استقلت إندونيسيا في السابع عشر من أغسطس ١٩٤٥.
+  - text: Kita libur hari Sabtu dan Minggu.
+    en: We're off on Saturday and Sunday.
+    ar_eg: إحنا أجازة السبت والحد.
+    ar: عطلتنا السبت والأحد.
+mistakes:
+  - wrong: Minggu = week only
+    right: Minggu = Sunday; minggu = week
+    why:
+      ar_eg: "نفس الكلمة: بحرف كبير الحد، وبحرف صغير الأسبوع (dua minggu = أسبوعين)."
+      ar: الكلمة نفسها تعني الأحد والأسبوع (dua minggu = أسبوعان).
+      en: The same word means Sunday and week (dua minggu = two weeks).
+arabic_bridge:
+  ar_eg: Senin ← الاتنين، Selasa ← التلات، Rabu ← الأربع، Kamis ← الخميس، Jumat ← الجمعة، Sabtu ← السبت. هدية جاهزة لك!
+  ar: Senin ← الاثنين، Selasa ← الثلاثاء، Rabu ← الأربعاء، Kamis ← الخميس، Jumat ← الجمعة، Sabtu ← السبت.
+  en: Senin ← الاثنين, Selasa ← الثلاثاء, Rabu ← الأربعاء, Kamis ← الخميس, Jumat ← الجمعة, Sabtu ← السبت.
+tags: [time, calendar, arabic-loan]
+see_also: [id.time.clock, id.number.ordinal, id.question.kapan-berapa]
+review:
+  status: draft
+  verified: false

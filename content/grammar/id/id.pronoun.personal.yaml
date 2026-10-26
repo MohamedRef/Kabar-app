@@ -1,0 +1,94 @@
+schema: kabar.grammar/v1
+id: id.pronoun.personal
+language: id
+level: bipa1
+title:
+  target: saya, aku, kamu, Anda, dia, kami, kita, kalian, mereka
+  en: Personal pronouns
+  ar_eg: الضماير الشخصية
+  ar: الضمائر الشخصية
+summary:
+  ar_eg: الضماير مابتتغيرش أبدًا (لا مذكر ولا مؤنث ولا فاعل ولا مفعول)، بس فيه اختيار بين رسمي وعادي، وفيه «إحنا» نوعين.
+  ar: الضمائر لا تتغير بالتذكير والتأنيث ولا بالإعراب، لكن فيها تمييز بين الرسمي وغير الرسمي، وضميران للمتكلمين.
+  en: Pronouns never change for gender or case; you choose by politeness, and "we" comes in two kinds.
+pattern:
+  - "1sg: saya (polite/neutral) · aku (close/informal)"
+  - "2sg: Anda (formal, neutral) · kamu (close) · Bapak / Ibu / Mas / Mbak (respectful)"
+  - "3sg: dia / ia (he, she) · beliau (respected person)"
+  - "1pl: kami (we, not you) · kita (we, including you)"
+  - "2pl: kalian · 3pl: mereka"
+explanation:
+  ar_eg: |
+    خبر حلو: مفيش مذكر ومؤنث خالص! dia يعني «هو» أو «هي»، وkamu يعني «إنتَ» أو «إنتِ».
+    ومفيش تغيير لو الضمير فاعل أو مفعول: Saya melihat dia = أنا شفته / شفتها، Dia melihat saya = هو شافني.
+    الاختيار المهم هو مستوى الأدب:
+    - saya: «أنا» المؤدبة اللي تنفع مع أي حد. aku للصحاب والعيلة.
+    - kamu: «إنت» بين الصحاب أو للأصغر منك. Anda: رسمية ومحايدة (إعلانات، فورمات، ناس متعرفهمش)، بس في الكلام وش لوش بتبان باردة شوية.
+      الأحسن في الكلام مع حد أكبر منك أو مش صاحبك إنك تقوله Bapak / Ibu (زي «حضرتك»).
+    - beliau: «هو/هي» لحد محترم (مدرس، رئيس، شيخ).
+    - إحنا نوعين: kami = إحنا من غيرك (أنا وصحابي، مش إنت). kita = إحنا وإنت معانا. Kita makan yuk = يلا ناكل (كلنا).
+    في جاكرتا هتسمع gue (أنا) وlo / lu (إنت) — دي عامية جاكرتا، بنفهمها بس مش بنبدأ بيها.
+  ar: |
+    لا تمييز بين المذكر والمؤنث: dia تعني «هو» و«هي»، وkamu تعني «أنتَ» و«أنتِ».
+    ولا يتغير الضمير بموقعه في الجملة: Saya melihat dia = رأيتُه / رأيتُها، وDia melihat saya = رآني.
+    والمعيار الأساسي هو درجة التأدب:
+    - saya: ضمير المتكلم المؤدب الصالح لكل مقام، وaku للأصدقاء والأهل.
+    - kamu: للمخاطب القريب أو الأصغر، وAnda: رسمي محايد (الإعلانات والاستمارات ومن لا تعرفه)، وقد يبدو جافًا في المشافهة.
+      والأليق مع الأكبر سنًا أو الغريب أن يُخاطب بـ Bapak / Ibu بمنزلة «حضرتك».
+    - beliau: للغائب المحترم كالمعلم أو الرئيس أو العالِم.
+    - للمتكلمين ضميران: kami = نحن دون المخاطَب، وkita = نحن ومعنا المخاطَب.
+    وفي جاكرتا يُسمع gue (أنا) وlo / lu (أنت)، وهي عامية تُفهم ولا يُبدأ بها.
+  en: |
+    No gender at all: dia is "he" or "she", kamu is "you" for anyone.
+    No case either: Saya melihat dia = I see him/her; Dia melihat saya = He/she sees me.
+    What you choose is politeness:
+    - saya: the safe, polite "I". aku: with friends and family.
+    - kamu: "you" for friends and younger people. Anda: formal, neutral (ads, forms, strangers in writing) but can feel cold face to face.
+      With anyone older or not close, say Bapak / Ibu instead of "you" — like Egyptian «حضرتك».
+    - beliau: "he/she" for a respected person (teacher, president, scholar).
+    - Two "we"s: kami = we without you; kita = we including you. Kita makan, yuk = Let's eat (all of us).
+    In Jakarta you will hear gue (I) and lo / lu (you): Jakarta slang — understand it, don't lead with it.
+examples:
+  - text: Saya dari Mesir.
+    en: I'm from Egypt.
+    ar_eg: أنا من مصر.
+    ar: أنا من مصر.
+  - text: Aku capek banget.
+    en: I'm so tired.
+    ar_eg: أنا تعبان أوي.
+    ar: أنا متعب جدًا.
+    register: informal
+  - text: Dia guru saya.
+    en: He/She is my teacher.
+    ar_eg: هو / هي المدرس بتاعي.
+    ar: هو معلمي / هي معلمتي.
+  - text: Kami orang Mesir, kalian orang Indonesia.
+    en: We are Egyptians; you (all) are Indonesians.
+    ar_eg: إحنا مصريين، وإنتوا إندونيسيين.
+    ar: نحن مصريون، وأنتم إندونيسيون.
+  - text: Kita makan di sini, yuk!
+    en: Let's eat here!
+    ar_eg: يلا ناكل هنا!
+    ar: هيا نأكل هنا!
+mistakes:
+  - wrong: Kami makan, yuk! (inviting the listener)
+    right: Kita makan, yuk!
+    why:
+      ar_eg: لو بتعزم اللي قدامك يبقى هو معاك، يعني kita. kami معناها إنه مش معانا.
+      ar: الدعوة تشمل المخاطَب فيلزم kita، أما kami فتخرجه.
+      en: An invitation includes the listener, so it must be kita; kami excludes them.
+  - wrong: Kamu mau kopi? (to an older stranger)
+    right: Bapak mau kopi?
+    why:
+      ar_eg: kamu مع حد أكبر منك قليلة ذوق شوية، زي ما تقول لحد كبير «إنت» من غير «حضرتك».
+      ar: مخاطبة الأكبر بـ kamu تُعدّ قلة تأدب، كمن يخاطب كبيرًا بـ«أنت» بلا تلطّف.
+      en: kamu to an older stranger sounds rude, like skipping «حضرتك».
+arabic_bridge:
+  ar_eg: عكس العربي اللي فيه «إنتَ / إنتِ / إنتوا / إنتو»، الإندونيسي بيفرّق بالأدب مش بالجنس. وkami / kita شبه الفرق اللي مش موجود عندنا بين «إحنا من غيرك» و«إحنا وإنت».
+  ar: بخلاف العربية التي تميز الضمائر بالجنس والعدد، تميز الإندونيسية بدرجة التأدب، وتفرق بين «نحن» الشاملة للمخاطَب (kita) وغير الشاملة (kami)، وهو تمييز لا تعرفه العربية.
+  en: Arabic marks gender in pronouns; Indonesian marks politeness instead, and splits "we" into inclusive kita and exclusive kami — a distinction Arabic lacks.
+tags: [pronoun, politeness]
+see_also: [id.address.terms, id.possessive]
+review:
+  status: draft
+  verified: false

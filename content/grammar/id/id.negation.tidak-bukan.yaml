@@ -1,0 +1,81 @@
+schema: kabar.grammar/v1
+id: id.negation.tidak-bukan
+language: id
+level: bipa1
+title:
+  target: tidak, bukan (nggak, gak)
+  en: "Negation: tidak vs bukan"
+  ar_eg: "النفي: tidak ولا bukan؟"
+  ar: "النفي: tidak و bukan"
+summary:
+  ar_eg: "tidak قبل الفعل والصفة، bukan قبل الاسم والضمير. وفي الكلام: nggak / gak."
+  ar: tidak لنفي الفعل والصفة، وbukan لنفي الاسم، وفي العامية nggak / gak.
+  en: "tidak negates verbs and adjectives; bukan negates nouns and pronouns. Casual: nggak / gak."
+pattern:
+  - tidak + verb / adjective
+  - bukan + noun / pronoun
+  - "…, bukan? (tag: isn't it?)"
+  - bukan …, tetapi … (not X but Y)
+explanation:
+  ar_eg: |
+    القاعدة بسيطة:
+    - tidak = «مش / ما…ش» مع الأفعال والصفات: Saya tidak makan daging = مابكلش لحمة. Rumahnya tidak besar = بيته مش كبير.
+    - bukan = «مش» مع الأسماء: Saya bukan orang Malaysia = أنا مش ماليزي. Itu bukan buku saya = ده مش كتابي.
+    - bukan للتصحيح: Bukan kopi, tapi teh = مش قهوة، شاي.
+    - …, bukan? في الآخر = «مش كده؟»: Kamu orang Mesir, bukan? = إنت مصري، مش كده؟ (في الكلام: kan?)
+    في الكلام العادي tidak بتبقى nggak / gak / ga (والشات gk / g). وفي جاوة ora بالجاوي.
+    الرد المختصر: Tidak = لأ، وBukan = «لأ مش هو».
+  ar: |
+    القاعدة:
+    - tidak = «لا / ليس» قبل الفعل والصفة: Saya tidak makan daging = لا آكل اللحم. Rumahnya tidak besar = بيته ليس كبيرًا.
+    - bukan = «ليس» قبل الاسم والضمير: Saya bukan orang Malaysia = لستُ ماليزيًا.
+    - وللاستدراك: Bukan kopi, tapi teh = ليس قهوة بل شاي.
+    - وفي ذيل السؤال: Kamu orang Mesir, bukan؟ = أنت مصري، أليس كذلك؟ (وفي العامية kan).
+    وتصير tidak في العامية nggak / gak / ga، وفي المحادثات gk.
+  en: |
+    The rule:
+    - tidak = not, with verbs and adjectives: Saya tidak makan daging = I don't eat meat. Rumahnya tidak besar = The house isn't big.
+    - bukan = not, with nouns and pronouns: Saya bukan orang Malaysia = I'm not Malaysian. Itu bukan buku saya = That's not my book.
+    - Correction: Bukan kopi, tapi teh = Not coffee — tea.
+    - Tag question: Kamu orang Mesir, bukan? = You're Egyptian, aren't you? (casual: kan?)
+    Casual tidak becomes nggak / gak / ga (chat: gk, g). Javanese uses ora.
+examples:
+  - text: Saya tidak suka kopi.
+    en: I don't like coffee.
+    ar_eg: مابحبش القهوة.
+    ar: لا أحب القهوة.
+  - text: Dia bukan guru, dia dokter.
+    en: He's not a teacher, he's a doctor.
+    ar_eg: هو مش مدرس، هو دكتور.
+    ar: ليس معلمًا، بل طبيب.
+  - text: Ini halal, bukan?
+    en: This is halal, isn't it?
+    ar_eg: ده حلال، مش كده؟
+    ar: هذا حلال، أليس كذلك؟
+  - text: gk papa kok
+    en: It's fine, really. (chat — nggak apa-apa)
+    ar_eg: مفيش مشكلة والله.
+    ar: لا بأس حقًا.
+    register: chat
+mistakes:
+  - wrong: Saya tidak orang Malaysia.
+    right: Saya bukan orang Malaysia.
+    why:
+      ar_eg: orang اسم، يبقى bukan.
+      ar: orang اسم، فيُنفى بـ bukan.
+      en: orang is a noun, so use bukan.
+  - wrong: Rumahnya bukan besar.
+    right: Rumahnya tidak besar.
+    why:
+      ar_eg: besar صفة، يبقى tidak.
+      ar: besar صفة، فتُنفى بـ tidak.
+      en: besar is an adjective, so use tidak.
+arabic_bridge:
+  ar_eg: "في المصري «مش» بتنفع للاتنين، فالإندونيسي محتاج انتباه هنا. فكّر: bukan ≈ «ليس» مع الأسماء، tidak ≈ «لا / ما» مع الأفعال. و«bukan?» في الآخر = «مش كده؟»."
+  ar: يقارب bukan «ليس» في نفي الجملة الاسمية، وtidak «لا» في نفي الفعل.
+  en: "Egyptian «مش» covers both, so watch out: bukan ≈ ليس (nouns), tidak ≈ لا / ما (verbs, adjectives)."
+tags: [negation]
+see_also: [id.aspect.markers, id.prohibition.jangan]
+review:
+  status: draft
+  verified: false

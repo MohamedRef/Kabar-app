@@ -1,0 +1,76 @@
+schema: kabar.grammar/v1
+id: id.pattern.sakit
+language: id
+level: bipa2
+title:
+  target: sakit kepala, kepala saya sakit, merasa …
+  en: Saying what hurts
+  ar_eg: عندي صداع / راسي بتوجعني
+  ar: التعبير عن الألم والمرض
+summary:
+  ar_eg: "طريقتين: Saya sakit kepala = عندي صداع، أو Kepala saya sakit = راسي بتوجعني. وSakit apa? = عندك إيه؟"
+  ar: "طريقتان: Saya sakit kepala = عندي صداع، أو Kepala saya sakit = رأسي يؤلمني."
+  en: Two patterns — Saya sakit kepala (I have a headache) or Kepala saya sakit (my head hurts); Sakit apa? = What's wrong?
+pattern:
+  - Saya + sakit + body part (sakit perut, sakit gigi)
+  - body part + saya + sakit
+  - Saya merasa + adjective (pusing, mual, lemas)
+  - Saya + kena / masuk angin / demam / flu / batuk / pilek
+explanation:
+  ar_eg: |
+    sakit = عيان / بيوجع:
+    - Saya sakit = أنا عيان. Dia sakit apa? = عنده إيه؟
+    - sakit + جزء في الجسم = وجع: sakit kepala = صداع، sakit perut = مغص، sakit gigi = وجع سنان، sakit tenggorokan = التهاب زور.
+    - أو بالعكس: Perut saya sakit = بطني بتوجعني.
+    - merasa = حاسس: Saya merasa pusing = حاسس بدوخة، mual = غمّة نفس، lemas = هبوط.
+    - أمراض شائعة: demam = سخونية، batuk = كحة، pilek = رشح، masuk angin = برد (حرفيًا «دخل فيه هوا» — فكرة شعبية إندونيسية).
+    عند الدكتور: Sudah berapa lama? = بقالك قد إيه؟ — Sejak kemarin = من امبارح.
+  ar: |
+    sakit = مريض / يؤلم:
+    - Saya sakit = أنا مريض، وDia sakit apa؟ = ما مرضه؟
+    - sakit + عضو = ألم فيه: sakit kepala = صداع، sakit perut = ألم في البطن، sakit gigi = ألم الأسنان.
+    - أو العكس: Perut saya sakit = بطني يؤلمني.
+    - merasa = يشعر: merasa pusing = دوار، mual = غثيان، lemas = وهن.
+    - أمراض شائعة: demam = حمى، batuk = سعال، pilek = زكام، masuk angin = نزلة برد (مفهوم شعبي).
+  en: |
+    sakit = ill / hurting:
+    - Saya sakit = I'm ill. Dia sakit apa? = What's wrong with him?
+    - sakit + body part = ache: sakit kepala (headache), sakit perut (stomach ache), sakit gigi (toothache), sakit tenggorokan (sore throat).
+    - Or reversed: Perut saya sakit = My stomach hurts.
+    - merasa = feel: merasa pusing (dizzy), mual (nauseous), lemas (weak).
+    - Common: demam (fever), batuk (cough), pilek (runny nose), masuk angin ("wind got in" — a folk notion of a chill).
+    At the doctor's: Sudah berapa lama? — Sejak kemarin.
+examples:
+  - text: Dok, saya sakit perut sejak tadi malam.
+    en: Doctor, I've had a stomach ache since last night.
+    ar_eg: يا دكتور، عندي مغص من امبارح بالليل.
+    ar: يا دكتور، أشعر بألم في بطني منذ الليلة الماضية.
+  - text: Kepala saya pusing dan badan saya lemas.
+    en: I feel dizzy and weak.
+    ar_eg: راسي دايخة وجسمي هبطان.
+    ar: أشعر بالدوار والوهن.
+  - text: Kamu sakit apa? — Cuma masuk angin.
+    en: What's wrong? — Just a chill.
+    ar_eg: عندك إيه؟ — شوية برد بس.
+    ar: ما بك؟ — مجرد نزلة برد.
+    register: informal
+  - text: Minum obat ini tiga kali sehari sesudah makan.
+    en: Take this medicine three times a day after meals.
+    ar_eg: خد الدوا ده ٣ مرات في اليوم بعد الأكل.
+    ar: تناول هذا الدواء ثلاث مرات يوميًا بعد الطعام.
+mistakes:
+  - wrong: Saya punya sakit kepala.
+    right: Saya sakit kepala.
+    why:
+      ar_eg: مش محتاج punya (عندي)؛ sakit kepala لوحدها كفاية.
+      ar: لا حاجة إلى punya.
+      en: No punya ("have") needed.
+arabic_bridge:
+  ar_eg: «راسي بتوجعني» = Kepala saya sakit بنفس الترتيب. وكلمة sehat (صحيح/سليم) جاية من «صحة».
+  ar: sehat من «صحة»، والتركيب Kepala saya sakit يطابق «رأسي يؤلمني».
+  en: Kepala saya sakit mirrors «راسي بتوجعني»; sehat ← «صحة».
+tags: [health, body, pattern]
+see_also: [id.hope.semoga, id.duration]
+review:
+  status: draft
+  verified: false
