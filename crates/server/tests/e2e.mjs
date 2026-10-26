@@ -9,7 +9,7 @@
 // same server. KABAR_E2E_SKIP_APP=1 skips that part.
 
 import { spawn, execFileSync } from "node:child_process";
-import { generateKeyPairSync, createSign, randomBytes } from "node:crypto";
+import { generateKeyPairSync, createSign, createHash, randomBytes } from "node:crypto";
 import { createServer } from "node:http";
 import { writeFileSync, rmSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -219,6 +219,29 @@ assert.equal(noKey.json.kind, "unavailable");
 const vault = await api("GET", "/v1/vault", { token: tablet.json.access_token });
 assert.equal(vault.json.tts_configured, false);
 assert.equal(vault.json.push_configured, false);
+
+step("vision: images are uploaded by hash, then named in the AI call");
+const png = Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]), randomBytes(64)]);
+const sha = createHash("sha256").update(png).digest("hex");
+const putBlob = (name, bytes) =>
+  fetch(`${BASE}/v1/blobs/${name}`, {
+    method: "PUT",
+    headers: { "content-type": "image/png", authorization: `Bearer ${tablet.json.access_token}` },
+    body: bytes,
+  });
+assert.equal((await putBlob(sha, png)).status, 204);
+assert.equal((await putBlob(sha, Buffer.from("<svg/>"))).status, 400, "the body must match its name");
+assert.equal((await putBlob("0".repeat(64), png)).status, 400);
+const sketch = { ...call("guess_sketch", "workers_ai"), personal: true, user: "What is this drawing?" };
+const missing = await api("POST", "/v1/ai", { token: tablet.json.access_token, body: { ...sketch, image_sha256: "f".repeat(64) } });
+assert.equal(missing.status, 404);
+assert.equal(missing.json.code, "blob_missing");
+// The local Worker has no AI binding: the call gets past the blob store to the engine.
+const seen = await api("POST", "/v1/ai", { token: tablet.json.access_token, body: { ...sketch, image_sha256: sha } });
+assert.equal(seen.status, 503);
+assert.equal(seen.json.kind, "unavailable");
+const noImage = await api("POST", "/v1/ai", { token: tablet.json.access_token, body: sketch });
+assert.equal(noImage.status, 502, "a vision task needs an image");
 
 step("remote sign-out from the tablet closes the phone's socket");
 const revoked = await api("DELETE", "/v1/devices/s24u", { token: refreshed.json.access_token });

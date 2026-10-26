@@ -17,7 +17,7 @@ Every dataset, corpus, font and sound used by Kabar, with its license.
 
 Glosses, examples, Arabic Bridge cards, the Javanese speech-level table and the golden sets under `content/glosses/`, `content/bridge/`, `content/javanese/` and `content/golden/` are original, written for Kabar with Claude Code (`prompts/gloss@v1.md`, `prompts/gloss-jv@v1.md`, `prompts/bridge@v1.md`, `prompts/speech-levels@v1.md`) and reviewed by the learner; Javanese stays unverified until a native speaker checks it. The golden screenshots in `fixtures/golden/` are synthetic, rendered for Kabar with fictional people. The About screen must credit Wiktionary (CC BY-SA) and the frequency sources above.
 
-Kak Nur's lines (`content/coach/`), Kabar Pagi stories (`content/pagi/`) and Pasar! seller lines (`content/games/`) are original, written for Kabar with Claude Code and reviewed by the learner.
+Kak Nur's lines (`content/coach/`), Kabar Pagi stories (`content/pagi/`) and Pasar! seller lines, Unggah-Ungguh scenes and Minimal Pairs (`content/games/`) are original, written for Kabar with Claude Code and reviewed by the learner.
 
 ## Curriculum references
 Cited for structure only (unit titles, grammar topics, competency wording); no text or
