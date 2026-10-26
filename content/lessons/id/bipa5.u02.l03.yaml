@@ -1,0 +1,179 @@
+schema: kabar.lesson/v1
+id: bipa5.u02.l03
+language: id
+title: Pindah ibu kota
+can_do:
+  ar_eg: تقرا مقال عن سياسة نقل العاصمة وتفهم الحجج اللي فيه.
+  ar: أن تقرأ مقالة عن سياسة نقل العاصمة وتفهم حججها.
+  en: Read an article on the capital-relocation policy and follow its arguments.
+slides:
+  - title: Membaca artikel kebijakan
+    body:
+      ar_eg: |
+        اقرا الفقرة دي من جورنال:
+        Pemerintah Indonesia memutuskan untuk memindahkan ibu kota dari Jakarta ke Nusantara di Kalimantan Timur. Alasan utamanya adalah beban Jakarta yang terlalu berat: kemacetan, banjir, dan penurunan tanah. Meskipun demikian, para kritikus khawatir pembangunan kota baru akan merusak hutan dan menelan anggaran negara yang besar.
+        مقال السياسة عادةً ماشي كده: القرار (memutuskan)، السبب (alasan utama)، وبعدين الاعتراض (para kritikus khawatir).
+      ar: |
+        اقرأ هذه الفقرة من صحيفة:
+        Pemerintah Indonesia memutuskan untuk memindahkan ibu kota dari Jakarta ke Nusantara di Kalimantan Timur. Alasan utamanya adalah beban Jakarta yang terlalu berat: kemacetan, banjir, dan penurunan tanah. Meskipun demikian, para kritikus khawatir pembangunan kota baru akan merusak hutan dan menelan anggaran negara yang besar.
+        تسير مقالة السياسات عادةً هكذا: القرار (memutuskan)، ثم السبب (alasan utama)، ثم الاعتراض (para kritikus khawatir).
+      en: |
+        Read this newspaper paragraph:
+        Pemerintah Indonesia memutuskan untuk memindahkan ibu kota dari Jakarta ke Nusantara di Kalimantan Timur. Alasan utamanya adalah beban Jakarta yang terlalu berat: kemacetan, banjir, dan penurunan tanah. Meskipun demikian, para kritikus khawatir pembangunan kota baru akan merusak hutan dan menelan anggaran negara yang besar.
+        A policy article usually runs: the decision (memutuskan), the reason (alasan utama), then the objection (para kritikus khawatir).
+    examples:
+      - text: Para kritikus khawatir anggaran negara tidak cukup.
+        ar_eg: النقاد قلقانين إن ميزانية الدولة مش هتكفي.
+        ar: يخشى النقّاد ألّا تكفي ميزانية الدولة.
+        en: Critics worry the state budget won't be enough.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: memutuskan
+        ar_eg: يقرر
+        ar: يقرّر
+        en: to decide
+      - text: alasan
+        ar_eg: سبب
+        ar: سبب
+        en: reason
+      - text: anggaran
+        ar_eg: ميزانية
+        ar: ميزانية
+        en: budget
+      - text: kritikus
+        ar_eg: ناقد
+        ar: ناقد
+        en: critic
+      - text: khawatir
+        ar_eg: قلقان
+        ar: قلِق
+        en: worried
+    words: [memutuskan, alasan, anggaran, kritikus, khawatir]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حسب المقال، إيه السبب الأساسي لنقل العاصمة؟
+      ar: بحسب المقالة، ما السبب الرئيسي لنقل العاصمة؟
+      en: According to the article, what is the main reason for the move?
+    options:
+      - إن جاكرتا عليها ضغط كبير قوي.
+      - إن كاليمانتان فيها بترول.
+      - إن الحكومة عايزة توفّر فلوس.
+    answer: 0
+    words: [alasan]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: النقاد قلقانين من إيه؟
+      ar: مِمّ يقلق النقّاد؟
+      en: What are the critics worried about?
+    options:
+      - الزحمة في نوسانتارا.
+      - الزلازل في جاكرتا.
+      - الغابة وميزانية الدولة.
+    answer: 2
+    words: [kritikus, khawatir, anggaran]
+  - id: e04
+    type: fill_blank
+    sentence: Pemerintah ___ untuk memindahkan ibu kota ke Kalimantan Timur.
+    meaning:
+      ar_eg: الحكومة قررت تنقل العاصمة لشرق كاليمانتان.
+      ar: قرّرت الحكومة نقل العاصمة إلى شرق كاليمانتان.
+      en: The government decided to move the capital to East Kalimantan.
+    options: [memutuskan, khawatir, menolak]
+    answers: [memutuskan]
+    words: [memutuskan]
+  - id: e05
+    type: listen
+    text: Alasan utamanya adalah kemacetan dan banjir di Jakarta.
+    options:
+      - Alasan utamanya adalah kemacetan dan banjir di Jakarta.
+      - Alasan utamanya adalah anggaran dan hutan di Jakarta.
+      - Alasannya adalah kemacetan di Kalimantan.
+    answer: 0
+    words: [alasan]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: ناس كتير قلقانين إن الميزانية مش هتكفي.
+      ar: يخشى كثيرون ألّا تكفي الميزانية.
+      en: Many people are worried that the budget won't be enough.
+    answers:
+      - Banyak orang khawatir anggarannya tidak cukup.
+      - Banyak orang khawatir anggaran tidak cukup.
+      - Banyak orang khawatir bahwa anggarannya tidak cukup.
+      - Banyak orang khawatir anggarannya tidak akan cukup.
+    words: [khawatir, anggaran]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: النقاد شايفين إن المشروع ده بيضر الغابة.
+      ar: يرى النقّاد أن هذا المشروع يضرّ الغابة.
+      en: Critics think this project damages the forest.
+    answer: Para kritikus berpendapat bahwa proyek ini merusak hutan.
+    distractors: [memutuskan, anggaran]
+    words: [kritikus]
+  - id: e08
+    type: speaking
+    text: Pemerintah memutuskan untuk membangun ibu kota baru di Kalimantan.
+    meaning:
+      ar_eg: الحكومة قررت تبني عاصمة جديدة في كاليمانتان.
+      ar: قرّرت الحكومة بناء عاصمة جديدة في كاليمانتان.
+      en: The government decided to build a new capital in Kalimantan.
+    words: [memutuskan]
+dialogue:
+  title: Koran pagi
+  lines:
+    - speaker: Pak Hendra
+      text: Mohamed, sudah baca berita hari ini? Ada artikel panjang tentang Nusantara.
+      ar_eg: يا محمد، قريت أخبار النهارده؟ فيه مقال طويل عن نوسانتارا.
+      ar: يا محمد، هل قرأت أخبار اليوم؟ فيها مقالة طويلة عن نوسانتارا.
+      en: Mohamed, have you read today's news? There's a long article about Nusantara.
+    - speaker: Mohamed
+      text: Sudah, Pak. Alasannya jelas, tetapi para kritikus masih khawatir.
+      ar_eg: أيوه يا أستاذ. السبب واضح، بس النقاد لسه قلقانين.
+      ar: نعم يا أستاذ. السبب واضح، لكنّ النقّاد ما زالوا قلقين.
+      en: Yes, sir. The reason is clear, but the critics are still worried.
+    - speaker: Pak Hendra
+      text: Khawatir tentang apa, menurut artikel itu?
+      ar_eg: قلقانين من إيه، حسب المقال؟
+      ar: قلقون من أيّ شيء بحسب المقالة؟
+      en: Worried about what, according to the article?
+    - speaker: Mohamed
+      text: Tentang hutan dan anggaran negara. Biayanya ratusan triliun rupiah.
+      ar_eg: من الغابة وميزانية الدولة. التكلفة مئات التريليونات روبية.
+      ar: على الغابة وميزانية الدولة، فالتكلفة مئات التريليونات من الروبيات.
+      en: About the forest and the state budget. The cost is hundreds of trillions of rupiah.
+new_words:
+  - word: memutuskan
+    pos: verb
+    ar_eg: يقرر
+    ar: يقرّر
+    en: to decide
+  - word: alasan
+    pos: noun
+    ar_eg: سبب
+    ar: سبب
+    en: reason
+  - word: anggaran
+    pos: noun
+    ar_eg: ميزانية
+    ar: ميزانية
+    en: budget
+  - word: kritikus
+    pos: noun
+    ar_eg: ناقد
+    ar: ناقد
+    en: critic
+  - word: khawatir
+    pos: adjective
+    arabic: خاطر
+    ar_eg: قلقان
+    ar: قلِق
+    en: worried
+review:
+  status: draft
+  verified: false

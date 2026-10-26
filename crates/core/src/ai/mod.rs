@@ -315,11 +315,7 @@ impl Router {
             Err(e) => e,
         };
         call.is_repair = true;
-        call.user = format!(
-            "{}\n\nYour previous reply could not be used: {error}\nPrevious reply:\n{}\n\nReply again with only the corrected JSON object.",
-            call.user,
-            truncate(&reply.text, 4000),
-        );
+        call.user = repair_prompt(&call.user, &error, &reply.text);
         let reply = engine.call(call).await.map_err(AttemptError::Engine)?;
         decode::<T>(&reply.text, input)
             .map(|v| (v, json::extract_json(&reply.text).to_string()))
@@ -332,6 +328,15 @@ fn decode<T: AiOutput>(text: &str, input: &Value) -> Result<T, String> {
     v.validate()?;
     v.check(input)?;
     Ok(v)
+}
+
+/// The user turn of the one repair retry: the original prompt, why the
+/// reply was rejected, and the reply itself. The bake-off sends the same.
+pub fn repair_prompt(user: &str, error: &str, reply: &str) -> String {
+    format!(
+        "{user}\n\nYour previous reply could not be used: {error}\nPrevious reply:\n{}\n\nReply again with only the corrected JSON object.",
+        truncate(reply, 4000),
+    )
 }
 
 fn truncate(s: &str, max: usize) -> &str {
