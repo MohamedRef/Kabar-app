@@ -1,0 +1,177 @@
+schema: kabar.lesson/v1
+id: bipa4.u07.l07
+language: id
+title: Tips sehat di radio
+can_do:
+  ar_eg: تفهم نصايح صحية من دكتورة في الراديو وتلخّصها في جملة.
+  ar: أن تفهم نصائح صحية من طبيبة في الإذاعة وتلخّصها في جملة.
+  en: Follow a doctor's health tips on the radio and sum them up in a sentence.
+slides:
+  - title: Dokter Fitri di radio
+    body:
+      ar_eg: |
+        Dokter Fitri بتتكلم في راديو جورونتالو الصبح. اسمعها الأول، وبعدين اقرا.
+        هي بترتّب كلامها: Pertama، Kedua، Ketiga.
+      ar: |
+        تتحدّث Dokter Fitri صباحًا في إذاعة غورونتالو. استمع إليها أولًا ثم اقرأ.
+        وهي ترتّب كلامها: Pertama، Kedua، Ketiga.
+      en: |
+        Dokter Fitri is speaking on Gorontalo radio in the morning. Listen first, then read.
+        She orders her points: Pertama, Kedua, Ketiga.
+    examples:
+      - text: Halo, pendengar! Hari ini saya membagikan tiga tips sehat.
+        ar_eg: أهلًا يا مستمعين! النهارده هقولكم تلات نصايح صحية.
+        ar: مرحبًا أيها المستمعون! أقدّم لكم اليوم ثلاث نصائح صحية.
+        en: Hello, listeners! Today I'm sharing three health tips.
+      - text: Pertama, kurangi penggunaan garam dan gula. Kedua, berolahraga secara teratur, minimal tiga puluh menit sehari.
+        ar_eg: أولًا، قلّلوا الملح والسكر. تانيًا، اتمرّنوا بانتظام، على الأقل نص ساعة في اليوم.
+        ar: أولًا، قلّلوا استهلاك الملح والسكر. ثانيًا، مارسوا الرياضة بانتظام، ثلاثين دقيقة يوميًا على الأقل.
+        en: First, cut down on salt and sugar. Second, exercise regularly, at least thirty minutes a day.
+      - text: Ketiga, lakukan pemeriksaan rutin, karena gejala darah tinggi sering tidak terasa.
+        ar_eg: تالتًا، اكشفوا بانتظام، عشان أعراض الضغط العالي كتير مابتبانش.
+        ar: ثالثًا، أجروا فحوصًا دورية، لأن أعراض ارتفاع ضغط الدم كثيرًا ما لا يُشعر بها.
+        en: Third, have regular check-ups, because the symptoms of high blood pressure often go unnoticed.
+exercises:
+  - id: e01
+    type: listen
+    text: Hari ini saya membagikan tiga tips sehat.
+    question:
+      ar_eg: الدكتورة هتقول كام نصيحة؟
+      ar: كم نصيحة ستقدّم الطبيبة؟
+      en: How many tips will the doctor give?
+    options: [Dua, Tiga, Lima]
+    answer: 1
+    meaning:
+      ar_eg: النهارده هقولكم تلات نصايح صحية.
+      ar: أقدّم لكم اليوم ثلاث نصائح صحية.
+      en: Today I'm sharing three health tips.
+  - id: e02
+    type: listen
+    text: Pertama, kurangi penggunaan garam dan gula.
+    question:
+      ar_eg: لازم نقلّل إيه؟
+      ar: ماذا يجب أن نقلّل؟
+      en: What should we cut down on?
+    options: [Garam dan gula, Sayur dan buah, Air putih]
+    answer: 0
+    meaning:
+      ar_eg: أولًا، قلّلوا الملح والسكر.
+      ar: أولًا، قلّلوا استهلاك الملح والسكر.
+      en: First, cut down on salt and sugar.
+    words: [penggunaan]
+  - id: e03
+    type: listen
+    text: Kedua, berolahraga secara teratur, minimal tiga puluh menit sehari.
+    question:
+      ar_eg: أقل وقت للرياضة في اليوم قد إيه؟
+      ar: ما أقل مدة للرياضة يوميًا؟
+      en: What is the minimum exercise time per day?
+    options: [Sepuluh menit, Satu jam, Tiga puluh menit]
+    answer: 2
+    meaning:
+      ar_eg: تانيًا، اتمرّنوا بانتظام، على الأقل نص ساعة في اليوم.
+      ar: ثانيًا، مارسوا الرياضة بانتظام، ثلاثين دقيقة يوميًا على الأقل.
+      en: Second, exercise regularly, at least thirty minutes a day.
+    words: [teratur]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ليه الدكتورة بتنصح بالكشف الدوري؟
+      ar: لماذا تنصح الطبيبة بالفحص الدوري؟
+      en: Why does the doctor recommend regular check-ups?
+    options:
+      - Karena puskesmas buka setiap hari.
+      - Karena gejala darah tinggi sering tidak terasa.
+      - Karena olahraga itu berbahaya.
+    answer: 1
+    words: [gejala, darah tinggi]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: penggunaan
+        ar_eg: استعمال / استهلاك
+        ar: استعمال / استهلاك
+        en: use, consumption
+      - text: teratur
+        ar_eg: منتظم
+        ar: منتظم
+        en: regular
+      - text: gejala
+        ar_eg: عَرَض
+        ar: عَرَض
+        en: symptom
+      - text: darah tinggi
+        ar_eg: الضغط العالي
+        ar: ارتفاع ضغط الدم
+        en: high blood pressure
+      - text: pencegahan
+        ar_eg: وقاية
+        ar: وقاية
+        en: prevention
+    words: [penggunaan, teratur, gejala, darah tinggi, pencegahan]
+  - id: e06
+    type: dictation
+    text: Kurangi penggunaan garam dan gula.
+    meaning:
+      ar_eg: قلّلوا الملح والسكر.
+      ar: قلّلوا استهلاك الملح والسكر.
+      en: Cut down on salt and sugar.
+    words: [penggunaan]
+  - id: e07
+    type: fill_blank
+    sentence: Berolahraga secara ___ menguatkan jantung.
+    meaning:
+      ar_eg: الرياضة بانتظام بتقوّي القلب.
+      ar: ممارسة الرياضة بانتظام تقوّي القلب.
+      en: Regular exercise strengthens the heart.
+    options: [menular, teratur, parah]
+    answers: [teratur]
+    words: [teratur]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: اعمل كشف دوري، حتى لو مش حاسس إنك تعبان.
+      ar: أجرِ فحصًا دوريًا حتى لو لم تشعر بالمرض.
+      en: Have regular check-ups, even if you don't feel ill.
+    answers:
+      - Lakukan pemeriksaan rutin, walaupun Anda tidak merasa sakit.
+      - Lakukan pemeriksaan rutin, meskipun Anda tidak merasa sakit.
+      - Lakukan pemeriksaan rutin, walaupun kamu tidak merasa sakit.
+      - Lakukan pemeriksaan rutin, meskipun kamu tidak merasa sakit.
+      - Lakukan pemeriksaan rutin walaupun tidak merasa sakit.
+      - Lakukan pemeriksaan rutin meskipun tidak merasa sakit.
+      - Lakukanlah pemeriksaan rutin, walaupun Anda tidak merasa sakit.
+    words: [pemeriksaan, rutin]
+dialogue:
+  title: Setelah siaran
+  lines:
+    - speaker: Mas Rizal
+      text: Tadi pagi kamu dengar Dokter Fitri di radio?
+      ar_eg: سمعت Dokter Fitri في الراديو الصبح؟
+      ar: هل سمعت Dokter Fitri في الإذاعة صباح اليوم؟
+      en: Did you hear Dokter Fitri on the radio this morning?
+    - speaker: Mohamed
+      text: Dengar. Intinya, kurangi garam, olahraga teratur, dan periksa rutin.
+      ar_eg: "سمعتها. الخلاصة: قلّل الملح، واتمرّن بانتظام، واكشف بشكل دوري."
+      ar: "سمعتها. الخلاصة: قلّل الملح، ومارس الرياضة بانتظام، وافحص دوريًا."
+      en: I did. Basically, less salt, regular exercise and regular check-ups.
+    - speaker: Mas Rizal
+      text: Wah, ringkasanmu bagus sekali!
+      ar_eg: الله، تلخيصك حلو جدًا!
+      ar: رائع، تلخيصك ممتاز!
+      en: Wow, great summary!
+    - speaker: Mohamed
+      text: Saya mulai besok, tiga puluh menit jalan kaki setiap pagi.
+      ar_eg: هبدأ من بكرة، نص ساعة مشي كل يوم الصبح.
+      ar: سأبدأ غدًا، ثلاثين دقيقة من المشي كل صباح.
+      en: I'm starting tomorrow - thirty minutes' walk every morning.
+    - speaker: Mas Rizal
+      text: Saya ikut! Kita jalan bersama di taman kota.
+      ar_eg: أنا جاي معاك! نتمشّى سوا في جنينة البلد.
+      ar: سأنضمّ إليك! لنمشِ معًا في حديقة المدينة.
+      en: I'll join you! Let's walk together in the city park.
+new_words: []
+review:
+  status: draft
+  verified: false
