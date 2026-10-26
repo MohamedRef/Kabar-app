@@ -1,0 +1,194 @@
+schema: kabar.lesson/v1
+id: bipa5.u03.l09
+language: id
+title: Ulangan Unit 3
+can_do:
+  ar_eg: تشرح تكنولوجيا وأثرها بأسلوب رسمي، وتلخّص مقال عنها.
+  ar: أن تشرح تقنيةً وأثرها بأسلوب رسمي وتلخّص مقالة عنها.
+  en: Explain a technology and its effects formally, and summarise an article on it.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: penggunaan
+        ar_eg: استخدام
+        ar: استخدام
+        en: use
+      - text: pertumbuhan
+        ar_eg: نمو
+        ar: نموّ
+        en: growth
+      - text: bocor
+        ar_eg: يتسرّب
+        ar: يتسرّب
+        en: to leak
+      - text: ringkasan
+        ar_eg: ملخص
+        ar: ملخّص
+        en: summary
+      - text: jaminan
+        ar_eg: ضمان
+        ar: ضمان
+        en: guarantee
+    words: [penggunaan, pertumbuhan, bocor, ringkasan, jaminan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه الاسم اللي معناه «الأمان» من aman؟
+      ar: ما الاسم المجرّد من aman؟
+      en: What is the abstract noun from aman?
+    options: [pengamanan, keamanan, amanan]
+    answer: 1
+    explain:
+      ar_eg: الصفة + ke-…-an = الفكرة المجردة (الأمان).
+      ar: الصفة مع ke-…-an تعطي المعنى المجرد.
+      en: Adjective + ke-…-an gives the abstract idea.
+    words: [keamanan]
+  - id: e03
+    type: fill_blank
+    sentence: ___ jalan tol di Samarinda selesai tahun lalu.
+    meaning:
+      ar_eg: بناء الطريق السريع في ساماريندا خلص السنة اللي فاتت.
+      ar: اكتمل بناء الطريق السريع في ساماريندا العام الماضي.
+      en: Construction of the toll road in Samarinda finished last year.
+    options: [Pembangunan, Membangun, Dibangun]
+    answers: [Pembangunan]
+    words: [pembangunan]
+  - id: e04
+    type: listen
+    text: Pertumbuhan ekonomi digital sangat pesat, tetapi pekerjanya butuh jaminan.
+    question:
+      ar_eg: المتكلم بيقول إيه؟
+      ar: ماذا يقول المتكلّم؟
+      en: What does the speaker say?
+    options:
+      - الاقتصاد الرقمي بينمو بسرعة، بس العمال محتاجين ضمان.
+      - الاقتصاد الرقمي بيقل.
+      - العمال عندهم ضمان كويس.
+    answer: 0
+    words: [pertumbuhan, pesat, jaminan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: والنتيجة، بيانات المستخدمين اتسرّبت.
+      ar: ونتيجةً لذلك تسرّبت بيانات المستخدمين.
+      en: As a result, users' data leaked.
+    answer: Akibatnya, data pengguna bocor.
+    distractors: [mencegah, penggunaan]
+    words: [akibatnya, bocor]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: عشان نمنع الخطر ده، غيّر الباسورد بتاعك.
+      ar: لمنع هذا الخطر، غيّر كلمة مرورك.
+      en: To prevent this risk, change your password.
+    answers:
+      - Untuk mencegah risiko ini, ganti kata sandi Anda.
+      - Untuk mencegah risiko ini, ganti kata sandimu.
+      - Untuk mencegah risiko itu, ganti kata sandi Anda.
+      - Untuk mencegah risiko ini, gantilah kata sandi Anda.
+    words: [mencegah, risiko, kata sandi]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Artikel ini membahas perkembangan dompet digital.
+    answers_meaning:
+      ar_eg:
+        - المقال ده بيتكلم عن تطوّر المحافظ الإلكترونية.
+        - المقال ده بيناقش تطوّر المحفظة الإلكترونية.
+      ar:
+        - تتناول هذه المقالة تطوّر المحافظ الرقمية.
+        - تناقش هذه المقالة تطوّر المحفظة الرقمية.
+      en:
+        - This article discusses the development of e-wallets.
+        - This article discusses how digital wallets have developed.
+    words: [membahas, perkembangan, dompet digital]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إنت خلّصت عرضك. تقول إيه؟
+      ar: انتهيت من عرضك. ماذا تقول؟
+      en: You've finished your talk. What do you say?
+    options:
+      - Pertama-tama, saya akan membahas …
+      - Pada kesempatan ini, …
+      - Terima kasih atas perhatian Anda.
+    answer: 2
+    words: [perhatian]
+  - id: e09
+    type: dictation
+    text: Secara singkat, perubahan teknologi membawa kemudahan dan risiko.
+    meaning:
+      ar_eg: باختصار، تغيّر التكنولوجيا بيجيب سهولة ومخاطر.
+      ar: باختصار، يحمل تغيّر التقنية سهولةً ومخاطر.
+      en: In short, technological change brings convenience and risks.
+    words: [secara singkat, perubahan, kemudahan, risiko]
+  - id: e10
+    type: speaking
+    text: Gagasan utama artikel ini adalah keamanan data pribadi.
+    meaning:
+      ar_eg: الفكرة الأساسية في المقال ده هي أمان البيانات الشخصية.
+      ar: الفكرة الرئيسة في هذه المقالة أمن البيانات الشخصية.
+      en: The main idea of this article is personal data security.
+    words: [gagasan utama, keamanan]
+  - id: e11
+    type: fill_blank
+    sentence: Saya membeli batik lewat ___, lalu barangnya diantar ojek daring.
+    meaning:
+      ar_eg: اشتريت باتيك من بث مباشر، وبعدين الأوجيك وصّلها.
+      ar: اشتريت باتيك عبر بثّ مباشر، ثم أوصله سائق درّاجة أجرة.
+      en: I bought batik on a live stream, then an app ojek delivered it.
+    options: [siaran langsung, tenaga kerja, otomatisasi]
+    answers: [siaran langsung]
+    words: [siaran langsung, ojek daring]
+  - id: e12
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Kecerdasan buatan tidak bisa menggantikan rasa bahasa.» معناها إيه؟
+      ar: ما معنى «Kecerdasan buatan tidak bisa menggantikan rasa bahasa.»؟
+      en: What does "Kecerdasan buatan tidak bisa menggantikan rasa bahasa." mean?
+    options:
+      - الذكاء الاصطناعي بيعلّم الإحساس باللغة.
+      - الذكاء الاصطناعي مايقدرش ياخد مكان الإحساس باللغة.
+      - الذكاء الاصطناعي بيكره اللغات.
+    answer: 1
+    words: [kecerdasan buatan, menggantikan]
+dialogue:
+  title: Kapal di Sungai Mahakam
+  lines:
+    - speaker: Mas Rizal
+      text: Lihat, Mohamed, kapal-kapal di Mahakam sekarang dipesan lewat aplikasi.
+      ar_eg: بص يا محمد، المراكب في ماهاكام بقت بتتحجز بالتطبيق.
+      ar: انظر يا محمد، صارت مراكب ماهاكام تُحجز عبر التطبيق.
+      en: Look, Mohamed, the boats on the Mahakam are booked through an app now.
+    - speaker: Mohamed
+      text: Wah, perubahan yang besar. Kemudahannya luar biasa.
+      ar_eg: يا سلام، تغيير كبير. السهولة مش طبيعية.
+      ar: يا للعجب، تغيّر كبير وسهولة مدهشة.
+      en: Wow, a big change. Amazingly convenient.
+    - speaker: Mas Rizal
+      text: Betul, tetapi penggunaan aplikasi juga punya risiko.
+      ar_eg: مظبوط، بس استخدام التطبيقات برضه له مخاطر.
+      ar: صحيح، لكنّ استخدام التطبيقات له مخاطره أيضًا.
+      en: True, but using apps carries risks too.
+    - speaker: Mohamed
+      text: Ya, data bisa bocor. Untuk mencegahnya, saya pakai kata sandi yang kuat.
+      ar_eg: أيوه، البيانات ممكن تتسرّب. وعشان أمنع ده، بستخدم باسورد قوي.
+      ar: نعم، قد تتسرّب البيانات، ولمنع ذلك أستعمل كلمة مرور قويّة.
+      en: Yes, data can leak. To prevent it, I use a strong password.
+    - speaker: Mas Rizal
+      text: Secara singkat, kamu sudah ahli teknologi!
+      ar_eg: باختصار، إنت بقيت خبير تكنولوجيا!
+      ar: باختصار، صرت خبيرًا في التقنية!
+      en: In short, you're a tech expert now!
+souvenir:
+  id: bipa5.u03.souvenir
+  title: Sungai Mahakam
+  note:
+    ar_eg: نهر ماهاكام هو شريان شرق كاليمانتان، وعليه مدينة ساماريندا. زمان الناس كانوا بيتنقلوا ويتاجروا بالمراكب بس، ودلوقتي الأوجيك الأونلاين والمحافظ الإلكترونية وصلت لكل حتة. إندونيسيا من أكبر أسواق التطبيقات في العالم، ومن الطبيعي تلاقي بياعة في السوق بتقبل الدفع بالـ QR.
+    ar: نهر ماهاكام شريان شرق كاليمانتان، وعلى ضفافه مدينة ساماريندا. كان الناس قديمًا يتنقّلون ويتاجرون بالمراكب وحدها، أمّا اليوم فقد بلغت الدراجات الأجرة عبر التطبيقات والمحافظ الرقمية كلّ مكان. وإندونيسيا من أكبر أسواق التطبيقات في العالم، فلا عجب أن تقبل بائعة في السوق الدفع برمز QR.
+    en: The Mahakam is East Kalimantan's lifeline, with Samarinda on its banks. People once travelled and traded only by boat; now app-based ride-hailing and e-wallets reach everywhere. Indonesia is one of the world's biggest app economies, so don't be surprised when a market seller takes payment by QR code.
+review:
+  status: draft
+  verified: false
