@@ -26,7 +26,7 @@ fmt:
 
 tools := "cargo run -q --release -p kabar-tools --"
 
-# Download corpora/dictionaries into data/raw/: `just content-fetch` (freq), `kaikki`, `jvwiki` or `all`
+# Download corpora/dictionaries into data/raw/: `just content-fetch` (freq), `nusa`, `kaikki`, `jvwiki` or `all`
 content-fetch what="freq":
     scripts/fetch-sources.sh {{what}}
 
@@ -40,7 +40,7 @@ content-kaikki:
     {{tools}} kaikki --lang jv
     {{tools}} bridge crosscheck
 
-# Javanese frequency list from Javanese Wikipedia (needs `just content-fetch jvwiki`)
+# Javanese frequency list (needs `just content-fetch nusa`; adds Javanese Wikipedia after `just content-fetch jvwiki`)
 content-freq-jv:
     {{tools}} freq jv
 
@@ -48,7 +48,7 @@ content-freq-jv:
 content-status:
     {{tools}} gloss status
 
-# Validate every content file (schemas, glosses, Bridge); CI runs the same checks
+# Validate every content file (schemas, glosses, Bridge, speech levels, golden sets); CI runs the same checks
 content-check:
     {{tools}} validate
 
@@ -87,7 +87,7 @@ run-android device="":
 # Build a signed release APK into dist/android/kabar.apk
 apk:
     rm -rf {{dist}}/android && mkdir -p {{dist}}/android
-    cd {{app}} && dx bundle --platform android --release --package-types apk --out-dir ../../{{dist}}/android/raw
+    cd {{app}} && dx bundle --platform android --release --package-types apk --target aarch64-linux-android --no-default-features --features mobile --out-dir ../../{{dist}}/android/raw
     scripts/android-sign.sh "$(find {{dist}}/android/raw -name '*.apk' | head -1)" "{{dist}}/android/kabar.apk" "{{keystore}}" "{{key_alias}}"
 
 # List connected Android devices

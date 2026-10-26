@@ -137,6 +137,23 @@ pub fn SettingsScreen() -> Element {
             }
 
             div { class: "field",
+                label {
+                    input {
+                        r#type: "checkbox",
+                        checked: !settings.sounds_off,
+                        onchange: {
+                            let db = db.clone();
+                            move |e: FormEvent| {
+                                let on = e.checked();
+                                ui.update_settings(&db, |s| s.sounds_off = !on)
+                            }
+                        },
+                    }
+                    " {ui.t(Msg::SettingsSounds)}"
+                }
+            }
+
+            div { class: "field",
                 span { class: "label", "{ui.t(Msg::Width)}" }
                 span { class: "pill latin", bdi { "{width_class.as_str()}" } }
             }
@@ -154,7 +171,7 @@ pub fn SettingsScreen() -> Element {
                     },
                     "{ui.t(Msg::SettingsShowWelcome)}"
                 }
-                for screen in [Screen::Studio, Screen::PenLab] {
+                for screen in [Screen::Teach, Screen::Studio, Screen::PenLab] {
                     button {
                         key: "{screen:?}",
                         onclick: move |_| {

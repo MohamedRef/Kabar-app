@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kabar.local/schemas/lesson.schema.json",
+  "title": "Kabar lesson (kabar.lesson/v1)",
+  "description": "One lesson for the Lesson Player (SPEC §14): 3–6 teaching slides → 8–15 exercises → mini dialogue → new-words summary → souvenir. Mirrors kabar_protocol::lesson::LessonContent; kabar_core::lesson::validate adds the cross-field rules (unique exercise ids, answer indexes in range, exactly one ___ in fill_blank, ...).",
+  "type": "object",
+  "required": ["schema", "id", "language", "title", "can_do", "exercises"],
+  "properties": {
+    "schema": { "const": "kabar.lesson/v1" },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(\\.[a-z0-9-]+)+$", "description": "Curriculum lesson id, e.g. bipa1.u01.l01." },
+    "language": { "enum": ["id", "jv"] },
+    "title": { "type": "string", "minLength": 1, "description": "Target-language title, as in the curriculum." },
+    "can_do": { "$ref": "#/$defs/localized" },
+    "slides": { "type": "array", "maxItems": 6, "items": { "$ref": "#/$defs/slide" } },
+    "exercises": { "type": "array", "minItems": 8, "maxItems": 15, "items": { "$ref": "#/$defs/exercise" } },
+    "dialogue": { "$ref": "#/$defs/dialogue" },
+    "new_words": { "type": "array", "items": { "$ref": "#/$defs/new_word" } },
+    "souvenir": { "$ref": "#/$defs/souvenir" },
+    "review": {
+      "type": "object",
+      "required": ["status", "verified"],
+      "properties": {
+        "status": { "enum": ["draft", "approved", "needs-changes"] },
+        "verified": { "type": "boolean", "description": "Only true once the learner approved it (Javanese stays unverified until then)." }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "text": { "type": "string", "minLength": 1 },
+    "localized": {
+      "description": "One text in Egyptian Arabic, MSA and English.",
+      "type": "object",
+      "required": ["ar_eg", "ar", "en"],
+      "properties": {
+        "ar_eg": { "$ref": "#/$defs/text" },
+        "ar": { "$ref": "#/$defs/text" },
+        "en": { "$ref": "#/$defs/text" }
+      },
+      "additionalProperties": false
+    },
+    "with_meaning": {
+      "description": "A target-language text with its meaning inline (flattened Localized).",
+      "type": "object",
+      "required": ["text", "ar_eg", "ar", "en"],
+      "properties": {
+        "text": { "$ref": "#/$defs/text" },
+        "ar_eg": { "$ref": "#/$defs/text" },
+        "ar": { "$ref": "#/$defs/text" },
+        "en": { "$ref": "#/$defs/text" }
+      }
+    },
+    "slide": {
+      "type": "object",
+      "required": ["body"],
+      "properties": {
+        "title": { "type": "string" },
+        "body": { "$ref": "#/$defs/localized" },
+        "examples": { "type": "array", "items": { "$ref": "#/$defs/with_meaning", "unevaluatedProperties": false } },
+        "grammar": { "type": "string", "description": "Grammar-library id, e.g. id.greeting.selamat." }
+      },
+      "additionalProperties": false
+    },
+    "string_list": { "type": "array", "items": { "$ref": "#/$defs/text" } },
+    "exercise": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^e[0-9]{2}$", "description": "e01, e02, ...; unique in the lesson. Lanjut resumes by it." },
+        "type": { "enum": ["multiple_choice", "match_pairs", "translate", "build_sentence", "listen", "fill_blank", "dictation", "speaking"] },
+        "explain": { "$ref": "#/$defs/localized" },
+        "words": { "$ref": "#/$defs/string_list", "description": "Lemmas this exercise trains." }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "type": { "const": "multiple_choice" },
+            "question": { "type": "string" },
+            "question_meaning": { "$ref": "#/$defs/localized" },
+            "options": { "type": "array", "minItems": 2, "maxItems": 4, "items": { "$ref": "#/$defs/text" } },
+            "options_meaning": { "type": "array", "minItems": 2, "maxItems": 4, "items": { "$ref": "#/$defs/localized" } },
+            "answer": { "type": "integer", "minimum": 0, "maximum": 3 }
+          },
+          "required": ["answer"],
+          "oneOf": [{ "required": ["options"] }, { "required": ["options_meaning"] }]
+        },
+        {
+          "properties": {
+            "type": { "const": "match_pairs" },
+            "pairs": { "type": "array", "minItems": 2, "maxItems": 6, "items": { "$ref": "#/$defs/with_meaning", "unevaluatedProperties": false } }
+          },
+          "required": ["pairs"]
+        },
+        {
+          "properties": {
+            "type": { "const": "translate" },
+            "direction": { "const": "to_target" },
+            "source_meaning": { "$ref": "#/$defs/localized" },
+            "answers": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/text" } }
+          },
+          "required": ["direction", "source_meaning", "answers"]
+        },
+        {
+          "properties": {
+            "type": { "const": "translate" },
+            "direction": { "const": "from_target" },
+            "source_text": { "$ref": "#/$defs/text" },
+            "answers_meaning": {
+              "type": "object",
+              "required": ["ar_eg", "ar", "en"],
+              "properties": {
+                "ar_eg": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/text" } },
+                "ar": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/text" } },
+                "en": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/text" } }
+              },
+              "additionalProperties": false
+            }
+          },
+          "required": ["direction", "source_text", "answers_meaning"]
+        },
+        {
+          "properties": {
+            "type": { "const": "build_sentence" },
+            "source": { "$ref": "#/$defs/localized" },
+            "answer": { "$ref": "#/$defs/text" },
+            "alternatives": { "$ref": "#/$defs/string_list" },
+            "distractors": { "$ref": "#/$defs/string_list" }
+          },
+          "required": ["source", "answer"]
+        },
+        {
+          "properties": {
+            "type": { "const": "listen" },
+            "text": { "$ref": "#/$defs/text" },
+            "audio": { "type": "string" },
+            "options": { "type": "array", "minItems": 2, "maxItems": 4, "items": { "$ref": "#/$defs/text" } },
+            "answer": { "type": "integer", "minimum": 0 },
+            "meaning": { "$ref": "#/$defs/localized" }
+          },
+          "required": ["text"],
+          "dependentRequired": { "options": ["answer"], "answer": ["options"] }
+        },
+        {
+          "properties": {
+            "type": { "const": "fill_blank" },
+            "sentence": { "type": "string", "pattern": "^(?:(?!___).)*___(?:(?!___).)*$" },
+            "meaning": { "$ref": "#/$defs/localized" },
+            "options": { "type": "array", "items": { "$ref": "#/$defs/text" } },
+            "answers": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/text" } }
+          },
+          "required": ["sentence", "meaning", "answers"]
+        },
+        {
+          "properties": {
+            "type": { "const": "dictation" },
+            "text": { "$ref": "#/$defs/text" },
+            "audio": { "type": "string" },
+            "meaning": { "$ref": "#/$defs/localized" }
+          },
+          "required": ["text", "meaning"]
+        },
+        {
+          "properties": {
+            "type": { "const": "speaking" },
+            "text": { "$ref": "#/$defs/text" },
+            "meaning": { "$ref": "#/$defs/localized" }
+          },
+          "required": ["text", "meaning"]
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "dialogue": {
+      "type": "object",
+      "required": ["lines"],
+      "properties": {
+        "title": { "type": "string" },
+        "lines": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/with_meaning",
+            "required": ["speaker"],
+            "properties": { "speaker": { "$ref": "#/$defs/text" } },
+            "unevaluatedProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "new_word": {
+      "type": "object",
+      "required": ["word", "ar_eg", "ar", "en"],
+      "properties": {
+        "word": { "$ref": "#/$defs/text" },
+        "pos": { "type": "string" },
+        "arabic": { "type": "string", "description": "Arabic origin when it's an Arabic loan (Bridge gold), e.g. خبر." },
+        "ar_eg": { "$ref": "#/$defs/text" },
+        "ar": { "$ref": "#/$defs/text" },
+        "en": { "$ref": "#/$defs/text" }
+      },
+      "additionalProperties": false
+    },
+    "souvenir": {
+      "description": "Only on a unit's last (review) lesson; id is <unit-id>.souvenir.",
+      "type": "object",
+      "required": ["id", "title", "note"],
+      "properties": {
+        "id": { "type": "string", "pattern": "\\.souvenir$" },
+        "title": { "$ref": "#/$defs/text" },
+        "note": { "$ref": "#/$defs/localized" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

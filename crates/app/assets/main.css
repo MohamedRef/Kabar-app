@@ -24,7 +24,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  .app:not([data-theme="light"]) {
     --bg: #171615;
     --surface: #211f1d;
     --surface-2: #2b2926;
@@ -42,7 +42,8 @@
   }
 }
 
-:root[data-theme="dark"] {
+/* Tokens are keyed on .app because data-theme lives there, not on <html>. */
+.app[data-theme="dark"] {
   --bg: #171615;
   --surface: #211f1d;
   --surface-2: #2b2926;

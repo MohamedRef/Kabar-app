@@ -38,10 +38,14 @@ pub enum SyncKind {
 pub const TABLES: &[(&str, SyncKind)] = &[
     // Reading
     ("texts", SyncKind::Lww),
+    // Teach Kabar: the personal dictionary, one row per `{lang}:{word}`.
+    ("taught_entries", SyncKind::Lww),
     ("highlights", SyncKind::Lww),
     ("word_status", SyncKind::Lww),
     // Learning
+    ("cards", SyncKind::Lww),
     ("review_log", SyncKind::AppendOnly),
+    ("lesson_events", SyncKind::AppendOnly),
     ("attempts", SyncKind::AppendOnly),
     // Activity log: append-only, but a tombstone lets the learner undo a tick or a purchase.
     ("xp_events", SyncKind::Immutable),
