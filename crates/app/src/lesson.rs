@@ -220,7 +220,11 @@ pub fn speak(text: &str, language: &str, slow: bool, audio: Option<&str>, mut mi
 }
 
 /// A soft two-note chime for a right answer (synthesized; no sound files).
-fn chime() {
+/// Silent when sounds are off in Settings.
+fn chime(ui: Ui) {
+    if ui.settings.peek().sounds_off {
+        return;
+    }
     document::eval(
         r#"
         try {
@@ -386,7 +390,7 @@ fn PlayerView(lesson: LessonContent) -> Element {
     let mut check = move |answer: Answer| {
         let g = player.write().check(&answer, lang);
         if matches!(g, Grade::Correct | Grade::Almost { .. }) {
-            chime();
+            chime(ui);
         }
         let p = player.peek();
         save(db, &p.position());
@@ -608,7 +612,7 @@ fn PlayerView(lesson: LessonContent) -> Element {
                             on_assess: move |same: bool| {
                                 player.write().self_assess(same);
                                 if same {
-                                    chime();
+                                    chime(ui);
                                 }
                                 save(db, &player.peek().position());
                             },
