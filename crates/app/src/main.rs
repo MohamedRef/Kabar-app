@@ -1,6 +1,8 @@
 //! Kabar: one Dioxus codebase for the Mac, the S24 Ultra and the Tab S11.
 
 mod account;
+mod ai;
+mod audio;
 mod cloud;
 mod coach;
 mod i18n;
@@ -210,10 +212,13 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     use_context_provider(|| db.clone());
     use_context_provider(play::PlayNav::new);
     use_context_provider(|| teach::TeachInbox(Signal::new(None)));
-    use_context_provider(|| teach::Ai(Rc::new(ai_router())));
+    let link = use_hook(cloud::link::CloudLink::default);
+    use_context_provider(|| teach::Ai(Rc::new(ai::router(db.clone(), link.clone()))));
+    let audio_dir = path.parent().map(|d| d.join("audio")).unwrap_or_else(|| "audio".into());
+    use_context_provider(|| audio::AudioCache::new(audio_dir, link.clone()));
     let coach = use_context_provider(|| Coach::load(&db));
     use_width_tracking(ui.width);
-    use_cloud(&db, path, ui);
+    use_cloud(&db, path, ui, link);
     coach::use_clock(coach, db.clone());
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
     use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
@@ -260,7 +265,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
 
 /// Starts Kabar Cloud sync (when this build knows a server) and mirrors its
 /// events into signals.
-fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui) {
+fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::CloudLink) {
     let device_id = db.0.borrow().device_id().clone();
     let cloud = use_context_provider(|| Cloud {
         status: Signal::new(CloudStatus::not_configured(device_id.clone())),
@@ -295,6 +300,7 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui) {
         };
         let mut commands = cloud.commands;
         commands.set(Some(handle.commands.clone()));
+        link.connect(handle.commands.clone());
         spawn(async move {
             let (mut status, mut devices, mut signing_in, mut revision) =
                 (cloud.status, cloud.devices, cloud.signing_in, cloud.revision);
@@ -336,14 +342,6 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui) {
         ui.settings.read();
         cloud.send(Command::Kick);
     });
-}
-
-/// The AI router with the bundled routes and prompts. Engines (Kabar Cloud,
-/// Kabar Home) are registered here once the app talks to them; until then
-/// AI features say "not connected yet" instead of failing silently.
-fn ai_router() -> kabar_core::ai::Router {
-    use kabar_core::ai::{MemoryCache, PromptSet, RouteTable, Router};
-    Router::new(RouteTable::builtin(), PromptSet::builtin(), Box::new(MemoryCache::default()))
 }
 
 /// Mirrors the window width into `width`, so layout follows the window,
