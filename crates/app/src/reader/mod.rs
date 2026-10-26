@@ -231,7 +231,12 @@ pub fn Reader() -> Element {
                 let mut eval = document::eval(READER_JS);
                 while let Ok(msg) = eval.recv::<FromJs>().await {
                     match msg {
-                        FromJs::Peek { i, start, below, y } => st.peek.set(Some(Peek { i, start, below, y })),
+                        FromJs::Peek { i, start, below, y } => {
+                            // The word's card is already open: don't repeat it in a popover.
+                            if *st.panel.peek() != Some(Panel::Word(i)) {
+                                st.peek.set(Some(Peek { i, start, below, y }));
+                            }
+                        }
                         FromJs::Unpeek => st.peek.set(None),
                         FromJs::Open { i } => {
                             st.peek.set(None);
