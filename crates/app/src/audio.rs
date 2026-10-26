@@ -153,9 +153,17 @@ pub fn neural(
     text: &str,
     language: &str,
 ) -> Option<impl std::future::Future<Output = Option<String>> + use<>> {
+    neural_in(text, default_voice(language))
+}
+
+/// [`neural`] in a given voice (a persona's).
+pub fn neural_in(
+    text: &str,
+    voice: Voice,
+) -> Option<impl std::future::Future<Output = Option<String>> + use<>> {
     use dioxus::prelude::{ReadableExt, try_consume_context};
     let cache = try_consume_context::<AudioCache>()?;
-    let req = line(default_voice(language), text, 0, 0);
+    let req = line(voice, text, 0, 0);
     let live = try_consume_context::<crate::account::Cloud>().is_some_and(|c| {
         matches!(c.status.peek().sync, crate::cloud::SyncState::Live | crate::cloud::SyncState::CatchingUp)
     });
