@@ -58,6 +58,39 @@ pub trait AiOutput: DeserializeOwned {
     }
 }
 
+/// Parses and checks one reply for `task` exactly as the router would
+/// (`validate`, then `check` against the input), returning the parsed output
+/// as canonical JSON. For callers that hold a task id rather than a type:
+/// the bake-off, tools, logs.
+pub fn check_reply(task: Task, text: &str, input: &Value) -> Result<Value, String> {
+    fn run<T: AiOutput + Serialize>(text: &str, input: &Value) -> Result<Value, String> {
+        let v: T = super::json::parse(text)?;
+        v.validate()?;
+        v.check(input)?;
+        serde_json::to_value(&v).map_err(|e| e.to_string())
+    }
+    match task {
+        Task::AnalyzeText => run::<AnalyzeText>(text, input),
+        Task::ExplainSentence => run::<ExplainSentence>(text, input),
+        Task::GradeAnswer => run::<GradeAnswer>(text, input),
+        Task::RoleplayTurn => run::<RoleplayTurn>(text, input),
+        Task::LearnEntry => run::<crate::learn::LearnEntry>(text, input),
+        Task::StructureScreenshot => run::<StructureScreenshot>(text, input),
+        Task::ReadHandwriting => run::<ReadHandwriting>(text, input),
+        Task::GuessSketch => run::<GuessSketch>(text, input),
+        Task::CheckStrokes => run::<CheckStrokes>(text, input),
+        Task::MindMap => run::<MindMap>(text, input),
+        Task::StoryEpisode => run::<crate::pagi::Story>(text, input),
+        Task::RadioScript => run::<RadioScript>(text, input),
+        Task::PlacementTest => run::<Placement>(text, input),
+        Task::LevelCheck => run::<LevelCheck>(text, input),
+        Task::DailyPlan => run::<DailyPlan>(text, input),
+        Task::DailyRecap => run::<DailyRecap>(text, input),
+        Task::WeeklyReport => run::<WeeklyReport>(text, input),
+        Task::CoachMessage => run::<CoachMessage>(text, input),
+    }
+}
+
 /// Speech register or style, shared by the reading and roleplay tasks.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]

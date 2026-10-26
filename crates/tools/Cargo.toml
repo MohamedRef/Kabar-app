@@ -18,10 +18,14 @@ path = "src/bin/journey_map.rs"
 [dependencies]
 kabar-core.workspace = true
 kabar-protocol = { workspace = true, features = ["schema"] }
+# Kabar Cloud's request builders and reply parsers, so the bake-off sends
+# exactly what production sends. Native build: plain Rust, no Worker runtime.
+kabar-server = { path = "../server" }
 serde.workspace = true
 serde_json.workspace = true
 schemars.workspace = true
 anyhow = "1"
+base64 = "0.22"
 clap = { version = "4", features = ["derive"] }
 csv = "1"
 serde_yaml_ng = "0.10"
