@@ -1,0 +1,224 @@
+schema: kabar.lesson/v1
+id: j6.u05.l02
+language: jv
+title: Aksara rekan
+can_do:
+  ar_eg: تكتب الأصوات العربية بالخط الجاوي.
+  ar: أن تكتب الأصوات العربية بالخط الجاوي.
+  en: Write Arabic sounds.
+slides:
+  - title: Aksara rekan
+    body:
+      ar_eg: |
+        ده «الجسر العربي» بتاعك! الجاوي معندوش خ ذ ف ز غ، فبياخد أقرب حرف ويحط عليه تلات نقط (cecak telu):
+        ꦏ꦳ kha (خ) · ꦢ꦳ dza (ذ) · ꦥ꦳ fa (ف) · ꦗ꦳ za (ز) · ꦒ꦳ gha (غ).
+        نفس الفكرة اللي الفارسي عملها لما زوّد نقط على ب وعمل پ!
+      ar: |
+        هذا جسرك العربي! ليس في الجاوية خ ذ ف ز غ، فيُؤخذ أقرب حرف وتُزاد عليه ثلاث نقاط (cecak telu):
+        ꦏ꦳ kha (خ) · ꦢ꦳ dza (ذ) · ꦥ꦳ fa (ف) · ꦗ꦳ za (ز) · ꦒ꦳ gha (غ).
+        وهي فكرة الفارسية حين زادت النقاط على الباء فصارت پ.
+      en: |
+        This is your Arabic Bridge! Javanese has no خ ذ ف ز غ, so it takes the nearest letter and adds three dots (cecak telu):
+        ꦏ꦳ kha (خ) · ꦢ꦳ dza (ذ) · ꦥ꦳ fa (ف) · ꦗ꦳ za (ز) · ꦒ꦳ gha (غ).
+        The same trick Persian used when it added dots to ب to make پ!
+    grammar: jv.aksara.murda-rekan
+    examples:
+      - text: ꦥ꦳ꦗꦂ (fajar)
+        ar_eg: الفجر — ꦥ + تلات نقط = fa
+        ar: الفجر — ꦥ مع ثلاث نقاط = fa
+        en: dawn (فجر) — ꦥ + three dots = fa
+      - text: ꦗ꦳ꦏꦠ꧀ (zakat)
+        ar_eg: الزكاة — ꦗ + تلات نقط = za
+        ar: الزكاة — ꦗ مع ثلاث نقاط = za
+        en: zakat (زكاة) — ꦗ + three dots = za
+  - title: Pikir lan kabar
+    body:
+      ar_eg: |
+        الحروف دي بتاخد علامات الحركات عادي: ꦢ꦳ꦶꦏꦶꦂ dzikir، ꦏ꦳ꦸꦱꦸꦱ꧀ khusus.
+        بس الكلمات العربية القديمة اللي «اتجوّدت» خلاص بتتكتب بحروف عادية: pikir (من فِكر) = ꦥꦶꦏꦶꦂ، وkabar (من خبر) = ꦏꦧꦂ.
+      ar: |
+        وتأخذ هذه الحروف علامات الصوائت كغيرها: ꦢ꦳ꦶꦏꦶꦂ dzikir، ꦏ꦳ꦸꦱꦸꦱ꧀ khusus.
+        أما الدخيل العربي القديم المتجوّد فيُكتب بحروف عادية: pikir (من فِكر) = ꦥꦶꦏꦶꦂ، وkabar (من خبر) = ꦏꦧꦂ.
+      en: |
+        These letters take vowel marks like any other: ꦢ꦳ꦶꦏꦶꦂ dzikir, ꦏ꦳ꦸꦱꦸꦱ꧀ khusus.
+        But old loans that became fully Javanese use plain letters: pikir (from فِكر) = ꦥꦶꦏꦶꦂ, kabar (from خبر) = ꦏꦧꦂ.
+    grammar: jv.aksara.murda-rekan
+    examples:
+      - text: ꦢ꦳ꦶꦏꦶꦂ (dzikir)
+        ar_eg: الذكر
+        ar: الذِّكر
+        en: dhikr, remembrance of God
+      - text: ꦥꦶꦏꦶꦂ (pikir)
+        ar_eg: فِكر — بحروف عادية
+        ar: فِكر — بحروف عادية
+        en: thought (فكر) — plain letters
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ꦥ꦳ꦗꦂ
+        ar_eg: fajar — الفجر
+        ar: fajar — الفجر
+        en: fajar — dawn
+      - text: ꦗ꦳ꦏꦠ꧀
+        ar_eg: zakat — الزكاة
+        ar: zakat — الزكاة
+        en: zakat — obligatory alms
+      - text: ꦢ꦳ꦶꦏꦶꦂ
+        ar_eg: dzikir — الذكر
+        ar: dzikir — الذِّكر
+        en: dzikir — remembrance of God
+      - text: ꦏ꦳ꦸꦱꦸꦱ꧀
+        ar_eg: khusus — خاص / مخصوص
+        ar: khusus — خاص
+        en: khusus — special
+      - text: aksara rekan
+        ar_eg: حرف + تلات نقط لصوت عربي
+        ar: حرف مع ثلاث نقاط لصوت عربي
+        en: a letter + three dots for an Arabic sound
+    words: [fajar, zakat, dzikir, khusus, aksara rekan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تكتب fajar (الفجر)؟
+      ar: كيف تكتب fajar (الفجر)؟
+      en: How do you write fajar (dawn)?
+    options: ["ꦥꦗꦂ", "ꦗꦗꦂ", "ꦥ꦳ꦗꦂ"]
+    answer: 2
+    explain:
+      ar_eg: من غير التلات نقط هتتقري pajar. النقط هي اللي بتعمل الـ ف.
+      ar: بلا النقاط الثلاث تُقرأ pajar، والنقاط تصنع الفاء.
+      en: Without the three dots it reads pajar; the dots make the f.
+    words: [fajar, aksara rekan]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "اقرا: ꦢ꦳ꦶꦏꦶꦂ"
+      ar: "اقرأ: ꦢ꦳ꦶꦏꦶꦂ"
+      en: "Read: ꦢ꦳ꦶꦏꦶꦂ"
+    options: [dikir, dzikir, zikir]
+    answer: 1
+    words: [dzikir]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: pikir (من فِكر) بتتكتب إزاي في العادة؟
+      ar: كيف تُكتب pikir (من فِكر) عادةً؟
+      en: How is pikir (from فِكر) usually written?
+    options: ["ꦥꦶꦏꦶꦂ", "ꦥ꦳ꦶꦏꦶꦂ"]
+    answer: 0
+    explain:
+      ar_eg: pikir كلمة قديمة اتجوّدت خلاص، فبتتكتب بـ ꦥ عادي من غير نقط.
+      ar: pikir دخيل قديم متجوّد، فتُكتب بـ ꦥ عادية بلا نقاط.
+      en: pikir is an old, fully Javanised loan, so it's written with plain ꦥ, no dots.
+    words: [aksara rekan]
+  - id: e05
+    type: listen
+    text: zakat
+    question:
+      ar_eg: سمعت zakat. بتتكتب إزاي؟
+      ar: سمعت zakat. كيف تُكتب؟
+      en: You heard zakat. How is it written?
+    options: ["ꦗꦏꦠ꧀", "ꦗ꦳ꦏꦠ꧀", "ꦱꦏꦠ꧀"]
+    answer: 1
+    meaning:
+      ar_eg: الزكاة
+      ar: الزكاة
+      en: zakat, obligatory alms
+    words: [zakat]
+  - id: e06
+    type: fill_blank
+    sentence: ꦏ꦳ꦸꦱꦸꦱ꧀ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: خاص)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: خاص)"
+      en: Type the reading in Latin letters. (It means "special".)
+    answers: [khusus]
+    words: [khusus]
+  - id: e07
+    type: fill_blank
+    sentence: Saben ___ aku salat Subuh.
+    meaning:
+      ar_eg: كل فجر بصلّي الصبح.
+      ar: أصلّي الصبح كل فجر.
+      en: Every dawn I pray Subuh.
+    options: [zakat, fajar, khusus]
+    answers: [fajar]
+    words: [fajar]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦢ꦳ꦶꦏꦶꦂꦥ꦳ꦗꦂ"
+      ar: "اكتب بالحروف اللاتينية: ꦢ꦳ꦶꦏꦶꦂꦥ꦳ꦗꦂ"
+      en: "Write in Latin letters: ꦢ꦳ꦶꦏꦶꦂꦥ꦳ꦗꦂ"
+    answers: [dzikir fajar, dzikirfajar]
+    explain:
+      ar_eg: ذكر الفجر. dzikir آخرها layar، فـ fa بعدها بتتكتب عادي من غير pasangan.
+      ar: ذكر الفجر. تنتهي dzikir بـ layar، فتُكتب fa بعدها بلا pasangan.
+      en: Dawn dhikr. dzikir ends in layar, so fa after it is written normally, with no pasangan.
+    words: [dzikir, fajar]
+  - id: e09
+    type: speaking
+    text: Fajar, zakat, dzikir, khusus.
+    meaning:
+      ar_eg: الفجر، الزكاة، الذكر، خاص.
+      ar: الفجر، الزكاة، الذِّكر، خاص.
+      en: Dawn, zakat, dhikr, special.
+    words: [zakat, khusus]
+dialogue:
+  title: Ing Imogiri
+  lines:
+    - speaker: Pak Harjo
+      text: Sugeng enjing, Mas. Badhe nyekar?
+      ar_eg: صباح الخير يا ابني. جاي تزور؟
+      ar: صباح الخير يا بني. أجئت للزيارة؟
+      en: Good morning. Have you come to visit the graves?
+    - speaker: Mohamed
+      text: Inggih, Pak. Menika tulisan menapa?
+      ar_eg: أيوه يا عمّو. إيه المكتوب ده؟
+      ar: نعم يا سيدي. ما هذه الكتابة؟
+      en: Yes, sir. What does this writing say?
+    - speaker: Pak Harjo
+      text: Menika dzikir, ngangge aksara rekan.
+      ar_eg: دي «dzikir»، مكتوبة بحروف rekan.
+      ar: هذه «dzikir»، مكتوبة بحروف rekan.
+      en: That's dzikir, written with aksara rekan.
+    - speaker: Mohamed
+      text: Oh, ذ ngangge titik tiga!
+      ar_eg: آه، الذال بتلات نقط!
+      ar: آه، الذال بثلاث نقاط!
+      en: Oh, ذ with three dots!
+new_words:
+  - word: aksara rekan
+    pos: noun
+    ar_eg: حرف جاوي + تلات نقط لصوت عربي (خ ذ ف ز غ)
+    ar: حرف جاوي مع ثلاث نقاط لصوت عربي (خ ذ ف ز غ)
+    en: a Javanese letter + three dots for an Arabic sound (kh, dz, f, z, gh)
+  - word: fajar
+    pos: noun
+    ar_eg: الفجر
+    ar: الفجر
+    en: dawn = fajar
+    arabic: فجر
+  - word: zakat
+    pos: noun
+    ar_eg: الزكاة
+    ar: الزكاة
+    en: zakat, obligatory alms = zakat
+    arabic: زكاة
+  - word: dzikir
+    pos: noun
+    ar_eg: الذكر
+    ar: الذِّكر
+    en: dhikr, remembrance of God = zikir
+    arabic: ذكر
+  - word: khusus
+    pos: adjective
+    ar_eg: خاص / مخصوص
+    ar: خاص
+    en: special = khusus
+    arabic: خصوص
+review:
+  status: draft
+  verified: false

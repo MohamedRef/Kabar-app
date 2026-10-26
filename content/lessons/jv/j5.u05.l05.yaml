@@ -1,0 +1,181 @@
+schema: kabar.lesson/v1
+id: j5.u05.l05
+language: jv
+title: Critakna maneh
+can_do:
+  ar_eg: تحكي القصة تاني بجاوي بسيط.
+  ar: أن تعيد رواية القصة بجاوية بسيطة.
+  en: Retell it in simple Javanese.
+slides:
+  - title: Saka tulisan menyang omongan
+    body:
+      ar_eg: |
+        critakna maneh = احكيها تاني (critakna = احكي، maneh = تاني). ولما تحكي لحد، اتكلم نغوكو الكلام العادي، مش لغة الكتب:
+        - ing → neng، lan → karo (مع)، nuli / banjur → terus
+        - جمل قصيرة (cekak): مين؟ عمل إيه؟ وحصل إيه في الآخر؟
+      ar: |
+        critakna maneh = احكِها مرة أخرى (critakna = احكِ، maneh = مجددًا). وحين تحكي لأحد فتكلّم بنغوكو الحديث لا بلغة الكتب:
+        - ing ← neng، وlan ← karo (مع)، وnuli / banjur ← terus
+        - جمل قصيرة (cekak): من؟ ماذا فعل؟ وماذا حدث في النهاية؟
+      en: |
+        critakna maneh = tell it again (critakna = tell it, maneh = again). When you retell it to someone, speak everyday ngoko, not book language:
+        - ing → neng, lan → karo (with), nuli / banjur → terus
+        - short (cekak) sentences: who? did what? and what happened in the end?
+    grammar: jv.narrative.connectors
+    examples:
+      - text: Bima karo simbahe lunga neng Menara Kudus.
+        ar_eg: بيما وجدّه راحوا منارة كودوس.
+        ar: ذهب بيما وجدّه إلى منارة كودوس.
+        en: Bima and his grandpa went to the Menara Kudus.
+      - text: Sawise salat, Bima ilang.
+        ar_eg: بعد الصلاة، بيما تاه.
+        ar: بعد الصلاة ضاع بيما.
+        en: After the prayer, Bima went missing.
+      - text: Terus simbah nemokake Bima, lagi mangan jenang.
+        ar_eg: وبعدين الجدّ لقى بيما بياكل jenang.
+        ar: ثم وجد الجدّ بيما يأكل jenang.
+        en: Then grandpa found Bima, eating jenang.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question: "Critakna maneh: Ing sawijining dina, Bima lan simbahe lunga menyang Menara Kudus."
+    question_meaning:
+      ar_eg: أنهي جملة أحسن حكاية بالكلام العادي؟
+      ar: أي جملة أفضل إعادة رواية بلغة الحديث؟
+      en: Which sentence is the best spoken retelling?
+    options: ['Bima kang cilik lunga ing Menara Kudus.', 'Bima karo simbahe lunga neng Menara Kudus.']
+    answer: 1
+    explain:
+      ar_eg: في الكلام neng وkaro بدل ing وlan، وkang للكتابة.
+      ar: في الحديث neng وkaro بدل ing وlan، وkang للكتابة.
+      en: Speech uses neng and karo instead of ing and lan; kang is for writing.
+    words: [critakna, maneh]
+  - id: e02
+    type: listen
+    text: Critakna maneh, nanging cekak wae.
+    options: ['Critakna maneh, nanging cekak wae.', 'Wacanen maneh, nanging alon-alon.', 'Critakna sesuk, nanging cekak wae.']
+    answer: 0
+    meaning:
+      ar_eg: احكيها تاني، بس باختصار.
+      ar: احكِها مرة أخرى، لكن باختصار.
+      en: Tell it again, but keep it short.
+    words: [critakna, maneh, cekak]
+  - id: e03
+    type: fill_blank
+    sentence: Critakna ___, ya.
+    meaning:
+      ar_eg: احكيها تاني، ماشي؟
+      ar: احكِها مرة أخرى، اتفقنا؟
+      en: Tell it again, okay?
+    options: [biyen, maneh, cekak]
+    answers: [maneh]
+    words: [maneh]
+  - id: e04
+    type: fill_blank
+    sentence: Critane ___ wae.
+    meaning:
+      ar_eg: الحكاية قصيرة وبس.
+      ar: الحكاية قصيرة فقط.
+      en: The story is just a short one.
+    options: [cekak, maneh, lawas]
+    answers: [cekak]
+    words: [cekak]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: (حكاية بالكلام) وبعدين الجدّ لقى بيما بياكل jenang.
+      ar: (رواية شفهية) ثم وجد الجدّ بيما يأكل jenang.
+      en: (spoken retelling) Then grandpa found Bima, eating jenang.
+    answer: Terus simbah nemokake Bima, lagi mangan jenang.
+    distractors: [kang, ing]
+    words: [nemokake, jenang]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: بعد الصلاة، بيما تاه.
+      ar: بعد الصلاة ضاع بيما.
+      en: After the prayer, Bima went missing.
+    answer: Sawise salat, Bima ilang.
+    distractors: [sadurunge, nalika]
+    words: [sawise]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بتحكي لصاحبك) بيما وجدّه راحوا منارة كودوس.
+      ar: (تحكي لصديقك) ذهب بيما وجدّه إلى منارة كودوس.
+      en: (telling a friend) Bima and his grandpa went to the Menara Kudus.
+    answers:
+      - Bima karo simbahe lunga neng Menara Kudus.
+      - Bima lan simbahe lunga neng Menara Kudus.
+      - Bima karo simbahe lunga menyang Menara Kudus.
+      - Bima lan simbahe lunga menyang Menara Kudus.
+      - Bima karo simbahe menyang Menara Kudus.
+      - Bima lan simbahe menyang Menara Kudus.
+      - Bima karo simbahe lunga nang Menara Kudus.
+      - Bima karo mbahe lunga neng Menara Kudus.
+      - Bima karo simbahe dolan neng Menara Kudus.
+    words: [menara]
+  - id: e08
+    type: dictation
+    text: Critakna maneh, nanging cekak wae.
+    meaning:
+      ar_eg: احكيها تاني، بس باختصار.
+      ar: احكِها مرة أخرى، لكن باختصار.
+      en: Tell it again, but keep it short.
+    words: [critakna, maneh, cekak]
+  - id: e09
+    type: speaking
+    text: Bima karo simbahe lunga neng Menara Kudus. Sawise salat, Bima ilang. Pungkasane, simbah nemokake Bima.
+    meaning:
+      ar_eg: بيما وجدّه راحوا منارة كودوس. بعد الصلاة، بيما تاه. وفي الآخر، الجدّ لقاه.
+      ar: ذهب بيما وجدّه إلى منارة كودوس. بعد الصلاة ضاع بيما. وفي النهاية وجده الجدّ.
+      en: Bima and his grandpa went to the Menara Kudus. After the prayer, Bima went missing. In the end, grandpa found him.
+    words: [nemokake, pungkasane]
+dialogue:
+  title: Critakna maneh, Mas!
+  lines:
+    - speaker: Bu Nur
+      text: Mas, critakna maneh cerkakku, nanging cekak wae.
+      ar_eg: يا محمد، احكي قصتي تاني، بس باختصار.
+      ar: يا محمد، أعد رواية قصتي، لكن باختصار.
+      en: Mohamed, tell my story again, but keep it short.
+    - speaker: Mohamed
+      text: Bima karo simbahe lunga neng Menara Kudus.
+      ar_eg: بيما وجدّه راحوا منارة كودوس.
+      ar: ذهب بيما وجدّه إلى منارة كودوس.
+      en: Bima and his grandpa went to the Menara Kudus.
+    - speaker: Bu Nur
+      text: Terus?
+      ar_eg: وبعدين؟
+      ar: ثم؟
+      en: And then?
+    - speaker: Mohamed
+      text: Sawise salat, Bima ilang. Pungkasane, simbah nemokake Bima, lagi mangan jenang.
+      ar_eg: بعد الصلاة، بيما تاه. وفي الآخر، الجدّ لقاه بياكل jenang.
+      ar: بعد الصلاة ضاع بيما، وفي النهاية وجده الجدّ يأكل jenang.
+      en: After the prayer, Bima went missing. In the end, grandpa found him eating jenang.
+    - speaker: Bu Nur
+      text: Apik banget! Critamu cekak lan cetha.
+      ar_eg: حلو أوي! حكايتك قصيرة وواضحة.
+      ar: رائع جدًا! روايتك قصيرة وواضحة.
+      en: Excellent! Your retelling is short and clear.
+new_words:
+  - word: critakna
+    pos: verb
+    ar_eg: احكيها (أمر)
+    ar: احكِها (أمر)
+    en: tell it (imperative) = ceritakan
+  - word: maneh
+    pos: adverb
+    ar_eg: تاني / كمان مرة
+    ar: مرة أخرى
+    en: again = lagi
+  - word: cekak
+    pos: adjective
+    ar_eg: قصير / مختصر
+    ar: قصير / مختصر
+    en: short, brief = singkat, pendek
+review:
+  status: draft
+  verified: false

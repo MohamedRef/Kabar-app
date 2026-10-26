@@ -1,0 +1,200 @@
+schema: kabar.lesson/v1
+id: bipa3.u10.l04
+language: id
+title: Pesan tiket feri
+can_do:
+  ar_eg: تحجز تذكرة عبّارة لميعاد جاي.
+  ar: أن تحجز تذكرة عبّارة لموعد قادم.
+  en: Book a ferry ticket for a future date.
+slides:
+  - title: Di loket pelabuhan
+    body:
+      ar_eg: |
+        عند الشبّاك هتحتاج: tiket sekali jalan (ذهاب بس) ولا pulang-pergi (ذهاب وعودة)، وميعاد keberangkatan (القيام).
+        ولو العبّارة penuh (مليانة)، اسأل عن اللي بعدها.
+        ومع الخطط: akan / mau + lusa / minggu depan.
+      ar: |
+        عند شبّاك التذاكر تحتاج: tiket sekali jalan (ذهاب فقط) أو pulang-pergi (ذهاب وإياب)، وموعد keberangkatan (المغادرة).
+        وإن كانت العبّارة penuh (ممتلئة) فاسأل عن التالية.
+        ومع الخطط: akan / mau + lusa / minggu depan.
+      en: |
+        At the ticket window you'll need: a sekali jalan (one-way) or pulang-pergi (return) ticket, and the keberangkatan (departure) time.
+        If the ferry is penuh (full), ask about the next one.
+        For the plan itself: akan / mau + lusa / minggu depan.
+    grammar: id.time.future-plans
+    examples:
+      - text: Saya mau pesan tiket pulang-pergi untuk lusa.
+        ar_eg: عايز أحجز تذكرة ذهاب وعودة لبعد بكرة.
+        ar: أريد حجز تذكرة ذهاب وإياب لبعد غد.
+        en: I'd like to book a return ticket for the day after tomorrow.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question: Saya mau tiket ___. Saya kembali ke Lombok hari Minggu.
+    options: [sekali jalan, pulang-pergi, penuh]
+    answer: 1
+    explain:
+      ar_eg: 'هترجع لومبوك، يعني محتاج ذهاب وعودة: pulang-pergi.'
+      ar: 'ستعود إلى لومبوك، فتحتاج تذكرة ذهاب وإياب: pulang-pergi.'
+      en: 'You''re coming back to Lombok, so you need a return: pulang-pergi.'
+    words: [pulang-pergi]
+  - id: e02
+    type: listen
+    text: Maaf, feri jam sepuluh sudah penuh.
+    options:
+      - Maaf, feri jam sepuluh sudah penuh.
+      - Maaf, feri jam sepuluh sudah berangkat.
+      - Maaf, feri jam dua sudah penuh.
+    answer: 0
+    meaning:
+      ar_eg: آسف، عبّارة الساعة عشرة اتملت خلاص.
+      ar: عذرًا، عبّارة الساعة العاشرة ممتلئة.
+      en: Sorry, the ten o'clock ferry is already full.
+    words: [penuh, feri]
+  - id: e03
+    type: match_pairs
+    pairs:
+      - text: pulang-pergi
+        ar_eg: ذهاب وعودة
+        ar: ذهاب وإياب
+        en: return (ticket)
+      - text: sekali jalan
+        ar_eg: ذهاب بس
+        ar: ذهاب فقط
+        en: one-way
+      - text: penuh
+        ar_eg: مليان / كامل العدد
+        ar: ممتلئ
+        en: full
+      - text: keberangkatan
+        ar_eg: القيام / ميعاد الطلوع
+        ar: المغادرة
+        en: departure
+      - text: berangkat
+        ar_eg: يمشي / يطلع
+        ar: يغادر
+        en: to depart
+    words: [pulang-pergi, sekali jalan, penuh, keberangkatan, berangkat]
+  - id: e04
+    type: fill_blank
+    sentence: Jadwal ___ feri ke Sumbawa ada di loket.
+    meaning:
+      ar_eg: جدول مواعيد قيام العبّارة لسومباوا عند الشبّاك.
+      ar: جدول مغادرة العبّارة إلى سومباوا عند الشبّاك.
+      en: The ferry departure schedule to Sumbawa is at the ticket window.
+    options: [berangkat, keberangkatan, sekali jalan]
+    answers: [keberangkatan]
+    explain:
+      ar_eg: 'بعد jadwal محتاج اسم: keberangkatan (القيام)، مش الفعل berangkat.'
+      ar: 'بعد jadwal يلزم اسم: keberangkatan، لا الفعل berangkat.'
+      en: After jadwal you need a noun, keberangkatan, not the verb berangkat.
+    words: [keberangkatan]
+  - id: e05
+    type: fill_blank
+    sentence: Saya tidak kembali ke Lombok. Tolong tiket ___ saja.
+    meaning:
+      ar_eg: أنا مش راجع لومبوك. لو سمحت تذكرة ذهاب بس.
+      ar: لن أعود إلى لومبوك. تذكرة ذهاب فقط من فضلك.
+      en: I'm not coming back to Lombok. Just a one-way ticket, please.
+    options: [pulang-pergi, penuh, sekali jalan]
+    answers: [sekali jalan]
+    words: [sekali jalan]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: عايز أحجز تذكرة ذهاب بس لبعد بكرة.
+      ar: أريد حجز تذكرة ذهاب فقط لبعد غد.
+      en: I'd like to book a one-way ticket for the day after tomorrow.
+    answer: Saya mau pesan tiket sekali jalan untuk lusa.
+    distractors: [pulang-pergi, tadi]
+    words: [sekali jalan, lusa]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: عبّارة الساعة عشرة اتملت خلاص.
+      ar: عبّارة الساعة العاشرة ممتلئة.
+      en: The ten o'clock ferry is already full.
+    answers:
+      - Feri jam sepuluh sudah penuh.
+      - Feri jam sepuluh sudah penuh
+      - Kapal feri jam sepuluh sudah penuh.
+      - Kapal feri jam sepuluh sudah penuh
+      - Feri pukul sepuluh sudah penuh.
+      - Feri pukul 10 sudah penuh.
+      - Feri jam 10 sudah penuh.
+      - Feri yang jam sepuluh sudah penuh.
+    words: [penuh, feri]
+  - id: e08
+    type: dictation
+    text: Keberangkatan feri selanjutnya jam dua belas siang.
+    meaning:
+      ar_eg: العبّارة اللي بعدها بتطلع الساعة اتناشر الضهر.
+      ar: تغادر العبّارة التالية في الثانية عشرة ظهرًا.
+      en: The next ferry departure is at twelve noon.
+    words: [keberangkatan, feri]
+  - id: e09
+    type: speaking
+    text: Satu tiket pulang-pergi ke Sumbawa, untuk minggu depan.
+    meaning:
+      ar_eg: تذكرة ذهاب وعودة واحدة لسومباوا، للأسبوع الجاي.
+      ar: تذكرة ذهاب وإياب واحدة إلى سومباوا، للأسبوع القادم.
+      en: One return ticket to Sumbawa, for next week.
+    words: [pulang-pergi, minggu depan]
+dialogue:
+  title: Di loket Pelabuhan Kayangan
+  lines:
+    - speaker: Petugas
+      text: Selamat pagi. Mau ke mana, Pak?
+      ar_eg: صباح الخير. رايح فين يا فندم؟
+      ar: صباح الخير. إلى أين يا سيدي؟
+      en: Good morning. Where are you going, sir?
+    - speaker: Mohamed
+      text: Ke Pototano, Sumbawa. Saya mau pesan tiket untuk lusa.
+      ar_eg: بوتوتانو في سومباوا. عايز أحجز تذكرة لبعد بكرة.
+      ar: إلى بوتوتانو في سومباوا. أريد حجز تذكرة لبعد غد.
+      en: To Pototano, Sumbawa. I'd like to book a ticket for the day after tomorrow.
+    - speaker: Petugas
+      text: Sekali jalan atau pulang-pergi?
+      ar_eg: ذهاب بس ولا ذهاب وعودة؟
+      ar: ذهاب فقط أم ذهاب وإياب؟
+      en: One-way or return?
+    - speaker: Mohamed
+      text: Pulang-pergi. Saya akan kembali hari Minggu. Feri jam sepuluh masih ada?
+      ar_eg: ذهاب وعودة. هرجع يوم الحد. عبّارة الساعة عشرة لسه فيها مكان؟
+      ar: ذهاب وإياب، فسأعود يوم الأحد. هل ما زال في عبّارة العاشرة مكان؟
+      en: Return. I'll be back on Sunday. Is there still room on the ten o'clock ferry?
+    - speaker: Petugas
+      text: Maaf, feri jam sepuluh sudah penuh. Keberangkatan selanjutnya jam dua belas.
+      ar_eg: آسف، عبّارة عشرة اتملت. اللي بعدها الساعة اتناشر.
+      ar: عذرًا، عبّارة العاشرة ممتلئة. المغادرة التالية في الثانية عشرة.
+      en: Sorry, the ten o'clock is full. The next departure is at twelve.
+    - speaker: Mohamed
+      text: Baik, jam dua belas saja.
+      ar_eg: تمام، الساعة اتناشر خلاص.
+      ar: حسنًا، الثانية عشرة إذن.
+      en: All right, twelve o'clock, then.
+new_words:
+  - word: pulang-pergi
+    pos: adjective
+    ar_eg: ذهاب وعودة
+    ar: ذهاب وإياب
+    en: return (ticket), round trip
+  - word: sekali jalan
+    pos: adjective
+    ar_eg: ذهاب بس
+    ar: ذهاب فقط
+    en: one-way
+  - word: penuh
+    pos: adjective
+    ar_eg: مليان / كامل العدد
+    ar: ممتلئ
+    en: full
+  - word: keberangkatan
+    pos: noun
+    ar_eg: القيام / ميعاد الطلوع
+    ar: المغادرة
+    en: departure
+review:
+  status: draft
+  verified: false

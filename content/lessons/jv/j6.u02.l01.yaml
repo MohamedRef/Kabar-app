@@ -1,0 +1,200 @@
+schema: kabar.lesson/v1
+id: j6.u02.l01
+language: jv
+title: Wulu lan suku
+can_do:
+  ar_eg: تكتب i وu بعلامات الحركات.
+  ar: أن تكتب i وu بعلامات الحركات.
+  en: Write i and u.
+slides:
+  - title: Sandhangan swara
+    body:
+      ar_eg: |
+        لحد دلوقتي كل حرف فيه a. عشان تغيّرها بتحط علامة اسمها sandhangan، بالظبط زي التشكيل العربي:
+        - wulu ꦏꦶ: دايرة صغيرة فوق الحرف = i. ꦏ ka ← ꦏꦶ ki.
+        - suku ꦏꦸ: خطّاف تحت الحرف = u. ꦏ ka ← ꦏꦸ ku.
+        خلي بالك، بالعكس من العربي: الكسرة (i) عندنا تحت، والـ wulu فوق. والضمة (u) عندنا فوق، والـ suku تحت!
+      ar: |
+        كل حرف حتى الآن فيه a، ولتغييرها تُضاف علامة اسمها sandhangan كالتشكيل العربي:
+        - wulu ꦏꦶ: دائرة صغيرة فوق الحرف = i: ꦏ ka ← ꦏꦶ ki.
+        - suku ꦏꦸ: خطّاف تحت الحرف = u: ꦏ ka ← ꦏꦸ ku.
+        وانتبه إلى أنها عكس العربية: الكسرة تحت وwulu فوق، والضمة فوق وsuku تحت.
+      en: |
+        So far every letter has a. To change it you add a mark called a sandhangan, just like Arabic harakat:
+        - wulu ꦏꦶ: a small circle above the letter = i. ꦏ ka → ꦏꦶ ki.
+        - suku ꦏꦸ: a hook below the letter = u. ꦏ ka → ꦏꦸ ku.
+        Careful — it's the reverse of Arabic: kasra (i) sits below, but wulu sits above; damma (u) sits above, but suku sits below!
+    grammar: jv.aksara.sandhangan-swara
+    examples:
+      - text: ꦱꦶꦗꦶ (siji)
+        ar_eg: واحد — wulu على ꦱ وعلى ꦗ
+        ar: واحد — wulu على ꦱ وꦗ
+        en: one — wulu on ꦱ and on ꦗ
+      - text: ꦧꦸꦏꦸ (buku)
+        ar_eg: كتاب — suku تحت ꦧ وتحت ꦏ
+        ar: كتاب — suku تحت ꦧ وꦏ
+        en: book — suku under ꦧ and under ꦏ
+  - title: Aku ngaji
+    body:
+      ar_eg: |
+        الكلمة اللي بتبدأ بـ i أو u: ꦲ بتشيل العلامة، زي الألف اللي بتشيل الهمزة: ꦲꦏꦸ aku، ꦲꦶꦏꦶ iki، ꦲꦶꦏꦸ iku.
+        وجنب المسجد الكبير هتسمع كلمة ngaji = يقرا قرآن / يدرس دين: ꦔꦗꦶ.
+      ar: |
+        الكلمة المبدوءة بـ i أو u تحمل ꦲ علامتها كما تحمل الألف الهمزة: ꦲꦏꦸ aku، ꦲꦶꦏꦶ iki، ꦲꦶꦏꦸ iku.
+        وقرب المسجد الكبير تسمع ngaji = يقرأ القرآن / يتعلم الدين: ꦔꦗꦶ.
+      en: |
+        A word starting with i or u: ꦲ carries the mark, like alif carrying hamza: ꦲꦏꦸ aku, ꦲꦶꦏꦶ iki, ꦲꦶꦏꦸ iku.
+        Near the Great Mosque you'll hear ngaji = recite the Qur'an / study religion: ꦔꦗꦶ.
+    grammar: jv.aksara.sandhangan-swara
+    examples:
+      - text: ꦲꦶꦏꦶ (iki)
+        ar_eg: ده / دي
+        ar: هذا
+        en: this
+      - text: ꦲꦏꦸꦔꦗꦶ (aku ngaji)
+        ar_eg: أنا بقرا قرآن.
+        ar: أنا أقرأ القرآن.
+        en: I'm reciting the Qur'an.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: wulu
+        ar_eg: علامة i — دايرة فوق الحرف
+        ar: علامة i — دائرة فوق الحرف
+        en: the i mark — a circle above the letter
+      - text: suku
+        ar_eg: علامة u — خطّاف تحت الحرف
+        ar: علامة u — خطّاف تحت الحرف
+        en: the u mark — a hook below the letter
+      - text: sandhangan
+        ar_eg: علامة بتتحط على الحرف (زي التشكيل)
+        ar: علامة تُضاف إلى الحرف (كالتشكيل)
+        en: a mark added to a letter (like harakat)
+      - text: ngaji
+        ar_eg: يقرا قرآن / يدرس دين
+        ar: يقرأ القرآن / يتعلم الدين
+        en: recite the Qur'an / study religion
+    words: [wulu, suku, sandhangan, ngaji]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ده بيتقري إزاي؟ ꦏꦶ
+      ar: كيف يُقرأ هذا؟ ꦏꦶ
+      en: How do you read this? ꦏꦶ
+    options: [ka, ku, ki]
+    answer: 2
+    explain:
+      ar_eg: الدايرة اللي فوق = wulu = i.
+      ar: الدائرة فوق الحرف = wulu = i.
+      en: The circle above = wulu = i.
+    words: [wulu, sandhangan]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي واحدة هي bu؟
+      ar: أيّها bu؟
+      en: Which one is bu?
+    options: ["ꦧꦶ", "ꦧꦸ", "ꦧ"]
+    answer: 1
+    explain:
+      ar_eg: suku تحت الحرف = u. (بالعكس من الضمة اللي فوق!)
+      ar: suku تحت الحرف = u، بعكس الضمة.
+      en: suku below the letter = u (the opposite of damma, which sits above!).
+    words: [suku, sandhangan]
+  - id: e04
+    type: listen
+    text: siji
+    question:
+      ar_eg: سمعت أنهي كلمة؟
+      ar: أي كلمة سمعت؟
+      en: Which word did you hear?
+    options: ["ꦱꦶꦗꦶ", "ꦱꦸꦗꦶ", "ꦱꦗꦶ"]
+    answer: 0
+    meaning:
+      ar_eg: واحد
+      ar: واحد
+      en: one
+    words: [wulu]
+  - id: e05
+    type: fill_blank
+    sentence: ꦧꦸꦏꦸ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: كتاب)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: كتاب)"
+      en: Type the reading in Latin letters. (It means "book".)
+    answers: [buku]
+    words: [suku]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: ابني «buku siji» (كتاب واحد) مقطع مقطع.
+      ar: ركّب «buku siji» (كتاب واحد) مقطعًا مقطعًا.
+      en: Build "buku siji" (one book), syllable by syllable.
+    answer: ꦧꦸ ꦏꦸ ꦱꦶ ꦗꦶ
+    distractors: ["ꦧ", "ꦱ"]
+    words: [suku, wulu]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦲꦏꦸꦔꦗꦶ"
+      ar: "اكتب بالحروف اللاتينية: ꦲꦏꦸꦔꦗꦶ"
+      en: "Write in Latin letters: ꦲꦏꦸꦔꦗꦶ"
+    answers: [aku ngaji, akungaji]
+    words: [ngaji, wulu, suku]
+  - id: e08
+    type: speaking
+    text: Aku ngaji ing masjid.
+    meaning:
+      ar_eg: أنا بقرا قرآن في المسجد.
+      ar: أقرأ القرآن في المسجد.
+      en: I recite the Qur'an at the mosque.
+    words: [ngaji]
+dialogue:
+  title: Ing Masjid Gedhe Mataram
+  lines:
+    - speaker: Dimas
+      text: Med, iki Masjid Gedhe Mataram.
+      ar_eg: يا محمد، ده المسجد الكبير بتاع ماتارام.
+      ar: يا محمد، هذا مسجد ماتارام الكبير.
+      en: Med, this is the Great Mosque of Mataram.
+    - speaker: Mohamed
+      text: Apik banget, Mas. Bocah-bocah lagi ngaji.
+      ar_eg: حلو قوي يا ديماس. العيال بيقروا قرآن.
+      ar: جميل جدًا يا ديماس. الأطفال يقرؤون القرآن.
+      en: It's beautiful, Mas. The kids are reciting the Qur'an.
+    - speaker: Dimas
+      text: Iya. Ing papan kae ana aksara Jawa.
+      ar_eg: أيوه. على اللوحة اللي هناك دي فيه كتابة جاوي.
+      ar: نعم. على تلك اللوحة كتابة جاوية.
+      en: Yes. There's aksara Jawa on that sign over there.
+    - speaker: Mohamed
+      text: Aku isa maca siji. Nga, ji... ngaji!
+      ar_eg: أنا أعرف أقرا كلمة. nga، ji... ngaji!
+      ar: "أستطيع قراءة كلمة: nga، ji... ngaji!"
+      en: I can read one word. Nga, ji... ngaji!
+new_words:
+  - word: sandhangan
+    pos: noun
+    ar_eg: علامة بتتحط على الحرف (زي التشكيل)
+    ar: علامة تُضاف إلى الحرف (كالتشكيل)
+    en: a mark added to a letter (like harakat)
+  - word: wulu
+    pos: noun
+    ar_eg: "علامة i: دايرة فوق الحرف"
+    ar: "علامة i: دائرة فوق الحرف"
+    en: the i mark, a circle above the letter
+  - word: suku
+    pos: noun
+    ar_eg: "علامة u: خطّاف تحت الحرف"
+    ar: "علامة u: خطّاف تحت الحرف"
+    en: the u mark, a hook below the letter
+  - word: ngaji
+    pos: verb
+    ar_eg: يقرا قرآن / يدرس دين
+    ar: يقرأ القرآن / يتعلّم الدين
+    en: recite the Qur'an / study religion = mengaji
+review:
+  status: draft
+  verified: false

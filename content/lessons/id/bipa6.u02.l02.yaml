@@ -1,0 +1,189 @@
+schema: kabar.lesson/v1
+id: bipa6.u02.l02
+language: id
+title: Majas
+can_do:
+  ar_eg: تتعرّف على التشخيص والتلطيف والتواضع والمفارقة في الكلام والشعر.
+  ar: أن تتعرّف على التشخيص والتلطيف والتواضع والمفارقة في الكلام والشعر.
+  en: Recognise personification, euphemism, litotes and paradox in speech and poetry.
+slides:
+  - title: Majas lainnya
+    grammar: id.figurative.majas
+    body:
+      ar_eg: |
+        في BIPA 4 خدت التشبيه والمبالغة والاستعارة. دي بقية الـ majas (المجاز):
+        - personifikasi (التشخيص): Angin berbisik di pohon kelapa. = الهوا بيوشوش في النخل.
+        - eufemisme (التلطيف): berpulang بدل «مات». زي «انتقل لرحمة الله».
+        - litotes (التواضع): Silakan mampir ke gubuk kami. = اتفضل عشّتنا (والبيت كبير!).
+        - paradoks (المفارقة): Ia kesepian di tengah keramaian. = وحيد وسط الزحمة.
+      ar: |
+        درست في BIPA 4 التشبيه والمبالغة والاستعارة، وهذه بقيّة الـ majas (المجاز):
+        - personifikasi (التشخيص): Angin berbisik di pohon kelapa. = تهمس الريح في النخيل.
+        - eufemisme (التلطيف): berpulang بدل «مات»، مثل «انتقل إلى رحمة الله».
+        - litotes (التواضع): Silakan mampir ke gubuk kami. = تفضّل إلى كوخنا (والبيت فسيح!).
+        - paradoks (المفارقة): Ia kesepian di tengah keramaian. = وحيد وسط الزحام.
+      en: |
+        BIPA 4 covered simile, hyperbole and metaphor. Here are the other majas (figures of speech):
+        - personifikasi: Angin berbisik di pohon kelapa. = The wind whispers in the palms.
+        - eufemisme: berpulang instead of "died", like "returned to God".
+        - litotes (modest understatement): Silakan mampir ke gubuk kami. = Do drop by our hut (it's a big house!).
+        - paradoks: Ia kesepian di tengah keramaian. = Lonely in the middle of a crowd.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: majas
+        ar_eg: مجاز / صورة بلاغية
+        ar: مجاز
+        en: figure of speech
+      - text: personifikasi
+        ar_eg: تشخيص
+        ar: تشخيص
+        en: personification
+      - text: eufemisme
+        ar_eg: تلطيف
+        ar: تلطيف
+        en: euphemism
+      - text: berpulang
+        ar_eg: انتقل لرحمة الله
+        ar: انتقل إلى رحمة الله
+        en: to pass away (euphemism)
+      - text: gubuk
+        ar_eg: عشّة / كوخ
+        ar: كوخ
+        en: hut
+    words: [majas, personifikasi, eufemisme, berpulang, gubuk]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Ombak memanggil para nelayan» ده أنهي مجاز؟
+      ar: أيّ مجاز في «Ombak memanggil para nelayan»؟
+      en: Which figure is "Ombak memanggil para nelayan"?
+    options: [personifikasi, eufemisme, litotes]
+    answer: 0
+    words: [personifikasi, majas]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ليه الإندونيسي يقول «gubuk kami» عن بيته الكبير؟
+      ar: لماذا يقول الإندونيسي «gubuk kami» عن بيته الكبير؟
+      en: Why would an Indonesian call their big house "gubuk kami"?
+    options:
+      - علشان البيت فعلًا صغير.
+      - علشان بيكره البيت.
+      - تواضع وأدب.
+    answer: 2
+    words: [gubuk]
+  - id: e04
+    type: fill_blank
+    sentence: Kakek saya sudah ___ tahun lalu.
+    meaning:
+      ar_eg: جدي انتقل لرحمة الله السنة اللي فاتت.
+      ar: انتقل جدّي إلى رحمة الله العام الماضي.
+      en: My grandfather passed away last year.
+    options: [berpulang, berbisik, mampir]
+    answers: [berpulang]
+    words: [berpulang, eufemisme]
+  - id: e05
+    type: listen
+    text: Kata "berpulang" adalah eufemisme yang sopan.
+    question:
+      ar_eg: berpulang نوعها إيه؟
+      ar: ما نوع كلمة berpulang؟
+      en: What kind of word is "berpulang"?
+    options:
+      - كلمة عامية.
+      - تلطيف مؤدب.
+      - كلمة إنجليزي.
+    answer: 1
+    words: [eufemisme, berpulang]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: البانتون ده مليان مجاز.
+      ar: هذا البانتون مليء بالمجاز.
+      en: This pantun is full of figures of speech.
+    answer: Pantun ini penuh dengan majas.
+    distractors: [gubuk, berpulang]
+    words: [majas]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: اتفضل زورنا في كوخنا الصغير.
+      ar: تفضّل بزيارتنا في كوخنا الصغير.
+      en: Please come visit our little hut.
+    answers:
+      - Silakan mampir ke gubuk kami yang kecil.
+      - Silakan berkunjung ke gubuk kami yang kecil.
+      - Silakan mampir ke gubuk kecil kami.
+      - Mampirlah ke gubuk kami yang kecil.
+    words: [gubuk]
+  - id: e08
+    type: speaking
+    text: Dalam puisi itu, bulan tersenyum. Itu personifikasi.
+    meaning:
+      ar_eg: في القصيدة دي، القمر بيبتسم. ده تشخيص.
+      ar: في تلك القصيدة يبتسم القمر، وهذا تشخيص.
+      en: In that poem, the moon smiles. That's personification.
+    words: [personifikasi]
+  - id: e09
+    type: dictation
+    text: Eufemisme membuat berita sedih terdengar lebih lembut.
+    meaning:
+      ar_eg: التلطيف بيخلّي الخبر الحزين يبان أرق.
+      ar: يجعل التلطيفُ الخبرَ الحزين أرقّ وقعًا.
+      en: Euphemism makes sad news sound gentler.
+    words: [eufemisme]
+dialogue:
+  title: Puisi di kafe
+  lines:
+    - speaker: Encik Zul
+      text: Dengar baris ini, Mohamed. "Sungai Siak bernyanyi untuk kota yang tak pernah tidur."
+      ar_eg: اسمع السطر ده يا محمد. «نهر سياك بيغنّي لمدينة عمرها ما بتنام.»
+      ar: اسمع هذا السطر يا محمد. «نهر سياك يغنّي لمدينة لا تنام.»
+      en: Listen to this line, Mohamed. "The Siak River sings for a city that never sleeps."
+    - speaker: Mohamed
+      text: Sungai bernyanyi, itu personifikasi. Kota tak pernah tidur juga, kan?
+      ar_eg: النهر بيغنّي، ده تشخيص. والمدينة اللي مابتنامش كمان، صح؟
+      ar: النهر يغنّي، هذا تشخيص. والمدينة التي لا تنام أيضًا، أليس كذلك؟
+      en: A river singing, that's personification. A city that never sleeps too, right?
+    - speaker: Encik Zul
+      text: Betul. Penyairnya kaya majas, padahal dia bilang puisinya "hanya coretan kecil".
+      ar_eg: مظبوط. الشاعر مليان مجاز، مع إنه بيقول على شعره «شخبطة صغيرة».
+      ar: صحيح. شاعرها غنيّ بالمجاز، مع أنّه يصف شعره بأنّه «خربشة صغيرة».
+      en: Right. The poet is rich in figures, even though he calls his poems "just little scribbles".
+    - speaker: Mohamed
+      text: Ha, "coretan kecil" itu litotes!
+      ar_eg: ها، «شخبطة صغيرة» دي تواضع!
+      ar: ها! «خربشة صغيرة» هذه تواضع بلاغي!
+      en: Ha, "little scribbles" is litotes!
+new_words:
+  - word: majas
+    pos: noun
+    ar_eg: مجاز / صورة بلاغية
+    ar: مجاز
+    en: figure of speech
+  - word: personifikasi
+    pos: noun
+    ar_eg: تشخيص
+    ar: تشخيص
+    en: personification
+  - word: eufemisme
+    pos: noun
+    ar_eg: تلطيف
+    ar: تلطيف
+    en: euphemism
+  - word: berpulang
+    pos: verb
+    ar_eg: انتقل لرحمة الله
+    ar: انتقل إلى رحمة الله
+    en: to pass away (euphemism)
+  - word: gubuk
+    pos: noun
+    ar_eg: عشّة / كوخ
+    ar: كوخ
+    en: hut
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,180 @@
+schema: kabar.lesson/v1
+id: bipa6.u02.l05
+language: id
+title: Menulis pantun
+can_do:
+  ar_eg: تألّف بانتون بسيط، تعدّ المقاطع وتلاقي القافية.
+  ar: أن تنظم بانتونًا بسيطًا فتعدّ المقاطع وتجد القافية.
+  en: Compose a simple pantun, counting syllables and finding rhymes.
+slides:
+  - title: Resep pantun
+    grammar: id.pantun.structure
+    body:
+      ar_eg: |
+        علشان menyusun (تألّف) بانتون:
+        1. ابدأ بالـ isi: قول رسالتك في سطرين.
+        2. شوف آخر مقطع في كل سطر: ده اللي لازم يبقى berima.
+        3. دوّر على صورة من الطبيعة بنفس الأصوات وحطّها sampiran.
+        4. كل سطر حوالي 8 لـ 12 suku kata (مقطع صوتي): ka-lau a-da su-mur di la-dang = 10.
+        والـ karmina بانتون صغير بسطرين بس: Dahulu parang, sekarang besi; dahulu sayang, sekarang benci.
+      ar: |
+        لكي menyusun (تنظم) بانتونًا:
+        1. ابدأ بالـ isi: رسالتك في سطرين.
+        2. انظر إلى آخر مقطع في كلّ سطر، فهو ما يجب أن يكون berima.
+        3. ابحث عن صورة من الطبيعة بالأصوات نفسها واجعلها sampiran.
+        4. في كلّ سطر نحو 8 إلى 12 suku kata (مقطعًا): ka-lau a-da su-mur di la-dang = 10.
+        والـ karmina بانتون قصير من سطرين: Dahulu parang, sekarang besi; dahulu sayang, sekarang benci.
+      en: |
+        To menyusun (compose) a pantun:
+        1. Start with the isi: your message in two lines.
+        2. Look at the last syllable of each line; those must be berima (rhyme).
+        3. Find a nature image with the same sounds for the sampiran.
+        4. Each line has about 8–12 suku kata (syllables): ka-lau a-da su-mur di la-dang = 10.
+        A karmina is a two-line mini pantun: Dahulu parang, sekarang besi; dahulu sayang, sekarang benci.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: suku kata
+        ar_eg: مقطع صوتي
+        ar: مقطع صوتي
+        en: syllable
+      - text: berima
+        ar_eg: مقفّى
+        ar: مقفّى
+        en: to rhyme
+      - text: menyusun
+        ar_eg: يألّف / يرتّب
+        ar: ينظم
+        en: to compose, to arrange
+      - text: karmina
+        ar_eg: بانتون بسطرين
+        ar: بانتون من سطرين
+        en: two-line pantun
+    words: [suku kata, berima, menyusun, karmina]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «kota» بتقفّي مع أنهي كلمة؟
+      ar: أيّ كلمة تُقافي «kota»؟
+      en: Which word rhymes with "kota"?
+    options: [kita, kami, kamu]
+    answer: 0
+    words: [berima]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «se-ka-rang» فيها كام مقطع؟
+      ar: كم مقطعًا في «se-ka-rang»؟
+      en: How many syllables in "se-ka-rang"?
+    options: ['2', '4', '3']
+    answer: 2
+    words: [suku kata]
+  - id: e04
+    type: fill_blank
+    sentence: Pantun dua baris disebut ___.
+    meaning:
+      ar_eg: البانتون اللي بسطرين اسمه karmina.
+      ar: يسمّى البانتون ذو السطرين karmina.
+      en: A two-line pantun is called a karmina.
+    options: [karmina, sampiran, suku kata]
+    answers: [karmina]
+    words: [karmina]
+  - id: e05
+    type: listen
+    text: Baris pertama dan ketiga harus berima.
+    question:
+      ar_eg: أنهي سطور لازم تقفّي مع بعض؟
+      ar: أيّ الأسطر يجب أن تتقافى؟
+      en: Which lines must rhyme?
+    options:
+      - التاني والتالت.
+      - الأول والتالت.
+      - الأول والرابع.
+    answer: 1
+    words: [berima]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: ألّفت بانتون عن مصر.
+      ar: نظمتُ بانتونًا عن مصر.
+      en: I composed a pantun about Egypt.
+    answer: Saya menyusun pantun tentang Mesir.
+    distractors: [berima, karmina]
+    words: [menyusun]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: كل سطر فيه عشر مقاطع.
+      ar: في كلّ سطر عشرة مقاطع.
+      en: Each line has ten syllables.
+    answers:
+      - Setiap baris punya sepuluh suku kata.
+      - Setiap baris terdiri atas sepuluh suku kata.
+      - Tiap baris memiliki sepuluh suku kata.
+      - Setiap baris ada sepuluh suku kata.
+    words: [suku kata]
+  - id: e08
+    type: speaking
+    text: Dahulu parang, sekarang besi; dahulu sayang, sekarang benci.
+    meaning:
+      ar_eg: زمان سكينة، دلوقتي حديد؛ زمان حبيب، دلوقتي عدو.
+      ar: كان ساطورًا وصار حديدًا؛ كان حبًّا وصار بغضًا.
+      en: Once a machete, now just iron; once love, now hate.
+    words: [karmina]
+  - id: e09
+    type: dictation
+    text: Menyusun pantun itu seperti bermain teka-teki.
+    meaning:
+      ar_eg: تأليف البانتون زي حل الفوازير.
+      ar: نظم البانتون أشبه بحلّ الألغاز.
+      en: Composing a pantun is like playing a puzzle.
+    words: [menyusun]
+dialogue:
+  title: Pantun pertama Mohamed
+  lines:
+    - speaker: Mohamed
+      text: Encik, saya mau menyusun pantun tentang Kairo, tetapi sulit mencari rima.
+      ar_eg: يا إنشيك، عايز أألّف بانتون عن القاهرة، بس صعب ألاقي قافية.
+      ar: أريد أن أنظم بانتونًا عن القاهرة، لكنّ إيجاد القافية صعب.
+      en: Encik, I want to compose a pantun about Cairo, but finding rhymes is hard.
+    - speaker: Encik Zul
+      text: Mulai dari isinya dulu. Apa pesanmu?
+      ar_eg: ابدأ بالرسالة الأول. إيه اللي عايز تقوله؟
+      ar: ابدأ بالمضمون أوّلًا. ما رسالتك؟
+      en: Start with the message first. What do you want to say?
+    - speaker: Mohamed
+      text: Walau jauh di Pekanbaru, hati saya tetap di Kairo.
+      ar_eg: حتى لو بعيد في بيكانبارو، قلبي لسه في القاهرة.
+      ar: وإن كنتُ بعيدًا في بيكانبارو، فقلبي ما زال في القاهرة.
+      en: Though I'm far away in Pekanbaru, my heart stays in Cairo.
+    - speaker: Encik Zul
+      text: Bagus. Sekarang cari sampiran yang berima dengan "baru" dan "Kairo". Hitung juga suku katanya.
+      ar_eg: حلو. دلوقتي دوّر على sampiran يقفّي مع baru وKairo. وعدّ المقاطع كمان.
+      ar: جميل. ابحث الآن عن sampiran يقافي baru وKairo، وعدّ المقاطع أيضًا.
+      en: Good. Now find a sampiran that rhymes with "baru" and "Kairo". Count the syllables too.
+new_words:
+  - word: suku kata
+    pos: noun
+    ar_eg: مقطع صوتي
+    ar: مقطع صوتي
+    en: syllable
+  - word: berima
+    pos: verb
+    ar_eg: مقفّى
+    ar: مقفّى
+    en: to rhyme
+  - word: menyusun
+    pos: verb
+    ar_eg: يألّف / يرتّب
+    ar: ينظم
+    en: to compose, to arrange
+  - word: karmina
+    pos: noun
+    ar_eg: بانتون بسطرين
+    ar: بانتون من سطرين
+    en: two-line pantun
+review:
+  status: draft
+  verified: false

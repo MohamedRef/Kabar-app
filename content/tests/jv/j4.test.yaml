@@ -1,0 +1,683 @@
+schema: kabar.test/v1
+id: j4.test
+language: jv
+kind: level
+title:
+  ar_eg: اختبار مستوى J4 — يوجياكارتا (الكراما إنجيل والأندهاب)
+  ar: اختبار مستوى J4 — يوجياكارتا (الكراما إنغيل والأندهاب)
+  en: J4 level test — Yogyakarta (krama inggil and andhap)
+intro:
+  ar_eg: |
+    وصلت Yogya، مدينة السلطان! هنا هتكرّم الكبير بالـ krama inggil (dhahar، tindak، asma، dalem)، وتتواضع إنت بالـ krama andhap (matur، sowan، nyuwun، ngaturaken)، وتعدّي زيارة كاملة بآدابها، وتختار بين ngoko alus وkrama alus، وتعرف مين بيكلم مين في الوايانغ.
+    خد وقتك. القاعدة الدهبية واحدة: الكلام العالي هدية للتاني، مش ليك. السبيلنج العادي أو بتاع الشات (kulo، monggo، nggih)، وبعلامات أو من غيرها — كله مقبول.
+    ولو جاي من "Take a flight" عشان تعدّي J4، أهلًا بيك — نفس الأسئلة.
+  ar: |
+    وصلتَ إلى Yogya، مدينة السلطان! ستكرّم الكبير هنا بالـ krama inggil (dhahar، tindak، asma، dalem)، وتتواضع أنت بالـ krama andhap (matur، sowan، nyuwun، ngaturaken)، وتجتاز زيارة كاملة بآدابها، وتختار بين ngoko alus وkrama alus، وتعرف من يكلّم من في الوايانغ.
+    خذ وقتك؛ فالقاعدة الذهبية واحدة: الكلام الرفيع تكريم للآخر لا لنفسك. تُقبل التهجئة المعيارية أو تهجئة الدردشة (kulo، monggo، nggih)، بالعلامات أو بدونها.
+    وإن جئت من "Take a flight" لتتجاوز J4، فأهلًا بك؛ الأسئلة نفسها.
+  en: |
+    You've reached Yogya, the Sultan's city! Here you'll honour elders with krama inggil (dhahar, tindak, asma, dalem), lower yourself with krama andhap (matur, sowan, nyuwun, ngaturaken), get through a whole visit with its etiquette, choose between ngoko alus and krama alus, and tell who is talking to whom in wayang.
+    Take your time. The golden rule is always the same: the raised words are a gift for the other person, never for you. Standard or chat spelling (kulo, monggo, nggih), with or without accents, is all accepted.
+    If you came through "Take a flight" to skip J4, welcome: these are the same questions.
+minutes: 35
+pass_mark: 0.75
+scoring: Score = points earned / points available (closed items 1 point unless set; translate items are graded against reference answers first, standard or chat spelling, with or without accents, then AI grade_answer; writing_task and speaking_task are graded by AI against their rubric, each criterion an equal share of the item's points). Pass at >= 0.75. Passing marks J4 complete and opens J5; the same rule applies when the test is taken as the "Take a flight" skip-ahead over J4. Below the mark, show the per-skill results and suggest the units behind the missed items, with no penalty and an open retry. Javanese items stay unverified until the learner approves them.
+sections:
+  - id: listening
+    skill: listening
+    title:
+      ar_eg: الاستماع
+      ar: الاستماع
+      en: Listening
+    instructions:
+      ar_eg: اسمع، وعيد براحتك، واختار اللي سمعته بالظبط أو اكتبه. خلي بالك مين اللي بيتكرّم في الجملة.
+      ar: استمع وأعِد كما تشاء، ثم اختر ما سمعته بالضبط أو اكتبه، منتبهًا لمن يُكرَّم في الجملة.
+      en: Listen, replay as you like, then pick exactly what you heard or write it. Notice who is being honoured in each sentence.
+    items:
+      - id: t01
+        type: listen
+        text: Simbah saweg sare, Bapak dereng kondur.
+        options:
+          - Simbah saweg siram, Bapak dereng kondur.
+          - Simbah saweg sare, Bapak sampun kondur.
+          - Simbah saweg sare, Bapak dereng kondur.
+        answer: 2
+        words: [sare, kondur]
+      - id: t02
+        type: listen
+        text: Nyuwun pirsa, Pak, Taman Sari wonten pundi?
+        options:
+          - Nyuwun pirsa, Pak, Taman Sari wonten pundi?
+          - Nyuwun pamit, Pak, kula wangsul rumiyin.
+          - Nyuwun sewu, Pak, Kraton wonten pundi?
+        answer: 0
+        words: [nyuwun pirsa]
+      - id: t03
+        type: listen
+        text: Kula ngaturi Bapak rawuh wonten syukuran kula.
+        options:
+          - Kula ngaturaken Bapak rawuh wonten syukuran kula.
+          - Kula ngaturi Bapak rawuh wonten syukuran kula.
+          - Kula badhe sowan wonten syukuranipun Bapak.
+        answer: 1
+        words: [ngaturi, rawuh]
+      - id: t04
+        type: listen
+        text: Mbak, panjenengan arep tindak menyang ngendi?
+        question:
+          ar_eg: Dimas بيكلم أخته الكبيرة. ده أنهي مستوى؟
+          ar: يكلّم Dimas أخته الكبرى. أيّ مستوى هذا؟
+          en: Dimas is talking to his older sister. Which level is this?
+        options: [ngoko lugu, krama alus, ngoko alus]
+        answer: 2
+        meaning:
+          ar_eg: يا أبلة، حضرتك رايحة فين؟
+          ar: يا أختي، إلى أين تذهبين؟
+          en: Sis, where are you going?
+        words: [ngoko alus, tindak]
+      - id: t05
+        type: listen
+        text: Kula nuwun! — Mangga, mangga pinarak.
+        options:
+          - Kula nuwun! — Mangga, mangga pinarak.
+          - Matur nuwun! — Mangga, mangga lenggah.
+          - Kula nuwun! — Sugeng tindak, ngatos-atos.
+        answer: 0
+        words: [kula nuwun, pinarak]
+      - id: t06
+        type: dictation
+        text: Kula nyuwun pamit rumiyin, Bu.
+        meaning:
+          ar_eg: عن إذنك يا هانم، أنا ماشي.
+          ar: أستأذنكِ في الانصراف يا سيدتي.
+          en: Please excuse me, ma'am, I'll be going.
+        words: [nyuwun pamit, rumiyin]
+  - id: reading
+    skill: reading
+    title:
+      ar_eg: القراية
+      ar: القراءة
+      en: Reading
+    instructions:
+      ar_eg: اقرا الزيارة ومشهد الوايانغ، وجاوب من اللي مكتوب.
+      ar: اقرأ الزيارة ومشهد الوايانغ، وأجب مما ورد فيهما.
+      en: Read the visit and the wayang scene, and answer from what they say.
+    items:
+      - id: t07
+        type: multiple_choice
+        question: |
+          Mohamed: Kula nuwun!
+          Bu Ningsih: Mangga! Oh, Mas Mohamed. Mangga pinarak.
+          Bu Ningsih: Pripun kabaripun, Mas?
+          Mohamed: Pangestunipun, sae, Bu. Bapak wonten?
+          Bu Ningsih: Bapak saweg tindak dhateng Kraton. Simbah saweg gerah, mustakanipun sakit.
+          Mohamed: Menika jeruk kagem Simbah, Bu.
+          Bu Ningsih: Matur nuwun sanget, Mas. Kula damelaken teh rumiyin.
+          Mohamed: Sampun repot-repot, Bu.
+        question_meaning:
+          ar_eg: Bapak (راجل البيت) فين دلوقتي؟
+          ar: أين Bapak (ربّ البيت) الآن؟
+          en: Where is Bapak (the man of the house) right now?
+        options: ["Sedang tidur di kamar.", "Sedang pergi ke Kraton.", "Sedang sakit di rumah."]
+        answer: 1
+        words: [tindak, saweg]
+      - id: t08
+        type: multiple_choice
+        question: |
+          Mohamed: Kula nuwun!
+          Bu Ningsih: Mangga! Oh, Mas Mohamed. Mangga pinarak.
+          Bu Ningsih: Pripun kabaripun, Mas?
+          Mohamed: Pangestunipun, sae, Bu. Bapak wonten?
+          Bu Ningsih: Bapak saweg tindak dhateng Kraton. Simbah saweg gerah, mustakanipun sakit.
+          Mohamed: Menika jeruk kagem Simbah, Bu.
+          Bu Ningsih: Matur nuwun sanget, Mas. Kula damelaken teh rumiyin.
+          Mohamed: Sampun repot-repot, Bu.
+        question_meaning:
+          ar_eg: الجدّة مالها؟
+          ar: ما بال الجدّة؟
+          en: What's wrong with Grandma?
+        options: ["Tangannya sakit.", "Dia sedang mandi.", "Dia sakit kepala."]
+        answer: 2
+        explain:
+          ar_eg: gerah = عيانة (للكبير، مش «حر» زي الإندونيسي)، وmustakanipun = راسها (krama inggil).
+          ar: gerah = مريضة (للكبير، لا «الحرّ» كما في الإندونيسية)، وmustakanipun = رأسها (krama inggil).
+          en: gerah = unwell (for an elder, not "stuffy" as in Indonesian), and mustakanipun = her head (krama inggil).
+        words: [gerah, mustaka]
+      - id: t09
+        type: multiple_choice
+        question: Sampun repot-repot, Bu.
+        question_meaning:
+          ar_eg: محمد قال كده لما Bu Ningsih قالت هتعمله شاي. يقصد إيه؟ (اختار الجملة الإندونيسي)
+          ar: قال محمد هذا حين عرضت Bu Ningsih أن تعدّ له الشاي. ماذا يقصد؟ (اختر الجملة الإندونيسية)
+          en: Mohamed says this when Bu Ningsih offers to make him tea. What does he mean? (Pick the Indonesian.)
+        options: ["Jangan repot-repot, Bu.", "Sudah cukup, Bu.", "Saya sudah minum, Bu."]
+        answer: 0
+        explain:
+          ar_eg: sampun في أول طلب معناها «ما…ش» (زي aja)، مش «خلاص».
+          ar: sampun في أول الطلب تعني «لا تفعل» (مثل aja)، لا «قد».
+          en: sampun at the start of a request means "don't" (like aja), not "already".
+        words: [sampun repot-repot]
+      - id: t10
+        type: multiple_choice
+        question: |
+          Rama: Hanoman, kowe menyanga Alengka. Sinta ana ing kana.
+          Hanoman: Sendika dhawuh, Gusti. Kula nyuwun pamit rumiyin.
+          …
+          Hanoman: Gusti, kula badhe matur. Dewi Sinta wonten ing Alengka.
+          Rama: Iya. Apik, Hanoman.
+        question_meaning:
+          ar_eg: Rama بيكلم Hanoman بأنهي مستوى؟
+          ar: بأيّ مستوى يكلّم Rama Hanoman؟
+          en: Which level does Rama use with Hanoman?
+        options: [krama alus, krama lugu, ngoko]
+        answer: 2
+        explain:
+          ar_eg: الملك بيكلم خدّامه بالنغوكو (kowe، menyanga، ana). الخدّام هو اللي بيرد بالكراما.
+          ar: يكلّم الملكُ خادمه بالنغوكو (kowe، menyanga، ana)، والخادم هو الذي يجيب بالكراما.
+          en: A king speaks to his servant in ngoko (kowe, menyanga, ana). It's the servant who answers in krama.
+        words: [ratu, abdi]
+      - id: t11
+        type: multiple_choice
+        question: |
+          Rama: Hanoman, kowe menyanga Alengka. Sinta ana ing kana.
+          Hanoman: Sendika dhawuh, Gusti. Kula nyuwun pamit rumiyin.
+          …
+          Hanoman: Gusti, kula badhe matur. Dewi Sinta wonten ing Alengka.
+          Rama: Iya. Apik, Hanoman.
+        question_meaning:
+          ar_eg: Hanoman بيقول «kula badhe matur» مش «kula badhe ngendika». ليه؟
+          ar: يقول Hanoman «kula badhe matur» لا «kula badhe ngendika». لماذا؟
+          en: Hanoman says "kula badhe matur", not "kula badhe ngendika". Why?
+        options:
+          - Karena Hanoman abdi, dan dia bicara kepada rajanya.
+          - Karena Rama lebih muda dari Hanoman.
+          - Karena Hanoman sedang bercanda.
+        answer: 0
+        explain:
+          ar_eg: matur = krama andhap، الخدّام بيوطّي نفسه وهو بيكلم الملك. ngendika للملك هو (krama inggil)، عمرها ما تتقال عن نفسك.
+          ar: matur من الـ krama andhap، يتواضع بها الخادم حين يكلّم الملك. أما ngendika فللملك (krama inggil) ولا تُقال عن النفس.
+          en: matur is krama andhap, the servant lowering himself as he speaks to the king. ngendika is for the king (krama inggil), never for yourself.
+        words: [matur, ngendika]
+      - id: t12
+        type: multiple_choice
+        question: Sendika dhawuh, Gusti.
+        question_meaning:
+          ar_eg: Hanoman رد على أمر الملك بالجملة دي. معناها إيه؟
+          ar: أجاب Hanoman أمرَ الملك بهذه الجملة. ما معناها؟
+          en: Hanoman answers the king's order with this. What does it mean?
+        options: ["Siap, laksanakan, Tuan.", "Selamat jalan, Tuan.", "Permisi, numpang lewat."]
+        answer: 0
+        words: [sendika dhawuh, gusti]
+      - id: t13
+        type: multiple_choice
+        question: |
+          Mas Dimas: Mohamed, bengi iki ana wayang kulit ing pendhapa. Kowe arep nonton?
+          Mohamed: Arep! Dhalange saka ngendi?
+          Mas Dimas: Saka Bantul. Ana gamelan lan sindhen uga.
+          Mohamed: Ana punakawane?
+          Mas Dimas: Ana. Punakawan guyon nganggo ngoko, nanging karo Raden Arjuna nganggo krama.
+        question_meaning:
+          ar_eg: الـ punakawan بيكلموا Raden Arjuna إزاي؟
+          ar: كيف يكلّم الـ punakawan Raden Arjuna؟
+          en: How do the punakawan speak to Raden Arjuna?
+        options: ["Dengan ngoko, sambil bercanda.", "Dengan krama.", "Dengan bahasa Indonesia."]
+        answer: 1
+        explain:
+          ar_eg: بينهم وبين بعض نغوكو وهزار (guyon)، لكن مع سيدهم الفارس كراما. المستوى جزء من الحكاية.
+          ar: بينهم نغوكو ومزاح (guyon)، أما مع سيدهم الفارس فالكراما؛ فالمستوى جزء من الحكاية.
+          en: Among themselves it's ngoko and jokes (guyon), but with their knight it's krama. The level is part of the drama.
+        words: [punakawan, guyon]
+  - id: vocabulary
+    skill: vocabulary
+    title:
+      ar_eg: الكلمات
+      ar: المفردات
+      en: Vocabulary
+    items:
+      - id: t14
+        type: match_pairs
+        pairs:
+          - text: ngunjuk
+            ar_eg: يشرب (krama inggil، للكبير)
+            ar: يشرب (krama inggil، للمعظَّم)
+            en: drink (krama inggil, for the elder)
+          - text: sare
+            ar_eg: ينام (krama inggil)
+            ar: ينام (krama inggil)
+            en: sleep (krama inggil)
+          - text: kondur
+            ar_eg: يروّح (krama inggil)
+            ar: يعود إلى البيت (krama inggil)
+            en: go home (krama inggil)
+          - text: lenggah
+            ar_eg: يقعد (krama inggil)
+            ar: يجلس (krama inggil)
+            en: sit (krama inggil)
+          - text: ngendika
+            ar_eg: يقول (krama inggil)
+            ar: يقول (krama inggil)
+            en: say (krama inggil)
+        words: [ngunjuk, sare, kondur, lenggah, ngendika]
+      - id: t15
+        type: match_pairs
+        pairs:
+          - text: asma
+            ar_eg: الاسم (بتاع الكبير؛ = nami)
+            ar: الاسم (للمعظَّم؛ = nami)
+            en: name (the elder's; = nami)
+          - text: yuswa
+            ar_eg: السن، العمر (بتاع الكبير؛ = umur)
+            ar: العمر (للمعظَّم؛ = umur)
+            en: age (the elder's; = umur)
+          - text: dalem
+            ar_eg: البيت (بتاع الكبير؛ = griya)
+            ar: البيت (للمعظَّم؛ = griya)
+            en: home (the elder's; = griya)
+          - text: garwa
+            ar_eg: الزوج أو الزوجة (بتاع الكبير؛ = semah)
+            ar: الزوج أو الزوجة (للمعظَّم؛ = semah)
+            en: spouse (the elder's; = semah)
+          - text: asta
+            ar_eg: الإيد (بتاعة الكبير؛ = tangan)
+            ar: اليد (للمعظَّم؛ = tangan)
+            en: hand (the elder's; = tangan)
+        words: [asma, yuswa, dalem, garwa, asta]
+      - id: t16
+        type: match_pairs
+        pairs:
+          - text: matur
+            ar_eg: أقول لحضرتك (krama andhap)
+            ar: أقول لكم (krama andhap)
+            en: say, tell (up to an elder; krama andhap)
+          - text: sowan
+            ar_eg: أزور حضرتك (krama andhap)
+            ar: أزوركم (krama andhap)
+            en: call on, visit an elder (krama andhap)
+          - text: nyuwun
+            ar_eg: أطلب (بتواضع)
+            ar: أطلب (بتواضع)
+            en: ask for (humbly)
+          - text: ngaturaken
+            ar_eg: أقدّم لحضرتك (هدية)
+            ar: أقدّم لكم (هدية)
+            en: offer, present (to an elder)
+          - text: ndherek
+            ar_eg: آجي مع حضرتك
+            ar: أرافقكم
+            en: go along with (an elder)
+        words: [matur, sowan, nyuwun, ngaturaken, ndherek]
+      - id: t17
+        type: match_pairs
+        pairs:
+          - text: dhalang
+            ar_eg: اللي بيحرّك العرايس ويتكلم بصوتهم كلهم
+            ar: محرّك الدمى الذي يؤدّي أصوات الشخصيات كلها
+            en: puppet master who voices every character
+          - text: sindhen
+            ar_eg: المغنية مع الغاميلان
+            ar: المغنّية مع الغاميلان
+            en: female singer with the gamelan
+          - text: gong
+            ar_eg: الجونج الكبير اللي بيقفل الجملة الموسيقية
+            ar: الصنج الكبير الذي يختم الجملة الموسيقية
+            en: great gong that closes each musical phrase
+          - text: kendhang
+            ar_eg: الطبلة اللي بتقود الإيقاع
+            ar: الطبل الذي يقود الإيقاع
+            en: drum that leads the tempo
+          - text: punakawan
+            ar_eg: الخدّامين المهرّجين في الوايانغ
+            ar: الخدم المهرّجون في الوايانغ
+            en: the clown-servants of wayang
+        words: [dhalang, sindhen, gong, kendhang, punakawan]
+      - id: t18
+        type: fill_blank
+        sentence: Mangga ___, Pak.
+        meaning:
+          ar_eg: اتفضل ادخل واقعد معانا يا أستاذ. (للضيف الكبير)
+          ar: تفضّل بالدخول والجلوس يا سيدي. (للضيف المعظَّم)
+          en: Please come in and sit with us, sir. (to an honoured guest)
+        options: [mampir, pinarak, sowan]
+        answers: [pinarak]
+        explain:
+          ar_eg: pinarak هي krama inggil لـ mampir. وsowan للي بيزور (إنت)، مش للي بتستقبله.
+          ar: pinarak هي krama inggil لـ mampir، وsowan للزائر نفسه (أنت) لا للضيف المستقبَل.
+          en: pinarak is the krama inggil of mampir. sowan is for the visitor (you), not for the guest you welcome.
+        words: [pinarak]
+      - id: t19
+        type: multiple_choice
+        question: Simbah saweg gerah.
+        question_meaning:
+          ar_eg: الجملة دي معناها إيه؟ (اختار الجملة الإندونيسي)
+          ar: ما معنى هذه الجملة؟ (اختر الجملة الإندونيسية)
+          en: What does this sentence mean? (Pick the Indonesian.)
+        options: ["Nenek sedang kepanasan.", "Nenek sedang sakit.", "Nenek sedang tidur."]
+        answer: 1
+        explain:
+          ar_eg: خلي بالك! gerah بالإندونيسي يعني «حر وكتمة»، لكن بالجاوي krama inggil لـ «عيان».
+          ar: انتبه! gerah في الإندونيسية تعني «الحرّ الخانق»، أما في الجاوية فهي krama inggil لـ «مريض».
+          en: Careful! Indonesian gerah means "hot and stuffy", but in Javanese it's the krama inggil for "ill".
+        words: [gerah]
+  - id: grammar
+    skill: grammar
+    title:
+      ar_eg: القواعد ومستوى الكلام والآداب
+      ar: القواعد ومستوى الكلام والآداب
+      en: Grammar, speech level and etiquette
+    items:
+      - id: t20
+        type: multiple_choice
+        question: Mas Mohamed kersa ngunjuk teh?
+        question_meaning:
+          ar_eg: Pak Harsono بيسألك كده، وإنت عايز. ترد بإيه؟
+          ar: يسألك Pak Harsono هذا، وأنت تريد. بمَ تجيب؟
+          en: Pak Harsono asks you this, and you'd like some. What do you answer?
+        options: ["Inggih, kersa, Pak.", "Inggih, purun, Pak.", "Iya, gelem, Pak."]
+        answer: 1
+        explain:
+          ar_eg: kersa تكريم ليك منه، إنت ترد بتواضع بـ purun. وgelem نغوكو.
+          ar: kersa تكريم لك منه، وأنت تجيب متواضعًا بـ purun، وgelem نغوكو.
+          en: kersa is his honour to you; you answer humbly with purun. gelem is ngoko.
+        words: [purun, kersa]
+      - id: t21
+        type: multiple_choice
+        question_meaning:
+          ar_eg: Bu Harsono بتسألك رايح فين. إنت رايح Malioboro. أنهي جملة صح؟
+          ar: تسألك Bu Harsono إلى أين تذهب، وأنت ذاهب إلى Malioboro. أيّ جملة صحيحة؟
+          en: Bu Harsono asks where you're going. You're off to Malioboro. Which sentence is right?
+        options:
+          - Kula badhe tindak dhateng Malioboro.
+          - Aku arep lunga menyang Malioboro.
+          - Kula badhe kesah dhateng Malioboro.
+        answer: 2
+        explain:
+          ar_eg: عن نفسك kesah (كراما عادية). tindak krama inggil للكبير بس، وaku arep lunga نغوكو.
+          ar: عن نفسك تقول kesah (كراما عادية)، أما tindak فـ krama inggil للمعظَّم وحده، وaku arep lunga نغوكو.
+          en: About yourself it's kesah (plain krama). tindak is krama inggil, only for the elder, and aku arep lunga is ngoko.
+        words: [kesah, tindak]
+      - id: t22
+        type: fill_blank
+        sentence: Nami kula Mohamed. ___ sinten, Pak?
+        meaning:
+          ar_eg: اسمي محمد. اسم حضرتك إيه يا أستاذ؟
+          ar: اسمي محمد. ما اسمك الكريم يا سيدي؟
+          en: My name is Mohamed. What is your name, sir?
+        options: [Asma kula, Asmanipun, Nami kula]
+        answers: [Asmanipun]
+        explain:
+          ar_eg: اسمه هو asma (asmanipun = اسم حضرتك)، واسمك إنت nami. «Asma kula» كأنك بتقول «اسمي الكريم».
+          ar: اسمه asma (asmanipun = اسمكم)، واسمك أنت nami، و«Asma kula» كقولك «اسمي الكريم».
+          en: His name is asma (asmanipun = your name); yours is nami. "Asma kula" sounds like "my honoured name".
+        words: [asmanipun, nami]
+      - id: t23
+        type: fill_blank
+        sentence: Kula ___ adhi kalih. Bapak kagungan putra pinten?
+        meaning:
+          ar_eg: أنا عندي أخين أصغر مني. حضرتك عندك كام ولد؟
+          ar: لديّ أخوان أصغر مني. كم ولدًا لديك يا سيدي؟
+          en: I have two younger siblings. How many children do you have, sir?
+        options: [kagungan, gadhah, putra]
+        answers: [gadhah]
+        words: [gadhah, kagungan]
+      - id: t24
+        type: fill_blank
+        sentence: Ngapunten, Bu, ___ kula sakit.
+        meaning:
+          ar_eg: لا مؤاخذة يا هانم، راسي وجعاني.
+          ar: عذرًا يا سيدتي، رأسي يؤلمني.
+          en: Sorry, ma'am, my head hurts.
+        options: [mustaka, asta, sirah]
+        answers: [sirah]
+        explain:
+          ar_eg: "جسمك إنت بكلامه العادي: sirah kula. mustaka لراس الكبير بس."
+          ar: "جسدك أنت بالكلمة العادية: sirah kula، وmustaka لرأس المعظَّم وحده."
+          en: "Your own body keeps the plain word: sirah kula. mustaka is only for an elder's head."
+        words: [sirah, mustaka]
+      - id: t25
+        type: fill_blank
+        sentence: Sesuk kula badhe ___ dhateng dalemipun Simbah.
+        meaning:
+          ar_eg: بكرة هروح أزور تيتة في بيتها. (بتواضع)
+          ar: غدًا سأزور الجدّة في بيتها. (بتواضع)
+          en: Tomorrow I'll call on Grandma at her home. (humbly)
+        options: [rawuh, sowan, tindak]
+        answers: [sowan]
+        explain:
+          ar_eg: الزيارة بتاعتك للكبير sowan (krama andhap). rawuh لما هو اللي ييجي، وtindak لما هو اللي يروح.
+          ar: زيارتك للمعظَّم sowan (krama andhap)، وrawuh حين يأتي هو، وtindak حين يذهب هو.
+          en: Your visit to an elder is sowan (krama andhap). rawuh is when he comes, tindak when he goes.
+        words: [sowan, dalem]
+      - id: t26
+        type: multiple_choice
+        question_meaning:
+          ar_eg: تيتة اديتك فلوس. تحكي ده إزاي؟
+          ar: أعطتك الجدّة مالًا. كيف تحكي ذلك؟
+          en: Grandma gave you some money. How do you say it?
+        options:
+          - Simbah maringi kula arta.
+          - Simbah ngaturaken arta dhateng kula.
+          - Simbah nyuwun arta dhateng kula.
+        answer: 0
+        explain:
+          ar_eg: "لما الكبير هو اللي بيدّي: maringi (krama inggil). ngaturaken لما إنت اللي بتقدّم له."
+          ar: "حين يعطي المعظَّم: maringi (krama inggil)، وngaturaken حين تقدّم أنت له."
+          en: "When the elder gives: maringi (krama inggil). ngaturaken is when you offer something up to them."
+        words: [maringi, ngaturaken]
+      - id: t27
+        type: fill_blank
+        sentence: Bapak badhe tindak dhateng Kraton? Inggih, Pak, kula ___.
+        meaning:
+          ar_eg: حضرتك رايح القصر؟ أيوه يا أستاذ، أنا جاي مع حضرتك.
+          ar: هل ستذهب إلى القصر يا سيدي؟ نعم، سأرافقك.
+          en: Are you going to the Kraton, sir? Yes, sir, I'll come with you.
+        options: [ndherek, tindak, rawuh]
+        answers: [ndherek]
+        words: [ndherek]
+      - id: t28
+        type: multiple_choice
+        question_meaning:
+          ar_eg: بتسأل Mbak Ratri (أخت Dimas الكبيرة وصاحبتك) أكلت ولا لسه، بالـ ngoko alus. تقول إيه؟
+          ar: تسأل Mbak Ratri (أخت Dimas الكبرى وصديقتك) هل أكلت، بالـ ngoko alus. ماذا تقول؟
+          en: You ask Mbak Ratri (Dimas's older sister, and your friend) whether she's eaten yet, in ngoko alus. What do you say?
+        options:
+          - Mbak wis dhahar durung?
+          - Mbak, kowe wis mangan durung?
+          - Mbak, sampun nedha?
+        answer: 0
+        explain:
+          ar_eg: ngoko alus = الإطار نغوكو (wis، durung) + krama inggil للي بتكرّمه (Mbak، dhahar). كله نغوكو يبقى ngoko lugu.
+          ar: ngoko alus = إطار نغوكو (wis، durung) + krama inggil لمن تكرّمه (Mbak، dhahar)، أما النغوكو الخالص فهو ngoko lugu.
+          en: ngoko alus = a ngoko frame (wis, durung) + krama inggil for the person you honour (Mbak, dhahar). All ngoko would be ngoko lugu.
+        words: [ngoko alus, dhahar]
+      - id: t29
+        type: multiple_choice
+        question_meaning:
+          ar_eg: بتكلم Pak Bambang، الدكتور الكبير بتاع Dimas في الجامعة (٦٠ سنة). أنهي مستوى؟
+          ar: تكلّم Pak Bambang، أستاذ Dimas الجامعي المسنّ (٦٠ عامًا). أيّ مستوى؟
+          en: You're talking to Pak Bambang, Dimas's 60-year-old senior lecturer. Which level?
+        options: [ngoko alus, krama lugu, krama alus]
+        answer: 2
+        words: [krama alus, krama lugu]
+      - id: t30
+        type: fill_blank
+        sentence: Aku wis tangi. Mbak wis ___?
+        meaning:
+          ar_eg: أنا صحيت. وإنتي صحيتي يا أبلة؟ (ngoko alus)
+          ar: لقد استيقظت. وهل استيقظتِ يا أختي؟ (ngoko alus)
+          en: I'm up. Are you up, sis? (ngoko alus)
+        options: [tangi, sare, wungu]
+        answers: [wungu]
+        explain:
+          ar_eg: عن نفسك tangi، وللي بتكرّمه wungu. ده الفرق كله في الـ ngoko alus.
+          ar: عن نفسك tangi، ولمن تكرّمه wungu؛ وهذا جوهر الـ ngoko alus.
+          en: tangi for yourself, wungu for the person you honour. That's the whole trick of ngoko alus.
+        words: [wungu, tangi]
+      - id: t31
+        type: multiple_choice
+        question_meaning:
+          ar_eg: لازم تعدّي قدّام ضيوف كبار قاعدين. تعمل إيه؟
+          ar: عليك أن تمرّ أمام ضيوف كبار جالسين. ماذا تفعل؟
+          en: You have to pass in front of seated older guests. What do you do?
+        options:
+          - Jalan cepat dan bilang "Kula nuwun!"
+          - Membungkuk sedikit, tangan kanan diturunkan, dan bilang "Nuwun sewu, ndherek langkung."
+          - Menunjuk jalan dengan jari telunjuk dan bilang "Mangga."
+        answer: 1
+        explain:
+          ar_eg: توطّي شوية، وإيدك اليمين قدّامك لتحت، وتقول «Nuwun sewu, ndherek langkung». وKula nuwun بتتقال على الباب بس.
+          ar: تنحني قليلًا وتُنزل يدك اليمنى أمامك وتقول «Nuwun sewu, ndherek langkung»، أما Kula nuwun فتُقال عند الباب.
+          en: Stoop a little, lower your right hand in front of you and say "Nuwun sewu, ndherek langkung". Kula nuwun is for the door.
+        words: [ndherek langkung, tangan tengen]
+      - id: t32
+        type: multiple_choice
+        question_meaning:
+          ar_eg: Pak Joko سألك فين Tugu. تشاور عليه إزاي؟
+          ar: سألك Pak Joko أين Tugu. كيف تشير إليه؟
+          en: Pak Joko asks where the Tugu is. How do you point to it?
+        options: ["Dengan jari telunjuk.", "Dengan tangan kiri.", "Dengan ibu jari (jempol) tangan kanan."]
+        answer: 2
+        explain:
+          ar_eg: بتقفل إيدك وتشاور بصباعك الكبير (jempol). الشاور بالسبابة عيب هناك، والإيد الشمال لأ.
+          ar: تضمّ يدك وتشير بالإبهام (jempol)؛ فالإشارة بالسبابة غير لائقة هناك، واليد اليسرى لا تُستعمل.
+          en: Close your hand and point with your thumb (jempol). Pointing with the index finger is rude there, and never the left hand.
+        words: [jempol, tengen]
+      - id: t33
+        type: build_sentence
+        source:
+          ar_eg: اتفضل يا أستاذ، دي هدية بسيطة مني من مصر. (بتواضع)
+          ar: تفضّل يا سيدي، هذه هدية متواضعة مني من مصر.
+          en: Sir, please accept this little present from Egypt. (humbly)
+        answer: Pak, kula ngaturaken oleh-oleh saking Mesir.
+        alternatives: ["Kula ngaturaken oleh-oleh saking Mesir, Pak."]
+        distractors: [maringi, kagem]
+        words: [ngaturaken]
+  - id: writing
+    skill: writing
+    title:
+      ar_eg: الكتابة
+      ar: الكتابة
+      en: Writing
+    instructions:
+      ar_eg: اكتب بالكراما، وكرّم الكبير من غير ما تكرّم نفسك. السبيلنج العادي أو بتاع الشات (kulo، monggo)، وبعلامات أو من غيرها — كله مقبول.
+      ar: اكتب بالكراما، وكرّم الكبير دون أن تكرّم نفسك. تُقبل التهجئة المعيارية أو تهجئة الدردشة (kulo، monggo)، بالعلامات أو بدونها.
+      en: Write in krama, honouring the elder without honouring yourself. Standard or chat spelling (kulo, monggo), with or without accents, is all fine.
+    items:
+      - id: t34
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: (بالكراما، لراجل كبير) حضرتك أكلت يا أستاذ؟
+          ar: (بالكراما، لرجل مسنّ) هل تناولتَ طعامك يا سيدي؟
+          en: (in krama, to an older man) Have you eaten, sir?
+        answers:
+          - Panjenengan sampun dhahar, Pak?
+          - Panjenengan sampun dhahar, Pak
+          - Panjenengan sampun dhahar Pak?
+          - Panjenengan sampun dhahar Pak
+          - Pak, panjenengan sampun dhahar?
+          - Pak, panjenengan sampun dhahar
+          - Pak panjenengan sampun dhahar?
+          - Pak panjenengan sampun dhahar
+          - Bapak sampun dhahar?
+          - Bapak sampun dhahar
+          - Sampun dhahar, Pak?
+          - Sampun dhahar, Pak
+          - Sampun dhahar Pak?
+          - Sampun dhahar Pak
+          - Panjenengan sampun dahar, Pak?
+          - Panjenengan sampun dahar, Pak
+          - Pak, panjenengan sampun dahar?
+          - Pak, panjenengan sampun dahar
+        words: [panjenengan, dhahar]
+      - id: t35
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: (بالكراما، لست كبيرة وإنت ماشي) عن إذنك يا هانم، أنا ماشي. شكرًا جدًا.
+          ar: (بالكراما، لسيدة مسنّة وأنت تغادر) أستأذنك يا سيدتي في الانصراف. شكرًا جزيلًا.
+          en: (in krama, to an older woman as you leave) Please excuse me, ma'am, I'll be going. Thank you very much.
+        answers:
+          - Kula nyuwun pamit rumiyin, Bu. Matur nuwun sanget.
+          - Kula nyuwun pamit rumiyin, Bu. Matur nuwun sanget
+          - Kula nyuwun pamit rumiyin Bu. Matur nuwun sanget.
+          - Kula nyuwun pamit rumiyin Bu, matur nuwun sanget
+          - Kula nyuwun pamit rumiyin, Bu, matur nuwun sanget.
+          - Kula nyuwun pamit, Bu. Matur nuwun sanget.
+          - Kula nyuwun pamit, Bu. Matur nuwun sanget
+          - Nyuwun pamit rumiyin, Bu. Matur nuwun sanget.
+          - Nyuwun pamit rumiyin, Bu. Matur nuwun sanget
+          - Bu, kula nyuwun pamit rumiyin. Matur nuwun sanget.
+          - Bu, kula nyuwun pamit rumiyin. Matur nuwun sanget
+          - Matur nuwun sanget, Bu. Kula nyuwun pamit rumiyin.
+          - Matur nuwun sanget, Bu. Kula nyuwun pamit rumiyin
+          - Matur nuwun sanget, Bu, kula nyuwun pamit rumiyin.
+          - Kulo nyuwun pamit rumiyin, Bu. Matur nuwun sanget.
+          - Kulo nyuwun pamit rumiyin, Bu. Matur nuwun sanget
+          - Kulo nyuwun pamit riyin, Bu. Matur nuwun sanget.
+          - Kulo nyuwun pamit riyin, Bu. Matur nuwun sanget
+          - Matur nuwun sanget, Bu. Kulo nyuwun pamit rumiyin.
+          - Matur nuwun sanget, Bu. Kulo nyuwun pamit rumiyin
+        words: [nyuwun pamit, matur nuwun]
+      - id: t36
+        type: writing_task
+        points: 4
+        prompt:
+          ar_eg: |
+            هتبعت رسالة لـ Pak Slamet، سوّاق الأندونغ الكبير اللي عرفته في Malioboro. حوّل الرسالة دي من النغوكو لكراما alus: كرّمه هو وحاجاته بالـ krama inggil، واتواضع إنت بالـ krama andhap، وزوّد في أولها تحية وفي آخرها شكر:
+            "Pak Slamet, jenengku Mohamed. Setu sore aku arep dolan menyang omahmu. Aku arep menehi oleh-oleh saka Mesir kanggo bojomu. Kowe ana ing omah?"
+          ar: |
+            سترسل رسالة إلى Pak Slamet، سائق الأندونغ المسنّ الذي عرفته في Malioboro. حوّل هذه الرسالة من النغوكو إلى كراما alus: كرّمه هو وما يخصّه بالـ krama inggil، وتواضع أنت بالـ krama andhap، وأضف تحية في أولها وشكرًا في آخرها:
+            "Pak Slamet, jenengku Mohamed. Setu sore aku arep dolan menyang omahmu. Aku arep menehi oleh-oleh saka Mesir kanggo bojomu. Kowe ana ing omah?"
+          en: |
+            You're messaging Pak Slamet, the elderly andong driver you met on Malioboro. Turn this ngoko message into krama alus: raise him and his things with krama inggil, lower yourself with krama andhap, and add a greeting at the start and thanks at the end:
+            "Pak Slamet, jenengku Mohamed. Setu sore aku arep dolan menyang omahmu. Aku arep menehi oleh-oleh saka Mesir kanggo bojomu. Kowe ana ing omah?"
+        rubric:
+          - Raises Pak Slamet and his things with krama inggil (omahmu → dalemipun Bapak, bojomu → garwanipun, kanggo → kagem; ana ing omah → wonten dalem) and addresses him as Bapak / panjenengan.
+          - Lowers his own actions with krama andhap (dolan menyang → sowan dhateng, menehi → ngaturaken) and never uses krama inggil about himself (nami kula, not asma kula).
+          - Uses a full krama frame (kula, badhe, saking, Setu sonten, wonten) with no ngoko left in the message.
+          - Opens and closes politely (sugeng enjing / nyuwun sewu …, matur nuwun sanget).
+        sample: |
+          Sugeng enjing, Pak Slamet. Nami kula Mohamed. Setu sonten kula badhe sowan dhateng dalemipun Bapak.
+          Kula badhe ngaturaken oleh-oleh saking Mesir kagem garwanipun. Bapak wonten dalem?
+          Matur nuwun sanget, Pak.
+        words: [sowan, dalem, ngaturaken, kagem, garwa]
+  - id: speaking
+    skill: speaking
+    title:
+      ar_eg: الكلام
+      ar: المحادثة
+      en: Speaking
+    instructions:
+      ar_eg: اتكلم براحتك وبالراحة. كرّم اللي قدّامك، واتواضع إنت.
+      ar: تكلّم بهدوء وارتياح؛ كرّم من أمامك وتواضع أنت.
+      en: Speak calmly and at ease. Honour the person in front of you, and stay humble yourself.
+    items:
+      - id: t37
+        type: speaking
+        text: Sugeng rawuh, Pak. Mangga lenggah. Panjenengan kersa ngunjuk teh?
+        meaning:
+          ar_eg: أهلًا وسهلًا يا أستاذ. اتفضل اقعد. حضرتك تحب تشرب شاي؟
+          ar: مرحبًا بك يا سيدي. تفضّل بالجلوس. هل تودّ شرب الشاي؟
+          en: Welcome, sir. Please have a seat. Would you like some tea?
+        words: [sugeng rawuh, lenggah, kersa, ngunjuk]
+      - id: t38
+        type: speaking_task
+        points: 4
+        prompt:
+          ar_eg: 'جهاز "Unggah-Ungguh Simulator": إنت زاير Bu Ningsih في Kampung Taman. اتكلم حوالي دقيقة ونص وعدّي الخمس مواقف: (١) نادي على الباب، (٢) ردّ لما تسألك ''Pripun kabaripun?''، (٣) هي جايبة أكل: قول لها ما تتعبش نفسها، وبعد الأكل قول إنك شبعت، (٤) عدّي قدّام جوزها القاعد، (٥) استأذن وامشي.'
+          ar: 'محاكي "Unggah-Ungguh Simulator": أنت في زيارة Bu Ningsih في Kampung Taman. تحدّث نحو دقيقة ونصف واجتز المواقف الخمسة: (١) نادِ عند الباب، (٢) أجب حين تسألك ''Pripun kabaripun?''، (٣) جاءت بالطعام: اطلب منها ألّا تتعب نفسها، وبعد الأكل قل إنك اكتفيت، (٤) مُرّ أمام زوجها الجالس، (٥) استأذن وانصرف.'
+          en: 'Unggah-Ungguh Simulator: you''re visiting Bu Ningsih in Kampung Taman. Talk for about a minute and a half and get through the five situations: (1) call out at the door, (2) answer when she asks ''Pripun kabaripun?'', (3) she brings food: ask her not to go to any trouble, and after eating say you''ve had plenty, (4) pass in front of her seated husband, (5) take your leave.'
+        rubric:
+          - Uses the right set phrase for each of the five situations (Kula nuwun · Pangestunipun, sae · Sampun repot-repot / Sampun cekap, matur nuwun · Nuwun sewu, ndherek langkung · Kula nyuwun pamit rumiyin).
+          - Speaks krama throughout, with krama inggil for the hosts (e.g. panjenengan, Bapak, dhahar, ngunjuk) and plain krama or krama andhap for himself (nedha, nginum, nyuwun, matur), never "kula dhahar".
+          - Shows the matching gestures or mentions them where they belong (stooping and the lowered right hand when passing, the right hand for taking the glass).
+          - Speaks slowly and clearly enough for an elder to follow; small slips are fine.
+        sample: |
+          Kula nuwun! … Matur nuwun, Bu. Pangestunipun, sae.
+          Sampun repot-repot, Bu. … Sampun cekap, matur nuwun sanget.
+          Nuwun sewu, Pak, ndherek langkung.
+          Bu, kula nyuwun pamit rumiyin. Matur nuwun sanget.
+        words: [kula nuwun, pangestunipun, sampun cekap, ndherek langkung, nyuwun pamit]
+review:
+  status: draft
+  verified: false

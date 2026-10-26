@@ -1,0 +1,197 @@
+schema: kabar.lesson/v1
+id: bipa6.u02.l01
+language: id
+title: Sampiran dan isi
+can_do:
+  ar_eg: تفهم شكل البانتون، الأربع سطور والقافية وفين الرسالة.
+  ar: أن تفهم بنية البانتون، أسطره الأربعة وقافيته وموضع رسالته.
+  en: Understand the form of a pantun, its four lines, rhyme and where the message sits.
+slides:
+  - title: Empat baris, a-b-a-b
+    grammar: id.pantun.structure
+    body:
+      ar_eg: |
+        الـ pantun شعر ملايو قديم، 4 baris (سطور)، والـ rima (القافية) a-b-a-b:
+        Kalau ada sumur di ladang, (a)
+        boleh kita menumpang mandi. (b)
+        Kalau ada umur panjang, (a)
+        boleh kita berjumpa lagi. (b)
+        - أول سطرين sampiran: صورة من الطبيعة بتجهّز الأصوات.
+        - آخر سطرين isi: الرسالة نفسها. هنا: «لو ربنا مدّ في العمر، هنتقابل تاني».
+      ar: |
+        الـ pantun شعر ملايوي قديم من 4 baris (أسطر)، وrima (القافية) a-b-a-b:
+        Kalau ada sumur di ladang, (a)
+        boleh kita menumpang mandi. (b)
+        Kalau ada umur panjang, (a)
+        boleh kita berjumpa lagi. (b)
+        - السطران الأوّلان sampiran: صورة من الطبيعة تمهّد للأصوات.
+        - السطران الأخيران isi: الرسالة ذاتها، وهي هنا «إن طال العمر نلتقي ثانية».
+      en: |
+        A pantun is an old Malay verse form: 4 baris (lines) with an a-b-a-b rima (rhyme):
+        Kalau ada sumur di ladang, (a)
+        boleh kita menumpang mandi. (b)
+        Kalau ada umur panjang, (a)
+        boleh kita berjumpa lagi. (b)
+        - Lines 1–2 are the sampiran: a nature image that sets up the sounds.
+        - Lines 3–4 are the isi: the message itself, here "if we live long, we'll meet again".
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pantun
+        ar_eg: بانتون (شعر ملايو بأربع سطور)
+        ar: بانتون
+        en: pantun (Malay quatrain)
+      - text: sampiran
+        ar_eg: أول سطرين (الصورة)
+        ar: السطران الأوّلان
+        en: the opening image lines
+      - text: isi
+        ar_eg: الرسالة (آخر سطرين)
+        ar: المضمون
+        en: the message lines
+      - text: rima
+        ar_eg: قافية
+        ar: قافية
+        en: rhyme
+      - text: baris
+        ar_eg: سطر
+        ar: سطر
+        en: line
+    words: [pantun, sampiran, isi, rima, baris]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: قافية البانتون بتمشي إزاي؟
+      ar: ما نظام قافية البانتون؟
+      en: What is a pantun's rhyme scheme?
+    options: [a-a-b-b, a-b-a-b, a-b-b-a]
+    answer: 1
+    words: [rima, pantun]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الرسالة في البانتون بتبقى فين؟
+      ar: أين تقع رسالة البانتون؟
+      en: Where does the message of a pantun sit?
+    options:
+      - في السطرين الأوّلانيين.
+      - في السطر الأول بس.
+      - في آخر سطرين.
+    answer: 2
+    words: [isi, sampiran]
+  - id: e04
+    type: fill_blank
+    sentence: Pantun terdiri atas empat ___.
+    meaning:
+      ar_eg: البانتون فيه أربع سطور.
+      ar: يتكوّن البانتون من أربعة أسطر.
+      en: A pantun has four lines.
+    options: [baris, rima, isi]
+    answers: [baris]
+    words: [baris]
+  - id: e05
+    type: listen
+    text: Sampiran pantun biasanya tentang alam, seperti sungai dan bunga.
+    question:
+      ar_eg: الـ sampiran عادةً بيتكلم عن إيه؟
+      ar: عمَّ يتحدّث الـ sampiran عادة؟
+      en: What is the sampiran usually about?
+    options:
+      - عن الطبيعة.
+      - عن الفلوس.
+      - عن السياسة.
+    answer: 0
+    words: [sampiran]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: قافية البانتون ده a-b-a-b.
+      ar: قافية هذا البانتون a-b-a-b.
+      en: This pantun's rhyme is a-b-a-b.
+    answer: Rima pantun ini a-b-a-b.
+    distractors: [baris, isi]
+    words: [rima, pantun]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Isi pantun itu adalah nasihat untuk anak muda.
+    answers_meaning:
+      ar_eg:
+        - رسالة البانتون ده نصيحة للشباب.
+        - البانتون ده بيقول نصيحة للشباب.
+      ar:
+        - مضمون ذلك البانتون نصيحة للشباب.
+        - رسالة البانتون نصيحةٌ للشباب.
+      en:
+        - That pantun's message is advice for young people.
+        - The pantun carries advice for the young.
+    words: [isi]
+  - id: e08
+    type: speaking
+    text: Kalau ada umur panjang, boleh kita berjumpa lagi.
+    meaning:
+      ar_eg: لو ربنا مدّ في العمر، نتقابل تاني.
+      ar: إن طال العمر نلتقي ثانية.
+      en: If we live long, we may meet again.
+    words: [baris]
+  - id: e09
+    type: dictation
+    text: Dua baris pertama disebut sampiran.
+    meaning:
+      ar_eg: أول سطرين اسمهم sampiran.
+      ar: يسمّى السطران الأوّلان sampiran.
+      en: The first two lines are called the sampiran.
+    words: [baris, sampiran]
+dialogue:
+  title: Pantun di Pekanbaru
+  lines:
+    - speaker: Encik Zul
+      text: Selamat datang di Pekanbaru, Mohamed. Di Riau, kami sering membuka acara dengan pantun.
+      ar_eg: أهلًا بيك في بيكانبارو يا محمد. في رياو بنفتح المناسبات ببانتون.
+      ar: مرحبًا بك في بيكانبارو يا محمد. في رياو نفتتح المناسبات عادة بالبانتون.
+      en: Welcome to Pekanbaru, Mohamed. In Riau we often open events with a pantun.
+    - speaker: Mohamed
+      text: Saya tahu satu, Encik. "Kalau ada sumur di ladang …"
+      ar_eg: أنا عارف واحد يا إنشيك. «لو فيه بير في الغيط …»
+      ar: أعرف واحدًا. «إن كان في الحقل بئر …»
+      en: I know one, Encik. "If there's a well in the field …"
+    - speaker: Encik Zul
+      text: Bagus! Sampirannya tentang sumur, tetapi isinya tentang perpisahan.
+      ar_eg: حلو! الـ sampiran عن البير، بس الرسالة عن الفراق.
+      ar: جميل! الـ sampiran عن البئر، أمّا المضمون فعن الوداع.
+      en: Good! The sampiran is about a well, but the message is about parting.
+    - speaker: Mohamed
+      text: Jadi sumurnya hanya untuk rima, ya?
+      ar_eg: يعني البير ده علشان القافية بس؟
+      ar: إذن البئر للقافية فقط؟
+      en: So the well is just there for the rhyme?
+new_words:
+  - word: pantun
+    pos: noun
+    ar_eg: بانتون (شعر ملايو بأربع سطور)
+    ar: بانتون
+    en: pantun (Malay quatrain)
+  - word: sampiran
+    pos: noun
+    ar_eg: أول سطرين (الصورة)
+    ar: السطران الأوّلان
+    en: the opening image lines of a pantun
+  - word: isi
+    pos: noun
+    ar_eg: الرسالة / المحتوى
+    ar: المضمون
+    en: content, the message lines
+  - word: rima
+    pos: noun
+    ar_eg: قافية
+    ar: قافية
+    en: rhyme
+  - word: baris
+    pos: noun
+    ar_eg: سطر
+    ar: سطر
+    en: line
+review:
+  status: draft
+  verified: false

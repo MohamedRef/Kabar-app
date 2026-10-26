@@ -1,0 +1,230 @@
+schema: kabar.lesson/v1
+id: bipa3.u08.l01
+language: id
+title: Supaya dan sehingga
+can_do:
+  ar_eg: تفرّق بين الهدف (supaya / agar) والنتيجة (sehingga).
+  ar: أن تميّز بين الغاية (supaya / agar) والنتيجة (sehingga).
+  en: Tell purpose (supaya / agar) from result (sehingga).
+slides:
+  - title: supaya / agar = عشان
+    body:
+      ar_eg: |
+        supaya و agar معناهم «عشان / علشان كده يحصل» (هدف لسه ما حصلش، إحنا عايزينه). agar أرسم شوية.
+        لو مفيش فاعل جديد، ممكن untuk + فعل: Saya bangun pagi untuk melihat Rinjani.
+      ar: |
+        supaya وagar بمعنى «لكي» (غاية مقصودة لم تقع بعد)، وagar أرسم قليلًا.
+        وإن لم يكن هناك فاعل جديد جاز untuk + الفعل: Saya bangun pagi untuk melihat Rinjani.
+      en: |
+        supaya and agar mean "so that" (a goal you want, not yet real); agar is a bit more formal.
+        With no new subject you can use untuk + verb: Saya bangun pagi untuk melihat Rinjani.
+    grammar: id.conjunction.purpose-condition
+    examples:
+      - text: Bawa jas hujan supaya tidak basah.
+        ar_eg: خد معاك جاكت مطر عشان ما تتبلّش.
+        ar: خذ معطف المطر لكي لا تبتلّ.
+        en: Bring a raincoat so you don't get wet.
+      - text: Rumah sekarang dibangun lebih kuat agar tahan gempa.
+        ar_eg: البيوت دلوقتي بتتبني أقوى عشان تستحمل الزلازل.
+        ar: تُبنى البيوت الآن أقوى لكي تصمد أمام الزلازل.
+        en: Houses are now built stronger so that they withstand earthquakes.
+  - title: sehingga = فـ / لدرجة إن
+    body:
+      ar_eg: |
+        sehingga = «فـ / لدرجة إن»: نتيجة حصلت فعلًا بسبب اللي قبلها.
+        السؤال: ده حاجة عايزينها؟ ← supaya. ولا حاجة حصلت؟ ← sehingga.
+        وsehingga بتربط جوه جملة واحدة، ما بتبدأش جملة لوحدها.
+      ar: |
+        sehingga = «حتى / فـ»: نتيجة وقعت فعلًا بسبب ما قبلها.
+        فاسأل: أهو شيء مقصود؟ ← supaya. أم شيء وقع؟ ← sehingga.
+        ولا يُبتدأ بها، فهي تربط داخل الجملة الواحدة.
+      en: |
+        sehingga = "so, with the result that": a result that actually happened because of what came before.
+        Ask: is it something we want? → supaya. Something that happened? → sehingga.
+        sehingga links inside one sentence; it doesn't start a new one.
+    grammar: id.conjunction.purpose-condition
+    examples:
+      - text: Hujan turun deras semalaman sehingga sungai meluap.
+        ar_eg: المطر نزل جامد طول الليل لدرجة إن النهر فاض.
+        ar: هطل المطر بغزارة طوال الليل حتى فاض النهر.
+        en: It rained heavily all night, so the river overflowed.
+      - text: Sungai meluap sehingga jalan banjir.
+        ar_eg: النهر فاض فالشارع غرق.
+        ar: فاض النهر فغمرت المياه الطريق.
+        en: The river overflowed, so the road flooded.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: gempa
+        ar_eg: زلزال
+        ar: زلزال
+        en: earthquake
+      - text: banjir
+        ar_eg: فيضان / غرق (مية)
+        ar: فيضان
+        en: flood; flooded
+      - text: deras
+        ar_eg: جامد / غزير (مطر، مية)
+        ar: غزير
+        en: heavy (rain), fast-flowing
+      - text: meluap
+        ar_eg: يفيض
+        ar: يفيض
+        en: to overflow
+      - text: tahan
+        ar_eg: يستحمل / مقاوم
+        ar: يصمد / مقاوم
+        en: to withstand, -proof
+      - text: basah
+        ar_eg: مبلول
+        ar: مبتلّ
+        en: wet
+    words: [gempa, banjir, deras, meluap, tahan, basah]
+  - id: e02
+    type: multiple_choice
+    question: Hujan sangat deras ___ jalan banjir.
+    options: [supaya, sehingga, agar]
+    answer: 1
+    explain:
+      ar_eg: الفيضان نتيجة حصلت، مش هدف إحنا عايزينه، فـ sehingga.
+      ar: الفيضان نتيجة وقعت لا غاية مقصودة، فالأداة sehingga.
+      en: The flood is a result, not a goal, so sehingga.
+    words: [deras, banjir]
+  - id: e03
+    type: listen
+    text: Rumah ini dibangun agar tahan gempa.
+    options:
+      - Rumah ini dibangun agar tahan gempa.
+      - Rumah ini dibangun sehingga tahan gempa.
+      - Rumah ini dibangun agar tahan banjir.
+    answer: 0
+    meaning:
+      ar_eg: البيت ده اتبنى عشان يستحمل الزلازل.
+      ar: بُني هذا البيت لكي يصمد أمام الزلازل.
+      en: This house was built to withstand earthquakes.
+    words: [tahan, gempa]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة فيها «هدف» (عشان)؟
+      ar: أيّ جملة تعبّر عن غاية؟
+      en: Which sentence expresses a purpose?
+    options:
+      - Hujan deras sehingga sungai meluap.
+      - Saya membawa payung supaya tidak basah.
+      - Sungai meluap sehingga desa itu banjir.
+    answer: 1
+    explain:
+      ar_eg: إنك ما تتبلّش ده هدف عايزه، فـ supaya. التانيين نتايج حصلت.
+      ar: ألّا تبتلّ غايةٌ تريدها، فـ supaya، والجملتان الأخريان نتيجتان وقعتا.
+      en: Not getting wet is a goal you want, so supaya; the other two are results that happened.
+    words: [basah]
+  - id: e05
+    type: fill_blank
+    sentence: Hujan turun deras semalaman sehingga sungai ___.
+    meaning:
+      ar_eg: المطر نزل جامد طول الليل لدرجة إن النهر فاض.
+      ar: هطل المطر بغزارة طوال الليل حتى فاض النهر.
+      en: It rained heavily all night, so the river overflowed.
+    options: [basah, meluap, tahan]
+    answers: [meluap]
+    words: [meluap, deras]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: خد معاك جاكت مطر عشان ما تتبلّش.
+      ar: خذ معطف المطر لكي لا تبتلّ.
+      en: Bring a raincoat so you don't get wet.
+    answer: Bawa jas hujan supaya tidak basah.
+    distractors: [sehingga, banjir]
+    words: [basah]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: البيوت دلوقتي بتتبني أقوى عشان تستحمل الزلازل.
+      ar: تُبنى البيوت الآن أقوى لكي تصمد أمام الزلازل.
+      en: Houses are now built stronger so that they withstand earthquakes.
+    answers:
+      - Rumah sekarang dibangun lebih kuat agar tahan gempa.
+      - Rumah sekarang dibangun lebih kuat agar tahan gempa
+      - Rumah sekarang dibangun lebih kuat supaya tahan gempa.
+      - Rumah sekarang dibangun lebih kuat supaya tahan gempa
+      - Sekarang rumah dibangun lebih kuat agar tahan gempa.
+      - Sekarang rumah dibangun lebih kuat supaya tahan gempa.
+      - Rumah-rumah sekarang dibangun lebih kuat agar tahan gempa.
+      - Rumah-rumah sekarang dibangun lebih kuat supaya tahan gempa.
+      - Rumah sekarang dibangun lebih kuat agar bisa tahan gempa.
+      - Rumah sekarang dibangun lebih kuat supaya bisa tahan gempa.
+    words: [tahan, gempa]
+  - id: e08
+    type: speaking
+    text: Sungai meluap sehingga desa itu banjir.
+    meaning:
+      ar_eg: النهر فاض فالقرية دي غرقت.
+      ar: فاض النهر فغمرت المياه تلك القرية.
+      en: The river overflowed, so that village flooded.
+    words: [meluap, banjir]
+dialogue:
+  title: Hujan di Tetebatu
+  lines:
+    - speaker: Mohamed
+      text: Mas Rizal, hujannya deras sekali!
+      ar_eg: يا ماس ريزال، المطر جامد أوي!
+      ar: يا ماس ريزال، المطر غزير جدًا!
+      en: Mas Rizal, the rain is so heavy!
+    - speaker: Mas Rizal
+      text: Ya. Kemarin hujan semalaman sehingga sungai di Tetebatu meluap.
+      ar_eg: أيوه. امبارح المطر نزل طول الليل لدرجة إن النهر في تيتيباتو فاض.
+      ar: نعم. أمطرت أمس طوال الليل حتى فاض النهر في تيتيباتو.
+      en: Yes. Yesterday it rained all night, so the river in Tetebatu overflowed.
+    - speaker: Mohamed
+      text: Apakah desanya banjir?
+      ar_eg: والقرية غرقت؟
+      ar: وهل غمر الفيضان القرية؟
+      en: Did the village flood?
+    - speaker: Mas Rizal
+      text: Sedikit. Pakai jas hujan ini supaya kamu tidak basah.
+      ar_eg: شوية. البس جاكت المطر ده عشان ما تتبلّش.
+      ar: قليلًا. البس معطف المطر هذا لكي لا تبتلّ.
+      en: A little. Put on this raincoat so you don't get wet.
+    - speaker: Mas Rizal
+      text: Rumah di sini juga dibangun agar tahan gempa.
+      ar_eg: والبيوت هنا كمان متبنية عشان تستحمل الزلازل.
+      ar: والبيوت هنا مبنية أيضًا لكي تصمد أمام الزلازل.
+      en: The houses here are also built to withstand earthquakes.
+new_words:
+  - word: gempa
+    pos: noun
+    ar_eg: زلزال (gempa bumi)
+    ar: زلزال (gempa bumi)
+    en: earthquake (gempa bumi)
+  - word: banjir
+    pos: noun
+    ar_eg: فيضان / غرق (بالمية)
+    ar: فيضان
+    en: flood; flooded
+  - word: deras
+    pos: adjective
+    ar_eg: جامد / غزير (مطر، مية)
+    ar: غزير / سريع الجريان
+    en: heavy (rain), fast-flowing
+  - word: meluap
+    pos: verb
+    ar_eg: يفيض
+    ar: يفيض
+    en: to overflow
+  - word: tahan
+    pos: adjective
+    ar_eg: يستحمل / مقاوم (tahan gempa = مقاوم للزلازل)
+    ar: صامد / مقاوم (tahan gempa = مقاوم للزلازل)
+    en: able to withstand, -proof (tahan gempa = earthquake-proof)
+  - word: basah
+    pos: adjective
+    ar_eg: مبلول
+    ar: مبتلّ
+    en: wet
+review:
+  status: draft
+  verified: false

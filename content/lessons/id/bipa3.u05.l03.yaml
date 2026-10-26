@@ -1,0 +1,232 @@
+schema: kabar.lesson/v1
+id: bipa3.u05.l03
+language: id
+title: Memberi saya peta
+can_do:
+  ar_eg: "تستعمل أفعال ليها مفعولين، زي «إدّاني خريطة» و«استلف»."
+  ar: "أن تستعمل أفعالًا ذات مفعولين، مثل «أعطاني خريطة» و«استعار»."
+  en: Use verbs with two objects.
+slides:
+  - title: memberi / memberikan
+    grammar: id.verb.transitive
+    body:
+      ar_eg: |
+        «إدّى» ليها طريقتين:
+        memberi + الشخص + الحاجة: Mas Rizal memberi saya peta = ريزال إدّاني خريطة.
+        memberikan + الحاجة + kepada + الشخص: Mas Rizal memberikan peta kepada saya = ريزال إدّى الخريطة ليّا.
+        المعنى واحد؛ خلي بالك بس من الترتيب و kepada (اللي اتعلمتها في الوحدة الأولى).
+      ar: |
+        للفعل «أعطى» صيغتان:
+        memberi + الشخص + الشيء: Mas Rizal memberi saya peta = أعطاني ريزال خريطة.
+        memberikan + الشيء + kepada + الشخص: Mas Rizal memberikan peta kepada saya = أعطى ريزال الخريطة لي.
+        والمعنى واحد؛ انتبه فقط للترتيب ولـkepada (التي تعلمتها في الوحدة الأولى).
+      en: |
+        "Give" has two patterns:
+        memberi + person + thing: Mas Rizal memberi saya peta = Mas Rizal gave me a map.
+        memberikan + thing + kepada + person: Mas Rizal memberikan peta kepada saya = Mas Rizal gave the map to me.
+        Same meaning; just watch the order and kepada (from Unit 1).
+    examples:
+      - text: Mas Rizal memberi saya peta.
+        ar_eg: ريزال إدّاني خريطة.
+        ar: أعطاني ريزال خريطة.
+        en: Mas Rizal gave me a map.
+      - text: Mas Rizal memberikan peta kepada saya.
+        ar_eg: ريزال إدّى الخريطة ليّا.
+        ar: أعطى ريزال الخريطة لي.
+        en: Mas Rizal gave the map to me.
+  - title: meminjam
+    grammar: id.verb.transitive
+    body:
+      ar_eg: |
+        meminjam = يستلف (ياخد حاجة ويرجّعها)، والمفعول بعده على طول، ومنين؟ dari.
+        للطلب المؤدب: Boleh saya meminjam …? = ممكن أستلف …؟
+      ar: |
+        meminjam = يستعير (يأخذ شيئًا ويعيده)، ويأتي المفعول بعده مباشرة، ومصدره بـdari.
+        وللطلب المهذّب: Boleh saya meminjam …? = هل يمكنني أن أستعير …؟
+      en: |
+        meminjam = to borrow; the object comes straight after, and "from" is dari.
+        A polite request: Boleh saya meminjam …? = May I borrow …?
+    examples:
+      - text: Boleh saya meminjam senter Bapak?
+        ar_eg: ممكن أستلف الكشّاف بتاع حضرتك؟
+        ar: هل يمكنني أن أستعير مصباحك يا سيدي؟
+        en: May I borrow your torch, sir?
+      - text: Bu Sari memberi kami bekal nasi dan telur.
+        ar_eg: مدام ساري إدّتنا زوّادة رز وبيض.
+        ar: أعطتنا السيدة ساري زادًا من الأرز والبيض.
+        en: Bu Sari gave us a packed meal of rice and eggs.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: memberi
+        ar_eg: يدّي (حد حاجة)
+        ar: يعطي (شخصًا شيئًا)
+        en: to give (someone something)
+      - text: memberikan
+        ar_eg: يدّي (حاجة لحد)
+        ar: يعطي (شيئًا لشخص)
+        en: to give (something to someone)
+      - text: meminjam
+        ar_eg: يستلف
+        ar: يستعير
+        en: to borrow
+      - text: kunci
+        ar_eg: مفتاح
+        ar: مفتاح
+        en: key
+      - text: senter
+        ar_eg: كشّاف (بطارية)
+        ar: مصباح يدوي
+        en: torch, flashlight
+      - text: bekal
+        ar_eg: زوّادة، أكل للسكة
+        ar: زاد (طعام للطريق)
+        en: packed food for a trip
+    words: [memberi, memberikan, meminjam, kunci, senter, bekal]
+  - id: e02
+    type: multiple_choice
+    question: Mas Rizal memberikan peta ___ saya.
+    options: [kepada, ke, dari]
+    answer: 0
+    explain:
+      ar_eg: memberikan + الحاجة + kepada + الشخص.
+      ar: memberikan + الشيء + kepada + الشخص.
+      en: memberikan + thing + kepada + person.
+    words: [memberikan]
+  - id: e03
+    type: listen
+    text: Pak Sahdan memberi saya senter.
+    options: ["Pak Sahdan memberi saya tenda.", "Pak Sahdan memberi saya senter.", "Saya memberi Pak Sahdan senter."]
+    answer: 1
+    meaning:
+      ar_eg: عم سهدان إدّاني كشّاف.
+      ar: أعطاني السيد سهدان مصباحًا يدويًا.
+      en: Pak Sahdan gave me a torch.
+    words: [memberi, senter]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة معناها «ممكن أستلف المفتاح؟»
+      ar: أيّ جملة تعني «هل يمكنني أن أستعير المفتاح؟»
+      en: Which sentence means "May I borrow the key?"
+    options: ["Boleh saya memberi kuncinya?", "Boleh saya membayar kuncinya?", "Boleh saya meminjam kuncinya?"]
+    answer: 2
+    words: [meminjam, kunci]
+  - id: e05
+    type: fill_blank
+    sentence: Jangan lupa membawa ___ untuk makan siang di gunung.
+    meaning:
+      ar_eg: ماتنساش تاخد زوّادة للغدا في الجبل.
+      ar: لا تنسَ أن تحمل زادًا للغداء في الجبل.
+      en: Don't forget to bring a packed lunch for the mountain.
+    options: [kunci, senter, bekal]
+    answers: [bekal]
+    words: [bekal]
+  - id: e06
+    type: fill_blank
+    sentence: Malam hari kami memakai ___ di jalur.
+    meaning:
+      ar_eg: بالليل بنستعمل كشّاف في المدق.
+      ar: في الليل نستعمل المصباح اليدوي على المسار.
+      en: At night we use a torch on the trail.
+    options: [senter, bekal, kunci]
+    answers: [senter]
+    words: [senter]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: مدام ساري إدّتنا زوّادة رز.
+      ar: أعطتنا السيدة ساري زادًا من الأرز.
+      en: Bu Sari gave us a packed meal of rice.
+    answer: Bu Sari memberi kami bekal nasi.
+    distractors: [kepada, dari]
+    words: [memberi, bekal]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: إدّيت المفتاح للشيّال.
+      ar: أعطيتُ المفتاح للحمّال.
+      en: I gave the key to the porter.
+    answers:
+      - Saya memberikan kunci kepada porter.
+      - Saya memberikan kunci kepada porter
+      - Saya memberikan kuncinya kepada porter.
+      - Saya memberikan kunci kepada porter itu.
+      - Saya memberikan kuncinya kepada porter itu.
+      - Saya memberi porter kunci.
+      - Saya memberi porter itu kuncinya.
+      - Aku memberikan kunci kepada porter.
+      - Saya sudah memberikan kunci kepada porter.
+    words: [memberikan, kunci]
+  - id: e09
+    type: speaking
+    text: Boleh saya meminjam senter Bapak?
+    meaning:
+      ar_eg: ممكن أستلف الكشّاف بتاع حضرتك؟
+      ar: هل يمكنني أن أستعير مصباحك يا سيدي؟
+      en: May I borrow your torch, sir?
+    words: [meminjam, senter]
+dialogue:
+  title: Siap mendaki
+  lines:
+    - speaker: Mas Rizal
+      text: Mohamed, ini peta jalur ke puncak. Saya memberikan peta ini kepadamu.
+      ar_eg: يا محمد، دي خريطة الطريق للقمّة. أنا بدّيك الخريطة دي.
+      ar: يا محمد، هذه خريطة المسار إلى القمّة، وأعطيك إياها.
+      en: Mohamed, here's the map of the trail to the summit. I'm giving it to you.
+    - speaker: Mohamed
+      text: Terima kasih, Mas. Boleh saya meminjam senter juga?
+      ar_eg: متشكر. ممكن أستلف كشّاف كمان؟
+      ar: شكرًا. هل يمكنني أن أستعير مصباحًا أيضًا؟
+      en: Thanks. May I borrow a torch too?
+    - speaker: Mas Rizal
+      text: Boleh. Pak Sahdan, tolong beri Mohamed senter.
+      ar_eg: أكيد. يا عم سهدان، لو سمحت إدّي محمد كشّاف.
+      ar: بالطبع. يا سيد سهدان، أعطِ محمدًا مصباحًا من فضلك.
+      en: Sure. Pak Sahdan, please give Mohamed a torch.
+    - speaker: Pak Sahdan
+      text: Ini senternya. Bu Sari juga memberi kita bekal nasi dan telur.
+      ar_eg: اتفضل الكشّاف. ومدام ساري كمان إدّتنا زوّادة رز وبيض.
+      ar: تفضّل المصباح. وأعطتنا السيدة ساري أيضًا زادًا من الأرز والبيض.
+      en: Here's the torch. And Bu Sari gave us a packed meal of rice and eggs.
+    - speaker: Mohamed
+      text: Wah, kita siap mendaki!
+      ar_eg: واو، احنا جاهزين نطلع!
+      ar: رائع، نحن جاهزون للصعود!
+      en: Great, we're ready to climb!
+new_words:
+  - word: memberi
+    pos: verb
+    ar_eg: يدّي (حد حاجة)
+    ar: يعطي (شخصًا شيئًا)
+    en: to give (someone something)
+  - word: memberikan
+    pos: verb
+    ar_eg: يدّي (حاجة لحد، بـ kepada)
+    ar: يعطي (شيئًا لشخص، مع kepada)
+    en: to give (something to someone, with kepada)
+  - word: meminjam
+    pos: verb
+    ar_eg: يستلف
+    ar: يستعير
+    en: to borrow
+  - word: kunci
+    pos: noun
+    ar_eg: مفتاح
+    ar: مفتاح
+    en: key
+  - word: senter
+    pos: noun
+    ar_eg: كشّاف (بطارية)
+    ar: مصباح يدوي
+    en: torch, flashlight
+  - word: bekal
+    pos: noun
+    ar_eg: زوّادة، أكل للسكة
+    ar: زاد (طعام للطريق)
+    en: packed food for a trip
+review:
+  status: draft
+  verified: false

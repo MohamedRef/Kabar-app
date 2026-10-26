@@ -1,0 +1,233 @@
+schema: kabar.lesson/v1
+id: bipa3.u04.l02
+language: id
+title: Yaitu dan bukan
+can_do:
+  ar_eg: تعدّ أمثلة بـ yaitu، وتقول الحاجة «مش» إيه بـ bukan.
+  ar: أن تعدّد الأمثلة بـyaitu، وتنفي التعريف بـbukan.
+  en: List examples and say what something is not.
+slides:
+  - title: yaitu = وهي / يعني
+    grammar: id.definition.adalah-merupakan
+    body:
+      ar_eg: |
+        yaitu (أو yakni، أرسم) = «وهي / يعني»، بتفتح بيها قائمة أو شرح:
+        Ada tiga makanan pokok di sini, yaitu … = فيه هنا تلات أكلات أساسية، وهي …
+        makanan pokok = الأكل الأساسي (زي العيش عندنا).
+      ar: |
+        yaitu (أو yakni، وهي أرسم) = «وهي / أي»، وتبدأ بها قائمة أو توضيحًا:
+        Ada tiga makanan pokok di sini, yaitu … = هنا ثلاثة أطعمة أساسية، وهي …
+        makanan pokok = الغذاء الأساسي (كالخبز عندنا).
+      en: |
+        yaitu (more formal: yakni) = "namely", to open a list or an explanation:
+        Ada tiga makanan pokok di sini, yaitu … = There are three staple foods here, namely …
+        makanan pokok = staple food (like bread in Egypt).
+    examples:
+      - text: Ada tiga makanan pokok di sini, yaitu nasi, jagung, dan ubi.
+        ar_eg: "فيه هنا تلات أكلات أساسية: الرز والدرة والبطاطا."
+        ar: هنا ثلاثة أطعمة أساسية، وهي الأرز والذرة والبطاطا الحلوة.
+        en: There are three staple foods here, namely rice, corn and sweet potato.
+      - text: Bu Rohani punya dua kebun, yaitu kebun sayur dan kebun stroberi.
+        ar_eg: "مدام روحاني عندها جنينتين: جنينة خضار وجنينة فراولة."
+        ar: للسيدة روحاني بستانان، وهما بستان خضار وبستان فراولة.
+        en: Bu Rohani has two gardens, namely a vegetable garden and a strawberry garden.
+  - title: X bukan Y
+    grammar: id.definition.adalah-merupakan
+    body:
+      ar_eg: |
+        عشان تنفي تعريف، استعمل bukan، و adalah بتختفي:
+        Tempe bukan daging = التمبيه مش لحمة. (مش tidak adalah!)
+        ولو عايز تصحّح: … bukan X, tetapi Y = مش X، لأ Y.
+      ar: |
+        لنفي التعريف استعمل bukan، وتسقط adalah:
+        Tempe bukan daging = التمبيه ليس لحمًا (لا tidak adalah!).
+        وللتصحيح: … bukan X, tetapi Y = ليس X بل Y.
+      en: |
+        To negate a definition, use bukan, and adalah disappears:
+        Tempe bukan daging = Tempeh isn't meat (never tidak adalah!).
+        To correct: … bukan X, tetapi Y = not X but Y.
+    examples:
+      - text: Tempe bukan daging, tetapi sumber protein.
+        ar_eg: التمبيه مش لحمة، بس مصدر بروتين.
+        ar: التمبيه ليس لحمًا، لكنه مصدر للبروتين.
+        en: Tempeh isn't meat, but it's a source of protein.
+      - text: Ubi bukan buah, tetapi makanan pokok.
+        ar_eg: البطاطا مش فاكهة، دي أكل أساسي.
+        ar: البطاطا الحلوة ليست فاكهة، بل غذاء أساسي.
+        en: Sweet potato isn't a fruit but a staple food.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: yaitu
+        ar_eg: وهي، يعني
+        ar: وهي، أي
+        en: namely
+      - text: makanan pokok
+        ar_eg: الأكل الأساسي
+        ar: الغذاء الأساسي
+        en: staple food
+      - text: jagung
+        ar_eg: درة
+        ar: ذرة
+        en: corn
+      - text: ubi
+        ar_eg: بطاطا
+        ar: بطاطا حلوة
+        en: sweet potato
+      - text: kebun
+        ar_eg: جنينة، غيط
+        ar: بستان، حديقة
+        en: garden, plantation
+      - text: panen
+        ar_eg: حصاد، محصول
+        ar: حصاد
+        en: harvest
+    words: [yaitu, makanan pokok, jagung, ubi, kebun, panen]
+  - id: e02
+    type: multiple_choice
+    question: Tempe ___ daging.
+    options: [tidak adalah, bukan, tidak]
+    answer: 1
+    explain:
+      ar_eg: نفي الاسم بـ bukan، و adalah بتختفي.
+      ar: يُنفى الاسم بـbukan وتسقط adalah.
+      en: Nouns are negated with bukan, and adalah drops out.
+  - id: e03
+    type: listen
+    text: Ada tiga makanan pokok di sini, yaitu nasi, jagung, dan ubi.
+    options: ["Ada tiga makanan pokok di sini, yaitu nasi, jagung, dan ubi.", "Ada dua makanan pokok di sini, yaitu nasi dan jagung.", "Ada tiga makanan pokok di sini, yaitu nasi, roti, dan ubi."]
+    answer: 0
+    meaning:
+      ar_eg: "فيه هنا تلات أكلات أساسية: الرز والدرة والبطاطا."
+      ar: هنا ثلاثة أطعمة أساسية، وهي الأرز والذرة والبطاطا الحلوة.
+      en: There are three staple foods here, namely rice, corn and sweet potato.
+    words: [makanan pokok, yaitu, jagung, ubi]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الوقت اللي الفلاحين بيجمعوا فيه المحصول اسمه إيه؟
+      ar: ما اسم الوقت الذي يجمع فيه الفلاحون المحصول؟
+      en: What's the word for when farmers gather the crop?
+    options: [panen, kebun, jagung]
+    answer: 0
+    words: [panen]
+  - id: e05
+    type: fill_blank
+    sentence: Bu Rohani punya ___ stroberi di Sembalun.
+    meaning:
+      ar_eg: مدام روحاني عندها جنينة فراولة في سمبالون.
+      ar: للسيدة روحاني بستان فراولة في سمبالون.
+      en: Bu Rohani has a strawberry garden in Sembalun.
+    options: [panen, kebun, ubi]
+    answers: [kebun]
+    words: [kebun]
+  - id: e06
+    type: fill_blank
+    sentence: Saya suka dua jenis buah, ___ stroberi dan pisang.
+    meaning:
+      ar_eg: "بحب نوعين فاكهة: الفراولة والموز."
+      ar: أحبّ نوعين من الفاكهة، وهما الفراولة والموز.
+      en: I like two fruits, namely strawberries and bananas.
+    options: [bukan, adalah, yaitu]
+    answers: [yaitu]
+    words: [yaitu]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: البطاطا مش فاكهة، دي أكل أساسي.
+      ar: البطاطا الحلوة ليست فاكهة، بل غذاء أساسي.
+      en: Sweet potato isn't a fruit but a staple food.
+    answer: Ubi bukan buah, tetapi makanan pokok.
+    distractors: [tidak, adalah]
+    words: [ubi, makanan pokok]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: حصاد الدرة في شهر مارس.
+      ar: حصاد الذرة في شهر مارس.
+      en: The corn harvest is in March.
+    answers:
+      - Panen jagung pada bulan Maret.
+      - Panen jagung pada bulan Maret
+      - Panen jagung bulan Maret.
+      - Panen jagung di bulan Maret.
+      - Panen jagungnya pada bulan Maret.
+      - Panen jagung pada Maret.
+    words: [panen, jagung]
+  - id: e09
+    type: speaking
+    text: Kebun Bu Rohani bukan kebun sayur, tetapi kebun stroberi.
+    meaning:
+      ar_eg: جنينة مدام روحاني مش جنينة خضار، دي جنينة فراولة.
+      ar: بستان السيدة روحاني ليس بستان خضار، بل بستان فراولة.
+      en: Bu Rohani's garden isn't a vegetable garden but a strawberry garden.
+    words: [kebun]
+dialogue:
+  title: Di kebun Bu Rohani
+  lines:
+    - speaker: Mohamed
+      text: Bu Rohani, ini kebun Ibu?
+      ar_eg: يا مدام روحاني، دي جنينتك؟
+      ar: يا سيدة روحاني، أهذا بستانك؟
+      en: Bu Rohani, is this your garden?
+    - speaker: Bu Rohani
+      text: Ya. Saya punya dua kebun, yaitu kebun sayur dan kebun stroberi.
+      ar_eg: "أيوه. عندي جنينتين: جنينة خضار وجنينة فراولة."
+      ar: نعم، عندي بستانان، وهما بستان خضار وبستان فراولة.
+      en: Yes. I have two gardens, namely a vegetable garden and a strawberry garden.
+    - speaker: Mohamed
+      text: Apa makanan pokok di Sembalun? Nasi?
+      ar_eg: إيه الأكل الأساسي في سمبالون؟ الرز؟
+      ar: ما الغذاء الأساسي في سمبالون؟ الأرز؟
+      en: What's the staple food in Sembalun? Rice?
+    - speaker: Bu Rohani
+      text: Ya, nasi. Tetapi dulu jagung dan ubi juga makanan pokok di sini.
+      ar_eg: أيوه، الرز. بس زمان الدرة والبطاطا كانوا كمان أكل أساسي هنا.
+      ar: نعم، الأرز. لكنّ الذرة والبطاطا الحلوة كانتا أيضًا غذاءً أساسيًا هنا قديمًا.
+      en: Yes, rice. But in the old days corn and sweet potato were staples here too.
+    - speaker: Mohamed
+      text: Kapan panen stroberi?
+      ar_eg: حصاد الفراولة إمتى؟
+      ar: متى حصاد الفراولة؟
+      en: When is the strawberry harvest?
+    - speaker: Bu Rohani
+      text: Minggu depan. Datanglah lagi, ya!
+      ar_eg: الأسبوع الجاي. تعالى تاني بقى!
+      ar: الأسبوع القادم. تعالَ مرة أخرى!
+      en: Next week. Do come again!
+new_words:
+  - word: yaitu
+    pos: conjunction
+    ar_eg: وهي، يعني (قبل قائمة)
+    ar: وهي، أي (قبل قائمة)
+    en: namely
+  - word: makanan pokok
+    pos: noun
+    ar_eg: الأكل الأساسي
+    ar: الغذاء الأساسي
+    en: staple food
+  - word: jagung
+    pos: noun
+    ar_eg: درة
+    ar: ذرة
+    en: corn
+  - word: ubi
+    pos: noun
+    ar_eg: بطاطا
+    ar: بطاطا حلوة
+    en: sweet potato
+  - word: kebun
+    pos: noun
+    ar_eg: جنينة، غيط
+    ar: بستان، حديقة
+    en: garden, plantation
+  - word: panen
+    pos: noun
+    ar_eg: حصاد، محصول
+    ar: حصاد
+    en: harvest
+review:
+  status: draft
+  verified: false

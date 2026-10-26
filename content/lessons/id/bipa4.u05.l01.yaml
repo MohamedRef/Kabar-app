@@ -1,0 +1,233 @@
+schema: kabar.lesson/v1
+id: bipa4.u05.l01
+language: id
+title: Memperingati
+can_do:
+  ar_eg: تستعمل أفعال meN-…-i في كلام رسمي عن المناسبات الوطنية.
+  ar: أن تستعمل أفعال meN-…-i في النصوص الرسمية عن المناسبات الوطنية.
+  en: Use meN-…-i in formal text.
+slides:
+  - title: meN-…-i di acara resmi
+    body:
+      ar_eg: |
+        إنت عارف meN-…-i: المكان أو الشخص بيبقى مفعول مباشر، من غير حرف جر. في الاحتفالات الرسمية هتسمعها كتير:
+        hadir di upacara → menghadiri upacara = يحضر الاحتفال
+        hormat → menghormati = يحترم / يكرّم
+        ingat → memperingati = يحيي ذكرى
+        hadir من «حاضر»، وhormat من «حُرمة».
+      ar: |
+        تعرف meN-…-i: يصير المكان أو الشخص مفعولًا مباشرًا بلا حرف جر، وتكثر في المناسبات الرسمية:
+        hadir di upacara → menghadiri upacara = يحضر الحفل
+        hormat → menghormati = يحترم / يكرّم
+        ingat → memperingati = يُحيي ذكرى
+        وhadir من «حاضر»، وhormat من «حُرمة».
+      en: |
+        You know meN-…-i: the place or person becomes a direct object, no preposition. Official ceremonies are full of it:
+        hadir di upacara → menghadiri upacara = attend the ceremony
+        hormat → menghormati = respect, honour
+        ingat → memperingati = commemorate
+        hadir ← «حاضر», hormat ← «حُرمة».
+    grammar: id.confix.men-i
+    examples:
+      - text: Setiap 17 Agustus, kita memperingati Hari Kemerdekaan.
+        ar_eg: كل ١٧ أغسطس، بنحتفل بذكرى عيد الاستقلال.
+        ar: نحيي ذكرى عيد الاستقلال في السابع عشر من أغسطس كل عام.
+        en: Every 17 August, we commemorate Independence Day.
+      - text: Semua siswa menghadiri upacara bendera.
+        ar_eg: كل التلاميذ بيحضروا تحية العلم.
+        ar: يحضر جميع الطلاب مراسم رفع العلم.
+        en: All the students attend the flag ceremony.
+  - title: Tanpa ke, tanpa di
+    body:
+      ar_eg: |
+        بعد فعل -i المفعول بييجي على طول: menghadiri upacara، مش menghadiri ke upacara.
+        زي العربي بالظبط: «حضرنا الحفلة» من غير حرف جر!
+        وخلي بالك: memperingati (يحيي ذكرى) غير memperingatkan (يحذّر).
+      ar: |
+        بعد فعل -i يأتي المفعول مباشرة: menghadiri upacara لا menghadiri ke upacara،
+        تمامًا كقولنا «حضرنا الحفل».
+        وانتبه: memperingati (أحيا الذكرى) غير memperingatkan (حذّر).
+      en: |
+        After an -i verb the object follows directly: menghadiri upacara, not menghadiri ke upacara —
+        just like Arabic «حضرنا الحفلة».
+        Careful: memperingati (commemorate) is not memperingatkan (warn).
+    grammar: id.confix.men-i
+    examples:
+      - text: Kita menghormati jasa para pahlawan.
+        ar_eg: إحنا بنقدّر أفضال الأبطال.
+        ar: نكرّم مآثر الأبطال.
+        en: We honour the heroes' service.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: memperingati
+        ar_eg: يحيي ذكرى
+        ar: يُحيي ذكرى
+        en: commemorate
+      - text: upacara bendera
+        ar_eg: تحية العلم / رفع العلم
+        ar: مراسم رفع العلم
+        en: flag ceremony
+      - text: menghadiri
+        ar_eg: يحضر (مناسبة)
+        ar: يحضر
+        en: attend
+      - text: menghormati
+        ar_eg: يحترم / يكرّم
+        ar: يحترم / يكرّم
+        en: respect, honour
+      - text: Merah Putih
+        ar_eg: العلم الإندونيسي (الأحمر والأبيض)
+        ar: العلم الإندونيسي
+        en: the Red-and-White (Indonesian flag)
+      - text: jasa
+        ar_eg: فضل / خدمة قدّمها حد
+        ar: فضل / مأثرة
+        en: service, merit
+    words: [memperingati, upacara bendera, menghadiri, menghormati, Merah Putih, jasa]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة صح؟
+      ar: أيّ جملة صحيحة؟
+      en: Which sentence is correct?
+    options: ["Kami menghadiri ke upacara bendera.", "Kami menghadiri upacara bendera.", "Kami hadir upacara bendera."]
+    answer: 1
+    explain:
+      ar_eg: menghadiri + المفعول على طول. hadir لوحدها محتاجة di.
+      ar: menghadiri يليها المفعول مباشرة، أما hadir وحدها فتحتاج di.
+      en: menghadiri takes the object directly; plain hadir needs di.
+    words: [menghadiri, upacara bendera]
+  - id: e03
+    type: listen
+    text: Setiap 17 Agustus, kita memperingati Hari Kemerdekaan.
+    options: ["Setiap 17 Agustus, kita memperingatkan Hari Kemerdekaan.", "Setiap 17 Agustus, kita menghadiri Hari Kemerdekaan.", "Setiap 17 Agustus, kita memperingati Hari Kemerdekaan."]
+    answer: 2
+    meaning:
+      ar_eg: كل ١٧ أغسطس، بنحتفل بذكرى عيد الاستقلال.
+      ar: نحيي ذكرى عيد الاستقلال في ١٧ أغسطس من كل عام.
+      en: Every 17 August, we commemorate Independence Day.
+    words: [memperingati]
+  - id: e04
+    type: multiple_choice
+    question: Kita harus ___ jasa para pahlawan.
+    question_meaning:
+      ar_eg: لازم … أفضال الأبطال.
+      ar: يجب أن … مآثر الأبطال.
+      en: We must … the heroes' service.
+    options: ["menghormati", "menghadiri", "memperingatkan"]
+    answer: 0
+    explain:
+      ar_eg: menghormati = نقدّر ونحترم. menghadiri = نحضر مناسبة، وmemperingatkan = نحذّر.
+      ar: menghormati = نكرّم، وmenghadiri = نحضر، وmemperingatkan = نحذّر.
+      en: menghormati = honour; menghadiri = attend; memperingatkan = warn.
+    words: [menghormati, jasa]
+  - id: e05
+    type: fill_blank
+    sentence: Bendera ___ dinaikkan pukul tujuh pagi.
+    meaning:
+      ar_eg: العلم الأحمر والأبيض بيترفع الساعة سبعة الصبح.
+      ar: يُرفع العلم الأحمر والأبيض في السابعة صباحًا.
+      en: The Red-and-White flag is raised at seven in the morning.
+    options: [Merah Putih, upacara, jasa]
+    answers: [Merah Putih]
+    words: [Merah Putih]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: كل التلاميذ بيحضروا تحية العلم.
+      ar: يحضر جميع الطلاب مراسم رفع العلم.
+      en: All the students attend the flag ceremony.
+    answer: Semua siswa menghadiri upacara bendera.
+    distractors: [ke, hadir]
+    words: [menghadiri, upacara bendera]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: إحنا بنحيي ذكرى عيد الاستقلال يوم ١٧ أغسطس.
+      ar: نحيي ذكرى عيد الاستقلال في ١٧ أغسطس.
+      en: We commemorate Independence Day on 17 August.
+    answers:
+      - Kami memperingati Hari Kemerdekaan pada tanggal 17 Agustus.
+      - Kita memperingati Hari Kemerdekaan pada tanggal 17 Agustus.
+      - Kami memperingati Hari Kemerdekaan pada 17 Agustus.
+      - Kita memperingati Hari Kemerdekaan pada 17 Agustus.
+      - Kami memperingati Hari Kemerdekaan tanggal 17 Agustus.
+      - Kita memperingati Hari Kemerdekaan setiap 17 Agustus.
+      - Setiap 17 Agustus, kita memperingati Hari Kemerdekaan.
+      - Pada tanggal 17 Agustus, kami memperingati Hari Kemerdekaan.
+    words: [memperingati]
+  - id: e08
+    type: speaking
+    text: Kami menghormati bendera Merah Putih dan jasa para pahlawan.
+    meaning:
+      ar_eg: إحنا بنحترم العلم الأحمر والأبيض وأفضال الأبطال.
+      ar: نحترم العلم الأحمر والأبيض ونكرّم مآثر الأبطال.
+      en: We honour the Red-and-White flag and the heroes' service.
+    words: [menghormati, Merah Putih, jasa]
+dialogue:
+  title: Besok tanggal 17
+  lines:
+    - speaker: Andi Tenri
+      text: Mohamed, besok pagi kamu mau menghadiri upacara bendera di lapangan?
+      ar_eg: يا محمد، بكرة الصبح عايز تحضر تحية العلم في الساحة؟
+      ar: يا محمد، هل تريد أن تحضر مراسم رفع العلم في الساحة صباح الغد؟
+      en: Mohamed, do you want to attend the flag ceremony on the square tomorrow morning?
+    - speaker: Mohamed
+      text: Mau! Kita memperingati Hari Kemerdekaan, kan?
+      ar_eg: أكيد! إحنا بنحتفل بذكرى عيد الاستقلال، صح؟
+      ar: نعم! سنحيي ذكرى عيد الاستقلال، أليس كذلك؟
+      en: Yes! We're commemorating Independence Day, right?
+    - speaker: Andi Tenri
+      text: Betul. Upacaranya mulai jam tujuh, jangan terlambat, ya.
+      ar_eg: مظبوط. الاحتفال بيبدأ الساعة سبعة، ما تتأخرش.
+      ar: صحيح. تبدأ المراسم في السابعة، فلا تتأخر.
+      en: Right. It starts at seven, so don't be late.
+    - speaker: Mohamed
+      text: Apa yang harus saya lakukan saat bendera Merah Putih naik?
+      ar_eg: أعمل إيه وهما بيرفعوا العلم الأحمر والأبيض؟
+      ar: ماذا عليّ أن أفعل حين يُرفع العلم الأحمر والأبيض؟
+      en: What should I do when the Red-and-White goes up?
+    - speaker: Andi Tenri
+      text: Berdiri tegak dan diam. Dengan begitu, kita menghormati jasa para pahlawan.
+      ar_eg: اقف مفرود وساكت. كده بنقدّر أفضال الأبطال.
+      ar: قف منتصبًا صامتًا، فبذلك نكرّم مآثر الأبطال.
+      en: Stand straight and silent. That's how we honour the heroes' service.
+new_words:
+  - word: memperingati
+    pos: verb
+    ar_eg: يحيي ذكرى
+    ar: يُحيي ذكرى
+    en: commemorate
+  - word: upacara bendera
+    pos: noun
+    ar_eg: تحية العلم / رفع العلم
+    ar: مراسم رفع العلم
+    en: flag ceremony
+  - word: menghadiri
+    pos: verb
+    ar_eg: يحضر (مناسبة)
+    ar: يحضر
+    en: attend
+    arabic: حاضر
+  - word: menghormati
+    pos: verb
+    ar_eg: يحترم / يكرّم
+    ar: يحترم / يكرّم
+    en: respect, honour
+    arabic: حرمة
+  - word: Merah Putih
+    pos: noun
+    ar_eg: العلم الإندونيسي (الأحمر والأبيض)
+    ar: العلم الإندونيسي
+    en: the Red-and-White (Indonesian flag)
+  - word: jasa
+    pos: noun
+    ar_eg: فضل / خدمة قدّمها حد
+    ar: فضل / مأثرة
+    en: service, merit
+review:
+  status: draft
+  verified: false

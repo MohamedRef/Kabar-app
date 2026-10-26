@@ -1,0 +1,187 @@
+schema: kabar.lesson/v1
+id: j6.u03.l02
+language: jv
+title: Wignyan
+can_do:
+  ar_eg: تكتب h في آخر المقطع، حتى في نص الكلمة.
+  ar: أن تكتب h في آخر المقطع، ولو في وسط الكلمة.
+  en: Write final h, also inside a word.
+slides:
+  - title: Wignyan
+    body:
+      ar_eg: |
+        wignyan ꦃ: علامة بعد الحرف (على يمينه) = h في آخر المقطع.
+        ꦩ ma + wignyan = ꦩꦃ mah. يعني ꦲꦺꦴꦩꦃ = omah (بيت).
+      ar: |
+        wignyan ꦃ: علامة بعد الحرف (إلى يمينه) = h في آخر المقطع.
+        ꦩ ma مع wignyan = ꦩꦃ mah، فـ ꦲꦺꦴꦩꦃ = omah (بيت).
+      en: |
+        wignyan ꦃ: a mark after the letter (to its right) = h at the end of a syllable.
+        ꦩ ma + wignyan = ꦩꦃ mah. So ꦲꦺꦴꦩꦃ = omah (house).
+    grammar: jv.aksara.panyigeg
+    examples:
+      - text: ꦲꦺꦴꦩꦃ (omah)
+        ar_eg: بيت
+        ar: بيت
+        en: house
+      - text: ꦧꦺꦴꦕꦃ (bocah)
+        ar_eg: عيل
+        ar: طفل
+        en: child
+  - title: Ing tengah tembung
+    body:
+      ar_eg: |
+        cecak وlayar وwignyan بيشتغلوا كمان في نص الكلمة: ꦭꦸꦁꦒꦸꦃ lungguh (يقعد) = lu + cecak (ng) + gu + wignyan (h).
+        وفي مقابر الملوك هتسمع nyekar: الزيارة اللي بيرشّوا فيها ورد على القبر (makam). ꦚꦼꦏꦂ فيها layar.
+      ar: |
+        تعمل cecak وlayar وwignyan وسط الكلمة أيضًا: ꦭꦸꦁꦒꦸꦃ lungguh (يجلس) = lu مع cecak، ثم gu مع wignyan.
+        وفي مقابر الملوك تسمع nyekar: زيارة القبر (makam) ونثر الزهر عليه، وꦚꦼꦏꦂ فيها layar.
+      en: |
+        Cecak, layar and wignyan also work inside a word: ꦭꦸꦁꦒꦸꦃ lungguh (sit) = lu + cecak (ng) + gu + wignyan (h).
+        At the royal graves you'll hear nyekar: visiting a grave (makam) and scattering flowers on it. ꦚꦼꦏꦂ has layar.
+    grammar: jv.aksara.panyigeg
+    examples:
+      - text: ꦭꦸꦁꦒꦸꦃ (lungguh)
+        ar_eg: يقعد
+        ar: يجلس
+        en: sit
+      - text: ꦚꦼꦏꦂ (nyekar)
+        ar_eg: يزور قبر ويرش عليه ورد
+        ar: يزور القبر وينثر عليه الزهر
+        en: visit a grave and scatter flowers
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: wignyan
+        ar_eg: h في آخر المقطع — بعد الحرف
+        ar: h في آخر المقطع — بعد الحرف
+        en: closing h — after the letter
+      - text: makam
+        ar_eg: قبر / مقبرة
+        ar: قبر / مقبرة
+        en: grave, tomb
+      - text: nyekar
+        ar_eg: يزور قبر ويرش عليه ورد
+        ar: يزور القبر وينثر عليه الزهر
+        en: visit a grave and scatter flowers
+      - text: ꦲꦺꦴꦩꦃ
+        ar_eg: omah (بيت)
+        ar: omah (بيت)
+        en: omah (house)
+    words: [wignyan, makam, nyekar]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "اقرا: ꦧꦺꦴꦕꦃ"
+      ar: "اقرأ: ꦧꦺꦴꦕꦃ"
+      en: "Read: ꦧꦺꦴꦕꦃ"
+    options: [boca, bocang, bocah]
+    answer: 2
+    words: [wignyan]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: محمد رايح المقابر ومعاه ورد. بيعمل إيه؟
+      ar: يذهب محمد إلى المقابر ومعه زهور. ماذا يفعل؟
+      en: Mohamed is going to the graves with flowers. What is he doing?
+    options: [nyekar, mangan, turu]
+    answer: 0
+    words: [nyekar, makam]
+  - id: e04
+    type: listen
+    text: lungguh
+    question:
+      ar_eg: سمعت lungguh (يقعد). بتتكتب إزاي؟
+      ar: سمعت lungguh (يجلس). كيف تُكتب؟
+      en: You heard lungguh (sit). How is it written?
+    options: ["ꦭꦸꦁꦒꦸ", "ꦭꦸꦁꦒꦸꦃ", "ꦭꦸꦒꦸꦃ"]
+    answer: 1
+    meaning:
+      ar_eg: يقعد
+      ar: يجلس
+      en: sit
+    words: [wignyan]
+  - id: e05
+    type: fill_blank
+    sentence: ꦚꦼꦏꦂ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: يزور قبر بالورد)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: يزور القبر بالزهر)"
+      en: Type the reading in Latin letters. (It means "visit a grave with flowers".)
+    answers: [nyekar]
+    words: [nyekar]
+  - id: e06
+    type: fill_blank
+    sentence: Simbah lagi nyekar ing ___.
+    meaning:
+      ar_eg: جدّو بيزور القبر وبيرش ورد.
+      ar: الجد يزور القبر وينثر الزهر.
+      en: Grandpa is visiting the grave with flowers.
+    options: [pasar, makam, omah]
+    answers: [makam]
+    words: [makam, nyekar]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦧꦺꦴꦕꦃꦭꦸꦁꦒꦸꦃ"
+      ar: "اكتب بالحروف اللاتينية: ꦧꦺꦴꦕꦃꦭꦸꦁꦒꦸꦃ"
+      en: "Write in Latin letters: ꦧꦺꦴꦕꦃꦭꦸꦁꦒꦸꦃ"
+    answers: [bocah lungguh, bocahlungguh]
+    explain:
+      ar_eg: bo-cah (wignyan) lung (cecak) -guh (wignyan) = العيل قاعد.
+      ar: bo-cah (wignyan) lung (cecak) -guh (wignyan) = الطفل جالس.
+      en: bo-cah (wignyan) lung (cecak) -guh (wignyan) = the child sits.
+    words: [wignyan]
+  - id: e08
+    type: speaking
+    text: Aku arep nyekar ing makam.
+    meaning:
+      ar_eg: أنا رايح أزور القبر.
+      ar: سأزور القبر.
+      en: I'm going to visit the grave.
+    words: [nyekar, makam]
+dialogue:
+  title: Ing Makam Raja Mataram
+  lines:
+    - speaker: Mohamed
+      text: Mas, iki makam raja-raja Mataram?
+      ar_eg: يا ديماس، دي مقابر ملوك ماتارام؟
+      ar: يا ديماس، أهذه مقابر ملوك ماتارام؟
+      en: Mas, is this the tomb of the Mataram kings?
+    - speaker: Dimas
+      text: Iya. Akeh wong teka mrene kanggo nyekar.
+      ar_eg: أيوه. ناس كتير بتيجي هنا تزور وترش ورد.
+      ar: نعم. يأتي كثيرون إلى هنا للزيارة ونثر الزهر.
+      en: Yes. Lots of people come here to nyekar.
+    - speaker: Mohamed
+      text: Kene akeh wong nganggo klambi Jawa.
+      ar_eg: هنا ناس كتير لابسين لبس جاوي.
+      ar: كثيرون هنا يلبسون اللباس الجاوي.
+      en: Lots of people here are wearing Javanese dress.
+    - speaker: Dimas
+      text: Iya, iku aturane. Ayo lungguh dhisik.
+      ar_eg: أيوه، دي القاعدة. يلا نقعد شوية الأول.
+      ar: نعم، هذه هي القاعدة. هيا نجلس قليلًا أولًا.
+      en: Yes, that's the rule. Let's sit down first.
+new_words:
+  - word: wignyan
+    pos: noun
+    ar_eg: علامة h في آخر المقطع، بعد الحرف
+    ar: علامة h في آخر المقطع، بعد الحرف
+    en: the closing h mark, after the letter
+  - word: makam
+    pos: noun
+    ar_eg: قبر / مقبرة
+    ar: قبر / مقبرة
+    en: grave, tomb = makam
+    arabic: مقام
+  - word: nyekar
+    pos: verb
+    ar_eg: يزور قبر ويرش عليه ورد (من sekar = ورد)
+    ar: يزور القبر وينثر عليه الزهر (من sekar = زهر)
+    en: visit a grave and scatter flowers (from sekar, flower) = ziarah kubur
+review:
+  status: draft
+  verified: false
