@@ -31,6 +31,9 @@ html, body {
 
 .app {
   min-block-size: 100dvh;
+  /* Set here, not only on body: the theme tokens live on .app, and an
+     inherited colour would keep the light theme's text on a dark theme. */
+  color: var(--text);
   background-color: var(--bg);
   background-image: var(--batik);
 }
