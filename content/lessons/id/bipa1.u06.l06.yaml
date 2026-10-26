@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: bipa1.u06.l06
+language: id
+title: Kemarin, tadi, nanti
+can_do:
+  ar_eg: تقول الحاجة حصلت إمتى وبأي ترتيب.
+  ar: أن تقول متى تحدث الأشياء وبأي ترتيب.
+  en: Say when things happen and in what order.
+slides:
+  - title: Kemarin, tadi, sekarang, nanti
+    body:
+      ar_eg: |
+        الفعل مابيتغيرش، فكلمة الوقت هي اللي بتقول إمتى:
+        kemarin (امبارح) — tadi (من شوية، النهارده) — sekarang (دلوقتي) — nanti (بعدين، النهارده) — besok (بكرة).
+        tadi pagi = النهارده الصبح (اللي فات)، nanti malam = بالليل النهارده (اللي جاي).
+        كلمة وقت واحدة كفاية: Kemarin saya ke pasar = امبارح رحت السوق.
+      ar: |
+        لأن الفعل لا يتصرف، تحدد ظروف الزمان وقت الحدث:
+        kemarin (أمس) — tadi (قبل قليل من اليوم) — sekarang (الآن) — nanti (لاحقًا اليوم) — besok (غدًا).
+        tadi pagi = هذا الصباح (الماضي)، nanti malam = الليلة (القادمة).
+        ويكفي ظرف واحد: Kemarin saya ke pasar = ذهبت أمس إلى السوق.
+      en: |
+        The verb never changes, so a time word tells you when:
+        kemarin (yesterday) — tadi (earlier today) — sekarang (now) — nanti (later today) — besok (tomorrow).
+        tadi pagi = this (past) morning, nanti malam = tonight (still to come).
+        One time word is enough: Kemarin saya ke pasar = Yesterday I went to the market.
+    grammar: id.time.sequence
+    examples:
+      - text: Tadi pagi saya ke kantor.
+        ar_eg: النهارده الصبح رحت المكتب.
+        ar: ذهبت هذا الصباح إلى المكتب.
+        en: This morning I went to the office.
+      - text: Nanti malam kita makan di Blok M.
+        ar_eg: بالليل هناكل في بلوك إم.
+        ar: سنأكل الليلة في بلوك إم.
+        en: Tonight we'll eat at Blok M.
+  - title: Sebelum, sesudah, lalu
+    body:
+      ar_eg: |
+        عشان ترتب الأحداث:
+        - sebelum = قبل: Sebelum tidur, saya membaca buku = قبل ما أنام بقرا كتاب.
+        - sesudah / setelah = بعد: Setelah makan, kami jalan-jalan = بعد الأكل بنتمشى.
+        - lalu = وبعدين (في الحكاية).
+      ar: |
+        لترتيب الأحداث:
+        - sebelum = قبل: Sebelum tidur, saya membaca buku = أقرأ كتابًا قبل النوم.
+        - sesudah / setelah = بعد: Setelah makan, kami jalan-jalan = بعد الأكل نتنزه.
+        - lalu = ثم.
+      en: |
+        To put events in order:
+        - sebelum = before: Sebelum tidur, saya membaca buku = Before sleeping, I read a book.
+        - sesudah / setelah = after: Setelah makan, kami jalan-jalan = After eating, we go for a stroll.
+        - lalu = then (in a story).
+    grammar: id.time.sequence
+    examples:
+      - text: Saya bangun, lalu salat subuh.
+        ar_eg: بصحى، وبعدين بصلي الصبح.
+        ar: أستيقظ ثم أصلي الفجر.
+        en: I wake up, then I pray the dawn prayer.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الساعة ٢ الضهر، وعايز تتكلم عن الساعة ٧ الصبح النهارده. تقول إيه؟
+      ar: الساعة الثانية ظهرًا، وتريد الحديث عن السابعة صباح اليوم. ماذا تقول؟
+      en: It's 2 p.m. and you're talking about 7 a.m. today. What do you say?
+    options: [nanti pagi, tadi pagi, besok pagi]
+    answer: 1
+    explain:
+      ar_eg: tadi = اللي فات النهارده. nanti = اللي جاي.
+      ar: tadi لما مضى من اليوم، وnanti لما سيأتي.
+      en: tadi = earlier today; nanti = later.
+    words: [tadi]
+  - id: e02
+    type: fill_blank
+    sentence: ___ tidur, saya membaca buku.
+    meaning:
+      ar_eg: قبل ما أنام بقرا كتاب.
+      ar: أقرأ كتابًا قبل النوم.
+      en: Before sleeping, I read a book.
+    options: [Sebelum, Sesudah, Sekarang]
+    answers: [Sebelum]
+    words: [sebelum]
+  - id: e03
+    type: translate
+    direction: from_target
+    source_text: Setelah makan, kami jalan-jalan.
+    answers_meaning:
+      ar_eg: [بعد الأكل بنتمشى., بعد الأكل اتفسحنا, بعد ما كلنا اتمشينا]
+      ar: [بعد الأكل نتنزه., بعد الطعام تنزهنا, بعد أن أكلنا تمشّينا]
+      en: ['After eating, we go for a stroll.', 'After eating, we went for a walk', After the meal we went out]
+    words: [setelah, jalan-jalan]
+  - id: e04
+    type: dictation
+    text: Kemarin saya ke pasar.
+    meaning:
+      ar_eg: امبارح رحت السوق.
+      ar: ذهبت أمس إلى السوق.
+      en: Yesterday I went to the market.
+    words: [kemarin, pasar]
+  - id: e05
+    type: speaking
+    text: Sebelum tidur, saya membaca buku.
+    meaning:
+      ar_eg: قبل ما أنام بقرا كتاب.
+      ar: أقرأ كتابًا قبل النوم.
+      en: Before sleeping, I read a book.
+    words: [sebelum]
+  - id: e06
+    type: match_pairs
+    pairs:
+      - text: kemarin
+        ar_eg: امبارح
+        ar: أمس
+        en: yesterday
+      - text: tadi
+        ar_eg: من شوية (النهارده)
+        ar: قبل قليل (اليوم)
+        en: earlier today
+      - text: nanti
+        ar_eg: بعدين (النهارده)
+        ar: لاحقًا (اليوم)
+        en: later today
+      - text: sebelum
+        ar_eg: قبل
+        ar: قبل
+        en: before
+      - text: sesudah
+        ar_eg: بعد
+        ar: بعد
+        en: after
+    words: [kemarin, tadi, nanti, sebelum, sesudah]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: بصحى، وبعدين بصلي الفجر.
+      ar: أستيقظ، ثم أصلي الفجر.
+      en: I wake up, then I pray the dawn prayer.
+    answer: Saya bangun, lalu salat subuh.
+    alternatives: [Saya bangun lalu salat subuh.]
+    distractors: [sebelum, nanti]
+    words: [lalu, subuh]
+dialogue:
+  lines:
+    - speaker: Pak Budi
+      text: Mohamed, tadi pagi kamu ke mana?
+      ar_eg: محمد، رحت فين الصبح؟
+      ar: محمد، إلى أين ذهبت صباح اليوم؟
+      en: Mohamed, where did you go this morning?
+    - speaker: Mohamed
+      text: Tadi pagi saya ke masjid, lalu sarapan.
+      ar_eg: الصبح رحت الجامع، وبعدين فطرت.
+      ar: صباحًا ذهبت إلى المسجد، ثم تناولت الفطور.
+      en: This morning I went to the mosque, then had breakfast.
+    - speaker: Pak Budi
+      text: Nanti malam kamu belajar?
+      ar_eg: بالليل هتذاكر؟
+      ar: هل ستدرس الليلة؟
+      en: Will you study tonight?
+    - speaker: Mohamed
+      text: Ya, Pak. Sesudah makan malam.
+      ar_eg: أيوه يا أستاذ. بعد العشا.
+      ar: نعم يا أستاذ. بعد العشاء.
+      en: Yes, sir. After dinner.
+new_words:
+  - word: kemarin
+    pos: adverb
+    ar_eg: امبارح
+    ar: أمس
+    en: yesterday
+  - word: tadi
+    pos: adverb
+    ar_eg: من شوية (النهارده)
+    ar: قبل قليل
+    en: earlier (today)
+  - word: nanti
+    pos: adverb
+    ar_eg: بعدين (النهارده)
+    ar: لاحقًا
+    en: later (today)
+  - word: sebelum
+    pos: conjunction
+    ar_eg: قبل
+    ar: قبل
+    en: before
+  - word: sesudah
+    pos: conjunction
+    ar_eg: بعد
+    ar: بعد
+    en: after
+  - word: setelah
+    pos: conjunction
+    ar_eg: بعد
+    ar: بعد
+    en: after
+  - word: lalu
+    pos: conjunction
+    ar_eg: وبعدين
+    ar: ثم
+    en: then
+  - word: subuh
+    pos: noun
+    ar_eg: الفجر / صلاة الصبح
+    ar: الفجر
+    en: dawn; the dawn prayer
+    arabic: صبح
+review:
+  status: draft
+  verified: false

@@ -14,29 +14,23 @@ slides:
         - pertama → lalu → setelah itu → akhirnya.
         - indah، sejuk، tenang، seru، menyenangkan، melelahkan.
         - wah (إعجاب)، aduh (وجع / مشكلة)، lho (مفاجأة)، kok (استغراب)، dong، sih، deh، kan، ya.
+        في الشات: yg = yang، gk = nggak، udh = sudah، blm = belum، bgt = banget، tp = tapi، aja = saja، brp = berapa، 2 = تكرار (lumba2)، otw = في السكة، wkwk = هههه.
+        للصحاب بس، مش للمدرس.
       ar: |
         السرد الحي = ترتيب + صفات + مشاعر:
         - pertama ← lalu ← setelah itu ← akhirnya.
         - indah، sejuk، tenang، seru، menyenangkan، melelahkan.
         - wah للإعجاب، aduh للألم، lho للمفاجأة، kok للاستغراب، ثم dong وsih وdeh وkan وya.
+        في المحادثات: yg = yang، gk = nggak، udh = sudah، blm = belum، bgt = banget، tp = tapi، aja = saja، brp = berapa، و2 للتكرار، وotw = في الطريق، وwkwk = ضحك.
+        وهي للأصدقاء فقط.
       en: |
         A lively story = order + adjectives + feeling:
         - pertama → lalu → setelah itu → akhirnya.
         - indah, sejuk, tenang, seru, menyenangkan, melelahkan.
         - wah (wow), aduh (ouch / oh no), lho (surprise), kok (how come), plus dong, sih, deh, kan, ya.
-    grammar: id.interjection.particles
-  - title: Yg, gk, udh, bgt
-    body:
-      ar_eg: |
-        في الشات: yg = yang، gk = nggak، udh = sudah، blm = belum، bgt = banget، tp = tapi، aja = saja، brp = berapa، 2 = تكرار (lumba2)، otw = في السكة، wkwk = هههه.
-        للصحاب بس، مش للمدرس.
-      ar: |
-        في المحادثات: yg = yang، gk = nggak، udh = sudah، blm = belum، bgt = banget، tp = tapi، aja = saja، brp = berapa، و2 للتكرار، وotw = في الطريق، وwkwk = ضحك.
-        وهي للأصدقاء فقط.
-      en: |
         In chat: yg = yang, gk = nggak, udh = sudah, blm = belum, bgt = banget, tp = tapi, aja = saja, brp = berapa, 2 = repeat (lumba2), otw = on the way, wkwk = haha.
         Friends only — not your teacher.
-    grammar: id.chat.abbreviations
+    grammar: id.interjection.particles
 exercises:
   - id: e01
     type: match_pairs
@@ -84,13 +78,13 @@ exercises:
       ar_eg: اكتشفت إن الموبايل اتنسى في الفندق. تقول إيه؟
       ar: اكتشفت أنك نسيت هاتفك في الفندق. ماذا تقول؟
       en: You realise you left your phone at the hotel. What do you say?
-    options: ["Deh, HP saya ketinggalan!", "Aduh, HP saya ketinggalan!", "Wah, HP saya ketinggalan!"]
+    options: ['Deh, HP saya ketinggalan!', 'Aduh, HP saya ketinggalan!', 'Wah, HP saya ketinggalan!']
     answer: 1
     words: [aduh, ketinggalan]
   - id: e04
     type: listen
     text: Wah, seru sekali!
-    options: ["Wah, seru sekali!", "Aduh, sakit sekali!", "Wah, sepi sekali!"]
+    options: ['Wah, seru sekali!', 'Aduh, sakit sekali!', 'Wah, sepi sekali!']
     answer: 0
     words: [wah, seru]
   - id: e05
@@ -100,7 +94,7 @@ exercises:
       ar_eg: إيه الكتابة الكاملة؟
       ar: ما الصيغة الكاملة؟
       en: What is it in full?
-    options: ["Belum sampai, ya?", "Sudah sampai belum?", "Sudah sampai di mana?"]
+    options: ['Belum sampai, ya?', 'Sudah sampai belum?', 'Sudah sampai di mana?']
     answer: 1
     words: [sudah, sampai, belum]
   - id: e06
@@ -110,7 +104,7 @@ exercises:
       ar_eg: هوا الصبح في لوفينا منعش والبحر هادي.
       ar: هواء الصباح في لوفينا منعش والبحر هادئ.
       en: The morning air in Lovina is cool and the sea is calm.
-    options: ["ramai", "sejuk", "melelahkan"]
+    options: [ramai, sejuk, melelahkan]
     answers: [sejuk]
     words: [sejuk, tenang]
   - id: e07
@@ -120,20 +114,10 @@ exercises:
       ar_eg: الأول ركبنا مركب، وبعدين شفنا الدلافين.
       ar: أولًا ركبنا قاربًا، ثم رأينا الدلافين.
       en: First we got on a boat. Then we saw dolphins.
-    options: ["Pertama", "Mula-mula", "Lalu"]
+    options: [Pertama, Mula-mula, Lalu]
     answers: [Lalu]
     words: [lalu, perahu]
   - id: e08
-    type: fill_blank
-    sentence: ___ mahal sekali? Kemarin cuma lima puluh ribu.
-    meaning:
-      ar_eg: إزاي غالي كده؟ امبارح كان بخمسين ألف بس.
-      ar: كيف صار غاليًا هكذا؟ كان أمس بخمسين ألفًا فقط.
-      en: How come it's so expensive? Yesterday it was only fifty thousand.
-    options: ["Ya", "Kok", "Wah"]
-    answers: [Kok]
-    words: [kok]
-  - id: e09
     type: build_sentence
     source:
       ar_eg: ياه، الدلافين كتير أوي!
@@ -142,7 +126,7 @@ exercises:
     answer: Wah, lumba-lumbanya banyak sekali!
     distractors: [aduh, kok]
     words: [wah, lumba-lumba]
-  - id: e10
+  - id: e09
     type: build_sentence
     source:
       ar_eg: (شات) أنا لسه ماكلتش، وإنت أكلت؟
@@ -151,33 +135,16 @@ exercises:
     answer: aku blm makan, km udh?
     distractors: [yg, bgt]
     words: [belum, kamu, sudah]
-  - id: e11
+  - id: e10
     type: translate
     direction: from_target
     source_text: Akhirnya kami pulang. Capek, tapi senang!
     answers_meaning:
-      ar_eg: ["وفي الآخر روّحنا. تعبانين بس مبسوطين!", "في الآخر رجعنا، تعبنا بس انبسطنا!"]
-      ar: ["وأخيرًا عدنا، متعبين لكن سعداء!", "في النهاية رجعنا. كنا متعبين لكن سعداء!"]
-      en: ["Finally we went home. Tired but happy!", "In the end we went back. Tired, but happy!"]
+      ar_eg: [وفي الآخر روّحنا. تعبانين بس مبسوطين!, في الآخر رجعنا، تعبنا بس انبسطنا!]
+      ar: [وأخيرًا عدنا، متعبين لكن سعداء!, في النهاية رجعنا. كنا متعبين لكن سعداء!]
+      en: [Finally we went home. Tired but happy!, 'In the end we went back. Tired, but happy!']
     words: [akhirnya, capek, senang]
-  - id: e12
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الأجازة كانت ممتعة جدًا.
-      ar: كانت العطلة ممتعة جدًا.
-      en: The holiday was really fun.
-    answers:
-      - Liburannya sangat menyenangkan.
-      - Liburannya sangat menyenangkan
-      - Liburannya menyenangkan sekali.
-      - Liburannya menyenangkan sekali
-      - Liburan itu sangat menyenangkan.
-      - Liburannya seru sekali.
-      - Liburannya seru banget.
-      - Liburannya menyenangkan banget.
-    words: [menyenangkan, seru]
-  - id: e13
+  - id: e11
     type: dictation
     text: Setelah itu, kami melihat matahari terbit.
     meaning:
@@ -185,7 +152,7 @@ exercises:
       ar: بعد ذلك شاهدنا شروق الشمس.
       en: After that, we watched the sunrise.
     words: [setelah itu, matahari terbit]
-  - id: e14
+  - id: e12
     type: speaking
     text: Wah, liburan di Lovina seru sekali! Pertama, kami naik perahu. Akhirnya, kami melihat lumba-lumba.
     meaning:

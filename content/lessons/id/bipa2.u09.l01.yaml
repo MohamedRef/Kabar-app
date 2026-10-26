@@ -27,10 +27,6 @@ slides:
         ar_eg: ياه، البحر جميل أوي!
         ar: يا للروعة، الشاطئ جميل جدًا!
         en: Wow, the beach is so beautiful!
-      - text: Aduh, dompet saya ketinggalan!
-        ar_eg: يا نهار، المحفظة نسيتها!
-        ar: يا للمصيبة، نسيت محفظتي!
-        en: Oh no, I left my wallet behind!
   - title: Lho? Kok?
     body:
       ar_eg: |
@@ -103,146 +99,44 @@ slides:
         en: Wait a moment, OK?
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: wah
-        ar_eg: ياه! / واو!
-        ar: يا للروعة!
-        en: wow!
-      - text: aduh
-        ar_eg: آه! / يا خبر!
-        ar: آه! / يا للمصيبة!
-        en: ouch! / oh no!
-      - text: kok
-        ar_eg: إزاي يعني؟
-        ar: كيف ذلك؟
-        en: how come?
-      - text: dong
-        ar_eg: بقى
-        ar: هيّا إذن (إلحاح لطيف)
-        en: come on (gentle push)
-    words: [wah, aduh, kok, dong]
-  - id: e02
     type: multiple_choice
     question_meaning:
       ar_eg: إنت شايف غروب جميل جدًا على البحر في لوفينا. تقول إيه؟
       ar: ترى غروبًا رائعًا على البحر في لوفينا. ماذا تقول؟
       en: You see a gorgeous sunset over the sea at Lovina. What do you say?
-    options: ["Deh, indah sekali!", "Wah, indah sekali!", "Aduh, indah sekali!"]
+    options: ['Deh, indah sekali!', 'Wah, indah sekali!', 'Aduh, indah sekali!']
     answer: 1
     explain:
       ar_eg: wah للإعجاب. aduh للوجع أو المشكلة.
       ar: wah للإعجاب، وaduh للألم أو الضيق.
       en: wah is for admiration; aduh is for pain or trouble.
     words: [wah]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: رجلك خبطت في الكرسي. تقول إيه؟
-      ar: اصطدمت قدمك بالكرسي. ماذا تقول؟
-      en: You bang your foot on a chair. What do you say?
-    options: ["Dong, sakit!", "Aduh, sakit!", "Wah, sakit!"]
-    answer: 1
-    words: [aduh]
-  - id: e04
+  - id: e02
     type: listen
     text: Lho, kamu di sini?
-    options: ["Wah, kamu di sini!", "Aduh, kamu di sini!", "Lho, kamu di sini?"]
+    options: ['Wah, kamu di sini!', 'Aduh, kamu di sini!', 'Lho, kamu di sini?']
     answer: 2
     words: [lho]
-  - id: e05
-    type: fill_blank
-    sentence: ___ mahal sekali? Kemarin cuma dua puluh ribu.
-    meaning:
-      ar_eg: إزاي غالي كده؟ امبارح كان بعشرين ألف بس.
-      ar: كيف صار غاليًا هكذا؟ كان أمس بعشرين ألفًا فقط.
-      en: How come it's so expensive? Yesterday it was only twenty thousand.
-    options: ["Deh", "Wah", "Kok"]
-    answers: [Kok]
-    explain:
-      ar_eg: kok في أول السؤال = إزاي يعني؟ (استغراب).
-      ar: kok في أول السؤال للاستغراب.
-      en: kok opens a puzzled "how come?" question.
-    words: [kok]
-  - id: e06
+  - id: e03
     type: fill_blank
     sentence: Ikut ___! Saya juga mau ke Lovina.
     meaning:
       ar_eg: خدوني معاكم بقى! أنا كمان عايز أروح لوفينا.
       ar: خذوني معكم! أنا أيضًا أريد الذهاب إلى لوفينا.
       en: Let me come too! I want to go to Lovina as well.
-    options: ["kan", "lho", "dong"]
+    options: [kan, lho, dong]
     answers: [dong]
     words: [dong]
-  - id: e07
-    type: fill_blank
-    sentence: Tunggu sebentar, ___.
-    meaning:
-      ar_eg: استنى شوية، ماشي؟
-      ar: انتظر قليلًا، من فضلك.
-      en: Wait a moment, OK?
-    options: ["ya", "kok", "aduh"]
-    answers: [ya]
-    words: [ya]
-  - id: e08
-    type: multiple_choice
-    question_meaning:
-      ar_eg: بتكتب إيميل رسمي للجامعة. أنهي جملة تنفع؟
-      ar: تكتب رسالة رسمية إلى الجامعة. أيّ الجملتين تناسب؟
-      en: You're writing a formal email to the university. Which sentence fits?
-    options: ["Mohon kirimkan dokumennya.", "Kirim dokumennya dong."]
-    answer: 0
-    explain:
-      ar_eg: dong عامية، للصحاب بس. في الرسمي استخدم mohon.
-      ar: dong عامية، والرسمي mohon.
-      en: dong is casual; formal writing uses mohon.
-    words: [dong, mohon]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: ياه، البحر جميل أوي!
-      ar: يا للروعة، الشاطئ جميل جدًا!
-      en: Wow, the beach is so beautiful!
-    answer: Wah, pantainya indah banget!
-    distractors: [aduh, kok]
-    words: [wah, indah, banget]
-  - id: e10
-    type: build_sentence
-    source:
-      ar_eg: يا خبر، نسيت الكاميرا!
-      ar: يا للمصيبة، نسيت الكاميرا!
-      en: Oh no, I left my camera behind!
-    answer: Aduh, kamera saya ketinggalan!
-    distractors: [wah, dong]
-    words: [aduh, ketinggalan]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: Kan sudah saya bilang!
-    answers_meaning:
-      ar_eg: ["ما أنا قلتلك!", "مش أنا قلتلك؟", "ما قلتلك!"]
-      ar: ["ألم أقل لك!", "قلتُ لك ذلك!", "ألم أخبرك؟"]
-      en: ["I told you!", "Didn't I tell you?", "I already told you!"]
-    words: [kan]
-  - id: e12
+  - id: e04
     type: translate
     direction: to_target
     source_meaning:
       ar_eg: إزاي غالي أوي كده؟
       ar: كيف يكون غاليًا إلى هذا الحد؟
       en: How come it's so expensive?
-    answers:
-      - Kok mahal sekali?
-      - Kok mahal banget?
-      - Kok mahal sekali
-      - Kok mahal banget
-      - Kok mahal banget sih?
-      - Kok mahal sekali sih?
-      - Kok mahal sih?
-      - Kenapa mahal sekali?
-      - Kenapa mahal banget?
+    answers: ['Kok mahal sekali?', 'Kok mahal banget?', Kok mahal sekali, Kok mahal banget, 'Kok mahal banget sih?', 'Kok mahal sekali sih?', 'Kok mahal sih?', 'Kenapa mahal sekali?', 'Kenapa mahal banget?']
     words: [kok]
-  - id: e13
+  - id: e05
     type: dictation
     text: Aduh, kameranya ketinggalan!
     meaning:
@@ -250,7 +144,7 @@ exercises:
       ar: يا للمصيبة، نسيتُ الكاميرا!
       en: Oh no, the camera got left behind!
     words: [aduh, ketinggalan]
-  - id: e14
+  - id: e06
     type: speaking
     text: Wah, lumba-lumbanya banyak sekali!
     meaning:
@@ -297,11 +191,6 @@ new_words:
     ar_eg: ياه! / واو!
     ar: يا للروعة!
     en: wow!
-  - word: aduh
-    pos: interjection
-    ar_eg: آه! / يا خبر!
-    ar: آه! / يا للمصيبة!
-    en: ouch! / oh no!
   - word: lho
     pos: interjection
     ar_eg: إيه ده! (مفاجأة)
@@ -337,11 +226,6 @@ new_words:
     ar_eg: اتنسى، فضل ورا
     ar: نُسي وتُرك خلفك
     en: left behind
-  - word: lumba-lumba
-    pos: noun
-    ar_eg: دلفين
-    ar: دلفين
-    en: dolphin
 review:
   status: draft
   verified: false

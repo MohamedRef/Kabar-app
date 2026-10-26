@@ -1,245 +1,183 @@
 schema: kabar.lesson/v1
 id: bipa1.u06.l05
 language: id
-title: Ulangan Unit 6
+title: Selalu, sering, jarang
 can_do:
-  ar_eg: توصف روتينك اليومي.
-  ar: أن تصف روتينك اليومي.
-  en: Describe your routine.
+  ar_eg: تقول بتعمل الحاجة قد إيه.
+  ar: أن تقول كم مرة تفعل الأشياء.
+  en: Say how often you do things.
 slides:
-  - title: Aktivitas harianku — ringkasan
+  - title: Selalu → tidak pernah
     body:
       ar_eg: |
-        اللي أخدناه في الوحدة دي:
-        - meN-: membaca، menulis، menonton، menyapu، mengirim (p / t / k / s بيقعوا).
-        - sudah، belum، sedang، akan، masih، baru قبل الفعل.
-        - selalu، biasanya، sering، kadang-kadang، jarang، tidak pernah.
-        - kemarin، tadi، sekarang، nanti · sebelum، sesudah، lalu.
-        - di sini، di situ، di sana.
+        من الأكتر للأقل:
+        selalu (دايمًا) — biasanya (عادةً) — sering (كتير) — kadang-kadang (ساعات) — jarang (نادرًا) — tidak pernah (عمري ما).
+        مكانها قبل الفعل: Saya sering minum kopi = بشرب قهوة كتير.
+        وbiasanya ممكن تيجي في أول الجملة: Biasanya saya bangun jam lima.
       ar: |
-        ما تعلمناه في هذه الوحدة:
-        - meN-: membaca، menulis، menonton، menyapu، mengirim (مع سقوط p / t / k / s).
-        - sudah، belum، sedang، akan، masih، baru قبل الفعل.
-        - selalu، biasanya، sering، kadang-kadang، jarang، tidak pernah.
-        - kemarin، tadi، sekarang، nanti · sebelum، sesudah، lalu.
-        - di sini، di situ، di sana.
+        من الأكثر إلى الأقل:
+        selalu (دائمًا) — biasanya (عادةً) — sering (كثيرًا) — kadang-kadang (أحيانًا) — jarang (نادرًا) — tidak pernah (أبدًا).
+        وموضعها قبل الفعل: Saya sering minum kopi = أشرب القهوة كثيرًا.
+        ويجوز تصدير biasanya: Biasanya saya bangun jam lima.
       en: |
-        What this unit covered:
-        - meN-: membaca, menulis, menonton, menyapu, mengirim (p / t / k / s drop).
-        - sudah, belum, sedang, akan, masih, baru before the verb.
-        - selalu, biasanya, sering, kadang-kadang, jarang, tidak pernah.
-        - kemarin, tadi, sekarang, nanti · sebelum, sesudah, lalu.
-        - di sini, di situ, di sana.
-    grammar: id.prefix.men.basic
+        From most to least:
+        selalu (always) — biasanya (usually) — sering (often) — kadang-kadang (sometimes) — jarang (rarely) — tidak pernah (never).
+        They go before the verb: Saya sering minum kopi = I often drink coffee.
+        biasanya can also open the sentence: Biasanya saya bangun jam lima.
+    grammar: id.frequency.adverbs
     examples:
-      - text: Saya sedang membaca buku.
-        ar_eg: أنا بقرا كتاب دلوقتي.
-        ar: أنا أقرأ كتابًا الآن.
-        en: I'm reading a book.
+      - text: Saya selalu sarapan jam enam.
+        ar_eg: دايمًا بفطر الساعة ستة.
+        ar: أتناول الفطور دائمًا في السادسة.
+        en: I always have breakfast at six.
+      - text: Dia jarang makan pedas.
+        ar_eg: نادرًا لما بياكل حراق.
+        ar: نادرًا ما يأكل الطعام الحار.
+        en: He/She rarely eats spicy food.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: menulis
-        ar_eg: يكتب
-        ar: يكتب
-        en: write
-      - text: memasak
-        ar_eg: يطبخ
-        ar: يطبخ
-        en: cook
-      - text: mencuci
-        ar_eg: يغسل
-        ar: يغسل
-        en: wash
-      - text: mengirim
-        ar_eg: يبعت
-        ar: يرسل
-        en: send
-      - text: menyapu
-        ar_eg: يكنس
-        ar: يكنس
-        en: sweep
-    words: [menulis, memasak, mencuci, mengirim, menyapu]
+      - text: selalu
+        ar_eg: دايمًا
+        ar: دائمًا
+        en: always
+      - text: sering
+        ar_eg: كتير
+        ar: كثيرًا
+        en: often
+      - text: kadang-kadang
+        ar_eg: ساعات
+        ar: أحيانًا
+        en: sometimes
+      - text: jarang
+        ar_eg: نادرًا
+        ar: نادرًا
+        en: rarely
+      - text: tidak pernah
+        ar_eg: عمري ما / أبدًا
+        ar: أبدًا
+        en: never
+    words: [selalu, sering, kadang-kadang, jarang, tidak pernah]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: إيه جذر menonton؟
-      ar: ما جذر menonton؟
-      en: What's the root of menonton?
-    options: ["onton", "nonton", "tonton"]
-    answer: 2
+      ar_eg: أنهي جملة ترتيبها صح؟ (بشرب قهوة كتير)
+      ar: أيّ جملة ترتيبها صحيح؟ (أشرب القهوة كثيرًا)
+      en: Which sentence has the right word order? (I often drink coffee)
+    options: [Saya sering minum kopi., Sering minum saya kopi., Saya minum kopi sering.]
+    answer: 0
     explain:
-      ar_eg: men- + حرف متحرك؟ جرّب t، الجذر tonton. (nonton هي الصيغة العامية)
-      ar: men- + صائت يدل على t، فالجذر tonton. (وnonton صيغة عامية)
-      en: men- + vowel → try t; the root is tonton. (nonton is the casual form.)
-    words: [menonton]
+      ar_eg: كلمة التكرار بتيجي قبل الفعل على طول.
+      ar: ظرف التكرار يسبق الفعل.
+      en: The frequency word goes right before the verb.
+    words: [sering, kopi]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: meN- + baca تبقى إيه؟
-      ar: ما ناتج meN- + baca؟
-      en: What does meN- + baca become?
-    options: ["membaca", "mebaca", "menbaca"]
-    answer: 0
-    explain:
-      ar_eg: قبل b بتبقى mem-، والـ b مابتقعش.
-      ar: قبل b تصير mem- ولا تسقط b.
-      en: Before b it's mem-, and b stays.
-    words: [membaca]
-  - id: e04
-    type: multiple_choice
-    question: Sudah menikah?
-    question_meaning:
-      ar_eg: إنت مش متجوز. الرد الطبيعي؟
-      ar: لست متزوجًا. ما الجواب الطبيعي؟
-      en: You're not married. What's the natural reply?
-    options: ["Tidak.", "Belum.", "Bukan."]
-    answer: 1
-    explain:
-      ar_eg: belum = لسه، وده الرد المؤدب المعتاد.
-      ar: belum = ليس بعد، وهو الجواب المهذب المعتاد.
-      en: belum (not yet) is the usual polite reply.
-    words: [belum]
-  - id: e05
     type: listen
-    text: Dia sedang memasak.
-    options: ["Dia sedang memasak.", "Dia sudah memasak.", "Dia akan memasak."]
-    answer: 0
-    words: [sedang, memasak]
-  - id: e06
-    type: fill_blank
-    sentence: Saya ___ minum kopi setiap pagi.
-    meaning:
-      ar_eg: أنا دايمًا بشرب قهوة كل صبح.
-      ar: أشرب القهوة دائمًا كل صباح.
-      en: I always drink coffee every morning.
-    options: ["selalu", "jarang", "tidak pernah"]
-    answers: [selalu]
-    words: [selalu, kopi]
-  - id: e07
-    type: fill_blank
-    sentence: Masjidnya di ___.
-    meaning:
-      ar_eg: الجامع هناك (بعيد عننا إحنا الاتنين).
-      ar: المسجد هناك (بعيدًا عنا).
-      en: The mosque is over there (far from both of us).
-    options: ["sini", "sana", "situ"]
-    answers: [sana]
-    words: [sana]
-  - id: e08
-    type: fill_blank
-    sentence: ___ pagi saya ke pasar.
-    meaning:
-      ar_eg: النهارده الصبح رحت السوق.
-      ar: ذهبت هذا الصباح إلى السوق.
-      en: This morning I went to the market.
-    options: ["Nanti", "Tadi", "Besok"]
-    answers: [Tadi]
-    explain:
-      ar_eg: tadi = اللي فات النهارده.
-      ar: tadi لما مضى من اليوم.
-      en: tadi = earlier today.
-    words: [tadi, pasar]
-  - id: e09
+    text: Saya selalu sarapan jam enam.
+    options: [Saya jarang sarapan jam enam., Saya sering sarapan jam enam., Saya selalu sarapan jam enam.]
+    answer: 2
+    words: [selalu, sarapan]
+  - id: e04
     type: build_sentence
     source:
-      ar_eg: ماما بتقلي سمك دلوقتي.
-      ar: الأم تقلي السمك الآن.
-      en: Mother is frying fish right now.
-    answer: Ibu sedang menggoreng ikan.
-    distractors: [goreng, sudah]
-    words: [sedang, menggoreng, ikan]
-  - id: e10
+      ar_eg: عادةً بصحى الساعة خمسة.
+      ar: عادةً أستيقظ في الساعة الخامسة.
+      en: I usually wake up at five.
+    answer: Biasanya saya bangun jam lima.
+    alternatives: [Saya biasanya bangun jam lima.]
+    distractors: [selalu, tidur]
+    words: [biasanya, bangun]
+  - id: e05
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: رينا لسه نايمة.
-      ar: ما زالت رينا نائمة.
-      en: Rina is still asleep.
-    answers:
-      - Rina masih tidur.
-      - Rina masih tidur
-    words: [masih, tidur]
-  - id: e11
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا نادرًا لما بطبخ.
-      ar: نادرًا ما أطبخ.
-      en: I rarely cook.
-    answers:
-      - Saya jarang memasak.
-      - Saya jarang memasak
-      - Aku jarang memasak.
-      - Saya jarang masak.
-      - Aku jarang masak.
-    words: [jarang, memasak]
-  - id: e12
-    type: translate
-    direction: from_target
-    source_text: Setelah salat, saya sarapan.
-    answers_meaning:
-      ar_eg: ["بعد الصلاة بفطر.", "بعد ما بصلي بفطر", "بعد الصلاة فطرت"]
-      ar: ["بعد الصلاة أتناول الفطور.", "أفطر بعد الصلاة", "بعد الصلاة تناولت الفطور"]
-      en: ["After praying, I have breakfast.", "After prayer I eat breakfast", "After praying, I had breakfast"]
-    words: [setelah, salat, sarapan]
-  - id: e13
-    type: dictation
-    text: Saya sedang membaca buku.
+      ar_eg: أنا نادرًا لما بتفرج على التلفزيون.
+      ar: نادرًا ما أشاهد التلفاز.
+      en: I rarely watch TV.
+    answers: [Saya jarang menonton TV., Saya jarang menonton TV, Aku jarang menonton TV., Saya jarang menonton televisi., Saya jarang nonton TV., Aku jarang nonton TV.]
+    words: [jarang, menonton]
+  - id: e06
+    type: fill_blank
+    sentence: Saya ___ sarapan. Setiap hari!
     meaning:
-      ar_eg: أنا بقرا كتاب دلوقتي.
-      ar: أنا أقرأ كتابًا الآن.
-      en: I'm reading a book.
-    words: [sedang, membaca, buku]
-  - id: e14
+      ar_eg: أنا دايمًا بفطر. كل يوم!
+      ar: أتناول الفطور دائمًا. كل يوم!
+      en: I always have breakfast. Every day!
+    options: [jarang, selalu, tidak pernah]
+    answers: [selalu]
+    words: [selalu, setiap, sarapan]
+  - id: e07
     type: speaking
-    text: Kami akan ke Blok M nanti malam.
+    text: Saya kadang-kadang minum kopi.
     meaning:
-      ar_eg: هنروح بلوك إم بالليل.
-      ar: سنذهب إلى بلوك إم الليلة.
-      en: We'll go to Blok M tonight.
-    words: [akan, nanti]
+      ar_eg: ساعات بشرب قهوة.
+      ar: أشرب القهوة أحيانًا.
+      en: I sometimes drink coffee.
+    words: [kadang-kadang]
 dialogue:
-  title: Sudah makan, Mohamed?
   lines:
-    - speaker: Bu Sari
-      text: Pagi, Mohamed! Sudah makan?
-      ar_eg: صباح الخير يا محمد! فطرت؟
-      ar: صباح الخير يا محمد! هل أكلت؟
-      en: Morning, Mohamed! Have you eaten?
+    - speaker: Dimas
+      text: Mohamed, kamu sering minum kopi?
+      ar_eg: محمد، بتشرب قهوة كتير؟
+      ar: محمد، هل تشرب القهوة كثيرًا؟
+      en: Mohamed, do you often drink coffee?
     - speaker: Mohamed
-      text: Belum, Bu. Saya baru bangun.
-      ar_eg: لسه يا مدام. لسه صاحي حالًا.
-      ar: ليس بعد يا سيدتي. استيقظت للتو.
-      en: Not yet, ma'am. I've just woken up.
-    - speaker: Bu Sari
-      text: Ibu sudah memasak nasi uduk. Silakan!
-      ar_eg: أنا طبخت ناسي أودوك خلاص. اتفضل!
-      ar: لقد طبخت ناسي أودوك. تفضل!
-      en: I've already cooked nasi uduk. Help yourself!
+      text: Ya, setiap hari! Kamu?
+      ar_eg: أيوه، كل يوم! وإنت؟
+      ar: نعم، كل يوم! وأنت؟
+      en: Yes, every day! You?
+    - speaker: Dimas
+      text: Saya jarang minum kopi. Biasanya saya minum teh.
+      ar_eg: أنا نادرًا ما بشرب قهوة. عادةً بشرب شاي.
+      ar: نادرًا ما أشرب القهوة. عادةً أشرب الشاي.
+      en: I rarely drink coffee. I usually drink tea.
     - speaker: Mohamed
-      text: Terima kasih, Bu! Biasanya saya sarapan di Blok M.
-      ar_eg: شكرًا يا مدام! عادةً بفطر في بلوك إم.
-      ar: شكرًا يا سيدتي! عادةً أفطر في بلوك إم.
-      en: Thank you! I usually have breakfast at Blok M.
-    - speaker: Bu Sari
-      text: Hari ini makan di sini, ya.
-      ar_eg: النهارده كُل هنا بقى.
-      ar: كُل هنا اليوم إذن.
-      en: Today, eat here, OK?
-    - speaker: Mohamed
-      text: Baik, Bu. Sesudah sarapan, saya akan menyapu lantai.
-      ar_eg: حاضر يا مدام. بعد الفطار هكنس الأرضية.
-      ar: حسنًا يا سيدتي. بعد الفطور سأكنس الأرض.
-      en: All right. After breakfast, I'll sweep the floor.
-souvenir:
-  id: bipa1.u06.souvenir
-  title: Warung makan Blok M
-  note:
-    ar_eg: كتير من أهل جاكرتا بيصحوا الساعة ٥ الصبح عشان يسبقوا الزحمة، ويفطروا على الماشي من عربيات وأكشاك بلوك إم. ولو حد سألك «Sudah makan?» ماتستغربش، دي تحية زي «عامل إيه»، مش عزومة. ردّ بابتسامة، قول «Sudah!» أو «Belum!».
-    ar: يستيقظ كثير من أهل جاكرتا في الخامسة صباحًا ليسبقوا الزحام، ويتناولون فطورهم من أكشاك الطعام في بلوك إم. وإذا سألك أحد «Sudah makan?» فهي تحية مثل «كيف حالك»، لا دعوة إلى الطعام. أجب بابتسامة بـ «Sudah!» أو «Belum!».
-    en: Many Jakartans start the day at 5 a.m. to beat the traffic, grabbing breakfast from Blok M's food stalls on the way. If someone asks "Sudah makan?", it's a greeting like "how are you", not an invitation. Just smile and answer "Sudah!" or "Belum!".
+      text: Saya tidak pernah minum teh!
+      ar_eg: أنا عمري ما بشرب شاي!
+      ar: لا أشرب الشاي أبدًا!
+      en: I never drink tea!
+new_words:
+  - word: selalu
+    pos: adverb
+    ar_eg: دايمًا
+    ar: دائمًا
+    en: always
+  - word: biasanya
+    pos: adverb
+    ar_eg: عادةً
+    ar: عادةً
+    en: usually
+  - word: sering
+    pos: adverb
+    ar_eg: كتير
+    ar: كثيرًا
+    en: often
+  - word: kadang-kadang
+    pos: adverb
+    ar_eg: ساعات
+    ar: أحيانًا
+    en: sometimes
+  - word: jarang
+    pos: adverb
+    ar_eg: نادرًا
+    ar: نادرًا
+    en: rarely
+  - word: tidak pernah
+    pos: adverb
+    ar_eg: عمري ما / أبدًا
+    ar: أبدًا
+    en: never
+  - word: setiap
+    pos: adverb
+    ar_eg: كل
+    ar: كل
+    en: every
+  - word: sarapan
+    pos: verb
+    ar_eg: يفطر (الصبح) / فطار
+    ar: يتناول الفطور / الفطور
+    en: to have breakfast; breakfast
 review:
   status: draft
   verified: false

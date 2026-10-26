@@ -126,63 +126,31 @@ exercises:
         en: restaurant
     words: [kamar mandi, kamar tidur, ruang tamu, rumah sakit, rumah makan]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إنت عيان قوي ومحتاج دكتور. تروح فين؟
-      ar: أنت مريض جدًّا وتحتاج إلى طبيب. إلى أين تذهب؟
-      en: You're very ill and need a doctor. Where do you go?
-    options: ["ruang tamu", "rumah sakit", "rumah makan"]
-    answer: 1
-    words: [rumah sakit]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إزاي تقول «حمّامي»؟
-      ar: كيف تقول «حمّامي»؟
-      en: How do you say "my bathroom"?
-    options: ["saya kamar mandi", "kamar mandi saya", "kamar saya mandi"]
-    answer: 1
-    explain:
-      ar_eg: ماتقطعش المركّب؛ saya بتيجي بعد kamar mandi كلها.
-      ar: لا يُفصل المركّب، ويأتي saya بعده كاملًا.
-      en: Don't split the compound; saya comes after the whole of kamar mandi.
-    words: [kamar mandi]
-  - id: e04
     type: listen
     text: Kamar mandinya di mana?
-    options: ["Ruang tamunya di mana?", "Kamar tidurnya di mana?", "Kamar mandinya di mana?"]
+    options: ['Ruang tamunya di mana?', 'Kamar tidurnya di mana?', 'Kamar mandinya di mana?']
     answer: 2
     words: [kamar mandi]
-  - id: e05
+  - id: e03
     type: multiple_choice
     question_meaning:
       ar_eg: أنهي مركّب معناه حرفيًا «عين مية» زي العربي؟
       ar: أيّ مركّب يعني حرفيًا «عين ماء» كما في العربية؟
       en: Which compound literally means «عين ماء» (eye of water), as in Arabic?
-    options: ["kamar mandi", "kereta api", "mata air"]
+    options: [kamar mandi, kereta api, mata air]
     answer: 2
     words: [mata air]
-  - id: e06
+  - id: e04
     type: fill_blank
     sentence: Kami makan malam di meja ___.
     meaning:
       ar_eg: إحنا بنتعشّى على السفرة.
       ar: نتناول العشاء على مائدة الطعام.
       en: We have dinner at the dining table.
-    options: ["tidur", "makan", "mandi"]
+    options: [tidur, makan, mandi]
     answers: [makan]
     words: [meja makan]
-  - id: e07
-    type: fill_blank
-    sentence: Kamar ___ saya kecil, tetapi bersih.
-    meaning:
-      ar_eg: أوضة نومي صغيرة بس نضيفة.
-      ar: غرفة نومي صغيرة لكنها نظيفة.
-      en: My bedroom is small but clean.
-    options: ["tamu", "mandi", "tidur"]
-    answers: [tidur]
-    words: [kamar tidur]
-  - id: e08
+  - id: e05
     type: build_sentence
     source:
       ar_eg: المستشفى دي قريبة من السكن بتاعي.
@@ -191,42 +159,7 @@ exercises:
     answer: Rumah sakit itu dekat dengan kos saya.
     distractors: [makan, ini]
     words: [rumah sakit, kos]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: أوضة نومي جنب الحمّام.
-      ar: غرفة نومي بجانب الحمّام.
-      en: My bedroom is next to the bathroom.
-    answer: Kamar tidur saya di sebelah kamar mandi.
-    distractors: [tamu, makan]
-    words: [kamar tidur, kamar mandi]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الحمّام فين؟
-      ar: أين الحمّام؟
-      en: Where is the bathroom?
-    answers:
-      - Kamar mandinya di mana?
-      - Kamar mandinya di mana
-      - Kamar mandi di mana?
-      - Kamar mandi di mana
-      - Di mana kamar mandinya?
-      - Di mana kamar mandi?
-      - Di mana kamar mandinya
-      - Di mana kamar mandi
-    words: [kamar mandi]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: Ruang tamu Bu Sari besar dan bersih.
-    answers_meaning:
-      ar_eg: ["صالون مدام ساري كبير ونضيف.", "أوضة الضيوف بتاعة مدام ساري كبيرة ونضيفة"]
-      ar: ["غرفة ضيوف السيدة ساري كبيرة ونظيفة.", "صالة السيدة ساري واسعة ونظيفة"]
-      en: ["Bu Sari's living room is big and clean.", "Mrs Sari's living room is big and clean"]
-    words: [ruang tamu]
-  - id: e12
+  - id: e06
     type: dictation
     text: Rumah makan itu di depan rumah sakit.
     meaning:
@@ -234,7 +167,7 @@ exercises:
       ar: ذلك المطعم أمام المستشفى.
       en: That restaurant is in front of the hospital.
     words: [rumah makan, rumah sakit]
-  - id: e13
+  - id: e07
     type: speaking
     text: Kamar mandi saya di dalam kamar tidur.
     meaning:
@@ -276,11 +209,6 @@ dialogue:
       ar: رائع جدًّا. شكرًا يا سيدتي!
       en: Very nice. Thank you, ma'am!
 new_words:
-  - word: kamar mandi
-    pos: noun
-    ar_eg: حمّام
-    ar: حمّام
-    en: bathroom
   - word: kamar tidur
     pos: noun
     ar_eg: أوضة نوم
@@ -316,11 +244,6 @@ new_words:
     ar_eg: ينبوع، عين مية
     ar: عين ماء، ينبوع
     en: spring (of water)
-  - word: dapur
-    pos: noun
-    ar_eg: مطبخ
-    ar: مطبخ
-    en: kitchen
   - word: kos
     pos: noun
     ar_eg: أوضة مأجّرة / سكن

@@ -1,0 +1,163 @@
+schema: kabar.lesson/v1
+id: bipa1.u04.l10
+language: id
+title: Hari Senin, tanggal satu
+can_do:
+  ar_eg: تقول تاريخ كامل بالشهور من يوليو لديسمبر.
+  ar: أن تذكر تاريخًا كاملًا بالأشهر من يوليو إلى ديسمبر.
+  en: Say full dates with the months from July to December.
+slides:
+  - title: Juli sampai Desember
+    body:
+      ar_eg: |
+        باقي الشهور قريبة من الإنجليزي: Juli، Agustus، September، Oktober، November، Desember.
+        والتاريخ الكامل بيمشي كده: hari + اليوم، tanggal + الرقم + الشهر.
+        «tujuh belas Agustus» تاريخ مهم: عيد استقلال إندونيسيا.
+      ar: |
+        بقية الأشهر قريبة من الإنجليزية: Juli، Agustus، September، Oktober، November، Desember.
+        والتاريخ الكامل هكذا: hari + اليوم، tanggal + العدد + الشهر.
+        و«tujuh belas Agustus» تاريخ مهم: عيد استقلال إندونيسيا.
+      en: |
+        The other months are close to English: Juli, Agustus, September, Oktober, November, Desember.
+        A full date goes: hari + day, tanggal + number + month.
+        "tujuh belas Agustus" is a big date: Indonesia's Independence Day.
+    grammar: id.time.calendar
+    examples:
+      - text: Hari Senin, tanggal satu Juli.
+        ar_eg: يوم الاتنين، ١ يوليو.
+        ar: يوم الاثنين، الأول من يوليو.
+        en: Monday, 1 July.
+      - text: Tanggal tujuh belas Agustus.
+        ar_eg: ١٧ أغسطس.
+        ar: السابع عشر من أغسطس.
+        en: 17 August.
+exercises:
+  - id: e01
+    type: listen
+    text: tanggal tujuh belas Agustus
+    options: [tanggal tujuh belas Agustus, tanggal tujuh Agustus, tanggal tujuh belas Oktober]
+    answer: 0
+    words: [tanggal, Agustus]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: Juli
+        ar_eg: يوليو
+        ar: يوليو / تموز
+        en: July
+      - text: Agustus
+        ar_eg: أغسطس
+        ar: أغسطس / آب
+        en: August
+      - text: Oktober
+        ar_eg: أكتوبر
+        ar: أكتوبر / تشرين الأول
+        en: October
+      - text: Desember
+        ar_eg: ديسمبر
+        ar: ديسمبر / كانون الأول
+        en: December
+    words: [Juli, Agustus, Oktober, Desember]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي شهر بعد Oktober؟
+      ar: أي شهر يلي Oktober؟
+      en: Which month comes after Oktober?
+    options: [September, Desember, November]
+    answer: 2
+    words: [November]
+  - id: e04
+    type: fill_blank
+    sentence: Hari ___, tanggal satu Juli.
+    meaning:
+      ar_eg: يوم الاتنين، ١ يوليو.
+      ar: يوم الاثنين، الأول من يوليو.
+      en: Monday, 1 July.
+    options: [Senin, Juli, bulan]
+    answers: [Senin]
+    words: [Juli]
+  - id: e05
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: عيد ميلادي ٥ سبتمبر.
+      ar: عيد ميلادي في الخامس من سبتمبر.
+      en: My birthday is on 5 September.
+    answers: [Ulang tahun saya tanggal lima September., Ulang tahun saya tanggal lima September, Ulang tahunku tanggal lima September.]
+    words: [September]
+  - id: e06
+    type: speaking
+    text: Hari ini hari Jumat, tanggal dua puluh Desember.
+    meaning:
+      ar_eg: النهارده الجمعة، ٢٠ ديسمبر.
+      ar: اليوم الجمعة، العشرون من ديسمبر.
+      en: Today is Friday, 20 December.
+    words: [Desember]
+dialogue:
+  title: Kapan ulang tahunmu?
+  lines:
+    - speaker: Rina
+      text: Mohamed, kapan ulang tahunmu?
+      ar_eg: يا محمد، عيد ميلادك إمتى؟
+      ar: يا محمد، متى عيد ميلادك؟
+      en: Mohamed, when is your birthday?
+    - speaker: Mohamed
+      text: Tanggal dua belas Maret. Dan kamu?
+      ar_eg: يوم ١٢ مارس. وإنتي؟
+      ar: في ١٢ مارس. وأنتِ؟
+      en: On 12 March. And you?
+    - speaker: Rina
+      text: Tanggal dua puluh lima Oktober. Hari Sabtu ini!
+      ar_eg: يوم ٢٥ أكتوبر. السبت ده!
+      ar: في ٢٥ أكتوبر، يوم السبت هذا!
+      en: On 25 October. This Saturday!
+    - speaker: Mohamed
+      text: Sabtu ini? Selamat ulang tahun, Rina!
+      ar_eg: السبت ده؟ كل سنة وإنتي طيبة يا رينا!
+      ar: السبت هذا؟ عيد ميلاد سعيد يا رينا!
+      en: This Saturday? Happy birthday, Rina!
+    - speaker: Rina
+      text: Terima kasih! Hari Jumat kita ke Tanah Abang, ya?
+      ar_eg: شكرًا! يوم الجمعة نروح تانا أبانج سوا، ماشي؟
+      ar: شكرًا! يوم الجمعة نذهب إلى تانا أبانغ، اتفقنا؟
+      en: Thanks! On Friday let's go to Tanah Abang, OK?
+    - speaker: Mohamed
+      text: Ya! Hari Jumat, jam sepuluh pagi.
+      ar_eg: ماشي! يوم الجمعة، الساعة عشرة الصبح.
+      ar: حسنًا! يوم الجمعة في العاشرة صباحًا.
+      en: Yes! Friday, at ten a.m.
+new_words:
+  - word: Juli
+    pos: noun
+    ar_eg: يوليو
+    ar: يوليو
+    en: July
+  - word: Agustus
+    pos: noun
+    ar_eg: أغسطس
+    ar: أغسطس
+    en: August
+  - word: September
+    pos: noun
+    ar_eg: سبتمبر
+    ar: سبتمبر
+    en: September
+  - word: Oktober
+    pos: noun
+    ar_eg: أكتوبر
+    ar: أكتوبر
+    en: October
+  - word: November
+    pos: noun
+    ar_eg: نوفمبر
+    ar: نوفمبر
+    en: November
+  - word: Desember
+    pos: noun
+    ar_eg: ديسمبر
+    ar: ديسمبر
+    en: December
+review:
+  status: draft
+  verified: false
