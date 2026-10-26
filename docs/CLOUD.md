@@ -23,6 +23,9 @@ Cost: **$0**. Nothing here needs a card on file.
 | Merge rules | `crates/core/src/sync.rs` | shared with the app, so both converge the same way |
 | Wire types | `crates/protocol/src/{sync,cloud,ai}.rs` | versioned (`PROTOCOL_VERSION`, `AI_WIRE_VERSION`) |
 | D1 `kabar` | `crates/server/migrations/` | `ai_cache`, `quota_usage` |
+| Sync client (device side) | `crates/core/src/sync_client.rs` | pure state machine: hello, catch-up, one push in flight, acks |
+| App engine | `crates/app/src/cloud/` | Google sign-in (PKCE + loopback), session in Keychain/Keystore, WebSocket, reconnect backoff |
+| Local merge state | `crates/app/src/store.rs` | `sync_rows` + `outbox`; every synced write goes through `write_synced` |
 
 Devices live in the account's Durable Object rather than D1 (a small change to PLAN.md §5/§6): a remote sign-out and closing that device's socket then happen in one place, with no second database to keep consistent.
 
@@ -100,10 +103,17 @@ curl https://kabar-cloud.<your-subdomain>.workers.dev/v1/health
 ```
 Tell me the URL; the app will point at it.
 
+### 3.6 Connect the app
+1. `cp .env.example .env` and fill in `KABAR_CLOUD_URL` (the URL above) and the **Desktop** client's id and secret (§3.2). `.env` is git-ignored; `just` loads it and the app reads it at build time.
+2. `just run-mac` → **Settings → Account & devices → Sign in with Google**. The browser opens, you pick your Gmail, and the page says to go back to Kabar.
+3. `just apk` and `just install <serial>` for the S24 Ultra and the Tab S11, then sign in the same way on each.
+4. Save a word under **Try sync** on one device: it shows up on the others within seconds.
+
 ## 4. Local development
 
 ```bash
-just cloud-e2e   # local workerd + fake Google: phone → tablet sync, devices, sign-out, privacy rule
+just cloud-e2e   # local workerd + fake Google: phone → tablet sync, devices, sign-out, privacy rule,
+                 # then the app's own sync engine on two devices against the same server
 just cloud-dev   # http://127.0.0.1:8787 (Workers AI calls need `wrangler login`)
 just cloud-logs  # live logs from the deployed Worker
 ```
@@ -129,6 +139,10 @@ Counters are in D1 `quota_usage`; a call that would cross a limit is refused bef
 - A signed-out device's access token is refused by the AI/TTS proxy at once (checked against its Durable Object), not 15 minutes later.
 
 ## 7. Known gaps (phased, not dropped)
+
+- **Android sign-in** uses the same browser + loopback flow as the Mac for now. The one-tap Credential Manager sheet needs the Kotlin bridge in `android/`; the server already accepts its tokens (Web client id).
+- **Push tokens**: the app doesn't send its FCM token yet; that arrives with the Android notification code (M7).
+- On Linux (development and CI only) the session is kept in memory, so you sign in on every launch. The Mac uses the Keychain and Android the Keystore.
 
 - Vision tasks (`structure_screenshot`, `read_handwriting`, …) answer `unavailable` until the blob store lands.
 - Op-log compaction (monthly snapshot) arrives once the log is big enough to matter.

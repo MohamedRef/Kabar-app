@@ -1,33 +1,30 @@
-//! Review cards (last-writer-wins by HLC) and the review log (append-only).
+//! Review cards (last-writer-wins by HLC) and the review log (append-only,
+//! undo is a tombstone). Both sync.
 //! Card state is never stored: `kabar_core::review::Deck` replays the log.
 
+use kabar_core::sync::{Merge, merge};
 use kabar_protocol::Hlc;
 use kabar_protocol::srs::{Card, Rating, ReviewEvent, ReviewMode};
+use kabar_protocol::sync::{Op, OpKind, SyncKind};
 use rusqlite::params;
 
-use super::{Result, Store, now_ms};
+use super::{Result, Store, materialize, now_ms, row_meta, store_row, write_synced};
 
 impl Store {
-    /// Inserts or replaces a card with a fresh HLC.
+    /// Inserts or replaces a card with a fresh HLC, synced.
     pub fn upsert_card(&mut self, card: &Card) -> Result<Hlc> {
-        let hlc = self.clock.tick(now_ms());
-        self.conn.execute(
-            "INSERT INTO cards (id, payload, device_id, hlc_wall, hlc_counter, deleted)
-             VALUES (?1, ?2, ?3, ?4, ?5, 0)
-             ON CONFLICT(id) DO UPDATE SET
-                payload = excluded.payload, device_id = excluded.device_id,
-                hlc_wall = excluded.hlc_wall, hlc_counter = excluded.hlc_counter, deleted = 0",
-            params![card.id, serde_json::to_string(card)?, self.device.0, hlc.wall_ms as i64, hlc.counter],
-        )?;
-        Ok(hlc)
+        Ok(self.write_synced("cards", &card.id, OpKind::Upsert, Some(serde_json::to_value(card)?))?.hlc)
     }
 
     /// Upserts several cards in one transaction, keeping their order.
     pub fn upsert_cards(&mut self, cards: &[Card]) -> Result<()> {
-        self.conn.execute_batch("BEGIN")?;
-        let result = cards.iter().try_for_each(|c| self.upsert_card(c).map(drop));
-        self.conn.execute_batch(if result.is_ok() { "COMMIT" } else { "ROLLBACK" })?;
-        result
+        let tx = self.conn.transaction()?;
+        for card in cards {
+            let payload = Some(serde_json::to_value(card)?);
+            write_synced(&tx, &mut self.clock, "cards", &card.id, OpKind::Upsert, payload)?;
+        }
+        tx.commit()?;
+        Ok(())
     }
 
     /// Live cards in the order they were added. A payload this build can't
@@ -72,23 +69,29 @@ impl Store {
     }
 
     /// Appends an event to the log. Re-appending the same id is a no-op, so
-    /// replays and sync can deliver an event more than once.
+    /// replays and sync can deliver an event more than once. This device's
+    /// events are queued for push; another device's are only stored (the hub
+    /// accepts each device's own ops only).
     pub fn append_review(&mut self, event: &ReviewEvent) -> Result<()> {
-        if event.hlc.device != self.device {
-            self.clock.observe(&event.hlc, now_ms());
+        let payload = serde_json::to_value(event)?;
+        if event.hlc.device == self.device {
+            return self.append_event("review_log", &event.id, event.hlc.clone(), payload);
         }
-        self.conn.execute(
-            "INSERT OR IGNORE INTO review_log (id, card_id, payload, device_id, hlc_wall, hlc_counter)
-             VALUES (?1, ?2, ?3, ?4, ?5, ?6)",
-            params![
-                event.id,
-                event.card_id,
-                serde_json::to_string(event)?,
-                event.hlc.device.0,
-                event.hlc.wall_ms as i64,
-                event.hlc.counter
-            ],
-        )?;
+        self.clock.observe(&event.hlc, now_ms());
+        let op = Op {
+            id: uuid::Uuid::now_v7().to_string(),
+            table: "review_log".into(),
+            row_id: event.id.clone(),
+            kind: OpKind::Append,
+            hlc: event.hlc.clone(),
+            payload: Some(payload),
+        };
+        let tx = self.conn.transaction()?;
+        if merge(SyncKind::Immutable, &op, row_meta(&tx, "review_log", &event.id)?.as_ref()) == Merge::Apply {
+            store_row(&tx, &op)?;
+            materialize(&tx, &op)?;
+        }
+        tx.commit()?;
         Ok(())
     }
 
@@ -116,16 +119,19 @@ impl Store {
         rows.iter().map(|p| Ok(serde_json::from_str(p)?)).collect()
     }
 
-    /// In-session undo of an answer just given on this device. Until sync
-    /// exists the event has never left the device, so deleting the local row
-    /// is honest. Once M2 sync ships an event, undo must append a tombstone
-    /// event instead (the log stays append-only across devices).
+    /// In-session undo of an answer just given on this device: a tombstone,
+    /// so the other devices drop it too. Another device's event, or one
+    /// already undone, is left alone.
     pub fn undo_review(&mut self, event_id: &str) -> Result<bool> {
-        let n = self.conn.execute(
-            "DELETE FROM review_log WHERE id = ?1 AND device_id = ?2",
+        let live: bool = self.conn.query_row(
+            "SELECT EXISTS (SELECT 1 FROM review_log WHERE id = ?1 AND device_id = ?2 AND deleted = 0)",
             params![event_id, self.device.0],
+            |r| r.get(0),
         )?;
-        Ok(n > 0)
+        if live {
+            self.write_synced("review_log", event_id, OpKind::Delete, None)?;
+        }
+        Ok(live)
     }
 }
 
