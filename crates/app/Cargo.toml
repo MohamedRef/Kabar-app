@@ -29,6 +29,8 @@ futures-util = { version = "0.3", default-features = false, features = ["sink", 
 getrandom = "0.3"
 keyring-core = "1"
 sha2 = "0.10"
+# Offline packs: one tar per unit (crates/app/src/packs).
+tar = { version = "0.4", default-features = false }
 tokio = { version = "1", features = ["rt", "net", "time", "sync", "macros", "io-util"] }
 tokio-tungstenite = { version = "0.30", default-features = false, features = ["connect", "rustls-tls-webpki-roots"] }
 ureq = { version = "3", default-features = false, features = ["rustls", "json"] }
