@@ -1710,6 +1710,7 @@ mod tests {
         }
         assert!(test_content("bipa1.test").is_some());
         assert!(test_content("placement").is_some());
+        assert!(test_content("bipa7.test").is_some());
         assert!(lesson_content("bipa1.test").is_none());
     }
 
