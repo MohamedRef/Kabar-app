@@ -1,0 +1,72 @@
+schema: kabar.grammar/v1
+id: id.adverb.degree
+language: id
+level: bipa2
+title:
+  target: cukup, agak, terlalu, kurang, lumayan
+  en: Quite, rather, too
+  ar_eg: كفاية، شوية، زيادة
+  ar: ظروف الدرجة
+summary:
+  ar_eg: cukup = كفاية/لا بأس، agak = شوية، terlalu = زيادة عن اللزوم، lumayan = مش بطال.
+  ar: cukup = كافٍ / إلى حد ما، agak = قليلًا، terlalu = أكثر من اللازم، lumayan = لا بأس به.
+  en: cukup (quite / enough), agak (rather), terlalu (too), lumayan (not bad), kurang (not … enough).
+pattern:
+  - cukup / agak / terlalu / kurang + adjective
+  - lumayan (+ adjective)
+explanation:
+  ar_eg: |
+    - cukup = كفاية / إلى حد كبير: Harganya cukup mahal = سعرها غالي شوية برضه. Cukup! = كفاية!
+    - agak = شوية: Agak jauh = بعيد شوية.
+    - terlalu = زيادة: Terlalu pedas = حراق زيادة. (معناها سلبي)
+    - kurang = مش… كفاية: Kurang garam = ناقص ملح.
+    - lumayan = مش بطال / معقول: Enak? — Lumayan = حلو؟ — مش بطال.
+    كلهم قبل الصفة.
+  ar: |
+    - cukup = كافٍ / إلى حد كبير: Harganya cukup mahal.
+    - agak = نوعًا ما: Agak jauh = بعيد نوعًا ما.
+    - terlalu = أكثر من اللازم: Terlalu pedas.
+    - kurang = غير كافٍ: Kurang garam = ينقصه ملح.
+    - lumayan = لا بأس به.
+    وكلها تسبق الصفة.
+  en: |
+    - cukup = quite / enough: Harganya cukup mahal = It's fairly expensive. Cukup! = Enough!
+    - agak = rather: Agak jauh = A bit far.
+    - terlalu = too (negative): Terlalu pedas = Too spicy.
+    - kurang = not … enough: Kurang garam = Needs salt.
+    - lumayan = not bad: Enak? — Lumayan.
+    All go before the adjective.
+examples:
+  - text: Suaranya terlalu keras.
+    en: The sound is too loud.
+    ar_eg: الصوت عالي زيادة.
+    ar: الصوت عالٍ أكثر من اللازم.
+  - text: Gamelan ini cukup mahal, tapi bagus.
+    en: This gamelan is fairly pricey, but good.
+    ar_eg: الجاميلان ده غالي شوية بس حلو.
+    ar: هذا الغاميلان غالٍ نسبيًا لكنه جيد.
+  - text: Jalannya agak macet.
+    en: The road is a bit jammed.
+    ar_eg: الطريق زحمة شوية.
+    ar: الطريق مزدحم قليلًا.
+  - text: Gimana? — Lumayan.
+    en: How is it? — Not bad.
+    ar_eg: عامل إيه؟ — مش بطال.
+    ar: كيف هو؟ — لا بأس.
+    register: informal
+mistakes:
+  - wrong: terlalu enak (meaning "very tasty")
+    right: enak sekali
+    why:
+      ar_eg: terlalu معناها «زيادة عن اللزوم» (حاجة وحشة).
+      ar: terlalu تعني الإفراط المذموم.
+      en: terlalu means "too", a problem, not "very".
+arabic_bridge:
+  ar_eg: terlalu ≈ «زيادة»، lumayan ≈ «مش بطال».
+  ar: terlalu ≈ «أكثر من اللازم».
+  en: terlalu ≈ «زيادة», lumayan ≈ «مش بطال».
+tags: [adverb, adjective]
+see_also: [id.intensifier.basic, id.comparison.lebih]
+review:
+  status: draft
+  verified: false

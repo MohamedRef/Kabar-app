@@ -1,0 +1,69 @@
+schema: kabar.grammar/v1
+id: id.reduplication.types
+language: id
+level: bipa2
+title:
+  target: jalan-jalan, pelan-pelan, lihat-lihat, sayur-mayur, apa-apa
+  en: More kinds of reduplication
+  ar_eg: أنواع تانية من التكرار
+  ar: صور أخرى للتكرار
+summary:
+  ar_eg: "التكرار مش للجمع بس: مع الفعل = بيعمل براحته / من غير هدف (jalan-jalan = يتفسح)، مع الصفة = ظرف (pelan-pelan = بالراحة)، ومع أدوات السؤال = أي حاجة (apa-apa)."
+  ar: "للتكرار معانٍ غير الجمع: مع الفعل للتسلية أو التكرار، ومع الصفة للظرفية، ومع أدوات الاستفهام للإبهام."
+  en: Repetition does more than plurals — with verbs it means casual / repeated action, with adjectives it makes adverbs, with question words it means "any-".
+pattern:
+  - verb-verb = do casually / repeatedly (jalan-jalan, lihat-lihat, duduk-duduk)
+  - adjective-adjective = adverb (pelan-pelan, cepat-cepat, baik-baik)
+  - question word doubled = indefinite (apa-apa, siapa-siapa, kapan-kapan, mana-mana)
+  - rhyming / sound-change doubles = variety (sayur-mayur, lauk-pauk, bolak-balik)
+explanation:
+  ar_eg: |
+    - فعل مكرر = بيعمل براحته من غير هدف محدد: jalan-jalan = يتفسح، lihat-lihat = يتفرج بس (في المحل: «Lihat-lihat dulu» = بتفرج بس)، duduk-duduk = قاعد كده.
+    - صفة مكررة = حال: pelan-pelan = بالراحة، cepat-cepat = بسرعة، baik-baik = كويس / بالسلامة (Baik-baik saja = تمام).
+    - أداة سؤال مكررة: apa-apa = أي حاجة (Tidak apa-apa = مفيش مشكلة)، siapa-siapa = حد، kapan-kapan = في يوم من الأيام، di mana-mana = في كل حتة.
+    - تكرار بتغيير صوت = تنوّع: sayur-mayur = خضار من كل نوع، lauk-pauk = أطباق جانبية، bolak-balik = رايح جاي.
+    في الشات: jln2، pelan2.
+  ar: |
+    - الفعل المكرر: الفعل بلا غاية محددة أو بتكرار: jalan-jalan = يتنزه، lihat-lihat = يتفرج فحسب، duduk-duduk = يجلس بلا شغل.
+    - الصفة المكررة: تصير حالًا: pelan-pelan = ببطء، cepat-cepat = بسرعة، baik-baik saja = على ما يرام.
+    - أداة الاستفهام المكررة: للإبهام: Tidak apa-apa = لا بأس، siapa-siapa = أحد، kapan-kapan = يومًا ما، di mana-mana = في كل مكان.
+    - التكرار مع تغير الصوت: للتنوع: sayur-mayur = خضروات شتى، bolak-balik = ذهابًا وإيابًا.
+  en: |
+    - Doubled verb = casual or aimless action: jalan-jalan (go for a stroll / travel), lihat-lihat (just browsing), duduk-duduk (sit around).
+    - Doubled adjective = adverb: pelan-pelan (slowly), cepat-cepat (quickly), baik-baik saja (just fine).
+    - Doubled question word = indefinite: Tidak apa-apa (it's nothing / no problem), siapa-siapa (anyone), kapan-kapan (some time), di mana-mana (everywhere).
+    - Sound-change doubles = variety: sayur-mayur (all sorts of vegetables), lauk-pauk (side dishes), bolak-balik (back and forth).
+    Chats: jln2, pelan2.
+examples:
+  - text: Kami jalan-jalan ke Bedugul hari Minggu.
+    en: We went on a trip to Bedugul on Sunday.
+    ar_eg: اتفسحنا في بيدوجول يوم الحد.
+    ar: تنزهنا في بيدوغول يوم الأحد.
+  - text: Pelan-pelan saja, Pak, jalannya licin.
+    en: Take it slowly, sir, the road is slippery.
+    ar_eg: بالراحة يا أسطى، الطريق بيزحلق.
+    ar: على مهلك يا سيدي، الطريق زلق.
+  - text: Maaf! — Tidak apa-apa.
+    en: Sorry! — No problem.
+    ar_eg: آسف! — ولا يهمك.
+    ar: عذرًا! — لا بأس.
+  - text: Lihat-lihat dulu, ya, Bu.
+    en: I'm just looking for now, ma'am.
+    ar_eg: بتفرج بس يا حاجة.
+    ar: أتفرج فقط يا سيدتي.
+mistakes:
+  - wrong: Saya jalan ke Bali. (meaning "holiday in Bali")
+    right: Saya jalan-jalan ke Bali.
+    why:
+      ar_eg: jalan = يمشي، jalan-jalan = يتفسح.
+      ar: jalan = يمشي، وjalan-jalan = يتنزه.
+      en: jalan = walk; jalan-jalan = go sightseeing.
+arabic_bridge:
+  ar_eg: زي «شوية شوية» و«بالراحة بالراحة» عندنا، بس في الإندونيسي التكرار ده قاعدة مش مجرد أسلوب.
+  ar: يشبه قولنا «رويدًا رويدًا» و«شيئًا فشيئًا»، لكنه هنا قاعدة صرفية منتظمة.
+  en: Like Arabic «رويدًا رويدًا» or Egyptian «شوية شوية» — but in Indonesian it's systematic grammar.
+tags: [reduplication, morphology]
+see_also: [id.reduplication.plural, id.intensifier.basic]
+review:
+  status: draft
+  verified: false

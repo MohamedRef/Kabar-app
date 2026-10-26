@@ -1,0 +1,68 @@
+schema: kabar.grammar/v1
+id: id.number.ordinal
+language: id
+level: bipa1
+title:
+  target: pertama, kedua, ketiga
+  en: Ordinal numbers
+  ar_eg: الأرقام الترتيبية (الأول، التاني)
+  ar: الأعداد الترتيبية
+summary:
+  ar_eg: ke- + الرقم = الترتيب (kedua = التاني)، ما عدا «الأول» = pertama. وبتيجي بعد الاسم.
+  ar: ke- + العدد = الترتيبي، إلا «الأول» = pertama، ويأتي بعد الموصوف.
+  en: ke- + number makes an ordinal (kedua = second), except "first" = pertama; ordinals follow the noun.
+pattern:
+  - pertama (1st) · ke- + number (kedua, ketiga, keseratus)
+  - noun + ordinal (anak kedua, lantai tiga / lantai ketiga)
+explanation:
+  ar_eg: |
+    حط ke- قبل الرقم: kedua = التاني، ketiga = التالت، kesepuluh = العاشر.
+    «الأول» ليها كلمة خاصة: pertama (kesatu موجودة بس قليلة).
+    بتيجي بعد الاسم زي العربي: anak kedua = الابن التاني، hari pertama = أول يوم / اليوم الأول.
+    ولو حطيت ke- قبل الرقم من غير اسم يبقى معناه «الاتنين مع بعض»: kedua anak itu = العيلين الاتنين.
+    في العمارات بيقولوا lantai tiga = الدور التالت (من غير ke-).
+  ar: |
+    تُضاف ke- إلى العدد: kedua = الثاني، ketiga = الثالث، kesepuluh = العاشر.
+    و«الأول» لها لفظ خاص: pertama (وkesatu قليلة).
+    وتأتي بعد الموصوف كالعربية: anak kedua = الابن الثاني، hari pertama = اليوم الأول.
+    وإذا تقدمت على الاسم أفادت الشمول: kedua anak itu = الولدان كلاهما.
+    ويقال للطوابق lantai tiga = الطابق الثالث.
+  en: |
+    Put ke- before the number: kedua = second, ketiga = third, kesepuluh = tenth.
+    "First" has its own word: pertama (kesatu exists but is rare).
+    Ordinals follow the noun, as in Arabic: anak kedua = the second child, hari pertama = the first day.
+    Before a noun, ke- + number means "all N": kedua anak itu = both children.
+    Floors: lantai tiga = third floor (no ke- needed).
+examples:
+  - text: Ini hari pertama saya di Jakarta.
+    en: This is my first day in Jakarta.
+    ar_eg: ده أول يوم ليا في جاكرتا.
+    ar: هذا يومي الأول في جاكرتا.
+  - text: Saya anak kedua dari tiga bersaudara.
+    en: I'm the second of three siblings.
+    ar_eg: أنا الابن التاني من تلات إخوات.
+    ar: أنا الثاني بين ثلاثة إخوة.
+  - text: Kantornya di lantai lima.
+    en: The office is on the fifth floor.
+    ar_eg: المكتب في الدور الخامس.
+    ar: المكتب في الطابق الخامس.
+  - text: Kedua orang tua saya tinggal di Kairo.
+    en: Both my parents live in Cairo.
+    ar_eg: أبويا وأمي الاتنين ساكنين في القاهرة.
+    ar: كلا والديّ يسكنان في القاهرة.
+mistakes:
+  - wrong: kedua anak (meaning "the second child")
+    right: anak kedua
+    why:
+      ar_eg: لو ke- + رقم جت قبل الاسم بقت «الاتنين»، مش «التاني».
+      ar: تقدّمها على الاسم يجعلها بمعنى «كلا».
+      en: Before the noun it means "both", not "second".
+arabic_bridge:
+  ar_eg: "زي «الابن التاني» = anak kedua: الترتيبي بعد الاسم."
+  ar: "كقولنا «الابن الثاني»: الترتيبي نعت يتبع منعوته."
+  en: Like «الابن الثاني», the ordinal follows the noun.
+tags: [numbers]
+see_also: [id.number.cardinal, id.time.calendar]
+review:
+  status: draft
+  verified: false

@@ -78,3 +78,20 @@ just deploy-cloud    # after adding GOOGLE_CLIENT_IDS (CLOUD.md §3.2)
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.
 - Build out of memory on 8 GB: `CARGO_BUILD_JOBS=2 just apk`.
+
+## 6. Content pipeline (vocabulary, Arabic Bridge)
+
+Details in `docs/CONTENT.md`. On the Mac:
+
+```bash
+just content-fetch           # frequency sources (~60 MB) into data/raw/
+just content-freq            # rebuilds content/freq/id.tsv (should produce no diff)
+just content-fetch kaikki    # Wiktionary extracts from kaikki.org (~100 MB)
+just content-kaikki          # import + Arabic Bridge cross-check report
+just content-fetch jvwiki    # Javanese Wikipedia dump (~70 MB)
+just content-freq-jv         # content/freq/jv.tsv
+just content-check           # validate everything
+just content-review 1        # review sheet for gloss batch 1 → build/review/
+```
+
+Commit the changed files under `content/` after the kaikki and jvwiki steps.

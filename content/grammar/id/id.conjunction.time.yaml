@@ -1,0 +1,66 @@
+schema: kabar.grammar/v1
+id: id.conjunction.time
+language: id
+level: bipa2
+title:
+  target: ketika, waktu, saat, sambil, selama
+  en: When, while
+  ar_eg: لما، وأنا بـ…
+  ar: عندما، بينما
+summary:
+  ar_eg: ketika / waktu / saat = لما، وsambil = وهو بيعمل حاجة تانية في نفس الوقت (نفس الشخص).
+  ar: ketika / waktu / saat = عندما، وsambil = في أثناء قيام الفاعل نفسه بفعل آخر.
+  en: ketika / waktu / saat = when; sambil = while (same person doing two things at once).
+pattern:
+  - Ketika / Waktu / Saat + clause, main clause
+  - subject + verb + sambil + verb
+  - Selama + clause (all the while …)
+explanation:
+  ar_eg: |
+    - ketika = لما (أرسمي)، waktu = لما (عادية)، saat = لما / في اللحظة اللي: Ketika saya di Bali, saya belajar menari = لما كنت في بالي اتعلمت رقص.
+    - sambil = وأنا / وهو بـ…: نفس الشخص بيعمل حاجتين مع بعض: Dia makan sambil menonton TV = بياكل وهو بيتفرج على التليفزيون.
+    - selama = طول ما: Selama di bus, saya tidur = طول ما أنا في الأتوبيس كنت نايم.
+    sambil لنفس الفاعل بس؛ لو شخصين استخدم ketika.
+  ar: |
+    - ketika = عندما (فصيحة)، waktu (عامية)، saat = في الوقت الذي: Ketika saya di Bali, saya belajar menari.
+    - sambil = وهو يفعل كذا، لفاعل واحد يجمع فعلين: Dia makan sambil menonton TV.
+    - selama = طوال ما: Selama di bus, saya tidur.
+    ولا تُستعمل sambil لفاعلين مختلفين، بل ketika.
+  en: |
+    - ketika (formal) / waktu (everyday) / saat = when: Ketika saya di Bali, saya belajar menari.
+    - sambil = while, for one person doing two things: Dia makan sambil menonton TV.
+    - selama = all the while: Selama di bus, saya tidur.
+    sambil needs the same subject; with two different people use ketika.
+examples:
+  - text: Waktu kecil, saya tinggal di Alexandria.
+    en: When I was little, I lived in Alexandria.
+    ar_eg: وأنا صغير كنت عايش في إسكندرية.
+    ar: عندما كنت صغيرًا عشت في الإسكندرية.
+  - text: Saya mendengarkan musik sambil naik kereta.
+    en: I listen to music while riding the train.
+    ar_eg: بسمع مزيكا وأنا راكب القطر.
+    ar: أستمع إلى الموسيقى وأنا في القطار.
+  - text: Ketika kami sampai, hujan mulai turun.
+    en: When we arrived, it began to rain.
+    ar_eg: لما وصلنا، المطر بدأ ينزل.
+    ar: عندما وصلنا بدأ المطر يهطل.
+  - text: Jangan main HP sambil menyetir!
+    en: Don't use your phone while driving!
+    ar_eg: ماتلعبش في الموبايل وإنت سايق!
+    ar: لا تستعمل الهاتف وأنت تقود!
+mistakes:
+  - wrong: Saya membaca sambil adik saya tidur.
+    right: Saya membaca ketika adik saya tidur.
+    why:
+      ar_eg: sambil لنفس الشخص بس.
+      ar: sambil لفاعل واحد.
+      en: sambil requires the same subject.
+arabic_bridge:
+  ar_eg: sambil = الحال في «بياكل وهو بيتفرج»، وwaktu ← «وقت» العربي.
+  ar: sambil تؤدي معنى الجملة الحالية «وهو يشاهد»، وwaktu من «وقت».
+  en: sambil works like an Arabic ḥāl clause («وهو يشاهد»); waktu ← «وقت».
+tags: [conjunction, time, arabic-loan]
+see_also: [id.conjunction.sequence, id.time.sequence]
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,70 @@
+schema: kabar.grammar/v1
+id: id.question.siapa
+language: id
+level: bipa1
+title:
+  target: Siapa?
+  en: "siapa: who"
+  ar_eg: "siapa: مين؟"
+  ar: "siapa: مَن؟"
+summary:
+  ar_eg: siapa = مين، وبتستخدم كمان لسؤال الاسم (Siapa nama Anda?).
+  ar: siapa = مَن، وتُستعمل أيضًا للسؤال عن الاسم.
+  en: siapa means "who", and is also how you ask for a name.
+pattern:
+  - Siapa + noun? · noun + siapa?
+  - Siapa nama + person?
+  - dengan siapa (with whom) · untuk siapa (for whom) · punya siapa (whose)
+explanation:
+  ar_eg: |
+    siapa = «مين»:
+    Siapa dia? = مين ده؟ — Dia siapa? = هو مين؟ (الترتيبين صح).
+    ولسؤال الاسم الإندونيسي بيقول «مين اسمك؟» مش «إيه اسمك؟»: Siapa nama Anda / namamu?
+    مع حروف الجر: dengan siapa = مع مين، untuk siapa = لمين، punya siapa / milik siapa = بتاع مين.
+    وفي الكلام العادي: Namanya siapa? = اسمه إيه؟
+  ar: |
+    siapa بمعنى «مَن»:
+    Siapa dia? = مَن هو؟ — Dia siapa? = هو مَن؟ والترتيبان صحيحان.
+    والسؤال عن الاسم يكون بـ siapa لا بـ apa: Siapa nama Anda?
+    ومع حروف الجر: dengan siapa = مع مَن، untuk siapa = لِمَن، punya siapa / milik siapa = لِمَن هذا.
+    وفي الحديث العادي: Namanya siapa? = ما اسمه؟
+  en: |
+    siapa = "who":
+    Siapa dia? = Who is he/she? — Dia siapa? = He/She is who? Both orders work.
+    Names are asked with siapa, not apa: Siapa nama Anda / namamu? (literally "who is your name?").
+    With prepositions: dengan siapa = with whom, untuk siapa = for whom, punya siapa / milik siapa = whose.
+    Casual: Namanya siapa? = What's his/her name?
+examples:
+  - text: Siapa nama Anda?
+    en: What is your name?
+    ar_eg: اسم حضرتك إيه؟
+    ar: ما اسمك؟
+  - text: Namaku Sari. Kamu siapa?
+    en: I'm Sari. Who are you?
+    ar_eg: أنا اسمي ساري. وإنت مين؟
+    ar: اسمي ساري. ومَن أنت؟
+    register: informal
+  - text: Ini tas siapa?
+    en: Whose bag is this?
+    ar_eg: الشنطة دي بتاعة مين؟
+    ar: لِمَن هذه الحقيبة؟
+  - text: Kamu tinggal dengan siapa?
+    en: Who do you live with?
+    ar_eg: إنت ساكن مع مين؟
+    ar: مع مَن تسكن؟
+mistakes:
+  - wrong: Apa nama Anda? (formal)
+    right: Siapa nama Anda?
+    why:
+      ar_eg: في الإندونيسي الرسمي الاسم بيتسأل عنه بـ «مين».
+      ar: في الفصحى الإندونيسية يُسأل عن الاسم بـ siapa.
+      en: Standard Indonesian asks for names with siapa.
+arabic_bridge:
+  ar_eg: بالظبط زي «مين ده؟» و«ده مين؟» — الترتيبين صح في الاتنين.
+  ar: كقولنا «مَن هذا؟» و«هذا مَن؟» في العامية، يصح الترتيبان.
+  en: Like Egyptian «مين ده؟» / «ده مين؟», both orders are fine.
+tags: [question]
+see_also: [id.question.apa, id.question.mana]
+review:
+  status: draft
+  verified: false

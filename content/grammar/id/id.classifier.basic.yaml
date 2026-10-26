@@ -1,0 +1,73 @@
+schema: kabar.grammar/v1
+id: id.classifier.basic
+language: id
+level: bipa2
+title:
+  target: sebuah, seorang, seekor, selembar, sepotong, dua gelas …
+  en: Classifiers (counting words)
+  ar_eg: كلمات العدّ (واحد/حبة/رغيف)
+  ar: المصنِّفات العددية
+summary:
+  ar_eg: "بين الرقم والاسم بتحط كلمة حسب نوع الحاجة: dua orang anak، tiga ekor kucing، sebuah rumah. وse- = واحد."
+  ar: "بين العدد والمعدود يأتي لفظ يصنّف نوعه: orang للبشر، ekor للحيوان، buah للأشياء…، وse- = واحد."
+  en: Between number and noun comes a word for the kind of thing — orang (people), ekor (animals), buah (things)…; se- = one.
+pattern:
+  - number + classifier + noun (tiga ekor kucing)
+  - se- + classifier + noun = a / one (seorang guru)
+  - "containers & measures: segelas, sepiring, sebotol, sebungkus, seikat, sekilo"
+explanation:
+  ar_eg: |
+    زي ما بنقول «رغيف عيش» أو «حبة طماطم»، الإندونيسي عنده كلمات عدّ:
+    - orang للبشر: dua orang mahasiswa = طالبين.
+    - ekor (ديل) للحيوانات: tiga ekor ayam = تلات فراخ.
+    - buah (فاكهة) لمعظم الحاجات والأماكن: sebuah mobil = عربية واحدة.
+    - lembar للورق والقماش: selembar kertas = ورقة.
+    - biji للحبوب والحاجات الصغيرة: dua biji telur = بيضتين.
+    - potong للقطع: sepotong kue = حتة كيك.
+    - أوعية ومقاييس: segelas teh = كوباية شاي، sepiring nasi = طبق رز، sebotol air = إزازة مية، sekilo = كيلو، seikat = حزمة.
+    في الكلام العادي بيشيلوا الكلمة دي كتير: dua kopi = اتنين قهوة. بس لازم تفهمها لما تسمعها في السوق.
+  ar: |
+    كما نقول «رغيف خبز» و«حبة طماطم»، للإندونيسية ألفاظ عدّ:
+    - orang للبشر، ekor (ذيل) للحيوان، buah لأكثر الأشياء، lembar للورق والقماش، biji للحبوب والصغائر، potong للقطع.
+    - وأوعية ومقاييس: segelas (كوب)، sepiring (طبق)، sebotol (زجاجة)، sekilo (كيلو)، seikat (حزمة).
+    وتأتي se- بمعنى «واحد»: seorang guru = معلم.
+    وكثيرًا ما تُحذف في العامية: dua kopi.
+  en: |
+    Like English "two loaves of bread", Indonesian uses counters:
+    - orang for people, ekor ("tail") for animals, buah ("fruit") for most things, lembar for sheets, biji for grains and small items, potong for pieces.
+    - Containers and measures: segelas (a glass), sepiring (a plate), sebotol (a bottle), sekilo (a kilo), seikat (a bunch).
+    se- = one: seorang guru = a teacher.
+    Casual speech often drops them (dua kopi), but you'll hear them at the market.
+examples:
+  - text: Saya beli dua ikat sayur dan sekilo jeruk.
+    en: I bought two bunches of vegetables and a kilo of oranges.
+    ar_eg: اشتريت حزمتين خضار وكيلو برتقال.
+    ar: اشتريت حزمتين من الخضار وكيلو برتقال.
+  - text: Pak Budi punya seekor kucing.
+    en: Mr Budi has a cat.
+    ar_eg: عم بودي عنده قطة.
+    ar: يملك السيد بودي قطة.
+  - text: Minta segelas teh manis, Mbak.
+    en: A glass of sweet tea, please.
+    ar_eg: كوباية شاي بسكر لو سمحتي.
+    ar: كوب شاي محلّى من فضلكِ.
+  - text: Di kelas ada dua puluh orang mahasiswa.
+    en: There are twenty students in the class.
+    ar_eg: فيه عشرين طالب في الفصل.
+    ar: في الصف عشرون طالبًا.
+mistakes:
+  - wrong: dua orang kucing
+    right: dua ekor kucing
+    why:
+      ar_eg: orang للناس بس، الحيوانات ekor.
+      ar: orang للبشر وحدهم.
+      en: orang is only for people.
+arabic_bridge:
+  ar_eg: "زي «رغيف عيش» و«راس توم» و«حبة طماطم» بالمصري: كلمة بتقول نوع الحاجة اللي بتعدها."
+  ar: تشبه ألفاظ العدّ العربية مثل «رغيف» و«حبة» و«رأس».
+  en: Like Egyptian «رغيف عيش», «راس توم», «حبة طماطم».
+tags: [numbers, classifier, market]
+see_also: [id.number.cardinal, id.quantifier.basic]
+review:
+  status: draft
+  verified: false

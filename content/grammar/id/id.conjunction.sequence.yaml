@@ -1,0 +1,75 @@
+schema: kabar.grammar/v1
+id: id.conjunction.sequence
+language: id
+level: bipa2
+title:
+  target: pertama, kemudian, lalu, setelah itu, selanjutnya, akhirnya
+  en: Sequencing a story
+  ar_eg: ترتيب الأحداث (الأول، بعدين، في الآخر)
+  ar: أدوات الترتيب في السرد
+summary:
+  ar_eg: "عشان تحكي رحلة بالترتيب: pertama (الأول) → lalu / kemudian (بعدين) → setelah itu (بعد كده) → akhirnya (في الآخر)."
+  ar: "للسرد المرتب: pertama ← lalu / kemudian ← setelah itu ← selanjutnya ← akhirnya."
+  en: To tell events in order — pertama (first) → lalu / kemudian (then) → setelah itu (after that) → akhirnya (finally).
+pattern:
+  - Pertama, … Lalu / Kemudian, … Setelah itu, … Akhirnya, …
+  - Mula-mula (at first) · Selanjutnya (next)
+explanation:
+  ar_eg: |
+    في الحكاية أو الوصفة أو الاتجاهات:
+    - pertama / mula-mula = الأول / في الأول.
+    - lalu / kemudian = بعدين (kemudian أرسمي).
+    - setelah itu / sesudah itu = بعد كده.
+    - selanjutnya = وبعد كده (رسمي، في التعليمات).
+    - akhirnya = في الآخر / أخيرًا (وكمان «أخيرًا!» لما حاجة تحصل بعد انتظار).
+    الكلمات دي بتيجي في أول الجملة وبعدها فاصلة.
+  ar: |
+    في السرد والوصفات والاتجاهات:
+    - pertama / mula-mula = أولًا / في البداية.
+    - lalu / kemudian = ثم.
+    - setelah itu = بعد ذلك.
+    - selanjutnya = وبعدئذ (رسمية).
+    - akhirnya = أخيرًا / في النهاية.
+    وتتصدر الجملة تليها فاصلة.
+  en: |
+    For stories, recipes and directions:
+    - pertama / mula-mula = first / at first.
+    - lalu / kemudian = then (kemudian is more formal).
+    - setelah itu = after that.
+    - selanjutnya = next (formal instructions).
+    - akhirnya = finally / in the end (also "at last!").
+    They open the sentence, followed by a comma.
+examples:
+  - text: Pertama, saya naik ojek ke terminal. Lalu, saya naik bus ke Bedugul.
+    en: First I took an ojek to the terminal. Then I took a bus to Bedugul.
+    ar_eg: الأول ركبت أوجيك للموقف، وبعدين ركبت أتوبيس لبيدوجول.
+    ar: أولًا ركبت دراجة أجرة إلى المحطة، ثم ركبت الحافلة إلى بيدوغول.
+  - text: Setelah itu, kami makan siang di dekat danau.
+    en: After that, we had lunch near the lake.
+    ar_eg: بعد كده اتغدينا جنب البحيرة.
+    ar: بعد ذلك تناولنا الغداء قرب البحيرة.
+  - text: Akhirnya kami sampai di hotel jam sepuluh malam.
+    en: We finally reached the hotel at 10 p.m.
+    ar_eg: في الآخر وصلنا الفندق الساعة عشرة بالليل.
+    ar: وصلنا أخيرًا إلى الفندق في العاشرة ليلًا.
+  - text: Selanjutnya, tambahkan kecap manis.
+    en: Next, add sweet soy sauce.
+    ar_eg: وبعد كده زوّد صويا مسكّرة.
+    ar: بعد ذلك أضف صلصة الصويا الحلوة.
+    register: formal
+mistakes:
+  - wrong: Akhir, kami pulang.
+    right: Akhirnya, kami pulang.
+    why:
+      ar_eg: «في الآخر» = akhirnya (بـ -nya).
+      ar: الظرف هو akhirnya.
+      en: The adverb is akhirnya.
+arabic_bridge:
+  ar_eg: akhirnya جاية من «آخِر» العربي + -nya، يعني «في آخره».
+  ar: akhirnya من «آخِر» العربية مع -nya.
+  en: akhirnya ← Arabic «آخِر» + -nya.
+tags: [conjunction, narrative, arabic-loan]
+see_also: [id.conjunction.basic, id.time.sequence, id.conjunction.time]
+review:
+  status: draft
+  verified: false

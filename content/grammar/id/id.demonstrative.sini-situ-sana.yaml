@@ -1,0 +1,71 @@
+schema: kabar.grammar/v1
+id: id.demonstrative.sini-situ-sana
+language: id
+level: bipa1
+title:
+  target: sini, situ, sana
+  en: "Here, there, over there"
+  ar_eg: هنا، عندك، هناك
+  ar: هنا، هناك، هنالك
+summary:
+  ar_eg: sini = هنا (عندي)، situ = عندك (جنب اللي بتكلمه)، sana = هناك بعيد. وبتيجي بعد di / ke / dari.
+  ar: sini للقريب من المتكلم، وsitu للقريب من المخاطب، وsana للبعيد عنهما، وتأتي بعد di / ke / dari.
+  en: sini = here (near me), situ = there (near you), sana = over there (far from both); used after di / ke / dari.
+pattern:
+  - di sini / di situ / di sana (at)
+  - ke sini / ke situ / ke sana (to)
+  - dari sini / dari situ / dari sana (from)
+explanation:
+  ar_eg: |
+    ٣ أماكن بدل اتنين:
+    - sini = هنا، جنبي: Duduk di sini = اقعد هنا. Ke sini! = تعالى هنا!
+    - situ = عندك، جنب اللي بكلمه: Tasnya di situ = الشنطة عندك (جنبك).
+    - sana = هناك، بعيد عن الاتنين: Masjidnya di sana = الجامع هناك.
+    على طول بتحط قبلها di (مكان)، ke (اتجاه)، dari (منين):
+    Dari sini ke sana jauh? = من هنا لهناك بعيد؟
+    في الكلام: sono / situ بتتسمع في جاكرتا.
+  ar: |
+    للإشارة المكانية ثلاث درجات:
+    - sini = هنا، بقرب المتكلم: Duduk di sini = اجلس هنا. Ke sini! = تعالَ إلى هنا!
+    - situ = هناك بقرب المخاطب: Tasnya di situ = الحقيبة عندك.
+    - sana = هنالك، بعيدًا عنهما: Masjidnya di sana = المسجد هناك.
+    وتسبقها di للمكان، وke للاتجاه، وdari للمصدر.
+  en: |
+    Three distances instead of two:
+    - sini = here, near me: Duduk di sini = Sit here. Ke sini! = Come here!
+    - situ = there, near you: Tasnya di situ = The bag is there (by you).
+    - sana = over there, away from both: Masjidnya di sana = The mosque is over there.
+    Always with di (at), ke (to) or dari (from): Dari sini ke sana jauh? = Is it far from here to there?
+examples:
+  - text: Saya tinggal di sini sejak tahun lalu.
+    en: I've lived here since last year.
+    ar_eg: أنا ساكن هنا من السنة اللي فاتت.
+    ar: أسكن هنا منذ العام الماضي.
+  - text: Ke sini sebentar, Dik!
+    en: Come here a moment!
+    ar_eg: تعالى هنا شوية!
+    ar: تعالَ إلى هنا قليلًا!
+  - text: Taruh saja di situ.
+    en: Just put it there (by you).
+    ar_eg: حطها عندك وخلاص.
+    ar: ضعه هناك فقط.
+  - text: Monas ada di sana.
+    en: Monas is over there.
+    ar_eg: موناس هناك أهو.
+    ar: موناس هناك.
+mistakes:
+  - wrong: Saya tinggal sini. (formal)
+    right: Saya tinggal di sini.
+    why:
+      ar_eg: في الكلام العادي بتتقال، بس الصح إنك تحط di.
+      ar: تُحذف di في العامية، والأصح ذكرها.
+      en: Casual speech drops di; standard keeps it.
+arabic_bridge:
+  ar_eg: di sini = «هنا» وke sini = «لهنا»، وsitu قريبة من «عندك» المصرية.
+  ar: الدرجات الثلاث تقابل «هنا / هناك / هنالك».
+  en: sini / situ / sana ≈ هنا / «عندك» / هناك.
+tags: [demonstrative, place]
+see_also: [id.demonstrative.ini-itu, id.preposition.di-ke-dari]
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,72 @@
+schema: kabar.grammar/v1
+id: id.quantifier.basic
+language: id
+level: bipa2
+title:
+  target: beberapa, banyak, sedikit, semua, setiap, para
+  en: Quantity words
+  ar_eg: كلمات الكمية (شوية، كتير، كل)
+  ar: ألفاظ الكم
+summary:
+  ar_eg: "كلمات الكمية قبل الاسم ومن غير جمع: beberapa orang = كام واحد، banyak orang = ناس كتير، semua orang = كل الناس."
+  ar: "ألفاظ الكم تتقدم على الاسم ولا يُكرر معها: beberapa orang، banyak orang، semua orang."
+  en: "Quantity words go before the noun, with no reduplication: beberapa orang (some people), semua orang (everyone)."
+pattern:
+  - beberapa / banyak / sedikit / semua / seluruh / setiap (tiap) / para + noun
+  - noun + saja / semua (… only / all of them)
+explanation:
+  ar_eg: |
+    - beberapa = كام / بعض: beberapa hari = كام يوم.
+    - banyak = كتير، sedikit = شوية: banyak orang، sedikit gula.
+    - semua = كل (المجموعة كلها): semua penumpang = كل الركاب. seluruh = كل (الحاجة كلها): seluruh Indonesia = إندونيسيا كلها.
+    - setiap / tiap = كل (واحد واحد): setiap hari = كل يوم.
+    - para = للناس بس، زي «السادة»: para penumpang = السادة الركاب (في الإعلانات).
+    ماتكررش الاسم بعدهم: banyak orang مش banyak orang-orang.
+  ar: |
+    - beberapa = بضعة / بعض: beberapa hari.
+    - banyak = كثير، sedikit = قليل.
+    - semua = جميع (أفراد مجموعة)، seluruh = كامل (الشيء الواحد): seluruh Indonesia.
+    - setiap / tiap = كل (على التوزيع): setiap hari.
+    - para = للعقلاء خاصة كـ«السادة»: para penumpang.
+    ولا يُكرر الاسم بعدها.
+  en: |
+    - beberapa = several / some: beberapa hari = a few days.
+    - banyak = many / much; sedikit = a little / few.
+    - semua = all (members of a group); seluruh = the whole: seluruh Indonesia.
+    - setiap / tiap = every (each one): setiap hari.
+    - para = plural marker for people, like "dear …" in announcements: para penumpang = passengers.
+    Never reduplicate after these.
+examples:
+  - text: Para penumpang yang terhormat, pesawat akan segera mendarat.
+    en: Dear passengers, the plane will land shortly.
+    ar_eg: حضرات الركاب، الطيارة هتنزل حالًا.
+    ar: السادة الركاب الكرام، ستهبط الطائرة قريبًا.
+    register: formal
+  - text: Beberapa kereta terlambat hari ini.
+    en: Several trains are late today.
+    ar_eg: كام قطر متأخرين النهارده.
+    ar: تأخرت عدة قطارات اليوم.
+  - text: Semua orang suka nasi goreng.
+    en: Everyone likes fried rice.
+    ar_eg: كل الناس بتحب الرز المقلي.
+    ar: الجميع يحب الأرز المقلي.
+  - text: Saya minta gula sedikit saja.
+    en: Just a little sugar for me, please.
+    ar_eg: سكر شوية بس لو سمحت.
+    ar: قليل من السكر فقط من فضلك.
+mistakes:
+  - wrong: semua orang-orang
+    right: semua orang
+    why:
+      ar_eg: semua كفاية تقول إنهم كتير.
+      ar: semua تغني عن التكرار.
+      en: semua already marks plurality.
+arabic_bridge:
+  ar_eg: para ≈ «حضرات / السادة»، setiap ≈ «كل» قبل المفرد (كل يوم)، وsemua ≈ «كل» قبل الجمع (كل الناس).
+  ar: setiap ≈ «كل» مع المفرد، وsemua ≈ «جميع».
+  en: setiap ≈ «كل» + singular; semua ≈ «جميع»; para ≈ «حضرات».
+tags: [quantifier, noun-phrase]
+see_also: [id.reduplication.plural, id.frequency.adverbs, id.notice.harap-dilarang]
+review:
+  status: draft
+  verified: false

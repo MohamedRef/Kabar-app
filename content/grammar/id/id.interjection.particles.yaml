@@ -1,0 +1,83 @@
+schema: kabar.grammar/v1
+id: id.interjection.particles
+language: id
+level: bipa2
+title:
+  target: wah, aduh, lho, kok, dong, sih, deh, kan, ya
+  en: Interjections and spoken particles
+  ar_eg: كلمات التعجب وحروف الكلام (ياه، آه، طب، بقى)
+  ar: ألفاظ التعجب وأدوات الكلام
+summary:
+  ar_eg: "الكلمات الصغيرة دي بتدي إحساس للجملة: wah = ياه!، aduh = آه / يا نهار!، kok = إزاي يعني / ليه كده، dong = بقى، sih = يعني / أصل."
+  ar: "ألفاظ صغيرة تمنح الجملة لونًا عاطفيًا: wah للإعجاب، aduh للألم والضيق، kok للاستغراب، dong للإلحاح."
+  en: Small words that colour a sentence — wah (wow), aduh (ouch / oh no), lho (hey, you know), kok (how come), dong (come on), sih (well / after all), deh (OK then), kan (right?), ya (yeah / OK?).
+pattern:
+  - interjection at the start (Wah, … / Aduh, …)
+  - particle after the word it colours (Ayo dong! · Kenapa sih? · Kok mahal?)
+explanation:
+  ar_eg: |
+    دي اللي هتخلي كلامك طبيعي ومش «كتاب»:
+    - wah = ياه / واو: Wah, indah sekali! = ياه، جميل أوي!
+    - aduh = آه / يا خبر: Aduh, sakit! = آه بيوجع! Aduh, lupa! = يا خبر، نسيت!
+    - lho / loh = تنبيه أو مفاجأة: Lho, kamu di sini? = إيه ده إنت هنا؟
+    - kok = إزاي / ليه كده (استغراب): Kok mahal sekali? = إزاي غالي كده؟
+    - dong = بقى (إلحاح لطيف): Ayo dong! = يلا بقى!
+    - sih = يعني (تلطيف السؤال أو التبرير): Kenapa sih? = ليه بس؟ Enak sih, tapi mahal = حلو يعني بس غالي.
+    - deh = خلاص / ماشي: Ya udah deh = خلاص ماشي.
+    - kan = مش كده؟ / ما إنت عارف: Kan sudah saya bilang = ما أنا قلتلك.
+    - ya = ماشي؟ / أيوه (في آخر الطلب بيلطفه): Tunggu sebentar, ya = استنى شوية، ماشي؟
+    كلها عامية؛ ماتستخدمهاش في الإيميل الرسمي.
+  ar: |
+    هذه الألفاظ تجعل الكلام طبيعيًا:
+    - wah للإعجاب والدهشة، aduh للألم أو الضيق، lho للتنبيه والمفاجأة، kok للاستغراب (كيف ذلك؟)،
+      dong للإلحاح اللطيف، sih لتلطيف السؤال أو التعليل، deh للموافقة، kan = أليس كذلك، ya في آخر الطلب لتلطيفه.
+    وكلها عامية لا تُستعمل في المراسلات الرسمية.
+  en: |
+    These make you sound human, not textbook:
+    - wah = wow: Wah, indah sekali!
+    - aduh = ouch / oh no: Aduh, sakit! · Aduh, lupa!
+    - lho / loh = hey, surprise: Lho, kamu di sini?
+    - kok = how come: Kok mahal sekali?
+    - dong = come on (gentle insistence): Ayo dong!
+    - sih = softener / "well": Kenapa sih? · Enak sih, tapi mahal.
+    - deh = OK then: Ya udah deh.
+    - kan = right? / you know: Kan sudah saya bilang.
+    - ya = OK? (softens requests): Tunggu sebentar, ya.
+    All informal — keep them out of formal emails.
+examples:
+  - text: Wah, pantainya indah banget!
+    en: Wow, the beach is so beautiful!
+    ar_eg: ياه، البحر جميل أوي!
+    ar: يا للروعة، الشاطئ جميل جدًا!
+    register: informal
+  - text: Aduh, dompet saya ketinggalan!
+    en: Oh no, I left my wallet behind!
+    ar_eg: يا نهار، المحفظة نسيتها!
+    ar: يا للمصيبة، نسيت محفظتي!
+    register: informal
+  - text: Kok kamu nggak bilang?
+    en: How come you didn't tell me?
+    ar_eg: إزاي ماقلتليش؟
+    ar: كيف لم تخبرني؟
+    register: informal
+  - text: Ikut dong!
+    en: Let me come too!
+    ar_eg: خدوني معاكم بقى!
+    ar: خذوني معكم!
+    register: informal
+mistakes:
+  - wrong: Dengan hormat, kirim dokumennya dong.
+    right: Dengan hormat, mohon kirimkan dokumennya.
+    why:
+      ar_eg: dong عامية؛ في الرسمي استخدم mohon.
+      ar: dong عامية، والرسمي mohon.
+      en: dong is casual; formal writing uses mohon.
+arabic_bridge:
+  ar_eg: kok ≈ «إزاي يعني؟»، dong ≈ «بقى»، kan ≈ «مش كده؟»، aduh ≈ «آه / يا خبر». المصري عنده نفس الحروف دي بالظبط!
+  ar: "لكل منها نظير عامي: dong ≈ «بقى»، kan ≈ «أليس كذلك؟»."
+  en: Egyptian has exact matches — dong ≈ «بقى», kan ≈ «مش كده؟», kok ≈ «إزاي يعني؟».
+tags: [particles, informal, spoken]
+see_also: [id.chat.abbreviations]
+review:
+  status: draft
+  verified: false

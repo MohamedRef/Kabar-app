@@ -1,0 +1,69 @@
+schema: kabar.grammar/v1
+id: id.prefix.peng.agent
+language: id
+level: bipa2
+title:
+  target: peN- (penulis, pembaca, penyanyi, pedagang)
+  en: "peN-: the person who does it"
+  ar_eg: "peN-: اللي بيعمل الحاجة (الكاتب، القارئ)"
+  ar: "peN-: صياغة اسم الفاعل"
+summary:
+  ar_eg: "peN- + الجذر = الشخص اللي بيعمل الفعل، وبيتغير زي meN- بالظبط: tulis → penulis (كاتب)."
+  ar: "peN- + الجذر = اسم الفاعل، وتتغير صورها كـ meN- تمامًا: tulis → penulis (كاتب)."
+  en: "peN- + root = the person who does it; it changes shape exactly like meN-: tulis → penulis (writer)."
+pattern:
+  - "pe- / pem- / pen- / peny- / peng- / penge- + root (same rules as meN-)"
+  - pe- + some ber- roots (pedagang, pelajar, petani)
+explanation:
+  ar_eg: |
+    لو عرفت meN- يبقى عرفت peN-: نفس التغييرات بس me → pe:
+    baca → membaca → pembaca (قارئ)
+    tulis → menulis → penulis (كاتب)
+    nyanyi → menyanyi → penyanyi (مغني)
+    ajar → mengajar → pengajar (مدرّس)
+    jual → menjual → penjual (بياع)
+    ومع أفعال ber- غالبًا pe- بس: dagang → berdagang → pedagang (تاجر)، tani → bertani → petani (فلاح)، ajar → belajar → pelajar (طالب).
+    وpeN- ممكن كمان تعمل «أداة»: penghapus (أستيكة)، pendingin (تكييف). وكمان «صفة في الشخص»: pemalu (خجول)، pemarah (عصبي).
+  ar: |
+    من عرف meN- عرف peN-، فالتغيرات نفسها مع إبدال me بـ pe:
+    baca → pembaca (قارئ)، tulis → penulis (كاتب)، nyanyi → penyanyi (مغنٍّ)، ajar → pengajar (معلم)، jual → penjual (بائع).
+    ومع أفعال ber- تأتي pe- غالبًا: pedagang (تاجر)، petani (فلاح)، pelajar (طالب).
+    وقد تدل peN- على الآلة: penghapus (ممحاة)، pendingin (مكيّف)، أو على صفة لازمة: pemalu (خجول)، pemarah (غضوب).
+  en: |
+    Know meN- and you know peN-: same sound changes, me → pe:
+    baca → pembaca (reader), tulis → penulis (writer), nyanyi → penyanyi (singer), ajar → pengajar (teacher), jual → penjual (seller).
+    With ber- verbs it's usually pe-: pedagang (trader), petani (farmer), pelajar (pupil).
+    peN- can also make tools — penghapus (eraser), pendingin (cooler) — and character traits — pemalu (shy), pemarah (hot-tempered).
+examples:
+  - text: Ayah saya seorang pedagang.
+    en: My father is a trader.
+    ar_eg: أبويا تاجر.
+    ar: أبي تاجر.
+  - text: Penulis buku ini orang Bali.
+    en: The author of this book is Balinese.
+    ar_eg: كاتب الكتاب ده من بالي.
+    ar: مؤلف هذا الكتاب من بالي.
+  - text: Penjual itu ramah sekali.
+    en: That seller is very friendly.
+    ar_eg: البياع ده لطيف جدًا.
+    ar: ذلك البائع ودود جدًا.
+  - text: Adik saya pemalu.
+    en: My younger sibling is shy.
+    ar_eg: أخويا الصغير مكسوف على طول.
+    ar: أخي الأصغر خجول.
+mistakes:
+  - wrong: petulis
+    right: penulis
+    why:
+      ar_eg: "نفس قاعدة meN-: t بتقع وتبقى pen-."
+      ar: "كقاعدة meN-: تسقط t وتصير pen-."
+      en: "Same as meN-: t drops → pen-."
+arabic_bridge:
+  ar_eg: "penulis ≈ «كاتب»، pembaca ≈ «قارئ» — زي وزن «فاعل» في العربي: جذر + قالب = الشخص اللي بيعمل."
+  ar: "peN- تقابل وزن «فاعل»: الجذر في قالب يدل على من يقوم بالفعل."
+  en: "peN- does the job of the Arabic فاعل pattern: root + template = the doer."
+tags: [affix, noun, morphology]
+see_also: [id.prefix.men.basic, id.suffix.an.result]
+review:
+  status: draft
+  verified: false
