@@ -1,0 +1,225 @@
+schema: kabar.lesson/v1
+id: bipa4.u03.l02
+language: id
+title: Menceritakan sejarah
+can_do:
+  ar_eg: تتكلم عن التاريخ والعادات بأفعال -kan (يحكي، يناقش، يوصّل).
+  ar: أن تتحدث عن التاريخ والعادات بأفعال -kan.
+  en: Talk about history with -kan verbs.
+slides:
+  - title: Bercerita tentang → menceritakan
+    body:
+      ar_eg: |
+        -kan بتخلي «الموضوع» مفعول مباشر، فـ tentang بتختفي:
+        bercerita tentang sejarah → menceritakan sejarah = يحكي التاريخ
+        berbicara tentang adat → membicarakan adat = يناقش العادات
+        بعد الأفعال دي ما تقولش tentang تاني!
+      ar: |
+        تجعل -kan الموضوعَ مفعولًا مباشرًا فتسقط tentang:
+        bercerita tentang sejarah → menceritakan sejarah = يروي التاريخ
+        berbicara tentang adat → membicarakan adat = يناقش العادات
+        ولا تُذكر tentang بعد هذه الأفعال.
+      en: |
+        -kan makes the topic a direct object, so tentang disappears:
+        bercerita tentang sejarah → menceritakan sejarah = tell the history
+        berbicara tentang adat → membicarakan adat = discuss the customs
+        No tentang after these verbs!
+    grammar: id.confix.men-kan
+    examples:
+      - text: Pemandu itu menceritakan sejarah rumah tongkonan.
+        ar_eg: المرشد حكى تاريخ بيوت التونجكونان.
+        ar: روى المرشد تاريخ بيوت التونغكونان.
+        en: The guide told the history of the tongkonan houses.
+      - text: Keluarga besar berkumpul dan membicarakan adat.
+        ar_eg: العيلة الكبيرة بتتجمع وتتناقش في العادات.
+        ar: تجتمع العائلة الكبيرة وتناقش العادات.
+        en: The extended family gathers and discusses the customs.
+  - title: Menyampaikan salam
+    body:
+      ar_eg: |
+        ومع حاجة «بتتنقل» -kan بتخليها المفعول: menyampaikan salam = يوصّل السلام، menyampaikan pesan = يوصّل رسالة.
+        وكلمتين من العربي: adat من «عادة»، وwarisan (ميراث / تراث) من «وارث».
+        وleluhur (الأجداد) فاكرها؟ تكرار جزئي من luhur!
+      ar: |
+        ومع الشيء المنقول تجعله -kan مفعولًا: menyampaikan salam = يبلّغ السلام، menyampaikan pesan = يبلّغ رسالة.
+        ومن العربية: adat من «عادة»، وwarisan (الإرث والتراث) من «وارث».
+        وleluhur (الأسلاف) تكرار جزئي من luhur.
+      en: |
+        With a thing that gets passed on, -kan makes it the object: menyampaikan salam = pass on greetings, menyampaikan pesan = deliver a message.
+        Two Arabic loans: adat ← «عادة», warisan (heritage) ← «وارث».
+        And leluhur (ancestors) — partial doubling of luhur, from Unit 2!
+    grammar: id.confix.men-kan
+    examples:
+      - text: Tongkonan adalah warisan leluhur orang Toraja.
+        ar_eg: التونجكونان ميراث من أجداد أهل توراجا.
+        ar: التونغكونان إرث من أسلاف أهل توراجا.
+        en: The tongkonan is a heritage from the Toraja ancestors.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: menceritakan
+        ar_eg: يحكي (حاجة)
+        ar: يروي
+        en: tell (about)
+      - text: membicarakan
+        ar_eg: يناقش / يتكلم في
+        ar: يناقش
+        en: discuss
+      - text: menyampaikan
+        ar_eg: يوصّل (سلام / رسالة)
+        ar: يبلّغ
+        en: convey, pass on
+      - text: adat
+        ar_eg: عادات وتقاليد
+        ar: العادات والتقاليد
+        en: custom, tradition
+      - text: leluhur
+        ar_eg: الأجداد
+        ar: الأسلاف
+        en: ancestors
+      - text: warisan
+        ar_eg: ميراث / تراث
+        ar: إرث / تراث
+        en: heritage, inheritance
+    words: [menceritakan, membicarakan, menyampaikan, adat, leluhur, warisan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة صح؟
+      ar: أيّ جملة صحيحة؟
+      en: Which sentence is correct?
+    options: ["Kami membicarakan tentang adat Toraja.", "Kami membicarakan adat Toraja.", "Kami berbicara adat Toraja."]
+    answer: 1
+    explain:
+      ar_eg: membicarakan + الموضوع على طول. أو berbicara tentang + الموضوع. ما تجمعش الاتنين.
+      ar: membicarakan يليه الموضوع مباشرة، أو berbicara tentang، ولا يُجمع بينهما.
+      en: membicarakan + topic directly, or berbicara tentang + topic — never both.
+    words: [membicarakan, adat]
+  - id: e03
+    type: listen
+    text: Pemandu itu menceritakan sejarah leluhur orang Toraja.
+    options: ["Pemandu itu membicarakan sejarah leluhur orang Toraja.", "Pemandu itu menceritakan sejarah rumah orang Toraja.", "Pemandu itu menceritakan sejarah leluhur orang Toraja."]
+    answer: 2
+    meaning:
+      ar_eg: المرشد حكى تاريخ أجداد أهل توراجا.
+      ar: روى المرشد تاريخ أسلاف أهل توراجا.
+      en: The guide told the history of the Toraja ancestors.
+    words: [menceritakan, leluhur]
+  - id: e04
+    type: multiple_choice
+    question: Tongkonan adalah ___ leluhur yang harus dijaga.
+    question_meaning:
+      ar_eg: التونجكونان … من الأجداد لازم نحافظ عليه.
+      ar: التونغكونان … من الأسلاف يجب الحفاظ عليه.
+      en: The tongkonan is a … from the ancestors that must be protected.
+    options: ["warisan", "salam", "bercerita"]
+    answer: 0
+    words: [warisan, leluhur]
+  - id: e05
+    type: fill_blank
+    sentence: Tolong ___ salam saya kepada keluarga Anda.
+    meaning:
+      ar_eg: من فضلك سلّملي على عيلتك.
+      ar: أرجو أن تبلّغ تحياتي لأسرتك.
+      en: Please give my regards to your family.
+    options: [sampaikan, ceritakan, bicarakan]
+    answers: [sampaikan]
+    words: [menyampaikan]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: جدي حكى تاريخ التونجكونان.
+      ar: روى جدي تاريخ التونغكونان.
+      en: Grandfather told the history of the tongkonan.
+    answer: Kakek menceritakan sejarah tongkonan.
+    distractors: [tentang, diceritakan]
+    words: [menceritakan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: اتناقشنا في عادات توراجا.
+      ar: ناقشنا عادات توراجا.
+      en: We discussed Toraja customs.
+    answers:
+      - Kami membicarakan adat Toraja.
+      - Kami membicarakan adat Toraja
+      - Kita membicarakan adat Toraja.
+      - Kami berbicara tentang adat Toraja.
+      - Kami membicarakan adat orang Toraja.
+      - Kami membicarakan adat istiadat Toraja.
+      - Kami membahas adat Toraja.
+    words: [membicarakan, adat]
+  - id: e08
+    type: speaking
+    text: Pak Yohanis menyampaikan pesan leluhur, yaitu menjaga warisan ini.
+    meaning:
+      ar_eg: الأستاذ يوهانس وصّل وصية الأجداد، وهي إننا نحافظ على التراث ده.
+      ar: بلّغ السيد يوهانس وصية الأسلاف، وهي الحفاظ على هذا الإرث.
+      en: Pak Yohanis passed on the ancestors' message — to protect this heritage.
+    words: [menyampaikan, leluhur, warisan]
+dialogue:
+  title: Di depan tongkonan
+  lines:
+    - speaker: Mohamed
+      text: Pak, bisa Bapak menceritakan sejarah tongkonan ini?
+      ar_eg: يا أستاذ، ممكن تحكيلي تاريخ التونجكونان ده؟
+      ar: يا سيدي، هل تروي لي تاريخ هذا التونغكونان؟
+      en: Sir, could you tell me the history of this tongkonan?
+    - speaker: Pak Yohanis
+      text: Tentu. Rumah ini warisan leluhur kami, dibangun ratusan tahun yang lalu.
+      ar_eg: طبعًا. البيت ده ميراث من أجدادنا، اتبنى من مئات السنين.
+      ar: بالطبع. هذا البيت إرث من أسلافنا، بُني قبل مئات السنين.
+      en: Of course. This house is a heritage from our ancestors, built hundreds of years ago.
+    - speaker: Pak Yohanis
+      text: Di sini keluarga besar berkumpul dan membicarakan adat.
+      ar_eg: هنا العيلة الكبيرة بتتجمع وتتناقش في العادات.
+      ar: هنا تجتمع العائلة الكبيرة وتناقش العادات.
+      en: The extended family gathers here to discuss customs.
+    - speaker: Mohamed
+      text: Terima kasih, Pak. Saya akan menceritakan ini kepada keluarga saya di Mesir.
+      ar_eg: شكرًا يا أستاذ. هحكي ده لعيلتي في مصر.
+      ar: شكرًا يا سيدي، سأروي هذا لأسرتي في مصر.
+      en: Thank you, sir. I'll tell my family in Egypt about this.
+    - speaker: Pak Yohanis
+      text: Sampaikan salam kami untuk mereka!
+      ar_eg: سلّملنا عليهم!
+      ar: بلّغهم تحياتنا!
+      en: Give them our regards!
+new_words:
+  - word: menceritakan
+    pos: verb
+    ar_eg: يحكي (حاجة)
+    ar: يروي
+    en: tell (about something)
+  - word: membicarakan
+    pos: verb
+    ar_eg: يناقش / يتكلم في
+    ar: يناقش
+    en: discuss
+  - word: menyampaikan
+    pos: verb
+    ar_eg: يوصّل (سلام / رسالة)
+    ar: يبلّغ
+    en: convey, pass on
+  - word: adat
+    pos: noun
+    ar_eg: عادات وتقاليد
+    ar: العادات والتقاليد
+    en: custom, tradition
+    arabic: عادة
+  - word: leluhur
+    pos: noun
+    ar_eg: الأجداد
+    ar: الأسلاف
+    en: ancestors
+  - word: warisan
+    pos: noun
+    ar_eg: ميراث / تراث
+    ar: إرث / تراث
+    en: heritage, inheritance
+    arabic: وارث
+review:
+  status: draft
+  verified: false

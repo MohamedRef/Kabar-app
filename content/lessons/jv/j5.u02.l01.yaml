@@ -1,0 +1,243 @@
+schema: kabar.lesson/v1
+id: j5.u02.l01
+language: jv
+title: Di-… dening…
+can_do:
+  ar_eg: تقرا المبني للمجهول المكتوب بـ dening.
+  ar: أن تقرأ المبني للمجهول المكتوب مع dening.
+  en: Read written passives with dening.
+slides:
+  - title: Di- … dening = di- … oleh
+    body:
+      ar_eg: |
+        الأخبار بتحب المجهول. انت عارف di- من J1 (dituku = اتشترى). في الكتابة بييجي بعده dening = «بواسطة / على إيد» = oleh بالإندونيسي بالظبط.
+        ولو الفعل فيه -i أو -ake بتفضل زي ما هي: didandani = اتصلّح (diperbaiki).
+        وزي جرايدنا: «تم إصلاح الطريق من قِبَل الأهالي».
+      ar: |
+        تحب الأخبار المبني للمجهول. عرفت di- منذ J1 (dituku = اشتُري)، وفي الكتابة تليه dening = «من قِبَل / على يد» = oleh الإندونيسية تمامًا.
+        وتبقى اللاحقتان -i و-ake: didandani = أُصلح (diperbaiki).
+        كما تكتب صحفنا: «تم إصلاح الطريق من قِبَل الأهالي».
+      en: |
+        News loves the passive. You've known di- since J1 (dituku = was bought). In writing it's followed by dening = "by" = Indonesian oleh, exactly.
+        Suffixes -i and -ake stay: didandani = was repaired (diperbaiki).
+        Just like Arabic newspapers: «تم إصلاح الطريق من قِبَل الأهالي».
+    grammar: jv.passive.written
+    examples:
+      - text: Dalan iku didandani dening warga.
+        ar_eg: الطريق اتصلّح على إيد الأهالي.
+        ar: أصلح الأهالي الطريق.
+        en: The road was repaired by the residents.
+      - text: Lawang Sewu dibangun dening perusahaan sepur Walanda.
+        ar_eg: لاوانج سيوو اتبنى على إيد شركة سكة حديد هولندية.
+        ar: بنت شركةُ سكك حديد هولندية لاوانغ سيوو.
+        en: Lawang Sewu was built by a Dutch railway company.
+  - title: Dening aku? Ora!
+    body:
+      ar_eg: |
+        لو الفاعل واضح، الجرنال بيشيل dening خالص: «Lawang Sewu dibangun ing jaman Walanda».
+        ولو الفاعل «أنا»، الجاوي مايقولش «dening aku». بيقول tak- زي ما اتعلمت، وفي الكتابة الرسمية بتتكتب dak-: dakwaca = أنا قريته.
+      ar: |
+        إذا كان الفاعل معروفًا حُذفت dening: «Lawang Sewu dibangun ing jaman Walanda».
+        وإذا كان الفاعل «أنا» فلا يقال «dening aku»، بل tak- كما تعلمت، وتُكتب في الرسمي dak-: dakwaca = قرأتُه.
+      en: |
+        When the doer is obvious, news drops dening altogether: "Lawang Sewu dibangun ing jaman Walanda".
+        And when the doer is "I", Javanese never says "dening aku". It uses tak-, as you learned, written dak- in formal texts: dakwaca = I read it.
+    grammar: jv.passive.written
+    examples:
+      - text: Lawang Sewu dibangun ing jaman Walanda.
+        ar_eg: لاوانج سيوو اتبنى أيام الهولنديين.
+        ar: بُني لاوانغ سيوو في عهد الهولنديين.
+        en: Lawang Sewu was built in the Dutch era.
+      - text: Buku iki dakwaca wingi.
+        ar_eg: الكتاب ده قريته امبارح.
+        ar: قرأتُ هذا الكتاب أمس.
+        en: I read this book yesterday.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: dening
+        ar_eg: بواسطة / على إيد (= oleh)
+        ar: من قِبَل (= oleh)
+        en: by (= oleh)
+      - text: warga
+        ar_eg: الأهالي / السكان
+        ar: الأهالي / السكان
+        en: residents
+      - text: didandani
+        ar_eg: اتصلّح
+        ar: أُصلِح
+        en: was repaired (= diperbaiki)
+      - text: dibangun
+        ar_eg: اتبنى
+        ar: بُني
+        en: was built
+      - text: warta
+        ar_eg: خبر / أخبار
+        ar: خبر / أخبار
+        en: news (= berita)
+    words: [dening, warga, didandani, dibangun, warta]
+  - id: e02
+    type: multiple_choice
+    question: Dalan iku didandani dening warga.
+    question_meaning:
+      ar_eg: مين اللي صلّح الطريق؟
+      ar: من أصلح الطريق؟
+      en: Who repaired the road?
+    options: [Pak Harjo, warga, wong Walanda]
+    answer: 1
+    explain:
+      ar_eg: الفاعل دايمًا بعد dening، وهنا dening warga = على إيد الأهالي.
+      ar: الفاعل يأتي بعد dening، وهنا dening warga = على يد الأهالي.
+      en: The doer always follows dening; here dening warga = by the residents.
+    words: [dening, warga, didandani]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تكتب «أنا قريت الكتاب ده امبارح»؟
+      ar: كيف تكتب «قرأتُ هذا الكتاب أمس»؟
+      en: How do you write "I read this book yesterday"?
+    options: ['Buku iki dakwaca wingi.', 'Buku iki diwaca dening aku wingi.']
+    answer: 0
+    explain:
+      ar_eg: مع «أنا» الجاوي بيستخدم dak- / tak-، مش dening aku.
+      ar: مع المتكلم تُستعمل dak- / tak- لا dening aku.
+      en: With "I" as the doer, Javanese uses dak- / tak-, not dening aku.
+    words: [dening]
+  - id: e04
+    type: listen
+    text: Lawang Sewu dibangun ing jaman Walanda.
+    options:
+      - Lawang Sewu didandani ing jaman Walanda.
+      - Lawang Sewu dibangun dening warga.
+      - Lawang Sewu dibangun ing jaman Walanda.
+    answer: 2
+    meaning:
+      ar_eg: لاوانج سيوو اتبنى أيام الهولنديين.
+      ar: بُني لاوانغ سيوو في عهد الهولنديين.
+      en: Lawang Sewu was built in the Dutch era.
+    words: [dibangun]
+  - id: e05
+    type: fill_blank
+    sentence: Lawang Sewu dibangun ___ perusahaan sepur Walanda.
+    meaning:
+      ar_eg: لاوانج سيوو اتبنى على إيد شركة سكة حديد هولندية.
+      ar: بنت شركةُ سكك حديد هولندية لاوانغ سيوو.
+      en: Lawang Sewu was built by a Dutch railway company.
+    options: [saka, kang, dening]
+    answers: [dening]
+    words: [dening, dibangun]
+  - id: e06
+    type: fill_blank
+    sentence: ___ iki ditulis dening Pak Harjo.
+    meaning:
+      ar_eg: الخبر ده كتبه الأستاذ هارجو.
+      ar: كتب هذا الخبرَ السيدُ هارجو.
+      en: This news item was written by Pak Harjo.
+    options: [Warga, Warta, Dalan]
+    answers: [Warta]
+    words: [warta]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: (بأسلوب الخبر) الطريق اتصلّح على إيد الأهالي.
+      ar: (بأسلوب الخبر) أصلح الأهالي الطريق.
+      en: (news style) The road was repaired by the residents.
+    answer: Dalan iku didandani dening warga.
+    distractors: [oleh, aku]
+    words: [didandani, dening, warga]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بأسلوب الخبر) الجامع اتبنى على إيد الأهالي.
+      ar: (بأسلوب الخبر) بنى الأهالي المسجد.
+      en: (news style) The mosque was built by the residents.
+    answers:
+      - Masjid iku dibangun dening warga.
+      - Masjid iki dibangun dening warga.
+      - Masjid dibangun dening warga.
+      - Masjide dibangun dening warga.
+    words: [dibangun, dening, warga]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Warta iki ditulis dening Pak Harjo.
+    answers_meaning:
+      ar_eg:
+        - الخبر ده كتبه الأستاذ هارجو.
+        - الخبر ده اتكتب على إيد الأستاذ هارجو.
+        - الخبر ده كتبه عم هارجو.
+        - الخبر ده كتبه باك هارجو.
+        - الخبر ده اتكتب بواسطة باك هارجو.
+      ar:
+        - كتب هذا الخبرَ السيدُ هارجو.
+        - كُتب هذا الخبر بقلم السيد هارجو.
+        - هذا الخبر كتبه السيد هارجو.
+        - كتب هذا الخبر باك هارجو.
+        - هذا الخبر كتبه باك هارجو.
+      en:
+        - This news item was written by Pak Harjo.
+        - This news was written by Pak Harjo.
+        - This news story was written by Pak Harjo.
+        - This report was written by Pak Harjo.
+        - Pak Harjo wrote this news item.
+        - Pak Harjo wrote this news.
+    words: [warta, dening]
+dialogue:
+  title: Ing Lawang Sewu
+  lines:
+    - speaker: Pak Harjo
+      text: Mas, gedhong iki dibangun dening perusahaan sepur Walanda.
+      ar_eg: يا ابني، المبنى ده بنته شركة سكة حديد هولندية.
+      ar: يا بني، بنت هذا المبنى شركةُ سكك حديد هولندية.
+      en: Young man, this building was built by a Dutch railway company.
+    - speaker: Mohamed
+      text: Ing jaman Walanda, Pak?
+      ar_eg: أيام الهولنديين يا عمّو؟
+      ar: في عهد الهولنديين يا سيدي؟
+      en: In the Dutch era, sir?
+    - speaker: Pak Harjo
+      text: Iya. Saiki wis didandani. Wacanen warta iki.
+      ar_eg: آه. ودلوقتي اتصلّح خلاص. اقرا الخبر ده.
+      ar: نعم. وقد أُصلح الآن. اقرأ هذا الخبر.
+      en: Yes. It's been restored now. Read this news item.
+    - speaker: Mohamed
+      text: Gedhong iki didandani dening perusahaan sepur.
+      ar_eg: (بيقرا) المبنى ده اتصلّح على إيد شركة السكة الحديد.
+      ar: (يقرأ) أصلحت شركةُ السكك الحديدية هذا المبنى.
+      en: (reading) This building was restored by the railway company.
+    - speaker: Mohamed
+      text: Matur nuwun, Pak. Kula remen maos warta.
+      ar_eg: متشكر يا عمّو. أنا بحب أقرا الأخبار.
+      ar: شكرًا يا سيدي. أحب قراءة الأخبار.
+      en: Thank you, sir. I love reading the news.
+new_words:
+  - word: dening
+    pos: preposition
+    ar_eg: بواسطة / على إيد (في المبني للمجهول)
+    ar: من قِبَل (في المبني للمجهول)
+    en: by (agent of a passive) = oleh
+  - word: warga
+    pos: noun
+    ar_eg: الأهالي / السكان
+    ar: الأهالي / السكان
+    en: residents = warga
+  - word: didandani
+    pos: verb
+    ar_eg: اتصلّح (من dandan)
+    ar: أُصلِح (من dandan)
+    en: was repaired (from dandan) = diperbaiki
+  - word: dibangun
+    pos: verb
+    ar_eg: اتبنى
+    ar: بُني
+    en: was built = dibangun
+  - word: warta
+    pos: noun
+    ar_eg: خبر / أخبار
+    ar: خبر / أخبار
+    en: news = berita
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,196 @@
+schema: kabar.lesson/v1
+id: j5.u04.l04
+language: jv
+title: Screenshot Decoder
+can_do:
+  ar_eg: تقرا سكرين شوت من جروب شات بمساعدة الـ Reader.
+  ar: أن تقرأ لقطة شاشة من محادثة جماعية بمساعدة القارئ (Reader).
+  en: Read a group-chat screenshot with the Reader.
+slides:
+  - title: Grup "Dolan Ambarawa"
+    body:
+      ar_eg: |
+        سكرين شوت من جروب صحاب بيخططوا لفسحة. لو فتحته في الـ Reader بتاع Kabar، هيلوّن كل كلمة حسب لغتها. بس جرّب الأول لوحدك:
+        blm = belum (لسه)، iso = isa (يقدر) بإملا الشات، gpp = gak papa (مفيش مشكلة)، kuliah = محاضرة / جامعة.
+      ar: |
+        لقطة شاشة من مجموعة أصدقاء يخططون لنزهة. لو فتحتها في القارئ (Reader) في Kabar للوّن كل كلمة بحسب لغتها، لكن جرّب وحدك أولًا:
+        blm = belum (لم بعد)، وiso = isa (يستطيع) بإملاء الدردشة، وgpp = gak papa (لا بأس)، وkuliah = محاضرة / دراسة جامعية.
+      en: |
+        A screenshot from a friends' group planning an outing. Open it in Kabar's Reader and every word gets coloured by language. But try it yourself first:
+        blm = belum (not yet), iso = isa (can) in chat spelling, gpp = gak papa (no problem), kuliah = lectures, university.
+    grammar: jv.codemix
+    examples:
+      - text: Guys, sesuk jadi dolan neng Ambarawa ora?
+        ar_eg: يا جماعة، الفسحة بتاعة بكرة في أمباراوا لسه قايمة؟
+        ar: يا جماعة، هل ما زالت نزهة الغد إلى أمباراوا قائمة؟
+        en: Guys, is tomorrow's trip to Ambarawa still on?
+      - text: Aku blm iso, ana kuliah. Sorry yo.
+        ar_eg: أنا لسه مش هقدر، عندي محاضرة. سوري.
+        ar: لا أستطيع بعد، عندي محاضرة. آسف.
+        en: I can't yet, I have class. Sorry.
+      - text: Gpp, mengko fotone tak kirim neng grup.
+        ar_eg: مفيش مشكلة، هبعت الصور على الجروب بعدين.
+        ar: لا بأس، سأرسل الصور إلى المجموعة لاحقًا.
+        en: No problem, I'll send the photos to the group later.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question: Aku blm iso, ana kuliah. Sorry yo.
+    question_meaning:
+      ar_eg: الشخص ده هييجي؟
+      ar: هل سيأتي هذا الشخص؟
+      en: Is this person coming?
+    options: ['Bisa datang.', 'Belum bisa datang.', 'Sudah datang.']
+    answer: 1
+    explain:
+      ar_eg: blm = belum، وiso = isa (يقدر). يعني «لسه مش قادر».
+      ar: blm = belum وiso = isa، أي «لا يستطيع بعد».
+      en: "blm = belum and iso = isa (can): \"can't yet\"."
+    words: [blm, iso]
+  - id: e02
+    type: multiple_choice
+    question: gpp
+    question_meaning:
+      ar_eg: gpp اختصار لإيه؟
+      ar: gpp اختصار لأي عبارة؟
+      en: What is gpp short for?
+    options: [gak papa, gampang, gimana]
+    answer: 0
+    words: [gpp]
+  - id: e03
+    type: listen
+    text: Mengko fotone tak kirim neng grup.
+    options: ['Mengko fotone dishare neng grup.', 'Sesuk fotone tak kirim neng grup.', 'Mengko fotone tak kirim neng grup.']
+    answer: 2
+    meaning:
+      ar_eg: هبعت الصور على الجروب بعدين.
+      ar: سأرسل الصور إلى المجموعة لاحقًا.
+      en: I'll send the photos to the group later.
+    words: [grup]
+  - id: e04
+    type: fill_blank
+    sentence: Aku ___ iso, ana kuliah.
+    meaning:
+      ar_eg: أنا لسه مش هقدر، عندي محاضرة.
+      ar: لا أستطيع بعد، عندي محاضرة.
+      en: I can't yet, I have class.
+    options: [udh, blm, bgt]
+    answers: [blm]
+    words: [blm, iso, kuliah]
+  - id: e05
+    type: fill_blank
+    sentence: Sorry, aku ana ___.
+    meaning:
+      ar_eg: سوري، عندي محاضرة.
+      ar: آسف، عندي محاضرة.
+      en: Sorry, I have class.
+    options: [akun, kuliah, grup]
+    answers: [kuliah]
+    words: [kuliah]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: "رجّع الشات ده لجاوي رسمي: «Aku blm iso, ana kuliah.»"
+      ar: "ردّ هذه الدردشة إلى جاوية قياسية: «Aku blm iso, ana kuliah.»"
+      en: "Turn this chat into standard Javanese: «Aku blm iso, ana kuliah.»"
+    answer: Aku durung isa, ana kuliah.
+    distractors: [blm, iso]
+    words: [blm, iso]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Gpp, mengko fotone tak kirim neng grup.
+    answers_meaning:
+      ar_eg:
+        - مفيش مشكلة، هبعت الصور على الجروب بعدين.
+        - ولا يهمك، هبعت الصور على الجروب بعدين.
+        - مفيش مشكلة، بعدين هبعت الصور على الجروب.
+        - مش مشكلة، هبعت الصور على الجروب بعدين.
+        - عادي، هبعت الصور على الجروب بعدين.
+      ar:
+        - لا بأس، سأرسل الصور إلى المجموعة لاحقًا.
+        - لا مشكلة، سأرسل الصور إلى المجموعة لاحقًا.
+        - لا بأس، سأرسل الصور في المجموعة لاحقًا.
+      en:
+        - No problem, I'll send the photos to the group later.
+        - No problem, I'll send the photos in the group later.
+        - It's fine, I'll send the photos to the group later.
+        - No worries, I'll send the photos to the group later.
+        - No problem, later I'll send the photos to the group.
+        - No problem, I'll send the photo to the group later.
+    words: [gpp]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (شات) مفيش مشكلة، هبعتها بعدين.
+      ar: (دردشة) لا بأس، سأرسلها لاحقًا.
+      en: (chat) No problem, I'll send it later.
+    answers:
+      - Gpp, mengko tak kirim.
+      - Gpp, mengko tak kirim ya.
+      - Gpp, tak kirim mengko.
+      - Ora apa-apa, mengko tak kirim.
+      - Gak papa, mengko tak kirim.
+      - Gpp, mengko takkirim.
+    words: [gpp]
+  - id: e09
+    type: speaking
+    text: Aku durung isa teka, ana kuliah.
+    meaning:
+      ar_eg: لسه مش هقدر آجي، عندي محاضرة.
+      ar: لا أستطيع المجيء بعد، عندي محاضرة.
+      en: I can't come yet, I have class.
+    words: [kuliah]
+dialogue:
+  title: Maca screenshot
+  lines:
+    - speaker: Mas Bayu
+      text: Mohamed, wis maca grup?
+      ar_eg: يا محمد، قريت الجروب؟
+      ar: يا محمد، هل قرأت المجموعة؟
+      en: Mohamed, have you read the group?
+    - speaker: Mohamed
+      text: Wis. "Gpp" iku apa, Mas?
+      ar_eg: آه. يعني إيه «gpp» يا بايو؟
+      ar: نعم. ما «gpp» يا بايو؟
+      en: Yes. What's "gpp", Bayu?
+    - speaker: Mas Bayu
+      text: Gak papa, padha karo ora apa-apa.
+      ar_eg: gak papa، يعني زي ora apa-apa، مفيش مشكلة.
+      ar: gak papa، مثل ora apa-apa، أي لا بأس.
+      en: Gak papa, same as ora apa-apa, no problem.
+    - speaker: Mohamed
+      text: Lan "iso" iku "isa", ta?
+      ar_eg: وiso هي isa، صح؟
+      ar: وiso هي isa، أليس كذلك؟
+      en: And "iso" is "isa", right?
+    - speaker: Mas Bayu
+      text: Bener! Kowe wis dadi Screenshot Decoder.
+      ar_eg: صح! إنت بقيت «فكّاك سكرين شوتات».
+      ar: صحيح! صرت «مفكّك لقطات الشاشة».
+      en: Right! You've become a Screenshot Decoder.
+new_words:
+  - word: blm
+    pos: adverb
+    ar_eg: لسه / لم بعد (اختصار belum)
+    ar: لم بعد (اختصار belum)
+    en: not yet (short for belum)
+  - word: iso
+    pos: verb
+    ar_eg: يقدر (isa بإملا الشات)
+    ar: يستطيع (isa بإملاء الدردشة)
+    en: can (chat spelling of isa)
+  - word: gpp
+    pos: phrase
+    ar_eg: مفيش مشكلة (اختصار gak papa)
+    ar: لا بأس (اختصار gak papa)
+    en: no problem (short for gak papa)
+  - word: kuliah
+    pos: noun
+    ar_eg: محاضرة / دراسة في الجامعة
+    ar: محاضرة / دراسة جامعية
+    en: lectures, university classes = kuliah
+review:
+  status: draft
+  verified: false

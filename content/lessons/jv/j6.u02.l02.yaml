@@ -1,0 +1,201 @@
+schema: kabar.lesson/v1
+id: j6.u02.l02
+language: jv
+title: Taling lan pepet
+can_do:
+  ar_eg: تكتب é / è وê.
+  ar: أن تكتب é / è وê.
+  en: Write é / è and ê.
+slides:
+  - title: Taling
+    body:
+      ar_eg: |
+        taling = علامة é / è. بتتكتب قبل الحرف (على شماله)، بس بتتقري بعده: ꦏꦺ = ke.
+        é (زي «بيت» بالمصري) وè (أفتح شوية) ليهم نفس العلامة.
+        وعلى الكيبورد أو التابلت: بتكتب الحرف الأول وبعدين العلامة، والخط بيحطها قبله لوحده.
+      ar: |
+        taling = علامة é / è، تُكتب قبل الحرف (إلى يساره) وتُقرأ بعده: ꦏꦺ = ke.
+        ولـ é وè علامة واحدة، والفرق في النطق فقط.
+        وعند الطباعة يُكتب الحرف أولًا ثم العلامة، والخط يضعها قبله.
+      en: |
+        taling = the é / è mark. It's written BEFORE the letter (to its left) but read after it: ꦏꦺ = ke.
+        é and è share this one mark; only the pronunciation differs.
+        On a keyboard or tablet, type the letter first and then the mark; the font moves it in front.
+    grammar: jv.aksara.sandhangan-swara
+    examples:
+      - text: ꦏꦺꦤꦺ (kéné)
+        ar_eg: هنا — taling قبل ꦏ وقبل ꦤ
+        ar: هنا — taling قبل ꦏ وꦤ
+        en: here — taling before ꦏ and before ꦤ
+      - text: ꦱꦠꦺ (saté)
+        ar_eg: ساتيه (أسياخ مشوية)
+        ar: ساتيه (أسياخ مشوية)
+        en: satay
+  - title: Pepet
+    body:
+      ar_eg: |
+        pepet ꦏꦼ = ê، الحركة الخفيفة المختلسة (ə)، زي e في كلمة «sekolah». بتتحط فوق الحرف.
+        في الإملا اللاتيني الاتنين بيتكتبوا e عادي (sega، kene)، فالخط الجاوي بيقولك الفرق: ꦱꦼꦒ sêga (رز) فيها pepet، وꦏꦺꦤꦺ kéné فيها taling.
+      ar: |
+        pepet ꦏꦼ = ê، الصائت المختلس (ə) كـ e في «sekolah»، ويوضع فوق الحرف.
+        والإملاء اللاتيني يكتب الاثنين e، أما الخط الجاوي فيفرّق: ꦱꦼꦒ sêga (أرز) بـ pepet، وꦏꦺꦤꦺ kéné بـ taling.
+      en: |
+        pepet ꦏꦼ = ê, the light schwa (ə) of "sekolah". It sits above the letter.
+        Latin spelling writes both as plain e (sega, kene); aksara Jawa shows the difference: ꦱꦼꦒ sêga (rice) has pepet, ꦏꦺꦤꦺ kéné has taling.
+    grammar: jv.aksara.sandhangan-swara
+    examples:
+      - text: ꦱꦼꦒ (sêga)
+        ar_eg: رز
+        ar: أرز
+        en: rice
+      - text: ꦒꦼꦝꦺ (gêdhé)
+        ar_eg: كبير — pepet على ꦒ وtaling قبل ꦝ
+        ar: كبير — pepet على ꦒ وtaling قبل ꦝ
+        en: big — pepet on ꦒ, taling before ꦝ
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: taling
+        ar_eg: علامة é / è — قبل الحرف
+        ar: علامة é / è — قبل الحرف
+        en: the é / è mark — before the letter
+      - text: pepet
+        ar_eg: علامة ê (ə) — فوق الحرف
+        ar: علامة ê (ə) — فوق الحرف
+        en: the ê (ə) mark — above the letter
+      - text: teka
+        ar_eg: ييجي
+        ar: يأتي
+        en: come
+      - text: ꦏꦺꦤꦺ
+        ar_eg: هنا (kene)
+        ar: هنا (kene)
+        en: here (kene)
+    words: [taling, pepet, teka]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي علامة في ꦱꦼꦒ (رز)؟
+      ar: أي علامة في ꦱꦼꦒ (أرز)؟
+      en: Which mark is in ꦱꦼꦒ (rice)?
+    options: [taling, pepet, wulu]
+    answer: 1
+    words: [pepet]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي علامة في ꦏꦺꦤꦺ (هنا)؟
+      ar: أي علامة في ꦏꦺꦤꦺ (هنا)؟
+      en: Which mark is in ꦏꦺꦤꦺ (here)?
+    options: [pepet, suku, taling]
+    answer: 2
+    explain:
+      ar_eg: العلامة اللي قبل كل حرف هي taling = é.
+      ar: العلامة التي قبل كل حرف هي taling = é.
+      en: The mark in front of each letter is taling = é.
+    words: [taling]
+  - id: e04
+    type: listen
+    text: telu
+    question:
+      ar_eg: سمعت telu (تلاتة). بتتكتب إزاي؟
+      ar: سمعت telu (ثلاثة). كيف تُكتب؟
+      en: You heard telu (three). How is it written?
+    options: ["ꦠꦼꦭꦸ", "ꦠꦺꦭꦸ", "ꦠꦭꦸ"]
+    answer: 0
+    explain:
+      ar_eg: الـ e في telu خفيفة مختلسة (ə)، يعني pepet فوق ꦠ.
+      ar: الـ e في telu مختلسة (ə)، فهي pepet فوق ꦠ.
+      en: The e in telu is the light schwa, so it's pepet above ꦠ.
+    meaning:
+      ar_eg: تلاتة
+      ar: ثلاثة
+      en: three
+    words: [pepet]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تكتب gedhe (كبير)؟ (gê-dhé)
+      ar: كيف تكتب gedhe (كبير)؟ (gê-dhé)
+      en: How do you write gedhe (big)? (gê-dhé)
+    options: ["ꦒꦺꦝꦺ", "ꦒꦼꦝꦺ", "ꦒꦼꦝꦼ"]
+    answer: 1
+    explain:
+      ar_eg: أول مقطع gê بـ pepet، وتاني مقطع dhé بـ taling.
+      ar: المقطع الأول gê بـ pepet، والثاني dhé بـ taling.
+      en: The first syllable gê takes pepet, the second dhé takes taling.
+    words: [pepet, taling]
+  - id: e06
+    type: fill_blank
+    sentence: ꦠꦼꦏ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: ييجي)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: يأتي)"
+      en: Type the reading in Latin letters. (It means "come".)
+    answers: [teka, têka]
+    words: [teka, pepet]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: ابني «teka kene» (تعالى هنا) مقطع مقطع.
+      ar: ركّب «teka kene» (تعالَ هنا) مقطعًا مقطعًا.
+      en: Build "teka kene" (come here), syllable by syllable.
+    answer: ꦠꦼ ꦏ ꦏꦺ ꦤꦺ
+    distractors: ["ꦠꦺ", "ꦏꦼ"]
+    words: [teka, taling, pepet]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦠꦼꦏꦏꦺꦤꦺ"
+      ar: "اكتب بالحروف اللاتينية: ꦠꦼꦏꦏꦺꦤꦺ"
+      en: "Write in Latin letters: ꦠꦼꦏꦏꦺꦤꦺ"
+    answers: [teka kene, tekakene, têka kéné]
+    explain:
+      ar_eg: tê-ka (pepet) + ké-né (taling) = teka kene، يعني تعالى هنا. وبنكتبها بالإملا اللاتيني e عادي.
+      ar: tê-ka (pepet) + ké-né (taling) = teka kene أي تعالَ هنا، وتُكتب لاتينيًا بـ e عادية.
+      en: tê-ka (pepet) + ké-né (taling) = teka kene, "come here". Latin spelling writes plain e.
+    words: [teka, taling]
+dialogue:
+  title: Ing warung
+  lines:
+    - speaker: Dimas
+      text: Med, teka kene! Iki warung sega.
+      ar_eg: يا محمد، تعالى هنا! ده مطعم رز.
+      ar: يا محمد، تعالَ هنا! هذا مطعم أرز.
+      en: Med, come here! This is a rice stall.
+    - speaker: Mohamed
+      text: Ing papan ana tulisan sega. Iki pepet, ta?
+      ar_eg: على اللوحة مكتوب sega. دي pepet، صح؟
+      ar: على اللوحة مكتوب sega. هذه pepet، أليس كذلك؟
+      en: The sign says sega. That's pepet, right?
+    - speaker: Dimas
+      text: Bener! Lan kene nganggo taling.
+      ar_eg: صح! وkene بتتكتب بـ taling.
+      ar: صحيح! وkene تُكتب بـ taling.
+      en: Right! And kene is written with taling.
+    - speaker: Mohamed
+      text: Apik. Ayo mangan sega!
+      ar_eg: حلو. يلا ناكل رز!
+      ar: جميل. هيا نأكل الأرز!
+      en: Great. Let's eat some rice!
+new_words:
+  - word: taling
+    pos: noun
+    ar_eg: علامة é / è، بتتكتب قبل الحرف
+    ar: علامة é / è، تُكتب قبل الحرف
+    en: the é / è mark, written before the letter
+  - word: pepet
+    pos: noun
+    ar_eg: علامة ê (الحركة الخفيفة ə)، فوق الحرف
+    ar: علامة ê (الصائت المختلس ə)، فوق الحرف
+    en: the ê (schwa) mark, above the letter
+  - word: teka
+    pos: verb
+    ar_eg: ييجي (في سورابايا teko)
+    ar: يأتي (وفي سورابايا teko)
+    en: come (Surabaya teko) = datang
+review:
+  status: draft
+  verified: false

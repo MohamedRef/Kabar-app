@@ -1,0 +1,237 @@
+schema: kabar.lesson/v1
+id: bipa3.u03.l04
+language: id
+title: Sinopsis
+can_do:
+  ar_eg: تلخّص قصة فيلم في كام جملة (ملخّص).
+  ar: أن تلخّص قصة فيلم في بضع جمل.
+  en: Summarise a plot.
+slides:
+  - title: Sinopsis dalam tiga langkah
+    body:
+      ar_eg: |
+        الملخّص (sinopsis) بيمشي في تلات خطوات:
+        ١) البداية: Film ini bercerita tentang … = الفيلم ده بيحكي عن …
+        ٢) المشكلة: Konflik dimulai ketika … = المشكلة بتبدأ لما …
+        ٣) النهاية: Pada akhirnya, … = وفي الآخر، …
+      ar: |
+        يسير الملخّص (sinopsis) في ثلاث خطوات:
+        ١) البداية: Film ini bercerita tentang … = يحكي هذا الفيلم عن …
+        ٢) العقدة: Konflik dimulai ketika … = يبدأ الصراع حين …
+        ٣) النهاية: Pada akhirnya, … = وفي النهاية …
+      en: |
+        A synopsis goes in three steps:
+        1) Opening: Film ini bercerita tentang … = This film is about …
+        2) Conflict: Konflik dimulai ketika … = The conflict starts when …
+        3) Ending: Pada akhirnya, … = In the end, …
+    examples:
+      - text: Film ini bercerita tentang seorang nelayan muda di Gili.
+        ar_eg: الفيلم ده بيحكي عن صياد شاب في جيلي.
+        ar: يحكي هذا الفيلم عن صيّاد شاب في جيلي.
+        en: This film is about a young fisherman on Gili.
+      - text: Pada akhirnya, dia kembali ke rumah ayahnya.
+        ar_eg: وفي الآخر، بيرجع لبيت أبوه.
+        ar: وفي النهاية يعود إلى بيت أبيه.
+        en: In the end, he goes back to his father's house.
+  - title: mengakhiri, menghormati
+    grammar: id.confix.men-i
+    body:
+      ar_eg: |
+        فعلين -i جذرهم عربي:
+        akhir (من «آخر») → mengakhiri = يُنهي حاجة. وقارنها بـ berakhir = تخلص لوحدها.
+        hormat (من «حُرمة») → menghormati = يحترم.
+      ar: |
+        فعلان بـ-i أصلهما عربي:
+        akhir (من «آخِر») → mengakhiri = يُنهي شيئًا، وقارنه بـberakhir = ينتهي (لازم).
+        hormat (من «حُرمة») → menghormati = يحترم.
+      en: |
+        Two -i verbs with Arabic roots:
+        akhir (from «آخر») → mengakhiri = to end something. Compare berakhir = to come to an end (no object).
+        hormat (from «حرمة») → menghormati = to respect.
+    examples:
+      - text: Tokoh utama belajar menghormati ayahnya.
+        ar_eg: البطل بيتعلّم يحترم أبوه.
+        ar: تتعلّم الشخصية الرئيسية احترام أبيها.
+        en: The main character learns to respect his father.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: sinopsis
+        ar_eg: ملخّص القصة
+        ar: ملخّص القصة
+        en: synopsis
+      - text: sutradara
+        ar_eg: مخرج
+        ar: مخرج
+        en: film director
+      - text: pemain
+        ar_eg: ممثل، لاعب
+        ar: ممثّل
+        en: actor, player
+      - text: mengakhiri
+        ar_eg: يُنهي (حاجة)
+        ar: يُنهي
+        en: to end (something)
+      - text: menghormati
+        ar_eg: يحترم
+        ar: يحترم
+        en: to respect
+      - text: mengharukan
+        ar_eg: مؤثّر (يدمّع)
+        ar: مؤثّر
+        en: touching, moving
+    words: [sinopsis, sutradara, pemain, mengakhiri, menghormati, mengharukan]
+  - id: e02
+    type: multiple_choice
+    question: Sutradara ___ filmnya dengan sebuah lagu.
+    options: [berakhir, mengakhiri, mengakhirkan]
+    answer: 1
+    explain:
+      ar_eg: "فيه مفعول (filmnya)، فمحتاجين فعل -i: mengakhiri. berakhir من غير مفعول."
+      ar: "هناك مفعول (filmnya)، فنحتاج فعل -i: mengakhiri؛ أما berakhir فلازم."
+      en: There's an object (filmnya), so the -i verb mengakhiri is needed; berakhir takes no object.
+    words: [mengakhiri]
+  - id: e03
+    type: listen
+    text: Sutradara dan pemain film ini orang Lombok.
+    options: ["Sutradara dan penonton film ini orang Lombok.", "Penulis dan pemain film ini orang Lombok.", "Sutradara dan pemain film ini orang Lombok."]
+    answer: 2
+    meaning:
+      ar_eg: المخرج والممثلين بتوع الفيلم ده من لومبوك.
+      ar: مخرج هذا الفيلم وممثّلوه من لومبوك.
+      en: This film's director and actors are from Lombok.
+    words: [sutradara, pemain]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة تنفع أول جملة في ملخّص فيلم؟
+      ar: أيّ جملة تصلح أن تكون أول جملة في ملخّص فيلم؟
+      en: Which sentence can open a film synopsis?
+    options: ["Film ini bercerita tentang dua sahabat di Gili.", "Saya kurang setuju dengan pendapat Anda.", "Selamat Idulfitri!"]
+    answer: 0
+    words: [sinopsis]
+  - id: e05
+    type: fill_blank
+    sentence: Para ___ film ini bermain sangat bagus.
+    meaning:
+      ar_eg: ممثلين الفيلم ده مثّلوا حلو جدًا.
+      ar: أدّى ممثّلو هذا الفيلم أداءً رائعًا.
+      en: The actors in this film play their parts very well.
+    options: [penonton, pemain, sutradara]
+    answers: [pemain]
+    words: [pemain]
+  - id: e06
+    type: fill_blank
+    sentence: Anak itu belajar ___ orang tuanya.
+    meaning:
+      ar_eg: الولد ده بيتعلّم يحترم أبوه وأمه.
+      ar: يتعلّم ذلك الولد احترام والديه.
+      en: That child is learning to respect his parents.
+    options: [menghadiri, menghormati, mendatangi]
+    answers: [menghormati]
+    words: [menghormati]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: نهاية الفيلم ده مؤثّرة جدًا.
+      ar: نهاية هذا الفيلم مؤثّرة جدًا.
+      en: The ending of this film is very touching.
+    answer: Akhir film ini sangat mengharukan.
+    distractors: [berakhir, seram]
+    words: [mengharukan]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الفيلم ده بيحكي عن صياد بيحترم البحر.
+      ar: يحكي هذا الفيلم عن صيّاد يحترم البحر.
+      en: This film is about a fisherman who respects the sea.
+    answers:
+      - Film ini bercerita tentang seorang nelayan yang menghormati laut.
+      - Film ini bercerita tentang seorang nelayan yang menghormati laut
+      - Film ini bercerita tentang nelayan yang menghormati laut.
+      - Film ini tentang seorang nelayan yang menghormati laut.
+      - Film ini tentang nelayan yang menghormati laut.
+      - Film ini menceritakan seorang nelayan yang menghormati laut.
+    words: [menghormati]
+  - id: e09
+    type: speaking
+    text: Saya menulis sinopsis tentang film yang mengharukan.
+    meaning:
+      ar_eg: بكتب ملخّص عن فيلم مؤثّر.
+      ar: أكتب ملخّصًا عن فيلم مؤثّر.
+      en: I'm writing a synopsis of a touching film.
+    words: [sinopsis, mengharukan]
+  - id: e10
+    type: dictation
+    text: Sutradara itu mengakhiri filmnya di pantai.
+    meaning:
+      ar_eg: المخرج ده خلّص الفيلم على الشط.
+      ar: أنهى ذلك المخرج فيلمه على الشاطئ.
+      en: That director ends his film on the beach.
+    words: [sutradara, mengakhiri]
+dialogue:
+  title: Sinopsis untuk blog Ni Luh
+  lines:
+    - speaker: Ni Luh
+      text: Mohamed, tolong tulis sinopsis film tadi malam untuk blog saya.
+      ar_eg: يا محمد، لو سمحت اكتب ملخّص فيلم إمبارح بالليل للبلوج بتاعي.
+      ar: يا محمد، اكتب من فضلك ملخّص فيلم الليلة الماضية لمدوّنتي.
+      en: Mohamed, please write a synopsis of last night's film for my blog.
+    - speaker: Mohamed
+      text: Oke. "Film ini bercerita tentang seorang nelayan muda di Gili."
+      ar_eg: تمام. «الفيلم ده بيحكي عن صياد شاب في جيلي».
+      ar: حسنًا. «يحكي هذا الفيلم عن صيّاد شاب في جيلي».
+      en: OK. "This film is about a young fisherman on Gili."
+    - speaker: Ni Luh
+      text: Bagus. Siapa sutradaranya?
+      ar_eg: حلو. مين المخرج؟
+      ar: جميل. من المخرج؟
+      en: Good. Who's the director?
+    - speaker: Mohamed
+      text: Sutradaranya orang Lombok, dan para pemainnya juga.
+      ar_eg: المخرج من لومبوك، والممثلين كمان.
+      ar: المخرج من لومبوك، وكذلك الممثّلون.
+      en: The director is from Lombok, and so are the actors.
+    - speaker: Mohamed
+      text: Pada akhirnya, tokoh utama belajar menghormati ayahnya. Sangat mengharukan!
+      ar_eg: وفي الآخر، البطل بيتعلّم يحترم أبوه. مؤثّر جدًا!
+      ar: وفي النهاية تتعلّم الشخصية الرئيسية احترام أبيها. مؤثّر جدًا!
+      en: In the end, the main character learns to respect his father. So moving!
+new_words:
+  - word: sinopsis
+    pos: noun
+    ar_eg: ملخّص القصة
+    ar: ملخّص القصة
+    en: synopsis
+  - word: sutradara
+    pos: noun
+    ar_eg: مخرج
+    ar: مخرج
+    en: film director
+  - word: pemain
+    pos: noun
+    ar_eg: ممثل (في فيلم)، لاعب
+    ar: ممثّل، لاعب
+    en: actor, player
+  - word: mengakhiri
+    pos: verb
+    ar_eg: يُنهي (حاجة) — من akhir
+    ar: يُنهي — من akhir
+    en: to end (something) — from akhir
+    arabic: آخر
+  - word: menghormati
+    pos: verb
+    ar_eg: يحترم — من hormat
+    ar: يحترم — من hormat
+    en: to respect — from hormat
+    arabic: حرمة
+  - word: mengharukan
+    pos: adjective
+    ar_eg: مؤثّر، يدمّع
+    ar: مؤثّر
+    en: touching, moving
+review:
+  status: draft
+  verified: false
