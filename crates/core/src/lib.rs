@@ -13,6 +13,7 @@ pub mod layout;
 pub mod learn;
 pub mod lesson;
 pub mod locale;
+pub mod packs;
 pub mod pagi;
 pub mod penlab;
 pub mod reader;
