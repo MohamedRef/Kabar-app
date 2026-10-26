@@ -145,6 +145,16 @@ const MIGRATIONS: &[&str] = &[
         deleted     INTEGER NOT NULL DEFAULT 0
     ) STRICT;
     CREATE INDEX review_log_card ON review_log (card_id);",
+    // 4: Teach Kabar's personal dictionary (spec §26), LWW per `{lang}:{word}`.
+    "CREATE TABLE taught_entries (
+        id          TEXT PRIMARY KEY,
+        entry       TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;",
 ];
 
 /// Every synced table; the clock resumes past the newest row in any of them.
@@ -160,6 +170,7 @@ const SYNCED_TABLES: &[&str] = &[
     "sessions",
     "cards",
     "review_log",
+    "taught_entries",
 ];
 
 /// LWW tables that hold one JSON document per row id.
@@ -554,6 +565,8 @@ pub struct LessonEvent {
 
 // Review cards and the review log (M6).
 mod reviews;
+// Teach Kabar's personal dictionary (spec §26).
+mod taught;
 
 fn migrate(conn: &mut Connection) -> Result<()> {
     let known = MIGRATIONS.len() as u32;

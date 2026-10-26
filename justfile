@@ -26,7 +26,7 @@ fmt:
 
 tools := "cargo run -q --release -p kabar-tools --"
 
-# Download corpora/dictionaries into data/raw/: `just content-fetch` (freq), `kaikki`, `jvwiki` or `all`
+# Download corpora/dictionaries into data/raw/: `just content-fetch` (freq), `nusa`, `kaikki`, `jvwiki` or `all`
 content-fetch what="freq":
     scripts/fetch-sources.sh {{what}}
 
@@ -40,7 +40,7 @@ content-kaikki:
     {{tools}} kaikki --lang jv
     {{tools}} bridge crosscheck
 
-# Javanese frequency list from Javanese Wikipedia (needs `just content-fetch jvwiki`)
+# Javanese frequency list (needs `just content-fetch nusa`; adds Javanese Wikipedia after `just content-fetch jvwiki`)
 content-freq-jv:
     {{tools}} freq jv
 
@@ -48,7 +48,7 @@ content-freq-jv:
 content-status:
     {{tools}} gloss status
 
-# Validate every content file (schemas, glosses, Bridge); CI runs the same checks
+# Validate every content file (schemas, glosses, Bridge, speech levels, golden sets); CI runs the same checks
 content-check:
     {{tools}} validate
 
