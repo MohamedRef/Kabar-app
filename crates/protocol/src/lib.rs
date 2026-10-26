@@ -4,6 +4,7 @@
 pub mod ai;
 pub mod hlc;
 pub mod pen;
+pub mod reader;
 
 pub use hlc::{DeviceId, Hlc};
 
