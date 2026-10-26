@@ -94,7 +94,7 @@ impl PartialEq for Engine {
     }
 }
 
-fn load_deck(db: &Db, sched: &Scheduler) -> Deck {
+pub(crate) fn load_deck(db: &Db, sched: &Scheduler) -> Deck {
     let store = db.0.borrow();
     let cards = store.cards().unwrap_or_else(|e| {
         eprintln!("kabar: reading cards failed: {e}");
@@ -105,6 +105,28 @@ fn load_deck(db: &Db, sched: &Scheduler) -> Deck {
         Vec::new()
     });
     Deck::new(cards, log, sched)
+}
+
+/// Words of the cards due now, least likely to be remembered first, without
+/// duplicates (a word can have several card kinds). Feeds the daily plan and
+/// Kabar Pagi.
+pub(crate) fn due_words(db: &Db, now_ms: u64) -> Vec<String> {
+    let sched = Scheduler::default();
+    let deck = load_deck(db, &sched);
+    let mut due: Vec<(f32, &Card)> = deck
+        .due(&sched, now_ms)
+        .into_iter()
+        .map(|c| (sched.retrievability(&deck.state(&c.id), now_ms).unwrap_or(0.0), c))
+        .collect();
+    due.sort_by(|a, b| a.0.total_cmp(&b.0).then_with(|| a.1.id.cmp(&b.1.id)));
+    let mut words: Vec<String> = Vec::new();
+    for (_, c) in due {
+        let w = c.word.to_lowercase();
+        if !words.contains(&w) {
+            words.push(w);
+        }
+    }
+    words
 }
 
 fn fits(mode: ReviewMode) -> fn(&Card) -> bool {

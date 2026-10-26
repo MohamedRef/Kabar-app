@@ -9,6 +9,7 @@ mod journey;
 mod lesson;
 mod penlab;
 mod platform;
+mod play;
 mod reader;
 mod review;
 mod screens;
@@ -39,6 +40,7 @@ pub enum Screen {
     Reader,
     Review,
     Coach,
+    Play,
     Studio,
     Settings,
     PenLab,
@@ -57,6 +59,7 @@ impl Screen {
             Self::Reader => Msg::NavReader,
             Self::Review => Msg::NavReview,
             Self::Coach => Msg::NavCoach,
+            Self::Play => Msg::NavPlay,
             Self::Studio => Msg::NavStudio,
             Self::Settings => Msg::NavSettings,
             Self::PenLab => Msg::NavPenLab,
@@ -66,9 +69,14 @@ impl Screen {
         }
     }
 
-    /// Hidden from the phone's bottom bar; reachable from Settings there.
+    /// Hidden from the phone's bottom bar, which keeps five items within
+    /// thumb reach. Kak Nur and Settings are linked from Today there; Studio
+    /// and Pen Lab from Settings.
     fn secondary(self) -> bool {
-        matches!(self, Self::Studio | Self::PenLab | Self::Devices | Self::Teach)
+        matches!(
+            self,
+            Self::Coach | Self::Settings | Self::Studio | Self::PenLab | Self::Devices | Self::Teach
+        )
     }
 }
 
@@ -200,6 +208,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         lesson: Signal::new(open_lesson),
     });
     use_context_provider(|| db.clone());
+    use_context_provider(play::PlayNav::new);
     use_context_provider(|| teach::TeachInbox(Signal::new(None)));
     use_context_provider(|| teach::Ai(Rc::new(ai_router())));
     let coach = use_context_provider(|| Coach::load(&db));
@@ -390,6 +399,7 @@ fn Shell() -> Element {
         Screen::Journey,
         Screen::Reader,
         Screen::Review,
+        Screen::Play,
         Screen::Coach,
         Screen::Studio,
         Screen::Teach,
@@ -420,6 +430,7 @@ fn Shell() -> Element {
                 match current {
                     Screen::Today => rsx! { coach::today::Today {} },
                     Screen::Coach => rsx! { coach::coach_screen::CoachScreen {} },
+                    Screen::Play => rsx! { play::Play {} },
                     Screen::Journey => rsx! { journey::JourneyScreen {} },
                     Screen::Reader => rsx! { reader::Reader {} },
                     Screen::Review => rsx! { review::ReviewScreen {} },

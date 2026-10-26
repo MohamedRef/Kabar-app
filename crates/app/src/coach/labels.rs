@@ -16,9 +16,9 @@ pub const LEVELS: [&str; 13] = [
 
 /// "bipa-2" → "BIPA 2", "j1" → "J1".
 pub fn level_name(id: &str) -> String {
-    match id.strip_prefix("bipa-") {
-        Some(n) => format!("BIPA {n}"),
-        None => id.to_uppercase(),
+    match id.strip_prefix("bipa").map(|n| n.trim_start_matches('-')) {
+        Some(n) if !n.is_empty() => format!("BIPA {n}"),
+        _ => id.to_uppercase(),
     }
 }
 
@@ -181,6 +181,7 @@ mod tests {
     #[test]
     fn level_names() {
         assert_eq!(level_name("bipa-2"), "BIPA 2");
+        assert_eq!(level_name("bipa2"), "BIPA 2");
         assert_eq!(level_name("j3"), "J3");
     }
 }
