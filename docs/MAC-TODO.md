@@ -61,6 +61,14 @@ just check                # fmt + clippy + tests: all green
 - [ ] **Pen Lab** on each device (phone: Settings → Pen Lab), following the 7 steps in RUN.md §4. Save, **Copy JSON**, and send me one report per device. DeX on the tablet is a bonus third report.
 - [ ] Tell me how the ink *feels*: does it trail behind the pen tip, and by roughly how much?
 
+## 3b. Journey Map and Lesson Player (~15 min) — [RUN.md](RUN.md)
+
+- [ ] Mac: `just run-mac` → Journey. Drag the map, zoom with the trackpad pinch and the +/− buttons, open Jakarta, then open "Selamat pagi!".
+- [ ] Mac: play both test lessons (`bipa1.u01.l01`, `bipa1.u01.l02`) to the end. Check that the Indonesian voice speaks in listen and dictation exercises (macOS has an Indonesian system voice; if it's silent, add "Damayanti" under System Settings → Accessibility → Spoken Content → System voice → Manage Voices).
+- [ ] S24 Ultra: Journey shows the vertical route; "Lanjut" opens the current lesson. Answer one translation with the Samsung handwriting keyboard and the S Pen.
+- [ ] Tab S11: the full map pans with the pen and pinches with two fingers. Close a lesson halfway; reopening it resumes at the same exercise.
+- [ ] Tell me whether listen/dictation audio plays on Android. The built-in WebView may have no speech voice; if so the app says so, and a native TextToSpeech bridge comes next.
+
 ## 4. Google sign-in clients (~10 min) — [CLOUD.md §3.2](CLOUD.md)
 
 - [ ] Print the release SHA-1: `keytool -list -v -keystore ~/.kabar/kabar-release.jks -alias kabar`. The password is in Keychain under "kabar-android".
