@@ -1,0 +1,524 @@
+schema: kabar.test/v1
+id: bipa1.test
+language: id
+kind: level
+title:
+  ar_eg: اختبار مستوى BIPA 1 — جاكرتا
+  ar: اختبار مستوى BIPA 1 — جاكرتا
+  en: BIPA 1 level test — Jakarta
+intro:
+  ar_eg: |
+    خلّصت جاكرتا كلها! الاختبار ده بيلفّ على العشر وحدات: هتسمع، تقرا، تكتب رسالة قصيرة، وتعرّف بنفسك.
+    خد وقتك، مفيش عدّاد بيضغط عليك. لو حاجة وقفتك، عادي خالص — هنعرف بس نراجع إيه.
+    ولو جاي من "Take a flight" عشان تعدّي BIPA 1 على طول، أهلًا بيك — نفس الأسئلة بالظبط.
+  ar: |
+    أتممتَ جاكرتا كلها! يغطي هذا الاختبار الوحدات العشر: ستستمع وتقرأ وتكتب رسالة قصيرة وتعرّف بنفسك.
+    خذ وقتك، فلا عدّاد يضغط عليك. وإن استوقفك شيء فلا بأس؛ سنعرف فقط ما يحتاج إلى مراجعة.
+    وإن جئت من "Take a flight" لتتجاوز BIPA 1 مباشرة، فأهلًا بك؛ الأسئلة نفسها تمامًا.
+  en: |
+    You've made it through all of Jakarta! This test walks through all ten units: you'll listen, read, write a short message and introduce yourself.
+    Take your time; there's no clock pushing you. If something trips you up, that's fine: it just shows us what to review.
+    If you came here through "Take a flight" to skip BIPA 1, welcome: these are exactly the same questions.
+minutes: 30
+pass_mark: 0.75
+scoring: >-
+  Score = points earned / points available (closed items 1 point unless set;
+  translate items are graded against reference answers first, then AI grade_answer;
+  writing_task and speaking_task are graded by AI against their rubric, each
+  criterion an equal share of the item's points). Pass at >= 0.75. Passing marks
+  BIPA 1 complete and opens BIPA 2; the same rule applies when the test is taken
+  as the "Take a flight" skip-ahead over BIPA 1. Below the mark, show the per-skill
+  results and suggest the units behind the missed items, with no penalty and an
+  open retry.
+sections:
+  - id: listening
+    skill: listening
+    title:
+      ar_eg: الاستماع
+      ar: الاستماع
+      en: Listening
+    instructions:
+      ar_eg: اسمع كويس، وتقدر تعيد الصوت براحتك. اختار اللي سمعته بالظبط، أو اكتبه.
+      ar: استمع جيدًا، ويمكنك إعادة الصوت كما تشاء. اختر ما سمعته بالضبط أو اكتبه.
+      en: Listen carefully; you can replay as often as you like. Pick exactly what you heard, or write it.
+    items:
+      - id: t01
+        type: listen
+        text: Selamat sore, Bu Sari.
+        options: ["Selamat malam, Bu Sari.", "Selamat sore, Bu Sari.", "Selamat siang, Bu Sari."]
+        answer: 1
+        words: [selamat, sore]
+      - id: t02
+        type: listen
+        text: Nama saya Ni Luh. Saya dari Bali.
+        options: ["Nama saya Ni Luh. Saya dari Bali.", "Nama saya Ni Luh. Saya di Bali.", "Nama dia Ni Luh. Dia dari Bali."]
+        answer: 0
+        words: [nama, dari]
+      - id: t03
+        type: listen
+        text: Harganya dua puluh lima ribu rupiah.
+        options: ["Harganya lima puluh dua ribu rupiah.", "Harganya dua puluh lima ribu rupiah.", "Harganya dua puluh ribu rupiah."]
+        answer: 1
+        words: [harga, ribu]
+      - id: t04
+        type: listen
+        text: Jalan lurus, lalu belok kiri di masjid.
+        options: ["Jalan lurus, lalu belok kanan di masjid.", "Jalan lurus, lalu belok kiri di sekolah.", "Jalan lurus, lalu belok kiri di masjid."]
+        answer: 2
+        words: [lurus, belok, kiri]
+      - id: t05
+        type: listen
+        text: Bank itu di sebelah kanan kantor pos.
+        options: ["Bank itu di depan kantor pos.", "Bank itu di sebelah kiri kantor pos.", "Bank itu di sebelah kanan kantor pos."]
+        answer: 2
+        words: [sebelah, kanan]
+      - id: t06
+        type: dictation
+        text: Apa kabar, Pak Budi?
+        meaning:
+          ar_eg: إزيك يا أستاذ بودي؟
+          ar: كيف حالك يا أستاذ بودي؟
+          en: How are you, Pak Budi?
+        words: [apa kabar]
+      - id: t07
+        type: dictation
+        text: Saya sedang membaca buku.
+        meaning:
+          ar_eg: أنا بقرا كتاب دلوقتي.
+          ar: أنا أقرأ كتابًا الآن.
+          en: I am reading a book.
+        words: [sedang, membaca, buku]
+  - id: reading
+    skill: reading
+    title:
+      ar_eg: القراية
+      ar: القراءة
+      en: Reading
+    instructions:
+      ar_eg: اقرا النص (استمارة، منيو، جدول مواعيد، رسالة) وجاوب من اللي مكتوب فيه.
+      ar: اقرأ النص (استمارة، قائمة طعام، جدول مواعيد، رسالة) وأجب مما ورد فيه.
+      en: Read the text (a form, a menu, a timetable, a message) and answer from what it says.
+    items:
+      - id: t08
+        type: multiple_choice
+        question: |
+          FORMULIR PENDAFTARAN — Kursus Bahasa Indonesia
+          Nama lengkap: Dimas Pratama
+          Kewarganegaraan: Indonesia
+          Tanggal lahir: 14 Maret 2001
+          Alamat: Jalan Cikini Raya 12, Jakarta
+          Pekerjaan: mahasiswa
+          Bahasa: Indonesia, Inggris
+        question_meaning:
+          ar_eg: Dimas اتولد إمتى؟
+          ar: متى وُلد Dimas؟
+          en: When was Dimas born?
+        options: ["14 Maret 2001", "14 Mei 2001", "12 Maret 2001"]
+        answer: 0
+        words: [tanggal lahir]
+      - id: t09
+        type: multiple_choice
+        question: |
+          FORMULIR PENDAFTARAN — Kursus Bahasa Indonesia
+          Nama lengkap: Dimas Pratama
+          Kewarganegaraan: Indonesia
+          Tanggal lahir: 14 Maret 2001
+          Alamat: Jalan Cikini Raya 12, Jakarta
+          Pekerjaan: mahasiswa
+          Bahasa: Indonesia, Inggris
+        question_meaning:
+          ar_eg: Dimas شغلته إيه؟
+          ar: ما عمل Dimas؟
+          en: What does Dimas do?
+        options: ["guru", "dokter", "mahasiswa"]
+        answer: 2
+        words: [pekerjaan, mahasiswa]
+      - id: t10
+        type: multiple_choice
+        question: |
+          WARUNG BU SARI — Blok M
+          Nasi goreng ...... Rp25.000
+          Mi ayam .......... Rp20.000
+          Sate ayam ........ Rp30.000
+          Es teh ........... Rp5.000
+          Kopi ............. Rp8.000
+          Buka setiap hari, jam 07.00–21.00
+        question_meaning:
+          ar_eg: محمد طلب mi ayam و es teh. هيدفع كام؟
+          ar: طلب محمد mi ayam و es teh. كم سيدفع؟
+          en: Mohamed orders mi ayam and es teh. How much does he pay?
+        options: ["Rp28.000", "Rp25.000", "Rp30.000"]
+        answer: 1
+        explain:
+          ar_eg: ٢٠٫٠٠٠ + ٥٫٠٠٠ = ٢٥٫٠٠٠ روبية (dua puluh lima ribu).
+          ar: ٢٠٫٠٠٠ + ٥٫٠٠٠ = ٢٥٫٠٠٠ روبية (dua puluh lima ribu).
+          en: 20,000 + 5,000 = 25,000 rupiah (dua puluh lima ribu).
+        words: [harga, makanan, minuman]
+      - id: t11
+        type: multiple_choice
+        question: |
+          WARUNG BU SARI — Blok M
+          Nasi goreng ...... Rp25.000
+          Mi ayam .......... Rp20.000
+          Sate ayam ........ Rp30.000
+          Es teh ........... Rp5.000
+          Kopi ............. Rp8.000
+          Buka setiap hari, jam 07.00–21.00
+        question_meaning:
+          ar_eg: محمد راح الوارونج الساعة ١٠ بالليل. إيه اللي صح؟
+          ar: ذهب محمد إلى المطعم الساعة العاشرة ليلًا. أيّ جملة صحيحة؟
+          en: Mohamed goes to the warung at 10 p.m. Which sentence is true?
+        options: ["Warung itu buka jam sepuluh.", "Warung itu masih buka.", "Warung itu sudah tutup."]
+        answer: 2
+        explain:
+          ar_eg: بيقفل الساعة ٢١:٠٠ يعني ٩ بالليل، فالساعة ١٠ يكون sudah tutup.
+          ar: يُغلق الساعة ٢١:٠٠، أي التاسعة ليلًا، فيكون مغلقًا في العاشرة.
+          en: It closes at 21.00 (9 p.m.), so at 10 p.m. it is already closed.
+        words: [buka, tutup, sudah]
+      - id: t12
+        type: multiple_choice
+        question: |
+          JADWAL KAPAL — Marina Ancol ke Pulau Pramuka
+          Senin–Jumat   berangkat 08.00   tiba 10.30
+          Sabtu         berangkat 07.00   tiba 09.30
+          Minggu        berangkat 07.00   tiba 09.30
+                        berangkat 13.00   tiba 15.30
+        question_meaning:
+          ar_eg: يوم السبت، المركب بيوصل Pulau Pramuka الساعة كام؟
+          ar: يوم السبت، متى يصل القارب إلى Pulau Pramuka؟
+          en: On Saturday, what time does the boat arrive at Pulau Pramuka?
+        options: ["07.00", "10.30", "09.30"]
+        answer: 2
+        words: [jadwal, tiba, Sabtu]
+      - id: t13
+        type: multiple_choice
+        question: |
+          JADWAL KAPAL — Marina Ancol ke Pulau Pramuka
+          Senin–Jumat   berangkat 08.00   tiba 10.30
+          Sabtu         berangkat 07.00   tiba 09.30
+          Minggu        berangkat 07.00   tiba 09.30
+                        berangkat 13.00   tiba 15.30
+        question_meaning:
+          ar_eg: أنهي يوم فيه مركبين؟
+          ar: في أيّ يوم توجد رحلتان؟
+          en: On which day are there two boats?
+        options: ["Senin", "Sabtu", "Minggu"]
+        answer: 2
+        words: [Minggu, berangkat]
+      - id: t14
+        type: multiple_choice
+        question: |
+          Hai Mohamed! Besok hari Sabtu. Saya dan Rina mau berenang di Ancol.
+          Kamu mau ikut? Kita bertemu di depan stasiun jam sembilan pagi, ya.
+          — Dimas
+        question_meaning:
+          ar_eg: هيتقابلوا فين؟
+          ar: أين سيلتقون؟
+          en: Where will they meet?
+        options: ["di belakang stasiun", "di Ancol", "di depan stasiun"]
+        answer: 2
+        words: [bertemu, depan, stasiun]
+      - id: t15
+        type: multiple_choice
+        question: |
+          Hai Mohamed! Besok hari Sabtu. Saya dan Rina mau berenang di Ancol.
+          Kamu mau ikut? Kita bertemu di depan stasiun jam sembilan pagi, ya.
+          — Dimas
+        question_meaning:
+          ar_eg: Dimas و Rina عايزين يعملوا إيه يوم السبت؟
+          ar: ماذا يريد Dimas و Rina أن يفعلا يوم السبت؟
+          en: What do Dimas and Rina want to do on Saturday?
+        options: ["membaca buku", "bermain bola", "berenang"]
+        answer: 2
+        words: [berenang, mau]
+  - id: vocabulary
+    skill: vocabulary
+    title:
+      ar_eg: الكلمات
+      ar: المفردات
+      en: Vocabulary
+    items:
+      - id: t16
+        type: match_pairs
+        pairs:
+          - text: ayah
+            ar_eg: الأب
+            ar: الأب
+            en: father
+          - text: ibu
+            ar_eg: الأم
+            ar: الأم
+            en: mother
+          - text: kakak
+            ar_eg: الأخ أو الأخت الأكبر
+            ar: الأخ أو الأخت الأكبر
+            en: older brother or sister
+          - text: adik
+            ar_eg: الأخ أو الأخت الأصغر
+            ar: الأخ أو الأخت الأصغر
+            en: younger brother or sister
+        words: [ayah, ibu, kakak, adik]
+      - id: t17
+        type: match_pairs
+        pairs:
+          - text: Senin
+            ar_eg: الاتنين
+            ar: الإثنين
+            en: Monday
+          - text: Rabu
+            ar_eg: الأربع
+            ar: الأربعاء
+            en: Wednesday
+          - text: Kamis
+            ar_eg: الخميس
+            ar: الخميس
+            en: Thursday
+          - text: Jumat
+            ar_eg: الجمعة
+            ar: الجمعة
+            en: Friday
+        words: [Senin, Rabu, Kamis, Jumat]
+      - id: t18
+        type: multiple_choice
+        question: tinggi
+        question_meaning:
+          ar_eg: إيه عكس الكلمة دي؟
+          ar: ما عكس هذه الكلمة؟
+          en: What is the opposite of this word?
+        options: ["besar", "pendek", "ramah"]
+        answer: 1
+        words: [tinggi, pendek]
+      - id: t19
+        type: fill_blank
+        sentence: Teh, kopi, dan jus adalah ___.
+        meaning:
+          ar_eg: الشاي والقهوة والعصير مشروبات.
+          ar: الشاي والقهوة والعصير مشروبات.
+          en: Tea, coffee and juice are drinks.
+        options: ["minuman", "mainan", "makanan"]
+        answers: [minuman]
+        words: [minuman]
+      - id: t20
+        type: fill_blank
+        sentence: Saya mau berenang. Saya pergi ke ___.
+        meaning:
+          ar_eg: أنا عايز أعوم. أنا رايح البحر.
+          ar: أريد أن أسبح. أنا ذاهب إلى الشاطئ.
+          en: I want to swim. I'm going to the beach.
+        options: ["perpustakaan", "kantor pos", "pantai"]
+        answers: [pantai]
+        words: [pantai, berenang]
+  - id: grammar
+    skill: grammar
+    title:
+      ar_eg: القواعد
+      ar: القواعد
+      en: Grammar
+    items:
+      - id: t21
+        type: fill_blank
+        sentence: Dia ___ guru. Dia dokter.
+        meaning:
+          ar_eg: هو مش مدرّس. هو دكتور.
+          ar: هو ليس معلّمًا. هو طبيب.
+          en: He isn't a teacher. He's a doctor.
+        options: ["bukan", "tidak", "belum"]
+        answers: [bukan]
+        explain:
+          ar_eg: قبل اسم (guru) بنقول bukan، مش tidak.
+          ar: قبل الاسم (guru) نستعمل bukan لا tidak.
+          en: Before a noun (guru) the negator is bukan, not tidak.
+        words: [bukan]
+      - id: t22
+        type: fill_blank
+        sentence: Kamar saya ___ besar, tetapi bersih.
+        meaning:
+          ar_eg: أوضتي مش كبيرة، بس نضيفة.
+          ar: غرفتي ليست كبيرة، لكنها نظيفة.
+          en: My room isn't big, but it's clean.
+        options: ["belum", "bukan", "tidak"]
+        answers: [tidak]
+        explain:
+          ar_eg: قبل صفة (besar) بنقول tidak.
+          ar: قبل الصفة (besar) نستعمل tidak.
+          en: Before an adjective (besar) the negator is tidak.
+        words: [tidak]
+      - id: t23
+        type: fill_blank
+        sentence: Besok saya ___ pergi ke Monas.
+        meaning:
+          ar_eg: بكرة هروح موناس.
+          ar: غدًا سأذهب إلى موناس.
+          en: Tomorrow I will go to Monas.
+        options: ["sudah", "akan", "sedang"]
+        answers: [akan]
+        words: [akan, besok]
+      - id: t24
+        type: multiple_choice
+        question: Kamu pernah ke Mesir?
+        question_meaning:
+          ar_eg: أنهي رد صح لو عمرك ما رحت مصر؟
+          ar: ما الرد الصحيح إن لم تزر مصر من قبل؟
+          en: Which reply is correct if you have never been to Egypt?
+        options: ["Belum, saya tidak sudah ke Mesir.", "Tidak, saya bukan ke Mesir.", "Belum, saya belum pernah ke Mesir."]
+        answer: 2
+        words: [pernah, belum]
+      - id: t25
+        type: build_sentence
+        source:
+          ar_eg: ده بيت أخويا الكبير.
+          ar: هذا بيت أخي الأكبر.
+          en: This is my older brother's house.
+        answer: Ini rumah kakak saya.
+        distractors: [itu, adik]
+        words: [rumah, kakak]
+      - id: t26
+        type: fill_blank
+        sentence: "A: Tas Anda yang mana? B: ___ hitam itu."
+        meaning:
+          ar_eg: "أ: شنطتك أنهي واحدة؟ ب: السودا اللي هناك."
+          ar: "أ: أيّ حقيبة لك؟ ب: تلك السوداء."
+          en: "A: Which bag is yours? B: The black one."
+        options: ["Yang", "Bukan", "Ini"]
+        answers: [Yang]
+        words: [yang, hitam]
+      - id: t27
+        type: build_sentence
+        source:
+          ar_eg: امبارح رينا اشترت فاكهة من السوق.
+          ar: أمس اشترت رينا فاكهة من السوق.
+          en: Yesterday Rina bought fruit at the market.
+        answer: Kemarin Rina membeli buah di pasar.
+        alternatives: ["Rina membeli buah di pasar kemarin."]
+        distractors: [ke, beli]
+        words: [kemarin, membeli, pasar]
+      - id: t28
+        type: fill_blank
+        sentence: Maaf, saya tidak ___ datang besok. Saya harus bekerja.
+        meaning:
+          ar_eg: آسف، مش هقدر آجي بكرة. لازم أشتغل.
+          ar: آسف، لا أستطيع المجيء غدًا. يجب أن أعمل.
+          en: Sorry, I can't come tomorrow. I have to work.
+        options: ["harus", "suka", "bisa"]
+        answers: [bisa]
+        words: [bisa, harus]
+      - id: t29
+        type: fill_blank
+        sentence: Buku saya ada di ___ meja.
+        meaning:
+          ar_eg: كتابي على الترابيزة.
+          ar: كتابي على الطاولة.
+          en: My book is on the table.
+        options: ["atas", "dalam", "bawah"]
+        answers: [atas]
+        words: [ada, atas, meja]
+      - id: t30
+        type: fill_blank
+        sentence: "A: ___ liburanmu di Ancol? B: Bagus sekali!"
+        meaning:
+          ar_eg: "أ: إجازتك في أنكول كانت عاملة إزاي؟ ب: حلوة أوي!"
+          ar: "أ: كيف كانت عطلتك في أنكول؟ ب: رائعة جدًّا!"
+          en: "A: How was your holiday in Ancol? B: Really good!"
+        options: ["Di mana", "Siapa", "Bagaimana"]
+        answers: [Bagaimana]
+        words: [bagaimana, liburan]
+  - id: writing
+    skill: writing
+    title:
+      ar_eg: الكتابة
+      ar: الكتابة
+      en: Writing
+    items:
+      - id: t31
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: اسمي محمد. أنا مصري، من القاهرة.
+          ar: اسمي محمد. أنا مصري، من القاهرة.
+          en: My name is Mohamed. I'm Egyptian, from Cairo.
+        answers:
+          - Nama saya Mohamed. Saya orang Mesir, dari Kairo.
+          - Nama saya Mohamed. Saya orang Mesir, dari Kairo
+          - Nama saya Mohamed. Saya orang Mesir dari Kairo.
+          - Nama saya Mohamed. Saya orang Mesir dari Kairo
+          - Nama saya Mohamed. Saya orang Mesir. Saya dari Kairo.
+          - Nama saya Mohamed. Saya orang Mesir. Saya dari Kairo
+          - Nama aku Mohamed. Aku orang Mesir, dari Kairo.
+          - Namaku Mohamed. Aku orang Mesir, dari Kairo.
+          - Namaku Mohamed. Aku orang Mesir dari Kairo.
+        words: [nama, orang, Mesir, dari]
+      - id: t32
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: عمري ما رحت بالي.
+          ar: لم أذهب إلى بالي قطّ.
+          en: I have never been to Bali.
+        answers:
+          - Saya belum pernah ke Bali.
+          - Saya belum pernah ke Bali
+          - Saya tidak pernah ke Bali.
+          - Saya tidak pernah ke Bali
+          - Aku belum pernah ke Bali.
+          - Aku belum pernah ke Bali
+          - Aku tidak pernah ke Bali.
+          - Aku tidak pernah ke Bali
+          - Saya belum pernah pergi ke Bali.
+          - Saya belum pernah pergi ke Bali
+        words: [belum, pernah]
+      - id: t33
+        type: writing_task
+        points: 4
+        prompt:
+          ar_eg: اكتب رسالة قصيرة (٤–٦ جمل) لصاحبك Dimas. قوله إنت فين دلوقتي وبتعمل إيه، واعزمه تتقابلوا بكرة (فين والساعة كام).
+          ar: اكتب رسالة قصيرة (٤–٦ جمل) إلى صديقك Dimas. أخبره أين أنت الآن وماذا تفعل، وادعُه إلى لقاء غدًا (أين وفي أيّ ساعة).
+          en: Write a short message (4–6 sentences) to your friend Dimas. Tell him where you are now and what you're doing, and invite him to meet tomorrow (where and at what time).
+        rubric:
+          - Greets Dimas and signs off (e.g. "Hai Dimas! … Salam, Mohamed").
+          - Says where he is and what he is doing now (di …, sedang + verb).
+          - Proposes a place and a time to meet tomorrow (besok, jam …, di depan / di …).
+          - Short, clear BIPA 1 sentences with mostly correct word order and spelling; 4–6 sentences.
+        sample: |
+          Hai Dimas! Sekarang saya di perpustakaan dekat Monas. Saya sedang membaca buku sejarah Jakarta.
+          Besok saya mau ke Kota Tua. Kamu mau ikut? Kita bertemu di depan stasiun jam sembilan pagi, ya.
+          Salam, Mohamed
+        words: [sedang, besok, bertemu]
+  - id: speaking
+    skill: speaking
+    title:
+      ar_eg: الكلام
+      ar: المحادثة
+      en: Speaking
+    instructions:
+      ar_eg: اتكلم براحتك وبصوت واضح. مش لازم تكون مثالي، المهم توصّل كلامك.
+      ar: تكلّم بهدوء وبصوت واضح. لا يلزم الكمال؛ المهم أن تُوصل فكرتك.
+      en: Speak calmly and clearly. It doesn't have to be perfect; what matters is getting your meaning across.
+    items:
+      - id: t34
+        type: speaking
+        text: Selamat pagi, Pak. Nama saya Mohamed. Saya dari Mesir.
+        meaning:
+          ar_eg: صباح الخير يا أستاذ. اسمي محمد. أنا من مصر.
+          ar: صباح الخير يا سيدي. اسمي محمد. أنا من مصر.
+          en: Good morning, sir. My name is Mohamed. I'm from Egypt.
+        words: [selamat pagi, nama, dari]
+      - id: t35
+        type: speaking_task
+        points: 4
+        prompt:
+          ar_eg: عرّف بنفسك حوالي ٣ دقايق، كأنك بتقابل Pak Budi لأول مرة. قول اسمك، إنت منين، بتتكلم لغات إيه، بتشتغل إيه، عيلتك، يومك ماشي إزاي، هواياتك، ومكان رحته (أو عمرك ما رحته).
+          ar: عرّف بنفسك نحو ثلاث دقائق، كأنك تقابل Pak Budi أول مرة. اذكر اسمك، ومن أين أنت، واللغات التي تتكلمها، وعملك، وأسرتك، ويومك، وهواياتك، ومكانًا زرته (أو لم تزره قطّ).
+          en: Introduce yourself for about 3 minutes, as if meeting Pak Budi for the first time. Say your name, where you're from, the languages you speak, your job, your family, your day, your hobbies, and a place you have (or have never) visited.
+        rubric:
+          - Covers at least five of the topics (name, origin, languages, job, family, routine, hobbies, an experience).
+          - Uses BIPA 1 structures (no-copula sentences, possessives, meN- / ber- verbs, sudah / sedang / pernah, tidak / bukan).
+          - Speaks in connected sentences that a patient listener understands; pauses and self-corrections are fine.
+          - Uses a polite register (saya, Bapak) suitable for a first meeting.
+        sample: |
+          Selamat pagi, Pak Budi. Nama saya Mohamed. Saya orang Mesir, dari Kairo. Saya bisa berbahasa Arab dan Inggris, dan sekarang saya belajar bahasa Indonesia.
+          Saya bekerja di kantor. Saya punya satu kakak dan dua adik. Setiap hari saya bangun jam enam pagi. Sesudah sarapan, saya pergi ke kantor naik bus.
+          Saya suka membaca dan bermain sepak bola. Saya belum pernah ke Bali, tetapi saya sudah pernah ke Monas. Monas tinggi sekali! Terima kasih, Pak.
+        words: [nama, orang, pernah, suka]
+review:
+  status: draft
+  verified: false

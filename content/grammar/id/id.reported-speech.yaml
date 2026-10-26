@@ -1,0 +1,106 @@
+schema: kabar.grammar/v1
+id: id.reported-speech
+language: id
+level: bipa5
+title:
+  target: Katanya, X mengatakan bahwa …, menurut X
+  en: Reported speech and paraphrase
+  ar_eg: نقل الكلام (قال إن…، بيقولوا إن…، على حسب كلام…)
+  ar: الكلام المنقول (قال إنّ…، يُقال إنّ…، وفقًا لـ…)
+summary:
+  ar_eg: "عشان تنقل كلام حد: X mengatakan bahwa … (قال إن)، menurut X, … (على حسب X)، katanya (بيقولوا). السؤال: bertanya apakah / kapan …، والطلب: meminta agar …. ومفيش تغيير في زمن الفعل."
+  ar: "يُنقل الخبر بـ X mengatakan bahwa … وmenurut X وkatanya، والسؤال بـ bertanya apakah، والطلب بـ meminta agar، ولا يتغير زمن الفعل."
+  en: "Report statements with X mengatakan bahwa …, menurut X, …, katanya; questions with bertanya apakah / kapan …; requests with meminta … agar …. Verbs don't shift tense."
+pattern:
+  - "X mengatakan / menyatakan / menjelaskan / menegaskan / mengakui + bahwa + clause"
+  - "Menurut X, + clause   (no bahwa)"
+  - "Katanya, … / Kata X, … / Kabarnya, … / Konon, …"
+  - "X bertanya apakah … / X bertanya kapan / mengapa / bagaimana …"
+  - "X meminta / menyuruh / mengimbau + (Y) + agar / supaya / untuk + verb"
+  - "\"Quote,\" kata / ujar / tutur / jelas X."
+explanation:
+  ar_eg: |
+    النقل في الإندونيسي أسهل من الإنجليزي: مفيش back-shift، الفعل بيفضل زي ما هو، بس الضماير بتتغير.
+    «Saya belajar di Kairo.» → Ustaz Hasan mengatakan bahwa ia belajar di Kairo.
+    1. الخبر: فعل قول + bahwa (= إنّ). الأفعال دي بتدي ظلال معنى:
+       mengatakan (قال)، menyatakan (صرّح، رسمي)، menjelaskan (وضّح)، menegaskan (أكّد)، mengakui (اعترف)، menambahkan (أضاف)، mengungkapkan (كشف / عبّر).
+       في الكلام: bilang (عامي)، وbahwa ممكن تتشال.
+    2. menurut X = على حسب / وفقًا لـ، ومن غير bahwa: Menurut laporan itu, jumlah santri bertambah.
+    3. katanya = «بيقولوا / سمعت إن» — بتبيّن إن المعلومة مش مؤكدة. kabarnya (الخبر بيقول)، konon (بيُحكى، للحكايات والتاريخ).
+    4. السؤال: نعم/لا → apakah: Rina bertanya apakah beasiswa itu masih dibuka. وأداة استفهام → تفضل زي ما هي: Dia bertanya kapan pendaftaran ditutup.
+    5. الطلب والأمر: meminta (طلب)، menyuruh (أمر)، mengimbau (ناشد، في الأخبار) + agar / supaya / untuk.
+    6. في الأخبار والكتابة الأكاديمية: الاقتباس الأول وبعده kata / ujar / tutur + الاسم: «…,» ujarnya.
+    في الكتابة الأكاديمية (parafrasa): غيّر الكلمات والتركيب ووضّح المصدر: Menurut X (tahun), … أو … (X, tahun).
+  ar: |
+    لا تغيير لزمن الفعل في الكلام المنقول، وإنما تتغير الضمائر فقط.
+    1. الخبر: فعل القول + bahwa (أنّ). ولكل فعل دلالته: mengatakan (قال)، menyatakan (صرّح)، menjelaskan (أوضح)، menegaskan (أكّد)، mengakui (اعترف)، menambahkan (أضاف). وفي العامية bilang مع حذف bahwa.
+    2. menurut X = وفقًا لـ، ولا تليها bahwa.
+    3. katanya = يُقال، وتدل على أن الخبر غير مؤكَّد؛ وkabarnya وkonon (يُروى) للحكايات.
+    4. السؤال المنقول: apakah لسؤال نعم/لا، وتبقى أداة الاستفهام الأخرى كما هي.
+    5. الطلب: meminta، menyuruh، mengimbau + agar / supaya / untuk.
+    6. في الأخبار: يتقدم الاقتباس ثم kata / ujar / tutur + القائل.
+    وفي إعادة الصياغة الأكاديمية يُغيَّر اللفظ والتركيب مع ذكر المصدر: Menurut X (السنة) أو (X، السنة).
+  en: |
+    Indonesian reported speech is easier than English: no back-shift — the verb stays, only pronouns change.
+    "Saya belajar di Kairo." → Ustaz Hasan mengatakan bahwa ia belajar di Kairo.
+    1. Statements: reporting verb + bahwa (that). Each verb adds a shade: mengatakan (say), menyatakan (state, formal), menjelaskan (explain), menegaskan (stress), mengakui (admit), menambahkan (add), mengungkapkan (reveal / express). Casual: bilang, often without bahwa.
+    2. menurut X = according to X, with no bahwa: Menurut laporan itu, jumlah santri bertambah.
+    3. katanya = "they say / apparently" — flags the information as second-hand. kabarnya (reportedly), konon (legend has it; history and folk tales).
+    4. Questions: yes/no → apakah: Rina bertanya apakah beasiswa itu masih dibuka. A question word stays: Dia bertanya kapan pendaftaran ditutup.
+    5. Requests and orders: meminta (ask), menyuruh (tell), mengimbau (urge; news) + agar / supaya / untuk.
+    6. News and essays put the quote first, then kata / ujar / tutur + speaker: "…," ujarnya.
+    Academic paraphrase (parafrasa): change the wording and structure, and name the source: Menurut X (year), … or … (X, year).
+examples:
+  - text: Katanya, banyak alumni pesantren melanjutkan studi ke Al-Azhar.
+    en: They say many pesantren graduates go on to study at Al-Azhar.
+    ar_eg: بيقولوا إن خريجين كتير من البيسانترين بيكملوا دراستهم في الأزهر.
+    ar: يُقال إن كثيرًا من خريجي المعاهد الداخلية يواصلون دراستهم في الأزهر.
+    register: neutral
+  - text: Ustaz Hasan mengatakan bahwa ia belajar di Kairo selama enam tahun.
+    breakdown: mengatakan bahwa (said that) · ia (he — 'saya' becomes 'ia') · belajar (no tense change)
+    en: Ustaz Hasan said that he had studied in Cairo for six years.
+    ar_eg: الأستاذ حسن قال إنه درس في القاهرة ست سنين.
+    ar: قال الأستاذ حسن إنه درس في القاهرة ست سنوات.
+  - text: Rina bertanya apakah beasiswa itu masih dibuka.
+    en: Rina asked whether the scholarship was still open.
+    ar_eg: رينا سألت لو المنحة لسه مفتوحة.
+    ar: سألت رينا هل ما زالت المنحة مفتوحة.
+  - text: Kepala sekolah meminta para santri agar tidak membawa ponsel ke kelas.
+    en: The head of the school asked the students not to bring phones to class.
+    ar_eg: مدير المدرسة طلب من الطلبة إنهم مايجيبوش موبايلات الفصل.
+    ar: طلب مدير المعهد من الطلاب ألّا يحضروا هواتفهم إلى الفصل.
+    register: formal
+  - text: "\"Ilmu tidak mengenal batas negara,\" ujarnya kepada wartawan."
+    en: "\"Knowledge knows no national borders,\" he told reporters."
+    ar_eg: "«العلم مالوش حدود بين الدول»، قالها للصحفيين."
+    ar: "«العلم لا يعرف حدودًا بين الدول»، قال ذلك للصحفيين."
+    register: formal
+mistakes:
+  - wrong: Menurut Pak Budi bahwa ujiannya sulit.
+    right: Menurut Pak Budi, ujiannya sulit. / Pak Budi mengatakan bahwa ujiannya sulit.
+    why:
+      ar_eg: menurut مش فعل قول، فمابياخدش bahwa. يا menurut + فاصلة، يا فعل قول + bahwa.
+      ar: menurut ليست فعل قول فلا تليها bahwa؛ فإما menurut مع فاصلة، وإما فعل قول مع bahwa.
+      en: menurut isn't a speech verb, so it takes no bahwa. Use menurut + comma, or a speech verb + bahwa.
+  - wrong: Dia bertanya bahwa kelasnya dimulai jam berapa.
+    right: Dia bertanya kelasnya dimulai jam berapa. / Dia bertanya pukul berapa kelasnya dimulai.
+    why:
+      ar_eg: bahwa للخبر بس. السؤال المنقول بياخد apakah أو أداة الاستفهام نفسها.
+      ar: bahwa للخبر فقط، أما السؤال المنقول فيُصاغ بـ apakah أو بأداة الاستفهام.
+      en: bahwa introduces statements only; a reported question uses apakah or its own question word.
+  - wrong: Menteri itu bilang bahwa anggaran pendidikan akan naik.
+    right: Menteri itu mengatakan bahwa anggaran pendidikan akan naik.
+    why:
+      ar_eg: bilang عامية؛ مع bahwa وفي خبر رسمي بتبان غريبة. استخدم mengatakan أو menyatakan.
+      ar: bilang عامية لا تناسب الخبر الرسمي، والأليق mengatakan أو menyatakan.
+      en: bilang is colloquial and clashes with bahwa in formal reporting; use mengatakan or menyatakan.
+arabic_bridge:
+  ar_eg: "التركيب عربي خالص: mengatakan bahwa = «قال إنّ»، bertanya apakah = «سأل هل»، menurut = «وفقًا لـ / على حسب»، وkatanya = «بيقولوا / يُقال». وkabarnya جاية من «خبر» (زي kabar)، وilmu في المثال من «علم». وزي العربي، مفيش back-shift: «قال إنه يدرس» عادي."
+  ar: "mengatakan bahwa = قال إنّ، وbertanya apakah = سأل هل، وmenurut = وفقًا لـ، وkatanya = يُقال. وkabarnya مشتقة من kabar ← خبر، وilmu ← علم. ولا تطابق في الأزمنة كما في العربية."
+  en: "mengatakan bahwa ≈ قال إنّ, bertanya apakah ≈ سأل هل, katanya ≈ يُقال. kabarnya comes from kabar ← خبر, and ilmu ← علم. Like Arabic, there's no tense back-shift."
+tags: [discourse, reporting, clause, academic]
+prerequisites: [id.sentence.complex, id.question.apa]
+see_also: [id.news.expressions, id.register.academic, id.hedging]
+review:
+  status: draft
+  verified: false

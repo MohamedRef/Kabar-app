@@ -1,0 +1,104 @@
+schema: kabar.grammar/v1
+id: jv.marker.vs-indonesian
+language: jv
+level: j1
+title:
+  target: ora, wis, durung, arep, karo, sing, piye, kowe, nang
+  en: Javanese or Indonesian? Marker words
+  ar_eg: جاوي ولا إندونيسي؟ الكلمات اللي بتفضح اللغة
+  ar: جاوية أم إندونيسية؟ الكلمات الدالة
+summary:
+  ar_eg: "كلمات زي aku وapa وlagi موجودة في اللغتين، فمابتقولكش حاجة. لكن ora، wis، durung، arep، karo، sing، piye، kowe، nang بتقولك فورًا «ده جاوي»."
+  ar: "بعض الكلمات مشتركة بين اللغتين (aku، apa، lagi) فلا تدل، أما ora وwis وdurung وarep وkaro وsing وpiye وkowe وnang فتدل على الجاوية."
+  en: "Words like aku, apa and lagi exist in both languages, so they tell you nothing. ora, wis, durung, arep, karo, sing, piye, kowe, nang shout 'Javanese'."
+pattern:
+  - "ora ↔ tidak · wis ↔ sudah · durung ↔ belum · arep ↔ mau / akan"
+  - "karo ↔ dengan / sama · sing ↔ yang · piye ↔ bagaimana · kowe ↔ kamu"
+  - "nang / neng ↔ ke / di · saka ↔ dari · ana ↔ ada · iki / kuwi ↔ ini / itu"
+  - "-e / -ne ↔ -nya: omahe = rumahnya"
+  - "shared (no signal): aku, apa, lagi, kapan, kok, banget"
+explanation:
+  ar_eg: |
+    الرسايل في جاوة غالبًا خليط إندونيسي وجاوي. عشان تعرف إنت قدام أنهي لغة، دوّر على «الكلمات العلامة»:
+    - ora = tidak (لأ / مش). في سورابايا gak (وده موجود في الإندونيسي العامي كمان، فـ gak لوحدها مش دليل قوي).
+    - wis = sudah، durung = belum، arep = mau / akan.
+    - karo = dengan / sama (مع)، sing = yang (اللي)، piye = bagaimana، kowe = kamu.
+    - nang / neng = ke / di، saka = dari، ana = ada، iki / kuwi = ini / itu.
+    - اللاحقة -e / -ne = -nya: omahe = rumahnya، regane = harganya.
+    كلمات مشتركة مابتقولش حاجة: aku، apa، lagi، kapan، kok، banget. لو الجملة فيها دي بس، شوف الكلمات اللي حواليها.
+    مثال: «Aku lagi nang pasar karo ibuku» → nang وkaro جاويين، فالجملة جاوية: أنا في السوق مع ماما.
+    و«Aku lagi di pasar sama ibuku» → di وsama إندونيسيين، فالجملة إندونيسية (عامية) بنفس المعنى.
+  ar: |
+    كثيرًا ما تمزج الرسائل في جاوة بين الإندونيسية والجاوية، ولتمييزهما ابحث عن الكلمات الدالة:
+    - ora = tidak، وفي سورابايا gak (وهي في العامية الإندونيسية أيضًا، فدلالتها ضعيفة وحدها).
+    - wis = sudah، durung = belum، arep = mau / akan.
+    - karo = dengan / sama، sing = yang، piye = bagaimana، kowe = kamu.
+    - nang / neng = ke / di، saka = dari، ana = ada، iki / kuwi = ini / itu.
+    - اللاحقة -e / -ne = -nya.
+    أما aku وapa وlagi وkapan وkok وbanget فمشتركة لا تدل.
+    مثال: «Aku lagi nang pasar karo ibuku» جاوية (nang وkaro)، و«Aku lagi di pasar sama ibuku» إندونيسية عامية بالمعنى نفسه.
+  en: |
+    Messages in Java are often a mix of Indonesian and Javanese. To tell which is which, hunt for marker words:
+    - ora = tidak. Surabaya says gak — but gak is also Indonesian slang, so on its own it's a weak clue.
+    - wis = sudah, durung = belum, arep = mau / akan.
+    - karo = dengan / sama, sing = yang, piye = bagaimana, kowe = kamu.
+    - nang / neng = ke / di, saka = dari, ana = ada, iki / kuwi = ini / itu.
+    - suffix -e / -ne = -nya: omahe = rumahnya, regane = harganya.
+    Shared words say nothing: aku, apa, lagi, kapan, kok, banget. If a sentence has only those, look at its neighbours.
+    Example: "Aku lagi nang pasar karo ibuku" → nang and karo are Javanese: I'm at the market with my mum.
+    "Aku lagi di pasar sama ibuku" → di and sama are Indonesian (casual), same meaning.
+examples:
+  - text: Aku lagi nang pasar karo ibuku.
+    breakdown: aku · lagi = sedang · nang = di (jv) · pasar · karo = sama (jv) · ibu + -ku
+    en: I'm at the market with my mum. (Javanese)
+    ar_eg: أنا في السوق مع ماما.
+    ar: أنا في السوق مع أمي.
+    register: informal
+  - text: Aku lagi di pasar sama ibuku.
+    breakdown: di (id) · sama (id) — Indonesian, casual
+    en: I'm at the market with my mum. (casual Indonesian)
+    ar_eg: نفس المعنى، بس بالإندونيسي العامي.
+    ar: المعنى نفسه بالإندونيسية العامية.
+    register: informal
+  - text: Aku ora ngerti.
+    breakdown: aku · ora = tidak (jv) · ngerti = mengerti
+    en: I don't understand. (Javanese)
+    ar_eg: أنا مش فاهم.
+    ar: لا أفهم.
+    register: informal
+  - text: Sing abang regane pira?
+    breakdown: sing = yang · abang = merah · rega + -ne = harganya · pira = berapa
+    en: How much is the red one?
+    ar_eg: الأحمر بكام؟
+    ar: بكم الأحمر؟
+    register: informal
+  - text: Wis tekan durung?
+    breakdown: wis = sudah · tekan = sampai · durung = belum
+    en: Have you arrived yet? (Indonesian "Sudah sampai belum?")
+    ar_eg: وصلت ولا لسه؟
+    ar: هل وصلت أم ليس بعد؟
+    register: informal
+mistakes:
+  - wrong: '"Aku lagi makan, kok" is Javanese because it has aku and lagi.'
+    right: It is Indonesian (casual) — aku, lagi and kok are shared; makan (not mangan) is Indonesian.
+    why:
+      ar_eg: aku وlagi وkok موجودين في اللغتين. الدليل هنا makan، وهي إندونيسي (بالجاوي mangan).
+      ar: aku وlagi وkok مشتركة، والدليل makan الإندونيسية (وبالجاوية mangan).
+      en: aku, lagi and kok are shared; the clue is makan, which is Indonesian (Javanese mangan).
+  - wrong: Aku arep tuku kopi sama roti.
+    right: Aku arep tuku kopi karo roti.
+    why:
+      ar_eg: sama إندونيسي. الشات بيخلط كتير، بس في جملة جاوي نضيفة قول karo.
+      ar: sama إندونيسية، والجملة الجاوية الخالصة تقتضي karo وإن كثر الخلط في الدردشة.
+      en: sama is Indonesian; chats mix freely, but clean ngoko uses karo.
+arabic_bridge:
+  ar_eg: "زي ما بتعرف الجملة مصري ولا فصحى من كلمات زي «مش» و«إيه» و«عشان» بدل «ليس» و«ماذا» و«لأن»، بتعرف الجاوي من ora وpiye وkaro."
+  ar: "كما تُعرف العامية من الفصحى بكلمات مثل «مش» و«إيه» بدل «ليس» و«ماذا»، تُعرف الجاوية بـ ora وpiye وkaro."
+  en: "Just as «مش» and «إيه» mark Egyptian versus Fusha «ليس» and «ماذا», ora, piye and karo mark Javanese."
+tags: [code-mixing, reading, vocabulary, j1]
+prerequisites: [jv.aspect.wis-durung-lagi-arep, jv.question.words]
+see_also: [jv.chat.normalize, jv.codemix, jv.negation.ora-dudu]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker.

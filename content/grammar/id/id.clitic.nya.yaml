@@ -1,0 +1,101 @@
+schema: kabar.grammar/v1
+id: id.clitic.nya
+language: id
+level: bipa3
+title:
+  target: -nya (bukunya, melihatnya, tingginya, katanya)
+  en: The many jobs of -nya
+  ar_eg: -nya ووظايفها الكتير
+  ar: اللاحقة -nya ووظائفها
+summary:
+  ar_eg: "-nya ممكن تبقى «ـه / ـها» (بتاعه)، أو «الـ» (الحاجة اللي عارفينها)، أو مفعول (شفته)، أو بتحوّل الصفة لاسم (طوله)."
+  ar: "-nya قد تكون ضمير الغائب المتصل (ـه / ـها)، أو أداة تعريف، أو ضمير مفعول، أو أداة لتحويل الصفة إلى اسم."
+  en: "-nya can be his / her / its, \"the\" (something already known), an object pronoun (him / her / it), or turn an adjective into a noun (its height)."
+pattern:
+  - noun + -nya = his / her / its / their (bukunya)
+  - noun + -nya = "the" one we both know (Pantainya bersih.)
+  - verb / preposition + -nya = him / her / it (melihatnya, dengannya, untuknya)
+  - adjective + -nya = noun of degree (tingginya, beratnya, harganya)
+  - fixed adverbs (katanya, rupanya, sebaiknya, sepertinya)
+explanation:
+  ar_eg: |
+    -nya من أكتر الحاجات اللي هتشوفها في الإندونيسي، وليها ٤-٥ وظايف:
+    1) «ـه / ـها» (الملكية لتالت شخص): bukunya = كتابه / كتابها. ولو عايز توضح: buku Rina.
+    2) «الـ» — حاجة اتكلمنا عنها أو واضحة من الموقف: Ni Luh membawa tas. Tasnya dari plastik daur ulang = الشنطة (دي) من بلاستيك متدوّر. وفي المطعم: Kopinya satu, ya = القهوة واحد.
+    3) ضمير مفعول بعد الفعل أو حرف الجر: Saya melihatnya = شفته، dengannya = معاه، untuknya = عشانه.
+    4) بتحول الصفة لاسم «مقدار»: tinggi → tingginya 170 cm = طوله ١٧٠، harganya = سعره، beratnya = وزنه.
+    5) كلمات ثابتة: katanya = بيقولوا، rupanya = طلع إن…، sebaiknya = الأحسن، sepertinya = شكله كده.
+    وبتلزق في الكلمة من غير شَرطة: rumahnya، مش rumah-nya.
+    -nya «بتاع هو/هي» بس — «بتاعي» = saya / -ku، و«بتاعك» = -mu.
+  ar: |
+    -nya من أكثر اللواحق شيوعًا، ولها وظائف:
+    1) ضمير الغائب المتصل للملكية: bukunya = كتابه / كتابها.
+    2) أداة تعريف لشيء معلوم من السياق: Tasnya dari plastik daur ulang = الحقيبة مصنوعة من بلاستيك معاد تدويره.
+    3) ضمير مفعول بعد الفعل أو حرف الجر: melihatnya = رآه، dengannya = معه.
+    4) تحويل الصفة إلى اسم دالّ على المقدار: tingginya = طوله، harganya = ثمنه، beratnya = وزنه.
+    5) ألفاظ ثابتة: katanya (يُقال)، rupanya (يبدو / تبيّن)، sebaiknya (الأفضل)، sepertinya (يبدو أنّ).
+    وتُكتب متصلة دون شرطة، ولا تُستعمل للمتكلم أو المخاطَب.
+  en: |
+    -nya is everywhere. Its main jobs:
+    1) his / her / its: bukunya = his/her book (say buku Rina to be precise).
+    2) "the" — something already mentioned or obvious: Ni Luh membawa tas. Tasnya dari plastik daur ulang = The bag is made of recycled plastic. At a café: Kopinya satu, ya = One coffee, please.
+    3) object pronoun after a verb or preposition: Saya melihatnya (I saw him/it), dengannya (with him), untuknya (for her).
+    4) turns an adjective into a measure noun: tingginya 170 cm (his height is 170 cm), harganya (its price), beratnya (its weight).
+    5) fixed adverbs: katanya (people say / reportedly), rupanya (it turns out), sebaiknya (it's best to), sepertinya (it seems).
+    It's written joined, never with a hyphen, and only for third person — "my" is saya / -ku, "your" is -mu.
+examples:
+  - text: Pantainya bersih sekali.
+    breakdown: pantai + -nya (the) · bersih · sekali
+    en: The beach is really clean.
+    ar_eg: الشط نضيف جدًا.
+    ar: الشاطئ نظيف جدًا.
+  - text: Ni Luh membawa tas. Tasnya dari plastik daur ulang.
+    en: Ni Luh brings a bag. The bag is made of recycled plastic.
+    ar_eg: نيلوه جايبة شنطة. الشنطة معمولة من بلاستيك متدوّر.
+    ar: تحمل ني لوه حقيبة. الحقيبة مصنوعة من بلاستيك معاد تدويره.
+  - text: Penyu itu lucu. Saya ingin melihatnya lagi.
+    breakdown: melihat + -nya (it)
+    en: That turtle is cute. I want to see it again.
+    ar_eg: السلحفاة دي حلوة. عايز أشوفها تاني.
+    ar: تلك السلحفاة لطيفة. أريد أن أراها مرة أخرى.
+  - text: Katanya, di Gili tidak ada mobil.
+    en: They say there are no cars on the Gilis.
+    ar_eg: بيقولوا إن مفيش عربيات في جيلي.
+    ar: يُقال إنه لا توجد سيارات في جزر جيلي.
+  - text: Berapa harganya?
+    en: How much is it?
+    ar_eg: بكام؟ / سعرها كام؟
+    ar: كم ثمنه؟
+  - text: Sebaiknya kita membawa botol minum sendiri.
+    en: We'd better bring our own water bottles.
+    ar_eg: الأحسن ناخد إزازة المية بتاعتنا معانا.
+    ar: الأفضل أن نحمل قوارير ماء خاصة بنا.
+mistakes:
+  - wrong: Bukunya saya ada di tas. (meaning "my book")
+    right: Buku saya ada di tas.
+    why:
+      ar_eg: -nya للغايب أو بمعنى «الـ»؛ «بتاعي» = saya أو -ku.
+      ar: -nya للغائب أو للتعريف، أما المتكلم فـsaya أو -ku.
+      en: -nya is third person or "the"; "my" is saya / -ku.
+  - wrong: rumah-nya
+    right: rumahnya
+    why:
+      ar_eg: بتتكتب لازقة من غير شَرطة.
+      ar: تُكتب متصلة بلا شرطة.
+      en: Written joined, no hyphen.
+  - wrong: Tinggi dia 170 sentimeter.
+    right: Tingginya 170 sentimeter.
+    why:
+      ar_eg: للمقاسات (الطول، الوزن، السعر) الطبيعي صفة + -nya.
+      ar: للتعبير عن المقادير يُستعمل الوصف + -nya.
+      en: For measurements (height, weight, price) the natural form is adjective + -nya.
+arabic_bridge:
+  ar_eg: "-nya هي «الضمير المتصل» بتاعنا بالظبط: كتابُه = bukunya، شُفته = melihatnya، معاه = dengannya، وكمان «طولُه ١٧٠» = tingginya 170. نفس الفكرة: الضمير بيلزق في الاسم أو الفعل أو حرف الجر."
+  ar: "-nya تقابل ضمير الغائب المتصل في العربية: كتابُه = bukunya، رأيتُه = melihatnya، معه = dengannya، وطولُه = tingginya؛ يتصل بالاسم والفعل وحرف الجر كما في العربية."
+  en: "-nya behaves like the Arabic attached pronoun ـه: on nouns (كتابه = bukunya), verbs (رأيته = melihatnya) and prepositions (معه = dengannya)."
+tags: [clitic, pronoun, possessive, definiteness]
+prerequisites: [id.possessive, id.pronoun.personal]
+see_also: [id.particle.lah-kah-pun, id.prefix.se]
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,106 @@
+schema: kabar.grammar/v1
+id: id.voice.active-passive
+language: id
+level: bipa3
+title:
+  target: Buku itu saya baca — aktif dan pasif
+  en: Active and passive — the pronoun passive
+  ar_eg: المبني للمعلوم والمجهول — «الكتاب ده أنا قريته»
+  ar: المبني للمعلوم والمبني للمجهول (المجهول بالضمير)
+summary:
+  ar_eg: "عشان تحط المفعول في الأول: لو الفاعل أنا / إحنا / إنت → مفعول + ضمير + جذر الفعل من غير meN- (Buku itu saya baca). لو هو / هي أو اسم → di- (Buku itu dibaca Rina)."
+  ar: "لتقديم المفعول: إن كان الفاعل متكلمًا أو مخاطبًا قيل: المفعول + الضمير + الجذر بلا meN- (Buku itu saya baca)، وإن كان غائبًا استُعملت di- (dibaca Rina)."
+  en: "To put the object first: with I / we / you as doer → object + pronoun + bare root (Buku itu saya baca); with he / she / a name → di- (Buku itu dibaca Rina)."
+pattern:
+  - "Active: subject + meN-verb + object (Saya membaca buku itu.)"
+  - "Passive 1st/2nd person: object + (aspect) + saya / kami / kita / kamu / Anda + root (Buku itu sudah saya baca.)"
+  - "Passive 3rd person: object + di-verb + (oleh) + agent (Buku itu dibaca oleh Rina.)"
+  - "Literary clitics: kubaca, kaubaca"
+explanation:
+  ar_eg: |
+    الإندونيسي بيحب يبدأ بالحاجة اللي بنتكلم عنها، فالمبني للمجهول عندهم أكتر بكتير من الإنجليزي.
+    عندك جملة معلوم: Saya membaca buku itu = أنا قريت الكتاب ده. عايز تبدأ بالكتاب؟
+    - لو الفاعل saya / aku / kami / kita / kamu / Anda: المفعول + الضمير + الجذر (من غير meN-):
+      Buku itu saya baca = الكتاب ده أنا قريته.
+    - لو الفاعل dia / هم / اسم: di- + الجذر: Buku itu dibaca Rina (الدرس اللي فات: id.passive.di).
+    قواعد مهمة:
+    1) الضمير والفعل لازقين في بعض، ومفيش حاجة بينهم. sudah / akan / tidak / belum بييجوا قبل الضمير: Buku itu sudah saya baca، Surat itu akan kami kirim besok، Pesan itu belum saya balas.
+    2) -kan و -i بيفضلوا: Kamar itu kami bersihkan، Desa Sade kami kunjungi.
+    3) في الأدب والأغاني: kubaca (أنا قريت)، kaubaca (إنت قريت).
+    امتى تستعمله؟ لما الحاجة هي موضوعك: «الصورة دي؟ أنا اللي صورتها»: Foto ini saya ambil di Sade. والرسايل الرسمية مليانة بيه: Pesan Anda sudah kami terima = رسالتك وصلتنا.
+  ar: |
+    تميل الإندونيسية إلى تقديم الموضوع، فيكثر فيها المبني للمجهول.
+    من المعلوم Saya membaca buku itu نصوغ:
+    - مع ضمير المتكلم أو المخاطب: المفعول + الضمير + الجذر بلا meN-: Buku itu saya baca.
+    - مع الغائب أو الاسم: di- + الجذر: Buku itu dibaca Rina.
+    القواعد:
+    1) لا يُفصل بين الضمير والفعل، وتتقدم sudah / akan / tidak / belum على الضمير: Buku itu sudah saya baca.
+    2) تبقى اللواحق -kan و-i: Kamar itu kami bersihkan، Desa Sade kami kunjungi.
+    3) في الأدب: kubaca، kaubaca.
+    ويكثر في المراسلات الرسمية: Pesan Anda sudah kami terima (تسلّمنا رسالتكم).
+  en: |
+    Indonesian likes to start with the topic, so passives are far more common than in English.
+    From the active Saya membaca buku itu (I read that book):
+    - If the doer is saya / aku / kami / kita / kamu / Anda: object + pronoun + bare root (no meN-): Buku itu saya baca.
+    - If the doer is dia, mereka or a name: di- + root: Buku itu dibaca Rina (see id.passive.di).
+    Rules:
+    1) Pronoun and verb stick together; aspect and negation go before the pronoun: Buku itu sudah saya baca. Surat itu akan kami kirim besok. Pesan itu belum saya balas.
+    2) -kan and -i stay: Kamar itu kami bersihkan. Desa Sade kami kunjungi.
+    3) Literary / song style: kubaca, kaubaca.
+    Use it when the thing is your topic: Foto ini saya ambil di Sade (This photo — I took it in Sade). Formal replies love it: Pesan Anda sudah kami terima (We have received your message).
+examples:
+  - text: Buku tentang pahlawan itu sudah saya baca.
+    breakdown: buku tentang pahlawan itu (object/topic) · sudah · saya (doer) · baca (bare root)
+    en: I've already read that book about the hero.
+    ar_eg: الكتاب بتاع البطل ده أنا قريته خلاص.
+    ar: قرأتُ ذلك الكتاب عن البطل.
+  - text: Saya membaca buku itu. → Buku itu saya baca.
+    en: I read that book. → That book, I read.
+    ar_eg: أنا قريت الكتاب ده. ← الكتاب ده أنا قريته.
+    ar: قرأتُ ذلك الكتاب. ← ذلك الكتابُ قرأتُه.
+  - text: Desa Sade kami kunjungi kemarin.
+    en: We visited Sade village yesterday.
+    ar_eg: قرية ساديه زرناها امبارح.
+    ar: زرنا قرية سادي أمس.
+  - text: Foto ini saya ambil di depan rumah adat.
+    en: I took this photo in front of the traditional house.
+    ar_eg: الصورة دي أنا صورتها قدام البيت التقليدي.
+    ar: التقطتُ هذه الصورة أمام البيت التقليدي.
+  - text: Pesan Anda sudah kami terima.
+    en: We have received your message.
+    ar_eg: رسالتك وصلتنا.
+    ar: تسلّمنا رسالتكم.
+    register: formal
+  - text: Penjajah menangkap pahlawan itu. → Pahlawan itu ditangkap oleh penjajah.
+    en: The colonisers captured the hero. → The hero was captured by the colonisers.
+    ar_eg: المستعمر قبض على البطل. ← البطل اتقبض عليه من المستعمر.
+    ar: قبض المستعمرون على البطل. ← قُبض على البطل من قِبل المستعمرين.
+mistakes:
+  - wrong: Buku itu saya membaca.
+    right: Buku itu saya baca.
+    why:
+      ar_eg: في المبني للمجهول بالضمير بتشيل meN- وتستعمل الجذر بس.
+      ar: تسقط meN- في المجهول بالضمير ويبقى الجذر.
+      en: The pronoun passive drops meN- and uses the bare root.
+  - wrong: Buku itu dibaca oleh saya.
+    right: Buku itu saya baca.
+    why:
+      ar_eg: di- … oleh مع «أنا / إحنا / إنت» مش طبيعية في الإندونيسي الفصيح؛ استعمل الضمير + الجذر.
+      ar: لا يُستعمل di- … oleh مع ضمير المتكلم أو المخاطب في الفصيح.
+      en: Standard Indonesian doesn't use di- … oleh with I / we / you; use pronoun + root.
+  - wrong: Buku itu saya sudah baca.
+    right: Buku itu sudah saya baca.
+    why:
+      ar_eg: مفيش حاجة تدخل بين الضمير والفعل؛ sudah قبل الضمير.
+      ar: لا يُفصل بين الضمير والفعل؛ تتقدم sudah على الضمير.
+      en: Nothing comes between pronoun and verb; sudah goes before the pronoun.
+arabic_bridge:
+  ar_eg: "«Buku itu saya baca» هي بالظبط جملة مصرية: «الكتاب ده أنا قريته» — بنبدأ بالحاجة وبعدين الفاعل والفعل. وفي الفصحى نفس الفكرة: «الكتابُ قرأتُه» (مبتدأ + جملة فيها ضمير راجع عليه)."
+  ar: "تشبه Buku itu saya baca قولنا «الكتابُ قرأتُه»: مبتدأ مقدَّم وخبر جملة فعلية؛ وفي العامية المصرية: «الكتاب ده أنا قريته»."
+  en: Buku itu saya baca mirrors Egyptian «الكتاب ده أنا قريته» and MSA topic-comment «الكتابُ قرأتُه».
+tags: [voice, passive, word-order]
+prerequisites: [id.passive.di, id.verb.transitive, id.prefix.men.basic]
+see_also: [id.passive.di, id.prefix.ter, id.confix.ke-an]
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,235 @@
+schema: kabar.lesson/v1
+id: bipa2.u03.l04
+language: id
+title: Bandara
+can_do:
+  ar_eg: تفهم إعلان في المطار وتتصرف على أساسه.
+  ar: أن تفهم إعلانًا في المطار وتتصرف بحسبه.
+  en: Act on an airport announcement.
+slides:
+  - title: Para penumpang, harap segera …
+    body:
+      ar_eg: |
+        إعلانات المطار ليها ترتيب ثابت، ركّز في تلات حاجات:
+        1. مين؟ Para penumpang penerbangan … tujuan … = ركاب رحلة … المتجهة لـ …
+        2. إيه اللي حصل؟ terlambat (متأخرة) / pintu pindah (البوابة اتغيرت)
+        3. تعمل إيه؟ Harap segera menuju pintu … = برجاء التوجه فورًا لبوابة …
+      ar: |
+        لإعلانات المطار ترتيب ثابت؛ انتبه لثلاثة أمور:
+        1. مَن؟ Para penumpang penerbangan … tujuan …
+        2. ماذا حدث؟ terlambat (متأخرة) / pintu pindah (تغيّرت البوابة)
+        3. ماذا تفعل؟ Harap segera menuju pintu … = يُرجى التوجه فورًا إلى البوابة …
+      en: |
+        Airport announcements follow a fixed order. Listen for three things:
+        1. Who? Para penumpang penerbangan … tujuan … = passengers on flight … to …
+        2. What happened? terlambat (delayed) / pintu pindah (gate changed)
+        3. What to do? Harap segera menuju pintu … = please go to gate … immediately
+    grammar: id.notice.harap-dilarang
+    examples:
+      - text: Harap segera menuju pintu lima.
+        ar_eg: برجاء التوجه فورًا لبوابة خمسة.
+        ar: يُرجى التوجه فورًا إلى البوابة الخامسة.
+        en: Please go to gate five immediately.
+exercises:
+  - id: e01
+    type: listen
+    text: Harap segera menuju pintu lima.
+    options: ["Dilarang menuju pintu lima.", "Harap segera menuju pintu lima.", "Harap segera menuju pintu sembilan."]
+    answer: 1
+    words: [harap, segera, menuju, pintu]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: سمعت «Para penumpang penerbangan GA 405, pintu pindah ke pintu tujuh». لازم تعمل إيه؟
+      ar: سمعت «Para penumpang penerbangan GA 405, pintu pindah ke pintu tujuh». ماذا تفعل؟
+      en: You hear "Para penumpang penerbangan GA 405, pintu pindah ke pintu tujuh". What do you do?
+    options: ["Saya menunggu di pintu lama.", "Saya pulang ke hotel.", "Saya pergi ke pintu tujuh."]
+    answer: 2
+    explain:
+      ar_eg: pindah ke pintu tujuh = البوابة اتنقلت لبوابة سبعة.
+      ar: pindah ke pintu tujuh = انتقلت البوابة إلى السابعة.
+      en: pindah ke pintu tujuh = the gate moved to gate seven.
+    words: [pindah, pintu]
+  - id: e03
+    type: fill_blank
+    sentence: Mohon ___. Para penumpang penerbangan GA 405, harap segera naik ke pesawat.
+    meaning:
+      ar_eg: انتباه من فضلكم. حضرات ركاب رحلة GA 405، برجاء ركوب الطيارة فورًا.
+      ar: انتباه من فضلكم. السادة ركاب رحلة GA 405، يُرجى الصعود إلى الطائرة فورًا.
+      en: Attention please. Passengers on flight GA 405, please board the plane immediately.
+    answers: [perhatian]
+    words: [perhatian]
+  - id: e04
+    type: fill_blank
+    sentence: Penerbangan ke Jakarta ___ satu jam. Mohon maaf atas keterlambatan ini.
+    meaning:
+      ar_eg: رحلة جاكرتا متأخرة ساعة. بنعتذر عن التأخير ده.
+      ar: رحلة جاكرتا متأخرة ساعة. نعتذر عن هذا التأخير.
+      en: The flight to Jakarta is an hour late. We apologise for this delay.
+    answers: [terlambat]
+    words: [terlambat]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: لازم نروح بوابة خمسة دلوقتي.
+      ar: يجب أن نذهب إلى البوابة الخامسة الآن.
+      en: We have to go to gate five now.
+    answer: Kita harus ke pintu lima sekarang.
+    distractors: [dilarang, tujuh]
+    words: [harus, pintu]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: لو سمحت، بوابة خمسة فين؟
+      ar: من فضلك، أين البوابة الخامسة؟
+      en: Excuse me, where is gate five?
+    answers:
+      - Permisi, pintu lima di mana?
+      - Permisi, pintu lima di mana
+      - Permisi, di mana pintu lima?
+      - Maaf, pintu lima di mana?
+      - Maaf, di mana pintu lima?
+    words: [pintu]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الطيارة دي بتتأخر كتير.
+      ar: هذه الطائرة تتأخر كثيرًا.
+      en: This plane is often late.
+    answers:
+      - Pesawat ini sering terlambat.
+      - Pesawat ini sering terlambat
+      - Pesawatnya sering terlambat.
+    words: [sering, terlambat]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Semua penumpang sudah antre di pintu tujuh.
+    answers_meaning:
+      ar_eg: ["كل الركاب واقفين في الطابور عند بوابة سبعة", "الركاب كلهم وقفوا في الطابور عند بوابة ٧"]
+      ar: ["وقف جميع الركاب في الصف عند البوابة السابعة", "جميع الركاب يصطفون عند البوابة السابعة"]
+      en: ["All the passengers are already queuing at gate seven.", "All passengers have queued at gate 7."]
+    words: [semua, penumpang, antre]
+  - id: e09
+    type: build_sentence
+    source:
+      ar_eg: (إعلان) حضرات الركاب، برجاء الهدوء.
+      ar: (إعلان) السادة الركاب، يُرجى الهدوء.
+      en: (announcement) Passengers, please be quiet.
+    answer: Para penumpang, harap tenang.
+    distractors: [dilarang, semua]
+    words: [para, penumpang, harap, tenang]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (اعمل إعلان) برجاء التوجه فورًا لبوابة تلاتة.
+      ar: (اصنع إعلانًا) يُرجى التوجه فورًا إلى البوابة الثالثة.
+      en: (make the announcement) Please go to gate three immediately.
+    answers:
+      - Harap segera menuju pintu tiga.
+      - Harap segera menuju pintu tiga
+      - Mohon segera menuju pintu tiga.
+      - Harap segera ke pintu tiga.
+      - Mohon segera ke pintu tiga.
+    words: [harap, segera, menuju]
+  - id: e11
+    type: dictation
+    text: Pintu pindah ke pintu tujuh.
+    meaning:
+      ar_eg: البوابة اتنقلت لبوابة سبعة.
+      ar: انتقلت البوابة إلى البوابة السابعة.
+      en: The gate has moved to gate seven.
+    words: [pindah, pintu]
+  - id: e12
+    type: speaking
+    text: Permisi, Pak. Penerbangan ke Jakarta terlambat, ya?
+    meaning:
+      ar_eg: لو سمحت يا أستاذ. رحلة جاكرتا متأخرة، صح؟
+      ar: عفوًا يا سيدي. رحلة جاكرتا متأخرة، أليس كذلك؟
+      en: Excuse me, sir. The flight to Jakarta is delayed, right?
+    words: [penerbangan, terlambat]
+dialogue:
+  title: Pintu pindah!
+  lines:
+    - speaker: Pengumuman
+      text: Mohon perhatian. Para penumpang penerbangan GA 405 tujuan Jakarta, pintu pindah ke pintu lima. Harap segera menuju pintu lima.
+      ar_eg: انتباه من فضلكم. حضرات ركاب رحلة GA 405 المتجهة لجاكرتا، البوابة اتنقلت لبوابة خمسة. برجاء التوجه فورًا لبوابة خمسة.
+      ar: انتباه من فضلكم. السادة ركاب رحلة GA 405 المتجهة إلى جاكرتا، انتقلت البوابة إلى البوابة الخامسة. يُرجى التوجه فورًا إلى البوابة الخامسة.
+      en: Attention please. Passengers on flight GA 405 to Jakarta, your gate has changed to gate five. Please go to gate five immediately.
+    - speaker: Mohamed
+      text: Mas, itu pesawat kita! Pintunya pindah?
+      ar_eg: يا ماس، دي طيارتنا! البوابة اتغيرت؟
+      ar: يا ماس، هذه طائرتنا! هل تغيّرت البوابة؟
+      en: Mas, that's our plane! Has the gate changed?
+    - speaker: Mas Ardi
+      text: Ya, ke pintu lima. Kita harus segera ke sana.
+      ar_eg: أيوه، لبوابة خمسة. لازم نروح هناك حالًا.
+      ar: نعم، إلى البوابة الخامسة. يجب أن نذهب إلى هناك فورًا.
+      en: Yes, to gate five. We have to go there right away.
+    - speaker: Mohamed
+      text: Permisi, Pak. Pintu lima di mana?
+      ar_eg: لو سمحت يا أستاذ. بوابة خمسة فين؟
+      ar: عفوًا يا سيدي. أين البوابة الخامسة؟
+      en: Excuse me, sir. Where is gate five?
+    - speaker: Petugas
+      text: Lurus saja, lalu belok kiri. Hati-hati, lantainya licin.
+      ar_eg: علطول، وبعدين حوّد شمال. خلي بالك، الأرض بتزحلق.
+      ar: امشِ مباشرةً ثم انعطف يسارًا. انتبه، الأرض زلقة.
+      en: Straight ahead, then turn left. Careful, the floor is slippery.
+    - speaker: Mohamed
+      text: Terima kasih, Pak!
+      ar_eg: شكرًا يا أستاذ!
+      ar: شكرًا يا سيدي!
+      en: Thank you, sir!
+    - speaker: Pengumuman
+      text: Para penumpang penerbangan GA 405, harap segera naik ke pesawat.
+      ar_eg: حضرات ركاب رحلة GA 405، برجاء ركوب الطيارة فورًا.
+      ar: السادة ركاب رحلة GA 405، يُرجى الصعود إلى الطائرة فورًا.
+      en: Passengers on flight GA 405, please board the plane now.
+    - speaker: Mas Ardi
+      text: Cepat, Mohamed! Semua penumpang sudah antre.
+      ar_eg: بسرعة يا محمد! كل الركاب وقفوا في الطابور.
+      ar: بسرعة يا محمد! كل الركاب اصطفّوا.
+      en: Quick, Mohamed! All the passengers are already queuing.
+    - speaker: Mohamed
+      text: Untung pesawatnya tidak terlambat lagi!
+      ar_eg: الحمد لله إن الطيارة متأخرتش تاني!
+      ar: من حسن الحظ أن الطائرة لم تتأخر مرة أخرى!
+      en: Lucky the plane isn't late again!
+new_words:
+  - word: segera
+    pos: adverb
+    ar_eg: فورًا، حالًا
+    ar: فورًا
+    en: immediately, right away
+  - word: menuju
+    pos: verb
+    ar_eg: يتوجه لـ
+    ar: يتوجه إلى
+    en: to head for
+  - word: pintu
+    pos: noun
+    ar_eg: باب / بوابة (في المطار)
+    ar: باب / بوابة
+    en: door; gate (at an airport)
+  - word: pindah
+    pos: verb
+    ar_eg: يتنقل، يتغير مكانه
+    ar: ينتقل
+    en: to move, change place
+  - word: petugas
+    pos: noun
+    ar_eg: موظف (في مكان عام)
+    ar: موظف، مسؤول
+    en: officer, staff member
+  - word: untung
+    pos: adverb
+    ar_eg: من حسن الحظ
+    ar: لحسن الحظ
+    en: luckily
+review:
+  status: draft
+  verified: false

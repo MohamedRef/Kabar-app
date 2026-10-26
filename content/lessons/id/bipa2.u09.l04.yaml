@@ -1,0 +1,254 @@
+schema: kabar.lesson/v1
+id: bipa2.u09.l04
+language: id
+title: Grup WhatsApp liburan
+can_do:
+  ar_eg: تقرا جروب شات بتاع رحلة وترد عليه زي أصحابك.
+  ar: أن تقرأ محادثة جماعية عن رحلة وتردّ عليها.
+  en: Read and reply to a holiday group chat.
+slides:
+  - title: Membaca grup chat
+    body:
+      ar_eg: |
+        في جروب الرحلة هتلاقي الاختصارات وحروف الكلام مع بعض:
+        - brp = berapa، yg = yang، aja = saja، gk papa = مفيش مشكلة، hati2 = خلي بالك، wkwk = هههه.
+        - jadi؟ = لسه الخطة قايمة؟ والرد: Jadi dong! = أكيد قايمة!
+        - aduh، dong، deh بيدّوا الإحساس.
+        - nyetir = menyetir (عامية)، ngantuk = نعسان، gaes = يا جماعة (من guys).
+      ar: |
+        في محادثة الرحلة تجتمع الاختصارات وأدوات الكلام:
+        - brp = berapa، yg = yang، aja = saja، gk papa = لا بأس، hati2 = انتبهوا، wkwk = ضحك.
+        - jadi؟ = هل الخطة قائمة؟ والرد: Jadi dong! = طبعًا قائمة!
+        - aduh وdong وdeh تضيف الشعور.
+        - nyetir = menyetir (عامية)، ngantuk = نعسان، gaes = يا جماعة (من guys).
+      en: |
+        A trip group chat mixes chat spelling and spoken particles:
+        - brp = berapa, yg = yang, aja = saja, gk papa = no problem, hati2 = take care, wkwk = haha.
+        - jadi? = is it still on? Reply: Jadi dong! = Of course it's on!
+        - aduh, dong, deh add feeling.
+        - nyetir = menyetir (casual), ngantuk = sleepy, gaes = guys.
+    grammar: id.chat.abbreviations
+    examples:
+      - text: gaes, besok jadi ke Lovina?
+        ar_eg: يا جماعة، لسه رايحين لوفينا بكرة؟
+        ar: يا جماعة، هل ما زلنا ذاهبين إلى لوفينا غدًا؟
+        en: Guys, is Lovina still on for tomorrow?
+exercises:
+  - id: e01
+    type: multiple_choice
+    question: berangkat jam brp?
+    question_meaning:
+      ar_eg: ديماس كتب كده في الجروب. هو عايز يعرف إيه؟ اختار الكتابة الكاملة.
+      ar: كتب ديماس هذا في المجموعة. ماذا يريد أن يعرف؟ اختر الصيغة الكاملة.
+      en: Dimas wrote this in the group. What does he want to know? Pick the full form.
+    options: ["Berangkat dengan siapa?", "Berangkat jam berapa?", "Berangkat dari mana?"]
+    answer: 1
+    words: [berapa]
+  - id: e02
+    type: multiple_choice
+    question: aku yg nyetir
+    question_meaning:
+      ar_eg: إيه معنى الرسالة دي بالإندونيسي الكامل؟
+      ar: ما صيغة هذه الرسالة الكاملة؟
+      en: What is this message in full Indonesian?
+    options: ["Aku yang menyanyi.", "Aku yang menyetir.", "Aku tidak menyetir."]
+    answer: 1
+    explain:
+      ar_eg: yg = yang، وnyetir = menyetir (يسوق). يعني «أنا اللي هسوق».
+      ar: yg = yang، وnyetir = menyetir، أي «أنا من سيقود».
+      en: yg = yang, nyetir = menyetir — "I'll be the one driving".
+    words: [yang, menyetir]
+  - id: e03
+    type: multiple_choice
+    question: besok jadi ke Lovina?
+    question_meaning:
+      ar_eg: أنهي رد مناسب؟
+      ar: أيّ ردّ يناسب؟
+      en: Which reply fits?
+    options: ["Aduh, sakit!", "Jadi dong! Jam berapa?", "Lho, kok mahal?"]
+    answer: 1
+    words: [jadi, dong]
+  - id: e04
+    type: fill_blank
+    sentence: ___ papa, nanti tidur di mobil aja
+    meaning:
+      ar_eg: (شات) ولا يهمك، ابقى نام في العربية.
+      ar: (محادثة) لا بأس، نَم في السيارة لاحقًا.
+      en: (chat) No problem, you can sleep in the car.
+    options: ["bgt", "udh", "gk"]
+    answers: [gk]
+    words: [nggak, saja]
+  - id: e05
+    type: fill_blank
+    sentence: Ayo ___, bangun! Sudah jam empat.
+    meaning:
+      ar_eg: يلا بقى، اصحى! الساعة بقت أربعة.
+      ar: هيّا، استيقظ! صارت الساعة الرابعة.
+      en: Come on, get up! It's already four.
+    options: ["sih", "dong", "kan"]
+    answers: [dong]
+    words: [dong]
+  - id: e06
+    type: fill_blank
+    sentence: Pantainya indah ___!
+    meaning:
+      ar_eg: (رد في الجروب) البحر جميل أوي!
+      ar: (ردّ في المجموعة) الشاطئ جميل جدًا!
+      en: (group reply) The beach is so beautiful!
+    answers: [bgt, banget, sekali]
+    explain:
+      ar_eg: في الشات bgt أو banget، وsekali كمان صح بس أرسمي.
+      ar: في المحادثات bgt أو banget، وsekali صحيحة أيضًا لكنها أكثر رسمية.
+      en: In chat, bgt or banget; sekali is right too, just more formal.
+    words: [banget]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: (شات) أنا هجيب أكل، ماشي؟
+      ar: (محادثة) سأحضر طعامًا، اتفقنا؟
+      en: (chat) I'll bring food, OK?
+    answer: aku bawa makanan ya
+    distractors: [yg, gk]
+    words: [bawa, makanan]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: (شات) خلّوا بالكم يا جماعة!
+      ar: (محادثة) انتبهوا جميعًا!
+      en: (chat) Take care, everyone!
+    answer: hati2 ya semua
+    distractors: [udh, bgt]
+    words: [hati-hati, semua]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: hah jam 4?? aduh, ngantuk bgt wkwk
+    answers_meaning:
+      ar_eg: ["إيه؟ الساعة ٤؟؟ يا خبر، أنا نعسان أوي هههه", "الساعة ٤؟! يا نهار، هموت من النوم هههه"]
+      ar: ["ماذا؟ الساعة الرابعة؟! يا للهول، أنا نعسان جدًا هههه", "الرابعة؟! آه، أنا نعسان جدًا"]
+      en: ["What, 4 o'clock?? Oh no, I'm so sleepy haha", "4 a.m.?! Ugh, I'm so sleepy lol"]
+    words: [aduh, ngantuk, banget]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: gk papa Rina, nanti tidur di mobil aja
+    answers_meaning:
+      ar_eg: ["ولا يهمك يا رينا، ابقي نامي في العربية.", "مفيش مشكلة يا رينا، نامي في العربية وخلاص"]
+      ar: ["لا بأس يا رينا، نامي في السيارة لاحقًا.", "لا مشكلة يا رينا، يمكنك النوم في السيارة"]
+      en: ["No problem, Rina, just sleep in the car.", "It's fine Rina, you can sleep in the car later."]
+    words: [nggak, saja]
+  - id: e11
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (رد على الجروب) ماشي، أشوفكم بكرة!
+      ar: (ردّ في المجموعة) حسنًا، إلى اللقاء غدًا!
+      en: (reply to the group) OK, see you tomorrow!
+    answers:
+      - Oke, sampai besok!
+      - Oke, sampai besok
+      - OK, sampai besok!
+      - Ok, sampai besok!
+      - ok sampai besok
+      - Oke, sampai jumpa besok!
+      - OK, sampai jumpa besok!
+      - Oke, sampai ketemu besok!
+      - Oke deh, sampai besok!
+    explain:
+      ar_eg: «sampai besok» = لحد بكرة / أشوفك بكرة. ketemu هي العامية من bertemu.
+      ar: «sampai besok» = إلى الغد، وketemu عامية bertemu.
+      en: '"sampai besok" = see you tomorrow; ketemu is casual bertemu.'
+    words: [sampai besok]
+  - id: e12
+    type: dictation
+    text: Hati-hati di jalan, ya!
+    meaning:
+      ar_eg: خلي بالك في الطريق!
+      ar: انتبه في الطريق!
+      en: Take care on the road!
+    words: [hati-hati]
+  - id: e13
+    type: speaking
+    text: Oke, aku bawa makanan, ya. Sampai besok!
+    meaning:
+      ar_eg: ماشي، أنا هجيب أكل. أشوفكم بكرة!
+      ar: حسنًا، سأحضر الطعام. إلى اللقاء غدًا!
+      en: OK, I'll bring food. See you tomorrow!
+    words: [bawa, sampai besok]
+dialogue:
+  title: Grup "Liburan Lovina"
+  lines:
+    - speaker: Ni Luh
+      text: gaes, besok jadi ke Lovina?
+      ar_eg: يا جماعة، لسه رايحين لوفينا بكرة؟
+      ar: يا جماعة، هل ما زلنا ذاهبين إلى لوفينا غدًا؟
+      en: Guys, is Lovina still on for tomorrow?
+    - speaker: Dimas
+      text: jadi dong! berangkat jam brp?
+      ar_eg: أكيد! هنمشي الساعة كام؟
+      ar: طبعًا! متى ننطلق؟
+      en: Of course! What time do we leave?
+    - speaker: Ni Luh
+      text: jam 4 pagi ya, supaya bisa lihat lumba2
+      ar_eg: الساعة ٤ الصبح، عشان نلحق نشوف الدلافين.
+      ar: في الرابعة صباحًا، لكي نرى الدلافين.
+      en: 4 a.m., so we can see the dolphins.
+    - speaker: Rina
+      text: hah jam 4?? aduh, ngantuk bgt wkwk
+      ar_eg: إيه؟ الساعة ٤؟؟ يا خبر، هموت من النوم هههه
+      ar: ماذا؟ الرابعة؟! آه، سأكون نعسانة جدًا هههه
+      en: What, 4?? Oh no, I'll be so sleepy haha
+    - speaker: Mohamed
+      text: gk papa Rina, nanti tidur di mobil aja
+      ar_eg: ولا يهمك يا رينا، ابقي نامي في العربية.
+      ar: لا بأس يا رينا، نامي في السيارة.
+      en: No problem, Rina, just sleep in the car.
+    - speaker: Dimas
+      text: setuju. aku yg nyetir
+      ar_eg: موافق. أنا اللي هسوق.
+      ar: موافق، أنا من سيقود.
+      en: Agreed. I'll drive.
+    - speaker: Rina
+      text: ok deh. aku bawa makanan yaa
+      ar_eg: خلاص ماشي. أنا هجيب الأكل.
+      ar: حسنًا إذن، سأحضر الطعام.
+      en: OK then. I'll bring food.
+    - speaker: Ni Luh
+      text: mantap! sampai besok, hati2 ya semua
+      ar_eg: تحفة! أشوفكم بكرة، خلّوا بالكم يا جماعة.
+      ar: رائع! إلى الغد، انتبهوا جميعًا.
+      en: Awesome! See you tomorrow, take care everyone.
+    - speaker: Mohamed
+      text: siap! sampai besok
+      ar_eg: تمام! أشوفكم بكرة.
+      ar: حاضر! إلى الغد.
+      en: Sure! See you tomorrow.
+new_words:
+  - word: gaes
+    pos: interjection
+    ar_eg: يا جماعة (من guys، عامية)
+    ar: يا جماعة (من guys، عامية)
+    en: guys (casual)
+  - word: jadi
+    pos: verb
+    ar_eg: الخطة قايمة / هيحصل
+    ar: يتمّ كما خُطّط له
+    en: to go ahead as planned, be on
+  - word: ngantuk
+    pos: adjective
+    ar_eg: نعسان
+    ar: نعسان
+    en: sleepy
+  - word: nyetir
+    pos: verb
+    ar_eg: يسوق (عامية menyetir)
+    ar: يقود (عامية menyetir)
+    en: to drive (casual menyetir)
+  - word: setuju
+    pos: verb
+    ar_eg: موافق
+    ar: يوافق
+    en: to agree
+review:
+  status: draft
+  verified: false

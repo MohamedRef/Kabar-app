@@ -95,6 +95,23 @@ pub enum Register {
     Religious,
 }
 
+/// Javanese speech level (unggah-ungguh, §13).
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+#[serde(rename_all = "snake_case")]
+pub enum SpeechLevel {
+    /// Plain speech: friends, younger people, yourself.
+    Ngoko,
+    /// The in-between level used in markets and casual polite talk.
+    Madya,
+    /// Polite speech to elders, strangers, people of higher status.
+    Krama,
+    /// Honorific words that elevate the other person (their body, actions, belongings).
+    KramaInggil,
+    /// Humble words for your own actions toward a respected person.
+    KramaAndhap,
+}
+
 /// Who produced a piece of content, so a better pass can replace it later.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
@@ -158,6 +175,14 @@ pub struct GlossEntry {
     pub senses: Vec<Sense>,
     /// Two example sentences (three at most).
     pub examples: Vec<Example>,
+    /// Javanese only: the Indonesian equivalent, since the learner meets
+    /// Javanese after BIPA 1 and compares the two.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub indonesian: Option<String>,
+    /// Javanese only: the speech level of this form; its equivalents at the
+    /// other levels live in the speech-level table.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub speech_level: Option<SpeechLevel>,
     /// Usage or register note worth knowing (optional).
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub note: Option<Trilingual>,
@@ -254,6 +279,98 @@ pub struct SoundRule {
     pub explanation: Trilingual,
     /// Indonesian words that show the rule; each must exist in the dataset.
     pub examples: Vec<String>,
+}
+
+// --- Javanese speech levels ------------------------------------------------------
+
+/// A sentence shown at one speech level.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+#[serde(deny_unknown_fields)]
+pub struct LevelExample {
+    pub level: SpeechLevel,
+    pub text: String,
+    pub translation: Trilingual,
+}
+
+/// One row of the speech-level table (§13, §17): the same meaning across
+/// ngoko, madya, krama, krama inggil and krama andhap. An empty level means
+/// the word has no special form there and the nearest lower level is used
+/// (krama inggil → krama → madya → ngoko).
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+#[serde(deny_unknown_fields)]
+pub struct SpeechLevelEntry {
+    /// Stable snake_case id from the English meaning (`eat`, `house`, `you`).
+    pub id: String,
+    pub pos: Pos,
+    pub meaning: Trilingual,
+    /// The standard Indonesian word.
+    pub indonesian: String,
+    pub ngoko: Vec<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub madya: Vec<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub krama: Vec<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub krama_inggil: Vec<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub krama_andhap: Vec<String>,
+    /// When to use which form, with Egyptian analogies where they help.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub note: Option<Trilingual>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub examples: Vec<LevelExample>,
+    pub confidence: Confidence,
+    pub sources: Vec<String>,
+    #[serde(default)]
+    pub status: ReviewStatus,
+}
+
+// --- Golden sets -----------------------------------------------------------------
+
+/// The reference set for one runtime AI task (§19): what the bake-off sends
+/// to each engine and how answers are judged.
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+#[serde(deny_unknown_fields)]
+pub struct GoldenSet {
+    /// Task id as in `kabar_protocol::ai::Task` (`analyze_text`, …).
+    pub task: String,
+    pub version: u32,
+    /// Task-specific scoring notes on top of `docs/BAKEOFF.md`'s 0–3 rubric.
+    pub rubric: String,
+    pub items: Vec<GoldenItem>,
+}
+
+/// One golden case.
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+#[serde(deny_unknown_fields)]
+pub struct GoldenItem {
+    /// Unique within the set, e.g. `analyze-jv-chat-01`.
+    pub id: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub lang: Option<Lang>,
+    /// Task input, shaped per task (see the set's file header).
+    pub input: serde_json::Value,
+    /// Reference answer; for typed tasks it follows the task's output shape.
+    #[serde(default, skip_serializing_if = "serde_json::Value::is_null")]
+    pub expect: serde_json::Value,
+    /// Must hold for a passing answer.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub criteria: Vec<String>,
+    /// Must not happen (a wrong meaning, guilt-tripping, leaking personal data…).
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub avoid: Vec<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub tags: Vec<String>,
+    /// Vision tasks: fixture image or stroke file, relative to the repo root.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub image: Option<String>,
+    /// Checked by the learner (or a native speaker for Javanese).
+    #[serde(default)]
+    pub verified: bool,
 }
 
 // --- Dictionary (normalized Wiktionary import) --------------------------------
