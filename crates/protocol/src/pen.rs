@@ -98,3 +98,25 @@ pub struct PenLabReport {
     /// Our handler → next animation frame (ms).
     pub frame_delay_ms: Percentiles,
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Real report from the S24 Ultra, so the app keeps reading what devices send.
+    #[test]
+    fn parses_device_report() {
+        let r: PenLabReport =
+            serde_json::from_str(include_str!("../../../fixtures/penlab/s24-ultra-2026-10-26.json")).unwrap();
+        assert_eq!(r.device_model.as_deref(), Some("samsung SM-S928B"));
+        assert!(r.webview.desynchronized_canvas && r.tilt_seen && r.hover_seen);
+        assert_eq!(r.pressure_levels_seen, 426);
+        assert_eq!(r.counts["pen:move"], 961);
+
+        let palm: PenLabReport =
+            serde_json::from_str(include_str!("../../../fixtures/penlab/s24-ultra-2026-10-26-palm.json"))
+                .unwrap();
+        assert_eq!(palm.palm_touches_while_pen_in_range, 13);
+        assert!(!palm.barrel_button_seen);
+    }
+}
