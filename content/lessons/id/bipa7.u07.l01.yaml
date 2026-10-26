@@ -1,0 +1,208 @@
+schema: kabar.lesson/v1
+id: bipa7.u07.l01
+language: id
+title: Sesuai pembaca
+can_do:
+  ar_eg: تظبط أسلوبك على حسب اللي بيقرا، طفل ولا جمهور ولا مسؤول.
+  ar: أن تكيّف أسلوبك بحسب القارئ، طفلًا كان أو جمهورًا أو مسؤولًا.
+  en: Tune your language to who's reading, a child, the public or an official.
+slides:
+  - title: Satu berita, tiga pembaca
+    grammar: id.register.audience
+    body:
+      ar_eg: |
+        نفس الخبر لـ تلات pembaca sasaran (قارئ مستهدف) مختلفين (مثال متألّف للدرس):
+        - للأطفال: Jalan ke sekolah ditutup dulu, ya. Jalannya sedang diperbaiki.
+        - للـ khalayak (الجمهور العام)، بأسلوب lugas (مباشر وواضح): Jalan Trikora ditutup selama dua minggu untuk perbaikan.
+        - لمسؤول، بأسلوب santun (مؤدّب): Dengan segala hormat, kami mohon Bapak meninjau jadwal penutupan jalan tersebut.
+        الكاتب الشاطر بيعرف menyesuaikan (يظبط) كلامه على قارئه.
+      ar: |
+        الخبر نفسه لثلاثة pembaca sasaran (قرّاء مستهدفين) (مثال مؤلَّف للدرس):
+        - للأطفال: Jalan ke sekolah ditutup dulu, ya. Jalannya sedang diperbaiki.
+        - للـ khalayak (الجمهور العام) بأسلوب lugas (مباشر واضح): Jalan Trikora ditutup selama dua minggu untuk perbaikan.
+        - لمسؤول بأسلوب santun (مهذّب): Dengan segala hormat, kami mohon Bapak meninjau jadwal penutupan jalan tersebut.
+        والكاتب الماهر يُحسن menyesuaikan (تكييف) لغته مع قارئه.
+      en: |
+        One story for three pembaca sasaran (target readers) (example invented for the lesson):
+        - For children: Jalan ke sekolah ditutup dulu, ya. Jalannya sedang diperbaiki.
+        - For the khalayak (general public), lugas (plain and direct): Jalan Trikora ditutup selama dua minggu untuk perbaikan.
+        - For an official, santun (courteous): Dengan segala hormat, kami mohon Bapak meninjau jadwal penutupan jalan tersebut.
+        A good writer knows how to menyesuaikan (adjust) their language to the reader.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pembaca sasaran
+        ar_eg: القارئ المستهدف
+        ar: القارئ المستهدف
+        en: target reader
+      - text: khalayak
+        ar_eg: الجمهور
+        ar: الجمهور
+        en: the public, audience
+      - text: lugas
+        ar_eg: مباشر وواضح
+        ar: مباشر واضح
+        en: plain, direct
+      - text: santun
+        ar_eg: مؤدّب
+        ar: مهذّب
+        en: courteous
+      - text: menyesuaikan
+        ar_eg: يظبط على
+        ar: يكيّف
+        en: to adjust, adapt
+    words: [pembaca sasaran, khalayak, lugas, santun, menyesuaikan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة مناسبة لجواب لمسؤول؟
+      ar: أيّ جملة تناسب رسالة إلى مسؤول؟
+      en: Which sentence suits a letter to an official?
+    options:
+      - Pak, jalannya ditutup kok lama banget sih?
+      - Dengan segala hormat, kami mohon penjelasan Bapak.
+      - Woi, buka jalannya dong!
+    answer: 1
+    words: [santun]
+  - id: e03
+    type: fill_blank
+    sentence: Sebelum menulis, tentukan dulu siapa ___ tulisanmu.
+    meaning:
+      ar_eg: قبل ما تكتب، حدّد الأول مين القارئ المستهدف لكتابتك.
+      ar: قبل الكتابة، حدّد أوّلًا القارئ المستهدف لنصّك.
+      en: Before writing, first decide who your target reader is.
+    options: [pembaca sasaran, khalayak, santun]
+    answers: [pembaca sasaran]
+    words: [pembaca sasaran]
+  - id: e04
+    type: listen
+    text: Berita untuk khalayak umum harus lugas dan mudah dipahami.
+    question:
+      ar_eg: الخبر للجمهور العام لازم يكون إزاي؟
+      ar: كيف ينبغي أن يكون الخبر الموجّه للجمهور العام؟
+      en: What should news for the general public be like?
+    options:
+      - مباشر وسهل يتفهم.
+      - طويل ومليان مصطلحات.
+      - بلغة الأطفال.
+    answer: 0
+    words: [khalayak, lugas]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الصحفي بيظبط لغته على قرّائه.
+      ar: يكيّف الصحفيّ لغته مع قرّائه.
+      en: The journalist adjusts their language to the readers.
+    answer: Wartawan menyesuaikan bahasanya dengan pembacanya.
+    distractors: [santun, khalayak]
+    words: [menyesuaikan]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إنت بتكتب الخبر لأطفال المدرسة. تختار أنهي جملة؟
+      ar: تكتب الخبر لتلاميذ المدرسة. أيّ جملة تختار؟
+      en: You're writing the story for schoolchildren. Which sentence do you pick?
+    options:
+      - Penutupan ruas jalan dilaksanakan berdasarkan keputusan dinas.
+      - Dengan segala hormat, kami mohon peninjauan jadwal.
+      - Jalan ke sekolah ditutup dulu, ya. Jalannya sedang diperbaiki.
+    answer: 2
+    words: [pembaca sasaran, menyesuaikan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: اكتب بأسلوب مؤدّب لما تكتب لمسؤول.
+      ar: اكتب بأسلوب مهذّب حين تكتب إلى مسؤول.
+      en: Write courteously when you write to an official.
+    answers:
+      - Tulislah dengan santun kalau menulis kepada pejabat.
+      - Tulis dengan santun kalau menulis kepada pejabat.
+      - Menulislah dengan santun jika menulis kepada pejabat.
+      - Tulislah dengan bahasa yang santun kepada pejabat.
+    words: [santun]
+  - id: e08
+    type: speaking
+    text: Bahasa yang lugas membuat khalayak cepat mengerti.
+    meaning:
+      ar_eg: اللغة المباشرة بتخلّي الجمهور يفهم بسرعة.
+      ar: اللغة المباشرة تجعل الجمهور يفهم سريعًا.
+      en: Plain language helps the public understand quickly.
+    words: [lugas, khalayak]
+  - id: e09
+    type: dictation
+    text: Pembaca sasaran artikel ini adalah anak muda.
+    meaning:
+      ar_eg: القارئ المستهدف للمقالة دي هو الشباب.
+      ar: القارئ المستهدف لهذه المقالة هو الشباب.
+      en: This article's target readers are young people.
+    words: [pembaca sasaran]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Penulis yang baik menyesuaikan gaya bahasanya, lugas untuk khalayak dan santun untuk pejabat.
+    answers_meaning:
+      ar_eg:
+        - الكاتب الكويس بيظبط أسلوبه، مباشر للجمهور ومؤدّب للمسؤولين.
+        - الكاتب الشاطر بيغيّر أسلوبه، بسيط للناس ومحترم مع المسؤول.
+      ar:
+        - يكيّف الكاتب الجيّد أسلوبه، فهو مباشر مع الجمهور ومهذّب مع المسؤولين.
+        - الكاتب الماهر يلائم أسلوبه، مباشرًا للعامّة ومهذّبًا للمسؤول.
+      en:
+        - A good writer adjusts their style, plain for the public and courteous for officials.
+        - Good writers adapt their style, direct for the public and polite for officials.
+    words: [menyesuaikan, lugas, khalayak, santun]
+dialogue:
+  title: Ruang redaksi di Manokwari
+  lines:
+    - speaker: Bu Debora
+      text: Mohamed, berita penutupan jalan ini harus kita tulis tiga kali.
+      ar_eg: يا محمد، خبر قفل الشارع ده لازم نكتبه تلات مرات.
+      ar: يا محمد، علينا أن نكتب خبر إغلاق الطريق هذا ثلاث مرّات.
+      en: Mohamed, we need to write this road-closure story three times.
+    - speaker: Mohamed
+      text: Tiga kali? Untuk siapa saja, Bu?
+      ar_eg: تلات مرات؟ لمين يا مدام؟
+      ar: ثلاث مرّات؟ لمن يا سيّدتي؟
+      en: Three times? Who for, Bu?
+    - speaker: Bu Debora
+      text: Untuk siaran anak, untuk khalayak di televisi, dan surat untuk bupati.
+      ar_eg: لبرنامج الأطفال، وللجمهور في التلفزيون، وجواب للمحافظ.
+      ar: لبرنامج الأطفال، وللجمهور على التلفاز، ورسالة إلى الحاكم.
+      en: For the children's programme, for the public on TV, and a letter to the regent.
+    - speaker: Mohamed
+      text: Baik. Yang untuk bupati saya buat lebih santun dan baku.
+      ar_eg: ماشي. اللي للمحافظ هخلّيه مؤدّب ورسمي أكتر.
+      ar: حسنًا. سأجعل رسالة الحاكم أكثر تهذيبًا ورسمية.
+      en: Right. I'll make the one for the regent more courteous and formal.
+new_words:
+  - word: pembaca sasaran
+    pos: noun
+    ar_eg: القارئ المستهدف
+    ar: القارئ المستهدف
+    en: target reader
+  - word: khalayak
+    pos: noun
+    arabic: خلائق
+    ar_eg: الجمهور
+    ar: الجمهور
+    en: the public, audience
+  - word: lugas
+    pos: adjective
+    ar_eg: مباشر وواضح
+    ar: مباشر واضح
+    en: plain, direct
+  - word: santun
+    pos: adjective
+    ar_eg: مؤدّب
+    ar: مهذّب
+    en: courteous
+  - word: menyesuaikan
+    pos: verb
+    ar_eg: يظبط على
+    ar: يكيّف
+    en: to adjust, adapt
+review:
+  status: draft
+  verified: false
