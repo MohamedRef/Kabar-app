@@ -4,6 +4,7 @@
 
 pub mod ai;
 pub mod aksara;
+pub mod chat;
 pub mod clock;
 pub mod coach;
 pub mod games;
@@ -18,6 +19,7 @@ pub mod locale;
 pub mod packs;
 pub mod pagi;
 pub mod penlab;
+pub mod pron;
 pub mod reader;
 pub mod review;
 pub mod settings;

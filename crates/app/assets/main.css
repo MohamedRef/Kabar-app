@@ -775,3 +775,33 @@ button.journal-delete { color: var(--dawn); border-color: var(--dawn); }
 @media (prefers-reduced-motion: no-preference) {
   .cost-fill { transition: inline-size 500ms ease; }
 }
+
+/* Arabic-script pronunciation (crates/app/src/pron.rs). Its own font so the
+   extra letters (ڠ ێ ۆ پ چ) and full vowel marks render everywhere. */
+.pron {
+  display: block;
+  font-family: "Kabar Naskh", var(--font-arabic);
+  font-size: 1.3em;
+  font-weight: 400;
+  line-height: 2.1;
+  color: var(--indigo);
+  direction: rtl;
+  unicode-bidi: isolate;
+  text-align: start;
+}
+.pron.inline { display: inline; font-size: 1.15em; margin-inline: 0.3em; opacity: 0.85; }
+.pron-reveal {
+  font-family: var(--font-arabic);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--muted);
+  text-decoration: underline dotted;
+  cursor: pointer;
+  inline-size: fit-content;
+}
+.pron-details summary { cursor: pointer; color: var(--muted); padding-block: 0.4rem; }
+.pron-guide table { border-collapse: collapse; inline-size: 100%; font-size: 0.92rem; }
+.pron-guide td { padding: 0.35rem 0.4rem; border-block-end: 1px solid var(--line); vertical-align: top; text-align: start; }
+.pron-guide .pron-sign { font-family: "Kabar Naskh", var(--font-arabic); font-size: 1.3rem; white-space: nowrap; color: var(--indigo); }
+.pron-guide .pron-example { white-space: nowrap; }
+.pron-guide .pron-example .pron { display: inline; }

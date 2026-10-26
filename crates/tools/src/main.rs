@@ -19,6 +19,7 @@ mod kaikki;
 mod levels;
 mod packs;
 mod paths;
+mod pron;
 mod schemas;
 mod text;
 mod wiki;
@@ -49,6 +50,9 @@ enum Command {
     /// The Javanese speech-level table.
     #[command(subcommand)]
     Levels(levels::Cmd),
+    /// Arabic-script pronunciation data (content/pron).
+    #[command(subcommand)]
+    Pron(pron::Cmd),
     /// Golden sets for the runtime AI tasks.
     #[command(subcommand)]
     Golden(golden::Cmd),
@@ -77,6 +81,7 @@ fn main() -> Result<()> {
         Command::Gloss(cmd) => gloss::run(&root, cmd),
         Command::Bridge(cmd) => bridge::run(&root, cmd),
         Command::Levels(cmd) => levels::run(&root, cmd),
+        Command::Pron(cmd) => pron::run(&root, cmd),
         Command::Golden(cmd) => golden::run(&root, cmd),
         Command::Bakeoff(cmd) => bakeoff::run(&root, cmd),
         Command::Packs(cmd) => packs::run(&root, cmd),

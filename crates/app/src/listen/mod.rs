@@ -3,7 +3,7 @@
 //! offline. Episodes are build-time content (`content/stories/`,
 //! `content/radio/`); the speaker voices come from `kabar_core::story`.
 
-mod player;
+pub(crate) mod player;
 mod text;
 
 use std::collections::BTreeSet;
@@ -25,7 +25,7 @@ use crate::lesson::embedded::{RADIO, STORIES};
 use crate::lesson::{EpisodeQuiz, Rich, target_tag};
 use crate::{Db, Ui};
 
-const LISTEN_CSS: &str = include_str!("../../assets/listen.css");
+pub(crate) const LISTEN_CSS: &str = include_str!("../../assets/listen.css");
 
 /// Every episode file, parsed once; a broken file stays listed with its error.
 struct Shows {

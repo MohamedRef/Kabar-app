@@ -1,30 +1,17 @@
 [application]
 name = "Kabar"
+# Our own manifest so the launcher shows Kabar's icon, not dx's default.
+# Permissions, queries and features live in that file now.
+android_manifest = "AndroidManifest.xml"
 
 [bundle]
 identifier = "app.kabar"
 publisher = "Kabar"
 short_description = "Indonesian + Javanese, from Arabic."
-# App icon (macOS .app); exported by scripts/assets/export_icons.py
-icon = [
-    "../../assets/export/macos/Kabar.iconset/icon_16x16.png",
-    "../../assets/export/macos/Kabar.iconset/icon_32x32.png",
-    "../../assets/export/macos/Kabar.iconset/icon_128x128.png",
-    "../../assets/export/macos/Kabar.iconset/icon_256x256.png",
-    "../../assets/export/macos/Kabar.iconset/icon_512x512.png",
-    "../../assets/export/macos/Kabar.iconset/icon_512x512@2x.png",
-]
+# App icon (macOS .app); exported by scripts/assets/export_icons.py.
+# One 1024px master on purpose: dx 0.7 builds every .icns size from the first
+# PNG listed, so a small PNG first would be upscaled into a blurry icon.
+icon = ["../../assets/export/macos/Kabar.iconset/icon_512x512@2x.png"]
 
 [android]
 min_sdk = 28
-
-[android.raw]
-# Android 11+ package visibility: the app must be allowed to see installed
-# text-to-speech engines (Samsung, Google) or TextToSpeech can't bind to one.
-manifest = """
-<queries>
-    <intent>
-        <action android:name="android.intent.action.TTS_SERVICE" />
-    </intent>
-</queries>
-"""

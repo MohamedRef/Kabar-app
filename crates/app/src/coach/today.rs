@@ -160,7 +160,7 @@ pub fn Today() -> Element {
         // On the phone, Kak Nur, the journal, Watch & listen and
         // Settings live here instead of the bottom bar (it keeps five items).
         nav { class: "row compact-only more-links",
-            for screen in [Screen::Coach, Screen::Journal, Screen::Listen, Screen::Settings] {
+            for screen in [Screen::Coach, Screen::Journal, Screen::Listen, Screen::Chat, Screen::Settings] {
                 button {
                     key: "{screen:?}",
                     onclick: move |_| {

@@ -3,6 +3,7 @@
 mod account;
 mod ai;
 mod audio;
+mod chat;
 mod cloud;
 mod coach;
 mod cost;
@@ -16,6 +17,7 @@ mod packs;
 mod penlab;
 mod platform;
 mod play;
+mod pron;
 mod reader;
 mod review;
 mod screens;
@@ -67,6 +69,8 @@ pub enum Screen {
     LevelCheck,
     /// Sinetron and Kabar Radio.
     Listen,
+    /// Persona chats (spec §15).
+    Chat,
 }
 
 impl Screen {
@@ -89,11 +93,12 @@ impl Screen {
             Self::Stats => Msg::NavReview,
             Self::LevelCheck => Msg::NavCoach,
             Self::Listen => Msg::NavListen,
+            Self::Chat => Msg::NavChat,
         }
     }
 
     /// Hidden from the phone's bottom bar, which keeps five items within
-    /// thumb reach. Kak Nur, the journal, Watch & listen and Settings are
+    /// thumb reach. Kak Nur, the journal, Watch & listen, Chat and Settings are
     /// linked from Today there (the journal from Kak Nur too); Studio and Pen
     /// Lab from Settings.
     /// Pen tools: shown on a tablet only (`Ui::tablet`).
@@ -113,6 +118,7 @@ impl Screen {
                 | Self::Teach
                 | Self::Cost
                 | Self::Listen
+                | Self::Chat
         )
     }
 }
@@ -289,6 +295,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let theme = settings.theme.as_str();
     let width = ui.width.read().as_str();
     let theme_css = use_hook(theme::stylesheet);
+    let pron_font = use_hook(pron::font_css);
     // The theme draws the kawung background in its own colour; a batik from
     // the Warung overrides it on this device.
     let batik = use_memo(move || {
@@ -305,6 +312,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         document::Title { "Kabar" }
         style { {MAIN_CSS} }
         style { {theme_css} }
+        style { {pron_font} }
         div {
             class: "app",
             lang: lang.tag(),
@@ -474,6 +482,7 @@ fn Shell() -> Element {
         Screen::Review,
         Screen::Play,
         Screen::Listen,
+        Screen::Chat,
         Screen::Coach,
         Screen::Journal,
         Screen::Studio,
@@ -517,6 +526,7 @@ fn Shell() -> Element {
                     Screen::Teach => rsx! { teach::TeachScreen {} },
                     Screen::Cost => rsx! { cost::CostScreen {} },
                     Screen::Listen => rsx! { listen::ListenScreen {} },
+                    Screen::Chat => rsx! { chat::ChatScreen {} },
                     Screen::Lesson => rsx! { lesson::LessonScreen {} },
                     Screen::Stats => rsx! { stats::StatsScreen {} },
                     Screen::LevelCheck => rsx! { stats::check::LevelCheckScreen {} },
