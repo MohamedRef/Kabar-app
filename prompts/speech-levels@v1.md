@@ -29,7 +29,7 @@ level down" (krama inggil → krama → madya → ngoko).
 | `pos` | as in glosses (`noun`, `verb`, `pronoun`, …) |
 | `meaning` | {`arz`,`ar`,`en`} short gloss |
 | `indonesian` | the standard Indonesian word |
-| `ngoko`, `madya`, `krama`, `krama_inggil`, `krama_andhap` | lists of lowercase forms (common spelling first; Javanese Latin spelling with dh/th, é/è only where standard) |
+| `ngoko`, `madya`, `krama`, `krama_inggil`, `krama_andhap` | lists of lowercase forms (common spelling first; Javanese Latin spelling with dh/th and plain e, never é/è: kowe, sampeyan) |
 | `note` | optional {`arz`,`ar`,`en`}: who you'd say each form to, common mistakes (never use krama inggil about yourself), regional notes. Egyptian analogies help: ngoko ≈ «إنت», krama ≈ «حضرتك», krama inggil ≈ «سيادتك». |
 | `examples` | 1–3 sentences, each tagged with its `level` and using that level's form, with {`arz`,`ar`,`en`} translations. The §24 test sentence for "Have you eaten?" belongs on `eat`. |
 | `confidence` | `high` for standard textbook pairs, `medium` when sources disagree, `low` when unsure |
