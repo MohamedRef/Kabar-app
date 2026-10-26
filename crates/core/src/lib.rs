@@ -3,10 +3,12 @@
 //! and tests.
 
 pub mod ai;
+pub mod aksara;
 pub mod clock;
 pub mod coach;
 pub mod games;
 pub mod grammar;
+pub mod ink;
 pub mod journey;
 pub mod lang;
 pub mod layout;

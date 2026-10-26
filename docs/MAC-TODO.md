@@ -166,7 +166,9 @@ with it.
 - Pen on both devices: Quick Capture, hover popovers, lasso lookup,
   stroke-to-highlight, handwritten answers, Card Wall flicks, the Notebook,
   Gambar!, Listening Companion scribbles, write-mode lessons and aksara Jawa
-  calligraphy.
+  calligraphy. The Tablet Studio (M9) and aksara (M13) code is merged and
+  waits for this; its checks (deploy the ink tables, Notebook feel, the
+  stroke-order review in `scripts/aksara/preview.py`) return with the pen.
 - The golden captures for the pen AI tasks (`read_handwriting`,
   `guess_sketch`, `check_strokes`).
 - Mac extras: the global Quick Lookup hotkey, Mac-specific polish, drawing in

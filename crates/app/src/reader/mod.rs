@@ -39,6 +39,15 @@ pub fn glossary() -> &'static dyn Glossary {
     LOCAL.get_or_init(LocalGlossary::load)
 }
 
+/// Every word of the content pack with its frequency rank, for spelling
+/// suggestions (the Listening Companion).
+pub fn lexicon() -> &'static [kabar_core::ink::spell::Known] {
+    static WORDS: OnceLock<Vec<kabar_core::ink::spell::Known>> = OnceLock::new();
+    WORDS.get_or_init(content::known_words)
+}
+
+pub(crate) use self::card::speak;
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Mode {
     Inline,
