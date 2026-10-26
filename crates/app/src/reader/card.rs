@@ -490,7 +490,7 @@ fn PhraseCard(tokens: Vec<usize>, save_first: bool) -> Element {
 
 /// The device's own voice until the Azure voices arrive through Kabar Cloud:
 /// Android's TextToSpeech engine, the WebView's `speechSynthesis` elsewhere.
-fn speak(text: &str, lang_tag: &str) {
+pub(crate) fn speak(text: &str, lang_tag: &str) {
     match platform::speak(text, lang_tag, false) {
         Err(SpeakError::UseWebView) => {}
         Ok(()) => return,

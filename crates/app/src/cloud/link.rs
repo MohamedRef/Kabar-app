@@ -105,7 +105,6 @@ impl CloudLink {
     /// `EngineCall::image_sha256` that names it. Upload right before each
     /// vision call: it is cheap to repeat, and the server keeps images only
     /// a week.
-    #[cfg_attr(not(test), allow(dead_code))] // The Tablet Studio's Gambar! and handwriting fallback (M9).
     pub async fn put_blob(&self, bytes: Vec<u8>) -> Result<String, Unreachable> {
         let sha = sha256_hex(&bytes);
         let name = sha.clone();

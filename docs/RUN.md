@@ -185,7 +185,22 @@ Open **Play** (ألعاب) in the sidebar or the phone's bottom bar.
 - **d/dh · t/th**: tell Javanese *wedi* (afraid) from *wedhi* (sand), and Indonesian *dada* from Javanese *dhadha*. **Listen** mode appears only when the device has a Javanese voice; Indonesian voices can't make the curled sound, so Kabar never uses one for this. Without a Javanese voice you get **Read** mode, where you see the meaning and pick the spelling. Javanese audio from Kabar Cloud's TTS (jv-ID voices) is a follow-up.
 - All Javanese here is marked unverified until you approve it (`content/games/unggah-ungguh.toml`, `content/games/minimal-pairs.toml`).
 
-## 11. Troubleshooting
+## 11. Tablet Studio (M9)
+
+Open **Studio** (الاستوديو) in the sidebar, or from Settings on the phone. Six tabs, all on the same ink engine:
+
+- **Notebook** (الكشكول): notebooks of infinite pages. The pen writes; two fingers (or the mouse wheel) pan and ctrl+wheel or a pinch zooms; the eraser tool rubs out whole strokes. **Add a word card** drops a live card on the page: it shows the gloss in your explanation voice and speaks the word. Every line you write is listed under **Your lines** — tap ✎ to scroll to it, or type what you wrote so search finds it. The search box searches handwriting, cards and map nodes across every notebook.
+- **Gambar!**: Kabar names a word (drawable ones you already know come first), you sketch it in 60 seconds, and Kabar guesses. Each round logs practice to Kak Nur.
+- **Mind map** (خريطة كلمات): type a topic (`di pasar`), pick `id` or `jv`, and Kabar lays out 3–6 branches you then extend with the pen. Javanese maps carry an "unverified" badge until you approve them.
+- **Listening Companion** (رفيق السماع): meant for split screen next to YouTube. Scribble a word the way it sounded, or type it, and Kabar suggests real words by sound (old spellings `oe/dj/tj`, `ng/ny`, `f→p`, final `k`), each with its gloss, audio, **Add to review**, and **Teach Kabar** when nothing fits.
+- **Dictation** (إملا): Kabar says a word, you write it with the pen, and the feedback circles the wrong letters, marks missing ones and strikes extra ones. The same pad goes into write-mode lessons in the Lesson Player.
+- **Aksara Jawa** (أكشارا جاوة, M13): pick a letter, a vowel or final sign on ka, or a word. **Watch** draws the strokes in order over a faint letter (Replay repeats it), **Trace** puts the faint letter and numbered start points under the sheet, **Write** leaves only the baseline. The brush thickens with S Pen pressure (pen and eraser are there too). **Check shape** is offline and instant: it says which numbered stroke is missing and where, extra ink, a mirrored letter, or "this reads as ga, not ka". **Ask the teacher** sends the sheet to the `check_strokes` vision task when you're signed in to Kabar Cloud. The stroke order is a draft traced from Noto Sans Javanese and shows "not reviewed yet" until you (or a teacher) approve it; review it with `python3 scripts/aksara/preview.py content/fonts/NotoSansJavanese-Regular.ttf content/aksara/strokes.json out.png`.
+
+**Reading handwriting, sketches and aksara** goes through Kabar Cloud's image upload, so it needs you signed in to Kabar Cloud (Settings). Signed out or offline, **Read my writing** and **Ask the teacher** say why and every screen falls back: type the line yourself in the Notebook and the pad, judge your own sketch in Gambar!, and use the offline shape check for aksara. Everything else (ink, pan/zoom, cards, maps, search, sync) works offline.
+
+Ink syncs like every other row (`notebooks`, `ink_documents`, `ink_strokes`, `notebook_items`, `ink_transcripts`), so a page you write on the tablet shows up on the phone. The three new tables need a Kabar Cloud redeploy: `just deploy-cloud`.
+
+## 12. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.
