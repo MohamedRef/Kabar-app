@@ -1,0 +1,291 @@
+schema: kabar.lesson/v1
+id: bipa1.u05.l04
+language: id
+title: Di loket Ancol
+can_do:
+  ar_eg: تشتري تذكرة وتسأل أسئلة عند الشباك.
+  ar: أن تشتري تذكرة وتطرح أسئلة عند شبّاك التذاكر.
+  en: Buy a ticket and ask questions at a counter.
+slides:
+  - title: Di loket
+    body:
+      ar_eg: |
+        عند الشباك (loket) هتحتاج كام جملة بس:
+        - Permisi, Mbak. = لو سمحتي (عشان تبدأ بأدب).
+        - Berapa harga tiketnya? = التذكرة بكام؟
+        - Dua tiket, Mbak. = تذكرتين لو سمحتي.
+        - Ada …? = فيه …؟
+        - Boleh saya …? = ممكن …؟
+        - Terima kasih banyak! — Sama-sama.
+      ar: |
+        عند شبّاك التذاكر (loket) تكفيك بضع جمل:
+        - Permisi, Mbak. = من فضلك (لتبدأ بأدب).
+        - Berapa harga tiketnya? = كم ثمن التذكرة؟
+        - Dua tiket, Mbak. = تذكرتان من فضلك.
+        - Ada …? = هل يوجد …؟
+        - Boleh saya …? = هل يمكنني …؟
+        - Terima kasih banyak! — Sama-sama.
+      en: |
+        At the ticket counter (loket) a few lines do it all:
+        - Permisi, Mbak. = Excuse me (a polite opener).
+        - Berapa harga tiketnya? = How much is the ticket?
+        - Dua tiket, Mbak. = Two tickets, please.
+        - Ada …? = Is there …?
+        - Boleh saya …? = May I …?
+        - Terima kasih banyak! — Sama-sama.
+    grammar: id.politeness.phrases
+    examples:
+      - text: Permisi, Mbak. Berapa harga tiket masuk?
+        ar_eg: لو سمحتي، تذكرة الدخول بكام؟
+        ar: من فضلك، كم ثمن تذكرة الدخول؟
+        en: Excuse me, how much is an entrance ticket?
+      - text: Kolam renang buka jam delapan.
+        ar_eg: حمام السباحة بيفتح الساعة ٨.
+        ar: يفتح المسبح في الساعة الثامنة.
+        en: The pool opens at eight.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز تسأل التذكرة بكام. تقول إيه؟
+      ar: تريد أن تسأل عن ثمن التذكرة. ماذا تقول؟
+      en: You want to ask how much the ticket costs. What do you say?
+    options: ["Ada apa tiketnya?", "Bagaimana tiketnya?", "Berapa harga tiketnya?"]
+    answer: 2
+    explain:
+      ar_eg: السعر رقم، يبقى berapa (بكام). bagaimana بتسأل عن الحال.
+      ar: السعر عدد فيُسأل عنه بـ berapa، أما bagaimana فللحال.
+      en: A price is a number, so berapa; bagaimana asks how something is.
+    words: [berapa, harga, tiket]
+  - id: e02
+    type: listen
+    text: Tiga puluh lima ribu rupiah
+    options: ["Tiga belas ribu rupiah", "Tiga puluh lima ribu rupiah", "Lima puluh tiga ribu rupiah"]
+    answer: 1
+    words: [ribu, rupiah]
+  - id: e03
+    type: fill_blank
+    sentence: ___, Mbak. Berapa harga tiket masuk?
+    meaning:
+      ar_eg: لو سمحتي، تذكرة الدخول بكام؟
+      ar: من فضلك، كم ثمن تذكرة الدخول؟
+      en: Excuse me, how much is an entrance ticket?
+    options: ["Permisi", "Sama-sama", "Silakan"]
+    answers: [Permisi]
+    explain:
+      ar_eg: permisi بتفتح الكلام مع حد غريب.
+      ar: permisi لافتتاح الكلام مع الغرباء.
+      en: permisi opens a conversation with a stranger.
+    words: [permisi]
+  - id: e04
+    type: fill_blank
+    sentence: Kolam renang ___ jam delapan.
+    meaning:
+      ar_eg: حمام السباحة بيفتح الساعة ٨.
+      ar: يفتح المسبح في الساعة الثامنة.
+      en: The pool opens at eight.
+    options: ["tutup", "buka", "ada"]
+    answers: [buka]
+    words: [buka]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: فيه حمام سباحة في أنكول؟
+      ar: هل يوجد مسبح في أنكول؟
+      en: Is there a swimming pool in Ancol?
+    answer: Ada kolam renang di Ancol?
+    alternatives: ["Di Ancol ada kolam renang?"]
+    distractors: [berapa, tiket]
+    words: [ada, kolam renang]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: ممكن أصوّر على البحر؟
+      ar: هل يمكنني التصوير على الشاطئ؟
+      en: May I take photos on the beach?
+    answer: Boleh saya foto di pantai?
+    alternatives: ["Saya boleh foto di pantai?"]
+    distractors: [bagaimana, tutup]
+    words: [boleh, foto, pantai]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "تذكرتين يا آنسة. (قولها لموظفة الشباك: Mbak)"
+      ar: "تذكرتان يا آنسة. (للموظفة: Mbak)"
+      en: Two tickets, miss. (to the clerk — Mbak)
+    answers:
+      - Dua tiket, Mbak.
+      - Dua tiket, Mbak
+      - Dua tiket ya, Mbak.
+      - Dua tiket, ya, Mbak.
+      - Tiketnya dua, Mbak.
+      - Tiket dua, Mbak.
+      - Mbak, dua tiket.
+      - Saya mau dua tiket, Mbak.
+    words: [dua, tiket]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: التذكرة بكام؟
+      ar: كم ثمن التذكرة؟
+      en: How much is the ticket?
+    answers:
+      - Berapa harga tiketnya?
+      - Berapa harga tiketnya
+      - Berapa harga tiket?
+      - Harga tiketnya berapa?
+      - Tiketnya berapa?
+      - Berapa tiketnya?
+    words: [berapa, harga, tiket]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: فيه جامع في أنكول؟
+      ar: هل يوجد مسجد في أنكول؟
+      en: Is there a mosque in Ancol?
+    answers:
+      - Ada masjid di Ancol?
+      - Ada masjid di Ancol
+      - Di Ancol ada masjid?
+      - Di Ancol ada masjid
+      - Apakah ada masjid di Ancol?
+      - Apa ada masjid di Ancol?
+    words: [ada, masjid]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Kolam renang buka jam delapan.
+    answers_meaning:
+      ar_eg: ["حمام السباحة بيفتح الساعة ٨.", "حمام السباحة بيفتح الساعة تمانية", "البيسين بيفتح الساعة ٨"]
+      ar: ["يفتح المسبح في الساعة الثامنة.", "المسبح يفتح الساعة الثامنة", "يفتح المسبح الساعة ٨"]
+      en: ["The pool opens at eight.", "The swimming pool opens at 8", "The pool opens at eight o'clock"]
+    words: [buka, kolam renang]
+  - id: e11
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "شكرًا جدًا يا آنسة! (للموظفة: Mbak)"
+      ar: "شكرًا جزيلًا يا آنسة! (للموظفة: Mbak)"
+      en: Thank you very much, miss! (to the clerk — Mbak)
+    answers:
+      - Terima kasih banyak, Mbak!
+      - Terima kasih banyak, Mbak
+      - Terima kasih banyak, Mbak.
+      - Makasih banyak, Mbak!
+    words: [terima kasih]
+  - id: e12
+    type: dictation
+    text: Jadi tujuh puluh ribu, Pak.
+    meaning:
+      ar_eg: يبقى سبعين ألف يا أستاذ.
+      ar: إذن سبعون ألفًا يا سيدي.
+      en: So that's seventy thousand, sir.
+    words: [jadi, ribu]
+  - id: e13
+    type: speaking
+    text: Permisi, Mbak. Berapa harga tiket masuk?
+    meaning:
+      ar_eg: لو سمحتي، تذكرة الدخول بكام؟
+      ar: من فضلك، كم ثمن تذكرة الدخول؟
+      en: Excuse me, how much is an entrance ticket?
+    words: [permisi, harga, tiket]
+dialogue:
+  title: Di loket Ancol
+  lines:
+    - speaker: Mohamed
+      text: Permisi, Mbak. Berapa harga tiket masuk?
+      ar_eg: لو سمحتي، تذكرة الدخول بكام؟
+      ar: من فضلك، كم ثمن تذكرة الدخول؟
+      en: Excuse me. How much is an entrance ticket?
+    - speaker: Petugas loket
+      text: Tiga puluh lima ribu rupiah, Pak.
+      ar_eg: خمسة وتلاتين ألف روبية يا أستاذ.
+      ar: خمسة وثلاثون ألف روبية يا سيدي.
+      en: Thirty-five thousand rupiah, sir.
+    - speaker: Mohamed
+      text: Dua tiket, Mbak.
+      ar_eg: تذكرتين لو سمحتي.
+      ar: تذكرتان من فضلك.
+      en: Two tickets, please.
+    - speaker: Petugas loket
+      text: Jadi tujuh puluh ribu, Pak.
+      ar_eg: يبقى سبعين ألف يا أستاذ.
+      ar: إذن سبعون ألفًا يا سيدي.
+      en: So that's seventy thousand, sir.
+    - speaker: Mohamed
+      text: Ini uangnya. Ada kolam renang di Ancol?
+      ar_eg: اتفضلي الفلوس. فيه حمام سباحة في أنكول؟
+      ar: تفضلي المال. هل يوجد مسبح في أنكول؟
+      en: Here's the money. Is there a swimming pool in Ancol?
+    - speaker: Petugas loket
+      text: Ada, Pak. Kolam renang buka jam delapan.
+      ar_eg: فيه يا أستاذ. حمام السباحة بيفتح الساعة ٨.
+      ar: يوجد يا سيدي. يفتح المسبح في الثامنة.
+      en: There is, sir. The pool opens at eight.
+    - speaker: Mohamed
+      text: Boleh saya foto di pantai?
+      ar_eg: ممكن أصوّر على البحر؟
+      ar: هل يمكنني التصوير على الشاطئ؟
+      en: May I take photos on the beach?
+    - speaker: Petugas loket
+      text: Boleh, Pak. Silakan.
+      ar_eg: ممكن يا أستاذ. اتفضل.
+      ar: نعم يا سيدي. تفضل.
+      en: Yes, sir. Go ahead.
+    - speaker: Mohamed
+      text: Terima kasih banyak, Mbak.
+      ar_eg: شكرًا جدًا يا آنسة.
+      ar: شكرًا جزيلًا يا آنسة.
+      en: Thank you very much, miss.
+    - speaker: Petugas loket
+      text: Sama-sama. Selamat berlibur!
+      ar_eg: العفو. أجازة سعيدة!
+      ar: عفوًا. عطلة سعيدة!
+      en: You're welcome. Have a good holiday!
+new_words:
+  - word: loket
+    pos: noun
+    ar_eg: شباك التذاكر
+    ar: شبّاك التذاكر
+    en: ticket counter, window
+  - word: tiket
+    pos: noun
+    ar_eg: تذكرة
+    ar: تذكرة
+    en: ticket
+  - word: tiket masuk
+    pos: noun
+    ar_eg: تذكرة دخول
+    ar: تذكرة دخول
+    en: entrance ticket
+  - word: buka
+    pos: verb
+    ar_eg: يفتح / فاتح
+    ar: يفتح / مفتوح
+    en: to open; open
+  - word: tutup
+    pos: verb
+    ar_eg: يقفل / مقفول
+    ar: يغلق / مغلق
+    en: to close; closed
+  - word: jadi
+    pos: conjunction
+    ar_eg: يبقى / يعني
+    ar: إذن
+    en: so, that makes
+  - word: uang
+    pos: noun
+    ar_eg: فلوس
+    ar: نقود
+    en: money
+  - word: petugas
+    pos: noun
+    ar_eg: موظف
+    ar: موظف
+    en: staff member, officer
+review:
+  status: draft
+  verified: false

@@ -29,6 +29,25 @@ CREATE TABLE IF NOT EXISTS devices (
     revoked_ms INTEGER
 )";
 
+/// Schema changes after M2, applied once each by [`migrate`].
+pub const SCHEMA_STEPS: &[&str] = &[
+    // M7: the device's FCM registration token, for Kak Nur's reminders.
+    "ALTER TABLE devices ADD COLUMN push_token TEXT",
+];
+
+/// Creates the table and applies [`SCHEMA_STEPS`]. Safe to call on every start.
+pub fn migrate(db: &impl Sql) -> Result<(), SqlError> {
+    db.exec_batch(SCHEMA)?;
+    crate::sql::migrate(db, "devices_schema", SCHEMA_STEPS)
+}
+
+/// A signed-in device that can receive pushes.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct PushTarget {
+    pub device: DeviceId,
+    pub token: String,
+}
+
 #[derive(Debug, PartialEq, Eq, thiserror::Error)]
 pub enum RefreshError {
     #[error("unknown device or token")]
@@ -76,13 +95,50 @@ pub struct Devices<'a, S: Sql> {
 impl<'a, S: Sql> Devices<'a, S> {
     /// Creates the tables if needed, then opens.
     pub fn new(db: &'a S) -> Result<Self, SqlError> {
-        db.exec_batch(SCHEMA)?;
+        migrate(db)?;
         Ok(Self::open(db))
     }
 
     /// Opens without touching the schema (the Durable Object migrates once at start).
     pub fn open(db: &'a S) -> Self {
         Self { db }
+    }
+
+    /// Stores (or with `None`, forgets) a device's FCM token. Returns false
+    /// when the device is unknown or signed out.
+    pub fn set_push_token(&self, device: &DeviceId, token: Option<&str>) -> Result<bool, SqlError> {
+        let rows = self.db.exec(
+            "UPDATE devices SET push_token = ? WHERE device_id = ? AND revoked_ms IS NULL RETURNING device_id",
+            &[token.into(), device.0.as_str().into()],
+        )?;
+        Ok(!rows.is_empty())
+    }
+
+    /// FCM said the token is gone (app uninstalled, data cleared). Forgets it
+    /// unless the device has already sent a newer one.
+    pub fn drop_push_token(&self, device: &DeviceId, token: &str) -> Result<(), SqlError> {
+        self.db.exec(
+            "UPDATE devices SET push_token = NULL WHERE device_id = ? AND push_token = ?",
+            &[device.0.as_str().into(), token.into()],
+        )?;
+        Ok(())
+    }
+
+    /// Every signed-in device with a push token.
+    pub fn push_targets(&self) -> Result<Vec<PushTarget>, SqlError> {
+        let rows = self.db.exec(
+            "SELECT device_id, push_token FROM devices
+             WHERE revoked_ms IS NULL AND push_token IS NOT NULL ORDER BY device_id",
+            &[],
+        )?;
+        rows.into_iter()
+            .map(|r| {
+                Ok(PushTarget {
+                    device: DeviceId(col(&r, 0, "device_id")?.as_str().unwrap_or_default().to_owned()),
+                    token: col(&r, 1, "push_token")?.as_str().unwrap_or_default().to_owned(),
+                })
+            })
+            .collect()
     }
 
     /// Records a sign-in: creates the device or refreshes its details, and
@@ -172,7 +228,8 @@ impl<'a, S: Sql> Devices<'a, S> {
     /// Signs a device out. Returns false if it doesn't exist.
     pub fn revoke(&self, device: &DeviceId, now_ms: u64) -> Result<bool, SqlError> {
         let rows = self.db.exec(
-            "UPDATE devices SET revoked_ms = COALESCE(revoked_ms, ?), refresh_hash = NULL, prev_hash = NULL
+            "UPDATE devices SET revoked_ms = COALESCE(revoked_ms, ?), refresh_hash = NULL, prev_hash = NULL,
+                                push_token = NULL
              WHERE device_id = ? RETURNING device_id",
             &[now_ms.into(), device.0.as_str().into()],
         )?;
@@ -303,6 +360,50 @@ mod tests {
         let d = Devices::new(&db).unwrap();
         d.register(&info("mac", "MacBook Air", Platform::Macos), "me@example.com", "h1", NOW).unwrap();
         assert_eq!(d.refresh(&id("mac"), "h1", "h2", NOW + REFRESH_TTL_MS), Err(RefreshError::Expired));
+    }
+
+    #[test]
+    fn push_tokens_follow_sign_in_and_out() {
+        let db = MemSql::new();
+        let d = Devices::new(&db).unwrap();
+        d.register(&info("s24u", "Galaxy S24 Ultra", Platform::Android), "me@example.com", "h1", NOW)
+            .unwrap();
+        d.register(&info("tab", "Galaxy Tab S11", Platform::Android), "me@example.com", "h2", NOW).unwrap();
+        assert!(d.set_push_token(&id("s24u"), Some("tok-phone")).unwrap());
+        assert!(d.set_push_token(&id("tab"), Some("tok-tab")).unwrap());
+        assert!(!d.set_push_token(&id("ghost"), Some("x")).unwrap());
+        assert_eq!(d.push_targets().unwrap().len(), 2);
+
+        // A remote sign-out forgets the token, and a revoked device can't set one.
+        d.revoke(&id("tab"), NOW).unwrap();
+        assert!(!d.set_push_token(&id("tab"), Some("tok-tab")).unwrap());
+        assert_eq!(
+            d.push_targets().unwrap(),
+            vec![PushTarget { device: id("s24u"), token: "tok-phone".into() }]
+        );
+
+        // FCM's "unregistered" only clears the token it was about.
+        d.set_push_token(&id("s24u"), Some("tok-phone-2")).unwrap();
+        d.drop_push_token(&id("s24u"), "tok-phone").unwrap();
+        assert_eq!(d.push_targets().unwrap().len(), 1);
+        d.drop_push_token(&id("s24u"), "tok-phone-2").unwrap();
+        assert!(d.push_targets().unwrap().is_empty());
+    }
+
+    #[test]
+    fn m2_tables_gain_the_push_column() {
+        let db = MemSql::new();
+        // A Durable Object created by M2: devices table without push_token.
+        db.exec_batch(SCHEMA).unwrap();
+        db.exec(
+            "INSERT INTO devices (device_id, name, platform, signed_in_ms, last_seen_ms) VALUES ('mac', 'Mac', 'macos', 1, 1)",
+            &[],
+        )
+        .unwrap();
+        migrate(&db).unwrap();
+        migrate(&db).unwrap();
+        let d = Devices::open(&db);
+        assert!(d.set_push_token(&id("mac"), Some("t")).unwrap());
     }
 
     #[test]

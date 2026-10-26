@@ -1,6 +1,7 @@
-# Running Kabar
+# Running Kabar (M1–M2, M5, M7)
 
 Everything below runs on the MacBook. Commands are `just` recipes from the repo root.
+For the first Mac session, follow the ordered checklist in [MAC-TODO.md](MAC-TODO.md); this page has the details.
 
 ## 1. One-time setup (about 20–30 min, mostly downloads)
 
@@ -19,6 +20,8 @@ just check            # fmt + clippy + tests must be green
 just run-mac             # desktop app with hot reload
 just run-phone-preview   # same app in a 412×915 window, to check the phone layout
 ```
+
+To jump straight into a lesson (until the Journey Map links them), start the app with `KABAR_OPEN_LESSON`, e.g. `KABAR_OPEN_LESSON=bipa1.u01.l01 just run-mac`. The lessons built in so far are `bipa1.u01.l01` (Selamat pagi!) and `bipa1.u01.l02` (Apa kabar?). Closing a lesson saves your place; opening it again continues there.
 
 Data lives in `~/Library/Application Support/app.Kabar.Kabar/kabar.db`. Delete it to see the first-launch screen again (or use Settings → "Show the welcome screen again").
 
@@ -71,9 +74,42 @@ just cloud-tools     # once: wrangler + worker-build
 wrangler login       # once: your free Cloudflare account
 just cloud-setup     # once: D1, signing key, allowlist
 just deploy-cloud    # after adding GOOGLE_CLIENT_IDS (CLOUD.md §3.2)
+# Reminders (M7): Firebase service account → `wrangler secret put FCM_SERVICE_ACCOUNT` (CLOUD.md §3.4)
 ```
 
-## 6. Share-to-Kabar and the Screenshot Decoder (M5)
+## 6. Content pipeline (vocabulary, Arabic Bridge)
+
+Details in `docs/CONTENT.md`. On the Mac:
+
+```bash
+just content-fetch           # frequency sources (~60 MB) into data/raw/
+just content-freq            # rebuilds content/freq/id.tsv (should produce no diff)
+just content-fetch kaikki    # Wiktionary extracts from kaikki.org (~100 MB)
+just content-kaikki          # import + Arabic Bridge cross-check report
+just content-fetch jvwiki    # Javanese Wikipedia dump (~70 MB)
+just content-freq-jv         # content/freq/jv.tsv
+just content-check           # validate everything
+just content-review 1        # review sheet for gloss batch 1 → build/review/
+```
+
+Commit the changed files under `content/` after the kaikki and jvwiki steps.
+
+## 7. Kak Nur coach (M7)
+
+On the Mac: `just run-mac`. After the welcome screen, Kak Nur's onboarding asks your name, why you're learning, Indonesian/Javanese, 5/15/30 minutes, a target, study times, reminders and where to start.
+
+- **Today**: Kak Nur's greeting, "5, 15 or 30 minutes today?", the plan, Pelita and Koin. Tick an item when you've done it (until reviews and lessons land, ticking is how study gets logged). The recap card appears once the goal is met or in the evening.
+- **Kak Nur** (nav): weekly report, Liga Pribadi, achievements, the Warung and the learning journal.
+- **Settings → Kak Nur**: reminder style, study times, quiet hours, report day.
+
+To start onboarding again, delete the database (§2). On the Galaxy devices: `just apk` and `just install <serial>` as in §3.
+
+Reminders arrive as push notifications once Kabar Cloud's reminder alarm and Firebase are set up (CLOUD.md §3.4).
+
+## 8. Reader, Share-to-Kabar and the Screenshot Decoder (M5)
+
+### Reader on the Mac
+`just run-mac` → **Reader** (القارئ). Paste the §24 chat lines and read: hover a word to peek, click for the full card, drag-select a phrase, right-click → Save. Try split mode (جنب بعض) and the three explanation voices. Words come from the M4 content pack (2,000 glosses, 581 Arabic Bridge cards), all marked "not reviewed yet".
 
 ### How the Kotlin glue gets into the APK
 `android/` (repo root) is a small Gradle library module: the share target (`ShareActivity`), the pending-share hand-off (`PendingShare`) and on-device OCR with ML Kit Text Recognition v2 (`OcrBridge`). Nothing to configure: the `#[manganis::ffi("../../android")]` marker in `crates/app/src/platform/android.rs` makes `dx` (0.7.10) copy the folder into its generated Gradle project as `:plugins:plugin`, add it as an app dependency, and let the manifest merger add the share activity. Gradle downloads ML Kit from Google's Maven repository (free) on the first Android build after this change, so be online for that one.
@@ -100,27 +136,10 @@ The Screenshot Decoder uses Apple Vision (built into macOS, nothing to install).
 
 Tesseract (`ind`/`jav`) as a third OCR engine is phased for later.
 
-## 7. Troubleshooting
+## 9. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.
 - Build out of memory on 8 GB: `CARGO_BUILD_JOBS=2 just apk`.
 - `dx did not build android/ into the APK`: make sure `dx --version` says 0.7.10 (it must match the `manganis` version in `crates/app/Cargo.toml`), then check that `target/dx/kabar/release/android/app/settings.gradle` contains `include ':plugins:plugin'`.
 - Gradle can't resolve `com.google.mlkit:text-recognition`: the first build needs internet (Google Maven).
-
-## 8. Content pipeline (vocabulary, Arabic Bridge)
-
-Details in `docs/CONTENT.md`. On the Mac:
-
-```bash
-just content-fetch           # frequency sources (~60 MB) into data/raw/
-just content-freq            # rebuilds content/freq/id.tsv (should produce no diff)
-just content-fetch kaikki    # Wiktionary extracts from kaikki.org (~100 MB)
-just content-kaikki          # import + Arabic Bridge cross-check report
-just content-fetch jvwiki    # Javanese Wikipedia dump (~70 MB)
-just content-freq-jv         # content/freq/jv.tsv
-just content-check           # validate everything
-just content-review 1        # review sheet for gloss batch 1 → build/review/
-```
-
-Commit the changed files under `content/` after the kaikki and jvwiki steps.

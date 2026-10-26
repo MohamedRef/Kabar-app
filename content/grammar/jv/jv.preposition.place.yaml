@@ -1,0 +1,102 @@
+schema: kabar.grammar/v1
+id: jv.preposition.place
+language: jv
+level: j1
+title:
+  target: nang / neng, menyang, ing, saka (Arek teko) · kene, kono, kana
+  en: "To, at, from — and here, there"
+  ar_eg: "لـ، في، من — وهنا وهناك"
+  ar: "حروف المكان: إلى، في، من — وهنا وهناك"
+summary:
+  ar_eg: "nang (سورابايا) / neng (وسط جاوة) بتغطي ke وdi مع بعض: nang pasar = للسوق أو في السوق. saka = dari (من). kene / kono / kana = sini / situ / sana."
+  ar: "nang (سورابايا) / neng (وسط جاوة) تقابل ke وdi معًا، وsaka = dari، وkene / kono / kana = sini / situ / sana."
+  en: "nang (Surabaya) / neng (Central Java) cover both ke and di: nang pasar = to or at the market. saka = dari. kene / kono / kana = sini / situ / sana."
+pattern:
+  - "nang / neng + place = ke / di (direction or location; context decides) · chat: ng"
+  - "menyang + place = ke (more careful speech) · ing + place = di (formal, written)"
+  - "saka + place = dari · Arek: teko"
+  - "nang kene / kono / kana = di sini / situ / sana"
+  - "nang + ngarep / mburi / jejere / ndhuwur / ngisor / njero + noun-e (depan / belakang / sebelah / atas / bawah / dalam)"
+  - "directions: ngiwa (ke kiri) · nengen (ke kanan) · lurus (lurus)"
+explanation:
+  ar_eg: |
+    في الإندونيسي فيه ke (لـ) وdi (في). الجاوي العادي بيستخدم كلمة واحدة للاتنين:
+    - nang (أكتر في سورابايا وشرق جاوة) / neng (أكتر في سولو ويوجيا): Aku arep nang pasar = رايح السوق (ke)، Aku nang pasar = أنا في السوق (di). السياق هو اللي بيفرّق.
+      في الشات بتتكتب ng: «ng prabowo?» = nang Prabowo? = لبرابوو؟
+    - menyang = ke في كلام أكثر عناية، وing = di في الكتابة والكلام الرسمي (ing Suroboyo = في سورابايا).
+    - saka = dari (من). في سورابايا: teko. Aku saka Mesir = أنا من مصر.
+    - kene = sini (هنا)، kono = situ (هناك قريب)، kana = sana (هناك بعيد): nang kene = هنا.
+    - أماكن حوالين حاجة: ngarep (قدام)، mburi (ورا)، jejere (جنب)، ndhuwur (فوق)، ngisor (تحت)، njero (جوه): nang ngarep stasiun = قدام المحطة.
+    - اتجاهات: ngiwa = شمال، nengen = يمين، lurus = على طول.
+  ar: |
+    في الإندونيسية ke (إلى) وdi (في)، أما النغوكو فيستعمل لفظًا واحدًا لهما:
+    - nang (أشيع في سورابايا وشرق جاوة) / neng (أشيع في سولو ويوجيا): Aku arep nang pasar = سأذهب إلى السوق، وAku nang pasar = أنا في السوق، والسياق يفرّق. وفي الدردشة ng.
+    - menyang = ke في الكلام المتأني، وing = di في الكتابة والمقام الرسمي.
+    - saka = dari (من)، وفي سورابايا teko.
+    - kene = sini (هنا)، kono = situ (هناك القريب)، kana = sana (هناك البعيد).
+    - ظروف المكان: ngarep (أمام)، mburi (خلف)، jejere (بجانب)، ndhuwur (فوق)، ngisor (تحت)، njero (داخل).
+    - الاتجاهات: ngiwa = يسارًا، nengen = يمينًا، lurus = إلى الأمام مباشرة.
+  en: |
+    Indonesian has ke (to) and di (at). Everyday Javanese uses one word for both:
+    - nang (more Surabaya / East Java) / neng (more Solo / Yogya): Aku arep nang pasar = I'm going to the market (ke); Aku nang pasar = I'm at the market (di). Context decides.
+      Chats write ng: "ng prabowo?" = nang Prabowo? = To Prabowo?
+    - menyang = ke in more careful speech; ing = di in writing and formal speech (ing Suroboyo = in Surabaya).
+    - saka = dari (from). Surabaya: teko. Aku saka Mesir = I'm from Egypt.
+    - kene = sini (here), kono = situ (there, near you), kana = sana (over there): nang kene = here.
+    - Around things: ngarep (in front), mburi (behind), jejere (next to), ndhuwur (above), ngisor (below), njero (inside): nang ngarep stasiun = in front of the station.
+    - Directions: ngiwa = (turn) left, nengen = (turn) right, lurus = straight on.
+examples:
+  - text: ng prabowo?
+    breakdown: ng = nang (ke) · Prabowo = a name
+    en: To Prabowo? (chat)
+    ar_eg: لبرابوو؟
+    ar: إلى برابوو؟
+    register: chat
+  - text: Aku arep nang Wonokromo.
+    breakdown: aku · arep = mau · nang = ke · Wonokromo
+    en: I'm going to Wonokromo. (Surabaya)
+    ar_eg: أنا رايح وونوكرومو.
+    ar: سأذهب إلى وونوكرومو.
+    register: informal
+  - text: Sari neng omah.
+    breakdown: Sari · neng = di · omah = rumah
+    en: Sari is at home. (Central Java)
+    ar_eg: ساري في البيت.
+    ar: ساري في البيت.
+    register: informal
+  - text: Kowe saka ngendi?
+    breakdown: kowe = kamu · saka = dari · ngendi = mana
+    en: Where are you from?
+    ar_eg: إنت منين؟
+    ar: من أين أنت؟
+    register: informal
+  - text: Lurus wae, terus ngiwa. Warunge nang jejere masjid.
+    breakdown: lurus · wae = saja · terus = lalu · ngiwa = belok kiri · warung + -e · nang = di · jejere = sebelah · masjid
+    en: Go straight, then left. The stall is next to the mosque.
+    ar_eg: على طول، وبعدين شمال. المحل جنب الجامع.
+    ar: امشِ مباشرة ثم انعطف يسارًا، والكشك بجانب المسجد.
+    register: informal
+mistakes:
+  - wrong: Aku mulih nang saka pasar.
+    right: Aku mulih saka pasar.
+    why:
+      ar_eg: nang (لـ) وsaka (من) عكس بعض، ماينفعوش مع بعض. اختار واحدة.
+      ar: nang (إلى) وsaka (من) متقابلتان فلا تجتمعان.
+      en: nang (to) and saka (from) are opposites; pick one. Aku mulih saka pasar = I'm coming home from the market.
+  - wrong: Aku nang kono = "I'm over there, far away."
+    right: Aku nang kana (far) · Aku nang kono (there, near you)
+    why:
+      ar_eg: kono = هناك قريب منك (زي situ)، kana = بعيد عننا الاتنين (زي sana).
+      ar: kono للبعيد عن المتكلم القريب من المخاطب (situ)، وkana للبعيد عنهما (sana).
+      en: kono is "there, near you" (situ); kana is "far from both of us" (sana).
+arabic_bridge:
+  ar_eg: "nang بتشتغل زي المصري «في» و«لـ» مع بعض في كلام سريع (رايح السوق / في السوق: نفس الكلمة). وsaka = «من»."
+  ar: "تقابل nang معنيي «إلى» و«في» بحسب السياق، وsaka = «من»."
+  en: "nang does the work of both «إلى» and «في»; saka = «من»."
+tags: [preposition, place, directions, arek, j1]
+prerequisites: [id.preposition.di-ke-dari, id.demonstrative.sini-situ-sana]
+see_also: [jv.demonstrative, jv.chat.normalize, jv.dialect.arek]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker (the nang / neng regional split and the place nouns especially).

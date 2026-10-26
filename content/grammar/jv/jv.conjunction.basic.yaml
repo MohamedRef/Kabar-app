@@ -1,0 +1,112 @@
+schema: kabar.grammar/v1
+id: jv.conjunction.basic
+language: jv
+level: j2
+title:
+  target: lan, karo, nanging / ning, terus / banjur, merga, mula, yen / nek, utawa
+  en: Linking words (and, but, then, because, if, or)
+  ar_eg: "كلمات الربط (و، بس، وبعدين، عشان، لو، أو)"
+  ar: "أدوات الربط (و، لكن، ثم، لأن، إذا، أو)"
+summary:
+  ar_eg: "lan / karo = dan، nanging / ning = tapi، terus = lalu، merga = karena، mula = makanya، yen / nek = kalau، utawa = atau. وكلهم بيتحطوا في نفس مكان الإندونيسي."
+  ar: "lan / karo = dan، nanging / ning = tetapi، terus = lalu، merga = karena، mula = maka، yen / nek = kalau، utawa = atau، في المواضع نفسها كالإندونيسية."
+  en: "lan / karo = dan, nanging / ning = tapi, terus = lalu, merga = karena, mula = makanya, yen / nek = kalau, utawa = atau. They sit exactly where Indonesian puts them."
+pattern:
+  - "and: lan (dan) · karo (dan, dengan — more casual)"
+  - "but: nanging (tetapi) · ning, tapi (casual)"
+  - "then: terus (lalu) · banjur (lalu, more storytelling / written)"
+  - "because: merga / amarga (karena) · soale (soalnya) · so: mula (makanya) · dadi (jadi)"
+  - "if: yen (kalau) · nek (casual)"
+  - "or: utawa (atau) · in questions: apa (kopi apa teh?)"
+explanation:
+  ar_eg: |
+    الكلمات دي بتربط الجمل، وكل واحدة ليها توأم إندونيسي:
+    - lan = dan (و). karo = dan / dengan (و / مع)، وهي الأكتر في الكلام: aku karo Dimas = أنا وديماس.
+    - nanging = tetapi (بس / لكن). في الكلام العادي ning أو tapi.
+    - terus = lalu (وبعدين). banjur نفس المعنى بس أكتر في الحكي والكتابة.
+    - merga / amarga = karena (عشان / لأن). وsoale (soalnya) في الكلام العادي.
+    - mula = makanya (عشان كده). dadi = jadi (يبقى / فـ).
+    - yen = kalau (لو). nek أكتر في الكلام: Nek udan, aku nang omah wae = لو مطرت، هقعد في البيت.
+    - utawa = atau (أو). وفي السؤال بيقولوا apa: Kopi apa teh? = قهوة ولا شاي؟
+    ملاحظة: «ning» هنا = tapi. ماتلخبطهاش مع Ning (لقب البنت في سورابايا) — السياق بيوضح.
+  ar: |
+    أدوات الربط ولكل منها نظير إندونيسي:
+    - lan = dan (و)، وkaro = dan / dengan، وهي الأشيع في الكلام: aku karo Dimas.
+    - nanging = tetapi (لكن)، وفي الكلام ning أو tapi.
+    - terus = lalu (ثم)، وbanjur بالمعنى نفسه في السرد والكتابة.
+    - merga / amarga = karena (لأن)، وsoale في الكلام.
+    - mula = makanya (لذلك)، وdadi = jadi (إذن).
+    - yen = kalau (إذا)، وnek أشيع في الكلام.
+    - utawa = atau (أو)، وفي السؤال apa: Kopi apa teh?
+    وning هنا بمعنى «لكن»، وتختلف عن Ning لقب الفتاة في سورابايا.
+  en: |
+    Each linking word has an Indonesian twin:
+    - lan = dan (and). karo = dan / dengan (and / with) — the everyday choice: aku karo Dimas = Dimas and I.
+    - nanging = tetapi (but). Casual: ning or tapi.
+    - terus = lalu (then). banjur means the same, more for storytelling and writing.
+    - merga / amarga = karena (because). Casual: soale (soalnya).
+    - mula = makanya (that's why). dadi = jadi (so).
+    - yen = kalau (if). nek is more casual: Nek udan, aku nang omah wae = If it rains, I'll just stay home.
+    - utawa = atau (or). In questions people say apa: Kopi apa teh? = Coffee or tea?
+    Note: ning here = tapi. Don't confuse it with Ning, the Surabaya title for a young woman; context tells.
+examples:
+  - text: Aku karo Dimas dolan nang Ngawi.
+    breakdown: aku · karo = dan · Dimas · dolan = jalan-jalan · nang = ke · Ngawi
+    en: Dimas and I went out to Ngawi.
+    ar_eg: أنا وديماس خرجنا نتفسح في نغاوي.
+    ar: خرجتُ أنا وديماس للنزهة في نغاوي.
+    register: informal
+  - text: Panganane enak, nanging rada larang.
+    breakdown: panganan + -e = makanannya · enak · nanging = tetapi · rada = agak · larang = mahal
+    en: The food is good, but a bit pricey.
+    ar_eg: الأكل حلو، بس غالي شوية.
+    ar: الطعام لذيذ لكنه غالٍ قليلًا.
+    register: informal
+  - text: Aku mangan sik, terus adus.
+    breakdown: aku · mangan = makan · sik = dulu · terus = lalu · adus = mandi
+    en: I'll eat first, then have a bath.
+    ar_eg: هاكل الأول، وبعدين أستحمى.
+    ar: سآكل أولًا ثم أغتسل.
+    register: informal
+  - text: Aku ora teka merga udan.
+    breakdown: aku · ora = tidak · teka = datang · merga = karena · udan = hujan
+    en: I didn't come because it was raining.
+    ar_eg: ماجيتش عشان كانت بتمطر.
+    ar: لم آتِ لأنها كانت تمطر.
+    register: informal
+  - text: Nek udan, aku nang omah wae.
+    breakdown: nek = kalau · udan = hujan · aku · nang = di · omah = rumah · wae = saja
+    en: If it rains, I'll just stay home.
+    ar_eg: لو مطرت، هقعد في البيت وخلاص.
+    ar: إذا أمطرت فسأبقى في البيت.
+    register: informal
+  - text: Kopi apa teh?
+    breakdown: kopi · apa = atau (in questions) · teh
+    en: Coffee or tea?
+    ar_eg: قهوة ولا شاي؟
+    ar: قهوة أم شاي؟
+    register: informal
+mistakes:
+  - wrong: Kopi utawa teh? (casual, at a warung)
+    right: Kopi apa teh?
+    why:
+      ar_eg: utawa صح، بس في سؤال سريع بين الناس apa أطبع بكتير، زي «قهوة ولا شاي؟» بدل «قهوة أم شاي؟».
+      ar: utawa صحيحة، لكن apa أشيع في السؤال اليومي.
+      en: utawa isn't wrong, but apa is the natural casual "or" in questions.
+  - wrong: Aku ora teka karena udan.
+    right: Aku ora teka merga udan.
+    why:
+      ar_eg: karena إندونيسي. في جملة جاوي قول merga أو amarga (حتى لو الشات بيخلط).
+      ar: karena إندونيسية، ونظيرها الجاوي merga أو amarga.
+      en: karena is Indonesian; Javanese uses merga or amarga (chats do mix them).
+arabic_bridge:
+  ar_eg: "lan ≈ «و»، nanging ≈ «لكن»، terus ≈ «وبعدين»، merga ≈ «عشان»، yen ≈ «لو». وapa في «Kopi apa teh?» زي «ولا» المصرية في «قهوة ولا شاي؟»."
+  ar: "lan ≈ و، nanging ≈ لكن، terus ≈ ثم، merga ≈ لأن، yen ≈ إذا، وapa في السؤال ≈ «أم»."
+  en: "lan ≈ و, nanging ≈ لكن, terus ≈ «وبعدين», merga ≈ «عشان», yen ≈ «لو»; apa in questions ≈ Egyptian «ولا»."
+tags: [conjunction, linking, j2]
+prerequisites: [id.conjunction.basic]
+see_also: [jv.narrative.connectors, jv.reduplication]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker (ning = tapi, soale, nek).

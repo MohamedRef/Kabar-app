@@ -1,0 +1,331 @@
+schema: kabar.lesson/v1
+id: bipa1.u07.l02
+language: id
+title: Makanan dan minuman
+can_do:
+  ar_eg: تعمل أسماء بـ -an.
+  ar: أن تصوغ أسماء باللاحقة -an.
+  en: Build -an nouns.
+slides:
+  - title: makan → makanan
+    body:
+      ar_eg: |
+        لما تزوّد -an في آخر جذر الفعل، بيبقى اسم للحاجة اللي الفعل بيقع عليها:
+        - makan (ياكل) → makanan (أكل)
+        - minum (يشرب) → minuman (مشروب)
+        دي فكرة اسم المفعول في العربي بالظبط: مأكولات، مشروبات.
+      ar: |
+        إذا أضفت -an إلى آخر الجذر الفعلي صار اسمًا لما يقع عليه الفعل:
+        - makan (يأكل) → makanan (طعام)
+        - minum (يشرب) → minuman (شراب)
+        وهي فكرة اسم المفعول العربي: مأكولات، مشروبات.
+      en: |
+        Add -an to a verb root and you get a noun for the thing the action is done to:
+        - makan (eat) → makanan (food)
+        - minum (drink) → minuman (a drink)
+        Exactly the idea of the Arabic passive participle: مأكولات، مشروبات.
+    grammar: id.suffix.an.result
+    examples:
+      - text: Makanan Indonesia enak.
+        ar_eg: الأكل الإندونيسي حلو.
+        ar: الطعام الإندونيسي لذيذ.
+        en: Indonesian food is tasty.
+      - text: Mau minuman apa?
+        ar_eg: تشرب إيه؟
+        ar: ماذا تشرب؟
+        en: What would you like to drink?
+  - title: tulisan, mainan, pakaian
+    body:
+      ar_eg: |
+        نفس الحيلة مع أفعال تانية تعرفها:
+        - tulis (يكتب) → tulisan (كتابة / خط) — زي «مكتوب»
+        - main (يلعب) → mainan (لعبة)
+        - pakai (يلبس) → pakaian (لبس / هدوم)
+        - jual (يبيع) → jualan (بضاعة)
+      ar: |
+        والحيلة نفسها مع أفعال أخرى تعرفها:
+        - tulis (يكتب) → tulisan (كتابة / خط) — كـ«مكتوب»
+        - main (يلعب) → mainan (لعبة)
+        - pakai (يلبس) → pakaian (ملابس)
+        - jual (يبيع) → jualan (بضاعة)
+      en: |
+        Same trick with other verbs you know:
+        - tulis (write) → tulisan (writing, handwriting) — like «مكتوب»
+        - main (play) → mainan (toy)
+        - pakai (wear) → pakaian (clothes)
+        - jual (sell) → jualan (goods for sale)
+    grammar: id.suffix.an.result
+    examples:
+      - text: Tulisanmu bagus.
+        ar_eg: خطك حلو.
+        ar: خطك جميل.
+        en: Your handwriting is nice.
+      - text: Anak saya suka mainan mobil.
+        ar_eg: ابني بيحب العربيات اللعب.
+        ar: ابني يحب السيارات اللعبة.
+        en: My child likes toy cars.
+  - title: makan atau makanan?
+    body:
+      ar_eg: |
+        خلي بالك من الفرق:
+        - makan = فعل (ياكل): Saya suka makan = بحب الأكل (بحب آكل).
+        - makanan = اسم (الأكل نفسه): Saya suka makanan Indonesia = بحب الأكل الإندونيسي.
+        «Saya suka makan Indonesia» غلط، لأنك مابتاكلش إندونيسيا!
+      ar: |
+        انتبه للفرق:
+        - makan فعل: Saya suka makan = أحب الأكل.
+        - makanan اسم: Saya suka makanan Indonesia = أحب الطعام الإندونيسي.
+        و«Saya suka makan Indonesia» خطأ، فأنت لا تأكل إندونيسيا!
+      en: |
+        Mind the difference:
+        - makan = verb: Saya suka makan = I like eating.
+        - makanan = noun: Saya suka makanan Indonesia = I like Indonesian food.
+        "Saya suka makan Indonesia" is wrong — you're not eating Indonesia!
+    grammar: id.suffix.an.result
+    examples:
+      - text: Saya suka makanan Indonesia.
+        ar_eg: بحب الأكل الإندونيسي.
+        ar: أحب الطعام الإندونيسي.
+        en: I like Indonesian food.
+  - title: Makanan favorit
+    body:
+      ar_eg: |
+        في المنيو هتلاقي قسمين: Makanan وMinuman. ولو حد سألك عن الأكل اللي بتحبه:
+        Makanan favoritmu apa? = إيه أكلتك المفضلة؟
+        Makanan favorit saya nasi goreng. = أكلتي المفضلة الرز المقلي.
+      ar: |
+        في قائمة الطعام قسمان: Makanan وMinuman. وإذا سُئلت عن طعامك المفضل:
+        Makanan favoritmu apa? = ما طعامك المفضل؟
+        Makanan favorit saya nasi goreng. = طعامي المفضل الأرز المقلي.
+      en: |
+        A menu has two sections: Makanan and Minuman. If someone asks about your favourite:
+        Makanan favoritmu apa? = What's your favourite food?
+        Makanan favorit saya nasi goreng. = My favourite food is fried rice.
+    grammar: id.suffix.an.result
+    examples:
+      - text: Minuman favorit saya teh manis.
+        ar_eg: مشروبي المفضل الشاي بسكر.
+        ar: شرابي المفضل الشاي المحلّى.
+        en: My favourite drink is sweet tea.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: makanan
+        ar_eg: أكل
+        ar: طعام
+        en: food
+      - text: minuman
+        ar_eg: مشروب
+        ar: شراب
+        en: drink
+      - text: tulisan
+        ar_eg: كتابة / خط
+        ar: كتابة / خط
+        en: writing, handwriting
+      - text: mainan
+        ar_eg: لعبة
+        ar: لعبة
+        en: toy
+      - text: pakaian
+        ar_eg: لبس / هدوم
+        ar: ملابس
+        en: clothes
+    words: [makanan, minuman, tulisan, mainan, pakaian]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «أكل» (الاسم)؟
+      ar: أيّ كلمة تعني «طعام» (الاسم)؟
+      en: Which word means "food" (the noun)?
+    options: ["makanan", "memakan", "makan"]
+    answer: 0
+    explain:
+      ar_eg: makan فعل (ياكل)، وmakanan هي الأكل نفسه.
+      ar: makan فعل، وmakanan هو الاسم.
+      en: makan is the verb; makanan is the food.
+    words: [makanan]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة صح بمعنى «بحب الأكل الإندونيسي»؟
+      ar: أيّ جملة صحيحة بمعنى «أحب الطعام الإندونيسي»؟
+      en: Which sentence correctly says "I like Indonesian food"?
+    options: ["Saya suka makan Indonesia.", "Saya makanan suka Indonesia.", "Saya suka makanan Indonesia."]
+    answer: 2
+    explain:
+      ar_eg: محتاج الاسم makanan، مش الفعل makan.
+      ar: نحتاج الاسم makanan لا الفعل makan.
+      en: You need the noun makanan, not the verb makan.
+    words: [makanan]
+  - id: e04
+    type: listen
+    text: Mau minuman apa?
+    options: ["Mau makanan apa?", "Mau mainan apa?", "Mau minuman apa?"]
+    answer: 2
+    words: [minuman]
+  - id: e05
+    type: fill_blank
+    sentence: Anak saya suka ___ mobil.
+    meaning:
+      ar_eg: ابني بيحب العربيات اللعب.
+      ar: ابني يحب السيارات اللعبة.
+      en: My child likes toy cars.
+    options: ["mainan", "main", "bermain"]
+    answers: [mainan]
+    words: [mainan]
+  - id: e06
+    type: fill_blank
+    sentence: ___ kamu bagus!
+    meaning:
+      ar_eg: خطك حلو!
+      ar: خطك جميل!
+      en: Your handwriting is nice!
+    options: ["Tulisan", "Menulis", "Tulis"]
+    answers: [Tulisan]
+    words: [tulisan]
+  - id: e07
+    type: fill_blank
+    sentence: ___ favorit saya teh manis.
+    meaning:
+      ar_eg: مشروبي المفضل الشاي بسكر.
+      ar: شرابي المفضل الشاي المحلّى.
+      en: My favourite drink is sweet tea.
+    answers: [Minuman, minuman]
+    explain:
+      ar_eg: minum + an = minuman (مشروب).
+      ar: minum + an = minuman (شراب).
+      en: minum + an = minuman (a drink).
+    words: [minuman, favorit]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: بحب الأكل الحرّاق.
+      ar: أحب الطعام الحار.
+      en: I like spicy food.
+    answer: Saya suka makanan pedas.
+    distractors: [makan, minuman]
+    words: [makanan, pedas]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: تحب تشرب إيه؟
+      ar: ماذا تحب أن تشرب؟
+      en: What would you like to drink?
+    answers:
+      - Mau minum apa?
+      - Mau minuman apa?
+      - Mau minum apa
+      - Mau minuman apa
+      - Kamu mau minum apa?
+      - Anda mau minum apa?
+      - Minumnya apa?
+    words: [minuman]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Pakaian ini bagus.
+    answers_meaning:
+      ar_eg: ["اللبس ده حلو.", "الهدوم دي حلوة", "اللبس ده جميل"]
+      ar: ["هذه الملابس جميلة.", "هذه الملابس جيدة", "هذا اللباس جميل"]
+      en: ["These clothes are nice.", "This outfit is nice", "These clothes are good"]
+    words: [pakaian]
+  - id: e11
+    type: dictation
+    text: Minuman favorit saya kopi.
+    meaning:
+      ar_eg: مشروبي المفضل القهوة.
+      ar: شرابي المفضل القهوة.
+      en: My favourite drink is coffee.
+    words: [minuman, favorit]
+  - id: e12
+    type: speaking
+    text: Saya suka makanan Indonesia.
+    meaning:
+      ar_eg: بحب الأكل الإندونيسي.
+      ar: أحب الطعام الإندونيسي.
+      en: I like Indonesian food.
+    words: [makanan]
+dialogue:
+  title: Di kafe Kemang
+  lines:
+    - speaker: Pelayan
+      text: Selamat sore! Mau minuman apa?
+      ar_eg: مساء الخير! تشرب إيه؟
+      ar: مساء الخير! ماذا تشرب؟
+      en: Good afternoon! What would you like to drink?
+    - speaker: Mohamed
+      text: Teh manis, Mbak. Ada makanan Mesir?
+      ar_eg: شاي بسكر يا آنسة. فيه أكل مصري؟
+      ar: شاي محلّى يا آنسة. هل يوجد طعام مصري؟
+      en: Sweet tea, please. Is there any Egyptian food?
+    - speaker: Pelayan
+      text: Maaf, tidak ada. Ada makanan Indonesia, nasi goreng dan sate.
+      ar_eg: آسفة، مفيش. فيه أكل إندونيسي، رز مقلي وساتيه.
+      ar: عذرًا، لا يوجد. يوجد طعام إندونيسي، أرز مقلي وساتيه.
+      en: Sorry, there isn't. There's Indonesian food — fried rice and satay.
+    - speaker: Mohamed
+      text: Nasi goreng satu, ya. Saya suka makanan Indonesia!
+      ar_eg: رز مقلي واحد لو سمحتي. أنا بحب الأكل الإندونيسي!
+      ar: أرز مقلي واحد من فضلك. أحب الطعام الإندونيسي!
+      en: One fried rice, please. I like Indonesian food!
+    - speaker: Pelayan
+      text: Baik. Mau pedas?
+      ar_eg: حاضر. تحبه حرّاق؟
+      ar: حسنًا. هل تريده حارًا؟
+      en: Sure. Would you like it spicy?
+    - speaker: Mohamed
+      text: Tidak usah pedas, Mbak. Terima kasih.
+      ar_eg: مش لازم حرّاق يا آنسة. شكرًا.
+      ar: لا داعي للحار يا آنسة. شكرًا.
+      en: No need for spicy, thanks.
+new_words:
+  - word: makanan
+    pos: noun
+    ar_eg: أكل
+    ar: طعام
+    en: food
+  - word: minuman
+    pos: noun
+    ar_eg: مشروب
+    ar: شراب
+    en: drink, beverage
+  - word: tulisan
+    pos: noun
+    ar_eg: كتابة / خط
+    ar: كتابة / خط
+    en: writing, handwriting
+  - word: mainan
+    pos: noun
+    ar_eg: لعبة
+    ar: لعبة
+    en: toy
+  - word: pakaian
+    pos: noun
+    ar_eg: لبس / هدوم
+    ar: ملابس
+    en: clothes
+  - word: jualan
+    pos: noun
+    ar_eg: بضاعة
+    ar: بضاعة
+    en: goods for sale
+  - word: favorit
+    pos: adjective
+    ar_eg: مفضّل
+    ar: مفضّل
+    en: favourite
+  - word: pelayan
+    pos: noun
+    ar_eg: جرسون
+    ar: نادل
+    en: waiter, waitress
+  - word: mobil
+    pos: noun
+    ar_eg: عربية
+    ar: سيارة
+    en: car
+review:
+  status: draft
+  verified: false

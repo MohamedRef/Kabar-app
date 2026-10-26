@@ -7,7 +7,9 @@ mod do_sql;
 use std::cell::RefCell;
 
 use kabar_protocol::ai::{EngineCall, EngineError, EngineReply};
-use kabar_protocol::cloud::{ApiError, ErrorCode, GoogleSignIn, RefreshRequest, Session, TtsRequest};
+use kabar_protocol::cloud::{
+    ApiError, ErrorCode, GoogleSignIn, PushTokenRequest, RefreshRequest, Session, TtsRequest,
+};
 use kabar_protocol::{DeviceId, PROTOCOL_VERSION};
 use serde::Serialize;
 use serde::de::DeserializeOwned;
@@ -20,8 +22,9 @@ use worker::{
 
 use crate::ai::{self, Route};
 use crate::config::Config;
+use crate::fcm;
 use crate::google::{self, Jwks};
-use crate::internal::{DEVICE_HEADER, Expiry, Refresh, Register, Revoke};
+use crate::internal::{DEVICE_HEADER, Expiry, Refresh, Register, Revoke, SetPush};
 use crate::quota::{self, Service};
 use crate::tokens::{self, AccessClaims, TokenKey};
 use crate::tts;
@@ -268,12 +271,20 @@ fn engine_error(e: &EngineError) -> Result<Response> {
     Ok(Response::from_json(e)?.with_status(ai::status_for(e)))
 }
 
-async fn post_json(url: &str, headers: Headers, payload: &Value) -> Result<(u16, Option<u64>, Value)> {
+pub(crate) async fn post_json(
+    url: &str,
+    headers: Headers,
+    payload: &Value,
+) -> Result<(u16, Option<u64>, Value)> {
     headers.set("content-type", "application/json")?;
+    post(url, headers, &payload.to_string()).await
+}
+
+/// POSTs `body` (content type already in `headers`); returns the status,
+/// `retry-after` and the JSON answer (`null` if it isn't JSON).
+pub(crate) async fn post(url: &str, headers: Headers, body: &str) -> Result<(u16, Option<u64>, Value)> {
     let mut init = RequestInit::new();
-    init.with_method(Method::Post)
-        .with_headers(headers)
-        .with_body(Some(JsValue::from_str(&payload.to_string())));
+    init.with_method(Method::Post).with_headers(headers).with_body(Some(JsValue::from_str(body)));
     let mut resp = Fetch::Request(Request::new_with_init(url, &init)?).send().await?;
     let status = resp.status_code();
     let retry_after = resp.headers().get("retry-after")?.and_then(|v| v.trim().parse().ok());
@@ -440,7 +451,7 @@ async fn fetch(req: Request, env: Env, _ctx: Context) -> Result<Response> {
     }
 }
 
-async fn route(req: Request, env: &Env, cfg: &Config, method: Method, path: &str) -> Result<Response> {
+async fn route(mut req: Request, env: &Env, cfg: &Config, method: Method, path: &str) -> Result<Response> {
     match (method.clone(), path) {
         (Method::Get, "/" | "/v1/health") => {
             Response::from_json(&json!({ "name": "kabar-cloud", "protocol": PROTOCOL_VERSION }))
@@ -467,6 +478,18 @@ async fn route(req: Request, env: &Env, cfg: &Config, method: Method, path: &str
                     init.with_method(Method::Get).with_headers(headers);
                     let forwarded = Request::new_with_init("https://account/ws", &init)?;
                     account_stub(env, &claims.sub)?.fetch_with_request(forwarded).await
+                }
+                (Method::Put, "/v1/devices/me/push") => {
+                    let push: PushTokenRequest = match body(&mut req).await {
+                        Ok(b) => b,
+                        Err(r) => return r,
+                    };
+                    let token = push.token.trim();
+                    if !token.is_empty() && !fcm::valid_push_token(token) {
+                        return api_error(ErrorCode::InvalidRequest, "bad push token");
+                    }
+                    let set = SetPush { token: (!token.is_empty()).then(|| token.to_owned()) };
+                    call_do(env, &claims.sub, Method::Post, "/push", Some(&claims.dev), Some(&set)).await
                 }
                 (Method::Get, "/v1/devices") => {
                     call_do(env, &claims.sub, Method::Get, "/devices", Some(&claims.dev), None::<&()>).await

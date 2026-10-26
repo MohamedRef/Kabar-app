@@ -1,0 +1,100 @@
+schema: kabar.grammar/v1
+id: id.confix.men-kan.causative
+language: id
+level: bipa3
+title:
+  target: meN-…-kan causative (menyehatkan, membersihkan, menaikkan)
+  en: Causative meN-…-kan — "make something X"
+  ar_eg: meN-…-kan بمعنى «يخلّي الحاجة …»
+  ar: meN-…-kan السببية
+summary:
+  ar_eg: "meN- + صفة أو فعل لازم + -kan = يخلّي حاجة تبقى كده: bersih → membersihkan = ينضّف، naik → menaikkan = يرفع."
+  ar: "meN- + صفة أو فعل لازم + -kan = جعلُ الشيء على تلك الحال: bersih → membersihkan (نظّف)، naik → menaikkan (رفع)."
+  en: "meN- + adjective or intransitive verb + -kan = make something be / do that: bersih → membersihkan (clean), naik → menaikkan (raise)."
+pattern:
+  - meN- + adjective + -kan + object = make it adjective (sehat → menyehatkan)
+  - meN- + intransitive verb + -kan + object = make it do that (turun → menurunkan)
+  - meN- + feeling + -kan = causing that feeling (senang → menyenangkan)
+  - imperative without meN- (Bersihkan meja!) · passive di-…-kan (dibersihkan)
+explanation:
+  ar_eg: |
+    الصفة لوحدها مش بتاخد مفعول: Sayur sehat = الخضار صحي. عشان تقول «الخضار بيخلّي الجسم صحي» محتاج فعل سببي:
+    meN- + sehat + -kan = menyehatkan tubuh = بيصحّي الجسم / بيفيد الجسم.
+    - من صفة: bersih → membersihkan (ينضف)، besar → membesarkan (يكبّر / يربّي)، panas → memanaskan (يسخّن)، dingin → mendinginkan (يبرّد).
+    - من فعل لازم: naik → menaikkan (يرفع)، turun → menurunkan (ينزّل)، masuk → memasukkan (يدخّل)، hidup → menghidupkan (يشغّل)، mati → mematikan (يطفي).
+    - من شعور = «بيسبب الإحساس ده»: senang → menyenangkan (ممتع)، bosan → membosankan (ممل)، takut → menakutkan (مخيف).
+    ملحوظة إملائية: لو الجذر بيخلص بـ k، بتكتب kk: naik → menaikkan، masuk → memasukkan.
+    في الأمر بتشيل meN-: Bersihkan sayurnya dulu! = نضّف الخضار الأول. وفي المبني للمجهول: dibersihkan (هتشوفه في الوحدة ٧).
+    في المستوى الرابع هتشوف معاني تانية لـ -kan (زي «يعمل لحد»: membelikan).
+  ar: |
+    لا تتعدى الصفة إلى مفعول (Sayur sehat)، فإذا أردت معنى «يجعله صحيًا» صغت فعلًا سببيًا: menyehatkan tubuh (يقوّي الجسم).
+    - من الصفة: membersihkan (نظّف)، membesarkan (كبّر / ربّى)، memanaskan (سخّن)، mendinginkan (برّد).
+    - من الفعل اللازم: menaikkan (رفع)، menurunkan (أنزل)، memasukkan (أدخل)، menghidupkan (شغّل)، mematikan (أطفأ).
+    - من الشعور: ما يسبّب الشعور: menyenangkan (مُمتع)، membosankan (مُملّ)، menakutkan (مُخيف).
+    إملائيًا: الجذر المنتهي بـk يُكتب بـkk: menaikkan، memasukkan.
+    وفي الأمر تسقط meN-: Bersihkan sayurnya dulu!، وفي المبني للمجهول: dibersihkan.
+  en: |
+    An adjective can't take an object: Sayur sehat (vegetables are healthy). To say "vegetables make the body healthy" you need a causative verb: menyehatkan tubuh.
+    - From adjectives: membersihkan (clean), membesarkan (enlarge / raise a child), memanaskan (heat), mendinginkan (cool).
+    - From intransitive verbs: menaikkan (raise), menurunkan (lower), memasukkan (put in), menghidupkan (switch on), mematikan (switch off).
+    - From feelings = causing that feeling: menyenangkan (pleasant, fun), membosankan (boring), menakutkan (frightening).
+    Spelling: a root ending in k gives kk: naik → menaikkan, masuk → memasukkan.
+    Commands drop meN-: Bersihkan sayurnya dulu! Passive: dibersihkan (Unit 7).
+    BIPA 4 adds other meanings of -kan (doing something for someone: membelikan).
+examples:
+  - text: Sayur dan buah menyehatkan tubuh.
+    breakdown: meN- + sehat (healthy) + -kan → menyehatkan (make healthy)
+    en: Vegetables and fruit keep the body healthy.
+    ar_eg: الخضار والفاكهة بيقوّوا صحة الجسم.
+    ar: الخضروات والفواكه تُقوّي صحة الجسم.
+  - text: Bu Sari membersihkan stroberi sebelum memakannya.
+    breakdown: meN- + bersih (clean) + -kan → membersihkan
+    en: Bu Sari cleans the strawberries before eating them.
+    ar_eg: طنط ساري بتنضّف الفراولة قبل ما تاكلها.
+    ar: تنظّف السيدة ساري الفراولة قبل أن تأكلها.
+  - text: Terlalu banyak garam bisa menaikkan tekanan darah.
+    breakdown: meN- + naik (go up) + -kan → menaikkan (raise)
+    en: Too much salt can raise your blood pressure.
+    ar_eg: الملح الكتير ممكن يعلّي الضغط.
+    ar: الإفراط في الملح قد يرفع ضغط الدم.
+  - text: Jangan lupa mematikan kompor.
+    en: Don't forget to turn off the stove.
+    ar_eg: ما تنساش تطفي البوتاجاز.
+    ar: لا تنسَ إطفاء الموقد.
+  - text: Memetik stroberi di Sembalun sangat menyenangkan.
+    en: Picking strawberries in Sembalun is great fun.
+    ar_eg: قطف الفراولة في سمبالون ممتع جدًا.
+    ar: قطف الفراولة في سمبالون ممتع جدًا.
+  - text: Panaskan air, lalu masukkan sayurnya.
+    en: Heat the water, then put the vegetables in.
+    ar_eg: سخّن المية، وبعدين حط الخضار.
+    ar: سخّن الماء، ثم أضف الخضروات.
+mistakes:
+  - wrong: Sayur sehat tubuh.
+    right: Sayur menyehatkan tubuh.
+    why:
+      ar_eg: الصفة مش بتاخد مفعول؛ لازم تحولها لفعل سببي بـ meN-…-kan.
+      ar: لا تتعدى الصفة، فتُصاغ منها فعلًا سببيًا بـmeN-…-kan.
+      en: An adjective can't take an object; make it causative with meN-…-kan.
+  - wrong: menaikan, memasukan
+    right: menaikkan, memasukkan
+    why:
+      ar_eg: الجذر naik / masuk بيخلص بـ k، وبعده -kan، فبيبقوا kk.
+      ar: ينتهي الجذر بـk ثم تأتي -kan فتجتمع kk.
+      en: The root ends in k and -kan adds another — kk.
+  - wrong: Saya membersih kamar.
+    right: Saya membersihkan kamar.
+    why:
+      ar_eg: membersih مش كلمة؛ bersih صفة ومحتاجة -kan عشان تبقى «ينضف».
+      ar: لا يوجد membersih؛ لا بد من -kan.
+      en: membersih doesn't exist; the adjective needs -kan.
+arabic_bridge:
+  ar_eg: "ده نفس فكرة الأوزان السببية في العربي: نظيف → نظّف (membersihkan)، كبير → كبّر (membesarkan)، نزل → نزّل / أنزل (menurunkan)، دخل → دخّل / أدخل (memasukkan). الشدة أو الهمزة عندنا = meN-…-kan عندهم."
+  ar: "تقابل meN-…-kan صيغتي فعّل وأفعل السببيتين: نظّف (membersihkan)، كبّر (membesarkan)، أنزل (menurunkan)، أدخل (memasukkan)."
+  en: This matches the Arabic causative forms فعّل / أفعل — نظّف = membersihkan, أنزل = menurunkan, أدخل = memasukkan.
+tags: [affix, verb, causative, morphology]
+prerequisites: [id.prefix.men.basic]
+see_also: [id.confix.men-kan, id.confix.men-i, id.verb.transitive, id.passive.di]
+review:
+  status: draft
+  verified: false

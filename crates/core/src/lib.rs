@@ -4,11 +4,15 @@
 
 pub mod ai;
 pub mod clock;
+pub mod coach;
+pub mod journey;
 pub mod lang;
 pub mod layout;
+pub mod lesson;
 pub mod locale;
 pub mod penlab;
 pub mod reader;
+pub mod review;
 pub mod settings;
 pub mod srs;
 pub mod sync;

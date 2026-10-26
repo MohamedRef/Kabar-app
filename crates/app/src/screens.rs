@@ -42,24 +42,6 @@ pub fn Welcome() -> Element {
 }
 
 #[component]
-pub fn Today() -> Element {
-    let ui = use_context::<Ui>();
-    rsx! {
-        div { class: "card",
-            h2 { lang: "id", bdi { "{ui.t(Msg::TodayTitle)}" } }
-            p { "{ui.t(Msg::TodayBody)}" }
-        }
-        div { class: "card",
-            p { class: "greeting", style: "font-size: 2rem", bdi { lang: "id", "Apa kabar?" } }
-            div { class: "bridge",
-                span { class: "bridge-word latin", lang: "id", "kabar" }
-                span { class: "ar", lang: "ar", "خبر" }
-            }
-        }
-    }
-}
-
-#[component]
 pub fn ComingSoon(title: Msg, milestone: &'static str) -> Element {
     let ui = use_context::<Ui>();
     rsx! {
@@ -155,6 +137,23 @@ pub fn SettingsScreen() -> Element {
             }
 
             div { class: "field",
+                label {
+                    input {
+                        r#type: "checkbox",
+                        checked: !settings.sounds_off,
+                        onchange: {
+                            let db = db.clone();
+                            move |e: FormEvent| {
+                                let on = e.checked();
+                                ui.update_settings(&db, |s| s.sounds_off = !on)
+                            }
+                        },
+                    }
+                    " {ui.t(Msg::SettingsSounds)}"
+                }
+            }
+
+            div { class: "field",
                 span { class: "label", "{ui.t(Msg::Width)}" }
                 span { class: "pill latin", bdi { "{width_class.as_str()}" } }
             }
@@ -184,5 +183,6 @@ pub fn SettingsScreen() -> Element {
                 }
             }
         }
+        crate::coach::settings::CoachSettings {}
     }
 }

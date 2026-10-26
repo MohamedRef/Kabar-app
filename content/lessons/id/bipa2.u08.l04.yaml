@@ -1,0 +1,253 @@
+schema: kabar.lesson/v1
+id: bipa2.u08.l04
+language: id
+title: Pesan ojek
+can_do:
+  ar_eg: تطلب أوجيك من الأبلكيشن وتدردش مع السواق.
+  ar: أن تحجز رحلة بدرّاجة الأجرة وتتحدث مع السائق.
+  en: Book a ride and chat with the driver.
+slides:
+  - title: Pesan ojek online
+    body:
+      ar_eg: |
+        في بالي أغلب الناس بتطلب ojek من أبلكيشن على الموبايل. الخطوات بالترتيب:
+        - Pertama, buka aplikasi. (الأول افتح الأبلكيشن)
+        - Lalu, tulis tujuan. (وبعدين اكتب المكان اللي رايحه)
+        - Setelah itu, tunggu sopir. (بعد كده استنى السواق) وابعتله إنت فين ولابس إيه.
+        - Akhirnya, bayar: tunai (كاش) أو في الأبلكيشن.
+        والسواق هيديك helm (خوذة). وقوله «Pelan-pelan, Pak» لو الطريق بيزحلق.
+      ar: |
+        يطلب أكثر الناس في بالي درّاجة الأجرة بتطبيق على الهاتف، بهذا الترتيب:
+        - Pertama, buka aplikasi. (أولًا افتح التطبيق)
+        - Lalu, tulis tujuan. (ثم اكتب وجهتك)
+        - Setelah itu, tunggu sopir. (بعد ذلك انتظر السائق) وأخبره بمكانك وما ترتديه.
+        - Akhirnya, bayar: tunai (نقدًا) أو عبر التطبيق.
+        وسيعطيك السائق helm (خوذة).
+      en: |
+        In Bali most people book an ojek in a phone app. In order:
+        - Pertama, buka aplikasi. (First, open the app.)
+        - Lalu, tulis tujuan. (Then, type your destination.)
+        - Setelah itu, tunggu sopir. (After that, wait for the driver) and tell him where you are and what you're wearing.
+        - Akhirnya, bayar: tunai (cash) or in the app.
+        The driver hands you a helm (helmet). Say "Pelan-pelan, Pak" if the road is slippery.
+    grammar: id.conjunction.sequence
+    examples:
+      - text: Saya di depan pura, pakai baju biru.
+        ar_eg: أنا قدام المعبد، لابس قميص أزرق.
+        ar: أنا أمام المعبد، أرتدي قميصًا أزرق.
+        en: I'm in front of the temple, wearing a blue shirt.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: السواق بعتلك «Mas di mana?». ترد بإيه؟
+      ar: أرسل إليك السائق «Mas di mana?». بماذا تردّ؟
+      en: The driver texts "Mas di mana?" (Where are you?). Your reply?
+    options: ["Saya naik ojek sambil makan.", "Saya di depan pura, pakai baju biru.", "Akhirnya saya pulang."]
+    answer: 1
+    words: [di depan, pakai]
+  - id: e02
+    type: listen
+    text: Tunggu lima menit, ya.
+    options: ["Tunggu lima menit, ya.", "Tunggu satu menit, ya.", "Tunggu lima belas menit, ya."]
+    answer: 0
+    words: [tunggu, menit]
+  - id: e03
+    type: fill_blank
+    sentence: Bayar ___ atau pakai aplikasi?
+    meaning:
+      ar_eg: هتدفع كاش ولا بالأبلكيشن؟
+      ar: هل تدفع نقدًا أم عبر التطبيق؟
+      en: Paying cash or with the app?
+    options: ["tujuan", "helm", "tunai"]
+    answers: [tunai]
+    words: [tunai, aplikasi]
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: الأول، افتح أبلكيشن الأوجيك.
+      ar: أولًا، افتح تطبيق درّاجة الأجرة.
+      en: First, open the ojek app.
+    answer: Pertama, buka aplikasi ojek.
+    distractors: [akhirnya, tutup]
+    words: [pertama, buka, aplikasi]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: لو سمحت بالراحة، الطريق بيزحلق.
+      ar: من فضلك تمهّل، الطريق زلق.
+      en: Please go slowly, the road is slippery.
+    answer: Tolong pelan-pelan, jalannya licin.
+    distractors: [cepat-cepat, sambil]
+    words: [tolong, pelan-pelan, licin]
+  - id: e06
+    type: fill_blank
+    sentence: Saya melihat pemandangan ___ naik ojek.
+    meaning:
+      ar_eg: بتفرج على المنظر وأنا راكب الأوجيك.
+      ar: أتأمل المناظر وأنا أركب درّاجة الأجرة.
+      en: I look at the scenery while riding the ojek.
+    options: ["akhirnya", "pertama", "sambil"]
+    answers: [sambil]
+    words: [sambil, pemandangan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أنا قدام المعبد.
+      ar: أنا أمام المعبد.
+      en: I'm in front of the temple.
+    answers:
+      - Saya di depan pura.
+      - Saya di depan pura
+      - Saya ada di depan pura.
+      - Aku di depan pura.
+      - Aku di depan pura
+      - Aku ada di depan pura.
+    explain:
+      ar_eg: المعبد في بالي اسمه pura. ومش محتاج فعل «يكون»؛ Saya di depan pura كفاية.
+      ar: المعبد الهندوسي في بالي يسمّى pura، ولا حاجة إلى فعل كون.
+      en: A Balinese temple is a pura; no "to be" verb needed.
+    words: [di depan, pura]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: استنى خمس دقايق، ماشي؟
+      ar: انتظر خمس دقائق، اتفقنا؟
+      en: Wait five minutes, OK?
+    answers:
+      - Tunggu lima menit, ya.
+      - Tunggu lima menit, ya
+      - Tunggu lima menit ya
+      - Tunggu 5 menit, ya.
+      - Tunggu 5 menit ya
+    words: [tunggu, menit]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Bayar tunai atau pakai aplikasi?
+    answers_meaning:
+      ar_eg: ["هتدفع كاش ولا بالأبلكيشن؟", "الدفع كاش ولا بالتطبيق؟"]
+      ar: ["هل تدفع نقدًا أم عبر التطبيق؟", "الدفع نقدًا أم بالتطبيق؟"]
+      en: ["Paying cash or with the app?", "Cash or app?", "Will you pay cash or through the app?"]
+    words: [tunai, aplikasi]
+  - id: e10
+    type: build_sentence
+    source:
+      ar_eg: في الآخر وصلنا الموقف.
+      ar: وصلنا أخيرًا إلى المحطة.
+      en: Finally, we arrived at the terminal.
+    answer: Akhirnya, kami sampai di terminal.
+    distractors: [pertama, dari]
+    words: [akhirnya, terminal]
+  - id: e11
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (للسواق) هنا بس يا أسطى، شكرًا!
+      ar: (للسائق) هنا من فضلك يا سيدي، شكرًا!
+      en: (to the driver) Right here, sir, thanks!
+    answers:
+      - Di sini saja, Pak. Terima kasih!
+      - Di sini saja, Pak, terima kasih!
+      - Di sini saja, Pak. Terima kasih.
+      - Di sini aja, Pak. Makasih!
+      - Sini saja, Pak. Terima kasih!
+    explain:
+      ar_eg: «Di sini saja» هي الجملة اللي بتوقف بيها الأوجيك أو التاكسي. aja وmakasih عامية.
+      ar: «Di sini saja» عبارة شائعة لإيقاف السائق، وaja وmakasih عاميتان.
+      en: '"Di sini saja" is how you stop a driver; aja and makasih are casual.'
+    words: [di sini, saja]
+  - id: e12
+    type: dictation
+    text: Tolong pelan-pelan saja, Pak.
+    meaning:
+      ar_eg: لو سمحت بالراحة يا أسطى.
+      ar: تمهّل من فضلك يا سيدي.
+      en: Please go slowly, sir.
+    words: [pelan-pelan]
+  - id: e13
+    type: speaking
+    text: Selamat sore, Pak. Saya di depan pura, pakai baju biru.
+    meaning:
+      ar_eg: مساء الخير يا أسطى. أنا قدام المعبد، لابس قميص أزرق.
+      ar: مساء الخير يا سيدي. أنا أمام المعبد، أرتدي قميصًا أزرق.
+      en: Good afternoon, sir. I'm in front of the temple, wearing a blue shirt.
+dialogue:
+  title: Ojek dari Pura Ulun Danu
+  lines:
+    - speaker: Mohamed
+      text: Selamat sore, Pak. Saya di depan Pura Ulun Danu, pakai baju biru.
+      ar_eg: مساء الخير يا أسطى. أنا قدام معبد أولون دانو، لابس قميص أزرق.
+      ar: مساء الخير يا سيدي. أنا أمام معبد أولون دانو، أرتدي قميصًا أزرق.
+      en: Good afternoon, sir. I'm in front of Ulun Danu Temple, wearing a blue shirt.
+    - speaker: Pak Wayan
+      text: Baik, Mas. Saya sudah dekat. Tunggu lima menit, ya.
+      ar_eg: تمام يا أستاذ. أنا قربت. استنى خمس دقايق.
+      ar: حسنًا يا أخي، أنا قريب. انتظر خمس دقائق.
+      en: OK. I'm close. Wait five minutes.
+    - speaker: Pak Wayan
+      text: Mas Mohamed? Ini helmnya. Ke terminal, ya?
+      ar_eg: أستاذ محمد؟ اتفضل الخوذة. على الموقف، صح؟
+      ar: الأستاذ محمد؟ تفضل الخوذة. إلى المحطة، صحيح؟
+      en: Mohamed? Here's your helmet. To the terminal, right?
+    - speaker: Mohamed
+      text: Betul, Pak. Tolong pelan-pelan saja, jalannya licin.
+      ar_eg: مظبوط يا أسطى. لو سمحت بالراحة، الطريق بيزحلق.
+      ar: صحيح يا سيدي. تمهّل من فضلك، الطريق زلق.
+      en: That's right. Please go slowly, the road is slippery.
+    - speaker: Pak Wayan
+      text: Siap! Mas dari mana?
+      ar_eg: حاضر! إنت منين يا أستاذ؟
+      ar: حاضر! من أين أنت؟
+      en: Sure thing! Where are you from?
+    - speaker: Mohamed
+      text: Saya dari Mesir. Pertama saya ke Ubud, lalu ke Denpasar. Sekarang di Bedugul.
+      ar_eg: أنا من مصر. الأول رحت أوبود، وبعدين دنباسار. ودلوقتي في بيدوجول.
+      ar: أنا من مصر. ذهبت أولًا إلى أوبود، ثم إلى دنباسار، والآن أنا في بيدوغول.
+      en: I'm from Egypt. First I went to Ubud, then to Denpasar. Now I'm in Bedugul.
+    - speaker: Pak Wayan
+      text: Sudah sampai, Mas. Bayar tunai atau pakai aplikasi?
+      ar_eg: وصلنا يا أستاذ. هتدفع كاش ولا بالأبلكيشن؟
+      ar: وصلنا. هل تدفع نقدًا أم عبر التطبيق؟
+      en: We're here. Paying cash or with the app?
+    - speaker: Mohamed
+      text: Tunai saja. Ini uangnya. Terima kasih, Pak!
+      ar_eg: كاش. اتفضل الفلوس. شكرًا يا أسطى!
+      ar: نقدًا. تفضّل المال. شكرًا يا سيدي!
+      en: Cash. Here's the money. Thank you!
+    - speaker: Pak Wayan
+      text: Sama-sama. Hati-hati, Mas!
+      ar_eg: العفو. خلي بالك من نفسك!
+      ar: عفوًا. انتبه لنفسك!
+      en: You're welcome. Take care!
+new_words:
+  - word: aplikasi
+    pos: noun
+    ar_eg: أبلكيشن، تطبيق
+    ar: تطبيق
+    en: app
+  - word: tujuan
+    pos: noun
+    ar_eg: المكان اللي رايحه
+    ar: الوجهة
+    en: destination
+  - word: helm
+    pos: noun
+    ar_eg: خوذة
+    ar: خوذة
+    en: helmet
+  - word: tunai
+    pos: adjective
+    ar_eg: كاش
+    ar: نقدًا
+    en: cash
+  - word: siap
+    pos: interjection
+    ar_eg: "حاضر! (حرفيًا: جاهز)"
+    ar: "حاضر! (حرفيًا: مستعد)"
+    en: sure thing! (literally “ready”)
+review:
+  status: draft
+  verified: false

@@ -1,10 +1,14 @@
 //! Kabar: one Dioxus codebase for the Mac, the S24 Ultra and the Tab S11.
 
+mod coach;
 mod i18n;
 mod icons;
+mod journey;
+mod lesson;
 mod penlab;
 mod platform;
 mod reader;
+mod review;
 mod screens;
 mod store;
 mod theme;
@@ -14,8 +18,10 @@ use std::rc::Rc;
 
 use dioxus::prelude::*;
 use kabar_core::layout::WidthClass;
+use kabar_core::locale::{Direction, UiLanguage, format_number};
 use kabar_core::settings::Settings;
 
+use crate::coach::Coach;
 use crate::i18n::{Msg, t};
 use crate::store::Store;
 
@@ -27,9 +33,12 @@ pub enum Screen {
     Journey,
     Reader,
     Review,
+    Coach,
     Studio,
     Settings,
     PenLab,
+    /// The Lesson Player, full screen; the lesson is `Ui::lesson`.
+    Lesson,
 }
 
 impl Screen {
@@ -39,9 +48,11 @@ impl Screen {
             Self::Journey => Msg::NavJourney,
             Self::Reader => Msg::NavReader,
             Self::Review => Msg::NavReview,
+            Self::Coach => Msg::NavCoach,
             Self::Studio => Msg::NavStudio,
             Self::Settings => Msg::NavSettings,
             Self::PenLab => Msg::NavPenLab,
+            Self::Lesson => Msg::NavJourney,
         }
     }
 
@@ -57,6 +68,8 @@ pub struct Ui {
     pub settings: Signal<Settings>,
     pub width: Signal<WidthClass>,
     pub screen: Signal<Screen>,
+    /// The lesson the player shows (curriculum lesson id).
+    pub lesson: Signal<Option<String>>,
 }
 
 /// The local database, shared through context.
@@ -68,6 +81,22 @@ impl Ui {
         t(self.settings.read().ui_language, msg)
     }
 
+    pub fn lang(&self) -> UiLanguage {
+        self.settings.read().ui_language
+    }
+
+    /// Whether numbers use Eastern Arabic digits right now.
+    pub fn eastern(&self) -> bool {
+        let s = self.settings.read();
+        s.eastern_digits && s.ui_language.dir() == Direction::Rtl
+    }
+
+    /// A number in the UI's digits.
+    pub fn num(&self, n: impl Into<u64>) -> String {
+        let s = self.settings.read();
+        format_number(n.into(), s.ui_language, s.eastern_digits)
+    }
+
     /// Saves changed settings and updates the UI.
     pub fn update_settings(mut self, db: &Db, f: impl FnOnce(&mut Settings)) {
         let old = self.settings.read().clone();
@@ -77,6 +106,18 @@ impl Ui {
             eprintln!("kabar: saving settings failed: {e}");
         }
         self.settings.set(new);
+    }
+
+    /// Opens the Lesson Player on a lesson (from the Journey Map, Today or Lanjut).
+    pub fn open_lesson(mut self, lesson_id: impl Into<String>) {
+        self.lesson.set(Some(lesson_id.into()));
+        self.screen.set(Screen::Lesson);
+    }
+
+    /// Leaves the Lesson Player back to the Journey Map.
+    pub fn close_lesson(mut self) {
+        self.lesson.set(None);
+        self.screen.set(Screen::Journey);
     }
 }
 
@@ -138,21 +179,28 @@ impl PartialEq for Db {
 #[component]
 fn Loaded(db: Db) -> Element {
     let initial = use_hook(|| db.0.borrow().settings().unwrap_or_default());
+    // KABAR_OPEN_LESSON=bipa1.u01.l01 opens the Lesson Player at launch
+    // (previews and screenshots on the Mac).
+    let open_lesson = use_hook(|| std::env::var("KABAR_OPEN_LESSON").ok());
     let ui = use_context_provider(|| Ui {
         settings: Signal::new(initial),
         width: Signal::new(WidthClass::Expanded),
-        screen: Signal::new(Screen::Today),
+        screen: Signal::new(if open_lesson.is_some() { Screen::Lesson } else { Screen::Today }),
+        lesson: Signal::new(open_lesson),
     });
     use_context_provider(|| db.clone());
-    let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
+    let coach = use_context_provider(|| Coach::load(&db));
     use_width_tracking(ui.width);
+    coach::use_clock(coach, db.clone());
+    let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
     use_share_inbox(ui, inbox);
 
     let settings = ui.settings.read();
     let lang = settings.ui_language;
     let theme = settings.theme.as_str();
     let width = ui.width.read().as_str();
-    let batik = use_hook(|| theme::kawung_tile("2b3a70", 0.06, 72));
+    let batik = use_memo(move || theme::kawung_tile(coach.batik_color(), 0.06, 72));
+    let onboarded = coach.profile.read().is_some();
 
     rsx! {
         document::Title { "Kabar" }
@@ -164,10 +212,12 @@ fn Loaded(db: Db) -> Element {
             "data-theme": theme,
             "data-width": width,
             style: "--batik: {batik}",
-            if settings.welcomed {
-                Shell {}
-            } else {
+            if !settings.welcomed {
                 screens::Welcome {}
+            } else if !onboarded {
+                coach::onboarding::Onboarding {}
+            } else {
+                Shell {}
             }
         }
     }
@@ -226,6 +276,7 @@ fn Shell() -> Element {
         Screen::Journey,
         Screen::Reader,
         Screen::Review,
+        Screen::Coach,
         Screen::Studio,
         Screen::PenLab,
         Screen::Settings,
@@ -251,13 +302,15 @@ fn Shell() -> Element {
             }
             main { class: "content",
                 match current {
-                    Screen::Today => rsx! { screens::Today {} },
-                    Screen::Journey => rsx! { screens::ComingSoon { title: Msg::NavJourney, milestone: "M8" } },
+                    Screen::Today => rsx! { coach::today::Today {} },
+                    Screen::Coach => rsx! { coach::coach_screen::CoachScreen {} },
+                    Screen::Journey => rsx! { journey::JourneyScreen {} },
                     Screen::Reader => rsx! { reader::Reader {} },
-                    Screen::Review => rsx! { screens::ComingSoon { title: Msg::NavReview, milestone: "M6" } },
+                    Screen::Review => rsx! { review::ReviewScreen {} },
                     Screen::Studio => rsx! { screens::ComingSoon { title: Msg::NavStudio, milestone: "M9" } },
                     Screen::Settings => rsx! { screens::SettingsScreen {} },
                     Screen::PenLab => rsx! { penlab::PenLab {} },
+                    Screen::Lesson => rsx! { lesson::LessonScreen {} },
                 }
             }
         }
