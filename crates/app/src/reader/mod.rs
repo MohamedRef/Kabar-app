@@ -1,7 +1,7 @@
 //! Reader & Screenshot Decoder (SPEC §11): paste, share, drop or open a
 //! screenshot; every word is colored by status and explained from local data.
 
-mod card;
+pub(crate) mod card;
 mod content;
 pub mod doc;
 pub mod explain;
