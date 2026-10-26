@@ -1,0 +1,541 @@
+schema: kabar.radio/v1
+id: radio.bipa1.u01
+language: id
+level: bipa1
+unit: bipa1.u01
+title:
+  target: Apa kabar, Kota Tua?
+  ar_eg: إزيك يا كوتا توا؟
+  ar: كيف حالك يا كوتا توا؟
+  en: How are you, Kota Tua?
+hosts:
+  - name: Mbak Gadis
+    voice: id-ID-GadisNeural
+  - name: Mas Ardi
+    voice: id-ID-ArdiNeural
+minutes: 5
+segments:
+  - kind: intro
+    title: Selamat pagi!
+    lines:
+      - speaker: Mbak Gadis
+        text: Selamat pagi! Selamat datang di Kabar Radio!
+        ar_eg: صباح الخير! أهلًا بيك في كبار راديو!
+        ar: صباح الخير! أهلًا بك في كبار راديو!
+        en: Good morning! Welcome to Kabar Radio!
+      - speaker: Mbak Gadis
+        text: Saya Gadis.
+        ar_eg: أنا جاديس.
+        ar: أنا غاديس.
+        en: I'm Gadis.
+      - speaker: Mas Ardi
+        text: Dan saya Ardi. Selamat pagi, Gadis!
+        ar_eg: وأنا أردي. صباح الخير يا جاديس!
+        ar: وأنا أردي. صباح الخير يا غاديس!
+        en: And I'm Ardi. Good morning, Gadis!
+      - speaker: Mbak Gadis
+        text: Pagi, Ardi! Apa kabar?
+        ar_eg: صباح النور يا أردي! إزيك؟
+        ar: صباح النور يا أردي! كيف حالك؟
+        en: Morning, Ardi! How are you?
+      - speaker: Mas Ardi
+        text: Kabar baik, terima kasih. Dan kamu?
+        ar_eg: كويس، شكرًا. وإنتي؟
+        ar: بخير، شكرًا. وأنتِ؟
+        en: I'm well, thank you. And you?
+      - speaker: Mbak Gadis
+        text: Baik juga, terima kasih.
+        ar_eg: كويسة أنا كمان، شكرًا.
+        ar: بخير أيضًا، شكرًا.
+        en: I'm fine too, thank you.
+      - speaker: Mas Ardi
+        text: Kita di Jakarta. Kita di Kota Tua.
+        ar_eg: إحنا في جاكرتا. إحنا في كوتا توا.
+        ar: نحن في جاكرتا. نحن في كوتا توا.
+        en: We're in Jakarta. We're in Kota Tua.
+        note:
+          ar_eg: كوتا توا هي البلد القديمة في جاكرتا، أول محطة في رحلتك.
+          ar: كوتا توا هي المدينة القديمة في جاكرتا، أول محطة في رحلتك.
+          en: Kota Tua is Jakarta's old town, the first stop on your journey.
+      - speaker: Mbak Gadis
+        text: Ya, kita di Kota Tua, di Taman Fatahillah.
+        ar_eg: أيوه، إحنا في كوتا توا، في ميدان فتح الله.
+        ar: نعم، نحن في كوتا توا، في ساحة فتح الله.
+        en: Yes, we're in Kota Tua, at Fatahillah Square.
+      - speaker: Mas Ardi
+        text: Selamat pagi, selamat siang, selamat sore, selamat malam.
+        ar_eg: صباح الخير، نهارك سعيد، مساء الخير، ليلة سعيدة.
+        ar: صباح الخير، طاب نهارك، مساء الخير، طابت ليلتك.
+        en: Good morning, good day, good afternoon, good evening.
+        note:
+          ar_eg: النهارده بنتكلم عن التحيات حسب وقت اليوم.
+          ar: موضوعنا اليوم التحيات بحسب وقت اليوم.
+          en: Today's topic is greetings by time of day.
+      - speaker: Mbak Gadis
+        text: Apa kabar? Baik, terima kasih.
+        ar_eg: إزيك؟ كويس، شكرًا.
+        ar: كيف حالك؟ بخير، شكرًا.
+        en: How are you? Fine, thank you.
+      - speaker: Mas Ardi
+        text: Saya dan aku. Kamu dan Anda.
+        ar_eg: «أنا» الرسمية و«أنا» العادية. «إنت» العادية و«حضرتك».
+        ar: «أنا» المهذبة و«أنا» العامية، و«أنت» العامية و«حضرتك».
+        en: Polite and casual "I". Casual "you" and formal "you".
+      - speaker: Mbak Gadis
+        text: Dia, kami, kita.
+        ar_eg: هو أو هي، إحنا (من غيرك)، إحنا (وإنت معانا).
+        ar: هو أو هي، نحن (دونك)، نحن (ومعنا أنت).
+        en: He or she, we (not you), we (including you).
+      - speaker: Mbak Gadis
+        text: Hai, Mohamed! Selamat datang di Kota Tua!
+        ar_eg: أهلًا يا محمد! أهلًا بيك في كوتا توا!
+        ar: مرحبًا يا محمد! أهلًا بك في كوتا توا!
+        en: Hi, Mohamed! Welcome to Kota Tua!
+      - speaker: Mas Ardi
+        text: Selamat datang, Mohamed! Selamat datang di Jakarta!
+        ar_eg: أهلًا بيك يا محمد! أهلًا بيك في جاكرتا!
+        ar: أهلًا بك يا محمد! أهلًا بك في جاكرتا!
+        en: Welcome, Mohamed! Welcome to Jakarta!
+  - kind: dialogue
+    title: Bertemu di Taman Fatahillah
+    lines:
+      - speaker: Mas Ardi
+        text: Permisi. Maaf, Anda Gadis?
+        ar_eg: لو سمحتي. آسف، حضرتك جاديس؟
+        ar: عفوًا. المعذرة، هل أنتِ غاديس؟
+        en: Excuse me. Sorry, are you Gadis?
+        note:
+          ar_eg: "الاتنين بيمثلوا مشهد: أول مقابلة بينهم في ميدان فتح الله. Anda رسمية لأنهم لسه ميعرفوش بعض."
+          ar: "يمثّل المذيعان مشهدًا: أول لقاء بينهما في ساحة فتح الله. Anda رسمية لأنهما لم يتعارفا بعد."
+          en: The hosts act out a scene, their first meeting at Fatahillah Square. Anda is formal because they're strangers.
+      - speaker: Mbak Gadis
+        text: Ya, saya Gadis. Selamat pagi!
+        ar_eg: أيوه، أنا جاديس. صباح الخير!
+        ar: نعم، أنا غاديس. صباح الخير!
+        en: Yes, I'm Gadis. Good morning!
+      - speaker: Mas Ardi
+        text: Selamat pagi. Saya Ardi. Salam kenal.
+        ar_eg: صباح الخير. أنا أردي. اتشرفت بمعرفتك.
+        ar: صباح الخير. أنا أردي. تشرّفت بمعرفتك.
+        en: Good morning. I'm Ardi. Nice to meet you.
+      - speaker: Mbak Gadis
+        text: Salam kenal, Ardi. Apa kabar?
+        ar_eg: وأنا اتشرفت يا أردي. إزيك؟
+        ar: تشرّفت بك يا أردي. كيف حالك؟
+        en: Nice to meet you, Ardi. How are you?
+      - speaker: Mas Ardi
+        text: Kabar baik, terima kasih. Dan Anda?
+        ar_eg: كويس، شكرًا. وحضرتك؟
+        ar: بخير، شكرًا. وأنتِ؟
+        en: I'm well, thank you. And you?
+      - speaker: Mbak Gadis
+        text: Baik juga, terima kasih. Kamu di Jakarta?
+        ar_eg: كويسة كمان، شكرًا. إنت في جاكرتا؟
+        ar: بخير أيضًا، شكرًا. هل أنت في جاكرتا؟
+        en: Fine too, thanks. Are you in Jakarta?
+        note:
+          ar_eg: جاديس غيّرت من Anda لـ kamu، يعني «خلّينا نتكلم عادي».
+          ar: انتقلت غاديس من Anda إلى kamu، أي «لنتحدث ببساطة».
+          en: Gadis switches from Anda to kamu, as if to say "let's be casual".
+      - speaker: Mas Ardi
+        text: Ya, aku di Jakarta. Kamu juga?
+        ar_eg: أيوه، أنا في جاكرتا. وإنتي كمان؟
+        ar: نعم، أنا في جاكرتا. وأنتِ أيضًا؟
+        en: Yes, I'm in Jakarta. You too?
+      - speaker: Mbak Gadis
+        text: Ya, aku juga. Hai, Ardi! Kita di Kota Tua!
+        ar_eg: أيوه، أنا كمان. أهلًا يا أردي! إحنا في كوتا توا!
+        ar: نعم، وأنا أيضًا. مرحبًا يا أردي! نحن في كوتا توا!
+        en: Yes, me too. Hi, Ardi! We're in Kota Tua!
+      - speaker: Mas Ardi
+        text: Selamat datang di Kota Tua, Gadis!
+        ar_eg: أهلًا بيكي في كوتا توا يا جاديس!
+        ar: أهلًا بكِ في كوتا توا يا غاديس!
+        en: Welcome to Kota Tua, Gadis!
+      - speaker: Mbak Gadis
+        text: Terima kasih, Ardi.
+        ar_eg: شكرًا يا أردي.
+        ar: شكرًا يا أردي.
+        en: Thank you, Ardi.
+      - speaker: Mas Ardi
+        text: Sama-sama.
+        ar_eg: العفو.
+        ar: عفوًا.
+        en: You're welcome.
+      - speaker: Mbak Gadis
+        text: Selamat sore, Ardi! Apa kabar?
+        ar_eg: مساء الخير يا أردي! إزيك؟
+        ar: مساء الخير يا أردي! كيف حالك؟
+        en: Good afternoon, Ardi! How are you?
+        note:
+          ar_eg: نفس اليوم، بس دلوقتي العصر، فبقت selamat sore.
+          ar: اليوم نفسه، لكن الوقت الآن عصر، فصارت selamat sore.
+          en: Same day, now it's late afternoon, so it's selamat sore.
+      - speaker: Mas Ardi
+        text: Sore, Gadis! Aku kurang baik.
+        ar_eg: مساء النور يا جاديس! أنا مش أوي.
+        ar: مساء النور يا غاديس! لستُ بخير تمامًا.
+        en: Afternoon, Gadis! I'm not so good.
+      - speaker: Mbak Gadis
+        text: Kurang baik? Apakah kamu sehat?
+        ar_eg: مش أوي؟ إنت كويس صحيًا؟
+        ar: لستَ بخير تمامًا؟ هل أنت بصحة جيدة؟
+        en: Not so good? Are you well?
+      - speaker: Mas Ardi
+        text: Ya, aku sehat. Terima kasih, Gadis.
+        ar_eg: أيوه، صحتي كويسة. شكرًا يا جاديس.
+        ar: نعم، أنا بصحة جيدة. شكرًا يا غاديس.
+        en: Yes, I'm healthy. Thank you, Gadis.
+      - speaker: Mbak Gadis
+        text: Sama-sama, Ardi.
+        ar_eg: العفو يا أردي.
+        ar: عفوًا يا أردي.
+        en: You're welcome, Ardi.
+      - speaker: Mas Ardi
+        text: Selamat malam, Gadis. Sampai jumpa besok!
+        ar_eg: تصبحي على خير يا جاديس. أشوفك بكرة!
+        ar: طابت ليلتك يا غاديس. إلى اللقاء غدًا!
+        en: Good night, Gadis. See you tomorrow!
+      - speaker: Mbak Gadis
+        text: Selamat jalan, Ardi! Sampai jumpa besok!
+        ar_eg: مع السلامة يا أردي! أشوفك بكرة!
+        ar: في أمان الله يا أردي! إلى اللقاء غدًا!
+        en: Go safely, Ardi! See you tomorrow!
+        note:
+          ar_eg: جاديس قاعدة وأردي ماشي، فهي بتقول selamat jalan.
+          ar: غاديس باقية وأردي راحل، لذلك تقول selamat jalan.
+          en: Gadis is staying and Ardi is leaving, so she says selamat jalan.
+      - speaker: Mas Ardi
+        text: Selamat tinggal, Gadis!
+        ar_eg: خليكي بالسلامة يا جاديس!
+        ar: ابقَي بسلام يا غاديس!
+        en: Stay well, Gadis!
+      - speaker: Mbak Gadis
+        text: Asalamualaikum, Ardi! Selamat pagi!
+        ar_eg: السلام عليكم يا أردي! صباح الخير!
+        ar: السلام عليكم يا أردي! صباح الخير!
+        en: Peace be upon you, Ardi! Good morning!
+        note:
+          ar_eg: تاني يوم الصبح. التحية الإسلامية منتشرة جدًا في إندونيسيا.
+          ar: في صباح اليوم التالي. التحية الإسلامية شائعة جدًا في إندونيسيا.
+          en: The next morning. The Muslim greeting is very common in Indonesia.
+      - speaker: Mas Ardi
+        text: Waalaikumsalam, Gadis! Apa kabar?
+        ar_eg: وعليكم السلام يا جاديس! إزيك؟
+        ar: وعليكم السلام يا غاديس! كيف حالك؟
+        en: And peace be upon you, Gadis! How are you?
+      - speaker: Mbak Gadis
+        text: Baik-baik saja. Dan kamu?
+        ar_eg: كله تمام. وإنت؟
+        ar: كل شيء بخير. وأنت؟
+        en: All good. And you?
+      - speaker: Mas Ardi
+        text: Kabar baik! Aku sehat. Terima kasih, Gadis.
+        ar_eg: كويس! أنا صحتي كويسة. شكرًا يا جاديس.
+        ar: بخير! أنا بصحة جيدة. شكرًا يا غاديس.
+        en: Doing well! I'm healthy. Thank you, Gadis.
+      - speaker: Mbak Gadis
+        text: Maaf, Ardi. Dia Rina?
+        ar_eg: معلش يا أردي. دي رينا؟
+        ar: عفوًا يا أردي. أهذه رينا؟
+        en: Sorry, Ardi. Is she Rina?
+      - speaker: Mas Ardi
+        text: Ya, dia Rina. Hai, Rina! Selamat pagi!
+        ar_eg: أيوه، دي رينا. أهلًا يا رينا! صباح الخير!
+        ar: نعم، هذه رينا. مرحبًا يا رينا! صباح الخير!
+        en: Yes, that's Rina. Hi, Rina! Good morning!
+      - speaker: Mbak Gadis
+        text: Hai, Rina! Aku Gadis. Salam kenal!
+        ar_eg: أهلًا يا رينا! أنا جاديس. اتشرفت بيكي!
+        ar: مرحبًا يا رينا! أنا غاديس. تشرّفت بكِ!
+        en: Hi, Rina! I'm Gadis. Nice to meet you!
+      - speaker: Mas Ardi
+        text: Kami di Kota Tua, Rina. Kita di Kota Tua!
+        ar_eg: إحنا (أنا وجاديس) في كوتا توا يا رينا. إحنا كلنا في كوتا توا!
+        ar: نحن (أنا وغاديس) في كوتا توا يا رينا. نحن جميعًا في كوتا توا!
+        en: We (Gadis and I) are in Kota Tua, Rina. We're all in Kota Tua!
+        note:
+          ar_eg: kami = إحنا من غير اللي بتكلمه. kita = إحنا وإنت معانا.
+          ar: kami = نحن دون المخاطَب. kita = نحن ومعنا المخاطَب.
+          en: kami = we without the listener; kita = we including the listener.
+  - kind: word_spotlight
+    title: Selamat, kabar, salam
+    lines:
+      - speaker: Mbak Gadis
+        text: Selamat. Selamat.
+        ar_eg: سلامة. سلامة.
+        ar: سلامة. سلامة.
+        en: Selamat. Selamat.
+        note:
+          ar_eg: "الجسر العربي: selamat جاية من «سلامة»."
+          ar: "الجسر العربي: selamat من العربية «سلامة»."
+          en: "Arabic Bridge: selamat comes from Arabic «سلامة» (safety)."
+      - speaker: Mas Ardi
+        text: Selamat pagi. Selamat siang. Selamat sore. Selamat malam.
+        ar_eg: صباح الخير. نهارك سعيد. مساء الخير. ليلة سعيدة.
+        ar: صباح الخير. طاب نهارك. مساء الخير. طابت ليلتك.
+        en: Good morning. Good day. Good afternoon. Good evening.
+      - speaker: Mbak Gadis
+        text: Selamat datang di Jakarta!
+        ar_eg: أهلًا بيك في جاكرتا!
+        ar: أهلًا بك في جاكرتا!
+        en: Welcome to Jakarta!
+      - speaker: Mas Ardi
+        text: Kabar. Kabar.
+        ar_eg: خبر. خبر.
+        ar: خبر. خبر.
+        en: Kabar. Kabar.
+        note:
+          ar_eg: "الجسر العربي: kabar جاية من «خبر». Apa kabar? حرفيًا «إيه الأخبار؟»."
+          ar: "الجسر العربي: kabar من «خبر». Apa kabar? حرفيًا «ما الخبر؟»."
+          en: "Arabic Bridge: kabar comes from «خبر» (news). Apa kabar? is literally \"what news?\"."
+      - speaker: Mbak Gadis
+        text: Apa kabar? Kabar baik. Kabar baik, terima kasih.
+        ar_eg: إيه الأخبار؟ أخبار كويسة. كويس، شكرًا.
+        ar: ما الأخبار؟ أخبار طيبة. بخير، شكرًا.
+        en: How are you? Good news. I'm well, thank you.
+      - speaker: Mas Ardi
+        text: Kabar baik. Baik-baik saja. Kurang baik.
+        ar_eg: كويس. كله تمام. مش أوي.
+        ar: بخير. كل شيء على ما يرام. لست بخير تمامًا.
+        en: I'm well. All fine. Not so good.
+      - speaker: Mbak Gadis
+        text: Apa kabar, Bu? Baik-baik saja, terima kasih.
+        ar_eg: إزيك يا مدام؟ كله تمام، شكرًا.
+        ar: كيف حالكِ يا سيدتي؟ كل شيء بخير، شكرًا.
+        en: How are you, ma'am? All fine, thank you.
+      - speaker: Mas Ardi
+        text: Salam kenal. Salam kenal.
+        ar_eg: اتشرفنا. اتشرفنا.
+        ar: تشرّفنا. تشرّفنا.
+        en: Nice to meet you. Nice to meet you.
+        note:
+          ar_eg: "الجسر العربي: salam جاية من «سلام»."
+          ar: "الجسر العربي: salam من «سلام»."
+          en: "Arabic Bridge: salam comes from «سلام» (peace)."
+      - speaker: Mbak Gadis
+        text: Salam kenal, saya Gadis.
+        ar_eg: اتشرفت بمعرفتك، أنا جاديس.
+        ar: تشرّفت بمعرفتك، أنا غاديس.
+        en: Nice to meet you, I'm Gadis.
+      - speaker: Mas Ardi
+        text: Salam kenal, saya Ardi.
+        ar_eg: اتشرفت بمعرفتك، أنا أردي.
+        ar: تشرّفت بمعرفتك، أنا أردي.
+        en: Nice to meet you, I'm Ardi.
+      - speaker: Mbak Gadis
+        text: Maaf. Maaf.
+        ar_eg: آسف. آسف.
+        ar: عفوًا. عفوًا.
+        en: Sorry. Sorry.
+        note:
+          ar_eg: "الجسر العربي: maaf جاية من أصل «معافاة»، من جذر ع ف و زي «عفوًا»."
+          ar: "الجسر العربي: maaf من «معافاة»، من الجذر ع ف و كما في «عفوًا»."
+          en: "Arabic Bridge: maaf comes from «معافاة», root ع ف و, as in «عفوًا»."
+      - speaker: Mas Ardi
+        text: Maaf, Pak! Maaf, Bu! Permisi, Bu. Maaf, Anda Ibu Sari?
+        ar_eg: آسف يا أستاذ! آسف يا مدام! لو سمحتي يا مدام. آسف، حضرتك مدام ساري؟
+        ar: عفوًا يا سيدي! عفوًا يا سيدتي! من فضلك يا سيدتي. المعذرة، هل أنتِ السيدة ساري؟
+        en: Sorry, sir! Sorry, ma'am! Excuse me, ma'am. Sorry, are you Mrs Sari?
+      - speaker: Mbak Gadis
+        text: Sampai jumpa. Sampai jumpa.
+        ar_eg: أشوفك بعدين. أشوفك بعدين.
+        ar: إلى اللقاء. إلى اللقاء.
+        en: See you. See you.
+      - speaker: Mas Ardi
+        text: Sampai jumpa besok, Gadis!
+        ar_eg: أشوفك بكرة يا جاديس!
+        ar: إلى اللقاء غدًا يا غاديس!
+        en: See you tomorrow, Gadis!
+      - speaker: Mbak Gadis
+        text: Ya, sampai jumpa besok, Ardi!
+        ar_eg: أيوه، أشوفك بكرة يا أردي!
+        ar: نعم، إلى اللقاء غدًا يا أردي!
+        en: Yes, see you tomorrow, Ardi!
+  - kind: recap
+    title: Baik, terima kasih
+    lines:
+      - speaker: Mbak Gadis
+        text: Selamat pagi. Selamat siang. Selamat sore. Selamat malam.
+        ar_eg: صباح الخير. نهارك سعيد. مساء الخير. ليلة سعيدة.
+        ar: صباح الخير. طاب نهارك. مساء الخير. طابت ليلتك.
+        en: Good morning. Good day. Good afternoon. Good evening.
+        note:
+          ar_eg: دلوقتي بنعيد الجمل المهمة بالراحة. كرر ورانا بصوت عالي.
+          ar: الآن نعيد الجمل المهمة ببطء. ردّدها معنا بصوت مسموع.
+          en: Now the key sentences, slowly. Repeat after us out loud.
+      - speaker: Mas Ardi
+        text: Selamat pagi. Selamat siang. Selamat sore. Selamat malam.
+        ar_eg: صباح الخير. نهارك سعيد. مساء الخير. ليلة سعيدة.
+        ar: صباح الخير. طاب نهارك. مساء الخير. طابت ليلتك.
+        en: Good morning. Good day. Good afternoon. Good evening.
+      - speaker: Mbak Gadis
+        text: Apa kabar?
+        ar_eg: إزيك؟
+        ar: كيف حالك؟
+        en: How are you?
+      - speaker: Mas Ardi
+        text: Kabar baik, terima kasih. Dan kamu?
+        ar_eg: كويس، شكرًا. وإنتي؟
+        ar: بخير، شكرًا. وأنتِ؟
+        en: I'm well, thank you. And you?
+      - speaker: Mbak Gadis
+        text: Baik juga, terima kasih.
+        ar_eg: كويسة كمان، شكرًا.
+        ar: بخير أيضًا، شكرًا.
+        en: Fine too, thank you.
+      - speaker: Mas Ardi
+        text: Saya Ardi. Aku Ardi.
+        ar_eg: أنا أردي (رسمي). أنا أردي (عادي).
+        ar: أنا أردي (مهذّبة). أنا أردي (عامية).
+        en: I'm Ardi (polite). I'm Ardi (casual).
+      - speaker: Mbak Gadis
+        text: Saya Gadis. Aku Gadis.
+        ar_eg: أنا جاديس (رسمي). أنا جاديس (عادي).
+        ar: أنا غاديس (مهذّبة). أنا غاديس (عامية).
+        en: I'm Gadis (polite). I'm Gadis (casual).
+      - speaker: Mas Ardi
+        text: Salam kenal. Salam kenal.
+        ar_eg: اتشرفنا. اتشرفنا.
+        ar: تشرّفنا. تشرّفنا.
+        en: Nice to meet you. Nice to meet you.
+      - speaker: Mbak Gadis
+        text: Terima kasih. Sama-sama.
+        ar_eg: شكرًا. العفو.
+        ar: شكرًا. عفوًا.
+        en: Thank you. You're welcome.
+      - speaker: Mas Ardi
+        text: Terima kasih. Sama-sama.
+        ar_eg: شكرًا. العفو.
+        ar: شكرًا. عفوًا.
+        en: Thank you. You're welcome.
+      - speaker: Mbak Gadis
+        text: Maaf, Anda Pak Budi?
+        ar_eg: آسف، حضرتك أستاذ بودي؟
+        ar: المعذرة، هل أنت السيد بودي؟
+        en: Sorry, are you Mr Budi?
+      - speaker: Mas Ardi
+        text: Ya, saya Budi. Selamat siang!
+        ar_eg: أيوه، أنا بودي. نهارك سعيد!
+        ar: نعم، أنا بودي. طاب نهارك!
+        en: Yes, I'm Budi. Good day!
+      - speaker: Mbak Gadis
+        text: Sampai jumpa besok!
+        ar_eg: أشوفك بكرة!
+        ar: إلى اللقاء غدًا!
+        en: See you tomorrow!
+      - speaker: Mas Ardi
+        text: Sampai jumpa besok!
+        ar_eg: أشوفك بكرة!
+        ar: إلى اللقاء غدًا!
+        en: See you tomorrow!
+      - speaker: Mbak Gadis
+        text: Selamat jalan! Selamat tinggal!
+        ar_eg: مع السلامة (للي ماشي)! خليك بالسلامة (للي قاعد)!
+        ar: سِر بسلام (للراحل)! ابقَ بسلام (للمقيم)!
+        en: Go safely (to the one leaving)! Stay well (to the one staying)!
+      - speaker: Mas Ardi
+        text: Selamat jalan! Selamat tinggal!
+        ar_eg: مع السلامة! خليك بالسلامة!
+        ar: سِر بسلام! ابقَ بسلام!
+        en: Go safely! Stay well!
+      - speaker: Mbak Gadis
+        text: Asalamualaikum!
+        ar_eg: السلام عليكم!
+        ar: السلام عليكم!
+        en: Peace be upon you!
+      - speaker: Mas Ardi
+        text: Waalaikumsalam! Selamat datang di Jakarta! Selamat datang di Kota Tua!
+        ar_eg: وعليكم السلام! أهلًا بيك في جاكرتا! أهلًا بيك في كوتا توا!
+        ar: وعليكم السلام! أهلًا بك في جاكرتا! أهلًا بك في كوتا توا!
+        en: And peace be upon you! Welcome to Jakarta! Welcome to Kota Tua!
+      - speaker: Mbak Gadis
+        text: Ya! Kita di Kota Tua, Ardi.
+        ar_eg: أيوه! إحنا في كوتا توا يا أردي.
+        ar: نعم! نحن في كوتا توا يا أردي.
+        en: Yes! We're in Kota Tua, Ardi.
+      - speaker: Mas Ardi
+        text: Permisi. Maaf, Anda Gadis?
+        ar_eg: لو سمحتي. آسف، حضرتك جاديس؟
+        ar: عفوًا. المعذرة، هل أنتِ غاديس؟
+        en: Excuse me. Sorry, are you Gadis?
+      - speaker: Mbak Gadis
+        text: Ya, saya Gadis. Selamat pagi!
+        ar_eg: أيوه، أنا جاديس. صباح الخير!
+        ar: نعم، أنا غاديس. صباح الخير!
+        en: Yes, I'm Gadis. Good morning!
+      - speaker: Mas Ardi
+        text: Selamat pagi. Saya Ardi. Salam kenal.
+        ar_eg: صباح الخير. أنا أردي. اتشرفت بمعرفتك.
+        ar: صباح الخير. أنا أردي. تشرّفت بمعرفتك.
+        en: Good morning. I'm Ardi. Nice to meet you.
+      - speaker: Mbak Gadis
+        text: Salam kenal, Ardi. Apa kabar?
+        ar_eg: وأنا اتشرفت يا أردي. إزيك؟
+        ar: تشرّفت بك يا أردي. كيف حالك؟
+        en: Nice to meet you, Ardi. How are you?
+      - speaker: Mas Ardi
+        text: Kabar baik, terima kasih.
+        ar_eg: كويس، شكرًا.
+        ar: بخير، شكرًا.
+        en: I'm well, thank you.
+  - kind: outro
+    title: Sampai jumpa!
+    lines:
+      - speaker: Mbak Gadis
+        text: Mohamed, selamat sore! Apa kabar?
+        ar_eg: محمد، مساء الخير! إزيك؟
+        ar: يا محمد، مساء الخير! كيف حالك؟
+        en: Mohamed, good afternoon! How are you?
+        note:
+          ar_eg: دورك! جاوب بصوت عالي قبل ما أردي يجاوب.
+          ar: دورك! أجب بصوت مسموع قبل أن يجيب أردي.
+          en: Your turn! Answer out loud before Ardi does.
+      - speaker: Mas Ardi
+        text: Kabar baik, terima kasih. Dan Anda?
+        ar_eg: كويس، شكرًا. وحضرتك؟
+        ar: بخير، شكرًا. وأنتِ؟
+        en: I'm well, thank you. And you?
+      - speaker: Mbak Gadis
+        text: Baik juga, terima kasih. Mohamed, salam kenal!
+        ar_eg: كويسة كمان، شكرًا. محمد، اتشرفت بيك!
+        ar: بخير أيضًا، شكرًا. يا محمد، تشرّفت بك!
+        en: Fine too, thank you. Mohamed, nice to meet you!
+      - speaker: Mas Ardi
+        text: Salam kenal, saya Mohamed.
+        ar_eg: (أردي بيجاوب مكانك) اتشرفت بيكي، أنا محمد.
+        ar: (يجيب أردي عنك) تشرّفت بكِ، أنا محمد.
+        en: (Ardi answers for you) Nice to meet you, I'm Mohamed.
+      - speaker: Mbak Gadis
+        text: Terima kasih, Mohamed! Baik, baik!
+        ar_eg: شكرًا يا محمد! كويس، كويس!
+        ar: شكرًا يا محمد! أحسنت، أحسنت!
+        en: Thank you, Mohamed! Good, good!
+      - speaker: Mas Ardi
+        text: Besok pagi, Mohamed. Selamat pagi! Apa kabar?
+        ar_eg: "بكرة الصبح يا محمد: «صباح الخير! إزيك؟»"
+        ar: "غدًا صباحًا يا محمد: «صباح الخير! كيف حالك؟»"
+        en: "Tomorrow morning, Mohamed: \"Good morning! How are you?\""
+        note:
+          ar_eg: "تحدي بكرة الصغير: أول ما تصحى قول «Selamat pagi! Apa kabar?» لحد من البيت، ولو رد عليك جاوبه بـ «Baik, terima kasih»."
+          ar: "تحدّي الغد الصغير: قل «Selamat pagi! Apa kabar?» لأول شخص تراه صباحًا، وإن ردّ فأجبه «Baik, terima kasih»."
+          en: "Tomorrow's tiny challenge: say \"Selamat pagi! Apa kabar?\" to the first person you see, and if they answer, reply \"Baik, terima kasih\"."
+      - speaker: Mbak Gadis
+        text: Ya! Selamat pagi! Apa kabar? Baik, terima kasih.
+        ar_eg: أيوه! صباح الخير! إزيك؟ كويس، شكرًا.
+        ar: نعم! صباح الخير! كيف حالك؟ بخير، شكرًا.
+        en: Yes! Good morning! How are you? Fine, thank you.
+      - speaker: Mas Ardi
+        text: Selamat malam, Mohamed. Selamat malam, Gadis.
+        ar_eg: تصبح على خير يا محمد. تصبحي على خير يا جاديس.
+        ar: طابت ليلتك يا محمد. طابت ليلتكِ يا غاديس.
+        en: Good night, Mohamed. Good night, Gadis.
+      - speaker: Mbak Gadis
+        text: Selamat malam! Sampai jumpa besok di Kabar Radio!
+        ar_eg: تصبحوا على خير! أشوفكم بكرة في كبار راديو!
+        ar: طابت ليلتكم! إلى اللقاء غدًا في كبار راديو!
+        en: Good night! See you tomorrow on Kabar Radio!
+words: [selamat, pagi, siang, sore, malam, kabar, baik, terima kasih, salam kenal, maaf, sampai jumpa, besok]
+review:
+  status: draft
+  verified: false
