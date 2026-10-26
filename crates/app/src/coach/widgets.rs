@@ -40,22 +40,45 @@ pub fn SizePicker(value: PlanSize, onpick: EventHandler<PlanSize>) -> Element {
     }
 }
 
-/// A native time picker bound to a [`LocalTime`].
+/// A 24-hour time picker bound to a [`LocalTime`]: hour and minute selects,
+/// so it reads "20:00" like the rest of the app whatever the device locale
+/// (a native `<input type=time>` shows "08:00 PM" on some systems).
 #[component]
 pub fn TimeInput(value: LocalTime, label: String, onchange: EventHandler<LocalTime>) -> Element {
+    let ui = use_context::<Ui>();
+    let (hour, minute) = (value.hour(), value.minute());
+    // Five-minute steps, plus the current minute if it is off the grid.
+    let mut minutes: Vec<u16> = (0..60).step_by(5).collect();
+    if !minutes.contains(&minute) {
+        minutes.push(minute);
+        minutes.sort_unstable();
+    }
+    let set = move |h: u16, m: u16| onchange.call(LocalTime::hm(h, m));
     rsx! {
-        input {
-            r#type: "time",
-            class: "time-input",
-            dir: "ltr",
-            aria_label: "{label}",
-            value: "{value}",
-            onchange: move |e: FormEvent| {
-                let v = e.value();
-                if let Ok(t) = v.get(..5).unwrap_or(&v).parse::<LocalTime>() {
-                    onchange.call(t);
+        span { class: "time-input", dir: "ltr", role: "group", aria_label: "{label}",
+            select {
+                aria_label: "{label}",
+                onchange: move |e: FormEvent| {
+                    if let Ok(h) = e.value().parse() {
+                        set(h, minute);
+                    }
+                },
+                for h in 0..24u16 {
+                    option { key: "{h}", value: "{h}", selected: h == hour, {labels::two_digits(&ui, h)} }
                 }
-            },
+            }
+            span { aria_hidden: "true", ":" }
+            select {
+                aria_label: "{label}",
+                onchange: move |e: FormEvent| {
+                    if let Ok(m) = e.value().parse() {
+                        set(hour, m);
+                    }
+                },
+                for m in minutes {
+                    option { key: "{m}", value: "{m}", selected: m == minute, {labels::two_digits(&ui, m)} }
+                }
+            }
         }
     }
 }

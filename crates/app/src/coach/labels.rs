@@ -115,9 +115,8 @@ pub fn date(ui: &Ui, d: LocalDate, today: LocalDate) -> String {
     if y == today.ymd().0 { short } else { format!("{short}/{}", ui.num(y as u32)) }
 }
 
-/// "1 مارس 2028" / "1 March 2028": a month name, never an ambiguous
-/// "1/3/2028", for dates the learner plans around (targets).
-pub fn long_date(ui: &Ui, d: LocalDate) -> String {
+/// A month's name in the UI language (1 = January).
+pub fn month(ui: &Ui, m: u32) -> &'static str {
     const AR: [&str; 12] = [
         "يناير",
         "فبراير",
@@ -146,13 +145,23 @@ pub fn long_date(ui: &Ui, d: LocalDate) -> String {
         "November",
         "December",
     ];
-    let (y, m, day) = d.ymd();
     let names = match ui.settings.read().ui_language {
         UiLanguage::ArEg | UiLanguage::Ar => AR,
         UiLanguage::En => EN,
     };
-    let month = names[(m.clamp(1, 12) - 1) as usize];
-    format!("{} {month} {}", ui.num(day), ui.num(y as u32))
+    names[(m.clamp(1, 12) - 1) as usize]
+}
+
+/// "1 مارس 2028" / "1 March 2028": a month name, never an ambiguous
+/// "1/3/2028", for dates the learner plans around (targets).
+pub fn long_date(ui: &Ui, d: LocalDate) -> String {
+    let (y, m, day) = d.ymd();
+    format!("{} {} {}", ui.num(day), month(ui, m), ui.num(y as u32))
+}
+
+/// "05" with the UI's digits: two places, for 24-hour clock fields.
+pub fn two_digits(ui: &Ui, n: u16) -> String {
+    if n < 10 { format!("{}{}", ui.num(0u16), ui.num(n)) } else { ui.num(n) }
 }
 
 /// "Monday 26/10".
@@ -168,8 +177,7 @@ pub fn day_heading(ui: &Ui, d: LocalDate, today: LocalDate) -> String {
 
 /// "20:00" with the UI's digits.
 pub fn time(ui: &Ui, t: LocalTime) -> String {
-    let pad = |n: u16| if n < 10 { format!("{}{}", ui.num(0u16), ui.num(n)) } else { ui.num(n) };
-    format!("{}:{}", pad(t.hour()), pad(t.minute()))
+    format!("{}:{}", two_digits(ui, t.hour()), two_digits(ui, t.minute()))
 }
 
 /// A plan item's title, e.g. "Review · 12 cards".
