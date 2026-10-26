@@ -357,7 +357,7 @@ fn WordCard(i: usize) -> Element {
 
 /// One gloss: meaning, note, example, speech levels and the Bridge card.
 #[component]
-fn InfoView(info: WordInfo, voice: UiLanguage) -> Element {
+pub(crate) fn InfoView(info: WordInfo, voice: UiLanguage) -> Element {
     let ui = use_context::<Ui>();
     let lang = if info.lang == WordLang::Javanese { "jv" } else { "id" };
     rsx! {

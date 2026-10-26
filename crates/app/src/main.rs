@@ -3,6 +3,7 @@
 mod account;
 mod ai;
 mod audio;
+mod chat;
 mod cloud;
 mod coach;
 mod cost;
@@ -68,6 +69,8 @@ pub enum Screen {
     LevelCheck,
     /// Sinetron and Kabar Radio.
     Listen,
+    /// Persona chats (spec §15).
+    Chat,
 }
 
 impl Screen {
@@ -90,11 +93,12 @@ impl Screen {
             Self::Stats => Msg::NavReview,
             Self::LevelCheck => Msg::NavCoach,
             Self::Listen => Msg::NavListen,
+            Self::Chat => Msg::NavChat,
         }
     }
 
     /// Hidden from the phone's bottom bar, which keeps five items within
-    /// thumb reach. Kak Nur, the journal, Watch & listen and Settings are
+    /// thumb reach. Kak Nur, the journal, Watch & listen, Chat and Settings are
     /// linked from Today there (the journal from Kak Nur too); Studio and Pen
     /// Lab from Settings.
     fn secondary(self) -> bool {
@@ -109,6 +113,7 @@ impl Screen {
                 | Self::Teach
                 | Self::Cost
                 | Self::Listen
+                | Self::Chat
         )
     }
 }
@@ -455,6 +460,7 @@ fn Shell() -> Element {
         Screen::Review,
         Screen::Play,
         Screen::Listen,
+        Screen::Chat,
         Screen::Coach,
         Screen::Journal,
         Screen::Studio,
@@ -498,6 +504,7 @@ fn Shell() -> Element {
                     Screen::Teach => rsx! { teach::TeachScreen {} },
                     Screen::Cost => rsx! { cost::CostScreen {} },
                     Screen::Listen => rsx! { listen::ListenScreen {} },
+                    Screen::Chat => rsx! { chat::ChatScreen {} },
                     Screen::Lesson => rsx! { lesson::LessonScreen {} },
                     Screen::Stats => rsx! { stats::StatsScreen {} },
                     Screen::LevelCheck => rsx! { stats::check::LevelCheckScreen {} },

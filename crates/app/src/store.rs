@@ -788,6 +788,8 @@ pub use reader::{Highlight, SavedText, TextKind};
 mod ink;
 // Teach Kabar's personal dictionary (spec §26).
 mod taught;
+// Persona chats (M12): conversations and their messages.
+mod chat;
 // The learning journal: reflections and the timeline's extra sources.
 mod journal;
 pub use journal::{LessonDone, TaughtAt};
