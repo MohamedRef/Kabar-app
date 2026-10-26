@@ -66,6 +66,9 @@ pub struct Config {
     pub claude_enabled: bool,
     pub azure_key: Option<SecretString>,
     pub azure_region: Option<String>,
+    /// Firebase service account JSON (Worker secret `FCM_SERVICE_ACCOUNT`),
+    /// for Kak Nur's push reminders.
+    pub fcm_service_account: Option<SecretString>,
     pub limits: Limits,
 }
 
@@ -117,6 +120,7 @@ impl Config {
             claude_enabled: get("CLAUDE_ENABLED").is_some_and(|v| v == "true"),
             azure_key: secret("AZURE_SPEECH_KEY"),
             azure_region: get("AZURE_SPEECH_REGION"),
+            fcm_service_account: secret("FCM_SERVICE_ACCOUNT"),
             limits: Limits {
                 workers_ai_daily_requests: num("WORKERS_AI_DAILY_REQUESTS", d.workers_ai_daily_requests)?,
                 gemini_daily_requests: num("GEMINI_DAILY_REQUESTS", d.gemini_daily_requests)?,
@@ -161,6 +165,7 @@ impl Config {
                 engine(EngineId::Claude, self.claude_key.is_some(), self.claude_enabled, &self.claude_model),
             ],
             tts_configured: self.tts_ready(),
+            push_configured: self.fcm_service_account.is_some(),
         }
     }
 }
@@ -186,6 +191,7 @@ mod tests {
         assert_eq!(c.auth_ready().unwrap_err(), ConfigError::Missing("GOOGLE_CLIENT_IDS"));
         let status = c.vault_status();
         assert!(!status.tts_configured);
+        assert!(!status.push_configured);
         assert!(status.engines.iter().any(|e| e.engine == EngineId::Claude && !e.enabled && !e.configured));
     }
 

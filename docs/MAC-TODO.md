@@ -43,4 +43,5 @@ In this order, from the `kabar-app` folder. Nothing here costs money or needs a 
 - [ ] `just run-mac`: go through onboarding, tick a plan item, check the recap and the Kak Nur screen. Tell me anything that reads wrong or feels off.
 - [ ] Review Kak Nur's lines in `content/coach/kak-nur.toml` (Egyptian Arabic, MSA, English). Mark changes or say OK; then I set `reviewed = true`.
 - [ ] Install the new APK on the S24 Ultra and Tab S11 and check the plan is the same on both once sync is on.
-- [ ] Reminders (after the Kabar Cloud reminder PR lands): Firebase setup from docs/CLOUD.md and `wrangler secret put FCM_SERVICE_ACCOUNT`.
+- [ ] Reminders (docs/CLOUD.md §3.4): in the Firebase console add Firebase to the "Kabar" Google Cloud project (Spark, free) and the Android app `app.kabar`; keep `google-services.json` for the app build, outside the repo.
+- [ ] Generate a service-account private key, then `cd crates/server && wrangler secret put FCM_SERVICE_ACCOUNT < that-file.json`, delete the file, `just deploy-cloud`.

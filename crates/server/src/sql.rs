@@ -103,6 +103,55 @@ pub(crate) fn col<'a>(row: &'a Row, i: usize, name: &str) -> Result<&'a Value, S
     row.get(i).ok_or_else(|| SqlError(format!("missing column {name}")))
 }
 
+/// Small key/value facts the Durable Object keeps about itself (schema step
+/// counters, the last weekly report pushed, …).
+pub const META_SCHEMA: &str = "CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)";
+
+pub fn meta_get(db: &impl Sql, key: &str) -> Result<Option<String>, SqlError> {
+    let rows = db.exec("SELECT value FROM meta WHERE key = ?", &[key.into()])?;
+    Ok(rows.into_iter().next().and_then(|r| r.into_iter().next()).and_then(Value::into_string))
+}
+
+pub fn meta_set(db: &impl Sql, key: &str, value: &str) -> Result<(), SqlError> {
+    db.exec(
+        "INSERT INTO meta (key, value) VALUES (?, ?) ON CONFLICT (key) DO UPDATE SET value = excluded.value",
+        &[key.into(), value.into()],
+    )?;
+    Ok(())
+}
+
+/// Runs the schema `steps` that haven't run yet, in order, and remembers how
+/// many ran under `key`. Append new steps; never edit or reorder old ones.
+pub fn migrate(db: &impl Sql, key: &str, steps: &[&str]) -> Result<(), SqlError> {
+    db.exec_batch(META_SCHEMA)?;
+    let done: usize = meta_get(db, key)?.and_then(|v| v.parse().ok()).unwrap_or(0);
+    for (i, step) in steps.iter().enumerate().skip(done) {
+        db.exec_batch(step)?;
+        meta_set(db, key, &(i + 1).to_string())?;
+    }
+    Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::testing::MemSql;
+    use super::*;
+
+    #[test]
+    fn steps_run_once_in_order() {
+        let db = MemSql::new();
+        db.exec_batch("CREATE TABLE t (a INTEGER)").unwrap();
+        let steps = ["ALTER TABLE t ADD COLUMN b TEXT"];
+        migrate(&db, "t_schema", &steps).unwrap();
+        // A second start (or a second DO instance) doesn't re-run the ALTER.
+        migrate(&db, "t_schema", &steps).unwrap();
+        migrate(&db, "t_schema", &[steps[0], "ALTER TABLE t ADD COLUMN c TEXT"]).unwrap();
+        db.exec("INSERT INTO t (a, b, c) VALUES (1, 'x', 'y')", &[]).unwrap();
+        assert_eq!(meta_get(&db, "t_schema").unwrap().as_deref(), Some("2"));
+        assert_eq!(meta_get(&db, "nope").unwrap(), None);
+    }
+}
+
 #[cfg(test)]
 pub(crate) mod testing {
     use super::*;
