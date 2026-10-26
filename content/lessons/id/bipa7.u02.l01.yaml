@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: bipa7.u02.l01
+language: id
+title: Bahasa presentasi
+can_do:
+  ar_eg: تفتتح عرض رسمي وتنقل بين أجزاءه وتبرز النقطة المهمة.
+  ar: أن تفتتح عرضًا رسميًّا وتنتقل بين أجزائه وتبرز أهمّ نقاطه.
+  en: Open a formal presentation, move between its parts and highlight the key point.
+slides:
+  - title: Membuka, beralih, menekankan
+    grammar: id.presentation.expressions
+    body:
+      ar_eg: |
+        في BIPA 5 اتعلمت الافتتاح البسيط. دلوقتي النسخة الرسمية الكاملة:
+        - Yang saya hormati Kepala Dinas Kelautan, hadirin yang berbahagia. (حضرات … المحترمين)
+        - Pada kesempatan ini, saya akan memaparkan (أعرض بالتفصيل) fenomena terumbu karang di Raja Ampat.
+        - Presentasi ini terbagi (متقسّم) menjadi tiga bagian.
+        - Selanjutnya, mari kita beralih (ننتقل) ke bagian kedua.
+        - Perlu digarisbawahi (لازم نأكّد / نحط خط تحت) bahwa karang adalah hewan, bukan tumbuhan.
+      ar: |
+        تعلّمت في BIPA 5 الافتتاح البسيط، وهذه الصيغة الرسمية الكاملة:
+        - Yang saya hormati Kepala Dinas Kelautan, hadirin yang berbahagia. (حضرات … المحترمين)
+        - Pada kesempatan ini, saya akan memaparkan (أعرض مفصّلًا) fenomena terumbu karang di Raja Ampat.
+        - Presentasi ini terbagi (ينقسم) menjadi tiga bagian.
+        - Selanjutnya, mari kita beralih (ننتقل) ke bagian kedua.
+        - Perlu digarisbawahi (تجدر الإشارة / ينبغي التأكيد) bahwa karang adalah hewan, bukan tumbuhan.
+      en: |
+        In BIPA 5 you learned a simple opening. Here is the full formal version:
+        - Yang saya hormati Kepala Dinas Kelautan, hadirin yang berbahagia. (Honoured …, ladies and gentlemen.)
+        - Pada kesempatan ini, saya akan memaparkan (set out, present) fenomena terumbu karang di Raja Ampat.
+        - Presentasi ini terbagi (is divided) menjadi tiga bagian.
+        - Selanjutnya, mari kita beralih (move on) ke bagian kedua.
+        - Perlu digarisbawahi (it should be underlined) bahwa karang adalah hewan, bukan tumbuhan.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: yang saya hormati
+        ar_eg: حضرة … المحترم
+        ar: حضرة … المحترم
+        en: honoured … (formal address)
+      - text: memaparkan
+        ar_eg: يعرض بالتفصيل
+        ar: يعرض مفصّلًا
+        en: to set out, to present
+      - text: terbagi
+        ar_eg: متقسّم
+        ar: منقسم
+        en: divided
+      - text: beralih
+        ar_eg: ينتقل
+        ar: ينتقل
+        en: to move on, to switch
+      - text: perlu digarisbawahi
+        ar_eg: لازم نأكّد على
+        ar: تجدر الإشارة إلى
+        en: it should be underlined
+    words: [yang saya hormati, memaparkan, terbagi, beralih, perlu digarisbawahi]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة تنفع أول جملة في عرض رسمي؟
+      ar: أيّ جملة تصلح افتتاحًا لعرض رسمي؟
+      en: Which sentence works as the opening of a formal talk?
+    options:
+      - Oke, langsung saja ya, guys.
+      - Yang saya hormati Bapak Kepala Dinas, hadirin yang berbahagia.
+      - Nah, itu saja dari saya.
+    answer: 1
+    words: [yang saya hormati]
+  - id: e03
+    type: fill_blank
+    sentence: Selanjutnya, mari kita ___ ke bagian kedua, yaitu ancaman bagi karang.
+    meaning:
+      ar_eg: وبعد كده، يلا ننتقل للجزء التاني، وهو الخطر على المرجان.
+      ar: والآن لننتقل إلى الجزء الثاني، وهو الأخطار التي تهدّد المرجان.
+      en: Next, let's move on to the second part, the threats to coral.
+    options: [beralih, memaparkan, terbagi]
+    answers: [beralih]
+    words: [beralih]
+  - id: e04
+    type: listen
+    text: Perlu digarisbawahi bahwa karang adalah hewan, bukan tumbuhan.
+    question:
+      ar_eg: المتكلم عايز يأكّد على إيه؟
+      ar: علامَ يريد المتحدّث أن يؤكّد؟
+      en: What does the speaker want to stress?
+    options:
+      - إن المرجان حيوان مش نبات.
+      - إن المرجان نبات.
+      - إن المرجان حجر.
+    answer: 0
+    words: [perlu digarisbawahi]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: العرض ده متقسّم لتلات أجزاء.
+      ar: ينقسم هذا العرض إلى ثلاثة أجزاء.
+      en: This presentation is divided into three parts.
+    answer: Presentasi ini terbagi menjadi tiga bagian.
+    distractors: [beralih, memaparkan]
+    words: [terbagi]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «memaparkan» أقرب لأنهي معنى؟
+      ar: أيّ معنى أقرب إلى «memaparkan»؟
+      en: Which meaning is closest to "memaparkan"?
+    options:
+      - يقفل الموضوع.
+      - يسأل سؤال.
+      - يعرض الموضوع بالتفصيل وبترتيب.
+    answer: 2
+    words: [memaparkan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: في المناسبة دي، هعرض نتايج بحثي.
+      ar: في هذه المناسبة سأعرض نتائج بحثي.
+      en: On this occasion, I will present the results of my research.
+    answers:
+      - Pada kesempatan ini, saya akan memaparkan hasil penelitian saya.
+      - Pada kesempatan ini saya akan memaparkan hasil penelitian saya.
+      - Dalam kesempatan ini, saya akan memaparkan hasil penelitian saya.
+    words: [memaparkan]
+  - id: e08
+    type: speaking
+    text: Yang saya hormati para peneliti, hadirin yang berbahagia, selamat pagi.
+    meaning:
+      ar_eg: حضرات الباحثين المحترمين، الحضور الكرام، صباح الخير.
+      ar: حضرات الباحثين المحترمين، أيّها الحضور الكرام، صباح الخير.
+      en: Honoured researchers, ladies and gentlemen, good morning.
+    words: [yang saya hormati]
+  - id: e09
+    type: dictation
+    text: Perlu digarisbawahi bahwa data ini terbagi per pulau.
+    meaning:
+      ar_eg: لازم نأكّد إن البيانات دي متقسّمة حسب الجزيرة.
+      ar: تجدر الإشارة إلى أنّ هذه البيانات مقسّمة بحسب الجزيرة.
+      en: It should be stressed that these data are divided by island.
+    words: [perlu digarisbawahi, terbagi]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Sebelum beralih ke bagian terakhir, saya akan memaparkan satu contoh.
+    answers_meaning:
+      ar_eg:
+        - قبل ما ننتقل للجزء الأخير، هعرض مثال واحد.
+        - قبل الجزء الأخير، هشرح مثال واحد بالتفصيل.
+      ar:
+        - قبل الانتقال إلى الجزء الأخير، سأعرض مثالًا واحدًا.
+        - سأبسط مثالًا واحدًا قبل أن ننتقل إلى الجزء الأخير.
+      en:
+        - Before moving on to the last part, I'll set out one example.
+        - Before we switch to the final section, I'll present one example.
+    words: [beralih, memaparkan]
+dialogue:
+  title: Latihan di kantor taman laut
+  lines:
+    - speaker: Pak Yance
+      text: Besok kamu presentasi di depan para penyelam dan kepala dinas. Sudah siap?
+      ar_eg: بكرة هتعمل عرض قدّام الغطّاسين ومدير الإدارة. جاهز؟
+      ar: ستقدّم غدًا عرضًا أمام الغوّاصين ورئيس الإدارة. أأنت مستعدّ؟
+      en: Tomorrow you're presenting to the divers and the head of the agency. Ready?
+    - speaker: Mohamed
+      text: Hampir. Saya buka dengan "Yang saya hormati Bapak Kepala Dinas", lalu memaparkan tiga bagian.
+      ar_eg: تقريبًا. هبدأ بـ «حضرة مدير الإدارة المحترم»، وبعدين أعرض التلات أجزاء.
+      ar: تقريبًا. سأفتتح بـ «حضرة رئيس الإدارة المحترم» ثمّ أعرض الأجزاء الثلاثة.
+      en: Almost. I'll open with "Honoured Head of the Agency", then set out three parts.
+    - speaker: Pak Yance
+      text: Bagus. Bagian mana yang paling penting?
+      ar_eg: حلو. أنهي جزء الأهم؟
+      ar: جيّد. أيّ الأجزاء أهمّ؟
+      en: Good. Which part matters most?
+    - speaker: Mohamed
+      text: Yang kedua. Di situ saya bilang, "Perlu digarisbawahi bahwa karang itu hewan."
+      ar_eg: التاني. هناك هقول «لازم نأكّد إن المرجان حيوان».
+      ar: الثاني، وفيه أقول «تجدر الإشارة إلى أنّ المرجان حيوان».
+      en: The second. That's where I say, "It should be stressed that coral is an animal."
+new_words:
+  - word: yang saya hormati
+    pos: phrase
+    ar_eg: حضرة … المحترم
+    ar: حضرة … المحترم
+    en: honoured … (formal address)
+  - word: memaparkan
+    pos: verb
+    ar_eg: يعرض بالتفصيل
+    ar: يعرض مفصّلًا
+    en: to set out, to present
+  - word: terbagi
+    pos: verb
+    ar_eg: متقسّم
+    ar: منقسم
+    en: divided
+  - word: beralih
+    pos: verb
+    ar_eg: ينتقل
+    ar: ينتقل
+    en: to move on, to switch
+  - word: perlu digarisbawahi
+    pos: phrase
+    ar_eg: لازم نأكّد على
+    ar: تجدر الإشارة إلى
+    en: it should be underlined
+review:
+  status: draft
+  verified: false

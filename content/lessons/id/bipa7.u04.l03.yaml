@@ -1,0 +1,205 @@
+schema: kabar.lesson/v1
+id: bipa7.u04.l03
+language: id
+title: Logat dan partikel
+can_do:
+  ar_eg: تلقط الكلمات الصغيرة والنغمة اللي بتكشف المتكلم من أنهي منطقة.
+  ar: أن تلتقط الكلمات الصغيرة والنغمة التي تكشف منطقة المتكلّم.
+  en: Catch the small words and the tune that give away where a speaker is from.
+slides:
+  - title: Telinga yang tajam
+    body:
+      ar_eg: |
+        كلمات صغيرة بتفضح المتكلم:
+        - بابوا: su (sudah) وpi (pergi). Sa su makan. / Kitong pi pantai.
+        - ميدان: bah! للمفاجأة، وkali يعني «قوي». Bah, mahal kali!
+        - المتأثّرين بالجاوي: kok وto. Lho, kok belum datang? Enak, to?
+        والـ aksen (اللكنة) والـ intonasi (التنغيم) كمان: الباتاك صوتهم عالي وواضح، والجاوي صوته ناعم وهادي، والبابواني نغمته بتطلع في آخر الجملة.
+        (دي ميول عامة، مش قواعد لكل واحد.)
+      ar: |
+        كلمات صغيرة تكشف المتكلّم:
+        - بابوا: su (sudah) وpi (pergi). Sa su makan. / Kitong pi pantai.
+        - ميدان: bah! للدهشة، وkali بمعنى «جدًّا». Bah, mahal kali!
+        - المتأثّرون بالجاوية: kok وto. Lho, kok belum datang? Enak, to?
+        وكذلك الـ aksen (اللكنة) والـ intonasi (التنغيم): صوت الباتاك جهير واضح، والجاوي ليّن هادئ، والبابواني يرتفع لحنه آخر الجملة.
+        (هذه ميول عامّة، لا قواعد تنطبق على كلّ فرد.)
+      en: |
+        Small words give a speaker away:
+        - Papua: su (sudah) and pi (pergi). Sa su makan. / Kitong pi pantai.
+        - Medan: bah! for surprise, and kali meaning "very". Bah, mahal kali!
+        - Javanese-influenced: kok and to. Lho, kok belum datang? Enak, to?
+        So do aksen (accent) and intonasi (intonation): Batak speakers tend to sound loud and clear, Javanese soft and calm, Papuans rise at the end of a sentence.
+        (These are broad tendencies, not rules for every person.)
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: aksen
+        ar_eg: لكنة
+        ar: لكنة
+        en: accent
+      - text: intonasi
+        ar_eg: تنغيم / نغمة الكلام
+        ar: تنغيم
+        en: intonation
+      - text: su
+        ar_eg: خلاص / خلّص (بابوا)
+        ar: قد (ملايو بابوا، sudah)
+        en: already (Papuan Malay, sudah)
+      - text: pi
+        ar_eg: يروح (بابوا)
+        ar: يذهب (ملايو بابوا، pergi)
+        en: to go (Papuan Malay, pergi)
+      - text: bah
+        ar_eg: ياه! (ميدان)
+        ar: يا للعجب! (ميدان)
+        en: wow, gosh (Medan)
+    words: [aksen, intonasi, su, pi, bah]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Bah, mahal kali!» المتكلم غالبًا منين؟
+      ar: «Bah, mahal kali!» من أين المتكلّم غالبًا؟
+      en: '"Bah, mahal kali!" Where is the speaker probably from?'
+    options: [Papua, Medan, Yogyakarta]
+    answer: 1
+    words: [bah]
+  - id: e03
+    type: fill_blank
+    sentence: Sa ___ makan, jadi sa tra lapar lagi.
+    meaning:
+      ar_eg: أنا أكلت خلاص، فمش جعان تاني.
+      ar: لقد أكلتُ، فلم أعد جائعًا.
+      en: I've already eaten, so I'm not hungry any more.
+    options: [su, pi, bah]
+    answers: [su]
+    words: [su]
+  - id: e04
+    type: listen
+    text: Kitong pi pantai sore ini, e?
+    question:
+      ar_eg: المتكلم بيقترح إيه؟
+      ar: ماذا يقترح المتحدّث؟
+      en: What is the speaker suggesting?
+    options:
+      - نروح البحر العصر ده.
+      - نشتري سمك بكرة.
+      - نقعد في البيت.
+    answer: 0
+    words: [pi]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: لكنته بتبيّن إنه من سومطرة.
+      ar: تدلّ لكنته على أنّه من سومطرة.
+      en: His accent shows he's from Sumatra.
+    answer: Aksennya menunjukkan bahwa ia dari Sumatra.
+    distractors: [intonasi, bah]
+    words: [aksen]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ليه الدرس بيقول «دي ميول عامة»؟
+      ar: لماذا يقول الدرس «هذه ميول عامّة»؟
+      en: Why does the lesson say "these are broad tendencies"?
+    options:
+      - علشان الباتاك كلهم صوتهم عالي.
+      - علشان اللهجات مش مهمة.
+      - علشان مينفعش نحكم على كل واحد من منطقته.
+    answer: 2
+    words: [aksen, intonasi]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: التنغيم بتاعه بيطلع في آخر الجملة.
+      ar: يرتفع تنغيمه في آخر الجملة.
+      en: His intonation rises at the end of the sentence.
+    answers:
+      - Intonasinya naik di akhir kalimat.
+      - Intonasi dia naik di akhir kalimat.
+      - Intonasinya naik pada akhir kalimat.
+    words: [intonasi]
+  - id: e08
+    type: speaking
+    text: Bah, ikan bakar ini enak kali!
+    meaning:
+      ar_eg: ياه، السمك المشوي ده حلو قوي!
+      ar: يا للعجب، ما أطيب هذا السمك المشوي!
+      en: Wow, this grilled fish is really good!
+    words: [bah]
+  - id: e09
+    type: dictation
+    text: Dong su pi ke kampung sebelah.
+    meaning:
+      ar_eg: هم راحوا خلاص على القرية اللي جنبنا.
+      ar: لقد ذهبوا إلى القرية المجاورة.
+      en: They've already gone to the next village.
+    words: [su, pi]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Dari aksen dan intonasinya, saya tahu dia orang Jawa.
+    answers_meaning:
+      ar_eg:
+        - من لكنته وتنغيمه، عرفت إنه جاوي.
+        - من طريقة نطقه ونغمته، عرفت إنه من جاوة.
+      ar:
+        - عرفتُ من لكنته وتنغيمه أنّه جاوي.
+        - دلّتني لكنته ونبرته على أنّه من جاوة.
+      en:
+        - From his accent and intonation, I knew he was Javanese.
+        - I could tell from his accent and tune that he was Javanese.
+    words: [aksen, intonasi]
+dialogue:
+  title: Tiga turis di dermaga
+  lines:
+    - speaker: Bang Parlin
+      text: Bah! Pemandangannya bagus kali!
+      ar_eg: ياه! المنظر حلو قوي!
+      ar: يا للعجب! ما أجمل المنظر!
+      en: Wow! The view is really something!
+    - speaker: Mas Joko
+      text: Lho, kok perahunya belum datang? Sudah jam sepuluh, to?
+      ar_eg: إيه ده، المركب لسه ماجاش ليه؟ الساعة بقت عشرة، مش كده؟
+      ar: عجبًا، لماذا لم يصل القارب بعد؟ صارت العاشرة، أليس كذلك؟
+      en: Huh, how come the boat isn't here yet? It's ten already, isn't it?
+    - speaker: Om Nus
+      text: Sabar, perahu su dekat. Sebentar lagi kitong pi.
+      ar_eg: اصبروا، المركب قرّب خلاص. شوية وهنمشي.
+      ar: صبرًا، اقترب القارب، وبعد قليل ننطلق.
+      en: Patience, the boat's nearly here. We'll go in a moment.
+    - speaker: Mohamed
+      text: Tiga kalimat, tiga aksen. Medan, Jawa, dan Papua!
+      ar_eg: تلات جمل، تلات لكنات. ميدان، وجاوة، وبابوا!
+      ar: ثلاث جمل وثلاث لكنات، ميدان وجاوة وبابوا!
+      en: Three sentences, three accents. Medan, Java and Papua!
+new_words:
+  - word: aksen
+    pos: noun
+    ar_eg: لكنة
+    ar: لكنة
+    en: accent
+  - word: intonasi
+    pos: noun
+    ar_eg: تنغيم / نغمة الكلام
+    ar: تنغيم
+    en: intonation
+  - word: su
+    pos: adverb
+    ar_eg: خلاص / خلّص (بابوا)
+    ar: قد (ملايو بابوا، sudah)
+    en: already (Papuan Malay, sudah)
+  - word: pi
+    pos: verb
+    ar_eg: يروح (بابوا)
+    ar: يذهب (ملايو بابوا، pergi)
+    en: to go (Papuan Malay, pergi)
+  - word: bah
+    pos: interjection
+    ar_eg: ياه! (ميدان)
+    ar: يا للعجب! (ميدان)
+    en: wow, gosh (Medan)
+review:
+  status: draft
+  verified: false

@@ -59,7 +59,9 @@ jobs:
       - uses: actions/checkout@v5
       - uses: dtolnay/rust-toolchain@stable
         with:
-          components: clippy
+          # dx strips the release binary with rust-objcopy, which needs
+          # libLLVM from llvm-tools.
+          components: clippy, llvm-tools
       - uses: Swatinem/rust-cache@v2
         with:
           key: macos

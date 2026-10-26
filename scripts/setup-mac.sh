@@ -21,6 +21,8 @@ command -v rustup >/dev/null || curl --proto '=https' --tlsv1.2 -sSf https://sh.
 source "$HOME/.cargo/env"
 rustup toolchain install stable
 rustup target add aarch64-apple-darwin aarch64-linux-android wasm32-unknown-unknown
+# `dx bundle --release` strips with rust-objcopy, which needs libLLVM from llvm-tools.
+rustup component add llvm-tools
 
 say "Dioxus CLI (dx) 0.7.10"
 if ! dx --version 2>/dev/null | grep -q "0.7.10"; then

@@ -1,0 +1,203 @@
+schema: kabar.lesson/v1
+id: bipa6.u09.l04
+language: id
+title: Negosiasi
+can_do:
+  ar_eg: تفاوض على سعر بهدوء لحد ما توصلوا لاتفاق.
+  ar: أن تفاوض على سعر بهدوء حتّى تبلغا اتّفاقًا.
+  en: Negotiate a price calmly until you reach a deal.
+slides:
+  - title: Jalan tengah
+    grammar: id.hedging
+    body:
+      ar_eg: |
+        التفاوض على طريقة المينانج: العلاقة الأول، والسعر بعدين.
+        1. ابدأ بدردشة (basa-basi) قبل الأرقام.
+        2. اقترح بهدوء: Bagaimana kalau …? (إيه رأيك لو …؟)
+        3. اطلب خصم بأدب: Apakah ada potongan harga untuk pesanan besar?
+        4. اتقابلوا في النص: Kita ambil jalan tengah saja.
+        5. اقفل: Jadi, kita sepakat? وبعدين اكتب الـ kesepakatan (الاتفاق).
+      ar: |
+        التفاوض على طريقة المينانغ: العلاقة أوّلًا ثمّ السعر.
+        1. ابدأ بحديث ودّي (basa-basi) قبل الأرقام.
+        2. اقترح بهدوء: Bagaimana kalau …? (ما رأيك لو …؟)
+        3. اطلب خصمًا بأدب: Apakah ada potongan harga untuk pesanan besar?
+        4. التقيا في المنتصف: Kita ambil jalan tengah saja.
+        5. اختم: Jadi, kita sepakat? ثمّ دوّن الـ kesepakatan (الاتّفاق).
+      en: |
+        Negotiating the Minang way: relationship first, price second.
+        1. Open with small talk (basa-basi) before any numbers.
+        2. Suggest gently: Bagaimana kalau …? (How about …?)
+        3. Ask for a discount politely: Apakah ada potongan harga untuk pesanan besar?
+        4. Meet halfway: Kita ambil jalan tengah saja.
+        5. Close: Jadi, kita sepakat? Then write down the kesepakatan (agreement).
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: potongan harga
+        ar_eg: خصم
+        ar: خصم
+        en: discount
+      - text: kesepakatan
+        ar_eg: اتفاق
+        ar: اتّفاق
+        en: agreement, deal
+      - text: menawarkan
+        ar_eg: يعرض
+        ar: يعرض
+        en: to offer
+      - text: pemasok
+        ar_eg: مورّد
+        ar: مورّد
+        en: supplier
+    words: [potongan harga, kesepakatan, menawarkan, pemasok]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي طريقة أحسن تطلب بيها خصم؟
+      ar: ما أفضل طريقة لطلب خصم؟
+      en: What's the best way to ask for a discount?
+    options:
+      - Kasih diskon dong!
+      - Apakah ada potongan harga untuk pesanan besar?
+      - Harga ini gila!
+    answer: 1
+    words: [potongan harga]
+  - id: e03
+    type: fill_blank
+    sentence: Kami ___ harga khusus untuk pelanggan setia.
+    meaning:
+      ar_eg: إحنا بنعرض سعر خاص للزباين الدايمين.
+      ar: نعرض سعرًا خاصًّا للزبائن الأوفياء.
+      en: We offer a special price to loyal customers.
+    options: [menawarkan, pemasok, kesepakatan]
+    answers: [menawarkan]
+    words: [menawarkan]
+  - id: e04
+    type: listen
+    text: Akhirnya kedua pihak mencapai kesepakatan setelah dua jam.
+    question:
+      ar_eg: إيه اللي حصل؟
+      ar: ماذا حدث؟
+      en: What happened?
+    options:
+      - الطرفين اتفقوا بعد ساعتين.
+      - اتخانقوا ومشيوا.
+      - أجّلوا الكلام.
+    answer: 0
+    words: [kesepakatan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: إيه رأيك لو نتقابل في النص؟
+      ar: ما رأيك لو التقينا في المنتصف؟
+      en: How about we meet halfway?
+    answer: Bagaimana kalau kita ambil jalan tengah saja?
+    distractors: [pemasok, potongan]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Kita ambil jalan tengah» معناها إيه في التفاوض؟
+      ar: ما معنى «Kita ambil jalan tengah» في التفاوض؟
+      en: In a negotiation, what does "Kita ambil jalan tengah" mean?
+    options:
+      - يلا نمشي من نص الشارع.
+      - يلا نوقّف الكلام.
+      - يلا نتقابل في النص.
+    answer: 2
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: المورّد ده عرض خصم عشرة في المية.
+      ar: عرض ذلك المورّد خصمًا بعشرة في المئة.
+      en: That supplier offered a ten per cent discount.
+    answers:
+      - Pemasok itu menawarkan potongan harga sepuluh persen.
+      - Pemasok itu menawarkan potongan harga 10 persen.
+      - Pemasok itu menawarkan potongan harga sebesar sepuluh persen.
+    words: [pemasok, menawarkan, potongan harga]
+  - id: e08
+    type: speaking
+    text: Kalau kesepakatannya bagus, kami akan memesan lagi.
+    meaning:
+      ar_eg: لو الاتفاق كويس، هنطلب تاني.
+      ar: إن كان الاتّفاق جيّدًا فسنطلب مجدّدًا.
+      en: If the deal is good, we'll order again.
+    words: [kesepakatan]
+  - id: e09
+    type: dictation
+    text: Pemasok kurma dari Mesir memberi potongan harga.
+    meaning:
+      ar_eg: مورّد البلح من مصر عمل خصم.
+      ar: منح مورّد التمر من مصر خصمًا.
+      en: The date supplier from Egypt gave a discount.
+    words: [pemasok, potongan harga]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Kesepakatan ini baik untuk pemasok dan pembeli.
+    answers_meaning:
+      ar_eg:
+        - الاتفاق ده كويس للمورّد والمشتري.
+        - الاتفاق ده في صالح المورّد والمشتري.
+      ar:
+        - هذا الاتّفاق جيّد للمورّد والمشتري.
+        - في هذا الاتّفاق خير للمورّد والمشتري.
+      en:
+        - This deal is good for the supplier and the buyer.
+        - This agreement works for both supplier and buyer.
+    words: [kesepakatan, pemasok]
+dialogue:
+  title: Tawar-menawar kurma
+  lines:
+    - speaker: Uda Fadli
+      text: Harga per kilonya masih agak tinggi untuk kami.
+      ar_eg: سعر الكيلو لسه عالي شوية بالنسبة لنا.
+      ar: سعر الكيلو ما زال مرتفعًا قليلًا بالنسبة إلينا.
+      en: The price per kilo is still a bit high for us.
+    - speaker: Mohamed
+      text: Bagaimana kalau pemasok kami menawarkan potongan harga lima persen untuk pesanan pertama?
+      ar_eg: إيه رأيك لو المورّد بتاعنا عرض خصم خمسة في المية على أول طلبية؟
+      ar: ما رأيك لو عرض مورّدنا خصمًا بخمسة في المئة على الطلبية الأولى؟
+      en: How about our supplier offers a five per cent discount on the first order?
+    - speaker: Uda Fadli
+      text: Sepuluh persen, barangkali?
+      ar_eg: عشرة في المية يمكن؟
+      ar: عشرة في المئة ربّما؟
+      en: Ten per cent, perhaps?
+    - speaker: Mohamed
+      text: Kita ambil jalan tengah saja, Uda. Tujuh persen?
+      ar_eg: نتقابل في النص يا أودا. سبعة في المية؟
+      ar: لنلتقِ في المنتصف يا أودا. سبعة في المئة؟
+      en: Let's meet halfway, Uda. Seven per cent?
+    - speaker: Uda Fadli
+      text: Baik, kita sepakat!
+      ar_eg: تمام، اتفقنا!
+      ar: حسنًا، اتّفقنا!
+      en: All right, it's a deal!
+new_words:
+  - word: potongan harga
+    pos: noun
+    ar_eg: خصم
+    ar: خصم
+    en: discount
+  - word: kesepakatan
+    pos: noun
+    ar_eg: اتفاق
+    ar: اتّفاق
+    en: agreement, deal
+  - word: menawarkan
+    pos: verb
+    ar_eg: يعرض
+    ar: يعرض
+    en: to offer
+  - word: pemasok
+    pos: noun
+    ar_eg: مورّد
+    ar: مورّد
+    en: supplier
+review:
+  status: draft
+  verified: false

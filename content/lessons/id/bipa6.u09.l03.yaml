@@ -1,0 +1,205 @@
+schema: kabar.lesson/v1
+id: bipa6.u09.l03
+language: id
+title: Kontrak
+can_do:
+  ar_eg: تقرا بنود عقد تجاري وتفهم الدفع والمدة.
+  ar: أن تقرأ بنود عقد تجاري وتفهم الدفع والمدّة.
+  en: Read the terms of a business contract, including payment and duration.
+slides:
+  - title: Membaca pasal kontrak
+    body:
+      ar_eg: |
+        اقرا (مكتوب للدرس):
+        Pasal 3: Pembayaran dilakukan dalam dua tahap. Pihak Kedua membayar uang muka sebesar 30% setelah perjanjian ditandatangani, dan sisanya paling lambat 14 hari setelah barang diterima.
+        Pasal 5: Jangka waktu perjanjian ini adalah satu tahun.
+        - Pihak Pertama / Pihak Kedua = الطرف الأول / الطرف التاني
+        - pembayaran = الدفع، uang muka = العربون، perjanjian = الاتفاقية
+        - jangka waktu = المدة، paling lambat = بالكتير / في موعد أقصاه
+      ar: |
+        اقرأ (نصّ مكتوب للدرس):
+        Pasal 3: Pembayaran dilakukan dalam dua tahap. Pihak Kedua membayar uang muka sebesar 30% setelah perjanjian ditandatangani, dan sisanya paling lambat 14 hari setelah barang diterima.
+        Pasal 5: Jangka waktu perjanjian ini adalah satu tahun.
+        - Pihak Pertama / Pihak Kedua = الطرف الأوّل / الطرف الثاني
+        - pembayaran = الدفع، uang muka = العربون، perjanjian = الاتّفاقية
+        - jangka waktu = المدّة، paling lambat = في موعد أقصاه
+      en: |
+        Read (written for the lesson):
+        Pasal 3: Pembayaran dilakukan dalam dua tahap. Pihak Kedua membayar uang muka sebesar 30% setelah perjanjian ditandatangani, dan sisanya paling lambat 14 hari setelah barang diterima.
+        Pasal 5: Jangka waktu perjanjian ini adalah satu tahun.
+        - Pihak Pertama / Pihak Kedua = the First Party / the Second Party
+        - pembayaran = payment, uang muka = deposit, perjanjian = agreement
+        - jangka waktu = term, duration; paling lambat = at the latest
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: perjanjian
+        ar_eg: اتفاقية / عقد
+        ar: اتّفاقية
+        en: agreement
+      - text: jangka waktu
+        ar_eg: مدة
+        ar: مدّة
+        en: term, duration
+      - text: pembayaran
+        ar_eg: دفع
+        ar: دفع / سداد
+        en: payment
+      - text: menandatangani
+        ar_eg: يمضي على
+        ar: يوقّع
+        en: to sign
+      - text: uang muka
+        ar_eg: عربون / مقدّم
+        ar: عربون
+        en: deposit, down payment
+    words: [perjanjian, jangka waktu, pembayaran, menandatangani, uang muka]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: العربون في المادة 3 قد إيه؟
+      ar: كم العربون في المادة 3؟
+      en: How big is the deposit in Article 3?
+    options: [30 persen, 14 persen, 100 persen]
+    answer: 0
+    words: [uang muka]
+  - id: e03
+    type: fill_blank
+    sentence: ___ perjanjian ini adalah satu tahun.
+    meaning:
+      ar_eg: مدة الاتفاقية دي سنة.
+      ar: مدّة هذه الاتّفاقية سنة واحدة.
+      en: The term of this agreement is one year.
+    options: [Jangka waktu, Uang muka, Pembayaran]
+    answers: [Jangka waktu]
+    words: [jangka waktu, perjanjian]
+  - id: e04
+    type: listen
+    text: Sisa pembayaran paling lambat empat belas hari setelah barang diterima.
+    question:
+      ar_eg: باقي الفلوس بيتدفع إمتى؟
+      ar: متى يُدفع الباقي؟
+      en: When is the rest paid?
+    options:
+      - قبل الإمضاء.
+      - بالكتير بعد 14 يوم من استلام البضاعة.
+      - بعد سنة.
+    answer: 1
+    words: [pembayaran]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الطرفين مضوا على الاتفاقية امبارح.
+      ar: وقّع الطرفان الاتّفاقية أمس.
+      en: Both parties signed the agreement yesterday.
+    answer: Kedua pihak menandatangani perjanjian itu kemarin.
+    distractors: [uang, jangka]
+    words: [menandatangani, perjanjian]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «paling lambat» معناها إيه؟
+      ar: ما معنى «paling lambat»؟
+      en: What does "paling lambat" mean?
+    options:
+      - على الأقل.
+      - بالظبط.
+      - في موعد أقصاه.
+    answer: 2
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: هندفع العربون بكرة.
+      ar: سندفع العربون غدًا.
+      en: We'll pay the deposit tomorrow.
+    answers:
+      - Kami akan membayar uang muka besok.
+      - Besok kami akan membayar uang muka.
+      - Kami akan membayar uang mukanya besok.
+      - Besok kami membayar uang muka.
+    words: [uang muka]
+  - id: e08
+    type: speaking
+    text: Sebelum menandatangani, periksa jangka waktu perjanjiannya.
+    meaning:
+      ar_eg: قبل ما تمضي، راجع مدة الاتفاقية.
+      ar: قبل التوقيع، راجع مدّة الاتّفاقية.
+      en: Before signing, check the term of the agreement.
+    words: [menandatangani, jangka waktu, perjanjian]
+  - id: e09
+    type: dictation
+    text: Uang muka dibayar setelah perjanjian ditandatangani.
+    meaning:
+      ar_eg: العربون بيتدفع بعد الإمضاء على الاتفاقية.
+      ar: يُدفع العربون بعد توقيع الاتّفاقية.
+      en: The deposit is paid after the agreement is signed.
+    words: [uang muka, perjanjian]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Pembayaran dilakukan dalam dua tahap.
+    answers_meaning:
+      ar_eg:
+        - الدفع بيتم على مرحلتين.
+        - الفلوس بتتدفع على دفعتين.
+      ar:
+        - يتمّ الدفع على مرحلتين.
+        - يُسدَّد المبلغ على دفعتين.
+      en:
+        - Payment is made in two stages.
+        - Payment is made in two instalments.
+    words: [pembayaran]
+dialogue:
+  title: Draf kontrak
+  lines:
+    - speaker: Uda Fadli
+      text: Ini draf perjanjiannya. Coba baca Pasal 3.
+      ar_eg: دي مسودة الاتفاقية. اقرا المادة 3.
+      ar: هذه مسودّة الاتّفاقية. اقرأ المادة 3.
+      en: Here's the draft agreement. Have a read of Article 3.
+    - speaker: Mohamed
+      text: Uang muka tiga puluh persen, sisanya paling lambat empat belas hari. Adil.
+      ar_eg: عربون تلاتين في المية، والباقي بالكتير بعد أربعتاشر يوم. عادل.
+      ar: عربون ثلاثون في المئة، والباقي في موعد أقصاه أربعة عشر يومًا. منصف.
+      en: A thirty per cent deposit, the rest within fourteen days at the latest. Fair.
+    - speaker: Uda Fadli
+      text: Jangka waktunya satu tahun. Kalau cocok, kita perpanjang.
+      ar_eg: المدة سنة. لو الدنيا ماشية، نجدّد.
+      ar: المدّة سنة، فإن ناسبتنا جدّدناها.
+      en: The term is one year. If it works, we'll extend it.
+    - speaker: Mohamed
+      text: Saya kirim ke teman saya dulu sebelum kami menandatangani, ya.
+      ar_eg: هبعتها لصاحبي الأول قبل ما نمضي.
+      ar: سأرسلها إلى صديقي أوّلًا قبل أن نوقّع.
+      en: I'll send it to my friend first, before we sign.
+new_words:
+  - word: perjanjian
+    pos: noun
+    ar_eg: اتفاقية / عقد
+    ar: اتّفاقية
+    en: agreement
+  - word: jangka waktu
+    pos: noun
+    ar_eg: مدة
+    ar: مدّة
+    en: term, duration
+  - word: pembayaran
+    pos: noun
+    ar_eg: دفع
+    ar: دفع / سداد
+    en: payment
+  - word: menandatangani
+    pos: verb
+    ar_eg: يمضي على
+    ar: يوقّع
+    en: to sign
+  - word: uang muka
+    pos: noun
+    ar_eg: عربون / مقدّم
+    ar: عربون
+    en: deposit, down payment
+review:
+  status: draft
+  verified: false
