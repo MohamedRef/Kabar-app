@@ -1,0 +1,193 @@
+schema: kabar.lesson/v1
+id: bipa5.u02.l04
+language: id
+title: Debat IKN
+can_do:
+  ar_eg: تدافع عن رأيك في نقاش عن العاصمة الجديدة وترد على اللي قدامك بأدب.
+  ar: أن تدافع عن موقفك في مناظرة عن العاصمة الجديدة وتردّ على محاورك بلباقة.
+  en: Argue a position on the new capital and answer the other side politely.
+slides:
+  - title: Menyanggah dengan sopan
+    grammar: id.conjunction.concessive
+    body:
+      ar_eg: |
+        في النقاش الإندونيسي، الرد المباشر «إنت غلطان» بيبان قلة ذوق. اعترف الأول، وبعدين اعترض:
+        - Saya mengerti pendapat Anda. Meskipun begitu, … = فاهم رأيك. ومع كده …
+        - Itu benar, tetapi … = ده صح، بس …
+        - Maaf, saya kurang setuju, karena … = آسف، أنا مش موافق قوي، عشان …
+        kurang setuju أرق بكتير من tidak setuju.
+      ar: |
+        في النقاش الإندونيسي يبدو الردّ المباشر «أنت مخطئ» فظًّا. أقِرّ أولًا ثم اعترض:
+        - Saya mengerti pendapat Anda. Meskipun begitu, … = أفهم رأيك، ومع ذلك …
+        - Itu benar, tetapi … = هذا صحيح، لكن …
+        - Maaf, saya kurang setuju, karena … = عذرًا، لا أوافق تمامًا، لأنّ …
+        وkurang setuju ألطف بكثير من tidak setuju.
+      en: |
+        In an Indonesian debate, a blunt "you're wrong" sounds rude. Concede first, then object:
+        - Saya mengerti pendapat Anda. Meskipun begitu, … = I understand your view. Even so, …
+        - Itu benar, tetapi … = That's true, but …
+        - Maaf, saya kurang setuju, karena … = Sorry, I don't quite agree, because …
+        kurang setuju is much softer than tidak setuju.
+    examples:
+      - text: Saya mengerti pendapat Anda. Meskipun begitu, biayanya terlalu besar.
+        ar_eg: فاهم رأيك. ومع كده، التكلفة كبيرة زيادة.
+        ar: أفهم رأيك، ومع ذلك فالتكلفة كبيرة جدًّا.
+        en: I understand your view. Even so, the cost is too high.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pendapat
+        ar_eg: رأي
+        ar: رأي
+        en: opinion
+      - text: kurang setuju
+        ar_eg: مش موافق قوي
+        ar: لا أوافق تمامًا
+        en: don't quite agree
+      - text: meskipun begitu
+        ar_eg: ومع كده
+        ar: ومع ذلك
+        en: even so
+      - text: menyanggah
+        ar_eg: يرد ويعترض
+        ar: يعترض، يفنّد
+        en: to rebut
+    words: [pendapat, kurang setuju, meskipun begitu, menyanggah]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي رد أنسب في نقاش مع واحد أكبر منك؟
+      ar: أيّ ردّ أنسب في نقاش مع شخص أكبر منك سنًّا؟
+      en: Which reply suits a debate with someone older than you?
+    options:
+      - Anda salah. Itu tidak benar.
+      - Nggak lah, itu ngawur.
+      - Maaf, Pak, saya kurang setuju, karena biayanya besar.
+    answer: 2
+    explain:
+      ar_eg: اعتذار + kurang setuju + السبب، ومن غير لغة الشارع.
+      ar: اعتذار ثم kurang setuju ثم السبب، بلا عامّية.
+      en: An apology, kurang setuju and a reason, with no slang.
+    words: [kurang setuju]
+  - id: e03
+    type: fill_blank
+    sentence: Saya mengerti pendapat Ibu. ___, kota baru itu bisa merusak hutan.
+    meaning:
+      ar_eg: فاهم رأي حضرتك. ومع كده، المدينة الجديدة ممكن تضر الغابة.
+      ar: أفهم رأيك يا سيدتي، ومع ذلك قد تضرّ المدينة الجديدة بالغابة.
+      en: I understand your view, ma'am. Even so, the new city could damage the forest.
+    options: [Meskipun begitu, Selain itu, Karena itu]
+    answers: [Meskipun begitu]
+    words: [meskipun begitu, pendapat]
+  - id: e04
+    type: listen
+    text: Itu benar, tetapi Jakarta tetap butuh perbaikan.
+    question:
+      ar_eg: المتكلم بيعمل إيه؟
+      ar: ماذا يفعل المتكلّم؟
+      en: What is the speaker doing?
+    options:
+      - بيوافق تمامًا.
+      - بيعترف بنقطة وبعدين بيعترض.
+      - بيغيّر الموضوع.
+    answer: 1
+    words: [menyanggah]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: آسف، أنا مش موافق قوي على الرأي ده.
+      ar: عذرًا، لا أوافق تمامًا على هذا الرأي.
+      en: Sorry, I don't quite agree with that opinion.
+    answer: Maaf, saya kurang setuju dengan pendapat itu.
+    distractors: [tidak, begitu]
+    words: [kurang setuju, pendapat]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: ده صح، بس الحكومة لازم تحمي الغابة.
+      ar: هذا صحيح، لكن على الحكومة أن تحمي الغابة.
+      en: That's true, but the government must protect the forest.
+    answers:
+      - Itu benar, tetapi pemerintah harus melindungi hutan.
+      - Itu benar, tapi pemerintah harus melindungi hutan.
+      - Itu benar, tetapi pemerintah harus menjaga hutan.
+      - Itu betul, tetapi pemerintah harus melindungi hutan.
+    words: [menyanggah]
+  - id: e07
+    type: dictation
+    text: Meskipun begitu, pendapat Anda tetap penting bagi kami.
+    meaning:
+      ar_eg: ومع كده، رأي حضرتك برضه مهم لينا.
+      ar: ومع ذلك، يبقى رأيك مهمًّا لنا.
+      en: Even so, your opinion still matters to us.
+    words: [meskipun begitu, pendapat]
+  - id: e08
+    type: speaking
+    text: Saya mengerti pendapat Anda. Meskipun begitu, saya kurang setuju.
+    meaning:
+      ar_eg: فاهم رأي حضرتك. ومع كده، أنا مش موافق قوي.
+      ar: أفهم رأيك، ومع ذلك لا أوافق تمامًا.
+      en: I understand your view. Even so, I don't quite agree.
+    words: [pendapat, meskipun begitu, kurang setuju]
+  - id: e09
+    type: multiple_choice
+    question: "Dalam debat, kita ___ argumen lawan dengan data."
+    question_meaning:
+      ar_eg: كمّل الجملة. «في المناظرة، إحنا … حجة الطرف التاني بالأرقام.»
+      ar: أكمل الجملة. «في المناظرة … حجّة الخصم بالبيانات.»
+      en: Complete the sentence. "In a debate, we … the other side's argument with data."
+    options: [menyanggah, pendapat, kurang]
+    answer: 0
+    words: [menyanggah]
+dialogue:
+  title: Debat di radio kampus
+  lines:
+    - speaker: Rina
+      text: Menurut saya, Nusantara akan membuat Indonesia lebih adil.
+      ar_eg: في رأيي، نوسانتارا هتخلي إندونيسيا أعدل.
+      ar: في رأيي، ستجعل نوسانتارا إندونيسيا أكثر عدلًا.
+      en: In my view, Nusantara will make Indonesia fairer.
+    - speaker: Mohamed
+      text: Saya mengerti pendapat Anda. Meskipun begitu, biayanya sangat besar.
+      ar_eg: فاهم رأيك. ومع كده، التكلفة كبيرة قوي.
+      ar: أفهم رأيك، ومع ذلك فالتكلفة كبيرة جدًّا.
+      en: I understand your view. Even so, the cost is huge.
+    - speaker: Rina
+      text: Itu benar, tetapi pembangunan tidak boleh hanya di Jawa.
+      ar_eg: ده صح، بس التنمية ماينفعش تكون في جاوة بس.
+      ar: هذا صحيح، لكن التنمية يجب ألّا تقتصر على جاوة.
+      en: That's true, but development can't be only on Java.
+    - speaker: Mohamed
+      text: Setuju. Maaf, tetapi saya kurang setuju kalau hutannya dikorbankan.
+      ar_eg: موافق. بس معلش، أنا مش موافق قوي إن الغابة تتضحّى بيها.
+      ar: أوافق. لكن عذرًا، لا أوافق على التضحية بالغابة.
+      en: Agreed. But sorry, I don't quite agree with sacrificing the forest.
+    - speaker: Mas Rizal
+      text: Bagus sekali. Kalian menyanggah dengan sopan dan jelas.
+      ar_eg: حلو قوي. إنتو بتردوا على بعض بأدب ووضوح.
+      ar: أحسنتما. تردّان على بعضكما بأدب ووضوح.
+      en: Very good. You both rebut politely and clearly.
+new_words:
+  - word: pendapat
+    pos: noun
+    ar_eg: رأي
+    ar: رأي
+    en: opinion
+  - word: kurang setuju
+    ar_eg: مش موافق قوي (أرق من tidak setuju)
+    ar: لا أوافق تمامًا
+    en: don't quite agree
+  - word: meskipun begitu
+    ar_eg: ومع كده
+    ar: ومع ذلك
+    en: even so
+  - word: menyanggah
+    pos: verb
+    ar_eg: يرد ويعترض
+    ar: يعترض، يفنّد
+    en: to rebut
+review:
+  status: draft
+  verified: false
