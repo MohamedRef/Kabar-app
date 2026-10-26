@@ -1,0 +1,164 @@
+schema: kabar.lesson/v1
+id: bipa5.u06.l06
+language: id
+title: Ulangan Unit 6
+can_do:
+  ar_eg: تقدّم نقد لعرض فني، بالوصف والمدح والنقد والحكم.
+  ar: أن تقدّم مراجعة لعرض فنّي بالوصف والمديح والنقد والحكم.
+  en: Present a review of a show, with description, praise, criticism and a verdict.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pertunjukan
+        ar_eg: عرض
+        ar: عرض
+        en: performance
+      - text: memukau
+        ar_eg: مبهر
+        ar: مبهر
+        en: stunning
+      - text: melambangkan
+        ar_eg: يرمز لـ
+        ar: يرمز إلى
+        en: to symbolise
+      - text: penonton
+        ar_eg: جمهور
+        ar: جمهور
+        en: audience
+      - text: kesan
+        ar_eg: انطباع
+        ar: انطباع
+        en: impression
+    words: [pertunjukan, memukau, melambangkan, penonton, kesan]
+  - id: e02
+    type: multiple_choice
+    question: "Gedung pertunjukan itu akan ___ tahun depan."
+    question_meaning:
+      ar_eg: كمّل الجملة. «مبنى العروض ده هيتوسّع السنة الجاية.»
+      ar: أكمل الجملة. «سيُوسَّع مبنى العروض العام القادم.»
+      en: Complete the sentence. "That theatre will be enlarged next year."
+    options: [memperluas, diperluas, perluasan]
+    answer: 1
+    explain:
+      ar_eg: المبنى مش هو اللي بيوسّع، هو اللي هيتوسّع، فـ diper-.
+      ar: المبنى يُوسَّع ولا يوسِّع، فالصيغة diper-.
+      en: The building is enlarged, not enlarging, so diper-.
+  - id: e03
+    type: fill_blank
+    sentence: Para penari ___ burung enggang dengan tangan mereka.
+    meaning:
+      ar_eg: الراقصين بيقلّدوا طائر أبو قرن بإيديهم.
+      ar: يحاكي الراقصون طائر أبي قرن بأيديهم.
+      en: The dancers imitate the hornbill with their hands.
+    options: [meniru, memukau, melambangkan]
+    answers: [meniru]
+    words: [meniru]
+  - id: e04
+    type: listen
+    text: Sayangnya, tata suaranya kurang baik dan sebaiknya diperbaiki.
+    question:
+      ar_eg: الناقد بيقترح إيه؟
+      ar: ماذا يقترح الناقد؟
+      en: What does the critic suggest?
+    options:
+      - إن الرقص يتغيّر.
+      - إن العرض يتلغي.
+      - إن الصوت يتصلّح.
+    answer: 2
+    words: [sayangnya, sebaiknya, memperbaiki]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: عمومًا، العرض ده يستاهل يتشاف.
+      ar: إجمالًا، هذا العرض جدير بالمشاهدة.
+      en: Overall, this show is worth watching.
+    answer: Secara keseluruhan, pertunjukan ini layak ditonton.
+    distractors: [sayangnya, memukau]
+    words: [secara keseluruhan, layak, pertunjukan]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أكتر حاجة عجبتني هي حركة الراقصين.
+      ar: أكثر ما أعجبني حركات الراقصين.
+      en: What I liked most was the dancers' movement.
+    answers:
+      - Yang paling saya sukai adalah gerakan para penari.
+      - Yang paling saya sukai adalah gerakan penari.
+      - Yang paling aku sukai adalah gerakan para penari.
+      - Yang paling saya sukai ialah gerakan para penari.
+    words: [yang paling saya sukai, gerakan]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Pertunjukan itu memperkenalkan budaya Dayak kepada penonton asing.
+    answers_meaning:
+      ar_eg:
+        - العرض ده عرّف الجمهور الأجنبي بثقافة الداياك.
+        - العرض عرّف الأجانب اللي بيتفرجوا على ثقافة الداياك.
+      ar:
+        - عرّف ذلك العرض الجمهور الأجنبي بثقافة الداياك.
+        - قدّم العرض ثقافة الداياك للجمهور الأجنبي.
+      en:
+        - The show introduced Dayak culture to foreign audiences.
+        - That performance introduced foreign viewers to Dayak culture.
+    words: [memperkenalkan, penonton]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه معنى «makna»؟
+      ar: ما معنى «makna»؟
+      en: What does "makna" mean?
+    options: [معنى, حركة, ريش]
+    answer: 0
+    words: [makna]
+  - id: e09
+    type: dictation
+    text: Bagian yang paling berkesan adalah musik sape.
+    meaning:
+      ar_eg: أكتر جزء علّم معايا هو موسيقى السابي.
+      ar: أكثر ما أثّر فيّ موسيقى السابي.
+      en: The most memorable part was the sape music.
+    words: [bagian, berkesan]
+  - id: e10
+    type: speaking
+    text: Kesanku, tarian ini memukau, apalagi kostumnya.
+    meaning:
+      ar_eg: انطباعي إن الرقصة دي مبهرة، خصوصًا اللبس.
+      ar: انطباعي أنّ هذه الرقصة مبهرة، لا سيّما أزياؤها.
+      en: My impression is that this dance is stunning, especially the costumes.
+    words: [kesan, memukau, apalagi]
+dialogue:
+  title: Wawancara radio tentang tari
+  lines:
+    - speaker: Mas Ardi
+      text: Selamat malam. Mohamed, Anda baru menonton tari enggang. Bagaimana kesan Anda?
+      ar_eg: مساء الخير. يا محمد، لسه شايف رقصة أبو قرن. إيه انطباعك؟
+      ar: مساء الخير. يا محمد، شاهدتَ للتوّ رقصة أبي قرن. ما انطباعك؟
+      en: Good evening. Mohamed, you've just watched the hornbill dance. What's your impression?
+    - speaker: Mohamed
+      text: Sangat memukau. Gerakannya meniru burung enggang dengan indah.
+      ar_eg: مبهرة جدًا. الحركة بتقلّد طائر أبو قرن بشكل جميل.
+      ar: مبهرة جدًّا، تحاكي حركاتها طائر أبي قرن محاكاة جميلة.
+      en: Stunning. The movement imitates the hornbill beautifully.
+    - speaker: Mas Ardi
+      text: Apakah ada kekurangannya?
+      ar_eg: فيه أي عيوب؟
+      ar: هل من عيوب؟
+      en: Were there any weaknesses?
+    - speaker: Mohamed
+      text: Sayangnya, suaranya kurang jelas. Tetapi secara keseluruhan, layak ditonton.
+      ar_eg: للأسف الصوت ماكانش واضح قوي. بس عمومًا يستاهل يتشاف.
+      ar: للأسف لم يكن الصوت واضحًا تمامًا، لكنّها إجمالًا جديرة بالمشاهدة.
+      en: Unfortunately the sound wasn't very clear. But overall, it's worth watching.
+souvenir:
+  id: bipa5.u06.souvenir
+  title: Tari enggang suku Dayak
+  note:
+    ar_eg: طائر أبو قرن (enggang) هو رمز جزيرة بورنيو، والداياك بيعتبروه رسول بين الإنسان وعالم الأرواح. في رقصة أبو قرن، الراقصات بيلبسوا ريشه في إيديهم وبيفردوا دراعاتهم زي الجناح على موسيقى آلة sape الوترية. وفي بالانجكا رايا هتلاقي صورة الطائر ده على المباني الحكومية والشعار الرسمي كمان.
+    ar: طائر أبي قرن (enggang) رمز جزيرة بورنيو، ويعدّه الداياك رسولًا بين البشر وعالم الأرواح. وفي رقصته تحمل الراقصات ريشه في أيديهنّ ويبسطن أذرعهنّ كالأجنحة على أنغام آلة sape الوترية. وفي بالانغكا رايا ترى صورته على المباني الحكومية والشعارات الرسمية أيضًا.
+    en: The hornbill (enggang) is Borneo's emblem; the Dayak see it as a messenger between people and the spirit world. In the hornbill dance, dancers hold its feathers and spread their arms like wings to the sape lute. In Palangka Raya you'll see the bird on government buildings and official crests too.
+review:
+  status: draft
+  verified: false
