@@ -32,6 +32,8 @@ const SINETRON_CAST: &[(&str, bool, i8)] = &[
     ("Karim", true, -5),
     ("Petugas", true, -8),
     ("Pak RT", true, -6),
+    ("Pak Hendra", true, -2),
+    ("Pak Mahmoud", true, -15),
     ("Sari", false, 0),
     ("Bu Rahayu", false, -10),
     ("Nadia", false, 10),
@@ -41,6 +43,7 @@ const SINETRON_CAST: &[(&str, bool, i8)] = &[
     ("Bu Tini", false, -3),
     ("Bu Ani", false, -8),
     ("Mbak Dewi", false, 6),
+    ("Bu Samia", false, -12),
 ];
 
 /// A speaker's voice and pitch in a Sinetron episode. A character this
