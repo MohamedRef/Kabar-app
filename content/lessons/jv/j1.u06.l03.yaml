@@ -1,0 +1,211 @@
+schema: kabar.lesson/v1
+id: j1.u06.l03
+language: jv
+title: Takon dalan
+can_do:
+  ar_eg: تسأل عن الطريق وتفهم الوصف.
+  ar: أن تسأل عن الطريق وتتّبع الإرشادات.
+  en: Ask and follow directions.
+slides:
+  - title: Takon dalan
+    body:
+      ar_eg: |
+        **takon dalan** = تسأل عن الطريق (takon = يسأل، dalan = طريق = jalan).
+        اللي محتاجه كله:
+        - السؤال: «… nang ngendi, ya?» = … فين؟ (ya بتليّن السؤال).
+        - الرد: lurus (على طول)، ngiwa (شمال)، nengen (يمين)، terus (وبعدين).
+        - المكان: nang ngarep (قدام)، nang mburi (ورا)، nang jejeré (جنب).
+        - والإشارة: sing kaé, nang kana = اللي هناك بعيد.
+        ومع حد مش عارفه: ابدأ بـ Mas / Mbak، واختم بـ «Matur nuwun».
+      ar: |
+        **takon dalan** = السؤال عن الطريق (takon = يسأل، dalan = طريق = jalan).
+        وكل ما تحتاجه:
+        - السؤال: «… nang ngendi, ya?» = أين …؟ (وya تليّن السؤال).
+        - الجواب: lurus (مباشرة)، ngiwa (يسارًا)، nengen (يمينًا)، terus (ثم).
+        - الموضع: nang ngarep (أمام)، nang mburi (خلف)، nang jejeré (بجانب).
+        - والإشارة: sing kaé, nang kana = ذلك الذي هناك.
+        ومع الغريب ابدأ بـ Mas / Mbak واختم بـ «Matur nuwun».
+      en: |
+        **takon dalan** = asking the way (takon = ask, dalan = road = jalan).
+        All you need:
+        - The question: "… nang ngendi, ya?" = Where's …? (ya softens it).
+        - The answer: lurus (straight), ngiwa (left), nengen (right), terus (then).
+        - The spot: nang ngarep (in front), nang mburi (behind), nang jejeré (next to).
+        - Pointing: sing kaé, nang kana = that one over there.
+        With a stranger: open with Mas / Mbak and close with "Matur nuwun".
+    grammar: jv.preposition.place
+    examples:
+      - text: Mbak, stasiun nang ngendi, ya?
+        ar_eg: لو سمحتي يا آنسة، المحطة فين؟
+        ar: يا آنسة، أين المحطة من فضلك؟
+        en: Excuse me, where's the station?
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من الحوار) محمد رايح فين؟
+      ar: (من الحوار) إلى أين يذهب محمد؟
+      en: (From the dialogue) Where is Mohamed going?
+    options: ["Nang stasiun", "Nang pasar", "Nang kebun binatang"]
+    answer: 2
+    words: [nang, kebun binatang]
+  - id: e02
+    type: multiple_choice
+    question: Saka kene lurus wae, terus nengen.
+    question_meaning:
+      ar_eg: Mbak Wulan قالت كده. محمد يعمل إيه؟
+      ar: هكذا قالت Mbak Wulan. ماذا يفعل محمد؟
+      en: Mbak Wulan said this. What should Mohamed do?
+    options: ["Lurus, terus nengen", "Lurus, terus ngiwa", "Nengen, terus lurus"]
+    answer: 0
+    explain:
+      ar_eg: الأول lurus (على طول)، terus (وبعدين) nengen (يمين).
+      ar: أولًا lurus (مباشرة)، ثم terus nengen (يمينًا).
+      en: First lurus (straight), terus (then) nengen (right).
+    words: [lurus, terus, nengen]
+  - id: e03
+    type: listen
+    text: Kebun binatangé nang jejeré terminal.
+    options: ["Kebun binatangé nang jejeré terminal.", "Kebun binatangé nang ngarep terminal.", "Kebun binatangé nang mburi terminal."]
+    answer: 0
+    words: [jejeré]
+  - id: e04
+    type: fill_blank
+    sentence: Saka kene ___ wae, Mas.
+    meaning:
+      ar_eg: من هنا على طول يا أستاذ.
+      ar: من هنا امشِ مباشرة يا أخي.
+      en: From here just go straight, Mas.
+    answers: ["lurus"]
+    words: [lurus]
+  - id: e05
+    type: fill_blank
+    sentence: Mbak, kebun binatang nang ___, ya?
+    meaning:
+      ar_eg: لو سمحتي يا آنسة، جنينة الحيوانات فين؟
+      ar: يا آنسة، أين حديقة الحيوان من فضلك؟
+      en: Excuse me, where's the zoo?
+    answers: ["ngendi", "endi"]
+    words: [ngendi]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: يا آنسة، المحطة فين؟
+      ar: يا آنسة، أين المحطة؟
+      en: Mbak, where's the station?
+    answers: ["Mbak, stasiun nang ngendi?", "Mbak, stasiun nang ngendi", "Mbak stasiun nang ngendi?", "Mbak stasiun nang ngendi", "Mbak, stasiun neng ngendi?", "Mbak, stasiun neng ngendi", "Mbak stasiun neng ngendi?", "Mbak stasiun neng ngendi", "Mbak, stasiun nang ngendi, ya?", "Mbak, stasiun nang ngendi, ya", "Mbak stasiun nang ngendi ya?", "Mbak stasiun nang ngendi ya", "Mbak, stasiun neng ngendi, ya?", "Mbak, stasiun neng ngendi, ya", "Mbak stasiun neng ngendi ya?", "Mbak stasiun neng ngendi ya", "Mbak, stasiuné nang ngendi?", "Mbak, stasiuné nang ngendi", "Mbak stasiuné nang ngendi?", "Mbak stasiuné nang ngendi", "Mbak, stasiune nang ngendi?", "Mbak, stasiune nang ngendi", "Mbak stasiune nang ngendi?", "Mbak stasiune nang ngendi", "Mbak, stasiuné neng ngendi?", "Mbak, stasiuné neng ngendi", "Mbak stasiuné neng ngendi?", "Mbak stasiuné neng ngendi", "Mbak, stasiune neng ngendi?", "Mbak, stasiune neng ngendi", "Mbak stasiune neng ngendi?", "Mbak stasiune neng ngendi", "Mbak, stasiun nang endi?", "Mbak, stasiun nang endi", "Mbak stasiun nang endi?", "Mbak stasiun nang endi", "Mbak, stasiun ngendi?", "Mbak, stasiun ngendi", "Mbak stasiun ngendi?", "Mbak stasiun ngendi"]
+    words: [nang, ngendi]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: خش شمال، والمحل جنب الجامع.
+      ar: انعطف يسارًا، والكشك بجانب المسجد.
+      en: Turn left; the stall is next to the mosque.
+    answers: ["Ngiwa, warungé nang jejeré masjid.", "Ngiwa, warungé nang jejeré masjid", "Ngiwa warungé nang jejeré masjid.", "Ngiwa warungé nang jejeré masjid", "Ngiwa, warunge nang jejere masjid.", "Ngiwa, warunge nang jejere masjid", "Ngiwa warunge nang jejere masjid.", "Ngiwa warunge nang jejere masjid", "Ngiwa, warungé neng jejeré masjid.", "Ngiwa, warungé neng jejeré masjid", "Ngiwa warungé neng jejeré masjid.", "Ngiwa warungé neng jejeré masjid", "Ngiwa, warunge neng jejere masjid.", "Ngiwa, warunge neng jejere masjid", "Ngiwa warunge neng jejere masjid.", "Ngiwa warunge neng jejere masjid", "Ngiwa. Warungé nang jejeré masjid.", "Ngiwa. Warungé nang jejeré masjid", "Ngiwa. Warunge nang jejere masjid.", "Ngiwa. Warunge nang jejere masjid", "Ngiwa. Warungé neng jejeré masjid.", "Ngiwa. Warungé neng jejeré masjid", "Ngiwa. Warunge neng jejere masjid.", "Ngiwa. Warunge neng jejere masjid", "Ngiwa, terus warungé nang jejeré masjid.", "Ngiwa, terus warungé nang jejeré masjid", "Ngiwa terus warungé nang jejeré masjid.", "Ngiwa terus warungé nang jejeré masjid", "Ngiwa, terus warunge nang jejere masjid.", "Ngiwa, terus warunge nang jejere masjid", "Ngiwa terus warunge nang jejere masjid.", "Ngiwa terus warunge nang jejere masjid"]
+    words: [ngiwa, jejeré]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: جنينة الحيوانات جنب محطة الأتوبيس.
+      ar: حديقة الحيوان بجانب موقف الحافلات.
+      en: The zoo is next to the bus terminal.
+    answer: Kebun binatangé nang jejeré terminal.
+    distractors: ["saka", "kaé"]
+    words: [nang, jejeré]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Saka kene lurus wae, terus ngiwa.
+    answers_meaning:
+      ar_eg: ["من هنا على طول، وبعدين شمال", "من هنا على طول وبعدين شمال", "من هنا امشي على طول وبعدين خش شمال"]
+      ar: ["من هنا امشِ مباشرة ثم انعطف يسارًا", "من هنا مباشرة ثم يسارًا"]
+      en: ["From here go straight, then left", "From here go straight, then turn left", "Go straight from here, then turn left"]
+    words: [saka, kene, lurus, ngiwa]
+  - id: e10
+    type: multiple_choice
+    question_meaning:
+      ar_eg: Mbak Wulan بتشاور على المحطة البعيدة. تقول إيه؟
+      ar: تشير Mbak Wulan إلى المحطة البعيدة. ماذا تقول؟
+      en: Mbak Wulan points to the station far away. What does she say?
+    options: ["Sing kuwi, nang kono.", "Sing iki, nang kene.", "Sing kaé, nang kana."]
+    answer: 2
+    explain:
+      ar_eg: بعيد عن الاتنين ⇐ kaé وkana.
+      ar: البعيد عنهما ⇐ kaé وkana.
+      en: Far from both ⇒ kaé and kana.
+    words: [kaé, kana]
+  - id: e11
+    type: dictation
+    text: Lurus wae, terus nengen.
+    meaning:
+      ar_eg: على طول، وبعدين يمين.
+      ar: امشِ مباشرة ثم انعطف يمينًا.
+      en: Go straight, then turn right.
+    words: [lurus, nengen]
+  - id: e12
+    type: speaking
+    text: Mbak, kebun binatang nang ngendi, ya?
+    meaning:
+      ar_eg: لو سمحتي يا آنسة، جنينة الحيوانات فين؟
+      ar: يا آنسة، أين حديقة الحيوان من فضلك؟
+      en: Excuse me, where's the zoo?
+    words: [nang, ngendi]
+dialogue:
+  title: Takon dalan nang Wonokromo
+  lines:
+    - speaker: Mohamed
+      text: Mbak, kebun binatang nang ngendi, ya?
+      ar_eg: لو سمحتي يا آنسة، جنينة الحيوانات فين؟
+      ar: يا آنسة، أين حديقة الحيوان من فضلك؟
+      en: Excuse me, Mbak, where's the zoo?
+    - speaker: Mbak Wulan
+      text: Saka kene lurus wae, Mas.
+      ar_eg: من هنا على طول يا أستاذ.
+      ar: من هنا امشِ مباشرة يا أخي.
+      en: From here just go straight, Mas.
+    - speaker: Mohamed
+      text: Lurus wae? Terus?
+      ar_eg: على طول؟ وبعدين؟
+      ar: مباشرة؟ ثم ماذا؟
+      en: Straight? And then?
+    - speaker: Mbak Wulan
+      text: Terus nengen. Kebun binatangé nang jejeré terminal Joyoboyo.
+      ar_eg: وبعدين يمين. جنينة الحيوانات جنب موقف جويوبويو.
+      ar: ثم يمينًا. حديقة الحيوان بجانب موقف جويوبويو.
+      en: Then right. The zoo is next to Joyoboyo terminal.
+    - speaker: Mohamed
+      text: Terminalé sing endi? Sing kaé?
+      ar_eg: أنهي الموقف؟ اللي هناك ده؟
+      ar: أيّ موقف؟ ذلك الذي هناك؟
+      en: Which is the terminal? That one over there?
+    - speaker: Mbak Wulan
+      text: Iya, sing kaé, nang kana.
+      ar_eg: أيوه، اللي هناك ده.
+      ar: نعم، ذلك الذي هناك.
+      en: Yes, that one, over there.
+    - speaker: Mohamed
+      text: Matur nuwun, Mbak!
+      ar_eg: شكرًا يا آنسة!
+      ar: شكرًا يا آنسة!
+      en: Thank you, Mbak!
+    - speaker: Mbak Wulan
+      text: Padha-padha, Mas. Ati-ati, ya!
+      ar_eg: العفو يا أستاذ. خلي بالك من نفسك!
+      ar: عفوًا يا أخي. انتبه لنفسك!
+      en: You're welcome, Mas. Take care!
+new_words:
+  - word: dalan
+    pos: noun
+    ar_eg: طريق / شارع (= jalan)
+    ar: طريق (= jalan)
+    en: road, way (= jalan)
+  - word: terminal
+    pos: noun
+    ar_eg: موقف أتوبيسات (زي الإندونيسي)
+    ar: موقف حافلات (كالإندونيسية)
+    en: bus terminal (as in Indonesian)
+review:
+  status: draft
+  verified: false

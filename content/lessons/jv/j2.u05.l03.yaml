@@ -1,0 +1,284 @@
+schema: kabar.lesson/v1
+id: j2.u05.l03
+language: jv
+title: Dinané Sari
+can_do:
+  ar_eg: تحكي يوم كامل بالجاوي.
+  ar: أن تروي يومًا كاملًا بالجاوية.
+  en: Narrate a day.
+slides:
+  - title: Saben dina
+    body:
+      ar_eg: |
+        عشان تحكي يومك: الساعة + الفعل، وsaben dina = كل يوم (setiap hari).
+        - tangi = يصحى · salat Subuh = يصلي الصبح (صلاة، صبح) · adus = يستحمى
+        - sarapan = يفطر · mangkat = يطلع / يتحرك (berangkat) · kuliah = يروح الجامعة (من «كلية»)
+        - masak = يطبخ · nyapu، ngresiki omah، nyirami kembang = شغل البيت
+        - mulih = يروّح · turu = ينام
+        مثال: Jam setengah lima aku tangi. Jam pitu aku sarapan. Jam sepuluh bengi aku turu.
+        الفعل مابيتغيرش مع الزمن، زي الإندونيسي: الساعة أو wis / lagi / arep بيوضحوا الوقت.
+      ar: |
+        لتروي يومك: الساعة + الفعل، وsaben dina = كل يوم (setiap hari).
+        - tangi = يستيقظ · salat Subuh = يصلي الفجر (صلاة، صبح) · adus = يغتسل
+        - sarapan = يفطر · mangkat = ينطلق (berangkat) · kuliah = يدرس في الجامعة (من «كلية»)
+        - masak = يطبخ · nyapu وngresiki omah وnyirami kembang = أعمال البيت
+        - mulih = يعود إلى البيت · turu = ينام
+        مثال: Jam setengah lima aku tangi. Jam pitu aku sarapan. Jam sepuluh bengi aku turu.
+        ولا يتغير الفعل مع الزمن كالإندونيسية، بل تحدده الساعة أو wis / lagi / arep.
+      en: |
+        To tell your day: time + verb; saben dina = every day (setiap hari).
+        - tangi = wake up · salat Subuh = pray the dawn prayer (صلاة، صبح) · adus = have a bath
+        - sarapan = have breakfast · mangkat = set off (berangkat) · kuliah = go to university (from Arabic «كلية»)
+        - masak = cook · nyapu, ngresiki omah, nyirami kembang = chores
+        - mulih = go home · turu = sleep
+        Example: Jam setengah lima aku tangi. Jam pitu aku sarapan. Jam sepuluh bengi aku turu.
+        The verb never changes for time, as in Indonesian: the clock or wis / lagi / arep show when.
+    examples:
+      - text: Saben dina aku tangi jam setengah lima.
+        ar_eg: كل يوم بصحى الساعة أربعة ونص.
+        ar: أستيقظ كل يوم في الرابعة والنصف.
+        en: Every day I wake up at half past four.
+      - text: Neng Kairo, Sari kuliah.
+        ar_eg: في القاهرة، ساري بتدرس في الجامعة.
+        ar: في القاهرة تدرس ساري في الجامعة.
+        en: In Cairo, Sari goes to university.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي فعل معناه «يصحى من النوم»؟
+      ar: أي فعل يعني «يستيقظ»؟
+      en: Which verb means "wake up"?
+    options: ["turu", "tangi", "mulih"]
+    answer: 1
+    explain:
+      ar_eg: tangi = يصحى، turu = ينام، mulih = يروّح.
+      ar: tangi = يستيقظ، وturu = ينام، وmulih = يعود إلى البيت.
+      en: tangi = wake up, turu = sleep, mulih = go home.
+    words: [tangi, turu, mulih]
+  - id: e02
+    type: fill_blank
+    sentence: Jam setengah lima aku ___.
+    meaning:
+      ar_eg: الساعة أربعة ونص بصحى.
+      ar: في الرابعة والنصف أستيقظ.
+      en: At half past four I wake up.
+    options: ["turu", "mulih", "tangi"]
+    answers: [tangi]
+    words: [tangi]
+  - id: e03
+    type: fill_blank
+    sentence: Saben esuk Sari ___ kembang.
+    meaning:
+      ar_eg: ساري بتسقي الورد كل يوم الصبح.
+      ar: تسقي ساري الزهور كل صباح.
+      en: Sari waters the flowers every morning.
+    answers:
+      - nyirami
+    words: [nyirami, saben]
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: الساعة سبعة بفطر مع ماما.
+      ar: في السابعة أفطر مع أمي.
+      en: At seven I have breakfast with Mum.
+    answer: Jam pitu aku sarapan karo Ibu.
+    distractors: [bengi, turu]
+    words: [sarapan, karo]
+  - id: e05
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الساعة عشرة بنام.
+      ar: في العاشرة أنام.
+      en: At ten I go to sleep.
+    answers:
+      - Jam sepuluh aku turu.
+      - Jam sepuluh aku turu
+      - Aku turu jam sepuluh.
+      - Aku turu jam sepuluh
+      - Jam sepuluh bengi aku turu.
+      - Jam sepuluh bengi aku turu
+      - Aku turu jam sepuluh bengi.
+      - Aku turu jam sepuluh bengi
+    words: [turu, sepuluh]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: كل يوم بذاكر جاوي.
+      ar: أدرس الجاوية كل يوم.
+      en: Every day I study Javanese.
+    answers:
+      - Saben dina aku sinau basa Jawa.
+      - Saben dina aku sinau basa Jawa
+      - Aku sinau basa Jawa saben dina.
+      - Aku sinau basa Jawa saben dina
+      - Saben dina aku sinau Jawa.
+      - Saben dina aku sinau Jawa
+    words: [saben, dina, sinau]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: العصر بطبخ.
+      ar: في العصر أطبخ.
+      en: In the afternoon I cook.
+    answers:
+      - Soré aku masak.
+      - Soré aku masak
+      - Sore aku masak.
+      - Sore aku masak
+      - Aku masak soré.
+      - Aku masak soré
+      - Aku masak sore.
+      - Aku masak sore
+      - Saben soré aku masak.
+      - Saben soré aku masak
+      - Saben sore aku masak.
+      - Saben sore aku masak
+    words: [soré, masak]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: بروّح الساعة خمسة.
+      ar: أعود إلى البيت في الخامسة.
+      en: I go home at five.
+    answers:
+      - Aku mulih jam lima.
+      - Aku mulih jam lima
+      - Jam lima aku mulih.
+      - Jam lima aku mulih
+    words: [mulih, lima]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Jam lima aku salat Subuh.
+    answers_meaning:
+      ar_eg: ["الساعة خمسة بصلي الصبح.", "بصلي الفجر الساعة خمسة", "الساعة خمسة بصلي الفجر"]
+      ar: ["في الخامسة أصلي الفجر.", "أصلي الصبح في الخامسة"]
+      en: ["At five I pray the dawn prayer.", "At five I pray Fajr", "I pray Subuh at five"]
+    words: [salat, Subuh]
+  - id: e10
+    type: listen
+    text: Sari tangi jam setengah lima.
+    options: ["Sari tangi jam setengah lima.", "Sari tangi jam lima.", "Sari turu jam setengah lima."]
+    answer: 0
+    words: [tangi, setengah]
+  - id: e11
+    type: dictation
+    text: Jam pitu aku sarapan.
+    meaning:
+      ar_eg: الساعة سبعة بفطر.
+      ar: في السابعة أفطر.
+      en: At seven I have breakfast.
+    words: [sarapan]
+  - id: e12
+    type: speaking
+    text: Saben dina aku tangi jam lima.
+    meaning:
+      ar_eg: كل يوم بصحى الساعة خمسة.
+      ar: أستيقظ كل يوم في الخامسة.
+      en: Every day I wake up at five.
+    words: [saben, tangi]
+dialogue:
+  title: Saben dina neng omah
+  lines:
+    - speaker: Mohamed
+      text: Sari, saben dina kowé ngapa wae neng omah?
+      ar_eg: ساري، بتعملي إيه كل يوم في البيت؟
+      ar: يا ساري، ماذا تفعلين كل يوم في البيت؟
+      en: Sari, what do you do every day at home?
+    - speaker: Sari
+      text: Aku tangi jam setengah lima, salat Subuh.
+      ar_eg: بصحى الساعة أربعة ونص، وبصلي الصبح.
+      ar: أستيقظ في الرابعة والنصف وأصلي الفجر.
+      en: I wake up at half past four and pray the dawn prayer.
+    - speaker: Sari
+      text: Jam enem aku ngresiki omah.
+      ar_eg: الساعة ستة بنضّف البيت.
+      ar: في السادسة أنظّف البيت.
+      en: At six I clean the house.
+    - speaker: Mohamed
+      text: Jam enem? Isih esuk banget!
+      ar_eg: ستة؟ لسه بدري أوي!
+      ar: السادسة؟ هذا مبكر جدًا!
+      en: Six? That's really early!
+    - speaker: Sari
+      text: Iya. Jam pitu aku sarapan karo Ibu.
+      ar_eg: أيوه. الساعة سبعة بفطر مع ماما.
+      ar: نعم. في السابعة أفطر مع أمي.
+      en: Yes. At seven I have breakfast with Mum.
+    - speaker: Mohamed
+      text: Awan ngapa?
+      ar_eg: والضهر بتعملي إيه؟
+      ar: وماذا تفعلين ظهرًا؟
+      en: And at midday?
+    - speaker: Sari
+      text: Awan aku masak. Soré aku nyirami kembang.
+      ar_eg: الضهر بطبخ. العصر بسقي الورد.
+      ar: ظهرًا أطبخ، وعصرًا أسقي الزهور.
+      en: At midday I cook. In the afternoon I water the flowers.
+    - speaker: Mohamed
+      text: Bengi?
+      ar_eg: وبالليل؟
+      ar: وفي الليل؟
+      en: And at night?
+    - speaker: Sari
+      text: Bengi aku maca buku. Jam sepuluh aku turu.
+      ar_eg: بالليل بقرا كتاب. الساعة عشرة بنام.
+      ar: ليلًا أقرأ كتابًا، وفي العاشرة أنام.
+      en: At night I read a book. At ten I go to sleep.
+    - speaker: Mohamed
+      text: Wah, dinamu sibuk tenan!
+      ar_eg: ياه، يومك مليان بجد!
+      ar: يا لها من أيام مزدحمة!
+      en: Wow, your days are really busy!
+new_words:
+  - word: saben dina
+    pos: phrase
+    ar_eg: كل يوم
+    ar: كل يوم
+    en: every day (setiap hari)
+  - word: sarapan
+    pos: verb
+    ar_eg: يفطر
+    ar: يتناول الفطور
+    en: to have breakfast
+  - word: mangkat
+    pos: verb
+    ar_eg: يطلع / يتحرك
+    ar: ينطلق
+    en: to set off (berangkat)
+  - word: masak
+    pos: verb
+    ar_eg: يطبخ
+    ar: يطبخ
+    en: to cook
+  - word: salat
+    pos: noun
+    ar_eg: صلاة
+    ar: صلاة
+    en: prayer (ritual)
+    arabic: صلاة
+  - word: Subuh
+    pos: noun
+    ar_eg: الصبح (الفجر)
+    ar: الفجر
+    en: dawn prayer time
+    arabic: صبح
+  - word: kuliah
+    pos: verb
+    ar_eg: يدرس في الجامعة
+    ar: يدرس في الجامعة
+    en: to go to university, study at college
+    arabic: كلية
+  - word: sibuk
+    pos: adjective
+    ar_eg: مشغول
+    ar: مشغول
+    en: busy
+review:
+  status: draft
+  verified: false
