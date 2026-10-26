@@ -177,7 +177,7 @@ fn plain_items(blocks: &[Block]) -> Vec<ScreenItem> {
 
 /// Sort blocks top to bottom; a block that starts above the middle of the
 /// current row's first block joins that row, and rows read left to right.
-fn reading_order(blocks: &[OcrBlock]) -> Vec<&OcrBlock> {
+pub(crate) fn reading_order(blocks: &[OcrBlock]) -> Vec<&OcrBlock> {
     let mut sorted: Vec<&OcrBlock> = blocks.iter().collect();
     sorted.sort_by(|a, b| a.bbox.y.total_cmp(&b.bbox.y).then(a.bbox.x.total_cmp(&b.bbox.x)));
     let mut out = Vec::with_capacity(sorted.len());

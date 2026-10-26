@@ -1,4 +1,5 @@
-//! Reader tasks: explain a sentence, structure a screenshot.
+//! Reader tasks: explain a sentence. (structure_screenshot's answer is in
+//! `reader::screen_ai`.)
 
 use std::collections::BTreeSet;
 
@@ -57,68 +58,5 @@ impl AiOutput for ExplainSentence {
 
     fn input_needs_review(input: &Value) -> bool {
         input_is_javanese(input)
-    }
-}
-
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(rename_all = "lowercase")]
-pub enum ScreenKind {
-    Chat,
-    Listing,
-    Post,
-    Ui,
-}
-
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(rename_all = "lowercase")]
-pub enum Side {
-    Left,
-    Right,
-    Center,
-}
-
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
-pub struct ScreenMessage {
-    pub speaker: String,
-    pub side: Side,
-    pub text: String,
-    /// As printed on the screen (`10.42`); absent when none is shown.
-    #[serde(default)]
-    pub time: Option<String>,
-}
-
-/// A screenshot's OCR blocks, put in order: who said what, top to bottom.
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
-pub struct StructureScreenshot {
-    pub kind: ScreenKind,
-    pub messages: Vec<ScreenMessage>,
-}
-
-impl AiOutput for StructureScreenshot {
-    const TASK: Task = Task::StructureScreenshot;
-
-    fn validate(&self) -> Result<(), String> {
-        if self.messages.is_empty() {
-            return Err("messages must list every bubble or block on the screen".into());
-        }
-        for (i, m) in self.messages.iter().enumerate() {
-            filled(&m.text, &format!("messages[{i}].text"))?;
-            filled(&m.speaker, &format!("messages[{i}].speaker"))?;
-            match (self.kind, m.side) {
-                (ScreenKind::Chat, Side::Center) => {
-                    return Err(format!("messages[{i}]: chat bubbles are left or right"));
-                }
-                (ScreenKind::Chat, Side::Right) if m.speaker != "me" => {
-                    return Err(format!("messages[{i}]: right-hand bubbles belong to speaker `me`"));
-                }
-                (ScreenKind::Listing | ScreenKind::Post | ScreenKind::Ui, Side::Left | Side::Right) => {
-                    return Err(format!("messages[{i}]: only chat bubbles have a side; use center"));
-                }
-                _ => {}
-            }
-        }
-        Ok(())
     }
 }
