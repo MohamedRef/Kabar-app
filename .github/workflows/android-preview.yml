@@ -51,7 +51,10 @@ jobs:
 
       - name: Build APK
         working-directory: crates/app
-        run: dx bundle --platform android --release --package-types apk --out-dir ../../dist/android/raw
+        run: |
+          dx bundle --platform android --release --package-types apk \
+            --target aarch64-linux-android --no-default-features --features mobile \
+            --out-dir ../../dist/android/raw
 
       - name: Restore preview signing key
         id: key
@@ -83,6 +86,9 @@ jobs:
           apksigner sign --ks ~/.kabar-preview/preview.jks --ks-key-alias preview \
             --ks-pass "pass:$PASS" --key-pass "pass:$PASS" --out dist/android/kabar-preview.apk /tmp/aligned.apk
           apksigner verify --print-certs dist/android/kabar-preview.apk
+          # The S24 Ultra and Tab S11 are arm64; dx defaults to the emulator ABI.
+          unzip -l dist/android/kabar-preview.apk | grep -q 'lib/arm64-v8a/' \
+            || { echo "APK has no arm64-v8a library"; unzip -l dist/android/kabar-preview.apk; exit 1; }
           ls -lh dist/android/kabar-preview.apk
 
       - uses: actions/upload-artifact@v4

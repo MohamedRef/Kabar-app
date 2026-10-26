@@ -87,7 +87,7 @@ run-android device="":
 # Build a signed release APK into dist/android/kabar.apk
 apk:
     rm -rf {{dist}}/android && mkdir -p {{dist}}/android
-    cd {{app}} && dx bundle --platform android --release --package-types apk --out-dir ../../{{dist}}/android/raw
+    cd {{app}} && dx bundle --platform android --release --package-types apk --target aarch64-linux-android --no-default-features --features mobile --out-dir ../../{{dist}}/android/raw
     scripts/android-sign.sh "$(find {{dist}}/android/raw -name '*.apk' | head -1)" "{{dist}}/android/kabar.apk" "{{keystore}}" "{{key_alias}}"
 
 # List connected Android devices
