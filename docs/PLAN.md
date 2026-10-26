@@ -85,7 +85,7 @@ Every synced row: `id` (UUIDv7), `account_id`, `device_id`, `hlc` (64-bit: 48-bi
 | Reading | texts, text_tokens, word_status, highlights | texts/highlights: LWW · word_status: LWW per (lexeme) |
 | Learning | cards, review_log, curriculum_nodes, lessons, exercises, attempts, conversations, stories, souvenirs | review_log/attempts/xp_events: **append-only** · cards: derived from review_log · lessons/exercises: content pack |
 | Ink | notebooks, ink_documents, ink_strokes | strokes **immutable** (delete = event) · documents: LWW |
-| Coach | goals, daily_plans, reminders, reports, journal_entries, coach_memory, skill_scores | LWW (plans keyed by date) · journal: append-only |
+| Coach | goals, daily_plans, reminders, reports, journal_entries, coach_memory, skill_scores | LWW (plans keyed by date; journal reflections LWW per id, tombstone on delete) |
 | Account | accounts, devices, sessions (Lanjut), push_tokens, sync_events | server-owned; sessions LWW |
 | Quality | engine_runs, quality_feedback, golden_items | append-only |
 | System | content_packs, ai_cache, audio_cache, quota_usage, settings, cost_log, outbox | settings LWW · ai_cache shared via D1 · outbox local |
