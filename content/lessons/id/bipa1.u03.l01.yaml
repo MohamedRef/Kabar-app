@@ -115,7 +115,7 @@ exercises:
       ar_eg: إزاي تقول «دي عيلتي»؟
       ar: كيف تقول «هذه عائلتي»؟
       en: How do you say "This is my family"?
-    options: ["Saya keluarga ini.", "Keluarga ini saya.", "Ini keluarga saya."]
+    options: [Saya keluarga ini., Keluarga ini saya., Ini keluarga saya.]
     answer: 2
     explain:
       ar_eg: ini في الأول = «دي …»، وبعدين keluarga saya = عيلتي (الحاجة وبعدين صاحبها).
@@ -128,7 +128,7 @@ exercises:
       ar_eg: أنهي واحدة معناها «الراجل ده» (عبارة مش جملة)؟
       ar: أيّها تعني «ذلك الرجل» (عبارة لا جملة)؟
       en: Which one means "that person" (a phrase, not a sentence)?
-    options: ["itu orang", "orang siapa", "orang itu"]
+    options: [itu orang, orang siapa, orang itu]
     answer: 2
     explain:
       ar_eg: itu بعد الاسم = «الراجل ده». itu في الأول = «ده راجل».
@@ -136,86 +136,36 @@ exercises:
       en: itu after the noun = "that person"; itu first = "that is a person".
     words: [itu, orang]
   - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: رينا عندها ٢٠ سنة وأختها عندها ٢٥. أختها بالنسبة لها إيه؟
-      ar: عمر رينا عشرون عامًا وعمر أختها خمسة وعشرون. ما هي أختها بالنسبة إليها؟
-      en: Rina is 20 and her sister is 25. What is her sister to her?
-    options: ["kakak", "ibu", "adik"]
-    answer: 0
-    explain:
-      ar_eg: أكبر منها يبقى kakak، مهما كان ولد ولا بنت.
-      ar: الأكبر سنًّا kakak، ذكرًا كان أو أنثى.
-      en: Older means kakak, whether brother or sister.
-    words: [kakak, adik]
-  - id: e05
     type: listen
     text: Ini adik saya.
-    options: ["Ini kakak saya.", "Itu adik saya.", "Ini adik saya."]
+    options: [Ini kakak saya., Itu adik saya., Ini adik saya.]
     answer: 2
     words: [ini, adik]
-  - id: e06
+  - id: e05
     type: fill_blank
     sentence: Dimas, ___ ayah saya.
     meaning:
       ar_eg: (أبوك واقف جنبك) يا ديماس، ده أبويا.
       ar: (أبوك يقف بجانبك) يا ديماس، هذا أبي.
       en: (your father is right next to you) Dimas, this is my father.
-    options: ["siapa", "itu", "ini"]
+    options: [siapa, itu, ini]
     answers: [ini]
     explain:
       ar_eg: قريب منك يبقى ini.
       ar: القريب يشار إليه بـ ini.
       en: Near you means ini.
     words: [ini, ayah]
-  - id: e07
-    type: fill_blank
-    sentence: Orang ___ siapa?
-    meaning:
-      ar_eg: (بتشاور على حد بعيد) الراجل ده مين؟
-      ar: (تشير إلى شخص بعيد) مَن ذلك الرجل؟
-      en: (pointing at someone far away) Who is that person?
-    options: ["apa", "ini", "itu"]
-    answers: [itu]
-    words: [itu, siapa]
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: ده أخويا الصغير، بايو.
-      ar: هذا أخي الأصغر، بايو.
-      en: This is my younger brother, Bayu.
-    answer: Ini adik laki-laki saya, Bayu.
-    distractors: [itu, kakak]
-    words: [ini, adik, laki-laki]
-  - id: e09
+  - id: e06
     type: build_sentence
     source:
       ar_eg: الست دي مين؟
       ar: مَن هذه السيدة؟
       en: Who is this lady?
     answer: Ibu ini siapa?
-    alternatives: ["Siapa ibu ini?"]
+    alternatives: ['Siapa ibu ini?']
     distractors: [itu, apa]
     words: [ini, siapa]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: دي مراتي.
-      ar: هذه زوجتي.
-      en: This is my wife.
-    answers: ["Ini istri saya.", "Ini istri saya", "Ini istriku.", "Ini istri aku."]
-    words: [ini, istri]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: Itu kakak perempuan saya. Dia dokter.
-    answers_meaning:
-      ar_eg: ["دي أختي الكبيرة. هي دكتورة.", "دي أختي الكبيرة، دكتورة"]
-      ar: ["تلك أختي الكبرى. هي طبيبة.", "هذه أختي الكبرى، وهي طبيبة"]
-      en: ["That's my older sister. She's a doctor.", "That is my older sister; she is a doctor"]
-    words: [itu, kakak, perempuan]
-  - id: e12
+  - id: e07
     type: dictation
     text: Ini keluarga saya.
     meaning:
@@ -223,7 +173,7 @@ exercises:
       ar: هذه عائلتي.
       en: This is my family.
     words: [ini, keluarga]
-  - id: e13
+  - id: e08
     type: speaking
     text: Ini ayah saya, dan itu ibu saya.
     meaning:
@@ -295,31 +245,6 @@ new_words:
     ar_eg: أخ / أخت أصغر
     ar: الأخ / الأخت الأصغر
     en: younger sibling
-  - word: suami
-    pos: noun
-    ar_eg: جوز
-    ar: زوج
-    en: husband
-  - word: istri
-    pos: noun
-    ar_eg: مراتة، زوجة
-    ar: زوجة
-    en: wife
-  - word: anak
-    pos: noun
-    ar_eg: ابن / بنت، عيّل
-    ar: ابن / ابنة، ولد
-    en: child
-  - word: laki-laki
-    pos: noun
-    ar_eg: راجل، ذكر
-    ar: ذكر، رجل
-    en: male, man
-  - word: perempuan
-    pos: noun
-    ar_eg: ست، أنثى
-    ar: أنثى، امرأة
-    en: female, woman
 review:
   status: draft
   verified: false

@@ -24,10 +24,6 @@ slides:
         ar_eg: اسمي محمد.
         ar: اسمي محمد.
         en: My name is Mohamed.
-      - text: Saya Rina.
-        ar_eg: أنا رينا.
-        ar: أنا رينا.
-        en: I'm Rina.
   - title: Siapa nama Anda?
     body:
       ar_eg: |
@@ -49,10 +45,6 @@ slides:
         ar_eg: اسمك إيه؟
         ar: ما اسمك؟
         en: What's your name? (casual)
-      - text: Dia siapa? — Dia Dimas.
-        ar_eg: ده مين؟ — ده ديماس.
-        ar: مَن هذا؟ — هذا ديماس.
-        en: Who is he? — He's Dimas.
   - title: Saya mahasiswa
     body:
       ar_eg: |
@@ -131,7 +123,7 @@ exercises:
       ar_eg: إزاي تسأل حد غريب عن اسمه بالإندونيسي الصح المؤدب؟
       ar: كيف تسأل غريبًا عن اسمه بإندونيسية سليمة مهذبة؟
       en: How do you ask a stranger's name in polite, standard Indonesian?
-    options: ["Nama saya siapa?", "Siapa nama Anda?", "Apa nama Anda?"]
+    options: ['Nama saya siapa?', 'Siapa nama Anda?', 'Apa nama Anda?']
     answer: 1
     explain:
       ar_eg: الاسم بيتسأل عنه بـ siapa. «Apa nama» بتتسمع في الشارع بس مش الصح. و«Nama saya siapa?» يعني «اسمي إيه؟».
@@ -139,110 +131,31 @@ exercises:
       en: Names are asked with siapa; "Apa nama" is colloquial, and "Nama saya siapa?" means "What's my name?".
     words: [siapa, nama]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح ومعناها «هي كويسة / طيبة»؟
-      ar: أيّ جملة صحيحة بمعنى «هي طيبة»؟
-      en: Which sentence correctly means "She is nice"?
-    options: ["Dia adalah baik.", "Dia baik.", "Adalah dia baik."]
-    answer: 1
-    explain:
-      ar_eg: مافيش «يكون»، وadalah عمرها ما تيجي قبل صفة.
-      ar: لا فعل كينونة، وadalah لا تأتي قبل الصفة.
-      en: No "is" is needed, and adalah never comes before an adjective.
-    words: [adalah, baik]
-  - id: e04
     type: listen
     text: Siapa nama Anda?
-    options: ["Apa kabar, Bu?", "Siapa nama Anda?", "Nama saya Rina."]
+    options: ['Apa kabar, Bu?', 'Siapa nama Anda?', Nama saya Rina.]
     answer: 1
     words: [siapa, nama]
-  - id: e05
+  - id: e04
     type: fill_blank
     sentence: ___ nama Anda, Pak?
     meaning:
       ar_eg: اسم حضرتك إيه يا أستاذ؟
       ar: ما اسمك يا سيدي؟
       en: What is your name, sir?
-    options: ["Dia", "Dan", "Siapa"]
+    options: [Dia, Dan, Siapa]
     answers: [Siapa]
     words: [siapa]
-  - id: e06
-    type: fill_blank
-    sentence: Selamat siang. Nama ___ Mohamed.
-    meaning:
-      ar_eg: نهارك سعيد. اسمي محمد.
-      ar: طاب نهارك. اسمي محمد.
-      en: Good afternoon. My name is Mohamed.
-    answers: [saya]
-    explain:
-      ar_eg: «اسمي» = nama saya — الاسم الأول وبعدين صاحبه.
-      ar: «اسمي» = nama saya — المضاف ثم المضاف إليه.
-      en: '"My name" = nama saya: the thing first, then the owner.'
-    words: [nama, saya]
-  - id: e07
-    type: build_sentence
-    source:
-      ar_eg: اسمي رينا. أنا طالبة جامعة.
-      ar: اسمي رينا. أنا طالبة جامعية.
-      en: My name is Rina. I'm a university student.
-    answer: Nama saya Rina. Saya mahasiswa.
-    distractors: [dia, apa]
-    words: [nama, mahasiswa]
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: لا مؤاخذة، ده مين؟
-      ar: عفوًا، مَن هذا؟
-      en: Excuse me, who is he?
-    answer: Maaf, dia siapa?
-    alternatives: ["Maaf, siapa dia?"]
-    distractors: [apa, kamu]
-    explain:
-      ar_eg: الترتيبين صح، زي «ده مين؟» و«مين ده؟».
-      ar: يصح الترتيبان، كقولنا «مَن هذا؟» و«هذا مَن؟».
-      en: Both orders work, like «ده مين؟» and «مين ده؟».
-    words: [siapa, dia]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الأستاذ بودي مدرّس.
-      ar: الأستاذ بودي معلّم.
-      en: Pak Budi is a teacher.
-    answers: ["Pak Budi guru.", "Pak Budi guru", "Pak Budi adalah guru.", "Pak Budi adalah guru", "Pak Budi seorang guru.", "Pak Budi adalah seorang guru."]
-    explain:
-      ar_eg: مش محتاج «يكون». adalah صح برضه بس رسمي شوية.
-      ar: لا حاجة إلى فعل كينونة، وadalah صحيحة لكنها أكثر رسمية.
-      en: No "is" needed; adalah is also correct but more formal.
-    words: [guru]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (لـDimas) اسمك إيه؟
-      ar: (لـDimas) ما اسمك؟
-      en: (to Dimas) What's your name?
-    answers: ["Nama kamu siapa?", "Nama kamu siapa", "Siapa nama kamu?", "Siapa nama kamu", "Namamu siapa?", "Siapa namamu?"]
-    words: [nama, siapa, kamu]
-  - id: e11
+  - id: e05
     type: translate
     direction: from_target
     source_text: Jakarta adalah ibu kota Indonesia.
     answers_meaning:
-      ar_eg: ["جاكرتا هي عاصمة إندونيسيا.", "جاكرتا عاصمة إندونيسيا"]
-      ar: ["جاكرتا هي عاصمة إندونيسيا.", "جاكرتا عاصمة إندونيسيا"]
-      en: ["Jakarta is the capital of Indonesia.", "Jakarta is Indonesia's capital"]
+      ar_eg: [جاكرتا هي عاصمة إندونيسيا., جاكرتا عاصمة إندونيسيا]
+      ar: [جاكرتا هي عاصمة إندونيسيا., جاكرتا عاصمة إندونيسيا]
+      en: [Jakarta is the capital of Indonesia., Jakarta is Indonesia's capital]
     words: [adalah, ibu kota]
-  - id: e12
-    type: dictation
-    text: Nama saya Mohamed.
-    meaning:
-      ar_eg: اسمي محمد.
-      ar: اسمي محمد.
-      en: My name is Mohamed.
-    words: [nama, saya]
-  - id: e13
+  - id: e06
     type: speaking
     text: Selamat pagi. Nama saya Mohamed. Saya mahasiswa.
     meaning:

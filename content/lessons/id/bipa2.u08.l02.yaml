@@ -94,93 +94,36 @@ slides:
         en: I slept the whole time on the bus.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: ketika
-        ar_eg: لما
-        ar: عندما
-        en: when
-      - text: sambil
-        ar_eg: وهو بيعمل… (نفس الشخص)
-        ar: وهو يفعل… (الفاعل نفسه)
-        en: while (same person)
-      - text: selama
-        ar_eg: طول ما
-        ar: طوال
-        en: all the while, during
-      - text: sopir
-        ar_eg: سوّاق
-        ar: سائق
-        en: driver
-    words: [ketika, sambil, selama, sopir]
-  - id: e02
     type: fill_blank
     sentence: Saya minum kopi ___ membaca koran.
     meaning:
       ar_eg: بشرب قهوة وأنا بقرا الجرنال.
       ar: أشرب القهوة وأنا أقرأ الجريدة.
       en: I drink coffee while reading the newspaper.
-    options: ["akhirnya", "pertama", "sambil"]
+    options: [akhirnya, pertama, sambil]
     answers: [sambil]
     words: [sambil]
-  - id: e03
+  - id: e02
     type: multiple_choice
     question: Ibu memasak ___ ayah membaca koran.
     question_meaning:
       ar_eg: ماما بتطبخ لما بابا بيقرا الجرنال. (شخصين مختلفين)
       ar: الأم تطبخ بينما يقرأ الأب الجريدة. (فاعلان مختلفان)
       en: Mum cooks while Dad reads the newspaper. (two different people)
-    options: ["ketika", "sambil"]
+    options: [ketika, sambil]
     answer: 0
     explain:
       ar_eg: هنا شخصين مختلفين (ibu وayah)، يبقى ketika. sambil لنفس الشخص بس.
       ar: الفاعلان مختلفان (ibu وayah)، فتُستعمل ketika، لأن sambil لفاعل واحد.
       en: Two different people (ibu, ayah), so ketika; sambil is for one person only.
     words: [ketika, sambil]
-  - id: e04
+  - id: e03
     type: listen
     text: Ketika kami sampai, hujan mulai turun.
-    options: ["Setelah kami sampai, hujan mulai turun.", "Sebelum kami sampai, hujan mulai turun.", "Ketika kami sampai, hujan mulai turun."]
+    options: ['Setelah kami sampai, hujan mulai turun.', 'Sebelum kami sampai, hujan mulai turun.', 'Ketika kami sampai, hujan mulai turun.']
     answer: 2
     words: [ketika]
-  - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح؟
-      ar: أيّ الجملتين صحيحة؟
-      en: Which sentence is correct?
-    options: ["Saya membaca ketika adik saya tidur.", "Saya membaca sambil adik saya tidur."]
-    answer: 0
-    explain:
-      ar_eg: أنا بقرا وأخويا هو اللي نايم، يعني شخصين، فلازم ketika.
-      ar: القارئ غير النائم، فالفاعلان مختلفان ويلزم ketika.
-      en: The reader and the sleeper are different people, so ketika.
-    words: [ketika, sambil]
-  - id: e06
-    type: fill_blank
-    sentence: ___ kecil, saya tinggal di Kairo.
-    meaning:
-      ar_eg: وأنا صغير كنت عايش في القاهرة.
-      ar: عندما كنت صغيرًا عشت في القاهرة.
-      en: When I was little, I lived in Cairo.
-    options: ["Waktu", "Sambil", "Akhirnya"]
-    answers: [Waktu]
-    explain:
-      ar_eg: waktu = لما (ومن العربي «وقت»). sambil محتاجة فعلين لنفس الشخص في نفس الجملة.
-      ar: waktu = عندما (من «وقت»)، أما sambil فتربط فعلين لفاعل واحد.
-      en: waktu = when (← Arabic «وقت»); sambil links two actions of one person.
-    words: [waktu]
-  - id: e07
-    type: fill_blank
-    sentence: Jangan main HP ___ menyetir!
-    meaning:
-      ar_eg: ماتلعبش في الموبايل وإنت سايق!
-      ar: لا تستعمل الهاتف وأنت تقود!
-      en: Don't use your phone while driving!
-    options: ["pertama", "akhirnya", "sambil"]
-    answers: [sambil]
-    words: [sambil, menyetir]
-  - id: e08
+  - id: e04
     type: build_sentence
     source:
       ar_eg: بسمع مزيكا وأنا راكب الأتوبيس.
@@ -189,43 +132,7 @@ exercises:
     answer: Saya mendengarkan musik sambil naik bus.
     distractors: [ketika, kami]
     words: [sambil, mendengarkan]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: لما كنت في بيدوجول، المطر نزل.
-      ar: عندما كنت في بيدوغول هطل المطر.
-      en: When I was in Bedugul, it rained.
-    answer: Ketika saya di Bedugul, hujan turun.
-    distractors: [sambil, ke]
-    words: [ketika, hujan]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: ديماس بياكل وهو بيتفرج على التليفزيون.
-      ar: يأكل ديماس وهو يشاهد التلفاز.
-      en: Dimas eats while watching TV.
-    answers:
-      - Dimas makan sambil menonton TV.
-      - Dimas makan sambil menonton TV
-      - Dimas makan sambil nonton TV.
-      - Dimas makan sambil nonton TV
-      - Dimas makan sambil menonton televisi.
-    explain:
-      ar_eg: نفس الشخص (Dimas) بيعمل حاجتين، يبقى sambil. nonton هي الشكل العامي لـ menonton.
-      ar: الفاعل واحد (Dimas) فتُستعمل sambil، وnonton صيغة عامية لـ menonton.
-      en: One person (Dimas) doing two things, so sambil; nonton is the casual form of menonton.
-    words: [sambil, menonton]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: Selama di bus, saya tidur.
-    answers_meaning:
-      ar_eg: ["طول ما أنا في الأتوبيس كنت نايم.", "نمت طول ما أنا في الأتوبيس", "نمت طول الطريق في الأتوبيس"]
-      ar: ["نمت طوال وجودي في الحافلة.", "طوال الوقت في الحافلة كنت نائمًا", "نمت طوال الرحلة في الحافلة"]
-      en: ["I slept the whole time on the bus.", "While on the bus, I slept.", "I slept all the way on the bus"]
-    words: [selama]
-  - id: e12
+  - id: e05
     type: dictation
     text: Pak sopir menyetir sambil bernyanyi.
     meaning:
@@ -233,7 +140,7 @@ exercises:
       ar: السائق يقود وهو يغنّي.
       en: The driver drives while singing.
     words: [sopir, menyetir, sambil]
-  - id: e13
+  - id: e06
     type: speaking
     text: Saya melihat pemandangan sambil naik bus ke Bedugul.
     meaning:
@@ -300,11 +207,6 @@ new_words:
     ar_eg: سوّاق
     ar: سائق
     en: driver
-  - word: pemandangan
-    pos: noun
-    ar_eg: منظر
-    ar: منظر طبيعي
-    en: scenery, view
 review:
   status: draft
   verified: false

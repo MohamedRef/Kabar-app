@@ -74,7 +74,7 @@ exercises:
       ar_eg: محمد عايز يسأل ستّ كبيرة على سوق تريويندو. يبدأ إزاي؟
       ar: يريد محمد أن يسأل امرأة مسنّة عن سوق تريويندو. كيف يبدأ؟
       en: Mohamed wants to ask an old lady the way to Pasar Triwindu. How does he start?
-    options: ["Heh, Pasar Triwindu nang endi?", "Mbah, Pasar Triwindu ngendi?", "Nyuwun sewu, Mbah. Pasar Triwindu ing pundi, nggih?"]
+    options: ['Heh, Pasar Triwindu nang endi?', 'Mbah, Pasar Triwindu ngendi?', 'Nyuwun sewu, Mbah. Pasar Triwindu ing pundi, nggih?']
     answer: 2
     explain:
       ar_eg: Nyuwun sewu في الأول، وpundi الكراما، وnggih في الآخر بتليّن السؤال زي «لو سمحتي».
@@ -84,7 +84,7 @@ exercises:
   - id: e03
     type: listen
     text: Saking mriki lurus kemawon, lajeng nengen.
-    options: ["Saking mriki lurus kemawon, lajeng nengen.", "Saking mrika lurus kemawon, lajeng nengen.", "Saking mriki lurus kemawon, lajeng ngiwa."]
+    options: ['Saking mriki lurus kemawon, lajeng nengen.', 'Saking mrika lurus kemawon, lajeng nengen.', 'Saking mriki lurus kemawon, lajeng ngiwa.']
     answer: 0
     explain:
       ar_eg: mriki = هنا، nengen = يمين. ngiwa = شمال، mrika = هناك.
@@ -98,7 +98,7 @@ exercises:
       ar_eg: بعيد يا تيتة؟ — لأ، قريب خالص.
       ar: هل هو بعيد يا جدتي؟ — لا، قريب فقط.
       en: Is it far, Grandma? — No, it's quite close.
-    options: ["cedhak", "tebih", "celak"]
+    options: [cedhak, tebih, celak]
     answers: [celak]
     explain:
       ar_eg: celak = قريب بالكراما (cedhak بالنغوكو). والتيتة بتتكلم كراما، فخليك كراما.
@@ -112,7 +112,7 @@ exercises:
       ar_eg: من هنا أروح إزاي يا تيتة؟ — على طول، وبعدين شمال.
       ar: كيف أذهب من هنا يا جدتي؟ — إلى الأمام، ثم يسارًا.
       en: How do I go from here, Grandma? — Straight on, then left.
-    answers: ["lajeng", "Lajeng"]
+    answers: [lajeng, Lajeng]
     explain:
       ar_eg: lajeng = terus (وبعدين) بالكراما.
       ar: lajeng = terus (ثم) بالكراما.
@@ -147,35 +147,13 @@ exercises:
       ar_eg: (بالكراما) بعيد يا حاج؟
       ar: (بالكراما) هل هو بعيد يا سيدي؟
       en: (in krama) Is it far, sir?
-    answers: ["Tebih, Pak?", "Tebih, Pak", "Tebih Pak?", "Tebih Pak", "Menapa tebih, Pak?", "Menapa tebih, Pak", "Menapa tebih Pak?", "Menapa tebih Pak", "Napa tebih, Pak?", "Napa tebih, Pak", "Napa tebih Pak?", "Napa tebih Pak"]
+    answers: ['Tebih, Pak?', 'Tebih, Pak', 'Tebih Pak?', Tebih Pak, 'Menapa tebih, Pak?', 'Menapa tebih, Pak', 'Menapa tebih Pak?', Menapa tebih Pak, 'Napa tebih, Pak?', 'Napa tebih, Pak', 'Napa tebih Pak?', Napa tebih Pak]
     explain:
       ar_eg: tebih = adoh (بعيد). ممكن تبدأ بـ menapa / napa كسؤال نعم أو لأ (زي Apa jauh?).
       ar: tebih = adoh (بعيد)، ويجوز أن تبدأ بـ menapa أو napa لسؤال نعم/لا.
       en: tebih = adoh (far). You can open with menapa / napa as a yes–no marker (like Apa jauh?).
     words: [tebih]
   - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: من هنا على طول، وبعدين يمين.
-      ar: من هنا إلى الأمام مباشرة، ثم يمينًا.
-      en: From here go straight on, then right.
-    answers: ["Saking mriki lurus kemawon, lajeng nengen.", "Saking mriki lurus kemawon, lajeng nengen", "Saking mriki lurus kemawon lajeng nengen.", "Saking mriki lurus kemawon lajeng nengen", "Saking mriki lurus, lajeng nengen.", "Saking mriki lurus, lajeng nengen", "Saking mriki lurus lajeng nengen.", "Saking mriki lurus lajeng nengen", "Saking mriki lurus mawon, lajeng nengen.", "Saking mriki lurus mawon, lajeng nengen", "Saking mriki lurus mawon lajeng nengen.", "Saking mriki lurus mawon lajeng nengen"]
-    explain:
-      ar_eg: saking mriki = من هنا (saka kene)، lurus kemawon = على طول، lajeng nengen = وبعدين يمين. (mawon = kemawon في الكلام.)
-      ar: saking mriki = من هنا، وlurus kemawon = إلى الأمام، وlajeng nengen = ثم يمينًا، وmawon صورة كلامية من kemawon.
-      en: saking mriki = from here, lurus kemawon = straight on, lajeng nengen = then right. (mawon is spoken kemawon.)
-    words: [saking, mriki, kemawon, lajeng, nengen]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Mboten tebih, Mas. Saged mlampah.
-    answers_meaning:
-      ar_eg: ["مش بعيد يا ابني. ممكن تروح مشي.", "مش بعيد. تقدر تمشي.", "مش بعيد، ممكن تمشي.", "مش بعيد يا أستاذ، ينفع تمشي."]
-      ar: ["ليس بعيدًا يا بني. يمكنك أن تمشي.", "ليس بعيدًا، يمكن الذهاب مشيًا."]
-      en: ["It's not far. You can walk.", "Not far. You can walk.", "It's not far, you can walk there.", "It isn't far. You can walk."]
-    words: [tebih, saged, mlampah]
-  - id: e11
     type: speaking
     text: Nyuwun sewu, Mbah. Pasar Triwindu ing pundi, nggih?
     meaning:
@@ -183,7 +161,7 @@ exercises:
       ar: عفوًا يا جدتي. أين سوق تريويندو من فضلكِ؟
       en: Excuse me, Grandma. Where is Pasar Triwindu, please?
     words: [nyuwun sewu, pundi]
-  - id: e12
+  - id: e10
     type: dictation
     text: Matur nuwun sanget, Mbah.
     meaning:
@@ -199,11 +177,6 @@ dialogue:
       ar_eg: لا مؤاخذة يا تيتة. أنا رايح سوق تريويندو. فين لو سمحتي؟
       ar: عفوًا يا جدتي. أنا ذاهب إلى سوق تريويندو. أين هو من فضلكِ؟
       en: Excuse me, Grandma. I'm going to Pasar Triwindu. Where is it, please?
-    - speaker: Mbah Darmi
-      text: Pasar Triwindu? Celak kemawon, Mas.
-      ar_eg: سوق تريويندو؟ قريب خالص يا ابني.
-      ar: سوق تريويندو؟ إنه قريب يا بني.
-      en: Pasar Triwindu? It's quite close.
     - speaker: Mohamed
       text: Saking mriki pripun, Mbah?
       ar_eg: من هنا أروح إزاي يا تيتة؟
@@ -220,41 +193,26 @@ dialogue:
       ar: هل يمكنني الذهاب مشيًا يا جدتي؟
       en: Can I walk, Grandma?
     - speaker: Mbah Darmi
-      text: Saged, Mas. Mboten tebih. Sampéyan saking pundi?
-      ar_eg: ينفع يا ابني، مش بعيد. إنت منين؟
-      ar: نعم يا بني، ليس بعيدًا. من أين أنت؟
-      en: Yes, you can. It's not far. Where are you from?
+      text: Saged, Mas. Mboten tebih.
+      ar_eg: أيوه تقدر. مش بعيد.
+      ar: نعم تستطيع. ليس بعيدًا.
+      en: Yes, you can. It's not far.
     - speaker: Mohamed
-      text: Kula saking Mesir, Mbah. Matur nuwun sanget.
-      ar_eg: أنا من مصر يا تيتة. شكرًا جزيلًا.
-      ar: أنا من مصر يا جدتي. شكرًا جزيلًا.
-      en: I'm from Egypt, Grandma. Thank you very much.
-    - speaker: Mbah Darmi
-      text: Sami-sami, Mas.
-      ar_eg: العفو يا ابني.
-      ar: عفوًا يا بني.
-      en: You're welcome.
+      text: Matur nuwun sanget, Mbah.
+      ar_eg: متشكر قوي يا تيتة.
+      ar: شكرًا جزيلًا يا جدّة.
+      en: Thank you very much, Grandma.
 new_words:
   - word: mriki
     pos: adverb
     ar_eg: هنا (kene ← sini)، كراما
     ar: هنا (kene ← sini)، كراما
     en: here (ngoko kene, Indonesian sini), krama
-  - word: mrika
-    pos: adverb
-    ar_eg: هناك (kana ← sana)، كراما
-    ar: هناك (kana ← sana)، كراما
-    en: over there (ngoko kana, Indonesian sana), krama
   - word: tebih
     pos: adjective
     ar_eg: بعيد (adoh ← jauh)، كراما
     ar: بعيد (adoh ← jauh)، كراما
     en: far (ngoko adoh, Indonesian jauh), krama
-  - word: celak
-    pos: adjective
-    ar_eg: قريب (cedhak ← dekat)، كراما
-    ar: قريب (cedhak ← dekat)، كراما
-    en: near (ngoko cedhak, Indonesian dekat), krama
   - word: lajeng
     pos: conjunction
     ar_eg: وبعدين (terus ← lalu)، كراما
@@ -275,11 +233,6 @@ new_words:
     ar_eg: بس (wae ← saja)، كراما؛ في الكلام mawon
     ar: فقط (wae ← saja)، كراما؛ وفي الكلام mawon
     en: just, only (ngoko wae, Indonesian saja), krama; spoken mawon
-  - word: sami-sami
-    pos: phrase
-    ar_eg: العفو (sama-sama)، كراما
-    ar: عفوًا، ردًّا على الشكر (sama-sama)، كراما
-    en: you're welcome (Indonesian sama-sama), krama
 review:
   status: draft
   verified: false

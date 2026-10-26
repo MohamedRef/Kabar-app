@@ -1,222 +1,194 @@
 schema: kabar.lesson/v1
 id: bipa2.u02.l05
 language: id
-title: Ulangan Unit 2
+title: Wawancara singkat
 can_do:
-  ar_eg: توصف شغلانة وتقول ليه اخترتها.
-  ar: أن تصف عملًا وتشرح سبب اختيارك له.
-  en: Describe a job and why you chose it.
+  ar_eg: ترد على أسئلة بسيطة في مقابلة شغل.
+  ar: أن تجيب عن أسئلة بسيطة في مقابلة.
+  en: Answer simple interview questions.
+slides:
+  - title: Mengapa Anda …? — Karena …
+    body:
+      ar_eg: |
+        في المقابلة الكلام رسمي: Anda بدل kamu، وmengapa بدل kenapa.
+        أسئلة هتسمعها:
+        - Apa pekerjaan Anda sekarang? = بتشتغل إيه دلوقتي؟
+        - Mengapa Anda mau bekerja di sini? = عايز تشتغل هنا ليه؟
+        وابدأ ردك بـ Karena … علطول.
+        كلمة جديدة بـ peN-: terjemah (من العربي «ترجمة») → penerjemah = مترجم.
+        وpemandu wisata = مرشد سياحي. Saya mau menjadi … = عايز أبقى …
+      ar: |
+        الكلام في المقابلة رسمي: Anda بدل kamu، وmengapa بدل kenapa.
+        أسئلة متوقعة:
+        - Apa pekerjaan Anda sekarang؟ = ما عملك الآن؟
+        - Mengapa Anda mau bekerja di sini؟ = لماذا تريد العمل هنا؟
+        وابدأ جوابك بـ Karena …
+        كلمة جديدة بـ peN-: terjemah (من العربية «ترجمة») → penerjemah = مترجم.
+        وpemandu wisata = مرشد سياحي، وSaya mau menjadi … = أريد أن أصبح …
+      en: |
+        Interviews are formal: Anda instead of kamu, mengapa instead of kenapa.
+        Questions you'll hear:
+        - Apa pekerjaan Anda sekarang? = What do you do now?
+        - Mengapa Anda mau bekerja di sini? = Why do you want to work here?
+        Start your answer with Karena …
+        A new peN- word: terjemah (from Arabic «ترجمة», translation) → penerjemah = translator.
+        pemandu wisata = tour guide. Saya mau menjadi … = I want to become …
+    grammar: id.question.mengapa
+    examples:
+      - text: Mengapa Anda mau bekerja di sini?
+        ar_eg: عايز تشتغل هنا ليه؟
+        ar: لماذا تريد العمل هنا؟
+        en: Why do you want to work here?
+      - text: Saya mau menjadi pemandu wisata.
+        ar_eg: عايز أبقى مرشد سياحي.
+        ar: أريد أن أصبح مرشدًا سياحيًا.
+        en: I want to become a tour guide.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: penari
-        ar_eg: راقص
-        ar: راقص
-        en: dancer
-      - text: penjual
-        ar_eg: بيّاع
-        ar: بائع
-        en: seller
-      - text: penerjemah
-        ar_eg: مترجم
-        ar: مترجم
-        en: translator
-      - text: pemandu wisata
-        ar_eg: مرشد سياحي
-        ar: مرشد سياحي
-        en: tour guide
-      - text: petani
-        ar_eg: فلاح
-        ar: مزارع
-        en: farmer
-    words: [penari, penjual, penerjemah, pemandu wisata, petani]
-  - id: e02
-    type: match_pairs
-    pairs:
-      - text: kantor
-        ar_eg: مكتب
-        ar: مكتب
-        en: office
-      - text: rapat
-        ar_eg: اجتماع
-        ar: اجتماع
-        en: meeting
-      - text: lembur
-        ar_eg: أوفر تايم
-        ar: عمل إضافي
-        en: overtime
-      - text: rekan kerja
-        ar_eg: زميل في الشغل
-        ar: زميل عمل
-        en: colleague
-    words: [kantor, rapat, lembur, rekan kerja]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: menulis = بيكتب. الكاتب اسمه إيه؟
-      ar: menulis = يكتب. ما اسم الكاتب؟
-      en: menulis = to write. What's a writer?
-    options: ["penulis", "pemulis", "petulis"]
-    answer: 0
-    explain:
-      ar_eg: "زي menulis: t بتقع، وتبقى pen-."
-      ar: "كما في menulis: تسقط t وتصير pen-."
-      en: As in menulis, t drops → pen-.
-    words: [penulis]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: berdagang = يتاجر. التاجر اسمه إيه؟
-      ar: berdagang = يتاجر. ما اسم التاجر؟
-      en: berdagang = to trade. What's a trader?
-    options: ["pendagang", "perdagang", "pedagang"]
-    answer: 2
-    explain:
-      ar_eg: مع أفعال ber- غالبًا pe- بس.
-      ar: مع أفعال ber- تأتي pe- غالبًا.
-      en: ber- verbs usually take plain pe-.
-    words: [pedagang]
-  - id: e05
     type: listen
-    text: Kenapa kamu memilih pekerjaan ini?
-    options: ["Kenapa kamu suka pekerjaan itu?", "Kenapa kamu memilih pekerjaan ini?", "Kapan kamu memilih pekerjaan ini?"]
-    answer: 1
-    words: [kenapa, memilih, pekerjaan]
-  - id: e06
+    text: Mengapa Anda mau menjadi pemandu wisata?
+    options: ['Mengapa Anda mau menjadi pemandu wisata?', 'Kapan Anda mau menjadi pemandu wisata?', 'Apa Anda mau menjadi penulis?']
+    answer: 0
+    words: [mengapa, menjadi, pemandu wisata]
+  - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: صاحبك شكله زعلان. تسأله «مالك؟» إزاي؟
-      ar: يبدو صديقك حزينًا. كيف تسأله «ما بك؟»؟
-      en: Your friend looks upset. How do you ask "What's wrong?"
-    options: ["Kamu kenapa?", "Kamu karena?", "Mengapa Anda?"]
+      ar_eg: بو ماديه سألتك «Apa pekerjaan Anda sekarang?». أنهي رد مناسب؟
+      ar: سألتك بو ماديه «Apa pekerjaan Anda sekarang؟». أيّ جواب يناسب؟
+      en: Bu Made asks "Apa pekerjaan Anda sekarang?". Which answer fits?
+    options: [Saya penerjemah di Kairo., Saya pulang jam lima., Karena saya suka Bali.]
     answer: 0
-    words: [kenapa]
-  - id: e07
+    words: [pekerjaan, penerjemah]
+  - id: e03
     type: fill_blank
-    sentence: ___ hujan, kami tidak pergi ke pasar.
+    sentence: Saya mau bekerja di sini ___ saya suka bertemu orang baru.
     meaning:
-      ar_eg: عشان كانت بتمطر، مرحناش السوق.
-      ar: بسبب المطر لم نذهب إلى السوق.
-      en: Because it rained, we didn't go to the market.
-    options: ["Karena", "Mengapa", "Tetapi"]
-    answers: [Karena]
+      ar_eg: عايز أشتغل هنا عشان بحب أقابل ناس جديدة.
+      ar: أريد العمل هنا لأنني أحب لقاء أناس جدد.
+      en: I want to work here because I like meeting new people.
+    answers: [karena, sebab]
     words: [karena]
-  - id: e08
+  - id: e04
     type: fill_blank
-    sentence: Jam dua belas saya ___ makan siang dengan rekan kerja.
+    sentence: Orang yang memandu turis adalah ___.
     meaning:
-      ar_eg: الساعة ١٢ باخد بريك الغدا مع زمايلي.
-      ar: في الثانية عشرة آخذ استراحة الغداء مع زملائي.
-      en: At twelve I have my lunch break with colleagues.
-    answers: [istirahat]
-    words: [istirahat, rekan kerja]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: والدة وايان تاجرة في سوق بادونج.
-      ar: والدة وايان تاجرة في سوق بادونغ.
-      en: Wayan's mother is a trader at Badung Market.
-    answer: Ibu Wayan pedagang di Pasar Badung.
-    distractors: [berdagang, penari]
-    words: [pedagang]
-  - id: e10
-    type: build_sentence
-    source:
-      ar_eg: النهارده قعدت أوفر تايم، فأنا تعبان.
-      ar: عملت ساعات إضافية اليوم، لذا أنا متعب.
-      en: I worked overtime today, so I'm tired.
-    answer: Hari ini saya lembur, jadi saya lelah.
-    distractors: [karena, libur]
-    words: [lembur, lelah]
-  - id: e11
+      ar_eg: (اكتب الكلمة) الشخص اللي بيرشد السياح اسمه مرشد.
+      ar: (اكتب الكلمة) من يرشد السياح يُسمّى مرشدًا.
+      en: (Type the word.) A person who guides tourists is a guide.
+    answers: [pemandu, pemandu wisata]
+    words: [pemandu wisata]
+  - id: e05
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: (رسمي) حضرتك اخترت الشغلانة دي ليه؟
-      ar: (رسمي) لماذا اخترت هذا العمل؟
-      en: (formal) Why did you choose this job?
-    answers:
-      - Mengapa Anda memilih pekerjaan ini?
-      - Mengapa Anda memilih pekerjaan ini
-      - Kenapa Anda memilih pekerjaan ini?
-    words: [mengapa, memilih, pekerjaan]
-  - id: e12
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا مرشد سياحي عشان بحب أقابل ناس جديدة.
-      ar: أنا مرشد سياحي لأنني أحب لقاء أناس جدد.
-      en: I'm a tour guide because I like meeting new people.
-    answers:
-      - Saya pemandu wisata karena saya suka bertemu orang baru.
-      - Saya pemandu wisata karena saya suka bertemu orang baru
-      - Saya pemandu wisata karena saya senang bertemu orang baru.
-      - Saya pemandu wisata karena suka bertemu orang baru.
-      - Saya pemandu wisata sebab saya suka bertemu orang baru.
-      - Saya seorang pemandu wisata karena saya suka bertemu orang baru.
-      - Aku pemandu wisata karena aku suka bertemu orang baru.
-    words: [pemandu wisata, karena]
-  - id: e13
+      ar_eg: (رسمي) حضرتك عايز تشتغل هنا ليه؟
+      ar: (رسمي) لماذا تريد العمل هنا؟
+      en: (formal) Why do you want to work here?
+    answers: ['Mengapa Anda mau bekerja di sini?', Mengapa Anda mau bekerja di sini, 'Mengapa Anda ingin bekerja di sini?', 'Kenapa Anda mau bekerja di sini?', 'Kenapa Anda ingin bekerja di sini?']
+    words: [mengapa, bekerja]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: أنا مترجم في القاهرة.
+      ar: أنا مترجم في القاهرة.
+      en: I'm a translator in Cairo.
+    answer: Saya penerjemah di Kairo.
+    distractors: [penulis, menerjemah]
+    words: [penerjemah]
+  - id: e07
     type: translate
     direction: from_target
-    source_text: Ni Luh bekerja di hotel. Dia sibuk, tapi dia suka pekerjaannya.
+    source_text: Kami perlu pemandu untuk turis dari Timur Tengah.
     answers_meaning:
-      ar_eg: ["ني لوه بتشتغل في فندق. هي مشغولة، بس بتحب شغلها", "ني لوه شغالة في فندق، مشغولة بس بتحب شغلها"]
-      ar: ["تعمل ني لوه في فندق. هي مشغولة، لكنها تحب عملها", "ني لوه تعمل في فندق؛ إنها مشغولة لكنها تحب عملها"]
-      en: ["Ni Luh works at a hotel. She's busy, but she likes her job.", "Ni Luh works in a hotel. She is busy but she loves her job."]
-    words: [bekerja, sibuk, pekerjaan]
-  - id: e14
+      ar_eg: [إحنا محتاجين مرشد للسياح اللي جايين من الشرق الأوسط, محتاجين مرشد سياحي لسياح الشرق الأوسط]
+      ar: [نحتاج إلى مرشد للسياح القادمين من الشرق الأوسط, نحتاج مرشدًا لسياح الشرق الأوسط]
+      en: [We need a guide for tourists from the Middle East., We need guides for tourists from the Middle East.]
+    words: [pemandu, turis, perlu]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: (رسمي) تقدر تشتغل يوم السبت؟
+      ar: (رسمي) هل تستطيع العمل يوم السبت؟
+      en: (formal) Can you work on Saturday?
+    answer: Apakah Anda bisa bekerja hari Sabtu?
+    distractors: [mengapa, kamu]
+    words: [bisa, bekerja]
+  - id: e09
     type: dictation
-    text: Penulis itu bekerja di rumah.
+    text: Saya suka pekerjaan ini karena saya bisa bertemu banyak orang.
     meaning:
-      ar_eg: الكاتب ده بيشتغل من البيت.
-      ar: ذلك الكاتب يعمل في البيت.
-      en: That writer works at home.
-    words: [penulis, bekerja]
-  - id: e15
+      ar_eg: بحب الشغلانة دي عشان بقابل ناس كتير.
+      ar: أحب هذا العمل لأنني ألتقي أناسًا كثيرين.
+      en: I like this job because I get to meet lots of people.
+    words: [pekerjaan, karena]
+  - id: e10
     type: speaking
-    text: Saya memilih pekerjaan ini karena saya suka bahasa.
+    text: Saya mau menjadi pemandu wisata karena saya suka bertemu orang baru.
     meaning:
-      ar_eg: اخترت الشغلانة دي عشان بحب اللغات.
-      ar: اخترت هذا العمل لأنني أحب اللغات.
-      en: I chose this job because I love languages.
-    words: [memilih, pekerjaan, karena]
+      ar_eg: عايز أبقى مرشد سياحي عشان بحب أقابل ناس جديدة.
+      ar: أريد أن أصبح مرشدًا سياحيًا لأنني أحب لقاء أناس جدد.
+      en: I want to become a tour guide because I like meeting new people.
+    words: [menjadi, pemandu wisata, karena]
 dialogue:
-  title: Pelukis di Denpasar
+  title: Wawancara di biro perjalanan
   lines:
+    - speaker: Bu Made
+      text: Apa pekerjaan Anda sekarang?
+      ar_eg: حضرتك بتشتغل إيه دلوقتي؟
+      ar: ما عملك الآن؟
+      en: What do you do now?
     - speaker: Mohamed
-      text: Wayan, kenapa kamu memilih menjadi pelukis?
-      ar_eg: يا وايان، إنت اخترت تبقى رسام ليه؟
-      ar: يا وايان، لماذا اخترت أن تصبح رسّامًا؟
-      en: Wayan, why did you choose to become a painter?
-    - speaker: Wayan
-      text: Karena ayah saya juga pelukis. Saya belajar dari dia.
-      ar_eg: عشان أبويا كمان رسام. اتعلمت منه.
-      ar: لأن أبي رسّام أيضًا، وقد تعلمت منه.
-      en: Because my father is a painter too. I learned from him.
+      text: Di Kairo saya penerjemah. Sekarang saya belajar bahasa Indonesia di Bali.
+      ar_eg: في القاهرة أنا مترجم. ودلوقتي بتعلم إندونيسي في بالي.
+      ar: أنا مترجم في القاهرة، وأتعلم الآن الإندونيسية في بالي.
+      en: In Cairo I'm a translator. Now I'm learning Indonesian in Bali.
+    - speaker: Bu Made
+      text: Mengapa Anda mau menjadi pemandu wisata?
+      ar_eg: حضرتك عايز تبقى مرشد سياحي ليه؟
+      ar: لماذا تريد أن تصبح مرشدًا سياحيًا؟
+      en: Why do you want to become a tour guide?
     - speaker: Mohamed
-      text: Kamu bekerja setiap hari?
-      ar_eg: بتشتغل كل يوم؟
-      ar: هل تعمل كل يوم؟
-      en: Do you work every day?
-    - speaker: Wayan
-      text: Ya. Pagi saya melukis, sore saya menjual lukisan di pasar.
-      ar_eg: أيوه. الصبح برسم، والعصر ببيع اللوحات في السوق.
-      ar: نعم. في الصباح أرسم، وبعد العصر أبيع اللوحات في السوق.
-      en: Yes. In the morning I paint, in the afternoon I sell paintings at the market.
+      text: Karena saya suka bertemu orang baru, dan saya bisa berbahasa Arab dan Inggris.
+      ar_eg: عشان بحب أقابل ناس جديدة، وبعرف أتكلم عربي وإنجليزي.
+      ar: لأنني أحب لقاء أناس جدد، وأتحدث العربية والإنجليزية.
+      en: Because I like meeting new people, and I can speak Arabic and English.
+    - speaker: Bu Made
+      text: Bagus! Kami perlu pemandu untuk turis dari Timur Tengah. Apakah Anda bisa bekerja hari Sabtu?
+      ar_eg: حلو! إحنا محتاجين مرشد للسياح اللي من الشرق الأوسط. تقدر تشتغل يوم السبت؟
+      ar: جيد! نحتاج إلى مرشد لسياح الشرق الأوسط. هل تستطيع العمل يوم السبت؟
+      en: Great! We need a guide for tourists from the Middle East. Can you work on Saturdays?
     - speaker: Mohamed
-      text: Wah, kamu pelukis dan penjual!
-      ar_eg: الله، إنت رسام وبيّاع كمان!
-      ar: رائع، أنت رسّام وبائع معًا!
-      en: Wow, you're a painter and a seller!
-souvenir:
-  id: bipa2.u02.souvenir
-  title: Pasar Badung
-  note:
-    ar_eg: سوق بادونج هو أكبر سوق تقليدي في دنباسار، مليان ورد وتوابل وقماش من بدري الصبح. ناس كتير في بالي بيشتغلوا في السياحة، وفي نفس الوقت ليهم دور في الـ banjar (مجلس القرية) وفي احتفالات المعبد. يعني الشغلانة عندهم مش بس شغل، دي كمان خدمة للجماعة.
-    ar: سوق بادونغ أكبر سوق تقليدي في دنباسار، يزدحم منذ الفجر بالزهور والتوابل والأقمشة. ويعمل كثير من أهل بالي في السياحة، ولهم في الوقت نفسه دور في الـ banjar (مجلس القرية) وفي احتفالات المعبد؛ فالعمل عندهم خدمة للجماعة أيضًا.
-    en: Pasar Badung is Denpasar's biggest traditional market, busy with flowers, spices and cloth from early morning. Many Balinese work in tourism and also keep a second role in their banjar (village council) and temple ceremonies, so work there is also service to the community.
+      text: Bisa, Bu. Tapi hari Jumat siang saya tidak bisa, karena saya salat Jumat.
+      ar_eg: أقدر يا مدام. بس يوم الجمعة الضهر مش هقدر، عشان بصلي الجمعة.
+      ar: نعم يا سيدتي، لكنني لا أستطيع ظهر الجمعة لأنني أصلي الجمعة.
+      en: Yes, ma'am. But not Friday midday, because I go to Friday prayers.
+new_words:
+  - word: wawancara
+    pos: noun
+    ar_eg: مقابلة (شغل)
+    ar: مقابلة
+    en: interview
+  - word: penerjemah
+    pos: noun
+    ar_eg: مترجم
+    ar: مترجم
+    en: translator
+    arabic: ترجمة
+  - word: menjadi
+    pos: verb
+    ar_eg: يبقى، يصبح
+    ar: يصبح
+    en: to become
+  - word: Timur Tengah
+    pos: noun
+    ar_eg: الشرق الأوسط
+    ar: الشرق الأوسط
+    en: the Middle East
+  - word: biro perjalanan
+    pos: noun
+    ar_eg: شركة سياحة
+    ar: وكالة سفر
+    en: travel agency
 review:
   status: draft
   verified: false
