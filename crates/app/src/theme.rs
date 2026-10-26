@@ -1,6 +1,27 @@
 //! Procedural batik-inspired backgrounds. Original geometry generated in
 //! code (kawung-like circles), never copied artwork.
 
+use kabar_core::settings::Theme;
+use kabar_core::theme::{self as palette, Palette};
+
+/// CSS for every theme: the colour tokens from `kabar_core::theme`, plus a
+/// `--batik` background tile drawn in each theme's pattern colour.
+pub fn stylesheet() -> String {
+    let batik = |id: &str, p: &Palette| {
+        let tile = kawung_tile(p.pattern.trim_start_matches('#'), p.pattern_opacity, 72);
+        format!(".app[data-theme=\"{id}\"] {{ --batik: {tile}; }}\n")
+    };
+    let mut css = palette::stylesheet();
+    css.push_str(&batik("system", &palette::LIGHT));
+    css.push_str(&format!("@media (prefers-color-scheme: dark) {{ {}}}\n", batik("system", &palette::DARK)));
+    for theme in Theme::ALL {
+        if let Some(p) = theme.palette() {
+            css.push_str(&batik(theme.as_str(), p));
+        }
+    }
+    css
+}
+
 /// A seamless kawung-like tile as an SVG `data:` URL for CSS `background-image`.
 /// `color` is a CSS color without `#` (e.g. "2b3a67").
 pub fn kawung_tile(color: &str, opacity: f32, size: u32) -> String {
@@ -41,5 +62,13 @@ mod tests {
         assert!(tile.contains("%232b3a67"));
         assert!(!tile.contains('#'));
         assert_eq!(tile.matches("<ellipse").count(), 20);
+    }
+
+    #[test]
+    fn every_theme_gets_a_batik_tile() {
+        let css = stylesheet();
+        for theme in Theme::ALL {
+            assert!(css.contains(&format!(".app[data-theme=\"{}\"] {{ --batik:", theme.as_str())));
+        }
     }
 }

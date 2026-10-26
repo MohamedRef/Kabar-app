@@ -149,18 +149,18 @@ fn Loaded(db: Db) -> Element {
     let lang = settings.ui_language;
     let theme = settings.theme.as_str();
     let width = ui.width.read().as_str();
-    let batik = use_hook(|| theme::kawung_tile("2b3a70", 0.06, 72));
+    let theme_css = use_hook(theme::stylesheet);
 
     rsx! {
         document::Title { "Kabar" }
         style { {MAIN_CSS} }
+        style { {theme_css} }
         div {
             class: "app",
             lang: lang.tag(),
             dir: lang.dir().as_str(),
             "data-theme": theme,
             "data-width": width,
-            style: "--batik: {batik}",
             if settings.welcomed {
                 Shell {}
             } else {
