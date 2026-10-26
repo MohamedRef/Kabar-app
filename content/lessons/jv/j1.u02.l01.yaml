@@ -3,9 +3,9 @@ id: j1.u02.l01
 language: jv
 title: Apa, sapa, ngendi
 can_do:
-  ar_eg: تسأل أسئلة بسيطة.
-  ar: أن تطرح أسئلة بسيطة.
-  en: Ask basic questions.
+  ar_eg: تسأل إيه ومين وفين وإمتى.
+  ar: أن تسأل ماذا ومن وأين ومتى.
+  en: Ask what, who, where and when.
 slides:
   - title: Apa, sapa, ngendi
     body:
@@ -37,34 +37,7 @@ slides:
         ar_eg: إنت منين؟
         ar: من أين أنت؟
         en: Where are you from?
-  - title: Piye, pira, ngapa
-    body:
-      ar_eg: |
-        - piye = bagaimana (إزاي). عارفها من Piye kabare?
-        - pira = berapa (كام / بكام). Regane pira? = بكام؟ (rega = harga، و-ne = -nya)
-        - ngapa = kenapa / ngapain (ليه / بتعمل إيه). Kowé ngapa? = مالك؟ / بتعمل إيه؟
-        خلي بالك: pira للأرقام والأسعار بس. الاسم بنسأل عنه بـ sapa.
-      ar: |
-        - piye = bagaimana (كيف)، وتعرفها من Piye kabare?
-        - pira = berapa (كم / بكم): Regane pira? = بكم ثمنه؟ (rega = harga، و-ne = -nya)
-        - ngapa = kenapa / ngapain (لماذا / ماذا تفعل): Kowé ngapa? = ما بك؟ / ماذا تفعل؟
-        وانتبه: pira للعدد والثمن فقط، أما الاسم فيُسأل عنه بـ sapa.
-      en: |
-        - piye = bagaimana (how). You know it from Piye kabare?
-        - pira = berapa (how much / how many). Regane pira? = How much is it? (rega = harga, -ne = -nya)
-        - ngapa = kenapa / ngapain (why / what are you doing). Kowé ngapa? = What's up? / What are you doing?
-        Careful: pira is only for numbers and prices. A name takes sapa.
-    grammar: jv.question.words
-    examples:
-      - text: Regane pira?
-        ar_eg: بكام؟
-        ar: بكم ثمنه؟
-        en: How much is it?
-      - text: Kowé ngapa?
-        ar_eg: مالك؟ / بتعمل إيه؟
-        ar: ما بك؟ / ماذا تفعل؟
-        en: What's up with you? / What are you doing?
-  - title: "Apa → opo"
+  - title: Apa → opo
     body:
       ar_eg: |
         ليه الناس بتقول «opo» وإحنا كاتبين apa؟ الجاوي بينطق الـ a في آخر الكلمة (في المقطع المفتوح) قريبة من o.
@@ -111,138 +84,37 @@ slides:
         ar_eg: بيتك فين؟
         ar: أين بيتك؟
         en: Where's your house?
-  - title: Yok opo, lapo (Arek)
-    body:
-      ar_eg: |
-        في سورابايا (لهجة **Arek**) هتسمع:
-        - yok opo (أو yaopo) = piye (إزاي): Yok opo kabare? = إزيك؟
-        - lapo = ngapa (ليه / بتعمل إيه): Lapo koen? = مالك؟ / بتعمل إيه؟
-        - ndi = endi (فين).
-        افهمهم، بس مع ناس متعرفهمش استخدم الأدوات العادية.
-      ar: |
-        في سورابايا (لهجة **Arek**) ستسمع:
-        - yok opo (أو yaopo) = piye (كيف): Yok opo kabare?
-        - lapo = ngapa (لماذا / ماذا تفعل): Lapo koen? = ما بك؟
-        - ndi = endi (أين).
-        افهمها، واستعمل الأدوات القياسية مع من لا تعرفهم.
-      en: |
-        In Surabaya (**Arek**) you'll hear:
-        - yok opo (or yaopo) = piye (how): Yok opo kabare?
-        - lapo = ngapa (why / what doing): Lapo koen? = What's up with you?
-        - ndi = endi (where).
-        Understand them; with strangers, stick to the standard words.
-    grammar: jv.question.words
-    examples:
-      - text: Lapo koen?
-        ar_eg: مالك؟ / بتعمل إيه؟ (Arek)
-        ar: ما بك؟ / ماذا تفعل؟ (Arek)
-        en: What's up with you? (Arek)
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: apa
-        ar_eg: إيه
-        ar: ماذا
-        en: what
-      - text: sapa
-        ar_eg: مين
-        ar: مَن
-        en: who
-      - text: ngendi
-        ar_eg: فين
-        ar: أين
-        en: where
-      - text: kapan
-        ar_eg: إمتى
-        ar: متى
-        en: when
-      - text: pira
-        ar_eg: كام / بكام
-        ar: كم / بكم
-        en: how much / how many
-      - text: ngapa
-        ar_eg: ليه
-        ar: لماذا
-        en: why
-    words: [apa, sapa, ngendi, kapan, pira, ngapa]
-  - id: e02
-    type: match_pairs
-    pairs:
-      - text: sapa
-        ar_eg: siapa (مين)
-        ar: siapa (مَن)
-        en: siapa
-      - text: ngendi
-        ar_eg: mana (فين)
-        ar: mana (أين)
-        en: mana
-      - text: piye
-        ar_eg: bagaimana (إزاي)
-        ar: bagaimana (كيف)
-        en: bagaimana
-      - text: pira
-        ar_eg: berapa (كام)
-        ar: berapa (كم)
-        en: berapa
-    explain:
-      ar_eg: وصّل كل كلمة جاوي بتوأمها الإندونيسي.
-      ar: صِل كل كلمة جاوية بنظيرها الإندونيسي.
-      en: Match each Javanese word with its Indonesian twin.
-    words: [sapa, ngendi, piye, pira]
-  - id: e03
     type: multiple_choice
     question_meaning:
       ar_eg: عايز تعرف اسم صاحب جديد. تسأل إزاي؟
       ar: تريد معرفة اسم صديق جديد. كيف تسأل؟
       en: You want to know a new friend's name. How do you ask?
-    options: ["Jenengmu ngendi?", "Jenengmu pira?", "Jenengmu sapa?"]
+    options: ['Jenengmu ngendi?', 'Jenengmu pira?', 'Jenengmu sapa?']
     answer: 2
     explain:
       ar_eg: الاسم بـ sapa، زي Namamu siapa? pira للأرقام والأسعار.
       ar: الاسم يُسأل عنه بـ sapa كـ Namamu siapa?، وpira للعدد والثمن.
       en: Names take sapa, like Namamu siapa?; pira is for numbers and prices.
     words: [sapa, jeneng]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: في الشات حد كتب «piro?». يقصد إيه؟
-      ar: كتب أحدهم في الدردشة «piro?». ماذا يقصد؟
-      en: Someone types "piro?" in a chat. What do they mean?
-    options: ["pira", "piye", "apa"]
-    answer: 0
-    explain:
-      ar_eg: الـ a الأخيرة بتتنطق وتتكتب في الشات o، فـ piro = pira = بكام / كام.
-      ar: تُنطق a الأخيرة وتُكتب في الدردشة o، فـ piro = pira.
-      en: Final a is said and typed o, so piro = pira (how much).
-    words: [pira]
-  - id: e05
+  - id: e02
     type: listen
     text: Kowé saka ngendi?
-    options: ["Kowé ngapa?", "Kowé saka ngendi?", "Omahmu ngendi?"]
+    options: ['Kowé ngapa?', 'Kowé saka ngendi?', 'Omahmu ngendi?']
     answer: 1
     words: [saka, ngendi]
-  - id: e06
-    type: fill_blank
-    sentence: Regane ___?
-    meaning:
-      ar_eg: بكام؟
-      ar: بكم ثمنه؟
-      en: How much is it?
-    options: ["pira", "kapan", "sapa"]
-    answers: [pira]
-    words: [rega, pira]
-  - id: e07
+  - id: e03
     type: fill_blank
     sentence: Omahmu ___?
     meaning:
       ar_eg: بيتك فين؟
       ar: أين بيتك؟
       en: Where's your house?
-    options: ["sapa", "pira", "ngendi"]
+    options: [sapa, pira, ngendi]
     answers: [ngendi]
     words: [omah, ngendi]
-  - id: e08
+  - id: e04
     type: build_sentence
     source:
       ar_eg: إنت منين؟
@@ -251,62 +123,20 @@ exercises:
     answer: Kowé saka ngendi?
     distractors: [apa, sapa]
     words: [kowé, saka, ngendi]
-  - id: e09
+  - id: e05
     type: translate
     direction: to_target
     source_meaning:
       ar_eg: اسمك إيه؟ (لصاحب)
       ar: ما اسمك؟ (لصديق)
       en: What's your name? (to a friend)
-    answers:
-      - Jenengmu sapa?
-      - Jenengmu sapa
-      - Jenengmu sopo?
-      - Jenengmu sopo
-      - Sapa jenengmu?
-      - Sapa jenengmu
-      - Sopo jenengmu?
+    answers: ['Jenengmu sapa?', Jenengmu sapa, 'Jenengmu sopo?', Jenengmu sopo, 'Sapa jenengmu?', Sapa jenengmu, 'Sopo jenengmu?']
     explain:
       ar_eg: jeneng = nama، -mu = بتاعك، sapa = مين. وفي الشات sopo.
       ar: jeneng = nama، و-mu للمخاطب، وsapa = مَن، وفي الدردشة sopo.
       en: jeneng = nama, -mu = your, sapa = who (chat sopo).
     words: [jeneng, sapa]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: بكام؟
-      ar: بكم؟
-      en: How much is it?
-    answers:
-      - Regane pira?
-      - Regane pira
-      - Regane piro?
-      - Regane piro
-      - Regané pira?
-    words: [rega, pira]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: Lapo koen?
-    answers_meaning:
-      ar_eg: ["مالك؟", "بتعمل إيه؟", "إنت مالك؟", "إنت بتعمل إيه؟", "مالك", "بتعمل إيه"]
-      ar: ["ما بك؟", "ماذا تفعل؟", "ما بالك؟"]
-      en: ["What's up with you?", "What are you doing?", "What's wrong?", "What's up?", "What are you up to?"]
-    explain:
-      ar_eg: lapo = ngapa، وkoen = kowé — الاتنين Arek بتوع سورابايا.
-      ar: lapo = ngapa، وkoen = kowé، وكلاهما من لهجة Arek.
-      en: lapo = ngapa and koen = kowé — both Surabaya Arek.
-    words: [lapo, koen]
-  - id: e12
-    type: dictation
-    text: Kowé ngapa?
-    meaning:
-      ar_eg: مالك؟ / بتعمل إيه؟
-      ar: ما بك؟ / ماذا تفعل؟
-      en: What's up? / What are you doing?
-    words: [ngapa]
-  - id: e13
+  - id: e06
     type: speaking
     text: Omahmu ngendi?
     meaning:
@@ -363,26 +193,6 @@ new_words:
     ar_eg: إمتى (= kapan)
     ar: متى (= kapan)
     en: when (= kapan)
-  - word: pira
-    pos: question word
-    ar_eg: كام / بكام (= berapa؛ في الشات piro)
-    ar: كم / بكم (= berapa؛ وفي الدردشة piro)
-    en: how much, how many (= berapa; chat piro)
-  - word: ngapa
-    pos: question word
-    ar_eg: ليه / بتعمل إيه (= kenapa / ngapain)
-    ar: لماذا / ماذا تفعل (= kenapa / ngapain)
-    en: why, what are you doing (= kenapa / ngapain)
-  - word: yok opo
-    pos: question word
-    ar_eg: إزاي (Arek = piye)
-    ar: كيف (Arek = piye)
-    en: how (Arek = piye)
-  - word: lapo
-    pos: question word
-    ar_eg: ليه / بتعمل إيه (Arek = ngapa)
-    ar: لماذا / ماذا تفعل (Arek = ngapa)
-    en: why, what doing (Arek = ngapa)
   - word: saka
     pos: preposition
     ar_eg: من (= dari)
@@ -398,11 +208,6 @@ new_words:
     ar_eg: بيت (= rumah)
     ar: بيت (= rumah)
     en: house, home (= rumah)
-  - word: rega
-    pos: noun
-    ar_eg: سعر (= harga)
-    ar: ثمن، سعر (= harga)
-    en: price (= harga)
 review:
   status: draft
   verified: false

@@ -151,7 +151,7 @@ exercises:
       ar_eg: أنهي كلمة بتنفي الاسم (زي bukan)؟
       ar: أيّ كلمة تنفي الاسم (مثل bukan)؟
       en: Which word negates a noun (like bukan)?
-    options: ["dudu", "ora", "durung"]
+    options: [dudu, ora, durung]
     answer: 0
     explain:
       ar_eg: dudu = bukan، للاسم. ora = tidak، للفعل والصفة.
@@ -159,124 +159,39 @@ exercises:
       en: dudu = bukan, for nouns. ora = tidak, for verbs and adjectives.
     words: [dudu]
   - id: e03
-    type: multiple_choice
-    question: Aku gak ngerti, rek.
-    question_meaning:
-      ar_eg: gak هنا (Arek) بتساوي إيه في النغوكو العادي؟
-      ar: بماذا تقابل gak (Arek) هنا في النغوكو القياسي؟
-      en: In standard ngoko, gak here equals…
-    options: ["ora", "dudu", "durung"]
-    answer: 0
-    explain:
-      ar_eg: gak هي ora بتاعة سورابايا، قبل الفعل ngerti.
-      ar: gak هي ora في لهجة سورابايا، وجاءت قبل الفعل ngerti.
-      en: gak is Surabaya's ora, here before the verb ngerti.
-    words: [gak, ora]
-  - id: e04
     type: listen
     text: Aku ora ngerti.
-    options: ["Aku durung ngerti.", "Aku ora ngerti.", "Aku wis ngerti."]
+    options: [Aku durung ngerti., Aku ora ngerti., Aku wis ngerti.]
     answer: 1
     words: [ora, ngerti]
-  - id: e05
+  - id: e04
     type: fill_blank
     sentence: Iki ___ kopiku.
     meaning:
       ar_eg: دي مش قهوتي.
       ar: هذه ليست قهوتي.
       en: This isn't my coffee.
-    options: ["dudu", "gak", "ora"]
-    answers: ["dudu"]
+    options: [dudu, gak, ora]
+    answers: [dudu]
     explain:
       ar_eg: kopiku اسم (قهوتي)، والاسم بيتنفي بـ dudu زي bukan. ora وgak للفعل والصفة.
       ar: kopiku اسم فيُنفى بـ dudu كما في bukan، أما ora وgak فللفعل والصفة.
       en: kopiku is a noun, so it takes dudu (like bukan). ora and gak are for verbs and adjectives.
     words: [dudu, kopi]
-  - id: e06
-    type: fill_blank
-    sentence: Regané ___ larang, Mas.
-    meaning:
-      ar_eg: السعر مش غالي يا أستاذ.
-      ar: السعر ليس غاليًا يا أخي.
-      en: The price isn't expensive, Mas.
-    options: ["durung", "ora", "dudu"]
-    answers: ["ora"]
-    explain:
-      ar_eg: larang (غالي) صفة، فبتاخد ora (= tidak).
-      ar: larang (غالٍ) صفة فتُنفى بـ ora (= tidak).
-      en: larang (expensive) is an adjective, so it takes ora (= tidak).
-    words: [ora, larang]
-  - id: e07
-    type: fill_blank
-    sentence: Kowé wis mangan? — ___.
-    meaning:
-      ar_eg: إنت كلت؟ — لسه.
-      ar: هل أكلت؟ — ليس بعد.
-      en: Have you eaten? — Not yet.
-    options: ["Durung", "Dudu", "Ora ana"]
-    answers: ["Durung"]
-    explain:
-      ar_eg: على سؤال فيه wis (خلاص)، الرد الطبيعي durung (لسه)، زي belum في الإندونيسي.
-      ar: جواب السؤال بـ wis هو durung (ليس بعد)، كما تجيب بـ belum في الإندونيسية.
-      en: A wis question (already?) is answered with durung (not yet), like Indonesian belum.
-    words: [durung, wis]
-  - id: e08
+  - id: e05
     type: build_sentence
     source:
       ar_eg: أنا مش جاوي، أنا مصري.
       ar: لستُ جاويًّا، أنا مصري.
       en: I'm not Javanese, I'm Egyptian.
     answer: Aku dudu wong Jawa, aku wong Mesir.
-    distractors: ["ora", "gak"]
+    distractors: [ora, gak]
     explain:
       ar_eg: wong Jawa اسم (واحد جاوي)، فالنفي dudu مش ora.
       ar: wong Jawa اسم فيُنفى بـ dudu لا ora.
       en: wong Jawa is a noun phrase, so it takes dudu, not ora.
     words: [dudu, wong]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا مش فاهم.
-      ar: لا أفهم.
-      en: I don't understand.
-    answers: ["Aku ora ngerti.", "Aku ora ngerti", "Aku gak ngerti.", "Aku gak ngerti", "Aku ra ngerti.", "Aku ra ngerti", "Ora ngerti.", "Ora ngerti", "Gak ngerti.", "Gak ngerti"]
-    explain:
-      ar_eg: ora (أو gak في سورابايا) قبل الفعل ngerti.
-      ar: ora (أو gak في سورابايا) قبل الفعل ngerti.
-      en: ora (or Surabaya gak) before the verb ngerti.
-    words: [ora, ngerti]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Iki dudu kopiku.
-    answers_meaning:
-      ar_eg: ["دي مش قهوتي", "دي مش قهوتي.", "دي مش القهوة بتاعتي", "ده مش قهوتي"]
-      ar: ["هذه ليست قهوتي", "هذه ليست قهوتي.", "هذا ليس قهوتي"]
-      en: ["This isn't my coffee", "This isn't my coffee.", "This is not my coffee", "This is not my coffee."]
-    words: [dudu, kopi]
-  - id: e11
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: ولا يهمك يا أستاذ، مفيش مشكلة.
-      ar: لا بأس يا أخي.
-      en: It's fine, Mas, no problem.
-    answers: ["Rapopo, Mas.", "Rapopo, Mas", "Rapopo Mas.", "Rapopo Mas", "Ora apa-apa, Mas.", "Ora apa-apa, Mas", "Ora apa-apa Mas.", "Ora apa-apa Mas", "Mas, rapopo.", "Mas, rapopo", "Mas rapopo.", "Mas rapopo"]
-    explain:
-      ar_eg: ora apa-apa = tidak apa-apa، وفي الكلام بتتختصر rapopo.
-      ar: ora apa-apa = tidak apa-apa، وتُختصر في الكلام إلى rapopo.
-      en: ora apa-apa = tidak apa-apa; in speech it shrinks to rapopo.
-    words: [rapopo, ora apa-apa]
-  - id: e12
-    type: dictation
-    text: Aku ora ngerti.
-    meaning:
-      ar_eg: أنا مش فاهم.
-      ar: لا أفهم.
-      en: I don't understand.
-    words: [ora, ngerti]
-  - id: e13
+  - id: e06
     type: speaking
     text: Aku dudu wong Jawa, aku wong Mesir.
     meaning:
@@ -313,16 +228,6 @@ dialogue:
       ar: لا بأس، سأشربها أنا!
       en: No problem. I'll just drink it myself!
 new_words:
-  - word: ngerti
-    pos: verb
-    ar_eg: يفهم / يعرف (= mengerti)
-    ar: يفهم (= mengerti)
-    en: understand, know (= mengerti)
-  - word: gak
-    pos: particle
-    ar_eg: مش / لأ (Arek، = ora)
-    ar: لا / ليس (Arek، = ora)
-    en: not, no (Arek, = ora)
   - word: dudu
     pos: particle
     ar_eg: مش، قبل الاسم (= bukan)
@@ -333,11 +238,6 @@ new_words:
     ar_eg: مفيش (= tidak ada)
     ar: لا يوجد (= tidak ada)
     en: there isn't any (= tidak ada)
-  - word: ora apa-apa
-    pos: phrase
-    ar_eg: ولا يهمك / مفيش مشكلة (= tidak apa-apa)؛ في الكلام rapopo
-    ar: لا بأس (= tidak apa-apa)؛ وفي الكلام rapopo
-    en: no problem (= tidak apa-apa); spoken rapopo
   - word: wong Jawa
     pos: phrase
     ar_eg: واحد جاوي (= orang Jawa)

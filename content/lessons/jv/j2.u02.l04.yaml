@@ -1,247 +1,209 @@
 schema: kabar.lesson/v1
 id: j2.u02.l04
 language: jv
-title: Ulangan J2.2
+title: Tuku pecel
 can_do:
-  ar_eg: تطلب وجبة كاملة بالجاوي.
-  ar: أن تطلب وجبة كاملة بالجاوية.
-  en: Order a meal.
+  ar_eg: تطلب أكل من عربية بيتشل.
+  ar: أن تطلب طعامًا من كشك البيتشل.
+  en: Order at a pecel stall.
 slides:
-  - title: Ringkesan J2.2
+  - title: Pesen sega pecel
     body:
       ar_eg: |
-        - N- = meN- من غير «me»: tulis → nulis، waca → maca، ombé → ngombé، gawé → nggawé، sapu → nyapu، kirim → ngirim، pikir → mikir (فكر)، jupuk → njupuk، bukak → mbukak.
-        - من غير N-: tuku، turu، lunga، teka، adus.
-        - مع di- / tak- الأصل بيرجع: diwaca، tak tulis.
-        - الطعم: enak، pedhes، legi، asin، kecut، pait، anyep + tenan / banget (بعد الصفة)، rada / kurang (قبلها).
-        - الطلب: Sega pecel siji, nganggo endhog. · Pedhes apa ora? · Mangan kéné apa dibungkus? · Kabèh pira?
+        جمل الطلب عند عربية البيتشل:
+        - Sega pecel siji, Bu. = واحد رز بيتشل يا طنط. (الاسم + العدد، زي الإندونيسي)
+        - nganggo endhog = بالبيض (nganggo = pakai)
+        - Sambelé sithik wae. = صوص شوية بس. (sithik = sedikit)
+        - Pedhes apa ora? = حرّاق ولا لأ؟ (apa هنا = «ولا»)
+        - Mangan kéné apa dibungkus? = تاكل هنا ولا تيك أواي؟
+        - Kabèh pira? = الحساب كام؟
+        وفي ماديون البيتشل بيتقدم على ورقة شجر متطبقة اسمها pincuk.
       ar: |
-        - N- = meN- بلا «me»: tulis → nulis، waca → maca، ombé → ngombé، gawé → nggawé، sapu → nyapu، kirim → ngirim، pikir → mikir (فكر)، jupuk → njupuk، bukak → mbukak.
-        - بلا N-: tuku، turu، lunga، teka، adus.
-        - مع di- / tak- يعود الجذر: diwaca، tak tulis.
-        - الطعم: enak، pedhes، legi، asin، kecut، pait، anyep، مع tenan / banget بعد الصفة، وrada / kurang قبلها.
-        - الطلب: Sega pecel siji, nganggo endhog. · Pedhes apa ora? · Mangan kéné apa dibungkus? · Kabèh pira?
+        عبارات الطلب عند كشك البيتشل:
+        - Sega pecel siji, Bu. = طبق أرز بيتشل واحد يا سيدتي (الاسم ثم العدد كالإندونيسية).
+        - nganggo endhog = بالبيض (nganggo = pakai)
+        - Sambelé sithik wae. = قليلًا من الصلصة فقط (sithik = sedikit).
+        - Pedhes apa ora? = حارًّا أم لا؟ (apa هنا بمعنى «أم»)
+        - Mangan kéné apa dibungkus? = تأكل هنا أم سفري؟
+        - Kabèh pira? = كم الحساب كله؟
+        وفي ماديون يُقدَّم البيتشل على ورقة شجر مطوية تسمى pincuk.
       en: |
-        - N- = meN- without "me": tulis → nulis, waca → maca, ombé → ngombé, gawé → nggawé, sapu → nyapu, kirim → ngirim, pikir → mikir (فكر), jupuk → njupuk, bukak → mbukak.
-        - No N-: tuku, turu, lunga, teka, adus.
-        - With di- / tak- the base returns: diwaca, tak tulis.
-        - Taste: enak, pedhes, legi, asin, kecut, pait, anyep + tenan / banget (after), rada / kurang (before).
-        - Ordering: Sega pecel siji, nganggo endhog. · Pedhes apa ora? · Mangan kéné apa dibungkus? · Kabèh pira?
-    grammar: jv.prefix.nasal
+        Ordering at a pecel stall:
+        - Sega pecel siji, Bu. = One pecel rice, ma'am. (noun + number, as in Indonesian)
+        - nganggo endhog = with egg (nganggo = pakai)
+        - Sambelé sithik wae. = Just a little sauce. (sithik = sedikit)
+        - Pedhes apa ora? = Spicy or not? (apa here = "or")
+        - Mangan kéné apa dibungkus? = Eat here or take away?
+        - Kabèh pira? = How much altogether?
+        In Madiun, pecel is served on a folded leaf called a pincuk.
+    examples:
+      - text: Sega pecel siji, nganggo endhog.
+        ar_eg: واحد رز بيتشل بالبيض.
+        ar: طبق أرز بيتشل واحد بالبيض.
+        en: One pecel rice with egg.
+      - text: Mangan kéné apa dibungkus?
+        ar_eg: تاكل هنا ولا تيك أواي؟
+        ar: تأكل هنا أم سفري؟
+        en: Eat here or take away?
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: mikir
-        ar_eg: يفكر
-        ar: يفكر
-        en: think
-      - text: njupuk
-        ar_eg: ياخد
-        ar: يأخذ
-        en: take
-      - text: ngirim
-        ar_eg: يبعت
-        ar: يرسل
-        en: send
-      - text: anyep
-        ar_eg: ماسخ
-        ar: بلا طعم
-        en: bland
-      - text: kecut
-        ar_eg: حامض
-        ar: حامض
-        en: sour
-    words: [mikir, njupuk, ngirim, anyep, kecut]
+    type: multiple_choice
+    question: Mangan kéné apa dibungkus?
+    question_meaning:
+      ar_eg: عايز الأكل تيك أواي. ترد على البياعة تقول إيه؟
+      ar: تريد الطعام سفريًا. بماذا تجيب البائعة؟
+      en: You want it to take away. How do you answer the seller?
+    options: ['Pedhes, Bu.', 'Mangan kéné, Bu.', 'Dibungkus, Bu.']
+    answer: 2
+    explain:
+      ar_eg: dibungkus = متلفوف (تيك أواي)، زي الإندونيسي.
+      ar: dibungkus = مغلَّف (سفري) كالإندونيسية.
+      en: dibungkus = wrapped (to take away), as in Indonesian.
+    words: [dibungkus, kéné]
   - id: e02
     type: multiple_choice
-    question: "N- + pangan → ?"
+    question: Pedhes apa ora?
     question_meaning:
-      ar_eg: حط N- على pangan (أكل). تبقى إيه؟
-      ar: أضف N- إلى pangan (طعام). ما الناتج؟
-      en: Put N- on pangan (food). What do you get?
-    options: ["ngpangan", "mangan", "nangan"]
-    answer: 1
-    explain:
-      ar_eg: "p بتتحول m: pangan → mangan."
-      ar: "تتحول p إلى m: pangan → mangan."
-      en: "p becomes m: pangan → mangan."
-    words: [mangan]
-  - id: e03
-    type: multiple_choice
-    question: "nyapu ← ?"
-    question_meaning:
-      ar_eg: nyapu جاية من أنهي أصل؟
-      ar: من أي جذر جاءت nyapu؟
-      en: Which base does nyapu come from?
-    options: ["sapu", "papu", "tapu"]
+      ar_eg: مش عايز الأكل حرّاق خالص. ترد بإيه؟
+      ar: لا تريد الطعام حارًّا أبدًا. بماذا تجيب؟
+      en: You don't want it spicy at all. What's your answer?
+    options: ['Ora pedhes, Bu.', 'Pedhes banget, Bu.', 'Rada pedhes, Bu.']
     answer: 0
+    words: [pedhes, ora]
+  - id: e03
+    type: fill_blank
+    sentence: Sega pecel siji, ___ endhog.
+    meaning:
+      ar_eg: واحد رز بيتشل بالبيض.
+      ar: طبق أرز بيتشل واحد بالبيض.
+      en: One pecel rice with egg.
+    options: [kabèh, nganggo, sithik]
+    answers: [nganggo]
     explain:
-      ar_eg: ny- جاية من s أو c. tapu كانت هتبقى napu، وpapu كانت هتبقى mapu.
-      ar: ny- تأتي من s أو c، أما tapu فتصير napu، وpapu تصير mapu.
-      en: ny- comes from s or c; tapu would give napu, papu would give mapu.
-    words: [nyapu]
+      ar_eg: nganggo = pakai، يعني «بـ».
+      ar: nganggo = pakai، أي «بـ».
+      en: nganggo = pakai, "with".
+    words: [nganggo, endhog]
   - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الشوربة ناقصها ملح. تقول إيه؟
-      ar: الحساء ينقصه ملح. ماذا تقول؟
-      en: The soup needs salt. What do you say?
-    options: ["Rada legi.", "Kurang asin.", "Asin banget."]
-    answer: 1
-    words: [kurang, asin]
-  - id: e05
-    type: listen
-    text: Mangan kéné apa dibungkus?
-    options: ["Pedhes apa ora?", "Mangan kéné apa dibungkus?", "Mangan kéné wae."]
-    answer: 1
-    words: [kéné, dibungkus]
-  - id: e06
-    type: fill_blank
-    sentence: Bukuné wis tak ___.
-    meaning:
-      ar_eg: الكتاب أنا قريته خلاص.
-      ar: الكتاب قرأتُه.
-      en: I've read the book.
-    options: ["maca", "waca"]
-    answers: [waca]
-    explain:
-      ar_eg: بعد tak الفعل بيرجع لأصله waca.
-      ar: بعد tak يعود الفعل إلى جذره waca.
-      en: After tak the verb goes back to its base, waca.
-    words: [waca, tak]
-  - id: e07
-    type: fill_blank
-    sentence: Aku lagi ___ teh anget.
-    meaning:
-      ar_eg: أنا بشرب شاي دافي.
-      ar: أنا أشرب شايًا دافئًا.
-      en: I'm drinking warm tea.
-    answers:
-      - ngombé
-      - ngombe
-    words: [ngombé, teh anget]
-  - id: e08
     type: build_sentence
     source:
-      ar_eg: ماما بتعمل صوص البيتشل.
-      ar: أمي تصنع صلصة البيتشل.
-      en: Mum is making pecel sauce.
-    answer: Ibu lagi nggawé sambel pecel.
-    distractors: [gawé, maca]
-    words: [nggawé, sambel, pecel]
-  - id: e09
+      ar_eg: اتنين رز بيتشل يا طنط.
+      ar: طبقان من أرز البيتشل يا سيدتي.
+      en: Two pecel rice, ma'am.
+    answer: Sega pecel loro, Bu.
+    distractors: [siji, pedhes]
+    words: [sega, pecel, loro]
+  - id: e05
     type: translate
     direction: to_target
     source_meaning:
+      ar_eg: الحساب كله كام يا طنط؟
+      ar: كم الحساب كله يا سيدتي؟
+      en: How much is it altogether, ma'am?
+    answers: ['Kabèh pira, Bu?', 'Kabèh pira, Bu', 'Kabeh pira, Bu?', 'Kabeh pira, Bu', 'Kabèh piro, Bu?', 'Kabèh piro, Bu', 'Kabeh piro, Bu?', 'Kabeh piro, Bu', 'Pira kabèh, Bu?', 'Pira kabèh, Bu', 'Pira kabeh, Bu?', 'Pira kabeh, Bu', 'Kabèh pira?', Kabèh pira, 'Kabeh pira?', Kabeh pira]
+    words: [kabèh, pira]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: صوص شوية بس يا طنط.
+      ar: قليل من الصلصة فقط يا سيدتي.
+      en: Just a little sauce, ma'am.
+    answers: ['Sambelé sithik wae, Bu.', 'Sambelé sithik wae, Bu', 'Sambele sithik wae, Bu.', 'Sambele sithik wae, Bu', Sambelé sithik wae., Sambelé sithik wae, Sambele sithik wae., Sambele sithik wae, 'Sambel sithik wae, Bu.', 'Sambel sithik wae, Bu', Sambel sithik wae., Sambel sithik wae, 'Sambelé sitik wae, Bu.', 'Sambelé sitik wae, Bu', 'Sambele sitik wae, Bu.', 'Sambele sitik wae, Bu']
+    explain:
+      ar_eg: sithik = sedikit، وwae = saja. في الشات بتتكتب sitik.
+      ar: sithik = sedikit، وwae = saja، وتُكتب في الدردشة sitik.
+      en: sithik = sedikit, wae = saja. Chats write sitik.
+    words: [sithik, wae, sambel]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: هناكل هنا يا طنط.
+      ar: سنأكل هنا يا سيدتي.
+      en: We'll eat here, ma'am.
+    answers: ['Mangan kéné, Bu.', 'Mangan kéné, Bu', 'Mangan kene, Bu.', 'Mangan kene, Bu', 'Mangan kéné wae, Bu.', 'Mangan kéné wae, Bu', 'Mangan kene wae, Bu.', 'Mangan kene wae, Bu', Mangan kéné., Mangan kéné, Mangan kene., Mangan kene]
+    words: [mangan, kéné]
+  - id: e08
+    type: listen
+    text: Kabèh telung puluh ewu.
+    options: [Kabèh telung ewu., Kabèh sepuluh ewu., Kabèh telung puluh ewu.]
+    answer: 2
+    explain:
+      ar_eg: telung puluh ewu = تلاتين ألف. telung ewu = تلات تلاف بس.
+      ar: telung puluh ewu = ثلاثون ألفًا، وtelung ewu = ثلاثة آلاف.
+      en: telung puluh ewu = 30,000; telung ewu = 3,000.
+    words: [kabèh, telung puluh, ewu]
+  - id: e09
+    type: dictation
+    text: Sega pecel loro, Bu.
+    meaning:
+      ar_eg: اتنين رز بيتشل يا طنط.
+      ar: طبقان من أرز البيتشل يا سيدتي.
+      en: Two pecel rice, ma'am.
+    words: [sega, pecel, loro]
+  - id: e10
+    type: speaking
+    text: Sega pecel siji, nganggo endhog, Bu.
+    meaning:
       ar_eg: واحد رز بيتشل بالبيض يا طنط.
       ar: طبق أرز بيتشل واحد بالبيض يا سيدتي.
       en: One pecel rice with egg, ma'am.
-    answers:
-      - Sega pecel siji, nganggo endhog, Bu.
-      - Sega pecel siji, nganggo endhog, Bu
-      - Sega pecel siji nganggo endhog, Bu.
-      - Sega pecel siji nganggo endhog, Bu
-      - Sego pecel siji, nganggo endhog, Bu.
-      - Sego pecel siji, nganggo endhog, Bu
-      - Sego pecel siji nganggo endhog, Bu.
-      - Sego pecel siji nganggo endhog, Bu
-      - Sega pecel siji nganggo endhog.
-      - Sega pecel siji nganggo endhog
     words: [sega, pecel, nganggo, endhog]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Kopiné kurang legi.
-    answers_meaning:
-      ar_eg: ["القهوة عايزة سكر.", "القهوة ناقصها سكر", "القهوة مش مسكرة كفاية"]
-      ar: ["القهوة ينقصها سكر.", "القهوة ليست حلوة بما يكفي"]
-      en: ["The coffee isn't sweet enough.", "The coffee needs more sugar", "The coffee isn't sweet enough"]
-    words: [kurang, legi]
-  - id: e11
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا بحب أقرا الكتب.
-      ar: أحب قراءة الكتب.
-      en: I like reading books.
-    answers:
-      - Aku seneng maca buku.
-      - Aku seneng maca buku
-    words: [seneng, maca]
-  - id: e12
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: ده حرّاق؟
-      ar: هل هذا حارّ؟
-      en: Is this spicy?
-    answers:
-      - Iki pedhes ora?
-      - Iki pedhes ora
-      - Iki pedhes apa ora?
-      - Iki pedhes apa ora
-      - Iki pedes ora?
-      - Iki pedes ora
-      - Pedhes ora?
-      - Pedhes ora
-    words: [pedhes, iki]
-  - id: e13
-    type: dictation
-    text: Aku lagi ngirim layang.
-    meaning:
-      ar_eg: أنا ببعت جواب.
-      ar: أنا أرسل رسالة.
-      en: I'm sending a letter.
-    words: [ngirim, layang]
-  - id: e14
-    type: speaking
-    text: Kabèh pira, Bu? Enak tenan!
-    meaning:
-      ar_eg: الحساب كام يا طنط؟ حلو بجد!
-      ar: كم الحساب يا سيدتي؟ لذيذ حقًا!
-      en: How much altogether, ma'am? Really tasty!
-    words: [kabèh, pira, enak, tenan]
 dialogue:
-  title: Mohamed pesen dhéwé
+  title: Pecel Bu Darmi, Caruban
   lines:
     - speaker: Bu Darmi
-      text: Mas Mohamed! Pesen apa?
-      ar_eg: أستاذ محمد! هتطلب إيه؟
-      ar: أخي محمد! ماذا تطلب؟
-      en: Mas Mohamed! What are you having?
+      text: Pesen apa, Mas?
+      ar_eg: تطلب إيه يا أستاذ؟
+      ar: ماذا تطلب يا أخي؟
+      en: What would you like, Mas?
     - speaker: Mohamed
-      text: Sega pecel siji, nganggo endhog. Pedhes, Bu!
-      ar_eg: واحد رز بيتشل بالبيض. حرّاق يا طنط!
-      ar: طبق أرز بيتشل بالبيض. حارًّا يا سيدتي!
-      en: One pecel rice with egg. Spicy, ma'am!
+      text: Sega pecel loro, Bu. Siji nganggo endhog.
+      ar_eg: اتنين رز بيتشل يا طنط. واحد فيهم بالبيض.
+      ar: طبقان من أرز البيتشل يا سيدتي، أحدهما بالبيض.
+      en: Two pecel rice, ma'am. One with egg.
     - speaker: Bu Darmi
-      text: Pedhes? Tenan?
-      ar_eg: حرّاق؟ بجد؟
-      ar: حارًّا؟ حقًا؟
-      en: Spicy? Really?
+      text: Pedhes apa ora?
+      ar_eg: حرّاق ولا لأ؟
+      ar: حارّ أم لا؟
+      en: Spicy or not?
     - speaker: Mohamed
-      text: Iya, Bu. Aku seneng sing pedhes.
-      ar_eg: أيوه يا طنط. أنا بحب الحرّاق.
-      ar: نعم يا سيدتي. أحب الطعام الحارّ.
-      en: Yes, ma'am. I like it spicy.
+      text: Aku sing pedhes. Sari ora pedhes, sambelé sithik wae.
+      ar_eg: بتاعي حرّاق. وبتاع ساري مش حرّاق، صوص شوية بس.
+      ar: طبقي حارّ، وطبق ساري غير حارّ، بقليل من الصلصة فقط.
+      en: Mine spicy. Sari's not spicy, just a little sauce.
+    - speaker: Mohamed
+      text: Wah, enak tenan! Kabèh pira, Bu?
+      ar_eg: واو، حلو بجد! الحساب كام يا طنط؟
+      ar: رائع، لذيذ حقًا! كم الحساب يا سيدتي؟
+      en: Wow, really tasty! How much altogether, ma'am?
     - speaker: Bu Darmi
-      text: Wah, apik! Mangan kéné apa dibungkus?
-      ar_eg: الله! هتاكل هنا ولا تيك أواي؟
-      ar: رائع! تأكل هنا أم سفري؟
-      en: Great! Eating here or take away?
-    - speaker: Mohamed
-      text: Mangan kéné, Bu. Karo es teh legi.
-      ar_eg: هاكل هنا يا طنط. ومعاه شاي بتلج مسكّر.
-      ar: سآكل هنا يا سيدتي، ومعه شاي مثلّج حلو.
-      en: Eating here, ma'am. With a sweet iced tea.
-souvenir:
-  id: j2.u02.souvenir
-  title: Nasi pecel Madiun
-  note:
-    ar_eg: "ماديون هي بيت الـ nasi pecel: خضار مسلوقة عليها صوص فول سوداني، وتيمبيه وrempeyek مقرمش، وساعات بتتقدم على ورقة شجر الساج (godhong jati) بدل الطبق. لما تقول للبياعة «Pedhes, Bu!» هتعرف إنك بقيت من أهل البيت. ومعاك دلوقتي طلبك كامل بالجاوي، بالهنا والشفا!"
-    ar: "ماديون موطن الـ nasi pecel: خضار مسلوقة بصلصة الفول السوداني، مع التمبيه ورقائق rempeyek المقرمشة، وقد يُقدَّم على ورقة شجر الساج (godhong jati) بدل الطبق. وحين تقول للبائعة «Pedhes, Bu!» تكون قد صرت من أهل المكان. صار طلبك كله بالجاوية، فهنيئًا مريئًا!"
-    en: Madiun is the home of nasi pecel — boiled greens under peanut sauce, with tempeh and crunchy rempeyek, sometimes served on a teak leaf (godhong jati) instead of a plate. Say "Pedhes, Bu!" to the seller and you'll feel like a local. You can now order a whole meal in Javanese — enjoy it!
+      text: Kabèh telung puluh ewu, Mas.
+      ar_eg: الكل تلاتين ألف يا أستاذ.
+      ar: المجموع ثلاثون ألفًا يا أخي.
+      en: Thirty thousand altogether, Mas.
+new_words:
+  - word: pesen
+    pos: verb
+    ar_eg: يطلب (أكل)
+    ar: يطلب (طعامًا)
+    en: to order (pesan)
+  - word: nganggo
+    pos: preposition
+    ar_eg: بـ / بيستخدم
+    ar: بـ / يستعمل
+    en: with, using (pakai)
+  - word: sithik
+    pos: adverb
+    ar_eg: شوية
+    ar: قليل
+    en: a little (sedikit)
+  - word: dibungkus
+    pos: verb
+    ar_eg: متلفوف (تيك أواي)
+    ar: مغلَّف (سفري)
+    en: wrapped, to take away
 review:
   status: draft
   verified: false

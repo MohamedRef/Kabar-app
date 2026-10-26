@@ -1,316 +1,170 @@
 schema: kabar.lesson/v1
 id: bipa1.u03.l02
 language: id
-title: Rumah saya, rumahmu
+title: Suami, istri, anak
 can_do:
-  ar_eg: تقول الحاجة بتاعة مين.
-  ar: أن تعبّر عن الملكية.
-  en: Show possession.
+  ar_eg: تعرّف بجوزك/مراتك وولادك وتقول الشخص ولد ولا بنت.
+  ar: أن تعرّف بزوجك وأولادك وتحدد إن كان الشخص ذكرًا أو أنثى.
+  en: Introduce your spouse and children and say if someone is male or female.
 slides:
-  - title: Rumah saya = بيتي
+  - title: Suami, istri, anak
     body:
       ar_eg: |
-        الملكية في الإندونيسي هي الإضافة العربي بالظبط: الحاجة الأول، وبعدين صاحبها.
-        - rumah saya = بيتي (حرفيًا «بيت أنا»)
-        - buku Rina = كتاب رينا
-        - ibu Dimas = أم ديماس
-        «saya rumah» غلط، زي ما «أنا بيت» مش معناها «بيتي».
+        suami = جوز، istri = مرات، anak = ابن أو بنت (طفل).
+        الكلمات دي مش بتقول ولد ولا بنت. عشان تحدد، حط laki-laki (ذكر) أو perempuan (أنثى) بعد الاسم:
+        anak laki-laki = ابن، anak perempuan = بنت، kakak perempuan = أخت كبيرة.
       ar: |
-        الملكية في الإندونيسية هي الإضافة العربية نفسها: المضاف أولًا ثم المضاف إليه.
-        - rumah saya = بيتي (حرفيًا «بيتُ أنا»)
-        - buku Rina = كتاب رينا
-        - ibu Dimas = أم ديماس
-        و«saya rumah» خطأ.
+        suami = الزوج، istri = الزوجة، anak = الابن أو البنت (الولد).
+        هذه الكلمات لا تحدد الجنس، فإن أردت التحديد فضع laki-laki (ذكر) أو perempuan (أنثى) بعد الاسم:
+        anak laki-laki = ابن، anak perempuan = ابنة، kakak perempuan = أخت كبرى.
       en: |
-        Possession is Arabic iḍāfa word for word: the thing first, then the owner.
-        - rumah saya = my house (literally "house I")
-        - buku Rina = Rina's book
-        - ibu Dimas = Dimas's mother
-        "saya rumah" is wrong.
-    grammar: id.possessive
+        suami = husband, istri = wife, anak = child (son or daughter).
+        These words don't say male or female. To be specific, put laki-laki (male) or perempuan (female) after the noun:
+        anak laki-laki = son, anak perempuan = daughter, kakak perempuan = older sister.
     examples:
-      - text: Ini rumah saya.
-        ar_eg: ده بيتي.
-        ar: هذا بيتي.
-        en: This is my house.
-      - text: Buku Rina di mana?
-        ar_eg: كتاب رينا فين؟
-        ar: أين كتاب رينا؟
-        en: Where is Rina's book?
-  - title: -ku, -mu, -nya
-    body:
-      ar_eg: |
-        فيه كمان نهايات بتلزق في الكلمة، زي «ـي / ـك / ـه» في العربي:
-        - -ku = بتاعي (مع aku): rumahku = بيتي
-        - -mu = بتاعك (مع kamu): rumahmu = بيتك
-        - -nya = بتاعه / بتاعها / بتاعهم: rumahnya = بيته / بيتها
-        بس خلي بالك: -mu للصحاب. مع حد أكبر قول rumah Bapak / rumah Ibu (بيت حضرتك).
-      ar: |
-        وهناك لواحق متصلة كالضمائر العربية «ـي / ـك / ـه»:
-        - -ku = ياء المتكلم (مع aku): rumahku = بيتي
-        - -mu = كاف المخاطب (مع kamu): rumahmu = بيتك
-        - -nya = هاء الغائب للمذكر والمؤنث والجمع: rumahnya = بيته / بيتها
-        و-mu للأصدقاء؛ أما مع الأكبر فقل rumah Bapak / rumah Ibu.
-      en: |
-        There are also endings that attach like Arabic ـي / ـك / ـه:
-        - -ku = my (goes with aku): rumahku = my house
-        - -mu = your (goes with kamu): rumahmu = your house
-        - -nya = his / her / its / their: rumahnya = his/her house
-        -mu is for friends; with elders say rumah Bapak / rumah Ibu.
-    grammar: id.possessive
-    examples:
-      - text: Rumahmu di mana?
-        ar_eg: بيتك فين؟
-        ar: أين بيتك؟
-        en: Where is your house?
-      - text: Dimas dan adiknya.
-        ar_eg: ديماس وأخوه الصغير.
-        ar: ديماس وأخوه الأصغر.
-        en: Dimas and his younger sibling.
-      - text: Ini rumah Ibu?
-        ar_eg: ده بيت حضرتك؟
-        ar: أهذا بيتكِ يا سيدتي؟
-        en: Is this your house, ma'am?
-  - title: Punya siapa?
-    body:
-      ar_eg: |
-        عشان تسأل «بتاع مين؟» قول punya siapa (punya = بتاع / يملك):
-        «Tas ini punya siapa?» = «الشنطة دي بتاعة مين؟» — «Punya saya.» = «بتاعتي».
-      ar: |
-        وللسؤال «لمن هذا؟» قل punya siapa (punya = مِلك / يملك):
-        «Tas ini punya siapa?» = «لمن هذه الحقيبة؟» — «Punya saya.» = «هي لي».
-      en: |
-        To ask "whose?", use punya siapa (punya = belonging to / to own):
-        "Tas ini punya siapa?" = "Whose bag is this?" — "Punya saya." = "Mine."
-    grammar: id.possessive
-    examples:
-      - text: Tas ini punya siapa? — Punya saya.
-        ar_eg: الشنطة دي بتاعة مين؟ — بتاعتي.
-        ar: لمن هذه الحقيبة؟ — لي.
-        en: Whose bag is this? — Mine.
+      - text: Ini suami saya.
+        ar_eg: ده جوزي.
+        ar: هذا زوجي.
+        en: This is my husband.
+      - text: Anak perempuan saya dokter.
+        ar_eg: بنتي دكتورة.
+        ar: ابنتي طبيبة.
+        en: My daughter is a doctor.
+      - text: Itu adik laki-laki saya.
+        ar_eg: ده أخويا الصغير.
+        ar: ذاك أخي الأصغر.
+        en: That's my younger brother.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: bukuku
-        ar_eg: كتابي
-        ar: كتابي
-        en: my book
-      - text: bukumu
-        ar_eg: كتابك
-        ar: كتابك
-        en: your book
-      - text: bukunya
-        ar_eg: كتابه / كتابها
-        ar: كتابه / كتابها
-        en: his / her book
-      - text: buku Rina
-        ar_eg: كتاب رينا
-        ar: كتاب رينا
-        en: Rina's book
-    words: ["-ku", "-mu", "-nya", buku]
+    type: build_sentence
+    source:
+      ar_eg: ده أخويا الصغير، بايو.
+      ar: هذا أخي الأصغر، بايو.
+      en: This is my younger brother, Bayu.
+    answer: Ini adik laki-laki saya, Bayu.
+    distractors: [itu, kakak]
+    words: [ini, adik, laki-laki]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إزاي تقول «شنطة رينا»؟
-      ar: كيف تقول «حقيبة رينا»؟
-      en: How do you say "Rina's bag"?
-    options: ["tas siapa", "tas Rina", "Rina tas"]
-    answer: 1
-    explain:
-      ar_eg: الحاجة الأول وبعدين صاحبها، زي «شنطة رينا».
-      ar: المضاف أولًا ثم المضاف إليه، كقولنا «حقيبة رينا».
-      en: Thing first, then owner — just like Arabic.
-    words: [tas]
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: دي مراتي.
+      ar: هذه زوجتي.
+      en: This is my wife.
+    answers: [Ini istri saya., Ini istri saya, Ini istriku., Ini istri aku.]
+    words: [ini, istri]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: بتسأل Bu Sari (ست كبيرة) «ده بيت حضرتك؟». تقول إيه؟
-      ar: تسأل Bu Sari (سيدة كبيرة) «أهذا بيتكِ؟». ماذا تقول؟
-      en: You ask Bu Sari (an older lady), "Is this your house?" What do you say?
-    options: ["Ini rumahmu, Bu?", "Ini rumah Ibu?", "Ini Ibu rumah?"]
-    answer: 1
-    explain:
-      ar_eg: -mu للصحاب. مع الكبار بنقول rumah Ibu. و«Ibu rumah» ترتيبها غلط.
-      ar: -mu للأصدقاء، ومع الكبار يقال rumah Ibu، و«Ibu rumah» ترتيبها خاطئ.
-      en: -mu is for friends; with elders say rumah Ibu. "Ibu rumah" has the wrong order.
-    words: [rumah, Ibu]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إزاي تقول «أخوه الصغير» (عن ديماس)؟
-      ar: كيف تقول «أخوه الأصغر» (عن ديماس)؟
-      en: How do you say "his younger sibling" (about Dimas)?
-    options: ["adikku", "adiknya", "adikmu"]
-    answer: 1
-    explain:
-      ar_eg: -nya = بتاعه / بتاعها. -ku = بتاعي، -mu = بتاعك.
-      ar: -nya للغائب، و-ku للمتكلم، و-mu للمخاطب.
-      en: -nya = his/her; -ku = my; -mu = your.
-    words: ["-nya", adik]
-  - id: e05
-    type: listen
-    text: Ini punya saya.
-    options: ["Itu punya siapa?", "Ini rumah saya.", "Ini punya saya."]
-    answer: 2
-    words: [punya]
-  - id: e06
-    type: fill_blank
-    sentence: Dimas, siapa nama ibu___?
-    meaning:
-      ar_eg: يا ديماس، اسم مامتك إيه؟
-      ar: يا ديماس، ما اسم أمك؟
-      en: Dimas, what's your mother's name?
-    options: ["nya", "ku", "mu"]
-    answers: [mu]
-    explain:
-      ar_eg: بتكلم Dimas صاحبك، يبقى -mu = بتاعك.
-      ar: تخاطب صديقك Dimas، فتلزم -mu.
-      en: You're talking to your friend Dimas, so it's -mu (your).
-    words: ["-mu", ibu]
-  - id: e07
-    type: fill_blank
-    sentence: Tas ini punya ___? — Punya Rina.
-    meaning:
-      ar_eg: الشنطة دي بتاعة مين؟ — بتاعة رينا.
-      ar: لمن هذه الحقيبة؟ — لرينا.
-      en: Whose bag is this? — Rina's.
-    answers: [siapa]
-    words: [punya, siapa, tas]
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: ده بيتي.
-      ar: هذا بيتي.
-      en: This is my house.
-    answer: Ini rumah saya.
-    distractors: [punya, dia]
-    words: [rumah]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: الكتاب ده بتاع مين؟
-      ar: لمن هذا الكتاب؟
-      en: Whose book is this?
-    answer: Buku ini punya siapa?
-    distractors: [apa, itu]
-    words: [buku, punya, siapa]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (لصاحبك) بيتك فين؟
-      ar: (لصديقك) أين بيتك؟
-      en: (to a friend) Where is your house?
-    answers: ["Rumahmu di mana?", "Rumahmu di mana", "Rumah kamu di mana?", "Di mana rumahmu?", "Di mana rumah kamu?"]
-    words: ["-mu", rumah, di mana]
-  - id: e11
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: دي شنطة حضرتك يا أستاذ؟
-      ar: أهذه حقيبتك يا سيدي؟
-      en: Is this your bag, sir?
-    answers: ["Ini tas Bapak?", "Ini tas Bapak", "Apakah ini tas Bapak?", "Apa ini tas Bapak?", "Tas ini punya Bapak?", "Ini tas Bapak, Pak?"]
-    explain:
-      ar_eg: مع راجل أكبر بنقول tas Bapak مش tasmu.
-      ar: مع الرجل الأكبر يقال tas Bapak لا tasmu.
-      en: With an older man, say tas Bapak, not tasmu.
-    words: [tas, Bapak]
-  - id: e12
     type: translate
     direction: from_target
-    source_text: Rumahnya di Cikini.
+    source_text: Itu kakak perempuan saya. Dia dokter.
     answers_meaning:
-      ar_eg: ["بيته في تشيكيني.", "بيتها في تشيكيني", "بيته في Cikini"]
-      ar: ["بيته في تشيكيني.", "بيتها في تشيكيني", "منزله في Cikini"]
-      en: ["His house is in Cikini.", "Her house is in Cikini", "Their house is in Cikini"]
-    words: ["-nya", rumah]
-  - id: e13
-    type: dictation
-    text: Rumah saya di Menteng.
+      ar_eg: [دي أختي الكبيرة. هي دكتورة., دي أختي الكبيرة، دكتورة]
+      ar: [تلك أختي الكبرى. هي طبيبة., هذه أختي الكبرى، وهي طبيبة]
+      en: [That's my older sister. She's a doctor., That is my older sister; she is a doctor]
+    words: [itu, kakak, perempuan]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: suami
+        ar_eg: الجوز
+        ar: الزوج
+        en: husband
+      - text: istri
+        ar_eg: المرات
+        ar: الزوجة
+        en: wife
+      - text: anak
+        ar_eg: الابن / البنت
+        ar: الولد
+        en: child
+      - text: laki-laki
+        ar_eg: ذكر
+        ar: ذكر
+        en: male
+      - text: perempuan
+        ar_eg: أنثى
+        ar: أنثى
+        en: female
+    words: [suami, istri, anak, laki-laki, perempuan]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «بنتي»؟
+      ar: كيف تقول «ابنتي»؟
+      en: How do you say "my daughter"?
+    options: [perempuan anak saya, anak perempuan saya, saya anak perempuan]
+    answer: 1
+    explain:
+      ar_eg: الاسم الأول (anak)، بعده الوصف (perempuan)، وفي الآخر صاحبه (saya).
+      ar: الاسم أولًا (anak)، ثم الوصف (perempuan)، ثم المضاف إليه (saya).
+      en: Noun first (anak), then the describer (perempuan), then the owner (saya).
+    words: [anak, perempuan]
+  - id: e06
+    type: listen
+    text: Ini suami saya.
+    options: [Ini istri saya., Itu suami saya., Ini suami saya.]
+    answer: 2
     meaning:
-      ar_eg: بيتي في منتنج.
-      ar: بيتي في منتنج.
-      en: My house is in Menteng.
-    words: [rumah]
-  - id: e14
+      ar_eg: ده جوزي.
+      ar: هذا زوجي.
+      en: This is my husband.
+    words: [suami]
+  - id: e07
     type: speaking
-    text: Ini buku saya, dan itu bukumu.
+    text: Ini istri saya, dan itu anak kami.
     meaning:
-      ar_eg: ده كتابي، وده (هناك) كتابك.
-      ar: هذا كتابي، وذاك كتابك.
-      en: This is my book, and that's your book.
-    words: [buku, "-mu"]
+      ar_eg: دي مراتي، وده (هناك) ابننا.
+      ar: هذه زوجتي، وذاك ولدنا.
+      en: This is my wife, and that's our child.
+    words: [istri, anak]
 dialogue:
-  title: Tas siapa?
   lines:
-    - speaker: Bayu
-      text: Kak Rina, tas ini punya siapa?
-      ar_eg: يا رينا، الشنطة دي بتاعة مين؟
-      ar: يا رينا، لمن هذه الحقيبة؟
-      en: Rina, whose bag is this?
-    - speaker: Rina
-      text: Itu punya Mohamed.
-      ar_eg: دي بتاعة محمد.
-      ar: إنها لمحمد.
-      en: It's Mohamed's.
-    - speaker: Bayu
-      text: Mas Mohamed, ini tas Mas?
-      ar_eg: يا محمد، دي شنطتك؟
-      ar: يا محمد، أهذه حقيبتك؟
-      en: Mohamed, is this your bag?
+    - speaker: Bu Sari
+      text: Mohamed, ini suami saya, Pak Hendra.
+      ar_eg: محمد، ده جوزي، الأستاذ هندرا.
+      ar: محمد، هذا زوجي، الأستاذ هندرا.
+      en: Mohamed, this is my husband, Pak Hendra.
     - speaker: Mohamed
-      text: Ya, itu tas saya. Terima kasih, Bayu!
-      ar_eg: أيوه، دي شنطتي. شكرًا يا بايو!
-      ar: نعم، هذه حقيبتي. شكرًا يا بايو!
-      en: Yes, that's my bag. Thanks, Bayu!
-    - speaker: Bayu
-      text: Sama-sama. Rumah Mas di mana?
-      ar_eg: العفو. بيتك فين؟
-      ar: العفو. أين بيتك؟
-      en: You're welcome. Where's your house?
+      text: Selamat siang, Pak. Salam kenal.
+      ar_eg: مساء الخير يا أستاذ. فرصة سعيدة.
+      ar: مساء الخير يا أستاذ. تشرفنا.
+      en: Good afternoon, sir. Nice to meet you.
+    - speaker: Pak Hendra
+      text: Salam kenal. Itu anak kami, Putri.
+      ar_eg: فرصة سعيدة. دي بنتنا، بوتري.
+      ar: تشرفنا. تلك ابنتنا، بوتري.
+      en: Nice to meet you. That's our child, Putri.
     - speaker: Mohamed
-      text: Rumah saya di Menteng.
-      ar_eg: بيتي في منتنج.
-      ar: بيتي في منتنج.
-      en: My house is in Menteng.
+      text: Anak perempuan Bapak? Hai, Putri!
+      ar_eg: بنت حضرتك؟ أهلًا يا بوتري!
+      ar: ابنتك؟ مرحبًا يا بوتري!
+      en: Your daughter? Hi, Putri!
 new_words:
-  - word: rumah
+  - word: suami
     pos: noun
-    ar_eg: بيت
-    ar: بيت، منزل
-    en: house, home
-  - word: buku
+    ar_eg: جوز
+    ar: زوج
+    en: husband
+  - word: istri
     pos: noun
-    ar_eg: كتاب
-    ar: كتاب
-    en: book
-  - word: tas
+    ar_eg: مراتة، زوجة
+    ar: زوجة
+    en: wife
+  - word: anak
     pos: noun
-    ar_eg: شنطة
-    ar: حقيبة
-    en: bag
-  - word: punya
-    pos: verb
-    ar_eg: بتاع؛ يملك
-    ar: مِلك؛ يملك
-    en: belonging to; to have, own
-  - word: "-ku"
-    pos: pronoun
-    ar_eg: ـي (بتاعي)
-    ar: ياء المتكلم
-    en: my (attached)
-  - word: "-mu"
-    pos: pronoun
-    ar_eg: ـك (بتاعك)
-    ar: كاف المخاطب
-    en: your (attached)
-  - word: "-nya"
-    pos: pronoun
-    ar_eg: ـه / ـها (بتاعه / بتاعها)
-    ar: هاء الغائب
-    en: his, her, its, their (attached)
+    ar_eg: ابن / بنت، عيّل
+    ar: ابن / ابنة، ولد
+    en: child
+  - word: laki-laki
+    pos: noun
+    ar_eg: راجل، ذكر
+    ar: ذكر، رجل
+    en: male, man
+  - word: perempuan
+    pos: noun
+    ar_eg: ست، أنثى
+    ar: أنثى، امرأة
+    en: female, woman
 review:
   status: draft
   verified: false

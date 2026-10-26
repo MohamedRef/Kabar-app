@@ -120,7 +120,7 @@ exercises:
       ar_eg: مفيش حمام سباحة. ترد تقول إيه؟
       ar: لا يوجد مسبح. بماذا تجيب؟
       en: There's no pool. How do you answer?
-    options: ["Tidak ada.", "Bukan.", "Ada."]
+    options: [Tidak ada., Bukan., Ada.]
     answer: 0
     explain:
       ar_eg: الرد على سؤال بـ ada بيبقى ada (فيه) أو tidak ada (مفيش).
@@ -128,118 +128,41 @@ exercises:
       en: A question with ada is answered ada or tidak ada.
     words: [tidak ada]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح بمعنى «أنا طالب»؟
-      ar: أيّ جملة صحيحة بمعنى «أنا طالب»؟
-      en: Which sentence correctly says "I'm a student"?
-    options: ["Saya mahasiswa.", "Ada saya mahasiswa.", "Saya ada mahasiswa."]
-    answer: 0
-    explain:
-      ar_eg: ada معناها «فيه / موجود»، مش «يكون». الإندونيسي مش محتاج فعل «يكون» هنا.
-      ar: ada بمعنى «يوجد»، لا فعل كينونة، والإندونيسية لا تحتاجه هنا.
-      en: ada means "there is", not "to be"; Indonesian needs no "be" here.
-    words: [ada]
-  - id: e04
     type: listen
     text: Di Ancol ada pantai.
-    options: ["Di Ancol ada pantai.", "Di Ancol tidak ada pantai.", "Di Ancol ada taman."]
+    options: [Di Ancol ada pantai., Di Ancol tidak ada pantai., Di Ancol ada taman.]
     answer: 0
     words: [ada, pantai]
-  - id: e05
+  - id: e04
     type: fill_blank
     sentence: Di hotel ini ___ kolam renang.
     meaning:
       ar_eg: في الفندق ده فيه حمام سباحة.
       ar: في هذا الفندق مسبح.
       en: There's a swimming pool in this hotel.
-    options: ["adalah", "ada", "apa"]
+    options: [adalah, ada, apa]
     answers: [ada]
     words: [ada, kolam renang, hotel]
-  - id: e06
-    type: fill_blank
-    sentence: Pak Budi ___ di rumah?
-    meaning:
-      ar_eg: أستاذ بودي موجود في البيت؟
-      ar: هل الأستاذ بودي في البيت؟
-      en: Is Pak Budi at home?
-    options: ["ada", "adalah", "apa"]
-    answers: [ada]
-    explain:
-      ar_eg: ada هنا معناها «موجود».
-      ar: ada هنا بمعنى «موجود».
-      en: Here ada means "is present / is in".
-    words: [ada]
-  - id: e07
-    type: fill_blank
-    sentence: Maaf, Pak, toiletnya ___ ada.
-    meaning:
-      ar_eg: آسف يا أستاذ، مفيش تواليت.
-      ar: عذرًا يا سيدي، لا يوجد حمّام.
-      en: Sorry, sir, there's no toilet.
-    options: ["apa", "ada", "tidak"]
-    answers: [tidak]
-    words: [tidak ada, toilet]
-  - id: e08
+  - id: e05
     type: build_sentence
     source:
       ar_eg: في أنكول فيه حمام سباحة.
       ar: في أنكول مسبح.
       en: There's a swimming pool in Ancol.
     answer: Di Ancol ada kolam renang.
-    alternatives: ["Ada kolam renang di Ancol."]
+    alternatives: [Ada kolam renang di Ancol.]
     distractors: [tidak, berenang]
     words: [ada, kolam renang]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: فيه مية؟
-      ar: هل يوجد ماء؟
-      en: Is there any water?
-    answers:
-      - Ada air?
-      - Ada air
-      - Apakah ada air?
-      - Apakah ada air
-      - Apa ada air?
-      - Apa ada air
-    words: [ada, air]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: فيه جامع في أنكول؟
-      ar: هل يوجد مسجد في أنكول؟
-      en: Is there a mosque in Ancol?
-    answers:
-      - Di Ancol ada masjid?
-      - Di Ancol ada masjid
-      - Ada masjid di Ancol?
-      - Ada masjid di Ancol
-      - Apakah ada masjid di Ancol?
-      - Apakah di Ancol ada masjid?
-      - Apa ada masjid di Ancol?
-      - Apa di Ancol ada masjid?
-    words: [ada, masjid]
-  - id: e11
+  - id: e06
     type: translate
     direction: from_target
     source_text: Ada apa?
     answers_meaning:
-      ar_eg: ["فيه إيه؟", "فيه إيه", "في إيه؟"]
-      ar: ["ما الأمر؟", "ماذا هناك؟", "ما الأمر"]
-      en: ["What's up?", "What's wrong?", "What's the matter?", "What's going on?"]
+      ar_eg: [فيه إيه؟, فيه إيه, في إيه؟]
+      ar: [ما الأمر؟, ماذا هناك؟, ما الأمر]
+      en: ['What''s up?', 'What''s wrong?', 'What''s the matter?', 'What''s going on?']
     words: [ada]
-  - id: e12
-    type: dictation
-    text: Tidak ada kolam renang.
-    meaning:
-      ar_eg: مفيش حمام سباحة.
-      ar: لا يوجد مسبح.
-      en: There's no swimming pool.
-    words: [tidak ada, kolam renang]
-  - id: e13
+  - id: e07
     type: speaking
     text: Maaf, Bu, ada toilet?
     meaning:
@@ -322,11 +245,6 @@ new_words:
     ar_eg: مطعم
     ar: مطعم
     en: restaurant
-  - word: hotel
-    pos: noun
-    ar_eg: فندق
-    ar: فندق
-    en: hotel
 review:
   status: draft
   verified: false

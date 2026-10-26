@@ -1,294 +1,145 @@
 schema: kabar.lesson/v1
 id: bipa1.u04.l04
 language: id
-title: Undangan ulang tahun
+title: Jam berapa?
 can_do:
-  ar_eg: تقرا دعوة عيد ميلاد وترد عليها.
-  ar: أن تقرأ دعوة عيد ميلاد وتردّ عليها.
-  en: Read and answer a birthday invitation.
+  ar_eg: تسأل الساعة كام وتقولها بالساعة المظبوطة.
+  ar: أن تسأل عن الوقت وتذكره بالساعات الكاملة.
+  en: Ask and say the time on the hour.
 slides:
-  - title: Undangan dari Rina
+  - title: Jam berapa?
     body:
       ar_eg: |
-        Rina بعتت undangan (دعوة) لـ pesta (حفلة) عيد ميلادها:
-
-        UNDANGAN
-        Halo, teman-teman! Datang ke pesta ulang tahun saya, ya!
-        Hari — Sabtu
-        Tanggal — 25 Oktober
-        Jam — 19.00 (jam tujuh malam)
-        Tempat — rumah saya, Jalan Kebon Kacang 5, Tanah Abang
-        Salam, Rina
-
-        teman = صاحب، tempat = مكان، jalan = شارع.
+        «الساعة كام؟» = «Jam berapa?» أو «Pukul berapa?» (pukul أرسمى شوية).
+        والرد: jam + الرقم + وقت اليوم: jam tujuh pagi = ٧ الصبح، jam tujuh malam = ٧ بالليل.
+        خلي بالك من الترتيب: jam tujuh = الساعة ٧، لكن tujuh jam = سبع ساعات (مدة).
       ar: |
-        أرسلت Rina undangan (دعوة) إلى pesta (حفلة) عيد ميلادها:
-
-        UNDANGAN
-        Halo, teman-teman! Datang ke pesta ulang tahun saya, ya!
-        Hari — Sabtu
-        Tanggal — 25 Oktober
-        Jam — 19.00 (jam tujuh malam)
-        Tempat — rumah saya, Jalan Kebon Kacang 5, Tanah Abang
-        Salam, Rina
-
-        teman = صديق، tempat = مكان، jalan = شارع.
+        «كم الساعة؟» = «Jam berapa?» أو «Pukul berapa?» (وpukul أكثر رسمية).
+        والجواب: jam + العدد + جزء اليوم: jam tujuh pagi = السابعة صباحًا، jam tujuh malam = السابعة مساءً.
+        وانتبه للترتيب: jam tujuh = الساعة السابعة، أما tujuh jam = سبع ساعات (مدة).
       en: |
-        Rina sent an undangan (invitation) to her birthday pesta (party):
-
-        UNDANGAN
-        Halo, teman-teman! Datang ke pesta ulang tahun saya, ya!
-        Hari — Sabtu
-        Tanggal — 25 Oktober
-        Jam — 19.00 (jam tujuh malam)
-        Tempat — rumah saya, Jalan Kebon Kacang 5, Tanah Abang
-        Salam, Rina
-
-        teman = friend, tempat = place, jalan = street.
-    grammar: id.time.calendar
-  - title: Hadiah = هدية
-    body:
-      ar_eg: |
-        ومتروحش إيدك فاضية: hadiah = هدية، جاية من العربي «هدية». وuntuk = عشان / لـ: «Ini hadiah untuk kamu» = «دي هدية ليكي».
-        ولو هتشتري حاجة من سوق Tanah Abang اسأل: «Kain ini berapa?» أو «Berapa harganya?».
-      ar: |
-        ولا تذهب خالي اليدين: hadiah من العربية «هدية». وuntuk = لِـ: «Ini hadiah untuk kamu» = «هذه هدية لكِ».
-        وإن اشتريت شيئًا من سوق Tanah Abang فاسأل: «Kain ini berapa?» أو «Berapa harganya?».
-      en: |
-        Don't go empty-handed: hadiah (gift) comes from Arabic «هدية». untuk = for: "Ini hadiah untuk kamu" = "This is a gift for you".
-        Buying something at Tanah Abang market? Ask "Kain ini berapa?" or "Berapa harganya?".
-    grammar: id.question.kapan-berapa
+        "What time is it?" = "Jam berapa?" or "Pukul berapa?" (pukul is more formal).
+        Answer: jam + number + part of day: jam tujuh pagi = 7 a.m., jam tujuh malam = 7 p.m.
+        Watch the order: jam tujuh = seven o'clock, but tujuh jam = seven hours (a duration).
+    grammar: id.time.clock
     examples:
-      - text: Ini hadiah untuk kamu. Selamat ulang tahun!
-        ar_eg: دي هدية عشانك. كل سنة وإنتي طيبة!
-        ar: هذه هدية لكِ. عيد ميلاد سعيد!
-        en: This is a gift for you. Happy birthday!
+      - text: Sekarang jam berapa? — Jam tujuh pagi.
+        ar_eg: الساعة كام دلوقتي؟ — سبعة الصبح.
+        ar: كم الساعة الآن؟ — السابعة صباحًا.
+        en: What time is it now? — Seven a.m.
 exercises:
   - id: e01
-    type: multiple_choice
-    question: Pesta Rina hari apa?
-    question_meaning:
-      ar_eg: (من الدعوة) حفلة رينا يوم إيه؟
-      ar: (من الدعوة) في أيّ يوم حفلة رينا؟
-      en: (from the invitation) What day is Rina's party?
-    options: ["Sabtu", "Minggu", "Jumat"]
+    type: listen
+    text: jam tiga sore
+    options: [jam tiga sore, tiga jam, jam tiga pagi]
     answer: 0
-    words: [pesta, Sabtu]
+    words: [jam, tiga, sore]
   - id: e02
+    type: fill_blank
+    sentence: Sekarang jam ___? — Jam empat.
+    meaning:
+      ar_eg: الساعة كام دلوقتي؟ — أربعة.
+      ar: كم الساعة الآن؟ — الرابعة.
+      en: What time is it now? — Four o'clock.
+    answers: [berapa]
+    words: [berapa, sekarang]
+  - id: e03
+    type: dictation
+    text: Jam berapa sekarang?
+    meaning:
+      ar_eg: الساعة كام دلوقتي؟
+      ar: كم الساعة الآن؟
+      en: What time is it now?
+    words: [jam, berapa, sekarang]
+  - id: e04
+    type: speaking
+    text: Permisi, Mbak. Sekarang jam berapa?
+    meaning:
+      ar_eg: لو سمحتي، الساعة كام دلوقتي؟
+      ar: من فضلكِ، كم الساعة الآن؟
+      en: Excuse me, miss. What time is it now?
+    words: [sekarang, jam, berapa]
+  - id: e05
     type: multiple_choice
-    question: Jam berapa pestanya?
     question_meaning:
-      ar_eg: (من الدعوة) الحفلة الساعة كام؟ (19.00)
-      ar: (من الدعوة) في أيّ ساعة الحفلة؟ (19.00)
-      en: (from the invitation) What time is the party? (19.00)
-    options: ["jam tujuh pagi", "jam tujuh malam", "jam sembilan malam"]
+      ar_eg: 'في خطاب رسمي: «الساعة عشرة». تقول إيه؟'
+      ar: 'في إعلان رسمي: «الساعة العاشرة». ماذا تقول؟'
+      en: 'In a formal announcement: "at ten o''clock". What do you say?'
+    options: [sepuluh jam, pukul sepuluh, jam sepuluhan]
     answer: 1
     explain:
-      ar_eg: 19.00 = ٧ بالليل.
-      ar: 19.00 = السابعة مساءً.
-      en: 19.00 = 7 p.m.
-    words: [jam, malam]
-  - id: e03
-    type: listen
-    text: Datang ke pesta saya, ya!
-    options: ["Datang ke pesta saya, ya!", "Selamat datang di pesta saya!", "Datang ke rumah saya, ya!"]
-    answer: 0
-    words: [datang, pesta]
-  - id: e04
-    type: fill_blank
-    sentence: Pesta ulang tahun Rina hari Sabtu, tanggal ___ Oktober.
-    meaning:
-      ar_eg: حفلة عيد ميلاد رينا يوم السبت ٢٥ أكتوبر.
-      ar: حفلة عيد ميلاد رينا يوم السبت ٢٥ أكتوبر.
-      en: Rina's birthday party is on Saturday, 25 October.
-    answers: [dua puluh lima, "25"]
-    words: [tanggal, puluh, lima]
-  - id: e05
-    type: fill_blank
-    sentence: Saya mau beli ___ untuk Rina.
-    meaning:
-      ar_eg: عايز أشتري هدية لرينا.
-      ar: أريد أن أشتري هدية لرينا.
-      en: I want to buy a gift for Rina.
-    answers: [hadiah]
-    words: [hadiah, beli, untuk]
+      ar_eg: pukul زي jam بس رسمي، وبييجي قبل الرقم.
+      ar: pukul مثل jam لكنها رسمية، وتأتي قبل العدد.
+      en: Pukul is the formal jam, and it comes before the number.
+    words: [pukul]
   - id: e06
     type: build_sentence
     source:
-      ar_eg: شكرًا يا رينا! أنا جاي.
-      ar: شكرًا يا رينا! سآتي.
-      en: Thanks, Rina! I'll come.
-    answer: Terima kasih, Rina! Saya datang, ya.
-    distractors: [tutup, belum]
-    words: [datang]
+      ar_eg: الساعة دلوقتي تسعة.
+      ar: الساعة الآن التاسعة.
+      en: It's nine o'clock now.
+    answer: Sekarang jam sembilan.
+    alternatives: [Jam sembilan sekarang.]
+    distractors: [berapa, pukul]
+    words: [sekarang, jam]
   - id: e07
-    type: build_sentence
-    source:
-      ar_eg: الحفلة في بيت رينا.
-      ar: الحفلة في بيت رينا.
-      en: The party is at Rina's house.
-    answer: Pestanya di rumah Rina.
-    distractors: [ke, saya]
-    words: [pesta, rumah]
-  - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: الحفلة إمتى؟
-      ar: متى الحفلة؟
-      en: When is the party?
-    answers: ["Kapan pestanya?", "Kapan pestanya", "Pestanya kapan?", "Kapan pesta itu?", "Kapan pesta ulang tahunnya?", "Pesta ulang tahunnya kapan?"]
-    words: [kapan, pesta]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الحفلة الساعة ٧ بالليل.
-      ar: الحفلة في السابعة مساءً.
-      en: The party is at 7 p.m.
-    answers:
-      - Pestanya jam tujuh malam.
-      - Pestanya jam tujuh malam
-      - Pesta itu jam tujuh malam.
-      - Pestanya pukul tujuh malam.
-      - Pestanya jam 7 malam.
-      - Pestanya pukul 19.00.
-    words: [pesta, jam, malam]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: القماش ده بكام؟
-      ar: بكم هذا القماش؟
-      en: How much is this fabric?
-    answers:
-      - Kain ini berapa?
-      - Kain ini berapa harganya?
-      - Berapa harga kain ini?
-      - Berapa harganya kain ini?
-      - Harga kain ini berapa?
-      - Kain ini berapa
-    words: [kain, berapa]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: Hadiah ini untuk Rina.
-    answers_meaning:
-      ar_eg: ["الهدية دي عشان رينا.", "الهدية دي لرينا"]
-      ar: ["هذه الهدية لرينا.", "هذه الهدية من أجل رينا"]
-      en: ["This gift is for Rina.", "This present is for Rina"]
-    words: [hadiah, untuk]
-  - id: e12
-    type: dictation
-    text: Hari Sabtu, jam tujuh malam.
-    meaning:
-      ar_eg: يوم السبت، الساعة ٧ بالليل.
-      ar: يوم السبت، في السابعة مساءً.
-      en: Saturday, at seven p.m.
-    words: [Sabtu, jam, malam]
-  - id: e13
-    type: speaking
-    text: Selamat ulang tahun, Rina! Ini hadiah untuk kamu.
-    meaning:
-      ar_eg: كل سنة وإنتي طيبة يا رينا! دي هدية عشانك.
-      ar: عيد ميلاد سعيد يا رينا! هذه هدية لكِ.
-      en: Happy birthday, Rina! This is a gift for you.
-    words: [ulang tahun, hadiah, untuk]
+      ar_eg: الساعة تلاتة.
+      ar: الساعة الثالثة.
+      en: It's three o'clock.
+    answers: [Jam tiga., Jam tiga, Sekarang jam tiga., Pukul tiga.]
+    words: [jam]
 dialogue:
-  title: Mencari hadiah di Tanah Abang
   lines:
-    - speaker: Dimas
-      text: Mohamed, kamu datang ke pesta ulang tahun Rina?
-      ar_eg: يا محمد، هتيجي حفلة عيد ميلاد رينا؟
-      ar: يا محمد، هل ستأتي إلى حفلة عيد ميلاد رينا؟
-      en: Mohamed, are you coming to Rina's birthday party?
     - speaker: Mohamed
-      text: Ya! Hari Sabtu, tanggal dua puluh lima, jam tujuh malam.
-      ar_eg: أيوه! يوم السبت ٢٥، الساعة ٧ بالليل.
-      ar: نعم! يوم السبت الخامس والعشرين، في السابعة مساءً.
-      en: Yes! Saturday the 25th, at seven p.m.
-    - speaker: Dimas
-      text: Kamu sudah punya hadiah?
-      ar_eg: جبت هدية خلاص؟
-      ar: هل عندك هدية بالفعل؟
-      en: Do you have a gift yet?
+      text: Rina, sekarang jam berapa?
+      ar_eg: رينا، الساعة كام دلوقتي؟
+      ar: رينا، كم الساعة الآن؟
+      en: Rina, what time is it now?
+    - speaker: Rina
+      text: Sekarang jam sepuluh.
+      ar_eg: الساعة عشرة دلوقتي.
+      ar: الساعة الآن العاشرة.
+      en: It's ten o'clock now.
     - speaker: Mohamed
-      text: Belum. Kita beli kain batik di sini, ya?
-      ar_eg: لسه. نشتري قماش باتيك من هنا؟
-      ar: ليس بعد. هل نشتري قماش باتيك من هنا؟
-      en: Not yet. Shall we buy some batik cloth here?
-    - speaker: Dimas
-      text: Ya! Kain batik di Tanah Abang murah.
-      ar_eg: أيوه! قماش الباتيك في تانا أبانج رخيص.
-      ar: نعم! قماش الباتيك في تانا أبانغ رخيص.
-      en: Yes! Batik cloth is cheap at Tanah Abang.
-    - speaker: Mohamed
-      text: Permisi, Bu. Kain ini berapa?
-      ar_eg: لو سمحتي يا حاجة. القماش ده بكام؟
-      ar: من فضلكِ يا سيدتي. بكم هذا القماش؟
-      en: Excuse me, ma'am. How much is this cloth?
-    - speaker: Bu Ani
-      text: Delapan puluh lima ribu, Mas.
-      ar_eg: خمسة وتمانين ألف.
-      ar: خمسة وثمانون ألفًا.
-      en: Eighty-five thousand.
-    - speaker: Mohamed
-      text: Baik, Bu. Saya beli satu. Ini hadiah untuk teman saya.
-      ar_eg: تمام يا حاجة. هاخد واحد. دي هدية لصاحبتي.
-      ar: حسنًا يا سيدتي، سأشتري واحدًا. إنه هدية لصديقتي.
-      en: All right, ma'am. I'll buy one. It's a gift for my friend.
+      text: Jam sepuluh? Terima kasih, Rina.
+      ar_eg: عشرة؟ شكرًا يا رينا.
+      ar: العاشرة؟ شكرًا يا رينا.
+      en: Ten o'clock? Thanks, Rina.
+    - speaker: Rina
+      text: Sama-sama. Kursus bahasa Indonesia pukul sebelas, ya!
+      ar_eg: العفو. كورس الإندونيسي الساعة حداشر، ماشي!
+      ar: عفوًا. دورة الإندونيسية في الساعة الحادية عشرة!
+      en: You're welcome. The Indonesian course is at eleven o'clock, OK!
 new_words:
-  - word: undangan
+  - word: jam
     pos: noun
-    ar_eg: دعوة
-    ar: دعوة
-    en: invitation
-  - word: pesta
+    ar_eg: ساعة
+    ar: ساعة
+    en: hour; o'clock; clock
+  - word: pukul
     pos: noun
-    ar_eg: حفلة
-    ar: حفلة
-    en: party
-  - word: halo
-    pos: interjection
-    ar_eg: أهلًا، هالو
-    ar: مرحبًا
-    en: hello
-  - word: teman
+    ar_eg: الساعة (رسمي)
+    ar: الساعة (رسمية)
+    en: o'clock (formal)
+  - word: berapa
+    pos: question word
+    ar_eg: كام
+    ar: كم
+    en: how much, how many, what number
+  - word: sekarang
+    pos: adverb
+    ar_eg: دلوقتي
+    ar: الآن
+    en: now
+  - word: waktu
     pos: noun
-    ar_eg: صاحب
-    ar: صديق
-    en: friend
-  - word: tempat
-    pos: noun
-    ar_eg: مكان
-    ar: مكان
-    en: place
-  - word: jalan
-    pos: noun
-    ar_eg: شارع
-    ar: شارع
-    en: street, road
-  - word: ke
-    pos: preposition
-    ar_eg: لـ، على
-    ar: إلى
-    en: to (a place)
-  - word: hadiah
-    pos: noun
-    ar_eg: هدية
-    ar: هدية
-    en: gift
-    arabic: هدية
-  - word: untuk
-    pos: preposition
-    ar_eg: عشان، لـ
-    ar: لِـ، من أجل
-    en: for
-  - word: beli
-    pos: verb
-    ar_eg: يشتري
-    ar: يشتري
-    en: to buy
+    ar_eg: وقت
+    ar: وقت
+    en: time
+    arabic: وقت
 review:
   status: draft
   verified: false
