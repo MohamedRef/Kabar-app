@@ -1,0 +1,202 @@
+schema: kabar.lesson/v1
+id: bipa5.u04.l02
+language: id
+title: Pesantren dan Al-Azhar
+can_do:
+  ar_eg: تقارن بين مؤسستين تعليميتين، زي المعهد الديني والأزهر.
+  ar: أن تقارن بين مؤسستين تعليميّتين كالمعهد الديني والأزهر.
+  en: Compare two institutions, such as a pesantren and Al-Azhar.
+slides:
+  - title: Membandingkan
+    body:
+      ar_eg: |
+        عشان تقارن بأسلوب رسمي:
+        - Persamaannya adalah … = وجه الشبه …
+        - Perbedaannya adalah … = الفرق …
+        - Sementara itu, … = في الوقت نفسه / أما …
+        - Keduanya … = الاتنين …
+        وكلمات كتير هنا أصلها عربي: madrasah ← مدرسة، ilmu ← علم، kitab ← كتاب.
+      ar: |
+        لتقارن بأسلوب رسمي:
+        - Persamaannya adalah … = وجه الشبه …
+        - Perbedaannya adalah … = الفرق …
+        - Sementara itu, … = أمّا … / في حين …
+        - Keduanya … = كلاهما …
+        وكثير من الكلمات هنا عربي الأصل: madrasah ← مدرسة، ilmu ← علم، kitab ← كتاب.
+      en: |
+        To compare formally:
+        - Persamaannya adalah … = The similarity is …
+        - Perbedaannya adalah … = The difference is …
+        - Sementara itu, … = Meanwhile / whereas …
+        - Keduanya … = Both …
+        Many words here come from Arabic: madrasah ← madrasa, ilmu ← ʿilm, kitab ← kitāb.
+    examples:
+      - text: Keduanya mengajarkan ilmu agama. Sementara itu, Al-Azhar juga punya fakultas kedokteran.
+        ar_eg: الاتنين بيعلّموا علوم الدين. أما الأزهر فعنده كمان كلية طب.
+        ar: كلاهما يعلّم علوم الدين، أمّا الأزهر فله كلّية طبّ أيضًا.
+        en: Both teach religious knowledge. Al-Azhar, meanwhile, also has a medical faculty.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: persamaan
+        ar_eg: شبه / نقطة مشتركة
+        ar: وجه شبه
+        en: similarity
+      - text: perbedaan
+        ar_eg: فرق
+        ar: فرق، اختلاف
+        en: difference
+      - text: keduanya
+        ar_eg: الاتنين
+        ar: كلاهما
+        en: both
+      - text: ilmu
+        ar_eg: علم
+        ar: علم
+        en: knowledge, science
+      - text: madrasah
+        ar_eg: مدرسة (إسلامية)
+        ar: مدرسة (إسلامية)
+        en: Islamic school
+    words: [persamaan, perbedaan, keduanya, ilmu, madrasah]
+  - id: e02
+    type: multiple_choice
+    question: "Pesantren dan Al-Azhar sama-sama mengajarkan kitab. Itu ___ keduanya."
+    question_meaning:
+      ar_eg: «المعهد والأزهر الاتنين بيدرّسوا كتب التراث. ده … بينهم.» إيه الكلمة؟
+      ar: «كلاهما يدرّس كتب التراث. هذا … بينهما.» ما الكلمة؟
+      en: Which word completes "Both teach the classical books. That is a … between them."?
+    options: [perbedaan, persamaan, sementara]
+    answer: 1
+    words: [persamaan, keduanya]
+  - id: e03
+    type: fill_blank
+    sentence: ___ utamanya adalah ukuran. Al-Azhar adalah universitas besar.
+    meaning:
+      ar_eg: الفرق الأساسي هو الحجم. الأزهر جامعة كبيرة.
+      ar: الفرق الرئيسي هو الحجم، فالأزهر جامعة كبيرة.
+      en: The main difference is size. Al-Azhar is a big university.
+    options: [Perbedaan, Persamaan, Keduanya]
+    answers: [Perbedaan]
+    words: [perbedaan]
+  - id: e04
+    type: listen
+    text: Di madrasah, siswa belajar ilmu agama dan ilmu umum.
+    question:
+      ar_eg: الطلاب بيدرسوا إيه في المدرسة الإسلامية؟
+      ar: ماذا يدرس الطلّاب في المدرسة الإسلامية؟
+      en: What do pupils study at the madrasah?
+    options:
+      - علوم الدين بس.
+      - علوم عامة بس.
+      - علوم الدين والعلوم العامة.
+    answer: 2
+    words: [madrasah, ilmu]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الاتنين بيدرّسوا علوم الدين.
+      ar: كلاهما يعلّم علوم الدين.
+      en: Both teach religious knowledge.
+    answer: Keduanya mengajarkan ilmu agama.
+    distractors: [perbedaan, sementara]
+    words: [keduanya, ilmu]
+  - id: e06
+    type: translate
+    direction: from_target
+    source_text: Perbedaannya, santri tinggal di pesantren, sementara mahasiswa Al-Azhar tinggal di kota.
+    answers_meaning:
+      ar_eg:
+        - الفرق إن طلاب المعهد ساكنين في المعهد، أما طلاب الأزهر ساكنين في المدينة.
+        - الفرق إن طالب المعهد عايش في المعهد، وطالب الأزهر عايش في المدينة.
+      ar:
+        - الفرق أنّ طلّاب المعهد يقيمون فيه، في حين يقيم طلّاب الأزهر في المدينة.
+        - الفرق أنّ طالب المعهد يسكن المعهد، أمّا طالب الأزهر فيسكن المدينة.
+      en:
+        - The difference is that santri live in the pesantren, while Al-Azhar students live in the city.
+        - The difference is that pesantren students board there, whereas Al-Azhar students live in town.
+    words: [perbedaan]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة مش جاية من العربي؟
+      ar: أيّ كلمة ليست عربية الأصل؟
+      en: Which word does not come from Arabic?
+    options: [pesantren, ilmu, madrasah]
+    answer: 0
+    explain:
+      ar_eg: pesantren من pe-santri-an، وsantri أصلها هندي قديم. الباقي عربي.
+      ar: pesantren من pe-santri-an، وأصل santri هندي قديم، أمّا الباقيتان فعربيّتان.
+      en: pesantren is pe-santri-an, and santri is of old Indic origin; the other two are Arabic.
+    words: [ilmu, madrasah]
+  - id: e08
+    type: speaking
+    text: Persamaannya, keduanya punya sejarah yang panjang.
+    meaning:
+      ar_eg: وجه الشبه إن الاتنين ليهم تاريخ طويل.
+      ar: وجه الشبه أنّ لكليهما تاريخًا طويلًا.
+      en: The similarity is that both have a long history.
+    words: [persamaan, keduanya]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «الفرق» بالإندونيسي إيه؟
+      ar: ما معنى «الفرق» بالإندونيسية؟
+      en: What is "the difference" in Indonesian?
+    options: [persamaan, perbedaan, keduanya]
+    answer: 1
+    words: [perbedaan]
+dialogue:
+  title: Di pesantren Tenggarong
+  lines:
+    - speaker: Rina
+      text: Mohamed, apa perbedaan pesantren ini dengan Al-Azhar?
+      ar_eg: يا محمد، إيه الفرق بين المعهد ده والأزهر؟
+      ar: يا محمد، ما الفرق بين هذا المعهد والأزهر؟
+      en: Mohamed, what's the difference between this pesantren and Al-Azhar?
+    - speaker: Mohamed
+      text: Al-Azhar jauh lebih besar. Ada fakultas kedokteran dan teknik juga.
+      ar_eg: الأزهر أكبر بكتير. فيه كمان كليات طب وهندسة.
+      ar: الأزهر أكبر بكثير، وفيه كلّيات طبّ وهندسة أيضًا.
+      en: Al-Azhar is much bigger. It has medicine and engineering faculties too.
+    - speaker: Rina
+      text: Lalu persamaannya?
+      ar_eg: طب ووجه الشبه؟
+      ar: وما وجه الشبه؟
+      en: And the similarity?
+    - speaker: Mohamed
+      text: Keduanya mengajarkan kitab dan ilmu agama, dan keduanya sudah ratusan tahun.
+      ar_eg: الاتنين بيدرّسوا كتب التراث وعلوم الدين، والاتنين عمرهم مئات السنين.
+      ar: كلاهما يدرّس كتب التراث وعلوم الدين، وعمر كليهما مئات السنين.
+      en: Both teach the classical books and religious knowledge, and both are centuries old.
+new_words:
+  - word: persamaan
+    pos: noun
+    ar_eg: شبه / نقطة مشتركة
+    ar: وجه شبه
+    en: similarity
+  - word: perbedaan
+    pos: noun
+    ar_eg: فرق
+    ar: فرق، اختلاف
+    en: difference
+  - word: keduanya
+    ar_eg: الاتنين
+    ar: كلاهما
+    en: both
+  - word: ilmu
+    pos: noun
+    arabic: علم
+    ar_eg: علم
+    ar: علم
+    en: knowledge, science
+  - word: madrasah
+    pos: noun
+    arabic: مدرسة
+    ar_eg: مدرسة (إسلامية)
+    ar: مدرسة (إسلامية)
+    en: Islamic school
+review:
+  status: draft
+  verified: false
