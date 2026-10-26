@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: bipa6.u09.l01
+language: id
+title: Menolak dengan halus
+can_do:
+  ar_eg: ترفض عرض شغل بأدب ومن غير ما تقفل الباب.
+  ar: أن ترفض عرض عمل بلطف دون أن تغلق الباب.
+  en: Turn down a business offer politely without closing the door.
+slides:
+  - title: Tidak tanpa "tidak"
+    grammar: id.hedging
+    body:
+      ar_eg: |
+        تجّار المينانج مشهورين بالرفض الـ halus (الرقيق). نادرًا ما هتسمع «tidak» صريحة:
+        - Tawarannya menarik, tetapi … = العرض (tawaran) حلو، بس …
+        - Mohon maaf, sepertinya kami belum bisa … = متأسفين، شكلنا لسه مانقدرش …
+        - Untuk sementara, … = حاليًا / في الوقت الحالي …
+        - Akan kami pertimbangkan dulu. = هندرسه الأول. (وغالبًا معناها «لأ دلوقتي»)
+        الـ belum (لسه) بتسيب الباب مفتوح، والـ tidak بتقفله.
+      ar: |
+        يشتهر تجّار المينانغ بالرفض الـ halus (الرقيق)، ونادرًا ما تسمع «tidak» صريحة:
+        - Tawarannya menarik, tetapi … = العرض (tawaran) جذّاب، لكن …
+        - Mohon maaf, sepertinya kami belum bisa … = نعتذر، يبدو أنّنا لا نستطيع بعدُ …
+        - Untuk sementara, … = في الوقت الحالي …
+        - Akan kami pertimbangkan dulu. = سندرسه أوّلًا. (وكثيرًا ما تعني «لا، ليس الآن»)
+        فـ belum (لم … بعد) تترك الباب مفتوحًا، وtidak تغلقه.
+      en: |
+        Minang traders are known for the halus (gentle, refined) refusal. You'll rarely hear a flat "tidak":
+        - Tawarannya menarik, tetapi … = The offer (tawaran) is interesting, but …
+        - Mohon maaf, sepertinya kami belum bisa … = Sorry, it seems we can't … yet
+        - Untuk sementara, … = For now, …
+        - Akan kami pertimbangkan dulu. = We'll consider it first. (Often a soft "not now".)
+        belum (not yet) leaves the door open; tidak shuts it.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tawaran
+        ar_eg: عرض
+        ar: عرض
+        en: offer
+      - text: halus
+        ar_eg: رقيق / بأدب
+        ar: لطيف رقيق
+        en: gentle, refined
+      - text: sementara
+        ar_eg: مؤقتًا / حاليًا
+        ar: مؤقّتًا
+        en: for now, temporary
+      - text: sepertinya
+        ar_eg: شكله / يبان إن
+        ar: يبدو أنّ
+        en: it seems
+      - text: belum bisa
+        ar_eg: لسه مايقدرش
+        ar: لا يستطيع بعدُ
+        en: can't yet
+    words: [tawaran, halus, sementara, sepertinya, belum bisa]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Akan kami pertimbangkan dulu» غالبًا معناها إيه؟
+      ar: ما المعنى الغالب لعبارة «Akan kami pertimbangkan dulu»؟
+      en: What does "Akan kami pertimbangkan dulu" usually mean?
+    options:
+      - أيوه أكيد، موافقين.
+      - رفض مهذّب أو «مش دلوقتي».
+      - هنمضي العقد النهارده.
+    answer: 1
+  - id: e03
+    type: fill_blank
+    sentence: Mohon maaf, ___ kami belum bisa menerima tawaran ini.
+    meaning:
+      ar_eg: متأسفين، شكلنا لسه مانقدرش نقبل العرض ده.
+      ar: نعتذر، يبدو أنّنا لا نستطيع قبول هذا العرض بعدُ.
+      en: Sorry, it seems we can't accept this offer yet.
+    options: [sepertinya, sementara, halus]
+    answers: [sepertinya]
+    words: [sepertinya, belum bisa, tawaran]
+  - id: e04
+    type: listen
+    text: Untuk sementara, kami masih memakai pemasok lama.
+    question:
+      ar_eg: قصده إيه؟
+      ar: ماذا يقصد؟
+      en: What does he mean?
+    options:
+      - حاليًا لسه شغّالين مع المورّد القديم.
+      - المورّد القديم اتلغى.
+      - مش محتاجين مورّد خالص.
+    answer: 0
+    words: [sementara]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: العرض حلو، بس السعر عالي شوية.
+      ar: العرض جذّاب، لكنّ السعر مرتفع قليلًا.
+      en: The offer is interesting, but the price is a little high.
+    answer: Tawarannya menarik, tetapi harganya agak tinggi.
+    distractors: [halus, sementara]
+    words: [tawaran]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي رفض أرقّ؟
+      ar: أيّ رفض ألطف؟
+      en: Which refusal is the most gentle?
+    options:
+      - Tidak mau.
+      - Harga Anda terlalu mahal!
+      - Mohon maaf, sepertinya untuk sementara kami belum bisa.
+    answer: 2
+    words: [halus, sepertinya, belum bisa]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: متأسفين، لسه مانقدرش نقبله.
+      ar: نعتذر، لا نستطيع قبوله بعدُ.
+      en: Sorry, we can't accept it yet.
+    answers:
+      - Mohon maaf, kami belum bisa menerimanya.
+      - Maaf, kami belum bisa menerimanya.
+      - Mohon maaf, kami belum bisa menerima itu.
+      - Mohon maaf, kami belum bisa menerima tawaran itu.
+    words: [belum bisa]
+  - id: e08
+    type: speaking
+    text: Cara orang Minang menolak sangat halus.
+    meaning:
+      ar_eg: طريقة المينانج في الرفض رقيقة جدًا.
+      ar: طريقة المينانغ في الرفض لطيفة جدًّا.
+      en: The Minang way of saying no is very gentle.
+    words: [halus]
+  - id: e09
+    type: dictation
+    text: Sepertinya tawaran itu cocok untuk bulan Ramadan.
+    meaning:
+      ar_eg: شكل العرض ده مناسب لشهر رمضان.
+      ar: يبدو أنّ ذلك العرض يناسب شهر رمضان.
+      en: That offer seems right for Ramadan.
+    words: [sepertinya, tawaran]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Untuk sementara, kami belum bisa memesan lagi.
+    answers_meaning:
+      ar_eg:
+        - حاليًا، لسه مانقدرش نطلب تاني.
+        - في الوقت الحالي، مش هنقدر نطلب تاني لسه.
+      ar:
+        - في الوقت الحالي لا نستطيع الطلب مجدّدًا بعدُ.
+        - لا يمكننا مؤقّتًا أن نطلب مرّة أخرى.
+      en:
+        - For now, we can't order again yet.
+        - We're not able to reorder for the time being.
+    words: [sementara, belum bisa]
+dialogue:
+  title: Kurma dari Kairo
+  lines:
+    - speaker: Mohamed
+      text: Uda, teman saya di Kairo menjual kurma. Harganya bagus.
+      ar_eg: يا أودا، صاحبي في القاهرة بيبيع بلح. سعره كويس.
+      ar: يا أودا، صديقي في القاهرة يبيع التمر بسعر جيّد.
+      en: Uda, a friend of mine in Cairo sells dates. Good prices.
+    - speaker: Uda Fadli
+      text: Wah, tawarannya menarik. Tapi untuk sementara, stok kami masih banyak.
+      ar_eg: يا سلام، العرض حلو. بس حاليًا، المخزون عندنا لسه كتير.
+      ar: يا للعرض الجذّاب! لكنّ مخزوننا ما زال كبيرًا في الوقت الحالي.
+      en: Ooh, interesting offer. But for now, we still have plenty in stock.
+    - speaker: Mohamed
+      text: Jadi Uda tidak mau?
+      ar_eg: يعني إنت مش عايز؟
+      ar: إذن لا تريد؟
+      en: So you don't want it?
+    - speaker: Uda Fadli
+      text: Bukan begitu. Sepertinya bulan depan kita bisa bicara lagi, menjelang Ramadan.
+      ar_eg: مش كده. شكلنا الشهر الجاي نقدر نتكلم تاني، قبل رمضان.
+      ar: ليس كذلك. يبدو أنّنا نستطيع الحديث مجدّدًا الشهر القادم، قُبيل رمضان.
+      en: It's not that. It looks like we can talk again next month, before Ramadan.
+new_words:
+  - word: tawaran
+    pos: noun
+    ar_eg: عرض
+    ar: عرض
+    en: offer
+  - word: halus
+    pos: adjective
+    ar_eg: رقيق / بأدب
+    ar: لطيف رقيق
+    en: gentle, refined
+  - word: sementara
+    pos: adverb
+    ar_eg: مؤقتًا / حاليًا
+    ar: مؤقّتًا
+    en: for now, temporary
+  - word: sepertinya
+    pos: adverb
+    ar_eg: شكله / يبان إن
+    ar: يبدو أنّ
+    en: it seems
+  - word: belum bisa
+    pos: phrase
+    ar_eg: لسه مايقدرش
+    ar: لا يستطيع بعدُ
+    en: can't yet
+review:
+  status: draft
+  verified: false
