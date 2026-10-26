@@ -380,35 +380,66 @@ fn is_latin_letter(c: char) -> bool {
 }
 
 /// Splits mixed text into (is_latin, run) so Latin snippets inside Arabic
-/// explanations get their own `<bdi>` (SPEC §9).
+/// explanations get their own `<bdi>` (SPEC §9). A run keeps together what
+/// reads as one left-to-right phrase: several Latin sentences in a row
+/// ("Ni Luh membawa tas. Tasnya dari kain."), affix hyphens ("-nya", "ber-"),
+/// chains like "ora ↔ tidak · wis ↔ sudah", and parentheses it opened.
 pub fn latin_runs(s: &str) -> Vec<(bool, String)> {
     let mut out: Vec<(bool, String)> = Vec::new();
     let chars: Vec<char> = s.chars().collect();
+    let latin = |i: usize| chars.get(i).is_some_and(|&c| is_latin_letter(c));
+    // The next non-space character after `i` is a capital Latin letter.
+    let capital_after = |i: usize| {
+        chars[i..]
+            .iter()
+            .find(|c| !c.is_whitespace())
+            .is_some_and(|&c| is_latin_letter(c) && c.is_uppercase())
+    };
     let mut i = 0;
     while i < chars.len() {
-        if is_latin_letter(chars[i]) {
+        let affix = chars[i] == '-' && latin(i + 1) && (i == 0 || !chars[i - 1].is_alphanumeric());
+        if latin(i) || affix {
             let start = i;
             let mut end = i;
+            if affix {
+                i += 1;
+            }
             while i < chars.len() {
                 let c = chars[i];
-                // Letters and digits extend the run; ? and ! join it only
-                // straight after a letter ("Apa kabar?").
+                // Letters and digits extend the run; ? ! and a suffix hyphen
+                // join it only straight after a letter ("Apa kabar?", "ber-").
                 // A trailing … belongs to the pattern it ends ("Menurut X, …").
-                if is_latin_letter(c) || c.is_ascii_digit() || c == '…' || ("?!".contains(c) && end == i) {
+                if is_latin_letter(c) || c.is_ascii_digit() || c == '…' || ("?!-".contains(c) && end == i) {
                     end = i + 1;
                 } else if c == '.' && chars.get(i + 1).is_none_or(|n| n.is_whitespace()) {
-                    // A full stop ends the Arabic sentence, not the Latin run.
-                    break;
-                } else if !" -'’.,…/".contains(c) {
+                    // A full stop ends the Arabic sentence, unless another
+                    // Latin sentence follows it.
+                    if !capital_after(i + 1) {
+                        // A run made of sentences keeps its last full stop.
+                        if run_has_sentence_break(&chars[start..end]) {
+                            end = i + 1;
+                        }
+                        break;
+                    }
+                } else if !" -'’.,…/↔→·=+()".contains(c) {
                     break;
                 }
                 i += 1;
+            }
+            // Close a parenthesis the run opened.
+            let open = chars[start..end].iter().filter(|&&c| c == '(').count();
+            let close = chars[start..end].iter().filter(|&&c| c == ')').count();
+            if open > close && chars.get(end) == Some(&')') {
+                end += 1;
             }
             out.push((true, chars[start..end].iter().collect()));
             i = end;
         } else {
             let start = i;
-            while i < chars.len() && !is_latin_letter(chars[i]) {
+            while i < chars.len()
+                && !latin(i)
+                && !(chars[i] == '-' && latin(i + 1) && (i == 0 || !chars[i - 1].is_alphanumeric()))
+            {
                 i += 1;
             }
             let run: String = chars[start..i].iter().collect();
@@ -419,6 +450,12 @@ pub fn latin_runs(s: &str) -> Vec<(bool, String)> {
         }
     }
     out
+}
+
+/// A run that already holds a sentence break (". " before a capital) is
+/// itself made of sentences, so its final full stop belongs to it too.
+fn run_has_sentence_break(run: &[char]) -> bool {
+    run.windows(3).any(|w| w[0] == '.' && w[1] == ' ' && w[2].is_uppercase())
 }
 
 /// Explanation text with Latin runs isolated (explicitly left-to-right: some
@@ -440,6 +477,17 @@ pub(crate) fn Rich(text: String, target: &'static str) -> Element {
                 span { key: "{i}", "{localize_digits(&run, lang, eastern)}" }
             }
         }
+    }
+}
+
+/// A slide title: target-language text isolated left to right, or, when it
+/// mixes in Arabic ("-nya = الـ / بتاعه"), laid out like [`Rich`] text.
+#[component]
+fn Title(text: String, target: &'static str) -> Element {
+    if text.chars().any(|c| ('\u{0600}'..='\u{06FF}').contains(&c)) {
+        rsx! { Rich { text, target } }
+    } else {
+        rsx! { bdi { lang: target, dir: "ltr", "{text}" } }
     }
 }
 
@@ -895,7 +943,7 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
                 p { class: "muted", Rich { text: pick(&lesson.can_do, lang).to_string(), target } }
             }
             if let Some(title) = &slide.title {
-                h2 { class: "lp-slide-title", bdi { lang: target, dir: "ltr", "{title}" } }
+                h2 { class: "lp-slide-title", Title { text: title.clone(), target } }
             }
             p { class: "lp-slide-body pre", Rich { text: pick(&slide.body, lang).trim().to_string(), target } }
             if !slide.examples.is_empty() {
@@ -1437,7 +1485,7 @@ fn MatchPairs(
                                 try_match(draft, &words, on_matched);
                             }
                         },
-                        "{pairs[i].1}"
+                        Rich { text: pairs[i].1.clone(), target }
                     }
                 }
             }
@@ -1595,6 +1643,32 @@ mod tests {
         let runs = latin_runs("- Menurut X, … = على حسب X …");
         assert_eq!(runs[1], (true, "Menurut X, …".into()));
         assert_eq!(runs[3], (true, "X …".into()));
+    }
+
+    #[test]
+    fn latin_runs_keep_phrases_whole() {
+        let latin = |s: &str| -> Vec<String> {
+            latin_runs(s).into_iter().filter(|(l, _)| *l).map(|(_, r)| r).collect()
+        };
+        // bipa3.u02.l01: two Latin sentences inside an Arabic line.
+        assert_eq!(
+            latin("Ni Luh membawa tas. Tasnya dari kain = الشنطة (اللي اتكلمنا عنها) من القماش."),
+            ["Ni Luh membawa tas. Tasnya dari kain"]
+        );
+        assert_eq!(
+            latin("قول Ni Luh membawa tas. Tasnya dari kain. يعني"),
+            ["Ni Luh membawa tas. Tasnya dari kain."]
+        );
+        // Affix hyphens stay with the word.
+        assert_eq!(latin("بتاعه / الـ = -nya"), ["-nya"]);
+        assert_eq!(latin("البادئة ber- بتعمل فعل"), ["ber-"]);
+        assert_eq!(latin("- Menurut X"), ["Menurut X"]);
+        // Javanese ↔ Indonesian chains read left to right as one run.
+        assert_eq!(latin("قارن: ora ↔ tidak · wis ↔ sudah"), ["ora ↔ tidak · wis ↔ sudah"]);
+        // A parenthesis opened inside the run closes inside it.
+        assert_eq!(latin("pantainya (pantai + nya) يعني"), ["pantainya (pantai + nya)"]);
+        // The Arabic sentence's own full stop stays Arabic.
+        assert_eq!(latin("بنقول sore. malam بتبدأ"), ["sore", "malam"]);
     }
 
     #[test]
