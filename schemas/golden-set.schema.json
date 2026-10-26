@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GoldenSet",
+  "description": "The reference set for one runtime AI task (§19): what the bake-off sends\nto each engine and how answers are judged.",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/GoldenItem"
+      }
+    },
+    "rubric": {
+      "description": "Task-specific scoring notes on top of `docs/BAKEOFF.md`'s 0–3 rubric.",
+      "type": "string"
+    },
+    "task": {
+      "description": "Task id as in `kabar_protocol::ai::Task` (`analyze_text`, …).",
+      "type": "string"
+    },
+    "version": {
+      "type": "integer",
+      "format": "uint32",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "task",
+    "version",
+    "rubric",
+    "items"
+  ],
+  "$defs": {
+    "GoldenItem": {
+      "description": "One golden case.",
+      "type": "object",
+      "properties": {
+        "avoid": {
+          "description": "Must not happen (a wrong meaning, guilt-tripping, leaking personal data…).",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "criteria": {
+          "description": "Must hold for a passing answer.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expect": {
+          "description": "Reference answer; for typed tasks it follows the task's output shape."
+        },
+        "id": {
+          "description": "Unique within the set, e.g. `analyze-jv-chat-01`.",
+          "type": "string"
+        },
+        "image": {
+          "description": "Vision tasks: fixture image or stroke file, relative to the repo root.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "input": {
+          "description": "Task input, shaped per task (see the set's file header)."
+        },
+        "lang": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Lang"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "verified": {
+          "description": "Checked by the learner (or a native speaker for Javanese).",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "input"
+      ]
+    },
+    "Lang": {
+      "description": "Learning language of an entry.",
+      "oneOf": [
+        {
+          "description": "Indonesian (`id`).",
+          "type": "string",
+          "const": "id"
+        },
+        {
+          "description": "Javanese (`jv`).",
+          "type": "string",
+          "const": "jv"
+        }
+      ]
+    }
+  }
+}

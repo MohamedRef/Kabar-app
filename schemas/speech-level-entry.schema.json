@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SpeechLevelEntry",
+  "description": "One row of the speech-level table (§13, §17): the same meaning across\nngoko, madya, krama, krama inggil and krama andhap. An empty level means\nthe word has no special form there and the nearest lower level is used\n(krama inggil → krama → madya → ngoko).",
+  "type": "object",
+  "properties": {
+    "confidence": {
+      "$ref": "#/$defs/Confidence"
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LevelExample"
+      }
+    },
+    "id": {
+      "description": "Stable snake_case id from the English meaning (`eat`, `house`, `you`).",
+      "type": "string"
+    },
+    "indonesian": {
+      "description": "The standard Indonesian word.",
+      "type": "string"
+    },
+    "krama": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "krama_andhap": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "krama_inggil": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "madya": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "meaning": {
+      "$ref": "#/$defs/Trilingual"
+    },
+    "ngoko": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "note": {
+      "description": "When to use which form, with Egyptian analogies where they help.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Trilingual"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "pos": {
+      "$ref": "#/$defs/Pos"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "$ref": "#/$defs/ReviewStatus",
+      "default": "unverified"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "pos",
+    "meaning",
+    "indonesian",
+    "ngoko",
+    "confidence",
+    "sources"
+  ],
+  "$defs": {
+    "Confidence": {
+      "description": "How sure we are that the word comes from Arabic.",
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "LevelExample": {
+      "description": "A sentence shown at one speech level.",
+      "type": "object",
+      "properties": {
+        "level": {
+          "$ref": "#/$defs/SpeechLevel"
+        },
+        "text": {
+          "type": "string"
+        },
+        "translation": {
+          "$ref": "#/$defs/Trilingual"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "level",
+        "text",
+        "translation"
+      ]
+    },
+    "Pos": {
+      "description": "Part of speech, coarse enough for exercises and popovers.",
+      "type": "string",
+      "enum": [
+        "noun",
+        "proper_noun",
+        "verb",
+        "adjective",
+        "adverb",
+        "pronoun",
+        "preposition",
+        "conjunction",
+        "particle",
+        "numeral",
+        "classifier",
+        "determiner",
+        "interjection",
+        "phrase"
+      ]
+    },
+    "ReviewStatus": {
+      "description": "Whether the learner has reviewed an item. Everything starts unverified;\nJavanese stays unverified until the learner (or a native speaker) approves it.",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "unverified",
+            "approved"
+          ]
+        },
+        {
+          "description": "Reviewed and found wrong; kept so the next batch regenerates it.",
+          "type": "string",
+          "const": "needs_fix"
+        }
+      ]
+    },
+    "SpeechLevel": {
+      "description": "Javanese speech level (unggah-ungguh, §13).",
+      "oneOf": [
+        {
+          "description": "Plain speech: friends, younger people, yourself.",
+          "type": "string",
+          "const": "ngoko"
+        },
+        {
+          "description": "The in-between level used in markets and casual polite talk.",
+          "type": "string",
+          "const": "madya"
+        },
+        {
+          "description": "Polite speech to elders, strangers, people of higher status.",
+          "type": "string",
+          "const": "krama"
+        },
+        {
+          "description": "Honorific words that elevate the other person (their body, actions, belongings).",
+          "type": "string",
+          "const": "krama_inggil"
+        },
+        {
+          "description": "Humble words for your own actions toward a respected person.",
+          "type": "string",
+          "const": "krama_andhap"
+        }
+      ]
+    },
+    "Trilingual": {
+      "description": "The same text in the three explanation voices (§11).",
+      "type": "object",
+      "properties": {
+        "ar": {
+          "description": "Modern Standard Arabic.",
+          "type": "string"
+        },
+        "arz": {
+          "description": "Egyptian colloquial Arabic (بالمصري).",
+          "type": "string"
+        },
+        "en": {
+          "description": "English.",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "arz",
+        "ar",
+        "en"
+      ]
+    }
+  }
+}
