@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["crates/core", "crates/protocol", "crates/app", "crates/server"]
+members = ["crates/core", "crates/protocol", "crates/app", "crates/server", "crates/content", "crates/tools"]
 
 [workspace.package]
 version = "0.1.0"
@@ -15,6 +15,7 @@ kabar-protocol = { path = "crates/protocol" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 thiserror = "2"
+schemars = "1"
 
 [workspace.lints.rust]
 unsafe_code = "deny"

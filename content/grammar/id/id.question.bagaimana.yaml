@@ -1,0 +1,70 @@
+schema: kabar.grammar/v1
+id: id.question.bagaimana
+language: id
+level: bipa1
+title:
+  target: Bagaimana? (gimana)
+  en: "bagaimana: how"
+  ar_eg: "bagaimana: إزاي / عامل إيه"
+  ar: "bagaimana: كيف"
+summary:
+  ar_eg: bagaimana = إزاي / عامل إزاي، ومختصرها في الكلام gimana.
+  ar: bagaimana = كيف، ومختصرها العامي gimana.
+  en: bagaimana = how (manner or condition); casual form gimana.
+pattern:
+  - Bagaimana + noun? (how is …?)
+  - Bagaimana + caranya / cara + verb? (how do you …?)
+  - Bagaimana kalau …? (how about …?)
+explanation:
+  ar_eg: |
+    bagaimana بتسأل عن الحال أو الطريقة:
+    - الحال: Bagaimana kabarmu? = أخبارك إيه؟ — Bagaimana liburanmu? = الأجازة كانت عاملة إزاي؟
+    - الطريقة: Bagaimana cara ke Monas? = أروح موناس إزاي؟
+    - اقتراح: Bagaimana kalau kita makan dulu? = إيه رأيك ناكل الأول؟
+    في الكلام العادي والشات: gimana / gmn. وفي جاوة هتسمع piye (بالجاوي) بنفس المعنى.
+  ar: |
+    bagaimana للسؤال عن الحال أو الكيفية:
+    - الحال: Bagaimana kabarmu? = كيف حالك؟ — Bagaimana liburanmu? = كيف كانت عطلتك؟
+    - الكيفية: Bagaimana cara ke Monas? = كيف أذهب إلى موناس؟
+    - الاقتراح: Bagaimana kalau kita makan dulu? = ما رأيك أن نأكل أولًا؟
+    وفي العامية والمحادثات: gimana / gmn، ويقابلها في الجاوية piye.
+  en: |
+    bagaimana asks about condition or manner:
+    - Condition: Bagaimana kabarmu? = How are you? — Bagaimana liburanmu? = How was your holiday?
+    - Manner: Bagaimana cara ke Monas? = How do I get to Monas?
+    - Suggestion: Bagaimana kalau kita makan dulu? = How about we eat first?
+    Casual / chat: gimana, gmn. The Javanese equivalent is piye.
+examples:
+  - text: Bagaimana kabar keluargamu?
+    en: How is your family?
+    ar_eg: عيلتك عاملة إيه؟
+    ar: كيف حال عائلتك؟
+  - text: Gimana, enak nggak?
+    en: So, is it good?
+    ar_eg: ها، حلو ولا لأ؟
+    ar: ما رأيك، أهو لذيذ؟
+    register: informal
+  - text: Bagaimana cara membuat nasi goreng?
+    en: How do you make fried rice?
+    ar_eg: الرز المقلي بيتعمل إزاي؟
+    ar: كيف يُصنع الأرز المقلي؟
+  - text: Bagaimana kalau kita ke pantai besok?
+    en: How about going to the beach tomorrow?
+    ar_eg: إيه رأيك نروح البحر بكرة؟
+    ar: ما رأيك أن نذهب إلى الشاطئ غدًا؟
+mistakes:
+  - wrong: Apa kabar liburanmu?
+    right: Bagaimana liburanmu?
+    why:
+      ar_eg: Apa kabar للناس؛ للحاجات والتجارب استخدم bagaimana.
+      ar: Apa kabar للسؤال عن الأشخاص، وللأشياء والتجارب bagaimana.
+      en: Apa kabar is for people; ask about things with bagaimana.
+arabic_bridge:
+  ar_eg: «Bagaimana kalau…؟» هي حرفيًا «إيه رأيك لو…؟».
+  ar: «Bagaimana kalau…؟» تقابل «ما رأيك لو…؟».
+  en: "\"Bagaimana kalau…?\" is the Egyptian «إيه رأيك لو…؟»."
+tags: [question]
+see_also: [id.question.apa]
+review:
+  status: draft
+  verified: false

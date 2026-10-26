@@ -8,7 +8,12 @@ publish.workspace = true
 
 [dependencies]
 serde.workspace = true
+schemars = { workspace = true, optional = true }
 serde_json.workspace = true
+
+[features]
+# JSON Schema generation for build-time content (used by kabar-tools).
+schema = ["dep:schemars"]
 
 [lints]
 workspace = true

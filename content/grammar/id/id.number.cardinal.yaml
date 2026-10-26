@@ -1,0 +1,83 @@
+schema: kabar.grammar/v1
+id: id.number.cardinal
+language: id
+level: bipa1
+title:
+  target: satu, dua, tiga … seribu, sejuta
+  en: Numbers and prices
+  ar_eg: الأرقام والأسعار
+  ar: الأعداد والأسعار
+summary:
+  ar_eg: "الأرقام منتظمة جدًا: belas = عشر (١١–١٩)، puluh = عشرات، ratus = مية، ribu = ألف، juta = مليون، و«واحد» قبلهم بتبقى se-."
+  ar: "الأعداد منتظمة: belas للأعداد ١١–١٩، وpuluh للعشرات، وratus للمئات، وribu للألوف، وjuta للملايين، و«واحد» قبلها يصير se-."
+  en: Numbers are regular — belas (teens), puluh (tens), ratus (hundreds), ribu (thousands), juta (millions); "one" before them becomes se-.
+pattern:
+  - 1–10 satu dua tiga empat lima enam tujuh delapan sembilan sepuluh
+  - 11–19 = number + belas (sebelas, dua belas …)
+  - tens = number + puluh (dua puluh, tiga puluh …)
+  - se- + belas / puluh / ratus / ribu / juta = one … (sebelas, sepuluh, seratus, seribu, sejuta)
+explanation:
+  ar_eg: |
+    احفظ ١–١٠: satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh.
+    وبعد كده كله تركيب:
+    - ١١–١٩: الرقم + belas: dua belas = ١٢، tujuh belas = ١٧. (١١ = sebelas)
+    - العشرات: الرقم + puluh: dua puluh = ٢٠، dua puluh lima = ٢٥.
+    - مية: ratus، ألف: ribu، مليون: juta. ولو واحد بتقول seratus، seribu، sejuta.
+    - ٢٦٫٠٠٠٫٠٠٠ = dua puluh enam juta.
+    الأسعار بالروبية: Rp15.000 = lima belas ribu (rupiah). لاحظ إن النقطة بتفصل الآلاف والفاصلة للكسور — عكس الإنجليزي.
+    في السوق بيختصروا: «lima belas» بس يعني ١٥ ألف، و«goceng» = ٥ آلاف، «ceban» = ١٠ آلاف (عامية جاكرتا).
+  ar: |
+    احفظ الأعداد من ١ إلى ١٠، وما بعدها تركيب:
+    - من ١١ إلى ١٩: العدد + belas (dua belas = ١٢، وsebelas = ١١).
+    - العشرات: العدد + puluh (dua puluh = ٢٠، dua puluh lima = ٢٥).
+    - المئة ratus، والألف ribu، والمليون juta، ومع الواحد: seratus, seribu, sejuta.
+    - ٢٦٬٠٠٠٬٠٠٠ = dua puluh enam juta.
+    وتُكتب الأسعار بالروبية مثل Rp15.000، والنقطة تفصل الآلاف والفاصلة للكسور خلافًا للإنجليزية.
+    وفي الأسواق يُختصر السعر فيقال «lima belas» لخمسة عشر ألفًا.
+  en: |
+    Learn 1–10: satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh. Everything else is built:
+    - 11–19: number + belas (dua belas = 12; 11 = sebelas).
+    - Tens: number + puluh (dua puluh = 20, dua puluh lima = 25).
+    - ratus = hundred, ribu = thousand, juta = million; with "one": seratus, seribu, sejuta.
+    - 26,000,000 = dua puluh enam juta.
+    Rupiah: Rp15.000 = lima belas ribu rupiah. Dots separate thousands and commas mark decimals — the reverse of English.
+    Markets shorten prices: "lima belas" alone means 15,000. Jakarta slang: goceng = 5,000, ceban = 10,000.
+examples:
+  - text: Harganya dua puluh lima ribu.
+    en: It costs 25,000.
+    ar_eg: سعرها خمسة وعشرين ألف.
+    ar: ثمنه خمسة وعشرون ألفًا.
+  - text: Rp26.000.000 — dua puluh enam juta rupiah
+    en: 26 million rupiah
+    ar_eg: ستة وعشرين مليون روبية
+    ar: ستة وعشرون مليون روبية
+  - text: Nomor HP saya nol delapan satu dua …
+    en: My phone number is 0812…
+    ar_eg: رقم موبايلي صفر تمانية واحد اتنين…
+    ar: رقم هاتفي صفر ثمانية واحد اثنان…
+  - text: Saya tinggal di Jakarta sebelas bulan.
+    en: I lived in Jakarta for eleven months.
+    ar_eg: قعدت في جاكرتا حداشر شهر.
+    ar: عشت في جاكرتا أحد عشر شهرًا.
+mistakes:
+  - wrong: satu ratus
+    right: seratus
+    why:
+      ar_eg: «واحد» قبل ratus / ribu / puluh / belas بتبقى se- لازقة.
+      ar: يصير «واحد» se- متصلة قبل هذه الألفاظ.
+      en: '"One" fuses as se- before ratus / ribu / puluh / belas.'
+  - wrong: Rp15,000 read as "fifteen"
+    right: Rp15.000 = lima belas ribu
+    why:
+      ar_eg: النقطة في الإندونيسي فاصل آلاف، مش علامة عشرية.
+      ar: النقطة هنا فاصلة آلاف لا علامة عشرية.
+      en: In Indonesian the dot separates thousands.
+arabic_bridge:
+  ar_eg: "belas شبه «عشر» في «حداشر / اتناشر»: رقم + كلمة ثابتة. والترتيب من الكبير للصغير زي «ألف وتسعمية»."
+  ar: "belas تشبه «عشر» في «أحد عشر»: عدد مع لفظ ثابت، والترتيب من الأكبر إلى الأصغر."
+  en: belas works like Arabic «عشر» in «أحد عشر»; numbers run big-to-small as in Arabic thousands-hundreds.
+tags: [numbers, money]
+see_also: [id.number.ordinal, id.question.kapan-berapa, id.classifier.basic]
+review:
+  status: draft
+  verified: false

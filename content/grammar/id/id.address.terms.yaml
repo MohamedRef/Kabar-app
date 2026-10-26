@@ -1,0 +1,78 @@
+schema: kabar.grammar/v1
+id: id.address.terms
+language: id
+level: bipa1
+title:
+  target: Bapak, Ibu, Mas, Mbak, Kak, Dik
+  en: Terms of address
+  ar_eg: ألقاب النداء
+  ar: ألفاظ المخاطبة والنداء
+summary:
+  ar_eg: في إندونيسيا بتنادي الناس بلقب حسب السن، واللقب نفسه بيشتغل كـ«حضرتك».
+  ar: يُنادى الناس بألقاب بحسب السن والمكانة، ويقوم اللقب مقام ضمير المخاطَب المؤدب.
+  en: People are addressed by age-based titles, and the title doubles as a polite "you".
+pattern:
+  - "Bapak / Pak (sir, Mr) · Ibu / Bu (ma'am, Mrs) — older or respected"
+  - "Mas (young man) · Mbak (young woman) — Javanese, used across Java"
+  - "Kak (older sibling, either gender) · Dik (younger person)"
+  - "Bang (young man, Jakarta / Sumatra)"
+  - "title + name: Pak Budi, Bu Sari, Mbak Rina"
+explanation:
+  ar_eg: |
+    الإندونيسيين بيستخدموا ألقاب العيلة مع أي حد:
+    - Bapak (اختصارها Pak) وIbu (Bu): للراجل والست الأكبر منك أو اللي في مكانة (مدرس، موظف، صاحب محل). زي «يا أستاذ / يا حاج / يا مدام».
+    - Mas وMbak: للشاب والبنت اللي في سنك تقريبًا أو أكبر شوية — الجرسون، السواق، البياعة. أصلها جاوي بس منتشرة في كل جاوة.
+    - Kak: «يا أخويا الكبير / يا أختي الكبيرة» من غير جنس، وبتتقال كتير في المحلات والأونلاين. Dik للأصغر منك.
+    والأهم: اللقب ده بيبقى هو «إنت». بدل ما تقول «إنت عايز إيه؟» بتقول «Bapak mau apa?» = «حضرتك عايز إيه؟».
+    ومع الأسماء: Pak Budi, Bu Sari, Mas Andi.
+  ar: |
+    يستعمل الإندونيسيون ألفاظ القرابة مع الجميع:
+    - Bapak (ومختصرها Pak) وIbu (Bu): للرجل والمرأة الأكبر سنًا أو ذوي المكانة، كقولنا «يا أستاذ» و«يا سيدتي».
+    - Mas وMbak: للشاب والشابة من سنك أو أكبر قليلًا كالنادل والسائق والبائعة، وأصلهما جاوي لكنهما شائعان في جاوة كلها.
+    - Kak: «يا أخي / يا أختي الأكبر» دون تمييز للجنس، شائع في المتاجر وعلى الإنترنت، وDik للأصغر.
+    والأهم أن اللقب يقوم مقام ضمير المخاطَب: «Bapak mau apa؟» = «ماذا تريد حضرتك؟».
+    ويأتي قبل الاسم: Pak Budi, Bu Sari, Mas Andi.
+  en: |
+    Indonesians use family words for everyone:
+    - Bapak (short: Pak) and Ibu (Bu): older or respected men and women — teachers, officials, shop owners. Like «يا أستاذ / يا حاج / يا مدام».
+    - Mas and Mbak: a young man / woman around your age or a bit older — waiter, driver, shop assistant. Javanese in origin, used all over Java.
+    - Kak: "older sibling", gender-free, very common in shops and online. Dik for someone younger.
+    Crucially, the title is the "you": instead of "What do you want?" say "Bapak mau apa?" — like «حضرتك عايز إيه؟».
+    Before names: Pak Budi, Bu Sari, Mas Andi.
+examples:
+  - text: Permisi, Pak. Stasiun di mana?
+    en: Excuse me, sir. Where is the station?
+    ar_eg: لو سمحت يا أستاذ، المحطة فين؟
+    ar: من فضلك يا سيدي، أين المحطة؟
+  - text: Mbak, minta air putih, ya.
+    en: Miss, some water, please.
+    ar_eg: لو سمحتي، عايز مية.
+    ar: يا آنسة، أريد ماءً من فضلك.
+  - text: Ibu sudah makan?
+    en: Have you eaten, ma'am?
+    ar_eg: حضرتك كلتي يا طنط؟
+    ar: هل أكلتِ يا سيدتي؟
+  - text: Terima kasih, Kak!
+    en: Thanks! (to a shop assistant or an online seller)
+    ar_eg: شكرًا يا باشا! / شكرًا يا جميل!
+    ar: شكرًا لك!
+  - text: Pak Budi punya warung di Madiun.
+    en: Mr Budi has a food stall in Madiun.
+    ar_eg: عم بودي عنده مطعم صغير في ماديون.
+    ar: السيد بودي يملك مطعمًا صغيرًا في ماديون.
+mistakes:
+  - wrong: Kamu mau apa, Pak?
+    right: Bapak mau apa?
+    why:
+      ar_eg: لو بتقول Pak يبقى اللقب هو الضمير؛ ماتحطش kamu معاه.
+      ar: إذا استعملت اللقب فهو الضمير نفسه، ولا يُجمع مع kamu.
+      en: When you use the title it is the pronoun; don't add kamu.
+arabic_bridge:
+  ar_eg: زي ما في مصر بنقول «يا حاج» و«يا أبلة» و«يا باشا» لناس مش قرايبنا، الإندونيسي بيستخدم ألقاب العيلة. وBapak/Ibu قريبين جدًا من «حضرتك».
+  ar: كما ننادي الغرباء في مصر بألفاظ مثل «يا حاج» و«يا أبلة»، تستعمل الإندونيسية ألفاظ القرابة، وBapak/Ibu قريبتان من «حضرتك».
+  en: Just as Egyptians call strangers «يا حاج» or «يا أبلة», Indonesians use kinship words; Bapak/Ibu work like «حضرتك».
+tags: [politeness, address, culture]
+see_also: [id.pronoun.personal]
+review:
+  status: draft
+  verified: false
