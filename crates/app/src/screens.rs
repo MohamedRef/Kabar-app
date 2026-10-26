@@ -1,6 +1,7 @@
 use dioxus::prelude::*;
 use kabar_core::locale::{UiLanguage, format_number};
 use kabar_core::settings::Theme;
+use kabar_core::theme as palette;
 
 use crate::i18n::Msg;
 use crate::{Db, Screen, Ui};
@@ -91,6 +92,22 @@ pub fn SettingsScreen() -> Element {
         Theme::System => Msg::ThemeSystem,
         Theme::Light => Msg::ThemeLight,
         Theme::Dark => Msg::ThemeDark,
+        Theme::Night => Msg::ThemeNight,
+        Theme::Batik => Msg::ThemeBatik,
+        Theme::Sawah => Msg::ThemeSawah,
+    };
+    // A swatch previews the theme itself, not the current one: its surface,
+    // accent and Bridge gold. System shows Paper and Merapi side by side.
+    let swatch = |th: Theme| match th.palette() {
+        Some(p) => format!(
+            "background: linear-gradient(135deg, {} 50%, {} 50%); border-color: {}",
+            p.surface, p.indigo, p.gold
+        ),
+        None => format!(
+            "background: linear-gradient(135deg, {} 50%, {} 50%)",
+            palette::LIGHT.surface,
+            palette::DARK.surface
+        ),
     };
 
     rsx! {
@@ -113,6 +130,7 @@ pub fn SettingsScreen() -> Element {
                                 let db = db.clone();
                                 move |_| ui.update_settings(&db, |s| s.theme = th)
                             },
+                            span { class: "theme-swatch", aria_hidden: "true", style: "{swatch(th)}" }
                             "{ui.t(theme_label(th))}"
                         }
                     }
