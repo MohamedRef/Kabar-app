@@ -1,0 +1,595 @@
+schema: kabar.test/v1
+id: bipa4.test
+language: id
+kind: level
+title:
+  ar_eg: اختبار مستوى BIPA 4 — سولاويسي
+  ar: اختبار مستوى BIPA 4 — سولاويسي
+  en: BIPA 4 level test — Sulawesi
+intro:
+  ar_eg: |
+    لفّيت سولاويسي كلها، من Makassar لحد Tomohon! هنا هتسمع أجزاء من محاضرات ونشرات فيها حجج، وتقرا خبر أونلاين ورسالة قارئ لجريدة وحكاية شعبية، وتكتب مقال رأي، وتقول رأيك في قضية من غير تحضير.
+    خد وقتك. المستوى ده أصعب، وعادي جدًا إنك تقف عند كلمة أو اتنين — كل إجابة بتورّينا نركّز على إيه.
+    ولو جاي من "Take a flight" عشان تعدّي BIPA 4، أهلًا بيك — نفس الأسئلة.
+  ar: |
+    جُبتَ سولاويسي كلها من Makassar إلى Tomohon! ستستمع هنا إلى مقاطع من محاضرات ونشرات فيها حجج، وتقرأ خبرًا إلكترونيًّا ورسالة قارئ إلى صحيفة وحكاية شعبية، وتكتب مقالًا عرضيًّا، وتعبّر عن رأيك في قضية دون تحضير.
+    خذ وقتك. هذا المستوى أصعب، ومن الطبيعي أن تتوقف عند كلمة أو كلمتين؛ فكل إجابة تُرينا ما نركّز عليه.
+    وإن جئت من "Take a flight" لتتجاوز BIPA 4، فأهلًا بك؛ الأسئلة نفسها.
+  en: |
+    You've crossed Sulawesi from Makassar to Tomohon! Here you'll hear parts of talks and news with an argument in them, read an online news story, a letter to the editor and a folk tale, write an exposition, and give your view on an issue on the spot.
+    Take your time. This level is harder, and it's completely normal to pause on a word or two; every answer shows us what to focus on.
+    If you came through "Take a flight" to skip BIPA 4, welcome: these are the same questions.
+minutes: 45
+pass_mark: 0.7
+scoring: >-
+  Score = points earned / points available (closed items 1 point unless set;
+  translate items are graded against reference answers first, then AI grade_answer;
+  writing_task and speaking_task are graded by AI against their rubric, each
+  criterion an equal share of the item's points). Pass at >= 0.7. Passing marks
+  BIPA 4 complete and opens BIPA 5; the same rule applies when the test is taken
+  as the "Take a flight" skip-ahead over BIPA 4. Below the mark, show the per-skill
+  results and suggest the units behind the missed items, with no penalty and an
+  open retry.
+sections:
+  - id: listening
+    skill: listening
+    title:
+      ar_eg: الاستماع
+      ar: الاستماع
+      en: Listening
+    instructions:
+      ar_eg: أجزاء من محاضرة عن الصحة، وندوة عن السياحة، ونشرة أخبار، وافتتاح خطبة. اسمع، وعيد براحتك، وركّز على الحجة نفسها — الفرق بين الاختيارات ساعات كلمة واحدة بتقلب المعنى.
+      ar: مقاطع من محاضرة صحية وندوة عن السياحة ونشرة أخبار وافتتاحية خطاب. استمع وأعِد كما تشاء، وركّز على الحجة نفسها؛ فقد تقلب كلمة واحدة المعنى بين الخيارات.
+      en: Parts of a health lecture, a tourism panel, a news bulletin and a speech opening. Listen, replay as you like, and follow the argument itself; sometimes one word between the options flips the meaning.
+    items:
+      - id: t01
+        type: listen
+        text: Menurut penelitian terbaru, berjalan kaki tiga puluh menit sehari dapat menurunkan risiko penyakit jantung.
+        options:
+          - Menurut penelitian terbaru, berjalan kaki lima belas menit sehari dapat menurunkan risiko penyakit jantung.
+          - Menurut penelitian terbaru, berjalan kaki tiga puluh menit sehari dapat menurunkan risiko penyakit jantung.
+          - Menurut penelitian terbaru, berjalan kaki tiga puluh menit sehari dapat meningkatkan risiko penyakit jantung.
+        answer: 1
+        words: [penelitian, menurunkan, risiko]
+      - id: t02
+        type: listen
+        text: Akibat hujan deras sejak Senin malam, ratusan rumah di Parepare terendam banjir.
+        options:
+          - Akibat hujan deras sejak Senin malam, ratusan rumah di Parepare terendam banjir.
+          - Akibat hujan deras sejak Senin malam, ratusan rumah di Palopo terendam banjir.
+          - Akibat angin kencang sejak Senin malam, ratusan rumah di Parepare rusak.
+        answer: 0
+        words: [akibat, terendam, banjir]
+      - id: t03
+        type: listen
+        text: Pariwisata memang meningkatkan pendapatan warga; namun, tanpa pengelolaan yang baik, alam bisa rusak.
+        options:
+          - Pariwisata memang menurunkan pendapatan warga; namun, tanpa pengelolaan yang baik, alam bisa rusak.
+          - Pariwisata memang meningkatkan pendapatan warga; oleh karena itu, alam pasti tetap terjaga.
+          - Pariwisata memang meningkatkan pendapatan warga; namun, tanpa pengelolaan yang baik, alam bisa rusak.
+        answer: 2
+        words: [pendapatan, namun, pengelolaan]
+      - id: t04
+        type: listen
+        text: Larangan kantong plastik bukan sekadar aturan, melainkan langkah untuk menyelamatkan laut kita.
+        options:
+          - Larangan kantong plastik hanyalah aturan, bukan langkah untuk menyelamatkan laut kita.
+          - Larangan kantong plastik bukan sekadar aturan, melainkan langkah untuk menyelamatkan laut kita.
+          - Larangan kantong plastik bukan sekadar aturan, melainkan langkah untuk menyelamatkan hutan kita.
+        answer: 1
+        words: [larangan, melainkan, menyelamatkan]
+      - id: t05
+        type: listen
+        text: Yang terhormat Bapak Wali Kota Tomohon, para tamu undangan, dan hadirin yang berbahagia.
+        options:
+          - Yang terhormat Bapak Gubernur Sulawesi Utara, para tamu undangan, dan hadirin yang berbahagia.
+          - Yang terhormat Bapak Wali Kota Tomohon, para guru, dan anak-anak yang berbahagia.
+          - Yang terhormat Bapak Wali Kota Tomohon, para tamu undangan, dan hadirin yang berbahagia.
+        answer: 2
+        words: [yang terhormat, hadirin]
+      - id: t06
+        type: dictation
+        text: Banyak wisatawan terpesona oleh keindahan Tana Toraja.
+        meaning:
+          ar_eg: سياح كتير بيتسحروا بجمال تانا توراجا.
+          ar: كثير من السياح يُفتنون بجمال تانا توراجا.
+          en: Many tourists are captivated by the beauty of Tana Toraja.
+        words: [terpesona, keindahan]
+      - id: t07
+        type: dictation
+        text: Pengobatan tradisional masih dipercaya oleh sebagian masyarakat.
+        meaning:
+          ar_eg: الطب الشعبي لسه ناس كتير مصدّقاه.
+          ar: لا يزال جزء من المجتمع يثق بالطب التقليدي.
+          en: Traditional medicine is still trusted by part of the population.
+        words: [pengobatan, sebagian]
+  - id: reading
+    skill: reading
+    title:
+      ar_eg: القراية
+      ar: القراءة
+      en: Reading
+    instructions:
+      ar_eg: اقرا الخبر الأونلاين، ورسالة القارئ، والحكاية، وجاوب من اللي مكتوب — مش من رأيك.
+      ar: اقرأ الخبر الإلكتروني ورسالة القارئ والحكاية، وأجب مما ورد فيها لا من رأيك.
+      en: Read the online news story, the reader's letter and the tale, and answer from what they say, not from your own view.
+    items:
+      - id: t08
+        type: multiple_choice
+        question: |
+          MAKASSAR, KABAR.ID — Pemerintah Kota Makassar resmi melarang penggunaan kantong plastik sekali pakai di pusat perbelanjaan mulai 1 Juli. Menurut dinas lingkungan hidup setempat, ratusan ton sampah plastik dihasilkan kota itu setiap hari, dan sebagian besar berakhir di laut. Oleh karena itu, toko-toko diwajibkan menyediakan tas belanja yang dapat dipakai ulang.
+          Kebijakan ini mendapat tanggapan beragam. Sebagian warga mendukungnya karena pantai menjadi lebih bersih. Namun, beberapa pedagang kecil mengeluh bahwa harga tas pengganti terlalu mahal bagi mereka. Pemerintah berjanji akan membagikan tas kain gratis kepada pedagang di pasar tradisional.
+        question_meaning:
+          ar_eg: الخبر ده أساسًا عن إيه؟
+          ar: عمّ يتحدث هذا الخبر أساسًا؟
+          en: What is this news story mainly about?
+        options:
+          - Makassar membangun pasar tradisional baru.
+          - Makassar melarang kantong plastik sekali pakai di pusat perbelanjaan.
+          - Pedagang kecil menolak semua aturan pemerintah.
+        answer: 1
+        words: [melarang, kebijakan, sekali pakai]
+      - id: t09
+        type: multiple_choice
+        question: |
+          MAKASSAR, KABAR.ID — Pemerintah Kota Makassar resmi melarang penggunaan kantong plastik sekali pakai di pusat perbelanjaan mulai 1 Juli. Menurut dinas lingkungan hidup setempat, ratusan ton sampah plastik dihasilkan kota itu setiap hari, dan sebagian besar berakhir di laut. Oleh karena itu, toko-toko diwajibkan menyediakan tas belanja yang dapat dipakai ulang.
+          Kebijakan ini mendapat tanggapan beragam. Sebagian warga mendukungnya karena pantai menjadi lebih bersih. Namun, beberapa pedagang kecil mengeluh bahwa harga tas pengganti terlalu mahal bagi mereka. Pemerintah berjanji akan membagikan tas kain gratis kepada pedagang di pasar tradisional.
+        question_meaning:
+          ar_eg: ليه بعض التجار الصغيرين بيشتكوا؟
+          ar: لماذا يشتكي بعض صغار التجار؟
+          en: Why are some small traders complaining?
+        options:
+          - Pembeli tidak mau datang lagi.
+          - Pantai menjadi kotor.
+          - Harga tas pengganti terlalu mahal bagi mereka.
+        answer: 2
+        words: [mengeluh, pengganti]
+      - id: t10
+        type: multiple_choice
+        question: |
+          MAKASSAR, KABAR.ID — Pemerintah Kota Makassar resmi melarang penggunaan kantong plastik sekali pakai di pusat perbelanjaan mulai 1 Juli. Menurut dinas lingkungan hidup setempat, ratusan ton sampah plastik dihasilkan kota itu setiap hari, dan sebagian besar berakhir di laut. Oleh karena itu, toko-toko diwajibkan menyediakan tas belanja yang dapat dipakai ulang.
+          Kebijakan ini mendapat tanggapan beragam. Sebagian warga mendukungnya karena pantai menjadi lebih bersih. Namun, beberapa pedagang kecil mengeluh bahwa harga tas pengganti terlalu mahal bagi mereka. Pemerintah berjanji akan membagikan tas kain gratis kepada pedagang di pasar tradisional.
+        question_meaning:
+          ar_eg: الحكومة وعدت بإيه؟
+          ar: بماذا وعدت الحكومة؟
+          en: What has the government promised?
+        options:
+          - membagikan tas kain gratis kepada pedagang pasar tradisional
+          - menurunkan harga kantong plastik
+          - menutup pusat perbelanjaan pada bulan Juli
+        answer: 0
+        words: [berjanji, membagikan]
+      - id: t11
+        type: multiple_choice
+        question: |
+          Redaksi Yth.,
+          Saya warga Maros yang setiap hari melewati jalan poros Maros–Bantimurung. Sudah enam bulan jalan itu rusak parah. Lubang-lubangnya besar dan dalam sehingga sudah beberapa kali terjadi kecelakaan sepeda motor. Ketika hujan, lubang-lubang itu tertutup air dan tidak terlihat.
+          Kami sudah bolak-balik melapor ke kantor kelurahan, tetapi sampai sekarang belum ada tindakan. Saya memahami bahwa anggaran daerah terbatas. Akan tetapi, keselamatan warga seharusnya menjadi prioritas.
+          Melalui surat ini, saya mohon agar dinas pekerjaan umum segera memperbaiki jalan tersebut sebelum musim hujan tiba.
+          Andi, warga Maros
+        question_meaning:
+          ar_eg: الكاتب كاتب الرسالة دي ليه أساسًا؟
+          ar: ما الغرض الأساسي من هذه الرسالة؟
+          en: What is the writer's main purpose?
+        options:
+          - memuji kerja pemerintah daerah
+          - mengajak warga berwisata ke Bantimurung
+          - meminta agar jalan itu segera diperbaiki
+        answer: 2
+        words: [surat pembaca, memperbaiki]
+      - id: t12
+        type: multiple_choice
+        question: |
+          Redaksi Yth.,
+          Saya warga Maros yang setiap hari melewati jalan poros Maros–Bantimurung. Sudah enam bulan jalan itu rusak parah. Lubang-lubangnya besar dan dalam sehingga sudah beberapa kali terjadi kecelakaan sepeda motor. Ketika hujan, lubang-lubang itu tertutup air dan tidak terlihat.
+          Kami sudah bolak-balik melapor ke kantor kelurahan, tetapi sampai sekarang belum ada tindakan. Saya memahami bahwa anggaran daerah terbatas. Akan tetapi, keselamatan warga seharusnya menjadi prioritas.
+          Melalui surat ini, saya mohon agar dinas pekerjaan umum segera memperbaiki jalan tersebut sebelum musim hujan tiba.
+          Andi, warga Maros
+        question_meaning:
+          ar_eg: حسب الرسالة، ليه الطريق أخطر وقت المطر؟
+          ar: بحسب الرسالة، لماذا يكون الطريق أخطر عند المطر؟
+          en: According to the letter, why is the road more dangerous when it rains?
+        options:
+          - Banyak pohon tumbang ke jalan.
+          - Lubang-lubangnya tertutup air dan tidak terlihat.
+          - Jalannya ditutup oleh polisi.
+        answer: 1
+        words: [tertutup, terlihat]
+      - id: t13
+        type: multiple_choice
+        question: |
+          Saya memahami bahwa anggaran daerah terbatas. Akan tetapi, keselamatan warga seharusnya menjadi prioritas.
+        question_meaning:
+          ar_eg: الكاتب بيعمل إيه في الجملتين دول من الرسالة؟
+          ar: ماذا يفعل الكاتب في هاتين الجملتين من الرسالة؟
+          en: What is the writer doing in these two sentences from the letter?
+        options:
+          - Ia mengakui alasan pihak lain, lalu tetap mempertahankan pendapatnya.
+          - Ia mengubah pendapatnya karena anggaran terbatas.
+          - Ia menyalahkan warga yang mengendarai sepeda motor.
+        answer: 0
+        explain:
+          ar_eg: "ده أسلوب \"تنازل وبعدين رد\": بيعترف إن الميزانية محدودة، وبـ \"Akan tetapi\" بيرجع يأكد رأيه."
+          ar: "هذا أسلوب \"التسليم ثم الاستدراك\": يعترف بمحدودية الميزانية، ثم يعود بـ \"Akan tetapi\" ليؤكد رأيه."
+          en: "This is concede-then-counter: he grants that the budget is limited, then with Akan tetapi he restates his view."
+        words: [memahami, akan tetapi, prioritas]
+      - id: t14
+        type: multiple_choice
+        question: |
+          JUHA DAN KELEDAINYA (dongeng dari Mesir)
+          Pada suatu pagi yang panas, Juha dan anak laki-lakinya pergi ke pasar bersama seekor keledai tua milik mereka. Mula-mula Juha menunggang keledai itu, sedangkan anaknya berjalan kaki. Orang-orang di jalan berkata, "Ayah yang tidak punya hati! Anaknya yang masih kecil dibiarkan berjalan."
+          Juha pun turun dan menyuruh anaknya naik. Tidak lama kemudian, orang lain berkata, "Anak yang tidak sopan! Ayahnya yang sudah tua dibiarkan berjalan."
+          Akhirnya, mereka berdua berjalan kaki di samping keledai itu. Orang-orang tertawa, "Lihat dua orang bodoh itu! Punya keledai, tetapi tidak dinaiki."
+          Juha tersenyum dan berkata kepada anaknya, "Nak, apa pun yang kita lakukan, selalu ada orang yang berkomentar."
+        question_meaning:
+          ar_eg: إيه العبرة (amanat) من الحكاية دي؟
+          ar: ما العبرة (amanat) من هذه الحكاية؟
+          en: What is the moral (amanat) of this tale?
+        options:
+          - Orang tua harus selalu berjalan kaki.
+          - Kita tidak mungkin menyenangkan semua orang.
+          - Keledai tua tidak boleh dinaiki.
+        answer: 1
+        words: [amanat, menyenangkan]
+      - id: t15
+        type: multiple_choice
+        question: |
+          JUHA DAN KELEDAINYA (dongeng dari Mesir)
+          Pada suatu pagi yang panas, Juha dan anak laki-lakinya pergi ke pasar bersama seekor keledai tua milik mereka. Mula-mula Juha menunggang keledai itu, sedangkan anaknya berjalan kaki. Orang-orang di jalan berkata, "Ayah yang tidak punya hati! Anaknya yang masih kecil dibiarkan berjalan."
+          Juha pun turun dan menyuruh anaknya naik. Tidak lama kemudian, orang lain berkata, "Anak yang tidak sopan! Ayahnya yang sudah tua dibiarkan berjalan."
+          Akhirnya, mereka berdua berjalan kaki di samping keledai itu. Orang-orang tertawa, "Lihat dua orang bodoh itu! Punya keledai, tetapi tidak dinaiki."
+          Juha tersenyum dan berkata kepada anaknya, "Nak, apa pun yang kita lakukan, selalu ada orang yang berkomentar."
+        question_meaning:
+          ar_eg: إيه الخلفية (latar) بتاعة الحكاية — المكان والوقت؟
+          ar: ما الخلفية (latar) في الحكاية، أي المكان والزمان؟
+          en: What is the setting (latar) of the tale, place and time?
+        options:
+          - di rumah Juha pada malam hari
+          - di pasar ikan pada sore hari
+          - di jalan menuju pasar pada suatu pagi yang panas
+        answer: 2
+        words: [latar, unsur intrinsik]
+  - id: vocabulary
+    skill: vocabulary
+    title:
+      ar_eg: الكلمات
+      ar: المفردات
+      en: Vocabulary
+    items:
+      - id: t16
+        type: match_pairs
+        pairs:
+          - text: buah tangan
+            ar_eg: هدية من السفر
+            ar: هدية يحملها الزائر أو المسافر
+            en: a gift brought back or brought along
+          - text: kambing hitam
+            ar_eg: كبش فدا، اللي بيشيلوه الغلطة
+            ar: كبش الفداء
+            en: scapegoat
+          - text: banting tulang
+            ar_eg: يشتغل بكل طاقته، يطلع عينه في الشغل
+            ar: يكدّ ويجتهد في العمل
+            en: to work extremely hard
+          - text: keras kepala
+            ar_eg: دماغه ناشفة
+            ar: عنيد
+            en: stubborn
+        words: [buah tangan, kambing hitam, banting tulang, keras kepala]
+      - id: t17
+        type: match_pairs
+        pairs:
+          - text: pencegahan
+            ar_eg: الوقاية
+            ar: الوقاية
+            en: prevention
+          - text: pemeriksaan
+            ar_eg: الكشف، الفحص
+            ar: الفحص
+            en: check-up, examination
+          - text: gejala
+            ar_eg: أعراض
+            ar: الأعراض
+            en: symptom
+          - text: menular
+            ar_eg: مُعدي
+            ar: مُعدٍ
+            en: contagious
+        words: [pencegahan, pemeriksaan, gejala, menular]
+      - id: t18
+        type: fill_blank
+        sentence: Festival budaya itu berhasil ___ ribuan wisatawan ke Palu.
+        meaning:
+          ar_eg: المهرجان الثقافي ده نجح إنه يجذب آلاف السياح لـ Palu.
+          ar: نجح المهرجان الثقافي في جذب آلاف السياح إلى Palu.
+          en: The cultural festival managed to attract thousands of tourists to Palu.
+        options: ["menangkap", "menarik", "menaikkan"]
+        answers: [menarik]
+        words: [menarik wisatawan]
+      - id: t19
+        type: fill_blank
+        sentence: Dalam situasi darurat, pemimpin harus berani ___ keputusan dengan cepat.
+        meaning:
+          ar_eg: في الطوارئ، القائد لازم يبقى جريء وياخد القرار بسرعة.
+          ar: في حالات الطوارئ، على القائد أن يتحلّى بالجرأة ويتخذ القرار بسرعة.
+          en: In an emergency, a leader must dare to make decisions quickly.
+        options: ["mengangkat", "menaruh", "mengambil"]
+        answers: [mengambil]
+        words: [mengambil keputusan]
+      - id: t20
+        type: fill_blank
+        sentence: Kemarin sore turun hujan ___ disertai angin kencang di Teluk Palu.
+        meaning:
+          ar_eg: امبارح العصر نزل مطر غزير ومعاه ريح شديدة في خليج Palu.
+          ar: هطل أمس عصرًا مطر غزير مصحوب برياح شديدة في خليج Palu.
+          en: Yesterday afternoon heavy rain fell with strong winds over Palu Bay.
+        options: ["deras", "tebal", "tinggi"]
+        answers: [deras]
+        words: [hujan deras, angin kencang]
+      - id: t21
+        type: fill_blank
+        sentence: Sekarang berita ___ lebih banyak dibaca daripada koran cetak.
+        meaning:
+          ar_eg: دلوقتي الأخبار الأونلاين بتتقري أكتر من الجرايد الورق.
+          ar: صارت الأخبار الإلكترونية تُقرأ اليوم أكثر من الصحف المطبوعة.
+          en: These days online news is read more than printed newspapers.
+        options: ["daring", "luring", "dering"]
+        answers: [daring]
+        explain:
+          ar_eg: daring = dalam jaringan (أونلاين)، وluring = luar jaringan (أوفلاين).
+          ar: daring اختصار dalam jaringan (متصل بالشبكة)، وluring اختصار luar jaringan (غير متصل).
+          en: daring = dalam jaringan (online); luring = luar jaringan (offline).
+        words: [daring]
+  - id: grammar
+    skill: grammar
+    title:
+      ar_eg: القواعد
+      ar: القواعد
+      en: Grammar
+    items:
+      - id: t22
+        type: fill_blank
+        sentence: Karena sangat lelah, Pak Daeng ___ di bus dan terlewat halte.
+        meaning:
+          ar_eg: من كتر التعب، Pak Daeng نام غصب عنه في الأتوبيس وفاتته المحطة.
+          ar: من شدة التعب، غلب النوم Pak Daeng في الحافلة ففاتته المحطة.
+          en: Being so tired, Pak Daeng fell asleep on the bus and missed his stop.
+        options: ["menidurkan", "tertidur", "ditidurkan"]
+        answers: [tertidur]
+        explain:
+          ar_eg: "ter- هنا معناها حاجة حصلت من غير قصد: tertidur = نام من غير ما ياخد باله."
+          ar: "ter- هنا تفيد الفعل غير المقصود: tertidur = غلبه النوم."
+          en: Here ter- marks something unintended; tertidur = dozed off without meaning to.
+        words: [tertidur, ter-]
+      - id: t23
+        type: fill_blank
+        sentence: Kami lupa membawa payung, jadi kami ___ di jalan menuju Rantepao.
+        meaning:
+          ar_eg: نسينا الشمسية، فالمطر نزل علينا (اتبهدلنا من المطر) في الطريق لـ Rantepao.
+          ar: نسينا المظلة، فأصابنا المطر في الطريق إلى Rantepao.
+          en: We forgot our umbrella, so we got caught in the rain on the way to Rantepao.
+        options: ["kehujanan", "berhujan", "menghujani"]
+        answers: [kehujanan]
+        explain:
+          ar_eg: "ke-…-an مع حاجة وحشة حصلتلك: kehujanan = المطر نزل عليك، kepanasan = الحر ضربك."
+          ar: "ke-…-an تفيد وقوع أمر سيئ على الشخص: kehujanan = أصابه المطر، وkepanasan = أصابه الحر."
+          en: "ke-…-an marks something unpleasant happening to you: kehujanan = caught in the rain, kepanasan = suffering from the heat."
+        words: [kehujanan, ke-an]
+      - id: t24
+        type: fill_blank
+        sentence: ___ bawah laut Bunaken menarik penyelam dari seluruh dunia.
+        meaning:
+          ar_eg: جمال قاع البحر في Bunaken بيجذب غطاسين من العالم كله.
+          ar: يجذب جمالُ عالم ما تحت البحر في Bunaken الغواصين من كل أنحاء العالم.
+          en: The underwater beauty of Bunaken draws divers from all over the world.
+        options: ["Berindah", "Keindahan", "Diindahkan"]
+        answers: [Keindahan]
+        words: [keindahan]
+      - id: t25
+        type: fill_blank
+        sentence: Saya sudah ___ ke kantor kelurahan, tetapi jalan itu belum juga diperbaiki.
+        meaning:
+          ar_eg: أنا رحت مكتب الحي رايح جاي كذا مرة، بس الطريق لسه ما اتصلحش.
+          ar: ذهبتُ إلى مكتب الحيّ مرارًا جيئةً وذهابًا، لكن الطريق لم يُصلَح بعد.
+          en: I've gone back and forth to the neighbourhood office, but the road still hasn't been repaired.
+        options: ["sayur-mayur", "bolak-balik", "warna-warni"]
+        answers: [bolak-balik]
+        words: [bolak-balik]
+      - id: t26
+        type: fill_blank
+        sentence: Bu Sari ___ anaknya kain tenun dari Toraja.
+        meaning:
+          ar_eg: Bu Sari اشترت لابنها قماش منسوج من Toraja.
+          ar: اشترت Bu Sari لابنها قماشًا منسوجًا من Toraja.
+          en: Bu Sari bought her child some woven cloth from Toraja.
+        options: ["membeli", "dibelikan", "membelikan"]
+        answers: [membelikan]
+        explain:
+          ar_eg: "meN-…-kan هنا معناها 'لحد' (عشان حد): membelikan anaknya = تشتري لابنها. أما membeli anaknya فمعناها حرفيًا تشتري ابنها!"
+          ar: "meN-…-kan هنا تفيد الفعل لصالح شخص: membelikan anaknya = تشتري لابنها، أما membeli anaknya فتعني حرفيًّا تشتري ابنها!"
+          en: "Here meN-…-kan means doing it for someone: membelikan anaknya = buy for her child; membeli anaknya would literally mean buying her child!"
+        words: [membelikan, men-kan]
+      - id: t27
+        type: multiple_choice
+        question_meaning:
+          ar_eg: أنهي جملة فيها مبالغة (hiperbola)؟
+          ar: أيّ جملة تحتوي على مبالغة (hiperbola)؟
+          en: Which sentence contains a hyperbole (hiperbola)?
+        options:
+          - Atap rumah tongkonan itu melengkung seperti perahu.
+          - Suara gong itu menggelegar sampai membelah langit.
+          - Rumah tongkonan terbuat dari kayu dan bambu.
+        answer: 1
+        explain:
+          ar_eg: الصوت مش هيشق السما بجد — دي مبالغة. الجملة الأولى تشبيه (seperti)، والتالتة وصف عادي.
+          ar: لا يشقّ الصوت السماء حقًّا؛ فهذه مبالغة. أما الأولى فتشبيه (seperti)، والثالثة وصف مباشر.
+          en: A sound can't really split the sky; that's hyperbole. The first is a simile (seperti); the third is plain description.
+        words: [hiperbola, menggelegar]
+      - id: t28
+        type: fill_blank
+        sentence: Dari jauh, deretan tongkonan itu tampak ___ kapal-kapal yang berlabuh di sawah.
+        meaning:
+          ar_eg: من بعيد، صف بيوت التونجكونان شكله زي مراكب راسية في الغيطان.
+          ar: من بعيد تبدو صفوف بيوت التونغكونان كأنها سفن راسية في حقول الأرز.
+          en: From afar, the row of tongkonan houses looks like ships moored in the rice fields.
+        options: ["sehingga", "daripada", "bagaikan"]
+        answers: [bagaikan]
+        words: [bagaikan, simile]
+      - id: t29
+        type: fill_blank
+        sentence: Banyak sampah plastik masuk ke laut. ___, terumbu karang di Bunaken rusak.
+        meaning:
+          ar_eg: زبالة بلاستيك كتير بتنزل البحر. والنتيجة إن الشعاب المرجانية في Bunaken باظت.
+          ar: تدخل نفايات بلاستيكية كثيرة إلى البحر. ونتيجةً لذلك تضرّرت الشعاب المرجانية في Bunaken.
+          en: A lot of plastic waste gets into the sea. As a result, Bunaken's coral reefs are damaged.
+        options: ["Akibatnya", "Padahal", "Meskipun"]
+        answers: [Akibatnya]
+        words: [akibatnya]
+      - id: t30
+        type: fill_blank
+        sentence: Setiap tanggal 21 April, bangsa Indonesia ___ Hari Kartini.
+        meaning:
+          ar_eg: كل ٢١ أبريل، الشعب الإندونيسي بيحتفل بذكرى يوم كارتيني.
+          ar: في الحادي والعشرين من أبريل من كل عام، يُحيي الشعب الإندونيسي ذكرى يوم كارتيني.
+          en: Every 21 April, Indonesians commemorate Kartini Day.
+        options: ["memperingatkan", "peringatan", "memperingati"]
+        answers: [memperingati]
+        explain:
+          ar_eg: memperingati = يحيي ذكرى؛ memperingatkan = يحذّر. حرفين بيغيّروا المعنى خالص.
+          ar: memperingati = يُحيي ذكرى، أما memperingatkan = يُحذِّر؛ حرفان يغيّران المعنى كليًّا.
+          en: memperingati = to commemorate; memperingatkan = to warn. Two letters change everything.
+        words: [memperingati]
+      - id: t31
+        type: multiple_choice
+        question_meaning:
+          ar_eg: أنهي جملة فيها استعارة (metafora)؟
+          ar: أيّ جملة تحتوي على استعارة (metafora)؟
+          en: Which sentence contains a metaphor (metafora)?
+        options:
+          - Kartini lahir di Jepara pada tahun 1879.
+          - Kartini menulis banyak surat kepada sahabatnya.
+          - Kartini adalah pelita bagi perempuan Indonesia.
+        answer: 2
+        explain:
+          ar_eg: كارتيني مش مصباح بجد؛ الجملة بتشبّهها بالنور من غير "زي" (seperti) — دي استعارة.
+          ar: ليست كارتيني مصباحًا حقيقيًّا؛ فالجملة تشبّهها بالنور دون أداة تشبيه (seperti)، وهذه استعارة.
+          en: Kartini isn't literally a lamp; the sentence compares her to light without "like" (seperti), which makes it a metaphor.
+        words: [metafora, pelita]
+      - id: t32
+        type: fill_blank
+        sentence: ___ kesehatan gratis di puskesmas diadakan setiap hari Sabtu.
+        meaning:
+          ar_eg: الكشف الطبي المجاني في الوحدة الصحية بيتعمل كل يوم سبت.
+          ar: يُجرى الفحص الصحي المجاني في المركز الصحي كل يوم سبت.
+          en: Free health check-ups at the community clinic are held every Saturday.
+        options: ["Pemeriksa", "Pemeriksaan", "Diperiksa"]
+        answers: [Pemeriksaan]
+        explain:
+          ar_eg: peN-…-an بتعمل اسم للعملية نفسها (pemeriksaan = الفحص)، وpeN- لوحدها للشخص (pemeriksa = الفاحص).
+          ar: peN-…-an تصوغ اسمًا للعملية (pemeriksaan = الفحص)، وpeN- وحدها للفاعل (pemeriksa = الفاحص).
+          en: peN-…-an names the process (pemeriksaan = examination); peN- alone names the person (pemeriksa = examiner).
+        words: [pemeriksaan, peng-an]
+      - id: t33
+        type: build_sentence
+        source:
+          ar_eg: الصياد العجوز الفقير ده كان عايش في قرية صغيرة.
+          ar: كان ذلك الصياد العجوز الفقير يعيش في قرية صغيرة.
+          en: That poor old fisherman lived in a small village.
+        answer: Nelayan tua yang miskin itu tinggal di sebuah desa kecil.
+        distractors: [para, sangat]
+        explain:
+          ar_eg: "في الإندونيسي الوصف بييجي بعد الاسم، وitu في آخر العبارة: nelayan + tua + yang miskin + itu."
+          ar: "في الإندونيسية تأتي الصفات بعد الاسم، وتأتي itu في آخر المركب: nelayan + tua + yang miskin + itu."
+          en: "In Indonesian, modifiers follow the noun and itu closes the phrase: nelayan + tua + yang miskin + itu."
+        words: [frasa kompleks]
+  - id: writing
+    skill: writing
+    title:
+      ar_eg: الكتابة
+      ar: الكتابة
+      en: Writing
+    items:
+      - id: t34
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: بسبب الفيضان، المدارس في Parepare اتقفلت تلات أيام.
+          ar: بسبب الفيضان، أُغلقت المدارس في Parepare ثلاثة أيام.
+          en: Because of the flood, schools in Parepare were closed for three days.
+        answers:
+          - Akibat banjir, sekolah-sekolah di Parepare ditutup selama tiga hari.
+          - Akibat banjir, sekolah-sekolah di Parepare ditutup selama tiga hari
+          - Akibat banjir, sekolah di Parepare ditutup selama tiga hari.
+          - Akibat banjir, sekolah di Parepare ditutup selama tiga hari
+          - Karena banjir, sekolah-sekolah di Parepare ditutup selama tiga hari.
+          - Karena banjir, sekolah-sekolah di Parepare ditutup selama tiga hari
+          - Karena banjir, sekolah di Parepare ditutup selama tiga hari.
+          - Karena banjir, sekolah di Parepare ditutup selama tiga hari
+          - Karena ada banjir, sekolah-sekolah di Parepare ditutup selama tiga hari.
+          - Akibat banjir, sekolah-sekolah di Parepare ditutup tiga hari.
+          - Karena banjir, sekolah di Parepare ditutup tiga hari.
+          - Akibat banjir, sekolah-sekolah di Parepare diliburkan selama tiga hari.
+          - Karena banjir, sekolah di Parepare diliburkan selama tiga hari.
+          - Sekolah-sekolah di Parepare ditutup selama tiga hari akibat banjir.
+          - Sekolah-sekolah di Parepare ditutup selama tiga hari karena banjir.
+          - Sekolah di Parepare ditutup selama tiga hari karena banjir.
+        words: [akibat, ditutup, selama]
+      - id: t35
+        type: writing_task
+        points: 6
+        prompt:
+          ar_eg: "اكتب مقال عرض رأي (eksposisi)، ١٨٠–٢٥٠ كلمة، عن السؤال ده: 'هل السياحة في Tana Toraja نافعة لأهلها أكتر ما هي ضارة؟' ابدأ برأيك (tesis)، وهات حجتين على الأقل بأمثلة، واعرض رأي مخالف وردّ عليه، واقفل بخلاصة واقتراح."
+          ar: "اكتب مقالًا عرضيًّا (eksposisi) من ١٨٠ إلى ٢٥٠ كلمة حول السؤال: 'هل تنفع السياحة في Tana Toraja أهلها أكثر مما تضرّهم؟' ابدأ برأيك (tesis)، وقدّم حجتين على الأقل بأمثلة، واعرض رأيًا مخالفًا وردّ عليه، واختم بخلاصة واقتراح."
+          en: "Write an exposition (eksposisi), 180–250 words, on the question: 'Does tourism in Tana Toraja help local people more than it harms them?' Open with your thesis, give at least two arguments with examples, present and answer an opposing view, and close with a conclusion and a recommendation."
+        rubric:
+          - "Follows the exposition structure: tesis → argumen (at least two, with examples) → penegasan ulang / conclusion."
+          - Presents an opposing view fairly and answers it (memang …, namun …; meskipun …).
+          - Links ideas with cause–effect and contrast connectors (akibatnya, oleh karena itu, sehingga, namun, bukan hanya … melainkan juga).
+          - Uses BIPA 4 grammar and register accurately (meN-…-kan / meN-…-i, peN-…-an and ke-…-an nouns, natural collocations); 180–250 words in formal Indonesian.
+        sample: |
+          Menurut saya, pariwisata di Tana Toraja lebih banyak membawa manfaat daripada kerugian, asalkan dikelola dengan baik.
+          Pertama, pariwisata meningkatkan pendapatan warga. Pemandu wisata, pemilik penginapan, dan perajin tenun mendapat penghasilan tambahan. Akibatnya, banyak anak muda tidak perlu merantau ke kota besar untuk mencari pekerjaan.
+          Kedua, kunjungan wisatawan mendorong pelestarian budaya. Rumah tongkonan dirawat dengan lebih baik, dan generasi muda kembali belajar mengukir kayu karena karya mereka dihargai.
+          Memang ada pendapat bahwa wisatawan dapat mengganggu upacara adat yang sakral, misalnya Rambu Solo'. Kekhawatiran ini wajar. Namun, masalah tersebut dapat diatasi dengan aturan yang jelas: wisatawan wajib didampingi pemandu lokal, berpakaian sopan, dan meminta izin sebelum memotret.
+          Oleh karena itu, saya berpendapat bahwa pariwisata sebaiknya tidak dibatasi, melainkan diatur. Pemerintah daerah dan tokoh adat perlu bekerja sama membuat panduan bagi wisatawan, sehingga pariwisata bukan hanya menguntungkan secara ekonomi, melainkan juga menjaga kehormatan budaya Toraja.
+        words: [eksposisi, menurut saya, oleh karena itu]
+  - id: speaking
+    skill: speaking
+    title:
+      ar_eg: الكلام
+      ar: المحادثة
+      en: Speaking
+    instructions:
+      ar_eg: اتكلم بشكل طبيعي ومن غير تحضير طويل. المهم إن رأيك يكون واضح ومترتّب، مش إن كل كلمة تبقى مثالية.
+      ar: تكلّم بشكل طبيعي ودون تحضير طويل. المهم أن يكون رأيك واضحًا ومرتّبًا، لا أن تكون كل كلمة مثالية.
+      en: Speak naturally, without long preparation. What matters is a clear, well-ordered view, not every word being perfect.
+    items:
+      - id: t36
+        type: speaking
+        text: Yang terhormat Bapak Wali Kota Tomohon, para tamu undangan, dan hadirin yang berbahagia.
+        meaning:
+          ar_eg: سيادة عمدة Tomohon المحترم، والضيوف الكرام، والحضور السعداء.
+          ar: سيادة عمدة Tomohon المحترم، والضيوف الكرام، وأيها الحضور الكريم.
+          en: Honourable Mayor of Tomohon, invited guests, and dear audience.
+        words: [yang terhormat, hadirin]
+      - id: t37
+        type: speaking_task
+        points: 6
+        prompt:
+          ar_eg: "صاحبك بيسألك فجأة: 'رأيك إيه، المفروض الأماكن السياحية زي Bunaken تحدد عدد الزوار في اليوم؟' اتكلم حوالي ٣ دقايق من غير تحضير: قول رأيك بوضوح، وهات أسباب وأمثلة، واعترف بالجانب التاني، واقترح حل عملي."
+          ar: "يسألك صديقك فجأة: 'ما رأيك؟ هل ينبغي أن تحدّ الأماكن السياحية مثل Bunaken من عدد الزوار يوميًّا؟' تحدّث نحو ثلاث دقائق دون تحضير: اعرض رأيك بوضوح، وقدّم أسبابًا وأمثلة، واعترف بالجانب الآخر، واقترح حلًّا عمليًّا."
+          en: "A friend asks you out of the blue: 'What do you think: should tourist spots like Bunaken limit daily visitor numbers?' Talk for about 3 minutes without preparing: state your view clearly, give reasons and examples, acknowledge the other side, and suggest a practical solution."
+        rubric:
+          - States a clear position early and keeps to it, with reasons and at least one concrete example.
+          - Weighs the other side (dampak positif / negatif, memang …, namun …) instead of listing only one side.
+          - Uses cause–effect connectors and natural collocations (mengurangi dampak, meningkatkan pendapatan, menjaga kelestarian).
+          - Speaks fluently enough for a listener to follow without strain; pronunciation clear; self-corrections are fine.
+        sample: |
+          Menurut saya, Bunaken memang perlu membatasi jumlah pengunjung, tetapi tidak dengan cara menutup pintu bagi wisatawan.
+          Alasannya, terumbu karang itu sangat rapuh. Kalau setiap hari ratusan penyelam datang, apalagi yang belum berpengalaman, karang bisa patah dan rusak. Akibatnya, dalam beberapa tahun keindahan Bunaken bisa hilang, dan wisatawan tidak akan datang lagi.
+          Memang, pembatasan bisa mengurangi pendapatan warga, terutama pemilik perahu dan penginapan. Namun, menurut saya, dampak jangka panjangnya justru positif, karena alam yang terjaga akan terus menarik wisatawan.
+          Jadi, saran saya, pengelola taman laut bisa memakai sistem kuota harian dan pemesanan daring. Biaya masuk juga bisa dinaikkan sedikit, lalu uangnya dipakai untuk menjaga kelestarian karang dan melatih pemandu lokal.
+        words: [membatasi, dampak, menurut saya]
+review:
+  status: draft
+  verified: false
