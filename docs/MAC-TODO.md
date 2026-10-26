@@ -9,7 +9,7 @@ These need your machine, your accounts or your devices. Nothing here costs money
 - [ ] Read `docs/PLAN.md` §1 (decisions D1–D5) and reply OK / change.
 
 ## Accounts (free, no card unless noted)
-- [ ] Cloudflare account (Workers Free). No card needed.
+- [x] Cloudflare account (Workers Free). No card needed.
 - [ ] Google AI Studio API key for the Gemini free tier.
 - [ ] Azure account + Speech resource on **F0** (Azure signup asks for a card for identity; F0 never bills).
 - [ ] Firebase project (Spark plan) for FCM, plus a Google Cloud OAuth client (Android + desktop) — I'll give exact steps in M2.
@@ -28,7 +28,13 @@ These need your machine, your accounts or your devices. Nothing here costs money
 - [ ] Run Pen Lab on both Galaxy devices and send me the JSON reports + how the ink feels.
 
 ## Kabar Cloud (M2) — full steps in docs/CLOUD.md
-- [ ] Create a free Cloudflare account (no card), then `just cloud-tools`, `wrangler login`, `just cloud-setup`.
-- [ ] Google Cloud Console: OAuth clients (Web, Android with the release SHA-1, Desktop); put the Web + Desktop ids in `crates/server/wrangler.toml`.
-- [ ] Optional: `wrangler secret put GEMINI_API_KEY` and `AZURE_SPEECH_KEY`.
-- [ ] `just deploy-cloud` and send me the `workers.dev` URL.
+In this order, from the `kabar-app` folder. Nothing here costs money or needs a card.
+- [x] Create a free Cloudflare account.
+- [ ] `just cloud-tools` (installs wrangler 4 + worker-build).
+- [ ] `wrangler login`: the browser opens, click **Allow**.
+- [ ] `just cloud-setup`: creates the D1 database, the token signing key (a Worker secret, never in the repo) and asks for your Gmail for the allowlist. Commit the D1 id it writes into `crates/server/wrangler.toml` (the id is not a secret).
+- [ ] Google Cloud Console (docs/CLOUD.md §3.2): consent screen in *Testing* with your Gmail as test user, then Web and Desktop OAuth clients. Send me both client ids and I put them in `wrangler.toml`.
+- [ ] Android OAuth client: needs the release SHA-1, so do it after `just android-keystore` (Devices section): `keytool -list -v -keystore ~/.kabar/kabar-release.jks -alias kabar`.
+- [ ] Optional keys: `cd crates/server && wrangler secret put GEMINI_API_KEY` (and `AZURE_SPEECH_KEY` once the F0 resource exists).
+- [ ] `just deploy-cloud`, then `curl https://kabar-cloud.<subdomain>.workers.dev/v1/health` and send me the URL.
+- [ ] Optional, if you use Claude Code on the Mac: `claude plugin marketplace add cloudflare/skills` then `claude plugin install cloudflare@cloudflare` (Cloudflare's own skills + MCP; it signs in to your Cloudflare account in the browser). Kabar keeps deploying with wrangler.
