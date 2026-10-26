@@ -267,7 +267,7 @@ items:
     context:
       days_away: 74
       level: bipa2
-      last_lesson: Belanja di Pasar
+      last_lesson: Pasar! (tawar-menawar)
       retention_estimate: 0.58
       plan_today: 5 easy reviews + 1 favourite lesson replay
   expect:
@@ -304,11 +304,11 @@ items:
       days_away: 5
       learner_note: sorry I disappeared, work was crazy
       due_reviews: 60
-      next_lesson: Kepala saya sakit
+      next_lesson: Saya sakit perut
   expect:
-    message_ar: مفيش أي داعي للأسف خالص! الشغل بييجي الأول. لما تحب، ٥ دقايق مراجعة وبعدين «Kepala saya sakit».
-    message_en: 'No need to apologise at all! Work comes first. Whenever you like: 5 minutes of reviews, then ''Kepala
-      saya sakit''.'
+    message_ar: مفيش أي داعي للأسف خالص! الشغل بييجي الأول. لما تحب، ٥ دقايق مراجعة وبعدين «Saya sakit perut».
+    message_en: 'No need to apologise at all! Work comes first. Whenever you like: 5 minutes of reviews, then ''Saya
+      sakit perut''.'
   criteria:
   - message_ar is warm Egyptian Arabic (عامية مصرية, e.g. 'برافو', 'النهارده', 'إنت'), not MSA; Indonesian words
     stay in Latin script
@@ -704,10 +704,10 @@ items:
       streak_days: 100
       achievement: Sedikit demi sedikit, lama-lama menjadi bukit
   expect:
-    message_ar: '١٠٠ يوم! وكسبت إنجاز «Sedikit demi sedikit, lama-lama menjadi bukit»: شوية بشوية بتبقى جبل. وده
+    message_ar: '١٠٠ يوم! وكسبت إنجاز «Sedikit demi sedikit, lama-lama menjadi bukit»: شوية على شوية بيبقوا تل. وده
       بالظبط اللي عملته.'
     message_en: '100 days! You''ve earned ''Sedikit demi sedikit, lama-lama menjadi bukit'': little by little, it
-      becomes a mountain. That''s exactly what you did.'
+      becomes a hill. That''s exactly what you did.'
   criteria:
   - message_ar is warm Egyptian Arabic (عامية مصرية, e.g. 'برافو', 'النهارده', 'إنت'), not MSA; Indonesian words
     stay in Latin script
@@ -907,7 +907,7 @@ items:
       example: Kula badhe kondur.
       accuracy_last_20: 0.55
   expect:
-    message_ar: 'دي أصعب قاعدة في الجاوي، وإنت قربت. kondur احترام للكبير، فمانقولهاش عن نفسنا: Kula badhe wangsul.'
+    message_ar: 'دي من أصعب القواعد في الجاوي، وإنت قربت. kondur احترام للكبير، فمانقولهاش عن نفسنا: Kula badhe wangsul.'
     message_en: 'This is one of the trickiest rules in Javanese, and you''re close. Kondur is respect for the elder,
       so we don''t use it about ourselves: ''Kula badhe wangsul''.'
   criteria:
