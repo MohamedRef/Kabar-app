@@ -13,6 +13,7 @@ use kabar_protocol::ink::{DocKind, InkDocument, TranscriptSource};
 
 use super::ink::{InkCanvas, Pen, use_ink};
 use super::{T, friendly, new_id, tr, vision};
+use crate::cloud::link::CloudLink;
 use crate::store::now_ms;
 use crate::teach::Ai;
 use crate::{Db, Ui};
@@ -42,6 +43,7 @@ pub fn InkPad(
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let ai = use_context::<Ai>();
+    let link = use_context::<CloudLink>();
     let handle = use_ink();
     let pen = use_signal(Pen::default);
     let mut typed = use_signal(String::new);
@@ -88,6 +90,7 @@ pub fn InkPad(
         move |_| {
             let db = db.clone();
             let ai = ai.clone();
+            let link = link.clone();
             let handle = handle.clone();
             let doc_id = doc_id.clone();
             let expected = expected.clone();
@@ -114,7 +117,7 @@ pub fn InkPad(
                 busy.set(true);
                 let read = async {
                     let png = handle.snapshot(None).await.ok_or(FriendlyReason::TryAgain)?;
-                    let sha = vision::upload(&png).await?;
+                    let sha = vision::upload(&link, &png).await?;
                     let req = handwriting_request(lang, expected.as_deref(), &sha);
                     ai.0.run::<Handwriting>(&req).await.map_err(|e| e.friendly())
                 };

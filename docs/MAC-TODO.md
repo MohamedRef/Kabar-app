@@ -144,10 +144,17 @@ This decides which free engine answers each AI task. Until it runs, every route 
 - [ ] Two fingers to pan, pinch to zoom, then the eraser tool. Does erasing feel like it catches the stroke you aim at?
 - [ ] **Add a word card** for `pasar`, move on to a second page, come back: the card should still be there, and on the phone after sync.
 - [ ] Search `pasar` in the Notebook side bar and tap the hit: it should scroll the page to it.
-- [ ] **Gambar!**: play two rounds. It will ask you to judge your own drawing for now; tell me whether the word choice felt reasonable.
+- [ ] **Gambar!**: play two rounds. Signed in to Kabar Cloud, Kabar guesses from the sketch; signed out it asks you to judge your own drawing. Tell me whether the word choice felt reasonable.
 - [ ] **Listening Companion**: open YouTube in split screen, pause on a word you didn't catch, and write it as it sounded (e.g. `moerah`, `sinaoe`). The suggestions should include the real word; tell me when they don't.
 - [ ] **Mind map**: `di pasar`. It needs an AI engine, so it may say "not connected yet" until Kabar Cloud answers.
 - [ ] **Dictation**: write one word with the pen, then type it in the box and tap Check; the feedback should circle the wrong letters.
+
+## 7d. Aksara Jawa calligraphy (~20 min, Tab S11) — [RUN.md §11](RUN.md)
+
+- [ ] Review the stroke order draft: `python3 scripts/aksara/preview.py content/fonts/NotoSansJavanese-Regular.ttf content/aksara/strokes.json aksara.png` (needs `pip3 install pillow numpy pyyaml`), then open `aksara.png`. For each item, are the numbered strokes in the order and direction you (or a teacher) would write them? Send me the ids that are wrong and how; I fix `content/aksara/glyphs.yaml` and mark the rest `verified`. Known doubts: the direction of pangkon and wignyan, and ra drawn as one stroke.
+- [ ] **Studio → Aksara Jawa → ha**: Watch, then Trace with the brush. Does the brush thickness follow your pressure the way a calligraphy brush should?
+- [ ] **Write** ha freehand and tap **Check shape**: a careful ha should pass. Then write ka mirrored, and ha without its last stroke: the notes should say so. Tell me any note that is wrong or unkind.
+- [ ] Signed in to Kabar Cloud, tap **Ask the teacher** once and tell me what it said.
 
 ## 8. What to send back
 

@@ -27,7 +27,9 @@ exercises are copied. Kabar's lessons and grammar explanations are original.
 - Full source list with URLs: `curriculum/indonesian.yaml` → `sources`.
 
 ## Fonts
-_None bundled yet._ The UI uses system fonts and falls back through IBM Plex Sans Arabic / Noto (OFL) if installed. Bundled fonts arrive with the visual assets.
+The UI uses system fonts and falls back through IBM Plex Sans Arabic / Noto (OFL) if installed.
+
+- **Noto Sans Javanese** Regular v2.005 — © 2022 The Noto Project Authors, SIL Open Font License 1.1 (`content/fonts/NotoSansJavanese-OFL.txt`). Bundled in the app for the Aksara Jawa practice sheets, and the source that `scripts/aksara/strokes.py` traces the draft stroke data in `content/aksara/strokes.json` from (a derived dataset, same license terms apply to the font itself).
 
 ## Sounds
 _None yet._

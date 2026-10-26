@@ -214,6 +214,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     use_context_provider(play::PlayNav::new);
     use_context_provider(|| teach::TeachInbox(Signal::new(None)));
     let link = use_hook(cloud::link::CloudLink::default);
+    use_context_provider(|| link.clone());
     use_context_provider(|| teach::Ai(Rc::new(ai::router(db.clone(), link.clone()))));
     let audio_dir = path.parent().map(|d| d.join("audio")).unwrap_or_else(|| "audio".into());
     use_context_provider(|| audio::AudioCache::new(audio_dir, link.clone()));

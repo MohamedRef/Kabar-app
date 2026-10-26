@@ -123,7 +123,8 @@ impl InkHandle {
 /// An ink canvas for document `doc`: an infinite page (pan with two fingers
 /// or the mouse wheel, pinch or ctrl+wheel to zoom) or, with `size`, a fixed
 /// sheet scaled to the box. `children` are placed on the page in page
-/// pixels (word cards, mind-map nodes) and move with it.
+/// pixels (word cards, mind-map nodes) and move with it. `underlay` sits
+/// under the ink and never takes input (a tracing guide on a fixed sheet).
 #[component]
 pub fn InkCanvas(
     handle: InkHandle,
@@ -136,6 +137,7 @@ pub fn InkCanvas(
     #[props(default)] class: Option<String>,
     #[props(default)] on_stroke: Option<EventHandler<InkStroke>>,
     #[props(default)] on_erase: Option<EventHandler<Vec<String>>>,
+    #[props(default)] underlay: Option<Element>,
     #[props(default)] children: Element,
 ) -> Element {
     let db = use_context::<Db>();
@@ -232,6 +234,9 @@ pub fn InkCanvas(
     let class = format!("ink-wrap {}", class.unwrap_or_default());
     rsx! {
         div { id: "{id}", class: "{class}", style: "{ratio}",
+            if let Some(u) = underlay {
+                div { class: "ink-under", aria_hidden: "true", {u} }
+            }
             div { id: "{id}-surface", class: "ink-surface" }
             div { id: "{id}-items", class: "ink-items", dir: "ltr", {children} }
         }

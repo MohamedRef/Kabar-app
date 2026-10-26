@@ -3,6 +3,7 @@
 //! ([`ink::InkCanvas`]). Write-mode lessons use [`pad::InkPad`] inside the
 //! Lesson Player.
 
+pub mod aksara;
 pub mod gambar;
 pub mod ink;
 pub mod listening;
@@ -28,6 +29,7 @@ enum Tab {
     MindMap,
     Listening,
     Write,
+    Aksara,
 }
 
 #[component]
@@ -41,6 +43,7 @@ pub fn StudioScreen() -> Element {
         (Tab::MindMap, T::MindMap),
         (Tab::Listening, T::Listening),
         (Tab::Write, T::WriteTab),
+        (Tab::Aksara, T::Aksara),
     ];
     rsx! {
         style { {STUDIO_CSS} }
@@ -63,6 +66,7 @@ pub fn StudioScreen() -> Element {
                 Tab::MindMap => rsx! { mindmap::MindMapScreen {} },
                 Tab::Listening => rsx! { listening::ListeningScreen {} },
                 Tab::Write => rsx! { pad::DictationScreen {} },
+                Tab::Aksara => rsx! { aksara::AksaraScreen {} },
             }
         }
     }
@@ -172,6 +176,27 @@ pub enum T {
     Check,
     Clear,
     CorrectForm,
+    // Aksara Jawa
+    Aksara,
+    AksaraIntro,
+    Letters,
+    Signs,
+    Finals,
+    Words,
+    Watch,
+    Trace,
+    WriteFree,
+    Replay,
+    OrderUnverified,
+    CheckShape,
+    AskTeacher,
+    TeacherSays,
+    TraceDone,
+    WriteDone,
+    TryWriting,
+    NextLetter,
+    TryAgainHere,
+    NothingYet,
 }
 
 pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
@@ -384,6 +409,66 @@ pub fn tr(lang: UiLanguage, msg: T) -> &'static str {
         (CorrectForm, ArEg) => "الصح:",
         (CorrectForm, Ar) => "الصواب:",
         (CorrectForm, En) => "Correct:",
+        (Aksara, ArEg | Ar) => "أكشارا جاوة",
+        (Aksara, En) => "Aksara Jawa",
+        (AksaraIntro, ArEg) => {
+            "اتفرّج على ترتيب الخطوط، اكتب فوق الحرف الباهت، وبعدين اكتبه لوحدك. الفرشاة بتتقل وتخف مع ضغط القلم."
+        }
+        (AksaraIntro, Ar) => {
+            "شاهد ترتيب الخطوط، ثم اكتب فوق الحرف الباهت، ثم اكتبه وحدك. تتغير سماكة الفرشاة مع ضغط القلم."
+        }
+        (AksaraIntro, En) => {
+            "Watch the stroke order, trace over the faint letter, then write it on your own. The brush follows your pen pressure."
+        }
+        (Letters, ArEg | Ar) => "الحروف",
+        (Letters, En) => "Letters",
+        (Signs, ArEg) => "علامات الحركات",
+        (Signs, Ar) => "علامات الحركات",
+        (Signs, En) => "Vowel signs",
+        (Finals, ArEg | Ar) => "العلامات الأخيرة",
+        (Finals, En) => "Final signs",
+        (Words, ArEg | Ar) => "كلمات",
+        (Words, En) => "Words",
+        (Watch, ArEg) => "اتفرّج",
+        (Watch, Ar) => "شاهد",
+        (Watch, En) => "Watch",
+        (Trace, ArEg) => "اكتب فوقه",
+        (Trace, Ar) => "شفّ الحرف",
+        (Trace, En) => "Trace",
+        (WriteFree, ArEg) => "اكتب لوحدك",
+        (WriteFree, Ar) => "اكتب وحدك",
+        (WriteFree, En) => "Write",
+        (Replay, ArEg | Ar) => "أعِد",
+        (Replay, En) => "Replay",
+        (OrderUnverified, ArEg) => "ترتيب الخطوط ده مسودة لسه محدش راجعها",
+        (OrderUnverified, Ar) => "ترتيب الخطوط مسودة لم تُراجَع بعد",
+        (OrderUnverified, En) => "Stroke order is a draft, not reviewed yet",
+        (CheckShape, ArEg) => "شوف الشكل",
+        (CheckShape, Ar) => "افحص الشكل",
+        (CheckShape, En) => "Check shape",
+        (AskTeacher, ArEg) => "اسأل المدرّس",
+        (AskTeacher, Ar) => "اسأل المعلّم",
+        (AskTeacher, En) => "Ask the teacher",
+        (TeacherSays, ArEg) => "المدرّس بيقول:",
+        (TeacherSays, Ar) => "يقول المعلّم:",
+        (TeacherSays, En) => "The teacher says:",
+        (TraceDone, ArEg) => "حلو أوي! الشكل مظبوط. جرّب تكتبه لوحدك دلوقتي.",
+        (TraceDone, Ar) => "أحسنت! الشكل صحيح. جرّب أن تكتبه وحدك الآن.",
+        (TraceDone, En) => "Lovely, the shape is right. Now try it on your own.",
+        (WriteDone, ArEg) => "برافو! كتبته لوحدك وشكله سليم.",
+        (WriteDone, Ar) => "أحسنت! كتبته وحدك وشكله سليم.",
+        (WriteDone, En) => "Well done, you wrote it on your own and the shape is sound.",
+        (TryWriting, ArEg) => "اكتبه لوحدك",
+        (TryWriting, Ar) => "اكتبه وحدك",
+        (TryWriting, En) => "Write it alone",
+        (NextLetter, ArEg | Ar) => "اللي بعده",
+        (NextLetter, En) => "Next one",
+        (TryAgainHere, ArEg) => "قربت! امسح وجرّب تاني، وخلي بالك من النقطة دي:",
+        (TryAgainHere, Ar) => "اقتربت! امسح وحاول مرة أخرى، وانتبه إلى هذا:",
+        (TryAgainHere, En) => "Close! Clear it and try once more, watching this:",
+        (NothingYet, ArEg) => "لسه مفيش حاجة مكتوبة.",
+        (NothingYet, Ar) => "لم يُكتب شيء بعد.",
+        (NothingYet, En) => "Nothing written yet.",
     }
 }
 

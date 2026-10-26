@@ -102,3 +102,41 @@
 .ink-wrong { border: 2px solid var(--dawn); border-radius: 50%; padding-inline: 0.1em; }
 .ink-extra { text-decoration: line-through; text-decoration-color: var(--dawn); text-decoration-thickness: 2px; }
 .ink-missing { color: var(--dawn); font-weight: 700; }
+
+/* ---------- Aksara Jawa calligraphy (M13) ---------- */
+.aksara { display: grid; gap: 0.75rem; }
+.aksara-text { font-family: "Kabar Javanese", "Noto Sans Javanese", serif; font-size: 1.6rem; line-height: 1.6; }
+.aksara-picker summary { cursor: pointer; display: flex; align-items: baseline; gap: 0.5rem; }
+.aksara-group { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin-block-start: 0.5rem; }
+.aksara-group > .muted { inline-size: 100%; }
+.aksara-pick { min-inline-size: 56px; display: inline-grid; place-items: center; line-height: 1.1; padding-block: 0.2rem; }
+.aksara-pick .aksara-text { font-size: 1.4rem; }
+.aksara-modes { flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.aksara-stage { display: grid; gap: 0.6rem; inline-size: 100%; margin-inline: auto; }
+.ink-under { position: absolute; inset: 0; pointer-events: none; }
+.ink-under svg, .aksara-watch { display: block; inline-size: 100%; block-size: 100%; }
+.aksara-watch { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); aspect-ratio: auto; }
+.aksara-ghost { font-family: "Kabar Javanese", "Noto Sans Javanese", serif; fill: var(--ink); opacity: 0.13; }
+.guide-line { stroke: var(--line); stroke-width: 4; stroke-dasharray: 20 16; }
+.guide-path { fill: none; stroke: var(--indigo); opacity: 0.35; stroke-width: 10; stroke-dasharray: 24 20; stroke-linecap: round; }
+.start-dot { fill: var(--dawn); }
+.start-num { fill: var(--dawn); font-family: var(--font-latin); font-weight: 700; }
+.anim-stroke {
+  fill: none;
+  stroke: var(--indigo);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation-name: aksara-draw;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+.anim-num { opacity: 0; animation: aksara-show 0.2s forwards; }
+@keyframes aksara-draw { to { stroke-dashoffset: 0; } }
+@keyframes aksara-show { to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .anim-stroke { animation: none; stroke-dashoffset: 0; }
+  .anim-num { animation: none; opacity: 1; }
+}
+.aksara-issues { margin: 0; padding-inline-start: 1.2rem; display: grid; gap: 0.3rem; }

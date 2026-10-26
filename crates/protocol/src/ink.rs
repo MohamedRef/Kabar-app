@@ -112,6 +112,9 @@ pub enum DocKind {
     LessonAnswer,
     /// A margin note next to a passage in the Reader; see [`InkAnchor`].
     ReaderMargin,
+    /// One aksara Jawa calligraphy attempt (trace or free writing); the
+    /// title is the practice item's id.
+    Aksara,
 }
 
 /// Where a Reader margin note is attached.

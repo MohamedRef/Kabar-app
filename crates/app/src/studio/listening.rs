@@ -12,6 +12,7 @@ use kabar_protocol::ink::{DocKind, InkDocument};
 
 use super::ink::{InkCanvas, Pen, use_ink};
 use super::{T, friendly, new_id, tr, vision, word_lang};
+use crate::cloud::link::CloudLink;
 use crate::reader::{glossary, lexicon, speak};
 use crate::store::now_ms;
 use crate::teach::{Ai, TeachInbox, TeachSeed};
@@ -24,6 +25,7 @@ pub fn ListeningScreen() -> Element {
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let ai = use_context::<Ai>();
+    let link = use_context::<CloudLink>();
     let inbox = use_context::<TeachInbox>();
     let l = ui.lang();
     let handle = use_ink();
@@ -64,12 +66,13 @@ pub fn ListeningScreen() -> Element {
         move |_| {
             let handle = handle.clone();
             let ai = ai.clone();
+            let link = link.clone();
             spawn(async move {
                 reading.set(true);
                 problem.set(None);
                 let result = async {
                     let png = handle.snapshot(None).await.ok_or(FriendlyReason::TryAgain)?;
-                    let sha = vision::upload(&png).await?;
+                    let sha = vision::upload(&link, &png).await?;
                     ai.0.run::<Handwriting>(&handwriting_request(lang(), None, &sha))
                         .await
                         .map_err(|e| e.friendly())

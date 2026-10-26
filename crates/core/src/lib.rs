@@ -3,6 +3,7 @@
 //! and tests.
 
 pub mod ai;
+pub mod aksara;
 pub mod clock;
 pub mod coach;
 pub mod games;

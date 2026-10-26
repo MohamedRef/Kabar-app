@@ -12,6 +12,7 @@ use kabar_protocol::reader::WordStatus;
 
 use super::ink::{InkCanvas, InkTools, Pen, PenTool, use_ink};
 use super::{T, friendly, new_id, tool_labels, tr, vision, word_lang};
+use crate::cloud::link::CloudLink;
 use crate::coach::Coach;
 use crate::reader::glossary;
 use crate::store::now_ms;
@@ -62,6 +63,7 @@ pub fn GambarScreen() -> Element {
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let ai = use_context::<Ai>();
+    let link = use_context::<CloudLink>();
     let coach = try_use_context::<Coach>();
     let l = ui.lang();
     let handle = use_ink();
@@ -127,11 +129,12 @@ pub fn GambarScreen() -> Element {
             phase.set(Phase::Guessing { word });
             let handle = handle.clone();
             let ai = ai.clone();
+            let link = link.clone();
             let mut record = record.clone();
             spawn(async move {
                 let result = async {
                     let png = handle.snapshot(None).await.ok_or(FriendlyReason::TryAgain)?;
-                    let sha = vision::upload(&png).await?;
+                    let sha = vision::upload(&link, &png).await?;
                     ai.0.run::<SketchGuess>(&sketch_request(&sha)).await.map_err(|e| e.friendly())
                 }
                 .await;

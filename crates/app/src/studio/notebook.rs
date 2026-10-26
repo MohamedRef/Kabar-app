@@ -16,6 +16,7 @@ use kabar_protocol::ink::{
 use super::ink::{InkCanvas, InkTools, Pen, use_ink};
 use super::{T, friendly, new_id, tool_labels, tr, vision, word_lang};
 use crate::account::Cloud;
+use crate::cloud::link::CloudLink;
 use crate::reader::{glossary, speak};
 use crate::store::now_ms;
 use crate::teach::Ai;
@@ -226,6 +227,7 @@ fn PageView(doc: InkDocument, focus: Option<[f32; 4]>) -> Element {
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let ai = use_context::<Ai>();
+    let link = use_context::<CloudLink>();
     let l = ui.lang();
     let handle = use_ink();
     let pen = use_signal(Pen::default);
@@ -286,6 +288,7 @@ fn PageView(doc: InkDocument, focus: Option<[f32; 4]>) -> Element {
         move |_| {
             let handle = handle.clone();
             let ai = ai.clone();
+            let link = link.clone();
             let groups = groups.clone();
             let mut save_line = save_line.clone();
             spawn(async move {
@@ -303,7 +306,7 @@ fn PageView(doc: InkDocument, focus: Option<[f32; 4]>) -> Element {
                     let result = async {
                         let png =
                             handle.snapshot(Some(g.strokes.clone())).await.ok_or(FriendlyReason::TryAgain)?;
-                        let sha = vision::upload(&png).await?;
+                        let sha = vision::upload(&link, &png).await?;
                         ai.0.run::<Handwriting>(&handwriting_request(lang, None, &sha))
                             .await
                             .map_err(|e| e.friendly())
