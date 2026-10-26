@@ -357,6 +357,7 @@ Refine in PLAN.md. Every synced table carries `account_id`, `device_id`, a hybri
 | M0 | Research → `docs/PLAN.md`, free-tier verification, engine bake-off | I approve the plan and the engine choices |
 | M1 | Workspace, toolchain scripts, Dioxus app on Mac + S24 Ultra + Tab S11, i18n + RTL, themes, adaptive layouts, SQLite, **Pen Lab** | the same app opens on all three devices and Pen Lab reports real pen data |
 | M2 | Kabar Cloud v0 on Cloudflare's free plan: Google sign-in, Devices screen, live sync, key vault, AI/TTS proxy | a word saved on the phone appears on the tablet within seconds |
+| M2+ | **Web build** (learner's call, 2026-10-26), after Kabar Cloud is deployed: browser storage (SQLite-wasm on OPFS or IndexedDB) and fetch/WebSocket behind the app's existing seams, Web Speech TTS, Google redirect sign-in; hosted free on Cloudflare Pages and locked to me with Cloudflare Access. Plan first, for approval | I open Kabar in a browser on another computer, finish a lesson, and it shows up on the phone |
 | M3 | Dictionary import + language engine + tests | the test texts tokenize, normalize and stem correctly |
 | M4 | Content pipeline v1: frequency lists, top-2,000 glosses, grammar library for BIPA 1–2, golden sets | I review and approve the first content pack |
 | M5 | Reader + Screenshot Decoder + Share-to-Kabar + pen hover, lasso and highlight | I share a WhatsApp screenshot and read it with popovers |
