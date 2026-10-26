@@ -208,6 +208,13 @@ const SEED: &[Seed] = &[
     ("mungkin", WordLang::Indonesian, "adverb", ["يمكن / جايز", "ربما", "maybe"]),
     // English loans common in chat and listings
     ("iphone", WordLang::English, "noun", ["آيفون", "آيفون", "iPhone"]),
+    (
+        "pro max",
+        WordLang::English,
+        "noun",
+        ["برو ماكس (أكبر موديل)", "برو ماكس (الطراز الأكبر)", "Pro Max (the largest model)"],
+    ),
+    ("no minus", WordLang::English, "phrase", ["مفيهوش ولا عيب", "بلا أي عيب", "no flaws at all"]),
 ];
 
 /// (word, arabic, root, shift, note [arz, ar, en]).
