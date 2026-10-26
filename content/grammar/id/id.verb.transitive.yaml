@@ -1,0 +1,105 @@
+schema: kabar.grammar/v1
+id: id.verb.transitive
+language: id
+level: bipa3
+title:
+  target: Kata kerja transitif dan intransitif
+  en: Transitive and intransitive verbs
+  ar_eg: الفعل المتعدي واللازم
+  ar: الفعل المتعدي والفعل اللازم
+summary:
+  ar_eg: "الفعل المتعدي (غالبًا meN-) بياخد مفعول بعده على طول من غير حرف جر؛ اللازم (ber- أو جذر لوحده) مش بياخد مفعول."
+  ar: "الفعل المتعدي (غالبًا بـmeN-) يليه المفعول مباشرة بلا حرف جر، واللازم (بـber- أو الجذر المجرد) لا مفعول له."
+  en: "Transitive verbs (usually meN-) take an object right after them, with no preposition; intransitive verbs (ber- or bare roots) don't."
+pattern:
+  - subject + meN-verb + object + (place / time)
+  - subject + ber-verb / bare verb + (preposition + noun)
+  - subject + memberi + person + thing · memberikan + thing + kepada + person
+  - "time words go first or last, never between verb and object"
+explanation:
+  ar_eg: |
+    الإندونيسي بيوريك نوع الفعل من البادئة غالبًا:
+    - متعدي (ليه مفعول): غالبًا meN-: membeli oleh-oleh (يشتري هدايا)، membawa tenda (يشيل خيمة)، mengunjungi Senaru (يزور سينارو)، melihat air terjun (يشوف الشلال).
+    - لازم (ملوش مفعول): ber- أو جذر لوحده: berjalan، bekerja، tidur، pergi، datang، bangun.
+    قواعد الترتيب:
+    1) المفعول بييجي بعد الفعل على طول: Saya membeli oleh-oleh kemarin، أو Kemarin saya membeli oleh-oleh — مش Saya membeli kemarin oleh-oleh.
+    2) مفيش حرف جر بين الفعل المتعدي ومفعوله: mengunjungi Senaru، مش mengunjungi ke Senaru.
+    3) الفعل اللازم لو عايز تكمّله محتاج حرف جر: bertemu dengan Pak Budi، pergi ke Senaru.
+    4) فعل بمفعولين: Mas Ardi memberi saya peta (الشخص الأول وبعده الحاجة)، أو Mas Ardi memberikan peta kepada saya.
+    والمتعدي ممكن يستغنى عن المفعول لو الكلام عام: Saya sedang membaca. وفي الكلام العادي بيشيلوا meN-: Saya baca buku.
+  ar: |
+    تكشف السابقة غالبًا نوع الفعل:
+    - المتعدي غالبًا بـmeN-: membeli oleh-oleh، membawa tenda، mengunjungi Senaru، melihat air terjun.
+    - اللازم بـber- أو جذرًا مجردًا: berjalan، bekerja، tidur، pergi، datang.
+    قواعد الترتيب:
+    1) يلي المفعولُ الفعلَ مباشرة، والظرف في أول الجملة أو آخرها.
+    2) لا حرف جر بين المتعدي ومفعوله: mengunjungi Senaru.
+    3) يُكمَّل اللازم بحرف جر: bertemu dengan Pak Budi، pergi ke Senaru.
+    4) المتعدي إلى مفعولين: memberi saya peta (الشخص ثم الشيء)، أو memberikan peta kepada saya.
+    وقد يُحذف المفعول في المعنى العام (Saya sedang membaca)، وتُحذف meN- في العامية.
+  en: |
+    The prefix usually shows the verb type:
+    - Transitive (takes an object), usually meN-: membeli oleh-oleh (buy souvenirs), membawa tenda (carry a tent), mengunjungi Senaru (visit Senaru), melihat air terjun (see the waterfall).
+    - Intransitive, usually ber- or a bare root: berjalan, bekerja, tidur, pergi, datang, bangun.
+    Word order:
+    1) The object comes right after the verb; time words go first or last: Kemarin saya membeli oleh-oleh — not "saya membeli kemarin oleh-oleh".
+    2) No preposition between a transitive verb and its object: mengunjungi Senaru, not mengunjungi ke Senaru.
+    3) Intransitive verbs need a preposition to add a noun: bertemu dengan Pak Budi, pergi ke Senaru.
+    4) Two objects: Mas Ardi memberi saya peta (person, then thing), or Mas Ardi memberikan peta kepada saya.
+    A transitive verb may drop its object when it's general (Saya sedang membaca.), and casual speech drops meN- (Saya baca buku).
+examples:
+  - text: Hari Senin saya mendaki Gunung Rinjani bersama Mas Ardi.
+    breakdown: mendaki (climb, transitive) · Gunung Rinjani (object)
+    en: On Monday I climbed Mount Rinjani with Mas Ardi.
+    ar_eg: يوم الاتنين طلعت جبل رينجاني مع مَس أردي.
+    ar: صعدت جبل رينجاني يوم الاثنين مع ماس أردي.
+  - text: Para porter membawa tenda dan makanan.
+    en: The porters carried the tents and food.
+    ar_eg: الشيّالين شالوا الخيم والأكل.
+    ar: حمل الحمّالون الخيام والطعام.
+  - text: Saya sedang membaca buku.
+    en: I'm reading a book.
+    ar_eg: أنا بقرا كتاب دلوقتي.
+    ar: أنا أقرأ كتابًا الآن.
+  - text: Kami mengunjungi air terjun Sendang Gile.
+    en: We visited the Sendang Gile waterfall.
+    ar_eg: زرنا شلال سندانج جيلي.
+    ar: زرنا شلال سندانغ غيلي.
+  - text: Mas Ardi memberi saya peta jalur pendakian.
+    breakdown: memberi · saya (receiver) · peta jalur pendakian (thing)
+    en: Mas Ardi gave me a map of the hiking trail.
+    ar_eg: مَس أردي إداني خريطة طريق الطلوع.
+    ar: أعطاني ماس أردي خريطة مسار التسلق.
+  - text: Malam itu kami tidur di tenda.
+    en: That night we slept in a tent.
+    ar_eg: الليلة دي نمنا في خيمة.
+    ar: نمنا تلك الليلة في خيمة.
+mistakes:
+  - wrong: Kami mengunjungi ke Senaru.
+    right: Kami mengunjungi Senaru. / Kami pergi ke Senaru.
+    why:
+      ar_eg: mengunjungi متعدي (زي «زار»)، مش محتاج ke.
+      ar: mengunjungi متعدٍّ بنفسه مثل «زار»، فلا يحتاج ke.
+      en: mengunjungi is transitive (like "visit"); no ke.
+  - wrong: Saya membeli kemarin oleh-oleh.
+    right: Kemarin saya membeli oleh-oleh. / Saya membeli oleh-oleh kemarin.
+    why:
+      ar_eg: ما تفصلش بين الفعل والمفعول؛ الوقت في الأول أو الآخر.
+      ar: لا يُفصل بين الفعل ومفعوله؛ الظرف أولًا أو آخرًا.
+      en: Don't split verb and object; time goes first or last.
+  - wrong: Saya menemui dengan Pak Budi.
+    right: Saya menemui Pak Budi. / Saya bertemu dengan Pak Budi.
+    why:
+      ar_eg: menemui متعدي (من غير حرف جر)؛ bertemu لازم وبياخد dengan.
+      ar: menemui متعدٍّ بنفسه، وbertemu لازم يتعدى بـdengan.
+      en: menemui is transitive (no preposition); bertemu is intransitive and takes dengan.
+arabic_bridge:
+  ar_eg: "عندنا نفس التقسيم بالظبط: فعل لازم (نام، مشي) وفعل متعدي (اشترى، شاف). الفرق إن الإندونيسي غالبًا بيوريك ده في البادئة: ber- = لازم، meN- = متعدي. وزي «زار المكان» في العربي من غير حرف جر، mengunjungi Senaru من غير ke."
+  ar: "التقسيم ذاته في العربية: لازم ومتعدٍّ. والفرق أن الإندونيسية تكشفه غالبًا بالسابقة: ber- للازم وmeN- للمتعدي. وكما نقول «زار المكانَ» بلا حرف جر، نقول mengunjungi Senaru."
+  en: Arabic's لازم / متعدٍّ split is the same idea; Indonesian usually shows it in the prefix (ber- intransitive, meN- transitive). Like زار المكان, mengunjungi takes its object directly.
+tags: [verb, transitivity, word-order]
+prerequisites: [id.prefix.men.basic, id.prefix.ber.basic, id.sentence.word-order]
+see_also: [id.confix.men-i, id.confix.men-kan.causative, id.voice.active-passive]
+review:
+  status: draft
+  verified: false

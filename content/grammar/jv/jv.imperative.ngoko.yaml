@@ -1,0 +1,112 @@
+schema: kabar.grammar/v1
+id: jv.imperative.ngoko
+language: jv
+level: j2
+title:
+  target: mangana! · panganen! · tukokna! · enteni! · aja …!
+  en: Commands in ngoko (-a, -en, -na, -i, aja)
+  ar_eg: صيغة الأمر في النغوكو
+  ar: صيغة الأمر في النغوكو
+summary:
+  ar_eg: "الأمر الجاوي له نهايات: -a للفعل من غير مفعول (mangana = كُل!)، -en للمفعول (panganen = كُله!)، -na لأفعال -ake (tukokna = اشتريلي)، و-i بتفضل -i (enteni = استناني). والنهي aja = jangan."
+  ar: "للأمر نهايات: -a للفعل اللازم (mangana)، و-en للمتعدي (panganen)، و-na لأفعال -ake (tukokna)، وتبقى -i كما هي (enteni)، والنهي بـ aja."
+  en: "Javanese commands have endings: -a for no object (mangana = eat!), -en with an object (panganen = eat it!), -na for -ake verbs (tukokna = buy it for me), -i stays -i (enteni = wait for me). Don'ts use aja (jangan)."
+pattern:
+  - "no object: verb + -a: mangan → mangana (makanlah), adus → adusa (mandilah)"
+  - "with object: base + -en: pangan → panganen (makanlah [itu]), waca → wacanen (bacalah)"
+  - "-ake verbs → -na (Arek -no): tukokna / tukokno (belikan), jupukna (ambilkan)"
+  - "-i verbs stay: enteni (tunggu), rewangi (bantu)"
+  - "don't: aja + verb (jangan) · chat ojo · Arek ojok"
+  - "soften: … ya / to · tulung … (tolong) · … sik (dulu)"
+explanation:
+  ar_eg: |
+    في الإندونيسي بتقول «Makan!» أو «Makanlah!» أو «Ambilkan!». الجاوي عنده نهايات أكتر، وكل واحدة ليها شغل:
+    - -a لما مفيش مفعول: mangan → Mangana! = كُل! adus → Adusa! = استحمى!
+    - -en على الأصل لما فيه مفعول: pangan → Panganen! = كُله! (الأكل ده)، waca → Wacanen! = اقراه!
+    - -na لأفعال -ake (اللي «لحد»): Tukokna! = اشتريلي / اشتريه (belikan). Jupukna! = هاته (ambilkan). في سورابايا: -no: Tukokno! Jupukno!
+    - أفعال -i بتفضل زي ما هي: Enteni aku! = استناني! Rewangi aku! = ساعدني!
+    - وفي الكلام العادي جدًا الناس كتير بتقول الفعل لوحده: Ayo mangan! = يلا ناكل.
+    النهي: aja (jangan) + الفعل: Aja lali! = ماتنساش! في الشات ojo، وفي سورابايا ojok.
+    والأهم — الأدب: الأمر الجاوي من غير تليين بيبان ناشف جدًا. حط ya أو to في الآخر، أو tulung (tolong) في الأول، أو sik: Tulung jupukna, ya. = هاته والنبي.
+    ومع الكبار مش هتستخدم الأمر ده خالص — هنتعلم الطلب المؤدب بالكراما بعدين.
+  ar: |
+    في الإندونيسية «Makan!» و«Makanlah!» و«Ambilkan!»، وللجاوية نهايات أكثر لكل منها وظيفة:
+    - -a للفعل بلا مفعول: mangan → Mangana! = كُل!، adus → Adusa! = اغتسل!
+    - -en على الجذر مع المفعول: pangan → Panganen! = كُله!، waca → Wacanen! = اقرأه!
+    - -na لأفعال -ake: Tukokna! = اشترِه لي (belikan)، Jupukna! = ناولني (ambilkan)، وفي سورابايا -no: Tukokno!
+    - تبقى أفعال -i كما هي: Enteni aku! = انتظرني!، Rewangi aku! = ساعدني!
+    - وفي الكلام العفوي يُكتفى بالفعل: Ayo mangan!
+    والنهي بـ aja (jangan): Aja lali! = لا تنسَ! وفي الدردشة ojo، وفي سورابايا ojok.
+    والأمر المجرد يبدو جافًا، فيُلطَّف بـ ya أو to آخرًا، أو tulung أولًا، أو sik: Tulung jupukna, ya.
+    ولا يُخاطب الكبار بهذا الأمر، وللطلب المهذب صيغ الكراما لاحقًا.
+  en: |
+    Indonesian says "Makan!", "Makanlah!", "Ambilkan!". Javanese has more endings, each with a job:
+    - -a when there's no object: mangan → Mangana! = Eat! adus → Adusa! = Have a bath!
+    - -en on the base when there is an object: pangan → Panganen! = Eat it! waca → Wacanen! = Read it!
+    - -na for -ake verbs (doing it for someone): Tukokna! = Buy it (for me)! (belikan). Jupukna! = Fetch it! (ambilkan). Surabaya: -no: Tukokno! Jupukno!
+    - -i verbs stay as they are: Enteni aku! = Wait for me! Rewangi aku! = Help me!
+    - Very casual speech often just uses the verb: Ayo mangan! = Let's eat.
+    Don't: aja (jangan) + verb: Aja lali! = Don't forget! Chat: ojo; Surabaya: ojok.
+    Most important — manners: a bare Javanese command sounds very harsh. Add ya or to at the end, tulung (tolong) at the start, or sik: Tulung jupukna, ya. = Could you grab it for me?
+    With elders you won't use these at all; polite krama requests come later.
+examples:
+  - text: Mangana sik, ya.
+    breakdown: mangan + -a = makanlah · sik = dulu · ya
+    en: Eat first, OK?
+    ar_eg: كُل الأول، ماشي؟
+    ar: كُل أولًا، حسنًا؟
+    register: informal
+  - text: Tulung tukokna gula, ya.
+    breakdown: tulung = tolong · tuku + -na → tukokna = belikan · gula · ya
+    en: Could you buy (me) some sugar?
+    ar_eg: والنبي هاتلي سكر.
+    ar: من فضلك اشترِ لي سكرًا.
+    register: informal
+  - text: Wacanen bukune!
+    breakdown: waca + -en = bacalah · buku + -ne = bukunya
+    en: Read the book!
+    ar_eg: اقرا الكتاب!
+    ar: اقرأ الكتاب!
+    register: informal
+  - text: Enteni aku nang stasiun.
+    breakdown: enteni = tunggu (aku) · aku · nang = di · stasiun
+    en: Wait for me at the station.
+    ar_eg: استناني في المحطة.
+    ar: انتظرني في المحطة.
+    register: informal
+  - text: Aja lali, ya!
+    breakdown: aja = jangan · lali = lupa · ya
+    en: Don't forget, OK!
+    ar_eg: ماتنساش، ماشي!
+    ar: لا تنسَ!
+    register: informal
+  - text: Jupukno HP-ku, rek.
+    breakdown: jupuk + -no (Arek) = ambilkan · HP + -ku · rek
+    en: Grab my phone for me, mate. (Surabaya)
+    ar_eg: هات الموبايل بتاعي يا صاحبي.
+    ar: ناولني هاتفي يا صاح.
+    register: informal
+mistakes:
+  - wrong: Mangan bukune! (for "Read the book!")
+    right: Wacanen bukune!
+    why:
+      ar_eg: mangan = ياكل! «اقرا» = wacanen من waca. ركّز على الأصل قبل النهاية.
+      ar: mangan للأكل، أما القراءة فـ wacanen من waca.
+      en: mangan is "eat"; "read it" is wacanen, from waca.
+  - wrong: Ora lali!
+    right: Aja lali!
+    why:
+      ar_eg: النهي (ماتعملش) بـ aja زي jangan، مش ora (tidak).
+      ar: النهي بـ aja (jangan) لا بـ ora (tidak).
+      en: "'Don't' is aja (jangan), not ora (tidak)."
+arabic_bridge:
+  ar_eg: "التليين بـ ya أو tulung زي «والنبي» و«لو سمحت» عندنا: «هات القهوة» غير «والنبي هات القهوة». وaja = «ما» في «ماتنساش»."
+  ar: "تلطيف الأمر بـ ya وtulung كقولنا «من فضلك» و«لو سمحت»، وaja تقابل «لا» الناهية."
+  en: "Softening with ya / tulung is like Egyptian «والنبي» or «لو سمحت»; aja is the «لا» of prohibition."
+tags: [imperative, verb, politeness, j2]
+prerequisites: [id.imperative.basic, id.prohibition.jangan, jv.suffix.ake]
+see_also: [jv.particle.basic, jv.suffix.i, jv.prefix.nasal]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker (mangana / adusa, Arek -no and ojok especially).

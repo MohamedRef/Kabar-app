@@ -1,0 +1,108 @@
+schema: kabar.grammar/v1
+id: jv.krama.questions
+language: jv
+level: j3
+title:
+  target: menapa, sinten, pundi, pinten, kados pundi / pripun, kenging menapa
+  en: Asking politely (krama question words)
+  ar_eg: السؤال بأدب (أدوات السؤال في الكراما)
+  ar: السؤال بأدب (أدوات الاستفهام في الكراما)
+summary:
+  ar_eg: "apa → menapa، sapa → sinten، ngendi → pundi، pira → pinten، piye → kados pundi (في الكلام pripun). وابدأ السؤال بـ Nyuwun sewu (لا مؤاخذة)."
+  ar: "apa → menapa، sapa → sinten، ngendi → pundi، pira → pinten، piye → kados pundi (وفي الكلام pripun)، ويُستهل السؤال بـ Nyuwun sewu."
+  en: "apa → menapa, sapa → sinten, ngendi → pundi, pira → pinten, piye → kados pundi (spoken pripun). Open with Nyuwun sewu (excuse me)."
+pattern:
+  - "apa → menapa, spoken napa (apa) · sapa → sinten (siapa)"
+  - "ngendi → pundi: ing pundi (di mana) · dhateng pundi (ke mana) · saking pundi (dari mana)"
+  - "pira → pinten (berapa) · piye → kados pundi, spoken pripun (bagaimana)"
+  - "ngapa → kenging menapa (kenapa) · kapan stays kapan"
+  - "Nyuwun sewu, … ? = Permisi, …?"
+explanation:
+  ar_eg: |
+    نفس أدوات J1 بس بنسختها المؤدبة (وجنبها الإندونيسي):
+    - apa → menapa (apa). في الكلام: napa.
+    - sapa → sinten (siapa): Sinten asmanipun? = اسم حضرتك إيه؟
+    - ngendi → pundi (mana): ing pundi = فين، dhateng pundi = على فين، saking pundi = منين.
+    - pira → pinten (berapa): Reginipun pinten? = بكام؟
+    - piye → kados pundi (bagaimana). في الكلام pripun: Pripun kabaripun? = أخبار حضرتك إيه؟
+    - ngapa → kenging menapa (kenapa). وkapan بتفضل kapan.
+    آداب السؤال (وده جزء من القواعد بجد في سولو):
+    - ابدأ بـ Nyuwun sewu = «لا مؤاخذة / بعد إذنك» (حرفيًا «بطلب ألف [سماح]»).
+    - وطّي راسك شوية، ولو بتشاور على حاجة شاور بصباع الإبهام مش السبابة.
+    - والرد: Inggih (أيوه) أو Mboten (لأ)، وفي الآخر Matur nuwun (شكرًا).
+  ar: |
+    هي أدوات J1 في صورتها المهذبة:
+    - apa → menapa (وفي الكلام napa).
+    - sapa → sinten: Sinten asmanipun? = ما اسمكم الكريم؟
+    - ngendi → pundi: ing pundi = أين، dhateng pundi = إلى أين، saking pundi = من أين.
+    - pira → pinten: Reginipun pinten? = بكم ثمنه؟
+    - piye → kados pundi، وفي الكلام pripun: Pripun kabaripun? = كيف حالكم؟
+    - ngapa → kenging menapa، وتبقى kapan كما هي.
+    ومن آداب السؤال في سولو: الاستهلال بـ Nyuwun sewu (عفوًا، وحرفيًا «أطلب ألفًا [من العفو]»)، وخفض الرأس قليلًا، والإشارة بالإبهام لا بالسبابة، والختام بـ Matur nuwun (شكرًا).
+  en: |
+    The J1 question words in their polite form (Indonesian alongside):
+    - apa → menapa (apa). Spoken: napa.
+    - sapa → sinten (siapa): Sinten asmanipun? = What is your name?
+    - ngendi → pundi (mana): ing pundi = where, dhateng pundi = where to, saking pundi = where from.
+    - pira → pinten (berapa): Reginipun pinten? = How much is it?
+    - piye → kados pundi (bagaimana); spoken pripun: Pripun kabaripun? = How are you?
+    - ngapa → kenging menapa (kenapa). kapan stays kapan.
+    Asking etiquette — in Solo this really is part of the grammar:
+    - Open with Nyuwun sewu = "Excuse me" (literally "I ask a thousand [pardons]").
+    - Bow your head slightly, and point with your thumb, not your index finger.
+    - Answers: Inggih (yes) or Mboten (no); finish with Matur nuwun (thank you).
+examples:
+  - text: Nyuwun sewu, Pak, stasiun Balapan ing pundi?
+    breakdown: nyuwun sewu = permisi · Pak · stasiun Balapan · ing pundi = di mana
+    en: Excuse me, sir, where is Balapan station?
+    ar_eg: لا مؤاخذة يا حاج، محطة بالابان فين؟
+    ar: عفوًا يا سيدي، أين محطة بالابان؟
+    register: formal
+  - text: Panjenengan badhe tindak pundi?
+    breakdown: panjenengan · badhe = mau · tindak = pergi (krama inggil) · pundi = mana
+    en: Where are you going? (to an elder)
+    ar_eg: حضرتك رايح فين؟
+    ar: إلى أين تتوجهون؟
+    register: formal
+  - text: Reginipun pinten, Bu?
+    breakdown: regi = harga · -nipun = -nya · pinten = berapa · Bu
+    en: How much is it, ma'am?
+    ar_eg: بكام يا حاجة؟
+    ar: بكم ثمنه يا سيدتي؟
+    register: formal
+  - text: Pripun kabaripun?
+    breakdown: pripun = bagaimana · kabar + -ipun = kabarnya
+    en: How are you?
+    ar_eg: أخبار حضرتك إيه؟
+    ar: كيف حالكم؟
+    register: formal
+  - text: Menika menapa?
+    breakdown: menika = ini · menapa = apa
+    en: What is this?
+    ar_eg: ده إيه لو سمحت؟
+    ar: ما هذا؟
+    register: formal
+mistakes:
+  - wrong: Panjenengan badhe tindak ngendi?
+    right: Panjenengan badhe tindak pundi?
+    why:
+      ar_eg: "ngendi نغوكو وسط جملة كراما. خلي أداة السؤال كراما كمان: pundi."
+      ar: ngendi من النغوكو، فتُستبدل بها pundi في جملة الكراما.
+      en: ngendi is ngoko in the middle of a krama sentence; use pundi.
+  - wrong: Kula badhe tindak dhateng peken.
+    right: Kula badhe kesah dhateng peken.
+    why:
+      ar_eg: tindak تعظيم للتاني. عن نفسك قول kesah (krama عادي).
+      ar: tindak للتعظيم، وعن النفس يقال kesah.
+      en: tindak honours the other person; for yourself say kesah.
+arabic_bridge:
+  ar_eg: "Nyuwun sewu ≈ «لا مؤاخذة / بعد إذن حضرتك» قبل السؤال، وkabar في Pripun kabaripun جاية من «خبر»."
+  ar: "Nyuwun sewu ≈ «عفوًا / بعد إذنكم»، وkabar في Pripun kabaripun من العربية «خبر»."
+  en: "Nyuwun sewu ≈ «لا مؤاخذة» / «بعد إذنك»; kabar in Pripun kabaripun is Arabic خبر."
+tags: [question, krama, politeness, etiquette, j3]
+prerequisites: [jv.question.words, jv.krama.function-words]
+see_also: [jv.pronoun.krama, jv.krama.numbers, jv.etiquette.phrases]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker (kenging menapa, kapan in krama, kesah vs tindak, and the etiquette notes).

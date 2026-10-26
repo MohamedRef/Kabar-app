@@ -81,6 +81,7 @@ Every synced row: `id` (UUIDv7), `account_id`, `device_id`, `hlc` (64-bit: 48-bi
 | Group | Tables (local SQLite) | Sync kind |
 |---|---|---|
 | Language | lexemes, senses, glosses, examples, forms, etymology_arabic, abbreviations, speech_levels, grammar_points | **content pack** (read-only, versioned) |
+| Personal dictionary | taught_entries (Teach Kabar, §15) | LWW per `{lang}:{word}` |
 | Reading | texts, text_tokens, word_status, highlights | texts/highlights: LWW · word_status: LWW per (lexeme) |
 | Learning | cards, review_log, curriculum_nodes, lessons, exercises, attempts, conversations, stories, souvenirs | review_log/attempts/xp_events: **append-only** · cards: derived from review_log · lessons/exercises: content pack |
 | Ink | notebooks, ink_documents, ink_strokes | strokes **immutable** (delete = event) · documents: LWW |
@@ -180,3 +181,25 @@ Daytona sandboxes are billed per use (≈ $0.05/vCPU-h + $0.016/GiB-h; your acco
 - The bake-off runner for the cloud engines, and a one-off run of 8–27B local candidates on a bigger box, only to learn whether they'd be worth it (they can't be hosted there at runtime for $0).
 
 Not needed for: device tests and Pen Lab (need the Galaxy devices), macOS builds (need the Mac). To let me drive it from here, add a `DAYTONA_API_KEY` as an environment secret — never in the repo. I'll keep each run short and tell you the expected cost before starting.
+
+## 15. Teach Kabar (spec §26)
+
+The learner teaches Kabar words it doesn't know. Phase T1 ships with M5.
+
+```
+ popover / Teach screen ──▶ kabar_core::learn::prepare ──▶ Router (task learn_entry) ──▶ draft TaughtEntry
+   word, lang, sentence        scrub e-mails/phones,          prompt learn_entry@v1,          review screen:
+   sources: paste | link |     HTML → text, trim to 6k,       serde + checks, retry once,     approve / edit /
+   screenshot (OCR) |          morphology + Bridge hints,     cache by input hash            👎 regenerate / discard
+   Wiktionary lookup           personal flag for screenshots                                       │
+                                                                                                    ▼
+                                         taught_entries (SQLite, synced LWW) ◀── PersonalDictionary ──▶ popover layer
+```
+
+- **Types.** `kabar_protocol::learn::TaughtEntry` wraps the content pack's `GlossEntry` (so popovers, lessons and the next content batch read one shape) plus an optional Bridge card, Javanese speech levels, the sources used, the sentence, the engine and whether the learner edited it. `entry.status` is the review state (`unverified` = draft, `approved`), `entry.provenance.generator = "learner"` marks "taught by you", `rank = 0`.
+- **Task.** `learn_entry` (`prompts/learn_entry@v1.md`). Not a personal task in itself: what is sent is learning text (the word, the sentence, what the learner pasted from the web). Screenshot sources set `AiRequest::personal`, so they never reach `gemini_free`. E-mail addresses and phone numbers are scrubbed from every source first. Route: `workers_ai`, `gemini_free`, `local`, `claude`, provisional until the bake-off has a `learn_entry` golden set (seeded in `content/golden/seed.yaml`).
+- **Validation.** Word matches the request; 1–4 senses with non-empty glosses in all three voices; `arz`/`ar` in Arabic script; 1–3 examples that contain the word (or its lemma/root); `false_friend` needs `arabic_origin`; Bridge `arabic` in Arabic script; root/affixes consistent. The deterministic morphology is sent as a hint and differences are surfaced in the review screen, not silently fixed.
+- **Storage and sync.** `taught_entries` local table with the usual `account_id`, `device_id`, HLC and tombstone columns; row id `{lang}:{word}`; added to `kabar_protocol::sync::TABLES` as LWW so the hub accepts it. Discarding a draft or deleting an entry is a tombstone.
+- **Popover.** The Reader looks the word up in `PersonalDictionary` first (`lookup_forms`, same form order as the prebuilt glossary). Approved entries show above the prebuilt gloss with a "taught by you" badge; drafts only show a "review your draft" chip. The Reader owns the button in the popover card; it fills `TeachSeed` and opens `Screen::Teach`.
+- **Web lookup (free only).** "Search Google" opens `https://www.google.com/search?q=<word>+artinya` (Javanese: `+tegese`) in the browser; Kabar never scrapes Google. Wiktionary's REST definition API (`https://en.wiktionary.org/api/rest_v1/page/definition/<word>`, free, no key, CORS-enabled) is fetched from the WebView and parsed in core. Pasted links are fetched from the WebView too; when a site blocks that (CORS), the screen asks the learner to paste the text (T2 moves this fetch to Kabar Cloud).
+- **Later (T2, M13).** Cloud-side link fetch, vision for screenshots without OCR text, a "taught by you" review deck, and exporting approved entries into `content/glosses/` batches.

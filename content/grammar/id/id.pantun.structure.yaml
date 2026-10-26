@@ -1,0 +1,105 @@
+schema: kabar.grammar/v1
+id: id.pantun.structure
+language: id
+level: bipa6
+title:
+  target: Pantun (sampiran dan isi)
+  en: The pantun — hook lines and message lines
+  ar_eg: البانتون (البيتين التمهيد والبيتين المعنى)
+  ar: البانتون (التمهيد والمضمون)
+summary:
+  ar_eg: "البانتون = 4 سطور، كل سطر حوالي 8–12 مقطع، والقافية a-b-a-b. أول سطرين (sampiran) صورة من الطبيعة ملهاش علاقة بالمعنى بس بتجهّز القافية، وآخر سطرين (isi) هما الرسالة."
+  ar: "البانتون أربعة أسطر، في كل سطر ثمانية إلى اثني عشر مقطعًا، وقافيتها a-b-a-b؛ السطران الأولان (sampiran) تمهيد يهيّئ القافية، والأخيران (isi) هما المضمون."
+  en: "A pantun has 4 lines of about 8–12 syllables, rhyming a-b-a-b. Lines 1–2 (sampiran) are an image, often from nature, that sets up the sounds; lines 3–4 (isi) carry the message."
+pattern:
+  - "Line 1 (sampiran, a) / Line 2 (sampiran, b) / Line 3 (isi, a) / Line 4 (isi, b)"
+  - "8–12 syllables per line, usually 4 words"
+  - "Types: pantun nasihat, jenaka, kasih / cinta, teka-teki, adat, agama"
+  - "Karmina (pantun kilat): 2 lines, a-a — Dahulu parang, sekarang besi; dahulu sayang, sekarang benci."
+explanation:
+  ar_eg: |
+    البانتون شعر شعبي ملايو، بيتقال في الأفراح وافتتاح الخطب، وفي «berbalas pantun» الناس بترد على بانتون ببانتون (زي المساجلة). في 2020 اليونسكو سجّلته تراث إنساني.
+    القواعد:
+    1. أربع سطور (larik / baris).
+    2. كل سطر 8–12 مقطع صوتي، غالبًا 4 كلمات.
+    3. القافية a-b-a-b: آخر السطر 1 بيقفّي مع 3، و2 مع 4.
+    4. السطرين الأولانيين = sampiran: صورة (نهر، شجرة، مركب) وظيفتها الصوت والإيقاع، ومش لازم يبقى ليها علاقة بالمعنى.
+    5. السطرين الأخيرين = isi: الرسالة (نصيحة، حب، هزار، لغز).
+    خد المثال الكلاسيكي:
+    Berakit-rakit ke hulu, (a: -hulu)
+    berenang-renang ke tepian. (b: -an)
+    Bersakit-sakit dahulu, (a: -hulu)
+    bersenang-senang kemudian. (b: -an)
+    = اتعب الأول، وتنبسط بعدين.
+    إزاي تكتب واحد: ابدأ بالـ isi (الرسالة)، وبعدين دوّر على صورة من الطبيعة آخرها بيقفّي مع آخر كل سطر فيها.
+    والبانتون لغته بتحذف حاجات: tak بدل tidak، وأحيانًا من غير بادئات (ambil بدل mengambil) عشان الإيقاع.
+  ar: |
+    البانتون شعر شعبي ملايوي يُلقى في الأعراس ومستهل الخطب، ويتبارى الناس فيه بالردّ (berbalas pantun) كالمساجلة الشعرية، وقد أدرجته اليونسكو في قائمة التراث غير المادي عام 2020.
+    قواعده: أربعة أسطر، في كل سطر ثمانية إلى اثني عشر مقطعًا، والقافية a-b-a-b. السطران الأولان (sampiran) صورة من الطبيعة غرضها الإيقاع والقافية ولا يلزم اتصالها بالمعنى، والأخيران (isi) يحملان المضمون من نصح أو غزل أو دعابة أو لغز.
+    مثاله: Berakit-rakit ke hulu, / berenang-renang ke tepian. / Bersakit-sakit dahulu, / bersenang-senang kemudian. أي: التعب أولًا ثم الراحة.
+    ولكتابته يُبدأ بالمضمون ثم يُبحث عن صورة توافق قوافيه. ويحذف البانتون بعض العناصر لأجل الوزن، كـ tak بدل tidak.
+  en: |
+    The pantun is a Malay oral verse form: it opens speeches and enlivens weddings, and in berbalas pantun people answer a pantun with a pantun, like a verse duel. UNESCO inscribed it as intangible heritage in 2020.
+    The rules:
+    1. Four lines (larik / baris).
+    2. Each line has 8–12 syllables, usually four words.
+    3. Rhyme a-b-a-b: line 1 rhymes with 3, line 2 with 4.
+    4. Lines 1–2 = sampiran: an image (river, tree, boat) whose job is sound and rhythm; it needn't relate to the meaning.
+    5. Lines 3–4 = isi: the message (advice, love, a joke, a riddle).
+    The classic:
+    Berakit-rakit ke hulu, (a: -hulu)
+    berenang-renang ke tepian. (b: -an)
+    Bersakit-sakit dahulu, (a: -hulu)
+    bersenang-senang kemudian. (b: -an)
+    = Toil first, enjoy later.
+    To write one: start with the isi, then find a nature image whose line-endings rhyme with it.
+    Pantun language trims words for rhythm: tak for tidak, and sometimes bare roots (ambil for mengambil).
+examples:
+  - text: Berakit-rakit ke hulu, / berenang-renang ke tepian. / Bersakit-sakit dahulu, / bersenang-senang kemudian.
+    breakdown: sampiran (lines 1–2) — rafting upstream, swimming to the bank · isi (lines 3–4) — hardship first, joy later · rhyme hulu/dahulu, tepian/kemudian
+    en: Rafting upstream, / then swimming to the shore. / Suffer first, / and be happy afterwards. (pantun nasihat)
+    ar_eg: نطلع بالطوف لفوق النهر، / ونعوم لحد الشط. / نتعب الأول، / ونفرح بعدين. (بانتون نصيحة)
+    ar: نجدّف بالطوف إلى أعلى النهر، / ونسبح إلى الضفة. / نتعب أولًا، / ونسعد بعد ذلك. (بانتون نصح)
+    register: formal
+  - text: Kalau ada sumur di ladang, / boleh kita menumpang mandi. / Kalau ada umur panjang, / boleh kita berjumpa lagi.
+    en: If there's a well in the field, / we may bathe there too. / If we're granted long life, / we may meet again. (a farewell pantun)
+    ar_eg: لو فيه بير في الغيط، / نستحمى منه برضه. / ولو ربنا اداك عمر، / نتقابل تاني. (بانتون وداع)
+    ar: إن كان في الحقل بئر، / فلنا أن نغتسل منه. / وإن طال العمر، / فلنا أن نلتقي ثانية. (بانتون وداع)
+  - text: Buah cempedak di luar pagar, / ambil galah tolong jolokkan. / Saya budak baru belajar, / kalau salah tolong tunjukkan.
+    breakdown: cempedak (a jackfruit-like fruit) · galah (long pole) · jolokkan (poke down) · budak (Malay 'child', here 'beginner')
+    en: A cempedak fruit outside the fence, / take a pole and knock it down. / I'm a youngster just learning, / if I'm wrong, please show me. (a humble opener)
+    ar_eg: ثمرة تشمبيداك برا السور، / هات عصاية ونزّلها. / أنا لسه عيل بتعلم، / ولو غلطت عرّفني. (افتتاحية متواضعة — مناسبة ليك كمتعلم!)
+    ar: ثمرة تشمبيداك خارج السياج، / خذ عصا وأسقطها. / أنا ناشئ أتعلّم، / فإن أخطأتُ فدلّني. (مطلع متواضع)
+  - text: Dahulu parang, sekarang besi; / dahulu sayang, sekarang benci.
+    en: Once a machete, now iron; / once love, now hate. (karmina — a two-line 'lightning pantun')
+    ar_eg: "زمان ساطور، ودلوقتي حديد؛ / زمان حب، ودلوقتي كره. (كارمينا: بانتون سريع سطرين)"
+    ar: "كان ساطورًا وصار حديدًا؛ / كان حبًّا وصار بغضًا. (كارمينا: بانتون خاطف من سطرين)"
+mistakes:
+  - wrong: "Rhyme a-a-b-b (line 1 with 2, line 3 with 4)"
+    right: "Rhyme a-b-a-b: line 1 with line 3, line 2 with line 4."
+    why:
+      ar_eg: البانتون قافيته متبادلة a-b-a-b، مش أزواج a-a-b-b زي الشعر الحديث (syair هو اللي a-a-a-a).
+      ar: قافية البانتون متناوبة a-b-a-b، أما الشعر الملايوي المسمى syair فقافيته a-a-a-a.
+      en: Pantun rhyme alternates a-b-a-b; it isn't couplets (and the syair form is a-a-a-a).
+  - wrong: Putting the message in lines 1–2 and the nature image in lines 3–4.
+    right: Image (sampiran) first, message (isi) last.
+    why:
+      ar_eg: "الترتيب ثابت: التمهيد الأول، والمعنى في الآخر. المستمع بيستنى «الضربة» في السطرين الأخيرين."
+      ar: "الترتيب ثابت: التمهيد أولًا والمضمون أخيرًا، فالسامع ينتظر المعنى في الختام."
+      en: The order is fixed — hook first, message last; the listener waits for the punchline in lines 3–4.
+  - wrong: Searching the sampiran for a hidden meaning that explains the isi.
+    right: Treat the sampiran mainly as sound and atmosphere.
+    why:
+      ar_eg: أغلب الأوقات السطرين الأولانيين ملهمش معنى مرتبط، وظيفتهم القافية. (أحيانًا فيه إيحاء خفيف، بس مش شرط.)
+      ar: التمهيد في الغالب لا يتصل بالمضمون ووظيفته صوتية، وقد يحمل إيحاءً خفيفًا أحيانًا.
+      en: The sampiran usually has no logical link to the isi; its job is sound (sometimes there's a faint echo, but don't force it).
+arabic_bridge:
+  ar_eg: "تخيّل «فوازير» أو مواويل الأفراح عندنا بس بشكل ثابت. والـ sampiran بيفكّرك شوية بالمقدمة الطللية في القصيدة العربية: مدخل ملوش علاقة مباشرة بالغرض، بيجهّز الأذن. وberbalas pantun زي المساجلة أو «المربّع» في الزجل."
+  ar: "يشبه التمهيد (sampiran) من وجهٍ المقدمةَ الطللية في القصيدة العربية، إذ لا يتصل اتصالًا مباشرًا بالغرض، ويشبه berbalas pantun المساجلات الشعرية. ومصطلح syair (شعر ملايوي آخر) مأخوذ من «شِعر»."
+  en: "The sampiran works a bit like the atlāl prelude of the Arabic qaṣīda — an opening that prepares the ear rather than the argument — and berbalas pantun is like a poetic musājala. (The related Malay form syair takes its name from Arabic شِعر.)"
+tags: [literature, poetry, culture, rhyme]
+prerequisites: [id.figurative.metaphor]
+see_also: [id.figurative.majas, id.proverb, id.implicature]
+review:
+  status: draft
+  verified: false

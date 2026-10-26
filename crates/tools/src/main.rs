@@ -13,7 +13,9 @@ use clap::{Parser, Subcommand};
 mod bridge;
 mod freq;
 mod gloss;
+mod golden;
 mod kaikki;
+mod levels;
 mod paths;
 mod schemas;
 mod text;
@@ -42,6 +44,12 @@ enum Command {
     /// The Arabic Bridge dataset.
     #[command(subcommand)]
     Bridge(bridge::Cmd),
+    /// The Javanese speech-level table.
+    #[command(subcommand)]
+    Levels(levels::Cmd),
+    /// Golden sets for the runtime AI tasks.
+    #[command(subcommand)]
+    Golden(golden::Cmd),
     /// Regenerate `schemas/*.schema.json` from the Rust content types.
     Schemas {
         /// Fail instead of writing when a schema is out of date.
@@ -60,16 +68,21 @@ fn main() -> Result<()> {
         Command::Kaikki(args) => kaikki::run(&root, args),
         Command::Gloss(cmd) => gloss::run(&root, cmd),
         Command::Bridge(cmd) => bridge::run(&root, cmd),
+        Command::Levels(cmd) => levels::run(&root, cmd),
+        Command::Golden(cmd) => golden::run(&root, cmd),
         Command::Schemas { check } => schemas::run(&root, check),
         Command::Validate => {
             schemas::run(&root, true)?;
             gloss::run(&root, gloss::Cmd::Validate { batch: None })?;
             bridge::run(&root, bridge::Cmd::Validate)?;
-            let issues = gloss::crosscheck_bridge(&root, kabar_protocol::content::Lang::Id)?;
+            let mut issues = gloss::crosscheck_bridge(&root, kabar_protocol::content::Lang::Id)?;
+            issues.extend(gloss::crosscheck_bridge(&root, kabar_protocol::content::Lang::Jv)?);
             for i in &issues {
                 println!("gloss↔bridge: {i}");
             }
             anyhow::ensure!(issues.is_empty(), "{} gloss↔bridge issue(s)", issues.len());
+            levels::run(&root, levels::Cmd::Validate)?;
+            golden::run(&root, golden::Cmd::Validate)?;
             println!("all content ok");
             Ok(())
         }

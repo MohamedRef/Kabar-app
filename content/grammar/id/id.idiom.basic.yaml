@@ -1,0 +1,116 @@
+schema: kabar.grammar/v1
+id: id.idiom.basic
+language: id
+level: bipa4
+title:
+  target: Idiom (buah tangan, kambing hitam, keras kepala, banting tulang)
+  en: Common Indonesian idioms
+  ar_eg: تعبيرات اصطلاحية مشهورة
+  ar: تعبيرات اصطلاحية شائعة
+summary:
+  ar_eg: "الـ idiom (ungkapan) = كلمتين معناهم مش مجموع معانيهم: kambing hitam = «معزة سودا» = كبش فداء. أغلبهم بأعضاء الجسم: keras kepala = راسه ناشفة."
+  ar: "التعبير الاصطلاحي (ungkapan) معناه غير مجموع ألفاظه: kambing hitam = كبش الفداء، وأكثرها بأعضاء الجسد: keras kepala = عنيد."
+  en: "An idiom (ungkapan) means more than its words: kambing hitam (\"black goat\") = scapegoat. Many use body parts: keras kepala (\"hard head\") = stubborn."
+pattern:
+  - "noun + noun: buah tangan, kambing hitam, buah bibir, kaki tangan"
+  - "adjective + body part (character): keras kepala, besar kepala, rendah hati, tinggi hati, panjang tangan"
+  - "verb + noun: banting tulang, naik darah, angkat tangan, makan garam"
+explanation:
+  ar_eg: |
+    الـ ungkapan بتخلي كلامك طبيعي ودافي، وهتحتاجهم في الخطب وفي سيرة الشخصيات الوطنية. اتعلمهم كقطع ثابتة:
+    هدايا وناس:
+    - buah tangan = «فاكهة الإيد» = هدية بتجيبها من السفر (زي oleh-oleh).
+    - kambing hitam = «معزة سودا» = كبش فداء / شمّاعة.
+    - buah bibir = «فاكهة الشفايف» = حديث الناس.
+    - kaki tangan = شريك في جريمة / ذراع (لحد وحش).
+    طباع (صفة + عضو):
+    - keras kepala = راسه ناشفة، besar kepala = شايف نفسه / مغرور.
+    - rendah hati = متواضع، tinggi hati = متكبر.
+    - panjang tangan = «إيده طويلة» = حرامي!
+    أفعال:
+    - banting tulang = «يرمي العضم» = يشتغل جامد ويتعب.
+    - naik darah = «الدم يطلع» = يتعصب.
+    - angkat tangan = يرفع إيده = يستسلم / مش قادر.
+    - makan garam = «أكل ملح» = عنده خبرة: Beliau sudah banyak makan garam = ده واكل الدنيا / مجرّب.
+    خلي بالك من الفخ: kambing hitam مش «الخروف الأسود» بتاع الإنجليزي (black sheep = اللي شاذ عن العيلة)؛ ده «اللي بيتحمل الغلط بداله».
+  ar: |
+    تجعل التعابير الاصطلاحية (ungkapan) الكلام طبيعيًا، وتكثر في الخطب وسير الأعلام، فتُحفظ ثابتة:
+    - buah tangan: هدية من السفر، kambing hitam: كبش الفداء، buah bibir: حديث الناس، kaki tangan: شريك في الشر.
+    - keras kepala: عنيد، besar kepala: مغرور، rendah hati: متواضع، tinggi hati: متكبر، panjang tangan: سارق.
+    - banting tulang: يكدح، naik darah: يغضب، angkat tangan: يستسلم، makan garam: ذو خبرة (sudah banyak makan garam).
+    وتنبّه: kambing hitam ليست «الخروف الأسود» الإنجليزي (المنبوذ في أسرته)، بل كبش الفداء.
+  en: |
+    Idioms (ungkapan) make you sound natural, and speeches and biographies are full of them. Learn them as fixed chunks:
+    People and things:
+    - buah tangan ("fruit of the hand") = a gift brought back from a trip (like oleh-oleh).
+    - kambing hitam ("black goat") = scapegoat.
+    - buah bibir ("fruit of the lips") = the talk of the town.
+    - kaki tangan ("feet and hands") = accomplice, henchman.
+    Character (adjective + body part):
+    - keras kepala = stubborn; besar kepala = big-headed, conceited.
+    - rendah hati = humble; tinggi hati = arrogant.
+    - panjang tangan ("long-handed") = light-fingered, a thief.
+    Verbs:
+    - banting tulang ("slam the bones") = work oneself to the bone.
+    - naik darah ("blood rises") = lose one's temper.
+    - angkat tangan ("raise hands") = give up.
+    - makan garam ("eat salt") = be experienced: Beliau sudah banyak makan garam.
+    False-friend trap: kambing hitam is not "black sheep" (the family misfit) — it's the one blamed for others' faults.
+examples:
+  - text: Beliau adalah tokoh yang rendah hati dan dekat dengan rakyat.
+    breakdown: rendah (low) + hati (heart) = humble · beliau (respectful "he / she")
+    en: He was a humble figure, close to the people.
+    ar_eg: كان شخصية متواضعة وقريبة من الناس.
+    ar: كان شخصية متواضعة قريبة من الشعب.
+    register: formal
+  - text: Saya membawa buah tangan dari Tomohon untuk keluarga.
+    en: I brought a gift back from Tomohon for the family.
+    ar_eg: جبت هدية من توموهون للعيلة.
+    ar: أحضرت هدية من توموهون للأسرة.
+  - text: Jangan jadikan dia kambing hitam atas kesalahan tim.
+    en: Don't make him the scapegoat for the team's mistake.
+    ar_eg: ما تخلّيهوش شمّاعة لغلط الفريق.
+    ar: لا تجعله كبش فداء لخطأ الفريق.
+  - text: Para petani bunga di Tomohon membanting tulang setiap hari.
+    breakdown: membanting tulang = banting tulang with meN-
+    en: Tomohon's flower farmers work themselves to the bone every day.
+    ar_eg: مزارعين الورد في توموهون بيشتغلوا لحد ما عضمهم يتكسر كل يوم.
+    ar: يكدح مزارعو الزهور في توموهون كل يوم.
+  - text: Kakek saya sudah banyak makan garam.
+    en: My grandfather has seen a lot of life.
+    ar_eg: جدي واكل الدنيا ومجرّب.
+    ar: جدّي صاحب خبرة طويلة في الحياة.
+  - text: Anak itu memang keras kepala.
+    en: That child really is stubborn.
+    ar_eg: العيل ده راسه ناشفة فعلًا.
+    ar: ذلك الطفل عنيد حقًا.
+    register: informal
+mistakes:
+  - wrong: Dia domba hitam di keluarganya. (meaning "black sheep")
+    right: Dia dianggap aneh / berbeda di keluarganya.
+    why:
+      ar_eg: «black sheep» ملهاش مقابل حرفي؛ و kambing hitam معناها كبش فداء، مش المنبوذ.
+      ar: لا مقابل حرفيًا لـ«black sheep»، وkambing hitam تعني كبش الفداء.
+      en: '"Black sheep" has no literal equivalent, and kambing hitam means scapegoat, not misfit.'
+  - wrong: Pemimpin itu besar kepala, dia tidak mau mengubah pendapatnya. (meaning stubborn)
+    right: Pemimpin itu keras kepala, dia tidak mau mengubah pendapatnya.
+    why:
+      ar_eg: keras kepala = عنيد (راسه ناشفة)؛ besar kepala = مغرور. ما تلخبطش بينهم.
+      ar: keras kepala للعناد، وbesar kepala للغرور.
+      en: keras kepala = stubborn; besar kepala = conceited.
+  - wrong: Pencuri itu tangan panjang.
+    right: Pencuri itu panjang tangan.
+    why:
+      ar_eg: ترتيب الكلمات في الـ idiom ثابت؛ tangan panjang = إيد طويلة فعلًا.
+      ar: ترتيب ألفاظ التعبير ثابت، وtangan panjang وصف حرفي.
+      en: Idiom word order is fixed; tangan panjang just means a literally long arm.
+arabic_bridge:
+  ar_eg: "المصري عنده نفس التعبيرات تقريبًا! panjang tangan = «إيده طويلة» (حرامي) بالظبط، keras kepala = «راسه ناشفة»، naik darah = «دمه فار / غلي»، و kambing hitam = «كبش الفداء» أو «الشمّاعة». و makan garam = «واكل الدنيا» (يعني عنده خبرة)."
+  ar: "تتطابق تعبيرات كثيرة مع العربية: panjang tangan = «يده طويلة» (سارق)، keras kepala = «رأسه يابس / عنيد»، naik darah = «فار دمه»، kambing hitam = «كبش الفداء»."
+  en: Egyptian has near-twins — panjang tangan = «إيده طويلة» (a thief), keras kepala = «راسه ناشفة», naik darah = «دمه فار», kambing hitam = كبش الفداء.
+tags: [idiom, vocabulary, figurative]
+prerequisites: [id.figurative.metaphor]
+see_also: [id.collocation, id.idiom.advanced, id.proverb]
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,107 @@
+schema: kabar.grammar/v1
+id: jv.number.full
+language: jv
+level: j2
+title:
+  target: sewelas, rolas … selikur, selawe, seket, sewidak, satus
+  en: All numbers, with the special forms
+  ar_eg: كل الأرقام، والأشكال الخاصة
+  ar: الأعداد كاملة وصيغها الخاصة
+summary:
+  ar_eg: "11–19 بـ -las / -belas (sewelas، rolas)، و21–29 بـ -likur (selikur)، و25 = selawe، و50 = seket، و60 = sewidak. والباقي زي الإندونيسي: rong puluh = dua puluh."
+  ar: "11–19 بـ -las / -belas، و21–29 بـ -likur، و25 = selawe، و50 = seket، و60 = sewidak، والباقي كالإندونيسية: rong puluh = dua puluh."
+  en: "11–19 use -las / -belas (sewelas, rolas), 21–29 use -likur (selikur), 25 = selawe, 50 = seket, 60 = sewidak. The rest work like Indonesian: rong puluh = dua puluh."
+pattern:
+  - "11–19: sewelas, rolas, telulas, patbelas, limalas, nembelas, pitulas, wolulas, sangalas"
+  - "20: rong puluh · 21–29: selikur, rolikur, telulikur, patlikur, selawe (25), nemlikur, pitulikur, wolulikur, sangalikur"
+  - "30 telung puluh · 40 patang puluh · 50 seket · 60 sewidak · 70 pitung puluh · 80 wolung puluh · 90 sangang puluh"
+  - "tens + units: telung puluh siji (31), seket lima (55)"
+  - "100 satus · 200 rong atus · 1,000 sewu · 1,000,000 sejuta"
+  - "prices: selawe ewu (25,000) · seket ewu (50,000) · satus seket ewu (150,000)"
+explanation:
+  ar_eg: |
+    في J1 اتعلمنا 1–10 وأشكال الوصل (rong، telung، limang …). دلوقتي الباقي:
+    - 11–19: sewelas (11)، rolas (12)، telulas (13)، patbelas (14)، limalas (15)، nembelas (16)، pitulas (17)، wolulas (18)، sangalas (19). (زي belas في الإندونيسي، بس مختصرة.)
+    - 20 = rong puluh. ومن 21 لـ 29 فيه نظام خاص بـ -likur: selikur (21)، rolikur (22)، telulikur (23)، patlikur (24)، nemlikur (26)، pitulikur (27)، wolulikur (28)، sangalikur (29).
+    - وتلات أرقام ليهم كلمات لوحدهم خالص، ودول مهمين جدًا في الأسعار:
+      selawe = 25، seket = 50، sewidak = 60.
+    - الباقي عادي: telung puluh (30)، patang puluh (40)، pitung puluh (70)، wolung puluh (80)، sangang puluh (90). وبعدين الآحاد: telung puluh siji = 31، seket lima = 55.
+    - الأسعار: selawe ewu = 25.000، seket ewu = 50.000، satus seket ewu = 150.000، rong atus ewu = 200.000.
+    في السوق هتسمع «seket» و«selawe» كل شوية، فاحفظهم الأول.
+  ar: |
+    عرفنا في J1 الأعداد 1–10 وصيغ الوصل، وهذا الباقي:
+    - 11–19: sewelas، rolas، telulas، patbelas، limalas، nembelas، pitulas، wolulas، sangalas (تقابل belas الإندونيسية مختصرة).
+    - 20 = rong puluh، ومن 21 إلى 29 نظام خاص بـ -likur: selikur، rolikur، telulikur، patlikur، nemlikur، pitulikur، wolulikur، sangalikur.
+    - ولثلاثة أعداد ألفاظ مستقلة كثيرة الدوران في الأسعار: selawe = 25، seket = 50، sewidak = 60.
+    - والباقي قياسي: telung puluh (30)، patang puluh (40)، pitung puluh (70)، wolung puluh (80)، sangang puluh (90)، ثم الآحاد: telung puluh siji = 31، seket lima = 55.
+    - الأسعار: selawe ewu = 25.000، seket ewu = 50.000، satus seket ewu = 150.000.
+  en: |
+    J1 gave you 1–10 and the linking forms (rong, telung, limang …). Here's the rest:
+    - 11–19: sewelas (11), rolas (12), telulas (13), patbelas (14), limalas (15), nembelas (16), pitulas (17), wolulas (18), sangalas (19) — Indonesian belas, shortened.
+    - 20 = rong puluh. 21–29 have their own -likur system: selikur (21), rolikur (22), telulikur (23), patlikur (24), nemlikur (26), pitulikur (27), wolulikur (28), sangalikur (29).
+    - Three numbers have words all of their own, and prices use them constantly:
+      selawe = 25, seket = 50, sewidak = 60.
+    - The rest are regular: telung puluh (30), patang puluh (40), pitung puluh (70), wolung puluh (80), sangang puluh (90), then units: telung puluh siji = 31, seket lima = 55.
+    - Prices: selawe ewu = 25,000, seket ewu = 50,000, satus seket ewu = 150,000, rong atus ewu = 200,000.
+    At the market you'll hear seket and selawe all the time — learn those first.
+examples:
+  - text: Regane selawe ewu.
+    breakdown: rega + -ne = harganya · selawe = dua puluh lima · ewu = ribu
+    en: It costs 25,000.
+    ar_eg: سعره خمسة وعشرين ألف.
+    ar: ثمنه خمسة وعشرون ألفًا.
+    register: informal
+  - text: Seket ewu wae, ya?
+    breakdown: seket = lima puluh · ewu = ribu · wae = saja · ya
+    en: Just 50,000, OK?
+    ar_eg: خمسين ألف بس، ماشي؟
+    ar: خمسون ألفًا فقط، اتفقنا؟
+    register: informal
+  - text: Umurku selikur taun.
+    breakdown: umur + -ku = umurku · selikur = dua puluh satu · taun = tahun
+    en: I'm 21 years old.
+    ar_eg: عندي واحد وعشرين سنة.
+    ar: عمري واحد وعشرون عامًا.
+    register: informal
+  - text: Bawang abang sekilo patbelas ewu.
+    breakdown: bawang abang = bawang merah · sekilo = satu kilo · patbelas = empat belas · ewu = ribu
+    en: Shallots are 14,000 a kilo.
+    ar_eg: البصل الأحمر الكيلو بأربعتاشر ألف.
+    ar: الكيلو من البصل الأحمر بأربعة عشر ألفًا.
+    register: informal
+  - text: Kabeh dadi satus seket ewu.
+    breakdown: kabeh = semua · dadi = jadi · satus = seratus · seket = lima puluh · ewu = ribu
+    en: That's 150,000 altogether.
+    ar_eg: الكل مية وخمسين ألف.
+    ar: المجموع مئة وخمسون ألفًا.
+    register: informal
+mistakes:
+  - wrong: limang likur (25)
+    right: selawe
+    why:
+      ar_eg: "25 ليها كلمة خاصة: selawe. باقي العشرينات بـ -likur."
+      ar: للعدد 25 لفظ خاص هو selawe.
+      en: 25 has its own word, selawe; the other twenties use -likur.
+  - wrong: limang puluh ewu (50,000)
+    right: seket ewu
+    why:
+      ar_eg: 50 = seket. «limang puluh» هتتفهم بس محدش بيقولها في السوق.
+      ar: 50 = seket، ولا يقال limang puluh عادة.
+      en: 50 is seket; limang puluh is understood but nobody says it at the market.
+  - wrong: rong puluh siji (21)
+    right: selikur
+    why:
+      ar_eg: من 21 لـ 29 بنستخدم -likur.
+      ar: الأعداد من 21 إلى 29 بنظام -likur.
+      en: 21–29 use the -likur forms.
+arabic_bridge:
+  ar_eg: "زي ما المصري بيختصر: «حداشر، اتناشر، تلاتاشر» بدل «أحد عشر، اثنا عشر»، الجاوي بيختصر sewelas وrolas. وselawe وseket كلمات خاصة لازم تتحفظ لوحدها."
+  ar: "كما تختصر العامية الأعداد «حداشر» و«اتناشر»، تختصر الجاوية sewelas وrolas، ولبعض الأعداد ألفاظ خاصة تُحفظ."
+  en: "Like Egyptian «حداشر، اتناشر» shortening the teens, Javanese has sewelas, rolas — plus a few special words to memorise."
+tags: [number, price, market, j2]
+prerequisites: [jv.number.ngoko]
+see_also: [jv.krama.numbers, jv.time.expressions]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker (the full 11–29 table and whether limang puluh is really avoided).

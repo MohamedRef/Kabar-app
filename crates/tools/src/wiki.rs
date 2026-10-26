@@ -47,7 +47,8 @@ fn count_xml<R: std::io::BufRead>(input: R) -> Result<HashMap<String, u64>> {
             Event::Text(t) if in_text => text.push_str(&quick_xml::escape::unescape(&t.decode()?)?),
             Event::GeneralRef(r) if in_text => {
                 // quick-xml reports entities separately; decode the common ones.
-                text.push_str(match r.as_ref() {
+                let name: &[u8] = &r;
+                text.push_str(match name {
                     b"lt" => "<",
                     b"gt" => ">",
                     b"amp" => "&",

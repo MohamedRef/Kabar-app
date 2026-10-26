@@ -2,12 +2,14 @@
 //! tombstone flag so sync can replay rows without schema changes.
 //!
 //! Sync: every write to a synced table goes through [`Store::write_synced`]
-//! (or `record_local`), which records the row in `sync_rows` (the merge
-//! state, one row per `(table, row_id)`), queues an op in `outbox` and
-//! updates the typed table, all in one transaction. Remote ops come in
-//! through [`Store::apply_remote`] and merge with the same rules as the hub
-//! (`kabar_core::sync`). Tables with no typed table yet live only in
-//! `sync_rows`, so nothing from another device is dropped by an older build.
+//! (or `append_event` for events that carry their own HLC), which records
+//! the row in `sync_rows` (the merge state, one row per `(table, row_id)`),
+//! queues an op in `outbox` and updates the typed table, all in one
+//! transaction. Remote ops come in through [`Store::apply_remote`] and merge
+//! with the same rules as the hub (`kabar_core::sync`). Tables with no typed
+//! table yet live only in `sync_rows`, so nothing from another device is
+//! dropped by an older build. A new typed table needs a `Typed` entry and a
+//! line in `backfill_sync`.
 
 use std::collections::BTreeSet;
 use std::path::Path;
@@ -19,6 +21,7 @@ use kabar_protocol::coach::{
     ActivityEvent, ActivityKind, CoachProfile, DailyPlan, LocalDate, PROFILE_ROW_ID, REMINDER_ROW_ID,
     ReminderState, WeeklyReport,
 };
+use kabar_protocol::lesson::LessonPosition;
 use kabar_protocol::pen::PenLabReport;
 use kabar_protocol::sync::{MAX_PAYLOAD_BYTES, Op, OpKind, RejectReason, SeqOp, SyncKind, table_kind};
 use kabar_protocol::{DeviceId, Hlc};
@@ -114,7 +117,60 @@ const MIGRATIONS: &[&str] = &[
         hlc_counter INTEGER NOT NULL,
         deleted     INTEGER NOT NULL DEFAULT 0
     ) STRICT;",
-    // 3: sync. `sync_rows` is the merge state of every synced row (and the
+    // 3: learning (M6/M8). Lesson and review events are append-only; cards and the
+    // Lanjut position are last-writer-wins by HLC. Payloads are protocol JSON.
+    "CREATE TABLE lesson_events (
+        id          TEXT PRIMARY KEY,
+        lesson_id   TEXT NOT NULL,
+        kind        TEXT NOT NULL,
+        payload     TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE INDEX lesson_events_lesson ON lesson_events (lesson_id);
+    CREATE TABLE sessions (
+        device      TEXT PRIMARY KEY,
+        payload     TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE TABLE cards (
+        id          TEXT PRIMARY KEY,
+        payload     TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE TABLE review_log (
+        id          TEXT PRIMARY KEY,
+        card_id     TEXT NOT NULL,
+        payload     TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE INDEX review_log_card ON review_log (card_id);",
+    // 4: Teach Kabar's personal dictionary (spec §26), LWW per `{lang}:{word}`.
+    "CREATE TABLE taught_entries (
+        id          TEXT PRIMARY KEY,
+        entry       TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;",
+    // 5: sync. `sync_rows` is the merge state of every synced row (and the
     // only copy of tables this build doesn't materialize); `outbox` holds ops
     // not yet acked by Kabar Cloud. Rows written before sync are queued by
     // `backfill_sync`.
@@ -137,11 +193,24 @@ const MIGRATIONS: &[&str] = &[
 ];
 
 /// The schema version that added `sync_rows`.
-const SYNC_SCHEMA: u32 = 3;
+const SYNC_SCHEMA: u32 = 5;
 
 /// Every synced table; the clock resumes past the newest row in any of them.
-const SYNCED_TABLES: &[&str] =
-    &["settings", "pen_lab_runs", "goals", "daily_plans", "xp_events", "reminders", "reports", "sync_rows"];
+const SYNCED_TABLES: &[&str] = &[
+    "settings",
+    "pen_lab_runs",
+    "goals",
+    "daily_plans",
+    "xp_events",
+    "reminders",
+    "reports",
+    "lesson_events",
+    "sessions",
+    "cards",
+    "review_log",
+    "taught_entries",
+    "sync_rows",
+];
 
 /// LWW tables that hold one JSON document per row id.
 #[derive(Clone, Copy, Debug)]
@@ -404,6 +473,23 @@ impl Store {
         self.write_synced(doc.table(), id, OpKind::Upsert, Some(serde_json::to_value(value)?)).map(drop)
     }
 
+    /// Records an event that carries its own HLC (append-only and immutable
+    /// tables), synced. Appending an id that exists is a no-op.
+    fn append_event(&mut self, table: &str, row_id: &str, hlc: Hlc, payload: Value) -> Result<()> {
+        let op = Op {
+            id: uuid::Uuid::now_v7().to_string(),
+            table: table.into(),
+            row_id: row_id.into(),
+            kind: OpKind::Append,
+            hlc,
+            payload: Some(payload),
+        };
+        let tx = self.conn.transaction()?;
+        record_local(&tx, op)?;
+        tx.commit()?;
+        Ok(())
+    }
+
     pub fn coach_profile(&self) -> Result<Option<CoachProfile>> {
         self.doc(Doc::Goals, PROFILE_ROW_ID)
     }
@@ -457,17 +543,7 @@ impl Store {
         let at_ms = now_ms();
         let hlc = self.clock.tick(at_ms);
         let event = ActivityEvent { id: uuid::Uuid::new_v4().to_string(), hlc, date, at_ms, kind, seconds };
-        let op = Op {
-            id: uuid::Uuid::now_v7().to_string(),
-            table: "xp_events".into(),
-            row_id: event.id.clone(),
-            kind: OpKind::Append,
-            hlc: event.hlc.clone(),
-            payload: Some(serde_json::to_value(&event)?),
-        };
-        let tx = self.conn.transaction()?;
-        record_local(&tx, op)?;
-        tx.commit()?;
+        self.append_event("xp_events", &event.id, event.hlc.clone(), serde_json::to_value(&event)?)?;
         Ok(event)
     }
 
@@ -502,6 +578,110 @@ impl Store {
         Ok(())
     }
 }
+
+// --- Lessons and Lanjut (M8) ------------------------------------------------------
+
+impl Store {
+    /// Ids of finished lessons and passed level tests, for the Journey Map.
+    pub fn completed_lessons(&self) -> Result<BTreeSet<String>> {
+        let mut stmt = self.conn.prepare(
+            "SELECT DISTINCT lesson_id FROM lesson_events WHERE kind = 'completed' AND deleted = 0",
+        )?;
+        let ids = stmt.query_map([], |r| r.get::<_, String>(0))?.collect::<rusqlite::Result<_>>()?;
+        Ok(ids)
+    }
+
+    /// Appends a lesson event (`completed`, ...). Append-only: never updated.
+    pub fn record_lesson_event(
+        &mut self,
+        lesson_id: &str,
+        kind: &str,
+        payload: &impl serde::Serialize,
+    ) -> Result<LessonEvent> {
+        let hlc = self.clock.tick(now_ms());
+        let id = uuid::Uuid::new_v4().to_string();
+        let value = serde_json::to_value(payload)?;
+        let row = serde_json::json!({ "lesson_id": lesson_id, "kind": kind, "payload": value });
+        self.append_event("lesson_events", &id, hlc.clone(), row)?;
+        let payload = serde_json::to_string(&value)?;
+        Ok(LessonEvent { id, lesson_id: lesson_id.to_owned(), kind: kind.to_owned(), payload, hlc })
+    }
+
+    /// A lesson's events, oldest first.
+    pub fn lesson_events(&self, lesson_id: &str) -> Result<Vec<LessonEvent>> {
+        let mut stmt = self.conn.prepare(
+            "SELECT id, lesson_id, kind, payload, device_id, hlc_wall, hlc_counter FROM lesson_events
+             WHERE deleted = 0 AND lesson_id = ?1 ORDER BY hlc_wall, hlc_counter",
+        )?;
+        let rows = stmt.query_map([lesson_id], |r| {
+            Ok(LessonEvent {
+                id: r.get(0)?,
+                lesson_id: r.get(1)?,
+                kind: r.get(2)?,
+                payload: r.get(3)?,
+                hlc: Hlc {
+                    device: DeviceId(r.get(4)?),
+                    wall_ms: r.get::<_, i64>(5)? as u64,
+                    counter: r.get(6)?,
+                },
+            })
+        })?;
+        Ok(rows.collect::<rusqlite::Result<_>>()?)
+    }
+
+    /// Saves this device's Lanjut position (one row per device, LWW by HLC).
+    pub fn save_position(&mut self, position: &LessonPosition) -> Result<()> {
+        self.write_session(&serde_json::to_string(position)?, false)
+    }
+
+    /// Forgets this device's position (the lesson was finished). A tombstone,
+    /// so other devices stop offering to continue it once synced.
+    pub fn clear_position(&mut self) -> Result<()> {
+        self.write_session("null", true)
+    }
+
+    fn write_session(&mut self, payload: &str, deleted: bool) -> Result<()> {
+        let device = self.device.0.clone();
+        let (kind, payload) = if deleted {
+            (OpKind::Delete, None)
+        } else {
+            (OpKind::Upsert, Some(serde_json::from_str(payload)?))
+        };
+        self.write_synced("sessions", &device, kind, payload).map(drop)
+    }
+
+    /// The newest unfinished lesson position from any device (Lanjut).
+    pub fn position(&self) -> Result<Option<LessonPosition>> {
+        let payload = self
+            .conn
+            .query_row(
+                "SELECT payload FROM sessions WHERE deleted = 0
+                 ORDER BY hlc_wall DESC, hlc_counter DESC, device_id DESC LIMIT 1",
+                [],
+                |r| r.get::<_, String>(0),
+            )
+            .optional()?;
+        Ok(match payload {
+            Some(p) => Some(serde_json::from_str(&p)?),
+            None => None,
+        })
+    }
+}
+
+/// One row of `lesson_events`; `payload` is protocol JSON for `kind`.
+#[derive(Clone, Debug, PartialEq)]
+pub struct LessonEvent {
+    pub id: String,
+    pub lesson_id: String,
+    pub kind: String,
+    pub payload: String,
+    pub hlc: Hlc,
+}
+
+// Review cards and the review log (M6).
+mod reviews;
+// Teach Kabar's personal dictionary (spec §26).
+mod taught;
 
 fn write_synced(
     tx: &Transaction<'_>,
@@ -590,51 +770,101 @@ fn store_row(tx: &Transaction<'_>, op: &Op) -> Result<()> {
     Ok(())
 }
 
+/// How a synced table is mirrored into its typed table.
+#[derive(Clone, Copy)]
+enum Typed {
+    /// One JSON document per row: `(table, key column, value column)`.
+    /// Settings wrap the value as `{ "value": … }`.
+    Doc(&'static str, &'static str, &'static str),
+    /// Events that carry their own payload.
+    XpEvent,
+    Review,
+    LessonEvent,
+}
+
+impl Typed {
+    fn of(table: &str) -> Option<Self> {
+        Some(match table {
+            "settings" => Self::Doc("settings", "key", "value"),
+            "goals" | "daily_plans" | "reminders" | "reports" => {
+                let doc = Doc::from_table(table)?;
+                Self::Doc(doc.table(), "id", "value")
+            }
+            "cards" => Self::Doc("cards", "id", "payload"),
+            "sessions" => Self::Doc("sessions", "device", "payload"),
+            "taught_entries" => Self::Doc("taught_entries", "id", "entry"),
+            "xp_events" => Self::XpEvent,
+            "review_log" => Self::Review,
+            "lesson_events" => Self::LessonEvent,
+            _ => return None,
+        })
+    }
+}
+
 /// Mirrors a stored op into its typed table, for the tables this build reads.
 fn materialize(tx: &Transaction<'_>, op: &Op) -> Result<()> {
+    let Some(typed) = Typed::of(&op.table) else { return Ok(()) };
     let deleted = op.kind == OpKind::Delete;
     let hlc = &op.hlc;
-    let doc_table = match op.table.as_str() {
-        "settings" => Some(("settings", "key")),
-        t => Doc::from_table(t).map(|d| (d.table(), "id")),
-    };
-    if let Some((table, key)) = doc_table {
-        // Settings store `{ "value": … }`; documents store the payload itself.
-        let value =
-            op.payload.as_ref().and_then(|p| if table == "settings" { p.get("value") } else { Some(p) });
-        let value = match value {
-            Some(v) if !deleted => Some(serde_json::to_string(v)?),
-            _ => None,
-        };
-        tx.execute(
-            &format!(
-                "INSERT INTO {table} ({key}, value, device_id, hlc_wall, hlc_counter, deleted)
-                 VALUES (?1, COALESCE(?2, 'null'), ?3, ?4, ?5, ?6)
-                 ON CONFLICT({key}) DO UPDATE SET
-                    value = COALESCE(?2, value), device_id = excluded.device_id,
-                    hlc_wall = excluded.hlc_wall, hlc_counter = excluded.hlc_counter, deleted = excluded.deleted"
-            ),
-            params![op.row_id, value, hlc.device.0, hlc.wall_ms as i64, hlc.counter, value.is_none() as i64],
-        )?;
-    } else if op.table == "xp_events" {
-        if deleted {
+    let (device, wall, counter) = (&hlc.device.0, hlc.wall_ms as i64, hlc.counter);
+    let json = |v: &Value| serde_json::to_string(v);
+    match typed {
+        Typed::Doc(table, key, column) => {
+            let value =
+                op.payload.as_ref().and_then(|p| if table == "settings" { p.get("value") } else { Some(p) });
+            let value = match value {
+                Some(v) if !deleted => Some(json(v)?),
+                _ => None,
+            };
             tx.execute(
-                "UPDATE xp_events SET deleted = 1, device_id = ?2, hlc_wall = ?3, hlc_counter = ?4 WHERE id = ?1",
-                params![op.row_id, hlc.device.0, hlc.wall_ms as i64, hlc.counter],
+                &format!(
+                    "INSERT INTO {table} ({key}, {column}, device_id, hlc_wall, hlc_counter, deleted)
+                     VALUES (?1, COALESCE(?2, 'null'), ?3, ?4, ?5, ?6)
+                     ON CONFLICT({key}) DO UPDATE SET
+                        {column} = COALESCE(?2, {column}), device_id = excluded.device_id,
+                        hlc_wall = excluded.hlc_wall, hlc_counter = excluded.hlc_counter,
+                        deleted = excluded.deleted"
+                ),
+                params![op.row_id, value, device, wall, counter, value.is_none() as i64],
             )?;
-        } else if let Some(event) = &op.payload {
+        }
+        _ if deleted => {
+            let table = match typed {
+                Typed::XpEvent => "xp_events",
+                Typed::Review => "review_log",
+                _ => "lesson_events",
+            };
+            tx.execute(
+                &format!("UPDATE {table} SET deleted = 1, device_id = ?2, hlc_wall = ?3, hlc_counter = ?4 WHERE id = ?1"),
+                params![op.row_id, device, wall, counter],
+            )?;
+        }
+        Typed::XpEvent => {
+            let Some(event) = &op.payload else { return Ok(()) };
             let date = event.get("date").and_then(Value::as_str).unwrap_or_default();
             tx.execute(
                 "INSERT OR IGNORE INTO xp_events (id, date, event, device_id, hlc_wall, hlc_counter)
                  VALUES (?1, ?2, ?3, ?4, ?5, ?6)",
-                params![
-                    op.row_id,
-                    date,
-                    serde_json::to_string(event)?,
-                    hlc.device.0,
-                    hlc.wall_ms as i64,
-                    hlc.counter
-                ],
+                params![op.row_id, date, json(event)?, device, wall, counter],
+            )?;
+        }
+        Typed::Review => {
+            let Some(event) = &op.payload else { return Ok(()) };
+            let card = event.get("card_id").and_then(Value::as_str).unwrap_or_default();
+            tx.execute(
+                "INSERT OR IGNORE INTO review_log (id, card_id, payload, device_id, hlc_wall, hlc_counter)
+                 VALUES (?1, ?2, ?3, ?4, ?5, ?6)",
+                params![op.row_id, card, json(event)?, device, wall, counter],
+            )?;
+        }
+        Typed::LessonEvent => {
+            let Some(row) = &op.payload else { return Ok(()) };
+            let text = |k: &str| row.get(k).and_then(Value::as_str).unwrap_or_default().to_string();
+            let payload = json(row.get("payload").unwrap_or(&Value::Null))?;
+            tx.execute(
+                "INSERT OR IGNORE INTO lesson_events (id, lesson_id, kind, payload, device_id, hlc_wall, hlc_counter)
+                 VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)",
+                params![op.row_id, text("lesson_id"), text("kind"), payload, device, wall, counter],
             )?;
         }
     }
@@ -675,6 +905,7 @@ fn migrate(conn: &mut Connection) -> Result<()> {
 /// Queues every row written before sync existed, with its original HLC.
 fn backfill_sync(tx: &Transaction<'_>) -> Result<()> {
     type Found = (String, String, bool, Hlc);
+    // `sql` selects (row id, json, deleted, device_id, hlc_wall, hlc_counter).
     let rows = |sql: &str| -> Result<Vec<Found>> {
         let mut stmt = tx.prepare(sql)?;
         let found = stmt
@@ -689,37 +920,52 @@ fn backfill_sync(tx: &Transaction<'_>) -> Result<()> {
             .collect::<rusqlite::Result<_>>()?;
         Ok(found)
     };
+    let sync = "deleted, device_id, hlc_wall, hlc_counter";
     let mut ops = Vec::new();
-    for (key, value, deleted, hlc) in
-        rows("SELECT key, value, deleted, device_id, hlc_wall, hlc_counter FROM settings")?
-    {
-        if !deleted {
-            let payload = serde_json::json!({ "value": serde_json::from_str::<Value>(&value)? });
-            ops.push(backfill_op("settings", key, OpKind::Upsert, hlc, Some(payload)));
-        }
-    }
-    for doc in Doc::ALL {
-        let sql = format!("SELECT id, value, deleted, device_id, hlc_wall, hlc_counter FROM {}", doc.table());
+    // Last-writer-wins documents: their newest state, unless tombstoned.
+    let docs = [
+        ("settings", format!("SELECT key, value, {sync} FROM settings")),
+        ("goals", format!("SELECT id, value, {sync} FROM goals")),
+        ("daily_plans", format!("SELECT id, value, {sync} FROM daily_plans")),
+        ("reminders", format!("SELECT id, value, {sync} FROM reminders")),
+        ("reports", format!("SELECT id, value, {sync} FROM reports")),
+        ("cards", format!("SELECT id, payload, {sync} FROM cards")),
+        ("sessions", format!("SELECT device, payload, {sync} FROM sessions")),
+        ("taught_entries", format!("SELECT id, entry, {sync} FROM taught_entries")),
+    ];
+    for (table, sql) in docs {
         for (id, value, deleted, hlc) in rows(&sql)? {
-            if !deleted {
-                ops.push(backfill_op(
-                    doc.table(),
-                    id,
-                    OpKind::Upsert,
-                    hlc,
-                    Some(serde_json::from_str(&value)?),
-                ));
+            if deleted {
+                continue;
             }
+            let value: Value = serde_json::from_str(&value)?;
+            let payload = if table == "settings" { serde_json::json!({ "value": value }) } else { value };
+            ops.push(backfill_op(table, id, OpKind::Upsert, hlc, Some(payload)));
         }
     }
-    for (id, event, deleted, hlc) in
-        rows("SELECT id, event, deleted, device_id, hlc_wall, hlc_counter FROM xp_events")?
-    {
-        let created: ActivityEvent = serde_json::from_str(&event)?;
-        let payload = Some(serde_json::from_str(&event)?);
-        ops.push(backfill_op("xp_events", id.clone(), OpKind::Append, created.hlc, payload));
-        if deleted {
-            ops.push(backfill_op("xp_events", id, OpKind::Delete, hlc, None));
+    // Events: appended once; a retracted one is appended, then tombstoned.
+    let events = [
+        ("xp_events", format!("SELECT id, event, {sync} FROM xp_events")),
+        ("review_log", format!("SELECT id, payload, {sync} FROM review_log")),
+        (
+            "lesson_events",
+            format!(
+                "SELECT id, json_object('lesson_id', lesson_id, 'kind', kind, 'payload', json(payload)), {sync} FROM lesson_events"
+            ),
+        ),
+    ];
+    for (table, sql) in events {
+        for (id, payload, deleted, hlc) in rows(&sql)? {
+            // An event's own HLC is when it happened; the row's moves on a retraction.
+            let created: Value = serde_json::from_str(&payload)?;
+            let born = created
+                .get("hlc")
+                .and_then(|h| serde_json::from_value(h.clone()).ok())
+                .unwrap_or(hlc.clone());
+            ops.push(backfill_op(table, id.clone(), OpKind::Append, born, Some(created)));
+            if deleted && table_kind(table) == Some(SyncKind::Immutable) {
+                ops.push(backfill_op(table, id, OpKind::Delete, hlc, None));
+            }
         }
     }
     for op in ops {
@@ -748,6 +994,7 @@ mod tests {
     use kabar_core::coach::history;
     use kabar_core::settings::Theme;
     use kabar_protocol::coach::{LeagueResult, PlanItem, PlanItemKind, PlanSize};
+    use kabar_protocol::learn::TaughtEntry;
 
     use super::*;
 
@@ -885,6 +1132,76 @@ mod tests {
         store.set_local_value("batik", "kawung").unwrap();
         store.set_local_value("batik", "parang").unwrap();
         assert_eq!(store.local_value("batik").unwrap().as_deref(), Some("parang"));
+    }
+
+    #[test]
+    fn completed_lessons_skip_other_kinds_and_tombstones() {
+        let store = Store::open_in_memory().unwrap();
+        assert!(store.completed_lessons().unwrap().is_empty());
+        let rows = [
+            ("e1", "bipa1.u01.l01", "completed", 0),
+            ("e2", "bipa1.u01.l01", "completed", 0),
+            ("e3", "bipa1.u01.l02", "started", 0),
+            ("e4", "bipa1.u01.l03", "completed", 1),
+            ("e5", "bipa1.test", "completed", 0),
+        ];
+        for (id, lesson, kind, deleted) in rows {
+            store
+                .conn
+                .execute(
+                    "INSERT INTO lesson_events (id, lesson_id, kind, payload, device_id, hlc_wall, hlc_counter, deleted)
+                     VALUES (?1, ?2, ?3, '{}', 'd', 1, 0, ?4)",
+                    params![id, lesson, kind, deleted],
+                )
+                .unwrap();
+        }
+        let done = store.completed_lessons().unwrap();
+        assert_eq!(done.into_iter().collect::<Vec<_>>(), ["bipa1.test", "bipa1.u01.l01"]);
+    }
+
+    #[test]
+    fn lesson_events_are_appended_in_order() {
+        use kabar_protocol::lesson::LessonCompleted;
+        let mut store = Store::open_in_memory().unwrap();
+        let done = LessonCompleted {
+            score: 81,
+            xp: 19,
+            duration_ms: 420_000,
+            mistakes: vec!["sore".into()],
+            results: vec![],
+        };
+        let a = store.record_lesson_event("bipa1.u01.l01", "completed", &done).unwrap();
+        let b = store.record_lesson_event("bipa1.u01.l01", "completed", &done).unwrap();
+        store.record_lesson_event("bipa1.u01.l02", "completed", &done).unwrap();
+        assert!(b.hlc > a.hlc);
+        let events = store.lesson_events("bipa1.u01.l01").unwrap();
+        assert_eq!(events.iter().map(|e| e.id.as_str()).collect::<Vec<_>>(), [a.id.as_str(), b.id.as_str()]);
+        let back: LessonCompleted = serde_json::from_str(&events[0].payload).unwrap();
+        assert_eq!(back, done);
+    }
+
+    #[test]
+    fn position_is_last_writer_wins_and_survives_reopen() {
+        use kabar_protocol::lesson::LessonStep;
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("kabar.db");
+        let mut store = Store::open(&path).unwrap();
+        assert_eq!(store.position().unwrap(), None);
+        let at = |id: &str| LessonPosition {
+            lesson_id: "bipa1.u01.l02".into(),
+            step: LessonStep::Exercise { id: id.into(), retry: false },
+            progress: None,
+        };
+        store.save_position(&at("e03")).unwrap();
+        store.save_position(&at("e04")).unwrap();
+        drop(store);
+
+        let mut store = Store::open(&path).unwrap();
+        assert_eq!(store.position().unwrap(), Some(at("e04")));
+        let rows: i64 = store.conn.query_row("SELECT COUNT(*) FROM sessions", [], |r| r.get(0)).unwrap();
+        assert_eq!(rows, 1, "one row per device");
+        store.clear_position().unwrap();
+        assert_eq!(store.position().unwrap(), None);
     }
 
     /// What the hub would send: the ops in `from`'s outbox, numbered.
@@ -1029,7 +1346,7 @@ mod tests {
         let path = dir.path().join("kabar.db");
         {
             let mut conn = Connection::open(&path).unwrap();
-            for (i, sql) in MIGRATIONS[..2].iter().enumerate() {
+            for (i, sql) in MIGRATIONS[..SYNC_SCHEMA as usize - 1].iter().enumerate() {
                 let tx = conn.transaction().unwrap();
                 tx.execute_batch(sql).unwrap();
                 tx.pragma_update(None, "user_version", i as u32 + 1).unwrap();
@@ -1066,6 +1383,88 @@ mod tests {
                 ("xp_events".to_string(), OpKind::Delete)
             ]
         );
+    }
+
+    #[test]
+    fn learning_rows_sync_and_undo_follows() {
+        use kabar_core::review::seed_bridge_deck;
+        use kabar_protocol::srs::{Rating, ReviewMode};
+        let mut phone = Store::open_in_memory().unwrap();
+        let mut tablet = Store::open_in_memory().unwrap();
+        let deck = seed_bridge_deck();
+        phone.upsert_cards(&deck).unwrap();
+        let kept = phone.record_review("kabar", Rating::Good, now_ms(), 900, ReviewMode::Classic).unwrap();
+        let undone = phone.record_review("kabar", Rating::Again, now_ms(), 900, ReviewMode::Classic).unwrap();
+        assert!(phone.undo_review(&undone.id).unwrap());
+        assert!(!phone.undo_review(&undone.id).unwrap(), "undoing twice queues nothing");
+        let entry: TaughtEntry =
+            serde_json::from_str(include_str!("../../../fixtures/learn/taught.kalimat.json")).unwrap();
+        phone.save_taught(&entry).unwrap();
+        phone.record_lesson_event("bipa1.u01.l01", "completed", &serde_json::json!({ "score": 81 })).unwrap();
+
+        let ops = relay(&phone, 1);
+        let changed = tablet.apply_remote(&ops, ops.len() as u64).unwrap();
+        for table in ["cards", "review_log", "taught_entries", "lesson_events"] {
+            assert!(changed.contains(table), "{table}");
+        }
+        assert_eq!(tablet.cards().unwrap().len(), deck.len());
+        assert_eq!(tablet.review_log().unwrap(), [kept]);
+        assert_eq!(tablet.taught_entries().unwrap(), std::slice::from_ref(&entry));
+        assert_eq!(tablet.completed_lessons().unwrap().len(), 1);
+        assert_eq!(tablet.outbox_len().unwrap(), 0);
+
+        // Forgotten on the tablet: gone on the phone too.
+        tablet.delete_taught(&entry.row_id()).unwrap();
+        let forget = tablet.outbox(10).unwrap().pop().unwrap();
+        phone.apply_remote(&[SeqOp { seq: 99, op: forget }], 99).unwrap();
+        assert!(phone.taught_entries().unwrap().is_empty());
+    }
+
+    #[test]
+    fn another_devices_review_is_stored_but_never_pushed() {
+        use kabar_protocol::srs::{Rating, ReviewEvent, ReviewMode};
+        let mut store = Store::open_in_memory().unwrap();
+        let remote = ReviewEvent {
+            id: "remote-1".into(),
+            card_id: "kabar".into(),
+            hlc: Hlc { wall_ms: 500, counter: 0, device: DeviceId("tab-s11".into()) },
+            at_ms: 500,
+            rating: Rating::Hard,
+            duration_ms: 3000,
+            mode: ReviewMode::CardWall,
+        };
+        store.append_review(&remote).unwrap();
+        assert_eq!(store.review_log().unwrap(), [remote]);
+        assert_eq!(store.outbox_len().unwrap(), 0);
+        assert!(!store.undo_review("remote-1").unwrap());
+    }
+
+    #[test]
+    fn learning_rows_from_before_sync_are_queued() {
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("kabar.db");
+        {
+            let mut conn = Connection::open(&path).unwrap();
+            for (i, sql) in MIGRATIONS[..SYNC_SCHEMA as usize - 1].iter().enumerate() {
+                let tx = conn.transaction().unwrap();
+                tx.execute_batch(sql).unwrap();
+                tx.pragma_update(None, "user_version", i as u32 + 1).unwrap();
+                tx.commit().unwrap();
+            }
+            conn.execute_batch(
+                "INSERT INTO cards (id, payload, device_id, hlc_wall, hlc_counter) VALUES ('kabar', '{\"id\":\"kabar\"}', 'mac', 3, 0);
+                 INSERT INTO review_log (id, card_id, payload, device_id, hlc_wall, hlc_counter)
+                    VALUES ('r1', 'kabar', '{\"id\":\"r1\"}', 'mac', 4, 0);
+                 INSERT INTO lesson_events (id, lesson_id, kind, payload, device_id, hlc_wall, hlc_counter)
+                    VALUES ('l1', 'bipa1.u01.l01', 'completed', '{}', 'mac', 5, 0);",
+            )
+            .unwrap();
+        }
+        let store = Store::open(&path).unwrap();
+        let tables: Vec<String> = store.outbox(10).unwrap().into_iter().map(|o| o.table).collect();
+        for table in ["cards", "review_log", "lesson_events"] {
+            assert!(tables.iter().any(|t| t == table), "{table} in {tables:?}");
+        }
     }
 
     #[test]

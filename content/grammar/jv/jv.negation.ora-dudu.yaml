@@ -1,0 +1,98 @@
+schema: kabar.grammar/v1
+id: jv.negation.ora-dudu
+language: jv
+level: j1
+title:
+  target: ora / gak (tidak) · dudu (bukan)
+  en: "Saying no: ora, gak and dudu"
+  ar_eg: "النفي: ora وgak وdudu"
+  ar: "النفي: ora وgak وdudu"
+summary:
+  ar_eg: "زي tidak وbukan بالظبط: ora (وفي سورابايا gak) قبل الفعل والصفة، وdudu قبل الاسم. Aku ora ngerti = مش فاهم. Iki dudu kopiku = دي مش قهوتي."
+  ar: "كما في tidak وbukan: ora (وفي سورابايا gak) قبل الفعل والصفة، وdudu قبل الاسم."
+  en: "Exactly like tidak and bukan: ora (Surabaya gak) before verbs and adjectives, dudu before nouns. Aku ora ngerti = I don't understand. Iki dudu kopiku = This isn't my coffee."
+pattern:
+  - "ora + verb / adjective (= tidak) · chat: ra, ga, gk"
+  - "gak + verb / adjective (Arek, = tidak)"
+  - "dudu + noun / pronoun (= bukan)"
+  - "ora ana / gak onok (= tidak ada) · ora apa-apa, chat rapopo (= tidak apa-apa)"
+explanation:
+  ar_eg: |
+    إنت عارف من الإندونيسي إن فيه نفيين: tidak للفعل والصفة، وbukan للاسم. الجاوي نفس الحكاية:
+    - ora = tidak: Aku ora ngerti = Saya tidak mengerti = مش فاهم. Ora larang = مش غالي. في الشات: ra.
+    - في سورابايا (Arek) بدل ora بيقولوا gak (gk، ga): Aku gak ngerti. (ونفس gak موجودة في الإندونيسي العامي.)
+    - dudu = bukan: Iki dudu kopiku = Ini bukan kopiku = دي مش قهوتي. Dudu aku! = مش أنا!
+    - ora ana = tidak ada (مفيش). سورابايا: gak onok.
+    - ora apa-apa = tidak apa-apa (مفيش مشكلة / ولا يهمك). في الشات rapopo أو gpp.
+    وفاكر durung (لسه) من درس wis / durung — دي نفي برضه بس معناها «لسه».
+  ar: |
+    للإندونيسية نفيان: tidak للفعل والصفة، وbukan للاسم، والجاوية كذلك:
+    - ora = tidak: Aku ora ngerti = لا أفهم، Ora larang = ليس غاليًا. وفي الدردشة ra.
+    - وفي سورابايا (Arek) يقال gak بدل ora، وهي في العامية الإندونيسية أيضًا.
+    - dudu = bukan: Iki dudu kopiku = هذه ليست قهوتي، Dudu aku = لستُ أنا.
+    - ora ana = tidak ada (لا يوجد)، وفي سورابايا gak onok.
+    - ora apa-apa = لا بأس، وفي الدردشة rapopo.
+    وdurung (لم ... بعد) نفي أيضًا لكن بمعنى «ليس بعد».
+  en: |
+    Indonesian has two negators: tidak for verbs and adjectives, bukan for nouns. Javanese does the same:
+    - ora = tidak: Aku ora ngerti = Saya tidak mengerti = I don't understand. Ora larang = Not expensive. Chat: ra.
+    - Surabaya (Arek) says gak (gk, ga) instead of ora: Aku gak ngerti. (Indonesian slang has gak too.)
+    - dudu = bukan: Iki dudu kopiku = Ini bukan kopiku = This isn't my coffee. Dudu aku! = Not me!
+    - ora ana = tidak ada (there isn't). Surabaya: gak onok.
+    - ora apa-apa = tidak apa-apa (no problem). Chat: rapopo or gpp.
+    And remember durung (not yet) from the wis / durung lesson.
+examples:
+  - text: Aku ora ngerti.
+    breakdown: aku · ora = tidak · ngerti = mengerti
+    en: I don't understand. (standard ngoko)
+    ar_eg: أنا مش فاهم.
+    ar: لا أفهم.
+    register: informal
+  - text: Aku gak ngerti, rek.
+    breakdown: aku · gak = tidak (Arek) · ngerti = mengerti · rek = guys
+    en: I don't get it, guys. (Surabaya Arek)
+    ar_eg: أنا مش فاهم يا جماعة.
+    ar: لا أفهم يا جماعة.
+    register: informal
+  - text: Iki dudu kopiku.
+    breakdown: iki = ini · dudu = bukan · kopi + -ku
+    en: This isn't my coffee.
+    ar_eg: دي مش قهوتي.
+    ar: هذه ليست قهوتي.
+    register: informal
+  - text: Regane ora larang.
+    breakdown: rega + -ne = harganya · ora = tidak · larang = mahal
+    en: The price isn't expensive.
+    ar_eg: السعر مش غالي.
+    ar: السعر ليس غاليًا.
+    register: informal
+  - text: Rapopo, Mas.
+    breakdown: rapopo = ora apa-apa (tidak apa-apa) · Mas
+    en: It's fine, no problem. (chat / casual)
+    ar_eg: ولا يهمك يا أستاذ.
+    ar: لا بأس يا أخي.
+    register: chat
+mistakes:
+  - wrong: Aku dudu ngerti.
+    right: Aku ora ngerti.
+    why:
+      ar_eg: ngerti فعل، والفعل بيتنفي بـ ora (زي tidak)، مش dudu.
+      ar: ngerti فعل فيُنفى بـ ora لا بـ dudu.
+      en: ngerti is a verb, so it takes ora (like tidak), not dudu.
+  - wrong: Iki ora kopiku.
+    right: Iki dudu kopiku.
+    why:
+      ar_eg: kopi اسم، والاسم بيتنفي بـ dudu (زي bukan).
+      ar: kopi اسم فيُنفى بـ dudu كما في bukan.
+      en: kopi is a noun, so it takes dudu (like bukan).
+arabic_bridge:
+  ar_eg: "في المصري «مش» بتنفي كل حاجة («مش فاهم»، «مش أنا»)، وده اللي بيلخبطنا. الجاوي بيفرّق زي الفصحى شوية: ora ≈ «لا» قبل الفعل، dudu ≈ «ليس» قبل الاسم."
+  ar: "تنفي «مش» المصرية كل شيء، أما الجاوية ففيها ora للفعل والصفة (≈ لا) وdudu للاسم (≈ ليس)."
+  en: "Egyptian «مش» negates everything, which is why Arabic speakers mix these up. Javanese splits: ora for verbs (≈ لا), dudu for nouns (≈ ليس)."
+tags: [negation, ngoko, arek, j1]
+prerequisites: [id.negation.tidak-bukan, jv.sentence.basic]
+see_also: [jv.dialect.arek, jv.aspect.wis-durung-lagi-arep, jv.imperative.ngoko, jv.krama.function-words]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker.

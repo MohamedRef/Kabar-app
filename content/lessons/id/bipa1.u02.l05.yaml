@@ -1,0 +1,237 @@
+schema: kabar.lesson/v1
+id: bipa1.u02.l05
+language: id
+title: Ulangan Unit 2
+can_do:
+  ar_eg: تعرّف بنفسك في ٥ جمل.
+  ar: أن تعرّف بنفسك في خمس جمل.
+  en: Introduce yourself in 5 sentences.
+slides:
+  - title: Unit 2 dalam satu halaman
+    body:
+      ar_eg: |
+        - جملة اسمية من غير «يكون»: Saya mahasiswa. — وadalah بس في التعريفات وقبل اسم: Jakarta adalah ibu kota Indonesia.
+        - siapa = مين، والاسم بيتسأل عنه بيها: Siapa nama Anda?
+        - di mana = فين، dari mana = منين، ke mana = على فين.
+        - orang + بلد = الجنسية (orang Mesir)، bahasa + اسم = اللغة (bahasa Arab).
+        - Bapak / Ibu للأكبر، Mas / Mbak للشباب، Kak للجنسين، Dik للأصغر — واللقب هو «إنت»: Bapak mau apa?
+      ar: |
+        - جملة اسمية بلا فعل كينونة: Saya mahasiswa. — وadalah في التعريفات فقط وقبل الاسم: Jakarta adalah ibu kota Indonesia.
+        - siapa = مَن، وبها يُسأل عن الاسم: Siapa nama Anda?
+        - di mana = أين، dari mana = من أين، ke mana = إلى أين.
+        - orang + بلد = الجنسية (orang Mesir)، وbahasa + اسم = اللغة (bahasa Arab).
+        - Bapak / Ibu للأكبر، Mas / Mbak للشباب، Kak للجنسين، Dik للأصغر — واللقب هو الضمير: Bapak mau apa?
+      en: |
+        - Nominal sentences need no "is": Saya mahasiswa. adalah only in definitions, before a noun: Jakarta adalah ibu kota Indonesia.
+        - siapa = who, also for names: Siapa nama Anda?
+        - di mana = where, dari mana = where from, ke mana = where to.
+        - orang + country = nationality (orang Mesir); bahasa + name = language (bahasa Arab).
+        - Bapak / Ibu for elders, Mas / Mbak for young people, Kak for either, Dik for younger — and the title is the "you": Bapak mau apa?
+    grammar: id.address.terms
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: Mesir
+        ar_eg: مصر
+        ar: مصر
+        en: Egypt
+      - text: bahasa Inggris
+        ar_eg: الإنجليزي
+        ar: الإنجليزية
+        en: English (language)
+      - text: karyawan
+        ar_eg: موظف
+        ar: موظف
+        en: employee
+      - text: alamat
+        ar_eg: العنوان
+        ar: العنوان
+        en: address
+      - text: tinggal
+        ar_eg: يسكن
+        ar: يسكن
+        en: to live
+    words: [Mesir, bahasa, karyawan, alamat, tinggal]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز تسأل Bu Sari بأدب «حضرتك منين؟».
+      ar: تريد أن تسأل Bu Sari بأدب «من أين أنتِ؟».
+      en: You want to ask Bu Sari politely, "Where are you from?"
+    options: ["Ibu dari mana?", "Kamu dari mana, Bu?", "Ibu di mana dari?"]
+    answer: 0
+    explain:
+      ar_eg: اللقب Ibu هو «حضرتك»، ومن غير kamu. و«منين» = dari mana.
+      ar: اللقب Ibu هو الضمير بلا kamu، و«من أين» = dari mana.
+      en: The title Ibu is the "you", without kamu; "where from" = dari mana.
+    words: [Ibu, dari mana]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة استخدمت adalah صح؟
+      ar: في أيّ جملة استُعملت adalah استعمالًا صحيحًا؟
+      en: Which sentence uses adalah correctly?
+    options: ["Rina adalah baik.", "Kairo adalah ibu kota Mesir.", "Saya adalah sehat."]
+    answer: 1
+    explain:
+      ar_eg: adalah قبل اسم (ibu kota) بس، مش قبل صفة زي baik أو sehat.
+      ar: تأتي adalah قبل الاسم (ibu kota) فقط، لا قبل الصفة كـ baik وsehat.
+      en: adalah goes before a noun (ibu kota), never before adjectives like baik or sehat.
+    words: [adalah, ibu kota]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «ني لوه من بالي (بالينيزية)»؟
+      ar: كيف تقول «ني لوه بالية (من بالي)»؟
+      en: How do you say "Ni Luh is Balinese"?
+    options: ["Ni Luh bahasa Bali.", "Ni Luh Bali orang.", "Ni Luh orang Bali."]
+    answer: 2
+    explain:
+      ar_eg: orang الأول وبعدين المكان. وbahasa Bali يعني اللغة البالينيزية.
+      ar: orang أولًا ثم المكان، وbahasa Bali هي اللغة البالية.
+      en: orang comes first, then the place; bahasa Bali is the Balinese language.
+    words: [orang]
+  - id: e05
+    type: listen
+    text: Mas dari mana?
+    options: ["Mas di mana?", "Mas mau apa?", "Mas dari mana?"]
+    answer: 2
+    words: [Mas, dari mana]
+  - id: e06
+    type: fill_blank
+    sentence: Dia ___? — Dia Pak Budi. Dia guru.
+    meaning:
+      ar_eg: ده مين؟ — ده الأستاذ بودي. هو مدرّس.
+      ar: مَن هذا؟ — هذا الأستاذ بودي، وهو معلّم.
+      en: Who is he? — He's Pak Budi. He's a teacher.
+    options: ["siapa", "mana", "apa"]
+    answers: [siapa]
+    words: [siapa, guru]
+  - id: e07
+    type: fill_blank
+    sentence: Saya ___ Mesir, dari Kairo.
+    meaning:
+      ar_eg: أنا مصري، من القاهرة.
+      ar: أنا مصري، من القاهرة.
+      en: I'm Egyptian, from Cairo.
+    options: ["orang", "nama", "bahasa"]
+    answers: [orang]
+    words: [orang, Mesir]
+  - id: e08
+    type: fill_blank
+    sentence: Kamu tinggal ___ mana?
+    meaning:
+      ar_eg: إنت ساكن فين؟
+      ar: أين تسكن؟
+      en: Where do you live?
+    answers: [di]
+    explain:
+      ar_eg: المكان = di mana. dari mana = منين، ke mana = على فين.
+      ar: للمكان di mana، أما dari mana فـ«من أين» وke mana فـ«إلى أين».
+      en: Location is di mana; dari mana = where from, ke mana = where to.
+    words: [di mana, tinggal]
+  - id: e09
+    type: build_sentence
+    source:
+      ar_eg: بتكلم عربي وإنجليزي شوية.
+      ar: أتحدث العربية وقليلًا من الإنجليزية.
+      en: I speak Arabic and a little English.
+    answer: Saya bisa bahasa Arab dan sedikit bahasa Inggris.
+    alternatives: ["Saya bisa bahasa Arab dan bahasa Inggris sedikit."]
+    distractors: [orang, dari]
+    words: [bisa, bahasa, sedikit]
+  - id: e10
+    type: build_sentence
+    source:
+      ar_eg: اسم حضرتك إيه يا أستاذ؟
+      ar: ما اسمك يا سيدي؟
+      en: What is your name, sir?
+    answer: Siapa nama Bapak?
+    alternatives: ["Nama Bapak siapa?"]
+    distractors: [dia, kamu]
+    words: [siapa, nama, Bapak]
+  - id: e11
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: هي إندونيسية. هي دكتورة.
+      ar: هي إندونيسية، وهي طبيبة.
+      en: She's Indonesian. She's a doctor.
+    answers:
+      - Dia orang Indonesia. Dia dokter.
+      - Dia orang Indonesia. Dia dokter
+      - Dia orang Indonesia, dia dokter.
+      - Dia orang Indonesia dan dia dokter.
+      - Dia orang Indonesia. Dia seorang dokter.
+      - Dia orang Indonesia. Dia adalah dokter.
+    words: [orang, dokter]
+  - id: e12
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: حضرتك منين يا أستاذ؟
+      ar: من أين أنت يا سيدي؟
+      en: Where are you from, sir?
+    answers: ["Bapak dari mana?", "Bapak dari mana", "Dari mana, Pak?", "Bapak dari mana, Pak?", "Pak, Bapak dari mana?", "Bapak orang mana?"]
+    words: [Bapak, dari mana]
+  - id: e13
+    type: translate
+    direction: from_target
+    source_text: Nama saya Dewi. Saya guru. Saya tinggal di Menteng.
+    answers_meaning:
+      ar_eg: ["اسمي ديوي. أنا مدرّسة. ساكنة في منتنج.", "اسمي ديوي، أنا مدرسة وساكنة في منتنج"]
+      ar: ["اسمي ديوي. أنا معلّمة. أسكن في منتنج.", "اسمي ديوي، وأنا معلمة وأسكن في منتنج"]
+      en: ["My name is Dewi. I'm a teacher. I live in Menteng.", "I'm Dewi, I'm a teacher and I live in Menteng"]
+    words: [nama, guru, tinggal]
+  - id: e14
+    type: speaking
+    text: Siapa nama Anda? Anda dari mana?
+    meaning:
+      ar_eg: اسم حضرتك إيه؟ حضرتك منين؟
+      ar: ما اسمك؟ من أين أنت؟
+      en: What is your name? Where are you from?
+    words: [siapa, nama, dari mana]
+dialogue:
+  title: Tetangga di Menteng
+  lines:
+    - speaker: Bu Ratna
+      text: Selamat sore, Mas. Mas dari mana?
+      ar_eg: مساء الخير يا ابني. إنت منين؟
+      ar: مساء الخير يا بنيّ. من أين أنت؟
+      en: Good afternoon. Where are you from?
+    - speaker: Mohamed
+      text: Sore, Bu. Saya dari Mesir.
+      ar_eg: مساء النور يا مدام. أنا من مصر.
+      ar: مساء النور يا سيدتي. أنا من مصر.
+      en: Afternoon, ma'am. I'm from Egypt.
+    - speaker: Bu Ratna
+      text: Orang Mesir! Siapa nama Mas?
+      ar_eg: مصري! اسمك إيه؟
+      ar: مصري! ما اسمك؟
+      en: An Egyptian! What's your name?
+    - speaker: Mohamed
+      text: Nama saya Mohamed. Nama Ibu siapa?
+      ar_eg: اسمي محمد. واسم حضرتك إيه؟
+      ar: اسمي محمد. وما اسمكِ يا سيدتي؟
+      en: My name is Mohamed. What's your name, ma'am?
+    - speaker: Bu Ratna
+      text: Nama saya Ratna. Saya guru bahasa Arab!
+      ar_eg: اسمي راتنا. أنا مدرّسة عربي!
+      ar: اسمي راتنا. أنا معلّمة لغة عربية!
+      en: My name is Ratna. I'm an Arabic teacher!
+    - speaker: Mohamed
+      text: Bahasa Arab? Salam kenal, Bu Ratna!
+      ar_eg: عربي؟ اتشرفنا يا مدام راتنا!
+      ar: العربية؟ تشرّفنا يا سيدة راتنا!
+      en: Arabic? Nice to meet you, Bu Ratna!
+souvenir:
+  id: bipa1.u02.souvenir
+  title: Museum Perumusan Naskah Proklamasi
+  note:
+    ar_eg: في منتنج فيه بيت قديم اتكتب فيه نص إعلان استقلال إندونيسيا في ليلة ١٧ أغسطس ١٩٤٥، والنهارده بقى متحف. ولو اتعرفت على حد هناك، ماتستغربش لو سألك عن سنك أو اتجوزت ولا لأ — دي ودّ مش فضول. ولما تقول «Saya orang Mesir» هتلاقي وشوشهم نوّرت، وكتير هيكلموك عن الأزهر اللي إندونيسيين كتير درسوا فيه.
+    ar: في منتنج بيت قديم كُتب فيه نص إعلان استقلال إندونيسيا ليلة ١٧ أغسطس ١٩٤٥، وصار اليوم متحفًا. وإذا تعرّفت إلى أحد هناك فلا تستغرب إن سألك عن عمرك أو زواجك، فذلك من الودّ لا من الفضول. وحين تقول «Saya orang Mesir» ستتهلّل الوجوه، وكثيرًا ما يحدّثونك عن الأزهر الذي درس فيه كثير من الإندونيسيين.
+    en: In Menteng stands the old house where the text of Indonesia's independence proclamation was drafted on the night before 17 August 1945; today it's a museum. If you meet people there, don't be surprised if they ask your age or whether you're married — it's friendliness, not nosiness. And when you say "Saya orang Mesir", faces light up, and many will talk about Al-Azhar, where so many Indonesians have studied.
+review:
+  status: draft
+  verified: false

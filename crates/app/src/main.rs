@@ -5,10 +5,14 @@ mod cloud;
 mod coach;
 mod i18n;
 mod icons;
+mod journey;
+mod lesson;
 mod penlab;
 mod platform;
+mod review;
 mod screens;
 mod store;
+mod teach;
 mod theme;
 
 use std::cell::RefCell;
@@ -38,6 +42,10 @@ pub enum Screen {
     Settings,
     PenLab,
     Devices,
+    /// The Lesson Player, full screen; the lesson is `Ui::lesson`.
+    Lesson,
+    /// Teach Kabar a word (spec §26).
+    Teach,
 }
 
 impl Screen {
@@ -52,12 +60,14 @@ impl Screen {
             Self::Settings => Msg::NavSettings,
             Self::PenLab => Msg::NavPenLab,
             Self::Devices => Msg::NavDevices,
+            Self::Lesson => Msg::NavJourney,
+            Self::Teach => Msg::NavTeach,
         }
     }
 
     /// Hidden from the phone's bottom bar; reachable from Settings there.
     fn secondary(self) -> bool {
-        matches!(self, Self::Studio | Self::PenLab | Self::Devices)
+        matches!(self, Self::Studio | Self::PenLab | Self::Devices | Self::Teach)
     }
 }
 
@@ -67,6 +77,8 @@ pub struct Ui {
     pub settings: Signal<Settings>,
     pub width: Signal<WidthClass>,
     pub screen: Signal<Screen>,
+    /// The lesson the player shows (curriculum lesson id).
+    pub lesson: Signal<Option<String>>,
 }
 
 /// The local database, shared through context.
@@ -103,6 +115,18 @@ impl Ui {
             eprintln!("kabar: saving settings failed: {e}");
         }
         self.settings.set(new);
+    }
+
+    /// Opens the Lesson Player on a lesson (from the Journey Map, Today or Lanjut).
+    pub fn open_lesson(mut self, lesson_id: impl Into<String>) {
+        self.lesson.set(Some(lesson_id.into()));
+        self.screen.set(Screen::Lesson);
+    }
+
+    /// Leaves the Lesson Player back to the Journey Map.
+    pub fn close_lesson(mut self) {
+        self.lesson.set(None);
+        self.screen.set(Screen::Journey);
     }
 }
 
@@ -165,12 +189,18 @@ impl PartialEq for Db {
 #[component]
 fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let initial = use_hook(|| db.0.borrow().settings().unwrap_or_default());
+    // KABAR_OPEN_LESSON=bipa1.u01.l01 opens the Lesson Player at launch
+    // (previews and screenshots on the Mac).
+    let open_lesson = use_hook(|| std::env::var("KABAR_OPEN_LESSON").ok());
     let ui = use_context_provider(|| Ui {
         settings: Signal::new(initial),
         width: Signal::new(WidthClass::Expanded),
-        screen: Signal::new(Screen::Today),
+        screen: Signal::new(if open_lesson.is_some() { Screen::Lesson } else { Screen::Today }),
+        lesson: Signal::new(open_lesson),
     });
     use_context_provider(|| db.clone());
+    use_context_provider(|| teach::TeachInbox(Signal::new(None)));
+    use_context_provider(|| teach::Ai(Rc::new(ai_router())));
     let coach = use_context_provider(|| Coach::load(&db));
     use_width_tracking(ui.width);
     use_cloud(&db, path, ui);
@@ -284,6 +314,14 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui) {
     });
 }
 
+/// The AI router with the bundled routes and prompts. Engines (Kabar Cloud,
+/// Kabar Home) are registered here once the app talks to them; until then
+/// AI features say "not connected yet" instead of failing silently.
+fn ai_router() -> kabar_core::ai::Router {
+    use kabar_core::ai::{MemoryCache, PromptSet, RouteTable, Router};
+    Router::new(RouteTable::builtin(), PromptSet::builtin(), Box::new(MemoryCache::default()))
+}
+
 /// Mirrors the window width into `width`, so layout follows the window,
 /// not the device (split screen, DeX and Mac windows all just work).
 fn use_width_tracking(mut width: Signal<WidthClass>) {
@@ -316,6 +354,7 @@ fn Shell() -> Element {
         Screen::Review,
         Screen::Coach,
         Screen::Studio,
+        Screen::Teach,
         Screen::PenLab,
         Screen::Devices,
         Screen::Settings,
@@ -343,13 +382,15 @@ fn Shell() -> Element {
                 match current {
                     Screen::Today => rsx! { coach::today::Today {} },
                     Screen::Coach => rsx! { coach::coach_screen::CoachScreen {} },
-                    Screen::Journey => rsx! { screens::ComingSoon { title: Msg::NavJourney, milestone: "M8" } },
+                    Screen::Journey => rsx! { journey::JourneyScreen {} },
                     Screen::Reader => rsx! { screens::ComingSoon { title: Msg::NavReader, milestone: "M5" } },
-                    Screen::Review => rsx! { screens::ComingSoon { title: Msg::NavReview, milestone: "M6" } },
+                    Screen::Review => rsx! { review::ReviewScreen {} },
                     Screen::Studio => rsx! { screens::ComingSoon { title: Msg::NavStudio, milestone: "M9" } },
                     Screen::Settings => rsx! { screens::SettingsScreen {} },
                     Screen::PenLab => rsx! { penlab::PenLab {} },
                     Screen::Devices => rsx! { account::AccountScreen {} },
+                    Screen::Teach => rsx! { teach::TeachScreen {} },
+                    Screen::Lesson => rsx! { lesson::LessonScreen {} },
                 }
             }
         }

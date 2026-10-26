@@ -1,0 +1,98 @@
+schema: kabar.grammar/v1
+id: jv.intensifier
+language: jv
+level: j2
+title:
+  target: banget, tenan, pol · uenak, puanas · rada · … dhewe
+  en: Very, really, totally (intensifiers)
+  ar_eg: "أوي، بجد، خالص (كلمات المبالغة)"
+  ar: "ألفاظ التوكيد والمبالغة"
+summary:
+  ar_eg: "banget = أوي (sangat)، tenan = بجد (sungguh)، pol = خالص (عامية). وفي شرق جاوة بيمطّوا الكلمة: enak → uenak. rada = شوية (agak)، و… dhewe = الأكتر (paling)."
+  ar: "banget = جدًا، tenan = حقًا، pol = للغاية (عامية)، وفي شرق جاوة يُمد اللفظ: enak → uenak، وrada = قليلًا، و… dhewe = الأكثر."
+  en: "banget = very (sangat), tenan = really (sungguh), pol = totally (slang). East Java stretches words: enak → uenak. rada = a bit (agak), … dhewe = the most (paling)."
+pattern:
+  - "adjective + banget (= sangat, banget) · adjective + tenan (= sungguh, beneran)"
+  - "adjective + pol (casual: 'max')"
+  - "East Java stretch: insert u / stretch the vowel: enak → uenak, panas → puanas, gedhe → guedhe"
+  - "rada + adjective (= agak) · kurang + adjective (= kurang)"
+  - "adjective + dhewe / sing paling + adjective (= paling): apik dhewe, sing paling murah"
+explanation:
+  ar_eg: |
+    - banget = أوي (sangat). وأصلها جاوي، والإندونيسي العامي أخدها: enak banget = حلو أوي.
+    - tenan = بجد / فعلًا (sungguh، beneran): Enak tenan! = حلو بجد! وفي سؤال: Tenan? = بجد؟
+    - pol = «للآخر / خالص»، عامية الشباب: Enak pol! = طعمه جامد جدًا.
+    - شرق جاوة وسورابايا بيحبوا يمطّوا الصفة بـ u: uenak (حلووو)، puanas (حررر)، guedhe (كبيييير). ده للتأكيد في الكلام، ومش بيتكتب في الرسمي.
+    - rada = شوية (agak): rada larang = غالي شوية. kurang = مش أوي: kurang asin = ناقص ملح.
+    - الأكتر: الصفة + dhewe، أو sing paling + الصفة: Iki sing paling murah = ده أرخص واحد. Omahe Pak Budi gedhe dhewe = بيت باك بودي هو الأكبر.
+    الصفة الجاوية بتيجي قبل الكلمات دي، زي enak banget في الإندونيسي.
+  ar: |
+    - banget = جدًا، وهي جاوية الأصل دخلت العامية الإندونيسية: enak banget.
+    - tenan = حقًا (sungguh): Enak tenan! = لذيذ حقًا! وTenan? = حقًا؟
+    - pol = إلى أقصى حد، في عامية الشباب: Enak pol!
+    - ويمد أهل شرق جاوة وسورابايا الصفة بإدخال u: uenak، puanas، guedhe، للتوكيد في المشافهة.
+    - rada = قليلًا (agak): rada larang = غالٍ قليلًا، وkurang = غير كافٍ: kurang asin = ينقصه ملح.
+    - التفضيل: الصفة + dhewe أو sing paling + الصفة: Iki sing paling murah = هذا الأرخص.
+  en: |
+    - banget = very (sangat). It's originally Javanese; casual Indonesian borrowed it: enak banget.
+    - tenan = really, truly (sungguh, beneran): Enak tenan! = Really delicious! As a question: Tenan? = Really?
+    - pol = "to the max", young people's slang: Enak pol! = Insanely good.
+    - East Java and Surabaya stretch adjectives with u: uenak (sooo good), puanas (sooo hot), guedhe (huuuge). Speech only, not formal writing.
+    - rada = a bit (agak): rada larang = a bit pricey. kurang = not enough: kurang asin = needs salt.
+    - The most: adjective + dhewe, or sing paling + adjective: Iki sing paling murah = This is the cheapest. Omahe Pak Budi gedhe dhewe = Pak Budi's house is the biggest.
+    The adjective comes first, as in enak banget.
+examples:
+  - text: Pecele enak tenan!
+    breakdown: pecel + -e = pecelnya · enak · tenan = sungguh
+    en: The pecel is really delicious!
+    ar_eg: البيتشل حلو بجد!
+    ar: البيتشل لذيذ حقًا!
+    register: informal
+  - text: Saiki puanas, rek!
+    breakdown: saiki = sekarang · puanas = panas sekali (East Java) · rek
+    en: It's sooo hot now, guys! (East Java)
+    ar_eg: الجو حررر النهارده يا جماعة!
+    ar: الجو حار جدًا الآن يا جماعة!
+    register: informal
+  - text: Klambine apik banget.
+    breakdown: klambi + -ne = bajunya · apik = bagus · banget = sangat
+    en: The shirt is really nice.
+    ar_eg: القميص حلو أوي.
+    ar: القميص جميل جدًا.
+    register: informal
+  - text: Regane rada larang.
+    breakdown: rega + -ne = harganya · rada = agak · larang = mahal
+    en: It's a bit expensive.
+    ar_eg: السعر غالي شوية.
+    ar: الثمن غالٍ قليلًا.
+    register: informal
+  - text: Sing iki paling murah.
+    breakdown: sing = yang · iki = ini · paling · murah
+    en: This one is the cheapest.
+    ar_eg: ده أرخص واحد.
+    ar: هذا هو الأرخص.
+    register: informal
+mistakes:
+  - wrong: banget enak
+    right: enak banget
+    why:
+      ar_eg: banget وtenan بييجوا بعد الصفة، زي «حلو أوي».
+      ar: تأتي banget وtenan بعد الصفة.
+      en: banget and tenan follow the adjective.
+  - wrong: Writing "uenak" in a formal letter
+    right: enak banget / enak tenan
+    why:
+      ar_eg: المطّ (uenak) للكلام والشات بس، زي «حلووو» عندنا.
+      ar: المدّ للمشافهة والدردشة لا للكتابة الرسمية.
+      en: Stretched forms are for speech and chat, like typing «حلووو».
+arabic_bridge:
+  ar_eg: "banget ≈ «أوي»، tenan ≈ «بجد»، pol ≈ «للآخر». وuenak / puanas زي ما بنمط «حلووو» و«حرّ نااار»."
+  ar: "banget ≈ «جدًا»، tenan ≈ «حقًا»، والمدّ في uenak كمدّنا في «حلووو»."
+  en: "banget ≈ «أوي», tenan ≈ «بجد», pol ≈ «للآخر»; uenak is like stretching «حلووو»."
+tags: [adjective, intensifier, arek, j2]
+prerequisites: [id.adverb.degree, id.intensifier.basic]
+see_also: [jv.reduplication, jv.particle.basic]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker (pol, the u-stretch forms, and gedhe dhewe as superlative especially).

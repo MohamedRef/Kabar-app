@@ -21,6 +21,8 @@ just run-mac             # desktop app with hot reload
 just run-phone-preview   # same app in a 412×915 window, to check the phone layout
 ```
 
+To jump straight into a lesson (until the Journey Map links them), start the app with `KABAR_OPEN_LESSON`, e.g. `KABAR_OPEN_LESSON=bipa1.u01.l01 just run-mac`. The lessons built in so far are `bipa1.u01.l01` (Selamat pagi!) and `bipa1.u01.l02` (Apa kabar?). Closing a lesson saves your place; opening it again continues there.
+
 Data lives in `~/Library/Application Support/app.Kabar.Kabar/kabar.db`. Delete it to see the first-launch screen again (or use Settings → "Show the welcome screen again").
 
 ## 3. Galaxy S24 Ultra and Tab S11
@@ -92,10 +94,11 @@ Details in `docs/CONTENT.md`. On the Mac:
 ```bash
 just content-fetch           # frequency sources (~60 MB) into data/raw/
 just content-freq            # rebuilds content/freq/id.tsv (should produce no diff)
+just content-fetch nusa      # Javanese corpora from GitHub (~5 MB)
 just content-fetch kaikki    # Wiktionary extracts from kaikki.org (~100 MB)
 just content-kaikki          # import + Arabic Bridge cross-check report
 just content-fetch jvwiki    # Javanese Wikipedia dump (~70 MB)
-just content-freq-jv         # content/freq/jv.tsv
+just content-freq-jv         # content/freq/jv.tsv (NusaWrites + NusaX + jvwiki)
 just content-check           # validate everything
 just content-review 1        # review sheet for gloss batch 1 → build/review/
 ```
@@ -114,7 +117,13 @@ To start onboarding again, delete the database (§2). On the Galaxy devices: `ju
 
 Reminders arrive as push notifications once Kabar Cloud's reminder alarm and Firebase are set up (CLOUD.md §3.4).
 
-## 8. Troubleshooting
+## 8. Teach Kabar (spec §26)
+
+Open **Teach Kabar** (علّم كبر) from the side bar on the Mac and tablet, or from Settings on the phone. Type the word, optionally the sentence you met it in, then paste what you found (or a link, or use Wiktionary) and tap **Teach Kabar**. The draft appears below for review: approve it, edit it, ask for another version, or discard it. Approved words show in **My dictionary** and, once the Reader lands, in popovers with a "taught by you" badge.
+
+Writing the draft needs an AI engine, so until the app is connected to Kabar Cloud the screen says "not connected yet". Search Google opens the browser; nothing from Google is read automatically.
+
+## 9. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.

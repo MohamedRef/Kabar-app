@@ -1,0 +1,250 @@
+schema: kabar.lesson/v1
+id: bipa1.u01.l01
+language: id
+title: Selamat pagi!
+can_do:
+  ar_eg: تسلّم على الناس حسب وقت اليوم وتقول مع السلامة.
+  ar: أن تُحيّي الناس بحسب وقت اليوم وتودّعهم.
+  en: Greet people by time of day and say goodbye.
+slides:
+  - title: Selamat = سلامة
+    body:
+      ar_eg: كلمة selamat جاية من العربي «سلامة». لما تحطها قبل وقت اليوم بتبقى تحية، زي «صباح الخير».
+      ar: كلمة selamat مأخوذة من العربية «سلامة»، وإذا سبقت وقتَ اليوم صارت تحية مثل «صباح الخير».
+      en: selamat comes from Arabic «سلامة» (safety). Put it before a time of day and it becomes a greeting, like "good morning".
+    grammar: id.greeting.selamat
+    examples:
+      - text: Selamat pagi!
+        ar_eg: صباح الخير!
+        ar: صباح الخير!
+        en: Good morning!
+  - title: Pagi, siang, sore, malam
+    body:
+      ar_eg: |
+        اليوم الإندونيسي متقسّم أربع حتت:
+        - pagi: الصبح لحد حوالي ١١
+        - siang: الضهر، من ١١ لحد ٣
+        - sore: العصر، من ٣ لحد المغرب
+        - malam: بالليل، بعد المغرب
+      ar: |
+        يُقسم اليوم في الإندونيسية أربعة أقسام:
+        - pagi: الصباح حتى نحو الحادية عشرة
+        - siang: الظهيرة، من الحادية عشرة إلى الثالثة
+        - sore: العصر، من الثالثة إلى المغرب
+        - malam: الليل، بعد المغرب
+      en: |
+        The Indonesian day has four parts:
+        - pagi: morning, until about 11
+        - siang: midday, 11 to 3
+        - sore: afternoon, 3 to sunset
+        - malam: night, after sunset
+    grammar: id.greeting.selamat
+    examples:
+      - text: Selamat siang, Pak.
+        ar_eg: نهارك سعيد يا أستاذ.
+        ar: طاب نهارك يا سيدي.
+        en: Good day, sir.
+      - text: Selamat sore, Bu.
+        ar_eg: مساء الخير يا مدام.
+        ar: مساء الخير يا سيدتي.
+        en: Good afternoon, ma'am.
+      - text: Selamat malam!
+        ar_eg: مساء الخير! / تصبح على خير!
+        ar: مساء الخير! / تصبح على خير!
+        en: Good evening! / Good night!
+  - title: Selamat jalan, selamat tinggal
+    body:
+      ar_eg: في الوداع، اللي قاعد بيقول للي ماشي «selamat jalan» (يعني امشي بالسلامة)، واللي ماشي بيقول للي قاعد «selamat tinggal». في الحياة اليومية الأسهل «Sampai jumpa!» يعني «أشوفك بعدين».
+      ar: عند الوداع يقول المقيم للراحل «selamat jalan» (سِرْ بسلامة)، ويقول الراحل للمقيم «selamat tinggal». وفي الحياة اليومية يُقال غالبًا «Sampai jumpa!» أي «إلى اللقاء».
+      en: When parting, the one staying says "selamat jalan" (go safely) to the one leaving, and the one leaving says "selamat tinggal". In everyday life "Sampai jumpa!" (see you) is the easy choice.
+    grammar: id.greeting.selamat
+    examples:
+      - text: Sampai jumpa besok!
+        ar_eg: أشوفك بكرة!
+        ar: إلى اللقاء غدًا!
+        en: See you tomorrow!
+      - text: Selamat datang di Jakarta!
+        ar_eg: أهلًا بيك في جاكرتا!
+        ar: أهلًا وسهلًا بك في جاكرتا!
+        en: Welcome to Jakarta!
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pagi
+        ar_eg: الصبح
+        ar: الصباح
+        en: morning
+      - text: siang
+        ar_eg: الضهر
+        ar: الظهيرة
+        en: midday
+      - text: sore
+        ar_eg: العصر
+        ar: العصر
+        en: afternoon
+      - text: malam
+        ar_eg: بالليل
+        ar: الليل
+        en: night
+    words: [pagi, siang, sore, malam]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الساعة ٨ الصبح. تقول إيه للمُدرّسة؟
+      ar: الساعة الثامنة صباحًا. ماذا تقول للمعلّمة؟
+      en: It's 8 a.m. What do you say to the teacher?
+    options: ["Selamat sore, Bu!", "Selamat malam, Bu!", "Selamat pagi, Bu!"]
+    answer: 2
+    explain:
+      ar_eg: الساعة ٨ لسه الصبح، يبقى pagi.
+      ar: الثامنة صباحًا من الـ pagi.
+      en: 8 a.m. is still pagi.
+    words: [selamat, pagi]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الساعة ١ الضهر والشمس حامية. أنهي تحية؟
+      ar: الساعة الواحدة ظهرًا. أيّ تحية تناسب؟
+      en: It's 1 p.m. Which greeting fits?
+    options: ["Selamat malam", "Selamat siang", "Selamat pagi"]
+    answer: 1
+    explain:
+      ar_eg: من ١١ لحد ٣ ده siang.
+      ar: من الحادية عشرة إلى الثالثة هو الـ siang.
+      en: 11 to 3 is siang.
+    words: [siang]
+  - id: e04
+    type: fill_blank
+    sentence: Selamat ___, Pak! Sampai jumpa besok.
+    meaning:
+      ar_eg: (الساعة ٩ بالليل) تصبح على خير يا أستاذ! أشوفك بكرة.
+      ar: (الساعة التاسعة ليلًا) تصبح على خير يا سيدي! إلى اللقاء غدًا.
+      en: (9 p.m.) Good night, sir! See you tomorrow.
+    options: ["malam", "siang", "pagi", "sore"]
+    answers: [malam]
+    words: [malam, sampai jumpa]
+  - id: e05
+    type: listen
+    text: Selamat sore
+    options: ["Selamat siang", "Selamat sore", "Selamat malam"]
+    answer: 1
+    words: [sore]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أهلًا بيك في جاكرتا!
+      ar: أهلًا وسهلًا بك في جاكرتا!
+      en: Welcome to Jakarta!
+    answers: ["Selamat datang di Jakarta!", "Selamat datang di Jakarta"]
+    words: [selamat datang]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: صاحبك ماشي من بيتك. إنت قاعد. تقوله إيه؟
+      ar: صديقك يغادر بيتك وأنت باقٍ. ماذا تقول له؟
+      en: Your friend is leaving your house; you are staying. What do you say?
+    options: ["Selamat datang!", "Selamat tinggal!", "Selamat jalan!"]
+    answer: 2
+    explain:
+      ar_eg: selamat jalan بتتقال للي ماشي. selamat tinggal بيقولها اللي ماشي.
+      ar: selamat jalan تقال للراحل، وselamat tinggal يقولها الراحل.
+      en: selamat jalan is said to the one leaving; selamat tinggal is said by the one leaving.
+    words: [selamat jalan, selamat tinggal]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: صباح الخير يا مدام!
+      ar: صباح الخير يا سيدتي!
+      en: Good morning, ma'am!
+    answer: Selamat pagi, Bu!
+    distractors: [malam, Pak]
+    words: [selamat, pagi, ibu]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Sampai jumpa besok!
+    answers_meaning:
+      ar_eg: ["أشوفك بكرة!", "أشوفك بكره", "نتقابل بكرة"]
+      ar: ["إلى اللقاء غدًا!", "أراك غدًا"]
+      en: ["See you tomorrow!", "See you tomorrow"]
+    words: [sampai jumpa, besok]
+  - id: e10
+    type: dictation
+    text: Selamat malam
+    meaning:
+      ar_eg: مساء الخير / تصبح على خير
+      ar: مساء الخير / تصبح على خير
+      en: Good evening / good night
+    words: [malam]
+  - id: e11
+    type: speaking
+    text: Selamat pagi, Bu!
+    meaning:
+      ar_eg: صباح الخير يا مدام!
+      ar: صباح الخير يا سيدتي!
+      en: Good morning, ma'am!
+dialogue:
+  title: Pagi di Kota Tua
+  lines:
+    - speaker: Rina
+      text: Selamat pagi, Pak!
+      ar_eg: صباح الخير يا أستاذ!
+      ar: صباح الخير يا سيدي!
+      en: Good morning, sir!
+    - speaker: Pak Budi
+      text: Pagi, Rina! Selamat datang di Kota Tua.
+      ar_eg: صباح النور يا رينا! أهلًا بيكي في كوتا توا.
+      ar: صباح النور يا رينا! أهلًا بكِ في كوتا توا.
+      en: Morning, Rina! Welcome to Kota Tua.
+    - speaker: Rina
+      text: Terima kasih, Pak. Sampai jumpa!
+      ar_eg: شكرًا يا أستاذ. أشوفك بعدين!
+      ar: شكرًا يا سيدي. إلى اللقاء!
+      en: Thank you, sir. See you!
+    - speaker: Pak Budi
+      text: Selamat jalan, Rina!
+      ar_eg: مع السلامة يا رينا!
+      ar: في أمان الله يا رينا!
+      en: Goodbye, Rina!
+new_words:
+  - word: selamat
+    pos: interjection
+    ar_eg: بالسلامة (في التحيات)
+    ar: سلامة (في التحيات)
+    en: safe; used in greetings and wishes
+    arabic: سلامة
+  - word: pagi
+    pos: noun
+    ar_eg: الصبح
+    ar: الصباح
+    en: morning
+  - word: siang
+    pos: noun
+    ar_eg: الضهر
+    ar: الظهيرة
+    en: midday
+  - word: sore
+    pos: noun
+    ar_eg: العصر
+    ar: العصر
+    en: late afternoon
+  - word: malam
+    pos: noun
+    ar_eg: الليل
+    ar: الليل
+    en: night, evening
+  - word: sampai jumpa
+    pos: phrase
+    ar_eg: أشوفك بعدين
+    ar: إلى اللقاء
+    en: see you
+  - word: besok
+    pos: adverb
+    ar_eg: بكرة
+    ar: غدًا
+    en: tomorrow
+review:
+  status: draft
+  verified: false
