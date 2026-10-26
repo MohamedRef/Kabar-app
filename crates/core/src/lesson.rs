@@ -405,7 +405,9 @@ impl Grade {
 }
 
 /// Folds an answer for comparison: case, punctuation and whitespace, Arabic
-/// diacritics, tatweel and letter variants (أ إ آ ٱ → ا, ى → ي, ة → ه).
+/// diacritics, tatweel and letter variants (أ إ آ ٱ → ا, ى → ي, ة → ه), and
+/// the Javanese dictionary accents (kowé, dèrèng → kowe, dereng), since Kabar
+/// writes plain e.
 /// Hyphens inside words stay (anak-anak).
 pub fn normalize(s: &str) -> String {
     let mut out = String::with_capacity(s.len());
@@ -424,6 +426,7 @@ pub fn normalize(s: &str) -> String {
             'ة' => 'ه',
             'ؤ' => 'و',
             'ئ' => 'ي',
+            'é' | 'è' | 'ê' => 'e',
             '’' | '\'' | '`' => continue,
             '-' | '‑' => '-',
             c if c.is_alphanumeric() => c,
