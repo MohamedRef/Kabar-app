@@ -56,8 +56,7 @@ The router's prompts must agree with these (or the sets change with them):
   `prompts/analyze_text@v1.md`; roleplay adds `ngoko`, `madya`, `krama`,
   `krama_inggil`, `casual`, `standard`.
 - `explain_sentence.paraphrase` is a natural rendering in the voice's language.
-  There is no Javanese grammar library yet, so Javanese items offer Indonesian
-  entries as parallels.
+  Javanese items pick from `content/grammar/jv`.
 - `structure_screenshot`: `side` is `left`/`right` for chat bubbles (`right` is
   speaker `me`) and `center` for listings, posts and UI. UI blocks use speaker
   `app`, with "Label: value" rows. OCR blocks leave out emoji.

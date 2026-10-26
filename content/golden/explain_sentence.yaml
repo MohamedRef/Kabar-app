@@ -825,9 +825,9 @@ items:
     text: Kowe wis mangan?
     lang: jv
     voice: arz
-    grammar_candidates: [id.aspect.markers, id.pronoun.personal, id.question.apa]
+    grammar_candidates: [jv.aspect.wis-durung-lagi-arep, jv.pronoun.ngoko, jv.question.words, jv.speechlevel.overview]
   expect:
-    grammar_ids: [id.aspect.markers, id.pronoun.personal]
+    grammar_ids: [jv.aspect.wis-durung-lagi-arep, jv.pronoun.ngoko]
     register: ngoko
     culture: Asking whether someone has eaten is a caring greeting in Java too.
     paraphrase: إنت كلت؟
@@ -838,10 +838,8 @@ items:
   - paraphrase and explanation are in Egyptian colloquial Arabic (بالمصري), Arabic script; Indonesian/Javanese
     words stay in Latin script
   - Names the speech level (ngoko) and who it is for
-  - Gives the Indonesian parallels
   - Mentions the polite version
-  - There is no Javanese grammar library yet, so the Indonesian entries are picked as parallels; the explanation
-    itself is about Javanese
+  - The explanation is about Javanese and may name the Indonesian parallel in one line
   avoid:
   - Calling the sentence Indonesian
   tags:
@@ -856,9 +854,9 @@ items:
     text: Panjenengan sampun dhahar?
     lang: jv
     voice: ar
-    grammar_candidates: [id.aspect.markers, id.pronoun.personal, id.address.terms, id.politeness.phrases]
+    grammar_candidates: [jv.aspect.wis-durung-lagi-arep, jv.pronoun.krama, jv.speechlevel.overview, jv.pronoun.ngoko]
   expect:
-    grammar_ids: [id.aspect.markers, id.pronoun.personal]
+    grammar_ids: [jv.aspect.wis-durung-lagi-arep, jv.pronoun.krama, jv.speechlevel.overview]
     register: krama
     culture: 'Like «حضرتك/سيادتك», but Javanese swaps whole words, not just the pronoun: the verb ''eat''
       itself changes with the listener''s status.'
@@ -871,8 +869,7 @@ items:
     words stay in Latin script
   - Warns never to use dhahar about yourself
   - Draws the Egyptian/Arabic honorific analogy while saying Javanese goes further
-  - There is no Javanese grammar library yet, so the Indonesian entries are picked as parallels; the explanation
-    itself is about Javanese
+  - The explanation is about Javanese and may name the Indonesian parallel in one line
   tags:
   - voice-ar
   - spec-24
@@ -885,9 +882,9 @@ items:
     text: Koen wis mangan ta, rek?
     lang: jv
     voice: en
-    grammar_candidates: [id.aspect.markers, id.pronoun.personal, id.interjection.particles, id.address.terms]
+    grammar_candidates: [jv.aspect.wis-durung-lagi-arep, jv.dialect.arek, jv.particle.basic, jv.pronoun.krama]
   expect:
-    grammar_ids: [id.aspect.markers, id.interjection.particles]
+    grammar_ids: [jv.aspect.wis-durung-lagi-arep, jv.dialect.arek, jv.particle.basic]
     register: ngoko
     culture: Arek Javanese from Surabaya and Malang sounds blunt to Central Javanese ears, but among friends
       it signals warmth; don't use it with elders.
@@ -897,8 +894,7 @@ items:
   criteria:
   - paraphrase and explanation are in plain English
   - Identifies the Surabaya / Arek dialect
-  - There is no Javanese grammar library yet, so the Indonesian entries are picked as parallels; the explanation
-    itself is about Javanese
+  - The explanation is about Javanese and may name the Indonesian parallel in one line
   avoid:
   - Calling koen a typo
   tags:
@@ -913,9 +909,9 @@ items:
     text: arp dicul piro
     lang: jv
     voice: arz
-    grammar_candidates: [id.chat.abbreviations, id.question.kapan-berapa, id.verb.modal, id.prefix.men.basic]
+    grammar_candidates: [jv.chat.normalize, jv.proclitic.tak-kok-di, jv.question.words, jv.suffix.ake, jv.prefix.nasal]
   expect:
-    grammar_ids: [id.chat.abbreviations, id.question.kapan-berapa]
+    grammar_ids: [jv.chat.normalize, jv.proclitic.tak-kok-di, jv.question.words]
     register: ngoko
     paraphrase: هتبيعه بكام؟
     explanation: 'ده جاوي مكتوب بطريقة الشات: arp = arep (ناوي / هـ)، dicul = diculke (يتساب، يعني يتباع)،
@@ -924,8 +920,7 @@ items:
   - paraphrase and explanation are in Egyptian colloquial Arabic (بالمصري), Arabic script; Indonesian/Javanese
     words stay in Latin script
   - Expands every abbreviation
-  - There is no Javanese grammar library yet, so the Indonesian entries are picked as parallels; the explanation
-    itself is about Javanese
+  - The explanation is about Javanese and may name the Indonesian parallel in one line
   avoid:
   - Treating the text as Indonesian
   tags:
@@ -940,9 +935,9 @@ items:
     text: Nyuwun pangapunten, menika regine pinten?
     lang: jv
     voice: en
-    grammar_candidates: [id.politeness.phrases, id.question.kapan-berapa, id.demonstrative.ini-itu, id.possessive]
+    grammar_candidates: [jv.krama.function-words, jv.krama.questions, jv.demonstrative, jv.possessive.e-ne, jv.number.ngoko]
   expect:
-    grammar_ids: [id.politeness.phrases, id.question.kapan-berapa, id.demonstrative.ini-itu]
+    grammar_ids: [jv.krama.function-words, jv.krama.questions, jv.demonstrative]
     register: krama
     culture: Using krama with an older market seller is warmly received and often gets a friendlier price.
     paraphrase: Excuse me, how much is this?
@@ -952,8 +947,7 @@ items:
   criteria:
   - paraphrase and explanation are in plain English
   - Maps each krama word to ngoko and Indonesian
-  - There is no Javanese grammar library yet, so the Indonesian entries are picked as parallels; the explanation
-    itself is about Javanese
+  - The explanation is about Javanese and may name the Indonesian parallel in one line
   tags:
   - voice-en
   - javanese
