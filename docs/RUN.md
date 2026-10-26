@@ -185,14 +185,29 @@ Open **Play** (ألعاب) in the sidebar or the phone's bottom bar.
 - **d/dh · t/th**: tell Javanese *wedi* (afraid) from *wedhi* (sand), and Indonesian *dada* from Javanese *dhadha*. **Listen** mode appears only when the device has a Javanese voice; Indonesian voices can't make the curled sound, so Kabar never uses one for this. Without a Javanese voice you get **Read** mode, where you see the meaning and pick the spelling. Javanese audio from Kabar Cloud's TTS (jv-ID voices) is a follow-up.
 - All Javanese here is marked unverified until you approve it (`content/games/unggah-ungguh.toml`, `content/games/minimal-pairs.toml`).
 
-## 11. Stats and the monthly level check (spec §16, §6)
+## 11. Tablet Studio (M9)
+
+Open **Studio** (الاستوديو) in the sidebar, or from Settings on the phone. Six tabs, all on the same ink engine:
+
+- **Notebook** (الكشكول): notebooks of infinite pages. The pen writes; two fingers (or the mouse wheel) pan and ctrl+wheel or a pinch zooms; the eraser tool rubs out whole strokes. **Add a word card** drops a live card on the page: it shows the gloss in your explanation voice and speaks the word. Every line you write is listed under **Your lines** — tap ✎ to scroll to it, or type what you wrote so search finds it. The search box searches handwriting, cards and map nodes across every notebook.
+- **Gambar!**: Kabar names a word (drawable ones you already know come first), you sketch it in 60 seconds, and Kabar guesses. Each round logs practice to Kak Nur.
+- **Mind map** (خريطة كلمات): type a topic (`di pasar`), pick `id` or `jv`, and Kabar lays out 3–6 branches you then extend with the pen. Javanese maps carry an "unverified" badge until you approve them.
+- **Listening Companion** (رفيق السماع): meant for split screen next to YouTube. Scribble a word the way it sounded, or type it, and Kabar suggests real words by sound (old spellings `oe/dj/tj`, `ng/ny`, `f→p`, final `k`), each with its gloss, audio, **Add to review**, and **Teach Kabar** when nothing fits.
+- **Dictation** (إملا): Kabar says a word, you write it with the pen, and the feedback circles the wrong letters, marks missing ones and strikes extra ones. The same pad goes into write-mode lessons in the Lesson Player.
+- **Aksara Jawa** (أكشارا جاوة, M13): pick a letter, a vowel or final sign on ka, or a word. **Watch** draws the strokes in order over a faint letter (Replay repeats it), **Trace** puts the faint letter and numbered start points under the sheet, **Write** leaves only the baseline. The brush thickens with S Pen pressure (pen and eraser are there too). **Check shape** is offline and instant: it says which numbered stroke is missing and where, extra ink, a mirrored letter, or "this reads as ga, not ka". **Ask the teacher** sends the sheet to the `check_strokes` vision task when you're signed in to Kabar Cloud. The stroke order is a draft traced from Noto Sans Javanese and shows "not reviewed yet" until you (or a teacher) approve it; review it with `python3 scripts/aksara/preview.py content/fonts/NotoSansJavanese-Regular.ttf content/aksara/strokes.json out.png`.
+
+**Reading handwriting, sketches and aksara** goes through Kabar Cloud's image upload, so it needs you signed in to Kabar Cloud (Settings). Signed out or offline, **Read my writing** and **Ask the teacher** say why and every screen falls back: type the line yourself in the Notebook and the pad, judge your own sketch in Gambar!, and use the offline shape check for aksara. Everything else (ink, pan/zoom, cards, maps, search, sync) works offline.
+
+Ink syncs like every other row (`notebooks`, `ink_documents`, `ink_strokes`, `notebook_items`, `ink_transcripts`), so a page you write on the tablet shows up on the phone. The three new tables need a Kabar Cloud redeploy: `just deploy-cloud`.
+
+## 12. Stats and the monthly level check (spec §16, §6)
 
 - **Stats**: Review → "All stats" (under the forecast), or Today → "All stats". Study heatmap (20 weeks), time studied, known words per language, true retention (mature/young, 7 and 30 days) and the 30-day review forecast. Hover a cell or bar on the Mac for its numbers; every chart also has a sentence under it.
 - **Monthly level check**: offered on Today once a month (the first one about 4 weeks after you start); "Later" hides it for 3 days on that device. You can also take it any time from Stats. It's ~10 minutes of your current level's test items, then the skill radar vs last month, Kak Nur's decision and "BIPA N around <date>". Fully offline. Levels without test items yet (BIPA 3+, Javanese) get a history-only check.
 - Preview on the Mac: `KABAR_OPEN_SCREEN=stats just run-mac` or `KABAR_OPEN_SCREEN=level_check just run-mac`.
 - Demo data for screenshots (a throwaway database, never your real one): `KABAR_DEMO_DB=/tmp/kabar-demo.db cargo test -p kabar-app seed_stats_demo -- --ignored`, then run the app with its data dir pointing there (see `crates/app/src/stats/demo.rs`).
 
-## 12. Offline packs (audio per unit)
+## 13. Offline packs (audio per unit)
 
 Each unit has a pack of pre-generated Azure neural audio (Gadis/Ardi for Indonesian, Siti/Dimas for Javanese; dialogue lines in the speaker's voice) so its lessons sound natural with no network. Manifests are committed under `content/packs/`; the audio lives on the `packs` GitHub release of this repository (free), never in git.
 
@@ -215,7 +230,7 @@ Commit `content/packs/` after bundling: the app build embeds `content/packs/inde
 
 **In the app:** Settings → **Offline packs** lists every unit with its size, Download / Update / Remove, total storage, and "Download the current and next unit automatically" (on by default: opening a lesson fetches its unit and the next one in the background). The Lesson Player plays a downloaded clip first, then the device's own voice (Android TextToSpeech, or the WebView voice on the Mac), exactly as before. A run-time `KABAR_PACKS_URL` points the app at another release; an empty one turns downloads off.
 
-## 13. Troubleshooting
+## 14. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.

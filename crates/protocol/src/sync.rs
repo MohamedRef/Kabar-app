@@ -57,6 +57,9 @@ pub const TABLES: &[(&str, SyncKind)] = &[
     ("notebooks", SyncKind::Lww),
     ("ink_documents", SyncKind::Lww),
     ("ink_strokes", SyncKind::Immutable),
+    // Tablet Studio (M9): items placed on a page, recognized handwriting.
+    ("notebook_items", SyncKind::Lww),
+    ("ink_transcripts", SyncKind::Lww),
     // Coach
     ("goals", SyncKind::Lww),
     ("daily_plans", SyncKind::Lww),

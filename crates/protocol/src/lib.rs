@@ -7,6 +7,7 @@ pub mod coach;
 pub mod content;
 pub mod grammar;
 pub mod hlc;
+pub mod ink;
 pub mod journal;
 pub mod learn;
 pub mod lesson;
