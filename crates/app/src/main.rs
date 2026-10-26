@@ -17,6 +17,7 @@ mod packs;
 mod penlab;
 mod platform;
 mod play;
+mod pron;
 mod reader;
 mod review;
 mod screens;
@@ -284,6 +285,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let theme = settings.theme.as_str();
     let width = ui.width.read().as_str();
     let theme_css = use_hook(theme::stylesheet);
+    let pron_font = use_hook(pron::font_css);
     // The theme draws the kawung background in its own colour; a batik from
     // the Warung overrides it on this device.
     let batik = use_memo(move || {
@@ -300,6 +302,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         document::Title { "Kabar" }
         style { {MAIN_CSS} }
         style { {theme_css} }
+        style { {pron_font} }
         div {
             class: "app",
             lang: lang.tag(),
