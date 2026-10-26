@@ -17,6 +17,10 @@ pub fn nav(screen: Screen) -> Element {
         Screen::Reader => "M3 6c3-1 6-1 9 1 3-2 6-2 9-1v12c-3-1-6-1-9 1-3-2-6-2-9-1zM12 7v12",
         // stacked cards
         Screen::Review => "M7 4h11v13H7zM4 7v13h11",
+        // three bars on a baseline
+        Screen::Stats => "M4 20h16M7 16v-5M12 16V6M17 16v-8",
+        // a check mark in a circle
+        Screen::LevelCheck => "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM8 12l3 3 5-6",
         // pen nib
         Screen::Studio => "M4 20l4-1 10-10-3-3L5 16zM13 7l3 3",
         // stylus with signal
@@ -29,6 +33,8 @@ pub fn nav(screen: Screen) -> Element {
         Screen::Journal => "M6 4h12v16H7a1 1 0 0 1-1-1zM6 16h12M10 4v6l2-1.5 2 1.5V4",
         // a gauge
         Screen::Cost => "M4 16a8 8 0 0 1 16 0M12 16l4-5M3 20h18",
+        // headphones: Sinetron and Kabar Radio
+        Screen::Listen => "M4 15v-3a8 8 0 0 1 16 0v3M4 15h3v5H4zM17 15h3v5h-3z",
         // sliders
         Screen::Settings => "M4 7h10M18 7h2M4 17h4M12 17h8M14 5v4M8 15v4",
         // a game controller
