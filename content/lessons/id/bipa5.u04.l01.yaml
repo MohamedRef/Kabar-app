@@ -1,0 +1,226 @@
+schema: kabar.lesson/v1
+id: bipa5.u04.l01
+language: id
+title: Katanya…
+can_do:
+  ar_eg: تنقل كلام حد تاني، سواء كان خبر أو سؤال أو طلب.
+  ar: أن تنقل كلام غيرك، خبرًا كان أو سؤالًا أو طلبًا.
+  en: Report what someone else said, asked or requested.
+slides:
+  - title: Mengatakan bahwa, menurut, katanya
+    grammar: id.reported-speech
+    body:
+      ar_eg: |
+        عشان تنقل كلام حد:
+        - X mengatakan bahwa … = X قال إن …
+        - Menurut X, … = على حسب X … (من غير bahwa)
+        - Katanya, … = بيقولوا إن … (مش متأكد مين قال)
+        والحلو إن زمن الفعل مابيتغيرش زي الإنجليزي: Pak Hendra mengatakan bahwa dia sibuk. = قال إنه مشغول.
+      ar: |
+        لتنقل كلام غيرك:
+        - X mengatakan bahwa … = قال X إنّ …
+        - Menurut X, … = بحسب X … (بلا bahwa)
+        - Katanya, … = يقال إنّ … (والقائل غير محدّد)
+        ولا يتغيّر زمن الفعل كما في الإنجليزية: Pak Hendra mengatakan bahwa dia sibuk.
+      en: |
+        To report someone's words:
+        - X mengatakan bahwa … = X said that …
+        - Menurut X, … = According to X, … (no bahwa)
+        - Katanya, … = Apparently / they say … (source vague)
+        The verb never shifts tense: Pak Hendra mengatakan bahwa dia sibuk. = He said he was busy.
+    examples:
+      - text: Bu Lestari mengatakan bahwa banyak santri belajar di Kairo.
+        ar_eg: الأستاذة ليستاري قالت إن طلاب معاهد كتير بيدرسوا في القاهرة.
+        ar: قالت الأستاذة ليستاري إنّ كثيرًا من طلّاب المعاهد يدرسون في القاهرة.
+        en: Bu Lestari said that many santri study in Cairo.
+  - title: Bertanya apakah, meminta agar
+    grammar: id.reported-speech
+    body:
+      ar_eg: |
+        - السؤال: Dia bertanya apakah saya dari Mesir. = سأل إذا كنت من مصر.
+          ومع أداة سؤال: Dia bertanya kapan saya datang. = سأل إمتى جيت.
+        - الطلب: Guru meminta agar kami membaca kitab itu. = المدرس طلب إننا نقرا الكتاب ده.
+      ar: |
+        - السؤال: Dia bertanya apakah saya dari Mesir. = سأل إن كنتُ من مصر.
+          ومع أداة استفهام: Dia bertanya kapan saya datang. = سأل متى جئت.
+        - الطلب: Guru meminta agar kami membaca kitab itu. = طلب المعلّم أن نقرأ ذلك الكتاب.
+      en: |
+        - Questions: Dia bertanya apakah saya dari Mesir. = He asked whether I was from Egypt.
+          With a question word: Dia bertanya kapan saya datang. = He asked when I came.
+        - Requests: Guru meminta agar kami membaca kitab itu. = The teacher asked us to read that book.
+    examples:
+      - text: Rina bertanya apakah Al-Azhar menerima mahasiswa asing.
+        ar_eg: رينا سألت إذا كان الأزهر بيقبل طلاب أجانب.
+        ar: سألت رينا إن كان الأزهر يقبل طلّابًا أجانب.
+        en: Rina asked whether Al-Azhar accepts foreign students.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: mengatakan
+        ar_eg: يقول
+        ar: يقول
+        en: to say
+      - text: katanya
+        ar_eg: بيقولوا إن
+        ar: يقال إنّ
+        en: apparently, they say
+      - text: bertanya
+        ar_eg: يسأل
+        ar: يسأل
+        en: to ask
+      - text: meminta
+        ar_eg: يطلب
+        ar: يطلب
+        en: to request
+      - text: santri
+        ar_eg: طالب في معهد ديني (pesantren)
+        ar: طالب معهد ديني
+        en: pesantren student
+    words: [mengatakan, katanya, bertanya, meminta, santri]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة صح؟
+      ar: أيّ جملة صحيحة؟
+      en: Which sentence is correct?
+    options:
+      - Menurut Pak Hendra bahwa kuliah dimulai besok.
+      - Pak Hendra mengatakan kuliah bahwa dimulai besok.
+      - Menurut Pak Hendra, kuliah dimulai besok.
+    answer: 2
+    explain:
+      ar_eg: بعد Menurut X مفيش bahwa، فيه فاصلة بس.
+      ar: لا تأتي bahwa بعد Menurut X، بل فاصلة.
+      en: Menurut X takes a comma, not bahwa.
+    words: [mengatakan]
+  - id: e03
+    type: fill_blank
+    sentence: Dia ___ apakah saya pernah belajar di pesantren.
+    meaning:
+      ar_eg: سألني إذا كنت درست قبل كده في معهد ديني.
+      ar: سألني إن كنتُ قد درستُ في معهد ديني.
+      en: He asked whether I had ever studied at a pesantren.
+    options: [bertanya, meminta, mengatakan]
+    answers: [bertanya]
+    words: [bertanya]
+  - id: e04
+    type: listen
+    text: Katanya, ribuan santri Indonesia belajar di Kairo.
+    question:
+      ar_eg: إيه الخبر؟
+      ar: ما الخبر؟
+      en: What is the news?
+    options:
+      - إن طلاب مصريين كتير في إندونيسيا.
+      - بيقولوا إن آلاف الطلاب الإندونيسيين بيدرسوا في القاهرة.
+      - إن القاهرة فيها معهد إندونيسي واحد.
+    answer: 1
+    words: [katanya, santri]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: المدرّسة طلبت إننا نقرا المقال ده.
+      ar: طلبت المعلّمة أن نقرأ هذه المقالة.
+      en: The teacher asked us to read this article.
+    answer: Ibu guru meminta agar kami membaca artikel ini.
+    distractors: [bahwa, apakah]
+    words: [meminta]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: محمد قال إن الأزهر قديم قوي.
+      ar: قال محمد إنّ الأزهر قديم جدًّا.
+      en: Mohamed said that Al-Azhar is very old.
+    answers:
+      - Mohamed mengatakan bahwa Al-Azhar sangat tua.
+      - Mohamed mengatakan bahwa Al-Azhar sudah sangat tua.
+      - Mohamed mengatakan Al-Azhar sangat tua.
+      - Mohamed mengatakan bahwa Al-Azhar tua sekali.
+    explain:
+      ar_eg: mengatakan bahwa، وزمن الفعل زي ما هو.
+      ar: mengatakan bahwa، ولا يتغيّر زمن الفعل.
+      en: mengatakan bahwa, with no tense shift.
+    words: [mengatakan]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: رينا قالت «Kamu dari Mesir?». تنقلها إزاي؟
+      ar: قالت رينا «Kamu dari Mesir?». كيف تنقلها؟
+      en: Rina said "Kamu dari Mesir?". How do you report it?
+    options:
+      - Rina bertanya apakah saya dari Mesir.
+      - Rina meminta agar saya dari Mesir.
+      - Rina mengatakan apakah saya dari Mesir.
+    answer: 0
+    words: [bertanya]
+  - id: e08
+    type: speaking
+    text: Katanya, santri di sini bangun jam empat pagi.
+    meaning:
+      ar_eg: بيقولوا إن طلاب المعهد هنا بيصحوا الساعة أربعة الفجر.
+      ar: يقال إنّ طلّاب المعهد هنا يستيقظون في الرابعة فجرًا.
+      en: Apparently, the students here get up at four in the morning.
+    words: [katanya, santri]
+  - id: e09
+    type: multiple_choice
+    question: "Pak kiai ___ agar kami datang tepat waktu."
+    question_meaning:
+      ar_eg: كمّل الجملة. «الشيخ … إننا نيجي في الميعاد.»
+      ar: أكمل الجملة. «… الشيخ أن نحضر في الموعد.»
+      en: Complete the sentence. "The kiai … us to come on time."
+    options: [bertanya, mengatakan, meminta]
+    answer: 2
+    words: [meminta]
+dialogue:
+  title: Di Tenggarong
+  lines:
+    - speaker: Mas Rizal
+      text: Mohamed, kepala pesantren tadi bertanya apakah kamu kuliah di Al-Azhar.
+      ar_eg: يا محمد، شيخ المعهد سأل من شوية إذا كنت بتدرس في الأزهر.
+      ar: يا محمد، سأل شيخ المعهد قبل قليل إن كنت تدرس في الأزهر.
+      en: Mohamed, the head of the pesantren asked earlier whether you study at Al-Azhar.
+    - speaker: Mohamed
+      text: Bukan, saya hanya tinggal di dekatnya. Kenapa beliau bertanya?
+      ar_eg: لأ، أنا ساكن جنبه بس. سأل ليه؟
+      ar: لا، أسكن قربه فقط. لماذا سأل؟
+      en: No, I just live near it. Why did he ask?
+    - speaker: Mas Rizal
+      text: Katanya, banyak santrinya ingin melanjutkan kuliah ke Kairo.
+      ar_eg: بيقول إن طلاب كتير عنده عايزين يكمّلوا دراستهم في القاهرة.
+      ar: يقول إنّ كثيرًا من طلّابه يريدون مواصلة الدراسة في القاهرة.
+      en: Apparently many of his students want to go on to study in Cairo.
+    - speaker: Mohamed
+      text: Wah, menarik. Beliau meminta agar saya bercerita tentang Kairo?
+      ar_eg: يا سلام، حلو. هو طلب إني أحكي عن القاهرة؟
+      ar: رائع. هل طلب أن أحدّثهم عن القاهرة؟
+      en: Oh, interesting. Did he ask me to talk about Cairo?
+new_words:
+  - word: mengatakan
+    pos: verb
+    ar_eg: يقول
+    ar: يقول
+    en: to say
+  - word: katanya
+    ar_eg: بيقولوا إن / على كلامه
+    ar: يقال إنّ
+    en: apparently, they say
+  - word: bertanya
+    pos: verb
+    ar_eg: يسأل
+    ar: يسأل
+    en: to ask
+  - word: meminta
+    pos: verb
+    ar_eg: يطلب
+    ar: يطلب
+    en: to request
+  - word: santri
+    pos: noun
+    ar_eg: طالب في معهد ديني (pesantren)
+    ar: طالب معهد ديني
+    en: pesantren student
+review:
+  status: draft
+  verified: false

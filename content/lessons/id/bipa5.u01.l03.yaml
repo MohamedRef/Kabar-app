@@ -1,0 +1,231 @@
+schema: kabar.lesson/v1
+id: bipa5.u01.l03
+language: id
+title: Membaca iklan lowongan
+can_do:
+  ar_eg: تقرا إعلان وظيفة إندونيسي وتفهم المطلوب منك بالظبط.
+  ar: أن تقرأ إعلان وظيفة وتفهم المطلوب بدقّة.
+  en: Read a job ad and understand exactly what it asks for.
+slides:
+  - title: Dibutuhkan segera!
+    body:
+      ar_eg: |
+        إعلانات الوظايف بتستخدم كلمات قليلة متكررة:
+        - Dibutuhkan … = مطلوب …
+        - Kualifikasi / Persyaratan = المؤهلات / الشروط
+        - minimal (min.) S1 = بكالوريوس على الأقل
+        - tunjangan = بدلات (مواصلات، سكن، تأمين صحي)
+        - kontrak 1 tahun = عقد سنة
+        - Lamaran dikirim ke … paling lambat 30 November = ابعت الطلب لـ … آخر ميعاد 30 نوفمبر
+        والصيغة المبنية للمجهول (di-) مستخدمة جدًا: dibutuhkan، dikirim، diutamakan.
+      ar: |
+        لإعلانات الوظائف كلمات قليلة متكرّرة:
+        - Dibutuhkan … = مطلوب …
+        - Kualifikasi / Persyaratan = المؤهلات / الشروط
+        - minimal (min.) S1 = بكالوريوس على الأقل
+        - tunjangan = بدلات (نقل، سكن، تأمين صحي)
+        - kontrak 1 tahun = عقد لسنة
+        - Lamaran dikirim ke … paling lambat 30 November = تُرسل الطلبات إلى … في موعد أقصاه 30 نوفمبر
+        ويكثر فيها المبني للمجهول (di-): dibutuhkan وdikirim وdiutamakan.
+      en: |
+        Job ads reuse a small set of words:
+        - Dibutuhkan … = Wanted …
+        - Kualifikasi / Persyaratan = qualifications / requirements
+        - minimal (min.) S1 = at least a bachelor's degree
+        - tunjangan = allowances (transport, housing, health insurance)
+        - kontrak 1 tahun = one-year contract
+        - Lamaran dikirim ke … paling lambat 30 November = send applications to … by 30 November at the latest
+        The di- passive is everywhere: dibutuhkan, dikirim, diutamakan.
+    examples:
+      - text: "Dibutuhkan segera: staf administrasi, minimal S1."
+        ar_eg: "مطلوب فورًا: موظف إداري، بكالوريوس على الأقل."
+        ar: "مطلوب فورًا: موظّف إداري، بكالوريوس على الأقل."
+        en: "Wanted immediately: administrative staff, bachelor's degree minimum."
+      - text: Diutamakan yang bisa berbahasa Arab.
+        ar_eg: الأولوية للي بيعرف عربي.
+        ar: تُعطى الأولوية لمن يتقن العربية.
+        en: Arabic speakers preferred.
+  - title: Melampirkan berkas
+    body:
+      ar_eg: |
+        آخر الإعلان بيقولك تبعت إيه:
+        - melampirkan = يرفق: Lampirkan CV dan ijazah. = ارفق السي في والشهادة.
+        - ijazah = شهادة التخرج (ومن «إجازة» بالعربي!)
+        - Hanya pelamar terpilih akan dipanggil wawancara. = هيكلموا المختارين بس للمقابلة.
+      ar: |
+        وفي آخر الإعلان ما يجب إرساله:
+        - melampirkan = يُرفق: Lampirkan CV dan ijazah. = أرفق السيرة الذاتية والشهادة.
+        - ijazah = شهادة التخرّج، وهي من العربية «إجازة».
+        - Hanya pelamar terpilih akan dipanggil wawancara. = لن يُستدعى للمقابلة إلا المختارون.
+      en: |
+        The end of the ad tells you what to send:
+        - melampirkan = to attach: Lampirkan CV dan ijazah. = Attach your CV and diploma.
+        - ijazah = diploma, from Arabic «إجازة» (licence, certificate).
+        - Hanya pelamar terpilih akan dipanggil wawancara. = Only shortlisted applicants will be called for interview.
+    examples:
+      - text: Lampirkan CV, ijazah, dan foto terbaru.
+        ar_eg: ارفق السي في والشهادة وصورة حديثة.
+        ar: أرفق السيرة الذاتية والشهادة وصورة حديثة.
+        en: Attach your CV, diploma and a recent photo.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: dibutuhkan
+        ar_eg: مطلوب
+        ar: مطلوب
+        en: wanted, needed
+      - text: tunjangan
+        ar_eg: بدلات
+        ar: بدلات
+        en: allowance
+      - text: ijazah
+        ar_eg: شهادة التخرج
+        ar: شهادة التخرّج
+        en: diploma
+      - text: melampirkan
+        ar_eg: يرفق
+        ar: يُرفق
+        en: to attach
+      - text: wawancara
+        ar_eg: مقابلة
+        ar: مقابلة
+        en: interview
+    words: [dibutuhkan, tunjangan, ijazah, melampirkan, wawancara]
+  - id: e02
+    type: listen
+    text: Hanya pelamar terpilih akan dipanggil wawancara.
+    question:
+      ar_eg: مين اللي هيتكلم للمقابلة؟
+      ar: من سيُستدعى للمقابلة؟
+      en: Who will be called for an interview?
+    options:
+      - Semua pelamar.
+      - Pelamar yang terpilih saja.
+      - Pelamar yang punya ijazah S2.
+    answer: 1
+    words: [wawancara]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Diutamakan yang bisa berbahasa Arab» معناها إيه؟
+      ar: ما معنى «Diutamakan yang bisa berbahasa Arab»؟
+      en: What does "Diutamakan yang bisa berbahasa Arab" mean?
+    options:
+      - العربي شرط لازم.
+      - اللي بيعرف عربي ليه الأولوية.
+      - العربي مش مطلوب.
+    answer: 1
+    explain:
+      ar_eg: diutamakan = بيتقدّم / ليه الأولوية، مش شرط لازم.
+      ar: diutamakan = يُقدَّم ويُفضَّل، وليس شرطًا.
+      en: diutamakan = given priority, preferred; not a strict requirement.
+    words: [dibutuhkan]
+  - id: e04
+    type: fill_blank
+    sentence: Pelamar harus ___ CV dan ijazah.
+    meaning:
+      ar_eg: المتقدّم لازم يرفق السي في والشهادة.
+      ar: على المتقدّم أن يُرفق السيرة الذاتية والشهادة.
+      en: Applicants must attach a CV and diploma.
+    options: [melampirkan, dibutuhkan, tunjangan]
+    answers: [melampirkan]
+    words: [melampirkan, ijazah]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ijazah (شهادة التخرج) جاية من أنهي كلمة عربي؟
+      ar: من أيّ كلمة عربية جاءت ijazah (شهادة التخرّج)؟
+      en: Which Arabic word does ijazah (diploma) come from?
+    options: [إجابة, اجتهاد, إجازة]
+    answer: 2
+    explain:
+      ar_eg: ijazah من «إجازة»، زي إجازة الشيخ لتلميذه، يعني إذن أو شهادة. مش أجازة الشغل!
+      ar: ijazah من «إجازة» بمعنى الإذن أو الشهادة، كإجازة الشيخ لتلميذه.
+      en: ijazah is «إجازة» in its classical sense, a licence or certificate (as a teacher grants a student), not a holiday.
+    words: [ijazah]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: الشركة بتدي بدل سكن وبدل مواصلات.
+      ar: تقدّم الشركة بدل سكن وبدل نقل.
+      en: The company gives a housing and a transport allowance.
+    answer: Perusahaan memberikan tunjangan rumah dan tunjangan transportasi.
+    distractors: [dibutuhkan, ijazah]
+    words: [tunjangan]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: "Dibutuhkan segera: guru bahasa Arab. Kontrak satu tahun, ada tunjangan rumah."
+    answers_meaning:
+      ar_eg:
+        - مطلوب فورًا مدرس عربي. عقد سنة، وفيه بدل سكن.
+        - مطلوب حالًا مدرس لغة عربية، عقد سنة واحدة وفيه بدل سكن.
+      ar:
+        - مطلوب فورًا مدرّس لغة عربية، بعقد لسنة واحدة، مع بدل سكن.
+        - مطلوب حالًا معلّم عربية، العقد سنة، ويوجد بدل سكن.
+      en:
+        - "Wanted immediately: an Arabic teacher. One-year contract, with a housing allowance."
+        - "Arabic teacher needed now: one-year contract, housing allowance included."
+    words: [dibutuhkan, tunjangan]
+  - id: e08
+    type: speaking
+    text: Saya sudah melampirkan ijazah saya untuk wawancara besok.
+    meaning:
+      ar_eg: أنا رفقت شهادتي عشان مقابلة بكرة.
+      ar: أرفقتُ شهادتي من أجل مقابلة الغد.
+      en: I've attached my diploma for tomorrow's interview.
+    words: [melampirkan, ijazah, wawancara]
+dialogue:
+  title: Iklan di papan pengumuman
+  lines:
+    - speaker: Mohamed
+      text: Rina, lihat iklan ini. Dibutuhkan penerjemah bahasa Arab!
+      ar_eg: يا رينا، بصي الإعلان ده. مطلوب مترجم عربي!
+      ar: يا رينا، انظري إلى هذا الإعلان. مطلوب مترجم للعربية!
+      en: Rina, look at this ad. They need an Arabic translator!
+    - speaker: Rina
+      text: Wah, cocok buat kamu! Ada tunjangan rumah juga.
+      ar_eg: الله، مناسبة ليك! وفيه بدل سكن كمان.
+      ar: رائع، تناسبك! وفيها بدل سكن أيضًا.
+      en: Wow, perfect for you! There's a housing allowance too.
+    - speaker: Mohamed
+      text: Tapi saya harus melampirkan ijazah. Ijazah saya masih di Kairo.
+      ar_eg: بس لازم أرفق الشهادة، وشهادتي لسه في القاهرة.
+      ar: لكن عليّ أن أرفق الشهادة، وشهادتي ما زالت في القاهرة.
+      en: But I have to attach my diploma, and it's still in Cairo.
+    - speaker: Rina
+      text: Kirim fotonya dulu. Yang penting kamu dipanggil wawancara!
+      ar_eg: ابعت صورتها الأول. المهم يكلموك للمقابلة!
+      ar: أرسل صورتها أولًا، فالمهم أن تُستدعى للمقابلة!
+      en: Send a photo of it first. What matters is getting the interview!
+new_words:
+  - word: dibutuhkan
+    pos: verb
+    ar_eg: مطلوب
+    ar: مطلوب
+    en: wanted, needed
+  - word: tunjangan
+    pos: noun
+    ar_eg: بدل (فلوس زيادة على المرتب)
+    ar: بدل، علاوة
+    en: allowance, benefit
+  - word: ijazah
+    pos: noun
+    ar_eg: شهادة التخرج
+    ar: شهادة التخرّج
+    en: diploma, certificate
+    arabic: إجازة
+  - word: melampirkan
+    pos: verb
+    ar_eg: يرفق
+    ar: يُرفق
+    en: to attach, to enclose
+  - word: wawancara
+    pos: noun
+    ar_eg: مقابلة
+    ar: مقابلة
+    en: interview
+review:
+  status: draft
+  verified: false
