@@ -19,14 +19,29 @@ serde_json.workspace = true
 thiserror.workspace = true
 
 rusqlite = { version = "0.41", features = ["bundled"] }
-uuid = { version = "1", features = ["v4"] }
+uuid = { version = "1", features = ["v4", "v7"] }
+
+# Kabar Cloud client: TLS is rustls + ring with webpki roots everywhere, so the
+# Android build needs no Java trust-store glue.
+base64 = "0.22"
+futures-util = { version = "0.3", default-features = false, features = ["sink", "std"] }
+getrandom = "0.3"
+keyring-core = "1"
+sha2 = "0.10"
+tokio = { version = "1", features = ["rt", "net", "time", "sync", "macros", "io-util"] }
+tokio-tungstenite = { version = "0.30", default-features = false, features = ["connect", "rustls-tls-webpki-roots"] }
+ureq = { version = "3", default-features = false, features = ["rustls", "json"] }
 
 [target.'cfg(not(target_os = "android"))'.dependencies]
 directories = "6"
 
+[target.'cfg(target_os = "macos")'.dependencies]
+apple-native-keyring-store = { version = "1", features = ["keychain"] }
+
 [target.'cfg(target_os = "android")'.dependencies]
 jni = "0.22"
 ndk-context = "0.1"
+android-native-keyring-store = "1"
 
 [dev-dependencies]
 tempfile = "3"

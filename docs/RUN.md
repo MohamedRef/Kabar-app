@@ -77,6 +77,16 @@ just deploy-cloud    # after adding GOOGLE_CLIENT_IDS (CLOUD.md §3.2)
 # Reminders (M7): Firebase service account → `wrangler secret put FCM_SERVICE_ACCOUNT` (CLOUD.md §3.4)
 ```
 
+Then connect the app (CLOUD.md §3.6):
+
+```bash
+cp .env.example .env   # put in the workers.dev URL and the Desktop client id + secret
+just run-mac           # Settings → Account & devices → Sign in with Google
+just apk && just install <serial>   # same on the S24 Ultra and the Tab S11
+```
+
+Check it: save a word in **Try sync** on the phone; it appears on the tablet within seconds. The Devices list shows every signed-in device and can sign one out.
+
 ## 6. Content pipeline (vocabulary, Arabic Bridge)
 
 Details in `docs/CONTENT.md`. On the Mac:
