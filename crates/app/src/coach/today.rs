@@ -72,7 +72,8 @@ pub fn Today() -> Element {
                             let profile = profile.clone();
                             move |size| {
                                 let events = coach.events.peek().clone();
-                                let fresh = build_plan(&profile, &events, today, size);
+                                let due = crate::review::due_words(&db, coach.now()).len() as u32;
+                                let fresh = build_plan(due, &profile, &events, today, size);
                                 if let Err(e) = db.0.borrow_mut().save_plan(&fresh) {
                                     eprintln!("kabar: saving today's plan failed: {e}");
                                 }
@@ -106,6 +107,22 @@ pub fn Today() -> Element {
                     Snooze { profile: profile.clone(), goal_met: progress.goal_met }
                 }
                 crate::lesson::PlacementInvite {}
+                crate::play::PagiTodayCard {}
+                // On the phone, Kak Nur and Settings live here instead of the
+                // bottom bar (it keeps five items).
+                nav { class: "row compact-only more-links",
+                    for screen in [Screen::Coach, Screen::Settings] {
+                        button {
+                            key: "{screen:?}",
+                            onclick: move |_| {
+                                let mut s = ui.screen;
+                                s.set(screen);
+                            },
+                            span { class: "nav-icon", aria_hidden: "true", {icons::nav(screen)} }
+                            " {ui.t(screen.label())}"
+                        }
+                    }
+                }
             }
             if recap_ready {
                 div {
@@ -223,8 +240,11 @@ fn Snooze(profile: CoachProfile, goal_met: bool) -> Element {
 fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
     let ui = use_context::<Ui>();
     let coach = use_context::<Coach>();
+    let db = use_context::<Db>();
     let events = coach.events.read().clone();
-    let tomorrow = build_plan(&profile, &events, today.add_days(1), profile.daily_size);
+    // Cards due by tomorrow morning size tomorrow's first step.
+    let due = crate::review::due_words(&db, coach.now() + 86_400_000).len() as u32;
+    let tomorrow = build_plan(due, &profile, &events, today.add_days(1), profile.daily_size);
     let tomorrow_first = tomorrow.items.first().map(|i| i.kind.clone());
     let r = recap::day_recap(&events, today, plan.size.minutes(), plan.items.len(), tomorrow_first);
 

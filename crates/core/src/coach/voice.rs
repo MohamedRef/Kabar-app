@@ -65,10 +65,14 @@ pub enum Line {
     LevelCheckInvite,
     /// "At this pace you reach {level} around {date}."
     LevelForecast,
+    /// The check moved the learner up a level.
+    LevelUp,
+    /// The check moved the learner down a level: a plan to rebuild, no guilt.
+    LevelRebuild,
 }
 
 impl Line {
-    pub const ALL: [Self; 33] = [
+    pub const ALL: [Self; 35] = [
         Self::OnboardHello,
         Self::OnboardWhy,
         Self::OnboardFocus,
@@ -102,6 +106,8 @@ impl Line {
         Self::WarungBought,
         Self::LevelCheckInvite,
         Self::LevelForecast,
+        Self::LevelUp,
+        Self::LevelRebuild,
     ];
 
     /// The line's key in `content/coach/kak-nur.toml` (`[lines.<key>]`).
@@ -140,6 +146,8 @@ impl Line {
             Self::WarungBought => "warung_bought",
             Self::LevelCheckInvite => "level_check_invite",
             Self::LevelForecast => "level_forecast",
+            Self::LevelUp => "level_up",
+            Self::LevelRebuild => "level_rebuild",
         }
     }
 

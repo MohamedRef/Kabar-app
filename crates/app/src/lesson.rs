@@ -191,7 +191,22 @@ fn autoplay_text(ex: &Exercise) -> Option<(String, Option<String>)> {
 /// falls back to an id-ID voice, which reads Javanese passably): the
 /// WebView's `speechSynthesis` on desktop, and the system TextToSpeech engine
 /// on Android, whose WebView has no `speechSynthesis`.
-pub fn speak(text: &str, language: &str, slow: bool, audio: Option<&str>, mut missing: Signal<bool>) {
+pub fn speak(text: &str, language: &str, slow: bool, audio: Option<&str>, missing: Signal<bool>) {
+    // Azure's neural voice (cached on the device) when there is no file.
+    if audio.is_none()
+        && let Some(url) = crate::audio::neural(text, language)
+    {
+        let (text, language) = (text.to_owned(), language.to_owned());
+        spawn(async move {
+            let url = url.await;
+            speak_with(&text, &language, slow, url.as_deref(), missing);
+        });
+        return;
+    }
+    speak_with(text, language, slow, audio, missing);
+}
+
+fn speak_with(text: &str, language: &str, slow: bool, audio: Option<&str>, mut missing: Signal<bool>) {
     let lang = if language == "jv" { "jv-ID" } else { "id-ID" };
     let mut native = move |text: &str| {
         let ok = platform::speak(text, lang, slow).is_ok();
@@ -875,6 +890,7 @@ fn SummaryView(
     perfect: bool,
 ) -> Element {
     let ui = use_context::<Ui>();
+    let nav = use_context::<crate::play::PlayNav>();
     let settings = ui.settings.read().clone();
     let lang = settings.ui_language;
     let eastern = settings.eastern_digits;
@@ -928,7 +944,30 @@ fn SummaryView(
                     p { Rich { text: pick(&s.note, lang).to_string(), target } }
                 }
             }
+            if let Some(route) = lesson.game.as_deref().and_then(game_route) {
+                div { class: "row center reveal d3",
+                    button {
+                        onclick: move |_| {
+                            ui.close_lesson();
+                            crate::play::open(ui, nav, route);
+                        },
+                        "{lt(lang, L::PlayGame)}"
+                    }
+                }
+            }
         }
+    }
+}
+
+/// The Play screen a lesson's `game` id opens: `uu.*` is an Unggah-Ungguh
+/// scene, `mp.*` a Minimal Pairs pair. Opens the game, not the exact item.
+fn game_route(id: &str) -> Option<crate::play::Route> {
+    if id.starts_with("uu.") {
+        Some(crate::play::Route::Unggah)
+    } else if id.starts_with("mp.") {
+        Some(crate::play::Route::Pairs)
+    } else {
+        None
     }
 }
 
@@ -1442,6 +1481,14 @@ mod tests {
         assert!(lesson_content("bipa1.u01.l01").is_some());
         assert!(lesson_content("bipa2.u10.l05").is_some());
         assert!(lesson_content("bipa7.u10.l05").is_none());
+    }
+
+    #[test]
+    fn a_lesson_game_opens_its_play_screen() {
+        use crate::play::Route;
+        assert_eq!(game_route("uu.grandmother"), Some(Route::Unggah));
+        assert_eq!(game_route("mp.wedi-wedhi"), Some(Route::Pairs));
+        assert_eq!(game_route("pasar"), None);
     }
 
     #[test]
