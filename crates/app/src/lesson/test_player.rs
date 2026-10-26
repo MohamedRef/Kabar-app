@@ -17,8 +17,8 @@ use kabar_protocol::test::{TestContent, TestItem, TestItemKind, TestKind, TestSk
 
 use super::text::{L, lt};
 use super::{
-    Draft, ExerciseView, MAX_STEP_MS, Notice, Rich, TextAnswer, autoplay_text, draft_answer, instruction,
-    now_ms, speak, target_tag,
+    Draft, ExerciseView, MAX_STEP_MS, Notice, Rich, TextAnswer, autoplay_text, back_label, draft_answer,
+    instruction, needs_audio, now_ms, option_count, speak, target_tag,
 };
 use crate::coach::Coach;
 use crate::{Db, Screen, Ui};
@@ -229,6 +229,10 @@ fn TestView(test: TestContent) -> Element {
     let last = use_signal(now_ms);
     let audio_missing = use_signal(|| false);
     let mut recorded = use_signal(|| false);
+    // Listening items skipped because the device has no voice for them.
+    let mut voice_skips = use_signal(|| 0u32);
+    // "Leave the test?" is showing.
+    let mut confirm_close = use_signal(|| false);
 
     // Runs an operation on the runner, then: time, fresh draft, audio, and
     // the saved outcome once the results are reached.
@@ -290,7 +294,24 @@ fn TestView(test: TestContent) -> Element {
         }
     };
 
-    // Enter = next, 1–4 = pick an option (same rules as the Lesson Player).
+    // No sound for the target language: listening items are skipped the
+    // "can't listen now" way (unscored), with a note, so the placement never
+    // opens on audio that can't play.
+    use_effect(move || {
+        if !*audio_missing.read() {
+            return;
+        }
+        let skip = {
+            let r = runner.read();
+            matches!(r.step(), TestStep::Item { .. }) && r.exercise().is_some_and(|ex| needs_audio(&ex))
+        };
+        if skip {
+            voice_skips += 1;
+            commit(&|r| r.skip());
+        }
+    });
+
+    // Enter = next, 1–9 = pick an option (same rules as the Lesson Player).
     use_future(move || async move {
         let mut eval = document::eval(
             r#"
@@ -298,12 +319,12 @@ fn TestView(test: TestContent) -> Element {
             window.__kabarTestKeys = (e) => {
                 if (!document.querySelector(".lt") || e.isComposing) return;
                 const t = e.target;
-                if (t.closest && t.closest(".lp-top, .lt-selfcheck, .lt-results")) return;
+                if (t.closest && t.closest(".lp-top, .lt-selfcheck, .lt-results, .lt-confirm")) return;
                 const typing = t.tagName === "TEXTAREA" || t.tagName === "INPUT";
                 if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault();
                     dioxus.send("enter");
-                } else if (!typing && /^[1-4]$/.test(e.key)) {
+                } else if (!typing && !e.ctrlKey && !e.metaKey && !e.altKey && /^[1-9]$/.test(e.key)) {
                     dioxus.send(e.key);
                 }
             };
@@ -313,18 +334,14 @@ fn TestView(test: TestContent) -> Element {
         );
         while let Ok(key) = eval.recv::<String>().await {
             match key.as_str() {
+                "enter" if *confirm_close.peek() => {}
                 "enter" => primary(),
                 n => {
                     let Ok(n) = n.parse::<usize>() else { continue };
-                    let count = runner.peek().exercise().map_or(0, |ex| match &ex.kind {
-                        ExerciseKind::MultipleChoice { options, options_meaning, .. } => {
-                            options.len().max(options_meaning.len())
-                        }
-                        ExerciseKind::Listen { options, .. } | ExerciseKind::FillBlank { options, .. } => {
-                            options.len()
-                        }
-                        _ => 0,
-                    });
+                    if *confirm_close.peek() {
+                        continue;
+                    }
+                    let count = runner.peek().exercise().map_or(0, |ex| option_count(&ex));
                     if n <= count {
                         let mut d = draft;
                         d.write().choice = Some(n - 1);
@@ -370,7 +387,7 @@ fn TestView(test: TestContent) -> Element {
             _ => (lt(lang, L::TestNext), can_next),
         },
         TestStep::SelfCheck => (lt(lang, L::SeeResults), self_check_done),
-        TestStep::Results => (lt(lang, L::BackToJourney), true),
+        TestStep::Results => (lt(lang, back_label(ui)), true),
     };
     let can_skip = matches!(
         exercise.as_ref().map(|e| &e.kind),
@@ -378,6 +395,9 @@ fn TestView(test: TestContent) -> Element {
     );
     let language = t.language.clone();
     let n_sections = t.sections.len();
+    // Answers would be lost: ask before leaving mid-test.
+    let midway = matches!(step, TestStep::Item { .. } | TestStep::SelfCheck)
+        && (!runner.read().records().is_empty() || *draft.read() != Draft::default());
 
     rsx! {
         div { class: "lp lt",
@@ -386,7 +406,7 @@ fn TestView(test: TestContent) -> Element {
                     class: "lp-close",
                     aria_label: lt(lang, L::CloseTest),
                     title: lt(lang, L::CloseTest),
-                    onclick: move |_| ui.close_lesson(),
+                    onclick: move |_| if midway { confirm_close.set(true) } else { ui.close_lesson() },
                     "×"
                 }
                 div {
@@ -398,8 +418,32 @@ fn TestView(test: TestContent) -> Element {
                     div { class: "lp-bar", style: "inline-size: {pct}%" }
                 }
             }
+            if *confirm_close.read() {
+                div { class: "lt-confirm-backdrop",
+                    div {
+                        class: "card lt-confirm",
+                        role: "alertdialog",
+                        aria_modal: "true",
+                        aria_labelledby: "lt-confirm-title",
+                        h2 { id: "lt-confirm-title", "{lt(lang, L::LeaveTestTitle)}" }
+                        p { "{lt(lang, L::LeaveTestBody)}" }
+                        div { class: "row lt-confirm-buttons",
+                            button {
+                                class: "primary",
+                                autofocus: true,
+                                onclick: move |_| confirm_close.set(false),
+                                "{lt(lang, L::StayInTest)}"
+                            }
+                            button { onclick: move |_| ui.close_lesson(), "{lt(lang, L::LeaveTest)}" }
+                        }
+                    }
+                }
+            }
             div { class: "lp-body",
                 div { class: "lp-col", key: "{step:?}",
+                    if *voice_skips.read() > 0 && matches!(step, TestStep::Item { .. }) {
+                        p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, L::NoVoiceSkipped)}" }
+                    }
                     match step {
                         TestStep::Intro => rsx! { Intro { test: t.clone() } },
                         TestStep::Item { section: si, .. } => rsx! {
@@ -498,7 +542,7 @@ fn Intro(test: TestContent) -> Element {
             }
             p { class: "muted", "{minutes_line}" }
             p { class: "muted", "{lt(lang, note)}" }
-            ol { class: "lt-parts",
+            ol { class: if ui.eastern() { "lt-parts eastern" } else { "lt-parts" },
                 for s in test.sections.iter() {
                     li { key: "{s.id}", Rich { text: pick(&s.title, lang).to_string(), target } }
                 }

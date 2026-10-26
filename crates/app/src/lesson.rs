@@ -13,7 +13,7 @@ use dioxus::prelude::*;
 use kabar_core::lesson::{
     Answer, Grade, Player, Step, display_answer, parse_lesson, pick, references, validate,
 };
-use kabar_core::locale::{UiLanguage, eastern_arabic_digits, format_number};
+use kabar_core::locale::{UiLanguage, eastern_arabic_digits, format_number, localize_digits};
 use kabar_protocol::coach::{ActivityKind, Skill};
 use kabar_protocol::lesson::{
     Dialogue, Direction, Exercise, ExerciseKind, LessonContent, LessonPosition, LessonStep, Localized,
@@ -104,7 +104,7 @@ fn Notice(title: &'static str, body: String, id: String) -> Element {
                         h2 { "{title}" }
                         p { class: "pre", "{body}" }
                         p { class: "muted mono", bdi { "{id}" } }
-                        button { class: "primary", onclick: move |_| ui.close_lesson(), "{lt(lang, L::BackToJourney)}" }
+                        button { class: "primary", onclick: move |_| ui.close_lesson(), "{lt(lang, back_label(ui))}" }
                     }
                 }
             }
@@ -144,6 +144,33 @@ pub fn draft_answer(ex: &Exercise, d: &Draft, tiles: &[String]) -> Option<Answer
         K::Speaking { .. } => Some(Answer::Practiced),
         K::Translate { .. } | K::Listen { .. } | K::FillBlank { .. } | K::Dictation { .. } => typed(),
     }
+}
+
+/// The label of the button that closes the player: back to where it was
+/// opened from.
+pub(crate) fn back_label(ui: Ui) -> L {
+    match *ui.lesson_from.read() {
+        crate::Screen::Journey => L::BackToJourney,
+        crate::Screen::Today => L::BackToToday,
+        _ => L::Back,
+    }
+}
+
+/// How many options the number keys can pick from (0: none).
+pub(crate) fn option_count(ex: &Exercise) -> usize {
+    match &ex.kind {
+        ExerciseKind::MultipleChoice { options, options_meaning, .. } => {
+            options.len().max(options_meaning.len())
+        }
+        ExerciseKind::Listen { options, .. } | ExerciseKind::FillBlank { options, .. } => options.len(),
+        _ => 0,
+    }
+}
+
+/// Exercises that can't be done without hearing the target language: with
+/// no voice on the device they're skipped like "can't listen now".
+pub(crate) fn needs_audio(ex: &Exercise) -> bool {
+    matches!(ex.kind, ExerciseKind::Listen { .. } | ExerciseKind::Dictation { .. })
 }
 
 /// BCP 47 tag for target-language text (the IME and the voice follow it).
@@ -393,15 +420,23 @@ pub fn latin_runs(s: &str) -> Vec<(bool, String)> {
     out
 }
 
-/// Explanation text with Latin runs isolated.
+/// Explanation text with Latin runs isolated (explicitly left-to-right: some
+/// WebViews don't resolve `dir=auto` on an inline `<bdi>`, which turned
+/// «Apa kabar?» into «?Apa kabar»). Digits outside the Latin runs follow the
+/// Eastern-digits setting, whichever digits the content was written with.
 #[component]
 pub(crate) fn Rich(text: String, target: &'static str) -> Element {
+    let ui = use_context::<Ui>();
+    let (lang, eastern) = {
+        let s = ui.settings.read();
+        (s.ui_language, s.eastern_digits)
+    };
     rsx! {
         for (i, (latin, run)) in latin_runs(&text).into_iter().enumerate() {
             if latin {
-                bdi { key: "{i}", lang: target, class: "latin", "{run}" }
+                bdi { key: "{i}", lang: target, dir: "ltr", class: "latin", "{run}" }
             } else {
-                span { key: "{i}", "{run}" }
+                span { key: "{i}", "{localize_digits(&run, lang, eastern)}" }
             }
         }
     }
@@ -434,6 +469,8 @@ fn PlayerView(lesson: LessonContent) -> Element {
     let revealed = use_signal(|| 1usize);
     let audio_missing = use_signal(|| false);
     let mut finished = use_signal(|| false);
+    // Listening items skipped because the device has no voice for them.
+    let mut voice_skips = use_signal(|| 0u32);
 
     // Save where we are on open (Lanjut) and play the first exercise's audio.
     use_hook(move || {
@@ -472,6 +509,10 @@ fn PlayerView(lesson: LessonContent) -> Element {
                     let mut store = db.0.borrow_mut();
                     if let Err(e) = store.record_lesson_event(&p.lesson().id, "completed", &p.completed()) {
                         eprintln!("kabar: saving the lesson result failed: {e}");
+                    }
+                    // The new words join the review deck.
+                    if let Err(e) = store.add_lesson_cards(p.lesson()) {
+                        eprintln!("kabar: adding the lesson's words to review failed: {e}");
                     }
                     if let Err(e) = store.clear_position() {
                         eprintln!("kabar: clearing the lesson position failed: {e}");
@@ -548,10 +589,29 @@ fn PlayerView(lesson: LessonContent) -> Element {
         }
     };
 
+    // No sound for the target language (the `missing` signal): listening
+    // items are skipped the "can't listen now" way, with a note, instead of
+    // asking for audio that can't play.
+    use_effect(move || {
+        if !*audio_missing.read() {
+            return;
+        }
+        let skip = {
+            let p = player.read();
+            matches!(p.step(), Step::Exercise { .. })
+                && p.pending().is_none()
+                && p.exercise().is_some_and(needs_audio)
+        };
+        if skip {
+            voice_skips += 1;
+            commit(&|p| Some(p.skip()));
+        }
+    });
+
     // Keys are caught on the document, not on the player element: a tapped
     // tile or option can be disabled under the focus, and the next Enter must
     // still check. Enter = check/continue (Shift+Enter is a new line in text
-    // answers), 1–4 = pick an option. Buttons in the feedback sheet and the
+    // answers), 1–9 = pick an option or a fill-in chip. Buttons in the feedback sheet and the
     // close button keep their native Enter.
     use_future(move || async move {
         let mut eval = document::eval(
@@ -565,7 +625,7 @@ fn PlayerView(lesson: LessonContent) -> Element {
                 if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault();
                     dioxus.send("enter");
-                } else if (!typing && /^[1-4]$/.test(e.key)) {
+                } else if (!typing && !e.ctrlKey && !e.metaKey && !e.altKey && /^[1-9]$/.test(e.key)) {
                     dioxus.send(e.key);
                 }
             };
@@ -581,15 +641,7 @@ fn PlayerView(lesson: LessonContent) -> Element {
                     if player.peek().pending().is_some() {
                         continue;
                     }
-                    let count = player.peek().exercise().map_or(0, |ex| match &ex.kind {
-                        ExerciseKind::MultipleChoice { options, options_meaning, .. } => {
-                            options.len().max(options_meaning.len())
-                        }
-                        ExerciseKind::Listen { options, .. } | ExerciseKind::FillBlank { options, .. } => {
-                            options.len()
-                        }
-                        _ => 0,
-                    });
+                    let count = player.peek().exercise().map_or(0, option_count);
                     if n <= count {
                         let mut d = draft;
                         d.write().choice = Some(n - 1);
@@ -626,7 +678,7 @@ fn PlayerView(lesson: LessonContent) -> Element {
             let n = l.dialogue.as_ref().map_or(0, |d| d.lines.len());
             if *revealed.read() < n { (lt(lang, L::NextLine), true) } else { (lt(lang, L::Continue), true) }
         }
-        (Step::Summary, _) => (lt(lang, L::BackToJourney), true),
+        (Step::Summary, _) => (lt(lang, back_label(ui)), true),
         (Step::Slide(_), _) => (lt(lang, L::Continue), true),
     };
     let feedback_class = match &pending {
@@ -672,6 +724,9 @@ fn PlayerView(lesson: LessonContent) -> Element {
             }
             div { class: "lp-body",
                 div { class: "lp-col", key: "{step:?}",
+                    if *voice_skips.read() > 0 {
+                        p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, L::NoVoiceSkipped)}" }
+                    }
                     match step {
                         Step::Slide(i) => rsx! {
                             SlideView { lesson: lesson.clone(), index: i, missing: audio_missing }
@@ -831,7 +886,7 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
         article { class: "lp-slide lp-enter",
             if index == 0 {
                 p { class: "lp-lesson-title",
-                    bdi { lang: target, "{lesson.title}" }
+                    bdi { lang: target, dir: "ltr", "{lesson.title}" }
                     if !lesson.review.verified {
                         span { class: "pill lp-draft", "{lt(lang, L::NotReviewed)}" }
                     }
@@ -839,7 +894,7 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
                 p { class: "muted", Rich { text: pick(&lesson.can_do, lang).to_string(), target } }
             }
             if let Some(title) = &slide.title {
-                h2 { class: "lp-slide-title", bdi { lang: target, "{title}" } }
+                h2 { class: "lp-slide-title", bdi { lang: target, dir: "ltr", "{title}" } }
             }
             p { class: "lp-slide-body pre", Rich { text: pick(&slide.body, lang).trim().to_string(), target } }
             if !slide.examples.is_empty() {
@@ -855,7 +910,7 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
                                 },
                                 span { class: "lp-example-icon", {speaker_icon()} }
                                 span { class: "lp-example-text",
-                                    bdi { lang: target, class: "latin lp-target", "{ex.text}" }
+                                    bdi { lang: target, dir: "ltr", class: "latin lp-target", "{ex.text}" }
                                     span { class: "muted", Rich { text: pick(&ex.meaning, lang).to_string(), target } }
                                 }
                             }
@@ -877,7 +932,7 @@ fn DialogueView(dialogue: Dialogue, language: String, shown: usize, missing: Sig
         article { class: "lp-dialogue",
             p { class: "lp-instruction", "{lt(lang, L::Dialogue)}" }
             if let Some(t) = &dialogue.title {
-                h2 { class: "lp-slide-title", bdi { lang: target, "{t}" } }
+                h2 { class: "lp-slide-title", bdi { lang: target, dir: "ltr", "{t}" } }
             }
             p { class: "muted lp-small", "{lt(lang, L::TapToHear)}" }
             ol { class: "lp-lines",
@@ -892,7 +947,7 @@ fn DialogueView(dialogue: Dialogue, language: String, shown: usize, missing: Sig
                                 move |_| speak_line(&d, i, &l, missing)
                             },
                             span { class: "lp-speaker", bdi { "{line.speaker}" } }
-                            bdi { lang: target, class: "latin lp-target", "{line.text}" }
+                            bdi { lang: target, dir: "ltr", class: "latin lp-target", "{line.text}" }
                             span { class: "muted", Rich { text: pick(&line.meaning, lang).to_string(), target } }
                         }
                     }
@@ -927,7 +982,7 @@ fn SummaryView(
     rsx! {
         article { class: "lp-summary",
             h2 { class: "lp-done reveal", "{lt(lang, L::Done)}" }
-            p { class: "lp-lesson-title reveal", bdi { lang: target, "{lesson.title}" } }
+            p { class: "lp-lesson-title reveal", bdi { lang: target, dir: "ltr", "{lesson.title}" } }
             if perfect {
                 p { class: "ok reveal", "{lt(lang, L::Perfect)}" }
             }
@@ -942,7 +997,7 @@ fn SummaryView(
                     ul { class: "lp-words",
                         for w in lesson.new_words.iter() {
                             li { key: "{w.word}", class: if w.arabic.is_some() { "bridge-row" } else { "" },
-                                bdi { lang: target, class: if w.arabic.is_some() { "latin bridge-word" } else { "latin" }, "{w.word}" }
+                                bdi { lang: target, dir: "ltr", class: if w.arabic.is_some() { "latin bridge-word" } else { "latin" }, "{w.word}" }
                                 span { class: "muted", Rich { text: pick(&w.meaning, lang).to_string(), target } }
                                 if let Some(ar) = &w.arabic {
                                     span { class: "lp-bridge", title: lt(lang, L::FromArabic),
@@ -960,7 +1015,7 @@ fn SummaryView(
                     h3 { "{lt(lang, L::Tomorrow)}" }
                     p { class: "row",
                         for m in mistakes.iter() {
-                            bdi { key: "{m}", lang: target, class: "pill latin", "{m}" }
+                            bdi { key: "{m}", lang: target, dir: "ltr", class: "pill latin", "{m}" }
                         }
                     }
                 }
@@ -968,7 +1023,7 @@ fn SummaryView(
             if let Some(s) = &lesson.souvenir {
                 section { class: "card lp-souvenir reveal d3",
                     p { class: "muted lp-small", "{lt(lang, L::Souvenir)}" }
-                    h3 { bdi { lang: target, "{s.title}" } }
+                    h3 { bdi { lang: target, dir: "ltr", "{s.title}" } }
                     p { Rich { text: pick(&s.note, lang).to_string(), target } }
                 }
             }
@@ -1054,11 +1109,11 @@ fn Feedback(
                 },
                 Grade::Almost { expected } => rsx! {
                     p { class: "lp-verdict", "{lt(lang, L::Almost)}" }
-                    p { bdi { lang: target, class: "lp-answer latin", "{expected}" } }
+                    p { bdi { lang: target, dir: "ltr", class: "lp-answer latin", "{expected}" } }
                 },
                 Grade::Wrong => rsx! {
                     p { class: "lp-verdict", "{lt(lang, L::NotYet)}" }
-                    p { bdi { lang: answer_tag, class: "lp-answer", "{answer}" } }
+                    p { bdi { lang: answer_tag, dir: if answer_tag == target { "ltr" } else { "auto" }, class: "lp-answer", "{answer}" } }
                     if !retry {
                         p { class: "muted lp-small", "{lt(lang, L::AgainAtEnd)}" }
                     }
@@ -1067,7 +1122,7 @@ fn Feedback(
                     p { class: "lp-verdict", "{lt(lang, L::NeedsReview)}" }
                     ul { class: "lp-refs",
                         for r in references(&ex, lang).into_iter().take(3) {
-                            li { key: "{r}", bdi { lang: answer_tag, class: "lp-answer", "{r}" } }
+                            li { key: "{r}", bdi { lang: answer_tag, dir: if answer_tag == target { "ltr" } else { "auto" }, class: "lp-answer", "{r}" } }
                         }
                     }
                     p { "{lt(lang, L::SameMeaning)}" }
@@ -1080,7 +1135,7 @@ fn Feedback(
             if let Some(t) = transcript {
                 p { class: "lp-small",
                     span { class: "muted", "{lt(lang, L::Transcript)} " }
-                    bdi { lang: target, class: "latin lp-target", "{t}" }
+                    bdi { lang: target, dir: "ltr", class: "latin lp-target", "{t}" }
                 }
             }
             if let Some(m) = meaning {
@@ -1129,7 +1184,7 @@ pub fn ExerciseView(
                     if !question.trim().is_empty() {
                         div { class: "row",
                             PlayButton { text: question.clone(), language: language.clone(), audio: None, missing, big: false }
-                            p { class: "lp-question", bdi { lang: target, class: "latin", "{question}" } }
+                            p { class: "lp-question pre", bdi { lang: target, dir: "ltr", class: "latin", "{question}" } }
                         }
                     }
                     if let Some(q) = question_meaning {
@@ -1155,7 +1210,7 @@ pub fn ExerciseView(
                     if let Some(t) = prompt {
                         div { class: "row",
                             PlayButton { text: t.clone(), language: language.clone(), audio: None, missing, big: false }
-                            p { class: "lp-question", bdi { lang: target, class: "latin", "{t}" } }
+                            p { class: "lp-question", bdi { lang: target, dir: "ltr", class: "latin", "{t}" } }
                         }
                     }
                 }
@@ -1221,7 +1276,7 @@ pub fn ExerciseView(
         },
         K::Speaking { text, meaning } => rsx! {
             div { class: "lp-prompt center",
-                p { class: "lp-question big", bdi { lang: target, class: "latin", "{text}" } }
+                p { class: "lp-question big", bdi { lang: target, dir: "ltr", class: "latin", "{text}" } }
                 p { class: "muted", Rich { text: pick(&meaning, lang).to_string(), target } }
                 PlayButton { text: text.clone(), language: language.clone(), audio: None, missing, big: true }
                 p { class: "muted lp-small", "{lt(lang, L::SpeakingLater)}" }
@@ -1230,7 +1285,7 @@ pub fn ExerciseView(
     }
 }
 
-/// Option buttons (keys 1–4 pick them too). After checking, the right one is
+/// Option buttons and fill-in chips (keys 1–9 pick them too). After checking, the right one is
 /// marked and a wrong pick is shown gently.
 #[component]
 fn Choices(
@@ -1255,7 +1310,7 @@ fn Choices(
                     aria_pressed: if chosen == Some(i) { "true" } else { "false" },
                     disabled: locked,
                     onclick: move |_| draft.write().choice = Some(i),
-                    if !chips {
+                    if i < 9 {
                         span { class: "lp-key", aria_hidden: "true", "{i + 1}" }
                     }
                     bdi { lang: tag, dir: "auto", "{label}" }
@@ -1363,7 +1418,7 @@ fn MatchPairs(
                                 try_match(draft, &words, on_matched);
                             }
                         },
-                        bdi { lang: target, class: "latin", "{word}" }
+                        bdi { lang: target, dir: "ltr", class: "latin", "{word}" }
                     }
                 }
             }

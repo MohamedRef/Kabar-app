@@ -40,6 +40,10 @@ html, body {
 
 .app:lang(ar) { font-family: var(--font-arabic); }
 bdi, .latin { font-family: var(--font-latin); }
+/* Target-language text is always left-to-right. Some WebViews don't resolve
+   dir=auto on an inline <bdi>, which turned "Apa kabar?" into "?Apa kabar"
+   inside Arabic UI. */
+bdi:lang(id), bdi:lang(jv), bdi.latin { direction: ltr; unicode-bidi: isolate; }
 
 button {
   font: inherit;

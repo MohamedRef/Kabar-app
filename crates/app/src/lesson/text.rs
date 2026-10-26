@@ -107,6 +107,12 @@ pub enum L {
     SkillSpeaking,
     SkillVocabulary,
     SkillGrammar,
+    NoVoiceSkipped,
+    LeaveTestTitle,
+    LeaveTestBody,
+    StayInTest,
+    LeaveTest,
+    BackToToday,
 }
 
 pub fn lt(lang: UiLanguage, msg: L) -> &'static str {
@@ -447,5 +453,29 @@ pub fn lt(lang: UiLanguage, msg: L) -> &'static str {
         (SkillGrammar, ArEg) => "القواعد",
         (SkillGrammar, Ar) => "القواعد",
         (SkillGrammar, En) => "Grammar",
+        (NoVoiceSkipped, ArEg) => "الصوت مش متاح على الجهاز ده دلوقتي، فعدّينا تمارين السمع ومش هتتحسب عليك.",
+        (NoVoiceSkipped, Ar) => "الصوت غير متاح على هذا الجهاز الآن، فتخطّينا تمارين الاستماع ولن تُحسب عليك.",
+        (NoVoiceSkipped, En) => {
+            "Sound isn't available on this device right now, so we skipped the listening items. They don't count against you."
+        }
+        (LeaveTestTitle, ArEg) => "تخرج من الاختبار؟",
+        (LeaveTestTitle, Ar) => "هل تريد الخروج من الاختبار؟",
+        (LeaveTestTitle, En) => "Leave the test?",
+        (LeaveTestBody, ArEg) => {
+            "إجاباتك لحد دلوقتي مش هتتحفظ. تقدر تكمّل دلوقتي، أو تبدأه من الأول في أي وقت."
+        }
+        (LeaveTestBody, Ar) => "لن تُحفظ إجاباتك حتى الآن. يمكنك المتابعة الآن، أو البدء من جديد في أي وقت.",
+        (LeaveTestBody, En) => {
+            "Your answers so far won't be kept. You can carry on now, or start again any time."
+        }
+        (StayInTest, ArEg) => "أكمّل الاختبار",
+        (StayInTest, Ar) => "أتابع الاختبار",
+        (StayInTest, En) => "Keep going",
+        (LeaveTest, ArEg) => "أخرج",
+        (LeaveTest, Ar) => "أخرج",
+        (LeaveTest, En) => "Leave",
+        (BackToToday, ArEg) => "ارجع لخطة النهارده",
+        (BackToToday, Ar) => "العودة إلى خطة اليوم",
+        (BackToToday, En) => "Back to today's plan",
     }
 }
