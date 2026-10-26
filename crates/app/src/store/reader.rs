@@ -16,6 +16,8 @@ pub enum TextKind {
     Pasted,
     Shared,
     Screenshot,
+    /// Imported from a link; `source` is the URL.
+    Web,
 }
 
 impl TextKind {
@@ -24,6 +26,7 @@ impl TextKind {
             Self::Pasted => "pasted",
             Self::Shared => "shared",
             Self::Screenshot => "screenshot",
+            Self::Web => "web",
         }
     }
 
@@ -31,6 +34,7 @@ impl TextKind {
         match s {
             "shared" => Self::Shared,
             "screenshot" => Self::Screenshot,
+            "web" => Self::Web,
             _ => Self::Pasted,
         }
     }
@@ -92,8 +96,24 @@ impl Store {
         source: Option<&str>,
         layout: Option<&str>,
     ) -> Result<SavedText> {
+        self.insert_text(title_of(body), body, kind, source, layout)
+    }
+
+    /// A page imported from a link, under the page's own title.
+    pub fn save_web_text(&mut self, title: Option<&str>, body: &str, url: &str) -> Result<SavedText> {
+        let title = title.map(str::trim).filter(|t| !t.is_empty()).map_or_else(|| title_of(body), title_of);
+        self.insert_text(title, body, TextKind::Web, Some(url), None)
+    }
+
+    fn insert_text(
+        &mut self,
+        title: String,
+        body: &str,
+        kind: TextKind,
+        source: Option<&str>,
+        layout: Option<&str>,
+    ) -> Result<SavedText> {
         let id = uuid::Uuid::new_v4().to_string();
-        let title = title_of(body);
         let row = TextRow {
             title: title.clone(),
             body: body.into(),
