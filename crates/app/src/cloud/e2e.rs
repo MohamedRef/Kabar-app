@@ -149,6 +149,11 @@ fn phone_and_tablet_sync_through_kabar_cloud() {
         "{audio:?}"
     );
 
+    // Vision: an image goes up once, named by its hash.
+    let png = b"\x89PNG\r\n\x1a\nkabar-e2e".to_vec();
+    let sha = runtime.block_on(link.put_blob(png)).unwrap();
+    assert_eq!(sha.len(), 64);
+
     phone.send(Command::RevokeDevice(tablet_id));
     tablet.wait("signed out", |e| match e {
         Event::Status(s) if s.sync == SyncState::SignedOut => {
