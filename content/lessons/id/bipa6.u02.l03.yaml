@@ -1,0 +1,192 @@
+schema: kabar.lesson/v1
+id: bipa6.u02.l03
+language: id
+title: Membaca puisi
+can_do:
+  ar_eg: تقرا قصيدة حديثة قصيرة وتفهم صورها وإحساسها.
+  ar: أن تقرأ قصيدة حديثة قصيرة وتفهم صورها وشعورها.
+  en: Read a short modern poem and understand its images and mood.
+slides:
+  - title: Sungai di malam hari
+    body:
+      ar_eg: |
+        الـ puisi (الشعر) الحديث مش لازم قافية زي البانتون. اقرا الـ bait (المقطع) ده، مكتوب للدرس:
+        Sungai Siak tak pernah bertanya
+        ke mana perahu pergi.
+        Ia hanya mengalir, sunyi,
+        membawa nama-nama yang tak kembali.
+        - النهر ساكت (sunyi) ومابيسألش: تشخيص.
+        - «الأسامي اللي مارجعتش» = اللي سافروا أو ماتوا، المعنى ضمني.
+        والـ penyair (الشاعر) ماقالش «أنا حزين» خالص.
+      ar: |
+        الـ puisi (الشعر) الحديث لا يلتزم القافية كالبانتون. اقرأ هذا الـ bait (المقطع) المكتوب للدرس:
+        Sungai Siak tak pernah bertanya
+        ke mana perahu pergi.
+        Ia hanya mengalir, sunyi,
+        membawa nama-nama yang tak kembali.
+        - النهر صامت (sunyi) لا يسأل: تشخيص.
+        - «الأسماء التي لا تعود» = من رحلوا أو ماتوا، والمعنى ضمني.
+        ولم يقل الـ penyair (الشاعر) «أنا حزين» قطّ.
+      en: |
+        Modern puisi (poetry) needn't rhyme like a pantun. Read this bait (stanza), written for the lesson:
+        Sungai Siak tak pernah bertanya
+        ke mana perahu pergi.
+        Ia hanya mengalir, sunyi,
+        membawa nama-nama yang tak kembali.
+        - The river is silent (sunyi) and never asks: personification.
+        - "Names that don't come back" = people who left or died; the meaning is implied.
+        And the penyair (poet) never says "I'm sad".
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: puisi
+        ar_eg: شعر / قصيدة
+        ar: شعر
+        en: poetry, poem
+      - text: penyair
+        ar_eg: شاعر
+        ar: شاعر
+        en: poet
+      - text: bait
+        ar_eg: مقطع شعري
+        ar: مقطع
+        en: stanza
+      - text: sunyi
+        ar_eg: ساكت / هادي قوي
+        ar: صامت
+        en: silent, still
+    words: [puisi, penyair, bait, sunyi]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «nama-nama yang tak kembali» بتلمّح لإيه؟
+      ar: إلامَ تلمّح «nama-nama yang tak kembali»؟
+      en: What does "nama-nama yang tak kembali" hint at?
+    options:
+      - مراكب ضاعت أساميها.
+      - ناس سافروا أو ماتوا ومارجعوش.
+      - أسامي شوارع جديدة.
+    answer: 1
+    words: [puisi]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إحساس المقطع ده عامل إزاي؟
+      ar: ما شعور هذا المقطع؟
+      en: What is the mood of this stanza?
+    options:
+      - هادي وحزين.
+      - فرحان ومزقطط.
+      - غضبان.
+    answer: 0
+    words: [sunyi, bait]
+  - id: e04
+    type: fill_blank
+    sentence: Chairil Anwar adalah ___ Indonesia yang sangat terkenal.
+    meaning:
+      ar_eg: خيرل أنور شاعر إندونيسي مشهور جدًا.
+      ar: شاعر إندونيسي شهير جدًّا هو خيرل أنور.
+      en: Chairil Anwar is a very famous Indonesian poet.
+    options: [penyair, puisi, bait]
+    answers: [penyair]
+    words: [penyair]
+  - id: e05
+    type: listen
+    text: Puisi ini terdiri atas tiga bait pendek.
+    question:
+      ar_eg: القصيدة فيها كام مقطع؟
+      ar: كم مقطعًا في القصيدة؟
+      en: How many stanzas does the poem have?
+    options:
+      - مقطعين.
+      - أربع مقاطع.
+      - تلات مقاطع قصيرة.
+    answer: 2
+    words: [puisi, bait]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: الشاعر بيوصف نهر ساكت بالليل.
+      ar: يصف الشاعر نهرًا صامتًا في الليل.
+      en: The poet describes a silent river at night.
+    answer: Penyair itu menggambarkan sungai yang sunyi di malam hari.
+    distractors: [bait, puisi]
+    words: [penyair, sunyi]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أنا بحب أقرا شعر قبل ما أنام.
+      ar: أحبّ قراءة الشعر قبل النوم.
+      en: I like reading poetry before I sleep.
+    answers:
+      - Saya suka membaca puisi sebelum tidur.
+      - Aku suka membaca puisi sebelum tidur.
+      - Saya senang membaca puisi sebelum tidur.
+      - Saya suka membaca puisi sebelum saya tidur.
+    words: [puisi]
+  - id: e08
+    type: speaking
+    text: Malam itu kota terasa sunyi, seperti puisi tanpa kata.
+    meaning:
+      ar_eg: الليلة دي المدينة كانت ساكتة، زي قصيدة من غير كلام.
+      ar: بدت المدينة تلك الليلة صامتة، كقصيدة بلا كلمات.
+      en: That night the city felt silent, like a poem without words.
+    words: [sunyi]
+  - id: e09
+    type: dictation
+    text: Bait terakhir puisi itu sangat sunyi.
+    meaning:
+      ar_eg: آخر مقطع في القصيدة دي ساكت جدًا.
+      ar: المقطع الأخير من تلك القصيدة شديد الصمت.
+      en: The poem's last stanza is very quiet.
+    words: [bait, sunyi]
+dialogue:
+  title: Malam baca puisi
+  lines:
+    - speaker: Encik Zul
+      text: Bagaimana, Mohamed? Kamu suka puisi tentang Sungai Siak tadi?
+      ar_eg: إيه رأيك يا محمد؟ عجبتك القصيدة بتاعة نهر سياك؟
+      ar: ما رأيك يا محمد؟ أأعجبتك قصيدة نهر سياك؟
+      en: How was it, Mohamed? Did you like the poem about the Siak River?
+    - speaker: Mohamed
+      text: Suka sekali. Bait terakhir membuat saya ingat Sungai Nil.
+      ar_eg: جدًا. آخر مقطع فكّرني بالنيل.
+      ar: كثيرًا. ذكّرني المقطع الأخير بالنيل.
+      en: Very much. The last stanza reminded me of the Nile.
+    - speaker: Encik Zul
+      text: Penyair yang baik membuat pembaca melihat sungainya sendiri.
+      ar_eg: الشاعر الكويس بيخلّي القارئ يشوف نهره هو.
+      ar: الشاعر الجيّد يجعل القارئ يرى نهره هو.
+      en: A good poet makes readers see their own river.
+    - speaker: Mohamed
+      text: Mungkin karena itu puisi tidak perlu banyak kata.
+      ar_eg: يمكن علشان كده الشعر مش محتاج كلام كتير.
+      ar: لعلّ هذا سبب أنّ الشعر لا يحتاج إلى كلمات كثيرة.
+      en: Maybe that's why poetry doesn't need many words.
+new_words:
+  - word: puisi
+    pos: noun
+    ar_eg: شعر / قصيدة
+    ar: شعر
+    en: poetry, poem
+  - word: penyair
+    pos: noun
+    ar_eg: شاعر
+    ar: شاعر
+    en: poet
+  - word: bait
+    pos: noun
+    arabic: بيت
+    ar_eg: مقطع شعري
+    ar: مقطع
+    en: stanza
+  - word: sunyi
+    pos: adjective
+    ar_eg: ساكت / هادي قوي
+    ar: صامت
+    en: silent, still
+review:
+  status: draft
+  verified: false

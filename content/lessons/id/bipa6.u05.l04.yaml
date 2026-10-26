@@ -1,0 +1,182 @@
+schema: kabar.lesson/v1
+id: bipa6.u05.l04
+language: id
+title: Dialog antariman
+can_do:
+  ar_eg: تتكلم عن الأديان مع حد من دين تاني باحترام ومن غير ما تجرح.
+  ar: أن تتحدّث عن الأديان مع شخص من دين آخر باحترام ودون إساءة.
+  en: Talk about religion with someone of another faith, respectfully and without offence.
+slides:
+  - title: Bertanya dengan hormat
+    grammar: id.register.religious
+    body:
+      ar_eg: |
+        في حوار antarumat (بين أتباع الأديان):
+        - اسأل وما تحكمش: Boleh saya bertanya tentang keyakinan Bapak? (ممكن أسأل عن عقيدة حضرتك؟)
+        - menghormati = يحترم: Kami saling menghormati.
+        - rumah ibadah = دار عبادة (جامع، كنيسة، معبد). كلمة محايدة تنفع للكل.
+        - لكل دين أعياده: Selamat Natal، Selamat Hari Raya Waisak، Selamat Idulfitri.
+      ar: |
+        في حوار antarumat (بين أتباع الأديان):
+        - اسأل ولا تحكم: Boleh saya bertanya tentang keyakinan Bapak? (هل لي أن أسأل عن عقيدتك؟)
+        - menghormati = يحترم: Kami saling menghormati.
+        - rumah ibadah = دار عبادة (مسجد، كنيسة، معبد)، كلمة محايدة تصلح للجميع.
+        - لكلّ دين أعياده: Selamat Natal، Selamat Hari Raya Waisak، Selamat Idulfitri.
+      en: |
+        In an antarumat (interfaith) conversation:
+        - Ask, don't judge: Boleh saya bertanya tentang keyakinan Bapak? (May I ask about your faith?)
+        - menghormati = to respect: Kami saling menghormati.
+        - rumah ibadah = house of worship (mosque, church, temple), a neutral word for all.
+        - Each faith has its holidays: Selamat Natal, Selamat Hari Raya Waisak, Selamat Idulfitri.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: antarumat
+        ar_eg: بين أتباع الأديان
+        ar: بين أتباع الأديان
+        en: interfaith, between faith communities
+      - text: menghormati
+        ar_eg: يحترم
+        ar: يحترم
+        en: to respect
+      - text: keyakinan
+        ar_eg: عقيدة / إيمان
+        ar: عقيدة
+        en: belief, faith
+      - text: rumah ibadah
+        ar_eg: دار عبادة
+        ar: دار عبادة
+        en: house of worship
+    words: [antarumat, menghormati, keyakinan, rumah ibadah]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي سؤال أنسب في حوار antarumat؟
+      ar: أيّ سؤال أنسب في حوار antarumat؟
+      en: Which question best suits an antarumat conversation?
+    options:
+      - Kenapa agama Bapak salah?
+      - Boleh saya bertanya tentang keyakinan Bapak?
+      - Bapak tidak salat, ya?
+    answer: 1
+    words: [antarumat, keyakinan]
+  - id: e03
+    type: fill_blank
+    sentence: Di kota ini, umat beragama saling ___.
+    meaning:
+      ar_eg: في المدينة دي، أتباع الأديان بيحترموا بعض.
+      ar: في هذه المدينة يحترم أتباع الأديان بعضهم بعضًا.
+      en: In this city, people of different faiths respect one another.
+    options: [menghormati, keyakinan, antarumat]
+    answers: [menghormati]
+    words: [menghormati, umat]
+  - id: e04
+    type: listen
+    text: Di Banda Aceh ada masjid, gereja, dan vihara. Semuanya rumah ibadah.
+    question:
+      ar_eg: إيه اللي موجود في باندا آتشيه؟
+      ar: ماذا يوجد في باندا آتشيه؟
+      en: What is there in Banda Aceh?
+    options:
+      - جوامع بس.
+      - جامع وكنيسة بس.
+      - جامع وكنيسة ومعبد بوذي.
+    answer: 2
+    words: [rumah ibadah]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: إحنا بنحترم عقيدة كل واحد.
+      ar: نحن نحترم عقيدة كلّ إنسان.
+      en: We respect everyone's beliefs.
+    answer: Kami menghormati keyakinan setiap orang.
+    distractors: [rumah ibadah, antarumat]
+    words: [menghormati, keyakinan]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: بكرة فيه لقاء بين الأديان في الجامعة.
+      ar: غدًا لقاء بين الأديان في الجامعة.
+      en: Tomorrow there's an interfaith meeting at the university.
+    answers:
+      - Besok ada pertemuan antarumat di kampus.
+      - Besok ada pertemuan antarumat beragama di universitas.
+      - Besok ada dialog antarumat di kampus.
+      - Besok ada pertemuan antarumat beragama di kampus.
+    words: [antarumat]
+  - id: e07
+    type: speaking
+    text: Setiap rumah ibadah harus kita hormati.
+    meaning:
+      ar_eg: كل دار عبادة لازم نحترمها.
+      ar: يجب أن نحترم كلّ دار عبادة.
+      en: Every house of worship deserves our respect.
+    words: [rumah ibadah, menghormati]
+  - id: e08
+    type: dictation
+    text: Keyakinan kita berbeda, tetapi kita tetap bersaudara.
+    meaning:
+      ar_eg: عقايدنا مختلفة، بس إحنا برضه إخوات.
+      ar: تختلف عقائدنا، لكنّنا نبقى إخوة.
+      en: Our beliefs differ, but we're still brothers and sisters.
+    words: [keyakinan]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: صاحبك البوذي عنده عيد Waisak. تقول له إيه؟
+      ar: لصديقك البوذي عيد Waisak. ماذا تقول له؟
+      en: Your Buddhist friend is celebrating Waisak. What do you say?
+    options:
+      - Selamat Hari Raya Waisak!
+      - Selamat Idulfitri!
+      - Selamat jalan!
+    answer: 0
+dialogue:
+  title: Guru dari Sumatra Utara
+  lines:
+    - speaker: Pak Yohanes
+      text: Saya orang Batak dan beragama Katolik. Sudah dua puluh tahun saya mengajar di Banda Aceh.
+      ar_eg: أنا من الباتاك وكاثوليكي. بقالي عشرين سنة بدرّس في باندا آتشيه.
+      ar: أنا من الباتاك وكاثوليكي، وأدرّس في باندا آتشيه منذ عشرين عامًا.
+      en: I'm Batak and Catholic. I've taught in Banda Aceh for twenty years.
+    - speaker: Mohamed
+      text: Boleh saya bertanya? Bagaimana rasanya tinggal di kota syariah?
+      ar_eg: ممكن أسأل؟ إحساسك إيه وإنت عايش في مدينة بتطبّق الشريعة؟
+      ar: هل لي أن أسأل؟ كيف تجد العيش في مدينة تطبّق الشريعة؟
+      en: May I ask? What's it like living in a sharia city?
+    - speaker: Pak Yohanes
+      text: Ada aturan yang berbeda, tetapi tetangga saya menghormati keyakinan saya.
+      ar_eg: فيه قوانين مختلفة، بس جيراني بيحترموا عقيدتي.
+      ar: ثمّة قواعد مختلفة، لكنّ جيراني يحترمون عقيدتي.
+      en: Some rules are different, but my neighbours respect my faith.
+    - speaker: Pak Yohanes
+      text: Waktu Natal, mereka datang. Waktu Lebaran, saya yang datang.
+      ar_eg: في الكريسماس بييجوا لي. وفي العيد أنا اللي بروح لهم.
+      ar: في عيد الميلاد يزورونني، وفي العيد أزورهم أنا.
+      en: At Christmas they visit me. At Eid, I'm the one who visits.
+new_words:
+  - word: antarumat
+    pos: adjective
+    ar_eg: بين أتباع الأديان
+    ar: بين أتباع الأديان
+    en: interfaith, between faith communities
+  - word: menghormati
+    pos: verb
+    ar_eg: يحترم
+    ar: يحترم
+    en: to respect
+  - word: keyakinan
+    pos: noun
+    ar_eg: عقيدة / إيمان
+    ar: عقيدة
+    en: belief, faith
+  - word: rumah ibadah
+    pos: noun
+    ar_eg: دار عبادة
+    ar: دار عبادة
+    en: house of worship
+review:
+  status: draft
+  verified: false

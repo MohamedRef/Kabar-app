@@ -1,0 +1,190 @@
+schema: kabar.lesson/v1
+id: bipa6.u04.l03
+language: id
+title: Prasasti
+can_do:
+  ar_eg: تقرا عن النقوش القديمة وتتكلم عن اكتشافات الآثار.
+  ar: أن تقرأ عن النقوش القديمة وتتحدّث عن الاكتشافات الأثرية.
+  en: Read about ancient inscriptions and talk about archaeological finds.
+slides:
+  - title: Batu yang berbicara
+    body:
+      ar_eg: |
+        اقرا (مكتوب للدرس):
+        Pada tahun 1920, ditemukanlah sebuah batu bertulis di Kedukan Bukit, Palembang. Prasasti ini berasal dari tahun 683. Bahasanya Melayu Kuno, dan aksaranya Pallawa dari India. Menurut para arkeolog, inilah salah satu tulisan Melayu tertua.
+        - prasasti = نقش على حجر، aksara = خط / حروف
+        - kuno = قديم جدًا، ditemukan = اتلقى / اكتُشف
+        - arkeolog = عالم آثار
+      ar: |
+        اقرأ (نصّ مكتوب للدرس):
+        Pada tahun 1920, ditemukanlah sebuah batu bertulis di Kedukan Bukit, Palembang. Prasasti ini berasal dari tahun 683. Bahasanya Melayu Kuno, dan aksaranya Pallawa dari India. Menurut para arkeolog, inilah salah satu tulisan Melayu tertua.
+        - prasasti = نقش حجري، aksara = خطّ
+        - kuno = عتيق، ditemukan = اكتُشف
+        - arkeolog = عالم آثار
+      en: |
+        Read (written for the lesson):
+        Pada tahun 1920, ditemukanlah sebuah batu bertulis di Kedukan Bukit, Palembang. Prasasti ini berasal dari tahun 683. Bahasanya Melayu Kuno, dan aksaranya Pallawa dari India. Menurut para arkeolog, inilah salah satu tulisan Melayu tertua.
+        - prasasti = inscription, aksara = script
+        - kuno = ancient, ditemukan = was found
+        - arkeolog = archaeologist
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: prasasti
+        ar_eg: نقش على حجر
+        ar: نقش حجري
+        en: inscription
+      - text: aksara
+        ar_eg: خط / حروف
+        ar: خطّ
+        en: script, writing system
+      - text: kuno
+        ar_eg: قديم جدًا
+        ar: عتيق
+        en: ancient
+      - text: ditemukan
+        ar_eg: اتلقى / اكتُشف
+        ar: اكتُشف
+        en: to be found
+      - text: arkeolog
+        ar_eg: عالم آثار
+        ar: عالم آثار
+        en: archaeologist
+    words: [prasasti, aksara, kuno, ditemukan, arkeolog]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: نقش كيدوكان بوكيت مكتوب بأنهي خط؟
+      ar: بأيّ خطّ كُتب نقش كيدوكان بوكيت؟
+      en: Which script is the Kedukan Bukit inscription written in?
+    options:
+      - الخط العربي.
+      - خط بالاوا من الهند.
+      - الحروف اللاتيني.
+    answer: 1
+    words: [aksara, prasasti]
+  - id: e03
+    type: fill_blank
+    sentence: Sebuah prasasti lain ___ oleh petani di tepi sungai.
+    meaning:
+      ar_eg: نقش تاني لقاه فلاح على شط النهر.
+      ar: عثر فلّاح على نقش آخر على ضفّة النهر.
+      en: Another inscription was found by farmers on the riverbank.
+    options: [ditemukan, kuno, aksara]
+    answers: [ditemukan]
+    words: [ditemukan]
+  - id: e04
+    type: listen
+    text: Para arkeolog meneliti batu kuno itu selama bertahun-tahun.
+    question:
+      ar_eg: علماء الآثار عملوا إيه؟
+      ar: ماذا فعل علماء الآثار؟
+      en: What did the archaeologists do?
+    options:
+      - باعوا الحجر.
+      - رموا الحجر في النهر.
+      - درسوا الحجر سنين.
+    answer: 2
+    words: [arkeolog, kuno]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: النقش ده من أقدم الكتابات الملايو.
+      ar: هذا النقش من أقدم الكتابات الملايوية.
+      en: This inscription is one of the oldest Malay writings.
+    answer: Prasasti ini salah satu tulisan Melayu tertua.
+    distractors: [aksara, arkeolog]
+    words: [prasasti]
+  - id: e06
+    type: translate
+    direction: from_target
+    source_text: Bahasa di prasasti itu adalah bahasa Melayu Kuno.
+    answers_meaning:
+      ar_eg:
+        - اللغة اللي على النقش ده ملايو قديم.
+        - النقش ده مكتوب بالملايو القديمة.
+      ar:
+        - لغة ذلك النقش هي الملايوية القديمة.
+        - كُتب النقش بالملايوية القديمة.
+      en:
+        - The language on that inscription is Old Malay.
+        - That inscription is written in Old Malay.
+    words: [prasasti, kuno]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الإندونيسي النهارده بيتكتب بأنهي aksara؟
+      ar: بأيّ aksara تُكتب الإندونيسية اليوم؟
+      en: Which aksara is Indonesian written in today?
+    options: [Latin, Pallawa, Jawi]
+    answer: 0
+    words: [aksara]
+  - id: e08
+    type: speaking
+    text: Saya ingin menjadi arkeolog dan meneliti aksara kuno.
+    meaning:
+      ar_eg: نفسي أبقى عالم آثار وأدرس الخطوط القديمة.
+      ar: أودّ أن أصبح عالم آثار وأدرس الخطوط القديمة.
+      en: I'd like to become an archaeologist and study ancient scripts.
+    words: [arkeolog, aksara]
+  - id: e09
+    type: dictation
+    text: Batu bertulis itu ditemukan pada tahun 1920.
+    meaning:
+      ar_eg: الحجر المكتوب ده اتلقى سنة 1920.
+      ar: اكتُشف ذلك الحجر المنقوش عام 1920.
+      en: That inscribed stone was found in 1920.
+    words: [ditemukan]
+dialogue:
+  title: Huruf yang mirip
+  lines:
+    - speaker: Mohamed
+      text: Kak, aksara Pallawa ini sulit sekali dibaca.
+      ar_eg: يا كاك، خط بالاوا ده صعب قوي يتقري.
+      ar: خطّ بالاوا هذا صعب القراءة جدًّا.
+      en: Kak, this Pallava script is really hard to read.
+    - speaker: Kak Dewi
+      text: Memang. Setelah Islam datang, orang Melayu menulis dengan aksara Jawi.
+      ar_eg: فعلًا. وبعد ما الإسلام جه، الملايو كتبوا بالخط الجاوي.
+      ar: فعلًا. وبعد مجيء الإسلام كتب الملايو بالخطّ الجاوي.
+      en: Indeed. After Islam came, the Malays wrote in Jawi script.
+    - speaker: Mohamed
+      text: Jawi? Itu huruf Arab, kan? Kalau itu, saya bisa membacanya!
+      ar_eg: جاوي؟ دي حروف عربي، صح؟ لو كده، أنا أعرف أقراها!
+      ar: الجاوي؟ إنّها حروف عربية، أليس كذلك؟ إذن أستطيع قراءتها!
+      en: Jawi? That's Arabic letters, isn't it? Then I can read it!
+    - speaker: Kak Dewi
+      text: Bisa membaca hurufnya, tetapi bahasanya Melayu. Coba nanti di museum.
+      ar_eg: هتعرف تقرا الحروف، بس اللغة ملايو. جرّب بعدين في المتحف.
+      ar: ستقرأ الحروف، لكنّ اللغة ملايوية. جرّب لاحقًا في المتحف.
+      en: You can read the letters, but the language is Malay. Try it later at the museum.
+new_words:
+  - word: prasasti
+    pos: noun
+    ar_eg: نقش على حجر
+    ar: نقش حجري
+    en: inscription
+  - word: aksara
+    pos: noun
+    ar_eg: خط / حروف
+    ar: خطّ
+    en: script, writing system
+  - word: kuno
+    pos: adjective
+    ar_eg: قديم جدًا
+    ar: عتيق
+    en: ancient
+  - word: ditemukan
+    pos: verb
+    ar_eg: اتلقى / اكتُشف
+    ar: اكتُشف
+    en: to be found
+  - word: arkeolog
+    pos: noun
+    ar_eg: عالم آثار
+    ar: عالم آثار
+    en: archaeologist
+review:
+  status: draft
+  verified: false
