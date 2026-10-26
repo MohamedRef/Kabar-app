@@ -1,0 +1,195 @@
+schema: kabar.lesson/v1
+id: bipa6.u07.l05
+language: id
+title: Aturan dengan kata sederhana
+can_do:
+  ar_eg: تشرح بند قانوني بكلام بسيط لأي حد.
+  ar: أن تشرح بندًا قانونيًّا بكلام بسيط لأيّ شخص.
+  en: Explain a legal rule in plain words to anyone.
+slides:
+  - title: Artinya …
+    grammar: id.register.legal
+    body:
+      ar_eg: |
+        علشان تبسّط بند: لاقي مين، ولازم ولا ممنوع، وفي أنهي حالة. وبعدين ابدأ بـ «Artinya, …» (يعني …).
+        - قانوني (مكتوب للدرس): Setiap orang yang melakukan pelanggaran sebagaimana dimaksud dalam Pasal 5 dikenai denda paling banyak Rp500.000,00.
+        - بسيط: Artinya, kalau kamu melanggar aturan di Pasal 5, kamu bisa kena denda sampai lima ratus ribu rupiah.
+        خلي بالك: paling banyak = بالكتير، paling sedikit = على الأقل.
+      ar: |
+        لتبسيط بند: حدّد مَن، وهل هو واجب أم محظور، وفي أيّ حالة، ثمّ ابدأ بـ «Artinya, …» (أي …).
+        - قانوني (مكتوب للدرس): Setiap orang yang melakukan pelanggaran sebagaimana dimaksud dalam Pasal 5 dikenai denda paling banyak Rp500.000,00.
+        - مبسّط: Artinya, kalau kamu melanggar aturan di Pasal 5, kamu bisa kena denda sampai lima ratus ribu rupiah.
+        وانتبه: paling banyak = على الأكثر، وpaling sedikit = على الأقلّ.
+      en: |
+        To simplify a rule: find who, must or mustn't, and in which case. Then start with "Artinya, …" (In plain terms, …).
+        - Legal (written for the lesson): Setiap orang yang melakukan pelanggaran sebagaimana dimaksud dalam Pasal 5 dikenai denda paling banyak Rp500.000,00.
+        - Plain: Artinya, kalau kamu melanggar aturan di Pasal 5, kamu bisa kena denda sampai lima ratus ribu rupiah.
+        Note: paling banyak = at most, paling sedikit = at least.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: denda
+        ar_eg: غرامة
+        ar: غرامة
+        en: fine (penalty)
+      - text: berlaku
+        ar_eg: ساري
+        ar: نافذ / ساري المفعول
+        en: to be valid, to apply
+      - text: persyaratan
+        ar_eg: شروط
+        ar: شروط
+        en: requirements
+      - text: pelanggaran
+        ar_eg: مخالفة
+        ar: مخالفة
+        en: violation, offence
+    words: [denda, berlaku, persyaratan, pelanggaran]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «dikenai denda paling banyak Rp500.000» معناها إيه بالبسيط؟
+      ar: ما المعنى المبسّط لـ «dikenai denda paling banyak Rp500.000»؟
+      en: What does "dikenai denda paling banyak Rp500.000" mean in plain terms?
+    options:
+      - الغرامة 500 ألف بالظبط.
+      - الغرامة توصل لـ 500 ألف بالكتير.
+      - الغرامة 500 ألف على الأقل.
+    answer: 1
+    words: [denda]
+  - id: e03
+    type: fill_blank
+    sentence: Kartu mahasiswa ini ___ sampai tahun 2027.
+    meaning:
+      ar_eg: كارنيه الجامعة ده ساري لحد سنة 2027.
+      ar: هذه البطاقة الجامعية سارية حتّى عام 2027.
+      en: This student card is valid until 2027.
+    options: [berlaku, denda, pelanggaran]
+    answers: [berlaku]
+    words: [berlaku]
+  - id: e04
+    type: listen
+    text: Persyaratannya hanya dua, paspor dan foto.
+    question:
+      ar_eg: الشروط إيه؟
+      ar: ما الشروط؟
+      en: What are the requirements?
+    options:
+      - باسبور وصورة.
+      - باسبور بس.
+      - جواب وفلوس.
+    answer: 0
+    words: [persyaratan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الركن هنا مخالفة.
+      ar: الوقوف هنا مخالفة.
+      en: Parking here is an offence.
+    answer: Parkir di sini adalah pelanggaran.
+    distractors: [denda, berlaku]
+    words: [pelanggaran]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة بتبسّط «Dalam hal persyaratan tidak lengkap, permohonan tidak diproses»؟
+      ar: أيّ جملة تبسّط «Dalam hal persyaratan tidak lengkap, permohonan tidak diproses»؟
+      en: Which sentence simplifies "Dalam hal persyaratan tidak lengkap, permohonan tidak diproses"?
+    options:
+      - Semua permohonan pasti diproses.
+      - Persyaratan tidak perlu dibawa.
+      - Kalau syaratnya kurang, permohonanmu tidak diurus.
+    answer: 2
+    words: [persyaratan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: لو خالفت القاعدة، هتدفع غرامة.
+      ar: إن خالفت القاعدة فستدفع غرامة.
+      en: If you break the rule, you'll pay a fine.
+    answers:
+      - Kalau kamu melanggar aturan, kamu harus membayar denda.
+      - Kalau melanggar aturan, kamu akan membayar denda.
+      - Jika kamu melanggar aturan, kamu harus membayar denda.
+      - Kalau kamu melanggar aturan, kamu kena denda.
+    words: [denda]
+  - id: e08
+    type: speaking
+    text: Artinya, aturan ini berlaku untuk semua orang.
+    meaning:
+      ar_eg: يعني القاعدة دي سارية على كل الناس.
+      ar: أي إنّ هذه القاعدة تسري على الجميع.
+      en: In plain terms, this rule applies to everyone.
+    words: [berlaku]
+  - id: e09
+    type: dictation
+    text: Pelanggaran lalu lintas bisa dikenai denda.
+    meaning:
+      ar_eg: مخالفات المرور ممكن يبقى عليها غرامة.
+      ar: قد تُفرض غرامة على مخالفات المرور.
+      en: Traffic offences can carry a fine.
+    words: [pelanggaran, denda]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Persyaratan beasiswa ini berlaku untuk mahasiswa asing.
+    answers_meaning:
+      ar_eg:
+        - شروط المنحة دي على الطلبة الأجانب.
+        - الشروط دي للمنحة بتنطبق على الطلبة الأجانب.
+      ar:
+        - تسري شروط هذه المنحة على الطلّاب الأجانب.
+        - تنطبق شروط المنحة على الطلبة الأجانب.
+      en:
+        - The requirements of this scholarship apply to foreign students.
+        - These scholarship requirements apply to international students.
+    words: [persyaratan, berlaku]
+dialogue:
+  title: Papan di perpustakaan
+  lines:
+    - speaker: Dimas
+      text: Bang Mohamed, papan ini bilang apa? Bahasanya susah.
+      ar_eg: يا أبيه محمد، اللوحة دي بتقول إيه؟ كلامها صعب.
+      ar: ماذا تقول هذه اللوحة يا محمد؟ لغتها صعبة.
+      en: Bang Mohamed, what does this sign say? The language is hard.
+    - speaker: Mohamed
+      text: Artinya, kalau bukunya terlambat dikembalikan, kamu bayar denda.
+      ar_eg: يعني لو رجّعت الكتاب متأخر، هتدفع غرامة.
+      ar: أي إن تأخّرت في إعادة الكتاب دفعت غرامة.
+      en: It means if you return the book late, you pay a fine.
+    - speaker: Dimas
+      text: Berapa dendanya?
+      ar_eg: الغرامة كام؟
+      ar: كم الغرامة؟
+      en: How much is the fine?
+    - speaker: Mohamed
+      text: Paling banyak lima ribu rupiah sehari. Jadi kembalikan tepat waktu, ya!
+      ar_eg: بالكتير خمسة آلاف روبية في اليوم. يبقى رجّعه في معاده!
+      ar: خمسة آلاف روبية يوميًّا على الأكثر. فأعِده في موعده!
+      en: At most five thousand rupiah a day. So bring it back on time!
+new_words:
+  - word: denda
+    pos: noun
+    ar_eg: غرامة
+    ar: غرامة
+    en: fine (penalty)
+  - word: berlaku
+    pos: verb
+    ar_eg: ساري
+    ar: نافذ / ساري المفعول
+    en: to be valid, to apply
+  - word: persyaratan
+    pos: noun
+    ar_eg: شروط
+    ar: شروط
+    en: requirements
+  - word: pelanggaran
+    pos: noun
+    ar_eg: مخالفة
+    ar: مخالفة
+    en: violation, offence
+review:
+  status: draft
+  verified: false

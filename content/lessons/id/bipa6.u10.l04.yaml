@@ -1,0 +1,197 @@
+schema: kabar.lesson/v1
+id: bipa6.u10.l04
+language: id
+title: Esai singkat
+can_do:
+  ar_eg: تكتب مقال أكاديمي قصير بأطروحة وأدلة ومصادر.
+  ar: أن تكتب مقالة أكاديمية قصيرة فيها أطروحة وأدلّة ومصادر.
+  en: Write a short academic essay with a thesis, evidence and sources.
+slides:
+  - title: Kerangka esai lima paragraf
+    grammar: id.argument.connectors
+    body:
+      ar_eg: |
+        1. المقدمة: خلّصها بالـ tesis (الأطروحة)، جملة واحدة واضحة:
+           Relokasi warga Sinabung perlu dilanjutkan, tetapi harus melibatkan warga.
+        2–4. تلات فقرات، كل واحدة بجملة رئيسية ودليل: data (بيانات)، أمثلة، ومصادر.
+        5. الخاتمة: Dengan demikian، … ارجع للأطروحة بكلام جديد.
+        الكلام لازم يبقى orisinal (أصلي) بتاعك، ونقل كلام غيرك من غير ذكره اسمه plagiarisme (انتحال).
+      ar: |
+        1. المقدّمة: تُختم بالـ tesis (الأطروحة) في جملة واحدة واضحة:
+           Relokasi warga Sinabung perlu dilanjutkan, tetapi harus melibatkan warga.
+        2–4. ثلاث فقرات، لكلّ منها جملة رئيسية ودليل: data (بيانات)، وأمثلة، ومصادر.
+        5. الخاتمة: Dengan demikian، … ارجع إلى الأطروحة بألفاظ جديدة.
+        ويجب أن يكون النصّ orisinal (أصيلًا) من إنشائك، ونقل كلام الغير دون نسبته إليه يُسمّى plagiarisme (انتحالًا).
+      en: |
+        1. Introduction: end it with the tesis (thesis), one clear sentence:
+           Relokasi warga Sinabung perlu dilanjutkan, tetapi harus melibatkan warga.
+        2–4. Three paragraphs, each with a topic sentence and evidence: data, examples, sources.
+        5. Conclusion: Dengan demikian, … restate the thesis in new words.
+        The writing must be orisinal (original), your own; copying someone without credit is plagiarisme (plagiarism).
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tesis
+        ar_eg: أطروحة / الفكرة الأساسية
+        ar: أطروحة
+        en: thesis statement
+      - text: data
+        ar_eg: بيانات
+        ar: بيانات
+        en: data
+      - text: plagiarisme
+        ar_eg: انتحال / سرقة أدبية
+        ar: انتحال
+        en: plagiarism
+      - text: orisinal
+        ar_eg: أصلي / بتاعك إنت
+        ar: أصيل
+        en: original
+    words: [tesis, data, plagiarisme, orisinal]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة تنفع tesis؟
+      ar: أيّ جملة تصلح أطروحة؟
+      en: Which sentence works as a thesis?
+    options:
+      - Pemerintah perlu membangun jalur evakuasi baru di sekitar Sinabung.
+      - Sinabung adalah gunung.
+      - Apakah gunung itu tinggi?
+    answer: 0
+    words: [tesis]
+  - id: e03
+    type: fill_blank
+    sentence: Menyalin tulisan orang lain tanpa menyebut sumbernya disebut ___.
+    meaning:
+      ar_eg: إنك تنقل كتابة حد تاني من غير ما تذكر المصدر اسمه انتحال.
+      ar: نسخ كتابة الآخرين دون ذكر مصدرها يُسمّى انتحالًا.
+      en: Copying someone else's writing without naming the source is called plagiarism.
+    options: [plagiarisme, tesis, data]
+    answers: [plagiarisme]
+    words: [plagiarisme]
+  - id: e04
+    type: listen
+    text: Menurut data tahun lalu, lebih dari dua ribu keluarga sudah pindah.
+    question:
+      ar_eg: البيانات بتقول إيه؟
+      ar: ماذا تقول البيانات؟
+      en: What do the data say?
+    options:
+      - إن ألفين عيلة رفضوا يمشوا.
+      - إن أكتر من ألفين عيلة اتنقلوا خلاص.
+      - إن العيلات هيتنقلوا السنة الجاية.
+    answer: 1
+    words: [data]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الأطروحة لازم تبقى واضحة ومحددة.
+      ar: يجب أن تكون الأطروحة واضحة ومحدّدة.
+      en: The thesis must be clear and specific.
+    answer: Tesis harus jelas dan spesifik.
+    distractors: [data, orisinal]
+    words: [tesis]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تخلّي مقالك orisinal وإنت بتستعمل مصادر؟
+      ar: كيف تحافظ على أصالة مقالتك مع استعمال المصادر؟
+      en: How do you keep your essay original while using sources?
+    options:
+      - تنسخ المصادر كلها وتغيّر كلمة واحدة.
+      - ماتستعملش مصادر خالص.
+      - تعيد صياغة الأفكار بكلامك وتذكر كل مصدر.
+    answer: 2
+    words: [orisinal, plagiarisme]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: البيانات دي بتدعم الأطروحة بتاعتي.
+      ar: تدعم هذه البيانات أطروحتي.
+      en: These data support my thesis.
+    answers:
+      - Data ini mendukung tesis saya.
+      - Data tersebut mendukung tesis saya.
+      - Data ini mendukung tesisku.
+    words: [data, tesis]
+  - id: e08
+    type: speaking
+    text: Esai ini orisinal, dan semua sumbernya ada di daftar pustaka.
+    meaning:
+      ar_eg: المقال ده أصلي، وكل مصادره موجودة في قايمة المراجع.
+      ar: هذه المقالة أصيلة، وكلّ مصادرها في قائمة المراجع.
+      en: This essay is original, and all its sources are in the bibliography.
+    words: [orisinal]
+  - id: e09
+    type: dictation
+    text: Kampus memakai aplikasi untuk memeriksa plagiarisme.
+    meaning:
+      ar_eg: الجامعة بتستعمل برنامج يكشف الانتحال.
+      ar: تستعمل الجامعة تطبيقًا لكشف الانتحال.
+      en: The university uses an app to check for plagiarism.
+    words: [plagiarisme]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Tanpa data, tesis yang orisinal pun sulit dipercaya.
+    answers_meaning:
+      ar_eg:
+        - من غير بيانات، حتى الأطروحة الأصلية صعب حد يصدّقها.
+        - الأطروحة حتى لو أصلية، من غير أرقام صعب تقنع حد.
+      ar:
+        - بلا بيانات يصعب تصديق حتّى الأطروحة الأصيلة.
+        - حتّى الأطروحة الأصيلة لا تُقنع دون بيانات.
+      en:
+        - Without data, even an original thesis is hard to believe.
+        - Even an original thesis is hard to trust without data.
+    words: [data, tesis, orisinal]
+dialogue:
+  title: Tesis yang terlalu luas
+  lines:
+    - speaker: Pak Ginting
+      text: Tesismu "Gunung berapi itu berbahaya." Terlalu luas, Mohamed.
+      ar_eg: أطروحتك «البراكين خطيرة». واسعة قوي يا محمد.
+      ar: أطروحتك «البراكين خطيرة». إنّها فضفاضة جدًّا يا محمد.
+      en: Your thesis is "Volcanoes are dangerous." Too broad, Mohamed.
+    - speaker: Mohamed
+      text: Bagaimana kalau "Relokasi warga Sinabung perlu melibatkan warga sendiri"?
+      ar_eg: طب إيه رأيك في «نقل سكان سينابونج لازم يشارك فيه السكان نفسهم»؟
+      ar: وما رأيك في «يجب أن يشارك سكّان سينابونغ أنفسهم في نقلهم»؟
+      en: How about "The relocation of Sinabung's residents must involve the residents themselves"?
+    - speaker: Pak Ginting
+      text: Jauh lebih baik. Sekarang cari data untuk mendukungnya.
+      ar_eg: أحسن بكتير. دلوقتي دوّر على بيانات تدعمها.
+      ar: أفضل بكثير. ابحث الآن عن بيانات تدعمها.
+      en: Much better. Now find data to support it.
+    - speaker: Mohamed
+      text: Baik, Pak. Saya akan menulisnya sendiri supaya tetap orisinal.
+      ar_eg: حاضر يا أستاذ. هكتبه بنفسي علشان يفضل أصلي.
+      ar: حسنًا يا أستاذ، سأكتبه بنفسي ليبقى أصيلًا.
+      en: All right, sir. I'll write it myself so it stays original.
+new_words:
+  - word: tesis
+    pos: noun
+    ar_eg: أطروحة / الفكرة الأساسية
+    ar: أطروحة
+    en: thesis statement
+  - word: data
+    pos: noun
+    ar_eg: بيانات
+    ar: بيانات
+    en: data
+  - word: plagiarisme
+    pos: noun
+    ar_eg: انتحال / سرقة أدبية
+    ar: انتحال
+    en: plagiarism
+  - word: orisinal
+    pos: adjective
+    ar_eg: أصلي / بتاعك إنت
+    ar: أصيل
+    en: original
+review:
+  status: draft
+  verified: false

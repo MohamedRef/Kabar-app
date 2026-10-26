@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: bipa6.u10.l02
+language: id
+title: Paragraf akademik
+can_do:
+  ar_eg: تبني فقرة أكاديمية بجملة رئيسية وجمل شارحة وروابط.
+  ar: أن تبني فقرة أكاديمية من جملة رئيسية وجمل شارحة وأدوات ربط.
+  en: Build an academic paragraph from a topic sentence, supporting sentences and connectors.
+slides:
+  - title: Satu paragraf, satu gagasan
+    grammar: id.argument.connectors
+    body:
+      ar_eg: |
+        الفقرة الأكاديمية = فكرة واحدة:
+        1. kalimat utama (الجملة الرئيسية): Tanah di lereng Sinabung sangat subur.
+        2. kalimat penjelas (جمل شارحة) بالروابط:
+           Abu vulkanik mengandung banyak mineral. Di samping itu (وعلاوة على كده)، curah hujan di Karo tinggi. Lebih lanjut (وكمان / وزيادة على كده)، suhu yang sejuk cocok untuk sayuran.
+        3. الختام: Singkatnya (باختصار)، lereng Sinabung adalah lahan pertanian yang ideal.
+        Di samping itu رسمية أكتر من Selain itu، وLebih lanjut بتطوّر نفس النقطة لقدّام.
+      ar: |
+        الفقرة الأكاديمية = فكرة واحدة:
+        1. kalimat utama (الجملة الرئيسية): Tanah di lereng Sinabung sangat subur.
+        2. kalimat penjelas (الجمل الشارحة) مع أدوات الربط:
+           Abu vulkanik mengandung banyak mineral. Di samping itu (فضلًا عن ذلك)، curah hujan di Karo tinggi. Lebih lanjut (وعلاوة على ذلك)، suhu yang sejuk cocok untuk sayuran.
+        3. الخاتمة: Singkatnya (وخلاصة القول)، lereng Sinabung adalah lahan pertanian yang ideal.
+        وDi samping itu أكثر رسمية من Selain itu، وLebih lanjut تمضي بالنقطة نفسها إلى أبعد.
+      en: |
+        An academic paragraph = one idea:
+        1. kalimat utama (topic sentence): Tanah di lereng Sinabung sangat subur.
+        2. kalimat penjelas (supporting sentences) linked by connectors:
+           Abu vulkanik mengandung banyak mineral. Di samping itu (besides), curah hujan di Karo tinggi. Lebih lanjut (furthermore), suhu yang sejuk cocok untuk sayuran.
+        3. The wrap-up: Singkatnya (in short), lereng Sinabung adalah lahan pertanian yang ideal.
+        Di samping itu is more formal than Selain itu; Lebih lanjut pushes the same point further.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kalimat utama
+        ar_eg: الجملة الرئيسية
+        ar: الجملة الرئيسية
+        en: topic sentence
+      - text: kalimat penjelas
+        ar_eg: جملة شارحة
+        ar: جملة شارحة
+        en: supporting sentence
+      - text: di samping itu
+        ar_eg: وعلاوة على كده
+        ar: فضلًا عن ذلك
+        en: besides, in addition
+      - text: lebih lanjut
+        ar_eg: وزيادة على كده / وكمان
+        ar: وعلاوة على ذلك
+        en: furthermore
+      - text: singkatnya
+        ar_eg: باختصار
+        ar: خلاصة القول
+        en: in short
+    words: [kalimat utama, kalimat penjelas, di samping itu, lebih lanjut, singkatnya]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة تنفع kalimat utama لفقرة عن سوق برستاجي؟
+      ar: أيّ جملة تصلح جملةً رئيسية لفقرة عن سوق برستاغي؟
+      en: Which sentence works as the topic sentence for a paragraph about the Berastagi market?
+    options:
+      - Pasar Berastagi adalah pusat perdagangan buah dan sayur di Karo.
+      - Saya membeli dua kilo jeruk.
+      - Harga markisa naik kemarin.
+    answer: 0
+    words: [kalimat utama]
+  - id: e03
+    type: fill_blank
+    sentence: Wortel dari Karo dijual ke Medan. ___, sebagian dikirim ke Malaysia dan Singapura.
+    meaning:
+      ar_eg: جزر كارو بيتباع في ميدان. وعلاوة على كده، جزء منه بيتبعت ماليزيا وسنغافورة.
+      ar: يُباع جزر كارو في ميدان، وفضلًا عن ذلك يُصدَّر بعضه إلى ماليزيا وسنغافورة.
+      en: Carrots from Karo are sold in Medan. Besides, some are shipped to Malaysia and Singapore.
+    options: [Di samping itu, Singkatnya, Kalimat utama]
+    answers: [Di samping itu]
+    words: [di samping itu]
+  - id: e04
+    type: listen
+    text: Singkatnya, letusan itu merugikan petani, tetapi tanahnya kini lebih subur.
+    question:
+      ar_eg: الجملة دي بتعمل إيه في الفقرة؟
+      ar: ما وظيفة هذه الجملة في الفقرة؟
+      en: What does this sentence do in the paragraph?
+    options:
+      - بتقدّم مثال جديد.
+      - بتلخّص الفكرة في الآخر.
+      - بتسأل سؤال.
+    answer: 1
+    words: [singkatnya]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: وزيادة على كده، الجو البارد مناسب للخضار.
+      ar: وعلاوة على ذلك، يلائم الطقس البارد الخضراوات.
+      en: Furthermore, the cool weather suits vegetables.
+    answer: Lebih lanjut, suhu yang sejuk cocok untuk sayuran.
+    distractors: [singkatnya, utama]
+    words: [lebih lanjut]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Saya suka kopi.» في فقرة عن تربة سينابونج. دي إيه؟
+      ar: «Saya suka kopi.» في فقرة عن تربة سينابونغ. ما هذه؟
+      en: '"Saya suka kopi." in a paragraph about Sinabung soil. What is it?'
+    options:
+      - كلمة ربط.
+      - جملة شارحة كويسة.
+      - جملة خارج الموضوع، لازم تتشال.
+    answer: 2
+    words: [kalimat penjelas]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: كل جملة شارحة لازم تدعم الجملة الرئيسية.
+      ar: يجب أن تدعم كلّ جملة شارحة الجملة الرئيسية.
+      en: Every supporting sentence must support the topic sentence.
+    answers:
+      - Setiap kalimat penjelas harus mendukung kalimat utama.
+      - Semua kalimat penjelas harus mendukung kalimat utama.
+      - Setiap kalimat penjelas wajib mendukung kalimat utama.
+    words: [kalimat penjelas, kalimat utama]
+  - id: e08
+    type: speaking
+    text: Lebih lanjut, penelitian ini menunjukkan bahwa hasil panen meningkat.
+    meaning:
+      ar_eg: وزيادة على كده، البحث ده بيبيّن إن المحصول زاد.
+      ar: وعلاوة على ذلك، يُبيّن هذا البحث أنّ المحصول ازداد.
+      en: Furthermore, this research shows that the harvest increased.
+    words: [lebih lanjut]
+  - id: e09
+    type: dictation
+    text: Di samping itu, kalimat penjelas memberikan contoh dan data.
+    meaning:
+      ar_eg: وعلاوة على كده، الجمل الشارحة بتدّي أمثلة وأرقام.
+      ar: فضلًا عن ذلك، تقدّم الجمل الشارحة الأمثلة والبيانات.
+      en: Besides, supporting sentences give examples and data.
+    words: [di samping itu, kalimat penjelas]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Singkatnya, kalimat utama memuat gagasan pokok paragraf.
+    answers_meaning:
+      ar_eg:
+        - باختصار، الجملة الرئيسية فيها الفكرة الأساسية للفقرة.
+        - يعني من الآخر، الجملة الرئيسية هي اللي فيها فكرة الفقرة.
+      ar:
+        - خلاصة القول أنّ الجملة الرئيسية تحمل الفكرة الأساسية للفقرة.
+        - باختصار، تتضمّن الجملة الرئيسية فكرة الفقرة المحورية.
+      en:
+        - In short, the topic sentence carries the paragraph's main idea.
+        - In short, the topic sentence holds the main idea of the paragraph.
+    words: [singkatnya, kalimat utama]
+dialogue:
+  title: Paragraf yang melompat
+  lines:
+    - speaker: Rani
+      text: Paragrafmu bagus, tapi kalimat ketiganya tentang kopi. Apa hubungannya?
+      ar_eg: فقرتك حلوة، بس الجملة التالتة عن القهوة. إيه علاقتها؟
+      ar: فقرتك جيّدة، لكنّ جملتها الثالثة عن القهوة. ما علاقتها؟
+      en: Your paragraph is good, but the third sentence is about coffee. What's the connection?
+    - speaker: Mohamed
+      text: Hmm, tidak ada. Kalimat utamanya tentang tanah yang subur.
+      ar_eg: امم، مالهاش علاقة. الجملة الرئيسية عن الأرض الخصبة.
+      ar: لا علاقة لها. الجملة الرئيسية عن التربة الخصبة.
+      en: Hmm, none. The topic sentence is about the fertile soil.
+    - speaker: Rani
+      text: Jadi buang saja. Lalu tambahkan "Di samping itu" sebelum data curah hujan.
+      ar_eg: يبقى شيلها. وبعدين ضيف «Di samping itu» قبل أرقام المطر.
+      ar: إذن احذفها، ثمّ أضف «Di samping itu» قبل بيانات الأمطار.
+      en: Then cut it. And add "Di samping itu" before the rainfall data.
+    - speaker: Mohamed
+      text: Dan saya tutup dengan "Singkatnya, …". Terima kasih, Rani!
+      ar_eg: وأقفل بـ «Singkatnya، …». شكرًا يا راني!
+      ar: وأختم بـ «Singkatnya، …». شكرًا يا راني!
+      en: And I'll close with "Singkatnya, …". Thanks, Rani!
+new_words:
+  - word: kalimat utama
+    pos: noun
+    ar_eg: الجملة الرئيسية
+    ar: الجملة الرئيسية
+    en: topic sentence
+  - word: kalimat penjelas
+    pos: noun
+    ar_eg: جملة شارحة
+    ar: جملة شارحة
+    en: supporting sentence
+  - word: di samping itu
+    pos: phrase
+    ar_eg: وعلاوة على كده
+    ar: فضلًا عن ذلك
+    en: besides, in addition
+  - word: lebih lanjut
+    pos: phrase
+    ar_eg: وزيادة على كده / وكمان
+    ar: وعلاوة على ذلك
+    en: furthermore
+  - word: singkatnya
+    pos: adverb
+    ar_eg: باختصار
+    ar: خلاصة القول
+    en: in short
+review:
+  status: draft
+  verified: false

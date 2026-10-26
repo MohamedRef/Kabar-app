@@ -1,0 +1,194 @@
+schema: kabar.lesson/v1
+id: bipa6.u08.l01
+language: id
+title: Istilah ilmiah
+can_do:
+  ar_eg: تفهم المصطلحات العلمية اللي متكوّنة من أفعال.
+  ar: أن تفهم المصطلحات العلمية المشتقّة من الأفعال.
+  en: Handle scientific terms built from verbs.
+slides:
+  - title: Dari kata kerja ke istilah
+    grammar: id.nominalization
+    body:
+      ar_eg: |
+        العلوم بتحب الأسماء. من الفعل بتطلع الشخص والعملية:
+        - meneliti (يبحث) → peneliti (الباحث) → penelitian (البحث)
+        - mengamati (يلاحظ) → pengamatan (الملاحظة)
+        - mencoba (يجرّب) → percobaan (التجربة)
+        - langka (نادر) → kelangkaan (الندرة)
+        والعالِم نفسه اسمه ilmuwan (من «علم»)، والنوع spesies.
+      ar: |
+        تحبّ العلوم الأسماء، فمن الفعل يخرج الشخص والعملية:
+        - meneliti (يبحث) → peneliti (الباحث) → penelitian (البحث)
+        - mengamati (يلاحظ) → pengamatan (الملاحظة)
+        - mencoba (يجرّب) → percobaan (التجربة)
+        - langka (نادر) → kelangkaan (الندرة)
+        والعالِم ilmuwan (من «علم»)، والنوع spesies.
+      en: |
+        Science loves nouns. From a verb you get the person and the process:
+        - meneliti (to research) → peneliti (researcher) → penelitian (research)
+        - mengamati (to observe) → pengamatan (observation)
+        - mencoba (to try) → percobaan (experiment)
+        - langka (rare) → kelangkaan (rarity)
+        A scientist is an ilmuwan (from Arabic ʿilm), and a species is spesies.
+    examples:
+      - text: Para ilmuwan melakukan pengamatan terhadap spesies langka.
+        ar_eg: العلما بيعملوا ملاحظات على أنواع نادرة.
+        ar: يجري العلماء ملاحظات على أنواع نادرة.
+        en: Scientists carry out observations of rare species.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pengamatan
+        ar_eg: ملاحظة (علمية)
+        ar: ملاحظة علمية
+        en: observation
+      - text: peneliti
+        ar_eg: باحث
+        ar: باحث
+        en: researcher
+      - text: spesies
+        ar_eg: نوع (كائن حي)
+        ar: نوع
+        en: species
+      - text: ilmuwan
+        ar_eg: عالِم
+        ar: عالِم
+        en: scientist
+      - text: percobaan
+        ar_eg: تجربة
+        ar: تجربة
+        en: experiment
+    words: [pengamatan, peneliti, spesies, ilmuwan, percobaan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه الاسم اللي معناه «عملية الملاحظة» من mengamati؟
+      ar: ما الاسم الدالّ على «عملية الملاحظة» من mengamati؟
+      en: Which noun means "the act of observing", from mengamati?
+    options: [pengamat, pengamatan, mengamatkan]
+    answer: 1
+    words: [pengamatan]
+  - id: e03
+    type: fill_blank
+    sentence: Ada beberapa ___ Rafflesia di hutan Sumatra.
+    meaning:
+      ar_eg: فيه كذا نوع من الرافليزيا في غابات سومطرة.
+      ar: في غابات سومطرة عدّة أنواع من الرافليزيا.
+      en: There are several species of Rafflesia in Sumatra's forests.
+    options: [spesies, percobaan, ilmuwan]
+    answers: [spesies]
+    words: [spesies]
+  - id: e04
+    type: listen
+    text: Peneliti itu melakukan pengamatan setiap pagi di hutan.
+    question:
+      ar_eg: الباحث بيلاحظ إمتى؟
+      ar: متى يلاحظ الباحث؟
+      en: When does the researcher make observations?
+    options:
+      - كل يوم الصبح في الغابة.
+      - كل ليلة في المعمل.
+      - مرة في السنة.
+    answer: 0
+    words: [peneliti, pengamatan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: التجربة فشلت، بس العالِم جرّب تاني.
+      ar: فشلت التجربة، لكنّ العالِم حاول مجدّدًا.
+      en: The experiment failed, but the scientist tried again.
+    answer: Percobaan itu gagal, tetapi ilmuwan itu mencoba lagi.
+    distractors: [spesies, peneliti]
+    words: [percobaan, ilmuwan]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها الشخص اللي بيعمل البحث؟
+      ar: أيّ كلمة تعني الشخص الذي يجري البحث؟
+      en: Which word means the person who does research?
+    options: [penelitian, meneliti, peneliti]
+    answer: 2
+    words: [peneliti]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: العلما لقوا نوع جديد في بنجكولو.
+      ar: وجد العلماء نوعًا جديدًا في بنغكولو.
+      en: Scientists found a new species in Bengkulu.
+    answers:
+      - Ilmuwan menemukan spesies baru di Bengkulu.
+      - Para ilmuwan menemukan spesies baru di Bengkulu.
+      - Para ilmuwan menemukan sebuah spesies baru di Bengkulu.
+    words: [ilmuwan, spesies]
+  - id: e08
+    type: speaking
+    text: Hasil pengamatan kami sama dengan hasil percobaan.
+    meaning:
+      ar_eg: نتيجة ملاحظاتنا زي نتيجة التجربة.
+      ar: نتيجة ملاحظاتنا مطابقة لنتيجة التجربة.
+      en: Our observations match the experiment's results.
+    words: [pengamatan, percobaan]
+  - id: e09
+    type: dictation
+    text: Peneliti muda itu ingin menjadi ilmuwan terkenal.
+    meaning:
+      ar_eg: الباحث الشاب ده نفسه يبقى عالِم مشهور.
+      ar: يريد ذلك الباحث الشابّ أن يصبح عالِمًا مشهورًا.
+      en: That young researcher wants to become a famous scientist.
+    words: [peneliti, ilmuwan]
+dialogue:
+  title: Peneliti hutan
+  lines:
+    - speaker: Bu Laila
+      text: Selamat datang di Bengkulu. Saya peneliti tumbuhan langka.
+      ar_eg: أهلًا بيك في بنجكولو. أنا باحثة في النباتات النادرة.
+      ar: مرحبًا بك في بنغكولو. أنا باحثة في النباتات النادرة.
+      en: Welcome to Bengkulu. I'm a researcher of rare plants.
+    - speaker: Mohamed
+      text: Penelitian Ibu tentang apa?
+      ar_eg: بحث حضرتك عن إيه؟
+      ar: عمّ يدور بحثك؟
+      en: What's your research about?
+    - speaker: Bu Laila
+      text: Pengamatan Rafflesia. Kami mencatat pertumbuhan kuncupnya setiap minggu.
+      ar_eg: ملاحظة الرافليزيا. بنسجّل نمو البرعم بتاعها كل أسبوع.
+      ar: ملاحظة الرافليزيا. نسجّل نموّ براعمها كلّ أسبوع.
+      en: Observing Rafflesia. We record how its buds grow every week.
+    - speaker: Mohamed
+      text: Jadi Ibu ilmuwan sekaligus penjaga hutan!
+      ar_eg: يعني حضرتك عالِمة وحارسة غابة في نفس الوقت!
+      ar: إذن أنتِ عالِمة وحارسة غابة في آن واحد!
+      en: So you're a scientist and a forest guardian at once!
+new_words:
+  - word: pengamatan
+    pos: noun
+    ar_eg: ملاحظة (علمية)
+    ar: ملاحظة علمية
+    en: observation
+  - word: peneliti
+    pos: noun
+    ar_eg: باحث
+    ar: باحث
+    en: researcher
+  - word: spesies
+    pos: noun
+    ar_eg: نوع (كائن حي)
+    ar: نوع
+    en: species
+  - word: ilmuwan
+    pos: noun
+    arabic: علم
+    ar_eg: عالِم
+    ar: عالِم
+    en: scientist
+  - word: percobaan
+    pos: noun
+    ar_eg: تجربة
+    ar: تجربة
+    en: experiment
+review:
+  status: draft
+  verified: false
