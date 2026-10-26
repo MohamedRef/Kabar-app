@@ -42,24 +42,6 @@ pub fn Welcome() -> Element {
 }
 
 #[component]
-pub fn Today() -> Element {
-    let ui = use_context::<Ui>();
-    rsx! {
-        div { class: "card",
-            h2 { lang: "id", bdi { "{ui.t(Msg::TodayTitle)}" } }
-            p { "{ui.t(Msg::TodayBody)}" }
-        }
-        div { class: "card",
-            p { class: "greeting", style: "font-size: 2rem", bdi { lang: "id", "Apa kabar?" } }
-            div { class: "bridge",
-                span { class: "bridge-word latin", lang: "id", "kabar" }
-                span { class: "ar", lang: "ar", "خبر" }
-            }
-        }
-    }
-}
-
-#[component]
 pub fn ComingSoon(title: Msg, milestone: &'static str) -> Element {
     let ui = use_context::<Ui>();
     rsx! {
@@ -201,5 +183,6 @@ pub fn SettingsScreen() -> Element {
                 }
             }
         }
+        crate::coach::settings::CoachSettings {}
     }
 }

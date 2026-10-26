@@ -112,6 +112,72 @@ pub struct DeviceList {
     pub devices: Vec<DeviceSummary>,
 }
 
+// --- push (Kak Nur's reminders) ------------------------------------------------
+
+/// Longest FCM registration token accepted.
+pub const MAX_PUSH_TOKEN_LEN: usize = 4096;
+
+/// `PUT /v1/devices/me/push`: this device's FCM registration token. Send it on
+/// every launch and whenever Firebase rotates it; an empty token turns push
+/// off for this device. Signing out (or a remote sign-out) forgets it.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct PushTokenRequest {
+    pub token: String,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct PushTokenReply {
+    /// The token is stored (false after an empty token cleared it).
+    pub registered: bool,
+    /// Kabar Cloud has its Firebase key, so pushes can actually go out.
+    pub push_configured: bool,
+}
+
+/// What a push is about. Unknown kinds from a newer server are `Other`, so an
+/// old app ignores them instead of failing.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum PushKind {
+    Study,
+    WelcomeBack,
+    WeeklyReport,
+    #[serde(other)]
+    Other,
+}
+
+/// The data of a Kabar push (an FCM data-only message; every value is a
+/// string on the wire, see [`PushNotice::to_data`]). It carries no personal
+/// text: the device renders Kak Nur's line itself, in the UI language.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct PushNotice {
+    pub kind: PushKind,
+    /// Kak Nur's line, as the snake_case name of `kabar_core::coach::voice::Line`
+    /// (e.g. `remind_study`).
+    pub line: String,
+    /// The learner's local day number (days since 1970-01-01): the `seed`
+    /// for `voice::say`, so every device picks the same wording.
+    pub seed: i32,
+}
+
+impl PushNotice {
+    /// The FCM `data` map: string keys, string values.
+    pub fn to_data(&self) -> Vec<(&'static str, String)> {
+        let kind = match self.kind {
+            PushKind::Study => "study",
+            PushKind::WelcomeBack => "welcome_back",
+            PushKind::WeeklyReport => "weekly_report",
+            PushKind::Other => "other",
+        };
+        vec![("kind", kind.to_owned()), ("line", self.line.clone()), ("seed", self.seed.to_string())]
+    }
+
+    /// Reads the FCM `data` map back (on the device).
+    pub fn from_data<'a>(mut get: impl FnMut(&str) -> Option<&'a str>) -> Option<Self> {
+        let kind = serde_json::from_value(serde_json::Value::String(get("kind")?.to_owned())).ok()?;
+        Some(Self { kind, line: get("line")?.to_owned(), seed: get("seed")?.parse().ok()? })
+    }
+}
+
 // --- AI proxy --------------------------------------------------------------
 
 // `POST /v1/ai` takes a [`crate::ai::EngineCall`] (the engine is
@@ -184,6 +250,9 @@ pub struct EngineStatus {
 pub struct VaultStatus {
     pub engines: Vec<EngineStatus>,
     pub tts_configured: bool,
+    /// Firebase Cloud Messaging is set up, so reminders can be pushed.
+    #[serde(default)]
+    pub push_configured: bool,
 }
 
 #[cfg(test)]
@@ -194,5 +263,27 @@ mod tests {
     fn unknown_platform_is_other() {
         let p: Platform = serde_json::from_str(r#""ios""#).unwrap();
         assert_eq!(p, Platform::Other);
+    }
+
+    #[test]
+    fn push_notice_round_trips_through_fcm_data() {
+        let n = PushNotice { kind: PushKind::WelcomeBack, line: "remind_welcome_back".into(), seed: 20_752 };
+        let data = n.to_data();
+        assert_eq!(data[0], ("kind", "welcome_back".to_owned()));
+        assert_eq!(data[2], ("seed", "20752".to_owned()));
+        let get = |k: &str| data.iter().find(|(key, _)| *key == k).map(|(_, v)| v.as_str());
+        assert_eq!(PushNotice::from_data(get), Some(n));
+        let newer = |k: &str| match k {
+            "kind" => Some("streak_party"),
+            "line" => Some("x"),
+            _ => Some("1"),
+        };
+        assert_eq!(PushNotice::from_data(newer).unwrap().kind, PushKind::Other);
+    }
+
+    #[test]
+    fn old_vault_status_still_parses() {
+        let v: VaultStatus = serde_json::from_str(r#"{"engines":[],"tts_configured":true}"#).unwrap();
+        assert!(!v.push_configured);
     }
 }
