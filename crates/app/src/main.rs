@@ -5,6 +5,7 @@ mod i18n;
 mod icons;
 mod penlab;
 mod platform;
+mod play;
 mod screens;
 mod store;
 mod theme;
@@ -30,6 +31,7 @@ pub enum Screen {
     Reader,
     Review,
     Coach,
+    Play,
     Studio,
     Settings,
     PenLab,
@@ -43,15 +45,18 @@ impl Screen {
             Self::Reader => Msg::NavReader,
             Self::Review => Msg::NavReview,
             Self::Coach => Msg::NavCoach,
+            Self::Play => Msg::NavPlay,
             Self::Studio => Msg::NavStudio,
             Self::Settings => Msg::NavSettings,
             Self::PenLab => Msg::NavPenLab,
         }
     }
 
-    /// Hidden from the phone's bottom bar; reachable from Settings there.
+    /// Hidden from the phone's bottom bar, which keeps five items within
+    /// thumb reach. Kak Nur and Settings are linked from Today there; Studio
+    /// and Pen Lab from Settings.
     fn secondary(self) -> bool {
-        matches!(self, Self::Studio | Self::PenLab)
+        matches!(self, Self::Coach | Self::Settings | Self::Studio | Self::PenLab)
     }
 }
 
@@ -164,6 +169,7 @@ fn Loaded(db: Db) -> Element {
         screen: Signal::new(Screen::Today),
     });
     use_context_provider(|| db.clone());
+    use_context_provider(play::PlayNav::new);
     let coach = use_context_provider(|| Coach::load(&db));
     use_width_tracking(ui.width);
     coach::use_clock(coach, db.clone());
@@ -226,6 +232,7 @@ fn Shell() -> Element {
         Screen::Journey,
         Screen::Reader,
         Screen::Review,
+        Screen::Play,
         Screen::Coach,
         Screen::Studio,
         Screen::PenLab,
@@ -254,6 +261,7 @@ fn Shell() -> Element {
                 match current {
                     Screen::Today => rsx! { coach::today::Today {} },
                     Screen::Coach => rsx! { coach::coach_screen::CoachScreen {} },
+                    Screen::Play => rsx! { play::Play {} },
                     Screen::Journey => rsx! { screens::ComingSoon { title: Msg::NavJourney, milestone: "M8" } },
                     Screen::Reader => rsx! { screens::ComingSoon { title: Msg::NavReader, milestone: "M5" } },
                     Screen::Review => rsx! { screens::ComingSoon { title: Msg::NavReview, milestone: "M6" } },

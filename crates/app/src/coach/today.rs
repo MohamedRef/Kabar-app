@@ -105,6 +105,22 @@ pub fn Today() -> Element {
                     }
                     Snooze { profile: profile.clone(), goal_met: progress.goal_met }
                 }
+                crate::play::PagiTodayCard {}
+                // On the phone, Kak Nur and Settings live here instead of the
+                // bottom bar (it keeps five items).
+                nav { class: "row compact-only more-links",
+                    for screen in [Screen::Coach, Screen::Settings] {
+                        button {
+                            key: "{screen:?}",
+                            onclick: move |_| {
+                                let mut s = ui.screen;
+                                s.set(screen);
+                            },
+                            span { class: "nav-icon", aria_hidden: "true", {icons::nav(screen)} }
+                            " {ui.t(screen.label())}"
+                        }
+                    }
+                }
             }
             if recap_ready {
                 div {

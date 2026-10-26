@@ -366,3 +366,146 @@ button.choice {
 /* journal */
 .journal-day ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.25rem; }
 .journal-day .time { display: inline-block; min-inline-size: 3rem; font-variant-numeric: tabular-nums; }
+
+/* ---------- Play ---------- */
+.compact-only { display: none; }
+.app[data-width="compact"] .compact-only { display: flex; }
+.more-links button { display: inline-flex; align-items: center; gap: 0.4rem; }
+.flip { display: inline-block; }
+[dir="rtl"] .flip { transform: scaleX(-1); }
+.center { justify-content: center; }
+.end { justify-content: flex-end; }
+.gold-text { color: var(--gold); }
+.big { font-size: 1.6rem; }
+
+.play-grid { display: grid; gap: 0.75rem; margin-block-end: 1rem; }
+.app:not([data-width="compact"]) .play-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.app:not([data-width="compact"]) .pagi-layout,
+.app:not([data-width="compact"]) .pasar-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1rem; align-items: start; }
+.app:not([data-width="compact"]) .pasar-layout .transcript { grid-row: span 2; }
+
+button.game-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  text-align: start;
+  border-radius: var(--radius);
+  padding: 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  border-inline-start: 4px solid var(--line);
+}
+.game-card.gold { border-inline-start-color: var(--gold); }
+.game-card.dawn { border-inline-start-color: var(--dawn); }
+.game-card.sawah { border-inline-start-color: var(--sawah); }
+.game-card.indigo { border-inline-start-color: var(--indigo); }
+.game-card.bonus { border-inline-start-color: var(--dawn); background: var(--dawn-soft); }
+.game-icon { flex: none; display: inline-flex; color: var(--indigo); padding-block-start: 0.15rem; }
+.game-card.gold .game-icon { color: var(--gold); }
+.game-card.dawn .game-icon { color: var(--dawn); }
+.game-text { display: flex; flex-direction: column; gap: 0.2rem; min-inline-size: 0; }
+.play-header { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-block-end: 0.75rem; }
+.play-header h2 { margin: 0; font-size: 1.3rem; }
+.play-header .back { padding-inline: 0.5rem; text-decoration: none; }
+.unverified { background: var(--surface-2); color: var(--muted); border: 1px dashed var(--line); }
+.gold-pill, .bonus-pill { background: var(--gold-soft); color: var(--text); align-self: flex-start; }
+.bonus-pill { background: var(--dawn); color: var(--surface); }
+
+/* rounds and feedback */
+.round .prompt { font-size: clamp(1.8rem, 7vw, 2.6rem); font-weight: 700; margin-block: 0.25rem 0.75rem; }
+.round .prompt.ar, .ar { font-family: var(--font-arabic); }
+.choices.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+button.choice { justify-content: center; align-items: center; text-align: center; font-size: 1.15rem; }
+button.choice .ar { font-size: 1.4rem; }
+button.choice.right { background: var(--gold-soft); border-color: var(--gold); color: var(--text); font-weight: 700; }
+button.choice.missed { border-color: var(--dawn); }
+button.choice.faded { opacity: 0.55; }
+button.choice:disabled { cursor: default; }
+button.choice.right:disabled, button.choice.missed:disabled { opacity: 1; }
+.feedback { border-radius: var(--radius); padding: 0.75rem 1rem; margin-block: 0.5rem; }
+.feedback p { margin-block: 0.4rem; }
+.feedback.right { background: var(--gold-soft); }
+.feedback.good { background: var(--surface-2); border-inline-start: 4px solid var(--sawah); }
+.feedback.kind { background: var(--surface-2); border-inline-start: 4px solid var(--dawn); }
+.summary-card .score { font-size: 2.2rem; margin: 0; font-variant-numeric: tabular-nums; }
+
+/* Bridge deck */
+.deck-hero { text-align: center; background: var(--gold-soft); border-color: transparent; }
+.deck-count { font-family: var(--font-latin); font-size: clamp(1.7rem, 6vw, 2.6rem); font-weight: 700; color: var(--gold); margin: 0; }
+.flip-card { display: flex; flex-direction: column; gap: 0.5rem; }
+button.flip-face {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-block-size: 9rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--gold-soft);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+button.flip-face[aria-pressed="true"] { background: var(--gold-soft); color: var(--text); border-color: var(--gold); }
+.flip-front, .flip-back { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; text-align: center; }
+.bridge-ar { font-size: 2rem; color: var(--gold); }
+.flip-card.known button.flip-face { border-color: var(--sawah); }
+.known-tag { align-self: center; }
+button.quiet-solid { background: var(--surface-2); border-color: transparent; }
+
+/* Sound-Shift Detective */
+.rule-shift { font-size: 1.8rem; margin: 0; color: var(--gold); }
+.examples { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; }
+
+/* False Friends Alarm: a dawn glow, never a siren */
+.alarm-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: var(--dawn-soft);
+  inline-size: fit-content;
+}
+.alarm-dot { inline-size: 0.7rem; block-size: 0.7rem; border-radius: 50%; background: var(--dawn); }
+@media (prefers-reduced-motion: no-preference) {
+  .alarm-dot { animation: glow 1.6s ease-in-out 2; }
+}
+@keyframes glow { 50% { box-shadow: 0 0 0 6px var(--dawn-soft); } }
+.alarm-example { font-size: 1.4rem; }
+
+/* Rupiah Reader */
+.price { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--indigo); }
+.price.big { font-size: clamp(2rem, 9vw, 3.2rem); margin-block: 0.5rem 1rem; text-align: center; }
+.answer-row .text-input { flex: 1; }
+
+/* Pasar! */
+.item-name { font-size: 1.3rem; font-weight: 700; margin: 0; }
+.price-pill { background: var(--surface-2); }
+.transcript { display: flex; flex-direction: column; gap: 0.6rem; }
+.bubble { max-inline-size: 85%; padding: 0.6rem 0.9rem; border-radius: var(--radius); }
+.bubble p { margin: 0; }
+.bubble.seller { background: var(--surface-2); align-self: flex-start; border-start-start-radius: 4px; }
+.bubble.me { background: var(--indigo); color: var(--surface); align-self: flex-end; border-start-end-radius: 4px; margin-block-end: 0.6rem; margin-inline-start: auto; inline-size: fit-content; }
+.move-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; margin-block-end: 1rem; }
+button.move { display: flex; flex-direction: column; align-items: center; border-radius: var(--radius); }
+.offer .text-input { flex: 1; inline-size: auto; }
+.stars { font-size: 2rem; margin: 0; letter-spacing: 0.2rem; }
+.star { color: var(--line); }
+.star.on { color: var(--dawn); }
+
+/* Kabar Pagi */
+.pagi-card { border-inline-start: 4px solid var(--dawn); }
+.story-title { font-family: var(--font-latin); }
+.word.new-word { background: var(--dawn-soft); }
+.sentences { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+.sentence { padding: 0.5rem 0.75rem; border-radius: var(--radius); border: 1px solid transparent; }
+.sentence.speaking { border-color: var(--indigo); background: var(--surface-2); }
+.sentence-row { display: flex; align-items: flex-start; gap: 0.5rem; }
+.id-text { flex: 1; margin: 0; font-size: 1.15rem; text-align: start; }
+.translation { margin-block: 0.25rem 0; }
+mark.target { background: transparent; color: inherit; text-decoration: underline 2px var(--indigo); text-underline-offset: 4px; font-weight: 600; }
+mark.target.bridge-word { text-decoration-color: var(--gold); color: var(--gold); }
+button.icon-button { inline-size: 44px; padding: 0; flex: none; }
+.audio-note { margin-block-end: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .sentence { transition: background-color 200ms ease, border-color 200ms ease; }
+}
