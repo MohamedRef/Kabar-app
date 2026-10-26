@@ -3,4 +3,5 @@
 //! Pure: callers bring the OCR result and the AI analysis.
 
 pub mod align;
+pub mod screen_ai;
 pub mod screenshot;

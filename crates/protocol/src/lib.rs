@@ -5,6 +5,7 @@ pub mod ai;
 pub mod cloud;
 pub mod coach;
 pub mod content;
+pub mod grammar;
 pub mod hlc;
 pub mod journal;
 pub mod learn;
