@@ -7,6 +7,7 @@
 
 mod test_player;
 pub use test_player::PlacementInvite;
+pub(crate) use test_player::item_prompt;
 pub(crate) mod text;
 
 use dioxus::prelude::*;
