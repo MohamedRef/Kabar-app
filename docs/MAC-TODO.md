@@ -9,9 +9,9 @@ belong to. Keep one checkbox per action.
 
 **Time:** about 3 hours, much of it downloads and builds you can leave running.
 
-The core is lessons, reviews, the Reader, the coach and content. All pen
-work (phone and tablet) and Mac extras are deferred (§9), so their steps are
-no longer here.
+The core is lessons, reviews, the Reader, the coach and content. Pen writing
+(phone and tablet) and Mac extras are deferred (§9), so their steps are no
+longer here. Pen pointing in the Reader is core and has one check in §3c.
 
 **Release:** this page sets the Mac and devices up once. Cutting a release
 (`just release`, install, the device gates) is [RELEASE.md §4](RELEASE.md).
@@ -87,6 +87,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] `just apk` while online (first build fetches ML Kit from Google Maven; it must print "Kotlin glue present"), then `just install <serial>` on the S24 Ultra and Tab S11.
 - [ ] On each device: share text from WhatsApp → **Kabar**; select text → ⋮ → **Kabar**; take a screenshot → Share → **Kabar**. `adb logcat -s KabarShare` if a share is ignored.
 - [ ] On both devices, tap a word in the Reader: the card opens with its meaning and audio.
+- [ ] Tab S11 with the S Pen in the Reader: hover over a word (the meaning floats up), tap it with the pen (the card opens), draw a loop around two words (the phrase is looked up), draw a line along a few words (they're highlighted and saved). Your palm on the screen shouldn't do anything while the pen is near. Tell me if any of these misses or feels slow.
 - [ ] Send me one or two real WhatsApp screenshots you decoded (and how well the bubbles came out), so I can tune the screenshot structuring on real data.
 
 ## 4. Google sign-in clients (~10 min) — [CLOUD.md §3.2](CLOUD.md)
@@ -170,8 +171,7 @@ that only polish the laptop. Nothing is deleted from `docs/SPEC.md` — each
 one is a later phase (SPEC §23 "Deferred"), and its steps come back here
 with it.
 
-- Pen on both devices: Quick Capture, hover popovers, lasso lookup,
-  stroke-to-highlight, handwritten answers, Card Wall flicks, the Notebook,
+- Pen writing on both devices, and Quick Capture on the phone: handwritten answers, Card Wall flicks, the Notebook,
   Gambar!, Listening Companion scribbles, write-mode lessons and aksara Jawa
   calligraphy. The Tablet Studio (M9) and aksara (M13) code is merged and
   waits for this; its checks (deploy the ink tables, Notebook feel, the

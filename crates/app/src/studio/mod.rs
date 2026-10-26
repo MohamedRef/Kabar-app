@@ -32,10 +32,21 @@ enum Tab {
     Aksara,
 }
 
+/// Pen writing is paused on every device (SPEC §23, the learner's call):
+/// the Studio shows only the mind map. The writing tools stay in the code;
+/// flip this to bring them back.
+const WRITING_PAUSED: bool = true;
+
+impl Tab {
+    fn is_writing(self) -> bool {
+        !matches!(self, Self::MindMap)
+    }
+}
+
 #[component]
 pub fn StudioScreen() -> Element {
     let ui = use_context::<Ui>();
-    let mut tab = use_signal(|| Tab::Notebook);
+    let mut tab = use_signal(|| Tab::MindMap);
     let l = ui.lang();
     let tabs = [
         (Tab::Notebook, T::Notebook),
@@ -44,11 +55,15 @@ pub fn StudioScreen() -> Element {
         (Tab::Listening, T::Listening),
         (Tab::Write, T::WriteTab),
         (Tab::Aksara, T::Aksara),
-    ];
+    ]
+    .into_iter()
+    .filter(|(t, _)| !WRITING_PAUSED || !t.is_writing())
+    .collect::<Vec<_>>();
+    let shown = tabs.len();
     rsx! {
         style { {STUDIO_CSS} }
         div { class: "studio",
-            div { class: "studio-tabs", role: "tablist",
+            div { class: "studio-tabs", role: "tablist", hidden: shown < 2,
                 for (t, label) in tabs {
                     button {
                         key: "{label:?}",
