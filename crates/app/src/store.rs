@@ -190,6 +190,50 @@ const MIGRATIONS: &[&str] = &[
         op_id TEXT NOT NULL UNIQUE,
         op    TEXT NOT NULL
     ) STRICT;",
+    // 6: Reader (M5). Texts, word statuses and highlights sync (one JSON
+    // document per row, mirrored from `sync_rows`); quality feedback lives
+    // only in `sync_rows` (append-only). Saved words stay on the device until
+    // the review deck takes them over.
+    "CREATE TABLE texts (
+        id          TEXT PRIMARY KEY,
+        payload     TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE TABLE word_status (
+        id          TEXT PRIMARY KEY,
+        payload     TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE TABLE highlights (
+        id          TEXT PRIMARY KEY,
+        payload     TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE INDEX highlights_text ON highlights (json_extract(payload, '$.text_id'));
+    CREATE TABLE saved_words (
+        id          TEXT PRIMARY KEY,
+        lexeme      TEXT NOT NULL,
+        surface     TEXT NOT NULL,
+        sentence    TEXT NOT NULL,
+        text_id     TEXT,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;",
 ];
 
 /// The schema version that added `sync_rows`.
@@ -210,6 +254,8 @@ const SYNCED_TABLES: &[&str] = &[
     "review_log",
     "taught_entries",
     "sync_rows",
+    "texts",
+    "saved_words",
 ];
 
 /// LWW tables that hold one JSON document per row id.
@@ -679,7 +725,9 @@ pub struct LessonEvent {
 }
 
 // Review cards and the review log (M6).
+mod reader;
 mod reviews;
+pub use reader::{Highlight, SavedText, TextKind};
 // Teach Kabar's personal dictionary (spec §26).
 mod taught;
 
@@ -793,6 +841,10 @@ impl Typed {
             "cards" => Self::Doc("cards", "id", "payload"),
             "sessions" => Self::Doc("sessions", "device", "payload"),
             "taught_entries" => Self::Doc("taught_entries", "id", "entry"),
+            "texts" | "word_status" | "highlights" => {
+                let table = ["texts", "word_status", "highlights"].into_iter().find(|t| *t == table)?;
+                Self::Doc(table, "id", "payload")
+            }
             "xp_events" => Self::XpEvent,
             "review_log" => Self::Review,
             "lesson_events" => Self::LessonEvent,

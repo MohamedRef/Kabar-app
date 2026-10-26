@@ -9,6 +9,7 @@ pub mod hlc;
 pub mod learn;
 pub mod lesson;
 pub mod pen;
+pub mod reader;
 pub mod srs;
 pub mod sync;
 
