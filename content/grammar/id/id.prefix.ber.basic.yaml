@@ -1,0 +1,84 @@
+schema: kabar.grammar/v1
+id: id.prefix.ber.basic
+language: id
+level: bipa1
+title:
+  target: ber- (bermain, bekerja, belajar)
+  en: "The prefix ber- (intransitive verbs)"
+  ar_eg: البادئة ber- (أفعال لازمة)
+  ar: السابقة ber- (الأفعال اللازمة)
+summary:
+  ar_eg: "ber- بتعمل أفعال مالهاش مفعول به: bermain = بيلعب، bekerja = بيشتغل، belajar = بيذاكر."
+  ar: "ber- تصوغ أفعالًا لازمة لا مفعول لها: bermain = يلعب، bekerja = يعمل، belajar = يتعلم."
+  en: ber- forms verbs that take no object — bermain (play), bekerja (work), belajar (study).
+pattern:
+  - ber- + root (bermain, berbicara, berjalan)
+  - be- before r-roots and some others (berenang ← renang, bekerja ← kerja)
+  - bel- only in belajar (← ajar)
+explanation:
+  ar_eg: |
+    ber- من أهم البادئات. الفعل اللي بيبدأ بيها غالبًا «لازم» (مالوش مفعول):
+    main → bermain (يلعب)، bicara → berbicara (يتكلم)، jalan → berjalan (يمشي)، libur → berlibur (يقضي أجازة).
+    تغييرات صغيرة في النطق:
+    - لو الجذر بيبدأ بـ r: ber + renang → berenang (يعوم).
+    - كام كلمة مقطعها الأول فيه er: kerja → bekerja (يشتغل).
+    - كلمة واحدة شاذة: ajar → belajar (يتعلم/يذاكر).
+    في الكلام العادي الناس ساعات بتشيل ber-: «Lagi main» = بيلعب.
+    ber- ليها معاني تانية كتير (يلبس، يركب، عنده…) هتيجي في BIPA 2.
+  ar: |
+    ber- من أهم السوابق، والفعل المصوغ بها لازم غالبًا:
+    main → bermain (يلعب)، bicara → berbicara (يتكلم)، jalan → berjalan (يمشي)، libur → berlibur (يقضي عطلة).
+    وتتغير صورتها قليلًا:
+    - مع الجذور المبتدئة بـ r: ber + renang → berenang (يسبح).
+    - مع بعض الجذور التي مقطعها الأول فيه er: kerja → bekerja (يعمل).
+    - وشاذ واحد: ajar → belajar (يتعلم).
+    وفي العامية قد تُحذف: «Lagi main» = يلعب الآن.
+    ولـ ber- معانٍ أخرى (اللبس والركوب والملكية) في المستوى الثاني.
+  en: |
+    ber- is one of the core prefixes; its verbs usually take no object:
+    main → bermain (play), bicara → berbicara (speak), jalan → berjalan (walk), libur → berlibur (go on holiday).
+    Small sound changes:
+    - Roots starting with r: ber + renang → berenang (swim).
+    - A few roots with er in the first syllable: kerja → bekerja (work).
+    - One exception: ajar → belajar (study, learn).
+    Casual speech often drops ber-: "Lagi main" = (He's) playing.
+    ber- has more meanings (wear, ride, have…) — BIPA 2.
+examples:
+  - text: Anak-anak bermain di taman.
+    en: The children are playing in the park.
+    ar_eg: العيال بيلعبوا في الجنينة.
+    ar: الأطفال يلعبون في الحديقة.
+  - text: Saya bekerja di bank.
+    en: I work at a bank.
+    ar_eg: أنا بشتغل في بنك.
+    ar: أعمل في مصرف.
+  - text: Kami belajar bahasa Indonesia setiap hari.
+    en: We study Indonesian every day.
+    ar_eg: بنذاكر إندونيسي كل يوم.
+    ar: ندرس الإندونيسية كل يوم.
+  - text: Mereka berlibur ke Bali.
+    en: They're going on holiday to Bali.
+    ar_eg: رايحين أجازة بالي.
+    ar: يقضون عطلتهم في بالي.
+mistakes:
+  - wrong: berkerja
+    right: bekerja
+    why:
+      ar_eg: "مع kerja الـ r بتقع: bekerja."
+      ar: تسقط الراء مع kerja.
+      en: The r drops before kerja.
+  - wrong: berajar
+    right: belajar
+    why:
+      ar_eg: belajar كلمة شاذة لازم تتحفظ.
+      ar: belajar شاذة تُحفظ.
+      en: belajar is the one irregular form.
+arabic_bridge:
+  ar_eg: "فكّر في ber- زي وزن «تفاعل/انفعل» اللي غالبًا بيعمل أفعال لازمة. بس متتعبش نفسك في الأوزان: ber- معناها غالبًا «بيعمل الحاجة دي»."
+  ar: يشبه دور ber- دور بعض أوزان اللزوم في العربية كـ«تفعّل» و«انفعل»، فهي تدل غالبًا على مزاولة الفعل دون مفعول.
+  en: "ber- plays a role like Arabic intransitive patterns (تفعّل / انفعل): \"doing the activity\", no object."
+tags: [affix, verb, morphology]
+see_also: [id.prefix.men.basic, id.prefix.ber.meanings]
+review:
+  status: draft
+  verified: false

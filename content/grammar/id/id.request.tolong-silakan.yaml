@@ -1,0 +1,75 @@
+schema: kabar.grammar/v1
+id: id.request.tolong-silakan
+language: id
+level: bipa2
+title:
+  target: tolong, silakan, minta, mohon, boleh
+  en: Polite requests and offers
+  ar_eg: الطلب بأدب والعزومة (لو سمحت، اتفضل)
+  ar: الطلب المهذب والعرض
+summary:
+  ar_eg: tolong = لو سمحت (اعملي حاجة)، silakan = اتفضل (اعمل إنت)، minta = عايز / ممكن آخد، mohon = برجاء (رسمي).
+  ar: tolong لطلب المساعدة، وsilakan لدعوة المخاطب إلى الفعل، وminta لطلب شيء، وmohon للرجاء الرسمي.
+  en: tolong = please (do this for me), silakan = please (go ahead, you do it), minta = may I have, mohon = kindly (formal).
+pattern:
+  - Tolong + verb (+ object) (please do … for me)
+  - Silakan + verb (please go ahead and …)
+  - Minta + thing (May I have …)
+  - Mohon + verb (formal request)
+  - Boleh minta …? (Could I have …?)
+explanation:
+  ar_eg: |
+    الفرق المهم بين tolong وsilakan:
+    - tolong = إنت هتعملي خدمة: Tolong tutup pintunya = لو سمحت اقفل الباب. (tolong لوحدها = إلحقوني!)
+    - silakan = أنا بسمحلك / بعزم عليك: Silakan masuk = اتفضل ادخل. Silakan dicoba = اتفضل دوق.
+    - minta = عايز آخد: Minta air putih = عايز مية لو سمحت. Boleh minta nomor HP-nya? = ممكن رقمك؟
+    - mohon = برجاء (رسمية): Mohon ditunggu = برجاء الانتظار.
+    في المطعم والمحل: «Mbak, minta …» أو «Saya mau …» طبيعيين جدًا.
+  ar: |
+    الفرق الجوهري:
+    - tolong = أن يقدّم المخاطب لك خدمة: Tolong tutup pintunya = أغلق الباب من فضلك، وTolong! وحدها = النجدة!
+    - silakan = أن تأذن له أو تدعوه: Silakan masuk = تفضل بالدخول.
+    - minta = أطلب شيئًا: Minta air putih = ماءً من فضلك، Boleh minta …؟ = هل لي بـ…؟
+    - mohon = رجاء رسمي: Mohon ditunggu = يرجى الانتظار.
+  en: |
+    The key difference:
+    - tolong = you're asking a favour: Tolong tutup pintunya = Please close the door. (Tolong! alone = Help!)
+    - silakan = you're offering / permitting: Silakan masuk = Please come in. Silakan dicoba = Please try some.
+    - minta = asking for something: Minta air putih = Some water, please. Boleh minta nomor HP-nya? = Could I have your number?
+    - mohon = formal: Mohon ditunggu = Please wait.
+    In shops: "Mbak, minta …" or "Saya mau …" are perfectly natural.
+examples:
+  - text: Tolong bantu saya, Pak.
+    en: Please help me, sir.
+    ar_eg: لو سمحت ساعدني يا أستاذ.
+    ar: ساعدني من فضلك يا سيدي.
+  - text: Silakan masuk, anggap rumah sendiri.
+    en: Please come in, make yourself at home.
+    ar_eg: اتفضل ادخل، البيت بيتك.
+    ar: تفضل بالدخول، البيت بيتك.
+  - text: Mas, minta bonnya, ya.
+    en: Could I have the bill, please?
+    ar_eg: الحساب لو سمحت.
+    ar: الفاتورة من فضلك.
+    register: informal
+  - text: Mohon isi formulir ini.
+    en: Please fill in this form.
+    ar_eg: برجاء ملء الاستمارة دي.
+    ar: يرجى تعبئة هذه الاستمارة.
+    register: formal
+mistakes:
+  - wrong: Tolong masuk! (inviting a guest in)
+    right: Silakan masuk!
+    why:
+      ar_eg: لما تعزم حد يبقى silakan؛ tolong معناها إنك بتطلب منه خدمة.
+      ar: للدعوة silakan، وtolong لطلب الخدمة.
+      en: Inviting is silakan; tolong asks a favour.
+arabic_bridge:
+  ar_eg: "silakan = «اتفضل»، tolong = «لو سمحت (اعملي…)»، وmohon ≈ «برجاء». ونفس فخ «اتفضل» عندنا: بتتقال للعزومة مش للطلب."
+  ar: silakan ≈ «تفضّل»، وtolong ≈ «من فضلك افعل لي»، وmohon ≈ «يُرجى».
+  en: silakan = «اتفضل», tolong = «لو سمحت», mohon ≈ «برجاء».
+tags: [politeness, request, imperative]
+see_also: [id.politeness.phrases, id.imperative.basic, id.notice.harap-dilarang]
+review:
+  status: draft
+  verified: false

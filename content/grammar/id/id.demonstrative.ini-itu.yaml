@@ -1,0 +1,70 @@
+schema: kabar.grammar/v1
+id: id.demonstrative.ini-itu
+language: id
+level: bipa1
+title:
+  target: ini, itu
+  en: "this and that"
+  ar_eg: ده/دي و ده/دي هناك
+  ar: اسما الإشارة «هذا» و«ذلك»
+summary:
+  ar_eg: ini = ده (قريب)، itu = ده/داك (بعيد). بعد الاسم = «الكتاب ده»، وفي أول الجملة = «ده كتاب».
+  ar: ini للقريب وitu للبعيد؛ بعد الاسم تحدده، وفي أول الجملة تكون مبتدأ.
+  en: ini = this (near), itu = that (far). After a noun they point it out; at the start they mean "this is / that is".
+pattern:
+  - noun + ini / itu (this book / that book)
+  - Ini / Itu + noun (This is a book / That is a book)
+explanation:
+  ar_eg: |
+    مفيش مذكر ومؤنث ولا مفرد وجمع: ini لأي حاجة قريبة، itu لأي حاجة بعيدة (أو حاجة اتكلمنا عنها قبل كده).
+    الترتيب شبه المصري بالظبط:
+    - buku ini = الكتاب ده — اسم الإشارة بعد الاسم زي ما بنقول في مصر.
+    - Ini buku = ده كتاب — اسم الإشارة في الأول يبقى جملة.
+    يعني buku ini (عبارة: «الكتاب ده») غير Ini buku (جملة: «ده كتاب»).
+    itu كمان بتيجي بمعنى «الـ» اللي اتكلمنا عنه: Orang itu baik = الراجل ده (اللي قلنا عليه) كويس.
+  ar: |
+    لا تمييز بالجنس ولا بالعدد: ini لكل قريب، وitu لكل بعيد أو لما سبق ذكره.
+    - buku ini = هذا الكتاب (والإشارة بعد الاسم كما في العامية المصرية «الكتاب ده»).
+    - Ini buku = هذا كتاب، فتكون الإشارة مبتدأ.
+    فـ buku ini عبارة، وIni buku جملة تامة.
+    وقد تفيد itu معنى التعريف بالعهد: Orang itu baik = ذلك الرجل (المذكور) طيب.
+  en: |
+    No gender, no plural: ini for anything near, itu for anything far (or already mentioned).
+    Order matters:
+    - buku ini = this book (pointer after the noun — exactly Egyptian «الكتاب ده»).
+    - Ini buku = This is a book (pointer first makes a sentence).
+    So buku ini is a phrase; Ini buku is a full sentence.
+    itu also marks "the one we talked about": Orang itu baik = That person is kind.
+examples:
+  - text: Ini adik saya.
+    en: This is my younger brother/sister.
+    ar_eg: ده أخويا الصغير / دي أختي الصغيرة.
+    ar: هذا أخي الأصغر / هذه أختي الصغرى.
+  - text: Buku ini bagus.
+    en: This book is good.
+    ar_eg: الكتاب ده حلو.
+    ar: هذا الكتاب جيد.
+  - text: Itu rumah siapa?
+    en: Whose house is that?
+    ar_eg: ده بيت مين؟
+    ar: لِمَن ذلك البيت؟
+  - text: Kopi itu terlalu manis.
+    en: That coffee is too sweet.
+    ar_eg: القهوة دي مسكّرة زيادة.
+    ar: تلك القهوة حلوة أكثر من اللازم.
+mistakes:
+  - wrong: Ini buku bagus. (meaning "This book is good")
+    right: Buku ini bagus.
+    why:
+      ar_eg: Ini buku bagus = «ده كتاب حلو». عشان تقول «الكتاب ده حلو» حط ini بعد buku.
+      ar: «Ini buku bagus» معناها «هذا كتاب جيد»؛ ولمعنى «هذا الكتاب جيد» تأتي ini بعد buku.
+      en: '"Ini buku bagus" = "This is a good book". For "This book is good" put ini after buku.'
+arabic_bridge:
+  ar_eg: ميزة مصرية! «الكتاب ده» = buku ini بنفس الترتيب، و«ده كتاب» = Ini buku.
+  ar: ترتيب العامية المصرية «الكتاب ده» يطابق buku ini، و«هذا كتاب» يطابق Ini buku.
+  en: "Egyptian word order helps: «الكتاب ده» = buku ini, «ده كتاب» = Ini buku."
+tags: [demonstrative]
+see_also: [id.noun-phrase.order, id.demonstrative.sini-situ-sana]
+review:
+  status: draft
+  verified: false

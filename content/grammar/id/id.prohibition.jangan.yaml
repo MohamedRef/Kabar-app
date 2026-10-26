@@ -1,0 +1,71 @@
+schema: kabar.grammar/v1
+id: id.prohibition.jangan
+language: id
+level: bipa2
+title:
+  target: jangan
+  en: "Don't"
+  ar_eg: ماتـ…ش
+  ar: لا الناهية
+summary:
+  ar_eg: jangan + فعل = ماتعملش كده. وjangan lupa = ماتنساش.
+  ar: jangan + فعل = لا تفعل.
+  en: jangan + verb = don't …; jangan lupa = don't forget.
+pattern:
+  - Jangan + verb / adjective!
+  - Jangan + verb + -lah / dulu / ya (softer)
+explanation:
+  ar_eg: |
+    jangan هي «لا الناهية»:
+    Jangan merokok! = ماتدخنش! — Jangan lupa! = ماتنساش! — Jangan khawatir = ماتقلقش.
+    مع الصفات كمان: Jangan marah, ya = ماتزعلش بقى.
+    عشان تبقى ألطف: ضيف ya أو dulu: Jangan pergi dulu = ماتمشيش لسه.
+    في السوق: Jangan mahal-mahal, Bu! = ماتغليهاش أوي يا حاجة!
+    jangan مش tidak: tidak = نفي، jangan = نهي.
+  ar: |
+    jangan هي «لا» الناهية:
+    Jangan merokok! = لا تدخن! — Jangan lupa! = لا تنسَ! — Jangan khawatir = لا تقلق.
+    وتأتي مع الصفة: Jangan marah = لا تغضب.
+    وتُلطَّف بـ ya أو dulu: Jangan pergi dulu = لا تذهب الآن.
+    والفرق: tidak للنفي، وjangan للنهي.
+  en: |
+    jangan is "don't":
+    Jangan merokok! = Don't smoke! — Jangan lupa! = Don't forget! — Jangan khawatir = Don't worry.
+    With adjectives too: Jangan marah, ya = Don't be angry, OK?
+    Soften with ya or dulu: Jangan pergi dulu = Don't go yet.
+    At the market: Jangan mahal-mahal, Bu! = Don't make it so expensive!
+    tidak negates; jangan forbids.
+examples:
+  - text: Jangan lupa bawa payung.
+    en: Don't forget to bring an umbrella.
+    ar_eg: ماتنساش تاخد شمسية.
+    ar: لا تنسَ أن تأخذ مظلة.
+  - text: Jangan mahal-mahal, Bu!
+    en: Don't make it so expensive, ma'am!
+    ar_eg: ماتغليهاش علينا يا حاجة!
+    ar: لا تبالغي في السعر يا سيدتي!
+    register: informal
+  - text: Jangan khawatir, saya bisa sendiri.
+    en: Don't worry, I can do it myself.
+    ar_eg: ماتقلقش، أقدر لوحدي.
+    ar: لا تقلق، أستطيع وحدي.
+  - text: Jangan pegang itu, panas!
+    en: Don't touch that, it's hot!
+    ar_eg: ماتلمسهاش، سخنة!
+    ar: لا تلمس ذلك، إنه ساخن!
+mistakes:
+  - wrong: Tidak merokok! (meaning "Don't smoke!")
+    right: Jangan merokok!
+    why:
+      ar_eg: tidak بتنفي (مش بيدخن)، jangan بتنهي (ماتدخنش).
+      ar: tidak تنفي، وjangan تنهى.
+      en: tidak states "doesn't"; jangan commands "don't".
+arabic_bridge:
+  ar_eg: jangan = «لا» الناهية = «ماتـ…ش» المصرية. والفعل بعدها مابيتغيرش.
+  ar: jangan تقابل «لا» الناهية، والفعل بعدها لا يُجزم ولا يتغير.
+  en: jangan = Arabic prohibitive لا / Egyptian «ماتـ…ش», with no change to the verb.
+tags: [imperative, negation]
+see_also: [id.negation.tidak-bukan, id.invitation.ayo-mari, id.notice.harap-dilarang]
+review:
+  status: draft
+  verified: false

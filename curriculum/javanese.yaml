@@ -1,0 +1,724 @@
+# Kabar — Javanese curriculum (J1 → J6), a train line across Java (SPEC §10, §21).
+# Shape: schemas/curriculum.schema.json. Checked by `cargo test -p kabar-content`.
+#
+# There is no official Javanese-for-foreigners standard comparable to BIPA, so this
+# sequence is Kabar's own design, built on the level themes fixed in SPEC §21.
+# Everything Javanese is UNVERIFIED until the user (or a native speaker) approves it:
+# word lists, speech-level pairs and the grammar library entries this file points to.
+# Grammar ids (jv.*) are planned; their library entries arrive with M11 / M13.
+schema: kabar.curriculum/v1
+language: jv
+title: { target: "Basa Jawa", en: "Javanese (J1–J6)", ar: "الجاوية (J١–J٦)" }
+
+framework:
+  name: Kabar Javanese track (J1–J6)
+  summary: >-
+    Six levels from survival chat Javanese to aksara Jawa. Javanese unlocks when BIPA 1
+    is done, then runs in parallel with Indonesian. Every point is explained by
+    contrast with Indonesian (which the learner already studies) and through Arabic /
+    Egyptian analogies (ngoko ≈ إنت, krama ≈ حضرتك, krama inggil ≈ سيادتك — while making
+    clear Javanese swaps whole vocabularies, not just pronouns).
+  cefr_note: >-
+    No published CEFR mapping exists for Javanese as a foreign language. Levels are
+    sized by content, not by CEFR; J1–J2 aim at roughly A1–A2 in ngoko.
+  unlock: J1 requires BIPA 1; each later J level requires the previous one. Skipping ahead is allowed via the level test.
+  lesson_pattern: Same lesson shape as Indonesian (slides → exercises → mini dialogue → new words → souvenir); every unit ends with a review.
+  notes:
+    - "Spelling: Kabar teaches standard orthography (pira, apa, kowé) and shows the chat / spoken spelling next to it (piro, opo, kowe), because real messages use the latter."
+    - "Dialect: J1 adds a taste of Surabaya Arek (gak, koen, rek); J2 onwards is Mataraman (Solo–Yogya–Madiun) Javanese, the standard taught in schools."
+    - Speech-level data comes from the content pipeline's speech-level table and stays flagged unverified until reviewed.
+    - Avoid teaching vulgar Arek words actively; the Reader explains them if they appear in real chats.
+
+sources:
+  - id: kabar-spec
+    title: Kabar SPEC v4 §10, §13, §21, §24
+    used_for: Level themes, journey map, unggah-ungguh analogies, test sentences.
+  - id: wiktionary-jv
+    title: Wiktionary — Javanese entries (via kaikki.org)
+    url: https://kaikki.org/dictionary/Javanese/
+    used_for: Planned cross-check of vocabulary and speech-level pairs (M3 / M11).
+
+levels:
+  # ───────────────────────────── J1 · Surabaya ─────────────────────────────
+  - id: j1
+    code: J1
+    title: { target: "Suroboyo", en: "Survival ngoko and chat Javanese", ar: "النغوكو للنجاة وجاوية الدردشة" }
+    requires: [bipa1]
+    journey: { place: Surabaya, kind: train_line, note: "Start of the line: Surabaya Pasar Turi / Gubeng." }
+    capability:
+      en: Greet, ask simple questions and read short WhatsApp-style Javanese messages among friends, in ngoko, with a taste of Surabaya Arek.
+    skills:
+      listening:
+        - Recognise everyday ngoko greetings and questions
+        - Tell Javanese from Indonesian in a mixed sentence
+      speaking:
+        - Greet friends and ask how they are in ngoko
+        - Ask simple questions (what, who, where, how much)
+      reading:
+        - Decode chat abbreviations (arp, ng, sek, wis, gk)
+        - Read the SPEC test chats ("Sek tak lapor pusat", "arp dicul piro")
+      writing:
+        - Write short chat replies in ngoko
+    units:
+      - id: j1.u01
+        title: { target: "Piye kabare, rek?", en: "How are you?", ar: "كيف حالك؟" }
+        stop: Pasar Turi
+        can_do:
+          - Greet friends and answer "Piye kabare?"
+          - Use aku / kowé and address terms (mas, mbak, rek, cak, dhe)
+        grammar: [jv.pronoun.ngoko, jv.address.terms]
+        vocabulary:
+          - greetings (sugeng enjing, piye kabare, apik, matur nuwun / suwun)
+          - address terms and kinship shortcuts
+        arabic_bridge:
+          - "kabar ← خبر works in Javanese too: piye kabare? = إزيك؟ / كيف حالك؟"
+        register: ngoko (with Arek flavour)
+        culture: { souvenir: Suroboyo Bus, note: "Surabaya, the City of Heroes, speaks Arek Javanese — direct, egalitarian, quick. 'Rek' (from arek, kid) ends half the sentences." }
+        lessons:
+          - { id: j1.u01.l01, kind: learn, title: "Sugeng enjing", can_do: "Greet at any time of day in Javanese.", minutes: 10 }
+          - { id: j1.u01.l02, kind: learn, title: "Aku lan kowé", can_do: "Say I and you in ngoko.", grammar: [jv.pronoun.ngoko], minutes: 10 }
+          - { id: j1.u01.l03, kind: learn, title: "Mas, mbak, cak, rek", can_do: "Address people casually.", grammar: [jv.address.terms], minutes: 10 }
+          - { id: j1.u01.l04, kind: review, title: "Ulangan J1.1", can_do: "Greet three different people.", minutes: 8 }
+
+      - id: j1.u02
+        title: { target: "Sapa kowé?", en: "Who are you?", ar: "مين إنت؟" }
+        stop: Gubeng
+        can_do:
+          - Introduce yourself in ngoko
+          - Ask apa / sapa / ngendi / kapan / piye / pira
+        grammar: [jv.question.words, jv.sentence.basic]
+        vocabulary:
+          - question words with Indonesian equivalents (apa = apa, sapa = siapa, ngendi = di mana, piye = bagaimana, pira = berapa)
+          - countries, jobs
+        culture: { souvenir: Gubeng station, note: "Javanese question words are the first thing to learn: piye (how) and pira (how much) are everywhere in chats." }
+        lessons:
+          - { id: j1.u02.l01, kind: learn, title: "Apa, sapa, ngendi", can_do: "Ask basic questions.", grammar: [jv.question.words], minutes: 12 }
+          - { id: j1.u02.l02, kind: learn, title: "Jenengku…", can_do: "Introduce yourself in ngoko.", grammar: [jv.sentence.basic], minutes: 10 }
+          - { id: j1.u02.l03, kind: practice, title: "Kenalan nang warung kopi", can_do: "Chat with a stranger at a coffee stall.", minutes: 10 }
+          - { id: j1.u02.l04, kind: review, title: "Ulangan J1.2", can_do: "Introduce yourself and ask back.", minutes: 8 }
+
+      - id: j1.u03
+        title: { target: "Chat Jawa", en: "Chat Javanese", ar: "جاوية الدردشة" }
+        stop: Tunjungan
+        can_do:
+          - Decode chat spelling (arp → arep, ng → nang, sek, wis, gk)
+          - Say done / not yet / now / going to (wis, durung, lagi, arep)
+          - Spot Javanese marker words versus Indonesian (ora vs tidak, wis vs sudah)
+        grammar: [jv.chat.normalize, jv.aspect.wis-durung-lagi-arep, jv.marker.vs-indonesian]
+        vocabulary:
+          - chat abbreviations
+          - marker words (ora, opo, piye, arep, wis, durung, karo, kowe, sing)
+        culture: { souvenir: Jalan Tunjungan at night, note: "Young Javanese write in a mix of Indonesian and Javanese with heavy abbreviation; Kabar's Reader normalises it, this unit teaches you to do it yourself." }
+        lessons:
+          - { id: j1.u03.l01, kind: learn, title: "Wis, durung, lagi, arep", can_do: "Show when things happen.", grammar: [jv.aspect.wis-durung-lagi-arep], minutes: 12 }
+          - { id: j1.u03.l02, kind: learn, title: "arp, ng, sek, gk", can_do: "Normalise chat spelling.", grammar: [jv.chat.normalize], minutes: 12 }
+          - { id: j1.u03.l03, kind: learn, title: "Jawa apa Indonesia?", can_do: "Tag each word's language.", grammar: [jv.marker.vs-indonesian], minutes: 10 }
+          - { id: j1.u03.l04, kind: review, title: "Ulangan J1.3", can_do: "Read a group chat.", minutes: 8 }
+
+      - id: j1.u04
+        title: { target: "Sek, tak lapor", en: "Hold on, I'll report", ar: "استنى، هبلّغ" }
+        stop: Ampel
+        can_do:
+          - Use tak- (I'll), kok- / mbok and di- with verbs
+          - Soften and colour sentences with particles (ta, ae, lho, kok, ya)
+          - Understand "Sek tak lapor pusat"
+        grammar: [jv.proclitic.tak-kok-di, jv.particle.basic]
+        vocabulary:
+          - everyday verbs (lapor, tuku, ngomong, takon, tunggu)
+          - particles
+        arabic_bridge:
+          - "Ampel's mosque was founded by Sunan Ampel, one of the Wali Sanga who brought Islam to Java"
+        culture: { souvenir: Sunan Ampel mosque, note: "The Ampel quarter is Surabaya's Arab town: dates, perfume, and Arabic-Javanese families since the 15th century." }
+        lessons:
+          - { id: j1.u04.l01, kind: learn, title: "Tak tuku, dituku", can_do: "Use tak- and di- on verbs.", grammar: [jv.proclitic.tak-kok-di], minutes: 12 }
+          - { id: j1.u04.l02, kind: learn, title: "Ta, ae, lho, kok", can_do: "Use chat particles.", grammar: [jv.particle.basic], minutes: 12 }
+          - { id: j1.u04.l03, kind: practice, title: "Sek tak lapor pusat", can_do: "Decode and answer the SPEC test chat.", minutes: 10 }
+          - { id: j1.u04.l04, kind: review, title: "Ulangan J1.4", can_do: "Reply to four chat messages.", minutes: 8 }
+
+      - id: j1.u05
+        title: { target: "Arek Suroboyo", en: "Surabaya Arek speech", ar: "كلام أهل سورابايا" }
+        stop: Kenjeran
+        can_do:
+          - Recognise Arek forms (koen, awakmu, gak, rek, cak, ning)
+          - Negate with ora / gak / dudu
+          - Understand "Koen wis mangan ta, rek?"
+        grammar: [jv.dialect.arek, jv.negation.ora-dudu]
+        vocabulary:
+          - Arek pronouns and negators
+          - Mataraman equivalents
+        culture: { souvenir: Kenjeran beach, note: "Arek speech sounds blunt to Central Javanese ears; between friends it is warm, not rude. Know it, but default to standard ngoko with strangers." }
+        lessons:
+          - { id: j1.u05.l01, kind: learn, title: "Ora, gak, dudu", can_do: "Negate verbs and nouns.", grammar: [jv.negation.ora-dudu], minutes: 12 }
+          - { id: j1.u05.l02, kind: learn, title: "Koen lan awakmu", can_do: "Recognise Arek forms.", grammar: [jv.dialect.arek], minutes: 12 }
+          - { id: j1.u05.l03, kind: practice, title: "Rek!", can_do: "Follow a fast Arek dialogue.", minutes: 10 }
+          - { id: j1.u05.l04, kind: review, title: "Ulangan J1.5", can_do: "Translate Arek to standard ngoko.", minutes: 8 }
+
+      - id: j1.u06
+        title: { target: "Nang endi?", en: "Where to?", ar: "على فين؟" }
+        stop: Wonokromo
+        can_do:
+          - Say where (nang / neng / ing, saka) and here / there (kene, kono, kana)
+          - Point with iki / iku (kuwi) / kae
+          - Understand "ng prabowo?"
+        grammar: [jv.preposition.place, jv.demonstrative]
+        vocabulary:
+          - places in town
+          - directions (ngiwa, nengen, lurus)
+        culture: { souvenir: Surabaya zoo, note: "In chats 'ng' can be nang/neng (to, at); context decides." }
+        lessons:
+          - { id: j1.u06.l01, kind: learn, title: "Nang, neng, saka", can_do: "Say to / at / from.", grammar: [jv.preposition.place], minutes: 12 }
+          - { id: j1.u06.l02, kind: learn, title: "Iki, kuwi, kaé", can_do: "Point near and far.", grammar: [jv.demonstrative], minutes: 10 }
+          - { id: j1.u06.l03, kind: practice, title: "Takon dalan", can_do: "Ask and follow directions.", minutes: 10 }
+          - { id: j1.u06.l04, kind: review, title: "Ulangan J1.6", can_do: "Give directions in ngoko.", minutes: 8 }
+
+      - id: j1.u07
+        title: { target: "Pira?", en: "How much?", ar: "بكام؟" }
+        stop: Pasar Atom
+        can_do:
+          - Count and say prices in ngoko (siji … sepuluh, sewu, sejuta)
+          - Use -aké / -ké verbs (diculké)
+          - Understand "arp dicul piro" and haggle (larang, murah)
+        grammar: [jv.number.ngoko, jv.suffix.ake]
+        vocabulary:
+          - numbers and money
+          - market words (piro, larang, murah, tuku, adol)
+        culture: { souvenir: Pasar Atom, note: "Market Javanese is the most useful Javanese of all; a few words get you a smile and a better price (Pasar! mini-game, Javanese round)." }
+        lessons:
+          - { id: j1.u07.l01, kind: learn, title: "Siji, loro, telu", can_do: "Count and say prices.", grammar: [jv.number.ngoko], minutes: 12 }
+          - { id: j1.u07.l02, kind: learn, title: "Diculké", can_do: "Use -aké / -ké verbs.", grammar: [jv.suffix.ake], minutes: 12 }
+          - { id: j1.u07.l03, kind: practice, title: "Arp dicul piro?", can_do: "Haggle over a second-hand phone.", minutes: 12 }
+          - { id: j1.u07.l04, kind: review, title: "Ulangan J1.7", can_do: "Buy something in Javanese.", minutes: 8 }
+    level_test:
+      id: j1.test
+      minutes: 25
+      pass_mark: 0.75
+      covers: ["SPEC §24 Javanese chat lines", "ngoko greetings and questions", "numbers and prices", "Arek vs standard forms"]
+
+  # ───────────────────────────── J2 · Madiun ─────────────────────────────
+  - id: j2
+    code: J2
+    title: { target: "Madiun", en: "Everyday ngoko (Mataraman)", ar: "النغوكو اليومية (ماتارامان)" }
+    requires: [j1]
+    journey: { place: Madiun, kind: train_line, note: "West along the line into Mataraman country: Madiun, Ponorogo, Ngawi." }
+    capability:
+      en: Talk about family, food, the market, time and numbers in everyday Mataraman ngoko.
+    units:
+      - id: j2.u01
+        title: { target: "Kulawarga", en: "Family", ar: "العائلة" }
+        stop: Madiun
+        can_do:
+          - Name family members (bapak, simbok / ibu, mas, mbakyu, adhi, pakdhe, budhe)
+          - Show possession with -é / -né
+        grammar: [jv.possessive.e-ne, jv.kinship.terms]
+        vocabulary: ["family", "Pak Budi's warung family (Sinetron cast)"]
+        culture: { souvenir: Pak Budi's warung, note: "Kabar's Sinetron starts here: Pak Budi runs a warung in Madiun; his daughter Sari studies in Cairo." }
+        lessons:
+          - { id: j2.u01.l01, kind: learn, title: "Pakdhe lan budhe", can_do: "Name relatives.", grammar: [jv.kinship.terms], minutes: 10 }
+          - { id: j2.u01.l02, kind: learn, title: "Omahé, bukuné", can_do: "Use -é / -né.", grammar: [jv.possessive.e-ne], minutes: 12 }
+          - { id: j2.u01.l03, kind: practice, title: "Kulawargané Pak Budi", can_do: "Describe a family.", minutes: 10 }
+          - { id: j2.u01.l04, kind: review, title: "Ulangan J2.1", can_do: "Describe your family in ngoko.", minutes: 8 }
+
+      - id: j2.u02
+        title: { target: "Mangan apa?", en: "What shall we eat?", ar: "ناكل إيه؟" }
+        stop: Caruban
+        can_do:
+          - Order food and talk about taste
+          - Form active verbs with the nasal prefix N- (nulis, maca, nggawé, ngombé)
+        grammar: [jv.prefix.nasal]
+        vocabulary: ["pecel Madiun", "drinks", "tastes (enak, pedhes, legi, asin)"]
+        culture: { souvenir: Nasi pecel Madiun, note: "Madiun is the home of nasi pecel — vegetables in peanut sauce on a teak leaf." }
+        lessons:
+          - { id: j2.u02.l01, kind: learn, title: "Nulis, maca, ngombé", can_do: "Use N- verbs.", grammar: [jv.prefix.nasal], minutes: 14 }
+          - { id: j2.u02.l02, kind: learn, title: "Enak tenan!", can_do: "Talk about taste.", minutes: 10 }
+          - { id: j2.u02.l03, kind: practice, title: "Tuku pecel", can_do: "Order at a pecel stall.", minutes: 10 }
+          - { id: j2.u02.l04, kind: review, title: "Ulangan J2.2", can_do: "Order a meal.", minutes: 8 }
+
+      - id: j2.u03
+        title: { target: "Nang Pasar", en: "At the market", ar: "في السوق" }
+        stop: Nganjuk
+        can_do:
+          - Say any number and price (sewelas, rolas, selikur, seket, sewidak, satus)
+          - Bargain politely
+        grammar: [jv.number.full]
+        vocabulary: ["big numbers", "quantities", "bargaining"]
+        culture: { souvenir: Nganjuk onions, note: "Javanese numbers have special forms (selikur 21, selawé 25, seket 50, sewidak 60) worth learning for prices." }
+        lessons:
+          - { id: j2.u03.l01, kind: learn, title: "Sewelas nganti satus", can_do: "Count to 100 with special forms.", grammar: [jv.number.full], minutes: 14 }
+          - { id: j2.u03.l02, kind: learn, title: "Ewu lan yuta", can_do: "Say Rupiah prices in Javanese.", grammar: [jv.number.full], minutes: 12 }
+          - { id: j2.u03.l03, kind: practice, title: "Pasar! Jawa", can_do: "Haggle in Javanese.", minutes: 12 }
+          - { id: j2.u03.l04, kind: review, title: "Ulangan J2.3", can_do: "Handle prices and change.", minutes: 8 }
+
+      - id: j2.u04
+        title: { target: "Wayah lan Dina", en: "Time and days", ar: "الوقت والأيام" }
+        stop: Ponorogo
+        can_do:
+          - Tell the time and the days of the week
+          - Name the five pasaran days (Legi, Pahing, Pon, Wagé, Kliwon)
+        grammar: [jv.time.expressions]
+        vocabulary: ["clock times", "days", "pasaran", "wingi / sésuk / saiki"]
+        culture: { souvenir: Reog Ponorogo, note: "Javanese weeks combine the 7-day week with a 5-day market week; 'Jumat Kliwon' is a famous combination. Reog's giant peacock mask is Ponorogo's pride." }
+        lessons:
+          - { id: j2.u04.l01, kind: learn, title: "Jam pira?", can_do: "Tell the time.", grammar: [jv.time.expressions], minutes: 12 }
+          - { id: j2.u04.l02, kind: learn, title: "Legi, Pahing, Pon", can_do: "Use pasaran days.", minutes: 10 }
+          - { id: j2.u04.l03, kind: practice, title: "Janjian", can_do: "Make an appointment.", minutes: 10 }
+          - { id: j2.u04.l04, kind: review, title: "Ulangan J2.4", can_do: "Plan a week.", minutes: 8 }
+
+      - id: j2.u05
+        title: { target: "Saben Dina", en: "Every day", ar: "كل يوم" }
+        stop: Magetan
+        can_do:
+          - Describe your routine
+          - Give ngoko commands (-en, -na, -a) and use -i verbs
+        grammar: [jv.imperative.ngoko, jv.suffix.i]
+        vocabulary: ["routine verbs", "chores"]
+        culture: { souvenir: Lake Sarangan, note: "Javanese commands are softened with 'ya' or 'to'; a bare command sounds harsh." }
+        lessons:
+          - { id: j2.u05.l01, kind: learn, title: "Mangana! Tukokna!", can_do: "Give ngoko commands.", grammar: [jv.imperative.ngoko], minutes: 12 }
+          - { id: j2.u05.l02, kind: learn, title: "Nyirami, nekani", can_do: "Use -i verbs.", grammar: [jv.suffix.i], minutes: 12 }
+          - { id: j2.u05.l03, kind: practice, title: "Dinané Sari", can_do: "Narrate a day.", minutes: 10 }
+          - { id: j2.u05.l04, kind: review, title: "Ulangan J2.5", can_do: "Describe your routine.", minutes: 8 }
+
+      - id: j2.u06
+        title: { target: "Dolan-dolan", en: "Going out", ar: "الخروج والفسحة" }
+        stop: Ngawi
+        can_do:
+          - Use reduplication (mlaku-mlaku, dolan-dolan)
+          - Intensify (banget, tenan, pol)
+          - Link ideas (lan, karo, nanging, terus, merga)
+        grammar: [jv.reduplication, jv.intensifier, jv.conjunction.basic]
+        vocabulary: ["leisure", "feelings"]
+        culture: { souvenir: Benteng Pendem Ngawi, note: "Ngawi's Dutch fort and the Solo river are weekend spots; 'dolan' (go out, visit) is a key verb." }
+        lessons:
+          - { id: j2.u06.l01, kind: learn, title: "Mlaku-mlaku", can_do: "Use reduplication.", grammar: [jv.reduplication], minutes: 12 }
+          - { id: j2.u06.l02, kind: learn, title: "Apik banget, apik tenan", can_do: "Intensify.", grammar: [jv.intensifier], minutes: 10 }
+          - { id: j2.u06.l03, kind: learn, title: "Lan, nanging, terus", can_do: "Link sentences.", grammar: [jv.conjunction.basic], minutes: 12 }
+          - { id: j2.u06.l04, kind: review, title: "Ulangan J2.6", can_do: "Tell a weekend story.", minutes: 8 }
+    level_test:
+      id: j2.test
+      minutes: 30
+      pass_mark: 0.75
+      covers: ["family and food talk", "numbers to millions", "time and pasaran", "ngoko commands"]
+
+  # ───────────────────────────── J3 · Solo ─────────────────────────────
+  - id: j3
+    code: J3
+    title: { target: "Sala", en: "Krama basics: when and with whom", ar: "أساسيات الكراما: متى ومع من" }
+    requires: [j2]
+    journey: { place: "Solo (Surakarta)", kind: train_line }
+    capability:
+      en: Know when to switch from ngoko to krama, and hold a short polite exchange in krama with an elder, a seller or a stranger.
+    units:
+      - id: j3.u01
+        title: { target: "Unggah-ungguh", en: "Speech levels", ar: "مستويات الكلام" }
+        stop: Solo Balapan
+        can_do:
+          - Explain ngoko, krama, krama inggil and krama andhap with Egyptian analogies
+          - Choose a level from the situation (friend, seller, a friend's grandmother, teacher, elder)
+        grammar: [jv.speechlevel.overview]
+        vocabulary: ["one sentence in three levels (\"Have you eaten?\")"]
+        arabic_bridge:
+          - "ngoko ≈ إنت, krama ≈ حضرتك, krama inggil ≈ سيادتك — but Javanese changes whole words, not just pronouns"
+        register: all levels
+        culture: { souvenir: Solo Balapan station, note: "Solo is the heartland of refined Javanese (alus); using krama here earns instant respect." }
+        lessons:
+          - { id: j3.u01.l01, kind: learn, title: "Ngoko, krama, krama inggil", can_do: "Name the levels and their use.", grammar: [jv.speechlevel.overview], minutes: 14 }
+          - { id: j3.u01.l02, kind: learn, title: "Kowé wis mangan?", can_do: "Compare one sentence across levels.", grammar: [jv.speechlevel.overview], minutes: 12 }
+          - { id: j3.u01.l03, kind: practice, title: "Respect Meter", can_do: "Pick a level for five situations (Unggah-Ungguh Simulator, lite).", minutes: 10 }
+          - { id: j3.u01.l04, kind: review, title: "Ulangan J3.1", can_do: "Justify a level choice.", minutes: 8 }
+
+      - id: j3.u02
+        title: { target: "Kula lan panjenengan", en: "Polite pronouns", ar: "الضمائر المهذبة" }
+        stop: Pasar Gede
+        can_do:
+          - Use kula, sampéyan, panjenengan, piyambakipun
+        grammar: [jv.pronoun.krama]
+        vocabulary: ["pronouns across levels"]
+        culture: { souvenir: Pasar Gede, note: "'Sampéyan' is polite but everyday; 'panjenengan' is for elders and people you honour." }
+        lessons:
+          - { id: j3.u02.l01, kind: learn, title: "Kula", can_do: "Say I in krama.", grammar: [jv.pronoun.krama], minutes: 10 }
+          - { id: j3.u02.l02, kind: learn, title: "Sampéyan utawa panjenengan?", can_do: "Choose a polite you.", grammar: [jv.pronoun.krama], minutes: 12 }
+          - { id: j3.u02.l03, kind: practice, title: "Ngobrol karo simbah", can_do: "Talk to a friend's grandmother.", minutes: 10 }
+          - { id: j3.u02.l04, kind: review, title: "Ulangan J3.2", can_do: "Swap pronouns by situation.", minutes: 8 }
+
+      - id: j3.u03
+        title: { target: "Tembung krama", en: "Core krama words", ar: "كلمات الكراما الأساسية" }
+        stop: Kauman
+        can_do:
+          - Use the krama function words (sampun, dèrèng, badhé, mboten, wonten, saking, dhateng)
+          - Say "Sampéyan sampun nedha?"
+        grammar: [jv.krama.function-words]
+        vocabulary: ["ngoko ↔ krama pairs (wis ↔ sampun, durung ↔ dèrèng, arep ↔ badhé, ora ↔ mboten, ana ↔ wonten)"]
+        culture: { souvenir: Kauman batik village, note: "Kauman, next to the Grand Mosque, was the quarter of the mosque's religious officials and is now famous for batik." }
+        lessons:
+          - { id: j3.u03.l01, kind: learn, title: "Sampun, dèrèng, badhé", can_do: "Use krama aspect words.", grammar: [jv.krama.function-words], minutes: 12 }
+          - { id: j3.u03.l02, kind: learn, title: "Mboten lan wonten", can_do: "Negate and say there is.", grammar: [jv.krama.function-words], minutes: 12 }
+          - { id: j3.u03.l03, kind: practice, title: "Sampéyan sampun nedha?", can_do: "Ask and answer politely.", minutes: 10 }
+          - { id: j3.u03.l04, kind: review, title: "Ulangan J3.3", can_do: "Translate ngoko lines into krama.", minutes: 8 }
+
+      - id: j3.u04
+        title: { target: "Pitakon krama", en: "Asking politely", ar: "السؤال بأدب" }
+        stop: Mangkunegaran
+        can_do:
+          - Ask menapa / sinten / pundi / pinten / kados pundi
+        grammar: [jv.krama.questions]
+        vocabulary: ["question words across levels"]
+        culture: { souvenir: Pura Mangkunegaran, note: "Asking an elder a question in krama, with a slight bow and the thumb pointing, is part of the grammar." }
+        lessons:
+          - { id: j3.u04.l01, kind: learn, title: "Sinten lan pundi", can_do: "Ask who and where.", grammar: [jv.krama.questions], minutes: 12 }
+          - { id: j3.u04.l02, kind: learn, title: "Pinten, kados pundi", can_do: "Ask how much and how.", grammar: [jv.krama.questions], minutes: 12 }
+          - { id: j3.u04.l03, kind: practice, title: "Takon dalan kanthi alus", can_do: "Ask an elder for directions.", minutes: 10 }
+          - { id: j3.u04.l04, kind: review, title: "Ulangan J3.4", can_do: "Run a polite Q&A.", minutes: 8 }
+
+      - id: j3.u05
+        title: { target: "Pasar Klewer", en: "Shopping in krama", ar: "التسوّق بالكراما" }
+        stop: Pasar Klewer
+        can_do:
+          - Count in krama (setunggal, kalih, tiga, sekawan, gangsal, …)
+          - Bargain politely with an older seller
+        grammar: [jv.krama.numbers]
+        vocabulary: ["krama numbers", "cloth and batik words"]
+        culture: { souvenir: Batik from Klewer, note: "Pasar Klewer is Java's great batik market; older sellers appreciate krama, even a little." }
+        lessons:
+          - { id: j3.u05.l01, kind: learn, title: "Setunggal, kalih", can_do: "Count in krama.", grammar: [jv.krama.numbers], minutes: 12 }
+          - { id: j3.u05.l02, kind: learn, title: "Regi pinten?", can_do: "Ask prices politely.", grammar: [jv.krama.numbers], minutes: 10 }
+          - { id: j3.u05.l03, kind: practice, title: "Tumbas batik", can_do: "Buy batik in krama.", minutes: 12 }
+          - { id: j3.u05.l04, kind: review, title: "Ulangan J3.5", can_do: "Complete a krama purchase.", minutes: 8 }
+
+      - id: j3.u06
+        title: { target: "Laweyan", en: "Krama affixes", ar: "لواحق الكراما" }
+        stop: Laweyan
+        can_do:
+          - Recognise krama affixes (dipun-, -ipun, -aken)
+        grammar: [jv.krama.affixes]
+        vocabulary: ["batik-making verbs"]
+        culture: { souvenir: Laweyan merchants' houses, note: "Laweyan's batik merchants founded Sarekat Dagang Islam (1905), an early Muslim traders' movement." }
+        lessons:
+          - { id: j3.u06.l01, kind: learn, title: "Dipun-, -ipun", can_do: "Read krama passives and possessives.", grammar: [jv.krama.affixes], minutes: 12 }
+          - { id: j3.u06.l02, kind: learn, title: "-aken", can_do: "Use krama -aken.", grammar: [jv.krama.affixes], minutes: 12 }
+          - { id: j3.u06.l03, kind: practice, title: "Damel batik", can_do: "Describe batik-making in krama.", minutes: 10 }
+          - { id: j3.u06.l04, kind: review, title: "Ulangan J3.6", can_do: "Convert a ngoko paragraph to krama.", minutes: 8 }
+    level_test:
+      id: j3.test
+      minutes: 30
+      pass_mark: 0.75
+      covers: ["choosing the level", "krama pronouns and function words", "polite questions", "krama numbers"]
+
+  # ───────────────────────────── J4 · Yogyakarta ─────────────────────────────
+  - id: j4
+    code: J4
+    title: { target: "Ngayogyakarta", en: "Krama inggil, krama andhap and etiquette", ar: "الكراما إنغيل والكراما أندهاب وآداب الكلام" }
+    requires: [j3]
+    journey: { place: Yogyakarta, kind: train_line }
+    capability:
+      en: Honour others with krama inggil, humble yourself with krama andhap, and follow unggah-ungguh etiquette in visits and ceremonies.
+    units:
+      - id: j4.u01
+        title: { target: "Krama inggil (kriya)", en: "Honorific verbs", ar: "أفعال التبجيل" }
+        stop: Tugu
+        can_do:
+          - Use honorific verbs for others (dhahar, tindak, saré, rawuh, kondur, ngendika)
+          - Say "Panjenengan sampun dhahar?"
+        grammar: [jv.krama-inggil.verbs]
+        vocabulary: ["krama inggil verbs"]
+        arabic_bridge:
+          - "Like تفضّل حضرتك vs. اتفضل: the verb itself changes to honour the doer"
+        culture: { souvenir: Tugu Yogyakarta, note: "Never use krama inggil for yourself: 'kula dhahar' is a classic foreigner's mistake." }
+        lessons:
+          - { id: j4.u01.l01, kind: learn, title: "Dhahar, tindak, saré", can_do: "Use honorific verbs for others.", grammar: [jv.krama-inggil.verbs], minutes: 14 }
+          - { id: j4.u01.l02, kind: learn, title: "Rawuh lan kondur", can_do: "Welcome and see off guests.", grammar: [jv.krama-inggil.verbs], minutes: 12 }
+          - { id: j4.u01.l03, kind: practice, title: "Panjenengan sampun dhahar?", can_do: "Host an elder.", minutes: 10 }
+          - { id: j4.u01.l04, kind: review, title: "Ulangan J4.1", can_do: "Honour without self-honouring.", minutes: 8 }
+
+      - id: j4.u02
+        title: { target: "Krama inggil (aran)", en: "Honorific nouns", ar: "أسماء التبجيل" }
+        stop: Malioboro
+        can_do:
+          - Use honorific nouns (asma, dalem, yuswa, asta, rémbag)
+        grammar: [jv.krama-inggil.nouns]
+        vocabulary: ["body parts and belongings in krama inggil"]
+        culture: { souvenir: Malioboro street, note: "Asking an elder's name is 'Asmanipun sinten?' — the word for name itself is honorific." }
+        lessons:
+          - { id: j4.u02.l01, kind: learn, title: "Asma lan yuswa", can_do: "Ask name and age honorifically.", grammar: [jv.krama-inggil.nouns], minutes: 12 }
+          - { id: j4.u02.l02, kind: learn, title: "Dalem", can_do: "Talk about an elder's home.", grammar: [jv.krama-inggil.nouns], minutes: 10 }
+          - { id: j4.u02.l03, kind: practice, title: "Sowan simbah", can_do: "Ask after an elder politely.", minutes: 10 }
+          - { id: j4.u02.l04, kind: review, title: "Ulangan J4.2", can_do: "Use honorific nouns correctly.", minutes: 8 }
+
+      - id: j4.u03
+        title: { target: "Krama andhap", en: "Humble forms", ar: "صيغ التواضع" }
+        stop: Kraton
+        can_do:
+          - Lower yourself with matur, sowan, nyuwun, ngaturi, caos
+        grammar: [jv.krama-andhap]
+        vocabulary: ["humble verbs"]
+        culture: { souvenir: Kraton Yogyakarta, note: "The Sultan's palace keeps the most refined speech; courtiers 'matur' (speak up to) the Sultan." }
+        lessons:
+          - { id: j4.u03.l01, kind: learn, title: "Matur lan sowan", can_do: "Speak and visit humbly.", grammar: [jv.krama-andhap], minutes: 12 }
+          - { id: j4.u03.l02, kind: learn, title: "Nyuwun lan ngaturi", can_do: "Ask and offer humbly.", grammar: [jv.krama-andhap], minutes: 12 }
+          - { id: j4.u03.l03, kind: practice, title: "Ngaturi rawuh", can_do: "Invite an elder to an event.", minutes: 10 }
+          - { id: j4.u03.l04, kind: review, title: "Ulangan J4.3", can_do: "Pair andhap with inggil.", minutes: 8 }
+
+      - id: j4.u04
+        title: { target: "Tata krama", en: "Etiquette", ar: "آداب السلوك" }
+        stop: Taman Sari
+        can_do:
+          - Use set phrases (nuwun sèwu, ndhèrèk langkung, monggo, matur nuwun sanget)
+          - Combine words with gestures (bowing, thumb-pointing, right hand)
+        grammar: [jv.etiquette.phrases]
+        vocabulary: ["courtesy phrases", "gestures"]
+        arabic_bridge:
+          - "nuwun sèwu ≈ لا مؤاخذة / بعد إذنك; monggo ≈ اتفضل"
+        culture: { souvenir: Taman Sari water palace, note: "Point with the thumb, pass things with the right hand, and stoop slightly when walking past seated elders ('ndhèrèk langkung')." }
+        lessons:
+          - { id: j4.u04.l01, kind: learn, title: "Nuwun sèwu, monggo", can_do: "Use courtesy phrases.", grammar: [jv.etiquette.phrases], minutes: 10 }
+          - { id: j4.u04.l02, kind: learn, title: "Basa awak", can_do: "Match gestures to speech.", minutes: 10 }
+          - { id: j4.u04.l03, kind: practice, title: "Unggah-Ungguh Simulator", can_do: "Pass five situations on the Respect Meter.", minutes: 12 }
+          - { id: j4.u04.l04, kind: review, title: "Ulangan J4.4", can_do: "Handle a visit politely.", minutes: 8 }
+
+      - id: j4.u05
+        title: { target: "Ngoko alus", en: "Polite ngoko", ar: "النغوكو المهذّبة" }
+        stop: Kotabaru
+        can_do:
+          - Mix ngoko with krama inggil for close-but-respected people (ngoko alus)
+        grammar: [jv.speechlevel.mixed]
+        vocabulary: ["ngoko alus patterns"]
+        culture: { souvenir: Kotabaru colonial quarter, note: "Spouses, older siblings and close senior colleagues often get ngoko alus: familiar frame, honorific words for their actions." }
+        lessons:
+          - { id: j4.u05.l01, kind: learn, title: "Ngoko alus", can_do: "Build polite ngoko.", grammar: [jv.speechlevel.mixed], minutes: 14 }
+          - { id: j4.u05.l02, kind: learn, title: "Krama alus", can_do: "Contrast with full krama.", grammar: [jv.speechlevel.mixed], minutes: 12 }
+          - { id: j4.u05.l03, kind: practice, title: "Mas, sampéyan wis dhahar?", can_do: "Talk to an older friend.", minutes: 10 }
+          - { id: j4.u05.l04, kind: review, title: "Ulangan J4.5", can_do: "Pick ngoko alus vs krama alus.", minutes: 8 }
+
+      - id: j4.u06
+        title: { target: "Wayang lan gamelan", en: "Wayang and gamelan", ar: "الوايانغ والغاميلان" }
+        stop: Prambanan
+        can_do:
+          - Follow a simple wayang scene summary
+          - Recognise levels used between characters (king, servant, clown)
+        grammar: [jv.speechlevel.overview, jv.krama-andhap]
+        vocabulary: ["wayang characters", "gamelan instruments"]
+        culture: { souvenir: Ramayana ballet at Prambanan, note: "In wayang the punakawan clowns (Semar, Gareng, Petruk, Bagong) speak ngoko and joke; nobles speak krama — the levels are part of the drama." }
+        lessons:
+          - { id: j4.u06.l01, kind: learn, title: "Punakawan", can_do: "Hear levels in a wayang dialogue.", grammar: [jv.speechlevel.overview], minutes: 12 }
+          - { id: j4.u06.l02, kind: learn, title: "Ratu lan abdi", can_do: "Notice andhap from servants.", grammar: [jv.krama-andhap], minutes: 12 }
+          - { id: j4.u06.l03, kind: practice, title: "Crita wayang", can_do: "Summarise a scene.", minutes: 10 }
+          - { id: j4.u06.l04, kind: review, title: "Ulangan J4.6", can_do: "Tag each line's level.", minutes: 8 }
+    level_test:
+      id: j4.test
+      minutes: 35
+      pass_mark: 0.75
+      covers: ["krama inggil vs andhap", "honorific nouns", "etiquette phrases", "ngoko alus", "five Respect Meter situations"]
+
+  # ───────────────────────────── J5 · Semarang (branch line) ─────────────────────────────
+  - id: j5
+    code: J5
+    title: { target: "Semarang", en: "Reading real Javanese texts", ar: "قراءة نصوص جاوية حقيقية" }
+    requires: [j4]
+    journey: { place: Semarang, kind: branch_line, note: "A branch line north to the coast: Semarang, Kudus, Demak." }
+    capability:
+      en: Read real Javanese — Wikipedia articles, news, social posts and short stories — with help from the Reader, and understand their register.
+    units:
+      - id: j5.u01
+        title: { target: "Wikipédia basa Jawa", en: "Javanese Wikipedia", ar: "ويكيبيديا الجاوية" }
+        stop: Semarang Tawang
+        can_do:
+          - Read an encyclopedic article in standard written ngoko
+          - Recognise written connectors (ing, saka, déning, iku, kang)
+        grammar: [jv.reading.written-style]
+        vocabulary: ["encyclopedic vocabulary"]
+        culture: { souvenir: Kota Lama Semarang, note: "Javanese Wikipedia is written mostly in ngoko with formal connectors; it is a free, real corpus for practice." }
+        lessons:
+          - { id: j5.u01.l01, kind: learn, title: "Ing, kang, déning", can_do: "Read written connectors.", grammar: [jv.reading.written-style], minutes: 14 }
+          - { id: j5.u01.l02, kind: practice, title: "Artikel Semarang", can_do: "Read an article about Semarang.", minutes: 15 }
+          - { id: j5.u01.l03, kind: practice, title: "Ringkesan", can_do: "Summarise in Indonesian or Arabic.", minutes: 12 }
+          - { id: j5.u01.l04, kind: review, title: "Ulangan J5.1", can_do: "Read a new article.", minutes: 10 }
+
+      - id: j5.u02
+        title: { target: "Warta", en: "News", ar: "الأخبار" }
+        stop: Lawang Sewu
+        can_do:
+          - Read short news items in Javanese
+          - Understand written passives with déning
+        grammar: [jv.passive.written]
+        vocabulary: ["news vocabulary"]
+        culture: { souvenir: Lawang Sewu, note: "Regional TV and magazines (Panjebar Semangat, Jaya Baya) have published in Javanese for decades." }
+        lessons:
+          - { id: j5.u02.l01, kind: learn, title: "Di-… déning…", can_do: "Read written passives.", grammar: [jv.passive.written], minutes: 14 }
+          - { id: j5.u02.l02, kind: practice, title: "Warta cekak", can_do: "Read a short news item.", minutes: 15 }
+          - { id: j5.u02.l03, kind: practice, title: "Panjebar Semangat", can_do: "Read a magazine column.", minutes: 12 }
+          - { id: j5.u02.l04, kind: review, title: "Ulangan J5.2", can_do: "Retell a news item.", minutes: 10 }
+
+      - id: j5.u03
+        title: { target: "Ejaan", en: "Spelling", ar: "الإملاء" }
+        stop: Simpang Lima
+        can_do:
+          - Read standard spelling vs spoken / chat spelling (pira / piro, apa / opo)
+          - Hear and write dh / d and th / t
+        grammar: [jv.orthography]
+        vocabulary: ["minimal pairs (dhadha / dada)", "a vs å"]
+        culture: { souvenir: Simpang Lima square, note: "Standard spelling writes 'a' where speakers say 'o' at word end (pira, sega); chats spell by ear. Minimal Pairs game trains dh / d and th / t." }
+        lessons:
+          - { id: j5.u03.l01, kind: learn, title: "Pira utawa piro?", can_do: "Map spoken to standard spelling.", grammar: [jv.orthography], minutes: 12 }
+          - { id: j5.u03.l02, kind: learn, title: "Dh / d, th / t", can_do: "Tell retroflex from dental.", grammar: [jv.orthography], minutes: 12 }
+          - { id: j5.u03.l03, kind: practice, title: "Minimal Pairs", can_do: "Pass a listening round.", minutes: 10 }
+          - { id: j5.u03.l04, kind: review, title: "Ulangan J5.3", can_do: "Normalise a chat into standard spelling.", minutes: 8 }
+
+      - id: j5.u04
+        title: { target: "Medsos", en: "Social media", ar: "وسائل التواصل" }
+        stop: Ambarawa
+        can_do:
+          - Read posts that mix Javanese, Indonesian and English
+          - Tag each word's language and register
+        grammar: [jv.codemix]
+        vocabulary: ["slang", "memes", "comments"]
+        culture: { souvenir: Ambarawa railway museum, note: "Most real Javanese online is code-mixed; Kabar's Reader tags each token's language." }
+        lessons:
+          - { id: j5.u04.l01, kind: learn, title: "Campur kode", can_do: "Read code-mixed posts.", grammar: [jv.codemix], minutes: 12 }
+          - { id: j5.u04.l02, kind: practice, title: "Komentar TikTok", can_do: "Decode a comment thread.", minutes: 12 }
+          - { id: j5.u04.l03, kind: practice, title: "Screenshot Decoder", can_do: "Read a real screenshot with the Reader.", minutes: 12 }
+          - { id: j5.u04.l04, kind: review, title: "Ulangan J5.4", can_do: "Explain a mixed post.", minutes: 8 }
+
+      - id: j5.u05
+        title: { target: "Cerkak", en: "Short stories", ar: "القصص القصيرة" }
+        stop: Kudus
+        can_do:
+          - Read a short Javanese story (cerkak)
+          - Follow narrative connectors (banjur, nuli, sawisé, nalika)
+        grammar: [jv.narrative.connectors]
+        vocabulary: ["narrative vocabulary"]
+        arabic_bridge:
+          - "Kudus ← القدس: the town was named by Sunan Kudus after Jerusalem"
+        culture: { souvenir: Menara Kudus, note: "Kudus's minaret blends a Hindu-Javanese temple form with a mosque — a picture of how Islam came to Java." }
+        lessons:
+          - { id: j5.u05.l01, kind: learn, title: "Banjur, nuli, nalika", can_do: "Follow a story's sequence.", grammar: [jv.narrative.connectors], minutes: 12 }
+          - { id: j5.u05.l02, kind: practice, title: "Cerkak", can_do: "Read a short story.", minutes: 15 }
+          - { id: j5.u05.l03, kind: practice, title: "Critakna manèh", can_do: "Retell it in simple Javanese.", minutes: 12 }
+          - { id: j5.u05.l04, kind: review, title: "Ulangan J5.5", can_do: "Read a new cerkak.", minutes: 10 }
+
+      - id: j5.u06
+        title: { target: "Tembang lan campursari", en: "Songs", ar: "الأغاني" }
+        stop: Demak
+        can_do:
+          - Understand popular song lyrics (campursari, dangdut koplo)
+          - Recognise a macapat stanza
+        grammar: [jv.narrative.connectors, jv.reading.written-style]
+        vocabulary: ["love-song vocabulary", "poetic words"]
+        culture: { souvenir: Demak Great Mosque, note: "The Wali Sanga used tembang (sung verse) to teach Islam; 'Lir-ilir' by Sunan Kalijaga is still sung today." }
+        lessons:
+          - { id: j5.u06.l01, kind: learn, title: "Lir-ilir", can_do: "Read a classic song.", grammar: [jv.reading.written-style], minutes: 12 }
+          - { id: j5.u06.l02, kind: practice, title: "Campursari", can_do: "Follow a modern song.", grammar: [jv.narrative.connectors], minutes: 12 }
+          - { id: j5.u06.l03, kind: practice, title: "Macapat", can_do: "Recognise verse forms.", minutes: 12 }
+          - { id: j5.u06.l04, kind: review, title: "Ulangan J5.6", can_do: "Explain a song's meaning.", minutes: 8 }
+    level_test:
+      id: j5.test
+      minutes: 40
+      pass_mark: 0.7
+      covers: ["Wikipedia reading", "news passives", "spelling normalisation", "code-mixed posts", "a cerkak"]
+
+  # ───────────────────────────── J6 · Kotagede ─────────────────────────────
+  - id: j6
+    code: J6
+    title: { target: "Kutha Gedhé", en: "Aksara Jawa (Javanese script)", ar: "الأبجدية الجاوية (هانا تشارا كا)" }
+    requires: [j5]
+    journey: { place: "Kotagede, old Mataram capital", kind: city, note: "End of the line." }
+    capability:
+      en: Read and write aksara Jawa (with pen calligraphy on the tablet), and recognise Pegon, Javanese in Arabic script.
+    units:
+      - id: j6.u01
+        title: { target: "Hanacaraka", en: "The 20 base letters", ar: "الحروف العشرون" }
+        stop: Pasar Kotagedhé
+        can_do:
+          - Read and write the 20 aksara nglegena (ha na ca ra ka …)
+          - Tell the story behind the letter order (Aji Saka)
+        grammar: [jv.aksara.nglegena]
+        vocabulary: ["letters", "simple syllables"]
+        culture: { souvenir: Kotagede silver, note: "The alphabet's order is a poem about Aji Saka's two loyal servants who fought to the death: 'ha na ca ra ka — there were two messengers…'." }
+        lessons:
+          - { id: j6.u01.l01, kind: learn, title: "Ha na ca ra ka", can_do: "Write the first five letters.", grammar: [jv.aksara.nglegena], minutes: 14 }
+          - { id: j6.u01.l02, kind: learn, title: "Da ta sa wa la", can_do: "Write the next five.", grammar: [jv.aksara.nglegena], minutes: 14 }
+          - { id: j6.u01.l03, kind: learn, title: "Pa dha ja ya nya, ma ga ba tha nga", can_do: "Complete the 20.", grammar: [jv.aksara.nglegena], minutes: 16 }
+          - { id: j6.u01.l04, kind: review, title: "Ulangan J6.1", can_do: "Write all 20 from memory.", minutes: 10 }
+
+      - id: j6.u02
+        title: { target: "Sandhangan swara", en: "Vowel marks", ar: "علامات الحركات" }
+        stop: Masjid Gedhé Mataram
+        can_do:
+          - Add vowels with wulu, suku, taling, pepet, taling tarung
+        grammar: [jv.aksara.sandhangan-swara]
+        vocabulary: ["syllables with all vowels"]
+        arabic_bridge:
+          - "Like Arabic harakat: the base letter carries an inherent vowel, marks change it"
+        culture: { souvenir: Kotagede Grand Mosque, note: "The mosque (1587) is Mataram's oldest; its gate is in Hindu-Javanese style." }
+        lessons:
+          - { id: j6.u02.l01, kind: learn, title: "Wulu lan suku", can_do: "Write i and u.", grammar: [jv.aksara.sandhangan-swara], minutes: 12 }
+          - { id: j6.u02.l02, kind: learn, title: "Taling lan pepet", can_do: "Write é / è and ê.", grammar: [jv.aksara.sandhangan-swara], minutes: 12 }
+          - { id: j6.u02.l03, kind: practice, title: "Maca tembung", can_do: "Read short words.", minutes: 12 }
+          - { id: j6.u02.l04, kind: review, title: "Ulangan J6.2", can_do: "Write your name.", minutes: 8 }
+
+      - id: j6.u03
+        title: { target: "Sandhangan panyigeg", en: "Final consonants", ar: "الحروف الساكنة الأخيرة" }
+        stop: Makam Raja Mataram
+        can_do:
+          - Close syllables with cecak, layar, wignyan and pangkon
+        grammar: [jv.aksara.panyigeg]
+        vocabulary: ["words ending in -ng", "-r", "-h", "other consonants"]
+        arabic_bridge:
+          - "pangkon kills a vowel like Arabic sukun"
+        culture: { souvenir: Royal graves of Mataram, note: "Visitors to the royal graves must wear Javanese dress — a living rule of etiquette." }
+        lessons:
+          - { id: j6.u03.l01, kind: learn, title: "Cecak, layar, wignyan", can_do: "Write final ng / r / h.", grammar: [jv.aksara.panyigeg], minutes: 12 }
+          - { id: j6.u03.l02, kind: learn, title: "Pangkon", can_do: "Kill a vowel.", grammar: [jv.aksara.panyigeg], minutes: 12 }
+          - { id: j6.u03.l03, kind: practice, title: "Papan jeneng", can_do: "Read street signs.", minutes: 10 }
+          - { id: j6.u03.l04, kind: review, title: "Ulangan J6.3", can_do: "Write a short sentence.", minutes: 8 }
+
+      - id: j6.u04
+        title: { target: "Pasangan", en: "Consonant clusters", ar: "الحروف المتصلة" }
+        stop: Jagalan
+        can_do:
+          - Write consonant clusters with pasangan forms
+        grammar: [jv.aksara.pasangan]
+        vocabulary: ["words with clusters across syllables"]
+        culture: { souvenir: Jalan Rukunan lanes, note: "Pasangan are the hardest part of the script: a second form for each letter, tucked below or beside the first." }
+        lessons:
+          - { id: j6.u04.l01, kind: learn, title: "Pasangan I", can_do: "Write the common pasangan.", grammar: [jv.aksara.pasangan], minutes: 15 }
+          - { id: j6.u04.l02, kind: learn, title: "Pasangan II", can_do: "Write the rest.", grammar: [jv.aksara.pasangan], minutes: 15 }
+          - { id: j6.u04.l03, kind: practice, title: "Ukara", can_do: "Write full sentences.", minutes: 12 }
+          - { id: j6.u04.l04, kind: review, title: "Ulangan J6.4", can_do: "Copy a line of a manuscript.", minutes: 10 }
+
+      - id: j6.u05
+        title: { target: "Murda, rékan lan angka", en: "Capitals, Arabic-sound letters and numerals", ar: "الحروف الكبيرة وحروف الأصوات العربية والأرقام" }
+        stop: Imogiri
+        can_do:
+          - Read aksara murda (honorific capitals) and aksara rékan (kha, dza, fa, za, gha for Arabic sounds)
+          - Read Javanese numerals
+        grammar: [jv.aksara.murda-rekan]
+        vocabulary: ["names", "Arabic loanwords in script"]
+        arabic_bridge:
+          - "Aksara rékan add dots to write Arabic sounds — خ ذ ف ز غ — in Javanese script"
+        culture: { souvenir: Imogiri royal cemetery, note: "Imogiri's 409 steps lead to the tombs of Sultan Agung and later kings." }
+        lessons:
+          - { id: j6.u05.l01, kind: learn, title: "Aksara murda", can_do: "Write honorific capitals.", grammar: [jv.aksara.murda-rekan], minutes: 12 }
+          - { id: j6.u05.l02, kind: learn, title: "Aksara rékan", can_do: "Write Arabic sounds.", grammar: [jv.aksara.murda-rekan], minutes: 12 }
+          - { id: j6.u05.l03, kind: learn, title: "Angka Jawa", can_do: "Read numerals and dates.", grammar: [jv.aksara.murda-rekan], minutes: 10 }
+          - { id: j6.u05.l04, kind: review, title: "Ulangan J6.5", can_do: "Write a date and a name.", minutes: 8 }
+
+      - id: j6.u06
+        title: { target: "Pégon", en: "Pegon (Arabic-script Javanese)", ar: "البيجون: الجاوية بالحرف العربي" }
+        stop: Plered
+        can_do:
+          - Read Javanese written in Arabic letters (Pegon), using what you already know of Arabic script
+          - Recognise the extra Pegon letters (ڠ nga, ڤ pa, چ ca, ڽ nya, ڮ ga, ڎ dha, ڟ tha)
+        grammar: [jv.pegon.basics]
+        vocabulary: ["pesantren texts", "religious vocabulary"]
+        arabic_bridge:
+          - "Pegon is the learner's home turf: Arabic letters plus a few extra dotted letters for Javanese sounds"
+        culture: { souvenir: Pesantren manuscript, note: "Pesantren have written Javanese in Pegon for centuries, including word-by-word translations of Arabic texts (makna gandul)." }
+        lessons:
+          - { id: j6.u06.l01, kind: learn, title: "Huruf Pégon", can_do: "Read the extra letters.", grammar: [jv.pegon.basics], minutes: 12 }
+          - { id: j6.u06.l02, kind: practice, title: "Makna gandul", can_do: "Read a glossed line.", minutes: 12 }
+          - { id: j6.u06.l03, kind: practice, title: "Telung aksara", can_do: "Write one word in Latin, aksara Jawa and Pegon.", minutes: 12 }
+          - { id: j6.u06.l04, kind: review, title: "Ulangan J6.6", can_do: "Read a short Pegon text.", minutes: 8 }
+    level_test:
+      id: j6.test
+      minutes: 40
+      pass_mark: 0.7
+      covers: ["read and write aksara Jawa (pen)", "sandhangan and pasangan", "murda / rékan / numerals", "Pegon reading"]

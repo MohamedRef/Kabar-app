@@ -1,0 +1,102 @@
+name: Android preview APK
+
+# Builds an installable arm64 APK for testing on a phone without the Mac.
+# Signed with a throwaway *preview* key generated in CI (never committed, never
+# the release key in ~/.kabar). The key is kept in the Actions cache so
+# updates install over each other; if the cache expires (7 days unused) a new
+# key is made and the next preview needs an uninstall first.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    paths:
+      - .github/workflows/android-preview.yml
+  workflow_dispatch:
+
+concurrency:
+  group: android-preview-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    name: Build preview APK
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: android-preview
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: cargo-bins/cargo-binstall@main
+      - name: Install dx 0.7.10
+        run: cargo binstall -y --force dioxus-cli@0.7.10
+
+      - name: Android environment
+        run: |
+          echo "ANDROID_HOME=$ANDROID_SDK_ROOT" >> "$GITHUB_ENV"
+          echo "ANDROID_NDK_HOME=$ANDROID_NDK_LATEST_HOME" >> "$GITHUB_ENV"
+          BT="$(ls -d "$ANDROID_SDK_ROOT"/build-tools/* | sort -V | tail -1)"
+          echo "$BT" >> "$GITHUB_PATH"
+
+      - name: Build APK
+        working-directory: crates/app
+        run: dx bundle --platform android --release --package-types apk --out-dir ../../dist/android/raw
+
+      - name: Restore preview signing key
+        id: key
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.kabar-preview
+          key: android-preview-key-v1
+      - name: Create preview signing key
+        if: steps.key.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ~/.kabar-preview
+          openssl rand -hex 24 > ~/.kabar-preview/pass
+          keytool -genkeypair -keystore ~/.kabar-preview/preview.jks -alias preview \
+            -keyalg RSA -keysize 4096 -validity 3650 -dname "CN=Kabar preview" \
+            -storepass "$(cat ~/.kabar-preview/pass)" -keypass "$(cat ~/.kabar-preview/pass)"
+      - name: Save preview signing key
+        if: steps.key.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ~/.kabar-preview
+          key: android-preview-key-v1
+
+      - name: Sign
+        run: |
+          IN="$(find dist/android/raw -name '*.apk' | head -1)"
+          [ -n "$IN" ] || { echo "dx produced no APK"; find dist -maxdepth 6; exit 1; }
+          PASS="$(cat ~/.kabar-preview/pass)"
+          zipalign -f -p 4 "$IN" /tmp/aligned.apk
+          apksigner sign --ks ~/.kabar-preview/preview.jks --ks-key-alias preview \
+            --ks-pass "pass:$PASS" --key-pass "pass:$PASS" --out dist/android/kabar-preview.apk /tmp/aligned.apk
+          apksigner verify --print-certs dist/android/kabar-preview.apk
+          ls -lh dist/android/kabar-preview.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kabar-preview-apk
+          path: dist/android/kabar-preview.apk
+          retention-days: 14
+
+      - name: Publish as the "preview" release
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete preview --cleanup-tag -y || true
+          gh release create preview dist/android/kabar-preview.apk \
+            --prerelease --target "$GITHUB_SHA" --title "Kabar preview (Android)" \
+            --notes "Preview build of ${GITHUB_SHA::7}, signed with a CI preview key (not the release key). Install: download kabar-preview.apk on the phone and allow installs from your browser."

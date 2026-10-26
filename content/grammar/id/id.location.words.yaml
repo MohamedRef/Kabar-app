@@ -1,0 +1,68 @@
+schema: kabar.grammar/v1
+id: id.location.words
+language: id
+level: bipa1
+title:
+  target: di atas, di bawah, di depan, di samping, di antara …
+  en: Position words
+  ar_eg: كلمات المكان (فوق، تحت، قدام…)
+  ar: ظروف المكان
+summary:
+  ar_eg: "di + كلمة المكان + الحاجة: di atas meja = فوق الترابيزة. الترتيب ثابت ومنطقي."
+  ar: "di + ظرف المكان + الاسم: di atas meja = فوق الطاولة."
+  en: "di + position word + noun: di atas meja = on (top of) the table."
+pattern:
+  - di / ke / dari + atas / bawah / depan / belakang / samping / sebelah / dalam / luar / antara + noun
+  - sebelah kiri / kanan (on the left / right)
+  - dekat / jauh dari (near / far from)
+explanation:
+  ar_eg: |
+    كلمات المكان: atas (فوق)، bawah (تحت)، depan (قدام)، belakang (ورا)، samping / sebelah (جنب)، dalam (جوه)، luar (بره)، tengah (نص)، antara … dan … (بين … و…).
+    الترتيب: di + كلمة المكان + الحاجة:
+    Kucingnya di bawah meja = القطة تحت الترابيزة.
+    ومع الحركة: Dia masuk ke dalam rumah = دخل جوه البيت. Dari belakang = من ورا.
+    اليمين والشمال: (di) sebelah kanan / kiri = على اليمين / الشمال.
+    القرب والبعد: dekat (dengan / dari) = قريب من، jauh dari = بعيد عن.
+  ar: |
+    ظروف المكان: atas (فوق)، bawah (تحت)، depan (أمام)، belakang (خلف)، samping / sebelah (بجانب)، dalam (داخل)، luar (خارج)، tengah (وسط)، antara … dan … (بين … و…).
+    والترتيب: di + الظرف + الاسم: Kucingnya di bawah meja = القطة تحت الطاولة.
+    ومع الحركة: masuk ke dalam rumah = دخل إلى داخل البيت.
+    واليمين واليسار: sebelah kanan / kiri، والقرب والبعد: dekat / jauh dari.
+  en: |
+    Position words: atas (on / above), bawah (under), depan (in front), belakang (behind), samping / sebelah (beside), dalam (inside), luar (outside), tengah (middle), antara … dan … (between … and …).
+    Order: di + position + noun: Kucingnya di bawah meja = The cat is under the table.
+    Movement: masuk ke dalam rumah = go into the house; dari belakang = from behind.
+    Left / right: sebelah kiri / kanan. Near / far: dekat (dengan / dari), jauh dari.
+examples:
+  - text: Bukunya di atas meja.
+    en: The book is on the table.
+    ar_eg: الكتاب على الترابيزة.
+    ar: الكتاب على الطاولة.
+  - text: Masjidnya di sebelah kiri bank.
+    en: The mosque is to the left of the bank.
+    ar_eg: الجامع على شمال البنك.
+    ar: المسجد إلى يسار المصرف.
+  - text: Hotel kami dekat dengan stasiun.
+    en: Our hotel is close to the station.
+    ar_eg: الفندق بتاعنا قريب من المحطة.
+    ar: فندقنا قريب من المحطة.
+  - text: Warungnya di antara apotek dan masjid.
+    en: The food stall is between the pharmacy and the mosque.
+    ar_eg: المطعم الصغير بين الصيدلية والجامع.
+    ar: المطعم الصغير بين الصيدلية والمسجد.
+mistakes:
+  - wrong: di meja atas
+    right: di atas meja
+    why:
+      ar_eg: "كلمة المكان قبل الحاجة: «فوق الترابيزة»."
+      ar: الظرف قبل الاسم.
+      en: The position word comes before the noun.
+arabic_bridge:
+  ar_eg: "نفس ترتيب العربي: «فوق الترابيزة» = di atas meja، «جنب البنك» = di samping bank."
+  ar: "الترتيب مطابق للعربية: «فوق الطاولة» = di atas meja."
+  en: "Same order as Arabic: «فوق الطاولة» = di atas meja."
+tags: [preposition, place]
+see_also: [id.preposition.di-ke-dari, id.demonstrative.sini-situ-sana]
+review:
+  status: draft
+  verified: false
