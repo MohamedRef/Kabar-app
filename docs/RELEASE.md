@@ -17,10 +17,12 @@ routine, but nothing is built for release or tagged before he says so.
 | **Beta** | `1.0.0-beta.N` | Later: after daily use of the alpha and the fixes it brings. The learner decides. |
 | **Stable** | `1.0.0` | Later still. The learner decides. |
 
-Deferred, after the core (SPEC §23): all pen work on the phone and the
-tablet, aksara calligraphy, Android home-screen widgets (parked; the
-draft is kept), Mac Quick Lookup and Mac-only polish. Studio
-and Pen Lab stay in the build, but appear only on the tablet. Each stage
+Deferred, after the core (SPEC §23): pen writing on every device
+(handwritten answers, Notebook, Gambar!, Listening Companion scribbles,
+write-mode lessons, aksara calligraphy), Android home-screen widgets (parked;
+the draft is kept), Mac Quick Lookup and Mac-only polish. Pen pointing in
+the Reader (hover, tap, lasso, highlight) is in. Studio (the mind map only)
+and Pen Lab appear only on the tablet. Each stage
 installs over the previous one and keeps your data.
 
 ## 2. Gates
