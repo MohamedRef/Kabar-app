@@ -223,3 +223,146 @@ code, .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size:
 .ok { color: var(--sawah); font-weight: 600; }
 .no { color: var(--dawn); font-weight: 600; }
 .counts { columns: 2; font-size: 0.8rem; }
+
+/* ---------- Kak Nur (coach) ---------- */
+.small { font-size: 0.85rem; }
+.error { color: var(--dawn); font-weight: 600; }
+button.quiet { background: transparent; border-color: transparent; color: var(--muted); text-decoration: underline; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+h3 { font-size: 1rem; margin-block: 1rem 0.4rem; }
+
+.coach-grid { display: grid; gap: 0 1rem; align-items: start; }
+.app:not([data-width="compact"]) .coach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.nur { display: flex; gap: 0.75rem; align-items: flex-start; margin-block: 0.75rem; }
+.nur-avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  border-radius: 50%;
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+.nur-bubble {
+  background: var(--surface-2);
+  border-radius: var(--radius);
+  border-start-start-radius: 4px;
+  padding-block: 0.6rem;
+  padding-inline: 0.9rem;
+  min-inline-size: 0;
+}
+.nur-bubble p { margin: 0; }
+.nur-name { display: block; font-size: 0.8rem; font-weight: 700; color: var(--indigo); }
+
+/* Pelita + Koin */
+.rewards-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-block-end: 1rem; }
+.reward {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-block: 0.35rem;
+  padding-inline: 0.8rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.reward strong { color: var(--text); }
+.reward.lit { background: var(--gold-soft); border-color: transparent; }
+.reward.lit .reward-icon { color: var(--dawn); }
+.reward-icon { display: inline-flex; }
+
+/* progress */
+.progress { block-size: 0.6rem; border-radius: 999px; background: var(--surface-2); overflow: hidden; margin-block-start: 1rem; }
+.progress-fill { block-size: 100%; background: var(--sawah); border-radius: inherit; }
+@media (prefers-reduced-motion: no-preference) { .progress-fill { transition: inline-size 220ms ease; } }
+
+/* today's plan */
+.plan { list-style: none; padding: 0; margin: 0.5rem 0 1rem; display: grid; gap: 0.5rem; }
+.plan-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.plan-item.done { background: var(--surface-2); }
+.plan-item.done .plan-text strong { color: var(--muted); }
+.plan-text { flex: 1; min-inline-size: 0; }
+button.check {
+  flex: none;
+  inline-size: 44px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--sawah);
+  color: var(--surface);
+  font-weight: 700;
+}
+button.check[aria-checked="true"] { background: var(--sawah); }
+
+/* numbers */
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr)); gap: 0.5rem; margin-block: 0.75rem; }
+.stat { display: flex; flex-direction: column; padding: 0.6rem; border-radius: 10px; background: var(--surface-2); }
+.stat-value { font-size: 1.2rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat-label { font-size: 0.8rem; color: var(--muted); }
+.words { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.word { padding-inline: 0.6rem; border-radius: 999px; background: var(--gold-soft); }
+.summary { display: grid; grid-template-columns: auto 1fr; gap: 0.35rem 1rem; margin: 0.5rem 0; }
+.summary dt { color: var(--muted); }
+.summary dd { margin: 0; }
+.focus-list { margin: 0; padding-inline-start: 1.25rem; }
+.league { border-block-start: 1px solid var(--line); margin-block-start: 1rem; }
+
+/* onboarding */
+.onboarding { min-block-size: 100dvh; display: grid; place-items: center; padding: 1rem; }
+.onboarding .card { inline-size: 100%; max-inline-size: 40rem; }
+.dots { display: flex; gap: 0.35rem; list-style: none; padding: 0; margin: 0 0 0.5rem; }
+.dot { flex: 1; block-size: 0.3rem; border-radius: 999px; background: var(--surface-2); }
+.dot.done { background: var(--sawah); }
+.dot.current { background: var(--indigo); }
+.step { margin-block: 1rem; }
+.step-nav { justify-content: flex-end; }
+.choices { display: grid; gap: 0.5rem; margin-block-end: 1rem; }
+button.choice {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: start;
+  border-radius: var(--radius);
+  padding-block: 0.7rem;
+}
+.choice .hint { font-size: 0.85rem; opacity: 0.85; }
+.text-input, .time-input, select {
+  font: inherit;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding-block: 0.55rem;
+  padding-inline: 0.75rem;
+  min-block-size: 44px;
+}
+.text-input { inline-size: 100%; }
+.times { list-style: none; padding: 0; margin: 0 0 0.5rem; display: grid; gap: 0.4rem; }
+
+/* achievements */
+.achievements { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+.achievement { display: flex; gap: 0.6rem; align-items: center; }
+.achievement .badge { display: inline-flex; color: var(--gold); }
+.achievement.locked { opacity: 0.55; }
+.achievement.locked .badge { color: var(--muted); }
+.proverb { font-style: italic; }
+
+/* warung */
+.warung { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+.ware { display: flex; align-items: center; gap: 0.75rem; }
+.ware > div:not(.swatch), .ware > span:first-of-type { flex: 1; }
+.swatch { flex: none; inline-size: 3rem; block-size: 3rem; border-radius: 10px; border: 1px solid var(--line); background-color: var(--surface-2); }
+.toast { border: 1px solid var(--sawah); border-radius: var(--radius); padding: 0.5rem 0.75rem; margin-block-end: 0.75rem; }
+
+/* journal */
+.journal-day ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.25rem; }
+.journal-day .time { display: inline-block; min-inline-size: 3rem; font-variant-numeric: tabular-nums; }

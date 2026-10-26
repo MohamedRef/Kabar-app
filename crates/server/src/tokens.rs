@@ -29,9 +29,15 @@ pub fn account_id_for_google_sub(sub: &str) -> String {
     format!("g{}", &sha256_hex(format!("google:{sub}").as_bytes())[..24])
 }
 
+/// The device id Kabar Cloud itself writes sync ops as (e.g. the reminder
+/// state after a push). No real device may use it.
+pub const SERVER_DEVICE_ID: &str = "server";
+
 /// Device ids end up in tokens, URLs and SQL: keep them boring.
 pub fn valid_device_id(id: &str) -> bool {
-    (1..=64).contains(&id.len()) && id.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'-' || b == b'_')
+    (1..=64).contains(&id.len())
+        && id.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'-' || b == b'_')
+        && id != SERVER_DEVICE_ID
 }
 
 fn valid_account_id(id: &str) -> bool {
@@ -260,6 +266,8 @@ mod tests {
         assert!(!valid_device_id(""));
         assert!(!valid_device_id("a.b"));
         assert!(!valid_device_id(&"x".repeat(65)));
+        assert!(!valid_device_id(SERVER_DEVICE_ID));
+        assert!(valid_device_id("server2"));
     }
 
     #[test]

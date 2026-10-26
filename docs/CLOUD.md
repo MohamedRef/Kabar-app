@@ -1,12 +1,13 @@
-# Kabar Cloud (M2)
+# Kabar Cloud (M2, reminders from M7)
 
-Kabar Cloud is a Rust Cloudflare Worker (`crates/server`) on the **Workers Free** plan. It does five things:
+Kabar Cloud is a Rust Cloudflare Worker (`crates/server`) on the **Workers Free** plan. It does six things:
 
 1. **Sign-in**: verifies your Google ID token, checks the allowlist, and issues Kabar tokens (15-min access, 60-day rotating refresh).
 2. **Devices**: lists every signed-in device with its last sync; signs one out remotely (its socket closes at once).
 3. **Live sync**: one Durable Object per account is the WebSocket hub (hibernation, so idle sockets cost nothing).
 4. **Key vault**: Gemini, Azure and Anthropic keys live only in Worker secrets. Devices never see them.
 5. **AI/TTS proxy**: Workers AI (SEA-LION v4 27B), Gemini free tier, Claude (off), Azure neural TTS, with a shared cache and hard stops under every free limit.
+6. **Kak Nur's reminders (M7)**: a Durable Object alarm every 15 minutes runs the coach's reminder rules on the synced data and pushes through Firebase Cloud Messaging.
 
 Cost: **$0**. Nothing here needs a card on file.
 
@@ -17,6 +18,8 @@ Cost: **$0**. Nothing here needs a card on file.
 | Worker | `crates/server/src/wasm/mod.rs` | routing, auth, proxy calls; thin to stay inside 10 ms CPU |
 | Durable Object `Account` | `crates/server/src/wasm/account.rs` | devices + op log + row versions in DO SQLite |
 | Sync hub logic | `crates/server/src/hub.rs` | plain Rust, tested against real SQLite |
+| Reminder dispatcher | `crates/server/src/coach.rs` | reads coach rows, calls `kabar_core::coach` rules |
+| FCM HTTP v1 | `crates/server/src/fcm.rs` | service-account JWT (RS256), token cache, data-only messages |
 | Merge rules | `crates/core/src/sync.rs` | shared with the app, so both converge the same way |
 | Wire types | `crates/protocol/src/{sync,cloud,ai}.rs` | versioned (`PROTOCOL_VERSION`, `AI_WIRE_VERSION`) |
 | D1 `kabar` | `crates/server/migrations/` | `ai_cache`, `quota_usage` |
@@ -35,12 +38,15 @@ All JSON. Authenticated routes take `Authorization: Bearer <access_token>`. Erro
 | `POST /v1/auth/signout` | signs this device out |
 | `GET /v1/devices` | Devices screen: `{ devices: [DeviceSummary] }` |
 | `DELETE /v1/devices/{id}` | remote sign-out |
+| `PUT /v1/devices/me/push` | `{ token }` (this device's FCM token; `""` turns push off) → `{ registered, push_configured }` |
 | `GET /v1/sync` | WebSocket; messages in `crates/protocol/src/sync.rs` |
 | `GET /v1/vault` | which engines are configured (never the keys) |
 | `POST /v1/ai` | `EngineCall` → `EngineReply` |
 | `POST /v1/tts` | `{ segments: [{ voice, text }], rate_percent }` → `audio/mpeg` |
 
 Sync in one paragraph: the device sends `hello { last_seq }`, gets the missing ops in pages and `caught_up`, then pushes its outbox as `push { batch, ops ≤ 50 }` and gets an `ack` listing what can leave the outbox. Other devices' ops arrive as `ops` the moment they're stored. LWW tables keep the newest HLC, append-only tables insert once, ink strokes only take tombstones. Unknown tables, wrong device ids and clocks more than 5 minutes ahead are rejected with a reason.
+
+Reminders in one paragraph: the Account Durable Object arms an alarm when a device signs in or sends its push token, then every quarter hour (at most 96 a day) reads `goals/profile`, `reminders/reminders`, today's `daily_plans` row, the newest `reports` row and the last 21 days of `xp_events`, and asks `coach::reminders::decide` and `coach::report::report_due`. A reminder goes to every signed-in device with a push token as an FCM **data-only** message `{ kind, line, seed }` (`line` is the snake_case name of Kak Nur's `voice::Line`, `seed` the local day number): no personal text leaves Kabar; the app renders the line itself. After a delivery, the server writes the new `ReminderState` back as a sync op from device `server` (an id no real device may use), so a reminder sent once is seen by every device. The weekly report is pushed once per week. Dead tokens (FCM `UNREGISTERED`) are forgotten; signing out forgets the device's token. While no device has a push token, or `FCM_SERVICE_ACCOUNT` is unset, the alarm stops re-arming itself and costs nothing; the next push-token call starts it again.
 
 ## 3. Setup (once, about 20 minutes)
 
@@ -76,7 +82,18 @@ wrangler secret put ANTHROPIC_API_KEY
 ```
 Workers AI needs no key.
 
-### 3.4 Deploy
+### 3.4 Firebase Cloud Messaging (reminders, free Spark plan)
+1. <https://console.firebase.google.com/> → **Add project** → pick the existing Google Cloud project "Kabar" (so sign-in and push share one project). Analytics: off. The plan stays **Spark** (free); FCM has no charges.
+2. **Project settings → General → Add app → Android**: package `app.kabar`. Download `google-services.json` for the app build (not a secret, but keep it out of the repo, like the rest of `~/.kabar`).
+3. **Project settings → Service accounts → Generate new private key**. This downloads a JSON file. It *is* a secret:
+   ```bash
+   cd crates/server
+   wrangler secret put FCM_SERVICE_ACCOUNT < ~/Downloads/kabar-*-firebase-adminsdk-*.json
+   rm ~/Downloads/kabar-*-firebase-adminsdk-*.json
+   ```
+4. `GET /v1/vault` now says `"push_configured": true`. The app sends its token on every launch, which starts the reminder alarm.
+
+### 3.5 Deploy
 ```bash
 just deploy-cloud
 curl https://kabar-cloud.<your-subdomain>.workers.dev/v1/health
@@ -101,6 +118,8 @@ Counters are in D1 `quota_usage`; a call that would cross a limit is refused bef
 | Gemini free | 1,000 requests/day | ≈1,500/day (unofficial) |
 | Azure TTS | 450,000 chars/month | 500,000 chars/month |
 | Claude | 300 requests/month, **off** | paid unless Max credit |
+| Reminder alarm | 96 alarms/day/account (one per 15 min) | Durable Objects free: 100,000 requests/day; each `setAlarm()` is one of 100,000 free rows written/day |
+| FCM | one message per device per reminder | free on Spark, no quota charges |
 
 ## 6. Privacy
 
@@ -112,6 +131,5 @@ Counters are in D1 `quota_usage`; a call that would cross a limit is refused bef
 ## 7. Known gaps (phased, not dropped)
 
 - Vision tasks (`structure_screenshot`, `read_handwriting`, …) answer `unavailable` until the blob store lands.
-- FCM push and the 15-minute cron dispatcher arrive with M7 (reminders).
 - Op-log compaction (monthly snapshot) arrives once the log is big enough to matter.
-- `fixtures/server/*.json` are written from the providers' documented shapes; replace them with real recordings on the first bake-off run.
+- `fixtures/server/*.json` are written from the providers' documented shapes; replace them with real recordings on the first bake-off run (the `fcm_*.json` ones on the first real push).

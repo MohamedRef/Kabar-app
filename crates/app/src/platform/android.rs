@@ -55,7 +55,12 @@ pub fn files_dir() -> Result<String, String> {
 pub fn device_name() -> Result<Option<String>, String> {
     with_activity(|env, activity| {
         let resolver = env
-            .call_method(activity, jni_str!("getContentResolver"), jni_sig!("()Landroid/content/ContentResolver;"), &[])?
+            .call_method(
+                activity,
+                jni_str!("getContentResolver"),
+                jni_sig!("()Landroid/content/ContentResolver;"),
+                &[],
+            )?
             .l()?;
         let key = env.new_string("device_name")?;
         let value = env
@@ -78,7 +83,11 @@ pub fn device_name() -> Result<Option<String>, String> {
 pub fn open_url(url: &str) -> Result<(), String> {
     with_activity(|env, activity| {
         let action = env
-            .get_static_field(jni_str!("android/content/Intent"), jni_str!("ACTION_VIEW"), jni_sig!("Ljava/lang/String;"))?
+            .get_static_field(
+                jni_str!("android/content/Intent"),
+                jni_str!("ACTION_VIEW"),
+                jni_sig!("Ljava/lang/String;"),
+            )?
             .l()?;
         let url = env.new_string(url)?;
         let uri = env
@@ -95,8 +104,18 @@ pub fn open_url(url: &str) -> Result<(), String> {
             &[(&action).into(), (&uri).into()],
         )?;
         // FLAG_ACTIVITY_NEW_TASK
-        env.call_method(&intent, jni_str!("addFlags"), jni_sig!("(I)Landroid/content/Intent;"), &[0x1000_0000.into()])?;
-        env.call_method(activity, jni_str!("startActivity"), jni_sig!("(Landroid/content/Intent;)V"), &[(&intent).into()])?;
+        env.call_method(
+            &intent,
+            jni_str!("addFlags"),
+            jni_sig!("(I)Landroid/content/Intent;"),
+            &[0x1000_0000.into()],
+        )?;
+        env.call_method(
+            activity,
+            jni_str!("startActivity"),
+            jni_sig!("(Landroid/content/Intent;)V"),
+            &[(&intent).into()],
+        )?;
         Ok(())
     })
 }

@@ -244,15 +244,14 @@ fn TrySyncCard() -> Element {
     let mut word = use_signal(String::new);
     // Re-read when remote ops arrive.
     let _ = cloud.revision.read();
-    let words: Vec<String> = db
-        .0
-        .borrow()
-        .synced_rows("word_status")
-        .unwrap_or_default()
-        .into_iter()
-        .filter_map(|(_, p)| p.get("lexeme").and_then(|l| l.as_str()).map(String::from))
-        .take(12)
-        .collect();
+    let words: Vec<String> =
+        db.0.borrow()
+            .synced_rows("word_status")
+            .unwrap_or_default()
+            .into_iter()
+            .filter_map(|(_, p)| p.get("lexeme").and_then(|l| l.as_str()).map(String::from))
+            .take(12)
+            .collect();
 
     let mut save = {
         let db = db.clone();
@@ -262,8 +261,12 @@ fn TrySyncCard() -> Element {
                 return;
             }
             let payload = serde_json::json!({ "lexeme": lexeme, "lang": "id", "status": "learning" });
-            let result =
-                db.0.borrow_mut().write_synced("word_status", &format!("id:{lexeme}"), OpKind::Upsert, Some(payload));
+            let result = db.0.borrow_mut().write_synced(
+                "word_status",
+                &format!("id:{lexeme}"),
+                OpKind::Upsert,
+                Some(payload),
+            );
             match result {
                 Ok(_) => {
                     word.set(String::new());
