@@ -1,2 +1,540 @@
-# PLACEHOLDER from the M10 app-screens branch so `include_str!` compiles. The real
-# file comes from the Pasar content branch; drop this one at merge.
+# Pasar! (spec §14): the items you haggle for and every line the seller says,
+# in Indonesian or Javanese market speech, with Egyptian Arabic (arz), Modern
+# Standard Arabic (ar) and English (en) meanings. Format, placeholders and tone
+# rules: see README.md in this folder. Parsed by crates/core/src/games/pasar.rs,
+# whose tests are the content gate.
+#
+# ⁨ … ⁩ are FSI … PDI (first-strong isolate … pop directional isolate). Every
+# Latin snippet and every {price} inside an Arabic line sits between them so
+# right-to-left text renders correctly.
+#
+# Prices are in rupiah, as a local would see them in 2026. `floor` is the
+# lowest price the seller accepts (never shown), `fair` what a local would
+# pay. floor <= fair <= ask.
+
+reviewed = false
+version = 1
+
+# --- Items -------------------------------------------------------------------
+
+# Tanah Abang market, Jakarta.
+[[items]]
+id = "kaos_batik"
+name = "kaos batik"
+meaning = { arz = "تيشيرت باتيك", ar = "قميص قطني بنقوش الباتيك", en = "a batik T-shirt" }
+ask = 85000
+floor = 55000
+fair = 60000
+
+# A fruit stall in a Jakarta pasar.
+[[items]]
+id = "mangga"
+name = "mangga sekilo"
+meaning = { arz = "كيلو مانجة", ar = "كيلوغرام من المانجو", en = "a kilo of mangoes" }
+ask = 25000
+floor = 15000
+fair = 18000
+
+[[items]]
+id = "sandal_jepit"
+name = "sandal jepit"
+meaning = { arz = "شبشب صباع", ar = "نعل إصبع", en = "flip-flops" }
+ask = 30000
+floor = 17000
+fair = 20000
+
+[[items]]
+id = "kopi_bubuk"
+name = "kopi bubuk seperempat"
+meaning = { arz = "ربع كيلو بن مطحون", ar = "ربع كيلوغرام من البن المطحون", en = "a quarter kilo of ground coffee" }
+ask = 45000
+floor = 30000
+fair = 35000
+
+# Pasar Beringharjo, Yogyakarta: the seller speaks Javanese.
+[[items]]
+id = "tahu_tempe"
+name = "tahu tempe"
+meaning = { arz = "توفو وتمبيه", ar = "توفو وتمبيه (فول صويا مخمّر)", en = "tofu and tempeh" }
+ask = 12000
+floor = 8000
+fair = 10000
+javanese = true
+
+[[items]]
+id = "tas_anyaman"
+name = "tas anyaman"
+meaning = { arz = "شنطة خوص", ar = "حقيبة من الخوص المجدول", en = "a woven bag" }
+ask = 150000
+floor = 85000
+fair = 100000
+javanese = true
+
+# Pasar Genteng, Surabaya: the seller speaks Javanese.
+[[items]]
+id = "krupuk_udang"
+name = "krupuk udang setengah kilo"
+meaning = { arz = "نص كيلو شيبسي جمبري", ar = "نصف كيلوغرام من رقائق الروبيان", en = "half a kilo of prawn crackers" }
+ask = 70000
+floor = 45000
+fair = 50000
+javanese = true
+
+# Bonus round: the marketplace listing from the spec's test texts (§24),
+# met in person to pay cash on delivery (COD). A used phone, a year old.
+[[items]]
+id = "iphone_bonus"
+name = "iphone 17 pm 512gb resmi ibox mulus nomin garansi jalan"
+meaning = { arz = "آيفون ⁨17 Pro Max⁩ مساحة ⁨512GB⁩، رسمي من ⁨iBox⁩، نضيف، مفيهوش أي عيب، والضمان شغال", ar = "آيفون ⁨17 Pro Max⁩ بسعة ⁨512GB⁩، رسمي من ⁨iBox⁩، سليم، بلا عيوب، والضمان ساري", en = "iPhone 17 Pro Max 512GB, official iBox unit, flawless, no defects, warranty active" }
+ask = 24500000
+floor = 21500000
+fair = 22000000
+bonus = true
+
+# The bonus seller talks like a marketplace seller, not a market stall.
+[[items.lines]]
+situation = "greeting"
+text = "Halo, Kak, yang chat WA tadi, ya? Ini unitnya: resmi iBox, mulus, nomin, garansi jalan."
+arz = "أهلاً يا أستاذ، إنت اللي كلمتني على ⁨WhatsApp⁩ من شوية، صح؟ ده الجهاز: رسمي من ⁨iBox⁩، نضيف، مفيهوش أي عيب، والضمان شغال."
+ar = "مرحبًا يا أخي، أنت من راسلني على ⁨WhatsApp⁩ قبل قليل، أليس كذلك؟ هذا هو الجهاز: رسمي من ⁨iBox⁩، سليم، بلا عيوب، والضمان ساري."
+en = "Hi, you're the one who messaged on WhatsApp earlier, right? Here's the unit: official iBox, flawless, no defects, warranty active."
+
+[[items.lines]]
+situation = "greeting"
+text = "Silakan dicek dulu, Kak. Mulus, nomin, garansi iBox masih jalan."
+arz = "اتفضل افحصه الأول يا أستاذ. نضيف، مفيهوش عيب، وضمان ⁨iBox⁩ لسه شغال."
+ar = "تفضّل افحصه أولًا يا أخي. سليم، بلا عيوب، وضمان ⁨iBox⁩ ما زال ساريًا."
+en = "Go ahead and check it first. Flawless, no defects, and the iBox warranty is still active."
+
+[[items.lines]]
+situation = "quote"
+text = "Harganya {price}, Kak, nego tipis."
+arz = "سعره ⁨{price}⁩ يا أستاذ، والفصال على الضيق."
+ar = "سعره ⁨{price}⁩ يا أخي، والتفاوض في حدود ضيقة."
+en = "It's {price}, with only a little room to negotiate."
+
+[[items.lines]]
+situation = "quote"
+text = "{price}, Kak. Masih garansi, lho."
+arz = "⁨{price}⁩ يا أستاذ. ولسه في الضمان على فكرة."
+ar = "⁨{price}⁩ يا أخي. وما زال في الضمان."
+en = "{price}. It's still under warranty, you know."
+
+[[items.lines]]
+situation = "final"
+text = "Udah harga nett, Kak: {price}. Garansinya masih jalan, lho."
+arz = "ده السعر الصافي يا أستاذ: ⁨{price}⁩. والضمان لسه شغال على فكرة."
+ar = "هذا هو السعر الصافي يا أخي: ⁨{price}⁩. والضمان ما زال ساريًا."
+en = "That's the net price: {price}. The warranty is still running, you know."
+
+# --- Seller lines: Indonesian -------------------------------------------------
+# The seller calls the learner "Kak" (يا أستاذ / يا أخي).
+
+[[lines]]
+situation = "greeting"
+text = "Mari, Kak, silakan dilihat-lihat dulu."
+arz = "اتفضل يا أستاذ، اتفرّج براحتك الأول."
+ar = "تفضّل يا أخي، انظر على مهلك أولًا."
+en = "Come on in, have a look around first."
+
+[[lines]]
+situation = "greeting"
+text = "Ayo, Kak, mampir dulu. Barangnya bagus-bagus, lho."
+arz = "تعالى يا أستاذ، عدّي علينا شوية. البضاعة حلوة والله."
+ar = "تعال يا أخي، مرّ بنا قليلًا. البضاعة جيدة حقًا."
+en = "Come, stop by for a bit. The goods are really nice, you know."
+
+[[lines]]
+situation = "greeting"
+text = "Silakan, Kak, boleh dipilih-pilih. Mau cari apa?"
+arz = "اتفضل يا أستاذ، نقّي براحتك. بتدوّر على إيه؟"
+ar = "تفضّل يا أخي، اختر كما تشاء. عمَّ تبحث؟"
+en = "Go ahead, pick whatever you like. What are you looking for?"
+
+[[lines]]
+situation = "quote"
+text = "Ini {price}, Kak."
+arz = "ده بـ⁨{price}⁩ يا أستاذ."
+ar = "هذا بـ⁨{price}⁩ يا أخي."
+en = "This one's {price}."
+
+[[lines]]
+situation = "quote"
+text = "Harganya {price}, Kak."
+arz = "سعره ⁨{price}⁩ يا أستاذ."
+ar = "سعره ⁨{price}⁩ يا أخي."
+en = "It's {price}."
+
+[[lines]]
+situation = "quote"
+text = "Buat Kakak, {price} aja."
+arz = "عشانك، ⁨{price}⁩ بس."
+ar = "من أجلك، ⁨{price}⁩ فقط."
+en = "For you, just {price}."
+
+[[lines]]
+situation = "discount"
+text = "Ya udah, buat Kakak {price} deh."
+arz = "خلاص، عشانك ⁨{price}⁩."
+ar = "حسنًا، من أجلك ⁨{price}⁩."
+en = "Alright, for you, {price}."
+
+[[lines]]
+situation = "discount"
+text = "Boleh kurang sedikit, Kak: {price}."
+arz = "ممكن أنزل شوية يا أستاذ: ⁨{price}⁩."
+ar = "يمكنني أن أخفض قليلًا يا أخي: ⁨{price}⁩."
+en = "I can go a little lower: {price}."
+
+[[lines]]
+situation = "discount"
+text = "Oke, saya kasih {price}, ya."
+arz = "ماشي، هديهولك بـ⁨{price}⁩."
+ar = "حسنًا، سأعطيك إياه بـ⁨{price}⁩."
+en = "Okay, I'll let you have it for {price}."
+
+[[lines]]
+situation = "counter"
+text = "Belum bisa, Kak. Kalau {price} gimana?"
+arz = "لسه مش هينفع يا أستاذ. طب إيه رأيك في ⁨{price}⁩؟"
+ar = "لا يمكن بعد يا أخي. ما رأيك في ⁨{price}⁩؟"
+en = "Not yet. How about {price}?"
+
+[[lines]]
+situation = "counter"
+text = "Naik sedikit lagi, Kak. {price}, ya?"
+arz = "زوّد شوية كمان يا أستاذ. ⁨{price}⁩، ماشي؟"
+ar = "زِد قليلًا يا أخي. ⁨{price}⁩، اتفقنا؟"
+en = "Come up a little more. {price}, okay?"
+
+[[lines]]
+situation = "counter"
+text = "Untungnya tipis, Kak. {price} deh."
+arz = "المكسب فيها قليل يا أستاذ. ⁨{price}⁩ وخلاص."
+ar = "الربح فيه قليل يا أخي. ⁨{price}⁩ إذن."
+en = "My margin is thin. Let's say {price}."
+
+[[lines]]
+situation = "refuse_low"
+text = "Aduh, belum dapat, Kak. Modalnya aja belum nutup. Paling murah {price}."
+arz = "لأ يا أستاذ، كده مش هتيجي. ده حتى مش مغطّي التمن اللي جبتها بيه. أقل حاجة ⁨{price}⁩."
+ar = "عذرًا يا أخي، هذا لا يكفي؛ فهو لا يغطي حتى سعر الشراء. أقل سعر ⁨{price}⁩."
+en = "Oh, that won't do. It doesn't even cover what I paid. The lowest is {price}."
+
+[[lines]]
+situation = "refuse_low"
+text = "Wah, jangan segitu, Kak, saya rugi. {price}, ya?"
+arz = "لأ يا أستاذ، مش بالسعر ده، كده أنا اللي هخسر. ⁨{price}⁩، ماشي؟"
+ar = "لا يا أخي، ليس بهذا السعر، سأخسر. ⁨{price}⁩، اتفقنا؟"
+en = "Oh, not that low, I'd lose money. {price}, okay?"
+
+[[lines]]
+situation = "refuse_low"
+text = "Maaf, Kak, nggak bisa segitu. Paling murah {price}."
+arz = "معلش يا أستاذ، مش هينفع بالسعر ده. أقل حاجة ⁨{price}⁩."
+ar = "آسف يا أخي، لا يمكن بهذا السعر. أقل سعر ⁨{price}⁩."
+en = "Sorry, I can't do that price. The lowest is {price}."
+
+[[lines]]
+situation = "accept"
+text = "Oke, Kak, boleh. {price}, ya."
+arz = "ماشي يا أستاذ، موافق. ⁨{price}⁩ يبقى."
+ar = "حسنًا يا أخي، موافق. ⁨{price}⁩ إذن."
+en = "Okay, deal. {price} it is."
+
+[[lines]]
+situation = "accept"
+text = "Ya udah, deal! {price}."
+arz = "خلاص، اتفقنا! ⁨{price}⁩."
+ar = "حسنًا، اتفقنا! ⁨{price}⁩."
+en = "Alright, deal! {price}."
+
+[[lines]]
+situation = "accept"
+text = "Siap, Kak, {price}. Makasih, ya."
+arz = "تمام يا أستاذ، ⁨{price}⁩. شكرًا ليك."
+ar = "حاضر يا أخي، ⁨{price}⁩. شكرًا لك."
+en = "Sure thing, {price}. Thank you."
+
+[[lines]]
+situation = "call_back"
+text = "Kak, Kak, sini dulu. Ya udah, {price} deh."
+arz = "يا أستاذ، يا أستاذ، تعالى بس. خلاص، ⁨{price}⁩."
+ar = "يا أخي، يا أخي، تعال لحظة. حسنًا، ⁨{price}⁩."
+en = "Hey, hey, come back a sec. Alright, {price}."
+
+[[lines]]
+situation = "call_back"
+text = "Eh, Kak, tunggu. {price} boleh, deh."
+arz = "استنى يا أستاذ. ⁨{price}⁩ ماشي."
+ar = "انتظر يا أخي. ⁨{price}⁩ لا بأس."
+en = "Hey, wait. {price} is fine, then."
+
+[[lines]]
+situation = "call_back"
+text = "Kak, balik dulu. Buat penglaris, {price} aja."
+arz = "ارجع يا أستاذ. عشان الاستفتاح، ⁨{price}⁩ بس."
+ar = "عُد يا أخي. من أجل الاستفتاح، ⁨{price}⁩ فقط."
+en = "Come back. For my first sale of the day, just {price}."
+
+[[lines]]
+situation = "final"
+text = "Itu udah harga pas, Kak: {price}. Nggak bisa kurang lagi."
+arz = "ده آخر سعر يا أستاذ: ⁨{price}⁩. مينفعش أنزل أكتر من كده."
+ar = "هذا هو السعر النهائي يا أخي: ⁨{price}⁩. لا يمكن أن ينزل أكثر."
+en = "That's the fixed price: {price}. It can't go any lower."
+
+[[lines]]
+situation = "final"
+text = "Udah pas, Kak, {price}. Beneran nggak bisa kurang."
+arz = "ده السعر المظبوط يا أستاذ، ⁨{price}⁩. والله ما ينفع أقل."
+ar = "هذا هو السعر يا أخي، ⁨{price}⁩. حقًا لا يمكن أقل."
+en = "It's already the right price, {price}. Really, no lower."
+
+[[lines]]
+situation = "final"
+text = "{price} pas, Kak. Itu harga terakhir."
+arz = "⁨{price}⁩ بالظبط يا أستاذ. ده آخر سعر."
+ar = "⁨{price}⁩ بالضبط يا أخي. هذا آخر سعر."
+en = "{price} flat. That's my last price."
+
+[[lines]]
+situation = "let_go"
+text = "Ya udah, nggak apa-apa, Kak. Makasih, mampir lagi, ya."
+arz = "خلاص، ولا يهمك يا أستاذ. شكرًا، وعدّي علينا تاني."
+ar = "حسنًا، لا بأس يا أخي. شكرًا، ومرّ بنا مرة أخرى."
+en = "Alright, no problem. Thanks, come by again."
+
+[[lines]]
+situation = "let_go"
+text = "Oke, Kak. Lain kali mampir lagi, ya."
+arz = "ماشي يا أستاذ. المرة الجاية عدّي علينا تاني."
+ar = "حسنًا يا أخي. مرّ بنا مرة أخرى في المرة القادمة."
+en = "Okay. Drop by again next time."
+
+[[lines]]
+situation = "let_go"
+text = "Nggak apa-apa, Kak. Hati-hati di jalan."
+arz = "ولا يهمك يا أستاذ. توصل بالسلامة."
+ar = "لا بأس يا أخي. في أمان الله."
+en = "No worries. Take care on the way."
+
+# --- Seller lines: Javanese market speech (unverified) -----------------------
+# Ngoko with the polite krama words sellers use with customers (monggo, nggih,
+# mawon, ngapunten, mboten saged). The seller calls the learner "Mas".
+
+[[lines]]
+situation = "greeting"
+javanese = true
+text = "Monggo, Mas, mampir riyin. Dipilih, dipilih."
+arz = "اتفضل يا أستاذ، عدّي علينا شوية. نقّي، نقّي."
+ar = "تفضّل يا أخي، مرّ بنا قليلًا. اختر، اختر."
+en = "Please, come in for a moment. Pick, pick away."
+
+[[lines]]
+situation = "greeting"
+javanese = true
+text = "Ayo, Mas, sing apik-apik iki. Pilih dhewe."
+arz = "تعالى يا أستاذ، الحاجات الحلوة أهي. نقّي بنفسك."
+ar = "تعال يا أخي، هذه هي الأشياء الجيدة. اختر بنفسك."
+en = "Come, the good stuff is right here. Choose for yourself."
+
+[[lines]]
+situation = "greeting"
+javanese = true
+text = "Monggo, Mas. Barange anyar kabeh, lho."
+arz = "اتفضل يا أستاذ. البضاعة كلها جديدة على فكرة."
+ar = "تفضّل يا أخي. البضاعة كلها جديدة."
+en = "Please. Everything's new, you know."
+
+[[lines]]
+situation = "quote"
+javanese = true
+text = "Iki {price}, Mas."
+arz = "ده بـ⁨{price}⁩ يا أستاذ."
+ar = "هذا بـ⁨{price}⁩ يا أخي."
+en = "This one's {price}."
+
+[[lines]]
+situation = "quote"
+javanese = true
+text = "Regane {price}, Mas. Murah iki."
+arz = "سعره ⁨{price}⁩ يا أستاذ. ده رخيص."
+ar = "سعره ⁨{price}⁩ يا أخي. هذا رخيص."
+en = "The price is {price}. That's cheap."
+
+[[lines]]
+situation = "quote"
+javanese = true
+text = "{price} wae, Mas."
+arz = "⁨{price}⁩ بس يا أستاذ."
+ar = "⁨{price}⁩ فقط يا أخي."
+en = "Just {price}."
+
+[[lines]]
+situation = "discount"
+javanese = true
+text = "Ya wis, kanggo sampeyan {price}."
+arz = "خلاص، عشانك ⁨{price}⁩."
+ar = "حسنًا، من أجلك ⁨{price}⁩."
+en = "Alright, for you, {price}."
+
+[[lines]]
+situation = "discount"
+javanese = true
+text = "Tak kurangi sithik, Mas: {price}."
+arz = "هنزّلك شوية يا أستاذ: ⁨{price}⁩."
+ar = "سأخفض لك قليلًا يا أخي: ⁨{price}⁩."
+en = "I'll knock a little off: {price}."
+
+[[lines]]
+situation = "discount"
+javanese = true
+text = "Nggih pun, {price} mawon."
+arz = "خلاص ماشي، ⁨{price}⁩ بس."
+ar = "حسنًا إذن، ⁨{price}⁩ فقط."
+en = "Alright then, just {price}."
+
+[[lines]]
+situation = "counter"
+javanese = true
+text = "Durung isa, Mas. Nek {price} piye?"
+arz = "لسه مش هينفع يا أستاذ. طب لو ⁨{price}⁩؟"
+ar = "لا يمكن بعد يا أخي. فماذا لو ⁨{price}⁩؟"
+en = "Not yet. What about {price}?"
+
+[[lines]]
+situation = "counter"
+javanese = true
+text = "Tambahi sithik, Mas. {price} ya?"
+arz = "زوّد شوية يا أستاذ. ⁨{price}⁩، ماشي؟"
+ar = "زِد قليلًا يا أخي. ⁨{price}⁩، اتفقنا؟"
+en = "Add a little. {price}, okay?"
+
+[[lines]]
+situation = "counter"
+javanese = true
+text = "Kulakane wae larang, Mas. {price} wis."
+arz = "ده أنا جايبها غالية أصلًا يا أستاذ. ⁨{price}⁩ وخلاص."
+ar = "لقد اشتريتها بسعر مرتفع أصلًا يا أخي. ⁨{price}⁩ إذن."
+en = "I paid a lot for it myself. {price}, then."
+
+[[lines]]
+situation = "refuse_low"
+javanese = true
+text = "Waduh, ora isa, Mas, kulakane wae durung nutup. Paling murah {price}."
+arz = "لأ يا أستاذ، مش هينفع، ده مش مغطّي حتى التمن اللي جبتها بيه. أقل حاجة ⁨{price}⁩."
+ar = "لا يمكن يا أخي، فهذا لا يغطي حتى سعر الشراء. أقل سعر ⁨{price}⁩."
+en = "Oh, I can't, that doesn't even cover what I paid. The lowest is {price}."
+
+[[lines]]
+situation = "refuse_low"
+javanese = true
+text = "Aduh, aja semono, Mas, aku rugi. {price} ya?"
+arz = "لأ يا أستاذ، مش بالسعر ده، كده أنا اللي هخسر. ⁨{price}⁩، ماشي؟"
+ar = "ليس بهذا السعر يا أخي، سأخسر. ⁨{price}⁩، اتفقنا؟"
+en = "Oh, not that low, I'd lose money. {price}, okay?"
+
+[[lines]]
+situation = "refuse_low"
+javanese = true
+text = "Ngapunten, Mas, mboten saged. {price} mawon nggih."
+arz = "معلش يا أستاذ، مش هينفع. ⁨{price}⁩ بس، ماشي؟"
+ar = "آسف يا أخي، لا يمكن. ⁨{price}⁩ فقط، اتفقنا؟"
+en = "Sorry, I can't. Just {price}, alright?"
+
+[[lines]]
+situation = "accept"
+javanese = true
+text = "Ya wis, ra papa. {price} ya, Mas."
+arz = "خلاص، ماشي. ⁨{price}⁩ يا أستاذ."
+ar = "حسنًا، لا بأس. ⁨{price}⁩ يا أخي."
+en = "Alright, fine. {price}, then."
+
+[[lines]]
+situation = "accept"
+javanese = true
+text = "Nggih, monggo. {price}."
+arz = "حاضر، اتفضل. ⁨{price}⁩."
+ar = "نعم، تفضّل. ⁨{price}⁩."
+en = "Yes, here you go. {price}."
+
+[[lines]]
+situation = "accept"
+javanese = true
+text = "Oke, Mas, laris. {price}."
+arz = "تمام يا أستاذ، اتباعت. ⁨{price}⁩."
+ar = "حسنًا يا أخي، بِيعت. ⁨{price}⁩."
+en = "Okay, sold. {price}."
+
+[[lines]]
+situation = "call_back"
+javanese = true
+text = "Mas, Mas, rene sik. Ya wis, {price} wis."
+arz = "يا أستاذ، يا أستاذ، تعالى بس. خلاص، ⁨{price}⁩."
+ar = "يا أخي، يا أخي، تعال لحظة. حسنًا، ⁨{price}⁩."
+en = "Hey, hey, come here a sec. Alright, {price}."
+
+[[lines]]
+situation = "call_back"
+javanese = true
+text = "Mas, balik sik, Mas. {price} oleh."
+arz = "ارجع بس يا أستاذ. ⁨{price}⁩ ماشي."
+ar = "عُد لحظة يا أخي. ⁨{price}⁩ لا بأس."
+en = "Come back a moment. {price} is okay."
+
+[[lines]]
+situation = "call_back"
+javanese = true
+text = "Mas, kanggo penglaris, {price} wis."
+arz = "يا أستاذ، عشان الاستفتاح، ⁨{price}⁩ وخلاص."
+ar = "يا أخي، من أجل الاستفتاح، ⁨{price}⁩ إذن."
+en = "For my first sale of the day, {price}, then."
+
+[[lines]]
+situation = "final"
+javanese = true
+text = "Wis pas, Mas, {price}. Ora isa kurang."
+arz = "ده السعر المظبوط يا أستاذ، ⁨{price}⁩. مينفعش أقل."
+ar = "هذا هو السعر يا أخي، ⁨{price}⁩. لا يمكن أقل."
+en = "That's the right price, {price}. It can't go lower."
+
+[[lines]]
+situation = "final"
+javanese = true
+text = "Iki rega pas, Mas: {price}. Wis ora isa kurang maneh."
+arz = "ده آخر سعر يا أستاذ: ⁨{price}⁩. مينفعش أنزل تاني."
+ar = "هذا هو السعر النهائي يا أخي: ⁨{price}⁩. لا يمكن أن ينزل أكثر."
+en = "This is the fixed price: {price}. It can't go any lower."
+
+[[lines]]
+situation = "final"
+javanese = true
+text = "Sampun pas, Mas, {price}."
+arz = "ده آخر كلام يا أستاذ، ⁨{price}⁩."
+ar = "هذا هو السعر النهائي يا أخي، ⁨{price}⁩."
+en = "That's the final price, {price}."
+
+[[lines]]
+situation = "let_go"
+javanese = true
+text = "Ya wis, Mas, ra papa. Matur nuwun, mampir maneh ya."
+arz = "خلاص يا أستاذ، ولا يهمك. شكرًا، وعدّي علينا تاني."
+ar = "حسنًا يا أخي، لا بأس. شكرًا، ومرّ بنا مرة أخرى."
+en = "Alright, no problem. Thank you, come by again."
+
+[[lines]]
+situation = "let_go"
+javanese = true
+text = "Nggih, Mas, monggo. Sesuk mampir maneh."
+arz = "ماشي يا أستاذ، اتفضل. عدّي علينا بكرة."
+ar = "حسنًا يا أخي، تفضّل. مرّ بنا غدًا."
+en = "Sure, go ahead. Stop by again tomorrow."
+
+[[lines]]
+situation = "let_go"
+javanese = true
+text = "Ora papa, Mas. Ati-ati, nggih."
+arz = "ولا يهمك يا أستاذ. خلي بالك من نفسك."
+ar = "لا بأس يا أخي. اعتنِ بنفسك."
+en = "No worries. Take care."
