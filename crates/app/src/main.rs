@@ -283,12 +283,8 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let audio_dir = path.parent().map(|d| d.join("audio")).unwrap_or_else(|| "audio".into());
     use_context_provider(|| audio::AudioCache::new(audio_dir, link.clone()));
     let coach = use_context_provider(|| Coach::load(&db));
-<<<<<<< HEAD
     use_hook(reader::warm_up);
-    use_width_tracking(ui.width);
-=======
     use_width_tracking(ui.width, ui.tablet);
->>>>>>> origin/main
     use_cloud(&db, path, ui, link);
     coach::use_clock(coach, db.clone());
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
