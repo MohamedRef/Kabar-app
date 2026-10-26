@@ -1,13 +1,19 @@
-//! The vocabulary content pack (top-2,000 Indonesian glosses and the Arabic
-//! Bridge cards from `content/`), merged over the hand-made seed. Embedded in
+//! The vocabulary content pack (top-2,000 Indonesian glosses, 1,000 Javanese
+//! glosses, the Arabic Bridge cards and the Javanese speech-level table from
+//! `content/`), merged over the hand-made seed. Embedded in
 //! the binary until downloadable content packs arrive, so lookups never wait
 //! for the network.
 
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
-use kabar_protocol::content::{self, BridgeEntry, GlossEntry, MeaningShift, ReviewStatus, Trilingual};
+use kabar_protocol::content::{
+    self, BridgeEntry, GlossEntry, MeaningShift, ReviewStatus, SpeechLevelEntry, Trilingual,
+};
+use kabar_protocol::learn::TaughtEntry;
 
-use super::glossary::{Bridge, Gloss, Glossary, SeedGlossary, Shift, WordInfo, WordLang};
+use super::glossary::{
+    Bridge, Gloss, Glossary, Levels, SeedGlossary, Shift, SpeechLevel, WordInfo, WordLang,
+};
 
 const GLOSS_BATCHES: &[&str] = &[
     include_str!("../../../../content/glosses/id/batch-001.jsonl"),
@@ -32,10 +38,26 @@ const GLOSS_BATCHES: &[&str] = &[
     include_str!("../../../../content/glosses/id/batch-020.jsonl"),
 ];
 
-const BRIDGE_ID: &str = include_str!("../../../../content/bridge/id.jsonl");
+const GLOSS_BATCHES_JV: &[&str] = &[
+    include_str!("../../../../content/glosses/jv/batch-001.jsonl"),
+    include_str!("../../../../content/glosses/jv/batch-002.jsonl"),
+    include_str!("../../../../content/glosses/jv/batch-003.jsonl"),
+    include_str!("../../../../content/glosses/jv/batch-004.jsonl"),
+    include_str!("../../../../content/glosses/jv/batch-005.jsonl"),
+    include_str!("../../../../content/glosses/jv/batch-006.jsonl"),
+    include_str!("../../../../content/glosses/jv/batch-007.jsonl"),
+    include_str!("../../../../content/glosses/jv/batch-008.jsonl"),
+    include_str!("../../../../content/glosses/jv/batch-009.jsonl"),
+    include_str!("../../../../content/glosses/jv/batch-010.jsonl"),
+];
 
+const BRIDGE_ID: &str = include_str!("../../../../content/bridge/id.jsonl");
+const SPEECH_LEVELS: &str = include_str!("../../../../content/javanese/speech-levels.jsonl");
+
+/// Words by lowercase spelling; one entry per language (Indonesian and
+/// Javanese share ~350 spellings).
 pub struct LocalGlossary {
-    words: HashMap<String, WordInfo>,
+    words: HashMap<String, Vec<WordInfo>>,
 }
 
 fn gloss(t: &Trilingual) -> Gloss {
@@ -59,6 +81,16 @@ fn shift(s: MeaningShift) -> Shift {
     }
 }
 
+fn level(l: content::SpeechLevel) -> SpeechLevel {
+    match l {
+        content::SpeechLevel::Ngoko => SpeechLevel::Ngoko,
+        content::SpeechLevel::Madya => SpeechLevel::Madya,
+        content::SpeechLevel::Krama => SpeechLevel::Krama,
+        content::SpeechLevel::KramaInggil => SpeechLevel::KramaInggil,
+        content::SpeechLevel::KramaAndhap => SpeechLevel::KramaAndhap,
+    }
+}
+
 fn bridge(b: &BridgeEntry) -> Bridge {
     Bridge {
         arabic: b.arabic.clone(),
@@ -68,24 +100,89 @@ fn bridge(b: &BridgeEntry) -> Bridge {
     }
 }
 
+/// "proper_noun" → "proper noun".
+fn pos_name<T: serde::Serialize>(pos: &T) -> Option<String> {
+    serde_json::to_value(pos).ok().and_then(|v| v.as_str().map(|s| s.replace('_', " ")))
+}
+
 fn jsonl<'a, T: serde::de::DeserializeOwned + 'a>(
     text: &'a str,
 ) -> impl Iterator<Item = Result<T, serde_json::Error>> + 'a {
     text.lines().filter(|l| !l.trim().is_empty()).map(serde_json::from_str)
 }
 
+/// The popover's view of a gloss entry: up to three senses joined, the
+/// first example, the false-friend warning before any other note.
+pub fn word_info(e: &GlossEntry) -> Option<WordInfo> {
+    let first = e.senses.first()?;
+    let joined = |f: fn(&Trilingual) -> &String| {
+        let mut out: Vec<&str> = Vec::new();
+        for s in e.senses.iter().take(3) {
+            let g = f(&s.gloss).as_str();
+            if !out.contains(&g) {
+                out.push(g);
+            }
+        }
+        out.join(" · ")
+    };
+    Some(WordInfo {
+        lemma: e.lemma.clone(),
+        lang: word_lang(e.lang),
+        pos: pos_name(&first.pos),
+        gloss: Gloss { arz: joined(|t| &t.arz), ar: joined(|t| &t.ar), en: joined(|t| &t.en) },
+        indonesian: e.indonesian.clone(),
+        bridge: None,
+        levels: e.speech_level.map(|l| Levels { level: Some(level(l)), ..Levels::default() }),
+        note: e.false_friend.as_ref().or(e.note.as_ref()).map(gloss),
+        example: e.examples.first().map(|x| (x.text.clone(), gloss(&x.translation))),
+        verified: e.status == ReviewStatus::Approved,
+    })
+}
+
+/// An entry the learner taught Kabar, shown like any other word.
+pub fn taught_info(t: &TaughtEntry) -> Option<WordInfo> {
+    let mut info = word_info(&t.entry)?;
+    info.bridge = t.bridge.as_ref().map(|b| Bridge {
+        arabic: b.arabic.clone(),
+        root: b.root.clone(),
+        shift: shift(b.shift),
+        note: b.shift_note.as_ref().map(gloss),
+    });
+    if let Some(l) = &t.levels {
+        let one = |f: &Option<String>| f.iter().cloned().collect::<Vec<_>>();
+        info.levels = Some(Levels {
+            level: match l.level.as_str() {
+                "ngoko" => Some(SpeechLevel::Ngoko),
+                "madya" => Some(SpeechLevel::Madya),
+                "krama" => Some(SpeechLevel::Krama),
+                "krama_inggil" => Some(SpeechLevel::KramaInggil),
+                "krama_andhap" => Some(SpeechLevel::KramaAndhap),
+                _ => None,
+            },
+            ngoko: one(&l.ngoko),
+            krama: one(&l.krama),
+            krama_inggil: one(&l.krama_inggil),
+            ..Levels::default()
+        });
+    }
+    info.verified = t.is_approved();
+    Some(info)
+}
+
 impl LocalGlossary {
     pub fn load() -> Self {
-        let seed = SeedGlossary::default();
-        let mut words: HashMap<String, WordInfo> =
-            seed.words.into_iter().map(|(k, v)| (k.to_string(), v)).collect();
+        let mut g = Self { words: HashMap::new() };
+        for (k, v) in SeedGlossary::default().words {
+            g.upsert(k.to_string(), v);
+        }
 
         let bridges: HashMap<String, BridgeEntry> = jsonl::<BridgeEntry>(BRIDGE_ID)
             .filter_map(|r| r.map_err(|e| eprintln!("kabar: bad bridge entry: {e}")).ok())
             .map(|b| (b.word.to_lowercase(), b))
             .collect();
 
-        for entry in GLOSS_BATCHES.iter().flat_map(|b| jsonl::<GlossEntry>(b)) {
+        let entries = GLOSS_BATCHES.iter().chain(GLOSS_BATCHES_JV).flat_map(|b| jsonl::<GlossEntry>(b));
+        for entry in entries {
             let e = match entry {
                 Ok(e) => e,
                 Err(err) => {
@@ -93,73 +190,132 @@ impl LocalGlossary {
                     continue;
                 }
             };
-            let Some(first) = e.senses.first() else { continue };
+            let Some(mut info) = word_info(&e) else { continue };
             // Bridge card: by word, else the lemma, else the root (memikirkan → pikir).
-            let card = [Some(&e.word), Some(&e.lemma), e.root.as_ref()]
+            info.bridge = [Some(&e.word), Some(&e.lemma), e.root.as_ref()]
                 .into_iter()
                 .flatten()
-                .find_map(|k| bridges.get(&k.to_lowercase()));
-            let mut senses: Vec<String> = Vec::new();
-            for s in &e.senses {
-                if !senses.contains(&s.gloss.en) {
-                    senses.push(s.gloss.en.clone());
-                }
-            }
-            let joined = |f: fn(&Trilingual) -> &String| {
-                let mut out: Vec<&str> = Vec::new();
-                for s in e.senses.iter().take(3) {
-                    let g = f(&s.gloss).as_str();
-                    if !out.contains(&g) {
-                        out.push(g);
-                    }
-                }
-                out.join(" · ")
-            };
+                .filter_map(|k| bridges.get(&k.to_lowercase()))
+                .find(|b| b.lang == e.lang)
+                .map(bridge);
             let key = e.word.to_lowercase();
-            let seed_levels = words.get(&key).and_then(|w| w.levels.clone());
-            let info = WordInfo {
-                lemma: e.lemma.clone(),
-                lang: word_lang(e.lang),
-                pos: serde_json::to_value(first.pos)
-                    .ok()
-                    .and_then(|v| v.as_str().map(|s| s.replace('_', " "))),
-                gloss: Gloss { arz: joined(|t| &t.arz), ar: joined(|t| &t.ar), en: joined(|t| &t.en) },
-                bridge: card.map(bridge),
-                levels: seed_levels,
-                note: e.false_friend.as_ref().or(e.note.as_ref()).map(gloss),
-                example: e.examples.first().map(|x| (x.text.clone(), gloss(&x.translation))),
-                verified: e.status == ReviewStatus::Approved,
-            };
-            words.insert(key, info);
+            // The seed's hand-checked level table stays until the real one below.
+            if info.levels.is_none() {
+                info.levels = g.get(&key, info.lang).and_then(|w| w.levels.clone());
+            }
+            g.upsert(key, info);
         }
 
         // Bridge words outside the top 2,000 still get a card.
         for (word, b) in &bridges {
-            words.entry(word.clone()).or_insert_with(|| WordInfo {
-                lemma: b.word.clone(),
-                lang: word_lang(b.lang),
-                pos: None,
-                gloss: gloss(&b.meaning),
-                bridge: Some(bridge(b)),
-                levels: None,
-                note: None,
-                example: None,
-                verified: b.status == ReviewStatus::Approved,
-            });
+            if g.get(word, word_lang(b.lang)).is_none() {
+                g.upsert(
+                    word.clone(),
+                    WordInfo {
+                        lemma: b.word.clone(),
+                        lang: word_lang(b.lang),
+                        pos: None,
+                        gloss: gloss(&b.meaning),
+                        indonesian: None,
+                        bridge: Some(bridge(b)),
+                        levels: None,
+                        note: None,
+                        example: None,
+                        verified: b.status == ReviewStatus::Approved,
+                    },
+                );
+            }
         }
         // Seed words keep their Bridge card when the content pack has none.
-        for (word, b) in SeedGlossary::default().words.into_iter().filter_map(|(k, v)| Some((k, v.bridge?))) {
-            if let Some(w) = words.get_mut(word) {
+        for (word, seed) in SeedGlossary::default().words {
+            if let (Some(b), Some(w)) = (seed.bridge, g.get_mut(word, seed.lang)) {
                 w.bridge.get_or_insert(b);
             }
         }
-        Self { words }
+        g.add_speech_levels();
+        g
+    }
+
+    /// The speech-level table (§13): every form of a meaning, at every level,
+    /// points at the whole row.
+    fn add_speech_levels(&mut self) {
+        let mut done: HashSet<String> = HashSet::new();
+        for row in jsonl::<SpeechLevelEntry>(SPEECH_LEVELS) {
+            let row = match row {
+                Ok(r) => r,
+                Err(err) => {
+                    eprintln!("kabar: bad speech-level entry: {err}");
+                    continue;
+                }
+            };
+            let base = Levels {
+                level: None,
+                ngoko: row.ngoko.clone(),
+                madya: row.madya.clone(),
+                krama: row.krama.clone(),
+                krama_inggil: row.krama_inggil.clone(),
+                krama_andhap: row.krama_andhap.clone(),
+                note: row.note.as_ref().map(gloss),
+            };
+            let mut seen: HashSet<String> = HashSet::new();
+            for (lvl, forms) in base.rows() {
+                for form in forms {
+                    let key = form.to_lowercase();
+                    // A word on two rows (sampun: "already", "finished") keeps the first.
+                    if !seen.insert(key.clone()) || done.contains(&key) {
+                        continue;
+                    }
+                    let levels = Levels { level: Some(lvl), ..base.clone() };
+                    match self.get_mut(&key, WordLang::Javanese) {
+                        Some(w) => {
+                            w.levels = Some(levels);
+                            w.indonesian.get_or_insert_with(|| row.indonesian.clone());
+                        }
+                        None => self.upsert(
+                            key.clone(),
+                            WordInfo {
+                                lemma: form.clone(),
+                                lang: WordLang::Javanese,
+                                pos: pos_name(&row.pos),
+                                gloss: gloss(&row.meaning),
+                                indonesian: Some(row.indonesian.clone()),
+                                bridge: None,
+                                levels: Some(levels),
+                                note: None,
+                                example: None,
+                                verified: row.status == ReviewStatus::Approved,
+                            },
+                        ),
+                    }
+                }
+            }
+            done.extend(seen);
+        }
+    }
+
+    fn get(&self, key: &str, lang: WordLang) -> Option<&WordInfo> {
+        self.words.get(key)?.iter().find(|w| w.lang == lang)
+    }
+
+    fn get_mut(&mut self, key: &str, lang: WordLang) -> Option<&mut WordInfo> {
+        self.words.get_mut(key)?.iter_mut().find(|w| w.lang == lang)
+    }
+
+    /// Adds a word, replacing the same spelling in the same language.
+    fn upsert(&mut self, key: String, info: WordInfo) {
+        let list = self.words.entry(key).or_default();
+        match list.iter_mut().find(|w| w.lang == info.lang) {
+            Some(w) => *w = info,
+            None => list.push(info),
+        }
     }
 }
 
 impl Glossary for LocalGlossary {
-    fn lookup(&self, forms: &[&str]) -> Option<&WordInfo> {
-        forms.iter().find_map(|f| self.words.get(*f))
+    fn lookup(&self, prefer: Option<WordLang>, forms: &[&str]) -> Option<&WordInfo> {
+        prefer
+            .and_then(|p| forms.iter().find_map(|f| self.get(f, p)))
+            .or_else(|| forms.iter().find_map(|f| self.words.get(*f).and_then(|l| l.first())))
     }
 }
 
@@ -169,22 +325,27 @@ mod tests {
 
     #[test]
     fn embeds_every_gloss_batch() {
-        let dir = concat!(env!("CARGO_MANIFEST_DIR"), "/../../content/glosses/id");
-        let on_disk = std::fs::read_dir(dir)
-            .unwrap()
-            .filter(|e| e.as_ref().unwrap().file_name().to_string_lossy().ends_with(".jsonl"))
-            .count();
-        assert_eq!(on_disk, GLOSS_BATCHES.len(), "add new batches to GLOSS_BATCHES");
+        for (lang, embedded) in [("id", GLOSS_BATCHES), ("jv", GLOSS_BATCHES_JV)] {
+            let dir = format!("{}/../../content/glosses/{lang}", env!("CARGO_MANIFEST_DIR"));
+            let on_disk = std::fs::read_dir(dir)
+                .unwrap()
+                .filter(|e| e.as_ref().unwrap().file_name().to_string_lossy().ends_with(".jsonl"))
+                .count();
+            assert_eq!(on_disk, embedded.len(), "add new {lang} batches to GLOSS_BATCHES");
+        }
     }
 
     #[test]
     fn every_line_parses() {
-        for b in GLOSS_BATCHES {
+        for b in GLOSS_BATCHES.iter().chain(GLOSS_BATCHES_JV) {
             for r in jsonl::<GlossEntry>(b) {
                 r.unwrap();
             }
         }
         for r in jsonl::<BridgeEntry>(BRIDGE_ID) {
+            r.unwrap();
+        }
+        for r in jsonl::<SpeechLevelEntry>(SPEECH_LEVELS) {
             r.unwrap();
         }
     }
@@ -194,15 +355,47 @@ mod tests {
         let g = LocalGlossary::load();
         assert!(g.words.len() > 2000);
         // From the content pack.
-        let yang = g.lookup(&["yang"]).unwrap();
+        let yang = g.lookup(None, &["yang"]).unwrap();
         assert!(yang.gloss.arz.contains("اللي"));
         assert!(yang.example.is_some());
         // Bridge card by word, and the false-friend alarm.
-        let kalimat = g.lookup(&["kalimat"]).unwrap();
+        let kalimat = g.lookup(None, &["kalimat"]).unwrap();
         assert_eq!(kalimat.bridge.as_ref().unwrap().shift, Shift::FalseFriend);
-        // Javanese and speech levels still come from the seed.
-        let nedha = g.lookup(&["nedha"]).unwrap();
-        assert_eq!(nedha.levels.as_ref().unwrap().ngoko, "mangan");
-        assert!(g.lookup(&["kabar"]).unwrap().bridge.is_some());
+        assert!(g.lookup(None, &["kabar"]).unwrap().bridge.is_some());
+    }
+
+    #[test]
+    fn javanese_and_indonesian_share_spellings() {
+        let g = LocalGlossary::load();
+        let jv = WordLang::Javanese;
+        let id = WordLang::Indonesian;
+        // "aku" is in both packs: the preferred language wins.
+        assert_eq!(g.lookup(Some(jv), &["aku"]).unwrap().lang, jv);
+        assert_eq!(g.lookup(Some(id), &["aku"]).unwrap().lang, id);
+        assert_eq!(g.lookup(None, &["aku"]).unwrap().lang, id);
+        // A Javanese word shows its Indonesian equivalent.
+        let sing = g.lookup(Some(jv), &["sing"]).unwrap();
+        assert!(sing.indonesian.is_some());
+    }
+
+    #[test]
+    fn speech_levels_come_from_the_table() {
+        let g = LocalGlossary::load();
+        let jv = Some(WordLang::Javanese);
+        // "Have you eaten?" across the levels (§24).
+        for (word, lvl) in [
+            ("mangan", SpeechLevel::Ngoko),
+            ("nedha", SpeechLevel::Krama),
+            ("dhahar", SpeechLevel::KramaInggil),
+        ] {
+            let l = g.lookup(jv, &[word]).unwrap().levels.clone().unwrap();
+            assert_eq!(l.level, Some(lvl), "{word}");
+            assert!(l.ngoko.iter().any(|f| f == "mangan"), "{word}");
+            assert!(l.krama_inggil.iter().any(|f| f == "dhahar"), "{word}");
+        }
+        let you = g.lookup(jv, &["panjenengan"]).unwrap().levels.clone().unwrap();
+        assert_eq!(you.level, Some(SpeechLevel::KramaInggil));
+        assert!(you.note.is_some());
+        assert!(!you.madya.is_empty());
     }
 }

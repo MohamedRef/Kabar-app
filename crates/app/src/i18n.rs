@@ -286,9 +286,16 @@ pub enum Msg {
     FalseFriend,
     SpeechLevels,
     LevelNgoko,
+    LevelMadya,
     LevelKrama,
     LevelKramaInggil,
     LevelKramaAndhap,
+    TaughtByYou,
+    KabarDictionary,
+    DraftWaiting,
+    TeachKabar,
+    TeachKabarHint,
+    InIndonesian,
     Helpful,
     NotHelpful,
     ThanksFeedback,
@@ -1058,13 +1065,13 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (Unverified, Ar) => "غير مُراجَعة بعد",
         (Unverified, En) => "Not reviewed yet",
         (NoLocalGloss, ArEg) => {
-            "الكلمة دي لسه مش في القاموس المحلي. الشرح بالذكاء الاصطناعي هييجي لما \u{2068}Kabar Cloud\u{2069} يشتغل."
+            "الكلمة دي لسه مش في القاموس المحلي. تقدر تعلّمها لـ\u{2068}Kabar\u{2069} من أي مصدر بتثق فيه."
         }
         (NoLocalGloss, Ar) => {
-            "هذه الكلمة ليست في القاموس المحلي بعد. سيأتي شرحها بالذكاء الاصطناعي عند تفعيل \u{2068}Kabar Cloud\u{2069}."
+            "هذه الكلمة ليست في القاموس المحلي بعد. يمكنك تعليمها لـ\u{2068}Kabar\u{2069} من مصدر تثق به."
         }
         (NoLocalGloss, En) => {
-            "This word isn't in the local dictionary yet. An AI explanation arrives once Kabar Cloud is connected."
+            "This word isn't in the local dictionary yet. You can teach it to Kabar from a source you trust."
         }
         (InThisSentence, ArEg) => "في الجملة دي",
         (InThisSentence, Ar) => "في هذه الجملة",
@@ -1097,6 +1104,9 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (LevelNgoko, ArEg) => "نجوكو (عادي)",
         (LevelNgoko, Ar) => "نغوكو (عادي)",
         (LevelNgoko, En) => "ngoko (plain)",
+        (LevelMadya, ArEg) => "مادْيا (نُص نُص)",
+        (LevelMadya, Ar) => "مادْيا (وسط)",
+        (LevelMadya, En) => "madya (in-between)",
         (LevelKrama, ArEg) => "كراما (مؤدب)",
         (LevelKrama, Ar) => "كراما (مهذّب)",
         (LevelKrama, En) => "krama (polite)",
@@ -1105,6 +1115,26 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (LevelKramaInggil, En) => "krama inggil (honorific)",
         (LevelKramaAndhap, ArEg | Ar) => "كراما أنداب (تواضع)",
         (LevelKramaAndhap, En) => "krama andhap (humble)",
+        (TaughtByYou, ArEg) => "إنت اللي علّمته",
+        (TaughtByYou, Ar) => "أنت من علّمه",
+        (TaughtByYou, En) => "Taught by you",
+        (KabarDictionary, ArEg) => "قاموس \u{2068}Kabar\u{2069}",
+        (KabarDictionary, Ar) => "قاموس \u{2068}Kabar\u{2069}",
+        (KabarDictionary, En) => "Kabar's dictionary",
+        (DraftWaiting, ArEg) => "شرحك لسه مسودة، راجعه",
+        (DraftWaiting, Ar) => "شرحك ما زال مسودة، راجِعه",
+        (DraftWaiting, En) => "Your explanation is a draft. Review it",
+        (TeachKabar, ArEg) => "علّم \u{2068}Kabar\u{2069}",
+        (TeachKabar, Ar) => "علّم \u{2068}Kabar\u{2069}",
+        (TeachKabar, En) => "Teach Kabar",
+        (TeachKabarHint, ArEg) => "اديله شرح من أي مصدر بتثق فيه، وهو يكتبلك كارت تراجعه",
+        (TeachKabarHint, Ar) => "أعطِه شرحًا من مصدر تثق به، فيكتب لك بطاقة تراجعها",
+        (TeachKabarHint, En) => {
+            "Give Kabar an explanation from a source you trust; it writes a card for you to review"
+        }
+        (InIndonesian, ArEg) => "بالإندونيسي",
+        (InIndonesian, Ar) => "بالإندونيسية",
+        (InIndonesian, En) => "In Indonesian",
         (Helpful, ArEg) => "الشرح ده مفيد",
         (Helpful, Ar) => "الشرح مفيد",
         (Helpful, En) => "Helpful",

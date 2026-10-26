@@ -12,13 +12,14 @@ use std::sync::OnceLock;
 
 use dioxus::html::{FileData, HasFileData};
 use dioxus::prelude::*;
+use kabar_core::learn::PersonalDictionary;
 use kabar_core::locale::UiLanguage;
 use kabar_core::reader::screenshot::{ScreenDoc, Side, structure};
 use kabar_protocol::reader::{SharedInput, WordStatus};
 use serde::Deserialize;
 
 use self::content::LocalGlossary;
-use self::doc::{ReadDoc, SegKind};
+use self::doc::{Lexicon, ReadDoc, SegKind};
 use self::glossary::{Glossary, Shift};
 use crate::i18n::Msg;
 use crate::store::{Highlight, SavedText, TextKind};
@@ -115,18 +116,44 @@ impl ReaderState {
         self.highlights.read().iter().find(|h| h.start <= t.start && t.end <= h.end).cloned()
     }
 
+    /// Made once for the whole app, so the open text survives a trip to
+    /// another screen (Teach Kabar) and back.
+    pub fn new(voice: UiLanguage) -> Self {
+        Self {
+            open: Signal::new(None),
+            statuses: Signal::new(HashMap::new()),
+            highlights: Signal::new(Vec::new()),
+            voice: Signal::new(voice),
+            mode: Signal::new(Mode::Inline),
+            peek: Signal::new(None),
+            panel: Signal::new(None),
+            toast: Signal::new(None),
+        }
+    }
+
     fn load(mut self, db: &Db, text: SavedText) {
-        let doc = match text.layout.as_deref().and_then(|l| serde_json::from_str::<ScreenDoc>(l).ok()) {
-            Some(screen) => ReadDoc::from_screen(&screen, glossary()),
-            None => ReadDoc::from_text(&text.body, glossary()),
-        };
         let store = db.0.borrow();
+        let taught = PersonalDictionary::new(store.taught_entries().unwrap_or_default());
+        let lex = Lexicon { glossary: glossary(), taught: &taught };
+        let doc = match text.layout.as_deref().and_then(|l| serde_json::from_str::<ScreenDoc>(l).ok()) {
+            Some(screen) => ReadDoc::from_screen(&screen, lex),
+            None => ReadDoc::from_text(&text.body, lex),
+        };
         self.statuses.set(store.word_statuses(doc.keys()).unwrap_or_default());
         self.highlights.set(store.highlights(&text.id).unwrap_or_default());
         drop(store);
         self.peek.set(None);
         self.panel.set(None);
         self.open.set(Some(Open { text, doc: Rc::new(doc) }));
+    }
+
+    /// Re-reads the open text, picking up words taught since it was opened;
+    /// the word card stays open.
+    fn refresh(mut self, db: &Db) {
+        let Some(open) = self.open.peek().clone() else { return };
+        let panel = self.panel.peek().clone();
+        self.load(db, open.text);
+        self.panel.set(panel);
     }
 
     fn close(mut self) {
@@ -157,15 +184,10 @@ pub fn Reader() -> Element {
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let inbox = use_context::<Inbox>();
-    let st = use_context_provider(|| ReaderState {
-        open: Signal::new(None),
-        statuses: Signal::new(HashMap::new()),
-        highlights: Signal::new(Vec::new()),
-        voice: Signal::new(ui.settings.peek().ui_language),
-        mode: Signal::new(Mode::Inline),
-        peek: Signal::new(None),
-        panel: Signal::new(None),
-        toast: Signal::new(None),
+    let st = use_context::<ReaderState>();
+    use_hook({
+        let db = db.clone();
+        move || st.refresh(&db)
     });
     let busy = use_signal(|| false);
     let recent = use_signal(|| db.0.borrow().recent_texts(12).unwrap_or_default());
@@ -548,7 +570,7 @@ fn ReadView(open: Open, mode: Mode) -> Element {
                 c.push_str(" false-friend");
             }
         }
-        if w.info.is_none() && w.key.is_some() {
+        if !w.has_gloss() && w.key.is_some() {
             c.push_str(" no-gloss");
         }
         if highlighted.contains(&i) {
@@ -599,7 +621,7 @@ fn ReadView(open: Open, mode: Mode) -> Element {
             .filter_map(|i| {
                 let w = doc.tokens[i].word.as_ref()?;
                 let gloss =
-                    w.info.as_ref().map_or_else(|| "…".to_string(), |info| info.gloss.get(voice).to_string());
+                    w.shown().map_or_else(|| "…".to_string(), |info| info.gloss.get(voice).to_string());
                 Some((i, doc.text(doc.tokens[i].start, doc.tokens[i].end).to_string(), gloss))
             })
             .collect();

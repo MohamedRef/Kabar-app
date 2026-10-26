@@ -9,7 +9,18 @@ use kabar_core::lang::analyze::{AnalyzedToken, Engine, Morph};
 use kabar_core::lang::langid::Source;
 use kabar_core::reader::screenshot::{ItemKind, ScreenDoc, Side};
 
+use kabar_core::learn::PersonalDictionary;
+use kabar_protocol::content;
+use kabar_protocol::learn::TaughtEntry;
+
 use super::glossary::{Glossary, WordInfo, WordLang};
+
+/// Where word data comes from: the content pack and what the learner taught.
+#[derive(Clone, Copy)]
+pub struct Lexicon<'a> {
+    pub glossary: &'a dyn Glossary,
+    pub taught: &'a PersonalDictionary,
+}
 
 /// The engine loads ~27k roots once per process.
 pub fn engine() -> &'static Engine {
@@ -56,10 +67,33 @@ pub struct Word {
     pub slang: bool,
     /// Status key, e.g. "id:baca". None for names, which have no status.
     pub key: Option<String>,
+    /// The prebuilt gloss (content pack), never replaced by a taught one.
     pub info: Option<WordInfo>,
+    /// What the learner taught Kabar about this word: approved, or a draft.
+    pub taught: Option<TaughtEntry>,
 }
 
 impl Word {
+    /// An approved taught entry, shown first and badged "taught by you".
+    pub fn taught_approved(&self) -> Option<&TaughtEntry> {
+        self.taught.as_ref().filter(|t| t.is_approved())
+    }
+
+    /// A draft waiting for review: a chip, not an answer.
+    pub fn taught_draft(&self) -> Option<&TaughtEntry> {
+        self.taught.as_ref().filter(|t| !t.is_approved())
+    }
+
+    /// Kabar has something to say about the word.
+    pub fn has_gloss(&self) -> bool {
+        self.info.is_some() || self.taught_approved().is_some()
+    }
+
+    /// What a one-line view shows: the learner's own entry first.
+    pub fn shown(&self) -> Option<WordInfo> {
+        self.taught_approved().and_then(super::content::taught_info).or_else(|| self.info.clone())
+    }
+
     /// "di- + bersih + -kan", when the word has affixes.
     pub fn breakdown(&self) -> Option<String> {
         match &self.analyzed.morph {
@@ -72,6 +106,7 @@ impl Word {
     /// Bridge gold: an Arabic-origin word.
     pub fn is_bridge(&self) -> bool {
         self.info.as_ref().is_some_and(|i| i.bridge.is_some())
+            || self.taught_approved().is_some_and(|t| t.bridge.is_some())
     }
 }
 
@@ -93,13 +128,13 @@ pub struct ReadDoc {
 
 impl ReadDoc {
     /// Pasted or shared text: one segment per non-empty line.
-    pub fn from_text(body: &str, glossary: &dyn Glossary) -> Self {
+    pub fn from_text(body: &str, lex: Lexicon) -> Self {
         let mut b = Builder::new(body);
         let mut offset = 0;
         for line in body.split_inclusive('\n') {
             let trimmed = line.trim_end_matches(['\n', '\r']);
             if !trimmed.trim().is_empty() {
-                b.push(offset, offset + trimmed.len(), SegKind::Para, glossary);
+                b.push(offset, offset + trimmed.len(), SegKind::Para, lex);
             }
             offset += line.len();
         }
@@ -107,7 +142,7 @@ impl ReadDoc {
     }
 
     /// A structured screenshot: every item becomes one line of the body.
-    pub fn from_screen(screen: &ScreenDoc, glossary: &dyn Glossary) -> Self {
+    pub fn from_screen(screen: &ScreenDoc, lex: Lexicon) -> Self {
         let body = screen.items.iter().map(|i| i.text.replace('\n', " ")).collect::<Vec<_>>().join("\n");
         let mut b = Builder::new(&body);
         let mut offset = 0;
@@ -120,7 +155,7 @@ impl ReadDoc {
                 ItemKind::Text => SegKind::Para,
                 ItemKind::Timestamp | ItemKind::Label => SegKind::Chrome,
             };
-            b.push(offset, offset + len, kind, glossary);
+            b.push(offset, offset + len, kind, lex);
             offset += len + 1;
         }
         b.finish()
@@ -171,13 +206,13 @@ impl<'a> Builder<'a> {
         Self { body, segments: Vec::new(), tokens: Vec::new() }
     }
 
-    fn push(&mut self, start: usize, end: usize, kind: SegKind, glossary: &dyn Glossary) {
+    fn push(&mut self, start: usize, end: usize, kind: SegKind, lex: Lexicon) {
         let seg = self.segments.len();
         let first = self.tokens.len();
         if kind != SegKind::Chrome {
             for a in engine().analyze(&self.body[start..end]) {
                 let (s, e) = (start + a.token.start, start + a.token.end);
-                let word = a.token.is_wordlike().then(|| word_of(a, glossary));
+                let word = a.token.is_wordlike().then(|| word_of(a, lex));
                 self.tokens.push(ReadToken { start: s, end: e, seg, word });
             }
         }
@@ -189,7 +224,7 @@ impl<'a> Builder<'a> {
     }
 }
 
-fn word_of(analyzed: AnalyzedToken, glossary: &dyn Glossary) -> Word {
+fn word_of(analyzed: AnalyzedToken, lex: Lexicon) -> Word {
     let lookup = analyzed.lookup_form();
     let surface = analyzed.token.lower();
     let root = match &analyzed.morph {
@@ -201,9 +236,24 @@ fn word_of(analyzed: AnalyzedToken, glossary: &dyn Glossary) -> Word {
     let mut forms: Vec<&str> = vec![&surface, &lookup];
     forms.extend(redup.as_deref());
     forms.extend(root.as_deref());
-    let info = glossary.lookup(&forms).cloned();
+    let prefer = match analyzed.lang.lang {
+        Lang::Javanese => Some(WordLang::Javanese),
+        Lang::Indonesian => Some(WordLang::Indonesian),
+        Lang::English => Some(WordLang::English),
+        _ => None,
+    };
+    let info = lex.glossary.lookup(prefer, &forms).cloned();
+    let taught_langs = match prefer.or(info.as_ref().map(|i| i.lang)) {
+        Some(WordLang::Javanese) => [content::Lang::Jv, content::Lang::Id],
+        _ => [content::Lang::Id, content::Lang::Jv],
+    };
+    let taught = taught_langs.into_iter().find_map(|l| lex.taught.lookup_forms(l, &forms)).cloned();
+    let taught_lang = taught.as_ref().map(|t| match t.entry.lang {
+        content::Lang::Id => WordLang::Indonesian,
+        content::Lang::Jv => WordLang::Javanese,
+    });
 
-    let tag = match (analyzed.lang.lang, info.as_ref().map(|i| i.lang)) {
+    let tag = match (analyzed.lang.lang, info.as_ref().map(|i| i.lang).or(taught_lang)) {
         (Lang::Proper, _) => Tag::Proper,
         (Lang::Indonesian, _) => Tag::Indonesian,
         (Lang::Javanese, _) => Tag::Javanese,
@@ -217,7 +267,7 @@ fn word_of(analyzed: AnalyzedToken, glossary: &dyn Glossary) -> Word {
         || analyzed.normalized.as_ref().is_some_and(|n| n.full.to_lowercase() != surface);
 
     let key = (tag != Tag::Proper).then(|| {
-        let prefix = match info.as_ref().map(|i| i.lang) {
+        let prefix = match info.as_ref().map(|i| i.lang).or(taught_lang) {
             Some(WordLang::Javanese) => "jv",
             Some(WordLang::English) => "en",
             Some(WordLang::Indonesian) => "id",
@@ -227,10 +277,16 @@ fn word_of(analyzed: AnalyzedToken, glossary: &dyn Glossary) -> Word {
                 _ => "id",
             },
         };
-        let lemma = info.as_ref().map(|i| i.lemma.clone()).or(root).or(redup).unwrap_or(lookup);
+        let lemma = info
+            .as_ref()
+            .map(|i| i.lemma.clone())
+            .or_else(|| taught.as_ref().map(|t| t.entry.lemma.clone()))
+            .or(root)
+            .or(redup)
+            .unwrap_or(lookup);
         format!("{prefix}:{lemma}")
     });
-    Word { analyzed, tag, slang, key, info }
+    Word { analyzed, tag, slang, key, info, taught }
 }
 
 #[cfg(test)]
@@ -239,7 +295,11 @@ mod tests {
     use crate::reader::glossary::SeedGlossary;
 
     fn doc(text: &str) -> ReadDoc {
-        ReadDoc::from_text(text, &SeedGlossary::default())
+        doc_with(text, &PersonalDictionary::default())
+    }
+
+    fn doc_with(text: &str, taught: &PersonalDictionary) -> ReadDoc {
+        ReadDoc::from_text(text, Lexicon { glossary: &SeedGlossary::default(), taught })
     }
 
     fn word<'a>(d: &'a ReadDoc, surface: &str) -> &'a Word {
@@ -302,5 +362,24 @@ mod tests {
         let d = doc("Which is, gue literally capek banget.");
         assert_eq!(word(&d, "capek").info.as_ref().unwrap().gloss.en, "tired");
         assert_eq!(word(&d, "literally").tag, Tag::English);
+    }
+
+    #[test]
+    fn taught_words_come_first_and_drafts_stay_chips() {
+        let mut taught: TaughtEntry =
+            serde_json::from_str(include_str!("../../../../fixtures/learn/taught.kalimat.json")).unwrap();
+        let kw = taught.entry.word.clone();
+        let text = format!("Ini {kw} baru.");
+        // A draft: no answer, only the chip.
+        let d = doc_with(&text, &PersonalDictionary::new([taught.clone()]));
+        let w = word(&d, &kw);
+        assert!(w.taught_draft().is_some());
+        assert!(w.taught_approved().is_none());
+        // Approved: shown first, and the prebuilt gloss is kept.
+        taught.entry.status = kabar_protocol::content::ReviewStatus::Approved;
+        let d = doc_with(&text, &PersonalDictionary::new([taught]));
+        let w = word(&d, &kw);
+        assert!(w.taught_approved().is_some());
+        assert!(w.has_gloss());
     }
 }

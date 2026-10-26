@@ -58,20 +58,46 @@ pub struct Bridge {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum SpeechLevel {
     Ngoko,
+    Madya,
     Krama,
     KramaInggil,
-    /// Set by the content pack's speech-level table; the seed has none.
-    #[allow(dead_code)]
     KramaAndhap,
 }
 
-#[derive(Clone, Debug, PartialEq, Eq)]
+impl SpeechLevel {
+    pub const ALL: [SpeechLevel; 5] =
+        [Self::Ngoko, Self::Madya, Self::Krama, Self::KramaInggil, Self::KramaAndhap];
+}
+
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct Levels {
-    /// The level of the word itself.
-    pub level: SpeechLevel,
-    pub ngoko: String,
-    pub krama: Option<String>,
-    pub krama_inggil: Option<String>,
+    /// The level of the word itself; None for words that are the same at
+    /// every level.
+    pub level: Option<SpeechLevel>,
+    pub ngoko: Vec<String>,
+    pub madya: Vec<String>,
+    pub krama: Vec<String>,
+    pub krama_inggil: Vec<String>,
+    pub krama_andhap: Vec<String>,
+    /// When to use which form.
+    pub note: Option<Gloss>,
+}
+
+impl Levels {
+    pub fn forms(&self, level: SpeechLevel) -> &[String] {
+        match level {
+            SpeechLevel::Ngoko => &self.ngoko,
+            SpeechLevel::Madya => &self.madya,
+            SpeechLevel::Krama => &self.krama,
+            SpeechLevel::KramaInggil => &self.krama_inggil,
+            SpeechLevel::KramaAndhap => &self.krama_andhap,
+        }
+    }
+
+    /// The levels that have a form, in politeness order.
+    pub fn rows(&self) -> impl Iterator<Item = (SpeechLevel, &[String])> {
+        SpeechLevel::ALL.into_iter().map(|l| (l, self.forms(l))).filter(|(_, f)| !f.is_empty())
+    }
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -80,6 +106,8 @@ pub struct WordInfo {
     pub lang: WordLang,
     pub pos: Option<String>,
     pub gloss: Gloss,
+    /// Javanese only: the standard Indonesian word.
+    pub indonesian: Option<String>,
     pub bridge: Option<Bridge>,
     pub levels: Option<Levels>,
     /// A usage note ("yang links a noun to its description…").
@@ -91,9 +119,11 @@ pub struct WordInfo {
 }
 
 pub trait Glossary {
-    /// Looks up a lowercase form: tries it as given, then each fallback
-    /// (normalized form, root) in order.
-    fn lookup(&self, forms: &[&str]) -> Option<&WordInfo>;
+    /// Looks up lowercase forms: tries each as given, then each fallback
+    /// (normalized form, root) in order. Words of the `prefer` language win
+    /// over the same spelling in another language (Javanese "aku" vs
+    /// Indonesian "aku").
+    fn lookup(&self, prefer: Option<WordLang>, forms: &[&str]) -> Option<&WordInfo>;
 }
 
 pub struct SeedGlossary {
@@ -275,6 +305,7 @@ impl Default for SeedGlossary {
                     lang,
                     pos: Some(pos.into()),
                     gloss: Gloss { arz: arz.into(), ar: ar.into(), en: en.into() },
+                    indonesian: None,
                     bridge: None,
                     levels: None,
                     note: None,
@@ -297,10 +328,11 @@ impl Default for SeedGlossary {
         for &(word, level, ngoko, krama, ki) in LEVELS {
             if let Some(w) = words.get_mut(word) {
                 w.levels = Some(Levels {
-                    level,
-                    ngoko: ngoko.into(),
-                    krama: krama.map(Into::into),
-                    krama_inggil: ki.map(Into::into),
+                    level: Some(level),
+                    ngoko: vec![ngoko.into()],
+                    krama: krama.map(Into::into).into_iter().collect(),
+                    krama_inggil: ki.map(Into::into).into_iter().collect(),
+                    ..Levels::default()
                 });
             }
         }
@@ -309,8 +341,11 @@ impl Default for SeedGlossary {
 }
 
 impl Glossary for SeedGlossary {
-    fn lookup(&self, forms: &[&str]) -> Option<&WordInfo> {
-        forms.iter().find_map(|f| self.words.get(*f))
+    fn lookup(&self, prefer: Option<WordLang>, forms: &[&str]) -> Option<&WordInfo> {
+        let get = |f: &&str| self.words.get(*f);
+        prefer
+            .and_then(|p| forms.iter().filter_map(get).find(|w| w.lang == p))
+            .or_else(|| forms.iter().find_map(get))
     }
 }
 
@@ -321,9 +356,9 @@ mod tests {
     #[test]
     fn bridge_and_false_friends() {
         let g = SeedGlossary::default();
-        let kabar = g.lookup(&["kabar"]).unwrap();
+        let kabar = g.lookup(None, &["kabar"]).unwrap();
         assert_eq!(kabar.bridge.as_ref().unwrap().arabic, "خبر");
-        let kalimat = g.lookup(&["kalimat"]).unwrap();
+        let kalimat = g.lookup(None, &["kalimat"]).unwrap();
         assert_eq!(kalimat.bridge.as_ref().unwrap().shift, Shift::FalseFriend);
         assert!(!kalimat.verified, "seed data starts unverified");
     }
@@ -332,26 +367,29 @@ mod tests {
     fn falls_back_through_forms() {
         let g = SeedGlossary::default();
         // "dibersihkan" isn't an entry; its root is.
-        assert_eq!(g.lookup(&["dibersihkan", "bersih"]).unwrap().lemma, "bersih");
-        assert!(g.lookup(&["zzz"]).is_none());
+        assert_eq!(g.lookup(None, &["dibersihkan", "bersih"]).unwrap().lemma, "bersih");
+        assert!(g.lookup(None, &["zzz"]).is_none());
     }
 
     #[test]
     fn speech_levels_for_have_you_eaten() {
         let g = SeedGlossary::default();
-        let l = g.lookup(&["nedha"]).unwrap().levels.as_ref().unwrap();
-        assert_eq!(l.level, SpeechLevel::Krama);
-        assert_eq!((l.ngoko.as_str(), l.krama_inggil.as_deref()), ("mangan", Some("dhahar")));
+        let l = g.lookup(None, &["nedha"]).unwrap().levels.as_ref().unwrap();
+        assert_eq!(l.level, Some(SpeechLevel::Krama));
+        assert_eq!(
+            (l.ngoko.as_slice(), l.krama_inggil.as_slice()),
+            (&["mangan".to_string()][..], &["dhahar".to_string()][..])
+        );
     }
 
     #[test]
     fn every_bridge_and_level_row_has_a_word() {
         let g = SeedGlossary::default();
         for (w, ..) in BRIDGE {
-            assert!(g.lookup(&[w]).unwrap().bridge.is_some(), "{w}");
+            assert!(g.lookup(None, &[w]).unwrap().bridge.is_some(), "{w}");
         }
         for (w, ..) in LEVELS {
-            assert!(g.lookup(&[w]).unwrap().levels.is_some(), "{w}");
+            assert!(g.lookup(None, &[w]).unwrap().levels.is_some(), "{w}");
         }
     }
 }

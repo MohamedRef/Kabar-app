@@ -483,6 +483,12 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 .levels dl { display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 0.75rem; margin: 0; }
 .levels dt { color: var(--muted); }
 .levels dd { margin: 0; font-weight: 600; }
+.levels dt.current, .levels dd.current { color: var(--indigo); }
+.levels dd.current::before { content: "● "; font-size: 0.7em; vertical-align: middle; }
+.levels .note { margin-block-start: 0.5rem; }
+.tag.taught { background: var(--indigo); color: var(--surface); }
+.taught-block { border: 1px solid var(--indigo); border-radius: 12px; padding: 0.75rem; display: grid; gap: 0.5rem; justify-items: start; }
+.chip.draft { border: 1px dashed var(--indigo); background: transparent; color: var(--indigo); border-radius: 999px; padding-inline: 0.75rem; justify-self: start; }
 .bridge-card { border: 1px solid var(--gold); background: var(--gold-soft); border-radius: 12px; padding: 0.75rem; }
 .bridge-card .bridge { margin-block: 0.25rem; background: transparent; padding: 0; font-size: 1.3rem; }
 .bridge-card p { margin-block: 0.25rem; }

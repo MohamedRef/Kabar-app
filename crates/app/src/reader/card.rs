@@ -3,13 +3,16 @@
 
 use dioxus::prelude::*;
 use kabar_core::locale::UiLanguage;
+use kabar_protocol::content::Lang;
 use kabar_protocol::reader::WordStatus;
 
+use super::content::taught_info;
 use super::doc::{Tag, Word};
-use super::glossary::{Shift, SpeechLevel};
+use super::glossary::{Shift, SpeechLevel, WordInfo, WordLang};
 use super::{Panel, Peek, ReaderState};
 use crate::i18n::Msg;
-use crate::{Db, Ui};
+use crate::teach::{TeachInbox, TeachSeed};
+use crate::{Db, Screen, Ui};
 
 fn tag_msg(tag: Tag) -> Msg {
     match tag {
@@ -43,6 +46,7 @@ fn shift_msg(s: Shift) -> Msg {
 fn level_msg(l: SpeechLevel) -> Msg {
     match l {
         SpeechLevel::Ngoko => Msg::LevelNgoko,
+        SpeechLevel::Madya => Msg::LevelMadya,
         SpeechLevel::Krama => Msg::LevelKrama,
         SpeechLevel::KramaInggil => Msg::LevelKramaInggil,
         SpeechLevel::KramaAndhap => Msg::LevelKramaAndhap,
@@ -66,7 +70,7 @@ pub fn PeekView(peek: Peek) -> Element {
     rsx! {
         div { class: "peek", role: "tooltip", style: "{style}",
             Headline { w: w.clone(), surface }
-            match &w.info {
+            match &w.shown() {
                 Some(info) => rsx! {
                     p { class: "gloss", "{info.gloss.get(voice)}" }
                     if let Some(b) = &info.bridge {
@@ -106,7 +110,9 @@ fn Headline(w: Word, surface: String) -> Element {
             if w.slang {
                 span { class: "tag", "{ui.t(Msg::LangSlang)}" }
             }
-            if w.info.as_ref().is_some_and(|i| !i.verified) {
+            if w.taught_approved().is_some() {
+                span { class: "tag taught", "{ui.t(Msg::TaughtByYou)}" }
+            } else if w.info.as_ref().is_some_and(|i| !i.verified) {
                 span { class: "tag unverified", "{ui.t(Msg::Unverified)}" }
             }
         }
@@ -163,6 +169,18 @@ fn WordCard(i: usize) -> Element {
     let status = key.as_deref().map(|k| st.status(k));
     let breakdown = w.breakdown();
     let speak_text = w.analyzed.normalized.as_ref().map_or(surface.clone(), |n| n.full.clone());
+    let taught = w.taught_approved().and_then(taught_info);
+    let teach = use_context::<TeachInbox>();
+    // Names and words with a draft waiting don't offer teaching.
+    let teach_seed = (w.key.is_some() && w.taught_draft().is_none()).then(|| TeachSeed {
+        lang: if w.info.as_ref().map(|i| i.lang) == Some(WordLang::Javanese) || w.tag == Tag::Javanese {
+            Lang::Jv
+        } else {
+            Lang::Id
+        },
+        word: w.info.as_ref().map_or_else(|| w.analyzed.lookup_form(), |i| i.lemma.clone()),
+        context: Some(sentence.clone()),
+    });
 
     rsx! {
         div { class: "word-card",
@@ -175,64 +193,32 @@ fn WordCard(i: usize) -> Element {
                 }
             }
 
-            match &w.info {
+            if let Some(t) = taught {
+                div { class: "taught-block", aria_label: "{ui.t(Msg::TaughtByYou)}",
+                    InfoView { info: t, voice }
+                }
+            }
+            match w.info.clone() {
                 Some(info) => rsx! {
-                    div { class: "field",
-                        if let Some(pos) = &info.pos {
-                            span { class: "label latin", "{pos}" }
-                        }
-                        p { class: "gloss big", "{info.gloss.get(voice)}" }
-                        if voice != UiLanguage::En {
-                            p { class: "muted", lang: "en", dir: "ltr", "{info.gloss.en}" }
-                        }
+                    if w.taught_approved().is_some() {
+                        span { class: "label", "{ui.t(Msg::KabarDictionary)}" }
                     }
-                    if let Some(note) = &info.note {
-                        p { class: "note", "{note.get(voice)}" }
-                    }
-                    if let Some((text, tr)) = &info.example {
-                        div { class: "field",
-                            span { class: "label", "{ui.t(Msg::Example)}" }
-                            p { class: "sentence", dir: "ltr", lang: "id", "{text}" }
-                            p { class: "muted", "{tr.get(voice)}" }
-                        }
-                    }
-                    if let Some(l) = &info.levels {
-                        div { class: "field levels",
-                            span { class: "label", "{ui.t(Msg::SpeechLevels)} · {ui.t(level_msg(l.level))}" }
-                            dl {
-                                dt { "{ui.t(Msg::LevelNgoko)}" }
-                                dd { bdi { class: "latin", lang: "jv", "{l.ngoko}" } }
-                                if let Some(k) = &l.krama {
-                                    dt { "{ui.t(Msg::LevelKrama)}" }
-                                    dd { bdi { class: "latin", lang: "jv", "{k}" } }
-                                }
-                                if let Some(k) = &l.krama_inggil {
-                                    dt { "{ui.t(Msg::LevelKramaInggil)}" }
-                                    dd { bdi { class: "latin", lang: "jv", "{k}" } }
-                                }
-                            }
-                        }
-                    }
-                    if let Some(b) = &info.bridge {
-                        div { class: if b.shift == Shift::FalseFriend { "bridge-card false" } else { "bridge-card" },
-                            span { class: "label", "{ui.t(Msg::BridgeTitle)}" }
-                            div { class: "bridge",
-                                span { class: "bridge-word latin", lang: "id", "{info.lemma}" }
-                                span { class: "ar", lang: "ar", "{b.arabic}" }
-                            }
-                            if let Some(root) = &b.root {
-                                p { class: "muted", lang: "ar", "{root}" }
-                            }
-                            p { strong { "{ui.t(shift_msg(b.shift))}" } }
-                            if let Some(note) = &b.note {
-                                p { "{note.get(voice)}" }
-                            }
-                        }
-                    }
+                    InfoView { info, voice }
                 },
-                None => rsx! {
+                None if w.taught_approved().is_none() => rsx! {
                     p { class: "muted", "{ui.t(Msg::NoLocalGloss)}" }
                 },
+                None => rsx! {},
+            }
+            if w.taught_draft().is_some() {
+                button {
+                    class: "chip draft",
+                    onclick: move |_| {
+                        let mut screen = ui.screen;
+                        screen.set(Screen::Teach);
+                    },
+                    "✎ {ui.t(Msg::DraftWaiting)}"
+                }
             }
 
             div { class: "field",
@@ -241,6 +227,19 @@ fn WordCard(i: usize) -> Element {
             }
 
             div { class: "row",
+                if let Some(seed) = teach_seed {
+                    button {
+                        class: if w.has_gloss() { "" } else { "primary" },
+                        title: "{ui.t(Msg::TeachKabarHint)}",
+                        onclick: move |_| {
+                            let mut slot = teach.0;
+                            slot.set(Some(seed.clone()));
+                            let mut screen = ui.screen;
+                            screen.set(Screen::Teach);
+                        },
+                        "✍ {ui.t(Msg::TeachKabar)}"
+                    }
+                }
                 button {
                     onclick: move |_| speak(&speak_text),
                     "🔊 {ui.t(Msg::Listen)}"
@@ -313,6 +312,81 @@ fn WordCard(i: usize) -> Element {
     }
 }
 
+/// One gloss: meaning, note, example, speech levels and the Bridge card.
+#[component]
+fn InfoView(info: WordInfo, voice: UiLanguage) -> Element {
+    let ui = use_context::<Ui>();
+    let lang = if info.lang == WordLang::Javanese { "jv" } else { "id" };
+    rsx! {
+        div { class: "field",
+            if let Some(pos) = &info.pos {
+                span { class: "label latin", "{pos}" }
+            }
+            p { class: "gloss big", "{info.gloss.get(voice)}" }
+            if voice != UiLanguage::En {
+                p { class: "muted", lang: "en", dir: "ltr", "{info.gloss.en}" }
+            }
+        }
+        if let Some(ind) = &info.indonesian {
+            div { class: "field",
+                span { class: "label", "{ui.t(Msg::InIndonesian)}" }
+                bdi { class: "latin", lang: "id", "{ind}" }
+            }
+        }
+        if let Some(note) = &info.note {
+            p { class: "note", "{note.get(voice)}" }
+        }
+        if let Some((text, tr)) = &info.example {
+            div { class: "field",
+                span { class: "label", "{ui.t(Msg::Example)}" }
+                p { class: "sentence", dir: "ltr", lang, "{text}" }
+                p { class: "muted", "{tr.get(voice)}" }
+            }
+        }
+        if let Some(l) = &info.levels {
+            div { class: "field levels",
+                span { class: "label",
+                    "{ui.t(Msg::SpeechLevels)}"
+                    if let Some(level) = l.level {
+                        " · {ui.t(level_msg(level))}"
+                    }
+                }
+                if l.rows().next().is_some() {
+                    dl {
+                        for (level , forms) in l.rows() {
+                            dt { key: "{level:?}", class: if l.level == Some(level) { "current" } else { "" },
+                                "{ui.t(level_msg(level))}"
+                            }
+                            dd { class: if l.level == Some(level) { "current" } else { "" },
+                                bdi { class: "latin", lang: "jv", "{forms.join(\" / \")}" }
+                            }
+                        }
+                    }
+                }
+                if let Some(note) = &l.note {
+                    p { class: "note", "{note.get(voice)}" }
+                }
+            }
+        }
+        if let Some(b) = &info.bridge {
+            div { class: if b.shift == Shift::FalseFriend { "bridge-card false" } else { "bridge-card" },
+                span { class: "label", "{ui.t(Msg::BridgeTitle)}" }
+                div { class: "bridge",
+                    span { class: "bridge-word latin", lang, "{info.lemma}" }
+                    span { class: "ar", lang: "ar", "{b.arabic}" }
+                }
+                if let Some(root) = &b.root {
+                    p { class: "muted", lang: "ar", "{root}" }
+                }
+                p { strong { "{ui.t(shift_msg(b.shift))}" } }
+                if let Some(note) = &b.note {
+                    p { "{note.get(voice)}" }
+                }
+            }
+        }
+    }
+}
+
 #[component]
 fn PhraseCard(tokens: Vec<usize>, save_first: bool) -> Element {
     let ui = use_context::<Ui>();
@@ -333,7 +407,7 @@ fn PhraseCard(tokens: Vec<usize>, save_first: bool) -> Element {
             Some((
                 i,
                 open.doc.text(t.start, t.end).to_string(),
-                w.info.as_ref().map(|x| x.gloss.get(voice).to_string()),
+                w.shown().map(|x| x.gloss.get(voice).to_string()),
             ))
         })
         .collect();

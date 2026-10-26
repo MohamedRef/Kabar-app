@@ -199,6 +199,7 @@ fn Loaded(db: Db) -> Element {
     use_width_tracking(ui.width);
     coach::use_clock(coach, db.clone());
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
+    use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
     use_share_inbox(ui, inbox);
 
     let settings = ui.settings.read();
