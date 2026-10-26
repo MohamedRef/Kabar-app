@@ -160,6 +160,9 @@ impl LocalGlossary {
             .map(|b| (b.word.to_lowercase(), b))
             .collect();
 
+        // Indonesian word → its lemma and root, for Javanese words whose card is
+        // their Indonesian equivalent's (ngurmati → menghormati → hormat).
+        let mut id_stems: HashMap<String, Vec<String>> = HashMap::new();
         let entries = GLOSS_BATCHES.iter().chain(GLOSS_BATCHES_JV).flat_map(|b| jsonl::<GlossEntry>(b));
         for entry in entries {
             let e = match entry {
@@ -177,6 +180,31 @@ impl LocalGlossary {
                 .filter_map(|k| bridges.get(&k.to_lowercase()))
                 .find(|b| b.lang == e.lang)
                 .map(bridge);
+            match e.lang {
+                content::Lang::Id => {
+                    let stems = [Some(e.lemma.clone()), e.root.clone()].into_iter().flatten().collect();
+                    id_stems.insert(e.word.to_lowercase(), stems);
+                }
+                // The Bridge is Indonesian: an Arabic-origin Javanese word shows the
+                // card of its own spelling, or of its Indonesian equivalent.
+                content::Lang::Jv if info.bridge.is_none() && e.arabic_origin.is_some() => {
+                    let first = e
+                        .indonesian
+                        .as_deref()
+                        .and_then(|i| i.split(',').next())
+                        .map(|f| f.trim().to_lowercase());
+                    let via = first
+                        .iter()
+                        .chain(first.as_ref().and_then(|f| id_stems.get(f)).into_iter().flatten());
+                    info.bridge = [Some(&e.word), Some(&e.lemma), e.root.as_ref()]
+                        .into_iter()
+                        .flatten()
+                        .chain(via)
+                        .find_map(|k| bridges.get(&k.to_lowercase()))
+                        .map(bridge);
+                }
+                _ => {}
+            }
             let key = e.word.to_lowercase();
             // The seed's hand-checked level table stays until the real one below.
             if info.levels.is_none() {
@@ -332,6 +360,18 @@ mod tests {
                 .count();
             assert_eq!(on_disk, embedded.len(), "build.rs missed a {lang} gloss batch");
         }
+    }
+
+    #[test]
+    fn javanese_arabic_loans_show_the_indonesian_card() {
+        let g = LocalGlossary::load();
+        let card = |w: &str| {
+            g.lookup(Some(WordLang::Javanese), &[w]).and_then(|i| i.bridge.as_ref()).map(|b| b.arabic.clone())
+        };
+        // Through the Indonesian equivalent's root: ngurmati → menghormati → hormat.
+        assert!(card("ngurmati").is_some());
+        // Not every Javanese word that shares a spelling gets one: only Arabic loans.
+        assert!(card("kowe").is_none());
     }
 
     #[test]
