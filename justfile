@@ -109,7 +109,8 @@ apk:
     scripts/android-check-apk.sh "$(find {{dist}}/android/raw -name '*.apk' | head -1)"
     scripts/android-sign.sh "$(find {{dist}}/android/raw -name '*.apk' | head -1)" "{{dist}}/android/kabar.apk" "{{keystore}}" "{{key_alias}}"
 
-# The release for your own devices (docs/RELEASE.md): every check, then
+# A release for your own devices (docs/RELEASE.md, only once everything is
+# done and the learner says go): every check, then
 # Kabar.app and the signed APK side by side in dist/release/<version>/
 release:
     just check
