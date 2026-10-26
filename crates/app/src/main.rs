@@ -12,6 +12,8 @@ mod lesson;
 mod penlab;
 mod platform;
 mod play;
+#[cfg(all(feature = "desktop", not(target_os = "android")))]
+mod quick_lookup;
 mod reader;
 mod review;
 mod screens;
@@ -211,7 +213,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     });
     use_context_provider(|| db.clone());
     use_context_provider(play::PlayNav::new);
-    use_context_provider(|| teach::TeachInbox(Signal::new(None)));
+    let teach_inbox = use_context_provider(|| teach::TeachInbox(Signal::new(None)));
     let link = use_hook(cloud::link::CloudLink::default);
     use_context_provider(|| teach::Ai(Rc::new(ai::router(db.clone(), link.clone()))));
     let audio_dir = path.parent().map(|d| d.join("audio")).unwrap_or_else(|| "audio".into());
@@ -221,8 +223,13 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     use_cloud(&db, path, ui, link);
     coach::use_clock(coach, db.clone());
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
-    use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
+    let reader_state = use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
     use_share_inbox(ui, inbox);
+    // ⌘⇧K anywhere on the Mac: the clipboard, explained (spec §11).
+    #[cfg(all(feature = "desktop", not(target_os = "android")))]
+    quick_lookup::use_quick_lookup(db.clone(), ui, reader_state, teach_inbox);
+    #[cfg(not(all(feature = "desktop", not(target_os = "android"))))]
+    let _ = (reader_state, teach_inbox);
 
     let settings = ui.settings.read();
     let lang = settings.ui_language;

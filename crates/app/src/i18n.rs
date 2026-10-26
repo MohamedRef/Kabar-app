@@ -432,6 +432,17 @@ pub enum Msg {
     Me,
     PenHint,
     Example,
+    // Mac Quick Lookup: desktop builds only.
+    #[cfg_attr(not(all(feature = "desktop", not(target_os = "android"))), allow(dead_code))]
+    QuickLookup,
+    #[cfg_attr(not(all(feature = "desktop", not(target_os = "android"))), allow(dead_code))]
+    QuickLookupEmpty,
+    #[cfg_attr(not(all(feature = "desktop", not(target_os = "android"))), allow(dead_code))]
+    QuickLookupHowTo,
+    #[cfg_attr(not(all(feature = "desktop", not(target_os = "android"))), allow(dead_code))]
+    QuickLookupOpenInReader,
+    #[cfg_attr(not(all(feature = "desktop", not(target_os = "android"))), allow(dead_code))]
+    QuickLookupAgain,
 }
 
 pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
@@ -1675,5 +1686,25 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PenHint, En) => {
             "With the pen: hover to peek, tap a word for its card, loop a phrase to look it up, or stroke across it to save it."
         }
+        (QuickLookup, ArEg | Ar) => "بحث سريع",
+        (QuickLookup, En) => "Quick Lookup",
+        (QuickLookupEmpty, ArEg) => "مفيش كلام في الحافظة دلوقتي.",
+        (QuickLookupEmpty, Ar) => "لا يوجد نص في الحافظة الآن.",
+        (QuickLookupEmpty, En) => "There's no text on the clipboard right now.",
+        (QuickLookupHowTo, ArEg) => {
+            "انسخ أي جملة إندونيسي أو جاوي من أي مكان، ودوس الاختصار ده وهتلاقي شرحها هنا:"
+        }
+        (QuickLookupHowTo, Ar) => {
+            "انسخ أي جملة إندونيسية أو جاوية من أي مكان، ثم اضغط هذا الاختصار لتجد شرحها هنا:"
+        }
+        (QuickLookupHowTo, En) => {
+            "Copy any Indonesian or Javanese sentence, anywhere, then press this shortcut to see it explained here:"
+        }
+        (QuickLookupOpenInReader, ArEg) => "افتحه في القارئ",
+        (QuickLookupOpenInReader, Ar) => "افتحه في القارئ",
+        (QuickLookupOpenInReader, En) => "Open in Reader",
+        (QuickLookupAgain, ArEg) => "اقرا الحافظة تاني",
+        (QuickLookupAgain, Ar) => "اقرأ الحافظة مجددًا",
+        (QuickLookupAgain, En) => "Read the clipboard again",
     }
 }

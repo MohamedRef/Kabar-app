@@ -156,6 +156,17 @@ Then on the device:
 The Screenshot Decoder uses Apple Vision (built into macOS, nothing to install). It recognizes Indonesian when your macOS supports it and falls back to its general Latin model otherwise; language auto-correction is only on when Indonesian is supported, so Javanese and slang aren't "corrected" into English. Try it with `just run-mac` Reader → "Open a screenshot", or drag an image onto the Reader.
 
 Tesseract (`ind`/`jav`) as a third OCR engine is phased for later.
+
+### Mac Quick Lookup (spec §11)
+While Kabar is running (it can be in the background), copy any Indonesian or Javanese text in any app and press **⌘⇧K** (Ctrl+Shift+K on Linux). A small window (420×520, always on top) opens next to the mouse and reads the clipboard exactly like the Reader: words colored by status, hover to peek, click for the full word card (statuses, Add to review, Teach Kabar all work and sync).
+
+- Press ⌘⇧K again with the window open: it re-reads the clipboard. The same text keeps its highlights.
+- **Open in Reader** saves the text (one entry in the Reader's recent list) and brings the main window forward on the Reader with it open. Saving a phrase or changing a word's status also keeps the text, and the main Reader recolors.
+- **Teach Kabar** in the card hands the word to the main window's Teach screen.
+- Escape or × closes it. An empty clipboard (or an image) shows a short how-to instead.
+
+No macOS permission is needed: the hotkey is a Carbon hot key (no Accessibility / Input Monitoring prompt). If another app already owns ⌘⇧K, Kabar logs `Quick Lookup hotkey unavailable` in the terminal and the rest of the app works as usual. On Linux the hotkey needs X11 (not a pure Wayland session). Android doesn't have this feature (use Share → Kabar there).
+
 ## 10. Play: Arabic Bridge games, Kabar Pagi, Rupiah Reader, Pasar! (M10)
 
 Open **Play** (ألعاب) in the sidebar or the phone's bottom bar.

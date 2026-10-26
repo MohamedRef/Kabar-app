@@ -132,7 +132,7 @@ impl ReaderState {
         }
     }
 
-    fn load(mut self, db: &Db, text: SavedText) {
+    pub(crate) fn load(mut self, db: &Db, text: SavedText) {
         let store = db.0.borrow();
         let taught = PersonalDictionary::new(store.taught_entries().unwrap_or_default());
         let lex = Lexicon { glossary: glossary(), taught: &taught };
@@ -149,7 +149,7 @@ impl ReaderState {
     }
 
     /// Statuses and highlights changed on another device: recolor in place.
-    fn reload_marks(mut self, db: &Db) {
+    pub(crate) fn reload_marks(mut self, db: &Db) {
         let Some(open) = self.open.peek().clone() else { return };
         let store = db.0.borrow();
         self.statuses.set(store.word_statuses(open.doc.keys()).unwrap_or_default());
@@ -211,40 +211,7 @@ pub fn Reader() -> Element {
     let busy = use_signal(|| false);
     let recent = use_signal(|| db.0.borrow().recent_texts(12).unwrap_or_default());
 
-    // Pen, mouse and touch input from the WebView.
-    use_future({
-        let db = db.clone();
-        move || {
-            let db = db.clone();
-            async move {
-                let mut st = st;
-                let mut eval = document::eval(READER_JS);
-                while let Ok(msg) = eval.recv::<FromJs>().await {
-                    match msg {
-                        FromJs::Peek { i, start, below, y } => st.peek.set(Some(Peek { i, start, below, y })),
-                        FromJs::Unpeek => st.peek.set(None),
-                        FromJs::Open { i } => {
-                            st.peek.set(None);
-                            st.panel.set(Some(Panel::Word(i)));
-                        }
-                        FromJs::Phrase { tokens } => {
-                            st.peek.set(None);
-                            st.panel.set(Some(Panel::Phrase { tokens, save_first: false }));
-                        }
-                        FromJs::Menu { tokens } => {
-                            st.peek.set(None);
-                            st.panel.set(Some(Panel::Phrase { tokens, save_first: true }));
-                        }
-                        FromJs::Highlight { tokens } => st.save_phrase(&db, &tokens),
-                        FromJs::Escape => {
-                            st.peek.set(None);
-                            st.panel.set(None);
-                        }
-                    }
-                }
-            }
-        }
-    });
+    use_input_layer(db.clone(), st);
 
     // Something was shared to Kabar: open it.
     use_effect({
@@ -338,6 +305,41 @@ pub fn Reader() -> Element {
             }
         }
     }
+}
+
+/// Pen, mouse and touch input from the WebView (`reader.js`), driving the
+/// peek and the word card. Used by the Reader and the Mac Quick Lookup window.
+pub(crate) fn use_input_layer(db: Db, st: ReaderState) {
+    use_future(move || {
+        let db = db.clone();
+        async move {
+            let mut st = st;
+            let mut eval = document::eval(READER_JS);
+            while let Ok(msg) = eval.recv::<FromJs>().await {
+                match msg {
+                    FromJs::Peek { i, start, below, y } => st.peek.set(Some(Peek { i, start, below, y })),
+                    FromJs::Unpeek => st.peek.set(None),
+                    FromJs::Open { i } => {
+                        st.peek.set(None);
+                        st.panel.set(Some(Panel::Word(i)));
+                    }
+                    FromJs::Phrase { tokens } => {
+                        st.peek.set(None);
+                        st.panel.set(Some(Panel::Phrase { tokens, save_first: false }));
+                    }
+                    FromJs::Menu { tokens } => {
+                        st.peek.set(None);
+                        st.panel.set(Some(Panel::Phrase { tokens, save_first: true }));
+                    }
+                    FromJs::Highlight { tokens } => st.save_phrase(&db, &tokens),
+                    FromJs::Escape => {
+                        st.peek.set(None);
+                        st.panel.set(None);
+                    }
+                }
+            }
+        }
+    });
 }
 
 /// Saves a new text and opens it.
@@ -555,7 +557,7 @@ fn kind_icon(kind: TextKind) -> &'static str {
 }
 
 #[component]
-fn ReadView(open: Open, mode: Mode) -> Element {
+pub(crate) fn ReadView(open: Open, mode: Mode) -> Element {
     let ui = use_context::<Ui>();
     let st = use_context::<ReaderState>();
     let doc = open.doc.clone();

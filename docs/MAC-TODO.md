@@ -80,6 +80,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] `just apk` while online (first build fetches ML Kit from Google Maven; it must print "Kotlin glue present"), then `just install <serial>` on the S24 Ultra and Tab S11.
 - [ ] On each device: share text from WhatsApp → **Kabar**; select text → ⋮ → **Kabar**; take a screenshot → Share → **Kabar**. `adb logcat -s KabarShare` if a share is ignored.
 - [ ] Pen in the Reader: hover a word (peek), tap it (card), loop around a phrase (lookup), stroke across a phrase (highlight saved). Tell me how it feels and anything that misfires.
+- [ ] Mac Quick Lookup ([RUN.md §9](RUN.md)): with `just run-mac` running, copy a §24 line in Safari or Notes, press **⌘⇧K** from that app: a small always-on-top window opens near the mouse with the text colored; hover/click words, mark one "known", press Escape. Copy another line and press ⌘⇧K again with the window open (it should refresh). Try **Open in Reader** (main window comes forward on the Reader with the text) and the empty clipboard (copy an image). No macOS permission should be asked (it's a Carbon hotkey, not Accessibility); if ⌘⇧K does nothing, check the terminal for "Quick Lookup hotkey unavailable" (another app owns ⌘⇧K) and tell me. Also tell me if the window opens behind other apps or on the wrong screen.
 - [ ] Send me one or two real WhatsApp screenshots you decoded (and how well the bubbles came out), so I can tune the screenshot structuring on real data.
 
 ## 4. Google sign-in clients (~10 min) — [CLOUD.md §3.2](CLOUD.md)

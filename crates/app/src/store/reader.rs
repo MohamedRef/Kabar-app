@@ -92,7 +92,21 @@ impl Store {
         source: Option<&str>,
         layout: Option<&str>,
     ) -> Result<SavedText> {
-        let id = uuid::Uuid::new_v4().to_string();
+        self.save_text_as(&uuid::Uuid::new_v4().to_string(), body, kind, source, layout)
+    }
+
+    /// [`Store::save_text`] under an id chosen up front: the Quick Lookup
+    /// window shows a text before deciding to keep it, and keeps the id its
+    /// highlights and saved words already point to.
+    pub fn save_text_as(
+        &mut self,
+        id: &str,
+        body: &str,
+        kind: TextKind,
+        source: Option<&str>,
+        layout: Option<&str>,
+    ) -> Result<SavedText> {
+        let id = id.to_string();
         let title = title_of(body);
         let row = TextRow {
             title: title.clone(),
@@ -282,6 +296,19 @@ mod tests {
         assert_eq!(texts[0].title, "Sek tak lapor pusat");
         s.delete_text(&a.id).unwrap();
         assert_eq!(s.recent_texts(10).unwrap().len(), 1);
+    }
+
+    #[test]
+    fn a_text_kept_later_keeps_its_highlights() {
+        // Quick Lookup: a highlight made before the text is saved shows up
+        // once the text is kept under the same id.
+        let mut s = Store::open_in_memory().unwrap();
+        let id = "quick-lookup-text";
+        s.add_highlight(id, 0, 4, "Saya").unwrap();
+        let t = s.save_text_as(id, "Saya sedang membaca buku.", TextKind::Pasted, None, None).unwrap();
+        assert_eq!(t.id, id);
+        assert_eq!(s.recent_texts(10).unwrap()[0].id, id);
+        assert_eq!(s.highlights(id).unwrap().len(), 1);
     }
 
     #[test]

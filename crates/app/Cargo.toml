@@ -35,6 +35,9 @@ ureq = { version = "3", default-features = false, features = ["rustls", "json"] 
 
 [target.'cfg(not(target_os = "android"))'.dependencies]
 directories = "6"
+# Mac Quick Lookup reads the clipboard natively (the WebView's
+# navigator.clipboard needs a user gesture). Text only: no image codecs.
+arboard = { version = "3", default-features = false, optional = true }
 
 [target.'cfg(target_os = "android")'.dependencies]
 jni = "0.22"
@@ -57,9 +60,13 @@ objc2-vision = { version = "0.3", default-features = false, features = ["std", "
 [dev-dependencies]
 tempfile = "3"
 
+[target.'cfg(not(target_os = "android"))'.dev-dependencies]
+# Already in the tree through dioxus-desktop: checks the Quick Lookup hotkey string.
+global-hotkey = "0.7"
+
 [features]
 default = ["desktop"]
-desktop = ["dioxus/desktop"]
+desktop = ["dioxus/desktop", "dep:arboard"]
 mobile = ["dioxus/mobile"]
 
 [lints]
