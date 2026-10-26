@@ -13,12 +13,13 @@ routine, but nothing is built for release or tagged before he says so.
 
 | Stage | Version | When |
 |---|---|---|
-| **Alpha** (first) | `1.0.0-alpha.N` | Every milestone M1–M13 is done except what SPEC §23 defers. That includes all content: BIPA 1–7, J1–J6, 10k + 3k glosses. It also includes Android widgets, the performance pass and routes vetted by the bake-off. All §2 gates are green, and the learner says go. |
+| **Alpha** (first) | `1.0.0-alpha.N` | Every milestone M1–M13 is done except what SPEC §23 defers. That includes all content: BIPA 1–7, J1–J6, 10k + 3k glosses. It also includes the performance pass and routes vetted by the bake-off. All §2 gates are green, and the learner says go. |
 | **Beta** | `1.0.0-beta.N` | Later: after daily use of the alpha and the fixes it brings. The learner decides. |
 | **Stable** | `1.0.0` | Later still. The learner decides. |
 
 Deferred, after the core (SPEC §23): all pen work on the phone and the
-tablet, aksara calligraphy, Mac Quick Lookup and Mac-only polish. Studio
+tablet, aksara calligraphy, Android home-screen widgets (parked; the
+draft is kept), Mac Quick Lookup and Mac-only polish. Studio
 and Pen Lab stay in the build, but appear only on the tablet. Each stage
 installs over the previous one and keeps your data.
 

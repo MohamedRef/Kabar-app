@@ -385,6 +385,7 @@ feature. All stylus work is paused, on the phone and on the tablet.
 | **Kabar Notebook** ink and handwriting search, **Gambar!**, **Listening Companion** scribbles, **write-mode lessons**, extending mind maps with the pen (§4) | M9 | the same |
 | **Aksara Jawa calligraphy** (§4) | M13 | the same |
 | The pen AI tasks' golden captures (`read_handwriting`, `guess_sketch`, `check_strokes`) | M4 | the pen features above come back |
+| Android home-screen widgets (§6): Pelita, due count, word of the day | M13 | the core app is finished |
 | Mac Quick Lookup, the global clipboard hotkey (§11) | M13 | desk study on the Mac asks for it |
 | Mac-only polish beyond running and bundling the app | M13 | the same |
 
