@@ -1,0 +1,217 @@
+schema: kabar.lesson/v1
+id: bipa5.u10.l01
+language: id
+title: Struktur laporan
+can_do:
+  ar_eg: ترتّب تقرير رسمي من مقدمة لحد التوصيات، وتحوّل الأفعال لأسماء.
+  ar: أن ترتّب تقريرًا رسميًّا من المقدّمة إلى التوصيات، وتحوّل الأفعال إلى أسماء.
+  en: Structure a formal report from introduction to recommendations, turning verbs into nouns.
+slides:
+  - title: Bagian-bagian laporan
+    body:
+      ar_eg: |
+        التقرير (laporan) الرسمي ليه 4 أجزاء:
+        1. Pendahuluan = المقدمة: الموضوع والهدف
+        2. Hasil penelitian = نتايج البحث: البيانات
+        3. Kesimpulan = الخلاصة
+        4. Saran = التوصيات / الاقتراحات
+      ar: |
+        للتقرير (laporan) الرسمي أربعة أجزاء:
+        1. Pendahuluan = المقدّمة: الموضوع والهدف
+        2. Hasil penelitian = نتائج البحث: البيانات
+        3. Kesimpulan = الخلاصة
+        4. Saran = التوصيات
+      en: |
+        A formal report (laporan) has four parts:
+        1. Pendahuluan = introduction: topic and aim
+        2. Hasil penelitian = research findings: the data
+        3. Kesimpulan = conclusion
+        4. Saran = recommendations
+  - title: Kata kerja jadi kata benda
+    grammar: id.nominalization
+    body:
+      ar_eg: |
+        التقرير بيحب الأسماء أكتر من الأفعال، زي «المصدر» في العربي:
+        - meneliti (يبحث) → penelitian (بحث)
+        - menyimpulkan (يستنتج) → kesimpulan (استنتاج)
+        - menyarankan (يقترح) → saran (اقتراح)
+        - berkunjung (يزور) → kunjungan (زيارة)
+        بدل «Kami meneliti …» اكتب: Penelitian ini membahas …
+      ar: |
+        يفضّل التقرير الأسماء على الأفعال، كالمصدر في العربية:
+        - meneliti (يبحث) → penelitian (بحث)
+        - menyimpulkan (يستنتج) → kesimpulan (استنتاج)
+        - menyarankan (يقترح) → saran (اقتراح)
+        - berkunjung (يزور) → kunjungan (زيارة)
+        بدل «Kami meneliti …» اكتب: Penelitian ini membahas …
+      en: |
+        Reports prefer nouns to verbs, like the Arabic maṣdar:
+        - meneliti (to research) → penelitian (research)
+        - menyimpulkan (to conclude) → kesimpulan (conclusion)
+        - menyarankan (to suggest) → saran (suggestion)
+        - berkunjung (to visit) → kunjungan (visit)
+        Instead of "Kami meneliti …" write: Penelitian ini membahas …
+    examples:
+      - text: Penelitian ini membahas kunjungan wisatawan ke Singkawang.
+        ar_eg: البحث ده بيتكلم عن زيارات السياح لسينجكاوانج.
+        ar: يتناول هذا البحث زيارات السيّاح إلى سينغكاوانغ.
+        en: This study discusses tourist visits to Singkawang.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: laporan
+        ar_eg: تقرير
+        ar: تقرير
+        en: report
+      - text: penelitian
+        ar_eg: بحث
+        ar: بحث
+        en: research
+      - text: kesimpulan
+        ar_eg: خلاصة / استنتاج
+        ar: خلاصة
+        en: conclusion
+      - text: saran
+        ar_eg: اقتراح / توصية
+        ar: توصية
+        en: suggestion, recommendation
+      - text: kunjungan
+        ar_eg: زيارة
+        ar: زيارة
+        en: visit
+    words: [laporan, penelitian, kesimpulan, saran, kunjungan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه الاسم من menyimpulkan؟
+      ar: ما الاسم من menyimpulkan؟
+      en: What is the noun from menyimpulkan?
+    options: [disimpulkan, kesimpulan, menyimpulkannya]
+    answer: 1
+    words: [kesimpulan]
+  - id: e03
+    type: fill_blank
+    sentence: Di bagian akhir laporan, kami memberikan beberapa ___.
+    meaning:
+      ar_eg: في آخر التقرير، إدّينا كام توصية.
+      ar: في آخر التقرير نقدّم عدّة توصيات.
+      en: At the end of the report, we give a few recommendations.
+    options: [saran, kunjungan, penelitian]
+    answers: [saran]
+    words: [saran, laporan]
+  - id: e04
+    type: listen
+    text: Jumlah kunjungan ke Singkawang naik saat Cap Go Meh.
+    question:
+      ar_eg: الزيارات بتزيد إمتى؟
+      ar: متى تزداد الزيارات؟
+      en: When do visits go up?
+    options:
+      - في رمضان.
+      - في كاب جو مِه.
+      - في موسم المطر.
+    answer: 1
+    words: [kunjungan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: البحث ده بيتكلم عن اللغة المحلية في سينجكاوانج.
+      ar: يتناول هذا البحث اللغة المحلّية في سينغكاوانغ.
+      en: This study discusses the local language in Singkawang.
+    answer: Penelitian ini membahas bahasa daerah di Singkawang.
+    distractors: [saran, meneliti]
+    words: [penelitian]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة أنسب لتقرير رسمي؟
+      ar: أيّ جملة أنسب لتقرير رسمي؟
+      en: Which sentence suits a formal report better?
+    options:
+      - Penelitian ini menunjukkan kenaikan jumlah wisatawan.
+      - Kami lihat turisnya makin banyak, lho.
+      - Turis banyak banget sekarang.
+    answer: 0
+    words: [penelitian, laporan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: خلاصة التقرير ده واضحة.
+      ar: خلاصة هذا التقرير واضحة.
+      en: This report's conclusion is clear.
+    answers:
+      - Kesimpulan laporan ini jelas.
+      - Kesimpulan dari laporan ini jelas.
+      - Kesimpulan laporan ini sudah jelas.
+      - Laporan ini kesimpulannya jelas.
+    words: [kesimpulan, laporan]
+  - id: e08
+    type: dictation
+    text: Saran kami adalah menambah papan petunjuk dalam bahasa Inggris.
+    meaning:
+      ar_eg: اقتراحنا إننا نزوّد لافتات بالإنجليزي.
+      ar: توصيتنا هي زيادة اللافتات الإرشادية بالإنجليزية.
+      en: Our recommendation is to add more signs in English.
+    words: [saran]
+  - id: e09
+    type: speaking
+    text: Laporan ini membahas kunjungan wisatawan ke Singkawang.
+    meaning:
+      ar_eg: التقرير ده بيتكلم عن زيارات السياح لسينجكاوانج.
+      ar: يتناول هذا التقرير زيارات السيّاح إلى سينغكاوانغ.
+      en: This report discusses tourist visits to Singkawang.
+    words: [kunjungan, laporan]
+dialogue:
+  title: Tugas laporan
+  lines:
+    - speaker: Mas Rizal
+      text: Mohamed, tugas terakhir kita adalah laporan tentang Singkawang.
+      ar_eg: يا محمد، آخر واجب لينا تقرير عن سينجكاوانج.
+      ar: يا محمد، واجبنا الأخير تقرير عن سينغكاوانغ.
+      en: Mohamed, our final task is a report about Singkawang.
+    - speaker: Mohamed
+      text: Baik. Pendahuluan, hasil penelitian, kesimpulan, lalu saran, kan?
+      ar_eg: تمام. مقدمة، ونتايج البحث، وخلاصة، وبعدين توصيات، صح؟
+      ar: حسنًا. مقدّمة، فنتائج البحث، فخلاصة، ثمّ توصيات، أليس كذلك؟
+      en: OK. Introduction, findings, conclusion, then recommendations, right?
+    - speaker: Mas Rizal
+      text: Betul. Topiknya kunjungan wisatawan saat Cap Go Meh.
+      ar_eg: مظبوط. والموضوع زيارات السياح في كاب جو مِه.
+      ar: صحيح. والموضوع زيارات السيّاح في كاب غو مه.
+      en: Right. The topic is tourist visits during Cap Go Meh.
+    - speaker: Mohamed
+      text: Menarik! Saya akan bertanya kepada wisatawan dan pedagang di sana.
+      ar_eg: حلو! هسأل السياح والتجار هناك.
+      ar: موضوع شائق! سأسأل السيّاح والتجّار هناك.
+      en: Interesting! I'll ask the tourists and traders there.
+new_words:
+  - word: laporan
+    pos: noun
+    ar_eg: تقرير
+    ar: تقرير
+    en: report
+  - word: penelitian
+    pos: noun
+    ar_eg: بحث
+    ar: بحث
+    en: research, study
+  - word: kesimpulan
+    pos: noun
+    ar_eg: خلاصة / استنتاج
+    ar: خلاصة
+    en: conclusion
+  - word: saran
+    pos: noun
+    ar_eg: اقتراح / توصية
+    ar: توصية
+    en: suggestion, recommendation
+  - word: kunjungan
+    pos: noun
+    ar_eg: زيارة
+    ar: زيارة
+    en: visit
+review:
+  status: draft
+  verified: false
