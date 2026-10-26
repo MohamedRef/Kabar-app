@@ -1,0 +1,196 @@
+schema: kabar.lesson/v1
+id: bipa6.u06.l02
+language: id
+title: Meme dan plesetan
+can_do:
+  ar_eg: تفك ألغاز الاختصارات واللعب بالكلام في الميمز.
+  ar: أن تفكّ الاختصارات والتلاعب اللفظي في الميمز.
+  en: Decode the acronyms and wordplay in memes.
+slides:
+  - title: Bahasa warganet
+    body:
+      ar_eg: |
+        الـ warganet (ناس النت) بيعشقوا الـ plesetan (اللعب بالكلام) والـ akronim (الاختصارات):
+        - mantul = mantap betul (جامد جدًا)
+        - baper = bawa perasaan (بياخد الكلام على صدره)
+        - mager = malas gerak (كسلان يتحرك)
+        - gabut = زهقان ومعندوش حاجة يعملها
+        - wkwk = هههه
+        لو حاجة viral (انتشرت)، غالبًا وراها lelucon (نكتة) من دول.
+      ar: |
+        يعشق الـ warganet (روّاد الإنترنت) الـ plesetan (التلاعب اللفظي) والـ akronim (الاختصارات):
+        - mantul = mantap betul (رائع جدًّا)
+        - baper = bawa perasaan (يتأثّر بالكلام أكثر من اللازم)
+        - mager = malas gerak (كسول عن الحركة)
+        - gabut = ضَجِر لا شغل له
+        - wkwk = ههههه
+        وإن صار شيء viral (منتشرًا) فغالبًا وراءه lelucon (نكتة) من هذا النوع.
+      en: |
+        warganet (netizens) love plesetan (wordplay) and akronim (acronyms):
+        - mantul = mantap betul (awesome)
+        - baper = bawa perasaan (taking things to heart)
+        - mager = malas gerak (too lazy to move)
+        - gabut = bored with nothing to do
+        - wkwk = hahaha
+        When something goes viral, there's often a lelucon (joke) like these behind it.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: plesetan
+        ar_eg: لعب بالكلام
+        ar: تلاعب لفظي
+        en: wordplay, pun
+      - text: akronim
+        ar_eg: اختصار
+        ar: اختصار
+        en: abbreviation, acronym
+      - text: lelucon
+        ar_eg: نكتة
+        ar: نكتة
+        en: joke
+      - text: warganet
+        ar_eg: ناس النت
+        ar: روّاد الإنترنت
+        en: netizens
+      - text: viral
+        ar_eg: منتشر جامد
+        ar: واسع الانتشار
+        en: viral
+    words: [plesetan, akronim, lelucon, warganet, viral]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «mager» اختصار لإيه؟
+      ar: «mager» اختصار لماذا؟
+      en: What is "mager" short for?
+    options: [malas gerak, makan gratis, mau gelar]
+    answer: 0
+    words: [akronim]
+  - id: e03
+    type: fill_blank
+    sentence: Video kucing itu ___ dalam satu malam.
+    meaning:
+      ar_eg: فيديو القطة ده انتشر في ليلة واحدة.
+      ar: انتشر مقطع القطّة ذاك في ليلة واحدة.
+      en: That cat video went viral overnight.
+    options: [viral, lelucon, warganet]
+    answers: [viral]
+    words: [viral]
+  - id: e04
+    type: listen
+    text: Banyak warganet membuat meme tentang macet di Jakarta.
+    question:
+      ar_eg: ناس النت عملوا إيه؟
+      ar: ماذا فعل روّاد الإنترنت؟
+      en: What did the netizens do?
+    options:
+      - اشتكوا للشرطة.
+      - عملوا ميمز عن زحمة جاكرتا.
+      - باعوا عربياتهم.
+    answer: 1
+    words: [warganet]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: اللعب بالكلام بيضحّك لو فاهم اللغة.
+      ar: التلاعب اللفظي مضحك إذا فهمت اللغة.
+      en: Wordplay is funny if you understand the language.
+    answer: Plesetan itu lucu kalau kamu paham bahasanya.
+    distractors: [viral, warganet]
+    words: [plesetan]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: صاحبك قال «Jangan baper, ya, itu cuma lelucon». قصده إيه؟
+      ar: قال صديقك «Jangan baper, ya, itu cuma lelucon». ماذا يقصد؟
+      en: Your friend says "Jangan baper, ya, itu cuma lelucon". What does he mean?
+    options:
+      - ماتتأخرش، الأتوبيس ماشي.
+      - ماتاكلش، الأكل لسه سخن.
+      - ماتاخدهاش على صدرك، دي نكتة بس.
+    answer: 2
+    words: [lelucon]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Lelucon itu jadi viral karena plesetannya pintar.
+    answers_meaning:
+      ar_eg:
+        - النكتة دي انتشرت علشان اللعب بالكلام فيها ذكي.
+        - النكتة دي بقت viral لأن الإفيه بتاعها شاطر.
+      ar:
+        - انتشرت تلك النكتة لأنّ تلاعبها اللفظي ذكيّ.
+        - ذاعت النكتة لذكاء التلاعب اللفظي فيها.
+      en:
+        - That joke went viral because its wordplay is clever.
+        - The joke went viral thanks to its clever pun.
+    words: [lelucon, viral, plesetan]
+  - id: e08
+    type: speaking
+    text: Mantul adalah akronim dari mantap betul.
+    meaning:
+      ar_eg: mantul اختصار لـ mantap betul.
+      ar: mantul اختصار لعبارة mantap betul.
+      en: Mantul is short for mantap betul.
+    words: [akronim]
+  - id: e09
+    type: dictation
+    text: Warganet suka membuat plesetan dari akronim resmi.
+    meaning:
+      ar_eg: ناس النت بيحبوا يلعبوا بالاختصارات الرسمية.
+      ar: يحبّ روّاد الإنترنت التلاعب بالاختصارات الرسمية.
+      en: Netizens love making puns out of official acronyms.
+    words: [warganet, plesetan, akronim]
+dialogue:
+  title: Meme di Tuktuk
+  lines:
+    - speaker: Bang Togar
+      text: Lihat meme ini, Lae. "Gabut di Toba, tapi pemandangannya mantul."
+      ar_eg: بص الميم ده يا لاي. «زهقان في توبا، بس المنظر جامد».
+      ar: انظر إلى هذه الميم يا لاي. «ضجران في توبا، لكنّ المنظر رائع».
+      en: Look at this meme, Lae. "Bored at Toba, but the view's awesome."
+    - speaker: Mohamed
+      text: Gabut? Mantul? Ini bahasa Indonesia atau bahasa rahasia?
+      ar_eg: gabut؟ mantul؟ ده إندونيسي ولا لغة سرّية؟
+      ar: gabut؟ mantul؟ أهذه إندونيسية أم لغة سرّية؟
+      en: Gabut? Mantul? Is this Indonesian or a secret code?
+    - speaker: Bang Togar
+      text: Mantul itu akronim dari mantap betul. Gabut artinya bosan karena tidak ada kerjaan.
+      ar_eg: mantul اختصار mantap betul. وgabut يعني زهقان علشان مفيش شغل.
+      ar: mantul اختصار mantap betul، وgabut تعني الضجر لقلّة الشغل.
+      en: Mantul is short for mantap betul. Gabut means bored because there's nothing to do.
+    - speaker: Mohamed
+      text: Oh, plesetan! Warganet di Mesir juga jago begitu.
+      ar_eg: آه، لعب بالكلام! ناس النت في مصر برضه جامدين في كده.
+      ar: آه، تلاعب لفظي! وروّاد الإنترنت في مصر بارعون في هذا أيضًا.
+      en: Oh, wordplay! Egyptian netizens are great at that too.
+new_words:
+  - word: plesetan
+    pos: noun
+    ar_eg: لعب بالكلام
+    ar: تلاعب لفظي
+    en: wordplay, pun
+  - word: akronim
+    pos: noun
+    ar_eg: اختصار
+    ar: اختصار
+    en: abbreviation, acronym
+  - word: lelucon
+    pos: noun
+    ar_eg: نكتة
+    ar: نكتة
+    en: joke
+  - word: warganet
+    pos: noun
+    ar_eg: ناس النت
+    ar: روّاد الإنترنت
+    en: netizens
+  - word: viral
+    pos: adjective
+    ar_eg: منتشر جامد
+    ar: واسع الانتشار
+    en: viral
+review:
+  status: draft
+  verified: false

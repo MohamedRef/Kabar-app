@@ -1,0 +1,206 @@
+schema: kabar.lesson/v1
+id: bipa7.u02.l03
+language: id
+title: Pemutihan karang
+can_do:
+  ar_eg: تشرح عملية فيها سبب ونتيجة خطوة بخطوة.
+  ar: أن تشرح عملية سببية خطوةً خطوة.
+  en: Explain a cause-and-effect process step by step.
+slides:
+  - title: Mengapa karang memutih?
+    body:
+      ar_eg: |
+        اقرا (مكتوب للدرس):
+        Karang hidup bersama alga kecil di dalam tubuhnya. Alga itu memberi karang makanan dan warna. Penyebab utama pemutihan adalah air laut yang terlalu panas akibat pemanasan global. Ketika suhu naik, karang mengeluarkan alganya, sehingga tubuhnya menjadi putih. Jika air cepat mendingin, karang dapat memulihkan diri. Namun, jika panas berlangsung lama, karang akan kelaparan dan mati.
+        - alga = طحالب، pemutihan = ابيضاض، penyebab = سبب
+        - pemanasan global = الاحتباس الحراري، memulihkan (diri) = يتعافى
+        روابط العملية: ketika (لما)، sehingga (فـ / لدرجة إن)، jika (لو)، namun (لكن).
+      ar: |
+        اقرأ (نصّ مكتوب للدرس):
+        Karang hidup bersama alga kecil di dalam tubuhnya. Alga itu memberi karang makanan dan warna. Penyebab utama pemutihan adalah air laut yang terlalu panas akibat pemanasan global. Ketika suhu naik, karang mengeluarkan alganya, sehingga tubuhnya menjadi putih. Jika air cepat mendingin, karang dapat memulihkan diri. Namun, jika panas berlangsung lama, karang akan kelaparan dan mati.
+        - alga = الطحالب، pemutihan = الابيضاض، penyebab = السبب
+        - pemanasan global = الاحترار العالمي، memulihkan (diri) = يتعافى
+        وروابط العملية: ketika (حين)، sehingga (فـ)، jika (إن)، namun (لكنّ).
+      en: |
+        Read (written for the lesson):
+        Karang hidup bersama alga kecil di dalam tubuhnya. Alga itu memberi karang makanan dan warna. Penyebab utama pemutihan adalah air laut yang terlalu panas akibat pemanasan global. Ketika suhu naik, karang mengeluarkan alganya, sehingga tubuhnya menjadi putih. Jika air cepat mendingin, karang dapat memulihkan diri. Namun, jika panas berlangsung lama, karang akan kelaparan dan mati.
+        - alga = algae, pemutihan = bleaching, penyebab = cause
+        - pemanasan global = global warming, memulihkan (diri) = to recover
+        Process links: ketika (when), sehingga (so that), jika (if), namun (however).
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pemutihan
+        ar_eg: ابيضاض
+        ar: ابيضاض
+        en: bleaching
+      - text: alga
+        ar_eg: طحالب
+        ar: طحالب
+        en: algae
+      - text: pemanasan global
+        ar_eg: الاحتباس الحراري
+        ar: الاحترار العالمي
+        en: global warming
+      - text: memulihkan
+        ar_eg: يعافي / يرجّع لحالته
+        ar: يُعيد إلى العافية
+        en: to restore, to recover
+      - text: penyebab
+        ar_eg: سبب
+        ar: سبب
+        en: cause
+    words: [pemutihan, alga, pemanasan global, memulihkan, penyebab]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه السبب الرئيسي للابيضاض على حسب النص؟
+      ar: ما السبب الرئيسي للابيضاض بحسب النصّ؟
+      en: What is the main cause of bleaching according to the text?
+    options:
+      - المية سخنة زيادة بسبب الاحتباس الحراري.
+      - الغطّاسين بيلمسوا المرجان.
+      - المية بقت مالحة أكتر.
+    answer: 0
+    words: [penyebab, pemanasan global]
+  - id: e03
+    type: fill_blank
+    sentence: Ketika suhu naik, karang mengeluarkan ___ dari tubuhnya.
+    meaning:
+      ar_eg: لما الحرارة تعلى، المرجان بيطرد الطحالب من جسمه.
+      ar: حين ترتفع الحرارة يطرد المرجان الطحالب من جسده.
+      en: When the temperature rises, coral expels the algae from its body.
+    options: [alga, arus, penyebab]
+    answers: [alga]
+    words: [alga]
+  - id: e04
+    type: listen
+    text: Jika air cepat mendingin, karang dapat memulihkan diri.
+    question:
+      ar_eg: إمتى المرجان يقدر يتعافى؟
+      ar: متى يستطيع المرجان أن يتعافى؟
+      en: When can coral recover?
+    options:
+      - لما المية تفضل سخنة.
+      - لما المية تبرد بسرعة.
+      - مايقدرش يتعافى خالص.
+    answer: 1
+    words: [memulihkan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الاحتباس الحراري بيسخّن البحر.
+      ar: يُسخّن الاحترارُ العالمي البحر.
+      en: Global warming heats up the sea.
+    answer: Pemanasan global membuat laut makin panas.
+    distractors: [alga, pemutihan]
+    words: [pemanasan global]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: المرجان بيبقى أبيض ليه؟
+      ar: لماذا يصير المرجان أبيض؟
+      en: Why does the coral turn white?
+    options:
+      - علشان بيتلوّن بالرمل.
+      - علشان بيكبر.
+      - علشان الطحالب اللي بتديله لونه خرجت منه.
+    answer: 2
+    words: [pemutihan, alga]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الابيضاض ده ممكن يموّت المرجان.
+      ar: قد يقتل هذا الابيضاضُ المرجان.
+      en: This bleaching can kill the coral.
+    answers:
+      - Pemutihan ini dapat membunuh karang.
+      - Pemutihan ini bisa membunuh karang.
+      - Pemutihan itu dapat membunuh karang.
+      - Pemutihan ini dapat mematikan karang.
+    words: [pemutihan]
+  - id: e08
+    type: speaking
+    text: Penyebab utama pemutihan karang adalah air laut yang terlalu panas.
+    meaning:
+      ar_eg: السبب الرئيسي لابيضاض المرجان هو إن مية البحر سخنة زيادة.
+      ar: السبب الرئيسي لابيضاض المرجان هو فرط سخونة مياه البحر.
+      en: The main cause of coral bleaching is sea water that is too hot.
+    words: [penyebab]
+  - id: e09
+    type: dictation
+    text: Para ilmuwan berusaha memulihkan terumbu karang yang rusak.
+    meaning:
+      ar_eg: العلماء بيحاولوا يرجّعوا الشعاب المرجانية اللي اتضرّت.
+      ar: يسعى العلماء إلى إصلاح الشعاب المرجانية المتضرّرة.
+      en: Scientists are trying to restore the damaged coral reefs.
+    words: [memulihkan]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Alga memberi karang makanan, sehingga tanpa alga karang kelaparan.
+    answers_meaning:
+      ar_eg:
+        - الطحالب بتأكّل المرجان، فمن غيرها المرجان بيجوع.
+        - الطحالب بتدّي المرجان أكله، علشان كده من غيرها بيجوع.
+      ar:
+        - تمنح الطحالب المرجانَ غذاءه، فيجوع بدونها.
+        - الطحالب مصدر غذاء المرجان، ولذا يجوع إذا فقدها.
+      en:
+        - Algae feed the coral, so without algae the coral starves.
+        - Algae give coral its food, so coral goes hungry without them.
+    words: [alga]
+dialogue:
+  title: Karang yang putih
+  lines:
+    - speaker: Mohamed
+      text: Pak, karang di sebelah sana putih semua. Apakah sudah mati?
+      ar_eg: يا عمّ، المرجان اللي هناك أبيض كله. هو مات؟
+      ar: يا سيّدي، المرجان هناك أبيض كلّه. أهو ميّت؟
+      en: Sir, the coral over there is all white. Is it dead?
+    - speaker: Pak Yance
+      text: Belum tentu. Itu pemutihan. Penyebabnya air yang terlalu panas tahun lalu.
+      ar_eg: مش أكيد. ده ابيضاض. سببه إن المية كانت سخنة قوي السنة اللي فاتت.
+      ar: ليس بالضرورة. هذا ابيضاض، وسببه مياه شديدة الحرارة في العام الماضي.
+      en: Not necessarily. That's bleaching. The cause was overly hot water last year.
+    - speaker: Mohamed
+      text: Bisakah karang itu memulihkan diri?
+      ar_eg: المرجان ده يقدر يتعافى؟
+      ar: أيستطيع ذلك المرجان أن يتعافى؟
+      en: Can that coral recover?
+    - speaker: Pak Yance
+      text: Bisa, kalau alganya kembali dan airnya tetap sejuk. Kita tunggu dan pantau.
+      ar_eg: يقدر، لو الطحالب رجعت والمية فضلت باردة. هنستنى ونراقب.
+      ar: نعم، إن عادت طحالبه وبقيت المياه معتدلة. سننتظر ونراقب.
+      en: It can, if its algae come back and the water stays cool. We wait and monitor.
+new_words:
+  - word: pemutihan
+    pos: noun
+    ar_eg: ابيضاض
+    ar: ابيضاض
+    en: bleaching
+  - word: alga
+    pos: noun
+    ar_eg: طحالب
+    ar: طحالب
+    en: algae
+  - word: pemanasan global
+    pos: noun
+    ar_eg: الاحتباس الحراري
+    ar: الاحترار العالمي
+    en: global warming
+  - word: memulihkan
+    pos: verb
+    ar_eg: يعافي / يرجّع لحالته
+    ar: يُعيد إلى العافية
+    en: to restore, to recover
+  - word: penyebab
+    pos: noun
+    ar_eg: سبب
+    ar: سبب
+    en: cause
+review:
+  status: draft
+  verified: false

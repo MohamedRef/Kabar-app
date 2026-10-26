@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: bipa6.u09.l02
+language: id
+title: Surat bisnis
+can_do:
+  ar_eg: تكتب إيميل شغل رسمي من أوله لآخره.
+  ar: أن تكتب رسالة عمل رسمية من أوّلها إلى آخرها.
+  en: Write a formal business email from opening to sign-off.
+slides:
+  - title: Dari "halo" ke "dengan hormat"
+    grammar: id.register.formal-informal
+    body:
+      ar_eg: |
+        إيميل الشغل بيتكتب بالـ bahasa baku (الفصحى):
+        Yth. Bapak Fadli,
+        Dengan hormat, (تحية طيبة وبعد)
+        Menindaklanjuti pembicaraan kita kemarin, bersama ini kami kirimkan daftar harga (lampiran). = متابعةً لكلامنا امبارح، مرفق قايمة الأسعار.
+        Atas perhatiannya, kami ucapkan terima kasih. = شكرًا على اهتمامكم.
+        Hormat kami, (وتفضّلوا بقبول الاحترام) لو بتكتب باسم شركة، وHormat saya لو باسمك إنت.
+        وبدّل العامي: kirimin → mengirimkan، nggak → tidak، makasih → terima kasih.
+      ar: |
+        تُكتب رسالة العمل بالـ bahasa baku (الفصحى):
+        Yth. Bapak Fadli,
+        Dengan hormat, (تحيّة طيّبة وبعد)
+        Menindaklanjuti pembicaraan kita kemarin, bersama ini kami kirimkan daftar harga (lampiran). = إلحاقًا بحديثنا أمس، نرفق قائمة الأسعار.
+        Atas perhatiannya, kami ucapkan terima kasih. = شكرًا لاهتمامكم.
+        Hormat kami, (وتفضّلوا بقبول فائق الاحترام) إن كتبت باسم شركة، وHormat saya إن كتبت باسمك.
+        واستبدل العامّي: kirimin → mengirimkan، nggak → tidak، makasih → terima kasih.
+      en: |
+        A business email is written in bahasa baku (standard Indonesian):
+        Yth. Bapak Fadli,
+        Dengan hormat, (Dear Sir / Madam)
+        Menindaklanjuti pembicaraan kita kemarin, bersama ini kami kirimkan daftar harga (lampiran). = Following up on yesterday's conversation, please find our price list attached.
+        Atas perhatiannya, kami ucapkan terima kasih. = Thank you for your attention.
+        Hormat kami, (Yours sincerely) when you write for a company; Hormat saya when you write for yourself.
+        Swap the casual forms: kirimin → mengirimkan, nggak → tidak, makasih → terima kasih.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: dengan hormat
+        ar_eg: تحية طيبة وبعد
+        ar: تحيّة طيّبة وبعد
+        en: Dear Sir or Madam (formal opening)
+      - text: hormat kami
+        ar_eg: مع خالص الاحترام (باسم شركة)
+        ar: وتفضّلوا بقبول الاحترام
+        en: yours sincerely (for a company)
+      - text: lampiran
+        ar_eg: مرفق
+        ar: مرفق
+        en: attachment, enclosure
+      - text: menindaklanjuti
+        ar_eg: يتابع (موضوع)
+        ar: يُلحق بـ / يتابع
+        en: to follow up on
+      - text: atas perhatiannya
+        ar_eg: على اهتمامكم
+        ar: على اهتمامكم
+        en: for your attention
+    words: [dengan hormat, hormat kami, lampiran, menindaklanjuti, atas perhatiannya]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي ختام يناسب إيميل شغل من شركة؟
+      ar: أيّ ختام يناسب رسالة عمل من شركة؟
+      en: Which sign-off suits a business email from a company?
+    options: ["Dadah!", "Hormat kami,", "Salam santai,"]
+    answer: 1
+    words: [hormat kami]
+  - id: e03
+    type: fill_blank
+    sentence: ___ pembicaraan kita kemarin, kami kirimkan daftar harga.
+    meaning:
+      ar_eg: متابعةً لكلامنا امبارح، بنبعت لكم قايمة الأسعار.
+      ar: إلحاقًا بحديثنا أمس، نرسل إليكم قائمة الأسعار.
+      en: Following up on yesterday's conversation, we're sending the price list.
+    options: [Menindaklanjuti, Lampiran, Hormat kami]
+    answers: [Menindaklanjuti]
+    words: [menindaklanjuti]
+  - id: e04
+    type: listen
+    text: Atas perhatiannya, kami ucapkan terima kasih. Hormat kami, Mohamed.
+    question:
+      ar_eg: ده أنهي جزء من الإيميل؟
+      ar: أيّ جزء من الرسالة هذا؟
+      en: Which part of the email is this?
+    options:
+      - الختام.
+      - الافتتاح.
+      - المرفق.
+    answer: 0
+    words: [atas perhatiannya, hormat kami]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: شكرًا على اهتمامكم.
+      ar: نشكركم على اهتمامكم.
+      en: Thank you for your attention.
+    answer: Atas perhatiannya, kami ucapkan terima kasih.
+    distractors: [lampiran, hormat]
+    words: [atas perhatiannya]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة هي النسخة الرسمية من «Nanti aku kirimin datanya, ya»؟
+      ar: أيّ جملة هي الصيغة الرسمية لـ «Nanti aku kirimin datanya, ya»؟
+      en: Which is the formal version of "Nanti aku kirimin datanya, ya"?
+    options:
+      - Nanti gue kirim datanya.
+      - Datanya dikirimin aja.
+      - Data tersebut akan kami kirimkan segera.
+    answer: 2
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: لو سمحت بص على المرفق.
+      ar: يُرجى الاطّلاع على المرفق.
+      en: Please see the attachment.
+    answers:
+      - Mohon lihat lampiran.
+      - Silakan lihat lampiran.
+      - Mohon periksa lampiran.
+      - Silakan lihat lampirannya.
+    words: [lampiran]
+  - id: e08
+    type: speaking
+    text: Dengan hormat, kami ingin menindaklanjuti tawaran bulan lalu.
+    meaning:
+      ar_eg: تحية طيبة وبعد، حابّين نتابع العرض بتاع الشهر اللي فات.
+      ar: تحيّة طيّبة وبعد، نودّ متابعة عرض الشهر الماضي.
+      en: Dear Sir, we would like to follow up on last month's offer.
+    words: [dengan hormat, menindaklanjuti]
+  - id: e09
+    type: dictation
+    text: Hormat kami, tim penjualan Kurma Nil.
+    meaning:
+      ar_eg: مع خالص الاحترام، فريق مبيعات «بلح النيل».
+      ar: وتفضّلوا بقبول الاحترام، فريق مبيعات «تمر النيل».
+      en: Yours sincerely, the Kurma Nil sales team.
+    words: [hormat kami]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Dengan hormat, bersama ini kami kirimkan lampiran kontrak.
+    answers_meaning:
+      ar_eg:
+        - تحية طيبة وبعد، مبعوت لكم مع الإيميل ده مرفق العقد.
+        - تحية طيبة، بنبعت لكم العقد كمرفق.
+      ar:
+        - تحيّة طيّبة وبعد، نرسل إليكم طيّه مرفق العقد.
+        - تحيّة طيّبة، نرفق لكم العقد مع هذه الرسالة.
+      en:
+        - Dear Sir, please find the contract attached.
+        - Dear Sir or Madam, we enclose the contract with this email.
+    words: [dengan hormat, lampiran]
+dialogue:
+  title: Email pertama
+  lines:
+    - speaker: Mohamed
+      text: Uni, saya mau kirim email ke Uda Fadli. "Halo Uda, nih aku kirimin harganya."
+      ar_eg: يا أوني، عايز أبعت إيميل لأودا فضلي. «أهلًا يا أودا، أهي الأسعار».
+      ar: أريد مراسلة أودا فضلي. «مرحبًا يا أودا، ها هي الأسعار».
+      en: Uni, I want to email Uda Fadli. "Hi Uda, here's the prices."
+    - speaker: Uni Rina
+      text: Untuk bisnis, pakai bahasa baku. Mulai dengan "Dengan hormat".
+      ar_eg: في الشغل استعمل الفصحى. ابدأ بـ «Dengan hormat».
+      ar: في العمل استعمل الفصحى، وابدأ بـ «Dengan hormat».
+      en: For business, use standard Indonesian. Start with "Dengan hormat".
+    - speaker: Mohamed
+      text: Lalu "Menindaklanjuti pembicaraan kita, bersama ini saya kirimkan daftar harga"?
+      ar_eg: وبعدين «متابعةً لكلامنا، مرفق قايمة الأسعار»؟
+      ar: ثمّ «إلحاقًا بحديثنا، أرفق قائمة الأسعار»؟
+      en: Then "Following up on our conversation, please find the price list attached"?
+    - speaker: Uni Rina
+      text: Bagus! Tutup dengan "Atas perhatiannya, saya ucapkan terima kasih. Hormat saya."
+      ar_eg: حلو! واقفل بـ «شكرًا على اهتمامكم. مع خالص احترامي».
+      ar: ممتاز! واختم بـ «شكرًا لاهتمامكم، وتفضّلوا بقبول احترامي».
+      en: Good! Close with "Thank you for your attention. Yours sincerely."
+new_words:
+  - word: dengan hormat
+    pos: phrase
+    ar_eg: تحية طيبة وبعد
+    ar: تحيّة طيّبة وبعد
+    en: Dear Sir or Madam (formal opening)
+  - word: hormat kami
+    pos: phrase
+    ar_eg: مع خالص الاحترام (باسم شركة)
+    ar: وتفضّلوا بقبول الاحترام
+    en: yours sincerely (for a company)
+  - word: lampiran
+    pos: noun
+    ar_eg: مرفق
+    ar: مرفق
+    en: attachment, enclosure
+  - word: menindaklanjuti
+    pos: verb
+    ar_eg: يتابع (موضوع)
+    ar: يُلحق بـ / يتابع
+    en: to follow up on
+  - word: atas perhatiannya
+    pos: phrase
+    ar_eg: على اهتمامكم
+    ar: على اهتمامكم
+    en: for your attention
+review:
+  status: draft
+  verified: false

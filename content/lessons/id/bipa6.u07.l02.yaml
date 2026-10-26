@@ -1,0 +1,186 @@
+schema: kabar.lesson/v1
+id: bipa6.u07.l02
+language: id
+title: Membaca Permendikbud
+can_do:
+  ar_eg: تقرا لايحة وزارية وتلخّص هي بتنظّم إيه.
+  ar: أن تقرأ قرارًا وزاريًّا وتلخّص ما ينظّمه.
+  en: Read a ministerial regulation and summarise what it governs.
+slides:
+  - title: Peraturan di balik BIPA
+    body:
+      ar_eg: |
+        القرار الوزاري ليه هيكل ثابت:
+        - Menimbang (حيث إن): الأسباب.
+        - Mengingat (بناءً على): القوانين اللي بيعتمد عليها.
+        - MEMUTUSKAN / Menetapkan (قرر): وبعدها المواد.
+        مثال حقيقي: Permendikbud Nomor 27 Tahun 2017 بيـ mengatur (ينظّم) الـ standar kompetensi lulusan (معايير كفاءة الخريجين) لكورسات BIPA، وفيه سبع مستويات من BIPA 1 لـ BIPA 7. والمنهج اللي إنت ماشي عليه هنا مبني عليه.
+        علشان تلخّص: Peraturan ini mengatur … / Intinya, … (الخلاصة …)
+      ar: |
+        للقرار الوزاري هيكل ثابت:
+        - Menimbang (حيث إنّ): الأسباب.
+        - Mengingat (بناءً على): القوانين التي يستند إليها.
+        - MEMUTUSKAN / Menetapkan (قرّر): ثمّ المواد.
+        مثال حقيقي: Permendikbud Nomor 27 Tahun 2017 يـ mengatur (ينظّم) الـ standar kompetensi lulusan (معايير كفاءة الخرّيجين) لدورات BIPA، وفيه سبعة مستويات من BIPA 1 إلى BIPA 7. والمنهج الذي تسير عليه هنا مبنيّ عليه.
+        وللتلخيص: Peraturan ini mengatur … / Intinya, … (الخلاصة …)
+      en: |
+        A ministerial regulation has a fixed frame:
+        - Menimbang (whereas): the reasons.
+        - Mengingat (having regard to): the laws it rests on.
+        - MEMUTUSKAN / Menetapkan (decides): then the articles.
+        A real one: Permendikbud Nomor 27 Tahun 2017 mengatur (governs) the standar kompetensi lulusan (graduate competence standards) for BIPA courses, with seven levels from BIPA 1 to BIPA 7. The path you're on here is built on it.
+        To summarise: Peraturan ini mengatur … / Intinya, … (In short, …)
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: lembaga
+        ar_eg: مؤسسة / هيئة
+        ar: مؤسّسة
+        en: institution, body
+      - text: standar
+        ar_eg: معيار
+        ar: معيار
+        en: standard
+      - text: lulusan
+        ar_eg: خرّيج
+        ar: خرّيج
+        en: graduate
+      - text: kompetensi
+        ar_eg: كفاءة
+        ar: كفاءة
+        en: competence
+      - text: mengatur
+        ar_eg: ينظّم
+        ar: ينظّم
+        en: to regulate, to govern
+    words: [lembaga, standar, lulusan, kompetensi, mengatur]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: القرار الوزاري 27/2017 فيه كام مستوى لـ BIPA؟
+      ar: كم مستوى لـ BIPA في القرار الوزاري 27/2017؟
+      en: How many BIPA levels does Permendikbud 27/2017 set?
+    options: [lima, sepuluh, tujuh]
+    answer: 2
+  - id: e03
+    type: fill_blank
+    sentence: Peraturan itu ___ standar kursus BIPA.
+    meaning:
+      ar_eg: اللايحة دي بتنظّم معايير كورسات BIPA.
+      ar: تنظّم تلك اللائحة معايير دورات BIPA.
+      en: That regulation governs the standards for BIPA courses.
+    options: [mengatur, lulusan, lembaga]
+    answers: [mengatur]
+    words: [mengatur, standar]
+  - id: e04
+    type: listen
+    text: Lembaga kursus wajib memenuhi standar yang ditetapkan menteri.
+    question:
+      ar_eg: مؤسسات الكورسات لازم تعمل إيه؟
+      ar: ماذا يجب على مؤسّسات الدورات؟
+      en: What must course institutions do?
+    options:
+      - تدرّس بالإنجليزي بس.
+      - تدفع ضرايب بس.
+      - تلتزم بالمعايير اللي الوزير حدّدها.
+    answer: 2
+    words: [lembaga, standar]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: خرّيجين BIPA 7 يقدروا يكتبوا نصوص أكاديمية.
+      ar: يستطيع خرّيجو BIPA 7 كتابة نصوص أكاديمية.
+      en: BIPA 7 graduates can write academic texts.
+    answer: Lulusan BIPA 7 dapat menulis teks akademik.
+    distractors: [lembaga, mengatur]
+    words: [lulusan]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جزء في اللايحة بيقول أسبابها؟
+      ar: أيّ جزء من اللائحة يذكر أسبابها؟
+      en: Which part of a regulation gives its reasons?
+    options: [Mengingat, Menimbang, Menetapkan]
+    answer: 1
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الخرّيجين لازم يكون عندهم كفاءة لغوية كويسة.
+      ar: يجب أن تكون لدى الخرّيجين كفاءة لغوية جيّدة.
+      en: Graduates must have good language competence.
+    answers:
+      - Lulusan harus memiliki kompetensi bahasa yang baik.
+      - Lulusan wajib memiliki kompetensi bahasa yang baik.
+      - Para lulusan harus mempunyai kompetensi bahasa yang baik.
+      - Lulusan harus punya kompetensi bahasa yang baik.
+    words: [lulusan, kompetensi]
+  - id: e08
+    type: speaking
+    text: Intinya, peraturan ini mengatur kompetensi lulusan BIPA.
+    meaning:
+      ar_eg: الخلاصة، اللايحة دي بتنظّم كفاءة خرّيجين BIPA.
+      ar: الخلاصة أنّ هذه اللائحة تنظّم كفاءة خرّيجي BIPA.
+      en: In short, this regulation governs the competence of BIPA graduates.
+    words: [mengatur, kompetensi, lulusan]
+  - id: e09
+    type: dictation
+    text: Setiap lembaga harus memenuhi standar nasional.
+    meaning:
+      ar_eg: كل مؤسسة لازم تلتزم بالمعايير الوطنية.
+      ar: على كلّ مؤسّسة أن تستوفي المعايير الوطنية.
+      en: Every institution must meet the national standards.
+    words: [lembaga, standar]
+dialogue:
+  title: Kurikulum dari menteri
+  lines:
+    - speaker: Mohamed
+      text: Kak, ternyata kurikulum saya mengikuti peraturan menteri!
+      ar_eg: يا كاك، طلع المنهج بتاعي ماشي على قرار وزاري!
+      ar: تبيّن أنّ منهجي يتبع قرارًا وزاريًّا!
+      en: Kak, it turns out my curriculum follows a ministerial regulation!
+    - speaker: Kak Nadia
+      text: Betul. Permendikbud 27 Tahun 2017 mengatur standar kompetensi lulusan BIPA.
+      ar_eg: مظبوط. القرار الوزاري 27 لسنة 2017 بينظّم معايير كفاءة خرّيجين BIPA.
+      ar: صحيح. القرار الوزاري 27 لسنة 2017 ينظّم معايير كفاءة خرّيجي BIPA.
+      en: That's right. Permendikbud 27 of 2017 governs the competence standards for BIPA graduates.
+    - speaker: Mohamed
+      text: Ada tujuh level. Saya sekarang di BIPA 6.
+      ar_eg: فيه سبع مستويات. أنا دلوقتي في BIPA 6.
+      ar: فيه سبعة مستويات، وأنا الآن في BIPA 6.
+      en: There are seven levels. I'm on BIPA 6 now.
+    - speaker: Kak Nadia
+      text: Tinggal satu lagi. Lulusan BIPA 7 diharapkan bisa membaca dan menulis teks akademik.
+      ar_eg: فاضل واحد بس. خرّيجين BIPA 7 المفروض يقدروا يقروا ويكتبوا نصوص أكاديمية.
+      ar: بقي واحد. يُنتظر من خرّيجي BIPA 7 أن يقرؤوا النصوص الأكاديمية ويكتبوها.
+      en: Just one left. BIPA 7 graduates are expected to read and write academic texts.
+new_words:
+  - word: lembaga
+    pos: noun
+    ar_eg: مؤسسة / هيئة
+    ar: مؤسّسة
+    en: institution, body
+  - word: standar
+    pos: noun
+    ar_eg: معيار
+    ar: معيار
+    en: standard
+  - word: lulusan
+    pos: noun
+    ar_eg: خرّيج
+    ar: خرّيج
+    en: graduate
+  - word: kompetensi
+    pos: noun
+    ar_eg: كفاءة
+    ar: كفاءة
+    en: competence
+  - word: mengatur
+    pos: verb
+    ar_eg: ينظّم
+    ar: ينظّم
+    en: to regulate, to govern
+review:
+  status: draft
+  verified: false

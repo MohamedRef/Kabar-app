@@ -249,7 +249,7 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                                     button {
                                         class: "card lx-card",
                                         onclick: move |_| on_open.call(Open::Radio(id.clone())),
-                                        span { class: "muted small", "{ui.num(r.minutes)} {tt(lang, T::Minutes)}" }
+                                        span { class: "muted small", "{crate::coach::labels::minutes(&ui, r.minutes)}" }
                                         strong { bdi { lang: target, class: "latin", "{r.title.target}" } }
                                         span { Rich { text: pick(&r.title.meaning, lang).to_string(), target } }
                                         span { class: "row",

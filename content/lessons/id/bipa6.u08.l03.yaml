@@ -1,0 +1,185 @@
+schema: kabar.lesson/v1
+id: bipa6.u08.l03
+language: id
+title: Bunga bangkai
+can_do:
+  ar_eg: تقرا مقال علوم مبسّط وتطلع منه المعلومات الأساسية.
+  ar: أن تقرأ مقالًا علميًّا مبسّطًا وتستخرج معلوماته الأساسية.
+  en: Read a popular-science article and pull out its key facts.
+slides:
+  - title: Dua raksasa dari Bengkulu
+    body:
+      ar_eg: |
+        اقرا (مكتوب للدرس):
+        Banyak orang menyebut Rafflesia arnoldii "bunga bangkai", padahal nama itu lebih tepat untuk Amorphophallus titanum. Keduanya tumbuh di hutan Bengkulu dan sama-sama berbau busuk. Rafflesia adalah bunga tunggal terbesar di dunia. Ia parasit: tidak punya daun, batang, atau akar, dan hidup pada tumbuhan inang yang merambat. Bunganya mekar hanya sekitar satu minggu.
+        - parasit = طفيلي، inang = العائل (النبات اللي عايش عليه)
+        - mekar = يفتّح، raksasa = عملاق، langka = نادر
+      ar: |
+        اقرأ (نصّ مكتوب للدرس):
+        Banyak orang menyebut Rafflesia arnoldii "bunga bangkai", padahal nama itu lebih tepat untuk Amorphophallus titanum. Keduanya tumbuh di hutan Bengkulu dan sama-sama berbau busuk. Rafflesia adalah bunga tunggal terbesar di dunia. Ia parasit: tidak punya daun, batang, atau akar, dan hidup pada tumbuhan inang yang merambat. Bunganya mekar hanya sekitar satu minggu.
+        - parasit = طفيلي، inang = العائل (النبات الذي يعيش عليه)
+        - mekar = يتفتّح، raksasa = عملاق، langka = نادر
+      en: |
+        Read (written for the lesson):
+        Banyak orang menyebut Rafflesia arnoldii "bunga bangkai", padahal nama itu lebih tepat untuk Amorphophallus titanum. Keduanya tumbuh di hutan Bengkulu dan sama-sama berbau busuk. Rafflesia adalah bunga tunggal terbesar di dunia. Ia parasit: tidak punya daun, batang, atau akar, dan hidup pada tumbuhan inang yang merambat. Bunganya mekar hanya sekitar satu minggu.
+        - parasit = parasite, inang = host (plant)
+        - mekar = to bloom, raksasa = giant, langka = rare
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: parasit
+        ar_eg: طفيلي
+        ar: طفيلي
+        en: parasite
+      - text: inang
+        ar_eg: عائل (اللي الطفيلي عايش عليه)
+        ar: عائل
+        en: host (organism)
+      - text: mekar
+        ar_eg: يفتّح (الورد)
+        ar: يتفتّح
+        en: to bloom
+      - text: raksasa
+        ar_eg: عملاق
+        ar: عملاق
+        en: giant
+      - text: langka
+        ar_eg: نادر
+        ar: نادر
+        en: rare
+    words: [parasit, inang, mekar, raksasa, langka]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حسب النص، اسم «bunga bangkai» أدق لأنهي نبات؟
+      ar: بحسب النصّ، لأيّ نبات يصحّ اسم «bunga bangkai» أكثر؟
+      en: According to the text, which plant does "bunga bangkai" fit better?
+    options:
+      - Rafflesia arnoldii
+      - Amorphophallus titanum
+      - Anggrek bulan
+    answer: 1
+  - id: e03
+    type: fill_blank
+    sentence: Rafflesia adalah ___ yang hidup pada tumbuhan lain.
+    meaning:
+      ar_eg: الرافليزيا طفيلي عايش على نبات تاني.
+      ar: الرافليزيا طفيلي يعيش على نبات آخر.
+      en: Rafflesia is a parasite that lives on another plant.
+    options: [parasit, inang, raksasa]
+    answers: [parasit]
+    words: [parasit]
+  - id: e04
+    type: listen
+    text: Bunga ini hanya mekar sekitar satu minggu.
+    question:
+      ar_eg: الوردة بتفضل مفتّحة قد إيه؟
+      ar: كم تبقى الزهرة متفتّحة؟
+      en: How long does the flower stay in bloom?
+    options:
+      - حوالي أسبوع.
+      - سنة كاملة.
+      - ساعة واحدة.
+    answer: 0
+    words: [mekar]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الرافليزيا ماتقدرش تعيش من غير العائل بتاعها.
+      ar: لا تستطيع الرافليزيا العيش دون عائلها.
+      en: Rafflesia cannot live without its host.
+    answer: Rafflesia tidak bisa hidup tanpa inangnya.
+    distractors: [mekar, langka]
+    words: [inang]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الرافليزيا اسمها parasit ليه؟
+      ar: لماذا تُسمّى الرافليزيا parasit؟
+      en: Why is Rafflesia called a parasit?
+    options:
+      - علشان بتاكل حشرات.
+      - علشان عايشة في المية.
+      - علشان مالهاش ورق ولا جذور وعايشة على عائل.
+    answer: 2
+    words: [parasit, inang]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الوردة العملاقة دي نادرة جدًا.
+      ar: هذه الزهرة العملاقة نادرة جدًّا.
+      en: This giant flower is very rare.
+    answers:
+      - Bunga raksasa ini sangat langka.
+      - Bunga raksasa ini langka sekali.
+    words: [raksasa, langka]
+  - id: e08
+    type: speaking
+    text: Kami beruntung melihat bunga raksasa itu mekar.
+    meaning:
+      ar_eg: إحنا كنا محظوظين إننا شفنا الوردة العملاقة دي وهي بتفتّح.
+      ar: كنّا محظوظين برؤية تلك الزهرة العملاقة متفتّحة.
+      en: We were lucky to see that giant flower in bloom.
+    words: [raksasa, mekar]
+  - id: e09
+    type: dictation
+    text: Tumbuhan langka harus dilindungi.
+    meaning:
+      ar_eg: النباتات النادرة لازم تتحمى.
+      ar: يجب حماية النباتات النادرة.
+      en: Rare plants must be protected.
+    words: [langka]
+dialogue:
+  title: Kuncup di hutan
+  lines:
+    - speaker: Bu Laila
+      text: Lihat, kuncup itu akan mekar minggu ini.
+      ar_eg: بص، البرعم ده هيفتّح الأسبوع ده.
+      ar: انظر، سيتفتّح ذلك البرعم هذا الأسبوع.
+      en: Look, that bud will bloom this week.
+    - speaker: Mohamed
+      text: Besar sekali! Ini bunga bangkai, kan?
+      ar_eg: كبير قوي! دي وردة الجيفة، صح؟
+      ar: ما أكبره! هذه زهرة الجيفة، أليس كذلك؟
+      en: It's huge! This is the corpse flower, right?
+    - speaker: Bu Laila
+      text: Banyak orang bilang begitu. Tapi bunga bangkai yang asli lebih tinggi dari manusia.
+      ar_eg: ناس كتير بتقول كده. بس وردة الجيفة الأصلية أطول من البني آدم.
+      ar: كثيرون يقولون ذلك. لكنّ زهرة الجيفة الحقيقية أطول من الإنسان.
+      en: Lots of people say so. But the real corpse flower is taller than a person.
+    - speaker: Mohamed
+      text: Jadi ada dua raksasa yang berbeda. Saya harus memperbaiki catatan saya!
+      ar_eg: يعني فيه عملاقين مختلفين. لازم أصلّح ملاحظاتي!
+      ar: إذن هما عملاقان مختلفان. عليّ أن أصحّح ملاحظاتي!
+      en: So there are two different giants. I need to fix my notes!
+new_words:
+  - word: parasit
+    pos: noun
+    ar_eg: طفيلي
+    ar: طفيلي
+    en: parasite
+  - word: inang
+    pos: noun
+    ar_eg: عائل (اللي الطفيلي عايش عليه)
+    ar: عائل
+    en: host (organism)
+  - word: mekar
+    pos: verb
+    ar_eg: يفتّح (الورد)
+    ar: يتفتّح
+    en: to bloom
+  - word: raksasa
+    pos: adjective
+    ar_eg: عملاق
+    ar: عملاق
+    en: giant
+  - word: langka
+    pos: adjective
+    ar_eg: نادر
+    ar: نادر
+    en: rare
+review:
+  status: draft
+  verified: false

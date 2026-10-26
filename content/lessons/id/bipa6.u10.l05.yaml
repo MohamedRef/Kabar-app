@@ -1,0 +1,201 @@
+schema: kabar.lesson/v1
+id: bipa6.u10.l05
+language: id
+title: Mempertahankan esai
+can_do:
+  ar_eg: تدافع عن مقالك قدّام لجنة وترد على الأسئلة الصعبة بهدوء.
+  ar: أن تدافع عن مقالتك أمام لجنة وتردّ على الأسئلة الصعبة بهدوء.
+  en: Defend your essay before examiners and answer hard questions calmly.
+slides:
+  - title: Menjawab penguji
+    grammar: id.reported-speech
+    body:
+      ar_eg: |
+        الـ penguji (الممتحن) هيدوّر على الـ kelemahan (نقط الضعف). إزاي تعمل menanggapi (ترد):
+        1. اشكر وأعد السؤال: Terima kasih atas pertanyaannya. Ibu bertanya apakah datanya cukup.
+        2. اعترف بالحدود: Memang, penelitian ini punya kelemahan, yaitu …
+        3. ارجع لدليلك: Namun, berdasarkan wawancara saya, …
+        4. اقفل بجملة meyakinkan (مقنعة): Jadi, tesis saya tetap kuat.
+        والاعتراف بنقطة ضعف بيخليك أكتر إقناعًا، مش أقل.
+      ar: |
+        سيبحث الـ penguji (الممتحن) عن الـ kelemahan (مواطن الضعف). وهكذا تردّ (menanggapi):
+        1. اشكر وأعد صياغة السؤال: Terima kasih atas pertanyaannya. Ibu bertanya apakah datanya cukup.
+        2. اعترف بالحدود: Memang, penelitian ini punya kelemahan, yaitu …
+        3. ارجع إلى دليلك: Namun, berdasarkan wawancara saya, …
+        4. اختم بجملة meyakinkan (مقنعة): Jadi, tesis saya tetap kuat.
+        والاعتراف بموطن ضعف يزيدك إقناعًا ولا ينقصه.
+      en: |
+        The penguji (examiner) will look for the kelemahan (weaknesses). How to answer (menanggapi):
+        1. Thank them and restate the question: Terima kasih atas pertanyaannya. Ibu bertanya apakah datanya cukup.
+        2. Admit the limits: Memang, penelitian ini punya kelemahan, yaitu …
+        3. Return to your evidence: Namun, berdasarkan wawancara saya, …
+        4. Close with a meyakinkan (convincing) line: Jadi, tesis saya tetap kuat.
+        Admitting a weakness makes you more convincing, not less.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: penguji
+        ar_eg: ممتحن / عضو لجنة
+        ar: ممتحِن
+        en: examiner
+      - text: menanggapi
+        ar_eg: يرد على / يعلّق على
+        ar: يردّ على
+        en: to respond to
+      - text: kelemahan
+        ar_eg: نقطة ضعف
+        ar: موطن ضعف
+        en: weakness
+      - text: meyakinkan
+        ar_eg: مقنع
+        ar: مقنع
+        en: convincing
+    words: [penguji, menanggapi, kelemahan, meyakinkan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الممتحن قال «Datamu terlalu sedikit». أحسن رد إيه؟
+      ar: قال الممتحن «Datamu terlalu sedikit». ما أفضل ردّ؟
+      en: The examiner says "Datamu terlalu sedikit". What's the best answer?
+    options:
+      - Itu tidak benar, Bu!
+      - Memang itu kelemahannya. Namun, data ini berasal dari sumber resmi.
+      - Saya tidak tahu.
+    answer: 1
+    words: [kelemahan, menanggapi]
+  - id: e03
+    type: fill_blank
+    sentence: Terima kasih, Bu. Izinkan saya ___ pertanyaan itu.
+    meaning:
+      ar_eg: شكرًا يا دكتورة. اسمحيلي أرد على السؤال ده.
+      ar: شكرًا يا أستاذة، اسمحي لي بالردّ على هذا السؤال.
+      en: Thank you, ma'am. Allow me to respond to that question.
+    options: [menanggapi, meyakinkan, penguji]
+    answers: [menanggapi]
+    words: [menanggapi]
+  - id: e04
+    type: listen
+    text: Ketiga penguji sepakat bahwa jawaban Mohamed sangat meyakinkan.
+    question:
+      ar_eg: الممتحنين قالوا إيه؟
+      ar: ماذا قال الممتحنون؟
+      en: What did the examiners agree on?
+    options:
+      - إن ردود محمد كانت مقنعة جدًا.
+      - إن محمد لازم يعيد المقال.
+      - إن السؤال كان سهل.
+    answer: 0
+    words: [penguji, meyakinkan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: البحث ده فيه نقطة ضعف واحدة.
+      ar: لهذا البحث موطن ضعف واحد.
+      en: This research has one weakness.
+    answer: Penelitian ini memiliki satu kelemahan.
+    distractors: [penguji, meyakinkan]
+    words: [kelemahan]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ليه الاعتراف بنقطة ضعف بيخلّي ردّك أقوى؟
+      ar: لماذا يقوّي الاعترافُ بموطن ضعف ردَّك؟
+      en: Why does admitting a weakness make your answer stronger?
+    options:
+      - علشان الممتحن بيحب الاعتذار.
+      - علشان كده مش هتتسأل تاني.
+      - علشان بيبيّن إنك فاهم بحثك وأمين.
+    answer: 2
+    words: [meyakinkan, kelemahan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الممتحن سأل لو المصادر جديدة.
+      ar: سأل الممتحن هل المصادر حديثة.
+      en: The examiner asked whether the sources were recent.
+    answers:
+      - Penguji bertanya apakah sumbernya baru.
+      - Penguji itu bertanya apakah sumber-sumbernya baru.
+      - Penguji bertanya apakah sumber-sumber itu baru.
+      - Penguji menanyakan apakah sumbernya baru.
+    words: [penguji]
+  - id: e08
+    type: speaking
+    text: Saya ingin menanggapi pertanyaan Bapak dengan data terbaru.
+    meaning:
+      ar_eg: عايز أرد على سؤال حضرتك ببيانات جديدة.
+      ar: أودّ الردّ على سؤالكم ببيانات حديثة.
+      en: I'd like to respond to your question with the latest data.
+    words: [menanggapi]
+  - id: e09
+    type: dictation
+    text: Argumen yang meyakinkan tidak menyembunyikan kelemahannya.
+    meaning:
+      ar_eg: الحجّة المقنعة مابتخبّيش نقط ضعفها.
+      ar: الحجّة المقنعة لا تُخفي مواطن ضعفها.
+      en: A convincing argument doesn't hide its weaknesses.
+    words: [meyakinkan, kelemahan]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Penguji kedua menanggapi esai itu dengan pertanyaan yang tajam.
+    answers_meaning:
+      ar_eg:
+        - الممتحن التاني ردّ على المقال بسؤال حادّ.
+        - تاني ممتحن علّق على المقال بسؤال صعب ومباشر.
+      ar:
+        - ردّ الممتحن الثاني على المقالة بسؤال حادّ.
+        - علّق الممتحن الثاني على المقالة بسؤال لاذع.
+      en:
+        - The second examiner responded to the essay with a sharp question.
+        - The second examiner met the essay with a pointed question.
+    words: [penguji, menanggapi]
+dialogue:
+  title: Sidang kecil
+  lines:
+    - speaker: Bu Tarigan
+      text: Tesismu menarik. Tapi apakah warga benar-benar ingin terlibat?
+      ar_eg: أطروحتك حلوة. بس هل السكان فعلًا عايزين يشاركوا؟
+      ar: أطروحتك مثيرة للاهتمام، لكن هل يريد السكّان المشاركة حقًّا؟
+      en: Your thesis is interesting. But do residents really want to be involved?
+    - speaker: Mohamed
+      text: Terima kasih, Bu. Memang, data saya hanya dari dua desa. Itu kelemahannya.
+      ar_eg: شكرًا يا دكتورة. فعلًا، بياناتي من قريتين بس. ودي نقطة الضعف.
+      ar: شكرًا يا أستاذة. صحيح أنّ بياناتي من قريتين فقط، وهذا موطن ضعفها.
+      en: Thank you, ma'am. It's true my data come from only two villages. That's the weakness.
+    - speaker: Mohamed
+      text: Namun, dalam wawancara saya, warga yang terlibat merasa lebih cepat beradaptasi.
+      ar_eg: لكن في المقابلات اللي عملتها، السكان اللي شاركوا حسّوا إنهم اتأقلموا أسرع.
+      ar: غير أنّ السكّان المشاركين شعروا في مقابلاتي بأنّهم تكيّفوا أسرع.
+      en: However, in my interviews, residents who took part felt they adapted faster.
+    - speaker: Bu Tarigan
+      text: Jawaban yang meyakinkan. Silakan lanjut.
+      ar_eg: ردّ مقنع. اتفضل كمّل.
+      ar: جواب مقنع، تفضّل وتابع.
+      en: A convincing answer. Please go on.
+new_words:
+  - word: penguji
+    pos: noun
+    ar_eg: ممتحن / عضو لجنة
+    ar: ممتحِن
+    en: examiner
+  - word: menanggapi
+    pos: verb
+    ar_eg: يرد على / يعلّق على
+    ar: يردّ على
+    en: to respond to
+  - word: kelemahan
+    pos: noun
+    ar_eg: نقطة ضعف
+    ar: موطن ضعف
+    en: weakness
+  - word: meyakinkan
+    pos: adjective
+    ar_eg: مقنع
+    ar: مقنع
+    en: convincing
+review:
+  status: draft
+  verified: false

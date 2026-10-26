@@ -1,0 +1,178 @@
+schema: kabar.lesson/v1
+id: bipa6.u06.l04
+language: id
+title: Stand-up
+can_do:
+  ar_eg: تشرح النكتة بتضحّك ليه.
+  ar: أن تشرح سبب الضحك في نكتة.
+  en: Explain why a joke is funny.
+slides:
+  - title: Kenapa lucu?
+    grammar: id.irony
+    body:
+      ar_eg: |
+        الـ stand-up انتشر في إندونيسيا من أوائل العشرية اللي فاتت، والكوميديان اسمه komika.
+        الـ komika بيطلع على الـ panggung (المسرح) ويبني نكتة من premis (فكرة البداية) وبعدها الإفيه:
+        - «Kata orang, jalan ke kampung saya sudah mulus. Betul! Lubangnya sekarang dipakai kolam ikan.»
+        علشان تشرح الضحك: Lucunya karena … (الضحك جاي من …) / Dia menyindir … / Itu ironi, karena …
+      ar: |
+        انتشر الـ stand-up في إندونيسيا منذ مطلع العقد الماضي، ويسمّى الكوميديان komika.
+        يصعد الـ komika إلى الـ panggung (المسرح) ويبني نكتته من premis (فكرة تمهيدية) ثمّ القفلة:
+        - «Kata orang, jalan ke kampung saya sudah mulus. Betul! Lubangnya sekarang dipakai kolam ikan.»
+        ولتشرح الضحك: Lucunya karena … (مصدر الضحك …) / Dia menyindir … / Itu ironi, karena …
+      en: |
+        Stand-up took off in Indonesia in the early 2010s, and a stand-up comedian is a komika.
+        The komika goes up on the panggung (stage) and builds a joke from a premis (premise), then the punchline:
+        - "Kata orang, jalan ke kampung saya sudah mulus. Betul! Lubangnya sekarang dipakai kolam ikan." (They say the road to my village is smooth now. True! The potholes are fish ponds now.)
+        To explain the laugh: Lucunya karena … (It's funny because …) / Dia menyindir … / Itu ironi, karena …
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: komika
+        ar_eg: كوميديان ستاند أب
+        ar: ممثّل كوميدي (ستاند أب)
+        en: stand-up comedian
+      - text: tawa
+        ar_eg: ضحك
+        ar: ضحك
+        en: laughter
+      - text: tepuk tangan
+        ar_eg: تسقيف
+        ar: تصفيق
+        en: applause
+      - text: premis
+        ar_eg: فكرة البداية
+        ar: الفكرة التمهيدية
+        en: premise
+    words: [komika, tawa, tepuk tangan, premis]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «الطريق بقى ناعم. الحفر بقت أحواض سمك.» بتضحّك ليه؟
+      ar: «صار الطريق أملس، والحفر صارت أحواض سمك». لماذا يضحك هذا؟
+      en: '"The road is smooth now. The potholes are fish ponds." Why is it funny?'
+    options:
+      - علشان الكلام عن تربية السمك.
+      - علشان دي تريقة، يقول «ناعم» وهو مليان حفر.
+      - علشان الطريق جديد فعلًا.
+    answer: 1
+  - id: e03
+    type: fill_blank
+    sentence: ___ itu naik panggung dan langsung menyindir dirinya sendiri.
+    meaning:
+      ar_eg: الكوميديان طلع المسرح وعلى طول بدأ يتريق على نفسه.
+      ar: صعد الكوميديان إلى المسرح وبدأ فورًا يسخر من نفسه.
+      en: The comedian went on stage and immediately poked fun at himself.
+    options: [Komika, Penonton, Premis]
+    answers: [Komika]
+    words: [komika]
+  - id: e04
+    type: listen
+    text: Tawa penonton terdengar sampai ke luar gedung.
+    question:
+      ar_eg: إيه اللي كان مسموع برّه المبنى؟
+      ar: ما الذي سُمع خارج المبنى؟
+      en: What could be heard outside the building?
+    options:
+      - ضحك الجمهور.
+      - مزيكا عالية.
+      - صوت المطر.
+    answer: 0
+    words: [tawa]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: فكرة النكتة بسيطة، بس بتضحّك جدًا.
+      ar: فكرة النكتة بسيطة، لكنّها مضحكة جدًّا.
+      en: The joke's premise is simple, but very funny.
+    answer: Premis leluconnya sederhana, tetapi lucu sekali.
+    distractors: [tawa, komika]
+    words: [premis]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة بتشرح النكتة بتضحّك ليه؟
+      ar: أيّ جملة تشرح سبب الضحك؟
+      en: Which sentence explains why a joke is funny?
+    options:
+      - Saya tidak suka komika itu.
+      - Penontonnya banyak sekali.
+      - Lucunya karena dia menyindir dirinya sendiri.
+    answer: 2
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الكوميديان خد تسقيف جامد.
+      ar: نال الكوميديان تصفيقًا حارًّا.
+      en: The comedian got warm applause.
+    answers:
+      - Komika itu mendapat tepuk tangan yang meriah.
+      - Komika itu mendapat tepuk tangan meriah.
+      - Komika itu mendapat tepuk tangan yang hangat.
+      - Komika itu disambut tepuk tangan yang meriah.
+    words: [komika, tepuk tangan]
+  - id: e08
+    type: speaking
+    text: Premis yang baik membawa tawa dan tepuk tangan.
+    meaning:
+      ar_eg: الفكرة الحلوة بتجيب ضحك وتسقيف.
+      ar: الفكرة الجيّدة تجلب الضحك والتصفيق.
+      en: A good premise brings laughter and applause.
+    words: [premis, tawa, tepuk tangan]
+  - id: e09
+    type: dictation
+    text: Komika yang baik menunggu tawa penonton selesai.
+    meaning:
+      ar_eg: الكوميديان الشاطر بيستنى ضحك الجمهور يخلص.
+      ar: الكوميديان الجيّد ينتظر حتى ينتهي ضحك الجمهور.
+      en: A good comedian waits for the audience's laughter to die down.
+    words: [komika, tawa]
+dialogue:
+  title: Malam open mic
+  lines:
+    - speaker: Mohamed
+      text: Bang, kenapa penonton tertawa waktu komika itu bilang jalannya mulus?
+      ar_eg: يا بانج، الجمهور ضحك ليه لما الكوميديان قال إن الطريق ناعم؟
+      ar: لماذا ضحك الجمهور حين قال الكوميديان إنّ الطريق أملس؟
+      en: Bang, why did the audience laugh when the comedian said the road was smooth?
+    - speaker: Bang Togar
+      text: Karena itu ironi. Premisnya, jalan ke kampungnya penuh lubang.
+      ar_eg: علشان دي تريقة. الفكرة إن الطريق لقريته مليان حفر.
+      ar: لأنّه تهكّم. فالفكرة أنّ الطريق إلى قريته مليء بالحفر.
+      en: Because it's irony. The premise is that the road to his village is full of potholes.
+    - speaker: Mohamed
+      text: Oh! Jadi lucunya karena dia menyindir dengan halus.
+      ar_eg: آه! يعني الضحك جاي من إنه لقّح بشياكة.
+      ar: آه! إذن مصدر الضحك أنّه عرّض بلطف.
+      en: Oh! So it's funny because he made his dig so gently.
+    - speaker: Bang Togar
+      text: Betul. Lain kali kau yang naik panggung, Lae!
+      ar_eg: مظبوط. المرة الجاية إنت اللي تطلع المسرح يا لاي!
+      ar: صحيح. في المرّة القادمة اصعد أنت إلى المسرح يا لاي!
+      en: Exactly. Next time you're the one on stage, Lae!
+new_words:
+  - word: komika
+    pos: noun
+    ar_eg: كوميديان ستاند أب
+    ar: ممثّل كوميدي (ستاند أب)
+    en: stand-up comedian
+  - word: tawa
+    pos: noun
+    ar_eg: ضحك
+    ar: ضحك
+    en: laughter
+  - word: tepuk tangan
+    pos: noun
+    ar_eg: تسقيف
+    ar: تصفيق
+    en: applause
+  - word: premis
+    pos: noun
+    ar_eg: فكرة البداية
+    ar: الفكرة التمهيدية
+    en: premise
+review:
+  status: draft
+  verified: false

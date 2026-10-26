@@ -1,0 +1,188 @@
+schema: kabar.lesson/v1
+id: bipa6.u07.l03
+language: id
+title: Hak dan kewajiban
+can_do:
+  ar_eg: تقرا الحقوق والواجبات في نص قانوني وتعرف هي على مين.
+  ar: أن تقرأ الحقوق والواجبات في نصّ قانوني وتعرف على مَن تقع.
+  en: Read rights and duties in a legal text and see whom they apply to.
+slides:
+  - title: Setiap orang atau setiap warga negara?
+    body:
+      ar_eg: |
+        الـ hak (حق) والـ kewajiban (واجب) جايين من العربي. ركّز على الفاعل:
+        - Setiap warga negara berhak mendapat pendidikan. (الدستور، المادة 31 الفقرة 1) = ده للمواطنين.
+        - Setiap orang bebas memeluk agama … (المادة 28E الفقرة 1) = setiap orang يعني كل الناس، وإنت منهم.
+        - الأجنبي برضه عليه يـ mematuhi (يلتزم بـ) القانون، والدولة بتـ melindungi (تحمي) حقوقه.
+      ar: |
+        الـ hak (حقّ) والـ kewajiban (واجب) من العربية. وركّز على الفاعل:
+        - Setiap warga negara berhak mendapat pendidikan. (الدستور، المادة 31، الفقرة 1) = خاصّ بالمواطنين.
+        - Setiap orang bebas memeluk agama … (المادة 28E، الفقرة 1) = setiap orang تعني كلّ إنسان، وأنت منهم.
+        - وعلى الأجنبي أيضًا أن mematuhi (يلتزم) بالقانون، والدولة melindungi (تحمي) حقوقه.
+      en: |
+        hak (right) and kewajiban (duty) come from Arabic. Watch the subject:
+        - Setiap warga negara berhak mendapat pendidikan. (Constitution, Article 31(1)) = for citizens.
+        - Setiap orang bebas memeluk agama … (Article 28E(1)) = setiap orang means every person, you included.
+        - Foreigners too must mematuhi (obey) the law, and the state melindungi (protects) their rights.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: hak
+        ar_eg: حق
+        ar: حقّ
+        en: right
+      - text: kewajiban
+        ar_eg: واجب
+        ar: واجب
+        en: duty, obligation
+      - text: warga negara
+        ar_eg: مواطن
+        ar: مواطن
+        en: citizen
+      - text: melindungi
+        ar_eg: يحمي
+        ar: يحمي
+        en: to protect
+      - text: mematuhi
+        ar_eg: يلتزم بـ / يطيع
+        ar: يمتثل لـ
+        en: to obey, to comply with
+    words: [hak, kewajiban, warga negara, melindungi, mematuhi]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في نص قانوني، «setiap orang» بتشمل مين؟
+      ar: مَن تشمل عبارة «setiap orang» في نصّ قانوني؟
+      en: In a legal text, who does "setiap orang" cover?
+    options:
+      - الإندونيسيين بس.
+      - كل الناس، حتى الأجانب.
+      - المسؤولين بس.
+    answer: 1
+  - id: e03
+    type: fill_blank
+    sentence: Membayar pajak adalah ___ setiap warga negara.
+    meaning:
+      ar_eg: دفع الضرايب واجب على كل مواطن.
+      ar: دفع الضرائب واجب على كلّ مواطن.
+      en: Paying tax is every citizen's duty.
+    options: [kewajiban, hak, melindungi]
+    answers: [kewajiban]
+    words: [kewajiban, warga negara]
+  - id: e04
+    type: listen
+    text: Negara wajib melindungi hak semua orang.
+    question:
+      ar_eg: الدولة لازم تعمل إيه؟
+      ar: ماذا يجب على الدولة؟
+      en: What must the state do?
+    options:
+      - تحمي حقوق كل الناس.
+      - تجمع الضرايب.
+      - تبني طرق.
+    answer: 0
+    words: [melindungi, hak]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الأجانب كمان لازم يلتزموا بقانون إندونيسيا.
+      ar: على الأجانب أيضًا أن يمتثلوا لقانون إندونيسيا.
+      en: Foreigners must also obey Indonesian law.
+    answer: Orang asing juga harus mematuhi hukum Indonesia.
+    distractors: [hak, melindungi]
+    words: [mematuhi]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «kewajiban» أصلها من أنهي كلمة عربي؟
+      ar: من أيّ كلمة عربية جاءت «kewajiban»؟
+      en: Which Arabic word does "kewajiban" come from?
+    options: [وجيه, وجبة, واجب]
+    answer: 2
+    words: [kewajiban]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Hak dan kewajiban harus seimbang.
+    answers_meaning:
+      ar_eg:
+        - الحقوق والواجبات لازم يبقوا متوازنين.
+        - لازم يبقى فيه توازن بين الحق والواجب.
+      ar:
+        - يجب أن تتوازن الحقوق والواجبات.
+        - ينبغي التوازن بين الحقّ والواجب.
+      en:
+        - Rights and duties must be balanced.
+        - Rights and obligations should be in balance.
+    words: [hak, kewajiban]
+  - id: e08
+    type: speaking
+    text: Sebagai tamu, saya wajib mematuhi hukum di sini.
+    meaning:
+      ar_eg: كضيف، لازم ألتزم بالقانون هنا.
+      ar: بصفتي ضيفًا، عليّ أن أمتثل للقانون هنا.
+      en: As a guest, I must obey the law here.
+    words: [mematuhi]
+  - id: e09
+    type: dictation
+    text: Undang-undang melindungi hak setiap warga negara.
+    meaning:
+      ar_eg: القانون بيحمي حق كل مواطن.
+      ar: يحمي القانون حقّ كلّ مواطن.
+      en: The law protects the rights of every citizen.
+    words: [melindungi, hak, warga negara]
+dialogue:
+  title: Izin tinggal
+  lines:
+    - speaker: Kak Nadia
+      text: Izin tinggalmu habis bulan depan, Mohamed.
+      ar_eg: الإقامة بتاعتك بتخلص الشهر الجاي يا محمد.
+      ar: تنتهي إقامتك الشهر القادم يا محمد.
+      en: Your residence permit runs out next month, Mohamed.
+    - speaker: Mohamed
+      text: Iya. Sebagai orang asing, saya wajib memperpanjangnya, kan?
+      ar_eg: أيوه. كأجنبي، لازم أجدّدها، صح؟
+      ar: نعم. بصفتي أجنبيًّا يجب أن أجدّدها، أليس كذلك؟
+      en: Yes. As a foreigner, I have to renew it, right?
+    - speaker: Kak Nadia
+      text: Betul, itu kewajibanmu. Tapi kamu juga punya hak, misalnya mendapat penjelasan dari petugas.
+      ar_eg: مظبوط، ده واجبك. بس إنت كمان ليك حقوق، زي إن الموظف يشرح لك.
+      ar: صحيح، هذا واجبك. لكن لك حقوقًا أيضًا، كأن يشرح لك الموظّف.
+      en: Right, that's your duty. But you have rights too, like getting an explanation from the officer.
+    - speaker: Mohamed
+      text: Hak dan kewajiban. Dua kata yang saya kenal dari bahasa Arab!
+      ar_eg: حق وواجب. كلمتين أعرفهم من العربي!
+      ar: حقّ وواجب، كلمتان أعرفهما من العربية!
+      en: Rights and duties. Two words I know from Arabic!
+new_words:
+  - word: hak
+    pos: noun
+    arabic: حقّ
+    ar_eg: حق
+    ar: حقّ
+    en: right
+  - word: kewajiban
+    pos: noun
+    arabic: واجب
+    ar_eg: واجب
+    ar: واجب
+    en: duty, obligation
+  - word: warga negara
+    pos: noun
+    ar_eg: مواطن
+    ar: مواطن
+    en: citizen
+  - word: melindungi
+    pos: verb
+    ar_eg: يحمي
+    ar: يحمي
+    en: to protect
+  - word: mematuhi
+    pos: verb
+    ar_eg: يلتزم بـ / يطيع
+    ar: يمتثل لـ
+    en: to obey, to comply with
+review:
+  status: draft
+  verified: false

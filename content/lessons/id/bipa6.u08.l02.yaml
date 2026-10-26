@@ -1,0 +1,203 @@
+schema: kabar.lesson/v1
+id: bipa6.u08.l02
+language: id
+title: Kalimat padat
+can_do:
+  ar_eg: تفك الجملة العلمية الطويلة لخطوات بسيطة.
+  ar: أن تفكّك الجملة العلمية الطويلة إلى خطوات بسيطة.
+  en: Unpack a dense scientific sentence into simple steps.
+slides:
+  - title: Membongkar kalimat panjang
+    grammar: id.sentence.complex
+    body:
+      ar_eg: |
+        جملة علمية (مكتوبة للدرس): Karena bunga Rafflesia mengeluarkan bau seperti daging busuk, lalat tertarik untuk datang sehingga terjadi penyerbukan.
+        فكّها:
+        1. السبب (karena): الوردة ريحتها زي اللحمة البايظة.
+        2. الدبّان بييجي.
+        3. النتيجة (sehingga = فبالتالي): بيحصل penyerbukan (التلقيح).
+        قاعدة الفاصلة: لو الجملة التابعة جت الأول، حط فاصلة بعدها. ولو جت بعد الأساسية، من غير فاصلة.
+        وعلشان تعيد الصياغة: Dengan kata lain, … (بمعنى تاني …)
+      ar: |
+        جملة علمية (مكتوبة للدرس): Karena bunga Rafflesia mengeluarkan bau seperti daging busuk, lalat tertarik untuk datang sehingga terjadi penyerbukan.
+        فكّكها:
+        1. السبب (karena): للزهرة رائحة كاللحم الفاسد.
+        2. يأتي الذباب.
+        3. النتيجة (sehingga = بحيث / فـ): يحدث penyerbukan (التلقيح).
+        قاعدة الفاصلة: إن تقدّمت الجملة التابعة فضع بعدها فاصلة، وإن تأخّرت فلا فاصلة.
+        ولإعادة الصياغة: Dengan kata lain, … (بعبارة أخرى …)
+      en: |
+        A science sentence (written for the lesson): Karena bunga Rafflesia mengeluarkan bau seperti daging busuk, lalat tertarik untuk datang sehingga terjadi penyerbukan.
+        Unpack it:
+        1. Cause (karena): the flower smells like rotting meat.
+        2. Flies come.
+        3. Result (sehingga = so that, with the result that): penyerbukan (pollination) happens.
+        Comma rule: if the subordinate clause comes first, put a comma after it; if it comes after the main clause, no comma.
+        To rephrase: Dengan kata lain, … (In other words, …)
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: sehingga
+        ar_eg: فبالتالي
+        ar: بحيث / فـ
+        en: so that, resulting in
+      - text: serangga
+        ar_eg: حشرة
+        ar: حشرة
+        en: insect
+      - text: penyerbukan
+        ar_eg: تلقيح (الزهور)
+        ar: تلقيح الأزهار
+        en: pollination
+      - text: fenomena
+        ar_eg: ظاهرة
+        ar: ظاهرة
+        en: phenomenon
+      - text: dengan kata lain
+        ar_eg: بمعنى تاني
+        ar: بعبارة أخرى
+        en: in other words
+    words: [sehingga, serangga, penyerbukan, fenomena, dengan kata lain]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة محتاجة فاصلة؟
+      ar: أيّ جملة تحتاج إلى فاصلة؟
+      en: Which sentence needs a comma?
+    options:
+      - Sungai meluap karena hujan deras
+      - Karena hujan deras sungai meluap
+      - Saya pulang setelah kelas selesai
+    answer: 1
+  - id: e03
+    type: fill_blank
+    sentence: Lalat datang ke bunga ___ terjadi penyerbukan.
+    meaning:
+      ar_eg: الدبّان بييجي على الوردة فبيحصل تلقيح.
+      ar: يأتي الذباب إلى الزهرة فيحدث التلقيح.
+      en: Flies come to the flower, so pollination happens.
+    options: [sehingga, serangga, fenomena]
+    answers: [sehingga]
+    words: [sehingga, penyerbukan]
+  - id: e04
+    type: listen
+    text: Banyak serangga tertarik pada warna bunga yang terang.
+    question:
+      ar_eg: إيه اللي بيجذب الحشرات؟
+      ar: ما الذي يجذب الحشرات؟
+      en: What attracts the insects?
+    options:
+      - ريحة المطر.
+      - الضلمة.
+      - لون الوردة الفاتح.
+    answer: 2
+    words: [serangga]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: بمعنى تاني، الوردة دي محتاجة الدبّان.
+      ar: بعبارة أخرى، هذه الزهرة تحتاج إلى الذباب.
+      en: In other words, this flower needs flies.
+    answer: Dengan kata lain, bunga ini membutuhkan lalat.
+    distractors: [sehingga, fenomena]
+    words: [dengan kata lain]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في «… sehingga terjadi penyerbukan»، sehingga بتقدّم إيه؟
+      ar: في «… sehingga terjadi penyerbukan»، ماذا تقدّم sehingga؟
+      en: In "… sehingga terjadi penyerbukan", what does sehingga introduce?
+    options:
+      - السبب.
+      - النتيجة.
+      - الوقت.
+    answer: 1
+    words: [sehingga]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Penyerbukan oleh serangga adalah fenomena yang umum.
+    answers_meaning:
+      ar_eg:
+        - التلقيح بالحشرات ظاهرة منتشرة.
+        - إن الحشرات تلقّح الزهور ده شيء عادي في الطبيعة.
+      ar:
+        - التلقيح بالحشرات ظاهرة شائعة.
+        - تلقيح الحشرات للأزهار ظاهرة عامّة.
+      en:
+        - Pollination by insects is a common phenomenon.
+        - Insect pollination is a widespread phenomenon.
+    words: [penyerbukan, serangga, fenomena]
+  - id: e08
+    type: speaking
+    text: Dengan kata lain, fenomena ini terjadi karena serangga.
+    meaning:
+      ar_eg: بمعنى تاني، الظاهرة دي بتحصل بسبب الحشرات.
+      ar: بعبارة أخرى، تحدث هذه الظاهرة بسبب الحشرات.
+      en: In other words, this phenomenon happens because of insects.
+    words: [dengan kata lain, fenomena, serangga]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: بمعنى تاني، من غير حشرات مفيش تلقيح.
+      ar: بعبارة أخرى، لا تلقيح بلا حشرات.
+      en: In other words, without insects there's no pollination.
+    answers:
+      - Dengan kata lain, tanpa serangga tidak ada penyerbukan.
+      - Dengan kata lain, tidak ada penyerbukan tanpa serangga.
+      - Dengan kata lain, kalau tidak ada serangga, tidak ada penyerbukan.
+    words: [dengan kata lain, serangga, penyerbukan]
+dialogue:
+  title: Bau yang aneh
+  lines:
+    - speaker: Mohamed
+      text: Bu, kenapa bunga ini berbau busuk sekali?
+      ar_eg: يا دكتورة، الوردة دي ريحتها وحشة كده ليه؟
+      ar: لماذا رائحة هذه الزهرة كريهة جدًّا؟
+      en: Why does this flower smell so foul?
+    - speaker: Bu Laila
+      text: Karena baunya mirip daging busuk, lalat datang sehingga terjadi penyerbukan.
+      ar_eg: علشان ريحتها زي اللحمة البايظة، الدبّان بييجي فبيحصل تلقيح.
+      ar: لأنّ رائحتها تشبه اللحم الفاسد يأتي الذباب فيحدث التلقيح.
+      en: Because it smells like rotting meat, flies come, and so pollination happens.
+    - speaker: Mohamed
+      text: Kalimatnya panjang. Dengan kata lain, baunya mengundang lalat?
+      ar_eg: الجملة طويلة. بمعنى تاني، الريحة بتعزم الدبّان؟
+      ar: جملة طويلة. بعبارة أخرى، الرائحة تدعو الذباب؟
+      en: That's a long sentence. In other words, the smell invites the flies?
+    - speaker: Bu Laila
+      text: Tepat. Fenomena ini disebut penyerbukan oleh serangga.
+      ar_eg: بالظبط. الظاهرة دي اسمها التلقيح بالحشرات.
+      ar: تمامًا. تسمّى هذه الظاهرة التلقيح بالحشرات.
+      en: Exactly. This phenomenon is called insect pollination.
+new_words:
+  - word: sehingga
+    pos: conjunction
+    ar_eg: فبالتالي
+    ar: بحيث / فـ
+    en: so that, resulting in
+  - word: serangga
+    pos: noun
+    ar_eg: حشرة
+    ar: حشرة
+    en: insect
+  - word: penyerbukan
+    pos: noun
+    ar_eg: تلقيح (الزهور)
+    ar: تلقيح الأزهار
+    en: pollination
+  - word: fenomena
+    pos: noun
+    ar_eg: ظاهرة
+    ar: ظاهرة
+    en: phenomenon
+  - word: dengan kata lain
+    pos: phrase
+    ar_eg: بمعنى تاني
+    ar: بعبارة أخرى
+    en: in other words
+review:
+  status: draft
+  verified: false
