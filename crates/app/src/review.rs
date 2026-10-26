@@ -1129,15 +1129,21 @@ fn CardWall() -> Element {
         .read()
         .iter()
         .enumerate()
-        .map(|(i, s)| (s.as_ref().map_or_else(|| format!("empty-{i}"), |s| s.card_id.clone()), s.clone()))
+        .map(|(i, s)| {
+            (
+                s.as_ref().map_or_else(|| format!("empty-{i}"), |s| format!("{}@{}", s.card_id, s.dealt_ms)),
+                s.clone(),
+            )
+        })
         .collect();
 
     rsx! {
         div { class: "wall",
             p { class: "muted small wall-help", "{ui.t(Msg::RevWallHelp)}" }
             div { id: "card-wall", class: "wall-table", "data-seats": "{seats}",
-                // Seats are keyed by their card, so a new card gets a fresh
-                // element (no leftover drag transform from the last one).
+                // Seats are keyed by their card and deal time, so a new card,
+                // or a "belum" card dealt again, gets a fresh element (no
+                // leftover drag transform from the last throw).
                 for (seat_key, slot) in seat_view {
                     div { key: "{seat_key}", class: "seat",
                         if let Some(slot) = slot {
