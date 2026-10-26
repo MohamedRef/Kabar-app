@@ -1,0 +1,230 @@
+schema: kabar.lesson/v1
+id: bipa3.u04.l03
+language: id
+title: Menyehatkan, membersihkan
+can_do:
+  ar_eg: تعمل فعل من صفة بـ meN-…-kan (sehat → menyehatkan).
+  ar: أن تصوغ فعلًا من صفة بـmeN-…-kan (sehat → menyehatkan).
+  en: Make verbs from adjectives with causative -kan.
+slides:
+  - title: sehat → menyehatkan
+    grammar: id.confix.men-kan.causative
+    body:
+      ar_eg: |
+        الصفة مش بتاخد مفعول: Sayur sehat = الخضار صحي. عشان تقول «الخضار بيخلّي الجسم صحي» محتاج فعل سببي:
+        meN- + صفة + -kan = يخلّي الحاجة كده: sehat → menyehatkan، bersih → membersihkan، kuat → menguatkan.
+        زي أوزان العربي بالظبط: نظيف → نظّف، قوي → قوّى.
+      ar: |
+        الصفة لا تأخذ مفعولًا: Sayur sehat = الخضار صحية. ولتقول «الخضار تُصِحّ الجسم» تحتاج إلى فعل سببي:
+        meN- + الصفة + -kan = يجعل الشيء كذلك: sehat → menyehatkan، bersih → membersihkan، kuat → menguatkan.
+        تمامًا كوزن «فعّل» في العربية: نظيف → نظّف، قويّ → قوّى.
+      en: |
+        An adjective can't take an object: Sayur sehat = Vegetables are healthy. To say "vegetables make the body healthy" you need a causative verb:
+        meN- + adjective + -kan = make something that way: sehat → menyehatkan, bersih → membersihkan, kuat → menguatkan.
+        Just like the Arabic pattern فعّل: نظيف → نظّف (clean → to clean).
+    examples:
+      - text: Sayur dan buah menyehatkan tubuh.
+        ar_eg: الخضار والفاكهة بيخلّوا الجسم صحي.
+        ar: الخضار والفاكهة تقوّي صحة الجسم.
+        en: Vegetables and fruit keep the body healthy.
+      - text: Susu menguatkan tulang.
+        ar_eg: اللبن بيقوّي العضم.
+        ar: الحليب يقوّي العظام.
+        en: Milk strengthens the bones.
+  - title: Bersihkan! Panaskan!
+    grammar: id.confix.men-kan.causative
+    body:
+      ar_eg: |
+        في الأمر بتشيل meN- (زي ما شفت في الوصفات في BIPA 2): Bersihkan sayurnya! Panaskan air!
+        و membersih لوحدها مش كلمة؛ لازم -kan.
+      ar: |
+        في الأمر تُحذف meN- (كما رأيت في الوصفات في BIPA 2): Bersihkan sayurnya! Panaskan air!
+        ولا توجد كلمة membersih وحدها؛ فلا بد من -kan.
+      en: |
+        Commands drop meN- (as in the BIPA 2 recipes): Bersihkan sayurnya! Panaskan air!
+        membersih on its own doesn't exist; it needs -kan.
+    examples:
+      - text: Bersihkan sayurnya, lalu panaskan airnya.
+        ar_eg: نضّف الخضار، وبعدين سخّن المية.
+        ar: نظّف الخضار ثم سخّن الماء.
+        en: Clean the vegetables, then heat the water.
+      - text: Bu Sari membersihkan stroberi sebelum memakannya.
+        ar_eg: مدام ساري بتنضّف الفراولة قبل ما تاكلها.
+        ar: تنظّف السيدة ساري الفراولة قبل أن تأكلها.
+        en: Bu Sari cleans the strawberries before eating them.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tubuh
+        ar_eg: جسم
+        ar: جسم
+        en: body
+      - text: menyehatkan
+        ar_eg: يخلّي الحاجة صحية، مفيد للصحة
+        ar: يقوّي الصحة
+        en: to make healthy
+      - text: membersihkan
+        ar_eg: ينضّف
+        ar: ينظّف
+        en: to clean
+      - text: menguatkan
+        ar_eg: يقوّي
+        ar: يقوّي
+        en: to strengthen
+      - text: tulang
+        ar_eg: عضم
+        ar: عظم
+        en: bone
+      - text: memanaskan
+        ar_eg: يسخّن
+        ar: يسخّن
+        en: to heat
+    words: [tubuh, menyehatkan, membersihkan, menguatkan, tulang, memanaskan]
+  - id: e02
+    type: multiple_choice
+    question: Sayur ___ tubuh.
+    options: [sehat, menyehatkan, kesehatan]
+    answer: 1
+    explain:
+      ar_eg: فيه مفعول (tubuh)، فمحتاجين الفعل السببي menyehatkan. sehat صفة ومش بتاخد مفعول.
+      ar: هناك مفعول (tubuh)، فنحتاج الفعل السببي menyehatkan؛ وsehat صفة لا تتعدى.
+      en: There's an object (tubuh), so the causative verb menyehatkan is needed; sehat is an adjective and can't take one.
+    words: [menyehatkan, tubuh]
+  - id: e03
+    type: listen
+    text: Susu menguatkan tulang.
+    options: ["Susu menguatkan tulang.", "Susu membersihkan tulang.", "Sayur menguatkan tulang."]
+    answer: 0
+    meaning:
+      ar_eg: اللبن بيقوّي العضم.
+      ar: الحليب يقوّي العظام.
+      en: Milk strengthens the bones.
+    words: [menguatkan, tulang]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «نضّف الأوضة!» (أمر). أنهي صح؟
+      ar: «نظّف الغرفة!» (أمر). أيّها صحيح؟
+      en: '"Clean the room!" (a command). Which is right?'
+    options: ["Bersih kamar!", "Membersih kamar!", "Bersihkan kamar!"]
+    answer: 2
+    explain:
+      ar_eg: الأمر = الجذر + -kan من غير meN-.
+      ar: الأمر = الجذر + -kan بلا meN-.
+      en: The command is root + -kan, without meN-.
+    words: [membersihkan]
+  - id: e05
+    type: fill_blank
+    sentence: Kita harus ___ air sebelum membuat teh.
+    meaning:
+      ar_eg: لازم نسخّن المية قبل ما نعمل الشاي.
+      ar: يجب أن نسخّن الماء قبل إعداد الشاي.
+      en: We have to heat the water before making tea.
+    options: [menguatkan, memanaskan, menyehatkan]
+    answers: [memanaskan]
+    words: [memanaskan]
+  - id: e06
+    type: fill_blank
+    sentence: Kalsium menguatkan ___ dan gigi.
+    meaning:
+      ar_eg: الكالسيوم بيقوّي العضم والسنان.
+      ar: يقوّي الكالسيوم العظام والأسنان.
+      en: Calcium strengthens bones and teeth.
+    options: [kebun, serat, tulang]
+    answers: [tulang]
+    words: [tulang, menguatkan]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: مدام ساري بتنضّف الخضار قبل ما تطبخه.
+      ar: تنظّف السيدة ساري الخضار قبل طبخها.
+      en: Bu Sari cleans the vegetables before cooking them.
+    answer: Bu Sari membersihkan sayur sebelum memasaknya.
+    distractors: [bersih, membersih]
+    words: [membersihkan]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الفاكهة والخضار بيخلّوا الجسم صحي.
+      ar: الفاكهة والخضار تقوّي صحة الجسم.
+      en: Fruit and vegetables keep the body healthy.
+    answers:
+      - Buah dan sayur menyehatkan tubuh.
+      - Buah dan sayur menyehatkan tubuh
+      - Buah dan sayuran menyehatkan tubuh.
+      - Buah-buahan dan sayuran menyehatkan tubuh.
+      - Buah dan sayur-sayuran menyehatkan tubuh.
+      - Buah dan sayur-mayur menyehatkan tubuh.
+    words: [menyehatkan, tubuh]
+  - id: e09
+    type: speaking
+    text: Panaskan airnya, lalu masukkan sayurnya.
+    meaning:
+      ar_eg: سخّن المية، وبعدين حط الخضار.
+      ar: سخّن الماء ثم أضف الخضار.
+      en: Heat the water, then put the vegetables in.
+    words: [memanaskan]
+dialogue:
+  title: Masak sayur bening
+  lines:
+    - speaker: Bu Rohani
+      text: Mohamed, mari kita masak sayur bening.
+      ar_eg: يا محمد، تعالى نطبخ «سايور بننج» (شوربة خضار رايقة).
+      ar: يا محمد، هيا نطبخ «سايور بِنينغ» (حساء خضار صافٍ).
+      en: Mohamed, let's cook sayur bening (clear vegetable soup).
+    - speaker: Mohamed
+      text: Boleh, Bu. Saya bantu apa?
+      ar_eg: ماشي يا حاجة. أساعد في إيه؟
+      ar: حسنًا يا سيدتي. بمَ أساعد؟
+      en: Sure, Bu. How can I help?
+    - speaker: Bu Rohani
+      text: Bersihkan sayurnya dulu, lalu panaskan air.
+      ar_eg: نضّف الخضار الأول، وبعدين سخّن مية.
+      ar: نظّف الخضار أولًا، ثم سخّن الماء.
+      en: Clean the vegetables first, then heat some water.
+    - speaker: Mohamed
+      text: Sayur bening ini sehat, ya?
+      ar_eg: السايور بننج ده صحي، صح؟
+      ar: هذا الحساء صحي، أليس كذلك؟
+      en: This sayur bening is healthy, isn't it?
+    - speaker: Bu Rohani
+      text: Ya! Sayur menyehatkan tubuh. Makanlah yang banyak!
+      ar_eg: أيوه! الخضار بيخلّي الجسم صحي. كُل كتير بقى!
+      ar: نعم! الخضار تقوّي صحة الجسم، فكُل كثيرًا!
+      en: Yes! Vegetables keep the body healthy. Eat lots!
+new_words:
+  - word: tubuh
+    pos: noun
+    ar_eg: جسم
+    ar: جسم
+    en: body
+  - word: menyehatkan
+    pos: verb
+    ar_eg: يخلّي الحاجة صحية، مفيد للصحة — من sehat
+    ar: يقوّي الصحة — من sehat
+    en: to make healthy — from sehat
+  - word: membersihkan
+    pos: verb
+    ar_eg: ينضّف — من bersih
+    ar: ينظّف — من bersih
+    en: to clean — from bersih
+  - word: menguatkan
+    pos: verb
+    ar_eg: يقوّي — من kuat
+    ar: يقوّي — من kuat
+    en: to strengthen — from kuat
+  - word: tulang
+    pos: noun
+    ar_eg: عضم
+    ar: عظم
+    en: bone
+  - word: memanaskan
+    pos: verb
+    ar_eg: يسخّن — من panas
+    ar: يسخّن — من panas
+    en: to heat — from panas
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,221 @@
+schema: kabar.lesson/v1
+id: bipa3.u08.l03
+language: id
+title: Bukan hanya…, melainkan…
+can_do:
+  ar_eg: تستعمل أدوات الربط المزدوجة (مش بس… ده كمان، مش… لأ ده، سواء… أو).
+  ar: أن تستعمل أدوات الربط المزدوجة (ليس فقط… بل أيضًا، ليس… بل، كلٌّ من… و…).
+  en: Use paired conjunctions (not only … but also, not … but, both … and).
+slides:
+  - title: Tidak hanya …, tetapi juga …
+    body:
+      ar_eg: |
+        tidak hanya / bukan hanya … tetapi juga … = مش بس… ده كمان…
+        وهي بالظبط الفصحى «لا … فحسب، بل … أيضًا». في الكتابة الرسمية خلّي الجوز كامل: tetapi juga.
+      ar: |
+        tidak hanya / bukan hanya … tetapi juga … = لا … فحسب، بل … أيضًا.
+        وفي الأسلوب الرسمي يُذكر الشطر الثاني كاملًا: tetapi juga.
+      en: |
+        tidak hanya / bukan hanya … tetapi juga … = not only … but also …
+        It's MSA «لا … فحسب، بل … أيضًا». In formal writing keep the full pair: tetapi juga.
+    grammar: id.conjunction.bukan-hanya
+    examples:
+      - text: Gempa itu tidak hanya merusak rumah, tetapi juga jalan dan jembatan.
+        ar_eg: الزلزال ده مش بس بوّظ البيوت، لأ والطرق والكباري كمان.
+        ar: لم يدمّر الزلزال البيوت فحسب، بل الطرق والجسور أيضًا.
+        en: The earthquake damaged not only houses but also roads and bridges.
+      - text: Bukan hanya warga Tetebatu, tetapi juga turis ikut membantu.
+        ar_eg: مش بس أهل تيتيباتو، لأ والسياح كمان ساعدوا.
+        ar: لم يساعد أهل تيتيباتو وحدهم، بل شارك السياح أيضًا.
+        en: Not only Tetebatu residents but tourists too joined in to help.
+  - title: Bukan …, melainkan … · baik … maupun …
+    body:
+      ar_eg: |
+        bukan … melainkan … = مش (كذا)، لأ ده (كذا): تصحيح بعد نفي اسم. («ليس … بل»)
+        baik … maupun … = الاتنين، سواء… أو («كلٌّ من … و…»). وغلط مشهور: baik … dan. لازم maupun.
+      ar: |
+        bukan … melainkan … = ليس … بل …: استدراك بعد نفي الاسم.
+        baik … maupun … = كلٌّ من … و… / سواءٌ … أو …، ولا يقال baik … dan.
+      en: |
+        bukan … melainkan … = not X but (rather) Y: a correction after negating a noun (MSA «ليس … بل»).
+        baik … maupun … = both … and (MSA «كلٌّ من … و…»). Classic mistake: baik … dan. It must be maupun.
+    grammar: id.conjunction.bukan-hanya
+    examples:
+      - text: Itu bukan asap, melainkan awan di puncak Rinjani.
+        ar_eg: ده مش دخان، ده سحاب على قمة رينجاني.
+        ar: ليس ذلك دخانًا، بل سحابٌ على قمة رينجاني.
+        en: That isn't smoke, it's cloud on Rinjani's summit.
+      - text: Baik anak-anak maupun orang tua harus tahu jalur evakuasi.
+        ar_eg: الصغيرين والكبار، الكل لازم يعرف طريق الإخلاء.
+        ar: يجب على الأطفال والكبار على السواء معرفة طريق الإخلاء.
+        en: Both children and adults need to know the evacuation route.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: merusak
+        ar_eg: يبوّظ / يدمّر
+        ar: يُتلف / يدمّر
+        en: to damage
+      - text: jembatan
+        ar_eg: كوبري
+        ar: جسر
+        en: bridge
+      - text: asap
+        ar_eg: دخان
+        ar: دخان
+        en: smoke
+      - text: awan
+        ar_eg: سحاب
+        ar: سحاب
+        en: cloud
+      - text: puncak
+        ar_eg: قمة
+        ar: قمة
+        en: summit, peak
+      - text: baik … maupun
+        ar_eg: سواء… أو / الاتنين
+        ar: كلٌّ من… و…
+        en: both … and
+    words: [merusak, jembatan, asap, awan, puncak, maupun]
+  - id: e02
+    type: multiple_choice
+    question: Baik guru ___ murid ikut latihan gempa.
+    options: [dan, tetapi, maupun]
+    answer: 2
+    explain:
+      ar_eg: baik بتيجي دايمًا مع maupun، مش dan.
+      ar: تقترن baik بـ maupun دائمًا لا بـ dan.
+      en: baik always pairs with maupun, never dan.
+    words: [maupun, murid]
+  - id: e03
+    type: listen
+    text: Baik jembatan maupun jalan rusak karena banjir.
+    options:
+      - Baik jembatan maupun jalan rusak karena banjir.
+      - Baik jembatan dan jalan rusak karena banjir.
+      - Baik jembatan maupun jalan rusak karena gempa.
+    answer: 0
+    meaning:
+      ar_eg: الكباري والطرق الاتنين باظوا بسبب الفيضان.
+      ar: تضرّرت الجسور والطرق معًا بسبب الفيضان.
+      en: Both the bridge and the road were damaged by the flood.
+    words: [maupun, jembatan]
+  - id: e04
+    type: multiple_choice
+    question: Itu bukan awan, ___ asap dari gunung berapi.
+    options: [tetapi juga, melainkan, maupun]
+    answer: 1
+    explain:
+      ar_eg: بعد نفي اسم بـ bukan، التصحيح بـ melainkan («ليس … بل»).
+      ar: بعد نفي الاسم بـ bukan يأتي الاستدراك بـ melainkan.
+      en: After negating a noun with bukan, correct it with melainkan.
+    words: [awan, asap]
+  - id: e05
+    type: fill_blank
+    sentence: Gempa itu tidak hanya ___ rumah, tetapi juga jembatan.
+    meaning:
+      ar_eg: الزلزال ده مش بس بوّظ البيوت، لأ والكباري كمان.
+      ar: لم يدمّر الزلزال البيوت فحسب، بل الجسور أيضًا.
+      en: The earthquake damaged not only houses but also bridges.
+    options: [meletus, merusak, meluap]
+    answers: [merusak]
+    words: [merusak, jembatan]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: فيه دخان طالع من قمة البركان.
+      ar: يخرج دخان من قمة البركان.
+      en: Smoke is coming out of the volcano's summit.
+    answer: Asap keluar dari puncak gunung berapi.
+    distractors: [awan, melainkan]
+    words: [asap, puncak]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الزلزال مش بس بوّظ البيوت، لأ والكباري كمان.
+      ar: لم يدمّر الزلزال البيوت فحسب، بل الجسور أيضًا.
+      en: The earthquake damaged not only houses but also bridges.
+    answers:
+      - Gempa itu tidak hanya merusak rumah, tetapi juga jembatan.
+      - Gempa itu tidak hanya merusak rumah, tetapi juga jembatan
+      - Gempa tidak hanya merusak rumah, tetapi juga jembatan.
+      - Gempa tidak hanya merusak rumah, tetapi juga jembatan
+      - Gempa itu bukan hanya merusak rumah, tetapi juga jembatan.
+      - Gempa bukan hanya merusak rumah, tetapi juga jembatan.
+      - Gempa itu tidak hanya merusak rumah, tapi juga jembatan.
+      - Gempa tidak hanya merusak rumah, tapi juga jembatan.
+      - Gempa itu tidak hanya merusak rumah tetapi juga jembatan.
+      - Gempa itu tidak hanya merusak rumah-rumah, tetapi juga jembatan.
+    words: [merusak, jembatan]
+  - id: e08
+    type: speaking
+    text: Itu bukan asap, melainkan awan di puncak Rinjani.
+    meaning:
+      ar_eg: ده مش دخان، ده سحاب على قمة رينجاني.
+      ar: ليس ذلك دخانًا، بل سحابٌ على قمة رينجاني.
+      en: That isn't smoke, it's cloud on Rinjani's summit.
+    words: [asap, awan, puncak]
+dialogue:
+  title: Pagi di Tetebatu
+  lines:
+    - speaker: Mohamed
+      text: Lihat, Mas! Ada asap di puncak Rinjani!
+      ar_eg: بص يا ماس! فيه دخان على قمة رينجاني!
+      ar: انظر يا ماس! هناك دخان على قمة رينجاني!
+      en: Look, Mas! There's smoke on Rinjani's summit!
+    - speaker: Mas Rizal
+      text: Itu bukan asap, melainkan awan.
+      ar_eg: ده مش دخان، ده سحاب.
+      ar: ليس ذلك دخانًا، بل سحاب.
+      en: That isn't smoke, it's cloud.
+    - speaker: Mohamed
+      text: Oh, syukurlah. Apakah gempa tahun 2018 juga merusak desa ini?
+      ar_eg: آه، الحمد لله. وهو زلزال 2018 بوّظ القرية دي كمان؟
+      ar: الحمد لله. وهل دمّر زلزال 2018 هذه القرية أيضًا؟
+      en: Oh, thank goodness. Did the 2018 earthquake damage this village too?
+    - speaker: Mas Rizal
+      text: Ya. Gempa itu tidak hanya merusak rumah, tetapi juga jembatan dan masjid.
+      ar_eg: أيوه. الزلزال ده مش بس بوّظ البيوت، لأ والكباري والجوامع كمان.
+      ar: نعم. لم يدمّر البيوت فحسب، بل الجسور والمساجد أيضًا.
+      en: Yes. It damaged not only houses but also bridges and mosques.
+    - speaker: Mas Rizal
+      text: Baik warga Lombok maupun orang dari luar Lombok ikut membantu.
+      ar_eg: وأهل لومبوك والناس اللي من برّه لومبوك، الكل ساعد.
+      ar: وقد ساعد كلٌّ من أهل لومبوك والقادمين من خارجها.
+      en: Both Lombok people and people from outside Lombok came to help.
+new_words:
+  - word: merusak
+    pos: verb
+    ar_eg: يبوّظ / يدمّر
+    ar: يُتلف / يدمّر
+    en: to damage
+  - word: jembatan
+    pos: noun
+    ar_eg: كوبري
+    ar: جسر
+    en: bridge
+  - word: asap
+    pos: noun
+    ar_eg: دخان
+    ar: دخان
+    en: smoke
+  - word: awan
+    pos: noun
+    ar_eg: سحاب
+    ar: سحاب
+    en: cloud
+  - word: puncak
+    pos: noun
+    ar_eg: قمة
+    ar: قمة
+    en: summit, peak
+  - word: maupun
+    pos: conjunction
+    ar_eg: أو / و (baik … maupun = سواء… أو)
+    ar: و / أو (baik … maupun = كلٌّ من … و…)
+    en: and, or (baik … maupun = both … and)
+review:
+  status: draft
+  verified: false

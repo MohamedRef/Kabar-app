@@ -1,0 +1,215 @@
+schema: kabar.lesson/v1
+id: bipa4.u08.l03
+language: id
+title: Tokoh dan latar
+can_do:
+  ar_eg: تحلّل شخصيات الحكاية وطباعهم ومكانها وزمانها.
+  ar: أن تحلّل شخصيات الحكاية وطباعها ومكانها وزمانها.
+  en: Analyse a tale's characters, their traits and its setting.
+slides:
+  - title: Tokoh dan watak
+    body:
+      ar_eg: |
+        عشان تحلّل حكاية (unsur intrinsik)، ابدأ بالشخصيات:
+        tokoh = شخصية، tokoh utama = البطل / الشخصية الرئيسية.
+        watak = الطبع: licik = مكّار، setia = وفي، sombong = متكبّر.
+        وصف الشخصية بعبارة طويلة: seekor kancil kecil yang licik.
+      ar: |
+        لتحليل الحكاية (unsur intrinsik) ابدأ بالشخصيات:
+        tokoh = شخصية، وtokoh utama = الشخصية الرئيسية.
+        watak = الطبع: licik = ماكر، setia = وفيّ، sombong = متكبّر.
+        وصِف الشخصية بعبارة طويلة: seekor kancil kecil yang licik.
+      en: |
+        To analyse a story (unsur intrinsik), start with its people:
+        tokoh = character; tokoh utama = main character.
+        watak = personality: licik = cunning, setia = loyal, sombong = arrogant.
+        Describe them with a long phrase: seekor kancil kecil yang licik.
+    grammar: id.phrase.complex
+    examples:
+      - text: Tokoh utama cerita ini adalah seekor kancil kecil yang licik.
+        ar_eg: البطل في الحكاية دي غزال قزم صغير مكّار.
+        ar: الشخصية الرئيسية في هذه الحكاية غزال قزم صغير ماكر.
+        en: The main character of this story is a small, cunning mouse-deer.
+      - text: Buaya itu sombong, tetapi kancil lebih licik.
+        ar_eg: التمساح ده متكبّر، بس الغزال القزم أمكر منه.
+        ar: ذلك التمساح متكبّر، لكن الغزال القزم أمكر منه.
+        en: The crocodile is arrogant, but the mouse-deer is more cunning.
+  - title: Latar
+    body:
+      ar_eg: |
+        latar = المكان والزمان والجو بتوع الحكاية. اسأل: Di mana? Kapan? Bagaimana suasananya?
+      ar: |
+        latar = مكان الحكاية وزمانها وجوّها. اسأل: Di mana؟ Kapan؟ Bagaimana suasananya؟
+      en: |
+        latar = the setting: where, when and the mood. Ask: Di mana? Kapan? Bagaimana suasananya?
+    grammar: id.phrase.complex
+    examples:
+      - text: Latar cerita ini adalah sebuah sungai besar di tengah hutan pada zaman dahulu.
+        ar_eg: الحكاية دي بتحصل عند نهر كبير في نص الغابة من زمان.
+        ar: تدور هذه الحكاية عند نهر كبير وسط الغابة في الزمن القديم.
+        en: The story is set by a big river in the middle of a forest, long ago.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tokoh
+        ar_eg: شخصية (في حكاية)
+        ar: شخصية
+        en: character (in a story)
+      - text: watak
+        ar_eg: طبع
+        ar: طبع
+        en: personality, nature
+      - text: latar
+        ar_eg: مكان وزمان الحكاية
+        ar: مكان الحكاية وزمانها
+        en: setting
+      - text: licik
+        ar_eg: مكّار
+        ar: ماكر
+        en: cunning, sly
+      - text: setia
+        ar_eg: وفي
+        ar: وفيّ
+        en: loyal
+      - text: sombong
+        ar_eg: متكبّر
+        ar: متكبّر
+        en: arrogant
+    words: [tokoh, watak, latar, licik, setia, sombong]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في الحكاية، الكلب عمره ما ساب صاحبه. طبعه إيه؟
+      ar: في الحكاية لم يترك الكلب صاحبه أبدًا. ما طبعه؟
+      en: In the story, the dog never leaves its master. What is its trait?
+    options: [sombong, licik, setia]
+    answer: 2
+    words: [setia, watak]
+  - id: e03
+    type: listen
+    text: Tokoh utama cerita ini seekor kancil yang licik.
+    options: ["Tokoh utama cerita ini seekor kancil yang licik.", "Tokoh utama cerita ini seekor buaya yang licik.", "Tokoh utama cerita ini seekor kancil yang setia."]
+    answer: 0
+    meaning:
+      ar_eg: البطل في الحكاية دي غزال قزم مكّار.
+      ar: الشخصية الرئيسية في هذه الحكاية غزال قزم ماكر.
+      en: The main character of this story is a cunning mouse-deer.
+    words: [tokoh, licik]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة بتوصف الـ latar؟
+      ar: أيّ جملة تصف الـ latar؟
+      en: Which sentence describes the setting (latar)?
+    options: ["Latarnya sebuah sungai besar di tengah hutan.", "Wataknya sangat sombong.", "Tokohnya seekor buaya tua."]
+    answer: 0
+    words: [latar]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: يعني إيه latar في تحليل الحكاية؟
+      ar: ما معنى latar في تحليل الحكاية؟
+      en: What is the latar of a story?
+    options: [watak tokoh utama, tempat dan waktu cerita, pesan moral cerita]
+    answer: 1
+    words: [latar, watak]
+  - id: e06
+    type: fill_blank
+    sentence: Buaya itu ___ karena merasa paling kuat di sungai.
+    meaning:
+      ar_eg: التمساح ده متكبّر عشان حاسس إنه أقوى واحد في النهر.
+      ar: ذلك التمساح متكبّر لأنه يشعر أنه الأقوى في النهر.
+      en: The crocodile is arrogant because it feels it's the strongest in the river.
+    options: [setia, sombong, licik]
+    answers: [sombong]
+    words: [sombong]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: البطل في الحكاية دي غزال قزم صغير مكّار.
+      ar: الشخصية الرئيسية في هذه الحكاية غزال قزم صغير ماكر.
+      en: The main character of this story is a small, cunning mouse-deer.
+    answer: Tokoh utama cerita ini adalah seekor kancil kecil yang licik.
+    distractors: [setia, sekali]
+    words: [tokoh, licik]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الكلب اللي في الحكاية دي وفي جدًا.
+      ar: الكلب في تلك الحكاية وفيّ جدًا.
+      en: The dog in that story is very loyal.
+    answers:
+      - Anjing dalam cerita itu sangat setia.
+      - Anjing dalam cerita itu sangat setia
+      - Anjing di cerita itu sangat setia.
+      - Anjing di dalam cerita itu sangat setia.
+      - Anjing dalam cerita itu setia sekali.
+      - Anjing dalam dongeng itu sangat setia.
+    words: [setia]
+  - id: e09
+    type: speaking
+    text: Watak buaya itu sombong, tetapi kancil lebih licik.
+    meaning:
+      ar_eg: طبع التمساح التكبّر، بس الغزال القزم أمكر.
+      ar: طبع التمساح التكبّر، لكن الغزال القزم أمكر.
+      en: The crocodile is arrogant by nature, but the mouse-deer is more cunning.
+    words: [watak, sombong, licik]
+dialogue:
+  title: Kancil dan buaya
+  lines:
+    - speaker: Mas Rizal
+      text: Siapa tokoh utama dalam cerita Kancil dan Buaya?
+      ar_eg: مين البطل في حكاية الغزال القزم والتماسيح؟
+      ar: من الشخصية الرئيسية في حكاية الغزال القزم والتماسيح؟
+      en: Who is the main character in the story of the Mouse-deer and the Crocodiles?
+    - speaker: Mohamed
+      text: Kancil. Wataknya licik, tetapi dia pintar.
+      ar_eg: الغزال القزم. طبعه مكّار، بس هو شاطر.
+      ar: الغزال القزم. طبعه ماكر، لكنه ذكي.
+      en: The mouse-deer. He's cunning by nature, but clever.
+    - speaker: Mas Rizal
+      text: Bagaimana dengan buaya-buaya itu?
+      ar_eg: وإيه رأيك في التماسيح؟
+      ar: وماذا عن التماسيح؟
+      en: And what about the crocodiles?
+    - speaker: Mohamed
+      text: Mereka sombong. Latarnya sebuah sungai besar di tengah hutan.
+      ar_eg: متكبّرين. والحكاية بتحصل عند نهر كبير في نص الغابة.
+      ar: إنها متكبّرة. وتدور الحكاية عند نهر كبير وسط الغابة.
+      en: They're arrogant. The setting is a big river in the middle of a forest.
+new_words:
+  - word: tokoh
+    pos: noun
+    ar_eg: شخصية (في حكاية) / شخصية مشهورة
+    ar: شخصية (في حكاية)، شخصية بارزة
+    en: character (in a story); public figure
+  - word: watak
+    pos: noun
+    ar_eg: طبع
+    ar: طبع، خُلُق
+    en: personality, nature
+  - word: latar
+    pos: noun
+    ar_eg: مكان وزمان الحكاية
+    ar: مكان الحكاية وزمانها
+    en: setting (of a story)
+  - word: licik
+    pos: adjective
+    ar_eg: مكّار
+    ar: ماكر
+    en: cunning, sly
+  - word: setia
+    pos: adjective
+    ar_eg: وفي
+    ar: وفيّ
+    en: loyal, faithful
+  - word: sombong
+    pos: adjective
+    ar_eg: متكبّر / شايف نفسه
+    ar: متكبّر
+    en: arrogant
+review:
+  status: draft
+  verified: false

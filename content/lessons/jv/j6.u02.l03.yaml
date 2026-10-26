@@ -1,0 +1,210 @@
+schema: kabar.lesson/v1
+id: j6.u02.l03
+language: jv
+title: Taling tarung
+can_do:
+  ar_eg: تكتب o، والحرفين المخصوصين لـ rê وlê.
+  ar: أن تكتب o، والحرفين الخاصين بـ rê وlê.
+  en: Write o, and the letters for rê and lê.
+slides:
+  - title: Taling tarung
+    body:
+      ar_eg: |
+        o محتاجة علامتين مع بعض: taling قبل الحرف + tarung بعده. الاتنين مع بعض اسمهم taling tarung: ꦏꦺꦴ = ko.
+        tarung لوحدها مش o. لازم الاتنين.
+        وخلي بالك من الفرق: ꦭꦺꦴꦫꦺꦴ loro (اتنين) بـ taling tarung، وꦭꦫ lara (عيان) من غير علامات، مع إنها بتتنطق «لورو» برضه!
+      ar: |
+        تحتاج o إلى علامتين معًا: taling قبل الحرف وtarung بعده، واسمهما معًا taling tarung: ꦏꦺꦴ = ko.
+        وtarung وحدها ليست o.
+        وانتبه: ꦭꦺꦴꦫꦺꦴ loro (اثنان) بـ taling tarung، وꦭꦫ lara (مريض) بلا علامات، مع أنها تُنطق «لورو» أيضًا.
+      en: |
+        o needs two marks together: taling before the letter + tarung after it. Together they're called taling tarung: ꦏꦺꦴ = ko.
+        tarung alone isn't o; you need both.
+        Mind the difference: ꦭꦺꦴꦫꦺꦴ loro (two) has taling tarung, while ꦭꦫ lara (sick) has no marks, even though it's also said "loro"!
+    grammar: jv.aksara.sandhangan-swara
+    examples:
+      - text: ꦏꦺꦴꦮꦺ (kowe)
+        ar_eg: إنت — ko بـ taling tarung، وwe بـ taling
+        ar: أنت — ko بـ taling tarung، وwe بـ taling
+        en: you — ko with taling tarung, we with taling
+      - text: ꦭꦺꦴꦫꦺꦴ (loro)
+        ar_eg: اتنين
+        ar: اثنان
+        en: two
+  - title: Pa cerek lan nga lelet
+    body:
+      ar_eg: |
+        حاجة صغيرة: rê وlê (بالـ pepet) ليهم حرفين مخصوصين، مش ꦫ أو ꦭ + pepet:
+        - pa cêrêk ꦉ = rê: ꦉꦒ rêga (سعر).
+        - nga lêlêt ꦊ = lê: ꦊꦩꦸ lêmu (تخين).
+      ar: |
+        ولـ rê وlê (بالـ pepet) حرفان خاصان، لا ꦫ أو ꦭ مع pepet:
+        - pa cêrêk ꦉ = rê: ꦉꦒ rêga (سعر).
+        - nga lêlêt ꦊ = lê: ꦊꦩꦸ lêmu (سمين).
+      en: |
+        One detail: rê and lê (with pepet) have their own letters, not ꦫ / ꦭ + pepet:
+        - pa cêrêk ꦉ = rê: ꦉꦒ rêga (price).
+        - nga lêlêt ꦊ = lê: ꦊꦩꦸ lêmu (fat, plump).
+    grammar: jv.aksara.sandhangan-swara
+    examples:
+      - text: ꦉꦒ (rêga)
+        ar_eg: سعر
+        ar: سعر
+        en: price
+      - text: ꦊꦩꦸ (lêmu)
+        ar_eg: تخين / مليان
+        ar: سمين / ممتلئ
+        en: fat, plump
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: taling tarung
+        ar_eg: علامة o — taling قبل الحرف + tarung بعده
+        ar: علامة o — taling قبل الحرف وtarung بعده
+        en: the o mark — taling before + tarung after
+      - text: pa cerek
+        ar_eg: الحرف المخصوص لـ rê
+        ar: الحرف الخاص بـ rê
+        en: the special letter for rê
+      - text: nga lelet
+        ar_eg: الحرف المخصوص لـ lê
+        ar: الحرف الخاص بـ lê
+        en: the special letter for lê
+      - text: lemu
+        ar_eg: تخين / مليان
+        ar: سمين / ممتلئ
+        en: fat, plump
+    words: [taling tarung, pa cerek, nga lelet, lemu]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ده بيتقري إزاي؟ ꦏꦺꦴ
+      ar: كيف يُقرأ هذا؟ ꦏꦺꦴ
+      en: How do you read this? ꦏꦺꦴ
+    options: [ko, ka, ku]
+    answer: 0
+    words: [taling tarung]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي واحدة هي loro (اتنين)؟
+      ar: أيّها loro (اثنان)؟
+      en: Which one is loro (two)?
+    options: ["ꦭꦫ", "ꦭꦺꦴꦫꦺꦴ", "ꦭꦺꦴꦫ"]
+    answer: 1
+    explain:
+      ar_eg: loro (اتنين) فيها o حقيقية، فبتتكتب بـ taling tarung. ꦭꦫ = lara (عيان)، حتى لو بتتنطق «لورو».
+      ar: في loro (اثنان) o حقيقية فتُكتب بـ taling tarung، وꦭꦫ = lara (مريض) وإن نُطقت «لورو».
+      en: loro (two) has a real o, so it takes taling tarung. ꦭꦫ is lara (sick), even though it's said "loro".
+    words: [taling tarung]
+  - id: e04
+    type: listen
+    text: rega
+    question:
+      ar_eg: سمعت rega (سعر). بتتكتب إزاي؟
+      ar: سمعت rega (سعر). كيف تُكتب؟
+      en: You heard rega (price). How is it written?
+    options: ["ꦫꦒ", "ꦫꦺꦴꦒ", "ꦉꦒ"]
+    answer: 2
+    meaning:
+      ar_eg: سعر
+      ar: سعر
+      en: price
+    words: [pa cerek]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي واحد هو lê الصح؟
+      ar: أيّها lê الصحيحة؟
+      en: Which is the correct lê?
+    options: ["ꦭꦼ", "ꦊ", "ꦭꦺ"]
+    answer: 1
+    explain:
+      ar_eg: lê ليها حرف مخصوص اسمه nga lelet، مش ꦭ + pepet. والتالتة دي le بـ taling.
+      ar: لـ lê حرف خاص اسمه nga lelet لا ꦭ مع pepet، والثالثة le بـ taling.
+      en: lê has its own letter, nga lelet — not ꦭ + pepet. The third one is le with taling.
+    words: [nga lelet]
+  - id: e06
+    type: fill_blank
+    sentence: ꦱꦺꦴꦫꦺ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: العصر / بعد الضهر)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: العصر)"
+      en: Type the reading in Latin letters. (It means "afternoon".)
+    answers: [sore]
+    words: [taling tarung]
+  - id: e07
+    type: fill_blank
+    sentence: ꦊꦩꦸ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: تخين)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: سمين)"
+      en: Type the reading in Latin letters. (It means "plump".)
+    answers: [lemu]
+    words: [nga lelet, lemu]
+  - id: e08
+    type: fill_blank
+    sentence: ꦉꦒ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: سعر)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: سعر)"
+      en: Type the reading in Latin letters. (It means "price".)
+    answers: [rega]
+    words: [pa cerek]
+  - id: e09
+    type: build_sentence
+    source:
+      ar_eg: ابني «sapi lemu» (بقرة تخينة) مقطع مقطع.
+      ar: ركّب «sapi lemu» (بقرة سمينة) مقطعًا مقطعًا.
+      en: Build "sapi lemu" (a plump cow), syllable by syllable.
+    answer: ꦱ ꦥꦶ ꦊ ꦩꦸ
+    distractors: ["ꦭꦼ"]
+    words: [nga lelet, lemu]
+dialogue:
+  title: Rega pira?
+  lines:
+    - speaker: Mohamed
+      text: Mas, iki diwaca rega?
+      ar_eg: يا ديماس، دي بتتقري rega؟
+      ar: يا ديماس، هل تُقرأ هذه rega؟
+      en: Mas, is this read rega?
+    - speaker: Dimas
+      text: Iya, rega. Aksara re iku pa cerek.
+      ar_eg: أيوه، rega. الحرف re ده اسمه pa cerek.
+      ar: نعم، rega. وحرف re اسمه pa cerek.
+      en: Yes, rega. The letter re is called pa cerek.
+    - speaker: Mohamed
+      text: Dudu ra karo pepet?
+      ar_eg: مش ra وعليها pepet؟
+      ar: أليست ra مع pepet؟
+      en: Not ra with pepet?
+    - speaker: Dimas
+      text: Dudu. Re lan le duwe aksara dhewe.
+      ar_eg: لأ. re وle ليهم حروف لوحدهم.
+      ar: لا. لـ re وle حرفان خاصان.
+      en: No. Re and le have letters of their own.
+new_words:
+  - word: taling tarung
+    pos: noun
+    ar_eg: "علامة o: taling قبل الحرف + tarung بعده"
+    ar: "علامة o: taling قبل الحرف وtarung بعده"
+    en: the o mark, taling before + tarung after
+  - word: pa cerek
+    pos: noun
+    ar_eg: الحرف المخصوص لـ rê
+    ar: الحرف الخاص بـ rê
+    en: the special letter for rê
+  - word: nga lelet
+    pos: noun
+    ar_eg: الحرف المخصوص لـ lê
+    ar: الحرف الخاص بـ lê
+    en: the special letter for lê
+  - word: lemu
+    pos: adjective
+    ar_eg: تخين / مليان
+    ar: سمين / ممتلئ
+    en: fat, plump = gemuk
+review:
+  status: draft
+  verified: false

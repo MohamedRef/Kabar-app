@@ -1,0 +1,208 @@
+schema: kabar.lesson/v1
+id: bipa4.u08.l04
+language: id
+title: Alur dan amanat
+can_do:
+  ar_eg: تحلّل حبكة الحكاية وصراعها والعبرة اللي فيها.
+  ar: أن تحلّل حبكة الحكاية وصراعها وعبرتها.
+  en: Analyse a tale's plot, conflict and moral message.
+slides:
+  - title: Alur dan konflik
+    body:
+      ar_eg: |
+        alur = الحبكة، يعني ترتيب الأحداث: البداية ← konflik (الصراع / المشكلة) ← الذروة ← penyelesaian (الحل، من menyelesaikan).
+        ومالين كوندانج حكاية مشهورة في إندونيسيا كلها.
+      ar: |
+        alur = الحبكة، أي ترتيب الأحداث: البداية ← konflik (الصراع) ← الذروة ← penyelesaian (الحل، من menyelesaikan).
+        وحكاية مالين كوندانغ مشهورة في إندونيسيا كلها.
+      en: |
+        alur = plot, the order of events: opening → konflik (conflict) → climax → penyelesaian (resolution, from menyelesaikan).
+        Malin Kundang is a tale every Indonesian knows.
+    grammar: id.phrase.complex
+    examples:
+      - text: Malin Kundang adalah seorang anak laki-laki miskin dari sebuah desa nelayan.
+        ar_eg: مالين كوندانج كان ولد فقير من قرية صيادين.
+        ar: مالين كوندانغ صبي فقير من قرية صيادين.
+        en: Malin Kundang was a poor boy from a fishing village.
+      - text: Konflik dimulai ketika Malin Kundang malu pada ibunya yang miskin.
+        ar_eg: الصراع بيبدأ لما مالين كوندانج اتكسف من أمه الفقيرة.
+        ar: يبدأ الصراع حين يخجل مالين كوندانغ من أمه الفقيرة.
+        en: The conflict begins when Malin Kundang is ashamed of his poor mother.
+  - title: Amanat
+    body:
+      ar_eg: |
+        amanat = العبرة / الرسالة الأخلاقية للحكاية، من العربي «أمانة».
+        durhaka = عاق (لأهله)، menyesal = يندم.
+      ar: |
+        amanat = العبرة أو الرسالة الأخلاقية للحكاية، من العربية «أمانة».
+        durhaka = عاقّ (لوالديه)، menyesal = يندم.
+      en: |
+        amanat = the story's moral message, from Arabic «أمانة».
+        durhaka = disrespectful, ungrateful (to one's parents); menyesal = to regret.
+    examples:
+      - text: Amanat cerita ini adalah jangan durhaka kepada orang tua.
+        ar_eg: عبرة الحكاية دي إنك ماتبقاش عاق لأهلك.
+        ar: عبرة هذه الحكاية ألّا تكون عاقًّا لوالديك.
+        en: The moral of this story is never to be ungrateful to your parents.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: alur
+        ar_eg: حبكة
+        ar: حبكة
+        en: plot
+      - text: konflik
+        ar_eg: صراع / مشكلة
+        ar: صراع
+        en: conflict
+      - text: amanat
+        ar_eg: عبرة / رسالة
+        ar: عبرة
+        en: moral message
+      - text: durhaka
+        ar_eg: عاق
+        ar: عاقّ
+        en: ungrateful to one's parents
+      - text: menyesal
+        ar_eg: يندم
+        ar: يندم
+        en: to regret
+    words: [alur, konflik, amanat, durhaka, menyesal]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها العبرة الأخلاقية للحكاية؟
+      ar: أيّ كلمة تعني العبرة الأخلاقية للحكاية؟
+      en: Which word means the story's moral message?
+    options: [alur, latar, amanat]
+    answer: 2
+    explain:
+      ar_eg: amanat من «أمانة». alur = الحبكة، latar = المكان والزمان.
+      ar: amanat من «أمانة»، وalur = الحبكة، وlatar = المكان والزمان.
+      en: amanat comes from «أمانة»; alur is the plot and latar the setting.
+    words: [amanat]
+  - id: e03
+    type: listen
+    text: Malin Kundang menyesal, tetapi sudah terlambat.
+    options: ["Malin Kundang tidak menyesal, dan sudah terlambat.", "Malin Kundang menyesal, tetapi sudah terlambat.", "Ibu Malin Kundang menyesal, tetapi sudah terlambat."]
+    answer: 1
+    meaning:
+      ar_eg: مالين كوندانج ندم، بس كان الوقت فات.
+      ar: ندم مالين كوندانغ، لكن بعد فوات الأوان.
+      en: Malin Kundang regretted it, but it was too late.
+    words: [menyesal]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مالين كوندانج اتكسف من أمه الفقيرة وأنكرها. أنهي كلمة بتوصفه؟
+      ar: خجل مالين كوندانغ من أمه الفقيرة وأنكرها. أيّ كلمة تصفه؟
+      en: Malin Kundang was ashamed of his poor mother and denied her. Which word describes him?
+    options: [durhaka, setia, pemberani]
+    answer: 0
+    words: [durhaka]
+  - id: e05
+    type: multiple_choice
+    question: Dalam alur cerita, ___ biasanya datang sebelum penyelesaian.
+    question_meaning:
+      ar_eg: في حبكة الحكاية، إيه اللي بييجي عادةً قبل الحل؟
+      ar: في حبكة الحكاية، ما الذي يأتي عادةً قبل الحل؟
+      en: In a plot, what usually comes before the resolution?
+    options: [amanat, konflik, latar]
+    answer: 1
+    words: [alur, konflik]
+  - id: e06
+    type: fill_blank
+    sentence: ___ cerita dimulai ketika kapal Malin Kundang tiba di desanya.
+    meaning:
+      ar_eg: صراع الحكاية بيبدأ لما مركب مالين كوندانج وصلت قريته.
+      ar: يبدأ صراع الحكاية حين تصل سفينة مالين كوندانغ إلى قريته.
+      en: The story's conflict begins when Malin Kundang's ship arrives in his village.
+    options: [Amanat, Latar, Konflik]
+    answers: [Konflik]
+    words: [konflik]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: عبرة الحكاية دي إنك ماتبقاش عاق لأهلك.
+      ar: عبرة هذه الحكاية ألّا تكون عاقًّا لوالديك.
+      en: The moral of this story is never to be ungrateful to your parents.
+    answer: Amanat cerita ini adalah jangan durhaka kepada orang tua.
+    distractors: [alur, setia]
+    words: [amanat, durhaka]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: حبكة الحكاية دي بسيطة.
+      ar: حبكة هذه الحكاية بسيطة.
+      en: The plot of this story is simple.
+    answers:
+      - Alur cerita ini sederhana.
+      - Alur cerita ini sederhana
+      - Alur ceritanya sederhana.
+      - Alur dongeng ini sederhana.
+      - Alur kisah ini sederhana.
+      - Alur cerita ini mudah.
+    words: [alur]
+  - id: e09
+    type: speaking
+    text: Pada akhir cerita, Malin Kundang menyesal dan menjadi batu.
+    meaning:
+      ar_eg: في آخر الحكاية، مالين كوندانج ندم واتحوّل حجر.
+      ar: في نهاية الحكاية ندم مالين كوندانغ وتحوّل إلى حجر.
+      en: At the end of the story, Malin Kundang regrets it and turns to stone.
+    words: [menyesal]
+dialogue:
+  title: Kisah Malin Kundang
+  lines:
+    - speaker: Mas Rizal
+      text: Kamu sudah membaca kisah Malin Kundang? Apa konfliknya?
+      ar_eg: قريت حكاية مالين كوندانج؟ إيه الصراع فيها؟
+      ar: هل قرأت حكاية مالين كوندانغ؟ ما صراعها؟
+      en: Have you read the tale of Malin Kundang? What's the conflict?
+    - speaker: Mohamed
+      text: Malin Kundang malu pada ibunya yang miskin. Dia anak durhaka.
+      ar_eg: مالين كوندانج اتكسف من أمه الفقيرة. ده ابن عاق.
+      ar: خجل مالين كوندانغ من أمه الفقيرة. إنه ابن عاقّ.
+      en: Malin Kundang is ashamed of his poor mother. He's an ungrateful son.
+    - speaker: Mas Rizal
+      text: Lalu, apa amanatnya?
+      ar_eg: طب والعبرة إيه؟
+      ar: وما العبرة إذن؟
+      en: So what's the moral?
+    - speaker: Mohamed
+      text: Hormatilah orang tua, supaya kita tidak menyesal nanti.
+      ar_eg: احترم أهلك، عشان ماتندمش بعدين.
+      ar: احترم والديك، كي لا تندم لاحقًا.
+      en: Respect your parents, so you won't regret it later.
+new_words:
+  - word: alur
+    pos: noun
+    ar_eg: حبكة
+    ar: حبكة
+    en: plot
+  - word: konflik
+    pos: noun
+    ar_eg: صراع / مشكلة
+    ar: صراع
+    en: conflict
+  - word: amanat
+    pos: noun
+    ar_eg: عبرة / رسالة (وكمان أمانة)
+    ar: عبرة، رسالة (وأيضًا أمانة)
+    en: moral message (also a trust, mandate)
+    arabic: أمانة
+  - word: durhaka
+    pos: adjective
+    ar_eg: عاق (لأهله)
+    ar: عاقّ
+    en: disrespectful, ungrateful (to one's parents)
+  - word: menyesal
+    pos: verb
+    ar_eg: يندم
+    ar: يندم
+    en: to regret
+review:
+  status: draft
+  verified: false

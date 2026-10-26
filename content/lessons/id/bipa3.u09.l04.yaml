@@ -1,0 +1,195 @@
+schema: kabar.lesson/v1
+id: bipa3.u09.l04
+language: id
+title: Putri Mandalika
+can_do:
+  ar_eg: تحكي أسطورة الأميرة مانداليكا بكلامك.
+  ar: أن تروي أسطورة الأميرة مانداليكا بأسلوبك.
+  en: Retell the legend of Princess Mandalika in your own words.
+slides:
+  - title: Legenda Putri Mandalika
+    body:
+      ar_eg: |
+        أشهر حدوتة في جنوب لومبوك: أمرا كتير جم يطلبوا إيد (melamar) الأميرة مانداليكا. هي حبت شعبها (rakyat) وخافت من الحرب، ففضلت تفكر berhari-hari، وفي الآخر نطّت (terjun) في البحر.
+        بعدها ظهرت ديدان بحر ملونة اسمها nyale، والناس بتصدّق إنها الأميرة. ولحد النهارده الناس بتيجي berbondong-bondong تدوّر على النيالي.
+      ar: |
+        أشهر حكايات جنوب لومبوك: جاء أمراء كثيرون يخطبون (melamar) الأميرة مانداليكا، فأحبّت شعبها (rakyat) وخشيت الحرب، ففكّرت berhari-hari ثم ألقت بنفسها (terjun) في البحر.
+        وبعدها ظهرت ديدان بحرية ملونة تُسمّى nyale، يعتقد الناس أنها الأميرة، وما زالوا يأتون berbondong-bondong للبحث عنها.
+      en: |
+        South Lombok's best-loved legend: many princes came to propose to (melamar) Princess Mandalika. She loved her people (rakyat) and feared war, so she thought berhari-hari, then leapt (terjun) into the sea.
+        Afterwards colourful sea worms called nyale appeared, and people believe they are the princess. To this day people come berbondong-bondong to look for nyale.
+    grammar: id.reduplication.ber-an
+    examples:
+      - text: Setiap tahun, warga datang berbondong-bondong ke pantai untuk mencari nyale.
+        ar_eg: كل سنة الأهالي بييجوا الشط أفواج عشان يدوّروا على النيالي.
+        ar: يأتي الأهالي كل عام إلى الشاطئ أفواجًا للبحث عن النيالي.
+        en: Every year, villagers come to the beach in droves to look for nyale.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question: Para pangeran datang ke istana untuk ___ Putri Mandalika.
+    options: [melamar, mengungsi, menenun]
+    answer: 0
+    words: [melamar]
+  - id: e02
+    type: listen
+    text: Putri Mandalika terjun ke laut.
+    options:
+      - Putri Mandalika turun ke laut.
+      - Putri Mandalika pergi ke pasar.
+      - Putri Mandalika terjun ke laut.
+    answer: 2
+    meaning:
+      ar_eg: الأميرة مانداليكا نطّت في البحر.
+      ar: ألقت الأميرة مانداليكا بنفسها في البحر.
+      en: Princess Mandalika leapt into the sea.
+    words: [terjun]
+  - id: e03
+    type: match_pairs
+    pairs:
+      - text: nyale
+        ar_eg: دودة البحر (النيالي)
+        ar: دودة البحر (النيالي)
+        en: nyale sea worm
+      - text: melamar
+        ar_eg: يطلب إيد / يخطب
+        ar: يخطب
+        en: to propose (marriage)
+      - text: terjun
+        ar_eg: ينط / يغطس
+        ar: يقفز / يغطس
+        en: to leap, to plunge
+      - text: rakyat
+        ar_eg: الشعب / الرعية
+        ar: الشعب / الرعية
+        en: the people, subjects
+      - text: berbondong-bondong
+        ar_eg: أفواج
+        ar: أفواجًا
+        en: in droves
+      - text: berhari-hari
+        ar_eg: أيام وأيام
+        ar: أيامًا طويلة
+        en: for days
+    words: [nyale, melamar, terjun, rakyat, berbondong-bondong, berhari-hari]
+  - id: e04
+    type: fill_blank
+    sentence: Warga datang ___ ke pantai untuk mencari nyale.
+    meaning:
+      ar_eg: (أفواج) الأهالي بييجوا الشط أفواج يدوّروا على النيالي.
+      ar: (أفواجًا) يأتي الأهالي إلى الشاطئ أفواجًا للبحث عن النيالي.
+      en: (in droves) Villagers come to the beach in droves to look for nyale.
+    answers: [berbondong-bondong]
+    words: [berbondong-bondong, nyale]
+  - id: e05
+    type: fill_blank
+    sentence: Putri Mandalika sayang kepada semua ___.
+    meaning:
+      ar_eg: الأميرة مانداليكا كانت بتحب كل شعبها.
+      ar: كانت الأميرة مانداليكا تحب شعبها كله.
+      en: Princess Mandalika loved all her people.
+    options: [nyale, raja, rakyat]
+    answers: [rakyat]
+    words: [rakyat]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: أمرا كتير جم يطلبوا إيد الأميرة.
+      ar: جاء أمراء كثيرون ليخطبوا الأميرة.
+      en: Many princes came to propose to the princess.
+    answer: Banyak pangeran datang untuk melamar putri itu.
+    distractors: [terjun, rakyat]
+    words: [melamar, pangeran]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: كل سنة الناس بتدوّر على النيالي على الشط.
+      ar: يبحث الناس كل عام عن النيالي على الشاطئ.
+      en: Every year, people look for nyale on the beach.
+    answers:
+      - Setiap tahun, orang-orang mencari nyale di pantai.
+      - Setiap tahun, orang-orang mencari nyale di pantai
+      - Setiap tahun orang-orang mencari nyale di pantai.
+      - Setiap tahun, orang mencari nyale di pantai.
+      - Setiap tahun, warga mencari nyale di pantai.
+      - Setiap tahun warga mencari nyale di pantai.
+      - Orang-orang mencari nyale di pantai setiap tahun.
+      - Orang mencari nyale di pantai setiap tahun.
+      - Warga mencari nyale di pantai setiap tahun.
+      - Tiap tahun, orang-orang mencari nyale di pantai.
+    words: [nyale]
+  - id: e08
+    type: dictation
+    text: Putri Mandalika berpikir berhari-hari, lalu terjun ke laut.
+    meaning:
+      ar_eg: الأميرة مانداليكا فضلت تفكر أيام، وبعدين نطّت في البحر.
+      ar: فكّرت الأميرة مانداليكا أيامًا، ثم ألقت بنفسها في البحر.
+      en: Princess Mandalika thought for days, then leapt into the sea.
+    words: [berhari-hari, terjun]
+  - id: e09
+    type: speaking
+    text: Rakyat percaya nyale adalah Putri Mandalika.
+    meaning:
+      ar_eg: الناس بتصدّق إن النيالي هي الأميرة مانداليكا.
+      ar: يعتقد الناس أن النيالي هي الأميرة مانداليكا.
+      en: The people believe the nyale are Princess Mandalika.
+    words: [rakyat, nyale]
+dialogue:
+  title: Akhir cerita
+  lines:
+    - speaker: Mohamed
+      text: Mas, sekarang ceritakan akhirnya! Putri Mandalika memilih siapa?
+      ar_eg: يا ماس، احكيلي النهاية بقى! الأميرة اختارت مين؟
+      ar: يا ماس، احكِ لي النهاية الآن! مَن اختارت الأميرة؟
+      en: Mas, tell me the ending now! Who did Princess Mandalika choose?
+    - speaker: Mas Rizal
+      text: Dia tidak memilih. Kalau dia memilih satu pangeran, yang lain akan marah.
+      ar_eg: ما اختارتش. لو اختارت أمير واحد، الباقيين هيزعلوا.
+      ar: لم تختر أحدًا، فلو اختارت أميرًا لغضب الآخرون.
+      en: She didn't choose. If she chose one prince, the others would be angry.
+    - speaker: Mas Rizal
+      text: Jadi, dia pergi ke pantai dan terjun ke laut.
+      ar_eg: فراحت الشط ونطّت في البحر.
+      ar: فذهبت إلى الشاطئ وألقت بنفسها في البحر.
+      en: So she went to the beach and leapt into the sea.
+    - speaker: Mohamed
+      text: Aduh, sedih sekali!
+      ar_eg: يا خسارة، حزينة أوي!
+      ar: يا للحزن!
+      en: Oh, how sad!
+    - speaker: Mas Rizal
+      text: Lalu banyak nyale datang ke pantai. Rakyat percaya nyale itu adalah Putri Mandalika.
+      ar_eg: وبعدين ديدان نيالي كتير جت للشط، والناس صدّقت إن النيالي هي الأميرة.
+      ar: ثم جاءت ديدان نيالي كثيرة إلى الشاطئ، فاعتقد الناس أنها الأميرة.
+      en: Then lots of nyale came to the beach. The people believed the nyale were the princess.
+    - speaker: Mas Rizal
+      text: Sekarang, setiap tahun warga datang berbondong-bondong untuk mencari nyale.
+      ar_eg: ودلوقتي كل سنة الأهالي بييجوا أفواج يدوّروا على النيالي.
+      ar: والآن يأتي الأهالي كل عام أفواجًا للبحث عن النيالي.
+      en: Now, every year, villagers come in droves to look for nyale.
+new_words:
+  - word: nyale
+    pos: noun
+    ar_eg: دودة البحر (النيالي)
+    ar: دودة البحر (النيالي)
+    en: nyale (sea worm)
+  - word: melamar
+    pos: verb
+    ar_eg: يطلب إيد / يخطب
+    ar: يخطب
+    en: to propose (marriage)
+  - word: terjun
+    pos: verb
+    ar_eg: ينط / يغطس
+    ar: يقفز / يغطس
+    en: to leap, to plunge
+  - word: rakyat
+    pos: noun
+    ar_eg: الشعب / الرعية
+    ar: الشعب / الرعية
+    en: the people, subjects
+    arabic: رعية
+review:
+  status: draft
+  verified: false

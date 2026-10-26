@@ -1,0 +1,190 @@
+schema: kabar.lesson/v1
+id: bipa6.u05.l03
+language: id
+title: Istilah syariah
+can_do:
+  ar_eg: تقرا نصوص فيها مصطلحات عربية وتاخد بالك من المعنى اللي اتغير.
+  ar: أن تقرأ نصوصًا فيها مصطلحات عربية وتنتبه لما تغيّر من معانيها.
+  en: Read texts full of Arabic terms and notice where the meaning shifted.
+slides:
+  - title: Sama tapi berbeda
+    body:
+      ar_eg: |
+        كلمات عربي كتير هتفهمها على طول، بس بعضها معناه اتحرّك:
+        - hukum = قانون بشكل عام (مش «حُكم» بس): hukum negara = قانون الدولة.
+        - ulama = عالم دين، واحد أو أكتر: seorang ulama = عالم واحد.
+        - syariah = الشريعة. آتشيه هي المقاطعة الوحيدة اللي بتطبّق قوانين محلية من الشريعة (qanun).
+        - zakat = زكاة، ibadah = عبادة (salat، puasa، haji).
+      ar: |
+        ستفهم كلمات عربية كثيرة فورًا، لكنّ بعضها تحرّك معناه:
+        - hukum = القانون عمومًا (لا «الحُكم» وحده): hukum negara = قانون الدولة.
+        - ulama = عالم دين، مفردًا أو جمعًا: seorang ulama = عالم واحد.
+        - syariah = الشريعة. وآتشيه الإقليم الوحيد الذي يطبّق قوانين محلّية مستمدّة منها (qanun).
+        - zakat = زكاة، ibadah = عبادة (salat، puasa، haji).
+      en: |
+        You'll grasp many Arabic words at once, but some have shifted:
+        - hukum = law in general (not just "ruling"): hukum negara = state law.
+        - ulama = a religious scholar, one or many: seorang ulama = one scholar.
+        - syariah = sharia. Aceh is the only province that applies local sharia-based laws (qanun).
+        - zakat = alms, ibadah = worship (salat, puasa, haji).
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: syariah
+        ar_eg: الشريعة
+        ar: الشريعة
+        en: sharia
+      - text: ulama
+        ar_eg: عالم دين
+        ar: عالم دين
+        en: religious scholar
+      - text: zakat
+        ar_eg: زكاة
+        ar: زكاة
+        en: alms, zakat
+      - text: ibadah
+        ar_eg: عبادة
+        ar: عبادة
+        en: worship
+      - text: hukum
+        ar_eg: قانون
+        ar: قانون
+        en: law
+    words: [syariah, ulama, zakat, ibadah, hukum]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «seorang ulama» يعني إيه؟
+      ar: ما معنى «seorang ulama»؟
+      en: What does "seorang ulama" mean?
+    options:
+      - مجموعة علماء.
+      - طالب علم.
+      - عالم دين واحد.
+    answer: 2
+    words: [ulama]
+  - id: e03
+    type: fill_blank
+    sentence: Setiap pengendara wajib mematuhi ___ lalu lintas.
+    meaning:
+      ar_eg: كل سوّاق لازم يلتزم بقانون المرور.
+      ar: على كلّ سائق الالتزام بقانون المرور.
+      en: Every driver must obey traffic law.
+    options: [hukum, zakat, ibadah]
+    answers: [hukum]
+    words: [hukum]
+  - id: e04
+    type: listen
+    text: Di Aceh, beberapa aturan daerah didasarkan pada syariah.
+    question:
+      ar_eg: في آتشيه، بعض القوانين المحلية مبنية على إيه؟
+      ar: على أيّ شيء تقوم بعض القوانين المحلّية في آتشيه؟
+      en: In Aceh, what are some local rules based on?
+    options:
+      - على الشريعة.
+      - على القانون الهولندي.
+      - على عادات بالي.
+    answer: 0
+    words: [syariah]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: زكاة الفطر بتتجمع في آخر رمضان.
+      ar: تُجمع زكاة الفطر في آخر رمضان.
+      en: Zakat al-fitr is collected at the end of Ramadan.
+    answer: Zakat fitrah dikumpulkan pada akhir bulan Ramadan.
+    distractors: [ulama, hukum]
+    words: [zakat]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الصلاة والصيام عبادات.
+      ar: الصلاة والصيام عبادات.
+      en: Prayer and fasting are acts of worship.
+    answers:
+      - Salat dan puasa adalah ibadah.
+      - Salat dan puasa merupakan ibadah.
+      - Salat dan puasa termasuk ibadah.
+    words: [ibadah]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «hukum» في الإندونيسي أقرب لإيه؟
+      ar: إلامَ تقرب «hukum» في الإندونيسية؟
+      en: What is "hukum" closest to in Indonesian?
+    options:
+      - الحكم بتاع الماتش.
+      - القانون عمومًا.
+      - الحكمة.
+    answer: 1
+    words: [hukum]
+  - id: e08
+    type: speaking
+    text: Para ulama Aceh menjelaskan syariah dengan bahasa yang mudah.
+    meaning:
+      ar_eg: علماء آتشيه بيشرحوا الشريعة بكلام سهل.
+      ar: يشرح علماء آتشيه الشريعة بلغة سهلة.
+      en: Aceh's scholars explain sharia in simple language.
+    words: [ulama, syariah]
+  - id: e09
+    type: dictation
+    text: Zakat adalah ibadah yang membantu orang miskin.
+    meaning:
+      ar_eg: الزكاة عبادة بتساعد الفقرا.
+      ar: الزكاة عبادة تعين الفقراء.
+      en: Zakat is an act of worship that helps the poor.
+    words: [zakat, ibadah]
+dialogue:
+  title: Papan di depan masjid
+  lines:
+    - speaker: Mohamed
+      text: Kak, papan ini mudah sekali. "Pembayaran zakat di sini." Hampir bahasa Arab!
+      ar_eg: يا كاك، اللافتة دي سهلة قوي. «دفع الزكاة هنا». تقريبًا عربي!
+      ar: هذه اللافتة سهلة جدًّا. «دفع الزكاة هنا». تكاد تكون عربية!
+      en: Kak, this sign is so easy. "Zakat payments here." Almost Arabic!
+    - speaker: Kak Rahmah
+      text: Hati-hati. Kata "hukum" di sini artinya undang-undang, bukan keputusan hakim saja.
+      ar_eg: خلي بالك. كلمة hukum هنا معناها قانون، مش قرار القاضي بس.
+      ar: انتبه. كلمة hukum هنا تعني القانون، لا قرار القاضي فحسب.
+      en: Careful. "Hukum" here means law, not only a judge's ruling.
+    - speaker: Mohamed
+      text: Dan "ulama" bisa satu orang? Di Mesir, itu jamak.
+      ar_eg: و«ulama» ممكن تبقى شخص واحد؟ في مصر دي جمع.
+      ar: وقد تعني «ulama» شخصًا واحدًا؟ هي جمع في مصر.
+      en: And "ulama" can be one person? In Egypt it's plural.
+    - speaker: Kak Rahmah
+      text: Betul. Kata pinjaman sering pindah arti di perjalanan.
+      ar_eg: مظبوط. الكلمات المستعارة كتير بتغيّر معناها في الطريق.
+      ar: صحيح. كثيرًا ما تغيّر الكلمات المستعارة معناها في رحلتها.
+      en: Right. Loanwords often change meaning on the way.
+new_words:
+  - word: syariah
+    pos: noun
+    ar_eg: الشريعة
+    ar: الشريعة
+    en: sharia
+  - word: ulama
+    pos: noun
+    ar_eg: عالم دين
+    ar: عالم دين
+    en: religious scholar
+  - word: zakat
+    pos: noun
+    ar_eg: زكاة
+    ar: زكاة
+    en: alms, zakat
+  - word: ibadah
+    pos: noun
+    ar_eg: عبادة
+    ar: عبادة
+    en: worship
+  - word: hukum
+    pos: noun
+    ar_eg: قانون
+    ar: قانون
+    en: law
+review:
+  status: draft
+  verified: false

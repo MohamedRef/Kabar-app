@@ -1,0 +1,196 @@
+schema: kabar.lesson/v1
+id: j6.u04.l01
+language: jv
+title: Pasangan
+can_do:
+  ar_eg: توصّل حرفين ساكنين ورا بعض بالـ pasangan.
+  ar: أن تصل ساكنين متتاليين بالـ pasangan.
+  en: Join two consonants with a pasangan.
+slides:
+  - title: Pasangan
+    body:
+      ar_eg: |
+        ده أصعب جزء في الخط، بس منطقه بسيط. في kanca (صاحب): ka + n + ca. الـ n ساكنة ووراها حرف ساكن على طول، فمينفعش pangkon (دي للوقف بس).
+        الحل: الحرف التاني (ca) بيتكتب في شكل صغير مخصوص اسمه pasangan تحت الحرف الأولاني، وهو هنا nya (ꦚ) مش na، لأن الـ n قبل c أو j بتتكتب nya. وجود الـ pasangan تحته معناه إنه فقد الـ a بتاعته:
+        ꦏꦚ꧀ꦕ = kan-ca، مش ka-na-ca.
+      ar: |
+        هذا أصعب أبواب الخط، ومنطقه بسيط: في kanca (صديق) ka + n + ca، والـ n ساكنة يليها ساكن مباشرة، فلا تصلح pangkon لأنها للوقف.
+        والحل أن يُكتب الحرف الثاني (ca) بصورة صغيرة خاصة اسمها pasangan تحت الحرف الأول، وهو هنا nya (ꦚ) لا na، لأن الـ n قبل c أو j تُكتب nya، فيدل ذلك على سكونه:
+        ꦏꦚ꧀ꦕ = kan-ca لا ka-na-ca.
+      en: |
+        This is the hardest part of the script, but the logic is simple. In kanca (friend): ka + n + ca. The n has no vowel and a consonant follows straight away, so pangkon won't do (it's for pauses).
+        The answer: the second letter (ca) is written in a small special form called a pasangan under the first, which here is nya (ꦚ), not na, because an n before c or j is written nya. The pasangan below tells you that letter has lost its a:
+        ꦏꦚ꧀ꦕ = kan-ca, not ka-na-ca.
+    grammar: jv.aksara.pasangan
+    examples:
+      - text: ꦏꦚ꧀ꦕ (kanca)
+        ar_eg: صاحب — pasangan ca تحت ꦚ (nya)
+        ar: صديق — pasangan ca تحت ꦚ (nya)
+        en: friend — pasangan ca under ꦚ (nya)
+      - text: ꦠꦶꦤ꧀ꦢꦏ꧀ (tindak)
+        ar_eg: يروح (krama inggil) — pasangan da تحت ꦤ
+        ar: يذهب (krama inggil) — pasangan da تحت ꦤ
+        en: go (krama inggil) — pasangan da under ꦤ
+  - title: Antarane tembung
+    body:
+      ar_eg: |
+        ولأن مفيش مسافات، الـ pasangan بتشتغل بين الكلمات كمان: ꦲꦤꦏ꧀ꦭꦤꦁ = anak lanang (ابن): الـ k بتاعة anak شايلة pasangan la.
+        كل حرف من العشرين ليه شكل pasangan. وعلى الكيبورد: الحرف + pangkon + الحرف اللي بعده، والخط بيرسم الـ pasangan لوحده.
+      ar: |
+        ولغياب المسافات تعمل pasangan بين الكلمات أيضًا: ꦲꦤꦏ꧀ꦭꦤꦁ = anak lanang (ابن)، فـ k في anak تحمل pasangan la.
+        ولكل حرف من العشرين صورة pasangan، وعند الطباعة: الحرف ثم pangkon ثم الحرف التالي، ويرسمها الخط.
+      en: |
+        Since there are no spaces, pasangan work across words too: ꦲꦤꦏ꧀ꦭꦤꦁ = anak lanang (son): the k of anak carries pasangan la.
+        Each of the 20 letters has a pasangan form. On a keyboard: letter + pangkon + next letter, and the font draws the pasangan.
+    grammar: jv.aksara.pasangan
+    examples:
+      - text: ꦲꦤꦏ꧀ꦭꦤꦁ (anak lanang)
+        ar_eg: ابن
+        ar: ابن
+        en: son
+      - text: ꦲꦤꦏ꧀ꦮꦢꦺꦴꦤ꧀ (anak wadon)
+        ar_eg: بنت (ابنة)
+        ar: ابنة
+        en: daughter
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pasangan
+        ar_eg: الشكل التاني للحرف، بيتعلّق تحت الحرف الساكن
+        ar: الصورة الثانية للحرف، تُعلَّق تحت الساكن
+        en: a letter's second form, hung under a vowel-less letter
+      - text: lanang
+        ar_eg: ذكر / راجل
+        ar: ذكر
+        en: male
+      - text: wadon
+        ar_eg: أنثى / ست
+        ar: أنثى
+        en: female
+      - text: ꦏꦚ꧀ꦕ
+        ar_eg: kanca (صاحب)
+        ar: kanca (صديق)
+        en: kanca (friend)
+    words: [pasangan, lanang, wadon]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "اقرا: ꦏꦚ꧀ꦕ"
+      ar: "اقرأ: ꦏꦚ꧀ꦕ"
+      en: "Read: ꦏꦚ꧀ꦕ"
+    options: [kanaca, kanca, kaca]
+    answer: 1
+    explain:
+      ar_eg: "الحرف اللي فوق الـ pasangan ساكن: kan-ca، مش ka-na-ca."
+      ar: "الحرف الذي فوق pasangan ساكن: kan-ca لا ka-na-ca."
+      en: "The letter carrying a pasangan is vowel-less: kan-ca, not ka-na-ca."
+    words: [pasangan]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي واحدة معناها «بنت (ابنة)»؟
+      ar: أيّها تعني «ابنة»؟
+      en: Which one means "daughter"?
+    options: [anak lanang, anak kanca, anak wadon]
+    answer: 2
+    words: [wadon, lanang]
+  - id: e04
+    type: listen
+    text: anak lanang
+    question:
+      ar_eg: سمعت anak lanang (ابن). بتتكتب إزاي؟
+      ar: سمعت anak lanang (ابن). كيف تُكتب؟
+      en: You heard anak lanang (son). How is it written?
+    options: ["ꦲꦤꦏꦭꦤꦁ", "ꦲꦤꦏ꧀ꦭꦤꦁ", "ꦲꦤꦏ꧀ꦭꦤ"]
+    answer: 1
+    explain:
+      ar_eg: الـ k ساكنة ووراها la، فبتشيل pasangan la. ꦲꦤꦏꦭꦤꦁ هتتقري anakalanang.
+      ar: k ساكنة يليها la فتحمل pasangan la، وꦲꦤꦏꦭꦤꦁ تُقرأ anakalanang.
+      en: The k is vowel-less before la, so it carries pasangan la. ꦲꦤꦏꦭꦤꦁ would read anakalanang.
+    meaning:
+      ar_eg: ابن
+      ar: ابن
+      en: son
+    words: [pasangan, lanang]
+  - id: e05
+    type: fill_blank
+    sentence: ꦲꦤꦏ꧀ꦮꦢꦺꦴꦤ꧀ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: بنت / ابنة)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: ابنة)"
+      en: Type the reading in Latin letters. (It means "daughter".)
+    answers: [anak wadon, anakwadon]
+    words: [wadon, pasangan]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: ابني «anak lanang» (ابن). كل قطعة مقطع، والـ pasangan لازقة في المقطع اللي قبلها.
+      ar: ركّب «anak lanang» (ابن). كل قطعة مقطع، والـ pasangan ملتصقة بالمقطع قبلها.
+      en: Build "anak lanang" (son). Each tile is a syllable; the pasangan sticks to the syllable before it.
+    answer: ꦲ ꦤꦏ꧀ꦭ ꦤꦁ
+    distractors: ["ꦏ"]
+    words: [lanang, pasangan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦩꦔꦤ꧀ꦱꦼꦒ"
+      ar: "اكتب بالحروف اللاتينية: ꦩꦔꦤ꧀ꦱꦼꦒ"
+      en: "Write in Latin letters: ꦩꦔꦤ꧀ꦱꦼꦒ"
+    answers: [mangan sega, mangansega]
+    explain:
+      ar_eg: الـ n بتاعة mangan شايلة pasangan sa. يعني «ياكل رز».
+      ar: "n في mangan تحمل pasangan sa: «يأكل الأرز»."
+      en: The n of mangan carries pasangan sa. "Eat rice."
+    words: [pasangan]
+  - id: e08
+    type: speaking
+    text: Kancaku duwe anak lanang lan anak wadon.
+    meaning:
+      ar_eg: صاحبي عنده ابن وبنت.
+      ar: لصديقي ابن وابنة.
+      en: My friend has a son and a daughter.
+    words: [lanang, wadon]
+dialogue:
+  title: Ing Jagalan
+  lines:
+    - speaker: Dimas
+      text: Med, iki kancaku, Mas Bayu.
+      ar_eg: يا محمد، ده صاحبي، بايو.
+      ar: يا محمد، هذا صديقي بايو.
+      en: Med, this is my friend, Mas Bayu.
+    - speaker: Mohamed
+      text: Halo, Mas. Aku Mohamed saka Mesir.
+      ar_eg: أهلًا يا بايو. أنا محمد من مصر.
+      ar: مرحبًا يا بايو. أنا محمد من مصر.
+      en: Hi, Mas. I'm Mohamed from Egypt.
+    - speaker: Bayu
+      text: Halo! Iki anak lanangku lan anak wadonku.
+      ar_eg: أهلًا! ده ابني ودي بنتي.
+      ar: مرحبًا! هذا ابني وهذه ابنتي.
+      en: Hi! This is my son and my daughter.
+    - speaker: Mohamed
+      text: Wah, lucu-lucu banget!
+      ar_eg: يا سلام، زي العسل!
+      ar: ما أظرفهما!
+      en: Aw, they're so cute!
+new_words:
+  - word: pasangan
+    pos: noun
+    ar_eg: الشكل التاني لكل حرف، بيتعلّق تحت (أو جنب) الحرف الساكن
+    ar: الصورة الثانية لكل حرف، تُعلَّق تحت الساكن أو بجانبه
+    en: a letter's second form, hung under (or beside) a vowel-less letter
+  - word: lanang
+    pos: adjective
+    ar_eg: ذكر؛ anak lanang = ابن
+    ar: ذكر؛ anak lanang = ابن
+    en: male; anak lanang = son = laki-laki
+  - word: wadon
+    pos: adjective
+    ar_eg: أنثى؛ anak wadon = بنت (ابنة)
+    ar: أنثى؛ anak wadon = ابنة
+    en: female; anak wadon = daughter = perempuan
+review:
+  status: draft
+  verified: false

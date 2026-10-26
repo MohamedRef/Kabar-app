@@ -1,0 +1,206 @@
+schema: kabar.lesson/v1
+id: bipa3.u10.l06
+language: id
+title: Ulangan Unit 10
+can_do:
+  ar_eg: تعرض خططك للإجازة بالأسباب والمواعيد.
+  ar: أن تعرض خطط عطلتك بأسبابها ومواعيدها.
+  en: Present your holiday plans with reasons and dates.
+slides:
+  - title: Bicara tentang masa depan
+    body:
+      ar_eg: |
+        أدوات المستقبل كلها:
+        akan (رسمي) / mau (عادي) + فعل · nanti، sebentar lagi، lusa، minggu depan، tahun depan
+        Rencananya … · Saya berencana … · Saya berniat … · وinsya Allah!
+      ar: |
+        أدوات المستقبل كلها:
+        akan (رسمي) / mau (يومي) + الفعل · nanti، sebentar lagi، lusa، minggu depan، tahun depan
+        Rencananya … · Saya berencana … · Saya berniat … · وinsya Allah!
+      en: |
+        All the future tools:
+        akan (formal) / mau (everyday) + verb · nanti, sebentar lagi, lusa, minggu depan, tahun depan
+        Rencananya … · Saya berencana … · Saya berniat … · and insya Allah!
+    grammar: id.time.future-plans
+    examples:
+      - text: Insya Allah, minggu depan kami akan mudik.
+        ar_eg: إن شاء الله الأسبوع الجاي هنرجع البلد.
+        ar: إن شاء الله سنعود إلى بلدتنا الأسبوع القادم.
+        en: God willing, next week we'll go home for the holiday.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: lusa
+        ar_eg: بعد بكرة
+        ar: بعد غد
+        en: the day after tomorrow
+      - text: minggu depan
+        ar_eg: الأسبوع الجاي
+        ar: الأسبوع القادم
+        en: next week
+      - text: mudik
+        ar_eg: يرجع بلده في العيد
+        ar: يعود إلى بلدته في العيد
+        en: to go home for the holiday
+      - text: tanggal merah
+        ar_eg: أجازة رسمية
+        ar: عطلة رسمية
+        en: public holiday
+      - text: pulang-pergi
+        ar_eg: ذهاب وعودة
+        ar: ذهاب وإياب
+        en: return (ticket)
+      - text: berniat
+        ar_eg: ينوي
+        ar: ينوي
+        en: to intend to
+    words: [lusa, minggu depan, mudik, tanggal merah, pulang-pergi, berniat]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة صح؟
+      ar: أيّ جملة صحيحة؟
+      en: Which sentence is correct?
+    options:
+      - Saya rencana pergi ke Bali.
+      - Saya berencana pergi ke Bali.
+      - Saya mau akan pergi ke Bali.
+    answer: 1
+    explain:
+      ar_eg: rencana اسم، والفعل berencana. وmau وakan ما يتجمعوش.
+      ar: rencana اسم والفعل berencana، ولا تجتمع mau وakan.
+      en: rencana is a noun; the verb is berencana. And mau and akan don't go together.
+    words: [berencana]
+  - id: e03
+    type: multiple_choice
+    question: Hari ini hari Jumat. Hari Minggu adalah ___.
+    options: [besok, minggu depan, lusa]
+    answer: 2
+    words: [lusa]
+  - id: e04
+    type: listen
+    text: Lebaran nanti, kami akan mudik ke kampung halaman.
+    options:
+      - Lebaran nanti, kami akan mudik ke kampung halaman.
+      - Lebaran kemarin, kami mudik ke kampung halaman.
+      - Lebaran nanti, kami akan cuti di kampung halaman.
+    answer: 0
+    meaning:
+      ar_eg: العيد الجاي هنرجع بلدنا.
+      ar: سنعود إلى بلدتنا في العيد القادم.
+      en: This coming Lebaran we'll go back to our home village.
+    words: [mudik, kampung halaman]
+  - id: e05
+    type: multiple_choice
+    question: Maaf, Pak, feri jam dua sudah ___.
+    options: [cuti, penuh, macet]
+    answer: 1
+    words: [penuh]
+  - id: e06
+    type: fill_blank
+    sentence: ___ malam kita makan ikan bakar, yuk!
+    meaning:
+      ar_eg: يلا ناكل سمك مشوي النهارده بالليل!
+      ar: هيا نأكل السمك المشوي الليلة!
+      en: Let's have grilled fish tonight!
+    options: [Tadi, Nanti, Lusa]
+    answers: [Nanti]
+    explain:
+      ar_eg: nanti malam = النهارده بالليل (جاي). tadi = اللي فات من شوية.
+      ar: nanti malam = الليلة (قادمة)، وtadi لما مضى قبل قليل.
+      en: nanti malam = tonight (still to come); tadi is for earlier today.
+    words: [nanti]
+  - id: e07
+    type: fill_blank
+    sentence: Insya Allah, saya ___ mendaki Rinjani.
+    meaning:
+      ar_eg: (اكتب «ناوي» من niat) إن شاء الله ناوي أطلع رينجاني.
+      ar: (اكتب «أنوي» من niat) إن شاء الله أنوي تسلّق رينجاني.
+      en: (Write "intend", from niat.) God willing, I intend to climb Rinjani.
+    answers: [berniat]
+    words: [berniat, mendaki]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: الخطة إننا ناخد العبّارة لسومباوا بكرة الصبح.
+      ar: نعتزم ركوب العبّارة إلى سومباوا صباح الغد.
+      en: The plan is to take the ferry to Sumbawa tomorrow morning.
+    answer: Rencananya, kami naik feri ke Sumbawa besok pagi.
+    alternatives:
+      - Rencananya, besok pagi kami naik feri ke Sumbawa.
+    distractors: [berencana, kemarin]
+    words: [rencana, feri]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: إن شاء الله هرجع مصر السنة الجاية.
+      ar: إن شاء الله سأعود إلى مصر العام القادم.
+      en: God willing, I'll go back to Egypt next year.
+    answers:
+      - Insya Allah, saya akan pulang ke Mesir tahun depan.
+      - Insya Allah, saya akan pulang ke Mesir tahun depan
+      - Insya Allah, tahun depan saya akan pulang ke Mesir.
+      - Insya Allah, tahun depan saya akan pulang ke Mesir
+      - Insya Allah saya akan pulang ke Mesir tahun depan.
+      - Insyaallah, saya akan pulang ke Mesir tahun depan.
+      - Insya Allah, saya mau pulang ke Mesir tahun depan.
+      - Insya Allah, tahun depan saya pulang ke Mesir.
+      - Insya Allah, aku akan pulang ke Mesir tahun depan.
+      - Insya Allah, saya akan kembali ke Mesir tahun depan.
+    words: [akan]
+  - id: e10
+    type: dictation
+    text: Setiap Lebaran, jalan ke pelabuhan macet sekali.
+    meaning:
+      ar_eg: كل عيد، الطريق للميناء بيبقى زحمة جدًا.
+      ar: في كل عيد يزدحم الطريق إلى الميناء كثيرًا.
+      en: Every Lebaran, the road to the port is totally jammed.
+    words: [macet]
+  - id: e11
+    type: speaking
+    text: Iduladha adalah tanggal merah di Indonesia.
+    meaning:
+      ar_eg: عيد الأضحى أجازة رسمية في إندونيسيا.
+      ar: عيد الأضحى عطلة رسمية في إندونيسيا.
+      en: Eid al-Adha is a public holiday in Indonesia.
+    words: [Iduladha, tanggal merah]
+dialogue:
+  title: Di atas feri
+  lines:
+    - speaker: Mas Rizal
+      text: Sebentar lagi kita sampai di Sumbawa!
+      ar_eg: كمان شوية هنوصل سومباوا!
+      ar: سنصل إلى سومباوا بعد قليل!
+      en: We'll be in Sumbawa in a moment!
+    - speaker: Mohamed
+      text: Akhirnya! Apa rencana kita besok?
+      ar_eg: أخيرًا! إيه خطتنا بكرة؟
+      ar: أخيرًا! ما خطتنا غدًا؟
+      en: At last! What's our plan for tomorrow?
+    - speaker: Mas Rizal
+      text: Rencananya, kita ke rumah ibu saya. Lusa kita jalan-jalan ke pantai.
+      ar_eg: الخطة إننا نروح بيت أمي. وبعد بكرة نتفسّح على الشط.
+      ar: نعتزم الذهاب إلى بيت أمي، وبعد غد نتنزّه على الشاطئ.
+      en: The plan is to go to my mother's house. The day after tomorrow we'll go to the beach.
+    - speaker: Mohamed
+      text: Insya Allah, tahun depan saya akan datang lagi.
+      ar_eg: إن شاء الله السنة الجاية هاجي تاني.
+      ar: إن شاء الله سآتي مرة أخرى العام القادم.
+      en: God willing, I'll come again next year.
+    - speaker: Mas Rizal
+      text: Amin! Rumah kami selalu terbuka untukmu.
+      ar_eg: آمين! بيتنا مفتوح ليك دايمًا.
+      ar: آمين! بيتنا مفتوح لك دائمًا.
+      en: Amen! Our home is always open to you.
+souvenir:
+  id: bipa3.u10.souvenir
+  title: Feri ke Sumbawa
+  note:
+    ar_eg: 'من ميناء كايانجان جنب لابوهان لومبوك العبّارة بتعدّي مضيق آلاس لسومباوا في حوالي ساعتين. وفي أيام العيد بتتملي بعيلات راجعة بلادها، لأن «المودِك» من أكبر الهجرات السنوية في العالم. وإندونيسيا عندها أجازات هجرية وأجازات قومية، فالنتيجة مليانة «تواريخ حمرا». ودي آخر محطة في لومبوك: مبروك على المستوى التالت كله!'
+    ar: 'من ميناء كايانغان قرب لابوهان لومبوك تعبر العبّارة مضيق آلاس إلى سومباوا في نحو ساعتين. وفي أيام العيد تمتلئ بأسر عائدة إلى بلداتها، فـ«المودِك» من أكبر الهجرات السنوية في العالم. ولإندونيسيا عطلات هجرية وأخرى وطنية، فتقويمها حافل بـ«التواريخ الحمراء». وهذه آخر محطة في لومبوك: تهانينا على إتمام المستوى الثالث!'
+    en: From Kayangan port near Labuhan Lombok, the ferry crosses the Alas Strait to Sumbawa in about two hours. At Lebaran it fills with families heading home, since mudik is one of the world's biggest yearly migrations. Indonesia keeps both Hijri and national holidays, so its calendar is full of red dates. This is your last stop on Lombok. Congratulations on finishing BIPA 3!
+review:
+  status: draft
+  verified: false

@@ -291,7 +291,7 @@ items:
     expect:
       text: Panjenengan sampun dhahar?
     criteria:
-      - "Keeps the digraph dh (not d) and the double n in Panjenengan."
+      - "Keeps the digraph dh (not d) and spells Panjenengan in full (n-j-e-n-e-ng-an)."
     tags: [needs-capture, tablet, javanese, krama-inggil, cursive, test-text]
     verified: false
   - id: read_handwriting-028
@@ -319,11 +319,11 @@ items:
     lang: jv
     input:
       lang: jv
-      capture: "Galaxy Tab S11, S Pen, Kabar Notebook canvas. Write the word lèlè (catfish) in print, with a grave accent drawn clearly over each e."
+      capture: "Galaxy Tab S11, S Pen, Kabar Notebook canvas. Write the word lélé (catfish) in print, with an acute accent drawn clearly over each e."
     expect:
-      text: lèlè
+      text: lélé
     criteria:
-      - "Keeps both è accents; plain lele scores 2 at most."
+      - "Keeps both é accents; plain lele scores 2 at most."
     tags: [needs-capture, tablet, javanese, diacritics]
     verified: false
 

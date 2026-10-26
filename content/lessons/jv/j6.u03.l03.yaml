@@ -1,0 +1,193 @@
+schema: kabar.lesson/v1
+id: j6.u03.l03
+language: jv
+title: Pangkon
+can_do:
+  ar_eg: تموّت الحركة في آخر الكلام بالـ pangkon.
+  ar: أن تُسكّن الحرف في آخر الكلام بالـ pangkon.
+  en: Kill a vowel at the end of a phrase.
+slides:
+  - title: Pangkon
+    body:
+      ar_eg: |
+        باقي الحروف الساكنة (n، k، t، m …) مالهاش علامة مخصوصة. بتكتب الحرف وتحط عليه pangkon ꧀، وده بيشيل الـ a بالظبط زي السكون:
+        ꦤ na ← ꦤ꧀ n. يعني ꦩꦔꦤ꧀ = mangan.
+        من غير pangkon ꦩꦔꦤ هتتقري mangana!
+      ar: |
+        لا علامة خاصة لسائر السواكن (n، k، t، m …)، فيُكتب الحرف وعليه pangkon ꧀ التي تحذف a كالسكون:
+        ꦤ na ← ꦤ꧀ n، فـ ꦩꦔꦤ꧀ = mangan.
+        وبلا pangkon تُقرأ ꦩꦔꦤ «mangana».
+      en: |
+        The other consonants (n, k, t, m …) have no special mark. You write the letter and add pangkon ꧀, which removes the a — exactly like sukun:
+        ꦤ na → ꦤ꧀ n. So ꦩꦔꦤ꧀ = mangan.
+        Without pangkon, ꦩꦔꦤ reads mangana!
+    grammar: jv.aksara.panyigeg
+    examples:
+      - text: ꦩꦔꦤ꧀ (mangan)
+        ar_eg: ياكل
+        ar: يأكل
+        en: eat
+      - text: ꦧꦥꦏ꧀ (bapak)
+        ar_eg: أب / أستاذ
+        ar: أب / سيد
+        en: father, sir
+  - title: Pada lingsa, pada lungsi
+    body:
+      ar_eg: |
+        pangkon ليها قاعدة: بتستخدمها لما الكلام يقف، يعني قبل ꧈ pada lingsa (زي الفاصلة) أو ꧉ pada lungsi (زي النقطة) أو في آخر السطر.
+        لو بعدها على طول كلمة بتبدأ بحرف ساكن، الجاوي بيستخدم حاجة تانية اسمها pasangan، الوحدة الجاية.
+      ar: |
+        ولـ pangkon قاعدة: تُستعمل عند الوقف، أي قبل ꧈ pada lingsa (كالفاصلة) أو ꧉ pada lungsi (كالنقطة) أو في آخر السطر.
+        فإن تلتها مباشرة كلمة مبدوءة بساكن استُعملت pasangan، وهي موضوع الوحدة القادمة.
+      en: |
+        Pangkon has a rule: use it where speech pauses — before ꧈ pada lingsa (like a comma), ꧉ pada lungsi (like a full stop), or at the end of a line.
+        If a consonant-initial word follows directly, Javanese uses something else, pasangan — next unit.
+    grammar: jv.aksara.panyigeg
+    examples:
+      - text: ꦲꦏꦸꦩꦔꦤ꧀꧉ (Aku mangan.)
+        ar_eg: أنا باكل.
+        ar: أنا آكل.
+        en: I'm eating.
+      - text: ꦲꦏꦸꦩꦔꦤ꧀꧈ꦏꦺꦴꦮꦺꦠꦸꦫꦸ꧉ (Aku mangan, kowe turu.)
+        ar_eg: أنا باكل، وإنت نايم.
+        ar: أنا آكل، وأنت نائم.
+        en: I'm eating, you're sleeping.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pangkon
+        ar_eg: بتشيل الـ a من الحرف (زي السكون)
+        ar: تحذف a من الحرف (كالسكون)
+        en: removes a letter's a (like sukun)
+      - text: pada lingsa
+        ar_eg: ꧈ — زي الفاصلة
+        ar: ꧈ — كالفاصلة
+        en: ꧈ — like a comma
+      - text: pada lungsi
+        ar_eg: ꧉ — زي النقطة
+        ar: ꧉ — كالنقطة
+        en: ꧉ — like a full stop
+      - text: ꦧꦥꦏ꧀
+        ar_eg: bapak (أب / أستاذ)
+        ar: bapak (أب / سيد)
+        en: bapak (father, sir)
+    words: [pangkon, pada lingsa, pada lungsi]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: من غير pangkon، ꦩꦔꦤ بتتقري إزاي؟
+      ar: كيف تُقرأ ꦩꦔꦤ بلا pangkon؟
+      en: Without pangkon, how does ꦩꦔꦤ read?
+    options: [mangan, mangana, manga]
+    answer: 1
+    explain:
+      ar_eg: كل حرف فيه a لحد ما تموّتها. عشان mangan لازم pangkon على ꦤ.
+      ar: في كل حرف a حتى تُسكّنه، فـ mangan تحتاج pangkon على ꦤ.
+      en: Every letter keeps its a until you kill it; mangan needs pangkon on ꦤ.
+    words: [pangkon]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: العلامة ꧉ اسمها إيه؟
+      ar: ما اسم العلامة ꧉؟
+      en: What is ꧉ called?
+    options: [pada lungsi, pada lingsa, cecak]
+    answer: 0
+    words: [pada lungsi]
+  - id: e04
+    type: listen
+    text: bapak
+    question:
+      ar_eg: سمعت bapak. بتتكتب إزاي؟
+      ar: سمعت bapak. كيف تُكتب؟
+      en: You heard bapak. How is it written?
+    options: ["ꦧꦥꦁ", "ꦧꦥ", "ꦧꦥꦏ꧀"]
+    answer: 2
+    meaning:
+      ar_eg: أب / أستاذ
+      ar: أب / سيد
+      en: father, sir
+    words: [pangkon]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: العلامة ꧈ اسمها إيه؟
+      ar: ما اسم العلامة ꧈؟
+      en: What is ꧈ called?
+    options: [pada lungsi, pangkon, pada lingsa]
+    answer: 2
+    words: [pada lingsa]
+  - id: e06
+    type: fill_blank
+    sentence: ꦥꦥꦠ꧀ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: أربعة)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: أربعة)"
+      en: Type the reading in Latin letters. (It means "four".)
+    answers: [papat]
+    words: [pangkon]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦲꦏꦸꦩꦔꦤ꧀꧈ꦏꦺꦴꦮꦺꦠꦸꦫꦸ꧉"
+      ar: "اكتب بالحروف اللاتينية: ꦲꦏꦸꦩꦔꦤ꧀꧈ꦏꦺꦴꦮꦺꦠꦸꦫꦸ꧉"
+      en: "Write in Latin letters: ꦲꦏꦸꦩꦔꦤ꧀꧈ꦏꦺꦴꦮꦺꦠꦸꦫꦸ꧉"
+    answers: ["Aku mangan, kowe turu.", aku mangan kowe turu]
+    explain:
+      ar_eg: mangan قبل ꧈ فبتاخد pangkon، و꧉ في الآخر نقطة.
+      ar: mangan قبل ꧈ فتأخذ pangkon، و꧉ في الآخر نقطة.
+      en: mangan comes before ꧈, so it takes pangkon; ꧉ at the end is the full stop.
+    words: [pangkon, pada lingsa, pada lungsi]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: ابني «aku mangan» (أنا باكل) مقطع مقطع.
+      ar: ركّب «aku mangan» (أنا آكل) مقطعًا مقطعًا.
+      en: Build "aku mangan" (I'm eating), syllable by syllable.
+    answer: ꦲ ꦏꦸ ꦩ ꦔꦤ꧀
+    distractors: ["ꦔ"]
+    words: [pangkon]
+dialogue:
+  title: Tandha apa iki?
+  lines:
+    - speaker: Dimas
+      text: Med, coba wacanen tulisan iki.
+      ar_eg: يا محمد، جرّب اقرا الكتابة دي.
+      ar: يا محمد، جرّب قراءة هذه الكتابة.
+      en: Med, try reading this.
+    - speaker: Mohamed
+      text: Aku mangan. Lho, ing mburi ana tandha apa?
+      ar_eg: aku mangan (أنا باكل). الله، إيه العلامة اللي في الآخر دي؟
+      ar: aku mangan (أنا آكل). ما هذه العلامة في الآخر؟
+      en: Aku mangan. Oh, what's that mark at the end?
+    - speaker: Dimas
+      text: Iku pada lungsi, kaya titik.
+      ar_eg: دي pada lungsi، زي النقطة.
+      ar: هذه pada lungsi، كالنقطة.
+      en: That's pada lungsi, like a full stop.
+    - speaker: Mohamed
+      text: Lan iki pangkon, kaya sukun ing basa Arab.
+      ar_eg: ودي pangkon، زي السكون في العربي.
+      ar: وهذه pangkon، كالسكون في العربية.
+      en: And this is pangkon, like sukun in Arabic.
+new_words:
+  - word: pangkon
+    pos: noun
+    ar_eg: علامة بتشيل الـ a من الحرف (زي السكون)
+    ar: علامة تحذف a من الحرف (كالسكون)
+    en: the mark that removes a letter's a (like sukun)
+  - word: pada lingsa
+    pos: noun
+    ar_eg: ꧈ — زي الفاصلة
+    ar: ꧈ — كالفاصلة
+    en: ꧈ — works like a comma
+  - word: pada lungsi
+    pos: noun
+    ar_eg: ꧉ — زي النقطة
+    ar: ꧉ — كالنقطة
+    en: ꧉ — works like a full stop
+review:
+  status: draft
+  verified: false
