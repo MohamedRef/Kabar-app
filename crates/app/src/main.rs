@@ -219,19 +219,30 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let lang = settings.ui_language;
     let theme = settings.theme.as_str();
     let width = ui.width.read().as_str();
-    let batik = use_memo(move || theme::kawung_tile(coach.batik_color(), 0.06, 72));
+    let theme_css = use_hook(theme::stylesheet);
+    // The theme draws the kawung background in its own colour; a batik from
+    // the Warung overrides it on this device.
+    let batik = use_memo(move || {
+        let chosen = coach.batik.read().as_deref().is_some_and(|id| !id.is_empty());
+        if chosen {
+            format!("--batik: {}", theme::kawung_tile(coach.batik_color(), 0.06, 72))
+        } else {
+            String::new()
+        }
+    });
     let onboarded = coach.profile.read().is_some();
 
     rsx! {
         document::Title { "Kabar" }
         style { {MAIN_CSS} }
+        style { {theme_css} }
         div {
             class: "app",
             lang: lang.tag(),
             dir: lang.dir().as_str(),
             "data-theme": theme,
             "data-width": width,
-            style: "--batik: {batik}",
+            style: "{batik}",
             if !settings.welcomed {
                 screens::Welcome {}
             } else if !onboarded {

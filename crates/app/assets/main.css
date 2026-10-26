@@ -3,61 +3,15 @@
    Logical properties only, so the Arabic UI mirrors for free. */
 
 :root {
+  /* Colours come from the theme stylesheet (kabar_core::theme), keyed by
+     data-theme on .app. These are the Paper defaults for the first paint. */
   --bg: #f6f1e7;
   --surface: #fffaf1;
-  --surface-2: #efe7d8;
   --text: #23211f;
-  --muted: #5d574e;
-  --line: #ddd2bf;
-  --sawah: #2f6b3a;
-  --dawn: #c8573a;
-  --dawn-soft: #f4c9b5;
-  --indigo: #2b3a70;
-  --gold: #8a6100;
-  --gold-soft: #f3e2b3;
-  --focus: #2b3a70;
   --radius: 14px;
   --shadow: 0 1px 2px rgb(35 33 31 / 0.08), 0 4px 16px rgb(35 33 31 / 0.06);
   --font-latin: "Inter", "Segoe UI", "Roboto", system-ui, sans-serif;
   --font-arabic: "IBM Plex Sans Arabic", "Noto Naskh Arabic", "Noto Sans Arabic", "Geeza Pro", system-ui, sans-serif;
-  color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  .app:not([data-theme="light"]) {
-    --bg: #171615;
-    --surface: #211f1d;
-    --surface-2: #2b2926;
-    --text: #efe9df;
-    --muted: #b3aa9c;
-    --line: #3a3632;
-    --sawah: #7cc08a;
-    --dawn: #f2a07f;
-    --dawn-soft: #5a2e22;
-    --indigo: #a9b8ee;
-    --gold: #e6be55;
-    --gold-soft: #4a3b12;
-    --focus: #a9b8ee;
-    color-scheme: dark;
-  }
-}
-
-/* Tokens are keyed on .app because data-theme lives there, not on <html>. */
-.app[data-theme="dark"] {
-  --bg: #171615;
-  --surface: #211f1d;
-  --surface-2: #2b2926;
-  --text: #efe9df;
-  --muted: #b3aa9c;
-  --line: #3a3632;
-  --sawah: #7cc08a;
-  --dawn: #f2a07f;
-  --dawn-soft: #5a2e22;
-  --indigo: #a9b8ee;
-  --gold: #e6be55;
-  --gold-soft: #4a3b12;
-  --focus: #a9b8ee;
-  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -134,6 +88,17 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 }
 .bridge .ar { font-family: var(--font-arabic); font-size: 2rem; }
 .bridge-word { text-decoration: underline 3px var(--gold); text-underline-offset: 6px; }
+
+/* Theme picker swatches: each shows that theme's surface, accent and gold. */
+.theme-swatch {
+  display: inline-block;
+  inline-size: 1.1rem;
+  block-size: 1.1rem;
+  border-radius: 50%;
+  margin-inline-end: 0.45rem;
+  vertical-align: -0.2rem;
+  border: 2px solid var(--line);
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .reveal { animation: reveal 240ms ease-out both; }
@@ -213,7 +178,7 @@ code, .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size:
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--line);
-  background: #fffdf8;
+  background: var(--paper);
   touch-action: none;
 }
 .ink-wrap canvas { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; touch-action: none; }
