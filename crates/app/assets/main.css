@@ -331,6 +331,10 @@ button.choice {
   min-block-size: 44px;
 }
 .text-input { inline-size: 100%; }
+/* 24-hour picker: two selects inside one bordered field. */
+span.time-input { display: inline-flex; align-items: center; gap: 0.15rem; padding-block: 0; padding-inline: 0.35rem; }
+span.time-input select { border: 0; background: transparent; min-block-size: 40px; padding-inline: 0.35rem; }
+.target-month { display: inline-flex; gap: 0.4rem; vertical-align: middle; }
 .times { list-style: none; padding: 0; margin: 0 0 0.5rem; display: grid; gap: 0.4rem; }
 
 /* achievements */
@@ -579,7 +583,7 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 .doc.split .seg { display: grid; gap: 0.25rem 1.25rem; padding-block: 0.4rem; border-block-end: 1px solid var(--line); }
 .explain { display: flex; flex-wrap: wrap; gap: 0.35rem; font-size: 0.95rem; line-height: 1.6; font-family: inherit; }
 .app:lang(ar) .explain { font-family: var(--font-arabic); }
-.chip { display: inline-flex; gap: 0.25rem; padding-block: 0.1rem; padding-inline: 0.5rem; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; }
+.chip { display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; gap: 0.25rem; padding-block: 0.1rem; padding-inline: 0.5rem; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; }
 .chip.from-arabic { border-color: var(--gold); text-decoration: none; }
 .chip .latin { font-weight: 600; }
 .app:not([data-width="compact"]) .doc.split .seg { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
