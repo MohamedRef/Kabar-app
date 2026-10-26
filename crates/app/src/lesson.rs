@@ -186,12 +186,37 @@ fn autoplay_text(ex: &Exercise) -> Option<(String, Option<String>)> {
 // ---------------------------------------------------------------------------
 
 /// Plays target-language audio. A pre-generated `audio` file wins when the
-/// content has one (Azure voices, SPEC §20). Until the TTS pipeline lands we
-/// fall back to the device's own voice (id-ID; Javanese asks for jv-ID and
-/// falls back to an id-ID voice, which reads Javanese passably): the
-/// WebView's `speechSynthesis` on desktop, and the system TextToSpeech engine
-/// on Android, whose WebView has no `speechSynthesis`.
-pub fn speak(text: &str, language: &str, slow: bool, audio: Option<&str>, mut missing: Signal<bool>) {
+/// content has one; next, the Azure clip from a downloaded offline pack
+/// (SPEC §20, `crate::packs`). Otherwise the device's own voice (id-ID;
+/// Javanese asks for jv-ID and falls back to an id-ID voice, which reads
+/// Javanese passably): the WebView's `speechSynthesis` on desktop, and the
+/// system TextToSpeech engine on Android, whose WebView has no
+/// `speechSynthesis`.
+pub fn speak(text: &str, language: &str, slow: bool, audio: Option<&str>, missing: Signal<bool>) {
+    speak_as(text, language, None, slow, audio, missing);
+}
+
+/// A dialogue line in its speaker's pack voice (see [`speak`]).
+fn speak_line(dialogue: &Dialogue, index: usize, language: &str, missing: Signal<bool>) {
+    if let Some(line) = dialogue.lines.get(index) {
+        let voice = kabar_core::packs::speaker_voice(language, dialogue, &line.speaker);
+        speak_as(&line.text, language, Some(voice), false, None, missing);
+    }
+}
+
+fn speak_as(
+    text: &str,
+    language: &str,
+    voice: Option<kabar_protocol::cloud::Voice>,
+    slow: bool,
+    audio: Option<&str>,
+    mut missing: Signal<bool>,
+) {
+    let clip = match audio {
+        Some(_) => None,
+        None => crate::packs::clip_url(text, language, voice),
+    };
+    let audio = audio.or(clip.as_deref());
     let lang = if language == "jv" { "jv-ID" } else { "id-ID" };
     let mut native = move |text: &str| {
         let ok = platform::speak(text, lang, slow).is_ok();
@@ -205,7 +230,7 @@ pub fn speak(text: &str, language: &str, slow: bool, audio: Option<&str>, mut mi
     }
     let js = format!(
         r#"
-        const text = {text}, lang = {lang}, rate = {rate}, file = {file}, web = {web};
+        const text = {text}, lang = {lang}, rate = {rate}, clipRate = {clip_rate}, file = {file}, web = {web};
         const tts = () => {{
             if (!web) return false;
             const s = window.speechSynthesis;
@@ -226,7 +251,7 @@ pub fn speak(text: &str, language: &str, slow: bool, audio: Option<&str>, mut mi
         if (file) {{
             try {{
                 const a = new Audio(file);
-                a.playbackRate = rate;
+                a.playbackRate = clipRate;
                 await a.play();
                 dioxus.send(true);
             }} catch (e) {{ dioxus.send(tts()); }}
@@ -237,6 +262,8 @@ pub fn speak(text: &str, language: &str, slow: bool, audio: Option<&str>, mut mi
         text = serde_json::to_string(text).unwrap_or_default(),
         lang = serde_json::to_string(lang).unwrap_or_default(),
         rate = if slow { "0.7" } else { "0.95" },
+        // Recorded clips are at natural speed; slow plays them at 3/4.
+        clip_rate = if slow { "0.75" } else { "1.0" },
         file = serde_json::to_string(&audio).unwrap_or_else(|_| "null".into()),
         web = !platform::NATIVE_TTS,
     );
@@ -398,6 +425,8 @@ fn PlayerView(lesson: LessonContent) -> Element {
     use_hook(move || {
         let p = player.peek();
         save(db, &p.position());
+        // Just in time: this unit's and the next unit's audio (SPEC §20).
+        crate::packs::prefetch_for(&p.lesson().id);
         if let Some((text, audio)) = p.exercise().and_then(autoplay_text) {
             speak(&text, &p.lesson().language, false, audio.as_deref(), audio_missing);
         }
@@ -443,9 +472,9 @@ fn PlayerView(lesson: LessonContent) -> Element {
             speak(&text, &p.lesson().language, false, audio.as_deref(), audio_missing);
         }
         if p.step() == Step::Dialogue
-            && let Some(line) = p.lesson().dialogue.as_ref().and_then(|d| d.lines.first())
+            && let Some(d) = p.lesson().dialogue.as_ref()
         {
-            speak(&line.text, &p.lesson().language, false, None, audio_missing);
+            speak_line(d, 0, &p.lesson().language, audio_missing);
         }
     };
 
@@ -487,8 +516,8 @@ fn PlayerView(lesson: LessonContent) -> Element {
                     let mut r = revealed;
                     r.set(shown + 1);
                     let p = player.peek();
-                    if let Some(line) = p.lesson().dialogue.as_ref().and_then(|d| d.lines.get(shown)) {
-                        speak(&line.text, &p.lesson().language, false, None, audio_missing);
+                    if let Some(d) = p.lesson().dialogue.as_ref() {
+                        speak_line(d, shown, &p.lesson().language, audio_missing);
                     }
                     // Keep the newest line in view (after it renders).
                     document::eval(
@@ -845,8 +874,8 @@ fn DialogueView(dialogue: Dialogue, language: String, shown: usize, missing: Sig
                         button {
                             class: "lp-bubble",
                             onclick: {
-                                let (t, l) = (line.text.clone(), language.clone());
-                                move |_| speak(&t, &l, false, None, missing)
+                                let (d, l) = (dialogue.clone(), language.clone());
+                                move |_| speak_line(&d, i, &l, missing)
                             },
                             span { class: "lp-speaker", bdi { "{line.speaker}" } }
                             bdi { lang: target, class: "latin lp-target", "{line.text}" }

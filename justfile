@@ -145,3 +145,25 @@ deploy-cloud:
 # Stream live logs from the deployed Worker
 cloud-logs:
     cd {{server}} && wrangler tail
+
+# --- Offline packs (docs/RUN.md §11) -------------------------------------------
+
+# Rebuild the unit manifests (content/packs/) after lesson edits; prints TTS characters per unit
+packs:
+    {{tools}} packs build
+
+# Generate missing audio with Azure F0 inside the monthly budget: `just packs-audio` (all) or `just packs-audio bipa1.u01,bipa1.u02`
+packs-audio units="" budget="300000":
+    {{tools}} packs synthesize --budget {{budget}} {{ if units != "" { "--units " + units } else { "" } }}
+
+# What `packs-audio` would spend, without calling Azure
+packs-audio-plan units="" budget="300000":
+    {{tools}} packs synthesize --dry-run --budget {{budget}} {{ if units != "" { "--units " + units } else { "" } }}
+
+# Write dist/packs/<unit>.tar + index.json for every fully synthesized unit
+packs-bundle:
+    {{tools}} packs bundle
+
+# Upload dist/packs to the `packs` GitHub release (needs `gh auth login`)
+packs-upload tag="packs":
+    scripts/packs-upload.sh {{tag}}

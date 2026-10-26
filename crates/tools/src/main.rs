@@ -16,6 +16,7 @@ mod gloss;
 mod golden;
 mod kaikki;
 mod levels;
+mod packs;
 mod paths;
 mod schemas;
 mod text;
@@ -50,6 +51,9 @@ enum Command {
     /// Golden sets for the runtime AI tasks.
     #[command(subcommand)]
     Golden(golden::Cmd),
+    /// Offline packs per unit: manifests, Azure audio within the free quota, release tars.
+    #[command(subcommand)]
+    Packs(packs::Cmd),
     /// Regenerate `schemas/*.schema.json` from the Rust content types.
     Schemas {
         /// Fail instead of writing when a schema is out of date.
@@ -70,6 +74,7 @@ fn main() -> Result<()> {
         Command::Bridge(cmd) => bridge::run(&root, cmd),
         Command::Levels(cmd) => levels::run(&root, cmd),
         Command::Golden(cmd) => golden::run(&root, cmd),
+        Command::Packs(cmd) => packs::run(&root, cmd),
         Command::Schemas { check } => schemas::run(&root, check),
         Command::Validate => {
             schemas::run(&root, true)?;
@@ -83,6 +88,7 @@ fn main() -> Result<()> {
             anyhow::ensure!(issues.is_empty(), "{} gloss↔bridge issue(s)", issues.len());
             levels::run(&root, levels::Cmd::Validate)?;
             golden::run(&root, golden::Cmd::Validate)?;
+            packs::run(&root, packs::Cmd::Build { check: true })?;
             println!("all content ok");
             Ok(())
         }
