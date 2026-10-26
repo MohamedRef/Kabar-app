@@ -22,6 +22,13 @@ max_tokens = 4096
 engines = ["workers_ai", "gemini_free", "local", "claude"]
 status = "provisional"
 
+# Teach Kabar (spec §26). Learning text; screenshot sources are flagged
+# personal per request, so the router skips gemini_free for those.
+[learn_entry]
+engines = ["workers_ai", "gemini_free", "local", "claude"]
+status = "provisional"
+max_tokens = 2048
+
 [structure_screenshot]
 engines = ["local", "workers_ai", "gemini_free", "claude"]
 status = "provisional"
