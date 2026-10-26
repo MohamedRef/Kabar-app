@@ -1,0 +1,182 @@
+schema: kabar.lesson/v1
+id: bipa6.u04.l04
+language: id
+title: Jalur rempah
+can_do:
+  ar_eg: تقدّم عرض قصير عن طريق البهارات وإزاي ربط إندونيسيا بالعالم.
+  ar: أن تقدّم عرضًا قصيرًا عن طريق التوابل وكيف ربط إندونيسيا بالعالم.
+  en: Present the spice route and how it tied Indonesia to the world.
+slides:
+  - title: Dari Maluku ke Kairo
+    grammar: id.sentence.inversion
+    body:
+      ar_eg: |
+        الـ jalur rempah (طريق البهارات) كان بيوصّل جزر مالوكو بالدنيا كلها:
+        - الـ cengkih (القرنفل) والـ pala (جوزة الطيب) كانوا بيطلعوا من مالوكو بس.
+        - التجار berlayar (أبحروا) من الهند والعرب والصين، وعدّوا من مضيق ملقا.
+        - البهارات وصلت إسكندرية والقاهرة، ومنها لأوروبا.
+        في العرض استعمل القلب: Datanglah kapal-kapal dari Arab dan India.
+      ar: |
+        وصل الـ jalur rempah (طريق التوابل) جزر مالوكو بالعالم كلّه:
+        - كان الـ cengkih (القرنفل) والـ pala (جوزة الطيب) لا يأتيان إلّا من مالوكو.
+        - berlayar (أبحر) التجّار من الهند وبلاد العرب والصين عبر مضيق ملقا.
+        - وبلغت التوابل الإسكندرية والقاهرة، ومنهما أوروبا.
+        واستعمل القلب في عرضك: Datanglah kapal-kapal dari Arab dan India.
+      en: |
+        The jalur rempah (spice route) linked the Maluku islands to the whole world:
+        - cengkih (cloves) and pala (nutmeg) came only from Maluku.
+        - Traders berlayar (sailed) from India, Arabia and China, through the Strait of Malacca.
+        - Spices reached Alexandria and Cairo, and from there Europe.
+        Use inversion in your talk: Datanglah kapal-kapal dari Arab dan India.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: jalur
+        ar_eg: طريق / خط
+        ar: طريق
+        en: route
+      - text: cengkih
+        ar_eg: قرنفل
+        ar: قرنفل
+        en: cloves
+      - text: pala
+        ar_eg: جوزة الطيب
+        ar: جوزة الطيب
+        en: nutmeg
+      - text: berlayar
+        ar_eg: يبحر
+        ar: يُبحر
+        en: to sail
+    words: [jalur, cengkih, pala, berlayar]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: القرنفل وجوزة الطيب كانوا بيطلعوا منين بس؟
+      ar: من أين فقط كان يأتي القرنفل وجوزة الطيب؟
+      en: Where alone did cloves and nutmeg come from?
+    options:
+      - من جاوة.
+      - من سومطرة.
+      - من مالوكو.
+    answer: 2
+    words: [cengkih, pala]
+  - id: e03
+    type: fill_blank
+    sentence: Kapal-kapal ___ dari India menuju Selat Malaka.
+    meaning:
+      ar_eg: المراكب أبحرت من الهند ناحية مضيق ملقا.
+      ar: أبحرت السفن من الهند نحو مضيق ملقا.
+      en: Ships sailed from India toward the Strait of Malacca.
+    options: [berlayar, pala, jalur]
+    answers: [berlayar]
+    words: [berlayar]
+  - id: e04
+    type: listen
+    text: Jalur rempah menghubungkan Maluku dengan Kairo dan Venesia.
+    question:
+      ar_eg: طريق البهارات كان بيوصّل مالوكو بإيه؟
+      ar: بمَ وصل طريق التوابل مالوكو؟
+      en: What did the spice route link Maluku with?
+    options:
+      - بالقاهرة والبندقية.
+      - بطوكيو.
+      - بأمريكا.
+    answer: 0
+    words: [jalur]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: وجت المراكب من بلاد العرب والهند.
+      ar: وجاءت السفن من بلاد العرب والهند.
+      en: And the ships came from Arabia and India.
+    answer: Datanglah kapal-kapal dari Arab dan India.
+    distractors: [pala, cengkih]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: زمان القرنفل كان غالي جدًا في أوروبا.
+      ar: كان القرنفل قديمًا غاليًا جدًّا في أوروبا.
+      en: Cloves were once very expensive in Europe.
+    answers:
+      - Dulu cengkih sangat mahal di Eropa.
+      - Dulu, harga cengkih di Eropa sangat mahal.
+      - Dulu cengkih mahal sekali di Eropa.
+      - Pada masa lalu, cengkih sangat mahal di Eropa.
+    words: [cengkih]
+  - id: e07
+    type: speaking
+    text: Pala dari Banda dulu dibawa sampai ke pasar di Kairo.
+    meaning:
+      ar_eg: جوزة الطيب من باندا كانت بتوصل لحد أسواق القاهرة.
+      ar: كانت جوزة الطيب من باندا تُحمل حتى أسواق القاهرة.
+      en: Nutmeg from Banda was once carried all the way to Cairo's markets.
+    words: [pala]
+  - id: e08
+    type: dictation
+    text: Jalur laut itu ramai oleh kapal dari berbagai bangsa.
+    meaning:
+      ar_eg: الطريق البحري ده كان زحمة بمراكب من أمم كتير.
+      ar: كان ذلك الطريق البحري مزدحمًا بسفن من أمم شتّى.
+      en: That sea route was busy with ships from many nations.
+    words: [jalur]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة مقلوبة تنفع لبداية عرض تاريخي؟
+      ar: أيّ جملة مقلوبة تصلح لافتتاح عرض تاريخي؟
+      en: Which inverted sentence suits the start of a history talk?
+    options:
+      - Kapal datang dari Arab.
+      - Berlayarlah para pedagang menuju timur.
+      - Pedagang itu berlayar.
+    answer: 1
+    words: [berlayar, cengkih]
+dialogue:
+  title: Presentasi jalur rempah
+  lines:
+    - speaker: Mohamed
+      text: Pada abad pertengahan, berlayarlah para pedagang Arab ke Nusantara.
+      ar_eg: في العصور الوسطى، أبحر التجار العرب للأرخبيل.
+      ar: في العصور الوسطى أبحر التجّار العرب إلى الأرخبيل.
+      en: In the Middle Ages, Arab traders sailed to the archipelago.
+    - speaker: Mohamed
+      text: Mereka membawa cengkih dan pala dari Maluku ke pelabuhan Iskandariah.
+      ar_eg: كانوا بيشيلوا قرنفل وجوزة طيب من مالوكو لميناء إسكندرية.
+      ar: حملوا القرنفل وجوزة الطيب من مالوكو إلى ميناء الإسكندرية.
+      en: They carried cloves and nutmeg from Maluku to the port of Alexandria.
+    - speaker: Kak Dewi
+      text: Bagus! Jadi jalur rempah juga jalur bahasa dan agama, ya?
+      ar_eg: حلو! يعني طريق البهارات كان كمان طريق لغة ودين؟
+      ar: جميل! إذن كان طريق التوابل طريقًا للّغة والدين أيضًا؟
+      en: Good! So the spice route was also a route for language and religion?
+    - speaker: Mohamed
+      text: Betul. Karena itu ada kata "kabar" di bahasa Indonesia.
+      ar_eg: مظبوط. وعلشان كده فيه كلمة kabar من «خبر» في الإندونيسي.
+      ar: صحيح. ولذلك في الإندونيسية كلمة kabar من «خبر».
+      en: Right. That's why Indonesian has the word "kabar".
+new_words:
+  - word: jalur
+    pos: noun
+    ar_eg: طريق / خط
+    ar: طريق
+    en: route
+  - word: cengkih
+    pos: noun
+    ar_eg: قرنفل
+    ar: قرنفل
+    en: cloves
+  - word: pala
+    pos: noun
+    ar_eg: جوزة الطيب
+    ar: جوزة الطيب
+    en: nutmeg
+  - word: berlayar
+    pos: verb
+    ar_eg: يبحر
+    ar: يُبحر
+    en: to sail
+review:
+  status: draft
+  verified: false
