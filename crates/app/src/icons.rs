@@ -54,6 +54,10 @@ pub fn game(route: Route) -> Element {
         Route::Pasar => {
             "M4 9l2-5h12l2 5M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0M5 10v10h14V10M10 20v-5h4v5"
         }
+        // two speech bubbles, one bowing lower
+        Route::Unggah => "M4 5h9v6H8l-3 3v-3H4zM11 13h9v5h-1v3l-3-3h-5z",
+        // two waves side by side
+        Route::Pairs => "M3 12c2-4 4-4 6 0s4 4 6 0M13 12c2-4 4-4 6 0M3 18h7M14 18h7",
         Route::Hub => PLAY,
     };
     stroke(d)

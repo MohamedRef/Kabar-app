@@ -53,7 +53,8 @@ just check                # fmt + clippy + tests: all green
 - [ ] `just bundle-mac` → `dist/mac/Kabar.app`. Open it from Finder and check the icon in the Dock and Finder.
 - [ ] Kak Nur (M7, [RUN.md §7](RUN.md)): go through onboarding, tick a plan item, open the recap and the Kak Nur screen. Tell me anything that reads wrong or feels off.
 - [ ] Read Kak Nur's lines in `content/coach/kak-nur.toml` (Egyptian Arabic, MSA, English). Mark what to change or say OK, and I set `reviewed = true`.
-- [ ] Play (M10, [RUN.md §9](RUN.md)): try each game once. For Kabar Pagi audio, install the Indonesian voice "Damayanti" (System Settings → Accessibility → Spoken Content → System voice → Manage Voices) and check a story plays.
+- [ ] Play (M10, [RUN.md §10](RUN.md)): try each game once. For Kabar Pagi audio, install the Indonesian voice "Damayanti" (System Settings → Accessibility → Spoken Content → System voice → Manage Voices) and check a story plays.
+- [ ] Javanese games (M11, [RUN.md §10](RUN.md)): play the Unggah-Ungguh scenes and a d/dh · t/th round. Ask a Javanese speaker (or check yourself) whether the lines in `content/games/unggah-ungguh.toml` and the pairs in `content/games/minimal-pairs.toml` sound right; tell me what to fix and I'll set `reviewed = true`.
 - [ ] Review the M10 content: the stories in `content/pagi/stories.jsonl` and the Pasar! seller lines in `content/games/pasar.toml` (Javanese register especially). Say OK or mark changes, and I set them reviewed.
 
 ## 3. Galaxy S24 Ultra and Tab S11 (~45 min) — [RUN.md §3–4](RUN.md)
