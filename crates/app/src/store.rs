@@ -145,7 +145,17 @@ const MIGRATIONS: &[&str] = &[
         deleted     INTEGER NOT NULL DEFAULT 0
     ) STRICT;
     CREATE INDEX review_log_card ON review_log (card_id);",
-    // 4: Reader (M5): texts, word statuses, highlights, saved words, feedback.
+    // 4: Teach Kabar's personal dictionary (spec §26), LWW per `{lang}:{word}`.
+    "CREATE TABLE taught_entries (
+        id          TEXT PRIMARY KEY,
+        entry       TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;",
+    // 5: Reader (M5): texts, word statuses, highlights, saved words, feedback.
     "CREATE TABLE texts (
         id          TEXT PRIMARY KEY,
         title       TEXT NOT NULL,
@@ -219,6 +229,7 @@ const SYNCED_TABLES: &[&str] = &[
     "sessions",
     "cards",
     "review_log",
+    "taught_entries",
     "texts",
     "word_status",
     "highlights",
@@ -620,6 +631,8 @@ pub struct LessonEvent {
 mod reader;
 mod reviews;
 pub use reader::{Highlight, SavedText, TextKind};
+// Teach Kabar's personal dictionary (spec §26).
+mod taught;
 
 fn migrate(conn: &mut Connection) -> Result<()> {
     let known = MIGRATIONS.len() as u32;

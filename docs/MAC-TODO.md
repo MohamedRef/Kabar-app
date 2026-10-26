@@ -69,7 +69,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] Tab S11: the full map pans with the pen and pinches with two fingers. Close a lesson halfway; reopening it resumes at the same exercise.
 - [ ] Tell me whether listen/dictation audio plays on Android. The built-in WebView may have no speech voice; if so the app says so, and a native TextToSpeech bridge comes next.
 
-## 3c. Reader and Screenshot Decoder (~20 min) — [RUN.md §8](RUN.md)
+## 3c. Reader and Screenshot Decoder (~20 min) — [RUN.md §9](RUN.md)
 - [ ] `git pull && just check && just run-mac`, open **Reader**, paste the §24 chat lines, hover and click words; try split mode and the three explanation voices.
 - [ ] Mac OCR: Reader → "Open a screenshot" (or drag an image in) with a WhatsApp screenshot; check Apple Vision reads it (first real test of the Vision code).
 - [ ] `just apk` while online (first build fetches ML Kit from Google Maven; it must print "Kotlin glue present"), then `just install <serial>` on the S24 Ultra and Tab S11.
@@ -121,6 +121,13 @@ This decides which free engine answers each AI task. Until it runs, every route 
 - [ ] Optional: add `DAYTONA_API_KEY` as an environment secret so the heavy 8–9B check can run there instead of the Mac.
 - [ ] Run the bake-off runner (command will be in BAKEOFF.md once it lands) and send me `bakeoff/runs/`. I score it blind with you, then write `docs/bakeoff-report.md` and the final `prompts/routes.toml`.
 - [ ] Spot-check at least 10% of the scored items, plus every Javanese one.
+
+## 7b. Teach Kabar (~10 min, after Kabar Cloud is up) — [RUN.md §9](RUN.md)
+
+- [ ] Mac app → **Teach Kabar**: tap **Search Google** and check it opens your browser (not a window inside Kabar). Same on the phone.
+- [ ] Choose **Wiktionary** for `kabar` and tap **Teach Kabar**. If it says Wiktionary can't be reached, tell me: the WebView may block the request.
+- [ ] Save the answer of `https://en.wiktionary.org/api/rest_v1/page/definition/kabar` (open it in the browser, then Save As) as `fixtures/learn/wiktionary.kabar.json`, replacing the hand-written one, and run `just check`.
+- [ ] Teach one real word you met (e.g. from a WhatsApp chat), approve it, and check it shows under **My dictionary** on the tablet after sync.
 
 ## 8. What to send back
 

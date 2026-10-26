@@ -106,7 +106,13 @@ To start onboarding again, delete the database (§2). On the Galaxy devices: `ju
 
 Reminders arrive as push notifications once Kabar Cloud's reminder alarm and Firebase are set up (CLOUD.md §3.4).
 
-## 8. Reader, Share-to-Kabar and the Screenshot Decoder (M5)
+## 8. Teach Kabar (spec §26)
+
+Open **Teach Kabar** (علّم كبر) from the side bar on the Mac and tablet, or from Settings on the phone. Type the word, optionally the sentence you met it in, then paste what you found (or a link, or use Wiktionary) and tap **Teach Kabar**. The draft appears below for review: approve it, edit it, ask for another version, or discard it. Approved words show in **My dictionary** and, once the Reader lands, in popovers with a "taught by you" badge.
+
+Writing the draft needs an AI engine, so until the app is connected to Kabar Cloud the screen says "not connected yet". Search Google opens the browser; nothing from Google is read automatically.
+
+## 9. Reader, Share-to-Kabar and the Screenshot Decoder (M5)
 
 ### Reader on the Mac
 `just run-mac` → **Reader** (القارئ). Paste the §24 chat lines and read: hover a word to peek, click for the full card, drag-select a phrase, right-click → Save. Try split mode (جنب بعض) and the three explanation voices. Words come from the M4 content pack (2,000 glosses, 581 Arabic Bridge cards), all marked "not reviewed yet".
@@ -136,7 +142,7 @@ The Screenshot Decoder uses Apple Vision (built into macOS, nothing to install).
 
 Tesseract (`ind`/`jav`) as a third OCR engine is phased for later.
 
-## 9. Troubleshooting
+## 10. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.

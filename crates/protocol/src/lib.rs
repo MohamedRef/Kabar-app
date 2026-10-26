@@ -6,6 +6,7 @@ pub mod cloud;
 pub mod coach;
 pub mod content;
 pub mod hlc;
+pub mod learn;
 pub mod lesson;
 pub mod pen;
 pub mod reader;

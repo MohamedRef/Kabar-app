@@ -8,6 +8,7 @@ pub mod coach;
 pub mod journey;
 pub mod lang;
 pub mod layout;
+pub mod learn;
 pub mod lesson;
 pub mod locale;
 pub mod penlab;

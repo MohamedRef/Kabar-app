@@ -289,7 +289,7 @@ Scripts must be resumable, batched and idempotent, paced across multiple session
 - `gemini_free` — Google Gemini API free tier (Flash / Flash-Lite), called through Kabar Cloud, with queueing and backoff for rate limits. Free-tier inputs may be used by Google to improve its models, so only learning text is ever sent — never personal data.
 - `claude` — Anthropic API, off unless I enable it. If I'm on a Claude Max plan, link its monthly API credits and let the router use Claude where it clearly wins, at no extra cost.
 
-**Tasks:** `analyze_text` (contextual meaning + alignment) · `explain_sentence` (picks grammar-library entries + short glue text) · `grade_answer` · `roleplay_turn` · `placement_test` · `level_check` · `daily_plan` · `daily_recap` · `weekly_report` · `coach_message` · `story_episode` · `radio_script` · `structure_screenshot` · `read_handwriting` · `guess_sketch` · `check_strokes` · `mind_map`.
+**Tasks:** `analyze_text` (contextual meaning + alignment) · `explain_sentence` (picks grammar-library entries + short glue text) · `grade_answer` · `roleplay_turn` · `placement_test` · `level_check` · `daily_plan` · `daily_recap` · `weekly_report` · `coach_message` · `story_episode` · `radio_script` · `structure_screenshot` · `read_handwriting` · `guess_sketch` · `check_strokes` · `mind_map` · `learn_entry` (§26).
 
 **Quality system:**
 
@@ -327,7 +327,7 @@ Scripts must be resumable, batched and idempotent, paced across multiple session
 
 Refine in PLAN.md. Every synced table carries `account_id`, `device_id`, a hybrid-logical-clock timestamp and a tombstone flag.
 
-- **Language:** lexemes, senses, glosses, examples, forms, etymology_arabic, abbreviations, speech_levels, grammar_points
+- **Language:** lexemes, senses, glosses, examples, forms, etymology_arabic, abbreviations, speech_levels, grammar_points, taught_entries (my personal dictionary, §26)
 - **Reading:** texts, text_tokens, word_status, highlights
 - **Learning:** cards, review_log, curriculum_nodes, lessons, exercises, attempts, conversations, stories, souvenirs
 - **Ink:** notebooks, ink_documents, ink_strokes
@@ -353,6 +353,7 @@ Refine in PLAN.md. Every synced table carries `account_id`, `device_id`, a hybri
 | M10 | Arabic Bridge games, Kabar Pagi, Rupiah Reader, Pasar! | the morning story arrives with audio |
 | M11 | Javanese J1–J3, Unggah-Ungguh Simulator, Minimal Pairs | I pass J1 |
 | M12 | Personas, Sinetron, Kabar Radio | a 5-minute episode plays offline on the phone |
+| M5+ | **Teach Kabar** (§26), phase T1: `learn_entry`, review screen, personal dictionary, popover entry point | I teach Kabar a word it didn't know, approve it, and see it in a popover on another device |
 | M13 | Content pipeline v2 (all levels, 10k + 3k glosses) + polish: monthly level check, skill radar + forecast, aksara Jawa calligraphy, widgets, Mac Quick Lookup, offline packs, performance | everything in §25 passes |
 
 ## 24. Test texts
@@ -391,5 +392,30 @@ Arabic Bridge: kabar, waktu, selamat, lezat, kursi, ilmu, pikir, paham, kalbu, k
 - ATTRIBUTION.md lists every dataset, corpus, font and sound.
 - Accessibility: scalable text, screen-reader labels, keyboard navigation on Mac and DeX.
 - **Kabar is "done" when** I sign in on all three devices, they stay in sync, Kak Nur keeps me on track every day, I can finish a BIPA unit with the pen on the tablet, and I can share a random Javanese screenshot from my phone and understand every word — in Arabic — for $0 a month.
+
+## 26. Teach Kabar — كبر بيتعلّم منّي
+
+Kabar will meet words and phrases it doesn't know: new slang, a Javanese word from a chat, a brand-new meme. I want to teach it, the way I'd explain a word to a friend, and have it remember.
+
+**Flow:**
+
+1. In a word popover, "Explain this sentence" or anywhere a word is unknown, I tap **Teach Kabar** (علّم كبر). The word, its language and the sentence I met it in are filled in.
+2. I give Kabar what I found:
+   - **paste** an explanation (from Google, a dictionary, a friend's message),
+   - a **link** (Kabar reads the page text when it can; otherwise it asks me to paste the part that matters),
+   - a **screenshot** (read with on-device OCR, §11),
+   - or an optional **in-app lookup** that only uses free sources: open a Google search for "‹word› artinya" in the browser, and Wiktionary's free definition API. No paid search API.
+3. Kabar rewrites what I gave it into its **own gloss format and style** (the same shape as the prebuilt glosses, §18): Egyptian Arabic, MSA and English meanings; part of speech and register; root and affixes (checked against the language engine, §17); two example sentences; a usage note; the Arabic Bridge card and False Friends warning when the word comes from Arabic (§12); Javanese speech level and its ngoko / krama / krama inggil pair when relevant (§13). It says plainly where my source was unclear or where it disagrees with it.
+4. I **review** the draft: approve it, edit any field, ask for another version (👎 → next engine up, §19), or throw it away. Nothing is final until I approve it.
+5. Approved entries go into my **personal dictionary**: a layer above the prebuilt glosses that syncs to all my devices (LWW per word), shows in popovers with a **"taught by you"** badge, can be added to review (§16) and feeds the next content batch (§18) so the build-time content keeps growing. Drafts don't show as answers in popovers, only as a "you have a draft — review it" chip.
+
+**Rules:**
+
+- AI goes through the router (§19) as task `learn_entry`, with a versioned prompt, serde validation (retry once, then a friendly message) and a cache keyed on the source text.
+- Privacy (§19): what I paste from the web and the sentence are learning text. Before anything is sent, e-mail addresses and phone numbers are scrubbed. Screenshots (which can show chats, names, numbers) are treated as **personal**: never sent to an engine that trains on inputs.
+- Kabar never overwrites a prebuilt gloss with mine; both stay, mine shown first. Javanese entries stay flagged **unverified** until I approve them, like all Javanese content.
+- My sources (link, title, the excerpt used) are kept with the entry so I can check them later.
+
+**Phases:** T1 (with M5): the task, the review screen, the personal dictionary, sync, the popover entry point, paste / link (when the page allows it) / screenshot via OCR, Google + Wiktionary lookup. T2 (M13): links fetched through Kabar Cloud when the page blocks the app, screenshots without OCR text via a vision engine, "taught by you" deck in Review, taught entries exported into the next content batch.
 
 Start with Milestone 0.
