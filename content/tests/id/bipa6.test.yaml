@@ -1,0 +1,603 @@
+schema: kabar.test/v1
+id: bipa6.test
+language: id
+kind: level
+title:
+  ar_eg: اختبار مستوى BIPA 6 — سومطرة
+  ar: اختبار مستوى BIPA 6 — سومطرة
+  en: BIPA 6 level test — Sumatra
+intro:
+  ar_eg: |
+    لفّيت سومطرة كلها، من Medan لحد Berastagi! هنا هتسمع قصة وبانتون وكلام ساخر، وتقرا قصة قصيرة معناها مستخبّي، ونص ساخر، ومادة من لايحة، وتلخّص اللايحة، وتكتب فقرة أكاديمية، وتشرح بالكلام فهمك لقصة.
+    خد وقتك. في المستوى ده كتير من المعنى بيبقى بين السطور، فاقرا براحة — كل إجابة بتورّينا نركّز على إيه.
+    ولو جاي من «اركب الطيارة» عشان تعدّي BIPA 6، أهلًا بيك — نفس الأسئلة.
+  ar: |
+    جُبتَ سومطرة كلها من Medan إلى Berastagi! ستستمع هنا إلى قصة وبانتون وكلام ساخر، وتقرأ قصة قصيرة معناها مضمر، ونصًّا ساخرًا، ومادة من لائحة، وتلخّص اللائحة، وتكتب فقرة أكاديمية، وتشرح شفهيًّا فهمك لقصة.
+    خذ وقتك. في هذا المستوى يكمن كثير من المعنى بين السطور، فاقرأ على مهل؛ فكل إجابة تُرينا ما نركّز عليه.
+    وإن جئت من «سافر بالطائرة» لتتجاوز BIPA 6، فأهلًا بك؛ الأسئلة نفسها.
+  en: |
+    You've crossed Sumatra from Medan to Berastagi! Here you'll hear a story, a pantun and some sarcasm, read a short story whose meaning is implied, a satirical piece and an article from a regulation, summarise the regulation, write an academic paragraph, and explain aloud how you read a story.
+    Take your time. At this level much of the meaning sits between the lines, so read slowly; every answer shows us what to focus on.
+    If you came through "Take a flight" to skip BIPA 6, welcome: these are the same questions.
+minutes: 55
+pass_mark: 0.7
+scoring: >-
+  Score = points earned / points available (closed items 1 point unless set;
+  translate items are graded against reference answers first, then AI grade_answer;
+  writing_task and speaking_task are graded by AI against their rubric, each
+  criterion an equal share of the item's points). Pass at >= 0.7. Passing marks
+  BIPA 6 complete and opens BIPA 7; the same rule applies when the test is taken
+  as the "Take a flight" skip-ahead over BIPA 6. Below the mark, show the per-skill
+  results and suggest the units behind the missed items, with no penalty and an
+  open retry.
+sections:
+  - id: listening
+    skill: listening
+    title:
+      ar_eg: الاستماع
+      ar: الاستماع
+      en: Listening
+    instructions:
+      ar_eg: أجزاء من قصة، وبانتون، ونشرة عن التاريخ، وخطبة، وتعليق ساخر. اسمع وعيد براحتك. خد بالك إن كلمة واحدة ممكن تقلب المعنى أو تحوّله من جد لسخرية.
+      ar: مقاطع من قصة وبانتون ونشرة تاريخية وخطبة وتعليق ساخر. استمع وأعِد كما تشاء، وانتبه إلى أنّ كلمة واحدة قد تقلب المعنى أو تحوّله من الجدّ إلى السخرية.
+      en: Parts of a story, a pantun, a history bulletin, a speech and a sarcastic comment. Listen, replay as you like, and notice that one word can flip the meaning, or turn it from serious to sarcastic.
+    items:
+      - id: t01
+        type: listen
+        text: Ibu tidak berkata apa-apa. Ia hanya membungkus rendang untuk anaknya yang akan merantau.
+        options:
+          - Ibu tidak berkata apa-apa. Ia hanya membungkus rendang untuk anaknya yang baru pulang.
+          - Ibu tidak berkata apa-apa. Ia hanya membungkus rendang untuk anaknya yang akan merantau.
+          - Ibu banyak berkata-kata. Ia membungkus rendang untuk anaknya yang akan merantau.
+        answer: 1
+        words: [merantau, tersirat]
+      - id: t02
+        type: listen
+        text: Kalau ada sumur di ladang, boleh kita menumpang mandi.
+        options:
+          - Kalau ada sumur di ladang, boleh kita menumpang mandi.
+          - Kalau ada sungai di ladang, boleh kita menumpang mandi.
+          - Kalau ada sumur di ladang, boleh kita menumpang minum.
+        answer: 0
+        words: [pantun, sampiran]
+      - id: t03
+        type: listen
+        text: Konon, Kerajaan Sriwijaya menguasai Selat Malaka selama berabad-abad.
+        options:
+          - Konon, Kerajaan Sriwijaya menguasai Selat Sunda selama berabad-abad.
+          - Konon, Kerajaan Majapahit menguasai Selat Malaka selama berabad-abad.
+          - Konon, Kerajaan Sriwijaya menguasai Selat Malaka selama berabad-abad.
+        answer: 2
+        words: [konon, kerajaan, menguasai, selat]
+      - id: t04
+        type: listen
+        text: Kita doakan almarhum, semoga amal ibadahnya diterima oleh Allah.
+        options:
+          - Kita doakan almarhum, semoga amal ibadahnya diterima oleh Allah.
+          - Kita kenang almarhum, semoga keluarganya diberi kesabaran.
+          - Kita doakan relawan, semoga amal ibadahnya diterima oleh Allah.
+        answer: 0
+        words: [almarhum, ibadah]
+      - id: t05
+        type: listen
+        text: Wah, mulus sekali jalan ini, seperti permukaan bulan.
+        options:
+          - Wah, rusak sekali jalan ini, seperti permukaan bulan.
+          - Wah, mulus sekali jalan ini, seperti jalan tol.
+          - Wah, mulus sekali jalan ini, seperti permukaan bulan.
+        answer: 2
+        words: [mulus, ironi]
+      - id: t06
+        type: dictation
+        text: Setiap warga negara berhak mendapat pendidikan.
+        meaning:
+          ar_eg: كل مواطن من حقّه ياخد تعليم.
+          ar: لكلّ مواطن الحقّ في التعليم.
+          en: Every citizen has the right to education.
+        words: [warga negara, berhak]
+      - id: t07
+        type: dictation
+        text: Para peneliti mengamati penyerbukan bunga itu pada malam hari.
+        meaning:
+          ar_eg: الباحثين راقبوا تلقيح الوردة دي بالليل.
+          ar: راقب الباحثون تلقيح تلك الزهرة ليلًا.
+          en: The researchers observed the flower's pollination at night.
+        words: [peneliti, penyerbukan]
+  - id: reading
+    skill: reading
+    title:
+      ar_eg: القراية
+      ar: القراءة
+      en: Reading
+    instructions:
+      ar_eg: اقرا القصة القصيرة، والنص الساخر، ومادة اللايحة. في القصة والنص الساخر، المعنى الحقيقي مش دايمًا مكتوب صريح؛ دوّر على الإشارات.
+      ar: اقرأ القصة القصيرة والنصّ الساخر ومادة اللائحة. في القصة والنصّ الساخر لا يُكتب المعنى الحقيقي صراحةً دائمًا، فابحث عن الإشارات.
+      en: Read the short story, the satirical piece and the regulation article. In the story and the satire, the real meaning isn't always written outright; look for the clues.
+    items:
+      - id: t08
+        type: multiple_choice
+        question: |
+          KOPER BIRU (cerpen ditulis untuk tes ini)
+          Koper biru itu sudah tiga hari berdiri di sudut kamar. Setiap pagi Amak membersihkannya, padahal tidak ada debu. Malam terakhir, Amak memasak gulai kesukaan Rizal, lalu duduk lama di dapur walaupun piring-piring sudah bersih.
+          "Di Jakarta nanti, jangan lupa salat," katanya sambil menatap jendela, bukan wajah anaknya.
+          Pagi-pagi Rizal berangkat. Amak tidak ikut ke terminal. Ia bilang kakinya sakit. Tetangga melihatnya berdiri di depan rumah sampai bus hilang di tikungan.
+        question_meaning:
+          ar_eg: الأمّ («Amak») حاسّة بإيه، حتى لو ماقالتهوش؟
+          ar: بمَ تشعر الأمّ («Amak») وإن لم تقله؟
+          en: What does Amak feel, even though she never says it?
+        options:
+          - فرحانة إن ابنها مسافر أخيرًا.
+          - زعلانة ومش قادرة تودّعه.
+          - زهقانة من التنضيف.
+        answer: 1
+        words: [tersirat, merantau, watak]
+      - id: t09
+        type: multiple_choice
+        question: |
+          KOPER BIRU (cerpen ditulis untuk tes ini)
+          Koper biru itu sudah tiga hari berdiri di sudut kamar. Setiap pagi Amak membersihkannya, padahal tidak ada debu. Malam terakhir, Amak memasak gulai kesukaan Rizal, lalu duduk lama di dapur walaupun piring-piring sudah bersih.
+          "Di Jakarta nanti, jangan lupa salat," katanya sambil menatap jendela, bukan wajah anaknya.
+          Pagi-pagi Rizal berangkat. Amak tidak ikut ke terminal. Ia bilang kakinya sakit. Tetangga melihatnya berdiri di depan rumah sampai bus hilang di tikungan.
+        question_meaning:
+          ar_eg: «Ia bilang kakinya sakit» بتلمّح لإيه؟
+          ar: إلامَ تلمّح عبارة «Ia bilang kakinya sakit»؟
+          en: What does "Ia bilang kakinya sakit" hint at?
+        options:
+          - إن رجلها فعلًا تعبانة ومش قادرة تمشي.
+          - إنها عايزة تروح المستشفى.
+          - إنها بتتحجّج علشان مش قادرة تشوف لحظة الوداع.
+        answer: 2
+        words: [isyarat, menafsirkan]
+      - id: t10
+        type: multiple_choice
+        question: |
+          KOPER BIRU (cerpen ditulis untuk tes ini)
+          Koper biru itu sudah tiga hari berdiri di sudut kamar. Setiap pagi Amak membersihkannya, padahal tidak ada debu. Malam terakhir, Amak memasak gulai kesukaan Rizal, lalu duduk lama di dapur walaupun piring-piring sudah bersih.
+          "Di Jakarta nanti, jangan lupa salat," katanya sambil menatap jendela, bukan wajah anaknya.
+          Pagi-pagi Rizal berangkat. Amak tidak ikut ke terminal. Ia bilang kakinya sakit. Tetangga melihatnya berdiri di depan rumah sampai bus hilang di tikungan.
+        question_meaning:
+          ar_eg: الشنطة الزرقا في القصة ممكن تبقى رمز لإيه؟
+          ar: ما الذي قد ترمز إليه الحقيبة الزرقاء في القصة؟
+          en: What might the blue suitcase symbolise in the story?
+        options:
+          - السفر والفراق اللي جاي.
+          - غنى العيلة.
+          - هدية من الجيران.
+        answer: 0
+        words: [simbol, tema]
+      - id: t11
+        type: multiple_choice
+        question: |
+          SELAMAT, JALAN KAMI JUARA! (tulisan satire, ditulis untuk tes ini)
+          Warga Desa Sukamaju patut berbangga. Jalan desa kami kini resmi menjadi tempat wisata. Setiap musim hujan, lubang-lubangnya berubah menjadi kolam ikan gratis. Anak-anak tidak perlu lagi pergi ke kolam renang kota.
+          Kami juga berterima kasih kepada pejabat yang lima tahun lalu berjanji memperbaiki jalan ini. Berkat kesabaran beliau, kami belajar arti kata "segera" yang sesungguhnya.
+        question_meaning:
+          ar_eg: الكاتب في الحقيقة عايز يقول إيه؟
+          ar: ماذا يريد الكاتب أن يقول في الحقيقة؟
+          en: What is the writer really saying?
+        options:
+          - إن الطريق بقى مكان سياحي جميل.
+          - إن الطريق مكسّر والمسؤول ماوفّاش بوعده.
+          - إن الأطفال بيحبّوا يعوموا في البلد.
+        answer: 1
+        words: [sindiran, pejabat, janji]
+      - id: t12
+        type: multiple_choice
+        question: |
+          SELAMAT, JALAN KAMI JUARA! (tulisan satire, ditulis untuk tes ini)
+          Warga Desa Sukamaju patut berbangga. Jalan desa kami kini resmi menjadi tempat wisata. Setiap musim hujan, lubang-lubangnya berubah menjadi kolam ikan gratis. Anak-anak tidak perlu lagi pergi ke kolam renang kota.
+          Kami juga berterima kasih kepada pejabat yang lima tahun lalu berjanji memperbaiki jalan ini. Berkat kesabaran beliau, kami belajar arti kata "segera" yang sesungguhnya.
+        question_meaning:
+          ar_eg: الجملة الأخيرة عن كلمة «segera» (فورًا) فيها إيه؟
+          ar: ماذا في الجملة الأخيرة عن كلمة «segera» (فورًا)؟
+          en: What is going on in the last sentence about the word "segera" (soon)?
+        options:
+          - سخرية، لأن «فورًا» طلعت خمس سنين.
+          - شكر حقيقي للمسؤول.
+          - شرح لمعنى الكلمة في القاموس.
+        answer: 0
+        words: [ironi, tajam]
+      - id: t13
+        type: multiple_choice
+        question: |
+          PERATURAN DESA TENTANG SAMPAH (contoh ditulis untuk tes ini)
+          Pasal 3
+          (1) Setiap warga wajib memilah sampah organik dan anorganik di rumah masing-masing.
+          (2) Sampah anorganik diserahkan kepada bank sampah desa setiap hari Sabtu.
+          (3) Dalam hal warga tidak dapat hadir, sampah dapat dititipkan kepada ketua RT.
+          Pasal 4
+          Warga yang membuang sampah ke sungai dikenai denda sebesar Rp50.000. Ketentuan ini berlaku sejak 1 Januari.
+        question_meaning:
+          ar_eg: لو مقدرتش تروح بنك الزبالة يوم السبت، تعمل إيه على حسب اللايحة؟
+          ar: إن لم تستطع الذهاب إلى بنك النفايات يوم السبت، فماذا تفعل بحسب اللائحة؟
+          en: If you can't go to the waste bank on Saturday, what does the regulation say to do?
+        options:
+          - ترميها في النهر.
+          - تدفع غرامة.
+          - تسيبها مع رئيس الحيّ.
+        answer: 2
+        words: [dalam hal, ayat]
+      - id: t14
+        type: multiple_choice
+        question: |
+          PERATURAN DESA TENTANG SAMPAH (contoh ditulis untuk tes ini)
+          Pasal 3
+          (1) Setiap warga wajib memilah sampah organik dan anorganik di rumah masing-masing.
+          (2) Sampah anorganik diserahkan kepada bank sampah desa setiap hari Sabtu.
+          (3) Dalam hal warga tidak dapat hadir, sampah dapat dititipkan kepada ketua RT.
+          Pasal 4
+          Warga yang membuang sampah ke sungai dikenai denda sebesar Rp50.000. Ketentuan ini berlaku sejak 1 Januari.
+        question_meaning:
+          ar_eg: إيه اللي عليه غرامة؟
+          ar: ما المخالفة التي عليها غرامة؟
+          en: What carries a fine?
+        options:
+          - إنك ماتفرزش الزبالة.
+          - إنك ترمي الزبالة في النهر.
+          - إنك تروح بنك الزبالة يوم الحدّ.
+        answer: 1
+        words: [denda, pelanggaran, pasal]
+      - id: t15
+        type: multiple_choice
+        question: |
+          PERATURAN DESA TENTANG SAMPAH (contoh ditulis untuk tes ini)
+          Pasal 3
+          (1) Setiap warga wajib memilah sampah organik dan anorganik di rumah masing-masing.
+          (2) Sampah anorganik diserahkan kepada bank sampah desa setiap hari Sabtu.
+          (3) Dalam hal warga tidak dapat hadir, sampah dapat dititipkan kepada ketua RT.
+          Pasal 4
+          Warga yang membuang sampah ke sungai dikenai denda sebesar Rp50.000. Ketentuan ini berlaku sejak 1 Januari.
+        question_meaning:
+          ar_eg: كلمة «wajib» في المادة 3 الفقرة 1 معناها إيه؟
+          ar: ما معنى «wajib» في المادة 3 الفقرة 1؟
+          en: What does "wajib" mean in Article 3, paragraph 1?
+        options:
+          - إن الفرز إلزامي على كل ساكن.
+          - إن الفرز اختياري.
+          - إن الفرز ممنوع.
+        answer: 0
+        words: [kewajiban, mematuhi]
+  - id: vocabulary
+    skill: vocabulary
+    title:
+      ar_eg: الكلمات
+      ar: المفردات
+      en: Vocabulary
+    items:
+      - id: t16
+        type: match_pairs
+        pairs:
+          - text: alur
+            ar_eg: حبكة / تسلسل الأحداث
+            ar: الحبكة
+            en: plot
+          - text: tokoh
+            ar_eg: شخصية
+            ar: شخصية
+            en: character
+          - text: amanat
+            ar_eg: الرسالة / العبرة
+            ar: المغزى
+            en: moral, message
+          - text: penyair
+            ar_eg: شاعر
+            ar: شاعر
+            en: poet
+        words: [alur, tokoh, amanat, penyair]
+      - id: t17
+        type: match_pairs
+        pairs:
+          - text: prasasti
+            ar_eg: نقش على حجر
+            ar: نقش
+            en: inscription
+          - text: uang muka
+            ar_eg: عربون
+            ar: دفعة مقدّمة
+            en: down payment
+          - text: letusan
+            ar_eg: ثوران (بركان)
+            ar: ثوران
+            en: eruption
+          - text: warganet
+            ar_eg: ناس السوشيال ميديا
+            ar: مستخدمو الإنترنت
+            en: netizens
+        words: [prasasti, uang muka, letusan, warganet]
+      - id: t18
+        type: fill_blank
+        sentence: Dalam pantun, dua baris pertama disebut ___, dan dua baris terakhir disebut isi.
+        meaning:
+          ar_eg: في البانتون، أول سطرين اسمهم المقدّمة (السمبيران)، وآخر سطرين المضمون.
+          ar: في البانتون يُسمّى السطران الأوّلان المقدّمة، والأخيران المضمون.
+          en: In a pantun, the first two lines are called the sampiran, and the last two the isi.
+        options: ["sampiran", "rima", "bait"]
+        answers: [sampiran]
+        words: [sampiran, isi]
+      - id: t19
+        type: fill_blank
+        sentence: Kalau Bapak memesan seratus kain, kami bisa memberi ___ sepuluh persen.
+        meaning:
+          ar_eg: لو حضرتك طلبت مية قماشة، نقدر نديك خصم عشرة في المية.
+          ar: إن طلبتَ مئة قطعة قماش، أمكننا منحك خصمًا بعشرة في المئة.
+          en: If you order a hundred cloths, we can give you a ten per cent discount.
+        options: ["potongan harga", "harga satuan", "jangka waktu"]
+        answers: [potongan harga]
+        words: [potongan harga]
+      - id: t20
+        type: fill_blank
+        sentence: Para ___ menemukan prasasti kuno itu di tepi Sungai Musi.
+        meaning:
+          ar_eg: علماء الآثار لقوا النقش القديم ده على شطّ نهر موسي.
+          ar: عثر علماء الآثار على ذلك النقش القديم على ضفة نهر موسي.
+          en: Archaeologists found the ancient inscription on the bank of the Musi River.
+        options: ["arkeolog", "penyair", "komika"]
+        answers: [arkeolog]
+        words: [arkeolog, kuno, ditemukan]
+      - id: t21
+        type: fill_blank
+        sentence: Setelah tsunami, ribuan ___ datang dari seluruh Indonesia untuk membantu Aceh.
+        meaning:
+          ar_eg: بعد التسونامي، آلاف المتطوّعين جم من كل إندونيسيا يساعدوا آتشيه.
+          ar: بعد التسونامي جاء آلاف المتطوّعين من أنحاء إندونيسيا لمساعدة آتشيه.
+          en: After the tsunami, thousands of volunteers came from all over Indonesia to help Aceh.
+        options: ["relawan", "korban", "ulama"]
+        answers: [relawan]
+        words: [relawan, bencana]
+  - id: grammar
+    skill: grammar
+    title:
+      ar_eg: القواعد
+      ar: القواعد
+      en: Grammar
+    items:
+      - id: t22
+        type: multiple_choice
+        question_meaning:
+          ar_eg: «Kamarmu rapi sekali, ya» قالتها الأم وهي شايفة الهدوم على الأرض. قصدها إيه؟
+          ar: قالت الأمّ «Kamarmu rapi sekali, ya» وهي ترى الثياب على الأرض. ماذا تقصد؟
+          en: A mother says "Kamarmu rapi sekali, ya" while looking at clothes on the floor. What does she mean?
+        options:
+          - إن الأوضة نضيفة فعلًا.
+          - إن الأوضة مكركبة ولازم تتنضّف.
+          - إنها عايزة تشتري دولاب.
+        answer: 1
+        words: [ironi, tersirat]
+      - id: t23
+        type: fill_blank
+        sentence: Bagai ___ dengan tebing, kedua desa itu selalu saling membantu.
+        meaning:
+          ar_eg: زي الغاب والجرف، القريتين دول دايمًا بيساعدوا بعض.
+          ar: كالخيزران والجرف، تتعاون القريتان دائمًا.
+          en: Like bamboo and riverbank, the two villages always help each other.
+        options: ["aur", "bubur", "gading"]
+        answers: [aur]
+        explain:
+          ar_eg: الپيريباهاسا «bagai aur dengan tebing» = زي الغاب والجرف، كل واحد بيسند التاني.
+          ar: المثل «bagai aur dengan tebing» = كالخيزران والجرف، يسند كلٌّ منهما الآخر.
+          en: The proverb "bagai aur dengan tebing", like bamboo and bank, means each props up the other.
+        words: [bagai, peribahasa]
+      - id: t24
+        type: fill_blank
+        sentence: ___ Sriwijaya, kerajaan itu pernah menjadi pusat belajar agama Buddha.
+        meaning:
+          ar_eg: أمّا سريويجايا، فالمملكة دي كانت في يوم من الأيام مركز لتعليم البوذية.
+          ar: أمّا سريويجايا، فقد كانت تلك المملكة مركزًا لتعلّم البوذية.
+          en: As for Sriwijaya, that kingdom was once a centre of Buddhist learning.
+        options: ["Adapun", "Agar", "Andaikan"]
+        answers: [Adapun]
+        explain:
+          ar_eg: adapun في أول الجملة بتقدّم الموضوع في أسلوب التاريخ والكتابة الرسمية (= أمّا).
+          ar: adapun في صدر الجملة تقدّم الموضوع في الأسلوب التاريخي والرسمي (= أمّا).
+          en: Sentence-initial adapun introduces the topic in historical and formal writing ("as for").
+        words: [adapun, pusat]
+      - id: t25
+        type: multiple_choice
+        question_meaning:
+          ar_eg: أنهي جملة فيها تقديم وتأخير (inversi) أدبي؟
+          ar: أيّ جملة فيها تقديم وتأخير أدبي (inversi)؟
+          en: Which sentence uses literary inversion (inversi)?
+        options:
+          - Kapal-kapal datang dari Tiongkok.
+          - Datanglah kapal-kapal dari Tiongkok.
+          - Kapal dari Tiongkok sudah datang kemarin.
+        answer: 1
+        words: [berlayar]
+      - id: t26
+        type: fill_blank
+        sentence: ___ Bapak Haji Ibrahim telah berpulang ke rahmatullah pagi ini.
+        meaning:
+          ar_eg: المرحوم الحاج إبراهيم انتقل لرحمة الله الصبح ده.
+          ar: انتقل المرحوم الحاج إبراهيم إلى رحمة الله هذا الصباح.
+          en: The late Haji Ibrahim passed away this morning.
+        options: ["Almarhum", "Almarhumah", "Korban"]
+        answers: [Almarhum]
+        explain:
+          ar_eg: almarhum للراجل المسلم، وalmarhumah للست، وmendiang كلمة عامّة بتتقال كتير لغير المسلمين.
+          ar: almarhum للرجل المسلم، وalmarhumah للمرأة، وmendiang لفظ عامّ يُستعمل غالبًا لغير المسلمين.
+          en: almarhum is for a Muslim man, almarhumah for a woman, and mendiang is the general term, often used for non-Muslims.
+        words: [almarhum, berpulang]
+      - id: t27
+        type: fill_blank
+        sentence: ___ peserta tidak membawa kartu identitas, panitia berhak menolak pendaftarannya.
+        meaning:
+          ar_eg: في حالة إن المشترك ماجابش البطاقة، اللجنة من حقها ترفض تسجيله.
+          ar: في حال لم يُحضر المشارك بطاقة الهوية، يحقّ للجنة رفض تسجيله.
+          en: Where a participant does not bring an ID card, the committee is entitled to refuse their registration.
+        options: ["Dalam hal", "Walaupun", "Bahkan"]
+        answers: [Dalam hal]
+        explain:
+          ar_eg: dalam hal في لغة القوانين = «في حالة».
+          ar: dalam hal في لغة القوانين = «في حال».
+          en: In legal register, dalam hal means "where / in the event that".
+        words: [dalam hal, berhak]
+      - id: t28
+        type: fill_blank
+        sentence: ___ bunga raksasa itu sangat bergantung pada serangga.
+        meaning:
+          ar_eg: تلقيح الوردة العملاقة دي معتمد جدًّا على الحشرات.
+          ar: يعتمد تلقيح تلك الزهرة العملاقة كثيرًا على الحشرات.
+          en: The pollination of that giant flower depends heavily on insects.
+        options: ["Penyerbukan", "Menyerbuk", "Diserbuki"]
+        answers: [Penyerbukan]
+        explain:
+          ar_eg: 'الكتابة العلمية بتحب الاسم بدل الفعل (nominalisasi): menyerbuki → penyerbukan.'
+          ar: تفضّل الكتابة العلمية الاسم على الفعل (nominalisasi)، menyerbuki ← penyerbukan.
+          en: Scientific writing prefers the noun to the verb (nominalisasi), menyerbuki → penyerbukan.
+        words: [penyerbukan, serangga, raksasa]
+      - id: t29
+        type: multiple_choice
+        question_meaning:
+          ar_eg: عايز ترفض عرض سعر بأدب في التفاوض. تقول إيه؟
+          ar: تريد أن ترفض عرض سعر بلباقة في التفاوض، فماذا تقول؟
+          en: You want to turn down a price offer politely in a negotiation. What do you say?
+        options:
+          - Sepertinya harga itu belum bisa kami terima, Pak.
+          - Harga itu gila, Pak!
+          - Tidak. Titik.
+        answer: 0
+        words: [sepertinya, belum bisa, halus]
+      - id: t30
+        type: fill_blank
+        sentence: Dalam artikelnya, Siregar (2019) ___ bahwa jeruk Berastagi rusak akibat abu vulkanik.
+        meaning:
+          ar_eg: في مقالته، سيريجار (2019) أكّد إن برتقان بيراستاجي باظ بسبب الرماد البركاني.
+          ar: أكّد سيريغار (2019) في مقاله أنّ برتقال بيراستاغي تضرّر بسبب الرماد البركاني.
+          en: In his article, Siregar (2019) stresses that Berastagi's oranges were damaged by volcanic ash.
+        options: ["menegaskan", "menyindir", "menawarkan"]
+        answers: [menegaskan]
+        explain:
+          ar_eg: في الكتابة الأكاديمية بننقل كلام المراجع بأفعال زي menyatakan وmengungkapkan وmenegaskan. (المرجع هنا متألّف للاختبار.)
+          ar: في الكتابة الأكاديمية تُنقل أقوال المراجع بأفعال مثل menyatakan وmengungkapkan وmenegaskan. (المرجع هنا مؤلَّف للاختبار.)
+          en: Academic writing reports sources with verbs like menyatakan, mengungkapkan, menegaskan. (The source here is invented for the test.)
+        words: [menegaskan, abu vulkanik]
+      - id: t31
+        type: multiple_choice
+        question_meaning:
+          ar_eg: «Air beriak tanda tak dalam» معناها إيه؟
+          ar: ما معنى «Air beriak tanda tak dalam»؟
+          en: What does "Air beriak tanda tak dalam" mean?
+        options:
+          - المية الهادية عميقة.
+          - اللي بيتكلم كتير غالبًا علمه قليل.
+          - البحر خطر وقت الموج.
+        answer: 1
+        words: [pepatah]
+      - id: t32
+        type: fill_blank
+        sentence: Pantun jenaka ini ___ dengan pola a-b-a-b.
+        meaning:
+          ar_eg: البانتون الفكاهي ده مقفّى بنظام أ-ب-أ-ب.
+          ar: هذا البانتون الفكاهي مقفّى على نمط أ-ب-أ-ب.
+          en: This comic pantun rhymes in an a-b-a-b pattern.
+        options: ["berima", "berbalas", "bersendi"]
+        answers: [berima]
+        words: [berima, jenaka]
+      - id: t33
+        type: build_sentence
+        source:
+          ar_eg: بإيجاز، الانتحال ممنوع في الكتابة الأكاديمية.
+          ar: باختصار، الانتحال ممنوع في الكتابة الأكاديمية.
+          en: In short, plagiarism is forbidden in academic writing.
+        answer: Singkatnya, plagiarisme dilarang dalam tulisan akademik.
+        distractors: [orisinal, rujukan]
+        words: [singkatnya, plagiarisme]
+  - id: writing
+    skill: writing
+    title:
+      ar_eg: الكتابة
+      ar: الكتابة
+      en: Writing
+    items:
+      - id: t34
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: كل مواطن عليه إنه يحترم القانون.
+          ar: على كلّ مواطن أن يلتزم بالقانون.
+          en: Every citizen must obey the law.
+        answers:
+          - Setiap warga negara wajib mematuhi hukum.
+          - Setiap warga negara wajib mematuhi hukum
+          - Setiap warga negara harus mematuhi hukum.
+          - Setiap warga negara harus mematuhi hukum
+          - Setiap warga negara wajib menaati hukum.
+          - Setiap warga negara harus menaati hukum.
+          - Setiap warga wajib mematuhi hukum.
+          - Setiap warga harus mematuhi hukum.
+          - Semua warga negara wajib mematuhi hukum.
+          - Semua warga negara harus mematuhi hukum.
+          - Setiap warga negara wajib mematuhi undang-undang.
+        words: [warga negara, mematuhi, hukum]
+      - id: t35
+        type: writing_task
+        points: 4
+        prompt:
+          ar_eg: "رجع للايحة الزبالة في جزء القراية، ولخّصها في ٦٠–٩٠ كلمة لجيرانك في جروب الحيّ، بإندونيسي رسمي بس سهل: قول مين عليه إيه، وإمتى، وإيه الغرامة، ومن إمتى بتسري."
+          ar: "ارجع إلى لائحة النفايات في قسم القراءة، ولخّصها في ٦٠ إلى ٩٠ كلمة لجيرانك في مجموعة الحيّ، بإندونيسية رسمية سهلة: من عليه ماذا، ومتى، وما الغرامة، ومنذ متى تسري."
+          en: "Go back to the waste regulation in the reading section and summarise it in 60–90 words for your neighbours' group chat, in formal but plain Indonesian: who must do what, when, what the fine is, and from when it applies."
+        rubric:
+          - Covers every obligation in the regulation (sorting, Saturday hand-over, leaving it with the RT head, the fine, the start date) without adding rules that aren't there.
+          - Rewrites the legal language in plain words (wajib → harus, dalam hal → kalau) rather than copying whole articles.
+          - Is organised and brief, 60–90 words, with a short opening and closing suitable for neighbours.
+          - Uses formal but friendly Indonesian with accurate grammar and spelling.
+        sample: |
+          Bapak dan Ibu tetangga, berikut ringkasan peraturan desa tentang sampah.
+          Mulai 1 Januari, setiap rumah harus memisahkan sampah organik dan anorganik. Sampah anorganik dibawa ke bank sampah desa setiap hari Sabtu. Kalau tidak bisa datang, sampah boleh dititipkan kepada ketua RT. Siapa pun yang membuang sampah ke sungai akan didenda Rp50.000.
+          Mari kita jaga sungai kita bersama. Terima kasih.
+        words: [peraturan, ketentuan, denda, berlaku]
+      - id: t36
+        type: writing_task
+        points: 6
+        prompt:
+          ar_eg: "اكتب فقرة أكاديمية واحدة، ١٢٠–١٧٠ كلمة، عن 'Dampak letusan gunung berapi terhadap pertanian di sekitarnya'. ابدأ بجملة رئيسية (kalimat utama)، وهات جمل شرح، واستعمل مرجع واحد على الأقل بإعادة صياغة (ممكن تخترع المرجع زي «Nasution, 2020» بشرط تقول إنه مثال)، واقفل بجملة خلاصة."
+          ar: "اكتب فقرة أكاديمية واحدة من ١٢٠ إلى ١٧٠ كلمة حول 'Dampak letusan gunung berapi terhadap pertanian di sekitarnya'. ابدأ بجملة رئيسة (kalimat utama)، وأورد جملًا شارحة، واستعمل مرجعًا واحدًا على الأقل بإعادة صياغة (يجوز أن تؤلّف المرجع مثل «Nasution, 2020» على أن تذكر أنه مثال)، واختم بجملة خلاصة."
+          en: "Write one academic paragraph, 120–170 words, on 'Dampak letusan gunung berapi terhadap pertanian di sekitarnya'. Open with a topic sentence (kalimat utama), add supporting sentences, use at least one source by paraphrase (you may invent one such as 'Nasution, 2020' as long as you say it's an example), and close with a concluding sentence."
+        rubric:
+          - Has a clear kalimat utama, supporting sentences (kalimat penjelas) that each serve it, and a concluding sentence.
+          - Paraphrases at least one source with a reporting verb (menyatakan, mengungkapkan, menegaskan) and an in-text citation, and labels any invented source.
+          - Links sentences with academic connectors (di samping itu, lebih lanjut, dengan kata lain, singkatnya).
+          - Uses academic register accurately (nominalisation, no slang, no first-person opinion without support); 120–170 words.
+        sample: |
+          Letusan gunung berapi membawa dampak ganda bagi pertanian di sekitarnya. Dalam jangka pendek, abu vulkanik menutupi daun dan merusak tanaman sayur serta jeruk, sehingga petani kehilangan hasil panen. Sebagai contoh, setelah letusan Gunung Sinabung, banyak kebun di Tanah Karo gagal panen selama berbulan-bulan. Di samping itu, debu yang tebal juga menyulitkan pengangkutan hasil bumi ke pasar. Namun, dalam jangka panjang, abu tersebut justru menyuburkan tanah. Nasution (2020, contoh rujukan untuk tes ini) menyatakan bahwa kandungan mineral dalam abu vulkanik dapat meningkatkan kesuburan lahan setelah beberapa tahun. Dengan kata lain, kerugian hari ini dapat menjadi keuntungan di masa depan. Singkatnya, letusan gunung berapi merugikan petani dalam waktu dekat, tetapi juga menjadi salah satu alasan mengapa lahan di sekitar gunung terkenal subur.
+        words: [kalimat utama, kalimat penjelas, singkatnya]
+  - id: speaking
+    skill: speaking
+    title:
+      ar_eg: الكلام
+      ar: المحادثة
+      en: Speaking
+    instructions:
+      ar_eg: هنا هتقول بانتون وتشرح بالكلام فهمك لقصة. اتكلم بشكل طبيعي؛ المهم إنك تدعم فهمك بإشارات من النص، مش إن كل كلمة تبقى مثالية.
+      ar: ستلقي هنا بانتونًا وتشرح شفهيًّا فهمك لقصة. تكلّم بشكل طبيعي؛ المهم أن تدعم تفسيرك بإشارات من النصّ، لا أن تكون كل كلمة مثالية.
+      en: Here you'll recite a pantun and explain aloud how you read a story. Speak naturally; what matters is backing your reading with clues from the text, not every word being perfect.
+    items:
+      - id: t37
+        type: speaking
+        text: Kalau ada sumur di ladang, boleh kita menumpang mandi. Kalau ada umur yang panjang, boleh kita berjumpa lagi.
+        meaning:
+          ar_eg: لو فيه بير في الغيط، ممكن نستحمّى. ولو ربنا ادّانا عمر، نتقابل تاني.
+          ar: إن كان في الحقل بئر، جاز لنا أن نغتسل. وإن طال العمر، جاز لنا أن نلتقي ثانيةً.
+          en: If there's a well in the field, we may stop to bathe. If we are granted long life, we may meet again.
+        words: [pantun, sampiran, isi]
+      - id: t38
+        type: speaking_task
+        points: 6
+        prompt:
+          ar_eg: "اتكلم حوالي ٣ دقايق عن القصة القصيرة «Koper Biru» من جزء القراية: إيه المعنى المستخبّي في الآخر؟ إيه الإشارات اللي في النص بتدعم كلامك (التنضيف، الأكل، البصّ من الشباك، الرجل)؟ وإيه العبرة (amanat) في رأيك؟"
+          ar: "تحدّث نحو ثلاث دقائق عن القصة القصيرة «Koper Biru» في قسم القراءة: ما المعنى المضمر في نهايتها؟ وما الإشارات في النصّ التي تدعم تفسيرك (التنظيف، الطعام، النظر من النافذة، القدم)؟ وما المغزى (amanat) في رأيك؟"
+          en: "Talk for about 3 minutes about the short story «Koper Biru» from the reading section: what is implied at the end? Which clues in the text support your reading (the cleaning, the meal, looking out of the window, the sore leg)? And what do you think its amanat (message) is?"
+        rubric:
+          - Gives a clear interpretation of the implied meaning rather than retelling the plot.
+          - Supports it with at least two specific clues from the text (isyarat, tersirat, digambarkan).
+          - Uses literary vocabulary accurately (tokoh, watak, simbol, tema, amanat, akhir terbuka).
+          - Speaks fluently and in an organised way, with a short conclusion about the message.
+        sample: |
+          Menurut saya, cerpen "Koper Biru" bercerita tentang kesedihan seorang ibu yang tidak bisa diucapkan. Amak tidak pernah berkata bahwa ia sedih, tetapi semua isyarat dalam cerita menunjukkan hal itu.
+          Pertama, Amak membersihkan koper setiap pagi, padahal tidak ada debu. Itu tanda bahwa ia tidak bisa berhenti memikirkan kepergian anaknya. Kedua, ia memasak gulai kesukaan Rizal, sebuah cara untuk menunjukkan kasih sayang tanpa kata-kata. Ketiga, ia berbicara sambil menatap jendela, bukan wajah anaknya. Tampaknya ia takut menangis.
+          Yang paling kuat adalah akhir cerita. Amak bilang kakinya sakit, tetapi tetangga melihatnya berdiri lama di depan rumah. Jadi, alasan itu hanya cara untuk menghindari perpisahan di terminal.
+          Koper biru menjadi simbol perantauan. Amanat yang saya tangkap adalah bahwa cinta orang tua sering tersirat, tidak tersurat, dan kita perlu belajar membacanya.
+        words: [tersirat, isyarat, simbol, amanat]
+review:
+  status: draft
+  verified: false
