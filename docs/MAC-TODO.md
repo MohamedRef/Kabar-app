@@ -14,7 +14,7 @@ belong to. Keep one checkbox per action.
 ## 0. Before you sit down (browser only, any device, ~30 min)
 
 - [ ] **Claude Max credit** (while you're on Max 20x): Claude → Settings → Billing, claim the monthly API credit and link a Console org. It expires each cycle, so it goes to build-time content batches.
-- [ ] **Cloudflare**: free account at <https://dash.cloudflare.com/sign-up> (no card).
+- [x] **Cloudflare**: free account at <https://dash.cloudflare.com/sign-up> (no card). Done.
 - [ ] **Google AI Studio**: <https://aistudio.google.com> → Get API key (free tier). Keep it for step 5.4.
 - [ ] **Azure**: account plus a Speech resource on **F0** (signup asks for a card for identity only; F0 never bills). Note the key and region for step 5.4.
 - [ ] **Google Cloud**: create the project "Kabar" and set the consent screen to External / Testing with your Gmail as a test user ([CLOUD.md §3.2](CLOUD.md) steps 1–2). The OAuth clients come in step 4, because the Android one needs the release key.
@@ -66,13 +66,13 @@ just check                # fmt + clippy + tests: all green
   - **Web** "Kabar server"
   - **Android** "Kabar Android" (package `app.kabar` + that SHA-1)
   - **Desktop** "Kabar Mac"
-- [ ] Put the Web and Desktop client ids in `crates/server/wrangler.toml` → `GOOGLE_CLIENT_IDS`.
+- [ ] Send me the Web and Desktop client ids; I put them in `crates/server/wrangler.toml` → `GOOGLE_CLIENT_IDS` (they aren't secrets).
 
 ## 5. Kabar Cloud (~30 min) — [CLOUD.md §3](CLOUD.md)
 
 - [ ] 5.1 `just cloud-e2e`: the offline test is green (fake Google, phone → tablet sync, sign-out).
-- [ ] 5.2 `just cloud-tools`, then `wrangler login` (opens the browser).
-- [ ] 5.3 `just cloud-setup`: creates D1, the signing key and your allowlist, and writes the D1 id into `wrangler.toml`.
+- [ ] 5.2 `just cloud-tools` (wrangler 4 + worker-build), then `wrangler login`: the browser opens, click **Allow**.
+- [ ] 5.3 `just cloud-setup`: creates the D1 database and the token signing key (a Worker secret, never in the repo), asks for your Gmail for the allowlist, and writes the D1 id into `wrangler.toml`.
 - [ ] 5.4 Keys. Each one switches an engine on:
   ```bash
   cd crates/server
@@ -83,6 +83,7 @@ just check                # fmt + clippy + tests: all green
   Only in a month with Max credit: `ANTHROPIC_API_KEY` plus `CLAUDE_ENABLED = "true"`.
 - [ ] 5.5 `just deploy-cloud`, then `curl https://kabar-cloud.<subdomain>.workers.dev/v1/health`.
 - [ ] 5.6 Commit `crates/server/wrangler.toml` (the ids aren't secrets), then send me the URL.
+- [ ] 5.7 Optional, if you use Claude Code on the Mac: `claude plugin marketplace add cloudflare/skills`, then `claude plugin install cloudflare@cloudflare` (Cloudflare's own skills + MCP; signs in to Cloudflare in the browser). Kabar keeps deploying with wrangler.
 
 ## 6. Content pipeline (~30 min, needs the downloads from step 1) — [CONTENT.md](CONTENT.md), [RUN.md §6](RUN.md)
 
