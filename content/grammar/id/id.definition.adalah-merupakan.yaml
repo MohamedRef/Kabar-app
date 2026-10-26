@@ -1,0 +1,104 @@
+schema: kabar.grammar/v1
+id: id.definition.adalah-merupakan
+language: id
+level: bipa3
+title:
+  target: X adalah / merupakan / ialah Y
+  en: Defining things with adalah, merupakan and ialah
+  ar_eg: التعريف بـ adalah و merupakan و ialah
+  ar: التعريف بـadalah وmerupakan وialah
+summary:
+  ar_eg: "في الكلام الرسمي بتربط اسم باسم بـ adalah (هو / هي) أو merupakan (يُعتبر). مش قبل صفة، ومش قبل فعل."
+  ar: "في الأسلوب الرسمي يُربط الاسم بالاسم بـadalah (هو) أو merupakan (يُعدّ / يمثّل)، ولا تأتيان قبل الصفة أو الفعل."
+  en: "In formal Indonesian, link noun to noun with adalah (is) or merupakan (constitutes). Never before an adjective or a verb."
+pattern:
+  - noun + adalah + noun phrase (definition / identity)
+  - noun + merupakan + noun phrase (formal "is / constitutes")
+  - term + ialah + definition (dictionary style)
+  - noun + bukan + noun (negative — not "tidak adalah")
+  - "…, yaitu / yakni … (namely)"
+explanation:
+  ar_eg: |
+    من المستوى الأول عارف إن الإندونيسي مش محتاج «فعل كان»: Saya guru = أنا مدرس. بس في التعريفات والكتابة الرسمية بنحط كلمة ربط:
+    - adalah = هو / هي: Makanan sehat adalah makanan yang bergizi = الأكل الصحي هو الأكل المغذي.
+    - merupakan = يُعتبر / بيمثل، أرسم شوية وكتير في التقارير والنصوص العلمية: Sayur merupakan sumber serat = الخضار مصدر للألياف.
+    - ialah = زي adalah، أكتر في التعريفات بتاعة القاموس.
+    - yaitu / yakni = يعني / وهو: tiga warna, yaitu merah, putih, dan biru.
+    قواعد مهمة:
+    • بعدها «اسم» بس: Makanan ini enak (من غير adalah)، مش Makanan ini adalah enak.
+    • النفي: X bukan Y، مش X tidak adalah Y.
+    • merupakan فعل، فمش بتتنفي بـ bukan merupakan في الكلام الطبيعي؛ قول bukan بس.
+  ar: |
+    لا تحتاج الإندونيسية إلى رابط في الجملة الاسمية العادية (Saya guru)، لكن التعريف والأسلوب الرسمي يستعملان رابطًا:
+    - adalah: هو / هي: Makanan sehat adalah makanan yang bergizi.
+    - merupakan: يُعدّ / يمثّل، وهي أكثر رسمية وشائعة في النصوص العلمية: Sayur merupakan sumber serat.
+    - ialah: مثل adalah، وتكثر في تعريفات المعاجم.
+    - yaitu / yakni: أي / وهي، للتفصيل.
+    القواعد: لا يليها إلا اسم أو مركب اسمي (Makanan ini enak بلا adalah)، والنفي بـbukan لا «tidak adalah».
+  en: |
+    You know since BIPA 1 that Indonesian needs no "to be": Saya guru. But definitions and formal writing use a linking word:
+    - adalah = is: Makanan sehat adalah makanan yang bergizi (Healthy food is nutritious food).
+    - merupakan = constitutes / is, more formal, common in reports and science texts: Sayur merupakan sumber serat.
+    - ialah = like adalah, typical of dictionary definitions.
+    - yaitu / yakni = namely: tiga warna, yaitu merah, putih, dan biru.
+    Rules:
+    • Only a noun (phrase) follows: Makanan ini enak — no adalah before an adjective.
+    • Negate with bukan: X bukan Y, never "X tidak adalah Y".
+    • merupakan is a verb; in natural writing negate the sentence with bukan instead.
+examples:
+  - text: Makanan sehat adalah makanan yang bergizi dan seimbang.
+    breakdown: makanan sehat · adalah (is) · makanan yang bergizi dan seimbang
+    en: Healthy food is food that is nutritious and balanced.
+    ar_eg: الأكل الصحي هو الأكل المغذي والمتوازن.
+    ar: الطعام الصحي هو الطعام المغذّي المتوازن.
+  - text: Sembalun merupakan daerah pertanian di kaki Gunung Rinjani.
+    en: Sembalun is a farming area at the foot of Mount Rinjani.
+    ar_eg: سمبالون منطقة زراعية تحت جبل رينجاني.
+    ar: تُعدّ سمبالون منطقة زراعية عند سفح جبل رينجاني.
+    register: formal
+  - text: Stroberi merupakan buah yang kaya vitamin C.
+    en: Strawberries are a fruit rich in vitamin C.
+    ar_eg: الفراولة فاكهة مليانة فيتامين سي.
+    ar: الفراولة فاكهة غنية بفيتامين ج.
+  - text: Tempe adalah makanan khas Indonesia dari kedelai.
+    en: Tempeh is a typical Indonesian food made from soybeans.
+    ar_eg: التمبيه أكلة إندونيسية مشهورة معمولة من فول الصويا.
+    ar: التمبيه طعام إندونيسي مميز يُصنع من فول الصويا.
+  - text: Serat ialah bagian makanan yang membantu pencernaan.
+    en: Fibre is the part of food that helps digestion.
+    ar_eg: الألياف هي الجزء من الأكل اللي بيساعد على الهضم.
+    ar: الألياف هي الجزء من الطعام الذي يساعد على الهضم.
+    register: formal
+  - text: Ada tiga makanan pokok di sini, yaitu nasi, jagung, dan ubi.
+    en: There are three staple foods here, namely rice, corn and sweet potato.
+    ar_eg: فيه تلات أكلات أساسية هنا، اللي هما الرز والدرة والبطاطا.
+    ar: هناك ثلاثة أطعمة أساسية هنا، وهي الأرز والذرة والبطاطا الحلوة.
+mistakes:
+  - wrong: Makanan ini adalah enak.
+    right: Makanan ini enak.
+    why:
+      ar_eg: adalah مش بتيجي قبل صفة؛ الصفة بتيجي على طول.
+      ar: لا تأتي adalah قبل الصفة.
+      en: adalah never comes before an adjective.
+  - wrong: Tempe tidak adalah daging.
+    right: Tempe bukan daging.
+    why:
+      ar_eg: نفي الاسم بـ bukan، و adalah بتختفي.
+      ar: يُنفى الاسم بـbukan وتسقط adalah.
+      en: Nouns are negated with bukan, and adalah disappears.
+  - wrong: Sayur merupakan sehat.
+    right: Sayur merupakan makanan sehat. / Sayur sehat.
+    why:
+      ar_eg: merupakan لازم بعدها اسم.
+      ar: يلزم أن يلي merupakan اسم.
+      en: merupakan must be followed by a noun phrase.
+arabic_bridge:
+  ar_eg: "زي العربي بالظبط: الجملة الاسمية مش محتاجة فعل (أنا مدرس = Saya guru). و adalah في التعريف شبه «ضمير الفصل» في الفصحى: «الصحةُ هي التاج» = Kesehatan adalah mahkota. و merupakan = «يُعدّ / يُمثّل»."
+  ar: "كالعربية، لا تحتاج الجملة الاسمية إلى فعل، وadalah في التعريف تشبه ضمير الفصل: «الصحةُ هي التاج» = Kesehatan adalah mahkota، وmerupakan تقابل «يُعدّ / يمثّل»."
+  en: Like Arabic, no copula is needed; adalah in definitions mirrors the Arabic separating pronoun هو/هي (الصحة هي التاج), and merupakan ≈ يُعدّ.
+tags: [copula, definition, formal-writing]
+prerequisites: [id.sentence.no-copula, id.negation.tidak-bukan]
+see_also: [id.yang.basic, id.confix.men-kan.causative]
+review:
+  status: draft
+  verified: false

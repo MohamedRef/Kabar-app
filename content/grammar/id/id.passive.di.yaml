@@ -1,0 +1,101 @@
+schema: kabar.grammar/v1
+id: id.passive.di
+language: id
+level: bipa3
+title:
+  target: di- passive (dibaca, dibersihkan, dikunjungi)
+  en: The di- passive
+  ar_eg: المبني للمجهول بـ di-
+  ar: المبني للمجهول بالسابقة di-
+summary:
+  ar_eg: "شيل meN- وحط di- (والـ -kan / -i يفضلوا): membersihkan → dibersihkan = اتنضّف. الفاعل لو موجود بعد oleh (= من / بواسطة)."
+  ar: "تُستبدل di- بـmeN- مع بقاء -kan / -i: membersihkan → dibersihkan، ويُذكر الفاعل بعد oleh."
+  en: "Replace meN- with di- (keeping -kan / -i): membersihkan → dibersihkan. Name the doer after oleh (by)."
+pattern:
+  - object + di- + root (+ -kan / -i) + (oleh + agent)
+  - di-verb + -nya = by him / her (dibacanya)
+  - "di- (prefix, joined): dibaca · di (preposition, separate): di rumah"
+explanation:
+  ar_eg: |
+    من meN- للـ di-: بتشيل meN- (بكل تغييراتها) وترجع للجذر وتحط di-:
+    membaca → dibaca، menulis → ditulis (الـ t ترجع!)، membersihkan → dibersihkan، mengunjungi → dikunjungi.
+    - الفاعل: بعد oleh، ولو جه على طول بعد الفعل ممكن تشيل oleh: Kain ini dibuat (oleh) ibu-ibu Sade.
+    - dibacanya = اتقرا بواسطته (الـ -nya هنا الفاعل).
+    - امتى؟ لما الفاعل مش مهم أو مش معروف، وفي الأخبار واللافتات والتاريخ: Rumah ini dibangun pada tahun … / Dilarang merokok.
+    - مع أنا / إحنا / إنت ما تستعملش di-، استعمل Buku itu saya baca (الدرس الجاي).
+    أهم غلطة إملائية في الإندونيسي كله:
+    di- البادئة لازقة: dibaca، ditulis. و di حرف الجر منفصل: di rumah، di Lombok.
+    الاختبار: لو بعدها فعل → لازقة. لو بعدها مكان → منفصلة.
+  ar: |
+    تُحذف meN- بصورها ويعود الجذر إلى أصله ثم تُضاف di-:
+    membaca → dibaca، menulis → ditulis (تعود t)، membersihkan → dibersihkan، mengunjungi → dikunjungi.
+    - يُذكر الفاعل بعد oleh، ويجوز حذفها إذا تلا الفاعل الفعل مباشرة.
+    - dibacanya = قرأه هو (-nya فاعل).
+    - يُستعمل حين يكون الفاعل مجهولًا أو غير مهم، وفي الأخبار واللافتات والتاريخ.
+    - لا يُستعمل مع ضمير المتكلم أو المخاطب (يُقال: Buku itu saya baca).
+    وتنبّه للإملاء: di- السابقة متصلة (dibaca)، وdi حرف الجر منفصل (di rumah).
+  en: |
+    From meN- to di-: remove meN- (with all its sound changes), restore the root and add di-:
+    membaca → dibaca, menulis → ditulis (the t comes back), membersihkan → dibersihkan, mengunjungi → dikunjungi.
+    - The doer goes after oleh (by); oleh can drop when the doer directly follows the verb.
+    - dibacanya = read by him / her.
+    - Use it when the doer is unknown or unimportant, and in news, signs and history: Rumah ini dibangun pada tahun … / Dilarang merokok.
+    - Not with I / we / you — use Buku itu saya baca (next lesson).
+    The most common spelling mistake in Indonesian: the prefix di- is joined (dibaca, ditulis); the preposition di is separate (di rumah, di Lombok). Test: a verb follows → join it; a place follows → space.
+examples:
+  - text: Desa Sade dikunjungi banyak wisatawan.
+    breakdown: di- + kunjung + -i (visited) · banyak wisatawan (agent)
+    en: Sade village is visited by many tourists.
+    ar_eg: قرية ساديه بيزورها سياح كتير.
+    ar: تُزار قرية سادي من قِبل كثير من السياح.
+  - text: Lantai rumah adat Sade dibersihkan dengan kotoran kerbau.
+    breakdown: di- + bersih + -kan (cleaned) · dengan (with)
+    en: The floors of Sade's traditional houses are cleaned with buffalo dung.
+    ar_eg: أرضية البيوت التقليدية في ساديه بتتمسح بروث الجاموس.
+    ar: تُنظَّف أرضيات البيوت التقليدية في سادي بروث الجاموس.
+  - text: Kain tenun ini dibuat oleh ibu-ibu di Sade.
+    en: This woven cloth was made by the women of Sade.
+    ar_eg: القماش المنسوج ده معمول بإيد الستات في ساديه.
+    ar: صنعت هذا القماشَ المنسوج نساءُ قرية سادي.
+  - text: Pahlawan itu dikenal sebagai ulama besar.
+    en: That hero is known as a great Islamic scholar.
+    ar_eg: البطل ده معروف إنه عالم دين كبير.
+    ar: يُعرف ذلك البطل بأنه عالم كبير.
+  - text: Kamar saya dibersihkan setiap hari.
+    en: My room is cleaned every day.
+    ar_eg: أوضتي بتتنضف كل يوم.
+    ar: تُنظَّف غرفتي كل يوم.
+  - text: Dilarang merokok di dalam rumah adat.
+    en: Smoking is not allowed inside the traditional house.
+    ar_eg: ممنوع التدخين جوه البيت التقليدي.
+    ar: يُمنع التدخين داخل البيت التقليدي.
+    register: formal
+mistakes:
+  - wrong: di baca, di bersihkan
+    right: dibaca, dibersihkan
+    why:
+      ar_eg: di- البادئة لازقة في الفعل؛ اللي بتنفصل هي di حرف الجر (di rumah).
+      ar: تتصل di- بالفعل، وينفصل حرف الجر di (di rumah).
+      en: Prefix di- joins the verb; only the preposition di is separate.
+  - wrong: dirumah, dipasar
+    right: di rumah, di pasar
+    why:
+      ar_eg: هنا di حرف جر قبل مكان، فبتنفصل.
+      ar: di هنا حرف جر قبل مكان فتنفصل.
+      en: Here di is a preposition before a place — separate it.
+  - wrong: Surat itu dimenulis oleh Rina.
+    right: Surat itu ditulis oleh Rina.
+    why:
+      ar_eg: di- بتاخد مكان meN-، ما بيتجمعوش؛ والـ t ترجع (tulis).
+      ar: تحل di- محل meN- ولا تجتمعان، ويعود الحرف الساقط (tulis).
+      en: di- replaces meN- (never both), and the dropped t returns.
+arabic_bridge:
+  ar_eg: "di- = المبني للمجهول: كَتَبَ ← كُتِبَ = menulis ← ditulis. و oleh زي «من قِبَل / بواسطة» في الفصحى (لغة الجرايد). في المصري بنقول «اتكتب» — نفس الفكرة: إضافة صغيرة على أول الفعل."
+  ar: "di- تقابل البناء للمجهول: كَتَبَ ← كُتِبَ = menulis ← ditulis، وoleh تقابل «من قِبَل» في لغة الصحافة، وفي العامية المصرية «اتكتب» بسابقة كما في الإندونيسية."
+  en: di- is the passive (كتب → كُتِب = menulis → ditulis); oleh ≈ journalistic من قِبَل; Egyptian «اتكتب» even uses a prefix, just like di-.
+tags: [voice, passive, spelling]
+prerequisites: [id.prefix.men.basic, id.verb.transitive]
+see_also: [id.voice.active-passive, id.notice.harap-dilarang, id.prefix.ter]
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,233 @@
+schema: kabar.lesson/v1
+id: bipa1.u01.l04
+language: id
+title: Bertemu di Kota Tua
+can_do:
+  ar_eg: تعمل حوار تحية من ٤ سطور.
+  ar: أن تُجري حوار تحية من أربعة أسطر.
+  en: Hold a 4-line greeting dialogue.
+slides:
+  - title: Empat langkah
+    body:
+      ar_eg: |
+        أي مقابلة قصيرة بتمشي في ٤ خطوات:
+        ١) سلّم حسب الوقت: Selamat sore!
+        ٢) اسأل: Apa kabar?
+        ٣) رد وارجع السؤال: Baik, terima kasih. Dan kamu? (أو Dan Bapak? / Dan Ibu? مع الأكبر)
+        ٤) ودّع: Sampai jumpa! / Selamat jalan!
+        ومع الصحاب استخدم aku وkamu، ومع الأكبر saya وBapak / Ibu.
+      ar: |
+        يسير اللقاء القصير في أربع خطوات:
+        ١) حيِّ بحسب الوقت: Selamat sore!
+        ٢) اسأل: Apa kabar?
+        ٣) أجب وردّ السؤال: Baik, terima kasih. Dan kamu? (أو Dan Bapak? / Dan Ibu? مع الأكبر)
+        ٤) ودِّع: Sampai jumpa! / Selamat jalan!
+        ومع الأصدقاء استعمل aku وkamu، ومع الأكبر saya وBapak / Ibu.
+      en: |
+        A short meeting runs in four steps:
+        1) greet by time of day: Selamat sore!
+        2) ask: Apa kabar?
+        3) answer and ask back: Baik, terima kasih. Dan kamu? (or Dan Bapak? / Dan Ibu? with elders)
+        4) say goodbye: Sampai jumpa! / Selamat jalan!
+        With friends use aku and kamu; with elders, saya and Bapak / Ibu.
+    grammar: id.greeting.selamat
+    examples:
+      - text: Selamat sore, Rina! Apa kabar?
+        ar_eg: مساء الخير يا رينا! إزيك؟
+        ar: مساء الخير يا رينا! كيف حالكِ؟
+        en: Good afternoon, Rina! How are you?
+      - text: Baik, terima kasih. Dan kamu?
+        ar_eg: كويسة، شكرًا. وإنت؟
+        ar: بخير، شكرًا. وأنت؟
+        en: Fine, thanks. And you?
+  - title: Asalamualaikum!
+    body:
+      ar_eg: أغلب الإندونيسيين مسلمين، فهتسمع كتير «Asalamualaikum» (بتتكتب كمان Assalamualaikum)، والرد «Waalaikumsalam». نفس السلام اللي إنت متعود عليه، بس بنطق إندونيسي. وكتير بيحطوا إيدهم على صدرهم بعد السلام.
+      ar: أكثر الإندونيسيين مسلمون، فستسمع كثيرًا «Asalamualaikum» (وتُكتب أيضًا Assalamualaikum)، وجوابها «Waalaikumsalam». إنه السلام الذي تعرفه بنطق إندونيسي، وكثيرًا ما توضع اليد على الصدر بعده.
+      en: Most Indonesians are Muslim, so you'll often hear "Asalamualaikum" (also written Assalamualaikum), answered with "Waalaikumsalam" — the greeting you know, with Indonesian spelling. People often touch a hand to the chest afterwards.
+    examples:
+      - text: Asalamualaikum, Bu! — Waalaikumsalam!
+        ar_eg: السلام عليكم يا مدام! — وعليكم السلام!
+        ar: السلام عليكم يا سيدتي! — وعليكم السلام!
+        en: Peace be upon you, ma'am! — And upon you peace!
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الساعة ٥ العصر وقابلت Rina في كوتا توا. تسلّم إزاي؟
+      ar: الساعة الخامسة عصرًا، وقابلت Rina في كوتا توا. بماذا تحيّيها؟
+      en: It's 5 p.m. and you meet Rina in Kota Tua. How do you greet her?
+    options: ["Selamat pagi, Rina!", "Selamat sore, Rina!", "Selamat tinggal, Rina!"]
+    answer: 1
+    explain:
+      ar_eg: من ٣ لحد المغرب ده sore. وselamat tinggal للوداع مش للتحية.
+      ar: من الثالثة إلى المغرب هو الـ sore، وselamat tinggal للوداع لا للتحية.
+      en: 3 p.m. to sunset is sore; selamat tinggal is a goodbye, not a greeting.
+    words: [selamat, sore]
+  - id: e02
+    type: listen
+    text: Waalaikumsalam
+    options: ["Asalamualaikum", "Salam kenal", "Waalaikumsalam"]
+    answer: 2
+    words: [waalaikumsalam]
+  - id: e03
+    type: fill_blank
+    sentence: Sore, Rina! Apa ___?
+    meaning:
+      ar_eg: مساء الخير يا رينا! إزيك؟
+      ar: مساء الخير يا رينا! كيف حالكِ؟
+      en: Afternoon, Rina! How are you?
+    answers: [kabar]
+    words: [kabar]
+  - id: e04
+    type: fill_blank
+    sentence: Kabar baik, terima kasih. ___ kamu?
+    meaning:
+      ar_eg: كويسة، شكرًا. وإنت؟
+      ar: بخير، شكرًا. وأنت؟
+      en: I'm fine, thanks. And you?
+    answers: [Dan, dan]
+    words: [dan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: مساء الخير يا رينا! إزيك؟
+      ar: مساء الخير يا رينا! كيف حالكِ؟
+      en: Good afternoon, Rina! How are you?
+    answer: Selamat sore, Rina! Apa kabar?
+    distractors: [pagi, aku]
+    words: [selamat, sore, apa, kabar]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: وأنا كمان كويس، شكرًا.
+      ar: بخير أيضًا، شكرًا.
+      en: Fine too, thank you.
+    answer: Baik juga, terima kasih.
+    distractors: [sama-sama, dan]
+    words: [baik, juga, terima kasih]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: Dimas قالك «Asalamualaikum!». رد عليه.
+      ar: قال لك Dimas «Asalamualaikum!». أجبه.
+      en: Dimas says "Asalamualaikum!". Answer him.
+    answers: ["Waalaikumsalam!", "Waalaikumsalam", "Waalaikum salam", "Wa'alaikumsalam", "Wa'alaikum salam", "Waalaikumsalam, Dimas!", "Waalaikumsalam, Dimas"]
+    explain:
+      ar_eg: نفس «وعليكم السلام» بالكتابة الإندونيسية.
+      ar: هي «وعليكم السلام» بالكتابة الإندونيسية.
+      en: It's «وعليكم السلام» in Indonesian spelling.
+    words: [waalaikumsalam]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أشوفك بكرة يا رينا!
+      ar: إلى اللقاء غدًا يا رينا!
+      en: See you tomorrow, Rina!
+    answers: ["Sampai jumpa besok, Rina!", "Sampai jumpa besok, Rina", "Sampai jumpa besok Rina", "Rina, sampai jumpa besok!", "Rina, sampai jumpa besok"]
+    words: [sampai jumpa, besok]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بالليل) تصبح على خير يا أستاذ بودي. أشوفك بعدين!
+      ar: (ليلًا) تصبح على خير يا أستاذ بودي. إلى اللقاء!
+      en: (at night) Good night, Pak Budi. See you!
+    answers:
+      - Selamat malam, Pak Budi. Sampai jumpa!
+      - Selamat malam, Pak Budi. Sampai jumpa
+      - Selamat malam Pak Budi. Sampai jumpa!
+      - Selamat malam, Pak Budi, sampai jumpa!
+      - Selamat malam, Pak Budi! Sampai jumpa!
+    words: [selamat, malam, sampai jumpa]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Baik-baik saja, terima kasih. Dan kamu?
+    answers_meaning:
+      ar_eg: ["كله تمام، شكرًا. وإنت؟", "تمام، شكرًا. وإنتي؟", "كويس، شكرًا. وإنت؟"]
+      ar: ["كل شيء على ما يرام، شكرًا. وأنت؟", "بخير، شكرًا. وأنت؟"]
+      en: ["All fine, thanks. And you?", "I'm fine, thank you. And you?", "Fine, thanks. And you?"]
+    words: [baik-baik saja, dan, kamu]
+  - id: e11
+    type: dictation
+    text: Selamat sore, Rina!
+    meaning:
+      ar_eg: مساء الخير يا رينا!
+      ar: مساء الخير يا رينا!
+      en: Good afternoon, Rina!
+    words: [selamat, sore]
+  - id: e12
+    type: speaking
+    text: Waalaikumsalam! Apa kabar, Dimas?
+    meaning:
+      ar_eg: وعليكم السلام! إزيك يا ديماس؟
+      ar: وعليكم السلام! كيف حالك يا ديماس؟
+      en: And peace be upon you! How are you, Dimas?
+    words: [waalaikumsalam, apa, kabar]
+dialogue:
+  title: Sore di Taman Fatahillah
+  lines:
+    - speaker: Rina
+      text: Selamat sore, Mohamed!
+      ar_eg: مساء الخير يا محمد!
+      ar: مساء الخير يا محمد!
+      en: Good afternoon, Mohamed!
+    - speaker: Mohamed
+      text: Sore, Rina! Apa kabar?
+      ar_eg: مساء النور يا رينا! إزيك؟
+      ar: مساء النور يا رينا! كيف حالكِ؟
+      en: Afternoon, Rina! How are you?
+    - speaker: Rina
+      text: Kabar baik, terima kasih. Dan kamu?
+      ar_eg: كويسة، شكرًا. وإنت؟
+      ar: بخير، شكرًا. وأنت؟
+      en: I'm fine, thanks. And you?
+    - speaker: Mohamed
+      text: Baik juga, terima kasih.
+      ar_eg: وأنا كمان كويس، شكرًا.
+      ar: بخير أيضًا، شكرًا.
+      en: Fine too, thanks.
+    - speaker: Dimas
+      text: Asalamualaikum! Hai, Rina! Hai, Mohamed!
+      ar_eg: السلام عليكم! أهلًا يا رينا! أهلًا يا محمد!
+      ar: السلام عليكم! مرحبًا يا رينا! مرحبًا يا محمد!
+      en: Peace be upon you! Hi, Rina! Hi, Mohamed!
+    - speaker: Mohamed
+      text: Waalaikumsalam! Apa kabar, Dimas?
+      ar_eg: وعليكم السلام! إزيك يا ديماس؟
+      ar: وعليكم السلام! كيف حالك يا ديماس؟
+      en: And peace be upon you! How are you, Dimas?
+    - speaker: Dimas
+      text: Baik-baik saja, terima kasih.
+      ar_eg: كله تمام، شكرًا.
+      ar: كل شيء على ما يرام، شكرًا.
+      en: All fine, thanks.
+    - speaker: Mohamed
+      text: Selamat malam, Rina, Dimas. Sampai jumpa besok!
+      ar_eg: تصبحوا على خير يا رينا ويا ديماس. أشوفكم بكرة!
+      ar: تصبحان على خير يا رينا ويا ديماس. إلى اللقاء غدًا!
+      en: Good night, Rina, Dimas. See you tomorrow!
+    - speaker: Rina
+      text: Selamat jalan, Mohamed!
+      ar_eg: مع السلامة يا محمد!
+      ar: في أمان الله يا محمد!
+      en: Goodbye, Mohamed!
+new_words:
+  - word: asalamualaikum
+    pos: phrase
+    ar_eg: السلام عليكم
+    ar: السلام عليكم
+    en: peace be upon you (Muslim greeting)
+    arabic: السلام عليكم
+  - word: waalaikumsalam
+    pos: phrase
+    ar_eg: وعليكم السلام
+    ar: وعليكم السلام
+    en: and upon you peace (reply)
+    arabic: وعليكم السلام
+review:
+  status: draft
+  verified: false

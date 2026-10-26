@@ -1,0 +1,105 @@
+schema: kabar.grammar/v1
+id: id.conjunction.concessive
+language: id
+level: bipa5
+title:
+  target: meskipun, walaupun, biarpun, kendatipun, padahal
+  en: Concessive clauses (although, even though)
+  ar_eg: «رغم إن» و«مع إن» في الإندونيسي
+  ar: أدوات التنازل (رغم أنّ، مع أنّ)
+summary:
+  ar_eg: "meskipun / walaupun = رغم إن. الجملة التانية بتاخد tetap (برضه) مش tetapi. وبين جملتين: Meskipun demikian / Namun. وpadahal = مع إن (عكس المتوقع)."
+  ar: "meskipun وwalaupun بمعنى «رغم أنّ»، ويُؤكَّد الجواب بـ tetap لا بـ tetapi، وبين جملتين يُقال Meskipun demikian أو Namun، وpadahal لمخالفة المتوقع."
+  en: meskipun / walaupun = although; mark the counter-claim with tetap, not tetapi. Across sentences use Meskipun demikian / Namun. padahal = even though (contrary to what you'd expect).
+pattern:
+  - "Meskipun / Walaupun + clause, + main clause (+ tetap / masih)"
+  - "Main clause + meskipun / walaupun + clause"
+  - "Sentence. Meskipun demikian / Walaupun begitu / Namun, + sentence."
+  - "Main clause, padahal + contrary fact"
+  - "formal-literary: kendatipun, sekalipun, sungguhpun · casual: biarpun, walau"
+explanation:
+  ar_eg: |
+    عشان تتناقش صح لازم تعترف بنقطة الطرف التاني وبعدين ترد. دي أدواتها:
+    - meskipun / walaupun (الاتنين بنفس المعنى): Meskipun mahal, proyek ini penting = رغم إنه غالي، المشروع ده مهم.
+    - biarpun / walau: أخف وأقرب للكلام.
+    - kendatipun / sekalipun / sungguhpun: رسمية وأدبية، هتشوفها في المقالات.
+    مهم جدًا: الجملة الرئيسية بتاخد tetap (برضه / مع ذلك) أو masih، مش tetapi:
+    Meskipun ditolak sebagian warga, pemerintah tetap melanjutkan proyek itu.
+    في العربي «رغم إن… إلا إن…» طبيعية، لكن «Meskipun …, tetapi …» في الإندونيسي الرسمي بتعتبر أداتين ربط في جملة واحدة: شيل tetapi.
+    بين جملتين منفصلتين: Meskipun demikian, / Walaupun begitu, / Namun, — ودايمًا فاصلة بعدها. ماتقولش «Meskipun,» لوحدها في أول الجملة زي الإنجليزي.
+    padahal = «مع إن / وهو أصلًا»: بتيجي بعد الجملة الرئيسية وبتبيّن تناقض مع الواقع، وغالبًا فيها نبرة استغراب أو لوم: Dia masih di Jakarta, padahal kantornya sudah pindah.
+  ar: |
+    التنازل أداة أساسية في الجدال: تعترف بحجة المخالف ثم تردّ عليها.
+    - meskipun / walaupun بمعنى واحد: رغم أنّ.
+    - biarpun / walau أقرب إلى الحديث، وkendatipun / sekalipun / sungguhpun رسمية أدبية.
+    - يُؤكَّد الجواب بـ tetap أو masih، ولا يُجمع بين meskipun وtetapi في جملة واحدة في الفصحى الإندونيسية، بخلاف «رغم … إلا أنّ» في العربية.
+    - وبين جملتين: Meskipun demikian / Walaupun begitu / Namun، تليها فاصلة؛ ولا تُستعمل meskipun وحدها في صدر الجملة.
+    - padahal: «مع أنّ» لمخالفة الواقع للمتوقع، وتأتي بعد الجملة الرئيسية وفيها غالبًا معنى التعجب أو العتاب.
+  en: |
+    Good argument means conceding a point, then countering it:
+    - meskipun / walaupun (interchangeable) = although: Meskipun mahal, proyek ini penting.
+    - biarpun / walau: lighter, more spoken. kendatipun / sekalipun / sungguhpun: formal or literary.
+    The main clause carries tetap (still, nonetheless) or masih — not tetapi:
+    Meskipun ditolak sebagian warga, pemerintah tetap melanjutkan proyek itu.
+    Arabic happily says «رغم أن… إلا أن…», but in standard Indonesian "Meskipun …, tetapi …" doubles the conjunction: drop tetapi.
+    Across sentences: Meskipun demikian, / Walaupun begitu, / Namun, — always with a comma. Don't use bare "Meskipun," at the start like English "Though,".
+    padahal = even though / when in fact: it follows the main clause and points to a contradiction, often with surprise or reproach: Dia masih di Jakarta, padahal kantornya sudah pindah.
+examples:
+  - text: Meskipun pembangunan IKN menelan biaya sangat besar, pemerintah tetap melanjutkannya.
+    breakdown: meskipun (although) · menelan biaya (swallow costs = cost) · tetap (nonetheless) · melanjutkan + -nya
+    en: Although building IKN costs an enormous amount, the government is pressing ahead with it.
+    ar_eg: رغم إن بناء العاصمة الجديدة بيكلّف مبالغ ضخمة، الحكومة برضه مكمّلة فيه.
+    ar: رغم أن بناء العاصمة الجديدة يكلّف أموالًا طائلة، تمضي الحكومة فيه.
+    register: formal
+  - text: Walaupun banyak warga mendukung pemindahan ibu kota, sebagian ahli lingkungan masih meragukannya.
+    en: Although many citizens support moving the capital, some environmental experts still have doubts about it.
+    ar_eg: مع إن ناس كتير مؤيدة نقل العاصمة، بعض خبرا البيئة لسه مش مقتنعين.
+    ar: مع أن كثيرًا من المواطنين يؤيدون نقل العاصمة، ما زال بعض خبراء البيئة يشكّون فيه.
+  - text: Undang-undangnya sudah disahkan. Meskipun demikian, perdebatan belum berakhir.
+    en: The law has been passed. Even so, the debate isn't over.
+    ar_eg: القانون اتوافق عليه خلاص. ومع ذلك، الجدل لسه ماخلصش.
+    ar: أُقرّ القانون، ومع ذلك لم ينتهِ الجدل.
+    register: formal
+  - text: Dia masih tinggal di Jakarta, padahal kantornya sudah pindah ke Nusantara.
+    en: He's still living in Jakarta, even though his office has already moved to Nusantara.
+    ar_eg: هو لسه قاعد في جاكرتا، مع إن مكتبه أصلًا اتنقل نوسانتارا.
+    ar: ما زال يسكن جاكرتا، مع أن مكتبه انتقل فعلًا إلى نوسانتارا.
+  - text: Kendatipun anggarannya terbatas, proyek ini dinilai strategis bagi pemerataan pembangunan.
+    en: Despite its limited budget, the project is considered strategic for spreading development more evenly.
+    ar_eg: رغم إن الميزانية محدودة، المشروع ده بيعتبروه مهم استراتيجيًا لتوزيع التنمية بالعدل.
+    ar: على الرغم من محدودية الميزانية، يُعدّ المشروع استراتيجيًّا لتوزيع التنمية بالتساوي.
+    register: formal
+  - text: Biarpun panas, aku tetap mau lihat lokasinya langsung.
+    en: Even though it's hot, I still want to see the site myself.
+    ar_eg: حتى لو الدنيا حر، أنا برضه عايز أشوف المكان بعيني.
+    ar: حتى مع الحر، ما زلت أريد رؤية الموقع بنفسي.
+    register: informal
+mistakes:
+  - wrong: Meskipun mahal, tetapi banyak orang membelinya.
+    right: Meskipun mahal, banyak orang tetap membelinya.
+    why:
+      ar_eg: meskipun وtetapi الاتنين أدوات ربط؛ في الإندونيسي الرسمي واحدة بس. استخدم tetap للتأكيد.
+      ar: لا يُجمع بين meskipun وtetapi في جملة واحدة في اللغة المعيارية، ويُؤكَّد الجواب بـ tetap.
+      en: meskipun and tetapi are both conjunctions; standard Indonesian uses one. Use tetap for emphasis.
+  - wrong: Proyek ini mahal. Meskipun, banyak yang mendukungnya.
+    right: Proyek ini mahal. Meskipun demikian, banyak yang mendukungnya.
+    why:
+      ar_eg: meskipun لوحدها لازم بعدها جملة. في أول جملة جديدة قول Meskipun demikian أو Namun.
+      ar: meskipun أداة تابعة تحتاج جملة بعدها، وفي صدر الجملة المستقلة يُقال Meskipun demikian أو Namun.
+      en: meskipun needs a clause after it; to open a new sentence say Meskipun demikian or Namun (not English-style "Though,").
+  - wrong: Saya sudah belajar keras, padahal nilai saya bagus.
+    right: Saya sudah belajar keras, tetapi nilai saya jelek. / Nilai saya jelek, padahal saya sudah belajar keras.
+    why:
+      ar_eg: padahal بتقدّم حقيقة بتناقض اللي قبلها (الدرجة وحشة مع إني ذاكرت). هنا مفيش تناقض.
+      ar: padahal تأتي بحقيقة تناقض ما قبلها، ولا تناقض في الجملة الأولى.
+      en: padahal introduces a fact that clashes with the main clause; here nothing clashes.
+arabic_bridge:
+  ar_eg: "meskipun = «رغم إن / مع إن»، وMeskipun demikian = «ومع ذلك» بالظبط. بس خد بالك: العربي بيحب «رغم إن… إلا إن…»، والإندونيسي الرسمي بيقول «Meskipun …, tetap …» من غير tetapi. وpadahal شبه «وهو أصلًا…» اللي فيها لوم: «لسه نايم وهو أصلًا متأخر!»"
+  ar: "meskipun تقابل «رغم أنّ»، وMeskipun demikian تقابل «ومع ذلك». لكن تركيب «رغم … إلا أنّ» لا يُنقل حرفيًّا؛ إذ يُكتفى بأداة واحدة مع tetap."
+  en: "meskipun ≈ رغم أنّ and Meskipun demikian ≈ ومع ذلك. But don't calque «رغم… إلا أن…»: standard Indonesian uses one conjunction plus tetap."
+tags: [conjunction, argument, concession, discourse]
+prerequisites: [id.sentence.complex, id.conjunction.basic]
+see_also: [id.argument.connectors, id.conjunction.intersentential, id.hedging]
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,100 @@
+schema: kabar.grammar/v1
+id: id.sentence.complex
+language: id
+level: bipa5
+title:
+  target: Kalimat majemuk bertingkat (induk kalimat + anak kalimat)
+  en: Complex sentences (main clause + subordinate clause)
+  ar_eg: الجملة المركبة (جملة رئيسية + جملة تابعة)
+  ar: الجملة المركّبة (الرئيسية والتابعة)
+summary:
+  ar_eg: "الجملة الطويلة الرسمية = جملة رئيسية (induk) + جملة تابعة (anak) بتبدأ بأداة زي karena، ketika، agar، bahwa، yang. لو التابعة جت الأول، حط فاصلة بعدها."
+  ar: "تتكون الجملة المركبة من جملة رئيسية (induk) وجملة تابعة (anak) تبدأ بأداة ربط تابعة، وإذا تقدمت التابعة وُضعت بعدها فاصلة."
+  en: A complex sentence is a main clause (induk) plus a subordinate clause (anak) opened by karena, ketika, agar, bahwa, yang, etc.; if the subordinate clause comes first, put a comma after it.
+pattern:
+  - "Induk kalimat + subordinator + anak kalimat  (no comma)"
+  - "Subordinator + anak kalimat, + induk kalimat  (comma)"
+  - "time: ketika, saat, setelah, sebelum, sejak, sampai · cause: karena, sebab · condition: jika, apabila, asalkan · purpose: agar, supaya, untuk · result: sehingga · content: bahwa · relative: yang"
+explanation:
+  ar_eg: |
+    في الكتابة الرسمية (جواب تقديم، تقرير) الجمل بتطول، وبتتبني بطريقة ثابتة:
+    1. الجملة الرئيسية (induk kalimat) تقدر تقف لوحدها: Perusahaan itu membuka lowongan baru.
+    2. الجملة التابعة (anak kalimat) بتبدأ بأداة وماتقفش لوحدها: karena permintaan ekspor meningkat.
+    الترتيب:
+    - الرئيسية الأول → من غير فاصلة: Perusahaan itu membuka lowongan baru karena permintaan ekspor meningkat.
+    - التابعة الأول → فاصلة: Karena permintaan ekspor meningkat, perusahaan itu membuka lowongan baru.
+    الأدوات حسب المعنى: الوقت (ketika، setelah، sebelum، sejak)، السبب (karena)، الشرط (jika، apabila)، الهدف (agar، supaya)، النتيجة (sehingga)، المضمون (bahwa = إنّ)، والوصف (yang = اللي).
+    فخّين مشهورين:
+    - ماتبدأش جملة بـ sehingga، ومتسيبش «Karena hujan deras.» لوحدها؛ دي نص جملة.
+    - «Dalam rapat itu membahas anggaran» غلط: حرف الجر (dalam، di، bagi) بيخلي الجملة من غير فاعل. يا تشيل حرف الجر (Rapat itu membahas …) يا تحوّلها مبني للمجهول (Dalam rapat itu dibahas …).
+  ar: |
+    تطول الجمل في الكتابة الرسمية وتُبنى على نمط ثابت:
+    - الجملة الرئيسية (induk kalimat) مستقلة بنفسها.
+    - الجملة التابعة (anak kalimat) تبدأ بأداة ولا تستقل.
+    إذا تقدمت الرئيسية فلا فاصلة، وإذا تقدمت التابعة وُضعت بعدها فاصلة.
+    الأدوات: للزمان ketika وsetelah وsebelum وsejak، وللتعليل karena، وللشرط jika وapabila، وللغاية agar وsupaya، وللنتيجة sehingga، وللمضمون bahwa (أنّ)، وللوصل yang (الذي).
+    ومن الأخطاء الشائعة: ابتداء الجملة بـ sehingga، وترك الجملة التابعة وحدها، وتصدير الجملة بحرف جر يُفقدها الفاعل: «Dalam rapat itu membahas …» والصواب «Rapat itu membahas …» أو «Dalam rapat itu dibahas …».
+  en: |
+    Formal writing (cover letters, reports) builds long sentences on a fixed frame:
+    - The main clause (induk kalimat) can stand alone: Perusahaan itu membuka lowongan baru.
+    - The subordinate clause (anak kalimat) opens with a subordinator and can't: karena permintaan ekspor meningkat.
+    Order and commas: main clause first → no comma; subordinate clause first → comma after it.
+    Subordinators by meaning: time (ketika, setelah, sebelum, sejak), cause (karena), condition (jika, apabila), purpose (agar, supaya), result (sehingga), content (bahwa = that), relative (yang).
+    Two classic traps:
+    - Don't start a sentence with sehingga, and don't leave "Karena hujan deras." standing alone — it's a fragment.
+    - "Dalam rapat itu membahas anggaran" is wrong: the preposition leaves the sentence with no subject. Drop the preposition (Rapat itu membahas …) or go passive (Dalam rapat itu dibahas …).
+examples:
+  - text: Perusahaan itu membuka lowongan baru karena permintaan ekspor batu bara meningkat.
+    breakdown: induk (Perusahaan itu membuka lowongan baru) · karena + anak (permintaan … meningkat)
+    en: The company opened new vacancies because demand for coal exports rose.
+    ar_eg: الشركة فتحت وظايف جديدة عشان الطلب على تصدير الفحم زاد.
+    ar: فتحت الشركة وظائف جديدة لأن الطلب على تصدير الفحم ارتفع.
+  - text: Ketika saya pertama kali tiba di Balikpapan, saya belum mengenal siapa pun.
+    en: When I first arrived in Balikpapan, I didn't know anyone yet.
+    ar_eg: لما وصلت باليكبابان أول مرة، مكنتش أعرف حد خالص.
+    ar: حين وصلتُ إلى باليكبابان أول مرة لم أكن أعرف أحدًا بعد.
+  - text: Agar wawancara berjalan lancar, para kandidat diminta hadir lima belas menit lebih awal.
+    en: So that the interviews run smoothly, candidates are asked to arrive fifteen minutes early.
+    ar_eg: عشان المقابلات تمشي كويس، المرشحين مطلوب منهم ييجوا قبل الميعاد بربع ساعة.
+    ar: لكي تسير المقابلات بسلاسة، يُطلب من المرشحين الحضور قبل الموعد بخمس عشرة دقيقة.
+    register: formal
+  - text: Pelamar yang lolos seleksi administrasi akan dihubungi melalui surel.
+    breakdown: pelamar · yang lolos seleksi administrasi (relative clause) · akan dihubungi · melalui surel (e-mail)
+    en: Applicants who pass the document screening will be contacted by e-mail.
+    ar_eg: المتقدمين اللي يعدّوا فرز الورق هيتكلمولهم على الإيميل.
+    ar: سيُتواصل مع المتقدمين الذين اجتازوا الفرز الإداري عبر البريد الإلكتروني.
+    register: formal
+  - text: Saya yakin bahwa pengalaman saya di lapangan sesuai dengan kebutuhan tim Bapak.
+    en: I am confident that my field experience matches your team's needs.
+    ar_eg: أنا واثق إن خبرتي في الشغل الميداني مناسبة لاحتياجات فريق حضرتك.
+    ar: إنني واثق بأن خبرتي الميدانية تلائم احتياجات فريقكم.
+    register: formal
+mistakes:
+  - wrong: Dalam rapat itu membahas anggaran tahun depan.
+    right: Rapat itu membahas anggaran tahun depan. / Dalam rapat itu dibahas anggaran tahun depan.
+    why:
+      ar_eg: "«dalam rapat itu» شبه جملة، مش فاعل؛ فالجملة ملهاش فاعل. شيل dalam، أو خلي الفعل مبني للمجهول."
+      ar: "«dalam rapat itu» شبه جملة لا يصلح فاعلًا، فإما أن يُحذف حرف الجر وإما أن يُبنى الفعل للمجهول."
+      en: "\"dalam rapat itu\" is a prepositional phrase, not a subject. Drop dalam, or make the verb passive."
+  - wrong: Dia tidak datang, karena sakit.
+    right: Dia tidak datang karena sakit.
+    why:
+      ar_eg: لما الجملة الرئيسية تيجي الأول، مفيش فاصلة قبل karena (قاعدة PUEBI).
+      ar: لا تُوضع فاصلة قبل الجملة التابعة إذا تأخرت عن الرئيسية، وفق قواعد PUEBI.
+      en: When the main clause comes first, there's no comma before karena (PUEBI rule).
+  - wrong: Harga minyak turun. Sehingga banyak pekerja kehilangan pekerjaan.
+    right: Harga minyak turun sehingga banyak pekerja kehilangan pekerjaan. / Harga minyak turun. Akibatnya, banyak pekerja kehilangan pekerjaan.
+    why:
+      ar_eg: sehingga أداة جوه الجملة، ماينفعش تبدأ بيها جملة جديدة. لو عايز جملة جديدة قول Akibatnya أو Oleh karena itu.
+      ar: sehingga أداة داخل الجملة لا يُبتدأ بها، ويُستعمل في أول الجملة Akibatnya أو Oleh karena itu.
+      en: sehingga links clauses inside one sentence; to start a new sentence use Akibatnya or Oleh karena itu.
+arabic_bridge:
+  ar_eg: "bahwa = «إنّ / أنّ» بالظبط: Saya yakin bahwa … = أنا متأكد إنّ …، وyang = «اللي». والفرق المهم: في العربي بنقول «في الاجتماع ناقشوا الميزانية» عادي لأن الفاعل جوه الفعل، لكن الفعل الإندونيسي مابيشيلش فاعل، فلازم الفاعل يبان أو تستخدم di-."
+  ar: "bahwa تقابل «أنّ»، وyang تقابل «الذي». غير أن الفعل العربي يتضمن فاعله (ناقشوا)، أما الفعل الإندونيسي فلا، ولذا يلزم فاعل ظاهر أو صيغة المجهول."
+  en: "bahwa ≈ أنّ and yang ≈ الذي / «اللي». But an Arabic verb carries its own subject (ناقشوا = they discussed); an Indonesian verb doesn't, so you need an explicit subject or a di- passive."
+tags: [syntax, clause, conjunction, formal-writing]
+prerequisites: [id.conjunction.purpose-condition, id.conjunction.cause-effect, id.yang.basic]
+see_also: [id.conjunction.concessive, id.conjunction.intersentential, id.phrase.complex, id.passive.di]
+review:
+  status: draft
+  verified: false

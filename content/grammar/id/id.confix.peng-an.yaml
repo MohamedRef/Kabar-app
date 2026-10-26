@@ -1,0 +1,106 @@
+schema: kabar.grammar/v1
+id: id.confix.peng-an
+language: id
+level: bipa4
+title:
+  target: peN-…-an (pengobatan, pemeriksaan, pencegahan, pelayanan)
+  en: "peN-…-an nouns: the process of doing"
+  ar_eg: "peN-…-an: اسم العملية (المصدر)"
+  ar: "peN-…-an: اسم الحدث (المصدر)"
+summary:
+  ar_eg: "peN-…-an بتعمل اسم «العملية» من فعل meN-: mengobati (يعالج) → pengobatan (العلاج)، memeriksa (يكشف) → pemeriksaan (الكشف). التغييرات الصوتية نفس بتاعة meN-."
+  ar: "تصوغ peN-…-an اسم الحدث من فعل meN-: mengobati → pengobatan (العلاج)، memeriksa → pemeriksaan (الفحص)، بالتغييرات الصوتية نفسها."
+  en: "peN-…-an makes a process noun from a meN- verb: mengobati (treat) → pengobatan (treatment), memeriksa (examine) → pemeriksaan (examination). Same sound changes as meN-."
+pattern:
+  - meN-verb → peN- + root + -an (same nasal as the verb)
+  - "membangun → pembangunan · menulis → penulisan · mengirim → pengiriman · menyusun → penyusunan"
+  - "me- verbs (l, r, m, n, w, y) → pe-: melayani → pelayanan, merawat → perawatan"
+  - "compare: pembaca (reader, peN-) · bacaan (reading text, -an) · pembacaan (act of reading, peN-…-an)"
+  - "ber- verbs use per-…-an instead: bekerja → pekerjaan, berjalan → perjalanan"
+explanation:
+  ar_eg: |
+    peN-…-an هي «المصدر» بتاع أفعال meN-، يعني اسم العملية نفسها:
+    - mengobati (يعالج) → pengobatan (العلاج)
+    - memeriksa (يفحص) → pemeriksaan (الفحص / الكشف)
+    - mencegah (يمنع / يقي) → pencegahan (الوقاية)
+    - menggunakan (يستعمل) → penggunaan (الاستعمال)
+    - membangun (يبني) → pembangunan (البناء / التنمية)
+    - melayani (يخدم) → pelayanan (الخدمة)، merawat (يرعى) → perawatan (الرعاية)
+    القاعدة السهلة: خد فعل meN-، غيّر me إلى pe، وزوّد -an: mengirim → pengiriman. نفس الحروف اللي بتقع (p/t/k/s) بتقع هنا كمان.
+    قارن العيلة كلها من جذر واحد (baca):
+    - membaca = يقرا، pembaca = القارئ (id.prefix.peng.agent)، bacaan = المقروء / نص، pembacaan = عملية القراءة.
+    أفعال ber- بتاخد per-…-an: bekerja → pekerjaan (شغل)، berjalan → perjalanan (رحلة) — هتشوفها أكتر في المستوى الخامس.
+    الأسماء دي هي لغة التقارير والصحة والأخبار: Pemeriksaan kesehatan، pelayanan publik.
+  ar: |
+    peN-…-an مصدر أفعال meN-، أي اسم الحدث نفسه:
+    mengobati → pengobatan (العلاج)، memeriksa → pemeriksaan (الفحص)، mencegah → pencegahan (الوقاية)، menggunakan → penggunaan (الاستعمال)، membangun → pembangunan (البناء / التنمية)، melayani → pelayanan (الخدمة)، merawat → perawatan (الرعاية).
+    القاعدة: يُبدَل me بـpe في الفعل وتُضاف -an، وتسقط الحروف p/t/k/s كما في meN-.
+    وعائلة الجذر baca: membaca (يقرأ)، pembaca (القارئ)، bacaan (المقروء)، pembacaan (عملية القراءة).
+    وأفعال ber- تأخذ per-…-an: pekerjaan، perjalanan.
+    وهي لغة التقارير والصحة والأخبار.
+  en: |
+    peN-…-an is the "process" noun of a meN- verb:
+    mengobati → pengobatan (treatment), memeriksa → pemeriksaan (examination, check-up), mencegah → pencegahan (prevention), menggunakan → penggunaan (use), membangun → pembangunan (construction, development), melayani → pelayanan (service), merawat → perawatan (care).
+    Easy rule: take the meN- verb, change me to pe, add -an: mengirim → pengiriman. The same letters drop (p / t / k / s).
+    One root, a whole family (baca): membaca (read), pembaca (reader — id.prefix.peng.agent), bacaan (reading material), pembacaan (the act of reading).
+    ber- verbs use per-…-an instead: bekerja → pekerjaan (job), berjalan → perjalanan (journey) — more at BIPA 5.
+    These nouns are the language of reports, health and news: pemeriksaan kesehatan, pelayanan publik.
+examples:
+  - text: Pencegahan lebih baik daripada pengobatan.
+    breakdown: peN- + cegah + -an (prevention) · peN- + obat + -an (treatment)
+    en: Prevention is better than cure.
+    ar_eg: الوقاية خير من العلاج.
+    ar: الوقاية خير من العلاج.
+  - text: Pemeriksaan kesehatan sebaiknya dilakukan setiap tahun.
+    breakdown: peN- + periksa + -an (examination; p drops → pem-)
+    en: A health check-up should be done every year.
+    ar_eg: الكشف الطبي الأحسن يتعمل كل سنة.
+    ar: يُستحسن إجراء الفحص الطبي كل عام.
+    register: formal
+  - text: Penggunaan gula dan garam harus dibatasi.
+    en: The use of sugar and salt should be limited.
+    ar_eg: استعمال السكر والملح لازم يتقلل.
+    ar: ينبغي الحدّ من استعمال السكر والملح.
+    register: formal
+  - text: Pelayanan di puskesmas Gorontalo cepat dan ramah.
+    breakdown: pe- + layan + -an (service) · puskesmas (community health centre)
+    en: Service at the Gorontalo community health centre is quick and friendly.
+    ar_eg: الخدمة في الوحدة الصحية في جورونتالو سريعة ولطيفة.
+    ar: الخدمة في المركز الصحي في غورونتالو سريعة ولطيفة.
+  - text: Di desa, pengobatan tradisional masih banyak dipakai.
+    en: In villages, traditional medicine is still widely used.
+    ar_eg: في القرى، العلاج البلدي لسه مستعمل كتير.
+    ar: ما زال الطب التقليدي مستعملًا على نطاق واسع في القرى.
+  - text: Pembangunan rumah sakit baru akan selesai tahun depan.
+    en: Construction of the new hospital will be finished next year.
+    ar_eg: بناء المستشفى الجديدة هيخلص السنة الجاية.
+    ar: سيكتمل بناء المستشفى الجديد في العام القادم.
+mistakes:
+  - wrong: pentulisan, pempakaian
+    right: penulisan, pemakaian
+    why:
+      ar_eg: "نفس قاعدة meN-: الـ t و p بيقعوا (menulis → penulisan، memakai → pemakaian)."
+      ar: تسقط t وp كما في meN-.
+      en: Same as meN- — t and p drop (menulis → penulisan, memakai → pemakaian).
+  - wrong: Pemeriksa kesehatan dilakukan setiap tahun.
+    right: Pemeriksaan kesehatan dilakukan setiap tahun.
+    why:
+      ar_eg: pemeriksa = الشخص اللي بيكشف (الفاحص)؛ العملية = pemeriksaan.
+      ar: pemeriksa اسم الفاعل (الفاحص)، والحدث pemeriksaan.
+      en: pemeriksa is the person (examiner); the process is pemeriksaan.
+  - wrong: Saya mencari pengerjaan di Gorontalo. (meaning "a job")
+    right: Saya mencari pekerjaan di Gorontalo.
+    why:
+      ar_eg: «شغلانة» = pekerjaan (من bekerja)؛ pengerjaan = عملية تنفيذ حاجة (من mengerjakan).
+      ar: «الوظيفة» pekerjaan من bekerja، أما pengerjaan فعملية الإنجاز من mengerjakan.
+      en: '"A job" is pekerjaan (from bekerja); pengerjaan means "the carrying out" of a task (from mengerjakan).'
+arabic_bridge:
+  ar_eg: "peN-…-an هي «المصدر» بالظبط: عالج → المعالجة / العلاج = pengobatan، فحص → الفحص = pemeriksaan، وقى → الوقاية = pencegahan. وحتى المثل «الوقاية خير من العلاج» موجود بالإندونيسي حرف بحرف: Pencegahan lebih baik daripada pengobatan."
+  ar: "peN-…-an تقابل المصدر: المعالجة = pengobatan، والفحص = pemeriksaan، والوقاية = pencegahan؛ والمثل «الوقاية خير من العلاج» = Pencegahan lebih baik daripada pengobatan حرفًا بحرف."
+  en: peN-…-an works like the Arabic maṣdar (العلاج = pengobatan, الفحص = pemeriksaan); «الوقاية خير من العلاج» is word-for-word Pencegahan lebih baik daripada pengobatan.
+tags: [affix, confix, nominalisation, morphology, formal-writing]
+prerequisites: [id.prefix.men.basic, id.prefix.peng.agent, id.suffix.an.result]
+see_also: [id.confix.ke-an, id.confix.per-an, id.nominalization]
+review:
+  status: draft
+  verified: false

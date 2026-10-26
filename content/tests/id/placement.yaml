@@ -1,0 +1,459 @@
+schema: kabar.test/v1
+id: placement
+language: id
+kind: placement
+title:
+  ar_eg: نبدأ منين؟ — اختبار تحديد المستوى
+  ar: من أين نبدأ؟ — اختبار تحديد المستوى
+  en: Where do we start? — placement test
+intro:
+  ar_eg: |
+    حوالي ١٠ دقايق بس عشان نعرف نبدأ رحلتك منين. الأسئلة بتبدأ سهلة أوي وبتصعب شوية شوية.
+    لو حاجة مش عارفها، عادي خالص — ده معناه إننا لقينا نقطة البداية الصح. وتقدر دايمًا تعدّي لقدّام بـ "Take a flight".
+  ar: |
+    نحو عشر دقائق فقط لنعرف من أين تبدأ رحلتك. تبدأ الأسئلة سهلة جدًّا ثم تصعب تدريجيًّا.
+    إن لم تعرف شيئًا فلا بأس أبدًا؛ هذا يعني أننا وجدنا نقطة البداية الصحيحة. ويمكنك دائمًا التقدّم عبر "Take a flight".
+  en: |
+    About 10 minutes, just to find where your journey should start. Questions begin very easy and get harder bit by bit.
+    If you don't know something, that's completely fine: it means we've found the right starting point. You can always skip ahead later with "Take a flight".
+minutes: 10
+scoring: >-
+  Sections run in order bipa1, bipa2, bipa3, bipa4 (easiest first). Score each
+  section as points earned / points available. Stop at the first section that
+  scores below 0.7 and start the learner at that section's level (its first
+  unit); later sections are not shown. If all four sections score >= 0.7, start
+  at BIPA 5. Item `skill` tags feed the first skill-radar reading. The learner may
+  always choose a lower start or skip ahead with "Take a flight".
+sections:
+  - id: bipa1
+    level: bipa1
+    skill: reading
+    title:
+      ar_eg: الخطوة ١ — جاكرتا
+      ar: الخطوة ١ — جاكرتا
+      en: Step 1 — Jakarta
+    items:
+      - id: t01
+        skill: listening
+        type: listen
+        text: Selamat pagi!
+        options: ["Selamat siang!", "Selamat malam!", "Selamat pagi!"]
+        answer: 2
+        words: [selamat, pagi]
+      - id: t02
+        skill: reading
+        type: multiple_choice
+        question: Apa kabar?
+        question_meaning:
+          ar_eg: أنهي رد مناسب؟
+          ar: أيّ رد مناسب؟
+          en: Which reply fits?
+        options: ["Baik, terima kasih.", "Nama saya Mohamed.", "Sampai jumpa."]
+        answer: 0
+        words: [apa kabar, baik]
+      - id: t03
+        skill: reading
+        type: multiple_choice
+        question: Nama saya Rina. Saya orang Indonesia. Saya tinggal di Jakarta.
+        question_meaning:
+          ar_eg: رينا ساكنة فين؟
+          ar: أين تسكن رينا؟
+          en: Where does Rina live?
+        options: ["Kairo", "Jakarta", "Bali"]
+        answer: 1
+        words: [tinggal]
+      - id: t04
+        skill: vocabulary
+        type: fill_blank
+        sentence: Ini ___ saya. Namanya Dimas.
+        meaning:
+          ar_eg: ده أخويا الصغير. اسمه ديماس.
+          ar: هذا أخي الأصغر. اسمه ديماس.
+          en: This is my younger brother. His name is Dimas.
+        options: ["ibu", "nenek", "adik"]
+        answers: [adik]
+        words: [adik]
+      - id: t05
+        skill: vocabulary
+        type: multiple_choice
+        question: Rp15.000
+        question_meaning:
+          ar_eg: المبلغ ده بيتقال إزاي؟
+          ar: كيف يُقرأ هذا المبلغ؟
+          en: How do you say this amount?
+        options: ["lima ratus ribu rupiah", "lima puluh ribu rupiah", "lima belas ribu rupiah"]
+        answer: 2
+        words: [ribu]
+      - id: t06
+        skill: listening
+        type: listen
+        text: Belok kiri di depan masjid.
+        options: ["Belok kiri di depan masjid.", "Belok kiri di belakang masjid.", "Belok kanan di depan masjid."]
+        answer: 0
+        words: [belok, kiri, depan]
+      - id: t07
+        skill: grammar
+        type: fill_blank
+        sentence: Dia ___ guru. Dia dokter.
+        meaning:
+          ar_eg: هو مش مدرّس. هو دكتور.
+          ar: هو ليس معلّمًا. هو طبيب.
+          en: He isn't a teacher. He's a doctor.
+        options: ["belum", "tidak", "bukan"]
+        answers: [bukan]
+        words: [bukan]
+      - id: t08
+        skill: grammar
+        type: fill_blank
+        sentence: Saya ___ membaca buku.
+        meaning:
+          ar_eg: أنا بقرا كتاب (دلوقتي).
+          ar: أنا أقرأ كتابًا (الآن).
+          en: I am reading a book (right now).
+        options: ["sedang", "pernah", "belum"]
+        answers: [sedang]
+        words: [sedang, membaca]
+      - id: t09
+        skill: reading
+        type: multiple_choice
+        question: |
+          MENU
+          Nasi goreng ... Rp20.000
+          Es teh ....... Rp5.000
+        question_meaning:
+          ar_eg: نسي جورينج وشاي مثلّج، المجموع كام؟
+          ar: أرز مقلي وشاي مثلّج، كم المجموع؟
+          en: Fried rice and an iced tea — what's the total?
+        options: ["Rp20.000", "Rp25.000", "Rp30.000"]
+        answer: 1
+        words: [harga]
+  - id: bipa2
+    level: bipa2
+    skill: reading
+    title:
+      ar_eg: الخطوة ٢ — بالي
+      ar: الخطوة ٢ — بالي
+      en: Step 2 — Bali
+    items:
+      - id: t10
+        skill: grammar
+        type: fill_blank
+        sentence: Gajah lebih besar ___ kucing.
+        meaning:
+          ar_eg: الفيل أكبر من القطة.
+          ar: الفيل أكبر من القطة.
+          en: An elephant is bigger than a cat.
+        options: ["sekali", "daripada", "paling"]
+        answers: [daripada]
+        words: [lebih, daripada]
+      - id: t11
+        skill: grammar
+        type: fill_blank
+        sentence: Bu Sari punya ___ kucing.
+        meaning:
+          ar_eg: Bu Sari عندها قطة واحدة.
+          ar: لدى Bu Sari قطة واحدة.
+          en: Bu Sari has one cat.
+        options: ["selembar", "seekor", "sebuah"]
+        answers: [seekor]
+        words: [seekor]
+      - id: t12
+        skill: reading
+        type: multiple_choice
+        question: DILARANG MEROKOK
+        question_meaning:
+          ar_eg: اليافطة دي معناها إيه؟
+          ar: ما معنى هذه اللافتة؟
+          en: What does this sign mean?
+        options: ["Anda boleh merokok di sini.", "Anda harus merokok di luar.", "Anda tidak boleh merokok di sini."]
+        answer: 2
+        words: [dilarang, merokok]
+      - id: t13
+        skill: listening
+        type: listen
+        text: Kereta ke Bandung terlambat tiga puluh menit.
+        options: ["Kereta ke Bandung terlambat tiga puluh menit.", "Kereta ke Bandung berangkat tiga puluh menit lagi.", "Kereta ke Bandung terlambat tiga belas menit."]
+        answer: 0
+        words: [terlambat, menit]
+      - id: t14
+        skill: reading
+        type: multiple_choice
+        question: Mengapa kamu ke apotek?
+        question_meaning:
+          ar_eg: أنهي رد يجاوب على السؤال؟
+          ar: أيّ رد يجيب عن السؤال؟
+          en: Which reply answers the question?
+        options: ["Karena saya sakit kepala.", "Dengan ojek.", "Kemarin sore."]
+        answer: 0
+        words: [mengapa, karena]
+      - id: t15
+        skill: vocabulary
+        type: multiple_choice
+        question: Maaf, aku gak bisa datang besok.
+        question_meaning:
+          ar_eg: في الرسالة دي، "gak" يعني إيه؟
+          ar: في هذه الرسالة، ماذا تعني "gak"؟
+          en: In this message, what does "gak" mean?
+        options: ["sudah", "tidak", "juga"]
+        answer: 1
+        words: [gak, tidak]
+      - id: t16
+        skill: grammar
+        type: fill_blank
+        sentence: Saya sudah tinggal di Bali ___ dua tahun.
+        meaning:
+          ar_eg: أنا عايش في بالي بقالي سنتين.
+          ar: أعيش في بالي منذ سنتين (مدة سنتين).
+          en: I have lived in Bali for two years.
+        options: ["selama", "sesudah", "sejak"]
+        answers: [selama]
+        words: [selama]
+      - id: t17
+        skill: reading
+        type: multiple_choice
+        question: |
+          Aturan pakai: 2 x sehari 1 tablet, sesudah makan.
+        question_meaning:
+          ar_eg: تاخد كام قرص في اليوم؟
+          ar: كم قرصًا تتناول في اليوم؟
+          en: How many tablets do you take a day?
+        options: ["satu", "tiga", "dua"]
+        answer: 2
+        words: [sehari, tablet]
+      - id: t18
+        skill: grammar
+        type: fill_blank
+        sentence: Ni Luh minum kopi ___ membaca koran.
+        meaning:
+          ar_eg: ني لوه بتشرب قهوة وهي بتقرا الجرنال.
+          ar: تشرب ني لوه القهوة وهي تقرأ الجريدة.
+          en: Ni Luh drinks coffee while reading the newspaper.
+        options: ["sesudah", "sambil", "daripada"]
+        answers: [sambil]
+        words: [sambil]
+  - id: bipa3
+    level: bipa3
+    skill: reading
+    title:
+      ar_eg: الخطوة ٣ — لومبوك
+      ar: الخطوة ٣ — لومبوك
+      en: Step 3 — Lombok
+    items:
+      - id: t19
+        skill: grammar
+        type: fill_blank
+        sentence: ___ Anda sudah membaca berita hari ini?
+        meaning:
+          ar_eg: هل قريت أخبار النهارده؟
+          ar: هل قرأتَ أخبار اليوم؟
+          en: Have you read today's news?
+        options: ["Apakah", "Apapun", "Apalah"]
+        answers: [Apakah]
+        words: [apakah]
+      - id: t20
+        skill: grammar
+        type: fill_blank
+        sentence: Rina ___ surat itu kepada ibunya.
+        meaning:
+          ar_eg: رينا بعتت الجواب ده لمامتها.
+          ar: أرسلت رينا تلك الرسالة إلى أمها.
+          en: Rina sent the letter to her mother.
+        options: ["mengirimi", "dikirimi", "mengirimkan"]
+        answers: [mengirimkan]
+        explain:
+          ar_eg: meN-…-kan الشيء اللي بيتبعت هو المفعول (surat)؛ meN-…-i المفعول هو الشخص.
+          ar: مع meN-…-kan يكون المفعول هو الشيء المرسَل (surat)، ومع meN-…-i يكون المفعول هو الشخص.
+          en: With meN-…-kan the object is the thing sent (surat); with meN-…-i the object is the person.
+        words: [mengirimkan]
+      - id: t21
+        skill: grammar
+        type: fill_blank
+        sentence: Surat itu ___ oleh Bu Sari kemarin.
+        meaning:
+          ar_eg: الجواب ده اتكتب بإيد Bu Sari امبارح.
+          ar: كُتبت تلك الرسالة بيد Bu Sari أمس.
+          en: The letter was written by Bu Sari yesterday.
+        options: ["tulis", "ditulis", "menulis"]
+        answers: [ditulis]
+        words: [ditulis, oleh]
+      - id: t22
+        skill: vocabulary
+        type: fill_blank
+        sentence: Tempe ___ makanan tradisional dari Jawa.
+        meaning:
+          ar_eg: التمبيه أكلة تقليدية من جاوة.
+          ar: التمبيه طعام تقليدي من جاوة.
+          en: Tempe is a traditional food from Java.
+        options: ["yaitu", "merupakan", "sebagai"]
+        answers: [merupakan]
+        words: [merupakan]
+      - id: t23
+        skill: grammar
+        type: fill_blank
+        sentence: Rumah saya ___ rumahmu.
+        meaning:
+          ar_eg: بيتي قد بيتك في الكِبَر.
+          ar: بيتي كبير بقدر بيتك.
+          en: My house is as big as yours.
+        options: ["besaran", "terbesar", "sebesar"]
+        answers: [sebesar]
+        words: [sebesar]
+      - id: t24
+        skill: grammar
+        type: fill_blank
+        sentence: Saya belajar setiap malam ___ lulus ujian.
+        meaning:
+          ar_eg: أنا بذاكر كل ليلة عشان أنجح في الامتحان.
+          ar: أذاكر كل ليلة كي أنجح في الامتحان.
+          en: I study every night so that I pass the exam.
+        options: ["karena", "agar", "tetapi"]
+        answers: [agar]
+        words: [agar]
+      - id: t25
+        skill: reading
+        type: multiple_choice
+        question: |
+          Minggu lalu Ahmad mendaki Gunung Rinjani bersama dua temannya. Mereka berangkat dari Senaru pukul empat pagi.
+          Jalannya curam dan licin karena hujan semalam, tetapi pemandangan dari atas begitu indah sehingga mereka lupa akan rasa lelah.
+        question_meaning:
+          ar_eg: الطريق كان بيزحلق ليه؟
+          ar: لماذا كان الطريق زلقًا؟
+          en: Why was the path slippery?
+        options: ["karena gelap", "karena banyak pasir", "karena hujan semalam"]
+        answer: 2
+        words: [licin, karena]
+      - id: t26
+        skill: reading
+        type: multiple_choice
+        question: |
+          Minggu lalu Ahmad mendaki Gunung Rinjani bersama dua temannya. Mereka berangkat dari Senaru pukul empat pagi.
+          Jalannya curam dan licin karena hujan semalam, tetapi pemandangan dari atas begitu indah sehingga mereka lupa akan rasa lelah.
+        question_meaning:
+          ar_eg: حصل إيه لما وصلوا فوق؟
+          ar: ماذا حدث حين بلغوا القمة؟
+          en: What happened when they reached the top?
+        options: ["Mereka ingin segera pulang.", "Mereka sangat takut.", "Mereka lupa rasa lelah."]
+        answer: 2
+        words: [pemandangan, sehingga]
+      - id: t27
+        skill: listening
+        type: listen
+        text: Menurut prakiraan cuaca, besok akan turun hujan deras di Mataram.
+        options: ["Menurut prakiraan cuaca, hari ini turun hujan deras di Mataram.", "Menurut prakiraan cuaca, besok akan turun hujan deras di Mataram.", "Menurut prakiraan cuaca, besok akan turun hujan ringan di Mataram."]
+        answer: 1
+        words: [prakiraan cuaca, deras]
+  - id: bipa4
+    level: bipa4
+    skill: reading
+    title:
+      ar_eg: الخطوة ٤ — سولاويسي
+      ar: الخطوة ٤ — سولاويسي
+      en: Step 4 — Sulawesi
+    items:
+      - id: t28
+        skill: grammar
+        type: fill_blank
+        sentence: Kami ___ di jalan, jadi baju kami basah semua.
+        meaning:
+          ar_eg: المطرة نزلت علينا في الطريق، فهدومنا اتبلّت كلها.
+          ar: أصابنا المطر في الطريق، فابتلّت ثيابنا كلها.
+          en: We got caught in the rain on the way, so all our clothes got wet.
+        options: ["hujanan", "berhujan", "kehujanan"]
+        answers: [kehujanan]
+        words: [kehujanan]
+      - id: t29
+        skill: grammar
+        type: fill_blank
+        sentence: Maaf, kunci saya ___ di dalam mobil.
+        meaning:
+          ar_eg: آسف، المفتاح نسيته من غير قصد جوّه العربية.
+          ar: آسف، نسيتُ مفتاحي سهوًا داخل السيارة.
+          en: Sorry, I accidentally left my key in the car.
+        options: ["tertinggal", "ditinggal", "meninggal"]
+        answers: [tertinggal]
+        explain:
+          ar_eg: ter- هنا معناها من غير قصد.
+          ar: ter- هنا تدل على عدم القصد.
+          en: Here ter- means it happened by accident.
+        words: [tertinggal]
+      - id: t30
+        skill: vocabulary
+        type: fill_blank
+        sentence: ___ sampah di kota ini masih kurang baik.
+        meaning:
+          ar_eg: إدارة الزبالة في المدينة دي لسه مش كويسة كفاية.
+          ar: إدارة النفايات في هذه المدينة ما زالت دون المستوى.
+          en: Waste management in this city is still not good enough.
+        options: ["Mengelola", "Pengelola", "Pengelolaan"]
+        answers: [Pengelolaan]
+        words: [pengelolaan]
+      - id: t31
+        skill: grammar
+        type: fill_blank
+        sentence: Banyak hutan ditebang. ___, banjir semakin sering terjadi.
+        meaning:
+          ar_eg: غابات كتير اتقطعت. وبسبب كده، الفيضانات بقت بتحصل أكتر.
+          ar: قُطعت غابات كثيرة، ونتيجةً لذلك صارت الفيضانات أكثر تكرارًا.
+          en: Many forests were cut down. As a result, floods happen more and more often.
+        options: ["Akibatnya", "Padahal", "Meskipun"]
+        answers: [Akibatnya]
+        words: [akibatnya]
+      - id: t32
+        skill: vocabulary
+        type: fill_blank
+        sentence: Kita harus ___ keputusan hari ini.
+        meaning:
+          ar_eg: لازم ناخد قرار النهارده.
+          ar: علينا أن نتخذ قرارًا اليوم.
+          en: We have to make a decision today.
+        options: ["mengambil", "memegang", "membawa"]
+        answers: [mengambil]
+        words: [mengambil keputusan]
+      - id: t33
+        skill: reading
+        type: multiple_choice
+        question: |
+          MAKASSAR — Pemerintah kota akan membatasi penggunaan kantong plastik di pasar tradisional mulai Januari tahun depan.
+          Menurut wali kota, kebijakan ini diambil karena sampah plastik telah mencemari sungai dan laut.
+          Meskipun sebagian pedagang khawatir kehilangan pembeli, banyak warga mendukung langkah tersebut.
+        question_meaning:
+          ar_eg: ليه الحكومة أخدت القرار ده؟
+          ar: لماذا اتُّخذ هذا القرار؟
+          en: Why was this policy adopted?
+        options: ["Pasar tradisional kehilangan pembeli.", "Harga kantong plastik naik.", "Sampah plastik mencemari sungai dan laut."]
+        answer: 2
+        words: [kebijakan, mencemari]
+      - id: t34
+        skill: reading
+        type: multiple_choice
+        question: |
+          MAKASSAR — Pemerintah kota akan membatasi penggunaan kantong plastik di pasar tradisional mulai Januari tahun depan.
+          Menurut wali kota, kebijakan ini diambil karena sampah plastik telah mencemari sungai dan laut.
+          Meskipun sebagian pedagang khawatir kehilangan pembeli, banyak warga mendukung langkah tersebut.
+        question_meaning:
+          ar_eg: بعض التجّار قلقانين من إيه؟
+          ar: ممّ يقلق بعض التجّار؟
+          en: What are some traders worried about?
+        options: ["kehilangan pembeli", "harga kantong plastik", "sungai yang kotor"]
+        answer: 0
+        words: [khawatir, pembeli]
+      - id: t35
+        skill: reading
+        type: multiple_choice
+        question_meaning:
+          ar_eg: أنهي جملة فيها رأي، مش معلومة؟
+          ar: أيّ جملة تعبّر عن رأي لا عن حقيقة؟
+          en: Which sentence states an opinion rather than a fact?
+        options: ["Aturan ini mulai berlaku pada bulan Januari.", "Menurut saya, aturan ini terlalu cepat diterapkan.", "Pasar itu dibuka pukul enam pagi."]
+        answer: 1
+        words: [menurut saya]
+      - id: t36
+        skill: listening
+        type: listen
+        text: Meskipun cuaca buruk, upacara tetap dilaksanakan tepat waktu.
+        options: ["Karena cuaca buruk, upacara ditunda sampai besok.", "Meskipun cuaca buruk, upacara tetap dilaksanakan tepat waktu.", "Meskipun cuaca baik, upacara tidak dilaksanakan tepat waktu."]
+        answer: 1
+        words: [meskipun, dilaksanakan]
+review:
+  status: draft
+  verified: false

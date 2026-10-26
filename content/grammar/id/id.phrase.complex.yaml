@@ -1,0 +1,114 @@
+schema: kabar.grammar/v1
+id: id.phrase.complex
+language: id
+level: bipa4
+title:
+  target: Frasa kompleks (seorang nelayan tua yang miskin itu…)
+  en: Building long noun and verb phrases
+  ar_eg: بناء عبارات طويلة (اسمية وفعلية)
+  ar: بناء المركبات الاسمية والفعلية الطويلة
+summary:
+  ar_eg: "في العبارة الاسمية: العدد + المميِّز + الاسم + اسم واصف + صفة + الملكية + ini/itu + yang… . وفي العبارة الفعلية: النفي/الزمن + الإمكان + الفعل."
+  ar: "ترتيب المركب الاسمي: العدد + المصنِّف + الاسم + الاسم الواصف + الصفة + المالك + ini / itu + جملة yang؛ والمركب الفعلي: النفي / الجهة + الوجه + الفعل."
+  en: "Noun phrase order: number + classifier + noun + noun modifier + adjective + owner + ini/itu (+ yang clause). Verb phrase: negation/aspect + modal + verb."
+pattern:
+  - "(number + classifier) + head noun + noun modifier + adjective + possessor + ini / itu"
+  - "head noun + … + yang + clause (+ itu)"
+  - "(tidak / sudah / belum / akan) + (harus / bisa / boleh / mau) + verb"
+  - "adverb: sangat + adjective OR adjective + sekali (not both)"
+explanation:
+  ar_eg: |
+    من المستوى الأول عارف إن الوصف بييجي بعد الاسم: rumah besar. دلوقتي هنبني عبارات طويلة زي الحواديت.
+    ترتيب العبارة الاسمية:
+    1) قبل الاسم بس: العدد + المميِّز (seorang، tiga ekor، sebuah) أو para / beberapa / semua.
+    2) الاسم الأساسي.
+    3) اسم بيوصفه: rumah kayu (بيت خشب)، nelayan desa (صياد القرية).
+    4) الصفة: tua، besar، miskin.
+    5) المالك: saya، Pak Budi، -nya.
+    6) ini / itu.
+    7) جملة yang (ممكن قبل itu أو بعده؛ الأشيع في الكتابة إن itu يقفل العبارة كلها).
+    مثال كامل: seorang nelayan tua dari desa itu = صياد عجوز من القرية دي.
+    rumah kayu tua milik kepala desa itu = بيت الخشب القديم بتاع العمدة.
+    تلات بنات الملك الحلوين أوي: tiga orang putri raja yang sangat cantik.
+    العبارة الفعلية: النفي أو الزمن الأول، بعدين الإمكان، بعدين الفعل:
+    sudah harus pulang (لازم يرجع خلاص)، tidak bisa datang، akan bisa melihat، belum boleh masuk.
+    ما تكررش التوكيد: sangat cantik أو cantik sekali، مش sangat cantik sekali (في الكلام العادي بتتسمع، بس في الكتابة غلط).
+  ar: |
+    الصفة بعد الموصوف كما تعلم: rumah besar. وترتيب المركب الاسمي الطويل:
+    1) قبل الاسم فقط: العدد والمصنِّف (seorang، tiga ekor، sebuah) أو para / beberapa / semua.
+    2) الاسم الرأس، 3) الاسم الواصف (rumah kayu)، 4) الصفة، 5) المالك، 6) ini / itu، 7) جملة yang، والأشيع في الكتابة أن تُختم العبارة بـitu.
+    مثل: seorang nelayan tua dari desa itu، rumah kayu tua milik kepala desa itu، tiga orang putri raja yang sangat cantik.
+    والمركب الفعلي: النفي أو الجهة ثم الوجه ثم الفعل: sudah harus pulang، tidak bisa datang، akan bisa melihat، belum boleh masuk.
+    ولا يُجمع بين sangat وsekali في الفصيح.
+  en: |
+    You know modifiers follow the noun (rumah besar). Now let's build story-length phrases.
+    Noun phrase order:
+    1) Before the noun only: number + classifier (seorang, tiga ekor, sebuah) or para / beberapa / semua.
+    2) Head noun.
+    3) Noun modifier: rumah kayu (wooden house), nelayan desa (village fisherman).
+    4) Adjective: tua, besar, miskin.
+    5) Possessor: saya, Pak Budi, -nya.
+    6) ini / itu.
+    7) yang clause — itu may come before or after it; in writing, itu most often closes the whole phrase.
+    Full examples: seorang nelayan tua dari desa itu (an old fisherman from that village); rumah kayu tua milik kepala desa itu (the village head's old wooden house); tiga orang putri raja yang sangat cantik (the king's three very beautiful daughters).
+    Verb phrase order: negation / aspect → modal → verb: sudah harus pulang (has to go home now), tidak bisa datang, akan bisa melihat, belum boleh masuk.
+    Don't double intensifiers: sangat cantik or cantik sekali, not sangat cantik sekali (heard in speech, wrong in writing).
+examples:
+  - text: Pada zaman dahulu, hiduplah seorang nelayan miskin di sebuah desa kecil di pinggir pantai.
+    breakdown: seorang (one + classifier) · nelayan (head) · miskin (adj) — sebuah · desa (head) · kecil (adj) · di pinggir pantai (place)
+    en: Once upon a time, there lived a poor fisherman in a small village by the shore.
+    ar_eg: كان يا ما كان، كان فيه صياد غلبان عايش في قرية صغيرة على الشط.
+    ar: كان يا ما كان، عاش صياد فقير في قرية صغيرة على شاطئ البحر.
+  - text: Raja negeri itu mempunyai tiga orang putri yang sangat cantik.
+    en: The king of that land had three very beautiful daughters.
+    ar_eg: ملك البلد دي كان عنده تلات بنات حلوين أوي.
+    ar: كان لملك تلك البلاد ثلاث بنات بارعات الجمال.
+  - text: Rumah kayu tua milik kepala desa itu terbakar.
+    breakdown: rumah (head) · kayu (noun modifier) · tua (adj) · milik kepala desa (owner) · itu
+    en: The village head's old wooden house burned down.
+    ar_eg: بيت الخشب القديم بتاع العمدة ده اتحرق.
+    ar: احترق بيت رئيس القرية الخشبي القديم.
+  - text: Seekor burung besar berwarna hitam terbang di atas desa.
+    en: A big black bird flew over the village.
+    ar_eg: طير كبير لونه أسود طار فوق القرية.
+    ar: طار طائر كبير أسود اللون فوق القرية.
+  - text: Pemuda pemberani dari Manado itu sudah harus pulang sebelum malam.
+    breakdown: sudah (aspect) · harus (modal) · pulang (verb)
+    en: That brave young man from Manado has to be home before nightfall.
+    ar_eg: الشاب الشجاع اللي من مانادو لازم يرجع قبل الليل.
+    ar: على ذلك الشاب الشجاع من مانادو أن يعود قبل حلول الليل.
+mistakes:
+  - wrong: rumah saya besar itu
+    right: rumah besar saya itu / rumah saya yang besar itu
+    why:
+      ar_eg: الصفة قبل المالك؛ أو استعمل yang بعد المالك.
+      ar: تتقدم الصفة على المالك، أو تُستعمل yang بعده.
+      en: Adjective before possessor — or use yang after the possessor.
+  - wrong: sangat cantik sekali
+    right: sangat cantik / cantik sekali
+    why:
+      ar_eg: sangat و sekali نفس المعنى؛ واحد بس في الكتابة.
+      ar: sangat وsekali بمعنى واحد، فيُكتفى بأحدهما.
+      en: sangat and sekali do the same job; use one.
+  - wrong: Dia bisa akan datang.
+    right: Dia akan bisa datang.
+    why:
+      ar_eg: الزمن (akan) قبل الإمكان (bisa).
+      ar: تتقدم أداة الزمن akan على bisa.
+      en: Aspect (akan) comes before the modal (bisa).
+  - wrong: para siswa-siswa
+    right: para siswa
+    why:
+      ar_eg: para بتقول الجمع خلاص؛ ما تكررش الاسم.
+      ar: تدل para على الجمع فلا يُكرر الاسم.
+      en: para already marks plural; don't double the noun.
+arabic_bridge:
+  ar_eg: "الترتيب قريب أوي من المصري: الموصوف وبعده الصفة وبعدين اسم الإشارة: «البيت الخشب القديم ده» = rumah kayu tua ini — نفس الترتيب بالظبط! الفرق الوحيد: العدد بييجي قبل الاسم مع مميِّز (tiga orang putri = تلات بنات)."
+  ar: "ترتيب الإندونيسية قريب من العربية (الموصوف ثم الصفة)، ومن العامية المصرية في تأخير اسم الإشارة: «البيت الخشب القديم ده» = rumah kayu tua ini. والفرق أن العدد يتقدم مع المصنِّف."
+  en: The order mirrors Egyptian Arabic, where the demonstrative also comes last («البيت الخشب القديم ده» = rumah kayu tua ini); only numbers + classifiers go first.
+tags: [noun-phrase, word-order, narrative, syntax]
+prerequisites: [id.noun-phrase.order, id.classifier.basic, id.yang.basic]
+see_also: [id.noun.compound, id.sentence.complex, id.verb.modal]
+review:
+  status: draft
+  verified: false

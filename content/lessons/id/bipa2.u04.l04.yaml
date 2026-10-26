@@ -1,0 +1,275 @@
+schema: kabar.lesson/v1
+id: bipa2.u04.l04
+language: id
+title: Pasar! (tawar-menawar)
+can_do:
+  ar_eg: تفاصل في السوق من غير ما تعدّي الميزانية بتاعتك (لعبة Pasar!).
+  ar: أن تساوم في السوق ضمن ميزانيتك (لعبة Pasar!).
+  en: Haggle within a budget (Pasar! mini-game).
+slides:
+  - title: Boleh kurang?
+    body:
+      ar_eg: |
+        جمل الفصال:
+        - Boleh kurang? = ممكن تنزل شوية؟
+        - Jangan mahal-mahal, Bu! = ماتغليهاش علينا!
+        - Harga pas = آخر سعر (مفيش فصال تاني).
+        - Ya sudah, boleh. = خلاص ماشي.
+        البياع ممكن يقول Saya rugi! = كده هخسر! — ده جزء من اللعبة، ابتسم وكمّل.
+      ar: |
+        عبارات المساومة:
+        - Boleh kurang؟ = هل يمكن تخفيض السعر؟
+        - Jangan mahal-mahal, Bu! = لا تبالغي في السعر!
+        - Harga pas = السعر النهائي.
+        - Ya sudah, boleh. = حسنًا، موافق.
+        وقد يقول البائع Saya rugi! = سأخسر! وهذا جزء من اللعبة، فابتسم وتابع.
+      en: |
+        Haggling phrases:
+        - Boleh kurang? = Can you go lower?
+        - Jangan mahal-mahal, Bu! = Don't make it so expensive!
+        - Harga pas = fixed, final price.
+        - Ya sudah, boleh. = OK then, fine.
+        The seller may say Saya rugi! = I'll lose money! — it's part of the game; smile and carry on.
+    grammar: id.prohibition.jangan
+    examples:
+      - text: Jangan mahal-mahal, Bu! Boleh kurang?
+        ar_eg: ماتغليهاش علينا يا حاجة! ممكن تنزلي شوية؟
+        ar: لا تبالغي في السعر يا سيدتي! هل يمكن التخفيض؟
+        en: Don't make it so expensive, ma'am! Can you go lower?
+  - title: Dua lembar, harga pas
+    body:
+      ar_eg: |
+        الخطة: ابدأ بنص السعر، واتقابلوا في النص. وقول العدد صح: dua lembar kain، tiga buah patung.
+        ولو هتشتري أكتر من حاجة، اطلب سعر أحسن: Saya beli dua lembar, boleh kurang?
+      ar: |
+        الخطة: ابدأ بنصف السعر والتقيا في المنتصف، واستعمل لفظ العدّ الصحيح: dua lembar kain، tiga buah patung.
+        وإن اشتريت أكثر من قطعة فاطلب سعرًا أفضل: Saya beli dua lembar, boleh kurang؟
+      en: |
+        The plan: start at half the price and meet in the middle. Count properly: dua lembar kain, tiga buah patung.
+        Buying more than one? Ask for a better price: Saya beli dua lembar, boleh kurang?
+    grammar: id.classifier.basic
+    examples:
+      - text: Saya beli dua lembar, boleh kurang?
+        ar_eg: هاخد اتنين، ممكن تنزل شوية؟
+        ar: سأشتري قطعتين، هل يمكن التخفيض؟
+        en: I'll take two, can you go lower?
+exercises:
+  - id: e01
+    type: listen
+    text: Boleh kurang, Bu?
+    options: ["Boleh kurang, Bu?", "Boleh lihat, Bu?", "Boleh pulang, Bu?"]
+    answer: 0
+    words: [boleh kurang]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: البياعة قالت «Dua ratus ribu». ميزانيتك ١٢٠ ألف. تبدأ الفصال بإيه؟
+      ar: قالت البائعة «Dua ratus ribu»، وميزانيتك ١٢٠ ألفًا. بمَ تبدأ المساومة؟
+      en: The seller says "Dua ratus ribu". Your budget is 120,000. How do you open?
+    options: ["Seratus ribu, boleh?", "Dua ratus ribu, oke!", "Tiga ratus ribu, ya?"]
+    answer: 0
+    explain:
+      ar_eg: ابدأ بنص السعر عشان يبقى فيه مسافة تتقابلوا فيها تحت ميزانيتك.
+      ar: ابدأ بنصف السعر ليبقى مجال للالتقاء دون تجاوز ميزانيتك.
+      en: Start at half so you can meet in the middle without passing your budget.
+    words: [boleh]
+  - id: e03
+    type: fill_blank
+    sentence: ___ mahal-mahal, Bu!
+    meaning:
+      ar_eg: ماتغليهاش علينا يا حاجة!
+      ar: لا تبالغي في السعر يا سيدتي!
+      en: Don't make it so expensive, ma'am!
+    options: ["Jangan", "Ayo", "Tidak"]
+    answers: [Jangan]
+    words: [jangan]
+  - id: e04
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: ممكن تنزلي شوية يا مدام؟
+      ar: هل يمكن تخفيض السعر يا سيدتي؟
+      en: Can you go a bit lower, ma'am?
+    answers:
+      - Boleh kurang, Bu?
+      - Boleh kurang, Bu
+      - Boleh kurang sedikit, Bu?
+      - Bisa kurang, Bu?
+      - Bisa kurang sedikit, Bu?
+      - Boleh kurang?
+      - Bisa kurang?
+    words: [boleh kurang]
+  - id: e05
+    type: translate
+    direction: from_target
+    source_text: Ini sudah harga pas, Pak.
+    answers_meaning:
+      ar_eg: ["ده آخر سعر يا أستاذ", "ده السعر النهائي يا أستاذ", "ده آخر كلام يا أستاذ"]
+      ar: ["هذا هو السعر النهائي يا سيدي", "هذا آخر سعر يا سيدي"]
+      en: ["This is already the final price, sir.", "That's the fixed price, sir.", "This is my last price, sir."]
+    words: [harga pas]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: هشتري حتتين.
+      ar: سأشتري قطعتين.
+      en: I'll buy two pieces (of cloth).
+    answer: Saya beli dua lembar.
+    distractors: [ekor, orang]
+    words: [lembar]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: غالي زيادة. بمية ألف، ماشي؟
+      ar: إنه غالٍ جدًا. بمئة ألف، موافقة؟
+      en: Too expensive. A hundred thousand, OK?
+    answers:
+      - Terlalu mahal. Seratus ribu, ya?
+      - Terlalu mahal. Seratus ribu, ya
+      - Terlalu mahal. Seratus ribu, boleh?
+      - Terlalu mahal. Seratus ribu saja, ya?
+      - Terlalu mahal, seratus ribu, ya?
+      - Wah, terlalu mahal. Seratus ribu, ya?
+    words: [terlalu, mahal]
+  - id: e08
+    type: fill_blank
+    sentence: Di Sukawati kain ini tidak ___ di Kuta.
+    meaning:
+      ar_eg: (اكتب كلمة واحدة) القماشة دي في سوكاواتي مش غالية قد كوتا.
+      ar: (اكتب كلمة واحدة) هذا القماش في سوكاواتي ليس غاليًا كما في كوتا.
+      en: (Type one word.) In Sukawati this cloth isn't as expensive as in Kuta.
+    answers: [semahal]
+    words: [semahal]
+  - id: e09
+    type: build_sentence
+    source:
+      ar_eg: ماتنساش تيجي تاني!
+      ar: لا تنسَ أن تعود مرة أخرى!
+      en: Don't forget to come again!
+    answer: Jangan lupa datang lagi, ya!
+    distractors: [tidak, ayo]
+    words: [jangan, lupa]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: مية وتلاتين ألف، وهاخد حتتين.
+      ar: مئة وثلاثون ألفًا، وسآخذ قطعتين.
+      en: A hundred and thirty thousand, and I'll take two pieces.
+    answers:
+      - Seratus tiga puluh ribu, dan saya beli dua lembar.
+      - Seratus tiga puluh ribu, dan saya beli dua lembar
+      - Seratus tiga puluh ribu dan saya beli dua lembar.
+      - Seratus tiga puluh ribu, saya beli dua lembar.
+      - Seratus tiga puluh ribu, dan saya ambil dua lembar.
+      - Seratus tiga puluh ribu, dan saya beli dua.
+    words: [lembar]
+  - id: e11
+    type: dictation
+    text: Ya sudah, boleh.
+    meaning:
+      ar_eg: خلاص ماشي.
+      ar: حسنًا، موافق.
+      en: OK then, fine.
+    words: [ya sudah, boleh]
+  - id: e12
+    type: speaking
+    text: Wah, terlalu mahal. Jangan mahal-mahal, Bu! Boleh kurang?
+    meaning:
+      ar_eg: يا خبر، غالي زيادة. ماتغليهاش علينا يا حاجة! ممكن تنزلي شوية؟
+      ar: آه، إنه غالٍ جدًا. لا تبالغي في السعر يا سيدتي! هل يمكن التخفيض؟
+      en: Oh, too expensive. Don't make it so pricey, ma'am! Can you go lower?
+    words: [terlalu, jangan, boleh kurang]
+dialogue:
+  title: Tawar-menawar di Pasar Seni Sukawati
+  lines:
+    - speaker: Bu Nyoman
+      text: Mari, Pak, silakan lihat-lihat! Kainnya bagus-bagus.
+      ar_eg: اتفضل يا أستاذ، اتفرّج! القماش كله حلو.
+      ar: تفضل يا سيدي، تفرّج! الأقمشة كلها جميلة.
+      en: Come in, sir, have a look! The cloths are all lovely.
+    - speaker: Mohamed
+      text: Berapa harga kain ini, Bu?
+      ar_eg: القماشة دي بكام يا مدام؟
+      ar: كم ثمن هذا القماش يا سيدتي؟
+      en: How much is this cloth, ma'am?
+    - speaker: Bu Nyoman
+      text: Dua ratus ribu, Pak.
+      ar_eg: بميتين ألف يا أستاذ.
+      ar: بمئتي ألف يا سيدي.
+      en: Two hundred thousand, sir.
+    - speaker: Mohamed
+      text: Wah, terlalu mahal. Seratus ribu, boleh?
+      ar_eg: يا خبر، غالي زيادة. بمية ألف، ينفع؟
+      ar: آه، إنه غالٍ جدًا. بمئة ألف، هل يمكن؟
+      en: Oh, too expensive. A hundred thousand, OK?
+    - speaker: Bu Nyoman
+      text: Aduh, jangan seratus, Pak. Saya rugi! Seratus delapan puluh.
+      ar_eg: يا لهوي، مش مية يا أستاذ. كده هخسر! مية وتمانين.
+      ar: آه، لا تقل مئة يا سيدي، سأخسر! مئة وثمانون.
+      en: Oh no, not a hundred, sir. I'll lose money! A hundred and eighty.
+    - speaker: Mohamed
+      text: Di toko sebelah, kain yang sama seratus dua puluh ribu.
+      ar_eg: في المحل اللي جنبك، نفس القماشة بمية وعشرين ألف.
+      ar: في المتجر المجاور، القماش نفسه بمئة وعشرين ألفًا.
+      en: Next door, the same cloth is a hundred and twenty thousand.
+    - speaker: Bu Nyoman
+      text: Seratus lima puluh. Itu harga pas.
+      ar_eg: مية وخمسين. ده آخر سعر.
+      ar: مئة وخمسون. هذا السعر النهائي.
+      en: A hundred and fifty. That's my final price.
+    - speaker: Mohamed
+      text: Seratus tiga puluh ribu, dan saya beli dua lembar.
+      ar_eg: مية وتلاتين ألف، وهاخد حتتين.
+      ar: مئة وثلاثون ألفًا، وسأشتري قطعتين.
+      en: A hundred and thirty thousand, and I'll take two pieces.
+    - speaker: Bu Nyoman
+      text: Ya sudah, boleh. Jangan lupa datang lagi, ya!
+      ar_eg: خلاص ماشي. ماتنساش تيجي تاني!
+      ar: حسنًا، موافقة. لا تنسَ أن تعود مرة أخرى!
+      en: OK then, fine. Don't forget to come again!
+    - speaker: Mohamed
+      text: Terima kasih, Bu. Pasti!
+      ar_eg: شكرًا يا مدام. أكيد!
+      ar: شكرًا يا سيدتي. بالتأكيد!
+      en: Thank you, ma'am. Definitely!
+new_words:
+  - word: tawar-menawar
+    pos: noun
+    ar_eg: فصال
+    ar: مساومة
+    en: haggling
+  - word: boleh kurang
+    pos: phrase
+    ar_eg: ممكن تنزل في السعر؟
+    ar: هل يمكن التخفيض؟
+    en: can you go lower?
+  - word: harga pas
+    pos: phrase
+    ar_eg: آخر سعر
+    ar: السعر النهائي
+    en: fixed / final price
+  - word: rugi
+    pos: adjective
+    ar_eg: خسران
+    ar: خاسر
+    en: at a loss
+  - word: ya sudah
+    pos: phrase
+    ar_eg: خلاص ماشي
+    ar: حسنًا إذن
+    en: OK then, fine
+  - word: sebelah
+    pos: noun
+    ar_eg: اللي جنب
+    ar: المجاور
+    en: next door, beside
+  - word: aduh
+    pos: interjection
+    ar_eg: يا لهوي / آه
+    ar: آه، أوه
+    en: oh no, ouch
+review:
+  status: draft
+  verified: false

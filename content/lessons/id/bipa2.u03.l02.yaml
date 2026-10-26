@@ -1,0 +1,338 @@
+schema: kabar.lesson/v1
+id: bipa2.u03.l02
+language: id
+title: Harap tenang, dilarang merokok
+can_do:
+  ar_eg: تقرا اللافتات في الأماكن العامة.
+  ar: أن تقرأ اللافتات العامة.
+  en: Read public signs.
+slides:
+  - title: Harap … / Mohon …
+    body:
+      ar_eg: |
+        اللافتات في إندونيسيا ليها قوالب ثابتة، زي عندنا بالظبط:
+        - Harap + فعل = «يرجى…»: Harap tenang = برجاء الهدوء. Harap antre = برجاء الوقوف في الطابور.
+        - Mohon + فعل = «برجاء…» (مؤدبة أكتر): Mohon perhatian = انتباه من فضلكم (أول أي إعلان).
+      ar: |
+        للافتات قوالب ثابتة كما في العربية:
+        - Harap + فعل = «يُرجى…»: Harap tenang، Harap antre.
+        - Mohon + فعل = «نرجو…» (أكثر تأدبًا): Mohon perhatian = انتباه من فضلكم.
+      en: |
+        Indonesian signs use fixed templates, just like Arabic ones:
+        - Harap + verb = "please …": Harap tenang = Quiet please. Harap antre = Please queue.
+        - Mohon + verb = "kindly …" (more polite): Mohon perhatian = Attention please (opens every announcement).
+    grammar: id.notice.harap-dilarang
+    examples:
+      - text: Harap tenang.
+        ar_eg: برجاء الهدوء.
+        ar: يُرجى الهدوء.
+        en: Quiet, please.
+      - text: Harap lepas alas kaki.
+        ar_eg: برجاء خلع الجزمة.
+        ar: يُرجى خلع الأحذية.
+        en: Please remove your footwear.
+  - title: Dilarang …
+    body:
+      ar_eg: |
+        Dilarang + فعل = «ممنوع…»:
+        Dilarang merokok = ممنوع التدخين. Dilarang masuk = ممنوع الدخول. Dilarang parkir = ممنوع الركن.
+        dilarang أصلها di- + larang (يمنع) = «ممنوع». دي أول مرة تشوف di- للمبني للمجهول، وهتتعلمها كويس في BIPA 3.
+      ar: |
+        Dilarang + فعل = «يُمنع…»:
+        Dilarang merokok = يُمنع التدخين. Dilarang masuk = يُمنع الدخول. Dilarang parkir = يُمنع الوقوف.
+        وdilarang = di- + larang (منع)، أي «ممنوع»، وهي لمحة أولى عن المبني للمجهول قبل BIPA 3.
+      en: |
+        Dilarang + verb = "… prohibited":
+        Dilarang merokok = No smoking. Dilarang masuk = No entry. Dilarang parkir = No parking.
+        dilarang = di- + larang (forbid) = "is forbidden" — your first look at the di- passive, coming properly in BIPA 3.
+    grammar: id.notice.harap-dilarang
+    examples:
+      - text: Dilarang merokok di area ini.
+        ar_eg: ممنوع التدخين هنا.
+        ar: يُمنع التدخين في هذه المنطقة.
+        en: No smoking in this area.
+      - text: Dilarang masuk!
+        ar_eg: ممنوع الدخول!
+        ar: يُمنع الدخول!
+        en: No entry!
+  - title: Awas! Hati-hati!
+    body:
+      ar_eg: |
+        للتحذير:
+        - Awas + حاجة = «احترس / حاسب»: Awas anjing galak! = احترس كلب شرس!
+        - Hati-hati = خلي بالك (أهدى شوية): Hati-hati di jalan = خلي بالك على الطريق.
+      ar: |
+        للتحذير:
+        - Awas + الشيء = «احذر»: Awas anjing galak! = احذر كلبًا شرسًا!
+        - Hati-hati = انتبه: Hati-hati di jalan = انتبه في الطريق.
+      en: |
+        Warnings:
+        - Awas + thing = "Beware of …": Awas anjing galak! = Beware of the dog!
+        - Hati-hati = Careful: Hati-hati di jalan = Take care on the road.
+    grammar: id.notice.harap-dilarang
+    examples:
+      - text: Awas, lantai licin!
+        ar_eg: حاسب، الأرض بتزحلق!
+        ar: احذر، الأرض زلقة!
+        en: Caution, slippery floor!
+      - text: Hati-hati di jalan!
+        ar_eg: خلي بالك على الطريق!
+        ar: انتبه في الطريق!
+        en: Take care on the road!
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: Dilarang merokok
+        ar_eg: ممنوع التدخين
+        ar: يُمنع التدخين
+        en: No smoking
+      - text: Dilarang masuk
+        ar_eg: ممنوع الدخول
+        ar: يُمنع الدخول
+        en: No entry
+      - text: Harap tenang
+        ar_eg: برجاء الهدوء
+        ar: يُرجى الهدوء
+        en: Quiet please
+      - text: Harap antre
+        ar_eg: برجاء الوقوف في الطابور
+        ar: يُرجى الوقوف في الصف
+        en: Please queue
+      - text: Mohon perhatian
+        ar_eg: انتباه من فضلكم
+        ar: انتباه من فضلكم
+        en: Attention please
+    words: [dilarang, merokok, harap, tenang, antre, mohon, perhatian]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إنت في المكتبة وفيه لافتة بتطلب الهدوء. مكتوب عليها إيه؟
+      ar: أنت في المكتبة وأمامك لافتة تطلب الهدوء. ماذا كُتب عليها؟
+      en: You're in a library and a sign asks for quiet. What does it say?
+    options: ["Harap tenang.", "Dilarang tenang.", "Awas tenang."]
+    answer: 0
+    words: [harap, tenang]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: قدام باب المعبد فيه لافتة «Harap lepas alas kaki». لازم تعمل إيه؟ اختار الجملة اللي بنفس المعنى.
+      ar: أمام باب المعبد لافتة «Harap lepas alas kaki». اختر الجملة التي بالمعنى نفسه.
+      en: At the temple gate a sign says "Harap lepas alas kaki". Pick the sentence with the same meaning.
+    options: ["Mohon lepas sepatu dan sandal.", "Dilarang lepas sepatu.", "Awas sepatu dan sandal."]
+    answer: 0
+    explain:
+      ar_eg: alas kaki = أي حاجة في رجلك (جزمة، صندل). Harap وMohon الاتنين = برجاء.
+      ar: alas kaki = ما يُلبس في القدم، وHarap وMohon كلتاهما بمعنى «يُرجى».
+      en: alas kaki = footwear (shoes, sandals); Harap and Mohon both mean "please".
+    words: [harap, mohon, alas kaki]
+  - id: e04
+    type: listen
+    text: Mohon perhatian.
+    options: ["Mohon maaf.", "Harap tenang.", "Mohon perhatian."]
+    answer: 2
+    words: [mohon, perhatian]
+  - id: e05
+    type: fill_blank
+    sentence: ___ merokok di dalam pesawat.
+    meaning:
+      ar_eg: ممنوع التدخين جوه الطيارة.
+      ar: يُمنع التدخين داخل الطائرة.
+      en: No smoking on the plane.
+    options: ["Dilarang", "Larang", "Harap"]
+    answers: [Dilarang]
+    explain:
+      ar_eg: اللافتة بتقول «ممنوع» = Dilarang، مش «امنع» (larang).
+      ar: اللافتة بصيغة المبني للمجهول Dilarang، لا larang.
+      en: Signs use the passive form Dilarang, not larang.
+    words: [dilarang, merokok]
+  - id: e06
+    type: fill_blank
+    sentence: ___, lantai licin!
+    meaning:
+      ar_eg: احترس، الأرض بتزحلق!
+      ar: احذر، الأرض زلقة!
+      en: Caution, slippery floor!
+    options: ["Awas", "Mohon", "Harap"]
+    answers: [Awas]
+    words: [awas, licin]
+  - id: e07
+    type: fill_blank
+    sentence: Harap ___ di sini.
+    meaning:
+      ar_eg: برجاء الوقوف في الطابور هنا.
+      ar: يُرجى الوقوف في الصف هنا.
+      en: Please queue here.
+    answers: [antre, antri]
+    explain:
+      ar_eg: الكتابة الرسمية antre، وبتشوف antri كتير برضه.
+      ar: الصيغة المعيارية antre، وتشيع antri أيضًا.
+      en: The standard spelling is antre; antri is very common too.
+    words: [antre]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: ممنوع التدخين في المنطقة دي.
+      ar: يُمنع التدخين في هذه المنطقة.
+      en: No smoking in this area.
+    answer: Dilarang merokok di area ini.
+    distractors: [harap, larang]
+    words: [dilarang, merokok]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (لافتة) ممنوع الركن.
+      ar: (لافتة) يُمنع الوقوف.
+      en: (sign) No parking.
+    answers:
+      - Dilarang parkir.
+      - Dilarang parkir
+      - Dilarang parkir!
+      - Dilarang parkir di sini.
+    words: [dilarang, parkir]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (لافتة) برجاء الهدوء.
+      ar: (لافتة) يُرجى الهدوء.
+      en: (sign) Quiet, please.
+    answers:
+      - Harap tenang.
+      - Harap tenang
+      - Mohon tenang.
+      - Harap tenang!
+    words: [harap, tenang]
+  - id: e11
+    type: translate
+    direction: from_target
+    source_text: Awas anjing galak!
+    answers_meaning:
+      ar_eg: ["احترس كلب شرس!", "حاسب فيه كلب شرس", "احترس من الكلب"]
+      ar: ["احذر كلبًا شرسًا!", "احذر الكلب الشرس", "احذر الكلب"]
+      en: ["Beware of the dog!", "Beware of the fierce dog!", "Watch out, fierce dog!"]
+    words: [awas]
+  - id: e12
+    type: dictation
+    text: Dilarang masuk.
+    meaning:
+      ar_eg: ممنوع الدخول.
+      ar: يُمنع الدخول.
+      en: No entry.
+    words: [dilarang, masuk]
+  - id: e13
+    type: speaking
+    text: Mohon perhatian. Harap antre di sini.
+    meaning:
+      ar_eg: انتباه من فضلكم. برجاء الوقوف في الطابور هنا.
+      ar: انتباه من فضلكم. يُرجى الوقوف في الصف هنا.
+      en: Attention please. Please queue here.
+    words: [mohon, perhatian, harap, antre]
+dialogue:
+  title: Tanda di bandara
+  lines:
+    - speaker: Mohamed
+      text: Mas Ardi, apa arti "Dilarang merokok"?
+      ar_eg: يا ماس أردي، يعني إيه «Dilarang merokok»؟
+      ar: يا ماس أردي، ما معنى «Dilarang merokok»؟
+      en: Mas Ardi, what does "Dilarang merokok" mean?
+    - speaker: Mas Ardi
+      text: Artinya kita tidak boleh merokok di sini.
+      ar_eg: يعني ممنوع نشرب سجاير هنا.
+      ar: معناه أنه لا يجوز لنا التدخين هنا.
+      en: It means we can't smoke here.
+    - speaker: Mohamed
+      text: Dan itu? "Harap antre."
+      ar_eg: وده؟ «Harap antre».
+      ar: وتلك؟ «Harap antre».
+      en: And that one? "Harap antre."
+    - speaker: Mas Ardi
+      text: Kita harus antre. Lihat, banyak orang di sana!
+      ar_eg: لازم نقف في الطابور. بص، فيه ناس كتير هناك!
+      ar: يجب أن نقف في الصف. انظر، هناك أناس كثيرون!
+      en: We have to queue. Look, lots of people over there!
+    - speaker: Mohamed
+      text: Oke. Awas, Mas, lantainya licin!
+      ar_eg: ماشي. حاسب يا ماس، الأرض بتزحلق!
+      ar: حسنًا. احذر يا ماس، الأرض زلقة!
+      en: OK. Careful, Mas, the floor's slippery!
+new_words:
+  - word: harap
+    pos: verb
+    ar_eg: برجاء… (في اللافتات)
+    ar: يُرجى (في اللافتات)
+    en: please … (on signs)
+  - word: mohon
+    pos: verb
+    ar_eg: برجاء / نرجو (مؤدبة)
+    ar: نرجو (مؤدبة)
+    en: kindly …; we request
+  - word: dilarang
+    pos: verb
+    ar_eg: ممنوع
+    ar: ممنوع، يُمنع
+    en: prohibited, forbidden
+  - word: merokok
+    pos: verb
+    ar_eg: يدخن (سجاير)
+    ar: يدخّن
+    en: to smoke
+  - word: tenang
+    pos: adjective
+    ar_eg: هادي
+    ar: هادئ
+    en: calm, quiet
+  - word: antre
+    pos: verb
+    ar_eg: يقف في الطابور
+    ar: يقف في الصف
+    en: to queue
+  - word: perhatian
+    pos: noun
+    ar_eg: انتباه
+    ar: انتباه
+    en: attention
+  - word: awas
+    pos: interjection
+    ar_eg: احترس / حاسب
+    ar: احذر
+    en: watch out, beware
+  - word: hati-hati
+    pos: interjection
+    ar_eg: خلي بالك
+    ar: انتبه
+    en: careful
+  - word: parkir
+    pos: verb
+    ar_eg: يركن
+    ar: يركن السيارة
+    en: to park
+  - word: alas kaki
+    pos: noun
+    ar_eg: جزمة / صندل (أي حاجة في الرجل)
+    ar: الحذاء أو النعل
+    en: footwear
+  - word: licin
+    pos: adjective
+    ar_eg: بيزحلق
+    ar: زَلِق
+    en: slippery
+  - word: lantai
+    pos: noun
+    ar_eg: الأرضية
+    ar: الأرضية
+    en: floor
+  - word: lepas
+    pos: verb
+    ar_eg: يقلع / يخلع
+    ar: يخلع
+    en: to take off, remove
+  - word: galak
+    pos: adjective
+    ar_eg: شرس
+    ar: شرس
+    en: fierce
+review:
+  status: draft
+  verified: false

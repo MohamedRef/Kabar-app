@@ -1,0 +1,116 @@
+schema: kabar.grammar/v1
+id: id.cohesion.grammatical
+language: id
+level: bipa7
+title:
+  target: Kohesi gramatikal (referensi, substitusi, elipsis, konjungsi)
+  en: Grammatical cohesion
+  ar_eg: الترابط النحوي في النص (الإحالة، الاستبدال، الحذف)
+  ar: الاتساق النحوي (الإحالة والاستبدال والحذف والربط)
+summary:
+  ar_eg: "النص المتماسك مابيكررش الاسم كل جملة. بيرجعله بضمير (ia، beliau، -nya، mereka)، أو إشارة (tersebut، hal itu)، أو بديل (demikian، begitu)، أو بيحذفه خالص (elipsis)."
+  ar: "يتماسك النص بالإحالة بالضمير (ia، beliau، -nya) والإشارة (tersebut، hal itu)، وبالاستبدال (demikian، begitu)، وبالحذف، وبأدوات الربط، بدل تكرار الاسم."
+  en: "A cohesive text doesn't repeat the full noun every sentence. It points back with pronouns (ia, beliau, -nya, mereka), demonstratives (tersebut, hal itu), substitutes (demikian, begitu), or simply leaves it out (ellipsis)."
+pattern:
+  - "Referensi (pronoun): ia / dia, beliau (respect), mereka, -nya, keduanya, masing-masing"
+  - "Referensi (demonstrative): ini, itu, tersebut (formal), hal ini / hal tersebut, berikut (forward)"
+  - "Substitusi: demikian / begitu, melakukannya, yang sama"
+  - "Elipsis: …, sedangkan Hatta Ø mendampinginya."
+  - "Konjungsi: kemudian, namun, oleh karena itu (see conjunction.intersentential)"
+explanation:
+  ar_eg: |
+    لما تحكي تاريخ (زي الاستقلال وعلاقة مصر وإندونيسيا)، النص لازم «يمسك في بعضه». الأدوات النحوية:
+    1. الإحالة بالضمير:
+       - ia / dia = هو/هي؛ ia أكتر في الكتابة.
+       - beliau = هو/هي للاحترام (للقادة، الكبار، العلماء). ماتستخدمهاش لمجرم أو لنفسك.
+       - -nya، mereka (هم)، keduanya (الاتنين)، masing-masing (كل واحد).
+    2. الإحالة بالإشارة:
+       - itu / ini، وtersebut = «المذكور» (رسمي جدًا): delegasi tersebut.
+       - hal ini / hal tersebut بترجع على فكرة كاملة مش اسم: Hal ini menunjukkan …
+       - berikut = اللي جاي (إحالة لقدّام): sebagai berikut = كالتالي.
+    3. الاستبدال: demikian / begitu بدل جملة كاملة: Banyak negara ragu, tetapi Mesir tidak demikian. وmelakukannya (عمل كده).
+    4. الحذف: شيل المتكرر: Soekarno membacakan teks proklamasi, sedangkan Hatta (Ø) mendampinginya. (من غير تكرار membacakan…)
+    5. أدوات الربط بين الجمل (ليها مدخل لوحدها).
+    خلي بالك: -nya ممكن تبقى غامضة لو فيه اتنين قبلها؛ لو مش واضح، كرّر الاسم أو استخدم tersebut. وماتجمعش tersebut وitu: buku tersebut، مش buku tersebut itu.
+  ar: |
+    يحتاج السرد التاريخي إلى نص متماسك، وأدواته النحوية:
+    1. الإحالة بالضمير: ia / dia، وbeliau للتوقير (ولا تُستعمل لمذموم ولا للمتكلم)، و-nya، وmereka، وkeduanya (كلاهما)، وmasing-masing (كلٌّ منهما).
+    2. الإحالة بالإشارة: ini / itu، وtersebut (المذكور، رسمية)، وhal ini / hal tersebut للإحالة إلى فكرة كاملة، وberikut للإحالة اللاحقة (sebagai berikut = كما يلي).
+    3. الاستبدال: demikian / begitu بدل جملة، وmelakukannya.
+    4. الحذف: Soekarno membacakan teks proklamasi, sedangkan Hatta (Ø) mendampinginya.
+    5. أدوات الربط بين الجمل.
+    وقد يلتبس مرجع -nya إذا سبقه اسمان، فيُعاد الاسم أو يُستعمل tersebut. ولا يُجمع بين tersebut وitu.
+  en: |
+    Retelling history (independence, Egypt–Indonesia ties) needs a text that holds together. The grammatical tools:
+    1. Pronoun reference:
+       - ia / dia = he/she; ia is more written.
+       - beliau = he/she, respectful (leaders, elders, scholars). Not for a criminal, and never for yourself.
+       - -nya, mereka (they), keduanya (both of them), masing-masing (each).
+    2. Demonstrative reference:
+       - ini / itu, and tersebut = "the aforementioned" (very formal): delegasi tersebut.
+       - hal ini / hal tersebut points back to a whole idea, not a noun: Hal ini menunjukkan …
+       - berikut points forward: sebagai berikut = as follows.
+    3. Substitution: demikian / begitu replace a whole clause: Banyak negara ragu, tetapi Mesir tidak demikian. Also melakukannya (did so).
+    4. Ellipsis: leave out the repeated part: Soekarno membacakan teks proklamasi, sedangkan Hatta (Ø) mendampinginya.
+    5. Sentence connectors (see their own entry).
+    Careful: -nya becomes ambiguous if two people came before it; if unclear, repeat the noun or use tersebut. And don't stack tersebut with itu: buku tersebut, not buku tersebut itu.
+examples:
+  - text: Pada 17 Agustus 1945, Soekarno dan Hatta memproklamasikan kemerdekaan Indonesia. Keduanya kemudian menjadi presiden dan wakil presiden pertama.
+    breakdown: keduanya (both of them) → Soekarno dan Hatta
+    en: On 17 August 1945, Soekarno and Hatta proclaimed Indonesia's independence. The two then became the first president and vice-president.
+    ar_eg: في 17 أغسطس 1945، سوكارنو وحتّا أعلنوا استقلال إندونيسيا. والاتنين بقوا بعد كده أول رئيس وأول نائب رئيس.
+    ar: في 17 أغسطس 1945 أعلن سوكارنو وحتّا استقلال إندونيسيا، ثم صار كلاهما أول رئيس ونائب رئيس.
+    register: formal
+  - text: Soekarno membacakan teks proklamasi, sedangkan Hatta mendampinginya.
+    breakdown: elipsis — Hatta Ø (no repeated verb phrase) · -nya → Soekarno
+    en: Soekarno read out the proclamation text, while Hatta stood beside him.
+    ar_eg: سوكارنو قرا نص الإعلان، وحتّا كان واقف جنبه.
+    ar: قرأ سوكارنو نص الإعلان، بينما وقف حتّا إلى جانبه.
+    register: formal
+  - text: Haji Agus Salim memimpin misi diplomatik Indonesia ke Kairo. Beliau dikenal fasih berbahasa Arab.
+    breakdown: beliau (respectful 'he') → Haji Agus Salim
+    en: Haji Agus Salim led Indonesia's diplomatic mission to Cairo. He was known for his fluent Arabic.
+    ar_eg: الحاج أجوس سالم قاد البعثة الدبلوماسية الإندونيسية للقاهرة. وكان معروف إنه بيتكلم عربي بطلاقة.
+    ar: قاد الحاج أغوس سالم البعثة الدبلوماسية الإندونيسية إلى القاهرة، وقد عُرف بفصاحته في العربية.
+    register: formal
+  - text: Banyak negara masih ragu mengakui Indonesia, tetapi Mesir tidak demikian.
+    breakdown: substitusi — demikian replaces 'masih ragu mengakui Indonesia'
+    en: Many countries still hesitated to recognise Indonesia, but Egypt did not.
+    ar_eg: دول كتير كانت لسه مترددة تعترف بإندونيسيا، بس مصر ماكانتش كده.
+    ar: ظلت دول كثيرة مترددة في الاعتراف بإندونيسيا، أما مصر فلم تكن كذلك.
+    register: formal
+  - text: Mesir termasuk negara pertama yang mengakui kemerdekaan Indonesia. Hal ini masih dikenang hingga sekarang.
+    breakdown: hal ini → the whole previous sentence (Egypt's early recognition)
+    en: Egypt was among the first countries to recognise Indonesia's independence. This is still remembered today.
+    ar_eg: مصر من أوائل الدول اللي اعترفت باستقلال إندونيسيا. والموضوع ده لسه فاكرينه لحد النهارده.
+    ar: كانت مصر من أوائل الدول التي اعترفت باستقلال إندونيسيا، وما زال ذلك يُذكر إلى اليوم.
+    register: formal
+mistakes:
+  - wrong: Soekarno bertemu Agus Salim. Ia lalu berangkat ke Kairo.
+    right: Soekarno bertemu Agus Salim. Agus Salim lalu berangkat ke Kairo.
+    why:
+      ar_eg: "ia هنا مش واضحة: مين اللي سافر؟ لما يبقى فيه اتنين، كرّر الاسم."
+      ar: مرجع ia ملتبس بين الاسمين، فيُعاد الاسم إزالةً للبس.
+      en: ia is ambiguous here — who left? With two candidates, repeat the name.
+  - wrong: Delegasi tersebut itu tiba pada bulan Juni.
+    right: Delegasi tersebut tiba pada bulan Juni.
+    why:
+      ar_eg: tersebut أصلًا إشارة («المذكور»)، فماتحطش itu معاها.
+      ar: tersebut إشارة في ذاتها فلا تُتبع بـ itu.
+      en: tersebut is already a demonstrative; don't add itu.
+  - wrong: Beliau ditangkap karena mencuri.
+    right: Ia / Dia ditangkap karena mencuri.
+    why:
+      ar_eg: beliau للتوقير، فاستخدامها مع حرامي بتبان سخرية أو غلط.
+      ar: beliau للتوقير، فلا تُستعمل لمذموم.
+      en: beliau signals respect; using it for a thief sounds ironic or wrong.
+arabic_bridge:
+  ar_eg: "العربي عنده نفس الأدوات بالظبط: الضمير العائد (هو، هما = keduanya)، اسم الإشارة («ذلك» = hal itu)، «المذكور / سالف الذكر» = tersebut، «كما يلي» = sebagai berikut، و«كذلك» = demikian. وbeliau شبه «سيادته / فضيلته» في الاحترام. والحذف العربي البليغ نفس فكرة elipsis."
+  ar: "الأدوات نفسها في العربية: الضمير العائد (هما = keduanya)، واسم الإشارة (ذلك = hal itu)، و«المذكور» = tersebut، و«كما يلي» = sebagai berikut، و«كذلك» = demikian. وتقارب beliau في التوقير «سيادته / فضيلته»."
+  en: "Arabic uses the same toolkit: returning pronouns (هما = keduanya), demonstratives (ذلك = hal itu), «المذكور» = tersebut, «كما يلي» = sebagai berikut, «كذلك» = demikian. beliau carries the respect of «سيادته / فضيلته»."
+tags: [cohesion, discourse, reference, writing]
+prerequisites: [id.pronoun.personal, id.demonstrative.ini-itu, id.clitic.nya]
+see_also: [id.cohesion.lexical, id.conjunction.intersentential, id.sentence.inversion]
+review:
+  status: draft
+  verified: false

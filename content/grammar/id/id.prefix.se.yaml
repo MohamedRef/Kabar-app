@@ -1,0 +1,104 @@
+schema: kabar.grammar/v1
+id: id.prefix.se
+language: id
+level: bipa3
+title:
+  target: se- (sebuah, sehari, sebesar, se-Indonesia, sebaiknya)
+  en: "The prefix se-: one, as … as, the whole"
+  ar_eg: "البادئة se-: واحد، قد، كل"
+  ar: "السابقة se-: الواحد، والمساواة، والشمول"
+summary:
+  ar_eg: "se- أصلها «واحد» (sebuah = واحد، sehari = يوم)، ومع الصفة = «قد / زي» (sebesar = قد كده في الكبر)، ومع المكان = «كل» (se-Indonesia = إندونيسيا كلها)."
+  ar: "أصل se- معنى الواحد (sebuah، sehari)، ومع الصفة تفيد المساواة (sebesar = بحجم)، ومع المكان أو الجماعة تفيد الشمول (se-Indonesia)."
+  en: "se- basically means one (sebuah, sehari); with an adjective it means as … as (sebesar); with a place or group it means the whole (se-Indonesia)."
+pattern:
+  - se- + classifier / time unit = one (sebuah, seorang, sehari, seminggu, sekali)
+  - A + se- + adjective + B = A is as … as B (setinggi, sebersih)
+  - se- + place / group = all of, the whole (sekeluarga, sekota, se-Indonesia)
+  - se- + time word = conjunction (sebelum, sesudah, setelah, sesampai)
+  - se- + adjective / verb + -nya = adverb (sebaiknya, secepatnya, sebenarnya)
+explanation:
+  ar_eg: |
+    se- جاية من satu (واحد)، ومنها خمس استعمالات:
+    1) «واحد»: sebuah kamar = أوضة واحدة / أوضة، seorang tamu = ضيف، sehari = يوم واحد، seminggu = أسبوع، sekali = مرة (وكمان «جدًا»).
+    2) «قد / زي … في»: Kamar ini sebesar kamar saya = الأوضة دي قد أوضتي. Kamarnya tidak sebersih foto = الأوضة مش نضيفة زي الصورة. (اتعلمت sama … dengan في المستوى التاني؛ se- أقصر وأرسم.)
+    3) «كل / كامل»: sekeluarga = العيلة كلها، sekota = المدينة كلها، se-Indonesia = إندونيسيا كلها (مع اسم علم بشَرطة وحرف كابيتال).
+    4) أدوات وقت: sebelum (قبل)، sesudah / setelah (بعد)، sesampai di… (أول ما وصل).
+    5) se-…-nya = حال / ظرف: sebaiknya (الأحسن)، secepatnya (في أسرع وقت)، sebenarnya (الحقيقة إن)، sebisanya (على قد ما تقدر).
+    في رسالة الشكوى هتستعمل كتير: Mohon maaf sebelumnya (آسف مقدمًا)، secepatnya، sesuai dengan (حسب / مطابق لـ).
+  ar: |
+    se- مأخوذة من satu (واحد)، ولها خمسة استعمالات:
+    1) الواحد: sebuah kamar، seorang tamu، sehari، seminggu، sekali (مرة / جدًا).
+    2) المساواة: Kamar ini sebesar kamar saya (بحجم غرفتي)، Kamarnya tidak sebersih foto (ليست بنظافة الصورة).
+    3) الشمول: sekeluarga (الأسرة كلها)، sekota، se-Indonesia (مع العلم تُكتب بشرطة).
+    4) أدوات زمنية: sebelum، sesudah / setelah، sesampai di …
+    5) se-…-nya ظرفًا: sebaiknya (الأفضل)، secepatnya (في أسرع وقت)، sebenarnya (في الحقيقة).
+    ويكثر في رسائل الشكوى: Mohon maaf sebelumnya، secepatnya، sesuai dengan (وفقًا لـ).
+  en: |
+    se- comes from satu (one) and has five uses:
+    1) one: sebuah kamar (a room), seorang tamu (a guest), sehari (one day), seminggu (a week), sekali (once — also "very").
+    2) as … as: Kamar ini sebesar kamar saya (this room is as big as mine); Kamarnya tidak sebersih foto (not as clean as the photo). Shorter and more formal than sama … dengan (BIPA 2).
+    3) the whole: sekeluarga (the whole family), sekota (the whole city), se-Indonesia (all Indonesia — hyphen + capital before a proper noun).
+    4) time conjunctions: sebelum (before), sesudah / setelah (after), sesampai di … (on arriving at …).
+    5) se-…-nya adverbs: sebaiknya (it's best to), secepatnya (as soon as possible), sebenarnya (actually), sebisanya (as best one can).
+    Complaint letters use them a lot: Mohon maaf sebelumnya (sorry in advance), secepatnya, sesuai dengan (in line with).
+examples:
+  - text: Saya memesan sebuah kamar untuk dua malam.
+    breakdown: se- + buah (classifier) = one, a
+    en: I booked a room for two nights.
+    ar_eg: حجزت أوضة لليلتين.
+    ar: حجزت غرفة لليلتين.
+  - text: Mohon maaf sebelumnya, saya ingin menyampaikan keluhan.
+    breakdown: se- + belum + -nya = beforehand
+    en: I apologise in advance; I'd like to make a complaint.
+    ar_eg: آسف مقدمًا، حابب أقدم شكوى.
+    ar: أعتذر مسبقًا، أودّ تقديم شكوى.
+    register: formal
+  - text: Kamar saya tidak sebersih foto di situs web hotel.
+    breakdown: se- + bersih = as clean as
+    en: My room isn't as clean as the photo on the hotel website.
+    ar_eg: أوضتي مش نضيفة زي الصورة اللي على موقع الفندق.
+    ar: غرفتي ليست بنظافة الصورة على موقع الفندق.
+  - text: Air panas di kamar saya mati selama sehari penuh.
+    en: The hot water in my room was off for a whole day.
+    ar_eg: المية السخنة في أوضتي كانت مقطوعة يوم بحاله.
+    ar: انقطع الماء الساخن في غرفتي يومًا كاملًا.
+  - text: Saya berharap pihak hotel menyelesaikan masalah ini secepatnya.
+    breakdown: se- + cepat + -nya = as soon as possible
+    en: I hope the hotel will resolve this problem as soon as possible.
+    ar_eg: أتمنى إن الفندق يحل المشكلة دي في أسرع وقت.
+    ar: آمل أن تحلّ إدارة الفندق هذه المشكلة في أسرع وقت.
+    register: formal
+  - text: Sirkuit Mandalika terkenal se-Indonesia.
+    en: The Mandalika circuit is famous all over Indonesia.
+    ar_eg: حلبة مانداليكا مشهورة في إندونيسيا كلها.
+    ar: حلبة مانداليكا مشهورة في أنحاء إندونيسيا كلها.
+mistakes:
+  - wrong: Kamar saya sama sebesar kamar Anda.
+    right: Kamar saya sebesar kamar Anda. / Kamar saya sama besar dengan kamar Anda.
+    why:
+      ar_eg: se- لوحدها معناها «قد»؛ ما تحطش sama معاها.
+      ar: تكفي se- للمساواة فلا تُجمع مع sama.
+      en: se- already means "as … as"; don't add sama.
+  - wrong: seIndonesia, se Indonesia
+    right: se-Indonesia
+    why:
+      ar_eg: "قبل اسم علم بتحط شَرطة: se-Jawa، se-Asia."
+      ar: تُفصل se- عن العلم بشرطة.
+      en: Before a proper noun, se- takes a hyphen.
+  - wrong: se besar
+    right: sebesar
+    why:
+      ar_eg: se- بادئة، بتلزق في الكلمة.
+      ar: se- سابقة تتصل بالكلمة.
+      en: se- is a prefix and joins the word.
+arabic_bridge:
+  ar_eg: "«قد» المصري هي se- بالظبط: «الأوضة دي قد أوضتي» = Kamar ini sebesar kamar saya. وفي الفصحى: «بحجم / في طول»: setinggi menara = في طول البرج."
+  ar: "تقابل se- في المساواة قولنا «بحجم / بطول»، وفي العامية المصرية «قدّ»: Kamar ini sebesar kamar saya = هذه الغرفة بحجم غرفتي."
+  en: Egyptian قدّ ("the size of") is exactly se-; MSA uses بحجم / بطول.
+tags: [affix, prefix, comparison, formal-writing]
+prerequisites: [id.comparison.equative, id.classifier.basic]
+see_also: [id.clitic.nya, id.conjunction.time]
+review:
+  status: draft
+  verified: false

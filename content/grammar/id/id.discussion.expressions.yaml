@@ -1,0 +1,103 @@
+schema: kabar.grammar/v1
+id: id.discussion.expressions
+language: id
+level: bipa3
+title:
+  target: Menurut saya…, Saya setuju…, Saya kurang setuju…
+  en: Giving opinions, agreeing and disagreeing
+  ar_eg: إزاي تقول رأيك وتوافق أو تعترض
+  ar: التعبير عن الرأي والموافقة والاعتراض
+summary:
+  ar_eg: "Menurut saya = في رأيي، Saya setuju dengan… = موافق على…، Saya kurang setuju = مش موافق أوي (الطريقة المؤدبة)."
+  ar: "Menurut saya = في رأيي، وSaya setuju dengan… = أوافق على…، وSaya kurang setuju = لا أوافق تمامًا (صيغة مهذبة)."
+  en: "Menurut saya = in my opinion; Saya setuju dengan… = I agree with…; Saya kurang setuju = I don't quite agree (the polite way)."
+pattern:
+  - "Opinion: Menurut saya, … · Saya pikir / kira … · Pendapat saya, …"
+  - "Agree: Saya setuju (dengan pendapat Anda). · Betul sekali. · Saya sependapat."
+  - "Soft disagree: Saya kurang setuju karena … · Ada benarnya, tetapi …"
+  - "Ask: Bagaimana pendapat Anda? · Apakah Anda setuju?"
+  - "Turn-taking: Boleh saya menambahkan? · Maaf, saya potong sebentar."
+  - "Close: Jadi, kesimpulannya …"
+explanation:
+  ar_eg: |
+    في المناقشة الإندونيسيين بيحبوا الأدب والهدوء؛ الاعتراض المباشر «انت غلطان!» بيبان قاسي.
+    - رأيك: Menurut saya, … = في رأيي…، Saya pikir / Saya kira … = أعتقد…
+    - موافقة: Saya setuju (dengan pendapat Rina) = موافق (على رأي رينا)، Betul sekali = عندك حق جدًا، Saya sependapat = رأيي زي رأيك.
+    - اعتراض بأدب: Saya kurang setuju = مش موافق قوي (حرفيًا «موافق أقل»)، Ada benarnya, tetapi… = فيه حاجة صح في كلامك، بس…
+      «Saya tidak setuju» موجودة بس أقوى، استعملها بعد ما تقول السبب: …karena…
+    - تسأل غيرك: Bagaimana pendapat Anda? = إيه رأيك؟
+    - تاخد الدور: Boleh saya menambahkan? = ممكن أضيف حاجة؟، Maaf, saya potong sebentar = آسف، هقاطعك ثانية.
+    - تقفل: Jadi, kesimpulannya … = يعني الخلاصة…
+    والمبدأ الإندونيسي المشهور: musyawarah untuk mufakat = نتشاور لحد ما نتفق.
+  ar: |
+    يُفضَّل في النقاش الإندونيسي الأدب وتجنب الاعتراض الحادّ.
+    - الرأي: Menurut saya, … (في رأيي)، Saya pikir / Saya kira … (أظن).
+    - الموافقة: Saya setuju dengan … (أوافق على)، Betul sekali (صحيح تمامًا)، Saya sependapat (أشاركك الرأي).
+    - الاعتراض المهذب: Saya kurang setuju (لا أوافق تمامًا)، Ada benarnya, tetapi … (في كلامك صواب، لكن…). أما Saya tidak setuju فأقوى، ويُستحسن ذكر السبب بعدها.
+    - السؤال عن الرأي: Bagaimana pendapat Anda?
+    - طلب الكلمة: Boleh saya menambahkan?، Maaf, saya potong sebentar.
+    - الختام: Jadi, kesimpulannya … (إذن، الخلاصة…).
+    ومن المبادئ المعروفة: musyawarah untuk mufakat (التشاور للوصول إلى التوافق).
+  en: |
+    Indonesian discussions value calm and politeness; a blunt "You're wrong!" sounds harsh.
+    - Opinion: Menurut saya, … (in my view), Saya pikir / Saya kira … (I think).
+    - Agree: Saya setuju (dengan pendapat Rina), Betul sekali (exactly), Saya sependapat (I share that view).
+    - Soft disagreement: Saya kurang setuju (I don't quite agree — literally "I agree less"), Ada benarnya, tetapi … (there's some truth in that, but…). Saya tidak setuju exists but is stronger; follow it with karena … (because…).
+    - Ask others: Bagaimana pendapat Anda?
+    - Take the floor: Boleh saya menambahkan? (May I add something?), Maaf, saya potong sebentar (Sorry to interrupt).
+    - Wrap up: Jadi, kesimpulannya … (So, to conclude…).
+    The famous principle: musyawarah untuk mufakat — deliberate until you reach consensus.
+examples:
+  - text: Menurut saya, kantong plastik harus dilarang di Senggigi.
+    en: In my opinion, plastic bags should be banned in Senggigi.
+    ar_eg: في رأيي، الأكياس البلاستيك لازم تتمنع في سنجيجي.
+    ar: في رأيي، يجب منع الأكياس البلاستيكية في سنجيجي.
+  - text: Saya setuju dengan pendapat Rina.
+    en: I agree with Rina's opinion.
+    ar_eg: أنا موافق على رأي رينا.
+    ar: أوافق على رأي رينا.
+  - text: Ada benarnya, tetapi saya kurang setuju karena banyak pedagang kecil memakai plastik.
+    en: That's partly true, but I don't quite agree, because many small traders use plastic.
+    ar_eg: كلامك فيه حاجة صح، بس أنا مش موافق قوي عشان بياعين صغيرين كتير بيستعملوا بلاستيك.
+    ar: في كلامك شيء من الصواب، لكني لا أوافق تمامًا لأن كثيرًا من صغار التجار يستعملون البلاستيك.
+  - text: Bagaimana pendapat Anda, Pak Budi?
+    en: What's your opinion, Pak Budi?
+    ar_eg: إيه رأي حضرتك يا أستاذ بودي؟
+    ar: ما رأيك يا أستاذ بودي؟
+  - text: Boleh saya menambahkan sedikit?
+    en: May I add something?
+    ar_eg: ممكن أضيف حاجة صغيرة؟
+    ar: هل يمكنني أن أضيف شيئًا؟
+  - text: Jadi, kesimpulannya, kita semua harus mengurangi sampah plastik.
+    en: So, to conclude, we all need to reduce plastic waste.
+    ar_eg: يعني الخلاصة، كلنا لازم نقلل الزبالة البلاستيك.
+    ar: إذن، الخلاصة أن علينا جميعًا تقليل النفايات البلاستيكية.
+mistakes:
+  - wrong: Saya setuju kamu.
+    right: Saya setuju dengan kamu. / Saya setuju dengan pendapatmu.
+    why:
+      ar_eg: setuju محتاجة dengan قبل الشخص أو الرأي (زي «موافق على / مع»).
+      ar: يتعدى الفعل setuju بـdengan قبل الشخص أو الرأي.
+      en: setuju needs dengan before the person or opinion.
+  - wrong: Kamu salah!
+    right: Maaf, saya kurang setuju karena …
+    why:
+      ar_eg: مش غلط نحويًا، بس قاسية جدًا في نقاش؛ ابدأ بأسف وقول السبب.
+      ar: ليست خطأً نحويًا لكنها حادة في النقاش؛ ابدأ بالاعتذار واذكر السبب.
+      en: Not a grammar error, but far too blunt in a discussion; soften it and give a reason.
+  - wrong: Menurut saya, saya pikir …
+    right: Menurut saya, … / Saya pikir …
+    why:
+      ar_eg: دول نفس المعنى؛ اختار واحدة بس.
+      ar: العبارتان بمعنى واحد، فاكتفِ بإحداهما.
+      en: Both mean "I think"; use one.
+arabic_bridge:
+  ar_eg: "musyawarah جاية من «مشاورة / شورى»، و mufakat من «موافقة» — يعني مبدأ «musyawarah untuk mufakat» = نتشاور لحد ما نوافق كلنا. كلمتين عربي في قلب الثقافة الإندونيسية!"
+  ar: "musyawarah من «مشاورة / شورى»، وmufakat من «موافقة»، فمبدأ musyawarah untuk mufakat يعني التشاور حتى الاتفاق."
+  en: musyawarah comes from Arabic مشاورة (consultation) and mufakat from موافقة (agreement) — "musyawarah untuk mufakat" is consultation until consensus.
+tags: [discussion, opinion, politeness, speaking]
+prerequisites: [id.politeness.phrases]
+see_also: [id.preposition.extended, id.particle.lah-kah-pun, id.conjunction.cause-effect]
+review:
+  status: draft
+  verified: false

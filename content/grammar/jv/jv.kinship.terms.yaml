@@ -1,0 +1,105 @@
+schema: kabar.grammar/v1
+id: jv.kinship.terms
+language: jv
+level: j2
+title:
+  target: bapak, ibu / simbok, mas, mbakyu, adhi, pakdhe, budhe, paklik, bulik, simbah
+  en: Family words (kinship terms)
+  ar_eg: كلمات العيلة
+  ar: ألفاظ القرابة
+summary:
+  ar_eg: "الجاوي بيفرّق بين الأكبر والأصغر: mas / mbakyu = أخ / أخت أكبر، adhi = أصغر. وpakdhe / budhe = عم / خال أكبر من أبوك أو أمك، paklik / bulik = أصغر."
+  ar: "تفرق الجاوية بين الأكبر والأصغر: mas / mbakyu للأخ والأخت الأكبر، وadhi للأصغر، وpakdhe / budhe للعم أو الخال الأكبر من الوالد، وpaklik / bulik للأصغر."
+  en: "Javanese sorts relatives by older and younger: mas / mbakyu = older brother / sister, adhi = younger sibling; pakdhe / budhe = uncle / aunt older than your parent, paklik / bulik = younger."
+pattern:
+  - "bapak (father) · ibu, simbok (mother)"
+  - "mas (older brother) · mbakyu, mbak (older sister) · adhi / adhik (younger sibling, called dhik)"
+  - "pakdhe / budhe (parent's older brother / sister, or their spouse) — from bapak gedhe / ibu gedhe"
+  - "paklik / bulik (parent's younger brother / sister) — from bapak cilik / ibu cilik"
+  - "simbah, mbah (grandparent) · mbah kakung (grandfather) · mbah putri (grandmother) · putu (grandchild)"
+  - "anak (child) · bojo (spouse) · sedulur (sibling, relative) · ponakan (niece / nephew)"
+explanation:
+  ar_eg: |
+    عيلة الجاوي متقسمة بالسن، مش بجهة الأب والأم زي عندنا:
+    - bapak = بابا، ibu = ماما. simbok (mbok) = ماما في الريف والكلام القديم.
+    - mas = أخويا الكبير، mbakyu (وباختصار mbak) = أختي الكبيرة، adhi / adhik = أخويا أو أختي الصغيرين (وبنناديه dhik).
+    - pakdhe = أخو بابا أو ماما الأكبر منهم (حرفيًا bapak gedhe = «الأب الكبير»)، وbudhe = أختهم الكبيرة. paklik / bulik = الأصغر (bapak cilik = «الأب الصغير»).
+      يعني «عمي» و«خالي» ممكن الاتنين يبقوا pakdhe، المهم أكبر ولا أصغر من أبوك / أمك.
+    - simbah / mbah = جدو أو تيتة. mbah kakung = جدو، mbah putri = تيتة. putu = حفيد.
+    - anak = ابن / بنت، bojo = جوز / مرات، sedulur = أخ / قريب، ponakan = ابن أخ / أخت.
+    والكلمات دي هي نفسها ألقاب النداء: mas، mbak، dhe، dhik، mbah. فلما حد يقول «piye dhe» يبقى بيكلم حد بيعتبره زي «عمو».
+    والإندونيسي أخد منها كتير: mas، mbak، pakde، bude.
+  ar: |
+    تُقسم القرابة الجاوية بالسن لا بجهة الأب والأم:
+    - bapak = الأب، ibu = الأم، وsimbok (mbok) = الأم في الريف والاستعمال القديم.
+    - mas = الأخ الأكبر، mbakyu (mbak) = الأخت الكبرى، adhi / adhik = الأخ أو الأخت الأصغر (ويُنادى dhik).
+    - pakdhe = أخو أحد الوالدين الأكبر منه (من bapak gedhe «الأب الكبير»)، وbudhe أخته الكبرى، وpaklik / bulik للأصغر (من bapak cilik).
+      فالعم والخال كلاهما pakdhe إن كانا أكبر من الوالد.
+    - simbah / mbah = الجد أو الجدة، mbah kakung = الجد، mbah putri = الجدة، putu = الحفيد.
+    - anak = الولد، bojo = الزوج أو الزوجة، sedulur = الأخ أو القريب، ponakan = ابن الأخ أو الأخت.
+    وهي نفسها ألفاظ النداء: mas وmbak وdhe وdhik وmbah، وقد أخذت الإندونيسية منها mas وmbak وpakde وbude.
+  en: |
+    Javanese family words are organised by age, not by father's vs mother's side:
+    - bapak = father, ibu = mother. simbok (mbok) = mother in villages and older speech.
+    - mas = older brother, mbakyu (short: mbak) = older sister, adhi / adhik = younger sibling (called dhik).
+    - pakdhe = your parent's older brother (from bapak gedhe, "big father"), budhe = their older sister. paklik / bulik = the younger ones (bapak cilik, "little father").
+      So an uncle on either side is pakdhe if he's older than your parent.
+    - simbah / mbah = grandparent; mbah kakung = grandfather, mbah putri = grandmother; putu = grandchild.
+    - anak = child, bojo = spouse, sedulur = sibling / relative, ponakan = niece / nephew.
+    The same words are address terms: mas, mbak, dhe, dhik, mbah. "piye dhe" talks to someone treated like an uncle or auntie.
+    Indonesian borrowed several: mas, mbak, pakde, bude.
+examples:
+  - text: Sari iku anake Pak Budi.
+    breakdown: Sari · iku = itu · anak + -e = anaknya · Pak Budi
+    en: Sari is Pak Budi's daughter.
+    ar_eg: ساري بنت باك بودي.
+    ar: ساري ابنة باك بودي.
+    register: informal
+  - text: Masku nyambut gawe nang Suroboyo.
+    breakdown: mas + -ku = kakak laki-lakiku · nyambut gawe = bekerja · nang = di · Suroboyo
+    en: My older brother works in Surabaya.
+    ar_eg: أخويا الكبير بيشتغل في سورابايا.
+    ar: أخي الأكبر يعمل في سورابايا.
+    register: informal
+  - text: Pakdhe karo budhe manggon nang Madiun.
+    breakdown: pakdhe = pakde · karo = dan · budhe = bude · manggon = tinggal · nang = di
+    en: My uncle and aunt live in Madiun.
+    ar_eg: عمي وطنط ساكنين في ماديون.
+    ar: عمي وعمتي يسكنان في ماديون.
+    register: informal
+  - text: Mbah putri lagi masak.
+    breakdown: mbah putri = nenek · lagi = sedang · masak = memasak
+    en: Grandma is cooking.
+    ar_eg: تيتة بتطبخ.
+    ar: الجدة تطبخ.
+    register: informal
+  - text: Aku duwe adhi loro.
+    breakdown: aku · duwe = punya · adhi = adik · loro = dua
+    en: I have two younger siblings.
+    ar_eg: عندي اتنين إخوات أصغر مني.
+    ar: لي أخوان أصغر مني.
+    register: informal
+mistakes:
+  - wrong: Paklik (for your father's older brother)
+    right: Pakdhe
+    why:
+      ar_eg: pakdhe للأكبر من أبوك، paklik للأصغر. السن هو اللي بيحدد.
+      ar: pakdhe لمن هو أكبر من الوالد، وpaklik للأصغر.
+      en: pakdhe is older than your parent, paklik is younger.
+  - wrong: Adhiku umure luwih tuwa.
+    right: Masku / Mbakyuku umure luwih tuwa.
+    why:
+      ar_eg: adhi معناها الأصغر. اللي أكبر منك mas أو mbakyu.
+      ar: adhi للأصغر، والأكبر mas أو mbakyu.
+      en: adhi is younger by definition; an older sibling is mas or mbakyu.
+arabic_bridge:
+  ar_eg: "العربي بيفرّق بالجهة (عم من ناحية الأب، خال من ناحية الأم)، والجاوي بيفرّق بالسن (pakdhe أكبر، paklik أصغر). نفس الشخص ممكن يبقى «خال» عندنا وpakdhe عندهم."
+  ar: "تفرق العربية بالجهة (عم وخال)، والجاوية بالسن (pakdhe وpaklik)."
+  en: "Arabic splits uncles by side (عم vs خال); Javanese splits them by age (pakdhe vs paklik)."
+tags: [family, kinship, address, j2]
+prerequisites: [jv.address.terms]
+see_also: [jv.possessive.e-ne, jv.pronoun.krama]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker (simbok, mbah kakung / mbah putri usage in ngoko, ponakan).
