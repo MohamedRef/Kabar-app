@@ -149,3 +149,36 @@ items:
     input: "pikir"
     expect: { arabic: "فكر", sound_shift: "ف → p", meaning_shift: false }
     verified: true
+
+  # --- story_episode (Kabar Pagi) ---
+  # Judge with the shape check in crates/core/src/pagi.rs (Story::validate +
+  # uses_words), then by rubric: every word used naturally (affixed forms
+  # count), graded to the level, warm everyday scene, arz sounds like Cairo
+  # speech (not MSA), ar is correct MSA, en is natural.
+  - id: story-01
+    task: story_episode
+    lang: id
+    input: { level: bipa1, due_words: [pasar, beli, ikan, murah], new_words: [segar, pagi], length: "6-10 short sentences" }
+    expect:
+      words: [pasar, beli, ikan, murah, segar, pagi]
+      sentences: "6-10, mostly 4-8 words, present tense, no subordinate clauses"
+      rubric: "market scene with a friendly seller; a price in ribu; arz uses بكام / رخيص / طازة, not MSA; no slang"
+    verified: false
+  - id: story-02
+    task: story_episode
+    lang: id
+    input: { level: bipa1, due_words: [hujan, pulang, rumah, teh], new_words: [payung, basah, hangat], length: "6-10 short sentences" }
+    expect:
+      words: [hujan, pulang, rumah, teh, payung, basah, hangat]
+      sentences: "6-10, short and concrete"
+      rubric: "rainy afternoon coming home, a kind ending at home; affixed forms fine (kehujanan uses hujan); en has no Arabic; names written in Arabic script in arz/ar"
+    verified: false
+  - id: story-03
+    task: story_episode
+    lang: id
+    input: { level: bipa2, due_words: [masjid, keluarga, jauh, sadar, ajak], new_words: [kurma, khawatir], length: "6-10 short sentences" }
+    expect:
+      words: [masjid, keluarga, jauh, sadar, ajak, kurma, khawatir]
+      sentences: "6-10, BIPA 2: past events with sudah/baru, bahwa/karena clauses allowed"
+      rubric: "gentle Egypt-Indonesia link (an Egyptian in Indonesia, or Ramadan customs compared); mengajak/menyadari count; no religion debate, just warm community; under 220 words"
+    verified: false
