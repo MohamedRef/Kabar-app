@@ -1,0 +1,2406 @@
+# Golden set for analyze_text (docs/SPEC.md §11, §19). Shapes: content/golden/README.md.
+# input = {text, words[]}: words is the deterministic tokenizer's word list
+# (crates/core/src/lang/token.rs, punctuation and emoji dropped, original casing).
+# expect = AnalyzeText (crates/core/src/ai/tasks.rs), exactly one token per word.
+# Nothing here is learner-reviewed yet; Javanese stays unverified until a native speaker checks it.
+task: analyze_text
+version: 1
+rubric: |
+  - One token per input word, in order, with i = the word's index; no tokens for punctuation or emoji, and surface copied exactly.
+  - Meaning in context beats dictionary meaning: chat spellings and abbreviations are expanded in lemma (arp -> arep, udh -> sudah, nomin -> no minus).
+  - lang is right per token: Javanese words in a Javanese line are jv (shared loans like lapor may be id), English loans are en, names and numbers other.
+  - translation_en is natural English; translation_ar is natural Egyptian Arabic in Arabic script, not MSA and not a word-for-word gloss.
+  - register uses the prompt's set (chat, formal, neutral, slang, krama, ngoko, mixed) and fits the text.
+  - Real uncertainty (e.g. dhe = Pakdhe or Budhe) is shown with confident false or a hedging note; inventing a confident wrong meaning scores 0.
+  - False friends and meaning shifts (kalimat, mungkin, larang, bisa, ojo/aja) must be caught in gloss or note; missing one caps the score at 1.
+items:
+- id: analyze_text-001
+  lang: jv
+  input:
+    text: Sek tak lapor pusat
+    words: [Sek, tak, lapor, pusat]
+  expect:
+    translation_en: Hold on, I'll report to HQ.
+    translation_ar: استنى، هبلّغ الإدارة.
+    register: ngoko
+    tokens:
+    - i: 0
+      surface: Sek
+      lang: jv
+      lemma: sek
+      gloss_en: hold on, wait a sec
+      gloss_ar: استنى ثانية
+      note: Chat spelling of sik / sedhela.
+      confident: true
+    - i: 1
+      surface: tak
+      lang: jv
+      lemma: tak
+      gloss_en: 'I''ll (1st-person proclitic: I + verb)'
+      gloss_ar: أنا هـ…
+      note: Javanese tak- before a verb = I (will) do it; not Indonesian tak = not.
+      confident: true
+    - i: 2
+      surface: lapor
+      lang: id
+      lemma: lapor
+      gloss_en: report
+      gloss_ar: أبلّغ
+      note: Same word in Indonesian and Javanese.
+      confident: true
+    - i: 3
+      surface: pusat
+      lang: id
+      lemma: pusat
+      gloss_en: center, HQ
+      gloss_ar: الإدارة / المركز
+      note: null
+      confident: true
+  criteria:
+  - tak is read as the Javanese first-person proclitic (I'll), not as Indonesian tak = not
+  - 'lapor and pusat may be tagged id or jv: they are shared words'
+  - translation_ar is Egyptian Arabic
+  avoid:
+  - Translating tak as a negation ("don't report")
+  - Labels a Javanese word as Indonesian (or invents an Indonesian meaning) when the Javanese reading
+    is the one that fits
+  tags:
+  - spec-24
+  - chat
+  - javanese
+  - proclitic
+  verified: false
+- id: analyze_text-002
+  lang: jv
+  input:
+    text: ng prabowo?
+    words: [ng, prabowo]
+  expect:
+    translation_en: To Prabowo?
+    translation_ar: لبرابوو؟
+    register: ngoko
+    tokens:
+    - i: 0
+      surface: ng
+      lang: jv
+      lemma: nang
+      gloss_en: to
+      gloss_ar: لـ / عند
+      note: ng = chat spelling of nang (to).
+      confident: true
+    - i: 1
+      surface: prabowo
+      lang: other
+      lemma: Prabowo
+      gloss_en: Prabowo (a name)
+      gloss_ar: برابوو (اسم)
+      note: Proper noun written in lower case; in this joke it most likely means President Prabowo.
+      confident: true
+  criteria:
+  - ng is expanded to nang (to)
+  - prabowo is treated as a proper noun even though it is written in lower case
+  avoid:
+  - Treating ng as the Indonesian/Javanese nasal prefix or as a typo for 'nggak'
+  - Glossing prabowo as a common noun
+  tags:
+  - spec-24
+  - chat
+  - javanese
+  - proper-noun
+  - abbreviation
+  verified: false
+- id: analyze_text-003
+  lang: jv
+  input:
+    text: piye dhe
+    words: [piye, dhe]
+  expect:
+    translation_en: So, what do you think, Uncle?
+    translation_ar: إيه رأيك يا عمّو؟
+    register: ngoko
+    tokens:
+    - i: 0
+      surface: piye
+      lang: jv
+      lemma: piye
+      gloss_en: how; what do you think
+      gloss_ar: إزاي / إيه رأيك
+      note: null
+      confident: true
+    - i: 1
+      surface: dhe
+      lang: jv
+      lemma: dhe
+      gloss_en: uncle / auntie (friendly address)
+      gloss_ar: يا عمّو / يا خالتو
+      note: Probably short for Pakdhe or Budhe (an older uncle/aunt, or any older neighbour); the context
+        can't tell which.
+      confident: false
+  criteria:
+  - piye is glossed as how / what do you think
+  - dhe is read as a term of address (Pakdhe / Budhe) and marked not confident, or with a note saying
+    it is a guess
+  avoid:
+  - Inventing a confident meaning for dhe without any hedge
+  - Reading dhe as Indonesian 'dek' (younger sibling) with certainty
+  tags:
+  - spec-24
+  - chat
+  - javanese
+  - address-term
+  - ambiguous
+  verified: false
+- id: analyze_text-004
+  lang: jv
+  input:
+    text: arp dicul piro
+    words: [arp, dicul, piro]
+  expect:
+    translation_en: How much will you sell it for?
+    translation_ar: هتبيعه بكام؟
+    register: ngoko
+    tokens:
+    - i: 0
+      surface: arp
+      lang: jv
+      lemma: arep
+      gloss_en: going to, want to
+      gloss_ar: هـ / ناوي
+      note: arp = chat spelling of arep.
+      confident: true
+    - i: 1
+      surface: dicul
+      lang: jv
+      lemma: diculke
+      gloss_en: be let go of, be sold
+      gloss_ar: يتباع / تسيبه
+      note: 'dicul = di- + (u)cul, short for diculke: let it go, here ''sell it''.'
+      confident: true
+    - i: 2
+      surface: piro
+      lang: jv
+      lemma: pira
+      gloss_en: how much
+      gloss_ar: بكام
+      note: piro is the spoken spelling of pira.
+      confident: true
+  criteria:
+  - arp is expanded to arep, piro to pira
+  - dicul is understood as letting go / selling (passive), not as a typo
+  - translation is a question about the selling price
+  avoid:
+  - Guessing dicul is Indonesian 'dicolek' or 'dicuil'
+  - Labels a Javanese word as Indonesian (or invents an Indonesian meaning) when the Javanese reading
+    is the one that fits
+  tags:
+  - spec-24
+  - chat
+  - javanese
+  - abbreviation
+  - market
+  verified: false
+- id: analyze_text-005
+  lang: id
+  input:
+    text: iphone 17 pm 512gb resmi ibox mulus nomin garansi jalan minat wa
+    words: [iphone, '17', pm, 512gb, resmi, ibox, mulus, nomin, garansi, jalan, minat, wa]
+  expect:
+    translation_en: iPhone 17 Pro Max 512GB, official iBox unit, flawless, no defects, warranty still
+      active. Interested? WhatsApp me.
+    translation_ar: آيفون 17 برو ماكس 512 جيجا، رسمي من iBox، نضيف، مفيهوش أي عيب، والضمان شغال. لو مهتم
+      كلمني واتساب.
+    register: chat
+    tokens:
+    - i: 0
+      surface: iphone
+      lang: en
+      lemma: iPhone
+      gloss_en: iPhone
+      gloss_ar: آيفون
+      note: null
+      confident: true
+    - i: 1
+      surface: '17'
+      lang: other
+      lemma: '17'
+      gloss_en: 17 (model number)
+      gloss_ar: 17 (رقم الموديل)
+      note: null
+      confident: true
+    - i: 2
+      surface: pm
+      lang: en
+      lemma: Pro Max
+      gloss_en: Pro Max
+      gloss_ar: برو ماكس
+      note: pm = Pro Max in phone listings.
+      confident: true
+    - i: 3
+      surface: 512gb
+      lang: en
+      lemma: 512 GB
+      gloss_en: 512 GB of storage
+      gloss_ar: 512 جيجا
+      note: null
+      confident: true
+    - i: 4
+      surface: resmi
+      lang: id
+      lemma: resmi
+      gloss_en: official
+      gloss_ar: رسمي
+      note: resmi ibox = sold through iBox, Apple's authorized reseller, so the warranty is local.
+      confident: true
+    - i: 5
+      surface: ibox
+      lang: other
+      lemma: iBox
+      gloss_en: iBox (authorized Apple reseller)
+      gloss_ar: iBox (موزّع أبل الرسمي)
+      note: null
+      confident: true
+    - i: 6
+      surface: mulus
+      lang: id
+      lemma: mulus
+      gloss_en: smooth, flawless
+      gloss_ar: نضيف / زي الفل
+      note: null
+      confident: true
+    - i: 7
+      surface: nomin
+      lang: id
+      lemma: no minus
+      gloss_en: no defects
+      gloss_ar: مفيهوش عيب
+      note: 'nomin = no minus: listing slang for ''nothing wrong with it''.'
+      confident: true
+    - i: 8
+      surface: garansi
+      lang: id
+      lemma: garansi
+      gloss_en: warranty
+      gloss_ar: ضمان
+      note: null
+      confident: true
+    - i: 9
+      surface: jalan
+      lang: id
+      lemma: jalan
+      gloss_en: still running (active)
+      gloss_ar: شغال
+      note: garansi jalan = the warranty is still active.
+      confident: true
+    - i: 10
+      surface: minat
+      lang: id
+      lemma: minat
+      gloss_en: interested
+      gloss_ar: مهتم
+      note: minat wa = interested? contact me on WhatsApp.
+      confident: true
+    - i: 11
+      surface: wa
+      lang: other
+      lemma: WhatsApp
+      gloss_en: WhatsApp
+      gloss_ar: واتساب
+      note: null
+      confident: true
+  criteria:
+  - pm is expanded to Pro Max and nomin to no minus (no defects)
+  - garansi jalan is explained as an active warranty, not 'warranty walks'
+  - resmi ibox is explained as an official unit from the authorized reseller
+  avoid:
+  - Literal 'warranty road' / 'walking warranty'
+  - Reading pm as p.m. (afternoon)
+  - Reading nomin as 'nominal'
+  tags:
+  - spec-24
+  - listing
+  - abbreviation
+  - numbers
+  verified: false
+- id: analyze_text-006
+  lang: id
+  input:
+    text: Saya sedang membaca buku.
+    words: [Saya, sedang, membaca, buku]
+  expect:
+    translation_en: I am reading a book.
+    translation_ar: أنا بقرا كتاب.
+    register: neutral
+    tokens:
+    - i: 0
+      surface: Saya
+      lang: id
+      lemma: saya
+      gloss_en: I
+      gloss_ar: أنا
+      note: null
+      confident: true
+    - i: 1
+      surface: sedang
+      lang: id
+      lemma: sedang
+      gloss_en: in the middle of (-ing)
+      gloss_ar: بـ (دلوقتي)
+      note: 'Aspect marker: action in progress.'
+      confident: true
+    - i: 2
+      surface: membaca
+      lang: id
+      lemma: baca
+      gloss_en: reading
+      gloss_ar: بقرا
+      note: meN- + baca → membaca (active verb).
+      confident: true
+    - i: 3
+      surface: buku
+      lang: id
+      lemma: buku
+      gloss_en: book
+      gloss_ar: كتاب
+      note: null
+      confident: true
+  criteria:
+  - membaca has lemma baca
+  tags:
+  - spec-24
+  - morphology
+  - meN-
+  verified: false
+- id: analyze_text-007
+  lang: id
+  input:
+    text: Rumahnya dibersihkan kemarin.
+    words: [Rumahnya, dibersihkan, kemarin]
+  expect:
+    translation_en: The house was cleaned yesterday.
+    translation_ar: البيت اتنضف إمبارح.
+    register: neutral
+    tokens:
+    - i: 0
+      surface: Rumahnya
+      lang: id
+      lemma: rumah
+      gloss_en: the house / his/her house
+      gloss_ar: البيت / بيته
+      note: 'rumah + -nya: ''the'' or ''his/her/its'', from context.'
+      confident: true
+    - i: 1
+      surface: dibersihkan
+      lang: id
+      lemma: bersih
+      gloss_en: was cleaned
+      gloss_ar: اتنضف
+      note: 'di- + bersih + -kan: passive of membersihkan (to clean).'
+      confident: true
+    - i: 2
+      surface: kemarin
+      lang: id
+      lemma: kemarin
+      gloss_en: yesterday
+      gloss_ar: إمبارح
+      note: null
+      confident: true
+  criteria:
+  - Rumahnya → rumah + -nya; dibersihkan → di- + bersih + -kan (passive)
+  - Either 'the house' or 'his/her house' is accepted for Rumahnya
+  avoid:
+  - Translating as active ('He cleaned the house') without noting the passive
+  tags:
+  - spec-24
+  - morphology
+  - passive
+  - -nya
+  verified: false
+- id: analyze_text-008
+  lang: id
+  input:
+    text: Anak-anak bermain di taman.
+    words: [Anak-anak, bermain, di, taman]
+  expect:
+    translation_en: The children are playing in the park.
+    translation_ar: العيال بيلعبوا في الجنينة.
+    register: neutral
+    tokens:
+    - i: 0
+      surface: Anak-anak
+      lang: id
+      lemma: anak
+      gloss_en: children
+      gloss_ar: العيال / الأطفال
+      note: Full reduplication = plural.
+      confident: true
+    - i: 1
+      surface: bermain
+      lang: id
+      lemma: main
+      gloss_en: play
+      gloss_ar: بيلعبوا
+      note: ber- + main → bermain.
+      confident: true
+    - i: 2
+      surface: di
+      lang: id
+      lemma: di
+      gloss_en: in, at
+      gloss_ar: في
+      note: null
+      confident: true
+    - i: 3
+      surface: taman
+      lang: id
+      lemma: taman
+      gloss_en: park, garden
+      gloss_ar: جنينة
+      note: null
+      confident: true
+  criteria:
+  - Anak-anak is one token with lemma anak and a plural meaning
+  - bermain has lemma main
+  tags:
+  - spec-24
+  - morphology
+  - reduplication
+  - ber-
+  verified: false
+- id: analyze_text-009
+  lang: id
+  input:
+    text: Kesehatan itu penting.
+    words: [Kesehatan, itu, penting]
+  expect:
+    translation_en: Health is important.
+    translation_ar: الصحة حاجة مهمة.
+    register: neutral
+    tokens:
+    - i: 0
+      surface: Kesehatan
+      lang: id
+      lemma: sehat
+      gloss_en: health
+      gloss_ar: الصحة
+      note: ke- + sehat + -an → abstract noun.
+      confident: true
+    - i: 1
+      surface: itu
+      lang: id
+      lemma: itu
+      gloss_en: (topic marker)
+      gloss_ar: (أداة بتحدد الموضوع)
+      note: Here itu marks the topic; it does not mean 'that'.
+      confident: true
+    - i: 2
+      surface: penting
+      lang: id
+      lemma: penting
+      gloss_en: important
+      gloss_ar: مهم
+      note: null
+      confident: true
+  criteria:
+  - Kesehatan has lemma sehat with ke-…-an
+  - itu is not translated as 'that health'
+  avoid:
+  - '''That health is important'''
+  tags:
+  - spec-24
+  - morphology
+  - ke-an
+  - tricky
+  verified: false
+- id: analyze_text-010
+  lang: id
+  input:
+    text: Apa kabar?
+    words: [Apa, kabar]
+  expect:
+    translation_en: How are you?
+    translation_ar: إزيك؟ / أخبارك إيه؟
+    register: neutral
+    tokens:
+    - i: 0
+      surface: Apa
+      lang: id
+      lemma: apa
+      gloss_en: what
+      gloss_ar: إيه
+      note: null
+      confident: true
+    - i: 1
+      surface: kabar
+      lang: id
+      lemma: kabar
+      gloss_en: news
+      gloss_ar: أخبار
+      note: From Arabic خبر (kh → k).
+      confident: true
+  criteria:
+  - translation is a greeting (How are you?), not 'What news?'
+  - kabar is linked to Arabic خبر
+  tags:
+  - spec-24
+  - greeting
+  - arabic-bridge
+  verified: false
+- id: analyze_text-011
+  lang: jv
+  input:
+    text: Kowe wis mangan?
+    words: [Kowe, wis, mangan]
+  expect:
+    translation_en: Have you eaten?
+    translation_ar: إنت كلت؟
+    register: ngoko
+    tokens:
+    - i: 0
+      surface: Kowe
+      lang: jv
+      lemma: kowe
+      gloss_en: you (ngoko, to friends and younger people)
+      gloss_ar: إنت
+      note: null
+      confident: true
+    - i: 1
+      surface: wis
+      lang: jv
+      lemma: wis
+      gloss_en: already
+      gloss_ar: خلاص
+      note: = Indonesian sudah.
+      confident: true
+    - i: 2
+      surface: mangan
+      lang: jv
+      lemma: mangan
+      gloss_en: eat
+      gloss_ar: أكلت
+      note: null
+      confident: true
+  criteria:
+  - Register is ngoko
+  tags:
+  - spec-24
+  - speech-level
+  - ngoko
+  verified: false
+- id: analyze_text-012
+  lang: jv
+  input:
+    text: Sampeyan sampun nedha?
+    words: [Sampeyan, sampun, nedha]
+  expect:
+    translation_en: Have you eaten? (polite)
+    translation_ar: حضرتك أكلت؟
+    register: krama
+    tokens:
+    - i: 0
+      surface: Sampeyan
+      lang: jv
+      lemma: sampeyan
+      gloss_en: you (polite)
+      gloss_ar: حضرتك
+      note: Polite 'you' (krama madya); more respectful still is panjenengan.
+      confident: true
+    - i: 1
+      surface: sampun
+      lang: jv
+      lemma: sampun
+      gloss_en: already (krama)
+      gloss_ar: خلاص
+      note: Krama of wis.
+      confident: true
+    - i: 2
+      surface: nedha
+      lang: jv
+      lemma: nedha
+      gloss_en: eat (krama)
+      gloss_ar: أكلت
+      note: Krama of mangan; used for yourself or others.
+      confident: true
+  criteria:
+  - Register is krama
+  - Each word is mapped to its ngoko counterpart (kowe / wis / mangan) in notes or glosses
+  tags:
+  - spec-24
+  - speech-level
+  - krama
+  verified: false
+- id: analyze_text-013
+  lang: jv
+  input:
+    text: Panjenengan sampun dhahar?
+    words: [Panjenengan, sampun, dhahar]
+  expect:
+    translation_en: Have you eaten, sir/ma'am? (most respectful)
+    translation_ar: سيادتك أكلت؟
+    register: krama
+    tokens:
+    - i: 0
+      surface: Panjenengan
+      lang: jv
+      lemma: panjenengan
+      gloss_en: you (honorific)
+      gloss_ar: سيادتك / حضرتك
+      note: Krama inggil 'you' for elders and respected people.
+      confident: true
+    - i: 1
+      surface: sampun
+      lang: jv
+      lemma: sampun
+      gloss_en: already (krama)
+      gloss_ar: خلاص
+      note: null
+      confident: true
+    - i: 2
+      surface: dhahar
+      lang: jv
+      lemma: dhahar
+      gloss_en: eat (honorific)
+      gloss_ar: أكلت
+      note: 'Krama inggil: only for the other person''s eating, never your own.'
+      confident: true
+  criteria:
+  - dhahar is identified as krama inggil and the note says it is never used about yourself
+  avoid:
+  - Saying dhahar is fine for 'I have eaten'
+  tags:
+  - spec-24
+  - speech-level
+  - krama-inggil
+  verified: false
+- id: analyze_text-014
+  lang: jv
+  input:
+    text: Koen wis mangan ta, rek?
+    words: [Koen, wis, mangan, ta, rek]
+  expect:
+    translation_en: You've eaten, right, mate?
+    translation_ar: إنت كلت ولا إيه يا صاحبي؟
+    register: ngoko
+    tokens:
+    - i: 0
+      surface: Koen
+      lang: jv
+      lemma: koen
+      gloss_en: you (Surabaya)
+      gloss_ar: إنت
+      note: Arek (Surabaya/Malang) dialect for kowe; sounds blunt to Central Javanese ears but is friendly.
+      confident: true
+    - i: 1
+      surface: wis
+      lang: jv
+      lemma: wis
+      gloss_en: already
+      gloss_ar: خلاص
+      note: null
+      confident: true
+    - i: 2
+      surface: mangan
+      lang: jv
+      lemma: mangan
+      gloss_en: eat
+      gloss_ar: أكلت
+      note: null
+      confident: true
+    - i: 3
+      surface: ta
+      lang: jv
+      lemma: ta
+      gloss_en: right? (question tag)
+      gloss_ar: ولا إيه؟
+      note: East Javanese particle softening a question.
+      confident: true
+    - i: 4
+      surface: rek
+      lang: jv
+      lemma: arek
+      gloss_en: mate, buddy
+      gloss_ar: يا صاحبي / يا جدع
+      note: rek = arek (kid, guy), the Surabaya way to address friends.
+      confident: true
+  criteria:
+  - koen is identified as the Surabaya / Arek form of kowe
+  - rek is expanded to arek, a friendly address
+  avoid:
+  - Treating koen as a typo
+  tags:
+  - spec-24
+  - dialect
+  - arek
+  - surabaya
+  verified: false
+- id: analyze_text-015
+  lang: id
+  input:
+    text: Which is, gue literally capek banget.
+    words: [Which, is, gue, literally, capek, banget]
+  expect:
+    translation_en: I mean, I'm literally so tired.
+    translation_ar: يعني بجد أنا تعبان أوي.
+    register: mixed
+    tokens:
+    - i: 0
+      surface: Which
+      lang: en
+      lemma: which
+      gloss_en: I mean (filler, with is)
+      gloss_ar: يعني
+      note: '''Which is'' is a Jaksel (South Jakarta) filler: English words mixed into Indonesian.'
+      confident: true
+    - i: 1
+      surface: is
+      lang: en
+      lemma: is
+      gloss_en: I mean (filler, with which)
+      gloss_ar: يعني
+      note: Second half of the filler 'which is'.
+      confident: true
+    - i: 2
+      surface: gue
+      lang: id
+      lemma: gue
+      gloss_en: I
+      gloss_ar: أنا
+      note: Jakarta slang for saya / aku.
+      confident: true
+    - i: 3
+      surface: literally
+      lang: en
+      lemma: literally
+      gloss_en: literally, really
+      gloss_ar: بجد / حرفيًا
+      note: null
+      confident: true
+    - i: 4
+      surface: capek
+      lang: id
+      lemma: capek
+      gloss_en: tired
+      gloss_ar: تعبان
+      note: null
+      confident: true
+    - i: 5
+      surface: banget
+      lang: id
+      lemma: banget
+      gloss_en: very, so
+      gloss_ar: أوي
+      note: null
+      confident: true
+  criteria:
+  - Which and is are tagged en and explained as a filler, not as a relative clause
+  - gue is identified as Jakarta slang for I
+  avoid:
+  - Translating 'Which is' literally as a relative pronoun
+  tags:
+  - spec-24
+  - code-mixing
+  - jakarta-slang
+  - jaksel
+  verified: false
+- id: analyze_text-016
+  lang: id
+  input:
+    text: Kalimat ini punya lima kata.
+    words: [Kalimat, ini, punya, lima, kata]
+  expect:
+    translation_en: This sentence has five words.
+    translation_ar: الجملة دي فيها خمس كلمات.
+    register: neutral
+    tokens:
+    - i: 0
+      surface: Kalimat
+      lang: id
+      lemma: kalimat
+      gloss_en: sentence
+      gloss_ar: جملة
+      note: 'False friend: from Arabic كلمة but means ''sentence'', not ''word''.'
+      confident: true
+    - i: 1
+      surface: ini
+      lang: id
+      lemma: ini
+      gloss_en: this
+      gloss_ar: دي
+      note: null
+      confident: true
+    - i: 2
+      surface: punya
+      lang: id
+      lemma: punya
+      gloss_en: has
+      gloss_ar: فيها / عندها
+      note: null
+      confident: true
+    - i: 3
+      surface: lima
+      lang: id
+      lemma: lima
+      gloss_en: five
+      gloss_ar: خمس
+      note: null
+      confident: true
+    - i: 4
+      surface: kata
+      lang: id
+      lemma: kata
+      gloss_en: word
+      gloss_ar: كلمة
+      note: null
+      confident: true
+  criteria:
+  - kalimat = sentence with a false-friend warning
+  - kata = word
+  avoid:
+  - Glossing kalimat as 'word' (كلمة)
+  tags:
+  - arabic-bridge
+  - false-friend
+  verified: false
+- id: analyze_text-017
+  lang: id
+  input:
+    text: Mungkin dia lupa.
+    words: [Mungkin, dia, lupa]
+  expect:
+    translation_en: Maybe he forgot.
+    translation_ar: يمكن نسي.
+    register: neutral
+    tokens:
+    - i: 0
+      surface: Mungkin
+      lang: id
+      lemma: mungkin
+      gloss_en: maybe
+      gloss_ar: يمكن
+      note: From Arabic ممكن 'possible', but the meaning shifted to 'maybe' (like Egyptian يمكن).
+      confident: true
+    - i: 1
+      surface: dia
+      lang: id
+      lemma: dia
+      gloss_en: he / she
+      gloss_ar: هو / هي
+      note: Indonesian dia has no gender.
+      confident: true
+    - i: 2
+      surface: lupa
+      lang: id
+      lemma: lupa
+      gloss_en: forget
+      gloss_ar: نسي
+      note: null
+      confident: true
+  criteria:
+  - mungkin = maybe, with the shift from ممكن noted
+  - dia is not forced into one gender without saying it could be either
+  avoid:
+  - Translating mungkin as 'it is possible that' only, or as 'can'
+  tags:
+  - arabic-bridge
+  - meaning-shift
+  verified: false
+- id: analyze_text-018
+  lang: id
+  input:
+    text: Selamat pagi, apa kabar?
+    words: [Selamat, pagi, apa, kabar]
+  expect:
+    translation_en: Good morning, how are you?
+    translation_ar: صباح الخير، أخبارك إيه؟
+    register: neutral
+    tokens:
+    - i: 0
+      surface: Selamat
+      lang: id
+      lemma: selamat
+      gloss_en: (greeting word) safe, well
+      gloss_ar: صباح…
+      note: From Arabic سلامة; selamat + time of day = 'good …'.
+      confident: true
+    - i: 1
+      surface: pagi
+      lang: id
+      lemma: pagi
+      gloss_en: morning
+      gloss_ar: الخير / الصبح
+      note: null
+      confident: true
+    - i: 2
+      surface: apa
+      lang: id
+      lemma: apa
+      gloss_en: what
+      gloss_ar: إيه
+      note: null
+      confident: true
+    - i: 3
+      surface: kabar
+      lang: id
+      lemma: kabar
+      gloss_en: news
+      gloss_ar: أخبار
+      note: From Arabic خبر.
+      confident: true
+  criteria:
+  - selamat pagi is translated as one greeting, not 'safe morning'
+  avoid:
+  - '''Safe morning, what news?'''
+  tags:
+  - greeting
+  - arabic-bridge
+  verified: false
+- id: analyze_text-019
+  lang: id
+  input:
+    text: otw bentar lg, macet bgt 😭
+    words: [otw, bentar, lg, macet, bgt]
+  expect:
+    translation_en: On my way, almost there — the traffic is awful 😭
+    translation_ar: في السكة، كمان شوية، الزحمة فظيعة 😭
+    register: chat
+    tokens:
+    - i: 0
+      surface: otw
+      lang: en
+      lemma: on the way
+      gloss_en: on the way
+      gloss_ar: في السكة
+      note: otw = on the way, English abbreviation used in Indonesian chat.
+      confident: true
+    - i: 1
+      surface: bentar
+      lang: id
+      lemma: sebentar
+      gloss_en: a moment
+      gloss_ar: شوية
+      note: null
+      confident: true
+    - i: 2
+      surface: lg
+      lang: id
+      lemma: lagi
+      gloss_en: more
+      gloss_ar: كمان
+      note: bentar lagi = in a moment, soon.
+      confident: true
+    - i: 3
+      surface: macet
+      lang: id
+      lemma: macet
+      gloss_en: jammed (traffic)
+      gloss_ar: زحمة
+      note: null
+      confident: true
+    - i: 4
+      surface: bgt
+      lang: id
+      lemma: banget
+      gloss_en: very
+      gloss_ar: أوي
+      note: null
+      confident: true
+  criteria:
+  - bentar lg is read together as 'soon / in a moment'
+  - The emoji gets no token
+  avoid:
+  - Adding a token for the emoji
+  - '''macet'' as ''broken machine'' in this context'
+  tags:
+  - chat
+  - abbreviation
+  - emoji
+  verified: false
+- id: analyze_text-020
+  lang: id
+  input:
+    text: Gpp kok, santai aja
+    words: [Gpp, kok, santai, aja]
+  expect:
+    translation_en: It's fine, really, just relax.
+    translation_ar: مفيش مشكلة والله، روّق بس.
+    register: chat
+    tokens:
+    - i: 0
+      surface: Gpp
+      lang: id
+      lemma: tidak apa-apa
+      gloss_en: it's okay, no problem
+      gloss_ar: مفيش مشكلة
+      note: gpp = gapapa = tidak apa-apa.
+      confident: true
+    - i: 1
+      surface: kok
+      lang: id
+      lemma: kok
+      gloss_en: (reassuring particle) really
+      gloss_ar: والله / يعني
+      note: kok here reassures; in questions it means 'how come'.
+      confident: true
+    - i: 2
+      surface: santai
+      lang: id
+      lemma: santai
+      gloss_en: relax, take it easy
+      gloss_ar: روّق
+      note: null
+      confident: true
+    - i: 3
+      surface: aja
+      lang: id
+      lemma: saja
+      gloss_en: just
+      gloss_ar: بس
+      note: aja = saja.
+      confident: true
+  criteria:
+  - gpp is expanded to (tidak) apa-apa
+  - kok is explained as a reassuring particle here
+  tags:
+  - chat
+  - abbreviation
+  - particles
+  verified: false
+- id: analyze_text-021
+  lang: id
+  input:
+    text: Udh makan blm?
+    words: [Udh, makan, blm]
+  expect:
+    translation_en: Have you eaten yet?
+    translation_ar: أكلت ولا لسه؟
+    register: chat
+    tokens:
+    - i: 0
+      surface: Udh
+      lang: id
+      lemma: sudah
+      gloss_en: already
+      gloss_ar: خلاص
+      note: udh = udah = sudah.
+      confident: true
+    - i: 1
+      surface: makan
+      lang: id
+      lemma: makan
+      gloss_en: eat
+      gloss_ar: أكلت
+      note: null
+      confident: true
+    - i: 2
+      surface: blm
+      lang: id
+      lemma: belum
+      gloss_en: not yet
+      gloss_ar: ولا لسه
+      note: blm = belum; sudah … belum? = … yet?
+      confident: true
+  criteria:
+  - udh → sudah, blm → belum
+  - translation is a caring 'have you eaten yet?'
+  tags:
+  - chat
+  - abbreviation
+  verified: false
+- id: analyze_text-022
+  lang: id
+  input:
+    text: wkwkwk sumpah lucu banget
+    words: [wkwkwk, sumpah, lucu, banget]
+  expect:
+    translation_en: LOL, I swear that's so funny.
+    translation_ar: هههههه والله تحفة أوي.
+    register: chat
+    tokens:
+    - i: 0
+      surface: wkwkwk
+      lang: id
+      lemma: wkwk
+      gloss_en: LOL (typed laughter)
+      gloss_ar: ههههه
+      note: Indonesian chat laughter, like Arabic ههههه.
+      confident: true
+    - i: 1
+      surface: sumpah
+      lang: id
+      lemma: sumpah
+      gloss_en: I swear, seriously
+      gloss_ar: والله
+      note: null
+      confident: true
+    - i: 2
+      surface: lucu
+      lang: id
+      lemma: lucu
+      gloss_en: 'funny (also: cute)'
+      gloss_ar: تحفة / بيضحك
+      note: null
+      confident: true
+    - i: 3
+      surface: banget
+      lang: id
+      lemma: banget
+      gloss_en: very
+      gloss_ar: أوي
+      note: null
+      confident: true
+  criteria:
+  - wkwkwk is recognized as laughter, not a misspelled word
+  avoid:
+  - Marking wkwkwk as unknown or not confident
+  tags:
+  - chat
+  - slang
+  verified: false
+- id: analyze_text-023
+  lang: id
+  input:
+    text: Gue mager parah, besok aja ya
+    words: [Gue, mager, parah, besok, aja, ya]
+  expect:
+    translation_en: I'm seriously too lazy to move — let's just do it tomorrow, okay?
+    translation_ar: أنا مكسل أتحرك خالص، خليها بكرة بقى، ماشي؟
+    register: slang
+    tokens:
+    - i: 0
+      surface: Gue
+      lang: id
+      lemma: gue
+      gloss_en: I
+      gloss_ar: أنا
+      note: Jakarta slang.
+      confident: true
+    - i: 1
+      surface: mager
+      lang: id
+      lemma: malas gerak
+      gloss_en: too lazy to move
+      gloss_ar: مكسل أتحرك
+      note: mager = males gerak (malas gerak).
+      confident: true
+    - i: 2
+      surface: parah
+      lang: id
+      lemma: parah
+      gloss_en: seriously, badly
+      gloss_ar: خالص
+      note: parah = severe; in slang an intensifier.
+      confident: true
+    - i: 3
+      surface: besok
+      lang: id
+      lemma: besok
+      gloss_en: tomorrow
+      gloss_ar: بكرة
+      note: null
+      confident: true
+    - i: 4
+      surface: aja
+      lang: id
+      lemma: saja
+      gloss_en: just
+      gloss_ar: بقى / بس
+      note: null
+      confident: true
+    - i: 5
+      surface: ya
+      lang: id
+      lemma: ya
+      gloss_en: okay?
+      gloss_ar: ماشي؟
+      note: null
+      confident: true
+  criteria:
+  - mager is expanded to malas/males gerak
+  tags:
+  - chat
+  - jakarta-slang
+  - acronym
+  verified: false
+- id: analyze_text-024
+  lang: id
+  input:
+    text: Meeting-nya di-reschedule jadi jam 3 sore
+    words: [Meeting-nya, di-reschedule, jadi, jam, '3', sore]
+  expect:
+    translation_en: The meeting got rescheduled to 3 p.m.
+    translation_ar: الاجتماع معاده اتغيّر وبقى الساعة 3 العصر.
+    register: mixed
+    tokens:
+    - i: 0
+      surface: Meeting-nya
+      lang: en
+      lemma: meeting
+      gloss_en: the meeting
+      gloss_ar: الاجتماع
+      note: English noun + Indonesian -nya ('the').
+      confident: true
+    - i: 1
+      surface: di-reschedule
+      lang: en
+      lemma: reschedule
+      gloss_en: was rescheduled
+      gloss_ar: اتأجل / معاده اتغير
+      note: Indonesian passive di- on an English verb.
+      confident: true
+    - i: 2
+      surface: jadi
+      lang: id
+      lemma: jadi
+      gloss_en: to (become)
+      gloss_ar: وبقى
+      note: null
+      confident: true
+    - i: 3
+      surface: jam
+      lang: id
+      lemma: jam
+      gloss_en: o'clock
+      gloss_ar: الساعة
+      note: null
+      confident: true
+    - i: 4
+      surface: '3'
+      lang: other
+      lemma: '3'
+      gloss_en: three
+      gloss_ar: '3'
+      note: null
+      confident: true
+    - i: 5
+      surface: sore
+      lang: id
+      lemma: sore
+      gloss_en: afternoon (about 3–6 p.m.)
+      gloss_ar: العصر
+      note: null
+      confident: true
+  criteria:
+  - Meeting-nya and di-reschedule are each one token, with the Indonesian affix explained
+  - jam 3 sore = 3 p.m.
+  tags:
+  - code-mixing
+  - office
+  - affix-on-english
+  - time
+  verified: false
+- id: analyze_text-025
+  lang: jv
+  input:
+    text: Aku isih neng dalan, mengko tak kabari ya
+    words: [Aku, isih, neng, dalan, mengko, tak, kabari, ya]
+  expect:
+    translation_en: I'm still on the road, I'll let you know later, okay?
+    translation_ar: أنا لسه في السكة، هبقى أقولك بعدين، ماشي؟
+    register: ngoko
+    tokens:
+    - i: 0
+      surface: Aku
+      lang: jv
+      lemma: aku
+      gloss_en: I
+      gloss_ar: أنا
+      note: null
+      confident: true
+    - i: 1
+      surface: isih
+      lang: jv
+      lemma: isih
+      gloss_en: still
+      gloss_ar: لسه
+      note: null
+      confident: true
+    - i: 2
+      surface: neng
+      lang: jv
+      lemma: neng
+      gloss_en: at, in
+      gloss_ar: في
+      note: = Indonesian di.
+      confident: true
+    - i: 3
+      surface: dalan
+      lang: jv
+      lemma: dalan
+      gloss_en: road
+      gloss_ar: السكة / الطريق
+      note: null
+      confident: true
+    - i: 4
+      surface: mengko
+      lang: jv
+      lemma: mengko
+      gloss_en: later
+      gloss_ar: بعدين
+      note: null
+      confident: true
+    - i: 5
+      surface: tak
+      lang: jv
+      lemma: tak
+      gloss_en: I'll
+      gloss_ar: هـ (أنا)
+      note: tak- + verb = I'll do it.
+      confident: true
+    - i: 6
+      surface: kabari
+      lang: jv
+      lemma: kabari
+      gloss_en: let (you) know
+      gloss_ar: أقولك
+      note: 'kabar + -i: inform someone.'
+      confident: true
+    - i: 7
+      surface: ya
+      lang: jv
+      lemma: ya
+      gloss_en: okay?
+      gloss_ar: ماشي؟
+      note: null
+      confident: true
+  criteria:
+  - neng = at/in and mengko = later are glossed correctly
+  - tak kabari = I'll let you know
+  avoid:
+  - Labels a Javanese word as Indonesian (or invents an Indonesian meaning) when the Javanese reading
+    is the one that fits
+  tags:
+  - chat
+  - javanese
+  - proclitic
+  verified: false
+- id: analyze_text-026
+  lang: jv
+  input:
+    text: Wis tak transfer, dicek sik yo
+    words: [Wis, tak, transfer, dicek, sik, yo]
+  expect:
+    translation_en: I've sent the transfer — check it first, okay?
+    translation_ar: حوّلتلك خلاص، شيّك الأول، ماشي؟
+    register: mixed
+    tokens:
+    - i: 0
+      surface: Wis
+      lang: jv
+      lemma: wis
+      gloss_en: already
+      gloss_ar: خلاص
+      note: null
+      confident: true
+    - i: 1
+      surface: tak
+      lang: jv
+      lemma: tak
+      gloss_en: I (did it)
+      gloss_ar: أنا
+      note: 'tak + verb: I (have) done it.'
+      confident: true
+    - i: 2
+      surface: transfer
+      lang: id
+      lemma: transfer
+      gloss_en: transfer (money)
+      gloss_ar: حوّلت
+      note: null
+      confident: true
+    - i: 3
+      surface: dicek
+      lang: jv
+      lemma: cek
+      gloss_en: check it
+      gloss_ar: شيّك
+      note: 'di- + cek: a passive form used as a soft request (''have it checked'').'
+      confident: true
+    - i: 4
+      surface: sik
+      lang: jv
+      lemma: sik
+      gloss_en: first
+      gloss_ar: الأول
+      note: sik = dhisik (first).
+      confident: true
+    - i: 5
+      surface: yo
+      lang: jv
+      lemma: yo
+      gloss_en: okay?
+      gloss_ar: ماشي؟
+      note: null
+      confident: true
+  criteria:
+  - dicek is explained as a polite request to check, not a past event
+  tags:
+  - chat
+  - javanese
+  - code-mixing
+  - money
+  verified: false
+- id: analyze_text-027
+  lang: jv
+  input:
+    text: Ojo lali mangan yo, Le
+    words: [Ojo, lali, mangan, yo, Le]
+  expect:
+    translation_en: Don't forget to eat, son.
+    translation_ar: متنساش تاكل يا ابني.
+    register: ngoko
+    tokens:
+    - i: 0
+      surface: Ojo
+      lang: jv
+      lemma: aja
+      gloss_en: don't
+      gloss_ar: متـ…ش
+      note: ojo is the spoken spelling of aja (don't) — not Indonesian aja = just.
+      confident: true
+    - i: 1
+      surface: lali
+      lang: jv
+      lemma: lali
+      gloss_en: forget
+      gloss_ar: تنسى
+      note: null
+      confident: true
+    - i: 2
+      surface: mangan
+      lang: jv
+      lemma: mangan
+      gloss_en: eat
+      gloss_ar: تاكل
+      note: null
+      confident: true
+    - i: 3
+      surface: yo
+      lang: jv
+      lemma: yo
+      gloss_en: okay?
+      gloss_ar: ماشي
+      note: null
+      confident: true
+    - i: 4
+      surface: Le
+      lang: jv
+      lemma: thole
+      gloss_en: son, boy
+      gloss_ar: يا ابني
+      note: Le = thole, an affectionate way parents call a boy.
+      confident: true
+  criteria:
+  - ojo = don't (aja), with a warning not to confuse it with Indonesian aja = just
+  - Le is expanded to thole (son/boy)
+  avoid:
+  - Reading ojo/aja as Indonesian 'just'
+  tags:
+  - chat
+  - javanese
+  - family
+  - false-friend-id-jv
+  verified: false
+- id: analyze_text-028
+  lang: id
+  input:
+    text: Harga beras naik menjelang Lebaran.
+    words: [Harga, beras, naik, menjelang, Lebaran]
+  expect:
+    translation_en: Rice prices are rising ahead of Eid.
+    translation_ar: سعر الرز بيغلى قبل العيد.
+    register: neutral
+    tokens:
+    - i: 0
+      surface: Harga
+      lang: id
+      lemma: harga
+      gloss_en: price
+      gloss_ar: سعر
+      note: null
+      confident: true
+    - i: 1
+      surface: beras
+      lang: id
+      lemma: beras
+      gloss_en: rice (uncooked)
+      gloss_ar: رز (ني)
+      note: beras = raw rice; cooked rice is nasi.
+      confident: true
+    - i: 2
+      surface: naik
+      lang: id
+      lemma: naik
+      gloss_en: go up
+      gloss_ar: بيغلى / بيزيد
+      note: null
+      confident: true
+    - i: 3
+      surface: menjelang
+      lang: id
+      lemma: jelang
+      gloss_en: ahead of, approaching
+      gloss_ar: قبل / مع قرب
+      note: meN- + jelang.
+      confident: true
+    - i: 4
+      surface: Lebaran
+      lang: id
+      lemma: Lebaran
+      gloss_en: Eid al-Fitr
+      gloss_ar: عيد الفطر
+      note: null
+      confident: true
+  criteria:
+  - Lebaran = Eid al-Fitr
+  tags:
+  - news
+  - culture
+  verified: false
+- id: analyze_text-029
+  lang: id
+  input:
+    text: Pemerintah akan menaikkan harga BBM bulan depan.
+    words: [Pemerintah, akan, menaikkan, harga, BBM, bulan, depan]
+  expect:
+    translation_en: The government will raise fuel prices next month.
+    translation_ar: الحكومة هترفع سعر البنزين الشهر الجاي.
+    register: formal
+    tokens:
+    - i: 0
+      surface: Pemerintah
+      lang: id
+      lemma: pemerintah
+      gloss_en: government
+      gloss_ar: الحكومة
+      note: peN- + perintah (order).
+      confident: true
+    - i: 1
+      surface: akan
+      lang: id
+      lemma: akan
+      gloss_en: will
+      gloss_ar: هـ
+      note: null
+      confident: true
+    - i: 2
+      surface: menaikkan
+      lang: id
+      lemma: naik
+      gloss_en: raise
+      gloss_ar: ترفع
+      note: 'meN- + naik + -kan: make something go up.'
+      confident: true
+    - i: 3
+      surface: harga
+      lang: id
+      lemma: harga
+      gloss_en: price
+      gloss_ar: سعر
+      note: null
+      confident: true
+    - i: 4
+      surface: BBM
+      lang: id
+      lemma: BBM
+      gloss_en: fuel
+      gloss_ar: البنزين / الوقود
+      note: BBM = bahan bakar minyak (fuel oil).
+      confident: true
+    - i: 5
+      surface: bulan
+      lang: id
+      lemma: bulan
+      gloss_en: month
+      gloss_ar: الشهر
+      note: null
+      confident: true
+    - i: 6
+      surface: depan
+      lang: id
+      lemma: depan
+      gloss_en: next (front)
+      gloss_ar: الجاي
+      note: null
+      confident: true
+  criteria:
+  - BBM is expanded to bahan bakar minyak
+  - menaikkan (raise) is distinguished from naik (go up)
+  tags:
+  - news
+  - formal
+  - acronym
+  - -kan
+  verified: false
+- id: analyze_text-030
+  lang: id
+  input:
+    text: Cabai rawit Rp80.000 per kilo, mahal banget!
+    words: [Cabai, rawit, Rp80.000, per, kilo, mahal, banget]
+  expect:
+    translation_en: Bird's-eye chillies are Rp80,000 a kilo — so expensive!
+    translation_ar: الشطة الصغيرة بـ80 ألف روبية الكيلو، غالية أوي!
+    register: chat
+    tokens:
+    - i: 0
+      surface: Cabai
+      lang: id
+      lemma: cabai
+      gloss_en: chilli
+      gloss_ar: شطة / فلفل حامي
+      note: null
+      confident: true
+    - i: 1
+      surface: rawit
+      lang: id
+      lemma: rawit
+      gloss_en: bird's-eye (small, very hot)
+      gloss_ar: صغيرة وحامية
+      note: null
+      confident: true
+    - i: 2
+      surface: Rp80.000
+      lang: other
+      lemma: Rp80.000
+      gloss_en: 80,000 rupiah
+      gloss_ar: 80 ألف روبية
+      note: 'Indonesian uses dots for thousands: delapan puluh ribu rupiah.'
+      confident: true
+    - i: 3
+      surface: per
+      lang: id
+      lemma: per
+      gloss_en: per
+      gloss_ar: الـ (لكل)
+      note: null
+      confident: true
+    - i: 4
+      surface: kilo
+      lang: id
+      lemma: kilo
+      gloss_en: kilo
+      gloss_ar: كيلو
+      note: null
+      confident: true
+    - i: 5
+      surface: mahal
+      lang: id
+      lemma: mahal
+      gloss_en: expensive
+      gloss_ar: غالي
+      note: null
+      confident: true
+    - i: 6
+      surface: banget
+      lang: id
+      lemma: banget
+      gloss_en: very
+      gloss_ar: أوي
+      note: null
+      confident: true
+  criteria:
+  - Rp80.000 is one token read as eighty thousand rupiah (not 80.0)
+  avoid:
+  - Reading the dot as a decimal point
+  tags:
+  - market
+  - price
+  - numbers
+  verified: false
+- id: analyze_text-031
+  lang: jv
+  input:
+    text: Pira regane, Bu? Larang men.
+    words: [Pira, regane, Bu, Larang, men]
+  expect:
+    translation_en: How much is it, ma'am? That's so expensive.
+    translation_ar: بكام يا حاجة؟ غالي أوي كده.
+    register: ngoko
+    tokens:
+    - i: 0
+      surface: Pira
+      lang: jv
+      lemma: pira
+      gloss_en: how much
+      gloss_ar: بكام
+      note: null
+      confident: true
+    - i: 1
+      surface: regane
+      lang: jv
+      lemma: rega
+      gloss_en: its price
+      gloss_ar: سعره
+      note: rega + -ne (= Indonesian harganya).
+      confident: true
+    - i: 2
+      surface: Bu
+      lang: jv
+      lemma: Bu
+      gloss_en: ma'am
+      gloss_ar: يا حاجة / يا مدام
+      note: 'Shared with Indonesian: Ibu.'
+      confident: true
+    - i: 3
+      surface: Larang
+      lang: jv
+      lemma: larang
+      gloss_en: expensive
+      gloss_ar: غالي
+      note: Javanese larang = expensive; Indonesian larang = forbid.
+      confident: true
+    - i: 4
+      surface: men
+      lang: jv
+      lemma: men
+      gloss_en: so (exclamation)
+      gloss_ar: أوي كده
+      note: Exclamatory intensifier after an adjective (apik men = so nice).
+      confident: true
+  criteria:
+  - larang is glossed 'expensive' (Javanese), not 'forbidden' (Indonesian)
+  - regane = rega + -ne
+  avoid:
+  - Glossing larang as 'forbid'
+  tags:
+  - market
+  - javanese
+  - false-friend-id-jv
+  verified: false
+- id: analyze_text-032
+  lang: jv
+  input:
+    text: Nyuwun pangapunten, menika regine pinten?
+    words: [Nyuwun, pangapunten, menika, regine, pinten]
+  expect:
+    translation_en: Excuse me, how much is this?
+    translation_ar: لا مؤاخذة، ده بكام لو سمحت؟
+    register: krama
+    tokens:
+    - i: 0
+      surface: Nyuwun
+      lang: jv
+      lemma: nyuwun
+      gloss_en: ask for (humble)
+      gloss_ar: أطلب
+      note: nyuwun pangapunten = I beg your pardon.
+      confident: true
+    - i: 1
+      surface: pangapunten
+      lang: jv
+      lemma: pangapunten
+      gloss_en: forgiveness, pardon
+      gloss_ar: السماح
+      note: null
+      confident: true
+    - i: 2
+      surface: menika
+      lang: jv
+      lemma: menika
+      gloss_en: this (krama)
+      gloss_ar: ده
+      note: Krama of iki.
+      confident: true
+    - i: 3
+      surface: regine
+      lang: jv
+      lemma: regi
+      gloss_en: its price (krama)
+      gloss_ar: سعره
+      note: regi + -ne; krama of rega.
+      confident: true
+    - i: 4
+      surface: pinten
+      lang: jv
+      lemma: pinten
+      gloss_en: how much (krama)
+      gloss_ar: بكام
+      note: Krama of pira.
+      confident: true
+  criteria:
+  - Register is krama and the krama words are mapped to ngoko (iki, regane, pira)
+  tags:
+  - market
+  - javanese
+  - krama
+  verified: false
+- id: analyze_text-033
+  lang: id
+  input:
+    text: Jual motor Beat 2019, pajak hidup, surat lengkap, nego tipis
+    words: [Jual, motor, Beat, '2019', pajak, hidup, surat, lengkap, nego, tipis]
+  expect:
+    translation_en: Selling a 2019 Honda BeAT motorbike — tax paid up, papers complete, price slightly
+      negotiable.
+    translation_ar: موتوسيكل بيت موديل 2019 للبيع، الضريبة مدفوعة، الورق كامل، والفصال بسيط.
+    register: chat
+    tokens:
+    - i: 0
+      surface: Jual
+      lang: id
+      lemma: jual
+      gloss_en: for sale (selling)
+      gloss_ar: للبيع
+      note: null
+      confident: true
+    - i: 1
+      surface: motor
+      lang: id
+      lemma: motor
+      gloss_en: motorbike
+      gloss_ar: موتوسيكل
+      note: In Indonesia motor = motorbike, not engine.
+      confident: true
+    - i: 2
+      surface: Beat
+      lang: other
+      lemma: Beat
+      gloss_en: BeAT (Honda scooter model)
+      gloss_ar: بيت (موديل هوندا)
+      note: null
+      confident: true
+    - i: 3
+      surface: '2019'
+      lang: other
+      lemma: '2019'
+      gloss_en: 2019 (model year)
+      gloss_ar: '2019'
+      note: null
+      confident: true
+    - i: 4
+      surface: pajak
+      lang: id
+      lemma: pajak
+      gloss_en: tax (vehicle tax)
+      gloss_ar: الضريبة
+      note: null
+      confident: true
+    - i: 5
+      surface: hidup
+      lang: id
+      lemma: hidup
+      gloss_en: alive → paid up, valid
+      gloss_ar: سارية / مدفوعة
+      note: pajak hidup = the yearly vehicle tax is paid.
+      confident: true
+    - i: 6
+      surface: surat
+      lang: id
+      lemma: surat
+      gloss_en: papers, documents
+      gloss_ar: الورق
+      note: null
+      confident: true
+    - i: 7
+      surface: lengkap
+      lang: id
+      lemma: lengkap
+      gloss_en: complete
+      gloss_ar: كامل
+      note: null
+      confident: true
+    - i: 8
+      surface: nego
+      lang: id
+      lemma: negosiasi
+      gloss_en: negotiable
+      gloss_ar: فصال
+      note: nego = negosiasi.
+      confident: true
+    - i: 9
+      surface: tipis
+      lang: id
+      lemma: tipis
+      gloss_en: thin → slightly
+      gloss_ar: بسيط
+      note: nego tipis = only a little room to bargain.
+      confident: true
+  criteria:
+  - pajak hidup and nego tipis are explained idiomatically
+  avoid:
+  - '''alive tax'', ''thin negotiation'' without explanation'
+  tags:
+  - listing
+  - idiom
+  verified: false
+- id: analyze_text-034
+  lang: id
+  input:
+    text: rice cooker bekas pakai 3 bln, harga 150rb aja, cod jaksel
+    words: [rice, cooker, bekas, pakai, '3', bln, harga, 150rb, aja, cod, jaksel]
+  expect:
+    translation_en: Rice cooker, used for 3 months, only Rp150k, cash on delivery in South Jakarta.
+    translation_ar: حلّة رز كهربا مستعملة 3 شهور، بـ150 ألف بس، والدفع عند الاستلام في جنوب جاكرتا.
+    register: chat
+    tokens:
+    - i: 0
+      surface: rice
+      lang: en
+      lemma: rice
+      gloss_en: rice (in rice cooker)
+      gloss_ar: حلّة رز
+      note: English loan 'rice cooker', written as two words.
+      confident: true
+    - i: 1
+      surface: cooker
+      lang: en
+      lemma: cooker
+      gloss_en: cooker (in rice cooker)
+      gloss_ar: كهربا
+      note: Second half of 'rice cooker'.
+      confident: true
+    - i: 2
+      surface: bekas
+      lang: id
+      lemma: bekas
+      gloss_en: used, second-hand
+      gloss_ar: مستعمل
+      note: null
+      confident: true
+    - i: 3
+      surface: pakai
+      lang: id
+      lemma: pakai
+      gloss_en: use
+      gloss_ar: استعمال
+      note: null
+      confident: true
+    - i: 4
+      surface: '3'
+      lang: other
+      lemma: '3'
+      gloss_en: three
+      gloss_ar: '3'
+      note: null
+      confident: true
+    - i: 5
+      surface: bln
+      lang: id
+      lemma: bulan
+      gloss_en: months
+      gloss_ar: شهور
+      note: bln = bulan.
+      confident: true
+    - i: 6
+      surface: harga
+      lang: id
+      lemma: harga
+      gloss_en: price
+      gloss_ar: السعر
+      note: null
+      confident: true
+    - i: 7
+      surface: 150rb
+      lang: id
+      lemma: 150 ribu
+      gloss_en: 150 thousand (rupiah)
+      gloss_ar: 150 ألف
+      note: rb = ribu (thousand).
+      confident: true
+    - i: 8
+      surface: aja
+      lang: id
+      lemma: saja
+      gloss_en: only
+      gloss_ar: بس
+      note: null
+      confident: true
+    - i: 9
+      surface: cod
+      lang: en
+      lemma: COD
+      gloss_en: cash on delivery
+      gloss_ar: الدفع عند الاستلام
+      note: null
+      confident: true
+    - i: 10
+      surface: jaksel
+      lang: id
+      lemma: Jakarta Selatan
+      gloss_en: South Jakarta
+      gloss_ar: جنوب جاكرتا
+      note: jaksel = Jakarta Selatan.
+      confident: true
+  criteria:
+  - 150rb = 150,000 rupiah
+  - jaksel = Jakarta Selatan
+  - cod = cash on delivery
+  tags:
+  - listing
+  - abbreviation
+  - price
+  verified: false
+- id: analyze_text-035
+  lang: id
+  input:
+    text: Healing dulu ke Bromo, capek kerja terus 🏔️
+    words: [Healing, dulu, ke, Bromo, capek, kerja, terus]
+  expect:
+    translation_en: Off to Bromo for some "healing" — tired of working nonstop 🏔️
+    translation_ar: رايح برومو أفصل شوية، تعبت من الشغل على طول 🏔️
+    register: mixed
+    tokens:
+    - i: 0
+      surface: Healing
+      lang: en
+      lemma: healing
+      gloss_en: a getaway (to recharge)
+      gloss_ar: فسحة أفصل فيها
+      note: 'Indonesian slang use of English ''healing'': a trip or break for your mental health.'
+      confident: true
+    - i: 1
+      surface: dulu
+      lang: id
+      lemma: dulu
+      gloss_en: first, for now
+      gloss_ar: الأول / شوية
+      note: null
+      confident: true
+    - i: 2
+      surface: ke
+      lang: id
+      lemma: ke
+      gloss_en: to
+      gloss_ar: لـ
+      note: null
+      confident: true
+    - i: 3
+      surface: Bromo
+      lang: other
+      lemma: Bromo
+      gloss_en: Mount Bromo (volcano in East Java)
+      gloss_ar: جبل برومو
+      note: null
+      confident: true
+    - i: 4
+      surface: capek
+      lang: id
+      lemma: capek
+      gloss_en: tired
+      gloss_ar: تعبان
+      note: null
+      confident: true
+    - i: 5
+      surface: kerja
+      lang: id
+      lemma: kerja
+      gloss_en: work
+      gloss_ar: الشغل
+      note: null
+      confident: true
+    - i: 6
+      surface: terus
+      lang: id
+      lemma: terus
+      gloss_en: continuously
+      gloss_ar: على طول
+      note: null
+      confident: true
+  criteria:
+  - healing is explained in its Indonesian slang sense (a getaway), not medical healing
+  tags:
+  - caption
+  - code-mixing
+  - emoji
+  - proper-noun
+  verified: false
+- id: analyze_text-036
+  lang: id
+  input:
+    text: Alhamdulillah, wisuda juga akhirnya!
+    words: [Alhamdulillah, wisuda, juga, akhirnya]
+  expect:
+    translation_en: Alhamdulillah, I finally graduated!
+    translation_ar: الحمد لله، اتخرجت أخيرًا!
+    register: neutral
+    tokens:
+    - i: 0
+      surface: Alhamdulillah
+      lang: id
+      lemma: alhamdulillah
+      gloss_en: praise be to God
+      gloss_ar: الحمد لله
+      note: From Arabic الحمد لله.
+      confident: true
+    - i: 1
+      surface: wisuda
+      lang: id
+      lemma: wisuda
+      gloss_en: graduation (ceremony)
+      gloss_ar: حفلة التخرج / اتخرجت
+      note: null
+      confident: true
+    - i: 2
+      surface: juga
+      lang: id
+      lemma: juga
+      gloss_en: at last (emphasis)
+      gloss_ar: أخيرًا (تأكيد)
+      note: Here juga is emphatic ('after all'), not 'also'.
+      confident: true
+    - i: 3
+      surface: akhirnya
+      lang: id
+      lemma: akhir
+      gloss_en: finally
+      gloss_ar: أخيرًا
+      note: akhir + -nya; akhir from Arabic آخر.
+      confident: true
+  criteria:
+  - juga is not translated as 'also' here
+  - akhirnya is linked to Arabic آخر
+  avoid:
+  - '''Graduation also finally'''
+  tags:
+  - caption
+  - arabic-bridge
+  - religious
+  verified: false
+- id: analyze_text-037
+  lang: id
+  input:
+    text: sya mau pesen nasi gorng 2
+    words: [sya, mau, pesen, nasi, gorng, '2']
+  expect:
+    translation_en: I'd like to order two fried rice.
+    translation_ar: عايز أطلب 2 رز مقلي.
+    register: chat
+    tokens:
+    - i: 0
+      surface: sya
+      lang: id
+      lemma: saya
+      gloss_en: I
+      gloss_ar: أنا
+      note: Typo or chat spelling for saya.
+      confident: true
+    - i: 1
+      surface: mau
+      lang: id
+      lemma: mau
+      gloss_en: want
+      gloss_ar: عايز
+      note: null
+      confident: true
+    - i: 2
+      surface: pesen
+      lang: id
+      lemma: pesan
+      gloss_en: order
+      gloss_ar: أطلب
+      note: pesen = spoken form of pesan.
+      confident: true
+    - i: 3
+      surface: nasi
+      lang: id
+      lemma: nasi
+      gloss_en: cooked rice
+      gloss_ar: رز
+      note: null
+      confident: true
+    - i: 4
+      surface: gorng
+      lang: id
+      lemma: goreng
+      gloss_en: fried
+      gloss_ar: مقلي
+      note: Typo for goreng.
+      confident: true
+    - i: 5
+      surface: '2'
+      lang: other
+      lemma: '2'
+      gloss_en: two (portions)
+      gloss_ar: '2'
+      note: null
+      confident: true
+  criteria:
+  - Typos sya and gorng are resolved to saya and goreng with a note
+  - nasi goreng = fried rice
+  avoid:
+  - Marking gorng as an unknown word with no guess
+  tags:
+  - typo
+  - food
+  - numbers
+  verified: false
+- id: analyze_text-038
+  lang: id
+  input:
+    text: Bisa ular itu berbahaya.
+    words: [Bisa, ular, itu, berbahaya]
+  expect:
+    translation_en: That snake's venom is dangerous.
+    translation_ar: سمّ التعبان ده خطير.
+    register: neutral
+    tokens:
+    - i: 0
+      surface: Bisa
+      lang: id
+      lemma: bisa
+      gloss_en: venom
+      gloss_ar: سمّ
+      note: Here bisa is the noun 'venom', not the modal 'can'.
+      confident: true
+    - i: 1
+      surface: ular
+      lang: id
+      lemma: ular
+      gloss_en: snake
+      gloss_ar: تعبان
+      note: null
+      confident: true
+    - i: 2
+      surface: itu
+      lang: id
+      lemma: itu
+      gloss_en: that
+      gloss_ar: ده
+      note: null
+      confident: true
+    - i: 3
+      surface: berbahaya
+      lang: id
+      lemma: bahaya
+      gloss_en: dangerous
+      gloss_ar: خطير
+      note: ber- + bahaya (danger).
+      confident: true
+  criteria:
+  - bisa = venom (noun) in this sentence
+  avoid:
+  - '''That snake can be dangerous'''
+  tags:
+  - ambiguous
+  - adversarial
+  - homonym
+  verified: false
+- id: analyze_text-039
+  lang: id
+  input:
+    text: Pak Budi buka warung di Madiun sejak 2010.
+    words: [Pak, Budi, buka, warung, di, Madiun, sejak, '2010']
+  expect:
+    translation_en: Pak Budi has run a warung in Madiun since 2010.
+    translation_ar: عم بودي فاتح وارونج في ماديون من 2010.
+    register: neutral
+    tokens:
+    - i: 0
+      surface: Pak
+      lang: id
+      lemma: bapak
+      gloss_en: Mr (respectful title)
+      gloss_ar: عم / أستاذ
+      note: Pak = Bapak.
+      confident: true
+    - i: 1
+      surface: Budi
+      lang: other
+      lemma: Budi
+      gloss_en: Budi (a name)
+      gloss_ar: بودي (اسم)
+      note: null
+      confident: true
+    - i: 2
+      surface: buka
+      lang: id
+      lemma: buka
+      gloss_en: open, run (a shop)
+      gloss_ar: فاتح
+      note: null
+      confident: true
+    - i: 3
+      surface: warung
+      lang: id
+      lemma: warung
+      gloss_en: small family shop or eatery
+      gloss_ar: محل صغير / مطعم شعبي
+      note: null
+      confident: true
+    - i: 4
+      surface: di
+      lang: id
+      lemma: di
+      gloss_en: in
+      gloss_ar: في
+      note: null
+      confident: true
+    - i: 5
+      surface: Madiun
+      lang: other
+      lemma: Madiun
+      gloss_en: Madiun (a city in East Java)
+      gloss_ar: ماديون (مدينة في جاوة الشرقية)
+      note: null
+      confident: true
+    - i: 6
+      surface: sejak
+      lang: id
+      lemma: sejak
+      gloss_en: since
+      gloss_ar: من
+      note: null
+      confident: true
+    - i: 7
+      surface: '2010'
+      lang: other
+      lemma: '2010'
+      gloss_en: '2010'
+      gloss_ar: '2010'
+      note: null
+      confident: true
+  criteria:
+  - Budi and Madiun are treated as proper nouns
+  - warung is explained, not just transliterated
+  tags:
+  - proper-noun
+  - culture
+  - sinetron
+  verified: false
+- id: analyze_text-040
+  lang: jv
+  input:
+    text: Matur nuwun sanget, Bu
+    words: [Matur, nuwun, sanget, Bu]
+  expect:
+    translation_en: Thank you very much, ma'am.
+    translation_ar: متشكر جدًا يا حاجة.
+    register: krama
+    tokens:
+    - i: 0
+      surface: Matur
+      lang: jv
+      lemma: matur
+      gloss_en: say (humble, krama andhap)
+      gloss_ar: أقول
+      note: null
+      confident: true
+    - i: 1
+      surface: nuwun
+      lang: jv
+      lemma: nuwun
+      gloss_en: ask, beg
+      gloss_ar: أطلب
+      note: matur nuwun = thank you.
+      confident: true
+    - i: 2
+      surface: sanget
+      lang: jv
+      lemma: sanget
+      gloss_en: very (krama)
+      gloss_ar: جدًا
+      note: Krama of banget.
+      confident: true
+    - i: 3
+      surface: Bu
+      lang: jv
+      lemma: Bu
+      gloss_en: ma'am
+      gloss_ar: يا حاجة
+      note: null
+      confident: true
+  criteria:
+  - 'matur nuwun is translated as one phrase: thank you'
+  tags:
+  - javanese
+  - krama
+  - politeness
+  verified: false

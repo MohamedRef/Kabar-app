@@ -84,10 +84,11 @@ Details in `docs/CONTENT.md`. On the Mac:
 ```bash
 just content-fetch           # frequency sources (~60 MB) into data/raw/
 just content-freq            # rebuilds content/freq/id.tsv (should produce no diff)
+just content-fetch nusa      # Javanese corpora from GitHub (~5 MB)
 just content-fetch kaikki    # Wiktionary extracts from kaikki.org (~100 MB)
 just content-kaikki          # import + Arabic Bridge cross-check report
 just content-fetch jvwiki    # Javanese Wikipedia dump (~70 MB)
-just content-freq-jv         # content/freq/jv.tsv
+just content-freq-jv         # content/freq/jv.tsv (NusaWrites + NusaX + jvwiki)
 just content-check           # validate everything
 just content-review 1        # review sheet for gloss batch 1 → build/review/
 ```

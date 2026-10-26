@@ -11,6 +11,10 @@ impl Root {
         Self(root.unwrap_or_else(|| Path::new(env!("CARGO_MANIFEST_DIR")).join("../..")))
     }
 
+    pub fn path(&self) -> &Path {
+        &self.0
+    }
+
     /// Downloaded sources (git-ignored).
     pub fn raw(&self) -> PathBuf {
         self.0.join("data/raw")
