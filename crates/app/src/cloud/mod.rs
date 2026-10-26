@@ -6,6 +6,7 @@ pub mod api;
 #[cfg(test)]
 mod e2e;
 pub mod engine;
+pub mod link;
 pub mod oauth;
 pub mod session;
 
@@ -44,7 +45,7 @@ impl CloudConfig {
     }
 }
 
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Debug)]
 pub enum Command {
     SignInGoogle,
     /// Sign in with an ID token obtained elsewhere (the end-to-end check, and
@@ -56,6 +57,13 @@ pub enum Command {
     RevokeDevice(DeviceId),
     /// A local write landed in the outbox.
     Kick,
+    /// A fresh access token for calls made off the sync thread (AI, TTS).
+    /// `None` when signed out. `force` refreshes even an unexpired token
+    /// (after a 401).
+    Access {
+        force: bool,
+        reply: tokio::sync::oneshot::Sender<Option<(api::Api, String)>>,
+    },
     #[cfg_attr(not(test), allow(dead_code))]
     Shutdown,
 }

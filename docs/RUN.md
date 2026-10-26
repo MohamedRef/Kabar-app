@@ -87,6 +87,8 @@ just apk && just install <serial>   # same on the S24 Ultra and the Tab S11
 
 Check it: save a word in **Try sync** on the phone; it appears on the tablet within seconds. The Devices list shows every signed-in device and can sign one out.
 
+Once signed in, AI features (Teach Kabar, and later the persona chats) run through Kabar Cloud's AI proxy. Lesson and review audio switches to Azure's neural voices after `wrangler secret put AZURE_SPEECH_KEY` (CLOUD.md §3.3). Each line is fetched once and then kept on the device, so replays work offline. Without the key, or when the monthly free characters run out, the device's own voice reads the line.
+
 ## 6. Content pipeline (vocabulary, Arabic Bridge)
 
 Details in `docs/CONTENT.md`. On the Mac:

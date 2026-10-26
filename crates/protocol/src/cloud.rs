@@ -222,6 +222,15 @@ impl Voice {
 pub struct TtsSegment {
     pub voice: Voice,
     pub text: String,
+    /// Pitch in percent relative to the voice, -20..=20. Azure has two
+    /// voices per language, so story characters share them and differ in
+    /// pitch. Older servers ignore it.
+    #[serde(default, skip_serializing_if = "is_zero")]
+    pub pitch_percent: i8,
+}
+
+fn is_zero(v: &i8) -> bool {
+    *v == 0
 }
 
 /// `POST /v1/tts` → `audio/mpeg` (24 kHz mono MP3). The server builds the
