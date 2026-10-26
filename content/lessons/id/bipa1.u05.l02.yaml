@@ -1,0 +1,332 @@
+schema: kabar.lesson/v1
+id: bipa1.u05.l02
+language: id
+title: Ada pantai?
+can_do:
+  ar_eg: تقول «فيه» و«مفيش».
+  ar: أن تقول «يوجد» و«لا يوجد».
+  en: Say there is / there isn't.
+slides:
+  - title: ada = فيه
+    body:
+      ar_eg: |
+        ada دي أسهل كلمة على المصري، لأنها بالظبط «فيه»:
+        - Ada pantai? = فيه بحر؟
+        - Ada. = فيه.
+        - Tidak ada. = مفيش.
+        مفيش تصريف ولا مذكر ومؤنث، ada واحدة لكل حاجة.
+      ar: |
+        ada تقابل «يوجد / هناك» تمامًا:
+        - Ada pantai? = هل يوجد شاطئ؟
+        - Ada. = يوجد.
+        - Tidak ada. = لا يوجد.
+        ولا تتصرف ولا تتغير بتذكير أو تأنيث.
+      en: |
+        ada is Egyptian «فيه» exactly:
+        - Ada pantai? = Is there a beach?
+        - Ada. = There is.
+        - Tidak ada. = There isn't.
+        It never changes form.
+    grammar: id.ada
+    examples:
+      - text: Ada kolam renang?
+        ar_eg: فيه حمام سباحة؟
+        ar: هل يوجد مسبح؟
+        en: Is there a swimming pool?
+      - text: Maaf, tidak ada.
+        ar_eg: آسف، مفيش.
+        ar: عذرًا، لا يوجد.
+        en: Sorry, there isn't.
+  - title: Di Ancol ada pantai
+    body:
+      ar_eg: |
+        عشان تقول «فيه … في مكان كذا»، ابدأ بالمكان أو خليه في الآخر، الاتنين صح:
+        - Di Ancol ada pantai. = في أنكول فيه بحر.
+        - Ada pantai di Ancol. = فيه بحر في أنكول.
+        وada كمان معناها «موجود» للناس: Pak Budi ada? = أستاذ بودي موجود؟
+      ar: |
+        لتقول «يوجد … في مكان ما» ابدأ بالمكان أو أخّره، فكلاهما صحيح:
+        - Di Ancol ada pantai. = في أنكول شاطئ.
+        - Ada pantai di Ancol. = يوجد شاطئ في أنكول.
+        وتأتي ada بمعنى «حاضر / موجود» للأشخاص: Pak Budi ada? = هل الأستاذ بودي موجود؟
+      en: |
+        To say "there is … somewhere", put the place first or last — both are right:
+        - Di Ancol ada pantai. = In Ancol there's a beach.
+        - Ada pantai di Ancol. = There's a beach in Ancol.
+        ada also means "is in / is present" for people: Pak Budi ada? = Is Pak Budi in?
+    grammar: id.ada
+    examples:
+      - text: Di Ancol ada masjid?
+        ar_eg: فيه جامع في أنكول؟
+        ar: هل يوجد مسجد في أنكول؟
+        en: Is there a mosque in Ancol?
+      - text: Ibu ada di rumah?
+        ar_eg: ماما موجودة في البيت؟
+        ar: هل أمك في البيت؟
+        en: Is your mother at home?
+  - title: Ada apa?
+    body:
+      ar_eg: |
+        Ada apa? = «فيه إيه؟» بالحرف، لما تحس إن فيه حاجة.
+        خلي بالك: ada مش «يكون». «أنا طالب» = Saya mahasiswa، من غير ada خالص (فاكر إن الإندونيسي مافيهوش فعل «يكون»؟).
+        وmasjid جاية من العربي «مسجد»، ركّز فيها هتلاقيها في كل حتة.
+      ar: |
+        Ada apa? = «ماذا هناك؟ / ما الأمر؟» حرفيًا.
+        انتبه: ada ليست فعل كينونة؛ «أنا طالب» = Saya mahasiswa بلا ada.
+        وكلمة masjid من العربية «مسجد».
+      en: |
+        Ada apa? = literally «فيه إيه؟» — "What's up? / What's wrong?"
+        Careful: ada is not "to be". "I'm a student" = Saya mahasiswa, no ada at all.
+        masjid comes from Arabic «مسجد».
+    grammar: id.ada
+    examples:
+      - text: Ada apa, Rina?
+        ar_eg: فيه إيه يا رينا؟
+        ar: ما الأمر يا رينا؟
+        en: What's up, Rina?
+      - text: Saya mahasiswa.
+        ar_eg: أنا طالب.
+        ar: أنا طالب جامعي.
+        en: I'm a student.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ada
+        ar_eg: فيه
+        ar: يوجد
+        en: there is
+      - text: tidak ada
+        ar_eg: مفيش
+        ar: لا يوجد
+        en: there isn't
+      - text: masjid
+        ar_eg: جامع
+        ar: مسجد
+        en: mosque
+      - text: kolam renang
+        ar_eg: حمام سباحة
+        ar: مسبح
+        en: swimming pool
+      - text: air
+        ar_eg: مية
+        ar: ماء
+        en: water
+    words: [ada, tidak ada, masjid, kolam renang, air]
+  - id: e02
+    type: multiple_choice
+    question: Ada kolam renang?
+    question_meaning:
+      ar_eg: مفيش حمام سباحة. ترد تقول إيه؟
+      ar: لا يوجد مسبح. بماذا تجيب؟
+      en: There's no pool. How do you answer?
+    options: ["Tidak ada.", "Bukan.", "Ada."]
+    answer: 0
+    explain:
+      ar_eg: الرد على سؤال بـ ada بيبقى ada (فيه) أو tidak ada (مفيش).
+      ar: يُجاب عن سؤال ada بـ ada أو tidak ada.
+      en: A question with ada is answered ada or tidak ada.
+    words: [tidak ada]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة صح بمعنى «أنا طالب»؟
+      ar: أيّ جملة صحيحة بمعنى «أنا طالب»؟
+      en: Which sentence correctly says "I'm a student"?
+    options: ["Saya mahasiswa.", "Ada saya mahasiswa.", "Saya ada mahasiswa."]
+    answer: 0
+    explain:
+      ar_eg: ada معناها «فيه / موجود»، مش «يكون». الإندونيسي مش محتاج فعل «يكون» هنا.
+      ar: ada بمعنى «يوجد»، لا فعل كينونة، والإندونيسية لا تحتاجه هنا.
+      en: ada means "there is", not "to be"; Indonesian needs no "be" here.
+    words: [ada]
+  - id: e04
+    type: listen
+    text: Di Ancol ada pantai.
+    options: ["Di Ancol ada pantai.", "Di Ancol tidak ada pantai.", "Di Ancol ada taman."]
+    answer: 0
+    words: [ada, pantai]
+  - id: e05
+    type: fill_blank
+    sentence: Di hotel ini ___ kolam renang.
+    meaning:
+      ar_eg: في الفندق ده فيه حمام سباحة.
+      ar: في هذا الفندق مسبح.
+      en: There's a swimming pool in this hotel.
+    options: ["adalah", "ada", "apa"]
+    answers: [ada]
+    words: [ada, kolam renang, hotel]
+  - id: e06
+    type: fill_blank
+    sentence: Pak Budi ___ di rumah?
+    meaning:
+      ar_eg: أستاذ بودي موجود في البيت؟
+      ar: هل الأستاذ بودي في البيت؟
+      en: Is Pak Budi at home?
+    options: ["ada", "adalah", "apa"]
+    answers: [ada]
+    explain:
+      ar_eg: ada هنا معناها «موجود».
+      ar: ada هنا بمعنى «موجود».
+      en: Here ada means "is present / is in".
+    words: [ada]
+  - id: e07
+    type: fill_blank
+    sentence: Maaf, Pak, toiletnya ___ ada.
+    meaning:
+      ar_eg: آسف يا أستاذ، مفيش تواليت.
+      ar: عذرًا يا سيدي، لا يوجد حمّام.
+      en: Sorry, sir, there's no toilet.
+    options: ["apa", "ada", "tidak"]
+    answers: [tidak]
+    words: [tidak ada, toilet]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: في أنكول فيه حمام سباحة.
+      ar: في أنكول مسبح.
+      en: There's a swimming pool in Ancol.
+    answer: Di Ancol ada kolam renang.
+    alternatives: ["Ada kolam renang di Ancol."]
+    distractors: [tidak, berenang]
+    words: [ada, kolam renang]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: فيه مية؟
+      ar: هل يوجد ماء؟
+      en: Is there any water?
+    answers:
+      - Ada air?
+      - Ada air
+      - Apakah ada air?
+      - Apakah ada air
+      - Apa ada air?
+      - Apa ada air
+    words: [ada, air]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: فيه جامع في أنكول؟
+      ar: هل يوجد مسجد في أنكول؟
+      en: Is there a mosque in Ancol?
+    answers:
+      - Di Ancol ada masjid?
+      - Di Ancol ada masjid
+      - Ada masjid di Ancol?
+      - Ada masjid di Ancol
+      - Apakah ada masjid di Ancol?
+      - Apakah di Ancol ada masjid?
+      - Apa ada masjid di Ancol?
+      - Apa di Ancol ada masjid?
+    words: [ada, masjid]
+  - id: e11
+    type: translate
+    direction: from_target
+    source_text: Ada apa?
+    answers_meaning:
+      ar_eg: ["فيه إيه؟", "فيه إيه", "في إيه؟"]
+      ar: ["ما الأمر؟", "ماذا هناك؟", "ما الأمر"]
+      en: ["What's up?", "What's wrong?", "What's the matter?", "What's going on?"]
+    words: [ada]
+  - id: e12
+    type: dictation
+    text: Tidak ada kolam renang.
+    meaning:
+      ar_eg: مفيش حمام سباحة.
+      ar: لا يوجد مسبح.
+      en: There's no swimming pool.
+    words: [tidak ada, kolam renang]
+  - id: e13
+    type: speaking
+    text: Maaf, Bu, ada toilet?
+    meaning:
+      ar_eg: لو سمحتي يا مدام، فيه تواليت؟
+      ar: عذرًا يا سيدتي، هل يوجد حمّام؟
+      en: Excuse me, ma'am, is there a toilet?
+    words: [ada, toilet]
+dialogue:
+  title: Ada apa di Ancol?
+  lines:
+    - speaker: Mohamed
+      text: Mas Ardi, di Ancol ada pantai?
+      ar_eg: يا أستاذ أردي، فيه بحر في أنكول؟
+      ar: يا أردي، هل يوجد شاطئ في أنكول؟
+      en: Mas Ardi, is there a beach in Ancol?
+    - speaker: Mas Ardi
+      text: Ada! Ada pantai dan taman.
+      ar_eg: فيه! فيه بحر وجنينة.
+      ar: نعم! يوجد شاطئ وحديقة.
+      en: There is! There's a beach and a park.
+    - speaker: Mohamed
+      text: Ada masjid juga?
+      ar_eg: فيه جامع كمان؟
+      ar: وهل يوجد مسجد أيضًا؟
+      en: Is there a mosque too?
+    - speaker: Mas Ardi
+      text: Ada. Ada kolam renang juga.
+      ar_eg: فيه. وفيه حمام سباحة كمان.
+      ar: يوجد. ويوجد مسبح أيضًا.
+      en: There is. There's a swimming pool too.
+    - speaker: Mohamed
+      text: Ada restoran Mesir?
+      ar_eg: فيه مطعم مصري؟
+      ar: هل يوجد مطعم مصري؟
+      en: Is there an Egyptian restaurant?
+    - speaker: Mas Ardi
+      text: Wah, maaf, tidak ada!
+      ar_eg: يا خبر، آسف، مفيش!
+      ar: آه، عذرًا، لا يوجد!
+      en: Oh, sorry, there isn't!
+new_words:
+  - word: ada
+    pos: verb
+    ar_eg: فيه / موجود
+    ar: يوجد / موجود
+    en: there is; to be present
+  - word: tidak ada
+    pos: phrase
+    ar_eg: مفيش / مش موجود
+    ar: لا يوجد
+    en: there isn't, none
+  - word: Ada apa?
+    pos: phrase
+    ar_eg: فيه إيه؟
+    ar: ما الأمر؟
+    en: What's up? What's wrong?
+  - word: masjid
+    pos: noun
+    ar_eg: جامع
+    ar: مسجد
+    en: mosque
+    arabic: مسجد
+  - word: kolam renang
+    pos: noun
+    ar_eg: حمام سباحة
+    ar: مسبح
+    en: swimming pool
+  - word: air
+    pos: noun
+    ar_eg: مية
+    ar: ماء
+    en: water
+  - word: toilet
+    pos: noun
+    ar_eg: تواليت / حمام
+    ar: دورة مياه
+    en: toilet
+  - word: restoran
+    pos: noun
+    ar_eg: مطعم
+    ar: مطعم
+    en: restaurant
+  - word: hotel
+    pos: noun
+    ar_eg: فندق
+    ar: فندق
+    en: hotel
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,104 @@
+schema: kabar.grammar/v1
+id: id.conjunction.cause-effect
+language: id
+level: bipa4
+title:
+  target: karena, oleh karena itu, akibatnya, sehingga, berkat, gara-gara
+  en: Cause and effect connectors
+  ar_eg: أدوات السبب والنتيجة
+  ar: أدوات السبب والنتيجة
+summary:
+  ar_eg: "السبب: karena / sebab / berkat / gara-gara. النتيجة: sehingga (جوه الجملة)، oleh karena itu / akibatnya / maka (في أول جملة جديدة)."
+  ar: "للسبب: karena / sebab / berkat / gara-gara، وللنتيجة: sehingga داخل الجملة، وoleh karena itu / akibatnya / maka في أول جملة جديدة."
+  en: "Cause: karena / sebab / berkat / gara-gara. Effect: sehingga (inside a sentence); oleh karena itu / akibatnya / maka (starting a new sentence)."
+pattern:
+  - result + karena / sebab + cause · Karena + cause, + result
+  - cause + sehingga + result (one sentence)
+  - "Cause. Oleh karena itu / Karena itu / Oleh sebab itu, + result."
+  - "Cause. Akibatnya, + (bad) result. · Dampaknya, …"
+  - berkat + good cause (thanks to) · gara-gara + bad cause (informal) · akibat + bad cause
+  - X menyebabkan / mengakibatkan Y · Y disebabkan oleh X
+explanation:
+  ar_eg: |
+    في النص الإخباري والمقال لازم تربط السبب بالنتيجة بوضوح.
+    السبب:
+    - karena / sebab = عشان / لأن: Jalan banjir karena hujan deras.
+    - akibat + اسم (سبب وحش) = بسبب / نتيجة: akibat banjir.
+    - berkat = بفضل (سبب حلو بس!): Berkat kerja keras warga, pantai bersih kembali.
+    - gara-gara = بسبب (كلام عادي، سبب وحش): Gara-gara macet, saya terlambat.
+    النتيجة:
+    - sehingga = فـ / لدرجة إن — جوه نفس الجملة (اتعلمتها في المستوى التالت).
+    - Oleh karena itu, / Karena itu, / Oleh sebab itu, = عشان كده / لذلك — في أول جملة جديدة وبعدها فاصلة.
+    - Akibatnya, = ونتيجة لكده (غالبًا حاجة وحشة)، Dampaknya, = وأثره.
+    - maka = إذن / فـ (رسمي).
+    أفعال: menyebabkan / mengakibatkan = يسبب، disebabkan oleh = سببه.
+    غلطة شهيرة: «Karena …, maka …» — في الإندونيسي الفصيح ما بتجمعش karena و maka؛ واحدة بس كفاية.
+  ar: |
+    يحتاج النص الإخباري والمقالي إلى ربط واضح بين السبب والنتيجة.
+    السبب: karena / sebab (لأنّ)، akibat + اسم (نتيجةً لـ، لسبب سلبي)، berkat (بفضل، لسبب إيجابي فقط)، gara-gara (بسبب، عامية وسلبية).
+    النتيجة: sehingga داخل الجملة، وفي أول جملة جديدة مع فاصلة: Oleh karena itu, / Karena itu, / Oleh sebab itu, (لذلك)، Akibatnya, (ونتيجةً لذلك)، Dampaknya, (وأثرُ ذلك)، وmaka (إذن / فـ) في الرسمي.
+    الأفعال: menyebabkan / mengakibatkan (يسبّب)، disebabkan oleh (ينتج عن).
+    ولا يُجمع بين karena وmaka في الجملة الواحدة في الفصيح.
+  en: |
+    News texts and essays need clear cause-effect links.
+    Cause: karena / sebab (because), akibat + noun (as a result of — negative), berkat (thanks to — positive only!), gara-gara (because of — casual, negative).
+    Effect: sehingga inside one sentence (BIPA 3); at the start of a new sentence, with a comma: Oleh karena itu, / Karena itu, / Oleh sebab itu, (therefore), Akibatnya, (as a result — usually bad), Dampaknya, (the impact is), maka (thus — formal).
+    Verbs: menyebabkan / mengakibatkan (cause), disebabkan oleh (be caused by).
+    Classic error: "Karena …, maka …" — standard Indonesian uses one or the other, not both.
+examples:
+  - text: Karena hujan deras, beberapa jalan di Parepare banjir.
+    en: Because of the heavy rain, several roads in Parepare flooded.
+    ar_eg: عشان المطر الجامد، كام شارع في باريباريه غرقوا.
+    ar: بسبب الأمطار الغزيرة غمرت المياه عدة طرق في باريباري.
+  - text: Banyak sampah plastik masuk ke laut. Akibatnya, terumbu karang di Bunaken rusak.
+    en: A lot of plastic waste ends up in the sea. As a result, Bunaken's coral reefs are being damaged.
+    ar_eg: زبالة بلاستيك كتير بتوصل البحر. ونتيجة لكده، الشعاب المرجانية في بوناكين بتبوظ.
+    ar: تصل نفايات بلاستيكية كثيرة إلى البحر، ونتيجةً لذلك تتضرر الشعاب المرجانية في بوناكين.
+    register: formal
+  - text: Oleh karena itu, kita harus mengurangi penggunaan plastik.
+    en: Therefore, we must reduce our use of plastic.
+    ar_eg: عشان كده لازم نقلل استعمال البلاستيك.
+    ar: لذلك يجب أن نقلّل استخدام البلاستيك.
+    register: formal
+  - text: Berkat kerja keras warga, pantai itu bersih kembali.
+    en: Thanks to the residents' hard work, the beach is clean again.
+    ar_eg: بفضل شغل الناس الجامد، الشط رجع نضيف تاني.
+    ar: بفضل جهد السكان عاد الشاطئ نظيفًا.
+  - text: Gara-gara macet, saya terlambat ke kantor.
+    en: Because of the traffic jam, I was late for work.
+    ar_eg: بسبب الزحمة اتأخرت على الشغل.
+    ar: تأخرت عن العمل بسبب الزحام.
+    register: informal
+  - text: Penebangan hutan dapat mengakibatkan banjir.
+    en: Deforestation can cause flooding.
+    ar_eg: قطع الغابات ممكن يسبب فيضانات.
+    ar: قد يؤدي قطع الغابات إلى الفيضانات.
+mistakes:
+  - wrong: Karena hujan deras, maka acara itu dibatalkan.
+    right: Karena hujan deras, acara itu dibatalkan.
+    why:
+      ar_eg: karena و maka مع بعض في نفس الجملة زيادة في الإندونيسي الفصيح؛ شيل maka.
+      ar: الجمع بين karena وmaka حشوٌ في الفصيح؛ احذف maka.
+      en: Pairing karena with maka is considered redundant in standard Indonesian; drop maka.
+  - wrong: Berkat banjir, sekolah ditutup.
+    right: Akibat banjir, sekolah ditutup.
+    why:
+      ar_eg: berkat = «بفضل» للحاجات الحلوة بس؛ للحاجات الوحشة akibat أو karena.
+      ar: berkat للسبب المحمود فقط، وللسلبي akibat أو karena.
+      en: berkat is for good causes only; use akibat or karena for bad ones.
+  - wrong: Jalan rusak. Sehingga banyak kecelakaan.
+    right: Jalan rusak sehingga banyak kecelakaan. / Jalan rusak. Akibatnya, banyak kecelakaan.
+    why:
+      ar_eg: sehingga ما تبدأش جملة؛ في أول جملة جديدة استعمل Akibatnya أو Oleh karena itu.
+      ar: لا يُبتدأ بـsehingga، ويُستعمل في أول الجملة Akibatnya أو Oleh karena itu.
+      en: sehingga can't start a sentence; use Akibatnya or Oleh karena itu instead.
+arabic_bridge:
+  ar_eg: "تلات كلمات هنا أصلها عربي: sebab = «سبب»، akibat = «عاقبة» (نتيجة)، و berkat = «بركة» — وعشان كده berkat للحاجات الحلوة بس، زي ما بنقول «ببركة…». و oleh karena itu = «ولذلك»."
+  ar: "ثلاث كلمات عربية الأصل: sebab من «سبب»، وakibat من «عاقبة»، وberkat من «بركة»، ولهذا تُستعمل berkat للسبب المحمود فقط. وoleh karena itu تقابل «ولذلك»."
+  en: Three connectors come from Arabic — sebab ← سبب, akibat ← عاقبة, berkat ← بركة (which is why berkat is only for good causes).
+tags: [conjunction, cause, effect, formal-writing]
+prerequisites: [id.conjunction.purpose-condition, id.question.mengapa]
+see_also: [id.conjunction.bukan-hanya, id.discussion.expressions, id.argument.connectors, id.cohesion.grammatical]
+review:
+  status: draft
+  verified: false

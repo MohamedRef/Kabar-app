@@ -53,3 +53,49 @@ fn grammar_examples_use_spec_test_texts() {
         assert!(texts.contains(&wanted), "missing example: {wanted}");
     }
 }
+
+#[test]
+fn bipa_1_and_2_lessons_and_tests_exist() {
+    let report = check_repo(root()).expect("content files load");
+    assert_eq!(report.lessons.iter().filter(|l| l.starts_with("bipa1.")).count(), 50);
+    assert_eq!(report.lessons.iter().filter(|l| l.starts_with("bipa2.")).count(), 50);
+    for test in ["bipa1.test", "bipa2.test", "placement"] {
+        assert!(report.tests.iter().any(|t| t == test), "missing content/tests/id/{test}.yaml");
+    }
+}
+
+/// The lesson checks catch the mistakes that are easy to make by hand.
+#[test]
+fn lesson_checks_reject_broken_lessons() {
+    use kabar_content::lessons::{Index, check_lesson};
+    use kabar_content::yaml_value;
+
+    let report = check_repo(root()).expect("content files load");
+    let index = Index::new(&report.curricula, report.grammar.iter().map(|g| g.id.as_str()));
+    let file = root().join("content/lessons/id/bipa1.u01.l01.yaml");
+    let good = yaml_value(&file).expect("reference lesson");
+    let problems = |v: &serde_json::Value| {
+        let mut out = Vec::new();
+        check_lesson("t", "bipa1.u01.l01", "id", v, &index, &mut out);
+        out
+    };
+    assert_eq!(problems(&good), Vec::<String>::new());
+
+    type Mutation = fn(&mut serde_json::Value);
+    let broken: [(&str, Mutation); 6] = [
+        ("answer must be an index", |v| v["exercises"][1]["answer"] = 7.into()),
+        ("exactly one ___", |v| v["exercises"][3]["sentence"] = "Selamat malam.".into()),
+        ("unknown field 'answr'", |v| v["exercises"][2]["answr"] = 1.into()),
+        ("must contain Arabic script", |v| v["can_do"]["ar_eg"] = "Greet people".into()),
+        ("only the unit's last lesson", |v| {
+            v["souvenir"] = serde_json::json!({"id": "x", "title": "x", "note": {}})
+        }),
+        ("title must equal", |v| v["title"] = "Selamat siang!".into()),
+    ];
+    for (expected, mutate) in broken {
+        let mut v = good.clone();
+        mutate(&mut v);
+        let found = problems(&v);
+        assert!(found.iter().any(|p| p.contains(expected)), "expected '{expected}', got {found:?}");
+    }
+}

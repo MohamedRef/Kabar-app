@@ -1,0 +1,94 @@
+schema: kabar.grammar/v1
+id: id.conjunction.bukan-hanya
+language: id
+level: bipa3
+title:
+  target: bukan hanya … tetapi juga, bukan … melainkan, baik … maupun
+  en: Paired (correlative) conjunctions
+  ar_eg: أدوات الربط المزدوجة (مش بس… ده كمان)
+  ar: أدوات الربط المزدوجة
+summary:
+  ar_eg: "tidak / bukan hanya … tetapi juga = مش بس… لأ كمان، bukan … melainkan = مش… لأ ده، baik … maupun = سواء… أو / الاتنين."
+  ar: "tidak / bukan hanya … tetapi juga = ليس فقط … بل أيضًا، وbukan … melainkan = ليس … بل، وbaik … maupun = كلٌّ من … و… / سواء … أو."
+  en: "tidak / bukan hanya … tetapi juga = not only … but also; bukan … melainkan = not … but rather; baik … maupun = both … and."
+pattern:
+  - tidak hanya / bukan hanya + A, tetapi juga + B
+  - bukan + A, melainkan + B (correction after a noun negation)
+  - tidak + A, tetapi + B (contrast after a verb / adjective negation)
+  - baik + A + maupun + B (both A and B)
+  - "entah … entah … (whether … or …)"
+explanation:
+  ar_eg: |
+    أدوات بتيجي «جوز» وبتخلي الكتابة أقوى، وهتحتاجها وانت بتشرح ظاهرة طبيعية:
+    - tidak hanya / bukan hanya … tetapi juga … = مش بس… ده كمان…:
+      Gempa tidak hanya merusak rumah, tetapi juga jalan = الزلزال مش بس بوّظ البيوت، لأ والطرق كمان.
+    - bukan … melainkan … = مش (كذا)، لأ (كذا) — تصحيح بعد نفي باسم:
+      Itu bukan asap, melainkan awan = ده مش دخان، ده سحاب.
+      بعد tidak (نفي فعل أو صفة) استعمل tetapi: Gunung itu tidak meletus, tetapi hanya berasap.
+    - baik … maupun … = سواء… أو / كلٌّ من… و…:
+      Baik anak-anak maupun orang tua harus tahu jalur evakuasi = الصغيرين والكبار لازم يعرفوا طريق الإخلاء.
+      غلط مشهور: baik … dan … — لازم maupun.
+    - entah … entah … = يا… يا… (مش متأكد): entah hari ini, entah besok.
+  ar: |
+    أدوات تأتي مزدوجة وتقوّي النص التفسيري:
+    - tidak hanya / bukan hanya … tetapi juga …: ليس فقط … بل أيضًا: Gempa tidak hanya merusak rumah, tetapi juga jalan.
+    - bukan … melainkan …: ليس … بل (للاستدراك بعد نفي الاسم): Itu bukan asap, melainkan awan. وبعد tidak تُستعمل tetapi.
+    - baik … maupun …: كلٌّ من … و… / سواء … أو: Baik anak-anak maupun orang tua …، ولا يُقال baik … dan.
+    - entah … entah …: إمّا … وإمّا (مع الشك).
+  en: |
+    Paired conjunctions make explanations stronger:
+    - tidak hanya / bukan hanya … tetapi juga … = not only … but also: Gempa tidak hanya merusak rumah, tetapi juga jalan.
+    - bukan … melainkan … = not X but rather Y, correcting after a noun negation: Itu bukan asap, melainkan awan. After tidak (verb / adjective) use tetapi: Gunung itu tidak meletus, tetapi hanya berasap.
+    - baik … maupun … = both … and / whether … or: Baik anak-anak maupun orang tua harus tahu jalur evakuasi. Never "baik … dan".
+    - entah … entah … = whether … or (uncertain): entah hari ini, entah besok.
+examples:
+  - text: Gempa itu tidak hanya merusak rumah, tetapi juga jalan dan jembatan.
+    en: The earthquake damaged not only houses but also roads and bridges.
+    ar_eg: الزلزال ده مش بس بوّظ البيوت، لأ والطرق والكباري كمان.
+    ar: لم يدمّر الزلزال البيوت فحسب، بل الطرق والجسور أيضًا.
+  - text: Itu bukan asap, melainkan awan di puncak Rinjani.
+    en: That isn't smoke, it's cloud on Rinjani's summit.
+    ar_eg: ده مش دخان، ده سحاب على قمة رينجاني.
+    ar: ليس ذلك دخانًا، بل سحابًا على قمة رينجاني.
+  - text: Baik anak-anak maupun orang tua harus tahu jalur evakuasi.
+    en: Both children and adults need to know the evacuation route.
+    ar_eg: الصغيرين والكبار، الكل لازم يعرف طريق الإخلاء.
+    ar: يجب على الأطفال والكبار على السواء معرفة طريق الإخلاء.
+  - text: Bukan hanya warga Tetebatu, tetapi juga turis ikut membantu.
+    en: Not only Tetebatu residents but tourists too joined in to help.
+    ar_eg: مش بس أهل تيتيباتو، لأ والسياح كمان ساعدوا.
+    ar: لم يساعد أهل تيتيباتو فقط، بل شارك السياح أيضًا.
+  - text: Banjir itu bukan disebabkan oleh hujan, melainkan oleh sungai yang meluap.
+    en: The flood wasn't caused by rain but by the river overflowing.
+    ar_eg: الفيضان ده ما كانش بسبب المطر، لأ بسبب النهر اللي فاض.
+    ar: لم يكن سبب الفيضان المطر، بل فيضان النهر.
+    register: formal
+mistakes:
+  - wrong: Baik guru dan murid ikut latihan gempa.
+    right: Baik guru maupun murid ikut latihan gempa.
+    why:
+      ar_eg: baik بتيجي مع maupun دايمًا، مش dan.
+      ar: تقترن baik بـmaupun لا بـdan.
+      en: baik pairs with maupun, never dan.
+  - wrong: Dia tidak dokter, melainkan guru.
+    right: Dia bukan dokter, melainkan guru.
+    why:
+      ar_eg: الاسم بيتنفي بـ bukan، وبعدها melainkan للتصحيح.
+      ar: يُنفى الاسم بـbukan ثم يأتي الاستدراك بـmelainkan.
+      en: Nouns are negated with bukan, then melainkan corrects.
+  - wrong: Tidak hanya rumah, juga jalan rusak.
+    right: Tidak hanya rumah, tetapi juga jalan rusak.
+    why:
+      ar_eg: "في الكتابة الرسمية خلّي الجوز كامل: tetapi juga."
+      ar: "في الأسلوب الرسمي يُذكر الشطر الثاني كاملًا: tetapi juga."
+      en: In formal writing keep the full pair — tetapi juga.
+arabic_bridge:
+  ar_eg: "التلاتة ليهم مقابل فصيح بالظبط: «لا … فحسب، بل … أيضًا» = tidak hanya … tetapi juga، «ليس … بل …» = bukan … melainkan، «كلٌّ من … و…» أو «سواء … أو …» = baik … maupun. لو بتعرف تكتبهم بالعربي، هتكتبهم بالإندونيسي."
+  ar: "لكل منها مقابل عربي دقيق: «لا … فحسب بل … أيضًا» = tidak hanya … tetapi juga، و«ليس … بل» = bukan … melainkan، و«سواءٌ … أو / كلٌّ من … و…» = baik … maupun."
+  en: "Each has an exact MSA match: لا … فحسب بل … أيضًا = tidak hanya … tetapi juga; ليس … بل = bukan … melainkan; سواء … أو = baik … maupun."
+tags: [conjunction, correlative, formal-writing]
+prerequisites: [id.conjunction.basic, id.negation.tidak-bukan]
+see_also: [id.conjunction.purpose-condition, id.conjunction.sequence, id.conjunction.cause-effect]
+review:
+  status: draft
+  verified: false

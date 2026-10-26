@@ -1,0 +1,108 @@
+schema: kabar.grammar/v1
+id: jv.suffix.i
+language: jv
+level: j2
+title:
+  target: -i / -ni (nyirami, nekani, ngancani, ngenteni, mateni)
+  en: "The suffix -i / -ni"
+  ar_eg: "اللاحقة -i / -ni"
+  ar: "اللاحقة -i / -ni"
+summary:
+  ar_eg: "-i (وبعد حرف متحرك -ni) قريبة من -i الإندونيسية: بتوجّه الفعل لمكان أو شخص (nekani = mendatangi، ngancani = menemani)، أو بتكرّره. وساعات بتقابل -kan: mateni = mematikan."
+  ar: "-i (و-ni بعد الصائت) تقارب -i الإندونيسية: توجّه الفعل إلى مكان أو شخص (nekani = mendatangi، ngancani = menemani) أو تفيد التكرار، وقد تقابل -kan: mateni = mematikan."
+  en: "-i (after a vowel -ni) is close to Indonesian -i: it aims the action at a place or person (nekani = mendatangi, ngancani = menemani) or repeats it. Sometimes it matches -kan: mateni = mematikan."
+pattern:
+  - "consonant + -i: siram → nyirami (menyirami), enti → ngenteni (menunggu)"
+  - "vowel + -ni: teka → nekani (mendatangi), kanca → ngancani (menemani), ngguyu → ngguyoni (menertawakan)"
+  - "usually with N- (active) or di- / tak- (base): ditekani, tak kancani"
+  - "-i ≠ always Indonesian -i: mateni lampu (mematikan) ↔ nguripake lampu (menghidupkan)"
+  - "command: -i form stays: Enteni aku!"
+explanation:
+  ar_eg: |
+    إنت عارف -i في الإندونيسي (mendatangi، menemani، menyirami). الجاوي -i قريبة منها:
+    1. الفعل بيروح «على» مكان أو شخص:
+       - teka (ييجي) → nekani (يحضر / ييجي لـ): nekani undangan = يحضر عزومة (mendatangi undangan).
+       - kanca (صاحب) → ngancani (يونّس / يرافق): Tak kancani = هاجي معاك (kutemani).
+       - siram → nyirami (يسقي): nyirami kembang = يسقي الورد (menyirami bunga).
+       - ngguyu (يضحك) → ngguyoni (يضحك على): menertawakan.
+    2. ngenteni = يستنى حد (menunggu): Aku ngenteni kowe = أنا مستنيك.
+    الشكل: بعد ساكن -i، بعد متحرك -ni (teka → nekani). وغالبًا معاها N- (nekani، nyirami) أو di- / tak- مع الأصل (ditekani، tak kancani).
+    خلي بالك: مش كل -i جاوي = -i إندونيسي. mateni lampu = يطفي النور (mematikan)، وعكسه nguripake (menghidupkan) بـ -ake.
+    والأمر بيفضل -i: Enteni aku! = استناني!
+  ar: |
+    تعرف -i الإندونيسية (mendatangi، menemani، menyirami)، والجاوية قريبة منها:
+    1. توجيه الفعل إلى مكان أو شخص:
+       - teka (يأتي) → nekani (يحضر إلى): nekani undangan = يلبّي دعوة.
+       - kanca (صديق) → ngancani (يرافق): Tak kancani = سأرافقك.
+       - siram → nyirami (يسقي): nyirami kembang = يسقي الزهور.
+       - ngguyu (يضحك) → ngguyoni (يضحك على).
+    2. ngenteni = ينتظر أحدًا: Aku ngenteni kowe = أنتظرك.
+    والصيغة: -i بعد الساكن، و-ni بعد الصائت، وتقترن غالبًا بـ N- أو بـ di- / tak- مع الجذر.
+    وليست كل -i جاوية = -i إندونيسية: mateni lampu = يطفئ المصباح (mematikan)، وضده nguripake بـ -ake.
+    ويبقى الأمر بـ -i: Enteni aku!
+  en: |
+    You know Indonesian -i (mendatangi, menemani, menyirami). Javanese -i is close:
+    1. The action is aimed at a place or person:
+       - teka (come) → nekani (attend, come to): nekani undangan = attend an invitation (mendatangi undangan).
+       - kanca (friend) → ngancani (keep someone company): Tak kancani = I'll come with you (kutemani).
+       - siram → nyirami (water): nyirami kembang = water the flowers (menyirami bunga).
+       - ngguyu (laugh) → ngguyoni (laugh at): menertawakan.
+    2. ngenteni = wait for someone (menunggu): Aku ngenteni kowe = I'm waiting for you.
+    Shape: -i after a consonant, -ni after a vowel (teka → nekani). Usually with N- (nekani, nyirami) or with di- / tak- on the base (ditekani, tak kancani).
+    Careful: Javanese -i doesn't always equal Indonesian -i. mateni lampu = turn off the light (mematikan); its opposite nguripake (menghidupkan) uses -ake.
+    Commands keep -i: Enteni aku! = Wait for me!
+examples:
+  - text: Ibu nyirami kembang saben esuk.
+    breakdown: ibu · N- + siram + -i = menyirami · kembang = bunga · saben = setiap · esuk = pagi
+    en: Mum waters the flowers every morning.
+    ar_eg: ماما بتسقي الورد كل يوم الصبح.
+    ar: تسقي أمي الزهور كل صباح.
+    register: informal
+  - text: Aku ngenteni kowe nang stasiun.
+    breakdown: aku · N- + enti + -i = menunggu · kowe = kamu · nang = di · stasiun
+    en: I'm waiting for you at the station.
+    ar_eg: أنا مستنيك في المحطة.
+    ar: أنتظرك في المحطة.
+    register: informal
+  - text: Sesuk aku nekani mantenane Dimas.
+    breakdown: sesuk = besok · N- + teka + -ni = mendatangi · mantenan + -e = pernikahannya · Dimas
+    en: Tomorrow I'm going to Dimas's wedding.
+    ar_eg: بكرة رايح فرح ديماس.
+    ar: غدًا أحضر حفل زفاف ديماس.
+    register: informal
+  - text: Ayo, tak kancani.
+    breakdown: ayo · tak = ku- · kanca + -ni = temani
+    en: Come on, I'll keep you company.
+    ar_eg: يلا، هاجي معاك.
+    ar: هيا، سأرافقك.
+    register: informal
+  - text: Lampune dipateni, ya.
+    breakdown: lampu + -ne · di- + pati + -ni = dimatikan · ya
+    en: Turn the light off, OK? (literally "let the light be turned off")
+    ar_eg: اطفي النور، ماشي؟
+    ar: أطفئ المصباح من فضلك.
+    register: informal
+mistakes:
+  - wrong: nekai
+    right: nekani
+    why:
+      ar_eg: teka آخرها متحرك، فبتاخد -ni مش -i.
+      ar: teka تنتهي بصائت فتأخذ -ni.
+      en: teka ends in a vowel, so it takes -ni.
+  - wrong: matekake lampu (copying Indonesian matikan)
+    right: mateni lampu
+    why:
+      ar_eg: «يطفي» بالجاوي mateni بـ -i، حتى لو الإندونيسي mematikan بـ -kan. احفظ الفعل بنهايته.
+      ar: الإطفاء في الجاوية mateni بـ -i وإن كان في الإندونيسية بـ -kan.
+      en: 'The verb for "turn off" is mateni with -i, even though Indonesian uses -kan; learn each verb with its suffix.'
+arabic_bridge:
+  ar_eg: "-i شبه حرف الجر اللي بيتزرع جوه الفعل: nekani = «جه لـ»، ngguyoni = «ضحك على». في العربي بنحط الحرف بعد الفعل، والجاوي بيلزقه فيه."
+  ar: "تؤدي -i ما يؤديه حرف الجر بعد الفعل في العربية: nekani = «أتى إلى»، ngguyoni = «ضحك على»."
+  en: "-i does what an Arabic preposition does after a verb: nekani = «أتى إلى», ngguyoni = «ضحك على» — but glued on."
+tags: [suffix, verb, morphology, j2]
+prerequisites: [jv.prefix.nasal]
+see_also: [jv.suffix.ake, jv.imperative.ngoko, jv.krama.affixes]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker (the base enti for ngenteni, dipateni, and the -ni / -i split especially).

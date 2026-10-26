@@ -1,0 +1,108 @@
+schema: kabar.grammar/v1
+id: id.preposition.extended
+language: id
+level: bipa3
+title:
+  target: kepada, untuk, bagi, tentang, pada, menurut, sejak
+  en: Prepositions beyond di / ke / dari
+  ar_eg: حروف جر أكتر من di / ke / dari
+  ar: حروف الجر بعد di / ke / dari
+summary:
+  ar_eg: "kepada = لـ/إلى (لشخص)، untuk / bagi = عشان/لـ، tentang = عن، pada = في (وقت) أو لـ (رسمي)، menurut = حسب رأي، sejak = من ساعة."
+  ar: "kepada للأشخاص (إلى)، وuntuk / bagi للغاية والمنفعة (لِـ)، وtentang بمعنى عن، وpada للزمن وللأشخاص في الرسمي، وmenurut بمعنى وفقًا لـ، وsejak بمعنى منذ."
+  en: "kepada = to (a person), untuk / bagi = for, tentang = about, pada = on / at (time) or to (formal), menurut = according to, sejak = since."
+pattern:
+  - kepada + person (ke + place)
+  - untuk + person / thing / verb (for, in order to)
+  - bagi + person / group (for, formal; "as for")
+  - tentang / mengenai + topic (about)
+  - pada + time / person (formal "on, at, to")
+  - menurut + person / source (according to)
+  - sejak + time (since) · sampai / hingga + time (until)
+explanation:
+  ar_eg: |
+    di / ke / dari للأماكن وانت عارفهم. دلوقتي محتاجين حروف للأشخاص والأفكار:
+    - kepada = لـ / إلى لما الطرف التاني «شخص»: Saya mengucapkan selamat kepada Ibu. خلي بالك: ke للمكان (ke Mataram)، kepada للبني آدم (kepada Pak Budi).
+    - untuk = عشان / لـ (هدية، غرض): Kartu ini untuk Ibu Sari. ومع فعل = عشان أعمل: untuk belajar.
+    - bagi = لـ / بالنسبة لـ، أرسم شوية من untuk: Bagi umat Islam, Lebaran adalah hari kemenangan.
+    - tentang (أو mengenai الأرسم) = عن: bercerita tentang Lebaran.
+    - pada = في (للوقت، رسمي): pada hari Senin، pada tahun 2018. وكمان «لـ» مع ناس في الكلام الرسمي: Saya minta maaf pada Ibu.
+    - menurut = حسب / على رأي: Menurut Pak Budi, …
+    - sejak = من ساعة / منذ، sampai / hingga = لحد: sejak pagi sampai malam.
+    في الكلام العادي بيقولوا «di hari Senin» كتير، بس في الكتابة الرسمية الصح pada.
+  ar: |
+    تُستعمل di / ke / dari للأماكن، وتُضاف الآن حروف للأشخاص والمعاني:
+    - kepada: إلى / اللام مع الأشخاص: mengucapkan selamat kepada Ibu. وke للمكان فقط.
+    - untuk: لِـ (الغاية أو المنفعة)، ومع الفعل بمعنى لكي: untuk belajar.
+    - bagi: لِـ / بالنسبة إلى، وهو أكثر رسمية: Bagi umat Islam, …
+    - tentang (والرسمي mengenai): عن.
+    - pada: في (للزمن) في الأسلوب الرسمي: pada hari Senin، وقد تأتي بمعنى «إلى / لِـ» مع الأشخاص.
+    - menurut: وفقًا لـ / في رأي.
+    - sejak: منذ، وsampai / hingga: حتى.
+    وفي العامية يُقال di hari Senin، والفصيح pada hari Senin.
+  en: |
+    You know di / ke / dari for places. Now prepositions for people and ideas:
+    - kepada = to a person: mengucapkan selamat kepada Ibu. Use ke for places, kepada for people.
+    - untuk = for (a gift, a purpose); with a verb = in order to: untuk belajar.
+    - bagi = for / as for, a bit more formal: Bagi umat Islam, Lebaran adalah hari kemenangan.
+    - tentang (formal: mengenai) = about.
+    - pada = on / at for time in formal Indonesian (pada hari Senin), and "to" with people in formal style.
+    - menurut = according to.
+    - sejak = since; sampai / hingga = until.
+    Casual speech often says di hari Senin; formal writing prefers pada.
+examples:
+  - text: Kartu Lebaran ini untuk Bu Sari.
+    en: This Eid card is for Bu Sari.
+    ar_eg: كارت العيد ده لطنط ساري.
+    ar: بطاقة العيد هذه للسيدة ساري.
+  - text: Saya mengucapkan selamat Idulfitri kepada keluarga Pak Budi.
+    breakdown: mengucapkan (say, express) · selamat Idulfitri · kepada (to) · keluarga Pak Budi
+    en: I wish Pak Budi's family a happy Eid al-Fitr.
+    ar_eg: بقول لعيلة الأستاذ بودي كل سنة وانتو طيبين بمناسبة عيد الفطر.
+    ar: أهنئ أسرة الأستاذ بودي بعيد الفطر.
+    register: formal
+  - text: Bagi umat Islam, Lebaran adalah hari kemenangan.
+    en: For Muslims, Lebaran is a day of victory.
+    ar_eg: بالنسبة للمسلمين، العيد يوم الفرحة بالنصر (بعد الصيام).
+    ar: العيد عند المسلمين يوم النصر والفرح.
+  - text: Rina bercerita tentang tradisi Lebaran di Lombok.
+    en: Rina talks about Lebaran traditions in Lombok.
+    ar_eg: رينا بتحكي عن عادات العيد في لومبوك.
+    ar: تتحدث رينا عن تقاليد العيد في لومبوك.
+  - text: Pada hari Lebaran, kami berkunjung ke rumah nenek sejak pagi.
+    en: On Lebaran day we visit Grandma's house from the morning on.
+    ar_eg: يوم العيد بنروح بيت تيتة من الصبح.
+    ar: في يوم العيد نزور بيت الجدة منذ الصباح.
+  - text: Menurut Pak Budi, Lombok punya banyak sekali masjid.
+    en: According to Pak Budi, Lombok has a great many mosques.
+    ar_eg: على كلام الأستاذ بودي، لومبوك فيها جوامع كتير أوي.
+    ar: بحسب الأستاذ بودي، في لومبوك مساجد كثيرة جدًا.
+mistakes:
+  - wrong: Saya mengirim kartu ke Ibu Sari.
+    right: Saya mengirim kartu kepada Ibu Sari.
+    why:
+      ar_eg: ke للأماكن؛ للناس استعمل kepada (في الكلام بيتقال ke بس في الكتابة لأ).
+      ar: ke للمكان، وللأشخاص تُستعمل kepada في الفصيح.
+      en: ke is for places; use kepada for people (ke + person is casual only).
+  - wrong: Saya membaca buku dari Lebaran.
+    right: Saya membaca buku tentang Lebaran.
+    why:
+      ar_eg: «عن» الموضوع = tentang، مش dari (dari = من مكان أو مصدر).
+      ar: «عن» الموضوع هي tentang، أما dari فللمصدر والابتداء.
+      en: '"About" a topic is tentang; dari means "from".'
+  - wrong: di tahun 2018 (in a formal letter)
+    right: pada tahun 2018
+    why:
+      ar_eg: في الكتابة الرسمية الوقت ياخد pada، و di تفضل للمكان.
+      ar: يُستعمل pada للزمن في الأسلوب الرسمي، وdi للمكان.
+      en: In formal writing, time takes pada; keep di for places.
+arabic_bridge:
+  ar_eg: "العربي عنده «لـ» واحدة لـ «to» و«for»، الإندونيسي بيفصل: kepada = لـ (اتجاه لشخص: قلت له)، untuk = لـ (هدية / غرض: ده ليك). لو بتتردد اسأل نفسك: فيه حاجة رايحة لحد (kepada) ولا معمولة عشانه (untuk)؟"
+  ar: "اللام العربية تؤدي معنيي «إلى» و«من أجل»، والإندونيسية تفرّق: kepada لتوجيه الكلام أو الشيء إلى شخص، وuntuk للغاية والمنفعة."
+  en: Arabic لـ covers both "to" and "for"; Indonesian splits them — kepada (directed to someone) vs untuk (for someone's benefit / a purpose).
+tags: [preposition, formal-writing]
+prerequisites: [id.preposition.di-ke-dari]
+see_also: [id.hope.semoga, id.conjunction.purpose-condition]
+review:
+  status: draft
+  verified: false

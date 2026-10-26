@@ -1,0 +1,97 @@
+schema: kabar.grammar/v1
+id: jv.krama.numbers
+language: jv
+level: j3
+title:
+  target: setunggal, kalih, tiga, sekawan, gangsal … sedasa · selangkung · tigang ewu
+  en: Numbers in krama
+  ar_eg: الأرقام بالكراما
+  ar: الأعداد في الكراما
+summary:
+  ar_eg: "بعض الأرقام ليها نسخة كراما: setunggal (1)، kalih (2)، tiga (3)، sekawan (4)، gangsal (5)، sedasa (10)، selangkung (25). و6–9 زي النغوكو. وفي الأسعار: tigang ewu، gangsal ewu، kalih atus ewu."
+  ar: "لبعض الأعداد صور كراما: setunggal (1)، kalih (2)، tiga (3)، sekawan (4)، gangsal (5)، sedasa (10)، selangkung (25)، و6–9 كالنغوكو، وفي الأسعار: tigang ewu، gangsal ewu، kalih atus ewu."
+  en: "Some numbers have krama forms: setunggal (1), kalih (2), tiga (3), sekawan (4), gangsal (5), sedasa (10), selangkung (25). 6–9 are the same as ngoko. Prices: tigang ewu, gangsal ewu, kalih atus ewu."
+pattern:
+  - "1 setunggal · 2 kalih · 3 tiga · 4 sekawan · 5 gangsal · 6–9 enem, pitu, wolu, sanga (as ngoko) · 10 sedasa"
+  - "20 kalih dasa · 25 selangkung · 30 tigang dasa · 40 sekawan dasa · 50 seket · 60 sewidak"
+  - "hundreds: satus, kalih atus, tigang atus, sekawan atus, gangsal atus"
+  - "thousands: sewu, kalih ewu, tigang ewu, sekawan ewu, gangsal ewu"
+  - "market words: regi (rega) · tumbas (tuku) · kirang (kurang) · angsal (oleh) · saged (bisa) · kemawon (wae)"
+explanation:
+  ar_eg: |
+    في J1–J2 اتعلمنا أرقام النغوكو. مع بياعة كبيرة في Pasar Klewer الأحلى إنك تعد بالكراما:
+    - 1 setunggal، 2 kalih، 3 tiga، 4 sekawan، 5 gangsal، 10 sedasa.
+    - 6–9 زي النغوكو: enem، pitu، wolu، sanga.
+    - العشرات: kalih dasa (20)، tigang dasa (30)، sekawan dasa (40). وselangkung = 25 (نسخة كراما من selawe). وseket (50) وsewidak (60) زي ما هم.
+    - المية والألف: satus، kalih atus، tigang atus … sewu، kalih ewu، tigang ewu، gangsal ewu. لاحظ tiga → tigang قبل atus / ewu / dasa، زي telu → telung.
+    كلمات السوق بالكراما: regi = سعر (rega)، tumbas = يشتري (tuku)، kirang = أقل (kurang)، angsal = ينفع (oleh)، saged = يقدر (bisa)، kemawon = بس (wae).
+    حتى لو قلت كام كلمة بس بالكراما، البياعين الكبار بيقدّروها جدًا — وساعات السعر بيقل!
+  ar: |
+    عرفنا أعداد النغوكو في J1–J2، ومع البائعة الكبيرة في سوق كليوير يحسن العد بالكراما:
+    - 1 setunggal، 2 kalih، 3 tiga، 4 sekawan، 5 gangsal، 10 sedasa، و6–9 كالنغوكو.
+    - العشرات: kalih dasa (20)، tigang dasa (30)، sekawan dasa (40)، وselangkung = 25، وseket وsewidak كما هما.
+    - المئات والآلاف: satus، kalih atus، tigang atus … sewu، kalih ewu، tigang ewu، gangsal ewu، وتصير tiga قبلها tigang كما تصير telu telung.
+    ألفاظ السوق: regi (السعر)، tumbas (يشتري)، kirang (أقل)، angsal (يجوز)، saged (يستطيع)، kemawon (فقط).
+  en: |
+    J1–J2 taught ngoko numbers. With an older seller at Pasar Klewer, counting in krama is a lovely touch:
+    - 1 setunggal, 2 kalih, 3 tiga, 4 sekawan, 5 gangsal, 10 sedasa.
+    - 6–9 are the same as ngoko: enem, pitu, wolu, sanga.
+    - Tens: kalih dasa (20), tigang dasa (30), sekawan dasa (40). selangkung = 25 (krama for selawe). seket (50) and sewidak (60) stay.
+    - Hundreds and thousands: satus, kalih atus, tigang atus … sewu, kalih ewu, tigang ewu, gangsal ewu. Note tiga → tigang before atus / ewu / dasa, like telu → telung.
+    Market krama: regi = price (rega), tumbas = buy (tuku), kirang = less (kurang), angsal = may (oleh), saged = can (bisa), kemawon = just (wae).
+    Even a few krama words delight older sellers — and sometimes the price drops!
+examples:
+  - text: Reginipun pinten, Bu? — Kalih atus ewu.
+    breakdown: regi + -nipun = harganya · pinten = berapa · kalih = dua · atus = ratus · ewu = ribu
+    en: How much is it, ma'am? — Two hundred thousand.
+    ar_eg: بكام يا حاجة؟ — ميتين ألف.
+    ar: بكم ثمنه يا سيدتي؟ — مئتا ألف.
+    register: formal
+  - text: Saged kirang, Bu?
+    breakdown: saged = bisa · kirang = kurang · Bu
+    en: Could you lower the price a little, ma'am?
+    ar_eg: ممكن تنزّلي شوية يا حاجة؟
+    ar: هل يمكن تخفيض السعر يا سيدتي؟
+    register: formal
+  - text: Kula tumbas kalih nggih.
+    breakdown: kula = saya · tumbas = beli · kalih = dua · nggih = ya
+    en: I'll buy two, then.
+    ar_eg: هاخد اتنين بقى.
+    ar: سأشتري اثنين إذن.
+    register: formal
+  - text: Setunggal kemawon.
+    breakdown: setunggal = satu · kemawon = saja
+    en: Just one, please.
+    ar_eg: واحدة بس.
+    ar: واحدة فقط.
+    register: formal
+  - text: Selangkung ewu angsal?
+    breakdown: selangkung = dua puluh lima · ewu = ribu · angsal = boleh
+    en: Is twenty-five thousand OK?
+    ar_eg: خمسة وعشرين ألف ينفع؟
+    ar: هل يجوز بخمسة وعشرين ألفًا؟
+    register: formal
+mistakes:
+  - wrong: Reginipun pinten? — Loro atus ewu. (in a krama exchange)
+    right: Kalih atus ewu.
+    why:
+      ar_eg: "لو بتتكلم كراما، الرقم كمان يبقى كراما: kalih مش loro / rong."
+      ar: في سياق الكراما يُستعمل العدد kalih لا loro / rong.
+      en: "In a krama exchange the number goes krama too: kalih, not loro / rong."
+  - wrong: tiga ewu
+    right: tigang ewu
+    why:
+      ar_eg: قبل ewu / atus / dasa، tiga بتبقى tigang، زي telu → telung في النغوكو.
+      ar: تصير tiga قبل ewu وatus وdasa tigang.
+      en: Before ewu / atus / dasa, tiga becomes tigang (like telu → telung).
+arabic_bridge:
+  ar_eg: "تخيّل إن «تلاتة» ليها كلمة تانية خالص لما تكلم حد كبير — ده اللي بيحصل في الجاوي. وkalih atus زي «ميتين»: الرقم بيتغير شكله قبل المعدود."
+  ar: "كأن للعدد لفظًا آخر حين تخاطب الكبير، وهذا ما تفعله الجاوية، مع تغير صورة العدد قبل المعدود كما في «مئتين»."
+  en: "Imagine «تلاتة» having a different word when you talk to an elder — that's Javanese. And numbers still change shape before atus / ewu."
+tags: [number, krama, market, price, j3]
+prerequisites: [jv.number.full, jv.krama.function-words]
+see_also: [jv.krama.questions, jv.number.ngoko]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker. Krama teens (11–19), 21–29 apart from selangkung, and krama for 'million' were left out as unconfirmed; please check kalih dasa / sekawan dasa, kemawon, saged and angsal.

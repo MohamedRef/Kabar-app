@@ -1,0 +1,265 @@
+schema: kabar.lesson/v1
+id: bipa2.u05.l05
+language: id
+title: Ulangan Unit 5
+can_do:
+  ar_eg: تطلب أكلة وتشرح إزاي تتعمل.
+  ar: أن تطلب طبقًا وتشرح طريقة إعداده.
+  en: Order and explain a dish.
+slides:
+  - title: Potong! Goreng! Cicipi!
+    body:
+      ar_eg: |
+        فكّر نفسك بسرعة:
+        - الأمر = الجذر من غير meN-: memotong → Potong! mencicipi → Cicipi!
+        - ber- بتفضل: Berhenti!
+        - في الوصفات: Masukkan … / Tambahkan … / Panaskan …، والخطوات بـ lalu وsampai.
+        - وفي الطلب: Saya mau pesan … / tidak pakai … / Jangan terlalu pedas, ya.
+      ar: |
+        مراجعة سريعة:
+        - الأمر = الجذر بلا meN-: memotong → Potong!
+        - وتبقى ber-: Berhenti!
+        - وفي الوصفات: Masukkan … / Tambahkan … / Panaskan …، مع lalu وsampai.
+        - وفي الطلب: Saya mau pesan … / tidak pakai … / Jangan terlalu pedas, ya.
+      en: |
+        Quick recap:
+        - Command = root without meN-: memotong → Potong!
+        - ber- stays: Berhenti!
+        - Recipes: Masukkan … / Tambahkan … / Panaskan …, chained with lalu and sampai.
+        - Ordering: Saya mau pesan … / tidak pakai … / Jangan terlalu pedas, ya.
+    grammar: id.imperative.basic
+    examples:
+      - text: Potong ayam, lalu goreng sampai harum.
+        ar_eg: قطّع الفراخ، وبعدين اقليها لحد ما ريحتها تطلع.
+        ar: قطّع الدجاج ثم اقلِه حتى تفوح رائحته.
+        en: Cut the chicken, then fry until fragrant.
+  - title: Bersalaman, berdasarkan
+    body:
+      ar_eg: |
+        - ber-…-an = مع بعض (bersalaman، berpelukan، berkenalan) أو كتير ورا بعض (berdatangan، berlarian) أو مسافة (berdekatan، berjauhan).
+        - ber-…-kan: أهمها berdasarkan = بناءً على / حسب.
+      ar: |
+        - ber-…-an للمشاركة (bersalaman، berpelukan، berkenalan) أو الكثرة (berdatangan، berlarian) أو المسافة (berdekatan، berjauhan).
+        - ber-…-kan: أهمها berdasarkan = بناءً على.
+      en: |
+        - ber-…-an = each other (bersalaman, berpelukan, berkenalan), many at once (berdatangan, berlarian) or distance (berdekatan, berjauhan).
+        - ber-…-kan: above all berdasarkan = based on.
+    grammar: id.confix.ber-an
+    examples:
+      - text: Tamu-tamu berdatangan dan bersalaman.
+        ar_eg: الضيوف جم ورا بعض وسلّموا على بعض.
+        ar: توافد الضيوف وتصافحوا.
+        en: The guests arrived one after another and shook hands.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: gurih
+        ar_eg: طعمه غني
+        ar: غنيّ الطعم
+        en: savoury
+      - text: asam
+        ar_eg: حامض
+        ar: حامض
+        en: sour
+      - text: pahit
+        ar_eg: مُر
+        ar: مُرّ
+        en: bitter
+      - text: lezat
+        ar_eg: لذيذ
+        ar: لذيذ
+        en: delicious
+      - text: harum
+        ar_eg: ريحته حلوة
+        ar: زكيّ الرائحة
+        en: fragrant
+    words: [gurih, asam, pahit, lezat, harum]
+  - id: e02
+    type: multiple_choice
+    question: Untuk orang Muslim, babi ___.
+    options: ["haram", "halal", "manis"]
+    answer: 0
+    explain:
+      ar_eg: babi = خنزير، وهو حرام على المسلمين = haram.
+      ar: babi = الخنزير، وهو محرّم على المسلم.
+      en: babi is pork, which is haram for Muslims.
+    words: [babi, haram]
+  - id: e03
+    type: listen
+    text: Saya mau pesan es teh, tidak pakai gula.
+    options: ["Saya mau pesan es teh, tidak pakai gula.", "Saya mau pesan es teh, pakai gula.", "Saya mau pesan teh panas, tidak pakai gula."]
+    answer: 0
+    words: [pesan, pakai, gula]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه الأمر من mencicipi (يدوق)؟
+      ar: ما صيغة الأمر من mencicipi (يتذوّق)؟
+      en: What is the command form of mencicipi (to taste)?
+    options: ["Cicipi!", "Mencicipi!", "Bercicipi!"]
+    answer: 0
+    explain:
+      ar_eg: بنشيل meN- (هنا men-)، يفضل cicipi.
+      ar: تُحذف meN- فيبقى cicipi.
+      en: Drop meN- and you get cicipi.
+    words: [cicipi]
+  - id: e05
+    type: multiple_choice
+    question: Malam ini tamu-tamu ___ ke pasar malam Gianyar.
+    options: ["berpelukan", "berdasarkan", "berdatangan"]
+    answer: 2
+    explain:
+      ar_eg: ناس كتير جايين ورا بعض = berdatangan.
+      ar: كثرة القادمين وتتابعهم = berdatangan.
+      en: Many people arriving one after another = berdatangan.
+    words: [berdatangan, tamu]
+  - id: e06
+    type: fill_blank
+    sentence: Sop ini terlalu ___. Garamnya banyak sekali.
+    meaning:
+      ar_eg: الشوربة دي مالحة زيادة. الملح فيها كتير قوي.
+      ar: هذا الحساء مالح أكثر من اللازم، فملحه كثير جدًّا.
+      en: This soup is too salty. There's a lot of salt in it.
+    options: ["asam", "asin", "manis"]
+    answers: [asin]
+    words: [asin, garam]
+  - id: e07
+    type: fill_blank
+    sentence: ___ minyak, lalu goreng bawang.
+    meaning:
+      ar_eg: سخّن الزيت، وبعدين اقلي البصل.
+      ar: سخّن الزيت ثم اقلِ البصل.
+      en: Heat the oil, then fry the onions.
+    options: ["Berpanas", "Panaskan", "Memanaskan"]
+    answers: [Panaskan]
+    explain:
+      ar_eg: خطوة في وصفة = أمر، من غير meN-.
+      ar: خطوة الوصفة أمر بلا meN-.
+      en: A recipe step is a command, without meN-.
+    words: [panaskan, goreng]
+  - id: e08
+    type: fill_blank
+    sentence: Kami memasak ayam ini ___ resep Bu Siti.
+    meaning:
+      ar_eg: إحنا طبخنا الفراخ دي على وصفة مدام سيتي.
+      ar: طبخنا هذا الدجاج وفق وصفة السيدة سيتي.
+      en: We cooked this chicken from Bu Siti's recipe.
+    options: ["bersalaman", "berdekatan", "berdasarkan"]
+    answers: [berdasarkan]
+    words: [berdasarkan, resep]
+  - id: e09
+    type: build_sentence
+    source:
+      ar_eg: عايز أطلب رز مقلي، من غير شطة.
+      ar: أريد أن أطلب أرزًا مقليًّا بلا صلصة حارّة.
+      en: I'd like to order fried rice, without sambal.
+    answer: Saya mau pesan nasi goreng, tidak pakai sambal.
+    distractors: [jangan, manis]
+    words: [pesan, pakai, sambal]
+  - id: e10
+    type: build_sentence
+    source:
+      ar_eg: قطّع الفراخ، وبعدين اقليها.
+      ar: قطّع الدجاج ثم اقلِه.
+      en: Cut the chicken, then fry it.
+    answer: Potong ayam, lalu goreng.
+    distractors: [memotong, rebus]
+    words: [potong, goreng]
+  - id: e11
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: القهوة دي مُرّة زيادة.
+      ar: هذه القهوة مُرّة أكثر من اللازم.
+      en: This coffee is too bitter.
+    answers:
+      - Kopi ini terlalu pahit.
+      - Kopi ini terlalu pahit
+      - Kopinya terlalu pahit.
+      - Kopinya terlalu pahit
+    words: [pahit, terlalu]
+  - id: e12
+    type: translate
+    direction: from_target
+    source_text: Setelah salat Id, kami bersalaman dan berpelukan.
+    answers_meaning:
+      ar_eg: ["بعد صلاة العيد، سلّمنا على بعض وحضنّا بعض.", "بعد صلاة العيد سلّمنا واتحضنّا"]
+      ar: ["بعد صلاة العيد تصافحنا وتعانقنا.", "بعد صلاة العيد تصافحنا وتعانقنا"]
+      en: ["After Eid prayers, we shook hands and hugged.", "After the Eid prayer we shook hands and hugged each other"]
+    words: [bersalaman, berpelukan]
+  - id: e13
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: اغسل الفلفل الحرّاق، وبعدين قطّعه.
+      ar: اغسل الفلفل الحار ثم قطّعه.
+      en: Wash the chillies, then cut them.
+    answers:
+      - Cuci cabai, lalu potong.
+      - Cuci cabai, lalu potong
+      - Cuci cabainya, lalu potong.
+      - Cuci cabainya, lalu potong
+      - Cuci cabai lalu potong.
+      - Cuci cabai, kemudian potong.
+      - Cuci dan potong cabai.
+    words: [cuci, potong, cabai]
+  - id: e14
+    type: dictation
+    text: Sambalnya pedas, tetapi lezat.
+    meaning:
+      ar_eg: الشطة حرّاقة، بس لذيذة.
+      ar: الصلصة حارّة لكنها لذيذة.
+      en: The sambal is spicy, but delicious.
+    words: [pedas, lezat]
+  - id: e15
+    type: speaking
+    text: Bu, makanan di sini halal? Saya mau pesan sate ayam satu.
+    meaning:
+      ar_eg: يا مدام، الأكل هنا حلال؟ عايز أطلب واحد ساتيه فراخ.
+      ar: يا سيدتي، هل الطعام هنا حلال؟ أريد طبق ساتيه دجاج واحدًا.
+      en: Ma'am, is the food here halal? I'd like one chicken satay.
+    words: [halal, pesan]
+dialogue:
+  title: Warung Muslim di Gianyar
+  lines:
+    - speaker: Dimas
+      text: Mohamed, kamu mau makan apa?
+      ar_eg: يا محمد، عايز تاكل إيه؟
+      ar: يا محمد، ماذا تريد أن تأكل؟
+      en: Mohamed, what do you want to eat?
+    - speaker: Mohamed
+      text: Ayo ke warung Muslim itu. Semua makanannya halal.
+      ar_eg: يلا نروح الوارونج المسلم ده. كل أكله حلال.
+      ar: هيا إلى ذلك المطعم المسلم، فكل طعامه حلال.
+      en: Let's go to that Muslim stall. All its food is halal.
+    - speaker: Bu Siti
+      text: Mau pesan apa, Mas?
+      ar_eg: تحبوا تطلبوا إيه يا شباب؟
+      ar: ماذا تطلبون يا شباب؟
+      en: What would you like to order?
+    - speaker: Mohamed
+      text: Saya mau pesan nasi goreng satu dan es teh manis. Jangan terlalu pedas, ya, Bu.
+      ar_eg: عايز أطلب واحد رز مقلي وشاي متلج بسكر. ماتخليهوش حرّاق قوي يا مدام.
+      ar: أريد أرزًا مقليًّا واحدًا وشايًا مثلّجًا حلوًا، ولا تجعليه حارًّا جدًّا يا سيدتي.
+      en: I'd like one fried rice and a sweet iced tea. Not too spicy, please, ma'am.
+    - speaker: Dimas
+      text: Kamu bisa memasak nasi goreng?
+      ar_eg: إنت بتعرف تعمل رز مقلي؟
+      ar: هل تعرف طهي الأرز المقلي؟
+      en: Can you cook fried rice?
+    - speaker: Mohamed
+      text: Bisa! Goreng bawang sampai harum, lalu masukkan nasi dan kecap manis, lalu aduk rata.
+      ar_eg: أيوه! اقلي البصل لحد ما ريحته تطلع، وبعدين حط الرز والصويا الحلوة وقلّب كويس.
+      ar: نعم! اقلِ البصل حتى تفوح رائحته، ثم أضف الأرز وصلصة الصويا الحلوة وقلّب جيدًا.
+      en: I can! Fry the onions until fragrant, then add the rice and sweet soy sauce and stir well.
+souvenir:
+  id: bipa2.u05.souvenir
+  title: Babi guling dan warung halal
+  note:
+    ar_eg: معظم أهل بالي هندوس، فأكلات الخنزير زي «babi guling» (خنزير مشوي) مشهورة جدًّا هنا، خصوصًا في جيانيار. بس ماتقلقش، دوّر على يافطة «halal» أو «warung Muslim»، وهتلاقي ناس طيبين بيطبخولك أكل لذيذ. وبره بالي، في أغلب إندونيسيا، الحلال هو الأساس أصلًا.
+    ar: أغلب سكان بالي هندوس، ولذلك تنتشر أطباق الخنزير مثل «babi guling» (الخنزير المشوي)، ولا سيما في جيانيار. ابحث عن لافتة «halal» أو «warung Muslim» تجد طعامًا شهيًّا وأهلًا كرامًا. وخارج بالي يكون الحلال هو الأصل في معظم إندونيسيا.
+    en: Most Balinese are Hindu, so pork dishes like babi guling (spit-roast pig) are famous here, especially in Gianyar. Just look for a "halal" sign or a "warung Muslim" and you'll find kind cooks and great food. Outside Bali, in most of Indonesia, halal is simply the default.
+review:
+  status: draft
+  verified: false
