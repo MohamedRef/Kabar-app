@@ -299,6 +299,26 @@ pub fn crosscheck_bridge(root: &Root, lang: Lang) -> Result<Vec<String>> {
     let cards = bridge::load_entries(root)?;
     let cards: BTreeMap<&str, MeaningShift> = cards.iter().map(|b| (b.word.as_str(), b.shift)).collect();
     let plan = Plan::load(root, lang)?;
+    // Javanese glosses name an Indonesian equivalent; its own lemma and root
+    // (menghormati → hormat) lead to the card too. When that equivalent is not
+    // Arabic (asmanipun → namanya), the loan is Javanese-only and the
+    // Indonesian Bridge has no place for it.
+    let mut id_stems: BTreeMap<String, (Vec<String>, bool)> = BTreeMap::new();
+    if lang == Lang::Jv {
+        let id_plan = Plan::load(root, Lang::Id)?;
+        for batch in id_plan.batches() {
+            let path = batch_path(root, Lang::Id, batch);
+            if path.exists() {
+                for g in read_batch(&path)? {
+                    let arabic = g.arabic_origin.is_some();
+                    id_stems.insert(
+                        g.word.clone(),
+                        ([Some(g.lemma), g.root].into_iter().flatten().collect(), arabic),
+                    );
+                }
+            }
+        }
+    }
     let mut issues = Vec::new();
     for batch in plan.batches() {
         let path = batch_path(root, lang, batch);
@@ -314,15 +334,19 @@ pub fn crosscheck_bridge(root: &Root, lang: Lang) -> Result<Vec<String>> {
             // Javanese words borrow through Indonesian (kewan → hewan): the card of
             // the first Indonesian equivalent counts for an Arabic-origin gloss,
             // but only the word's own card demands one (pas ≠ waktu).
+            let first =
+                e.indonesian.as_deref().and_then(|i| i.split(',').next()).map(|f| f.trim().to_lowercase());
+            let id_entry = first.as_ref().and_then(|f| id_stems.get(f));
             let via_indonesian = || {
-                let first = e.indonesian.as_deref()?.split(',').next()?.trim().to_lowercase();
-                cards.get(first.as_str())
+                let stems = id_entry.into_iter().flat_map(|(s, _)| s).map(String::as_str);
+                first.as_deref().into_iter().chain(stems).find_map(|w| cards.get(w))
             };
+            let javanese_only = id_entry.is_some_and(|(_, arabic)| !arabic);
             // Names (Musa, Mesir) and set phrases (swt) carry an Arabic origin
             // without being Bridge material.
             let name_or_phrase = e.senses.iter().all(|s| matches!(s.pos, Pos::ProperNoun | Pos::Phrase));
             match (card, &e.arabic_origin) {
-                (None, Some(_)) if name_or_phrase || via_indonesian().is_some() => {}
+                (None, Some(_)) if name_or_phrase || via_indonesian().is_some() || javanese_only => {}
                 (None, Some(a)) => issues.push(format!("{}: arabic_origin {a} but no Bridge card", e.word)),
                 (Some(_), None) => issues.push(format!("{}: has a Bridge card but no arabic_origin", e.word)),
                 (Some(MeaningShift::FalseFriend), Some(_)) if e.false_friend.is_none() => {
