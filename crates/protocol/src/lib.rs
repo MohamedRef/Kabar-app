@@ -11,6 +11,7 @@ pub mod lesson;
 pub mod pen;
 pub mod reader;
 pub mod srs;
+pub mod story;
 pub mod sync;
 pub mod test;
 
