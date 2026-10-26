@@ -6,6 +6,7 @@ use std::path::Path;
 
 use kabar_core::clock::HlcClock;
 use kabar_core::settings::Settings;
+use kabar_protocol::lesson::LessonPosition;
 use kabar_protocol::pen::PenLabReport;
 use kabar_protocol::{DeviceId, Hlc};
 use rusqlite::{Connection, OptionalExtension, params};
@@ -229,6 +230,97 @@ impl Store {
         let ids = stmt.query_map([], |r| r.get::<_, String>(0))?.collect::<rusqlite::Result<_>>()?;
         Ok(ids)
     }
+
+    /// Appends a lesson event (`completed`, ...). Append-only: never updated.
+    pub fn record_lesson_event(
+        &mut self,
+        lesson_id: &str,
+        kind: &str,
+        payload: &impl serde::Serialize,
+    ) -> Result<LessonEvent> {
+        let hlc = self.clock.tick(now_ms());
+        let id = uuid::Uuid::new_v4().to_string();
+        let payload = serde_json::to_string(payload)?;
+        self.conn.execute(
+            "INSERT INTO lesson_events (id, lesson_id, kind, payload, device_id, hlc_wall, hlc_counter)
+             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)",
+            params![id, lesson_id, kind, payload, self.device.0, hlc.wall_ms as i64, hlc.counter],
+        )?;
+        Ok(LessonEvent { id, lesson_id: lesson_id.to_owned(), kind: kind.to_owned(), payload, hlc })
+    }
+
+    /// A lesson's events, oldest first.
+    pub fn lesson_events(&self, lesson_id: &str) -> Result<Vec<LessonEvent>> {
+        let mut stmt = self.conn.prepare(
+            "SELECT id, lesson_id, kind, payload, device_id, hlc_wall, hlc_counter FROM lesson_events
+             WHERE deleted = 0 AND lesson_id = ?1 ORDER BY hlc_wall, hlc_counter",
+        )?;
+        let rows = stmt.query_map([lesson_id], |r| {
+            Ok(LessonEvent {
+                id: r.get(0)?,
+                lesson_id: r.get(1)?,
+                kind: r.get(2)?,
+                payload: r.get(3)?,
+                hlc: Hlc {
+                    device: DeviceId(r.get(4)?),
+                    wall_ms: r.get::<_, i64>(5)? as u64,
+                    counter: r.get(6)?,
+                },
+            })
+        })?;
+        Ok(rows.collect::<rusqlite::Result<_>>()?)
+    }
+
+    /// Saves this device's Lanjut position (one row per device, LWW by HLC).
+    pub fn save_position(&mut self, position: &LessonPosition) -> Result<()> {
+        self.write_session(&serde_json::to_string(position)?, false)
+    }
+
+    /// Forgets this device's position (the lesson was finished). A tombstone,
+    /// so other devices stop offering to continue it once synced.
+    pub fn clear_position(&mut self) -> Result<()> {
+        self.write_session("null", true)
+    }
+
+    fn write_session(&mut self, payload: &str, deleted: bool) -> Result<()> {
+        let hlc = self.clock.tick(now_ms());
+        self.conn.execute(
+            "INSERT INTO sessions (device, payload, device_id, hlc_wall, hlc_counter, deleted)
+             VALUES (?1, ?2, ?1, ?3, ?4, ?5)
+             ON CONFLICT(device) DO UPDATE SET
+                payload = excluded.payload, device_id = excluded.device_id,
+                hlc_wall = excluded.hlc_wall, hlc_counter = excluded.hlc_counter, deleted = excluded.deleted",
+            params![self.device.0, payload, hlc.wall_ms as i64, hlc.counter, deleted],
+        )?;
+        Ok(())
+    }
+
+    /// The newest unfinished lesson position from any device (Lanjut).
+    pub fn position(&self) -> Result<Option<LessonPosition>> {
+        let payload = self
+            .conn
+            .query_row(
+                "SELECT payload FROM sessions WHERE deleted = 0
+                 ORDER BY hlc_wall DESC, hlc_counter DESC, device_id DESC LIMIT 1",
+                [],
+                |r| r.get::<_, String>(0),
+            )
+            .optional()?;
+        Ok(match payload {
+            Some(p) => Some(serde_json::from_str(&p)?),
+            None => None,
+        })
+    }
+}
+
+/// One row of `lesson_events`; `payload` is protocol JSON for `kind`.
+#[derive(Clone, Debug, PartialEq)]
+pub struct LessonEvent {
+    pub id: String,
+    pub lesson_id: String,
+    pub kind: String,
+    pub payload: String,
+    pub hlc: Hlc,
 }
 
 fn migrate(conn: &mut Connection) -> Result<()> {
@@ -312,6 +404,51 @@ mod tests {
         }
         let done = store.completed_lessons().unwrap();
         assert_eq!(done.into_iter().collect::<Vec<_>>(), ["bipa1.test", "bipa1.u01.l01"]);
+    }
+
+    #[test]
+    fn lesson_events_are_appended_in_order() {
+        use kabar_protocol::lesson::LessonCompleted;
+        let mut store = Store::open_in_memory().unwrap();
+        let done = LessonCompleted {
+            score: 81,
+            xp: 19,
+            duration_ms: 420_000,
+            mistakes: vec!["sore".into()],
+            results: vec![],
+        };
+        let a = store.record_lesson_event("bipa1.u01.l01", "completed", &done).unwrap();
+        let b = store.record_lesson_event("bipa1.u01.l01", "completed", &done).unwrap();
+        store.record_lesson_event("bipa1.u01.l02", "completed", &done).unwrap();
+        assert!(b.hlc > a.hlc);
+        let events = store.lesson_events("bipa1.u01.l01").unwrap();
+        assert_eq!(events.iter().map(|e| e.id.as_str()).collect::<Vec<_>>(), [a.id.as_str(), b.id.as_str()]);
+        let back: LessonCompleted = serde_json::from_str(&events[0].payload).unwrap();
+        assert_eq!(back, done);
+    }
+
+    #[test]
+    fn position_is_last_writer_wins_and_survives_reopen() {
+        use kabar_protocol::lesson::LessonStep;
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("kabar.db");
+        let mut store = Store::open(&path).unwrap();
+        assert_eq!(store.position().unwrap(), None);
+        let at = |id: &str| LessonPosition {
+            lesson_id: "bipa1.u01.l02".into(),
+            step: LessonStep::Exercise { id: id.into(), retry: false },
+            progress: None,
+        };
+        store.save_position(&at("e03")).unwrap();
+        store.save_position(&at("e04")).unwrap();
+        drop(store);
+
+        let mut store = Store::open(&path).unwrap();
+        assert_eq!(store.position().unwrap(), Some(at("e04")));
+        let rows: i64 = store.conn.query_row("SELECT COUNT(*) FROM sessions", [], |r| r.get(0)).unwrap();
+        assert_eq!(rows, 1, "one row per device");
+        store.clear_position().unwrap();
+        assert_eq!(store.position().unwrap(), None);
     }
 
     #[test]

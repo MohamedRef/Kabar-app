@@ -157,11 +157,14 @@ impl PartialEq for Db {
 #[component]
 fn Loaded(db: Db) -> Element {
     let initial = use_hook(|| db.0.borrow().settings().unwrap_or_default());
+    // KABAR_OPEN_LESSON=bipa1.u01.l01 opens the Lesson Player at launch
+    // (previews and screenshots on the Mac).
+    let open_lesson = use_hook(|| std::env::var("KABAR_OPEN_LESSON").ok());
     let ui = use_context_provider(|| Ui {
         settings: Signal::new(initial),
         width: Signal::new(WidthClass::Expanded),
-        screen: Signal::new(Screen::Today),
-        lesson: Signal::new(None),
+        screen: Signal::new(if open_lesson.is_some() { Screen::Lesson } else { Screen::Today }),
+        lesson: Signal::new(open_lesson),
     });
     use_context_provider(|| db.clone());
     use_width_tracking(ui.width);

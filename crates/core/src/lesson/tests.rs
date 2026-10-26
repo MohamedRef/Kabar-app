@@ -1,0 +1,381 @@
+use kabar_protocol::lesson::{ExerciseKind, LessonStep, Outcome, Souvenir};
+
+use super::*;
+
+const L01: &str = include_str!("../../../../fixtures/lessons/bipa1.u01.l01.yaml");
+const L02: &str = include_str!("../../../../fixtures/lessons/bipa1.u01.l02.yaml");
+
+fn l01() -> LessonContent {
+    parse_lesson(L01).unwrap()
+}
+
+fn l02() -> LessonContent {
+    parse_lesson(L02).unwrap()
+}
+
+fn ex<'a>(l: &'a LessonContent, id: &str) -> &'a Exercise {
+    l.exercises.iter().find(|e| e.id == id).unwrap()
+}
+
+const EG: UiLanguage = UiLanguage::ArEg;
+
+fn text(s: &str) -> Answer {
+    Answer::Text(s.into())
+}
+
+#[test]
+fn fixtures_parse_and_validate() {
+    for (yaml, id) in [(L01, "bipa1.u01.l01"), (L02, "bipa1.u01.l02")] {
+        let l = parse_lesson(yaml).unwrap();
+        assert_eq!(l.id, id);
+        let issues = validate(&l);
+        assert!(issues.is_empty(), "{id}: {issues:#?}");
+        assert!((3..=6).contains(&l.slides.len()));
+        assert!(!l.review.verified, "fixtures stay unverified until the learner approves them");
+    }
+}
+
+#[test]
+fn fixtures_cover_every_exercise_kind() {
+    let mut seen = HashSet::new();
+    for l in [l01(), l02()] {
+        for e in &l.exercises {
+            let tag = match &e.kind {
+                ExerciseKind::MultipleChoice { .. } => "multiple_choice",
+                ExerciseKind::MatchPairs { .. } => "match_pairs",
+                ExerciseKind::Translate { direction: Direction::ToTarget, .. } => "translate_to",
+                ExerciseKind::Translate { direction: Direction::FromTarget, .. } => "translate_from",
+                ExerciseKind::BuildSentence { .. } => "build_sentence",
+                ExerciseKind::Listen { options, .. } if options.is_empty() => "listen_typed",
+                ExerciseKind::Listen { .. } => "listen_pick",
+                ExerciseKind::FillBlank { options, .. } if options.is_empty() => "fill_typed",
+                ExerciseKind::FillBlank { .. } => "fill_pick",
+                ExerciseKind::Dictation { .. } => "dictation",
+                ExerciseKind::Speaking { .. } => "speaking",
+            };
+            seen.insert(tag);
+        }
+    }
+    assert_eq!(seen.len(), 11, "{seen:?}");
+}
+
+#[test]
+fn arabic_loans_are_marked() {
+    let words: Vec<_> = [l01(), l02()].into_iter().flat_map(|l| l.new_words).collect();
+    for (w, ar) in [("kabar", "خبر"), ("selamat", "سلامة"), ("salam", "سلام"), ("maaf", "معاف")]
+    {
+        let nw = words.iter().find(|n| n.word == w).unwrap_or_else(|| panic!("{w} missing"));
+        assert_eq!(nw.arabic.as_deref(), Some(ar));
+    }
+}
+
+#[test]
+fn validate_catches_broken_content() {
+    let mut l = l01();
+    l.schema = "kabar.lesson/v0".into();
+    l.exercises[1].id = "e01".into();
+    if let ExerciseKind::MultipleChoice { answer, .. } = &mut l.exercises[0].kind {
+        *answer = 7;
+    }
+    if let ExerciseKind::FillBlank { sentence, .. } = &mut l.exercises[4].kind {
+        *sentence = "Selamat ___ di ___".into();
+    }
+    if let ExerciseKind::Translate { answers_meaning, .. } = &mut l.exercises[7].kind {
+        *answers_meaning = None;
+    }
+    l.review.verified = true;
+    let issues = validate(&l);
+    let has = |needle: &str| issues.iter().any(|i| i.to_string().contains(needle));
+    assert!(has("expected kabar.lesson/v1"), "{issues:#?}");
+    assert!(has("duplicate id"));
+    assert!(has("answer 7 is out of range"));
+    assert!(has("exactly one ___"));
+    assert!(has("from_target needs answers_meaning"));
+    assert!(has("only approved content can be verified"));
+}
+
+#[test]
+fn normalize_folds_case_punctuation_and_arabic_variants() {
+    assert_eq!(normalize("  Apa   kabar?! "), "apa kabar");
+    assert_eq!(normalize("Saya sedang membaca buku."), "saya sedang membaca buku");
+    assert_eq!(normalize("Anak-anak bermain di taman."), "anak-anak bermain di taman");
+    assert_eq!(normalize("أهلاً وسهلاً!"), normalize("اهلا وسهلا"));
+    assert_eq!(normalize("شكــراً"), "شكرا");
+    assert_eq!(normalize("إلى اللقاء"), normalize("الي اللقاء"));
+    assert_eq!(normalize("سلامة"), normalize("سلامه"));
+    assert_eq!(normalize("I'm fine — thanks"), "im fine thanks");
+}
+
+#[test]
+fn grading_text_answers() {
+    let l = l01();
+    // Dictation: exact, then a one-letter typo, then a real miss.
+    let d = ex(&l, "e10");
+    assert_eq!(grade(d, &text("selamat sore bu"), EG), Grade::Correct);
+    assert_eq!(
+        grade(d, &text("Selamat sor, Bu"), EG),
+        Grade::Almost { expected: "Selamat sore, Bu.".into() }
+    );
+    assert_eq!(grade(d, &text("Selamat malam, Bu"), EG), Grade::Wrong);
+    // Short words get no typo slack.
+    assert_eq!(grade(d, &text("Selamat sore, Ba"), EG), Grade::Wrong);
+    // Listen, typed.
+    assert_eq!(grade(ex(&l, "e12"), &text("sampai jumpa"), EG), Grade::Correct);
+    assert_eq!(
+        grade(ex(&l, "e12"), &text("sampaijumpa"), EG),
+        Grade::Almost { expected: "Sampai jumpa!".into() }
+    );
+    // Empty answers are never right.
+    assert_eq!(grade(d, &text("  ?"), EG), Grade::Wrong);
+}
+
+#[test]
+fn grading_spec_sentences() {
+    let dict = |t: &str| Exercise {
+        id: "x".into(),
+        kind: ExerciseKind::Dictation { text: t.into(), audio: None, meaning: Localized::default() },
+        explain: None,
+        words: vec![],
+    };
+    let d = dict("Saya sedang membaca buku.");
+    assert_eq!(grade(&d, &text("saya sedang membaca buku"), EG), Grade::Correct);
+    assert!(matches!(grade(&d, &text("Saya sedang membca buku."), EG), Grade::Almost { .. }));
+    // Two typos in four words is more than "one small slip".
+    assert_eq!(grade(&d, &text("Saya sedeng membca buku."), EG), Grade::Wrong);
+    let d = dict("Anak-anak bermain di taman.");
+    assert_eq!(grade(&d, &text("anak-anak bermain di taman"), EG), Grade::Correct);
+    assert!(matches!(grade(&d, &text("Anak-anak bermain di tamam"), EG), Grade::Almost { .. }));
+    let d = dict("Rumahnya dibersihkan kemarin.");
+    assert_eq!(grade(&d, &text("Rumahnya dibersihkan kemarin"), EG), Grade::Correct);
+    assert_eq!(grade(&d, &text("Rumahnya membersihkan kemarin"), EG), Grade::Wrong);
+}
+
+#[test]
+fn grading_choices_and_tiles() {
+    let l = l01();
+    assert_eq!(grade(ex(&l, "e01"), &Answer::Choice(0), EG), Grade::Correct);
+    assert_eq!(grade(ex(&l, "e01"), &Answer::Choice(2), EG), Grade::Wrong);
+    assert_eq!(grade(ex(&l, "e05"), &Answer::Choice(0), EG), Grade::Correct);
+    assert_eq!(grade(ex(&l, "e05"), &Answer::Choice(1), EG), Grade::Wrong);
+    let b = ex(&l, "e07");
+    assert_eq!(grade(b, &text("Selamat jalan, sampai jumpa!"), EG), Grade::Correct);
+    assert_eq!(grade(b, &text("Selamat tinggal, sampai jumpa!"), EG), Grade::Wrong);
+    // Alternatives count.
+    let l2 = l02();
+    let b2 = ex(&l2, "e05");
+    assert_eq!(grade(b2, &text("Baik, terima kasih."), EG), Grade::Correct);
+}
+
+#[test]
+fn grading_translations() {
+    let l = l01();
+    let to = ex(&l, "e06");
+    assert_eq!(grade(to, &text("selamat malam bu"), EG), Grade::Correct);
+    assert_eq!(
+        grade(to, &text("Selamat malm, Bu!"), EG),
+        Grade::Almost { expected: "Selamat malam, Bu!".into() }
+    );
+    // An answer that misses every reference is for the learner (later the AI) to judge, not "wrong".
+    assert_eq!(grade(to, &text("Malam, Ibu Rina!"), EG), Grade::NeedsReview);
+
+    let from = ex(&l, "e08");
+    assert_eq!(grade(from, &text("أهلاً وسهلاً"), EG), Grade::Correct);
+    assert_eq!(grade(from, &text("اهلا بيك"), EG), Grade::Correct);
+    // English while the UI is in Arabic is still right.
+    assert_eq!(grade(from, &text("welcome"), EG), Grade::Correct);
+    assert_eq!(grade(from, &text("نورت"), EG), Grade::NeedsReview);
+    assert_eq!(references(from, UiLanguage::En), vec!["Welcome!".to_string()]);
+}
+
+#[test]
+fn speaking_and_match_pairs_never_fail() {
+    let l = l01();
+    assert_eq!(grade(ex(&l, "e11"), &Answer::Practiced, EG), Grade::Practiced);
+    assert_eq!(grade(ex(&l, "e02"), &Answer::Matched { missed: vec!["sore".into()] }, EG), Grade::Correct);
+}
+
+#[test]
+fn shuffles_are_deterministic_and_never_identity() {
+    for n in 2..10 {
+        for seed in 0..50 {
+            let s = shuffled(n, seed);
+            assert_eq!(s, shuffled(n, seed));
+            assert_ne!(s, (0..n).collect::<Vec<_>>());
+            let mut sorted = s.clone();
+            sorted.sort();
+            assert_eq!(sorted, (0..n).collect::<Vec<_>>());
+        }
+    }
+    let p = Player::new(l01());
+    let b = ex(p.lesson(), "e07").clone();
+    let tiles = p.tiles(&b);
+    assert_eq!(tiles, Player::new(l01()).tiles(&b), "same order on every device");
+    let mut sorted = tiles.clone();
+    sorted.sort();
+    let mut expected = vec!["Selamat", "jalan", "sampai", "jumpa", "tinggal", "pagi"];
+    expected.sort();
+    assert_eq!(sorted, expected);
+}
+
+/// Answers every exercise right, except the ids in `miss`.
+fn answer(p: &mut Player, miss: &[&str]) -> Grade {
+    let e = p.exercise().unwrap().clone();
+    let wrong = miss.contains(&e.id.as_str());
+    let a = match &e.kind {
+        ExerciseKind::MultipleChoice { answer, .. } => {
+            Answer::Choice(if wrong { answer + 1 } else { *answer })
+        }
+        ExerciseKind::Listen { options, answer: Some(a), .. } if !options.is_empty() => {
+            Answer::Choice(if wrong { a + 1 } else { *a })
+        }
+        ExerciseKind::FillBlank { options, answers, .. } if !options.is_empty() => {
+            let right = options.iter().position(|o| o == &answers[0]).unwrap();
+            Answer::Choice(if wrong { (right + 1) % options.len() } else { right })
+        }
+        ExerciseKind::MatchPairs { .. } => Answer::Matched { missed: vec![] },
+        ExerciseKind::Speaking { .. } => Answer::Practiced,
+        _ if wrong => text("salah sekali"),
+        ExerciseKind::FillBlank { answers, .. } => text(&answers[0]),
+        _ => text(&references(&e, EG)[0]),
+    };
+    let g = p.check(&a, EG);
+    if g == Grade::NeedsReview {
+        p.self_assess(false);
+    }
+    g
+}
+
+#[test]
+fn player_walks_slides_exercises_retries_dialogue_summary() {
+    let mut p = Player::new(l01());
+    assert_eq!(p.step(), Step::Slide(0));
+    assert_eq!(p.position().step, LessonStep::Slide { index: 0 });
+    assert!(p.back().is_none());
+    p.advance();
+    assert_eq!(p.back().unwrap().step, LessonStep::Slide { index: 0 });
+    for _ in 0..4 {
+        p.advance();
+    }
+    assert_eq!(p.step(), Step::Exercise { index: 0, retry: false });
+
+    let mut positions = Vec::new();
+    while let Step::Exercise { .. } = p.step() {
+        // Miss e03 and e08 (a translation the learner says doesn't match) the first time only.
+        let miss: &[&str] =
+            if matches!(p.step(), Step::Exercise { retry: true, .. }) { &[] } else { &["e03", "e08"] };
+        answer(&mut p, miss);
+        // Checking twice returns the same grade and records nothing new.
+        let again = p.check(&Answer::Choice(0), EG);
+        assert_eq!(Some(&again), p.pending());
+        positions.push(p.advance().step);
+        assert!(p.fraction() <= 1.0);
+    }
+    let tail: Vec<_> = positions.iter().rev().take(3).rev().cloned().collect();
+    assert_eq!(
+        tail,
+        vec![
+            LessonStep::Exercise { id: "e03".into(), retry: true },
+            LessonStep::Exercise { id: "e08".into(), retry: true },
+            LessonStep::Dialogue,
+        ]
+    );
+    assert_eq!(p.step(), Step::Dialogue);
+    p.add_elapsed(90_000);
+    p.advance();
+    assert_eq!(p.step(), Step::Summary);
+    assert_eq!(p.fraction(), 1.0);
+
+    let s = p.summary();
+    // 12 exercises, speaking isn't graded: 11 graded, 9 right first time.
+    assert_eq!((s.correct, s.graded), (9, 11));
+    assert_eq!(s.score, 81);
+    assert_eq!(s.xp, XP_FINISH + 9);
+    assert_eq!(s.duration_ms, 90_000);
+    assert_eq!(s.mistakes, vec!["sore".to_string(), "selamat datang".to_string()]);
+    let done = p.completed();
+    let e03 = done.results.iter().find(|r| r.id == "e03").unwrap();
+    assert_eq!((e03.first, e03.retry), (Outcome::Missed, Some(Outcome::Correct)));
+}
+
+#[test]
+fn perfect_lesson_earns_the_bonus() {
+    let mut p = Player::new(l02());
+    while !matches!(p.step(), Step::Summary) {
+        if p.exercise().is_some() {
+            answer(&mut p, &[]);
+        }
+        p.advance();
+    }
+    let s = p.summary();
+    assert_eq!(s.score, 100);
+    assert_eq!(s.xp, XP_FINISH + s.correct + XP_PERFECT);
+    assert!(s.mistakes.is_empty());
+}
+
+#[test]
+fn resume_keeps_step_and_results() {
+    let mut p = Player::new(l02());
+    while p.exercise().is_none_or(|e| e.id != "e04") {
+        if p.exercise().is_some() {
+            answer(&mut p, &["e02", "e03"]);
+        }
+        p.advance();
+    }
+    let saved = p.position();
+    assert_eq!(saved.step, LessonStep::Exercise { id: "e04".into(), retry: false });
+    // Round-trips through JSON, as it does through the sessions table.
+    let json = serde_json::to_string(&saved).unwrap();
+    let mut q = Player::resume(l02(), &serde_json::from_str(&json).unwrap());
+    assert_eq!(q.step(), p.step());
+    assert_eq!(q.position(), saved);
+    while !matches!(q.step(), Step::Summary) {
+        if q.exercise().is_some() {
+            answer(&mut q, &[]);
+        }
+        q.advance();
+    }
+    // e03 (listen) was missed before the handoff and still got its retry.
+    let e03 = q.completed().results.into_iter().find(|r| r.id == "e03").unwrap();
+    assert_eq!(e03.retry, Some(Outcome::Correct));
+    // match_pairs is never "missed"; its result is a Correct.
+    assert_eq!(q.summary().graded, 11);
+}
+
+#[test]
+fn resume_falls_back_to_the_start_for_unknown_positions() {
+    let pos = LessonPosition {
+        lesson_id: "bipa1.u01.l01".into(),
+        step: LessonStep::Exercise { id: "e99".into(), retry: false },
+        progress: None,
+    };
+    assert_eq!(Player::resume(l01(), &pos).step(), Step::Slide(0));
+    let other = LessonPosition { lesson_id: "bipa9.u01.l01".into(), ..pos };
+    assert_eq!(Player::resume(l01(), &other).step(), Step::Slide(0));
+}
+
+#[test]
+fn skipping_listening_neither_scores_nor_retries() {
+    let mut l = l01();
+    l.slides.clear();
+    l.dialogue = None;
+    l.souvenir = Some(Souvenir {
+        id: "bipa1.u01.souvenir".into(),
+        title: "Fatahillah".into(),
+        note: Localized { ar_eg: "x".into(), ar: "x".into(), en: "x".into() },
+    });
+    let mut p = Player::new(l);
+    assert_eq!(p.step(), Step::Exercise { index: 0, retry: false });
+    while !matches!(p.step(), Step::Summary) {
+        let e = p.exercise().unwrap();
+        if matches!(e.kind, ExerciseKind::Listen { .. } | ExerciseKind::Dictation { .. }) {
+            p.skip();
+        } else {
+            answer(&mut p, &[]);
+            p.advance();
+        }
+    }
+    let s = p.summary();
+    assert_eq!(s.graded, 8);
+    assert_eq!(s.score, 100);
+    assert!(p.lesson().souvenir.is_some());
+}

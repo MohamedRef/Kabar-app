@@ -107,14 +107,20 @@ pub enum Direction {
 #[serde(tag = "type", rename_all = "snake_case")]
 pub enum ExerciseKind {
     /// Pick one option. `question` is target-language text (or empty when
-    /// `question_meaning` carries the prompt).
+    /// `question_meaning` carries the prompt). Options are either
+    /// target-language strings (`options`) or meanings in the learner's
+    /// language (`options_meaning`): exactly one of the two is non-empty.
     MultipleChoice {
         #[serde(default)]
         question: String,
         #[serde(default)]
         question_meaning: Option<Localized>,
+        #[serde(default)]
         options: Vec<String>,
-        /// Index into `options`.
+        /// "What does X mean?" options, shown in the UI language.
+        #[serde(default, skip_serializing_if = "Vec::is_empty")]
+        options_meaning: Vec<Localized>,
+        /// Index into `options` (or `options_meaning`).
         answer: usize,
     },
     /// Tap a word, then its meaning.
@@ -153,8 +159,12 @@ pub enum ExerciseKind {
         /// Empty → type what you heard.
         #[serde(default)]
         options: Vec<String>,
+        /// Index into `options`; `options[answer]` is `text`. None when typed.
         #[serde(default)]
         answer: Option<usize>,
+        /// Shown with the feedback, so hearing it also teaches what it means.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        meaning: Option<Localized>,
     },
     /// `sentence` holds one `___`. Empty `options` → typed answer.
     FillBlank {
@@ -233,13 +243,89 @@ pub struct Souvenir {
 pub struct LessonPosition {
     pub lesson_id: String,
     pub step: LessonStep,
+    /// Results so far, so a resumed lesson (on this or another device) keeps
+    /// its score and retries. Absent in positions written before it existed.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub progress: Option<LessonProgress>,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(tag = "at", rename_all = "snake_case")]
 pub enum LessonStep {
-    Slide { index: usize },
-    Exercise { id: String },
+    Slide {
+        index: usize,
+    },
+    Exercise {
+        id: String,
+        /// The end-of-lesson second try of an exercise missed the first time.
+        #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+        retry: bool,
+    },
     Dialogue,
     Summary,
+}
+
+/// Results of the exercises answered so far in one run through a lesson.
+#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LessonProgress {
+    #[serde(default)]
+    pub results: Vec<ExerciseResult>,
+    /// Active time spent in the lesson so far.
+    #[serde(default)]
+    pub elapsed_ms: u64,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct ExerciseResult {
+    /// The exercise id.
+    pub id: String,
+    pub first: Outcome,
+    /// The end-of-lesson retry, when the first try was missed.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub retry: Option<Outcome>,
+    /// Words to practise again (feeds weak-word tracking).
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub mistakes: Vec<String>,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum Outcome {
+    Correct,
+    /// Right apart from a small typo.
+    Almost,
+    Missed,
+    /// Not graded: speaking practice (until speech checking lands).
+    Practiced,
+    /// "Can't listen now": no score, no retry.
+    Skipped,
+}
+
+/// Payload of a `completed` row in `lesson_events`.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LessonCompleted {
+    /// First-try score, 0–100.
+    pub score: u32,
+    pub xp: u32,
+    pub duration_ms: u64,
+    /// Words the learner missed, for the review queue.
+    #[serde(default)]
+    pub mistakes: Vec<String>,
+    #[serde(default)]
+    pub results: Vec<ExerciseResult>,
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn old_positions_still_parse() {
+        let json = r#"{"lesson_id":"bipa1.u01.l01","step":{"at":"exercise","id":"e03"}}"#;
+        let p: LessonPosition = serde_json::from_str(json).unwrap();
+        assert_eq!(p.step, LessonStep::Exercise { id: "e03".into(), retry: false });
+        assert_eq!(p.progress, None);
+        // Unused new fields stay out of the JSON, so old readers see the same shape.
+        assert_eq!(serde_json::to_string(&p).unwrap(), json);
+    }
 }
