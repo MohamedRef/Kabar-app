@@ -1,0 +1,203 @@
+schema: kabar.lesson/v1
+id: bipa6.u08.l05
+language: id
+title: Menulis penjelasan
+can_do:
+  ar_eg: تكتب نص علمي قصير بيشرح عملية خطوة بخطوة.
+  ar: أن تكتب نصًّا علميًّا قصيرًا يشرح عملية خطوة بخطوة.
+  en: Write a short science explainer that walks through a process.
+slides:
+  - title: Teks eksplanasi
+    grammar: id.sentence.complex
+    body:
+      ar_eg: |
+        النص الشارح (teks eksplanasi) ليه 3 أجزاء:
+        1. جملة عامة: Gunung Kaba di Bengkulu adalah gunung api aktif.
+        2. الـ proses (العملية) tahap demi tahap (خطوة بخطوة): Pertama, … Kemudian, … Akhirnya, …
+        3. خاتمة: أثر أو نصيحة.
+        مثال (مكتوب للدرس): Pertama, magma naik dari dalam bumi. Kemudian, tekanan gas bertambah. Akhirnya, terjadi letusan, dan abu vulkanik terbang ke udara.
+      ar: |
+        للنصّ الشارح (teks eksplanasi) ثلاثة أجزاء:
+        1. جملة عامّة: Gunung Kaba di Bengkulu adalah gunung api aktif.
+        2. الـ proses (العملية) tahap demi tahap (مرحلةً مرحلة): Pertama, … Kemudian, … Akhirnya, …
+        3. خاتمة: أثر أو نصيحة.
+        مثال (مكتوب للدرس): Pertama, magma naik dari dalam bumi. Kemudian, tekanan gas bertambah. Akhirnya, terjadi letusan, dan abu vulkanik terbang ke udara.
+      en: |
+        An explainer (teks eksplanasi) has three parts:
+        1. A general statement: Gunung Kaba di Bengkulu adalah gunung api aktif.
+        2. The proses (process) tahap demi tahap (stage by stage): Pertama, … Kemudian, … Akhirnya, …
+        3. A close: an effect or a piece of advice.
+        Example (written for the lesson): Pertama, magma naik dari dalam bumi. Kemudian, tekanan gas bertambah. Akhirnya, terjadi letusan, dan abu vulkanik terbang ke udara.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: letusan
+        ar_eg: ثوران (بركان)
+        ar: ثوران
+        en: eruption
+      - text: magma
+        ar_eg: صهارة / ماجما
+        ar: صهارة
+        en: magma
+      - text: tahap
+        ar_eg: مرحلة
+        ar: مرحلة
+        en: stage, phase
+      - text: abu vulkanik
+        ar_eg: رماد بركاني
+        ar: رماد بركاني
+        en: volcanic ash
+      - text: proses
+        ar_eg: عملية
+        ar: عملية
+        en: process
+    words: [letusan, magma, tahap, abu vulkanik, proses]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه أول مرحلة في المثال؟
+      ar: ما أوّل مرحلة في المثال؟
+      en: What is the first stage in the example?
+    options:
+      - اللافا بتسيل.
+      - الماجما بتطلع لفوق.
+      - الرماد بيطير.
+    answer: 1
+    words: [magma]
+  - id: e03
+    type: fill_blank
+    sentence: ___ dari letusan itu menutupi atap rumah.
+    meaning:
+      ar_eg: الرماد البركاني من الثوران ده غطّى سقف البيوت.
+      ar: غطّى الرماد البركاني الناتج عن الثوران أسقف البيوت.
+      en: Volcanic ash from the eruption covered the roofs.
+    options: [Abu vulkanik, Tahap, Proses]
+    answers: [Abu vulkanik]
+    words: [abu vulkanik, letusan]
+  - id: e04
+    type: listen
+    text: Proses ini bisa terjadi selama berminggu-minggu.
+    question:
+      ar_eg: العملية دي ممكن تاخد قد إيه؟
+      ar: كم قد تستغرق هذه العملية؟
+      en: How long can this process take?
+    options:
+      - أسابيع.
+      - دقيقة.
+      - قرون.
+    answer: 0
+    words: [proses]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الأول، الماجما بتطلع من جوّه الأرض.
+      ar: أوّلًا، تصعد الصهارة من باطن الأرض.
+      en: First, magma rises from inside the earth.
+    answer: Pertama, magma naik dari dalam bumi.
+    distractors: [tahap, letusan]
+    words: [magma]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة أنسب لبداية آخر مرحلة؟
+      ar: أيّ كلمة أنسب لافتتاح المرحلة الأخيرة؟
+      en: Which word best opens the final stage?
+    options: [Pertama, Kemudian, Akhirnya]
+    answer: 2
+    words: [tahap]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الثوران حصل على تلات مراحل.
+      ar: حدث الثوران على ثلاث مراحل.
+      en: The eruption happened in three stages.
+    answers:
+      - Letusan itu terjadi dalam tiga tahap.
+      - Letusan itu terjadi dalam tiga tahapan.
+      - Letusannya terjadi dalam tiga tahap.
+    words: [letusan, tahap]
+  - id: e08
+    type: speaking
+    text: Proses letusan dimulai ketika magma naik ke permukaan.
+    meaning:
+      ar_eg: عملية الثوران بتبدأ لما الماجما تطلع للسطح.
+      ar: تبدأ عملية الثوران حين تصعد الصهارة إلى السطح.
+      en: The eruption process begins when magma rises to the surface.
+    words: [proses, letusan, magma]
+  - id: e09
+    type: dictation
+    text: Abu vulkanik bisa mengganggu penerbangan.
+    meaning:
+      ar_eg: الرماد البركاني ممكن يعطّل الطيران.
+      ar: قد يعطّل الرماد البركاني الرحلات الجوّية.
+      en: Volcanic ash can disrupt flights.
+    words: [abu vulkanik]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Setiap tahap dalam proses ini penting.
+    answers_meaning:
+      ar_eg:
+        - كل مرحلة في العملية دي مهمة.
+        - كل خطوة في العملية دي ليها أهمية.
+      ar:
+        - كلّ مرحلة في هذه العملية مهمّة.
+        - لكلّ مرحلة من هذه العملية أهمّيتها.
+      en:
+        - Every stage in this process matters.
+        - Each stage of this process is important.
+    words: [tahap, proses]
+dialogue:
+  title: Tulisan untuk blog
+  lines:
+    - speaker: Mohamed
+      text: Bu, saya menulis penjelasan tentang Gunung Kaba untuk blog saya.
+      ar_eg: يا دكتورة، أنا بكتب شرح عن جبل كابا للبلوج بتاعي.
+      ar: أكتب شرحًا عن جبل كابا لمدوّنتي.
+      en: I'm writing an explainer about Mount Kaba for my blog.
+    - speaker: Bu Laila
+      text: Bagus. Mulai dengan pernyataan umum, lalu jelaskan prosesnya tahap demi tahap.
+      ar_eg: حلو. ابدأ بجملة عامة، وبعدين اشرح العملية خطوة بخطوة.
+      ar: جميل. ابدأ بعبارة عامّة، ثمّ اشرح العملية مرحلةً مرحلة.
+      en: Good. Start with a general statement, then explain the process stage by stage.
+    - speaker: Mohamed
+      text: Pertama magma naik, kemudian tekanan bertambah, akhirnya terjadi letusan.
+      ar_eg: الأول الماجما بتطلع، بعدين الضغط بيزيد، وفي الآخر بيحصل الثوران.
+      ar: أوّلًا تصعد الصهارة، ثمّ يزداد الضغط، وأخيرًا يحدث الثوران.
+      en: First the magma rises, then the pressure builds, and finally there's an eruption.
+    - speaker: Bu Laila
+      text: Rapi sekali. Tambahkan satu kalimat tentang abu vulkanik dan bahayanya.
+      ar_eg: مترتّب جدًا. زوّد جملة عن الرماد البركاني وخطره.
+      ar: مرتّب جدًّا. أضف جملة عن الرماد البركاني وخطره.
+      en: Very neat. Add one sentence about volcanic ash and its dangers.
+new_words:
+  - word: letusan
+    pos: noun
+    ar_eg: ثوران (بركان)
+    ar: ثوران
+    en: eruption
+  - word: magma
+    pos: noun
+    ar_eg: صهارة / ماجما
+    ar: صهارة
+    en: magma
+  - word: tahap
+    pos: noun
+    ar_eg: مرحلة
+    ar: مرحلة
+    en: stage, phase
+  - word: abu vulkanik
+    pos: noun
+    ar_eg: رماد بركاني
+    ar: رماد بركاني
+    en: volcanic ash
+  - word: proses
+    pos: noun
+    ar_eg: عملية
+    ar: عملية
+    en: process
+review:
+  status: draft
+  verified: false
