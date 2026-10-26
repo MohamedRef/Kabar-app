@@ -1,0 +1,190 @@
+schema: kabar.lesson/v1
+id: bipa5.u06.l02
+language: id
+title: Ulasan
+can_do:
+  ar_eg: تقرا نقد لعرض فني وتفهم الكاتب عاجبه إيه ومش عاجبه إيه.
+  ar: أن تقرأ مراجعة نقدية لعرض فنّي وتفهم ما أعجب الكاتب وما لم يعجبه.
+  en: Read a critical review of a show and see what the critic liked and disliked.
+slides:
+  - title: Membaca ulasan
+    body:
+      ar_eg: |
+        اقرا النقد ده:
+        Pertunjukan Tari Enggang di Palangka Raya tadi malam sangat memukau. Gerakan para penari halus dan kompak, dan kostumnya penuh warna. Sayangnya, tata suaranya kurang baik, sehingga musik gendang kadang tidak terdengar. Secara keseluruhan, pertunjukan ini layak ditonton.
+        المدح: memukau (مبهر)، kompak (متناسق). النقد بيبدأ بـ Sayangnya (للأسف). والحكم في الآخر: Secara keseluruhan (عمومًا).
+      ar: |
+        اقرأ هذه المراجعة:
+        Pertunjukan Tari Enggang di Palangka Raya tadi malam sangat memukau. Gerakan para penari halus dan kompak, dan kostumnya penuh warna. Sayangnya, tata suaranya kurang baik, sehingga musik gendang kadang tidak terdengar. Secara keseluruhan, pertunjukan ini layak ditonton.
+        المديح: memukau (مبهر) وkompak (متناسق)، والنقد يبدأ بـ Sayangnya (للأسف)، والحكم في الختام: Secara keseluruhan (إجمالًا).
+      en: |
+        Read this review:
+        Pertunjukan Tari Enggang di Palangka Raya tadi malam sangat memukau. Gerakan para penari halus dan kompak, dan kostumnya penuh warna. Sayangnya, tata suaranya kurang baik, sehingga musik gendang kadang tidak terdengar. Secara keseluruhan, pertunjukan ini layak ditonton.
+        Praise: memukau (stunning), kompak (in sync). Criticism starts with Sayangnya (unfortunately). The verdict closes: Secara keseluruhan (overall).
+    examples:
+      - text: Secara keseluruhan, pertunjukan ini layak ditonton.
+        ar_eg: عمومًا، العرض ده يستاهل يتشاف.
+        ar: إجمالًا، هذا العرض جدير بالمشاهدة.
+        en: Overall, this show is worth watching.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ulasan
+        ar_eg: نقد / ريفيو
+        ar: مراجعة نقدية
+        en: review
+      - text: memukau
+        ar_eg: مبهر
+        ar: مبهر
+        en: stunning
+      - text: sayangnya
+        ar_eg: للأسف
+        ar: للأسف
+        en: unfortunately
+      - text: secara keseluruhan
+        ar_eg: عمومًا
+        ar: إجمالًا
+        en: overall
+      - text: layak
+        ar_eg: يستاهل
+        ar: جدير
+        en: worth, deserving
+    words: [ulasan, memukau, sayangnya, secara keseluruhan, layak]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الناقد ماعجبوش إيه؟
+      ar: ما الذي لم يعجب الناقد؟
+      en: What didn't the critic like?
+    options:
+      - حركات الراقصين.
+      - الألوان.
+      - الصوت، عشان الطبلة ماكانتش بتتسمع ساعات.
+    answer: 2
+    words: [sayangnya]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه حكم الناقد في الآخر؟
+      ar: ما حكم الناقد في الختام؟
+      en: What is the critic's final verdict?
+    options:
+      - العرض يستاهل يتشاف.
+      - العرض ممل.
+      - العرض لازم يتلغي.
+    answer: 0
+    words: [layak, secara keseluruhan]
+  - id: e04
+    type: fill_blank
+    sentence: ___, kursinya kurang nyaman.
+    meaning:
+      ar_eg: للأسف، الكراسي مش مريحة قوي.
+      ar: للأسف، المقاعد غير مريحة تمامًا.
+      en: Unfortunately, the seats weren't very comfortable.
+    options: [Sayangnya, Secara keseluruhan, Memukau]
+    answers: [Sayangnya]
+    words: [sayangnya]
+  - id: e05
+    type: listen
+    text: Tarian itu sangat memukau, semua penonton berdiri dan bertepuk tangan.
+    question:
+      ar_eg: الجمهور عمل إيه؟
+      ar: ماذا فعل الجمهور؟
+      en: What did the audience do?
+    options:
+      - مشيوا بدري.
+      - وقفوا وسقّفوا.
+      - ناموا.
+    answer: 1
+    words: [memukau]
+  - id: e06
+    type: translate
+    direction: from_target
+    source_text: Secara keseluruhan, ulasan itu sangat positif.
+    answers_meaning:
+      ar_eg:
+        - عمومًا، النقد ده إيجابي جدًا.
+        - في المجمل، الريفيو ده إيجابي قوي.
+      ar:
+        - إجمالًا، كانت تلك المراجعة إيجابية جدًّا.
+        - في المجمل، تلك المراجعة إيجابية جدًّا.
+      en:
+        - Overall, that review is very positive.
+        - On the whole, the review is very positive.
+    words: [secara keseluruhan, ulasan]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: الفيلم ده يستاهل يتشاف.
+      ar: هذا الفيلم جدير بالمشاهدة.
+      en: This film is worth watching.
+    answer: Film ini layak ditonton.
+    distractors: [sayangnya, memukau]
+    words: [layak]
+  - id: e08
+    type: speaking
+    text: Pertunjukannya memukau, tetapi sayangnya terlalu singkat.
+    meaning:
+      ar_eg: العرض كان مبهر، بس للأسف قصير زيادة.
+      ar: كان العرض مبهرًا، لكنّه للأسف قصير جدًّا.
+      en: The show was stunning, but unfortunately too short.
+    words: [memukau, sayangnya]
+  - id: e09
+    type: dictation
+    text: Saya menulis ulasan untuk koran kampus.
+    meaning:
+      ar_eg: أنا بكتب نقد لجورنال الجامعة.
+      ar: أكتب مراجعة لصحيفة الجامعة.
+      en: I'm writing a review for the campus paper.
+    words: [ulasan]
+dialogue:
+  title: Setelah pertunjukan
+  lines:
+    - speaker: Rina
+      text: Mohamed, kamu sudah baca ulasan di koran tentang tari tadi malam?
+      ar_eg: يا محمد، قريت النقد اللي في الجورنال عن رقص امبارح؟
+      ar: يا محمد، هل قرأت المراجعة في الصحيفة عن رقص البارحة؟
+      en: Mohamed, have you read the paper's review of last night's dance?
+    - speaker: Mohamed
+      text: Sudah. Penulisnya bilang pertunjukannya memukau.
+      ar_eg: أيوه. الكاتب بيقول إن العرض كان مبهر.
+      ar: نعم، يقول كاتبها إنّ العرض كان مبهرًا.
+      en: Yes. The writer says the show was stunning.
+    - speaker: Rina
+      text: Setuju. Tetapi sayangnya suaranya kurang jelas.
+      ar_eg: موافقة. بس للأسف الصوت ماكانش واضح قوي.
+      ar: أوافق، لكنّ الصوت للأسف لم يكن واضحًا تمامًا.
+      en: Agreed. But unfortunately the sound wasn't very clear.
+    - speaker: Mohamed
+      text: Ya, tetapi secara keseluruhan, layak ditonton lagi.
+      ar_eg: آه، بس عمومًا يستاهل يتشاف تاني.
+      ar: نعم، لكنّه إجمالًا جدير بأن يُشاهد مرّة أخرى.
+      en: Yes, but overall, it's worth seeing again.
+new_words:
+  - word: ulasan
+    pos: noun
+    ar_eg: نقد / ريفيو
+    ar: مراجعة نقدية
+    en: review
+  - word: memukau
+    pos: adjective
+    ar_eg: مبهر
+    ar: مبهر
+    en: stunning
+  - word: sayangnya
+    ar_eg: للأسف
+    ar: للأسف
+    en: unfortunately
+  - word: secara keseluruhan
+    ar_eg: عمومًا
+    ar: إجمالًا
+    en: overall
+  - word: layak
+    pos: adjective
+    ar_eg: يستاهل
+    ar: جدير
+    en: worth, deserving
+review:
+  status: draft
+  verified: false
