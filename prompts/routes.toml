@@ -7,13 +7,16 @@
 #
 # status = "provisional" until the bake-off (docs/BAKEOFF.md) has run on the
 # Mac; answers from provisional routes carry a badge. Re-write this file from
-# the bake-off report.
+# the bake-off report. Optional per task: prompt_version (pin a template) and
+# max_tokens (output cap; the proxy default otherwise).
 
 # --- Reading ---------------------------------------------------------------
 
 [analyze_text]
 engines = ["workers_ai", "gemini_free", "local", "claude"]
 status = "provisional"
+# One entry per word plus two translations: long chat screenshots need room.
+max_tokens = 4096
 
 [explain_sentence]
 engines = ["workers_ai", "gemini_free", "local", "claude"]

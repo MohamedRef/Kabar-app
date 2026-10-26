@@ -92,6 +92,8 @@ fn parses_fenced_reply_and_caches_it() {
     let call = &wai.calls()[0];
     assert!(call.user.contains("Sek tak lapor pusat") && call.system.contains("Egyptian Arabic"));
     assert_eq!(call.cache_key, a.cache_key);
+    assert!(call.json);
+    assert_eq!(call.max_tokens, Some(4096));
 
     // Same input, keys in another order: served from cache, no new call.
     let again =

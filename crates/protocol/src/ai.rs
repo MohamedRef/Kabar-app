@@ -149,6 +149,12 @@ pub struct EngineCall {
     /// True on the one retry after the first reply failed validation.
     #[serde(default)]
     pub is_repair: bool,
+    /// Ask the provider for JSON output when it supports a JSON mode.
+    #[serde(default)]
+    pub json: bool,
+    /// Output token cap; the proxy picks its default when absent.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub max_tokens: Option<u32>,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]

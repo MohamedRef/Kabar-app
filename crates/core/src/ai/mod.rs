@@ -287,6 +287,8 @@ impl Router {
                 user,
                 image_sha256: req.image_sha256.clone(),
                 is_repair: false,
+                json: true,
+                max_tokens: route.max_tokens,
             };
             match self.call_validated::<T>(e, &mut call).await {
                 Ok((value, json)) => {

@@ -23,6 +23,9 @@ pub struct Route {
     /// Prompt version to use; defaults to the newest bundled one.
     #[serde(default)]
     pub prompt_version: Option<u32>,
+    /// Output token cap passed to the engine; the proxy default when absent.
+    #[serde(default)]
+    pub max_tokens: Option<u32>,
 }
 
 #[derive(Clone, Debug, PartialEq)]
