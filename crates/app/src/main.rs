@@ -1,5 +1,7 @@
 //! Kabar: one Dioxus codebase for the Mac, the S24 Ultra and the Tab S11.
 
+mod account;
+mod cloud;
 mod coach;
 mod i18n;
 mod icons;
@@ -22,6 +24,8 @@ use kabar_core::layout::WidthClass;
 use kabar_core::locale::{Direction, UiLanguage, format_number};
 use kabar_core::settings::Settings;
 
+use crate::account::Cloud;
+use crate::cloud::{CloudStatus, Command, Event};
 use crate::coach::Coach;
 use crate::i18n::{Msg, t};
 use crate::store::Store;
@@ -39,6 +43,7 @@ pub enum Screen {
     Studio,
     Settings,
     PenLab,
+    Devices,
     /// The Lesson Player, full screen; the lesson is `Ui::lesson`.
     Lesson,
     /// Teach Kabar a word (spec §26).
@@ -57,6 +62,7 @@ impl Screen {
             Self::Studio => Msg::NavStudio,
             Self::Settings => Msg::NavSettings,
             Self::PenLab => Msg::NavPenLab,
+            Self::Devices => Msg::NavDevices,
             Self::Lesson => Msg::NavJourney,
             Self::Teach => Msg::NavTeach,
         }
@@ -66,7 +72,10 @@ impl Screen {
     /// thumb reach. Kak Nur and Settings are linked from Today there; Studio
     /// and Pen Lab from Settings.
     fn secondary(self) -> bool {
-        matches!(self, Self::Coach | Self::Settings | Self::Studio | Self::PenLab | Self::Teach)
+        matches!(
+            self,
+            Self::Coach | Self::Settings | Self::Studio | Self::PenLab | Self::Devices | Self::Teach
+        )
     }
 }
 
@@ -153,17 +162,18 @@ fn main() {
     dioxus::launch(App);
 }
 
-fn open_store() -> Result<Store, String> {
+fn open_store() -> Result<(Store, std::path::PathBuf), String> {
     let dir = platform::data_dir()?;
     std::fs::create_dir_all(&dir).map_err(|e| format!("{}: {e}", dir.display()))?;
-    Store::open(&dir.join("kabar.db")).map_err(|e| e.to_string())
+    let path = dir.join("kabar.db");
+    Ok((Store::open(&path).map_err(|e| e.to_string())?, path))
 }
 
 #[component]
 fn App() -> Element {
-    let store = use_hook(|| open_store().map(|s| Db(Rc::new(RefCell::new(s)))));
+    let store = use_hook(|| open_store().map(|(s, path)| (Db(Rc::new(RefCell::new(s))), path)));
     match store {
-        Ok(db) => rsx! { Loaded { db } },
+        Ok((db, path)) => rsx! { Loaded { db, path } },
         Err(e) => rsx! {
             div { class: "app", dir: "ltr",
                 style { {MAIN_CSS} }
@@ -185,7 +195,7 @@ impl PartialEq for Db {
 }
 
 #[component]
-fn Loaded(db: Db) -> Element {
+fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let initial = use_hook(|| db.0.borrow().settings().unwrap_or_default());
     // KABAR_OPEN_LESSON=bipa1.u01.l01 opens the Lesson Player at launch
     // (previews and screenshots on the Mac).
@@ -202,6 +212,7 @@ fn Loaded(db: Db) -> Element {
     use_context_provider(|| teach::Ai(Rc::new(ai_router())));
     let coach = use_context_provider(|| Coach::load(&db));
     use_width_tracking(ui.width);
+    use_cloud(&db, path, ui);
     coach::use_clock(coach, db.clone());
 
     let settings = ui.settings.read();
@@ -230,6 +241,86 @@ fn Loaded(db: Db) -> Element {
             }
         }
     }
+}
+
+/// Starts Kabar Cloud sync (when this build knows a server) and mirrors its
+/// events into signals.
+fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui) {
+    let device_id = db.0.borrow().device_id().clone();
+    let cloud = use_context_provider(|| Cloud {
+        status: Signal::new(CloudStatus::not_configured(device_id.clone())),
+        devices: Signal::new(None),
+        signing_in: Signal::new(false),
+        revision: Signal::new(0),
+        commands: Signal::new(None),
+    });
+    let db = db.clone();
+    let coach = try_use_context::<Coach>();
+    use_hook(move || {
+        let Some(config) = cloud::CloudConfig::from_env() else { return };
+        let device = kabar_protocol::cloud::DeviceInfo {
+            device_id,
+            name: platform::device_name().unwrap_or_else(|| "Kabar".into()),
+            model: platform::device_model(),
+            platform: if cfg!(target_os = "android") {
+                kabar_protocol::cloud::Platform::Android
+            } else if cfg!(target_os = "macos") {
+                kabar_protocol::cloud::Platform::Macos
+            } else {
+                kabar_protocol::cloud::Platform::Other
+            },
+        };
+        let vault = Box::new(cloud::session::KeyringVault::new());
+        let mut handle = match cloud::start(config, path, device, vault) {
+            Ok(h) => h,
+            Err(e) => {
+                eprintln!("kabar: sync didn't start: {e}");
+                return;
+            }
+        };
+        let mut commands = cloud.commands;
+        commands.set(Some(handle.commands.clone()));
+        spawn(async move {
+            let (mut status, mut devices, mut signing_in, mut revision) =
+                (cloud.status, cloud.devices, cloud.signing_in, cloud.revision);
+            while let Some(event) = handle.events.recv().await {
+                match event {
+                    Event::Status(s) => {
+                        if *status.peek() != s {
+                            status.set(s);
+                        }
+                    }
+                    Event::Devices(d) => devices.set(Some(d)),
+                    Event::SigningIn(on) => signing_in.set(on),
+                    Event::Changed(tables) => {
+                        let store = db.0.borrow();
+                        if tables.contains("settings")
+                            && let Ok(s) = store.settings()
+                        {
+                            ui.settings.set(s);
+                        }
+                        // Kak Nur's rows: goal met on any device counts here too.
+                        if let Some(mut coach) = coach
+                            && ["goals", "daily_plans", "xp_events", "reminders", "reports"]
+                                .iter()
+                                .any(|t| tables.contains(*t))
+                        {
+                            coach.profile.set(store.coach_profile().ok().flatten());
+                            coach.events.set(store.activity(None).unwrap_or_default());
+                            coach.reminders.set(store.reminder_state().unwrap_or_default());
+                            coach.plan_rev += 1;
+                        }
+                        revision += 1;
+                    }
+                }
+            }
+        });
+    });
+    // Local settings writes are in the outbox: push them.
+    use_effect(move || {
+        ui.settings.read();
+        cloud.send(Command::Kick);
+    });
 }
 
 /// The AI router with the bundled routes and prompts. Engines (Kabar Cloud,
@@ -275,6 +366,7 @@ fn Shell() -> Element {
         Screen::Studio,
         Screen::Teach,
         Screen::PenLab,
+        Screen::Devices,
         Screen::Settings,
     ];
 
@@ -307,6 +399,7 @@ fn Shell() -> Element {
                     Screen::Studio => rsx! { screens::ComingSoon { title: Msg::NavStudio, milestone: "M9" } },
                     Screen::Settings => rsx! { screens::SettingsScreen {} },
                     Screen::PenLab => rsx! { penlab::PenLab {} },
+                    Screen::Devices => rsx! { account::AccountScreen {} },
                     Screen::Teach => rsx! { teach::TeachScreen {} },
                     Screen::Lesson => rsx! { lesson::LessonScreen {} },
                 }
