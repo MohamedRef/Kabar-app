@@ -88,8 +88,15 @@ macro_rules! bundled {
     };
 }
 
-const BUILTIN: &[(&str, &str)] =
-    bundled!["analyze_text@v1.md", "grade_answer@v1.md", "learn_entry@v1.md", "story_episode@v1.md"];
+const BUILTIN: &[(&str, &str)] = bundled![
+    "analyze_text@v1.md",
+    "grade_answer@v1.md",
+    "learn_entry@v1.md",
+    "story_episode@v1.md",
+    "read_handwriting@v1.md",
+    "guess_sketch@v1.md",
+    "mind_map@v1.md",
+];
 
 /// Who the prompts are written for (spec §19).
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]

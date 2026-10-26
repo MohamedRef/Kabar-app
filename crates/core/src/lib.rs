@@ -6,6 +6,7 @@ pub mod ai;
 pub mod clock;
 pub mod coach;
 pub mod games;
+pub mod ink;
 pub mod journey;
 pub mod lang;
 pub mod layout;

@@ -260,12 +260,12 @@ fn grade_answer_checks_score_against_verdict() {
 #[test]
 fn tasks_without_a_prompt_are_reported_not_hidden() {
     #[derive(Debug, serde::Deserialize)]
-    struct Map;
-    impl AiOutput for Map {
-        const TASK: Task = Task::MindMap;
+    struct Story;
+    impl AiOutput for Story {
+        const TASK: Task = Task::StoryEpisode;
     }
     let wai = Scripted::new(EngineId::WorkersAi, vec![]);
     let r = router(&[&wai]);
-    let err = block_on(r.run::<Map>(&AiRequest::default())).unwrap_err();
-    assert_eq!(err, AiError::NoPrompt(Task::MindMap));
+    let err = block_on(r.run::<Story>(&AiRequest::default())).unwrap_err();
+    assert_eq!(err, AiError::NoPrompt(Task::StoryEpisode));
 }

@@ -1,0 +1,104 @@
+/* Tablet Studio (M9): Notebook, Gambar!, mind maps, Listening Companion,
+   and the ink canvas they share. Logical properties only; the page itself
+   is a physical canvas, so its item layer is dir="ltr". */
+
+.studio { display: grid; gap: 1rem; }
+.studio-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+/* ---------- ink canvas ---------- */
+.ink-wrap { position: relative; }
+.ink-surface { position: absolute; inset: 0; }
+.ink-items {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 0;
+  block-size: 0;
+  transform-origin: 0 0;
+  pointer-events: none;
+}
+.ink-items > * { pointer-events: auto; }
+.ink-page { block-size: min(72dvh, 60rem); }
+.ink-sheet { block-size: auto; inline-size: 100%; }
+.ink-wrap.scribble { max-block-size: 30dvh; }
+
+.ink-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+.icon-button { min-inline-size: 44px; padding-inline: 0.6rem; display: inline-grid; place-items: center; }
+.ink-colors { display: inline-flex; gap: 0.3rem; margin-inline-start: 0.4rem; }
+.ink-swatch {
+  inline-size: 32px;
+  min-block-size: 32px;
+  block-size: 32px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--swatch);
+  border: 2px solid var(--surface);
+  box-shadow: 0 0 0 1px var(--line);
+}
+.ink-swatch[aria-pressed="true"] { background: var(--swatch); box-shadow: 0 0 0 3px var(--focus); }
+
+.ink-arrows { position: absolute; overflow: visible; pointer-events: none; }
+.ink-arrows line { stroke: var(--muted); stroke-width: 2; }
+.ink-item {
+  position: absolute;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  padding: 0.35rem 0.6rem;
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+.ink-item .row { gap: 0.25rem; flex-wrap: nowrap; }
+.ink-item button { min-block-size: 32px; padding: 0.1rem 0.4rem; }
+.word-card .word { font-weight: 700; flex: 1; }
+.word-card .gloss { color: var(--muted); font-size: 0.85rem; }
+.item-remove { color: var(--muted); }
+.map-node { display: grid; place-content: center; text-align: center; }
+.map-node.depth-0 { background: var(--indigo); color: var(--surface); font-weight: 700; font-size: 1.1rem; }
+.map-node.depth-1 { background: var(--surface-2); font-weight: 600; }
+.map-node .gloss { color: var(--muted); }
+.map-node.depth-0 .gloss { color: inherit; }
+
+/* ---------- Notebook ---------- */
+.notebook { display: grid; gap: 1rem; align-items: start; }
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .notebook { grid-template-columns: 16rem 1fr; }
+.notebook-side { display: grid; gap: 0.6rem; }
+.notebook-side select, .notebook-side input { inline-size: 100%; }
+.pages, .hits { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; }
+.pages button, .hit { inline-size: 100%; text-align: start; border-radius: 10px; }
+.page-view { display: grid; gap: 0.75rem; min-inline-size: 0; }
+.page-tools { justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+.add-card input { min-inline-size: 10rem; }
+.lines { display: grid; gap: 0.4rem; }
+.line input { flex: 1; min-inline-size: 8rem; }
+
+/* ---------- Gambar! ---------- */
+.gambar { display: grid; gap: 0.75rem; }
+.gambar-head { display: grid; gap: 0.5rem; }
+.gambar .target { font-size: 1.6rem; font-weight: 700; color: var(--indigo); }
+.gambar .timer { font-variant-numeric: tabular-nums; font-weight: 600; }
+.gambar .verdict { font-size: 1.15rem; font-weight: 600; margin: 0; }
+
+/* ---------- mind map ---------- */
+.mindmap { display: grid; gap: 0.75rem; }
+.mindmap form input { flex: 1; min-inline-size: 10rem; }
+.map-list { flex-wrap: wrap; gap: 0.35rem; margin-block-start: 0.5rem; }
+.badge { font-size: 0.8rem; padding: 0.15rem 0.6rem; border-radius: 999px; background: var(--gold-soft); color: var(--text); }
+
+/* ---------- Listening Companion: built for a narrow split-screen pane ---------- */
+.listening { display: grid; gap: 0.6rem; max-inline-size: 36rem; }
+.listening .heard { font-size: 1.3rem; inline-size: 100%; }
+.suggestions { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.suggestions li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.5rem 0.75rem; }
+.suggestions .word { font-size: 1.15rem; font-weight: 700; flex: 1; }
+.suggestions .gloss { color: var(--muted); }
+
+/* ---------- InkPad / InkFeedback (write-mode lessons) ---------- */
+.ink-pad { display: grid; gap: 0.5rem; }
+.ink-pad-row input { flex: 1; min-inline-size: 8rem; }
+.ink-letters { font-size: 1.4rem; letter-spacing: 0.04em; margin: 0; }
+.ink-wrong { border: 2px solid var(--dawn); border-radius: 50%; padding-inline: 0.1em; }
+.ink-extra { text-decoration: line-through; text-decoration-color: var(--dawn); text-decoration-thickness: 2px; }
+.ink-missing { color: var(--dawn); font-weight: 700; }
