@@ -1,0 +1,188 @@
+schema: kabar.lesson/v1
+id: bipa6.u05.l01
+language: id
+title: Ragam keagamaan
+can_do:
+  ar_eg: تستعمل لغة الكلام عن الدين صح، من الإملاء لتعبيرات الوفاة والتحية.
+  ar: أن تستعمل اللغة الدينية استعمالًا صحيحًا، من الإملاء إلى عبارات الوفاة والتحية.
+  en: Use religious register correctly, from spelling to phrases for death and greetings.
+slides:
+  - title: Kata yang terasa akrab
+    grammar: id.register.religious
+    body:
+      ar_eg: |
+        هنا هتحس إنك في بيتك، بس خلي بالك من التفاصيل:
+        - الإملاء الرسمي: salat، wudu، ustaz، Idulfitri (كلمة واحدة).
+        - الضماير اللي بترجع على ربنا بحرف كبير: rahmat-Nya (رحمته).
+        - قبل اسم المسلم المتوفي: almarhum (للراجل) / almarhumah (للست). ولغير المسلم: mendiang.
+        - umat = أتباع دين: umat Islam، umat Kristiani، umat Hindu.
+        - في خطاب لناس من أديان مختلفة: Assalamualaikum… salam sejahtera bagi kita semua.
+      ar: |
+        ستشعر هنا أنّك في بيتك، لكن انتبه للتفاصيل:
+        - الإملاء الرسمي: salat، wudu، ustaz، Idulfitri (كلمة واحدة).
+        - الضمائر العائدة على الله بحرف كبير: rahmat-Nya (رحمته).
+        - قبل اسم المسلم المتوفّى: almarhum (للرجل) / almarhumah (للمرأة)، ولغير المسلم: mendiang.
+        - umat = أتباع دين: umat Islam، umat Kristiani، umat Hindu.
+        - في خطاب لجمهور من أديان مختلفة: Assalamualaikum… salam sejahtera bagi kita semua.
+      en: |
+        You'll feel at home here, but mind the details:
+        - Standard spelling: salat, wudu, ustaz, Idulfitri (one word).
+        - Pronouns for God are capitalised: rahmat-Nya (His mercy).
+        - Before a deceased Muslim's name: almarhum (man) / almarhumah (woman). For non-Muslims: mendiang.
+        - umat = followers of a faith: umat Islam, umat Kristiani, umat Hindu.
+        - Addressing a mixed-faith audience: Assalamualaikum… salam sejahtera bagi kita semua.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: almarhum
+        ar_eg: المرحوم
+        ar: المرحوم
+        en: the late (Muslim man)
+      - text: mendiang
+        ar_eg: الراحل (لغير المسلم)
+        ar: الراحل (لغير المسلم)
+        en: the late (non-Muslim)
+      - text: umat
+        ar_eg: أتباع / أمّة
+        ar: أتباع / أمّة
+        en: followers, community of faith
+      - text: rahmat
+        ar_eg: رحمة
+        ar: رحمة
+        en: mercy, blessing
+      - text: salam sejahtera
+        ar_eg: سلام وخير (تحية للكل)
+        ar: السلام والخير (تحية عامّة)
+        en: peace and well-being (an all-faith greeting)
+    words: [almarhum, mendiang, umat, rahmat, salam sejahtera]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: جارك المسيحي اتوفى. تقول إيه قبل اسمه؟
+      ar: توفّي جارك المسيحي. ماذا تقول قبل اسمه؟
+      en: Your Christian neighbour has died. What goes before his name?
+    options: [almarhum, mendiang, ustaz]
+    answer: 1
+    words: [mendiang, almarhum]
+  - id: e03
+    type: fill_blank
+    sentence: Semoga ___-Nya selalu menyertai kita.
+    meaning:
+      ar_eg: ربنا يجعل رحمته دايمًا معانا.
+      ar: لتصحبنا رحمته دائمًا.
+      en: May His mercy always be with us.
+    options: [rahmat, umat, mendiang]
+    answers: [rahmat]
+    words: [rahmat]
+  - id: e04
+    type: listen
+    text: Selamat Hari Natal untuk seluruh umat Kristiani di Banda Aceh.
+    question:
+      ar_eg: التهنئة دي لمين؟
+      ar: لمن هذه التهنئة؟
+      en: Who is this greeting for?
+    options:
+      - للمسيحيين في باندا آتشيه.
+      - للمسلمين بس.
+      - للهندوس في بالي.
+    answer: 0
+    words: [umat]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كتابة هي الرسمية في KBBI؟
+      ar: أيّ كتابة هي الرسمية في KBBI؟
+      en: Which spelling is the KBBI standard?
+    options: [sholat, shalat, salat]
+    answer: 2
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: السلام عليكم، وسلام وخير لينا كلنا.
+      ar: السلام عليكم، والسلام والخير لنا جميعًا.
+      en: Peace be upon you, and peace and well-being to us all.
+    answer: Assalamualaikum, salam sejahtera bagi kita semua.
+    distractors: [mendiang, umat]
+    words: [salam sejahtera]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: المرحوم جدي كان إمام الجامع.
+      ar: كان جدّي المرحوم إمام المسجد.
+      en: My late grandfather was the mosque's imam.
+    answers:
+      - Almarhum kakek saya adalah imam masjid.
+      - Almarhum kakek saya dulu imam masjid.
+      - Kakek saya, almarhum, adalah imam masjid.
+      - Almarhum kakek saya dulu menjadi imam masjid.
+    words: [almarhum]
+  - id: e08
+    type: speaking
+    text: Assalamualaikum warahmatullahi wabarakatuh, salam sejahtera bagi kita semua.
+    meaning:
+      ar_eg: السلام عليكم ورحمة الله وبركاته، وسلام وخير لينا كلنا.
+      ar: السلام عليكم ورحمة الله وبركاته، والسلام والخير لنا جميعًا.
+      en: Peace, mercy and blessings of God be upon you, and peace and well-being to us all.
+    words: [salam sejahtera, rahmat]
+  - id: e09
+    type: dictation
+    text: Mendiang Pak Yohanes dihormati oleh semua umat di kampung ini.
+    meaning:
+      ar_eg: الراحل الأستاذ يوهانس كان محترم من أهل كل الأديان في القرية دي.
+      ar: كان الراحل يوهانس محترمًا عند أتباع كلّ الأديان في هذه القرية.
+      en: The late Mr Yohanes was respected by people of every faith in this village.
+    words: [mendiang, umat]
+dialogue:
+  title: Pidato pertama
+  lines:
+    - speaker: Kak Rahmah
+      text: Besok kamu memberi sambutan di acara kampus. Pembukaannya sudah siap?
+      ar_eg: بكرة هتقول كلمة في حفلة الجامعة. البداية جاهزة؟
+      ar: غدًا تلقي كلمة في حفل الجامعة. هل الافتتاح جاهز؟
+      en: Tomorrow you give a speech at the campus event. Is your opening ready?
+    - speaker: Mohamed
+      text: Sudah. Assalamualaikum warahmatullahi wabarakatuh. Cukup, kan?
+      ar_eg: أيوه. السلام عليكم ورحمة الله وبركاته. كده كفاية، صح؟
+      ar: نعم. السلام عليكم ورحمة الله وبركاته. هذا يكفي، أليس كذلك؟
+      en: Yes. Peace, mercy and blessings of God be upon you. That's enough, right?
+    - speaker: Kak Rahmah
+      text: Tambahkan "salam sejahtera bagi kita semua". Ada teman Kristiani dan Buddha juga.
+      ar_eg: زوّد «salam sejahtera bagi kita semua». فيه صحاب مسيحيين وبوذيين كمان.
+      ar: أضف «salam sejahtera bagi kita semua»، ففي الحضور أصدقاء مسيحيون وبوذيون.
+      en: Add "salam sejahtera bagi kita semua". There are Christian and Buddhist friends too.
+    - speaker: Mohamed
+      text: Baik, Kak. Supaya semua umat merasa disambut.
+      ar_eg: حاضر يا كاك. علشان أهل كل الأديان يحسّوا إنهم مرحّب بيهم.
+      ar: حسنًا. ليشعر أتباع كلّ الأديان بالترحيب.
+      en: All right, Kak. So people of every faith feel welcome.
+new_words:
+  - word: almarhum
+    pos: noun
+    ar_eg: المرحوم
+    ar: المرحوم
+    en: the late (Muslim man)
+  - word: mendiang
+    pos: noun
+    ar_eg: الراحل (لغير المسلم)
+    ar: الراحل (لغير المسلم)
+    en: the late (non-Muslim)
+  - word: umat
+    pos: noun
+    ar_eg: أتباع / أمّة
+    ar: أتباع / أمّة
+    en: followers, community of faith
+  - word: rahmat
+    pos: noun
+    ar_eg: رحمة
+    ar: رحمة
+    en: mercy, blessing
+  - word: salam sejahtera
+    pos: phrase
+    ar_eg: سلام وخير (تحية للكل)
+    ar: السلام والخير (تحية عامّة)
+    en: peace and well-being (an all-faith greeting)
+review:
+  status: draft
+  verified: false
