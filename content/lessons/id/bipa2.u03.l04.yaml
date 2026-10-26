@@ -1,235 +1,229 @@
 schema: kabar.lesson/v1
 id: bipa2.u03.l04
 language: id
-title: Bandara
+title: Sering terlambat
 can_do:
-  ar_eg: تفهم إعلان في المطار وتتصرف على أساسه.
-  ar: أن تفهم إعلانًا في المطار وتتصرف بحسبه.
-  en: Act on an airport announcement.
+  ar_eg: تفهم إعلان عن تأخير رحلة.
+  ar: أن تفهم إعلانًا عن تأخر رحلة.
+  en: Understand a delay announcement.
 slides:
-  - title: Para penumpang, harap segera …
+  - title: Selalu … tidak pernah
     body:
       ar_eg: |
-        إعلانات المطار ليها ترتيب ثابت، ركّز في تلات حاجات:
-        1. مين؟ Para penumpang penerbangan … tujuan … = ركاب رحلة … المتجهة لـ …
-        2. إيه اللي حصل؟ terlambat (متأخرة) / pintu pindah (البوابة اتغيرت)
-        3. تعمل إيه؟ Harap segera menuju pintu … = برجاء التوجه فورًا لبوابة …
+        فاكر كلمات التكرار من BIPA 1؟ من الأكتر للأقل:
+        selalu (دايمًا) — biasanya (عادةً) — sering (كتير) — kadang-kadang (ساعات) — jarang (نادرًا) — tidak pernah (عمره ما).
+        مكانها قبل الفعل أو الصفة: Pesawat ini sering terlambat = الطيارة دي بتتأخر كتير.
       ar: |
-        لإعلانات المطار ترتيب ثابت؛ انتبه لثلاثة أمور:
-        1. مَن؟ Para penumpang penerbangan … tujuan …
-        2. ماذا حدث؟ terlambat (متأخرة) / pintu pindah (تغيّرت البوابة)
-        3. ماذا تفعل؟ Harap segera menuju pintu … = يُرجى التوجه فورًا إلى البوابة …
+        أتذكر ظروف التكرار من BIPA 1؟ من الأكثر إلى الأقل:
+        selalu (دائمًا) — biasanya (عادةً) — sering (كثيرًا) — kadang-kadang (أحيانًا) — jarang (نادرًا) — tidak pernah (أبدًا).
+        وموضعها قبل الفعل أو الصفة: Pesawat ini sering terlambat.
       en: |
-        Airport announcements follow a fixed order. Listen for three things:
-        1. Who? Para penumpang penerbangan … tujuan … = passengers on flight … to …
-        2. What happened? terlambat (delayed) / pintu pindah (gate changed)
-        3. What to do? Harap segera menuju pintu … = please go to gate … immediately
-    grammar: id.notice.harap-dilarang
+        Remember the frequency words from BIPA 1? Most to least:
+        selalu (always) — biasanya (usually) — sering (often) — kadang-kadang (sometimes) — jarang (rarely) — tidak pernah (never).
+        They go before the verb or adjective: Pesawat ini sering terlambat = This plane is often late.
+    grammar: id.frequency.adverbs
     examples:
-      - text: Harap segera menuju pintu lima.
-        ar_eg: برجاء التوجه فورًا لبوابة خمسة.
-        ar: يُرجى التوجه فورًا إلى البوابة الخامسة.
-        en: Please go to gate five immediately.
+      - text: Kereta ini sering terlambat.
+        ar_eg: القطر ده بيتأخر كتير.
+        ar: هذا القطار يتأخر كثيرًا.
+        en: This train is often late.
+      - text: Pesawat ke Kairo jarang terlambat.
+        ar_eg: طيارة القاهرة نادرًا لما بتتأخر.
+        ar: نادرًا ما تتأخر الطائرة المتجهة إلى القاهرة.
+        en: The plane to Cairo is rarely late.
+  - title: Tepat waktu, terlambat
+    body:
+      ar_eg: |
+        - terlambat = متأخر (وعلى فكرة ter- هنا مش «الأكتر»، زي terkenal).
+        - tepat waktu = في المعاد بالظبط. waktu جاية من العربي «وقت».
+        - jadwal = جدول المواعيد، من العربي «جدول».
+        وعدد المرات: tiga kali sehari = تلات مرات في اليوم، sekali seminggu = مرة في الأسبوع.
+      ar: |
+        - terlambat = متأخر (وter- هنا ليست للتفضيل، مثل terkenal).
+        - tepat waktu = في الموعد تمامًا، وwaktu من العربية «وقت».
+        - jadwal = جدول المواعيد، من العربية «جدول».
+        ولعدد المرات: tiga kali sehari = ثلاث مرات في اليوم، sekali seminggu = مرة في الأسبوع.
+      en: |
+        - terlambat = late (this ter- isn't "most" either, like terkenal).
+        - tepat waktu = on time; waktu comes from Arabic «وقت».
+        - jadwal = timetable, from Arabic «جدول».
+        Counting: tiga kali sehari = three times a day, sekali seminggu = once a week.
+    grammar: id.frequency.adverbs
+    examples:
+      - text: Pesawat ke Jakarta berangkat tiga kali sehari.
+        ar_eg: الطيارة لجاكرتا بتطلع تلات مرات في اليوم.
+        ar: تقلع الطائرة إلى جاكرتا ثلاث مرات يوميًا.
+        en: The plane to Jakarta leaves three times a day.
+      - text: Kereta ini selalu tepat waktu.
+        ar_eg: القطر ده دايمًا في معاده.
+        ar: هذا القطار دائمًا في موعده.
+        en: This train is always on time.
+  - title: Mohon maaf atas keterlambatan
+    body:
+      ar_eg: |
+        إعلان التأخير شكله كده:
+        Mohon perhatian. Penerbangan GA 402 tujuan Jakarta terlambat tiga puluh menit. Mohon maaf atas keterlambatan ini.
+        - penerbangan = رحلة طيران، tujuan = متجهة لـ
+        - keterlambatan = التأخير (احفظها كده جملة جاهزة)
+      ar: |
+        هكذا يبدو إعلان التأخير:
+        Mohon perhatian. Penerbangan GA 402 tujuan Jakarta terlambat tiga puluh menit. Mohon maaf atas keterlambatan ini.
+        - penerbangan = رحلة جوية، tujuan = المتجهة إلى
+        - keterlambatan = التأخير (احفظها عبارةً جاهزة)
+      en: |
+        A delay announcement looks like this:
+        Mohon perhatian. Penerbangan GA 402 tujuan Jakarta terlambat tiga puluh menit. Mohon maaf atas keterlambatan ini.
+        - penerbangan = flight, tujuan = bound for
+        - keterlambatan = the delay (learn it as a set phrase)
+    grammar: id.frequency.adverbs
+    examples:
+      - text: Mohon maaf atas keterlambatan ini.
+        ar_eg: بنعتذر عن التأخير ده.
+        ar: نعتذر عن هذا التأخير.
+        en: We apologise for this delay.
 exercises:
   - id: e01
-    type: listen
-    text: Harap segera menuju pintu lima.
-    options: ["Dilarang menuju pintu lima.", "Harap segera menuju pintu lima.", "Harap segera menuju pintu sembilan."]
-    answer: 1
-    words: [harap, segera, menuju, pintu]
+    type: match_pairs
+    pairs:
+      - text: selalu
+        ar_eg: دايمًا
+        ar: دائمًا
+        en: always
+      - text: sering
+        ar_eg: كتير
+        ar: كثيرًا
+        en: often
+      - text: jarang
+        ar_eg: نادرًا
+        ar: نادرًا
+        en: rarely
+      - text: terlambat
+        ar_eg: متأخر
+        ar: متأخر
+        en: late
+      - text: tepat waktu
+        ar_eg: في المعاد
+        ar: في الموعد
+        en: on time
+    words: [selalu, sering, jarang, terlambat, tepat waktu]
   - id: e02
+    type: listen
+    text: Penerbangan ke Jakarta terlambat tiga puluh menit.
+    options: [Penerbangan ke Jakarta terlambat tiga puluh menit., Penerbangan ke Jakarta terlambat tiga belas menit., Penerbangan ke Jakarta tepat waktu.]
+    answer: 0
+    words: [penerbangan, terlambat]
+  - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: سمعت «Para penumpang penerbangan GA 405, pintu pindah ke pintu tujuh». لازم تعمل إيه؟
-      ar: سمعت «Para penumpang penerbangan GA 405, pintu pindah ke pintu tujuh». ماذا تفعل؟
-      en: You hear "Para penumpang penerbangan GA 405, pintu pindah ke pintu tujuh". What do you do?
-    options: ["Saya menunggu di pintu lama.", "Saya pulang ke hotel.", "Saya pergi ke pintu tujuh."]
+      ar_eg: إمتى تسمع «Mohon maaf atas keterlambatan ini»؟
+      ar: متى تسمع «Mohon maaf atas keterlambatan ini»؟
+      en: When do you hear "Mohon maaf atas keterlambatan ini"?
+    options: [Pesawat tepat waktu., Pesawat sudah datang., Pesawat terlambat.]
     answer: 2
     explain:
-      ar_eg: pindah ke pintu tujuh = البوابة اتنقلت لبوابة سبعة.
-      ar: pindah ke pintu tujuh = انتقلت البوابة إلى السابعة.
-      en: pindah ke pintu tujuh = the gate moved to gate seven.
-    words: [pindah, pintu]
-  - id: e03
-    type: fill_blank
-    sentence: Mohon ___. Para penumpang penerbangan GA 405, harap segera naik ke pesawat.
-    meaning:
-      ar_eg: انتباه من فضلكم. حضرات ركاب رحلة GA 405، برجاء ركوب الطيارة فورًا.
-      ar: انتباه من فضلكم. السادة ركاب رحلة GA 405، يُرجى الصعود إلى الطائرة فورًا.
-      en: Attention please. Passengers on flight GA 405, please board the plane immediately.
-    answers: [perhatian]
-    words: [perhatian]
+      ar_eg: keterlambatan = التأخير، فالإعلان بيعتذر عن تأخير.
+      ar: keterlambatan = التأخير، فالإعلان اعتذار عن تأخر.
+      en: keterlambatan = delay, so they're apologising for a late flight.
+    words: [keterlambatan]
   - id: e04
     type: fill_blank
-    sentence: Penerbangan ke Jakarta ___ satu jam. Mohon maaf atas keterlambatan ini.
+    sentence: Kereta ini ___ tepat waktu. Tidak pernah terlambat!
     meaning:
-      ar_eg: رحلة جاكرتا متأخرة ساعة. بنعتذر عن التأخير ده.
-      ar: رحلة جاكرتا متأخرة ساعة. نعتذر عن هذا التأخير.
-      en: The flight to Jakarta is an hour late. We apologise for this delay.
-    answers: [terlambat]
-    words: [terlambat]
+      ar_eg: القطر ده دايمًا في معاده. عمره ما بيتأخر!
+      ar: هذا القطار دائمًا في موعده، ولا يتأخر أبدًا!
+      en: This train is always on time. It's never late!
+    options: [selalu, kadang-kadang, jarang]
+    answers: [selalu]
+    words: [selalu, tepat waktu]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: لازم نروح بوابة خمسة دلوقتي.
-      ar: يجب أن نذهب إلى البوابة الخامسة الآن.
-      en: We have to go to gate five now.
-    answer: Kita harus ke pintu lima sekarang.
-    distractors: [dilarang, tujuh]
-    words: [harus, pintu]
+      ar_eg: القطر ده بيتأخر كتير.
+      ar: هذا القطار يتأخر كثيرًا.
+      en: This train is often late.
+    answer: Kereta ini sering terlambat.
+    distractors: [selalu, waktu]
+    words: [sering, terlambat]
   - id: e06
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: لو سمحت، بوابة خمسة فين؟
-      ar: من فضلك، أين البوابة الخامسة؟
-      en: Excuse me, where is gate five?
-    answers:
-      - Permisi, pintu lima di mana?
-      - Permisi, pintu lima di mana
-      - Permisi, di mana pintu lima?
-      - Maaf, pintu lima di mana?
-      - Maaf, di mana pintu lima?
-    words: [pintu]
+      ar_eg: نادرًا لما بتأخر.
+      ar: نادرًا ما أتأخر.
+      en: I'm rarely late.
+    answers: [Saya jarang terlambat., Saya jarang terlambat, Aku jarang terlambat.]
+    words: [jarang, terlambat]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الطيارة دي بتتأخر كتير.
-      ar: هذه الطائرة تتأخر كثيرًا.
-      en: This plane is often late.
-    answers:
-      - Pesawat ini sering terlambat.
-      - Pesawat ini sering terlambat
-      - Pesawatnya sering terlambat.
-    words: [sering, terlambat]
-  - id: e08
-    type: translate
-    direction: from_target
-    source_text: Semua penumpang sudah antre di pintu tujuh.
-    answers_meaning:
-      ar_eg: ["كل الركاب واقفين في الطابور عند بوابة سبعة", "الركاب كلهم وقفوا في الطابور عند بوابة ٧"]
-      ar: ["وقف جميع الركاب في الصف عند البوابة السابعة", "جميع الركاب يصطفون عند البوابة السابعة"]
-      en: ["All the passengers are already queuing at gate seven.", "All passengers have queued at gate 7."]
-    words: [semua, penumpang, antre]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: (إعلان) حضرات الركاب، برجاء الهدوء.
-      ar: (إعلان) السادة الركاب، يُرجى الهدوء.
-      en: (announcement) Passengers, please be quiet.
-    answer: Para penumpang, harap tenang.
-    distractors: [dilarang, semua]
-    words: [para, penumpang, harap, tenang]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (اعمل إعلان) برجاء التوجه فورًا لبوابة تلاتة.
-      ar: (اصنع إعلانًا) يُرجى التوجه فورًا إلى البوابة الثالثة.
-      en: (make the announcement) Please go to gate three immediately.
-    answers:
-      - Harap segera menuju pintu tiga.
-      - Harap segera menuju pintu tiga
-      - Mohon segera menuju pintu tiga.
-      - Harap segera ke pintu tiga.
-      - Mohon segera ke pintu tiga.
-    words: [harap, segera, menuju]
-  - id: e11
     type: dictation
-    text: Pintu pindah ke pintu tujuh.
+    text: Jadwal pesawat ada di sana.
     meaning:
-      ar_eg: البوابة اتنقلت لبوابة سبعة.
-      ar: انتقلت البوابة إلى البوابة السابعة.
-      en: The gate has moved to gate seven.
-    words: [pindah, pintu]
-  - id: e12
+      ar_eg: جدول مواعيد الطيارات هناك.
+      ar: جدول مواعيد الطائرات هناك.
+      en: The flight timetable is over there.
+    words: [jadwal]
+  - id: e08
     type: speaking
-    text: Permisi, Pak. Penerbangan ke Jakarta terlambat, ya?
+    text: Mohon perhatian. Penerbangan ke Jakarta terlambat tiga puluh menit.
     meaning:
-      ar_eg: لو سمحت يا أستاذ. رحلة جاكرتا متأخرة، صح؟
-      ar: عفوًا يا سيدي. رحلة جاكرتا متأخرة، أليس كذلك؟
-      en: Excuse me, sir. The flight to Jakarta is delayed, right?
+      ar_eg: انتباه من فضلكم. رحلة جاكرتا متأخرة تلاتين دقيقة.
+      ar: انتباه من فضلكم. رحلة جاكرتا متأخرة ثلاثين دقيقة.
+      en: Attention please. The flight to Jakarta is thirty minutes late.
     words: [penerbangan, terlambat]
 dialogue:
-  title: Pintu pindah!
+  title: Di ruang tunggu
   lines:
     - speaker: Pengumuman
-      text: Mohon perhatian. Para penumpang penerbangan GA 405 tujuan Jakarta, pintu pindah ke pintu lima. Harap segera menuju pintu lima.
-      ar_eg: انتباه من فضلكم. حضرات ركاب رحلة GA 405 المتجهة لجاكرتا، البوابة اتنقلت لبوابة خمسة. برجاء التوجه فورًا لبوابة خمسة.
-      ar: انتباه من فضلكم. السادة ركاب رحلة GA 405 المتجهة إلى جاكرتا، انتقلت البوابة إلى البوابة الخامسة. يُرجى التوجه فورًا إلى البوابة الخامسة.
-      en: Attention please. Passengers on flight GA 405 to Jakarta, your gate has changed to gate five. Please go to gate five immediately.
+      text: Mohon perhatian. Penerbangan GA 402 tujuan Jakarta terlambat tiga puluh menit. Mohon maaf atas keterlambatan ini.
+      ar_eg: انتباه من فضلكم. رحلة GA 402 المتجهة لجاكرتا متأخرة تلاتين دقيقة. بنعتذر عن التأخير ده.
+      ar: انتباه من فضلكم. رحلة GA 402 المتجهة إلى جاكرتا متأخرة ثلاثين دقيقة. نعتذر عن هذا التأخير.
+      en: Attention please. Flight GA 402 to Jakarta is delayed by thirty minutes. We apologise for this delay.
     - speaker: Mohamed
-      text: Mas, itu pesawat kita! Pintunya pindah?
-      ar_eg: يا ماس، دي طيارتنا! البوابة اتغيرت؟
-      ar: يا ماس، هذه طائرتنا! هل تغيّرت البوابة؟
-      en: Mas, that's our plane! Has the gate changed?
-    - speaker: Mas Ardi
-      text: Ya, ke pintu lima. Kita harus segera ke sana.
-      ar_eg: أيوه، لبوابة خمسة. لازم نروح هناك حالًا.
-      ar: نعم، إلى البوابة الخامسة. يجب أن نذهب إلى هناك فورًا.
-      en: Yes, to gate five. We have to go there right away.
+      text: Wah, terlambat lagi! Pesawat ini sering terlambat, ya?
+      ar_eg: يا خبر، متأخرة تاني! الطيارة دي بتتأخر كتير، مش كده؟
+      ar: يا للأسف، تأخرت مرة أخرى! هذه الطائرة تتأخر كثيرًا، أليس كذلك؟
+      en: Oh no, late again! This plane is often late, isn't it?
+    - speaker: Mas Rizal
+      text: Kadang-kadang. Biasanya tepat waktu.
+      ar_eg: ساعات. عادةً بتبقى في معادها.
+      ar: أحيانًا. عادةً تكون في موعدها.
+      en: Sometimes. It's usually on time.
     - speaker: Mohamed
-      text: Permisi, Pak. Pintu lima di mana?
-      ar_eg: لو سمحت يا أستاذ. بوابة خمسة فين؟
-      ar: عفوًا يا سيدي. أين البوابة الخامسة؟
-      en: Excuse me, sir. Where is gate five?
-    - speaker: Petugas
-      text: Lurus saja, lalu belok kiri. Hati-hati, lantainya licin.
-      ar_eg: علطول، وبعدين حوّد شمال. خلي بالك، الأرض بتزحلق.
-      ar: امشِ مباشرةً ثم انعطف يسارًا. انتبه، الأرض زلقة.
-      en: Straight ahead, then turn left. Careful, the floor is slippery.
-    - speaker: Mohamed
-      text: Terima kasih, Pak!
-      ar_eg: شكرًا يا أستاذ!
-      ar: شكرًا يا سيدي!
-      en: Thank you, sir!
-    - speaker: Pengumuman
-      text: Para penumpang penerbangan GA 405, harap segera naik ke pesawat.
-      ar_eg: حضرات ركاب رحلة GA 405، برجاء ركوب الطيارة فورًا.
-      ar: السادة ركاب رحلة GA 405، يُرجى الصعود إلى الطائرة فورًا.
-      en: Passengers on flight GA 405, please board the plane now.
-    - speaker: Mas Ardi
-      text: Cepat, Mohamed! Semua penumpang sudah antre.
-      ar_eg: بسرعة يا محمد! كل الركاب وقفوا في الطابور.
-      ar: بسرعة يا محمد! كل الركاب اصطفّوا.
-      en: Quick, Mohamed! All the passengers are already queuing.
-    - speaker: Mohamed
-      text: Untung pesawatnya tidak terlambat lagi!
-      ar_eg: الحمد لله إن الطيارة متأخرتش تاني!
-      ar: من حسن الحظ أن الطائرة لم تتأخر مرة أخرى!
-      en: Lucky the plane isn't late again!
+      text: Tidak apa-apa. Kita minum kopi dulu.
+      ar_eg: مش مشكلة. نشرب قهوة الأول.
+      ar: لا بأس. لنشرب القهوة أولًا.
+      en: No problem. Let's have a coffee first.
+    - speaker: Mas Rizal
+      text: Ide bagus! Saya selalu minum kopi di bandara.
+      ar_eg: فكرة حلوة! أنا دايمًا بشرب قهوة في المطار.
+      ar: فكرة جيدة! أنا أشرب القهوة دائمًا في المطار.
+      en: Good idea! I always have coffee at the airport.
 new_words:
-  - word: segera
-    pos: adverb
-    ar_eg: فورًا، حالًا
-    ar: فورًا
-    en: immediately, right away
-  - word: menuju
-    pos: verb
-    ar_eg: يتوجه لـ
-    ar: يتوجه إلى
-    en: to head for
-  - word: pintu
+  - word: tepat waktu
+    pos: phrase
+    ar_eg: في المعاد بالظبط
+    ar: في الموعد تمامًا
+    en: on time
+  - word: jadwal
     pos: noun
-    ar_eg: باب / بوابة (في المطار)
-    ar: باب / بوابة
-    en: door; gate (at an airport)
-  - word: pindah
-    pos: verb
-    ar_eg: يتنقل، يتغير مكانه
-    ar: ينتقل
-    en: to move, change place
-  - word: petugas
+    ar_eg: جدول مواعيد
+    ar: جدول مواعيد
+    en: timetable, schedule
+    arabic: جدول
+  - word: penerbangan
     pos: noun
-    ar_eg: موظف (في مكان عام)
-    ar: موظف، مسؤول
-    en: officer, staff member
-  - word: untung
-    pos: adverb
-    ar_eg: من حسن الحظ
-    ar: لحسن الحظ
-    en: luckily
+    ar_eg: رحلة طيران
+    ar: رحلة جوية
+    en: flight
+  - word: tujuan
+    pos: noun
+    ar_eg: متجهة لـ / وجهة
+    ar: الوجهة
+    en: destination; bound for
+  - word: keterlambatan
+    pos: noun
+    ar_eg: تأخير
+    ar: تأخير
+    en: delay
 review:
   status: draft
   verified: false

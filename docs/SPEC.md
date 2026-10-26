@@ -60,9 +60,9 @@ These five rules beat any single feature. When in doubt, choose what serves them
 
 | Device | Role | Signature experience |
 |---|---|---|
-| **Galaxy S24 Ultra** (Android, 6.8", built-in S Pen) | the pocket coach: daily plan, reviews, Reader on the go, Kabar Radio | one-handed UI, pen hover popovers, lasso lookup, handwritten answers, Quick Capture, Share-to-Kabar |
+| **Galaxy S24 Ultra** (Android, 6.8", built-in S Pen) | the pocket coach: daily plan, reviews, Reader on the go, Kabar Radio | one-handed UI, Share-to-Kabar (pen features deferred, §5) |
 | **Galaxy Tab S11** (Android tablet, S Pen, DeX) | the **Studio**: deep lessons, reading, writing, creativity | three-pane Study Desk, Kabar Notebook, ink everywhere, split-screen companion, DeX keyboard + mouse |
-| **MacBook Air M2** (macOS, Apple Silicon) | build machine, desk study, and **Kabar Home** (local AI helper, §8) | native window, keyboard shortcuts, global Quick Lookup |
+| **MacBook Air M2** (macOS, Apple Silicon) | build machine, desk study, and **Kabar Home** (local AI helper, §8) | native window, keyboard shortcuts (global Quick Lookup deferred, §23) |
 
 **A day with Kabar:** Kak Nur's plan and Kabar Pagi on the phone with morning coffee → Kabar Radio in my earbuds on the way out → a lesson and Notebook session on the tablet in the evening → reviews on the phone before sleep → a 30-second recap. Every device always knows where I am.
 
@@ -109,6 +109,11 @@ The tablet is where Kabar becomes creative.
 
 ## 5. The S Pen on the phone (Galaxy S24 Ultra)
 
+> **Deferred (2026-10-26, learner's call).** The phone's job is the pocket
+> coach: plan, reviews, Reader, Radio, finger-first. Everything in this
+> section is a later phase, not a dropped feature; the Tab S11 keeps the pen
+> (§4), which is where writing and calligraphy live. See §23 "Deferred".
+
 - **Quick Capture:** write a word or phrase I just saw or heard; Kabar transcribes, explains and saves it. Investigate whether pen-removal events are available to open it automatically; otherwise use a quick-settings tile or app shortcut.
 - Pen hover popovers in the Reader, lessons and persona chats.
 - Lasso lookup and highlight-to-save, same as on the tablet.
@@ -120,7 +125,7 @@ The tablet is where Kabar becomes creative.
 **Kak Nur** — *Kak* is the friendly Indonesian word for an older sibling, and *Nur* is نور. Speaks Egyptian Arabic (or English) with Indonesian sprinkled in; warm, honest, specific; remembers my goals, struggles and wins. Its voice and message templates are written at build time (§18); runtime AI only fills in the personal details.
 
 - **Onboarding:** why I'm learning, minutes per day, a target (e.g., BIPA 2 by a date), preferred study times, reminder style. Then a two-minute placement chat with Mas Ardi decides where my journey starts.
-- **Daily plan** (*Rencana Hari Ini*): built from due reviews, the current unit and weak spots, sized by one question: "5, 15 or 30 minutes today?" Same plan on every device.
+- **Daily plan** (*Rencana Hari Ini*): built from due reviews, the current unit and weak spots, sized by one question: "5, 15 or 30 minutes today?" Same plan on every device. Reviews come first: 5 min = reviews (≤2 min) + the next lesson; 15 min = reviews (~6) + one lesson (~6) + a weak spot (~3); 30 min = two such blocks with a break offer, adding a short read or listen. At most 5 / 12 / 20 new words and 2 new grammar points a day; a comeback after a break starts with the light 5-minute plan (`docs/PEDAGOGY.md`).
 - **End-of-day recap:** 30 seconds — what I learned, one thing to remember, tomorrow's first step.
 - **Smart reminders:** at my chosen times, nudged toward when I actually study (learned from my history). Quiet hours respected; one tap to snooze. **Account-aware:** once I've met today's goal on any device, the others stay silent.
 - **Weekly report** (Thursday evening by default): time, new words, retention, streak, strongest and weakest skills, a note from Kak Nur, next week's focus. The plan adapts automatically.
@@ -194,7 +199,7 @@ The tablet is where Kabar becomes creative.
   - audio, "add to review", status buttons, 👍/👎
 - **Explain this sentence:** grammar (assembled from the grammar library), register, culture, and a natural paraphrase.
 - **Explanation voice:** Egyptian colloquial (بالمصري) / Modern Standard Arabic / English — my choice, per session.
-- **Mac Quick Lookup:** a global hotkey opens a small floating window that analyzes whatever is in the clipboard (verify global-shortcut support in Dioxus desktop).
+- **Mac Quick Lookup:** *deferred (2026-10-26, see §23)* — a global hotkey opens a small floating window that analyzes whatever is in the clipboard (verify global-shortcut support in Dioxus desktop).
 
 ## 12. The Arabic Bridge — جسر
 
@@ -219,7 +224,9 @@ My unfair advantage: a large share of Indonesian vocabulary comes from Arabic (o
 
 ## 14. Lessons, exercises & mini-games
 
-**Lesson pattern** (Airlearn-style): 3–6 teaching slides → 8–15 exercises → mini dialogue → new-words summary → souvenir. All of it is prebuilt content (§18).
+**Lesson pattern** (Airlearn-style): 1–4 teaching slides → 6–10 exercises (review lessons 8–12) → mini dialogue (4–6 lines) → new-words summary (3–8 new words in a learn lesson) → souvenir. All of it is prebuilt content (§18).
+
+**Lesson size:** every lesson fits in **7 minutes** (target 4–6), with at most 2 new grammar points. Bigger topics are split into more lessons, never squeezed. The evidence, the per-kind caps and the time model are in `docs/PEDAGOGY.md`; the caps live in `kabar_core::lesson::pacing` and the content validator rejects any lesson over them.
 
 **Exercise types:** multiple choice · match pairs · translate both ways (free text or handwriting, graded against prebuilt reference answers + AI for open answers, with specific, kind feedback) · build a sentence from a word bank · listen and pick/type · fill the blank · dictation (typed or handwritten) · speaking (later).
 
@@ -354,7 +361,23 @@ Refine in PLAN.md. Every synced table carries `account_id`, `device_id`, a hybri
 | M11 | Javanese J1–J3, Unggah-Ungguh Simulator, Minimal Pairs | I pass J1 |
 | M12 | Personas, Sinetron, Kabar Radio | a 5-minute episode plays offline on the phone |
 | M5+ | **Teach Kabar** (§26), phase T1: `learn_entry`, review screen, personal dictionary, popover entry point | I teach Kabar a word it didn't know, approve it, and see it in a popover on another device |
-| M13 | Content pipeline v2 (all levels, 10k + 3k glosses) + polish: monthly level check, skill radar + forecast, aksara Jawa calligraphy, widgets, Mac Quick Lookup, offline packs, performance | everything in §25 passes |
+| M13 | Content pipeline v2 (all levels, 10k + 3k glosses) + polish: monthly level check, skill radar + forecast, aksara Jawa calligraphy, widgets, offline packs, performance | everything in §25 passes |
+
+### Deferred (2026-10-26, learner's call)
+
+The core is lessons, reviews, the Reader, the coach and content. These are
+later phases, after M13, and **not** dropped features. The Tab S11 keeps its
+pen throughout: it is the writing device.
+
+| Deferred | Was in | Comes back when |
+|---|---|---|
+| The S Pen on the phone (§5): Quick Capture, hover popovers, lasso lookup, handwritten answers on the S24 Ultra | M5, M6 | the core is comfortable and the phone pen is what's missing |
+| Mac Quick Lookup, the global clipboard hotkey (§11) | M13 | desk study on the Mac asks for it |
+| Mac-only polish beyond running and bundling the app | M13 | the same |
+
+M5 and M6 keep their tablet pen work: popovers, lasso and highlight on the
+Tab S11, write-mode lessons and calligraphy (M9, M13). The phone's own M5/M6
+goals stay too, with tap and scroll instead of the pen.
 
 ## 24. Test texts
 

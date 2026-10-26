@@ -114,7 +114,7 @@ exercises:
       ar_eg: أنهي كلمة هي الـ P (الفعل)؟
       ar: أيّ كلمة هي المسند (P)؟
       en: Which word is the P (predicate)?
-    options: ["di pelabuhan", "membeli", "Dimas", "tiket"]
+    options: [di pelabuhan, membeli, Dimas, tiket]
     answer: 1
     explain:
       ar_eg: membeli هو الفعل. Dimas (S) · membeli (P) · tiket (O) · di pelabuhan (K).
@@ -122,53 +122,26 @@ exercises:
       en: Dimas (S) · membeli (P) · tiket (O) · di pelabuhan (K).
     words: [predikat, pelabuhan]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة ترتيبها صح؟
-      ar: أيّ جملة ترتيبها صحيح؟
-      en: Which sentence is in the right order?
-    options: ["Membeli saya buku di Gramedia.", "Saya buku membeli di Gramedia.", "Saya membeli buku di Gramedia."]
-    answer: 2
-    explain:
-      ar_eg: S + P + O + K. المفعول (buku) بعد الفعل (membeli) على طول.
-      ar: S + P + O + K، والمفعول buku بعد الفعل membeli مباشرة.
-      en: S + P + O + K — the object (buku) follows the verb (membeli) directly.
-    words: [membeli]
-  - id: e04
-    type: multiple_choice
-    question: Kemarin kami naik kapal.
-    question_meaning:
-      ar_eg: Kemarin هنا إيه؟
-      ar: ما دور Kemarin هنا؟
-      en: What is Kemarin here?
-    options: ["K (keterangan)", "S (subjek)", "O (objek)"]
-    answer: 0
-    explain:
-      ar_eg: kemarin ظرف زمان (K)، ومسموح ييجي في الأول.
-      ar: kemarin ظرف زمان (K)، ويجوز تقديمه.
-      en: kemarin is a time adverbial (K), so it can come first.
-    words: [keterangan, kemarin]
-  - id: e05
     type: listen
     text: Rina memotret laut di pantai.
-    options: ["Rina memotret laut di pantai.", "Rina di pantai memotret.", "Laut memotret Rina di pantai."]
+    options: [Rina memotret laut di pantai., Rina di pantai memotret., Laut memotret Rina di pantai.]
     answer: 0
     words: [memotret, laut]
-  - id: e06
+  - id: e04
     type: fill_blank
     sentence: Ibu memasak ___ di dapur.
     meaning:
       ar_eg: ماما بتطبخ رز في المطبخ.
       ar: تطبخ الأم الأرز في المطبخ.
       en: Mother cooks rice in the kitchen.
-    options: ["kemarin", "nasi", "pagi"]
+    options: [kemarin, nasi, pagi]
     answers: [nasi]
     explain:
       ar_eg: بعد الفعل memasak على طول بييجي المفعول، وهنا nasi.
       ar: بعد الفعل memasak يأتي المفعول nasi.
       en: The object, nasi, comes right after memasak.
     words: [objek, memasak, nasi]
-  - id: e07
+  - id: e05
     type: build_sentence
     source:
       ar_eg: أنا اشتريت تذكرة من الميناء.
@@ -177,70 +150,20 @@ exercises:
     answer: Saya membeli tiket di pelabuhan.
     distractors: [ke, yang]
     words: [membeli, tiket, pelabuhan]
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: امبارح ركبنا مركب لجزر الألف.
-      ar: أمس ركبنا قاربًا إلى جزر الألف.
-      en: Yesterday we took a boat to the Thousand Islands.
-    answer: Kemarin kami naik kapal ke Pulau Seribu.
-    alternatives: ["Kami naik kapal ke Pulau Seribu kemarin."]
-    distractors: [dari, tadi]
-    words: [kemarin, naik, kapal, pulau]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: ديماس بيتعلم عربي في القاهرة.
-      ar: يتعلم ديماس العربية في القاهرة.
-      en: Dimas is studying Arabic in Cairo.
-    answer: Dimas belajar bahasa Arab di Kairo.
-    alternatives: ["Di Kairo Dimas belajar bahasa Arab."]
-    distractors: [ke, yang]
-    words: [belajar]
-  - id: e10
+  - id: e06
     type: translate
     direction: to_target
     source_meaning:
       ar_eg: رينا صوّرت البحر على الشط.
       ar: صوّرت رينا البحر على الشاطئ.
       en: Rina photographed the sea at the beach.
-    answers:
-      - Rina memotret laut di pantai.
-      - Di pantai, Rina memotret laut.
-      - Di pantai Rina memotret laut.
-      - Rina memotret laut di pantai
-      - Rina memfoto laut di pantai.
+    answers: [Rina memotret laut di pantai., 'Di pantai, Rina memotret laut.', Di pantai Rina memotret laut., Rina memotret laut di pantai, Rina memfoto laut di pantai.]
     explain:
       ar_eg: S (Rina) + P (memotret) + O (laut) + K (di pantai). والظرف ممكن ييجي الأول.
       ar: S + P + O + K، ويجوز تقديم الظرف.
       en: S + P + O + K; the adverbial may come first.
     words: [memotret, laut, pantai]
-  - id: e11
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا بقرا كتاب دلوقتي.
-      ar: أنا أقرأ كتابًا الآن.
-      en: I'm reading a book right now.
-    answers:
-      - Saya sedang membaca buku.
-      - Sekarang saya sedang membaca buku.
-      - Saya sedang membaca buku sekarang.
-      - Saya lagi membaca buku.
-      - Aku sedang membaca buku.
-      - Saya sedang membaca buku
-      - Sekarang saya membaca buku.
-    words: [sedang, membaca, buku]
-  - id: e12
-    type: translate
-    direction: from_target
-    source_text: Setiap pagi Pak Budi minum kopi di warung.
-    answers_meaning:
-      ar_eg: ["كل يوم الصبح الأستاذ بودي بيشرب قهوة في الكشك.", "الأستاذ بودي بيشرب قهوة في الوارونج كل يوم الصبح", "كل صبح الأستاذ بودي بيشرب قهوة في الوارونج"]
-      ar: ["كل صباح يشرب الأستاذ بودي القهوة في المقهى الصغير.", "يشرب الأستاذ بودي القهوة في الوارونغ كل صباح"]
-      en: ["Every morning Pak Budi drinks coffee at the warung.", "Mr Budi drinks coffee at the food stall every morning", "Every morning Mr Budi has coffee at the warung"]
-    words: [setiap, minum, warung]
-  - id: e13
+  - id: e07
     type: dictation
     text: Kami naik kapal kemarin.
     meaning:
@@ -248,7 +171,7 @@ exercises:
       ar: ركبنا قاربًا أمس.
       en: We took a boat yesterday.
     words: [naik, kapal, kemarin]
-  - id: e14
+  - id: e08
     type: speaking
     text: Kemarin saya membeli tiket di pelabuhan.
     meaning:
@@ -326,16 +249,6 @@ new_words:
     ar_eg: يعمل، يكوّن
     ar: يصنع، يكوّن
     en: to make
-  - word: tentang
-    pos: preposition
-    ar_eg: عن
-    ar: عن، حول
-    en: about
-  - word: hampir
-    pos: adverb
-    ar_eg: تقريبًا، قرّب
-    ar: تقريبًا، كاد
-    en: almost
 review:
   status: draft
   verified: false

@@ -653,6 +653,36 @@ fn MapView(j: Journey) -> Element {
     }
 }
 
+// ------------------------------------------------------- learning journal ----
+
+/// Lesson titles, level tests and unit souvenirs of both routes, for the
+/// learning journal. Empty when the curricula didn't load (the journal then
+/// shows lesson ids instead of titles).
+pub fn journal_catalog() -> crate::coach::logic::Catalog {
+    use crate::coach::logic::{Catalog, UnitInfo};
+    let mut catalog = Catalog::default();
+    let Ok(routes) = &*ROUTES else { return catalog };
+    for level in routes.id.levels.iter().chain(&routes.jv.levels) {
+        if let Some(test) = &level.level_test {
+            catalog.titles.insert(test.id.clone(), level.code.clone());
+            catalog.tests.insert(test.id.clone());
+        }
+        for unit in &level.units {
+            for lesson in &unit.lessons {
+                catalog.titles.insert(lesson.id.clone(), lesson.title.clone());
+            }
+            if let Some(c) = &unit.culture {
+                catalog.units.push(UnitInfo {
+                    id: unit.id.clone(),
+                    souvenir: c.souvenir.clone(),
+                    lessons: unit.lessons.iter().map(|l| l.id.clone()).collect(),
+                });
+            }
+        }
+    }
+    catalog
+}
+
 // ------------------------------------------------------------- suitcase ----
 
 #[component]

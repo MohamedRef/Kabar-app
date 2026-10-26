@@ -1,0 +1,213 @@
+schema: kabar.lesson/v1
+id: j1.u07.l06
+language: jv
+title: Ulangan J1.7
+can_do:
+  ar_eg: تشتري حاجة بالجاوي.
+  ar: أن تشتري شيئًا بالجاوية.
+  en: Buy something in Javanese.
+slides:
+  - title: Siji … sepuluh, sewu, sejuta
+    body:
+      ar_eg: |
+        مراجعة الأرقام:
+        - siji، loro، telu، papat، lima، enem، pitu، wolu، sanga، sepuluh.
+        - قبل ewu / atus / puluh / juta: se-، rong، telung، patang، limang، nem، pitung، wolung، sangang.
+        - satus = 100، sewu = 1000، sejuta = مليون.
+        - Regane pira? · Larang! · Murah! · Oleh kurang? · Durung oleh.
+        - لحد تاني: tukokke (belikan)، jupukke (ambilkan)، terke (antarkan).
+        - تخلّي الحاجة تحصل: diculke = يتساب / يتباع.
+        - «arp dicul piro» = arep diculke pira = ناوي تبيعه بكام؟
+      ar: |
+        مراجعة الأعداد:
+        - siji، loro، telu، papat، lima، enem، pitu، wolu، sanga، sepuluh.
+        - قبل ewu / atus / puluh / juta: se-، rong، telung، patang، limang، nem، pitung، wolung، sangang.
+        - satus = 100، sewu = 1000، sejuta = مليون.
+        - Regane pira? · Larang! · Murah! · Oleh kurang? · Durung oleh.
+        - لأجل الغير: tukokke (belikan)، jupukke (ambilkan)، terke (antarkan).
+        - التسبيب: diculke = يُترك / يُباع.
+        - «arp dicul piro» = arep diculke pira = بكم ستبيعه؟
+      en: |
+        Numbers recap:
+        - siji, loro, telu, papat, lima, enem, pitu, wolu, sanga, sepuluh.
+        - Before ewu / atus / puluh / juta: se-, rong, telung, patang, limang, nem, pitung, wolung, sangang.
+        - satus = 100, sewu = 1,000, sejuta = 1,000,000.
+        - Regane pira? · Larang! · Murah! · Oleh kurang? · Durung oleh.
+        - For someone: tukokke (belikan), jupukke (ambilkan), terke (antarkan).
+        - Making it happen: diculke = let go / sold.
+        - "arp dicul piro" = arep diculke pira = How much will you sell it for?
+    grammar: jv.number.ngoko
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: papat
+        ar_eg: ٤
+        ar: ٤
+        en: '4'
+      - text: enem
+        ar_eg: ٦
+        ar: ٦
+        en: '6'
+      - text: pitu
+        ar_eg: ٧
+        ar: ٧
+        en: '7'
+      - text: sanga
+        ar_eg: ٩
+        ar: ٩
+        en: '9'
+      - text: sepuluh
+        ar_eg: ١٠
+        ar: ١٠
+        en: '10'
+    words: [papat, enem, pitu, sanga, sepuluh]
+  - id: e02
+    type: multiple_choice
+    question: patang ewu
+    question_meaning:
+      ar_eg: كام؟
+      ar: كم؟
+      en: How much?
+    options: ['4.000', '400', '40.000']
+    answer: 0
+    words: [patang, ewu]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول ٣٠٠ صح؟
+      ar: كيف تقول ٣٠٠ بصورة صحيحة؟
+      en: How do you say 300?
+    options: [telung ewu, telung atus, telu atus]
+    answer: 1
+    explain:
+      ar_eg: 'قبل atus: telu ⇐ telung. وtelung ewu = 3000.'
+      ar: قبل atus تصير telu ‏telung، أما telung ewu فهي 3000.
+      en: Before atus, telu ⇒ telung. telung ewu is 3,000.
+    words: [telung, atus]
+  - id: e04
+    type: multiple_choice
+    question: Tak tukokke kopi, ya.
+    question_meaning:
+      ar_eg: معناها إيه؟ اختار الإندونيسي.
+      ar: ما معناها؟ اختر الإندونيسية.
+      en: What does it mean? Pick the Indonesian.
+    options: ['Kubelikan kopi, ya.', 'Kuantar kopi, ya.', 'Kopinya dijual, ya.']
+    answer: 0
+    explain:
+      ar_eg: tak = ku-، وtukokke = belikan.
+      ar: tak = ku-، وtukokke = belikan.
+      en: tak = ku-, tukokke = belikan.
+    words: [tak, tukokke]
+  - id: e05
+    type: listen
+    text: Limang ewu.
+    options: [Limang atus., Lima ewu., Limang ewu.]
+    answer: 2
+    words: [limang, ewu]
+  - id: e06
+    type: fill_blank
+    sentence: Regane ___?
+    meaning:
+      ar_eg: بكام؟
+      ar: بكم؟
+      en: How much is it?
+    answers: [pira, piro]
+    words: [pira, rega]
+  - id: e07
+    type: fill_blank
+    sentence: Ayo, tak ___ nang stasiun.
+    meaning:
+      ar_eg: يلا، هوصّلك المحطة.
+      ar: هيا، سأوصلك إلى المحطة.
+      en: Come on, I'll take you to the station.
+    options: [terke, diculke, tukokke]
+    answers: [terke]
+    words: [terke]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: القميص ده بكام؟ — عشرين ألف.
+      ar: بكم هذا القميص؟ — عشرون ألفًا.
+      en: How much is this shirt? — Twenty thousand.
+    answer: Klambi iki regane pira? Rong puluh ewu.
+    distractors: [loro, kae]
+    words: [regane, pira, rong puluh, ewu]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: اتنين شاي يا معلم. بكام؟
+      ar: كوبا شاي يا أخي. بكم؟
+      en: Two teas, Cak. How much?
+    answers: ["Teh loro, Cak. Regane pira?", "Teh loro, Cak. Regane pira", "Teh loro Cak. Regane pira?", "Teh loro Cak. Regane pira", "Teh loro, Cak. Pira?", "Teh loro, Cak. Pira", "Teh loro Cak. Pira?", "Teh loro Cak. Pira", "Teh loro, Cak. Kabeh pira?", "Teh loro, Cak. Kabeh pira", "Teh loro Cak. Kabeh pira?", "Teh loro Cak. Kabeh pira", "Teh loro, Mas. Regane pira?", "Teh loro, Mas. Regane pira", "Teh loro Mas. Regane pira?", "Teh loro Mas. Regane pira"]
+    words: [loro, pira]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: مية ألف؟ غالي! ينفع تنزّل؟
+      ar: مئة ألف؟ غالٍ! هل تخفض السعر؟
+      en: A hundred thousand? Expensive! Can you go lower?
+    answers: ['Satus ewu? Larang! Oleh kurang?', 'Satus ewu? Larang! Oleh kurang', 'Satus ewu? Larang. Oleh kurang?', 'Satus ewu? Larang. Oleh kurang', 'Satus ewu? Larang, oleh kurang?', 'Satus ewu? Larang, oleh kurang', 'Satus ewu? Larang oleh kurang?', 'Satus ewu? Larang oleh kurang']
+    words: [satus, ewu, larang, oleh kurang]
+  - id: e11
+    type: dictation
+    text: Regane pira? Telung ewu.
+    meaning:
+      ar_eg: بكام؟ تلات آلاف.
+      ar: بكم؟ ثلاثة آلاف.
+      en: How much? Three thousand.
+    words: [pira, telung, ewu]
+  - id: e12
+    type: speaking
+    text: Satus ewu? Larang! Oleh kurang?
+    meaning:
+      ar_eg: مية ألف؟ غالي! ينفع تنزّل؟
+      ar: مئة ألف؟ غالٍ! هل تخفض السعر؟
+      en: A hundred thousand? Expensive! Can you go lower?
+    words: [satus, larang, oleh kurang]
+dialogue:
+  title: Tuku kopi nang Pasar Atom
+  lines:
+    - speaker: Mohamed
+      text: Cak, kopi loro. Regane pira?
+      ar_eg: يا معلم، اتنين قهوة. بكام؟
+      ar: يا أخي، قهوتان. بكم؟
+      en: Cak, two coffees. How much?
+    - speaker: Cak Man
+      text: Siji limang ewu. Loro sepuluh ewu.
+      ar_eg: الواحدة بخمسة آلاف. الاتنين بعشرة آلاف.
+      ar: الواحدة بخمسة آلاف، والاثنتان بعشرة آلاف.
+      en: Five thousand each. Two for ten thousand.
+    - speaker: Mohamed
+      text: Iki dhuwite. Tak tukokke Cak Heru siji.
+      ar_eg: اتفضل الفلوس. واحدة هجيبها لـ Cak Heru.
+      ar: تفضّل النقود. واحدة سأشتريها لـ Cak Heru.
+      en: Here's the money. One is for Cak Heru, my treat.
+    - speaker: Cak Heru
+      text: Wah, suwun, rek!
+      ar_eg: الله، ميرسي يا صاحبي!
+      ar: رائع، شكرًا يا صاح!
+      en: Oh, thanks, mate!
+    - speaker: Mohamed
+      text: Padha-padha, Cak!
+      ar_eg: العفو يا معلم!
+      ar: عفوًا يا أخي!
+      en: You're welcome, Cak!
+souvenir:
+  id: j1.u07.souvenir
+  title: Pasar Atom
+  note:
+    ar_eg: |
+      باسار أتوم من أشهر أسواق سورابايا: أكل، هدوم، موبايلات، وأصوات فصال من كل ناحية. وجاوي السوق ده هو أكتر جاوي مفيد في الدنيا: كام كلمة زي «Regane pira?» و«Oleh kurang?» بيجيبولك ابتسامة وسعر أحسن.
+      وبكده خلّصت محطات سورابايا! جرّب جولة الجاوي في لعبة «Pasar!» وفاصل بالأرقام اللي اتعلمتها.
+    ar: |
+      باسار أتوم من أشهر أسواق سورابايا: طعام وثياب وهواتف، وأصوات المساومة في كل زاوية. وجاوية السوق أنفع جاوية على الإطلاق: بضع كلمات مثل «Regane pira?» و«Oleh kurang?» تجلب لك ابتسامة وسعرًا أفضل.
+      وبهذا أنهيت محطات سورابايا! جرّب الجولة الجاوية في لعبة «Pasar!» وساوم بالأعداد التي تعلّمتها.
+    en: |
+      Pasar Atom is one of Surabaya's best-known markets: food, clothes, phones, and haggling from every corner. Market Javanese is the most useful Javanese of all: a few words like "Regane pira?" and "Oleh kurang?" get you a smile and a better price.
+      That completes the Surabaya stops! Try the Javanese round of the Pasar! mini-game and haggle with the numbers you've learned.
+review:
+  status: draft
+  verified: false

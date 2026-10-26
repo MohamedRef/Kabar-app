@@ -5,6 +5,8 @@ mod ai;
 mod audio;
 mod cloud;
 mod coach;
+mod cost;
+mod data_export;
 mod i18n;
 mod icons;
 mod journey;
@@ -52,6 +54,10 @@ pub enum Screen {
     Lesson,
     /// Teach Kabar a word (spec §26).
     Teach,
+    /// The learning journal: the timeline and reflections (spec §6).
+    Journal,
+    /// Cost & limits (spec §19), from Settings.
+    Cost,
     /// Sinetron and Kabar Radio.
     Listen,
 }
@@ -71,22 +77,27 @@ impl Screen {
             Self::Devices => Msg::NavDevices,
             Self::Lesson => Msg::NavJourney,
             Self::Teach => Msg::NavTeach,
+            Self::Journal => Msg::NavJournal,
+            Self::Cost => Msg::CostTitle,
             Self::Listen => Msg::NavListen,
         }
     }
 
     /// Hidden from the phone's bottom bar, which keeps five items within
-    /// thumb reach. Kak Nur, Watch & listen and Settings are linked from
-    /// Today there; Studio and Pen Lab from Settings.
+    /// thumb reach. Kak Nur, the journal, Watch & listen and Settings are
+    /// linked from Today there (the journal from Kak Nur too); Studio and Pen
+    /// Lab from Settings.
     fn secondary(self) -> bool {
         matches!(
             self,
             Self::Coach
+                | Self::Journal
                 | Self::Settings
                 | Self::Studio
                 | Self::PenLab
                 | Self::Devices
                 | Self::Teach
+                | Self::Cost
                 | Self::Listen
         )
     }
@@ -280,6 +291,7 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
     let cloud = use_context_provider(|| Cloud {
         status: Signal::new(CloudStatus::not_configured(device_id.clone())),
         devices: Signal::new(None),
+        usage: Signal::new(None),
         signing_in: Signal::new(false),
         revision: Signal::new(0),
         commands: Signal::new(None),
@@ -314,6 +326,7 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
         spawn(async move {
             let (mut status, mut devices, mut signing_in, mut revision) =
                 (cloud.status, cloud.devices, cloud.signing_in, cloud.revision);
+            let mut usage = cloud.usage;
             while let Some(event) = handle.events.recv().await {
                 match event {
                     Event::Status(s) => {
@@ -322,6 +335,7 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
                         }
                     }
                     Event::Devices(d) => devices.set(Some(d)),
+                    Event::Usage(u) => usage.set(Some(u)),
                     Event::SigningIn(on) => signing_in.set(on),
                     Event::Changed(tables) => {
                         let store = db.0.borrow();
@@ -410,6 +424,7 @@ fn Shell() -> Element {
         Screen::Play,
         Screen::Listen,
         Screen::Coach,
+        Screen::Journal,
         Screen::Studio,
         Screen::Teach,
         Screen::PenLab,
@@ -439,6 +454,7 @@ fn Shell() -> Element {
                 match current {
                     Screen::Today => rsx! { coach::today::Today {} },
                     Screen::Coach => rsx! { coach::coach_screen::CoachScreen {} },
+                    Screen::Journal => rsx! { coach::journal::JournalScreen {} },
                     Screen::Play => rsx! { play::Play {} },
                     Screen::Journey => rsx! { journey::JourneyScreen {} },
                     Screen::Reader => rsx! { reader::Reader {} },
@@ -448,6 +464,7 @@ fn Shell() -> Element {
                     Screen::PenLab => rsx! { penlab::PenLab {} },
                     Screen::Devices => rsx! { account::AccountScreen {} },
                     Screen::Teach => rsx! { teach::TeachScreen {} },
+                    Screen::Cost => rsx! { cost::CostScreen {} },
                     Screen::Listen => rsx! { listen::ListenScreen {} },
                     Screen::Lesson => rsx! { lesson::LessonScreen {} },
                 }

@@ -136,7 +136,7 @@ exercises:
       ar_eg: البياع قال السعر وإنت مش هتقدر تدفع كده أبدًا. تقول إيه؟
       ar: ذكر البائع ثمنًا لا تستطيع دفعه أبدًا. ماذا تقول؟
       en: The seller names a price you simply can't pay. What do you say?
-    options: ["Kurang mahal.", "Mahal sekali, bagus!", "Terlalu mahal!"]
+    options: [Kurang mahal., 'Mahal sekali, bagus!', Terlalu mahal!]
     answer: 2
     explain:
       ar_eg: terlalu = زيادة عن اللزوم، يعني مش هتشتري.
@@ -144,58 +144,22 @@ exercises:
       en: terlalu = too much, so it's a problem.
     words: [terlalu, mahal]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الأكل حلو أوي وعايز تمدحه. تقول إيه؟
-      ar: الطعام لذيذ جدًا وتريد أن تمدحه. ماذا تقول؟
-      en: The food is really good and you want to praise it. What do you say?
-    options: ["Terlalu enak!", "Enak sekali!", "Kurang enak."]
-    answer: 1
-    explain:
-      ar_eg: terlalu enak معناها «حلو زيادة عن اللزوم» وده غريب. المدح = enak sekali.
-      ar: terlalu enak تعني إفراطًا مذمومًا، والمدح يكون بـ enak sekali.
-      en: terlalu enak sounds like a complaint; praise is enak sekali.
-    words: [terlalu, sekali, enak]
-  - id: e04
     type: listen
     text: Suaranya terlalu keras.
-    options: ["Suaranya kurang keras.", "Suaranya terlalu keras.", "Suaranya cukup keras."]
+    options: [Suaranya kurang keras., Suaranya terlalu keras., Suaranya cukup keras.]
     answer: 1
     words: [terlalu, keras]
-  - id: e05
-    type: fill_blank
-    sentence: Rumah Ni Luh ___ jauh, tapi tidak terlalu jauh.
-    meaning:
-      ar_eg: بيت ني لوه بعيد شوية، بس مش بعيد أوي.
-      ar: بيت ني لوه بعيد قليلًا، لكنه ليس بعيدًا جدًا.
-      en: Ni Luh's house is a bit far, but not too far.
-    options: ["agak", "kurang", "terlalu"]
-    answers: [agak]
-    words: [agak, jauh]
-  - id: e06
+  - id: e04
     type: fill_blank
     sentence: Sayurnya ___ garam.
     meaning:
       ar_eg: الخضار ناقصه ملح.
       ar: الخضار ينقصها الملح.
       en: The vegetables need more salt.
-    options: ["kurang", "terlalu", "cukup"]
+    options: [kurang, terlalu, cukup]
     answers: [kurang]
     words: [kurang, garam]
-  - id: e07
-    type: multiple_choice
-    question_meaning:
-      ar_eg: ني لوه سألتك «Enak?» والأكل مش بطال. ترد بإيه؟
-      ar: سألتك ني لوه «Enak؟» والطعام لا بأس به. بماذا تردّ؟
-      en: Ni Luh asks "Enak?" and the food is OK. What do you answer?
-    options: ["Terlalu.", "Lumayan.", "Agak."]
-    answer: 1
-    explain:
-      ar_eg: terlalu وagak لازم صفة بعدهم؛ lumayan تنفع لوحدها رد.
-      ar: terlalu وagak تحتاجان إلى صفة بعدهما، أما lumayan فتصلح ردًّا وحدها.
-      en: terlalu and agak need an adjective; lumayan works as a reply on its own.
-    words: [lumayan]
-  - id: e08
+  - id: e05
     type: build_sentence
     source:
       ar_eg: الكمنجة دي غالية شوية، بس حلوة.
@@ -204,38 +168,7 @@ exercises:
     answer: Biola ini cukup mahal, tapi bagus.
     distractors: [terlalu, sekali]
     words: [biola, cukup, mahal]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: المزيكا عالية زيادة.
-      ar: الموسيقى صاخبة أكثر من اللازم.
-      en: The music is too loud.
-    answers:
-      - Musiknya terlalu keras.
-      - Musiknya terlalu keras
-      - Musik ini terlalu keras.
-      - Musiknya terlalu kencang.
-      - Suara musiknya terlalu keras.
-    words: [terlalu, keras, musik]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Gitar ini agak berat.
-    answers_meaning:
-      ar_eg: ["الجيتار ده تقيل شوية", "الجيتار ده تقيل حبتين"]
-      ar: ["هذه القيثارة ثقيلة قليلًا", "هذا الجيتار ثقيل نوعًا ما"]
-      en: ["This guitar is a bit heavy.", "This guitar is rather heavy.", "This guitar is quite heavy."]
-    words: [agak, berat]
-  - id: e11
-    type: dictation
-    text: Suaranya terlalu pelan.
-    meaning:
-      ar_eg: الصوت واطي زيادة.
-      ar: الصوت منخفض أكثر من اللازم.
-      en: The sound is too quiet.
-    words: [terlalu, pelan]
-  - id: e12
+  - id: e06
     type: speaking
     text: Harganya cukup mahal, tapi suaranya indah.
     meaning:
@@ -277,11 +210,6 @@ dialogue:
       ar: صحيح، صوته جميل جدًا.
       en: True, it sounds really beautiful.
 new_words:
-  - word: agak
-    pos: adverb
-    ar_eg: شوية
-    ar: قليلًا، نوعًا ما
-    en: a bit, rather
   - word: cukup
     pos: adverb
     ar_eg: كفاية / إلى حد كبير

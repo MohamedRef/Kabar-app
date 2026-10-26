@@ -123,7 +123,7 @@ exercises:
       ar_eg: ber + kerja تبقى إيه؟
       ar: ما ناتج ber + kerja؟
       en: What does ber + kerja become?
-    options: ["bekerjar", "berkerja", "bekerja"]
+    options: [bekerjar, berkerja, bekerja]
     answer: 2
     explain:
       ar_eg: مع kerja الـ r بتاعة ber بتقع، فتبقى bekerja.
@@ -131,58 +131,22 @@ exercises:
       en: ber loses its r before kerja, giving bekerja.
     words: [bekerja]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: ber + ajar تبقى إيه؟
-      ar: ما ناتج ber + ajar؟
-      en: What does ber + ajar become?
-    options: ["beajar", "berajar", "belajar"]
-    answer: 2
-    explain:
-      ar_eg: belajar هي الكلمة الشاذة الوحيدة، لازم تتحفظ.
-      ar: belajar هي الصيغة الشاذة الوحيدة، فتُحفظ.
-      en: belajar is the one irregular form; just learn it.
-    words: [belajar]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: ber + renang تبقى إيه؟
-      ar: ما ناتج ber + renang؟
-      en: What does ber + renang become?
-    options: ["berenangan", "berrenang", "berenang"]
-    answer: 2
-    explain:
-      ar_eg: الجذر بيبدأ بـ r، فـ ber بتبقى be- ومفيش راءين ورا بعض.
-      ar: الجذر يبدأ بالراء فتصير ber إلى be- ولا تتكرر الراء.
-      en: The root starts with r, so ber becomes be- — no double r.
-    words: [berenang]
-  - id: e05
     type: listen
     text: Anak-anak bermain di taman.
-    options: ["Anak-anak berenang di pantai.", "Anak-anak bermain di taman.", "Anak-anak belajar di rumah."]
+    options: [Anak-anak berenang di pantai., Anak-anak bermain di taman., Anak-anak belajar di rumah.]
     answer: 1
     words: [anak-anak, bermain, taman]
-  - id: e06
+  - id: e04
     type: fill_blank
     sentence: Rina ___ di pantai.
     meaning:
       ar_eg: رينا بتعوم في البحر.
       ar: رينا تسبح في الشاطئ.
       en: Rina is swimming at the beach.
-    options: ["bekerja", "berenang", "belajar"]
+    options: [bekerja, berenang, belajar]
     answers: [berenang]
     words: [berenang, pantai]
-  - id: e07
-    type: fill_blank
-    sentence: Kami ___ bahasa Indonesia.
-    meaning:
-      ar_eg: إحنا بنذاكر إندونيسي.
-      ar: ندرس الإندونيسية.
-      en: We study Indonesian.
-    options: ["berenang", "berlibur", "belajar"]
-    answers: [belajar]
-    words: [belajar]
-  - id: e08
+  - id: e05
     type: build_sentence
     source:
       ar_eg: هم بيقضوا الأجازة في أنكول.
@@ -191,33 +155,7 @@ exercises:
     answer: Mereka berlibur di Ancol.
     distractors: [kami, berenang]
     words: [mereka, berlibur]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا بشتغل في جاكرتا.
-      ar: أعمل في جاكرتا.
-      en: I work in Jakarta.
-    answers:
-      - Saya bekerja di Jakarta.
-      - Saya bekerja di Jakarta
-      - Aku bekerja di Jakarta.
-      - Aku bekerja di Jakarta
-    explain:
-      ar_eg: kerja + ber = bekerja (الـ r بتقع).
-      ar: ber + kerja = bekerja بسقوط الراء.
-      en: ber + kerja = bekerja (the r drops).
-    words: [bekerja]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Anak-anak bermain di taman.
-    answers_meaning:
-      ar_eg: ["العيال بيلعبوا في الجنينة.", "الأطفال بيلعبوا في الجنينة", "العيال بيلعبوا في الحديقة"]
-      ar: ["الأطفال يلعبون في الحديقة.", "يلعب الأطفال في الحديقة", "الأطفال يلعبون في المنتزه"]
-      en: ["The children are playing in the park.", "The children play in the park", "Kids are playing in the park"]
-    words: [anak-anak, bermain, taman]
-  - id: e11
+  - id: e06
     type: dictation
     text: Rina berenang di pantai.
     meaning:
@@ -225,7 +163,7 @@ exercises:
       ar: رينا تسبح في الشاطئ.
       en: Rina is swimming at the beach.
     words: [berenang, pantai]
-  - id: e12
+  - id: e07
     type: speaking
     text: Hari Minggu kami jalan-jalan ke Ancol.
     meaning:
@@ -272,11 +210,6 @@ new_words:
     ar_eg: يعوم
     ar: يسبح
     en: to swim
-  - word: bermain
-    pos: verb
-    ar_eg: يلعب
-    ar: يلعب
-    en: to play
   - word: berjalan
     pos: verb
     ar_eg: يمشي
@@ -307,21 +240,6 @@ new_words:
     ar_eg: البحر / الشط
     ar: الشاطئ
     en: beach
-  - word: taman
-    pos: noun
-    ar_eg: جنينة
-    ar: حديقة
-    en: park, garden
-  - word: anak-anak
-    pos: noun
-    ar_eg: العيال / الأطفال
-    ar: الأطفال
-    en: children
-  - word: asyik
-    pos: adjective
-    ar_eg: حلو / ممتع (كلام عادي)
-    ar: ممتع (عامية)
-    en: fun, great (casual)
 review:
   status: draft
   verified: false

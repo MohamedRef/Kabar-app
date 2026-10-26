@@ -1,224 +1,179 @@
 schema: kabar.lesson/v1
 id: bipa2.u03.l05
 language: id
-title: Ulangan Unit 3
+title: Bandara
 can_do:
-  ar_eg: تعمل إعلان قصير بنفسك.
-  ar: أن تُلقي إعلانًا قصيرًا.
-  en: Make a short announcement.
+  ar_eg: تفهم إعلان في المطار وتتصرف على أساسه.
+  ar: أن تفهم إعلانًا في المطار وتتصرف بحسبه.
+  en: Act on an airport announcement.
+slides:
+  - title: Para penumpang, harap segera …
+    body:
+      ar_eg: |
+        إعلانات المطار ليها ترتيب ثابت، ركّز في تلات حاجات:
+        1. مين؟ Para penumpang penerbangan … tujuan … = ركاب رحلة … المتجهة لـ …
+        2. إيه اللي حصل؟ terlambat (متأخرة) / pintu pindah (البوابة اتغيرت)
+        3. تعمل إيه؟ Harap segera menuju pintu … = برجاء التوجه فورًا لبوابة …
+      ar: |
+        لإعلانات المطار ترتيب ثابت؛ انتبه لثلاثة أمور:
+        1. مَن؟ Para penumpang penerbangan … tujuan …
+        2. ماذا حدث؟ terlambat (متأخرة) / pintu pindah (تغيّرت البوابة)
+        3. ماذا تفعل؟ Harap segera menuju pintu … = يُرجى التوجه فورًا إلى البوابة …
+      en: |
+        Airport announcements follow a fixed order. Listen for three things:
+        1. Who? Para penumpang penerbangan … tujuan … = passengers on flight … to …
+        2. What happened? terlambat (delayed) / pintu pindah (gate changed)
+        3. What to do? Harap segera menuju pintu … = please go to gate … immediately
+    grammar: id.notice.harap-dilarang
+    examples:
+      - text: Harap segera menuju pintu lima.
+        ar_eg: برجاء التوجه فورًا لبوابة خمسة.
+        ar: يُرجى التوجه فورًا إلى البوابة الخامسة.
+        en: Please go to gate five immediately.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: beberapa
-        ar_eg: كام، بعض
-        ar: بضعة
-        en: several
-      - text: seluruh
-        ar_eg: كل (الحاجة كلها)
-        ar: كامل
-        en: whole
-      - text: penumpang
-        ar_eg: راكب
-        ar: راكب
-        en: passenger
-      - text: jadwal
-        ar_eg: جدول مواعيد
-        ar: جدول مواعيد
-        en: timetable
-      - text: segera
-        ar_eg: فورًا
-        ar: فورًا
-        en: immediately
-    words: [beberapa, seluruh, penumpang, jadwal, segera]
-  - id: e02
-    type: match_pairs
-    pairs:
-      - text: Dilarang parkir
-        ar_eg: ممنوع الركن
-        ar: يُمنع الوقوف
-        en: No parking
-      - text: Harap antre
-        ar_eg: برجاء الوقوف في الطابور
-        ar: يُرجى الوقوف في الصف
-        en: Please queue
-      - text: Awas
-        ar_eg: احترس
-        ar: احذر
-        en: Beware
-      - text: tepat waktu
-        ar_eg: في المعاد
-        ar: في الموعد
-        en: on time
-    words: [dilarang, harap, awas, tepat waktu]
-  - id: e03
     type: listen
-    text: Para penumpang yang terhormat, mohon perhatian.
-    options: ["Semua penumpang, harap tenang.", "Para penumpang yang terhormat, mohon maaf.", "Para penumpang yang terhormat, mohon perhatian."]
-    answer: 2
-    words: [para, penumpang, mohon, perhatian]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح؟
-      ar: أيّ جملة صحيحة؟
-      en: Which sentence is correct?
-    options: ["Semua penumpang sudah naik.", "Semua penumpang-penumpang sudah naik.", "Penumpang semua-semua sudah naik."]
-    answer: 0
-    explain:
-      ar_eg: semua كفاية تقول إنهم كتير، متكررش الاسم.
-      ar: semua تغني عن تكرار الاسم.
-      en: semua already shows plural; don't reduplicate.
-    words: [semua, penumpang]
-  - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: لافتة عند باب المعبد بتقول إن الدخول ممنوع. مكتوب إيه؟
-      ar: لافتة عند باب المعبد تمنع الدخول. ماذا كُتب عليها؟
-      en: A sign at the temple door forbids entry. What does it say?
-    options: ["Larang masuk.", "Dilarang masuk.", "Harap masuk."]
+    text: Harap segera menuju pintu lima.
+    options: [Dilarang menuju pintu lima., Harap segera menuju pintu lima., Harap segera menuju pintu sembilan.]
     answer: 1
-    words: [dilarang, masuk]
+    words: [harap, segera, menuju, pintu]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: سمعت «Para penumpang penerbangan GA 405, pintu pindah ke pintu tujuh». لازم تعمل إيه؟
+      ar: سمعت «Para penumpang penerbangan GA 405, pintu pindah ke pintu tujuh». ماذا تفعل؟
+      en: You hear "Para penumpang penerbangan GA 405, pintu pindah ke pintu tujuh". What do you do?
+    options: [Saya menunggu di pintu lama., Saya pulang ke hotel., Saya pergi ke pintu tujuh.]
+    answer: 2
+    explain:
+      ar_eg: pindah ke pintu tujuh = البوابة اتنقلت لبوابة سبعة.
+      ar: pindah ke pintu tujuh = انتقلت البوابة إلى السابعة.
+      en: pindah ke pintu tujuh = the gate moved to gate seven.
+    words: [pindah, pintu]
+  - id: e03
+    type: fill_blank
+    sentence: Mohon ___. Para penumpang penerbangan GA 405, harap segera naik ke pesawat.
+    meaning:
+      ar_eg: انتباه من فضلكم. حضرات ركاب رحلة GA 405، برجاء ركوب الطيارة فورًا.
+      ar: انتباه من فضلكم. السادة ركاب رحلة GA 405، يُرجى الصعود إلى الطائرة فورًا.
+      en: Attention please. Passengers on flight GA 405, please board the plane immediately.
+    answers: [perhatian]
+    words: [perhatian]
+  - id: e04
+    type: fill_blank
+    sentence: Penerbangan ke Jakarta ___ satu jam. Mohon maaf atas keterlambatan ini.
+    meaning:
+      ar_eg: رحلة جاكرتا متأخرة ساعة. بنعتذر عن التأخير ده.
+      ar: رحلة جاكرتا متأخرة ساعة. نعتذر عن هذا التأخير.
+      en: The flight to Jakarta is an hour late. We apologise for this delay.
+    answers: [terlambat]
+    words: [terlambat]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: لازم نروح بوابة خمسة دلوقتي.
+      ar: يجب أن نذهب إلى البوابة الخامسة الآن.
+      en: We have to go to gate five now.
+    answer: Kita harus ke pintu lima sekarang.
+    distractors: [dilarang, tujuh]
+    words: [harus, pintu]
   - id: e06
-    type: fill_blank
-    sentence: ___ hari ada tiga penerbangan ke Jakarta.
-    meaning:
-      ar_eg: كل يوم فيه تلات رحلات لجاكرتا.
-      ar: كل يوم توجد ثلاث رحلات إلى جاكرتا.
-      en: Every day there are three flights to Jakarta.
-    options: ["Semua", "Para", "Setiap"]
-    answers: [Setiap]
-    words: [setiap, penerbangan]
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: لو سمحت، بوابة خمسة فين؟
+      ar: من فضلك، أين البوابة الخامسة؟
+      en: Excuse me, where is gate five?
+    answers: ['Permisi, pintu lima di mana?', 'Permisi, pintu lima di mana', 'Permisi, di mana pintu lima?', 'Maaf, pintu lima di mana?', 'Maaf, di mana pintu lima?']
+    words: [pintu]
   - id: e07
-    type: fill_blank
-    sentence: Kereta ini ___ terlambat, hanya sekali sebulan.
-    meaning:
-      ar_eg: القطر ده نادرًا لما بيتأخر، مرة واحدة بس في الشهر.
-      ar: نادرًا ما يتأخر هذا القطار، مرة واحدة فقط في الشهر.
-      en: This train is rarely late, only once a month.
-    options: ["jarang", "sering", "selalu"]
-    answers: [jarang]
-    words: [jarang, terlambat]
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الطيارة دي بتتأخر كتير.
+      ar: هذه الطائرة تتأخر كثيرًا.
+      en: This plane is often late.
+    answers: [Pesawat ini sering terlambat., Pesawat ini sering terlambat, Pesawatnya sering terlambat.]
+    words: [sering, terlambat]
   - id: e08
-    type: fill_blank
-    sentence: Mohon maaf atas ___ ini.
-    meaning:
-      ar_eg: بنعتذر عن التأخير ده.
-      ar: نعتذر عن هذا التأخير.
-      en: We apologise for this delay.
-    answers: [keterlambatan]
-    words: [keterlambatan]
+    type: build_sentence
+    source:
+      ar_eg: (إعلان) حضرات الركاب، برجاء الهدوء.
+      ar: (إعلان) السادة الركاب، يُرجى الهدوء.
+      en: (announcement) Passengers, please be quiet.
+    answer: Para penumpang, harap tenang.
+    distractors: [dilarang, semua]
+    words: [para, penumpang, harap, tenang]
   - id: e09
-    type: build_sentence
-    source:
-      ar_eg: ممنوع التدخين في المطار.
-      ar: يُمنع التدخين في المطار.
-      en: No smoking in the airport.
-    answer: Dilarang merokok di bandara.
-    distractors: [harap, larang]
-    words: [dilarang, merokok, bandara]
-  - id: e10
-    type: build_sentence
-    source:
-      ar_eg: كام طيارة متأخرين النهارده.
-      ar: تأخرت عدة طائرات اليوم.
-      en: Several planes are late today.
-    answer: Beberapa pesawat terlambat hari ini.
-    distractors: [para, tepat]
-    words: [beberapa, terlambat]
-  - id: e11
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (إعلان) انتباه من فضلكم. رحلة بالي متأخرة ساعة.
-      ar: (إعلان) انتباه من فضلكم. رحلة بالي متأخرة ساعة.
-      en: (announcement) Attention please. The flight to Bali is one hour late.
-    answers:
-      - Mohon perhatian. Penerbangan ke Bali terlambat satu jam.
-      - Mohon perhatian. Penerbangan ke Bali terlambat satu jam
-      - Mohon perhatian, penerbangan ke Bali terlambat satu jam.
-      - Mohon perhatian. Penerbangan tujuan Bali terlambat satu jam.
-      - Mohon perhatian. Penerbangan ke Bali terlambat sejam.
-    words: [mohon, perhatian, penerbangan, terlambat]
-  - id: e12
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (إعلان) حضرات الركاب، برجاء التوجه فورًا لبوابة اتنين.
-      ar: (إعلان) السادة الركاب، يُرجى التوجه فورًا إلى البوابة الثانية.
-      en: (announcement) Passengers, please go to gate two immediately.
-    answers:
-      - Para penumpang, harap segera menuju pintu dua.
-      - Para penumpang, harap segera menuju pintu dua
-      - Para penumpang, mohon segera menuju pintu dua.
-      - Para penumpang, harap segera ke pintu dua.
-      - Para penumpang yang terhormat, harap segera menuju pintu dua.
-    words: [para, penumpang, harap, segera, menuju]
-  - id: e13
-    type: translate
-    direction: from_target
-    source_text: Awas, lantai licin! Hati-hati.
-    answers_meaning:
-      ar_eg: ["احترس، الأرض بتزحلق! خلي بالك", "حاسب، الأرض بتزحلق! خد بالك"]
-      ar: ["احذر، الأرض زلقة! انتبه", "احذر، الأرضية زلقة! كن حذرًا"]
-      en: ["Caution, slippery floor! Be careful.", "Watch out, the floor is slippery! Careful."]
-    words: [awas, licin, hati-hati]
-  - id: e14
     type: dictation
-    text: Pesawat ke Kairo biasanya tepat waktu.
+    text: Pintu pindah ke pintu tujuh.
     meaning:
-      ar_eg: الطيارة للقاهرة عادةً بتبقى في معادها.
-      ar: الطائرة إلى القاهرة في موعدها عادةً.
-      en: The plane to Cairo is usually on time.
-    words: [biasanya, tepat waktu]
-  - id: e15
+      ar_eg: البوابة اتنقلت لبوابة سبعة.
+      ar: انتقلت البوابة إلى البوابة السابعة.
+      en: The gate has moved to gate seven.
+    words: [pindah, pintu]
+  - id: e10
     type: speaking
-    text: Mohon perhatian. Para penumpang tujuan Jakarta, harap segera menuju pintu lima. Terima kasih.
+    text: Permisi, Pak. Penerbangan ke Jakarta terlambat, ya?
     meaning:
-      ar_eg: انتباه من فضلكم. حضرات الركاب المتجهين لجاكرتا، برجاء التوجه فورًا لبوابة خمسة. شكرًا.
-      ar: انتباه من فضلكم. السادة الركاب المتجهون إلى جاكرتا، يُرجى التوجه فورًا إلى البوابة الخامسة. شكرًا.
-      en: Attention please. Passengers to Jakarta, please go to gate five immediately. Thank you.
-    words: [mohon, perhatian, para, harap, segera]
+      ar_eg: لو سمحت يا أستاذ. رحلة جاكرتا متأخرة، صح؟
+      ar: عفوًا يا سيدي. رحلة جاكرتا متأخرة، أليس كذلك؟
+      en: Excuse me, sir. The flight to Jakarta is delayed, right?
+    words: [penerbangan, terlambat]
 dialogue:
-  title: Mohamed membuat pengumuman
+  title: Pintu pindah!
   lines:
-    - speaker: Mas Ardi
-      text: Mohamed, coba baca pengumuman ini untuk teman-teman kita.
-      ar_eg: يا محمد، جرّب تقرا الإعلان ده لصحابنا.
-      ar: يا محمد، حاول أن تقرأ هذا الإعلان لأصدقائنا.
-      en: Mohamed, try reading this announcement to our friends.
+    - speaker: Pengumuman
+      text: Mohon perhatian. Para penumpang penerbangan GA 405 tujuan Jakarta, pintu pindah ke pintu lima. Harap segera menuju pintu lima.
+      ar_eg: انتباه من فضلكم. حضرات ركاب رحلة GA 405 المتجهة لجاكرتا، البوابة اتنقلت لبوابة خمسة. برجاء التوجه فورًا لبوابة خمسة.
+      ar: انتباه من فضلكم. السادة ركاب رحلة GA 405 المتجهة إلى جاكرتا، انتقلت البوابة إلى البوابة الخامسة. يُرجى التوجه فورًا إلى البوابة الخامسة.
+      en: Attention please. Passengers on flight GA 405 to Jakarta, your gate has changed to gate five. Please go to gate five immediately.
     - speaker: Mohamed
-      text: Mohon perhatian. Bus kita terlambat dua puluh menit.
-      ar_eg: انتباه من فضلكم. الأتوبيس بتاعنا متأخر عشرين دقيقة.
-      ar: انتباه من فضلكم. حافلتنا متأخرة عشرين دقيقة.
-      en: Attention please. Our bus is twenty minutes late.
+      text: Mas, itu pesawat kita! Pintunya pindah?
+      ar_eg: يا ماس، دي طيارتنا! البوابة اتغيرت؟
+      ar: يا ماس، هذه طائرتنا! هل تغيّرت البوابة؟
+      en: Mas, that's our plane! Has the gate changed?
+    - speaker: Mas Rizal
+      text: Ya, ke pintu lima. Kita harus segera ke sana.
+      ar_eg: أيوه، لبوابة خمسة. لازم نروح هناك حالًا.
+      ar: نعم، إلى البوابة الخامسة. يجب أن نذهب إلى هناك فورًا.
+      en: Yes, to gate five. We have to go there right away.
     - speaker: Mohamed
-      text: Harap tunggu di sini. Dilarang merokok di dalam.
-      ar_eg: برجاء الانتظار هنا. ممنوع التدخين جوه.
-      ar: يُرجى الانتظار هنا. يُمنع التدخين في الداخل.
-      en: Please wait here. No smoking inside.
-    - speaker: Mas Ardi
-      text: Bagus sekali! Semua orang mengerti.
-      ar_eg: حلو جدًا! كل الناس فهمت.
-      ar: ممتاز! فهم الجميع.
-      en: Excellent! Everyone understood.
+      text: Permisi, Pak. Pintu lima di mana?
+      ar_eg: لو سمحت يا أستاذ. بوابة خمسة فين؟
+      ar: عفوًا يا سيدي. أين البوابة الخامسة؟
+      en: Excuse me, sir. Where is gate five?
+    - speaker: Petugas
+      text: Lurus saja, lalu belok kiri. Hati-hati, lantainya licin.
+      ar_eg: علطول، وبعدين حوّد شمال. خلي بالك، الأرض بتزحلق.
+      ar: امشِ مباشرةً ثم انعطف يسارًا. انتبه، الأرض زلقة.
+      en: Straight ahead, then turn left. Careful, the floor is slippery.
     - speaker: Mohamed
-      text: Terima kasih. Bus di Bali sering terlambat, ya?
-      ar_eg: شكرًا. الأتوبيسات في بالي بتتأخر كتير، صح؟
-      ar: شكرًا. الحافلات في بالي تتأخر كثيرًا، أليس كذلك؟
-      en: Thanks. Buses in Bali are often late, aren't they?
-    - speaker: Mas Ardi
-      text: Kadang-kadang. Jalannya sering macet!
-      ar_eg: ساعات. الطريق بيبقى زحمة كتير!
-      ar: أحيانًا. فالطريق مزدحم كثيرًا!
-      en: Sometimes. The roads are often jammed!
-souvenir:
-  id: bipa2.u03.souvenir
-  title: Tiba di Bandara Ngurah Rai
-  note:
-    ar_eg: أول ما تنزل في مطار نجوراه راي في بالي هتسمع إعلانات بالإندونيسي الرسمي، وأغلبها بيبدأ بالجملة المشهورة «Para penumpang yang terhormat…» يعني «حضرات الركاب الكرام». دلوقتي إنت فاهم الجملة دي وفاهم اللي بعدها كمان. أهلًا بيك في بالي!
-    ar: حين تهبط في مطار نغوراه راي في بالي تسمع إعلانات بالإندونيسية الرسمية، يبدأ أكثرها بالعبارة الشهيرة «Para penumpang yang terhormat…» أي «السادة الركاب الكرام». وأنت الآن تفهم هذه العبارة وما بعدها. أهلًا بك في بالي!
-    en: Land at Bali's Ngurah Rai airport and you'll hear announcements in formal Indonesian, most opening with the classic "Para penumpang yang terhormat…" — dear passengers. Now you understand that line and what comes after it. Welcome to Bali!
+      text: Terima kasih, Pak!
+      ar_eg: شكرًا يا أستاذ!
+      ar: شكرًا يا سيدي!
+      en: Thank you, sir!
+new_words:
+  - word: segera
+    pos: adverb
+    ar_eg: فورًا، حالًا
+    ar: فورًا
+    en: immediately, right away
+  - word: menuju
+    pos: verb
+    ar_eg: يتوجه لـ
+    ar: يتوجه إلى
+    en: to head for
+  - word: pindah
+    pos: verb
+    ar_eg: يتنقل، يتغير مكانه
+    ar: ينتقل
+    en: to move, change place
+  - word: untung
+    pos: adverb
+    ar_eg: من حسن الحظ
+    ar: لحسن الحظ
+    en: luckily
 review:
   status: draft
   verified: false

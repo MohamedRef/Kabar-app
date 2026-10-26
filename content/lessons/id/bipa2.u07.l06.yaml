@@ -1,0 +1,203 @@
+schema: kabar.lesson/v1
+id: bipa2.u07.l06
+language: id
+title: Pelatih pantai
+can_do:
+  ar_eg: تشرح رياضة لصاحبك خطوة بخطوة.
+  ar: أن تشرح رياضة لصديقك.
+  en: Explain a sport to a friend.
+slides:
+  - title: Cara berselancar
+    body:
+      ar_eg: |
+        عشان تشرح رياضة، استعمل الأوامر (من غير meN-، وber- بتفضل) ورتّبها بـ pertama (الأول) وlalu (وبعدين):
+        ١. Bawa papan selancar ke laut. = خد اللوح للبحر.
+        ٢. Berbaring di atas papan. = نام على بطنك فوق اللوح.
+        ٣. Dayung dengan tangan. = جدّف بإيديك.
+        ٤. Lihat ombaknya, lalu berdiri dengan cepat. = بص على الموجة، وبعدين قوم اقف بسرعة.
+        ٥. Tekuk lutut sedikit. = اثني ركبتك شوية.
+        ٦. Jangan takut jatuh! = ماتخافش تقع!
+      ar: |
+        لشرح رياضة استعمل الأوامر (بلا meN-، مع بقاء ber-)، ورتّبها بـ pertama (أولًا) وlalu (ثم):
+        ١. Bawa papan selancar ke laut. = خذ اللوح إلى البحر.
+        ٢. Berbaring di atas papan. = استلقِ على اللوح.
+        ٣. Dayung dengan tangan. = جدّف بيديك.
+        ٤. Lihat ombaknya, lalu berdiri dengan cepat. = راقب الموجة ثم قِف بسرعة.
+        ٥. Tekuk lutut sedikit. = اثنِ ركبتيك قليلًا.
+        ٦. Jangan takut jatuh! = لا تخف من السقوط!
+      en: |
+        To explain a sport, use commands (no meN-, ber- stays) and order them with pertama (first) and lalu (then):
+        1. Bawa papan selancar ke laut. = Take the surfboard into the sea.
+        2. Berbaring di atas papan. = Lie down on the board.
+        3. Dayung dengan tangan. = Paddle with your hands.
+        4. Lihat ombaknya, lalu berdiri dengan cepat. = Watch the wave, then stand up quickly.
+        5. Tekuk lutut sedikit. = Bend your knees a little.
+        6. Jangan takut jatuh! = Don't be afraid of falling!
+    grammar: id.imperative.basic
+    examples:
+      - text: Berbaring di atas papan, lalu dayung dengan tangan.
+        ar_eg: نام على اللوح، وبعدين جدّف بإيديك.
+        ar: استلقِ على اللوح ثم جدّف بيديك.
+        en: Lie down on the board, then paddle with your hands.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: بعد ما تنام على اللوح، تعمل إيه على طول؟
+      ar: بعد أن تستلقي على اللوح، ماذا تفعل مباشرة؟
+      en: Right after lying down on the board, what do you do?
+    options: [Dayung dengan tangan., Bawa papan ke laut., Berdiri dengan cepat.]
+    answer: 0
+    explain:
+      ar_eg: الخطوة ٣ بعد ٢، الأول تجدّف، وبعدين تقف لما الموجة تيجي.
+      ar: الخطوة الثالثة تلي الثانية، فتجدّف أولًا ثم تقف عند الموجة.
+      en: Step 3 follows step 2; you paddle first, then stand up for the wave.
+    words: [dayung, berbaring]
+  - id: e02
+    type: listen
+    text: Tekuk lutut sedikit.
+    options: [Tekuk kaki sedikit., Angkat lutut sedikit., Tekuk lutut sedikit.]
+    answer: 2
+    words: [tekuk, lutut]
+  - id: e03
+    type: fill_blank
+    sentence: ___ di atas papan, lalu dayung dengan tangan.
+    meaning:
+      ar_eg: نام على اللوح، وبعدين جدّف بإيديك.
+      ar: استلقِ على اللوح ثم جدّف بيديك.
+      en: Lie down on the board, then paddle with your hands.
+    options: [Membaring, Berbaring, Baring]
+    answers: [Berbaring]
+    explain:
+      ar_eg: berbaring فعل ber-، فبيفضل زي ما هو في الأمر.
+      ar: berbaring من أفعال ber- فتبقى في الأمر.
+      en: berbaring is a ber- verb, so it keeps ber- in a command.
+    words: [berbaring]
+  - id: e04
+    type: fill_blank
+    sentence: Lihat ombaknya, lalu ___ dengan cepat.
+    meaning:
+      ar_eg: بص على الموجة، وبعدين قوم اقف بسرعة.
+      ar: راقب الموجة ثم قِف بسرعة.
+      en: Watch the wave, then stand up quickly.
+    answers: [berdiri]
+    words: [ombak, berdiri]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: خد لوح السيرف للبحر.
+      ar: خذ لوح ركوب الأمواج إلى البحر.
+      en: Take the surfboard into the sea.
+    answer: Bawa papan selancar ke laut.
+    distractors: [membawa, di]
+    words: [bawa, papan selancar]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: ماتخافش تقع!
+      ar: لا تخف من السقوط!
+      en: Don't be afraid of falling!
+    answer: Jangan takut jatuh!
+    distractors: [tolong, berhenti]
+    words: [jangan, takut, jatuh]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: جدّف بإيديك.
+      ar: جدّف بيديك.
+      en: Paddle with your hands.
+    answers: [Dayung dengan tangan., Dayung dengan tangan, Dayung dengan tanganmu., Dayung dengan tangan!, Dayung pakai tangan.]
+    words: [dayung, tangan]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: بقالي أسبوعين بتعلّم السيرف.
+      ar: أتعلّم ركوب الأمواج منذ أسبوعين.
+      en: I've been learning to surf for two weeks.
+    answers: [Saya sudah dua minggu belajar berselancar., Saya sudah dua minggu belajar berselancar, Saya sudah belajar berselancar selama dua minggu., Saya sudah belajar berselancar selama dua minggu, Sudah dua minggu saya belajar berselancar., Saya belajar berselancar selama dua minggu., Aku sudah dua minggu belajar berselancar., Aku sudah belajar berselancar selama dua minggu.]
+    words: [berselancar, selama]
+  - id: e09
+    type: dictation
+    text: Lihat ombaknya, lalu berdiri dengan cepat.
+    meaning:
+      ar_eg: بص على الموجة، وبعدين قوم اقف بسرعة.
+      ar: راقب الموجة ثم قِف بسرعة.
+      en: Watch the wave, then stand up quickly.
+    words: [ombak, berdiri]
+  - id: e10
+    type: speaking
+    text: Pertama, berbaring di atas papan, lalu dayung dengan tangan.
+    meaning:
+      ar_eg: الأول نام على اللوح، وبعدين جدّف بإيديك.
+      ar: أولًا استلقِ على اللوح، ثم جدّف بيديك.
+      en: First, lie down on the board, then paddle with your hands.
+    words: [berbaring, dayung]
+dialogue:
+  title: Mohamed jadi pelatih
+  lines:
+    - speaker: Rina
+      text: Mohamed, kamu sudah bisa berselancar?
+      ar_eg: يا محمد، إنت بقيت بتعرف تركب الأمواج؟
+      ar: يا محمد، هل صرت تعرف ركوب الأمواج؟
+      en: Mohamed, can you surf now?
+    - speaker: Mohamed
+      text: Sudah sedikit! Saya belajar dengan Mas Rizal selama dua minggu.
+      ar_eg: شوية! اتعلّمت مع مَس ريزال لمدة أسبوعين.
+      ar: قليلًا! تعلّمتُ مع ماس ريزال مدة أسبوعين.
+      en: A bit! I learned with Mas Rizal for two weeks.
+    - speaker: Rina
+      text: Wah! Tolong ajari saya, ya.
+      ar_eg: الله! لو سمحت علّمني.
+      ar: رائع! علّمني من فضلك.
+      en: Wow! Please teach me.
+    - speaker: Mohamed
+      text: Mudah! Pertama, bawa papan selancar ke laut, lalu berbaring di atas papan.
+      ar_eg: سهلة! الأول خدي اللوح للبحر، وبعدين نامي عليه.
+      ar: سهل! أولًا خذي اللوح إلى البحر ثم استلقي عليه.
+      en: Easy! First, take the surfboard into the sea, then lie down on it.
+    - speaker: Rina
+      text: Lalu?
+      ar_eg: وبعدين؟
+      ar: ثم؟
+      en: Then?
+    - speaker: Mohamed
+      text: Dayung dengan tangan. Lihat ombaknya, lalu berdiri dengan cepat.
+      ar_eg: جدّفي بإيديكي. بصّي على الموجة، وبعدين قومي اقفي بسرعة.
+      ar: جدّفي بيديكِ، وراقبي الموجة ثم قِفي بسرعة.
+      en: Paddle with your hands. Watch the wave, then stand up quickly.
+new_words:
+  - word: papan selancar
+    pos: noun
+    ar_eg: لوح السيرف
+    ar: لوح ركوب الأمواج
+    en: surfboard
+  - word: ombak
+    pos: noun
+    ar_eg: موجة
+    ar: موجة
+    en: wave
+  - word: berbaring
+    pos: verb
+    ar_eg: ينام / يتمدّد
+    ar: يستلقي
+    en: to lie down
+  - word: dayung
+    pos: verb
+    ar_eg: جدّف (mendayung = يجدّف)
+    ar: جدِّف (mendayung = يجدّف)
+    en: paddle (mendayung = to paddle)
+  - word: tekuk
+    pos: verb
+    ar_eg: اثني (menekuk = يثني)
+    ar: اثنِ (menekuk = يثني)
+    en: bend (menekuk = to bend)
+  - word: jatuh
+    pos: verb
+    ar_eg: يقع
+    ar: يسقط
+    en: to fall
+review:
+  status: draft
+  verified: false

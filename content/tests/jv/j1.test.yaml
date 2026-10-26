@@ -36,14 +36,14 @@ sections:
     items:
       - id: t01
         type: listen
-        text: Kowé saka ngendi?
-        options: ["Kowé arep nang ngendi?", "Omahmu ngendi?", "Kowé saka ngendi?"]
+        text: Kowe saka ngendi?
+        options: ["Kowe arep nang ngendi?", "Omahmu ngendi?", "Kowe saka ngendi?"]
         answer: 2
         words: [saka, ngendi]
       - id: t02
         type: listen
         text: Sek, tak lapor pusat.
-        options: ["Sek, tak lapor pusat.", "Iya, tak tunggu.", "Sek, tak jupukké."]
+        options: ["Sek, tak lapor pusat.", "Iya, tak tunggu.", "Sek, tak jupukke."]
         answer: 0
         words: [sek, tak, lapor]
       - id: t03
@@ -55,7 +55,7 @@ sections:
       - id: t04
         type: listen
         text: Koen wis mangan ta, rek?
-        options: ["Kowé wis mangan?", "Kowé wis mangan to?", "Koen wis mangan ta, rek?"]
+        options: ["Kowe wis mangan?", "Kowe wis mangan to?", "Koen wis mangan ta, rek?"]
         answer: 2
         words: [koen, ta, rek]
       - id: t05
@@ -100,13 +100,13 @@ sections:
           ar_eg: Cak Heru بيبيع موبايله، وواحد عايز يشتري بعت كده. أنهي هي الصيغة الكاملة؟
           ar: يبيع Cak Heru هاتفه، وأرسل مشترٍ هذه الرسالة. ما الصيغة الكاملة؟
           en: Cak Heru is selling his phone and a buyer sends this. Which is the full form?
-        options: ["Arep diterké pira?", "Arep diculké pira?", "Arep dituku pira?"]
+        options: ["Arep diterke pira?", "Arep diculke pira?", "Arep dituku pira?"]
         answer: 1
         explain:
-          ar_eg: arp = arep، dicul = diculké (هيتباع / هتسيبه بكام)، piro = pira. يعني "هتبيعه بكام؟".
-          ar: arp = arep، وdicul = diculké (يُباع / يُتخلّى عنه)، وpiro = pira؛ أي "بكم ستبيعه؟".
-          en: arp = arep, dicul = diculké (let go, sold), piro = pira, so "How much will you sell it for?"
-        words: [arep, diculké, pira]
+          ar_eg: arp = arep، dicul = diculke (هيتباع / هتسيبه بكام)، piro = pira. يعني "هتبيعه بكام؟".
+          ar: arp = arep، وdicul = diculke (يُباع / يُتخلّى عنه)، وpiro = pira؛ أي "بكم ستبيعه؟".
+          en: arp = arep, dicul = diculke (let go, sold), piro = pira, so "How much will you sell it for?"
+        words: [arep, diculke, pira]
       - id: t09
         type: multiple_choice
         question: ng prabowo?
@@ -165,12 +165,12 @@ sections:
           ar_eg: دي جملة بكلام Arek بتاع سورابايا. أنهي جملة نغوكو عادية بنفس المعنى؟
           ar: هذه جملة بلهجة Arek في سورابايا. أيّ جملة نغوكو معيارية تحمل المعنى نفسه؟
           en: This is Surabaya Arek speech. Which standard ngoko sentence means the same?
-        options: ["Kowé saka ngendi?", "Kowé lagi ngapa?", "Kowé arep nang ngendi?"]
+        options: ["Kowe saka ngendi?", "Kowe lagi ngapa?", "Kowe arep nang ngendi?"]
         answer: 2
         explain:
-          ar_eg: koen = kowé، kate = arep، endi = ngendi.
-          ar: koen = kowé، وkate = arep، وendi = ngendi.
-          en: koen = kowé, kate = arep, endi = ngendi.
+          ar_eg: koen = kowe، kate = arep، endi = ngendi.
+          ar: koen = kowe، وkate = arep، وendi = ngendi.
+          en: koen = kowe, kate = arep, endi = ngendi.
         words: [koen, kate, arep]
   - id: vocabulary
     skill: vocabulary
@@ -336,9 +336,9 @@ sections:
           ar_eg: فيه راجل واقف بعيد خالص في آخر الشارع. تسأل صاحبك هو مين إزاي؟
           ar: يقف رجل بعيدًا جدًّا في آخر الشارع. كيف تسأل صديقك من هو؟
           en: A man is standing far away at the end of the street. How do you ask your friend who he is?
-        options: ["Wong iki sapa?", "Wong kaé sapa?", "Wong kene sapa?"]
+        options: ["Wong iki sapa?", "Wong kae sapa?", "Wong kene sapa?"]
         answer: 1
-        words: [kaé]
+        words: [kae]
       - id: t26
         type: fill_blank
         sentence: Tak ___ kopi, ya.
@@ -346,12 +346,12 @@ sections:
           ar_eg: هشتريلك قهوة، ماشي؟
           ar: سأشتري لك قهوة، حسنًا؟
           en: I'll buy you a coffee, OK?
-        options: [diculké, terké, tukokké]
-        answers: [tukokké]
-        words: [tukokké]
+        options: [diculke, terke, tukokke]
+        answers: [tukokke]
+        words: [tukokke]
       - id: t27
         type: fill_blank
-        sentence: Regané ___?
+        sentence: Regane ___?
         meaning:
           ar_eg: بكام؟ (اكتب الكلمة)
           ar: كم السعر؟ (اكتب الكلمة)
@@ -451,7 +451,7 @@ sections:
         rubric:
           - Answers the question with wis / durung and says where he is (nang / saka …) and what he is doing (lagi …).
           - Asks at least one question with ngendi / kapan / piye.
-          - Uses ngoko throughout (aku / kowé or Arek koen, ora / gak) with no Indonesian words mixed in where J1 Javanese exists.
+          - Uses ngoko throughout (aku / kowe or Arek koen, ora / gak) with no Indonesian words mixed in where J1 Javanese exists.
           - Closes warmly (suwun, ati-ati); chat spelling and abbreviations are fine if a Javanese friend would read them easily.
         sample: |
           Durung, Cak! Aku isih nang sepur, durung tekan.
@@ -472,7 +472,7 @@ sections:
     items:
       - id: t33
         type: speaking
-        text: Jenengku Mohamed. Aku wong Mesir, saka Kairo. Kowé saka ngendi?
+        text: Jenengku Mohamed. Aku wong Mesir, saka Kairo. Kowe saka ngendi?
         meaning:
           ar_eg: اسمي محمد. أنا مصري، من القاهرة. وإنت منين؟
           ar: اسمي محمد. أنا مصري من القاهرة. وأنت من أين؟
@@ -488,12 +488,12 @@ sections:
         rubric:
           - Greets and introduces himself in ngoko (sugeng …, jenengku …, aku wong Mesir …).
           - Asks at least three questions with sapa / ngendi / pira in the right order.
-          - Orders with a number and asks the price (kopi loro, regané pira?), using mas / cak naturally.
+          - Orders with a number and asks the price (kopi loro, regane pira?), using mas / cak naturally.
           - Speaks clearly enough for a Javanese listener to follow; pauses and Arek or standard forms are both fine.
         sample: |
           Sugeng sonten, Mas. Jenengku Mohamed. Aku wong Mesir, saka Kairo.
-          Jenengmu sapa? Kowé saka ngendi? Omahmu ngendi?
-          Cak, kopi loro, ya. Regané pira?
+          Jenengmu sapa? Kowe saka ngendi? Omahmu ngendi?
+          Cak, kopi loro, ya. Regane pira?
           Suwun, Cak!
         words: [jeneng, sapa, ngendi, pira]
 review:

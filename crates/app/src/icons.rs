@@ -25,6 +25,10 @@ pub fn nav(screen: Screen) -> Element {
         Screen::Devices => "M3 6h12v9H3zM1 18h15M18 9h4v11h-4z",
         // speech bubble with a plus: a new word for Kabar
         Screen::Teach => "M4 5h16v11H9l-5 4zM12 8v5M9.5 10.5h5",
+        // a notebook with a ribbon bookmark
+        Screen::Journal => "M6 4h12v16H7a1 1 0 0 1-1-1zM6 16h12M10 4v6l2-1.5 2 1.5V4",
+        // a gauge
+        Screen::Cost => "M4 16a8 8 0 0 1 16 0M12 16l4-5M3 20h18",
         // headphones: Sinetron and Kabar Radio
         Screen::Listen => "M4 15v-3a8 8 0 0 1 16 0v3M4 15h3v5H4zM17 15h3v5h-3z",
         // sliders

@@ -1,0 +1,216 @@
+schema: kabar.lesson/v1
+id: bipa2.u07.l07
+language: id
+title: Ulangan Unit 7
+can_do:
+  ar_eg: توصف روتينك الرياضي.
+  ar: أن تصف روتينك الرياضي.
+  en: Describe your sport routine.
+slides:
+  - title: Bersepeda, berkacamata, berdua
+    body:
+      ar_eg: |
+        فكّر نفسك بمعاني ber- + اسم:
+        - يركب / يمارس: bersepeda، berselancar
+        - لابس / عنده: berkacamata، bertopi، berbaju merah
+        - بيطلّع: bersuara، bertelur
+        - حالة: bersedih، bergembira
+        - مجموعة: berdua، bertiga
+        والأوامر في التمارين: Angkat! Tarik napas! Berdiri! Lompat!
+        - Sudah berapa lama …? = بقالك قد إيه …؟
+        - selama + مدة = لمدة، sejak + بداية = من
+        - … lalu = من … (فات)، … lagi = كمان … (جاي)
+      ar: |
+        تذكير بمعاني ber- + اسم:
+        - الركوب والمزاولة: bersepeda، berselancar
+        - اللبس والملك: berkacamata، bertopi، berbaju merah
+        - الإصدار: bersuara، bertelur
+        - الحال: bersedih، bergembira
+        - الاجتماع: berdua، bertiga
+        وأوامر التمارين: Angkat! Tarik napas! Berdiri! Lompat!
+        - Sudah berapa lama …? = منذ متى …؟
+        - selama + مدة = لمدة، وsejak + بداية = منذ
+        - … lalu = قبل … (ماضٍ)، و… lagi = بعد … (مستقبل)
+      en: |
+        Recap of ber- + noun:
+        - ride / do: bersepeda, berselancar
+        - wear / have: berkacamata, bertopi, berbaju merah
+        - produce: bersuara, bertelur
+        - state: bersedih, bergembira
+        - group: berdua, bertiga
+        And workout commands: Angkat! Tarik napas! Berdiri! Lompat!
+        - Sudah berapa lama …? = How long have you …?
+        - selama + span = for; sejak + starting point = since
+        - … lalu = … ago; … lagi = in … from now
+    grammar: id.prefix.ber.meanings
+    examples:
+      - text: Setiap sore kami berdua bersepeda di pantai.
+        ar_eg: كل يوم العصر إحنا الاتنين بنركب العجل على البحر.
+        ar: كل عصر نركب نحن الاثنين الدراجة على الشاطئ.
+        en: Every afternoon the two of us cycle on the beach.
+      - text: Saya berselancar selama satu jam setiap pagi.
+        ar_eg: بركب الأمواج ساعة كل يوم الصبح.
+        ar: أركب الأمواج ساعة كل صباح.
+        en: I surf for an hour every morning.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: bersepeda
+        ar_eg: يركب عجلة
+        ar: يركب الدراجة
+        en: cycle
+      - text: berselancar
+        ar_eg: يركب الأمواج
+        ar: يركب الأمواج
+        en: surf
+      - text: bulu tangkis
+        ar_eg: ريشة (بادمنتون)
+        ar: الريشة الطائرة
+        en: badminton
+      - text: ombak
+        ar_eg: موجة
+        ar: موجة
+        en: wave
+      - text: pelatih
+        ar_eg: مدرّب
+        ar: مدرّب
+        en: coach
+    words: [bersepeda, berselancar, bulu tangkis, ombak, pelatih]
+  - id: e02
+    type: multiple_choice
+    question: Saya ___ di pantai setiap sore.
+    question_meaning:
+      ar_eg: أنا بركب العجلة على البحر كل يوم العصر.
+      ar: أركب الدراجة على الشاطئ كل عصر.
+      en: I cycle on the beach every afternoon.
+    options: [bersepeda, naik bersepeda, berkacamata]
+    answer: 0
+    explain:
+      ar_eg: bersepeda فيها «يركب»، فـ naik bersepeda غلط.
+      ar: bersepeda تتضمن الركوب، فـ naik bersepeda خطأ.
+      en: bersepeda already means ride a bike; naik bersepeda is wrong.
+    words: [bersepeda]
+  - id: e03
+    type: multiple_choice
+    question: Saya main bulu tangkis ___ tahun 2019.
+    options: [selama, sejak, lagi]
+    answer: 1
+    explain:
+      ar_eg: سنة ٢٠١٩ نقطة بداية، يبقى sejak.
+      ar: عام ٢٠١٩ نقطة بداية، فنستعمل sejak.
+      en: 2019 is a starting point, so sejak.
+    words: [sejak, bulu tangkis]
+  - id: e04
+    type: listen
+    text: Kami bertiga berlari selama satu jam.
+    options: [Kami bertiga berlari selama satu jam., Kami bertiga berlari sejak satu jam., Kami berdua berlari selama satu jam.]
+    answer: 0
+    words: [bertiga, selama]
+  - id: e05
+    type: fill_blank
+    sentence: Pertandingan bulu tangkisnya tiga hari ___.
+    meaning:
+      ar_eg: ماتش الريشة كمان تلات أيام.
+      ar: مباراة الريشة الطائرة بعد ثلاثة أيام.
+      en: The badminton match is in three days.
+    options: [sejak, lalu, lagi]
+    answers: [lagi]
+    words: [lagi, pertandingan]
+  - id: e06
+    type: fill_blank
+    sentence: Orang yang ___ itu Mas Rizal.
+    meaning:
+      ar_eg: اللي لابس كاب ده مَس ريزال.
+      ar: صاحب القبعة ذاك هو ماس ريزال.
+      en: The person wearing a cap is Mas Rizal.
+    options: [bersepeda, bertopi, bertelur]
+    answers: [bertopi]
+    words: [bertopi]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: بقالك قد إيه بتلعب كورة؟
+      ar: منذ متى تلعب كرة القدم؟
+      en: How long have you been playing football?
+    answer: Sudah berapa lama kamu main sepak bola?
+    alternatives: ['Kamu sudah berapa lama main sepak bola?']
+    distractors: [sejak, lagi]
+    words: [berapa lama]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: ماتزعلش، جرّب تاني!
+      ar: لا تحزن، حاول مرة أخرى!
+      en: Don't be sad, try again!
+    answer: Jangan bersedih, coba lagi!
+    distractors: [sedih, berhenti]
+    words: [bersedih, coba]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: كل يوم الصبح بجري على البحر لمدة نص ساعة.
+      ar: كل صباح أركض على الشاطئ لمدة ثلاثين دقيقة.
+      en: Every morning I run on the beach for thirty minutes.
+    answers: [Setiap pagi saya berlari di pantai selama tiga puluh menit., Setiap pagi saya berlari di pantai selama tiga puluh menit, Saya berlari di pantai selama tiga puluh menit setiap pagi., Setiap pagi saya berlari selama tiga puluh menit di pantai., Setiap pagi saya berlari di pantai selama setengah jam., Saya berlari di pantai selama setengah jam setiap pagi., Tiap pagi saya berlari di pantai selama tiga puluh menit., Setiap pagi aku berlari di pantai selama tiga puluh menit.]
+    words: [selama]
+  - id: e10
+    type: dictation
+    text: Saya sudah dua tahun bermain bulu tangkis.
+    meaning:
+      ar_eg: بقالي سنتين بلعب ريشة.
+      ar: ألعب الريشة الطائرة منذ سنتين.
+      en: I've been playing badminton for two years.
+    words: [bulu tangkis]
+  - id: e11
+    type: speaking
+    text: Setiap hari Minggu kami berdua bersepeda selama dua jam.
+    meaning:
+      ar_eg: كل يوم أحد إحنا الاتنين بنركب العجل لمدة ساعتين.
+      ar: كل يوم أحد نركب نحن الاثنين الدراجة لمدة ساعتين.
+      en: Every Sunday the two of us cycle for two hours.
+    words: [berdua, bersepeda, selama]
+dialogue:
+  title: Olahraga Mohamed
+  lines:
+    - speaker: Ni Luh
+      text: Mohamed, kamu suka olahraga apa?
+      ar_eg: يا محمد، بتحب أنهي رياضة؟
+      ar: يا محمد، أيّ رياضة تحب؟
+      en: Mohamed, what sports do you like?
+    - speaker: Mohamed
+      text: Saya suka berselancar dan bersepeda.
+      ar_eg: بحب ركوب الأمواج وركوب العجل.
+      ar: أحب ركوب الأمواج وركوب الدراجة.
+      en: I like surfing and cycling.
+    - speaker: Ni Luh
+      text: Sudah berapa lama berselancar?
+      ar_eg: بقالك قد إيه بتركب الأمواج؟
+      ar: منذ متى تركب الأمواج؟
+      en: How long have you been surfing?
+    - speaker: Mohamed
+      text: Baru satu bulan. Setiap pagi saya berselancar selama satu jam dengan Mas Rizal.
+      ar_eg: لسه شهر واحد. كل يوم الصبح بركب الأمواج ساعة مع مَس ريزال.
+      ar: منذ شهر فقط. كل صباح أركب الأمواج ساعة مع ماس ريزال.
+      en: Just a month. Every morning I surf for an hour with Mas Rizal.
+    - speaker: Ni Luh
+      text: Kalau sore?
+      ar_eg: والعصر؟
+      ar: وفي العصر؟
+      en: And in the afternoon?
+    - speaker: Mohamed
+      text: Setiap sore saya dan Dimas bersepeda berdua di pantai.
+      ar_eg: كل يوم العصر أنا وديماس بنركب العجل سوا على البحر.
+      ar: كل عصر أركب أنا وديماس الدراجة معًا على الشاطئ.
+      en: Every afternoon Dimas and I cycle together on the beach.
+souvenir:
+  id: bipa2.u07.souvenir
+  title: Berselancar di Kuta
+  note:
+    ar_eg: شط كوتا الطويل وأمواجه الهادية خلّوه من أشهر أماكن تعليم السيرف في إندونيسيا، والصبح بدري هتلاقي ناس كتير بتجري على الرملة. بس فخر إندونيسيا الأولمبي هو الريشة (bulu tangkis)، وأول ميداليات دهب أولمبية للبلد كانت في الريشة سنة ١٩٩٢. فالمرة الجاية لما حد يسألك «Suka olahraga apa?»، عندك حكاية حلوة تحكيها!
+    ar: شاطئ كوتا الطويل وأمواجه اللطيفة جعلاه من أشهر أماكن تعلّم ركوب الأمواج في إندونيسيا، وفي الصباح الباكر ترى كثيرين يركضون على الرمال. أما فخر إندونيسيا الأولمبي فهو الريشة الطائرة (bulu tangkis)، إذ جاءت أولى ميدالياتها الذهبية الأولمبية منها عام ١٩٩٢. فإذا سألك أحد «Suka olahraga apa?» فلديك حكاية جميلة ترويها!
+    en: Kuta's long beach and gentle waves made it one of Indonesia's best-known places to learn to surf, and early mornings fill the sand with joggers. But the country's Olympic pride is badminton (bulu tangkis); Indonesia's first Olympic gold medals came from it in 1992. So next time someone asks "Suka olahraga apa?", you have a lovely story to tell!
+review:
+  status: draft
+  verified: false
