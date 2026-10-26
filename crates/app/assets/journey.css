@@ -1,0 +1,221 @@
+/* Journey Map (SPEC §10). Builds on main.css tokens; logical properties only.
+   Map colours: calm sea, sawah-tinted Indonesia, sand for the neighbours. */
+
+.journey {
+  --sea: #dbe7e9;
+  --sea-ink: #b9cfd3;
+  --land: #d3e0bd;
+  --land-edge: #a9bf8f;
+  --land-other: #e9e3d6;
+  --flight: var(--dawn);
+  --rail: var(--indigo);
+  --rail-bed: #fffaf1;
+  --pin-open: var(--surface);
+  display: grid;
+  gap: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .app:not([data-theme="light"]) .journey {
+    --sea: #172227;
+    --sea-ink: #23343b;
+    --land: #2b3a2b;
+    --land-edge: #4b6446;
+    --land-other: #2a2724;
+    --rail-bed: #171615;
+  }
+}
+.app[data-theme="dark"] .journey {
+  --sea: #172227;
+  --sea-ink: #23343b;
+  --land: #2b3a2b;
+  --land-edge: #4b6446;
+  --land-other: #2a2724;
+  --rail-bed: #171615;
+}
+
+/* ---------- top bar: route toggle and suitcase ---------- */
+.journey-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; justify-content: space-between; }
+.seg { display: inline-flex; gap: 0.25rem; padding: 0.25rem; border-radius: 999px; background: var(--surface-2); }
+.seg button { border: 0; background: transparent; display: inline-flex; align-items: center; gap: 0.4rem; }
+.seg button[aria-pressed="true"] { background: var(--indigo); color: var(--surface); }
+.seg-icon { display: inline-flex; }
+.suitcase-toggle { display: inline-flex; align-items: center; gap: 0.4rem; }
+.suitcase-toggle .count {
+  min-inline-size: 1.6rem; padding-inline: 0.4rem; border-radius: 999px;
+  background: var(--gold-soft); color: var(--gold); font-weight: 600; text-align: center;
+}
+.suitcase-toggle[aria-pressed="true"] .count { background: var(--surface); color: var(--indigo); }
+
+/* ---------- level header ---------- */
+.level-head { display: grid; gap: 0.6rem; }
+.level-title { display: flex; gap: 0.75rem; align-items: flex-start; }
+.level-icon {
+  flex: none; display: grid; place-items: center; inline-size: 2.6rem; block-size: 2.6rem;
+  border-radius: 50%; background: var(--surface-2); color: var(--indigo);
+}
+.level-head[data-done="true"] .level-icon { background: var(--sawah); color: var(--surface); }
+.level-head h2 { margin: 0; font-size: 1.3rem; line-height: 1.3; }
+.level-head .pill { vertical-align: middle; font-size: 0.8rem; }
+.level-sub { margin: 0.1rem 0 0; font-size: 0.9rem; }
+.level-progress { display: flex; align-items: center; gap: 0.75rem; }
+.level-progress .bar { flex: 1; block-size: 0.5rem; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+.level-progress .fill { block-size: 100%; background: var(--sawah); border-radius: inherit; }
+.level-progress .count { font-size: 0.85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.gentle-note {
+  margin: 0; padding-block: 0.5rem; padding-inline: 0.75rem; border-radius: 10px;
+  background: var(--surface-2); color: var(--muted); font-size: 0.9rem;
+}
+.flight { justify-self: start; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--indigo); }
+.badge-unverified {
+  display: inline-block; padding-inline: 0.5rem; border-radius: 999px; font-size: 0.75rem; font-weight: 500;
+  border: 1px dashed var(--dawn); color: var(--dawn); vertical-align: middle; line-height: 1.6;
+}
+
+/* ---------- stops on a winding path ---------- */
+.stops { list-style: none; margin: 0.5rem 0 0; padding: 0; }
+.stop { display: grid; grid-template-columns: 3.25rem 1fr; gap: 0.25rem; }
+.stop-rail { position: relative; inline-size: 52px; }
+/* The path sways from one side of the rail to the other between stops
+   (node centres at 16px and 36px; the curve is mirrored for RTL). */
+.stop-curve {
+  position: absolute; inset-block: 1.2rem 0; inset-inline-start: 0;
+  inline-size: 52px; block-size: calc(100% - 0.1rem); overflow: visible;
+}
+.stop-curve path {
+  fill: none; stroke: var(--line); stroke-width: 3; stroke-dasharray: 6 6; stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+.app[dir="rtl"] .stop-curve { transform: scaleX(-1); }
+.stop[data-done="true"] .stop-curve path { stroke: var(--sawah); stroke-dasharray: none; }
+.stop-node {
+  position: absolute; inset-block-start: 0.5rem; inset-inline-start: 2.5px;
+  inline-size: 27px; block-size: 27px; border-radius: 50%;
+  background: var(--surface); border: 3px solid var(--indigo); box-shadow: 0 0 0 4px var(--surface);
+}
+.stop[data-side="b"] .stop-node { inset-inline-start: 22.5px; }
+.stop[data-done="true"] .stop-node { background: var(--sawah); border-color: var(--sawah); }
+.stop[data-current="true"] .stop-node { background: var(--dawn); border-color: var(--dawn); }
+.stop-body { padding-block: 0.4rem 1.1rem; min-inline-size: 0; }
+.stop[data-side="b"] .stop-body { padding-inline-start: 0.6rem; }
+.stop-body h3 { margin: 0 0 0.4rem; font-size: 1.05rem; }
+.stop-unit { font-weight: 400; font-size: 0.9rem; }
+
+.lessons { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
+.lesson {
+  inline-size: 100%; display: flex; align-items: center; gap: 0.7rem; text-align: start;
+  border-radius: 12px; background: var(--surface); padding-block: 0.5rem; padding-inline: 0.75rem;
+}
+.lesson:hover { background: var(--surface-2); }
+.lesson-dot {
+  flex: none; display: grid; place-items: center; inline-size: 1.5rem; block-size: 1.5rem; border-radius: 50%;
+  border: 2px solid var(--line); color: var(--surface);
+}
+.lesson-dot svg { inline-size: 0.95rem; block-size: 0.95rem; stroke-width: 3; }
+.lesson[data-kind="review"] .lesson-dot { border-style: dashed; }
+.lesson[data-state="done"] .lesson-dot { background: var(--sawah); border-color: var(--sawah); }
+.lesson[data-state="current"] { border-color: var(--dawn); box-shadow: 0 0 0 2px var(--dawn-soft); }
+.lesson[data-state="current"] .lesson-dot { border-color: var(--dawn); background: var(--dawn-soft); }
+.lesson-text { display: grid; min-inline-size: 0; }
+.lesson-title { font-family: var(--font-latin); font-weight: 600; overflow-wrap: anywhere; }
+.lesson-meta { font-size: 0.8rem; }
+.lesson-state { color: var(--dawn); font-weight: 600; }
+.lesson[data-state="done"] .lesson-state { color: var(--sawah); }
+
+/* ---------- phone: vertical route ---------- */
+.route-list { display: grid; gap: 1.25rem; }
+.rl-level {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 1rem;
+}
+.continue-bar {
+  position: sticky; inset-block-end: calc(5.25rem + env(safe-area-inset-bottom)); z-index: 5;
+  display: flex; justify-content: center; pointer-events: none;
+}
+.continue {
+  pointer-events: auto; display: grid; justify-items: center; gap: 0; min-inline-size: min(22rem, 100%);
+  padding-block: 0.6rem; box-shadow: 0 6px 20px rgb(35 33 31 / 0.18);
+}
+.continue-word { font-size: 1.15rem; font-weight: 700; }
+.continue-sub { font-size: 0.8rem; opacity: 0.92; max-inline-size: 20rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.all-done { text-align: center; }
+
+/* ---------- tablet & Mac: the map ---------- */
+.jm { display: grid; gap: 1rem; align-items: start; }
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .jm[data-panel="open"] {
+  grid-template-columns: minmax(0, 1fr) minmax(19rem, 24rem);
+}
+.jm-map { display: grid; gap: 0.5rem; min-inline-size: 0; }
+.jm-stage {
+  position: relative; block-size: min(68dvh, 42rem); border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--line); background: var(--sea); touch-action: none;
+  -webkit-user-select: none; user-select: none; cursor: grab;
+}
+.jm-stage[data-dragging="true"] { cursor: grabbing; }
+.jm-stage:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.jm-stage svg { display: block; inline-size: 100%; block-size: 100%; --inv: 1; }
+.jm-stage .sea { fill: var(--sea); }
+.jm-stage .land-id { fill: var(--land); stroke: var(--land-edge); stroke-width: 0.25; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.jm-stage .land-other { fill: var(--land-other); stroke: var(--line); stroke-width: 0.25; vector-effect: non-scaling-stroke; }
+.jm-route .seg { fill: none; stroke-linecap: round; }
+.jm-route .flight { stroke: var(--flight); }
+.jm-route .rail { stroke: var(--rail); }
+.jm-route .branch { stroke: var(--rail); opacity: 0.85; }
+.jm-route .rail-bed { fill: none; stroke: var(--rail-bed); stroke-linecap: round; }
+.jm-level .unit-loop { fill: none; stroke: var(--indigo); stroke-opacity: 0.35; stroke-dasharray: 0.6 0.6; }
+.jm-level .unit-dot { fill: var(--surface); stroke: var(--indigo); stroke-width: 0.12; }
+.jm-level .unit-dot.done { fill: var(--sawah); stroke: var(--sawah); }
+.jm-pin { cursor: pointer; transform: scale(var(--inv)); outline: none; }
+.jm-pin .pin-hit { fill: transparent; }
+.jm-pin .pin-disc { fill: var(--pin-open); stroke: var(--indigo); stroke-width: 0.7; }
+.jm-pin .pin-ring { fill: none; stroke: var(--sawah); stroke-width: 1; stroke-linecap: round; }
+.jm-pin .pin-code { font: 700 3px var(--font-latin); fill: var(--indigo); pointer-events: none; }
+.jm-pin .pin-label {
+  font: 600 4px var(--font-latin); fill: var(--text); pointer-events: none;
+  paint-order: stroke; stroke: var(--sea); stroke-width: 1px; stroke-linejoin: round;
+}
+.jm-level[data-state="done"] .pin-disc { fill: var(--sawah); stroke: var(--sawah); }
+.jm-level[data-state="done"] .pin-code { fill: var(--surface); }
+.jm-level[data-state="current"] .pin-disc { fill: var(--dawn); stroke: var(--dawn); }
+.jm-level[data-state="current"] .pin-code { fill: var(--surface); }
+.jm-pin[aria-pressed="true"] .pin-hit { fill: var(--dawn-soft); fill-opacity: 0.7; }
+.jm-pin:focus-visible .pin-hit { stroke: var(--focus); stroke-width: 0.8; }
+.jm-controls { position: absolute; inset-block-end: 0.75rem; inset-inline-end: 0.75rem; display: grid; gap: 0.4rem; }
+.jm-controls button {
+  inline-size: 44px; block-size: 44px; padding: 0; display: grid; place-items: center;
+  font-size: 1.3rem; line-height: 1; box-shadow: var(--shadow);
+}
+.jm-hint { margin: 0; font-size: 0.85rem; }
+.jm-map .continue-bar { position: static; justify-content: flex-start; }
+.jm-panel {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 1rem; display: grid; gap: 0.5rem;
+  max-block-size: calc(100dvh - 2rem); overflow-y: auto; position: sticky; inset-block-start: 1rem;
+}
+.jm-panel-close { display: flex; justify-content: flex-end; margin-block-end: -2.5rem; }
+.jm-panel-close button { inline-size: 44px; padding: 0; font-size: 1.3rem; }
+.jm-panel .level-title { padding-inline-end: 3rem; }
+
+/* ---------- suitcase ---------- */
+.souvenirs { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+.souvenir { position: relative; margin: 0; border-block-start: 4px solid var(--gold); }
+.souvenir h3 { margin: 0 0 0.25rem; font-size: 1.1rem; padding-inline-end: 3.5rem; }
+.souvenir-where { margin: 0 0 0.6rem; font-size: 0.85rem; }
+.souvenir-note { margin: 0; font-size: 0.92rem; font-family: var(--font-latin); text-align: start; }
+.souvenir-stamp {
+  position: absolute; inset-block-start: 0.75rem; inset-inline-end: 0.75rem;
+  padding-block: 0.15rem; padding-inline: 0.45rem; border: 2px solid var(--dawn); border-radius: 8px;
+  color: var(--dawn); font: 700 0.7rem var(--font-latin); transform: rotate(-6deg); opacity: 0.85;
+}
+.suitcase-empty { display: grid; justify-items: center; text-align: center; gap: 0.5rem; }
+.suitcase-art { color: var(--gold); }
+.suitcase-art svg { inline-size: 3rem; block-size: 3rem; }
+
+/* ---------- motion: calm, and off when asked ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .lesson, .jm-pin .pin-disc, .stop-node, .level-progress .fill { transition: background-color 200ms ease, fill 200ms ease, inline-size 250ms ease; }
+  .jm-panel, .souvenir { animation: jm-in 200ms ease-out both; }
+  .jm-level[data-state="current"] .pin-disc { animation: jm-glow 2.4s ease-in-out infinite; }
+}
+@keyframes jm-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@keyframes jm-glow { 50% { fill-opacity: 0.75; } }

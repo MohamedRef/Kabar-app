@@ -3,7 +3,8 @@
 Every dataset, corpus, font and sound used by Kabar, with its license.
 
 ## Data
-_None yet._ (Wiktionary via kaikki.org, CC BY-SA, arrives in M3.)
+- **Natural Earth** 1:10m Admin 0 countries (`ne_10m_admin_0_countries`), public domain — <https://www.naturalearthdata.com/>, via <https://github.com/nvkelso/natural-earth-vector>. Clipped, simplified and restyled into the Journey Map base maps (`crates/app/assets/journey/*.svg`) by `cargo run -p kabar-tools --bin journey-map`. "Made with Natural Earth."
+- (Wiktionary via kaikki.org, CC BY-SA, arrives in M3.)
 
 ## Fonts
 _None bundled yet._ The UI uses system fonts and falls back through IBM Plex Sans Arabic / Noto (OFL) if installed. Bundled fonts arrive with the visual assets.

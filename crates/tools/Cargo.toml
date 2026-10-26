@@ -1,0 +1,18 @@
+[package]
+name = "kabar-tools"
+description = "Build-time tools for Kabar: generated assets and content (never shipped in the app)."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[[bin]]
+name = "journey-map"
+path = "src/bin/journey_map.rs"
+
+[dependencies]
+kabar-core.workspace = true
+serde_json.workspace = true
+
+[lints]
+workspace = true

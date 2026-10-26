@@ -1,6 +1,7 @@
 //! Local SQLite store. Every synced table carries account, device, HLC and a
 //! tombstone flag so M2 sync can replay rows without schema changes.
 
+use std::collections::BTreeSet;
 use std::path::Path;
 
 use kabar_core::clock::HlcClock;
@@ -219,6 +220,15 @@ impl Store {
         })
         .collect()
     }
+
+    /// Ids of finished lessons and passed level tests, for the Journey Map.
+    pub fn completed_lessons(&self) -> Result<BTreeSet<String>> {
+        let mut stmt = self.conn.prepare(
+            "SELECT DISTINCT lesson_id FROM lesson_events WHERE kind = 'completed' AND deleted = 0",
+        )?;
+        let ids = stmt.query_map([], |r| r.get::<_, String>(0))?.collect::<rusqlite::Result<_>>()?;
+        Ok(ids)
+    }
 }
 
 fn migrate(conn: &mut Connection) -> Result<()> {
@@ -277,6 +287,31 @@ mod tests {
         let runs = store.pen_lab_runs().unwrap();
         assert_eq!(runs[0].report.device_model.as_deref(), Some("b"));
         assert_eq!(runs.len(), 2);
+    }
+
+    #[test]
+    fn completed_lessons_skip_other_kinds_and_tombstones() {
+        let store = Store::open_in_memory().unwrap();
+        assert!(store.completed_lessons().unwrap().is_empty());
+        let rows = [
+            ("e1", "bipa1.u01.l01", "completed", 0),
+            ("e2", "bipa1.u01.l01", "completed", 0),
+            ("e3", "bipa1.u01.l02", "started", 0),
+            ("e4", "bipa1.u01.l03", "completed", 1),
+            ("e5", "bipa1.test", "completed", 0),
+        ];
+        for (id, lesson, kind, deleted) in rows {
+            store
+                .conn
+                .execute(
+                    "INSERT INTO lesson_events (id, lesson_id, kind, payload, device_id, hlc_wall, hlc_counter, deleted)
+                     VALUES (?1, ?2, ?3, '{}', 'd', 1, 0, ?4)",
+                    params![id, lesson, kind, deleted],
+                )
+                .unwrap();
+        }
+        let done = store.completed_lessons().unwrap();
+        assert_eq!(done.into_iter().collect::<Vec<_>>(), ["bipa1.test", "bipa1.u01.l01"]);
     }
 
     #[test]
