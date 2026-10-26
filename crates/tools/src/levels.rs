@@ -82,10 +82,7 @@ const LEVELS: [SpeechLevel; 5] = [
 fn is_form(s: &str) -> bool {
     !s.is_empty()
         && s.split(' ').all(|w| {
-            !w.is_empty()
-                && w.split('-').all(|p| {
-                    !p.is_empty() && p.chars().all(|c| c.is_ascii_lowercase())
-                })
+            !w.is_empty() && w.split('-').all(|p| !p.is_empty() && p.chars().all(|c| c.is_ascii_lowercase()))
         })
 }
 

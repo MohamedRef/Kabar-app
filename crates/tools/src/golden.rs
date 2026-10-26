@@ -16,6 +16,7 @@ use kabar_core::ai::tasks::{
     StructureScreenshot, WeeklyReport,
 };
 use kabar_core::learn::LearnEntry;
+use kabar_core::pagi::{self, Story};
 use kabar_protocol::ai::Task;
 use kabar_protocol::content::GoldenSet;
 use serde_json::Value;
@@ -200,16 +201,6 @@ fn check_typed(task: Task, input: &Value, expect: &Value) -> Vec<String> {
             }
             typed::<CoachMessage>(input, expect, &mut p);
         }
-        Task::StoryEpisode => {
-            if !str_list("target_words") {
-                p.push("input needs target_words[]".into());
-            }
-            // Not typed yet: the set's `expect` is still the pre-M10 shape
-            // ({title, text, glossary, summary}), while the players parse
-            // `kabar_core::pagi::Story` ({title, level, sentences[{id, arz,
-            // ar, en}], words, summary?}). The set has to be rewritten to
-            // `Story` before this can check it.
-        }
         Task::RadioScript => {
             if !str_list("voices") || !input.get("target_words").is_some_and(Value::is_array) {
                 p.push("input needs voices[] and target_words[]".into());
@@ -230,6 +221,56 @@ fn check_typed(task: Task, input: &Value, expect: &Value) -> Vec<String> {
         }
         Task::MindMap => {
             typed::<MindMap>(input, expect, &mut p);
+        }
+        Task::StoryEpisode => {
+            let series = input.get("series").and_then(Value::as_str);
+            if !matches!(series, Some("sinetron" | "kabar_pagi")) {
+                p.push("input.series must be sinetron or kabar_pagi".into());
+            }
+            let level = input.get("level").and_then(Value::as_str).unwrap_or_default();
+            if !is_story_level(level) {
+                p.push(format!("input.level {level:?} must be bipa1..bipa7 or j1..j6"));
+            }
+            if !str_list("target_words") {
+                p.push("input needs target_words[]".into());
+            }
+            let length = input.get("length_words").and_then(Value::as_u64);
+            match length {
+                Some(n) if n > 0 && n <= pagi::MAX_WORDS as u64 => {}
+                _ => p.push(format!("input.length_words must be 1..={}", pagi::MAX_WORDS)),
+            }
+            match serde_json::from_value::<Story>(expect.clone()) {
+                Ok(out) => {
+                    if let Err(e) = out.validate() {
+                        p.push(format!("expect: {e}"));
+                    }
+                    if let Some(n) = length {
+                        let words = out.word_count() as f64;
+                        let (lo, hi) = (n as f64 * 0.8, n as f64 * 1.2);
+                        if words < lo || words > hi {
+                            p.push(format!("expect has {words} Indonesian words, outside ±20% of {n}"));
+                        }
+                    }
+                    if out.level != level {
+                        p.push(format!("expect.level {:?} differs from input.level {level:?}", out.level));
+                    }
+                    let asked = ["target_words", "due_words"]
+                        .iter()
+                        .filter_map(|k| input.get(*k).and_then(Value::as_array))
+                        .flatten()
+                        .filter_map(Value::as_str);
+                    let missing: Vec<&str> = asked.filter(|w| !out.words.iter().any(|x| x == w)).collect();
+                    if !missing.is_empty() {
+                        p.push(format!("expect.words is missing {}", missing.join(", ")));
+                    }
+                    if series == Some("sinetron")
+                        && out.summary.as_deref().is_none_or(|s| s.trim().is_empty())
+                    {
+                        p.push("sinetron expect needs a summary".into());
+                    }
+                }
+                Err(e) => p.push(format!("expect is not a Story: {e}")),
+            }
         }
     }
     p
@@ -255,5 +296,73 @@ fn typed<T: AiOutput>(input: &Value, expect: &Value, p: &mut Vec<String>) -> Opt
             p.push(format!("expect is not a {} output: {e}", T::TASK.as_str()));
             None
         }
+    }
+}
+
+/// `bipa1`..`bipa7` or `j1`..`j6`, lowercase, as the app sends them.
+fn is_story_level(level: &str) -> bool {
+    (1..=7).any(|n| level == format!("bipa{n}")) || (1..=6).any(|n| level == format!("j{n}"))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use serde_json::json;
+
+    /// The §24 morphology test texts as a small story.
+    fn story(level: &str, words: &[&str], summary: Option<&str>) -> Value {
+        let s = |id: &str| json!({"id": id, "arz": "أنا بقرا كتاب.", "ar": "أقرأ كتابًا.", "en": "I read a book."});
+        let mut v = json!({
+            "title": "Hari Minggu",
+            "level": level,
+            "sentences": [
+                s("Apa kabar?"), s("Saya sedang membaca buku."), s("Rumahnya dibersihkan kemarin."),
+                s("Anak-anak bermain di taman."), s("Kesehatan itu penting."), s("Bukunya dibaca lagi."),
+            ],
+            "words": words,
+        });
+        if let Some(sum) = summary {
+            v["summary"] = json!(sum);
+        }
+        v
+    }
+
+    fn input(series: &str, level: &str, length: u64) -> Value {
+        json!({
+            "series": series,
+            "level": level,
+            "target_words": ["baca"],
+            "due_words": ["anak"],
+            "length_words": length,
+        })
+    }
+
+    fn issues(input: Value, expect: Value) -> String {
+        check_typed(Task::StoryEpisode, &input, &expect).join(" | ")
+    }
+
+    #[test]
+    fn story_episode_accepts_a_good_item() {
+        assert_eq!(issues(input("kabar_pagi", "bipa1", 20), story("bipa1", &["baca", "anak"], None)), "");
+        let sinetron = story("j1", &["baca", "anak"], Some("Sari reads a book."));
+        assert_eq!(issues(input("sinetron", "j1", 20), sinetron), "");
+    }
+
+    #[test]
+    fn story_episode_reports_each_problem() {
+        let p = issues(input("sinetron", "BIPA 1", 300), story("bipa1", &["baca"], None));
+        for want in [
+            "input.level",
+            "length_words",
+            "outside ±20%",
+            "differs from input.level",
+            "missing anak",
+            "summary",
+        ] {
+            assert!(p.contains(want), "{p:?} should mention {want:?}");
+        }
+        let p = issues(input("radio", "j1", 20), story("j1", &["baca", "anak", "pasar"], Some("A summary.")));
+        assert!(p.contains("input.series") && p.contains("`pasar`"), "{p}");
+        assert!(issues(input("kabar_pagi", "bipa1", 20), json!({"title": "x"})).contains("not a Story"));
     }
 }
