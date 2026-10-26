@@ -1,0 +1,103 @@
+schema: kabar.grammar/v1
+id: id.conjunction.purpose-condition
+language: id
+level: bipa3
+title:
+  target: supaya / agar, sehingga, kalau / jika, seandainya
+  en: Purpose, result and condition
+  ar_eg: عشان، فـ، لو
+  ar: أدوات الغاية والنتيجة والشرط
+summary:
+  ar_eg: "supaya / agar = عشان (هدف)، sehingga = لدرجة إن / فـ (نتيجة حصلت)، kalau / jika / apabila = لو / إذا، seandainya = لو (خيالي)."
+  ar: "supaya / agar للغاية (لكي)، وsehingga للنتيجة (حتى / مما أدى إلى)، وkalau / jika / apabila للشرط (إذا)، وseandainya للشرط الافتراضي (لو)."
+  en: "supaya / agar = so that (purpose), sehingga = so / with the result that, kalau / jika / apabila = if / when, seandainya = if (hypothetical)."
+pattern:
+  - clause + supaya / agar + clause (purpose)
+  - clause + untuk + verb (in order to — no subject)
+  - clause + sehingga + clause (result)
+  - Kalau / Jika / Apabila + condition, (maka) + result
+  - Seandainya / Andaikan + unreal condition, + result
+  - asalkan + condition (provided that)
+explanation:
+  ar_eg: |
+    - هدف (لسه هيحصل، احنا عايزينه): supaya = agar (agar أرسم شوية):
+      Rumah dibangun lebih kuat agar tahan gempa = البيوت بتتبني أقوى عشان تستحمل الزلازل.
+      لو الفاعل واحد ومفيش فاعل جديد: untuk + فعل: Saya bangun pagi untuk melihat Rinjani.
+    - نتيجة (حصلت فعلًا بسبب اللي قبلها): sehingga:
+      Hujan turun deras semalaman sehingga sungai meluap = المطر نزل جامد طول الليل لدرجة إن النهر فاض.
+      خلي بالك: supaya = «عشان» (نية)، sehingga = «فـ / لدرجة إن» (نتيجة). دي أشهر لخبطة.
+    - شرط حقيقي: kalau (عادي)، jika / apabila (رسمي): Kalau terjadi gempa, segera keluar = لو حصل زلزال اطلع بسرعة. في الكتابة الرسمية ساعات maka بتيجي في الجواب: Jika …, maka …
+    - شرط خيالي (لو كان…): seandainya / andaikan: Seandainya saya tinggal di Tetebatu, … = لو كنت ساكن في تيتيباتو…
+    - asalkan = بشرط إن: Boleh pergi, asalkan hati-hati.
+  ar: |
+    - الغاية: supaya / agar (agar أرسخ في الفصيح): Rumah dibangun lebih kuat agar tahan gempa. ومع وحدة الفاعل: untuk + الفعل.
+    - النتيجة الواقعة: sehingga: Hujan turun deras semalaman sehingga sungai meluap.
+      والفرق: supaya لما يُقصد، وsehingga لما وقع فعلًا.
+    - الشرط الحقيقي: kalau (عام)، jika / apabila (رسمي)، وقد تأتي maka في جواب الشرط في الكتابة الرسمية.
+    - الشرط الافتراضي: seandainya / andaikan (لو).
+    - asalkan: بشرط أن.
+  en: |
+    - Purpose (intended, not yet real): supaya = agar (agar is more formal): Rumah dibangun lebih kuat agar tahan gempa. Same subject and no new clause → untuk + verb: Saya bangun pagi untuk melihat Rinjani.
+    - Result (actually happened because of the first part): sehingga: Hujan turun deras semalaman sehingga sungai meluap.
+      supaya = intention; sehingga = consequence. Mixing them up is the classic error.
+    - Real condition: kalau (everyday), jika / apabila (formal); formal writing may add maka before the result: Jika …, maka …
+    - Unreal condition: seandainya / andaikan (if I were…, if only…).
+    - asalkan = provided that: Boleh pergi, asalkan hati-hati.
+examples:
+  - text: Kalau terjadi gempa, segera keluar dari rumah.
+    en: If there's an earthquake, get out of the house immediately.
+    ar_eg: لو حصل زلزال، اطلع من البيت فورًا.
+    ar: إذا وقع زلزال فاخرج من البيت فورًا.
+  - text: Rumah sekarang dibangun lebih kuat agar tahan gempa.
+    breakdown: agar (so that) = purpose
+    en: Houses are now built stronger so that they can withstand earthquakes.
+    ar_eg: البيوت دلوقتي بتتبني أقوى عشان تستحمل الزلازل.
+    ar: تُبنى البيوت الآن أقوى لكي تصمد أمام الزلازل.
+    register: formal
+  - text: Hujan turun deras semalaman sehingga sungai meluap.
+    breakdown: sehingga (so that, as a result) = result
+    en: It rained heavily all night, so the river overflowed.
+    ar_eg: المطر نزل جامد طول الليل لدرجة إن النهر فاض.
+    ar: هطل المطر بغزارة طوال الليل حتى فاض النهر.
+  - text: Bawalah jas hujan supaya tidak basah.
+    en: Bring a raincoat so you don't get wet.
+    ar_eg: خد معاك جاكت مطر عشان ما تتبلّش.
+    ar: خذ معطف المطر لكي لا تبتلّ.
+  - text: Jika gunung meletus, warga harus mengungsi.
+    en: If the volcano erupts, residents must evacuate.
+    ar_eg: لو البركان ثار، الناس لازم تخلي المكان.
+    ar: إذا ثار البركان وجب على السكان الإخلاء.
+    register: formal
+  - text: Seandainya saya tinggal di Tetebatu, saya akan bangun pagi untuk melihat Rinjani.
+    en: If I lived in Tetebatu, I'd get up early to see Rinjani.
+    ar_eg: لو كنت ساكن في تيتيباتو، كنت هصحى بدري عشان أشوف رينجاني.
+    ar: لو كنت أسكن في تيتيباتو لاستيقظت باكرًا لأرى جبل رينجاني.
+mistakes:
+  - wrong: Hujan sangat deras supaya jalan banjir.
+    right: Hujan sangat deras sehingga jalan banjir.
+    why:
+      ar_eg: الفيضان نتيجة مش هدف؛ النتيجة = sehingga.
+      ar: الفيضان نتيجة لا غاية، فالأداة sehingga.
+      en: The flood is a result, not a goal — use sehingga.
+  - wrong: Saya belajar keras untuk saya bisa lulus.
+    right: Saya belajar keras supaya bisa lulus. / Saya belajar keras untuk lulus.
+    why:
+      ar_eg: untuk بييجي بعدها فعل على طول من غير فاعل؛ لو عايز جملة كاملة استعمل supaya.
+      ar: يلي untuk فعل بلا فاعل؛ وللجملة التامة تُستعمل supaya.
+      en: untuk takes a bare verb; for a full clause use supaya.
+  - wrong: Sehingga sungai meluap. (as a separate sentence)
+    right: Hujan deras sehingga sungai meluap. / Akibatnya, sungai meluap.
+    why:
+      ar_eg: sehingga بتربط جوه جملة واحدة، مش بتبدأ جملة جديدة.
+      ar: sehingga رابط داخل الجملة لا يُبتدأ به.
+      en: sehingga links inside one sentence; it doesn't start a new one.
+arabic_bridge:
+  ar_eg: "supaya / agar = «عشان / لكي»، sehingga = «حتى / فـ» (نتيجة)، jika / apabila = «إذا»، seandainya = «لو». ملحوظة: kalau زي «لو» المصرية بتغطي الحقيقي والخيالي، بس في الرسمي الخيالي = seandainya. وكلمة «maka» في الجواب شبه «فـ» في جواب الشرط: إذا جاء … فـ …"
+  ar: "supaya / agar = لكي، وsehingga = حتى / مما أدى إلى، وjika / apabila = إذا، وseandainya = لو، وmaka في جواب الشرط تشبه الفاء الرابطة: «إذا … فـ …»."
+  en: supaya / agar = لكي, sehingga = حتى (result), jika / apabila = إذا, seandainya = لو; maka in the result clause works like the Arabic فـ of the conditional answer.
+tags: [conjunction, purpose, condition, result]
+prerequisites: [id.conjunction.basic]
+see_also: [id.conjunction.cause-effect, id.conjunction.bukan-hanya, id.conjunction.sequence]
+review:
+  status: draft
+  verified: false

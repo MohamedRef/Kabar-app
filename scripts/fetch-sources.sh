@@ -3,7 +3,7 @@
 # reads into data/raw/ (git-ignored). Every file is pinned by SHA-256 so a
 # rebuild is reproducible; licenses are listed in ATTRIBUTION.md.
 #
-# Usage: scripts/fetch-sources.sh [freq|kaikki|jvwiki|all]   (default: freq)
+# Usage: scripts/fetch-sources.sh [freq|nusa|kaikki|jvwiki|all]   (default: freq)
 set -euo pipefail
 
 RAW="${KABAR_RAW:-data/raw}"
@@ -40,6 +40,19 @@ kaikki() {
   fetch "https://kaikki.org/dictionary/Javanese/kaikki.org-dictionary-Javanese.jsonl" kaikki-jv.jsonl ""
 }
 
+nusa() {
+  # Javanese text written by native speakers, for the Javanese frequency list.
+  # NusaWrites (IndoNLP, Apache-2.0 repo) and NusaX (IndoNLP, CC BY-SA 4.0), pinned to commits.
+  mkdir -p "$RAW/nusa"
+  local nw="https://raw.githubusercontent.com/IndoNLP/nusa-writes/b337f511185cd44c9c57ff906ecef1af6165adbc/data"
+  local nx="https://raw.githubusercontent.com/IndoNLP/nusax/75b0be5d982348332509f296e10d9bf9cb66d60f/datasets/sentiment/javanese"
+  for split in train valid test; do
+    fetch "$nw/nusa_alinea-paragraph-jav-$split.csv" "nusa/alinea-paragraph-$split.csv" ""
+    fetch "$nw/nusa_kalimat-mt-jav-$split.csv" "nusa/kalimat-mt-$split.csv" ""
+    fetch "$nx/$split.csv" "nusa/nusax-senti-$split.csv" ""
+  done
+}
+
 jvwiki() {
   # Javanese Wikipedia articles (CC BY-SA 4.0) for the Javanese frequency list.
   fetch "https://dumps.wikimedia.org/jvwiki/latest/jvwiki-latest-pages-articles.xml.bz2" jvwiki-pages-articles.xml.bz2 ""
@@ -48,7 +61,8 @@ jvwiki() {
 case "${1:-freq}" in
   freq) freq ;;
   kaikki) kaikki ;;
+  nusa) nusa ;;
   jvwiki) jvwiki ;;
-  all) freq; kaikki; jvwiki ;;
-  *) echo "usage: $0 [freq|kaikki|jvwiki|all]" >&2; exit 2 ;;
+  all) freq; nusa; kaikki; jvwiki ;;
+  *) echo "usage: $0 [freq|nusa|kaikki|jvwiki|all]" >&2; exit 2 ;;
 esac

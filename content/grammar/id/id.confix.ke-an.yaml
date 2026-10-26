@@ -1,0 +1,105 @@
+schema: kabar.grammar/v1
+id: id.confix.ke-an
+language: id
+level: bipa4
+title:
+  target: ke-…-an (kesehatan, kedatangan, kehujanan, kebesaran)
+  en: "The confix ke-…-an: abstract nouns and adversity"
+  ar_eg: "ke-…-an: الأسماء المعنوية و«اللي جراله حاجة»"
+  ar: "ke-…-an: الاسم المعنوي ومعنى الإصابة"
+summary:
+  ar_eg: "ke-…-an بتعمل اسم معنوي (sehat → kesehatan = الصحة)، أو بتقول إن حاجة وحشة حصلتلك (kehujanan = المطر نزل عليّ)، أو «زيادة عن اللزوم» (kebesaran = واسع أوي)."
+  ar: "ke-…-an تصوغ الاسم المعنوي (kesehatan = الصحة)، أو تدل على وقوع أمر مكروه بالمرء (kehujanan = أصابه المطر)، أو على المبالغة (kebesaran = أكبر من اللازم)."
+  en: "ke-…-an makes abstract nouns (sehat → kesehatan = health), says something unpleasant happened to you (kehujanan = got caught in the rain), or means too … (kebesaran = too big)."
+pattern:
+  - ke- + adjective / verb + -an = abstract noun (kesehatan, kebersihan, kedatangan)
+  - ke- + noun + -an = institution / place (kedutaan, kerajaan, kementerian)
+  - subject + ke- + root + -an = suffered something (kehujanan, kecopetan, ketinggalan)
+  - ke- + adjective + -an = too … (kebesaran, kepedasan) — informal
+  - ke- + colour + -an = -ish (kemerahan)
+explanation:
+  ar_eg: |
+    ke-…-an ليها وشين أساسيين:
+    1) اسم معنوي (زي «المصدر» عندنا) من صفة أو فعل:
+       sehat → kesehatan (الصحة)، bersih → kebersihan (النضافة)، sabar → kesabaran (الصبر)، adil → keadilan (العدل)، datang → kedatangan (الوصول / القدوم)، pergi → kepergian (الرحيل).
+       ومن اسم = مؤسسة أو مكان: duta → kedutaan (سفارة)، raja → kerajaan (مملكة)، menteri → kementerian (وزارة).
+    2) «جراله حاجة وحشة» من غير قصد (مبني للمجهول بمعنى التأثر):
+       kehujanan = المطر نزل عليه، kecopetan = اتنشل، kemalingan = اتسرق بيته، ketinggalan = فاته (الأتوبيس مثلًا)، kesiangan = صحي متأخر، kepanasan = حران أوي.
+    3) في الكلام العادي، مع صفة = «زيادة»: kebesaran = واسع عليّ، kemahalan = غالي أوي، kepedasan = حراق زيادة.
+    4) مع ألوان = «مايل لـ»: kemerahan = مايل للأحمر.
+    إزاي تفرق؟ لو الكلمة فاعل أو مفعول في الجملة = اسم معنوي. لو بعد الشخص في مكان الفعل = حصل له حاجة.
+    هتشوف معنى «الإصابة» ده تاني في المستوى الخامس مع ter- (id.passive.ter-ke-an).
+  ar: |
+    لـke-…-an وجهان رئيسيان:
+    1) الاسم المعنوي (كالمصدر): kesehatan (الصحة)، kebersihan (النظافة)، kesabaran (الصبر)، keadilan (العدل)، kedatangan (القدوم)، kepergian (الرحيل). ومن الاسم للمؤسسة: kedutaan (السفارة)، kerajaan (المملكة)، kementerian (الوزارة).
+    2) وقوع أمر مكروه بغير قصد: kehujanan (أصابه المطر)، kecopetan (نُشل)، kemalingan (سُرق)، ketinggalan (فاته)، kesiangan (تأخر في النوم)، kepanasan (اشتد عليه الحر).
+    3) في العامية مع الصفة للمبالغة: kebesaran (أوسع من اللازم)، kemahalan.
+    4) مع الألوان للمقاربة: kemerahan (ضارب إلى الحمرة).
+    والتمييز بالموقع: اسمًا في الجملة فهو مصدر، وخبرًا بعد الشخص فهو معنى الإصابة.
+  en: |
+    ke-…-an has two main faces:
+    1) Abstract nouns from adjectives or verbs: kesehatan (health), kebersihan (cleanliness), kesabaran (patience), keadilan (justice), kedatangan (arrival), kepergian (departure). From nouns = institution / place: kedutaan (embassy), kerajaan (kingdom), kementerian (ministry).
+    2) Adversity — something happened to you, unintended: kehujanan (caught in the rain), kecopetan (pickpocketed), kemalingan (burgled), ketinggalan (missed / left behind), kesiangan (overslept), kepanasan (suffering from the heat).
+    3) Informal, with adjectives = too …: kebesaran (too big), kemahalan (too pricey), kepedasan (too spicy).
+    4) With colours = -ish: kemerahan (reddish).
+    Tell them apart by position: as subject / object it's a noun; in the verb slot after a person it's adversity.
+    The adversity meaning returns at BIPA 5 alongside ter- (id.passive.ter-ke-an).
+examples:
+  - text: Kesehatan pekerja harus dijaga.
+    breakdown: ke- + sehat + -an = health
+    en: Workers' health must be protected.
+    ar_eg: صحة العمال لازم تتحافظ عليها.
+    ar: يجب الحفاظ على صحة العمال.
+    register: formal
+  - text: Kemarin saya kehujanan di jalan ke kantor.
+    breakdown: ke- + hujan + -an = got caught in the rain
+    en: Yesterday I got caught in the rain on the way to the office.
+    ar_eg: امبارح المطر نزل عليّ وانا رايح الشغل.
+    ar: أصابني المطر أمس في طريقي إلى العمل.
+  - text: Profesi guru membutuhkan kesabaran.
+    en: Teaching requires patience.
+    ar_eg: مهنة التدريس محتاجة صبر.
+    ar: تحتاج مهنة التدريس إلى الصبر.
+  - text: Teman saya kecopetan di Pasar Sentral.
+    en: My friend was pickpocketed at the central market.
+    ar_eg: صاحبي اتنشل في السوق المركزي.
+    ar: تعرّض صديقي للنشل في السوق المركزي.
+  - text: Saya bangun kesiangan, jadi ketinggalan pesawat.
+    en: I overslept, so I missed the plane.
+    ar_eg: صحيت متأخر، فالطيارة فاتتني.
+    ar: تأخرت في النوم ففاتتني الطائرة.
+    register: informal
+  - text: Sepatu ini kebesaran untuk saya.
+    en: These shoes are too big for me.
+    ar_eg: الجزمة دي واسعة عليّ.
+    ar: هذا الحذاء أكبر من مقاسي.
+    register: informal
+mistakes:
+  - wrong: Saya dihujani kemarin. (meaning "I got caught in the rain")
+    right: Saya kehujanan kemarin.
+    why:
+      ar_eg: «المطر نزل عليّ» = kehujanan؛ di-…-i كأن حد قاصد يرمي عليك.
+      ar: kehujanan للإصابة بالمطر، أما dihujani فكأن فاعلًا قصد ذلك.
+      en: kehujanan is the natural "got rained on"; dihujani sounds like someone did it deliberately.
+  - wrong: Saya kehujan.
+    right: Saya kehujanan.
+    why:
+      ar_eg: "لازم الجزئين: ke- و -an مع بعض."
+      ar: لا بد من الجزأين معًا.
+      en: Both parts are required — ke- and -an.
+  - wrong: Kesehatan saya sakit.
+    right: Saya sakit. / Kesehatan saya kurang baik.
+    why:
+      ar_eg: kesehatan = «الصحة» كاسم؛ الصحة نفسها مش بتعيا. قول Saya sakit أو Kesehatan saya kurang baik.
+      ar: kesehatan اسم معنوي لا يوصف بالمرض؛ قل Saya sakit.
+      en: kesehatan is "health"; health itself can't be ill. Say Saya sakit or Kesehatan saya kurang baik.
+arabic_bridge:
+  ar_eg: "ke-…-an زي «المصدر» عندنا: sabar (صبر) → kesabaran = الصبر، adil (عدل) → keadilan = العدل — والجذور دي عربي أصلًا! ومعنى «جراله» قريب من «أُصيب بـ»: kehujanan = أصابه المطر، أو المصري «اتمطر عليه»."
+  ar: "ke-…-an تقارب المصدر في العربية، ومن أمثلتها جذور عربية: sabar → kesabaran (الصبر)، adil → keadilan (العدل). ومعنى الإصابة يقابل «أُصيب بـ»: kehujanan = أصابه المطر."
+  en: ke-…-an abstract nouns work like Arabic maṣdar — and some roots are Arabic loans (sabar ← صبر → kesabaran; adil ← عدل → keadilan). The adversity sense ≈ أُصيب بـ.
+tags: [affix, confix, nominalisation, passive]
+prerequisites: [id.prefix.ter]
+see_also: [id.confix.peng-an, id.passive.ter-ke-an, id.voice.active-passive]
+review:
+  status: draft
+  verified: false

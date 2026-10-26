@@ -1,22 +1,30 @@
 [package]
 name = "kabar-tools"
-description = "Kabar's build-time content pipeline: frequency lists, Wiktionary import, glosses, Arabic Bridge."
+description = "Kabar's build-time tools: content pipeline (frequency lists, Wiktionary import, glosses, Arabic Bridge) and generated assets (Journey Map)."
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 publish.workspace = true
+default-run = "kabar-tools"
 
 [[bin]]
 name = "kabar-tools"
 path = "src/main.rs"
 
+[[bin]]
+name = "journey-map"
+path = "src/bin/journey_map.rs"
+
 [dependencies]
+kabar-core.workspace = true
 kabar-protocol = { workspace = true, features = ["schema"] }
 serde.workspace = true
 serde_json.workspace = true
 schemars.workspace = true
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }
+csv = "1"
+serde_yaml_ng = "0.10"
 flate2 = "1"
 rmp-serde = "1"
 bzip2 = "0.6"

@@ -35,6 +35,8 @@ pub struct Settings {
     pub eastern_digits: bool,
     /// The first-launch greeting has been seen.
     pub welcomed: bool,
+    /// Lesson and review sounds are off (SPEC §9: toggleable, on by default).
+    pub sounds_off: bool,
 }
 
 /// Keys as stored in the `settings` table.
@@ -43,6 +45,7 @@ pub mod keys {
     pub const THEME: &str = "theme";
     pub const EASTERN_DIGITS: &str = "eastern_digits";
     pub const WELCOMED: &str = "welcomed";
+    pub const SOUNDS_OFF: &str = "sounds_off";
 }
 
 impl Settings {
@@ -56,6 +59,7 @@ impl Settings {
                 keys::THEME => s.theme = serde_json::from_str(value).unwrap_or_default(),
                 keys::EASTERN_DIGITS => s.eastern_digits = serde_json::from_str(value).unwrap_or_default(),
                 keys::WELCOMED => s.welcomed = serde_json::from_str(value).unwrap_or_default(),
+                keys::SOUNDS_OFF => s.sounds_off = serde_json::from_str(value).unwrap_or_default(),
                 _ => {}
             }
         }
@@ -74,6 +78,7 @@ impl Settings {
         push(self.theme != other.theme, keys::THEME, json(&other.theme));
         push(self.eastern_digits != other.eastern_digits, keys::EASTERN_DIGITS, json(&other.eastern_digits));
         push(self.welcomed != other.welcomed, keys::WELCOMED, json(&other.welcomed));
+        push(self.sounds_off != other.sounds_off, keys::SOUNDS_OFF, json(&other.sounds_off));
         out
     }
 }

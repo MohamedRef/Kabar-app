@@ -1,11 +1,13 @@
-//! Build-time content for Kabar: the curriculum (`curriculum/*.yaml`) and the
-//! grammar library (`content/grammar/**.yaml`).
+//! Build-time content for Kabar: the curriculum (`curriculum/*.yaml`), the
+//! grammar library (`content/grammar/**.yaml`), lessons
+//! (`content/lessons/**.yaml`) and level/placement tests (`content/tests/**.yaml`).
 //!
 //! Every file is checked twice: structurally against its JSON Schema in
 //! `schemas/`, then semantically (unique ids, ids nested under their parents,
 //! every grammar point a lesson teaches exists in the library, ...).
 //! `cargo test -p kabar-content` runs both over the whole repository.
 
+pub mod lessons;
 pub mod model;
 
 use std::collections::{BTreeMap, BTreeSet};
@@ -15,11 +17,17 @@ use std::path::{Path, PathBuf};
 use model::{Curriculum, GrammarPoint};
 
 /// Levels whose grammar points must all exist in the library. Grows as the
-/// content pipeline covers more levels (M4: BIPA 1–2, M13: everything).
-pub const GRAMMAR_LIBRARY_LEVELS: &[&str] = &["bipa1", "bipa2"];
+/// content pipeline covers more levels (BIPA 1–7 and J1–J3 now; J4–J6 later).
+pub const GRAMMAR_LIBRARY_LEVELS: &[&str] =
+    &["bipa1", "bipa2", "bipa3", "bipa4", "bipa5", "bipa6", "bipa7", "j1", "j2", "j3"];
+
+/// Levels whose every lesson must be written (M8: BIPA 1–2).
+pub const LESSON_LEVELS: &[&str] = &["bipa1", "bipa2"];
 
 pub const CURRICULUM_SCHEMA: &str = "schemas/curriculum.schema.json";
 pub const GRAMMAR_SCHEMA: &str = "schemas/grammar-point.schema.json";
+/// Owned by the Lesson Player; applied when present, on top of [`lessons`].
+pub const LESSON_SCHEMA: &str = "schemas/lesson.schema.json";
 
 #[derive(Debug, thiserror::Error)]
 pub enum LoadError {
@@ -39,6 +47,10 @@ pub struct Report {
     pub problems: Vec<String>,
     pub curricula: Vec<Curriculum>,
     pub grammar: Vec<GrammarPoint>,
+    /// Ids of the lesson files found (`bipa1.u01.l01`, ...).
+    pub lessons: Vec<String>,
+    /// Ids of the test files found (`bipa1.test`, `placement`, ...).
+    pub tests: Vec<String>,
 }
 
 impl Report {
@@ -114,8 +126,7 @@ pub fn check_repo(root: &Path) -> Result<Report, LoadError> {
         if problems.is_empty() {
             match serde_json::from_value::<GrammarPoint>(value) {
                 Ok(g) => {
-                    let stem = file.file_stem().and_then(|s| s.to_str()).unwrap_or("");
-                    if stem != g.id {
+                    if stem(file) != g.id {
                         report.push(format!("{}: file name must be the id ({}.yaml)", file.display(), g.id));
                     }
                     report.grammar.push(g);
@@ -128,7 +139,54 @@ pub fn check_repo(root: &Path) -> Result<Report, LoadError> {
 
     check_curricula(&mut report);
     check_grammar(&mut report);
+    check_lessons_and_tests(root, &mut report)?;
     Ok(report)
+}
+
+fn stem(file: &Path) -> &str {
+    file.file_stem().and_then(|s| s.to_str()).unwrap_or("")
+}
+
+fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadError> {
+    let mut problems = Vec::new();
+    let index = lessons::Index::new(&report.curricula, report.grammar.iter().map(|g| g.id.as_str()));
+    let schema_path = root.join(LESSON_SCHEMA);
+    let lesson_validator = if schema_path.exists() { Some(validator(&schema_path)?) } else { None };
+
+    let mut files = Vec::new();
+    let dir = root.join("content/lessons");
+    if dir.exists() {
+        yaml_files(&dir, &mut files)?;
+    }
+    for file in &files {
+        let value = yaml_value(file)?;
+        if let Some(v) = &lesson_validator {
+            problems.extend(schema_problems(v, &value, file));
+        }
+        let lang = file.parent().and_then(Path::file_name).and_then(|s| s.to_str()).unwrap_or("");
+        lessons::check_lesson(&file.display().to_string(), stem(file), lang, &value, &index, &mut problems);
+        report.lessons.push(stem(file).to_owned());
+    }
+    for level in LESSON_LEVELS {
+        for id in index.lessons_of(level) {
+            if !report.lessons.iter().any(|l| l == id) {
+                problems.push(format!("{id}: lesson not written yet (content/lessons/)"));
+            }
+        }
+    }
+
+    let mut files = Vec::new();
+    let dir = root.join("content/tests");
+    if dir.exists() {
+        yaml_files(&dir, &mut files)?;
+    }
+    for file in &files {
+        let value = yaml_value(file)?;
+        lessons::check_test(&file.display().to_string(), stem(file), &value, &index, &mut problems);
+        report.tests.push(stem(file).to_owned());
+    }
+    report.problems.extend(problems);
+    Ok(())
 }
 
 fn check_curricula(report: &mut Report) {

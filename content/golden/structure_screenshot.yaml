@@ -1,0 +1,2132 @@
+# Golden set for structure_screenshot (docs/SPEC.md §11 Screenshot Decoder, §19). Shapes: content/golden/README.md.
+# input = {ocr_blocks[{text, box[x, y, w, h]}], image}: what on-device OCR returns for the screenshot,
+# boxes in image pixels. expect = {kind, messages[{speaker, side, time?, text}]}.
+# Images are synthetic renders (fictional people and shops) under fixtures/golden/structure_screenshot/.
+task: structure_screenshot
+version: 1
+rubric: |
+  - kind is right (chat, listing, post, ui); a wrong kind scores at most 1.
+  - messages follow the screen top to bottom, one per chat bubble or content block, with text copied as shown (no translation, no expansion of abbreviations); obvious OCR noise is fixed from the image, and emoji may be kept or dropped.
+  - side: left or right for chat bubbles (right = the screenshot owner, speaker 'me'); center for every non-bubble block in listings, posts and UI.
+  - speaker: chats use the name label above a group bubble (and carry it over to unlabeled follow-up bubbles from the same sender) or the contact name for 1:1 left bubbles; listings use the seller, posts the author/commenter, UI 'app' (notifications: the source app).
+  - time is the time printed on the bubble, post or notification, in the screen's own format (10.42); omitted when none is shown; times OCR glued to text are split out.
+  - In ui, a label and its value on the same row become one message 'Label: value'.
+  - Chrome is dropped: status bar, headers, online/typing status, date chips, encryption notices, input boxes, like counts and generic buttons (except in ui, where buttons are content).
+  - No invented messages, merged bubbles or swapped speakers; one hallucinated message scores 0.
+items:
+- id: structure_screenshot-001
+  lang: jv
+  input:
+    ocr_blocks:
+    - text: '10.42'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Paguyuban RT 05
+      box: [88, 35, 143, 19]
+    - text: Pakdhe Harjo, Mas Wahyu, Anda
+      box: [88, 57, 184, 14]
+    - text: Hari ini
+      box: [206, 471, 37, 14]
+    - text: Pakdhe Harjo
+      box: [18, 508, 83, 15]
+    - text: arp dicul piro
+      box: [18, 527, 86, 17]
+    - text: '10.31'
+      box: [114, 533, 28, 12]
+    - text: Sek tak lapor pusat
+      box: [245, 567, 128, 17]
+    - text: '10.33'
+      box: [383, 573, 28, 12]
+    - text: Mas Wahyu
+      box: [18, 607, 71, 15]
+    - text: ng prabowo?
+      box: [18, 626, 87, 17]
+    - text: '10.34'
+      box: [115, 632, 28, 12]
+    - text: piye dhe
+      box: [18, 661, 57, 17]
+    - text: '10.34'
+      box: [85, 667, 28, 12]
+    - text: Ketik pesan
+      box: [24, 722, 78, 17]
+    image: fixtures/golden/structure_screenshot/001.png
+  expect:
+    kind: chat
+    messages:
+    - speaker: Pakdhe Harjo
+      side: left
+      text: arp dicul piro
+      time: '10.31'
+    - speaker: me
+      side: right
+      text: Sek tak lapor pusat
+      time: '10.33'
+    - speaker: Mas Wahyu
+      side: left
+      text: ng prabowo?
+      time: '10.34'
+    - speaker: Mas Wahyu
+      side: left
+      text: piye dhe
+      time: '10.34'
+  criteria:
+  - Every bubble becomes one message in top-to-bottom order; right-side bubbles are speaker 'me'
+  - Sender names come from the name labels above the left bubbles, and both of Mas Wahyu's consecutive
+    bubbles are attributed to him
+  - The 'Hari ini' date chip and the group header are not messages
+  - Status bar, header, typing/online status and the 'Ketik pesan' input box are not messages
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - chat
+  - spec-24
+  - javanese
+  - group
+  image: fixtures/golden/structure_screenshot/001.png
+  verified: false
+- id: structure_screenshot-002
+  lang: jv
+  input:
+    ocr_blocks:
+    - text: '08.15'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Mas Yanto
+      box: [88, 35, 84, 19]
+    - text: terakhir dilihat hari ini pukul 08.12
+      box: [88, 57, 186, 14]
+    - text: arp dicul piro 07.55
+      box: [18, 547, 123, 20]
+    - text: Sek tak lapor pusat 07.58
+      box: [245, 586, 187, 20]
+    - text: ng prabowo? 07.58
+      box: [286, 621, 146, 20]
+    - text: wkwk piye dhe 08.01
+      box: [18, 661, 135, 20]
+    - text: Ketik pesan
+      box: [24, 722, 78, 17]
+    image: fixtures/golden/structure_screenshot/002.png
+  expect:
+    kind: chat
+    messages:
+    - speaker: Mas Yanto
+      side: left
+      text: arp dicul piro
+      time: '07.55'
+    - speaker: me
+      side: right
+      text: Sek tak lapor pusat
+      time: '07.58'
+    - speaker: me
+      side: right
+      text: ng prabowo?
+      time: '07.58'
+    - speaker: Mas Yanto
+      side: left
+      text: wkwk piye dhe
+      time: '08.01'
+  criteria:
+  - Every bubble becomes one message in top-to-bottom order; right-side bubbles are speaker 'me'
+  - Times that OCR glued to the end of the text are split out into time
+  - Status bar, header, typing/online status and the 'Ketik pesan' input box are not messages
+  avoid:
+  - Leaving '07.55' inside a message text
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - chat
+  - spec-24
+  - javanese
+  - ocr-merged-time
+  image: fixtures/golden/structure_screenshot/002.png
+  verified: false
+- id: structure_screenshot-003
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '19.07'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Sari
+      box: [88, 35, 32, 19]
+    - text: online
+      box: [88, 57, 33, 14]
+    - text: Udh makan blm?
+      box: [18, 542, 113, 17]
+    - text: '19.02'
+      box: [141, 548, 28, 12]
+    - text: Blm nih, baru pulang kuliah
+      box: [192, 581, 181, 17]
+    - text: '19.05'
+      box: [383, 587, 28, 12]
+    - text: Mau aku pesenin?
+      box: [18, 621, 142, 17]
+    - text: '19.05'
+      box: [170, 627, 28, 12]
+    - text: Boleh bgt
+      box: [286, 661, 87, 17]
+    - text: '19.06'
+      box: [383, 667, 28, 12]
+    - text: Ketik pesan
+      box: [24, 722, 78, 17]
+    image: fixtures/golden/structure_screenshot/003.png
+  expect:
+    kind: chat
+    messages:
+    - speaker: Sari
+      side: left
+      text: Udh makan blm?
+      time: '19.02'
+    - speaker: me
+      side: right
+      text: Blm nih, baru pulang kuliah
+      time: '19.05'
+    - speaker: Sari
+      side: left
+      text: Mau aku pesenin?
+      time: '19.05'
+    - speaker: me
+      side: right
+      text: Boleh bgt
+      time: '19.06'
+  criteria:
+  - Every bubble becomes one message in top-to-bottom order; right-side bubbles are speaker 'me'
+  - Emoji may be kept or dropped from text
+  - Status bar, header, typing/online status and the 'Ketik pesan' input box are not messages
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - chat
+  - abbreviation
+  - emoji
+  image: fixtures/golden/structure_screenshot/003.png
+  verified: false
+- id: structure_screenshot-004
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '21.43'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Mbak Gadis
+      box: [88, 35, 95, 19]
+    - text: mengetik…
+      box: [88, 57, 63, 14]
+    - text: Which is, gue literally capek banget.
+      box: [18, 521, 239, 17]
+    - text: '21.40'
+      box: [267, 527, 28, 12]
+    - text: Lembur lagi mbak?
+      box: [245, 561, 128, 17]
+    - text: '21.41'
+      box: [383, 567, 28, 12]
+    - text: Iya, meeting-nya di-reschedule jadi jam 7 malem
+      box: [18, 601, 273, 37]
+    - text: '21.41'
+      box: [310, 627, 28, 12]
+    - text: Semangat! Besok healing yuk
+      box: [175, 661, 198, 17]
+    - text: '21.43'
+      box: [383, 667, 28, 12]
+    - text: Ketik pesan
+      box: [24, 722, 78, 17]
+    image: fixtures/golden/structure_screenshot/004.png
+  expect:
+    kind: chat
+    messages:
+    - speaker: Mbak Gadis
+      side: left
+      text: Which is, gue literally capek banget.
+      time: '21.40'
+    - speaker: me
+      side: right
+      text: Lembur lagi mbak?
+      time: '21.41'
+    - speaker: Mbak Gadis
+      side: left
+      text: Iya, meeting-nya di-reschedule jadi jam 7 malem
+      time: '21.41'
+    - speaker: me
+      side: right
+      text: Semangat! Besok healing yuk
+      time: '21.43'
+  criteria:
+  - Every bubble becomes one message in top-to-bottom order; right-side bubbles are speaker 'me'
+  - The 'mengetik…' (typing) status is not a message
+  - Status bar, header, typing/online status and the 'Ketik pesan' input box are not messages
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - chat
+  - spec-24
+  - jakarta-slang
+  - typing-indicator
+  image: fixtures/golden/structure_screenshot/004.png
+  verified: false
+- id: structure_screenshot-005
+  lang: jv
+  input:
+    ocr_blocks:
+    - text: '12.16'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Cak Rudi
+      box: [88, 35, 74, 19]
+    - text: online
+      box: [88, 57, 33, 14]
+    - text: Koen wis mangan ta, rek ?
+      box: [18, 542, 173, 17]
+    - text: '12.10'
+      box: [201, 548, 28, 12]
+    - text: Durung rek. Engko ae
+      box: [227, 581, 146, 17]
+    - text: '12.14'
+      box: [383, 587, 28, 12]
+    - text: Ayo mangan bareng, tak traktir
+      box: [18, 621, 205, 17]
+    - text: '12.15'
+      box: [233, 627, 28, 12]
+    - text: Siap cak!
+      box: [311, 661, 62, 17]
+    - text: '12.15'
+      box: [383, 667, 28, 12]
+    - text: Ketik pesan
+      box: [24, 722, 78, 17]
+    image: fixtures/golden/structure_screenshot/005.png
+  expect:
+    kind: chat
+    messages:
+    - speaker: Cak Rudi
+      side: left
+      text: Koen wis mangan ta, rek?
+      time: '12.10'
+    - speaker: me
+      side: right
+      text: Durung rek. Engko ae
+      time: '12.14'
+    - speaker: Cak Rudi
+      side: left
+      text: Ayo mangan bareng, tak traktir
+      time: '12.15'
+    - speaker: me
+      side: right
+      text: Siap cak!
+      time: '12.15'
+  criteria:
+  - Every bubble becomes one message in top-to-bottom order; right-side bubbles are speaker 'me'
+  - Status bar, header, typing/online status and the 'Ketik pesan' input box are not messages
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - chat
+  - spec-24
+  - javanese
+  - arek
+  image: fixtures/golden/structure_screenshot/005.png
+  verified: false
+- id: structure_screenshot-006
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '16.32'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Keluarga Pak Budi
+      box: [88, 35, 150, 19]
+    - text: Bu Ratna, Pak Budi, Sari, Anda
+      box: [88, 57, 174, 14]
+    - text: Bu Ratna
+      box: [18, 424, 57, 15]
+    - text: Nanti malam pada pulang jam berapa?
+      box: [18, 443, 259, 17]
+    - text: '16.20'
+      box: [287, 449, 28, 12]
+    - text: Sari
+      box: [18, 483, 25, 15]
+    - text: Aku jam 8 Bu
+      box: [18, 503, 89, 17]
+    - text: '16.22'
+      box: [117, 509, 28, 12]
+    - text: Aku telat dikit ya, macet
+      box: [215, 542, 158, 17]
+    - text: '16.25'
+      box: [383, 548, 28, 12]
+    - text: Pak Budi
+      box: [18, 582, 56, 15]
+    - text: Ati-ati di jalan
+      box: [18, 602, 90, 17]
+    - text: '16.30'
+      box: [118, 608, 28, 12]
+    - text: Bu Ratna
+      box: [18, 642, 57, 15]
+    - text: Nanti Ibu masakin sayur asem
+      box: [18, 661, 202, 17]
+    - text: '16.31'
+      box: [230, 667, 28, 12]
+    - text: Ketik pesan
+      box: [24, 722, 78, 17]
+    image: fixtures/golden/structure_screenshot/006.png
+  expect:
+    kind: chat
+    messages:
+    - speaker: Bu Ratna
+      side: left
+      text: Nanti malam pada pulang jam berapa?
+      time: '16.20'
+    - speaker: Sari
+      side: left
+      text: Aku jam 8 Bu
+      time: '16.22'
+    - speaker: me
+      side: right
+      text: Aku telat dikit ya, macet
+      time: '16.25'
+    - speaker: Pak Budi
+      side: left
+      text: Ati-ati di jalan
+      time: '16.30'
+    - speaker: Bu Ratna
+      side: left
+      text: Nanti Ibu masakin sayur asem
+      time: '16.31'
+  criteria:
+  - Every bubble becomes one message in top-to-bottom order; right-side bubbles are speaker 'me'
+  - Status bar, header, typing/online status and the 'Ketik pesan' input box are not messages
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - chat
+  - group
+  - family
+  - sinetron
+  image: fixtures/golden/structure_screenshot/006.png
+  verified: false
+- id: structure_screenshot-007
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '13.08'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Toko Sepatu Lestari
+      box: [88, 35, 161, 19]
+    - text: Akun bisnis
+      box: [88, 57, 64, 14]
+    - text: Permisi kak, yang hitam ukuran 42 masih ada?
+      box: [113, 482, 312, 17]
+    - text: '13.01'
+      box: [383, 508, 28, 12]
+    - text: Masih kak, ready stok
+      box: [18, 542, 145, 17]
+    - text: '13.03'
+      box: [173, 548, 28, 12]
+    - text: Bisa kurang? 250rb ya
+      box: [223, 581, 150, 17]
+    - text: '13.04'
+      box: [383, 587, 28, 12]
+    - text: Pas 275rb kak, udah murah itu
+      box: [18, 621, 204, 17]
+    - text: '13.06'
+      box: [232, 627, 28, 12]
+    - text: Oke deal
+      box: [290, 661, 83, 17]
+    - text: '13.07'
+      box: [383, 667, 28, 12]
+    - text: Ketik pesan
+      box: [24, 722, 78, 17]
+    image: fixtures/golden/structure_screenshot/007.png
+  expect:
+    kind: chat
+    messages:
+    - speaker: me
+      side: right
+      text: Permisi kak, yang hitam ukuran 42 masih ada?
+      time: '13.01'
+    - speaker: Toko Sepatu Lestari
+      side: left
+      text: Masih kak, ready stok
+      time: '13.03'
+    - speaker: me
+      side: right
+      text: Bisa kurang? 250rb ya
+      time: '13.04'
+    - speaker: Toko Sepatu Lestari
+      side: left
+      text: Pas 275rb kak, udah murah itu
+      time: '13.06'
+    - speaker: me
+      side: right
+      text: Oke deal
+      time: '13.07'
+  criteria:
+  - Every bubble becomes one message in top-to-bottom order; right-side bubbles are speaker 'me'
+  - Status bar, header, typing/online status and the 'Ketik pesan' input box are not messages
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - chat
+  - market
+  - bargaining
+  - price
+  - business-account
+  image: fixtures/golden/structure_screenshot/007.png
+  verified: false
+- id: structure_screenshot-008
+  lang: jv
+  input:
+    ocr_blocks:
+    - text: '06.56'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Mbah Kakung
+      box: [88, 35, 111, 19]
+    - text: online
+      box: [88, 57, 33, 14]
+    - text: Sugeng enjing, Mbah. Panjenengan sampun dhahar?
+      box: [113, 501, 296, 37]
+    - text: '06.45'
+      box: [383, 527, 28, 12]
+    - text: Sampun, Le. Kowe wis mangan?
+      box: [18, 561, 219, 17]
+    - text: '06.52'
+      box: [247, 567, 28, 12]
+    - text: Sampun, Mbah. Mangke siang kula sowan nggih
+      box: [113, 601, 283, 37]
+    - text: '06.53'
+      box: [383, 627, 28, 12]
+    - text: Iyo, ati-ati
+      box: [18, 661, 65, 17]
+    - text: '06.55'
+      box: [93, 667, 28, 12]
+    - text: Ketik pesan
+      box: [24, 722, 78, 17]
+    image: fixtures/golden/structure_screenshot/008.png
+  expect:
+    kind: chat
+    messages:
+    - speaker: me
+      side: right
+      text: Sugeng enjing, Mbah. Panjenengan sampun dhahar?
+      time: '06.45'
+    - speaker: Mbah Kakung
+      side: left
+      text: Sampun, Le. Kowe wis mangan?
+      time: '06.52'
+    - speaker: me
+      side: right
+      text: Sampun, Mbah. Mangke siang kula sowan nggih
+      time: '06.53'
+    - speaker: Mbah Kakung
+      side: left
+      text: Iyo, ati-ati
+      time: '06.55'
+  criteria:
+  - Every bubble becomes one message in top-to-bottom order; right-side bubbles are speaker 'me'
+  - Krama and ngoko text is kept exactly as written, without 'correcting' it
+  - Status bar, header, typing/online status and the 'Ketik pesan' input box are not messages
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - chat
+  - spec-24
+  - javanese
+  - krama
+  - speech-level
+  image: fixtures/golden/structure_screenshot/008.png
+  verified: false
+- id: structure_screenshot-009
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '20.06'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Dinda
+      box: [88, 35, 47, 19]
+    - text: online
+      box: [88, 57, 33, 14]
+    - text: Jadi ke Kota Tua besok?
+      box: [18, 500, 164, 17]
+    - text: '20.01'
+      box: [192, 506, 28, 12]
+    - text: Dinda
+      box: [250, 543, 36, 15]
+    - text: Jadi ke Kota Tua besok?
+      box: [250, 561, 142, 15]
+    - text: Jadi dong. Jam 9 ya
+      box: [239, 586, 134, 17]
+    - text: '20.03'
+      box: [383, 592, 28, 12]
+    - text: Pesan ini telah dihapus
+      box: [18, 626, 155, 17]
+    - text: '20.04'
+      box: [183, 632, 28, 12]
+    - text: Eh jam 10 aja, aku ada urusan pagi
+      box: [18, 661, 236, 17]
+    - text: '20.05'
+      box: [264, 667, 28, 12]
+    - text: Ketik pesan
+      box: [24, 722, 78, 17]
+    image: fixtures/golden/structure_screenshot/009.png
+  expect:
+    kind: chat
+    messages:
+    - speaker: Dinda
+      side: left
+      text: Jadi ke Kota Tua besok?
+      time: '20.01'
+    - speaker: me
+      side: right
+      text: Jadi dong. Jam 9 ya
+      time: '20.03'
+    - speaker: Dinda
+      side: left
+      text: Pesan ini telah dihapus
+      time: '20.04'
+    - speaker: Dinda
+      side: left
+      text: Eh jam 10 aja, aku ada urusan pagi
+      time: '20.05'
+  criteria:
+  - Every bubble becomes one message in top-to-bottom order; right-side bubbles are speaker 'me'
+  - The quoted text inside the reply bubble is not repeated as its own message
+  - The deleted-message placeholder is kept as a message with its text as shown (or clearly marked as
+    deleted)
+  - Status bar, header, typing/online status and the 'Ketik pesan' input box are not messages
+  avoid:
+  - Counting the quote as a second 'Jadi ke Kota Tua besok?' message
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - chat
+  - reply-quote
+  - deleted-message
+  - adversarial
+  image: fixtures/golden/structure_screenshot/009.png
+  verified: false
+- id: structure_screenshot-010
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '09.11'
+      box: [14, 6, 32, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Rina Kos
+      box: [88, 35, 74, 19]
+    - text: online
+      box: [88, 57, 33, 14]
+    - text: Pesan dan panggilan terenkripsi secara end-to-end. Ketuk untuk info selengkapnya.
+      box: [54, 417, 342, 28]
+    - text: Kemarin
+      box: [203, 469, 45, 14]
+    - text: Mbak, galonnya habis ya
+      box: [18, 506, 166, 17]
+    - text: '21.15'
+      box: [194, 512, 28, 12]
+    - text: Iya, besok aku beli
+      box: [249, 545, 124, 17]
+    - text: '21.20'
+      box: [383, 551, 28, 12]
+    - text: Hari ini
+      box: [206, 584, 37, 14]
+    - text: Udah dibeli belum mbak?
+      box: [18, 621, 169, 17]
+    - text: '09.02'
+      box: [197, 627, 28, 12]
+    - text: Udah, taruh di dapur
+      box: [236, 661, 137, 17]
+    - text: '09.10'
+      box: [383, 667, 28, 12]
+    - text: Ketik pesan
+      box: [24, 722, 78, 17]
+    image: fixtures/golden/structure_screenshot/010.png
+  expect:
+    kind: chat
+    messages:
+    - speaker: Rina Kos
+      side: left
+      text: Mbak, galonnya habis ya
+      time: '21.15'
+    - speaker: me
+      side: right
+      text: Iya, besok aku beli
+      time: '21.20'
+    - speaker: Rina Kos
+      side: left
+      text: Udah dibeli belum mbak?
+      time: '09.02'
+    - speaker: me
+      side: right
+      text: Udah, taruh di dapur
+      time: '09.10'
+  criteria:
+  - Every bubble becomes one message in top-to-bottom order; right-side bubbles are speaker 'me'
+  - The encryption notice and the date chips are not messages
+  - Times keep their own day; no date is invented
+  - Status bar, header, typing/online status and the 'Ketik pesan' input box are not messages
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - chat
+  - system-notice
+  - date-separators
+  image: fixtures/golden/structure_screenshot/010.png
+  verified: false
+- id: structure_screenshot-011
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '18.13'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Kelas BIPA Kairo
+      box: [88, 35, 137, 19]
+    - text: Bu Laila, Rina, Omar, Anda
+      box: [88, 57, 151, 14]
+    - text: Bu Laila
+      box: [18, 403, 51, 15]
+    - text: Assalamualaikum. Besok kelas mulai jam 9 ya
+      box: [18, 423, 308, 17]
+    - text: '18.00'
+      box: [310, 449, 28, 12]
+    - text: Rina
+      box: [18, 483, 28, 15]
+    - text: Siap bu!
+      box: [18, 503, 55, 17]
+    - text: '18.02'
+      box: [83, 509, 28, 12]
+    - text: Omar
+      box: [18, 542, 34, 15]
+    - text: Baik bu, terima kasih
+      box: [18, 562, 139, 17]
+    - text: '18.03'
+      box: [167, 568, 28, 12]
+    - text: Bu, saya izin telat 15 menit
+      box: [194, 602, 179, 17]
+    - text: '18.10'
+      box: [383, 608, 28, 12]
+    - text: Bu Laila
+      box: [18, 642, 51, 15]
+    - text: Oke, tidak apa-apa
+      box: [18, 661, 127, 17]
+    - text: '18.12'
+      box: [155, 667, 28, 12]
+    - text: Ketik pesan
+      box: [24, 722, 78, 17]
+    image: fixtures/golden/structure_screenshot/011.png
+  expect:
+    kind: chat
+    messages:
+    - speaker: Bu Laila
+      side: left
+      text: Assalamualaikum. Besok kelas mulai jam 9 ya
+      time: '18.00'
+    - speaker: Rina
+      side: left
+      text: Siap bu!
+      time: '18.02'
+    - speaker: Omar
+      side: left
+      text: Baik bu, terima kasih
+      time: '18.03'
+    - speaker: me
+      side: right
+      text: Bu, saya izin telat 15 menit
+      time: '18.10'
+    - speaker: Bu Laila
+      side: left
+      text: Oke, tidak apa-apa
+      time: '18.12'
+  criteria:
+  - Every bubble becomes one message in top-to-bottom order; right-side bubbles are speaker 'me'
+  - Status bar, header, typing/online status and the 'Ketik pesan' input box are not messages
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - chat
+  - group
+  - study
+  - cairo
+  image: fixtures/golden/structure_screenshot/011.png
+  verified: false
+- id: structure_screenshot-012
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '11.25'
+      box: [14, 6, 32, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Kurir Paket
+      box: [88, 35, 91, 19]
+    - text: online
+      box: [88, 57, 33, 14]
+    - text: Paket atas nama Ahmad? Saya sudah di depan gerbang
+      box: [18, 521, 317, 37]
+    - text: '11.20'
+      box: [311, 548, 27, 12]
+    - text: Oke mas, tunggu sebentar
+      box: [197, 581, 177, 17]
+    - text: '11.21'
+      box: [384, 587, 27, 12]
+    - text: Siap, saya tunggu 5 menit ya
+      box: [18, 621, 193, 17]
+    - text: '11.21'
+      box: [221, 627, 27, 12]
+    - text: Sudah di bawah mas
+      box: [234, 661, 140, 17]
+    - text: '11.24'
+      box: [384, 667, 27, 12]
+    - text: Ketik pesan
+      box: [24, 722, 78, 17]
+    image: fixtures/golden/structure_screenshot/012.png
+  expect:
+    kind: chat
+    messages:
+    - speaker: Kurir Paket
+      side: left
+      text: Paket atas nama Ahmad? Saya sudah di depan gerbang
+      time: '11.20'
+    - speaker: me
+      side: right
+      text: Oke mas, tunggu sebentar
+      time: '11.21'
+    - speaker: Kurir Paket
+      side: left
+      text: Siap, saya tunggu 5 menit ya
+      time: '11.21'
+    - speaker: me
+      side: right
+      text: Sudah di bawah mas
+      time: '11.24'
+  criteria:
+  - Every bubble becomes one message in top-to-bottom order; right-side bubbles are speaker 'me'
+  - Status bar, header, typing/online status and the 'Ketik pesan' input box are not messages
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - chat
+  - delivery
+  - polite
+  image: fixtures/golden/structure_screenshot/012.png
+  verified: false
+- id: structure_screenshot-013
+  lang: jv
+  input:
+    ocr_blocks:
+    - text: '15.46'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Mas Dimas
+      box: [88, 35, 89, 19]
+    - text: online
+      box: [88, 57, 33, 14]
+    - text: Wis tak transfer, dicek sik yo
+      box: [18, 581, 189, 17]
+    - text: '15.40'
+      box: [217, 587, 28, 12]
+    - text: Wis mlebu, matur nuwun mas
+      box: [152, 621, 221, 17]
+    - text: '15.44'
+      box: [383, 627, 28, 12]
+    - text: Podho-podho
+      box: [18, 661, 90, 17]
+    - text: '15.45'
+      box: [118, 667, 28, 12]
+    - text: Ketik pesan
+      box: [24, 722, 78, 17]
+    image: fixtures/golden/structure_screenshot/013.png
+  expect:
+    kind: chat
+    messages:
+    - speaker: Mas Dimas
+      side: left
+      text: Wis tak transfer, dicek sik yo
+      time: '15.40'
+    - speaker: me
+      side: right
+      text: Wis mlebu, matur nuwun mas
+      time: '15.44'
+    - speaker: Mas Dimas
+      side: left
+      text: Podho-podho
+      time: '15.45'
+  criteria:
+  - Every bubble becomes one message in top-to-bottom order; right-side bubbles are speaker 'me'
+  - Status bar, header, typing/online status and the 'Ketik pesan' input box are not messages
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - chat
+  - javanese
+  - dark-mode
+  - money
+  image: fixtures/golden/structure_screenshot/013.png
+  verified: false
+- id: structure_screenshot-014
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '10.09'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Gadget Bekas Raka
+      box: [88, 35, 159, 19]
+    - text: Akun bisnis
+      box: [88, 57, 64, 14]
+    - text: iphone 17 pm nya masih ada?
+      box: [172, 502, 201, 17]
+    - text: '10.02'
+      box: [383, 508, 28, 12]
+    - text: Masih gan
+      box: [18, 542, 69, 17]
+    - text: '10.05'
+      box: [97, 548, 28, 12]
+    - text: Nett berapa?
+      box: [286, 581, 87, 17]
+    - text: '10.05'
+      box: [383, 587, 28, 12]
+    - text: 26jt nett, nomin garansi jalan
+      box: [18, 621, 192, 17]
+    - text: '10.07'
+      box: [220, 627, 28, 12]
+    - text: Bisa COD di Blok M?
+      box: [232, 661, 141, 17]
+    - text: '10.08'
+      box: [383, 667, 28, 12]
+    - text: Ketik pesan
+      box: [24, 722, 78, 17]
+    image: fixtures/golden/structure_screenshot/014.png
+  expect:
+    kind: chat
+    messages:
+    - speaker: me
+      side: right
+      text: iphone 17 pm nya masih ada?
+      time: '10.02'
+    - speaker: Gadget Bekas Raka
+      side: left
+      text: Masih gan
+      time: '10.05'
+    - speaker: me
+      side: right
+      text: Nett berapa?
+      time: '10.05'
+    - speaker: Gadget Bekas Raka
+      side: left
+      text: 26jt nett, nomin garansi jalan
+      time: '10.07'
+    - speaker: me
+      side: right
+      text: Bisa COD di Blok M?
+      time: '10.08'
+  criteria:
+  - Every bubble becomes one message in top-to-bottom order; right-side bubbles are speaker 'me'
+  - Status bar, header, typing/online status and the 'Ketik pesan' input box are not messages
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - chat
+  - spec-24
+  - listing-chat
+  - price
+  image: fixtures/golden/structure_screenshot/014.png
+  verified: false
+- id: structure_screenshot-015
+  lang: jv
+  input:
+    ocr_blocks:
+    - text: '06.43'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Bu Siti Pecel
+      box: [88, 35, 103, 19]
+    - text: online
+      box: [88, 57, 33, 14]
+    - text: Bu, pecel 3 bungkus nggih, sambele dipisah
+      box: [113, 541, 294, 17]
+    - text: '06.30'
+      box: [383, 567, 28, 12]
+    - text: Nggih mas, mangke jam 7 dipendhet nggih
+      box: [18, 601, 285, 17]
+    - text: '06.41'
+      box: [310, 627, 28, 12]
+    - text: Matur nuwun Bu
+      box: [264, 661, 109, 17]
+    - text: '06.42'
+      box: [383, 667, 28, 12]
+    - text: Ketik pesan
+      box: [24, 722, 78, 17]
+    image: fixtures/golden/structure_screenshot/015.png
+  expect:
+    kind: chat
+    messages:
+    - speaker: me
+      side: right
+      text: Bu, pecel 3 bungkus nggih, sambele dipisah
+      time: '06.30'
+    - speaker: Bu Siti Pecel
+      side: left
+      text: Nggih mas, mangke jam 7 dipendhet nggih
+      time: '06.41'
+    - speaker: me
+      side: right
+      text: Matur nuwun Bu
+      time: '06.42'
+  criteria:
+  - Every bubble becomes one message in top-to-bottom order; right-side bubbles are speaker 'me'
+  - Status bar, header, typing/online status and the 'Ketik pesan' input box are not messages
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - chat
+  - javanese
+  - krama
+  - food
+  - dark-mode
+  image: fixtures/golden/structure_screenshot/015.png
+  verified: false
+- id: structure_screenshot-016
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '21.31'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Grup Futsal Kamis
+      box: [88, 35, 151, 19]
+    - text: Bagas, Raka, Yusuf, Anda
+      box: [88, 57, 145, 14]
+    - text: Bagas
+      box: [18, 448, 39, 15]
+    - text: Lapangan udah dibooking jam 8
+      box: [18, 468, 214, 17]
+    - text: '17.00'
+      box: [242, 474, 28, 12]
+    - text: luran 30rb/orang ya
+      box: [18, 503, 131, 17]
+    - text: '17.00'
+      box: [159, 509, 28, 12]
+    - text: Raka
+      box: [18, 542, 31, 15]
+    - text: Gw telat dikit, otw
+      box: [18, 562, 118, 17]
+    - text: '19.55'
+      box: [146, 568, 28, 12]
+    - text: Gas
+      box: [346, 602, 28, 17]
+    - text: '19.56'
+      box: [383, 608, 28, 12]
+    - text: Yusuf
+      box: [18, 642, 35, 15]
+    - text: Kalah 3-5 wkwk
+      box: [18, 661, 105, 17]
+    - text: '21.30'
+      box: [133, 667, 28, 12]
+    - text: Ketik pesan
+      box: [24, 722, 78, 17]
+    image: fixtures/golden/structure_screenshot/016.png
+  expect:
+    kind: chat
+    messages:
+    - speaker: Bagas
+      side: left
+      text: Lapangan udah dibooking jam 8
+      time: '17.00'
+    - speaker: Bagas
+      side: left
+      text: Iuran 30rb/orang ya
+      time: '17.00'
+    - speaker: Raka
+      side: left
+      text: Gw telat dikit, otw
+      time: '19.55'
+    - speaker: me
+      side: right
+      text: Gas
+      time: '19.56'
+    - speaker: Yusuf
+      side: left
+      text: Kalah 3-5 wkwk
+      time: '21.30'
+  criteria:
+  - Every bubble becomes one message in top-to-bottom order; right-side bubbles are speaker 'me'
+  - Bagas's two bubbles in a row (the second has no name label) are both his
+  - OCR misread 'Iuran' as 'luran'; the answer follows the image (Iuran)
+  - Status bar, header, typing/online status and the 'Ketik pesan' input box are not messages
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - chat
+  - group
+  - slang
+  - numbers
+  image: fixtures/golden/structure_screenshot/016.png
+  verified: false
+- id: structure_screenshot-017
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '14.05'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Marketplace
+      box: [179, 36, 93, 17]
+    - text: iphone 17 pm 512gb resmi ibox mulus nomin garansi jalan minat wa
+      box: [16, 330, 362, 48]
+    - text: Rp26.000.000
+      box: [16, 384, 120, 21]
+    - text: Jakarta Selatan · 2 jam yang lalu
+      box: [16, 410, 189, 15]
+    - text: Deskripsi
+      box: [16, 450, 72, 17]
+    - text: Fullset, batre 98%. Bisa COD area Blok M. No PHP ya.
+      box: [16, 474, 367, 17]
+    - text: Gadget Bekas Raka
+      box: [66, 523, 140, 17]
+    - text: Penjual · Bergabung 2021
+      box: [66, 540, 139, 14]
+    - text: Kirim pesan ke penjual
+      box: [26, 580, 153, 16]
+    - text: Apakah barang ini masih ada?
+      box: [38, 612, 189, 16]
+    - text: Kirim
+      box: [40, 652, 36, 16]
+    image: fixtures/golden/structure_screenshot/017.png
+  expect:
+    kind: listing
+    messages:
+    - speaker: Gadget Bekas Raka
+      side: center
+      text: iphone 17 pm 512gb resmi ibox mulus nomin garansi jalan minat wa
+    - speaker: Gadget Bekas Raka
+      side: center
+      text: Rp26.000.000
+    - speaker: Gadget Bekas Raka
+      side: center
+      text: Jakarta Selatan · 2 jam yang lalu
+    - speaker: Gadget Bekas Raka
+      side: center
+      text: Fullset, batre 98%. Bisa COD area Blok M. No PHP ya.
+  criteria:
+  - kind is listing; title, price, location line and description are kept verbatim, in reading order,
+    with the seller as speaker
+  - The title is kept verbatim (lowercase, abbreviations unexpanded)
+  - The price is kept as Rp26.000.000
+  - App chrome (top bar, 'Deskripsi' heading, seller subtitle, message box, buttons) is left out
+  avoid:
+  - Expanding or translating the listing text; that is analyze_text's job
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - listing
+  - spec-24
+  - price
+  image: fixtures/golden/structure_screenshot/017.png
+  verified: false
+- id: structure_screenshot-018
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '14.05'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Marketplace
+      box: [179, 36, 93, 17]
+    - text: Jual Honda Beat 2019
+      box: [16, 330, 207, 22]
+    - text: Rp11.500.000
+      box: [16, 358, 119, 21]
+    - text: Madiun · 1 hari yang lalu
+      box: [16, 384, 142, 15]
+    - text: Deskripsi
+      box: [16, 424, 72, 17]
+    - text: Pajak hidup, surat lengkap, mesin halus. Nego tipis.
+      box: [16, 448, 344, 17]
+    - text: Wahyu Motor Madiun
+      box: [66, 497, 151, 17]
+    - text: Penjual · Bergabung 2021
+      box: [66, 514, 139, 14]
+    - text: Kirim pesan ke penjual
+      box: [26, 554, 153, 16]
+    - text: Apakah barang ini masih ada?
+      box: [38, 586, 189, 16]
+    - text: Kirim
+      box: [40, 626, 36, 16]
+    image: fixtures/golden/structure_screenshot/018.png
+  expect:
+    kind: listing
+    messages:
+    - speaker: Wahyu Motor Madiun
+      side: center
+      text: Jual Honda Beat 2019
+    - speaker: Wahyu Motor Madiun
+      side: center
+      text: Rp11.500.000
+    - speaker: Wahyu Motor Madiun
+      side: center
+      text: Madiun · 1 hari yang lalu
+    - speaker: Wahyu Motor Madiun
+      side: center
+      text: Pajak hidup, surat lengkap, mesin halus. Nego tipis.
+  criteria:
+  - kind is listing; title, price, location line and description are kept verbatim, in reading order,
+    with the seller as speaker
+  - App chrome (top bar, 'Deskripsi' heading, seller subtitle, message box, buttons) is left out
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - listing
+  - vehicle
+  image: fixtures/golden/structure_screenshot/018.png
+  verified: false
+- id: structure_screenshot-019
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '14.05'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Detail Produk
+      box: [173, 36, 103, 17]
+    - text: Rice cooker bekas pakai 3 bln
+      box: [16, 330, 285, 22]
+    - text: Rp150.000
+      box: [16, 358, 94, 21]
+    - text: Jakarta Selatan · Terjual 0
+      box: [16, 384, 151, 15]
+    - text: Deskripsi
+      box: [16, 424, 72, 17]
+    - text: Masih normal, tutup rapat. COD Jaksel aja ya kak.
+      box: [16, 448, 334, 17]
+    - text: Lapak Bu Ani
+      box: [66, 497, 95, 17]
+    - text: Penjual · Bergabung 2021
+      box: [66, 514, 139, 14]
+    - text: Beli Sekarang
+      box: [72, 562, 93, 16]
+    - text: + Keranjang
+      box: [291, 563, 81, 16]
+    image: fixtures/golden/structure_screenshot/019.png
+  expect:
+    kind: listing
+    messages:
+    - speaker: Lapak Bu Ani
+      side: center
+      text: Rice cooker bekas pakai 3 bln
+    - speaker: Lapak Bu Ani
+      side: center
+      text: Rp150.000
+    - speaker: Lapak Bu Ani
+      side: center
+      text: Jakarta Selatan · Terjual 0
+    - speaker: Lapak Bu Ani
+      side: center
+      text: Masih normal, tutup rapat. COD Jaksel aja ya kak.
+  criteria:
+  - kind is listing; title, price, location line and description are kept verbatim, in reading order,
+    with the seller as speaker
+  - Buttons like 'Beli Sekarang' and '+ Keranjang' are left out
+  - App chrome (top bar, 'Deskripsi' heading, seller subtitle, message box, buttons) is left out
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - listing
+  - shop-ui
+  image: fixtures/golden/structure_screenshot/019.png
+  verified: false
+- id: structure_screenshot-020
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '14.05'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Marketplace
+      box: [179, 36, 93, 17]
+    - text: Kost putri dekat UGM, kamar mandi dalam
+      box: [16, 330, 402, 22]
+    - text: Rp1.500.000/bln
+      box: [16, 358, 144, 21]
+    - text: Sleman, Yogyakarta · 3 hari yang lalu
+      box: [16, 384, 215, 15]
+    - text: Deskripsi
+      box: [16, 424, 72, 17]
+    - text: AC, WiFi, dapur bersama, parkir motor. Jam malam 22.00.
+      box: [16, 448, 388, 17]
+    - text: Kost Putri Melati
+      box: [66, 497, 118, 17]
+    - text: Penjual · Bergabung 2021
+      box: [66, 514, 139, 14]
+    - text: Kirim pesan ke penjual
+      box: [26, 554, 153, 16]
+    - text: Apakah barang ini masih ada?
+      box: [38, 586, 189, 16]
+    - text: Kirim
+      box: [40, 626, 36, 16]
+    image: fixtures/golden/structure_screenshot/020.png
+  expect:
+    kind: listing
+    messages:
+    - speaker: Kost Putri Melati
+      side: center
+      text: Kost putri dekat UGM, kamar mandi dalam
+    - speaker: Kost Putri Melati
+      side: center
+      text: Rp1.500.000/bln
+    - speaker: Kost Putri Melati
+      side: center
+      text: Sleman, Yogyakarta · 3 hari yang lalu
+    - speaker: Kost Putri Melati
+      side: center
+      text: AC, WiFi, dapur bersama, parkir motor. Jam malam 22.00.
+  criteria:
+  - kind is listing; title, price, location line and description are kept verbatim, in reading order,
+    with the seller as speaker
+  - '''Jam malam 22.00'' stays inside the description and is not taken as a message time'
+  - App chrome (top bar, 'Deskripsi' heading, seller subtitle, message box, buttons) is left out
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - listing
+  - housing
+  image: fixtures/golden/structure_screenshot/020.png
+  verified: false
+- id: structure_screenshot-021
+  lang: jv
+  input:
+    ocr_blocks:
+    - text: '14.05'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Grup Jual Beli Madiun
+      box: [16, 36, 169, 17]
+    - text: Bowo Santoso
+      box: [66, 108, 104, 17]
+    - text: Anggota grup
+      box: [66, 125, 72, 14]
+    - text: Didol sepeda onthel, isih apik
+      box: [16, 407, 281, 22]
+    - text: Rp750.000 nego
+      box: [16, 435, 145, 21]
+    - text: Madiun · Grup Jual Beli Madiun
+      box: [16, 461, 182, 15]
+    - text: Deskripsi
+      box: [16, 501, 72, 17]
+    - text: Ban anyar, rem pakem. Sing minat langsung japri wae.
+      box: [16, 525, 364, 17]
+    - text: Suka
+      box: [63, 565, 33, 16]
+    - text: Komentari
+      box: [189, 565, 69, 16]
+    - text: Kirim
+      box: [352, 565, 36, 16]
+    image: fixtures/golden/structure_screenshot/021.png
+  expect:
+    kind: listing
+    messages:
+    - speaker: Bowo Santoso
+      side: center
+      text: Didol sepeda onthel, isih apik
+    - speaker: Bowo Santoso
+      side: center
+      text: Rp750.000 nego
+    - speaker: Bowo Santoso
+      side: center
+      text: Madiun · Grup Jual Beli Madiun
+    - speaker: Bowo Santoso
+      side: center
+      text: Ban anyar, rem pakem. Sing minat langsung japri wae.
+  criteria:
+  - kind is listing; title, price, location line and description are kept verbatim, in reading order,
+    with the seller as speaker
+  - App chrome (top bar, 'Deskripsi' heading, seller subtitle, message box, buttons) is left out
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - listing
+  - javanese
+  - group-post
+  image: fixtures/golden/structure_screenshot/021.png
+  verified: false
+- id: structure_screenshot-022
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '14.05'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Detail Produk
+      box: [173, 36, 103, 17]
+    - text: Nasi Pecel Madiun komplit
+      box: [16, 330, 252, 22]
+    - text: Rp15.000
+      box: [16, 358, 83, 21]
+    - text: Madiun · 4,9 (312 ulasan)
+      box: [16, 384, 148, 15]
+    - text: Deskripsi
+      box: [16, 424, 72, 17]
+    - text: Pecel sayur, peyek, tempe, sambal kacang. Pedas bisa request.
+      box: [16, 448, 368, 38]
+    - text: Pecel Madiun Bu Siti
+      box: [66, 518, 148, 17]
+    - text: Penjual · Bergabung 2021
+      box: [66, 535, 139, 14]
+    - text: Beli Sekarang
+      box: [72, 583, 93, 16]
+    - text: + Keranjang
+      box: [291, 584, 81, 16]
+    image: fixtures/golden/structure_screenshot/022.png
+  expect:
+    kind: listing
+    messages:
+    - speaker: Pecel Madiun Bu Siti
+      side: center
+      text: Nasi Pecel Madiun komplit
+    - speaker: Pecel Madiun Bu Siti
+      side: center
+      text: Rp15.000
+    - speaker: Pecel Madiun Bu Siti
+      side: center
+      text: Madiun · 4,9 (312 ulasan)
+    - speaker: Pecel Madiun Bu Siti
+      side: center
+      text: Pecel sayur, peyek, tempe, sambal kacang. Pedas bisa request.
+  criteria:
+  - kind is listing; title, price, location line and description are kept verbatim, in reading order,
+    with the seller as speaker
+  - App chrome (top bar, 'Deskripsi' heading, seller subtitle, message box, buttons) is left out
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - listing
+  - food
+  - rating
+  image: fixtures/golden/structure_screenshot/022.png
+  verified: false
+- id: structure_screenshot-023
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '20.17'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Postingan
+      box: [14, 36, 87, 20]
+    - text: raka.jalanjalan
+      box: [66, 83, 103, 17]
+    - text: 2 jam
+      box: [66, 100, 32, 15]
+    - text: 1.204 suka
+      box: [14, 398, 69, 16]
+    - text: raka.jalanjalan Healing dulu ke Bromo, capek kerja terus
+      box: [14, 425, 407, 39]
+    - text: Lihat semua komentar
+      box: [14, 478, 129, 15]
+    - text: dinda_ay
+      box: [54, 501, 59, 15]
+    - text: Kapan2 ajak aku dong
+      box: [54, 516, 144, 16]
+    - text: bagas.p
+      box: [54, 549, 51, 15]
+    - text: Mantap bro
+      box: [54, 564, 73, 16]
+    image: fixtures/golden/structure_screenshot/023.png
+  expect:
+    kind: post
+    messages:
+    - speaker: raka.jalanjalan
+      side: center
+      text: Healing dulu ke Bromo, capek kerja terus
+      time: 2 jam
+    - speaker: dinda_ay
+      side: center
+      text: Kapan2 ajak aku dong
+    - speaker: bagas.p
+      side: center
+      text: Mantap bro
+  criteria:
+  - kind is post; the author's caption comes first, then each comment with its commenter as speaker
+  - The caption is the first message, with the account name as speaker
+  - The like count is not a message
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - post
+  - caption
+  - comments
+  image: fixtures/golden/structure_screenshot/023.png
+  verified: false
+- id: structure_screenshot-024
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '20.17'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Postingan
+      box: [14, 36, 87, 20]
+    - text: Nadia
+      box: [66, 83, 41, 17]
+    - text: '@nadiaaa_ · 3j'
+      box: [66, 100, 88, 15]
+    - text: Which is, gue literally capek banget. Senin kok udah kayak Jumat
+      box: [14, 132, 416, 39]
+    - text: 2,1 rb suka
+      box: [14, 193, 69, 16]
+    - text: Bayu
+      box: [54, 226, 33, 15]
+    - text: relate bgt sih ini
+      box: [54, 241, 102, 16]
+    - text: Kirana
+      box: [54, 274, 42, 15]
+    - text: semangat nad
+      box: [54, 289, 113, 16]
+    image: fixtures/golden/structure_screenshot/024.png
+  expect:
+    kind: post
+    messages:
+    - speaker: Nadia
+      side: center
+      text: Which is, gue literally capek banget. Senin kok udah kayak Jumat
+      time: 3j
+    - speaker: Bayu
+      side: center
+      text: relate bgt sih ini
+    - speaker: Kirana
+      side: center
+      text: semangat nad
+  criteria:
+  - kind is post; the author's caption comes first, then each comment with its commenter as speaker
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - post
+  - spec-24
+  - jakarta-slang
+  image: fixtures/golden/structure_screenshot/024.png
+  verified: false
+- id: structure_screenshot-025
+  lang: jv
+  input:
+    ocr_blocks:
+    - text: '20.17'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Beranda
+      box: [14, 36, 72, 20]
+    - text: Bu Ratna Wulandari
+      box: [66, 83, 142, 17]
+    - text: 5 jam
+      box: [66, 100, 32, 15]
+    - text: Sugeng riyadi 1447 H. Sedaya lepat nyuwun pangapunten
+      box: [14, 132, 414, 39]
+    - text: '48'
+      box: [14, 453, 16, 16]
+    - text: Suka
+      box: [48, 453, 32, 16]
+    - text: Komentari
+      box: [98, 453, 64, 16]
+    - text: Sari Wulandari
+      box: [64, 492, 94, 15]
+    - text: Sami-sami Bu
+      box: [64, 507, 90, 16]
+    - text: Pak Harjo
+      box: [64, 551, 62, 15]
+    - text: Nggih, sami-sami. Mugi berkah
+      box: [64, 566, 200, 16]
+    image: fixtures/golden/structure_screenshot/025.png
+  expect:
+    kind: post
+    messages:
+    - speaker: Bu Ratna Wulandari
+      side: center
+      text: Sugeng riyadi 1447 H. Sedaya lepat nyuwun pangapunten
+      time: 5 jam
+    - speaker: Sari Wulandari
+      side: center
+      text: Sami-sami Bu
+    - speaker: Pak Harjo
+      side: center
+      text: Nggih, sami-sami. Mugi berkah
+  criteria:
+  - kind is post; the author's caption comes first, then each comment with its commenter as speaker
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - post
+  - javanese
+  - krama
+  - lebaran
+  image: fixtures/golden/structure_screenshot/025.png
+  verified: false
+- id: structure_screenshot-026
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '20.17'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Berita
+      box: [14, 36, 51, 20]
+    - text: Kabar Pagi
+      box: [66, 83, 78, 17]
+    - text: 1 jam
+      box: [66, 100, 32, 15]
+    - text: Harga beras naik menjelang Lebaran
+      box: [14, 141, 366, 23]
+    - text: Pedagang di Pasar Besar Madiun mengatakan harga naik sejak awal bulan.
+      box: [14, 432, 411, 39]
+    - text: 320 suka
+      box: [14, 493, 57, 16]
+    - text: pakdhe_joko
+      box: [54, 526, 83, 15]
+    - text: Pantes bojoku ngomel terus
+      box: [54, 541, 180, 16]
+    image: fixtures/golden/structure_screenshot/026.png
+  expect:
+    kind: post
+    messages:
+    - speaker: Kabar Pagi
+      side: center
+      text: Harga beras naik menjelang Lebaran
+      time: 1 jam
+    - speaker: Kabar Pagi
+      side: center
+      text: Pedagang di Pasar Besar Madiun mengatakan harga naik sejak awal bulan.
+    - speaker: pakdhe_joko
+      side: center
+      text: Pantes bojoku ngomel terus
+  criteria:
+  - kind is post; the author's caption comes first, then each comment with its commenter as speaker
+  - The headline comes before the body text
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - post
+  - news
+  - headline
+  image: fixtures/golden/structure_screenshot/026.png
+  verified: false
+- id: structure_screenshot-027
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '20.17'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: 12,8 rb
+      box: [400, 487, 40, 15]
+    - text: '431'
+      box: [409, 531, 22, 15]
+    - text: mbak.kuliner
+      box: [12, 490, 99, 17]
+    - text: 'POV: pertama kali makan sambal matah #kuliner #bali'
+      box: [12, 513, 349, 37]
+    - text: 1-6
+      box: [12, 552, 23, 17]
+    - text: 431 komentar
+      box: [183, 598, 84, 15]
+    - text: yusuf.id
+      box: [50, 623, 45, 15]
+    - text: Mukanya langsung merah wkwk
+      box: [50, 638, 213, 17]
+    - text: lina
+      box: [50, 665, 20, 15]
+    - text: Resepnya dong kak
+      box: [50, 680, 133, 17]
+    image: fixtures/golden/structure_screenshot/027.png
+  expect:
+    kind: post
+    messages:
+    - speaker: mbak.kuliner
+      side: center
+      text: 'POV: pertama kali makan sambal matah #kuliner #bali'
+      time: 1-6
+    - speaker: yusuf.id
+      side: center
+      text: Mukanya langsung merah wkwk
+    - speaker: lina
+      side: center
+      text: Resepnya dong kak
+  criteria:
+  - kind is post; the author's caption comes first, then each comment with its commenter as speaker
+  - Hashtags stay in the caption text
+  - The date '1-6' is the post time, not a message
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - post
+  - caption
+  - hashtags
+  - video-overlay
+  image: fixtures/golden/structure_screenshot/027.png
+  verified: false
+- id: structure_screenshot-028
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '20.17'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Postingan
+      box: [14, 36, 87, 20]
+    - text: sari.wulandari
+      box: [66, 83, 101, 17]
+    - text: 1 hari
+      box: [66, 100, 33, 15]
+    - text: 356 suka
+      box: [14, 398, 57, 16]
+    - text: sari.wulandari Alhamdulillah, wisuda juga akhirnya! Makasih Bapak Ibu
+      box: [14, 425, 369, 39]
+    - text: Lihat semua komentar
+      box: [14, 478, 129, 15]
+    - text: dinda_ay
+      box: [54, 501, 59, 15]
+    - text: Selamat ya Sari!!
+      box: [54, 516, 110, 16]
+    - text: omar.cairo
+      box: [54, 549, 68, 15]
+    - text: Barakallah
+      box: [54, 564, 91, 16]
+    image: fixtures/golden/structure_screenshot/028.png
+  expect:
+    kind: post
+    messages:
+    - speaker: sari.wulandari
+      side: center
+      text: Alhamdulillah, wisuda juga akhirnya! Makasih Bapak Ibu
+      time: 1 hari
+    - speaker: dinda_ay
+      side: center
+      text: Selamat ya Sari!!
+    - speaker: omar.cairo
+      side: center
+      text: Barakallah
+  criteria:
+  - kind is post; the author's caption comes first, then each comment with its commenter as speaker
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - post
+  - caption
+  - arabic-bridge
+  image: fixtures/golden/structure_screenshot/028.png
+  verified: false
+- id: structure_screenshot-029
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '09.15'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Transfer Berhasil
+      box: [135, 134, 180, 25]
+    - text: Rp150.000
+      box: [151, 200, 148, 33]
+    - text: Ke
+      box: [28, 256, 18, 17]
+    - text: Siti Aminah
+      box: [347, 256, 75, 17]
+    - text: Bank
+      box: [28, 292, 34, 17]
+    - text: Bank Nusantara · 1234567890
+      box: [218, 292, 204, 17]
+    - text: Berita
+      box: [28, 328, 39, 17]
+    - text: bayar rice cooker
+      box: [307, 328, 115, 17]
+    - text: Waktu
+      box: [28, 364, 42, 17]
+    - text: 12 Okt 2026, 14.22
+      box: [294, 364, 128, 17]
+    - text: Bagikan Bukti
+      box: [175, 425, 100, 17]
+    - text: Selesai
+      box: [199, 477, 52, 17]
+    image: fixtures/golden/structure_screenshot/029.png
+  expect:
+    kind: ui
+    messages:
+    - speaker: app
+      side: center
+      text: Transfer Berhasil
+    - speaker: app
+      side: center
+      text: Rp150.000
+    - speaker: app
+      side: center
+      text: 'Ke: Siti Aminah'
+    - speaker: app
+      side: center
+      text: 'Bank: Bank Nusantara · 1234567890'
+    - speaker: app
+      side: center
+      text: 'Berita: bayar rice cooker'
+    - speaker: app
+      side: center
+      text: 'Waktu: 12 Okt 2026, 14.22'
+    - speaker: app
+      side: center
+      text: Bagikan Bukti
+    - speaker: app
+      side: center
+      text: Selesai
+  criteria:
+  - 'kind is ui; every visible label, value and button is kept in reading order with speaker ''app'' (or
+    the source app for notifications); a label and its value on one row are joined as ''Label: value'''
+  - 'Each label/value row is kept with its label and value together, e.g. ''Ke: Siti Aminah'''
+  - The status bar clock and battery are left out
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - ui
+  - banking
+  - price
+  image: fixtures/golden/structure_screenshot/029.png
+  verified: false
+- id: structure_screenshot-030
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '09.15'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Driver menuju lokasi jemput
+      box: [16, 280, 254, 21]
+    - text: Tiba dalam 4 menit
+      box: [28, 330, 135, 17]
+    - text: Mas Ardi · B 1234 XYZ
+      box: [28, 364, 163, 17]
+    - text: Honda Vario hitam
+      box: [28, 398, 131, 17]
+    - text: Chat
+      box: [65, 459, 33, 17]
+    - text: Telepon
+      box: [198, 459, 56, 17]
+    - text: Batalkan
+      box: [338, 458, 63, 17]
+    image: fixtures/golden/structure_screenshot/030.png
+  expect:
+    kind: ui
+    messages:
+    - speaker: app
+      side: center
+      text: Driver menuju lokasi jemput
+    - speaker: app
+      side: center
+      text: Tiba dalam 4 menit
+    - speaker: app
+      side: center
+      text: Mas Ardi · B 1234 XYZ
+    - speaker: app
+      side: center
+      text: Honda Vario hitam
+    - speaker: app
+      side: center
+      text: Chat
+    - speaker: app
+      side: center
+      text: Telepon
+    - speaker: app
+      side: center
+      text: Batalkan
+  criteria:
+  - 'kind is ui; every visible label, value and button is kept in reading order with speaker ''app'' (or
+    the source app for notifications); a label and its value on one row are joined as ''Label: value'''
+  - The status bar clock and battery are left out
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - ui
+  - transport
+  image: fixtures/golden/structure_screenshot/030.png
+  verified: false
+- id: structure_screenshot-031
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '09.15'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Pengaturan
+      box: [48, 38, 99, 20]
+    - text: Akun
+      box: [28, 101, 36, 17]
+    - text: Privasi
+      box: [28, 148, 48, 17]
+    - text: Notifikasi
+      box: [28, 195, 65, 17]
+    - text: Bahasa
+      box: [28, 242, 54, 17]
+    - text: Indonesia
+      box: [353, 242, 69, 17]
+    - text: Bantuan
+      box: [28, 289, 60, 17]
+    - text: Keluar
+      box: [28, 336, 46, 17]
+    image: fixtures/golden/structure_screenshot/031.png
+  expect:
+    kind: ui
+    messages:
+    - speaker: app
+      side: center
+      text: Pengaturan
+    - speaker: app
+      side: center
+      text: Akun
+    - speaker: app
+      side: center
+      text: Privasi
+    - speaker: app
+      side: center
+      text: Notifikasi
+    - speaker: app
+      side: center
+      text: 'Bahasa: Indonesia'
+    - speaker: app
+      side: center
+      text: Bantuan
+    - speaker: app
+      side: center
+      text: Keluar
+  criteria:
+  - 'kind is ui; every visible label, value and button is kept in reading order with speaker ''app'' (or
+    the source app for notifications); a label and its value on one row are joined as ''Label: value'''
+  - The status bar clock and battery are left out
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - ui
+  - settings
+  image: fixtures/golden/structure_screenshot/031.png
+  verified: false
+- id: structure_screenshot-032
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '09.15'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Notifikasi
+      box: [16, 40, 99, 25]
+    - text: Pesanan
+      box: [26, 100, 53, 15]
+    - text: '09.02'
+      box: [391, 100, 33, 15]
+    - text: Pesanan kamu sedang dikirim kurir
+      box: [26, 119, 234, 17]
+    - text: Tagihan
+      box: [26, 168, 49, 15]
+    - text: '08.30'
+      box: [391, 168, 33, 15]
+    - text: Tagihan listrik bulan ini Rp320.500 jatuh tempo besok
+      box: [26, 187, 355, 17]
+    - text: Kalender
+      box: [26, 236, 56, 15]
+    - text: '07.00'
+      box: [391, 236, 33, 15]
+    - text: Kelas BIPA jam 09.00
+      box: [26, 255, 144, 17]
+    image: fixtures/golden/structure_screenshot/032.png
+  expect:
+    kind: ui
+    messages:
+    - speaker: app
+      side: center
+      text: Notifikasi
+    - speaker: Pesanan
+      side: center
+      text: Pesanan kamu sedang dikirim kurir
+      time: '09.02'
+    - speaker: Tagihan
+      side: center
+      text: Tagihan listrik bulan ini Rp320.500 jatuh tempo besok
+      time: '08.30'
+    - speaker: Kalender
+      side: center
+      text: Kelas BIPA jam 09.00
+      time: '07.00'
+  criteria:
+  - 'kind is ui; every visible label, value and button is kept in reading order with speaker ''app'' (or
+    the source app for notifications); a label and its value on one row are joined as ''Label: value'''
+  - Each notification keeps its own time
+  - The app name of each notification is its speaker
+  - The status bar clock and battery are left out
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - ui
+  - notifications
+  - times
+  image: fixtures/golden/structure_screenshot/032.png
+  verified: false
+- id: structure_screenshot-033
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '09.15'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Koneksi terputus
+      box: [50, 348, 163, 22]
+    - text: Periksa jaringan internet Anda dan coba lagi.
+      box: [50, 385, 298, 17]
+    - text: Batal
+      box: [274, 424, 37, 17]
+    - text: Coba lagi
+      box: [332, 424, 68, 17]
+    image: fixtures/golden/structure_screenshot/033.png
+  expect:
+    kind: ui
+    messages:
+    - speaker: app
+      side: center
+      text: Koneksi terputus
+    - speaker: app
+      side: center
+      text: Periksa jaringan internet Anda dan coba lagi.
+    - speaker: app
+      side: center
+      text: Batal
+    - speaker: app
+      side: center
+      text: Coba lagi
+  criteria:
+  - 'kind is ui; every visible label, value and button is kept in reading order with speaker ''app'' (or
+    the source app for notifications); a label and its value on one row are joined as ''Label: value'''
+  - The status bar clock and battery are left out
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - ui
+  - dialog
+  - dark-mode
+  - formal
+  image: fixtures/golden/structure_screenshot/033.png
+  verified: false
+- id: structure_screenshot-034
+  lang: id
+  input:
+    ocr_blocks:
+    - text: '09.15'
+      box: [14, 6, 33, 15]
+    - text: 4G 87%
+      box: [393, 6, 43, 14]
+    - text: Keranjang
+      box: [48, 38, 88, 20]
+    - text: Nasi goreng spesial x2
+      box: [28, 97, 152, 17]
+    - text: Rp50.000
+      box: [357, 97, 65, 17]
+    - text: Es teh manis x2
+      box: [28, 133, 107, 17]
+    - text: Rp10.000
+      box: [357, 133, 65, 17]
+    - text: Ongkos kirim
+      box: [28, 169, 88, 17]
+    - text: Rp8.000
+      box: [365, 169, 57, 17]
+    - text: Total
+      box: [28, 205, 35, 17]
+    - text: Rp68.000
+      box: [356, 205, 66, 17]
+    - text: Pesan Sekarang
+      box: [167, 265, 116, 17]
+    image: fixtures/golden/structure_screenshot/034.png
+  expect:
+    kind: ui
+    messages:
+    - speaker: app
+      side: center
+      text: Keranjang
+    - speaker: app
+      side: center
+      text: 'Nasi goreng spesial x2: Rp50.000'
+    - speaker: app
+      side: center
+      text: 'Es teh manis x2: Rp10.000'
+    - speaker: app
+      side: center
+      text: 'Ongkos kirim: Rp8.000'
+    - speaker: app
+      side: center
+      text: 'Total: Rp68.000'
+    - speaker: app
+      side: center
+      text: Pesan Sekarang
+  criteria:
+  - 'kind is ui; every visible label, value and button is kept in reading order with speaker ''app'' (or
+    the source app for notifications); a label and its value on one row are joined as ''Label: value'''
+  - The status bar clock and battery are left out
+  avoid:
+  - Inventing, translating or 'fixing' text that is not in the screenshot
+  - Swapping left and right sides
+  tags:
+  - ui
+  - food
+  - price
+  image: fixtures/golden/structure_screenshot/034.png
+  verified: false

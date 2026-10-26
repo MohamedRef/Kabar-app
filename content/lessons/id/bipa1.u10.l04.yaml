@@ -1,0 +1,268 @@
+schema: kabar.lesson/v1
+id: bipa1.u10.l04
+language: id
+title: Cerita di kapal
+can_do:
+  ar_eg: تحكي حكاية من ٦ جمل.
+  ar: أن تروي قصة من ست جمل.
+  en: Tell a 6-sentence story.
+slides:
+  - title: Cerita = حكاية
+    body:
+      ar_eg: |
+        عشان تحكي يومك في ٦ جمل:
+        1. ابدأ بكلمة وقت: Tadi pagi / Kemarin …
+        2. كل جملة S + P + O + K: Saya naik kapal dari Marina Ancol.
+        3. اربط بـ lalu، setelah itu، sebelum …
+        4. ضيف تجربة: Ini pertama kali saya … / Saya belum pernah …
+        5. اختم بإحساسك: Saya capek, tapi senang.
+      ar: |
+        لتروي يومك في ست جمل:
+        1. ابدأ بظرف زمان: Tadi pagi / Kemarin …
+        2. اجعل كل جملة S + P + O + K: Saya naik kapal dari Marina Ancol.
+        3. اربط بـ lalu وsetelah itu وsebelum …
+        4. أضف تجربة: Ini pertama kali saya … / Saya belum pernah …
+        5. واختم بشعورك: Saya capek, tapi senang.
+      en: |
+        To tell your day in six sentences:
+        1. Open with a time word: Tadi pagi / Kemarin …
+        2. Make each sentence S + P + O + K: Saya naik kapal dari Marina Ancol.
+        3. Link with lalu, setelah itu, sebelum …
+        4. Add an experience: Ini pertama kali saya … / Saya belum pernah …
+        5. End with how you feel: Saya capek, tapi senang.
+    grammar: id.time.sequence
+    examples:
+      - text: Tadi pagi saya bangun jam lima. Lalu saya naik kapal.
+        ar_eg: النهارده الصبح صحيت الساعة خمسة. وبعدين ركبت المركب.
+        ar: استيقظت هذا الصباح في الخامسة، ثم ركبت القارب.
+        en: This morning I got up at five. Then I took the boat.
+  - title: Setelah itu
+    body:
+      ar_eg: setelah itu / sesudah itu = «بعد كده»، وlalu = «وبعدين». نوّع بينهم عشان الحكاية تبقى حلوة ومش بتكرر نفس الكلمة.
+      ar: setelah itu / sesudah itu = «بعد ذلك»، وlalu = «ثم». نوّع بينها كي لا تتكرر الكلمة نفسها في القصة.
+      en: setelah itu / sesudah itu = "after that", lalu = "then". Mix them so your story doesn't repeat the same word.
+    grammar: id.sentence.word-order
+    examples:
+      - text: Kami makan ikan bakar. Setelah itu, kami berenang.
+        ar_eg: كلنا سمك مشوي. بعد كده عُمنا.
+        ar: أكلنا سمكًا مشويًا، وبعد ذلك سبحنا.
+        en: We ate grilled fish. After that, we swam.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة تنفع تبدأ بيها الحكاية؟
+      ar: أيّ جملة تصلح بداية للقصة؟
+      en: Which sentence works best to open the story?
+    options: ["Setelah itu, kami berenang.", "Tadi pagi saya bangun jam lima.", "Saya capek, tapi senang."]
+    answer: 1
+    explain:
+      ar_eg: الحكاية بتبدأ بكلمة وقت (tadi pagi). setelah itu للنص، وإحساسك للآخر.
+      ar: تبدأ القصة بظرف زمان (tadi pagi)، وsetelah itu للوسط، والشعور للختام.
+      en: A story opens with a time word (tadi pagi); setelah itu is for the middle, feelings for the end.
+    words: [tadi, bangun]
+  - id: e02
+    type: listen
+    text: Kami naik kapal dari Marina Ancol.
+    options: ["Kami naik bus dari Marina Ancol.", "Kami naik kapal ke Marina Ancol.", "Kami naik kapal dari Marina Ancol."]
+    answer: 2
+    words: [naik, kapal, dari]
+  - id: e03
+    type: fill_blank
+    sentence: ___ pagi saya bangun jam lima.
+    meaning:
+      ar_eg: النهارده الصبح صحيت الساعة خمسة.
+      ar: هذا الصباح استيقظت في الخامسة.
+      en: This morning I got up at five.
+    answers: [Tadi, tadi]
+    explain:
+      ar_eg: الصبح بتاع النهارده وفات = tadi pagi.
+      ar: صباح اليوم وقد مضى = tadi pagi.
+      en: This (past) morning = tadi pagi.
+    words: [tadi]
+  - id: e04
+    type: fill_blank
+    sentence: Saya ___ pernah snorkeling. Ini pertama kali!
+    meaning:
+      ar_eg: أنا لسه عمري ما عملت سنوركلنج. دي أول مرة!
+      ar: لم يسبق لي الغطس السطحي، هذه أول مرة!
+      en: I'd never been snorkeling. This is the first time!
+    options: ["belum", "bukan", "sudah"]
+    answers: [belum]
+    explain:
+      ar_eg: أول مرة يعني قبل كده لسه ماحصلش، belum pernah.
+      ar: "أول مرة تعني أنه لم يسبق بعدُ: belum pernah."
+      en: "First time means it hadn't happened yet: belum pernah."
+    words: [belum pernah, pertama kali]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: ركبنا المركب من مارينا أنكول.
+      ar: ركبنا القارب من مارينا أنكول.
+      en: We took the boat from Marina Ancol.
+    answer: Kami naik kapal dari Marina Ancol.
+    distractors: [ke, di]
+    words: [naik, kapal]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: بعد ما وصلنا الجزيرة، كلنا سمك مشوي.
+      ar: بعد أن وصلنا إلى الجزيرة، أكلنا سمكًا مشويًا.
+      en: After arriving at the island, we ate grilled fish.
+    answer: Setelah sampai di pulau, kami makan ikan bakar.
+    alternatives: ["Setelah sampai di pulau kami makan ikan bakar."]
+    distractors: [sebelum, ke]
+    words: [setelah, sampai, pulau, ikan bakar]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: بعد كده، عُمنا في البحر.
+      ar: بعد ذلك، سبحنا في البحر.
+      en: After that, we swam in the sea.
+    answers:
+      - Setelah itu, kami berenang di laut.
+      - Sesudah itu, kami berenang di laut.
+      - Setelah itu kami berenang di laut.
+      - Sesudah itu kami berenang di laut.
+      - Lalu kami berenang di laut.
+      - Setelah itu, kita berenang di laut.
+      - Setelah itu, kami berenang di laut
+    words: [setelah itu, berenang, laut]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أنا تعبان، بس مبسوط.
+      ar: أنا متعب، لكني سعيد.
+      en: I'm tired, but happy.
+    answers:
+      - Saya capek, tapi senang.
+      - Saya capek, tetapi senang.
+      - Saya capek tapi senang.
+      - Saya capek, tapi saya senang.
+      - Aku capek, tapi senang.
+      - Saya lelah, tetapi senang.
+      - Saya capek, tapi senang
+    words: [capek, tapi, senang]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: امبارح ركبت مركب لأول مرة.
+      ar: أمس ركبت قاربًا لأول مرة.
+      en: Yesterday I took a boat for the first time.
+    answers:
+      - Kemarin saya naik kapal pertama kali.
+      - Kemarin saya naik kapal untuk pertama kali.
+      - Kemarin pertama kali saya naik kapal.
+      - Kemarin saya pertama kali naik kapal.
+      - Kemarin saya naik kapal untuk pertama kalinya.
+      - Kemarin aku naik kapal untuk pertama kali.
+    explain:
+      ar_eg: الظرف kemarin في الأول، وpertama kali ممكن قبل الفعل أو بعد المفعول.
+      ar: kemarin في الصدر، وpertama kali قبل الفعل أو بعد المفعول.
+      en: kemarin opens the sentence; pertama kali can go before the verb or after the object.
+    words: [kemarin, naik, kapal, pertama kali]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Sebelum naik kapal, kami membeli air di pelabuhan.
+    answers_meaning:
+      ar_eg: ["قبل ما نركب المركب، اشترينا مية من الميناء.", "قبل ما نركب المركب اشترينا مية في الميناء", "قبل ركوب المركب اشترينا مية من الميناء"]
+      ar: ["قبل ركوب القارب، اشترينا ماءً من الميناء.", "قبل أن نركب القارب اشترينا ماءً في الميناء"]
+      en: ["Before getting on the boat, we bought water at the harbour.", "Before boarding the boat we bought water at the port", "Before we took the boat, we bought water at the harbor"]
+    words: [sebelum, membeli, air, pelabuhan]
+  - id: e11
+    type: dictation
+    text: Ikannya banyak sekali!
+    meaning:
+      ar_eg: السمك كتير أوي!
+      ar: الأسماك كثيرة جدًا!
+      en: There were so many fish!
+    words: [ikan, banyak]
+  - id: e12
+    type: speaking
+    text: Tadi pagi saya naik kapal. Setelah itu, saya berenang. Saya capek, tapi senang.
+    meaning:
+      ar_eg: النهارده الصبح ركبت مركب. بعد كده عُمت. أنا تعبان، بس مبسوط.
+      ar: هذا الصباح ركبت قاربًا، وبعد ذلك سبحت. أنا متعب لكني سعيد.
+      en: This morning I took a boat. After that, I swam. I'm tired, but happy.
+    words: [tadi, kapal, setelah itu, capek, senang]
+dialogue:
+  title: Pulang dari Pulau Pramuka
+  lines:
+    - speaker: Mas Ardi
+      text: Mohamed, bagaimana hari ini? Coba cerita!
+      ar_eg: يا محمد، النهارده كان عامل إزاي؟ احكيلي!
+      ar: يا محمد، كيف كان يومك؟ احكِ لي!
+      en: Mohamed, how was today? Tell me!
+    - speaker: Mohamed
+      text: Tadi pagi saya bangun jam lima. Lalu saya naik kapal dari Marina Ancol.
+      ar_eg: النهارده الصبح صحيت الساعة خمسة. وبعدين ركبت المركب من مارينا أنكول.
+      ar: هذا الصباح استيقظت في الخامسة، ثم ركبت القارب من مارينا أنكول.
+      en: This morning I got up at five. Then I took the boat from Marina Ancol.
+    - speaker: Mas Ardi
+      text: Kamu sudah pernah naik kapal?
+      ar_eg: كنت ركبت مركب قبل كده؟
+      ar: هل سبق أن ركبت قاربًا؟
+      en: Had you ever been on a boat before?
+    - speaker: Mohamed
+      text: Belum pernah. Ini pertama kali!
+      ar_eg: لأ، عمري. دي أول مرة!
+      ar: لم يسبق. هذه أول مرة!
+      en: Never. This was the first time!
+    - speaker: Mohamed
+      text: Setelah sampai di pulau, kami makan ikan bakar.
+      ar_eg: بعد ما وصلنا الجزيرة، كلنا سمك مشوي.
+      ar: بعد أن وصلنا إلى الجزيرة، أكلنا سمكًا مشويًا.
+      en: After we got to the island, we ate grilled fish.
+    - speaker: Mohamed
+      text: Setelah itu, kami berenang di laut. Ikannya banyak sekali!
+      ar_eg: بعد كده عُمنا في البحر. السمك كان كتير أوي!
+      ar: بعد ذلك سبحنا في البحر، وكانت الأسماك كثيرة جدًا!
+      en: After that, we swam in the sea. There were so many fish!
+    - speaker: Mas Ardi
+      text: Wah, seru sekali!
+      ar_eg: الله، ده ممتع جدًا!
+      ar: يا للمتعة!
+      en: Wow, how exciting!
+    - speaker: Mohamed
+      text: Ya. Sekarang saya capek, tapi senang.
+      ar_eg: أيوه. دلوقتي أنا تعبان، بس مبسوط.
+      ar: نعم. أنا متعب الآن، لكني سعيد.
+      en: Yes. Now I'm tired, but happy.
+new_words:
+  - word: cerita
+    pos: noun
+    ar_eg: حكاية؛ يحكي
+    ar: قصة؛ يروي
+    en: story; to tell
+  - word: setelah itu
+    pos: phrase
+    ar_eg: بعد كده
+    ar: بعد ذلك
+    en: after that
+  - word: sampai
+    pos: verb
+    ar_eg: يوصل
+    ar: يصل
+    en: to arrive
+  - word: ikan bakar
+    pos: noun
+    ar_eg: سمك مشوي
+    ar: سمك مشوي
+    en: grilled fish
+  - word: seru
+    pos: adjective
+    ar_eg: ممتع، مثير
+    ar: ممتع، مثير
+    en: exciting, fun
+  - word: senang
+    pos: adjective
+    ar_eg: مبسوط
+    ar: سعيد
+    en: happy, glad
+review:
+  status: draft
+  verified: false

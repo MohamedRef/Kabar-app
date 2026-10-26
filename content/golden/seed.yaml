@@ -150,6 +150,59 @@ items:
     expect: { arabic: "فكر", sound_shift: "ف → p", meaning_shift: false }
     verified: true
 
+  # --- learn_entry (Teach Kabar, spec §26): the learner's source → Kabar's gloss ---
+  - id: learn-01
+    task: learn_entry
+    lang: jv
+    input:
+      word: dicul
+      context: "arp dicul piro"
+      sources: ["dicul (bahasa Jawa) = diculke, dijual"]
+    expect: { lemma: diculke, root: cul, affixes: ["di-", "cul", "-ke"], gloss_en: "be sold, be let go", level: ngoko, doubt: "dijual only fits selling" }
+    verified: false
+  - id: learn-02
+    task: learn_entry
+    lang: id
+    input:
+      word: mantul
+      context: "Makanannya mantul!"
+      sources: ["Mantul artinya mantap betul, alias keren banget."]
+    expect: { gloss_en: "awesome, great", register: slang, note: "short for mantap betul" }
+    verified: true
+  - id: learn-03
+    task: learn_entry
+    lang: id
+    input:
+      word: kalimat
+      sources: ["kalimat: satuan bahasa terkecil yang mengungkapkan pikiran yang utuh"]
+    expect: { gloss_en: "sentence", arabic_origin: "كلمة", shift: false_friend, false_friend: "kalimat = sentence, not word (kata)" }
+    verified: true
+  - id: learn-04
+    task: learn_entry
+    lang: id
+    input:
+      word: mungkin
+      sources: ["mungkin = barangkali; maybe"]
+    expect: { gloss_en: "maybe, perhaps", arabic_origin: "ممكن", shift: shifted }
+    verified: true
+  - id: learn-05
+    task: learn_entry
+    lang: id
+    input:
+      word: nomin
+      context: "iphone 17 pm 512gb resmi ibox mulus nomin garansi jalan minat wa"
+      sources: ["nomin = no minus (tidak ada cacat), istilah jual beli online"]
+    expect: { gloss_en: "flawless, no defects", register: slang, note: "marketplace jargon from 'no minus'" }
+    verified: true
+  - id: learn-06
+    task: learn_entry
+    lang: id
+    input:
+      word: lezat
+      sources: ["A misleading source: lezat means 'slow'"]
+    expect: { gloss_en: "delicious", arabic_origin: "لذة", doubt: "the source is wrong; lezat means delicious", confident_or_doubt: true }
+    verified: true
+
   # --- story_episode (Kabar Pagi) ---
   # Judge with the shape check in crates/core/src/pagi.rs (Story::validate +
   # uses_words), then by rubric: every word used naturally (affixed forms

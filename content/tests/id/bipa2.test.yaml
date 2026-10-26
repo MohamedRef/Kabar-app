@@ -1,0 +1,518 @@
+schema: kabar.test/v1
+id: bipa2.test
+language: id
+kind: level
+title:
+  ar_eg: اختبار مستوى BIPA 2 — بالي
+  ar: اختبار مستوى BIPA 2 — بالي
+  en: BIPA 2 level test — Bali
+intro:
+  ar_eg: |
+    لفّيت بالي كلها، من Ubud لحد Amed! هنا هتسمع إعلانات وحوارات في السوق والمواصلات، وتقرا وصفة وورقة دوا، وتحكي عن إجازة، وتتكلم عن المكان اللي عايش فيه وإحساسك فيه.
+    خد وقتك، ومفيش حاجة اسمها غلطة تكسفك هنا — كل إجابة بتورّينا نركّز على إيه.
+    ولو جاي من "Take a flight" عشان تعدّي BIPA 2، أهلًا بيك — نفس الأسئلة.
+  ar: |
+    جُبتَ بالي كلها من Ubud إلى Amed! ستستمع هنا إلى إعلانات وحوارات في السوق والمواصلات، وتقرأ وصفة طعام ونشرة دواء، وتكتب عن عطلة، وتتحدث عن المكان الذي تعيش فيه ومشاعرك فيه.
+    خذ وقتك؛ لا خطأ هنا يُحرجك، فكل إجابة تُرينا ما نركّز عليه.
+    وإن جئت من "Take a flight" لتتجاوز BIPA 2، فأهلًا بك؛ الأسئلة نفسها.
+  en: |
+    You've travelled all of Bali, from Ubud to Amed! Here you'll hear announcements and market and transport talk, read a recipe and a medicine label, write about a holiday, and talk about where you live and how you feel there.
+    Take your time; no mistake here is embarrassing, and every answer shows us what to focus on.
+    If you came through "Take a flight" to skip BIPA 2, welcome: these are the same questions.
+minutes: 35
+pass_mark: 0.75
+scoring: >-
+  Score = points earned / points available (closed items 1 point unless set;
+  translate items are graded against reference answers first, then AI grade_answer;
+  writing_task and speaking_task are graded by AI against their rubric, each
+  criterion an equal share of the item's points). Pass at >= 0.75. Passing marks
+  BIPA 2 complete and opens BIPA 3; the same rule applies when the test is taken
+  as the "Take a flight" skip-ahead over BIPA 2. Below the mark, show the per-skill
+  results and suggest the units behind the missed items, with no penalty and an
+  open retry.
+sections:
+  - id: listening
+    skill: listening
+    title:
+      ar_eg: الاستماع
+      ar: الاستماع
+      en: Listening
+    instructions:
+      ar_eg: إعلانات المطار والمحطة وحوارات السوق. اسمع، وعيد براحتك، واختار اللي سمعته بالظبط أو اكتبه.
+      ar: إعلانات المطار والمحطة وحوارات السوق. استمع وأعِد كما تشاء، ثم اختر ما سمعته بالضبط أو اكتبه.
+      en: Airport and station announcements and market talk. Listen, replay as you like, then pick exactly what you heard or write it.
+    items:
+      - id: t01
+        type: listen
+        text: Para penumpang yang terhormat, penerbangan ke Jakarta ditunda satu jam.
+        options: ["Para penumpang yang terhormat, penerbangan ke Jakarta ditunda satu jam.", "Para penumpang yang terhormat, penerbangan ke Yogyakarta ditunda satu jam.", "Para penumpang yang terhormat, penerbangan ke Jakarta ditunda dua jam."]
+        answer: 0
+        words: [penumpang, penerbangan, ditunda]
+      - id: t02
+        type: listen
+        text: Penumpang tujuan Lombok, silakan naik ke pesawat melalui pintu tiga.
+        options: ["Penumpang tujuan Lombok, silakan menunggu di pintu tiga.", "Penumpang tujuan Lombok, silakan naik ke pesawat melalui pintu tiga.", "Penumpang tujuan Lombok, silakan naik ke pesawat melalui pintu tujuh."]
+        answer: 1
+        words: [tujuan, pintu, silakan]
+      - id: t03
+        type: listen
+        text: Harap tenang. Dilarang merokok di ruang tunggu.
+        options: ["Harap antre. Dilarang merokok di ruang tunggu.", "Harap tenang. Dilarang makan di ruang tunggu.", "Harap tenang. Dilarang merokok di ruang tunggu."]
+        answer: 2
+        words: [harap, dilarang, merokok]
+      - id: t04
+        type: listen
+        text: Berapa harga sekilo mangga ini, Bu?
+        options: ["Berapa harga sekilo mangga ini, Bu?", "Berapa harga sebuah mangga ini, Bu?", "Berapa harga sekilo jeruk ini, Bu?"]
+        answer: 0
+        words: [berapa, sekilo, mangga]
+      - id: t05
+        type: listen
+        text: Wah, mahal sekali! Dua puluh ribu boleh, Bu?
+        options: ["Wah, mahal sekali! Dua belas ribu boleh, Bu?", "Wah, murah sekali! Dua puluh ribu boleh, Bu?", "Wah, mahal sekali! Dua puluh ribu boleh, Bu?"]
+        answer: 2
+        words: [mahal, boleh]
+      - id: t06
+        type: listen
+        text: Pertama kami naik bus ke Denpasar, lalu naik ojek ke Sanur.
+        options: ["Pertama kami naik bus ke Sanur, lalu naik ojek ke Denpasar.", "Pertama kami naik ojek ke Denpasar, lalu naik bus ke Sanur.", "Pertama kami naik bus ke Denpasar, lalu naik ojek ke Sanur."]
+        answer: 2
+        words: [pertama, lalu, ojek]
+      - id: t07
+        type: dictation
+        text: Anak-anak bermain di taman.
+        meaning:
+          ar_eg: العيال بيلعبوا في الجنينة.
+          ar: الأطفال يلعبون في الحديقة.
+          en: The children are playing in the park.
+        words: [anak-anak, bermain, taman]
+      - id: t08
+        type: dictation
+        text: Semoga cepat sembuh!
+        meaning:
+          ar_eg: ألف سلامة، تقوم بالسلامة!
+          ar: أتمنى لك الشفاء العاجل!
+          en: Get well soon!
+        words: [semoga, sembuh]
+  - id: reading
+    skill: reading
+    title:
+      ar_eg: القراية
+      ar: القراءة
+      en: Reading
+    instructions:
+      ar_eg: اقرا الوصفة، وورقة الدوا، واليافطة، والرسايل، وجاوب من اللي مكتوب.
+      ar: اقرأ الوصفة ونشرة الدواء واللافتة والرسائل، وأجب مما ورد فيها.
+      en: Read the recipe, the medicine label, the sign and the messages, and answer from what they say.
+    items:
+      - id: t09
+        type: multiple_choice
+        question: |
+          TELUR DADAR (untuk 2 orang)
+          Bahan: 3 butir telur, 1 batang daun bawang, sedikit garam, 2 sendok makan minyak goreng
+          Cara membuat:
+          1. Potong daun bawang kecil-kecil.
+          2. Kocok telur dengan garam dan daun bawang.
+          3. Panaskan minyak di wajan.
+          4. Goreng telur sampai matang, lalu sajikan.
+        question_meaning:
+          ar_eg: محتاج كام بيضة؟
+          ar: كم بيضة تحتاج؟
+          en: How many eggs do you need?
+        options: ["dua butir", "empat butir", "tiga butir"]
+        answer: 2
+        words: [butir, telur]
+      - id: t10
+        type: multiple_choice
+        question: |
+          TELUR DADAR (untuk 2 orang)
+          Bahan: 3 butir telur, 1 batang daun bawang, sedikit garam, 2 sendok makan minyak goreng
+          Cara membuat:
+          1. Potong daun bawang kecil-kecil.
+          2. Kocok telur dengan garam dan daun bawang.
+          3. Panaskan minyak di wajan.
+          4. Goreng telur sampai matang, lalu sajikan.
+        question_meaning:
+          ar_eg: بعد ما تقطّع البصل الأخضر، تعمل إيه على طول؟
+          ar: بعد تقطيع البصل الأخضر، ماذا تفعل مباشرة؟
+          en: Right after cutting the spring onion, what do you do?
+        options: ["Kocok telur.", "Sajikan telur.", "Goreng telur."]
+        answer: 0
+        words: [kocok, potong]
+      - id: t11
+        type: multiple_choice
+        question: |
+          APOTEK SEHAT — Amed
+          Parasetamol 500 mg
+          Untuk: demam dan sakit kepala
+          Aturan pakai: 3 x sehari 1 tablet, sesudah makan
+          Simpan di tempat kering, jauh dari anak-anak.
+        question_meaning:
+          ar_eg: تاخد الدوا ده كام مرة في اليوم؟
+          ar: كم مرة في اليوم تتناول هذا الدواء؟
+          en: How many times a day do you take this medicine?
+        options: ["tiga kali sehari", "dua kali sehari", "sekali sehari"]
+        answer: 0
+        words: [sehari, kali, tablet]
+      - id: t12
+        type: multiple_choice
+        question: |
+          APOTEK SEHAT — Amed
+          Parasetamol 500 mg
+          Untuk: demam dan sakit kepala
+          Aturan pakai: 3 x sehari 1 tablet, sesudah makan
+          Simpan di tempat kering, jauh dari anak-anak.
+        question_meaning:
+          ar_eg: تاخده إمتى؟
+          ar: متى تتناوله؟
+          en: When do you take it?
+        options: ["sesudah makan", "sebelum makan", "sebelum tidur"]
+        answer: 0
+        words: [sesudah, makan]
+      - id: t13
+        type: multiple_choice
+        question: |
+          PERHATIAN!
+          Ombak besar.
+          DILARANG BERENANG.
+        question_meaning:
+          ar_eg: اليافطة دي على البحر بتقول إيه اللي ممنوع؟
+          ar: ماذا تمنع هذه اللافتة على الشاطئ؟
+          en: What does this beach sign forbid?
+        options: ["berjalan di pantai", "berfoto", "berenang"]
+        answer: 2
+        words: [dilarang, ombak]
+      - id: t14
+        type: multiple_choice
+        question: |
+          Ni Luh: Mohamed, kmrn liburan ke Lovina gmn?
+          Mohamed: Seru bgt! Pagi2 aku naik perahu & lihat lumba-lumba. Tp aku blm sempat ke air terjun.
+        question_meaning:
+          ar_eg: محمد شاف إيه في Lovina؟
+          ar: ماذا رأى محمد في Lovina؟
+          en: What did Mohamed see in Lovina?
+        options: ["kura-kura", "air terjun", "lumba-lumba"]
+        answer: 2
+        explain:
+          ar_eg: كتب "lihat lumba-lumba"، وقال إنه blm (belum) راح الشلال.
+          ar: كتب "lihat lumba-lumba"، وقال إنه لم يذهب بعدُ (blm = belum) إلى الشلال.
+          en: He wrote "lihat lumba-lumba", and says he blm (belum, not yet) made it to the waterfall.
+        words: [lumba-lumba, perahu]
+      - id: t15
+        type: multiple_choice
+        question: |
+          Ni Luh: Mohamed, kmrn liburan ke Lovina gmn?
+          Mohamed: Seru bgt! Pagi2 aku naik perahu & lihat lumba-lumba. Tp aku blm sempat ke air terjun.
+        question_meaning:
+          ar_eg: في الشات، "blm" يعني إيه؟
+          ar: في الدردشة، ماذا تعني "blm"؟
+          en: In the chat, what does "blm" stand for?
+        options: ["bilang", "bulan", "belum"]
+        answer: 2
+        words: [belum]
+      - id: t16
+        type: multiple_choice
+        question: |
+          Penjual: Mari, Mas! Mangganya manis-manis.
+          Mohamed: Berapa sekilo, Bu?
+          Penjual: Tiga puluh ribu.
+          Mohamed: Wah, mahal. Dua puluh ribu, ya?
+          Penjual: Dua puluh lima ribu saja, Mas.
+          Mohamed: Baik, saya beli dua kilo.
+        question_meaning:
+          ar_eg: محمد دفع كام في الآخر؟
+          ar: كم دفع محمد في النهاية؟
+          en: How much does Mohamed pay in the end?
+        options: ["Rp40.000", "Rp50.000", "Rp60.000"]
+        answer: 1
+        explain:
+          ar_eg: اتفقوا على ٢٥٫٠٠٠ للكيلو، وهو أخد كيلوين = ٥٠٫٠٠٠.
+          ar: اتفقا على ٢٥٫٠٠٠ للكيلو، واشترى كيلوغرامين = ٥٠٫٠٠٠.
+          en: They settle on 25,000 a kilo, and he buys two kilos = 50,000.
+        words: [sekilo, mahal, beli]
+  - id: vocabulary
+    skill: vocabulary
+    title:
+      ar_eg: الكلمات
+      ar: المفردات
+      en: Vocabulary
+    items:
+      - id: t17
+        type: match_pairs
+        pairs:
+          - text: penulis
+            ar_eg: كاتب
+            ar: كاتب
+            en: writer
+          - text: pedagang
+            ar_eg: تاجر
+            ar: تاجر
+            en: trader
+          - text: pelukis
+            ar_eg: رسّام
+            ar: رسّام
+            en: painter
+          - text: penyanyi
+            ar_eg: مغنّي
+            ar: مغنٍّ
+            en: singer
+        words: [penulis, pedagang, pelukis, penyanyi]
+      - id: t18
+        type: match_pairs
+        pairs:
+          - text: kepala
+            ar_eg: الراس
+            ar: الرأس
+            en: head
+          - text: perut
+            ar_eg: البطن
+            ar: البطن
+            en: stomach
+          - text: gigi
+            ar_eg: السنّة
+            ar: السنّ
+            en: tooth
+          - text: kaki
+            ar_eg: الرِّجل
+            ar: القدم
+            en: foot, leg
+        words: [kepala, perut, gigi, kaki]
+      - id: t19
+        type: match_pairs
+        pairs:
+          - text: senang
+            ar_eg: مبسوط
+            ar: سعيد
+            en: happy
+          - text: sedih
+            ar_eg: زعلان
+            ar: حزين
+            en: sad
+          - text: marah
+            ar_eg: متضايق، غضبان
+            ar: غاضب
+            en: angry
+          - text: takut
+            ar_eg: خايف
+            ar: خائف
+            en: afraid
+        words: [senang, sedih, marah, takut]
+      - id: t20
+        type: fill_blank
+        sentence: Sambal ini ___ sekali! Mulut saya panas.
+        meaning:
+          ar_eg: الشطة دي حرّاقة أوي! بقّي مولّع.
+          ar: هذا السمبال حارّ جدًّا! فمي يحترق.
+          en: This sambal is really spicy! My mouth is on fire.
+        options: ["asin", "pedas", "manis"]
+        answers: [pedas]
+        words: [pedas]
+      - id: t21
+        type: fill_blank
+        sentence: Saya mandi di ___.
+        meaning:
+          ar_eg: أنا باخد دُش في الحمّام.
+          ar: أستحمّ في الحمّام.
+          en: I shower in the bathroom.
+        options: ["ruang tamu", "kamar mandi", "kamar tidur"]
+        answers: [kamar mandi]
+        words: [kamar mandi]
+  - id: grammar
+    skill: grammar
+    title:
+      ar_eg: القواعد
+      ar: القواعد
+      en: Grammar
+    items:
+      - id: t22
+        type: fill_blank
+        sentence: Gong lebih besar ___ suling.
+        meaning:
+          ar_eg: الجونج أكبر من الناي.
+          ar: الجونج أكبر من الناي.
+          en: The gong is bigger than the flute.
+        options: ["paling", "sekali", "daripada"]
+        answers: [daripada]
+        words: [lebih, daripada]
+      - id: t23
+        type: fill_blank
+        sentence: Gunung Agung adalah gunung ___ tinggi di Bali.
+        meaning:
+          ar_eg: جبل أجونج هو أعلى جبل في بالي.
+          ar: جبل أغونغ هو أعلى جبل في بالي.
+          en: Mount Agung is the highest mountain in Bali.
+        options: ["paling", "lebih", "cukup"]
+        answers: [paling]
+        words: [paling]
+      - id: t24
+        type: fill_blank
+        sentence: Bu Sari membeli ___ ayam di pasar.
+        meaning:
+          ar_eg: Bu Sari اشترت فرخة من السوق.
+          ar: اشترت Bu Sari دجاجة من السوق.
+          en: Bu Sari bought a chicken at the market.
+        options: ["sebutir", "sebuah", "seekor"]
+        answers: [seekor]
+        explain:
+          ar_eg: "الحيوانات بتاخد ekor: seekor ayam."
+          ar: "الحيوانات تُعدّ بـ ekor: seekor ayam."
+          en: "Animals are counted with ekor: seekor ayam."
+        words: [seekor, ayam]
+      - id: t25
+        type: fill_blank
+        sentence: ___ berenang di sini! Ombaknya besar.
+        meaning:
+          ar_eg: ما تعومش هنا! الموج عالي.
+          ar: لا تسبح هنا! الموج عالٍ.
+          en: Don't swim here! The waves are big.
+        options: ["Ayo", "Silakan", "Jangan"]
+        answers: [Jangan]
+        words: [jangan]
+      - id: t26
+        type: multiple_choice
+        question: Mengapa kamu tidak masuk kerja kemarin?
+        question_meaning:
+          ar_eg: أنهي رد يجاوب على السؤال ده؟
+          ar: أيّ رد يجيب عن هذا السؤال؟
+          en: Which reply answers this question?
+        options: ["Besok pagi.", "Karena saya sakit.", "Di kantor."]
+        answer: 1
+        words: [mengapa, karena]
+      - id: t27
+        type: multiple_choice
+        question_meaning:
+          ar_eg: عايز Bu Sari تفتحلك الباب. تقول إيه؟
+          ar: تريد أن تفتح لك Bu Sari الباب. ماذا تقول؟
+          en: You'd like Bu Sari to open the door for you. What do you say?
+        options: ["Tolong buka pintunya, Bu.", "Jangan buka pintunya, Bu.", "Silakan buka pintunya, Bu."]
+        answer: 0
+        explain:
+          ar_eg: tolong لما تطلب حاجة لنفسك؛ silakan لما إنت اللي بتعرض أو بتسمح.
+          ar: tolong لطلب شيء لنفسك، وsilakan لعرض شيء أو الإذن به.
+          en: tolong asks for something for you; silakan offers or permits.
+        words: [tolong, silakan]
+      - id: t28
+        type: fill_blank
+        sentence: Saya sudah tinggal di Bali ___ dua tahun.
+        meaning:
+          ar_eg: أنا عايش في بالي بقالي سنتين.
+          ar: أعيش في بالي منذ سنتين (مدة سنتين).
+          en: I have lived in Bali for two years.
+        options: ["selama", "sejak", "sesudah"]
+        answers: [selama]
+        explain:
+          ar_eg: selama مع مدة (dua tahun)؛ sejak مع نقطة بداية (sejak 2024).
+          ar: selama مع المدة (dua tahun)، وsejak مع نقطة البداية (sejak 2024).
+          en: selama goes with a length of time (dua tahun); sejak with a starting point (sejak 2024).
+        words: [selama, tinggal]
+      - id: t29
+        type: fill_blank
+        sentence: Ni Luh minum kopi ___ membaca koran.
+        meaning:
+          ar_eg: ني لوه بتشرب قهوة وهي بتقرا الجرنال.
+          ar: تشرب ني لوه القهوة وهي تقرأ الجريدة.
+          en: Ni Luh drinks coffee while reading the newspaper.
+        options: ["sesudah", "sambil", "daripada"]
+        answers: [sambil]
+        words: [sambil]
+      - id: t30
+        type: fill_blank
+        sentence: Setiap pagi Dimas ___ di pantai Sanur.
+        meaning:
+          ar_eg: كل يوم الصبح ديماس بيركب عجلة على شط سانور.
+          ar: كل صباح يركب ديماس الدراجة على شاطئ سانور.
+          en: Every morning Dimas cycles on Sanur beach.
+        options: ["sepeda", "bersepeda", "menyepeda"]
+        answers: [bersepeda]
+        words: [bersepeda]
+      - id: t31
+        type: build_sentence
+        source:
+          ar_eg: الأول ركبنا الأتوبيس، وبعدين ركبنا أوجيك.
+          ar: أولًا ركبنا الحافلة، ثم ركبنا الأوجيك.
+          en: First we took the bus, then we took an ojek.
+        answer: Pertama kami naik bus, lalu kami naik ojek.
+        distractors: [sambil, ketika]
+        words: [pertama, lalu, naik]
+  - id: writing
+    skill: writing
+    title:
+      ar_eg: الكتابة
+      ar: الكتابة
+      en: Writing
+    items:
+      - id: t32
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: بطني بتوجعني.
+          ar: بطني يؤلمني.
+          en: My stomach hurts.
+        answers:
+          - Perut saya sakit.
+          - Perut saya sakit
+          - Saya sakit perut.
+          - Saya sakit perut
+          - Perutku sakit.
+          - Perutku sakit
+          - Aku sakit perut.
+          - Aku sakit perut
+        words: [perut, sakit]
+      - id: t33
+        type: writing_task
+        points: 4
+        prompt:
+          ar_eg: احكي عن إجازة قضّيتها (٦–٨ جمل). رحت فين ومع مين، ركبت إيه، عملت إيه بالترتيب، وكنت حاسس بإيه.
+          ar: "اكتب عن عطلة قضيتها (٦–٨ جمل): إلى أين ذهبت ومع من، وبماذا تنقّلت، وماذا فعلت بالترتيب، وبماذا شعرت."
+          en: Write about a holiday you had (6–8 sentences). Where you went and with whom, how you travelled, what you did in order, and how you felt.
+        rubric:
+          - Tells events in a clear order with sequence words (pertama, lalu, kemudian, akhirnya, ketika).
+          - Says where, when, with whom and by what transport.
+          - Describes feelings and scenery with fitting adjectives (senang, capek, indah, ramai …).
+          - Uses BIPA 2 grammar with mostly correct forms (ber- / meN- verbs, comparison, sudah / pernah, time words); 6–8 sentences.
+        sample: |
+          Bulan lalu saya berlibur ke Lovina bersama dua teman. Pertama, kami naik bus dari Denpasar, lalu kami naik ojek ke hotel.
+          Pagi-pagi sekali kami naik perahu untuk melihat lumba-lumba. Lautnya tenang dan langitnya indah sekali.
+          Siangnya kami makan ikan bakar di warung dekat pantai. Ikannya lebih enak daripada ikan di Jakarta!
+          Akhirnya, sore hari kami berenang. Saya capek, tetapi saya senang sekali.
+        words: [berlibur, pertama, lalu, akhirnya]
+  - id: speaking
+    skill: speaking
+    title:
+      ar_eg: الكلام
+      ar: المحادثة
+      en: Speaking
+    instructions:
+      ar_eg: اتكلم براحتك. المهم إن اللي بيسمعك يفهمك، مش إنك تكون مثالي.
+      ar: تكلّم بارتياح. المهم أن يفهمك السامع، لا أن تكون مثاليًّا.
+      en: Speak at ease. What matters is that a listener understands you, not perfection.
+    items:
+      - id: t34
+        type: speaking
+        text: Kamar saya kecil, tetapi bersih dan nyaman.
+        meaning:
+          ar_eg: أوضتي صغيرة، بس نضيفة ومريحة.
+          ar: غرفتي صغيرة، لكنها نظيفة ومريحة.
+          en: My room is small, but clean and comfortable.
+        words: [kamar, bersih, nyaman]
+      - id: t35
+        type: speaking_task
+        points: 4
+        prompt:
+          ar_eg: "اتكلم حوالي ٢–٣ دقايق عن البيت والحتة اللي عايش فيها: فيها إيه، إيه اللي جنبك، وإيه اللي بتحبه أو مضايقك. وقول إنت حاسس بإيه وإنت عايش هناك."
+          ar: "تحدّث نحو دقيقتين أو ثلاث عن بيتك والحيّ الذي تسكن فيه: ماذا يوجد فيه، وما القريب منك، وما الذي تحبه أو يزعجك، وكيف تشعر وأنت تعيش هناك."
+          en: Talk for about 2–3 minutes about your home and neighbourhood — what's in it, what's near you, what you like or dislike — and how you feel living there.
+        rubric:
+          - Describes rooms and nearby places with location words (di sebelah, di depan, dekat, di antara).
+          - Expresses feelings and opinions with reasons (senang, nyaman, sedih … karena …).
+          - Uses BIPA 2 structures (compound nouns, classifiers, comparison, tolong / silakan where natural).
+          - Speaks in connected sentences a patient listener follows; pauses are fine.
+        sample: |
+          Saya tinggal di sebuah kos kecil di Sanur. Di kos saya ada satu kamar tidur, satu kamar mandi, dan dapur kecil.
+          Di sebelah kos ada warung Bu Sari, dan di depannya ada masjid. Pantai juga dekat, hanya lima menit jalan kaki.
+          Saya suka lingkungan ini karena tetangga saya ramah dan udaranya segar. Tetapi kadang-kadang jalannya ramai sekali dan berisik.
+          Kamar saya lebih kecil daripada kamar saya di Kairo, tetapi saya merasa senang dan nyaman di sini.
+        words: [lingkungan, tinggal, senang]
+review:
+  status: draft
+  verified: false

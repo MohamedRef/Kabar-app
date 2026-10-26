@@ -63,10 +63,12 @@ pub enum Task {
     GuessSketch,
     CheckStrokes,
     MindMap,
+    /// Teach Kabar (spec §26): turn what the learner found into a gloss.
+    LearnEntry,
 }
 
 impl Task {
-    pub const ALL: [Task; 17] = [
+    pub const ALL: [Task; 18] = [
         Self::AnalyzeText,
         Self::ExplainSentence,
         Self::GradeAnswer,
@@ -84,6 +86,7 @@ impl Task {
         Self::GuessSketch,
         Self::CheckStrokes,
         Self::MindMap,
+        Self::LearnEntry,
     ];
 
     pub fn as_str(self) -> &'static str {
@@ -105,6 +108,7 @@ impl Task {
             Self::GuessSketch => "guess_sketch",
             Self::CheckStrokes => "check_strokes",
             Self::MindMap => "mind_map",
+            Self::LearnEntry => "learn_entry",
         }
     }
 
@@ -155,6 +159,17 @@ pub struct EngineCall {
     /// Output token cap; the proxy picks its default when absent.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub max_tokens: Option<u32>,
+    /// The input itself is personal (a screenshot, a journal line), whatever
+    /// the task. Older servers ignore it; the router enforces it anyway.
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub personal: bool,
+}
+
+impl EngineCall {
+    /// Must never reach an engine that trains on inputs, nor a shared cache.
+    pub fn is_personal(&self) -> bool {
+        self.personal || self.cache_key.task.is_personal()
+    }
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
