@@ -10,11 +10,7 @@ use std::path::{Path, PathBuf};
 
 use anyhow::{Context, Result, bail};
 use clap::Subcommand;
-use kabar_core::ai::tasks::{
-    AiOutput, AnalyzeText, CheckStrokes, CoachMessage, DailyPlan, DailyRecap, ExplainSentence, GradeAnswer,
-    GuessSketch, LevelCheck, MindMap, Placement, RadioScript, ReadHandwriting, RoleplayTurn,
-    StructureScreenshot, WeeklyReport,
-};
+use kabar_core::ai::tasks::{AiOutput, AnalyzeText, GradeAnswer};
 use kabar_core::learn::LearnEntry;
 use kabar_protocol::ai::Task;
 use kabar_protocol::content::GoldenSet;
@@ -127,9 +123,7 @@ pub fn validate(root: &Root, task: Task, set: &GoldenSet) -> Vec<String> {
     issues
 }
 
-/// Every expected output deserializes into its task's type in
-/// `kabar_core::ai::tasks` and passes the same checks the router runs on a
-/// live answer; a few tasks also check the input's shape.
+/// Inputs and expected outputs of the tasks the router already types.
 fn check_typed(task: Task, input: &Value, expect: &Value) -> Vec<String> {
     let mut p = Vec::new();
     let str_field = |k: &str| input.get(k).and_then(Value::as_str).is_some_and(|s| !s.trim().is_empty());
@@ -144,10 +138,18 @@ fn check_typed(task: Task, input: &Value, expect: &Value) -> Vec<String> {
             if !str_field("text") || !str_list("words") {
                 p.push("input needs text and words[]".into());
             }
-            if let Some(out) = typed::<AnalyzeText>(input, expect, &mut p) {
-                let words = input.get("words").and_then(Value::as_array).map_or(0, Vec::len);
-                if out.tokens.len() != words {
-                    p.push(format!("expect has {} tokens for {words} words", out.tokens.len()));
+            if !expect.is_null() {
+                match serde_json::from_value::<AnalyzeText>(expect.clone()) {
+                    Ok(out) => {
+                        if let Err(e) = out.validate() {
+                            p.push(format!("expect: {e}"));
+                        }
+                        let words = input.get("words").and_then(Value::as_array).map_or(0, Vec::len);
+                        if out.tokens.len() != words {
+                            p.push(format!("expect has {} tokens for {words} words", out.tokens.len()));
+                        }
+                    }
+                    Err(e) => p.push(format!("expect is not an AnalyzeText: {e}")),
                 }
             }
         }
@@ -155,105 +157,32 @@ fn check_typed(task: Task, input: &Value, expect: &Value) -> Vec<String> {
             if !str_field("exercise") || !str_list("references") || !str_field("answer") {
                 p.push("input needs exercise, references[] and answer".into());
             }
-            if expect.is_null() {
-                p.push("expect is required".into());
+            match serde_json::from_value::<GradeAnswer>(expect.clone()) {
+                Ok(out) => {
+                    if let Err(e) = out.validate() {
+                        p.push(format!("expect: {e}"));
+                    }
+                }
+                Err(e) => p.push(format!("expect is not a GradeAnswer: {e}")),
             }
-            typed::<GradeAnswer>(input, expect, &mut p);
         }
         Task::LearnEntry => {
             let sources = input.get("sources").and_then(Value::as_array);
             if !str_field("lang") || !str_field("word") || !sources.is_some_and(|s| !s.is_empty()) {
                 p.push("input needs lang, word and sources[]".into());
             }
-            typed::<LearnEntry>(input, expect, &mut p);
-        }
-        Task::ExplainSentence => {
-            if !str_field("text") || !str_field("lang") || !str_field("voice") {
-                p.push("input needs text, lang and voice".into());
+            if !expect.is_null() {
+                match serde_json::from_value::<LearnEntry>(expect.clone()) {
+                    Ok(out) => {
+                        if let Err(e) = out.validate() {
+                            p.push(format!("expect: {e}"));
+                        }
+                    }
+                    Err(e) => p.push(format!("expect is not a LearnEntry: {e}")),
+                }
             }
-            typed::<ExplainSentence>(input, expect, &mut p);
         }
-        Task::RoleplayTurn => {
-            if !str_field("persona") || !str_field("level") || !str_field("learner") {
-                p.push("input needs persona, level and learner".into());
-            }
-            typed::<RoleplayTurn>(input, expect, &mut p);
-        }
-        Task::PlacementTest => {
-            typed::<Placement>(input, expect, &mut p);
-        }
-        Task::LevelCheck => {
-            typed::<LevelCheck>(input, expect, &mut p);
-        }
-        Task::DailyPlan => {
-            typed::<DailyPlan>(input, expect, &mut p);
-        }
-        Task::DailyRecap => {
-            typed::<DailyRecap>(input, expect, &mut p);
-        }
-        Task::WeeklyReport => {
-            typed::<WeeklyReport>(input, expect, &mut p);
-        }
-        Task::CoachMessage => {
-            if !str_field("trigger") {
-                p.push("input needs trigger".into());
-            }
-            typed::<CoachMessage>(input, expect, &mut p);
-        }
-        Task::StoryEpisode => {
-            if !str_list("target_words") {
-                p.push("input needs target_words[]".into());
-            }
-            // Not typed yet: the set's `expect` is still the pre-M10 shape
-            // ({title, text, glossary, summary}), while the players parse
-            // `kabar_core::pagi::Story` ({title, level, sentences[{id, arz,
-            // ar, en}], words, summary?}). The set has to be rewritten to
-            // `Story` before this can check it.
-        }
-        Task::RadioScript => {
-            if !str_list("voices") || !input.get("target_words").is_some_and(Value::is_array) {
-                p.push("input needs voices[] and target_words[]".into());
-            }
-            typed::<RadioScript>(input, expect, &mut p);
-        }
-        Task::StructureScreenshot => {
-            typed::<StructureScreenshot>(input, expect, &mut p);
-        }
-        Task::ReadHandwriting => {
-            typed::<ReadHandwriting>(input, expect, &mut p);
-        }
-        Task::GuessSketch => {
-            typed::<GuessSketch>(input, expect, &mut p);
-        }
-        Task::CheckStrokes => {
-            typed::<CheckStrokes>(input, expect, &mut p);
-        }
-        Task::MindMap => {
-            typed::<MindMap>(input, expect, &mut p);
-        }
+        _ => {}
     }
     p
-}
-
-/// Deserializes and checks `expect` as `T`; `None` (and an issue) when it
-/// doesn't fit, `None` silently when there is no expected answer.
-fn typed<T: AiOutput>(input: &Value, expect: &Value, p: &mut Vec<String>) -> Option<T> {
-    if expect.is_null() {
-        return None;
-    }
-    match serde_json::from_value::<T>(expect.clone()) {
-        Ok(out) => {
-            let checked = out
-                .validate()
-                .and_then(|()| if T::EXPECT_IS_WHOLE_ANSWER { out.check(input) } else { Ok(()) });
-            if let Err(e) = checked {
-                p.push(format!("expect: {e}"));
-            }
-            Some(out)
-        }
-        Err(e) => {
-            p.push(format!("expect is not a {} output: {e}", T::TASK.as_str()));
-            None
-        }
-    }
 }

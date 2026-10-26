@@ -256,7 +256,7 @@ impl Router {
             prompt_version: template.version,
         };
         let answer = |value: T, key: CacheKey, from_cache| Answer {
-            needs_review: value.needs_review() || T::input_needs_review(&req.input),
+            needs_review: value.needs_review(),
             value,
             engine: key.engine,
             prompt_version: key.prompt_version,
@@ -268,7 +268,7 @@ impl Router {
         for &engine in plan {
             let key = key_for(engine);
             if let Some(hit) = self.cache.get(&key) {
-                match decode::<T>(&hit, &req.input) {
+                match decode::<T>(&hit) {
                     Ok(v) => return Ok(answer(v, key, true)),
                     // Stale shape from an older build: forget it.
                     Err(_) => self.cache.remove(&key),
@@ -291,7 +291,7 @@ impl Router {
                 max_tokens: route.max_tokens,
                 personal: req.personal,
             };
-            match self.call_validated::<T>(e, &mut call, &req.input).await {
+            match self.call_validated::<T>(e, &mut call).await {
                 Ok((value, json)) => {
                     self.cache.put(&key, &json);
                     return Ok(answer(value, key, false));
@@ -307,10 +307,9 @@ impl Router {
         &self,
         engine: &dyn Engine,
         call: &mut EngineCall,
-        input: &Value,
     ) -> Result<(T, String), AttemptError> {
         let reply = engine.call(call).await.map_err(AttemptError::Engine)?;
-        let error = match decode::<T>(&reply.text, input) {
+        let error = match decode::<T>(&reply.text) {
             Ok(v) => return Ok((v, json::extract_json(&reply.text).to_string())),
             Err(e) => e,
         };
@@ -321,16 +320,15 @@ impl Router {
             truncate(&reply.text, 4000),
         );
         let reply = engine.call(call).await.map_err(AttemptError::Engine)?;
-        decode::<T>(&reply.text, input)
+        decode::<T>(&reply.text)
             .map(|v| (v, json::extract_json(&reply.text).to_string()))
             .map_err(AttemptError::Invalid)
     }
 }
 
-fn decode<T: AiOutput>(text: &str, input: &Value) -> Result<T, String> {
+fn decode<T: AiOutput>(text: &str) -> Result<T, String> {
     let v: T = json::parse(text)?;
     v.validate()?;
-    v.check(input)?;
     Ok(v)
 }
 

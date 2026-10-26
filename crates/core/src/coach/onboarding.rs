@@ -7,9 +7,11 @@ use kabar_protocol::coach::{CoachProfile, LocalDate, PlanSize, StartingPoint, Ta
 pub const LEVELS: [&str; 13] =
     ["bipa1", "bipa2", "bipa3", "bipa4", "bipa5", "bipa6", "bipa7", "j1", "j2", "j3", "j4", "j5", "j6"];
 
-/// Rough hours of study to finish each BIPA level, from the level before it.
-/// Later levels need more; used only for a suggested target date.
-pub const BIPA_HOURS: [u32; 7] = [60, 80, 100, 120, 150, 180, 200];
+/// Rough hours of study to finish each BIPA level, from the level before it;
+/// used only for a suggested target date. BIPA programmes list roughly
+/// 100–136 contact hours per level, so the levels climb through that range
+/// (later levels need more).
+pub const BIPA_HOURS: [u32; 7] = [100, 106, 112, 118, 124, 130, 136];
 
 /// Days a week we assume the learner actually studies, for target dates.
 pub const STUDY_DAYS_PER_WEEK: u32 = 6;
@@ -202,11 +204,13 @@ mod tests {
     #[test]
     fn suggested_targets_fit_the_pace() {
         let today = d(2026, 10, 26);
-        // 60 h at 15 min a day: 240 study days, 280 calendar days → 2027-08-02 → 2027-09-01.
+        // 100 h at 15 min a day: 400 study days, 467 calendar days → 2028-02-05 → 2028-03-01.
         let t = suggest_target(StartingPoint::BrandNew, PlanSize::Steady, today);
-        assert_eq!(t, Target { level: "bipa1".into(), by: d(2027, 9, 1) });
-        // 30 min a day: 140 days → 2027-03-15 → 2027-04-01.
-        assert_eq!(suggest_target(StartingPoint::BrandNew, PlanSize::Deep, today).by, d(2027, 4, 1));
+        assert_eq!(t, Target { level: "bipa1".into(), by: d(2028, 3, 1) });
+        // 30 min a day: 234 days → 2027-06-17 → 2027-07-01.
+        assert_eq!(suggest_target(StartingPoint::BrandNew, PlanSize::Deep, today).by, d(2027, 7, 1));
+        assert!(BIPA_HOURS.windows(2).all(|w| w[0] < w[1]));
+        assert!(BIPA_HOURS.iter().all(|h| (100..=136).contains(h)));
         assert_eq!(suggest_target(StartingPoint::KnowsBasics, PlanSize::Deep, today).level, "bipa2");
         assert_eq!(suggest_target(StartingPoint::CanChat, PlanSize::Deep, today).level, "bipa3");
         for start in [StartingPoint::BrandNew, StartingPoint::KnowsBasics, StartingPoint::CanChat] {

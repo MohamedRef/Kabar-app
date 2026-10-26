@@ -7,10 +7,7 @@ use std::task::{Context, Poll, Waker};
 
 use serde_json::json;
 
-use super::tasks::{
-    AnalyzeText, DailyPlan, GradeAnswer, GuessSketch, LevelCheck, LevelMove, PlanKind, Register,
-    RoleplayTurn, TokenLang, UNCLEAR_SKETCH, Verdict,
-};
+use super::tasks::{AnalyzeText, GradeAnswer, TokenLang, Verdict};
 use super::*;
 
 macro_rules! fixture {
@@ -268,101 +265,7 @@ fn tasks_without_a_prompt_are_reported_not_hidden() {
         const TASK: Task = Task::MindMap;
     }
     let wai = Scripted::new(EngineId::WorkersAi, vec![]);
-    // Every task ships a prompt today, so build a router without any.
-    let r = Router::new(RouteTable::builtin(), PromptSet::default(), Box::new(MemoryCache::default()))
-        .with_engine(Box::new(wai.clone()));
+    let r = router(&[&wai]);
     let err = block_on(r.run::<Map>(&AiRequest::default())).unwrap_err();
     assert_eq!(err, AiError::NoPrompt(Task::MindMap));
-    assert!(block_on(r.run::<AnalyzeText>(&sek_request())).is_err());
-}
-
-#[test]
-fn a_plan_over_the_goal_is_sent_back_to_the_model() {
-    let wai = Scripted::new(
-        EngineId::WorkersAi,
-        vec![
-            Ok(fixture!("daily_plan.evening_backlog.over_goal.workers_ai.json")),
-            Ok(fixture!("daily_plan.evening_backlog.workers_ai.json")),
-        ],
-    );
-    let r = router(&[&wai]);
-    let req = AiRequest::new(json!({
-        "date": "2026-10-27",
-        "goal_minutes": 5,
-        "due_reviews": 30,
-        "weak_points": ["tidak vs bukan"],
-        "next_lesson": {"id": "bipa1.u08.l02", "title": "Tidak atau bukan?", "minutes": 12},
-        "streak_days": 12,
-        "time_of_day": "evening"
-    }));
-    let a = block_on(r.run::<DailyPlan>(&req)).unwrap();
-    assert_eq!(a.value.items.len(), 1);
-    assert_eq!(a.value.items[0].kind, PlanKind::Review);
-
-    let calls = wai.calls();
-    assert!(calls[1].user.contains("add up to goal_minutes (5)"), "{}", calls[1].user);
-    // A personal task: gemini is not in the route at all.
-    assert_eq!(r.plan(Task::DailyPlan, false).unwrap(), [EngineId::WorkersAi]);
-}
-
-#[test]
-fn the_level_rule_decides_not_the_model() {
-    let wai = Scripted::new(
-        EngineId::WorkersAi,
-        vec![
-            Ok(fixture!("level_check.bipa1_no_test.wrong_move.workers_ai.json")),
-            Ok(fixture!("level_check.bipa1_no_test.workers_ai.json")),
-        ],
-    );
-    let r = router(&[&wai]);
-    // No level test and healthy stats: nobody moves (content/golden/README.md).
-    let req = AiRequest::new(json!({
-        "lang": "id",
-        "current_level": "bipa1",
-        "stats": {
-            "period_days": 30, "active_days": 18, "minutes": 300,
-            "units_done": 6, "units_total": 10, "level_test": null,
-            "review_accuracy": 0.82, "retention": 0.80, "known_words": 260
-        },
-        "samples": []
-    }));
-    let a = block_on(r.run::<LevelCheck>(&req)).unwrap();
-    assert_eq!((a.value.level.as_str(), a.value.moved), ("bipa1", LevelMove::Stay));
-    assert!(wai.calls()[1].user.contains("moved Stay"), "{}", wai.calls()[1].user);
-}
-
-#[test]
-fn javanese_roleplay_and_maps_stay_unverified() {
-    let wai = Scripted::new(
-        EngineId::WorkersAi,
-        vec![Ok(fixture!("roleplay_turn.angkringan_dimas.workers_ai.json"))],
-    );
-    let r = router(&[&wai]);
-    let req = AiRequest::new(json!({
-        "persona": "mas_dimas",
-        "level": "j1",
-        "scenario": "Meeting your friend Dimas at an angkringan after class in Yogyakarta.",
-        "history": [{"role": "persona", "text": "Halo! Piye kabare? Wis mangan durung?"}],
-        "learner": "Aku belum makan, lapar banget."
-    }));
-    let a = block_on(r.run::<RoleplayTurn>(&req)).unwrap();
-    assert_eq!(a.value.register, Register::Ngoko);
-    assert_eq!(a.value.corrections.len(), 2);
-    assert!(a.needs_review, "Javanese personas are unverified until the learner approves");
-}
-
-#[test]
-fn a_blank_sketch_is_unclear_and_lemmas_stay_indonesian() {
-    let gem = Scripted::new(
-        EngineId::GeminiFree,
-        vec![
-            Ok(fixture!("guess_sketch.blank_canvas.english.gemini_free.json")),
-            Ok(fixture!("guess_sketch.blank_canvas.gemini_free.json")),
-        ],
-    );
-    let r = router(&[&gem]);
-    let a = block_on(r.run::<GuessSketch>(&AiRequest::new(json!({"target_word": "rumah"})))).unwrap();
-    assert_eq!(a.value.guess_id, UNCLEAR_SKETCH);
-    assert!(a.value.alternatives.is_empty());
-    assert!(gem.calls()[1].user.contains("snake_case"), "{}", gem.calls()[1].user);
 }

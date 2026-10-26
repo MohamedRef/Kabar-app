@@ -9,7 +9,7 @@ use kabar_protocol::coach::{ActivityEvent, ActivityKind, CoachProfile, LocalDate
 use super::widgets::{Nur, Stat};
 use super::{Coach, labels, logic, say};
 use crate::i18n::Msg;
-use crate::{Db, Ui, icons, theme};
+use crate::{Db, Screen, Ui, icons, theme};
 
 /// How many past weeks Liga Pribadi compares against.
 const LEAGUE_WEEKS: u32 = 8;
@@ -53,7 +53,7 @@ pub fn CoachScreen() -> Element {
             }
             div {
                 Warung { today }
-                Journal { today }
+                JournalLink {}
             }
         }
     }
@@ -306,84 +306,24 @@ fn Warung(today: LocalDate) -> Element {
     }
 }
 
-/// Days shown before "show more".
-const JOURNAL_PAGE: usize = 7;
-
+/// The way into the learning journal (its own screen).
 #[component]
-fn Journal(today: LocalDate) -> Element {
+fn JournalLink() -> Element {
     let ui = use_context::<Ui>();
-    let coach = use_context::<Coach>();
-    let mut shown = use_signal(|| JOURNAL_PAGE);
-    let events = coach.events.read().clone();
-    let days = logic::journal(&events);
-    let offset = coach.offset();
     rsx! {
-        div { class: "card",
-            h2 { "{ui.t(Msg::JournalTitle)}" }
-            if days.is_empty() {
-                p { class: "muted", "{ui.t(Msg::JournalEmpty)}" }
+        div { class: "card journal-link",
+            h2 {
+                span { class: "nav-icon", aria_hidden: "true", {icons::nav(Screen::Journal)} }
+                " {ui.t(Msg::JournalTitle)}"
             }
-            for (date , evs) in days.iter().take(shown()) {
-                section { key: "{date}", class: "journal-day",
-                    h3 {
-                        "{labels::day_heading(&ui, *date, today)}"
-                        span { class: "muted small",
-                            " · {labels::minutes(&ui, evs.iter().map(|e| e.seconds).sum::<u32>().div_ceil(60))}"
-                        }
-                    }
-                    ul {
-                        for e in evs.iter() {
-                            li { key: "{e.id}",
-                                span { class: "muted small time",
-                                    {labels::time(&ui, super::clock::time_of_day(e.at_ms, offset))}
-                                }
-                                " "
-                                JournalLine { kind: e.kind.clone() }
-                            }
-                        }
-                    }
-                }
-            }
-            if days.len() > shown() {
-                button { onclick: move |_| shown += JOURNAL_PAGE, "{ui.t(Msg::ShowMore)}" }
-            }
-        }
-    }
-}
-
-#[component]
-fn JournalLine(kind: ActivityKind) -> Element {
-    let ui = use_context::<Ui>();
-    match kind {
-        ActivityKind::Reviews { cards, correct } => rsx! {
-            "{ui.t(Msg::EvReviews)} · {ui.num(correct.min(cards))} / {ui.num(cards)}"
-        },
-        ActivityKind::NewWords { words } => rsx! {
-            "{ui.t(Msg::EvNewWords)}: "
-            bdi { lang: "id", "{words.join(\", \")}" }
-        },
-        ActivityKind::LessonStep { unit_id, done } => {
-            let what = ui.t(if done { Msg::EvLessonDone } else { Msg::EvLessonStep });
-            rsx! {
-                "{what} · "
-                bdi { lang: "id", "{unit_id}" }
-            }
-        }
-        ActivityKind::Practice { skill, topic, correct, total } => rsx! {
-            "{ui.t(labels::skill(skill))} · "
-            bdi { lang: "id", "{topic}" }
-            " · {ui.num(correct.min(total))} / {ui.num(total)}"
-        },
-        ActivityKind::PlanItemDone { .. } => rsx! { "{ui.t(Msg::EvPlanItem)}" },
-        ActivityKind::Purchase { item_id, koin } => {
-            let name =
-                rewards::warung().iter().find(|i| i.id == item_id).map_or(item_id.clone(), |i| i.name.into());
-            rsx! {
-                "{ui.t(Msg::EvPurchase)} "
-                bdi { lang: "id", "{name}" }
-                " · {ui.num(koin)} "
-                bdi { class: "latin", "Koin" }
-            }
+            p { class: "muted", "{ui.t(Msg::JournalIntro)}" }
+            button {
+                class: "primary",
+                onclick: move |_| {
+                    let mut screen = ui.screen;
+                    screen.set(Screen::Journal);
+                },
+                "{ui.t(Msg::JournalOpen)}" }
         }
     }
 }
