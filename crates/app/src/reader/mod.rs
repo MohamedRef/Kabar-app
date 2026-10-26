@@ -2,6 +2,7 @@
 //! screenshot; every word is colored by status and explained from local data.
 
 mod card;
+mod content;
 pub mod doc;
 pub mod glossary;
 
@@ -16,17 +17,19 @@ use kabar_core::reader::screenshot::{ScreenDoc, Side, structure};
 use kabar_protocol::reader::{SharedInput, WordStatus};
 use serde::Deserialize;
 
+use self::content::LocalGlossary;
 use self::doc::{ReadDoc, SegKind};
-use self::glossary::{Glossary, SeedGlossary, Shift};
+use self::glossary::{Glossary, Shift};
 use crate::i18n::Msg;
 use crate::store::{Highlight, SavedText, TextKind};
 use crate::{Db, Ui, platform};
 
 const READER_JS: &str = include_str!("../../assets/reader.js");
 
+/// The content pack merged over the seed; parsed once (~2.5k entries).
 pub fn glossary() -> &'static dyn Glossary {
-    static SEED: OnceLock<SeedGlossary> = OnceLock::new();
-    SEED.get_or_init(SeedGlossary::default)
+    static LOCAL: OnceLock<LocalGlossary> = OnceLock::new();
+    LOCAL.get_or_init(LocalGlossary::load)
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]

@@ -94,6 +94,7 @@ pub enum Msg {
     Explanation,
     Me,
     PenHint,
+    Example,
 }
 
 pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
@@ -182,6 +183,8 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PenLabSavedRuns, En) => "Saved reports",
         (Width, ArEg | Ar) => "عرض الشاشة",
         (Width, En) => "Window width",
+        (Example, ArEg | Ar) => "مثال",
+        (Example, En) => "Example",
         (ReaderIntro, ArEg) => "الصق أي كلام إندونيسي أو جاوي، أو افتح سكرين شوت، وكل كلمة هتبقى ليها شرح.",
         (ReaderIntro, Ar) => "الصق أي نص إندونيسي أو جاوي، أو افتح لقطة شاشة، وستجد شرحًا لكل كلمة.",
         (ReaderIntro, En) => {

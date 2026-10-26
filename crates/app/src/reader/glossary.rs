@@ -82,6 +82,10 @@ pub struct WordInfo {
     pub gloss: Gloss,
     pub bridge: Option<Bridge>,
     pub levels: Option<Levels>,
+    /// A usage note ("yang links a noun to its description…").
+    pub note: Option<Gloss>,
+    /// One example sentence with its translation.
+    pub example: Option<(String, Gloss)>,
     /// Reviewed and approved by the learner.
     pub verified: bool,
 }
@@ -93,7 +97,7 @@ pub trait Glossary {
 }
 
 pub struct SeedGlossary {
-    words: HashMap<&'static str, WordInfo>,
+    pub(super) words: HashMap<&'static str, WordInfo>,
 }
 
 type Seed = (&'static str, WordLang, &'static str, [&'static str; 3]);
@@ -273,6 +277,8 @@ impl Default for SeedGlossary {
                     gloss: Gloss { arz: arz.into(), ar: ar.into(), en: en.into() },
                     bridge: None,
                     levels: None,
+                    note: None,
+                    example: None,
                     verified: false,
                 };
                 (lemma, info)

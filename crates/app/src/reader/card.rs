@@ -186,6 +186,16 @@ fn WordCard(i: usize) -> Element {
                             p { class: "muted", lang: "en", dir: "ltr", "{info.gloss.en}" }
                         }
                     }
+                    if let Some(note) = &info.note {
+                        p { class: "note", "{note.get(voice)}" }
+                    }
+                    if let Some((text, tr)) = &info.example {
+                        div { class: "field",
+                            span { class: "label", "{ui.t(Msg::Example)}" }
+                            p { class: "sentence", dir: "ltr", lang: "id", "{text}" }
+                            p { class: "muted", "{tr.get(voice)}" }
+                        }
+                    }
                     if let Some(l) = &info.levels {
                         div { class: "field levels",
                             span { class: "label", "{ui.t(Msg::SpeechLevels)} · {ui.t(level_msg(l.level))}" }
