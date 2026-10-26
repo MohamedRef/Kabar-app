@@ -81,7 +81,7 @@ No logos or watermarks.
    - full.png: background + foreground combined.
 
 2) EXPORTS: write a small, reproducible script (Python with Pillow, or ImageMagick;
-   free tools only, no online services) at tools-scripts/export_icons.py (or .sh) that
+   free tools only, no online services) at scripts/assets/export_icons.py (or .sh) that
    generates everything below from the four layers. High-quality downscaling (Lanczos).
    Put outputs under assets/export/.
 
@@ -227,8 +227,8 @@ CARDS (filename: subject):
 - raja-ampat.png: small green karst islets in turquoise water seen from above
 - kotagede-silver.png: a small silver filigree brooch on a cloth
 
-SAVE: masters to assets/src/souvenirs/<name>.png. Then, with a small reproducible
-script (Pillow or ImageMagick, free tools only), export to assets/export/souvenirs/:
+SAVE: masters to assets/src/souvenirs/<name>.png. Then, with a small reproducible script in
+scripts/assets/ (Pillow or ImageMagick, free tools only), export to assets/export/souvenirs/:
 <name>.webp at 768x1152 (quality 85) and <name>-thumb.webp at 256x384.
 Make assets/src/souvenirs/contact-sheet.png with all cards in a grid so I can check
 they look like one consistent set; regenerate any card that doesn't match the others.
@@ -286,7 +286,7 @@ watermarks, signatures or brands. Do not imitate any named artist.
    - semarang.png: a colonial building with many doors and arched windows
    - kotagede.png: an old Javanese mosque gate with a banyan tree
 
-SAVE: masters to assets/src/map/. With a small reproducible script (Pillow or
+SAVE: masters to assets/src/map/. With a small reproducible script in scripts/assets/ (Pillow or
 ImageMagick, free tools only), export to assets/export/map/: backdrops as WebP at
 1024 and 512; each vignette as <name>.webp at 512x512 (tablet/Mac map) and
 <name>-sm.webp at 256x256 (phone route), keeping transparency.
@@ -348,7 +348,7 @@ framing and background: <name>-listening.png, <name>-laughing.png,
 <name>-thinking.png, <name>-explaining.png (a light hand gesture). Keep identity
 consistent; regenerate any that drift.
 
-SAVE: masters to assets/src/personas/. With a small reproducible script (Pillow or
+SAVE: masters to assets/src/personas/. With a small reproducible script in scripts/assets/ (Pillow or
 ImageMagick, free tools only), export to assets/export/personas/: <file>.webp at
 1024 (intro screen), 256x256 and 96x96 (avatars; the app crops them to a circle in
 CSS, so keep them square). Make assets/src/personas/cast-sheet.png showing all six
@@ -399,7 +399,7 @@ IMAGES:
    2x2): warm paper #F5EFE3 with faint fibres and very faint dot grid in batik indigo
    at about 5% opacity.
 
-SAVE: masters to assets/src/misc/. With a small reproducible script (Pillow or
+SAVE: masters to assets/src/misc/. With a small reproducible script in scripts/assets/ (Pillow or
 ImageMagick, free tools only), export to assets/export/misc/: hero images as WebP at
 full size and half size; empty states and the gong as WebP at 640 and 320 px with
 transparency; notebook-paper as WebP at 1024 and 512.
@@ -450,7 +450,7 @@ Javanese learning app (Rust + Dioxus, macOS + Android). Rules for this task:
    naturalearthdata.com or github.com/nvkelso/natural-earth-vector:
    ne_10m_land, ne_10m_minor_islands, ne_10m_populated_places, ne_10m_railroads,
    ne_10m_admin_0_countries. Store raw files in data/natural-earth/ (git-ignore the
-   raw shapefiles if over 5 MB and add a download script instead). Write a script that
+   raw shapefiles if over 5 MB and add a download script instead). Write a script in scripts/assets/ that
    crops to Indonesia (about 94°E–142°E, 11°S–6°N), simplifies the shapes, and writes
    assets/map/indonesia.svg with: island outlines, a separate group for Java, and
    points for Jakarta, Bali (Denpasar), Lombok (Mataram), Sulawesi (Makassar),
@@ -465,7 +465,7 @@ Javanese learning app (Rust + Dioxus, macOS + Android). Rules for this task:
      keep only a few soft clicks/toggles for buttons and page turns, put them in
      assets/sounds/ui/ with the license file.
    - Gong (lesson complete) and kendang tap (correct answer): do NOT download; write a
-     small script that synthesizes them, so there is no license risk. Gong: a few
+     small script in scripts/assets/ that synthesizes them, so there is no license risk. Gong: a few
      inharmonic partials (e.g. base around 110 Hz with partials at roughly 1, 1.48,
      2.03, 2.71 ratios), slow exponential decay over about 2.5 s, a gentle attack and
      a slight pitch glide. Kendang tap: a short pitched membrane thump around
