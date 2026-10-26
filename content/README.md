@@ -11,6 +11,7 @@ then content rules) on every CI run.
 | `tests/<lang>/<id>.yaml` | `kabar.test/v1` (below) | Level tests (`bipa1.test`, `bipa2.test`, also used for "Take a flight") and the onboarding `placement` test. |
 | `personas/<id>.yaml` | `kabar.persona/v1` | The four conversation personas (SPEC §15): style guide for the runtime model, level bands, openers and example dialogues with inline corrections. |
 | `stories/sinetron/sinetron.eNN.yaml` | `kabar.story/v1` | Sinetron episodes; episode N unlocks after the unit in `unlock_after`. |
+| `pron/id.tsv`, `pron/overrides.tsv` | TSV (`kabar_core::pron`) | Arabic-script pronunciation data. `id.tsv` is cut from the g2p_id lexicon by `kabar-tools pron import <lexicon_id.tsv>` (don't hand-edit); `overrides.tsv` holds hand corrections as marked spellings (é open e, ê weak e, ò open o, â plain a, ' glottal stop). Check a word with `kabar-tools pron show [--lang jv] <words>`. Javanese is rules plus overrides and stays unverified. |
 | `radio/<lang>/radio.<unit-id>.yaml` | `kabar.radio/v1` | Prebuilt Kabar Radio scripts for the first units: two hosts, intro → dialogue → word spotlight → recap → outro. |
 
 ## Lesson rules (checked in `crates/content/src/lessons.rs`)
