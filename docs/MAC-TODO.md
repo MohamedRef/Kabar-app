@@ -20,7 +20,9 @@ These need your machine, your accounts or your devices. Nothing here costs money
 - [ ] Download kaikki.org Indonesian and Javanese JSONL (the cloud sandbox can't reach kaikki.org).
 - [ ] Run the bake-off runner and send me the `bakeoff/runs/` folder; I score it with you.
 
-## Devices (M1)
+## Devices (M1) — full steps in docs/RUN.md
+- [ ] `brew install just && just setup-mac` (no Android Studio needed).
+- [ ] `just check`, then `just run-mac`.
 - [ ] Enable Developer options + USB / Wireless debugging on the S24 Ultra and Tab S11.
-- [ ] Install Android Studio (for SDK/NDK) — the `just setup-mac` script will handle the rest.
-- [ ] Run Pen Lab on both Galaxy devices and send me the report.
+- [ ] `just android-keystore`, `just apk`, `just install <serial>` on both devices.
+- [ ] Run Pen Lab on both Galaxy devices and send me the JSON reports + how the ink feels.

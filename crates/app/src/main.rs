@@ -149,7 +149,7 @@ fn Loaded(db: Db) -> Element {
     let lang = settings.ui_language;
     let theme = settings.theme.as_str();
     let width = ui.width.read().as_str();
-    let batik = use_hook(|| theme::kawung_tile("2b3a67", 0.06, 72));
+    let batik = use_hook(|| theme::kawung_tile("2b3a70", 0.06, 72));
 
     rsx! {
         document::Title { "Kabar" }

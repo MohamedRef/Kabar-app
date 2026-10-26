@@ -72,7 +72,7 @@ kabar/
 - **Native bridges (Android):** JNI from Rust (`jni` crate) using `ndk_context` for the JavaVM and the activity's class loader to reach our Kotlin classes. Dioxus has no official Kotlin interop yet, so M1 proves this with one call (e.g., read the S Pen "in range" state) before anything depends on it. Fallback: a custom Gradle template via `dx` bundling.
 - **macOS:** Keychain via `keyring`; global hotkey via Dioxus desktop's global-shortcut support; Apple Vision OCR through a tiny Swift/objc2 shim.
 - **Layout:** width classes per Android guidance: compact <600dp, medium 600–840, expanded ≥840 (large ≥1200 gets the three-pane Study Desk with wider panes).
-- **i18n:** Fluent (`fluent-bundle`) with `ar-EG`, `ar` (MSA) and `en`; RTL via `dir` + logical CSS properties.
+- **i18n:** a typed message catalog in Rust (`crates/app/src/i18n.rs`) for `ar-EG`, `ar` (MSA) and `en`, so a missing translation fails to compile; switch to Fluent if plural-heavy strings arrive. RTL via `dir` + logical CSS properties; Latin inside Arabic is isolated with `<bdi>` or FSI/PDI.
 
 ## 5. Data model
 
