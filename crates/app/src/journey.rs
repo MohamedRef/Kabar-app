@@ -745,9 +745,21 @@ pub fn current_unit(completed: &BTreeSet<String>, start: Option<&str>, javanese:
 
 // ------------------------------------------------------------- suitcase ----
 
+/// The souvenir a unit's lesson content ships (its target-language name and
+/// the note in the UI language). The curriculum's card is English only, so
+/// it's the fallback for units whose lessons aren't written yet.
+fn local_souvenir(unit_id: &str, lang: UiLanguage) -> Option<(String, String)> {
+    find_unit(unit_id)?.lessons.iter().rev().find_map(|l| {
+        let lesson = kabar_core::lesson::parse_lesson(crate::lesson::lesson_content(&l.id)?).ok()?;
+        let s = lesson.souvenir?;
+        Some((s.title, kabar_core::lesson::pick(&s.note, lang).to_string()))
+    })
+}
+
 #[component]
 fn Suitcase(completed: Rc<BTreeSet<String>>) -> Element {
     let ui = use_context::<Ui>();
+    let lang = ui.lang();
     let routes = ROUTES.as_ref().expect("checked by JourneyScreen");
     let cards: Vec<_> = [(&routes.id, "id"), (&routes.jv, "jv")]
         .into_iter()
@@ -765,7 +777,7 @@ fn Suitcase(completed: Rc<BTreeSet<String>>) -> Element {
                 for (s, tl) in cards {
                     li { key: "{s.unit_id}", class: "souvenir card",
                         div { class: "souvenir-stamp", aria_hidden: "true", bdi { "{s.level_code}" } }
-                        h3 { bdi { lang: tl, dir: "ltr", "{s.name}" } }
+                        h3 { bdi { lang: tl, dir: "ltr", "{local_souvenir(&s.unit_id, lang).map(|(t, _)| t).unwrap_or(s.name.clone())}" } }
                         p { class: "muted souvenir-where",
                             bdi { lang: tl, dir: "ltr", "{s.stop}" }
                             if s.unverified {
@@ -773,7 +785,11 @@ fn Suitcase(completed: Rc<BTreeSet<String>>) -> Element {
                                 span { class: "badge-unverified", "{ui.t(Msg::JourneyUnverified)}" }
                             }
                         }
-                        p { class: "souvenir-note", lang: "en", dir: "ltr", "{s.note}" }
+                        if let Some((_, note)) = local_souvenir(&s.unit_id, lang) {
+                            p { class: "souvenir-note", crate::lesson::Rich { text: note, target: tl } }
+                        } else {
+                            p { class: "souvenir-note", lang: "en", dir: "ltr", "{s.note}" }
+                        }
                     }
                 }
             }
@@ -997,5 +1013,16 @@ mod tests {
         // "I know the basics" starts at BIPA 2; Javanese has its own route.
         assert_eq!(current_unit(&BTreeSet::new(), Some("bipa2"), false).as_deref(), Some("bipa2.u01"));
         assert_eq!(current_unit(&BTreeSet::new(), Some("bipa2"), true).as_deref(), Some("j1.u01"));
+    }
+
+    #[test]
+    fn suitcase_souvenirs_speak_the_ui_language() {
+        // The lesson content's souvenir, not the English curriculum card.
+        let (title, note) = local_souvenir("bipa1.u01", UiLanguage::ArEg).unwrap();
+        assert_eq!(title, "Taman Fatahillah");
+        assert!(note.contains("جاكرتا"), "{note}");
+        let (_, en) = local_souvenir("bipa1.u01", UiLanguage::En).unwrap();
+        assert!(en.starts_with("Jakarta began"), "{en}");
+        assert_eq!(local_souvenir("no.such.unit", UiLanguage::ArEg), None);
     }
 }

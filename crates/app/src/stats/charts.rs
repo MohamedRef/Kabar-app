@@ -107,7 +107,9 @@ pub fn forecast(days: &[u32], rtl: bool, label: &str, bar: impl Fn(usize, u32) -
     let (bw, gap, h) = (8.0f32, 2.0f32, 96.0f32);
     let w = n as f32 * (bw + gap);
     let peak = days.iter().copied().max().unwrap_or(0).max(1) as f32;
-    let mut s = open(w, h + 2.0, "chart forecast-svg", label);
+    // Stretched to the card's width, so the bars line up with the "today" /
+    // "in 30 days" labels under the chart at any width.
+    let mut s = open(w, h + 2.0, "chart forecast-svg", label).replacen("xMidYMid meet", "none", 1);
     let _ = write!(s, r#"<line class="baseline" x1="0" x2="{w}" y1="{h}" y2="{h}"/>"#);
     for (i, &v) in days.iter().enumerate() {
         let slot = if rtl { n - 1 - i } else { i };

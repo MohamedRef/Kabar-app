@@ -22,7 +22,8 @@
 /* charts */
 .st-chart svg { display: block; inline-size: 100%; block-size: auto; overflow: visible; }
 .st-heat svg { max-inline-size: 36rem; }
-.st-forecast svg { max-block-size: 9rem; }
+.st-forecast svg { block-size: 7rem; }
+.st-forecast .baseline { vector-effect: non-scaling-stroke; }
 .chart text, .chart .axis { fill: var(--muted); font-size: 10px; font-family: inherit; }
 .chart .baseline { stroke: var(--line); stroke-width: 1; }
 .chart .hit { fill: transparent; }
