@@ -1,0 +1,151 @@
+# Golden seed set for the M0 engine bake-off, built from docs/SPEC.md §24.
+# Javanese items are unverified until the user (or a native speaker) approves them.
+version: 1
+items:
+  # --- analyze_text: Javanese chat ---
+  - id: jv-chat-01
+    task: analyze_text
+    lang: jv
+    input: "Sek tak lapor pusat"
+    expect:
+      meaning_en: "Hold on, I'll report to HQ."
+      tokens:
+        - { surface: sek, normalized: sek, lang: jv, gloss_en: "hold on, wait" }
+        - { surface: tak, normalized: tak, lang: jv, gloss_en: "I will (1st-person proclitic)" }
+        - { surface: lapor, normalized: lapor, lang: id, gloss_en: "report" }
+        - { surface: pusat, normalized: pusat, lang: id, gloss_en: "center, HQ" }
+    verified: false
+  - id: jv-chat-02
+    task: analyze_text
+    lang: jv
+    input: "ng prabowo?"
+    expect:
+      meaning_en: "To Prabowo?"
+      tokens:
+        - { surface: ng, normalized: nang, lang: jv, gloss_en: "to" }
+        - { surface: prabowo, normalized: Prabowo, lang: propn, gloss_en: "(proper noun)" }
+    verified: false
+  - id: jv-chat-03
+    task: analyze_text
+    lang: jv
+    input: "piye dhe"
+    expect:
+      meaning_en: "So, what do you think?"
+      tokens:
+        - { surface: piye, normalized: piye, lang: jv, gloss_en: "how" }
+        - { surface: dhe, normalized: dhe, lang: jv, gloss_en: "friendly address, short for Pakdhe/Budhe" }
+    verified: false
+  - id: jv-chat-04
+    task: analyze_text
+    lang: jv
+    input: "arp dicul piro"
+    expect:
+      meaning_en: "How much will you sell it for?"
+      tokens:
+        - { surface: arp, normalized: arep, lang: jv, gloss_en: "want to, will" }
+        - { surface: dicul, normalized: diculke, root: cul, lang: jv, gloss_en: "let go, sell" }
+        - { surface: piro, normalized: pira, lang: jv, gloss_en: "how much" }
+    verified: false
+
+  # --- analyze_text: Indonesian marketplace listing ---
+  - id: id-listing-01
+    task: analyze_text
+    lang: id
+    input: "iphone 17 pm 512gb resmi ibox mulus nomin garansi jalan minat wa"
+    expect:
+      meaning_en: "iPhone 17 Pro Max 512GB, official iBox unit, flawless, no defects, warranty active, interested? WhatsApp me."
+      tokens:
+        - { surface: pm, normalized: Pro Max, lang: en }
+        - { surface: resmi ibox, gloss_en: "official iBox (authorized reseller) unit" }
+        - { surface: mulus, lang: id, gloss_en: "smooth, flawless" }
+        - { surface: nomin, normalized: no minus, lang: slang, gloss_en: "no defects" }
+        - { surface: garansi jalan, lang: id, gloss_en: "warranty still active" }
+        - { surface: minat wa, lang: id, gloss_en: "interested? contact via WhatsApp" }
+    verified: true
+
+  # --- deterministic morphology (also unit tests) ---
+  - id: id-morph-01
+    task: analyze_text
+    lang: id
+    input: "Saya sedang membaca buku."
+    expect: { roots: { membaca: baca }, affixes: { membaca: ["meN-"] }, meaning_en: "I am reading a book." }
+    verified: true
+  - id: id-morph-02
+    task: analyze_text
+    lang: id
+    input: "Rumahnya dibersihkan kemarin."
+    expect: { roots: { Rumahnya: rumah, dibersihkan: bersih }, affixes: { Rumahnya: ["-nya"], dibersihkan: ["di-", "-kan"] }, meaning_en: "His/her/the house was cleaned yesterday." }
+    verified: true
+  - id: id-morph-03
+    task: analyze_text
+    lang: id
+    input: "Anak-anak bermain di taman."
+    expect: { roots: { Anak-anak: anak, bermain: main }, reduplication: [Anak-anak], meaning_en: "The children are playing in the park." }
+    verified: true
+  - id: id-morph-04
+    task: analyze_text
+    lang: id
+    input: "Kesehatan itu penting."
+    expect: { roots: { Kesehatan: sehat }, affixes: { Kesehatan: ["ke-an"] }, meaning_en: "Health is important." }
+    verified: true
+
+  # --- speech levels ---
+  - id: jv-level-01
+    task: analyze_text
+    lang: jv
+    input: "Panjenengan sampun dhahar?"
+    expect:
+      meaning_en: "Have you eaten?"
+      level: krama_inggil
+      equivalents: { ngoko: "Kowe wis mangan?", krama: "Sampeyan sampun nedha?", krama_inggil: "Panjenengan sampun dhahar?" }
+    verified: false
+
+  # --- dialect and code-mixing ---
+  - id: jv-arek-01
+    task: analyze_text
+    lang: jv
+    input: "Koen wis mangan ta, rek?"
+    expect: { meaning_en: "Have you eaten yet, mate?", dialect: surabaya_arek, tokens: [{ surface: koen, gloss_en: "you (Arek)" }, { surface: rek, gloss_en: "mate (from arek)" }] }
+    verified: false
+  - id: id-jaksel-01
+    task: analyze_text
+    lang: id
+    input: "Which is, gue literally capek banget."
+    expect: { meaning_en: "Which is, I'm literally super tired.", tokens: [{ surface: gue, lang: slang, gloss_en: "I (Jakarta)" }, { surface: capek, lang: id, gloss_en: "tired" }, { surface: banget, lang: id, gloss_en: "very" }] }
+    verified: true
+
+  # --- grade_answer ---
+  - id: grade-01
+    task: grade_answer
+    prompt_ar: "ترجم: أنا بقرا كتاب دلوقتي"
+    reference: ["Saya sedang membaca buku.", "Aku sedang membaca buku."]
+    answer: "Saya lagi baca buku"
+    expect: { verdict: accept, note: "colloquial 'lagi baca' is correct; mention formal 'sedang membaca'" }
+    verified: true
+  - id: grade-02
+    task: grade_answer
+    prompt_ar: "ترجم: البيت اتنضف امبارح"
+    reference: ["Rumahnya dibersihkan kemarin.", "Rumah itu dibersihkan kemarin."]
+    answer: "Rumahnya membersihkan kemarin"
+    expect: { verdict: reject, note: "active meN- instead of passive di-: 'the house cleaned (something)'" }
+    verified: true
+
+  # --- Arabic Bridge ---
+  - id: bridge-01
+    task: analyze_text
+    lang: id
+    input: "kalimat"
+    expect: { arabic: "كلمة", meaning_id_en: "sentence", false_friend: true, note: "Arabic كلمة = word" }
+    verified: true
+  - id: bridge-02
+    task: analyze_text
+    lang: id
+    input: "mungkin"
+    expect: { arabic: "ممكن", meaning_id_en: "maybe, perhaps", meaning_shift: true }
+    verified: true
+  - id: bridge-03
+    task: analyze_text
+    lang: id
+    input: "pikir"
+    expect: { arabic: "فكر", sound_shift: "ف → p", meaning_shift: false }
+    verified: true
