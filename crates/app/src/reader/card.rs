@@ -3,6 +3,7 @@
 
 use dioxus::prelude::*;
 use kabar_core::locale::UiLanguage;
+use kabar_core::settings::PronMode;
 use kabar_protocol::content::Lang;
 use kabar_protocol::reader::WordStatus;
 
@@ -13,6 +14,7 @@ use super::glossary::{Shift, SpeechLevel, WordInfo, WordLang};
 use super::{Panel, Peek, ReaderState};
 use crate::i18n::Msg;
 use crate::platform::{self, SpeakError};
+use crate::pron::{Pron, PronGuide};
 use crate::teach::{TeachInbox, TeachSeed};
 use crate::{Db, Screen, Ui};
 
@@ -103,9 +105,18 @@ fn Headline(w: Word, surface: String) -> Element {
                 None => n.full.clone(),
             }
         });
+    // Say the full form (arp → arep); English asides keep their own sound.
+    let javanese = w.tag == Tag::Javanese || w.info.as_ref().is_some_and(|i| i.lang == WordLang::Javanese);
+    let pron = (w.tag != Tag::English).then(|| {
+        let text = w.analyzed.normalized.as_ref().map_or(surface.clone(), |n| n.full.clone());
+        (text, if javanese { "jv" } else { "id" })
+    });
     rsx! {
         div { class: "headline",
             bdi { class: "latin surface", lang: "id", "{surface}" }
+            if let Some((text, tag)) = pron {
+                Pron { text, tag }
+            }
             if let Some(n) = normalized {
                 span { class: "muted", " → " }
                 bdi { class: "latin", lang: "id", "{n}" }
@@ -240,6 +251,7 @@ fn WordCard(i: usize) -> Element {
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::InThisSentence)}" }
                 p { class: "sentence", dir: "ltr", lang: "id", bdi { "{sentence}" } }
+                Pron { text: sentence.clone(), tag: if w.tag == Tag::Javanese { "jv" } else { "id" } }
                 button {
                     class: "ghost small",
                     onclick: move |_| {
@@ -247,6 +259,13 @@ fn WordCard(i: usize) -> Element {
                         p.set(Some(Panel::Explain(i)));
                     },
                     "💡 {ui.t(Msg::ExplainWord)}"
+                }
+            }
+
+            if ui.settings.read().pronunciation != PronMode::Off && w.tag != Tag::English {
+                details { class: "pron-details",
+                    summary { "{ui.t(Msg::PronHowToRead)}" }
+                    PronGuide {}
                 }
             }
 
@@ -355,6 +374,7 @@ fn InfoView(info: WordInfo, voice: UiLanguage) -> Element {
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::InIndonesian)}" }
                 bdi { class: "latin", lang: "id", "{ind}" }
+                Pron { text: ind.clone(), tag: "id" }
             }
         }
         if let Some(note) = &info.note {
@@ -364,6 +384,7 @@ fn InfoView(info: WordInfo, voice: UiLanguage) -> Element {
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::Example)}" }
                 p { class: "sentence", dir: "ltr", lang, "{text}" }
+                Pron { text: text.clone(), tag: lang }
                 p { class: "muted", "{tr.get(voice)}" }
             }
         }

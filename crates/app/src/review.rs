@@ -20,6 +20,7 @@ use serde::Deserialize;
 use crate::coach::Coach;
 use crate::i18n::Msg;
 use crate::platform::{self, SpeakError};
+use crate::pron::Pron;
 use crate::{Db, Ui};
 
 const REVIEW_CSS: &str = include_str!("../assets/review.css");
@@ -749,6 +750,8 @@ fn Back(card: Card) -> Element {
             if card.kind != CardKind::Recognition {
                 Word { card: card.clone(), big: false }
             }
+            // Only on the answer side: on the front it would hint the answer.
+            Pron { text: card.word.clone(), tag: card.language.tag() }
             p { class: "rev-meaning", "{localized(&ui, &card.meaning)}" }
             if let Some(note) = &card.note {
                 p { class: "muted rev-note", Isolated { text: localized(&ui, note).to_string() } }
@@ -756,6 +759,7 @@ fn Back(card: Card) -> Element {
             if let Some(ex) = &card.example {
                 div { class: "rev-example",
                     p { class: "ex-text", lang: card.language.tag(), bdi { dir: "ltr", "{ex.text}" } }
+                    Pron { text: ex.text.clone(), tag: card.language.tag() }
                     p { class: "muted", "{localized(&ui, &ex.meaning)}" }
                 }
             }
@@ -1205,6 +1209,7 @@ fn WallCard(card: Card, flipped: bool, sort: Callback<(String, Pile)>) -> Elemen
                 if card.kind == CardKind::Bridge {
                     bdi { class: "wall-word small latin", lang: card.language.tag(), dir: "ltr", "{card.word}" }
                 }
+                Pron { text: card.word.clone(), tag: card.language.tag() }
                 span { class: "wall-meaning", "{localized(&ui, &card.meaning)}" }
                 if false_friend {
                     span { class: "badge alarm", "{ui.t(Msg::RevFalseFriend)}" }
