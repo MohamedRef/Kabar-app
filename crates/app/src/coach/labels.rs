@@ -1,5 +1,6 @@
 //! How coach data reads in the UI language.
 
+use dioxus::prelude::*;
 use kabar_core::locale::UiLanguage;
 use kabar_protocol::coach::{
     LanguageFocus, LocalDate, LocalTime, Motivation, PlanItem, PlanItemKind, ReminderStyle, Skill,
@@ -9,10 +10,8 @@ use kabar_protocol::coach::{
 use crate::Ui;
 use crate::i18n::Msg;
 
-/// Curriculum levels a target can name (spec §21).
-pub const LEVELS: [&str; 13] = [
-    "bipa-1", "bipa-2", "bipa-3", "bipa-4", "bipa-5", "bipa-6", "bipa-7", "j1", "j2", "j3", "j4", "j5", "j6",
-];
+/// Curriculum levels a target can name (spec §21): the ids the core checks.
+pub use kabar_core::coach::onboarding::LEVELS;
 
 /// "bipa-2" → "BIPA 2", "j1" → "J1".
 pub fn level_name(id: &str) -> String {
@@ -116,6 +115,46 @@ pub fn date(ui: &Ui, d: LocalDate, today: LocalDate) -> String {
     if y == today.ymd().0 { short } else { format!("{short}/{}", ui.num(y as u32)) }
 }
 
+/// "1 مارس 2028" / "1 March 2028": a month name, never an ambiguous
+/// "1/3/2028", for dates the learner plans around (targets).
+pub fn long_date(ui: &Ui, d: LocalDate) -> String {
+    const AR: [&str; 12] = [
+        "يناير",
+        "فبراير",
+        "مارس",
+        "أبريل",
+        "مايو",
+        "يونيو",
+        "يوليو",
+        "أغسطس",
+        "سبتمبر",
+        "أكتوبر",
+        "نوفمبر",
+        "ديسمبر",
+    ];
+    const EN: [&str; 12] = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ];
+    let (y, m, day) = d.ymd();
+    let names = match ui.settings.read().ui_language {
+        UiLanguage::ArEg | UiLanguage::Ar => AR,
+        UiLanguage::En => EN,
+    };
+    let month = names[(m.clamp(1, 12) - 1) as usize];
+    format!("{} {month} {}", ui.num(day), ui.num(y as u32))
+}
+
 /// "Monday 26/10".
 pub fn day_heading(ui: &Ui, d: LocalDate, today: LocalDate) -> String {
     if d == today {
@@ -140,7 +179,13 @@ pub fn plan_item(ui: &Ui, kind: &PlanItemKind) -> (Msg, Option<String>) {
             (Msg::ItemReview, Some(format!("{} {}", ui.num(*cards), ui.t(Msg::Cards))))
         }
         PlanItemKind::Review { .. } => (Msg::ItemReview, None),
-        PlanItemKind::Lesson { unit_id } => (Msg::ItemLesson, Some(unit_id.clone())),
+        PlanItemKind::Lesson { unit_id } => {
+            let lang = ui.settings.read().ui_language;
+            (
+                Msg::ItemLesson,
+                Some(crate::journey::unit_title(lang, unit_id).unwrap_or_else(|| unit_id.clone())),
+            )
+        }
         PlanItemKind::WeakSpot { skill: s, topic } => {
             (Msg::ItemWeakSpot, Some(format!("{} · {topic}", ui.t(skill(*s)))))
         }
@@ -151,7 +196,8 @@ pub fn plan_item(ui: &Ui, kind: &PlanItemKind) -> (Msg, Option<String>) {
 /// The same title as one string, for Kak Nur's `{step}`.
 pub fn plan_item_text(ui: &Ui, kind: &PlanItemKind) -> String {
     match plan_item(ui, kind) {
-        (msg, Some(detail)) => format!("{} ({detail})", ui.t(msg)),
+        // Isolated so a Latin title keeps its punctuation inside Arabic text.
+        (msg, Some(detail)) => format!("{} (\u{2068}{detail}\u{2069})", ui.t(msg)),
         (msg, None) => ui.t(msg).to_string(),
     }
 }
@@ -183,5 +229,8 @@ mod tests {
         assert_eq!(level_name("bipa-2"), "BIPA 2");
         assert_eq!(level_name("bipa2"), "BIPA 2");
         assert_eq!(level_name("j3"), "J3");
+        // The target picker offers exactly the ids `onboarding::finish` accepts.
+        assert!(LEVELS.iter().all(|l| kabar_core::coach::onboarding::is_known_level(l)));
+        assert_eq!(level_name(LEVELS[1]), "BIPA 2");
     }
 }
