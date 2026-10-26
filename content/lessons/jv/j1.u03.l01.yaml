@@ -137,97 +137,40 @@ exercises:
         en: still (masih)
     words: [wis, durung, lagi, arep, isih]
   - id: e02
-    type: match_pairs
-    pairs:
-      - text: mangan
-        ar_eg: ياكل (makan)
-        ar: يأكل (makan)
-        en: eat (makan)
-      - text: turu
-        ar_eg: ينام (tidur)
-        ar: ينام (tidur)
-        en: sleep (tidur)
-      - text: maca
-        ar_eg: يقرا (membaca)
-        ar: يقرأ (membaca)
-        en: read (membaca)
-      - text: tekan
-        ar_eg: يوصل (sampai)
-        ar: يصل (sampai)
-        en: arrive (sampai)
-    words: [mangan, turu, maca, tekan]
-  - id: e03
     type: multiple_choice
     question: Kowé wis mangan?
     question_meaning:
       ar_eg: لسه ماكلتش. ترد بإيه؟
       ar: لم تأكل بعد. بمَ تجيب؟
       en: You haven't eaten yet. What do you answer?
-    options: ["Wis.", "Durung.", "Lagi."]
+    options: [Wis., Durung., Lagi.]
     answer: 1
     explain:
       ar_eg: durung = belum = لسه. ده الرد الطبيعي على «Wis …?».
       ar: durung = belum، وهو الجواب الطبيعي عن «Wis …?».
       en: durung = belum — the natural answer to "Wis …?".
     words: [durung]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح؟
-      ar: أيّ جملة صحيحة؟
-      en: Which sentence is correct?
-    options: ["Aku mangan wis.", "Aku wis mangan.", "Wis aku mangan."]
-    answer: 1
-    explain:
-      ar_eg: wis قبل الفعل، زي sudah في «Saya sudah makan».
-      ar: wis تسبق الفعل كـ sudah في «Saya sudah makan».
-      en: wis goes before the verb, like sudah in "Saya sudah makan".
-    words: [wis, mangan]
-  - id: e05
-    type: multiple_choice
-    question: arp turu
-    question_meaning:
-      ar_eg: صاحبك بعت الرسالة دي بالليل. معناها إيه؟
-      ar: أرسل صديقك هذه الرسالة ليلًا. ما معناها؟
-      en: Your friend sends this at night. What does it mean?
-    options: ["I'm going to sleep.", "I've already slept.", "I'm still asleep."]
-    answer: 0
-    explain:
-      ar_eg: arp = arep (هـ)، turu = نوم. يعني «هنام».
-      ar: arp = arep (سوف)، وturu = ينام، أي «سأنام».
-      en: arp = arep (going to), turu = sleep.
-    words: [arep, turu]
-  - id: e06
+  - id: e03
     type: listen
     text: Aku lagi maca buku.
-    options: ["Aku wis maca buku.", "Aku lagi maca buku.", "Aku arep maca buku."]
+    options: [Aku wis maca buku., Aku lagi maca buku., Aku arep maca buku.]
     answer: 1
     words: [lagi, maca]
-  - id: e07
+  - id: e04
     type: fill_blank
     sentence: Dheweke ___ turu.
     meaning:
       ar_eg: لسه نايم (من بدري ولسه).
       ar: ما زال نائمًا.
       en: He's still asleep.
-    options: ["arep", "durung", "isih"]
+    options: [arep, durung, isih]
     answers: [isih]
     explain:
       ar_eg: «لسه» بمعنى مستمر = isih (masih). durung = لسه ماحصلش.
       ar: «ما زال» = isih (masih)، أما durung فـ«لم … بعد».
       en: still = isih (masih); durung is "not yet".
     words: [isih, turu]
-  - id: e08
-    type: fill_blank
-    sentence: Aku ___ mangan.
-    meaning:
-      ar_eg: أنا هاكل (دلوقتي حالًا).
-      ar: سآكل الآن.
-      en: I'm going to eat.
-    options: ["wis", "durung", "arep"]
-    answers: [arep]
-    words: [arep, mangan]
-  - id: e09
+  - id: e05
     type: build_sentence
     source:
       ar_eg: أنا كلت خلاص.
@@ -236,58 +179,7 @@ exercises:
     answer: Aku wis mangan.
     distractors: [sudah, durung]
     words: [wis, mangan]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: لسه ماكلتش.
-      ar: لم آكل بعد.
-      en: I haven't eaten yet.
-    answers:
-      - Aku durung mangan.
-      - Aku durung mangan
-      - Durung mangan.
-      - Durung mangan
-    words: [durung, mangan]
-  - id: e11
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا بقرا كتاب دلوقتي.
-      ar: أنا أقرأ كتابًا الآن.
-      en: I'm reading a book.
-    answers:
-      - Aku lagi maca buku.
-      - Aku lagi maca buku
-      - Aku lagi moco buku.
-      - Aku lagi moco buku
-    explain:
-      ar_eg: lagi = sedang، maca = membaca. وفي الشات moco.
-      ar: lagi = sedang، وmaca = membaca، وفي الدردشة moco.
-      en: lagi = sedang, maca = membaca (chat moco).
-    words: [lagi, maca]
-  - id: e12
-    type: translate
-    direction: from_target
-    source_text: Wes tekan, rek?
-    answers_meaning:
-      ar_eg: ["وصلت يا صاحبي؟", "وصلت ولا لسه يا صاحبي؟", "وصلتوا يا جدعان؟", "وصلت يا جدع؟"]
-      ar: ["هل وصلت يا صاح؟", "هل وصلتم يا جماعة؟", "أوصلت يا صديقي؟"]
-      en: ["Have you arrived, mate?", "Arrived yet, mate?", "Are you there yet, mate?", "Have you arrived, guys?"]
-    explain:
-      ar_eg: wes = wis بتاعة سورابايا، tekan = يوصل.
-      ar: wes = wis في سورابايا، وtekan = يصل.
-      en: wes is Surabaya's wis; tekan = arrive.
-    words: [wis, tekan]
-  - id: e13
-    type: dictation
-    text: Aku durung mangan.
-    meaning:
-      ar_eg: لسه ماكلتش.
-      ar: لم آكل بعد.
-      en: I haven't eaten yet.
-    words: [durung, mangan]
-  - id: e14
+  - id: e06
     type: speaking
     text: Kowé wis mangan? — Durung.
     meaning:
@@ -364,11 +256,6 @@ new_words:
     ar_eg: يقرا (= membaca؛ شات moco)
     ar: يقرأ (= membaca؛ دردشة moco)
     en: to read (= membaca; chat moco)
-  - word: tekan
-    pos: verb
-    ar_eg: يوصل (= sampai)
-    ar: يصل (= sampai)
-    en: to arrive (= sampai)
 review:
   status: draft
   verified: false

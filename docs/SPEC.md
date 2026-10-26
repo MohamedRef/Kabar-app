@@ -120,7 +120,7 @@ The tablet is where Kabar becomes creative.
 **Kak Nur** — *Kak* is the friendly Indonesian word for an older sibling, and *Nur* is نور. Speaks Egyptian Arabic (or English) with Indonesian sprinkled in; warm, honest, specific; remembers my goals, struggles and wins. Its voice and message templates are written at build time (§18); runtime AI only fills in the personal details.
 
 - **Onboarding:** why I'm learning, minutes per day, a target (e.g., BIPA 2 by a date), preferred study times, reminder style. Then a two-minute placement chat with Mas Ardi decides where my journey starts.
-- **Daily plan** (*Rencana Hari Ini*): built from due reviews, the current unit and weak spots, sized by one question: "5, 15 or 30 minutes today?" Same plan on every device.
+- **Daily plan** (*Rencana Hari Ini*): built from due reviews, the current unit and weak spots, sized by one question: "5, 15 or 30 minutes today?" Same plan on every device. Reviews come first: 5 min = reviews (≤2 min) + the next lesson; 15 min = reviews (~6) + one lesson (~6) + a weak spot (~3); 30 min = two such blocks with a break offer, adding a short read or listen. At most 5 / 12 / 20 new words and 2 new grammar points a day; a comeback after a break starts with the light 5-minute plan (`docs/PEDAGOGY.md`).
 - **End-of-day recap:** 30 seconds — what I learned, one thing to remember, tomorrow's first step.
 - **Smart reminders:** at my chosen times, nudged toward when I actually study (learned from my history). Quiet hours respected; one tap to snooze. **Account-aware:** once I've met today's goal on any device, the others stay silent.
 - **Weekly report** (Thursday evening by default): time, new words, retention, streak, strongest and weakest skills, a note from Kak Nur, next week's focus. The plan adapts automatically.
@@ -219,7 +219,9 @@ My unfair advantage: a large share of Indonesian vocabulary comes from Arabic (o
 
 ## 14. Lessons, exercises & mini-games
 
-**Lesson pattern** (Airlearn-style): 3–6 teaching slides → 8–15 exercises → mini dialogue → new-words summary → souvenir. All of it is prebuilt content (§18).
+**Lesson pattern** (Airlearn-style): 1–4 teaching slides → 6–10 exercises (review lessons 8–12) → mini dialogue (4–6 lines) → new-words summary (3–8 new words in a learn lesson) → souvenir. All of it is prebuilt content (§18).
+
+**Lesson size:** every lesson fits in **7 minutes** (target 4–6), with at most 2 new grammar points. Bigger topics are split into more lessons, never squeezed. The evidence, the per-kind caps and the time model are in `docs/PEDAGOGY.md`; the caps live in `kabar_core::lesson::pacing` and the content validator rejects any lesson over them.
 
 **Exercise types:** multiple choice · match pairs · translate both ways (free text or handwriting, graded against prebuilt reference answers + AI for open answers, with specific, kind feedback) · build a sentence from a word bank · listen and pick/type · fill the blank · dictation (typed or handwritten) · speaking (later).
 

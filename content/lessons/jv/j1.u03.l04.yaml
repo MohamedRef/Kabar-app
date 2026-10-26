@@ -82,7 +82,7 @@ exercises:
       ar_eg: إنت لسه في القطر. ترد إزاي؟
       ar: ما زلت في القطار. بمَ تجيب؟
       en: You're still on the train. How do you answer?
-    options: ["Durung, isih nang sepur.", "Arep turu.", "Wis."]
+    options: ['Durung, isih nang sepur.', Arep turu., Wis.]
     answer: 0
     explain:
       ar_eg: durung = لسه ماوصلتش، وisih nang sepur = لسه في القطر.
@@ -96,7 +96,7 @@ exercises:
       ar_eg: إيه الكتابة الرسمية للرسالة دي؟
       ar: ما الإملاء القياسي لهذه الرسالة؟
       en: What's the standard spelling of this message?
-    options: ["Nang Prabowo?", "Ngapa Prabowo?", "Yang Prabowo?"]
+    options: ['Nang Prabowo?', 'Ngapa Prabowo?', 'Yang Prabowo?']
     answer: 0
     explain:
       ar_eg: ng = nang / neng (لـ / في).
@@ -104,59 +104,31 @@ exercises:
       en: ng = nang / neng (to / at).
     words: [nang]
   - id: e05
-    type: multiple_choice
-    question: Aku arep mangan sate karo Rara.
-    question_meaning:
-      ar_eg: الجملة دي جاوي ولا إندونيسي؟
-      ar: هذه الجملة جاوية أم إندونيسية؟
-      en: Javanese or Indonesian?
-    options: ["Basa Indonesia", "Basa Jawa"]
-    answer: 1
-    explain:
-      ar_eg: arep وmangan وkaro علامات جاوي.
-      ar: arep وmangan وkaro من علامات الجاوية.
-      en: arep, mangan and karo are Javanese markers.
-    words: [arep, karo]
-  - id: e06
-    type: multiple_choice
-    question: Aku lagi di rumah sama adikku.
-    question_meaning:
-      ar_eg: الجملة دي جاوي ولا إندونيسي؟
-      ar: هذه الجملة جاوية أم إندونيسية؟
-      en: Javanese or Indonesian?
-    options: ["Basa Jawa", "Basa Indonesia"]
-    answer: 1
-    explain:
-      ar_eg: di وrumah وsama إندونيسي. بالجاوي هتبقى nang omah karo.
-      ar: di وrumah وsama إندونيسية، وبالجاوية nang omah karo.
-      en: di, rumah and sama are Indonesian; Javanese would be nang omah karo.
-    words: [nang, omah, karo]
-  - id: e07
     type: listen
     text: Aku isih nang Tunjungan.
-    options: ["Aku isih nang Tunjungan.", "Aku wis nang Tunjungan.", "Aku arep nang Tunjungan."]
+    options: [Aku isih nang Tunjungan., Aku wis nang Tunjungan., Aku arep nang Tunjungan.]
     answer: 0
     words: [isih, nang]
-  - id: e08
+  - id: e06
     type: fill_blank
-    sentence: "wes mangan? → ___ mangan?"
+    sentence: wes mangan? → ___ mangan?
     meaning:
       ar_eg: كلت؟
       ar: هل أكلت؟
       en: Have you eaten?
     answers: [wis, Wis]
     words: [wis]
-  - id: e09
+  - id: e07
     type: fill_blank
     sentence: Aku ___ mangan. Ayo mangan!
     meaning:
       ar_eg: لسه ماكلتش. يلا ناكل!
       ar: لم آكل بعد. هيا نأكل!
       en: I haven't eaten yet. Let's eat!
-    options: ["durung", "isih", "wis"]
+    options: [durung, isih, wis]
     answers: [durung]
     words: [durung]
-  - id: e10
+  - id: e08
     type: build_sentence
     source:
       ar_eg: هنام. خلاص، سلام!
@@ -165,42 +137,29 @@ exercises:
     answer: Aku arep turu. Wis ya!
     distractors: [tidur, durung]
     words: [arep, turu, wis]
-  - id: e11
+  - id: e09
     type: translate
     direction: from_target
     source_text: sek, aku lagi moco
     answers_meaning:
-      ar_eg: ["استنى، أنا بقرا.", "استنى، بقرا", "لحظة، أنا بقرا", "استنى، أنا بقرا دلوقتي"]
-      ar: ["انتظر، أنا أقرأ.", "لحظة، أنا أقرأ الآن", "انتظر، أقرأ الآن"]
-      en: ["Hold on, I'm reading.", "Hold on, I'm reading", "Wait, I'm reading", "Just a sec, I'm reading"]
+      ar_eg: [استنى، أنا بقرا., استنى، بقرا, لحظة، أنا بقرا, استنى، أنا بقرا دلوقتي]
+      ar: [انتظر، أنا أقرأ., لحظة، أنا أقرأ الآن, انتظر، أقرأ الآن]
+      en: ['Hold on, I''m reading.', 'Hold on, I''m reading', 'Wait, I''m reading', 'Just a sec, I''m reading']
     explain:
       ar_eg: sek = استنى، lagi = دلوقتي، moco = maca (يقرا).
       ar: sek = انتظر، وlagi = الآن، وmoco = maca.
       en: sek = hold on, lagi = -ing, moco = maca (read).
     words: [sek, lagi, maca]
-  - id: e12
+  - id: e10
     type: translate
     direction: from_target
     source_text: rek, aku gk ngerti opo2
     answers_meaning:
-      ar_eg: ["يا جدعان، أنا مش فاهم أي حاجة.", "يا جماعة، مش فاهم حاجة", "يا جدعان، مش فاهم أي حاجة"]
-      ar: ["يا جماعة، لا أفهم شيئًا.", "يا جماعة، لا أفهم أي شيء"]
-      en: ["Guys, I don't understand anything.", "Guys, I don't get anything", "Mate, I don't understand anything"]
+      ar_eg: [يا جدعان، أنا مش فاهم أي حاجة., يا جماعة، مش فاهم حاجة, يا جدعان، مش فاهم أي حاجة]
+      ar: [يا جماعة، لا أفهم شيئًا., يا جماعة، لا أفهم أي شيء]
+      en: ['Guys, I don''t understand anything.', 'Guys, I don''t get anything', 'Mate, I don''t understand anything']
     words: [gak, ngerti, apa-apa]
-  - id: e13
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا لسه ماوصلتش. (بالجاوي الرسمي)
-      ar: لم أصل بعد. (بالجاوية القياسية)
-      en: I haven't arrived yet. (standard Javanese)
-    answers:
-      - Aku durung tekan.
-      - Aku durung tekan
-      - Durung tekan.
-      - Durung tekan
-    words: [durung, tekan]
-  - id: e14
+  - id: e11
     type: dictation
     text: Wis tekan durung?
     meaning:
@@ -208,7 +167,7 @@ exercises:
       ar: هل وصلت أم ليس بعد؟
       en: Arrived yet?
     words: [wis, tekan, durung]
-  - id: e15
+  - id: e12
     type: speaking
     text: Durung, aku isih nang sepur.
     meaning:

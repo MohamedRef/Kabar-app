@@ -251,6 +251,27 @@ fn check_curricula(report: &mut Report) {
                     if !ids.insert(lesson.id.clone()) {
                         problems.push(format!("duplicate id {}", lesson.id));
                     }
+                    match kabar_core::lesson::pacing::caps(&lesson.kind) {
+                        Some(caps) if lesson.grammar.len() > caps.max_grammar => problems.push(format!(
+                            "{}: {} grammar points; a {} lesson teaches at most {} (docs/PEDAGOGY.md)",
+                            lesson.id,
+                            lesson.grammar.len(),
+                            lesson.kind,
+                            caps.max_grammar
+                        )),
+                        Some(_) => {}
+                        None => {
+                            problems.push(format!("{}: unknown lesson kind '{}'", lesson.id, lesson.kind))
+                        }
+                    }
+                    if lesson.minutes > kabar_core::lesson::pacing::MAX_LESSON_SECONDS / 60 {
+                        problems.push(format!(
+                            "{}: {} minutes; a lesson fits in {} (docs/PEDAGOGY.md)",
+                            lesson.id,
+                            lesson.minutes,
+                            kabar_core::lesson::pacing::MAX_LESSON_SECONDS / 60
+                        ));
+                    }
                     for g in &lesson.grammar {
                         if !unit_grammar.contains(g.as_str()) {
                             problems.push(format!("{}: grammar {g} is not listed on its unit", lesson.id));

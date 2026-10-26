@@ -1,0 +1,185 @@
+schema: kabar.lesson/v1
+id: bipa1.u04.l06
+language: id
+title: Kapan? Berapa?
+can_do:
+  ar_eg: تسأل إمتى، وعندك كام سنة، ورقم إيه.
+  ar: أن تسأل متى، وكم العمر، وما الرقم.
+  en: Ask when, how old and what number.
+slides:
+  - title: Kapan? Berapa?
+    body:
+      ar_eg: |
+        - kapan = إمتى: «Kapan kamu datang?» = «هتيجي إمتى؟»
+        - berapa = كام، لأي رقم: السعر، السن، رقم التليفون، الساعة.
+          «Umurmu berapa?» = «عندك كام سنة؟» — «Nomor HP-mu berapa?» = «رقمك كام؟»
+        وكلمة waktu جاية من العربي «وقت»، وumur (السن) من «عمر». وتوقيت جاكرتا اسمه WIB = Waktu Indonesia Barat.
+      ar: |
+        - kapan = متى: «Kapan kamu datang?» = «متى تأتي؟»
+        - berapa = كم، لكل عدد: السعر والعمر ورقم الهاتف والساعة.
+          «Umurmu berapa?» = «كم عمرك؟» — «Nomor HP-mu berapa?» = «ما رقم هاتفك؟»
+        وكلمة waktu من العربية «وقت»، وumur من «عمر». وتوقيت جاكرتا WIB = Waktu Indonesia Barat.
+      en: |
+        - kapan = when: "Kapan kamu datang?" = "When are you coming?"
+        - berapa = how much / how many / what number: price, age, phone number, time.
+          "Umurmu berapa?" = "How old are you?" — "Nomor HP-mu berapa?" = "What's your phone number?"
+        waktu (time) comes from Arabic «وقت», and umur (age) from «عمر». Jakarta time is WIB = Waktu Indonesia Barat.
+    grammar: id.question.kapan-berapa
+    examples:
+      - text: Umur saya dua puluh lima tahun.
+        ar_eg: عندي خمسة وعشرين سنة.
+        ar: عمري خمسة وعشرون عامًا.
+        en: I'm twenty-five years old.
+      - text: Jam berapa toko itu buka?
+        ar_eg: المحل ده بيفتح الساعة كام؟
+        ar: متى يفتح ذلك المتجر؟
+        en: What time does that shop open?
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تسأل صاحبك «عندك كام سنة؟»
+      ar: كيف تسأل صديقك «كم عمرك؟»
+      en: How do you ask a friend "How old are you?"
+    options: ['Kapan umurmu?', 'Umurmu apa?', 'Umurmu berapa?']
+    answer: 2
+    explain:
+      ar_eg: السن رقم، يبقى berapa.
+      ar: العمر عدد، فيُسأل عنه بـ berapa.
+      en: Age is a number, so ask with berapa.
+    words: [umur, berapa]
+  - id: e02
+    type: fill_blank
+    sentence: ___ kamu datang? — Besok.
+    meaning:
+      ar_eg: هتيجي إمتى؟ — بكرة.
+      ar: متى تأتي؟ — غدًا.
+      en: When are you coming? — Tomorrow.
+    options: [Kapan, Berapa, Siapa]
+    answers: [Kapan]
+    words: [kapan]
+  - id: e03
+    type: fill_blank
+    sentence: Toko itu buka jam delapan ___.
+    meaning:
+      ar_eg: المحل ده بيفتح الساعة ٨ الصبح.
+      ar: يفتح ذلك المتجر في الثامنة صباحًا.
+      en: That shop opens at 8 a.m.
+    options: [malam, sore, pagi]
+    answers: [pagi]
+    words: [toko, buka, pagi]
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: المحل ده بيفتح الساعة كام؟
+      ar: في أيّ ساعة يفتح ذلك المتجر؟
+      en: What time does that shop open?
+    answer: Jam berapa toko itu buka?
+    alternatives: ['Toko itu buka jam berapa?']
+    distractors: [kapan, tutup]
+    words: [jam, berapa, toko, buka]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: عندي خمسة وعشرين سنة.
+      ar: عمري خمسة وعشرون عامًا.
+      en: I'm twenty-five years old.
+    answer: Umur saya dua puluh lima tahun.
+    distractors: [jam, belas]
+    words: [umur, tahun]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (لصاحبك) رقم موبايلك كام؟
+      ar: (لصديقك) ما رقم هاتفك؟
+      en: (to a friend) What's your phone number?
+    answers: ['Nomor HP-mu berapa?', 'Nomor HP kamu berapa?', 'Berapa nomor HP-mu?', 'Berapa nomor HP kamu?', 'Nomor HPmu berapa?', 'Nomor teleponmu berapa?', Nomor HP-mu berapa]
+    words: [nomor, berapa]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Toko ini buka jam sembilan pagi dan tutup jam sembilan malam.
+    answers_meaning:
+      ar_eg: [المحل ده بيفتح ٩ الصبح وبيقفل ٩ بالليل., المحل بيفتح الساعة تسعة الصبح ويقفل الساعة تسعة بالليل]
+      ar: [يفتح هذا المتجر في التاسعة صباحًا ويغلق في التاسعة مساءً., هذا المتجر يفتح التاسعة صباحًا ويغلق التاسعة ليلًا]
+      en: [This shop opens at 9 a.m. and closes at 9 p.m., This shop opens at nine in the morning and closes at nine at night]
+    words: [toko, buka, tutup]
+dialogue:
+  title: Pagi di Tanah Abang
+  lines:
+    - speaker: Mohamed
+      text: Permisi, Mas. Sekarang jam berapa?
+      ar_eg: لو سمحت، الساعة كام دلوقتي؟
+      ar: من فضلك، كم الساعة الآن؟
+      en: Excuse me. What time is it now?
+    - speaker: Mas Joko
+      text: Jam delapan kurang seperempat.
+      ar_eg: تمانية إلا ربع.
+      ar: الثامنة إلا ربعًا.
+      en: A quarter to eight.
+    - speaker: Mohamed
+      text: Kapan toko batik itu buka?
+      ar_eg: محل الباتيك ده بيفتح إمتى؟
+      ar: متى يفتح متجر الباتيك ذاك؟
+      en: When does that batik shop open?
+    - speaker: Mas Joko
+      text: Jam delapan. Tutup jam lima sore.
+      ar_eg: الساعة تمانية. وبيقفل خمسة العصر.
+      ar: في الثامنة، ويغلق في الخامسة مساءً.
+      en: At eight. It closes at five p.m.
+    - speaker: Mohamed
+      text: Terima kasih, Mas!
+      ar_eg: شكرًا!
+      ar: شكرًا!
+      en: Thank you!
+    - speaker: Mas Joko
+      text: Sama-sama.
+      ar_eg: العفو.
+      ar: العفو.
+      en: You're welcome.
+new_words:
+  - word: kapan
+    pos: question word
+    ar_eg: إمتى
+    ar: متى
+    en: when
+  - word: toko
+    pos: noun
+    ar_eg: محل
+    ar: متجر
+    en: shop
+  - word: buka
+    pos: verb
+    ar_eg: يفتح
+    ar: يفتح
+    en: to open
+  - word: tutup
+    pos: verb
+    ar_eg: يقفل
+    ar: يغلق
+    en: to close
+  - word: umur
+    pos: noun
+    ar_eg: سن
+    ar: عمر
+    en: age
+    arabic: عمر
+  - word: tahun
+    pos: noun
+    ar_eg: سنة
+    ar: سنة، عام
+    en: year
+  - word: nomor
+    pos: noun
+    ar_eg: رقم
+    ar: رقم
+    en: number
+  - word: HP
+    pos: noun
+    ar_eg: موبايل
+    ar: هاتف محمول
+    en: mobile phone
+review:
+  status: draft
+  verified: false

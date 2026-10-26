@@ -87,8 +87,12 @@ impl Validator {
             self.issue("title", "empty");
         }
         self.localized("can_do", &l.can_do);
-        if l.slides.len() > 6 {
-            self.issue("slides", format!("{} slides; a lesson teaches with at most 6", l.slides.len()));
+        let max_slides = pacing::caps("learn").map_or(0, |c| *c.slides.end());
+        if l.slides.len() > max_slides {
+            self.issue(
+                "slides",
+                format!("{} slides; a lesson teaches with at most {max_slides}", l.slides.len()),
+            );
         }
         for (i, s) in l.slides.iter().enumerate() {
             let p = format!("slides[{i}]");
@@ -100,9 +104,19 @@ impl Validator {
                 self.localized(&format!("{p}.examples[{j}]"), &e.meaning);
             }
         }
-        if !(8..=15).contains(&l.exercises.len()) {
-            self.issue("exercises", format!("{} exercises; SPEC §14 asks for 8–15", l.exercises.len()));
+        if !(pacing::MIN_EXERCISES..=pacing::MAX_EXERCISES).contains(&l.exercises.len()) {
+            self.issue(
+                "exercises",
+                format!(
+                    "{} exercises; docs/PEDAGOGY.md asks for {}–{}",
+                    l.exercises.len(),
+                    pacing::MIN_EXERCISES,
+                    pacing::MAX_EXERCISES
+                ),
+            );
         }
+        // The 7-minute cap (pacing::estimate_seconds) is an authoring rule:
+        // crates/content checks it for every lesson file, the player never refuses one.
         let mut ids = HashSet::new();
         for (i, ex) in l.exercises.iter().enumerate() {
             let p = format!("exercises[{i}] ({})", ex.id);
@@ -982,6 +996,7 @@ pub fn mistake_words(ex: &Exercise) -> Vec<String> {
 }
 
 pub mod level_test;
+pub mod pacing;
 
 #[cfg(test)]
 mod tests;

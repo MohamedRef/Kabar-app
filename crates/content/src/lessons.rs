@@ -9,6 +9,8 @@
 
 use std::collections::{BTreeMap, BTreeSet};
 
+use kabar_core::lesson::pacing;
+use kabar_protocol::lesson::LessonContent;
 use serde_json::{Map, Value};
 
 use crate::model::{Curriculum, Lesson, Unit};
@@ -38,6 +40,14 @@ fn has_arabic(s: &str) -> bool {
 impl Check<'_> {
     fn push(&mut self, msg: impl std::fmt::Display) {
         self.out.push(format!("{}: {msg}", self.file));
+    }
+
+    /// A pacing cap from docs/PEDAGOGY.md: `n` of `what` must lie in `range`.
+    fn within(&mut self, kind: &str, what: &str, n: usize, range: &std::ops::RangeInclusive<usize>) {
+        if !range.contains(&n) {
+            let (lo, hi) = (range.start(), range.end());
+            self.push(format_args!("{n} {what}; a {kind} lesson has {lo}-{hi} (docs/PEDAGOGY.md)"));
+        }
     }
 
     /// Requires `required` keys and rejects keys outside `required` + `optional`.
@@ -690,10 +700,11 @@ pub fn check_lesson(file: &str, stem: &str, dir: &str, v: &Value, index: &Index,
     // Slides.
     let slides = m.get("slides").and_then(Value::as_array).cloned().unwrap_or_default();
     let learn = lesson.kind == "learn";
-    let (lo, hi) = if learn { (3, 6) } else { (0, 2) };
-    if !(lo..=hi).contains(&slides.len()) {
-        c.push(format_args!("a {} lesson needs {lo}-{hi} slides", lesson.kind));
-    }
+    let Some(caps) = pacing::caps(&lesson.kind) else {
+        c.push(format_args!("unknown lesson kind '{}'", lesson.kind));
+        return;
+    };
+    c.within(&lesson.kind, "slides", slides.len(), &caps.slides);
     let allowed: BTreeSet<&str> =
         if learn { lesson.grammar.iter() } else { unit.grammar.iter() }.map(String::as_str).collect();
     let mut taught = BTreeSet::new();
@@ -704,7 +715,11 @@ pub fn check_lesson(file: &str, stem: &str, dir: &str, v: &Value, index: &Index,
         if sm.contains_key("title") {
             c.text(&format!("{at}.title"), sm.get("title"));
         }
-        for (j, ex) in sm.get("examples").and_then(Value::as_array).into_iter().flatten().enumerate() {
+        let examples = sm.get("examples").and_then(Value::as_array).cloned().unwrap_or_default();
+        if examples.len() > pacing::MAX_SLIDE_EXAMPLES {
+            c.push(format_args!("{at}: at most {} examples per slide", pacing::MAX_SLIDE_EXAMPLES));
+        }
+        for (j, ex) in examples.iter().enumerate() {
             c.localized(&format!("{at}.examples[{j}]"), Some(ex), &["text"], &[]);
         }
         if let Some(g) = sm.get("grammar").and_then(Value::as_str) {
@@ -725,9 +740,7 @@ pub fn check_lesson(file: &str, stem: &str, dir: &str, v: &Value, index: &Index,
 
     // Exercises.
     let exercises = m.get("exercises").and_then(Value::as_array).cloned().unwrap_or_default();
-    if !(8..=15).contains(&exercises.len()) {
-        c.push("a lesson needs 8-15 exercises");
-    }
+    c.within(&lesson.kind, "exercises", exercises.len(), &caps.exercises);
     let mut kinds = BTreeSet::new();
     for (i, e) in exercises.iter().enumerate() {
         let id = format!("e{:02}", i + 1);
@@ -736,8 +749,8 @@ pub fn check_lesson(file: &str, stem: &str, dir: &str, v: &Value, index: &Index,
         }
         kinds.extend(c.exercise(&format!("exercises[{i}]"), e, false));
     }
-    if kinds.len() < 4 {
-        c.push("use at least 4 exercise types");
+    if kinds.len() < pacing::MIN_EXERCISE_TYPES {
+        c.push(format_args!("use at least {} exercise types", pacing::MIN_EXERCISE_TYPES));
     }
 
     // Optional link to a mini-game scene: uu.<scene> (Unggah-Ungguh) or mp.<pair> (Minimal Pairs).
@@ -758,9 +771,7 @@ pub fn check_lesson(file: &str, stem: &str, dir: &str, v: &Value, index: &Index,
         Some(d) => {
             if let Some(dm) = c.fields("dialogue", d, &["lines"], &["title"]) {
                 let lines = dm.get("lines").and_then(Value::as_array).cloned().unwrap_or_default();
-                if lines.len() < 4 {
-                    c.push("dialogue needs at least 4 lines");
-                }
+                c.within(&lesson.kind, "dialogue lines", lines.len(), &caps.dialogue_lines);
                 for (i, l) in lines.iter().enumerate() {
                     c.localized(&format!("dialogue.lines[{i}]"), Some(l), &["speaker", "text"], &[]);
                 }
@@ -768,9 +779,7 @@ pub fn check_lesson(file: &str, stem: &str, dir: &str, v: &Value, index: &Index,
         }
     }
     let words = m.get("new_words").and_then(Value::as_array).cloned().unwrap_or_default();
-    if learn && words.len() < 3 {
-        c.push("a learn lesson needs at least 3 new_words");
-    }
+    c.within(&lesson.kind, "new_words", words.len(), &caps.new_words);
     for (i, w) in words.iter().enumerate() {
         let at = format!("new_words[{i}]");
         c.localized(&at, Some(w), &["word"], &["pos", "arabic"]);
@@ -795,6 +804,24 @@ pub fn check_lesson(file: &str, stem: &str, dir: &str, v: &Value, index: &Index,
         (false, None) => {}
     }
     c.review(m.get("review"), language);
+
+    // Time: the whole lesson fits the cap, and the curriculum shows its estimate.
+    if let Ok(content) = serde_json::from_value::<LessonContent>(v.clone()) {
+        let seconds = pacing::estimate_seconds(&content);
+        if seconds > pacing::MAX_LESSON_SECONDS {
+            c.push(format_args!(
+                "takes about {seconds} s; a lesson must fit in {} s (docs/PEDAGOGY.md)",
+                pacing::MAX_LESSON_SECONDS
+            ));
+        }
+        let minutes = pacing::estimate_minutes(&content);
+        if lesson.minutes != minutes {
+            c.push(format_args!(
+                "curriculum minutes must be the estimate, {minutes} (is {})",
+                lesson.minutes
+            ));
+        }
+    }
 }
 
 /// Checks one level or placement test file.

@@ -137,72 +137,34 @@ exercises:
     words: [esuk, awan, bengi, wingi, sésuk]
   - id: e02
     type: multiple_choice
-    question: "7:30 = ?"
-    question_meaning:
-      ar_eg: إزاي تقول سبعة ونص؟
-      ar: كيف تقول السابعة والنصف؟
-      en: How do you say 7:30?
-    options: ["setengah pitu", "jam wolu kurang seprapat", "setengah wolu"]
-    answer: 2
-    explain:
-      ar_eg: "setengah بتتحسب للساعة الجاية: «نص تمانية» = سبعة ونص. وjam wolu kurang seprapat = تمانية إلا ربع (7:45)."
-      ar: يُضاف setengah إلى الساعة التالية، أما jam wolu kurang seprapat فهي 7:45.
-      en: setengah counts toward the next hour; jam wolu kurang seprapat is 7:45.
-    words: [setengah, wolu]
-  - id: e03
-    type: multiple_choice
-    question: "4:15 = ?"
-    question_meaning:
-      ar_eg: إزاي تقول أربعة وربع؟
-      ar: كيف تقول الرابعة والربع؟
-      en: How do you say 4:15?
-    options: ["jam papat kurang seprapat", "jam papat luwih seprapat", "setengah papat"]
-    answer: 1
-    words: [luwih, seprapat]
-  - id: e04
-    type: multiple_choice
     question_meaning:
       ar_eg: أنهي جملة معناها «عايز آكل»؟
       ar: أي جملة تعني «أريد أن آكل»؟
       en: Which sentence means "I want to eat"?
-    options: ["Aku wis mangan.", "Aku mau mangan.", "Aku arep mangan."]
+    options: [Aku wis mangan., Aku mau mangan., Aku arep mangan.]
     answer: 2
     explain:
       ar_eg: mau الجاوي = «من شوية»، فـ Aku mau mangan = «كلت من شوية». «عايز» = arep.
       ar: mau الجاوية = «قبل قليل»، والإرادة arep.
       en: Javanese mau = "a while ago", so Aku mau mangan = "I ate earlier". "Want" is arep.
     words: [mau, arep]
-  - id: e05
+  - id: e03
     type: listen
     text: Saiki jam setengah wolu.
-    options: ["Saiki jam setengah pitu.", "Saiki jam setengah wolu.", "Saiki jam wolu."]
+    options: [Saiki jam setengah pitu., Saiki jam setengah wolu., Saiki jam wolu.]
     answer: 1
     words: [saiki, setengah]
-  - id: e06
+  - id: e04
     type: fill_blank
     sentence: Reogé jam wolu ___.
     meaning:
       ar_eg: الريوج الساعة تمانية بالليل.
       ar: عرض الريوغ في الثامنة ليلًا.
       en: The Reog show is at 8 p.m.
-    options: ["esuk", "awan", "bengi"]
+    options: [esuk, awan, bengi]
     answers: [bengi]
     words: [bengi]
-  - id: e07
-    type: fill_blank
-    sentence: Jam lima ___ seprapat.
-    meaning:
-      ar_eg: خمسة إلا ربع.
-      ar: الخامسة إلا ربعًا.
-      en: A quarter to five.
-    answers:
-      - kurang
-    explain:
-      ar_eg: kurang = إلا. luwih = و (بعد).
-      ar: kurang = إلا، وluwih = بعد.
-      en: kurang = to; luwih = past.
-    words: [kurang, seprapat]
-  - id: e08
+  - id: e05
     type: build_sentence
     source:
       ar_eg: الساعة كام دلوقتي؟
@@ -211,74 +173,7 @@ exercises:
     answer: Saiki jam pira?
     distractors: [sapa, wingi]
     words: [saiki, jam, pira]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الساعة تلاتة.
-      ar: الساعة الثالثة.
-      en: It's three o'clock.
-    answers:
-      - Jam telu.
-      - Jam telu
-      - Saiki jam telu.
-      - Saiki jam telu
-    words: [jam, telu]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: بكرة رايح بونوروجو.
-      ar: غدًا سأذهب إلى بونوروغو.
-      en: Tomorrow I'm going to Ponorogo.
-    answers:
-      - Sésuk aku arep neng Ponorogo.
-      - Sésuk aku arep neng Ponorogo
-      - Sesuk aku arep neng Ponorogo.
-      - Sesuk aku arep neng Ponorogo
-      - Sésuk aku arep nang Ponorogo.
-      - Sésuk aku arep nang Ponorogo
-      - Sesuk aku arep nang Ponorogo.
-      - Sesuk aku arep nang Ponorogo
-      - Sésuk aku neng Ponorogo.
-      - Sésuk aku neng Ponorogo
-      - Sesuk aku neng Ponorogo.
-      - Sesuk aku neng Ponorogo
-      - Sésuk aku nang Ponorogo.
-      - Sésuk aku nang Ponorogo
-      - Sesuk aku nang Ponorogo.
-      - Sesuk aku nang Ponorogo
-      - Aku sésuk arep neng Ponorogo.
-      - Aku sésuk arep neng Ponorogo
-      - Aku sesuk arep neng Ponorogo.
-      - Aku sesuk arep neng Ponorogo
-      - Sésuk aku arep menyang Ponorogo.
-      - Sésuk aku arep menyang Ponorogo
-      - Sesuk aku arep menyang Ponorogo.
-      - Sesuk aku arep menyang Ponorogo
-    words: [sésuk, arep, neng]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: Mau esuk aku wis mangan.
-    answers_meaning:
-      ar_eg: ["أنا كلت الصبح خلاص.", "كلت الصبح", "أنا فطرت الصبح خلاص"]
-      ar: ["أكلتُ صباح اليوم.", "لقد أكلت هذا الصباح"]
-      en: ["I already ate this morning.", "I ate this morning", "I've already eaten this morning"]
-    explain:
-      ar_eg: mau esuk = الصبح اللي فات (tadi pagi).
-      ar: mau esuk = صباح اليوم الذي مضى (tadi pagi).
-      en: mau esuk = earlier this morning (tadi pagi).
-    words: [mau, esuk]
-  - id: e12
-    type: dictation
-    text: Saiki jam setengah wolu.
-    meaning:
-      ar_eg: الساعة دلوقتي سبعة ونص.
-      ar: الساعة الآن السابعة والنصف.
-      en: It's half past seven now.
-    words: [saiki, setengah, wolu]
-  - id: e13
+  - id: e06
     type: speaking
     text: Jam papat luwih seprapat.
     meaning:
@@ -355,11 +250,6 @@ new_words:
     ar_eg: من شوية
     ar: قبل قليل
     en: earlier, just now (tadi)
-  - word: ketemu
-    pos: verb
-    ar_eg: يقابل
-    ar: يلتقي
-    en: to meet (ketemu)
 review:
   status: draft
   verified: false
