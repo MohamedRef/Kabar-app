@@ -93,6 +93,11 @@
   font-size: 1.1rem;
 }
 .chips .lp-choice { border-radius: 999px; padding-block: 0.5rem; }
+.chips .lp-choice { gap: 0.45rem; }
+.chips .lp-key { inline-size: 1.3rem; block-size: 1.3rem; border-radius: 999px; font-size: 0.7rem; }
+/* Touch screens have no number keys: the hints only help with a keyboard. */
+@media (hover: none) and (pointer: coarse) { .chips .lp-key { display: none; } }
+.lp-voice-note { margin-block: 0 0.75rem; }
 .lp-choice[aria-pressed="true"] { background: var(--lp-review); color: var(--text); border-color: var(--indigo); }
 .lp-choice.right { background: var(--lp-good); border-color: var(--sawah); color: var(--text); }
 .lp-choice.wrong { background: var(--lp-miss); border-color: var(--dawn); color: var(--text); }

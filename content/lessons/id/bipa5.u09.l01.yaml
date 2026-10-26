@@ -1,0 +1,215 @@
+schema: kabar.lesson/v1
+id: bipa5.u09.l01
+language: id
+title: Kata serapan
+can_do:
+  ar_eg: تعرف الكلمات الإندونيسية جاية منين، وتختار الكلمة المناسبة للمقام.
+  ar: أن تتتبّع أصول الكلمات الإندونيسية الدخيلة، وتختار الكلمة المناسبة للمقام.
+  en: Trace where Indonesian words come from, and pick the word that fits the register.
+slides:
+  - title: Bahasa yang suka meminjam
+    body:
+      ar_eg: |
+        الإندونيسي أصله ملايو، لغة التجارة القديمة، واستلف كلمات من كل حتة. الكلمات دي اسمها kata serapan:
+        - من العربي: kabar، waktu، ilmu، kitab، musyawarah
+        - من السنسكريتي: bahasa، agama، negara، guru
+        - من البرتغالي: sepatu، meja، bendera
+        - من الهولندي: kantor، handuk
+        - من الصيني: mi، tahu، kecap
+      ar: |
+        أصل الإندونيسية الملايوية، لغة التجارة القديمة، وقد اقترضت من كلّ صوب. تسمّى هذه الكلمات kata serapan:
+        - من العربية: kabar وwaktu وilmu وkitab وmusyawarah
+        - من السنسكريتية: bahasa وagama وnegara وguru
+        - من البرتغالية: sepatu وmeja وbendera
+        - من الهولندية: kantor وhanduk
+        - من الصينية: mi وtahu وkecap
+      en: |
+        Indonesian grew from Malay, the old trade language, and borrowed from everywhere. These words are kata serapan:
+        - Arabic: kabar, waktu, ilmu, kitab, musyawarah
+        - Sanskrit: bahasa, agama, negara, guru
+        - Portuguese: sepatu, meja, bendera
+        - Dutch: kantor, handuk
+        - Chinese: mi, tahu, kecap
+    examples:
+      - text: Kata "waktu" berasal dari bahasa Arab.
+        ar_eg: كلمة waktu أصلها عربي.
+        ar: كلمة waktu أصلها عربي.
+        en: The word "waktu" comes from Arabic.
+  - title: Satu makna, tiga ragam
+    grammar: id.register.formal-informal
+    body:
+      ar_eg: |
+        ساعات الكلمة الدخيلة هي الأرسمى. شوف «مات»:
+        - wafat (من العربي «وفاة») = للعلماء والكبار، في الأخبار والخطب
+        - meninggal (dunia) = المؤدبة العادية للناس
+        - mati = للحيوانات والأجهزة، ولو قلتها على بني آدم تبقى جافة قوي
+        وكده مع Anda / kamu: اختار على حسب الموقف.
+      ar: |
+        أحيانًا تكون الكلمة الدخيلة هي الأرسم. خذ «مات»:
+        - wafat (من العربية «وفاة») = للعلماء والكبار، في الأخبار والخطب
+        - meninggal (dunia) = اللفظ المهذّب المعتاد للناس
+        - mati = للحيوان والأجهزة، وتبدو جافّة جدًّا إن قيلت عن إنسان
+        وهكذا مثل Anda وkamu: اختر بحسب المقام.
+      en: |
+        Sometimes the loanword is the most formal option. Take "to die":
+        - wafat (from Arabic wafāh) = for scholars and elders, in news and sermons
+        - meninggal (dunia) = the normal polite word for people
+        - mati = for animals and devices; said of a person it sounds very blunt
+        Like Anda and kamu: choose by the situation.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kata serapan
+        ar_eg: كلمة دخيلة
+        ar: كلمة دخيلة
+        en: loanword
+      - text: berasal dari
+        ar_eg: أصلها من
+        ar: أصله من
+        en: to come from
+      - text: kosakata
+        ar_eg: مفردات
+        ar: مفردات
+        en: vocabulary
+      - text: asing
+        ar_eg: أجنبي
+        ar: أجنبي
+        en: foreign
+      - text: wafat
+        ar_eg: توفّى
+        ar: تُوفّي
+        en: to pass away (formal)
+    words: [kata serapan, berasal dari, kosakata, asing, wafat]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة أصلها عربي؟
+      ar: أيّ كلمة أصلها عربي؟
+      en: Which word comes from Arabic?
+    options: [sepatu, kitab, kantor]
+    answer: 1
+    words: [kata serapan, berasal dari]
+  - id: e03
+    type: fill_blank
+    sentence: Ulama besar itu ___ pada tahun 1990.
+    meaning:
+      ar_eg: العالم الكبير ده اتوفّى سنة 1990.
+      ar: تُوفّي ذلك العالم الكبير عام 1990.
+      en: That great scholar passed away in 1990.
+    options: [wafat, mati, asing]
+    answers: [wafat]
+    words: [wafat]
+  - id: e04
+    type: listen
+    text: Kata "meja" berasal dari bahasa Portugis.
+    question:
+      ar_eg: كلمة meja أصلها منين؟
+      ar: من أين أتت كلمة meja؟
+      en: Where does the word "meja" come from?
+    options:
+      - من العربي.
+      - من البرتغالي.
+      - من الهولندي.
+    answer: 1
+    words: [berasal dari]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: مفردات الإندونيسي فيها كلمات أجنبية كتير.
+      ar: في مفردات الإندونيسية كلمات أجنبية كثيرة.
+      en: Indonesian vocabulary has many foreign words.
+    answer: Kosakata bahasa Indonesia punya banyak kata asing.
+    distractors: [wafat, berasal]
+    words: [kosakata, asing]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: هتقول إيه في خبر عن وفاة مفتي؟
+      ar: أيّ كلمة تناسب خبرًا عن وفاة مفتٍ؟
+      en: Which word fits a news item about a mufti's death?
+    options: [wafat, mati, hilang]
+    answer: 0
+    words: [wafat]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: كلمات دخيلة كتير أصلها من العربي.
+      ar: كثير من الكلمات الدخيلة أصله عربي.
+      en: Many loanwords come from Arabic.
+    answers:
+      - Banyak kata serapan berasal dari bahasa Arab.
+      - Banyak kata serapan yang berasal dari bahasa Arab.
+      - Kata serapan dari bahasa Arab banyak sekali.
+      - Banyak kata serapan berasal dari Arab.
+    words: [kata serapan, berasal dari]
+  - id: e08
+    type: speaking
+    text: Saya ingin menambah kosakata saya setiap hari.
+    meaning:
+      ar_eg: عايز أزوّد مفرداتي كل يوم.
+      ar: أريد أن أزيد مفرداتي كلّ يوم.
+      en: I want to grow my vocabulary every day.
+    words: [kosakata]
+  - id: e09
+    type: dictation
+    text: Bahasa asing memberi banyak kata baru.
+    meaning:
+      ar_eg: اللغات الأجنبية إدّت كلمات جديدة كتير.
+      ar: أعطت اللغات الأجنبية كلمات جديدة كثيرة.
+      en: Foreign languages have given many new words.
+    words: [asing]
+dialogue:
+  title: Di Masjid Jami' Pontianak
+  lines:
+    - speaker: Mas Rizal
+      text: Masjid ini didirikan pada masa Sultan Syarif Abdurrahman. Keluarganya berasal dari Hadramaut.
+      ar_eg: الجامع ده اتأسس أيام السلطان شريف عبد الرحمن. عيلته أصلها من حضرموت.
+      ar: تأسّس هذا الجامع في عهد السلطان الشريف عبد الرحمن، وأصل أسرته من حضرموت.
+      en: This mosque was founded in the time of Sultan Syarif Abdurrahman. His family came from Hadramaut.
+    - speaker: Mohamed
+      text: Pantas banyak kata serapan dari bahasa Arab di sini!
+      ar_eg: علشان كده في كلمات عربي كتير هنا!
+      ar: لا عجب إذن في كثرة الكلمات العربية الدخيلة هنا!
+      en: No wonder there are so many Arabic loanwords here!
+    - speaker: Mas Rizal
+      text: Betul. Tetapi kosakata kita juga dari bahasa Tionghoa, Belanda dan Portugis.
+      ar_eg: مظبوط. بس مفرداتنا كمان فيها صيني وهولندي وبرتغالي.
+      ar: صحيح، لكنّ مفرداتنا أيضًا من الصينية والهولندية والبرتغالية.
+      en: Right. But our vocabulary also comes from Chinese, Dutch and Portuguese.
+    - speaker: Mohamed
+      text: Jadi bahasa Indonesia tidak takut pada kata asing, ya.
+      ar_eg: يعني الإندونيسي مش خايف من الكلمات الأجنبية خالص.
+      ar: إذن لا تخشى الإندونيسية الكلمات الأجنبية.
+      en: So Indonesian isn't afraid of foreign words.
+new_words:
+  - word: kata serapan
+    pos: noun
+    ar_eg: كلمة دخيلة
+    ar: كلمة دخيلة
+    en: loanword
+  - word: berasal dari
+    pos: phrase
+    ar_eg: أصلها من
+    ar: أصله من
+    en: to come from, to originate in
+  - word: kosakata
+    pos: noun
+    ar_eg: مفردات
+    ar: مفردات
+    en: vocabulary
+  - word: asing
+    pos: adjective
+    ar_eg: أجنبي
+    ar: أجنبي
+    en: foreign
+  - word: wafat
+    pos: verb
+    arabic: وفاة
+    ar_eg: توفّى
+    ar: تُوفّي
+    en: to pass away (formal)
+review:
+  status: draft
+  verified: false

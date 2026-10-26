@@ -101,6 +101,13 @@ mod tests {
 
     use super::*;
 
+    #[test]
+    fn the_app_knows_the_bitrate() {
+        // Downloaded episodes time their lines from file sizes.
+        let kbps = kabar_protocol::cloud::TTS_MP3_KBPS;
+        assert!(OUTPUT_FORMAT.contains(&format!("-{kbps}kbitrate-")));
+    }
+
     fn req(segments: &[(Voice, &str)], rate: i8) -> TtsRequest {
         TtsRequest {
             segments: segments
