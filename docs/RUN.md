@@ -1,6 +1,7 @@
 # Running Kabar (M1–M2)
 
 Everything below runs on the MacBook. Commands are `just` recipes from the repo root.
+For the first Mac session, follow the ordered checklist in [MAC-TODO.md](MAC-TODO.md); this page has the details.
 
 ## 1. One-time setup (about 20–30 min, mostly downloads)
 
@@ -73,12 +74,6 @@ just cloud-setup     # once: D1, signing key, allowlist
 just deploy-cloud    # after adding GOOGLE_CLIENT_IDS (CLOUD.md §3.2)
 ```
 
-## 6. Troubleshooting
-
-- `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
-- `just logs <serial>` streams the app's log while it's running.
-- Build out of memory on 8 GB: `CARGO_BUILD_JOBS=2 just apk`.
-
 ## 6. Content pipeline (vocabulary, Arabic Bridge)
 
 Details in `docs/CONTENT.md`. On the Mac:
@@ -95,3 +90,9 @@ just content-review 1        # review sheet for gloss batch 1 → build/review/
 ```
 
 Commit the changed files under `content/` after the kaikki and jvwiki steps.
+
+## 7. Troubleshooting
+
+- `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
+- `just logs <serial>` streams the app's log while it's running.
+- Build out of memory on 8 GB: `CARGO_BUILD_JOBS=2 just apk`.
