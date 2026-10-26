@@ -12,6 +12,10 @@ on:
   pull_request:
     paths:
       - .github/workflows/android-preview.yml
+      - android/**
+      - crates/app/AndroidManifest.xml
+      - crates/app/Dioxus.toml
+      - scripts/android-check-apk.sh
   workflow_dispatch:
 
 concurrency:
@@ -55,6 +59,9 @@ jobs:
           dx bundle --platform android --release --package-types apk \
             --target aarch64-linux-android --no-default-features --features mobile \
             --out-dir ../../dist/android/raw
+
+      - name: Check the APK (Kotlin glue, launcher icon, manifest)
+        run: scripts/android-check-apk.sh "$(find dist/android/raw -name '*.apk' | head -1)"
 
       - name: Restore preview signing key
         id: key
