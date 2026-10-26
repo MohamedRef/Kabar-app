@@ -38,3 +38,11 @@ In this order, from the `kabar-app` folder. Nothing here costs money or needs a 
 - [ ] Optional keys: `cd crates/server && wrangler secret put GEMINI_API_KEY` (and `AZURE_SPEECH_KEY` once the F0 resource exists).
 - [ ] `just deploy-cloud`, then `curl https://kabar-cloud.<subdomain>.workers.dev/v1/health` and send me the URL.
 - [ ] Optional, if you use Claude Code on the Mac: `claude plugin marketplace add cloudflare/skills` then `claude plugin install cloudflare@cloudflare` (Cloudflare's own skills + MCP; it signs in to your Cloudflare account in the browser). Kabar keeps deploying with wrangler.
+
+## Reader + Screenshot Decoder (M5) — full steps in docs/RUN.md §6
+- [ ] `git pull && just check && just run-mac`, open **Reader**, paste the §24 chat lines, hover and click words; try split mode and the three explanation voices.
+- [ ] Mac OCR: Reader → "Open a screenshot" (or drag an image in) with a WhatsApp screenshot; check Apple Vision reads it (first real test of the Vision code).
+- [ ] `just apk` while online (first build fetches ML Kit from Google Maven; it must print "Kotlin glue present"), then `just install <serial>` on the S24 Ultra and Tab S11.
+- [ ] On each device: share text from WhatsApp → **Kabar**; select text → ⋮ → **Kabar**; take a screenshot → Share → **Kabar**. `adb logcat -s KabarShare` if a share is ignored.
+- [ ] Pen in the Reader: hover a word (peek), tap it (card), loop around a phrase (lookup), stroke across a phrase (highlight saved). Tell me how it feels and anything that misfires.
+- [ ] Send me one real ML Kit OCR capture (the JSON shows in `just logs` when I add a debug dump, or just the screenshot) so I can replace the hand-written fixture.
