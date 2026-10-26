@@ -1,37 +1,14 @@
 /* Journey Map (SPEC §10). Builds on main.css tokens; logical properties only.
    Map colours: calm sea, sawah-tinted Indonesia, sand for the neighbours. */
 
+/* Map colours (--sea, --sea-ink, --land, --land-edge, --land-other,
+   --rail-bed) come from the theme stylesheet (kabar_core::theme). */
 .journey {
-  --sea: #dbe7e9;
-  --sea-ink: #b9cfd3;
-  --land: #d3e0bd;
-  --land-edge: #a9bf8f;
-  --land-other: #e9e3d6;
   --flight: var(--dawn);
   --rail: var(--indigo);
-  --rail-bed: #fffaf1;
   --pin-open: var(--surface);
   display: grid;
   gap: 1rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .app:not([data-theme="light"]) .journey {
-    --sea: #172227;
-    --sea-ink: #23343b;
-    --land: #2b3a2b;
-    --land-edge: #4b6446;
-    --land-other: #2a2724;
-    --rail-bed: #171615;
-  }
-}
-.app[data-theme="dark"] .journey {
-  --sea: #172227;
-  --sea-ink: #23343b;
-  --land: #2b3a2b;
-  --land-edge: #4b6446;
-  --land-other: #2a2724;
-  --rail-bed: #171615;
 }
 
 /* ---------- top bar: route toggle and suitcase ---------- */

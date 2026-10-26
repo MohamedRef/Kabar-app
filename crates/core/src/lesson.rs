@@ -244,12 +244,18 @@ impl Validator {
                     }
                 }
             }
-            ExerciseKind::Listen { text, options, answer, meaning, .. } => {
+            ExerciseKind::Listen { text, options, answer, meaning, question, .. } => {
                 if text.trim().is_empty() {
                     self.issue(p, "empty text");
                 }
                 if let Some(m) = meaning {
                     self.localized(&format!("{p}.meaning"), m);
+                }
+                if let Some(q) = question {
+                    self.localized(&format!("{p}.question"), q);
+                    if options.is_empty() {
+                        self.issue(p, "a comprehension question needs options");
+                    }
                 }
                 match (options.is_empty(), answer) {
                     (true, None) => {}
@@ -257,7 +263,12 @@ impl Validator {
                     (false, None) => self.issue(p, "options need an answer index"),
                     (false, Some(i)) => {
                         self.unique(p, options);
+                        if !(2..=4).contains(&options.len()) {
+                            self.issue(p, format!("{} options; use 2–4 (keys 1–4)", options.len()));
+                        }
                         match options.get(*i) {
+                            // A comprehension answer is about the text, not the text itself.
+                            Some(_) if question.is_some() => {}
                             Some(o) if normalize(o) == normalize(text) => {}
                             Some(_) => self.issue(p, "options[answer] must be the heard text"),
                             None => self.issue(p, format!("answer {i} is out of range")),
@@ -544,6 +555,9 @@ pub fn references(ex: &Exercise, lang: UiLanguage) -> Vec<String> {
         K::BuildSentence { answer, alternatives, .. } => {
             std::iter::once(answer.clone()).chain(alternatives.iter().cloned()).collect()
         }
+        K::Listen { question: Some(_), options, answer: Some(i), .. } => {
+            options.get(*i).cloned().into_iter().collect()
+        }
         K::Listen { text, .. } | K::Dictation { text, .. } | K::Speaking { text, .. } => vec![text.clone()],
         K::FillBlank { sentence, answers, .. } => {
             answers.iter().map(|a| sentence.replacen("___", a, 1)).collect()
@@ -713,33 +727,15 @@ impl Player {
         self.progress.elapsed_ms = self.progress.elapsed_ms.saturating_add(ms);
     }
 
-    /// Build-sentence tiles (answer words + distractors), shuffled the same way
-    /// on every device for this lesson. Edge punctuation is dropped so a tile
-    /// like "jumpa!" doesn't give away the sentence end (grading ignores it).
+    /// Build-sentence tiles for `ex`, shuffled the same way on every device
+    /// for this lesson (see [`tiles`]).
     pub fn tiles(&self, ex: &Exercise) -> Vec<String> {
-        match &ex.kind {
-            ExerciseKind::BuildSentence { answer, distractors, .. } => {
-                let all: Vec<&str> = answer
-                    .split_whitespace()
-                    .chain(distractors.iter().map(String::as_str))
-                    .map(|w| w.trim_matches(|c: char| !c.is_alphanumeric() && c != '-'))
-                    .filter(|w| !w.is_empty())
-                    .collect();
-                shuffled(all.len(), self.seed ^ seed_of(&ex.id))
-                    .into_iter()
-                    .map(|i| all[i].to_owned())
-                    .collect()
-            }
-            _ => Vec::new(),
-        }
+        tiles(ex, self.seed)
     }
 
     /// Order of the meanings column in match pairs.
     pub fn pair_order(&self, ex: &Exercise) -> Vec<usize> {
-        match &ex.kind {
-            ExerciseKind::MatchPairs { pairs } => shuffled(pairs.len(), self.seed ^ seed_of(&ex.id) ^ 1),
-            _ => Vec::new(),
-        }
+        pair_order(ex, self.seed)
     }
 
     /// Grades the current exercise and records the attempt. Checking again
@@ -935,9 +931,35 @@ impl Player {
     }
 }
 
+/// Build-sentence tiles (answer words + distractors), shuffled by `seed` and
+/// the exercise id. Edge punctuation is dropped so a tile like "jumpa!"
+/// doesn't give away the sentence end (grading ignores it).
+pub fn tiles(ex: &Exercise, seed: u64) -> Vec<String> {
+    match &ex.kind {
+        ExerciseKind::BuildSentence { answer, distractors, .. } => {
+            let all: Vec<&str> = answer
+                .split_whitespace()
+                .chain(distractors.iter().map(String::as_str))
+                .map(|w| w.trim_matches(|c: char| !c.is_alphanumeric() && c != '-'))
+                .filter(|w| !w.is_empty())
+                .collect();
+            shuffled(all.len(), seed ^ seed_of(&ex.id)).into_iter().map(|i| all[i].to_owned()).collect()
+        }
+        _ => Vec::new(),
+    }
+}
+
+/// Order of the meanings column in match pairs, fixed by `seed`.
+pub fn pair_order(ex: &Exercise, seed: u64) -> Vec<usize> {
+    match &ex.kind {
+        ExerciseKind::MatchPairs { pairs } => shuffled(pairs.len(), seed ^ seed_of(&ex.id) ^ 1),
+        _ => Vec::new(),
+    }
+}
+
 /// The words a miss should send to review: the exercise's `words`, else the
 /// target-language text it was about.
-fn mistake_words(ex: &Exercise) -> Vec<String> {
+pub fn mistake_words(ex: &Exercise) -> Vec<String> {
     if !ex.words.is_empty() {
         return ex.words.clone();
     }
@@ -958,6 +980,8 @@ fn mistake_words(ex: &Exercise) -> Vec<String> {
         K::MatchPairs { .. } => Vec::new(),
     }
 }
+
+pub mod level_test;
 
 #[cfg(test)]
 mod tests;

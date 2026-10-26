@@ -94,7 +94,7 @@ mod tests {
                 }
             }
         }
-        gloss::run(&root, gloss::Cmd::Validate { batch: None }).unwrap();
+        gloss::run(&root, gloss::Cmd::Validate { batch: None, lang: None }).unwrap();
 
         let cards = root.bridge_dir().join("id.jsonl");
         if cards.exists() {

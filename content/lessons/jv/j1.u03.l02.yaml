@@ -1,0 +1,360 @@
+schema: kabar.lesson/v1
+id: j1.u03.l02
+language: jv
+title: arp, ng, sek, gk
+can_do:
+  ar_eg: ترجّع كلام الشات لكتابته الأصلية.
+  ar: أن تردّ إملاء الدردشة إلى صورته القياسية.
+  en: Normalise chat spelling.
+slides:
+  - title: Kaya Franco
+    body:
+      ar_eg: |
+        الشات الجاوي شبه «الفرانكو» عندنا: الناس بتكتب زي ما بتنطق، وبتختصر كل حاجة.
+        الحيلة الأولى: **الحروف المتحركة بتقع**.
+        - arp = arep (هـ / ناوي)
+        - ws = wis (خلاص)
+        - gk / ga = gak (لأ، Arek؛ والعادي ora)
+        وده نفس اللي بيحصل في الإندونيسي: blm = belum، jg = juga، udh = udah / sudah.
+      ar: |
+        تشبه جاوية الدردشة «الفرانكو آراب»: كتابة بحسب النطق مع اختصار شديد.
+        القاعدة الأولى: **حذف الصوائت**:
+        - arp = arep (سوف / ينوي)
+        - ws = wis (قد / انتهى)
+        - gk / ga = gak (لا، Arek؛ والقياسي ora)
+        وهو ما يحدث في الإندونيسية أيضًا: blm = belum، jg = juga، udh = udah / sudah.
+      en: |
+        Chat Javanese is a lot like Franco-Arabic: people type what they hear and shorten everything.
+        Trick one: **vowels drop**.
+        - arp = arep (going to)
+        - ws = wis (already)
+        - gk / ga = gak (no / not, Arek; standard ora)
+        Indonesian chats do the same: blm = belum, jg = juga, udh = udah / sudah.
+    grammar: jv.chat.normalize
+    examples:
+      - text: arp turu
+        ar_eg: arep turu = هنام (شات)
+        ar: arep turu = سأنام (دردشة)
+        en: arep turu = going to sleep (chat)
+  - title: opo → apa
+    body:
+      ar_eg: |
+        الحيلة التانية: الـ a في آخر الكلمة بتتنطق o، فبتتكتب o في الشات. رجّعها a:
+        - opo = apa، sopo = sapa، piro = pira، moco = maca، boso Jowo = basa Jawa
+        - ojo = aja (ماتعملش)
+        بس خلي بالك: فيه كلمات أصلها o فعلًا، زي loro (اتنين) وkono (هناك). ماتقلبش كل o لـ a!
+      ar: |
+        القاعدة الثانية: a الأخيرة تُنطق o فتُكتب o في الدردشة، فرُدّها a:
+        - opo = apa، sopo = sapa، piro = pira، moco = maca، boso Jowo = basa Jawa
+        - ojo = aja (لا الناهية)
+        وانتبه إلى كلمات أصلها o مثل loro (اثنان) وkono (هناك)، فلا تقلب كل o.
+      en: |
+        Trick two: final a is said o, so chats type o. Turn it back into a:
+        - opo = apa, sopo = sapa, piro = pira, moco = maca, boso Jowo = basa Jawa
+        - ojo = aja (don't)
+        Careful: some words really have o, like loro (two) and kono (there). Don't flip every o!
+    grammar: jv.chat.normalize
+    examples:
+      - text: piro? → pira?
+        ar_eg: بكام؟
+        ar: بكم؟
+        en: how much?
+  - title: ng, ra, sek, rapopo
+    body:
+      ar_eg: |
+        الحيلة التالتة: **اختصار كلمة كاملة**:
+        - ng = nang / neng (لـ / في) — السياق بيحدد.
+        - ra = ora (لأ / مش)
+        - sek (أو sik) = dhisik (الأول / استنى). «Sek!» = استنى!
+        - rapopo = ora apa-apa (مفيش مشكلة / عادي)
+        خلي بالك: yg في الإندونيسي = yang، لكن ng في الشات الجاوي = nang / neng.
+      ar: |
+        القاعدة الثالثة: **اختصار كلمة كاملة**:
+        - ng = nang / neng (إلى / في)، والسياق يحدد.
+        - ra = ora (لا)
+        - sek (أو sik) = dhisik (أولًا / انتظر)، و«Sek!» = انتظر!
+        - rapopo = ora apa-apa (لا بأس)
+        وانتبه: yg في الإندونيسية = yang، أما ng في الدردشة الجاوية فـ nang / neng.
+      en: |
+        Trick three: **whole-word shortcuts**:
+        - ng = nang / neng (to / at) — context decides.
+        - ra = ora (no / not)
+        - sek (or sik) = dhisik (first / hold on). "Sek!" = Hold on!
+        - rapopo = ora apa-apa (no problem / it's fine)
+        Careful: Indonesian yg = yang, but Javanese chat ng = nang / neng.
+    grammar: jv.chat.normalize
+    examples:
+      - text: ng prabowo? → Nang Prabowo?
+        ar_eg: لبرابوو؟ / عند برابوو؟
+        ar: إلى برابوو؟
+        en: To Prabowo?
+      - text: rapopo → ora apa-apa
+        ar_eg: عادي، مفيش مشكلة
+        ar: لا بأس
+        en: it's fine, no problem
+  - title: arp dicul piro
+    body:
+      ar_eg: |
+        الحيلة الرابعة: dh وth بيتكتبوا d وt: dewe = dhewe، deweke = dheweke.
+        والخامسة: الكلمة الطويلة بتتقص: dicul = diculké (يتساب / يتباع؛ في الشات diculke).
+        جرّب على رسالة حقيقية:
+        «arp dicul piro» → arep diculké pira? → «ناوي تبيعه بكام؟»
+        وكمان «aku gk ngerti opo2» → aku gak ngerti apa-apa → «مش فاهم أي حاجة». (ngerti = mengerti، و2 = تكرار الكلمة زي الإندونيسي)
+      ar: |
+        الرابعة: dh وth تُكتبان d وt: dewe = dhewe، deweke = dheweke.
+        والخامسة: بتر الكلمة الطويلة: dicul = diculké (يُطلق / يُباع؛ وفي الدردشة diculke).
+        وطبّق ذلك على رسالة حقيقية:
+        «arp dicul piro» → arep diculké pira? → «بكم ستبيعه؟»
+        و«aku gk ngerti opo2» → aku gak ngerti apa-apa → «لا أفهم شيئًا» (ngerti = mengerti، و2 لتكرار الكلمة كالإندونيسية).
+      en: |
+        Trick four: dh and th are typed d and t: dewe = dhewe, deweke = dheweke.
+        Trick five: long words get clipped: dicul = diculké (let go / sold off; chat diculke).
+        Try it on a real message:
+        "arp dicul piro" → arep diculké pira? → "How much will you sell it for?"
+        And "aku gk ngerti opo2" → aku gak ngerti apa-apa → "I don't understand anything." (ngerti = mengerti; 2 doubles the word, as in Indonesian)
+    grammar: jv.chat.normalize
+    examples:
+      - text: arp dicul piro
+        ar_eg: ناوي تبيعه بكام؟ (شات)
+        ar: بكم ستبيعه؟ (دردشة)
+        en: How much will you sell it for? (chat)
+      - text: wes mangan durung?
+        ar_eg: كلت ولا لسه؟ (شات)
+        ar: هل أكلت أم ليس بعد؟ (دردشة)
+        en: Have you eaten yet? (chat)
+      - text: Sek tak lapor pusat
+        ar_eg: استنى، هبلّغ الإدارة. (هنفهم tak في J1.4)
+        ar: انتظر، سأبلغ المركز. (نشرح tak في J1.4)
+        en: Hold on, I'll report to HQ. (tak comes in J1.4)
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: arp
+        ar_eg: arep (هـ / ناوي)
+        ar: arep (سوف)
+        en: arep (going to)
+      - text: ws
+        ar_eg: wis (خلاص)
+        ar: wis (قد / تمّ)
+        en: wis (already)
+      - text: ng
+        ar_eg: nang / neng (لـ / في)
+        ar: nang / neng (إلى / في)
+        en: nang / neng (to / at)
+      - text: ra
+        ar_eg: ora (لأ / مش)
+        ar: ora (لا)
+        en: ora (not)
+      - text: sek
+        ar_eg: dhisik (الأول / استنى)
+        ar: dhisik (أولًا / انتظر)
+        en: dhisik (first / hold on)
+    words: [arep, wis, nang, ora, sek]
+  - id: e02
+    type: multiple_choice
+    question: opo
+    question_meaning:
+      ar_eg: إيه الكتابة الرسمية للكلمة دي من الشات؟
+      ar: ما الإملاء القياسي لهذه الكلمة من الدردشة؟
+      en: What's the standard spelling of this chat word?
+    options: ["ape", "opa", "apa"]
+    answer: 2
+    explain:
+      ar_eg: الـ a الأخيرة بتتنطق o، فـ opo = apa.
+      ar: تُنطق a الأخيرة o، فـ opo = apa.
+      en: Final a is said o, so opo = apa.
+    words: [apa]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة من دول الـ o فيها أصلية، ومش لازم تتقلب a؟
+      ar: في أيّ هذه الكلمات تكون o أصلية فلا تُقلب a؟
+      en: Which word has a real o that must NOT be turned into a?
+    options: ["sopo", "piro", "loro"]
+    answer: 2
+    explain:
+      ar_eg: loro (اتنين) مكتوبة بـ o في الإملاء الرسمي. piro = pira وsopo = sapa.
+      ar: loro (اثنان) تُكتب بـ o قياسًا، أما piro فـ pira وsopo فـ sapa.
+      en: loro (two) is spelled with o in standard Javanese; piro = pira, sopo = sapa.
+    words: [pira, sapa]
+  - id: e04
+    type: multiple_choice
+    question: ng prabowo?
+    question_meaning:
+      ar_eg: ng هنا معناها إيه؟
+      ar: ما معنى ng هنا؟
+      en: What does ng mean here?
+    options: ["yang (which)", "nang (to / at)", "ngapa (why)"]
+    answer: 1
+    explain:
+      ar_eg: ng في الشات الجاوي = nang / neng. yang الإندونيسي بيتكتب yg.
+      ar: ng في الدردشة الجاوية = nang / neng، أما yang الإندونيسية فتُختصر yg.
+      en: Javanese chat ng = nang / neng; Indonesian yang is yg.
+    words: [nang]
+  - id: e05
+    type: multiple_choice
+    question: gk
+    question_meaning:
+      ar_eg: في رسالة من صاحبك في سورابايا، gk معناها إيه؟
+      ar: في رسالة من صديقك في سورابايا، ما معنى gk؟
+      en: In a message from your Surabaya friend, what does gk mean?
+    options: ["jg (also)", "gak (no / not)", "ngapa (why)"]
+    answer: 1
+    explain:
+      ar_eg: gk = gak (Arek) = ora = tidak = لأ / مش.
+      ar: gk = gak (Arek) = ora = tidak = لا.
+      en: gk = gak (Arek) = ora = tidak.
+    words: [gak]
+  - id: e06
+    type: listen
+    text: Ora apa-apa.
+    options: ["Ora apa-apa.", "Wis apa durung?", "Arep apa?"]
+    answer: 0
+    words: [ora apa-apa]
+  - id: e07
+    type: fill_blank
+    sentence: "arp dicul piro → ___ diculké pira?"
+    meaning:
+      ar_eg: ناوي تبيعه بكام؟
+      ar: بكم ستبيعه؟
+      en: How much will you sell it for?
+    answers: [arep]
+    explain:
+      ar_eg: |-
+        arp = arep: الحروف المتحركة وقعت.
+      ar: arp = arep بعد حذف الصوائت.
+      en: arp = arep with the vowels dropped.
+    words: [arep]
+  - id: e08
+    type: fill_blank
+    sentence: "ws mangan? → ___ mangan?"
+    meaning:
+      ar_eg: كلت؟
+      ar: هل أكلت؟
+      en: Have you eaten?
+    answers: [wis, Wis]
+    words: [wis]
+  - id: e09
+    type: fill_blank
+    sentence: "rapopo → ora ___"
+    meaning:
+      ar_eg: عادي، مفيش مشكلة
+      ar: لا بأس
+      en: no problem, it's fine
+    answers: [apa-apa]
+    words: [ora apa-apa]
+  - id: e10
+    type: build_sentence
+    source:
+      ar_eg: اكتب «wes mangan durung?» بالإملاء الرسمي (كلت ولا لسه؟)
+      ar: اكتب «wes mangan durung?» بالإملاء القياسي (هل أكلت أم ليس بعد؟)
+      en: Write "wes mangan durung?" in standard spelling (Have you eaten yet?)
+    answer: Wis mangan durung?
+    distractors: [sudah, ora]
+    words: [wis, mangan, durung]
+  - id: e11
+    type: translate
+    direction: from_target
+    source_text: arp dicul piro
+    answers_meaning:
+      ar_eg: ["ناوي تبيعه بكام؟", "هتبيعه بكام؟", "عايز تبيعه بكام؟", "هتسيبه بكام؟"]
+      ar: ["بكم ستبيعه؟", "بكم تريد أن تبيعه؟", "بكم ستتركه؟"]
+      en: ["How much will you sell it for?", "How much are you selling it for?", "How much will you let it go for?", "How much do you want for it?"]
+    explain:
+      ar_eg: arp = arep (هـ)، dicul = diculké (يتساب / يتباع)، piro = pira (بكام).
+      ar: arp = arep، وdicul = diculké (يُطلق / يُباع)، وpiro = pira.
+      en: arp = arep, dicul = diculké (let go / sold), piro = pira.
+    words: [arep, diculké, pira]
+  - id: e12
+    type: translate
+    direction: from_target
+    source_text: aku gk ngerti opo2
+    answers_meaning:
+      ar_eg: ["أنا مش فاهم أي حاجة.", "مش فاهم حاجة", "أنا مش فاهم حاجة خالص", "مش فاهم أي حاجة"]
+      ar: ["لا أفهم شيئًا.", "لا أفهم أي شيء", "أنا لا أفهم شيئًا"]
+      en: ["I don't understand anything.", "I don't understand anything", "I understand nothing", "I don't get anything"]
+    words: [gak, ngerti, apa-apa]
+  - id: e13
+    type: dictation
+    text: Sek, aku lagi mangan.
+    meaning:
+      ar_eg: استنى، أنا باكل.
+      ar: انتظر، أنا آكل الآن.
+      en: Hold on, I'm eating.
+    words: [sek, lagi, mangan]
+  - id: e14
+    type: speaking
+    text: Ora apa-apa.
+    meaning:
+      ar_eg: عادي، مفيش مشكلة.
+      ar: لا بأس.
+      en: It's fine, no problem.
+    words: [ora apa-apa]
+dialogue:
+  title: Grup WA
+  lines:
+    - speaker: Cak Heru
+      text: rek, ws mangan?
+      ar_eg: يا جدعان، كلتوا؟
+      ar: يا جماعة، هل أكلتم؟
+      en: Guys, eaten yet?
+    - speaker: Mbak Rara
+      text: ws. aku lagi moco buku
+      ar_eg: أيوه كلت. أنا بقرا كتاب.
+      ar: نعم أكلت. أنا أقرأ كتابًا.
+      en: Yes. I'm reading a book.
+    - speaker: Mohamed
+      text: durung! aku arp mangan sate. ayo cak!
+      ar_eg: لسه! أنا هاكل ساتيه. يلا يا هيرو!
+      ar: ليس بعد! سآكل الساتيه. هيا يا هيرو!
+      en: Not yet! I'm going to have satay. Come on, Heru!
+    - speaker: Cak Heru
+      text: ayo! sek, aku arp ng Tunjungan
+      ar_eg: يلا! استنى، أنا رايح تونجونجان.
+      ar: هيا! انتظر، أنا ذاهب إلى تونجونغان.
+      en: Let's go! Hold on, I'm heading to Tunjungan.
+    - speaker: Mbak Rara
+      text: ati2 ya rek
+      ar_eg: خلوا بالكم من نفسكم يا جدعان.
+      ar: انتبهوا لأنفسكم يا جماعة.
+      en: Take care, guys.
+    - speaker: Cak Heru
+      text: suwun Ning!
+      ar_eg: ميرسي يا رارا!
+      ar: شكرًا يا رارا!
+      en: Thanks, Rara!
+new_words:
+  - word: nang
+    pos: preposition
+    ar_eg: لـ / في (= ke / di؛ شات ng؛ وكمان neng)
+    ar: إلى / في (= ke / di؛ دردشة ng؛ وأيضًا neng)
+    en: to, at (= ke / di; chat ng; also neng)
+  - word: gak
+    pos: adverb
+    ar_eg: لأ / مش (Arek = ora؛ شات gk، ga)
+    ar: لا (Arek = ora؛ دردشة gk، ga)
+    en: no, not (Arek = ora; chat gk, ga)
+  - word: sek
+    pos: adverb
+    ar_eg: الأول / استنى (= dulu؛ وكمان sik، dhisik)
+    ar: أولًا / انتظر (= dulu؛ وأيضًا sik، dhisik)
+    en: first, hold on (= dulu; also sik, dhisik)
+  - word: ora apa-apa
+    pos: phrase
+    ar_eg: عادي، مفيش مشكلة (= tidak apa-apa؛ شات rapopo)
+    ar: لا بأس (= tidak apa-apa؛ دردشة rapopo)
+    en: it's fine, no problem (= tidak apa-apa; chat rapopo)
+  - word: ngerti
+    pos: verb
+    ar_eg: يفهم (= mengerti)
+    ar: يفهم (= mengerti)
+    en: to understand (= mengerti)
+  - word: diculké
+    pos: verb
+    ar_eg: يتساب / يتباع (شات dicul)
+    ar: يُطلق / يُباع (دردشة dicul)
+    en: let go, sold off (chat dicul)
+review:
+  status: draft
+  verified: false
