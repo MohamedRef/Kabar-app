@@ -9,7 +9,7 @@ use kabar_core::lesson::level_test::{
     ItemRecord, Scored, SelfGrade, Tally, TestResults, TestRunner, TestStep, parse_test, validate_test,
 };
 use kabar_core::lesson::{Answer, XP_FINISH, mistake_words, pick, references};
-use kabar_core::locale::{UiLanguage, format_number};
+use kabar_core::locale::{UiLanguage, format_number, localize_digits};
 use kabar_protocol::coach::{ActivityKind, Skill};
 use kabar_protocol::coach::{CoachProfile, StartingPoint};
 use kabar_protocol::lesson::{Direction, ExerciseKind, LessonCompleted};
@@ -55,6 +55,7 @@ pub fn PlacementInvite() -> Element {
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let lang = ui.settings.read().ui_language;
+    let eastern = ui.settings.read().eastern_digits;
     let show = use_hook(|| {
         let store = db.0.borrow();
         let placed = store.placement().map(|p| p.is_some()).unwrap_or(true);
@@ -67,7 +68,7 @@ pub fn PlacementInvite() -> Element {
     rsx! {
         div { class: "card placement-invite", style: "margin-block-start: 1rem",
             h3 { "{lt(lang, L::InviteTitle)}" }
-            p { class: "muted", "{lt(lang, L::InviteBody)}" }
+            p { class: "muted", "{localize_digits(lt(lang, L::InviteBody), lang, eastern)}" }
             button { class: "primary", onclick: move |_| ui.open_lesson("placement"), "{lt(lang, L::InviteButton)}" }
         }
     }
