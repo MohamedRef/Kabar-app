@@ -46,8 +46,17 @@ Rules for every item:
 | `mind_map` | `{topic, level, known_words[], lang}` | `{center, branches[{label, words[{word, gloss_en, gloss_ar}]}]}` |
 | `learn_entry` | `{lang, word, context, hints{normalized?, root?, affixes[]?}, sources[{kind, title, url, text}]}`, exactly as `kabar_core::learn::prepare` builds it | `LearnEntry` from `crates/core/src/learn/mod.rs`, exactly |
 
-The router thread writes each task's prompt against these shapes; change a
-shape only together with its prompt.
+Every task now has a typed output in `crates/core/src/ai/tasks.rs` (and its
+submodules) and a prompt in `prompts/<task>@v1.md`. `kabar-tools golden
+validate` deserializes each `expect` into that type and runs the same checks
+the router runs on a live answer, so a shape only changes together with its
+prompt and its type.
+
+For `story_episode`, `radio_script` and `mind_map`, `expect` may be an
+abridged illustration (an opening paragraph, two branches): their types set
+`EXPECT_IS_WHOLE_ANSWER = false`, so whole-answer checks (every target word
+placed, 3–6 branches, both voices speaking) are skipped for the golden
+`expect` and applied only to a real answer. `criteria` carries the rest.
 
 ## Choices the sets made where the shapes were open
 

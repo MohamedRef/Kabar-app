@@ -1,14 +1,44 @@
-//! Typed outputs per task. Each validates beyond what serde checks; a
-//! validation error goes back to the model on the one retry.
+//! Typed outputs per task, shaped like `content/golden/README.md`. Each
+//! validates beyond what serde checks; a validation error goes back to the
+//! model on the one retry.
 
 use kabar_protocol::ai::Task;
 use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
+use serde_json::Value;
+
+mod coach;
+mod content;
+mod practice;
+mod reading;
+
+pub use coach::{
+    CoachMessage, Confidence, DailyPlan, DailyRecap, LevelCheck, LevelMove, Placement, PlanKind, PlanStep,
+    WeeklyReport,
+};
+pub use content::{RadioLine, RadioScript, StoryEpisode};
+pub use practice::{
+    CheckStrokes, Correction, GuessSketch, MapBranch, MindMap, ReadHandwriting, RoleplayTurn, UNCLEAR_SKETCH,
+};
+pub use reading::{ExplainSentence, ScreenKind, ScreenMessage, Side, StructureScreenshot};
 
 pub trait AiOutput: DeserializeOwned {
     const TASK: Task;
 
+    /// False when a golden set's `expect` is an abridged illustration (a
+    /// story's opening lines, two branches of a map) rather than a whole
+    /// answer; `content/golden/<task>.yaml` then carries the full
+    /// requirements in `criteria`. [`check`](Self::check) is skipped for
+    /// those expects, never for a live answer.
+    const EXPECT_IS_WHOLE_ANSWER: bool = true;
+
     fn validate(&self) -> Result<(), String> {
+        Ok(())
+    }
+
+    /// Checks against the request input (plan minutes add up to the goal, ids
+    /// come from the candidates). Runs after [`validate`](Self::validate).
+    fn check(&self, _input: &Value) -> Result<(), String> {
         Ok(())
     }
 
@@ -17,6 +47,75 @@ pub trait AiOutput: DeserializeOwned {
     fn needs_review(&self) -> bool {
         false
     }
+
+    /// The request alone makes any answer unverified (a Javanese text,
+    /// persona or voice).
+    fn input_needs_review(_input: &Value) -> bool {
+        false
+    }
+}
+
+/// Speech register or style, shared by the reading and roleplay tasks.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum Register {
+    Chat,
+    Formal,
+    Neutral,
+    Slang,
+    Mixed,
+    Casual,
+    Standard,
+    Ngoko,
+    Madya,
+    Krama,
+    KramaInggil,
+}
+
+/// A word with its English and Arabic gloss (stories, mind maps).
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct GlossedWord {
+    pub word: String,
+    pub gloss_en: String,
+    pub gloss_ar: String,
+}
+
+impl GlossedWord {
+    fn validate(&self) -> Result<(), String> {
+        filled(&self.word, "word")?;
+        filled(&self.gloss_en, &format!("gloss_en of `{}`", self.word))?;
+        arabic(&self.gloss_ar, &format!("gloss_ar of `{}`", self.word))
+    }
+}
+
+fn filled(s: &str, field: &str) -> Result<(), String> {
+    if s.trim().is_empty() { Err(format!("{field} must not be empty")) } else { Ok(()) }
+}
+
+fn has_arabic(s: &str) -> bool {
+    s.chars().any(|c| ('\u{0600}'..='\u{06FF}').contains(&c))
+}
+
+/// Non-empty and written in Arabic script.
+fn arabic(s: &str, field: &str) -> Result<(), String> {
+    filled(s, field)?;
+    if has_arabic(s) { Ok(()) } else { Err(format!("{field} must be written in Arabic script")) }
+}
+
+fn input_str<'a>(input: &'a Value, key: &str) -> Option<&'a str> {
+    input.get(key).and_then(Value::as_str)
+}
+
+fn input_strs<'a>(input: &'a Value, key: &str) -> Vec<&'a str> {
+    input
+        .get(key)
+        .and_then(Value::as_array)
+        .map_or_else(Vec::new, |a| a.iter().filter_map(Value::as_str).collect())
+}
+
+fn input_is_javanese(input: &Value) -> bool {
+    input_str(input, "lang") == Some("jv")
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
@@ -58,7 +157,7 @@ impl AiOutput for AnalyzeText {
         if self.translation_en.trim().is_empty() || self.translation_ar.trim().is_empty() {
             return Err("translation_en and translation_ar must not be empty".into());
         }
-        if !self.translation_ar.chars().any(|c| ('\u{0600}'..='\u{06FF}').contains(&c)) {
+        if !has_arabic(&self.translation_ar) {
             return Err("translation_ar must be written in Arabic script".into());
         }
         if self.tokens.is_empty() {
