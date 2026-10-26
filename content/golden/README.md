@@ -18,6 +18,7 @@ Rules for every item:
 - Coach-facing text follows the §2 tone rules: warm, specific, no guilt, fear,
   fake urgency or dark patterns. Put violations in `avoid`.
 - Javanese items are `verified: false` until a native speaker checks them.
+- Javanese is spelled without accents (kowe, sampeyan, badhe), as the user decided. Accented input (kowé) is accepted and read as the plain form. The handwriting and aksara stroke sets keep é/è where the item is about writing the vowel itself.
 - Vision items point `image` at a fixture under `fixtures/golden/`, or carry the
   tag `needs-capture` with `input.capture` saying exactly what to record on a
   device.
@@ -37,7 +38,7 @@ Rules for every item:
 | `daily_recap` | `{date, minutes, reviews{done, correct}, lessons_done[], mistakes[], goal_met}` | `{message_ar, message_en, highlight, tomorrow}` |
 | `weekly_report` | `{week, days[{date, minutes, reviews, accuracy}], new_words, lessons_done[], weak_points[]}` | `{summary_ar, summary_en, wins[], focus_next_week[]}` |
 | `coach_message` | `{trigger: missed_day\|comeback\|goal_met\|streak\|struggle\|morning, context{…}}` | `{message_ar, message_en}` |
-| `story_episode` | `{series: sinetron\|kabar_pagi, level, target_words[], due_words[], previous_summary?, length_words}` | `{title, text, glossary[{word, gloss_en, gloss_ar}], summary}` |
+| `story_episode` | `{series: sinetron\|kabar_pagi, level: bipa1…bipa7\|j1…j6, target_words[], due_words[], previous_summary?, length_words (≤ 220)}` | `Story` from `crates/core/src/pagi.rs`, exactly: a complete reference story `{title, level, sentences[{id, arz, ar, en}], words[], summary?}` with per-sentence translations; `level` repeats the input, `words` lists every target and due word, `summary` only for sinetron |
 | `radio_script` | `{level, target_words[], voices[2], minutes}` | `{title, lines[{voice, text}], recap_ar}` |
 | `structure_screenshot` | `{ocr_blocks[{text, box[x,y,w,h]}], image}` | `{kind: chat\|listing\|post\|ui, messages[{speaker, side, text, time?}]}` |
 | `read_handwriting` | `{lang, expected?, capture?}` (image or strokes in `image`) | `{text}` |
@@ -71,8 +72,8 @@ The router's prompts must agree with these (or the sets change with them):
   speaker `me`) and `center` for listings, posts and UI. UI blocks use speaker
   `app`, with "Label: value" rows. OCR blocks leave out emoji.
 - `guess_sketch`: a blank or unreadable canvas answers `guess_id: tidak_jelas`.
-- Levels are `bipa1`…`bipa7` and `j1`…`j6` (coach tasks) or `BIPA 1`/`J1`
-  (story, radio).
+- Levels are `bipa1`…`bipa7` and `j1`…`j6` (coach tasks and story) or
+  `BIPA 1`/`J1` (radio).
 - Coach sub-shapes: `next_lesson {id, title, minutes}|null`,
   `lessons_done[{id, title}]`, `mistakes[{prompt, answer, expected}]`,
   `week` is the Monday's date, and `confidence` is `high|medium|low`.
