@@ -1,0 +1,69 @@
+schema: kabar.grammar/v1
+id: id.suffix.an.result
+language: id
+level: bipa1
+title:
+  target: makanan, minuman, tulisan, mainan
+  en: "Nouns with -an"
+  ar_eg: أسماء بـ -an (أكل، شرب، كتابة)
+  ar: صياغة الأسماء بـ -an
+summary:
+  ar_eg: "-an في آخر الفعل بتعمل اسم للحاجة اللي اتعملت: makan (ياكل) → makanan (أكل)، minum → minuman (مشروب)."
+  ar: "اللاحقة -an تصوغ اسمًا لما يقع عليه الفعل أو ينتج عنه: makan → makanan (طعام)، minum → minuman (شراب)."
+  en: "Adding -an to a verb root makes a noun for the thing affected or produced: makan → makanan (food), minum → minuman (drink)."
+pattern:
+  - root + -an = thing that is …-ed / result
+explanation:
+  ar_eg: |
+    -an بتحول الفعل لاسم مفعول أو ناتج:
+    makan (ياكل) → makanan (أكل / حاجة بتتاكل)
+    minum (يشرب) → minuman (مشروب)
+    tulis (يكتب) → tulisan (كتابة / خط)
+    main (يلعب) → mainan (لعبة)
+    pakai (يلبس) → pakaian (لبس)
+    jual (يبيع) → jualan (بضاعة)
+    دي فكرة اسم المفعول في العربي («مأكول، مشروب، مكتوب»). وفي الشات هتلاقي makanan وminuman في كل منيو.
+    -an ليها معاني تانية (أداة، مكان) هتيجي بعدين.
+  ar: |
+    -an تحول الجذر الفعلي إلى اسم لما يقع عليه الفعل أو ينتج عنه:
+    makan → makanan (طعام)، minum → minuman (شراب)، tulis → tulisan (كتابة)، main → mainan (لعبة)، pakai → pakaian (ملابس)، jual → jualan (بضاعة).
+    وهو قريب من اسم المفعول العربي: مأكول، مشروب، مكتوب.
+    ولـ -an معانٍ أخرى (الأداة والمكان) تأتي لاحقًا.
+  en: |
+    -an turns a verb root into "the thing that is …-ed" or the result:
+    makan → makanan (food), minum → minuman (drink), tulis → tulisan (writing, handwriting), main → mainan (toy), pakai → pakaian (clothes), jual → jualan (goods for sale).
+    Think of the Arabic passive participle: مأكول، مشروب، مكتوب.
+    Other meanings of -an (tool, place) come later.
+examples:
+  - text: Makanan Indonesia enak sekali.
+    en: Indonesian food is really delicious.
+    ar_eg: الأكل الإندونيسي حلو أوي.
+    ar: الطعام الإندونيسي لذيذ جدًا.
+  - text: Mau minuman apa?
+    en: What would you like to drink?
+    ar_eg: تشرب إيه؟
+    ar: ماذا تشرب؟
+  - text: Tulisanmu bagus.
+    en: Your handwriting is nice.
+    ar_eg: خطك حلو.
+    ar: خطك جميل.
+  - text: Anak saya suka mainan mobil.
+    en: My child likes toy cars.
+    ar_eg: ابني بيحب العربيات اللعب.
+    ar: ابني يحب السيارات اللعبة.
+mistakes:
+  - wrong: Saya suka makan Indonesia.
+    right: Saya suka makanan Indonesia.
+    why:
+      ar_eg: makan فعل (ياكل)، الأكل نفسه makanan.
+      ar: makan فعل، والاسم makanan.
+      en: makan is the verb; the food is makanan.
+arabic_bridge:
+  ar_eg: makanan ≈ «مأكولات»، minuman ≈ «مشروبات»، tulisan ≈ «مكتوب». نفس منطق اسم المفعول.
+  ar: makanan ≈ مأكولات، minuman ≈ مشروبات، tulisan ≈ مكتوب.
+  en: makanan ≈ مأكولات, minuman ≈ مشروبات, tulisan ≈ مكتوب.
+tags: [affix, noun, morphology]
+see_also: [id.prefix.peng.agent, id.prefix.men.basic]
+review:
+  status: draft
+  verified: false

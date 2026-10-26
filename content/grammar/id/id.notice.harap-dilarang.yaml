@@ -1,0 +1,73 @@
+schema: kabar.grammar/v1
+id: id.notice.harap-dilarang
+language: id
+level: bipa2
+title:
+  target: Harap …, Mohon …, Dilarang …
+  en: Signs and announcements
+  ar_eg: اللافتات والإعلانات (يرجى، ممنوع)
+  ar: لغة اللافتات والإعلانات
+summary:
+  ar_eg: Harap / Mohon + فعل = يرجى…، Dilarang + فعل = ممنوع…، Awas! = حاسب!
+  ar: Harap / Mohon + فعل = يُرجى، وDilarang + فعل = يُمنع، وAwas = احذر.
+  en: Harap / Mohon + verb = please …; Dilarang + verb = … prohibited; Awas! = beware.
+pattern:
+  - Harap / Mohon + verb (+ object)
+  - Dilarang + verb (+ object)
+  - Awas + noun / Hati-hati
+explanation:
+  ar_eg: |
+    اللافتات في إندونيسيا ليها قوالب ثابتة:
+    - Harap tenang = برجاء الهدوء. Harap antre = برجاء الوقوف في الطابور.
+    - Mohon maaf … = نعتذر عن… Mohon perhatian = انتباه من فضلكم (أول أي إعلان).
+    - Dilarang merokok = ممنوع التدخين. Dilarang masuk = ممنوع الدخول. Dilarang parkir = ممنوع الركن.
+    - Awas anjing galak! = احترس كلب شرس! Hati-hati = خلي بالك.
+    dilarang أصلها di- + larang (يمنع) يعني «ممنوع» بالمبني للمجهول — أول تعرّف على di- قبل BIPA 3.
+  ar: |
+    للافتات قوالب ثابتة:
+    - Harap tenang = يرجى الهدوء، Harap antre = يرجى الوقوف في الصف.
+    - Mohon perhatian = انتباه من فضلكم، وMohon maaf = نعتذر.
+    - Dilarang merokok = يُمنع التدخين، Dilarang masuk = يُمنع الدخول.
+    - Awas … = احذر، Hati-hati = انتبه.
+    وdilarang من di- + larang (منع)، أي «ممنوع»، وهو تمهيد للمبني للمجهول.
+  en: |
+    Signs use fixed templates:
+    - Harap tenang = Quiet please. Harap antre = Please queue.
+    - Mohon perhatian = Attention please (opens every announcement). Mohon maaf = We apologise.
+    - Dilarang merokok = No smoking. Dilarang masuk = No entry. Dilarang parkir = No parking.
+    - Awas …! = Beware of …! Hati-hati = Careful.
+    dilarang = di- + larang (forbid) = "is forbidden" — a first look at the di- passive before BIPA 3.
+examples:
+  - text: Mohon perhatian, kereta tujuan Bandung akan segera berangkat.
+    en: Attention please, the train to Bandung will depart shortly.
+    ar_eg: انتباه من فضلكم، القطر المتجه لباندونج هيتحرك حالًا.
+    ar: انتباه من فضلكم، سيغادر القطار المتجه إلى باندونغ قريبًا.
+    register: formal
+  - text: Dilarang merokok di area ini.
+    en: No smoking in this area.
+    ar_eg: ممنوع التدخين هنا.
+    ar: يُمنع التدخين في هذه المنطقة.
+  - text: Harap lepas alas kaki.
+    en: Please remove your footwear.
+    ar_eg: برجاء خلع الجزمة.
+    ar: يرجى خلع الأحذية.
+  - text: Awas, lantai licin!
+    en: Caution, slippery floor!
+    ar_eg: حاسب، الأرض بتزحلق!
+    ar: احذر، الأرض زلقة!
+mistakes:
+  - wrong: Larang merokok
+    right: Dilarang merokok
+    why:
+      ar_eg: اللافتة بتقول «ممنوع» = dilarang، مش «امنع».
+      ar: اللافتة بصيغة المبني للمجهول dilarang.
+      en: Signs use the passive form dilarang.
+arabic_bridge:
+  ar_eg: Harap ≈ «يرجى»، Dilarang ≈ «ممنوع»، وMohon ≈ «برجاء». نفس قوالب اللافتات عندنا.
+  ar: Harap ≈ يُرجى، Dilarang ≈ يُمنع.
+  en: Harap ≈ يُرجى, Dilarang ≈ ممنوع, Mohon ≈ برجاء.
+tags: [signs, formal, passive-preview]
+see_also: [id.prohibition.jangan, id.request.tolong-silakan, id.quantifier.basic]
+review:
+  status: draft
+  verified: false

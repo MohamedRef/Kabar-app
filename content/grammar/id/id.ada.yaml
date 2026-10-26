@@ -1,0 +1,72 @@
+schema: kabar.grammar/v1
+id: id.ada
+language: id
+level: bipa1
+title:
+  target: ada, tidak ada
+  en: "ada: there is / to be present / to have"
+  ar_eg: "ada: فيه / موجود"
+  ar: "ada: يوجد / موجود"
+summary:
+  ar_eg: ada = «فيه» المصرية بالظبط، والنفي tidak ada (مفيش). وبتيجي كمان بمعنى «موجود» و«عنده».
+  ar: ada = يوجد / هناك، ونفيها tidak ada، وتأتي بمعنى «حاضر» و«لديه».
+  en: ada = there is / is present / (colloquially) have; tidak ada = there isn't.
+pattern:
+  - Ada + noun (+ place)? (Is there …?)
+  - noun + ada + di + place (… is in …)
+  - Tidak ada / Nggak ada (there isn't, none)
+explanation:
+  ar_eg: |
+    ada من أسهل الكلمات على المصري لأنها «فيه»:
+    - Ada air? = فيه مية؟ — Ada. / Tidak ada. = فيه. / مفيش.
+    - Di sini ada ATM? = فيه ATM هنا؟
+    - «موجود»: Pak Budi ada? = عم بودي موجود؟ — Beliau tidak ada = مش موجود.
+    - «عنده» في الكلام العادي: Saya ada uang = معايا فلوس. (الأفصح: Saya punya uang.)
+    وada apa? = فيه إيه؟ (لما تحس إن فيه حاجة غلط).
+  ar: |
+    ada تقابل «يوجد / هناك»:
+    - Ada air؟ = هل يوجد ماء؟ — Ada / Tidak ada.
+    - Di sini ada ATM؟ = هل توجد هنا صرافة؟
+    - بمعنى «حاضر»: Pak Budi ada؟ = هل السيد بودي موجود؟
+    - بمعنى «لدي» في العامية: Saya ada uang = معي مال (والأفصح Saya punya uang).
+    وAda apa؟ = ما الأمر؟
+  en: |
+    ada maps onto Egyptian «فيه»:
+    - Ada air? = Is there water? — Ada. / Tidak ada.
+    - Di sini ada ATM? = Is there an ATM here?
+    - "Present": Pak Budi ada? = Is Mr Budi in? — Beliau tidak ada = He's not in.
+    - "Have" (casual): Saya ada uang = I have money (more standard: Saya punya uang).
+    Ada apa? = What's up? / What's wrong?
+examples:
+  - text: Di dekat sini ada masjid?
+    en: Is there a mosque near here?
+    ar_eg: فيه جامع قريب من هنا؟
+    ar: هل يوجد مسجد قريب من هنا؟
+  - text: Maaf, nasi gorengnya tidak ada.
+    en: Sorry, there's no fried rice.
+    ar_eg: آسف، مفيش رز مقلي.
+    ar: عذرًا، لا يوجد أرز مقلي.
+  - text: Ada apa?
+    en: What's up? / What's wrong?
+    ar_eg: فيه إيه؟
+    ar: ما الأمر؟
+  - text: Ibu ada di rumah?
+    en: Is your mother at home?
+    ar_eg: ماما موجودة في البيت؟
+    ar: هل أمك في البيت؟
+mistakes:
+  - wrong: Ada saya mahasiswa.
+    right: Saya mahasiswa.
+    why:
+      ar_eg: ada مش «يكون»؛ «أنا طالب» من غير ada.
+      ar: ada ليست فعل كينونة.
+      en: ada is not "to be"; no ada in "I am a student".
+arabic_bridge:
+  ar_eg: ada = «فيه»، tidak ada = «مفيش»، Ada apa? = «فيه إيه؟». نفس المنطق بالحرف.
+  ar: ada = يوجد، tidak ada = لا يوجد، Ada apa؟ = ماذا هناك؟
+  en: ada = «فيه», tidak ada = «مفيش», Ada apa? = «فيه إيه؟».
+tags: [existential, verb]
+see_also: [id.sentence.no-copula, id.negation.tidak-bukan]
+review:
+  status: draft
+  verified: false

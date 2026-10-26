@@ -1,0 +1,898 @@
+# Kabar — Indonesian curriculum (BIPA 1 → 7).
+# Shape: schemas/curriculum.schema.json. Checked by `cargo test -p kabar-content`.
+#
+# Unit order and grammar follow the government textbook series *Sahabatku Indonesia*
+# (Badan Pengembangan Bahasa dan Perbukuan, 2019; "Umum" = general/adult edition where
+# it was retrievable). Unit titles are kept so the user can cross-check against the book;
+# all Kabar lesson content is written fresh (SPEC §21). Grammar ids point into
+# content/grammar/ (BIPA 1–2 written in M4; later levels are planned ids).
+schema: kabar.curriculum/v1
+language: id
+title: { target: "Bahasa Indonesia", en: "Indonesian (BIPA 1–7)", ar: "الإندونيسية (BIPA ١–٧)" }
+
+framework:
+  name: BIPA — Bahasa Indonesia bagi Penutur Asing
+  regulation: Permendikbud No. 27 Tahun 2017 (SKL Kursus dan Pelatihan BIPA)
+  summary: >-
+    Seven levels. Each level's graduate competency (SKL) is a capability statement
+    plus per-skill units for listening, speaking, reading and writing (the regulation
+    spells these out for BIPA 1–3 fully, BIPA 4 partly, and only the capability
+    statement for BIPA 5–7). The SKL says it is adapted from the CEFR and that the
+    seven-level ladder follows the UKBI proficiency bands (Terbatas → Istimewa).
+  cefr_note: >-
+    The regulation does not publish a level-by-level CEFR table. The 2016 Sahabatku
+    series had six books labelled A1–C2; the 2019 series re-cut them into BIPA 1–7.
+    Mappings below are approximate and graded by evidence: BIPA 1 = A1 and BIPA 3 = B1
+    are stated in published analyses; the rest are inferred from the 2016 → 2019 re-cut
+    and the SKL wording. Kabar uses them only for orientation, never for gating.
+  lesson_pattern: >-
+    Airlearn-style: 3–6 teaching slides → 8–15 exercises → mini dialogue → new-words
+    summary → souvenir (SPEC §14). Every unit ends with a review lesson; every level
+    ends with a level test ("Take a flight" placement uses the same items).
+  notes:
+    - Journey Map (SPEC §10) — each island is a level, each town a unit, each stop a lesson.
+    - "Adapted for one adult learner: an Egyptian Arabic speaker who reads English. Units keep the book's topic and grammar; contexts are adult (work, travel, chats, markets)."
+    - Minutes are estimates for planning daily goals; the coach adjusts them from real attempt times.
+
+sources:
+  - id: permendikbud-27-2017
+    title: Permendikbud Nomor 27 Tahun 2017 — SKL Kursus dan Pelatihan BIPA
+    url: https://appbipa.or.id/unduh/Permendikbud%20Nomor%2027%20Tahun%202017.pdf
+    used_for: Level capability statements and per-skill competency units (BIPA 1–4); CEFR/UKBI basis.
+  - id: appbipa-skl
+    title: APPBIPA — SKL (Standar Kompetensi Lulusan)
+    url: https://appbipa.or.id/skl-standar-kompetensi-lulusan/
+    used_for: Confirms the SKL is adapted from CEFR and follows the UKBI levelling.
+  - id: sahabatku-umum-bipa1
+    title: Sahabatku Indonesia BIPA 1 (Umum, 2019) — table of contents and Peta Materi
+    url: https://fliphtml5.com/tbmvf/bjie/BIPA_1_Umum/
+    used_for: BIPA 1 unit order and grammar points.
+  - id: sahabatku-pelajar-bipa1
+    title: Sahabatku Indonesia untuk Pelajar BIPA 1 (2019), preview
+    url: https://bipa.kemendikdasmen.go.id/filebelajar/591Pelajar_BIPA1_preview.pdf
+    used_for: Cross-check of BIPA 1 grammar (meN- allomorphs, aspect, food ordering, directions, market).
+  - id: sahabatku-umum-bipa2
+    title: Sahabatku Indonesia BIPA 2 (Umum, 2019)
+    url: https://bipa.kemendikdasmen.go.id/filebelajar/636Umum_BIPA_2.pdf
+    used_for: BIPA 2 unit order and grammar points.
+  - id: sahabatku-pelajar-bipa2
+    title: Sahabatku Indonesia untuk Pelajar BIPA 2 (2019)
+    url: https://bipa.kemendikdasmen.go.id/filebelajar/122Pelajar_BIPA_2.pdf
+    used_for: Cross-check of BIPA 2 grammar (ber- meanings, peng- agent, classifiers, texting language).
+  - id: sahabatku-umum-bipa3
+    title: Sahabatku Indonesia BIPA 3 (Umum, 2019), preview
+    url: https://bipa.kemendikdasmen.go.id/filebelajar/945323UMUM_BIPA_3_pratinjau.pdf
+    used_for: BIPA 3 unit order and grammar points.
+  - id: sahabatku-umum-bipa4
+    title: Sahabatku Indonesia BIPA 4 (Umum, 2019)
+    url: https://bipa.kemendikdasmen.go.id/filebelajar/313UMUM_BIPA_4.pdf
+    used_for: BIPA 4 unit order and grammar points.
+  - id: sahabatku-pelajar-bipa7
+    title: Sahabatku Indonesia untuk Pelajar BIPA 7 (2019), preview
+    url: https://bipa.kemendikdasmen.go.id/filebelajar/201832PELAJAR_BIPA_7_pratinjau.pdf
+    used_for: BIPA 7 unit order and language points (Umum edition not retrievable).
+  - id: bipa-daring-catalogue
+    title: BIPA Daring — catalogue of Sahabatku Indonesia 2019 books
+    url: https://bipa.kemendikdasmen.go.id/belajar_cat.php?cat=MQ%3D%3D
+    used_for: Confirms the 2019 series has Umum and Pelajar editions for BIPA 1–7, 10 units each.
+  - id: madah-cefr-sahabatku
+    title: Implikasi CEFR pada Buku Ajar Sahabatku Indonesia untuk Penutur Bahasa Arab Level 1 (Madah)
+    url: https://madah.kemendikdasmen.go.id/index.php/madah/article/download/552/392/2109
+    used_for: BIPA 1 ≈ A1, BIPA 2 ≈ A1–A2 evidence; the Arabic-speaker edition's unit list.
+  - id: jmpis-bipa3-b1
+    title: Kesesuaian Isi Materi Keterampilan Berbicara dalam Buku Sahabatku Indonesia BIPA 3 (JMPIS)
+    url: https://dinastirev.org/JMPIS/article/download/2650/1563/10059
+    used_for: BIPA 3 ≈ B1 evidence; 2016 edition had six CEFR-labelled books, 2019 has seven.
+
+levels:
+  # ───────────────────────────── BIPA 1 · Jakarta ─────────────────────────────
+  - id: bipa1
+    code: BIPA 1
+    title: { target: "Pemula — Terbatas", en: "Beginner: first contact", ar: "مبتدئ: أول تواصل" }
+    ukbi_band: Terbatas
+    cefr: { approx: A1, confidence: high, evidence: "Stated as A1 in the Madah analysis of Sahabatku Level 1 (madah-cefr-sahabatku)." }
+    journey: { place: Jakarta, kind: island, note: "Java's capital stands in for the first island: arrival city." }
+    capability:
+      official: Memahami dan menggunakan ungkapan konteks perkenalan diri dan pemenuhan kebutuhan konkret sehari-hari dan rutin.
+      en: Understand and use expressions for introducing yourself and meeting concrete, routine everyday needs.
+    skills:
+      listening: ["Recognise simple words and phrases giving information about other people", "Identify directions and daily activities in what you hear"]
+      speaking: ["Say simple sentences about yourself and others", "Ask about and explain where places are", "Answer simple questions"]
+      reading: ["Read short descriptive texts about personal information aloud", "Find information in ads, maps, menus and timetables", "Read short personal messages"]
+      writing: ["Fill in forms with personal information", "Write short sentences about places and routines", "Write a short personal message"]
+    source_units:
+      source: sahabatku-umum-bipa1
+      titles: ["Salam", "Perkenalan Ni Luh", "Keluargaku", "Ulang Tahunku", "Liburanku", "Aktivitas Harianku", "Hobi Kami", "Sifat-Sifat Temanku", "Arah, Letak, dan Lokasi", "Pengalaman Meli"]
+    units:
+      - id: bipa1.u01
+        title: { target: "Salam", en: "Greetings", ar: "التحية" }
+        stop: Kota Tua
+        source_ref: Umum BIPA 1 Unit 1 "Salam"
+        can_do: ["Greet people at any time of day and say goodbye", "Ask \"Apa kabar?\" and answer it", "Say who you are with saya / aku"]
+        grammar: [id.greeting.selamat, id.question.apa, id.pronoun.personal]
+        vocabulary: ["greetings by time of day", "farewells", "how-are-you replies", "thanks and sorry"]
+        arabic_bridge: ["kabar ← خبر", "selamat ← سلامة", "salam ← سلام", "maaf ← معاف (root ع ف و)"]
+        culture: { souvenir: Batavia's Fatahillah Square, note: "Jakarta began as the port of Sunda Kelapa, then Dutch Batavia; Kota Tua is the old town. Indonesians greet by time of day and often add a nod or a hand to the chest." }
+        lessons:
+          - { id: bipa1.u01.l01, kind: learn, title: "Selamat pagi!", can_do: "Greet by time of day and say goodbye.", grammar: [id.greeting.selamat], minutes: 10 }
+          - { id: bipa1.u01.l02, kind: learn, title: "Apa kabar?", can_do: "Ask how someone is and answer.", grammar: [id.question.apa], minutes: 10 }
+          - { id: bipa1.u01.l03, kind: learn, title: "Saya dan aku", can_do: "Say \"I\" politely or casually.", grammar: [id.pronoun.personal], minutes: 10 }
+          - { id: bipa1.u01.l04, kind: practice, title: "Bertemu di Kota Tua", can_do: "Hold a 4-line greeting dialogue.", minutes: 10 }
+          - { id: bipa1.u01.l05, kind: review, title: "Ulangan Unit 1", can_do: "Greet and answer without help.", minutes: 8 }
+
+      - id: bipa1.u02
+        title: { target: "Perkenalan", en: "Introductions", ar: "التعارف" }
+        stop: Menteng
+        source_ref: Umum BIPA 1 Unit 2 "Perkenalan Ni Luh"
+        can_do: ["Introduce yourself (name, country, language, job)", "Ask someone's name and where they are from", "Use Bapak / Ibu / Mas / Mbak correctly", "Fill in a simple personal-data form"]
+        grammar: [id.address.terms, id.sentence.no-copula, id.question.siapa, id.question.mana, id.origin.orang-bahasa]
+        vocabulary: ["countries and nationalities", "languages", "basic jobs", "form fields (nama, alamat, tanggal lahir)"]
+        arabic_bridge: ["Mesir ← مصر", "Arab ← عرب"]
+        culture: { souvenir: The Proclamation house in Menteng, note: "Indonesians ask personal questions early (age, marriage, religion) out of friendliness. 'Orang Mesir' instantly sparks warm talk about Al-Azhar, where many Indonesians study." }
+        lessons:
+          - { id: bipa1.u02.l01, kind: learn, title: "Nama saya…", can_do: "Say your name and ask someone's.", grammar: [id.sentence.no-copula, id.question.siapa], minutes: 12 }
+          - { id: bipa1.u02.l02, kind: learn, title: "Saya orang Mesir", can_do: "Say your nationality and languages.", grammar: [id.origin.orang-bahasa, id.question.mana], minutes: 12 }
+          - { id: bipa1.u02.l03, kind: learn, title: "Pak, Bu, Mas, Mbak", can_do: "Address people with the right title.", grammar: [id.address.terms], minutes: 10 }
+          - { id: bipa1.u02.l04, kind: practice, title: "Formulir pendaftaran", can_do: "Fill in a registration form and introduce yourself.", minutes: 12 }
+          - { id: bipa1.u02.l05, kind: review, title: "Ulangan Unit 2", can_do: "Introduce yourself in 5 sentences.", minutes: 8 }
+
+      - id: bipa1.u03
+        title: { target: "Keluargaku", en: "My family", ar: "عائلتي" }
+        stop: Cikini
+        source_ref: Umum BIPA 1 Unit 3 "Keluargaku"
+        can_do: ["Name family members", "Say whose something is (my, your, his)", "Point out people and things with ini / itu", "Talk about more than one with reduplication"]
+        grammar: [id.possessive, id.demonstrative.ini-itu, id.noun-phrase.order, id.reduplication.plural]
+        vocabulary: ["family members", "kakak / adik (older / younger sibling)", "married / single", "numbers of children"]
+        culture: { souvenir: Family photo at Taman Ismail Marzuki, note: "Indonesian siblings are named by age, not gender: kakak (older), adik (younger). Calling a stranger Kak or Dik borrows this." }
+        lessons:
+          - { id: bipa1.u03.l01, kind: learn, title: "Ini keluarga saya", can_do: "Introduce family members with ini / itu.", grammar: [id.demonstrative.ini-itu], minutes: 12 }
+          - { id: bipa1.u03.l02, kind: learn, title: "Rumah saya, rumahmu", can_do: "Show possession.", grammar: [id.possessive], minutes: 12 }
+          - { id: bipa1.u03.l03, kind: learn, title: "Kakak saya yang tinggi", can_do: "Order nouns and describers; make plurals.", grammar: [id.noun-phrase.order, id.reduplication.plural], minutes: 12 }
+          - { id: bipa1.u03.l04, kind: practice, title: "Foto keluarga", can_do: "Describe a family photo.", minutes: 10 }
+          - { id: bipa1.u03.l05, kind: review, title: "Ulangan Unit 3", can_do: "Describe your family.", minutes: 8 }
+
+      - id: bipa1.u04
+        title: { target: "Ulang Tahunku", en: "My birthday", ar: "عيد ميلادي" }
+        stop: Tanah Abang
+        source_ref: Umum BIPA 1 Unit 4 "Ulang Tahunku"
+        can_do: ["Count and say prices and phone numbers", "Tell the time", "Say days, dates, months and years", "Ask when / what time / how much"]
+        grammar: [id.number.cardinal, id.number.ordinal, id.time.clock, id.time.calendar, id.question.kapan-berapa]
+        vocabulary: ["numbers 0–1,000,000", "days", "months", "clock times", "birthday wishes"]
+        arabic_bridge: ["waktu ← وقت", "Senin ← الاثنين", "Selasa ← الثلاثاء", "Rabu ← الأربعاء", "Kamis ← الخميس", "Jumat ← الجمعة", "Sabtu ← السبت", "Ahad ← الأحد (everyday Minggu is from Portuguese domingo)"]
+        culture: { souvenir: Tanah Abang textile market, note: "Five of the seven weekday names come from Arabic. Rupiah prices drop zeros in speech: 'dua puluh ribu' and the slang 'goceng' (5,000)." }
+        lessons:
+          - { id: bipa1.u04.l01, kind: learn, title: "Satu, dua, tiga", can_do: "Count and say prices.", grammar: [id.number.cardinal], minutes: 12 }
+          - { id: bipa1.u04.l02, kind: learn, title: "Jam berapa?", can_do: "Tell and ask the time.", grammar: [id.time.clock, id.question.kapan-berapa], minutes: 12 }
+          - { id: bipa1.u04.l03, kind: learn, title: "Hari Senin, tanggal satu", can_do: "Say dates and order things (first, second).", grammar: [id.time.calendar, id.number.ordinal], minutes: 12 }
+          - { id: bipa1.u04.l04, kind: practice, title: "Undangan ulang tahun", can_do: "Read and answer a birthday invitation.", minutes: 10 }
+          - { id: bipa1.u04.l05, kind: review, title: "Ulangan Unit 4", can_do: "Handle numbers, times and dates.", minutes: 8 }
+
+      - id: bipa1.u05
+        title: { target: "Liburanku", en: "My holiday", ar: "عطلتي" }
+        stop: Ancol
+        source_ref: Umum BIPA 1 Unit 5 "Liburanku"
+        can_do: ["Say what you do on holiday with ber- verbs", "Ask how something is", "Say there is / there isn't", "Ask permission and say thank you"]
+        grammar: [id.prefix.ber.basic, id.question.bagaimana, id.politeness.phrases, id.ada]
+        vocabulary: ["holiday activities", "places to visit", "weather words", "asking permission"]
+        culture: { souvenir: Ancol seafront, note: "Weekend 'jalan-jalan' with family is a national pastime; 'permisi' opens almost any request to a stranger." }
+        lessons:
+          - { id: bipa1.u05.l01, kind: learn, title: "Berlibur dan berenang", can_do: "Talk about activities with ber- verbs.", grammar: [id.prefix.ber.basic], minutes: 12 }
+          - { id: bipa1.u05.l02, kind: learn, title: "Ada pantai?", can_do: "Say there is / there isn't.", grammar: [id.ada], minutes: 10 }
+          - { id: bipa1.u05.l03, kind: learn, title: "Bagaimana liburanmu?", can_do: "Ask how things are; ask permission politely.", grammar: [id.question.bagaimana, id.politeness.phrases], minutes: 12 }
+          - { id: bipa1.u05.l04, kind: practice, title: "Di loket Ancol", can_do: "Buy a ticket and ask questions at a counter.", minutes: 10 }
+          - { id: bipa1.u05.l05, kind: review, title: "Ulangan Unit 5", can_do: "Talk about a weekend trip.", minutes: 8 }
+
+      - id: bipa1.u06
+        title: { target: "Aktivitas Harianku", en: "My daily routine", ar: "نشاطي اليومي" }
+        stop: Blok M
+        source_ref: Umum BIPA 1 Unit 6 "Aktivitas Harianku"
+        can_do: ["Describe your day with meN- verbs", "Say whether something is done, not yet done, happening or will happen", "Say how often you do things", "Order events with before / after"]
+        grammar: [id.prefix.men.basic, id.aspect.markers, id.frequency.adverbs, id.demonstrative.sini-situ-sana, id.time.sequence]
+        vocabulary: ["daily routine verbs", "meals", "work and study", "here / there"]
+        culture: { souvenir: Blok M's food stalls, note: "Many Jakartans start the day at 5 a.m. to beat traffic. 'Sudah makan?' is a greeting, not a question about food." }
+        lessons:
+          - { id: bipa1.u06.l01, kind: learn, title: "Saya membaca buku", can_do: "Use common meN- verbs.", grammar: [id.prefix.men.basic], minutes: 14 }
+          - { id: bipa1.u06.l02, kind: learn, title: "Sudah, belum, sedang, akan", can_do: "Show when an action happens without tenses.", grammar: [id.aspect.markers], minutes: 12 }
+          - { id: bipa1.u06.l03, kind: learn, title: "Selalu, sering, jarang", can_do: "Say how often and in what order.", grammar: [id.frequency.adverbs, id.time.sequence, id.demonstrative.sini-situ-sana], minutes: 12 }
+          - { id: bipa1.u06.l04, kind: practice, title: "Satu hari di Jakarta", can_do: "Narrate your day in 6 sentences.", minutes: 10 }
+          - { id: bipa1.u06.l05, kind: review, title: "Ulangan Unit 6", can_do: "Describe your routine.", minutes: 8 }
+
+      - id: bipa1.u07
+        title: { target: "Hobi Kami", en: "Our hobbies", ar: "هواياتنا" }
+        stop: Kemang
+        source_ref: Umum BIPA 1 Unit 7 "Hobi Kami"
+        can_do: ["Say what you like, want, can and must do", "Make nouns from verbs with -an (makanan, minuman)", "Make adjectives stronger (sangat, sekali, banget)"]
+        grammar: [id.suffix.an.result, id.verb.modal, id.intensifier.basic]
+        vocabulary: ["hobbies", "music", "sports", "food and drink", "likes and dislikes"]
+        culture: { souvenir: Kemang café culture, note: "Badminton and football are the big sports; 'nongkrong' (hanging out at a warung or café) is a hobby in itself." }
+        lessons:
+          - { id: bipa1.u07.l01, kind: learn, title: "Saya suka membaca", can_do: "Say likes, wants and abilities.", grammar: [id.verb.modal], minutes: 12 }
+          - { id: bipa1.u07.l02, kind: learn, title: "Makanan dan minuman", can_do: "Build -an nouns.", grammar: [id.suffix.an.result], minutes: 12 }
+          - { id: bipa1.u07.l03, kind: learn, title: "Enak sekali!", can_do: "Intensify adjectives.", grammar: [id.intensifier.basic], minutes: 10 }
+          - { id: bipa1.u07.l04, kind: practice, title: "Hobi teman baru", can_do: "Chat about hobbies with a new friend.", minutes: 10 }
+          - { id: bipa1.u07.l05, kind: review, title: "Ulangan Unit 7", can_do: "Talk about your hobbies.", minutes: 8 }
+
+      - id: bipa1.u08
+        title: { target: "Sifat-Sifat Temanku", en: "My friends' personalities", ar: "صفات أصدقائي" }
+        stop: Glodok
+        source_ref: Umum BIPA 1 Unit 8 "Sifat-Sifat Temanku"
+        can_do: ["Describe people's character and looks", "Say what something is not (tidak vs bukan)", "Pick one out with yang"]
+        grammar: [id.negation.tidak-bukan, id.yang.basic]
+        vocabulary: ["personality adjectives", "appearance", "opposites"]
+        culture: { souvenir: Glodok's Chinatown temples, note: "Glodok is Jakarta's Chinatown; Indonesia's diversity shows in how people describe each other — politely, often indirectly." }
+        lessons:
+          - { id: bipa1.u08.l01, kind: learn, title: "Dia ramah", can_do: "Describe character and appearance.", minutes: 12 }
+          - { id: bipa1.u08.l02, kind: learn, title: "Tidak atau bukan?", can_do: "Negate verbs, adjectives and nouns correctly.", grammar: [id.negation.tidak-bukan], minutes: 12 }
+          - { id: bipa1.u08.l03, kind: learn, title: "Yang mana?", can_do: "Identify \"the tall one\", \"the one who…\".", grammar: [id.yang.basic], minutes: 12 }
+          - { id: bipa1.u08.l04, kind: practice, title: "Siapa dia?", can_do: "Guess a person from a description.", minutes: 10 }
+          - { id: bipa1.u08.l05, kind: review, title: "Ulangan Unit 8", can_do: "Describe a friend.", minutes: 8 }
+
+      - id: bipa1.u09
+        title: { target: "Arah, Letak, dan Lokasi", en: "Directions, position and location", ar: "الاتجاهات والمواقع" }
+        stop: Monas
+        source_ref: Umum BIPA 1 Unit 9 "Arah, Letak, dan Lokasi"
+        can_do: ["Ask for and give directions", "Say where something is (on, under, next to, between)", "Link instructions with and / then / but"]
+        grammar: [id.location.words, id.preposition.di-ke-dari, id.conjunction.basic]
+        vocabulary: ["left / right / straight", "landmarks", "transport stops", "rooms and furniture"]
+        culture: { souvenir: Monas (National Monument), note: "Directions are often given by landmarks — 'after the mosque, turn left' — and Jakartans will happily walk you halfway." }
+        lessons:
+          - { id: bipa1.u09.l01, kind: learn, title: "Di, ke, dari", can_do: "Say at / to / from.", grammar: [id.preposition.di-ke-dari], minutes: 12 }
+          - { id: bipa1.u09.l02, kind: learn, title: "Di atas meja", can_do: "Describe positions.", grammar: [id.location.words], minutes: 12 }
+          - { id: bipa1.u09.l03, kind: learn, title: "Lurus, lalu belok kiri", can_do: "Give step-by-step directions.", grammar: [id.conjunction.basic], minutes: 12 }
+          - { id: bipa1.u09.l04, kind: practice, title: "Ke Monas", can_do: "Follow and give directions on a map.", minutes: 12 }
+          - { id: bipa1.u09.l05, kind: review, title: "Ulangan Unit 9", can_do: "Get from A to B by asking.", minutes: 8 }
+
+      - id: bipa1.u10
+        title: { target: "Pengalamanku", en: "My experiences", ar: "تجاربي" }
+        stop: Kepulauan Seribu
+        source_ref: Umum BIPA 1 Unit 10 "Pengalaman Meli"
+        can_do: ["Tell a short story about what happened today or yesterday", "Say whether you have ever done something", "Build complete S-P-O-K sentences"]
+        grammar: [id.sentence.word-order, id.aspect.pernah, id.time.sequence]
+        vocabulary: ["past time words", "transport", "public places", "first-time experiences"]
+        culture: { souvenir: Boat to the Thousand Islands, note: "Indonesian has no past tense; time words and context do the work. 'Pernah ke Mesir?' — have you ever been to Egypt? — is a classic opener." }
+        lessons:
+          - { id: bipa1.u10.l01, kind: learn, title: "Kemarin saya…", can_do: "Talk about the past with time words.", grammar: [id.time.sequence], minutes: 10 }
+          - { id: bipa1.u10.l02, kind: learn, title: "Pernah ke Bali?", can_do: "Talk about experiences with pernah.", grammar: [id.aspect.pernah], minutes: 12 }
+          - { id: bipa1.u10.l03, kind: learn, title: "S-P-O-K", can_do: "Order a full sentence.", grammar: [id.sentence.word-order], minutes: 12 }
+          - { id: bipa1.u10.l04, kind: practice, title: "Cerita di kapal", can_do: "Tell a 6-sentence story.", minutes: 12 }
+          - { id: bipa1.u10.l05, kind: review, title: "Ulangan Unit 10", can_do: "Retell an experience.", minutes: 8 }
+    level_test:
+      id: bipa1.test
+      minutes: 30
+      pass_mark: 0.75
+      covers: ["listening to introductions and directions", "reading a form / menu / timetable", "writing a personal message", "a 3-minute speaking task (introduce yourself)"]
+
+  # ───────────────────────────── BIPA 2 · Bali ─────────────────────────────
+  - id: bipa2
+    code: BIPA 2
+    title: { target: "Pemula — Marginal", en: "Beginner: everyday life", ar: "مبتدئ: الحياة اليومية" }
+    ukbi_band: Marginal
+    requires: [bipa1]
+    cefr: { approx: A2, confidence: medium, evidence: "Published analyses (via madah-cefr-sahabatku) tie A1–A2 to BIPA 1–2; the 2016 A2 book's topics match." }
+    journey: { place: Bali, kind: island }
+    capability:
+      official: Mengungkapkan perasaan secara sederhana, mendeskripsikan lingkungan sekitar.
+      en: Express feelings simply and describe your surroundings.
+    skills:
+      listening: ["Respond to sentences and expressions common in public places", "Follow simple instructions and announcements", "Follow talk about social and entertainment topics"]
+      speaking: ["Exchange information about everyday activities in public places", "Handle simple routine tasks", "Describe feelings and surroundings"]
+      reading: ["Carry out simple routine tasks from a text", "Summarise a descriptive text"]
+      writing: ["Retell an experience in writing", "Write a personal descriptive text"]
+    source_units:
+      source: sahabatku-umum-bipa2
+      titles: ["Alat Musik Kesukaan", "Pekerjaan Saya", "Pengumuman", "Belanja di Pasar", "Makanan Kesukaan", "Lingkungan Rumahku", "Olahraga Kesukaanku", "Naik Transportasi Umum", "Cerita Liburanku", "Obat dan Penyakit"]
+    units:
+      - id: bipa2.u01
+        title: { target: "Alat Musik Kesukaan", en: "My favourite instrument", ar: "آلتي الموسيقية المفضلة" }
+        stop: Ubud
+        source_ref: Umum BIPA 2 Unit 1
+        can_do: ["Compare things (bigger, the biggest)", "Say quite / too / rather (cukup, terlalu, agak)", "Describe a musical instrument"]
+        grammar: [id.comparison.lebih, id.comparison.ter-paling, id.adverb.degree]
+        vocabulary: ["instruments", "sounds", "materials", "size and shape"]
+        culture: { souvenir: Balinese gamelan, note: "Gamelan is an ensemble of bronze metallophones and gongs; in Bali it is fast and shimmering, in Java slow and meditative." }
+        lessons:
+          - { id: bipa2.u01.l01, kind: learn, title: "Lebih besar daripada…", can_do: "Compare two things.", grammar: [id.comparison.lebih], minutes: 12 }
+          - { id: bipa2.u01.l02, kind: learn, title: "Paling indah, terbesar", can_do: "Say \"the most\".", grammar: [id.comparison.ter-paling], minutes: 12 }
+          - { id: bipa2.u01.l03, kind: learn, title: "Cukup mahal, terlalu keras", can_do: "Grade adjectives.", grammar: [id.adverb.degree], minutes: 10 }
+          - { id: bipa2.u01.l04, kind: practice, title: "Toko alat musik", can_do: "Choose between instruments in a shop.", minutes: 10 }
+          - { id: bipa2.u01.l05, kind: review, title: "Ulangan Unit 1", can_do: "Describe and compare instruments.", minutes: 8 }
+
+      - id: bipa2.u02
+        title: { target: "Pekerjaan Saya", en: "My job", ar: "عملي" }
+        stop: Denpasar
+        source_ref: Umum BIPA 2 Unit 2
+        can_do: ["Describe jobs and workplaces", "Ask and answer why with mengapa / kenapa … karena", "Name people by what they do (penulis, pembaca)"]
+        grammar: [id.question.mengapa, id.prefix.peng.agent]
+        vocabulary: ["professions", "workplaces", "work tasks", "reasons"]
+        culture: { souvenir: Denpasar's Badung market, note: "Many Balinese work in tourism and keep a second role in their banjar (village council) and temple ceremonies." }
+        lessons:
+          - { id: bipa2.u02.l01, kind: learn, title: "Penulis, pelukis, pedagang", can_do: "Name professions with peN-.", grammar: [id.prefix.peng.agent], minutes: 12 }
+          - { id: bipa2.u02.l02, kind: learn, title: "Mengapa? Karena…", can_do: "Ask for and give reasons.", grammar: [id.question.mengapa], minutes: 12 }
+          - { id: bipa2.u02.l03, kind: learn, title: "Kantor saya", can_do: "Describe your work day.", minutes: 10 }
+          - { id: bipa2.u02.l04, kind: practice, title: "Wawancara singkat", can_do: "Answer simple interview questions.", minutes: 10 }
+          - { id: bipa2.u02.l05, kind: review, title: "Ulangan Unit 2", can_do: "Describe a job and why you chose it.", minutes: 8 }
+
+      - id: bipa2.u03
+        title: { target: "Pengumuman", en: "Announcements", ar: "الإعلانات" }
+        stop: Ngurah Rai
+        source_ref: Umum BIPA 2 Unit 3
+        can_do: ["Understand station, airport and campus announcements", "Read signs (Harap…, Dilarang…)", "Talk about quantity (beberapa, banyak, semua) and frequency"]
+        grammar: [id.quantifier.basic, id.notice.harap-dilarang, id.frequency.adverbs]
+        vocabulary: ["airport and station words", "delays", "gates", "signs"]
+        culture: { souvenir: Arrival at Ngurah Rai airport, note: "Announcements are formal Indonesian; 'Para penumpang yang terhormat…' (dear passengers) is the classic opener." }
+        lessons:
+          - { id: bipa2.u03.l01, kind: learn, title: "Beberapa dan banyak", can_do: "Talk about amounts.", grammar: [id.quantifier.basic], minutes: 12 }
+          - { id: bipa2.u03.l02, kind: learn, title: "Harap tenang, dilarang merokok", can_do: "Read public signs.", grammar: [id.notice.harap-dilarang], minutes: 10 }
+          - { id: bipa2.u03.l03, kind: learn, title: "Sering terlambat", can_do: "Understand a delay announcement.", grammar: [id.frequency.adverbs], minutes: 10 }
+          - { id: bipa2.u03.l04, kind: practice, title: "Bandara", can_do: "Act on an airport announcement.", minutes: 10 }
+          - { id: bipa2.u03.l05, kind: review, title: "Ulangan Unit 3", can_do: "Make a short announcement.", minutes: 8 }
+
+      - id: bipa2.u04
+        title: { target: "Belanja di Pasar", en: "Shopping at the market", ar: "التسوّق في السوق" }
+        stop: Sukawati
+        source_ref: Umum BIPA 2 Unit 4
+        can_do: ["Bargain politely", "Count things with classifiers (sebuah, seekor, dua ikat)", "Invite (ayo, mari) and say \"don't\" (jangan)", "Say \"as … as\" and \"the same as\""]
+        grammar: [id.invitation.ayo-mari, id.prohibition.jangan, id.classifier.basic, id.comparison.equative]
+        vocabulary: ["market goods", "weights and measures", "bargaining phrases", "colours"]
+        culture: { souvenir: Sukawati art market, note: "Bargaining is expected in traditional markets but done with a smile; starting at half the price and meeting in the middle is normal. Supermarkets have fixed prices." }
+        lessons:
+          - { id: bipa2.u04.l01, kind: learn, title: "Sebuah, seekor, sepotong", can_do: "Count with classifiers.", grammar: [id.classifier.basic], minutes: 12 }
+          - { id: bipa2.u04.l02, kind: learn, title: "Ayo, mari, jangan", can_do: "Invite and warn.", grammar: [id.invitation.ayo-mari, id.prohibition.jangan], minutes: 12 }
+          - { id: bipa2.u04.l03, kind: learn, title: "Sama mahalnya", can_do: "Compare equally.", grammar: [id.comparison.equative], minutes: 10 }
+          - { id: bipa2.u04.l04, kind: practice, title: "Pasar! (tawar-menawar)", can_do: "Haggle within a budget (Pasar! mini-game).", minutes: 12 }
+          - { id: bipa2.u04.l05, kind: review, title: "Ulangan Unit 4", can_do: "Buy three things at a fair price.", minutes: 8 }
+
+      - id: bipa2.u05
+        title: { target: "Makanan Kesukaan", en: "Favourite food", ar: "طعامي المفضّل" }
+        stop: Gianyar
+        source_ref: Umum BIPA 2 Unit 5
+        can_do: ["Order food and describe tastes", "Follow and give a recipe", "Use ber-…-an and ber-…-kan forms"]
+        grammar: [id.confix.ber-an, id.imperative.basic]
+        vocabulary: ["tastes", "cooking verbs", "ingredients", "halal food words"]
+        arabic_bridge: ["halal ← حلال", "haram ← حرام", "lezat ← لذّة"]
+        culture: { souvenir: Babi guling vs. halal warung, note: "Bali is majority Hindu, so pork dishes are common; look for 'halal' signs or 'warung Muslim'. Elsewhere in Indonesia halal is the default." }
+        lessons:
+          - { id: bipa2.u05.l01, kind: learn, title: "Pedas, manis, asin", can_do: "Describe tastes and order.", minutes: 10 }
+          - { id: bipa2.u05.l02, kind: learn, title: "Potong, goreng, aduk", can_do: "Give recipe instructions.", grammar: [id.imperative.basic], minutes: 12 }
+          - { id: bipa2.u05.l03, kind: learn, title: "Berdasarkan, berdatangan", can_do: "Recognise ber-…-an / ber-…-kan.", grammar: [id.confix.ber-an], minutes: 12 }
+          - { id: bipa2.u05.l04, kind: practice, title: "Resep nasi goreng", can_do: "Write a 6-step recipe.", minutes: 12 }
+          - { id: bipa2.u05.l05, kind: review, title: "Ulangan Unit 5", can_do: "Order and explain a dish.", minutes: 8 }
+
+      - id: bipa2.u06
+        title: { target: "Lingkungan Rumahku", en: "My neighbourhood", ar: "حيّي" }
+        stop: Sanur
+        source_ref: Umum BIPA 2 Unit 6
+        can_do: ["Describe your home and neighbourhood", "Ask for help politely (tolong, silakan, minta)", "Use compound nouns (kamar mandi, rumah sakit)"]
+        grammar: [id.request.tolong-silakan, id.noun.compound, id.location.words, id.classifier.basic]
+        vocabulary: ["rooms", "furniture", "neighbourhood places", "renting a room (kos)"]
+        culture: { souvenir: A Balinese family compound, note: "A Balinese home is a walled compound of pavilions with a family temple in the holiest (mountain-facing) corner." }
+        lessons:
+          - { id: bipa2.u06.l01, kind: learn, title: "Kamar mandi dan kamar tidur", can_do: "Name rooms with compounds.", grammar: [id.noun.compound], minutes: 10 }
+          - { id: bipa2.u06.l02, kind: learn, title: "Tolong dan silakan", can_do: "Make polite requests and offers.", grammar: [id.request.tolong-silakan], minutes: 12 }
+          - { id: bipa2.u06.l03, kind: learn, title: "Di sebelah warung", can_do: "Describe where things are around you.", grammar: [id.location.words, id.classifier.basic], minutes: 10 }
+          - { id: bipa2.u06.l04, kind: practice, title: "Mencari kos", can_do: "Ask about a room for rent.", minutes: 12 }
+          - { id: bipa2.u06.l05, kind: review, title: "Ulangan Unit 6", can_do: "Describe your street.", minutes: 8 }
+
+      - id: bipa2.u07
+        title: { target: "Olahraga Kesukaanku", en: "My favourite sport", ar: "رياضتي المفضّلة" }
+        stop: Kuta
+        source_ref: Umum BIPA 2 Unit 7
+        can_do: ["Explain how to do a sport step by step", "Use the many meanings of ber- (bersepeda, berdua, bersedih)", "Say how long and since when"]
+        grammar: [id.prefix.ber.meanings, id.duration, id.imperative.basic]
+        vocabulary: ["sports", "equipment", "body movements", "time spans"]
+        culture: { souvenir: Surfing at Kuta, note: "Badminton (bulu tangkis) is Indonesia's Olympic pride; in Bali, surfing and morning jogging on the beach are everyday." }
+        lessons:
+          - { id: bipa2.u07.l01, kind: learn, title: "Bersepeda dan berselancar", can_do: "Use ber- for using / riding / doing.", grammar: [id.prefix.ber.meanings], minutes: 12 }
+          - { id: bipa2.u07.l02, kind: learn, title: "Sudah berapa lama?", can_do: "Talk about duration.", grammar: [id.duration], minutes: 12 }
+          - { id: bipa2.u07.l03, kind: learn, title: "Angkat tangan!", can_do: "Give exercise instructions.", grammar: [id.imperative.basic], minutes: 10 }
+          - { id: bipa2.u07.l04, kind: practice, title: "Pelatih pantai", can_do: "Explain a sport to a friend.", minutes: 10 }
+          - { id: bipa2.u07.l05, kind: review, title: "Ulangan Unit 7", can_do: "Describe your sport routine.", minutes: 8 }
+
+      - id: bipa2.u08
+        title: { target: "Naik Transportasi Umum", en: "Taking public transport", ar: "ركوب المواصلات العامة" }
+        stop: Bedugul
+        source_ref: Umum BIPA 2 Unit 8
+        can_do: ["Tell a trip in order (first, then, finally)", "Say what happened while / when", "Use reduplication beyond plurals (jalan-jalan, pelan-pelan)"]
+        grammar: [id.conjunction.sequence, id.conjunction.time, id.reduplication.types]
+        vocabulary: ["bus", "ojek", "angkot", "ticket", "route", "apps (Gojek / Grab)"]
+        culture: { souvenir: Ulun Danu temple on Lake Bratan, note: "Ride-hailing motorbikes (ojek online) are how most people move; you order, pay and chat with the driver in an app — in Indonesian chat style." }
+        lessons:
+          - { id: bipa2.u08.l01, kind: learn, title: "Pertama, lalu, akhirnya", can_do: "Sequence a trip.", grammar: [id.conjunction.sequence], minutes: 12 }
+          - { id: bipa2.u08.l02, kind: learn, title: "Ketika dan sambil", can_do: "Link simultaneous events.", grammar: [id.conjunction.time], minutes: 12 }
+          - { id: bipa2.u08.l03, kind: learn, title: "Jalan-jalan pelan-pelan", can_do: "Use reduplication for variety and manner.", grammar: [id.reduplication.types], minutes: 12 }
+          - { id: bipa2.u08.l04, kind: practice, title: "Pesan ojek", can_do: "Book a ride and chat with the driver.", minutes: 10 }
+          - { id: bipa2.u08.l05, kind: review, title: "Ulangan Unit 8", can_do: "Recount a trip.", minutes: 8 }
+
+      - id: bipa2.u09
+        title: { target: "Cerita Liburanku", en: "My holiday story", ar: "حكاية عطلتي" }
+        stop: Lovina
+        source_ref: Umum BIPA 2 Unit 9
+        can_do: ["Retell a holiday with feeling (wah, aduh, lho)", "Read and write chat-style messages (yg, gak, udh)", "Choose adjectives for a recount"]
+        grammar: [id.interjection.particles, id.chat.abbreviations, id.conjunction.sequence]
+        vocabulary: ["feelings", "scenery adjectives", "chat abbreviations", "emoji-speak"]
+        culture: { souvenir: "Dolphins at dawn, Lovina", note: "Indonesians are some of the world's busiest chatters; WhatsApp-style spelling (yg, gk, bgt, wkwk) is everywhere, and Kabar's Reader decodes it." }
+        lessons:
+          - { id: bipa2.u09.l01, kind: learn, title: "Wah! Aduh! Lho?", can_do: "React naturally.", grammar: [id.interjection.particles], minutes: 12 }
+          - { id: bipa2.u09.l02, kind: learn, title: "Yg, gk, udh, bgt", can_do: "Decode chat spelling.", grammar: [id.chat.abbreviations], minutes: 12 }
+          - { id: bipa2.u09.l03, kind: learn, title: "Indah dan menyenangkan", can_do: "Write a lively recount.", grammar: [id.conjunction.sequence], minutes: 10 }
+          - { id: bipa2.u09.l04, kind: practice, title: "Grup WhatsApp liburan", can_do: "Read and reply to a holiday group chat.", minutes: 12 }
+          - { id: bipa2.u09.l05, kind: review, title: "Ulangan Unit 9", can_do: "Tell a holiday story in speech and chat.", minutes: 8 }
+
+      - id: bipa2.u10
+        title: { target: "Obat dan Penyakit", en: "Medicine and illness", ar: "الدواء والمرض" }
+        stop: Amed
+        source_ref: Umum BIPA 2 Unit 10
+        can_do: ["Say what hurts and how you feel", "Understand instructions on medicine", "Wish someone well (semoga cepat sembuh)"]
+        grammar: [id.pattern.sakit, id.hope.semoga, id.invitation.ayo-mari]
+        vocabulary: ["body parts", "symptoms", "pharmacy", "dosage", "weather and health"]
+        arabic_bridge: ["sehat ← صحة", "tabib ← طبيب (everyday dokter is from Dutch)", "insya Allah ← إن شاء الله"]
+        culture: { souvenir: Jamu herbal tonic, note: "Jamu (herbal drinks) and 'kerokan' (coin-scraping for 'masuk angin', a cold) are home remedies you will hear about at every sniffle." }
+        lessons:
+          - { id: bipa2.u10.l01, kind: learn, title: "Kepala saya sakit", can_do: "Describe symptoms.", grammar: [id.pattern.sakit], minutes: 12 }
+          - { id: bipa2.u10.l02, kind: learn, title: "Di apotek", can_do: "Read dosage instructions.", minutes: 10 }
+          - { id: bipa2.u10.l03, kind: learn, title: "Semoga cepat sembuh", can_do: "Wish well and suggest rest.", grammar: [id.hope.semoga, id.invitation.ayo-mari], minutes: 10 }
+          - { id: bipa2.u10.l04, kind: practice, title: "Ke dokter", can_do: "See a doctor and explain the problem.", minutes: 12 }
+          - { id: bipa2.u10.l05, kind: review, title: "Ulangan Unit 10", can_do: "Handle a health situation.", minutes: 8 }
+    level_test:
+      id: bipa2.test
+      minutes: 35
+      pass_mark: 0.75
+      covers: ["public announcements", "market and transport dialogues", "reading a recipe / medicine label", "writing a holiday recount", "speaking about your surroundings and feelings"]
+
+  # ───────────────────────────── BIPA 3 · Lombok ─────────────────────────────
+  - id: bipa3
+    code: BIPA 3
+    title: { target: "Madya — Semenjana", en: "Intermediate: experiences and plans", ar: "متوسط: التجارب والخطط" }
+    ukbi_band: Semenjana
+    requires: [bipa2]
+    cefr: { approx: B1, confidence: high, evidence: "BIPA 3 (2019) is placed at B1 in the JMPIS analysis (jmpis-bipa3-b1); matches the 2016 B1 book." }
+    journey: { place: Lombok, kind: island }
+    capability:
+      official: Mengungkapkan pengalaman, harapan, tujuan, dan rencana secara singkat dan koheren dengan disertai alasan.
+      en: Describe experiences, hopes, goals and plans briefly and coherently, giving reasons.
+    skills:
+      listening: ["Get the main points of everyday radio / TV news", "Follow general conversations"]
+      speaking: ["Join spontaneous conversations about interests and daily life", "Describe experiences and goals", "Give reasons for opinions"]
+      reading: ["Understand narratives in everyday language", "Understand personal letters and explanatory texts"]
+      writing: ["Write descriptions about work, study and free time", "Write narratives and explanatory texts such as complaint letters"]
+    source_units:
+      source: sahabatku-umum-bipa3
+      titles: ["Ucapan Selamat, Harapan, dan Doa", "Pelestarian Alam", "Film Favorit", "Makanan Sehat", "Aktivitas Sehari-hari", "Surat Keluhan", "Pahlawan Indonesia", "Peristiwa Alam", "Dongeng Favorit", "Hari Libur"]
+    units:
+      - { id: bipa3.u01, title: { target: "Ucapan Selamat, Harapan, dan Doa", en: "Congratulations, hopes and prayers", ar: "التهاني والأمنيات والدعاء" }, stop: Mataram, source_ref: Umum BIPA 3 Unit 1,
+          can_do: ["Congratulate and offer condolences in the right register", "Use prepositions beyond di / ke / dari (kepada, untuk, bagi, tentang)"], grammar: [id.preposition.extended, id.hope.semoga],
+          vocabulary: ["life events", "Eid and wedding wishes", "condolences"], arabic_bridge: ["doa ← دعاء", "selamat Idulfitri ← عيد الفطر", "mohon maaf lahir dan batin", "berkah ← بركة"],
+          culture: { souvenir: Lebaran ketupat, note: "At Idulfitri everyone asks forgiveness: 'Mohon maaf lahir dan batin'. Lombok is called the Island of a Thousand Mosques." },
+          lessons: [ { id: bipa3.u01.l01, kind: learn, title: "Selamat dan semoga", can_do: "Write wishes for life events.", grammar: [id.hope.semoga], minutes: 12 },
+                     { id: bipa3.u01.l02, kind: learn, title: "Kepada dan untuk", can_do: "Use extended prepositions.", grammar: [id.preposition.extended], minutes: 12 },
+                     { id: bipa3.u01.l03, kind: practice, title: "Kartu Lebaran", can_do: "Write an Eid card.", minutes: 12 },
+                     { id: bipa3.u01.l04, kind: review, title: "Ulangan Unit 1", can_do: "Respond to five life events.", minutes: 8 } ] }
+      - { id: bipa3.u02, title: { target: "Pelestarian Alam", en: "Protecting nature", ar: "حماية الطبيعة" }, stop: Senggigi, source_ref: Umum BIPA 3 Unit 2,
+          can_do: ["Take part in a simple discussion", "Use the particles -lah / -kah / -pun and the clitic -nya"], grammar: [id.particle.lah-kah-pun, id.clitic.nya, id.discussion.expressions],
+          vocabulary: ["environment", "coral reefs", "plastic", "agreeing and disagreeing"],
+          culture: { souvenir: Sea turtles of the Gilis, note: "The Gili islands ban motor vehicles; community groups run turtle hatcheries and reef cleanups." },
+          lessons: [ { id: bipa3.u02.l01, kind: learn, title: "-nya di mana-mana", can_do: "Read -nya as 'the / his / its'.", grammar: [id.clitic.nya], minutes: 14 },
+                     { id: bipa3.u02.l02, kind: learn, title: "Apakah, bukankah, -pun", can_do: "Use focus particles.", grammar: [id.particle.lah-kah-pun], minutes: 12 },
+                     { id: bipa3.u02.l03, kind: practice, title: "Diskusi sampah plastik", can_do: "Agree and disagree in a discussion.", grammar: [id.discussion.expressions], minutes: 12 },
+                     { id: bipa3.u02.l04, kind: review, title: "Ulangan Unit 2", can_do: "Write a short exposition on nature.", minutes: 8 } ] }
+      - { id: bipa3.u03, title: { target: "Film Favorit", en: "Favourite film", ar: "فيلمي المفضّل" }, stop: Gili Trawangan, source_ref: Umum BIPA 3 Unit 3,
+          can_do: ["Write a film synopsis", "Use meN-…-i (causative and locative)"], grammar: [id.confix.men-i],
+          vocabulary: ["film genres", "plot", "characters", "reviews"],
+          culture: { souvenir: Open-air cinema on the beach, note: "Indonesian cinema is booming; horror and family dramas top the box office, and 'sinetron' (TV soaps) are a national habit." },
+          lessons: [ { id: bipa3.u03.l01, kind: learn, title: "Menulisi, mendatangi", can_do: "Use meN-…-i.", grammar: [id.confix.men-i], minutes: 14 },
+                     { id: bipa3.u03.l02, kind: learn, title: "Sinopsis", can_do: "Summarise a plot.", minutes: 12 },
+                     { id: bipa3.u03.l03, kind: practice, title: "Rekomendasi film", can_do: "Recommend a film with reasons.", minutes: 12 },
+                     { id: bipa3.u03.l04, kind: review, title: "Ulangan Unit 3", can_do: "Write a synopsis.", minutes: 8 } ] }
+      - { id: bipa3.u04, title: { target: "Makanan Sehat", en: "Healthy food", ar: "الطعام الصحي" }, stop: Sembalun, source_ref: Umum BIPA 3 Unit 4,
+          can_do: ["Give definitions (X adalah / merupakan …)", "Explain processes with causative meN-…-kan"], grammar: [id.definition.adalah-merupakan, id.confix.men-kan.causative],
+          vocabulary: ["nutrition", "farming", "healthy habits"],
+          culture: { souvenir: Sembalun strawberry fields, note: "Sembalun valley at the foot of Rinjani grows vegetables and strawberries for the whole island." },
+          lessons: [ { id: bipa3.u04.l01, kind: learn, title: "Adalah dan merupakan", can_do: "Define things formally.", grammar: [id.definition.adalah-merupakan], minutes: 12 },
+                     { id: bipa3.u04.l02, kind: learn, title: "Menyehatkan, membersihkan", can_do: "Use causative -kan.", grammar: [id.confix.men-kan.causative], minutes: 14 },
+                     { id: bipa3.u04.l03, kind: practice, title: "Teks eksplanasi", can_do: "Explain why a food is healthy.", minutes: 12 },
+                     { id: bipa3.u04.l04, kind: review, title: "Ulangan Unit 4", can_do: "Define and explain.", minutes: 8 } ] }
+      - { id: bipa3.u05, title: { target: "Aktivitas Sehari-hari", en: "Daily activities (recount)", ar: "الأنشطة اليومية" }, stop: Senaru, source_ref: Umum BIPA 3 Unit 5,
+          can_do: ["Recount your week coherently", "Use transitive verbs with their objects"], grammar: [id.verb.transitive],
+          vocabulary: ["work routines", "errands", "chores"],
+          culture: { souvenir: Sendang Gile waterfall, note: "Senaru is the trailhead for Mount Rinjani; Sasak villagers work as porters and guides." },
+          lessons: [ { id: bipa3.u05.l01, kind: learn, title: "Kata kerja transitif", can_do: "Use verbs with objects.", grammar: [id.verb.transitive], minutes: 12 },
+                     { id: bipa3.u05.l02, kind: learn, title: "Minggu lalu", can_do: "Structure a recount.", minutes: 12 },
+                     { id: bipa3.u05.l03, kind: practice, title: "Jurnal mingguan", can_do: "Write a weekly journal entry.", minutes: 12 },
+                     { id: bipa3.u05.l04, kind: review, title: "Ulangan Unit 5", can_do: "Recount a week.", minutes: 8 } ] }
+      - { id: bipa3.u06, title: { target: "Surat Keluhan", en: "Complaint letters", ar: "رسائل الشكوى" }, stop: Kuta Mandalika, source_ref: Umum BIPA 3 Unit 6,
+          can_do: ["Write a polite complaint", "Use se- (one / same / as)"], grammar: [id.prefix.se],
+          vocabulary: ["services", "problems", "apologies", "refunds"],
+          culture: { souvenir: Mandalika circuit, note: "Indonesian complaints stay polite and indirect; 'mohon maaf sebelumnya' (sorry in advance) softens the start." },
+          lessons: [ { id: bipa3.u06.l01, kind: learn, title: "Sebuah, setinggi, sesudah", can_do: "Use se- meanings.", grammar: [id.prefix.se], minutes: 12 },
+                     { id: bipa3.u06.l02, kind: learn, title: "Dengan hormat", can_do: "Format a formal letter / email.", minutes: 12 },
+                     { id: bipa3.u06.l03, kind: practice, title: "Keluhan hotel", can_do: "Write a complaint to a hotel.", minutes: 12 },
+                     { id: bipa3.u06.l04, kind: review, title: "Ulangan Unit 6", can_do: "Complain politely.", minutes: 8 } ] }
+      - { id: bipa3.u07, title: { target: "Pahlawan Indonesia", en: "Indonesian heroes", ar: "أبطال إندونيسيا" }, stop: Sade, source_ref: Umum BIPA 3 Unit 7,
+          can_do: ["Tell a biography", "Switch between active and passive (di-, saya + verb)"], grammar: [id.voice.active-passive, id.passive.di],
+          vocabulary: ["history", "independence", "biography verbs"],
+          culture: { souvenir: Sasak village of Sade, note: "National heroes (pahlawan nasional) include Lombok's own TGKH Zainuddin Abdul Madjid, a Mecca-trained scholar." },
+          lessons: [ { id: bipa3.u07.l01, kind: learn, title: "Dibersihkan kemarin", can_do: "Use di- passive.", grammar: [id.passive.di], minutes: 14 },
+                     { id: bipa3.u07.l02, kind: learn, title: "Buku itu saya baca", can_do: "Use the pronoun passive.", grammar: [id.voice.active-passive], minutes: 14 },
+                     { id: bipa3.u07.l03, kind: practice, title: "Biografi pahlawan", can_do: "Write a short biography.", minutes: 12 },
+                     { id: bipa3.u07.l04, kind: review, title: "Ulangan Unit 7", can_do: "Recount a life.", minutes: 8 } ] }
+      - { id: bipa3.u08, title: { target: "Peristiwa Alam", en: "Natural events", ar: "الظواهر الطبيعية" }, stop: Tetebatu, source_ref: Umum BIPA 3 Unit 8,
+          can_do: ["Explain causes and effects of natural events", "Use sequence, purpose and condition conjunctions"], grammar: [id.conjunction.purpose-condition, id.conjunction.bukan-hanya, id.conjunction.sequence],
+          vocabulary: ["earthquakes", "volcanoes", "floods", "safety instructions"],
+          culture: { souvenir: Rinjani's crater lake, note: "Indonesia sits on the Ring of Fire; the 2018 Lombok earthquakes taught communities new building rules." },
+          lessons: [ { id: bipa3.u08.l01, kind: learn, title: "Supaya, sehingga, kalau", can_do: "Express purpose, result and condition.", grammar: [id.conjunction.purpose-condition], minutes: 14 },
+                     { id: bipa3.u08.l02, kind: learn, title: "Bukan hanya…, melainkan…", can_do: "Use correlative conjunctions.", grammar: [id.conjunction.bukan-hanya, id.conjunction.sequence], minutes: 12 },
+                     { id: bipa3.u08.l03, kind: practice, title: "Gempa!", can_do: "Explain earthquake safety.", minutes: 12 },
+                     { id: bipa3.u08.l04, kind: review, title: "Ulangan Unit 8", can_do: "Explain a natural event.", minutes: 8 } ] }
+      - { id: bipa3.u09, title: { target: "Dongeng Favorit", en: "Favourite folk tale", ar: "حكايتي الشعبية المفضّلة" }, stop: Pink Beach, source_ref: Umum BIPA 3 Unit 9,
+          can_do: ["Retell a folk tale", "Recognise ber- reduplication (berlari-larian)"], grammar: [id.reduplication.ber-an],
+          vocabulary: ["fairy-tale words", "animals", "morals"],
+          culture: { souvenir: Legend of Putri Mandalika, note: "Princess Mandalika threw herself into the sea rather than choose between suitors; she returns as the nyale sea worms caught each year at Bau Nyale." },
+          lessons: [ { id: bipa3.u09.l01, kind: learn, title: "Berlari-larian", can_do: "Use ber- reduplication.", grammar: [id.reduplication.ber-an], minutes: 12 },
+                     { id: bipa3.u09.l02, kind: learn, title: "Pada zaman dahulu", can_do: "Structure a narrative.", minutes: 12 },
+                     { id: bipa3.u09.l03, kind: practice, title: "Putri Mandalika", can_do: "Retell a legend.", minutes: 12 },
+                     { id: bipa3.u09.l04, kind: review, title: "Ulangan Unit 9", can_do: "Tell a tale from Egypt in Indonesian.", minutes: 8 } ] }
+      - { id: bipa3.u10, title: { target: "Hari Libur", en: "Holidays and plans", ar: "الإجازات والخطط" }, stop: Labuhan Lombok, source_ref: Umum BIPA 3 Unit 10,
+          can_do: ["Describe plans with akan / nanti / rencananya", "Talk about national and religious holidays"], grammar: [id.time.future-plans],
+          vocabulary: ["holidays", "calendar", "plans", "travel booking"],
+          culture: { souvenir: Ferry to Sumbawa, note: "Indonesia has both Islamic (Hijri) and national holidays; 'mudik' — everyone going home for Lebaran — is the world's biggest annual migration." },
+          lessons: [ { id: bipa3.u10.l01, kind: learn, title: "Akan dan nanti", can_do: "Talk about future plans.", grammar: [id.time.future-plans], minutes: 12 },
+                     { id: bipa3.u10.l02, kind: learn, title: "Mudik", can_do: "Describe holiday traditions.", minutes: 12 },
+                     { id: bipa3.u10.l03, kind: practice, title: "Rencana liburan", can_do: "Plan a trip with reasons.", minutes: 12 },
+                     { id: bipa3.u10.l04, kind: review, title: "Ulangan Unit 10", can_do: "Present your plans.", minutes: 8 } ] }
+    level_test: { id: bipa3.test, minutes: 40, pass_mark: 0.7, covers: ["radio news gist", "spontaneous conversation", "narrative reading", "complaint letter", "reasoned opinion"] }
+
+  # ───────────────────────────── BIPA 4 · Sulawesi ─────────────────────────────
+  - id: bipa4
+    code: BIPA 4
+    title: { target: "Madya — Madya", en: "Upper intermediate: reporting and opinions", ar: "فوق المتوسط: التقارير والآراء" }
+    ukbi_band: Madya
+    requires: [bipa3]
+    cefr: { approx: B2, confidence: medium, evidence: "Inferred: the 2016 series' B2 book matches BIPA 4 topics (opinion, news, exposition); SKL wording mirrors B2 'complex argument on familiar topics'." }
+    journey: { place: Sulawesi, kind: island }
+    capability:
+      official: Melaporkan hasil pengamatan atas peristiwa dan mengungkapkan gagasan dalam topik bidangnya.
+      en: Report observations of events and express ideas on topics in your field.
+    skills:
+      listening: ["Follow discussions / speeches / lectures with complex argument on familiar topics", "Understand online news and short Indonesian films"]
+      speaking: ["Give opinions spontaneously with clear pronunciation", "Describe topics of interest", "Give opinions on current issues"]
+    source_units:
+      source: sahabatku-umum-bipa4
+      titles: ["Profesi", "Surat Pembaca", "Tempat Bersejarah", "Media dan Berita", "Hari Besar Nasional", "Pariwisata", "Kesehatan", "Cerita Rakyat", "Lingkungan", "Tokoh Nasional"]
+    gaps: ["The regulation text retrieved lists no reading / writing units for BIPA 4; skills here follow the textbook goals."]
+    units:
+      - { id: bipa4.u01, title: { target: "Profesi", en: "Professions", ar: "المهن" }, stop: Makassar, source_ref: Umum BIPA 4 Unit 1,
+          can_do: ["Follow a talk on careers", "Write an exposition", "Use ter- and ke-…-an"], grammar: [id.prefix.ter, id.confix.ke-an],
+          vocabulary: ["careers", "skills", "workplace issues"], culture: { souvenir: Pinisi schooners, note: "Bugis-Makassar sailors built the pinisi, the great wooden schooners still made in Bulukumba (UNESCO heritage)." },
+          lessons: [ { id: bipa4.u01.l01, kind: learn, title: "Terbaca, tertidur", can_do: "Use ter- (accidental / state / superlative).", grammar: [id.prefix.ter], minutes: 14 },
+                     { id: bipa4.u01.l02, kind: learn, title: "Kehujanan, kecantikan", can_do: "Use ke-…-an (adversity / abstract).", grammar: [id.confix.ke-an], minutes: 14 },
+                     { id: bipa4.u01.l03, kind: practice, title: "Teks eksposisi", can_do: "Argue for a profession.", minutes: 15 },
+                     { id: bipa4.u01.l04, kind: review, title: "Ulangan Unit 1", can_do: "Present a career.", minutes: 10 } ] }
+      - { id: bipa4.u02, title: { target: "Surat Pembaca", en: "Letters to the editor", ar: "رسائل القرّاء" }, stop: Maros, source_ref: Umum BIPA 4 Unit 2,
+          can_do: ["Write a reader's letter with a clear view", "Use advanced reduplication"], grammar: [id.reduplication.advanced],
+          vocabulary: ["public services", "complaints", "civic words"], culture: { souvenir: Karst towers of Rammang-Rammang, note: "Reader letters (surat pembaca) in newspapers are a classic channel for public complaints." },
+          lessons: [ { id: bipa4.u02.l01, kind: learn, title: "Bolak-balik, sayur-mayur", can_do: "Use partial and rhyming reduplication.", grammar: [id.reduplication.advanced], minutes: 14 },
+                     { id: bipa4.u02.l02, kind: learn, title: "Redaksi yth.", can_do: "Structure a reader's letter.", minutes: 12 },
+                     { id: bipa4.u02.l03, kind: practice, title: "Jalan rusak", can_do: "Write a letter about a local problem.", minutes: 15 },
+                     { id: bipa4.u02.l04, kind: review, title: "Ulangan Unit 2", can_do: "Defend your view.", minutes: 10 } ] }
+      - { id: bipa4.u03, title: { target: "Tempat Bersejarah", en: "Historic places", ar: "الأماكن التاريخية" }, stop: Rantepao, source_ref: Umum BIPA 4 Unit 3,
+          can_do: ["Describe a historic place in detail", "Use meN-…-kan and figures of speech (simile, hyperbole)"], grammar: [id.confix.men-kan, id.figurative.simile-hyperbole],
+          vocabulary: ["heritage", "architecture", "history"], culture: { souvenir: Toraja tongkonan houses, note: "Toraja tongkonan houses have boat-shaped roofs; funerals (Rambu Solo') can last days and are the community's biggest event." },
+          lessons: [ { id: bipa4.u03.l01, kind: learn, title: "Meng-…-kan", can_do: "Use meN-…-kan (causative / benefactive).", grammar: [id.confix.men-kan], minutes: 14 },
+                     { id: bipa4.u03.l02, kind: learn, title: "Seperti, bagaikan", can_do: "Use simile and hyperbole.", grammar: [id.figurative.simile-hyperbole], minutes: 12 },
+                     { id: bipa4.u03.l03, kind: practice, title: "Museum", can_do: "Write a vivid description.", minutes: 15 },
+                     { id: bipa4.u03.l04, kind: review, title: "Ulangan Unit 3", can_do: "Present a historic site.", minutes: 10 } ] }
+      - { id: bipa4.u04, title: { target: "Media dan Berita", en: "Media and news", ar: "الإعلام والأخبار" }, stop: Parepare, source_ref: Umum BIPA 4 Unit 4,
+          can_do: ["Summarise a news item", "Weigh pros and cons", "Use cause–effect conjunctions"], grammar: [id.conjunction.cause-effect],
+          vocabulary: ["news", "floods", "policy", "education"], culture: { souvenir: B. J. Habibie's hometown, note: "Parepare is the birthplace of President Habibie, the engineer who opened the press after 1998." },
+          lessons: [ { id: bipa4.u04.l01, kind: learn, title: "Akibatnya, oleh karena itu", can_do: "Link causes and effects.", grammar: [id.conjunction.cause-effect], minutes: 14 },
+                     { id: bipa4.u04.l02, kind: learn, title: "Berita daring", can_do: "Summarise online news.", minutes: 12 },
+                     { id: bipa4.u04.l03, kind: practice, title: "Pro dan kontra", can_do: "Write an essay agreeing or disagreeing.", minutes: 15 },
+                     { id: bipa4.u04.l04, kind: review, title: "Ulangan Unit 4", can_do: "Discuss a news issue.", minutes: 10 } ] }
+      - { id: bipa4.u05, title: { target: "Hari Besar Nasional", en: "National holidays", ar: "الأعياد الوطنية" }, stop: Palopo, source_ref: Umum BIPA 4 Unit 5,
+          can_do: ["Describe a national celebration", "Use meN-…-i and metaphor"], grammar: [id.confix.men-i, id.figurative.metaphor],
+          vocabulary: ["independence day", "Kartini", "ceremonies"], culture: { souvenir: Agustusan games, note: "On 17 August neighbourhoods hold races — panjat pinang (greased-pole climbing), sack races, krupuk-eating contests." },
+          lessons: [ { id: bipa4.u05.l01, kind: learn, title: "Memperingati", can_do: "Use meN-…-i in formal text.", grammar: [id.confix.men-i], minutes: 12 },
+                     { id: bipa4.u05.l02, kind: learn, title: "Metafora", can_do: "Recognise and use metaphor.", grammar: [id.figurative.metaphor], minutes: 12 },
+                     { id: bipa4.u05.l03, kind: practice, title: "Hari Kartini", can_do: "Write about a commemoration.", minutes: 15 },
+                     { id: bipa4.u05.l04, kind: review, title: "Ulangan Unit 5", can_do: "Compare holidays in Egypt and Indonesia.", minutes: 10 } ] }
+      - { id: bipa4.u06, title: { target: "Pariwisata", en: "Tourism", ar: "السياحة" }, stop: Palu, source_ref: Umum BIPA 4 Unit 6,
+          can_do: ["Discuss tourism's economic impact", "Use natural collocations"], grammar: [id.collocation],
+          vocabulary: ["tourism economy", "festivals", "sustainability"], culture: { souvenir: Lore Lindu megaliths, note: "Central Sulawesi's Bada valley holds mysterious megalithic statues older than written history." },
+          lessons: [ { id: bipa4.u06.l01, kind: learn, title: "Kolokasi", can_do: "Use common word partners.", grammar: [id.collocation], minutes: 12 },
+                     { id: bipa4.u06.l02, kind: learn, title: "Dampak festival", can_do: "Weigh effects of tourism.", minutes: 12 },
+                     { id: bipa4.u06.l03, kind: practice, title: "Eksposisi pariwisata", can_do: "Write a tourism exposition.", minutes: 15 },
+                     { id: bipa4.u06.l04, kind: review, title: "Ulangan Unit 6", can_do: "Debate tourism.", minutes: 10 } ] }
+      - { id: bipa4.u07, title: { target: "Kesehatan", en: "Health", ar: "الصحة" }, stop: Gorontalo, source_ref: Umum BIPA 4 Unit 7,
+          can_do: ["Give health information", "Summarise a health talk", "Use peN-…-an nouns for processes"], grammar: [id.confix.peng-an],
+          vocabulary: ["health vocabulary", "conditions", "prevention"], culture: { souvenir: Whale sharks of Botubarani, note: "Indonesia's BPJS national health insurance covers most of the population; puskesmas are the local clinics." },
+          lessons: [ { id: bipa4.u07.l01, kind: learn, title: "Pengobatan, pemeriksaan", can_do: "Use peN-…-an nouns.", grammar: [id.confix.peng-an], minutes: 14 },
+                     { id: bipa4.u07.l02, kind: learn, title: "Ceramah kesehatan", can_do: "Summarise a talk.", minutes: 12 },
+                     { id: bipa4.u07.l03, kind: practice, title: "Esai olahraga", can_do: "Write a health essay.", minutes: 15 },
+                     { id: bipa4.u07.l04, kind: review, title: "Ulangan Unit 7", can_do: "Give health advice.", minutes: 10 } ] }
+      - { id: bipa4.u08, title: { target: "Cerita Rakyat", en: "Folk stories", ar: "الحكايات الشعبية" }, stop: Manado, source_ref: Umum BIPA 4 Unit 8,
+          can_do: ["Analyse a folk tale's elements", "Write a narrative", "Build complex phrases"], grammar: [id.phrase.complex],
+          vocabulary: ["narrative elements", "morals", "characters"], culture: { souvenir: Legend of Toar and Lumimuut, note: "Minahasa people trace their origin to Lumimuut, born of a rock, and her son Toar." },
+          lessons: [ { id: bipa4.u08.l01, kind: learn, title: "Frasa kompleks", can_do: "Build long noun phrases.", grammar: [id.phrase.complex], minutes: 14 },
+                     { id: bipa4.u08.l02, kind: learn, title: "Unsur intrinsik", can_do: "Analyse a story.", minutes: 12 },
+                     { id: bipa4.u08.l03, kind: practice, title: "Dongeng dari Mesir", can_do: "Retell an Egyptian folk tale.", minutes: 15 },
+                     { id: bipa4.u08.l04, kind: review, title: "Ulangan Unit 8", can_do: "Write a narrative.", minutes: 10 } ] }
+      - { id: bipa4.u09, title: { target: "Lingkungan", en: "Environment", ar: "البيئة" }, stop: Bunaken, source_ref: Umum BIPA 4 Unit 9,
+          can_do: ["Give opinions on environmental policy", "Write an exposition"], grammar: [id.confix.men-kan, id.conjunction.cause-effect],
+          vocabulary: ["climate", "plastic bans", "marine parks"], culture: { souvenir: Bunaken coral walls, note: "Bunaken marine park funds itself with diver fees; plastic-bag bans spread city by city." },
+          lessons: [ { id: bipa4.u09.l01, kind: learn, title: "Larangan kantong plastik", can_do: "Follow a presentation.", grammar: [id.confix.men-kan], minutes: 12 },
+                     { id: bipa4.u09.l02, kind: learn, title: "Menimbang untung-rugi", can_do: "Argue with causes and effects.", grammar: [id.conjunction.cause-effect], minutes: 12 },
+                     { id: bipa4.u09.l03, kind: practice, title: "Eksposisi lingkungan", can_do: "Write an exposition.", minutes: 15 },
+                     { id: bipa4.u09.l04, kind: review, title: "Ulangan Unit 9", can_do: "Debate an environmental rule.", minutes: 10 } ] }
+      - { id: bipa4.u10, title: { target: "Tokoh Nasional", en: "National figures", ar: "الشخصيات الوطنية" }, stop: Tomohon, source_ref: Umum BIPA 4 Unit 10,
+          can_do: ["Give a short speech", "Write a recount of a figure's life", "Use common idioms"], grammar: [id.idiom.basic],
+          vocabulary: ["speech openings", "biography", "idioms"], culture: { souvenir: Tomohon flower festival, note: "Speeches open with a ritual of greetings to every rank present — 'Yang terhormat…' — before the content begins." },
+          lessons: [ { id: bipa4.u10.l01, kind: learn, title: "Idiom", can_do: "Use common idioms (buah tangan, kambing hitam).", grammar: [id.idiom.basic], minutes: 12 },
+                     { id: bipa4.u10.l02, kind: learn, title: "Yang terhormat…", can_do: "Structure a speech.", minutes: 12 },
+                     { id: bipa4.u10.l03, kind: practice, title: "Pidato singkat", can_do: "Deliver a 2-minute speech.", minutes: 15 },
+                     { id: bipa4.u10.l04, kind: review, title: "Ulangan Unit 10", can_do: "Recount a figure's life.", minutes: 10 } ] }
+    level_test: { id: bipa4.test, minutes: 45, pass_mark: 0.7, covers: ["lecture with complex argument", "online news", "spontaneous opinion", "exposition essay"] }
+
+  # ───────────────────────────── BIPA 5 · Kalimantan ─────────────────────────────
+  - id: bipa5
+    code: BIPA 5
+    title: { target: "Lanjut — Unggul", en: "Advanced: long, complex texts", ar: "متقدم: النصوص الطويلة المعقّدة" }
+    ukbi_band: Unggul
+    requires: [bipa4]
+    cefr: { approx: C1, confidence: low, evidence: "Inferred from the SKL wording ('long and complex texts … with a point of view'), which mirrors CEFR C1; no published BIPA 5 ↔ CEFR mapping found." }
+    journey: { place: Kalimantan, kind: island }
+    capability:
+      official: Memahami teks yang panjang dan rumit serta mampu mengungkapkan gagasan dengan sudut pandang.
+      en: Understand long, complex texts and express ideas from a clear point of view.
+    gaps:
+      - "Unit titles of Sahabatku Indonesia BIPA 5 (2019) could not be retrieved online (the PDF is behind a download page). Units below are derived from the SKL capability statement and C1 themes; re-align with the book when available."
+      - The regulation gives only the capability statement for BIPA 5; per-skill units are not specified.
+    units:
+      - { id: bipa5.u01, title: { target: "Dunia Kerja", en: "The world of work", ar: "عالم العمل" }, stop: Balikpapan,
+          can_do: ["Handle a job interview", "Write a formal application", "Use formal vs informal register deliberately"], grammar: [id.register.formal-informal, id.sentence.complex],
+          vocabulary: ["CV", "interview", "workplace culture"], culture: { souvenir: Oil-city Balikpapan, note: "Workplace hierarchy shows in language: 'Bapak/Ibu' for superiors, never first names alone." },
+          lessons: [ { id: bipa5.u01.l01, kind: learn, title: "Ragam resmi", can_do: "Switch register.", grammar: [id.register.formal-informal], minutes: 15 },
+                     { id: bipa5.u01.l02, kind: learn, title: "Kalimat majemuk bertingkat", can_do: "Build subordinate clauses.", grammar: [id.sentence.complex], minutes: 15 },
+                     { id: bipa5.u01.l03, kind: practice, title: "Wawancara kerja", can_do: "Do a mock interview.", minutes: 15 },
+                     { id: bipa5.u01.l04, kind: review, title: "Ulangan Unit 1", can_do: "Write an application letter.", minutes: 10 } ] }
+      - { id: bipa5.u02, title: { target: "Ibu Kota Baru", en: "The new capital", ar: "العاصمة الجديدة" }, stop: Penajam (IKN Nusantara),
+          can_do: ["Follow a policy debate", "Argue with concessive clauses"], grammar: [id.conjunction.concessive, id.argument.connectors],
+          vocabulary: ["urban planning", "policy", "migration"], culture: { souvenir: Nusantara capital site, note: "Indonesia is moving its capital from Jakarta to Nusantara (IKN) in East Kalimantan — a hot debate topic." },
+          lessons: [ { id: bipa5.u02.l01, kind: learn, title: "Meskipun, walaupun", can_do: "Concede and counter.", grammar: [id.conjunction.concessive], minutes: 14 },
+                     { id: bipa5.u02.l02, kind: learn, title: "Selain itu, dengan demikian", can_do: "Connect arguments.", grammar: [id.argument.connectors], minutes: 14 },
+                     { id: bipa5.u02.l03, kind: practice, title: "Debat IKN", can_do: "Argue a position.", minutes: 15 },
+                     { id: bipa5.u02.l04, kind: review, title: "Ulangan Unit 2", can_do: "Write an argumentative essay.", minutes: 10 } ] }
+      - { id: bipa5.u03, title: { target: "Teknologi dan Kehidupan", en: "Technology and life", ar: "التكنولوجيا والحياة" }, stop: Samarinda,
+          can_do: ["Explain a technology's effects", "Turn verbs into nouns for formal writing"], grammar: [id.nominalization],
+          vocabulary: ["digital economy", "apps", "privacy"], culture: { souvenir: Mahakam river, note: "Indonesia has one of the world's largest app-based economies: ride-hailing, e-wallets, live-shopping." },
+          lessons: [ { id: bipa5.u03.l01, kind: learn, title: "Nominalisasi", can_do: "Nominalise for formal style.", grammar: [id.nominalization], minutes: 15 },
+                     { id: bipa5.u03.l02, kind: learn, title: "Ekonomi digital", can_do: "Read a long feature article.", minutes: 15 },
+                     { id: bipa5.u03.l03, kind: practice, title: "Presentasi teknologi", can_do: "Present an explanation.", minutes: 15 },
+                     { id: bipa5.u03.l04, kind: review, title: "Ulangan Unit 3", can_do: "Summarise a long text.", minutes: 10 } ] }
+      - { id: bipa5.u04, title: { target: "Pendidikan", en: "Education", ar: "التعليم" }, stop: Tenggarong,
+          can_do: ["Compare education systems", "Report what others said"], grammar: [id.reported-speech],
+          vocabulary: ["schools", "pesantren", "universities", "scholarships"], arabic_bridge: ["pesantren & santri", "madrasah ← مدرسة", "ilmu ← علم", "kitab ← كتاب"],
+          culture: { souvenir: Kutai Kartanegara palace, note: "Pesantren (Islamic boarding schools) educate millions; many graduates go on to Al-Azhar in Cairo." },
+          lessons: [ { id: bipa5.u04.l01, kind: learn, title: "Katanya…", can_do: "Report speech.", grammar: [id.reported-speech], minutes: 14 },
+                     { id: bipa5.u04.l02, kind: learn, title: "Pesantren dan Al-Azhar", can_do: "Compare institutions.", minutes: 14 },
+                     { id: bipa5.u04.l03, kind: practice, title: "Wawancara alumni", can_do: "Interview and report.", minutes: 15 },
+                     { id: bipa5.u04.l04, kind: review, title: "Ulangan Unit 4", can_do: "Write a comparison.", minutes: 10 } ] }
+      - { id: bipa5.u05, title: { target: "Hutan dan Sungai", en: "Forests and rivers", ar: "الغابات والأنهار" }, stop: Tanjung Puting,
+          can_do: ["Discuss conservation with nuance", "Use ter- / ke-…-an passives of state"], grammar: [id.passive.ter-ke-an],
+          vocabulary: ["rainforest", "orangutans", "palm oil", "deforestation"], culture: { souvenir: Orangutans of Camp Leakey, note: "Borneo's peat forests are central to the palm-oil debate; Dayak communities defend customary forest rights." },
+          lessons: [ { id: bipa5.u05.l01, kind: learn, title: "Terbakar, kebanjiran", can_do: "Express states and adversity.", grammar: [id.passive.ter-ke-an], minutes: 14 },
+                     { id: bipa5.u05.l02, kind: learn, title: "Sawit", can_do: "Read a long report.", minutes: 15 },
+                     { id: bipa5.u05.l03, kind: practice, title: "Sudut pandang", can_do: "Present two viewpoints.", minutes: 15 },
+                     { id: bipa5.u05.l04, kind: review, title: "Ulangan Unit 5", can_do: "Write a viewpoint essay.", minutes: 10 } ] }
+      - { id: bipa5.u06, title: { target: "Seni Pertunjukan", en: "Performing arts", ar: "الفنون الأدائية" }, stop: Palangka Raya,
+          can_do: ["Review a performance", "Use per- / memper- verbs"], grammar: [id.prefix.memper],
+          vocabulary: ["dance", "music", "theatre", "criticism"], culture: { souvenir: Dayak hornbill dance, note: "Dayak dances imitate the hornbill (enggang), a sacred bird of Borneo." },
+          lessons: [ { id: bipa5.u06.l01, kind: learn, title: "Memperbaiki, mempertunjukkan", can_do: "Use memper-.", grammar: [id.prefix.memper], minutes: 14 },
+                     { id: bipa5.u06.l02, kind: learn, title: "Ulasan", can_do: "Read a critical review.", minutes: 14 },
+                     { id: bipa5.u06.l03, kind: practice, title: "Menulis ulasan", can_do: "Review a performance.", minutes: 15 },
+                     { id: bipa5.u06.l04, kind: review, title: "Ulangan Unit 6", can_do: "Present a review.", minutes: 10 } ] }
+      - { id: bipa5.u07, title: { target: "Kuliner dan Identitas", en: "Food and identity", ar: "الطعام والهوية" }, stop: Banjarmasin,
+          can_do: ["Discuss food as identity", "Use per-…-an and ke-…-an abstract nouns"], grammar: [id.confix.per-an],
+          vocabulary: ["regional cuisine", "trade", "migration"], culture: { souvenir: Lok Baintan floating market, note: "Banjarmasin's floating markets trade from boats at dawn; soto Banjar shows Arab, Chinese and Malay influences." },
+          lessons: [ { id: bipa5.u07.l01, kind: learn, title: "Perdagangan, perkebunan", can_do: "Use per-…-an.", grammar: [id.confix.per-an], minutes: 14 },
+                     { id: bipa5.u07.l02, kind: learn, title: "Soto Banjar", can_do: "Read a cultural essay.", minutes: 14 },
+                     { id: bipa5.u07.l03, kind: practice, title: "Identitas di piring", can_do: "Write an essay on food and identity.", minutes: 15 },
+                     { id: bipa5.u07.l04, kind: review, title: "Ulangan Unit 7", can_do: "Discuss culture through food.", minutes: 10 } ] }
+      - { id: bipa5.u08, title: { target: "Opini Publik", en: "Public opinion", ar: "الرأي العام" }, stop: Martapura,
+          can_do: ["Hedge and soften claims", "Read an op-ed critically"], grammar: [id.hedging],
+          vocabulary: ["surveys", "opinion", "media bias"], culture: { souvenir: Martapura gem market, note: "Indonesian op-eds hedge often ('tampaknya', 'barangkali'); direct confrontation reads as rude." },
+          lessons: [ { id: bipa5.u08.l01, kind: learn, title: "Tampaknya, barangkali", can_do: "Hedge claims.", grammar: [id.hedging], minutes: 14 },
+                     { id: bipa5.u08.l02, kind: learn, title: "Membaca opini", can_do: "Analyse an op-ed.", minutes: 15 },
+                     { id: bipa5.u08.l03, kind: practice, title: "Tanggapan", can_do: "Write a response piece.", minutes: 15 },
+                     { id: bipa5.u08.l04, kind: review, title: "Ulangan Unit 8", can_do: "Debate with nuance.", minutes: 10 } ] }
+      - { id: bipa5.u09, title: { target: "Bahasa dan Masyarakat", en: "Language and society", ar: "اللغة والمجتمع" }, stop: Pontianak,
+          can_do: ["Discuss language variation and loanwords", "Explain how Arabic and other languages shaped Indonesian"], grammar: [id.register.formal-informal],
+          vocabulary: ["loanwords", "slang", "standard language (bahasa baku)"], arabic_bridge: ["sound-shift rules review", "false friends review"],
+          culture: { souvenir: Equator Monument, note: "Indonesian grew from Malay, the old trade lingua franca; Arabic, Sanskrit, Dutch, Portuguese, Chinese and English all left words." },
+          lessons: [ { id: bipa5.u09.l01, kind: learn, title: "Kata serapan", can_do: "Trace loanwords.", grammar: [id.register.formal-informal], minutes: 14 },
+                     { id: bipa5.u09.l02, kind: learn, title: "Bahasa baku dan gaul", can_do: "Compare standard and slang.", minutes: 14 },
+                     { id: bipa5.u09.l03, kind: practice, title: "Jembatan Arab", can_do: "Present the Arabic Bridge in Indonesian.", minutes: 15 },
+                     { id: bipa5.u09.l04, kind: review, title: "Ulangan Unit 9", can_do: "Explain language variation.", minutes: 10 } ] }
+      - { id: bipa5.u10, title: { target: "Laporan dan Presentasi", en: "Reports and presentations", ar: "التقارير والعروض" }, stop: Singkawang,
+          can_do: ["Give a structured presentation", "Write a report with a point of view"], grammar: [id.argument.connectors, id.nominalization],
+          vocabulary: ["presentation language", "data description"], culture: { souvenir: Cap Go Meh in Singkawang, note: "Singkawang's Chinese-Dayak-Malay Cap Go Meh parade is a showcase of tolerance." },
+          lessons: [ { id: bipa5.u10.l01, kind: learn, title: "Struktur laporan", can_do: "Structure a report.", grammar: [id.nominalization], minutes: 14 },
+                     { id: bipa5.u10.l02, kind: learn, title: "Bahasa presentasi", can_do: "Signpost a talk.", grammar: [id.argument.connectors], minutes: 14 },
+                     { id: bipa5.u10.l03, kind: practice, title: "Presentasi 5 menit", can_do: "Present a topic with data.", minutes: 15 },
+                     { id: bipa5.u10.l04, kind: review, title: "Ulangan Unit 10", can_do: "Write a report.", minutes: 10 } ] }
+    level_test: { id: bipa5.test, minutes: 50, pass_mark: 0.7, covers: ["long complex reading", "viewpoint essay", "presentation", "interview"] }
+
+  # ───────────────────────────── BIPA 6 · Sumatra ─────────────────────────────
+  - id: bipa6
+    code: BIPA 6
+    title: { target: "Lanjut — Sangat Unggul", en: "Advanced: implicit meaning", ar: "متقدم: المعنى الضمني" }
+    ukbi_band: Sangat Unggul
+    requires: [bipa5]
+    cefr: { approx: C2, confidence: low, evidence: "Inferred: SKL adds 'implicit meaning' to BIPA 5's wording, as CEFR C2 does to C1. With BIPA 7 above it, BIPA 6 may sit at C1+; treat as approximate." }
+    journey: { place: Sumatra, kind: island }
+    capability:
+      official: Memahami teks yang panjang, rumit, dan mengandung makna tersirat.
+      en: Understand long, complex texts that carry implicit meaning.
+    gaps:
+      - "Unit titles of Sahabatku Indonesia BIPA 6 (2019) could not be retrieved online. Units below are derived from the SKL capability statement (implicit meaning, literature, culture); re-align with the book when available."
+    units:
+      - { id: bipa6.u01, title: { target: "Cerpen", en: "Short stories", ar: "القصة القصيرة" }, stop: Medan,
+          can_do: ["Read a modern short story and infer what is unsaid", "Discuss character and theme"], grammar: [id.implicature],
+          vocabulary: ["literary analysis"], culture: { souvenir: Tjong A Fie mansion, note: "Medan is a mix of Batak, Malay, Chinese, Indian and Javanese; its short-story writers capture that mix." },
+          lessons: [ { id: bipa6.u01.l01, kind: learn, title: "Makna tersirat", can_do: "Read between the lines.", grammar: [id.implicature], minutes: 15 },
+                     { id: bipa6.u01.l02, kind: learn, title: "Membaca cerpen", can_do: "Analyse a short story.", minutes: 18 },
+                     { id: bipa6.u01.l03, kind: practice, title: "Diskusi sastra", can_do: "Discuss a story's theme.", minutes: 15 },
+                     { id: bipa6.u01.l04, kind: review, title: "Ulangan Unit 1", can_do: "Write a literary response.", minutes: 10 } ] }
+      - { id: bipa6.u02, title: { target: "Pantun dan Puisi", en: "Pantun and poetry", ar: "البانتون والشعر" }, stop: Pekanbaru,
+          can_do: ["Understand and compose a pantun", "Read modern poetry"], grammar: [id.pantun.structure, id.figurative.majas],
+          vocabulary: ["poetic diction", "rhyme"], culture: { souvenir: Malay pantun at a wedding, note: "Pantun — four lines, ABAB, the first two a 'hook' — open speeches and weddings in Riau Malay culture; UNESCO-listed." },
+          lessons: [ { id: bipa6.u02.l01, kind: learn, title: "Sampiran dan isi", can_do: "Understand pantun form.", grammar: [id.pantun.structure], minutes: 14 },
+                     { id: bipa6.u02.l02, kind: learn, title: "Majas", can_do: "Recognise figures of speech.", grammar: [id.figurative.majas], minutes: 15 },
+                     { id: bipa6.u02.l03, kind: practice, title: "Berbalas pantun", can_do: "Answer a pantun with a pantun.", minutes: 15 },
+                     { id: bipa6.u02.l04, kind: review, title: "Ulangan Unit 2", can_do: "Write two pantun.", minutes: 10 } ] }
+      - { id: bipa6.u03, title: { target: "Adat dan Masyarakat", en: "Custom and society", ar: "العادات والمجتمع" }, stop: Bukittinggi,
+          can_do: ["Explain a customary system", "Understand proverbs (peribahasa)"], grammar: [id.proverb],
+          vocabulary: ["adat", "kinship", "inheritance"], arabic_bridge: ["adat ← عادة; 'Adat basandi syarak, syarak basandi Kitabullah' ← شرع / كتاب الله"],
+          culture: { souvenir: Rumah gadang, note: "The Minangkabau are matrilineal: houses and land pass through women, yet the society is devoutly Muslim — 'custom founded on sharia'." },
+          lessons: [ { id: bipa6.u03.l01, kind: learn, title: "Peribahasa", can_do: "Understand proverbs.", grammar: [id.proverb], minutes: 14 },
+                     { id: bipa6.u03.l02, kind: learn, title: "Matrilineal", can_do: "Read about adat.", minutes: 15 },
+                     { id: bipa6.u03.l03, kind: practice, title: "Perbandingan budaya", can_do: "Compare with Egyptian custom.", minutes: 15 },
+                     { id: bipa6.u03.l04, kind: review, title: "Ulangan Unit 3", can_do: "Explain a custom.", minutes: 10 } ] }
+      - { id: bipa6.u04, title: { target: "Sejarah Maritim", en: "Maritime history", ar: "التاريخ البحري" }, stop: Palembang,
+          can_do: ["Read historical prose", "Use inverted and marked sentences"], grammar: [id.sentence.inversion],
+          vocabulary: ["kingdoms", "trade routes", "archaeology"], culture: { souvenir: Sriwijaya on the Musi river, note: "Sriwijaya ruled the straits for centuries; Old Malay inscriptions from Palembang are among the earliest written Malay." },
+          lessons: [ { id: bipa6.u04.l01, kind: learn, title: "Inversi", can_do: "Use and read inversion.", grammar: [id.sentence.inversion], minutes: 14 },
+                     { id: bipa6.u04.l02, kind: learn, title: "Sriwijaya", can_do: "Read historical prose.", minutes: 15 },
+                     { id: bipa6.u04.l03, kind: practice, title: "Jalur rempah", can_do: "Present the spice route.", minutes: 15 },
+                     { id: bipa6.u04.l04, kind: review, title: "Ulangan Unit 4", can_do: "Write a historical summary.", minutes: 10 } ] }
+      - { id: bipa6.u05, title: { target: "Serambi Mekkah", en: "The Veranda of Mecca", ar: "شرفة مكة" }, stop: Banda Aceh,
+          can_do: ["Discuss religion and society with care", "Read texts mixing Arabic terms"], grammar: [id.register.religious],
+          vocabulary: ["Islamic terms in Indonesian", "sharia law", "disaster recovery"], arabic_bridge: ["religious vocabulary (sholat, zakat, syariah, ulama)"],
+          culture: { souvenir: Baiturrahman Grand Mosque, note: "Aceh, the 'Veranda of Mecca', was where Islam first took hold in the archipelago; it rebuilt after the 2004 tsunami." },
+          lessons: [ { id: bipa6.u05.l01, kind: learn, title: "Ragam keagamaan", can_do: "Use religious register.", grammar: [id.register.religious], minutes: 14 },
+                     { id: bipa6.u05.l02, kind: learn, title: "Museum Tsunami", can_do: "Read a memorial text.", minutes: 15 },
+                     { id: bipa6.u05.l03, kind: practice, title: "Dialog antariman", can_do: "Discuss religion respectfully.", minutes: 15 },
+                     { id: bipa6.u05.l04, kind: review, title: "Ulangan Unit 5", can_do: "Write about faith and community.", minutes: 10 } ] }
+      - { id: bipa6.u06, title: { target: "Satire dan Humor", en: "Satire and humour", ar: "السخرية والفكاهة" }, stop: Danau Toba,
+          can_do: ["Get irony, sarcasm and wordplay", "Understand stand-up and memes"], grammar: [id.irony],
+          vocabulary: ["humour", "wordplay", "political satire"], culture: { souvenir: Samosir island, note: "Batak humour is famously blunt; Indonesian stand-up comedy and memes live on irony and code-mixing." },
+          lessons: [ { id: bipa6.u06.l01, kind: learn, title: "Ironi", can_do: "Detect irony.", grammar: [id.irony], minutes: 14 },
+                     { id: bipa6.u06.l02, kind: learn, title: "Meme dan plesetan", can_do: "Decode wordplay.", minutes: 14 },
+                     { id: bipa6.u06.l03, kind: practice, title: "Stand-up", can_do: "Explain why a joke is funny.", minutes: 15 },
+                     { id: bipa6.u06.l04, kind: review, title: "Ulangan Unit 6", can_do: "Interpret satire.", minutes: 10 } ] }
+      - { id: bipa6.u07, title: { target: "Hukum dan Kebijakan", en: "Law and policy", ar: "القانون والسياسات" }, stop: Jambi,
+          can_do: ["Read a regulation and summarise it plainly", "Use legal-formal structures"], grammar: [id.register.legal],
+          vocabulary: ["laws", "regulations", "rights"], culture: { souvenir: Muaro Jambi temples, note: "Indonesian laws are layered: UU (acts), PP (government regulations), Permen (ministerial regulations) — like Permendikbud 27/2017 behind BIPA." },
+          lessons: [ { id: bipa6.u07.l01, kind: learn, title: "Bahasa peraturan", can_do: "Parse legal sentences.", grammar: [id.register.legal], minutes: 15 },
+                     { id: bipa6.u07.l02, kind: learn, title: "Membaca Permendikbud", can_do: "Summarise a regulation.", minutes: 15 },
+                     { id: bipa6.u07.l03, kind: practice, title: "Ringkasan kebijakan", can_do: "Write a policy brief.", minutes: 15 },
+                     { id: bipa6.u07.l04, kind: review, title: "Ulangan Unit 7", can_do: "Explain a rule in plain words.", minutes: 10 } ] }
+      - { id: bipa6.u08, title: { target: "Sains Populer", en: "Popular science", ar: "العلوم المبسّطة" }, stop: Bengkulu,
+          can_do: ["Read popular science", "Explain a complex idea simply"], grammar: [id.nominalization, id.sentence.complex],
+          vocabulary: ["science terms", "rafflesia", "volcanology"], culture: { souvenir: Rafflesia arnoldii, note: "The world's largest flower blooms in Bengkulu's forests for only a few days." },
+          lessons: [ { id: bipa6.u08.l01, kind: learn, title: "Istilah ilmiah", can_do: "Handle scientific terms.", grammar: [id.nominalization], minutes: 14 },
+                     { id: bipa6.u08.l02, kind: learn, title: "Kalimat padat", can_do: "Unpack dense sentences.", grammar: [id.sentence.complex], minutes: 15 },
+                     { id: bipa6.u08.l03, kind: practice, title: "Jelaskan ke anak", can_do: "Explain science to a child.", minutes: 15 },
+                     { id: bipa6.u08.l04, kind: review, title: "Ulangan Unit 8", can_do: "Write a science explainer.", minutes: 10 } ] }
+      - { id: bipa6.u09, title: { target: "Bisnis dan Negosiasi", en: "Business and negotiation", ar: "الأعمال والتفاوض" }, stop: Padang,
+          can_do: ["Negotiate indirectly and politely", "Read business correspondence"], grammar: [id.hedging, id.register.formal-informal],
+          vocabulary: ["contracts", "negotiation", "trade"], culture: { souvenir: Rendang, note: "Minang merchants are famed traders (and restaurateurs: 'rumah makan Padang' is everywhere); negotiation is indirect and relationship-first." },
+          lessons: [ { id: bipa6.u09.l01, kind: learn, title: "Menolak dengan halus", can_do: "Refuse politely.", grammar: [id.hedging], minutes: 14 },
+                     { id: bipa6.u09.l02, kind: learn, title: "Surat bisnis", can_do: "Write business email.", grammar: [id.register.formal-informal], minutes: 14 },
+                     { id: bipa6.u09.l03, kind: practice, title: "Negosiasi", can_do: "Negotiate a deal.", minutes: 15 },
+                     { id: bipa6.u09.l04, kind: review, title: "Ulangan Unit 9", can_do: "Close a deal in writing.", minutes: 10 } ] }
+      - { id: bipa6.u10, title: { target: "Tulisan Akademik", en: "Academic writing (intro)", ar: "الكتابة الأكاديمية" }, stop: Berastagi,
+          can_do: ["Write an academic paragraph with citations", "Paraphrase sources"], grammar: [id.reported-speech, id.argument.connectors],
+          vocabulary: ["academic vocabulary", "citation phrases"], culture: { souvenir: Sinabung volcano view, note: "Indonesian academic style follows the EYD spelling rules and the PUEBI / KBBI standards." },
+          lessons: [ { id: bipa6.u10.l01, kind: learn, title: "Parafrasa", can_do: "Paraphrase a source.", grammar: [id.reported-speech], minutes: 15 },
+                     { id: bipa6.u10.l02, kind: learn, title: "Paragraf akademik", can_do: "Build an academic paragraph.", grammar: [id.argument.connectors], minutes: 15 },
+                     { id: bipa6.u10.l03, kind: practice, title: "Esai singkat", can_do: "Write a short academic essay.", minutes: 18 },
+                     { id: bipa6.u10.l04, kind: review, title: "Ulangan Unit 10", can_do: "Defend your essay.", minutes: 10 } ] }
+    level_test: { id: bipa6.test, minutes: 55, pass_mark: 0.7, covers: ["literary reading with implicit meaning", "satire", "regulation summary", "academic paragraph"] }
+
+  # ───────────────────────────── BIPA 7 · Raja Ampat, Papua ─────────────────────────────
+  - id: bipa7
+    code: BIPA 7
+    title: { target: "Lanjut — Istimewa", en: "Mastery: almost any field", ar: "إتقان: كل المجالات تقريبًا" }
+    ukbi_band: Istimewa
+    requires: [bipa6]
+    cefr: { approx: C2+, confidence: low, evidence: "Top UKBI band (Istimewa); SKL 'understand information in almost all fields with ease' matches CEFR C2. The 2019 seven-level series sits above the 2016 C2 book." }
+    journey: { place: "Raja Ampat, Papua", kind: island }
+    capability:
+      official: Mampu memahami informasi hampir semua bidang dengan mudah.
+      en: Understand information in almost any field with ease.
+    source_units:
+      source: sahabatku-pelajar-bipa7
+      titles: ["Prestasi Pemuda Indonesia", "Fenomena Alam Indonesia", "Cerita Rakyat", "Ragam Dialek", "Sejarah Indonesia", "Media Sosial", "Tentara Nasional Indonesia (TNI)", "Perekonomian Indonesia", "Toleransi dalam Keberagaman", "Karya Ilmiah"]
+      note: Pelajar (school) edition; the Umum edition's contents were not retrievable. Unit 7 is broadened to state institutions for an adult learner.
+    units:
+      - { id: bipa7.u01, title: { target: "Prestasi Pemuda Indonesia", en: "Achievements of young Indonesians", ar: "إنجازات الشباب الإندونيسي" }, stop: Sorong, source_ref: Pelajar BIPA 7 Unit 1,
+          can_do: ["Report news fluently", "Write a news text"], grammar: [id.news.expressions],
+          vocabulary: ["news reporting", "achievements"], culture: { souvenir: Sorong harbour, note: "Sumpah Pemuda (Youth Pledge, 1928) declared 'one language: Indonesian' — youth define the nation's story." },
+          lessons: [ { id: bipa7.u01.l01, kind: learn, title: "Ungkapan berita", can_do: "Use news phrasing.", grammar: [id.news.expressions], minutes: 15 },
+                     { id: bipa7.u01.l02, kind: learn, title: "Sumpah Pemuda", can_do: "Read a historic text.", minutes: 15 },
+                     { id: bipa7.u01.l03, kind: practice, title: "Menulis berita", can_do: "Write a news story.", minutes: 18 },
+                     { id: bipa7.u01.l04, kind: review, title: "Ulangan Unit 1", can_do: "Report news orally.", minutes: 10 } ] }
+      - { id: bipa7.u02, title: { target: "Fenomena Alam Indonesia", en: "Natural phenomena", ar: "الظواهر الطبيعية في إندونيسيا" }, stop: Waisai, source_ref: Pelajar BIPA 7 Unit 2,
+          can_do: ["Present an explanation text", "Use presentation expressions"], grammar: [id.presentation.expressions],
+          vocabulary: ["geology", "ocean", "climate"], culture: { souvenir: Raja Ampat reefs, note: "Raja Ampat has the highest marine biodiversity recorded on Earth." },
+          lessons: [ { id: bipa7.u02.l01, kind: learn, title: "Bahasa presentasi", can_do: "Present formally.", grammar: [id.presentation.expressions], minutes: 15 },
+                     { id: bipa7.u02.l02, kind: learn, title: "Segitiga Terumbu Karang", can_do: "Read a scientific explanation.", minutes: 15 },
+                     { id: bipa7.u02.l03, kind: practice, title: "Presentasi fenomena", can_do: "Present a phenomenon.", minutes: 18 },
+                     { id: bipa7.u02.l04, kind: review, title: "Ulangan Unit 2", can_do: "Write an explanation text.", minutes: 10 } ] }
+      - { id: bipa7.u03, title: { target: "Cerita Rakyat", en: "Folk narratives", ar: "السرد الشعبي" }, stop: Arborek, source_ref: Pelajar BIPA 7 Unit 3,
+          can_do: ["Grasp explicit and implicit meaning in narratives", "Use figurative language for effect"], grammar: [id.figurative.majas, id.register.context],
+          vocabulary: ["myth", "allegory"], culture: { souvenir: Papuan origin myths, note: "Papua has over 250 languages and its own origin myths; Indonesian is the shared bridge." },
+          lessons: [ { id: bipa7.u03.l01, kind: learn, title: "Majas lanjutan", can_do: "Use figurative language.", grammar: [id.figurative.majas], minutes: 15 },
+                     { id: bipa7.u03.l02, kind: learn, title: "Bahasa sesuai konteks", can_do: "Match language to situation.", grammar: [id.register.context], minutes: 15 },
+                     { id: bipa7.u03.l03, kind: practice, title: "Bercerita", can_do: "Perform a narrative.", minutes: 18 },
+                     { id: bipa7.u03.l04, kind: review, title: "Ulangan Unit 3", can_do: "Write a narrative.", minutes: 10 } ] }
+      - { id: bipa7.u04, title: { target: "Ragam Dialek", en: "Dialect variety", ar: "تنوّع اللهجات" }, stop: Piaynemo, source_ref: Pelajar BIPA 7 Unit 4,
+          can_do: ["Understand regional varieties (Jakarta, Javanese-influenced, Papuan Malay)", "Write an informative report"], grammar: [id.register.context],
+          vocabulary: ["dialect features", "regional slang"], culture: { souvenir: Papuan Malay, note: "Papuan Malay says 'sa' for saya and 'ko' for kamu; Jakartans say 'gue/lu'; Javanese speakers mix in 'kok', 'to'." },
+          lessons: [ { id: bipa7.u04.l01, kind: learn, title: "Sa, ko, gue, lu", can_do: "Recognise regional pronouns.", grammar: [id.register.context], minutes: 15 },
+                     { id: bipa7.u04.l02, kind: learn, title: "Laporan informatif", can_do: "Read a report on dialects.", minutes: 15 },
+                     { id: bipa7.u04.l03, kind: practice, title: "Peta dialek", can_do: "Report on a dialect.", minutes: 18 },
+                     { id: bipa7.u04.l04, kind: review, title: "Ulangan Unit 4", can_do: "Identify a speaker's region.", minutes: 10 } ] }
+      - { id: bipa7.u05, title: { target: "Sejarah Indonesia", en: "Indonesian history", ar: "تاريخ إندونيسيا" }, stop: Wayag, source_ref: Pelajar BIPA 7 Unit 5,
+          can_do: ["Retell historical events cohesively", "Use grammatical cohesion"], grammar: [id.cohesion.grammatical],
+          vocabulary: ["colonial era", "independence", "reformasi"], culture: { souvenir: Wayag karst islands, note: "From VOC trade posts to 1945 independence to 1998 Reformasi — and Egypt was the first country to recognise Indonesia (1946)." },
+          lessons: [ { id: bipa7.u05.l01, kind: learn, title: "Kohesi gramatikal", can_do: "Use reference, substitution, ellipsis.", grammar: [id.cohesion.grammatical], minutes: 15 },
+                     { id: bipa7.u05.l02, kind: learn, title: "Mesir dan Indonesia 1946", can_do: "Read a historical account.", minutes: 15 },
+                     { id: bipa7.u05.l03, kind: practice, title: "Menceritakan sejarah", can_do: "Retell an era.", minutes: 18 },
+                     { id: bipa7.u05.l04, kind: review, title: "Ulangan Unit 5", can_do: "Write a cohesive history.", minutes: 10 } ] }
+      - { id: bipa7.u06, title: { target: "Media Sosial", en: "Social media", ar: "وسائل التواصل الاجتماعي" }, stop: Misool, source_ref: Pelajar BIPA 7 Unit 6,
+          can_do: ["Debate social media's pros and cons", "Use lexical cohesion"], grammar: [id.cohesion.lexical],
+          vocabulary: ["platforms", "hoaxes", "digital literacy"], culture: { souvenir: Misool, note: "Indonesia is among the largest users of TikTok, Instagram and WhatsApp; 'hoaks' (hoax) is an official KBBI word." },
+          lessons: [ { id: bipa7.u06.l01, kind: learn, title: "Kohesi leksikal", can_do: "Use synonyms, repetition, collocation for cohesion.", grammar: [id.cohesion.lexical], minutes: 15 },
+                     { id: bipa7.u06.l02, kind: learn, title: "Hoaks", can_do: "Evaluate claims online.", minutes: 15 },
+                     { id: bipa7.u06.l03, kind: practice, title: "Debat media sosial", can_do: "Debate both sides.", minutes: 18 },
+                     { id: bipa7.u06.l04, kind: review, title: "Ulangan Unit 6", can_do: "Write a balanced news piece.", minutes: 10 } ] }
+      - { id: bipa7.u07, title: { target: "Lembaga Negara", en: "State institutions", ar: "مؤسسات الدولة" }, stop: Manokwari, source_ref: "Pelajar BIPA 7 Unit 7 (TNI), broadened",
+          can_do: ["Follow TV and media texts about institutions", "Write an opinion article tuned to its audience"], grammar: [id.register.audience],
+          vocabulary: ["government", "military", "parliament", "elections"], culture: { souvenir: Mansinam island, note: "Indonesia is a presidential republic with direct elections; the TNI (armed forces) and DPR (parliament) feature daily in the news." },
+          lessons: [ { id: bipa7.u07.l01, kind: learn, title: "Sesuai pembaca", can_do: "Tune language to an audience.", grammar: [id.register.audience], minutes: 15 },
+                     { id: bipa7.u07.l02, kind: learn, title: "Berita TV", can_do: "Follow TV news fully.", minutes: 15 },
+                     { id: bipa7.u07.l03, kind: practice, title: "Artikel opini", can_do: "Write an op-ed.", minutes: 18 },
+                     { id: bipa7.u07.l04, kind: review, title: "Ulangan Unit 7", can_do: "Discuss institutions.", minutes: 10 } ] }
+      - { id: bipa7.u08, title: { target: "Perekonomian Indonesia", en: "The Indonesian economy", ar: "الاقتصاد الإندونيسي" }, stop: Jayapura, source_ref: Pelajar BIPA 7 Unit 8,
+          can_do: ["Explain economic trends", "Link sentences for paragraph coherence"], grammar: [id.conjunction.intersentential],
+          vocabulary: ["GDP", "inflation", "trade", "MSMEs"], culture: { souvenir: Jayapura bay, note: "Indonesia is the largest economy in Southeast Asia; small businesses (UMKM) employ most workers." },
+          lessons: [ { id: bipa7.u08.l01, kind: learn, title: "Konjungsi antarkalimat", can_do: "Link sentences coherently.", grammar: [id.conjunction.intersentential], minutes: 15 },
+                     { id: bipa7.u08.l02, kind: learn, title: "Data ekonomi", can_do: "Describe charts and trends.", minutes: 15 },
+                     { id: bipa7.u08.l03, kind: practice, title: "Penjelasan ekonomi", can_do: "Explain an economic issue.", minutes: 18 },
+                     { id: bipa7.u08.l04, kind: review, title: "Ulangan Unit 8", can_do: "Write an economic explanation.", minutes: 10 } ] }
+      - { id: bipa7.u09, title: { target: "Toleransi dalam Keberagaman", en: "Tolerance in diversity", ar: "التسامح في التنوّع" }, stop: Danau Sentani, source_ref: Pelajar BIPA 7 Unit 9,
+          can_do: ["Report on diversity with nuance", "Use idiomatic expressions naturally"], grammar: [id.idiom.advanced],
+          vocabulary: ["Pancasila", "Bhinneka Tunggal Ika", "religions", "ethnic groups"], culture: { souvenir: Lake Sentani festival, note: "'Bhinneka Tunggal Ika' — unity in diversity — is the national motto, in Old Javanese." },
+          lessons: [ { id: bipa7.u09.l01, kind: learn, title: "Ungkapan idiomatis", can_do: "Use idioms naturally.", grammar: [id.idiom.advanced], minutes: 15 },
+                     { id: bipa7.u09.l02, kind: learn, title: "Pancasila", can_do: "Read about national ideology.", minutes: 15 },
+                     { id: bipa7.u09.l03, kind: practice, title: "Laporan keberagaman", can_do: "Report on a diverse community.", minutes: 18 },
+                     { id: bipa7.u09.l04, kind: review, title: "Ulangan Unit 9", can_do: "Present on tolerance.", minutes: 10 } ] }
+      - { id: bipa7.u10, title: { target: "Karya Ilmiah", en: "Scholarly writing", ar: "الكتابة العلمية" }, stop: Lembah Baliem (Wamena), source_ref: Pelajar BIPA 7 Unit 10,
+          can_do: ["Follow fast spontaneous academic talk", "Write a cohesive, coherent non-fiction text"], grammar: [id.register.academic],
+          vocabulary: ["research", "methodology", "citation"], culture: { souvenir: Baliem valley festival, note: "The Baliem valley was unknown to outsiders until 1938; today its festival brings Dani, Lani and Yali communities together." },
+          lessons: [ { id: bipa7.u10.l01, kind: learn, title: "Ragam ilmiah", can_do: "Write in academic register.", grammar: [id.register.academic], minutes: 15 },
+                     { id: bipa7.u10.l02, kind: learn, title: "Seminar", can_do: "Follow a fast seminar talk.", minutes: 15 },
+                     { id: bipa7.u10.l03, kind: practice, title: "Artikel ilmiah populer", can_do: "Write a popular-science article.", minutes: 20 },
+                     { id: bipa7.u10.l04, kind: review, title: "Ulangan Unit 10", can_do: "Defend a written piece.", minutes: 10 } ] }
+    level_test: { id: bipa7.test, minutes: 60, pass_mark: 0.7, covers: ["fast academic listening", "implicit meaning in any field", "scholarly writing", "extended speaking"] }

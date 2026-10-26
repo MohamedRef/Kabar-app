@@ -1,0 +1,72 @@
+schema: kabar.grammar/v1
+id: id.frequency.adverbs
+language: id
+level: bipa1
+title:
+  target: selalu, biasanya, sering, kadang-kadang, jarang, tidak pernah
+  en: How often
+  ar_eg: بتعمل كده كام مرة؟
+  ar: ظروف التكرار
+summary:
+  ar_eg: "كلمات التكرار بتيجي قبل الفعل: selalu (دايمًا) > sering (كتير) > kadang-kadang (ساعات) > jarang (نادرًا) > tidak pernah (عمري ما)."
+  ar: "ظروف التكرار تسبق الفعل: selalu > sering > kadang-kadang > jarang > tidak pernah."
+  en: Frequency words sit before the verb — selalu > sering > kadang-kadang > jarang > tidak pernah.
+pattern:
+  - subject + frequency word + verb
+  - setiap / tiap + time (every …)
+  - … kali sehari / seminggu (… times a day / week)
+explanation:
+  ar_eg: |
+    من الأكتر للأقل:
+    selalu (دايمًا) — biasanya (عادةً) — sering (كتير) — kadang-kadang (ساعات) — jarang (نادرًا) — tidak pernah (عمري ما / أبدًا).
+    مكانها قبل الفعل: Saya sering minum kopi = بشرب قهوة كتير.
+    biasanya ممكن تيجي في أول الجملة: Biasanya saya bangun jam lima.
+    setiap = كل: setiap hari = كل يوم، setiap pagi = كل صبح.
+    عدد المرات: dua kali sehari = مرتين في اليوم، sekali seminggu = مرة في الأسبوع.
+    Berapa kali? = كام مرة؟ — Seberapa sering? = بتعمل كده قد إيه؟
+  ar: |
+    من الأكثر إلى الأقل:
+    selalu (دائمًا) — biasanya (عادةً) — sering (كثيرًا) — kadang-kadang (أحيانًا) — jarang (نادرًا) — tidak pernah (أبدًا).
+    وموضعها قبل الفعل، ويجوز تصدير biasanya.
+    setiap = كل: setiap hari = كل يوم.
+    ولعدد المرات: dua kali sehari = مرتان في اليوم، sekali seminggu = مرة في الأسبوع.
+    ويُسأل: Berapa kali؟ = كم مرة؟
+  en: |
+    Most to least: selalu (always) — biasanya (usually) — sering (often) — kadang-kadang (sometimes) — jarang (rarely) — tidak pernah (never).
+    They go before the verb: Saya sering minum kopi = I often drink coffee. biasanya can open the sentence.
+    setiap = every: setiap hari = every day.
+    Counts: dua kali sehari = twice a day, sekali seminggu = once a week.
+    Berapa kali? = How many times? — Seberapa sering? = How often?
+examples:
+  - text: Saya selalu sarapan jam enam.
+    en: I always have breakfast at six.
+    ar_eg: دايمًا بفطر الساعة ستة.
+    ar: أتناول الفطور دائمًا في السادسة.
+  - text: Dia jarang makan pedas.
+    en: He/She rarely eats spicy food.
+    ar_eg: نادرًا لما بياكل حراق.
+    ar: نادرًا ما يأكل الطعام الحار.
+  - text: Kereta ini sering terlambat.
+    en: This train is often late.
+    ar_eg: القطر ده بيتأخر كتير.
+    ar: هذا القطار يتأخر كثيرًا.
+  - text: Saya sholat lima kali sehari.
+    en: I pray five times a day.
+    ar_eg: بصلي خمس مرات في اليوم.
+    ar: أصلي خمس مرات في اليوم.
+mistakes:
+  - wrong: Saya minum kopi sering.
+    right: Saya sering minum kopi.
+    why:
+      ar_eg: كلمة التكرار قبل الفعل.
+      ar: ظرف التكرار يسبق الفعل.
+      en: The frequency word goes before the verb.
+arabic_bridge:
+  ar_eg: sholat ← «صلاة»، وsekali = «مرة» (se + kali). مفيش حاجة صعبة هنا.
+  ar: sholat من «صلاة»، وsekali = مرة واحدة.
+  en: sholat ← «صلاة»; sekali = once (se- + kali).
+tags: [adverb, frequency, time]
+see_also: [id.aspect.pernah, id.aspect.markers]
+review:
+  status: draft
+  verified: false

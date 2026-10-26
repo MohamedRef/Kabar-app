@@ -1,0 +1,77 @@
+schema: kabar.grammar/v1
+id: id.imperative.basic
+language: id
+level: bipa2
+title:
+  target: Duduk! Baca! Potong bawangnya. (-lah, coba)
+  en: Commands and instructions
+  ar_eg: الأمر والتعليمات
+  ar: صيغة الأمر والتعليمات
+summary:
+  ar_eg: "الأمر = الجذر من غير meN-: Baca! = اقرا! وber- بتفضل غالبًا: Berhenti! = اقف! وتلطفه بـ -lah أو coba أو tolong."
+  ar: "الأمر يكون بالجذر مجردًا من meN-: Baca!، وتبقى ber- غالبًا: Berhenti!، ويُلطّف بـ -lah أو coba أو tolong."
+  en: "Commands use the bare root (drop meN-): Baca! ber- usually stays: Berhenti! Soften with -lah, coba or tolong."
+pattern:
+  - root (+ object)! — meN- verbs drop the prefix (membaca → Baca!)
+  - ber- verbs keep it (Berhenti! Berdiri!)
+  - verb + -lah (softer / more formal)
+  - Coba + verb (try …) · Tolong + verb (please …)
+  - verb + -kan / -i (do it to/for something) — recipes and instructions
+explanation:
+  ar_eg: |
+    الأمر في الإندونيسي سهل:
+    - أفعال meN- بتشيل البادئة: membaca → Baca bukunya! = اقرا الكتاب! menulis → Tulis namamu = اكتب اسمك.
+    - أفعال ber- غالبًا بتفضل زي ما هي: Berhenti! = اقف! Berdiri = قوم اقف.
+    - كلمات من غير بادئة زي ما هي: Duduk! = اقعد! Masuk! = ادخل!
+    - في الوصفات والتعليمات بتلاقي -kan / -i: Masukkan nasi = حط الرز. Tambahkan garam = زوّد ملح. (هتفهمهم أكتر في BIPA 3.)
+    عشان تبقى مؤدب:
+    - -lah: Duduklah = اتفضل اقعد (ألطف/أرسمي).
+    - coba = جرب: Coba lihat = بص كده.
+    - tolong = لو سمحت (لما تطلب مساعدة) — في درس الطلبات.
+  ar: |
+    صيغة الأمر يسيرة:
+    - تُنزع سابقة meN-: membaca → Baca bukunya! = اقرأ الكتاب!
+    - وتبقى ber- غالبًا: Berhenti! = قف!
+    - والأفعال المجردة كما هي: Duduk! = اجلس!
+    - وفي الوصفات تكثر اللاحقتان -kan و-i: Masukkan nasi = ضع الأرز، Tambahkan garam = أضف الملح.
+    وللتلطيف: -lah (Duduklah)، وcoba (جرّب)، وtolong (من فضلك).
+  en: |
+    Commands are easy:
+    - meN- verbs drop the prefix: membaca → Baca bukunya! = Read the book! menulis → Tulis namamu = Write your name.
+    - ber- verbs usually keep it: Berhenti! = Stop! Berdiri = Stand up.
+    - Bare roots stay: Duduk! = Sit! Masuk! = Come in!
+    - Recipes and instructions use -kan / -i: Masukkan nasi = Put in the rice. Tambahkan garam = Add salt. (More in BIPA 3.)
+    Politeness: -lah (Duduklah = do sit down), coba (try: Coba lihat = have a look), tolong (please, asking for help).
+examples:
+  - text: Potong bawang, lalu goreng sampai harum.
+    en: Cut the onions, then fry until fragrant.
+    ar_eg: قطّع البصل، وبعدين اقليه لحد ما ريحته تطلع.
+    ar: قطّع البصل ثم اقلِه حتى تفوح رائحته.
+  - text: Angkat tangan kanan, lalu tarik napas.
+    en: Raise your right hand, then breathe in.
+    ar_eg: ارفع إيدك اليمين، وبعدين خد نفس.
+    ar: ارفع يدك اليمنى ثم خذ نفسًا.
+  - text: Silakan duduk. — Coba cicipi sambalnya!
+    en: Please sit down. — Try the chilli sauce!
+    ar_eg: اتفضل اقعد. — دوق الشطة كده!
+    ar: تفضل بالجلوس. — جرّب صلصة الفلفل!
+  - text: Masukkan nasi dan aduk rata.
+    en: Add the rice and stir well.
+    ar_eg: حط الرز وقلّب كويس.
+    ar: أضف الأرز وقلّبه جيدًا.
+mistakes:
+  - wrong: Membaca buku ini!
+    right: Baca buku ini!
+    why:
+      ar_eg: في الأمر بنشيل meN-.
+      ar: تُحذف meN- في الأمر.
+      en: Drop meN- in commands.
+arabic_bridge:
+  ar_eg: "زي «اقرا» من «بيقرا»: بتشيل الحروف الزيادة وتستخدم الجذر. وsilakan duduk = «اتفضل اقعد» بالظبط."
+  ar: كما يُصاغ الأمر من المضارع بحذف حرف المضارعة، يُصاغ هنا بحذف السابقة.
+  en: Like forming Arabic اقرأ from يقرأ by dropping the prefix, Indonesian drops meN-.
+tags: [imperative, verb]
+see_also: [id.prefix.men.basic, id.request.tolong-silakan, id.prohibition.jangan]
+review:
+  status: draft
+  verified: false

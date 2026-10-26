@@ -1,0 +1,70 @@
+schema: kabar.grammar/v1
+id: id.comparison.equative
+language: id
+level: bipa2
+title:
+  target: se- + adjective, sama … dengan
+  en: '"As … as" and "the same as"'
+  ar_eg: زي … بالظبط (قد / نفس)
+  ar: المساواة في المقارنة
+summary:
+  ar_eg: setinggi = طوله قد، sama besar(nya) dengan = قد … في الحجم، sama dengan = زي / نفس.
+  ar: se- + الصفة = بقدر، وsama … dengan = مثل في الصفة، وsama dengan = يساوي / مثل.
+  en: se- + adjective = as … as; sama + adjective(-nya) + dengan = equally …; sama dengan = the same as.
+pattern:
+  - A + se- + adjective + B (setinggi, semahal)
+  - A + sama + adjective(-nya) + dengan + B
+  - A + sama dengan + B
+  - A + tidak se- + adjective + B (not as … as)
+explanation:
+  ar_eg: |
+    - se- + الصفة = قد / زي: Adik saya setinggi saya = أخويا طولي (قدي في الطول). Harganya semahal itu? = غالية للدرجة دي؟
+    - sama + الصفة + dengan: Tas ini sama bagusnya dengan tas itu = الشنطة دي حلوة زي دي بالظبط.
+    - sama dengan = زي / نفس: Harganya sama dengan kemarin = نفس سعر امبارح.
+    - النفي: tidak semahal = مش غالي قد.
+    - sama saja = كله واحد / زي بعض.
+  ar: |
+    - se- + الصفة = بقدر: Adik saya setinggi saya = أخي بطولي.
+    - sama + الصفة + dengan: Tas ini sama bagusnya dengan tas itu = هذه الحقيبة جيدة كتلك.
+    - sama dengan = مثل / يساوي: Harganya sama dengan kemarin.
+    - والنفي: tidak semahal = ليس غاليًا بقدر.
+    - sama saja = سواء.
+  en: |
+    - se- + adjective: Adik saya setinggi saya = My sibling is as tall as me. Semahal itu? = That expensive?
+    - sama + adjective(-nya) + dengan: Tas ini sama bagusnya dengan tas itu = This bag is just as good as that one.
+    - sama dengan = same as / equal to: Harganya sama dengan kemarin.
+    - Negative: tidak semahal = not as expensive.
+    - sama saja = it's all the same.
+examples:
+  - text: Harga di sini tidak semahal di Kuta.
+    en: Prices here aren't as high as in Kuta.
+    ar_eg: الأسعار هنا مش غالية قد كوتا.
+    ar: الأسعار هنا ليست مرتفعة كما في كوتا.
+  - text: Kain ini sama bagusnya dengan kain itu.
+    en: This cloth is as nice as that one.
+    ar_eg: القماشة دي حلوة زي دي بالظبط.
+    ar: هذا القماش جميل كذلك القماش.
+  - text: Ukurannya sama dengan yang kemarin.
+    en: The size is the same as yesterday's.
+    ar_eg: المقاس نفس بتاع امبارح.
+    ar: المقاس نفسه كالذي أمس.
+  - text: Mau yang mana? — Sama saja.
+    en: Which one? — Doesn't matter, they're the same.
+    ar_eg: عايز أنهي؟ — كله واحد.
+    ar: أيها تريد؟ — سيّان.
+mistakes:
+  - wrong: sama mahal seperti itu
+    right: sama mahalnya dengan itu
+    why:
+      ar_eg: sama بتمشي مع dengan.
+      ar: sama تقترن بـ dengan.
+      en: sama pairs with dengan.
+arabic_bridge:
+  ar_eg: setinggi saya ≈ «قدّي في الطول»، وsama saja ≈ «كله واحد».
+  ar: se- قريبة من «بقدر» أو «كـ».
+  en: setinggi saya ≈ «قدّي في الطول»; sama saja ≈ «كله واحد».
+tags: [comparison, adjective]
+see_also: [id.comparison.lebih, id.comparison.ter-paling]
+review:
+  status: draft
+  verified: false
