@@ -54,7 +54,12 @@ run-android device="":
 apk:
     rm -rf {{dist}}/android && mkdir -p {{dist}}/android
     cd {{app}} && dx bundle --platform android --release --package-types apk --out-dir ../../{{dist}}/android/raw
+    scripts/android-check-apk.sh "$(find {{dist}}/android/raw -name '*.apk' | head -1)"
     scripts/android-sign.sh "$(find {{dist}}/android/raw -name '*.apk' | head -1)" "{{dist}}/android/kabar.apk" "{{keystore}}" "{{key_alias}}"
+
+# Share a test text to Kabar on a device (M5): `just share-text "arp dicul piro"`
+share-text text serial="":
+    adb {{ if serial != "" { "-s " + serial } else { "" } }} shell am start -a android.intent.action.SEND -t text/plain --es android.intent.extra.TEXT "'{{text}}'" -n app.kabar/app.kabar.ShareActivity
 
 # List connected Android devices
 devices:

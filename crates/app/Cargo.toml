@@ -27,6 +27,18 @@ directories = "6"
 [target.'cfg(target_os = "android")'.dependencies]
 jni = "0.22"
 ndk-context = "0.1"
+# Only for `#[manganis::ffi]`, which tells dx to build android/ into the APK.
+# Keep in lockstep with the dioxus version.
+manganis = "=0.7.10"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+# Apple Vision OCR (Screenshot Decoder).
+objc2 = "0.6"
+objc2-foundation = { version = "0.3", default-features = false, features = ["std", "NSArray", "NSDictionary", "NSError", "NSObject", "NSString", "NSValue"] }
+objc2-core-foundation = { version = "0.3", default-features = false, features = ["std", "CFCGTypes", "CFData", "CFDictionary", "CFNumber", "CFString", "CFURL"] }
+objc2-core-graphics = { version = "0.3", default-features = false, features = ["std", "CGImage"] }
+objc2-image-io = { version = "0.3", default-features = false, features = ["std", "CGImageProperties", "CGImageSource", "objc2-core-graphics"] }
+objc2-vision = { version = "0.3", default-features = false, features = ["std", "VNObservation", "VNRecognizeTextRequest", "VNRequest", "VNRequestHandler", "VNTypes", "objc2-core-foundation", "objc2-core-graphics", "objc2-image-io"] }
 
 [dev-dependencies]
 tempfile = "3"
