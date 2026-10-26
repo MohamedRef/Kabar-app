@@ -1,0 +1,215 @@
+schema: kabar.lesson/v1
+id: j6.u06.l01
+language: jv
+title: Huruf Pegon
+can_do:
+  ar_eg: تقرا ng وc وp في البيجون.
+  ar: أن تقرأ ng وc وp في البيجون.
+  en: Read ng, c and p in Pegon.
+slides:
+  - title: Pegon
+    body:
+      ar_eg: |
+        آخر محطة، وأسهلها عليك! البيجون (Pegon) = الجاوي مكتوب بالحروف العربية. المدارس الدينية (pesantren) في جاوة بتكتب بيه من قرون.
+        الحروف العربية بتغطي أغلب الأصوات، واللي ناقص بيتعمل بنقط زيادة:
+        - ڠ = ng (عين بتلات نقط): ڠاجي = ngaji.
+        - چ = c «تش» (زي الفارسي): چارا = cara.
+        - ڤ = p! مش v ولا f: ساڤا = sapa.
+      ar: |
+        المحطة الأخيرة وأيسرها عليك! البيجون (Pegon) هي الجاوية بالحرف العربي، وبها تكتب المدارس الدينية (pesantren) منذ قرون.
+        وتغطي الحروف العربية أكثر الأصوات، ويُصنع الناقص بزيادة النقاط:
+        - ڠ = ng (عين بثلاث نقاط): ڠاجي = ngaji.
+        - چ = c «تش» (كالفارسية): چارا = cara.
+        - ڤ = p، لا v ولا f: ساڤا = sapa.
+      en: |
+        The last stop, and the easiest for you! Pegon = Javanese written in Arabic letters. Pesantren (Islamic boarding schools) in Java have used it for centuries.
+        Arabic letters cover most sounds; the missing ones get extra dots:
+        - ڠ = ng (ع with three dots): ڠاجي = ngaji.
+        - چ = c "ch" (as in Persian): چارا = cara.
+        - ڤ = p! Not v, not f: ساڤا = sapa.
+    grammar: jv.pegon.basics
+    examples:
+      - text: ڠاجي (ngaji)
+        ar_eg: يقرا قرآن / يدرس دين
+        ar: يقرأ القرآن / يتعلم الدين
+        en: recite the Qur'an / study religion
+      - text: ساڤا (sapa)
+        ar_eg: مين؟ — ڤ هنا p
+        ar: من؟ — ڤ هنا p
+        en: who? — ڤ here is p
+  - title: Swara ditulis
+    body:
+      ar_eg: |
+        أهم فرق عن العربي: الحركات. العربي بيسيب الفتحة والكسرة والضمة من غير كتابة. البيجون بتكتبهم حروف:
+        a = ا · i أو e = ي · u أو o = و.
+        والكلمة اللي بتبدأ بحركة بتبدأ بألف: اكو = aku، ايكي = iki، اورا = ora.
+      ar: |
+        والفرق الأهم عن العربية الصوائت: تتركها العربية بلا كتابة، وتكتبها البيجون حروفًا:
+        a = ا · i أو e = ي · u أو o = و.
+        والكلمة المبدوءة بصائت تبدأ بألف: اكو = aku، ايكي = iki، اورا = ora.
+      en: |
+        The biggest difference from Arabic is vowels. Arabic leaves short vowels unwritten; Pegon writes them as letters:
+        a = ا · i or e = ي · u or o = و.
+        A word that starts with a vowel starts with alif: اكو = aku, ايكي = iki, اورا = ora.
+    grammar: jv.pegon.basics
+    examples:
+      - text: اكو ڠاجي (aku ngaji)
+        ar_eg: أنا بقرا قرآن.
+        ar: أنا أقرأ القرآن.
+        en: I'm reciting the Qur'an.
+      - text: اورا (ora)
+        ar_eg: لأ / مش
+        ar: لا
+        en: no, not
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ڠ
+        ar_eg: nga (عين بتلات نقط)
+        ar: nga (عين بثلاث نقاط)
+        en: nga (ع with three dots)
+      - text: چ
+        ar_eg: ca (تش)
+        ar: ca (تش)
+        en: ca (ch)
+      - text: ڤ
+        ar_eg: pa (مش ڤيتامين!)
+        ar: pa (لا v ولا f)
+        en: pa (not v, not f!)
+      - text: pegon
+        ar_eg: الجاوي بالحروف العربية
+        ar: الجاوية بالحرف العربي
+        en: Javanese in Arabic letters
+      - text: pesantren
+        ar_eg: مدرسة دينية داخلية
+        ar: مدرسة دينية داخلية
+        en: Islamic boarding school
+    words: [ڠ, چ, ڤ, pegon, pesantren]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ڤ في البيجون بتتقري إزاي؟
+      ar: كيف تُقرأ ڤ في البيجون؟
+      en: How is ڤ read in Pegon?
+    options: [fa, pa, va]
+    answer: 1
+    explain:
+      ar_eg: التلات نقط بتخلّي الفا p. إحنا في مصر بنكتب بيها v، بس هنا p.
+      ar: النقاط الثلاث تجعل الفاء p، وإن استُعملت في مصر للـ v.
+      en: The three dots turn ف into p. Egyptians use it for v, but here it's p.
+    words: [ڤ]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "اقرا: ڠاجي"
+      ar: "اقرأ: ڠاجي"
+      en: "Read: ڠاجي"
+    options: [aji, ngaja, ngaji]
+    answer: 2
+    words: [ڠ]
+  - id: e04
+    type: listen
+    text: cara
+    question:
+      ar_eg: سمعت cara (طريقة). بتتكتب إزاي بالبيجون؟
+      ar: سمعت cara (طريقة). كيف تُكتب بالبيجون؟
+      en: You heard cara (way). How is it written in Pegon?
+    options: ["چارا", "جارا", "كارا"]
+    answer: 0
+    meaning:
+      ar_eg: طريقة
+      ar: طريقة
+      en: way, manner
+    words: [چ]
+  - id: e05
+    type: fill_blank
+    sentence: چارا = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: طريقة)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: طريقة)"
+      en: Type the reading in Latin letters. (It means "way".)
+    answers: [cara]
+    words: [چ, pegon]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ساڤا ڠاجي"
+      ar: "اكتب بالحروف اللاتينية: ساڤا ڠاجي"
+      en: "Write in Latin letters: ساڤا ڠاجي"
+    answers: ["Sapa ngaji?", sapa ngaji]
+    explain:
+      ar_eg: ساڤا = sapa (ڤ = p)، وڠاجي = ngaji (ڠ = ng). يعني «مين بيقرا قرآن؟».
+      ar: ساڤا = sapa (ڤ = p)، وڠاجي = ngaji (ڠ = ng)، أي «من يقرأ القرآن؟».
+      en: "ساڤا = sapa (ڤ = p) and ڠاجي = ngaji (ڠ = ng): \"Who's reciting?\""
+    words: [ڤ, ڠ, pegon]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: أنا بقرا قرآن في الـ pesantren.
+      ar: أقرأ القرآن في الـ pesantren.
+      en: I recite the Qur'an at the pesantren.
+    answer: Aku ngaji ing pesantren.
+    distractors: [pegon]
+    words: [pesantren]
+  - id: e08
+    type: speaking
+    text: Aku ngaji ing pesantren.
+    meaning:
+      ar_eg: أنا بقرا قرآن في الـ pesantren.
+      ar: أقرأ القرآن في الـ pesantren.
+      en: I recite the Qur'an at the pesantren.
+    words: [pesantren]
+dialogue:
+  title: Ing pesantren Plered
+  lines:
+    - speaker: Dimas
+      text: Med, iki pesantrene kancaku ing Plered.
+      ar_eg: يا محمد، دي الـ pesantren بتاعة صاحبي في بليريد.
+      ar: يا محمد، هذه الـ pesantren التي يدرس فيها صديقي في بليريد.
+      en: Med, this is my friend's pesantren in Plered.
+    - speaker: Mohamed
+      text: Santri-santri lagi ngaji. Kitabe nganggo huruf Arab.
+      ar_eg: الطلبة بيقروا. وكتبهم بالحروف العربية.
+      ar: الطلاب يقرؤون، وكتبهم بالحرف العربي.
+      en: The students are reciting. Their books are in Arabic letters.
+    - speaker: Dimas
+      text: Dudu basa Arab, Med. Iku basa Jawa, tulisane Pegon.
+      ar_eg: ده مش عربي يا محمد. ده جاوي، مكتوب بيجون.
+      ar: ليست عربية يا محمد، بل جاوية مكتوبة بالبيجون.
+      en: It's not Arabic, Med. It's Javanese, written in Pegon.
+    - speaker: Mohamed
+      text: Wah! Aku isa maca, aku ngaji!
+      ar_eg: "يا سلام! أنا عارف أقرا: «aku ngaji»!"
+      ar: "رائع! أستطيع القراءة: «aku ngaji»!"
+      en: Wow! I can read it — aku ngaji!
+new_words:
+  - word: ڠ
+    pos: letter
+    ar_eg: nga في البيجون (عين بتلات نقط)
+    ar: nga في البيجون (عين بثلاث نقاط)
+    en: nga in Pegon (ع with three dots)
+  - word: چ
+    pos: letter
+    ar_eg: ca في البيجون (تش)
+    ar: ca في البيجون (تش)
+    en: ca in Pegon (ch)
+  - word: ڤ
+    pos: letter
+    ar_eg: pa في البيجون (فا بتلات نقط)
+    ar: pa في البيجون (فاء بثلاث نقاط)
+    en: pa in Pegon (ف with three dots)
+  - word: pegon
+    pos: noun
+    ar_eg: الجاوي مكتوب بالحروف العربية
+    ar: الجاوية مكتوبة بالحرف العربي
+    en: Javanese written in Arabic letters
+  - word: pesantren
+    pos: noun
+    ar_eg: مدرسة دينية داخلية (الطلبة بيعيشوا فيها)
+    ar: مدرسة دينية داخلية
+    en: Islamic boarding school = pesantren
+review:
+  status: draft
+  verified: false

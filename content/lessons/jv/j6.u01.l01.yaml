@@ -1,0 +1,216 @@
+schema: kabar.lesson/v1
+id: j6.u01.l01
+language: jv
+title: Ha na ca ra ka
+can_do:
+  ar_eg: تقرا وتكتب أول خمس حروف في الخط الجاوي.
+  ar: أن تقرأ الحروف الخمسة الأولى من الخط الجاوي وتكتبها.
+  en: Read and write the first five letters.
+slides:
+  - title: Aksara Jawa
+    body:
+      ar_eg: |
+        أهلًا بيك في كوتاغيدي، آخر محطة في الرحلة! هنا هنتعلم الخط الجاوي: aksara Jawa.
+        أهم فكرة: كل حرف جاوي = حرف ساكن + a. يعني ꦏ مش «ك»، دي «كَ» (ka). كأن كل حرف عربي عليه فتحة دايمًا من غير ما تكتبها.
+        أول خمس حروف: ꦲ ha · ꦤ na · ꦕ ca (تشَ) · ꦫ ra · ꦏ ka.
+        والكتابة من الشمال لليمين زي اللاتيني، والكلمات بتتلزق في بعض من غير مسافات.
+      ar: |
+        مرحبًا بك في كوتاغيدي، المحطة الأخيرة! هنا نتعلم الخط الجاوي: aksara Jawa.
+        الفكرة الأساسية: كل حرف جاوي ساكن مع a، فـ ꦏ ليس «ك» بل «كَ» (ka)، كأن على كل حرف عربي فتحة لازمة لا تُكتب.
+        الحروف الخمسة الأولى: ꦲ ha · ꦤ na · ꦕ ca (تشَ) · ꦫ ra · ꦏ ka.
+        ويُكتب من اليسار إلى اليمين، وتتصل الكلمات بلا مسافات.
+      en: |
+        Welcome to Kotagede, the last stop of the journey! Here you learn aksara Jawa, the Javanese script.
+        The key idea: every letter = consonant + a. So ꦏ isn't "k", it's "ka" — as if every Arabic letter carried a fatha you never write.
+        The first five letters: ꦲ ha · ꦤ na · ꦕ ca (ch) · ꦫ ra · ꦏ ka.
+        It runs left to right like Latin, and words run together without spaces.
+    grammar: jv.aksara.nglegena
+    examples:
+      - text: ꦏꦤ (kana)
+        ar_eg: هناك (بعيد) — ka + na
+        ar: هناك (بعيدًا) — ka + na
+        en: over there — ka + na
+  - title: Hana caraka
+    body:
+      ar_eg: |
+        الكلمة اللي بتبدأ بحرف متحرك بتتكتب بـ ꦲ، زي الألف اللي بتشيل الهمزة عندنا: ꦲꦤ = ana (فيه / موجود).
+        والخمس حروف دول أول سطر في قصيدة الأبجدية: «Hana caraka» = كان فيه رسولين. الحكاية كاملة في آخر الوحدة.
+      ar: |
+        الكلمة المبدوءة بصائت تُكتب بـ ꦲ، كما تحمل الألف الهمزة عندنا: ꦲꦤ = ana (يوجد).
+        وهذه الحروف الخمسة أول سطر في قصيدة الأبجدية: «Hana caraka» = كان هناك رسولان، والحكاية كاملة في آخر الوحدة.
+      en: |
+        A word that starts with a vowel is written with ꦲ, the way alif carries hamza in Arabic: ꦲꦤ = ana (there is).
+        These five letters are the first line of the alphabet poem: "Hana caraka" = there were two messengers. The whole story comes at the end of the unit.
+    grammar: jv.aksara.nglegena
+    examples:
+      - text: ꦲꦤ (ana)
+        ar_eg: فيه / موجود — ꦲ شايلة الـ a
+        ar: يوجد — ꦲ تحمل الصائت a
+        en: there is — ꦲ carries the a
+      - text: ꦲꦤꦕꦫꦏ (hana caraka)
+        ar_eg: كان فيه رسولين
+        ar: كان هناك رسولان
+        en: there were two messengers
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ꦲ
+        ar_eg: ha (هـَ)
+        ar: ha (هـَ)
+        en: ha
+      - text: ꦤ
+        ar_eg: na (نَ)
+        ar: na (نَ)
+        en: na
+      - text: ꦕ
+        ar_eg: ca (تشَ)
+        ar: ca (تشَ)
+        en: ca (ch)
+      - text: ꦫ
+        ar_eg: ra (رَ)
+        ar: ra (رَ)
+        en: ra
+      - text: ꦏ
+        ar_eg: ka (كَ)
+        ar: ka (كَ)
+        en: ka
+    words: [ꦲ, ꦤ, ꦕ, ꦫ, ꦏ]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الحرف ده بيتقري إزاي؟ ꦕ
+      ar: كيف يُقرأ هذا الحرف؟ ꦕ
+      en: How do you read this letter? ꦕ
+    options: [ra, ka, ca]
+    answer: 2
+    words: [ꦕ]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي حرف هو na؟
+      ar: أي حرف هو na؟
+      en: Which letter is na?
+    options: ["ꦏ", "ꦤ", "ꦲ"]
+    answer: 1
+    words: [ꦤ]
+  - id: e04
+    type: listen
+    text: kana
+    question:
+      ar_eg: سمعت أنهي كلمة؟
+      ar: أي كلمة سمعت؟
+      en: Which word did you hear?
+    options: ["ꦏꦤ", "ꦤꦏ", "ꦲꦤ"]
+    answer: 0
+    meaning:
+      ar_eg: هناك (بعيد)
+      ar: هناك
+      en: over there
+    words: [ꦏ, ꦤ]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تكتب ana (فيه)؟
+      ar: كيف تكتب ana (يوجد)؟
+      en: How do you write ana (there is)?
+    options: ["ꦲꦤ", "ꦤ", "ꦫꦤ"]
+    answer: 0
+    explain:
+      ar_eg: الكلمة بتبدأ بـ a، فلازم ꦲ تشيلها، زي الألف اللي بتشيل الهمزة. ꦤ لوحدها = na بس.
+      ar: تبدأ الكلمة بـ a فتحملها ꦲ كما تحمل الألف الهمزة، وꦤ وحدها = na.
+      en: The word starts with a, so ꦲ carries it, like alif carrying hamza. ꦤ alone is just na.
+    words: [ꦲ, ꦤ]
+  - id: e06
+    type: fill_blank
+    sentence: ꦕꦫ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: طريقة)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: طريقة)"
+      en: Type the reading in Latin letters. (It means "way, manner".)
+    answers: [cara]
+    explain:
+      ar_eg: ꦕ ca + ꦫ ra = cara (طريقة)، زي caranipun اللي عرفتها.
+      ar: ꦕ ca + ꦫ ra = cara (طريقة).
+      en: ꦕ ca + ꦫ ra = cara (way), as in caranipun.
+    words: [ꦕ, ꦫ]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: "رتّب أول خمس حروف بالترتيب: ha na ca ra ka."
+      ar: "رتّب الحروف الخمسة الأولى: ha na ca ra ka."
+      en: "Put the first five letters in order: ha na ca ra ka."
+    answer: ꦲ ꦤ ꦕ ꦫ ꦏ
+    words: [ꦲ, ꦤ, ꦕ, ꦫ, ꦏ]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦲꦤꦕꦫꦏ"
+      ar: "اكتب بالحروف اللاتينية: ꦲꦤꦕꦫꦏ"
+      en: "Write in Latin letters: ꦲꦤꦕꦫꦏ"
+    answers: [hana caraka, hanacaraka, ha na ca ra ka]
+    explain:
+      ar_eg: ha-na ca-ra-ka. مفيش مسافات في الخط الجاوي، فإنت اللي بتقسّم الكلمات وإنت بتقرا.
+      ar: ha-na ca-ra-ka. لا مسافات في الخط الجاوي، فالقارئ يقسّم الكلمات.
+      en: ha-na ca-ra-ka. Aksara Jawa has no spaces, so you split the words as you read.
+    words: [ꦲ, ꦤ, ꦕ, ꦫ, ꦏ]
+  - id: e09
+    type: speaking
+    text: Ha na ca ra ka. Hana caraka.
+    meaning:
+      ar_eg: ها نا تشا را كا. كان فيه رسولين.
+      ar: ها نا تشا را كا. كان هناك رسولان.
+      en: Ha na ca ra ka. There were two messengers.
+dialogue:
+  title: Ing Pasar Kotagedhe
+  lines:
+    - speaker: Dimas
+      text: Mohamed, kowe isa maca aksara Jawa?
+      ar_eg: يا محمد، بتعرف تقرا الخط الجاوي؟
+      ar: يا محمد، هل تستطيع قراءة الخط الجاوي؟
+      en: Mohamed, can you read aksara Jawa?
+    - speaker: Mohamed
+      text: Durung, Mas. Aku lagi sinau ha na ca ra ka.
+      ar_eg: لسه يا ديماس. أنا لسه بتعلّم ها نا تشا را كا.
+      ar: ليس بعد يا ديماس. أتعلّم الآن ها نا تشا را كا.
+      en: Not yet, Mas. I'm just learning ha na ca ra ka.
+    - speaker: Dimas
+      text: Apik! Aksara iki diwaca ka, dudu k.
+      ar_eg: حلو! الحرف ده بيتقري ka، مش k.
+      ar: جميل! هذا الحرف يُقرأ ka لا k.
+      en: Nice! This letter is read ka, not k.
+    - speaker: Mohamed
+      text: Kaya huruf Arab nganggo fathah!
+      ar_eg: زي الحرف العربي اللي عليه فتحة!
+      ar: كالحرف العربي المفتوح!
+      en: Like an Arabic letter with a fatha!
+new_words:
+  - word: ꦲ
+    pos: letter
+    ar_eg: الحرف ha (هـَ)؛ وكمان بيشيل الحركة في أول الكلمة
+    ar: الحرف ha (هـَ)، ويحمل الصائت في أول الكلمة
+    en: the letter ha; also carries a word-initial vowel
+  - word: ꦤ
+    pos: letter
+    ar_eg: الحرف na (نَ)
+    ar: الحرف na (نَ)
+    en: the letter na
+  - word: ꦕ
+    pos: letter
+    ar_eg: الحرف ca (تشَ)
+    ar: الحرف ca (تشَ)
+    en: the letter ca (ch)
+  - word: ꦫ
+    pos: letter
+    ar_eg: الحرف ra (رَ)
+    ar: الحرف ra (رَ)
+    en: the letter ra
+  - word: ꦏ
+    pos: letter
+    ar_eg: الحرف ka (كَ)
+    ar: الحرف ka (كَ)
+    en: the letter ka
+review:
+  status: draft
+  verified: false

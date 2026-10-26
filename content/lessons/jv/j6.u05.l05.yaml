@@ -1,0 +1,163 @@
+schema: kabar.lesson/v1
+id: j6.u05.l05
+language: jv
+title: Ulangan J6.5
+can_do:
+  ar_eg: تقرا تاريخ واسم وكلمة عربية الأصل.
+  ar: أن تقرأ تاريخًا واسمًا ولفظًا عربي الأصل.
+  en: Read a date, a name and an Arabic loanword.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: aksara murda
+        ar_eg: حروف للتكريم
+        ar: حروف التعظيم
+        en: honorific capitals
+      - text: aksara rekan
+        ar_eg: حروف الأصوات العربية (تلات نقط)
+        ar: حروف الأصوات العربية (ثلاث نقاط)
+        en: Arabic-sound letters (three dots)
+      - text: angka Jawa
+        ar_eg: الأرقام الجاوية
+        ar: الأرقام الجاوية
+        en: Javanese numerals
+      - text: pada pangkat
+        ar_eg: ꧇ — حوالين الرقم
+        ar: ꧇ — حول العدد
+        en: ꧇ — around a number
+    words: [aksara murda, aksara rekan, angka, pada pangkat]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "اقرا: ꦓꦸꦱ꧀ꦠꦶ"
+      ar: "اقرأ: ꦓꦸꦱ꧀ꦠꦶ"
+      en: "Read: ꦓꦸꦱ꧀ꦠꦶ"
+    options: [Gusti, Kusti, Gasti]
+    answer: 0
+    words: [aksara murda]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تكتب zakat؟
+      ar: كيف تكتب zakat؟
+      en: How do you write zakat?
+    options: ["ꦗꦏꦠ꧀", "ꦱꦏꦠ꧀", "ꦗ꦳ꦏꦠ꧀"]
+    answer: 2
+    words: [zakat, aksara rekan]
+  - id: e04
+    type: listen
+    text: fajar
+    question:
+      ar_eg: سمعت fajar (الفجر). بتتكتب إزاي؟
+      ar: سمعت fajar (الفجر). كيف تُكتب؟
+      en: You heard fajar (dawn). How is it written?
+    options: ["ꦥꦗꦂ", "ꦥ꦳ꦗꦂ", "ꦥꦗꦁ"]
+    answer: 1
+    meaning:
+      ar_eg: الفجر
+      ar: الفجر
+      en: dawn
+    words: [fajar]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "اقرا: ꧇꧑꧖꧔꧕꧇"
+      ar: "اقرأ: ꧇꧑꧖꧔꧕꧇"
+      en: "Read: ꧇꧑꧖꧔꧕꧇"
+    options: ["1654", "1645", "1465"]
+    answer: 1
+    words: [angka]
+  - id: e06
+    type: listen
+    text: rong ewu rong puluh enem
+    question:
+      ar_eg: سمعت أنهي سنة؟
+      ar: أي سنة سمعت؟
+      en: Which year did you hear?
+    options: ["꧇꧒꧐꧐꧖꧇", "꧇꧒꧐꧖꧒꧇", "꧇꧒꧐꧒꧖꧇"]
+    answer: 2
+    meaning:
+      ar_eg: سنة 2026
+      ar: عام 2026
+      en: the year 2026
+    words: [angka]
+  - id: e07
+    type: fill_blank
+    sentence: ꦏ꦳ꦸꦱꦸꦱ꧀ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: خاص)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: خاص)"
+      en: Type the reading in Latin letters. (It means "special".)
+    answers: [khusus]
+    words: [khusus]
+  - id: e08
+    type: fill_blank
+    sentence: ꦦꦔꦺꦫꦤ꧀ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: أمير)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: أمير)"
+      en: Type the reading in Latin letters. (It means "prince".)
+    answers: [Pangeran]
+    words: [aksara murda]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف والأرقام اللاتينية: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇꧈ꦠꦲꦸꦤ꧀꧇꧒꧐꧒꧖꧇꧉"
+      ar: "اكتب بالحروف والأرقام اللاتينية: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇꧈ꦠꦲꦸꦤ꧀꧇꧒꧐꧒꧖꧇꧉"
+      en: "Write in Latin letters and digits: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇꧈ꦠꦲꦸꦤ꧀꧇꧒꧐꧒꧖꧇꧉"
+    answers: ["Tanggal 17, taun 2026.", tanggal 17 taun 2026]
+    words: [tanggal, angka, pada pangkat]
+  - id: e10
+    type: build_sentence
+    source:
+      ar_eg: الصبح بعد الفجر بنقول الذكر.
+      ar: نذكر الله صباحًا بعد الفجر.
+      en: In the morning, after dawn, we do dhikr.
+    answer: Sawise fajar awake dhewe dzikir.
+    distractors: [zakat]
+    words: [fajar, dzikir]
+  - id: e11
+    type: speaking
+    text: Gusti, fajar, zakat, tanggal pitulas.
+    meaning:
+      ar_eg: Gusti، الفجر، الزكاة، يوم 17.
+      ar: Gusti، الفجر، الزكاة، اليوم السابع عشر.
+      en: Gusti, dawn, zakat, the 17th.
+dialogue:
+  title: Ing pucuk undhak-undhakan
+  lines:
+    - speaker: Mohamed
+      text: Pak, kula sampun dumugi ing nginggil!
+      ar_eg: يا عمّو، أنا وصلت فوق!
+      ar: يا سيدي، وصلتُ إلى الأعلى!
+      en: Sir, I've made it to the top!
+    - speaker: Pak Harjo
+      text: Sae, Mas. Menika makam Sultan Agung.
+      ar_eg: برافو يا ابني. ده قبر السلطان أغونغ.
+      ar: أحسنت يا بني. هذا قبر السلطان أغونغ.
+      en: Well done. This is Sultan Agung's tomb.
+    - speaker: Mohamed
+      text: Asmanipun ngangge sa murda, nggih?
+      ar_eg: اسمه بيتكتب بـ sa murda، صح؟
+      ar: يُكتب اسمه بـ sa murda، أليس كذلك؟
+      en: His name is written with sa murda, isn't it?
+    - speaker: Pak Harjo
+      text: Leres. Panjenengan sampun saged maos aksara Jawa!
+      ar_eg: صح. حضرتك بقيت تعرف تقرا الخط الجاوي!
+      ar: صحيح. صرتَ تقرأ الخط الجاوي!
+      en: Right. You can read aksara Jawa now!
+souvenir:
+  id: j6.u05.souvenir
+  title: Pasarean Imogiri
+  note:
+    ar_eg: |
+      في إيموغيري، جنوب يوجياكرتا، فيه مقابر السلطان أغونغ — أعظم ملوك ماتارام — والملوك اللي جم بعده، فوق تل. وعشان توصل لازم تطلع حوالي 409 سلمة. وعلى البوابات والألواح هتلاقي الأسامي بحروف murda، والكلمات العربية بحروف rekan، والسنين بالأرقام الجاوية — كل اللي اتعلمته في الوحدة دي في مكان واحد.
+    ar: |
+      في إيموغيري جنوب يوجياكرتا مقابر السلطان أغونغ، أعظم ملوك ماتارام، ومن جاء بعده من الملوك، على تلّة يُصعد إليها بنحو 409 درجات. وعلى البوابات والألواح أسماء بحروف murda، وألفاظ عربية بحروف rekan، وسنوات بالأرقام الجاوية: كل ما تعلمته في هذه الوحدة في مكان واحد.
+    en: |
+      At Imogiri, south of Yogyakarta, the tombs of Sultan Agung — Mataram's greatest king — and the kings after him sit on a hilltop, reached by about 409 steps. On the gates and plaques you'll find names in murda letters, Arabic words in rekan and years in Javanese numerals — everything from this unit in one place.
+review:
+  status: draft
+  verified: false
