@@ -8,7 +8,8 @@ use dioxus::prelude::*;
 use kabar_core::coach::voice::Line;
 use kabar_core::coach::{history, plan, recap, reminders, rewards};
 use kabar_protocol::coach::{
-    ActivityKind, CoachProfile, DailyPlan, LocalDate, PlanItem, PlanItemKind, PlanSize, ReminderStyle,
+    ActivityKind, CoachProfile, DailyPlan, LanguageFocus, LocalDate, PlanItem, PlanItemKind, PlanSize,
+    ReminderStyle,
 };
 
 use super::widgets::{Nur, Progress, SizePicker, Stat};
@@ -17,19 +18,39 @@ use crate::i18n::Msg;
 use crate::{Db, Screen, Ui, icons};
 
 /// Where a plan item's "start" button goes.
-fn screen_for(kind: &PlanItemKind) -> Screen {
-    match kind {
+/// Opens what a plan item asks for: a lesson item goes straight into the
+/// unit's next lesson, or the Journey's next one once that unit is finished
+/// (the Journey itself only when neither is known).
+fn start_item(ui: Ui, db: &Db, coach: Coach, kind: &PlanItemKind) {
+    let screen = match kind {
         PlanItemKind::Review { .. } => Screen::Review,
-        PlanItemKind::Lesson { .. } | PlanItemKind::WeakSpot { .. } => Screen::Journey,
+        PlanItemKind::Lesson { unit_id } => {
+            let completed = db.0.borrow().completed_lessons().unwrap_or_default();
+            let next = crate::journey::next_lesson_in(unit_id, &completed).or_else(|| {
+                let profile = coach.profile.peek().clone()?;
+                let start = crate::journey::start_level(db, Some(&profile));
+                let javanese = profile.focus == LanguageFocus::Javanese;
+                let unit = crate::journey::current_unit(&completed, start.as_deref(), javanese)?;
+                crate::journey::next_lesson_in(&unit, &completed)
+            });
+            if let Some(lesson) = next {
+                ui.open_lesson(lesson);
+                return;
+            }
+            Screen::Journey
+        }
+        PlanItemKind::WeakSpot { .. } => Screen::Journey,
         PlanItemKind::Reading => Screen::Reader,
-    }
+    };
+    let mut current = ui.screen;
+    current.set(screen);
 }
 
 /// Rebuilds and saves today's plan at the size the learner just picked.
 fn pick_size(db: &Db, coach: Coach, profile: &CoachProfile, today: LocalDate, size: PlanSize) {
     let events = coach.events.peek().clone();
     let due = crate::review::due_words(db, coach.now()).len() as u32;
-    let fresh = build_plan(due, profile, &events, today, size, true);
+    let fresh = build_plan(db, due, profile, &events, today, size, true);
     if let Err(e) = db.0.borrow_mut().save_plan(&fresh) {
         eprintln!("kabar: saving today's plan failed: {e}");
     }
@@ -161,7 +182,7 @@ fn WelcomeBack(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Elem
     let coach = use_context::<Coach>();
     let minutes = ui.num(plan.size.minutes());
     let args = [("name", profile.name.as_str()), ("minutes", minutes.as_str())];
-    let first = plan.items.first().map(|i| screen_for(&i.kind));
+    let first = plan.items.first().map(|i| i.kind.clone());
     rsx! {
         section { class: "card welcome-back", aria_labelledby: "welcome-back-title",
             h2 { id: "welcome-back-title", "{ui.t(Msg::WelcomeBackTitle)}" }
@@ -181,12 +202,12 @@ fn WelcomeBack(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Elem
                     }
                 }
             }
-            if let Some(target) = first {
+            if let Some(kind) = first {
                 button {
                     class: "primary welcome-back-start",
-                    onclick: move |_| {
-                        let mut screen = ui.screen;
-                        screen.set(target);
+                    onclick: {
+                        let db = db.clone();
+                        move |_| start_item(ui, &db, coach, &kind)
                     },
                     "{ui.t(Msg::WelcomeBackStart)}"
                 }
@@ -264,7 +285,7 @@ fn PlanRow(
     let db = use_context::<Db>();
     let coach = use_context::<Coach>();
     let (title, detail) = labels::plan_item(&ui, &item.kind);
-    let target = screen_for(&item.kind);
+    let kind = item.kind.clone();
     let id = item.id.clone();
     let seconds = u32::from(item.minutes) * 60;
     rsx! {
@@ -290,15 +311,15 @@ fn PlanRow(
             div { class: "plan-text",
                 strong { "{ui.t(title)}" }
                 if let Some(detail) = detail {
-                    span { class: "muted", " · " bdi { lang: "id", "{detail}" } }
+                    span { class: "muted", " · " bdi { "{detail}" } }
                 }
                 div { class: "muted small", {labels::minutes(&ui, u32::from(item.minutes))} }
             }
             if !done && show_start {
                 button {
-                    onclick: move |_| {
-                        let mut screen = ui.screen;
-                        screen.set(target);
+                    onclick: {
+                        let db = db.clone();
+                        move |_| start_item(ui, &db, coach, &kind)
                     },
                     "{ui.t(Msg::Start)}"
                 }
@@ -348,7 +369,7 @@ fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
     let events = coach.events.read().clone();
     // Cards due by tomorrow morning size tomorrow's first step.
     let due = crate::review::due_words(&db, coach.now() + 86_400_000).len() as u32;
-    let tomorrow = build_plan(due, &profile, &events, today.add_days(1), profile.daily_size, false);
+    let tomorrow = build_plan(&db, due, &profile, &events, today.add_days(1), profile.daily_size, false);
     let tomorrow_first = tomorrow.items.first().map(|i| i.kind.clone());
     let r = recap::day_recap(&events, today, plan.size.minutes(), plan.items.len(), tomorrow_first);
 
@@ -356,12 +377,16 @@ fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
     // and empty when they don't apply (say then picks a variant without them).
     let minutes = ui.num(r.minutes);
     let words = if r.new_words.is_empty() { String::new() } else { ui.num(r.new_words.len() as u64) };
-    let done = history::day(&events, today).items_done;
+    // Steps count as the plan shows them: ticked off, or visibly done (a
+    // finished lesson ticks its row without a tap).
+    let done = plan::progress(&plan, &history::day(&events, today)).done;
+    let steps = done.iter().filter(|d| **d).count() as u32;
     let worked_on = plan
         .items
         .iter()
-        .find(|i| done.contains(&i.id) && !matches!(i.kind, PlanItemKind::Review { .. }))
-        .map(|i| labels::plan_item_text(&ui, &i.kind))
+        .zip(&done)
+        .find(|(i, d)| **d && !matches!(i.kind, PlanItemKind::Review { .. }))
+        .map(|(i, _)| labels::plan_item_text(&ui, &i.kind))
         .unwrap_or_default();
     let base = [
         ("name", profile.name.as_str()),
@@ -371,7 +396,7 @@ fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
     ];
     let headline = say(&ui, if r.goal_met { Line::RecapGoalMet } else { Line::RecapSomeStudy }, today, &base);
     let remember = r.remember.as_ref().map(|f| {
-        let topic = format!("{} · {}", ui.t(labels::skill(f.skill)), f.topic);
+        let topic = format!("{} · \u{2068}{}\u{2069}", ui.t(labels::skill(f.skill)), f.topic);
         say(&ui, Line::RecapRemember, today, &[("topic", topic.as_str())])
     });
     let next = r.tomorrow.as_ref().map(|first| {
@@ -386,7 +411,7 @@ fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
             Nur { text: headline }
             div { class: "stats-row",
                 Stat { value: labels::minutes(&ui, r.minutes), label: Msg::StatTime }
-                Stat { value: ui.num(r.items_done), label: Msg::StatSteps }
+                Stat { value: ui.num(steps.max(r.items_done)), label: Msg::StatSteps }
                 Stat { value: ui.num(r.reviews), label: Msg::StatReviews }
                 Stat { value: ui.num(r.new_words.len() as u32), label: Msg::StatNewWords }
             }

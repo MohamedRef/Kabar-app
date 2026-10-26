@@ -30,6 +30,8 @@ rmp-serde = "1"
 bzip2 = "0.6"
 quick-xml = "0.38"
 unicode-normalization = "0.1"
+tar = { version = "0.4", default-features = false }
+ureq = { version = "3", default-features = false, features = ["rustls"] }
 
 [dev-dependencies]
 jsonschema = { version = "0.33", default-features = false }

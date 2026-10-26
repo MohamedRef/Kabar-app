@@ -148,6 +148,6 @@ Counters are in D1 `quota_usage`; a call that would cross a limit is refused bef
 - **Push tokens**: the app doesn't send its FCM token yet; that arrives with the Android notification code (M7).
 - On Linux (development and CI only) the session is kept in memory, so you sign in on every launch. The Mac uses the Keychain and Android the Keystore.
 
-- Vision tasks (`structure_screenshot`, `read_handwriting`, …) answer `unavailable` until the blob store lands.
+- Vision tasks (`read_handwriting`, `guess_sketch`, `check_strokes`) need an image (`image_sha256`, see `/v1/blobs`). `structure_screenshot` also works from the on-device OCR text alone (no image attached); it is personal (other people's chats), so it never goes to `gemini_free` or the shared cache.
 - Op-log compaction (monthly snapshot) arrives once the log is big enough to matter.
 - `fixtures/server/*.json` are written from the providers' documented shapes; replace them with real recordings on the first bake-off run (the `fcm_*.json` ones on the first real push).

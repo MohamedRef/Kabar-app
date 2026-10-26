@@ -3,7 +3,7 @@
 //! renders prompts and validates answers; the server adds the key, enforces
 //! privacy and quotas, and caches. HTTP calls live in `wasm`.
 
-use kabar_protocol::ai::{EngineCall, EngineError, EngineId};
+use kabar_protocol::ai::{EngineCall, EngineError, EngineId, Task};
 use serde_json::{Value, json};
 
 use crate::blobs::Image;
@@ -85,7 +85,9 @@ pub fn route(call: &EngineCall, config: &Config) -> Result<Route, EngineError> {
         return Err(other(format!("max_tokens must be 1..={MAX_MAX_TOKENS}")));
     }
     let vision = call.image_sha256.is_some();
-    if key.task.needs_vision() && !vision {
+    // structure_screenshot also works from the on-device OCR text alone.
+    let text_only = key.task == Task::StructureScreenshot;
+    if key.task.needs_vision() && !vision && !text_only {
         return Err(other("this task needs an image (image_sha256)"));
     }
     match key.engine {
@@ -320,6 +322,9 @@ mod tests {
             route(&call(Task::ReadHandwriting, EngineId::WorkersAi), &ready),
             Err(EngineError::Other { .. })
         ));
+        // A screenshot's OCR text alone is fine; with its image it uses the vision model.
+        let ocr_text = call(Task::StructureScreenshot, EngineId::WorkersAi);
+        assert!(route(&ocr_text, &none).is_ok());
         assert_eq!(
             route(&call(Task::AnalyzeText, EngineId::WorkersAi), &none).unwrap().service(),
             Service::WorkersAi

@@ -27,11 +27,12 @@ pub enum Step {
     Name,
     Why,
     Focus,
+    /// Where to start comes before the target, which is suggested from it.
+    Start,
     Minutes,
     Target,
     Times,
     Reminders,
-    Start,
     Done,
 }
 
@@ -40,11 +41,11 @@ impl Step {
         Self::Name,
         Self::Why,
         Self::Focus,
+        Self::Start,
         Self::Minutes,
         Self::Target,
         Self::Times,
         Self::Reminders,
-        Self::Start,
         Self::Done,
     ];
 
@@ -156,6 +157,9 @@ mod tests {
             s = s.next();
         }
         assert_eq!(s, Step::Done);
+        // The target is suggested from the start level and the daily size.
+        assert!(Step::Start.index() < Step::Target.index());
+        assert!(Step::Minutes.index() < Step::Target.index());
     }
 
     fn profile() -> CoachProfile {
