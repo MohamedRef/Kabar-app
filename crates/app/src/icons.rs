@@ -18,6 +18,8 @@ pub fn nav(screen: Screen) -> Element {
         Screen::Studio => "M4 20l4-1 10-10-3-3L5 16zM13 7l3 3",
         // stylus with signal
         Screen::PenLab => "M5 19l2-6 8-8 3 3-8 8zM16 16c1.5 0 3 1 3 3",
+        // phone beside a laptop
+        Screen::Devices => "M3 6h12v9H3zM1 18h15M18 9h4v11h-4z",
         // sliders
         Screen::Settings => "M4 7h10M18 7h2M4 17h4M12 17h8M14 5v4M8 15v4",
     };

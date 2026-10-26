@@ -5,6 +5,8 @@
 // It checks M2's acceptance criterion — a word saved on the phone appears on
 // the tablet within seconds — plus sign-in, the allowlist, the Devices
 // screen, remote sign-out, refresh rotation and the proxy's privacy rule.
+// Then it runs the app's own sync engine (Rust, two devices) against the
+// same server. KABAR_E2E_SKIP_APP=1 skips that part.
 
 import { spawn, execFileSync } from "node:child_process";
 import { generateKeyPairSync, createSign, randomBytes } from "node:crypto";
@@ -26,7 +28,12 @@ const wrangler = process.env.WRANGLER ?? "wrangler";
 // --- fake Google ---------------------------------------------------------------
 const { privateKey, publicKey } = generateKeyPairSync("rsa", { modulusLength: 2048 });
 const jwk = { ...publicKey.export({ format: "jwk" }), kid: "e2e", alg: "RS256", use: "sig" };
-const jwks = createServer((_, res) => {
+const jwks = createServer((req, res) => {
+  // /token: an ID token for the app's end-to-end test (stands in for the browser sign-in).
+  if (req.url === "/token") {
+    res.writeHead(200, { "content-type": "text/plain" });
+    return res.end(idToken(EMAIL));
+  }
   res.writeHead(200, { "content-type": "application/json", "cache-control": "max-age=60" });
   res.end(JSON.stringify({ keys: [jwk] }));
 }).listen(JWKS_PORT, "127.0.0.1");
@@ -215,5 +222,18 @@ step("no token, no entry");
 assert.equal((await api("GET", "/v1/devices")).status, 401);
 
 tabletWs.ws.close();
+
+if (!process.env.KABAR_E2E_SKIP_APP) {
+  step("the app's sync engine: phone → tablet, Devices, remote sign-out");
+  execFileSync("cargo", [
+    "test", "-p", "kabar-app", "--no-default-features", "--",
+    "--ignored", "--exact", "cloud::e2e::phone_and_tablet_sync_through_kabar_cloud", "--nocapture",
+  ], {
+    cwd: join(serverDir, "..", ".."),
+    stdio: ["ignore", "inherit", "inherit"],
+    env: { ...process.env, KABAR_E2E_URL: BASE, KABAR_E2E_TOKEN_URL: `http://127.0.0.1:${JWKS_PORT}/token` },
+  });
+}
+
 console.log(`\n✅ Kabar Cloud end-to-end: all checks passed (phone → tablet in ${latency} ms)`);
 process.exit(0);
