@@ -118,6 +118,11 @@ fn starting_point(level: &str) -> StartingPoint {
     }
 }
 
+/// 1–7 for `bipa1`…`bipa7` (also `bipa-2`); 0 for anything else.
+fn level_number(level: &str) -> u32 {
+    level.strip_prefix("bipa").map(|n| n.trim_start_matches('-')).and_then(|n| n.parse().ok()).unwrap_or(0)
+}
+
 fn percent(share: f32) -> u32 {
     (share * 100.0).round() as u32
 }
@@ -187,8 +192,27 @@ fn record(db: &Db, coach: Coach, r: &TestRunner) {
         let profile: Option<CoachProfile> = coach.profile.peek().clone();
         if let Some(mut profile) = profile {
             profile.start = starting_point(level);
+            // `suggest_target` stops at BIPA 3; a learner placed above that
+            // aims at the level they placed into, never below it.
+            if let Some(target) = profile.target.as_mut()
+                && level_number(level) > level_number(&target.level)
+            {
+                target.level = level.clone();
+            }
             coach.save_profile(db, profile);
         }
+    }
+}
+
+#[cfg(test)]
+mod placement_tests {
+    use super::level_number;
+
+    #[test]
+    fn level_numbers() {
+        assert_eq!(level_number("bipa4"), 4);
+        assert_eq!(level_number("bipa-2"), 2);
+        assert_eq!(level_number("j1"), 0);
     }
 }
 
