@@ -18,6 +18,11 @@ then content rules) on every CI run.
   (multiple choice/listen: an index into `options`; fill-blank: exactly one
   `___`; translate: accepted answers in the right direction; build-sentence:
   alternatives use the same tiles, distractors are not in the answer).
+- listen: `text` is played; with `options` + `answer`, `options[answer]` is
+  the heard `text` (pick what you heard), or, with an optional
+  `question: {ar_eg, ar, en}`, the answer to that comprehension question
+  about what was heard (then `options` are required and need not be
+  transcripts). No options → type what you heard.
 - every lesson has a dialogue (≥4 lines); learn lessons list ≥3 new words (`arabic:` marks a real Arabic loan).
 - the unit's last lesson carries its souvenir card, id `<unit-id>.souvenir`; no other lesson does.
 - unknown fields are errors, so a typo never silently drops content.

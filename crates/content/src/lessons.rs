@@ -127,7 +127,7 @@ impl Check<'_> {
             "match_pairs" => (&["pairs"], &[]),
             "translate" => (&["direction"], &["source_meaning", "source_text", "answers", "answers_meaning"]),
             "build_sentence" => (&["source", "answer"], &["alternatives", "distractors"]),
-            "listen" => (&["text"], &["audio", "options", "answer"]),
+            "listen" => (&["text"], &["audio", "options", "answer", "meaning", "question"]),
             "fill_blank" => (&["sentence", "meaning", "answers"], &["options"]),
             "dictation" => (&["text", "meaning"], &["audio"]),
             "speaking" => (&["text", "meaning"], &[]),
@@ -244,16 +244,26 @@ impl Check<'_> {
             }
             "listen" => {
                 let text = self.text(&format!("{at}.text"), m.get("text")).map(str::to_owned);
+                if m.contains_key("meaning") {
+                    self.localized(&format!("{at}.meaning"), m.get("meaning"), &[], &[]);
+                }
+                // Comprehension: a question about the text; the answer need not be the text.
+                let question = m.contains_key("question");
+                if question {
+                    self.localized(&format!("{at}.question"), m.get("question"), &[], &[]);
+                }
                 match m.get("options") {
                     Some(o) if o.as_array().is_some_and(|a| !a.is_empty()) => {
                         let options = self.strings(&format!("{at}.options"), Some(o), 2);
+                        self.unique(&format!("{at}.options"), &options);
                         self.index(at, m.get("answer"), options.len());
                         let picked =
                             m.get("answer").and_then(Value::as_u64).and_then(|i| options.get(i as usize));
-                        if picked.is_some() && picked != text.as_ref() {
+                        if !question && picked.is_some() && picked != text.as_ref() {
                             self.push(format_args!("{at}: options[answer] must equal text"));
                         }
                     }
+                    _ if question => self.push(format_args!("{at}: a comprehension question needs options")),
                     _ if m.contains_key("answer") => self.push(format_args!("{at}: answer without options")),
                     _ => {}
                 }
