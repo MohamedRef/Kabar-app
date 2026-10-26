@@ -1,11 +1,11 @@
 schema: kabar.lesson/v1
 id: j2.u01.l01
 language: jv
-title: Pakdhe lan budhe
+title: Bapak, ibu, mbakyu
 can_do:
-  ar_eg: تسمّي قرايبك بالجاوي.
-  ar: أن تسمّي الأقارب بالجاوية.
-  en: Name relatives.
+  ar_eg: تسمّي أبوك وأمك وإخواتك.
+  ar: أن تسمّي والديك وإخوتك.
+  en: Name your parents and siblings.
 slides:
   - title: Bapak, ibu, simbok
     body:
@@ -73,63 +73,6 @@ slides:
         ar_eg: عندي اتنين إخوات أصغر مني.
         ar: لي أخوان أصغر مني.
         en: I have two younger siblings.
-  - title: Pakdhe, budhe, paklik, bulik
-    body:
-      ar_eg: |
-        العربي بيفرّق بالجهة: عم (من ناحية الأب) وخال (من ناحية الأم). الجاوي بيفرّق بالسن:
-        - **pakdhe** = أخو بابا أو ماما **الأكبر** منهم (من bapak gedhe = «الأب الكبير»)، و**budhe** = أختهم الكبيرة.
-        - **paklik** = أخوهم **الأصغر** (bapak cilik = «الأب الصغير»)، و**bulik** = أختهم الصغيرة.
-        يعني «عمي» و«خالي» ممكن الاتنين يبقوا pakdhe، المهم: أكبر ولا أصغر من أبوك أو أمك؟
-      ar: |
-        تفرّق العربية بالجهة (العم والخال)، والجاوية بالسن:
-        - **pakdhe** = أخو الأب أو الأم **الأكبر** منه (من bapak gedhe «الأب الكبير»)، و**budhe** = أخته الكبرى.
-        - **paklik** = الأخ **الأصغر** (bapak cilik «الأب الصغير»)، و**bulik** = الأخت الصغرى.
-        فالعم والخال كلاهما pakdhe إن كانا أكبر من الوالد.
-      en: |
-        Arabic splits uncles by side: عم (father's side) and خال (mother's side). Javanese splits them by age:
-        - **pakdhe** = your parent's **older** brother (from bapak gedhe, "big father"); **budhe** = their older sister.
-        - **paklik** = their **younger** brother (bapak cilik, "little father"); **bulik** = their younger sister.
-        So an uncle on either side is pakdhe if he's older than your parent.
-    grammar: jv.kinship.terms
-    examples:
-      - text: Pakdhe karo budhe manggon neng Madiun.
-        ar_eg: عمي وطنط ساكنين في ماديون.
-        ar: عمي وعمتي يسكنان في ماديون.
-        en: My uncle and aunt live in Madiun.
-      - text: Paklikku manggon neng Ponorogo.
-        ar_eg: عمي الصغير ساكن في بونوروجو.
-        ar: عمي الأصغر يسكن في بونوروغو.
-        en: My younger uncle lives in Ponorogo.
-  - title: Simbah, mbah kakung, mbah putri
-    body:
-      ar_eg: |
-        - **simbah** / **mbah** = جدو أو تيتة.
-        - **mbah kakung** = جدو · **mbah putri** = تيتة.
-        - **putu** = حفيد · **ponakan** = ابن أخ / أخت.
-        - **bojo** = جوز / مرات (زوج / زوجة).
-        وmbah كمان لقب نداء لأي حد كبير أوي في السن.
-      ar: |
-        - **simbah** / **mbah** = الجد أو الجدة.
-        - **mbah kakung** = الجد · **mbah putri** = الجدة.
-        - **putu** = الحفيد · **ponakan** = ابن الأخ أو الأخت.
-        - **bojo** = الزوج أو الزوجة.
-        وmbah لقب نداء أيضًا لكل مسنّ.
-      en: |
-        - **simbah** / **mbah** = grandparent.
-        - **mbah kakung** = grandfather · **mbah putri** = grandmother.
-        - **putu** = grandchild · **ponakan** = niece / nephew.
-        - **bojo** = husband / wife.
-        mbah is also how you address any very old person.
-    grammar: jv.kinship.terms
-    examples:
-      - text: Mbah putri lagi masak.
-        ar_eg: تيتة بتطبخ.
-        ar: الجدة تطبخ.
-        en: Grandma is cooking.
-      - text: Iki bojoku.
-        ar_eg: دي مراتي. / ده جوزي.
-        ar: هذه زوجتي. / هذا زوجي.
-        en: This is my wife. / This is my husband.
   - title: piye dhe?
     body:
       ar_eg: |
@@ -156,12 +99,70 @@ slides:
         en: Come and eat, little one!
 exercises:
   - id: e01
+    type: multiple_choice
+    question: Aku duwé adhi loro.
+    question_meaning:
+      ar_eg: يعني إيه؟
+      ar: ما معناها؟
+      en: What does it mean?
+    options: [Saya punya dua kakak., Saya punya dua anak., Saya punya dua adik.]
+    answer: 2
+    explain:
+      ar_eg: adhi = adik (أصغر). duwé = punya.
+      ar: adhi = adik (الأصغر)، وduwé = punya.
+      en: adhi = adik (younger); duwé = punya.
+    words: [adhi, duwé]
+  - id: e02
+    type: fill_blank
+    sentence: Agus iku ___ Sari.
+    meaning:
+      ar_eg: أجوس أخو ساري الكبير.
+      ar: أغوس أخو ساري الأكبر.
+      en: Agus is Sari's older brother.
+    options: [masé, anaké, adhiné]
+    answers: [masé]
+    words: [mas]
+  - id: e03
+    type: build_sentence
+    source:
+      ar_eg: أخويا الكبير بيشتغل في سورابايا.
+      ar: أخي الأكبر يعمل في سورابايا.
+      en: My older brother works in Surabaya.
+    answer: Masku nyambut gawé neng Suroboyo.
+    distractors: [adhiku, saka]
+    words: [mas, nyambut gawé]
+  - id: e04
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: عندي اتنين إخوات أصغر مني.
+      ar: لي أخوان أصغر مني.
+      en: I have two younger siblings.
+    answers: [Aku duwé adhi loro., Aku duwé adhi loro, Aku duwe adhi loro., Aku duwe adhi loro, Aku duwé adhik loro., Aku duwé adhik loro, Aku duwe adhik loro., Aku duwe adhik loro, Adhiku loro., Adhiku loro, Aku nduwé adhi loro., Aku nduwé adhi loro, Aku nduwe adhi loro., Aku nduwe adhi loro]
+    words: [duwé, adhi, loro]
+  - id: e05
+    type: speaking
+    text: Aku duwé mas siji lan adhi loro.
+    meaning:
+      ar_eg: عندي أخ كبير واحد واتنين إخوات أصغر مني.
+      ar: لي أخ أكبر واحد وأخوان أصغر مني.
+      en: I have one older brother and two younger siblings.
+    words: [mas, adhi, duwé]
+  - id: e06
     type: match_pairs
     pairs:
       - text: bapak
         ar_eg: بابا
         ar: الأب
         en: father
+      - text: ibu
+        ar_eg: ماما
+        ar: الأم
+        en: mother
+      - text: anak
+        ar_eg: ابن / بنت
+        ar: الولد / البنت
+        en: child
       - text: mbakyu
         ar_eg: أختي الكبيرة
         ar: الأخت الكبرى
@@ -170,165 +171,35 @@ exercises:
         ar_eg: أخويا / أختي الصغيرين
         ar: الأخ / الأخت الأصغر
         en: younger sibling
-      - text: mbah putri
-        ar_eg: تيتة
-        ar: الجدة
-        en: grandmother
-      - text: bojo
-        ar_eg: جوز / مرات
-        ar: الزوج / الزوجة
-        en: husband / wife
-    words: [bapak, mbakyu, adhi, mbah putri, bojo]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أخو بابا وهو أكبر من بابا. تقوله إيه؟
-      ar: أخو أبيك وهو أكبر من أبيك. بمَ تناديه؟
-      en: Your father's brother, older than your father. What do you call him?
-    options: ["pakdhe", "mbah", "paklik"]
-    answer: 0
-    explain:
-      ar_eg: pakdhe = الأكبر من أبوك أو أمك. paklik = الأصغر.
-      ar: pakdhe لمن هو أكبر من الوالد، وpaklik للأصغر.
-      en: pakdhe is older than your parent; paklik is younger.
-    words: [pakdhe, paklik]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أخت ماما الصغيرة (أصغر من ماما). تقولها إيه؟
-      ar: أخت أمك الصغرى (أصغر من أمك). بمَ تناديها؟
-      en: Your mother's younger sister. What do you call her?
-    options: ["mbakyu", "bulik", "budhe"]
-    answer: 1
-    explain:
-      ar_eg: أصغر من ماما ⇐ bulik. لو أكبر ⇐ budhe. وmbakyu أختك إنت.
-      ar: الأصغر من الأم ⇐ bulik، والأكبر ⇐ budhe، وmbakyu أختك أنت.
-      en: Younger than your mother ⇒ bulik; older ⇒ budhe. mbakyu is your own older sister.
-    words: [bulik, budhe]
-  - id: e04
-    type: multiple_choice
-    question: Aku duwé adhi loro.
-    question_meaning:
-      ar_eg: يعني إيه؟
-      ar: ما معناها؟
-      en: What does it mean?
-    options: ["Saya punya dua kakak.", "Saya punya dua anak.", "Saya punya dua adik."]
-    answer: 2
-    explain:
-      ar_eg: adhi = adik (أصغر). duwé = punya.
-      ar: adhi = adik (الأصغر)، وduwé = punya.
-      en: adhi = adik (younger); duwé = punya.
-    words: [adhi, duwé]
-  - id: e05
-    type: listen
-    text: Mbah putri lagi masak.
-    options: ["Mbah kakung lagi masak.", "Mbakyu lagi masak.", "Mbah putri lagi masak."]
-    answer: 2
-    words: [mbah putri, masak]
-  - id: e06
-    type: fill_blank
-    sentence: Agus iku ___ Sari.
-    meaning:
-      ar_eg: أجوس أخو ساري الكبير.
-      ar: أغوس أخو ساري الأكبر.
-      en: Agus is Sari's older brother.
-    options: ["masé", "anaké", "adhiné"]
-    answers: ["masé"]
-    words: [mas]
+    words: [bapak, ibu, anak, mbakyu, adhi]
   - id: e07
-    type: fill_blank
-    sentence: Pakdhe karo ___ manggon neng Madiun.
-    meaning:
-      ar_eg: عمي وطنط (مراته / أخته الكبيرة) ساكنين في ماديون.
-      ar: عمي وعمتي (الأكبر من الوالد) يسكنان في ماديون.
-      en: My uncle and aunt (older than my parent) live in Madiun.
-    options: ["putu", "bulik", "budhe"]
-    answers: ["budhe"]
-    words: [pakdhe, budhe, manggon]
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: أخويا الكبير بيشتغل في سورابايا.
-      ar: أخي الأكبر يعمل في سورابايا.
-      en: My older brother works in Surabaya.
-    answer: Masku nyambut gawé neng Suroboyo.
-    distractors: ["adhiku", "saka"]
-    words: [mas, nyambut gawé]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: عندي اتنين إخوات أصغر مني.
-      ar: لي أخوان أصغر مني.
-      en: I have two younger siblings.
-    answers: ["Aku duwé adhi loro.", "Aku duwé adhi loro", "Aku duwe adhi loro.", "Aku duwe adhi loro", "Aku duwé adhik loro.", "Aku duwé adhik loro", "Aku duwe adhik loro.", "Aku duwe adhik loro", "Adhiku loro.", "Adhiku loro", "Aku nduwé adhi loro.", "Aku nduwé adhi loro", "Aku nduwe adhi loro.", "Aku nduwe adhi loro"]
-    words: [duwé, adhi, loro]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: دي مراتي، ودول ولادي.
-      ar: هذه زوجتي، وهؤلاء أولادي.
-      en: This is my wife, and these are my children.
-    answers: ["Iki bojoku, lan iki anak-anakku.", "Iki bojoku, lan iki anak-anakku", "Iki bojoku lan iki anak-anakku.", "Iki bojoku lan iki anak-anakku", "Iki bojoku, iki anak-anakku.", "Iki bojoku, iki anak-anakku", "Iki bojoku iki anak-anakku.", "Iki bojoku iki anak-anakku", "Iki bojoku, lan iki anakku.", "Iki bojoku, lan iki anakku", "Iki bojoku lan iki anakku.", "Iki bojoku lan iki anakku", "Iki bojoku lan anak-anakku.", "Iki bojoku lan anak-anakku", "Iki bojoku karo anak-anakku.", "Iki bojoku karo anak-anakku"]
-    words: [bojo, anak]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: Pakdhe karo budhe manggon neng Madiun.
-    answers_meaning:
-      ar_eg: ["عمي وطنط ساكنين في ماديون", "عمي ومراته ساكنين في ماديون", "خالي وخالتي ساكنين في ماديون", "عمي وعمتي ساكنين في ماديون"]
-      ar: ["عمي وعمتي يسكنان في ماديون", "خالي وخالتي يسكنان في ماديون", "عمي وزوجته يسكنان في ماديون"]
-      en: ["My uncle and aunt live in Madiun", "Uncle and auntie live in Madiun", "My uncle and aunt live in Madiun."]
-    explain:
-      ar_eg: pakdhe / budhe ممكن يبقوا من ناحية الأب أو الأم، المهم إنهم أكبر من أبوك أو أمك.
-      ar: قد يكون pakdhe / budhe من جهة الأب أو الأم، والمهم أنهما أكبر من الوالد.
-      en: pakdhe / budhe can be on either side; what matters is they're older than your parent.
-    words: [pakdhe, budhe, manggon]
-  - id: e12
-    type: dictation
-    text: Mbah putri lagi masak.
-    meaning:
-      ar_eg: تيتة بتطبخ.
-      ar: الجدة تطبخ.
-      en: Grandma is cooking.
-    words: [mbah putri]
-  - id: e13
-    type: speaking
-    text: Aku duwé mas siji lan adhi loro.
-    meaning:
-      ar_eg: عندي أخ كبير واحد واتنين إخوات أصغر مني.
-      ar: لي أخ أكبر واحد وأخوان أصغر مني.
-      en: I have one older brother and two younger siblings.
-    words: [mas, adhi, duwé]
+    type: listen
+    text: Bapak lan ibuku neng Kairo.
+    options: [Bapak lan ibuku neng Kairo., Bapak lan adhiku neng Kairo., Mbakyu lan ibuku neng Kairo.]
+    answer: 0
+    words: [bapak, ibu]
 dialogue:
-  title: Neng warungé Pak Budi
   lines:
-    - speaker: Pak Budi
-      text: Mohamed, iki bojoku, Bu Rahayu.
-      ar_eg: يا محمد، دي مراتي، Bu Rahayu.
-      ar: يا محمد، هذه زوجتي، Bu Rahayu.
-      en: Mohamed, this is my wife, Bu Rahayu.
-    - speaker: Bu Rahayu
-      text: Kowé kancané Sari neng Kairo, to?
-      ar_eg: إنت صاحب ساري في القاهرة، مش كده؟
-      ar: أنت صديق ساري في القاهرة، أليس كذلك؟
-      en: You're Sari's friend in Cairo, aren't you?
+    - speaker: Sari
+      text: Mohamed, kowé duwé adhi?
+      ar_eg: محمد، عندك إخوات أصغر منك؟
+      ar: محمد، هل لديك إخوة أصغر منك؟
+      en: Mohamed, do you have younger siblings?
     - speaker: Mohamed
-      text: Iya, Bu. Aku kancané Sari.
-      ar_eg: أيوه يا طنط. أنا صاحب ساري.
-      ar: نعم يا سيدتي. أنا صديق ساري.
-      en: Yes, ma'am. I'm Sari's friend.
-    - speaker: Pak Budi
-      text: Iki Agus, masé Sari. Lan iki Bayu, adhiné.
-      ar_eg: ده أجوس، أخو ساري الكبير. وده بايو، أخوها الصغير.
-      ar: هذا أغوس، أخو ساري الأكبر. وهذا بايو، أخوها الأصغر.
-      en: This is Agus, Sari's older brother. And this is Bayu, her younger brother.
-    - speaker: Agus
-      text: Mbah putri lagi masak. Ayo mangan, Mohamed!
-      ar_eg: تيتة بتطبخ. يلا ناكل يا محمد!
-      ar: الجدة تطبخ. هيا نأكل يا محمد!
-      en: Grandma is cooking. Come and eat, Mohamed!
+      text: Duwé. Aku duwé adhi loro.
+      ar_eg: آه. عندي اتنين أصغر مني.
+      ar: نعم. لدي اثنان أصغر مني.
+      en: Yes. I have two younger siblings.
+    - speaker: Sari
+      text: Bapak lan ibumu neng Kairo?
+      ar_eg: بابا وماما في القاهرة؟
+      ar: هل أبوك وأمك في القاهرة؟
+      en: Are your father and mother in Cairo?
+    - speaker: Mohamed
+      text: Iya. Kulawargaku neng Kairo.
+      ar_eg: آه. عيلتي في القاهرة.
+      ar: نعم. عائلتي في القاهرة.
+      en: Yes. My family is in Cairo.
 new_words:
   - word: bapak
     pos: noun
@@ -340,11 +211,6 @@ new_words:
     ar_eg: الأم، ماما
     ar: الأم
     en: mother
-  - word: simbok
-    pos: noun
-    ar_eg: ماما (في الريف والكلام القديم)؛ mbok
-    ar: الأم (في الريف والاستعمال القديم)؛ mbok
-    en: mother (villages, older speech); mbok
   - word: anak
     pos: noun
     ar_eg: ابن / بنت
@@ -365,81 +231,16 @@ new_words:
     ar_eg: الأخ / الأخت الأصغر (adik)؛ بيتنادى dhik
     ar: الأخ / الأخت الأصغر (adik)؛ ويُنادى dhik
     en: younger sibling (adik); called dhik
-  - word: sedulur
-    pos: noun
-    ar_eg: أخ / قريب (saudara)
-    ar: الأخ / القريب (saudara)
-    en: sibling, relative (saudara)
-  - word: pakdhe
-    pos: noun
-    ar_eg: عم / خال أكبر من بابا أو ماما (pakde)
-    ar: العم / الخال الأكبر من الوالد (pakde)
-    en: parent's older brother (pakde)
-  - word: budhe
-    pos: noun
-    ar_eg: عمة / خالة أكبر من بابا أو ماما (bude)
-    ar: العمة / الخالة الأكبر من الوالد (bude)
-    en: parent's older sister (bude)
-  - word: paklik
-    pos: noun
-    ar_eg: عم / خال أصغر من بابا أو ماما
-    ar: العم / الخال الأصغر من الوالد
-    en: parent's younger brother
-  - word: bulik
-    pos: noun
-    ar_eg: عمة / خالة أصغر من بابا أو ماما
-    ar: العمة / الخالة الأصغر من الوالد
-    en: parent's younger sister
-  - word: simbah
-    pos: noun
-    ar_eg: جدو / تيتة؛ mbah
-    ar: الجد / الجدة؛ mbah
-    en: grandparent; mbah
-  - word: mbah kakung
-    pos: noun
-    ar_eg: جدو
-    ar: الجد
-    en: grandfather
-  - word: mbah putri
-    pos: noun
-    ar_eg: تيتة
-    ar: الجدة
-    en: grandmother
-  - word: putu
-    pos: noun
-    ar_eg: حفيد / حفيدة (cucu)
-    ar: الحفيد (cucu)
-    en: grandchild (cucu)
-  - word: ponakan
-    pos: noun
-    ar_eg: ابن / بنت الأخ أو الأخت (keponakan)
-    ar: ابن الأخ أو الأخت (keponakan)
-    en: niece / nephew (keponakan)
-  - word: bojo
-    pos: noun
-    ar_eg: جوز / مرات (suami / istri)
-    ar: الزوج / الزوجة (suami / istri)
-    en: husband / wife (suami / istri)
   - word: duwé
     pos: verb
     ar_eg: عنده / يملك (punya)
     ar: يملك (punya)
     en: have (punya)
-  - word: manggon
-    pos: verb
-    ar_eg: يسكن (tinggal)
-    ar: يسكن (tinggal)
-    en: live, stay (tinggal)
   - word: nyambut gawé
     pos: phrase
     ar_eg: يشتغل (bekerja)
     ar: يعمل (bekerja)
     en: work (bekerja)
-  - word: kanca
-    pos: noun
-    ar_eg: صاحب / صاحبة (teman)
-    ar: الصديق (teman)
-    en: friend (teman)
 review:
   status: draft
   verified: false

@@ -1,244 +1,250 @@
 schema: kabar.lesson/v1
 id: bipa2.u10.l04
 language: id
-title: Ke dokter
+title: Semoga cepat sembuh
 can_do:
-  ar_eg: تروح للدكتور وتشرح له مشكلتك.
-  ar: أن تزور الطبيب وتشرح له مشكلتك.
-  en: See a doctor and explain the problem.
+  ar_eg: تتمنى لحد الشفا وتنصحه يرتاح.
+  ar: أن تتمنى الشفاء لغيرك وتقترح عليه الراحة.
+  en: Wish well and suggest rest.
 slides:
-  - title: Di klinik
+  - title: Semoga cepat sembuh
     body:
       ar_eg: |
-        عند الدكتور (وبتناديه «Dok»):
-        - هيسألك: Sakit apa? (عندك إيه؟) — Sudah berapa lama? (بقالك قد إيه؟)
-        - ترد: Saya demam dan sakit tenggorokan. — Sejak dua hari yang lalu.
-        - هيقولك: Coba buka mulutnya (افتح بقك) — Ini resepnya (دي الروشتة) — Banyak minum air putih dan istirahat (اشرب مية كتير وارتاح).
-        كلمة dokter من الهولندي، بس فيه كلمة قديمة من العربي: tabib ← «طبيب»، بتسمعها للمعالج الشعبي.
+        semoga = يا رب / إن شاء الله (في الأمنية). بتيجي في أول الجملة.
+        Semoga cepat sembuh = ألف سلامة / ربنا يشفيك (حرفيًا: يا رب تخف بسرعة). sembuh = يخف، يشفى.
+        خلي بالك: «Saya semoga lulus» غلط، الصح «Semoga saya lulus».
       ar: |
-        عند الطبيب (وتناديه «Dok»):
-        - يسألك: Sakit apa؟ (ما بك؟) — Sudah berapa lama؟ (منذ متى؟)
-        - تجيب: Saya demam dan sakit tenggorokan. — Sejak dua hari yang lalu.
-        - يقول لك: Coba buka mulutnya (افتح فمك) — Ini resepnya (هذه الوصفة) — Banyak minum air putih dan istirahat (أكثر من شرب الماء واسترح).
-        وكلمة dokter هولندية، أما tabib فمن العربية «طبيب» وتُقال للمعالج الشعبي.
+        semoga = عسى / أرجو أن، وتتصدر الجملة.
+        Semoga cepat sembuh = شفاك الله سريعًا (حرفيًا: عسى أن تُشفى سريعًا)، وsembuh = يُشفى.
+        وانتبه: «Saya semoga lulus» خطأ، والصواب «Semoga saya lulus».
       en: |
-        At the doctor's (address him as "Dok"):
-        - He asks: Sakit apa? (What's wrong?) — Sudah berapa lama? (How long?)
-        - You answer: Saya demam dan sakit tenggorokan. — Sejak dua hari yang lalu.
-        - He says: Coba buka mulutnya (open your mouth) — Ini resepnya (here's the prescription) — Banyak minum air putih dan istirahat (drink plenty of water and rest).
-        dokter is from Dutch; the older tabib comes from Arabic «طبيب» and is used for traditional healers.
-    grammar: id.pattern.sakit
+        semoga = may… / I hope — it opens the sentence.
+        Semoga cepat sembuh = get well soon (literally "may you heal quickly"); sembuh = recover.
+        Careful: "Saya semoga lulus" is wrong; say "Semoga saya lulus".
+    grammar: id.hope.semoga
     examples:
-      - text: Dok, saya demam sejak kemarin.
-        ar_eg: يا دكتور، عندي سخونية من امبارح.
-        ar: يا دكتور، عندي حمّى منذ أمس.
-        en: Doctor, I've had a fever since yesterday.
+      - text: Semoga cepat sembuh, ya!
+        ar_eg: ألف سلامة عليك!
+        ar: شفاك الله سريعًا!
+        en: Get well soon!
+      - text: Semoga saya lulus.
+        ar_eg: يا رب أنجح.
+        ar: أرجو أن أنجح.
+        en: I hope I pass.
+  - title: Mudah-mudahan, insya Allah, amin
+    body:
+      ar_eg: |
+        - mudah-mudahan = نفس معنى semoga، وأكتر في الكلام: Mudah-mudahan besok tidak hujan = يا رب بكرة ماتمطرش.
+        - insya Allah = إن شاء الله، بنفس المعنى (وأحيانًا بنفس التهرّب المصري!).
+        - الرد على الدعاء: Amin / Aamiin = آمين. وAlhamdulillah = الحمد لله، زي عندنا بالظبط.
+        هتحس إنك في البيت!
+      ar: |
+        - mudah-mudahan بمعنى semoga، وأشيع في الحديث: Mudah-mudahan besok tidak hujan.
+        - insya Allah = إن شاء الله.
+        - ويُرد على الدعاء بـ Amin / Aamiin = آمين، وتقال Alhamdulillah = الحمد لله كما في العربية.
+      en: |
+        - mudah-mudahan = same as semoga, very common in speech: Mudah-mudahan besok tidak hujan.
+        - insya Allah = God willing (with the same range of meanings as in Egypt!).
+        - Reply to a wish with Amin / Aamiin; Alhamdulillah works exactly as in Arabic.
+    grammar: id.hope.semoga
+    examples:
+      - text: Mudah-mudahan kita bisa bertemu lagi.
+        ar_eg: يا رب نتقابل تاني.
+        ar: عسى أن نلتقي مرة أخرى.
+        en: Hopefully we can meet again.
+      - text: Besok kamu datang? — Insya Allah.
+        ar_eg: جاي بكرة؟ — إن شاء الله.
+        ar: هل ستأتي غدًا؟ — إن شاء الله.
+        en: Are you coming tomorrow? — God willing.
+  - title: Semoga sukses! Semoga lancar!
+    body:
+      ar_eg: |
+        أمنيات جاهزة:
+        - Semoga sukses! = بالتوفيق!
+        - Semoga lancar! = ربنا يسهّل!
+        - Semoga betah! = يا رب تتبسط هنا (في مكان جديد).
+      ar: |
+        عبارات جاهزة:
+        - Semoga sukses! = بالتوفيق!
+        - Semoga lancar! = يسّر الله أمرك!
+        - Semoga betah! = أرجو أن ترتاح في مكانك الجديد.
+      en: |
+        Ready-made wishes:
+        - Semoga sukses! = good luck!
+        - Semoga lancar! = hope it goes smoothly!
+        - Semoga betah! = hope you feel at home (in a new place).
+    grammar: id.hope.semoga
+    examples:
+      - text: Semoga sukses ujiannya! — Aamiin, terima kasih.
+        ar_eg: بالتوفيق في الامتحان! — يا رب، شكرًا.
+        ar: بالتوفيق في الامتحان! — آمين، شكرًا.
+        en: Good luck with the exam! — Amen, thank you.
+  - title: Ayo, istirahat dulu!
+    body:
+      ar_eg: |
+        عشان تنصح حد عيان، استخدم ayo (يلا) أو yuk (ألطف) أو mari (رسمية):
+        - Ayo, istirahat dulu! = يلا ارتاح شوية!
+        - Minum jamu, yuk! = يلا نشرب جامو!
+        - Mari kita hidup sehat. = هيا نعيش حياة صحية (رسمي، زي الإعلانات).
+        istirahat جاية من العربي «استراحة».
+      ar: |
+        لتنصح مريضًا استعمل ayo (هيّا) أو yuk (ألطف) أو mari (رسمية):
+        - Ayo, istirahat dulu! = هيّا استرح قليلًا!
+        - Minum jamu, yuk! = هيا نشرب الجامو!
+        - Mari kita hidup sehat. = لنعش حياة صحية (رسمية كالإعلانات).
+        وistirahat من العربية «استراحة».
+      en: |
+        To nudge someone who's ill, use ayo (come on), yuk (softer) or mari (formal):
+        - Ayo, istirahat dulu! = Come on, get some rest!
+        - Minum jamu, yuk! = Let's have some jamu!
+        - Mari kita hidup sehat. = Let us live healthily (formal, like an ad).
+        istirahat comes from Arabic «استراحة».
+    grammar: id.invitation.ayo-mari
+    examples:
+      - text: Ayo, istirahat dulu supaya cepat sembuh.
+        ar_eg: يلا ارتاح شوية عشان تخف بسرعة.
+        ar: هيّا استرح قليلًا لتشفى سريعًا.
+        en: Come on, get some rest so you get well soon.
 exercises:
   - id: e01
-    type: multiple_choice
-    question: Selamat pagi. Sakit apa, Pak?
-    question_meaning:
-      ar_eg: الدكتور بيسألك. أنهي رد أحسن؟
-      ar: يسألك الطبيب. أيّ ردّ أنسب؟
-      en: The doctor asks. Which is the best answer?
-    options: ["Saya dari Mesir.", "Tiga kali sehari.", "Saya demam dan sakit tenggorokan."]
-    answer: 2
-    words: [demam, tenggorokan]
+    type: match_pairs
+    pairs:
+      - text: Semoga cepat sembuh
+        ar_eg: ألف سلامة
+        ar: شفاك الله سريعًا
+        en: get well soon
+      - text: Semoga sukses
+        ar_eg: بالتوفيق
+        ar: بالتوفيق
+        en: good luck
+      - text: insya Allah
+        ar_eg: إن شاء الله
+        ar: إن شاء الله
+        en: God willing
+      - text: alhamdulillah
+        ar_eg: الحمد لله
+        ar: الحمد لله
+        en: praise be to God
+    words: [semoga, sembuh, insya Allah, alhamdulillah]
   - id: e02
-    type: listen
-    text: Sudah berapa lama?
-    options: ["Sudah berapa kali?", "Sudah berapa lama?", "Sudah berapa hari?"]
-    answer: 1
-    words: [berapa lama]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: صاحبك عيان. تقوله إيه؟
+      ar: صديقك مريض. ماذا تقول له؟
+      en: Your friend is ill. What do you say?
+    options: ['Semoga sukses, ya!', Selamat datang!, 'Semoga cepat sembuh, ya!']
+    answer: 2
+    words: [semoga, sembuh]
   - id: e03
-    type: fill_blank
-    sentence: Saya sakit tenggorokan ___ dua hari yang lalu.
-    meaning:
-      ar_eg: عندي التهاب زور من يومين.
-      ar: عندي التهاب في الحلق منذ يومين.
-      en: I've had a sore throat since two days ago.
-    options: ["sejak", "sambil", "selama"]
-    answers: [sejak]
-    explain:
-      ar_eg: sejak = من (نقطة بداية)، ومعاها «dua hari yang lalu» (من يومين). selama = لمدة.
-      ar: sejak = منذ، مع نقطة بداية مثل «dua hari yang lalu»، أما selama فلمدة.
-      en: sejak = since, with a starting point like "dua hari yang lalu"; selama = for (a length).
-    words: [sejak]
+    type: listen
+    text: Mudah-mudahan besok tidak hujan.
+    options: [Mudah-mudahan besok hujan., Mudah-mudahan besok tidak panas., Mudah-mudahan besok tidak hujan.]
+    answer: 2
+    words: [mudah-mudahan]
   - id: e04
     type: fill_blank
-    sentence: Pusing sedikit, ___ tidak mual.
+    sentence: Minum jamu, ___!
     meaning:
-      ar_eg: دايخ شوية، بس نفسي مش غامّة.
-      ar: أشعر بدوار خفيف، لكن لا غثيان.
-      en: A little dizzy, but not nauseous.
-    answers: [tapi, tetapi]
-    words: [pusing, mual]
+      ar_eg: يلا نشرب جامو!
+      ar: هيا نشرب الجامو!
+      en: Let's have some jamu!
+    options: [amin, semoga, yuk]
+    answers: [yuk]
+    words: [yuk, jamu]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: يا دكتور، عندي سخونية من امبارح.
-      ar: يا دكتور، عندي حمّى منذ أمس.
-      en: Doctor, I've had a fever since yesterday.
-    answer: Dok, saya demam sejak kemarin.
-    alternatives:
-      - Dok, sejak kemarin saya demam.
-    distractors: [selama, punya]
-    words: [demam, sejak]
+      ar_eg: يلا ارتاح شوية عشان تخف بسرعة.
+      ar: هيّا استرح قليلًا لتشفى سريعًا.
+      en: Come on, get some rest so you get well soon.
+    answer: Ayo, istirahat dulu supaya cepat sembuh.
+    distractors: [semoga, sambil]
+    words: [ayo, istirahat, sembuh]
   - id: e06
-    type: build_sentence
-    source:
-      ar_eg: اشرب مية كتير وارتاح.
-      ar: أكثِر من شرب الماء واسترح.
-      en: Drink plenty of water and rest.
-    answer: Banyak minum air putih dan istirahat.
-    distractors: [sambil, sakit]
-    words: [air putih, istirahat]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: زوري بيوجعني.
-      ar: حلقي يؤلمني.
-      en: My throat hurts.
-    answers:
-      - Tenggorokan saya sakit.
-      - Tenggorokan saya sakit
-      - Saya sakit tenggorokan.
-      - Saya sakit tenggorokan
-      - Tenggorokanku sakit.
-      - Aku sakit tenggorokan.
-      - Tenggorokan aku sakit.
-    words: [tenggorokan, sakit]
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: وكمان عندي كحة.
-      ar: وعندي سعال أيضًا.
-      en: I also have a cough.
-    answers:
-      - Saya juga batuk.
-      - Saya juga batuk
-      - Aku juga batuk.
-      - Aku juga batuk
-      - Saya juga sakit batuk.
-    words: [batuk, juga]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: حاسس بدوخة وهبوط.
-      ar: أشعر بالدوار والوهن.
-      en: I feel dizzy and weak.
-    answers:
-      - Saya merasa pusing dan lemas.
-      - Saya merasa pusing dan lemas
-      - Aku merasa pusing dan lemas.
-      - Saya pusing dan lemas.
-      - Aku pusing dan lemas.
-      - Kepala saya pusing dan badan saya lemas.
-      - Saya merasa lemas dan pusing.
-    words: [merasa, pusing, lemas]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Obatnya diminum tiga kali sehari sesudah makan.
-    answers_meaning:
-      ar_eg: ["الدوا يتاخد ٣ مرات في اليوم بعد الأكل.", "خد الدوا تلات مرات في اليوم بعد الأكل"]
-      ar: ["يؤخذ الدواء ثلاث مرات يوميًا بعد الطعام.", "تناول الدواء ثلاث مرات في اليوم بعد الأكل"]
-      en: ["Take the medicine three times a day after meals.", "The medicine is taken three times a day after meals."]
-    words: [obat, diminum, sehari]
-  - id: e11
-    type: dictation
-    text: Semoga cepat sembuh, Pak.
-    meaning:
-      ar_eg: ألف سلامة يا أستاذ.
-      ar: شفاك الله سريعًا يا سيدي.
-      en: Get well soon, sir.
-    words: [semoga, sembuh]
-  - id: e12
     type: speaking
-    text: Selamat pagi, Dok. Saya demam dan sakit tenggorokan sejak dua hari yang lalu.
+    text: Ayo, istirahat dulu. Semoga cepat sembuh!
     meaning:
-      ar_eg: صباح الخير يا دكتور. عندي سخونية والتهاب زور من يومين.
-      ar: صباح الخير يا دكتور. عندي حمّى والتهاب في الحلق منذ يومين.
-      en: Good morning, doctor. I've had a fever and a sore throat for two days.
-    words: [demam, tenggorokan, sejak]
+      ar_eg: يلا ارتاح شوية. ألف سلامة!
+      ar: هيّا استرح قليلًا. شفاك الله سريعًا!
+      en: Come on, get some rest. Get well soon!
+    words: [ayo, istirahat, semoga]
 dialogue:
-  title: Di klinik Amed
+  title: Jamu dari Ni Luh
   lines:
-    - speaker: Dokter Made
-      text: Selamat pagi. Silakan duduk. Sakit apa, Pak?
-      ar_eg: صباح الخير. اتفضل اقعد. عندك إيه؟
-      ar: صباح الخير. تفضّل بالجلوس. ما بك يا سيدي؟
-      en: Good morning. Please sit down. What's the matter?
+    - speaker: Ni Luh
+      text: Mohamed, masih pusing?
+      ar_eg: يا محمد، لسه دايخ؟
+      ar: يا محمد، هل ما زلت تشعر بالدوار؟
+      en: Mohamed, still dizzy?
     - speaker: Mohamed
-      text: Pagi, Dok. Saya demam dan sakit tenggorokan.
-      ar_eg: صباح النور يا دكتور. عندي سخونية والتهاب زور.
-      ar: صباح النور يا دكتور. عندي حمّى والتهاب في الحلق.
-      en: Morning, doctor. I have a fever and a sore throat.
-    - speaker: Dokter Made
-      text: Sudah berapa lama?
-      ar_eg: بقالك قد إيه كده؟
-      ar: منذ متى؟
-      en: How long has it been?
+      text: Sudah lebih baik, alhamdulillah.
+      ar_eg: أحسن شوية، الحمد لله.
+      ar: صرت أفضل، الحمد لله.
+      en: Better now, alhamdulillah.
+    - speaker: Ni Luh
+      text: Ini jamu dari ibu saya. Ayo, minum dulu!
+      ar_eg: ده جامو من ماما. يلا اشربه!
+      ar: هذا جامو من أمي. هيّا اشربه!
+      en: This is jamu from my mum. Come on, drink it!
     - speaker: Mohamed
-      text: Sejak dua hari yang lalu. Kemarin saya juga batuk.
-      ar_eg: من يومين. وامبارح كمان بقيت أكح.
-      ar: منذ يومين، وأمس بدأت أسعل أيضًا.
-      en: Since two days ago. Yesterday I started coughing too.
-    - speaker: Dokter Made
-      text: Kepalanya pusing? Mual?
-      ar_eg: دايخ؟ نفسك غامّة؟
-      ar: هل تشعر بالدوار؟ بالغثيان؟
-      en: Dizzy? Nauseous?
+      text: Terima kasih. Wah, pahit sekali!
+      ar_eg: شكرًا. ياه، مر أوي!
+      ar: شكرًا. يا إلهي، إنه مرّ جدًا!
+      en: Thanks. Whoa, it's so bitter!
+    - speaker: Ni Luh
+      text: Pahit, tapi bagus untuk badan. Semoga cepat sembuh, ya!
+      ar_eg: مر، بس مفيد للجسم. ألف سلامة عليك!
+      ar: مرّ، لكنه مفيد للجسم. شفاك الله سريعًا!
+      en: Bitter, but good for you. Get well soon!
     - speaker: Mohamed
-      text: Pusing sedikit, tapi tidak mual.
-      ar_eg: دايخ شوية، بس نفسي مش غامّة.
-      ar: دوار خفيف، لكن لا غثيان.
-      en: A little dizzy, but not nauseous.
-    - speaker: Dokter Made
-      text: Coba buka mulutnya. Ya, tenggorokannya merah.
-      ar_eg: افتح بقك كده. أيوه، الزور أحمر.
-      ar: افتح فمك من فضلك. نعم، الحلق أحمر.
-      en: Open your mouth, please. Yes, your throat is red.
-    - speaker: Dokter Made
-      text: Ini resepnya. Obatnya diminum tiga kali sehari sesudah makan. Banyak minum air putih dan istirahat, ya.
-      ar_eg: دي الروشتة. الدوا يتاخد ٣ مرات في اليوم بعد الأكل. واشرب مية كتير وارتاح.
-      ar: هذه الوصفة. يؤخذ الدواء ثلاث مرات يوميًا بعد الطعام. وأكثِر من شرب الماء واسترح.
-      en: Here's the prescription. Take the medicine three times a day after meals. Drink plenty of water and rest.
-    - speaker: Mohamed
-      text: Baik, Dok. Terima kasih.
-      ar_eg: حاضر يا دكتور. شكرًا.
-      ar: حسنًا يا دكتور. شكرًا.
-      en: All right, doctor. Thank you.
-    - speaker: Dokter Made
-      text: Sama-sama. Semoga cepat sembuh!
-      ar_eg: العفو. ألف سلامة!
-      ar: عفوًا. شفاك الله سريعًا!
-      en: You're welcome. Get well soon!
+      text: Amin. Mudah-mudahan besok kita bisa berenang lagi.
+      ar_eg: آمين. يا رب نعرف نعوم تاني بكرة.
+      ar: آمين. عسى أن نستطيع السباحة مرة أخرى غدًا.
+      en: Amen. Hopefully we can go swimming again tomorrow.
 new_words:
-  - word: klinik
+  - word: semoga
+    pos: particle
+    ar_eg: يا رب / إن شاء الله (أمنية)
+    ar: عسى، أرجو أن
+    en: may…, I hope
+  - word: mudah-mudahan
+    pos: particle
+    ar_eg: يا رب (أمنية)
+    ar: عسى، لعلّ
+    en: hopefully
+  - word: sembuh
+    pos: verb
+    ar_eg: يخف، يشفى
+    ar: يُشفى
+    en: to recover, get well
+  - word: insya Allah
+    pos: phrase
+    ar_eg: إن شاء الله
+    ar: إن شاء الله
+    en: God willing
+    arabic: إن شاء الله
+  - word: amin
+    pos: interjection
+    ar_eg: آمين
+    ar: آمين
+    en: amen
+    arabic: آمين
+  - word: alhamdulillah
+    pos: interjection
+    ar_eg: الحمد لله
+    ar: الحمد لله
+    en: praise be to God
+    arabic: الحمد لله
+  - word: lancar
+    pos: adjective
+    ar_eg: ماشي بسهولة، من غير مشاكل
+    ar: سلس، ميسَّر
+    en: smooth, going well
+  - word: jamu
     pos: noun
-    ar_eg: عيادة
-    ar: عيادة
-    en: clinic
-  - word: mulut
-    pos: noun
-    ar_eg: بُق
-    ar: فم
-    en: mouth
-  - word: air putih
-    pos: noun
-    ar_eg: مية (للشرب)
-    ar: ماء الشرب
-    en: drinking water
-  - word: tabib
-    pos: noun
-    ar_eg: معالج شعبي (كلمة قديمة)
-    ar: طبيب شعبي (كلمة قديمة)
-    en: traditional healer (old word)
-    arabic: طبيب
+    ar_eg: جامو (مشروب أعشاب إندونيسي)
+    ar: جامو (شراب أعشاب إندونيسي)
+    en: jamu (Indonesian herbal drink)
 review:
   status: draft
   verified: false

@@ -527,7 +527,8 @@ mod tests {
     #[test]
     fn parses_the_real_dataset() {
         let d = data();
-        assert_eq!(d.entries.len(), 608);
+        // The card set only grows (content/bridge/id.jsonl is append-only).
+        assert!(d.entries.len() >= 608);
         assert!(d.rules.len() >= 19);
         assert_eq!(d.entry("kabar").unwrap().arabic, "خَبَر");
         assert!(d.entry("nope").is_none());
@@ -794,6 +795,6 @@ mod tests {
         assert!(!is_false_friend(&d, "kabar"));
         assert!(!is_false_friend(&d, "nope"));
         let count = d.entries.iter().filter(|e| is_false_friend(&d, &e.word)).count();
-        assert_eq!(count, 30);
+        assert!(count >= 30);
     }
 }

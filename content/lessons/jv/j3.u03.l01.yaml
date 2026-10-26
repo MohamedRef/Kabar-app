@@ -137,57 +137,30 @@ exercises:
       ar_eg: إيه الكراما بتاعة arep؟
       ar: ما نظير arep في الكراما؟
       en: What's the krama for arep?
-    options: ["sampun", "taksih", "badhé"]
+    options: [sampun, taksih, badhé]
     answer: 2
     words: [badhé]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: Bu Siti سألتك «Sampéyan sampun nedha?» وإنت لسه ماكلتش. ترد بإيه؟
-      ar: سألتك Bu Siti «Sampéyan sampun nedha?» ولم تأكل بعد. بمَ تجيب؟
-      en: Bu Siti asks "Sampéyan sampun nedha?" and you haven't eaten yet. Your answer?
-    options: ["Taksih, Bu.", "Durung, Bu.", "Dèrèng, Bu."]
-    answer: 2
-    explain:
-      ar_eg: "سؤال كراما ← رد كراما: dèrèng. taksih معناها «لسه مستمر» مش «لسه ما حصلش»."
-      ar: السؤال بالكراما فالجواب dèrèng، أما taksih فمعناها «ما زال».
-      en: A krama question gets a krama answer — dèrèng. Taksih means "still", not "not yet".
-    words: [dèrèng]
-  - id: e04
     type: listen
     text: Kula badhé dhateng peken.
-    options: ["Kula badhé dhateng peken.", "Kula sampun dhateng peken.", "Aku arep nang pasar."]
+    options: [Kula badhé dhateng peken., Kula sampun dhateng peken., Aku arep nang pasar.]
     answer: 0
     words: [badhé, dhateng, peken]
-  - id: e05
+  - id: e04
     type: fill_blank
     sentence: Kula ___ sinau krama.
     meaning:
       ar_eg: أنا لسه بتعلم كراما.
       ar: ما زلتُ أتعلم الكراما.
       en: I'm still learning krama.
-    options: ["isih", "dèrèng", "taksih"]
+    options: [isih, dèrèng, taksih]
     answers: [taksih]
     explain:
       ar_eg: «لسه بتعلم» = masih = taksih. isih هي الـ ngoko.
       ar: «ما زلت أتعلم» = masih = taksih، وisih من الـ ngoko.
       en: '"Still learning" = masih = taksih; isih is the ngoko form.'
     words: [taksih]
-  - id: e06
-    type: fill_blank
-    sentence: Kula badhé ___ peken.
-    meaning:
-      ar_eg: أنا رايح السوق.
-      ar: سأذهب إلى السوق.
-      en: I'm going to the market.
-    options: ["dhateng", "nang", "saking"]
-    answers: [dhateng]
-    explain:
-      ar_eg: «لـ» بالكراما dhateng. saking = «من».
-      ar: «إلى» بالكراما dhateng، وsaking = «من».
-      en: '"To" in krama is dhateng; saking = from.'
-    words: [dhateng]
-  - id: e07
+  - id: e05
     type: build_sentence
     source:
       ar_eg: أنا رايح كاومان. (بالكراما)
@@ -196,38 +169,7 @@ exercises:
     answer: Kula badhé dhateng Kauman.
     distractors: [arep, nang]
     words: [kula, badhé, dhateng]
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا لسه ماكلتش. (بالكراما)
-      ar: لم آكل بعد. (بالكراما)
-      en: I haven't eaten yet. (krama)
-    answers: ["Kula dèrèng nedha.", "Kula dereng nedha.", "Kulo dèrèng nedha.", "Kula dèrèng nedha", "Kulo dereng nedha.", "Kula dereng nedha", "Kulo dèrèng nedha", "Kulo dereng nedha"]
-    words: [kula, dèrèng, nedha]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا رايح السوق. (بالكراما)
-      ar: سأذهب إلى السوق. (بالكراما)
-      en: I'm going to the market. (krama)
-    answers: ["Kula badhé dhateng peken.", "Kula badhe dhateng peken.", "Kulo badhé dhateng peken.", "Kula badhé dhateng peken", "Kulo badhe dhateng peken.", "Kula badhe dhateng peken", "Kulo badhé dhateng peken", "Kulo badhe dhateng peken", "Kula badhé teng peken.", "Kula badhe teng peken.", "Kulo badhé teng peken.", "Kula badhé teng peken", "Kulo badhe teng peken.", "Kula badhe teng peken", "Kulo badhé teng peken", "Kulo badhe teng peken", "Kula badhé dhateng pasar.", "Kula badhe dhateng pasar.", "Kulo badhé dhateng pasar.", "Kula badhé dhateng pasar", "Kulo badhe dhateng pasar.", "Kula badhe dhateng pasar", "Kulo badhé dhateng pasar", "Kulo badhe dhateng pasar"]
-    explain:
-      ar_eg: aku ← kula، arep ← badhé، nang ← dhateng، pasar ← peken.
-      ar: aku ← kula، وarep ← badhé، وnang ← dhateng، وpasar ← peken.
-      en: aku → kula, arep → badhé, nang → dhateng, pasar → peken.
-    words: [kula, badhé, dhateng, peken]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Sampéyan sampun nedha? — Dèrèng.
-    answers_meaning:
-      ar_eg: ["حضرتك كلت؟ — لسه.", "كلت؟ — لسه", "حضرتك كلت؟ لسه"]
-      ar: ["هل أكلتَ؟ — ليس بعد.", "هل أكلت؟ ليس بعد"]
-      en: ["Have you eaten? — Not yet.", "Have you eaten? Not yet"]
-    words: [sampun, dèrèng]
-  - id: e11
+  - id: e06
     type: dictation
     text: Kula taksih sinau.
     meaning:
@@ -235,7 +177,7 @@ exercises:
       ar: ما زلتُ أتعلم.
       en: I'm still learning.
     words: [taksih]
-  - id: e12
+  - id: e07
     type: speaking
     text: Kula badhé dhateng peken.
     meaning:

@@ -1,0 +1,227 @@
+schema: kabar.lesson/v1
+id: bipa1.u02.l06
+language: id
+title: Formulir pendaftaran
+can_do:
+  ar_eg: تملا استمارة تسجيل وتعرّف بنفسك.
+  ar: أن تملأ استمارة تسجيل وتعرّف بنفسك.
+  en: Fill in a registration form and introduce yourself.
+slides:
+  - title: Isi formulir
+    body:
+      ar_eg: |
+        في معهد لغة في منتنج هتملا formulir pendaftaran (استمارة تسجيل). الخانات:
+        - Nama — الاسم
+        - Kewarganegaraan — الجنسية (تكتب: Mesir)
+        - Pekerjaan — الشغلانة (مثلًا: mahasiswa)
+        - Alamat — العنوان (من العربي «علامة»)
+        - Bahasa — اللغات
+        - Tanggal lahir — تاريخ الميلاد (الأرقام في الوحدة الجاية)
+        وبالكلام، تعرّف نفسك في ٤ جمل اسمية من غير «يكون»:
+        Nama saya … / Saya orang … / Saya … (الشغلانة) / Saya tinggal di …
+        وعشان تسأل الموظفة بأدب استخدم اللقب بدل «إنتي»: «Mbak dari mana?».
+      ar: |
+        في معهد لغة في منتنج ستملأ formulir pendaftaran (استمارة تسجيل). خاناتها:
+        - Nama — الاسم
+        - Kewarganegaraan — الجنسية (تكتب: Mesir)
+        - Pekerjaan — المهنة (مثلًا: mahasiswa)
+        - Alamat — العنوان (من العربية «علامة»)
+        - Bahasa — اللغات
+        - Tanggal lahir — تاريخ الميلاد (الأعداد في الوحدة القادمة)
+        وشفهيًّا عرّف بنفسك في أربع جمل اسمية بلا فعل كينونة:
+        Nama saya … / Saya orang … / Saya … (المهنة) / Saya tinggal di …
+        وإذا سألت الموظفة فاستعمل اللقب بدل «أنتِ»: «Mbak dari mana?».
+      en: |
+        At a language school in Menteng you fill in a formulir pendaftaran (registration form). The fields:
+        - Nama — name
+        - Kewarganegaraan — nationality (write: Mesir)
+        - Pekerjaan — job (e.g. mahasiswa)
+        - Alamat — address (from Arabic «علامة», "sign")
+        - Bahasa — languages
+        - Tanggal lahir — date of birth (numbers come next unit)
+        Out loud, introduce yourself in four nominal sentences, no "is" needed:
+        Nama saya … / Saya orang … / Saya … (job) / Saya tinggal di …
+        To ask the clerk something politely, use her title instead of "you": "Mbak dari mana?".
+    examples:
+      - text: Nama saya Mohamed. Saya orang Mesir. Saya mahasiswa. Saya tinggal di Menteng.
+        ar_eg: اسمي محمد. أنا مصري. أنا طالب. ساكن في منتنج.
+        ar: اسمي محمد. أنا مصري. أنا طالب جامعي. أسكن في منتنج.
+        en: My name is Mohamed. I'm Egyptian. I'm a student. I live in Menteng.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: nama
+        ar_eg: الاسم
+        ar: الاسم
+        en: name
+      - text: alamat
+        ar_eg: العنوان
+        ar: العنوان
+        en: address
+      - text: pekerjaan
+        ar_eg: الشغلانة
+        ar: المهنة
+        en: job
+      - text: kewarganegaraan
+        ar_eg: الجنسية
+        ar: الجنسية
+        en: nationality
+    words: [nama, alamat, pekerjaan, kewarganegaraan]
+  - id: e02
+    type: multiple_choice
+    question: 'Kewarganegaraan: ...'
+    question_meaning:
+      ar_eg: في خانة Kewarganegaraan، محمد يكتب إيه؟
+      ar: ماذا يكتب محمد في خانة Kewarganegaraan؟
+      en: What does Mohamed write in the Kewarganegaraan field?
+    options: [Menteng, Mesir, Mahasiswa]
+    answer: 1
+    explain:
+      ar_eg: kewarganegaraan = الجنسية. mahasiswa دي الشغلانة، وMenteng العنوان.
+      ar: kewarganegaraan = الجنسية، أما mahasiswa فمهنة، وMenteng عنوان.
+      en: kewarganegaraan = nationality; mahasiswa is a job and Menteng is an address.
+    words: [kewarganegaraan, Mesir]
+  - id: e03
+    type: fill_blank
+    sentence: 'Pekerjaan: ___'
+    meaning:
+      ar_eg: (في الاستمارة) الشغلانة — طالب جامعة
+      ar: (في الاستمارة) المهنة — طالب جامعي
+      en: (on the form) Job — university student
+    answers: [mahasiswa, Mahasiswa]
+    words: [pekerjaan, mahasiswa]
+  - id: e04
+    type: fill_blank
+    sentence: Siapa ___ Bapak?
+    meaning:
+      ar_eg: اسم حضرتك إيه؟
+      ar: ما اسمك يا سيدي؟
+      en: What is your name, sir?
+    answers: [nama]
+    words: [nama, siapa]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: عايز أسجّل في كورس إندونيسي.
+      ar: أريد أن أسجّل في دورة اللغة الإندونيسية.
+      en: I want to sign up for an Indonesian course.
+    answer: Saya mau daftar kursus bahasa Indonesia.
+    distractors: [dari, siapa]
+    words: [mau, daftar, kursus, bahasa]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: حضرتك بتشتغلي إيه يا مدام؟
+      ar: ما مهنتكِ يا سيدتي؟
+      en: What is your job, ma'am?
+    answer: Pekerjaan Ibu apa?
+    alternatives: ['Apa pekerjaan Ibu?']
+    distractors: [siapa, kamu]
+    explain:
+      ar_eg: الشغلانة «حاجة» مش «شخص»، يبقى apa مش siapa.
+      ar: المهنة شيء لا شخص، فالسؤال بـ apa لا siapa.
+      en: A job is a thing, not a person, so it's apa, not siapa.
+    words: [pekerjaan, apa]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: اسمي محمد. أنا مصري.
+      ar: اسمي محمد. أنا مصري.
+      en: My name is Mohamed. I'm Egyptian.
+    answers: [Nama saya Mohamed. Saya orang Mesir., Nama saya Mohamed. Saya orang Mesir, 'Nama saya Mohamed, saya orang Mesir.', Nama saya Mohamed dan saya orang Mesir., Nama aku Mohamed. Aku orang Mesir., Namaku Mohamed. Aku orang Mesir.]
+    words: [nama, orang, Mesir]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أنا ساكن في منتنج.
+      ar: أسكن في منتنج.
+      en: I live in Menteng.
+    answers: [Saya tinggal di Menteng., Saya tinggal di Menteng, Aku tinggal di Menteng., Aku tinggal di Menteng]
+    words: [tinggal]
+  - id: e09
+    type: dictation
+    text: Saya tinggal di Menteng.
+    meaning:
+      ar_eg: أنا ساكن في منتنج.
+      ar: أسكن في منتنج.
+      en: I live in Menteng.
+    words: [tinggal]
+  - id: e10
+    type: speaking
+    text: Nama saya Mohamed. Saya orang Mesir. Saya mahasiswa. Saya tinggal di Menteng.
+    meaning:
+      ar_eg: اسمي محمد. أنا مصري. أنا طالب. ساكن في منتنج.
+      ar: اسمي محمد. أنا مصري. أنا طالب جامعي. أسكن في منتنج.
+      en: My name is Mohamed. I'm Egyptian. I'm a student. I live in Menteng.
+    words: [nama, orang, mahasiswa, tinggal]
+dialogue:
+  title: Di kursus bahasa
+  lines:
+    - speaker: Mbak Tari
+      text: Selamat pagi, Pak. Mau daftar kursus?
+      ar_eg: صباح الخير يا أستاذ. عايز تسجّل في كورس؟
+      ar: صباح الخير يا سيدي. هل تريد التسجيل في دورة؟
+      en: Good morning, sir. Would you like to sign up for a course?
+    - speaker: Mohamed
+      text: Pagi, Mbak. Ya, saya mau daftar kursus bahasa Indonesia.
+      ar_eg: صباح النور. أيوه، عايز أسجّل في كورس إندونيسي.
+      ar: صباح النور. نعم، أريد التسجيل في دورة اللغة الإندونيسية.
+      en: Morning. Yes, I want to sign up for an Indonesian course.
+    - speaker: Mbak Tari
+      text: Pekerjaan Bapak apa?
+      ar_eg: حضرتك بتشتغل إيه؟
+      ar: ما مهنتك؟
+      en: What is your job?
+    - speaker: Mohamed
+      text: Saya mahasiswa.
+      ar_eg: أنا طالب.
+      ar: أنا طالب جامعي.
+      en: I'm a student.
+    - speaker: Mbak Tari
+      text: Alamat Bapak di mana?
+      ar_eg: وعنوان حضرتك فين؟
+      ar: وأين عنوانك؟
+      en: And where is your address?
+    - speaker: Mohamed
+      text: Saya tinggal di Menteng, Mbak.
+      ar_eg: ساكن في منتنج.
+      ar: أسكن في منتنج.
+      en: I live in Menteng.
+new_words:
+  - word: formulir
+    pos: noun
+    ar_eg: استمارة
+    ar: استمارة
+    en: form
+  - word: daftar
+    pos: verb
+    ar_eg: يسجّل (نفسه)
+    ar: يسجّل
+    en: to register, sign up
+  - word: kursus
+    pos: noun
+    ar_eg: كورس
+    ar: دورة
+    en: course
+  - word: alamat
+    pos: noun
+    ar_eg: عنوان
+    ar: عنوان
+    en: address
+    arabic: علامة
+  - word: pekerjaan
+    pos: noun
+    ar_eg: شغلانة، وظيفة
+    ar: مهنة، وظيفة
+    en: job, occupation
+  - word: kewarganegaraan
+    pos: noun
+    ar_eg: جنسية
+    ar: جنسية
+    en: nationality, citizenship
+review:
+  status: draft
+  verified: false

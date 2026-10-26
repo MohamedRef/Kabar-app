@@ -270,6 +270,17 @@ async fn quota_allows(env: &Env, cfg: &Config, service: Service, now: u64, cost:
     Ok(quota::allows(quota_used(env, service, now).await?, cost, service.limit(&cfg.limits)))
 }
 
+/// `GET /v1/usage`: reads each counter, then `usage::report` builds the answer.
+async fn usage_report(env: &Env, cfg: &Config) -> Result<Response> {
+    let now = now_ms();
+    let mut used = Vec::with_capacity(crate::usage::SERVICES.len());
+    for service in crate::usage::SERVICES {
+        used.push((service, quota_used(env, service, now).await?));
+    }
+    let read = |s: Service| used.iter().find(|(x, _)| *x == s).map_or(0, |(_, n)| *n);
+    Response::from_json(&crate::usage::report(cfg, now, read))
+}
+
 fn engine_error(e: &EngineError) -> Result<Response> {
     Ok(Response::from_json(e)?.with_status(ai::status_for(e)))
 }
@@ -543,6 +554,7 @@ async fn route(mut req: Request, env: &Env, cfg: &Config, method: Method, path: 
                     call_do(env, &claims.sub, Method::Post, "/revoke", None, Some(&revoke)).await
                 }
                 (Method::Get, "/v1/vault") => Response::from_json(&cfg.vault_status()),
+                (Method::Get, "/v1/usage") => usage_report(env, cfg).await,
                 (Method::Post, "/v1/ai") => ai_proxy(req, env, cfg, &claims).await,
                 (Method::Post, "/v1/tts") => tts_proxy(req, env, cfg, &claims).await,
                 (Method::Put, p) if p.starts_with("/v1/blobs/") => {

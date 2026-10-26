@@ -113,70 +113,48 @@ exercises:
       ar_eg: tukokaké (نغوكو) بالكراما = ؟
       ar: tukokaké (نغوكو) بالكراما = ؟
       en: tukokaké (ngoko) in krama = ?
-    options: ["tumbasaken", "tumbasaké", "tukokaken"]
+    options: [tumbasaken, tumbasaké, tukokaken]
     answer: 0
     explain:
-      ar_eg: "الاتنين بيتغيروا: tuku → tumbas، و-aké → -aken."
-      ar: "يتغير الاثنان: tuku → tumbas، و-aké → -aken."
-      en: "Both parts change: tuku → tumbas, -aké → -aken."
+      ar_eg: 'الاتنين بيتغيروا: tuku → tumbas، و-aké → -aken.'
+      ar: 'يتغير الاثنان: tuku → tumbas، و-aké → -aken.'
+      en: 'Both parts change: tuku → tumbas, -aké → -aken.'
     words: [tumbasaken]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: -aken في الكراما شبه أنهي لاحقة إندونيسي؟
-      ar: تشبه -aken في الكراما أي لاحقة إندونيسية؟
-      en: Krama -aken looks like which Indonesian suffix?
-    options: ["-an", "-nya", "-kan"]
-    answer: 2
-    explain:
-      ar_eg: tumbasaken = belikan، nerangaken = menerangkan.
-      ar: tumbasaken = belikan، وnerangaken = menerangkan.
-      en: tumbasaken = belikan, nerangaken = menerangkan.
-    words: [tumbasaken, nerangaken]
-  - id: e04
     type: listen
     text: Kula tumbasaken batik kangge ibu kula.
-    options: ["Kula tumbas batik kangge ibu kula.", "Kula tumbasaken batik kangge ibu kula.", "Kula damelaken batik kangge ibu kula."]
+    options: [Kula tumbas batik kangge ibu kula., Kula tumbasaken batik kangge ibu kula., Kula damelaken batik kangge ibu kula.]
     answer: 1
     words: [tumbasaken, kangge]
-  - id: e05
+  - id: e04
     type: fill_blank
     sentence: Pak Harjo ___ caranipun damel batik.
     meaning:
       ar_eg: الحاج هارجو بيشرح طريقة عمل الباتيك.
       ar: يشرح السيد هارجو طريقة صنع الباتيك.
       en: Pak Harjo explains how batik is made.
-    options: ["nerangaké", "menerangkan", "nerangaken"]
+    options: [nerangaké, menerangkan, nerangaken]
     answers: [nerangaken]
     explain:
-      ar_eg: "nerangaké نغوكو، وmenerangkan إندونيسي. الكراما: nerangaken."
+      ar_eg: 'nerangaké نغوكو، وmenerangkan إندونيسي. الكراما: nerangaken.'
       ar: nerangaké نغوكو، وmenerangkan إندونيسية، والكراما nerangaken.
       en: nerangaké is ngoko, menerangkan is Indonesian; krama is nerangaken.
     words: [nerangaken]
-  - id: e06
+  - id: e05
     type: fill_blank
     sentence: Kula ___ teh, nggih, Pak?
     meaning:
       ar_eg: أعمل لحضرتك شاي يا حاج؟
       ar: هل أُعِدّ لك شايًا يا سيدي؟
       en: Shall I make you some tea, sir?
-    options: ["tumbasaken", "gawèkaké", "damelaken"]
+    options: [tumbasaken, gawèkaké, damelaken]
     answers: [damelaken]
     explain:
       ar_eg: «أعمل لحضرتك» = damelaken (damel + -aken). gawèkaké نغوكو، وtumbasaken = أشتري لحضرتك.
       ar: «أُعِدّ لك» = damelaken، وgawèkaké نغوكو، وtumbasaken = أشتري لك.
-      en: "\"make for you\" = damelaken; gawèkaké is ngoko; tumbasaken = buy for you."
+      en: '"make for you" = damelaken; gawèkaké is ngoko; tumbasaken = buy for you.'
     words: [damelaken]
-  - id: e07
-    type: build_sentence
-    source:
-      ar_eg: بشتري باتيك لماما.
-      ar: أشتري باتيكًا لأمي.
-      en: I'm buying batik for my mother.
-    answer: Kula tumbasaken batik kangge ibu kula.
-    distractors: [tukokaké, kanggo, aku]
-    words: [tumbasaken, kangge]
-  - id: e08
+  - id: e06
     type: build_sentence
     source:
       ar_eg: الباتيك المرسوم بيتعمل باستخدام الـ canthing.
@@ -185,38 +163,7 @@ exercises:
     answer: Batik tulis dipundamel ngginakaken canthing.
     distractors: [digawé, nganggo]
     words: [damel, ngginakaken, canthing]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "(حوّل للكراما) Tak tukokaké batik."
-      ar: "(حوّل إلى الكراما) Tak tukokaké batik."
-      en: "(turn into krama) Tak tukokaké batik."
-    answers: ["Kula tumbasaken batik.", "Kula tumbasaken batik"]
-    explain:
-      ar_eg: tak → kula، tukokaké → tumbasaken.
-      ar: tak → kula، وtukokaké → tumbasaken.
-      en: tak → kula, tukokaké → tumbasaken.
-    words: [tumbasaken]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (بالكراما) ممكن تشتريلي شاي؟
-      ar: (بالكراما) هل يمكنك أن تشتري لي شايًا؟
-      en: (in krama) Could you buy me some tea?
-    answers: ["Saged tumbasaken teh?", "Saged tumbasaken teh", "Saged tumbasaken teh, nggih?", "Saged tumbasaken teh, nggih", "Saged tumbasaken teh nggih?", "Saged tumbasaken teh nggih"]
-    words: [saged, tumbasaken]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: Pak Harjo nerangaken caranipun damel batik.
-    answers_meaning:
-      ar_eg: ["الحاج هارجو بيشرح طريقة عمل الباتيك.", "الحاج هارجو بيشرح إزاي الباتيك بيتعمل.", "هارجو بيشرح إزاي يعمل باتيك."]
-      ar: ["يشرح السيد هارجو طريقة صنع الباتيك.", "يشرح هارجو كيف يُصنع الباتيك."]
-      en: ["Pak Harjo explains how batik is made.", "Pak Harjo explains how to make batik.", "Pak Harjo is explaining how batik is made.", "Pak Harjo explains the way to make batik."]
-    words: [nerangaken, damel]
-  - id: e12
+  - id: e07
     type: dictation
     text: Kula tumbasaken batik.
     meaning:
@@ -224,7 +171,7 @@ exercises:
       ar: سأشتري باتيكًا (لغيري).
       en: I'll buy batik (for someone).
     words: [tumbasaken]
-  - id: e13
+  - id: e08
     type: speaking
     text: Kula tumbasaken batik kangge ibu kula.
     meaning:
@@ -263,8 +210,8 @@ dialogue:
 new_words:
   - word: -aken
     pos: particle
-    ar_eg: "لاحقة الكراما لـ -aké (= -kan): tumbasaken = belikan"
-    ar: "لاحقة الكراما مقابل -aké (= -kan): tumbasaken = belikan"
+    ar_eg: 'لاحقة الكراما لـ -aké (= -kan): tumbasaken = belikan'
+    ar: 'لاحقة الكراما مقابل -aké (= -kan): tumbasaken = belikan'
     en: krama suffix for -aké (= Indonesian -kan)
   - word: tumbasaken
     pos: verb

@@ -53,7 +53,7 @@ kabar/
 │  ├─ server/      # Kabar Cloud: Worker + Durable Object (workers-rs), wrangler.toml
 │  ├─ home/        # Kabar Home: small HTTP service fronting Ollama / NLLB / whisper.cpp
 │  └─ tools/       # content pipeline, dictionary import, audio pre-gen, bake-off runner, backups
-├─ android/        # Kotlin: Credential Manager, FCM, share target, ML Kit (OCR + ink), widgets, pen extras
+├─ android/        # Kotlin: Credential Manager, FCM, share target, ML Kit (OCR + ink), widgets
 ├─ prompts/        # versioned prompt templates (task@vN.md)
 ├─ content/        # build-time content (JSON/YAML, schema-validated), packed into content packs
 ├─ curriculum/     # indonesian.yaml, javanese.yaml
@@ -85,7 +85,7 @@ Every synced row: `id` (UUIDv7), `account_id`, `device_id`, `hlc` (64-bit: 48-bi
 | Reading | texts, text_tokens, word_status, highlights | texts/highlights: LWW · word_status: LWW per (lexeme) |
 | Learning | cards, review_log, curriculum_nodes, lessons, exercises, attempts, conversations, stories, souvenirs | review_log/attempts/xp_events: **append-only** · cards: derived from review_log · lessons/exercises: content pack |
 | Ink | notebooks, ink_documents, ink_strokes | strokes **immutable** (delete = event) · documents: LWW |
-| Coach | goals, daily_plans, reminders, reports, journal_entries, coach_memory, skill_scores | LWW (plans keyed by date) · journal: append-only |
+| Coach | goals, daily_plans, reminders, reports, journal_entries, coach_memory, skill_scores | LWW (plans keyed by date; journal reflections LWW per id, tombstone on delete) |
 | Account | accounts, devices, sessions (Lanjut), push_tokens, sync_events | server-owned; sessions LWW |
 | Quality | engine_runs, quality_feedback, golden_items | append-only |
 | System | content_packs, ai_cache, audio_cache, quota_usage, settings, cost_log, outbox | settings LWW · ai_cache shared via D1 · outbox local |
@@ -157,8 +157,8 @@ M1 starts with the riskiest spikes, each a day or less: (a) Dioxus Android build
 | Risk | Impact | Mitigation |
 |---|---|---|
 | No official Kotlin interop in Dioxus | sign-in, push, ML Kit, share target | spike in M1; JNI + activity class loader; fallback Gradle template |
-| Android WebView pen events (hover, tilt, eraser, barrel button) incomplete | pen features | Pen Lab measures; native `MotionEvent` bridge for what's missing |
-| Ink latency in WebView | "feels attached to the pen" | desynchronized canvas, predicted events; measure in Pen Lab; native front-buffer layer as last resort |
+| Android WebView pen events (hover, tilt, eraser, barrel button) incomplete | tablet pen features | measured on the S24 Ultra 2026-10-26 ([PENLAB.md](PENLAB.md)): 426 pressure levels, tilt and hover work, ~60 Hz, no barrel button. Phone pen features are deferred (SPEC §23), so the remaining risk is the Tab S11's |
+| Ink latency in WebView | "feels attached to the pen" | settled: the learner says the ink feels attached (8.6 ms p50 input delay), so the web ink stays and the native front-buffer layer is not needed |
 | Worker 10 ms CPU | timeouts | thin Worker, heavy work in DO / devices; Ed25519 JWT |
 | Gemini free tier trains on inputs and limits shift | privacy, availability | learning text only; `personal` tasks blocked by code; Workers AI + local as alternatives |
 | Javanese quality from free models | wrong teaching | build-time content, dictionary cross-check, "unverified" badge, your review |

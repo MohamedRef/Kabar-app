@@ -78,7 +78,7 @@ slides:
         en: Where are you going? — To the mosque.
   - title: Masjid = مسجد
     body:
-      ar_eg: "هدية عربية: masjid جاية من «مسجد». وجنب موناس على طول فيه Masjid Istiqlal، أكبر جامع في جنوب شرق آسيا. di ≈ «في»، ke ≈ «لـ»، dari ≈ «من»."
+      ar_eg: 'هدية عربية: masjid جاية من «مسجد». وجنب موناس على طول فيه Masjid Istiqlal، أكبر جامع في جنوب شرق آسيا. di ≈ «في»، ke ≈ «لـ»، dari ≈ «من».'
       ar: كلمة masjid من العربية «مسجد». وبجوار موناس يقع Masjid Istiqlal، أكبر مساجد جنوب شرق آسيا. وdi ≈ في، وke ≈ إلى، وdari ≈ من.
       en: masjid comes from Arabic «مسجد». Right next to Monas stands Masjid Istiqlal, the largest mosque in Southeast Asia. di ≈ في, ke ≈ إلى / لـ, dari ≈ من.
     grammar: id.preposition.di-ke-dari
@@ -89,93 +89,46 @@ slides:
         en: Istiqlal Mosque is near Monas.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: di
-        ar_eg: في / عند
-        ar: في
-        en: at, in
-      - text: ke
-        ar_eg: لـ / على
-        ar: إلى
-        en: to
-      - text: dari
-        ar_eg: من
-        ar: من
-        en: from
-      - text: pulang
-        ar_eg: يرجع (البيت)
-        ar: يعود إلى البيت
-        en: to go home
-    words: [di, ke, dari, pulang]
-  - id: e02
     type: multiple_choice
     question: Saya pergi ___ Monas.
-    options: ["dari", "di", "ke"]
+    options: [dari, di, ke]
     answer: 2
     explain:
       ar_eg: pergi فيه حركة لمكان، يبقى ke.
       ar: pergi فعل حركة، فيأتي بعده ke.
       en: pergi is movement towards a place → ke.
     words: [pergi, ke]
-  - id: e03
-    type: multiple_choice
-    question: Pak Budi sekarang ___ kantor.
-    question_meaning:
-      ar_eg: الأستاذ بودي دلوقتي في المكتب.
-      ar: الأستاذ بودي الآن في المكتب.
-      en: Mr Budi is at the office now.
-    options: ["dari", "ke", "di"]
-    answer: 2
-    explain:
-      ar_eg: مكان ثابت من غير حركة، يبقى di.
-      ar: مكان ثابت بلا حركة، فهو di.
-      en: A fixed place with no movement → di.
-    words: [di]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي كتابة صح؟
-      ar: أيّ كتابة صحيحة؟
-      en: Which spelling is correct?
-    options: ["Saya di rumah.", "Saya di-rumah.", "Saya dirumah."]
-    answer: 0
-    explain:
-      ar_eg: di حرف الجر دايمًا منفصلة.
-      ar: di الجارة تُكتب منفصلة دائمًا.
-      en: The preposition di is always written separately.
-    words: [di, rumah]
-  - id: e05
+  - id: e02
     type: listen
     text: Kamu dari mana?
-    options: ["Kamu dari mana?", "Kamu ke mana?", "Kamu di mana?"]
+    options: ['Kamu dari mana?', 'Kamu ke mana?', 'Kamu di mana?']
     answer: 0
     words: [dari]
-  - id: e06
+  - id: e03
     type: fill_blank
     sentence: Kereta ___ Bogor sudah datang.
     meaning:
       ar_eg: القطر اللي جاي من بوجور وصل.
       ar: وصل القطار القادم من بوغور.
       en: The train from Bogor has arrived.
-    options: ["dari", "di", "ke"]
+    options: [dari, di, ke]
     answers: [dari]
     words: [dari, kereta]
-  - id: e07
+  - id: e04
     type: fill_blank
     sentence: Museum buka dari jam delapan ___ jam empat.
     meaning:
       ar_eg: المتحف بيفتح من الساعة ٨ لحد الساعة ٤.
       ar: يفتح المتحف من الثامنة حتى الرابعة.
       en: The museum is open from eight until four.
-    options: ["dari", "sampai", "ke"]
+    options: [dari, sampai, ke]
     answers: [sampai]
     explain:
       ar_eg: dari … sampai … = من … لحد ….
       ar: dari … sampai … = من … إلى ….
       en: dari … sampai … = from … until ….
     words: [sampai, museum]
-  - id: e08
+  - id: e05
     type: build_sentence
     source:
       ar_eg: أنا رايح محطة جامبير.
@@ -184,46 +137,7 @@ exercises:
     answer: Saya pergi ke Stasiun Gambir.
     distractors: [di, dari]
     words: [pergi, ke, stasiun]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: العيال بيلعبوا في الجنينة.
-      ar: الأطفال يلعبون في الحديقة.
-      en: The children are playing in the park.
-    answer: Anak-anak bermain di taman.
-    distractors: [ke, dari]
-    words: [di, taman]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: بكرة رايح الجامع.
-      ar: غدًا أذهب إلى المسجد.
-      en: Tomorrow I'm going to the mosque.
-    answers:
-      - Besok saya ke masjid.
-      - Besok saya pergi ke masjid.
-      - Saya ke masjid besok.
-      - Saya pergi ke masjid besok.
-      - Besok saya ke masjid
-      - Besok saya pergi ke masjid
-      - Besok aku ke masjid.
-      - Besok aku pergi ke masjid.
-    explain:
-      ar_eg: ke لوحدها كفاية، وpergi ke كمان صح.
-      ar: تكفي ke وحدها، ويصح pergi ke أيضًا.
-      en: ke alone is enough; pergi ke is also right.
-    words: [besok, ke, masjid]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: Saya pulang ke rumah dari kantor.
-    answers_meaning:
-      ar_eg: ["أنا راجع البيت من المكتب.", "براجع البيت من الشغل", "أنا روّحت البيت من المكتب"]
-      ar: ["أعود إلى البيت من المكتب.", "عدت إلى البيت من المكتب"]
-      en: ["I'm going home from the office.", "I go home from the office", "I went home from the office"]
-    words: [pulang, dari, kantor]
-  - id: e12
+  - id: e06
     type: dictation
     text: Mas Ardi di halte.
     meaning:
@@ -231,7 +145,7 @@ exercises:
       ar: مَس أردي في موقف الحافلات.
       en: Mas Ardi is at the bus stop.
     words: [di, halte]
-  - id: e13
+  - id: e07
     type: speaking
     text: Saya dari Mesir. Sekarang saya di Jakarta.
     meaning:
@@ -268,26 +182,6 @@ dialogue:
       ar: جميل! موناس قريب من هنا.
       en: Great! Monas is close to here.
 new_words:
-  - word: ke
-    pos: preposition
-    ar_eg: لـ، على (اتجاه)
-    ar: إلى
-    en: to (a place)
-  - word: pergi
-    pos: verb
-    ar_eg: يروح
-    ar: يذهب
-    en: to go
-  - word: pulang
-    pos: verb
-    ar_eg: يرجع البيت، يروّح
-    ar: يعود إلى البيت
-    en: to go home, return
-  - word: sampai
-    pos: preposition
-    ar_eg: لحد
-    ar: حتى، إلى
-    en: until, up to
   - word: stasiun
     pos: noun
     ar_eg: محطة قطر
@@ -298,12 +192,6 @@ new_words:
     ar_eg: محطة أتوبيس
     ar: موقف حافلات
     en: bus stop
-  - word: masjid
-    pos: noun
-    ar_eg: جامع
-    ar: مسجد
-    en: mosque
-    arabic: مسجد
   - word: museum
     pos: noun
     ar_eg: متحف
@@ -314,11 +202,6 @@ new_words:
     ar_eg: قطر
     ar: قطار
     en: train
-  - word: buka
-    pos: verb
-    ar_eg: يفتح، فاتح
-    ar: يفتح، مفتوح
-    en: to open, be open
   - word: dekat
     pos: adjective
     ar_eg: قريب
