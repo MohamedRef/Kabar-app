@@ -7,6 +7,7 @@ use std::sync::OnceLock;
 use kabar_core::lang::Lang;
 use kabar_core::lang::analyze::{AnalyzedToken, Engine, Morph};
 use kabar_core::lang::langid::Source;
+use kabar_core::lang::morph_jv::{self, JvAnalysis};
 use kabar_core::reader::screenshot::{ItemKind, ScreenDoc, Side};
 
 use kabar_core::learn::PersonalDictionary;
@@ -101,6 +102,11 @@ impl Word {
             Some(Morph::Javanese(a)) if a.prefix.is_some() || !a.suffixes.is_empty() => Some(a.display()),
             _ => None,
         }
+    }
+
+    /// English mixed into the text, which the learner already reads.
+    pub fn is_english_aside(&self) -> bool {
+        self.key.is_none() && self.tag == Tag::English
     }
 
     /// Bridge gold: an Arabic-origin word.
@@ -220,7 +226,9 @@ impl<'a> Builder<'a> {
         if kind != SegKind::Chrome {
             for a in engine().analyze(&self.body[start..end]) {
                 let (s, e) = (start + a.token.start, start + a.token.end);
-                let word = a.token.is_wordlike().then(|| word_of(a, lex));
+                // "512gb" and "17" are numbers, not words to learn.
+                let number = a.token.text.starts_with(|c: char| c.is_ascii_digit());
+                let word = (a.token.is_wordlike() && !number).then(|| word_of(a, lex));
                 self.tokens.push(ReadToken { start: s, end: e, seg, word });
             }
         }
@@ -232,7 +240,7 @@ impl<'a> Builder<'a> {
     }
 }
 
-fn word_of(analyzed: AnalyzedToken, lex: Lexicon) -> Word {
+fn word_of(mut analyzed: AnalyzedToken, lex: Lexicon) -> Word {
     let lookup = analyzed.lookup_form();
     let surface = analyzed.token.lower();
     let root = match &analyzed.morph {
@@ -241,7 +249,10 @@ fn word_of(analyzed: AnalyzedToken, lex: Lexicon) -> Word {
         None => None,
     };
     let redup = analyzed.token.redup.as_ref().map(|(_, base)| base.to_lowercase());
-    let mut forms: Vec<&str> = vec![&surface, &lookup];
+    // A form normalized in context ("pm" after a phone is "Pro Max") is
+    // looked up first, so the gloss follows the reading the headline shows.
+    let mut forms: Vec<&str> =
+        if analyzed.normalized.is_some() { vec![&lookup, &surface] } else { vec![&surface, &lookup] };
     forms.extend(redup.as_deref());
     forms.extend(root.as_deref());
     let prefer = match analyzed.lang.lang {
@@ -250,7 +261,16 @@ fn word_of(analyzed: AnalyzedToken, lex: Lexicon) -> Word {
         Lang::English => Some(WordLang::English),
         _ => None,
     };
-    let info = lex.glossary.lookup(prefer, &forms).cloned();
+    let mut info = lex.glossary.lookup(prefer, &forms).cloned();
+    // "ukumane", "bukune": a Javanese ending on a root the engine's small
+    // lexicon doesn't know, but the dictionary does.
+    if info.is_none()
+        && let Some((a, found)) = javanese_ending(&surface, lex.glossary)
+    {
+        analyzed.lang.lang = Lang::Javanese;
+        analyzed.morph = Some(Morph::Javanese(a));
+        info = Some(found);
+    }
     let taught_langs = match prefer.or(info.as_ref().map(|i| i.lang)) {
         Some(WordLang::Javanese) => [content::Lang::Jv, content::Lang::Id],
         _ => [content::Lang::Id, content::Lang::Jv],
@@ -274,7 +294,10 @@ fn word_of(analyzed: AnalyzedToken, lex: Lexicon) -> Word {
     let slang = analyzed.lang.source == Source::Slang
         || analyzed.normalized.as_ref().is_some_and(|n| n.full.to_lowercase() != surface);
 
-    let key = (tag != Tag::Proper).then(|| {
+    // English mixed into the chat has no status: Kabar teaches Indonesian
+    // and Javanese, and the learner already reads English.
+    let english_only = tag == Tag::English && info.is_none() && taught.is_none();
+    let key = (tag != Tag::Proper && !english_only).then(|| {
         let prefix = match info.as_ref().map(|i| i.lang).or(taught_lang) {
             Some(WordLang::Javanese) => "jv",
             Some(WordLang::English) => "en",
@@ -295,6 +318,43 @@ fn word_of(analyzed: AnalyzedToken, lex: Lexicon) -> Word {
         format!("{prefix}:{lemma}")
     });
     Word { analyzed, tag, slang, key, info, taught }
+}
+
+/// The engine's Javanese analysis, checked against the dictionary instead of
+/// the engine's own root list.
+struct DictionaryRoots<'a> {
+    glossary: &'a dyn Glossary,
+    /// Also accept Indonesian roots: "bukune" is buku + Javanese -ne.
+    any_lang: bool,
+}
+
+impl kabar_core::lang::Lexicon for DictionaryRoots<'_> {
+    fn is_id_root(&self, _: &str) -> bool {
+        false
+    }
+
+    fn is_jv_root(&self, word: &str) -> bool {
+        self.glossary
+            .lookup(Some(WordLang::Javanese), &[word])
+            .is_some_and(|i| self.any_lang || i.lang == WordLang::Javanese)
+    }
+}
+
+fn javanese_ending(surface: &str, glossary: &dyn Glossary) -> Option<(JvAnalysis, WordInfo)> {
+    let jv = DictionaryRoots { glossary, any_lang: false };
+    let found =
+        morph_jv::analyze(surface, &jv).filter(|a| a.verified && !a.suffixes.is_empty()).or_else(|| {
+            // An Indonesian root only takes the possessive ending, nothing else.
+            let any = DictionaryRoots { glossary, any_lang: true };
+            morph_jv::analyze(surface, &any).filter(|a| {
+                a.verified
+                    && a.prefix.is_none()
+                    && a.suffixes.len() == 1
+                    && matches!(a.suffixes[0].label.as_str(), "-e" | "-ne")
+            })
+        })?;
+    let info = glossary.lookup(Some(WordLang::Javanese), &[&found.root])?.clone();
+    Some((found, info))
 }
 
 #[cfg(test)]
@@ -370,6 +430,36 @@ mod tests {
         let d = doc("Which is, gue literally capek banget.");
         assert_eq!(word(&d, "capek").info.as_ref().unwrap().gloss.en, "tired");
         assert_eq!(word(&d, "literally").tag, Tag::English);
+        // English the learner already reads has no status to track.
+        assert_eq!(word(&d, "literally").key, None);
+        assert!(word(&d, "gue").key.is_some());
+    }
+
+    #[test]
+    fn marketplace_listing_follows_the_normalized_reading() {
+        let d = doc("iphone 17 pm 512gb resmi ibox mulus nomin garansi jalan minat wa");
+        // "pm" after a model number is Pro Max, and the gloss says so too.
+        assert_eq!(word(&d, "pm").info.as_ref().unwrap().gloss.en, "Pro Max (the largest model)");
+        assert_eq!(word(&d, "nomin").info.as_ref().unwrap().gloss.en, "no flaws at all");
+        // Numbers with units aren't words to learn.
+        let gb = d.tokens.iter().find(|t| d.text(t.start, t.end) == "512gb").unwrap();
+        assert!(gb.word.is_none());
+    }
+
+    #[test]
+    fn javanese_endings_on_dictionary_roots() {
+        let g = crate::reader::content::LocalGlossary::load();
+        let d = ReadDoc::from_text(
+            "Ukumane abot. Bukune ana ngendi?",
+            Lexicon { glossary: &g, taught: &PersonalDictionary::default() },
+        );
+        let w = word(&d, "Ukumane");
+        assert_eq!(w.info.as_ref().map(|i| i.lemma.as_str()), Some("ukuman"));
+        assert_eq!(w.tag, Tag::Javanese);
+        assert_eq!(w.breakdown().as_deref(), Some("ukuman + -e"));
+        let w = word(&d, "Bukune");
+        assert_eq!(w.info.as_ref().map(|i| i.lemma.as_str()), Some("buku"));
+        assert_eq!(w.breakdown().as_deref(), Some("buku + -ne"));
     }
 
     #[test]
