@@ -4,6 +4,7 @@
 
 pub mod ai;
 pub mod clock;
+pub mod journey;
 pub mod lang;
 pub mod layout;
 pub mod locale;
