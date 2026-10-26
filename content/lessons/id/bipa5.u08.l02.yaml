@@ -1,0 +1,190 @@
+schema: kabar.lesson/v1
+id: bipa5.u08.l02
+language: id
+title: Membaca opini
+can_do:
+  ar_eg: تقرا مقال رأي بعين ناقدة وتلاقي الرأي والدليل والانحياز.
+  ar: أن تقرأ مقالة رأي قراءة ناقدة فتميّز الرأي والدليل والانحياز.
+  en: Read an op-ed critically, spotting the claim, the evidence and any bias.
+slides:
+  - title: Membaca dengan kritis
+    body:
+      ar_eg: |
+        اقرا مقال الرأي ده:
+        Belakangan ini, banyak orang mengeluh tentang harga bahan pokok. Menurut penulis, pemerintah cenderung lambat menanggapi keluhan warga. Penulis menyebut satu contoh dari pasar Martapura, tetapi tidak menyertakan data nasional. Barangkali masalahnya lebih rumit daripada yang digambarkan.
+        اسأل نفسك 3 أسئلة: إيه الرأي (klaim)؟ فين الدليل (bukti)؟ الكاتب منحاز (berpihak) لحد؟
+      ar: |
+        اقرأ مقالة الرأي هذه:
+        Belakangan ini, banyak orang mengeluh tentang harga bahan pokok. Menurut penulis, pemerintah cenderung lambat menanggapi keluhan warga. Penulis menyebut satu contoh dari pasar Martapura, tetapi tidak menyertakan data nasional. Barangkali masalahnya lebih rumit daripada yang digambarkan.
+        واسأل ثلاثة أسئلة: ما الادّعاء (klaim)؟ أين الدليل (bukti)؟ هل ينحاز الكاتب (berpihak)؟
+      en: |
+        Read this op-ed:
+        Belakangan ini, banyak orang mengeluh tentang harga bahan pokok. Menurut penulis, pemerintah cenderung lambat menanggapi keluhan warga. Penulis menyebut satu contoh dari pasar Martapura, tetapi tidak menyertakan data nasional. Barangkali masalahnya lebih rumit daripada yang digambarkan.
+        Ask three questions: what's the claim (klaim)? Where's the evidence (bukti)? Does the writer take a side (berpihak)?
+    examples:
+      - text: Penulis tidak menyertakan bukti yang cukup.
+        ar_eg: الكاتب ماحطّش دليل كفاية.
+        ar: لم يقدّم الكاتب دليلًا كافيًا.
+        en: The writer doesn't include enough evidence.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: klaim
+        ar_eg: ادعاء / رأي
+        ar: ادّعاء
+        en: claim
+      - text: bukti
+        ar_eg: دليل
+        ar: دليل
+        en: evidence
+      - text: berpihak
+        ar_eg: منحاز لطرف
+        ar: ينحاز
+        en: to take sides
+      - text: mengeluh
+        ar_eg: يشتكي
+        ar: يشكو
+        en: to complain
+      - text: bahan pokok
+        ar_eg: السلع الأساسية
+        ar: السلع الأساسية
+        en: staple goods
+    words: [klaim, bukti, berpihak, mengeluh, bahan pokok]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه رأي الكاتب الأساسي؟
+      ar: ما ادّعاء الكاتب الرئيسي؟
+      en: What is the writer's main claim?
+    options:
+      - إن الأسعار نزلت.
+      - إن الحكومة بتميل تتأخر في الرد على شكاوى الناس.
+      - إن سوق مارتابورا اتقفل.
+    answer: 1
+    words: [klaim, mengeluh]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه المشكلة في الدليل؟
+      ar: ما مشكلة الدليل؟
+      en: What's the problem with the evidence?
+    options:
+      - الكاتب جاب مثال واحد بس، من غير بيانات على مستوى البلد.
+      - الكاتب جاب أرقام كتير قوي.
+      - مفيش مشكلة.
+    answer: 0
+    words: [bukti]
+  - id: e04
+    type: fill_blank
+    sentence: Banyak warga ___ karena harga beras naik lagi.
+    meaning:
+      ar_eg: ناس كتير بيشتكوا عشان سعر الرز زاد تاني.
+      ar: يشكو كثير من السكّان لأنّ سعر الأرزّ ارتفع مجدّدًا.
+      en: Many residents are complaining because rice prices rose again.
+    options: [mengeluh, berpihak, bukti]
+    answers: [mengeluh]
+    words: [mengeluh]
+  - id: e05
+    type: listen
+    text: Artikel itu berpihak pada satu kelompok saja.
+    question:
+      ar_eg: إيه المشكلة في المقال؟
+      ar: ما مشكلة المقالة؟
+      en: What's wrong with the article?
+    options:
+      - إنه طويل.
+      - إنه من غير عنوان.
+      - إنه منحاز لمجموعة واحدة بس.
+    answer: 2
+    words: [berpihak]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أسعار السلع الأساسية زادت الشهر ده.
+      ar: ارتفعت أسعار السلع الأساسية هذا الشهر.
+      en: Staple prices rose this month.
+    answers:
+      - Harga bahan pokok naik bulan ini.
+      - Harga bahan pokok naik pada bulan ini.
+      - Bulan ini harga bahan pokok naik.
+      - Harga-harga bahan pokok naik bulan ini.
+    words: [bahan pokok]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: الادعاء ده محتاج دليل أقوى.
+      ar: يحتاج هذا الادّعاء إلى دليل أقوى.
+      en: This claim needs stronger evidence.
+    answer: Klaim ini membutuhkan bukti yang lebih kuat.
+    distractors: [berpihak, mengeluh]
+    words: [klaim, bukti]
+  - id: e08
+    type: speaking
+    text: Barangkali penulis itu berpihak, karena buktinya kurang.
+    meaning:
+      ar_eg: يمكن الكاتب ده منحاز، عشان الدليل قليل.
+      ar: ربّما ينحاز ذلك الكاتب، لقلّة أدلّته.
+      en: Perhaps that writer is biased, since the evidence is thin.
+    words: [berpihak, bukti]
+  - id: e09
+    type: dictation
+    text: Harga bahan pokok menjadi keluhan utama warga.
+    meaning:
+      ar_eg: أسعار السلع الأساسية بقت الشكوى الأولى للناس.
+      ar: صارت أسعار السلع الأساسية الشكوى الأولى للسكّان.
+      en: Staple prices have become residents' main complaint.
+    words: [bahan pokok]
+dialogue:
+  title: Koran di warung kopi
+  lines:
+    - speaker: Pak Hendra
+      text: Lihat opini ini, Mohamed. Penulisnya marah sekali kepada pemerintah.
+      ar_eg: بص على مقال الرأي ده يا محمد. الكاتب زعلان قوي من الحكومة.
+      ar: انظر إلى مقالة الرأي هذه يا محمد، كاتبها غاضب جدًّا من الحكومة.
+      en: Look at this op-ed, Mohamed. The writer is very angry with the government.
+    - speaker: Mohamed
+      text: Klaimnya kuat, tetapi buktinya hanya satu contoh, Pak.
+      ar_eg: الادعاء قوي، بس الدليل مثال واحد بس يا أستاذ.
+      ar: ادّعاؤه قويّ، لكنّ دليله مثال واحد فقط يا أستاذ.
+      en: The claim is strong, but the evidence is just one example, sir.
+    - speaker: Pak Hendra
+      text: Betul. Tampaknya dia berpihak.
+      ar_eg: مظبوط. يبدو إنه منحاز.
+      ar: صحيح. يبدو أنّه منحاز.
+      en: True. It seems he's taking sides.
+    - speaker: Mohamed
+      text: Barangkali kita perlu membaca opini lain juga.
+      ar_eg: يمكن محتاجين نقرا آراء تانية كمان.
+      ar: ربّما نحتاج إلى قراءة آراء أخرى أيضًا.
+      en: Perhaps we should read other opinions too.
+new_words:
+  - word: klaim
+    pos: noun
+    ar_eg: ادعاء / رأي
+    ar: ادّعاء
+    en: claim
+  - word: bukti
+    pos: noun
+    ar_eg: دليل
+    ar: دليل
+    en: evidence
+  - word: berpihak
+    pos: verb
+    ar_eg: منحاز لطرف
+    ar: ينحاز
+    en: to take sides
+  - word: mengeluh
+    pos: verb
+    ar_eg: يشتكي
+    ar: يشكو
+    en: to complain
+  - word: bahan pokok
+    pos: noun
+    ar_eg: السلع الأساسية
+    ar: السلع الأساسية
+    en: staple goods
+review:
+  status: draft
+  verified: false
