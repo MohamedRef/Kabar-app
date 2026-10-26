@@ -481,3 +481,32 @@ mod tests {
         assert!(w.has_gloss());
     }
 }
+
+/// Timings for the performance pass (SPEC §25: popover under 100 ms on the
+/// S24 Ultra). Not a gate: run it with
+/// `cargo test --release -p kabar-app popover_timing -- --ignored --nocapture`.
+#[cfg(test)]
+mod perf {
+    use super::*;
+    use crate::reader::content::LocalGlossary;
+
+    #[test]
+    #[ignore = "timing probe, run by hand with --release"]
+    fn popover_timing() {
+        let t = std::time::Instant::now();
+        let g = LocalGlossary::load();
+        eprintln!("glossary load: {:?}", t.elapsed());
+        // The §24 test texts.
+        let texts = [
+            "Sek tak lapor pusat\nng prabowo?\npiye dhe\narp dicul piro",
+            "iphone 17 pm 512gb resmi ibox mulus nomin garansi jalan minat wa",
+            "Saya sedang membaca buku. Rumahnya dibersihkan kemarin. Anak-anak bermain di taman.",
+        ];
+        let taught = PersonalDictionary::default();
+        let t = std::time::Instant::now();
+        for text in texts {
+            let _ = ReadDoc::from_text(text, Lexicon { glossary: &g, taught: &taught });
+        }
+        eprintln!("analyse the §24 texts: {:?}", t.elapsed());
+    }
+}

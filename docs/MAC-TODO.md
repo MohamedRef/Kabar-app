@@ -13,6 +13,9 @@ The core is lessons, reviews, the Reader, the coach and content. All pen
 work (phone and tablet) and Mac extras are deferred (§9), so their steps are
 no longer here.
 
+**Release:** this page sets the Mac and devices up once. Cutting a release
+(`just release`, install, the device gates) is [RELEASE.md §4](RELEASE.md).
+
 ---
 
 ## 0. Before you sit down (browser only, any device, ~30 min)
