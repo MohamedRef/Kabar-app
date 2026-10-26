@@ -462,8 +462,40 @@ fn run_has_sentence_break(run: &[char]) -> bool {
 /// WebViews don't resolve `dir=auto` on an inline `<bdi>`, which turned
 /// «Apa kabar?» into «?Apa kabar»). Digits outside the Latin runs follow the
 /// Eastern-digits setting, whichever digits the content was written with.
+/// `**words**` in the content are shown in bold.
 #[component]
 pub(crate) fn Rich(text: String, target: &'static str) -> Element {
+    rsx! {
+        for (j, (bold, part)) in bold_parts(&text).into_iter().enumerate() {
+            if bold {
+                strong { key: "b{j}", RichRuns { text: part, target } }
+            } else {
+                RichRuns { key: "p{j}", text: part, target }
+            }
+        }
+    }
+}
+
+/// Splits `**bold**` markup out of content text: (is bold, text) parts in
+/// order. An unpaired `**` stays as written.
+pub(crate) fn bold_parts(text: &str) -> Vec<(bool, String)> {
+    let pieces: Vec<&str> = text.split("**").collect();
+    // An even piece count means one `**` has no partner: the last one.
+    let paired = if pieces.len() % 2 == 1 { pieces.len() } else { pieces.len() - 1 };
+    let mut parts: Vec<(bool, String)> = pieces[..paired]
+        .iter()
+        .enumerate()
+        .filter(|(_, p)| !p.is_empty())
+        .map(|(i, p)| (i % 2 == 1, (*p).to_string()))
+        .collect();
+    if paired < pieces.len() {
+        parts.push((false, format!("**{}", pieces[paired])));
+    }
+    parts
+}
+
+#[component]
+fn RichRuns(text: String, target: &'static str) -> Element {
     let ui = use_context::<Ui>();
     let (lang, eastern) = {
         let s = ui.settings.read();
@@ -1621,6 +1653,18 @@ mod tests {
         assert_eq!(game_route("uu.grandmother"), Some(Route::Unggah));
         assert_eq!(game_route("mp.wedi-wedhi"), Some(Route::Pairs));
         assert_eq!(game_route("pasar"), None);
+    }
+
+    #[test]
+    fn bold_markup_is_split_out() {
+        let parts = bold_parts("فيه كلمات **مشتركة** بين اللغتين");
+        assert_eq!(
+            parts,
+            vec![(false, "فيه كلمات ".into()), (true, "مشتركة".into()), (false, " بين اللغتين".into())]
+        );
+        assert_eq!(bold_parts("**Aku**"), vec![(true, "Aku".into())]);
+        assert_eq!(bold_parts("no markup"), vec![(false, "no markup".into())]);
+        assert_eq!(bold_parts("a ** b"), vec![(false, "a ".into()), (false, "** b".into())]);
     }
 
     #[test]
