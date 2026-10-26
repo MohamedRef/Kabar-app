@@ -1,0 +1,208 @@
+schema: kabar.lesson/v1
+id: bipa7.u08.l01
+language: id
+title: Konjungsi antarkalimat
+can_do:
+  ar_eg: تربط الجمل ببعض في فقرة بكلمات ربط في أول الجملة.
+  ar: أن تربط جمل الفقرة بأدوات ربط في صدر الجملة.
+  en: Link the sentences of a paragraph with sentence-initial connectors.
+slides:
+  - title: Jembatan antarkalimat
+    grammar: id.conjunction.intersentential
+    body:
+      ar_eg: |
+        أدوات الربط دي بتيجي في أول الجملة التانية، وبعدها فاصلة (مثال متألّف للدرس):
+        Harga sagu naik. Akan tetapi, pembeli tetap datang. → بس / لكن
+        Pasar sepi karena hujan. Meskipun demikian, Mama Ester berjualan. → ومع ذلك
+        Penjualan noken naik. Bahkan, ada pesanan dari Jakarta. → لا وكمان / بل
+        Toko Kaka Benny laris. Oleh sebab itu, ia membuka cabang baru. → علشان كده / لذلك
+        Di Jayapura harga turun. Sementara itu, di Wamena harga naik. → في الوقت نفسه
+        متنساش: «tetapi» في نص الجملة، لكن «Akan tetapi,» في أول جملة جديدة.
+      ar: |
+        تأتي هذه الأدوات في صدر الجملة الثانية تليها فاصلة (مثال مؤلَّف للدرس):
+        Harga sagu naik. Akan tetapi, pembeli tetap datang. → لكنّ
+        Pasar sepi karena hujan. Meskipun demikian, Mama Ester berjualan. → ومع ذلك
+        Penjualan noken naik. Bahkan, ada pesanan dari Jakarta. → بل
+        Toko Kaka Benny laris. Oleh sebab itu, ia membuka cabang baru. → لذلك
+        Di Jayapura harga turun. Sementara itu, di Wamena harga naik. → في الأثناء
+        تنبيه: «tetapi» داخل الجملة، أمّا «Akan tetapi,» ففي صدر جملة جديدة.
+      en: |
+        These connectors open the second sentence, followed by a comma (example invented for the lesson):
+        Harga sagu naik. Akan tetapi, pembeli tetap datang. → However
+        Pasar sepi karena hujan. Meskipun demikian, Mama Ester berjualan. → Even so
+        Penjualan noken naik. Bahkan, ada pesanan dari Jakarta. → In fact / even
+        Toko Kaka Benny laris. Oleh sebab itu, ia membuka cabang baru. → Therefore
+        Di Jayapura harga turun. Sementara itu, di Wamena harga naik. → Meanwhile
+        Remember: "tetapi" sits mid-sentence, but "Akan tetapi," opens a new sentence.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: akan tetapi
+        ar_eg: لكن (في أول الجملة)
+        ar: لكنّ (في صدر الجملة)
+        en: however
+      - text: meskipun demikian
+        ar_eg: ومع ذلك
+        ar: ومع ذلك
+        en: even so
+      - text: bahkan
+        ar_eg: لا وكمان / بل
+        ar: بل
+        en: in fact, even
+      - text: oleh sebab itu
+        ar_eg: علشان كده
+        ar: لذلك
+        en: therefore
+      - text: sementara itu
+        ar_eg: في الوقت نفسه
+        ar: في الأثناء
+        en: meanwhile
+    words: [akan tetapi, meskipun demikian, bahkan, oleh sebab itu, sementara itu]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Hujan deras. ___, pasar tetap ramai.» تحطّ إيه؟
+      ar: «Hujan deras. ___, pasar tetap ramai.» ماذا تضع؟
+      en: '"Hujan deras. ___, pasar tetap ramai." What goes in?'
+    options: [Oleh sebab itu, Meskipun demikian, Bahkan]
+    answer: 1
+    words: [meskipun demikian]
+  - id: e03
+    type: fill_blank
+    sentence: Omzet toko naik dua kali lipat. ___, ia membuka cabang baru.
+    meaning:
+      ar_eg: مبيعات المحل زادت الضعف. علشان كده فتح فرع جديد.
+      ar: تضاعفت مبيعات المتجر، لذلك فتح فرعًا جديدًا.
+      en: The shop's turnover doubled. Therefore, he opened a new branch.
+    options: [Oleh sebab itu, Akan tetapi, Sementara itu]
+    answers: [Oleh sebab itu]
+    words: [oleh sebab itu]
+  - id: e04
+    type: listen
+    text: Penjualan noken naik. Bahkan, ada pesanan dari luar negeri.
+    question:
+      ar_eg: إيه اللي حصل كمان غير زيادة المبيعات؟
+      ar: ماذا حدث فوق زيادة المبيعات؟
+      en: What happened on top of sales going up?
+    options:
+      - جت طلبات من برّه البلد.
+      - المحل قفل.
+      - الأسعار نزلت.
+    answer: 0
+    words: [bahkan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: لكن المشترين لسّه بييجوا.
+      ar: لكنّ المشترين ما زالوا يأتون.
+      en: However, buyers keep coming.
+    answer: Akan tetapi, pembeli tetap datang.
+    distractors: [bahkan, sementara]
+    words: [akan tetapi]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي أداة ربط بتقارن بين مكانين في نفس الوقت؟
+      ar: أيّ أداة تقارن بين مكانين في الوقت نفسه؟
+      en: Which connector compares two places at the same time?
+    options: [Bahkan, Oleh sebab itu, Sementara itu]
+    answer: 2
+    words: [sementara itu]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: السعر غالي. علشان كده الناس بتشتري أقل.
+      ar: السعر مرتفع، لذلك يشتري الناس أقلّ.
+      en: The price is high. Therefore, people buy less.
+    answers:
+      - Harganya mahal. Oleh sebab itu, orang membeli lebih sedikit.
+      - Harganya mahal. Oleh sebab itu, orang-orang membeli lebih sedikit.
+      - Harga itu mahal. Oleh sebab itu, orang membeli lebih sedikit.
+      - Harganya mahal. Oleh sebab itu, pembeli membeli lebih sedikit.
+    words: [oleh sebab itu]
+  - id: e08
+    type: speaking
+    text: Di Jayapura harga ikan turun. Sementara itu, di Wamena harganya naik.
+    meaning:
+      ar_eg: في جايابورا سعر السمك نزل. وفي نفس الوقت، في وامينا سعره طلع.
+      ar: انخفض سعر السمك في جايابورا، وفي الأثناء ارتفع في وامينا.
+      en: In Jayapura fish prices fell. Meanwhile, in Wamena they rose.
+    words: [sementara itu]
+  - id: e09
+    type: dictation
+    text: Akan tetapi, usaha kecil itu tetap bertahan.
+    meaning:
+      ar_eg: لكن المشروع الصغير ده فضل صامد.
+      ar: لكنّ ذلك المشروع الصغير صمد.
+      en: However, that small business held on.
+    words: [akan tetapi]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Banyak toko tutup. Meskipun demikian, toko Mama Ester bahkan menambah karyawan.
+    answers_meaning:
+      ar_eg:
+        - محلات كتير قفلت. ومع ذلك، محل ماما إستر لا وكمان زوّد الموظفين.
+        - رغم إن محلات كتير قفلت، محل ماما إستر جاب موظفين زيادة كمان.
+      ar:
+        - أُغلقت متاجر كثيرة، ومع ذلك زاد متجر ماما إستر موظّفيه.
+        - رغم إغلاق متاجر كثيرة، بل إنّ متجر ماما إستر زاد عدد عمّاله.
+      en:
+        - Many shops closed. Even so, Mama Ester's shop actually took on more staff.
+        - Though many shops shut, Mama Ester's even hired more people.
+    words: [meskipun demikian, bahkan]
+dialogue:
+  title: Kuliah ekonomi di Abepura
+  lines:
+    - speaker: Bu Frida
+      text: Paragrafmu bagus, tetapi kalimatnya terputus-putus.
+      ar_eg: الفقرة بتاعتك حلوة، بس الجمل مقطّعة.
+      ar: فقرتك جيّدة، لكنّ جملها متقطّعة.
+      en: Your paragraph is good, but the sentences feel disconnected.
+    - speaker: Mohamed
+      text: Harga sagu naik. Pembeli tetap datang. Apa yang kurang, Bu?
+      ar_eg: سعر السجو طلع. المشترين لسّه بييجوا. إيه اللي ناقص يا دكتورة؟
+      ar: ارتفع سعر الساغو. يأتي المشترون. ما الناقص يا دكتورة؟
+      en: Sago prices rose. Buyers still come. What's missing, Bu?
+    - speaker: Bu Frida
+      text: Jembatannya. Tambahkan "akan tetapi" di awal kalimat kedua.
+      ar_eg: الكوبري اللي بينهم. حطّ «akan tetapi» في أول الجملة التانية.
+      ar: الجسر بينهما. أضف «akan tetapi» في أوّل الجملة الثانية.
+      en: The bridge. Add "akan tetapi" at the start of the second sentence.
+    - speaker: Mohamed
+      text: Harga sagu naik. Akan tetapi, pembeli tetap datang. Bahkan, jumlahnya bertambah.
+      ar_eg: سعر السجو طلع. لكن المشترين لسّه بييجوا. لا وكمان عددهم زاد.
+      ar: ارتفع سعر الساغو، لكنّ المشترين ما زالوا يأتون، بل زاد عددهم.
+      en: Sago prices rose. However, buyers still come. In fact, there are more of them.
+new_words:
+  - word: akan tetapi
+    pos: conjunction
+    ar_eg: لكن (في أول الجملة)
+    ar: لكنّ (في صدر الجملة)
+    en: however
+  - word: meskipun demikian
+    pos: conjunction
+    ar_eg: ومع ذلك
+    ar: ومع ذلك
+    en: even so
+  - word: bahkan
+    pos: adverb
+    ar_eg: لا وكمان / بل
+    ar: بل
+    en: in fact, even
+  - word: oleh sebab itu
+    pos: conjunction
+    arabic: سبب
+    ar_eg: علشان كده
+    ar: لذلك
+    en: therefore
+  - word: sementara itu
+    pos: conjunction
+    ar_eg: في الوقت نفسه
+    ar: في الأثناء
+    en: meanwhile
+review:
+  status: draft
+  verified: false
