@@ -114,6 +114,8 @@ pub struct Ui {
     pub screen: Signal<Screen>,
     /// The lesson the player shows (curriculum lesson id).
     pub lesson: Signal<Option<String>>,
+    /// The screen the player was opened from; closing it goes back there.
+    pub lesson_from: Signal<Screen>,
 }
 
 /// The local database, shared through context.
@@ -154,14 +156,19 @@ impl Ui {
 
     /// Opens the Lesson Player on a lesson (from the Journey Map, Today or Lanjut).
     pub fn open_lesson(mut self, lesson_id: impl Into<String>) {
+        let from = *self.screen.peek();
+        if from != Screen::Lesson {
+            self.lesson_from.set(from);
+        }
         self.lesson.set(Some(lesson_id.into()));
         self.screen.set(Screen::Lesson);
     }
 
-    /// Leaves the Lesson Player back to the Journey Map.
+    /// Leaves the Lesson Player back to the screen it was opened from.
     pub fn close_lesson(mut self) {
+        let back = *self.lesson_from.peek();
         self.lesson.set(None);
-        self.screen.set(Screen::Journey);
+        self.screen.set(back);
     }
 }
 
@@ -243,6 +250,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
             (None, None) => Screen::Today,
         }),
         lesson: Signal::new(open_lesson),
+        lesson_from: Signal::new(Screen::Journey),
     });
     use_context_provider(|| db.clone());
     use_context_provider(play::PlayNav::new);

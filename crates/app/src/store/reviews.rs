@@ -27,6 +27,17 @@ impl Store {
         Ok(())
     }
 
+    /// Adds review cards for a finished lesson's new words (synced like any
+    /// card). Words the deck already holds are skipped, so finishing the same
+    /// lesson again is a no-op. Returns how many cards were added.
+    pub fn add_lesson_cards(&mut self, lesson: &kabar_protocol::lesson::LessonContent) -> Result<usize> {
+        let cards = kabar_core::review::lesson_cards(lesson, &self.cards()?);
+        if !cards.is_empty() {
+            self.upsert_cards(&cards)?;
+        }
+        Ok(cards.len())
+    }
+
     /// Live cards in the order they were added. A payload this build can't
     /// read is skipped and reported, so one bad row never blocks reviewing.
     pub fn cards(&self) -> Result<Vec<Card>> {
@@ -156,6 +167,26 @@ mod tests {
         kabar.verified = true;
         store.upsert_card(&kabar).unwrap();
         assert!(store.cards().unwrap().iter().any(|c| c.id == kabar.id && c.verified));
+    }
+
+    #[test]
+    fn finishing_a_lesson_adds_its_words_once() {
+        let lesson =
+            kabar_core::lesson::parse_lesson(include_str!("../../../../fixtures/lessons/bipa1.u01.l01.yaml"))
+                .unwrap();
+        let mut store = Store::open_in_memory().unwrap();
+        store.upsert_cards(&seed_bridge_deck()).unwrap();
+        let added = store.add_lesson_cards(&lesson).unwrap();
+        assert!(added >= 7, "added {added}");
+        let cards = store.cards().unwrap();
+        assert!(cards.iter().any(|c| c.word == "pagi" && c.source_ref.as_deref() == Some("bipa1.u01.l01")));
+        assert_eq!(store.add_lesson_cards(&lesson).unwrap(), 0, "a replay adds nothing");
+        assert_eq!(store.cards().unwrap().len(), cards.len());
+        // The new cards are queued for sync like any other card write.
+        let ops = store.outbox(1000).unwrap();
+        assert!(
+            ops.iter().any(|op| op.table == "cards" && op.row_id == "lesson.bipa1.u01.l01.pagi.recognition")
+        );
     }
 
     #[test]
