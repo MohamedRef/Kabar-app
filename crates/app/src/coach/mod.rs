@@ -18,7 +18,8 @@ use kabar_core::coach::plan::{self, PlanInputs};
 use kabar_core::coach::voice::{self, Line};
 use kabar_core::coach::{history, onboarding as core_onboarding, rewards};
 use kabar_protocol::coach::{
-    ActivityEvent, ActivityKind, CoachProfile, DailyPlan, LocalDate, LocalTime, PlanSize, ReminderState,
+    ActivityEvent, ActivityKind, CoachProfile, DailyPlan, LanguageFocus, LocalDate, LocalTime, PlanSize,
+    ReminderState,
 };
 
 use crate::{Db, Ui};
@@ -151,10 +152,11 @@ impl Coach {
 }
 
 /// Builds the plan for `date` (not saved). `due_reviews` comes from the
-/// review deck; the current unit is still the starting unit until the
-/// Journey reports progress. `picked`: the learner chose `size` just now (a
-/// bigger size then wins over a welcome-back plan).
+/// review deck; the lesson is the unit the Journey is on (its start follows
+/// the placement test, else the onboarding answer). `picked`: the learner
+/// chose `size` just now (a bigger size then wins over a welcome-back plan).
 pub fn build_plan(
+    db: &Db,
     due_reviews: u32,
     profile: &CoachProfile,
     events: &[ActivityEvent],
@@ -163,12 +165,17 @@ pub fn build_plan(
     picked: bool,
 ) -> DailyPlan {
     let weak = plan::weak_spots(events, date, WEAK_SPOT_WINDOW_DAYS);
+    let completed = db.0.borrow().completed_lessons().unwrap_or_default();
+    let start = crate::journey::start_level(db, Some(profile));
+    let javanese = profile.focus == LanguageFocus::Javanese;
+    let unit = crate::journey::current_unit(&completed, start.as_deref(), javanese)
+        .unwrap_or_else(|| core_onboarding::starting_unit(profile.start).to_string());
     plan::build_plan(&PlanInputs {
         date,
         size,
         picked,
         due_reviews,
-        current_unit: Some(core_onboarding::starting_unit(profile.start)),
+        current_unit: Some(&unit),
         weak_spots: &weak,
         last_study_day: history::last_study_day(events, date),
     })
@@ -181,7 +188,7 @@ pub fn plan_for(db: &Db, profile: &CoachProfile, events: &[ActivityEvent], date:
         return plan;
     }
     let due = crate::review::due_words(db, crate::store::now_ms()).len() as u32;
-    let plan = build_plan(due, profile, events, date, profile.daily_size, false);
+    let plan = build_plan(db, due, profile, events, date, profile.daily_size, false);
     if let Err(e) = db.0.borrow_mut().save_plan(&plan) {
         eprintln!("kabar: saving today's plan failed: {e}");
     }
