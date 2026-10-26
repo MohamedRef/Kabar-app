@@ -3,6 +3,7 @@
 
 pub mod hlc;
 pub mod pen;
+pub mod srs;
 
 pub use hlc::{DeviceId, Hlc};
 
