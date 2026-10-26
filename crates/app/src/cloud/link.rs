@@ -100,6 +100,26 @@ impl CloudLink {
     }
 }
 
+impl CloudLink {
+    /// Uploads a PNG or JPEG for the vision tasks and returns the
+    /// `EngineCall::image_sha256` that names it. Upload right before each
+    /// vision call: it is cheap to repeat, and the server keeps images only
+    /// a week.
+    #[cfg_attr(not(test), allow(dead_code))] // The Tablet Studio's Gambar! and handwriting fallback (M9).
+    pub async fn put_blob(&self, bytes: Vec<u8>) -> Result<String, Unreachable> {
+        let sha = sha256_hex(&bytes);
+        let name = sha.clone();
+        let bytes = std::sync::Arc::new(bytes);
+        self.with_token(move |api, token| api.put_blob(token, &name, &bytes)).await?;
+        Ok(sha)
+    }
+}
+
+fn sha256_hex(bytes: &[u8]) -> String {
+    use sha2::{Digest, Sha256};
+    Sha256::digest(bytes).iter().map(|b| format!("{b:02x}")).collect()
+}
+
 /// Runs blocking work on its own thread and awaits it from any executor.
 pub async fn off_thread<T: Send + 'static>(f: impl FnOnce() -> T + Send + 'static) -> T {
     let (tx, rx) = oneshot::channel();
