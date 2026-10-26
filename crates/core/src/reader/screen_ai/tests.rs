@@ -270,7 +270,7 @@ fn every_golden_expectation_validates_against_its_input() {
         let answer: StructureScreenshot =
             serde_json::from_value(item.expect.clone()).unwrap_or_else(|e| panic!("{}: {e}", item.id));
         answer.validate().unwrap_or_else(|e| panic!("{}: {e}", item.id));
-        answer.validate_against(&item.input).unwrap_or_else(|e| panic!("{}: {e}", item.id));
+        answer.check(&item.input).unwrap_or_else(|e| panic!("{}: {e}", item.id));
     }
 }
 
@@ -327,7 +327,7 @@ fn tracing_tolerates_ocr_fixes_but_not_inventions() {
         {"text": "Siti Aminah", "box": [0, 0, 1, 1]},
     ]});
     let check = |text: &str, time: Option<&str>| {
-        answer(ScreenKind::Chat, vec![msg(Side::Left, None, text, time)]).validate_against(&input)
+        answer(ScreenKind::Chat, vec![msg(Side::Left, None, text, time)]).check(&input)
     };
     assert!(check("Sek tak lapor pusat", Some("10.33")).is_ok(), "one-letter OCR slip fixed");
     assert!(check("arp dicul piro 👍", None).is_ok(), "glued words split, emoji ignored");

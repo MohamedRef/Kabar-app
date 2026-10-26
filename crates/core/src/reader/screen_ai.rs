@@ -128,7 +128,7 @@ impl AiOutput for StructureScreenshot {
         Ok(())
     }
 
-    fn validate_against(&self, input: &Value) -> Result<(), String> {
+    fn check(&self, input: &Value) -> Result<(), String> {
         let source = Source::new(
             input["ocr_blocks"].as_array().into_iter().flatten().filter_map(|b| b["text"].as_str()),
         );

@@ -256,7 +256,7 @@ impl Router {
             prompt_version: template.version,
         };
         let answer = |value: T, key: CacheKey, from_cache| Answer {
-            needs_review: value.needs_review(),
+            needs_review: value.needs_review() || T::input_needs_review(&req.input),
             value,
             engine: key.engine,
             prompt_version: key.prompt_version,
@@ -330,7 +330,7 @@ impl Router {
 fn decode<T: AiOutput>(text: &str, input: &Value) -> Result<T, String> {
     let v: T = json::parse(text)?;
     v.validate()?;
-    v.validate_against(input)?;
+    v.check(input)?;
     Ok(v)
 }
 
