@@ -14,12 +14,12 @@ use kabar_protocol::story::SegmentKind;
 use serde::Deserialize;
 
 use super::text::{T, tt};
-use crate::Ui;
 use crate::account::Cloud;
 use crate::audio::{self, AudioCache, Track};
 use crate::cloud::SyncState;
 use crate::cloud::link::Unreachable;
 use crate::lesson::{Rich, target_tag};
+use crate::{Ui, platform};
 
 /// One `<audio>` element for the whole player, driven by messages. Every
 /// event carries the `seq` of the load it belongs to, so a late `ended` from
@@ -100,6 +100,10 @@ fn spoken_ms(text: &str, rate: f64) -> u64 {
 #[derive(Clone, Copy)]
 struct Deck {
     program: CopyValue<Program>,
+    /// Shown on the lock screen while the native player has the track.
+    title: CopyValue<String>,
+    /// The downloaded track is loaded in the native background player.
+    native: Signal<bool>,
     cache: CopyValue<Option<AudioCache>>,
     cloud: Option<Cloud>,
     engine: Signal<Option<Eval>>,
@@ -159,6 +163,23 @@ impl Deck {
         let track = self.track.peek().clone();
         if let Some(track) = track {
             let at = track.starts.get(i).copied().unwrap_or_default();
+            if platform::BACKGROUND_AUDIO {
+                let ok = if *self.native.peek() {
+                    platform::track::seek(at)
+                } else {
+                    platform::track::play(
+                        &track.path.to_string_lossy(),
+                        &self.title.peek(),
+                        "Kabar",
+                        at,
+                        rate as f32,
+                    )
+                };
+                match ok {
+                    Ok(()) => return self.native.set(true),
+                    Err(e) => eprintln!("kabar: background playback failed, playing in the app: {e}"),
+                }
+            }
             if *self.track_loaded.peek() {
                 self.send(serde_json::json!({ "op": "seek", "at": at, "rate": rate, "seq": seq }));
             } else {
@@ -229,17 +250,52 @@ impl Deck {
 
     fn pause(mut self) {
         self.playing.set(false);
+        if *self.native.peek() {
+            platform::track::pause().ok();
+        }
         self.send(serde_json::json!({ "op": "pause" }));
     }
 
     fn resume(self) {
-        if self.track.peek().is_some() && *self.track_loaded.peek() {
+        if self.track.peek().is_some() && *self.native.peek() && !*self.finished.peek() {
+            let mut playing = self.playing;
+            playing.set(true);
+            if let Err(e) = platform::track::resume() {
+                eprintln!("kabar: resuming the background player failed: {e}");
+            }
+        } else if self.track.peek().is_some() && *self.track_loaded.peek() {
             let mut playing = self.playing;
             playing.set(true);
             self.send(serde_json::json!({ "op": "resume" }));
         } else {
             let at = if *self.finished.peek() { 0 } else { *self.current.peek() };
             self.play(at);
+        }
+    }
+
+    /// The native player's state, polled: moves the transcript along, and
+    /// follows a pause or play from the lock screen.
+    fn native_tick(mut self, t: f64, playing: bool, ended: bool) {
+        let seq = *self.seq.peek();
+        if ended {
+            if *self.playing.peek() {
+                self.on_event(EngineEvent { ev: "ended".into(), seq, t });
+            }
+            return;
+        }
+        if playing != *self.playing.peek() {
+            self.playing.set(playing);
+        }
+        if t >= 0.0 {
+            self.on_event(EngineEvent { ev: "time".into(), seq, t });
+        }
+    }
+
+    /// Hands the track back from the native player (download removed, or leaving).
+    fn stop_native(mut self) {
+        if *self.native.peek() {
+            self.native.set(false);
+            platform::track::stop().ok();
         }
     }
 
@@ -309,6 +365,9 @@ pub fn ProgramPlayer(
     on_back: EventHandler,
     on_end: EventHandler,
     children: Element,
+    /// False for a chat replay: nothing to keep offline.
+    #[props(default = true)]
+    downloadable: bool,
 ) -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.lang();
@@ -318,6 +377,8 @@ pub fn ProgramPlayer(
 
     let deck = use_hook(|| Deck {
         program: CopyValue::new(program.clone()),
+        title: CopyValue::new(title.clone()),
+        native: Signal::new(false),
         track: Signal::new(cache.as_ref().and_then(|c| c.track(&program.id))),
         cache: CopyValue::new(cache.clone()),
         cloud,
@@ -345,7 +406,25 @@ pub fn ProgramPlayer(
             deck.on_event(e);
         }
     });
-    use_drop(move || deck.send(serde_json::json!({ "op": "stop" })));
+    // Downloaded tracks on Android: follow the native player.
+    use_future(move || async move {
+        if !platform::BACKGROUND_AUDIO {
+            return;
+        }
+        loop {
+            tokio::time::sleep(std::time::Duration::from_millis(400)).await;
+            if *deck.native.peek() {
+                match platform::track::state() {
+                    Ok((t, playing, ended)) => deck.native_tick(t, playing, ended),
+                    Err(e) => eprintln!("kabar: reading the background player failed: {e}"),
+                }
+            }
+        }
+    });
+    use_drop(move || {
+        deck.stop_native();
+        deck.send(serde_json::json!({ "op": "stop" }));
+    });
     use_effect(move || {
         if *deck.finished.read() && !*ended_once.peek() {
             ended_once.set(true);
@@ -377,6 +456,7 @@ pub fn ProgramPlayer(
             cache.remove_track(&id);
         }
         deck.pause();
+        deck.stop_native();
         let (mut track, mut loaded) = (deck.track, deck.track_loaded);
         track.set(None);
         loaded.set(false);
@@ -388,6 +468,7 @@ pub fn ProgramPlayer(
     let downloaded = deck.track.read().is_some();
     let notice = *deck.notice.read();
     let dl = *download.read();
+    let translated = program.cues.iter().any(|c| !c.meaning.en.is_empty());
     let first_speaker = program.cues.first().map(|c| c.speaker.clone()).unwrap_or_default();
     let mut scene_no = 0;
 
@@ -397,7 +478,7 @@ pub fn ProgramPlayer(
                 button { class: "quiet", onclick: move |_| on_back.call(()), "{tt(lang, T::Back)}" }
                 h2 { bdi { lang: target, class: "latin", "{title}" } }
             }
-            div { class: "row lx-download",
+            div { class: "row lx-download", display: if downloadable { "" } else { "none" },
                 match dl {
                     DownloadState::Running(done, total) => rsx! {
                         span { class: "muted small", role: "status",
@@ -461,7 +542,7 @@ pub fn ProgramPlayer(
                                     }
                                     if show_all() || revealed.read().contains(&i) {
                                         p { class: "lx-meaning muted", Rich { text: pick(&cue.meaning, lang).to_string(), target } }
-                                    } else {
+                                    } else if !cue.meaning.en.is_empty() {
                                         button {
                                             class: "lx-reveal quiet",
                                             aria_label: "{tt(lang, T::Translations)}",
@@ -504,14 +585,19 @@ pub fn ProgramPlayer(
                         let mut rate = deck.rate;
                         let r = if slow { 1.0 } else { 0.8 };
                         rate.set(r);
+                        if *deck.native.peek() {
+                            platform::track::rate(r as f32).ok();
+                        }
                         deck.send(serde_json::json!({ "op": "rate", "rate": r }));
                     },
                     "{tt(lang, T::Slower)}"
                 }
-                button {
-                    aria_pressed: if show_all() { "true" } else { "false" },
-                    onclick: move |_| show_all.toggle(),
-                    "{tt(lang, T::Translations)}"
+                if translated {
+                    button {
+                        aria_pressed: if show_all() { "true" } else { "false" },
+                        onclick: move |_| show_all.toggle(),
+                        "{tt(lang, T::Translations)}"
+                    }
                 }
             }
         }

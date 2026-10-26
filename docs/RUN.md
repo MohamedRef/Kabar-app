@@ -223,7 +223,7 @@ Commit `content/packs/` after bundling: the app build embeds `content/packs/inde
 
 **In the app:** Settings → **Offline packs** lists every unit with its size, Download / Update / Remove, total storage, and "Download the current and next unit automatically" (on by default: opening a lesson fetches its unit and the next one in the background). The Lesson Player plays a downloaded clip first, then the device's own voice (Android TextToSpeech, or the WebView voice on the Mac), exactly as before. A run-time `KABAR_PACKS_URL` points the app at another release; an empty one turns downloads off.
 
-## 13. Watch & listen: Sinetron and Kabar Radio (M12)
+## 13. Watch & listen and persona chats (M12)
 
 Open **Watch & listen** (اتفرج واسمع): in the sidebar on the Mac and the Tab S11, and from the links under Today on the S24 Ultra.
 
@@ -232,7 +232,14 @@ Open **Watch & listen** (اتفرج واسمع): in the sidebar on the Mac and t
 - **Voices** are Azure's neural voices through Kabar Cloud (sign in under Account & devices). The four voices are shared, so pitch tells the Sinetron characters apart. Without Kabar Cloud, Indonesian lines are read by the device's voice (the Mac's "Damayanti", see section 10).
 - **Offline**: **Download for offline** on an episode fetches every line and stores the episode as a single MP3 track. It then plays with no network, for example in airplane mode on the S24 Ultra. **Free up space** at the bottom of the list removes all downloads. An episode takes about 2 MB and about 3,000 of Azure's 500,000 free characters a month.
 - To try it offline: open Kabar Radio → *Apa kabar, Kota Tua?* → **Download for offline**, wait for ✓, turn on airplane mode, then **Play**.
-- Still to come in M12: persona chats, and playback with the screen off (Android background audio). Daily Radio episodes "from my words" are waiting on the `radio_script` bake-off on the Mac.
+- **Chat** (دردش): sidebar on the Mac and the Tab, and the links under Today on the phone. Pick Mas Dimas or Bu Siti (Javanese), or Mbak Gadis or Mas Ardi (Indonesian), then a scene. The chat is pitched at your Journey level (Javanese personas speak Indonesian with a Javanese word a turn until you start the Javanese journey).
+  - Type a reply (Enter sends, Shift+Enter is a new line), or **✍ Handwrite** with the pen on the Tab.
+  - Mistakes show under your message with the more natural form and a one-line reason. **✓ Spot on** means there was nothing to fix.
+  - Tap any word in a reply (or hover it with the S Pen) for the Reader's word card. 🔊 plays the reply in the persona's own voice.
+  - **Talk to me in** switches ngoko/krama (Javanese) or casual/standard (Indonesian).
+  - **Replay as dialogue** plays the whole chat with two voices, your lines as corrected.
+  - AI-written Javanese shows **Not checked yet**. Chats sync to your other devices. Replies need Kabar Cloud (Workers AI first). What you type is sent as learning text, with e-mail addresses and phone numbers removed first.
+- **Screen off** (S24 Ultra, Tab S11): a *downloaded* episode plays in Android's media player, so it keeps going with the screen off or in another app, with play/pause on the lock screen and in the notification shade. Leaving the episode stops it. Episodes that aren't downloaded play inside the app and pause when the screen goes off. Daily Radio episodes "from my words" are waiting on the `radio_script` bake-off on the Mac.
 
 ## 14. Troubleshooting
 
