@@ -31,8 +31,8 @@ use super::{fill, iso, level_label, level_tests, load_logs, pct, rtl};
 use crate::coach::{Coach, labels, say, widgets::Nur};
 use crate::lesson::text::{L, lt};
 use crate::lesson::{
-    Draft, ExerciseView, MAX_STEP_MS, Rich, TextAnswer, autoplay_text, draft_answer, instruction, now_ms,
-    speak, target_tag,
+    Draft, ExerciseView, MAX_STEP_MS, Rich, TextAnswer, autoplay_text, draft_answer, instruction,
+    needs_audio, now_ms, option_count, speak, target_tag,
 };
 use crate::{Db, Screen, Ui};
 
@@ -276,6 +276,66 @@ fn Runner(runner: Signal<Option<TestRunner>>, on_done: EventHandler<()>) -> Elem
         document::eval("document.querySelector('.st-check')?.scrollIntoView({block: 'start'});");
     };
 
+    // No sound for Indonesian: listening items are skipped the "can't
+    // listen now" way (unscored), with a note, as in the other tests.
+    let mut voice_skips = use_signal(|| 0u32);
+    use_effect(move || {
+        if !*missing.read() {
+            return;
+        }
+        let skip = {
+            let r = runner.read();
+            r.as_ref().is_some_and(|r| {
+                matches!(r.step(), TestStep::Item { .. }) && r.exercise().is_some_and(|ex| needs_audio(&ex))
+            })
+        };
+        if skip {
+            voice_skips += 1;
+            commit(&|r| r.skip());
+        }
+    });
+
+    // Enter = next, 1–9 = pick an option (same keys as the Lesson Player and
+    // the level tests).
+    use_future(move || async move {
+        let mut eval = document::eval(
+            r#"
+            if (window.__kabarCheckKeys) document.removeEventListener("keydown", window.__kabarCheckKeys, true);
+            window.__kabarCheckKeys = (e) => {
+                const root = document.querySelector(".st-runner");
+                if (!root || e.isComposing) return;
+                const t = e.target;
+                if (t.closest && t.closest(".lt-selfcheck")) return;
+                const typing = t.tagName === "TEXTAREA" || t.tagName === "INPUT";
+                if (e.key === "Enter" && !e.shiftKey) {
+                    const next = root.querySelector(".lp-primary");
+                    if (next && !next.disabled && (!t.closest || !t.closest("button"))) {
+                        e.preventDefault();
+                        next.click();
+                    }
+                } else if (!typing && !e.ctrlKey && !e.metaKey && !e.altKey && /^[1-9]$/.test(e.key)) {
+                    dioxus.send(e.key);
+                }
+            };
+            document.addEventListener("keydown", window.__kabarCheckKeys, true);
+            await new Promise(() => {});
+            "#,
+        );
+        while let Ok(key) = eval.recv::<String>().await {
+            let Ok(n) = key.parse::<usize>() else { continue };
+            let count = runner.peek().as_ref().and_then(|r| r.exercise()).map_or(0, |ex| option_count(&ex));
+            if (1..=count).contains(&n) {
+                let mut d = draft;
+                d.write().choice = Some(n - 1);
+            }
+        }
+    });
+    use_drop(|| {
+        document::eval(
+            r#"if (window.__kabarCheckKeys) { document.removeEventListener("keydown", window.__kabarCheckKeys, true); window.__kabarCheckKeys = null; }"#,
+        );
+    });
+
     let guard = runner.read();
     let Some(r) = guard.as_ref() else { return rsx! {} };
     let step = r.step();
@@ -371,6 +431,9 @@ fn Runner(runner: Signal<Option<TestRunner>>, on_done: EventHandler<()>) -> Elem
                 div { class: "lp-bar", style: "inline-size: {pct_done}%" }
             }
             div { class: "lp-col", key: "{step:?}",
+                if *voice_skips.read() > 0 && matches!(step, TestStep::Item { .. }) {
+                    p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, L::NoVoiceSkipped)}" }
+                }
                 if let (TestStep::Item { .. }, Some(it)) = (step, item.clone()) {
                     if let Some(sec) = &section {
                         header { class: "lt-section",
