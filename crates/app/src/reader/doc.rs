@@ -167,6 +167,12 @@ impl ReadDoc {
 
     /// The sentence around a token, for "meaning in this sentence" and cloze cards.
     pub fn sentence_of(&self, token: usize) -> &str {
+        let (start, end) = self.sentence_span(token);
+        &self.body[start..end]
+    }
+
+    /// Byte range of the sentence around a token, trimmed.
+    pub fn sentence_span(&self, token: usize) -> (usize, usize) {
         let t = &self.tokens[token];
         let seg = &self.segments[t.seg];
         let s = &self.body[seg.start..seg.end];
@@ -174,7 +180,9 @@ impl ReadDoc {
         let is_end = |c: char| matches!(c, '.' | '!' | '?' | '…');
         let from = s[..rel].rfind(is_end).map_or(0, |i| i + 1);
         let to = s[rel..].find(is_end).map_or(s.len(), |i| rel + i + 1);
-        s[from..to].trim()
+        let lead = s[from..to].len() - s[from..to].trim_start().len();
+        let start = seg.start + from + lead;
+        (start, start + s[from..to].trim().len())
     }
 
     /// The text covered by a set of tokens (lasso, drag-select, highlight).
