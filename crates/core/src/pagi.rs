@@ -374,7 +374,11 @@ impl StoryBank {
 /// One TTS segment per sentence (Azure via Kabar Cloud, or system voices).
 /// Play them with [`RATE_PERCENT`] and a [`PAUSE_SECONDS`] gap.
 pub fn tts_segments(story: &Story, voice: Voice) -> Vec<TtsSegment> {
-    story.sentences.iter().map(|s| TtsSegment { voice, text: s.id.trim().to_string() }).collect()
+    story
+        .sentences
+        .iter()
+        .map(|s| TtsSegment { voice, text: s.id.trim().to_string(), pitch_percent: 0 })
+        .collect()
 }
 
 /// Rough listening time at a learner-friendly pace: Indonesian words at
@@ -554,7 +558,10 @@ mod tests {
         let st = morph_story();
         let segs = tts_segments(&st, Voice::IdGadis);
         assert_eq!(segs.len(), 6);
-        assert_eq!(segs[1], TtsSegment { voice: Voice::IdGadis, text: "Saya sedang membaca buku.".into() });
+        assert_eq!(
+            segs[1],
+            TtsSegment { voice: Voice::IdGadis, text: "Saya sedang membaca buku.".into(), pitch_percent: 0 }
+        );
         assert!(segs.iter().all(|t| t.voice == Voice::IdGadis));
     }
 
