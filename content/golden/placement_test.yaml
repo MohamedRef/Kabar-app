@@ -1785,15 +1785,15 @@ items:
       correct: true
     - item: j2-01
       prompt: 'Say the price in Javanese: Rp 25.000'
-      answer: rong puluh lima èwu
+      answer: rong puluh lima ewu
       correct: false
     - item: j2-02
       prompt: Say 'his house' in ngoko.
-      answer: omahé
+      answer: omahe
       correct: true
     - item: j2-03
       prompt: 'Say in ngoko: ''I''m drinking tea.'''
-      answer: Aku lagi ombé tèh.
+      answer: Aku lagi ombe teh.
       correct: false
   expect:
     level: j2
@@ -1802,16 +1802,16 @@ items:
     - chat spelling (arp = arep, piro = pira)
     - wis / durung instead of Indonesian sudah / belum
     - ora vs dudu
-    - possessive -é / -né
+    - possessive -e / -ne
     gaps:
-    - special numbers (selawé, sèket)
-    - nasal prefix N- (ombé → ngombé)
+    - special numbers (selawe, seket)
+    - nasal prefix N- (ombe → ngombe)
   criteria:
   - 'level is j2: the lowest level whose items are under 75% correct'
   - confidence is high
   - every strength and gap names a concrete skill tied to an item in the answers (not 'grammar' or 'vocabulary'
     in general)
-  - gaps name selawé (25) as a special number
+  - gaps name selawe (25) as a special number
   avoid:
   - placing the learner above the first level they have not mastered
   - a gap or strength not supported by any answer
@@ -1844,19 +1844,19 @@ items:
       correct: true
     - item: j2-01
       prompt: 'Say the price in Javanese: Rp 25.000'
-      answer: selawé èwu
+      answer: selawe ewu
       correct: true
     - item: j2-02
       prompt: Say 'his house' in ngoko.
-      answer: omahé
+      answer: omahe
       correct: true
     - item: j2-03
       prompt: 'Say in ngoko: ''I''m drinking tea.'''
-      answer: Aku lagi ngombé tèh.
+      answer: Aku lagi ngombe teh.
       correct: true
     - item: j3-01
       prompt: 'Ask a shopkeeper your age politely: ''Have you eaten?'''
-      answer: Kowé wis mangan?
+      answer: Kowe wis mangan?
       correct: false
     - item: j3-02
       prompt: Krama for 'not' and 'there is'?
@@ -1864,18 +1864,18 @@ items:
       correct: false
     - item: j3-03
       prompt: Ask the price politely in krama.
-      answer: Regané pira?
+      answer: Regane pira?
       correct: false
   expect:
     level: j3
     confidence: high
     strengths:
     - ora vs dudu
-    - special numbers (selawé, sèket)
-    - possessive -é / -né
-    - nasal prefix N- (ombé → ngombé)
+    - special numbers (selawe, seket)
+    - possessive -e / -ne
+    - nasal prefix N- (ombe → ngombe)
     gaps:
-    - krama pronoun sampéyan
+    - krama pronoun sampeyan
     - krama core words (mboten, wonten)
     - asking prices in krama (regi pinten)
   criteria:
@@ -1883,7 +1883,7 @@ items:
   - confidence is high
   - every strength and gap names a concrete skill tied to an item in the answers (not 'grammar' or 'vocabulary'
     in general)
-  - 'answering a polite question in ngoko (''Kowé wis mangan?'') marks krama as the gap: j3'
+  - 'answering a polite question in ngoko (''Kowe wis mangan?'') marks krama as the gap: j3'
   avoid:
   - placing the learner above the first level they have not mastered
   - a gap or strength not supported by any answer
@@ -1912,15 +1912,15 @@ items:
       correct: true
     - item: j2-01
       prompt: 'Say the price in Javanese: Rp 25.000'
-      answer: selawé èwu
+      answer: selawe ewu
       correct: true
     - item: j2-03
       prompt: 'Say in ngoko: ''I''m drinking tea.'''
-      answer: Aku lagi ngombé tèh.
+      answer: Aku lagi ngombe teh.
       correct: true
     - item: j3-01
       prompt: 'Ask a shopkeeper your age politely: ''Have you eaten?'''
-      answer: Sampéyan sampun nedha?
+      answer: Sampeyan sampun nedha?
       correct: true
     - item: j3-02
       prompt: Krama for 'not' and 'there is'?
@@ -1936,14 +1936,14 @@ items:
       correct: false
     - item: j4-02
       prompt: 'Tell an elder: ''I''m going home now.'''
-      answer: Kula badhé kondur rumiyin.
+      answer: Kula badhe kondur rumiyin.
       correct: false
   expect:
     level: j4
     confidence: medium
     strengths:
-    - nasal prefix N- (ombé → ngombé)
-    - krama pronoun sampéyan
+    - nasal prefix N- (ombe → ngombe)
+    - krama pronoun sampeyan
     - krama core words (mboten, wonten)
     - asking prices in krama (regi pinten)
     gaps:
@@ -1988,19 +1988,19 @@ items:
       correct: true
     - item: j2-01
       prompt: 'Say the price in Javanese: Rp 25.000'
-      answer: rong puluh lima èwu
+      answer: rong puluh lima ewu
       correct: false
     - item: j2-02
       prompt: Say 'his house' in ngoko.
-      answer: omahé
+      answer: omahe
       correct: true
     - item: j2-03
       prompt: 'Say in ngoko: ''I''m drinking tea.'''
-      answer: Aku lagi ngombé tèh.
+      answer: Aku lagi ngombe teh.
       correct: true
     - item: j3-01
       prompt: 'Ask a shopkeeper your age politely: ''Have you eaten?'''
-      answer: Sampéyan sampun nedha?
+      answer: Sampeyan sampun nedha?
       correct: true
     - item: j3-02
       prompt: Krama for 'not' and 'there is'?
@@ -2012,10 +2012,10 @@ items:
     strengths:
     - wis / durung instead of Indonesian sudah / belum
     - ora vs dudu
-    - possessive -é / -né
-    - nasal prefix N- (ombé → ngombé)
+    - possessive -e / -ne
+    - nasal prefix N- (ombe → ngombe)
     gaps:
-    - special numbers (selawé, sèket)
+    - special numbers (selawe, seket)
   criteria:
   - 'level is j2: the lowest level whose items are under 75% correct'
   - confidence is medium
@@ -2055,19 +2055,19 @@ items:
       correct: false
     - item: j2-01
       prompt: 'Say the price in Javanese: Rp 25.000'
-      answer: selawé èwu
+      answer: selawe ewu
       correct: true
     - item: j2-02
       prompt: Say 'his house' in ngoko.
-      answer: omahé
+      answer: omahe
       correct: true
     - item: j2-03
       prompt: 'Say in ngoko: ''I''m drinking tea.'''
-      answer: Aku lagi ngombé tèh.
+      answer: Aku lagi ngombe teh.
       correct: true
     - item: j3-01
       prompt: 'Ask a shopkeeper your age politely: ''Have you eaten?'''
-      answer: Sampéyan sampun nedha?
+      answer: Sampeyan sampun nedha?
       correct: true
     - item: j3-02
       prompt: Krama for 'not' and 'there is'?
@@ -2083,10 +2083,10 @@ items:
       correct: true
     - item: j4-02
       prompt: 'Tell an elder: ''I''m going home now.'''
-      answer: Kula badhé wangsul rumiyin.
+      answer: Kula badhe wangsul rumiyin.
       correct: true
     - item: j5-01
-      prompt: What does this mean? 'Kutha Surabaya iku ibukutha Provinsi Jawa Wétan.'
+      prompt: What does this mean? 'Kutha Surabaya iku ibukutha Provinsi Jawa Wetan.'
       answer: Surabaya is the capital of East Java province.
       correct: true
     - item: j6-01
@@ -2189,15 +2189,15 @@ items:
       correct: true
     - item: j2-01
       prompt: 'Say the price in Javanese: Rp 25.000'
-      answer: selawé èwu
+      answer: selawe ewu
       correct: true
     - item: j2-02
       prompt: Say 'his house' in ngoko.
-      answer: omahé
+      answer: omahe
       correct: true
     - item: j2-03
       prompt: 'Say in ngoko: ''I''m drinking tea.'''
-      answer: Aku lagi ngombé tèh.
+      answer: Aku lagi ngombe teh.
       correct: true
     - item: j3-01
       prompt: 'Ask a shopkeeper your age politely: ''Have you eaten?'''
@@ -2209,25 +2209,25 @@ items:
       correct: true
     - item: j3-03
       prompt: Ask the price politely in krama.
-      answer: Regané pira?
+      answer: Regane pira?
       correct: false
   expect:
     level: j3
     confidence: high
     strengths:
-    - special numbers (selawé, sèket)
-    - possessive -é / -né
-    - nasal prefix N- (ombé → ngombé)
+    - special numbers (selawe, seket)
+    - possessive -e / -ne
+    - nasal prefix N- (ombe → ngombe)
     - krama core words (mboten, wonten)
     gaps:
-    - krama pronoun sampéyan
+    - krama pronoun sampeyan
     - asking prices in krama (regi pinten)
   criteria:
   - 'level is j3: the lowest level whose items are under 75% correct'
   - confidence is high
   - every strength and gap names a concrete skill tied to an item in the answers (not 'grammar' or 'vocabulary'
     in general)
-  - over-polite krama inggil to a peer is a gap (sampéyan + nedha is the level asked)
+  - over-polite krama inggil to a peer is a gap (sampeyan + nedha is the level asked)
   - does not call over-politeness rude
   avoid:
   - placing the learner above the first level they have not mastered
@@ -2261,19 +2261,19 @@ items:
       correct: true
     - item: j2-01
       prompt: 'Say the price in Javanese: Rp 25.000'
-      answer: selawé èwu
+      answer: selawe ewu
       correct: true
     - item: j2-02
       prompt: Say 'his house' in ngoko.
-      answer: omahé
+      answer: omahe
       correct: true
     - item: j2-03
       prompt: 'Say in ngoko: ''I''m drinking tea.'''
-      answer: Aku lagi ngombé tèh.
+      answer: Aku lagi ngombe teh.
       correct: true
     - item: j3-01
       prompt: 'Ask a shopkeeper your age politely: ''Have you eaten?'''
-      answer: Sampéyan sampun nedha?
+      answer: Sampeyan sampun nedha?
       correct: true
     - item: j3-02
       prompt: Krama for 'not' and 'there is'?
@@ -2289,17 +2289,17 @@ items:
       correct: true
     - item: j4-02
       prompt: 'Tell an elder: ''I''m going home now.'''
-      answer: Kula badhé kondur rumiyin.
+      answer: Kula badhe kondur rumiyin.
       correct: false
     - item: j5-01
-      prompt: What does this mean? 'Kutha Surabaya iku ibukutha Provinsi Jawa Wétan.'
+      prompt: What does this mean? 'Kutha Surabaya iku ibukutha Provinsi Jawa Wetan.'
       answer: Surabaya is the capital of Indonesia.
       correct: false
   expect:
     level: j4
     confidence: medium
     strengths:
-    - krama pronoun sampéyan
+    - krama pronoun sampeyan
     - krama core words (mboten, wonten)
     - asking prices in krama (regi pinten)
     - krama inggil for an elder's actions (dhahar)
