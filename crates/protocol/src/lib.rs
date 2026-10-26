@@ -7,6 +7,7 @@ pub mod content;
 pub mod hlc;
 pub mod pen;
 pub mod reader;
+pub mod srs;
 pub mod sync;
 
 pub use hlc::{DeviceId, Hlc};
