@@ -1,0 +1,193 @@
+schema: kabar.lesson/v1
+id: j6.u05.l03
+language: jv
+title: Angka Jawa
+can_do:
+  ar_eg: تقرا الأرقام الجاوية والسنين.
+  ar: أن تقرأ الأرقام الجاوية والسنوات.
+  en: Read numerals and years.
+slides:
+  - title: Angka Jawa
+    body:
+      ar_eg: |
+        الأرقام الجاوية من 0 لـ 9:
+        ꧐ 0 · ꧑ 1 · ꧒ 2 · ꧓ 3 · ꧔ 4 · ꧕ 5 · ꧖ 6 · ꧗ 7 · ꧘ 8 · ꧙ 9.
+        وبتتكتب من الشمال لليمين زي أرقامنا الإنجليزي: ꧑꧗ = 17.
+      ar: |
+        الأرقام الجاوية من 0 إلى 9:
+        ꧐ 0 · ꧑ 1 · ꧒ 2 · ꧓ 3 · ꧔ 4 · ꧕ 5 · ꧖ 6 · ꧗ 7 · ꧘ 8 · ꧙ 9.
+        وتُكتب من اليسار إلى اليمين كالأرقام اللاتينية: ꧑꧗ = 17.
+      en: |
+        Javanese numerals from 0 to 9:
+        ꧐ 0 · ꧑ 1 · ꧒ 2 · ꧓ 3 · ꧔ 4 · ꧕ 5 · ꧖ 6 · ꧗ 7 · ꧘ 8 · ꧙ 9.
+        They run left to right like Latin digits: ꧑꧗ = 17.
+    grammar: jv.aksara.murda-rekan
+    examples:
+      - text: ꧇꧑꧗꧇ (17)
+        ar_eg: سبعتاشر (pitulas)
+        ar: سبعة عشر (pitulas)
+        en: seventeen (pitulas)
+      - text: ꧇꧔꧐꧙꧇ (409)
+        ar_eg: أربعمية وتسعة (patang atus sanga)
+        ar: أربعمائة وتسعة (patang atus sanga)
+        en: four hundred and nine (patang atus sanga)
+  - title: Pada pangkat
+    body:
+      ar_eg: |
+        كام رقم جاوي شكله شبه حرف، فعشان ماتتلخبطش، الرقم بيتكتب بين علامتين ꧇ اسمهم pada pangkat:
+        ꧇꧒꧐꧒꧖꧇ = 2026. وكلمة «tanggal» = تاريخ اليوم في الشهر.
+      ar: |
+        بعض الأرقام الجاوية تشبه الحروف، فيُكتب العدد بين علامتي ꧇ واسمها pada pangkat، منعًا للالتباس:
+        ꧇꧒꧐꧒꧖꧇ = 2026. وكلمة «tanggal» = اليوم من الشهر.
+      en: |
+        Some Javanese digits look like letters, so a number is written between two ꧇ marks, called pada pangkat, to avoid confusion:
+        ꧇꧒꧐꧒꧖꧇ = 2026. And "tanggal" = the date (day of the month).
+    grammar: jv.aksara.murda-rekan
+    examples:
+      - text: ꧇꧒꧐꧒꧖꧇ (2026)
+        ar_eg: سنة 2026
+        ar: عام 2026
+        en: the year 2026
+      - text: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇ (tanggal 17)
+        ar_eg: يوم 17 في الشهر
+        ar: اليوم السابع عشر من الشهر
+        en: the 17th (of the month)
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ꧑
+        ar_eg: 1 — واحد (siji)
+        ar: 1 — واحد (siji)
+        en: 1 (siji)
+      - text: ꧒
+        ar_eg: 2 — اتنين (loro)
+        ar: 2 — اثنان (loro)
+        en: 2 (loro)
+      - text: ꧕
+        ar_eg: 5 — خمسة (lima)
+        ar: 5 — خمسة (lima)
+        en: 5 (lima)
+      - text: ꧗
+        ar_eg: 7 — سبعة (pitu)
+        ar: 7 — سبعة (pitu)
+        en: 7 (pitu)
+      - text: ꧙
+        ar_eg: 9 — تسعة (sanga)
+        ar: 9 — تسعة (sanga)
+        en: 9 (sanga)
+    words: [angka]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "اقرا: ꧇꧒꧐꧒꧖꧇"
+      ar: "اقرأ: ꧇꧒꧐꧒꧖꧇"
+      en: "Read: ꧇꧒꧐꧒꧖꧇"
+    options: ["2016", "2206", "2026"]
+    answer: 2
+    words: [angka, pada pangkat]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: العلامة ꧇ اللي حوالين الرقم اسمها إيه؟
+      ar: ما اسم العلامة ꧇ التي تحيط بالعدد؟
+      en: What is the ꧇ mark around a number called?
+    options: [pada lingsa, pada pangkat, pangkon]
+    answer: 1
+    words: [pada pangkat]
+  - id: e04
+    type: listen
+    text: tanggal pitulas
+    question:
+      ar_eg: سمعت أنهي تاريخ؟
+      ar: أي تاريخ سمعت؟
+      en: Which date did you hear?
+    options: ["꧇꧑꧗꧇", "꧇꧗꧑꧇", "꧇꧗꧇"]
+    answer: 0
+    meaning:
+      ar_eg: يوم 17
+      ar: اليوم السابع عشر
+      en: the 17th
+    words: [tanggal, angka]
+  - id: e05
+    type: fill_blank
+    sentence: ꧇꧔꧐꧙꧇ = ___
+    meaning:
+      ar_eg: اكتب الرقم بالأرقام العادية.
+      ar: اكتب العدد بالأرقام المعتادة.
+      en: Write the number in ordinary digits.
+    answers: ["409", patang atus sanga]
+    words: [angka]
+  - id: e06
+    type: fill_blank
+    sentence: Saiki ___ pira? — Tanggal pitulas.
+    meaning:
+      ar_eg: النهارده كام في الشهر؟ — سبعتاشر.
+      ar: كم التاريخ اليوم؟ — السابع عشر.
+      en: What's the date today? — The seventeenth.
+    options: [angka, tanggal, taun]
+    answers: [tanggal]
+    words: [tanggal]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف والأرقام اللاتينية: ꦠꦲꦸꦤ꧀꧇꧒꧐꧒꧖꧇"
+      ar: "اكتب بالحروف والأرقام اللاتينية: ꦠꦲꦸꦤ꧀꧇꧒꧐꧒꧖꧇"
+      en: "Write in Latin letters and digits: ꦠꦲꦸꦤ꧀꧇꧒꧐꧒꧖꧇"
+    answers: [taun 2026, tahun 2026, taun rong ewu rong puluh enem]
+    explain:
+      ar_eg: ta-un (ꦲ شايلة الـ u) وبعدها الرقم بين علامتين ꧇.
+      ar: ta-un (تحمل ꦲ الصائت u) ثم العدد بين علامتي ꧇.
+      en: ta-un (ꦲ carries the u), then the number between two ꧇ marks.
+    words: [angka, pada pangkat]
+  - id: e08
+    type: speaking
+    text: Tanggal pitulas, taun rong ewu rong puluh enem.
+    meaning:
+      ar_eg: يوم 17، سنة 2026.
+      ar: اليوم السابع عشر، عام 2026.
+      en: The 17th, in the year 2026.
+    words: [tanggal]
+dialogue:
+  title: Undhak-undhakan Imogiri
+  lines:
+    - speaker: Mohamed
+      text: Pak, angka ing papan menika pinten?
+      ar_eg: يا عمّو، الرقم اللي على اللوحة ده كام؟
+      ar: يا سيدي، كم هذا الرقم على اللوحة؟
+      en: Sir, what number is on this sign?
+    - speaker: Pak Harjo
+      text: Sekawan atus sanga, Mas. Cacahing undhak-undhakan.
+      ar_eg: أربعمية وتسعة يا ابني. عدد السلالم.
+      ar: أربعمائة وتسعة يا بني، عدد الدرجات.
+      en: Four hundred and nine. The number of steps.
+    - speaker: Mohamed
+      text: Sekawan atus sanga! Kathah sanget.
+      ar_eg: أربعمية وتسعة! كتير قوي.
+      ar: أربعمائة وتسعة! كثير جدًا.
+      en: Four hundred and nine! That's a lot.
+    - speaker: Pak Harjo
+      text: Mangga, alon-alon kemawon.
+      ar_eg: اتفضل، بالراحة بس.
+      ar: تفضّل، على مهلك.
+      en: Go ahead, just take it slowly.
+new_words:
+  - word: angka
+    pos: noun
+    ar_eg: رقم
+    ar: رقم
+    en: number, numeral = angka
+  - word: pada pangkat
+    pos: noun
+    ar_eg: ꧇ — العلامة اللي حوالين الرقم
+    ar: ꧇ — العلامة المحيطة بالعدد
+    en: ꧇ — the mark around a number
+  - word: tanggal
+    pos: noun
+    ar_eg: تاريخ (اليوم في الشهر)
+    ar: التاريخ (اليوم من الشهر)
+    en: date (day of the month) = tanggal
+review:
+  status: draft
+  verified: false

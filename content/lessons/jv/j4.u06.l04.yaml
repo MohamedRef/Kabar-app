@@ -1,0 +1,171 @@
+schema: kabar.lesson/v1
+id: j4.u06.l04
+language: jv
+title: Crita wayang
+can_do:
+  ar_eg: تلخّص مشهد.
+  ar: أن تلخّص مشهدًا.
+  en: Summarise a scene.
+slides:
+  - title: Ramayana cekak
+    body:
+      ar_eg: |
+        crita = حكاية / قصة. ودي الرامايانا في تلات جمل، نغوكو بسيطة زي ما بتحكي لصاحبك:
+        1. Rahwana nyulik Sinta. (رهوانا خطف سينتا؛ nyulik = يخطف)
+        2. Hanoman lunga menyang Alengka. (هانومان، خدّام راما، راح ألينغكا)
+        3. Hanoman matur Rama. (ورجع يعرض على راما — matur، عشان هو خدّام)
+        وإنت بتحكي بالنغوكو، لو حد في القصة بيتكلم مع ملك هتسمع الكراما جوه الحكاية.
+      ar: |
+        crita = حكاية. وهذه الرامايانا في ثلاث جمل، بنغوكو بسيطة كما تحكيها لصديقك:
+        1. Rahwana nyulik Sinta. (اختطف رهوانا سينتا؛ nyulik = يختطف)
+        2. Hanoman lunga menyang Alengka. (ذهب هانومان، خادم راما، إلى ألينغكا)
+        3. Hanoman matur Rama. (وعاد يعرض الخبر على راما — matur لأنه خادم)
+        فإن حكيت بالنغوكو ثم تكلّم في القصة أحدٌ مع ملك سمعت الكراما داخل الحكاية.
+      en: |
+        crita = story. Here's the Ramayana in three sentences, in the simple ngoko you'd use with a friend:
+        1. Rahwana nyulik Sinta. (Rahwana kidnaps Sinta; nyulik = kidnap)
+        2. Hanoman lunga menyang Alengka. (Hanoman, Rama's servant, goes to Alengka)
+        3. Hanoman matur Rama. (and reports back to Rama — matur, because he's a servant)
+        Tell it in ngoko, and when a character speaks to a king, you'll hear krama inside the story.
+    grammar: jv.krama-andhap
+    examples:
+      - text: Rahwana nyulik Sinta.
+        ar_eg: رهوانا خطف سينتا.
+        ar: اختطف رهوانا سينتا.
+        en: Rahwana kidnaps Sinta.
+      - text: Hanoman lunga menyang Alengka.
+        ar_eg: هانومان راح ألينغكا.
+        ar: ذهب هانومان إلى ألينغكا.
+        en: Hanoman goes to Alengka.
+      - text: Hanoman matur Rama.
+        ar_eg: هانومان عرض الخبر على راما.
+        ar: عرض هانومان الخبر على راما.
+        en: Hanoman reports to Rama.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مين اللي خطف سينتا؟
+      ar: من اختطف سينتا؟
+      en: Who kidnaps Sinta?
+    options: [Hanoman, Rahwana, Rama]
+    answer: 1
+    explain:
+      ar_eg: Rahwana nyulik Sinta = رهوانا خطف سينتا.
+      ar: Rahwana nyulik Sinta = اختطف رهوانا سينتا.
+      en: Rahwana nyulik Sinta = Rahwana kidnaps Sinta.
+    words: [nyulik]
+  - id: e02
+    type: listen
+    text: Rahwana nyulik Sinta.
+    options: ['Rahwana nyulik Sinta.', 'Hanoman nyulik Sinta.', 'Rama nyulik Sinta.']
+    answer: 0
+    meaning:
+      ar_eg: رهوانا خطف سينتا.
+      ar: اختطف رهوانا سينتا.
+      en: Rahwana kidnaps Sinta.
+    words: [nyulik]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: هانومان بيقول لراما إن سينتا في ألينغكا. أنهي جملة؟
+      ar: يخبر هانومان راما بأن سينتا في ألينغكا. أي جملة؟
+      en: Hanoman tells Rama that Sinta is in Alengka. Which sentence?
+    options: ['Rama, Sinta ana ing Alengka.', 'Gusti, Sinta ana ing Alengka.', 'Gusti, Dewi Sinta wonten ing Alengka.']
+    answer: 2
+    explain:
+      ar_eg: "خدّام لملكه: Gusti وكراما (wonten)."
+      ar: "خادم لملكه: Gusti وكراما (wonten)."
+      en: "A servant to his king: Gusti and krama (wonten)."
+    words: [gusti]
+  - id: e04
+    type: fill_blank
+    sentence: Iki ___ Ramayana.
+    meaning:
+      ar_eg: دي حكاية الرامايانا.
+      ar: هذه حكاية الرامايانا.
+      en: This is the Ramayana story.
+    options: [gendhing, crita, wayang]
+    answers: [crita]
+    words: [crita]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: رهوانا خطف الأميرة سينتا.
+      ar: اختطف رهوانا الأميرة سينتا.
+      en: Rahwana kidnaps Princess Sinta.
+    answer: Rahwana nyulik Dewi Sinta.
+    distractors: [Hanoman, matur]
+    words: [nyulik]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (لصاحبك) أنا بحب حكاية الرامايانا.
+      ar: (لصديقك) أحب حكاية الرامايانا.
+      en: (to a friend) I love the Ramayana story.
+    answers: ['Aku seneng crita Ramayana.', 'Aku seneng banget crita Ramayana.', 'Aku seneng karo crita Ramayana.']
+    words: [crita]
+  - id: e07
+    type: dictation
+    text: Critane apik banget. Hanoman matur Rama.
+    meaning:
+      ar_eg: الحكاية حلوة قوي. هانومان عرض الخبر على راما.
+      ar: الحكاية رائعة جدًا. عرض هانومان الخبر على راما.
+      en: The story is really good. Hanoman reports to Rama.
+    words: [crita]
+  - id: e08
+    type: speaking
+    text: Critane ngene. Rahwana nyulik Sinta, banjur Hanoman lunga menyang Alengka.
+    meaning:
+      ar_eg: "الحكاية كده: رهوانا خطف سينتا، وبعدين هانومان راح ألينغكا."
+      ar: "الحكاية هكذا: اختطف رهوانا سينتا، ثم ذهب هانومان إلى ألينغكا."
+      en: "The story goes like this: Rahwana kidnaps Sinta, then Hanoman goes to Alengka."
+    words: [crita, nyulik]
+dialogue:
+  title: Crita Ramayana
+  lines:
+    - speaker: Mas Dimas
+      text: Piye, Mohamed? Kowe ngerti critane?
+      ar_eg: إيه رأيك يا محمد؟ فهمت الحكاية؟
+      ar: ما رأيك يا محمد؟ هل فهمت الحكاية؟
+      en: So, Mohamed? Did you follow the story?
+    - speaker: Mohamed
+      text: Ngerti! Rahwana nyulik Sinta, digawa menyang Alengka.
+      ar_eg: فهمت! رهوانا خطف سينتا وخدها ألينغكا.
+      ar: فهمت! اختطف رهوانا سينتا وأخذها إلى ألينغكا.
+      en: I did! Rahwana kidnaps Sinta and carries her off to Alengka.
+    - speaker: Mas Dimas
+      text: Bener. Banjur?
+      ar_eg: صح. وبعدين؟
+      ar: صحيح. ثم؟
+      en: Right. And then?
+    - speaker: Mohamed
+      text: "Hanoman lunga menyang Alengka, banjur matur Rama: Gusti, Dewi Sinta wonten ing Alengka."
+      ar_eg: "هانومان راح ألينغكا، ورجع قال لراما: يا مولاي، الأميرة سينتا في ألينغكا."
+      ar: "ذهب هانومان إلى ألينغكا، ثم عرض على راما: يا مولاي، الأميرة سينتا في ألينغكا."
+      en: "Hanoman goes to Alengka, then reports to Rama: My lord, Princess Sinta is in Alengka."
+    - speaker: Mas Dimas
+      text: Apik tenan! Hanoman matur nganggo krama.
+      ar_eg: حلو بجد! هانومان بيتكلم كراما.
+      ar: رائع حقًا! هانومان يعرض بالكراما.
+      en: Great! Hanoman reports in krama.
+    - speaker: Mohamed
+      text: Iya, merga Hanoman iku abdi.
+      ar_eg: آه، عشان هانومان خدّام.
+      ar: نعم، لأن هانومان خادم.
+      en: Yes, because Hanoman is a servant.
+new_words:
+  - word: crita
+    pos: noun
+    ar_eg: حكاية / قصة
+    ar: حكاية / قصة
+    en: story = cerita
+  - word: nyulik
+    pos: verb
+    ar_eg: يخطف
+    ar: يختطف
+    en: kidnap = menculik
+review:
+  status: draft
+  verified: false

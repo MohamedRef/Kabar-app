@@ -1,0 +1,228 @@
+schema: kabar.lesson/v1
+id: bipa4.u02.l02
+language: id
+title: Tolong-menolong, pepohonan
+can_do:
+  ar_eg: تستعمل التكرار بمعنى «بعض» والتكرار الجزئي (pepohonan).
+  ar: أن تستعمل التكرار التبادلي والتكرار الجزئي.
+  en: Use mutual and partial reduplication.
+slides:
+  - title: Tolong-menolong
+    body:
+      ar_eg: |
+        جذر + meN-جذر = بيعملوا لبعض (متبادل):
+        tolong → tolong-menolong = يساعدوا بعض
+        surat → surat-menyurat = يتراسلوا
+        bantu → bantu-membantu = يساعدوا بعض
+        ده زي وزن «تفاعَل» عندنا: تعاوَن، تراسَل.
+      ar: |
+        الجذر + meN- الجذر = فعل متبادل:
+        tolong → tolong-menolong = يتعاونون
+        surat → surat-menyurat = يتراسلون
+        bantu → bantu-membantu = يتساعدون
+        وهو يقابل وزن «تفاعَل»: تعاوَن، تراسَل.
+      en: |
+        root + meN-root = doing it to each other:
+        tolong → tolong-menolong = help one another
+        surat → surat-menyurat = correspond
+        bantu → bantu-membantu = help each other
+        Like Arabic Form VI «تفاعَل»: تعاوَن، تراسَل.
+    grammar: id.reduplication.advanced
+    examples:
+      - text: Warga Maros masih hidup tolong-menolong.
+        ar_eg: أهل ماروس لسه عايشين بيساعدوا بعض.
+        ar: ما زال أهل ماروس يعيشون في تعاون.
+        en: People in Maros still live helping one another.
+      - text: Setiap Minggu pagi, warga ikut kerja bakti.
+        ar_eg: كل حد الصبح، السكان بيشاركوا في يوم التنضيف الجماعي.
+        ar: يشارك السكان كل صباح أحد في العمل التطوعي الجماعي.
+        en: Every Sunday morning, residents join the community clean-up.
+  - title: Pepohonan, dedaunan
+    body:
+      ar_eg: |
+        تكرار جزئي: أول حرف + e + الكلمة + -an = «كتير ومتنوع»، وطعمه أدبي شوية:
+        pohon (شجرة) → pepohonan = أشجار
+        daun (ورقة شجر) → dedaunan = أوراق الشجر
+        rumput (حشيش) → rerumputan = حشائش
+      ar: |
+        التكرار الجزئي: الحرف الأول + e + الكلمة + -an = الكثرة والتنوع، بنبرة أدبية:
+        pohon → pepohonan = الأشجار
+        daun → dedaunan = أوراق الشجر
+        rumput → rerumputan = الحشائش
+      en: |
+        Partial doubling: first consonant + e + word + -an = many and varied, slightly literary:
+        pohon (tree) → pepohonan = trees
+        daun (leaf) → dedaunan = foliage
+        rumput (grass) → rerumputan = grasses
+    grammar: id.reduplication.advanced
+    examples:
+      - text: Saluran air tersumbat oleh dedaunan.
+        ar_eg: مجرى المية مسدود بورق الشجر.
+        ar: مجرى الماء مسدود بأوراق الشجر.
+        en: The drain is blocked by fallen leaves.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tolong-menolong
+        ar_eg: يساعدوا بعض
+        ar: يتعاونون
+        en: help one another
+      - text: pepohonan
+        ar_eg: أشجار (كتير)
+        ar: أشجار
+        en: trees
+      - text: dedaunan
+        ar_eg: ورق الشجر
+        ar: أوراق الشجر
+        en: foliage, leaves
+      - text: kerja bakti
+        ar_eg: شغل جماعي تطوعي للحي
+        ar: عمل تطوعي جماعي
+        en: community work day
+      - text: saluran air
+        ar_eg: مجرى مية / بلاعة
+        ar: مجرى الماء
+        en: drain, water channel
+      - text: tersumbat
+        ar_eg: مسدود
+        ar: مسدود
+        en: blocked
+    words: [tolong-menolong, pepohonan, dedaunan, kerja bakti, saluran air, tersumbat]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «يساعدوا بعض»؟
+      ar: أيّ كلمة تعني «يتعاونون»؟
+      en: Which word means "help one another"?
+    options: ["menolong", "tolong-menolong", "ditolong"]
+    answer: 1
+    explain:
+      ar_eg: جذر + meN-جذر = متبادل. menolong = يساعد (واحد بس)، ditolong = اتساعد.
+      ar: الجذر + meN- الجذر للتبادل، وmenolong = يساعد، وditolong = سوعد.
+      en: root + meN-root = mutual. menolong = to help; ditolong = be helped.
+    words: [tolong-menolong]
+  - id: e03
+    type: listen
+    text: Saluran air tersumbat oleh dedaunan.
+    options: ["Saluran air tertutup oleh dedaunan.", "Saluran air tersumbat oleh pepohonan.", "Saluran air tersumbat oleh dedaunan."]
+    answer: 2
+    meaning:
+      ar_eg: مجرى المية مسدود بورق الشجر.
+      ar: مجرى الماء مسدود بأوراق الشجر.
+      en: The drain is blocked by fallen leaves.
+    words: [saluran air, tersumbat, dedaunan]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «أشجار كتير ومتنوعة»؟
+      ar: أيّ كلمة تعني «أشجار كثيرة متنوعة»؟
+      en: Which word means "trees of all kinds"?
+    options: ["pepohonan", "dedaunan", "rerumputan"]
+    answer: 0
+    words: [pepohonan, dedaunan]
+  - id: e05
+    type: fill_blank
+    sentence: Setiap Minggu pagi ada ___ di kampung kami.
+    meaning:
+      ar_eg: كل حد الصبح فيه يوم تنضيف جماعي في حتتنا.
+      ar: يُقام كل صباح أحد عمل تطوعي جماعي في حيّنا.
+      en: Every Sunday morning there's a community work day in our neighbourhood.
+    options: [kerja bakti, dedaunan, tersumbat]
+    answers: [kerja bakti]
+    words: [kerja bakti]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: السكان بيساعدوا بعض في تنضيف مجرى المية.
+      ar: يتعاون السكان على تنظيف مجرى الماء.
+      en: The residents help one another clean the drain.
+    answer: Warga tolong-menolong membersihkan saluran air.
+    distractors: [menolong, dedaunan]
+    words: [tolong-menolong, saluran air]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: مجرى المية مسدود.
+      ar: مجرى الماء مسدود.
+      en: The drain is blocked.
+    answers:
+      - Saluran airnya tersumbat.
+      - Saluran airnya tersumbat
+      - Saluran air tersumbat.
+      - Saluran air tersumbat
+      - Saluran air itu tersumbat.
+      - Saluran airnya mampet.
+      - Saluran air mampet.
+    words: [saluran air, tersumbat]
+  - id: e08
+    type: speaking
+    text: Waktu kerja bakti, kami mengumpulkan dedaunan di bawah pepohonan.
+    meaning:
+      ar_eg: في يوم التنضيف الجماعي، لمّينا ورق الشجر اللي تحت الأشجار.
+      ar: في يوم العمل الجماعي جمعنا أوراق الشجر من تحت الأشجار.
+      en: On the community work day, we gathered the leaves under the trees.
+    words: [kerja bakti, dedaunan, pepohonan]
+dialogue:
+  title: Kerja bakti hari Minggu
+  lines:
+    - speaker: Pak Amir
+      text: Selamat pagi, Bapak-Ibu! Hari ini kita kerja bakti.
+      ar_eg: صباح الخير يا جماعة! النهارده يوم الشغل الجماعي.
+      ar: صباح الخير أيها السادة والسيدات! اليوم يوم العمل الجماعي.
+      en: Good morning, everyone! Today is our community work day.
+    - speaker: Bu Hasnah
+      text: Pak Amir, saluran air di depan masjid tersumbat.
+      ar_eg: يا أستاذ أمير، مجرى المية اللي قدام الجامع مسدود.
+      ar: يا سيد أمير، مجرى الماء أمام المسجد مسدود.
+      en: Pak Amir, the drain in front of the mosque is blocked.
+    - speaker: Pak Amir
+      text: Pasti karena dedaunan dari pepohonan itu.
+      ar_eg: أكيد من ورق الأشجار دي.
+      ar: لا بد أنه بسبب أوراق تلك الأشجار.
+      en: It must be the leaves from those trees.
+    - speaker: Mohamed
+      text: Boleh saya ikut membantu?
+      ar_eg: ينفع أساعد معاكم؟
+      ar: هل يمكنني أن أساعد؟
+      en: May I help too?
+    - speaker: Bu Hasnah
+      text: Tentu! Di sini kita hidup tolong-menolong.
+      ar_eg: طبعًا! إحنا هنا عايشين بنساعد بعض.
+      ar: بالطبع! نحن هنا نعيش متعاونين.
+      en: Of course! Here we live by helping one another.
+new_words:
+  - word: tolong-menolong
+    pos: verb
+    ar_eg: يساعدوا بعض
+    ar: يتعاونون
+    en: help one another
+  - word: pepohonan
+    pos: noun
+    ar_eg: أشجار (كتير ومتنوعة)
+    ar: أشجار متنوعة
+    en: trees (of all kinds)
+  - word: dedaunan
+    pos: noun
+    ar_eg: ورق الشجر
+    ar: أوراق الشجر
+    en: foliage, leaves
+  - word: kerja bakti
+    pos: noun
+    ar_eg: شغل جماعي تطوعي للحي
+    ar: عمل تطوعي جماعي
+    en: community work day
+  - word: saluran air
+    pos: noun
+    ar_eg: مجرى مية
+    ar: مجرى الماء
+    en: drain, water channel
+  - word: tersumbat
+    pos: adjective
+    ar_eg: مسدود
+    ar: مسدود
+    en: blocked, clogged
+review:
+  status: draft
+  verified: false

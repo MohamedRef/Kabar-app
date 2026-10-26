@@ -1,0 +1,230 @@
+schema: kabar.lesson/v1
+id: bipa3.u08.l02
+language: id
+title: Kalau terjadi gempa
+can_do:
+  ar_eg: تتكلم عن شرط حقيقي (kalau / jika) وشرط خيالي (seandainya).
+  ar: أن تعبّر عن الشرط الحقيقي (kalau / jika) والشرط الافتراضي (seandainya).
+  en: Talk about real (kalau / jika) and imagined (seandainya) conditions.
+slides:
+  - title: Kalau, jika, apabila
+    body:
+      ar_eg: |
+        kalau = لو / إذا في الكلام العادي. jika و apabila نفس المعنى بس أرسم (تعليمات، أخبار).
+        في الكتابة الرسمية ساعات maka بتيجي قبل الجواب، زي «فـ» في «إذا … فـ…»: Jika …, maka ….
+      ar: |
+        kalau = إذا في الكلام اليومي، وjika وapabila بالمعنى نفسه في الأسلوب الرسمي (التعليمات والأخبار).
+        وقد تأتي maka قبل جواب الشرط في الكتابة الرسمية، كالفاء في «إذا … فـ…».
+      en: |
+        kalau = if / when in everyday speech. jika and apabila mean the same but are more formal (instructions, news).
+        Formal writing may put maka before the result, like Arabic «إذا … فـ…»: Jika …, maka ….
+    grammar: id.conjunction.purpose-condition
+    examples:
+      - text: Kalau terjadi gempa, segera keluar dari rumah.
+        ar_eg: لو حصل زلزال، اطلع من البيت فورًا.
+        ar: إذا وقع زلزال فاخرج من البيت فورًا.
+        en: If there's an earthquake, get out of the house immediately.
+      - text: Jika gunung berapi meletus, warga harus mengungsi.
+        ar_eg: لو البركان ثار، الأهالي لازم يخلوا المكان.
+        ar: إذا ثار البركان وجب على السكان الإخلاء.
+        en: If the volcano erupts, residents must evacuate.
+  - title: Seandainya …
+    body:
+      ar_eg: |
+        seandainya = «لو» الخيالية (حاجة مش حقيقية): لو كنت ساكن هنا…، لو عندي…
+        kalau ممكن تيجي بالمعنى ده في الكلام العادي، بس seandainya بتوضح إنه خيال.
+      ar: |
+        seandainya = «لو» الامتناعية (أمر غير واقع): لو كنتُ أسكن هنا…
+        وقد تؤدي kalau هذا المعنى في الكلام اليومي، لكن seandainya تصرّح بأنه افتراض.
+      en: |
+        seandainya = "if" for something imagined, not real: if I lived here…, if I had…
+        kalau can do this in casual speech, but seandainya makes it clear it's imaginary.
+    grammar: id.conjunction.purpose-condition
+    examples:
+      - text: Seandainya saya tinggal di Tetebatu, saya akan bangun pagi untuk melihat Rinjani.
+        ar_eg: لو كنت ساكن في تيتيباتو، كنت هصحى بدري عشان أشوف رينجاني.
+        ar: لو كنتُ أسكن في تيتيباتو لاستيقظتُ باكرًا لأرى رينجاني.
+        en: If I lived in Tetebatu, I'd get up early to see Rinjani.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: terjadi
+        ar_eg: يحصل
+        ar: يحدث / يقع
+        en: to happen, to occur
+      - text: gunung berapi
+        ar_eg: بركان
+        ar: بركان
+        en: volcano
+      - text: meletus
+        ar_eg: يثور / ينفجر
+        ar: يثور
+        en: to erupt
+      - text: mengungsi
+        ar_eg: يخلي المكان / ينزح
+        ar: ينزح / يُخلي المكان
+        en: to evacuate, to take refuge
+      - text: warga
+        ar_eg: الأهالي / السكان
+        ar: السكان / الأهالي
+        en: residents
+      - text: seandainya
+        ar_eg: لو (خيالي)
+        ar: لو (افتراضية)
+        en: if (imagined)
+    words: [terjadi, gunung berapi, meletus, mengungsi, warga, seandainya]
+  - id: e02
+    type: multiple_choice
+    question: ___ terjadi gempa, segera keluar dari rumah.
+    options: [Supaya, Sehingga, Kalau]
+    answer: 2
+    explain:
+      ar_eg: ده شرط («لو حصل زلزال»)، فـ kalau.
+      ar: هذا شرط («إذا وقع زلزال»)، فالأداة kalau.
+      en: It's a condition ("if there's an earthquake"), so kalau.
+    words: [terjadi]
+  - id: e03
+    type: listen
+    text: Jika gunung berapi meletus, warga harus mengungsi.
+    options:
+      - Jika gunung berapi meletus, warga harus menunggu.
+      - Jika gunung berapi meletus, warga harus mengungsi.
+      - Jika sungai meluap, warga harus mengungsi.
+    answer: 1
+    meaning:
+      ar_eg: لو البركان ثار، الأهالي لازم يخلوا المكان.
+      ar: إذا ثار البركان وجب على السكان الإخلاء.
+      en: If the volcano erupts, residents must evacuate.
+    words: [gunung berapi, meletus, warga, mengungsi]
+  - id: e04
+    type: multiple_choice
+    question: ___ saya punya rumah di Tetebatu, saya akan ke sana setiap liburan.
+    options: [Seandainya, Sehingga, Supaya]
+    answer: 0
+    explain:
+      ar_eg: إنت مش عندك بيت هناك، ده خيال، فـ seandainya.
+      ar: ليس لك بيت هناك، فهو افتراض، والأداة seandainya.
+      en: You don't have a house there — it's imagined — so seandainya.
+    words: [seandainya]
+  - id: e05
+    type: fill_blank
+    sentence: Kalau gunung berapi ___, warga harus mengungsi.
+    meaning:
+      ar_eg: لو البركان ثار، الأهالي لازم يخلوا المكان.
+      ar: إذا ثار البركان وجب على السكان الإخلاء.
+      en: If the volcano erupts, residents must evacuate.
+    options: [meluap, meletus, terjadi]
+    answers: [meletus]
+    explain:
+      ar_eg: البركان meletus (يثور)، والنهر meluap (يفيض).
+      ar: البركان meletus (يثور)، والنهر meluap (يفيض).
+      en: A volcano meletus (erupts); a river meluap (overflows).
+    words: [meletus, gunung berapi]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: لو حصل فيضان، الأهالي لازم يخلوا المكان.
+      ar: إذا وقع فيضان وجب على السكان الإخلاء.
+      en: If a flood happens, residents must evacuate.
+    answer: Kalau terjadi banjir, warga harus mengungsi.
+    alternatives:
+      - Kalau banjir terjadi, warga harus mengungsi.
+    distractors: [sehingga, meletus]
+    words: [terjadi, warga, mengungsi]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: لو حصل زلزال، اطلع من البيت فورًا.
+      ar: إذا وقع زلزال فاخرج من البيت فورًا.
+      en: If there's an earthquake, get out of the house immediately.
+    answers:
+      - Kalau terjadi gempa, segera keluar dari rumah.
+      - Kalau terjadi gempa, segera keluar dari rumah
+      - Jika terjadi gempa, segera keluar dari rumah.
+      - Jika terjadi gempa, segera keluar dari rumah
+      - Apabila terjadi gempa, segera keluar dari rumah.
+      - Kalau ada gempa, segera keluar dari rumah.
+      - Jika ada gempa, segera keluar dari rumah.
+      - Kalau terjadi gempa, segera keluar rumah.
+      - Jika terjadi gempa, segera keluar rumah.
+      - Kalau terjadi gempa bumi, segera keluar dari rumah.
+      - Jika terjadi gempa bumi, segera keluar dari rumah.
+      - Kalau terjadi gempa, keluar dari rumah segera.
+    words: [terjadi, gempa]
+  - id: e08
+    type: speaking
+    text: Seandainya saya tinggal di Tetebatu, saya akan bangun pagi setiap hari.
+    meaning:
+      ar_eg: لو كنت ساكن في تيتيباتو، كنت هصحى بدري كل يوم.
+      ar: لو كنتُ أسكن في تيتيباتو لاستيقظتُ باكرًا كل يوم.
+      en: If I lived in Tetebatu, I'd get up early every day.
+    words: [seandainya]
+dialogue:
+  title: Malam di homestay
+  lines:
+    - speaker: Mohamed
+      text: Bu Nur, kalau terjadi gempa malam ini, saya harus bagaimana?
+      ar_eg: يا مدام نور، لو حصل زلزال الليلة دي، أعمل إيه؟
+      ar: يا سيدة نور، إذا وقع زلزال الليلة، ماذا عليّ أن أفعل؟
+      en: Bu Nur, if there's an earthquake tonight, what should I do?
+    - speaker: Bu Nur
+      text: Tenang saja. Segera keluar dan pergi ke depan masjid.
+      ar_eg: اهدى بس. اطلع بسرعة وروح قدام الجامع.
+      ar: اهدأ فقط. اخرج فورًا واذهب إلى ساحة المسجد الأمامية.
+      en: Stay calm. Get out right away and go to the front of the mosque.
+    - speaker: Mohamed
+      text: Bagaimana kalau Gunung Rinjani meletus?
+      ar_eg: وطب لو جبل رينجاني ثار؟
+      ar: وماذا لو ثار جبل رينجاني؟
+      en: And what if Mount Rinjani erupts?
+    - speaker: Bu Nur
+      text: Jika gunung berapi meletus, semua warga harus mengungsi. Tapi jangan khawatir.
+      ar_eg: لو البركان ثار، كل الأهالي لازم يخلوا المكان. بس ما تقلقش.
+      ar: إذا ثار البركان وجب على جميع السكان الإخلاء. لكن لا تقلق.
+      en: If the volcano erupts, all residents must evacuate. But don't worry.
+    - speaker: Mohamed
+      text: Seandainya saya tinggal di sini, saya pasti sering khawatir!
+      ar_eg: لو كنت ساكن هنا، أكيد كنت هبقى قلقان على طول!
+      ar: لو كنتُ أسكن هنا لكنتُ قلقًا كثيرًا بلا شك!
+      en: If I lived here, I'd surely worry a lot!
+    - speaker: Bu Nur
+      text: Ha-ha. Kami sudah biasa.
+      ar_eg: هههه. إحنا متعودين.
+      ar: ها ها. لقد اعتدنا ذلك.
+      en: Ha ha. We're used to it.
+new_words:
+  - word: terjadi
+    pos: verb
+    ar_eg: يحصل
+    ar: يحدث / يقع
+    en: to happen, to occur
+  - word: gunung berapi
+    pos: noun
+    ar_eg: بركان
+    ar: بركان
+    en: volcano
+  - word: meletus
+    pos: verb
+    ar_eg: يثور (بركان)
+    ar: يثور (البركان)
+    en: to erupt
+  - word: mengungsi
+    pos: verb
+    ar_eg: يخلي المكان / ينزح
+    ar: ينزح / يُخلي المكان
+    en: to evacuate, to take refuge
+  - word: warga
+    pos: noun
+    ar_eg: الأهالي / السكان
+    ar: السكان / الأهالي
+    en: residents, citizens
+  - word: seandainya
+    pos: conjunction
+    ar_eg: لو (خيالي)
+    ar: لو (افتراضية)
+    en: if (imagined, unreal)
+review:
+  status: draft
+  verified: false

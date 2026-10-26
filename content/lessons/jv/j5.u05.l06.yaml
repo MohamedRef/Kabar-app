@@ -1,0 +1,219 @@
+schema: kabar.lesson/v1
+id: j5.u05.l06
+language: jv
+title: Ulangan J5.5
+can_do:
+  ar_eg: تقرا قصة قصيرة جديدة.
+  ar: أن تقرأ قصة قصيرة جديدة.
+  en: Read a new cerkak.
+slides:
+  - title: Kucinge Sari
+    body:
+      ar_eg: |
+        قصة جديدة صغيرة. علّم على هيكلها قبل ما تقرا: البداية (biyen / ing sawijining dina)، الأحداث (banjur / nuli / sawise / sadurunge / nalika)، المفاجأة (bareng / dumadakan)، والنهاية (pungkasane / wiwit iku).
+      ar: |
+        قصة جديدة صغيرة. ظلّل هيكلها قبل القراءة: البداية (biyen / ing sawijining dina)، والأحداث (banjur / nuli / sawise / sadurunge / nalika)، والمفاجأة (bareng / dumadakan)، والخاتمة (pungkasane / wiwit iku).
+      en: |
+        A new little story. Mark its skeleton before reading: opening (biyen / ing sawijining dina), events (banjur / nuli / sawise / sadurunge / nalika), twist (bareng / dumadakan), ending (pungkasane / wiwit iku).
+    grammar: jv.narrative.connectors
+    examples:
+      - text: Ing sawijining dina, kucinge Sari ilang.
+        ar_eg: في يوم من الأيام، قطة ساري تاهت.
+        ar: في يوم من الأيام ضاعت قطة ساري.
+        en: One day, Sari's cat went missing.
+      - text: Sari golek ing kebon, nuli ing pasar.
+        ar_eg: ساري دوّرت في الجنينة، وبعدين في السوق.
+        ar: بحثت ساري في الحديقة، ثم في السوق.
+        en: Sari searched in the garden, then at the market.
+      - text: Pungkasane, kucinge mulih dhewe.
+        ar_eg: وفي الآخر، القطة رجعت البيت لوحدها.
+        ar: وفي النهاية عادت القطة إلى البيت وحدها.
+        en: In the end, the cat came home by itself.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: biyen
+        ar_eg: زمان (dulu)
+        ar: قديمًا (dulu)
+        en: long ago (dulu)
+      - text: nalika
+        ar_eg: لما (ketika)
+        ar: حين (ketika)
+        en: when (ketika)
+      - text: sawise
+        ar_eg: بعد ما (sesudah)
+        ar: بعد أن (sesudah)
+        en: after (sesudah)
+      - text: dumadakan
+        ar_eg: فجأة (tiba-tiba)
+        ar: فجأة (tiba-tiba)
+        en: suddenly (tiba-tiba)
+      - text: pungkasane
+        ar_eg: وفي الآخر (akhirnya)
+        ar: وفي النهاية (akhirnya)
+        en: in the end (akhirnya)
+      - text: wiwit iku
+        ar_eg: ومن ساعتها (sejak itu)
+        ar: ومنذ ذلك الحين (sejak itu)
+        en: from then on (sejak itu)
+    words: [biyen, nalika, sawise, dumadakan, pungkasane, wiwit iku]
+  - id: e02
+    type: multiple_choice
+    question: Ing sawijining dina, kucinge Sari ilang.
+    question_meaning:
+      ar_eg: إيه اللي حصل؟
+      ar: ماذا حدث؟
+      en: What happened?
+    options: ['Kucing Sari hilang.', 'Sari hilang.', 'Kucing Sari pulang.']
+    answer: 0
+    words: [sawijining]
+  - id: e03
+    type: listen
+    text: Sari golek ing kebon, nuli ing pasar.
+    question:
+      ar_eg: ساري دوّرت فين الأول؟
+      ar: أين بحثت ساري أولًا؟
+      en: Where did Sari look first?
+    options: [ing pasar, ing kebon, ing sekolah]
+    answer: 1
+    meaning:
+      ar_eg: ساري دوّرت في الجنينة، وبعدين في السوق.
+      ar: بحثت ساري في الحديقة، ثم في السوق.
+      en: Sari searched in the garden, then at the market.
+    words: [nuli]
+  - id: e04
+    type: multiple_choice
+    question: Pungkasane, kucinge mulih dhewe.
+    question_meaning:
+      ar_eg: القصة خلصت إزاي؟
+      ar: كيف انتهت القصة؟
+      en: How does the story end?
+    options: ['Sari menemukan kucingnya di pasar.', 'Kucingnya hilang lagi.', 'Kucingnya pulang sendiri.']
+    answer: 2
+    words: [pungkasane]
+  - id: e05
+    type: fill_blank
+    sentence: ___ isih cilik, Sari manggon ing Kudus.
+    meaning:
+      ar_eg: لما ساري كانت صغيرة، كانت ساكنة في كودوس.
+      ar: حين كانت ساري صغيرة كانت تسكن كودوس.
+      en: When she was little, Sari lived in Kudus.
+    options: [Sawise, Nalika, Yen]
+    answers: [Nalika]
+    explain:
+      ar_eg: nalika = لما (في الماضي). yen = لو.
+      ar: nalika = حين (في الماضي)، وyen = إن / لو.
+      en: nalika = when (in the past); yen = if.
+    words: [nalika, cilik]
+  - id: e06
+    type: fill_blank
+    sentence: Bareng tekan omah, ___ udan deres.
+    meaning:
+      ar_eg: أول ما وصل البيت، فجأة الدنيا مطّرت جامد.
+      ar: ما إن وصل إلى البيت حتى انهمر المطر فجأة.
+      en: As soon as he got home, it suddenly poured with rain.
+    options: [biyen, dumadakan, pungkasane]
+    answers: [dumadakan]
+    words: [dumadakan, bareng, tekan]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: قبل ما تنام، ساري قرت قصة قصيرة.
+      ar: قبل أن تنام قرأت ساري قصة قصيرة.
+      en: Before sleeping, Sari read a short story.
+    answer: Sadurunge turu, Sari maca cerkak.
+    distractors: [sawise, kang]
+    words: [sadurunge, cerkak]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بأسلوب الحكاية) وفي الآخر، القطة رجعت البيت لوحدها.
+      ar: (بأسلوب الحكاية) وفي النهاية عادت القطة إلى البيت وحدها.
+      en: (story style) In the end, the cat came home by itself.
+    answers:
+      - Pungkasane, kucinge mulih dhewe.
+      - Pungkasane, kucinge bali dhewe.
+      - Pungkasane, kucing mulih dhewe.
+      - Pungkasane, kucinge mulih ijen.
+      - Kucinge pungkasane mulih dhewe.
+    words: [pungkasane]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Sawise mangan, Sari banjur turu.
+    answers_meaning:
+      ar_eg:
+        - بعد ما أكلت، ساري نامت.
+        - ساري نامت بعد ما أكلت.
+        - بعد الأكل، ساري نامت.
+        - بعد ما أكلت ساري، نامت.
+      ar:
+        - بعد أن أكلت ساري نامت.
+        - نامت ساري بعد أن أكلت.
+        - بعد الأكل نامت ساري.
+      en:
+        - After eating, Sari went to sleep.
+        - After eating, Sari slept.
+        - Sari went to sleep after eating.
+        - After she ate, Sari went to sleep.
+        - After eating, Sari then went to sleep.
+    words: [sawise]
+  - id: e10
+    type: dictation
+    text: Biyen ana bocah cilik jenenge Sari.
+    meaning:
+      ar_eg: كان يا ما كان، كان فيه بنت صغيرة اسمها ساري.
+      ar: كان يا ما كان طفلة صغيرة اسمها ساري.
+      en: Once upon a time there was a little girl called Sari.
+    words: [biyen, cilik]
+  - id: e11
+    type: speaking
+    text: Ing sawijining dina, kucinge Sari ilang. Pungkasane, kucinge mulih dhewe.
+    meaning:
+      ar_eg: في يوم من الأيام، قطة ساري تاهت. وفي الآخر، القطة رجعت لوحدها.
+      ar: في يوم من الأيام ضاعت قطة ساري، وفي النهاية عادت وحدها.
+      en: One day, Sari's cat went missing. In the end, the cat came home by itself.
+    words: [pungkasane]
+dialogue:
+  title: Pamit saka Kudus
+  lines:
+    - speaker: Bu Nur
+      text: Mas, wis maca cerkak anyar iki?
+      ar_eg: يا محمد، قريت القصة الجديدة دي؟
+      ar: يا محمد، هل قرأت هذه القصة الجديدة؟
+      en: Mohamed, have you read this new story?
+    - speaker: Mohamed
+      text: Sampun, Bu. Kucinge Sari ical, nanging pungkasane wangsul piyambak.
+      ar_eg: أيوه يا أبلة. قطة ساري تاهت، بس في الآخر رجعت لوحدها.
+      ar: نعم يا سيدتي. ضاعت قطة ساري، لكنها عادت وحدها في النهاية.
+      en: Yes, ma'am. Sari's cat went missing, but in the end it came home by itself.
+    - speaker: Bu Nur
+      text: Bener! Saiki sampeyan wis bisa maca cerkak.
+      ar_eg: صح! دلوقتي إنت بتعرف تقرا قصص قصيرة.
+      ar: صحيح! صرت الآن تقرأ القصص القصيرة.
+      en: Right! Now you can read short stories.
+    - speaker: Mohamed
+      text: Matur nuwun, Bu. Kula badhe maos cerkak malih.
+      ar_eg: متشكر يا أبلة. هقرا قصص تاني كتير.
+      ar: شكرًا يا سيدتي. سأقرأ قصصًا أخرى.
+      en: Thank you, ma'am. I'll read more stories.
+    - speaker: Bu Nur
+      text: Sugeng tindak, Mas!
+      ar_eg: مع السلامة يا محمد!
+      ar: في أمان الله يا محمد!
+      en: Safe travels, Mohamed!
+souvenir:
+  id: j5.u05.souvenir
+  title: Menara Kudus
+  note:
+    ar_eg: |
+      كودوس اسمها جاي من «القدس»: بيقولوا إن سونان كودوس، واحد من الأولياء التسعة (Wali Sanga)، سمّاها كده. ومنارة جامعها من الطوب الأحمر وشكلها زي برج معبد هندوسي جاوي قديم، بس هي مئذنة. ده يوريك الإسلام دخل جاوة إزاي: بهدوء، ومحترم الفن اللي كان موجود قبله.
+    ar: |
+      اسم كودوس مأخوذ من «القدس»، ويُروى أن سونان كودوس، أحد الأولياء التسعة (Wali Sanga)، هو من سمّاها. ومنارة مسجدها من الآجر الأحمر على هيئة برج معبد هندوسي جاوي قديم، لكنها مئذنة. وهي صورة لدخول الإسلام إلى جاوة: بهدوء، واحترامٍ للفن الذي سبقه.
+    en: |
+      Kudus takes its name from al-Quds, Jerusalem: Sunan Kudus, one of the nine saints (Wali Sanga), is said to have named it. Its mosque's red-brick minaret is shaped like the tower of an old Hindu-Javanese temple, yet it's a minaret. It's a picture of how Islam came to Java: quietly, respecting the art that was there before.
+review:
+  status: draft
+  verified: false

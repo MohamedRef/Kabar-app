@@ -1,0 +1,207 @@
+schema: kabar.lesson/v1
+id: bipa4.u07.l03
+language: id
+title: Mencegah penyakit
+can_do:
+  ar_eg: تتكلم عن الوقاية من الأمراض والعادات الصحية.
+  ar: أن تتحدث عن الوقاية من الأمراض والعادات الصحية.
+  en: Talk about preventing illness and healthy habits.
+slides:
+  - title: Pengguna atau penggunaan?
+    body:
+      ar_eg: |
+        من نفس الجذر بتطلع أكتر من كلمة، وكل واحدة ليها معنى:
+        peN- = الشخص: pengguna = المستخدم، pembaca = القارئ.
+        peN-…-an = العملية: penggunaan = الاستخدام، pemeriksaan = الفحص.
+      ar: |
+        من الجذر الواحد تخرج عدة كلمات لكل منها معنى:
+        peN- = الشخص الفاعل: pengguna = المستخدم، pembaca = القارئ.
+        peN-…-an = العملية: penggunaan = الاستخدام، pemeriksaan = الفحص.
+      en: |
+        One root gives several words, each with its own job:
+        peN- = the person: pengguna = user, pembaca = reader.
+        peN-…-an = the process: penggunaan = use, pemeriksaan = examination.
+    grammar: id.confix.peng-an
+    examples:
+      - text: Penggunaan gula dan garam harus dibatasi.
+        ar_eg: استعمال السكر والملح لازم يتقلّل.
+        ar: يجب تقليل استخدام السكر والملح.
+        en: The use of sugar and salt must be limited.
+      - text: Pengguna internet di Gorontalo makin banyak.
+        ar_eg: مستخدمين الإنترنت في جورونتالو بيزيدوا.
+        ar: يتزايد عدد مستخدمي الإنترنت في غورونتالو.
+        en: There are more and more internet users in Gorontalo.
+  - title: Daya tahan tubuh
+    body:
+      ar_eg: |
+        penyakit menular = مرض معدي (من tular = يعدي).
+        daya tahan tubuh = مناعة الجسم (حرفيًا «قوة احتمال الجسم»).
+        imunisasi = تطعيم، وkebiasaan sehat = عادات صحية.
+      ar: |
+        penyakit menular = مرض معدٍ (من tular = يُعدي).
+        daya tahan tubuh = مناعة الجسم (حرفيًا «قوة احتمال الجسم»).
+        imunisasi = تطعيم، وkebiasaan sehat = عادات صحية.
+      en: |
+        penyakit menular = contagious disease (from tular, "spread").
+        daya tahan tubuh = the body's immunity (literally "body's power to endure").
+        imunisasi = immunisation; kebiasaan sehat = healthy habits.
+    grammar: id.confix.peng-an
+    examples:
+      - text: Imunisasi melindungi anak dari penyakit menular.
+        ar_eg: التطعيم بيحمي الأطفال من الأمراض المعدية.
+        ar: يحمي التطعيم الأطفال من الأمراض المعدية.
+        en: Immunisation protects children from contagious diseases.
+      - text: Olahraga dan makanan bergizi meningkatkan daya tahan tubuh.
+        ar_eg: الرياضة والأكل المغذي بيقوّوا المناعة.
+        ar: الرياضة والطعام المغذي يقوّيان المناعة.
+        en: Exercise and nutritious food boost your immunity.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: menular
+        ar_eg: معدي
+        ar: معدٍ
+        en: contagious
+      - text: daya tahan tubuh
+        ar_eg: مناعة الجسم
+        ar: مناعة الجسم
+        en: immunity
+      - text: imunisasi
+        ar_eg: تطعيم
+        ar: تطعيم
+        en: immunisation
+      - text: kebiasaan
+        ar_eg: عادة
+        ar: عادة
+        en: habit
+      - text: penggunaan
+        ar_eg: استعمال
+        ar: استخدام
+        en: use
+    words: [menular, daya tahan tubuh, imunisasi, kebiasaan, penggunaan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «الاستعمال» (العملية مش الشخص)؟
+      ar: أيّ كلمة تعني «الاستخدام» (العملية لا الشخص)؟
+      en: Which word means "the use" (the process, not the person)?
+    options: [pengguna, penggunaan, gunaan]
+    answer: 1
+    explain:
+      ar_eg: pengguna = المستخدم (شخص). penggunaan = الاستعمال (عملية).
+      ar: pengguna = المستخدم (شخص)، وpenggunaan = الاستخدام (عملية).
+      en: pengguna is the user (a person); penggunaan is the use (a process).
+    words: [penggunaan]
+  - id: e03
+    type: listen
+    text: Imunisasi melindungi anak dari penyakit menular.
+    options: ["Imunisasi melindungi anak dari penyakit menular.", "Imunisasi melindungi bayi dari penyakit menular.", "Imunisasi melindungi anak dari penyakit kulit."]
+    answer: 0
+    meaning:
+      ar_eg: التطعيم بيحمي الأطفال من الأمراض المعدية.
+      ar: يحمي التطعيم الأطفال من الأمراض المعدية.
+      en: Immunisation protects children from contagious diseases.
+    words: [imunisasi, menular]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة معناها «العادات الصحية بتقوّي المناعة»؟
+      ar: أيّ جملة تعني «العادات الصحية تقوّي المناعة»؟
+      en: Which sentence means "Healthy habits boost immunity"?
+    options: ["Kebiasaan sehat menurunkan daya tahan tubuh.", "Kebiasaan sakit meningkatkan daya tahan tubuh.", "Kebiasaan sehat meningkatkan daya tahan tubuh."]
+    answer: 2
+    words: [kebiasaan, daya tahan tubuh]
+  - id: e05
+    type: fill_blank
+    sentence: Hati-hati, flu itu penyakit ___.
+    meaning:
+      ar_eg: خلي بالك، الإنفلونزا مرض معدي.
+      ar: احذر، الإنفلونزا مرض معدٍ.
+      en: Be careful, flu is a contagious disease.
+    options: [rutin, menular, parah]
+    answers: [menular]
+    words: [menular]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: استعمال السكر والملح لازم يتقلّل.
+      ar: يجب تقليل استخدام السكر والملح.
+      en: The use of sugar and salt must be limited.
+    answer: Penggunaan gula dan garam harus dibatasi.
+    distractors: [pengguna, membatasi]
+    words: [penggunaan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: التطعيم في البوسكسماس ببلاش.
+      ar: التطعيم في المركز الصحي مجاني.
+      en: Immunisation at the puskesmas is free.
+    answers:
+      - Imunisasi di puskesmas gratis.
+      - Imunisasi di puskesmas gratis
+      - Imunisasi gratis di puskesmas.
+      - Imunisasi di puskesmas itu gratis.
+      - Di puskesmas, imunisasi gratis.
+    words: [imunisasi, puskesmas]
+  - id: e08
+    type: speaking
+    text: Kebiasaan tidur cukup meningkatkan daya tahan tubuh.
+    meaning:
+      ar_eg: إنك تتعوّد تنام كفاية بيقوّي المناعة.
+      ar: عادة النوم الكافي تقوّي المناعة.
+      en: The habit of getting enough sleep boosts immunity.
+    words: [kebiasaan, daya tahan tubuh]
+dialogue:
+  title: Musim flu
+  lines:
+    - speaker: Mas Rizal
+      text: Banyak orang kena flu minggu ini. Hati-hati, flu itu menular.
+      ar_eg: ناس كتير جالها برد الأسبوع ده. خلي بالك، البرد بيعدي.
+      ar: أُصيب كثيرون بالإنفلونزا هذا الأسبوع. احذر، فهي معدية.
+      en: Lots of people have flu this week. Be careful, it's contagious.
+    - speaker: Mohamed
+      text: Iya. Bagaimana cara meningkatkan daya tahan tubuh?
+      ar_eg: آه. أقوّي المناعة إزاي؟
+      ar: نعم. كيف أقوّي المناعة؟
+      en: Yes. How can I boost my immunity?
+    - speaker: Mas Rizal
+      text: Tidur cukup, makan sayur, dan kurangi penggunaan gula.
+      ar_eg: نام كفاية، كُل خضار، وقلّل استعمال السكر.
+      ar: نم كفايتك، وكُل الخضار، وقلّل استخدام السكر.
+      en: Get enough sleep, eat vegetables and cut down on sugar.
+    - speaker: Mohamed
+      text: Jadi kebiasaan sehat adalah pencegahan terbaik, ya.
+      ar_eg: يعني العادات الصحية هي أحسن وقاية.
+      ar: إذن العادات الصحية هي أفضل وقاية.
+      en: So healthy habits are the best prevention.
+new_words:
+  - word: menular
+    pos: adjective
+    ar_eg: معدي
+    ar: معدٍ
+    en: contagious
+  - word: daya tahan tubuh
+    pos: noun
+    ar_eg: مناعة الجسم
+    ar: مناعة الجسم
+    en: immunity, the body's resistance
+  - word: imunisasi
+    pos: noun
+    ar_eg: تطعيم
+    ar: تطعيم
+    en: immunisation
+  - word: kebiasaan
+    pos: noun
+    ar_eg: عادة
+    ar: عادة
+    en: habit
+  - word: penggunaan
+    pos: noun
+    ar_eg: استعمال
+    ar: استخدام
+    en: use, usage
+review:
+  status: draft
+  verified: false

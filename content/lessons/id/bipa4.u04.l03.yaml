@@ -1,0 +1,216 @@
+schema: kabar.lesson/v1
+id: bipa4.u04.l03
+language: id
+title: Berita daring
+can_do:
+  ar_eg: تقرا خبر أونلاين وتلخّصه في جملتين.
+  ar: أن تقرأ خبرًا إلكترونيًا وتلخّصه في جملتين.
+  en: Summarise online news.
+slides:
+  - title: Apa, siapa, kapan, di mana, mengapa, bagaimana
+    body:
+      ar_eg: |
+        أي خبر بيجاوب على ٦ أسئلة: apa (إيه)، siapa (مين)، kapan (إمتى)، di mana (فين)، mengapa (ليه)، bagaimana (إزاي).
+        الصحفي (wartawan) بيعرف الإجابات من narasumber (المصدر: الشخص اللي بيتكلم معاه).
+        وخلي بالك: العناوين (judul) بتشيل meN- عشان تبقى قصيرة: Banjir Rendam Puluhan Rumah.
+      ar: |
+        يجيب كل خبر عن ستة أسئلة: apa (ماذا)، siapa (من)، kapan (متى)، di mana (أين)، mengapa (لماذا)، bagaimana (كيف).
+        ويستقي الصحفي (wartawan) الإجابات من narasumber (المصدر الذي يحاوره).
+        ولاحظ أن العناوين (judul) تحذف meN- للاختصار: Banjir Rendam Puluhan Rumah.
+      en: |
+        Every news story answers six questions: apa (what), siapa (who), kapan (when), di mana (where), mengapa (why), bagaimana (how).
+        The journalist (wartawan) gets the answers from a narasumber (source, the person interviewed).
+        Note: headlines (judul) drop meN- to stay short: Banjir Rendam Puluhan Rumah (Flood Submerges Dozens of Homes).
+    examples:
+      - text: Wartawan melaporkan banjir di Parepare pada hari Senin.
+        ar_eg: الصحفي غطّى خبر الفيضان في باريباريه يوم الاتنين.
+        ar: نقل الصحفي خبر الفيضان في باريباري يوم الاثنين.
+        en: A journalist reported on the flood in Parepare on Monday.
+  - title: Ringkasan
+    body:
+      ar_eg: |
+        الملخص (ringkasan) = جملة أو اتنين بس: إيه حصل، فين، إمتى، وليه.
+        ابدأ المصدر بـ Menurut … = حسب كلام …
+        ومن غير آراءك الشخصية.
+      ar: |
+        الملخص (ringkasan) جملة أو جملتان: ماذا حدث وأين ومتى ولماذا.
+        وانسب المعلومة بـ Menurut … = بحسب …
+        ودون آرائك الشخصية.
+      en: |
+        A summary (ringkasan) is one or two sentences: what happened, where, when, and why.
+        Attribute with Menurut … = according to …
+        Leave your own opinions out.
+    examples:
+      - text: Menurut narasumber, banjir terjadi karena tanggul rusak.
+        ar_eg: حسب كلام المصدر، الفيضان حصل عشان السد باظ.
+        ar: بحسب المصدر، وقع الفيضان بسبب تضرر السد.
+        en: According to the source, the flood happened because the levee broke.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: judul
+        ar_eg: عنوان
+        ar: عنوان
+        en: headline, title
+      - text: narasumber
+        ar_eg: مصدر (الشخص اللي اتكلم)
+        ar: مصدر (المتحدَّث إليه)
+        en: source, interviewee
+      - text: wartawan
+        ar_eg: صحفي
+        ar: صحفي
+        en: journalist
+      - text: melaporkan
+        ar_eg: يبلّغ / يغطّي خبر
+        ar: ينقل / يُبلغ عن
+        en: report
+      - text: ringkasan
+        ar_eg: ملخص
+        ar: ملخّص
+        en: summary
+      - text: daring
+        ar_eg: أونلاين
+        ar: عبر الإنترنت
+        en: online
+    words: [judul, narasumber, wartawan, melaporkan, ringkasan, daring]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: جملة أو اتنين بيقولوا أهم حاجة في الخبر اسمهم …
+      ar: الجملة أو الجملتان اللتان تذكران أهم ما في الخبر تُسمّى …
+      en: One or two sentences giving the key points of a story are called a …
+    options: ["judul", "ringkasan", "narasumber"]
+    answer: 1
+    words: [ringkasan]
+  - id: e03
+    type: listen
+    text: Wartawan itu melaporkan berita dari lokasi banjir.
+    options: ["Wartawan itu membaca berita dari lokasi banjir.", "Narasumber itu melaporkan berita dari lokasi banjir.", "Wartawan itu melaporkan berita dari lokasi banjir."]
+    answer: 2
+    meaning:
+      ar_eg: الصحفي ده بيغطي الخبر من مكان الفيضان.
+      ar: ينقل ذلك الصحفي الخبر من موقع الفيضان.
+      en: That journalist is reporting from the flood site.
+    words: [wartawan, melaporkan]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مين الـ narasumber في الخبر؟
+      ar: من هو الـ narasumber في الخبر؟
+      en: Who is the narasumber in a news story?
+    options: ["orang yang memberi informasi kepada wartawan", "orang yang menulis berita", "orang yang membaca berita"]
+    answer: 0
+    explain:
+      ar_eg: narasumber = الشخص اللي الصحفي بياخد منه المعلومة. اللي بيكتب هو wartawan.
+      ar: narasumber هو من يأخذ عنه الصحفي المعلومة، أما الكاتب فهو wartawan.
+      en: The narasumber gives the journalist information; the one who writes is the wartawan.
+    words: [narasumber, wartawan]
+  - id: e05
+    type: fill_blank
+    sentence: Saya membaca berita itu secara ___ di HP.
+    meaning:
+      ar_eg: قريت الخبر ده أونلاين على الموبايل.
+      ar: قرأتُ ذلك الخبر عبر الإنترنت على الهاتف.
+      en: I read that news online on my phone.
+    options: [daring, judul, ringkasan]
+    answers: [daring]
+    words: [daring]
+  - id: e06
+    type: fill_blank
+    sentence: Baca ___ beritanya dulu, lalu isinya.
+    meaning:
+      ar_eg: اقرا عنوان الخبر الأول، وبعدين المحتوى.
+      ar: اقرأ عنوان الخبر أولًا ثم محتواه.
+      en: Read the headline first, then the content.
+    options: [judul, narasumber, daring]
+    answers: [judul]
+    words: [judul]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: حسب كلام المصدر، السد باظ بسبب المطر الجامد.
+      ar: بحسب المصدر، تضرر السد بسبب الأمطار الغزيرة.
+      en: According to the source, the levee broke because of heavy rain.
+    answer: Menurut narasumber, tanggul rusak karena hujan deras.
+    distractors: [berkat, judul]
+    words: [narasumber]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الجرنال ده نشر الخبر أونلاين.
+      ar: نقلت تلك الصحيفة الخبر عبر الإنترنت.
+      en: That newspaper reported the news online.
+    answers:
+      - Koran itu melaporkan berita itu secara daring.
+      - Koran itu melaporkan berita itu secara daring
+      - Koran itu melaporkan beritanya secara daring.
+      - Koran itu melaporkan berita secara daring.
+      - Surat kabar itu melaporkan berita itu secara daring.
+    words: [melaporkan, daring]
+  - id: e09
+    type: speaking
+    text: Judul berita itu menarik, dan ringkasannya jelas.
+    meaning:
+      ar_eg: عنوان الخبر ده جذاب، والملخص بتاعه واضح.
+      ar: عنوان ذلك الخبر جذاب، وملخصه واضح.
+      en: That story's headline is catchy, and its summary is clear.
+    words: [judul, ringkasan]
+dialogue:
+  title: Latihan meringkas
+  lines:
+    - speaker: Kak Ayu
+      text: Mohamed, coba baca berita daring ini, lalu buat ringkasannya.
+      ar_eg: يا محمد، جرّب تقرا الخبر الأونلاين ده، وبعدين اعمل ملخصه.
+      ar: يا محمد، اقرأ هذا الخبر الإلكتروني ثم اكتب ملخصه.
+      en: Mohamed, try reading this online story, then write a summary.
+    - speaker: Mohamed
+      text: Judulnya "Banjir Rendam Puluhan Rumah di Parepare". Siapa narasumbernya?
+      ar_eg: العنوان «فيضان يغرق عشرات البيوت في باريباريه». مين المصدر؟
+      ar: عنوانه «فيضان يغمر عشرات البيوت في باريباري». من المصدر؟
+      en: The headline is "Flood Submerges Dozens of Homes in Parepare". Who are the sources?
+    - speaker: Kak Ayu
+      text: Ketua RT dan seorang warga. Wartawan kami melaporkan dari lokasi.
+      ar_eg: رئيس الحي وواحد من السكان. وصحفينا غطّى الخبر من المكان.
+      ar: رئيس الحي وأحد السكان، وقد نقل صحفينا الخبر من الموقع.
+      en: The neighbourhood head and a resident. Our journalist reported from the scene.
+    - speaker: Mohamed
+      text: Baik. Hari Senin, puluhan rumah di Parepare terendam karena tanggul rusak.
+      ar_eg: تمام. يوم الاتنين، عشرات البيوت في باريباريه غرقت عشان السد باظ.
+      ar: حسنًا. يوم الاثنين غُمرت عشرات البيوت في باريباري بسبب تضرر السد.
+      en: OK. On Monday, dozens of homes in Parepare were flooded because the levee broke.
+new_words:
+  - word: judul
+    pos: noun
+    ar_eg: عنوان
+    ar: عنوان
+    en: headline, title
+  - word: narasumber
+    pos: noun
+    ar_eg: مصدر (الشخص اللي اتكلم)
+    ar: مصدر (المتحدَّث إليه)
+    en: source, interviewee
+  - word: wartawan
+    pos: noun
+    ar_eg: صحفي
+    ar: صحفي
+    en: journalist
+  - word: melaporkan
+    pos: verb
+    ar_eg: يبلّغ / يغطّي خبر
+    ar: ينقل / يُبلغ عن
+    en: report
+  - word: ringkasan
+    pos: noun
+    ar_eg: ملخص
+    ar: ملخّص
+    en: summary
+  - word: daring
+    pos: adjective
+    ar_eg: أونلاين (dalam jaringan)
+    ar: عبر الإنترنت (dalam jaringan)
+    en: online (dalam jaringan)
+review:
+  status: draft
+  verified: false
