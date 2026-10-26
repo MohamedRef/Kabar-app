@@ -1,0 +1,183 @@
+schema: kabar.lesson/v1
+id: bipa6.u01.l05
+language: id
+title: Tanggapan sastra
+can_do:
+  ar_eg: تكتب مراجعة قصيرة لقصة، الأسلوب، اللي عجبك، ورأيك بأدب.
+  ar: أن تكتب مراجعة قصيرة لقصّة، أسلوبها وما أعجبك ورأيك بلطف.
+  en: Write a short review of a story, covering style, what moved you and your view.
+slides:
+  - title: Menulis ulasan
+    grammar: id.implicature
+    body:
+      ar_eg: |
+        الـ ulasan (المراجعة) بتمشي كده:
+        1. القصة عن إيه، في جملة: Cerpen ini bercerita tentang …
+        2. الأسلوب (gaya bahasa): Gaya bahasanya sederhana tetapi …
+        3. اللي أثّر فيك: Bagian yang paling menyentuh adalah …
+        4. رأيك، ملطّف: Barangkali akhirnya terlalu cepat, tetapi secara umum cerpen ini mengesankan.
+      ar: |
+        تسير الـ ulasan (المراجعة) هكذا:
+        1. موضوع القصّة في جملة: Cerpen ini bercerita tentang …
+        2. الأسلوب (gaya bahasa): Gaya bahasanya sederhana tetapi …
+        3. ما أثّر فيك: Bagian yang paling menyentuh adalah …
+        4. رأيك ملطّفًا: Barangkali akhirnya terlalu cepat, tetapi secara umum cerpen ini mengesankan.
+      en: |
+        An ulasan (review) runs like this:
+        1. The story in one line: Cerpen ini bercerita tentang …
+        2. Style (gaya bahasa): Gaya bahasanya sederhana tetapi …
+        3. What moved you: Bagian yang paling menyentuh adalah …
+        4. Your view, hedged: Barangkali akhirnya terlalu cepat, tetapi secara umum cerpen ini mengesankan.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ulasan
+        ar_eg: مراجعة / نقد
+        ar: مراجعة
+        en: review
+      - text: gaya bahasa
+        ar_eg: أسلوب
+        ar: أسلوب
+        en: style
+      - text: menyentuh
+        ar_eg: مؤثّر
+        ar: مؤثّر
+        en: moving, touching
+      - text: mengesankan
+        ar_eg: يسيب أثر / جميل جدًا
+        ar: مُبهر
+        en: impressive, memorable
+    words: [ulasan, gaya bahasa, menyentuh, mengesankan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة أنسب لنقد مؤدب في مراجعة؟
+      ar: أيّ جملة أنسب لنقد مهذّب في مراجعة؟
+      en: Which sentence suits a polite criticism in a review?
+    options:
+      - Akhirnya jelek sekali.
+      - Barangkali akhirnya terlalu cepat.
+      - Penulisnya tidak bisa menulis.
+    answer: 1
+    words: [ulasan]
+  - id: e03
+    type: fill_blank
+    sentence: Bagian yang paling ___ adalah ketika ayah menuang teh ke dua cangkir.
+    meaning:
+      ar_eg: أكتر جزء مؤثّر لما الأب صبّ الشاي في فنجانين.
+      ar: أكثر الأجزاء تأثيرًا حين يصبّ الأب الشاي في فنجانين.
+      en: The most moving part is when the father pours tea into two cups.
+    options: [menyentuh, ulasan, gaya bahasa]
+    answers: [menyentuh]
+    words: [menyentuh]
+  - id: e04
+    type: listen
+    text: Gaya bahasa cerpen ini sederhana, tetapi sangat kuat.
+    question:
+      ar_eg: أسلوب القصة عامل إزاي؟
+      ar: كيف أسلوب القصّة؟
+      en: What is the story's style like?
+    options:
+      - صعب ومعقّد.
+      - مضحك.
+      - بسيط بس قوي جدًا.
+    answer: 2
+    words: [gaya bahasa]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: عمومًا، القصة دي مبهرة.
+      ar: على العموم، هذه القصّة مُبهرة.
+      en: Overall, this story is impressive.
+    answer: Secara umum, cerpen ini mengesankan.
+    distractors: [menyentuh, ulasan]
+    words: [mengesankan]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: كتبت مراجعة للقصة دي في المدونة بتاعتي.
+      ar: كتبتُ مراجعة لهذه القصّة في مدوّنتي.
+      en: I wrote a review of this story on my blog.
+    answers:
+      - Saya menulis ulasan cerpen ini di blog saya.
+      - Saya sudah menulis ulasan tentang cerpen ini di blog saya.
+      - Saya menulis ulasan tentang cerpen ini di blog saya.
+      - Aku menulis ulasan cerpen ini di blogku.
+    words: [ulasan]
+  - id: e07
+    type: speaking
+    text: Gaya bahasanya sederhana, tetapi akhirnya sangat menyentuh.
+    meaning:
+      ar_eg: أسلوبها بسيط، بس نهايتها مؤثّرة جدًا.
+      ar: أسلوبها بسيط، لكنّ خاتمتها مؤثّرة جدًّا.
+      en: The style is simple, but the ending is very moving.
+    words: [gaya bahasa, menyentuh]
+  - id: e08
+    type: dictation
+    text: Ulasan Anda tentang cerpen itu sangat mengesankan.
+    meaning:
+      ar_eg: مراجعتك عن القصة دي جميلة جدًا.
+      ar: مراجعتك لتلك القصّة مُبهرة جدًّا.
+      en: Your review of that story is very impressive.
+    words: [ulasan, mengesankan]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Ceritanya lumayan» في مراجعة معناها غالبًا إيه؟
+      ar: ماذا تعني «Ceritanya lumayan» في مراجعة غالبًا؟
+      en: What does "Ceritanya lumayan" in a review usually mean?
+    options:
+      - مش وحشة، بس مش مبهرة.
+      - أحسن قصة في الدنيا.
+      - وحشة جدًا.
+    answer: 0
+    words: [mengesankan]
+dialogue:
+  title: Ulasan di blog
+  lines:
+    - speaker: Kak Mei
+      text: Mohamed, saya baca ulasanmu tentang "Kursi di Teras". Bagus sekali!
+      ar_eg: يا محمد، قريت مراجعتك عن «الكرسي في التراس». حلوة قوي!
+      ar: يا محمد، قرأت مراجعتك لـ«الكرسيّ في الشرفة». رائعة!
+      en: Mohamed, I read your review of "Kursi di Teras". Really good!
+    - speaker: Mohamed
+      text: Terima kasih, Kak. Saya masih ragu dengan kalimat terakhir saya.
+      ar_eg: شكرًا يا كاك. أنا لسه متردد في آخر جملة كتبتها.
+      ar: شكرًا. ما زلت متردّدًا في جملتي الأخيرة.
+      en: Thanks, Kak. I'm still unsure about my last sentence.
+    - speaker: Kak Mei
+      text: Kalimat "akhirnya terlalu cepat"? Itu kritik yang sopan. Tidak apa-apa.
+      ar_eg: «النهاية سريعة زيادة»؟ ده نقد مؤدب. مفيش مشكلة.
+      ar: «النهاية متعجّلة»؟ هذا نقد مهذّب، لا بأس.
+      en: The line "the ending is too quick"? That's polite criticism. It's fine.
+    - speaker: Mohamed
+      text: Syukurlah. Saya ingin jujur, tetapi tidak menyakiti penulisnya.
+      ar_eg: الحمد لله. عايز أبقى صريح، بس من غير ما أجرح الكاتب.
+      ar: الحمد لله. أريد أن أكون صادقًا دون أن أجرح الكاتب.
+      en: Thank goodness. I want to be honest without hurting the writer.
+new_words:
+  - word: ulasan
+    pos: noun
+    ar_eg: مراجعة / نقد
+    ar: مراجعة
+    en: review
+  - word: gaya bahasa
+    pos: noun
+    ar_eg: أسلوب
+    ar: أسلوب
+    en: style
+  - word: menyentuh
+    pos: adjective
+    ar_eg: مؤثّر
+    ar: مؤثّر
+    en: moving, touching
+  - word: mengesankan
+    pos: adjective
+    ar_eg: يسيب أثر / جميل جدًا
+    ar: مُبهر
+    en: impressive, memorable
+review:
+  status: draft
+  verified: false
