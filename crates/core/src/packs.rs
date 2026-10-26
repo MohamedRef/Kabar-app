@@ -501,6 +501,7 @@ mod tests {
             }],
             souvenir: Some(Souvenir { id: "s".into(), title: "t".into(), note: loc("") }),
             review: Default::default(),
+            game: None,
         }
     }
 
