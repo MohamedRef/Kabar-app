@@ -6,7 +6,7 @@ use std::time::Duration;
 use kabar_protocol::DeviceId;
 use kabar_protocol::ai::{EngineCall, EngineError, EngineReply};
 use kabar_protocol::cloud::{
-    ApiError, DeviceList, ErrorCode, GoogleSignIn, RefreshRequest, Session, TtsRequest,
+    ApiError, DeviceList, ErrorCode, GoogleSignIn, RefreshRequest, Session, TtsRequest, UsageReport,
 };
 use serde::de::DeserializeOwned;
 use ureq::http::Response;
@@ -78,6 +78,11 @@ impl Api {
                 .header("authorization", bearer(access))
                 .call(),
         )
+    }
+
+    /// `GET /v1/usage`: the cost dashboard's counters.
+    pub fn usage(&self, access: &str) -> Result<UsageReport, CloudError> {
+        read(self.agent.get(format!("{}/v1/usage", self.base)).header("authorization", bearer(access)).call())
     }
 
     pub fn revoke(&self, access: &str, device: &DeviceId) -> Result<(), CloudError> {

@@ -1,5 +1,19 @@
 //! *Rencana Hari Ini*: today's plan from due reviews, the current unit and
 //! weak spots, sized by "5, 15 or 30 minutes today?".
+//!
+//! Sizing (the session-length standard; sources in `docs/PEDAGOGY.md`):
+//!
+//! | Size           | Reviews             | Lessons       | Weak spot | Read/listen  | New words |
+//! |----------------|---------------------|---------------|-----------|--------------|-----------|
+//! | 5 min (Quick)  | ≤ 2 min, ≤ 12 cards | the next part | none      | if no lesson | ≤ 5       |
+//! | 15 min (Steady)| ≤ 6 min (40%)       | 1 × ~6 min    | ~3 min    | what's left  | ≤ 12      |
+//! | 30 min (Deep)  | ≤ 12 min (40%)      | 2 × ~6 min    | ~3 min    | ~3 min       | ≤ 20      |
+//!
+//! A 30-minute plan is two 15-minute blocks with a break offered between
+//! them (see [`break_after`]). At most [`MAX_NEW_GRAMMAR_PER_DAY`] new
+//! grammar points a day whatever the size. After a break (see
+//! [`is_comeback`]) the plan is the light 5-minute one, whatever size was
+//! asked, unless the learner picks a bigger one themselves that day.
 
 use kabar_protocol::coach::{
     ActivityEvent, DailyPlan, Focus, LocalDate, PlanItem, PlanItemKind, PlanSize, Skill,
@@ -11,19 +25,43 @@ use super::history::{self, DayStats};
 pub const COMEBACK_AFTER_DAYS: i32 = 3;
 /// Reviews a learner gets through in a minute, for sizing the review item.
 pub const CARDS_PER_MINUTE: u32 = 6;
-/// Reviews in a comeback plan: enough to warm up, never a wall of cards.
+/// Reviews in a 5-minute or comeback plan: enough to warm up, never a wall
+/// of cards.
 pub const COMEBACK_MAX_CARDS: u32 = 12;
+/// Most review minutes in a 5-minute or comeback plan.
+pub const QUICK_REVIEW_MINUTES: u16 = 2;
+/// Minutes planned for one lesson. Lessons are written to take at most
+/// [`MAX_LESSON_MINUTES`], so a lesson item is one whole lesson.
+pub const LESSON_MINUTES: u16 = 6;
+/// The longest a lesson is estimated to take.
+pub const MAX_LESSON_MINUTES: u16 = 7;
+/// Minutes for the weak-spot item in 15- and 30-minute plans.
+pub const WEAK_MINUTES: u16 = 3;
+/// Minutes kept for a read or listen in a 30-minute plan.
+pub const READING_MINUTES: u16 = 3;
+/// New words a day, by plan size (a comeback day counts as Quick).
+pub const NEW_WORDS_QUICK: u32 = 5;
+pub const NEW_WORDS_STEADY: u32 = 12;
+pub const NEW_WORDS_DEEP: u32 = 20;
+/// New grammar points a day, whatever the plan size.
+pub const MAX_NEW_GRAMMAR_PER_DAY: u32 = 2;
 /// Practice answers on a topic before it can count as a weak spot.
 pub const MIN_WEAK_ATTEMPTS: u32 = 3;
 /// A topic answered at least this well is not a weak spot.
 pub const WEAK_BELOW: f32 = 0.8;
 /// The shortest lesson, weak-spot or reading item worth starting.
 const MIN_ITEM_MINUTES: u16 = 3;
+/// Neither block around a break may be shorter than this.
+const MIN_BLOCK_MINUTES: u16 = 5;
 
 #[derive(Clone, Debug, PartialEq)]
 pub struct PlanInputs<'a> {
     pub date: LocalDate,
     pub size: PlanSize,
+    /// The learner picked `size` themselves today (not the profile's usual
+    /// size). On a comeback day a picked size bigger than Quick is honoured;
+    /// otherwise a comeback stays light.
+    pub picked: bool,
     /// Cards due today (from the review engine).
     pub due_reviews: u32,
     /// The unit the learner is on, if any (from the Journey).
@@ -40,14 +78,38 @@ pub fn is_comeback(date: LocalDate, last_study_day: Option<LocalDate>) -> bool {
     last_study_day.is_some_and(|last| date.days_since(last) > COMEBACK_AFTER_DAYS)
 }
 
-/// The stable plan item id for an item kind.
+/// Most new words to introduce today for a plan of this size. Whatever picks
+/// new words (lessons, Kabar Pagi, the word deck) should stop at
+/// [`new_words_left`].
+pub fn new_words_cap(size: PlanSize, comeback: bool) -> u32 {
+    match (size, comeback) {
+        (PlanSize::Quick, _) | (_, true) => NEW_WORDS_QUICK,
+        (PlanSize::Steady, false) => NEW_WORDS_STEADY,
+        (PlanSize::Deep, false) => NEW_WORDS_DEEP,
+    }
+}
+
+/// New words still welcome today under the plan's cap.
+pub fn new_words_left(plan: &DailyPlan, today: &DayStats) -> u32 {
+    new_words_cap(plan.size, plan.comeback).saturating_sub(today.new_words.len() as u32)
+}
+
+/// The stable plan item id for an item kind (for a lesson, the unit's first
+/// lesson item; see [`lesson_part_id`] for the second).
 pub fn item_id(kind: &PlanItemKind) -> String {
     match kind {
         PlanItemKind::Review { .. } => "review".into(),
-        PlanItemKind::Lesson { unit_id } => format!("lesson:{unit_id}"),
+        PlanItemKind::Lesson { unit_id } => lesson_part_id(unit_id, 1),
         PlanItemKind::WeakSpot { skill, topic } => format!("weak:{}:{topic}", skill_id(*skill)),
         PlanItemKind::Reading => "reading".into(),
     }
+}
+
+/// The id of the `part`-th lesson item (from 1) of one unit in a plan.
+/// Part 1 keeps the plain `lesson:<unit>` id, so plans saved before 30-minute
+/// plans had two lessons tick off as before; part 2 is `lesson:<unit>:2`.
+pub fn lesson_part_id(unit_id: &str, part: u32) -> String {
+    if part <= 1 { format!("lesson:{unit_id}") } else { format!("lesson:{unit_id}:{part}") }
 }
 
 /// The skill's wire name (matches its serde form).
@@ -67,49 +129,44 @@ struct Budget {
     /// Most minutes reviews may take.
     review_cap: u16,
     max_cards: u32,
+    /// How many lesson items, and the most minutes each may take.
+    lessons: u32,
     lesson_minutes: u16,
     /// `None`: no weak-spot drilling in this plan.
     weak_minutes: Option<u16>,
+    /// Minutes kept back for a read at the end.
+    reading_minutes: u16,
 }
 
 impl Budget {
     fn new(size: PlanSize, comeback: bool, has_lesson: bool, has_weak: bool) -> Self {
         let m = size.minutes();
-        if comeback {
-            // Short and light: a few reviews, then a small lesson bit or a read.
-            let review_cap = COMEBACK_MAX_CARDS.div_ceil(CARDS_PER_MINUTE) as u16;
+        if comeback || size == PlanSize::Quick {
+            // Short and light: a few reviews, then the next part of a lesson
+            // (or a read when there is no lesson).
             return Self {
                 minutes: m,
-                review_cap,
+                review_cap: QUICK_REVIEW_MINUTES,
                 max_cards: COMEBACK_MAX_CARDS,
+                lessons: 1,
                 lesson_minutes: m,
                 weak_minutes: None,
+                reading_minutes: 0,
             };
         }
-        if size == PlanSize::Quick {
-            // Reviews first; whatever they leave goes to a lesson bit.
-            return Self {
-                minutes: m,
-                review_cap: m,
-                max_cards: u32::MAX,
-                lesson_minutes: m,
-                weak_minutes: None,
-            };
-        }
-        let weak = m / 5;
-        let review_cap = if has_lesson {
-            m * 2 / 5
-        } else if has_weak {
-            m - weak
-        } else {
-            m
-        };
+        let (lessons, reading) = if size == PlanSize::Deep { (2, READING_MINUTES) } else { (1, 0) };
+        let weak = if has_weak { WEAK_MINUTES } else { 0 };
+        // Reviews get 40% next to lessons; without a lesson they may take the
+        // lesson time too.
+        let review_cap = if has_lesson { m * 2 / 5 } else { m - weak - reading };
         Self {
             minutes: m,
             review_cap,
             max_cards: u32::MAX,
-            lesson_minutes: m * 2 / 5,
-            weak_minutes: Some(weak),
+            lessons,
+            lesson_minutes: LESSON_MINUTES,
+            weak_minutes: Some(WEAK_MINUTES),
+            reading_minutes: reading,
         }
     }
 }
@@ -118,45 +175,62 @@ impl Budget {
 /// the same item ids on every device.
 ///
 /// Order: due reviews, the current unit's lesson, the top weak spot, then a
-/// short read with whatever time is left. Item minutes always add up to the
-/// size's minutes. After a break (see [`is_comeback`]) the plan is the Quick
-/// size whatever was asked, with few reviews and no weak-spot drilling.
+/// short read with whatever time is left. A 30-minute plan puts the weak spot
+/// right after the reviews, so its first block is practice and its second
+/// (after the break) is new learning: two lessons and a read. Item minutes
+/// always add up to the size's minutes. After a break (see [`is_comeback`])
+/// the plan is the light Quick one whatever was asked, unless the learner
+/// picked a bigger size today.
 pub fn build_plan(inputs: &PlanInputs) -> DailyPlan {
-    let comeback = is_comeback(inputs.date, inputs.last_study_day);
+    let comeback =
+        is_comeback(inputs.date, inputs.last_study_day) && !(inputs.picked && inputs.size != PlanSize::Quick);
     let size = if comeback { PlanSize::Quick } else { inputs.size };
     let weak = inputs.weak_spots.first();
     let budget = Budget::new(size, comeback, inputs.current_unit.is_some(), weak.is_some());
 
     let mut items: Vec<PlanItem> = Vec::new();
     let mut left = budget.minutes;
-    let push = |items: &mut Vec<PlanItem>, kind: PlanItemKind, minutes: u16| {
-        items.push(PlanItem { id: item_id(&kind), kind, minutes });
+    let add_weak = |items: &mut Vec<PlanItem>, left: &mut u16| {
+        if let (Some(focus), Some(weak_minutes)) = (weak, budget.weak_minutes)
+            && *left >= MIN_ITEM_MINUTES
+        {
+            let minutes = (*left).min(weak_minutes.max(MIN_ITEM_MINUTES));
+            let kind = PlanItemKind::WeakSpot { skill: focus.skill, topic: focus.topic.clone() };
+            items.push(PlanItem { id: item_id(&kind), kind, minutes });
+            *left -= minutes;
+        }
     };
 
     if inputs.due_reviews > 0 && budget.review_cap > 0 {
         let cards = inputs.due_reviews.min(budget.max_cards);
         let wanted = cards.div_ceil(CARDS_PER_MINUTE).min(u32::from(budget.review_cap)) as u16;
         let cards = cards.min(u32::from(wanted) * CARDS_PER_MINUTE);
-        push(&mut items, PlanItemKind::Review { cards }, wanted);
+        let kind = PlanItemKind::Review { cards };
+        items.push(PlanItem { id: item_id(&kind), kind, minutes: wanted });
         left -= wanted;
     }
-    if let Some(unit) = inputs.current_unit
-        && left >= MIN_ITEM_MINUTES
-    {
-        let minutes = left.min(budget.lesson_minutes.max(MIN_ITEM_MINUTES));
-        push(&mut items, PlanItemKind::Lesson { unit_id: unit.to_owned() }, minutes);
-        left -= minutes;
+    if size == PlanSize::Deep {
+        add_weak(&mut items, &mut left);
     }
-    if let (Some(focus), Some(weak_minutes)) = (weak, budget.weak_minutes)
-        && left >= MIN_ITEM_MINUTES
-    {
-        let minutes = left.min(weak_minutes.max(MIN_ITEM_MINUTES));
-        let kind = PlanItemKind::WeakSpot { skill: focus.skill, topic: focus.topic.clone() };
-        push(&mut items, kind, minutes);
-        left -= minutes;
+    if let Some(unit) = inputs.current_unit {
+        for part in 1..=budget.lessons {
+            // A second lesson leaves room for the read.
+            let keep = if part == 1 { 0 } else { budget.reading_minutes };
+            if left < MIN_ITEM_MINUTES + keep {
+                break;
+            }
+            let minutes = (left - keep).min(budget.lesson_minutes.max(MIN_ITEM_MINUTES));
+            let kind = PlanItemKind::Lesson { unit_id: unit.to_owned() };
+            items.push(PlanItem { id: lesson_part_id(unit, part), kind, minutes });
+            left -= minutes;
+        }
+    }
+    if size != PlanSize::Deep {
+        add_weak(&mut items, &mut left);
     }
     if left >= MIN_ITEM_MINUTES || (left > 0 && items.is_empty()) {
-        push(&mut items, PlanItemKind::Reading, left);
+        let kind = PlanItemKind::Reading;
+        items.push(PlanItem { id: item_id(&kind), kind, minutes: left });
         left = 0;
     }
     if left > 0 {
@@ -166,6 +240,36 @@ pub fn build_plan(inputs: &PlanInputs) -> DailyPlan {
     }
 
     DailyPlan { date: inputs.date, size, comeback, items }
+}
+
+/// Where a 30-minute plan offers a break: after the item at this index, the
+/// boundary closest to halfway (ties go to the earlier one). `None` for
+/// shorter plans, comebacks, and when either block would be under five
+/// minutes.
+///
+/// Compatibility: derived from the plan, not stored in it, so
+/// [`DailyPlan`] (synced and serde'd in `kabar_protocol::coach`) keeps its
+/// shape. Older clients read and write the same plans and simply don't offer
+/// the break; plans saved before this existed get one too.
+pub fn break_after(plan: &DailyPlan) -> Option<usize> {
+    if plan.size != PlanSize::Deep || plan.comeback || plan.items.len() < 2 {
+        return None;
+    }
+    let total: u16 = plan.items.iter().map(|i| i.minutes).sum();
+    let half = total / 2;
+    let mut cum = 0u16;
+    let mut best: Option<(usize, u16)> = None;
+    for (i, item) in plan.items[..plan.items.len() - 1].iter().enumerate() {
+        cum += item.minutes;
+        if cum < MIN_BLOCK_MINUTES || total - cum < MIN_BLOCK_MINUTES {
+            continue;
+        }
+        let gap = cum.abs_diff(half);
+        if best.is_none_or(|(_, g)| gap < g) {
+            best = Some((i, gap));
+        }
+    }
+    best.map(|(i, _)| i)
 }
 
 /// Topics answered worst over the `window_days` before `today`, worst first.
@@ -209,15 +313,27 @@ pub struct PlanProgress {
 
 /// An item counts as done when it was ticked off, or when the work it asks
 /// for is visibly done (enough reviews, the lesson finished).
+///
+/// The n-th lesson item of a unit is done once n lessons of that unit were
+/// finished today.
 pub fn progress(plan: &DailyPlan, today: &DayStats) -> PlanProgress {
     let done: Vec<bool> = plan
         .items
         .iter()
-        .map(|item| {
+        .enumerate()
+        .map(|(i, item)| {
             today.items_done.contains(&item.id)
                 || match &item.kind {
                     PlanItemKind::Review { cards } => today.reviews >= *cards,
-                    PlanItemKind::Lesson { unit_id } => today.lessons_done.contains(unit_id),
+                    PlanItemKind::Lesson { unit_id } => {
+                        let part = plan.items[..=i]
+                            .iter()
+                            .filter(
+                                |it| matches!(&it.kind, PlanItemKind::Lesson { unit_id: u } if u == unit_id),
+                            )
+                            .count() as u32;
+                        today.lessons_finished.get(unit_id).copied().unwrap_or(0) >= part
+                    }
                     PlanItemKind::WeakSpot { .. } | PlanItemKind::Reading => false,
                 }
         })
@@ -246,6 +362,7 @@ mod tests {
         PlanInputs {
             date,
             size,
+            picked: false,
             due_reviews: due,
             current_unit: unit,
             weak_spots: weak,
@@ -300,23 +417,122 @@ mod tests {
     }
 
     #[test]
-    fn quick_is_reviews_or_a_lesson_bit() {
+    fn quick_is_a_few_reviews_then_the_next_lesson_part() {
         let weak = [kan()];
+        // At most 2 minutes and 12 cards of reviews, whatever is due.
         let plan = build_plan(&inputs(PlanSize::Quick, 40, Some("bipa1.u03"), &weak));
-        assert_eq!(ids(&plan), ["review"]);
-        assert_eq!((plan.items[0].minutes, &plan.items[0].kind), (5, &PlanItemKind::Review { cards: 30 }));
+        assert_eq!(ids(&plan), ["review", "lesson:bipa1.u03"]);
+        assert_eq!(plan.items[0].kind, PlanItemKind::Review { cards: COMEBACK_MAX_CARDS });
+        assert_eq!(plan.items.iter().map(|i| i.minutes).collect::<Vec<_>>(), [2, 3]);
 
         let plan = build_plan(&inputs(PlanSize::Quick, 0, Some("bipa1.u03"), &weak));
         assert_eq!(ids(&plan), ["lesson:bipa1.u03"]);
         assert_eq!(total(&plan), 5);
 
-        // A couple of cards leave time for a lesson bit; a few more just fold in.
         let plan = build_plan(&inputs(PlanSize::Quick, 6, Some("bipa1.u03"), &weak));
         assert_eq!(ids(&plan), ["review", "lesson:bipa1.u03"]);
         assert_eq!(plan.items.iter().map(|i| i.minutes).collect::<Vec<_>>(), [1, 4]);
+
+        // No lesson: the rest is a short read, never more reviews or a weak spot.
         let plan = build_plan(&inputs(PlanSize::Quick, 20, None, &weak));
-        assert_eq!(ids(&plan), ["review"]);
-        assert_eq!((plan.items[0].minutes, &plan.items[0].kind), (5, &PlanItemKind::Review { cards: 20 }));
+        assert_eq!(ids(&plan), ["review", "reading"]);
+        assert_eq!(plan.items[0].kind, PlanItemKind::Review { cards: 12 });
+        assert_eq!(plan.items.iter().map(|i| i.minutes).collect::<Vec<_>>(), [2, 3]);
+    }
+
+    #[test]
+    fn deep_is_two_blocks_with_two_lessons_and_a_read() {
+        let weak = [kan()];
+        let plan = build_plan(&inputs(PlanSize::Deep, 500, Some("bipa1.u03"), &weak));
+        assert_eq!(
+            ids(&plan),
+            ["review", "weak:writing:-kan verbs", "lesson:bipa1.u03", "lesson:bipa1.u03:2", "reading"]
+        );
+        assert_eq!(plan.items.iter().map(|i| i.minutes).collect::<Vec<_>>(), [12, 3, 6, 6, 3]);
+        for size in PlanSize::ALL {
+            let plan = build_plan(&inputs(size, 3, Some("bipa1.u03"), &weak));
+            let lessons = plan.items.iter().filter(|i| matches!(i.kind, PlanItemKind::Lesson { .. }));
+            assert!(lessons.clone().all(|i| i.minutes <= MAX_LESSON_MINUTES), "{size:?}: whole lessons");
+            assert_eq!(lessons.count(), if size == PlanSize::Deep { 2 } else { 1 });
+        }
+        // Practice block, a break, then the learning block: 15 + 15.
+        assert_eq!(break_after(&plan), Some(1));
+
+        // Few reviews: the break moves to the boundary nearest halfway.
+        let plan = build_plan(&inputs(PlanSize::Deep, 4, Some("bipa1.u03"), &weak));
+        assert_eq!(plan.items.iter().map(|i| i.minutes).collect::<Vec<_>>(), [1, 3, 6, 6, 14]);
+        assert_eq!(break_after(&plan), Some(3));
+
+        // No lesson: reviews take its time but the read keeps its 3 minutes.
+        let plan = build_plan(&inputs(PlanSize::Deep, 500, None, &weak));
+        assert_eq!(ids(&plan), ["review", "weak:writing:-kan verbs", "reading"]);
+        assert_eq!(plan.items.iter().map(|i| i.minutes).collect::<Vec<_>>(), [24, 3, 3]);
+    }
+
+    #[test]
+    fn only_deep_plans_offer_a_break() {
+        let weak = [kan()];
+        for size in [PlanSize::Quick, PlanSize::Steady] {
+            assert_eq!(break_after(&build_plan(&inputs(size, 500, Some("bipa1.u03"), &weak))), None);
+        }
+        // One long item: nothing to break between.
+        assert_eq!(break_after(&build_plan(&inputs(PlanSize::Deep, 0, None, &[]))), None);
+        let mut i = inputs(PlanSize::Deep, 500, Some("bipa1.u03"), &weak);
+        i.last_study_day = Some(i.date.add_days(-10));
+        assert_eq!(break_after(&build_plan(&i)), None, "a comeback is one short block");
+    }
+
+    #[test]
+    fn two_lessons_of_one_unit_tick_off_one_by_one() {
+        let plan = build_plan(&inputs(PlanSize::Deep, 0, Some("bipa1.u03"), &[]));
+        assert_eq!(ids(&plan), ["lesson:bipa1.u03", "lesson:bipa1.u03:2", "reading"]);
+        assert_eq!(lesson_part_id("bipa1.u03", 1), item_id(&plan.items[0].kind), "old ids stay stable");
+        let today = plan.date;
+        let lesson = |id: &str| {
+            event(id, today, 360, ActivityKind::LessonStep { unit_id: "bipa1.u03".into(), done: true })
+        };
+        let mut events = vec![lesson("a")];
+        assert_eq!(progress(&plan, &history::day(&events, today)).done, [true, false, false]);
+        events.push(lesson("a")); // a replay counts once
+        assert_eq!(progress(&plan, &history::day(&events, today)).done, [true, false, false]);
+        events.push(lesson("b"));
+        assert_eq!(progress(&plan, &history::day(&events, today)).done, [true, true, false]);
+    }
+
+    #[test]
+    fn new_word_caps_follow_the_size() {
+        assert_eq!(new_words_cap(PlanSize::Quick, false), 5);
+        assert_eq!(new_words_cap(PlanSize::Steady, false), 12);
+        assert_eq!(new_words_cap(PlanSize::Deep, false), 20);
+        for size in PlanSize::ALL {
+            assert_eq!(new_words_cap(size, true), NEW_WORDS_QUICK, "a comeback day stays light");
+        }
+        assert_eq!(MAX_NEW_GRAMMAR_PER_DAY, 2);
+
+        let plan = build_plan(&inputs(PlanSize::Steady, 0, Some("bipa1.u03"), &[]));
+        let today = plan.date;
+        let words: Vec<String> = (0..10).map(|n| format!("kata{n}")).collect();
+        let events = vec![event("w", today, 0, ActivityKind::NewWords { words })];
+        assert_eq!(new_words_left(&plan, &history::day(&events, today)), 2);
+        let light = DailyPlan { comeback: true, size: PlanSize::Quick, ..plan };
+        assert_eq!(new_words_left(&light, &history::day(&events, today)), 0);
+    }
+
+    #[test]
+    fn a_bigger_size_picked_on_a_comeback_day_is_honoured() {
+        let weak = [kan()];
+        let mut i = inputs(PlanSize::Steady, 100, Some("bipa1.u03"), &weak);
+        i.last_study_day = Some(i.date.add_days(-10));
+        i.picked = true;
+        let plan = build_plan(&i);
+        assert!(!plan.comeback);
+        assert_eq!(plan.size, PlanSize::Steady);
+        assert_eq!(total(&plan), 15);
+        // Picking 5 minutes keeps the light welcome-back plan.
+        i.size = PlanSize::Quick;
+        let plan = build_plan(&i);
+        assert!(plan.comeback);
+        assert_eq!(plan.size, PlanSize::Quick);
     }
 
     #[test]

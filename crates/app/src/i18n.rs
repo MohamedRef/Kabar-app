@@ -35,6 +35,47 @@ pub enum Msg {
     SettingsDevice,
     SettingsShowWelcome,
     SettingsSounds,
+    CostTitle,
+    CostThisMonth,
+    CostHardStops,
+    CostOffline,
+    CostLoading,
+    CostServicesTitle,
+    CostAtTime,
+    CostTomorrowAt,
+    CostOnDate,
+    CostResets,
+    CostNearDay,
+    CostNearMonth,
+    CostPausedDay,
+    CostPausedMonth,
+    CostOff,
+    CostNotSetUp,
+    CostUnitRequests,
+    CostUnitCharacters,
+    CostUnitNeurons,
+    CostUnitRowsRead,
+    CostUnitRowsWritten,
+    CostPerDay,
+    CostPerMonth,
+    CostPlatformTitle,
+    CostPlatformBody,
+    CostClaudeTitle,
+    CostClaudeOffBody,
+    CostClaudeOnBody,
+    CostClaudeTurnOn,
+    CostConfirmTitle,
+    CostConfirmBody,
+    CostConfirmNo,
+    CostConfirmYes,
+    CostClaudeHowTo,
+    ExportTitle,
+    ExportBody,
+    ExportButton,
+    ExportSaving,
+    ExportSaved,
+    ExportFailed,
+    ExportAndroidHint,
     PenLabIntro,
     PenLabClear,
     PenLabSave,
@@ -237,6 +278,12 @@ pub enum Msg {
     ReportWhen,
     // --- coach: today ---
     TodayProgress,
+    WelcomeBackTitle,
+    WelcomeBackPlan,
+    WelcomeBackStart,
+    WelcomeBackBigger,
+    PelitaReady,
+    PlanBreakTitle,
     GoalMet,
     Freezes,
     Cards,
@@ -279,6 +326,30 @@ pub enum Msg {
     NotEnoughKoin,
     JournalTitle,
     JournalEmpty,
+    NavJournal,
+    JournalIntro,
+    JournalOpen,
+    JournalFilterAll,
+    JournalFilterLearning,
+    JournalFilterWords,
+    JournalFilterReflections,
+    JournalNothingHere,
+    JournalShowOlder,
+    JournalReflectionAdd,
+    JournalReflectionPlaceholder,
+    JournalReflectionSave,
+    JournalReflectionCancel,
+    JournalReflectionEdit,
+    JournalReflectionDelete,
+    JournalReflectionDeleteSure,
+    JournalReflectionEdited,
+    JournalReflectionLabel,
+    JournalPrivate,
+    JournalInkLater,
+    JournalTestPassed,
+    JournalSouvenir,
+    JournalTaught,
+    JournalDraft,
     EvReviews,
     EvNewWords,
     EvLessonStep,
@@ -559,6 +630,192 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (SettingsSounds, ArEg) => "أصوات الدروس والمراجعة",
         (SettingsSounds, Ar) => "أصوات الدروس والمراجعة",
         (SettingsSounds, En) => "Lesson and review sounds",
+        (CostTitle, ArEg | Ar) => "التكلفة والحدود",
+        (CostTitle, En) => "Cost & limits",
+        (CostThisMonth, ArEg) => "الشهر ده",
+        (CostThisMonth, Ar) => "هذا الشهر",
+        (CostThisMonth, En) => "this month",
+        (CostHardStops, ArEg) => {
+            "\u{2068}Kabar\u{2069} شغّال على الخطط المجانية بحدود ثابتة: لما الحصة المجانية لخدمة تخلص، الخدمة دي بتقف لحد ما تتجدد. مفيش أي حاجة بتتحاسب."
+        }
+        (CostHardStops, Ar) => {
+            "يعمل \u{2068}Kabar\u{2069} على الخطط المجانية بحدود صارمة: عندما تنفد الحصة المجانية لخدمة ما، تتوقف حتى تتجدد. لا يُدفع أي شيء."
+        }
+        (CostHardStops, En) => {
+            "Kabar runs on free tiers with hard stops: when a service's free allowance is used up, it pauses until it resets. Nothing is ever charged."
+        }
+        (CostOffline, ArEg) => {
+            "\u{2068}Kabar Cloud\u{2069} مش متوصل دلوقتي، فمفيش عدادات نعرضها. بس برضه صفر: كل خدمة بتقف عند حدها المجاني."
+        }
+        (CostOffline, Ar) => {
+            "\u{2068}Kabar Cloud\u{2069} غير متصل الآن، فلا توجد عدادات لعرضها. ومع ذلك فالتكلفة صفر: كل خدمة تتوقف عند حدها المجاني."
+        }
+        (CostOffline, En) => {
+            "Kabar Cloud isn't connected right now, so there are no live counters to show. It's still $0: every service stops at its free limit."
+        }
+        (CostLoading, ArEg) => "بنشوف العدادات…",
+        (CostLoading, Ar) => "جارٍ قراءة العدادات…",
+        (CostLoading, En) => "Checking the counters…",
+        (CostServicesTitle, ArEg | Ar) => "الحصص المجانية",
+        (CostServicesTitle, En) => "Free allowances",
+        (CostAtTime, ArEg | Ar) => "الساعة {time}",
+        (CostAtTime, En) => "at {time}",
+        (CostTomorrowAt, ArEg) => "بكرة الساعة {time}",
+        (CostTomorrowAt, Ar) => "غدًا الساعة {time}",
+        (CostTomorrowAt, En) => "tomorrow at {time}",
+        (CostOnDate, ArEg | Ar) => "يوم {date}",
+        (CostOnDate, En) => "on {date}",
+        (CostResets, ArEg) => "بتتجدد {when}",
+        (CostResets, Ar) => "تتجدد {when}",
+        (CostResets, En) => "Resets {when}",
+        (CostNearDay, ArEg) => {
+            "الحصة المجانية بتاعة {service} النهارده قربت تخلص. لما توصل للحد \u{2068}Kabar\u{2069} هيوقفها بدل ما يدفع، وترجع {when}."
+        }
+        (CostNearDay, Ar) => {
+            "اقتربت حصة {service} المجانية لليوم من النفاد. عند الحد سيوقفها \u{2068}Kabar\u{2069} بدل أن يدفع، وتعود {when}."
+        }
+        (CostNearDay, En) => {
+            "{service}'s free allowance for today is almost used. At the limit Kabar pauses it rather than pay; it's back {when}."
+        }
+        (CostNearMonth, ArEg) => {
+            "الحصة المجانية بتاعة {service} الشهر ده قربت تخلص. لما توصل للحد \u{2068}Kabar\u{2069} هيوقفها بدل ما يدفع، وترجع {when}."
+        }
+        (CostNearMonth, Ar) => {
+            "اقتربت حصة {service} المجانية لهذا الشهر من النفاد. عند الحد سيوقفها \u{2068}Kabar\u{2069} بدل أن يدفع، وتعود {when}."
+        }
+        (CostNearMonth, En) => {
+            "{service}'s free allowance for this month is almost used. At the limit Kabar pauses it rather than pay; it's back {when}."
+        }
+        (CostPausedDay, ArEg) => {
+            "{service} خلّص حصته المجانية النهارده، فـ\u{2068}Kabar\u{2069} وقّفه بدل ما يدفع. هيرجع {when}."
+        }
+        (CostPausedDay, Ar) => {
+            "استنفد {service} حصته المجانية لليوم، فأوقفه \u{2068}Kabar\u{2069} بدل أن يدفع. سيعود {when}."
+        }
+        (CostPausedDay, En) => {
+            "{service} has used today's free allowance, so Kabar paused it rather than pay. It's back {when}."
+        }
+        (CostPausedMonth, ArEg) => {
+            "{service} خلّص حصته المجانية الشهر ده، فـ\u{2068}Kabar\u{2069} وقّفه بدل ما يدفع. هيرجع {when}."
+        }
+        (CostPausedMonth, Ar) => {
+            "استنفد {service} حصته المجانية لهذا الشهر، فأوقفه \u{2068}Kabar\u{2069} بدل أن يدفع. سيعود {when}."
+        }
+        (CostPausedMonth, En) => {
+            "{service} has used this month's free allowance, so Kabar paused it rather than pay. It's back {when}."
+        }
+        (CostOff, ArEg) => "مقفول",
+        (CostOff, Ar) => "متوقف",
+        (CostOff, En) => "Off",
+        (CostNotSetUp, ArEg) => "مش متظبط",
+        (CostNotSetUp, Ar) => "غير مُعدّ",
+        (CostNotSetUp, En) => "Not set up",
+        (CostUnitRequests, ArEg | Ar) => "طلب",
+        (CostUnitRequests, En) => "requests",
+        (CostUnitCharacters, ArEg | Ar) => "حرف",
+        (CostUnitCharacters, En) => "characters",
+        (CostUnitNeurons, ArEg | Ar) => "\u{2068}Neurons\u{2069}",
+        (CostUnitNeurons, En) => "Neurons",
+        (CostUnitRowsRead, ArEg | Ar) => "صف مقروء",
+        (CostUnitRowsRead, En) => "rows read",
+        (CostUnitRowsWritten, ArEg | Ar) => "صف مكتوب",
+        (CostUnitRowsWritten, En) => "rows written",
+        (CostPerDay, ArEg | Ar) => "في اليوم",
+        (CostPerDay, En) => "a day",
+        (CostPerMonth, ArEg | Ar) => "في الشهر",
+        (CostPerMonth, En) => "a month",
+        (CostPlatformTitle, ArEg | Ar) => "\u{2068}Cloudflare\u{2069} (الخطة المجانية)",
+        (CostPlatformTitle, En) => "Cloudflare (Free plan)",
+        (CostPlatformBody, ArEg) => {
+            "خطة \u{2068}Cloudflare\u{2069} المجانية مفيهاش كارت، فمينفعش تحاسبك. لو وصلت لحد، الخدمة بتقف لحد اليوم اللي بعده."
+        }
+        (CostPlatformBody, Ar) => {
+            "لا ترتبط خطة \u{2068}Cloudflare\u{2069} المجانية بأي بطاقة، فلا يمكنها أن تحاسبك. إذا بلغتَ حدًّا تتوقف الخدمة حتى اليوم التالي."
+        }
+        (CostPlatformBody, En) => {
+            "Cloudflare's Free plan has no card on file, so it can't bill you. If a limit is reached, it pauses until the next day."
+        }
+        (CostClaudeTitle, ArEg) => "\u{2068}Claude\u{2069} (محرّك بفلوس)",
+        (CostClaudeTitle, Ar) => "\u{2068}Claude\u{2069} (محرّك مدفوع)",
+        (CostClaudeTitle, En) => "Claude (paid engine)",
+        (CostClaudeOffBody, ArEg) => {
+            "\u{2068}Claude\u{2069} مقفول. \u{2068}Kabar\u{2069} بيستعمل المحركات المجانية بس، إلا لو إنت شغّلته."
+        }
+        (CostClaudeOffBody, Ar) => {
+            "\u{2068}Claude\u{2069} متوقف. يستخدم \u{2068}Kabar\u{2069} المحركات المجانية فقط ما لم تشغّله."
+        }
+        (CostClaudeOffBody, En) => "Claude is off. Kabar only uses free engines unless you turn it on.",
+        (CostClaudeOnBody, ArEg) => {
+            "\u{2068}Claude\u{2069} شغّال. بيبقى ببلاش طول ما رصيد \u{2068}Claude Max\u{2069} مغطّيه، وبيقف عند الحد الشهري."
+        }
+        (CostClaudeOnBody, Ar) => {
+            "\u{2068}Claude\u{2069} يعمل. يكون مجانيًا ما دام رصيد \u{2068}Claude Max\u{2069} يغطيه، ويتوقف عند الحد الشهري."
+        }
+        (CostClaudeOnBody, En) => {
+            "Claude is on. It's free while Claude Max credits cover it, and it stops at the monthly limit."
+        }
+        (CostClaudeTurnOn, ArEg) => "شغّل \u{2068}Claude\u{2069}…",
+        (CostClaudeTurnOn, Ar) => "تشغيل \u{2068}Claude\u{2069}…",
+        (CostClaudeTurnOn, En) => "Turn on Claude…",
+        (CostConfirmTitle, ArEg) => "ده ممكن يكلّف فلوس",
+        (CostConfirmTitle, Ar) => "قد يكلّف هذا مالًا",
+        (CostConfirmTitle, En) => "This could cost money",
+        (CostConfirmBody, ArEg) => {
+            "\u{2068}Claude\u{2069} خدمة بفلوس. بيبقى ببلاش بس لو رصيد اشتراك \u{2068}Claude Max\u{2069} بتاعك مغطّيه؛ غير كده \u{2068}Anthropic\u{2069} هتحاسب الحساب اللي عليه المفتاح. \u{2068}Kabar\u{2069} برضه هيقف عند الحد الشهري. تحب تشغّله؟"
+        }
+        (CostConfirmBody, Ar) => {
+            "\u{2068}Claude\u{2069} خدمة مدفوعة. تكون مجانية فقط إذا غطّاها رصيد اشتراك \u{2068}Claude Max\u{2069}؛ وإلا فستحاسب \u{2068}Anthropic\u{2069} الحساب المرتبط بالمفتاح. ومع ذلك سيتوقف \u{2068}Kabar\u{2069} عند الحد الشهري. هل تريد تشغيله؟"
+        }
+        (CostConfirmBody, En) => {
+            "Claude is a paid service. It's free only if your Claude Max plan's credits cover it; otherwise Anthropic bills the account behind the API key. Kabar still stops at the monthly limit. Turn it on?"
+        }
+        (CostConfirmNo, ArEg) => "لأ، خلّيه مقفول",
+        (CostConfirmNo, Ar) => "لا، أبقِه متوقفًا",
+        (CostConfirmNo, En) => "No, keep it off",
+        (CostConfirmYes, ArEg) => "أيوه، شغّله",
+        (CostConfirmYes, Ar) => "نعم، شغّله",
+        (CostConfirmYes, En) => "Yes, turn it on",
+        (CostClaudeHowTo, ArEg) => {
+            "عشان تشغّله: حط \u{2068}CLAUDE_ENABLED = \"true\"\u{2069} في \u{2068}wrangler.toml\u{2069} بتاع \u{2068}Kabar Cloud\u{2069} وشغّل \u{2068}just deploy-cloud\u{2069}. زرار التشغيل جوه التطبيق جاي مع شاشة محركات الذكاء الاصطناعي."
+        }
+        (CostClaudeHowTo, Ar) => {
+            "لتشغيله: اضبط \u{2068}CLAUDE_ENABLED = \"true\"\u{2069} في ملف \u{2068}wrangler.toml\u{2069} الخاص بـ\u{2068}Kabar Cloud\u{2069} ثم شغّل \u{2068}just deploy-cloud\u{2069}. سيأتي زر التشغيل داخل التطبيق مع شاشة محركات الذكاء الاصطناعي."
+        }
+        (CostClaudeHowTo, En) => {
+            "To switch it on, set CLAUDE_ENABLED = \"true\" in Kabar Cloud's wrangler.toml and run just deploy-cloud. An in-app switch comes with the AI engines screen."
+        }
+        (ExportTitle, ArEg | Ar) => "بياناتك",
+        (ExportTitle, En) => "Your data",
+        (ExportBody, ArEg) => {
+            "احفظ كل حاجة على الجهاز ده في ملف واحد يفضل معاك. مفاتيح تسجيل الدخول عمرها ما بتدخل فيه."
+        }
+        (ExportBody, Ar) => {
+            "احفظ كل ما على هذا الجهاز في ملف واحد تحتفظ به. لا تُضمَّن مفاتيح تسجيل الدخول أبدًا."
+        }
+        (ExportBody, En) => {
+            "Save everything on this device to one file you keep. Sign-in keys are never included."
+        }
+        (ExportButton, ArEg) => "صدّر كل حاجة",
+        (ExportButton, Ar) => "تصدير كل شيء",
+        (ExportButton, En) => "Export everything",
+        (ExportSaving, ArEg) => "بنحفظ…",
+        (ExportSaving, Ar) => "جارٍ الحفظ…",
+        (ExportSaving, En) => "Saving…",
+        (ExportSaved, ArEg) => "اتحفظ {rows} صف في:",
+        (ExportSaved, Ar) => "حُفظ {rows} صفًّا في:",
+        (ExportSaved, En) => "Saved {rows} rows to:",
+        (ExportFailed, ArEg) => "معرفناش نحفظ الملف. مفيش حاجة اتغيّرت، تحب تجرّب تاني؟",
+        (ExportFailed, Ar) => "تعذّر حفظ الملف. لم يتغير شيء، هل تحاول مرة أخرى؟",
+        (ExportFailed, En) => "Couldn't save the file. Nothing was changed; want to try again?",
+        (ExportAndroidHint, ArEg) => {
+            "على الأندرويد الملف بيتحفظ في فولدر \u{2068}Kabar\u{2069} نفسه، وتقدر تنقله لكمبيوتر بكابل \u{2068}USB\u{2069}."
+        }
+        (ExportAndroidHint, Ar) => {
+            "على أندرويد يُحفظ الملف في مجلد \u{2068}Kabar\u{2069} نفسه، ويمكنك نقله إلى حاسوب عبر كابل \u{2068}USB\u{2069}."
+        }
+        (ExportAndroidHint, En) => {
+            "On Android the file lands in Kabar's own folder; copy it to a computer over USB."
+        }
         (PenLabIntro, ArEg) => {
             "اكتب وارسم هنا بالقلم وبصباعك. جرّب تقرّب القلم من غير ما تلمس، وزرار القلم، والممحاة. وبعدين احفظ التقرير وابعته."
         }
@@ -1144,6 +1401,24 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (TodayProgress, ArEg) => "إنجاز النهارده",
         (TodayProgress, Ar) => "إنجاز اليوم",
         (TodayProgress, En) => "Today's progress",
+        (WelcomeBackTitle, ArEg) => "أهلاً بيك تاني",
+        (WelcomeBackTitle, Ar) => "مرحبًا بعودتك",
+        (WelcomeBackTitle, En) => "Welcome back",
+        (WelcomeBackPlan, ArEg) => "خطة النهارده الخفيفة",
+        (WelcomeBackPlan, Ar) => "خطة اليوم الخفيفة",
+        (WelcomeBackPlan, En) => "Today's light plan",
+        (WelcomeBackStart, ArEg) => "يلا نبدأ",
+        (WelcomeBackStart, Ar) => "لنبدأ",
+        (WelcomeBackStart, En) => "Let's start",
+        (WelcomeBackBigger, ArEg) => "لو ليك مزاج لأكتر، اختار خطة أكبر",
+        (WelcomeBackBigger, Ar) => "إن رغبت في المزيد، اختر خطة أكبر",
+        (WelcomeBackBigger, En) => "In the mood for more? Pick a bigger plan",
+        (PelitaReady, ArEg) => "جاهزة تنوّر",
+        (PelitaReady, Ar) => "جاهز ليضيء",
+        (PelitaReady, En) => "ready to glow",
+        (PlanBreakTitle, ArEg) => "استراحة صغيرة",
+        (PlanBreakTitle, Ar) => "استراحة قصيرة",
+        (PlanBreakTitle, En) => "A short break",
         (GoalMet, ArEg) => "هدف النهارده خلص",
         (GoalMet, Ar) => "تحقق هدف اليوم",
         (GoalMet, En) => "Today's goal met",
@@ -1256,6 +1531,74 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (JournalEmpty, ArEg) => "كل اللي هتعمله هيتسجل هنا لوحده.",
         (JournalEmpty, Ar) => "سيُسجَّل هنا كل ما تنجزه تلقائيًا.",
         (JournalEmpty, En) => "Everything you do will be recorded here automatically.",
+        (NavJournal, ArEg | Ar) => "اليوميات",
+        (NavJournal, En) => "Journal",
+        (JournalIntro, ArEg) => "كل اللي عملته يوم بيوم، ومعاه خواطرك انت.",
+        (JournalIntro, Ar) => "كل ما أنجزته يومًا بيوم، ومعه خواطرك.",
+        (JournalIntro, En) => "Everything you've done, day by day, with your own reflections.",
+        (JournalOpen, ArEg) => "افتح اليوميات",
+        (JournalOpen, Ar) => "افتح اليوميات",
+        (JournalOpen, En) => "Open the journal",
+        (JournalFilterAll, ArEg) => "الكل",
+        (JournalFilterAll, Ar) => "الكل",
+        (JournalFilterAll, En) => "All",
+        (JournalFilterLearning, ArEg) => "مذاكرة",
+        (JournalFilterLearning, Ar) => "دراسة",
+        (JournalFilterLearning, En) => "Study",
+        (JournalFilterWords, ArEg | Ar) => "كلمات",
+        (JournalFilterWords, En) => "Words",
+        (JournalFilterReflections, ArEg | Ar) => "خواطر",
+        (JournalFilterReflections, En) => "Reflections",
+        (JournalNothingHere, ArEg) => "لسه مفيش حاجة هنا. كل خطوة صغيرة هتظهر أول بأول.",
+        (JournalNothingHere, Ar) => "لا شيء هنا بعد. ستظهر كل خطوة صغيرة أولًا بأول.",
+        (JournalNothingHere, En) => "Nothing here yet. Every small step will show up as it happens.",
+        (JournalShowOlder, ArEg) => "اعرض الأيام اللي قبل كده",
+        (JournalShowOlder, Ar) => "اعرض الأيام الأقدم",
+        (JournalShowOlder, En) => "Show older days",
+        (JournalReflectionAdd, ArEg) => "اكتب خاطرة عن اليوم ده",
+        (JournalReflectionAdd, Ar) => "اكتب خاطرة عن هذا اليوم",
+        (JournalReflectionAdd, En) => "Write a reflection",
+        (JournalReflectionPlaceholder, ArEg) => "اتعلمت إيه؟ إيه اللي كان صعب؟ وإيه اللي عجبك؟",
+        (JournalReflectionPlaceholder, Ar) => "ماذا تعلّمت؟ ما الذي كان صعبًا؟ وما الذي أعجبك؟",
+        (JournalReflectionPlaceholder, En) => "What did you learn? What was hard? What did you enjoy?",
+        (JournalReflectionSave, ArEg | Ar) => "احفظ",
+        (JournalReflectionSave, En) => "Save",
+        (JournalReflectionCancel, ArEg | Ar) => "إلغاء",
+        (JournalReflectionCancel, En) => "Cancel",
+        (JournalReflectionEdit, ArEg) => "عدّل",
+        (JournalReflectionEdit, Ar) => "تعديل",
+        (JournalReflectionEdit, En) => "Edit",
+        (JournalReflectionDelete, ArEg) => "امسح",
+        (JournalReflectionDelete, Ar) => "حذف",
+        (JournalReflectionDelete, En) => "Delete",
+        (JournalReflectionDeleteSure, ArEg) => "أيوه، امسحها",
+        (JournalReflectionDeleteSure, Ar) => "نعم، احذفها",
+        (JournalReflectionDeleteSure, En) => "Yes, delete it",
+        (JournalReflectionEdited, ArEg) => "اتعدّلت",
+        (JournalReflectionEdited, Ar) => "عُدّلت",
+        (JournalReflectionEdited, En) => "edited",
+        (JournalReflectionLabel, ArEg) => "خاطرتك",
+        (JournalReflectionLabel, Ar) => "خاطرتك",
+        (JournalReflectionLabel, En) => "Your reflection",
+        (JournalPrivate, ArEg) => "خواطرك ليك انت بس: بتتزامن بين أجهزتك ومبتروحش لأي ذكاء اصطناعي.",
+        (JournalPrivate, Ar) => "خواطرك لك وحدك: تتزامن بين أجهزتك ولا تُرسَل إلى أي ذكاء اصطناعي.",
+        (JournalPrivate, En) => {
+            "Your reflections are yours alone: they sync between your devices and never go to any AI."
+        }
+        (JournalInkLater, ArEg) => "الكتابة بالقلم على التابلت جاية مع \u{2068}Tablet Studio\u{2069}.",
+        (JournalInkLater, Ar) => "الكتابة بالقلم على الجهاز اللوحي قادمة مع \u{2068}Tablet Studio\u{2069}.",
+        (JournalInkLater, En) => "Handwritten reflections on the tablet arrive with Tablet Studio.",
+        (JournalTestPassed, ArEg) => "عدّيت اختبار المستوى",
+        (JournalTestPassed, Ar) => "اجتزت اختبار المستوى",
+        (JournalTestPassed, En) => "Passed the level test",
+        (JournalSouvenir, ArEg) => "تذكار جديد في الشنطة",
+        (JournalSouvenir, Ar) => "تذكار جديد في الحقيبة",
+        (JournalSouvenir, En) => "New souvenir in your suitcase",
+        (JournalTaught, ArEg | Ar) => "علّمت كبر كلمة",
+        (JournalTaught, En) => "Taught Kabar a word",
+        (JournalDraft, ArEg) => "لسه مسودة",
+        (JournalDraft, Ar) => "مسودة",
+        (JournalDraft, En) => "draft",
         (EvReviews, ArEg | Ar) => "مراجعة",
         (EvReviews, En) => "Reviews",
         (EvNewWords, ArEg | Ar) => "كلمات جديدة",

@@ -242,6 +242,22 @@ const MIGRATIONS: &[&str] = &[
         json       TEXT NOT NULL,
         created_ms INTEGER NOT NULL
     ) STRICT;",
+    // 8: learning journal reflections (spec §6), LWW per reflection id. Rows
+    // another device sent before this build knew the table are copied over
+    // from `sync_rows`, so nothing synced earlier is lost.
+    "CREATE TABLE journal_entries (
+        id          TEXT PRIMARY KEY,
+        entry       TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE INDEX journal_entries_date ON journal_entries (json_extract(entry, '$.date'));
+    INSERT INTO journal_entries (id, entry, account_id, device_id, hlc_wall, hlc_counter, deleted)
+        SELECT row_id, payload, account_id, device_id, hlc_wall, hlc_counter, deleted
+        FROM sync_rows WHERE tbl = 'journal_entries' AND payload IS NOT NULL;",
 ];
 
 /// The schema version that added `sync_rows`.
@@ -264,6 +280,7 @@ const SYNCED_TABLES: &[&str] = &[
     "sync_rows",
     "texts",
     "saved_words",
+    "journal_entries",
 ];
 
 /// LWW tables that hold one JSON document per row id.
@@ -766,6 +783,11 @@ mod reviews;
 pub use reader::{Highlight, SavedText, TextKind};
 // Teach Kabar's personal dictionary (spec §26).
 mod taught;
+// The learning journal: reflections and the timeline's extra sources.
+mod journal;
+pub use journal::{LessonDone, TaughtAt};
+// One-click full export (spec §7).
+pub mod export;
 
 fn write_synced(
     tx: &Transaction<'_>,
@@ -877,6 +899,7 @@ impl Typed {
             "cards" => Self::Doc("cards", "id", "payload"),
             "sessions" => Self::Doc("sessions", "device", "payload"),
             "taught_entries" => Self::Doc("taught_entries", "id", "entry"),
+            "journal_entries" => Self::Doc("journal_entries", "id", "entry"),
             "texts" | "word_status" | "highlights" => {
                 let table = ["texts", "word_status", "highlights"].into_iter().find(|t| *t == table)?;
                 Self::Doc(table, "id", "payload")

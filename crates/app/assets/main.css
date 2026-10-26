@@ -672,3 +672,84 @@ button.uu-scene.locked { opacity: 0.55; filter: grayscale(1); cursor: not-allowe
   .uu-delta { animation: uu-pop 700ms ease-out both; }
 }
 @keyframes uu-pop { from { opacity: 0; transform: translateY(4px) scale(0.9); } to { opacity: 1; transform: none; } }
+
+/* Welcome back */
+.welcome-back { border-inline-start: 4px solid var(--gold); }
+.welcome-back-plan-title { margin-block: 1rem 0.25rem; font-size: 1rem; }
+button.welcome-back-start { display: block; inline-size: 100%; min-block-size: 48px; font-size: 1.1rem; font-weight: 700; }
+.welcome-back-more { margin-block-start: 1rem; color: var(--muted); }
+.welcome-back-more summary { cursor: pointer; text-decoration: underline; padding-block: 0.5rem; min-block-size: 44px; }
+.welcome-back-more .row { margin-block-start: 0.5rem; flex-wrap: wrap; }
+.reward.ready { background: var(--gold-soft); border-color: transparent; }
+.reward.ready .reward-icon { color: var(--gold); }
+.plan-break {
+  padding-block: 0.6rem;
+  padding-inline: 0.8rem;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+.plan-break p { margin-block: 0.25rem 0; }
+.app[data-width="compact"] .welcome-back { border-inline-start-width: 3px; }
+@media (prefers-reduced-motion: no-preference) {
+  .welcome-back { animation: welcome-back-in 400ms ease-out both; }
+  .reward.ready .reward-icon { animation: welcome-back-glow 2.4s ease-in-out infinite alternate; }
+}
+@keyframes welcome-back-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes welcome-back-glow { from { opacity: 0.6; } to { opacity: 1; } }
+/* Journal */
+.journal { display: grid; gap: 0.75rem; max-inline-size: 46rem; margin-inline: auto; inline-size: 100%; }
+.journal > .card { margin: 0; }
+.journal-head h2 { margin-block-end: 0.25rem; }
+.journal-filters { flex-wrap: wrap; gap: 0.4rem; margin-block: 0.5rem; }
+.journal-private { margin-block-end: 0; }
+.journal-day-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 0.75rem; }
+.journal-day-head h3 { margin: 0; }
+.journal-day-sum { margin: 0; font-variant-numeric: tabular-nums; }
+.journal-entries { list-style: none; padding: 0; margin: 0.5rem 0 0; display: grid; gap: 0.35rem; }
+.journal-entries li { display: flex; align-items: baseline; gap: 0.5rem; min-inline-size: 0; }
+.journal-time { flex: none; min-inline-size: 3rem; font-variant-numeric: tabular-nums; }
+.journal-what { min-inline-size: 0; overflow-wrap: anywhere; }
+.journal-note {
+  margin-block: 0.5rem; padding: 0.6rem 0.75rem; background: var(--surface-2);
+  border-inline-start: 3px solid var(--indigo); border-radius: 10px;
+}
+.journal-note-text { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.journal-note-actions { flex-wrap: wrap; align-items: center; gap: 0.4rem; margin-block-start: 0.4rem; }
+.journal-note-actions .muted { margin-inline-end: auto; }
+.journal-note-actions button { padding-block: 0.2rem; }
+button.journal-delete { color: var(--dawn); border-color: var(--dawn); }
+.journal-add { margin-block: 0.5rem; }
+.journal-editor { margin-block: 0.5rem; }
+.journal-editor textarea {
+  inline-size: 100%; font: inherit; color: var(--text); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 10px; padding: 0.6rem 0.75rem;
+  margin-block-end: 0.5rem; resize: vertical; min-block-size: 6rem;
+}
+.journal-older { justify-self: center; }
+.journal-link h2 .nav-icon { display: inline-flex; vertical-align: middle; }
+/* Cost & export */
+.cost-total { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; margin-block: 0.25rem 0.75rem; }
+.cost-amount { font-size: 2.6rem; font-weight: 700; line-height: 1.1; color: var(--sawah); font-variant-numeric: tabular-nums; }
+.cost-period { font-size: 1.1rem; color: var(--muted); }
+.cost-list, .cost-platform { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
+.cost-platform { gap: 0.4rem; }
+.cost-row { display: grid; gap: 0.35rem; min-inline-size: 0; }
+.cost-head .row, .cost-row .row, .cost-meta { justify-content: space-between; }
+.cost-name { font-weight: 600; }
+.cost-bar { block-size: 0.7rem; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+.cost-fill { block-size: 100%; border-radius: inherit; background: var(--sawah); min-inline-size: 2px; }
+.cost-fill.near { background: var(--gold); }
+.cost-fill.paused { background: var(--dawn); }
+.cost-meta { font-size: 0.85rem; flex-wrap: wrap; gap: 0.25rem 1rem; font-variant-numeric: tabular-nums; }
+.cost-warnings { display: grid; gap: 0.5rem; }
+.cost-warnings .notice { margin: 0; padding-block: 0.5rem; padding-inline: 0.75rem; border-radius: 8px; background: var(--gold-soft); border-inline-start: 3px solid var(--gold); }
+.cost-confirm { border: 2px solid var(--dawn); border-radius: var(--radius); padding-block: 0.75rem; padding-inline: 1rem; background: var(--dawn-soft); }
+.cost-confirm h3 { margin-block: 0 0.5rem; }
+.export-result { margin-block-start: 0.75rem; display: grid; gap: 0.25rem; }
+.export-result p { margin: 0; }
+.export-path { display: block; overflow-wrap: anywhere; padding-block: 0.4rem; padding-inline: 0.6rem; border-radius: 6px; background: var(--surface-2); text-align: start; }
+.app[data-width="compact"] .cost-amount { font-size: 2.2rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .cost-fill { transition: inline-size 500ms ease; }
+}

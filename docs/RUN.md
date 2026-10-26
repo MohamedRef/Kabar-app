@@ -112,12 +112,20 @@ Commit the changed files under `content/` after the kaikki and jvwiki steps.
 On the Mac: `just run-mac`. After the welcome screen, Kak Nur's onboarding asks your name, why you're learning, Indonesian/Javanese, 5/15/30 minutes, a target, study times, reminders and where to start.
 
 - **Today**: Kak Nur's greeting, "5, 15 or 30 minutes today?", the plan, Pelita and Koin. Tick an item when you've done it (until reviews and lessons land, ticking is how study gets logged). The recap card appears once the goal is met or in the evening.
-- **Kak Nur** (nav): weekly report, Liga Pribadi, achievements, the Warung and the learning journal.
+- **Kak Nur** (nav): weekly report, Liga Pribadi, achievements, the Warung and a link to the learning journal.
+- **Journal** (nav on the Mac and tablet; on the phone from Today's links under the plan, or from Kak Nur): every day's reviews, new words, lessons and level tests, practice, plan items, purchases, souvenirs and taught words, newest first, with the day's minutes and XP. Filter by All / Study / Words / Reflections; "Show older days" pages back two weeks at a time. Write a reflection on any day (typed, several lines); edit or delete it. Reflections sync between devices and are never sent to any AI. Handwritten reflections come with Tablet Studio.
 - **Settings → Kak Nur**: reminder style, study times, quiet hours, report day.
 
 To start onboarding again, delete the database (§2). On the Galaxy devices: `just apk` and `just install <serial>` as in §3.
 
 Reminders arrive as push notifications once Kabar Cloud's reminder alarm and Firebase are set up (CLOUD.md §3.4).
+
+### Settings: Cost & limits, and Export everything
+
+- **Settings → Cost & limits** shows "$0.00 this month", one bar per free allowance (Gemini, Workers AI, Azure TTS) with its local reset time, a warning from 80% ("…Kabar pauses it rather than pay; it's back tomorrow at 02:00"), and Cloudflare's Free-plan limits (no card, so it can't bill). The counters come from `GET /v1/usage` (CLOUD.md §2); signed out or offline, the screen still says $0 and explains the hard stops. **Turn on Claude…** asks first ("This could cost money", default No). There is no in-app engine switch yet: Claude is switched on in Kabar Cloud with `CLAUDE_ENABLED = "true"` in `crates/server/wrangler.toml` and `just deploy-cloud`.
+- **Settings → Your data → Export everything** writes every table of the local database to one `kabar-export-YYYY-MM-DD.json` (`-2`, `-3`… if one exists). Sign-in tokens live in the Keychain/Keystore and are never in it.
+  - Mac: `~/Downloads`.
+  - S24 Ultra / Tab S11: `Android/data/app.kabar/files/` (the app's external files folder). Copy it over USB (it shows in the phone's folder on the Mac with Android File Transfer/OpenMTP) or `adb pull /sdcard/Android/data/app.kabar/files/kabar-export-2026-10-26.json`. A share-sheet button needs a FileProvider in `android/` and is a follow-up.
 
 ## 8. Teach Kabar (spec §26)
 
