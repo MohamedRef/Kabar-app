@@ -112,7 +112,7 @@ class PlaybackService : Service() {
                 .setState(
                     if (playing) PlaybackState.STATE_PLAYING else PlaybackState.STATE_PAUSED,
                     positionMs,
-                    if (playing) PlaybackBridge.rate else 0f,
+                    if (playing) PlaybackBridge.speed else 0f,
                 )
                 .build(),
         )
@@ -181,7 +181,7 @@ object PlaybackBridge {
     @Volatile var service: PlaybackService? = null
     @Volatile var title: String = ""
     @Volatile var show: String = "Kabar"
-    @Volatile var rate: Float = 1f
+    @Volatile var speed: Float = 1f
     private var player: MediaPlayer? = null
     private var path: String? = null
     @Volatile private var ended = false
@@ -193,7 +193,7 @@ object PlaybackBridge {
         synchronized(lock) {
             this.title = title
             this.show = show
-            this.rate = rate
+            this.speed = rate
             ended = false
             if (this.path != path || player == null) {
                 release()
@@ -258,7 +258,7 @@ object PlaybackBridge {
     @JvmStatic
     fun setRate(r: Float) {
         synchronized(lock) {
-            rate = r
+            speed = r
             player?.takeIf { it.isPlaying }?.let { applyRate(it) }
         }
         service?.refresh()
@@ -295,6 +295,6 @@ object PlaybackBridge {
 
     private fun applyRate(p: MediaPlayer) {
         // Setting params on a paused player starts it, so only call this before start().
-        p.playbackParams = PlaybackParams().setSpeed(rate)
+        p.playbackParams = PlaybackParams().setSpeed(speed)
     }
 }
