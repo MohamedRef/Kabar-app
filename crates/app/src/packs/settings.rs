@@ -297,7 +297,11 @@ fn PackRow(
     rsx! {
         li { class: "packs-row",
             span { class: "packs-name",
-                bdi { class: "latin", "{row.unit}" }
+                if let Some(title) = crate::journey::unit_title(lang, &row.unit) {
+                    span { "{title}" }
+                } else {
+                    bdi { class: "latin", "{row.unit}" }
+                }
                 if let Some(stop) = &row.stop {
                     span { class: "muted", bdi { class: "latin", "{stop}" } }
                 }

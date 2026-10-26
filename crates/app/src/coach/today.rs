@@ -108,7 +108,7 @@ pub fn Today() -> Element {
                     WelcomeBack { profile: profile.clone(), plan: plan.clone(), today }
                 } else {
                 div { class: "card",
-                    h2 { lang: "id", bdi { "{ui.t(Msg::TodayTitle)}" } }
+                    h2 { lang: "id", bdi { dir: "ltr", "{ui.t(Msg::TodayTitle)}" } }
                     Nur { text: say(&ui, greeting, today, &args) }
                     p { class: "muted", "{say(&ui, Line::PlanAskSize, today, &args)}" }
                     SizePicker {
@@ -154,6 +154,7 @@ pub fn Today() -> Element {
                 }
                 crate::lesson::PlacementInvite {}
                 crate::play::PagiTodayCard {}
+                crate::stats::TodayCards {}
             }
         }
         // On the phone, Kak Nur, the journal, Watch & listen and
@@ -313,7 +314,7 @@ fn PlanRow(
             div { class: "plan-text",
                 strong { "{ui.t(title)}" }
                 if let Some(detail) = detail {
-                    span { class: "muted", " · " bdi { "{detail}" } }
+                    span { class: "muted", " · " bdi { lang: "id", dir: "ltr", "{detail}" } }
                 }
                 div { class: "muted small", {labels::minutes(&ui, u32::from(item.minutes))} }
             }
@@ -420,7 +421,7 @@ fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
             if !r.new_words.is_empty() {
                 p { class: "words", lang: "id",
                     for w in r.new_words.iter() {
-                        bdi { key: "{w}", class: "word", "{w}" }
+                        bdi { key: "{w}", class: "word", dir: "ltr", "{w}" }
                     }
                 }
             }

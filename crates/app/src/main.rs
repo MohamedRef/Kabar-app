@@ -19,6 +19,7 @@ mod play;
 mod reader;
 mod review;
 mod screens;
+mod stats;
 mod store;
 mod studio;
 mod teach;
@@ -60,6 +61,10 @@ pub enum Screen {
     Journal,
     /// Cost & limits (spec §19), from Settings.
     Cost,
+    /// Stats (spec §16): from the Review home and Today.
+    Stats,
+    /// The monthly level check (spec §6).
+    LevelCheck,
     /// Sinetron and Kabar Radio.
     Listen,
 }
@@ -81,6 +86,8 @@ impl Screen {
             Self::Teach => Msg::NavTeach,
             Self::Journal => Msg::NavJournal,
             Self::Cost => Msg::CostTitle,
+            Self::Stats => Msg::NavReview,
+            Self::LevelCheck => Msg::NavCoach,
             Self::Listen => Msg::NavListen,
         }
     }
@@ -122,6 +129,8 @@ pub struct Ui {
     pub screen: Signal<Screen>,
     /// The lesson the player shows (curriculum lesson id).
     pub lesson: Signal<Option<String>>,
+    /// The screen the player was opened from; closing it goes back there.
+    pub lesson_from: Signal<Screen>,
 }
 
 /// The local database, shared through context.
@@ -162,14 +171,19 @@ impl Ui {
 
     /// Opens the Lesson Player on a lesson (from the Journey Map, Today or Lanjut).
     pub fn open_lesson(mut self, lesson_id: impl Into<String>) {
+        let from = *self.screen.peek();
+        if from != Screen::Lesson {
+            self.lesson_from.set(from);
+        }
         self.lesson.set(Some(lesson_id.into()));
         self.screen.set(Screen::Lesson);
     }
 
-    /// Leaves the Lesson Player back to the Journey Map.
+    /// Leaves the Lesson Player back to the screen it was opened from.
     pub fn close_lesson(mut self) {
+        let back = *self.lesson_from.peek();
         self.lesson.set(None);
-        self.screen.set(Screen::Journey);
+        self.screen.set(back);
     }
 }
 
@@ -236,12 +250,23 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     // KABAR_OPEN_LESSON=bipa1.u01.l01 opens the Lesson Player at launch
     // (previews and screenshots on the Mac).
     let open_lesson = use_hook(|| std::env::var("KABAR_OPEN_LESSON").ok());
+    // KABAR_OPEN_SCREEN=stats | level_check opens those screens the same way.
+    let open_screen = use_hook(|| match std::env::var("KABAR_OPEN_SCREEN").as_deref() {
+        Ok("stats") => Some(Screen::Stats),
+        Ok("level_check") => Some(Screen::LevelCheck),
+        _ => None,
+    });
     let ui = use_context_provider(|| Ui {
         settings: Signal::new(initial),
         width: Signal::new(WidthClass::Expanded),
         tablet: Signal::new(false),
-        screen: Signal::new(if open_lesson.is_some() { Screen::Lesson } else { Screen::Today }),
+        screen: Signal::new(match (&open_lesson, open_screen) {
+            (Some(_), _) => Screen::Lesson,
+            (None, Some(s)) => s,
+            (None, None) => Screen::Today,
+        }),
         lesson: Signal::new(open_lesson),
+        lesson_from: Signal::new(Screen::Journey),
     });
     use_context_provider(|| db.clone());
     use_context_provider(play::PlayNav::new);
@@ -493,6 +518,8 @@ fn Shell() -> Element {
                     Screen::Cost => rsx! { cost::CostScreen {} },
                     Screen::Listen => rsx! { listen::ListenScreen {} },
                     Screen::Lesson => rsx! { lesson::LessonScreen {} },
+                    Screen::Stats => rsx! { stats::StatsScreen {} },
+                    Screen::LevelCheck => rsx! { stats::check::LevelCheckScreen {} },
                 }
             }
         }

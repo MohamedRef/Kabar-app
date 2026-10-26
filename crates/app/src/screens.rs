@@ -18,15 +18,15 @@ pub fn Welcome() -> Element {
     rsx! {
         div { class: "welcome",
             div { class: "card",
-                p { class: "greeting reveal", bdi { lang: "id", "Apa kabar?" } }
+                p { class: "greeting reveal", bdi { lang: "id", dir: "ltr", "Apa kabar?" } }
                 div { class: "reveal d2",
-                    p { class: "muted", "{ui.t(Msg::WelcomeKabarFrom)}" }
+                    p { class: "muted", crate::review::Isolated { text: ui.t(Msg::WelcomeKabarFrom).to_string() } }
                     div { class: "bridge",
                         span { class: "bridge-word latin", lang: "id", "kabar" }
                         span { aria_hidden: "true", if lang == UiLanguage::En { "←" } else { "→" } }
                         span { class: "ar", lang: "ar", "خبر" }
                     }
-                    p { "{ui.t(Msg::WelcomeExplain)}" }
+                    p { crate::review::Isolated { text: ui.t(Msg::WelcomeExplain).to_string() } }
                 }
                 div { class: "reveal d3",
                     p { class: "muted", "{ui.t(Msg::WelcomeFirstWord)}" }

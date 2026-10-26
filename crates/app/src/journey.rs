@@ -270,7 +270,7 @@ fn continue_bar(ui: &Ui, j: &Journey, progress: &Progress) -> Element {
     let ui = *ui;
     let Some(id) = progress.current() else {
         return rsx! {
-            p { class: "all-done card", "{ui.t(Msg::JourneyAllDone)}" }
+            p { class: "all-done card", crate::review::Isolated { text: ui.t(Msg::JourneyAllDone).to_string() } }
         };
     };
     let title = j.curriculum().lessons().find(|l| l.id == id).map(|l| l.title.clone()).unwrap_or_default();
@@ -278,10 +278,10 @@ fn continue_bar(ui: &Ui, j: &Journey, progress: &Progress) -> Element {
     rsx! {
         div { class: "continue-bar",
             button { class: "primary continue", onclick: move |_| ui.open_lesson(id.clone()),
-                span { class: "continue-word", bdi { lang: "id", "Lanjut" } }
+                span { class: "continue-word", bdi { lang: "id", dir: "ltr", "Lanjut" } }
                 span { class: "continue-sub",
                     "{ui.t(Msg::JourneyContinue)}: "
-                    bdi { lang: j.route.target_lang(), "{title}" }
+                    bdi { lang: j.route.target_lang(), dir: "ltr", "{title}" }
                 }
             }
         }
@@ -321,7 +321,7 @@ fn level_head(
                 }
                 div {
                     h2 {
-                        bdi { lang: j.route.target_lang(), "{level.place()}" }
+                        bdi { lang: j.route.target_lang(), dir: "ltr", "{level.place()}" }
                         " "
                         span { class: "pill latin", bdi { "{level.code}" } }
                         if cur.unverified() {
@@ -333,7 +333,7 @@ fn level_head(
                         "{local(lang, &level.title)}"
                         if let Some(t) = &level.title.target {
                             " · "
-                            bdi { lang: j.route.target_lang(), "{t}" }
+                            bdi { lang: j.route.target_lang(), dir: "ltr", "{t}" }
                         }
                     }
                 }
@@ -400,7 +400,7 @@ fn unit_stops(ui: &Ui, j: &Journey, level: &Level, progress: &Progress, mark_cur
                     }
                     div { class: "stop-body",
                         h3 {
-                            bdi { lang: tl, "{unit.stop}" }
+                            bdi { lang: tl, dir: "ltr", "{unit.stop}" }
                             span { class: "stop-unit muted",
                                 " · {local(lang, &unit.title)}"
                             }
@@ -447,7 +447,7 @@ fn lessons(ui: &Ui, tl: &'static str, unit: &Unit, progress: &Progress, mark_cur
                                     if state == LessonState::Done { {icon_check()} }
                                 }
                                 span { class: "lesson-text",
-                                    bdi { class: "lesson-title", lang: tl, "{lesson.title}" }
+                                    bdi { class: "lesson-title", lang: tl, dir: "ltr", "{lesson.title}" }
                                     span { class: "lesson-meta muted",
                                         "{kind} · {minutes}"
                                         if let Some(m) = state_msg {
@@ -515,6 +515,13 @@ fn MapView(j: Journey) -> Element {
     let dot = map.radius * 0.22;
     let current_level = selected.read().clone();
     let panel_level = current_level.as_deref().and_then(|id| cur.level(id));
+    let spots = label_spots(
+        &cur.levels
+            .iter()
+            .zip(map.pins.iter())
+            .map(|(level, pin)| (pin.x / k, pin.y / k, short_place(level.place()).chars().count()))
+            .collect::<Vec<_>>(),
+    );
     let rail = map.style == RouteStyle::Rail;
 
     rsx! {
@@ -561,8 +568,9 @@ fn MapView(j: Journey) -> Element {
                                     }
                                 }
                             }
-                            for (level, pin) in cur.levels.iter().zip(map.pins.iter()) {
+                            for ((level, pin), spot) in cur.levels.iter().zip(map.pins.iter()).zip(spots.iter().copied()) {
                                 {
+                                    let (lx, ly, anchor) = spot.attrs();
                                     let (done, total) = progress.level_counts(level);
                                     let pct = (done * 100).checked_div(total).unwrap_or(0);
                                     let state = if progress.level_done(&level.id) {
@@ -576,7 +584,7 @@ fn MapView(j: Journey) -> Element {
                                     let id = level.id.clone();
                                     let id2 = level.id.clone();
                                     let label = format!("{}, {}: {done}/{total}", level.place(), level.code);
-                                    let short = level.place().split([',', '(']).next().unwrap_or_default().trim().to_string();
+                                    let short = short_place(level.place());
                                     rsx! {
                                         g { key: "{level.id}", class: "jm-level", "data-state": state,
                                             path { class: "unit-loop", d: "{pin.units_d()}" }
@@ -617,7 +625,15 @@ fn MapView(j: Journey) -> Element {
                                                             transform: "rotate(-90)",
                                                         }
                                                     }
-                                                    text { class: "pin-label", y: "-6.6", "text-anchor": "middle", lang: j.route.target_lang(), "{short}" }
+                                                    text {
+                                                        class: "pin-label",
+                                                        x: "{lx}",
+                                                        y: "{ly}",
+                                                        "text-anchor": anchor,
+                                                        direction: "ltr",
+                                                        lang: j.route.target_lang(),
+                                                        "{short}"
+                                                    }
                                                     text { class: "pin-code", y: "1.25", "text-anchor": "middle", "{level.code.replace(\"BIPA \", \"\")}" }
                                                 }
                                             }
@@ -738,9 +754,21 @@ pub fn current_unit(completed: &BTreeSet<String>, start: Option<&str>, javanese:
 
 // ------------------------------------------------------------- suitcase ----
 
+/// The souvenir a unit's lesson content ships (its target-language name and
+/// the note in the UI language). The curriculum's card is English only, so
+/// it's the fallback for units whose lessons aren't written yet.
+fn local_souvenir(unit_id: &str, lang: UiLanguage) -> Option<(String, String)> {
+    find_unit(unit_id)?.lessons.iter().rev().find_map(|l| {
+        let lesson = kabar_core::lesson::parse_lesson(crate::lesson::lesson_content(&l.id)?).ok()?;
+        let s = lesson.souvenir?;
+        Some((s.title, kabar_core::lesson::pick(&s.note, lang).to_string()))
+    })
+}
+
 #[component]
 fn Suitcase(completed: Rc<BTreeSet<String>>) -> Element {
     let ui = use_context::<Ui>();
+    let lang = ui.lang();
     let routes = ROUTES.as_ref().expect("checked by JourneyScreen");
     let cards: Vec<_> = [(&routes.id, "id"), (&routes.jv, "jv")]
         .into_iter()
@@ -758,15 +786,19 @@ fn Suitcase(completed: Rc<BTreeSet<String>>) -> Element {
                 for (s, tl) in cards {
                     li { key: "{s.unit_id}", class: "souvenir card",
                         div { class: "souvenir-stamp", aria_hidden: "true", bdi { "{s.level_code}" } }
-                        h3 { bdi { lang: tl, "{s.name}" } }
+                        h3 { bdi { lang: tl, dir: "ltr", "{local_souvenir(&s.unit_id, lang).map(|(t, _)| t).unwrap_or(s.name.clone())}" } }
                         p { class: "muted souvenir-where",
-                            bdi { lang: tl, "{s.stop}" }
+                            bdi { lang: tl, dir: "ltr", "{s.stop}" }
                             if s.unverified {
                                 " "
                                 span { class: "badge-unverified", "{ui.t(Msg::JourneyUnverified)}" }
                             }
                         }
-                        p { class: "souvenir-note", lang: "en", dir: "ltr", "{s.note}" }
+                        if let Some((_, note)) = local_souvenir(&s.unit_id, lang) {
+                            p { class: "souvenir-note", crate::lesson::Rich { text: note, target: tl } }
+                        } else {
+                            p { class: "souvenir-note", lang: "en", dir: "ltr", "{s.note}" }
+                        }
                     }
                 }
             }
@@ -815,6 +847,81 @@ fn icon_reset() -> Element {
     stroke_icon("M4 12a8 8 0 1 0 3-6.2M4 4v4h4")
 }
 
+/// "Bali (Ubud)" → "Bali": the name drawn next to a map pin.
+fn short_place(place: &str) -> String {
+    place.split([',', '(']).next().unwrap_or_default().trim().to_string()
+}
+
+/// Where a pin's name goes. Above by default, clear of the pin's selection
+/// halo; beside or below it when that would cover a neighbouring pin or its
+/// name (Bali and Lombok sit almost on top of each other).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+enum LabelSpot {
+    Above,
+    Below,
+    East,
+    West,
+}
+
+/// Pin design units (see `k` in the map): the selection halo's radius, the
+/// pin's own radius with its progress ring, and the label's font metrics.
+const HALO: f64 = 8.0;
+const PIN: f64 = 5.0;
+const CHAR_W: f64 = 2.4;
+const ASCENT: f64 = 3.2;
+const DESCENT: f64 = 1.0;
+
+impl LabelSpot {
+    /// (x, y, text-anchor) relative to the pin, in pin design units.
+    fn attrs(self) -> (f64, f64, &'static str) {
+        match self {
+            Self::Above => (0.0, -(HALO + 1.6), "middle"),
+            Self::Below => (0.0, HALO + 1.4 + ASCENT, "middle"),
+            Self::East => (HALO + 1.4, 1.2, "start"),
+            Self::West => (-(HALO + 1.4), 1.2, "end"),
+        }
+    }
+
+    /// The label's box (x0, y0, x1, y1) for a pin at (x, y).
+    fn rect(self, x: f64, y: f64, chars: usize) -> (f64, f64, f64, f64) {
+        let (dx, dy, anchor) = self.attrs();
+        let w = chars as f64 * CHAR_W;
+        let x0 = match anchor {
+            "middle" => x + dx - w / 2.0,
+            "start" => x + dx,
+            _ => x + dx - w,
+        };
+        (x0, y + dy - ASCENT, x0 + w, y + dy + DESCENT)
+    }
+}
+
+fn overlaps(a: (f64, f64, f64, f64), b: (f64, f64, f64, f64)) -> bool {
+    a.0 < b.2 && b.0 < a.2 && a.1 < b.3 && b.1 < a.3
+}
+
+/// Picks a spot per pin, given (x, y, label length) in pin design units:
+/// the first of above, below, east, west that covers no other pin and no
+/// label already placed. Falls back to above.
+fn label_spots(pins: &[(f64, f64, usize)]) -> Vec<LabelSpot> {
+    let discs: Vec<_> = pins.iter().map(|&(x, y, _)| (x - PIN, y - PIN, x + PIN, y + PIN)).collect();
+    let mut placed: Vec<(f64, f64, f64, f64)> = Vec::new();
+    let mut out = Vec::with_capacity(pins.len());
+    for (i, &(x, y, chars)) in pins.iter().enumerate() {
+        let free = |spot: LabelSpot| {
+            let r = spot.rect(x, y, chars);
+            !discs.iter().enumerate().any(|(j, d)| j != i && overlaps(r, *d))
+                && !placed.iter().any(|p| overlaps(r, *p))
+        };
+        let spot = [LabelSpot::Above, LabelSpot::Below, LabelSpot::East, LabelSpot::West]
+            .into_iter()
+            .find(|s| free(*s))
+            .unwrap_or(LabelSpot::Above);
+        placed.push(spot.rect(x, y, chars));
+        out.push(spot);
+    }
+    out
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -834,6 +941,44 @@ mod tests {
             for l in &c.levels {
                 assert!(l.level_test.is_some(), "{} has no level test", l.id);
                 assert!(l.lessons().count() > 0, "{} has no lessons", l.id);
+            }
+        }
+    }
+
+    #[test]
+    fn map_labels_stay_off_other_pins_and_labels() {
+        // Two pins almost touching, like Bali and Lombok.
+        let spots = label_spots(&[(0.0, 0.0, 4), (7.0, 1.0, 6), (60.0, 0.0, 7)]);
+        assert_eq!(spots[0], LabelSpot::Above);
+        assert_ne!(spots[1], LabelSpot::Above, "would cover Bali's name");
+        assert_eq!(spots[2], LabelSpot::Above, "a lone pin keeps the default");
+        // Above clears the selection halo.
+        let (_, _, _, bottom) = LabelSpot::Above.rect(0.0, 0.0, 7);
+        assert!(bottom <= -HALO + 0.01, "{bottom}");
+        // The real maps: no label covers another pin or label.
+        let r = ROUTES.as_ref().unwrap();
+        for (cur, map) in [(&r.id, &r.id_map), (&r.jv, &r.jv_map)] {
+            let k = map.view.w / 200.0;
+            let pins: Vec<_> = cur
+                .levels
+                .iter()
+                .zip(map.pins.iter())
+                .map(|(l, p)| (p.x / k, p.y / k, short_place(l.place()).chars().count()))
+                .collect();
+            let spots = label_spots(&pins);
+            let rects: Vec<_> = pins.iter().zip(&spots).map(|(&(x, y, n), s)| s.rect(x, y, n)).collect();
+            for (i, a) in rects.iter().enumerate() {
+                for (j, &(x, y, _)) in pins.iter().enumerate() {
+                    if i != j {
+                        assert!(
+                            !overlaps(*a, (x - PIN, y - PIN, x + PIN, y + PIN)),
+                            "label {i} covers pin {j}"
+                        );
+                    }
+                }
+                for b in &rects[i + 1..] {
+                    assert!(!overlaps(*a, *b), "label {i} overlaps another");
+                }
             }
         }
     }
@@ -877,5 +1022,16 @@ mod tests {
         // "I know the basics" starts at BIPA 2; Javanese has its own route.
         assert_eq!(current_unit(&BTreeSet::new(), Some("bipa2"), false).as_deref(), Some("bipa2.u01"));
         assert_eq!(current_unit(&BTreeSet::new(), Some("bipa2"), true).as_deref(), Some("j1.u01"));
+    }
+
+    #[test]
+    fn suitcase_souvenirs_speak_the_ui_language() {
+        // The lesson content's souvenir, not the English curriculum card.
+        let (title, note) = local_souvenir("bipa1.u01", UiLanguage::ArEg).unwrap();
+        assert_eq!(title, "Taman Fatahillah");
+        assert!(note.contains("جاكرتا"), "{note}");
+        let (_, en) = local_souvenir("bipa1.u01", UiLanguage::En).unwrap();
+        assert!(en.starts_with("Jakarta began"), "{en}");
+        assert_eq!(local_souvenir("no.such.unit", UiLanguage::ArEg), None);
     }
 }
