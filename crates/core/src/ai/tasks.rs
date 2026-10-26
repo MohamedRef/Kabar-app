@@ -20,7 +20,10 @@ pub use content::{RadioLine, RadioScript};
 pub use practice::{
     CheckStrokes, Correction, GuessSketch, MapBranch, MindMap, ReadHandwriting, RoleplayTurn, UNCLEAR_SKETCH,
 };
-pub use reading::{ExplainSentence, ScreenKind, ScreenMessage, Side, StructureScreenshot};
+pub use reading::ExplainSentence;
+// structure_screenshot's answer lives with the rest of the screenshot code.
+pub use crate::reader::screen_ai::{ScreenKind, ScreenMessage, StructureScreenshot};
+pub use crate::reader::screenshot::Side;
 
 pub trait AiOutput: DeserializeOwned {
     const TASK: Task;
