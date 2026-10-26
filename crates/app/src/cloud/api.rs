@@ -63,7 +63,12 @@ impl Api {
     }
 
     pub fn devices(&self, access: &str) -> Result<DeviceList, CloudError> {
-        read(self.agent.get(format!("{}/v1/devices", self.base)).header("authorization", bearer(access)).call())
+        read(
+            self.agent
+                .get(format!("{}/v1/devices", self.base))
+                .header("authorization", bearer(access))
+                .call(),
+        )
     }
 
     pub fn revoke(&self, access: &str, device: &DeviceId) -> Result<(), CloudError> {
@@ -120,7 +125,10 @@ mod tests {
 
     #[test]
     fn sync_url_follows_the_scheme() {
-        assert_eq!(Api::new("https://kabar-cloud.x.workers.dev/").sync_url(), "wss://kabar-cloud.x.workers.dev/v1/sync");
+        assert_eq!(
+            Api::new("https://kabar-cloud.x.workers.dev/").sync_url(),
+            "wss://kabar-cloud.x.workers.dev/v1/sync"
+        );
         assert_eq!(Api::new("http://127.0.0.1:8787").sync_url(), "ws://127.0.0.1:8787/v1/sync");
     }
 

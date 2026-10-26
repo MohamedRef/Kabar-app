@@ -26,14 +26,22 @@ pub enum Phase {
 pub enum Effect {
     Send(ClientMsg),
     /// Merge these ops into the store and save `last_seq`, in one transaction.
-    Apply { ops: Vec<SeqOp>, last_seq: u64 },
+    Apply {
+        ops: Vec<SeqOp>,
+        last_seq: u64,
+    },
     /// Save `last_seq` (nothing to merge).
     SaveLastSeq(u64),
     /// Remove these ops from the outbox. Rejected ops will never be accepted,
     /// so they leave too; the reasons are for the log.
-    Acked { done: Vec<String>, rejected: Vec<Rejected> },
+    Acked {
+        done: Vec<String>,
+        rejected: Vec<Rejected>,
+    },
     /// Close the socket and reconnect after a backoff.
-    Reconnect { reason: String },
+    Reconnect {
+        reason: String,
+    },
     /// Close the socket and stop: the user has to act (sign in, update).
     Stop,
 }

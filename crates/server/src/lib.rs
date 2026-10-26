@@ -5,8 +5,10 @@
 //! SQLite. `wasm` binds it to the Cloudflare runtime (Worker + Durable Object).
 
 pub mod ai;
+pub mod coach;
 pub mod config;
 pub mod devices;
+pub mod fcm;
 pub mod google;
 pub mod hub;
 pub mod internal;

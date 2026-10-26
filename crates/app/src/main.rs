@@ -2,6 +2,7 @@
 
 mod account;
 mod cloud;
+mod coach;
 mod i18n;
 mod icons;
 mod penlab;
@@ -15,10 +16,12 @@ use std::rc::Rc;
 
 use dioxus::prelude::*;
 use kabar_core::layout::WidthClass;
+use kabar_core::locale::{Direction, UiLanguage, format_number};
 use kabar_core::settings::Settings;
 
 use crate::account::Cloud;
 use crate::cloud::{CloudStatus, Command, Event};
+use crate::coach::Coach;
 use crate::i18n::{Msg, t};
 use crate::store::Store;
 
@@ -30,6 +33,7 @@ pub enum Screen {
     Journey,
     Reader,
     Review,
+    Coach,
     Studio,
     Settings,
     PenLab,
@@ -43,6 +47,7 @@ impl Screen {
             Self::Journey => Msg::NavJourney,
             Self::Reader => Msg::NavReader,
             Self::Review => Msg::NavReview,
+            Self::Coach => Msg::NavCoach,
             Self::Studio => Msg::NavStudio,
             Self::Settings => Msg::NavSettings,
             Self::PenLab => Msg::NavPenLab,
@@ -71,6 +76,22 @@ pub struct Db(pub Rc<RefCell<Store>>);
 impl Ui {
     pub fn t(&self, msg: Msg) -> &'static str {
         t(self.settings.read().ui_language, msg)
+    }
+
+    pub fn lang(&self) -> UiLanguage {
+        self.settings.read().ui_language
+    }
+
+    /// Whether numbers use Eastern Arabic digits right now.
+    pub fn eastern(&self) -> bool {
+        let s = self.settings.read();
+        s.eastern_digits && s.ui_language.dir() == Direction::Rtl
+    }
+
+    /// A number in the UI's digits.
+    pub fn num(&self, n: impl Into<u64>) -> String {
+        let s = self.settings.read();
+        format_number(n.into(), s.ui_language, s.eastern_digits)
     }
 
     /// Saves changed settings and updates the UI.
@@ -150,14 +171,17 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         screen: Signal::new(Screen::Today),
     });
     use_context_provider(|| db.clone());
+    let coach = use_context_provider(|| Coach::load(&db));
     use_width_tracking(ui.width);
     use_cloud(&db, path, ui);
+    coach::use_clock(coach, db.clone());
 
     let settings = ui.settings.read();
     let lang = settings.ui_language;
     let theme = settings.theme.as_str();
     let width = ui.width.read().as_str();
-    let batik = use_hook(|| theme::kawung_tile("2b3a70", 0.06, 72));
+    let batik = use_memo(move || theme::kawung_tile(coach.batik_color(), 0.06, 72));
+    let onboarded = coach.profile.read().is_some();
 
     rsx! {
         document::Title { "Kabar" }
@@ -169,10 +193,12 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
             "data-theme": theme,
             "data-width": width,
             style: "--batik: {batik}",
-            if settings.welcomed {
-                Shell {}
-            } else {
+            if !settings.welcomed {
                 screens::Welcome {}
+            } else if !onboarded {
+                coach::onboarding::Onboarding {}
+            } else {
+                Shell {}
             }
         }
     }
@@ -190,6 +216,7 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui) {
         commands: Signal::new(None),
     });
     let db = db.clone();
+    let coach = try_use_context::<Coach>();
     use_hook(move || {
         let Some(config) = cloud::CloudConfig::from_env() else { return };
         let device = kabar_protocol::cloud::DeviceInfo {
@@ -227,10 +254,22 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui) {
                     Event::Devices(d) => devices.set(Some(d)),
                     Event::SigningIn(on) => signing_in.set(on),
                     Event::Changed(tables) => {
+                        let store = db.0.borrow();
                         if tables.contains("settings")
-                            && let Ok(s) = db.0.borrow().settings()
+                            && let Ok(s) = store.settings()
                         {
                             ui.settings.set(s);
+                        }
+                        // Kak Nur's rows: goal met on any device counts here too.
+                        if let Some(mut coach) = coach
+                            && ["goals", "daily_plans", "xp_events", "reminders", "reports"]
+                                .iter()
+                                .any(|t| tables.contains(*t))
+                        {
+                            coach.profile.set(store.coach_profile().ok().flatten());
+                            coach.events.set(store.activity(None).unwrap_or_default());
+                            coach.reminders.set(store.reminder_state().unwrap_or_default());
+                            coach.plan_rev += 1;
                         }
                         revision += 1;
                     }
@@ -275,6 +314,7 @@ fn Shell() -> Element {
         Screen::Journey,
         Screen::Reader,
         Screen::Review,
+        Screen::Coach,
         Screen::Studio,
         Screen::PenLab,
         Screen::Devices,
@@ -301,7 +341,8 @@ fn Shell() -> Element {
             }
             main { class: "content",
                 match current {
-                    Screen::Today => rsx! { screens::Today {} },
+                    Screen::Today => rsx! { coach::today::Today {} },
+                    Screen::Coach => rsx! { coach::coach_screen::CoachScreen {} },
                     Screen::Journey => rsx! { screens::ComingSoon { title: Msg::NavJourney, milestone: "M8" } },
                     Screen::Reader => rsx! { screens::ComingSoon { title: Msg::NavReader, milestone: "M5" } },
                     Screen::Review => rsx! { screens::ComingSoon { title: Msg::NavReview, milestone: "M6" } },

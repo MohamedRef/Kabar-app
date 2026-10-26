@@ -22,7 +22,8 @@ impl Device {
     fn start(dir: &std::path::Path, name: &str, platform: Platform, url: &str) -> Self {
         let path = dir.join(format!("{name}.db"));
         let store = Store::open(&path).unwrap();
-        let info = DeviceInfo { device_id: store.device_id().clone(), name: name.into(), model: None, platform };
+        let info =
+            DeviceInfo { device_id: store.device_id().clone(), name: name.into(), model: None, platform };
         let config = CloudConfig { base_url: url.into(), google: None };
         let handle = super::start(config, path, info, Box::new(MemoryVault::default())).unwrap();
         Self { store, handle }
@@ -53,7 +54,9 @@ fn wait<T>(rx: &mut UnboundedReceiver<Event>, what: &str, mut f: impl FnMut(&Eve
                     return v;
                 }
             }
-            Err(tokio::sync::mpsc::error::TryRecvError::Empty) => std::thread::sleep(Duration::from_millis(5)),
+            Err(tokio::sync::mpsc::error::TryRecvError::Empty) => {
+                std::thread::sleep(Duration::from_millis(5))
+            }
             Err(e) => panic!("engine stopped: {e}"),
         }
     }
@@ -67,7 +70,8 @@ fn id_token(token_url: &str) -> String {
 #[test]
 #[ignore = "needs a local Kabar Cloud: run crates/server/tests/e2e.mjs"]
 fn phone_and_tablet_sync_through_kabar_cloud() {
-    let (Ok(url), Ok(token_url)) = (std::env::var("KABAR_E2E_URL"), std::env::var("KABAR_E2E_TOKEN_URL")) else {
+    let (Ok(url), Ok(token_url)) = (std::env::var("KABAR_E2E_URL"), std::env::var("KABAR_E2E_TOKEN_URL"))
+    else {
         panic!("set KABAR_E2E_URL and KABAR_E2E_TOKEN_URL");
     };
     let dir = tempfile::tempdir().unwrap();
@@ -121,7 +125,9 @@ fn phone_and_tablet_sync_through_kabar_cloud() {
     });
 
     phone.send(Command::SignOut);
-    phone.wait("phone signed out", |e| matches!(e, Event::Status(s) if s.sync == SyncState::SignedOut).then_some(()));
+    phone.wait("phone signed out", |e| {
+        matches!(e, Event::Status(s) if s.sync == SyncState::SignedOut).then_some(())
+    });
     phone.send(Command::Shutdown);
     tablet.send(Command::Shutdown);
 }

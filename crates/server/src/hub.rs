@@ -11,6 +11,7 @@ use kabar_protocol::{DeviceId, Hlc, PROTOCOL_VERSION};
 use serde::{Deserialize, Serialize};
 
 use crate::sql::{Row, Sql, SqlError, Value, col};
+use crate::tokens::SERVER_DEVICE_ID;
 
 /// Pages sent per `hello` before the device has to ask again. Keeps one
 /// Durable Object event small even for a fresh install after a long time.
@@ -221,6 +222,104 @@ impl<'a, S: Sql> Hub<'a, S> {
         Ok((ack, applied))
     }
 
+    /// Kabar Cloud's own write to an LWW row (e.g. the reminder state after a
+    /// push), as device [`SERVER_DEVICE_ID`], with an HLC just above the
+    /// row's current one so it wins without waiting on anyone's clock. Stored
+    /// like a device's push; broadcast the returned op to every ready socket.
+    pub fn write_server(
+        &self,
+        table: &str,
+        row_id: &str,
+        payload: serde_json::Value,
+        now_ms: u64,
+    ) -> Result<Result<SeqOp, RejectReason>, SqlError> {
+        let device = DeviceId(SERVER_DEVICE_ID.into());
+        let hlc = match self.row_meta(table, row_id)? {
+            Some(row) if row.hlc.wall_ms >= now_ms => {
+                Hlc { wall_ms: row.hlc.wall_ms, counter: row.hlc.counter.saturating_add(1), device }
+            }
+            _ => Hlc { wall_ms: now_ms, counter: 0, device },
+        };
+        let op = Op {
+            id: format!("srv-{}-{}-{}", self.head_seq()? + 1, hlc.wall_ms, hlc.counter),
+            table: table.into(),
+            row_id: row_id.into(),
+            kind: OpKind::Upsert,
+            hlc,
+            payload: Some(payload),
+        };
+        Ok(match self.apply(&op.hlc.device.clone(), op, now_ms)? {
+            Ok((_, Some(seq_op))) => Ok(seq_op),
+            // Unreachable for a fresh id and a newer HLC; reported, never silent.
+            Ok((_, None)) => Err(RejectReason::InvalidId),
+            Err(r) => Err(r.reason),
+        })
+    }
+
+    /// The payload of a live LWW row (`None` if missing or deleted).
+    pub fn current_payload(&self, table: &str, row_id: &str) -> Result<Option<serde_json::Value>, SqlError> {
+        let rows = self.db.exec(
+            "SELECT o.payload FROM row_state r JOIN ops o ON o.seq = r.seq
+             WHERE r.tbl = ? AND r.row_id = ? AND r.deleted = 0",
+            &[table.into(), row_id.into()],
+        )?;
+        parse_payload(rows.first().and_then(|r| r.first()))
+    }
+
+    /// The live row of `table` with the greatest id (rows keyed by date, e.g.
+    /// the newest weekly report), with its payload.
+    pub fn latest_row(&self, table: &str) -> Result<Option<(String, serde_json::Value)>, SqlError> {
+        let rows = self.db.exec(
+            "SELECT r.row_id, o.payload FROM row_state r JOIN ops o ON o.seq = r.seq
+             WHERE r.tbl = ? AND r.deleted = 0 ORDER BY r.row_id DESC LIMIT 1",
+            &[table.into()],
+        )?;
+        let Some(row) = rows.first() else { return Ok(None) };
+        let id = col(row, 0, "row_id")?.as_str().unwrap_or_default().to_owned();
+        Ok(parse_payload(row.get(1))?.map(|p| (id, p)))
+    }
+
+    /// Payloads of an append-only table written at or after `since_wall_ms`
+    /// (by the writer's clock), oldest first, leaving out rows undone by a tombstone.
+    pub fn appended_since(
+        &self,
+        table: &str,
+        since_wall_ms: u64,
+    ) -> Result<Vec<serde_json::Value>, SqlError> {
+        let rows = self.db.exec(
+            "SELECT o.payload FROM ops o
+             LEFT JOIN row_state r ON r.tbl = o.tbl AND r.row_id = o.row_id
+             WHERE o.tbl = ? AND o.wall_ms >= ? AND o.kind = 'append' AND COALESCE(r.deleted, 0) = 0
+             ORDER BY o.seq",
+            &[table.into(), since_wall_ms.into()],
+        )?;
+        let mut out = Vec::with_capacity(rows.len());
+        for r in &rows {
+            out.extend(parse_payload(r.first())?);
+        }
+        Ok(out)
+    }
+
+    fn row_meta(&self, table: &str, row_id: &str) -> Result<Option<RowMeta>, SqlError> {
+        self.db
+            .exec(
+                "SELECT wall_ms, counter, device, deleted FROM row_state WHERE tbl = ? AND row_id = ?",
+                &[table.into(), row_id.into()],
+            )?
+            .first()
+            .map(|r| -> Result<RowMeta, SqlError> {
+                Ok(RowMeta {
+                    hlc: Hlc {
+                        wall_ms: col(r, 0, "wall_ms")?.as_u64().unwrap_or(0),
+                        counter: col(r, 1, "counter")?.as_u64().unwrap_or(0) as u32,
+                        device: DeviceId(col(r, 2, "device")?.as_str().unwrap_or_default().to_owned()),
+                    },
+                    deleted: col(r, 3, "deleted")?.as_i64() == Some(1),
+                })
+            })
+            .transpose()
+    }
+
     #[allow(clippy::type_complexity)]
     fn apply(
         &self,
@@ -245,24 +344,7 @@ impl<'a, S: Sql> Hub<'a, S> {
         if !self.db.exec("SELECT 1 FROM ops WHERE op_id = ?", &[op.id.as_str().into()])?.is_empty() {
             return Ok(Ok((op.id, None)));
         }
-        let existing = self
-            .db
-            .exec(
-                "SELECT wall_ms, counter, device, deleted FROM row_state WHERE tbl = ? AND row_id = ?",
-                &[op.table.as_str().into(), op.row_id.as_str().into()],
-            )?
-            .first()
-            .map(|r| -> Result<RowMeta, SqlError> {
-                Ok(RowMeta {
-                    hlc: Hlc {
-                        wall_ms: col(r, 0, "wall_ms")?.as_u64().unwrap_or(0),
-                        counter: col(r, 1, "counter")?.as_u64().unwrap_or(0) as u32,
-                        device: DeviceId(col(r, 2, "device")?.as_str().unwrap_or_default().to_owned()),
-                    },
-                    deleted: col(r, 3, "deleted")?.as_i64() == Some(1),
-                })
-            })
-            .transpose()?;
+        let existing = self.row_meta(&op.table, &op.row_id)?;
         if merge(sync, &op, existing.as_ref()) == Merge::Ignore {
             return Ok(Ok((op.id, None)));
         }
@@ -306,6 +388,14 @@ impl<'a, S: Sql> Hub<'a, S> {
         )?;
         let id = op.id.clone();
         Ok(Ok((id, Some(SeqOp { seq, op }))))
+    }
+}
+
+/// A stored JSON column (`None` for a missing row or NULL).
+fn parse_payload(value: Option<&Value>) -> Result<Option<serde_json::Value>, SqlError> {
+    match value {
+        Some(Value::Text(s)) => serde_json::from_str(s).map(Some).map_err(|e| SqlError(e.to_string())),
+        _ => Ok(None),
     }
 }
 
@@ -530,6 +620,108 @@ mod tests {
         let rest = hub.catch_up(resume).unwrap();
         assert!(matches!(&rest[0], ServerMsg::Ops { ops, more: false } if ops.len() == 10));
         assert_eq!(rest[1], ServerMsg::CaughtUp { head_seq: total as u64 });
+    }
+
+    #[test]
+    fn server_writes_win_and_reach_devices() {
+        let db = MemSql::new();
+        let hub = Hub::new(&db).unwrap();
+        let mut phone = conn("s24u");
+        send(&hub, &mut phone, &hello(0));
+        // The phone's clock runs 2 minutes ahead of the server's.
+        let snooze = Op {
+            id: "p-1".into(),
+            table: "reminders".into(),
+            row_id: "reminders".into(),
+            kind: OpKind::Upsert,
+            hlc: Hlc { wall_ms: NOW + 120_000, counter: 3, device: DeviceId("s24u".into()) },
+            payload: Some(json!({ "snoozed_until_ms": NOW + 3_600_000 })),
+        };
+        send(&hub, &mut phone, &ClientMsg::Push { batch: 1, ops: vec![snooze] });
+        assert_eq!(
+            hub.current_payload("reminders", "reminders").unwrap().unwrap()["snoozed_until_ms"],
+            json!(NOW + 3_600_000)
+        );
+
+        let written =
+            hub.write_server("reminders", "reminders", json!({ "sent_today": 1 }), NOW).unwrap().unwrap();
+        assert_eq!(written.seq, 2);
+        assert_eq!(
+            written.op.hlc,
+            Hlc { wall_ms: NOW + 120_000, counter: 4, device: DeviceId("server".into()) }
+        );
+        assert_eq!(hub.current_payload("reminders", "reminders").unwrap(), Some(json!({ "sent_today": 1 })));
+        // A second write in the same millisecond still moves forward.
+        let again =
+            hub.write_server("reminders", "reminders", json!({ "sent_today": 2 }), NOW).unwrap().unwrap();
+        assert!(again.op.hlc > written.op.hlc);
+        assert_ne!(again.op.id, written.op.id);
+        // Devices catching up get it like any other op.
+        let ServerMsg::Ops { ops, .. } = &hub.catch_up(1).unwrap()[0] else { panic!() };
+        assert_eq!(ops[0].op.hlc.device.0, "server");
+        // A later write on a fresh row uses the server's clock.
+        let fresh = hub.write_server("goals", "profile", json!({}), NOW).unwrap().unwrap();
+        assert_eq!(fresh.op.hlc.wall_ms, NOW);
+        // Unknown tables are refused, not stored.
+        assert_eq!(
+            hub.write_server("secrets", "x", json!({}), NOW).unwrap(),
+            Err(RejectReason::UnknownTable)
+        );
+    }
+
+    #[test]
+    fn devices_cannot_write_as_the_server() {
+        let db = MemSql::new();
+        let hub = Hub::new(&db).unwrap();
+        let mut phone = conn("s24u");
+        send(&hub, &mut phone, &hello(0));
+        let mut op = word("x", "server", NOW, "rumah", "known");
+        op.hlc.device = DeviceId("server".into());
+        let out = send(&hub, &mut phone, &ClientMsg::Push { batch: 1, ops: vec![op] });
+        let ServerMsg::Ack { rejected, .. } = &out.replies[0] else { panic!() };
+        assert_eq!(rejected[0].reason, RejectReason::WrongDevice);
+    }
+
+    #[test]
+    fn reads_rows_and_recent_events() {
+        let db = MemSql::new();
+        let hub = Hub::new(&db).unwrap();
+        let mut phone = conn("s24u");
+        send(&hub, &mut phone, &hello(0));
+        let lww = |id: &str, table: &str, row: &str, kind: OpKind, payload: Option<serde_json::Value>| Op {
+            id: id.into(),
+            table: table.into(),
+            row_id: row.into(),
+            kind,
+            hlc: Hlc { wall_ms: NOW, counter: 0, device: DeviceId("s24u".into()) },
+            payload,
+        };
+        let mut old_event = lww("e0", "xp_events", "e0", OpKind::Append, Some(json!({ "n": 0 })));
+        old_event.hlc.wall_ms = NOW - 30 * 86_400_000;
+        let ops = vec![
+            lww("r1", "reports", "2026-10-12", OpKind::Upsert, Some(json!({ "w": 1 }))),
+            lww("r2", "reports", "2026-10-19", OpKind::Upsert, Some(json!({ "w": 2 }))),
+            lww("r3", "reports", "2026-10-26", OpKind::Upsert, Some(json!({ "w": 3 }))),
+            lww("r4", "reports", "2026-10-26", OpKind::Delete, None),
+            old_event,
+            lww("e1", "xp_events", "e1", OpKind::Append, Some(json!({ "n": 1 }))),
+            lww("e2", "xp_events", "e2", OpKind::Append, Some(json!({ "n": 2 }))),
+            lww("e3", "xp_events", "e3", OpKind::Append, Some(json!({ "n": 3 }))),
+            lww("e3-undo", "xp_events", "e3", OpKind::Delete, None),
+        ];
+        let mut r4 = ops[3].clone();
+        r4.hlc.counter = 1;
+        let mut ops = ops;
+        ops[3] = r4;
+        send(&hub, &mut phone, &ClientMsg::Push { batch: 1, ops });
+        assert_eq!(hub.latest_row("reports").unwrap(), Some(("2026-10-19".into(), json!({ "w": 2 }))));
+        assert_eq!(hub.current_payload("reports", "2026-10-26").unwrap(), None);
+        assert_eq!(hub.current_payload("goals", "profile").unwrap(), None);
+        assert_eq!(hub.latest_row("goals").unwrap(), None);
+        assert_eq!(
+            hub.appended_since("xp_events", NOW - 21 * 86_400_000).unwrap(),
+            vec![json!({ "n": 1 }), json!({ "n": 2 })]
+        );
     }
 
     #[test]

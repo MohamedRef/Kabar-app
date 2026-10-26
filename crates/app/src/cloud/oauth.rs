@@ -153,7 +153,12 @@ struct TokenResponse {
     id_token: String,
 }
 
-fn exchange(client: &GoogleClient, code: &str, verifier: &str, redirect_uri: &str) -> Result<String, OAuthError> {
+fn exchange(
+    client: &GoogleClient,
+    code: &str,
+    verifier: &str,
+    redirect_uri: &str,
+) -> Result<String, OAuthError> {
     let agent: ureq::Agent = ureq::Agent::config_builder()
         .http_status_as_error(false)
         .timeout_global(Some(Duration::from_secs(20)))

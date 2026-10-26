@@ -25,6 +25,8 @@ type Ws = WebSocketStream<MaybeTlsStream<TcpStream>>;
 /// Keeps NAT mappings and the Cloudflare edge from dropping an idle socket.
 /// Protocol pings are answered by the runtime, so they don't wake the hub.
 const PING_EVERY: Duration = Duration::from_secs(30);
+/// Writes from screens that don't send [`Command::Kick`] still go up this soon.
+const OUTBOX_EVERY: Duration = Duration::from_secs(2);
 
 pub struct Engine {
     store: Store,
@@ -79,6 +81,7 @@ impl Engine {
 
     pub async fn run(mut self, mut commands: UnboundedReceiver<Command>) {
         let mut ping = tokio::time::interval(PING_EVERY);
+        let mut outbox = tokio::time::interval(OUTBOX_EVERY);
         self.emit_status();
         loop {
             if self.ws.is_none() && self.wants_socket() && Instant::now() >= self.retry_at {
@@ -97,6 +100,7 @@ impl Engine {
                 },
                 frame = next_frame(&mut self.ws) => self.frame(frame).await,
                 _ = tokio::time::sleep_until(wait_until) => {}
+                _ = outbox.tick() => self.pump().await,
                 _ = ping.tick() => {
                     if let Some(ws) = &mut self.ws
                         && ws.send(Message::Ping(Vec::new().into())).await.is_err()
@@ -169,7 +173,8 @@ impl Engine {
         let api = self.api.clone();
         match blocking(move || api.sign_in_google(&body)).await {
             Ok(session) => {
-                let vault = self.vault.take().unwrap_or_else(|| Box::new(super::session::MemoryVault::default()));
+                let vault =
+                    self.vault.take().unwrap_or_else(|| Box::new(super::session::MemoryVault::default()));
                 self.auth = Some(Auth::new(session, vault));
                 self.problem = None;
                 self.stopped = false;
@@ -358,7 +363,8 @@ impl Engine {
                     for r in &rejected {
                         eprintln!("kabar: op {} rejected: {:?}", r.op_id, r.reason);
                     }
-                    let ids = done.iter().map(String::as_str).chain(rejected.iter().map(|r| r.op_id.as_str()));
+                    let ids =
+                        done.iter().map(String::as_str).chain(rejected.iter().map(|r| r.op_id.as_str()));
                     if let Err(e) = self.store.remove_from_outbox(ids) {
                         eprintln!("kabar: outbox: {e}");
                     }
