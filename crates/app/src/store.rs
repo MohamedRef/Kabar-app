@@ -190,6 +190,14 @@ const MIGRATIONS: &[&str] = &[
         op_id TEXT NOT NULL UNIQUE,
         op    TEXT NOT NULL
     ) STRICT;",
+    // 6: validated AI answers on this device, keyed by `CacheKey::id()`
+    // (task, engine, prompt version, input hash). Local only: every device
+    // can re-ask, and Kabar Cloud keeps the shared copy in D1.
+    "CREATE TABLE ai_cache (
+        key        TEXT PRIMARY KEY,
+        json       TEXT NOT NULL,
+        created_ms INTEGER NOT NULL
+    ) STRICT;",
 ];
 
 /// The schema version that added `sync_rows`.
@@ -420,6 +428,24 @@ impl Store {
                 Ok(())
             }
         }
+    }
+
+    pub fn ai_cache_get(&self, key: &str) -> Result<Option<String>> {
+        Ok(self.conn.query_row("SELECT json FROM ai_cache WHERE key = ?1", [key], |r| r.get(0)).optional()?)
+    }
+
+    pub fn ai_cache_put(&self, key: &str, json: &str) -> Result<()> {
+        self.conn.execute(
+            "INSERT INTO ai_cache (key, json, created_ms) VALUES (?1, ?2, ?3)
+             ON CONFLICT(key) DO UPDATE SET json = excluded.json, created_ms = excluded.created_ms",
+            params![key, json, now_ms() as i64],
+        )?;
+        Ok(())
+    }
+
+    pub fn ai_cache_remove(&self, key: &str) -> Result<()> {
+        self.conn.execute("DELETE FROM ai_cache WHERE key = ?1", [key])?;
+        Ok(())
     }
 
     pub fn save_pen_lab_run(&mut self, report: &PenLabReport) -> Result<PenLabRun> {
@@ -1465,6 +1491,21 @@ mod tests {
         for table in ["cards", "review_log", "lesson_events"] {
             assert!(tables.iter().any(|t| t == table), "{table} in {tables:?}");
         }
+    }
+
+    #[test]
+    fn ai_answers_are_cached_locally() {
+        let store = Store::open_in_memory().unwrap();
+        assert_eq!(store.ai_cache_get("roleplay_turn:workers_ai:v1:abc").unwrap(), None);
+        store.ai_cache_put("roleplay_turn:workers_ai:v1:abc", r#"{"reply":"Halo"}"#).unwrap();
+        store.ai_cache_put("roleplay_turn:workers_ai:v1:abc", r#"{"reply":"Halo!"}"#).unwrap();
+        assert_eq!(
+            store.ai_cache_get("roleplay_turn:workers_ai:v1:abc").unwrap().as_deref(),
+            Some(r#"{"reply":"Halo!"}"#)
+        );
+        store.ai_cache_remove("roleplay_turn:workers_ai:v1:abc").unwrap();
+        assert_eq!(store.ai_cache_get("roleplay_turn:workers_ai:v1:abc").unwrap(), None);
+        assert_eq!(store.outbox_len().unwrap(), 0, "never synced");
     }
 
     #[test]
