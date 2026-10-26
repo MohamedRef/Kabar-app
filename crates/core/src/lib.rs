@@ -23,6 +23,7 @@ pub mod review;
 pub mod settings;
 pub mod srs;
 pub mod stats;
+pub mod story;
 pub mod sync;
 pub mod sync_client;
 pub mod theme;

@@ -1,0 +1,46 @@
+/* Watch & listen: Sinetron and Kabar Radio (PLAN §16 B). Logical properties only. */
+.listen { display: grid; gap: 0.75rem; max-inline-size: 46rem; margin-inline: auto; }
+.listen .seg { display: inline-flex; gap: 0.25rem; padding: 0.25rem; border-radius: 999px; background: var(--surface-2); justify-self: start; }
+.listen .seg button { border: 0; background: transparent; }
+.listen .seg button[aria-selected="true"] { background: var(--indigo); color: var(--surface); }
+.small { font-size: 0.85rem; }
+
+.lx-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+.lx-list .card { margin: 0; }
+.lx-card { inline-size: 100%; display: grid; gap: 0.25rem; text-align: start; font: inherit; color: var(--text); cursor: pointer; }
+.lx-card.locked { cursor: default; opacity: 0.7; }
+.lx-card strong { font-size: 1.1rem; }
+.pill.lx-offline { background: var(--gold-soft); color: var(--text); }
+.lx-space { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.lx-space p { margin: 0; }
+
+.lx-player { display: grid; gap: 0.5rem; padding-block-end: 5rem; }
+.lx-head { display: flex; align-items: center; gap: 0.5rem; }
+.lx-head h2 { margin: 0; font-size: 1.3rem; }
+.lx-download { min-block-size: 2.25rem; }
+.lx-notice { background: var(--dawn-soft); border-radius: var(--radius); padding: 0.5rem 0.75rem; margin: 0; }
+.lx-lines, .lx-cues { list-style: none; padding: 0; margin: 0; }
+.lx-group h3 { margin-block: 1rem 0.25rem; font-size: 1rem; color: var(--indigo); }
+.lx-group > p { margin-block: 0 0.5rem; }
+.lx-cue { display: grid; justify-items: start; gap: 0.15rem; margin-block: 0.4rem; padding: 0.35rem 0.6rem; border-radius: var(--radius); border-inline-start: 3px solid transparent; }
+.lx-cue.b { background: var(--surface-2); }
+.lx-cue.on { border-inline-start-color: var(--sawah); box-shadow: var(--shadow); }
+.lx-line { all: unset; cursor: pointer; display: grid; gap: 0.1rem; }
+.lx-line:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 0.3rem; }
+.lx-speaker { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+.lx-text { font-family: var(--font-latin); font-size: 1.1rem; }
+.lx-meaning, .lx-note { margin: 0; }
+.lx-reveal { min-inline-size: 2.75rem; padding: 0 0.5rem; color: var(--muted); text-decoration: none; }
+.lx-note-chip { border: 0; cursor: pointer; font: inherit; font-size: 0.8rem; }
+.lx-note { background: var(--gold-soft); border-radius: 0.5rem; padding: 0.35rem 0.6rem; font-size: 0.92rem; }
+.lx-end { display: grid; gap: 0.5rem; justify-items: start; margin-block-start: 1rem; }
+.lx-next { margin: 0; }
+
+.lx-controls {
+  position: sticky; inset-block-end: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+  padding: 0.6rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+}
+/* Above the phone's bottom bar. */
+.app[data-width="compact"] .lx-controls { inset-block-end: calc(4rem + env(safe-area-inset-bottom)); z-index: 11; }
+.lx-controls button[aria-pressed="true"] { background: var(--surface-2); color: var(--indigo); font-weight: 600; }
+@media (prefers-reduced-motion: no-preference) { .lx-cue { transition: border-color 0.2s, box-shadow 0.2s; } }

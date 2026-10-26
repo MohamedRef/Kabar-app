@@ -1,4 +1,4 @@
-//! Offline packs per unit (SPEC §20, PLAN §7–8; `docs/RUN.md` §11).
+//! Offline packs per unit (SPEC §20, PLAN §7–8; `docs/RUN.md` §12).
 //!
 //! - `packs build` lists every line of every unit that gets audio and writes
 //!   the manifests (`content/packs/<lang>/<unit>.json`, committed) and

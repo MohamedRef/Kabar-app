@@ -1,0 +1,203 @@
+schema: kabar.lesson/v1
+id: bipa5.u10.l03
+language: id
+title: Mendeskripsikan data
+can_do:
+  ar_eg: توصف رسم بياني، إيه اللي زاد وإيه اللي قلّ والمتوسط.
+  ar: أن تصف رسمًا بيانيًّا، ما زاد وما نقص وما المتوسّط.
+  en: Describe a chart, saying what rose, what fell and the average.
+slides:
+  - title: Grafik bercerita
+    body:
+      ar_eg: |
+        علشان توصف grafik (رسم بياني):
+        - Grafik ini menunjukkan jumlah … = الرسم ده بيوضّح عدد …
+        - meningkat / naik = زاد، menurun / turun = قلّ
+        - meningkat tajam = زاد بشكل حاد، menurun sedikit = قلّ شوية
+        - rata-rata = في المتوسط
+        مثال (أرقام للتمرين): Jumlah wisatawan meningkat dari 2 ribu menjadi 5 ribu.
+      ar: |
+        لتصف grafik (رسمًا بيانيًّا):
+        - Grafik ini menunjukkan jumlah … = يُظهر هذا الرسم عدد …
+        - meningkat / naik = ازداد، menurun / turun = انخفض
+        - meningkat tajam = ارتفع بحدّة، menurun sedikit = انخفض قليلًا
+        - rata-rata = في المتوسّط
+        مثال (أرقام للتدريب): Jumlah wisatawan meningkat dari 2 ribu menjadi 5 ribu.
+      en: |
+        To describe a grafik (chart):
+        - Grafik ini menunjukkan jumlah … = This chart shows the number of …
+        - meningkat / naik = rose, menurun / turun = fell
+        - meningkat tajam = rose sharply, menurun sedikit = fell slightly
+        - rata-rata = on average
+        Example (practice numbers): Jumlah wisatawan meningkat dari 2 ribu menjadi 5 ribu.
+    examples:
+      - text: Rata-rata, setiap keluarga punya dua sepeda motor.
+        ar_eg: في المتوسط، كل عيلة عندها موتوسيكلين.
+        ar: في المتوسّط، تملك كلّ أسرة درّاجتين ناريّتين.
+        en: On average, each family has two motorbikes.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: grafik
+        ar_eg: رسم بياني
+        ar: رسم بياني
+        en: chart, graph
+      - text: meningkat
+        ar_eg: يزيد
+        ar: يزداد
+        en: to increase
+      - text: menurun
+        ar_eg: يقلّ
+        ar: ينخفض
+        en: to decrease
+      - text: rata-rata
+        ar_eg: في المتوسط
+        ar: في المتوسّط
+        en: on average
+      - text: jumlah
+        ar_eg: عدد
+        ar: عدد
+        en: number, total
+    words: [grafik, meningkat, menurun, rata-rata, jumlah]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: من 5 آلاف لـ 3 آلاف، العدد …
+      ar: من 5 آلاف إلى 3 آلاف، العدد …
+      en: From 5,000 to 3,000, the number …
+    options: [meningkat, menurun, tetap]
+    answer: 1
+    words: [menurun, jumlah]
+  - id: e03
+    type: fill_blank
+    sentence: ___ ini menunjukkan jumlah penumpang kapal setiap bulan.
+    meaning:
+      ar_eg: الرسم البياني ده بيوضّح عدد ركّاب المراكب كل شهر.
+      ar: يُظهر هذا الرسم البياني عدد ركّاب السفن كلّ شهر.
+      en: This chart shows the number of boat passengers each month.
+    options: [Grafik, Jumlah, Rata-rata]
+    answers: [Grafik]
+    words: [grafik, jumlah]
+  - id: e04
+    type: listen
+    text: Harga cabai meningkat tajam pada bulan Desember.
+    question:
+      ar_eg: سعر الشطة عمل إيه في ديسمبر؟
+      ar: ماذا حدث لسعر الفلفل الحارّ في ديسمبر؟
+      en: What happened to chilli prices in December?
+    options:
+      - زاد بشكل حاد.
+      - قلّ شوية.
+      - فضل زي ما هو.
+    answer: 0
+    words: [meningkat]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: في المتوسط، الطلاب بيذاكروا ساعتين في اليوم.
+      ar: يدرس الطلّاب في المتوسّط ساعتين يوميًّا.
+      en: On average, students study two hours a day.
+    answer: Rata-rata, mahasiswa belajar dua jam sehari.
+    distractors: [jumlah, menurun]
+    words: [rata-rata]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: عدد السياح زاد السنة دي.
+      ar: ازداد عدد السيّاح هذا العام.
+      en: The number of tourists increased this year.
+    answers:
+      - Jumlah wisatawan meningkat tahun ini.
+      - Jumlah wisatawan naik tahun ini.
+      - Tahun ini jumlah wisatawan meningkat.
+      - Jumlah turis meningkat tahun ini.
+    words: [jumlah, meningkat]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Penjualan kue keranjang menurun sedikit setelah Imlek.
+    answers_meaning:
+      ar_eg:
+        - مبيعات كيك السلة قلّت شوية بعد رأس السنة الصيني.
+        - بيع كعكة kue keranjang نزل حبة بعد السنة الصينية الجديدة.
+      ar:
+        - انخفضت مبيعات كعكة السلّة قليلًا بعد رأس السنة الصينية.
+        - تراجع بيع kue keranjang قليلًا بعد السنة القمرية الصينية.
+      en:
+        - Sales of basket cake fell slightly after Chinese New Year.
+        - Kue keranjang sales dropped a little after Imlek.
+    words: [menurun]
+  - id: e08
+    type: speaking
+    text: Grafik ini menunjukkan bahwa rata-rata harga beras naik.
+    meaning:
+      ar_eg: الرسم ده بيوضّح إن متوسط سعر الرز زاد.
+      ar: يُظهر هذا الرسم أنّ متوسّط سعر الأرزّ ارتفع.
+      en: This chart shows that the average rice price rose.
+    words: [grafik, rata-rata]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Grafiknya menurun tajam» يعني إيه؟
+      ar: ما معنى «Grafiknya menurun tajam»؟
+      en: What does "Grafiknya menurun tajam" mean?
+    options:
+      - الخط طالع شوية.
+      - الخط ثابت.
+      - الخط نازل بشكل حاد.
+    answer: 2
+    words: [grafik, menurun]
+dialogue:
+  title: Data dari pasar
+  lines:
+    - speaker: Mohamed
+      text: Rina, lihat grafik saya. Jumlah pengunjung meningkat menjelang Cap Go Meh.
+      ar_eg: يا رينا، بصي على الرسم بتاعي. عدد الزوار بيزيد قبل كاب جو مِه.
+      ar: يا رينا، انظري إلى رسمي البياني. يزداد عدد الزوّار قبيل كاب غو مه.
+      en: Rina, look at my chart. Visitor numbers rise before Cap Go Meh.
+    - speaker: Rina
+      text: Lalu setelah festival?
+      ar_eg: وبعد المهرجان؟
+      ar: وبعد المهرجان؟
+      en: And after the festival?
+    - speaker: Mohamed
+      text: Menurun lagi. Rata-rata hanya separuhnya.
+      ar_eg: بيقلّ تاني. في المتوسط النص بس.
+      ar: ينخفض مجدّدًا، فيبلغ في المتوسّط النصف فقط.
+      en: It falls again. On average, only half.
+    - speaker: Rina
+      text: Datamu jelas. Tampaknya festival sangat penting bagi pedagang.
+      ar_eg: بياناتك واضحة. يبان إن المهرجان مهم قوي للتجار.
+      ar: بياناتك واضحة. يبدو أنّ المهرجان مهمّ جدًّا للتجّار.
+      en: Your data is clear. It seems the festival matters a lot to traders.
+new_words:
+  - word: grafik
+    pos: noun
+    ar_eg: رسم بياني
+    ar: رسم بياني
+    en: chart, graph
+  - word: meningkat
+    pos: verb
+    ar_eg: يزيد
+    ar: يزداد
+    en: to increase
+  - word: menurun
+    pos: verb
+    ar_eg: يقلّ
+    ar: ينخفض
+    en: to decrease
+  - word: rata-rata
+    pos: adverb
+    ar_eg: في المتوسط
+    ar: في المتوسّط
+    en: on average
+  - word: jumlah
+    pos: noun
+    ar_eg: عدد
+    ar: عدد
+    en: number, total
+review:
+  status: draft
+  verified: false

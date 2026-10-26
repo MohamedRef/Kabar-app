@@ -1,4 +1,4 @@
-//! Offline packs on this device (SPEC §7, §20; `docs/RUN.md` §11): which units'
+//! Offline packs on this device (SPEC §7, §20; `docs/RUN.md` §12): which units'
 //! audio is downloaded, downloading a unit's pack from the GitHub release,
 //! checking every byte against its SHA-256, and finding the pre-generated
 //! clip for a line the Lesson Player is about to say.

@@ -1490,25 +1490,25 @@ items:
     samples:
     - item: j2.u03
       prompt: Say Rp 25.000.
-      answer: rong puluh lima èwu
+      answer: rong puluh lima ewu
       correct: false
     - item: j2.u03
       prompt: Say Rp 50.000.
-      answer: sèket èwu
+      answer: seket ewu
       correct: true
     - item: j2.u01
       prompt: 'Say: his house.'
-      answer: omahé
+      answer: omahe
       correct: true
   expect:
     level: j2
     moved: stay
     evidence:
     - j2 test 0.74, one point under 0.75
-    - '''rong puluh lima èwu'' where selawé èwu is needed'
-    - sèket èwu right
+    - '''rong puluh lima ewu'' where selawe ewu is needed'
+    - seket ewu right
     next_focus:
-    - j2.u03.l01 special numbers (selawé, sèket)
+    - j2.u03.l01 special numbers (selawe, seket)
     - retake the j2 test
   criteria:
   - 'level is j2 and moved is "stay": test score 0.74 is under its pass mark 0.75 but not under 0.45, and the review
@@ -1552,14 +1552,14 @@ items:
     samples:
     - item: j3.u03
       prompt: 'Ask a peer politely: Have you eaten?'
-      answer: Sampéyan sampun nedha?
+      answer: Sampeyan sampun nedha?
       correct: true
     - item: j3.u05
       prompt: Ask the price politely.
       answer: Reginipun pinten?
       correct: true
     - item: j3.u02
-      prompt: Sampéyan or panjenengan for your teacher?
+      prompt: Sampeyan or panjenengan for your teacher?
       answer: panjenengan
       correct: true
   expect:
@@ -1567,9 +1567,9 @@ items:
     moved: up
     evidence:
     - j3 test 0.82
-    - '''Sampéyan sampun nedha?'' right (SPEC krama line)'
+    - '''Sampeyan sampun nedha?'' right (SPEC krama line)'
     next_focus:
-    - 'j4.u01 krama inggil: dhahar, tindak, saré'
+    - 'j4.u01 krama inggil: dhahar, tindak, sare'
     - Unggah-ungguh practice with Bu Siti
   criteria:
   - 'level is j4 and moved is "up": the j3 test score 0.82 reaches its pass mark 0.75'
@@ -1617,20 +1617,20 @@ items:
       correct: false
     - item: j3.u03
       prompt: Krama for 'not yet'.
-      answer: dèrèng
+      answer: dereng
       correct: true
     - item: j3.u02
       prompt: Address your friend's grandfather.
-      answer: Sampéyan
+      answer: Sampeyan
       correct: false
   expect:
     level: j3
     moved: stay
     evidence:
     - j3 test 0.60
-    - sampéyan and panjenengan swapped in both address items
+    - sampeyan and panjenengan swapped in both address items
     next_focus:
-    - j3.u02.l02 Sampéyan utawa panjenengan?
+    - j3.u02.l02 Sampeyan utawa panjenengan?
     - Respect Meter practice (j3.u01.l04)
   criteria:
   - 'level is j3 and moved is "stay": test score 0.60 is under its pass mark 0.75 but not under 0.45, and the review
@@ -1679,11 +1679,11 @@ items:
       correct: true
     - item: j4.u02
       prompt: 'Say to an elder: I''m going home.'
-      answer: Kula badhé wangsul rumiyin.
+      answer: Kula badhe wangsul rumiyin.
       correct: true
     - item: j4.u03
       prompt: Ask to visit your teacher politely.
-      answer: Kula badhé sowan.
+      answer: Kula badhe sowan.
       correct: true
   expect:
     level: j5
@@ -1731,7 +1731,7 @@ items:
         vocabulary: 64
     samples:
     - item: j5.u01
-      prompt: 'Meaning: ''Kutha Surabaya iku ibukutha Provinsi Jawa Wétan.'''
+      prompt: 'Meaning: ''Kutha Surabaya iku ibukutha Provinsi Jawa Wetan.'''
       answer: Surabaya is the capital of East Java.
       correct: true
     - item: j5.u02
@@ -1846,7 +1846,7 @@ items:
     samples:
     - item: j2.u02
       prompt: 'Say: I''m drinking tea.'
-      answer: Aku lagi minum tèh.
+      answer: Aku lagi minum teh.
       correct: false
     - item: j2.u05
       prompt: 'Command: eat!'
@@ -1854,16 +1854,16 @@ items:
       correct: true
     - item: j2.u02
       prompt: 'Say: the food is really tasty.'
-      answer: Panganané enak sekali.
+      answer: Panganane enak sekali.
       correct: false
   expect:
     level: j2
     moved: stay
     evidence:
     - j2 test 0.71
-    - 'Indonesian slipping in: ''minum'' for ngombé, ''sekali'' for tenan'
+    - 'Indonesian slipping in: ''minum'' for ngombe, ''sekali'' for tenan'
     next_focus:
-    - j2.u02.l01 N- verbs (ngombé)
+    - j2.u02.l01 N- verbs (ngombe)
     - Jawa apa Indonesia? word tagging (j1.u03.l03)
   criteria:
   - 'level is j2 and moved is "stay": test score 0.71 is under its pass mark 0.75 but not under 0.45, and the review
@@ -1908,11 +1908,11 @@ items:
     samples:
     - item: j4.u02
       prompt: 'Say to an elder: I''m going home.'
-      answer: Kula badhé kondur rumiyin.
+      answer: Kula badhe kondur rumiyin.
       correct: false
     - item: j4.u01
       prompt: Ask an elder where they are going.
-      answer: Panjenengan badhé tindak pundi?
+      answer: Panjenengan badhe tindak pundi?
       correct: true
   expect:
     level: j5
@@ -1978,7 +1978,7 @@ items:
     - j1 test 0.88
     - '''Koen wis mangan ta, rek?'' (Arek style, SPEC line)'
     next_focus:
-    - j2.u01 Mataraman ngoko (kowé instead of koen)
+    - j2.u01 Mataraman ngoko (kowe instead of koen)
     - listening (60)
   criteria:
   - 'level is j2 and moved is "up": the j1 test score 0.88 reaches its pass mark 0.75'
@@ -2214,26 +2214,26 @@ items:
     samples:
     - item: j2.u03
       prompt: Say Rp 25.000.
-      answer: rong puluh lima èwu
+      answer: rong puluh lima ewu
       correct: false
     - item: j2.u01
       prompt: 'Say: his house.'
-      answer: omah dhèwèké
+      answer: omah dheweke
       correct: false
     - item: j3.u03
       prompt: Krama for 'not yet'.
-      answer: dèrèng
+      answer: dereng
       correct: true
   expect:
     level: j2
     moved: down
     evidence:
     - review accuracy 0.48 and retention 0.55 over 18 active days
-    - 'j2 points slipped: selawé, -é possessive'
-    - '''dèrèng'' right'
+    - 'j2 points slipped: selawe, -e possessive'
+    - '''dereng'' right'
     next_focus:
-    - j2.u03 special numbers (selawé, sèket)
-    - j2.u01.l02 Omahé, bukuné
+    - j2.u03 special numbers (selawe, seket)
+    - j2.u01.l02 Omahe, bukune
     - the j2 test, then Solo again
   criteria:
   - 'level is j2 and moved is "down": review_accuracy 0.48 < 0.55 and retention 0.55 < 0.60 over 18 active days
@@ -2283,7 +2283,7 @@ items:
     samples:
     - item: j3.u02
       prompt: Address your friend's grandfather.
-      answer: Sampéyan
+      answer: Sampeyan
       correct: false
     - item: j4.u01
       prompt: 'Ask an elder: Have you eaten?'
@@ -2298,10 +2298,10 @@ items:
     moved: down
     evidence:
     - j4 test 0.38, under 0.45
-    - sampéyan used for a grandfather; nedha where dhahar is needed
+    - sampeyan used for a grandfather; nedha where dhahar is needed
     - '''mboten'' solid'
     next_focus:
-    - j3.u02.l02 Sampéyan utawa panjenengan?
+    - j3.u02.l02 Sampeyan utawa panjenengan?
     - j3 krama basics, then the j3 test
     - krama inggil dhahar after that
   criteria:

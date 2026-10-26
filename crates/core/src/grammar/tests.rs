@@ -55,6 +55,27 @@ fn spec_24_sentences_find_their_grammar() {
     assert!(c.iter().any(|id| id.starts_with("id.prefix.men")), "{c:?}");
     let c = ids(&lib, &engine, "Rumahnya dibersihkan kemarin.", Lang::Indonesian);
     assert!(c.contains(&"id.clitic.nya".to_string()), "{c:?}");
+    // A marketplace listing is about chat spelling, not greetings ("jalan"),
+    // cohesion ("WhatsApp") or aksara syllables ("wa").
+    let c = ids(
+        &lib,
+        &engine,
+        "iphone 17 pm 512gb resmi ibox mulus nomin garansi jalan minat wa",
+        Lang::Indonesian,
+    );
+    assert_eq!(c.first().map(String::as_str), Some("id.chat.abbreviations"), "{c:?}");
+    for wrong in ["id.greeting.selamat", "id.cohesion.lexical", "jv.aksara.nglegena"] {
+        assert!(!c.contains(&wrong.to_string()), "{c:?}");
+    }
+    let c = ids(&lib, &engine, "arp dicul piro", Lang::Javanese);
+    assert!(c.contains(&"jv.chat.normalize".to_string()), "{c:?}");
+}
+
+#[test]
+fn slash_alternatives_after_a_plus_are_phrases() {
+    assert_eq!(expand_alternatives("selamat + datang / jalan"), ["selamat datang", "selamat jalan"]);
+    assert_eq!(expand_alternatives("gk / ga"), ["gk", "ga"]);
+    assert_eq!(expand_alternatives("meN- + Verb + -kan"), ["meN-", "Verb", "-kan"]);
 }
 
 #[derive(Deserialize)]

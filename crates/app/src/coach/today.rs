@@ -148,10 +148,10 @@ pub fn Today() -> Element {
                 crate::lesson::PlacementInvite {}
                 crate::play::PagiTodayCard {}
                 crate::stats::TodayCards {}
-                // On the phone, Kak Nur, the journal and Settings live here
-                // instead of the bottom bar (it keeps five items).
+                // On the phone, Kak Nur, the journal, Watch & listen and
+                // Settings live here instead of the bottom bar (it keeps five items).
                 nav { class: "row compact-only more-links",
-                    for screen in [Screen::Coach, Screen::Journal, Screen::Settings] {
+                    for screen in [Screen::Coach, Screen::Journal, Screen::Listen, Screen::Settings] {
                         button {
                             key: "{screen:?}",
                             onclick: move |_| {

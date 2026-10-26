@@ -1,0 +1,201 @@
+schema: kabar.lesson/v1
+id: bipa5.u09.l02
+language: id
+title: Bahasa baku dan gaul
+can_do:
+  ar_eg: تفهم كلام الشباب العامي وتعرف تقابله بالفصيح.
+  ar: أن تفهم عامّية الشباب وتقابلها بالفصحى الإندونيسية.
+  en: Understand young people's slang and match it to standard Indonesian.
+slides:
+  - title: Baku vs gaul
+    body:
+      ar_eg: |
+        bahasa baku = الفصيح بتاع الجرايد والشغل. bahasa gaul = عامية الشباب، أغلبها من جاكرتا.
+        - tidak → nggak، sangat → banget، saya / kamu → gue / lu
+        - malas gerak → mager (كسلان يتحرك)
+        - bawa perasaan → baper (حسّاس، بياخد الكلام على صدره)
+        - kepo = فضولي، بيحشر مناخيره
+        كتير من الكلمات دي singkatan (اختصارات). افهمها، بس في المواقف الرسمية خليك على الفصيح.
+      ar: |
+        bahasa baku = الفصحى في الصحف والعمل، وbahasa gaul = عامّية الشباب، وجلّها من جاكرتا.
+        - tidak → nggak، وsangat → banget، وsaya / kamu → gue / lu
+        - malas gerak → mager (كسول عن الحركة)
+        - bawa perasaan → baper (مرهف الحسّ، يتأثّر بسرعة)
+        - kepo = فضولي
+        وكثير منها singkatan (اختصارات). افهمها، لكن التزم الفصحى في المقام الرسمي.
+      en: |
+        bahasa baku = standard Indonesian, for papers and work. bahasa gaul = youth slang, mostly from Jakarta.
+        - tidak → nggak, sangat → banget, saya / kamu → gue / lu
+        - malas gerak → mager (too lazy to move)
+        - bawa perasaan → baper (oversensitive, takes things to heart)
+        - kepo = nosy
+        Many are singkatan (abbreviations). Understand them, but keep to standard in formal settings.
+    examples:
+      - text: Gue mager banget hari ini.
+        ar_eg: أنا كسلان قوي النهارده.
+        ar: أنا كسول جدًّا اليوم.
+        en: I'm so lazy today.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: bahasa baku
+        ar_eg: الفصيح
+        ar: اللغة الفصحى
+        en: standard language
+      - text: bahasa gaul
+        ar_eg: عامية الشباب
+        ar: عامّية الشباب
+        en: slang
+      - text: singkatan
+        ar_eg: اختصار
+        ar: اختصار
+        en: abbreviation
+      - text: kepo
+        ar_eg: فضولي
+        ar: فضولي
+        en: nosy
+      - text: santai
+        ar_eg: رايق / على راحته
+        ar: مسترخٍ
+        en: relaxed, casual
+    words: [bahasa baku, bahasa gaul, singkatan, kepo, santai]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه الفصيح من «Gue nggak tahu»؟
+      ar: ما الصيغة الفصحى لـ «Gue nggak tahu»؟
+      en: What is the standard form of "Gue nggak tahu"?
+    options:
+      - Saya tidak tahu.
+      - Aku nggak tahu.
+      - Lu tidak tahu.
+    answer: 0
+    words: [bahasa baku, bahasa gaul]
+  - id: e03
+    type: fill_blank
+    sentence: Kata "mager" adalah ___ dari "malas gerak".
+    meaning:
+      ar_eg: كلمة mager اختصار لـ malas gerak.
+      ar: كلمة mager اختصار لـ malas gerak.
+      en: The word "mager" is an abbreviation of "malas gerak".
+    options: [singkatan, kosakata, santai]
+    answers: [singkatan]
+    words: [singkatan]
+  - id: e04
+    type: listen
+    text: Jangan kepo, itu urusan pribadi dia.
+    question:
+      ar_eg: المتكلم بيقول إيه؟
+      ar: ماذا يقول المتكلّم؟
+      en: What is the speaker saying?
+    options:
+      - ماتبقاش فضولي، دي حاجة تخصه.
+      - ماتتأخرش على الشغل.
+      - اتكلم بالفصيح.
+    answer: 0
+    words: [kepo]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: في الشغل بنستخدم اللغة الفصحى.
+      ar: نستعمل الفصحى في العمل.
+      en: At work we use standard language.
+    answer: Di kantor kita memakai bahasa baku.
+    distractors: [gaul, santai]
+    words: [bahasa baku]
+  - id: e06
+    type: translate
+    direction: from_target
+    source_text: Dengan teman, saya lebih santai dan memakai bahasa gaul.
+    answers_meaning:
+      ar_eg:
+        - مع صحابي ببقى رايق أكتر وبتكلم عامية.
+        - مع أصحابي باخدها ببساطة وبستخدم لغة الشباب.
+      ar:
+        - مع الأصدقاء أكون أكثر استرخاءً وأستعمل العامّية.
+        - أتحدّث مع أصدقائي ببساطة وبلغة الشباب.
+      en:
+        - With friends I'm more relaxed and use slang.
+        - With my friends I'm more casual and speak slang.
+    words: [santai, bahasa gaul]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «baper» اختصار لإيه؟
+      ar: ما أصل الاختصار «baper»؟
+      en: What is "baper" short for?
+    options:
+      - bawa permen
+      - baru pergi
+      - bawa perasaan
+    answer: 2
+    words: [singkatan, bahasa gaul]
+  - id: e08
+    type: speaking
+    text: Bahasa gaul itu santai, tetapi surat lamaran harus memakai bahasa baku.
+    meaning:
+      ar_eg: العامية رايقة، بس جواب التقديم على شغل لازم يبقى بالفصيح.
+      ar: العامّية مريحة، لكنّ رسالة طلب العمل يجب أن تكون بالفصحى.
+      en: Slang is relaxed, but a job application must be in standard language.
+    words: [bahasa gaul, santai, bahasa baku]
+  - id: e09
+    type: dictation
+    text: Adik saya kepo sekali tentang kehidupan saya di Mesir.
+    meaning:
+      ar_eg: أخويا الصغير فضولي قوي عن حياتي في مصر.
+      ar: أخي الصغير فضوليّ جدًّا بشأن حياتي في مصر.
+      en: My little brother is very nosy about my life in Egypt.
+    words: [kepo]
+dialogue:
+  title: Grup WhatsApp
+  lines:
+    - speaker: Rina
+      text: Mohamed, lu ikut nongkrong nanti malam nggak?
+      ar_eg: يا محمد، جاي تقعد معانا بالليل ولا لأ؟
+      ar: يا محمد، هل ستأتي للسهر معنا الليلة؟
+      en: Mohamed, you coming to hang out tonight?
+    - speaker: Mohamed
+      text: Maaf, gue mager banget. Eh, benar nggak bahasa gaul saya?
+      ar_eg: معلش، أنا كسلان قوي. إيه، العامية بتاعتي مظبوطة؟
+      ar: آسف، أنا كسول جدًّا. هل عامّيتي صحيحة؟
+      en: Sorry, I'm so lazy. Hey, is my slang right?
+    - speaker: Rina
+      text: Hampir! Tapi jangan campur "gue" dan "saya". Pilih satu.
+      ar_eg: قربت! بس ماتخلطش gue وsaya. اختار واحدة.
+      ar: كدت! لكن لا تخلط gue وsaya، اختر واحدة.
+      en: Almost! But don't mix "gue" and "saya". Pick one.
+    - speaker: Mohamed
+      text: Oke, paham. Di sini "gue", di kantor "saya" dan bahasa baku.
+      ar_eg: ماشي، فهمت. هنا gue، وفي الشغل saya وكلام فصيح.
+      ar: حسنًا، فهمت. هنا gue، وفي العمل saya والفصحى.
+      en: OK, got it. Here it's "gue"; at the office it's "saya" and standard language.
+new_words:
+  - word: bahasa baku
+    pos: noun
+    ar_eg: الفصيح
+    ar: اللغة الفصحى
+    en: standard language
+  - word: bahasa gaul
+    pos: noun
+    ar_eg: عامية الشباب
+    ar: عامّية الشباب
+    en: slang
+  - word: singkatan
+    pos: noun
+    ar_eg: اختصار
+    ar: اختصار
+    en: abbreviation
+  - word: kepo
+    pos: adjective
+    ar_eg: فضولي
+    ar: فضولي
+    en: nosy
+  - word: santai
+    pos: adjective
+    ar_eg: رايق / على راحته
+    ar: مسترخٍ
+    en: relaxed, casual
+review:
+  status: draft
+  verified: false
