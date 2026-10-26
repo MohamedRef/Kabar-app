@@ -1,0 +1,202 @@
+schema: kabar.lesson/v1
+id: bipa7.u10.l03
+language: id
+title: Metode penelitian
+can_do:
+  ar_eg: توصف طريقة بحث، مين المشاركين وإزاي اتجمعت البيانات.
+  ar: أن تصف منهج بحث، من المشاركون وكيف جُمعت البيانات.
+  en: Describe a research method, who took part and how data was collected.
+slides:
+  - title: Bagaimana data dikumpulkan?
+    body:
+      ar_eg: |
+        فقرة metode penelitian (منهج البحث) من بحث متألّف للدرس:
+        «Penelitian ini menggunakan dua pendekatan. Pertama, pendekatan kuantitatif (كمّي): kuesioner (استبيان) dibagikan kepada 120 partisipan (مشارك) di tiga distrik. Kedua, pendekatan kualitatif (كيفي/نوعي): sepuluh petani ubi jalar diwawancarai di dalam honai mereka.»
+        - كمّي = أرقام ونسب.
+        - كيفي = كلام الناس وتجاربهم.
+        في البحث العلمي، الفقرة دي بتتكتب كتير بالمبني للمجهول: dibagikan، diwawancarai.
+      ar: |
+        فقرة metode penelitian (منهج البحث) من بحث مؤلَّف للدرس:
+        «Penelitian ini menggunakan dua pendekatan. Pertama, pendekatan kuantitatif (كمّي): kuesioner (استبانة) dibagikan kepada 120 partisipan (مشاركًا) di tiga distrik. Kedua, pendekatan kualitatif (نوعي): sepuluh petani ubi jalar diwawancarai di dalam honai mereka.»
+        - الكمّي = أرقام ونسب.
+        - النوعي = أقوال الناس وتجاربهم.
+        وتُكتب هذه الفقرة غالبًا بالمبنيّ للمجهول: dibagikan، diwawancarai.
+      en: |
+        A metode penelitian (research method) paragraph from a study invented for the lesson:
+        «Penelitian ini menggunakan dua pendekatan. Pertama, pendekatan kuantitatif (quantitative): kuesioner (questionnaires) dibagikan kepada 120 partisipan (participants) di tiga distrik. Kedua, pendekatan kualitatif (qualitative): sepuluh petani ubi jalar diwawancarai di dalam honai mereka.»
+        - Quantitative = numbers and percentages.
+        - Qualitative = people's words and experiences.
+        This paragraph is usually written in the passive: dibagikan, diwawancarai.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: metode penelitian
+        ar_eg: منهج البحث
+        ar: منهج البحث
+        en: research method
+      - text: kuantitatif
+        ar_eg: كمّي
+        ar: كمّي
+        en: quantitative
+      - text: kualitatif
+        ar_eg: كيفي
+        ar: نوعي
+        en: qualitative
+      - text: kuesioner
+        ar_eg: استبيان
+        ar: استبانة
+        en: questionnaire
+      - text: partisipan
+        ar_eg: مشارك
+        ar: مشارك
+        en: participant
+    words: [metode penelitian, kuantitatif, kualitatif, kuesioner, partisipan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: لو بتعدّ نسبة الفلاحين اللي بيزرعوا البطاطا، ده بحث إيه؟
+      ar: إذا كنت تحسب نسبة المزارعين الذين يزرعون البطاطا الحلوة، فأيّ بحث هذا؟
+      en: If you're counting the share of farmers who grow sweet potato, what kind of research is it?
+    options: [kualitatif, kuantitatif, abstrak]
+    answer: 1
+    words: [kuantitatif]
+  - id: e03
+    type: fill_blank
+    sentence: Sebanyak 120 ___ mengisi kuesioner itu.
+    meaning:
+      ar_eg: 120 مشارك ملوا الاستبيان ده.
+      ar: ملأ 120 مشاركًا تلك الاستبانة.
+      en: A total of 120 participants filled in the questionnaire.
+    options: [partisipan, pemakalah, moderator]
+    answers: [partisipan]
+    words: [partisipan, kuesioner]
+  - id: e04
+    type: listen
+    text: Pendekatan kualitatif dipakai untuk memahami pengalaman para petani.
+    question:
+      ar_eg: استعملوا المنهج الكيفي علشان إيه؟
+      ar: لماذا استُعمل المنهج النوعي؟
+      en: What was the qualitative approach used for?
+    options:
+      - علشان يفهموا تجارب الفلاحين.
+      - علشان يعدّوا البيوت.
+      - علشان يحسبوا الأسعار.
+    answer: 0
+    words: [kualitatif]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الاستبيان اتوزّع في تلات مناطق.
+      ar: وُزّعت الاستبانة في ثلاث مناطق.
+      en: The questionnaire was handed out in three districts.
+    answer: Kuesioner dibagikan di tiga distrik.
+    distractors: [partisipan, kualitatif]
+    words: [kuesioner]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة مناسبة لفقرة «metode penelitian»؟
+      ar: أيّ جملة تناسب فقرة «metode penelitian»؟
+      en: Which sentence belongs in a "metode penelitian" section?
+    options:
+      - Saya suka sekali Wamena.
+      - Hasilnya sangat mengejutkan semua orang.
+      - Data dikumpulkan melalui wawancara dan kuesioner.
+    answer: 2
+    words: [metode penelitian, kuesioner]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: البحث ده بيستعمل منهج كيفي.
+      ar: يستعمل هذا البحث منهجًا نوعيًّا.
+      en: This study uses a qualitative method.
+    answers:
+      - Penelitian ini menggunakan metode kualitatif.
+      - Penelitian ini memakai metode kualitatif.
+      - Penelitian ini menggunakan pendekatan kualitatif.
+    words: [kualitatif]
+  - id: e08
+    type: speaking
+    text: Metode penelitian ini menggabungkan data kuantitatif dan kualitatif.
+    meaning:
+      ar_eg: منهج البحث ده بيجمع بين بيانات كمّية وكيفية.
+      ar: يجمع منهج هذا البحث بين البيانات الكمّية والنوعية.
+      en: This research method combines quantitative and qualitative data.
+    words: [metode penelitian, kuantitatif, kualitatif]
+  - id: e09
+    type: dictation
+    text: Semua partisipan setuju untuk diwawancarai.
+    meaning:
+      ar_eg: كل المشاركين وافقوا يتعمل معاهم مقابلات.
+      ar: وافق جميع المشاركين على إجراء المقابلات معهم.
+      en: All participants agreed to be interviewed.
+    words: [partisipan]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Bagian metode penelitian menjelaskan bagaimana dan dari siapa data dikumpulkan.
+    answers_meaning:
+      ar_eg:
+        - جزء منهج البحث بيشرح إزاي ومن مين البيانات اتجمعت.
+        - فقرة المنهج بتوضّح البيانات اتجابت إزاي ومن مين.
+      ar:
+        - يشرح قسم منهج البحث كيف جُمعت البيانات وممّن.
+        - يبيّن قسم المنهج طريقة جمع البيانات ومصدرها.
+      en:
+        - The research method section explains how and from whom the data was collected.
+        - The methods section sets out how the data was gathered and from whom.
+    words: [metode penelitian]
+dialogue:
+  title: Wawancara di honai
+  lines:
+    - speaker: Pak Elias
+      text: Untuk data kualitatif, kita wawancara Bapak Kogoya di honainya.
+      ar_eg: للبيانات الكيفية، هنعمل مقابلة مع الأستاذ كوجويا في الهوناي بتاعه.
+      ar: للبيانات النوعية سنحاور السيّد كوغويا في كوخه التقليدي.
+      en: For the qualitative data, we're interviewing Bapak Kogoya in his honai.
+    - speaker: Mohamed
+      text: Apakah saya perlu membawa kuesioner juga?
+      ar_eg: محتاج آخد الاستبيان كمان؟
+      ar: هل أحمل الاستبانة أيضًا؟
+      en: Do I need to bring the questionnaire too?
+    - speaker: Pak Elias
+      text: Tidak. Kuesioner untuk data kuantitatif di pasar besok. Hari ini kita mendengar cerita.
+      ar_eg: لأ. الاستبيان للبيانات الكمّية في السوق بكرة. النهارده بنسمع حكايات.
+      ar: لا، الاستبانة للبيانات الكمّية في السوق غدًا. اليوم نستمع إلى الحكايات.
+      en: No. The questionnaire is for the quantitative data at the market tomorrow. Today we listen to stories.
+    - speaker: Mohamed
+      text: Baik. Saya minta izin dulu sebelum merekam partisipan.
+      ar_eg: ماشي. هستأذن الأول قبل ما أسجّل للمشارك.
+      ar: حسنًا، سأستأذن المشارك قبل التسجيل.
+      en: Right. I'll ask the participant's permission before recording.
+new_words:
+  - word: metode penelitian
+    pos: noun
+    ar_eg: منهج البحث
+    ar: منهج البحث
+    en: research method
+  - word: kuantitatif
+    pos: adjective
+    ar_eg: كمّي
+    ar: كمّي
+    en: quantitative
+  - word: kualitatif
+    pos: adjective
+    ar_eg: كيفي
+    ar: نوعي
+    en: qualitative
+  - word: kuesioner
+    pos: noun
+    ar_eg: استبيان
+    ar: استبانة
+    en: questionnaire
+  - word: partisipan
+    pos: noun
+    ar_eg: مشارك
+    ar: مشارك
+    en: participant
+review:
+  status: draft
+  verified: false
