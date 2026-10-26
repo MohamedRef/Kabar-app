@@ -1,10 +1,12 @@
 //! Mini-games (spec §12, §14): the Arabic Bridge games, Rupiah Reader and
-//! Pasar!. Pure logic over build-time content passed in as text, so the same
+//! Pasar!, the Unggah-Ungguh Simulator and Minimal Pairs. Pure logic over build-time content passed in as text, so the same
 //! code runs in the app and in tests. Every game is deterministic for a seed.
 
 pub mod bridge;
+pub mod pairs;
 pub mod pasar;
 pub mod rupiah;
+pub mod unggah;
 
 /// A small deterministic PRNG (SplitMix64): the same seed gives the same
 /// rounds on every device.
