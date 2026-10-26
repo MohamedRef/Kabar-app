@@ -610,6 +610,15 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 .levels dd.current::before { content: "● "; font-size: 0.7em; vertical-align: middle; }
 .levels .note { margin-block-start: 0.5rem; }
 .tag.taught { background: var(--indigo); color: var(--surface); }
+.panel .phrase { margin-block-start: 1.5rem; }
+.explain-glue { display: grid; gap: 0.5rem; justify-items: start; border-inline-start: 3px solid var(--indigo); padding-inline-start: 0.75rem; }
+.explain-glue p { margin: 0; }
+.grammar-entry { border: 1px solid var(--line); border-radius: 12px; padding-block: 0.5rem; padding-inline: 0.75rem; }
+.grammar-entry summary { cursor: pointer; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+.grammar-entry summary .latin { font-weight: 600; }
+.grammar-entry .level { font-size: 0.8em; color: var(--muted); }
+.grammar-entry .pattern { font-family: ui-monospace, monospace; font-size: 0.9em; }
+.grammar-entry .mistake s { color: var(--muted); }
 .taught-block { border: 1px solid var(--indigo); border-radius: 12px; padding: 0.75rem; display: grid; gap: 0.5rem; justify-items: start; }
 .chip.draft { border: 1px dashed var(--indigo); background: transparent; color: var(--indigo); border-radius: 999px; padding-inline: 0.75rem; justify-self: start; }
 .bridge-card { border: 1px solid var(--gold); background: var(--gold-soft); border-radius: 12px; padding: 0.75rem; }
