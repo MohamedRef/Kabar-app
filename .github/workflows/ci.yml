@@ -65,9 +65,14 @@ jobs:
           key: macos
       - run: cargo clippy -p kabar-app --all-targets -- -D warnings
       - run: cargo test -p kabar-app
-      - uses: cargo-bins/cargo-binstall@main
+      # Built from source like scripts/setup-mac.sh does: the prebuilt macOS dx
+      # links Homebrew's OpenSSL at the Intel path (/usr/local/opt), which
+      # Apple-silicon runners don't have. ~/.cargo/bin is cached afterwards.
       - name: Install dx 0.7.10
-        run: cargo binstall -y --force dioxus-cli@0.7.10
+        run: |
+          if ! dx --version 2>/dev/null | grep -q '0.7.10'; then
+            cargo install dioxus-cli --version 0.7.10 --locked
+          fi
       - name: Bundle Kabar.app
         run: |
           cd crates/app
