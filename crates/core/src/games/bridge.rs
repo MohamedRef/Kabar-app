@@ -527,7 +527,7 @@ mod tests {
     #[test]
     fn parses_the_real_dataset() {
         let d = data();
-        assert_eq!(d.entries.len(), 581);
+        assert_eq!(d.entries.len(), 608);
         assert!(d.rules.len() >= 19);
         assert_eq!(d.entry("kabar").unwrap().arabic, "خَبَر");
         assert!(d.entry("nope").is_none());
@@ -716,11 +716,25 @@ mod tests {
     fn fa_p_rounds_use_the_wrong_rule_as_a_trap() {
         let d = data();
         let rounds = detective_rounds(&d, Some("fa_p"), 10, 3);
-        let pikir = (0..20)
+        let gi: Vec<_> = (0..20)
             .flat_map(|s| detective_rounds(&d, Some("fa_p"), 10, s))
-            .find(|r| r.word == "pikir" && r.mode == DetectiveMode::GuessIndonesian)
-            .expect("pikir comes up as an Arabic prompt for some seed");
-        assert!(pikir.choices.contains(&"fikir".to_string()), "{pikir:?}");
+            .filter(|r| r.mode == DetectiveMode::GuessIndonesian)
+            .collect();
+        // The f-for-p near miss is offered as a trap (paham → faham is not, since
+        // faham is a real variant spelling and would be a second right answer).
+        assert!(
+            gi.iter().any(|r| near_miss(&r.word, "fa_p").is_some_and(|n| r.choices.contains(&n))),
+            "no round offers the f-for-p trap"
+        );
+        for r in &gi {
+            let wrong = r.choices.iter().enumerate().filter(|(i, _)| *i != r.answer);
+            assert!(
+                wrong
+                    .clone()
+                    .all(|(_, c)| d.entry(c).is_none_or(|e| e.arabic != d.entry(&r.word).unwrap().arabic)),
+                "{r:?}"
+            );
+        }
         // Arabic distractors share the rule's letter or a root letter, so it's a real puzzle.
         let ga = rounds.iter().find(|r| r.mode == DetectiveMode::GuessArabic).unwrap();
         let with_fa = ga.choices.iter().filter(|c| c.contains('ف')).count();
@@ -780,6 +794,6 @@ mod tests {
         assert!(!is_false_friend(&d, "kabar"));
         assert!(!is_false_friend(&d, "nope"));
         let count = d.entries.iter().filter(|e| is_false_friend(&d, &e.word)).count();
-        assert_eq!(count, 28);
+        assert_eq!(count, 30);
     }
 }
