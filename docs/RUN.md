@@ -140,6 +140,10 @@ Writing the draft needs an AI engine, so until the app is connected to Kabar Clo
 
 **Teach Kabar from the Reader:** open a word's card → **Teach Kabar** (it's the main button when Kabar has no gloss). The Teach screen opens with the word and its sentence filled in; go back to the Reader and the text is still open. Approved words show first in the card with a "taught by you" badge; a draft shows a "review it" chip instead.
 
+**Explain this sentence:** open a word's card → **💡 Explain the sentence**, or select a phrase → **Explain this sentence**. The sentence is outlined in the text and the panel lists the grammar points from `content/grammar` that fit it (title, summary, pattern, an example, a common mistake, the Arabic bridge), found on the device with no network. When Kabar Cloud is linked, an AI explanation (meaning in your voice, what the grammar cards don't cover, register, culture) appears on top. Reader texts can be private chats, so this request never goes to Gemini's free tier. Javanese answers stay marked "not reviewed yet". Try `Saya sedang membaca buku.` and `Rumahnya sudah dibersihkan kemarin.`
+
+**Import a web page:** paste just a link (`https://…`) into the Reader and press Read, or share a link to Kabar on the phone. Kabar fetches the page itself (no browser restrictions), keeps the article text, and saves it with a 🔗 icon. If a page can't be read (login wall, PDF, offline), Kabar asks you to paste the text instead.
+
 ### How the Kotlin glue gets into the APK
 `android/` (repo root) is a small Gradle library module: the share target (`ShareActivity`), the pending-share hand-off (`PendingShare`) and on-device OCR with ML Kit Text Recognition v2 (`OcrBridge`). Nothing to configure: the `#[manganis::ffi("../../android")]` marker in `crates/app/src/platform/android.rs` makes `dx` (0.7.10) copy the folder into its generated Gradle project as `:plugins:plugin`, add it as an app dependency, and let the manifest merger add the share activity. Gradle downloads ML Kit from Google's Maven repository (free) on the first Android build after this change, so be online for that one.
 

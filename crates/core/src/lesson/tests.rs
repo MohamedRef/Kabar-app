@@ -114,6 +114,7 @@ fn normalize_folds_case_punctuation_and_arabic_variants() {
     assert_eq!(normalize("Saya sedang membaca buku."), "saya sedang membaca buku");
     assert_eq!(normalize("Anak-anak bermain di taman."), "anak-anak bermain di taman");
     assert_eq!(normalize("أهلاً وسهلاً!"), normalize("اهلا وسهلا"));
+    assert_eq!(normalize("Kowé dèrèng mangan."), "kowe dereng mangan");
     assert_eq!(normalize("شكــراً"), "شكرا");
     assert_eq!(normalize("إلى اللقاء"), normalize("الي اللقاء"));
     assert_eq!(normalize("سلامة"), normalize("سلامه"));
