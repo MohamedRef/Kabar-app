@@ -18,3 +18,4 @@ pub mod settings;
 pub mod srs;
 pub mod sync;
 pub mod sync_client;
+pub mod theme;

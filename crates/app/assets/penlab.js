@@ -18,8 +18,9 @@ const liveCtx = live.getContext("2d", { desynchronized: true });
 const attrs = ctx.getContextAttributes ? ctx.getContextAttributes() : {};
 const probe = typeof PointerEvent !== "undefined" ? PointerEvent.prototype : {};
 
-const INK = getComputedStyle(document.documentElement).getPropertyValue("--indigo").trim() || "#2b3a70";
-const PAPER = "#fffdf8";
+const themeVars = getComputedStyle(document.documentElement);
+const INK = themeVars.getPropertyValue("--ink").trim() || "#2b3a70";
+const PAPER = themeVars.getPropertyValue("--paper").trim() || "#fffdf8";
 
 function resize() {
   const dpr = window.devicePixelRatio || 1;
