@@ -1,0 +1,200 @@
+schema: kabar.lesson/v1
+id: bipa1.u09.l06
+language: id
+title: Atau, tetapi, jadi
+can_do:
+  ar_eg: توصل الأفكار بـ «ولا» و«بس» و«عشان كده».
+  ar: أن تربط الأفكار بـ «أو» و«لكن» و«لذلك».
+  en: Join ideas with or, but and so.
+slides:
+  - title: Dan, atau, tetapi
+    body:
+      ar_eg: |
+        - dan = و: Monas dan Masjid Istiqlal = موناس وجامع الاستقلال.
+        - atau = أو، وفي السؤال «ولا»: Naik bus atau jalan kaki? = تركب أتوبيس ولا تمشي؟
+        - tetapi (في الكلام tapi) = بس / لكن: Dekat, tetapi panas = قريب، بس الجو حر.
+        للاختيار استخدم atau، مش dan.
+      ar: |
+        - dan = و: Monas dan Masjid Istiqlal.
+        - atau = أو، وفي السؤال «أم»: Naik bus atau jalan kaki؟ = أتركب الحافلة أم تمشي؟
+        - tetapi (وفي العامية tapi) = لكن: Dekat, tetapi panas = قريب لكن الجو حار.
+        وللتخيير atau لا dan.
+      en: |
+        - dan = and: Monas dan Masjid Istiqlal.
+        - atau = or (also in questions): Naik bus atau jalan kaki? = Bus or on foot?
+        - tetapi (casual tapi) = but: Dekat, tetapi panas = It's close, but hot.
+        For a choice use atau, not dan.
+    grammar: id.conjunction.basic
+    examples:
+      - text: Mau kopi atau teh?
+        ar_eg: تشرب قهوة ولا شاي؟
+        ar: أتريد قهوة أم شايًا؟
+        en: Would you like coffee or tea?
+  - title: Jadi = فـ / عشان كده
+    body:
+      ar_eg: |
+        jadi = «فـ / عشان كده»، بتقول النتيجة:
+        Monas jauh, jadi kita naik bus = موناس بعيد، فهنركب أتوبيس.
+        وفي الشات: dn = dan، atw = atau، tp = tapi، jd = jadi.
+      ar: |
+        jadi = «لذلك / فـ» للنتيجة:
+        Monas jauh, jadi kita naik bus = موناس بعيد، لذا سنركب الحافلة.
+        وفي المحادثات: dn، atw، tp، jd.
+      en: |
+        jadi = so, for a result:
+        Monas jauh, jadi kita naik bus = Monas is far, so we'll take the bus.
+        Chat spelling: dn, atw, tp, jd.
+    grammar: id.conjunction.basic
+    examples:
+      - text: Saya lapar, jadi saya makan dulu.
+        ar_eg: أنا جعان، فهاكل الأول.
+        ar: أنا جائع، لذا سآكل أولًا.
+        en: I'm hungry, so I'll eat first.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: dan
+        ar_eg: و
+        ar: و
+        en: and
+      - text: atau
+        ar_eg: أو / ولا
+        ar: أو / أم
+        en: or
+      - text: tetapi
+        ar_eg: بس، لكن
+        ar: لكن
+        en: but
+      - text: lalu
+        ar_eg: وبعدين
+        ar: ثم
+        en: then
+      - text: jadi
+        ar_eg: فـ، عشان كده
+        ar: لذلك
+        en: so
+    words: [dan, atau, tetapi, lalu, jadi]
+  - id: e02
+    type: multiple_choice
+    question: Mau naik bus ___ jalan kaki?
+    options: [atau, jadi, dan]
+    answer: 0
+    explain:
+      ar_eg: ده اختيار، يبقى atau (ولا).
+      ar: هذا تخيير، فالأداة atau.
+      en: It's a choice, so atau.
+    words: [atau, jalan kaki]
+  - id: e03
+    type: multiple_choice
+    question: Monas jauh, ___ kita naik bus.
+    options: [jadi, atau, tetapi]
+    answer: 0
+    explain:
+      ar_eg: ركوب الأتوبيس نتيجة إن المكان بعيد، يبقى jadi.
+      ar: ركوب الحافلة نتيجة بُعد المكان، فالأداة jadi.
+      en: Taking the bus is the result of it being far → jadi.
+    words: [jadi, jauh]
+  - id: e04
+    type: multiple_choice
+    question: Museumnya dekat, ___ hari ini tutup.
+    question_meaning:
+      ar_eg: المتحف قريب، بس النهارده مقفول.
+      ar: المتحف قريب، لكنه مغلق اليوم.
+      en: The museum is close, but it's closed today.
+    options: [tetapi, lalu, dan]
+    answer: 0
+    explain:
+      ar_eg: فيه عكس في المعنى (قريب بس مقفول)، يبقى tetapi.
+      ar: بين الجملتين استدراك، فالأداة tetapi.
+      en: The second part contrasts with the first → tetapi.
+    words: [tetapi, tutup]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: قريب، بس الجو حر.
+      ar: قريب، لكن الجو حار.
+      en: It's close, but it's hot.
+    answer: Dekat, tetapi panas.
+    alternatives: [Dekat tetapi panas.]
+    distractors: [jauh, jadi]
+    words: [dekat, tetapi, panas]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: قهوة ولا شاي؟
+      ar: قهوة أم شاي؟
+      en: Coffee or tea?
+    answers: ['Kopi atau teh?', Kopi atau teh, 'Mau kopi atau teh?', 'Teh atau kopi?']
+    explain:
+      ar_eg: «ولا» في السؤال = atau، مش dan.
+      ar: «أم» في السؤال = atau لا dan.
+      en: '"Or" in a question is atau, not dan.'
+    words: [atau]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Saya lapar, jadi saya makan dulu.
+    answers_meaning:
+      ar_eg: [أنا جعان، فهاكل الأول., أنا جعان عشان كده هاكل الأول, أنا جعان فهاكل الأول]
+      ar: [أنا جائع، لذا سآكل أولًا., أنا جائع فسآكل أولًا]
+      en: ['I''m hungry, so I''ll eat first.', 'I am hungry, so I will eat first', I'm hungry so I'll eat first]
+    words: [jadi, lapar]
+dialogue:
+  title: Permisi, Pak!
+  lines:
+    - speaker: Mohamed
+      text: Permisi, Pak. Masjid Istiqlal di mana, ya?
+      ar_eg: لو سمحت يا عمّ. جامع الاستقلال فين؟
+      ar: عفوًا يا سيدي، أين مسجد الاستقلال؟
+      en: Excuse me, sir. Where's Istiqlal Mosque?
+    - speaker: Bapak
+      text: Dekat, Mas. Jalan lurus, lalu belok kiri di lampu merah.
+      ar_eg: قريب يا ابني. امشي دغري، وبعدين خش شمال عند الإشارة.
+      ar: قريب. امشِ مستقيمًا، ثم انعطف يسارًا عند الإشارة.
+      en: It's close. Go straight, then turn left at the traffic light.
+    - speaker: Mohamed
+      text: Belok kiri di lampu merah, lalu?
+      ar_eg: أخش شمال عند الإشارة، وبعدين؟
+      ar: أنعطف يسارًا عند الإشارة، ثم؟
+      en: Turn left at the traffic light, and then?
+    - speaker: Bapak
+      text: Kemudian jalan lurus. Masjidnya di sebelah kanan.
+      ar_eg: وبعدين امشي دغري. الجامع على إيدك اليمين.
+      ar: ثم امشِ مستقيمًا، والمسجد على اليمين.
+      en: Then go straight. The mosque is on the right.
+    - speaker: Mohamed
+      text: Jauh atau dekat, Pak?
+      ar_eg: بعيد ولا قريب يا عمّ؟
+      ar: أهو بعيد أم قريب يا سيدي؟
+      en: Is it far or close, sir?
+    - speaker: Bapak
+      text: Dekat, tapi panas. Jadi pelan-pelan saja, ya!
+      ar_eg: قريب، بس الجو حر. فامشي على مهلك!
+      ar: قريب، لكن الجو حار، فامشِ على مهل!
+      en: Close, but it's hot. So take it slowly!
+new_words:
+  - word: atau
+    pos: conjunction
+    ar_eg: أو؛ ولا (في السؤال)
+    ar: أو؛ أم
+    en: or
+  - word: tetapi
+    pos: conjunction
+    ar_eg: لكن، بس
+    ar: لكن
+    en: but
+  - word: jauh
+    pos: adjective
+    ar_eg: بعيد
+    ar: بعيد
+    en: far
+  - word: pelan-pelan
+    pos: adverb
+    ar_eg: على مهلك
+    ar: ببطء، على مهل
+    en: slowly, take it easy
+review:
+  status: draft
+  verified: false

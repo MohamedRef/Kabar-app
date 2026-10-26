@@ -486,6 +486,33 @@ mod tests {
         assert!(out.synced);
     }
 
+    /// Journal reflections are edited and deleted, never appended.
+    #[test]
+    fn journal_reflections_are_last_writer_wins() {
+        let db = MemSql::new();
+        let hub = Hub::new(&db).unwrap();
+        let mut phone = conn("s24u");
+        send(&hub, &mut phone, &hello(0));
+        let reflection = |id: &str, kind: OpKind, wall_ms: u64| {
+            let mut op = word(id, "s24u", wall_ms, "0192f0a0-0000-7000-8000-000000000001", "");
+            op.table = "journal_entries".into();
+            op.kind = kind;
+            op.payload = (kind != OpKind::Delete)
+                .then(|| json!({ "id": op.row_id, "date": "2026-10-26", "text": "Saya sedang belajar.", "created_ms": wall_ms }));
+            op
+        };
+        let ops = vec![
+            reflection("j-1", OpKind::Upsert, NOW),
+            reflection("j-2", OpKind::Upsert, NOW + 1),
+            reflection("j-3", OpKind::Delete, NOW + 2),
+            reflection("j-4", OpKind::Append, NOW + 3),
+        ];
+        let out = send(&hub, &mut phone, &ClientMsg::Push { batch: 1, ops });
+        let ServerMsg::Ack { done, rejected, .. } = &out.replies[0] else { panic!("{out:?}") };
+        assert_eq!(done, &["j-1", "j-2", "j-3"]);
+        assert_eq!(rejected.iter().map(|r| r.reason).collect::<Vec<_>>(), [RejectReason::KindNotAllowed]);
+    }
+
     #[test]
     fn replays_are_idempotent() {
         let db = MemSql::new();

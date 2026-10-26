@@ -123,81 +123,39 @@ exercises:
         en: bitter
     words: [pedas, manis, asin, asam, pahit]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الشطة (sambal) طعمها إيه عادةً؟
-      ar: ما مذاق الصلصة الحارّة (sambal) عادةً؟
-      en: What does sambal usually taste like?
-    options: ["pahit", "manis", "pedas"]
-    answer: 2
-    words: [sambal, pedas]
-  - id: e03
     type: listen
     text: Kopinya pahit sekali.
-    options: ["Kopinya asin sekali.", "Kopinya manis sekali.", "Kopinya pahit sekali."]
+    options: [Kopinya asin sekali., Kopinya manis sekali., Kopinya pahit sekali.]
     answer: 2
     words: [pahit]
-  - id: e04
+  - id: e03
     type: multiple_choice
     question_meaning:
       ar_eg: أنهي كلمة جاية من العربي «لذّة»؟
       ar: أيّ كلمة أصلها العربية «لذّة»؟
       en: Which word comes from Arabic «لذّة»?
-    options: ["gurih", "lezat", "pedas"]
+    options: [gurih, lezat, pedas]
     answer: 1
     explain:
       ar_eg: lezat = لذيذ، من «لذّة». وgurih كلمة إندونيسية = طعمه غني.
       ar: lezat من «لذّة»، أما gurih فإندونيسية الأصل.
       en: lezat comes from «لذّة»; gurih is a native word (savoury).
     words: [lezat]
-  - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إنت في وارونج في جيانيار وعايز تتأكد إن الأكل ينفع تاكله كمسلم. تسأل إيه؟
-      ar: أنت في مطعم صغير في جيانيار وتريد التأكد أن الطعام يجوز لك أكله كمسلم. ماذا تسأل؟
-      en: You're at a stall in Gianyar and want to check you can eat the food as a Muslim. What do you ask?
-    options: ["Bu, ini halal?", "Bu, ini manis?", "Bu, ini pedas?"]
-    answer: 0
-    words: [halal]
-  - id: e06
+  - id: e04
     type: fill_blank
     sentence: Es teh ini terlalu ___. Gulanya banyak sekali.
     meaning:
       ar_eg: الشاي المتلج ده مسكّر زيادة. السكر فيه كتير قوي.
       ar: هذا الشاي المثلّج حلو أكثر من اللازم، فالسكّر فيه كثير جدًّا.
       en: This iced tea is too sweet. There's a lot of sugar in it.
-    options: ["asin", "manis", "pahit"]
+    options: [asin, manis, pahit]
     answers: [manis]
     explain:
       ar_eg: سكر كتير = مسكّر = manis.
       ar: كثرة السكّر تجعله حلوًا (manis).
       en: Lots of sugar makes it manis.
     words: [manis, gula, terlalu]
-  - id: e07
-    type: fill_blank
-    sentence: Saya mau ___ nasi campur satu.
-    meaning:
-      ar_eg: عايز أطلب واحد ناسي تشامبور.
-      ar: أريد أن أطلب طبق ناسي تشامبور واحدًا.
-      en: I'd like to order one nasi campur.
-    options: ["pedas", "pesan", "halal"]
-    answers: [pesan]
-    words: [pesan]
-  - id: e08
-    type: fill_blank
-    sentence: Teh manis satu, Bu. Tidak ___ es, ya.
-    meaning:
-      ar_eg: واحد شاي بسكر يا مدام. من غير تلج لو سمحتي.
-      ar: شاي حلو واحد يا سيدتي، بدون ثلج من فضلك.
-      en: One sweet tea, ma'am. No ice, please.
-    options: ["pakai", "pesan", "gula"]
-    answers: [pakai]
-    explain:
-      ar_eg: tidak pakai = من غير.
-      ar: tidak pakai = بدون.
-      en: tidak pakai = without.
-    words: [pakai]
-  - id: e09
+  - id: e05
     type: build_sentence
     source:
       ar_eg: عايز أطلب ساتيه فراخ.
@@ -206,40 +164,7 @@ exercises:
     answer: Saya mau pesan sate ayam.
     distractors: [babi, pedas]
     words: [pesan]
-  - id: e10
-    type: build_sentence
-    source:
-      ar_eg: ماتخليهوش حرّاق قوي، ماشي؟
-      ar: لا تجعله حارًّا جدًّا، من فضلك.
-      en: Not too spicy, okay?
-    answer: Jangan terlalu pedas, ya.
-    distractors: [manis, sekali]
-    words: [pedas, terlalu, jangan]
-  - id: e11
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الشطة دي حرّاقة قوي!
-      ar: هذه الصلصة الحارّة حارّة جدًّا!
-      en: This sambal is very spicy!
-    answers:
-      - Sambal ini pedas sekali!
-      - Sambal ini pedas sekali
-      - Sambal ini sangat pedas!
-      - Sambal ini sangat pedas
-      - Sambal ini pedas banget!
-      - Sambal ini pedas banget
-    words: [sambal, pedas]
-  - id: e12
-    type: translate
-    direction: from_target
-    source_text: Ayam goreng ini gurih dan lezat.
-    answers_meaning:
-      ar_eg: ["الفراخ المقلية دي طعمها غني ولذيذ.", "الفراخ المقلية دي متسبّكة ولذيذة"]
-      ar: ["هذا الدجاج المقلي غنيّ الطعم ولذيذ.", "هذا الدجاج المقلي شهيّ ولذيذ"]
-      en: ["This fried chicken is savoury and delicious.", "This fried chicken is tasty and delicious"]
-    words: [gurih, lezat]
-  - id: e13
+  - id: e06
     type: dictation
     text: Semua makanannya halal.
     meaning:
@@ -247,7 +172,7 @@ exercises:
       ar: كل طعامه حلال.
       en: All the food is halal.
     words: [halal]
-  - id: e14
+  - id: e07
     type: speaking
     text: Saya mau pesan nasi campur, tidak pakai sambal.
     meaning:
@@ -289,16 +214,6 @@ dialogue:
       ar: قليلًا فقط يا سيدتي، ولا تجعليها حارّة جدًّا.
       en: Just a little, ma'am. Not too spicy, please.
 new_words:
-  - word: pedas
-    pos: adjective
-    ar_eg: حرّاق
-    ar: حارّ (المذاق)
-    en: spicy, hot
-  - word: manis
-    pos: adjective
-    ar_eg: مسكّر، حلو
-    ar: حلو
-    en: sweet
   - word: asin
     pos: adjective
     ar_eg: مالح
@@ -331,27 +246,6 @@ new_words:
     ar: حلال
     en: halal, permitted
     arabic: حلال
-  - word: haram
-    pos: adjective
-    ar_eg: حرام
-    ar: حرام
-    en: haram, forbidden
-    arabic: حرام
-  - word: babi
-    pos: noun
-    ar_eg: خنزير
-    ar: خنزير
-    en: pig, pork
-  - word: pesan
-    pos: verb
-    ar_eg: يطلب (أكل)
-    ar: يطلب (طعامًا)
-    en: to order
-  - word: pakai
-    pos: preposition
-    ar_eg: بـ / معاه (في الأكل)
-    ar: مع / بـ (في الطعام)
-    en: with (in orders)
   - word: sambal
     pos: noun
     ar_eg: شطة إندونيسي

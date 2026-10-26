@@ -46,13 +46,13 @@ exercises:
       ar_eg: عايز تعرف الإيجار كام في الشهر. تسأل إيه؟
       ar: تريد أن تعرف الإيجار الشهري. ماذا تسأل؟
       en: You want to know the monthly rent. What do you ask?
-    options: ["Berapa sewanya sebulan?", "Kamar mandinya di mana?", "Ada kamar kosong?"]
+    options: ['Berapa sewanya sebulan?', 'Kamar mandinya di mana?', 'Ada kamar kosong?']
     answer: 0
     words: [sewa]
   - id: e02
     type: listen
     text: Sudah termasuk listrik dan air.
-    options: ["Belum termasuk listrik dan air.", "Sudah termasuk listrik, tetapi air belum.", "Sudah termasuk listrik dan air."]
+    options: [Belum termasuk listrik dan air., 'Sudah termasuk listrik, tetapi air belum.', Sudah termasuk listrik dan air.]
     answer: 2
     words: [termasuk, listrik]
   - id: e03
@@ -62,7 +62,7 @@ exercises:
       ar_eg: لو سمحتي يا مدام. فيه أوضة فاضية؟
       ar: عفوًا يا سيدتي، هل توجد غرفة شاغرة؟
       en: Excuse me, ma'am. Is there a free room?
-    options: ["termasuk", "sewa", "kosong"]
+    options: [termasuk, sewa, kosong]
     answers: [kosong]
     words: [kosong]
   - id: e04
@@ -103,14 +103,7 @@ exercises:
       ar_eg: لو سمحتي يا مدام، فيه أوضة فاضية؟
       ar: عفوًا يا سيدتي، هل توجد غرفة شاغرة؟
       en: Excuse me, ma'am, is there a free room?
-    answers:
-      - Permisi, Bu. Ada kamar kosong?
-      - Permisi, Bu, ada kamar kosong?
-      - Permisi, Bu. Ada kamar kosong
-      - Permisi, Bu, ada kamar kosong
-      - Permisi, Bu. Apakah ada kamar kosong?
-      - Permisi, Bu, apakah ada kamar kosong?
-      - Permisi, Bu. Masih ada kamar kosong?
+    answers: ['Permisi, Bu. Ada kamar kosong?', 'Permisi, Bu, ada kamar kosong?', 'Permisi, Bu. Ada kamar kosong', 'Permisi, Bu, ada kamar kosong', 'Permisi, Bu. Apakah ada kamar kosong?', 'Permisi, Bu, apakah ada kamar kosong?', 'Permisi, Bu. Masih ada kamar kosong?']
     words: [kosong]
   - id: e08
     type: translate
@@ -119,46 +112,9 @@ exercises:
       ar_eg: الإيجار كام في الشهر؟
       ar: كم الإيجار في الشهر؟
       en: How much is the rent per month?
-    answers:
-      - Berapa sewanya sebulan?
-      - Berapa sewanya per bulan?
-      - Sewanya berapa sebulan?
-      - Sewanya berapa per bulan?
-      - Berapa sewanya sebulan
-      - Berapa sewanya per bulan
-      - Sewanya berapa sebulan
-      - Berapa harga sewanya sebulan?
-      - Berapa harga sewanya per bulan?
-      - Berapa sewa kamarnya sebulan?
+    answers: ['Berapa sewanya sebulan?', 'Berapa sewanya per bulan?', 'Sewanya berapa sebulan?', 'Sewanya berapa per bulan?', Berapa sewanya sebulan, Berapa sewanya per bulan, Sewanya berapa sebulan, 'Berapa harga sewanya sebulan?', 'Berapa harga sewanya per bulan?', 'Berapa sewa kamarnya sebulan?']
     words: [sewa]
   - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: اتفضل ادخل يا أستاذ. اتفضل شوف الأوضة.
-      ar: تفضّل بالدخول يا سيدي، وتفضّل انظر إلى الغرفة.
-      en: Please come in, sir. Please have a look at the room.
-    answers:
-      - Silakan masuk, Pak. Silakan lihat kamarnya.
-      - Silakan masuk, Pak. Silakan lihat kamarnya
-      - Silakan masuk, Pak, silakan lihat kamarnya.
-      - Silakan masuk, Pak. Silakan melihat kamarnya.
-      - Silakan masuk, Pak. Silakan lihat kamar ini.
-    explain:
-      ar_eg: إنت بتعزم، يبقى silakan في الاتنين.
-      ar: هذه دعوة، فنستعمل silakan في الجملتين.
-      en: You're offering, so silakan both times.
-    words: [silakan]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Masjidnya di seberang warung, di ujung gang.
-    answers_meaning:
-      ar_eg: ["الجامع قصاد الوارونج، في آخر الحارة.", "الجامع قدّام الوارونج من الناحية التانية، في آخر الحارة"]
-      ar: ["المسجد مقابل المطعم الصغير، في آخر الزقاق.", "المسجد في الجهة المقابلة للمطعم في نهاية الزقاق"]
-      en: ["The mosque is across from the warung, at the end of the alley.", "The mosque is opposite the warung at the end of the lane"]
-    words: [seberang, ujung, gang]
-  - id: e11
     type: dictation
     text: Ada sebuah kamar kosong di lantai dua.
     meaning:
@@ -166,7 +122,7 @@ exercises:
       ar: توجد غرفة شاغرة في الطابق الثاني.
       en: There's a free room on the second floor.
     words: [kosong, lantai]
-  - id: e12
+  - id: e10
     type: speaking
     text: Boleh saya lihat kamarnya, Bu?
     meaning:
@@ -198,16 +154,6 @@ dialogue:
       ar: مليون وخمسمئة ألف روبية، شاملة الكهرباء والماء.
       en: One and a half million rupiah, electricity and water included.
     - speaker: Mohamed
-      text: Kamar mandinya di dalam atau di luar?
-      ar_eg: الحمّام جوّه ولا بره؟
-      ar: هل الحمّام في الداخل أم في الخارج؟
-      en: Is the bathroom inside or outside?
-    - speaker: Bu Sari
-      text: Di dalam, Pak. Ada meja dan lemari juga.
-      ar_eg: جوّه يا أستاذ. وفيه ترابيزة ودولاب كمان.
-      ar: في الداخل يا سيدي، وفيها طاولة وخزانة أيضًا.
-      en: Inside, sir. There's a desk and a wardrobe too.
-    - speaker: Mohamed
       text: Boleh saya lihat kamarnya?
       ar_eg: ممكن أشوف الأوضة؟
       ar: هل يمكنني رؤية الغرفة؟
@@ -217,16 +163,6 @@ dialogue:
       ar_eg: اتفضل يا أستاذ. تعالى نطلع فوق.
       ar: تفضّل يا سيدي، هيّا إلى الأعلى.
       en: Please do, sir. Let's go upstairs.
-    - speaker: Mohamed
-      text: Kamarnya bersih dan besar. Masjid dekat dari sini, Bu?
-      ar_eg: الأوضة نضيفة وكبيرة. الجامع قريب من هنا يا مدام؟
-      ar: الغرفة نظيفة وواسعة. هل المسجد قريب من هنا يا سيدتي؟
-      en: The room is clean and big. Is there a mosque near here, ma'am?
-    - speaker: Bu Sari
-      text: Dekat sekali. Masjidnya di seberang warung, di ujung gang.
-      ar_eg: قريب قوي. الجامع قصاد الوارونج، في آخر الحارة.
-      ar: قريب جدًّا. المسجد مقابل المطعم الصغير، في آخر الزقاق.
-      en: Very close. The mosque is across from the warung, at the end of the alley.
 new_words:
   - word: kosong
     pos: adjective
@@ -248,11 +184,6 @@ new_words:
     ar_eg: كهربا
     ar: كهرباء
     en: electricity
-  - word: lantai
-    pos: noun
-    ar_eg: دور (في المبنى)؛ أرضية
-    ar: طابق؛ أرضية
-    en: floor, storey
   - word: sebulan
     pos: adverb
     ar_eg: في الشهر، شهر واحد

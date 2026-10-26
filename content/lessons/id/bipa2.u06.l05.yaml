@@ -13,33 +13,26 @@ slides:
         فكّر نفسك:
         - المركّب كلمة واحدة، وصاحبه في الآخر: kamar tidur saya، rumah sakit itu، kamar mandinya.
         - tolong = اعملّي خدمة، silakan = اتفضل (عزومة)، minta = عايز آخد حاجة، mohon = برجاء (رسمي).
+        - كلمات المكان قبل الحاجة: di seberang warung، di ujung gang، di antara masjid dan apotek.
+        - ومع ada استعمل كلمات العدّ: sebuah (حاجات ومباني)، seorang (ناس)، seekor (حيوانات).
       ar: |
         تذكير:
         - المركّب كلمة واحدة والمالك في آخره: kamar tidur saya، rumah sakit itu، kamar mandinya.
         - tolong لطلب خدمة، وsilakan للدعوة، وminta لطلب شيء، وmohon للرجاء الرسمي.
+        - ظرف المكان قبل الاسم: di seberang warung، di ujung gang، di antara masjid dan apotek.
+        - ومع ada استعمل ألفاظ العدّ: sebuah للأشياء والمباني، وseorang للبشر، وseekor للحيوان.
       en: |
         Recap:
         - A compound is one word; the owner goes last: kamar tidur saya, rumah sakit itu, kamar mandinya.
         - tolong = do me a favour, silakan = go ahead (offer), minta = may I have, mohon = kindly (formal).
+        - Position word before the noun: di seberang warung, di ujung gang, di antara masjid dan apotek.
+        - With ada, use counters: sebuah (things, buildings), seorang (people), seekor (animals).
     grammar: id.request.tolong-silakan
     examples:
       - text: Silakan masuk. Kamar mandinya di sebelah dapur.
         ar_eg: اتفضل ادخل. الحمّام جنب المطبخ.
         ar: تفضّل بالدخول. الحمّام بجانب المطبخ.
         en: Please come in. The bathroom is next to the kitchen.
-  - title: Di seberang ada sebuah pura
-    body:
-      ar_eg: |
-        - كلمات المكان قبل الحاجة: di seberang warung، di ujung gang، di antara masjid dan apotek.
-        - ومع ada استعمل كلمات العدّ: sebuah (حاجات ومباني)، seorang (ناس)، seekor (حيوانات).
-      ar: |
-        - ظرف المكان قبل الاسم: di seberang warung، di ujung gang، di antara masjid dan apotek.
-        - ومع ada استعمل ألفاظ العدّ: sebuah للأشياء والمباني، وseorang للبشر، وseekor للحيوان.
-      en: |
-        - Position word before the noun: di seberang warung, di ujung gang, di antara masjid dan apotek.
-        - With ada, use counters: sebuah (things, buildings), seorang (people), seekor (animals).
-    grammar: id.location.words
-    examples:
       - text: Di ujung gang ada sebuah pura.
         ar_eg: في آخر الحارة فيه معبد.
         ar: في آخر الزقاق معبد.
@@ -75,7 +68,7 @@ exercises:
       ar_eg: مدام ساري عاملة أكل وعايزة تعزم عليك. تقول إيه؟
       ar: أعدّت السيدة ساري طعامًا وتريد أن تدعوك إليه. ماذا تقول؟
       en: Bu Sari has made food and wants to offer you some. What does she say?
-    options: ["Tolong makan, Pak.", "Minta makan, Pak.", "Silakan makan, Pak."]
+    options: ['Tolong makan, Pak.', 'Minta makan, Pak.', 'Silakan makan, Pak.']
     answer: 2
     explain:
       ar_eg: عزومة = silakan.
@@ -85,7 +78,7 @@ exercises:
   - id: e03
     type: multiple_choice
     question: Pak Wayan punya tiga ___ ayam.
-    options: ["ekor", "orang", "buah"]
+    options: [ekor, orang, buah]
     answer: 0
     explain:
       ar_eg: الفراخ حيوانات، يبقى ekor.
@@ -95,53 +88,30 @@ exercises:
   - id: e04
     type: listen
     text: Rumah sakitnya di seberang rumah makan.
-    options: ["Rumah sakitnya di seberang rumah makan.", "Rumah sakitnya di sebelah rumah makan.", "Rumah makannya di seberang rumah sakit."]
+    options: [Rumah sakitnya di seberang rumah makan., Rumah sakitnya di sebelah rumah makan., Rumah makannya di seberang rumah sakit.]
     answer: 0
     words: [rumah sakit, rumah makan, seberang]
   - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إزاي تقول «أوضة نومي»؟
-      ar: كيف تقول «غرفة نومي»؟
-      en: How do you say "my bedroom"?
-    options: ["kamar tidur saya", "kamar saya tidur", "saya kamar tidur"]
-    answer: 0
-    explain:
-      ar_eg: ماتقطعش kamar tidur، وsaya في الآخر.
-      ar: لا يُفصل المركّب، وsaya في آخره.
-      en: Keep kamar tidur together; saya goes last.
-    words: [kamar tidur]
-  - id: e06
     type: fill_blank
     sentence: ___ bantu saya, Mbak. Saya tidak tahu jalan ke pantai.
     meaning:
       ar_eg: لو سمحتي ساعديني. أنا مش عارف الطريق للبحر.
       ar: ساعديني من فضلكِ، فأنا لا أعرف الطريق إلى الشاطئ.
       en: Please help me, miss. I don't know the way to the beach.
-    options: ["Silakan", "Minta", "Tolong"]
+    options: [Silakan, Minta, Tolong]
     answers: [Tolong]
     words: [tolong, bantu]
-  - id: e07
+  - id: e06
     type: fill_blank
     sentence: Di jalan saya ada ___ masjid dan dua buah warung.
     meaning:
       ar_eg: في شارعي فيه جامع ووارونجين.
       ar: في شارعي مسجد ومطعمان صغيران.
       en: On my street there's a mosque and two warungs.
-    options: ["seekor", "seorang", "sebuah"]
+    options: [seekor, seorang, sebuah]
     answers: [sebuah]
     words: [sebuah]
-  - id: e08
-    type: fill_blank
-    sentence: Taman itu di ___ masjid dan sekolah.
-    meaning:
-      ar_eg: الجنينة دي بين الجامع والمدرسة.
-      ar: تلك الحديقة بين المسجد والمدرسة.
-      en: That park is between the mosque and the school.
-    options: ["ujung", "seberang", "antara"]
-    answers: [antara]
-    words: [antara]
-  - id: e09
+  - id: e07
     type: build_sentence
     source:
       ar_eg: فيه أوضة فاضية قريبة من المستشفى؟
@@ -150,7 +120,7 @@ exercises:
     answer: Ada kamar kosong dekat rumah sakit?
     distractors: [makan, seorang]
     words: [kosong, rumah sakit]
-  - id: e10
+  - id: e08
     type: build_sentence
     source:
       ar_eg: ممكن شوية مية يا مدام؟
@@ -159,49 +129,16 @@ exercises:
     answer: Boleh minta air putih, Bu?
     distractors: [tolong, silakan]
     words: [minta, air putih]
-  - id: e11
+  - id: e09
     type: translate
     direction: to_target
     source_meaning:
       ar_eg: السكن بتاعي في آخر الحارة.
       ar: سكني في آخر الزقاق.
       en: My boarding house is at the end of the alley.
-    answers:
-      - Kos saya di ujung gang.
-      - Kos saya di ujung gang
-      - Kosku di ujung gang.
-      - Kosku di ujung gang
-      - Kos saya ada di ujung gang.
+    answers: [Kos saya di ujung gang., Kos saya di ujung gang, Kosku di ujung gang., Kosku di ujung gang, Kos saya ada di ujung gang.]
     words: [kos, ujung, gang]
-  - id: e12
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: فيه مطعم جنب بيتي.
-      ar: يوجد مطعم بجانب بيتي.
-      en: There's a restaurant next to my house.
-    answers:
-      - Ada rumah makan di sebelah rumah saya.
-      - Ada sebuah rumah makan di sebelah rumah saya.
-      - Di sebelah rumah saya ada rumah makan.
-      - Di sebelah rumah saya ada sebuah rumah makan.
-      - Ada rumah makan di sebelah rumah saya
-      - Di sebelah rumah saya ada rumah makan
-      - Ada rumah makan di samping rumah saya.
-      - Di samping rumah saya ada rumah makan.
-      - Ada rumah makan di sebelah rumahku.
-      - Di sebelah rumahku ada rumah makan.
-    words: [rumah makan, sebelah]
-  - id: e13
-    type: translate
-    direction: from_target
-    source_text: Mohon tunggu sebentar, kamarnya belum siap.
-    answers_meaning:
-      ar_eg: ["برجاء الانتظار شوية، الأوضة لسه مش جاهزة.", "استنى شوية لو سمحت، الأوضة لسه ماجهزتش"]
-      ar: ["يُرجى الانتظار قليلًا، فالغرفة ليست جاهزة بعد.", "انتظر قليلًا من فضلك، الغرفة لم تجهز بعد"]
-      en: ["Please wait a moment, the room isn't ready yet.", "Please wait a moment; the room is not ready yet"]
-    words: [mohon, tunggu, siap]
-  - id: e14
+  - id: e10
     type: dictation
     text: Tetangga saya punya seekor anjing.
     meaning:
@@ -209,7 +146,7 @@ exercises:
       ar: لدى جاري كلب.
       en: My neighbour has a dog.
     words: [tetangga, seekor]
-  - id: e15
+  - id: e11
     type: speaking
     text: Di jalan saya ada sebuah pura, sebuah warung, dan sebuah apotek.
     meaning:

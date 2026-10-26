@@ -147,78 +147,26 @@ exercises:
       ar_eg: إنت في محل والبياعة بتسألك عايز إيه. إنت بتتفرج بس. تقول إيه؟
       ar: أنت في متجر وتسألك البائعة عمّا تريد، وأنت تتفرج فقط. ماذا تقول؟
       en: In a shop the seller asks what you want. You're only browsing. What do you say?
-    options: ["Lihat-lihat dulu, ya, Bu.", "Cepat-cepat, ya, Bu.", "Kapan-kapan, ya, Bu."]
+    options: ['Lihat-lihat dulu, ya, Bu.', 'Cepat-cepat, ya, Bu.', 'Kapan-kapan, ya, Bu.']
     answer: 0
     words: [lihat-lihat]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: سواق الأوجيك ماشي بسرعة والطريق مبلول. تقوله إيه؟
-      ar: سائق الدرّاجة يسرع والطريق مبتل. ماذا تقول له؟
-      en: The ojek driver is going fast and the road is wet. What do you say?
-    options: ["Pelan-pelan, Pak!", "Bolak-balik, Pak!", "Jalan-jalan, Pak!"]
-    answer: 0
-    words: [pelan-pelan]
-  - id: e04
     type: listen
     text: Tidak apa-apa.
-    options: ["Tidak ada apa-apa.", "Tidak apa-apa.", "Tidak siapa-siapa."]
+    options: [Tidak ada apa-apa., Tidak apa-apa., Tidak siapa-siapa.]
     answer: 1
     words: [apa-apa]
-  - id: e05
-    type: multiple_choice
-    question: "Maaf, saya terlambat! — ___"
-    question_meaning:
-      ar_eg: «آسف، اتأخرت!» — ترد تقول إيه؟
-      ar: «عذرًا، تأخرت!» — بماذا تردّ؟
-      en: '"Sorry, I''m late!" — how do you reply?'
-    options: ["Pelan-pelan.", "Tidak apa-apa.", "Lihat-lihat."]
-    answer: 1
-    words: [apa-apa]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: عايز تقول «اتفسحت في بالي». أنهي جملة صح؟
-      ar: تريد أن تقول «تنزهت في بالي». أيّ الجملتين صحيحة؟
-      en: You want to say "I went on holiday to Bali". Which is right?
-    options: ["Saya jalan ke Bali.", "Saya jalan-jalan ke Bali."]
-    answer: 1
-    explain:
-      ar_eg: jalan = يمشي. jalan-jalan = يتفسح. محدش بيمشي على رجليه لبالي!
-      ar: jalan = يمشي، وjalan-jalan = يتنزه.
-      en: jalan = walk; jalan-jalan = travel for fun. Nobody walks to Bali!
-    words: [jalan-jalan]
-  - id: e07
-    type: fill_blank
-    sentence: Hari Minggu kami ___ ke Bedugul.
-    meaning:
-      ar_eg: يوم الحد اتفسحنا في بيدوجول.
-      ar: يوم الأحد تنزهنا في بيدوغول.
-      en: On Sunday we went on a trip to Bedugul.
-    options: ["pelan-pelan", "bolak-balik", "jalan-jalan"]
-    answers: [jalan-jalan]
-    words: [jalan-jalan]
-  - id: e08
+  - id: e04
     type: fill_blank
     sentence: Ibu membeli ___ di pasar.
     meaning:
       ar_eg: ماما اشترت خضار من كل نوع من السوق.
       ar: اشترت أمي خضروات متنوعة من السوق.
       en: Mum bought all kinds of vegetables at the market.
-    options: ["kapan-kapan", "sayur-mayur", "pelan-pelan"]
+    options: [kapan-kapan, sayur-mayur, pelan-pelan]
     answers: [sayur-mayur]
     words: [sayur-mayur]
-  - id: e09
-    type: fill_blank
-    sentence: Bus itu ___ dari Denpasar ke Bedugul setiap hari.
-    meaning:
-      ar_eg: الأتوبيس ده رايح جاي من دنباسار لبيدوجول كل يوم.
-      ar: تذهب تلك الحافلة وتعود بين دنباسار وبيدوغول كل يوم.
-      en: That bus goes back and forth between Denpasar and Bedugul every day.
-    options: ["siapa-siapa", "bolak-balik", "jalan-jalan"]
-    answers: [bolak-balik]
-    words: [bolak-balik]
-  - id: e10
+  - id: e05
     type: build_sentence
     source:
       ar_eg: بالراحة يا أسطى، الطريق بيزحلق.
@@ -227,45 +175,7 @@ exercises:
     answer: Pelan-pelan saja, Pak, jalannya licin.
     distractors: [cepat-cepat, Bu]
     words: [pelan-pelan, licin]
-  - id: e11
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: إحنا اتفسحنا في بيدوجول.
-      ar: تنزهنا في بيدوغول.
-      en: We went on a trip to Bedugul.
-    answers:
-      - Kami jalan-jalan ke Bedugul.
-      - Kami jalan-jalan ke Bedugul
-      - Kami jalan-jalan di Bedugul.
-      - Kami jalan-jalan di Bedugul
-      - Kita jalan-jalan ke Bedugul.
-      - Kita jalan-jalan di Bedugul.
-      - Kami berjalan-jalan ke Bedugul.
-      - Kami berjalan-jalan di Bedugul.
-    explain:
-      ar_eg: jalan-jalan ke = اتفسحنا رايحين مكان، jalan-jalan di = اتفسحنا جوه المكان. الاتنين صح. berjalan-jalan أرسمي.
-      ar: jalan-jalan ke للتنزه بالذهاب إلى المكان، وjalan-jalan di للتنزه فيه، وكلاهما صحيح، وberjalan-jalan أكثر رسمية.
-      en: jalan-jalan ke = trip to a place, jalan-jalan di = strolling around in it; both are fine. berjalan-jalan is more formal.
-    words: [jalan-jalan]
-  - id: e12
-    type: translate
-    direction: from_target
-    source_text: Kapan-kapan kita ke Lovina, yuk!
-    answers_meaning:
-      ar_eg: ["يلا نروح لوفينا في يوم من الأيام!", "يلا نروح لوفينا مرة كده!", "مرة من المرات نروح لوفينا!"]
-      ar: ["لنذهب إلى لوفينا يومًا ما!", "هيا نذهب إلى لوفينا في وقت ما!"]
-      en: ["Let's go to Lovina some time!", "Some time let's go to Lovina!"]
-    words: [kapan-kapan]
-  - id: e13
-    type: dictation
-    text: Pelan-pelan saja, Pak.
-    meaning:
-      ar_eg: بالراحة يا أسطى.
-      ar: على مهلك يا سيدي.
-      en: Take it slowly, sir.
-    words: [pelan-pelan]
-  - id: e14
+  - id: e06
     type: speaking
     text: Tidak apa-apa, saya lihat-lihat dulu.
     meaning:
@@ -307,26 +217,11 @@ dialogue:
       ar: في وقت آخر يا سيدي، اليوم إلى البحيرة أولًا.
       en: Some other time, sir. Today the lake first.
 new_words:
-  - word: jalan-jalan
-    pos: verb
-    ar_eg: يتفسح، يتمشى
-    ar: يتنزه
-    en: to go out, stroll, travel for fun
   - word: lihat-lihat
     pos: verb
     ar_eg: يتفرج بس
     ar: يتفرج فقط
     en: to browse, just look around
-  - word: pelan-pelan
-    pos: adverb
-    ar_eg: بالراحة
-    ar: ببطء، على مهل
-    en: slowly, gently
-  - word: licin
-    pos: adjective
-    ar_eg: بيزحلق
-    ar: زلق
-    en: slippery
   - word: kapan-kapan
     pos: adverb
     ar_eg: في يوم من الأيام، مرة كده

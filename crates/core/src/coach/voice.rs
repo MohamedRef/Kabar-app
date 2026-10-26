@@ -38,6 +38,8 @@ pub enum Line {
     PlanComeback,
     PlanAllDone,
     PlanAskSize,
+    /// Halfway through a 30-minute plan: a break is offered between the blocks.
+    PlanBreak,
     // Recap
     RecapGoalMet,
     RecapSomeStudy,
@@ -72,7 +74,7 @@ pub enum Line {
 }
 
 impl Line {
-    pub const ALL: [Self; 35] = [
+    pub const ALL: [Self; 36] = [
         Self::OnboardHello,
         Self::OnboardWhy,
         Self::OnboardFocus,
@@ -86,6 +88,7 @@ impl Line {
         Self::PlanComeback,
         Self::PlanAllDone,
         Self::PlanAskSize,
+        Self::PlanBreak,
         Self::RecapGoalMet,
         Self::RecapSomeStudy,
         Self::RecapRemember,
@@ -126,6 +129,7 @@ impl Line {
             Self::PlanComeback => "plan_comeback",
             Self::PlanAllDone => "plan_all_done",
             Self::PlanAskSize => "plan_ask_size",
+            Self::PlanBreak => "plan_break",
             Self::RecapGoalMet => "recap_goal_met",
             Self::RecapSomeStudy => "recap_some_study",
             Self::RecapRemember => "recap_remember",

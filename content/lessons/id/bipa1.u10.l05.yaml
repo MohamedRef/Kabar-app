@@ -57,7 +57,7 @@ exercises:
       ar_eg: إنت لسه عمرك ما ركبت مركب. ترد بإيه بأدب؟
       ar: لم تركب قاربًا بعد. بماذا تجيب بلطف؟
       en: You've never been on a boat yet. What's the polite answer?
-    options: ["Tidak tahu.", "Bukan.", "Belum pernah."]
+    options: [Tidak tahu., Bukan., Belum pernah.]
     answer: 2
     explain:
       ar_eg: Belum pernah = لسه، وده الرد المؤدب.
@@ -70,69 +70,56 @@ exercises:
       ar_eg: أنهي جملة ترتيبها صح؟
       ar: أيّ جملة ترتيبها صحيح؟
       en: Which sentence is in the right order?
-    options: ["Membeli Rina tiket kemarin di pelabuhan.", "Kemarin Rina membeli tiket di pelabuhan.", "Kemarin Rina tiket membeli di pelabuhan."]
+    options: [Membeli Rina tiket kemarin di pelabuhan., Kemarin Rina membeli tiket di pelabuhan., Kemarin Rina tiket membeli di pelabuhan.]
     answer: 1
     explain:
-      ar_eg: "الترتيب: K (kemarin) + S (Rina) + P (membeli) + O (tiket) + K (di pelabuhan)."
+      ar_eg: 'الترتيب: K (kemarin) + S (Rina) + P (membeli) + O (tiket) + K (di pelabuhan).'
       ar: الظرف ثم المسند إليه ثم المسند ثم المفعول ثم الظرف.
       en: K + S + P + O + K — the object right after the verb.
     words: [membeli, pelabuhan]
   - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: النهارده الأربع، والحاجة حصلت يوم الاتنين. تقول إيه؟
-      ar: اليوم الأربعاء، والحدث كان يوم الاثنين. ماذا تقول؟
-      en: Today is Wednesday; it happened on Monday. Which word?
-    options: ["kemarin dulu", "kemarin", "tadi"]
-    answer: 0
-    explain:
-      ar_eg: الاتنين قبل امبارح بيوم، يعني أول امبارح = kemarin dulu.
-      ar: "الاثنين هو أول أمس: kemarin dulu."
-      en: "Monday is the day before yesterday: kemarin dulu."
-    words: [kemarin dulu]
-  - id: e05
     type: listen
     text: Saya pernah tinggal di Jakarta.
-    options: ["Saya pernah tinggal di Jakarta.", "Saya belum pernah ke Jakarta.", "Saya tinggal di Jakarta sekarang."]
+    options: [Saya pernah tinggal di Jakarta., Saya belum pernah ke Jakarta., Saya tinggal di Jakarta sekarang.]
     answer: 0
     words: [pernah, tinggal]
-  - id: e06
+  - id: e05
     type: listen
     text: Setelah itu, kami makan ikan bakar.
-    options: ["Setelah itu, kami makan ikan bakar.", "Setelah itu, kami membeli ikan.", "Sebelum itu, kami makan ikan bakar."]
+    options: ['Setelah itu, kami makan ikan bakar.', 'Setelah itu, kami membeli ikan.', 'Sebelum itu, kami makan ikan bakar.']
     answer: 0
     words: [setelah itu, ikan bakar]
-  - id: e07
+  - id: e06
     type: fill_blank
     sentence: Dia ___ pernah terlambat. Dia selalu datang pagi.
     meaning:
       ar_eg: هو عمره ما بيتأخر. دايمًا بييجي بدري.
       ar: لا يتأخر أبدًا، فهو يأتي باكرًا دائمًا.
       en: He's never late. He always comes early.
-    options: ["sudah", "bukan", "tidak"]
+    options: [sudah, bukan, tidak]
     answers: [tidak]
     words: [tidak pernah, terlambat]
-  - id: e08
+  - id: e07
     type: fill_blank
     sentence: ___ naik kapal, kami membeli air.
     meaning:
       ar_eg: قبل ما نركب المركب، اشترينا مية.
       ar: قبل ركوب القارب، اشترينا ماءً.
       en: Before boarding the boat, we bought water.
-    options: ["Setelah", "Sebelum", "Lalu"]
+    options: [Setelah, Sebelum, Lalu]
     answers: [Sebelum]
     words: [sebelum]
-  - id: e09
+  - id: e08
     type: build_sentence
     source:
       ar_eg: امبارح ركبنا مركب لجزر الألف.
       ar: أمس ركبنا قاربًا إلى جزر الألف.
       en: Yesterday we took a boat to the Thousand Islands.
     answer: Kemarin kami naik kapal ke Kepulauan Seribu.
-    alternatives: ["Kami naik kapal ke Kepulauan Seribu kemarin."]
+    alternatives: [Kami naik kapal ke Kepulauan Seribu kemarin.]
     distractors: [tadi, dari]
     words: [kemarin, naik, kapal]
-  - id: e10
+  - id: e09
     type: build_sentence
     source:
       ar_eg: عمرك كلت دوريان؟
@@ -141,50 +128,16 @@ exercises:
     answer: Kamu pernah makan durian?
     distractors: [belum, ke]
     words: [pernah, durian]
-  - id: e11
+  - id: e10
     type: translate
     direction: to_target
     source_meaning:
       ar_eg: عمرك رحت مصر؟
       ar: هل سبق أن زرت مصر؟
       en: Have you ever been to Egypt?
-    answers:
-      - Kamu pernah ke Mesir?
-      - Pernah ke Mesir?
-      - Kamu pernah pergi ke Mesir?
-      - Anda pernah ke Mesir?
-      - Apakah kamu pernah ke Mesir?
-      - Kamu pernah ke Mesir
+    answers: ['Kamu pernah ke Mesir?', 'Pernah ke Mesir?', 'Kamu pernah pergi ke Mesir?', 'Anda pernah ke Mesir?', 'Apakah kamu pernah ke Mesir?', Kamu pernah ke Mesir]
     words: [pernah]
-  - id: e12
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الأسبوع اللي فات كنت في باندونج.
-      ar: الأسبوع الماضي كنت في باندونغ.
-      en: Last week I was in Bandung.
-    answers:
-      - Minggu lalu saya di Bandung.
-      - Saya di Bandung minggu lalu.
-      - Minggu lalu aku di Bandung.
-      - Minggu lalu, saya di Bandung.
-      - Minggu lalu saya ke Bandung.
-      - Minggu lalu saya di Bandung
-    explain:
-      ar_eg: "مفيش «كنت» في الإندونيسي: minggu lalu لوحدها بتقول إنه فات."
-      ar: لا فعل كينونة ماضيًا؛ تكفي minggu lalu.
-      en: There's no "was" — minggu lalu alone shows it's past.
-    words: [minggu lalu]
-  - id: e13
-    type: translate
-    direction: from_target
-    source_text: Tadi pagi saya bangun jam lima, lalu saya naik kapal.
-    answers_meaning:
-      ar_eg: ["النهارده الصبح صحيت الساعة خمسة، وبعدين ركبت المركب.", "النهارده الصبح صحيت الساعة ٥ وبعدين ركبت مركب", "صحيت النهارده الساعة خمسة الصبح وبعدين ركبت المركب"]
-      ar: ["هذا الصباح استيقظت في الخامسة، ثم ركبت القارب.", "استيقظت صباح اليوم في الخامسة ثم ركبت القارب"]
-      en: ["This morning I got up at five, then I took the boat.", "This morning I woke up at 5, then I got on the boat", "I woke up at five this morning, then took the boat"]
-    words: [tadi, bangun, lalu, naik]
-  - id: e14
+  - id: e11
     type: dictation
     text: Ini pertama kali saya ke pulau.
     meaning:
@@ -192,7 +145,7 @@ exercises:
       ar: هذه أول مرة أذهب فيها إلى جزيرة.
       en: This is my first time going to an island.
     words: [pertama kali, pulau]
-  - id: e15
+  - id: e12
     type: speaking
     text: Kemarin saya ke Kepulauan Seribu. Saya belum pernah naik kapal, jadi ini pertama kali. Saya capek, tapi senang!
     meaning:
@@ -237,7 +190,7 @@ souvenir:
   id: bipa1.u10.souvenir
   title: Kapal ke Kepulauan Seribu
   note:
-    ar_eg: "اسمها «الألف جزيرة»، بس في الحقيقة هي حوالي مية وكام جزيرة صغيرة في خليج جاكرتا، والمراكب بتطلع لها من Muara Angke وMarina Ancol. وفي الرحلة هتلاحظ إن الإندونيسي مالوش ماضي: كلمة «kemarin» بتعمل الشغل كله. ولما الناس يعرفوا إنك مصري، هيقولولك بابتسامة «Saya belum pernah ke Mesir!»، وده أحلى باب للكلام."
+    ar_eg: 'اسمها «الألف جزيرة»، بس في الحقيقة هي حوالي مية وكام جزيرة صغيرة في خليج جاكرتا، والمراكب بتطلع لها من Muara Angke وMarina Ancol. وفي الرحلة هتلاحظ إن الإندونيسي مالوش ماضي: كلمة «kemarin» بتعمل الشغل كله. ولما الناس يعرفوا إنك مصري، هيقولولك بابتسامة «Saya belum pernah ke Mesir!»، وده أحلى باب للكلام.'
     ar: اسمها «الجزر الألف»، لكنها في الحقيقة نحو مئة ونيّف من الجزر الصغيرة في خليج جاكرتا، وتنطلق القوارب إليها من Muara Angke وMarina Ancol. وفي هذه الرحلة تلاحظ أن الإندونيسية بلا زمن ماضٍ، فكلمة «kemarin» تؤدي المهمة كلها. وحين يعرف الناس أنك مصري يقولون مبتسمين «Saya belum pernah ke Mesir!»، وهو أجمل مدخل للحديث.
     en: They're called the "Thousand Islands", but there are really only a hundred-odd small islands in Jakarta Bay, reached by boat from Muara Angke and Marina Ancol. On the trip you'll notice Indonesian has no past tense — "kemarin" does all the work. And when people learn you're Egyptian they'll smile and say "Saya belum pernah ke Mesir!" — the warmest way into a conversation.
 review:
