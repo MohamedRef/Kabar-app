@@ -151,6 +151,7 @@ impl Engine {
                 self.sign_out_locally();
             }
             Command::LoadDevices => self.load_devices().await,
+            Command::LoadUsage => self.load_usage().await,
             Command::RevokeDevice(device) => {
                 if device == self.device.device_id {
                     return Box::pin(self.command(Command::SignOut)).await;
@@ -164,6 +165,10 @@ impl Engine {
                 self.load_devices().await;
             }
             Command::Kick => self.pump().await,
+            Command::Access { force, reply } => {
+                let access = self.access(force).await;
+                reply.send(access.map(|token| (self.api.clone(), token))).ok();
+            }
             Command::Shutdown => {}
         }
     }
@@ -214,6 +219,22 @@ impl Engine {
             }
         };
         self.events.send(Event::Devices(devices)).ok();
+    }
+
+    async fn load_usage(&mut self) {
+        let Some(access) = self.access(false).await else {
+            self.events.send(Event::Usage(Err(self.problem.unwrap_or(Problem::Network)))).ok();
+            return;
+        };
+        let api = self.api.clone();
+        let usage = match blocking(move || api.usage(&access)).await {
+            Ok(report) => Ok(report),
+            Err(e) => {
+                self.cloud_error(&e);
+                Err(self.problem.unwrap_or(Problem::Network))
+            }
+        };
+        self.events.send(Event::Usage(usage)).ok();
     }
 
     /// A fresh access token, or `None` (with the reason recorded).

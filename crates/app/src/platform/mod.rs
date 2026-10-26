@@ -27,6 +27,25 @@ pub fn data_dir() -> Result<PathBuf, String> {
     }
 }
 
+/// Where Settings → Export saves its file: `~/Downloads` on the Mac (and other
+/// desktops); on Android the app's external files directory
+/// (`Android/data/app.kabar/files`), which a computer can open over USB
+/// without any permission. A share-sheet / MediaStore "Downloads" bridge is a
+/// follow-up (it needs a FileProvider in `android/`).
+pub fn export_dir() -> Result<PathBuf, String> {
+    #[cfg(target_os = "android")]
+    {
+        android::external_files_dir().or_else(|_| android::files_dir()).map(PathBuf::from)
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        match directories::UserDirs::new() {
+            Some(u) => Ok(u.download_dir().map_or_else(|| u.home_dir().to_path_buf(), Path::to_path_buf)),
+            None => data_dir(),
+        }
+    }
+}
+
 /// Why native speech didn't play.
 #[allow(dead_code)] // each platform builds only some variants
 #[derive(Clone, Debug, PartialEq)]

@@ -35,6 +35,47 @@ pub enum Msg {
     SettingsDevice,
     SettingsShowWelcome,
     SettingsSounds,
+    CostTitle,
+    CostThisMonth,
+    CostHardStops,
+    CostOffline,
+    CostLoading,
+    CostServicesTitle,
+    CostAtTime,
+    CostTomorrowAt,
+    CostOnDate,
+    CostResets,
+    CostNearDay,
+    CostNearMonth,
+    CostPausedDay,
+    CostPausedMonth,
+    CostOff,
+    CostNotSetUp,
+    CostUnitRequests,
+    CostUnitCharacters,
+    CostUnitNeurons,
+    CostUnitRowsRead,
+    CostUnitRowsWritten,
+    CostPerDay,
+    CostPerMonth,
+    CostPlatformTitle,
+    CostPlatformBody,
+    CostClaudeTitle,
+    CostClaudeOffBody,
+    CostClaudeOnBody,
+    CostClaudeTurnOn,
+    CostConfirmTitle,
+    CostConfirmBody,
+    CostConfirmNo,
+    CostConfirmYes,
+    CostClaudeHowTo,
+    ExportTitle,
+    ExportBody,
+    ExportButton,
+    ExportSaving,
+    ExportSaved,
+    ExportFailed,
+    ExportAndroidHint,
     PenLabIntro,
     PenLabClear,
     PenLabSave,
@@ -237,6 +278,12 @@ pub enum Msg {
     ReportWhen,
     // --- coach: today ---
     TodayProgress,
+    WelcomeBackTitle,
+    WelcomeBackPlan,
+    WelcomeBackStart,
+    WelcomeBackBigger,
+    PelitaReady,
+    PlanBreakTitle,
     GoalMet,
     Freezes,
     Cards,
@@ -279,12 +326,117 @@ pub enum Msg {
     NotEnoughKoin,
     JournalTitle,
     JournalEmpty,
+    NavJournal,
+    JournalIntro,
+    JournalOpen,
+    JournalFilterAll,
+    JournalFilterLearning,
+    JournalFilterWords,
+    JournalFilterReflections,
+    JournalNothingHere,
+    JournalShowOlder,
+    JournalReflectionAdd,
+    JournalReflectionPlaceholder,
+    JournalReflectionSave,
+    JournalReflectionCancel,
+    JournalReflectionEdit,
+    JournalReflectionDelete,
+    JournalReflectionDeleteSure,
+    JournalReflectionEdited,
+    JournalReflectionLabel,
+    JournalPrivate,
+    JournalInkLater,
+    JournalTestPassed,
+    JournalSouvenir,
+    JournalTaught,
+    JournalDraft,
     EvReviews,
     EvNewWords,
     EvLessonStep,
     EvLessonDone,
     EvPlanItem,
     EvPurchase,
+    // --- play ---
+    NavPlay,
+    PlayIntro,
+    PlayContentProblem,
+    PlayDetails,
+    PlayAgain,
+    PlayFinish,
+    PlayRight,
+    PlayNotQuite,
+    PlayGreat,
+    PlayGood,
+    PlayKeepGoing,
+    Check,
+    Stop,
+    ShowMeaning,
+    HideMeaning,
+    AudioMissing,
+    Root,
+    PagiTitle,
+    PagiBlurb,
+    PagiListen,
+    PagiPlayAll,
+    PagiOneByOne,
+    PagiAllTranslations,
+    PagiWordsNote,
+    PagiDone,
+    PagiReadToday,
+    PagiNoStory,
+    DeckTitle,
+    DeckBlurb,
+    DeckHeroNote,
+    DeckMarked,
+    DeckTapToFlip,
+    DeckFlip,
+    DeckMarkKnown,
+    DeckKnown,
+    DetectiveTitle,
+    DetectiveBlurb,
+    DetectiveIntro,
+    DetectiveAllRules,
+    DetectiveGuessArabic,
+    DetectiveGuessIndonesian,
+    DetectiveNoRounds,
+    AlarmTitle,
+    AlarmBlurb,
+    AlarmIntro,
+    AlarmLooksLike,
+    AlarmQuestion,
+    AlarmCaught,
+    AlarmTricky,
+    RupiahTitle,
+    RupiahBlurb,
+    RupiahIntro,
+    RupiahHundreds,
+    RupiahThousands,
+    RupiahMillions,
+    RupiahMixed,
+    RupiahBest,
+    RupiahType,
+    RupiahClose,
+    RupiahWrong,
+    RupiahScore,
+    RupiahSeconds,
+    RupiahNewBest,
+    PasarTitle,
+    PasarBlurb,
+    PasarIntro,
+    PasarNoItems,
+    PasarBonus,
+    PasarBudget,
+    PasarOnTable,
+    PasarAskPrice,
+    PasarAskLower,
+    PasarOffer,
+    PasarAccept,
+    PasarRefuse,
+    PasarDealIn,
+    PasarDealOver,
+    PasarWalked,
+    PasarPaid,
+    PasarSaved,
     ReaderIntro,
     ReaderPlaceholder,
     ReaderRead,
@@ -351,6 +503,42 @@ pub enum Msg {
     Me,
     PenHint,
     Example,
+    // Unggah-Ungguh Simulator (M11)
+    UnggahTitle,
+    UnggahBlurb,
+    UnggahIntro,
+    UnggahNoScenes,
+    UnggahOpensAt,
+    UnggahMeter,
+    UnggahTurn,
+    UnggahYourTurn,
+    UnggahFits,
+    UnggahTooPlain,
+    UnggahTooStiff,
+    UnggahSelfRaised,
+    UnggahBetter,
+    UnggahFitting,
+    UnggahScenes,
+    UnggahEndGreat,
+    UnggahEndGood,
+    UnggahEndGentle,
+    // Minimal Pairs (M11)
+    PairsTitle,
+    PairsBlurb,
+    PairsIntro,
+    PairsBoth,
+    PairsListenMode,
+    PairsReadMode,
+    PairsNoJavaneseVoice,
+    PairsHear,
+    PairsWhichHeard,
+    PairsWhichSpelling,
+    PairsInJavanese,
+    PairsInIndonesian,
+    PairsJavanese,
+    PairsIndonesian,
+    PairsTipTitle,
+    PairsTheTwoWords,
 }
 
 pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
@@ -421,6 +609,192 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (SettingsSounds, ArEg) => "أصوات الدروس والمراجعة",
         (SettingsSounds, Ar) => "أصوات الدروس والمراجعة",
         (SettingsSounds, En) => "Lesson and review sounds",
+        (CostTitle, ArEg | Ar) => "التكلفة والحدود",
+        (CostTitle, En) => "Cost & limits",
+        (CostThisMonth, ArEg) => "الشهر ده",
+        (CostThisMonth, Ar) => "هذا الشهر",
+        (CostThisMonth, En) => "this month",
+        (CostHardStops, ArEg) => {
+            "\u{2068}Kabar\u{2069} شغّال على الخطط المجانية بحدود ثابتة: لما الحصة المجانية لخدمة تخلص، الخدمة دي بتقف لحد ما تتجدد. مفيش أي حاجة بتتحاسب."
+        }
+        (CostHardStops, Ar) => {
+            "يعمل \u{2068}Kabar\u{2069} على الخطط المجانية بحدود صارمة: عندما تنفد الحصة المجانية لخدمة ما، تتوقف حتى تتجدد. لا يُدفع أي شيء."
+        }
+        (CostHardStops, En) => {
+            "Kabar runs on free tiers with hard stops: when a service's free allowance is used up, it pauses until it resets. Nothing is ever charged."
+        }
+        (CostOffline, ArEg) => {
+            "\u{2068}Kabar Cloud\u{2069} مش متوصل دلوقتي، فمفيش عدادات نعرضها. بس برضه صفر: كل خدمة بتقف عند حدها المجاني."
+        }
+        (CostOffline, Ar) => {
+            "\u{2068}Kabar Cloud\u{2069} غير متصل الآن، فلا توجد عدادات لعرضها. ومع ذلك فالتكلفة صفر: كل خدمة تتوقف عند حدها المجاني."
+        }
+        (CostOffline, En) => {
+            "Kabar Cloud isn't connected right now, so there are no live counters to show. It's still $0: every service stops at its free limit."
+        }
+        (CostLoading, ArEg) => "بنشوف العدادات…",
+        (CostLoading, Ar) => "جارٍ قراءة العدادات…",
+        (CostLoading, En) => "Checking the counters…",
+        (CostServicesTitle, ArEg | Ar) => "الحصص المجانية",
+        (CostServicesTitle, En) => "Free allowances",
+        (CostAtTime, ArEg | Ar) => "الساعة {time}",
+        (CostAtTime, En) => "at {time}",
+        (CostTomorrowAt, ArEg) => "بكرة الساعة {time}",
+        (CostTomorrowAt, Ar) => "غدًا الساعة {time}",
+        (CostTomorrowAt, En) => "tomorrow at {time}",
+        (CostOnDate, ArEg | Ar) => "يوم {date}",
+        (CostOnDate, En) => "on {date}",
+        (CostResets, ArEg) => "بتتجدد {when}",
+        (CostResets, Ar) => "تتجدد {when}",
+        (CostResets, En) => "Resets {when}",
+        (CostNearDay, ArEg) => {
+            "الحصة المجانية بتاعة {service} النهارده قربت تخلص. لما توصل للحد \u{2068}Kabar\u{2069} هيوقفها بدل ما يدفع، وترجع {when}."
+        }
+        (CostNearDay, Ar) => {
+            "اقتربت حصة {service} المجانية لليوم من النفاد. عند الحد سيوقفها \u{2068}Kabar\u{2069} بدل أن يدفع، وتعود {when}."
+        }
+        (CostNearDay, En) => {
+            "{service}'s free allowance for today is almost used. At the limit Kabar pauses it rather than pay; it's back {when}."
+        }
+        (CostNearMonth, ArEg) => {
+            "الحصة المجانية بتاعة {service} الشهر ده قربت تخلص. لما توصل للحد \u{2068}Kabar\u{2069} هيوقفها بدل ما يدفع، وترجع {when}."
+        }
+        (CostNearMonth, Ar) => {
+            "اقتربت حصة {service} المجانية لهذا الشهر من النفاد. عند الحد سيوقفها \u{2068}Kabar\u{2069} بدل أن يدفع، وتعود {when}."
+        }
+        (CostNearMonth, En) => {
+            "{service}'s free allowance for this month is almost used. At the limit Kabar pauses it rather than pay; it's back {when}."
+        }
+        (CostPausedDay, ArEg) => {
+            "{service} خلّص حصته المجانية النهارده، فـ\u{2068}Kabar\u{2069} وقّفه بدل ما يدفع. هيرجع {when}."
+        }
+        (CostPausedDay, Ar) => {
+            "استنفد {service} حصته المجانية لليوم، فأوقفه \u{2068}Kabar\u{2069} بدل أن يدفع. سيعود {when}."
+        }
+        (CostPausedDay, En) => {
+            "{service} has used today's free allowance, so Kabar paused it rather than pay. It's back {when}."
+        }
+        (CostPausedMonth, ArEg) => {
+            "{service} خلّص حصته المجانية الشهر ده، فـ\u{2068}Kabar\u{2069} وقّفه بدل ما يدفع. هيرجع {when}."
+        }
+        (CostPausedMonth, Ar) => {
+            "استنفد {service} حصته المجانية لهذا الشهر، فأوقفه \u{2068}Kabar\u{2069} بدل أن يدفع. سيعود {when}."
+        }
+        (CostPausedMonth, En) => {
+            "{service} has used this month's free allowance, so Kabar paused it rather than pay. It's back {when}."
+        }
+        (CostOff, ArEg) => "مقفول",
+        (CostOff, Ar) => "متوقف",
+        (CostOff, En) => "Off",
+        (CostNotSetUp, ArEg) => "مش متظبط",
+        (CostNotSetUp, Ar) => "غير مُعدّ",
+        (CostNotSetUp, En) => "Not set up",
+        (CostUnitRequests, ArEg | Ar) => "طلب",
+        (CostUnitRequests, En) => "requests",
+        (CostUnitCharacters, ArEg | Ar) => "حرف",
+        (CostUnitCharacters, En) => "characters",
+        (CostUnitNeurons, ArEg | Ar) => "\u{2068}Neurons\u{2069}",
+        (CostUnitNeurons, En) => "Neurons",
+        (CostUnitRowsRead, ArEg | Ar) => "صف مقروء",
+        (CostUnitRowsRead, En) => "rows read",
+        (CostUnitRowsWritten, ArEg | Ar) => "صف مكتوب",
+        (CostUnitRowsWritten, En) => "rows written",
+        (CostPerDay, ArEg | Ar) => "في اليوم",
+        (CostPerDay, En) => "a day",
+        (CostPerMonth, ArEg | Ar) => "في الشهر",
+        (CostPerMonth, En) => "a month",
+        (CostPlatformTitle, ArEg | Ar) => "\u{2068}Cloudflare\u{2069} (الخطة المجانية)",
+        (CostPlatformTitle, En) => "Cloudflare (Free plan)",
+        (CostPlatformBody, ArEg) => {
+            "خطة \u{2068}Cloudflare\u{2069} المجانية مفيهاش كارت، فمينفعش تحاسبك. لو وصلت لحد، الخدمة بتقف لحد اليوم اللي بعده."
+        }
+        (CostPlatformBody, Ar) => {
+            "لا ترتبط خطة \u{2068}Cloudflare\u{2069} المجانية بأي بطاقة، فلا يمكنها أن تحاسبك. إذا بلغتَ حدًّا تتوقف الخدمة حتى اليوم التالي."
+        }
+        (CostPlatformBody, En) => {
+            "Cloudflare's Free plan has no card on file, so it can't bill you. If a limit is reached, it pauses until the next day."
+        }
+        (CostClaudeTitle, ArEg) => "\u{2068}Claude\u{2069} (محرّك بفلوس)",
+        (CostClaudeTitle, Ar) => "\u{2068}Claude\u{2069} (محرّك مدفوع)",
+        (CostClaudeTitle, En) => "Claude (paid engine)",
+        (CostClaudeOffBody, ArEg) => {
+            "\u{2068}Claude\u{2069} مقفول. \u{2068}Kabar\u{2069} بيستعمل المحركات المجانية بس، إلا لو إنت شغّلته."
+        }
+        (CostClaudeOffBody, Ar) => {
+            "\u{2068}Claude\u{2069} متوقف. يستخدم \u{2068}Kabar\u{2069} المحركات المجانية فقط ما لم تشغّله."
+        }
+        (CostClaudeOffBody, En) => "Claude is off. Kabar only uses free engines unless you turn it on.",
+        (CostClaudeOnBody, ArEg) => {
+            "\u{2068}Claude\u{2069} شغّال. بيبقى ببلاش طول ما رصيد \u{2068}Claude Max\u{2069} مغطّيه، وبيقف عند الحد الشهري."
+        }
+        (CostClaudeOnBody, Ar) => {
+            "\u{2068}Claude\u{2069} يعمل. يكون مجانيًا ما دام رصيد \u{2068}Claude Max\u{2069} يغطيه، ويتوقف عند الحد الشهري."
+        }
+        (CostClaudeOnBody, En) => {
+            "Claude is on. It's free while Claude Max credits cover it, and it stops at the monthly limit."
+        }
+        (CostClaudeTurnOn, ArEg) => "شغّل \u{2068}Claude\u{2069}…",
+        (CostClaudeTurnOn, Ar) => "تشغيل \u{2068}Claude\u{2069}…",
+        (CostClaudeTurnOn, En) => "Turn on Claude…",
+        (CostConfirmTitle, ArEg) => "ده ممكن يكلّف فلوس",
+        (CostConfirmTitle, Ar) => "قد يكلّف هذا مالًا",
+        (CostConfirmTitle, En) => "This could cost money",
+        (CostConfirmBody, ArEg) => {
+            "\u{2068}Claude\u{2069} خدمة بفلوس. بيبقى ببلاش بس لو رصيد اشتراك \u{2068}Claude Max\u{2069} بتاعك مغطّيه؛ غير كده \u{2068}Anthropic\u{2069} هتحاسب الحساب اللي عليه المفتاح. \u{2068}Kabar\u{2069} برضه هيقف عند الحد الشهري. تحب تشغّله؟"
+        }
+        (CostConfirmBody, Ar) => {
+            "\u{2068}Claude\u{2069} خدمة مدفوعة. تكون مجانية فقط إذا غطّاها رصيد اشتراك \u{2068}Claude Max\u{2069}؛ وإلا فستحاسب \u{2068}Anthropic\u{2069} الحساب المرتبط بالمفتاح. ومع ذلك سيتوقف \u{2068}Kabar\u{2069} عند الحد الشهري. هل تريد تشغيله؟"
+        }
+        (CostConfirmBody, En) => {
+            "Claude is a paid service. It's free only if your Claude Max plan's credits cover it; otherwise Anthropic bills the account behind the API key. Kabar still stops at the monthly limit. Turn it on?"
+        }
+        (CostConfirmNo, ArEg) => "لأ، خلّيه مقفول",
+        (CostConfirmNo, Ar) => "لا، أبقِه متوقفًا",
+        (CostConfirmNo, En) => "No, keep it off",
+        (CostConfirmYes, ArEg) => "أيوه، شغّله",
+        (CostConfirmYes, Ar) => "نعم، شغّله",
+        (CostConfirmYes, En) => "Yes, turn it on",
+        (CostClaudeHowTo, ArEg) => {
+            "عشان تشغّله: حط \u{2068}CLAUDE_ENABLED = \"true\"\u{2069} في \u{2068}wrangler.toml\u{2069} بتاع \u{2068}Kabar Cloud\u{2069} وشغّل \u{2068}just deploy-cloud\u{2069}. زرار التشغيل جوه التطبيق جاي مع شاشة محركات الذكاء الاصطناعي."
+        }
+        (CostClaudeHowTo, Ar) => {
+            "لتشغيله: اضبط \u{2068}CLAUDE_ENABLED = \"true\"\u{2069} في ملف \u{2068}wrangler.toml\u{2069} الخاص بـ\u{2068}Kabar Cloud\u{2069} ثم شغّل \u{2068}just deploy-cloud\u{2069}. سيأتي زر التشغيل داخل التطبيق مع شاشة محركات الذكاء الاصطناعي."
+        }
+        (CostClaudeHowTo, En) => {
+            "To switch it on, set CLAUDE_ENABLED = \"true\" in Kabar Cloud's wrangler.toml and run just deploy-cloud. An in-app switch comes with the AI engines screen."
+        }
+        (ExportTitle, ArEg | Ar) => "بياناتك",
+        (ExportTitle, En) => "Your data",
+        (ExportBody, ArEg) => {
+            "احفظ كل حاجة على الجهاز ده في ملف واحد يفضل معاك. مفاتيح تسجيل الدخول عمرها ما بتدخل فيه."
+        }
+        (ExportBody, Ar) => {
+            "احفظ كل ما على هذا الجهاز في ملف واحد تحتفظ به. لا تُضمَّن مفاتيح تسجيل الدخول أبدًا."
+        }
+        (ExportBody, En) => {
+            "Save everything on this device to one file you keep. Sign-in keys are never included."
+        }
+        (ExportButton, ArEg) => "صدّر كل حاجة",
+        (ExportButton, Ar) => "تصدير كل شيء",
+        (ExportButton, En) => "Export everything",
+        (ExportSaving, ArEg) => "بنحفظ…",
+        (ExportSaving, Ar) => "جارٍ الحفظ…",
+        (ExportSaving, En) => "Saving…",
+        (ExportSaved, ArEg) => "اتحفظ {rows} صف في:",
+        (ExportSaved, Ar) => "حُفظ {rows} صفًّا في:",
+        (ExportSaved, En) => "Saved {rows} rows to:",
+        (ExportFailed, ArEg) => "معرفناش نحفظ الملف. مفيش حاجة اتغيّرت، تحب تجرّب تاني؟",
+        (ExportFailed, Ar) => "تعذّر حفظ الملف. لم يتغير شيء، هل تحاول مرة أخرى؟",
+        (ExportFailed, En) => "Couldn't save the file. Nothing was changed; want to try again?",
+        (ExportAndroidHint, ArEg) => {
+            "على الأندرويد الملف بيتحفظ في فولدر \u{2068}Kabar\u{2069} نفسه، وتقدر تنقله لكمبيوتر بكابل \u{2068}USB\u{2069}."
+        }
+        (ExportAndroidHint, Ar) => {
+            "على أندرويد يُحفظ الملف في مجلد \u{2068}Kabar\u{2069} نفسه، ويمكنك نقله إلى حاسوب عبر كابل \u{2068}USB\u{2069}."
+        }
+        (ExportAndroidHint, En) => {
+            "On Android the file lands in Kabar's own folder; copy it to a computer over USB."
+        }
         (PenLabIntro, ArEg) => {
             "اكتب وارسم هنا بالقلم وبصباعك. جرّب تقرّب القلم من غير ما تلمس، وزرار القلم، والممحاة. وبعدين احفظ التقرير وابعته."
         }
@@ -1006,6 +1380,24 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (TodayProgress, ArEg) => "إنجاز النهارده",
         (TodayProgress, Ar) => "إنجاز اليوم",
         (TodayProgress, En) => "Today's progress",
+        (WelcomeBackTitle, ArEg) => "أهلاً بيك تاني",
+        (WelcomeBackTitle, Ar) => "مرحبًا بعودتك",
+        (WelcomeBackTitle, En) => "Welcome back",
+        (WelcomeBackPlan, ArEg) => "خطة النهارده الخفيفة",
+        (WelcomeBackPlan, Ar) => "خطة اليوم الخفيفة",
+        (WelcomeBackPlan, En) => "Today's light plan",
+        (WelcomeBackStart, ArEg) => "يلا نبدأ",
+        (WelcomeBackStart, Ar) => "لنبدأ",
+        (WelcomeBackStart, En) => "Let's start",
+        (WelcomeBackBigger, ArEg) => "لو ليك مزاج لأكتر، اختار خطة أكبر",
+        (WelcomeBackBigger, Ar) => "إن رغبت في المزيد، اختر خطة أكبر",
+        (WelcomeBackBigger, En) => "In the mood for more? Pick a bigger plan",
+        (PelitaReady, ArEg) => "جاهزة تنوّر",
+        (PelitaReady, Ar) => "جاهز ليضيء",
+        (PelitaReady, En) => "ready to glow",
+        (PlanBreakTitle, ArEg) => "استراحة صغيرة",
+        (PlanBreakTitle, Ar) => "استراحة قصيرة",
+        (PlanBreakTitle, En) => "A short break",
         (GoalMet, ArEg) => "هدف النهارده خلص",
         (GoalMet, Ar) => "تحقق هدف اليوم",
         (GoalMet, En) => "Today's goal met",
@@ -1118,6 +1510,74 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (JournalEmpty, ArEg) => "كل اللي هتعمله هيتسجل هنا لوحده.",
         (JournalEmpty, Ar) => "سيُسجَّل هنا كل ما تنجزه تلقائيًا.",
         (JournalEmpty, En) => "Everything you do will be recorded here automatically.",
+        (NavJournal, ArEg | Ar) => "اليوميات",
+        (NavJournal, En) => "Journal",
+        (JournalIntro, ArEg) => "كل اللي عملته يوم بيوم، ومعاه خواطرك انت.",
+        (JournalIntro, Ar) => "كل ما أنجزته يومًا بيوم، ومعه خواطرك.",
+        (JournalIntro, En) => "Everything you've done, day by day, with your own reflections.",
+        (JournalOpen, ArEg) => "افتح اليوميات",
+        (JournalOpen, Ar) => "افتح اليوميات",
+        (JournalOpen, En) => "Open the journal",
+        (JournalFilterAll, ArEg) => "الكل",
+        (JournalFilterAll, Ar) => "الكل",
+        (JournalFilterAll, En) => "All",
+        (JournalFilterLearning, ArEg) => "مذاكرة",
+        (JournalFilterLearning, Ar) => "دراسة",
+        (JournalFilterLearning, En) => "Study",
+        (JournalFilterWords, ArEg | Ar) => "كلمات",
+        (JournalFilterWords, En) => "Words",
+        (JournalFilterReflections, ArEg | Ar) => "خواطر",
+        (JournalFilterReflections, En) => "Reflections",
+        (JournalNothingHere, ArEg) => "لسه مفيش حاجة هنا. كل خطوة صغيرة هتظهر أول بأول.",
+        (JournalNothingHere, Ar) => "لا شيء هنا بعد. ستظهر كل خطوة صغيرة أولًا بأول.",
+        (JournalNothingHere, En) => "Nothing here yet. Every small step will show up as it happens.",
+        (JournalShowOlder, ArEg) => "اعرض الأيام اللي قبل كده",
+        (JournalShowOlder, Ar) => "اعرض الأيام الأقدم",
+        (JournalShowOlder, En) => "Show older days",
+        (JournalReflectionAdd, ArEg) => "اكتب خاطرة عن اليوم ده",
+        (JournalReflectionAdd, Ar) => "اكتب خاطرة عن هذا اليوم",
+        (JournalReflectionAdd, En) => "Write a reflection",
+        (JournalReflectionPlaceholder, ArEg) => "اتعلمت إيه؟ إيه اللي كان صعب؟ وإيه اللي عجبك؟",
+        (JournalReflectionPlaceholder, Ar) => "ماذا تعلّمت؟ ما الذي كان صعبًا؟ وما الذي أعجبك؟",
+        (JournalReflectionPlaceholder, En) => "What did you learn? What was hard? What did you enjoy?",
+        (JournalReflectionSave, ArEg | Ar) => "احفظ",
+        (JournalReflectionSave, En) => "Save",
+        (JournalReflectionCancel, ArEg | Ar) => "إلغاء",
+        (JournalReflectionCancel, En) => "Cancel",
+        (JournalReflectionEdit, ArEg) => "عدّل",
+        (JournalReflectionEdit, Ar) => "تعديل",
+        (JournalReflectionEdit, En) => "Edit",
+        (JournalReflectionDelete, ArEg) => "امسح",
+        (JournalReflectionDelete, Ar) => "حذف",
+        (JournalReflectionDelete, En) => "Delete",
+        (JournalReflectionDeleteSure, ArEg) => "أيوه، امسحها",
+        (JournalReflectionDeleteSure, Ar) => "نعم، احذفها",
+        (JournalReflectionDeleteSure, En) => "Yes, delete it",
+        (JournalReflectionEdited, ArEg) => "اتعدّلت",
+        (JournalReflectionEdited, Ar) => "عُدّلت",
+        (JournalReflectionEdited, En) => "edited",
+        (JournalReflectionLabel, ArEg) => "خاطرتك",
+        (JournalReflectionLabel, Ar) => "خاطرتك",
+        (JournalReflectionLabel, En) => "Your reflection",
+        (JournalPrivate, ArEg) => "خواطرك ليك انت بس: بتتزامن بين أجهزتك ومبتروحش لأي ذكاء اصطناعي.",
+        (JournalPrivate, Ar) => "خواطرك لك وحدك: تتزامن بين أجهزتك ولا تُرسَل إلى أي ذكاء اصطناعي.",
+        (JournalPrivate, En) => {
+            "Your reflections are yours alone: they sync between your devices and never go to any AI."
+        }
+        (JournalInkLater, ArEg) => "الكتابة بالقلم على التابلت جاية مع \u{2068}Tablet Studio\u{2069}.",
+        (JournalInkLater, Ar) => "الكتابة بالقلم على الجهاز اللوحي قادمة مع \u{2068}Tablet Studio\u{2069}.",
+        (JournalInkLater, En) => "Handwritten reflections on the tablet arrive with Tablet Studio.",
+        (JournalTestPassed, ArEg) => "عدّيت اختبار المستوى",
+        (JournalTestPassed, Ar) => "اجتزت اختبار المستوى",
+        (JournalTestPassed, En) => "Passed the level test",
+        (JournalSouvenir, ArEg) => "تذكار جديد في الشنطة",
+        (JournalSouvenir, Ar) => "تذكار جديد في الحقيبة",
+        (JournalSouvenir, En) => "New souvenir in your suitcase",
+        (JournalTaught, ArEg | Ar) => "علّمت كبر كلمة",
+        (JournalTaught, En) => "Taught Kabar a word",
+        (JournalDraft, ArEg) => "لسه مسودة",
+        (JournalDraft, Ar) => "مسودة",
+        (JournalDraft, En) => "draft",
         (EvReviews, ArEg | Ar) => "مراجعة",
         (EvReviews, En) => "Reviews",
         (EvNewWords, ArEg | Ar) => "كلمات جديدة",
@@ -1134,6 +1594,258 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (EvPurchase, ArEg) => "اشتريت",
         (EvPurchase, Ar) => "اشتريت",
         (EvPurchase, En) => "Bought",
+
+        // --- play ---
+        (NavPlay, ArEg | Ar) => "ألعاب",
+        (NavPlay, En) => "Play",
+        (PlayIntro, ArEg) => "ألعاب صغيرة بتثبّت اللي اتعلمته، وكتير منها بيبدأ من العربي اللي إنت عارفه.",
+        (PlayIntro, Ar) => "ألعاب قصيرة تثبّت ما تعلمته، وكثير منها ينطلق من العربية التي تعرفها.",
+        (PlayIntro, En) => {
+            "Short games that make what you learn stick, many starting from the Arabic you already know."
+        }
+        (PlayContentProblem, ArEg) => {
+            "اللعبة دي محتاجة محتوى مقدرتش أفتحه دلوقتي. باقي التطبيق شغال عادي، وهنصلّحها في النسخة الجاية."
+        }
+        (PlayContentProblem, Ar) => {
+            "تحتاج هذه اللعبة إلى محتوى تعذّر فتحه الآن. بقية التطبيق تعمل كالمعتاد، وسنصلحها في الإصدار القادم."
+        }
+        (PlayContentProblem, En) => {
+            "This game needs content that didn't open just now. The rest of Kabar works as usual; the next build fixes it."
+        }
+        (PlayDetails, ArEg | Ar) => "تفاصيل",
+        (PlayDetails, En) => "Details",
+        (PlayAgain, ArEg) => "نلعب تاني",
+        (PlayAgain, Ar) => "العب مجددًا",
+        (PlayAgain, En) => "Play again",
+        (PlayFinish, ArEg) => "خلّصنا",
+        (PlayFinish, Ar) => "إنهاء",
+        (PlayFinish, En) => "Finish",
+        (PlayRight, ArEg) => "صح كده!",
+        (PlayRight, Ar) => "أحسنت!",
+        (PlayRight, En) => "That's it!",
+        (PlayNotQuite, ArEg) => "قربت! الإجابة:",
+        (PlayNotQuite, Ar) => "اقتربت! الإجابة:",
+        (PlayNotQuite, En) => "Close! The answer:",
+        (PlayGreat, ArEg) => "إيه الحلاوة دي! شغل نضيف.",
+        (PlayGreat, Ar) => "رائع! عمل متقن.",
+        (PlayGreat, En) => "Lovely work, that was sharp.",
+        (PlayGood, ArEg) => "حلو أوي، واللي فاتك هيبقى أسهل المرة الجاية.",
+        (PlayGood, Ar) => "جيد جدًا، وما فاتك سيكون أسهل في المرة القادمة.",
+        (PlayGood, En) => "Nicely done; the ones you missed will come easier next time.",
+        (PlayKeepGoing, ArEg) => "كل جولة بتعلّمك حاجة، والغلطات دي هي خطة بكرة.",
+        (PlayKeepGoing, Ar) => "كل جولة تعلّمك شيئًا، وهذه الأخطاء هي خطة الغد.",
+        (PlayKeepGoing, En) => "Every round teaches something; today's misses are tomorrow's plan.",
+        (Check, ArEg) => "اتأكد",
+        (Check, Ar) => "تحقّق",
+        (Check, En) => "Check",
+        (Stop, ArEg) => "وقّف",
+        (Stop, Ar) => "إيقاف",
+        (Stop, En) => "Stop",
+        (ShowMeaning, ArEg) => "يعني إيه؟",
+        (ShowMeaning, Ar) => "أظهر المعنى",
+        (ShowMeaning, En) => "Show meaning",
+        (HideMeaning, ArEg) => "خبّي المعنى",
+        (HideMeaning, Ar) => "أخفِ المعنى",
+        (HideMeaning, En) => "Hide meaning",
+        (AudioMissing, ArEg) => "الصوت محتاج Kabar Cloud أو صوت إندونيسي على الجهاز. النص شغال عادي.",
+        (AudioMissing, Ar) => "يحتاج الصوت إلى Kabar Cloud أو صوت إندونيسي على الجهاز. النص متاح كالمعتاد.",
+        (AudioMissing, En) => "Audio needs Kabar Cloud or a device voice; the text works as usual.",
+        (Root, ArEg | Ar) => "الجذر:",
+        (Root, En) => "root:",
+
+        // --- play: Kabar Pagi ---
+        (PagiTitle, _) => "Kabar Pagi",
+        (PagiBlurb, ArEg) => "حكاية صباحية في دقيقتين، من كلماتك وكام كلمة جديدة.",
+        (PagiBlurb, Ar) => "قصة صباحية في دقيقتين، من كلماتك وبضع كلمات جديدة.",
+        (PagiBlurb, En) => "A two-minute morning story from your words, plus a few new ones.",
+        (PagiListen, ArEg) => "يلا نسمع",
+        (PagiListen, Ar) => "لنستمع",
+        (PagiListen, En) => "Let's listen",
+        (PagiPlayAll, ArEg) => "شغّل الحكاية كلها",
+        (PagiPlayAll, Ar) => "شغّل القصة كاملة",
+        (PagiPlayAll, En) => "Play the whole story",
+        (PagiOneByOne, ArEg) => "جملة جملة",
+        (PagiOneByOne, Ar) => "جملة بعد جملة",
+        (PagiOneByOne, En) => "One at a time",
+        (PagiAllTranslations, ArEg) => "كل الترجمات",
+        (PagiAllTranslations, Ar) => "كل الترجمات",
+        (PagiAllTranslations, En) => "All translations",
+        (PagiWordsNote, ArEg) => "دي كلمات النهارده؛ الملوّنة بالدهبي جاية من العربي.",
+        (PagiWordsNote, Ar) => "هذه كلمات اليوم؛ الملوّنة بالذهبي أصلها عربي.",
+        (PagiWordsNote, En) => "Today's words; the gold ones come from Arabic.",
+        (PagiDone, ArEg) => "سمعتها وفهمتها",
+        (PagiDone, Ar) => "استمعت إليها وفهمتها",
+        (PagiDone, En) => "I've listened to it",
+        (PagiReadToday, ArEg) => "حكاية النهارده خلصت. بكرة فيه واحدة جديدة.",
+        (PagiReadToday, Ar) => "انتهت قصة اليوم. غدًا قصة جديدة.",
+        (PagiReadToday, En) => "Today's story is done. A new one comes tomorrow.",
+        (PagiNoStory, ArEg) => "مفيش حكاية جاهزة النهارده لسه. جرّب لعبة تانية وارجع بكرة.",
+        (PagiNoStory, Ar) => "لا توجد قصة جاهزة اليوم بعد. جرّب لعبة أخرى وعد غدًا.",
+        (PagiNoStory, En) => "No story is ready today yet. Try another game and come back tomorrow.",
+
+        // --- play: the Bridge deck ---
+        (DeckTitle, ArEg) => "كلمات إنت عارفها أصلاً",
+        (DeckTitle, Ar) => "كلمات تعرفها مسبقًا",
+        (DeckTitle, En) => "Words you already know",
+        (DeckBlurb, ArEg) => "كلمات جاية من العربي ومعناها زي ما إنت فاكره.",
+        (DeckBlurb, Ar) => "كلمات أصلها عربي وبقي معناها كما تعرفه.",
+        (DeckBlurb, En) => "Words from Arabic that kept the meaning you know.",
+        (DeckHeroNote, ArEg) => "كل دي كلمات إندونيسية جاية من العربي، وإنت تقدر تفهمها من النهارده.",
+        (DeckHeroNote, Ar) => "كلها كلمات إندونيسية أصلها عربي، ويمكنك فهمها من اليوم.",
+        (DeckHeroNote, En) => "All Indonesian words from Arabic that you can understand today.",
+        (DeckMarked, ArEg) => "اللي علّمت عليها:",
+        (DeckMarked, Ar) => "ما أشرت إليه:",
+        (DeckMarked, En) => "Marked as known:",
+        (DeckTapToFlip, ArEg) => "دوس عشان تقلبها",
+        (DeckTapToFlip, Ar) => "انقر لقلب البطاقة",
+        (DeckTapToFlip, En) => "Tap to flip",
+        (DeckFlip, ArEg) => "اقلب البطاقة",
+        (DeckFlip, Ar) => "اقلب البطاقة",
+        (DeckFlip, En) => "Flip the card",
+        (DeckMarkKnown, ArEg) => "عارفها",
+        (DeckMarkKnown, Ar) => "أعرفها",
+        (DeckMarkKnown, En) => "I know it",
+        (DeckKnown, ArEg) => "بقت من كلماتك",
+        (DeckKnown, Ar) => "صارت من كلماتك",
+        (DeckKnown, En) => "in your words",
+
+        // --- play: Sound-Shift Detective ---
+        (DetectiveTitle, ArEg) => "مخبر الأصوات",
+        (DetectiveTitle, Ar) => "محقق تحوّل الأصوات",
+        (DetectiveTitle, En) => "Sound-Shift Detective",
+        (DetectiveBlurb, ArEg) => "اعرف إزاي الأصوات العربي اتغيرت، وخمّن الأصل.",
+        (DetectiveBlurb, Ar) => "تعرّف كيف تغيّرت الأصوات العربية، وخمّن الأصل.",
+        (DetectiveBlurb, En) => "Learn how Arabic sounds changed, then guess the origin.",
+        (DetectiveIntro, ArEg) => "اختار قاعدة تتمرن عليها، أو خليهم كلهم مع بعض.",
+        (DetectiveIntro, Ar) => "اختر قاعدة للتدرّب عليها، أو اجمعها كلها.",
+        (DetectiveIntro, En) => "Pick a rule to practise, or mix them all.",
+        (DetectiveAllRules, ArEg) => "كل القواعد",
+        (DetectiveAllRules, Ar) => "كل القواعد",
+        (DetectiveAllRules, En) => "All rules",
+        (DetectiveGuessArabic, ArEg) => "إيه الكلمة العربي اللي ورا دي؟",
+        (DetectiveGuessArabic, Ar) => "ما الكلمة العربية وراء هذه الكلمة؟",
+        (DetectiveGuessArabic, En) => "Which Arabic word is behind it?",
+        (DetectiveGuessIndonesian, ArEg) => "الكلمة دي بقت إيه في الإندونيسي؟",
+        (DetectiveGuessIndonesian, Ar) => "إلامَ صارت هذه الكلمة في الإندونيسية؟",
+        (DetectiveGuessIndonesian, En) => "What did this word become in Indonesian?",
+        (DetectiveNoRounds, ArEg) => "مفيش جولات جاهزة هنا لسه. جرّب اختيار تاني.",
+        (DetectiveNoRounds, Ar) => "لا توجد جولات جاهزة هنا بعد. جرّب خيارًا آخر.",
+        (DetectiveNoRounds, En) => "No rounds are ready here yet. Try another choice.",
+
+        // --- play: False Friends Alarm ---
+        (AlarmTitle, ArEg) => "جرس الكلمات الخدّاعة",
+        (AlarmTitle, Ar) => "تنبيه الأصدقاء المخادعين",
+        (AlarmTitle, En) => "False Friends Alarm",
+        (AlarmBlurb, ArEg) => "كلمات شكلها عربي بس معناها راح في حتة تانية.",
+        (AlarmBlurb, Ar) => "كلمات تبدو عربية لكن معناها انتقل إلى شيء آخر.",
+        (AlarmBlurb, En) => "Words that look Arabic but moved to another meaning.",
+        (AlarmIntro, ArEg) => "بعض الكلمات بتضحك عليك: شكلها عربي ومعناها حاجة تانية خالص. يلا نمسكها.",
+        (AlarmIntro, Ar) => "بعض الكلمات تخدعك: تبدو عربية ومعناها مختلف تمامًا. لنكشفها.",
+        (AlarmIntro, En) => {
+            "Some words play tricks: they look Arabic but mean something else. Let's catch them."
+        }
+        (AlarmLooksLike, ArEg) => "شبه",
+        (AlarmLooksLike, Ar) => "تشبه",
+        (AlarmLooksLike, En) => "Looks like",
+        (AlarmQuestion, ArEg) => "معناها إيه في الإندونيسي؟",
+        (AlarmQuestion, Ar) => "ما معناها في الإندونيسية؟",
+        (AlarmQuestion, En) => "What does it mean in Indonesian?",
+        (AlarmCaught, ArEg) => "مسكتها! مضحكتش عليك.",
+        (AlarmCaught, Ar) => "كشفتها! لم تخدعك.",
+        (AlarmCaught, En) => "Caught it! It didn't fool you.",
+        (AlarmTricky, ArEg) => "دي خدّاعة فعلاً، وأهو بقيت عارفها:",
+        (AlarmTricky, Ar) => "إنها مخادعة فعلًا، والآن صرت تعرفها:",
+        (AlarmTricky, En) => "A tricky one, and now you know it:",
+
+        // --- play: Rupiah Reader ---
+        (RupiahTitle, ArEg) => "اقرا الروبية",
+        (RupiahTitle, Ar) => "قراءة الروبية",
+        (RupiahTitle, En) => "Rupiah Reader",
+        (RupiahBlurb, ArEg) => "اقرا الأسعار زي ما بتتكتب في المحلات، وبسرعة.",
+        (RupiahBlurb, Ar) => "اقرأ الأسعار كما تُكتب في المتاجر، وبسرعة.",
+        (RupiahBlurb, En) => "Read prices as shops write them, fast.",
+        (RupiahIntro, ArEg) => "هيظهرلك سعر؛ اكتب إزاي بيتقري بالإندونيسي.",
+        (RupiahIntro, Ar) => "سيظهر سعر؛ اكتب كيف يُقرأ بالإندونيسية.",
+        (RupiahIntro, En) => "You'll see a price; type how it's read in Indonesian.",
+        (RupiahHundreds, ArEg | Ar) => "مئات",
+        (RupiahHundreds, En) => "Hundreds",
+        (RupiahThousands, ArEg | Ar) => "آلاف",
+        (RupiahThousands, En) => "Thousands",
+        (RupiahMillions, ArEg | Ar) => "ملايين",
+        (RupiahMillions, En) => "Millions",
+        (RupiahMixed, ArEg) => "مكس",
+        (RupiahMixed, Ar) => "منوّع",
+        (RupiahMixed, En) => "Mixed",
+        (RupiahBest, ArEg) => "أحسن نتيجة",
+        (RupiahBest, Ar) => "أفضل نتيجة",
+        (RupiahBest, En) => "best",
+        (RupiahType, ArEg) => "اكتب إزاي بيتقري",
+        (RupiahType, Ar) => "اكتب طريقة قراءته",
+        (RupiahType, En) => "Type the reading",
+        (RupiahClose, ArEg) => "صح! بس دي الطريقة المظبوطة:",
+        (RupiahClose, Ar) => "صحيح! والصيغة الدقيقة هي:",
+        (RupiahClose, En) => "Right! The exact reading is:",
+        (RupiahWrong, ArEg) => "رقم تاني، بس ولا يهمك. بيتقري كده:",
+        (RupiahWrong, Ar) => "هذا رقم آخر، لا بأس. يُقرأ هكذا:",
+        (RupiahWrong, En) => "A different number, no worries. It reads:",
+        (RupiahScore, ArEg | Ar) => "النقاط",
+        (RupiahScore, En) => "Score",
+        (RupiahSeconds, ArEg | Ar) => "ثانية",
+        (RupiahSeconds, En) => "Seconds",
+        (RupiahNewBest, ArEg) => "أحسن نتيجة ليك في المستوى ده!",
+        (RupiahNewBest, Ar) => "أفضل نتيجة لك في هذا المستوى!",
+        (RupiahNewBest, En) => "Your best score at this level!",
+
+        // --- play: Pasar! ---
+        (PasarTitle, _) => "Pasar!",
+        (PasarBlurb, ArEg) => "فاصل مع بياع في السوق وإنت معاك ميزانية.",
+        (PasarBlurb, Ar) => "ساوم بائعًا في السوق ضمن ميزانيتك.",
+        (PasarBlurb, En) => "Haggle with a market seller on a budget.",
+        (PasarIntro, ArEg) => "اختار حاجة تشتريها. افضل في حدود الميزانية وخليك مؤدب، والبياع هيرد عليك.",
+        (PasarIntro, Ar) => "اختر شيئًا لتشتريه. ابقَ ضمن الميزانية وكن مهذبًا، وسيرد عليك البائع.",
+        (PasarIntro, En) => "Pick something to buy. Stay within budget and stay polite; the seller answers.",
+        (PasarNoItems, ArEg) => "السوق لسه بيفتح. ارجع بعد التحديث الجاي.",
+        (PasarNoItems, Ar) => "السوق لم يفتح بعد. عد بعد التحديث القادم.",
+        (PasarNoItems, En) => "The market is still setting up. Come back after the next update.",
+        (PasarBonus, ArEg) => "جولة بونص",
+        (PasarBonus, Ar) => "جولة إضافية",
+        (PasarBonus, En) => "Bonus round",
+        (PasarBudget, ArEg) => "ميزانيتك:",
+        (PasarBudget, Ar) => "ميزانيتك:",
+        (PasarBudget, En) => "Budget:",
+        (PasarOnTable, ArEg) => "السعر دلوقتي:",
+        (PasarOnTable, Ar) => "السعر الحالي:",
+        (PasarOnTable, En) => "On the table:",
+        (PasarAskPrice, ArEg) => "اسأل عن السعر",
+        (PasarAskPrice, Ar) => "اسأل عن السعر",
+        (PasarAskPrice, En) => "Ask the price",
+        (PasarAskLower, ArEg) => "اطلب تخفيض",
+        (PasarAskLower, Ar) => "اطلب سعرًا أقل",
+        (PasarAskLower, En) => "Ask for less",
+        (PasarOffer, ArEg) => "اعرض سعر",
+        (PasarOffer, Ar) => "اعرض سعرًا",
+        (PasarOffer, En) => "Make an offer",
+        (PasarAccept, ArEg) => "اتفقنا",
+        (PasarAccept, Ar) => "موافق",
+        (PasarAccept, En) => "Deal",
+        (PasarRefuse, ArEg) => "اعتذر بذوق",
+        (PasarRefuse, Ar) => "اعتذر بلطف",
+        (PasarRefuse, En) => "Politely decline",
+        (PasarDealIn, ArEg) => "صفقة حلوة وفي حدود ميزانيتك!",
+        (PasarDealIn, Ar) => "صفقة جيدة ضمن ميزانيتك!",
+        (PasarDealIn, En) => "A good deal, within budget!",
+        (PasarDealOver, ArEg) => "اشتريتها، بس فوق الميزانية شوية. المرة الجاية فاصل أكتر.",
+        (PasarDealOver, Ar) => "اشتريتها، لكن فوق الميزانية قليلًا. ساوم أكثر في المرة القادمة.",
+        (PasarDealOver, En) => "Bought it, a little over budget. Haggle a bit more next time.",
+        (PasarWalked, ArEg) => "مشيت بذوق، ودي كمان مهارة.",
+        (PasarWalked, Ar) => "انصرفت بلطف، وهذه مهارة أيضًا.",
+        (PasarWalked, En) => "You walked away politely; that's a skill too.",
+        (PasarPaid, ArEg) => "دفعت:",
+        (PasarPaid, Ar) => "دفعت:",
+        (PasarPaid, En) => "You paid:",
+        (PasarSaved, ArEg) => "وفّرت:",
+        (PasarSaved, Ar) => "وفّرت:",
+        (PasarSaved, En) => "You saved:",
         (Example, ArEg | Ar) => "مثال",
         (Example, En) => "Example",
         (ReaderIntro, ArEg) => "الصق أي كلام إندونيسي أو جاوي، أو افتح سكرين شوت، وكل كلمة هتبقى ليها شرح.",
@@ -1342,5 +2054,132 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PenHint, En) => {
             "With the pen: hover to peek, tap a word for its card, loop a phrase to look it up, or stroke across it to save it."
         }
+        (UnggahTitle, _) => "Unggah-Ungguh",
+        (UnggahBlurb, ArEg) => "اتكلم جاوي مع صاحبك وتيتا والمدرّس، وشوف مقياس الاحترام.",
+        (UnggahBlurb, Ar) => "تحدّث بالجاوية مع صديق وجدّة ومعلّم، وراقب مقياس الاحترام.",
+        (UnggahBlurb, En) => {
+            "Talk Javanese with a friend, a grandmother and a teacher, and watch the Respect Meter."
+        }
+        (UnggahIntro, ArEg) => {
+            "اختار مشهد. في كل دور هتلاقي نفس الكلام بمستويات مختلفة؛ اختار اللي يليق بالشخص اللي قدامك، و«مقياس الاحترام» هيوريك وقعه عليه."
+        }
+        (UnggahIntro, Ar) => {
+            "اختر مشهدًا. في كل دور تجد الكلام نفسه بمستويات مختلفة؛ اختر ما يليق بمن تخاطبه، وسيُريك «مقياس الاحترام» وقعه عليه."
+        }
+        (UnggahIntro, En) => {
+            "Pick a scene. Each turn offers the same thing at different speech levels: choose what suits the person, and the Respect Meter shows how it lands."
+        }
+        (UnggahNoScenes, ArEg) => "المشاهد لسه بتتكتب. ارجع بعد التحديث الجاي.",
+        (UnggahNoScenes, Ar) => "المشاهد قيد الكتابة. عد بعد التحديث القادم.",
+        (UnggahNoScenes, En) => "The scenes are still being written. Come back after the next update.",
+        (UnggahOpensAt, ArEg) => "بيفتح في",
+        (UnggahOpensAt, Ar) => "يُفتح في",
+        (UnggahOpensAt, En) => "Opens at",
+        (UnggahMeter, ArEg | Ar) => "مقياس الاحترام",
+        (UnggahMeter, En) => "Respect Meter",
+        (UnggahTurn, ArEg) => "دور",
+        (UnggahTurn, Ar) => "الدور",
+        (UnggahTurn, En) => "Turn",
+        (UnggahYourTurn, ArEg) => "هتقول إيه؟",
+        (UnggahYourTurn, Ar) => "ماذا ستقول؟",
+        (UnggahYourTurn, En) => "What do you say?",
+        (UnggahFits, ArEg) => "في الجون",
+        (UnggahFits, Ar) => "في محلّها تمامًا",
+        (UnggahFits, En) => "Just right",
+        (UnggahTooPlain, ArEg) => "سادة شوية على الشخص ده",
+        (UnggahTooPlain, Ar) => "عادية قليلًا على هذا الشخص",
+        (UnggahTooPlain, En) => "A little plain for this person",
+        (UnggahTooStiff, ArEg) => "رسمية شوية على الموقف",
+        (UnggahTooStiff, Ar) => "رسمية قليلًا على الموقف",
+        (UnggahTooStiff, En) => "A little stiff for the moment",
+        (UnggahSelfRaised, ArEg) => "كلمة التبجيل دي ليهم، مش ليك",
+        (UnggahSelfRaised, Ar) => "لفظ التبجيل لهم، لا لك",
+        (UnggahSelfRaised, En) => "Honour words are for them, not for you",
+        (UnggahBetter, ArEg) => "اللي يليق هنا:",
+        (UnggahBetter, Ar) => "الأنسب هنا:",
+        (UnggahBetter, En) => "What fits here:",
+        (UnggahFitting, ArEg | Ar) => "اختيارات في محلّها",
+        (UnggahFitting, En) => "fitting choices",
+        (UnggahScenes, ArEg) => "مشاهد تانية",
+        (UnggahScenes, Ar) => "مشاهد أخرى",
+        (UnggahScenes, En) => "Other scenes",
+        (UnggahEndGreat, ArEg) => "\u{2068}Sopan!\u{2069} كلامك كان في محلّه، وحسّوا باحترامك.",
+        (UnggahEndGreat, Ar) => "\u{2068}Sopan!\u{2069} كان كلامك في محله، وشعروا باحترامك.",
+        (UnggahEndGreat, En) => "Sopan! Your words fit, and they felt respected.",
+        (UnggahEndGood, ArEg) => "حلو قوي. كام لمسة كمان وتبقى مظبوطة خالص.",
+        (UnggahEndGood, Ar) => "جيد جدًا. بضع لمسات أخرى وتصبح متقنًا.",
+        (UnggahEndGood, En) => "Really good. A few more touches and it'll be spot on.",
+        (UnggahEndGentle, ArEg) => {
+            "مستويات الكلام بتاخد وقت، حتى مع الجاويين نفسهم. اقرا الشرح تاني وجرّب المشهد كمان مرة."
+        }
+        (UnggahEndGentle, Ar) => {
+            "مستويات الكلام تحتاج وقتًا، حتى عند الجاويين أنفسهم. اقرأ الشرح مجددًا وجرّب المشهد مرة أخرى."
+        }
+        (UnggahEndGentle, En) => {
+            "Speech levels take time, even for Javanese speakers. Read the notes again and give the scene another go."
+        }
+        (PairsTitle, ArEg | Ar) => "\u{2068}d/dh · t/th\u{2069}",
+        (PairsTitle, En) => "d/dh · t/th",
+        (PairsBlurb, ArEg) => {
+            "فرّق بين \u{2068}d\u{2069} و\u{2068}dh\u{2069}، و\u{2068}t\u{2069} و\u{2068}th\u{2069} في الجاوي."
+        }
+        (PairsBlurb, Ar) => {
+            "ميّز بين \u{2068}d\u{2069} و\u{2068}dh\u{2069}، و\u{2068}t\u{2069} و\u{2068}th\u{2069} في الجاوية."
+        }
+        (PairsBlurb, En) => "Tell Javanese d from dh, and t from th.",
+        (PairsIntro, ArEg) => {
+            "الجاوي فيه نوعين من كل حرف: \u{2068}d\u{2069} و\u{2068}t\u{2069} زي الدال والتاء بتوعنا، و\u{2068}dh\u{2069} و\u{2068}th\u{2069} واللسان راجع لورا. في كل جولة كلمتين شبه بعض، اختار الكتابة الصح."
+        }
+        (PairsIntro, Ar) => {
+            "في الجاوية نوعان من كل حرف: \u{2068}d\u{2069} و\u{2068}t\u{2069} كالدال والتاء العربيتين، و\u{2068}dh\u{2069} و\u{2068}th\u{2069} واللسان مرتدّ إلى الخلف. في كل جولة كلمتان متشابهتان، فاختر الكتابة الصحيحة."
+        }
+        (PairsIntro, En) => {
+            "Javanese has two of each: d and t just like Arabic د and ت, and dh and th with the tongue pulled back. Each round has two look-alike words: pick the right spelling."
+        }
+        (PairsBoth, ArEg) => "الاتنين",
+        (PairsBoth, Ar) => "كلاهما",
+        (PairsBoth, En) => "Both",
+        (PairsListenMode, ArEg) => "اسمع",
+        (PairsListenMode, Ar) => "استمع",
+        (PairsListenMode, En) => "Listen",
+        (PairsReadMode, ArEg) => "اقرا",
+        (PairsReadMode, Ar) => "اقرأ",
+        (PairsReadMode, En) => "Read",
+        (PairsNoJavaneseVoice, ArEg) => {
+            "الجهاز ده مفيهوش صوت جاوي، فهنلعب بالقراية: تشوف المعنى وتختار الكتابة. (الصوت الإندونيسي مبيعرفش يقول \u{2068}dh\u{2069} و\u{2068}th\u{2069}، فمش هنستعمله هنا.)"
+        }
+        (PairsNoJavaneseVoice, Ar) => {
+            "لا يوجد صوت جاوي على هذا الجهاز، فسنلعب بالقراءة: ترى المعنى وتختار الكتابة. (الصوت الإندونيسي لا ينطق \u{2068}dh\u{2069} و\u{2068}th\u{2069}، فلن نستخدمه هنا.)"
+        }
+        (PairsNoJavaneseVoice, En) => {
+            "This device has no Javanese voice, so we'll play by reading: see the meaning, pick the spelling. (Indonesian voices can't make dh and th, so we don't use them here.)"
+        }
+        (PairsHear, ArEg) => "اسمعها",
+        (PairsHear, Ar) => "استمع إليها",
+        (PairsHear, En) => "Hear it",
+        (PairsWhichHeard, ArEg) => "سمعت أنهي كلمة؟",
+        (PairsWhichHeard, Ar) => "أيّ كلمة سمعت؟",
+        (PairsWhichHeard, En) => "Which word did you hear?",
+        (PairsWhichSpelling, ArEg) => "أنهي كتابة صح؟",
+        (PairsWhichSpelling, Ar) => "أيّ الكتابتين صحيحة؟",
+        (PairsWhichSpelling, En) => "Which spelling is it?",
+        (PairsInJavanese, ArEg) => "بالجاوي:",
+        (PairsInJavanese, Ar) => "بالجاوية:",
+        (PairsInJavanese, En) => "In Javanese:",
+        (PairsInIndonesian, ArEg) => "بالإندونيسي:",
+        (PairsInIndonesian, Ar) => "بالإندونيسية:",
+        (PairsInIndonesian, En) => "In Indonesian:",
+        (PairsJavanese, ArEg) => "جاوي",
+        (PairsJavanese, Ar) => "جاوية",
+        (PairsJavanese, En) => "Javanese",
+        (PairsIndonesian, ArEg) => "إندونيسي",
+        (PairsIndonesian, Ar) => "إندونيسية",
+        (PairsIndonesian, En) => "Indonesian",
+        (PairsTipTitle, ArEg) => "إزاي تقولها",
+        (PairsTipTitle, Ar) => "كيف تنطقها",
+        (PairsTipTitle, En) => "How to say it",
+        (PairsTheTwoWords, ArEg) => "الكلمتين",
+        (PairsTheTwoWords, Ar) => "الكلمتان",
+        (PairsTheTwoWords, En) => "The two words",
     }
 }

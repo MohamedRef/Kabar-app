@@ -231,6 +231,22 @@ en = [
   "What fits today: 5, 15 or 30 minutes? Whatever suits your mood.",
 ]
 
+[lines.plan_break]
+moment = "Halfway through a 30-minute plan, between its two blocks: a break is offered, never pushed."
+placeholders = ["name"]
+ar-eg = [
+  "نص الطريق يا ⁨{name}⁩. قوم اتمشى شوية، اشرب مية، وارجع لما تحب. ⁨Istirahat dulu⁩، يعني ريّح شوية.",
+  "خلّصنا أول جزء. خد نفسك دقيقتين لو حابب، والجزء التاني مستنيك على راحتك.",
+]
+ar = [
+  "وصلنا إلى منتصف الطريق يا ⁨{name}⁩. قم وتمشَّ قليلًا، واشرب ماءً، وعد حين تحب. ⁨Istirahat dulu⁩، أي استرح قليلًا.",
+  "أنهينا الجزء الأول. خذ دقيقتين لنفسك إن أحببت، والجزء الثاني ينتظرك على راحتك.",
+]
+en = [
+  "Halfway there, {name}. Stand up, stretch, have some water, and come back whenever you like. Istirahat dulu: rest a little first.",
+  "That's the first block done. Take a couple of minutes if you'd like; the second one will wait for you.",
+]
+
 # --- End-of-day recap ----------------------------------------------------------
 
 [lines.recap_goal_met]
@@ -588,4 +604,36 @@ ar = [
 en = [
   "At this pace you'll reach {level} around {date}. That's an estimate, not a promise or a deadline.",
   "Keep this rhythm and {level} is waiting for you around {date}. Semangat: keep it up.",
+]
+
+[lines.level_up]
+moment = "The monthly level check moved the learner up to the next level."
+placeholders = ["name", "level"]
+ar-eg = [
+  "مبروك يا ⁨{name}⁩، الاختبار بيقول إنك جاهز لـ ⁨{level}⁩. ده تعبك إنت. ⁨Hebat⁩، يعني برافو.",
+  "طلعت ⁨{level}⁩. كل يوم ذاكرت فيه وصّلك هنا. ⁨Ayo⁩، يعني يلا نكمل.",
+]
+ar = [
+  "مبارك يا ⁨{name}⁩، يقول الاختبار إنك مستعد لـ ⁨{level}⁩. هذا ثمرة جهدك. ⁨Hebat⁩، أي أحسنت.",
+  "انتقلت إلى ⁨{level}⁩. كل يوم ذاكرت فيه أوصلك إلى هنا. ⁨Ayo⁩، أي هيا نكمل.",
+]
+en = [
+  "Congratulations, {name}: the check says you're ready for {level}. That's your own work. Hebat, well done.",
+  "You've moved up to {level}. Every day you studied brought you here. Ayo, let's keep going.",
+]
+
+[lines.level_rebuild]
+moment = "The monthly level check moved the learner down a level. Frame it as a plan to rebuild the base; words, Pelita and Koin all stay."
+placeholders = ["name", "level"]
+ar-eg = [
+  "يا ⁨{name}⁩، الاختبار بيقول إن أساس ⁨{level}⁩ محتاج يتقوّى شوية، فهنرجع له ونبنيه صح. كل الكلمات اللي اتعلمتها وقنديلك وفلوسك زي ما هم. ⁨Pelan-pelan saja⁩، يعني على مهلك.",
+  "هنقعد شوية في ⁨{level}⁩ نثبّت الأساس. البيت اللي أساسه متين بيعلى وهو ثابت. أنا معاك خطوة بخطوة.",
+]
+ar = [
+  "يا ⁨{name}⁩، يُظهر الاختبار أن أساس ⁨{level}⁩ يحتاج إلى تقوية، فسنعود إليه ونبنيه جيدًا. كل ما تعلمته من كلمات وقنديلك وعملاتك باقٍ كما هو. ⁨Pelan-pelan saja⁩، أي على مهلك.",
+  "سنمكث قليلًا في ⁨{level}⁩ لنثبّت الأساس. البناء ذو الأساس المتين يرتفع ثابتًا. أنا معك خطوة بخطوة.",
+]
+en = [
+  "{name}, the check shows the {level} base needs a little more strength, so we'll go back and build it well. Every word you've learned, your Pelita and your Koin all stay. Pelan-pelan saja: slowly does it.",
+  "We'll spend a little time in {level} to settle the base. A house on solid ground rises steadily. I'm with you step by step.",
 ]

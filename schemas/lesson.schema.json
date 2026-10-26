@@ -16,6 +16,7 @@
     "dialogue": { "$ref": "#/$defs/dialogue" },
     "new_words": { "type": "array", "items": { "$ref": "#/$defs/new_word" } },
     "souvenir": { "$ref": "#/$defs/souvenir" },
+    "game": { "type": "string", "pattern": "^(uu|mp)\\.[a-z0-9-]+$", "description": "A Play game the lesson opens at its end: an Unggah-Ungguh scene (uu.*) or a Minimal Pairs pair (mp.*)." },
     "review": {
       "type": "object",
       "required": ["status", "verified"],

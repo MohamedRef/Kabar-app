@@ -151,6 +151,16 @@ impl Validator {
         if let Some(s) = &l.souvenir {
             self.localized("souvenir.note", &s.note);
         }
+        if let Some(g) = &l.game {
+            let known =
+                ["uu.", "mp."].iter().any(|p| g.strip_prefix(p).is_some_and(|rest| !rest.trim().is_empty()));
+            if !known {
+                self.issue(
+                    "game",
+                    format!("must be an Unggah-Ungguh (uu.*) or Minimal Pairs (mp.*) id, found {g:?}"),
+                );
+            }
+        }
         if !matches!(l.review.status.as_str(), "draft" | "approved" | "needs-changes") {
             self.issue("review.status", format!("unknown status {:?}", l.review.status));
         }

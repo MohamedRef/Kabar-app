@@ -1,12 +1,14 @@
 //! *Rencana Hari Ini*: Kak Nur's greeting, "5, 15 or 30 minutes today?",
 //! the plan with its progress, Pelita and Koin, snooze, and the end-of-day
-//! recap.
+//! recap. After a break (spec §6) Today opens on a welcome-back card instead:
+//! the light plan and one Start button, no streak talk, until the first bit
+//! of study.
 
 use dioxus::prelude::*;
 use kabar_core::coach::voice::Line;
 use kabar_core::coach::{history, plan, recap, reminders, rewards};
 use kabar_protocol::coach::{
-    ActivityKind, CoachProfile, DailyPlan, LocalDate, PlanItem, PlanItemKind, ReminderStyle,
+    ActivityKind, CoachProfile, DailyPlan, LocalDate, PlanItem, PlanItemKind, PlanSize, ReminderStyle,
 };
 
 use super::widgets::{Nur, Progress, SizePicker, Stat};
@@ -21,6 +23,18 @@ fn screen_for(kind: &PlanItemKind) -> Screen {
         PlanItemKind::Lesson { .. } | PlanItemKind::WeakSpot { .. } => Screen::Journey,
         PlanItemKind::Reading => Screen::Reader,
     }
+}
+
+/// Rebuilds and saves today's plan at the size the learner just picked.
+fn pick_size(db: &Db, coach: Coach, profile: &CoachProfile, today: LocalDate, size: PlanSize) {
+    let events = coach.events.peek().clone();
+    let due = crate::review::due_words(db, coach.now()).len() as u32;
+    let fresh = build_plan(due, profile, &events, today, size, true);
+    if let Err(e) = db.0.borrow_mut().save_plan(&fresh) {
+        eprintln!("kabar: saving today's plan failed: {e}");
+    }
+    let mut rev = coach.plan_rev;
+    rev += 1;
 }
 
 #[component]
@@ -38,14 +52,20 @@ pub fn Today() -> Element {
     let stats = history::day(&events, today);
     let progress = plan::progress(&plan, &stats);
     let goal = u32::from(plan.size.minutes());
+    // Back after a break and nothing done yet today: the welcome-back card.
+    let welcome = plan.comeback && !stats.studied();
+    let lit_today = rewards::pelita(&events, today).lit_today;
 
-    let greeting = if plan.comeback {
-        Line::PlanComeback
-    } else if progress.goal_met {
+    let greeting = if progress.goal_met {
         Line::PlanAllDone
+    } else if plan.comeback && lit_today {
+        Line::PelitaRelit
+    } else if plan.comeback {
+        Line::PlanComeback
     } else {
         Line::PlanMorning
     };
+    let break_at = plan::break_after(&plan);
     let minutes = ui.num(goal);
     let (count, topic) = labels::plan_voice_args(&ui, &plan.items);
     let args = [
@@ -58,9 +78,12 @@ pub fn Today() -> Element {
         recap::recap_ready(progress.goal_met, stats.studied(), coach.time_of_day(), &profile.study_times);
 
     rsx! {
-        RewardsBar { today }
+        RewardsBar { today, welcome }
         div { class: "coach-grid",
             div {
+                if welcome {
+                    WelcomeBack { profile: profile.clone(), plan: plan.clone(), today }
+                } else {
                 div { class: "card",
                     h2 { lang: "id", bdi { "{ui.t(Msg::TodayTitle)}" } }
                     Nur { text: say(&ui, greeting, today, &args) }
@@ -70,15 +93,7 @@ pub fn Today() -> Element {
                         onpick: {
                             let db = db.clone();
                             let profile = profile.clone();
-                            move |size| {
-                                let events = coach.events.peek().clone();
-                                let fresh = build_plan(&profile, &events, today, size);
-                                if let Err(e) = db.0.borrow_mut().save_plan(&fresh) {
-                                    eprintln!("kabar: saving today's plan failed: {e}");
-                                }
-                                let mut rev = coach.plan_rev;
-                                rev += 1;
-                            }
+                            move |size| pick_size(&db, coach, &profile, today, size)
                         },
                     }
                     Progress {
@@ -100,12 +115,32 @@ pub fn Today() -> Element {
                                 item: item.clone(),
                                 done: progress.done.get(i).copied().unwrap_or(false),
                                 today,
+                                show_start: true,
+                                break_text: (break_at == Some(i))
+                                    .then(|| say(&ui, Line::PlanBreak, today, &args)),
                             }
                         }
                     }
                     Snooze { profile: profile.clone(), goal_met: progress.goal_met }
                 }
+                }
                 crate::lesson::PlacementInvite {}
+                crate::play::PagiTodayCard {}
+                // On the phone, Kak Nur, the journal and Settings live here
+                // instead of the bottom bar (it keeps five items).
+                nav { class: "row compact-only more-links",
+                    for screen in [Screen::Coach, Screen::Journal, Screen::Settings] {
+                        button {
+                            key: "{screen:?}",
+                            onclick: move |_| {
+                                let mut s = ui.screen;
+                                s.set(screen);
+                            },
+                            span { class: "nav-icon", aria_hidden: "true", {icons::nav(screen)} }
+                            " {ui.t(screen.label())}"
+                        }
+                    }
+                }
             }
             if recap_ready {
                 div {
@@ -116,21 +151,92 @@ pub fn Today() -> Element {
     }
 }
 
-/// Pelita (the streak lamp) and Koin.
+/// The welcome-back card: Kak Nur's warm hello, the light plan, one Start
+/// button for its first item, and a quiet way to pick a bigger plan.
+/// Never a streak count or a number of days away.
 #[component]
-fn RewardsBar(today: LocalDate) -> Element {
+fn WelcomeBack(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
+    let ui = use_context::<Ui>();
+    let db = use_context::<Db>();
+    let coach = use_context::<Coach>();
+    let minutes = ui.num(plan.size.minutes());
+    let args = [("name", profile.name.as_str()), ("minutes", minutes.as_str())];
+    let first = plan.items.first().map(|i| screen_for(&i.kind));
+    rsx! {
+        section { class: "card welcome-back", aria_labelledby: "welcome-back-title",
+            h2 { id: "welcome-back-title", "{ui.t(Msg::WelcomeBackTitle)}" }
+            Nur { text: say(&ui, Line::PlanComeback, today, &args) }
+            h3 { class: "welcome-back-plan-title",
+                "{ui.t(Msg::WelcomeBackPlan)} · {labels::minutes(&ui, u32::from(plan.size.minutes()))}"
+            }
+            ul { class: "plan",
+                for item in plan.items.iter() {
+                    PlanRow {
+                        key: "{item.id}",
+                        item: item.clone(),
+                        done: false,
+                        today,
+                        show_start: false,
+                        break_text: None,
+                    }
+                }
+            }
+            if let Some(target) = first {
+                button {
+                    class: "primary welcome-back-start",
+                    onclick: move |_| {
+                        let mut screen = ui.screen;
+                        screen.set(target);
+                    },
+                    "{ui.t(Msg::WelcomeBackStart)}"
+                }
+            }
+            details { class: "welcome-back-more",
+                summary { "{ui.t(Msg::WelcomeBackBigger)}" }
+                div { class: "row", role: "group",
+                    for size in [PlanSize::Steady, PlanSize::Deep] {
+                        button {
+                            key: "{size:?}",
+                            class: "quiet-solid",
+                            onclick: {
+                                let db = db.clone();
+                                let profile = profile.clone();
+                                move |_| pick_size(&db, coach, &profile, today, size)
+                            },
+                            {labels::minutes(&ui, u32::from(size.minutes()))}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/// Pelita (the streak lamp) and Koin. On a welcome-back morning the lamp is
+/// shown ready to glow, without a count.
+#[component]
+fn RewardsBar(today: LocalDate, welcome: bool) -> Element {
     let ui = use_context::<Ui>();
     let coach = use_context::<Coach>();
     let events = coach.events.read();
     let pelita = rewards::pelita(&events, today);
     let koin = rewards::koin_balance(&events);
+    let lamp_class = match (pelita.lit_today, welcome) {
+        (true, _) => "reward lit",
+        (false, true) => "reward ready",
+        (false, false) => "reward",
+    };
     rsx! {
         div { class: "rewards-bar",
-            div { class: if pelita.lit_today { "reward lit" } else { "reward" },
+            div { class: lamp_class,
                 span { class: "reward-icon", aria_hidden: "true", {icons::lamp()} }
                 span { class: "latin", bdi { "Pelita" } }
-                strong { "{ui.num(pelita.streak)}" }
-                if pelita.freezes > 0 {
+                if welcome {
+                    span { class: "small", "{ui.t(Msg::PelitaReady)}" }
+                } else {
+                    strong { "{ui.num(pelita.streak)}" }
+                }
+                if !welcome && pelita.freezes > 0 {
                     span { class: "muted small", "· {ui.t(Msg::Freezes)} {ui.num(pelita.freezes)}" }
                 }
             }
@@ -143,8 +249,17 @@ fn RewardsBar(today: LocalDate) -> Element {
     }
 }
 
+/// One plan item. `show_start`: its own Start button (the welcome-back card
+/// has a single one instead). `break_text`: Kak Nur's break offer, shown
+/// after this item when a 30-minute plan breaks here.
 #[component]
-fn PlanRow(item: PlanItem, done: bool, today: LocalDate) -> Element {
+fn PlanRow(
+    item: PlanItem,
+    done: bool,
+    today: LocalDate,
+    show_start: bool,
+    break_text: Option<String>,
+) -> Element {
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let coach = use_context::<Coach>();
@@ -179,7 +294,7 @@ fn PlanRow(item: PlanItem, done: bool, today: LocalDate) -> Element {
                 }
                 div { class: "muted small", {labels::minutes(&ui, u32::from(item.minutes))} }
             }
-            if !done {
+            if !done && show_start {
                 button {
                     onclick: move |_| {
                         let mut screen = ui.screen;
@@ -187,6 +302,12 @@ fn PlanRow(item: PlanItem, done: bool, today: LocalDate) -> Element {
                     },
                     "{ui.t(Msg::Start)}"
                 }
+            }
+        }
+        if let Some(text) = break_text {
+            li { class: "plan-break", role: "note",
+                strong { "{ui.t(Msg::PlanBreakTitle)}" }
+                p { class: "muted small", "{text}" }
             }
         }
     }
@@ -223,8 +344,11 @@ fn Snooze(profile: CoachProfile, goal_met: bool) -> Element {
 fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
     let ui = use_context::<Ui>();
     let coach = use_context::<Coach>();
+    let db = use_context::<Db>();
     let events = coach.events.read().clone();
-    let tomorrow = build_plan(&profile, &events, today.add_days(1), profile.daily_size);
+    // Cards due by tomorrow morning size tomorrow's first step.
+    let due = crate::review::due_words(&db, coach.now() + 86_400_000).len() as u32;
+    let tomorrow = build_plan(due, &profile, &events, today.add_days(1), profile.daily_size, false);
     let tomorrow_first = tomorrow.items.first().map(|i| i.kind.clone());
     let r = recap::day_recap(&events, today, plan.size.minutes(), plan.items.len(), tomorrow_first);
 

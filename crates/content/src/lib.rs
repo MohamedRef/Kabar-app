@@ -18,9 +18,9 @@ use std::path::{Path, PathBuf};
 use model::{Curriculum, GrammarPoint};
 
 /// Levels whose grammar points must all exist in the library. Grows as the
-/// content pipeline covers more levels (BIPA 1–7 and J1–J3 now; J4–J6 later).
+/// content pipeline covers more levels (BIPA 1–7 and J1–J6).
 pub const GRAMMAR_LIBRARY_LEVELS: &[&str] =
-    &["bipa1", "bipa2", "bipa3", "bipa4", "bipa5", "bipa6", "bipa7", "j1", "j2", "j3"];
+    &["bipa1", "bipa2", "bipa3", "bipa4", "bipa5", "bipa6", "bipa7", "j1", "j2", "j3", "j4", "j5", "j6"];
 
 /// Levels whose every lesson must be written (BIPA 1–2, J1–J3).
 pub const LESSON_LEVELS: &[&str] = &["bipa1", "bipa2", "j1", "j2", "j3"];

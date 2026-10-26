@@ -1,5 +1,5 @@
-//! The vocabulary content pack (top-2,000 Indonesian glosses, 1,000 Javanese
-//! glosses, the Arabic Bridge cards and the Javanese speech-level table from
+//! The vocabulary content pack (every Indonesian and Javanese gloss batch,
+//! the Arabic Bridge cards and the Javanese speech-level table from
 //! `content/`), merged over the hand-made seed. Embedded in
 //! the binary until downloadable content packs arrive, so lookups never wait
 //! for the network.
@@ -15,41 +15,9 @@ use super::glossary::{
     Bridge, Gloss, Glossary, Levels, SeedGlossary, Shift, SpeechLevel, WordInfo, WordLang,
 };
 
-const GLOSS_BATCHES: &[&str] = &[
-    include_str!("../../../../content/glosses/id/batch-001.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-002.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-003.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-004.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-005.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-006.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-007.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-008.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-009.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-010.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-011.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-012.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-013.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-014.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-015.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-016.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-017.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-018.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-019.jsonl"),
-    include_str!("../../../../content/glosses/id/batch-020.jsonl"),
-];
-
-const GLOSS_BATCHES_JV: &[&str] = &[
-    include_str!("../../../../content/glosses/jv/batch-001.jsonl"),
-    include_str!("../../../../content/glosses/jv/batch-002.jsonl"),
-    include_str!("../../../../content/glosses/jv/batch-003.jsonl"),
-    include_str!("../../../../content/glosses/jv/batch-004.jsonl"),
-    include_str!("../../../../content/glosses/jv/batch-005.jsonl"),
-    include_str!("../../../../content/glosses/jv/batch-006.jsonl"),
-    include_str!("../../../../content/glosses/jv/batch-007.jsonl"),
-    include_str!("../../../../content/glosses/jv/batch-008.jsonl"),
-    include_str!("../../../../content/glosses/jv/batch-009.jsonl"),
-    include_str!("../../../../content/glosses/jv/batch-010.jsonl"),
-];
+// `GLOSS_BATCHES` (Indonesian) and `GLOSS_BATCHES_JV`: every
+// `content/glosses/<lang>/*.jsonl`, listed by build.rs.
+include!(concat!(env!("OUT_DIR"), "/glosses.rs"));
 
 const BRIDGE_ID: &str = include_str!("../../../../content/bridge/id.jsonl");
 const SPEECH_LEVELS: &str = include_str!("../../../../content/javanese/speech-levels.jsonl");
@@ -331,7 +299,7 @@ mod tests {
                 .unwrap()
                 .filter(|e| e.as_ref().unwrap().file_name().to_string_lossy().ends_with(".jsonl"))
                 .count();
-            assert_eq!(on_disk, embedded.len(), "add new {lang} batches to GLOSS_BATCHES");
+            assert_eq!(on_disk, embedded.len(), "build.rs missed a {lang} gloss batch");
         }
     }
 

@@ -60,9 +60,9 @@ These five rules beat any single feature. When in doubt, choose what serves them
 
 | Device | Role | Signature experience |
 |---|---|---|
-| **Galaxy S24 Ultra** (Android, 6.8", built-in S Pen) | the pocket coach: daily plan, reviews, Reader on the go, Kabar Radio | one-handed UI, pen hover popovers, lasso lookup, handwritten answers, Quick Capture, Share-to-Kabar |
+| **Galaxy S24 Ultra** (Android, 6.8", built-in S Pen) | the pocket coach: daily plan, reviews, Reader on the go, Kabar Radio | one-handed UI, Share-to-Kabar (pen features deferred, §5) |
 | **Galaxy Tab S11** (Android tablet, S Pen, DeX) | the **Studio**: deep lessons, reading, writing, creativity | three-pane Study Desk, Kabar Notebook, ink everywhere, split-screen companion, DeX keyboard + mouse |
-| **MacBook Air M2** (macOS, Apple Silicon) | build machine, desk study, and **Kabar Home** (local AI helper, §8) | native window, keyboard shortcuts, global Quick Lookup |
+| **MacBook Air M2** (macOS, Apple Silicon) | build machine, desk study, and **Kabar Home** (local AI helper, §8) | native window, keyboard shortcuts (global Quick Lookup deferred, §23) |
 
 **A day with Kabar:** Kak Nur's plan and Kabar Pagi on the phone with morning coffee → Kabar Radio in my earbuds on the way out → a lesson and Notebook session on the tablet in the evening → reviews on the phone before sleep → a 30-second recap. Every device always knows where I am.
 
@@ -109,6 +109,11 @@ The tablet is where Kabar becomes creative.
 
 ## 5. The S Pen on the phone (Galaxy S24 Ultra)
 
+> **Deferred (2026-10-26, learner's call).** The phone's job is the pocket
+> coach: plan, reviews, Reader, Radio, finger-first. Everything in this
+> section is a later phase, not a dropped feature; the Tab S11 keeps the pen
+> (§4), which is where writing and calligraphy live. See §23 "Deferred".
+
 - **Quick Capture:** write a word or phrase I just saw or heard; Kabar transcribes, explains and saves it. Investigate whether pen-removal events are available to open it automatically; otherwise use a quick-settings tile or app shortcut.
 - Pen hover popovers in the Reader, lessons and persona chats.
 - Lasso lookup and highlight-to-save, same as on the tablet.
@@ -124,7 +129,7 @@ The tablet is where Kabar becomes creative.
 - **End-of-day recap:** 30 seconds — what I learned, one thing to remember, tomorrow's first step.
 - **Smart reminders:** at my chosen times, nudged toward when I actually study (learned from my history). Quiet hours respected; one tap to snooze. **Account-aware:** once I've met today's goal on any device, the others stay silent.
 - **Weekly report** (Thursday evening by default): time, new words, retention, streak, strongest and weakest skills, a note from Kak Nur, next week's focus. The plan adapts automatically.
-- **Monthly level check:** a 10-minute mini placement test that updates the skill radar (reading, listening, writing, speaking, vocabulary) and the forecast: "at this pace you reach BIPA 3 around <date>".
+- **Monthly level check:** a 10-minute mini placement test that updates the skill radar (reading, listening, writing, speaking, vocabulary) and the forecast: "at this pace you reach BIPA 3 around <date>". It can move me **up or down** one level (decided 26 Oct 2026). Down only on clear, sustained evidence (rule in `content/golden/level_check.yaml`, implemented in `crates/core/src/coach/level.rs`), framed as consolidating the base, never a loss: every word, review, Pelita, Koin and achievement stays.
 - **Welcome back:** after a break, a short, light session. No shame, no streak drama.
 - **Rewards:** Pelita, the streak lamp (freezes earned, never bought) · Koin spent in the Warung on cosmetic batik themes · Liga Pribadi, a weekly league against my own past weeks · achievements named after proverbs (*"Sedikit demi sedikit, lama-lama menjadi bukit"*) · souvenirs in the Suitcase.
 - **Learning journal:** an automatic timeline of everything I've done, plus optional handwritten reflections on the tablet.
@@ -194,7 +199,7 @@ The tablet is where Kabar becomes creative.
   - audio, "add to review", status buttons, 👍/👎
 - **Explain this sentence:** grammar (assembled from the grammar library), register, culture, and a natural paraphrase.
 - **Explanation voice:** Egyptian colloquial (بالمصري) / Modern Standard Arabic / English — my choice, per session.
-- **Mac Quick Lookup:** a global hotkey opens a small floating window that analyzes whatever is in the clipboard (verify global-shortcut support in Dioxus desktop).
+- **Mac Quick Lookup:** *deferred (2026-10-26, see §23)* — a global hotkey opens a small floating window that analyzes whatever is in the clipboard (verify global-shortcut support in Dioxus desktop).
 
 ## 12. The Arabic Bridge — جسر
 
@@ -356,7 +361,23 @@ Refine in PLAN.md. Every synced table carries `account_id`, `device_id`, a hybri
 | M11 | Javanese J1–J3, Unggah-Ungguh Simulator, Minimal Pairs | I pass J1 |
 | M12 | Personas, Sinetron, Kabar Radio | a 5-minute episode plays offline on the phone |
 | M5+ | **Teach Kabar** (§26), phase T1: `learn_entry`, review screen, personal dictionary, popover entry point | I teach Kabar a word it didn't know, approve it, and see it in a popover on another device |
-| M13 | Content pipeline v2 (all levels, 10k + 3k glosses) + polish: monthly level check, skill radar + forecast, aksara Jawa calligraphy, widgets, Mac Quick Lookup, offline packs, performance | everything in §25 passes |
+| M13 | Content pipeline v2 (all levels, 10k + 3k glosses) + polish: monthly level check, skill radar + forecast, aksara Jawa calligraphy, widgets, offline packs, performance | everything in §25 passes |
+
+### Deferred (2026-10-26, learner's call)
+
+The core is lessons, reviews, the Reader, the coach and content. These are
+later phases, after M13, and **not** dropped features. The Tab S11 keeps its
+pen throughout: it is the writing device.
+
+| Deferred | Was in | Comes back when |
+|---|---|---|
+| The S Pen on the phone (§5): Quick Capture, hover popovers, lasso lookup, handwritten answers on the S24 Ultra | M5, M6 | the core is comfortable and the phone pen is what's missing |
+| Mac Quick Lookup, the global clipboard hotkey (§11) | M13 | desk study on the Mac asks for it |
+| Mac-only polish beyond running and bundling the app | M13 | the same |
+
+M5 and M6 keep their tablet pen work: popovers, lasso and highlight on the
+Tab S11, write-mode lessons and calligraphy (M9, M13). The phone's own M5/M6
+goals stay too, with tap and scroll instead of the pen.
 
 ## 24. Test texts
 

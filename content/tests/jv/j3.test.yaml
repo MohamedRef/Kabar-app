@@ -1,0 +1,560 @@
+schema: kabar.test/v1
+id: j3.test
+language: jv
+kind: level
+title:
+  ar_eg: اختبار مستوى J3 — صولو (الكراما)
+  ar: اختبار مستوى J3 — صولو (الكراما)
+  en: J3 level test — Solo (krama)
+intro:
+  ar_eg: |
+    وصلت Solo، بلد الجاوي المؤدب! هنا هتختار مستوى الكلام المناسب لكل واحد (صاحبك، البياعة، جدّة صاحبك)، وتستعمل ضماير وكلمات الكراما، وتسأل بأدب، وتعدّ وتفاصل بالكراما في Pasar Klewer.
+    خد وقتك. الكراما صعبة على أي حد في الأول، وحتى نص كراما بيفرّح الناس هنا. السبيلنج العادي أو بتاع الشات (kulo، sampeyan، dereng)، وبعلامات أو من غيرها — كله مقبول.
+    ولو جاي من "Take a flight" عشان تعدّي J3، أهلًا بيك — نفس الأسئلة.
+  ar: |
+    وصلتَ إلى Solo، موطن الجاوية المهذبة! ستختار هنا مستوى الكلام المناسب لكل شخص (صديقك، والبائعة، وجدّة صديقك)، وتستعمل ضمائر الكراما وكلماتها، وتسأل بأدب، وتعدّ وتساوم بالكراما في Pasar Klewer.
+    خذ وقتك؛ الكراما صعبة على الجميع في البداية، وحتى القليل منها يُسعد الناس هنا. تُقبل التهجئة المعيارية أو تهجئة الدردشة (kulo، sampeyan، dereng)، بالعلامات أو بدونها.
+    وإن جئت من "Take a flight" لتتجاوز J3، فأهلًا بك؛ الأسئلة نفسها.
+  en: |
+    You've reached Solo, the home of refined Javanese! Here you'll choose the right speech level for each person (your friend, a seller, a friend's grandmother), use krama pronouns and words, ask politely, and count and bargain in krama at Pasar Klewer.
+    Take your time; krama is hard for everyone at first, and even a little of it makes people smile here. Standard or chat spelling (kulo, sampeyan, dereng), with or without accents, is all accepted.
+    If you came through "Take a flight" to skip J3, welcome: these are the same questions.
+minutes: 30
+pass_mark: 0.75
+scoring: Score = points earned / points available (closed items 1 point unless set; translate items are graded against reference answers first, standard or chat spelling, with or without accents, then AI grade_answer; writing_task and speaking_task are graded by AI against their rubric, each criterion an equal share of the item's points). Pass at >= 0.75. Passing marks J3 complete and opens J4; the same rule applies when the test is taken as the "Take a flight" skip-ahead over J3. Below the mark, show the per-skill results and suggest the units behind the missed items, with no penalty and an open retry. Javanese items stay unverified until the learner approves them.
+sections:
+  - id: listening
+    skill: listening
+    title:
+      ar_eg: الاستماع
+      ar: الاستماع
+      en: Listening
+    instructions:
+      ar_eg: اسمع، وعيد براحتك، واختار اللي سمعته بالظبط أو اكتبه. خلي بالك من كلمات الكراما.
+      ar: استمع وأعِد كما تشاء، ثم اختر ما سمعته بالضبط أو اكتبه، منتبهًا لكلمات الكراما.
+      en: Listen, replay as you like, then pick exactly what you heard or write it. Watch the krama words.
+    items:
+      - id: t01
+        type: listen
+        text: Panjenengan sampun dhahar, Mbah?
+        options: ["Sampéyan sampun nedha, Mbah?", "Panjenengan sampun dhahar, Mbah?", "Kowé wis mangan, Mbah?"]
+        answer: 1
+        words: [panjenengan, dhahar]
+      - id: t02
+        type: listen
+        text: Kula badhé dhateng peken.
+        options: ["Kula badhé dhateng peken.", "Kula dèrèng dhateng peken.", "Kula badhé dhateng Kauman."]
+        answer: 0
+        words: [badhé, dhateng, peken]
+      - id: t03
+        type: listen
+        text: Saking mriki lurus kemawon, lajeng nengen.
+        options:
+          - Saking mriki lurus kemawon, lajeng ngiwa.
+          - Saking mrika lurus kemawon, lajeng nengen.
+          - Saking mriki lurus kemawon, lajeng nengen.
+        answer: 2
+        words: [mriki, lajeng]
+      - id: t04
+        type: listen
+        text: Kalih atus ewu angsal, Bu?
+        options: ["Tigang atus ewu angsal, Bu?", "Kalih atus ewu angsal, Bu?", "Kalih atus seket ewu, Bu?"]
+        answer: 1
+        words: [kalih, angsal]
+      - id: t05
+        type: listen
+        text: Nyuwun sewu, asmanipun sinten?
+        options: ["Nyuwun sewu, asmanipun sinten?", "Nyuwun sewu, Pasar Klewer ing pundi?", "Nyuwun sewu, reginipun pinten?"]
+        answer: 0
+        words: [nyuwun sewu, sinten]
+      - id: t06
+        type: dictation
+        text: Nyuwun sewu, kula mboten ngertos.
+        meaning:
+          ar_eg: لا مؤاخذة، أنا مش فاهم.
+          ar: عذرًا، لا أفهم.
+          en: Excuse me, I don't understand.
+        words: [nyuwun sewu, mboten, ngertos]
+  - id: reading
+    skill: reading
+    title:
+      ar_eg: القراية
+      ar: القراءة
+      en: Reading
+    instructions:
+      ar_eg: اقرا الحوارات والنص بالكراما، وجاوب من اللي مكتوب.
+      ar: اقرأ الحوارات والنص بالكراما، وأجب مما ورد فيها.
+      en: Read the krama dialogues and text, and answer from what they say.
+    items:
+      - id: t07
+        type: multiple_choice
+        question: |
+          Bu Siti: Mangga, Mas. Badhé pados menapa?
+          Mohamed: Kula badhé tumbas batik kangge ibu kula, Bu.
+          Bu Siti: Menika batik tulis, menika batik cap.
+          Mohamed: Batik tulis reginipun pinten?
+          Bu Siti: Tigang atus ewu, Mas.
+          Mohamed: Wah, awis sanget, Bu. Saged kirang?
+          Bu Siti: Kalih atus seket ewu, pripun?
+          Mohamed: Inggih, Bu. Matur nuwun sanget.
+        question_meaning:
+          ar_eg: محمد بيشتري الباتيك لمين؟
+          ar: لمن يشتري محمد الباتيك؟
+          en: Who is Mohamed buying the batik for?
+        options: [untuk ayahnya, untuk ibunya, untuk Bu Siti]
+        answer: 1
+        words: [kangge, ibu kula]
+      - id: t08
+        type: multiple_choice
+        question: |
+          Bu Siti: Mangga, Mas. Badhé pados menapa?
+          Mohamed: Kula badhé tumbas batik kangge ibu kula, Bu.
+          Bu Siti: Menika batik tulis, menika batik cap.
+          Mohamed: Batik tulis reginipun pinten?
+          Bu Siti: Tigang atus ewu, Mas.
+          Mohamed: Wah, awis sanget, Bu. Saged kirang?
+          Bu Siti: Kalih atus seket ewu, pripun?
+          Mohamed: Inggih, Bu. Matur nuwun sanget.
+        question_meaning:
+          ar_eg: محمد هيدفع كام في الآخر؟
+          ar: كم سيدفع محمد في النهاية؟
+          en: How much will Mohamed pay in the end?
+        options: ["Rp300.000", "Rp200.000", "Rp250.000"]
+        answer: 2
+        explain:
+          ar_eg: tigang atus ewu (٣٠٠٫٠٠٠) كان أول سعر؛ نزلت لـ kalih atus seket ewu (٢٥٠٫٠٠٠) ومحمد قال inggih.
+          ar: كان السعر الأول tigang atus ewu (٣٠٠٫٠٠٠)، ثم خفّضته إلى kalih atus seket ewu (٢٥٠٫٠٠٠) فوافق محمد بقوله inggih.
+          en: tigang atus ewu (300,000) was the first price; she came down to kalih atus seket ewu (250,000) and Mohamed said inggih.
+        words: [tigang atus, kalih atus seket]
+      - id: t09
+        type: multiple_choice
+        question: Wah, awis sanget, Bu. Saged kirang?
+        question_meaning:
+          ar_eg: محمد قال كده في الحوار. يقصد إيه؟ (اختار الجملة الإندونيسي)
+          ar: قال محمد هذا في الحوار. ماذا يقصد؟ (اختر الجملة الإندونيسية)
+          en: Mohamed says this in the dialogue. What does he mean? (Pick the Indonesian.)
+        options:
+          - Wah, mahal sekali, Bu. Bisa kurang?
+          - Wah, murah sekali, Bu. Bisa tambah?
+          - Wah, bagus sekali, Bu. Bisa lihat?
+        answer: 0
+        words: [awis, saged, kirang]
+      - id: t10
+        type: multiple_choice
+        question: |
+          Mohamed: Nyuwun sewu, Mbah. Pasar Triwindu ing pundi, nggih?
+          Mbah Darmi: Celak kemawon, Mas. Saking mriki lurus kemawon, lajeng ngiwa.
+          Mohamed: Saged mlampah, Mbah?
+          Mbah Darmi: Saged, Mas. Mboten tebih.
+        question_meaning:
+          ar_eg: Pasar Triwindu بعيد؟
+          ar: هل Pasar Triwindu بعيد؟
+          en: Is Pasar Triwindu far?
+        options: ["Jauh, harus naik ojek.", "Dekat, bisa jalan kaki.", "Pasarnya tutup hari ini."]
+        answer: 1
+        words: [celak, tebih, mlampah]
+      - id: t11
+        type: multiple_choice
+        question: |
+          Mohamed: Nyuwun sewu, Mbah. Pasar Triwindu ing pundi, nggih?
+          Mbah Darmi: Celak kemawon, Mas. Saking mriki lurus kemawon, lajeng ngiwa.
+          Mohamed: Saged mlampah, Mbah?
+          Mbah Darmi: Saged, Mas. Mboten tebih.
+        question_meaning:
+          ar_eg: يروح إزاي؟
+          ar: كيف يصل إلى هناك؟
+          en: Which way does he go?
+        options: ["Lurus, lalu belok kanan.", "Belok kiri, lalu lurus.", "Lurus, lalu belok kiri."]
+        answer: 2
+        words: [lurus, lajeng, ngiwa]
+      - id: t12
+        type: multiple_choice
+        question: |
+          DAMEL BATIK TULIS
+          Rumiyin, motifipun dipungambar wonten kain. Lajeng dipunbatik ngginakaken canthing lan malam. Lajeng kainipun dipuncelup. Damelipun dangu: batik tulis saged sewulan. Reginipun awis, amargi damelipun dangu.
+        question_meaning:
+          ar_eg: حسب النص، الباتيك المرسوم بالإيد غالي ليه؟
+          ar: بحسب النص، لماذا الباتيك المرسوم باليد غالٍ؟
+          en: According to the text, why is hand-drawn batik expensive?
+        options: ["Karena kainnya dari luar negeri.", "Karena canthing-nya mahal.", "Karena membuatnya lama."]
+        answer: 2
+        words: [amargi, dangu]
+      - id: t13
+        type: multiple_choice
+        question: |
+          DAMEL BATIK TULIS
+          Rumiyin, motifipun dipungambar wonten kain. Lajeng dipunbatik ngginakaken canthing lan malam. Lajeng kainipun dipuncelup. Damelipun dangu: batik tulis saged sewulan. Reginipun awis, amargi damelipun dangu.
+        question_meaning:
+          ar_eg: إيه أول خطوة؟
+          ar: ما الخطوة الأولى؟
+          en: What is the first step?
+        options: ["Kainipun dipuncelup.", "Motifipun dipungambar wonten kain.", "Dipunbatik ngginakaken canthing."]
+        answer: 1
+        words: [rumiyin, dipun-]
+  - id: vocabulary
+    skill: vocabulary
+    title:
+      ar_eg: الكلمات
+      ar: المفردات
+      en: Vocabulary
+    items:
+      - id: t14
+        type: match_pairs
+        pairs:
+          - text: sampun
+            ar_eg: خلاص، بالفعل (= wis)
+            ar: قد، بالفعل (= wis)
+            en: already (= wis)
+          - text: dèrèng
+            ar_eg: لسه (= durung)
+            ar: لم … بعد (= durung)
+            en: not yet (= durung)
+          - text: badhé
+            ar_eg: هـ… / ناوي (= arep)
+            ar: سوف، ينوي (= arep)
+            en: going to (= arep)
+          - text: mboten
+            ar_eg: مش، لأ (= ora)
+            ar: لا، ليس (= ora)
+            en: not, no (= ora)
+          - text: wonten
+            ar_eg: فيه، موجود (= ana)
+            ar: يوجد، موجود (= ana)
+            en: there is, be present (= ana)
+        words: [sampun, dèrèng, badhé, mboten, wonten]
+      - id: t15
+        type: match_pairs
+        pairs:
+          - text: setunggal
+            ar_eg: واحد (1)
+            ar: واحد (1)
+            en: one (1)
+          - text: kalih
+            ar_eg: اتنين (2)
+            ar: اثنان (2)
+            en: two (2)
+          - text: sekawan
+            ar_eg: أربعة (4)
+            ar: أربعة (4)
+            en: four (4)
+          - text: gangsal
+            ar_eg: خمسة (5)
+            ar: خمسة (5)
+            en: five (5)
+          - text: sedasa
+            ar_eg: عشرة (10)
+            ar: عشرة (10)
+            en: ten (10)
+        words: [setunggal, kalih, sekawan, gangsal, sedasa]
+      - id: t16
+        type: match_pairs
+        pairs:
+          - text: regi
+            ar_eg: السعر (= rega)
+            ar: السعر (= rega)
+            en: price (= rega)
+          - text: awis
+            ar_eg: غالي (= larang)
+            ar: غالٍ (= larang)
+            en: expensive (= larang)
+          - text: mirah
+            ar_eg: رخيص (= murah)
+            ar: رخيص (= murah)
+            en: cheap (= murah)
+          - text: tumbas
+            ar_eg: يشتري (= tuku)
+            ar: يشتري (= tuku)
+            en: to buy (= tuku)
+        words: [regi, awis, mirah, tumbas]
+      - id: t17
+        type: fill_blank
+        sentence: ___ ewu angsal, Bu?
+        meaning:
+          ar_eg: خمسة وعشرين ألف ينفع يا ست؟ (بالكراما)
+          ar: هل يناسبك خمسة وعشرون ألفًا يا سيدتي؟ (بالكراما)
+          en: Is twenty-five thousand OK, ma'am? (in krama)
+        options: [Selawé, Gangsal, Selangkung]
+        answers: [Selangkung]
+        explain:
+          ar_eg: selawé (٢٥) نغوكو؛ في الكراما بنقول selangkung. وgangsal = خمسة.
+          ar: selawé (٢٥) من النغوكو، وفي الكراما نقول selangkung، أما gangsal فتعني خمسة.
+          en: selawé (25) is ngoko; in krama it's selangkung. gangsal is five.
+        words: [selangkung]
+      - id: t18
+        type: multiple_choice
+        question_meaning:
+          ar_eg: إزاي تقول ٣٠٠٠ بالكراما؟
+          ar: كيف تقول ٣٠٠٠ بالكراما؟
+          en: How do you say 3,000 in krama?
+        options: [tiga ewu, tigang ewu, telung ewu]
+        answer: 1
+        words: [tigang, ewu]
+  - id: grammar
+    skill: grammar
+    title:
+      ar_eg: القواعد ومستوى الكلام
+      ar: القواعد ومستوى الكلام
+      en: Grammar and speech level
+    items:
+      - id: t19
+        type: multiple_choice
+        question_meaning:
+          ar_eg: بتشتري من Bu Siti، بياعة كبيرة في السن مش عارفها قوي. تكلمها بأنهي مستوى؟
+          ar: تشتري من Bu Siti، بائعة مسنّة لا تعرفها جيدًا. بأيّ مستوى تكلّمها؟
+          en: You're buying from Bu Siti, an older seller you don't know well. Which level do you use?
+        options: [ngoko, krama, krama andhap]
+        answer: 1
+        words: [krama, unggah-ungguh]
+      - id: t20
+        type: multiple_choice
+        question_meaning:
+          ar_eg: جدّة صاحبك بتسألك أكلت ولا لأ، وإنت أكلت. تقول إيه؟
+          ar: تسألك جدّة صديقك إن كنت قد أكلت، وقد أكلت. ماذا تقول؟
+          en: Your friend's grandmother asks whether you've eaten, and you have. What do you say?
+        options: ["Kula sampun dhahar.", "Aku wis dhahar.", "Kula sampun nedha."]
+        answer: 2
+        explain:
+          ar_eg: dhahar (كراما إنجيل) بتتقال عن الشخص اللي بتحترمه بس، عمرك ما تقولها عن نفسك. عن نفسك قول nedha.
+          ar: dhahar (كراما إنغيل) تُقال عن الشخص المُكرَّم فقط، ولا تُقال عن النفس؛ وعن نفسك تقول nedha.
+          en: dhahar (krama inggil) is only for the person you honour, never for yourself; about yourself say nedha.
+        words: [nedha, dhahar]
+      - id: t21
+        type: fill_blank
+        sentence: Mbah, ___ sampun dhahar?
+        meaning:
+          ar_eg: يا تيتة، حضرتك أكلتي؟
+          ar: يا جدّتي، هل تناولتِ طعامك؟
+          en: Grandma, have you eaten?
+        options: [kula, kowé, panjenengan]
+        answers: [panjenengan]
+        words: [panjenengan]
+      - id: t22
+        type: multiple_choice
+        question_meaning:
+          ar_eg: 'بتحكي لـ Bu Siti عن Dimas (مش موجود): "هو من Yogya". أنهي جملة؟'
+          ar: 'تخبر Bu Siti عن Dimas (وهو غائب): "إنه من Yogya". أيّ جملة؟'
+          en: You tell Bu Siti about Dimas, who isn't there — "He's from Yogya". Which sentence?
+        options: ["Dheweke saka Yogya.", "Piyambakipun saking Yogya.", "Panjenengan saking Yogya."]
+        answer: 1
+        words: [piyambakipun, saking]
+      - id: t23
+        type: fill_blank
+        sentence: Inggih, kula ___ sinau krama.
+        meaning:
+          ar_eg: أيوه، أنا لسه بتعلم كراما.
+          ar: نعم، ما زلت أتعلم الكراما.
+          en: Yes, I'm still learning krama.
+        options: [isih, taksih, dèrèng]
+        answers: [taksih]
+        explain:
+          ar_eg: isih معناها لسه بس نغوكو؛ في جملة كراما (inggih، kula) استعمل taksih.
+          ar: isih تعني "ما زال" لكنها نغوكو؛ وفي جملة كراما (inggih، kula) نستعمل taksih.
+          en: isih means still, but it's ngoko; in a krama sentence (inggih, kula) use taksih.
+        words: [taksih]
+      - id: t24
+        type: fill_blank
+        sentence: Kula dhateng Kauman ___ Mas Dimas.
+        meaning:
+          ar_eg: أنا رايح Kauman مع Dimas.
+          ar: أذهب إلى Kauman مع Dimas.
+          en: I'm going to Kauman with Dimas.
+        options: [dhateng, kaliyan, saking]
+        answers: [kaliyan]
+        words: [kaliyan]
+      - id: t25
+        type: fill_blank
+        sentence: Nyuwun sewu, Bu, Pasar Klewer ing ___?
+        meaning:
+          ar_eg: لا مؤاخذة يا ست، Pasar Klewer فين؟
+          ar: عذرًا يا سيدتي، أين Pasar Klewer؟
+          en: Excuse me, ma'am, where is Pasar Klewer?
+        options: [menapa, sinten, pundi]
+        answers: [pundi]
+        words: [pundi]
+      - id: t26
+        type: fill_blank
+        sentence: Dèrèng, Bu. Kula dèrèng ___.
+        meaning:
+          ar_eg: لسه يا ست. أنا لسه ما كلتش. (اكتب الفعل بالكراما)
+          ar: ليس بعد يا سيدتي. لم آكل بعد. (اكتب الفعل بالكراما)
+          en: Not yet, ma'am. I haven't eaten yet. (type the krama verb)
+        answers: [nedha, Nedha, neda, Neda]
+        words: [nedha, dèrèng]
+      - id: t27
+        type: multiple_choice
+        question: regi + -né
+        question_meaning:
+          ar_eg: regi (سعر) + لاحقة الكراما اللي بتقابل -né = ؟
+          ar: regi (السعر) + لاحقة الكراما المقابلة لـ -né = ؟
+          en: regi (price) + the krama suffix for -né = ?
+        options: [reginé, reginipun, regiipun]
+        answer: 1
+        explain:
+          ar_eg: بعد حرف متحرك بنحط -nipun (reginipun)، وبعد ساكن -ipun (batikipun).
+          ar: بعد الحرف الصائت نضيف -nipun (reginipun)، وبعد الصامت -ipun (batikipun).
+          en: After a vowel add -nipun (reginipun); after a consonant add -ipun (batikipun).
+        words: [-ipun, -nipun]
+      - id: t28
+        type: fill_blank
+        sentence: Batikipun ___ wonten Laweyan.
+        meaning:
+          ar_eg: الباتيك اتعمل في Laweyan.
+          ar: صُنع الباتيك في Laweyan.
+          en: The batik was made in Laweyan.
+        options: [digawé, dipundamel, dipungawé]
+        answers: [dipundamel]
+        explain:
+          ar_eg: 'في الكراما المجهول dipun- والفعل نفسه كمان كراما: damel (مش gawé).'
+          ar: 'في الكراما يكون المبني للمجهول بـ dipun-، ويكون الفعل نفسه كراما أيضًا: damel لا gawé.'
+          en: 'In krama the passive is dipun-, and the verb itself is krama too: damel, not gawé.'
+        words: [dipundamel]
+      - id: t29
+        type: fill_blank
+        sentence: Kula ___ batik kangge ibu kula.
+        meaning:
+          ar_eg: أنا بشتري باتيك لماما.
+          ar: أشتري باتيك لأمي.
+          en: I'm buying batik for my mother.
+        options: [tukokaké, tumbasaké, tumbasaken]
+        answers: [tumbasaken]
+        words: [tumbasaken, -aken]
+      - id: t30
+        type: build_sentence
+        source:
+          ar_eg: لا مؤاخذة يا حاج، Pura Mangkunegaran فين؟
+          ar: عذرًا يا سيدي، أين Pura Mangkunegaran؟
+          en: Excuse me, sir, where is Pura Mangkunegaran?
+        answer: Nyuwun sewu, Pak, Pura Mangkunegaran ing pundi?
+        distractors: [ngendi, sinten]
+        words: [nyuwun sewu, ing pundi]
+  - id: writing
+    skill: writing
+    title:
+      ar_eg: الكتابة
+      ar: الكتابة
+      en: Writing
+    instructions:
+      ar_eg: اكتب بالكراما. السبيلنج العادي أو بتاع الشات (kulo، sampeyan، dereng)، وبعلامات أو من غيرها — كله مقبول.
+      ar: اكتب بالكراما. تُقبل التهجئة المعيارية أو تهجئة الدردشة (kulo، sampeyan، dereng)، بالعلامات أو بدونها.
+      en: Write in krama. Standard or chat spelling (kulo, sampeyan, dereng), with or without accents, is all fine.
+    items:
+      - id: t31
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: (بالكراما) أنا لسه ما كلتش.
+          ar: (بالكراما) لم آكل بعد.
+          en: (in krama) I haven't eaten yet.
+        answers:
+          - Kula dèrèng nedha.
+          - Kula dèrèng nedha
+          - Kula dereng nedha.
+          - Kula dereng nedha
+          - Kulo dereng nedha.
+          - Kulo dereng nedha
+          - Kulo dereng neda.
+          - Kulo dereng neda
+          - Dèrèng, kula dèrèng nedha.
+          - Dèrèng, kula dèrèng nedha
+          - Dèrèng kula dèrèng nedha.
+          - Dèrèng kula dèrèng nedha
+          - Dereng, kula dereng nedha.
+          - Dereng, kula dereng nedha
+          - Dereng kula dereng nedha.
+          - Dereng kula dereng nedha
+          - Dereng, kulo dereng nedha.
+          - Dereng, kulo dereng nedha
+          - Dereng kulo dereng nedha.
+          - Dereng kulo dereng nedha
+          - Dereng, kulo dereng neda.
+          - Dereng, kulo dereng neda
+          - Dereng kulo dereng neda.
+          - Dereng kulo dereng neda
+        words: [dèrèng, nedha]
+      - id: t32
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: (بالكراما، لبياعة كبيرة) لا مؤاخذة يا ست، بكام؟ ممكن تنزّلي شوية؟
+          ar: (بالكراما، لبائعة مسنّة) عذرًا يا سيدتي، كم السعر؟ هل يمكن أن تخفّضيه؟
+          en: (in krama, to an older seller) Excuse me, ma'am, how much is it? Could you lower it?
+        answers:
+          - Nyuwun sewu, Bu, reginipun pinten? Saged kirang?
+          - Nyuwun sewu, Bu, reginipun pinten? Saged kirang
+          - Nyuwun sewu Bu reginipun pinten? Saged kirang?
+          - Nyuwun sewu Bu reginipun pinten? Saged kirang
+          - Nyuwun sewu, Bu, reginipun pinten? Saged kirang, Bu?
+          - Nyuwun sewu, Bu, reginipun pinten? Saged kirang, Bu
+          - Nyuwun sewu Bu reginipun pinten? Saged kirang Bu?
+          - Nyuwun sewu Bu reginipun pinten? Saged kirang Bu
+          - Nyuwun sewu, Bu, menika pinten? Saged kirang?
+          - Nyuwun sewu, Bu, menika pinten? Saged kirang
+          - Nyuwun sewu Bu menika pinten? Saged kirang?
+          - Nyuwun sewu Bu menika pinten? Saged kirang
+          - Nyuwun sewu, Bu, niki pinten? Saged kirang?
+          - Nyuwun sewu, Bu, niki pinten? Saged kirang
+          - Nyuwun sewu Bu niki pinten? Saged kirang?
+          - Nyuwun sewu Bu niki pinten? Saged kirang
+        words: [nyuwun sewu, reginipun, pinten, kirang]
+      - id: t33
+        type: writing_task
+        points: 4
+        prompt:
+          ar_eg: |
+            هتبعت رسالة لـ Pak Harjo، تاجر الباتيك الكبير في السن. حوّل الرسالة دي من النغوكو للكراما، وزوّد في أولها تحية وفي آخرها شكر:
+            "Aku Mohamed, saka Mesir. Aku isih sinau basa Jawa. Aku arep nang pasar karo Mas Dimas. Aku arep tuku batik kanggo ibuku. Regané pira?"
+          ar: |
+            سترسل رسالة إلى Pak Harjo، تاجر الباتيك المسنّ. حوّل هذه الرسالة من النغوكو إلى الكراما، وأضف تحية في أولها وشكرًا في آخرها:
+            "Aku Mohamed, saka Mesir. Aku isih sinau basa Jawa. Aku arep nang pasar karo Mas Dimas. Aku arep tuku batik kanggo ibuku. Regané pira?"
+          en: |
+            You're messaging Pak Harjo, the elderly batik merchant. Turn this ngoko message into krama, and add a greeting at the start and thanks at the end:
+            "Aku Mohamed, saka Mesir. Aku isih sinau basa Jawa. Aku arep nang pasar karo Mas Dimas. Aku arep tuku batik kanggo ibuku. Regané pira?"
+        rubric:
+          - Swaps the pronouns and possessives correctly (aku → kula, ibuku → ibu kula) and never uses krama inggil about himself.
+          - Swaps the function words (saka → saking, isih → taksih, arep → badhé, nang → dhateng, karo → kaliyan, kanggo → kangge).
+          - Swaps the content words and questions (pasar → peken, tuku → tumbas, basa Jawa → basa Jawi, regané pira → reginipun pinten).
+          - Opens and closes politely (sugeng enjing / nyuwun sewu …, matur nuwun) with no ngoko left in the message.
+        sample: |
+          Sugeng enjing, Pak Harjo. Kula Mohamed, saking Mesir. Kula taksih sinau basa Jawi.
+          Kula badhé dhateng peken kaliyan Mas Dimas. Kula badhé tumbas batik kangge ibu kula. Reginipun pinten?
+          Matur nuwun sanget, Pak.
+        words: [kula, saking, taksih, badhé, kaliyan, kangge]
+  - id: speaking
+    skill: speaking
+    title:
+      ar_eg: الكلام
+      ar: المحادثة
+      en: Speaking
+    instructions:
+      ar_eg: اتكلم براحتك وبالراحة. أهم حاجة تختار المستوى الصح لكل شخص.
+      ar: تكلّم بهدوء وارتياح؛ الأهم أن تختار المستوى المناسب لكل شخص.
+      en: Speak calmly and at ease. Above all, pick the right level for each person.
+    items:
+      - id: t34
+        type: speaking
+        text: Nyuwun sewu, Mbah. Pasar Triwindu ing pundi, nggih?
+        meaning:
+          ar_eg: لا مؤاخذة يا حاجّة. Pasar Triwindu فين لو سمحتي؟
+          ar: عذرًا يا جدّتي. أين Pasar Triwindu من فضلك؟
+          en: Excuse me, Grandma. Where is Pasar Triwindu, please?
+        words: [nyuwun sewu, ing pundi, nggih]
+      - id: t35
+        type: speaking_task
+        points: 4
+        prompt:
+          ar_eg: 'Dimas خدك لبيت جدّته (Mbah Putri). اتكلم حوالي دقيقة ونص: سلّم عليها وعرّفها بنفسك بالكراما، ردّ لما تسألك ''Mas Mohamed sampun nedha?'' (إنت لسه ما كلتش)، اسألها هي كمان أكلت ولا لأ، وبعدين قول لـ Dimas بالنغوكو ''يلا نروّح''.'
+          ar: 'اصطحبك Dimas إلى بيت جدّته (Mbah Putri). تحدّث نحو دقيقة ونصف: حيِّها وعرّف بنفسك بالكراما، وأجب حين تسألك ''Mas Mohamed sampun nedha?'' (لم تأكل بعد)، واسألها هي أيضًا إن كانت قد أكلت، ثم قل لـ Dimas بالنغوكو ''هيّا نعود إلى البيت''.'
+          en: 'Dimas takes you to his grandmother''s house (Mbah Putri). Talk for about a minute and a half: greet her and introduce yourself in krama, answer when she asks ''Mas Mohamed sampun nedha?'' (you haven''t eaten yet), ask whether she has eaten, then tell Dimas in ngoko ''let''s go home''.'
+        rubric:
+          - Uses krama with the grandmother (sugeng …, nami kula …, kula saking …, dèrèng, matur nuwun) and krama inggil for her (panjenengan, dhahar).
+          - Never uses krama inggil about himself (kula … nedha, not dhahar) and answers "Dalem?" or "Inggih" naturally when addressed.
+          - Switches to ngoko with Dimas (ayo mulih, Mas), showing he chooses the level by the listener.
+          - Speaks slowly and clearly enough for an elder to follow; small slips are fine.
+        sample: |
+          Sugeng sonten, Mbah. Nami kula Mohamed, kula saking Mesir. Kula taksih sinau basa Jawi.
+          Dèrèng, Mbah, kula dèrèng nedha. Matur nuwun. Panjenengan sampun dhahar?
+          Mas Dimas, ayo mulih!
+        words: [nami kula, panjenengan, dhahar, nedha]
+review:
+  status: draft
+  verified: false

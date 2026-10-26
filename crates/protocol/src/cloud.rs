@@ -29,6 +29,9 @@ pub enum ErrorCode {
     QuotaExhausted,
     /// The upstream TTS service failed.
     Upstream,
+    /// `EngineCall::image_sha256` names an image the server doesn't have
+    /// (never uploaded, or older than a week): upload it and retry.
+    BlobMissing,
     Internal,
 }
 
@@ -222,6 +225,15 @@ impl Voice {
 pub struct TtsSegment {
     pub voice: Voice,
     pub text: String,
+    /// Pitch in percent relative to the voice, -20..=20. Azure has two
+    /// voices per language, so story characters share them and differ in
+    /// pitch. Older servers ignore it.
+    #[serde(default, skip_serializing_if = "is_zero")]
+    pub pitch_percent: i8,
+}
+
+fn is_zero(v: &i8) -> bool {
+    *v == 0
 }
 
 /// `POST /v1/tts` → `audio/mpeg` (24 kHz mono MP3). The server builds the
@@ -255,9 +267,114 @@ pub struct VaultStatus {
     pub push_configured: bool,
 }
 
+// --- usage (the cost dashboard) ----------------------------------------------
+
+/// A metered service behind a hard stop. Unknown services from a newer
+/// server are `Other`, so an old app skips them instead of failing.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum UsageService {
+    WorkersAi,
+    GeminiFree,
+    Claude,
+    AzureTts,
+    #[serde(other)]
+    Other,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum UsageUnit {
+    Requests,
+    Characters,
+    Neurons,
+    RowsRead,
+    RowsWritten,
+    #[serde(other)]
+    Other,
+}
+
+/// How often a counter starts again (at 00:00 UTC).
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum UsagePeriod {
+    Day,
+    Month,
+    #[serde(other)]
+    Other,
+}
+
+/// One service's counter for its current period.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct ServiceUsage {
+    pub service: UsageService,
+    pub unit: UsageUnit,
+    pub used: u64,
+    /// Kabar's hard stop, kept under the provider's free limit. A call that
+    /// would cross it is refused before it is made.
+    pub limit: u64,
+    pub period: UsagePeriod,
+    /// When the counter starts again (Unix ms, UTC).
+    pub resets_at_ms: u64,
+    /// Switched on on the server (Claude is off unless the learner opts in).
+    pub enabled: bool,
+    /// Its key or binding is present.
+    pub configured: bool,
+}
+
+/// A Cloudflare platform limit, for information only: on the Free plan
+/// Cloudflare has no card on file and cannot bill; it stops serving instead.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct PlatformLimit {
+    /// e.g. "Workers", "Durable Objects", "D1".
+    pub name: String,
+    pub unit: UsageUnit,
+    pub limit: u64,
+    pub period: UsagePeriod,
+}
+
+/// `GET /v1/usage` — what Kabar Cloud has used this period, and what it spent.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct UsageReport {
+    pub services: Vec<ServiceUsage>,
+    #[serde(default)]
+    pub platform: Vec<PlatformLimit>,
+    /// Money spent this month, in US cents. Always 0 while hard stops are on.
+    pub spend_usd_cents: u64,
+    /// Every metered service refuses calls past its free limit.
+    #[serde(default = "always")]
+    pub hard_stops: bool,
+    pub generated_at_ms: u64,
+}
+
+fn always() -> bool {
+    true
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn usage_report_tolerates_newer_servers() {
+        let json = r#"{
+            "services": [
+                {"service":"gemini_free","unit":"requests","used":12,"limit":1000,"period":"day",
+                 "resets_at_ms":1793059200000,"enabled":true,"configured":true},
+                {"service":"mistral_free","unit":"tokens","used":1,"limit":2,"period":"hour",
+                 "resets_at_ms":0,"enabled":true,"configured":true,"extra":1}
+            ],
+            "spend_usd_cents": 0,
+            "generated_at_ms": 1793011856000
+        }"#;
+        let r: UsageReport = serde_json::from_str(json).unwrap();
+        assert_eq!(r.services[0].service, UsageService::GeminiFree);
+        assert_eq!(r.services[1].service, UsageService::Other);
+        assert_eq!(r.services[1].unit, UsageUnit::Other);
+        assert_eq!(r.services[1].period, UsagePeriod::Other);
+        assert!(r.hard_stops);
+        assert!(r.platform.is_empty());
+    }
 
     #[test]
     fn unknown_platform_is_other() {

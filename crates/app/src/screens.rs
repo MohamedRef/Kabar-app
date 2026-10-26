@@ -189,7 +189,7 @@ pub fn SettingsScreen() -> Element {
                     },
                     "{ui.t(Msg::SettingsShowWelcome)}"
                 }
-                for screen in [Screen::Devices, Screen::Teach, Screen::Studio, Screen::PenLab] {
+                for screen in [Screen::Devices, Screen::Cost, Screen::Teach, Screen::Studio, Screen::PenLab] {
                     button {
                         key: "{screen:?}",
                         onclick: move |_| {
@@ -202,5 +202,6 @@ pub fn SettingsScreen() -> Element {
             }
         }
         crate::coach::settings::CoachSettings {}
+        crate::data_export::ExportCard {}
     }
 }

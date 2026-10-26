@@ -53,7 +53,7 @@ kabar/
 │  ├─ server/      # Kabar Cloud: Worker + Durable Object (workers-rs), wrangler.toml
 │  ├─ home/        # Kabar Home: small HTTP service fronting Ollama / NLLB / whisper.cpp
 │  └─ tools/       # content pipeline, dictionary import, audio pre-gen, bake-off runner, backups
-├─ android/        # Kotlin: Credential Manager, FCM, share target, ML Kit (OCR + ink), widgets, pen extras
+├─ android/        # Kotlin: Credential Manager, FCM, share target, ML Kit (OCR + ink), widgets
 ├─ prompts/        # versioned prompt templates (task@vN.md)
 ├─ content/        # build-time content (JSON/YAML, schema-validated), packed into content packs
 ├─ curriculum/     # indonesian.yaml, javanese.yaml
@@ -85,7 +85,7 @@ Every synced row: `id` (UUIDv7), `account_id`, `device_id`, `hlc` (64-bit: 48-bi
 | Reading | texts, text_tokens, word_status, highlights | texts/highlights: LWW · word_status: LWW per (lexeme) |
 | Learning | cards, review_log, curriculum_nodes, lessons, exercises, attempts, conversations, stories, souvenirs | review_log/attempts/xp_events: **append-only** · cards: derived from review_log · lessons/exercises: content pack |
 | Ink | notebooks, ink_documents, ink_strokes | strokes **immutable** (delete = event) · documents: LWW |
-| Coach | goals, daily_plans, reminders, reports, journal_entries, coach_memory, skill_scores | LWW (plans keyed by date) · journal: append-only |
+| Coach | goals, daily_plans, reminders, reports, journal_entries, coach_memory, skill_scores | LWW (plans keyed by date; journal reflections LWW per id, tombstone on delete) |
 | Account | accounts, devices, sessions (Lanjut), push_tokens, sync_events | server-owned; sessions LWW |
 | Quality | engine_runs, quality_feedback, golden_items | append-only |
 | System | content_packs, ai_cache, audio_cache, quota_usage, settings, cost_log, outbox | settings LWW · ai_cache shared via D1 · outbox local |
@@ -157,8 +157,8 @@ M1 starts with the riskiest spikes, each a day or less: (a) Dioxus Android build
 | Risk | Impact | Mitigation |
 |---|---|---|
 | No official Kotlin interop in Dioxus | sign-in, push, ML Kit, share target | spike in M1; JNI + activity class loader; fallback Gradle template |
-| Android WebView pen events (hover, tilt, eraser, barrel button) incomplete | pen features | Pen Lab measures; native `MotionEvent` bridge for what's missing |
-| Ink latency in WebView | "feels attached to the pen" | desynchronized canvas, predicted events; measure in Pen Lab; native front-buffer layer as last resort |
+| Android WebView pen events (hover, tilt, eraser, barrel button) incomplete | tablet pen features | measured on the S24 Ultra 2026-10-26 ([PENLAB.md](PENLAB.md)): 426 pressure levels, tilt and hover work, ~60 Hz, no barrel button. Phone pen features are deferred (SPEC §23), so the remaining risk is the Tab S11's |
+| Ink latency in WebView | "feels attached to the pen" | settled: the learner says the ink feels attached (8.6 ms p50 input delay), so the web ink stays and the native front-buffer layer is not needed |
 | Worker 10 ms CPU | timeouts | thin Worker, heavy work in DO / devices; Ed25519 JWT |
 | Gemini free tier trains on inputs and limits shift | privacy, availability | learning text only; `personal` tasks blocked by code; Workers AI + local as alternatives |
 | Javanese quality from free models | wrong teaching | build-time content, dictionary cross-check, "unverified" badge, your review |
@@ -203,3 +203,78 @@ The learner teaches Kabar words it doesn't know. Phase T1 ships with M5.
 - **Popover.** The Reader looks the word up in `PersonalDictionary` first (`lookup_forms`, same form order as the prebuilt glossary). Approved entries show above the prebuilt gloss with a "taught by you" badge; drafts only show a "review your draft" chip. The Reader owns the button in the popover card; it fills `TeachSeed` and opens `Screen::Teach`.
 - **Web lookup (free only).** "Search Google" opens `https://www.google.com/search?q=<word>+artinya` (Javanese: `+tegese`) in the browser; Kabar never scrapes Google. Wiktionary's REST definition API (`https://en.wiktionary.org/api/rest_v1/page/definition/<word>`, free, no key, CORS-enabled) is fetched from the WebView and parsed in core. Pasted links are fetched from the WebView too; when a site blocks that (CORS), the screen asks the learner to paste the text (T2 moves this fetch to Kabar Cloud).
 - **Later (T2, M13).** Cloud-side link fetch, vision for screenshots without OCR text, a "taught by you" review deck, and exporting approved entries into `content/glosses/` batches.
+
+## 16. Personas, Sinetron, Kabar Radio (M12, app side)
+
+Done when (spec §23): a 5-minute Kabar Radio episode plays offline on the phone. The curriculum thread writes the content: `content/personas/`, `content/stories/sinetron/` and `content/radio/`, with schemas `kabar.persona/v1`, `kabar.story/v1` and `kabar.radio/v1`. This milestone is the runtime that plays that content and talks with it.
+
+```
+ content/*.yaml ──(include_str, parsed at start)──▶ kabar_protocol::story types
+                                                         │
+   Persona chat ──▶ Router(roleplay_turn) ──▶ CloudEngine ──▶ POST /v1/ai (Workers AI first)
+        │
+        └─ every line, Sinetron, Radio ──▶ AudioCache ──miss──▶ POST /v1/tts (Azure F0) ──▶ <data>/audio/<sha>.mp3
+                                              └─ quota / offline ──▶ system TTS (id) or "audio later" (jv)
+```
+
+**Phase A: plumbing (no content dependency).**
+- **`CloudEngine`** in `crates/app/src/cloud`:
+  - Implements `kabar_core::ai::Engine` over `POST /v1/ai`, using the signed-in session.
+  - Registered in `ai_router()`, which has no engines today.
+  - One engine for each id the proxy serves (`workers_ai`, `gemini_free`, `claude`). The router still chooses by `prompts/routes.toml`, the $0 hard stop and the personal flag.
+  - The router cache is backed by SQLite (`ai_cache`, local, not synced).
+- **`AudioCache`**:
+  - Fetches from `POST /v1/tts` and keeps each MP3 forever under the app data dir (`audio/`), keyed by sha256(voice, pitch, rate, text). The files themselves are the index: "free up space" and download progress read the directory.
+  - Lessons and reviews already use it: with Kabar Cloud live (or the line cached), a line plays in Gadis's (id) or Siti's (jv) neural voice.
+  - Missing audio never blocks anything. Indonesian falls back to the system voice (the existing `speak` path). Javanese shows "audio comes later" until the quota resets.
+- **`TtsSegment` gains an optional `pitch_percent`** (−20..=20, default 0); the server adds `<prosody pitch>`. Azure has only two voices per language, so the Sinetron cast has to share them, and pitch tells the characters apart. The change is additive and versioned, and old clients send nothing.
+
+**Phase B: Sinetron and Kabar Radio (needs content PR #25).**
+- **Types:** Rust structs for the three formats live in `kabar_protocol::story`: `Persona`, `Story`, `RadioEpisode` and `Line { speaker, text, ar_eg, ar, en, note, correction }`. A test parses every committed file.
+- **Sinetron player:**
+  - One episode unlocks per finished unit (`unlock_after`, read from the Journey's completed lessons).
+  - It plays scene by scene and line by line, with audio.
+  - The translation, in the chosen voice (arz, ar or en), can be shown or hidden per line. Notes are tappable chips.
+  - New words and the episode's questions come at the end, reusing the lesson exercise components.
+  - The speaker → voice map lives in one place (e.g. Pak Budi = Ardi −10 % pitch, Sari = Gadis).
+- **Kabar Radio:**
+  - Plays the unit's two-host episode segment by segment: intro, dialogue, word spotlight, recap, outro.
+  - A transcript follows the audio.
+  - **Download for offline** fetches every line into `AudioCache` and writes one joined MP3 per episode, so it plays as a single track. The lines share one encoding, so the MP3 frames simply concatenate.
+  - Downloads are per unit, and a "free up space" button removes them.
+- **Background playback** with the screen off (earbuds on the way out) needs an Android `MediaSession` foreground service in Kotlin. It is part of M12, but it lands last, after in-app playback works.
+- **Daily episodes "from my words"** (spec §14) use the `radio_script` task. They switch on once that task passes its golden set in the bake-off, which runs on the Mac. Until then Radio plays the prebuilt unit episodes, and the gap is reported, not hidden.
+
+**Phase C: persona chats (needs #25 and the Reader, PR #14).**
+- **Prompt:** each of the four personas has a style guide, and they all feed `prompts/roleplay_turn@v1.md`:
+  - The persona block is filled from the YAML.
+  - The learner's level comes from the Journey.
+  - The example dialogues are used as few-shot examples.
+- **Output:** `{reply, corrections[{text, fix, why_en, why_ar}], register}`.
+  - It is validated with serde plus checks: each correction must quote the learner's text, and the Javanese register must fit the persona.
+  - On failure it retries once, then shows a friendly message.
+- **Chat screen:**
+  - Pick a persona and a scenario (from the YAML openers and dialogues).
+  - A register switch (ngoko/krama, casual/standard) is sent to the model as a hint.
+  - Corrections appear inline, under the learner's message.
+  - Every message is hoverable through the Reader's popover, and every line has audio.
+  - Replies can be typed, or handwritten through the existing handwriting input.
+  - A "replay as dialogue" button plays the whole chat.
+- **Storage:** the synced `conversations` table holds one row per conversation and one per message, so rows stay small (LWW). Javanese replies carry the **unverified** badge.
+- **Privacy:**
+  - What the learner types in a roleplay counts as learning text. It is routed like `learn_entry`: Workers AI first, `gemini_free` allowed.
+  - E-mail addresses and phone numbers are scrubbed before sending.
+  - The chat shows one line saying that messages go to a free AI engine.
+  - A persona never asks for real personal details.
+
+**Cost:** $0.
+- Workers AI's free daily allowance and Azure F0 (0.5M characters a month) cover it. One Radio episode is about 4–5k characters.
+- When a quota runs out, a warm "come back tomorrow" (or "next month") message shows, and cached audio keeps working.
+
+**Order and PRs:**
+1. Phase A, one PR.
+2. Phase B, one PR, after #25 merges.
+3. Phase C, one PR, after #14 merges.
+4. Background playback.
+
+Each PR keeps `just check` green and ships its run/install steps in `docs/RUN.md`.

@@ -234,6 +234,30 @@ const MIGRATIONS: &[&str] = &[
         hlc_counter INTEGER NOT NULL,
         deleted     INTEGER NOT NULL DEFAULT 0
     ) STRICT;",
+    // 7: validated AI answers on this device, keyed by `CacheKey::id()`
+    // (task, engine, prompt version, input hash). Local only: every device
+    // can re-ask, and Kabar Cloud keeps the shared copy in D1.
+    "CREATE TABLE ai_cache (
+        key        TEXT PRIMARY KEY,
+        json       TEXT NOT NULL,
+        created_ms INTEGER NOT NULL
+    ) STRICT;",
+    // 8: learning journal reflections (spec §6), LWW per reflection id. Rows
+    // another device sent before this build knew the table are copied over
+    // from `sync_rows`, so nothing synced earlier is lost.
+    "CREATE TABLE journal_entries (
+        id          TEXT PRIMARY KEY,
+        entry       TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE INDEX journal_entries_date ON journal_entries (json_extract(entry, '$.date'));
+    INSERT INTO journal_entries (id, entry, account_id, device_id, hlc_wall, hlc_counter, deleted)
+        SELECT row_id, payload, account_id, device_id, hlc_wall, hlc_counter, deleted
+        FROM sync_rows WHERE tbl = 'journal_entries' AND payload IS NOT NULL;",
 ];
 
 /// The schema version that added `sync_rows`.
@@ -256,6 +280,7 @@ const SYNCED_TABLES: &[&str] = &[
     "sync_rows",
     "texts",
     "saved_words",
+    "journal_entries",
 ];
 
 /// LWW tables that hold one JSON document per row id.
@@ -466,6 +491,24 @@ impl Store {
                 Ok(())
             }
         }
+    }
+
+    pub fn ai_cache_get(&self, key: &str) -> Result<Option<String>> {
+        Ok(self.conn.query_row("SELECT json FROM ai_cache WHERE key = ?1", [key], |r| r.get(0)).optional()?)
+    }
+
+    pub fn ai_cache_put(&self, key: &str, json: &str) -> Result<()> {
+        self.conn.execute(
+            "INSERT INTO ai_cache (key, json, created_ms) VALUES (?1, ?2, ?3)
+             ON CONFLICT(key) DO UPDATE SET json = excluded.json, created_ms = excluded.created_ms",
+            params![key, json, now_ms() as i64],
+        )?;
+        Ok(())
+    }
+
+    pub fn ai_cache_remove(&self, key: &str) -> Result<()> {
+        self.conn.execute("DELETE FROM ai_cache WHERE key = ?1", [key])?;
+        Ok(())
     }
 
     pub fn save_pen_lab_run(&mut self, report: &PenLabReport) -> Result<PenLabRun> {
@@ -740,6 +783,11 @@ mod reviews;
 pub use reader::{Highlight, SavedText, TextKind};
 // Teach Kabar's personal dictionary (spec §26).
 mod taught;
+// The learning journal: reflections and the timeline's extra sources.
+mod journal;
+pub use journal::{LessonDone, TaughtAt};
+// One-click full export (spec §7).
+pub mod export;
 
 fn write_synced(
     tx: &Transaction<'_>,
@@ -851,6 +899,7 @@ impl Typed {
             "cards" => Self::Doc("cards", "id", "payload"),
             "sessions" => Self::Doc("sessions", "device", "payload"),
             "taught_entries" => Self::Doc("taught_entries", "id", "entry"),
+            "journal_entries" => Self::Doc("journal_entries", "id", "entry"),
             "texts" | "word_status" | "highlights" => {
                 let table = ["texts", "word_status", "highlights"].into_iter().find(|t| *t == table)?;
                 Self::Doc(table, "id", "payload")
@@ -1540,6 +1589,21 @@ mod tests {
         for table in ["cards", "review_log", "lesson_events"] {
             assert!(tables.iter().any(|t| t == table), "{table} in {tables:?}");
         }
+    }
+
+    #[test]
+    fn ai_answers_are_cached_locally() {
+        let store = Store::open_in_memory().unwrap();
+        assert_eq!(store.ai_cache_get("roleplay_turn:workers_ai:v1:abc").unwrap(), None);
+        store.ai_cache_put("roleplay_turn:workers_ai:v1:abc", r#"{"reply":"Halo"}"#).unwrap();
+        store.ai_cache_put("roleplay_turn:workers_ai:v1:abc", r#"{"reply":"Halo!"}"#).unwrap();
+        assert_eq!(
+            store.ai_cache_get("roleplay_turn:workers_ai:v1:abc").unwrap().as_deref(),
+            Some(r#"{"reply":"Halo!"}"#)
+        );
+        store.ai_cache_remove("roleplay_turn:workers_ai:v1:abc").unwrap();
+        assert_eq!(store.ai_cache_get("roleplay_turn:workers_ai:v1:abc").unwrap(), None);
+        assert_eq!(store.outbox_len().unwrap(), 0, "never synced");
     }
 
     #[test]

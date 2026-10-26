@@ -38,6 +38,8 @@ pub enum Line {
     PlanComeback,
     PlanAllDone,
     PlanAskSize,
+    /// Halfway through a 30-minute plan: a break is offered between the blocks.
+    PlanBreak,
     // Recap
     RecapGoalMet,
     RecapSomeStudy,
@@ -65,10 +67,14 @@ pub enum Line {
     LevelCheckInvite,
     /// "At this pace you reach {level} around {date}."
     LevelForecast,
+    /// The check moved the learner up a level.
+    LevelUp,
+    /// The check moved the learner down a level: a plan to rebuild, no guilt.
+    LevelRebuild,
 }
 
 impl Line {
-    pub const ALL: [Self; 33] = [
+    pub const ALL: [Self; 36] = [
         Self::OnboardHello,
         Self::OnboardWhy,
         Self::OnboardFocus,
@@ -82,6 +88,7 @@ impl Line {
         Self::PlanComeback,
         Self::PlanAllDone,
         Self::PlanAskSize,
+        Self::PlanBreak,
         Self::RecapGoalMet,
         Self::RecapSomeStudy,
         Self::RecapRemember,
@@ -102,6 +109,8 @@ impl Line {
         Self::WarungBought,
         Self::LevelCheckInvite,
         Self::LevelForecast,
+        Self::LevelUp,
+        Self::LevelRebuild,
     ];
 
     /// The line's key in `content/coach/kak-nur.toml` (`[lines.<key>]`).
@@ -120,6 +129,7 @@ impl Line {
             Self::PlanComeback => "plan_comeback",
             Self::PlanAllDone => "plan_all_done",
             Self::PlanAskSize => "plan_ask_size",
+            Self::PlanBreak => "plan_break",
             Self::RecapGoalMet => "recap_goal_met",
             Self::RecapSomeStudy => "recap_some_study",
             Self::RecapRemember => "recap_remember",
@@ -140,6 +150,8 @@ impl Line {
             Self::WarungBought => "warung_bought",
             Self::LevelCheckInvite => "level_check_invite",
             Self::LevelForecast => "level_forecast",
+            Self::LevelUp => "level_up",
+            Self::LevelRebuild => "level_rebuild",
         }
     }
 

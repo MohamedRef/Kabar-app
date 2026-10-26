@@ -14,11 +14,14 @@ use worker::{
 
 use super::do_sql::DoSql;
 use super::{api_error, now_ms, post, post_json, random_hex};
+use crate::blobs::{self, Image};
 use crate::coach::{self, KakNur};
 use crate::devices::{Devices, PushTarget, RefreshError};
 use crate::fcm::{self, AccessToken, SendOutcome, ServiceAccount};
 use crate::hub::{Conn, Hub};
-use crate::internal::{DEVICE_HEADER, Expiry, Refresh, Register, Revoke, SetPush};
+use crate::internal::{
+    BlobData, BlobGet, BlobPut, DEVICE_HEADER, Expiry, Refresh, Register, Revoke, SetPush,
+};
 use crate::sql::Sql;
 
 /// Close code sent to a signed-out device.
@@ -184,7 +187,10 @@ impl DurableObject for Account {
     fn new(state: State, env: Env) -> Self {
         let db = DoSql(state.storage().sql());
         // Synchronous, so it finishes before any event is delivered.
-        if let Err(e) = crate::devices::migrate(&db).and_then(|_| db.exec_batch(crate::hub::SCHEMA)) {
+        if let Err(e) = crate::devices::migrate(&db)
+            .and_then(|_| db.exec_batch(crate::hub::SCHEMA))
+            .and_then(|_| db.exec_batch(blobs::SCHEMA))
+        {
             console_error!("migration failed: {e}");
         }
         Self { state, env }
@@ -249,6 +255,19 @@ impl DurableObject for Account {
                     Response::empty()
                 } else {
                     api_error(ErrorCode::NotFound, "no such device")
+                }
+            }
+            (Method::Post, "/blob/put") => {
+                let body: BlobPut = req.json().await?;
+                let image = Image { mime: body.mime, base64: body.data_b64 };
+                blobs::put(&db, &body.sha256, &image, now).map_err(sql_err)?;
+                Response::empty()
+            }
+            (Method::Post, "/blob/get") => {
+                let body: BlobGet = req.json().await?;
+                match blobs::get(&db, &body.sha256, now).map_err(sql_err)? {
+                    Some(img) => Response::from_json(&BlobData { mime: img.mime, data_b64: img.base64 }),
+                    None => api_error(ErrorCode::BlobMissing, "upload the image again"),
                 }
             }
             _ => api_error(ErrorCode::NotFound, "not found"),
