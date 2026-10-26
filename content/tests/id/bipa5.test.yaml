@@ -1,0 +1,605 @@
+schema: kabar.test/v1
+id: bipa5.test
+language: id
+kind: level
+title:
+  ar_eg: اختبار مستوى BIPA 5 — كاليمانتان
+  ar: اختبار مستوى BIPA 5 — كاليمانتان
+  en: BIPA 5 level test — Kalimantan
+intro:
+  ar_eg: |
+    لفّيت كاليمانتان كلها، من Balikpapan لحد Singkawang! هنا هتسمع مقابلة شغل ونشرة وعرض تقديمي، وتقرا نصوص طويلة عن العاصمة الجديدة والغابات واستطلاع رأي، وتكتب مقال بوجهة نظرك، وتعمل عرض قصير وتجاوب في مقابلة.
+    خد وقتك. النصوص هنا أطول، وعادي جدًا إنك ترجع تقرا الفقرة مرتين — كل إجابة بتورّينا نركّز على إيه.
+    ولو جاي من «اركب الطيارة» عشان تعدّي BIPA 5، أهلًا بيك — نفس الأسئلة.
+  ar: |
+    جُبتَ كاليمانتان كلها من Balikpapan إلى Singkawang! ستستمع هنا إلى مقابلة عمل ونشرة وعرض تقديمي، وتقرأ نصوصًا طويلة عن العاصمة الجديدة والغابات واستطلاع رأي، وتكتب مقالًا يعرض وجهة نظرك، وتقدّم عرضًا قصيرًا وتجيب في مقابلة.
+    خذ وقتك. النصوص هنا أطول، ومن الطبيعي أن تعيد قراءة الفقرة مرتين؛ فكل إجابة تُرينا ما نركّز عليه.
+    وإن جئت من «سافر بالطائرة» لتتجاوز BIPA 5، فأهلًا بك؛ الأسئلة نفسها.
+  en: |
+    You've crossed Kalimantan from Balikpapan to Singkawang! Here you'll hear a job interview, a news item and a presentation, read long texts on the new capital, the forests and an opinion poll, write a viewpoint essay, give a short presentation and answer interview questions.
+    Take your time. The texts are longer here, and it's completely normal to read a paragraph twice; every answer shows us what to focus on.
+    If you came through "Take a flight" to skip BIPA 5, welcome: these are the same questions.
+minutes: 50
+pass_mark: 0.7
+scoring: >-
+  Score = points earned / points available (closed items 1 point unless set;
+  translate items are graded against reference answers first, then AI grade_answer;
+  writing_task and speaking_task are graded by AI against their rubric, each
+  criterion an equal share of the item's points). Pass at >= 0.7. Passing marks
+  BIPA 5 complete and opens BIPA 6; the same rule applies when the test is taken
+  as the "Take a flight" skip-ahead over BIPA 5. Below the mark, show the per-skill
+  results and suggest the units behind the missed items, with no penalty and an
+  open retry.
+sections:
+  - id: listening
+    skill: listening
+    title:
+      ar_eg: الاستماع
+      ar: الاستماع
+      en: Listening
+    instructions:
+      ar_eg: أجزاء من مقابلة شغل، ونشرة عن الغابات، وعرض تقديمي، وكلام عادي بين صحاب. اسمع وعيد براحتك، وخد بالك من الكلمات اللي بتغيّر درجة اليقين أو الرسمية.
+      ar: مقاطع من مقابلة عمل ونشرة عن الغابات وعرض تقديمي وحديث عاديّ بين أصدقاء. استمع وأعِد كما تشاء، وانتبه إلى الكلمات التي تغيّر درجة اليقين أو الرسمية.
+      en: Parts of a job interview, a forest news item, a presentation and casual talk between friends. Listen, replay as you like, and watch for words that change how certain or how formal a sentence is.
+    items:
+      - id: t01
+        type: listen
+        text: Sehubungan dengan lowongan di perusahaan Bapak, saya bersedia mulai bekerja bulan depan.
+        options:
+          - Sehubungan dengan lowongan di perusahaan Bapak, saya bersedia mulai bekerja minggu depan.
+          - Sehubungan dengan lowongan di perusahaan Bapak, saya bersedia mulai bekerja bulan depan.
+          - Sehubungan dengan lowongan di perusahaan Bapak, saya belum bisa mulai bekerja bulan depan.
+        answer: 1
+        words: [sehubungan dengan, lowongan, bersedia]
+      - id: t02
+        type: listen
+        text: Akibat kemarau panjang, ribuan hektare lahan gambut terbakar di Kalimantan Tengah.
+        options:
+          - Akibat kemarau panjang, ribuan hektare lahan gambut terbakar di Kalimantan Tengah.
+          - Akibat kemarau panjang, ratusan hektare lahan gambut terbakar di Kalimantan Tengah.
+          - Akibat hujan panjang, ribuan hektare lahan gambut kebanjiran di Kalimantan Tengah.
+        answer: 0
+        words: [kemarau, gambut, terbakar]
+      - id: t03
+        type: listen
+        text: Tampaknya sebagian besar responden cenderung mendukung pemindahan ibu kota.
+        options:
+          - Sudah pasti semua responden mendukung pemindahan ibu kota.
+          - Tampaknya sebagian besar responden cenderung menolak pemindahan ibu kota.
+          - Tampaknya sebagian besar responden cenderung mendukung pemindahan ibu kota.
+        answer: 2
+        words: [tampaknya, cenderung, responden]
+      - id: t04
+        type: listen
+        text: Pertama-tama, izinkan saya menyajikan hasil penelitian kami tentang pasar terapung.
+        options:
+          - Pertama-tama, izinkan saya menyajikan hasil penelitian kami tentang pasar terapung.
+          - Sebagai penutup, izinkan saya menyajikan hasil penelitian kami tentang pasar terapung.
+          - Pertama-tama, izinkan saya menyajikan hasil penelitian kami tentang perahu tradisional.
+        answer: 0
+        words: [pertama-tama, menyajikan, terapung]
+      - id: t05
+        type: listen
+        text: Eh, kamu kepo banget, sih! Santai aja, nanti aku cerita.
+        options:
+          - Eh, kamu kepo banget, sih! Santai aja, besok aku cerita.
+          - Eh, kamu sibuk banget, sih! Santai aja, nanti aku cerita.
+          - Eh, kamu kepo banget, sih! Santai aja, nanti aku cerita.
+        answer: 2
+        words: [kepo, santai, bahasa gaul]
+      - id: t06
+        type: dictation
+        text: Hutan adat harus dilestarikan oleh masyarakat adat dan pemerintah.
+        meaning:
+          ar_eg: الغابة العرفية لازم أهلها الأصليين والحكومة يحافظوا عليها.
+          ar: يجب أن يحافظ المجتمع الأصلي والحكومة على الغابة العرفية.
+          en: Customary forest must be preserved by the indigenous community and the government.
+        words: [hutan adat, masyarakat adat, melestarikan]
+      - id: t07
+        type: dictation
+        text: Pertunjukan tari itu sangat memukau penonton.
+        meaning:
+          ar_eg: عرض الرقص ده بهر الجمهور جدًا.
+          ar: أبهر عرض الرقص ذلك الجمهور كثيرًا.
+          en: That dance performance truly dazzled the audience.
+        words: [pertunjukan, memukau, penonton]
+  - id: reading
+    skill: reading
+    title:
+      ar_eg: القراية
+      ar: القراءة
+      en: Reading
+    instructions:
+      ar_eg: اقرا المقال عن العاصمة الجديدة، والتقرير عن الغابة، ونتايج الاستطلاع. النصوص طويلة، فاقرا الأول للفكرة العامة وبعدين ارجع للتفاصيل. جاوب من اللي مكتوب، مش من رأيك.
+      ar: اقرأ المقال عن العاصمة الجديدة والتقرير عن الغابة ونتائج الاستطلاع. النصوص طويلة، فاقرأ أوّلًا للفكرة العامة ثم عُد إلى التفاصيل، وأجب مما ورد فيها لا من رأيك.
+      en: Read the article on the new capital, the forest report and the poll results. The texts are long, so read once for the gist, then go back for details. Answer from what they say, not from your own view.
+    items:
+      - id: t08
+        type: multiple_choice
+        question: |
+          IBU KOTA BARU: HARAPAN DAN KEKHAWATIRAN (artikel ditulis untuk tes ini)
+          Pemerintah memutuskan untuk memindahkan ibu kota dari Jakarta ke Kalimantan Timur. Alasan utamanya, Jakarta sudah terlalu padat, dan sebagian wilayahnya terancam tenggelam karena permukaan tanah terus turun. Selain itu, pemindahan ibu kota diharapkan dapat meratakan pembangunan di luar Pulau Jawa.
+          Meskipun begitu, kebijakan ini tidak lepas dari kritik. Para kritikus khawatir bahwa biayanya terlalu besar bagi anggaran negara. Di sisi lain, para pegiat lingkungan berpendapat bahwa pembangunan kota baru dapat mengancam hutan dan satwa di sekitarnya. Masyarakat adat setempat juga meminta agar tanah mereka tidak diambil tanpa persetujuan.
+          Dengan demikian, keberhasilan ibu kota baru tidak hanya diukur dari gedung-gedungnya, tetapi juga dari cara pemerintah mendengarkan semua pihak.
+        question_meaning:
+          ar_eg: على حسب المقال، إيه سببين لنقل العاصمة؟
+          ar: ما السببان اللذان يذكرهما المقال لنقل العاصمة؟
+          en: According to the article, what are two reasons for moving the capital?
+        options:
+          - Jakarta terlalu padat dan sebagian wilayahnya terancam tenggelam.
+          - Biayanya murah dan hutan di Kalimantan sudah habis.
+          - Masyarakat adat meminta ibu kota pindah ke tanah mereka.
+        answer: 0
+        words: [padat, tenggelam, pemindahan]
+      - id: t09
+        type: multiple_choice
+        question: |
+          IBU KOTA BARU: HARAPAN DAN KEKHAWATIRAN (artikel ditulis untuk tes ini)
+          Pemerintah memutuskan untuk memindahkan ibu kota dari Jakarta ke Kalimantan Timur. Alasan utamanya, Jakarta sudah terlalu padat, dan sebagian wilayahnya terancam tenggelam karena permukaan tanah terus turun. Selain itu, pemindahan ibu kota diharapkan dapat meratakan pembangunan di luar Pulau Jawa.
+          Meskipun begitu, kebijakan ini tidak lepas dari kritik. Para kritikus khawatir bahwa biayanya terlalu besar bagi anggaran negara. Di sisi lain, para pegiat lingkungan berpendapat bahwa pembangunan kota baru dapat mengancam hutan dan satwa di sekitarnya. Masyarakat adat setempat juga meminta agar tanah mereka tidak diambil tanpa persetujuan.
+          Dengan demikian, keberhasilan ibu kota baru tidak hanya diukur dari gedung-gedungnya, tetapi juga dari cara pemerintah mendengarkan semua pihak.
+        question_meaning:
+          ar_eg: الكلمة «Meskipun begitu» في أول الفقرة التانية بتعمل إيه؟
+          ar: ما وظيفة «Meskipun begitu» في أوّل الفقرة الثانية؟
+          en: What does "Meskipun begitu" do at the start of the second paragraph?
+        options:
+          - بتضيف سبب تالت للنقل.
+          - بتنقل من المزايا للانتقادات.
+          - بتلخّص المقال كله.
+        answer: 1
+        words: [meskipun begitu, kritikus]
+      - id: t10
+        type: multiple_choice
+        question: |
+          IBU KOTA BARU: HARAPAN DAN KEKHAWATIRAN (artikel ditulis untuk tes ini)
+          Pemerintah memutuskan untuk memindahkan ibu kota dari Jakarta ke Kalimantan Timur. Alasan utamanya, Jakarta sudah terlalu padat, dan sebagian wilayahnya terancam tenggelam karena permukaan tanah terus turun. Selain itu, pemindahan ibu kota diharapkan dapat meratakan pembangunan di luar Pulau Jawa.
+          Meskipun begitu, kebijakan ini tidak lepas dari kritik. Para kritikus khawatir bahwa biayanya terlalu besar bagi anggaran negara. Di sisi lain, para pegiat lingkungan berpendapat bahwa pembangunan kota baru dapat mengancam hutan dan satwa di sekitarnya. Masyarakat adat setempat juga meminta agar tanah mereka tidak diambil tanpa persetujuan.
+          Dengan demikian, keberhasilan ibu kota baru tidak hanya diukur dari gedung-gedungnya, tetapi juga dari cara pemerintah mendengarkan semua pihak.
+        question_meaning:
+          ar_eg: الكاتب في الآخر شايف إن نجاح العاصمة بيتقاس بإيه؟
+          ar: بمَ يقيس الكاتب في الخاتمة نجاح العاصمة؟
+          en: In the conclusion, how does the writer say the capital's success should be measured?
+        options:
+          - بعدد المباني الجديدة بس.
+          - بسرعة البناء.
+          - بإن الحكومة تسمع كل الأطراف.
+        answer: 2
+        words: [dengan demikian, pihak]
+      - id: t11
+        type: multiple_choice
+        question: |
+          LAPORAN DARI TANJUNG PUTING (laporan ditulis untuk tes ini)
+          Taman Nasional Tanjung Puting dikenal sebagai rumah bagi orang utan. Sayangnya, hutan di sekitarnya terus berkurang. Sebagian lahan dibuka untuk perkebunan sawit, dan sebagian lagi terbakar pada musim kemarau. Akibatnya, orang utan kehilangan tempat tinggal, dan beberapa di antaranya ditemukan masuk ke kebun warga.
+          Dari sudut pandang petani, sawit adalah sumber penghasilan yang penting. Namun, para peneliti menyarankan agar perluasan kebun dihentikan di dekat taman nasional. Mereka juga mengajak masyarakat adat untuk menjaga hutan, karena merekalah yang paling mengenal wilayah itu.
+        question_meaning:
+          ar_eg: ليه بعض إنسان الغاب دخلوا جناين الأهالي؟
+          ar: لماذا دخل بعض إنسان الغاب إلى بساتين الأهالي؟
+          en: Why have some orangutans wandered into residents' gardens?
+        options:
+          - لأنهم فقدوا بيتهم بسبب قطع الغابة والحرايق.
+          - لأن الأهالي بيأكّلوهم.
+          - لأن المنتزه الوطني اتقفل.
+        answer: 0
+        words: [kehilangan, terbakar, perkebunan]
+      - id: t12
+        type: multiple_choice
+        question: |
+          LAPORAN DARI TANJUNG PUTING (laporan ditulis untuk tes ini)
+          Taman Nasional Tanjung Puting dikenal sebagai rumah bagi orang utan. Sayangnya, hutan di sekitarnya terus berkurang. Sebagian lahan dibuka untuk perkebunan sawit, dan sebagian lagi terbakar pada musim kemarau. Akibatnya, orang utan kehilangan tempat tinggal, dan beberapa di antaranya ditemukan masuk ke kebun warga.
+          Dari sudut pandang petani, sawit adalah sumber penghasilan yang penting. Namun, para peneliti menyarankan agar perluasan kebun dihentikan di dekat taman nasional. Mereka juga mengajak masyarakat adat untuk menjaga hutan, karena merekalah yang paling mengenal wilayah itu.
+        question_meaning:
+          ar_eg: التقرير بيعرض كام وجهة نظر عن زيت النخيل؟
+          ar: كم وجهة نظر يعرضها التقرير عن نخيل الزيت؟
+          en: How many points of view on oil palm does the report present?
+        options:
+          - واحدة بس، بتاعة الباحثين.
+          - اتنين، بتاعة الفلاحين وبتاعة الباحثين.
+          - ولا واحدة.
+        answer: 1
+        words: [sudut pandang, penghasilan, perluasan]
+      - id: t13
+        type: multiple_choice
+        question: |
+          HASIL SURVEI: BAHASA GAUL DI SEKOLAH (survei ditulis untuk tes ini)
+          Dalam survei terhadap 300 siswa SMA di Pontianak, mayoritas responden (62 persen) mengaku memakai bahasa gaul setiap hari. Sepertiga responden menganggap bahasa gaul tidak mengganggu kemampuan berbahasa baku. Namun, separuh guru yang ditanya berpendapat sebaliknya.
+          Barangkali perbedaan ini muncul karena siswa dan guru menilai situasi yang berbeda. Siswa cenderung memikirkan obrolan dengan teman, sedangkan guru memikirkan tulisan di kelas. Pada umumnya, kedua kelompok sepakat bahwa bahasa baku tetap wajib dalam ujian.
+        question_meaning:
+          ar_eg: إيه اللي الطلبة والمدرّسين متّفقين عليه؟
+          ar: علامَ يتّفق الطلّاب والمعلّمون؟
+          en: What do students and teachers agree on?
+        options:
+          - إن اللغة العامية لازم تتمنع.
+          - إن اللغة العامية بتضرّ دايمًا.
+          - إن اللغة الفصحى لسه لازمة في الامتحانات.
+        answer: 2
+        words: [sepakat, bahasa baku, pada umumnya]
+      - id: t14
+        type: multiple_choice
+        question: |
+          HASIL SURVEI: BAHASA GAUL DI SEKOLAH (survei ditulis untuk tes ini)
+          Dalam survei terhadap 300 siswa SMA di Pontianak, mayoritas responden (62 persen) mengaku memakai bahasa gaul setiap hari. Sepertiga responden menganggap bahasa gaul tidak mengganggu kemampuan berbahasa baku. Namun, separuh guru yang ditanya berpendapat sebaliknya.
+          Barangkali perbedaan ini muncul karena siswa dan guru menilai situasi yang berbeda. Siswa cenderung memikirkan obrolan dengan teman, sedangkan guru memikirkan tulisan di kelas. Pada umumnya, kedua kelompok sepakat bahwa bahasa baku tetap wajib dalam ujian.
+        question_meaning:
+          ar_eg: الكاتب بيقول «Barangkali» ليه؟
+          ar: لماذا يستعمل الكاتب «Barangkali»؟
+          en: Why does the writer use "Barangkali"?
+        options:
+          - علشان التفسير ده احتمال، مش حقيقة أكيدة.
+          - علشان بيقتبس كلام مدرّس.
+          - علشان بيعلن نتيجة نهائية.
+        answer: 0
+        words: [barangkali, mayoritas, sepertiga]
+      - id: t15
+        type: multiple_choice
+        question: |
+          HASIL SURVEI: BAHASA GAUL DI SEKOLAH (survei ditulis untuk tes ini)
+          Dalam survei terhadap 300 siswa SMA di Pontianak, mayoritas responden (62 persen) mengaku memakai bahasa gaul setiap hari. Sepertiga responden menganggap bahasa gaul tidak mengganggu kemampuan berbahasa baku. Namun, separuh guru yang ditanya berpendapat sebaliknya.
+          Barangkali perbedaan ini muncul karena siswa dan guru menilai situasi yang berbeda. Siswa cenderung memikirkan obrolan dengan teman, sedangkan guru memikirkan tulisan di kelas. Pada umumnya, kedua kelompok sepakat bahwa bahasa baku tetap wajib dalam ujian.
+        question_meaning:
+          ar_eg: نص المدرّسين اللي اتسألوا شايفين إيه؟
+          ar: ما رأي نصف المعلّمين المسؤولين؟
+          en: What do half the teachers asked think?
+        options:
+          - إن اللغة العامية مابتأثّرش على الفصحى.
+          - إن اللغة العامية بتأثّر على مهارة الفصحى.
+          - إن الطلبة مابيستعملوش العامية.
+        answer: 1
+        words: [separuh, berpendapat]
+  - id: vocabulary
+    skill: vocabulary
+    title:
+      ar_eg: الكلمات
+      ar: المفردات
+      en: Vocabulary
+    items:
+      - id: t16
+        type: match_pairs
+        pairs:
+          - text: melamar
+            ar_eg: يقدّم على شغل
+            ar: يتقدّم لوظيفة
+            en: to apply (for a job)
+          - text: tunjangan
+            ar_eg: بدلات، علاوة
+            ar: بدل، علاوة
+            en: allowance, benefit
+          - text: ijazah
+            ar_eg: شهادة التخرّج
+            ar: شهادة دراسية
+            en: diploma, certificate
+          - text: atasan
+            ar_eg: المدير، الريّس في الشغل
+            ar: الرئيس في العمل
+            en: superior, boss
+        words: [melamar, tunjangan, ijazah, atasan]
+      - id: t17
+        type: match_pairs
+        pairs:
+          - text: kata serapan
+            ar_eg: كلمة دخيلة
+            ar: كلمة دخيلة
+            en: loanword
+          - text: logat
+            ar_eg: لهجة / طريقة نطق
+            ar: لهجة
+            en: accent
+          - text: rempah
+            ar_eg: بهارات
+            ar: توابل
+            en: spices
+          - text: beasiswa
+            ar_eg: منحة دراسية
+            ar: منحة دراسية
+            en: scholarship
+        words: [kata serapan, logat, rempah, beasiswa]
+      - id: t18
+        type: fill_blank
+        sentence: Bersama surat ini, saya ___ daftar riwayat hidup dan fotokopi ijazah.
+        meaning:
+          ar_eg: مع الجواب ده، بأرفق السيرة الذاتية وصورة الشهادة.
+          ar: أُرفق مع هذه الرسالة سيرتي الذاتية وصورة الشهادة.
+          en: With this letter, I enclose my CV and a copy of my diploma.
+        options: ["melampirkan", "melamar", "membahas"]
+        answers: [melampirkan]
+        words: [melampirkan]
+      - id: t19
+        type: fill_blank
+        sentence: Harga ___ seperti beras dan minyak goreng naik bulan ini.
+        meaning:
+          ar_eg: أسعار السلع الأساسية زي الرز والزيت طلعت الشهر ده.
+          ar: ارتفعت أسعار السلع الأساسية كالأرز وزيت القلي هذا الشهر.
+          en: The price of staples like rice and cooking oil went up this month.
+        options: ["bahan pokok", "bahan baku", "pokok bahasan"]
+        answers: [bahan pokok]
+        words: [bahan pokok]
+      - id: t20
+        type: fill_blank
+        sentence: Kalau tidak dijaga, beberapa spesies di hutan Kalimantan bisa ___.
+        meaning:
+          ar_eg: لو ماتحافظناش عليها، أنواع في غابات كاليمانتان ممكن تنقرض.
+          ar: إن لم تُحمَ، فقد تنقرض بعض الأنواع في غابات كاليمانتان.
+          en: If not protected, some species in Kalimantan's forests could die out.
+        options: ["punah", "pesat", "padat"]
+        answers: [punah]
+        words: [punah]
+      - id: t21
+        type: fill_blank
+        sentence: Masakan Banjar ___ pertemuan budaya Melayu, Jawa, dan Arab.
+        meaning:
+          ar_eg: أكل البنجار بيعكس التقاء ثقافات المالايو والجاوة والعرب.
+          ar: يعكس المطبخ البنجاري التقاء الثقافات الملايوية والجاوية والعربية.
+          en: Banjar cooking reflects the meeting of Malay, Javanese and Arab cultures.
+        options: ["mencerminkan", "mencegah", "menukar"]
+        answers: [mencerminkan]
+        words: [mencerminkan]
+  - id: grammar
+    skill: grammar
+    title:
+      ar_eg: القواعد
+      ar: القواعد
+      en: Grammar
+    items:
+      - id: t22
+        type: fill_blank
+        sentence: Dengan ___, bersama surat ini saya ingin bertanya tentang syarat lowongan tersebut.
+        meaning:
+          ar_eg: مع خالص الاحترام، بالجواب ده حابب أسأل عن شروط الوظيفة دي.
+          ar: مع فائق الاحترام، أودّ بهذه الرسالة أن أسأل عن شروط تلك الوظيفة.
+          en: Respectfully, with this letter I would like to ask about the requirements for that vacancy.
+        options: ["hormat", "santai", "gaul"]
+        answers: [hormat]
+        explain:
+          ar_eg: «Dengan hormat» هي الفاتحة الرسمية للجوابات، و«santai» و«gaul» مالهمش مكان في جواب رسمي.
+          ar: «Dengan hormat» افتتاحية الرسائل الرسمية، ولا مكان لـ«santai» و«gaul» في رسالة رسمية.
+          en: '"Dengan hormat" is the standard opening of a formal letter; "santai" and "gaul" have no place in one.'
+        words: [hormat]
+      - id: t23
+        type: fill_blank
+        sentence: ___ biayanya besar, pemerintah tetap memindahkan ibu kota.
+        meaning:
+          ar_eg: رغم إن التكلفة كبيرة، الحكومة برضه نقلت العاصمة.
+          ar: رغم ارتفاع التكلفة، مضت الحكومة في نقل العاصمة.
+          en: Although the cost is high, the government is still moving the capital.
+        options: ["Meskipun", "Karena", "Supaya"]
+        answers: [Meskipun]
+        explain:
+          ar_eg: meskipun بتربط حاجتين عكس بعض (تنازل)، والجملة التانية فيها tetap.
+          ar: meskipun أداة تنازل تربط أمرين متعارضين، وتأتي tetap غالبًا في الجملة الثانية.
+          en: meskipun links two clashing facts (concession), often paired with tetap.
+        words: [meskipun]
+      - id: t24
+        type: fill_blank
+        sentence: ___ dompet digital di Samarinda meningkat pesat.
+        meaning:
+          ar_eg: استعمال المحافظ الرقمية في ساماريندا زاد بسرعة.
+          ar: ازداد استخدام المحافظ الرقمية في ساماريندا بسرعة.
+          en: The use of digital wallets in Samarinda has grown fast.
+        options: ["Penggunaan", "Menggunakan", "Digunakan"]
+        answers: [Penggunaan]
+        explain:
+          ar_eg: peN-…-an بتعمل اسم من الفعل (guna → penggunaan = الاستعمال)، وهو ده الفاعل هنا.
+          ar: peN-…-an تشتقّ اسمًا من الفعل (guna ← penggunaan = الاستخدام)، وهو المبتدأ هنا.
+          en: peN-…-an turns the verb into a noun (guna → penggunaan, use), which is the subject here.
+        words: [penggunaan, pesat]
+      - id: t25
+        type: fill_blank
+        sentence: Kepala sekolah ___ bahwa pendaftaran ditutup hari Jumat.
+        meaning:
+          ar_eg: الناظر قال إن التسجيل هيقفل يوم الجمعة.
+          ar: قال المدير إنّ التسجيل يُغلق يوم الجمعة.
+          en: The principal said that registration closes on Friday.
+        options: ["mengatakan", "bertanya", "meminta"]
+        answers: [mengatakan]
+        explain:
+          ar_eg: 'في الكلام المنقول: mengatakan bahwa = قال إن؛ bertanya apakah = سأل هل؛ meminta agar = طلب إن.'
+          ar: 'في الكلام المنقول: mengatakan bahwa = قال إنّ، وbertanya apakah = سأل هل، وmeminta agar = طلب أن.'
+          en: "In reported speech: mengatakan bahwa = said that; bertanya apakah = asked whether; meminta agar = asked to."
+        words: [mengatakan, pendaftaran]
+      - id: t26
+        type: multiple_choice
+        question_meaning:
+          ar_eg: «Bu Guru berkata, "Kumpulkan tugasmu besok."» أنهي نقل صح للجملة؟
+          ar: «Bu Guru berkata, "Kumpulkan tugasmu besok."» أيّ نقل صحيح؟
+          en: '«Bu Guru berkata, "Kumpulkan tugasmu besok."» Which reported version is correct?'
+        options:
+          - Bu Guru bertanya apakah kami mengumpulkan tugas besok.
+          - Bu Guru meminta agar kami mengumpulkan tugas keesokan harinya.
+          - Bu Guru mengatakan bahwa ia mengumpulkan tugas besok.
+        answer: 1
+        words: [meminta]
+      - id: t27
+        type: fill_blank
+        sentence: Rumah-rumah di tepi sungai itu ___ setelah hujan tiga hari.
+        meaning:
+          ar_eg: البيوت اللي على النهر غرقت بعد مطر تلات أيام.
+          ar: غمر الفيضان البيوت على ضفة النهر بعد مطر ثلاثة أيام.
+          en: The riverside houses were flooded after three days of rain.
+        options: ["kebanjiran", "membanjiri", "dibanjirkan"]
+        answers: [kebanjiran]
+        explain:
+          ar_eg: 'ke-…-an هنا معناها حاجة وحشة حصلت لحد من غير ما يقصد: kebanjiran = غرق، kehilangan = فقد.'
+          ar: 'ke-…-an هنا تعني أمرًا سيّئًا أصاب الفاعل دون إرادته: kebanjiran = غمره الفيضان، kehilangan = فقد.'
+          en: 'ke-…-an here means something bad happened to the subject: kebanjiran = got flooded, kehilangan = lost.'
+        words: [kebanjiran]
+      - id: t28
+        type: fill_blank
+        sentence: Lahan gambut itu ___ karena kemarau yang sangat panjang.
+        meaning:
+          ar_eg: أرض الخثّ دي اتحرقت بسبب الجفاف الطويل جدًا.
+          ar: احترقت أرض الخثّ تلك بسبب الجفاف الطويل جدًّا.
+          en: That peatland caught fire because of the very long dry season.
+        options: ["terbakar", "membakar", "pembakaran"]
+        answers: [terbakar]
+        explain:
+          ar_eg: 'ter- هنا لحاجة حصلت من غير فاعل مقصود: terbakar = اتحرق.'
+          ar: 'ter- هنا لفعل وقع دون فاعل قاصد: terbakar = احترق.'
+          en: 'ter- here marks something that happened with no deliberate agent: terbakar = caught fire.'
+        words: [terbakar]
+      - id: t29
+        type: fill_blank
+        sentence: Festival ini bertujuan ___ budaya Dayak kepada wisatawan.
+        meaning:
+          ar_eg: المهرجان ده هدفه يعرّف السيّاح بثقافة الداياك.
+          ar: يهدف هذا المهرجان إلى تعريف السيّاح بثقافة الداياك.
+          en: This festival aims to introduce Dayak culture to tourists.
+        options: ["memperkenalkan", "berkenalan", "perkenalan"]
+        answers: [memperkenalkan]
+        explain:
+          ar_eg: 'memper- بتعمل فعل متعدّي معناه «يخلّي الحاجة …»: kenal → memperkenalkan = يعرّف (حد بحاجة).'
+          ar: 'memper- تصوغ فعلًا متعدّيًا بمعنى «يجعل …»: kenal ← memperkenalkan = يُعرّف.'
+          en: 'memper- makes a transitive verb, "make something …": kenal → memperkenalkan, to introduce.'
+        words: [memperkenalkan]
+      - id: t30
+        type: fill_blank
+        sentence: Banjarmasin dikenal sebagai pusat ___ sejak zaman kerajaan.
+        meaning:
+          ar_eg: بنجرماسين معروفة إنها مركز تجارة من أيام الممالك.
+          ar: تُعرف بنجرماسين بأنها مركز للتجارة منذ عهد الممالك.
+          en: Banjarmasin has been known as a trading centre since the time of the kingdoms.
+        options: ["perdagangan", "pedagang", "berdagang"]
+        answers: [perdagangan]
+        explain:
+          ar_eg: 'per-…-an بتعمل اسم للنشاط أو المجال: dagang → perdagangan = التجارة.'
+          ar: 'per-…-an تصوغ اسمًا للنشاط أو المجال: dagang ← perdagangan = التجارة.'
+          en: 'per-…-an names the activity or field: dagang → perdagangan, trade.'
+        words: [perdagangan]
+      - id: t31
+        type: multiple_choice
+        question_meaning:
+          ar_eg: أنهي جملة فيها تحفّظ (hedging) مناسب لتقرير استطلاع؟
+          ar: أيّ جملة فيها تحوّط مناسب لتقرير استطلاع؟
+          en: Which sentence hedges appropriately for a poll report?
+        options:
+          - Semua warga Martapura pasti setuju.
+          - Tidak ada yang menolak, titik.
+          - Tampaknya sebagian besar warga cenderung setuju.
+        answer: 2
+        words: [tampaknya, cenderung]
+      - id: t32
+        type: fill_blank
+        sentence: Klaim itu ___ kalau tidak ada bukti dari sumber yang jelas.
+        meaning:
+          ar_eg: الادّعاء ده مش دقيق قوي لو مافيش دليل من مصدر واضح.
+          ar: هذا الادّعاء غير دقيق إن لم يكن له دليل من مصدر واضح.
+          en: That claim is not quite right if there's no evidence from a clear source.
+        options: ["kurang tepat", "sangat tepat", "tepat sekali"]
+        answers: [kurang tepat]
+        explain:
+          ar_eg: kurang tepat طريقة مهذّبة تقول بيها «غلط» من غير ما تجرح.
+          ar: kurang tepat طريقة مهذّبة لقول «خطأ» دون جرح.
+          en: kurang tepat is a polite way to say "wrong" without bluntness.
+        words: [kurang tepat, klaim, bukti]
+      - id: t33
+        type: build_sentence
+        source:
+          ar_eg: بشكل عام، العرض كان مؤثّر، بس للأسف كان طويل شوية.
+          ar: إجمالًا كان العرض مؤثّرًا، لكنّه للأسف طويل قليلًا.
+          en: Overall, the show was moving, but unfortunately a little long.
+        answer: Secara keseluruhan, pertunjukan itu berkesan, tetapi sayangnya agak panjang.
+        distractors: [memukau, apalagi]
+        words: [secara keseluruhan, berkesan, sayangnya]
+  - id: writing
+    skill: writing
+    title:
+      ar_eg: الكتابة
+      ar: الكتابة
+      en: Writing
+    items:
+      - id: t34
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: رغم إن السوق العايم قديم، لسه الناس بتروحه كل صبح.
+          ar: رغم قِدم السوق العائم، ما زال الناس يقصدونه كلّ صباح.
+          en: Although the floating market is old, people still go there every morning.
+        answers:
+          - Meskipun pasar terapung itu sudah tua, orang-orang masih datang ke sana setiap pagi.
+          - Meskipun pasar terapung itu sudah tua, orang-orang masih datang ke sana setiap pagi
+          - Meskipun pasar terapung sudah tua, orang masih datang ke sana setiap pagi.
+          - Meskipun pasar terapung sudah tua, orang masih datang ke sana setiap pagi
+          - Walaupun pasar terapung itu sudah tua, orang-orang masih datang ke sana setiap pagi.
+          - Walaupun pasar terapung sudah tua, orang masih datang ke sana setiap pagi.
+          - Meskipun pasar terapung itu sudah lama, orang-orang masih datang ke sana setiap pagi.
+          - Meskipun pasar terapung itu tua, orang-orang masih pergi ke sana setiap pagi.
+          - Meskipun pasar terapung sudah tua, orang masih pergi ke sana setiap pagi.
+          - Walaupun pasar terapung sudah tua, orang masih pergi ke sana setiap pagi.
+          - Meskipun sudah tua, pasar terapung itu masih didatangi orang setiap pagi.
+          - Orang-orang masih datang ke pasar terapung setiap pagi meskipun pasar itu sudah tua.
+        words: [meskipun, terapung]
+      - id: t35
+        type: writing_task
+        points: 6
+        prompt:
+          ar_eg: "اكتب مقال وجهة نظر، ٢٠٠–٢٨٠ كلمة، عن السؤال ده: 'المفروض زراعة نخيل الزيت تتوقّف جنب الغابات في كاليمانتان؟' اعرض وجهتين نظر على الأقل (مثلًا الفلاح والباحث أو أهل البلد الأصليين)، وبعدين قول رأيك بحذر (tampaknya، cenderung)، وهات دليل، واقفل بحل عملي."
+          ar: "اكتب مقالًا يعرض وجهة نظر، من ٢٠٠ إلى ٢٨٠ كلمة، حول السؤال: 'هل ينبغي إيقاف زراعة نخيل الزيت قرب الغابات في كاليمانتان؟' اعرض وجهتي نظر على الأقل (كالمزارع والباحث أو المجتمع الأصلي)، ثم أبدِ رأيك بتحوّط (tampaknya، cenderung)، وقدّم دليلًا، واختم بحلّ عملي."
+          en: "Write a viewpoint essay, 200–280 words, on the question: 'Should oil-palm planting stop near Kalimantan's forests?' Present at least two points of view (for example a farmer, a researcher or the indigenous community), then give your own view with hedging (tampaknya, cenderung), back it with evidence, and close with a practical solution."
+        rubric:
+          - Presents at least two distinct points of view fairly (dari sudut pandang …, di sisi lain …) before giving the writer's own.
+          - States a hedged but clear position (tampaknya, cenderung, barangkali, menurut hemat saya) and supports it with evidence or an example.
+          - Organises the essay with an introduction, body paragraphs linked by connectors (selain itu, meskipun begitu, dengan demikian) and a conclusion with a solution.
+          - Uses BIPA 5 grammar and formal register accurately (peN-…-an and per-…-an nouns, ter- / ke-…-an passives, concessive clauses); 200–280 words.
+        sample: |
+          Hutan Kalimantan adalah paru-paru dunia, tetapi juga sumber penghasilan bagi jutaan orang. Oleh karena itu, pertanyaan tentang perluasan kebun sawit tidak bisa dijawab dengan "ya" atau "tidak" saja.
+          Dari sudut pandang petani, sawit memberi penghasilan yang stabil. Banyak keluarga di desa dapat menyekolahkan anak mereka berkat kebun sawit. Bagi mereka, larangan total berarti kehilangan pekerjaan.
+          Di sisi lain, para peneliti mencatat bahwa pembukaan lahan di dekat hutan membuat satwa seperti orang utan kehilangan tempat tinggal. Selain itu, lahan gambut yang dikeringkan untuk kebun mudah terbakar pada musim kemarau, sehingga asapnya mengganggu kesehatan warga.
+          Masyarakat adat juga memiliki pendapat sendiri. Mereka sudah menjaga hutan adat selama ratusan tahun, dan mereka meminta agar tanah mereka tidak diambil tanpa persetujuan.
+          Menurut hemat saya, tampaknya perluasan kebun sawit di dekat taman nasional sebaiknya dihentikan, meskipun kebun yang sudah ada tidak perlu ditutup. Pengalaman di Tanjung Puting menunjukkan bahwa hutan yang rusak sulit dipulihkan.
+          Dengan demikian, solusi yang paling adil adalah memperbaiki produktivitas kebun yang sudah ada, memberi pelatihan kepada petani, dan melibatkan masyarakat adat dalam menjaga hutan. Dengan cara itu, penghasilan petani tetap terjaga, dan hutan Kalimantan tidak punah.
+        words: [sudut pandang, di sisi lain, tampaknya]
+  - id: speaking
+    skill: speaking
+    title:
+      ar_eg: الكلام
+      ar: المحادثة
+      en: Speaking
+    instructions:
+      ar_eg: هنا هتجاوب في مقابلة شغل وتعمل عرض قصير. اتكلم بشكل طبيعي؛ المهم الكلام يبقى مترتّب والأسلوب يناسب الموقف، مش إن كل كلمة تبقى مثالية.
+      ar: ستجيب هنا في مقابلة عمل وتقدّم عرضًا قصيرًا. تكلّم بشكل طبيعي؛ المهم أن يكون الكلام مرتّبًا والأسلوب ملائمًا للموقف، لا أن تكون كل كلمة مثالية.
+      en: Here you'll answer in a job interview and give a short presentation. Speak naturally; what matters is a well-ordered answer in the right register, not every word being perfect.
+    items:
+      - id: t36
+        type: speaking
+        text: Hadirin yang saya hormati, pertama-tama izinkan saya menyajikan hasil kunjungan kami ke Singkawang.
+        meaning:
+          ar_eg: الحضور الكرام، في الأول اسمحولي أعرض نتايج زيارتنا لسينجكاوانج.
+          ar: أيها الحضور الكرام، اسمحوا لي أوّلًا أن أعرض نتائج زيارتنا إلى سينغكاوانغ.
+          en: Distinguished audience, first of all let me present the results of our visit to Singkawang.
+        words: [hadirin, pertama-tama, menyajikan, kunjungan]
+      - id: t37
+        type: speaking_task
+        points: 4
+        prompt:
+          ar_eg: "إنت في مقابلة شغل في شركة سياحة في بالكبابان. المدير بيسألك: 'Apa kelebihan dan kekurangan Anda, dan mengapa Anda berminat bekerja di sini?' جاوب حوالي دقيقتين بأسلوب رسمي: اذكر ميزة بمثال، وعيب وإزاي بتشتغل عليه، وسبب اهتمامك بالشغل."
+          ar: "أنت في مقابلة عمل لدى شركة سياحة في باليكبابان، ويسألك المدير: 'Apa kelebihan dan kekurangan Anda, dan mengapa Anda berminat bekerja di sini?' أجب نحو دقيقتين بأسلوب رسمي: اذكر ميزة بمثال، وعيبًا وكيف تعالجه، وسبب رغبتك في العمل."
+          en: "You're in a job interview at a travel company in Balikpapan. The manager asks: 'Apa kelebihan dan kekurangan Anda, dan mengapa Anda berminat bekerja di sini?' Answer for about two minutes in formal register: name a strength with an example, a weakness and how you work on it, and why you want the job."
+        rubric:
+          - Keeps a formal interview register throughout (saya, Bapak/Ibu, no slang).
+          - Names a strength with a concrete example from experience (pengalaman, keahlian).
+          - Names a real weakness and how it is being improved, without turning it into a disguised boast.
+          - Gives a clear, specific reason for wanting the job (berminat, karena …), spoken fluently enough to follow.
+        sample: |
+          Terima kasih atas pertanyaannya, Pak. Kelebihan saya adalah kemampuan berkomunikasi dengan orang dari berbagai negara. Misalnya, ketika saya bekerja di sebuah hotel di Kairo, saya sering membantu tamu dari Malaysia dan Indonesia, sehingga bahasa Indonesia saya makin lancar.
+          Adapun kekurangan saya, saya kadang terlalu lama memeriksa pekerjaan sendiri. Sekarang saya belajar membuat daftar prioritas supaya pekerjaan selesai tepat waktu.
+          Saya berminat bekerja di perusahaan Bapak karena perusahaan ini memperkenalkan wisata hutan dan sungai Kalimantan kepada wisatawan dari Timur Tengah. Saya yakin pengalaman dan bahasa Arab saya dapat membantu.
+        words: [kelebihan, kekurangan, berminat]
+      - id: t38
+        type: speaking_task
+        points: 6
+        prompt:
+          ar_eg: "اعمل عرض تقديمي حوالي ٣ دقايق بعنوان 'Pasar terapung: tradisi yang harus dilestarikan?' ابدأ بتحية الحضور وخطّة العرض، اعرض معلومة أو رقمين (ممكن تخترعهم وتقول إنها أمثلة)، واذكر رأي مختلف، واقفل بخلاصة وسؤال للجمهور."
+          ar: "قدّم عرضًا مدّته نحو ثلاث دقائق بعنوان 'Pasar terapung: tradisi yang harus dilestarikan?' ابدأ بتحية الحضور وخطّة العرض، واعرض معلومة أو رقمين (يجوز أن تؤلّفهما وتقول إنهما مثالان)، واذكر رأيًا مخالفًا، واختم بخلاصة وسؤال للجمهور."
+          en: "Give a presentation of about 3 minutes titled 'Pasar terapung: tradisi yang harus dilestarikan?' Open by greeting the audience and outlining the talk, present a fact or two figures (you may invent them and say they're examples), mention a different view, and close with a summary and a question for the audience."
+        rubric:
+          - Uses presentation structure and signposts (hadirin yang saya hormati, pertama-tama, selanjutnya, sebagai penutup).
+          - Presents information or figures clearly (jumlah, meningkat, menurun, rata-rata) and labels any invented numbers as examples.
+          - Acknowledges a different view and responds to it (di sisi lain, meskipun begitu).
+          - Speaks fluently and audibly in formal register, ending with a summary and an audience question.
+        sample: |
+          Hadirin yang saya hormati, selamat pagi. Pertama-tama, terima kasih atas kesempatan ini. Presentasi saya terdiri atas tiga bagian, yaitu sejarah pasar terapung, keadaannya sekarang, dan saran untuk masa depan.
+          Pasar terapung di Banjarmasin sudah ada sejak zaman kerajaan. Pedagang menjual sayur, buah, dan kue dari atas perahu. Sebagai contoh saja, misalkan dahulu ada seratus perahu setiap pagi, sekarang mungkin hanya separuhnya. Jumlah pedagang cenderung menurun karena anak muda lebih suka bekerja di kota.
+          Di sisi lain, ada yang berpendapat bahwa pasar terapung tidak perlu dipertahankan, karena pasar modern lebih bersih dan praktis. Meskipun begitu, menurut saya pasar terapung bukan sekadar tempat berbelanja, melainkan identitas masyarakat Banjar.
+          Sebagai penutup, saya menyarankan agar pemerintah membantu pedagang lewat promosi wisata dan pelatihan. Terima kasih. Pertanyaan saya untuk Bapak dan Ibu, kapan terakhir kali Anda berbelanja di atas perahu?
+        words: [hadirin, sebagai penutup, terapung]
+review:
+  status: draft
+  verified: false

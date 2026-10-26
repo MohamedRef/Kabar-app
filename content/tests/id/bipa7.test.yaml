@@ -1,0 +1,577 @@
+schema: kabar.test/v1
+id: bipa7.test
+language: id
+kind: level
+title:
+  ar_eg: اختبار مستوى BIPA 7 — بابوا
+  ar: اختبار مستوى BIPA 7 — بابوا
+  en: BIPA 7 level test — Papua
+intro:
+  ar_eg: |
+    وصلت لآخر الرحلة، من Sorong لحد Wamena! هنا هتسمع نشرة وندوة علمية سريعة، وتقرا خبر ومقال رأي وملخّص بحث وتطلّع المعنى اللي بين السطور، وتكتب نص علمي، وتتكلّم كلام طويل وترد على أسئلة.
+    ده آخر وأصعب مستوى، فخد وقتك. عادي جدًا إنك تعيد المقطع أو تقرا الفقرة تاني — كل إجابة بتورّينا نركّز على إيه.
+    ولو جاي من «اركب الطيارة» عشان تعدّي BIPA 7، أهلًا بيك — نفس الأسئلة.
+  ar: |
+    بلغتَ نهاية الرحلة من Sorong إلى Wamena! ستستمع هنا إلى نشرة وندوة علمية سريعة، وتقرأ خبرًا ومقال رأي وملخّص بحث وتستخرج المعنى الكامن بين السطور، وتكتب نصًّا علميًّا، وتتحدّث حديثًا مطوّلًا وتجيب عن الأسئلة.
+    هذا آخر المستويات وأصعبها، فخذ وقتك. من الطبيعي أن تعيد المقطع أو تقرأ الفقرة ثانيةً؛ فكل إجابة تُرينا ما نركّز عليه.
+    وإن جئت من «سافر بالطائرة» لتتجاوز BIPA 7، فأهلًا بك؛ الأسئلة نفسها.
+  en: |
+    You've reached the end of the journey, from Sorong to Wamena! Here you'll hear a news bulletin and a fast academic seminar, read a news report, an op-ed and a research abstract and draw out what they imply, write a scholarly text, and speak at length and take questions.
+    This is the last and hardest level, so take your time. It's completely normal to replay a clip or reread a paragraph; every answer shows us what to focus on.
+    If you came through "Take a flight" to skip BIPA 7, welcome: these are the same questions.
+minutes: 60
+pass_mark: 0.7
+scoring: >-
+  Score = points earned / points available (closed items 1 point unless set;
+  translate items are graded against reference answers first, then AI grade_answer;
+  writing_task and speaking_task are graded by AI against their rubric, each
+  criterion an equal share of the item's points). Pass at >= 0.7. Passing marks
+  BIPA 7 complete; the same rule applies when the test is taken as the "Take a
+  flight" skip-ahead over BIPA 7. Below the mark, show the per-skill results and
+  suggest the units behind the missed items, with no penalty and an open retry.
+sections:
+  - id: listening
+    skill: listening
+    title:
+      ar_eg: الاستماع
+      ar: الاستماع
+      en: Listening
+    instructions:
+      ar_eg: أجزاء من نشرة أخبار، وشرح علمي، وندوة أكاديمية سريعة، وكلام بلهجة بابوا. الكلام هنا بسرعته الطبيعية؛ اسمع وعيد براحتك، وركّز على الأرقام والأسماء وأدوات الربط.
+      ar: مقاطع من نشرة أخبار وشرح علمي وندوة أكاديمية سريعة وحديث بلهجة بابوا. الكلام هنا بسرعته الطبيعية؛ استمع وأعِد كما تشاء، وركّز على الأرقام والأسماء وأدوات الربط.
+      en: Parts of a news bulletin, a science explanation, a fast academic seminar and some Papuan Malay. Speech is at natural speed here; listen, replay as you like, and focus on numbers, names and connectors.
+    items:
+      - id: t01
+        type: listen
+        text: Pelari asal Sorong itu berhasil meraih medali emas, ujarnya kepada wartawan.
+        options:
+          - Pelari asal Sorong itu berhasil meraih medali perak, ujarnya kepada wartawan.
+          - Pelari asal Sorong itu berhasil meraih medali emas, ujarnya kepada wartawan.
+          - Perenang asal Sorong itu berhasil meraih medali emas, ujarnya kepada wartawan.
+        answer: 1
+        words: [meraih, medali, ujarnya]
+      - id: t02
+        type: listen
+        text: Ketika suhu laut meningkat tajam, karang melepaskan alga dan terjadilah pemutihan.
+        options:
+          - Ketika suhu laut menurun drastis, karang melepaskan alga dan terjadilah pemutihan.
+          - Ketika suhu laut meningkat tajam, karang menyerap alga dan terjadilah pemutihan.
+          - Ketika suhu laut meningkat tajam, karang melepaskan alga dan terjadilah pemutihan.
+        answer: 2
+        words: [meningkat tajam, alga, pemutihan]
+      - id: t03
+        type: listen
+        text: Akan tetapi, data kuantitatif kami hanya berasal dari tiga distrik, sehingga temuan ini belum dapat digeneralisasi.
+        options:
+          - Akan tetapi, data kuantitatif kami hanya berasal dari tiga distrik, sehingga temuan ini belum dapat digeneralisasi.
+          - Oleh sebab itu, data kuantitatif kami berasal dari tiga puluh distrik, sehingga temuan ini dapat digeneralisasi.
+          - Akan tetapi, data kualitatif kami hanya berasal dari tiga distrik, sehingga temuan ini sudah dapat digeneralisasi.
+        answer: 0
+        words: [akan tetapi, kuantitatif, temuan]
+      - id: t04
+        type: listen
+        text: Pada tahun 1947, delegasi Indonesia menandatangani perjanjian persahabatan di Kairo.
+        options:
+          - Pada tahun 1957, delegasi Indonesia menandatangani perjanjian persahabatan di Kairo.
+          - Pada tahun 1947, delegasi Indonesia menandatangani perjanjian persahabatan di Kairo.
+          - Pada tahun 1947, delegasi Mesir menandatangani perjanjian persahabatan di Jakarta.
+        answer: 1
+        words: [delegasi]
+      - id: t05
+        type: listen
+        text: Sa su bilang, ko tra usah datang pagi-pagi.
+        options:
+          - Sa su bilang, ko tra usah datang pagi-pagi.
+          - Sa su bilang, ko harus datang pagi-pagi.
+          - Ko su bilang, sa tra usah datang pagi-pagi.
+        answer: 0
+        words: [sa, ko, su, tra]
+      - id: t06
+        type: dictation
+        text: Hoaks tersebut menyebar karena banyak orang tidak melakukan verifikasi.
+        meaning:
+          ar_eg: الإشاعة دي انتشرت علشان ناس كتير ماتحقّقوش منها.
+          ar: انتشر ذلك الخبر الكاذب لأنّ كثيرين لم يتحقّقوا منه.
+          en: That hoax spread because many people didn't verify it.
+        words: [hoaks, tersebut, verifikasi]
+      - id: t07
+        type: dictation
+        text: Partisipasi pemilih muda pada pemilu terakhir cukup tinggi.
+        meaning:
+          ar_eg: مشاركة الناخبين الشباب في آخر انتخابات كانت عالية لحدّ ما.
+          ar: كانت مشاركة الناخبين الشباب في الانتخابات الأخيرة مرتفعة نسبيًّا.
+          en: Young voters' turnout in the last election was fairly high.
+        words: [partisipasi, pemilih, pemilu]
+  - id: reading
+    skill: reading
+    title:
+      ar_eg: القراية
+      ar: القراءة
+      en: Reading
+    instructions:
+      ar_eg: اقرا الخبر، ومقال الرأي، وملخّص البحث. الأسئلة هنا كتير منها عن المعنى الضمني، يعني الكاتب بيلمّح لإيه أو منحاز لمين، مش بس عن المكتوب.
+      ar: اقرأ الخبر ومقال الرأي وملخّص البحث. كثير من الأسئلة هنا عن المعنى الضمني، أي ما يلمّح إليه الكاتب أو من ينحاز إليه، لا عن المكتوب وحده.
+      en: Read the news report, the op-ed and the research abstract. Many questions here are about implied meaning, what the writer hints at or whose side they lean towards, not just what is written.
+    items:
+      - id: t08
+        type: multiple_choice
+        question: |
+          WARGA PANIK, NELAYAN MERUGI (berita ditulis untuk tes ini)
+          MANOKWARI — Sebuah pesan berantai tentang "ikan beracun" di Teluk Doreri membuat harga ikan anjlok sejak Senin. Pesan tersebut menyebut "seorang dokter" sebagai sumbernya, tanpa nama dan tanpa tautan.
+          Dinas Kesehatan setempat membantah kabar itu. Menurut hasil uji laboratorium dinas, sampel ikan dari teluk aman dikonsumsi. Meskipun demikian, sebagian pembeli masih ragu. "Saya tunggu seminggu lagi saja," ujar seorang ibu di pasar.
+          Sementara itu, para nelayan mengaku kehilangan separuh penghasilan mereka dalam tiga hari.
+        question_meaning:
+          ar_eg: الكاتب بيلمّح لإيه لما بيقول إن الرسالة ذكرت «دكتور» من غير اسم ولا رابط؟
+          ar: إلامَ يلمّح الكاتب حين يذكر أنّ الرسالة نسبت الخبر إلى «طبيب» بلا اسم ولا رابط؟
+          en: What is the writer implying by noting the message cites "a doctor" with no name or link?
+        options:
+          - إن الدكتور ده مشهور جدًّا.
+          - إن مصدر الرسالة مش موثوق.
+          - إن الرسالة جاية من وزارة الصحة.
+        answer: 1
+        words: [hoaks, kredibel, sumber resmi]
+      - id: t09
+        type: multiple_choice
+        question: |
+          WARGA PANIK, NELAYAN MERUGI (berita ditulis untuk tes ini)
+          MANOKWARI — Sebuah pesan berantai tentang "ikan beracun" di Teluk Doreri membuat harga ikan anjlok sejak Senin. Pesan tersebut menyebut "seorang dokter" sebagai sumbernya, tanpa nama dan tanpa tautan.
+          Dinas Kesehatan setempat membantah kabar itu. Menurut hasil uji laboratorium dinas, sampel ikan dari teluk aman dikonsumsi. Meskipun demikian, sebagian pembeli masih ragu. "Saya tunggu seminggu lagi saja," ujar seorang ibu di pasar.
+          Sementara itu, para nelayan mengaku kehilangan separuh penghasilan mereka dalam tiga hari.
+        question_meaning:
+          ar_eg: «Pesan tersebut» في الفقرة الأولى راجعة على إيه؟
+          ar: إلامَ تعود «Pesan tersebut» في الفقرة الأولى؟
+          en: What does "Pesan tersebut" in the first paragraph refer back to?
+        options:
+          - لرسالة السلسلة عن السمك المسموم.
+          - لبيان إدارة الصحة.
+          - لكلام الست في السوق.
+        answer: 0
+        words: [tersebut, kohesi]
+      - id: t10
+        type: multiple_choice
+        question: |
+          WARGA PANIK, NELAYAN MERUGI (berita ditulis untuk tes ini)
+          MANOKWARI — Sebuah pesan berantai tentang "ikan beracun" di Teluk Doreri membuat harga ikan anjlok sejak Senin. Pesan tersebut menyebut "seorang dokter" sebagai sumbernya, tanpa nama dan tanpa tautan.
+          Dinas Kesehatan setempat membantah kabar itu. Menurut hasil uji laboratorium dinas, sampel ikan dari teluk aman dikonsumsi. Meskipun demikian, sebagian pembeli masih ragu. "Saya tunggu seminggu lagi saja," ujar seorang ibu di pasar.
+          Sementara itu, para nelayan mengaku kehilangan separuh penghasilan mereka dalam tiga hari.
+        question_meaning:
+          ar_eg: الخبر ده متوازن ليه؟
+          ar: لماذا يُعدّ هذا الخبر متوازنًا؟
+          en: Why is this a balanced report?
+        options:
+          - لإنه بيقول رأي الكاتب في الصيادين.
+          - لإنه بيأكّد إن السمك مسموم.
+          - لإنه بيعرض المصدر الرسمي والمشترين والصيادين من غير ما يحكم.
+        answer: 2
+        words: [objektif, kedua belah pihak]
+      - id: t11
+        type: multiple_choice
+        question: |
+          JANGAN BIARKAN KURSI ITU KOSONG (artikel opini, ditulis untuk tes ini)
+          Setiap lima tahun, kita diberi satu paku dan satu surat suara. Kelihatannya sepele, bukan? Namun, dari lubang kecil itulah lahir anggota DPR yang akan mengesahkan undang-undang tentang tanah, hutan, dan laut kita.
+          Ada yang bilang golput adalah bentuk protes. Menurut hemat saya, kursi yang kita tinggalkan kosong tidak pernah benar-benar kosong. Kursi itu akan diisi oleh orang lain, dengan suara orang lain.
+        question_meaning:
+          ar_eg: الكاتب عايز يقنع القرّاء بإيه؟
+          ar: بمَ يريد الكاتب أن يقنع القرّاء؟
+          en: What is the writer trying to persuade readers of?
+        options:
+          - إن المقاطعة احتجاج ناجح.
+          - إن البرلمان مش مهمّ.
+          - إنهم يروحوا يصوّتوا ومايقاطعوش.
+        answer: 2
+        words: [golput, artikel opini, menurut hemat saya]
+      - id: t12
+        type: multiple_choice
+        question: |
+          JANGAN BIARKAN KURSI ITU KOSONG (artikel opini, ditulis untuk tes ini)
+          Setiap lima tahun, kita diberi satu paku dan satu surat suara. Kelihatannya sepele, bukan? Namun, dari lubang kecil itulah lahir anggota DPR yang akan mengesahkan undang-undang tentang tanah, hutan, dan laut kita.
+          Ada yang bilang golput adalah bentuk protes. Menurut hemat saya, kursi yang kita tinggalkan kosong tidak pernah benar-benar kosong. Kursi itu akan diisi oleh orang lain, dengan suara orang lain.
+        question_meaning:
+          ar_eg: «Kursi yang kita tinggalkan kosong tidak pernah benar-benar kosong» معناها إيه؟
+          ar: ما معنى «Kursi yang kita tinggalkan kosong tidak pernah benar-benar kosong»؟
+          en: What does "Kursi yang kita tinggalkan kosong tidak pernah benar-benar kosong" mean?
+        options:
+          - لو ماصوّتّش، غيرك هو اللي هيختار بدالك.
+          - الكراسي في البرلمان دايمًا مليانة ناس.
+          - لازم نشتري كراسي جديدة للجان.
+        answer: 0
+        words: [kiasan, wakil rakyat]
+      - id: t13
+        type: multiple_choice
+        question: |
+          ABSTRAK (contoh ditulis untuk tes ini)
+          Penelitian ini mengkaji hubungan antara ketinggian lahan dan hasil panen ubi jalar di Lembah Baliem. Data kuantitatif dikumpulkan melalui kuesioner kepada 120 petani di tiga distrik, sedangkan data kualitatif diperoleh dari wawancara mendalam dengan sepuluh partisipan. Temuan menunjukkan bahwa hasil panen cenderung lebih tinggi di lahan yang lebih tinggi. Namun, jumlah sampel yang terbatas menjadi keterbatasan utama penelitian ini.
+        question_meaning:
+          ar_eg: البحث ده استعمل أنهي منهج؟
+          ar: أيّ منهج استعمل هذا البحث؟
+          en: Which method did this study use?
+        options:
+          - كيفي بس.
+          - كمّي وكيفي مع بعض.
+          - كمّي بس.
+        answer: 1
+        words: [metode penelitian, kuantitatif, kualitatif]
+      - id: t14
+        type: multiple_choice
+        question: |
+          ABSTRAK (contoh ditulis untuk tes ini)
+          Penelitian ini mengkaji hubungan antara ketinggian lahan dan hasil panen ubi jalar di Lembah Baliem. Data kuantitatif dikumpulkan melalui kuesioner kepada 120 petani di tiga distrik, sedangkan data kualitatif diperoleh dari wawancara mendalam dengan sepuluh partisipan. Temuan menunjukkan bahwa hasil panen cenderung lebih tinggi di lahan yang lebih tinggi. Namun, jumlah sampel yang terbatas menjadi keterbatasan utama penelitian ini.
+        question_meaning:
+          ar_eg: كلمة «cenderung» في النتيجة بتورّي إيه عن موقف الباحث؟
+          ar: ماذا تكشف كلمة «cenderung» في النتيجة عن موقف الباحث؟
+          en: What does "cenderung" in the finding show about the researcher's stance?
+        options:
+          - إنه متأكّد ١٠٠٪.
+          - إنه رافض النتيجة.
+          - إنه حذر ومابيعمّمش.
+        answer: 2
+        words: [temuan, keterbatasan]
+      - id: t15
+        type: multiple_choice
+        question: |
+          ABSTRAK (contoh ditulis untuk tes ini)
+          Penelitian ini mengkaji hubungan antara ketinggian lahan dan hasil panen ubi jalar di Lembah Baliem. Data kuantitatif dikumpulkan melalui kuesioner kepada 120 petani di tiga distrik, sedangkan data kualitatif diperoleh dari wawancara mendalam dengan sepuluh partisipan. Temuan menunjukkan bahwa hasil panen cenderung lebih tinggi di lahan yang lebih tinggi. Namun, jumlah sampel yang terbatas menjadi keterbatasan utama penelitian ini.
+        question_meaning:
+          ar_eg: لو حد سأل في الندوة «النتيجة دي تنفع لبابوا كلها؟»، أنهي إجابة أمينة؟
+          ar: إن سأل أحدهم في الندوة «هل تصحّ هذه النتيجة على بابوا كلّها؟»، فأيّ جواب أمين؟
+          en: If someone at the seminar asks "Does this hold for all of Papua?", which answer is honest?
+        options:
+          - Belum, karena sampel kami terbatas pada tiga distrik.
+          - Tentu saja, untuk seluruh Indonesia.
+          - Pertanyaan itu tidak relevan.
+        answer: 0
+        words: [penanya, relevan, partisipan]
+  - id: vocabulary
+    skill: vocabulary
+    title:
+      ar_eg: الكلمات
+      ar: المفردات
+      en: Vocabulary
+    items:
+      - id: t16
+        type: match_pairs
+        pairs:
+          - text: keanekaragaman hayati
+            ar_eg: التنوّع البيولوجي
+            ar: التنوّع الحيوي
+            en: biodiversity
+          - text: pengakuan
+            ar_eg: اعتراف
+            ar: اعتراف
+            en: recognition
+          - text: tangkapan layar
+            ar_eg: سكرين شوت
+            ar: لقطة شاشة
+            en: screenshot
+          - text: daya beli
+            ar_eg: القوة الشرائية
+            ar: القدرة الشرائية
+            en: purchasing power
+        words: [keanekaragaman hayati, pengakuan, tangkapan layar, daya beli]
+      - id: t17
+        type: match_pairs
+        pairs:
+          - text: naik daun
+            ar_eg: يشتهر
+            ar: يشتهر
+            en: become popular
+          - text: kepala batu
+            ar_eg: دماغه ناشفة
+            ar: عنيد
+            en: stubborn
+          - text: tenggang rasa
+            ar_eg: مراعاة شعور الغير
+            ar: مراعاة مشاعر الآخرين
+            en: consideration for others
+          - text: ujaran kebencian
+            ar_eg: خطاب كراهية
+            ar: خطاب الكراهية
+            en: hate speech
+        words: [naik daun, kepala batu, tenggang rasa, ujaran kebencian]
+      - id: t18
+        type: fill_blank
+        sentence: Gerakan ___ tahun 1998 menuntut pemerintahan yang bersih dan demokratis.
+        meaning:
+          ar_eg: حركة الإصلاح سنة 1998 طالبت بحكومة نضيفة وديمقراطية.
+          ar: طالبت حركة الإصلاح عام 1998 بحكومة نزيهة وديمقراطية.
+          en: The 1998 Reformasi movement demanded clean, democratic government.
+        options: ["Reformasi", "Proklamasi", "Orde Baru"]
+        answers: [Reformasi]
+        words: [reformasi, tuntutan]
+      - id: t19
+        type: fill_blank
+        sentence: Usaha noken Kaka Benny berkembang berkat ___ di Instagram.
+        meaning:
+          ar_eg: مشروع شنط النوكين بتاع كاكا بيني كبر بفضل التسويق الأونلاين على إنستجرام.
+          ar: نما مشروع حقائب النوكين لكاكا بيني بفضل التسويق الإلكتروني على إنستغرام.
+          en: Kaka Benny's noken business grew thanks to online marketing on Instagram.
+        options: ["pemasaran daring", "suku bunga", "nilai tukar"]
+        answers: [pemasaran daring]
+        words: [pemasaran daring, UMKM]
+      - id: t20
+        type: fill_blank
+        sentence: Semboyan Bhinneka Tunggal Ika tertulis pada ___, yaitu Garuda Pancasila.
+        meaning:
+          ar_eg: شعار «Bhinneka Tunggal Ika» مكتوب على شعار الدولة، نسر جارودا بانتشاسيلا.
+          ar: يُكتب شعار «Bhinneka Tunggal Ika» على شعار الدولة، نسر غارودا بانتشاسيلا.
+          en: The motto Bhinneka Tunggal Ika is written on the national emblem, the Garuda Pancasila.
+        options: ["lambang negara", "dasar negara", "lembaga negara"]
+        answers: [lambang negara]
+        words: [lambang negara, semboyan]
+      - id: t21
+        type: fill_blank
+        sentence: Untuk pembaca awam, hindari ___ dan gunakan analogi yang sederhana.
+        meaning:
+          ar_eg: للقارئ العادي، ابعد عن المصطلحات التقيلة واستعمل تشبيه بسيط.
+          ar: للقارئ غير المتخصّص، تجنّب الرطانة واستعمل تشبيهًا بسيطًا.
+          en: For lay readers, avoid jargon and use a simple analogy.
+        options: ["jargon", "abstrak", "hipotesis"]
+        answers: [jargon]
+        words: [jargon, pembaca awam, analogi]
+  - id: grammar
+    skill: grammar
+    title:
+      ar_eg: القواعد
+      ar: القواعد
+      en: Grammar
+    items:
+      - id: t22
+        type: fill_blank
+        sentence: Mesir mengakui kemerdekaan Indonesia pada tahun 1946. Pengakuan ___ membuka jalan bagi diplomasi Indonesia.
+        meaning:
+          ar_eg: مصر اعترفت باستقلال إندونيسيا سنة 1946. الاعتراف ده فتح الطريق للدبلوماسية الإندونيسية.
+          ar: اعترفت مصر باستقلال إندونيسيا عام 1946، وفتح ذلك الاعتراف الطريق أمام الدبلوماسية الإندونيسية.
+          en: Egypt recognised Indonesia's independence in 1946. That recognition opened the way for Indonesian diplomacy.
+        options: ["tersebut", "masing-masing", "sementara itu"]
+        answers: [tersebut]
+        explain:
+          ar_eg: tersebut بتشاور على حاجة اتذكرت قبل كده، وده ربط نحوي (kohesi gramatikal).
+          ar: tersebut تحيل إلى ما ذُكر من قبل، وهذا ربط نحوي (kohesi gramatikal).
+          en: tersebut points back to something already mentioned, a form of grammatical cohesion.
+        words: [tersebut, pengakuan, mengakui]
+      - id: t23
+        type: multiple_choice
+        question_meaning:
+          ar_eg: «Hoaks itu menyebar cepat. Berita bohong tersebut menyesatkan nelayan.» إيه نوع الربط بين «hoaks» و«berita bohong»؟
+          ar: «Hoaks itu menyebar cepat. Berita bohong tersebut menyesatkan nelayan.» ما نوع الربط بين «hoaks» و«berita bohong»؟
+          en: '"Hoaks itu menyebar cepat. Berita bohong tersebut menyesatkan nelayan." What links "hoaks" and "berita bohong"?'
+        options: [antonim, sinonim, hiponim]
+        answer: 1
+        words: [sinonim, kohesi]
+      - id: t24
+        type: fill_blank
+        sentence: Harga sagu naik. ___, pembeli tetap datang ke pasar.
+        meaning:
+          ar_eg: سعر السجو طلع. ومع ذلك، المشترين لسّه بييجوا السوق.
+          ar: ارتفع سعر الساغو، ومع ذلك ما زال المشترون يقصدون السوق.
+          en: Sago prices rose. Even so, buyers keep coming to the market.
+        options: ["Meskipun demikian", "Oleh sebab itu", "Bahkan"]
+        answers: [Meskipun demikian]
+        explain:
+          ar_eg: الجملة التانية عكس المتوقّع، فبنحتاج أداة ربط للتعارض في أول الجملة.
+          ar: الجملة الثانية خلاف المتوقّع، فنحتاج أداة استدراك في صدرها.
+          en: The second sentence goes against expectation, so it needs a sentence-initial contrast connector.
+        words: [meskipun demikian]
+      - id: t25
+        type: multiple_choice
+        question_meaning:
+          ar_eg: إنت بتكتب الخبر لبرنامج أطفال. تختار أنهي جملة؟
+          ar: تكتب الخبر لبرنامج أطفال، فأيّ جملة تختار؟
+          en: You're writing the story for a children's programme. Which sentence do you pick?
+        options:
+          - Penutupan ruas jalan dilaksanakan berdasarkan keputusan dinas terkait.
+          - Jalan ke sekolah ditutup dulu, ya, karena sedang diperbaiki.
+          - Dengan segala hormat, kami mohon peninjauan jadwal penutupan.
+        answer: 1
+        words: [pembaca sasaran, menyesuaikan]
+      - id: t26
+        type: fill_blank
+        sentence: Dalam ragam ilmiah, kalimat "Saya rasa datanya banyak banget" sebaiknya diganti dengan "Data ___ dari 120 partisipan."
+        meaning:
+          ar_eg: في الأسلوب العلمي، جملة «أنا حاسس إن البيانات كتير قوي» الأحسن تتبدّل بـ«البيانات اتجمعت من 120 مشارك».
+          ar: في الأسلوب العلمي يُستحسن استبدال «أظنّ البيانات كثيرة جدًّا» بـ«جُمعت البيانات من 120 مشاركًا».
+          en: In academic register, "I reckon there's loads of data" is better replaced with "Data was collected from 120 participants."
+        options: ["dikumpulkan", "kumpul-kumpul", "ngumpulin"]
+        answers: [dikumpulkan]
+        explain:
+          ar_eg: الأسلوب العلمي بيحب المبني للمجهول (di-) والكلمات الفصحى، مش العامية زي ngumpulin.
+          ar: يفضّل الأسلوب العلمي المبنيّ للمجهول (di-) والألفاظ الفصيحة، لا العامّية مثل ngumpulin.
+          en: Academic register favours the di- passive and standard forms, not colloquial ones like ngumpulin.
+        words: [ragam ilmiah, kalimat efektif]
+      - id: t27
+        type: multiple_choice
+        question_meaning:
+          ar_eg: «Rumah kami cuma gubuk kecil» قالها راجل غني ساكن في فيلا. ده مجاز إيه؟
+          ar: قال رجل ثريّ يسكن فيلا «Rumah kami cuma gubuk kecil». أيّ مجاز هذا؟
+          en: A rich man who lives in a villa says "Rumah kami cuma gubuk kecil". Which figure of speech is this?
+        options: [litotes, paradoks, metonimia]
+        answer: 0
+        words: [litotes]
+      - id: t28
+        type: fill_blank
+        sentence: Setelah juara, jangan ___. Tetaplah rendah hati.
+        meaning:
+          ar_eg: بعد ما تكسب البطولة، ماتبقاش شايف نفسك. خليك متواضع.
+          ar: بعد الفوز لا تكن مغرورًا، وابقَ متواضعًا.
+          en: After winning, don't get big-headed. Stay humble.
+        options: ["besar kepala", "angkat tangan", "naik daun"]
+        answers: [besar kepala]
+        words: [besar kepala]
+      - id: t29
+        type: multiple_choice
+        question_meaning:
+          ar_eg: «Kitong pi pasar dulu» بالإندونيسي الفصيح تبقى إيه؟
+          ar: ما مقابل «Kitong pi pasar dulu» بالإندونيسية الفصيحة؟
+          en: What is "Kitong pi pasar dulu" in standard Indonesian?
+        options:
+          - Kalian ke pasar dulu.
+          - Mereka sudah dari pasar.
+          - Kita pergi ke pasar dulu.
+        answer: 2
+        words: [kitong, pi]
+      - id: t30
+        type: fill_blank
+        sentence: Gunakan ___ Anda pada hari pemilu, karena setiap suara berarti.
+        meaning:
+          ar_eg: استعمل حقّك في التصويت يوم الانتخابات، لإن كل صوت ليه قيمة.
+          ar: استعمل حقّك في الاقتراع يوم الانتخابات، فكلّ صوت له وزنه.
+          en: Use your right to vote on election day, because every vote counts.
+        options: ["hak pilih", "surat pembaca", "kerukunan"]
+        answers: [hak pilih]
+        words: [hak pilih, pemilu]
+      - id: t31
+        type: multiple_choice
+        question_meaning:
+          ar_eg: الخبر بيبتدي بـ«Dilaporkan bahwa…» و«Pelaku diduga…». الكلمتين دول بيعملوا إيه؟
+          ar: يبدأ الخبر بـ«Dilaporkan bahwa…» و«Pelaku diduga…». ما وظيفة الكلمتين؟
+          en: A report opens "Dilaporkan bahwa…" and "Pelaku diduga…". What do these two words do?
+        options:
+          - بيأكّدوا إن الخبر حقيقة مؤكّدة.
+          - بيعبّروا عن رأي الصحفي.
+          - بيبيّنوا إن المعلومة لسّه مش مؤكّدة رسميًّا.
+        answer: 2
+        words: [dilaporkan, diduga]
+      - id: t32
+        type: fill_blank
+        sentence: Terima kasih atas pertanyaannya. Penelitian ini memang memiliki ___, yaitu sampel yang kecil.
+        meaning:
+          ar_eg: شكرًا على السؤال. البحث ده فعلًا ليه حدود، وهي إن العيّنة صغيرة.
+          ar: شكرًا على السؤال. لهذا البحث حدود فعلًا، وهي صغر العيّنة.
+          en: Thank you for the question. This study does have a limitation, namely the small sample.
+        options: ["keterbatasan", "klarifikasi", "kelebihan"]
+        answers: [keterbatasan]
+        words: [keterbatasan, klarifikasi]
+      - id: t33
+        type: build_sentence
+        source:
+          ar_eg: الثقافة الرقمية بتحمي خصوصيتنا من الآثار السلبية.
+          ar: تحمي الثقافة الرقمية خصوصيّتنا من الآثار السلبية.
+          en: Digital literacy protects our privacy from negative effects.
+        answer: Literasi digital melindungi privasi kita dari dampak negatif.
+        distractors: [kecanduan, unggahan]
+        words: [literasi digital, privasi, dampak negatif]
+  - id: writing
+    skill: writing
+    title:
+      ar_eg: الكتابة
+      ar: الكتابة
+      en: Writing
+    items:
+      - id: t34
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: النتيجة دي بتدعم الفرضية، بس محتاجة بحث تاني بعد كده.
+          ar: تدعم هذه النتيجة الفرضية، لكنّها تحتاج إلى بحث لاحق.
+          en: This finding supports the hypothesis, but it needs further research.
+        answers:
+          - Temuan ini mendukung hipotesis, tetapi memerlukan penelitian lanjutan.
+          - Temuan ini mendukung hipotesis, tetapi memerlukan penelitian lanjutan
+          - Temuan ini mendukung hipotesis, tetapi perlu penelitian lanjutan.
+          - Temuan ini mendukung hipotesis, tetapi perlu penelitian lanjutan
+          - Temuan ini mendukung hipotesis, namun memerlukan penelitian lanjutan.
+          - Temuan ini mendukung hipotesis, tetapi membutuhkan penelitian lanjutan.
+          - Temuan ini menguatkan hipotesis, tetapi memerlukan penelitian lanjutan.
+          - Temuan ini mendukung hipotesis. Akan tetapi, temuan tersebut memerlukan penelitian lanjutan.
+          - Temuan ini mendukung hipotesis. Akan tetapi, masih diperlukan penelitian lanjutan.
+          - Temuan ini mendukung hipotesis, tetapi masih perlu diteliti lebih lanjut.
+        words: [temuan, hipotesis]
+      - id: t35
+        type: writing_task
+        points: 8
+        prompt:
+          ar_eg: "اكتب نص علمي قصير، ٢٥٠–٣٥٠ كلمة، عن 'Ancaman pemutihan karang terhadap ekosistem Raja Ampat'. ابدأ بملخّص (abstrak) من ٢–٣ جمل، وبعدين اشرح السبب والنتيجة بترتيب (penyebab → tahapan → dampak)، واستعمل مرجع واحد على الأقل بإعادة صياغة (ممكن تخترعه وتقول إنه مثال)، واذكر حدود معلوماتك، واقفل بتوصية."
+          ar: "اكتب نصًّا علميًّا قصيرًا من ٢٥٠ إلى ٣٥٠ كلمة حول 'Ancaman pemutihan karang terhadap ekosistem Raja Ampat'. ابدأ بملخّص (abstrak) من جملتين أو ثلاث، ثم اشرح السبب والنتيجة بترتيب (penyebab ← tahapan ← dampak)، واستعمل مرجعًا واحدًا على الأقل بإعادة صياغة (يجوز أن تؤلّفه على أن تذكر أنه مثال)، واذكر حدود معلوماتك، واختم بتوصية."
+          en: "Write a short scholarly text, 250–350 words, on 'Ancaman pemutihan karang terhadap ekosistem Raja Ampat'. Open with a 2–3 sentence abstract, then explain cause and effect in order (penyebab → tahapan → dampak), paraphrase at least one source (you may invent one if you say it's an example), state the limits of what you know, and close with a recommendation."
+        rubric:
+          - Follows a scholarly structure (abstract, explanation in logical stages, limitations, recommendation) with clear paragraphing.
+          - Explains cause and effect accurately and in order, using intersentential connectors (oleh sebab itu, akan tetapi, sementara itu, bahkan) and cohesive reference (tersebut, hal ini).
+          - Paraphrases at least one source with a reporting verb and citation, labels any invented source, and hedges claims (cenderung, diperkirakan).
+          - Uses academic register accurately throughout (precise terms, passives, nominalisation, no slang); 250–350 words.
+        sample: |
+          Abstrak. Tulisan ini menjelaskan bagaimana kenaikan suhu laut menyebabkan pemutihan karang dan apa dampaknya bagi ekosistem Raja Ampat. Uraian disusun berdasarkan tahapan proses dan diakhiri dengan rekomendasi.
+          Raja Ampat terletak di kawasan Segitiga Terumbu Karang, salah satu pusat keanekaragaman hayati laut dunia. Karang di kawasan tersebut hidup bersama alga kecil yang memberi warna dan nutrisi. Hubungan ini sangat peka terhadap suhu air.
+          Penyebab utama pemutihan adalah pemanasan global. Ketika suhu laut meningkat tajam selama beberapa minggu, karang melepaskan alga tersebut. Akibatnya, karang kehilangan warna dan sumber makanannya. Jika suhu segera turun, karang dapat pulih. Akan tetapi, jika panas berlangsung lama, karang cenderung mati.
+          Dampaknya tidak berhenti pada karang. Ikan kehilangan tempat berlindung, sehingga hasil tangkapan nelayan dapat menurun. Bahkan, pariwisata selam yang menjadi sumber penghasilan warga juga ikut terancam. Rumbiak (2021, contoh rujukan untuk tes ini) menyatakan bahwa kawasan konservasi yang dikelola bersama masyarakat adat pulih lebih cepat daripada kawasan yang tidak dilindungi.
+          Perlu dicatat bahwa tulisan ini tidak didasarkan pada pengukuran langsung, sehingga besarnya kerusakan di setiap pulau belum dapat dipastikan.
+          Oleh sebab itu, direkomendasikan tiga langkah, yaitu memperluas kawasan konservasi, membatasi jumlah penyelam di lokasi yang rentan, dan melibatkan nelayan dalam pemantauan suhu laut.
+        words: [abstrak, pemutihan, keanekaragaman hayati]
+  - id: speaking
+    skill: speaking
+    title:
+      ar_eg: الكلام
+      ar: المحادثة
+      en: Speaking
+    instructions:
+      ar_eg: هنا هتعمل عرض طويل وبعدين ترد على سؤال صعب من الجمهور. اتكلم بشكل طبيعي؛ المهم الكلام يبقى مترتّب ومترابط، وإنك تعترف بحدود معلوماتك بأمانة.
+      ar: ستقدّم هنا عرضًا مطوّلًا ثم تجيب عن سؤال صعب من الحضور. تكلّم بشكل طبيعي؛ المهم أن يكون الكلام مرتّبًا مترابطًا، وأن تعترف بحدود معرفتك بأمانة.
+      en: Here you'll give an extended talk, then answer a hard question from the audience. Speak naturally; what matters is a well-ordered, connected talk and owning the limits of what you know.
+    items:
+      - id: t36
+        type: speaking
+        text: Yang saya hormati Bapak moderator dan hadirin sekalian, izinkan saya memaparkan temuan penelitian kami.
+        meaning:
+          ar_eg: السيد مدير الجلسة المحترم والحضور الكرام، اسمحولي أعرض نتايج بحثنا.
+          ar: السيد مدير الجلسة المحترم، والحضور الكرام، اسمحوا لي أن أعرض نتائج بحثنا.
+          en: Honourable moderator and distinguished audience, allow me to present our research findings.
+        words: [yang saya hormati, moderator, memaparkan, temuan]
+      - id: t37
+        type: speaking_task
+        points: 6
+        prompt:
+          ar_eg: "اعمل عرض حوالي ٥ دقايق بعنوان 'Bhinneka Tunggal Ika di era media sosial'. افتح بتحية رسمية وخطّة العرض، اشرح معنى الشعار وأصله، وبعدين إزاي الأخبار الكدب وخطاب الكراهية بيهدّدوه، وهات مثال (ممكن تخترعه وتقول إنه مثال)، واقفل بخلاصة وتوصية. استعمل تعبير اصطلاحي واحد على الأقل بشكل طبيعي."
+          ar: "قدّم عرضًا مدّته نحو خمس دقائق بعنوان 'Bhinneka Tunggal Ika di era media sosial'. افتتح بتحية رسمية وخطّة العرض، واشرح معنى الشعار وأصله، ثم كيف تهدّده الأخبار الكاذبة وخطاب الكراهية، وقدّم مثالًا (يجوز أن تؤلّفه على أن تذكر أنه مثال)، واختم بخلاصة وتوصية. واستعمل تعبيرًا اصطلاحيًّا واحدًا على الأقل استعمالًا طبيعيًّا."
+          en: "Give a talk of about 5 minutes titled 'Bhinneka Tunggal Ika di era media sosial'. Open with a formal greeting and outline, explain the motto's meaning and origin, then how hoaxes and hate speech threaten it, give an example (invented is fine if you say so), and close with a summary and a recommendation. Use at least one idiom naturally."
+        rubric:
+          - Sustains a well-structured extended talk (formal opening, outline, body in stages, summary, recommendation) with clear signposting.
+          - Explains the motto accurately (Old Javanese, unity in diversity, on the national emblem) and links it convincingly to hoaxes and hate speech.
+          - Connects ideas with cohesive devices (tersebut, sinonim and repetisi, akan tetapi, oleh sebab itu) and uses at least one idiom naturally.
+          - Speaks fluently at length in formal register, with clear pronunciation; self-corrections are fine.
+        sample: |
+          Yang saya hormati Bapak moderator dan hadirin sekalian. Presentasi saya terdiri atas tiga bagian, yaitu makna Bhinneka Tunggal Ika, ancaman di media sosial, dan saran untuk kita semua.
+          Pertama, semboyan Bhinneka Tunggal Ika berasal dari bahasa Jawa Kuno dan berarti "berbeda-beda tetapi tetap satu". Semboyan tersebut tertulis pada lambang negara, Garuda Pancasila. Indonesia memiliki lebih dari seribu tiga ratus suku bangsa, dan kerukunan di antara mereka adalah kekayaan yang luar biasa.
+          Kedua, media sosial membawa tantangan baru. Hoaks dan ujaran kebencian menyebar lebih cepat daripada kebenaran. Sebagai contoh, dan ini contoh rekaan saja, sebuah tangkapan layar palsu tentang satu suku bisa dibagikan ke ratusan grup dalam satu malam. Akibatnya, prasangka tumbuh, padahal faktanya tidak pernah diverifikasi.
+          Akan tetapi, kita tidak boleh angkat tangan. Literasi digital adalah jawabannya. Sebelum menyebarkan sesuatu, kita perlu cek fakta, mencari sumber resmi, dan mendengar kedua belah pihak.
+          Sebagai kesimpulan, Bhinneka Tunggal Ika bukan hanya semboyan di dinding sekolah, melainkan sikap yang harus dijaga setiap kali kita mengetik dan membagikan sesuatu. Saran saya, sekolah perlu mengajarkan literasi digital sejak dini. Terima kasih.
+        words: [Bhinneka Tunggal Ika, ujaran kebencian, literasi digital]
+      - id: t38
+        type: speaking_task
+        points: 4
+        prompt:
+          ar_eg: "بعد العرض، حد من الجمهور بيسألك: 'Bukankah media sosial justru menyatukan orang Indonesia? Data Anda dari mana?' جاوب حوالي دقيقتين: اشكره، اطلب توضيح لو محتاج، اعترف بالنقطة الصح في سؤاله، واذكر حدود معلوماتك بأمانة، ورجّع للفكرة الأساسية."
+          ar: "بعد العرض يسألك أحد الحضور: 'Bukankah media sosial justru menyatukan orang Indonesia? Data Anda dari mana?' أجب نحو دقيقتين: اشكره، واطلب توضيحًا إن لزم، واعترف بما في سؤاله من صواب، واذكر حدود معلوماتك بأمانة، ثم عُد إلى فكرتك الرئيسة."
+          en: "After your talk, someone asks: 'Bukankah media sosial justru menyatukan orang Indonesia? Data Anda dari mana?' Answer for about two minutes: thank them, ask for clarification if needed, concede what's right in their point, state the limits of your data honestly, and bring it back to your main idea."
+        rubric:
+          - Opens politely (terima kasih atas pertanyaannya) and, where useful, asks for klarifikasi.
+          - Concedes the valid part of the challenge fairly instead of dismissing it.
+          - States the limits of the evidence honestly (keterbatasan, contoh rekaan, belum ada data) without inventing statistics.
+          - Returns clearly to the main argument, speaking fluently and calmly in formal register.
+        sample: |
+          Terima kasih atas pertanyaannya, Pak. Pertanyaan yang sangat relevan.
+          Bapak benar bahwa media sosial juga menyatukan orang. Misalnya, keluarga di Wamena dan di Jakarta bisa berbicara setiap hari, dan banyak gerakan sosial lahir dari media sosial.
+          Mengenai data, saya harus jujur bahwa contoh tadi adalah contoh rekaan. Presentasi saya tidak didasarkan pada penelitian sendiri, dan itu memang keterbatasan presentasi ini.
+          Meskipun demikian, inti argumen saya tetap sama. Media sosial adalah alat. Alat itu bisa menyatukan, tetapi juga bisa memecah belah. Oleh sebab itu, literasi digital tetap penting supaya manfaatnya lebih besar daripada dampak negatifnya.
+        words: [relevan, keterbatasan, meskipun demikian]
+review:
+  status: draft
+  verified: false

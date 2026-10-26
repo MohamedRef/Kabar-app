@@ -1,0 +1,221 @@
+schema: kabar.lesson/v1
+id: bipa7.u07.l02
+language: id
+title: Berita TV
+can_do:
+  ar_eg: تتابع نشرة أخبار في التلفزيون عن مؤسسات الدولة.
+  ar: أن تتابع نشرة أخبار تلفزيونية عن مؤسسات الدولة.
+  en: Follow a TV news bulletin about state institutions.
+slides:
+  - title: Malam ini di berita
+    body:
+      ar_eg: |
+        نشرة أخبار متألّفة للدرس:
+        Pembawa berita: "Selamat malam. DPR hari ini mengesahkan undang-undang baru tentang perlindungan laut. Sementara itu, TNI membantu warga yang terkena banjir di Manokwari."
+        - pembawa berita = المذيع/المذيعة
+        - DPR = البرلمان (Dewan Perwakilan Rakyat)
+        - mengesahkan undang-undang = يقرّ قانون
+        - TNI = الجيش الإندونيسي (Tentara Nasional Indonesia)
+        - lembaga negara = مؤسسة من مؤسسات الدولة، زي DPR والمحكمة الدستورية
+        خد بالك: في الأخبار، sementara itu = «في الوقت نفسه»، بتنقل لخبر تاني.
+      ar: |
+        نشرة أخبار مؤلَّفة للدرس:
+        Pembawa berita: "Selamat malam. DPR hari ini mengesahkan undang-undang baru tentang perlindungan laut. Sementara itu, TNI membantu warga yang terkena banjir di Manokwari."
+        - pembawa berita = مقدّم الأخبار
+        - DPR = البرلمان (Dewan Perwakilan Rakyat)
+        - mengesahkan undang-undang = يُقرّ قانونًا
+        - TNI = الجيش الإندونيسي (Tentara Nasional Indonesia)
+        - lembaga negara = مؤسسة من مؤسسات الدولة، كالبرلمان والمحكمة الدستورية
+        لاحظ أنّ sementara itu في الأخبار تعني «في الأثناء»، وتنقل إلى خبر آخر.
+      en: |
+        A news bulletin invented for the lesson:
+        Pembawa berita: "Selamat malam. DPR hari ini mengesahkan undang-undang baru tentang perlindungan laut. Sementara itu, TNI membantu warga yang terkena banjir di Manokwari."
+        - pembawa berita = news anchor
+        - DPR = parliament (Dewan Perwakilan Rakyat)
+        - mengesahkan undang-undang = to pass a law
+        - TNI = the Indonesian armed forces (Tentara Nasional Indonesia)
+        - lembaga negara = a state institution, like the DPR or the Constitutional Court
+        Note that in the news, sementara itu ("meanwhile") moves on to the next story.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pembawa berita
+        ar_eg: مذيع الأخبار
+        ar: مقدّم الأخبار
+        en: news anchor
+      - text: DPR
+        ar_eg: البرلمان
+        ar: البرلمان
+        en: parliament (DPR)
+      - text: TNI
+        ar_eg: الجيش الإندونيسي
+        ar: الجيش الإندونيسي
+        en: armed forces (TNI)
+      - text: undang-undang
+        ar_eg: قانون
+        ar: قانون
+        en: law, statute
+      - text: mengesahkan
+        ar_eg: يقرّ / يصدّق على
+        ar: يُقرّ
+        en: to pass, ratify
+      - text: lembaga negara
+        ar_eg: مؤسسة دولة
+        ar: مؤسسة من مؤسسات الدولة
+        en: state institution
+    words: [pembawa berita, DPR, TNI, undang-undang, mengesahkan, lembaga negara]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مين اللي بيقرّ القوانين في إندونيسيا مع الحكومة؟
+      ar: من يُقرّ القوانين في إندونيسيا مع الحكومة؟
+      en: Who passes laws in Indonesia together with the government?
+    options: [TNI, DPR, pembawa berita]
+    answer: 1
+    words: [DPR, mengesahkan]
+  - id: e03
+    type: fill_blank
+    sentence: DPR akhirnya ___ undang-undang itu setelah rapat panjang.
+    meaning:
+      ar_eg: البرلمان أقرّ القانون ده أخيرًا بعد اجتماع طويل.
+      ar: أقرّ البرلمان ذلك القانون أخيرًا بعد اجتماع طويل.
+      en: Parliament finally passed the law after a long session.
+    options: [mengesahkan, menyesuaikan, menyebarkan]
+    answers: [mengesahkan]
+    words: [mengesahkan, undang-undang]
+  - id: e04
+    type: listen
+    text: Sementara itu, TNI mengirim kapal untuk membantu korban banjir.
+    question:
+      ar_eg: الجيش عمل إيه؟
+      ar: ماذا فعل الجيش؟
+      en: What did the armed forces do?
+    options:
+      - بعت سفينة يساعد المتضرّرين من الفيضان.
+      - أقرّ قانون جديد.
+      - قفل الشارع.
+    answer: 0
+    words: [TNI]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: المذيع قرا الخبر بهدوء.
+      ar: قرأ مقدّم الأخبار الخبر بهدوء.
+      en: The anchor read the news calmly.
+    answer: Pembawa berita membaca berita dengan tenang.
+    distractors: [DPR, TNI]
+    words: [pembawa berita]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي واحدة من دول مش «lembaga negara»؟
+      ar: أيّ هذه ليس «lembaga negara»؟
+      en: Which of these is not a "lembaga negara"?
+    options:
+      - DPR
+      - Mahkamah Konstitusi
+      - Toko roti di pasar
+    answer: 2
+    words: [lembaga negara]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: البرلمان أقرّ قانون جديد النهارده.
+      ar: أقرّ البرلمان اليوم قانونًا جديدًا.
+      en: Parliament passed a new law today.
+    answers:
+      - DPR mengesahkan undang-undang baru hari ini.
+      - Hari ini DPR mengesahkan undang-undang baru.
+      - DPR hari ini mengesahkan undang-undang baru.
+    words: [DPR, mengesahkan, undang-undang]
+  - id: e08
+    type: speaking
+    text: DPR dan TNI adalah lembaga negara yang sering muncul di berita.
+    meaning:
+      ar_eg: البرلمان والجيش مؤسسات دولة بتظهر كتير في الأخبار.
+      ar: البرلمان والجيش مؤسستان من مؤسسات الدولة تظهران كثيرًا في الأخبار.
+      en: The DPR and the TNI are state institutions that often appear in the news.
+    words: [lembaga negara, DPR, TNI]
+  - id: e09
+    type: dictation
+    text: Undang-undang baru itu melindungi laut Papua.
+    meaning:
+      ar_eg: القانون الجديد ده بيحمي بحر بابوا.
+      ar: يحمي ذلك القانون الجديد بحر بابوا.
+      en: That new law protects the Papuan sea.
+    words: [undang-undang]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Pembawa berita itu menjelaskan peran setiap lembaga negara dengan lugas.
+    answers_meaning:
+      ar_eg:
+        - المذيع ده شرح دور كل مؤسسة في الدولة بوضوح.
+        - المذيعة شرحت دور كل مؤسسة دولة بشكل مباشر.
+      ar:
+        - شرح مقدّم الأخبار دور كلّ مؤسسة من مؤسسات الدولة بوضوح.
+        - بيّنت المذيعة دور كلّ مؤسسة حكومية بأسلوب مباشر.
+      en:
+        - The anchor explained the role of each state institution plainly.
+        - The newsreader set out each state institution's role in plain words.
+    words: [pembawa berita, lembaga negara, lugas]
+dialogue:
+  title: Di balik kamera
+  lines:
+    - speaker: Bu Debora
+      text: Tiga menit lagi siaran. Berita pertama tentang DPR.
+      ar_eg: باقي تلات دقايق على البثّ. أول خبر عن البرلمان.
+      ar: بقيت ثلاث دقائق على البثّ. الخبر الأول عن البرلمان.
+      en: Three minutes to air. First story's about the DPR.
+    - speaker: Mohamed
+      text: Undang-undang perlindungan laut sudah disahkan, ya, Bu?
+      ar_eg: قانون حماية البحر اتقرّ خلاص، صح يا مدام؟
+      ar: أُقرّ قانون حماية البحر، أليس كذلك يا سيّدتي؟
+      en: The marine protection law has been passed, right, Bu?
+    - speaker: Bu Debora
+      text: Betul, tadi siang. Sesudah itu berita TNI dan banjir.
+      ar_eg: صح، الضهر. وبعده خبر الجيش والفيضان.
+      ar: صحيح، ظهر اليوم. وبعده خبر الجيش والفيضان.
+      en: Yes, this afternoon. After that, the TNI and the flood.
+    - speaker: Mohamed
+      text: Pembawa berita sudah siap. Saya pegang naskahnya.
+      ar_eg: المذيعة جاهزة. وأنا ماسك النصّ.
+      ar: مقدّمة الأخبار جاهزة، والنصّ معي.
+      en: The anchor is ready. I've got the script.
+new_words:
+  - word: pembawa berita
+    pos: noun
+    ar_eg: مذيع الأخبار
+    ar: مقدّم الأخبار
+    en: news anchor
+  - word: DPR
+    pos: noun
+    ar_eg: البرلمان
+    ar: البرلمان
+    en: parliament (DPR)
+  - word: TNI
+    pos: noun
+    ar_eg: الجيش الإندونيسي
+    ar: الجيش الإندونيسي
+    en: armed forces (TNI)
+  - word: undang-undang
+    pos: noun
+    ar_eg: قانون
+    ar: قانون
+    en: law, statute
+  - word: mengesahkan
+    pos: verb
+    arabic: صحّ
+    ar_eg: يقرّ / يصدّق على
+    ar: يُقرّ
+    en: to pass, ratify
+  - word: lembaga negara
+    pos: noun
+    ar_eg: مؤسسة دولة
+    ar: مؤسسة من مؤسسات الدولة
+    en: state institution
+review:
+  status: draft
+  verified: false
