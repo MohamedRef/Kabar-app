@@ -436,7 +436,7 @@ pub struct DailyPlan {
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct PlanItem {
-    /// Stable within the day, e.g. `review`, `lesson:bipa1-u3`, `weak:writing:-kan`.
+    /// Stable within the day, e.g. `review`, `lesson:bipa1.u03`, `weak:writing:-kan`.
     pub id: String,
     pub kind: PlanItemKind,
     pub minutes: u16,
