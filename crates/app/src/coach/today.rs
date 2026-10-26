@@ -105,6 +105,7 @@ pub fn Today() -> Element {
                     }
                     Snooze { profile: profile.clone(), goal_met: progress.goal_met }
                 }
+                crate::lesson::PlacementInvite {}
             }
             if recap_ready {
                 div {

@@ -85,6 +85,8 @@ fn land_path(svg: &'static str, class: &str) -> &'static str {
 struct Journey {
     route: Route,
     completed: Rc<BTreeSet<String>>,
+    /// Where the placement test started the journey (e.g. `bipa2`).
+    start: Option<String>,
 }
 
 impl Journey {
@@ -101,7 +103,11 @@ impl Journey {
     }
 
     fn progress(&self) -> Progress {
-        Progress::new(self.curriculum(), &self.completed)
+        let p = Progress::new(self.curriculum(), &self.completed);
+        match &self.start {
+            Some(level) => p.start_at(self.curriculum(), level),
+            None => p,
+        }
     }
 
     /// Levels done in the other route (J1 waits, gently, for BIPA 1).
@@ -152,6 +158,12 @@ pub fn JourneyScreen() -> Element {
             BTreeSet::new()
         }))
     });
+    let start = use_hook(|| {
+        db.0.borrow().placement().map(|p| p.map(|p| p.start_level)).unwrap_or_else(|e| {
+            eprintln!("kabar: reading the placement result failed: {e}");
+            None
+        })
+    });
     let mut route = use_signal(|| Route::Indonesian);
     let mut pane = use_signal(|| Pane::Route);
 
@@ -168,7 +180,7 @@ pub fn JourneyScreen() -> Element {
             };
         }
     };
-    let j = Journey { route: route(), completed: completed.clone() };
+    let j = Journey { route: route(), completed: completed.clone(), start: start.clone() };
     let suitcase_count = [&routes.id, &routes.jv]
         .into_iter()
         .map(|c| souvenirs(c, &Progress::new(c, &completed)).len())
