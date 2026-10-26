@@ -335,7 +335,7 @@ fn InfoView(info: WordInfo, voice: UiLanguage) -> Element {
     rsx! {
         div { class: "field",
             if let Some(pos) = &info.pos {
-                span { class: "label latin", "{pos}" }
+                span { class: "label", "{crate::i18n::part_of_speech(ui.lang(), pos)}" }
             }
             p { class: "gloss big", "{info.gloss.get(voice)}" }
             if voice != UiLanguage::En {
