@@ -61,6 +61,7 @@ pub enum L {
     NotReviewed,
     Retry,
     NoAudio,
+    NoVoiceData,
 }
 
 pub fn lt(lang: UiLanguage, msg: L) -> &'static str {
@@ -231,5 +232,14 @@ pub fn lt(lang: UiLanguage, msg: L) -> &'static str {
         (NoAudio, ArEg) => "الصوت لسه مش متاح على الجهاز ده",
         (NoAudio, Ar) => "الصوت غير متاح على هذا الجهاز بعد",
         (NoAudio, En) => "Audio isn't available on this device yet",
+        (NoVoiceData, ArEg) => {
+            "عشان تسمع، نزّل الصوت الإندونيسي من الإعدادات ← الإدارة العامة ← تحويل النص إلى كلام"
+        }
+        (NoVoiceData, Ar) => {
+            "لسماع الصوت، نزّل الصوت الإندونيسي من الإعدادات ← الإدارة العامة ← تحويل النص إلى كلام"
+        }
+        (NoVoiceData, En) => {
+            "To hear this, download the Indonesian voice in Settings → General management → Text-to-speech output"
+        }
     }
 }
