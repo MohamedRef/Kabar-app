@@ -16,6 +16,7 @@ mod reader;
 mod review;
 mod screens;
 mod store;
+mod studio;
 mod teach;
 mod theme;
 
@@ -432,7 +433,7 @@ fn Shell() -> Element {
                     Screen::Journey => rsx! { journey::JourneyScreen {} },
                     Screen::Reader => rsx! { reader::Reader {} },
                     Screen::Review => rsx! { review::ReviewScreen {} },
-                    Screen::Studio => rsx! { screens::ComingSoon { title: Msg::NavStudio, milestone: "M9" } },
+                    Screen::Studio => rsx! { studio::StudioScreen {} },
                     Screen::Settings => rsx! { screens::SettingsScreen {} },
                     Screen::PenLab => rsx! { penlab::PenLab {} },
                     Screen::Devices => rsx! { account::AccountScreen {} },

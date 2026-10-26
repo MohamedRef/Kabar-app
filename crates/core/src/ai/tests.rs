@@ -259,13 +259,14 @@ fn grade_answer_checks_score_against_verdict() {
 
 #[test]
 fn tasks_without_a_prompt_are_reported_not_hidden() {
+    // Aksara Jawa stroke checking lands in M13, with its prompt.
     #[derive(Debug, serde::Deserialize)]
-    struct Story;
-    impl AiOutput for Story {
-        const TASK: Task = Task::StoryEpisode;
+    struct Strokes;
+    impl AiOutput for Strokes {
+        const TASK: Task = Task::CheckStrokes;
     }
     let wai = Scripted::new(EngineId::WorkersAi, vec![]);
     let r = router(&[&wai]);
-    let err = block_on(r.run::<Story>(&AiRequest::default())).unwrap_err();
-    assert_eq!(err, AiError::NoPrompt(Task::StoryEpisode));
+    let err = block_on(r.run::<Strokes>(&AiRequest::default())).unwrap_err();
+    assert_eq!(err, AiError::NoPrompt(Task::CheckStrokes));
 }

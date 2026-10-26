@@ -167,7 +167,21 @@ Open **Play** (ألعاب) in the sidebar or the phone's bottom bar.
 - **Pasar!**: haggle within a budget. The iPhone listing is the bonus round; Javanese sellers are marked unverified.
 - **Kabar Pagi**: the morning story from your due words plus a few new ones. On Today it appears every morning until you've read it. Audio uses the Mac's Indonesian voice (System Settings → Accessibility → Spoken Content → System voice → Manage Voices → Indonesian "Damayanti", if it isn't installed). Android's WebView has no voices, so on the Galaxy devices audio arrives with Kabar Cloud's TTS (follow-up).
 
-## 11. Troubleshooting
+## 11. Tablet Studio (M9)
+
+Open **Studio** (الاستوديو) in the sidebar, or from Settings on the phone. Five tabs, all on the same ink engine:
+
+- **Notebook** (الكشكول): notebooks of infinite pages. The pen writes; two fingers (or the mouse wheel) pan and ctrl+wheel or a pinch zooms; the eraser tool rubs out whole strokes. **Add a word card** drops a live card on the page: it shows the gloss in your explanation voice and speaks the word. Every line you write is listed under **Your lines** — tap ✎ to scroll to it, or type what you wrote so search finds it. The search box searches handwriting, cards and map nodes across every notebook.
+- **Gambar!**: Kabar names a word (drawable ones you already know come first), you sketch it in 60 seconds, and Kabar guesses. Each round logs practice to Kak Nur.
+- **Mind map** (خريطة كلمات): type a topic (`di pasar`), pick `id` or `jv`, and Kabar lays out 3–6 branches you then extend with the pen. Javanese maps carry an "unverified" badge until you approve them.
+- **Listening Companion** (رفيق السماع): meant for split screen next to YouTube. Scribble a word the way it sounded, or type it, and Kabar suggests real words by sound (old spellings `oe/dj/tj`, `ng/ny`, `f→p`, final `k`), each with its gloss, audio, **Add to review**, and **Teach Kabar** when nothing fits.
+- **Dictation** (إملا): Kabar says a word, you write it with the pen, and the feedback circles the wrong letters, marks missing ones and strikes extra ones. The same pad goes into write-mode lessons in the Lesson Player.
+
+**Reading handwriting and sketches** needs either Kabar Cloud's image upload or Android's on-device recognizer; neither is wired up yet, so **Read my writing** says "not connected yet" and every screen falls back: type the line yourself in the Notebook and the pad, and judge your own sketch in Gambar!. Everything else (ink, pan/zoom, cards, maps, search, sync) works offline today.
+
+Ink syncs like every other row (`notebooks`, `ink_documents`, `ink_strokes`, `notebook_items`, `ink_transcripts`), so a page you write on the tablet shows up on the phone. The three new tables need a Kabar Cloud redeploy: `just deploy-cloud`.
+
+## 12. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.

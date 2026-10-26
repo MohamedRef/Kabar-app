@@ -136,9 +136,21 @@ This decides which free engine answers each AI task. Until it runs, every route 
 - [ ] Save the answer of `https://en.wiktionary.org/api/rest_v1/page/definition/kabar` (open it in the browser, then Save As) as `fixtures/learn/wiktionary.kabar.json`, replacing the hand-written one, and run `just check`.
 - [ ] Teach one real word you met (e.g. from a WhatsApp chat), approve it, and check it shows under **My dictionary** on the tablet after sync.
 
+## 7c. Tablet Studio (~20 min, best on the Tab S11) — [RUN.md §11](RUN.md)
+
+- [ ] `just deploy-cloud` once, so the three new ink tables (`notebook_items`, `ink_transcripts`, and the `ink_documents`/`ink_strokes`/`notebooks` set) are accepted by the server. Without it, ink stays on the device.
+- [ ] Tab S11 → **Studio** → **Notebook**: write a few lines with the S Pen while resting your palm on the glass. Tell me if any palm touch leaves a mark, and whether the ink still feels stuck to the pen tip.
+- [ ] Two fingers to pan, pinch to zoom, then the eraser tool. Does erasing feel like it catches the stroke you aim at?
+- [ ] **Add a word card** for `pasar`, move on to a second page, come back: the card should still be there, and on the phone after sync.
+- [ ] Search `pasar` in the Notebook side bar and tap the hit: it should scroll the page to it.
+- [ ] **Gambar!**: play two rounds. It will ask you to judge your own drawing for now; tell me whether the word choice felt reasonable.
+- [ ] **Listening Companion**: open YouTube in split screen, pause on a word you didn't catch, and write it as it sounded (e.g. `moerah`, `sinaoe`). The suggestions should include the real word; tell me when they don't.
+- [ ] **Mind map**: `di pasar`. It needs an AI engine, so it may say "not connected yet" until Kabar Cloud answers.
+- [ ] **Dictation**: write one word with the pen, then type it in the box and tap Check; the feedback should circle the wrong letters.
+
 ## 8. What to send back
 
-- [ ] Two (or three) Pen Lab JSON reports, plus a sentence on how the ink feels.
+- [ ] Two (or three) Pen Lab JSON reports, plus a sentence on how the ink feels — and the same for the Studio's Notebook (palm rejection, eraser, pan/zoom).
 - [ ] The `workers.dev` URL.
 - [ ] Anything that failed: the command and its last 30 lines of output.
 - [ ] Pushed commits: `wrangler.toml`, `content/`, `bakeoff/runs/`.

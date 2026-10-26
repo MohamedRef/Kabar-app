@@ -242,6 +242,9 @@ const MIGRATIONS: &[&str] = &[
         json       TEXT NOT NULL,
         created_ms INTEGER NOT NULL
     ) STRICT;",
+    // 8: Tablet Studio (M9). Ink lives only in `sync_rows`; this finds a
+    // page's strokes, items and transcripts without scanning every row.
+    "CREATE INDEX sync_rows_doc ON sync_rows (tbl, json_extract(payload, '$.doc'));",
 ];
 
 /// The schema version that added `sync_rows`.
@@ -764,6 +767,8 @@ pub struct LessonEvent {
 mod reader;
 mod reviews;
 pub use reader::{Highlight, SavedText, TextKind};
+// Tablet Studio ink: notebooks, pages, strokes, items, transcripts (M9).
+mod ink;
 // Teach Kabar's personal dictionary (spec §26).
 mod taught;
 
