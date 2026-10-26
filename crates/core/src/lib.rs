@@ -9,4 +9,5 @@ pub mod layout;
 pub mod locale;
 pub mod penlab;
 pub mod settings;
+pub mod srs;
 pub mod sync;
