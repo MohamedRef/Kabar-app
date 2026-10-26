@@ -1,0 +1,214 @@
+schema: kabar.lesson/v1
+id: bipa5.u08.l01
+language: id
+title: Tampaknya, barangkali
+can_do:
+  ar_eg: تلطّف كلامك وماتقطعش، زي ما الإندونيسيين بيعملوا.
+  ar: أن تلطّف عبارتك وتتجنّب القطع كما يفعل الإندونيسيون.
+  en: Soften and hedge your claims, the way Indonesians do.
+slides:
+  - title: Jangan terlalu pasti
+    grammar: id.hedging
+    body:
+      ar_eg: |
+        الكلام القاطع بيبان قلة ذوق في إندونيسيا. لطّف بالكلمات دي:
+        - tampaknya / sepertinya = يبدو إن
+        - barangkali / mungkin = يمكن
+        - cenderung = يميل إنه
+        - pada umumnya = عمومًا / في الغالب
+        بدل «Survei itu salah.» قول: Tampaknya survei itu kurang tepat.
+      ar: |
+        يبدو الكلام القاطع فظًّا في إندونيسيا، فلطّفه بهذه الكلمات:
+        - tampaknya / sepertinya = يبدو أنّ
+        - barangkali / mungkin = ربّما
+        - cenderung = يميل إلى
+        - pada umumnya = في الغالب
+        وبدل «Survei itu salah.» قل: Tampaknya survei itu kurang tepat.
+      en: |
+        Flat claims sound rude in Indonesia. Soften with:
+        - tampaknya / sepertinya = it seems
+        - barangkali / mungkin = perhaps
+        - cenderung = tends to
+        - pada umumnya = generally
+        Instead of "Survei itu salah." say: Tampaknya survei itu kurang tepat.
+    examples:
+      - text: Anak muda cenderung membaca berita di media sosial.
+        ar_eg: الشباب بيميلوا يقروا الأخبار على السوشيال ميديا.
+        ar: يميل الشباب إلى قراءة الأخبار على وسائل التواصل.
+        en: Young people tend to read the news on social media.
+  - title: kurang = tidak yang sopan
+    grammar: id.hedging
+    body:
+      ar_eg: |
+        kurang قبل الصفة معناها «مش أوي»، بس الإندونيسي بيفهمها «لأ» بأدب:
+        - kurang tepat = مش دقيق قوي (يعني غلط)
+        - kurang setuju = مش موافق قوي (يعني مش موافق)
+        - kurang jelas = مش واضح قوي
+      ar: |
+        kurang قبل الصفة تعني «ليس تمامًا»، ويفهمها الإندونيسي نفيًا مهذّبًا:
+        - kurang tepat = غير دقيق تمامًا (أي خطأ)
+        - kurang setuju = لا أوافق تمامًا (أي لا أوافق)
+        - kurang jelas = غير واضح تمامًا
+      en: |
+        kurang before an adjective means "not quite", and Indonesians hear it as a polite "no":
+        - kurang tepat = not quite accurate (= wrong)
+        - kurang setuju = don't quite agree (= disagree)
+        - kurang jelas = not very clear
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tampaknya
+        ar_eg: يبدو إن
+        ar: يبدو أنّ
+        en: it seems
+      - text: barangkali
+        ar_eg: يمكن
+        ar: ربّما
+        en: perhaps
+      - text: cenderung
+        ar_eg: يميل إنه
+        ar: يميل إلى
+        en: tends to
+      - text: pada umumnya
+        ar_eg: في الغالب
+        ar: في الغالب
+        en: generally
+      - text: kurang tepat
+        ar_eg: مش دقيق قوي
+        ar: غير دقيق تمامًا
+        en: not quite accurate
+    words: [tampaknya, barangkali, cenderung, pada umumnya, kurang tepat]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة ألطف في مقال رأي؟
+      ar: أيّ جملة ألطف في مقالة رأي؟
+      en: Which sentence is gentler in an opinion piece?
+    options:
+      - Pemerintah salah total.
+      - Tampaknya kebijakan ini kurang tepat.
+      - Semua orang tahu kebijakan ini bodoh.
+    answer: 1
+    words: [tampaknya, kurang tepat]
+  - id: e03
+    type: fill_blank
+    sentence: Orang kota ___ memakai ojek daring daripada angkot.
+    meaning:
+      ar_eg: أهل المدن بيميلوا يركبوا الأوجيك الأونلاين أكتر من الميكروباص.
+      ar: يميل سكّان المدن إلى الدراجات الأجرة عبر التطبيق بدل الحافلات الصغيرة.
+      en: City people tend to use app motorbike taxis rather than minibuses.
+    options: [cenderung, barangkali, kurang]
+    answers: [cenderung]
+    words: [cenderung]
+  - id: e04
+    type: listen
+    text: Pada umumnya, warga Martapura bekerja sebagai pedagang batu permata.
+    question:
+      ar_eg: إيه شغل أغلب أهل مارتابورا؟
+      ar: ما عمل معظم أهل مارتابورا؟
+      en: What do most Martapura people do?
+    options:
+      - صيادين.
+      - مدرّسين.
+      - تجار أحجار كريمة.
+    answer: 2
+    words: [pada umumnya]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: يبدو إن الاستطلاع ده مش دقيق قوي.
+      ar: يبدو أنّ هذا الاستطلاع غير دقيق تمامًا.
+      en: It seems this survey isn't quite accurate.
+    answer: Tampaknya survei ini kurang tepat.
+    distractors: [salah, cenderung]
+    words: [tampaknya, kurang tepat]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: يمكن الكاتب مش عارف الحقيقة كلها.
+      ar: ربّما لا يعرف الكاتب الحقيقة كاملة.
+      en: Perhaps the writer doesn't know the whole truth.
+    answers:
+      - Barangkali penulis tidak tahu seluruh kebenarannya.
+      - Barangkali penulis tidak tahu semua faktanya.
+      - Barangkali penulisnya tidak tahu seluruh kebenaran.
+      - Barangkali penulis belum tahu seluruh kebenarannya.
+    words: [barangkali]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: لما إندونيسي يقول «Saya kurang setuju» يقصد إيه؟
+      ar: ماذا يقصد إندونيسي حين يقول «Saya kurang setuju»؟
+      en: When an Indonesian says "Saya kurang setuju", what do they mean?
+    options:
+      - مش موافق، بأدب.
+      - موافق جدًا.
+      - مش فاهم.
+    answer: 0
+    words: [kurang tepat]
+  - id: e08
+    type: speaking
+    text: Pada umumnya, anak muda cenderung percaya pada media sosial.
+    meaning:
+      ar_eg: في الغالب، الشباب بيميلوا يصدّقوا السوشيال ميديا.
+      ar: يميل الشباب في الغالب إلى تصديق وسائل التواصل.
+      en: Generally, young people tend to trust social media.
+    words: [pada umumnya, cenderung]
+  - id: e09
+    type: dictation
+    text: Barangkali hasil survei itu belum lengkap.
+    meaning:
+      ar_eg: يمكن نتيجة الاستطلاع ده لسه مش كاملة.
+      ar: ربّما لم تكتمل نتيجة الاستطلاع بعد.
+      en: Perhaps that survey's results aren't complete yet.
+    words: [barangkali]
+dialogue:
+  title: Pasar permata Martapura
+  lines:
+    - speaker: Mohamed
+      text: Pak, apakah batu ini asli?
+      ar_eg: يا أستاذ، الحجر ده أصلي؟
+      ar: يا سيّدي، هل هذا الحجر أصلي؟
+      en: Sir, is this stone genuine?
+    - speaker: Pak Hendra
+      text: Tampaknya asli. Tetapi barangkali lebih baik dicek dulu di toko resmi.
+      ar_eg: يبدو إنه أصلي. بس يمكن أحسن تتأكد الأول في محل رسمي.
+      ar: يبدو أنّه أصلي، لكن ربّما الأفضل أن تتحقّق منه أوّلًا في متجر رسمي.
+      en: It seems genuine. But perhaps it's better to have it checked at an official shop first.
+    - speaker: Mohamed
+      text: Harganya agak mahal, Pak. Saya kurang setuju dengan harga itu.
+      ar_eg: سعره غالي شوية يا أستاذ. أنا مش موافق قوي على السعر ده.
+      ar: ثمنه مرتفع قليلًا يا سيّدي، ولا أوافق تمامًا على هذا السعر.
+      en: It's a bit pricey, sir. I don't quite agree with that price.
+    - speaker: Pak Hendra
+      text: Pada umumnya pembeli menawar di sini. Silakan, berapa tawaran Bapak?
+      ar_eg: في الغالب الزباين بيفاصلوا هنا. اتفضل، حضرتك بتعرض كام؟
+      ar: يساوم المشترون هنا في الغالب. تفضّل، كم تعرض؟
+      en: Buyers generally haggle here. Go ahead, what's your offer?
+new_words:
+  - word: tampaknya
+    ar_eg: يبدو إن
+    ar: يبدو أنّ
+    en: it seems
+  - word: barangkali
+    ar_eg: يمكن
+    ar: ربّما
+    en: perhaps
+  - word: cenderung
+    pos: verb
+    ar_eg: يميل إنه
+    ar: يميل إلى
+    en: to tend to
+  - word: pada umumnya
+    ar_eg: في الغالب
+    ar: في الغالب
+    en: generally
+  - word: kurang tepat
+    ar_eg: مش دقيق قوي (يعني غلط)
+    ar: غير دقيق تمامًا
+    en: not quite accurate
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,184 @@
+schema: kabar.lesson/v1
+id: bipa5.u07.l02
+language: id
+title: Soto Banjar
+can_do:
+  ar_eg: تقرا مقال ثقافي عن أكلة وتفهم الأكلة دي اتأثرت بإيه.
+  ar: أن تقرأ مقالة ثقافية عن طبق وتفهم مصادر تأثّره.
+  en: Read a cultural essay about a dish and see what shaped it.
+slides:
+  - title: Membaca esai budaya
+    body:
+      ar_eg: |
+        اقرا الفقرة دي:
+        Soto Banjar adalah sup ayam bening yang harum. Rempahnya, seperti kayu manis, cengkih, dan kapulaga, dibawa oleh pedagang Arab dan India. Sementara itu, perkedel dan bihunnya menunjukkan pengaruh Belanda dan Tionghoa. Satu mangkuk soto ini menceritakan sejarah perdagangan di Banjarmasin.
+        الكلمة المهمة pengaruh = تأثير. وخد بالك إن الأكلة بتحكي (menceritakan) التاريخ.
+      ar: |
+        اقرأ هذه الفقرة:
+        Soto Banjar adalah sup ayam bening yang harum. Rempahnya, seperti kayu manis, cengkih, dan kapulaga, dibawa oleh pedagang Arab dan India. Sementara itu, perkedel dan bihunnya menunjukkan pengaruh Belanda dan Tionghoa. Satu mangkuk soto ini menceritakan sejarah perdagangan di Banjarmasin.
+        والكلمة المهمّة pengaruh = تأثير، ولاحظ أنّ الطبق «يروي» (menceritakan) التاريخ.
+      en: |
+        Read this paragraph:
+        Soto Banjar adalah sup ayam bening yang harum. Rempahnya, seperti kayu manis, cengkih, dan kapulaga, dibawa oleh pedagang Arab dan India. Sementara itu, perkedel dan bihunnya menunjukkan pengaruh Belanda dan Tionghoa. Satu mangkuk soto ini menceritakan sejarah perdagangan di Banjarmasin.
+        The key word is pengaruh = influence. Note that the dish "tells" (menceritakan) history.
+    examples:
+      - text: Rempahnya dibawa oleh pedagang Arab dan India.
+        ar_eg: البهارات بتاعتها جابها تجار عرب وهنود.
+        ar: جلب توابلَها تجّارٌ عرب وهنود.
+        en: Its spices were brought by Arab and Indian traders.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: rempah
+        ar_eg: بهارات
+        ar: توابل
+        en: spices
+      - text: pengaruh
+        ar_eg: تأثير
+        ar: تأثير
+        en: influence
+      - text: harum
+        ar_eg: ريحته حلوة
+        ar: عطِر
+        en: fragrant
+      - text: kayu manis
+        ar_eg: قرفة
+        ar: قرفة
+        en: cinnamon
+      - text: pedagang
+        ar_eg: تاجر
+        ar: تاجر
+        en: trader
+    words: [rempah, pengaruh, harum, kayu manis, pedagang]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حسب المقال، مين جاب البهارات؟
+      ar: بحسب المقالة، من جلب التوابل؟
+      en: According to the essay, who brought the spices?
+    options:
+      - تجار هولنديين.
+      - تجار صينيين.
+      - تجار عرب وهنود.
+    answer: 2
+    words: [rempah, pedagang]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: البيركيديل والشعرية بيوروا تأثير مين؟
+      ar: البيركيديل والشعيرية تدلّ على تأثير مَن؟
+      en: Which influence do the perkedel and noodles show?
+    options:
+      - هولندي وصيني.
+      - عربي وهندي.
+      - ياباني.
+    answer: 0
+    words: [pengaruh]
+  - id: e04
+    type: fill_blank
+    sentence: Masakan Banjar mendapat ___ dari banyak budaya.
+    meaning:
+      ar_eg: أكل البانجار خد تأثير من ثقافات كتير.
+      ar: تأثّر مطبخ البانجار بثقافات كثيرة.
+      en: Banjar cooking took influence from many cultures.
+    options: [pengaruh, rempah, harum]
+    answers: [pengaruh]
+    words: [pengaruh]
+  - id: e05
+    type: listen
+    text: Supnya harum karena ada kayu manis dan cengkih.
+    question:
+      ar_eg: ليه ريحة الشوربة حلوة؟
+      ar: لماذا الحساء عطِر؟
+      en: Why is the soup fragrant?
+    options:
+      - عشان فيها سكر.
+      - عشان فيها قرفة وقرنفل.
+      - عشان سخنة قوي.
+    answer: 1
+    words: [harum, kayu manis]
+  - id: e06
+    type: translate
+    direction: from_target
+    source_text: Pedagang Arab membawa rempah ke Banjarmasin.
+    answers_meaning:
+      ar_eg:
+        - التجار العرب جابوا بهارات لبانجارماسين.
+        - تجار عرب جابوا البهارات لبانجارماسين.
+      ar:
+        - جلب التجّار العرب التوابل إلى بانجارماسين.
+        - حمل تجّار عرب التوابل إلى بانجارماسين.
+      en:
+        - Arab traders brought spices to Banjarmasin.
+        - Arab merchants carried spices to Banjarmasin.
+    words: [pedagang, rempah]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: الشوربة دي ريحتها حلوة قوي.
+      ar: هذا الحساء عطِر جدًّا.
+      en: This soup is very fragrant.
+    answer: Sup ini sangat harum.
+    distractors: [rempah, pengaruh]
+    words: [harum]
+  - id: e08
+    type: speaking
+    text: Saya suka soto Banjar karena ada kayu manisnya, seperti masakan Mesir.
+    meaning:
+      ar_eg: أنا بحب سوتو بانجار عشان فيها قرفة، زي الأكل المصري.
+      ar: أحبّ سوتو بانجار لأنّ فيها قرفة كالطبخ المصري.
+      en: I like soto Banjar because it has cinnamon, like Egyptian cooking.
+    words: [kayu manis]
+dialogue:
+  title: Sarapan soto
+  lines:
+    - speaker: Rina
+      text: Ini soto Banjar. Coba cium, harum, kan?
+      ar_eg: دي سوتو بانجار. شمّ كده، ريحتها حلوة، مش كده؟
+      ar: هذه سوتو بانجار. شمّها، عطِرة أليس كذلك؟
+      en: This is soto Banjar. Smell it, fragrant, right?
+    - speaker: Mohamed
+      text: Wah, ada kayu manis! Rasanya seperti di rumah nenek saya.
+      ar_eg: يا سلام، فيها قرفة! طعمها زي بيت تيتا.
+      ar: يا سلام، فيها قرفة! طعمها كبيت جدّتي.
+      en: Oh, there's cinnamon! It tastes like my grandmother's house.
+    - speaker: Rina
+      text: Mungkin karena pengaruh pedagang Arab dulu.
+      ar_eg: يمكن عشان تأثير التجار العرب زمان.
+      ar: ربّما بسبب تأثير التجّار العرب قديمًا.
+      en: Maybe because of the influence of Arab traders long ago.
+    - speaker: Mohamed
+      text: Jadi rempah ini sudah jalan jauh, dari Timur Tengah sampai ke sini.
+      ar_eg: يعني البهارات دي مشيت مشوار طويل، من الشرق الأوسط لحد هنا.
+      ar: إذن قطعت هذه التوابل طريقًا طويلًا من الشرق الأوسط إلى هنا.
+      en: So these spices travelled far, from the Middle East all the way here.
+new_words:
+  - word: rempah
+    pos: noun
+    ar_eg: بهارات
+    ar: توابل
+    en: spices
+  - word: pengaruh
+    pos: noun
+    ar_eg: تأثير
+    ar: تأثير
+    en: influence
+  - word: harum
+    pos: adjective
+    ar_eg: ريحته حلوة
+    ar: عطِر
+    en: fragrant
+  - word: kayu manis
+    pos: noun
+    ar_eg: قرفة
+    ar: قرفة
+    en: cinnamon
+  - word: pedagang
+    pos: noun
+    ar_eg: تاجر
+    ar: تاجر
+    en: trader
+review:
+  status: draft
+  verified: false
