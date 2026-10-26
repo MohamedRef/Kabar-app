@@ -94,7 +94,7 @@ exercises:
       ar_eg: الساعة ٨ الصبح. تقول إيه للمُدرّسة؟
       ar: الساعة الثامنة صباحًا. ماذا تقول للمعلّمة؟
       en: It's 8 a.m. What do you say to the teacher?
-    options: ["Selamat sore, Bu!", "Selamat malam, Bu!", "Selamat pagi, Bu!"]
+    options: ['Selamat sore, Bu!', 'Selamat malam, Bu!', 'Selamat pagi, Bu!']
     answer: 2
     explain:
       ar_eg: الساعة ٨ لسه الصبح، يبقى pagi.
@@ -102,57 +102,22 @@ exercises:
       en: 8 a.m. is still pagi.
     words: [selamat, pagi]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الساعة ١ الضهر والشمس حامية. أنهي تحية؟
-      ar: الساعة الواحدة ظهرًا. أيّ تحية تناسب؟
-      en: It's 1 p.m. Which greeting fits?
-    options: ["Selamat malam", "Selamat siang", "Selamat pagi"]
-    answer: 1
-    explain:
-      ar_eg: من ١١ لحد ٣ ده siang.
-      ar: من الحادية عشرة إلى الثالثة هو الـ siang.
-      en: 11 to 3 is siang.
-    words: [siang]
-  - id: e04
     type: fill_blank
     sentence: Selamat ___, Pak! Sampai jumpa besok.
     meaning:
       ar_eg: (الساعة ٩ بالليل) تصبح على خير يا أستاذ! أشوفك بكرة.
       ar: (الساعة التاسعة ليلًا) تصبح على خير يا سيدي! إلى اللقاء غدًا.
       en: (9 p.m.) Good night, sir! See you tomorrow.
-    options: ["malam", "siang", "pagi", "sore"]
+    options: [malam, siang, pagi, sore]
     answers: [malam]
     words: [malam, sampai jumpa]
-  - id: e05
+  - id: e04
     type: listen
     text: Selamat sore
-    options: ["Selamat siang", "Selamat sore", "Selamat malam"]
+    options: [Selamat siang, Selamat sore, Selamat malam]
     answer: 1
     words: [sore]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أهلًا بيك في جاكرتا!
-      ar: أهلًا وسهلًا بك في جاكرتا!
-      en: Welcome to Jakarta!
-    answers: ["Selamat datang di Jakarta!", "Selamat datang di Jakarta"]
-    words: [selamat datang]
-  - id: e07
-    type: multiple_choice
-    question_meaning:
-      ar_eg: صاحبك ماشي من بيتك. إنت قاعد. تقوله إيه؟
-      ar: صديقك يغادر بيتك وأنت باقٍ. ماذا تقول له؟
-      en: Your friend is leaving your house; you are staying. What do you say?
-    options: ["Selamat datang!", "Selamat tinggal!", "Selamat jalan!"]
-    answer: 2
-    explain:
-      ar_eg: selamat jalan بتتقال للي ماشي. selamat tinggal بيقولها اللي ماشي.
-      ar: selamat jalan تقال للراحل، وselamat tinggal يقولها الراحل.
-      en: selamat jalan is said to the one leaving; selamat tinggal is said by the one leaving.
-    words: [selamat jalan, selamat tinggal]
-  - id: e08
+  - id: e05
     type: build_sentence
     source:
       ar_eg: صباح الخير يا مدام!
@@ -161,16 +126,7 @@ exercises:
     answer: Selamat pagi, Bu!
     distractors: [malam, Pak]
     words: [selamat, pagi, ibu]
-  - id: e09
-    type: translate
-    direction: from_target
-    source_text: Sampai jumpa besok!
-    answers_meaning:
-      ar_eg: ["أشوفك بكرة!", "أشوفك بكره", "نتقابل بكرة"]
-      ar: ["إلى اللقاء غدًا!", "أراك غدًا"]
-      en: ["See you tomorrow!", "See you tomorrow"]
-    words: [sampai jumpa, besok]
-  - id: e10
+  - id: e06
     type: dictation
     text: Selamat malam
     meaning:
@@ -178,7 +134,7 @@ exercises:
       ar: مساء الخير / تصبح على خير
       en: Good evening / good night
     words: [malam]
-  - id: e11
+  - id: e07
     type: speaking
     text: Selamat pagi, Bu!
     meaning:

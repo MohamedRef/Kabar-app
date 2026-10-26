@@ -1,454 +1,191 @@
 schema: kabar.lesson/v1
 id: bipa1.u04.l03
 language: id
-title: Hari Senin, tanggal satu
+title: Berapa harganya?
 can_do:
-  ar_eg: تقول التواريخ وترتّب الحاجات (الأول، التاني).
-  ar: أن تذكر التواريخ وترتّب الأشياء (الأول، الثاني).
-  en: Say dates and order things (first, second).
+  ar_eg: تسأل عن السعر وتقوله، وتقول رخيص ولا غالي.
+  ar: أن تسأل عن السعر وتذكره، وتقول رخيص أو غالٍ.
+  en: Ask and say prices, and say cheap or expensive.
 slides:
-  - title: Senin, Selasa, Rabu…
+  - title: Berapa harganya?
     body:
       ar_eg: |
-        هتفرح: ستة من سبع أيام الأسبوع جايين من العربي!
-        Senin (الاتنين) · Selasa (التلات) · Rabu (الأربع) · Kamis (الخميس) · Jumat (الجمعة) · Sabtu (السبت)
-        والحد = Minggu، من البرتغالي domingo. (وفيه كمان Ahad من «الأحد» بس أقل.)
-        وMinggu بحرف صغير = أسبوع: dua minggu = أسبوعين.
+        في السوق: «Berapa harganya?» = «بكام؟».
+        في الكتابة الإندونيسية النقطة بتفصل الآلاف: Rp25.000 = dua puluh lima ribu rupiah (٢٥ ألف).
+        وفي السوق كتير بيشيلوا «ribu»: «lima belas» يعني ١٥ ألف.
+        ورقم الموبايل بيتقال رقم رقم: 0812 = nol delapan satu dua.
       ar: |
-        ستّة من أيام الأسبوع السبعة عربية الأصل:
-        Senin (الاثنين) · Selasa (الثلاثاء) · Rabu (الأربعاء) · Kamis (الخميس) · Jumat (الجمعة) · Sabtu (السبت)
-        أما الأحد فهو Minggu، من البرتغالية domingo، وتوجد أيضًا Ahad من «الأحد» لكنها أقل شيوعًا.
-        وminggu بحرف صغير تعني «أسبوع»: dua minggu = أسبوعان.
+        في السوق: «Berapa harganya?» = «بكم هذا؟».
+        وفي الكتابة الإندونيسية تفصل النقطة بين الآلاف: Rp25.000 = dua puluh lima ribu rupiah (خمسة وعشرون ألفًا).
+        وكثيرًا ما تُحذف «ribu» في السوق: «lima belas» تعني خمسة عشر ألفًا.
+        ورقم الهاتف يُقرأ رقمًا رقمًا: 0812 = nol delapan satu dua.
       en: |
-        Good news: six of the seven weekdays come from Arabic!
-        Senin (Mon) · Selasa (Tue) · Rabu (Wed) · Kamis (Thu) · Jumat (Fri) · Sabtu (Sat)
-        Sunday is Minggu, from Portuguese domingo (Ahad, from «الأحد», also exists but is less common).
-        Lower-case minggu means "week": dua minggu = two weeks.
-    grammar: id.time.calendar
+        At the market: "Berapa harganya?" = "How much is it?"
+        In writing, a dot separates thousands: Rp25.000 = dua puluh lima ribu rupiah (25,000).
+        Market talk often drops ribu: "lima belas" means 15,000.
+        Phone numbers are read digit by digit: 0812 = nol delapan satu dua.
+    grammar: id.number.cardinal
     examples:
-      - text: Hari ini hari apa? — Hari ini hari Jumat.
-        ar_eg: النهارده إيه؟ — النهارده الجمعة.
-        ar: ما اليوم؟ — اليوم الجمعة.
-        en: What day is it today? — Today is Friday.
-  - title: Tanggal dan bulan
-    body:
-      ar_eg: |
-        الشهور شبه الإنجليزي: Januari، Februari، Maret، April، Mei، Juni، Juli، Agustus، September، Oktober، November، Desember.
-        التاريخ: اليوم، وبعدين الشهر، وبعدين السنة: tanggal 17 Agustus 2026.
-        والسنة بتتقري كرقم عادي: dua ribu dua puluh enam (٢٠٢٦).
-        السؤال: «Tanggal berapa hari ini?» = «النهارده كام في الشهر؟»
-      ar: |
-        أسماء الشهور قريبة من الإنجليزية: Januari، Februari، Maret، April، Mei، Juni، Juli، Agustus، September، Oktober، November، Desember.
-        والتاريخ: اليوم ثم الشهر ثم السنة: tanggal 17 Agustus 2026.
-        وتُقرأ السنة عددًا عاديًا: dua ribu dua puluh enam (٢٠٢٦).
-        والسؤال: «Tanggal berapa hari ini?» = «ما تاريخ اليوم؟»
-      en: |
-        Months look like English: Januari, Februari, Maret, April, Mei, Juni, Juli, Agustus, September, Oktober, November, Desember.
-        Dates go day, month, year: tanggal 17 Agustus 2026.
-        Years are read as ordinary numbers: dua ribu dua puluh enam (2026).
-        Ask: "Tanggal berapa hari ini?" = "What's the date today?"
-    grammar: id.time.calendar
-    examples:
-      - text: Ulang tahun saya tanggal dua belas Maret.
-        ar_eg: عيد ميلادي يوم ١٢ مارس.
-        ar: عيد ميلادي في ١٢ مارس.
-        en: My birthday is on 12 March.
-      - text: Toko itu tutup hari Minggu.
-        ar_eg: المحل ده بيقفل يوم الحد.
-        ar: ذلك المتجر مغلق يوم الأحد.
-        en: That shop is closed on Sunday.
-  - title: Pertama, kedua, ketiga
-    body:
-      ar_eg: |
-        الترتيب = ke- + الرقم: kedua = التاني، ketiga = التالت، kesepuluh = العاشر.
-        بس «الأول» ليه كلمة لوحده: pertama.
-        وبيجي بعد الاسم زي العربي: hari pertama = اليوم الأول، anak kedua = الابن التاني.
-        خلي بالك: لو جه قبل الاسم معناه «الاتنين / التلاتة»: kedua anak itu = العيلين دول الاتنين.
-      ar: |
-        العدد الترتيبي = ke- + العدد: kedua = الثاني، ketiga = الثالث، kesepuluh = العاشر.
-        أما «الأول» فله كلمة خاصة: pertama.
-        ويأتي بعد الاسم كالعربية: hari pertama = اليوم الأول، anak kedua = الابن الثاني.
-        وانتبه: إذا سبق الاسم صار بمعنى «كلا / الثلاثة»: kedua anak itu = كلا الطفلين.
-      en: |
-        Ordinals = ke- + number: kedua = second, ketiga = third, kesepuluh = tenth.
-        "First" has its own word: pertama.
-        They follow the noun, as in Arabic: hari pertama = the first day, anak kedua = the second child.
-        Careful: before a noun it means "both / all three": kedua anak itu = both children.
-    grammar: id.number.ordinal
-    examples:
-      - text: Ini hari pertama saya di Jakarta.
-        ar_eg: ده أول يوم ليا في جاكرتا.
-        ar: هذا يومي الأول في جاكرتا.
-        en: This is my first day in Jakarta.
-      - text: Saya anak kedua.
-        ar_eg: أنا الابن التاني.
-        ar: أنا الابن الثاني.
-        en: I'm the second child.
-  - title: Selamat ulang tahun!
-    body:
-      ar_eg: |
-        ulang tahun = عيد الميلاد (حرفيًا «السنة بتتكرر»). و«Selamat ulang tahun!» = «كل سنة وإنت طيب!» — نفس selamat بتاعة أول درس.
-        والسؤال: «Kapan ulang tahunmu?» = «عيد ميلادك إمتى؟»
-      ar: |
-        ulang tahun = عيد الميلاد (حرفيًا «تكرار السنة»). و«Selamat ulang tahun!» = «عيد ميلاد سعيد!» بكلمة selamat نفسها من الدرس الأول.
-        والسؤال: «Kapan ulang tahunmu?» = «متى عيد ميلادك؟»
-      en: |
-        ulang tahun = birthday (literally "the year repeats"). "Selamat ulang tahun!" = "Happy birthday!" — the same selamat from lesson one.
-        Ask: "Kapan ulang tahunmu?" = "When is your birthday?"
-    grammar: id.time.calendar
-    examples:
-      - text: Selamat ulang tahun, Rina!
-        ar_eg: كل سنة وإنتي طيبة يا رينا!
-        ar: عيد ميلاد سعيد يا رينا!
-        en: Happy birthday, Rina!
+      - text: Berapa harganya, Bu? — Dua puluh lima ribu.
+        ar_eg: بكام يا حاجة؟ — خمسة وعشرين ألف.
+        ar: بكم هذا يا سيدتي؟ — خمسة وعشرون ألفًا.
+        en: How much is it, ma'am? — Twenty-five thousand.
+      - text: Kain ini murah!
+        ar_eg: القماش ده رخيص!
+        ar: هذا القماش رخيص!
+        en: This fabric is cheap!
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: Senin
-        ar_eg: الاتنين
-        ar: الاثنين
-        en: Monday
-      - text: Selasa
-        ar_eg: التلات
-        ar: الثلاثاء
-        en: Tuesday
-      - text: Rabu
-        ar_eg: الأربع
-        ar: الأربعاء
-        en: Wednesday
-      - text: Kamis
-        ar_eg: الخميس
-        ar: الخميس
-        en: Thursday
-      - text: Jumat
-        ar_eg: الجمعة
-        ar: الجمعة
-        en: Friday
-    words: [Senin, Selasa, Rabu, Kamis, Jumat]
+    type: build_sentence
+    source:
+      ar_eg: القميص ده بكام؟
+      ar: بكم هذا القميص؟
+      en: How much is this shirt?
+    answer: Berapa harga baju ini?
+    distractors: [apa, itu]
+    explain:
+      ar_eg: السعر رقم، فبنسأل بـ berapa مش apa.
+      ar: السعر عدد، فيُسأل عنه بـ berapa لا apa.
+      en: A price is a number, so you ask with berapa, not apa.
+    words: [berapa, harga, baju]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: يوم السبت اسمه إيه بالإندونيسي؟
-      ar: ما اسم يوم السبت بالإندونيسية؟
-      en: What is Saturday in Indonesian?
-    options: ["Senin", "Sabtu", "Minggu"]
-    answer: 1
-    explain:
-      ar_eg: Sabtu ← السبت. وMinggu هو الحد.
-      ar: Sabtu ← السبت، وMinggu هو الأحد.
-      en: Sabtu ← «السبت»; Minggu is Sunday.
-    words: [Sabtu]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إزاي تقول «اليوم الأول»؟
-      ar: كيف تقول «اليوم الأول»؟
-      en: How do you say "the first day"?
-    options: ["hari pertama", "hari kedua", "pertama hari"]
-    answer: 0
-    explain:
-      ar_eg: الترتيب بعد الاسم، و«الأول» = pertama.
-      ar: العدد الترتيبي بعد الاسم، و«الأول» = pertama.
-      en: The ordinal follows the noun, and "first" = pertama.
-    words: [hari, pertama]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إزاي تقول «الابن التاني»؟
-      ar: كيف تقول «الابن الثاني»؟
-      en: How do you say "the second child"?
-    options: ["dua anak", "anak kedua", "kedua anak"]
-    answer: 1
-    explain:
-      ar_eg: kedua بعد الاسم = التاني. قبل الاسم = الاتنين (كلاهما). وdua anak = عيلين.
-      ar: kedua بعد الاسم = الثاني، وقبله = كلاهما، وdua anak = طفلان.
-      en: kedua after the noun = second; before it = both; dua anak = two children.
-    words: [kedua, anak]
-  - id: e05
-    type: listen
-    text: tanggal tujuh belas Agustus
-    options: ["tanggal tujuh belas Agustus", "tanggal tujuh Agustus", "tanggal tujuh belas Oktober"]
-    answer: 0
-    words: [tanggal, Agustus]
-  - id: e06
-    type: fill_blank
-    sentence: Hari ini hari ___? — Hari Jumat.
-    meaning:
-      ar_eg: النهارده إيه؟ — الجمعة.
-      ar: ما اليوم؟ — الجمعة.
-      en: What day is it today? — Friday.
-    options: ["siapa", "apa", "berapa"]
-    answers: [apa]
-    explain:
-      ar_eg: اسم اليوم مش رقم، يبقى apa. للتاريخ بنقول tanggal berapa.
-      ar: اسم اليوم ليس عددًا فيُسأل عنه بـ apa، أما التاريخ فـ tanggal berapa.
-      en: A day name isn't a number, so it's apa; for the date, tanggal berapa.
-    words: [hari, apa]
-  - id: e07
-    type: fill_blank
-    sentence: Hari ini tanggal ___? — Tanggal sepuluh.
-    meaning:
-      ar_eg: النهارده كام في الشهر؟ — عشرة.
-      ar: ما تاريخ اليوم؟ — العاشر.
-      en: What's the date today? — The tenth.
-    answers: [berapa]
-    words: [tanggal, berapa]
-  - id: e08
-    type: fill_blank
-    sentence: Selamat ___ tahun, Dimas!
-    meaning:
-      ar_eg: كل سنة وإنت طيب يا ديماس!
-      ar: عيد ميلاد سعيد يا ديماس!
-      en: Happy birthday, Dimas!
-    answers: [ulang]
-    words: [ulang tahun]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: عيد ميلادي يوم ١٢ مارس.
-      ar: عيد ميلادي في ١٢ مارس.
-      en: My birthday is on 12 March.
-    answer: Ulang tahun saya tanggal dua belas Maret.
-    distractors: [hari, ketiga]
-    words: [ulang tahun, tanggal, Maret]
-  - id: e10
-    type: build_sentence
-    source:
-      ar_eg: ده أول يوم ليا في جاكرتا.
-      ar: هذا يومي الأول في جاكرتا.
-      en: This is my first day in Jakarta.
-    answer: Ini hari pertama saya di Jakarta.
-    distractors: [satu, Minggu]
-    explain:
-      ar_eg: «الأول» = pertama مش satu.
-      ar: «الأول» = pertama لا satu.
-      en: '"First" is pertama, not satu.'
-    words: [hari, pertama]
-  - id: e11
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: النهارده الجمعة.
-      ar: اليوم الجمعة.
-      en: Today is Friday.
-    answers: ["Hari ini hari Jumat.", "Hari ini hari Jumat", "Hari ini Jumat.", "Hari ini Jumat", "Sekarang hari Jumat."]
-    words: [hari ini, Jumat]
-  - id: e12
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (لصاحبك) عيد ميلادك إمتى؟
-      ar: (لصديقك) متى عيد ميلادك؟
-      en: (to a friend) When is your birthday?
-    answers: ["Kapan ulang tahunmu?", "Kapan ulang tahunmu", "Kapan ulang tahun kamu?", "Ulang tahunmu kapan?", "Ulang tahun kamu kapan?"]
-    words: [kapan, ulang tahun]
-  - id: e13
     type: translate
     direction: from_target
-    source_text: Toko itu tutup hari Minggu.
+    source_text: Harganya seratus dua puluh ribu.
     answers_meaning:
-      ar_eg: ["المحل ده بيقفل يوم الحد.", "المحل ده قافل يوم الأحد"]
-      ar: ["ذلك المتجر مغلق يوم الأحد.", "يغلق ذلك المتجر يوم الأحد"]
-      en: ["That shop is closed on Sunday.", "That shop is closed on Sundays", "That store closes on Sunday"]
-    words: [tutup, Minggu]
-  - id: e14
-    type: dictation
-    text: Hari ini hari Senin.
-    meaning:
-      ar_eg: النهارده الاتنين.
-      ar: اليوم الاثنين.
-      en: Today is Monday.
-    words: [hari ini, Senin]
-  - id: e15
+      ar_eg: [سعره مية وعشرين ألف., بمية وعشرين ألف, تمنه ١٢٠ ألف]
+      ar: [سعره مئة وعشرون ألفًا., ثمنه ١٢٠ ألفًا]
+      en: ['It costs 120,000.', The price is one hundred twenty thousand, 'It''s 120,000']
+    words: [harga, seratus, puluh, ribu]
+  - id: e03
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: القماش ده رخيص!
+      ar: هذا القماش رخيص!
+      en: This fabric is cheap!
+    answers: [Kain ini murah!, Kain ini murah, Kain ini murah.]
+    words: [kain, murah]
+  - id: e04
     type: speaking
-    text: Selamat ulang tahun, Rina!
+    text: Berapa harganya, Bu? — Lima puluh ribu.
     meaning:
-      ar_eg: كل سنة وإنتي طيبة يا رينا!
-      ar: عيد ميلاد سعيد يا رينا!
-      en: Happy birthday, Rina!
-    words: [ulang tahun]
+      ar_eg: بكام يا حاجة؟ — خمسين ألف.
+      ar: بكم هذا يا سيدتي؟ — خمسون ألفًا.
+      en: How much is it, ma'am? — Fifty thousand.
+    words: [berapa, harga, puluh, ribu]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: harga
+        ar_eg: السعر
+        ar: السعر
+        en: price
+      - text: murah
+        ar_eg: رخيص
+        ar: رخيص
+        en: cheap
+      - text: mahal
+        ar_eg: غالي
+        ar: غالٍ
+        en: expensive
+      - text: kain
+        ar_eg: قماش
+        ar: قماش
+        en: fabric
+      - text: baju
+        ar_eg: قميص / هدوم
+        ar: قميص / ملابس
+        en: shirt, clothes
+    words: [harga, murah, mahal, kain, baju]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: القميص الباتيك بـ ٥٠٠ ألف روبية. تقول إيه؟
+      ar: قميص الباتيك بخمسمئة ألف روبية. ماذا تقول؟
+      en: The batik shirt is Rp500,000. What do you say?
+    options: [Murah!, Mahal!, Sedikit!]
+    answer: 1
+    words: [mahal]
+  - id: e07
+    type: listen
+    text: Berapa harganya, Mas?
+    options: ['Berapa harganya, Mas?', 'Harganya mahal, Mas.', 'Baju ini murah, Mas.']
+    answer: 0
+    meaning:
+      ar_eg: بكام دي؟
+      ar: كم سعرها؟
+      en: How much is it?
+    words: ['Berapa harganya?']
 dialogue:
-  title: Kapan ulang tahunmu?
+  title: Di Pasar Tanah Abang
   lines:
-    - speaker: Rina
-      text: Mohamed, kapan ulang tahunmu?
-      ar_eg: يا محمد، عيد ميلادك إمتى؟
-      ar: يا محمد، متى عيد ميلادك؟
-      en: Mohamed, when is your birthday?
     - speaker: Mohamed
-      text: Tanggal dua belas Maret. Dan kamu?
-      ar_eg: يوم ١٢ مارس. وإنتي؟
-      ar: في ١٢ مارس. وأنتِ؟
-      en: On 12 March. And you?
-    - speaker: Rina
-      text: Tanggal dua puluh lima Oktober. Hari Sabtu ini!
-      ar_eg: يوم ٢٥ أكتوبر. السبت ده!
-      ar: في ٢٥ أكتوبر، يوم السبت هذا!
-      en: On 25 October. This Saturday!
+      text: Permisi, Bu. Baju batik ini berapa harganya?
+      ar_eg: لو سمحتي يا حاجة. قميص الباتيك ده بكام؟
+      ar: من فضلكِ يا سيدتي. بكم قميص الباتيك هذا؟
+      en: Excuse me, ma'am. How much is this batik shirt?
+    - speaker: Bu Ani
+      text: Seratus lima puluh ribu, Mas.
+      ar_eg: مية وخمسين ألف.
+      ar: مئة وخمسون ألفًا.
+      en: A hundred and fifty thousand.
     - speaker: Mohamed
-      text: Sabtu ini? Selamat ulang tahun, Rina!
-      ar_eg: السبت ده؟ كل سنة وإنتي طيبة يا رينا!
-      ar: السبت هذا؟ عيد ميلاد سعيد يا رينا!
-      en: This Saturday? Happy birthday, Rina!
-    - speaker: Rina
-      text: Terima kasih! Hari Jumat kita ke Tanah Abang, ya?
-      ar_eg: شكرًا! يوم الجمعة نروح تانا أبانج سوا، ماشي؟
-      ar: شكرًا! يوم الجمعة نذهب إلى تانا أبانغ، اتفقنا؟
-      en: Thanks! On Friday let's go to Tanah Abang, OK?
+      text: Seratus lima puluh? Mahal, Bu!
+      ar_eg: مية وخمسين؟ غالي يا حاجة!
+      ar: مئة وخمسون؟ إنه غالٍ يا سيدتي!
+      en: A hundred and fifty? That's expensive, ma'am!
+    - speaker: Bu Ani
+      text: Seratus dua puluh, ya?
+      ar_eg: خلاص، مية وعشرين؟
+      ar: مئة وعشرون، حسنًا؟
+      en: A hundred and twenty, OK?
     - speaker: Mohamed
-      text: Ya! Hari Jumat, jam sepuluh pagi.
-      ar_eg: ماشي! يوم الجمعة، الساعة عشرة الصبح.
-      ar: حسنًا! يوم الجمعة في العاشرة صباحًا.
-      en: Yes! Friday, at ten a.m.
+      text: Seratus ribu, Bu?
+      ar_eg: مية ألف يا حاجة؟
+      ar: مئة ألف يا سيدتي؟
+      en: A hundred thousand, ma'am?
+    - speaker: Bu Ani
+      text: Baik, seratus ribu. Terima kasih, Mas!
+      ar_eg: ماشي، مية ألف. شكرًا!
+      ar: حسنًا، مئة ألف. شكرًا!
+      en: All right, a hundred thousand. Thank you!
 new_words:
-  - word: hari
+  - word: harga
     pos: noun
-    ar_eg: يوم
-    ar: يوم
-    en: day
-  - word: hari ini
-    pos: adverb
-    ar_eg: النهارده
-    ar: اليوم
-    en: today
-  - word: Senin
+    ar_eg: سعر، تمن
+    ar: سعر، ثمن
+    en: price
+  - word: Berapa harganya?
+    pos: phrase
+    ar_eg: بكام؟
+    ar: بكم؟
+    en: How much is it?
+  - word: baju
     pos: noun
-    ar_eg: الاتنين
-    ar: الاثنين
-    en: Monday
-    arabic: الاثنين
-  - word: Selasa
+    ar_eg: قميص، هدوم
+    ar: قميص، ثوب
+    en: shirt, clothes
+  - word: batik
     pos: noun
-    ar_eg: التلات
-    ar: الثلاثاء
-    en: Tuesday
-    arabic: الثلاثاء
-  - word: Rabu
+    ar_eg: باتيك (قماش مرسوم بالشمع)
+    ar: باتيك (قماش مزخرف بالشمع)
+    en: batik (wax-dyed cloth)
+  - word: kain
     pos: noun
-    ar_eg: الأربع
-    ar: الأربعاء
-    en: Wednesday
-    arabic: الأربعاء
-  - word: Kamis
-    pos: noun
-    ar_eg: الخميس
-    ar: الخميس
-    en: Thursday
-    arabic: الخميس
-  - word: Jumat
-    pos: noun
-    ar_eg: الجمعة
-    ar: الجمعة
-    en: Friday
-    arabic: الجمعة
-  - word: Sabtu
-    pos: noun
-    ar_eg: السبت
-    ar: السبت
-    en: Saturday
-    arabic: السبت
-  - word: Minggu
-    pos: noun
-    ar_eg: الحد
-    ar: الأحد
-    en: Sunday
-  - word: Ahad
-    pos: noun
-    ar_eg: الحد (أقل استعمالًا)
-    ar: الأحد (أقل شيوعًا)
-    en: Sunday (less common)
-    arabic: الأحد
-  - word: minggu
-    pos: noun
-    ar_eg: أسبوع
-    ar: أسبوع
-    en: week
-  - word: tanggal
-    pos: noun
-    ar_eg: تاريخ (اليوم في الشهر)
-    ar: تاريخ
-    en: date (day of the month)
-  - word: bulan
-    pos: noun
-    ar_eg: شهر
-    ar: شهر
-    en: month
-  - word: Januari
-    pos: noun
-    ar_eg: يناير
-    ar: يناير
-    en: January
-  - word: Februari
-    pos: noun
-    ar_eg: فبراير
-    ar: فبراير
-    en: February
-  - word: Maret
-    pos: noun
-    ar_eg: مارس
-    ar: مارس
-    en: March
-  - word: April
-    pos: noun
-    ar_eg: أبريل
-    ar: أبريل
-    en: April
-  - word: Mei
-    pos: noun
-    ar_eg: مايو
-    ar: مايو
-    en: May
-  - word: Juni
-    pos: noun
-    ar_eg: يونيو
-    ar: يونيو
-    en: June
-  - word: Juli
-    pos: noun
-    ar_eg: يوليو
-    ar: يوليو
-    en: July
-  - word: Agustus
-    pos: noun
-    ar_eg: أغسطس
-    ar: أغسطس
-    en: August
-  - word: September
-    pos: noun
-    ar_eg: سبتمبر
-    ar: سبتمبر
-    en: September
-  - word: Oktober
-    pos: noun
-    ar_eg: أكتوبر
-    ar: أكتوبر
-    en: October
-  - word: November
-    pos: noun
-    ar_eg: نوفمبر
-    ar: نوفمبر
-    en: November
-  - word: Desember
-    pos: noun
-    ar_eg: ديسمبر
-    ar: ديسمبر
-    en: December
-  - word: pertama
-    pos: number
-    ar_eg: الأول
-    ar: الأول
-    en: first
-  - word: ke-
-    pos: particle
-    ar_eg: بادئة الترتيب (kedua = التاني)
-    ar: سابقة العدد الترتيبي (kedua = الثاني)
-    en: ordinal prefix (kedua = second)
-  - word: ulang tahun
-    pos: noun
-    ar_eg: عيد ميلاد
-    ar: عيد ميلاد
-    en: birthday
+    ar_eg: قماش
+    ar: قماش
+    en: fabric, cloth
+  - word: murah
+    pos: adjective
+    ar_eg: رخيص
+    ar: رخيص
+    en: cheap
+  - word: mahal
+    pos: adjective
+    ar_eg: غالي
+    ar: غالٍ
+    en: expensive
 review:
   status: draft
   verified: false

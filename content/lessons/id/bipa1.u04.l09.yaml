@@ -1,0 +1,172 @@
+schema: kabar.lesson/v1
+id: bipa1.u04.l09
+language: id
+title: Tanggal dan bulan
+can_do:
+  ar_eg: تقول التاريخ بالشهور من يناير ليونيو.
+  ar: أن تذكر التاريخ بالأشهر من يناير إلى يونيو.
+  en: Say the date with the months from January to June.
+slides:
+  - title: Tanggal dan bulan
+    body:
+      ar_eg: |
+        الشهور شبه الإنجليزي: Januari، Februari، Maret، April، Mei، Juni، Juli، Agustus، September، Oktober، November، Desember.
+        التاريخ: اليوم، وبعدين الشهر، وبعدين السنة: tanggal 17 Agustus 2026.
+        والسنة بتتقري كرقم عادي: dua ribu dua puluh enam (٢٠٢٦).
+        السؤال: «Tanggal berapa hari ini?» = «النهارده كام في الشهر؟»
+      ar: |
+        أسماء الشهور قريبة من الإنجليزية: Januari، Februari، Maret، April، Mei، Juni، Juli، Agustus، September، Oktober، November، Desember.
+        والتاريخ: اليوم ثم الشهر ثم السنة: tanggal 17 Agustus 2026.
+        وتُقرأ السنة عددًا عاديًا: dua ribu dua puluh enam (٢٠٢٦).
+        والسؤال: «Tanggal berapa hari ini?» = «ما تاريخ اليوم؟»
+      en: |
+        Months look like English: Januari, Februari, Maret, April, Mei, Juni, Juli, Agustus, September, Oktober, November, Desember.
+        Dates go day, month, year: tanggal 17 Agustus 2026.
+        Years are read as ordinary numbers: dua ribu dua puluh enam (2026).
+        Ask: "Tanggal berapa hari ini?" = "What's the date today?"
+    grammar: id.time.calendar
+    examples:
+      - text: Ulang tahun saya tanggal dua belas Maret.
+        ar_eg: عيد ميلادي يوم ١٢ مارس.
+        ar: عيد ميلادي في ١٢ مارس.
+        en: My birthday is on 12 March.
+      - text: Toko itu tutup hari Minggu.
+        ar_eg: المحل ده بيقفل يوم الحد.
+        ar: ذلك المتجر مغلق يوم الأحد.
+        en: That shop is closed on Sunday.
+exercises:
+  - id: e01
+    type: fill_blank
+    sentence: Hari ini tanggal ___? — Tanggal sepuluh.
+    meaning:
+      ar_eg: النهارده كام في الشهر؟ — عشرة.
+      ar: ما تاريخ اليوم؟ — العاشر.
+      en: What's the date today? — The tenth.
+    answers: [berapa]
+    words: [tanggal, berapa]
+  - id: e02
+    type: build_sentence
+    source:
+      ar_eg: عيد ميلادي يوم ١٢ مارس.
+      ar: عيد ميلادي في ١٢ مارس.
+      en: My birthday is on 12 March.
+    answer: Ulang tahun saya tanggal dua belas Maret.
+    distractors: [hari, ketiga]
+    words: [ulang tahun, tanggal, Maret]
+  - id: e03
+    type: match_pairs
+    pairs:
+      - text: Januari
+        ar_eg: يناير
+        ar: يناير / كانون الثاني
+        en: January
+      - text: Februari
+        ar_eg: فبراير
+        ar: فبراير / شباط
+        en: February
+      - text: Mei
+        ar_eg: مايو
+        ar: مايو / أيار
+        en: May
+      - text: Juni
+        ar_eg: يونيو
+        ar: يونيو / حزيران
+        en: June
+    words: [Januari, Februari, Mei, Juni]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «١٠ أبريل»؟
+      ar: كيف تقول «١٠ أبريل»؟
+      en: How do you say "10 April"?
+    options: [April tanggal sepuluh, tanggal sepuluh April, sepuluh tanggal April]
+    answer: 1
+    explain:
+      ar_eg: 'tanggal + اليوم + الشهر: tanggal sepuluh April.'
+      ar: 'tanggal + اليوم + الشهر: tanggal sepuluh April.'
+      en: 'tanggal + day + month: tanggal sepuluh April.'
+    words: [tanggal, April]
+  - id: e05
+    type: listen
+    text: tanggal satu Juni
+    options: [tanggal satu Juli, tanggal satu Juni, tanggal tujuh Juni]
+    answer: 1
+    meaning:
+      ar_eg: ١ يونيو
+      ar: الأول من يونيو
+      en: 1 June
+    words: [tanggal, Juni]
+  - id: e06
+    type: dictation
+    text: Bulan Maret
+    meaning:
+      ar_eg: شهر مارس
+      ar: شهر مارس
+      en: the month of March
+    words: [bulan, Maret]
+dialogue:
+  lines:
+    - speaker: Mohamed
+      text: Hari ini tanggal berapa, Bu?
+      ar_eg: النهارده كام في الشهر يا مدام؟
+      ar: ما تاريخ اليوم يا سيدتي؟
+      en: What's the date today, ma'am?
+    - speaker: Bu Sari
+      text: Hari ini tanggal tiga Mei.
+      ar_eg: النهارده ٣ مايو.
+      ar: اليوم الثالث من مايو.
+      en: Today is 3 May.
+    - speaker: Mohamed
+      text: Ulang tahun Ibu bulan Mei, ya?
+      ar_eg: عيد ميلاد حضرتك في مايو، صح؟
+      ar: عيد ميلادك في مايو، صحيح؟
+      en: Your birthday is in May, isn't it?
+    - speaker: Bu Sari
+      text: Ya! Tanggal sembilan Mei.
+      ar_eg: أيوه! يوم ٩ مايو.
+      ar: نعم! في التاسع من مايو.
+      en: Yes! On 9 May.
+new_words:
+  - word: tanggal
+    pos: noun
+    ar_eg: تاريخ (اليوم في الشهر)
+    ar: تاريخ
+    en: date (day of the month)
+  - word: bulan
+    pos: noun
+    ar_eg: شهر
+    ar: شهر
+    en: month
+  - word: Januari
+    pos: noun
+    ar_eg: يناير
+    ar: يناير
+    en: January
+  - word: Februari
+    pos: noun
+    ar_eg: فبراير
+    ar: فبراير
+    en: February
+  - word: Maret
+    pos: noun
+    ar_eg: مارس
+    ar: مارس
+    en: March
+  - word: April
+    pos: noun
+    ar_eg: أبريل
+    ar: أبريل
+    en: April
+  - word: Mei
+    pos: noun
+    ar_eg: مايو
+    ar: مايو
+    en: May
+  - word: Juni
+    pos: noun
+    ar_eg: يونيو
+    ar: يونيو
+    en: June
+review:
+  status: draft
+  verified: false

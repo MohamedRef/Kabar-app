@@ -1,0 +1,219 @@
+schema: kabar.lesson/v1
+id: bipa1.u04.l11
+language: id
+title: Undangan ulang tahun
+can_do:
+  ar_eg: تقرا دعوة عيد ميلاد وترد عليها.
+  ar: أن تقرأ دعوة عيد ميلاد وتردّ عليها.
+  en: Read and answer a birthday invitation.
+slides:
+  - title: Undangan dari Rina
+    body:
+      ar_eg: |
+        Rina بعتت undangan (دعوة) لـ pesta (حفلة) عيد ميلادها:
+
+        UNDANGAN
+        Halo, teman-teman! Datang ke pesta ulang tahun saya, ya!
+        Hari — Sabtu
+        Tanggal — 25 Oktober
+        Jam — 19.00 (jam tujuh malam)
+        Tempat — rumah saya, Jalan Kebon Kacang 5, Tanah Abang
+        Salam, Rina
+
+        teman = صاحب، tempat = مكان، jalan = شارع.
+        ومتروحش إيدك فاضية: hadiah = هدية، جاية من العربي «هدية». وuntuk = عشان / لـ: «Ini hadiah untuk kamu» = «دي هدية ليكي».
+        ولو هتشتري حاجة من سوق Tanah Abang اسأل: «Kain ini berapa?» أو «Berapa harganya?».
+      ar: |
+        أرسلت Rina undangan (دعوة) إلى pesta (حفلة) عيد ميلادها:
+
+        UNDANGAN
+        Halo, teman-teman! Datang ke pesta ulang tahun saya, ya!
+        Hari — Sabtu
+        Tanggal — 25 Oktober
+        Jam — 19.00 (jam tujuh malam)
+        Tempat — rumah saya, Jalan Kebon Kacang 5, Tanah Abang
+        Salam, Rina
+
+        teman = صديق، tempat = مكان، jalan = شارع.
+        ولا تذهب خالي اليدين: hadiah من العربية «هدية». وuntuk = لِـ: «Ini hadiah untuk kamu» = «هذه هدية لكِ».
+        وإن اشتريت شيئًا من سوق Tanah Abang فاسأل: «Kain ini berapa?» أو «Berapa harganya?».
+      en: |
+        Rina sent an undangan (invitation) to her birthday pesta (party):
+
+        UNDANGAN
+        Halo, teman-teman! Datang ke pesta ulang tahun saya, ya!
+        Hari — Sabtu
+        Tanggal — 25 Oktober
+        Jam — 19.00 (jam tujuh malam)
+        Tempat — rumah saya, Jalan Kebon Kacang 5, Tanah Abang
+        Salam, Rina
+
+        teman = friend, tempat = place, jalan = street.
+        Don't go empty-handed: hadiah (gift) comes from Arabic «هدية». untuk = for: "Ini hadiah untuk kamu" = "This is a gift for you".
+        Buying something at Tanah Abang market? Ask "Kain ini berapa?" or "Berapa harganya?".
+    grammar: id.time.calendar
+    examples:
+      - text: Ini hadiah untuk kamu. Selamat ulang tahun!
+        ar_eg: دي هدية عشانك. كل سنة وإنتي طيبة!
+        ar: هذه هدية لكِ. عيد ميلاد سعيد!
+        en: This is a gift for you. Happy birthday!
+exercises:
+  - id: e01
+    type: multiple_choice
+    question: Pesta Rina hari apa?
+    question_meaning:
+      ar_eg: (من الدعوة) حفلة رينا يوم إيه؟
+      ar: (من الدعوة) في أيّ يوم حفلة رينا؟
+      en: (from the invitation) What day is Rina's party?
+    options: [Sabtu, Minggu, Jumat]
+    answer: 0
+    words: [pesta, Sabtu]
+  - id: e02
+    type: multiple_choice
+    question: Jam berapa pestanya?
+    question_meaning:
+      ar_eg: (من الدعوة) الحفلة الساعة كام؟ (19.00)
+      ar: (من الدعوة) في أيّ ساعة الحفلة؟ (19.00)
+      en: (from the invitation) What time is the party? (19.00)
+    options: [jam tujuh pagi, jam tujuh malam, jam sembilan malam]
+    answer: 1
+    explain:
+      ar_eg: 19.00 = ٧ بالليل.
+      ar: 19.00 = السابعة مساءً.
+      en: 19.00 = 7 p.m.
+    words: [jam, malam]
+  - id: e03
+    type: listen
+    text: Datang ke pesta saya, ya!
+    options: ['Datang ke pesta saya, ya!', Selamat datang di pesta saya!, 'Datang ke rumah saya, ya!']
+    answer: 0
+    words: [datang, pesta]
+  - id: e04
+    type: fill_blank
+    sentence: Pesta ulang tahun Rina hari Sabtu, tanggal ___ Oktober.
+    meaning:
+      ar_eg: حفلة عيد ميلاد رينا يوم السبت ٢٥ أكتوبر.
+      ar: حفلة عيد ميلاد رينا يوم السبت ٢٥ أكتوبر.
+      en: Rina's birthday party is on Saturday, 25 October.
+    answers: [dua puluh lima, '25']
+    words: [tanggal, puluh, lima]
+  - id: e05
+    type: fill_blank
+    sentence: Saya mau beli ___ untuk Rina.
+    meaning:
+      ar_eg: عايز أشتري هدية لرينا.
+      ar: أريد أن أشتري هدية لرينا.
+      en: I want to buy a gift for Rina.
+    answers: [hadiah]
+    words: [hadiah, beli, untuk]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: شكرًا يا رينا! أنا جاي.
+      ar: شكرًا يا رينا! سآتي.
+      en: Thanks, Rina! I'll come.
+    answer: Terima kasih, Rina! Saya datang, ya.
+    distractors: [tutup, belum]
+    words: [datang]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: الحفلة في بيت رينا.
+      ar: الحفلة في بيت رينا.
+      en: The party is at Rina's house.
+    answer: Pestanya di rumah Rina.
+    distractors: [ke, saya]
+    words: [pesta, rumah]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الحفلة إمتى؟
+      ar: متى الحفلة؟
+      en: When is the party?
+    answers: ['Kapan pestanya?', Kapan pestanya, 'Pestanya kapan?', 'Kapan pesta itu?', 'Kapan pesta ulang tahunnya?', 'Pesta ulang tahunnya kapan?']
+    words: [kapan, pesta]
+  - id: e09
+    type: dictation
+    text: Hari Sabtu, jam tujuh malam.
+    meaning:
+      ar_eg: يوم السبت، الساعة ٧ بالليل.
+      ar: يوم السبت، في السابعة مساءً.
+      en: Saturday, at seven p.m.
+    words: [Sabtu, jam, malam]
+  - id: e10
+    type: speaking
+    text: Selamat ulang tahun, Rina! Ini hadiah untuk kamu.
+    meaning:
+      ar_eg: كل سنة وإنتي طيبة يا رينا! دي هدية عشانك.
+      ar: عيد ميلاد سعيد يا رينا! هذه هدية لكِ.
+      en: Happy birthday, Rina! This is a gift for you.
+    words: [ulang tahun, hadiah, untuk]
+dialogue:
+  title: Mencari hadiah di Tanah Abang
+  lines:
+    - speaker: Dimas
+      text: Kamu sudah punya hadiah?
+      ar_eg: جبت هدية خلاص؟
+      ar: هل عندك هدية بالفعل؟
+      en: Do you have a gift yet?
+    - speaker: Mohamed
+      text: Belum. Kita beli kain batik di sini, ya?
+      ar_eg: لسه. نشتري قماش باتيك من هنا؟
+      ar: ليس بعد. هل نشتري قماش باتيك من هنا؟
+      en: Not yet. Shall we buy some batik cloth here?
+    - speaker: Dimas
+      text: Ya! Kain batik di Tanah Abang murah.
+      ar_eg: أيوه! قماش الباتيك في تانا أبانج رخيص.
+      ar: نعم! قماش الباتيك في تانا أبانغ رخيص.
+      en: Yes! Batik cloth is cheap at Tanah Abang.
+    - speaker: Mohamed
+      text: Permisi, Bu. Kain ini berapa?
+      ar_eg: لو سمحتي يا حاجة. القماش ده بكام؟
+      ar: من فضلكِ يا سيدتي. بكم هذا القماش؟
+      en: Excuse me, ma'am. How much is this cloth?
+    - speaker: Bu Ani
+      text: Delapan puluh lima ribu, Mas.
+      ar_eg: خمسة وتمانين ألف.
+      ar: خمسة وثمانون ألفًا.
+      en: Eighty-five thousand.
+    - speaker: Mohamed
+      text: Baik, Bu. Saya beli satu. Ini hadiah untuk teman saya.
+      ar_eg: تمام يا حاجة. هاخد واحد. دي هدية لصاحبتي.
+      ar: حسنًا يا سيدتي، سأشتري واحدًا. إنه هدية لصديقتي.
+      en: All right, ma'am. I'll buy one. It's a gift for my friend.
+new_words:
+  - word: pesta
+    pos: noun
+    ar_eg: حفلة
+    ar: حفلة
+    en: party
+  - word: teman
+    pos: noun
+    ar_eg: صاحب
+    ar: صديق
+    en: friend
+  - word: ke
+    pos: preposition
+    ar_eg: لـ، على
+    ar: إلى
+    en: to (a place)
+  - word: hadiah
+    pos: noun
+    ar_eg: هدية
+    ar: هدية
+    en: gift
+    arabic: هدية
+  - word: untuk
+    pos: preposition
+    ar_eg: عشان، لـ
+    ar: لِـ، من أجل
+    en: for
+  - word: beli
+    pos: verb
+    ar_eg: يشتري
+    ar: يشتري
+    en: to buy
+review:
+  status: draft
+  verified: false

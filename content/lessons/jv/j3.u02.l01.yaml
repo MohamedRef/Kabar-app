@@ -71,10 +71,10 @@ slides:
         There's an even humbler "I": dalem. Its best-known use: when an elder calls your name, don't say "Apa?" (what?). Say "Dalem?" — exactly like Egyptian «أفندم؟».
     grammar: jv.pronoun.krama
     examples:
-      - text: "— Mas Mohamed! — Dalem, Bu?"
-        ar_eg: "— يا أستاذ محمد! — أفندم يا مدام؟"
-        ar: "— يا محمد! — نعم يا سيدتي؟"
-        en: "— Mohamed! — Yes, ma'am?"
+      - text: — Mas Mohamed! — Dalem, Bu?
+        ar_eg: — يا أستاذ محمد! — أفندم يا مدام؟
+        ar: — يا محمد! — نعم يا سيدتي؟
+        en: — Mohamed! — Yes, ma'am?
   - title: Kula + nedha, dudu dhahar
     body:
       ar_eg: |
@@ -97,86 +97,39 @@ slides:
         en: I've eaten.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: kula
-        ar_eg: أنا (krama) = saya
-        ar: أنا (krama) = saya
-        en: I (krama) = saya
-      - text: nami kula
-        ar_eg: اسمي
-        ar: اسمي
-        en: my name
-      - text: griya kula
-        ar_eg: بيتي
-        ar: بيتي
-        en: my house
-      - text: saking
-        ar_eg: من (krama لـ saka) = dari
-        ar: من (krama لـ saka) = dari
-        en: from (krama for saka) = dari
-    words: [kula, nami, griya, saking]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إزاي تقول «اسمي محمد» بالكراما؟
-      ar: كيف تقول «اسمي محمد» بالكراما؟
-      en: How do you say "My name is Mohamed" in krama?
-    options: ["Nami kula Mohamed.", "Asma kula Mohamed.", "Jenengku Mohamed."]
-    answer: 0
-    explain:
-      ar_eg: "Jenengku = ngoko. Asma للتعظيم (لاسم التاني بس). الكراما الصح: Nami kula."
-      ar: Jenengku من الـ ngoko، وasma للتعظيم فلا تُقال عن النفس، والصحيح Nami kula.
-      en: Jenengku is ngoko; asma honours others only. Correct krama is Nami kula.
-    words: [nami, kula]
-  - id: e03
     type: multiple_choice
     question_meaning:
       ar_eg: Bu Siti نادتك «Mas Mohamed!». ترد تقول إيه؟
       ar: نادتك Bu Siti «Mas Mohamed!». بمَ تجيب؟
       en: Bu Siti calls "Mas Mohamed!". What do you answer?
-    options: ["Dalem, Bu?", "Kowé?", "Apa?"]
+    options: ['Dalem, Bu?', 'Kowé?', 'Apa?']
     answer: 0
     explain:
       ar_eg: «Dalem?» = «أفندم؟». «Apa?» لوحدها تبان ناشفة مع حد أكبر منك.
       ar: «Dalem?» = «أفندم؟»، أما «Apa?» وحدها فجافة مع الأكبر.
-      en: "\"Dalem?\" = «أفندم؟». A bare \"Apa?\" sounds blunt to an elder."
+      en: '"Dalem?" = «أفندم؟». A bare "Apa?" sounds blunt to an elder.'
     words: [dalem]
-  - id: e04
+  - id: e02
     type: listen
     text: Nami kula Mohamed.
-    options: ["Jenengku Mohamed.", "Nami kula Mohamed.", "Kula saking Mesir."]
+    options: [Jenengku Mohamed., Nami kula Mohamed., Kula saking Mesir.]
     answer: 1
     words: [nami, kula]
-  - id: e05
+  - id: e03
     type: fill_blank
     sentence: Nami ___ Mohamed.
     meaning:
       ar_eg: اسمي محمد.
       ar: اسمي محمد.
       en: My name is Mohamed.
-    options: ["panjenengan", "aku", "kula"]
+    options: [panjenengan, aku, kula]
     answers: [kula]
     explain:
       ar_eg: nami كلمة كراما، فبتمشي مع kula. aku ngoko.
       ar: nami من الكراما فتأتي مع kula، وaku من الـ ngoko.
       en: nami is krama, so it pairs with kula; aku is ngoko.
     words: [kula]
-  - id: e06
-    type: fill_blank
-    sentence: Kula ___ Kairo.
-    meaning:
-      ar_eg: أنا من القاهرة.
-      ar: أنا من القاهرة.
-      en: I'm from Cairo.
-    options: ["saking", "saka", "griya"]
-    answers: [saking]
-    explain:
-      ar_eg: "kula كراما، يبقى «من» كمان كراما: saking (saka في الـ ngoko)."
-      ar: "kula من الكراما فتكون «من» كذلك: saking، أما saka فمن الـ ngoko."
-      en: kula is krama, so "from" is krama too — saking (saka is ngoko).
-    words: [saking]
-  - id: e07
+  - id: e04
     type: build_sentence
     source:
       ar_eg: أنا من مصر. (بالكراما)
@@ -185,46 +138,20 @@ exercises:
     answer: Kula saking Mesir.
     distractors: [aku, saka]
     words: [kula, saking]
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: اسمي محمد. (بالكراما)
-      ar: اسمي محمد. (بالكراما)
-      en: My name is Mohamed. (krama)
-    answers: ["Nami kula Mohamed.", "Nami kulo Mohamed.", "Nami kula Mohamed", "Nami kulo Mohamed", "Kula Mohamed.", "Kulo Mohamed.", "Kula Mohamed", "Kulo Mohamed"]
-    words: [nami, kula]
-  - id: e09
+  - id: e05
     type: translate
     direction: to_target
     source_meaning:
       ar_eg: ده بيتي. (بالكراما)
       ar: هذا بيتي. (بالكراما)
       en: This is my house. (krama)
-    answers: ["Menika griya kula.", "Menika griya kulo.", "Menika griya kula", "Menika griya kulo", "Niki griya kula.", "Niki griya kulo.", "Niki griya kula", "Niki griya kulo"]
+    answers: [Menika griya kula., Menika griya kulo., Menika griya kula, Menika griya kulo, Niki griya kula., Niki griya kulo., Niki griya kula, Niki griya kulo]
     explain:
       ar_eg: iki ← menika (وفي الكلام niki)، omahku ← griya kula.
       ar: iki ← menika (وفي الكلام niki)، وomahku ← griya kula.
       en: iki → menika (spoken niki), omahku → griya kula.
     words: [menika, griya, kula]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Kula sampun nedha.
-    answers_meaning:
-      ar_eg: ["أنا كلت.", "أنا كلت", "كلت خلاص"]
-      ar: ["قد أكلتُ.", "أكلتُ", "لقد أكلت"]
-      en: ["I've eaten.", "I have eaten", "I already ate"]
-    words: [kula, sampun, nedha]
-  - id: e11
-    type: dictation
-    text: Nami kula Mohamed.
-    meaning:
-      ar_eg: اسمي محمد.
-      ar: اسمي محمد.
-      en: My name is Mohamed.
-    words: [nami, kula]
-  - id: e12
+  - id: e06
     type: speaking
     text: Nami kula Mohamed, saking Mesir.
     meaning:
@@ -266,11 +193,6 @@ dialogue:
       ar: شكرًا يا سيدتي.
       en: Thank you, ma'am.
 new_words:
-  - word: kula
-    pos: pronoun
-    ar_eg: أنا (krama، chat kulo) = saya
-    ar: أنا (krama) = saya
-    en: I, my (krama; chat kulo) = saya
   - word: nami
     pos: noun
     ar_eg: اسم (krama لـ jeneng) = nama

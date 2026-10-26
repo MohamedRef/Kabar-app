@@ -127,7 +127,7 @@ exercises:
       ar_eg: النهارده السبت. الحاجة حصلت يوم الجمعة. تقول إيه؟
       ar: اليوم السبت، والحدث كان يوم الجمعة. ماذا تقول؟
       en: Today is Saturday. It happened on Friday. Which word?
-    options: ["tadi", "besok", "kemarin"]
+    options: [tadi, besok, kemarin]
     answer: 2
     explain:
       ar_eg: الجمعة امبارح، يعني kemarin. tadi للنهارده بس.
@@ -135,110 +135,32 @@ exercises:
       en: Friday is yesterday → kemarin; tadi is only for today.
     words: [kemarin, tadi]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الساعة دلوقتي ٣ العصر، وكلت الساعة ٧ الصبح. تقول إيه؟
-      ar: الساعة الآن الثالثة عصرًا، وقد أكلت في السابعة صباحًا. ماذا تقول؟
-      en: It's 3 p.m. now and you ate at 7 a.m. What do you say?
-    options: ["Kemarin pagi saya makan.", "Nanti pagi saya makan.", "Tadi pagi saya makan."]
-    answer: 2
-    explain:
-      ar_eg: الصبح بتاع النهارده وفات خلاص، يبقى tadi pagi.
-      ar: صباح اليوم وقد مضى، فهو tadi pagi.
-      en: This morning, already past → tadi pagi.
-    words: [tadi]
-  - id: e04
     type: listen
     text: Minggu lalu saya ke Bandung.
-    options: ["Minggu lalu saya ke Bandung.", "Minggu depan saya ke Bandung.", "Kemarin saya ke Bandung."]
+    options: [Minggu lalu saya ke Bandung., Minggu depan saya ke Bandung., Kemarin saya ke Bandung.]
     answer: 0
     words: [minggu lalu]
-  - id: e05
+  - id: e04
     type: fill_blank
     sentence: ___ saya di Kairo. Sekarang saya di Jakarta.
     meaning:
       ar_eg: السنة اللي فاتت كنت في القاهرة. دلوقتي أنا في جاكرتا.
       ar: العام الماضي كنت في القاهرة، والآن أنا في جاكرتا.
       en: Last year I was in Cairo. Now I'm in Jakarta.
-    options: ["Besok", "Nanti", "Tahun lalu"]
+    options: [Besok, Nanti, Tahun lalu]
     answers: [Tahun lalu]
     words: [tahun lalu, sekarang]
-  - id: e06
-    type: fill_blank
-    sentence: ___ naik kapal, kami makan dulu.
-    meaning:
-      ar_eg: قبل ما نركب المركب، كلنا الأول.
-      ar: قبل ركوب القارب، أكلنا أولًا.
-      en: Before boarding the boat, we ate first.
-    options: ["Sebelum", "Setelah", "Kemarin"]
-    answers: [Sebelum]
-    explain:
-      ar_eg: «قبل» = sebelum، و«بعد» = setelah.
-      ar: «قبل» = sebelum، و«بعد» = setelah.
-      en: before = sebelum; after = setelah.
-    words: [sebelum, kapal]
-  - id: e07
+  - id: e05
     type: build_sentence
     source:
       ar_eg: امبارح رحت السوق.
       ar: أمس ذهبت إلى السوق.
       en: Yesterday I went to the market.
     answer: Kemarin saya ke pasar.
-    alternatives: ["Saya ke pasar kemarin."]
+    alternatives: [Saya ke pasar kemarin.]
     distractors: [tadi, di]
     words: [kemarin, pasar]
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: بعد الأكل، عُمنا في البحر.
-      ar: بعد الأكل، سبحنا في البحر.
-      en: After eating, we swam in the sea.
-    answer: Setelah makan, kami berenang di laut.
-    alternatives: ["Setelah makan kami berenang di laut."]
-    distractors: [sebelum, ke]
-    words: [setelah, berenang, laut]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: امبارح ركبت مركب.
-      ar: أمس ركبت قاربًا.
-      en: Yesterday I took a boat.
-    answers:
-      - Kemarin saya naik kapal.
-      - Saya naik kapal kemarin.
-      - Kemarin aku naik kapal.
-      - Kemarin saya naik kapal
-      - Kemarin, saya naik kapal.
-    explain:
-      ar_eg: الفعل naik زي ما هو، وkemarin هي اللي بتقول إنه فات.
-      ar: الفعل naik لا يتغير، وkemarin تدل على المضي.
-      en: naik doesn't change; kemarin shows it's past.
-    words: [kemarin, naik, kapal]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: النهارده الصبح شربت قهوة.
-      ar: هذا الصباح شربت قهوة.
-      en: This morning I drank coffee.
-    answers:
-      - Tadi pagi saya minum kopi.
-      - Saya minum kopi tadi pagi.
-      - Tadi pagi aku minum kopi.
-      - Tadi pagi saya minum kopi
-      - Tadi pagi, saya minum kopi.
-    words: [tadi, minum, kopi]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: Kemarin dulu Dimas ke Pulau Pramuka.
-    answers_meaning:
-      ar_eg: ["أول امبارح ديماس راح جزيرة برامُكا.", "ديماس راح جزيرة برامكا أول امبارح", "أول امبارح ديماس راح بولاو برامكا"]
-      ar: ["أول أمس ذهب ديماس إلى جزيرة برامُكا.", "ذهب ديماس إلى جزيرة برامكا أول أمس"]
-      en: ["The day before yesterday Dimas went to Pramuka Island.", "Dimas went to Pulau Pramuka the day before yesterday"]
-    words: [kemarin dulu, pulau]
-  - id: e12
+  - id: e06
     type: dictation
     text: Kemarin saya ke pulau.
     meaning:
@@ -246,7 +168,7 @@ exercises:
       ar: أمس ذهبت إلى الجزيرة.
       en: Yesterday I went to the island.
     words: [kemarin, pulau]
-  - id: e13
+  - id: e07
     type: speaking
     text: Kemarin saya naik kapal. Setelah itu, saya berenang di laut.
     meaning:
@@ -288,21 +210,11 @@ dialogue:
       ar: قليلًا يا أستاذ. استيقظت هذا الصباح في التاسعة!
       en: A little, sir. This morning I woke up at nine!
 new_words:
-  - word: kemarin
-    pos: adverb
-    ar_eg: امبارح
-    ar: أمس
-    en: yesterday
   - word: kemarin dulu
     pos: adverb
     ar_eg: أول امبارح
     ar: أول أمس
     en: the day before yesterday
-  - word: tadi
-    pos: adverb
-    ar_eg: من شوية (النهارده)
-    ar: قبل قليل (من اليوم نفسه)
-    en: earlier today, just now
   - word: minggu lalu
     pos: phrase
     ar_eg: الأسبوع اللي فات
@@ -318,11 +230,6 @@ new_words:
     ar_eg: السنة اللي فاتت
     ar: العام الماضي
     en: last year
-  - word: setelah
-    pos: conjunction
-    ar_eg: بعد
-    ar: بعد
-    en: after
   - word: pulau
     pos: noun
     ar_eg: جزيرة
@@ -343,16 +250,6 @@ new_words:
     ar_eg: بحر
     ar: بحر
     en: sea
-  - word: capek
-    pos: adjective
-    ar_eg: تعبان
-    ar: متعب
-    en: tired
-  - word: sedikit
-    pos: adverb
-    ar_eg: شوية
-    ar: قليلًا
-    en: a little
 review:
   status: draft
   verified: false

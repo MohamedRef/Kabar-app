@@ -1,271 +1,174 @@
 schema: kabar.lesson/v1
 id: bipa2.u07.l04
 language: id
-title: Pelatih pantai
+title: Angkat tangan!
 can_do:
-  ar_eg: تشرح رياضة لصاحبك خطوة بخطوة.
-  ar: أن تشرح رياضة لصديقك.
-  en: Explain a sport to a friend.
+  ar_eg: تسمّي أجزاء الجسم وتمشي على تعليمات التنفس.
+  ar: أن تسمي أجزاء الجسم وتتبع تعليمات التنفس.
+  en: Name body parts and follow breathing instructions.
 slides:
-  - title: Cara berselancar
+  - title: Angkat tangan, tarik napas
     body:
       ar_eg: |
-        عشان تشرح رياضة، استعمل الأوامر (من غير meN-، وber- بتفضل) ورتّبها بـ pertama (الأول) وlalu (وبعدين):
-        ١. Bawa papan selancar ke laut. = خد اللوح للبحر.
-        ٢. Berbaring di atas papan. = نام على بطنك فوق اللوح.
-        ٣. Dayung dengan tangan. = جدّف بإيديك.
-        ٤. Lihat ombaknya, lalu berdiri dengan cepat. = بص على الموجة، وبعدين قوم اقف بسرعة.
-        ٥. Tekuk lutut sedikit. = اثني ركبتك شوية.
-        ٦. Jangan takut jatuh! = ماتخافش تقع!
+        زي الوصفات بالظبط: الأمر = الجذر من غير meN-:
+        - mengangkat → Angkat tangan! = ارفع إيدك!
+        - menarik → Tarik napas! = خد نفس!
+        - membuang → Buang napas! = طلّع النفس!
+        - memutar → Putar bahu! = لِف كتفك!
+        أجزاء الجسم: tangan (إيد)، kaki (رجل)، kepala (راس)، bahu (كتف)، lutut (ركبة).
       ar: |
-        لشرح رياضة استعمل الأوامر (بلا meN-، مع بقاء ber-)، ورتّبها بـ pertama (أولًا) وlalu (ثم):
-        ١. Bawa papan selancar ke laut. = خذ اللوح إلى البحر.
-        ٢. Berbaring di atas papan. = استلقِ على اللوح.
-        ٣. Dayung dengan tangan. = جدّف بيديك.
-        ٤. Lihat ombaknya, lalu berdiri dengan cepat. = راقب الموجة ثم قِف بسرعة.
-        ٥. Tekuk lutut sedikit. = اثنِ ركبتيك قليلًا.
-        ٦. Jangan takut jatuh! = لا تخف من السقوط!
+        كما في الوصفات، الأمر هو الجذر بلا meN-:
+        - mengangkat → Angkat tangan! = ارفع يدك!
+        - menarik → Tarik napas! = خذ نفسًا!
+        - membuang → Buang napas! = أخرِج النفس!
+        - memutar → Putar bahu! = أدِر كتفك!
+        وأعضاء الجسم: tangan (يد)، kaki (رِجل)، kepala (رأس)، bahu (كتف)، lutut (ركبة).
       en: |
-        To explain a sport, use commands (no meN-, ber- stays) and order them with pertama (first) and lalu (then):
-        1. Bawa papan selancar ke laut. = Take the surfboard into the sea.
-        2. Berbaring di atas papan. = Lie down on the board.
-        3. Dayung dengan tangan. = Paddle with your hands.
-        4. Lihat ombaknya, lalu berdiri dengan cepat. = Watch the wave, then stand up quickly.
-        5. Tekuk lutut sedikit. = Bend your knees a little.
-        6. Jangan takut jatuh! = Don't be afraid of falling!
+        Just like recipes: the command is the root without meN-:
+        - mengangkat → Angkat tangan! = Raise your hand(s)!
+        - menarik → Tarik napas! = Breathe in!
+        - membuang → Buang napas! = Breathe out!
+        - memutar → Putar bahu! = Roll your shoulders!
+        Body parts: tangan (hand / arm), kaki (foot / leg), kepala (head), bahu (shoulder), lutut (knee).
     grammar: id.imperative.basic
     examples:
-      - text: Berbaring di atas papan, lalu dayung dengan tangan.
-        ar_eg: نام على اللوح، وبعدين جدّف بإيديك.
-        ar: استلقِ على اللوح ثم جدّف بيديك.
-        en: Lie down on the board, then paddle with your hands.
+      - text: Angkat tangan kanan, lalu tarik napas.
+        ar_eg: ارفع إيدك اليمين، وبعدين خد نفس.
+        ar: ارفع يدك اليمنى ثم خذ نفسًا.
+        en: Raise your right hand, then breathe in.
 exercises:
   - id: e01
+    type: match_pairs
+    pairs:
+      - text: tangan
+        ar_eg: إيد
+        ar: يد
+        en: hand, arm
+      - text: kaki
+        ar_eg: رِجل
+        ar: رِجل
+        en: foot, leg
+      - text: kepala
+        ar_eg: راس
+        ar: رأس
+        en: head
+      - text: bahu
+        ar_eg: كتف
+        ar: كتف
+        en: shoulder
+      - text: lutut
+        ar_eg: رُكبة
+        ar: رُكبة
+        en: knee
+    words: [tangan, kaki, kepala, bahu, lutut]
+  - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: بعد ما تنام على اللوح، تعمل إيه على طول؟
-      ar: بعد أن تستلقي على اللوح، ماذا تفعل مباشرة؟
-      en: Right after lying down on the board, what do you do?
-    options: ["Dayung dengan tangan.", "Bawa papan ke laut.", "Berdiri dengan cepat."]
-    answer: 0
-    explain:
-      ar_eg: الخطوة ٣ بعد ٢، الأول تجدّف، وبعدين تقف لما الموجة تيجي.
-      ar: الخطوة الثالثة تلي الثانية، فتجدّف أولًا ثم تقف عند الموجة.
-      en: Step 3 follows step 2; you paddle first, then stand up for the wave.
-    words: [dayung, berbaring]
-  - id: e02
-    type: listen
-    text: Tekuk lutut sedikit.
-    options: ["Tekuk kaki sedikit.", "Angkat lutut sedikit.", "Tekuk lutut sedikit."]
+      ar_eg: إيه الأمر من mengangkat (يرفع)؟
+      ar: ما صيغة الأمر من mengangkat (يرفع)؟
+      en: What is the command form of mengangkat (to lift)?
+    options: [Berangkat!, Mengangkat!, Angkat!]
     answer: 2
-    words: [tekuk, lutut]
-  - id: e03
-    type: fill_blank
-    sentence: ___ di atas papan, lalu dayung dengan tangan.
-    meaning:
-      ar_eg: نام على اللوح، وبعدين جدّف بإيديك.
-      ar: استلقِ على اللوح ثم جدّف بيديك.
-      en: Lie down on the board, then paddle with your hands.
-    options: ["Membaring", "Berbaring", "Baring"]
-    answers: [Berbaring]
     explain:
-      ar_eg: berbaring فعل ber-، فبيفضل زي ما هو في الأمر.
-      ar: berbaring من أفعال ber- فتبقى في الأمر.
-      en: berbaring is a ber- verb, so it keeps ber- in a command.
-    words: [berbaring]
+      ar_eg: بنشيل meng- يفضل angkat. وخلّي بالك، berangkat كلمة تانية خالص = يسافر / يمشي!
+      ar: تُحذف meng- فيبقى angkat. أما berangkat فكلمة أخرى بمعنى «ينطلق / يغادر».
+      en: Drop meng- to get angkat. Careful, berangkat is a different word = set off!
+    words: [angkat]
+  - id: e03
+    type: listen
+    text: Angkat tangan kanan, lalu tarik napas.
+    options: ['Angkat tangan kanan, lalu tarik napas.', 'Angkat tangan kiri, lalu buang napas.', 'Angkat kaki kanan, lalu tarik napas.']
+    answer: 0
+    words: [angkat, tangan, tarik napas]
   - id: e04
-    type: fill_blank
-    sentence: Lihat ombaknya, lalu ___ dengan cepat.
-    meaning:
-      ar_eg: بص على الموجة، وبعدين قوم اقف بسرعة.
-      ar: راقب الموجة ثم قِف بسرعة.
-      en: Watch the wave, then stand up quickly.
-    answers: [berdiri]
-    words: [ombak, berdiri]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: المدرّبة عايزاك تطلّع النفس. تقول إيه؟
+      ar: تريد المدرّبة أن تُخرج النفس. ماذا تقول؟
+      en: The coach wants you to breathe out. What does she say?
+    options: [Angkat kaki., Tarik napas., Buang napas.]
+    answer: 2
+    words: [buang napas]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: خد لوح السيرف للبحر.
-      ar: خذ لوح ركوب الأمواج إلى البحر.
-      en: Take the surfboard into the sea.
-    answer: Bawa papan selancar ke laut.
-    distractors: [membawa, di]
-    words: [bawa, papan selancar]
+      ar_eg: ارفع إيدك اليمين، وبعدين خد نفس.
+      ar: ارفع يدك اليمنى ثم خذ نفسًا.
+      en: Raise your right hand, then breathe in.
+    answer: Angkat tangan kanan, lalu tarik napas.
+    distractors: [mengangkat, buang]
+    words: [angkat, tarik napas]
   - id: e06
-    type: build_sentence
-    source:
-      ar_eg: ماتخافش تقع!
-      ar: لا تخف من السقوط!
-      en: Don't be afraid of falling!
-    answer: Jangan takut jatuh!
-    distractors: [tolong, berhenti]
-    words: [jangan, takut, jatuh]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: جدّف بإيديك.
-      ar: جدّف بيديك.
-      en: Paddle with your hands.
-    answers:
-      - Dayung dengan tangan.
-      - Dayung dengan tangan
-      - Dayung dengan tanganmu.
-      - Dayung dengan tangan!
-      - Dayung pakai tangan.
-    words: [dayung, tangan]
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: بقالي أسبوعين بتعلّم السيرف.
-      ar: أتعلّم ركوب الأمواج منذ أسبوعين.
-      en: I've been learning to surf for two weeks.
-    answers:
-      - Saya sudah dua minggu belajar berselancar.
-      - Saya sudah dua minggu belajar berselancar
-      - Saya sudah belajar berselancar selama dua minggu.
-      - Saya sudah belajar berselancar selama dua minggu
-      - Sudah dua minggu saya belajar berselancar.
-      - Saya belajar berselancar selama dua minggu.
-      - Aku sudah dua minggu belajar berselancar.
-      - Aku sudah belajar berselancar selama dua minggu.
-    words: [berselancar, selama]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: إحنا الاتنين بنركب الأمواج كل يوم الصبح.
-      ar: نركب الأمواج نحن الاثنين كل صباح.
-      en: The two of us surf every morning.
-    answers:
-      - Kami berdua berselancar setiap pagi.
-      - Kami berdua berselancar setiap pagi
-      - Setiap pagi kami berdua berselancar.
-      - Setiap pagi kami berdua berselancar
-      - Kita berdua berselancar setiap pagi.
-      - Setiap pagi kita berdua berselancar.
-      - Kami berdua berselancar tiap pagi.
-    words: [berdua, berselancar]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Tekuk lutut sedikit dan lihat ke depan.
-    answers_meaning:
-      ar_eg: ["اثني ركبتك شوية وبص لقدّام.", "اثني ركبك شوية وبص قدامك"]
-      ar: ["اثنِ ركبتيك قليلًا وانظر إلى الأمام.", "اثنِ ركبتك قليلًا وانظر أمامك"]
-      en: ["Bend your knees a little and look ahead.", "Bend your knees slightly and look forward"]
-    words: [tekuk, lutut]
-  - id: e11
     type: dictation
-    text: Lihat ombaknya, lalu berdiri dengan cepat.
+    text: Tarik napas, lalu buang napas.
     meaning:
-      ar_eg: بص على الموجة، وبعدين قوم اقف بسرعة.
-      ar: راقب الموجة ثم قِف بسرعة.
-      en: Watch the wave, then stand up quickly.
-    words: [ombak, berdiri]
-  - id: e12
-    type: speaking
-    text: Pertama, berbaring di atas papan, lalu dayung dengan tangan.
-    meaning:
-      ar_eg: الأول نام على اللوح، وبعدين جدّف بإيديك.
-      ar: أولًا استلقِ على اللوح، ثم جدّف بيديك.
-      en: First, lie down on the board, then paddle with your hands.
-    words: [berbaring, dayung]
+      ar_eg: خد نفس، وبعدين طلّعه.
+      ar: خذ نفسًا ثم أخرِجه.
+      en: Breathe in, then breathe out.
+    words: [tarik napas, buang napas]
 dialogue:
-  title: Mohamed jadi pelatih
   lines:
-    - speaker: Rina
-      text: Mohamed, kamu sudah bisa berselancar?
-      ar_eg: يا محمد، إنت بقيت بتعرف تركب الأمواج؟
-      ar: يا محمد، هل صرت تعرف ركوب الأمواج؟
-      en: Mohamed, can you surf now?
+    - speaker: Mas Ardi
+      text: Ayo, semua! Angkat tangan.
+      ar_eg: يلا يا جماعة! ارفعوا إيديكم.
+      ar: هيا جميعًا! ارفعوا أيديكم.
+      en: Come on, everyone! Raise your arms.
     - speaker: Mohamed
-      text: Sudah sedikit! Saya belajar dengan Mas Ardi selama dua minggu.
-      ar_eg: شوية! اتعلّمت مع مَس أردي لمدة أسبوعين.
-      ar: قليلًا! تعلّمتُ مع ماس أردي مدة أسبوعين.
-      en: A bit! I learned with Mas Ardi for two weeks.
-    - speaker: Rina
-      text: Wah! Tolong ajari saya, ya.
-      ar_eg: الله! لو سمحت علّمني.
-      ar: رائع! علّمني من فضلك.
-      en: Wow! Please teach me.
-    - speaker: Mohamed
-      text: Mudah! Pertama, bawa papan selancar ke laut, lalu berbaring di atas papan.
-      ar_eg: سهلة! الأول خدي اللوح للبحر، وبعدين نامي عليه.
-      ar: سهل! أولًا خذي اللوح إلى البحر ثم استلقي عليه.
-      en: Easy! First, take the surfboard into the sea, then lie down on it.
-    - speaker: Rina
-      text: Lalu?
-      ar_eg: وبعدين؟
-      ar: ثم؟
-      en: Then?
-    - speaker: Mohamed
-      text: Dayung dengan tangan. Lihat ombaknya, lalu berdiri dengan cepat.
-      ar_eg: جدّفي بإيديكي. بصّي على الموجة، وبعدين قومي اقفي بسرعة.
-      ar: جدّفي بيديكِ، وراقبي الموجة ثم قِفي بسرعة.
-      en: Paddle with your hands. Watch the wave, then stand up quickly.
-    - speaker: Rina
-      text: Kakinya bagaimana?
-      ar_eg: والرجلين أعمل فيهم إيه؟
-      ar: وماذا عن القدمين؟
-      en: What about my legs?
-    - speaker: Mohamed
-      text: Tekuk lutut sedikit dan lihat ke depan.
-      ar_eg: اثني ركبك شوية وبصّي لقدّام.
-      ar: اثني ركبتيكِ قليلًا وانظري إلى الأمام.
-      en: Bend your knees a little and look ahead.
-    - speaker: Rina
-      text: Saya takut jatuh.
-      ar_eg: أنا خايفة أقع.
-      ar: أخاف أن أسقط.
-      en: I'm scared of falling.
-    - speaker: Mohamed
-      text: Jangan takut! Jatuh itu biasa. Ayo, kita berdua coba!
-      ar_eg: ماتخافيش! الوقعة عادي. يلا نجرّب إحنا الاتنين!
-      ar: لا تخافي! السقوط أمر عادي. هيّا نجرّب نحن الاثنين!
-      en: Don't be scared! Falling is normal. Come on, let's both try!
+      text: Tangan kanan atau tangan kiri, Mas?
+      ar_eg: الإيد اليمين ولا الشمال يا أردي؟
+      ar: اليد اليمنى أم اليسرى يا أردي؟
+      en: Right arm or left arm, Mas?
+    - speaker: Mas Ardi
+      text: Dua-duanya! Sekarang tarik napas…
+      ar_eg: الاتنين! دلوقتي خد نفس…
+      ar: كلتاهما! الآن خذ نفسًا…
+      en: Both! Now breathe in…
+    - speaker: Mas Ardi
+      text: …dan buang napas. Bagus!
+      ar_eg: …وطلّع النفس. برافو!
+      ar: …وأخرج النفس. أحسنت!
+      en: …and breathe out. Good!
 new_words:
-  - word: papan selancar
+  - word: tangan
     pos: noun
-    ar_eg: لوح السيرف
-    ar: لوح ركوب الأمواج
-    en: surfboard
-  - word: ombak
+    ar_eg: إيد، دراع
+    ar: يد، ذراع
+    en: hand, arm
+  - word: kaki
     pos: noun
-    ar_eg: موجة
-    ar: موجة
-    en: wave
-  - word: berbaring
+    ar_eg: رِجل
+    ar: رِجل، قدم
+    en: foot, leg
+  - word: kepala
+    pos: noun
+    ar_eg: راس
+    ar: رأس
+    en: head
+  - word: bahu
+    pos: noun
+    ar_eg: كتف
+    ar: كتف
+    en: shoulder
+  - word: lutut
+    pos: noun
+    ar_eg: رُكبة
+    ar: رُكبة
+    en: knee
+  - word: angkat
     pos: verb
-    ar_eg: ينام / يتمدّد
-    ar: يستلقي
-    en: to lie down
-  - word: dayung
-    pos: verb
-    ar_eg: جدّف (mendayung = يجدّف)
-    ar: جدِّف (mendayung = يجدّف)
-    en: paddle (mendayung = to paddle)
-  - word: tekuk
-    pos: verb
-    ar_eg: اثني (menekuk = يثني)
-    ar: اثنِ (menekuk = يثني)
-    en: bend (menekuk = to bend)
-  - word: jatuh
-    pos: verb
-    ar_eg: يقع
-    ar: يسقط
-    en: to fall
-  - word: bawa
-    pos: verb
-    ar_eg: خد معاك (membawa = يجيب / ياخد معاه)
-    ar: احمل معك (membawa = يحمل)
-    en: bring, take (membawa = to carry)
-  - word: ajari
-    pos: verb
-    ar_eg: علّم (حد)
-    ar: علِّم
-    en: teach (someone)
+    ar_eg: ارفع (mengangkat = يرفع)
+    ar: ارفع (mengangkat = يرفع)
+    en: lift, raise (mengangkat = to lift)
+  - word: tarik napas
+    pos: phrase
+    ar_eg: خد نفس
+    ar: خذ نفسًا (شهيق)
+    en: breathe in
+  - word: buang napas
+    pos: phrase
+    ar_eg: طلّع النفس
+    ar: أخرِج النفس (زفير)
+    en: breathe out
 review:
   status: draft
   verified: false

@@ -127,74 +127,31 @@ exercises:
     words: [seberang, ujung, sebelah, antara, belakang]
   - id: e02
     type: multiple_choice
-    question: Di jalan saya ada ___ masjid.
-    options: ["seorang", "sebuah", "seekor"]
-    answer: 1
-    explain:
-      ar_eg: الجامع مبنى، يبقى buah.
-      ar: المسجد مبنى فيُعدّ بـ buah.
-      en: A mosque is a building, so buah.
-    words: [sebuah]
-  - id: e03
-    type: multiple_choice
     question: Di depan pura ada ___ anjing.
-    options: ["seekor", "sebuah", "seorang"]
+    options: [seekor, sebuah, seorang]
     answer: 0
     explain:
       ar_eg: الكلب حيوان، يبقى ekor.
       ar: الكلب حيوان فيُعدّ بـ ekor.
       en: A dog is an animal, so ekor.
     words: [seekor, anjing, pura]
-  - id: e04
+  - id: e03
     type: listen
     text: Apotek itu di seberang warung.
-    options: ["Apotek itu di belakang warung.", "Apotek itu di sebelah warung.", "Apotek itu di seberang warung."]
+    options: [Apotek itu di belakang warung., Apotek itu di sebelah warung., Apotek itu di seberang warung.]
     answer: 2
     words: [seberang]
-  - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الوارونج على يمينه الجامع وعلى شماله الصيدلية. أنهي جملة صح؟
-      ar: المطعم الصغير بين المسجد عن يمينه والصيدلية عن يساره. أيّ جملة صحيحة؟
-      en: The warung has the mosque on one side and the pharmacy on the other. Which sentence is right?
-    options: ["Warungnya di ujung gang.", "Warungnya di belakang masjid.", "Warungnya di antara masjid dan apotek."]
-    answer: 2
-    words: [antara]
-  - id: e06
+  - id: e04
     type: fill_blank
     sentence: Rumah saya di ___ gang, rumah yang terakhir.
     meaning:
       ar_eg: بيتي في آخر الحارة، آخر بيت.
       ar: بيتي في آخر الزقاق، البيت الأخير.
       en: My house is at the end of the alley, the last house.
-    options: ["antara", "seberang", "ujung"]
+    options: [antara, seberang, ujung]
     answers: [ujung]
     words: [ujung, gang]
-  - id: e07
-    type: fill_blank
-    sentence: Di kos saya ada tiga ___ mahasiswa.
-    meaning:
-      ar_eg: في السكن بتاعي فيه تلات طلبة.
-      ar: في سكني ثلاثة طلاب.
-      en: There are three students in my boarding house.
-    options: ["buah", "ekor", "orang"]
-    answers: [orang]
-    explain:
-      ar_eg: orang للناس بس.
-      ar: orang للبشر وحدهم.
-      en: orang is for people.
-    words: [orang]
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: فيه صيدلية جنب الوارونج.
-      ar: توجد صيدلية بجانب المطعم الصغير.
-      en: There's a pharmacy next to the warung.
-    answer: Ada sebuah apotek di sebelah warung.
-    alternatives: ["Di sebelah warung ada sebuah apotek."]
-    distractors: [seekor, seberang]
-    words: [sebuah, sebelah]
-  - id: e09
+  - id: e05
     type: build_sentence
     source:
       ar_eg: جاري عنده قطتين.
@@ -203,31 +160,7 @@ exercises:
     answer: Tetangga saya punya dua ekor kucing.
     distractors: [orang, buah]
     words: [tetangga, ekor]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الجامع قصاد السكن بتاعي.
-      ar: المسجد مقابل سكني.
-      en: The mosque is across from my boarding house.
-    answers:
-      - Masjidnya di seberang kos saya.
-      - Masjidnya di seberang kos saya
-      - Masjid itu di seberang kos saya.
-      - Masjid itu di seberang kos saya
-      - Masjid di seberang kos saya.
-      - Masjidnya di seberang kosku.
-    words: [seberang, kos]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: Anak-anak bermain di taman di ujung jalan.
-    answers_meaning:
-      ar_eg: ["العيال بيلعبوا في الجنينة اللي في آخر الشارع.", "الأطفال بيلعبوا في الجنينة في آخر الشارع"]
-      ar: ["الأطفال يلعبون في الحديقة في آخر الشارع.", "يلعب الأطفال في الحديقة التي في نهاية الشارع"]
-      en: ["The children are playing in the park at the end of the street.", "Children play in the park at the end of the road"]
-    words: [ujung, taman]
-  - id: e12
+  - id: e06
     type: dictation
     text: Ada sebuah warung di sebelah masjid.
     meaning:
@@ -235,7 +168,7 @@ exercises:
       ar: يوجد مطعم صغير بجانب المسجد.
       en: There's a warung next to the mosque.
     words: [sebuah, sebelah]
-  - id: e13
+  - id: e07
     type: speaking
     text: Kos saya di antara warung dan apotek.
     meaning:
@@ -292,11 +225,6 @@ new_words:
     ar_eg: حارة، زُقاق
     ar: زقاق
     en: alley, lane
-  - word: pura
-    pos: noun
-    ar_eg: معبد هندوسي بالي
-    ar: معبد هندوسي بالي
-    en: Balinese Hindu temple
   - word: tetangga
     pos: noun
     ar_eg: جار
