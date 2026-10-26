@@ -1,0 +1,196 @@
+schema: kabar.lesson/v1
+id: bipa5.u03.l03
+language: id
+title: Privasi data
+can_do:
+  ar_eg: تشرح خطر من أخطار التكنولوجيا، زي تسريب البيانات، وتقول تتحمي منه إزاي.
+  ar: أن تشرح خطرًا تقنيًّا كتسرّب البيانات وكيف يُتّقى.
+  en: Explain a technology risk such as a data leak, and how to protect yourself.
+slides:
+  - title: Menjelaskan risiko
+    body:
+      ar_eg: |
+        عشان تشرح خطر بالترتيب: الخطر، السبب، النتيجة، والحل.
+        - Risikonya adalah … = الخطر هو …
+        - Hal ini terjadi karena … = ده بيحصل عشان …
+        - Akibatnya, … = والنتيجة …
+        - Untuk mencegahnya, kita perlu … = وعشان نمنعه، لازم …
+        إندونيسيا عملت قانون حماية البيانات الشخصية سنة 2022 بعد تسريبات كبيرة.
+      ar: |
+        لتشرح خطرًا بترتيب: الخطر، فالسبب، فالنتيجة، فالحلّ.
+        - Risikonya adalah … = الخطر هو …
+        - Hal ini terjadi karena … = يحدث ذلك لأنّ …
+        - Akibatnya, … = ونتيجةً لذلك …
+        - Untuk mencegahnya, kita perlu … = ولمنعه نحتاج إلى …
+        وقد أصدرت إندونيسيا قانون حماية البيانات الشخصية سنة 2022 بعد تسرّبات كبيرة.
+      en: |
+        To explain a risk in order (risk, cause, result, remedy):
+        - Risikonya adalah … = The risk is …
+        - Hal ini terjadi karena … = This happens because …
+        - Akibatnya, … = As a result, …
+        - Untuk mencegahnya, kita perlu … = To prevent it, we need to …
+        Indonesia passed its Personal Data Protection Law in 2022 after major leaks.
+    examples:
+      - text: Akibatnya, data jutaan pengguna bocor ke internet.
+        ar_eg: والنتيجة، بيانات ملايين المستخدمين اتسربت على النت.
+        ar: ونتيجةً لذلك تسرّبت بيانات ملايين المستخدمين إلى الإنترنت.
+        en: As a result, millions of users' data leaked onto the internet.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: risiko
+        ar_eg: خطر / مخاطرة
+        ar: خطر، مخاطرة
+        en: risk
+      - text: bocor
+        ar_eg: يتسرّب
+        ar: يتسرّب
+        en: to leak
+      - text: akibatnya
+        ar_eg: والنتيجة
+        ar: ونتيجةً لذلك
+        en: as a result
+      - text: mencegah
+        ar_eg: يمنع
+        ar: يمنع، يقي
+        en: to prevent
+      - text: kata sandi
+        ar_eg: باسورد / كلمة سر
+        ar: كلمة المرور
+        en: password
+    words: [risiko, bocor, akibatnya, mencegah, kata sandi]
+  - id: e02
+    type: multiple_choice
+    question: "Data pelanggan ___ karena sistemnya lemah."
+    question_meaning:
+      ar_eg: كمّل الجملة. «بيانات العملا … عشان النظام ضعيف.»
+      ar: أكمل الجملة. «… بيانات العملاء لأنّ النظام ضعيف.»
+      en: Complete the sentence. "Customer data … because the system is weak."
+    options: [mencegah, bocor, risiko]
+    answer: 1
+    words: [bocor]
+  - id: e03
+    type: fill_blank
+    sentence: Sistemnya diretas. ___, data pengguna dijual di internet.
+    meaning:
+      ar_eg: النظام اتهكر. والنتيجة، بيانات المستخدمين اتباعت على النت.
+      ar: اختُرق النظام، ونتيجةً لذلك بيعت بيانات المستخدمين على الإنترنت.
+      en: The system was hacked. As a result, user data was sold online.
+    options: [Akibatnya, Meskipun, Selain itu]
+    answers: [Akibatnya]
+    words: [akibatnya]
+  - id: e04
+    type: listen
+    text: Untuk mencegah risiko itu, ganti kata sandi Anda secara rutin.
+    question:
+      ar_eg: النصيحة إيه؟
+      ar: ما النصيحة؟
+      en: What is the advice?
+    options:
+      - امسح التطبيق.
+      - ماتستخدمش النت خالص.
+      - غيّر الباسورد بتاعك بانتظام.
+    answer: 2
+    words: [mencegah, risiko, kata sandi]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الخطر هو إن بياناتنا تتسرّب.
+      ar: الخطر هو أن تتسرّب بياناتنا.
+      en: The risk is that our data leaks.
+    answer: Risikonya adalah data kita bocor.
+    distractors: [mencegah, akibatnya]
+    words: [risiko, bocor]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: عشان نمنع التسريب، لازم نستخدم باسورد قوي.
+      ar: لمنع التسرّب، علينا أن نستعمل كلمة مرور قويّة.
+      en: To prevent leaks, we need to use a strong password.
+    answers:
+      - Untuk mencegah kebocoran, kita perlu memakai kata sandi yang kuat.
+      - Untuk mencegah kebocoran, kita harus memakai kata sandi yang kuat.
+      - Untuk mencegah kebocoran, kita perlu menggunakan kata sandi yang kuat.
+      - Untuk mencegah kebocoran data, kita perlu memakai kata sandi yang kuat.
+    words: [mencegah, kata sandi]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه الترتيب الطبيعي لشرح خطر؟
+      ar: ما الترتيب المعتاد لشرح خطر؟
+      en: What is the usual order for explaining a risk?
+    options:
+      - risiko → karena → akibatnya → mencegah
+      - mencegah → risiko → karena → akibatnya
+      - akibatnya → mencegah → karena → risiko
+    answer: 0
+    words: [risiko, akibatnya]
+  - id: e08
+    type: speaking
+    text: Akibatnya, kita harus lebih hati-hati dengan data pribadi.
+    meaning:
+      ar_eg: والنتيجة، لازم ناخد بالنا أكتر من بياناتنا الشخصية.
+      ar: ونتيجةً لذلك يجب أن نكون أكثر حذرًا مع بياناتنا الشخصية.
+      en: As a result, we must be more careful with personal data.
+    words: [akibatnya]
+  - id: e09
+    type: dictation
+    text: Kata sandi yang lemah membuat data mudah bocor.
+    meaning:
+      ar_eg: الباسورد الضعيف بيخلّي البيانات تتسرّب بسهولة.
+      ar: كلمة المرور الضعيفة تجعل تسرّب البيانات سهلًا.
+      en: A weak password makes data leak easily.
+    words: [kata sandi, bocor]
+dialogue:
+  title: Pesan aneh di ponsel
+  lines:
+    - speaker: Rina
+      text: Mohamed, ada pesan aneh yang minta kode OTP saya.
+      ar_eg: يا محمد، فيه رسالة غريبة بتطلب كود الـ OTP بتاعي.
+      ar: يا محمد، وصلتني رسالة غريبة تطلب رمز OTP الخاص بي.
+      en: Mohamed, there's a weird message asking for my OTP code.
+    - speaker: Mohamed
+      text: Jangan dikirim! Risikonya, akunmu bisa diambil orang.
+      ar_eg: ماتبعتيهوش! الخطر إن حد ياخد حسابك.
+      ar: لا ترسليه! فالخطر أن يستولي أحد على حسابك.
+      en: Don't send it! The risk is someone could take over your account.
+    - speaker: Rina
+      text: Wah, untung kamu bilang. Bagaimana cara mencegahnya?
+      ar_eg: يا خبر، كويس إنك قلتلي. نمنع ده إزاي؟
+      ar: يا للهول، حسنًا أنك أخبرتني. كيف نمنع ذلك؟
+      en: Wow, lucky you told me. How do I prevent it?
+    - speaker: Mohamed
+      text: Ganti kata sandimu dan jangan pernah membagikan kode itu.
+      ar_eg: غيّري الباسورد بتاعك وماتديش الكود ده لحد أبدًا.
+      ar: غيّري كلمة مرورك ولا تشاركي ذلك الرمز أبدًا.
+      en: Change your password and never share that code.
+new_words:
+  - word: risiko
+    pos: noun
+    ar_eg: خطر / مخاطرة
+    ar: خطر، مخاطرة
+    en: risk
+  - word: bocor
+    pos: verb
+    ar_eg: يتسرّب
+    ar: يتسرّب
+    en: to leak
+  - word: akibatnya
+    ar_eg: والنتيجة
+    ar: ونتيجةً لذلك
+    en: as a result
+  - word: mencegah
+    pos: verb
+    ar_eg: يمنع
+    ar: يمنع، يقي
+    en: to prevent
+  - word: kata sandi
+    pos: noun
+    ar_eg: باسورد / كلمة سر
+    ar: كلمة المرور
+    en: password
+review:
+  status: draft
+  verified: false

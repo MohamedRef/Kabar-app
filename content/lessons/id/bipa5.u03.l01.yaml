@@ -1,0 +1,228 @@
+schema: kabar.lesson/v1
+id: bipa5.u03.l01
+language: id
+title: Nominalisasi
+can_do:
+  ar_eg: تحوّل الفعل والصفة لاسم عشان تكتب بأسلوب رسمي.
+  ar: أن تحوّل الفعل والصفة إلى اسم لتكتب بأسلوب رسمي.
+  en: Turn verbs and adjectives into nouns for a formal style.
+slides:
+  - title: Dari kata kerja ke kata benda
+    grammar: id.nominalization
+    body:
+      ar_eg: |
+        المقالات بتحب الأسماء، زي المصدر في العربي («بناء» بدل «بنى»):
+        - meN- → peN-…-an (العملية): membangun → pembangunan، menggunakan → penggunaan
+        - ber- → per-…-an: berubah → perubahan
+        - Pemerintah membangun jaringan internet. → Pembangunan jaringan internet …
+        وماتحطش dari بين الاسمين: pembangunan jalan، مش pembangunan dari jalan.
+      ar: |
+        تؤثر المقالات الأسماء، كما نستعمل المصدر في العربية («بناء» بدل «بنى»):
+        - meN- → peN-…-an للعملية: membangun → pembangunan، menggunakan → penggunaan
+        - ber- → per-…-an: berubah → perubahan
+        - Pemerintah membangun jaringan internet. → Pembangunan jaringan internet …
+        ولا تضع dari بين الاسمين: pembangunan jalan، لا pembangunan dari jalan.
+      en: |
+        Articles prefer nouns, like the Arabic masdar:
+        - meN- → peN-…-an (the process): membangun → pembangunan, menggunakan → penggunaan
+        - ber- → per-…-an: berubah → perubahan
+        - Pemerintah membangun jaringan internet. → Pembangunan jaringan internet …
+        No dari between the two nouns: pembangunan jalan, not pembangunan dari jalan.
+    examples:
+      - text: Penggunaan ponsel di Indonesia naik setiap tahun.
+        ar_eg: استخدام الموبايل في إندونيسيا بيزيد كل سنة.
+        ar: يزداد استخدام الهواتف في إندونيسيا كل عام.
+        en: Mobile phone use in Indonesia rises every year.
+  - title: Dari kata sifat ke kata benda
+    grammar: id.nominalization
+    body:
+      ar_eg: |
+        والصفة بتبقى فكرة مجردة بـ ke-…-an:
+        - mudah → kemudahan (السهولة)، aman → keamanan (الأمان)
+        أو صفة + -nya قبل الاسم، وده حلو في العناوين:
+        - tingginya harga = ارتفاع الأسعار، lambatnya internet = بطء النت
+      ar: |
+        وتصير الصفة معنى مجرّدًا بـ ke-…-an:
+        - mudah → kemudahan (السهولة)، aman → keamanan (الأمان)
+        أو صفة + -nya قبل الاسم، وهي شائعة في العناوين:
+        - tingginya harga = ارتفاع الأسعار، lambatnya internet = بطء الإنترنت
+      en: |
+        Adjectives become abstract nouns with ke-…-an:
+        - mudah → kemudahan (ease), aman → keamanan (security)
+        Or adjective + -nya before the noun, common in headlines:
+        - tingginya harga = the high prices, lambatnya internet = the slow internet
+    examples:
+      - text: Kemudahan belanja daring membuat toko kecil tertekan.
+        ar_eg: سهولة الشرا أونلاين بتضغط على المحلات الصغيرة.
+        ar: تضغط سهولة التسوّق الإلكتروني على المتاجر الصغيرة.
+        en: The ease of online shopping puts small shops under pressure.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pembangunan
+        ar_eg: بناء / تنمية
+        ar: بناء، تنمية
+        en: construction, development
+      - text: penggunaan
+        ar_eg: استخدام
+        ar: استخدام
+        en: use, usage
+      - text: perubahan
+        ar_eg: تغيّر
+        ar: تغيّر
+        en: change
+      - text: kemudahan
+        ar_eg: سهولة
+        ar: سهولة
+        en: ease, convenience
+      - text: keamanan
+        ar_eg: أمان
+        ar: أمن، أمان
+        en: security, safety
+    words: [pembangunan, penggunaan, perubahan, kemudahan, keamanan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه الاسم من menggunakan؟
+      ar: ما الاسم المشتقّ من menggunakan؟
+      en: What is the noun from menggunakan?
+    options: [pengguna, penggunaan, kegunaan]
+    answer: 1
+    explain:
+      ar_eg: peN-…-an = العملية (الاستخدام). pengguna = المستخدم نفسه.
+      ar: peN-…-an للعملية (الاستخدام)، أما pengguna فهو المستخدِم.
+      en: peN-…-an is the process (use); pengguna is the user.
+    words: [penggunaan]
+  - id: e03
+    type: fill_blank
+    sentence: ___ jaringan internet di desa sudah selesai.
+    meaning:
+      ar_eg: بناء شبكة النت في القرية خلص.
+      ar: اكتمل بناء شبكة الإنترنت في القرية.
+      en: The building of the internet network in the village is finished.
+    options: [Pembangunan, Membangun, Bangunan]
+    answers: [Pembangunan]
+    explain:
+      ar_eg: الفاعل هنا العملية نفسها، فبنستخدم peN-…-an.
+      ar: المبتدأ هنا العملية نفسها، فنستعمل peN-…-an.
+      en: The subject is the process itself, so peN-…-an.
+    words: [pembangunan]
+  - id: e04
+    type: multiple_choice
+    question: "___ data pribadi sangat penting di era digital."
+    question_meaning:
+      ar_eg: كمّل الجملة. «… البيانات الشخصية مهم جدًا في العصر الرقمي.»
+      ar: أكمل الجملة. «… البيانات الشخصية مهمّ جدًّا في العصر الرقمي.»
+      en: Complete the sentence. "The … of personal data is very important in the digital age."
+    options: [Aman, Mengamankan, Keamanan]
+    answer: 2
+    words: [keamanan]
+  - id: e05
+    type: listen
+    text: Perubahan teknologi sangat cepat di Indonesia.
+    options:
+      - Perubahan teknologi sangat cepat di Indonesia.
+      - Pembangunan teknologi sangat cepat di Indonesia.
+      - Penggunaan teknologi sangat lambat di Indonesia.
+    answer: 0
+    words: [perubahan]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: سهولة الدفع الرقمي بتساعد الناس.
+      ar: تساعد سهولة الدفع الرقمي الناس.
+      en: The convenience of digital payment helps people.
+    answer: Kemudahan pembayaran digital membantu masyarakat.
+    distractors: [dari, mudah]
+    words: [kemudahan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: استخدام التطبيقات بيغيّر طريقة شرانا.
+      ar: يغيّر استخدام التطبيقات طريقة تسوّقنا.
+      en: The use of apps is changing the way we shop.
+    answers:
+      - Penggunaan aplikasi mengubah cara kita berbelanja.
+      - Penggunaan aplikasi mengubah cara kami berbelanja.
+      - Penggunaan aplikasi mengubah cara kita belanja.
+      - Penggunaan aplikasi sedang mengubah cara kita berbelanja.
+    explain:
+      ar_eg: اسم في الأول (Penggunaan aplikasi) من غير dari.
+      ar: اسم في المطلع (Penggunaan aplikasi) بلا dari.
+      en: A noun phrase first (Penggunaan aplikasi), with no dari.
+    words: [penggunaan, perubahan]
+  - id: e08
+    type: speaking
+    text: Keamanan dan kemudahan sama-sama penting bagi pengguna.
+    meaning:
+      ar_eg: الأمان والسهولة الاتنين مهمين للمستخدم.
+      ar: الأمان والسهولة كلاهما مهمّ للمستخدم.
+      en: Security and convenience both matter to users.
+    words: [keamanan, kemudahan]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي عنوان مكتوب بأسلوب رسمي صح؟
+      ar: أيّ عنوان مكتوب بأسلوب رسمي صحيح؟
+      en: Which headline is correctly written in formal style?
+    options:
+      - Pembangunan dari jalan tol di Samarinda
+      - Pembangunan jalan tol di Samarinda
+      - Membangun dari jalan tol di Samarinda
+    answer: 1
+    words: [pembangunan]
+dialogue:
+  title: Di tepi Sungai Mahakam
+  lines:
+    - speaker: Mohamed
+      text: Mas Rizal, kenapa koran selalu menulis pembangunan, bukan membangun?
+      ar_eg: يا رزال، ليه الجرايد دايمًا بتكتب pembangunan مش membangun؟
+      ar: يا رزال، لماذا تكتب الصحف pembangunan دائمًا لا membangun؟
+      en: Mas Rizal, why do newspapers always write pembangunan, not membangun?
+    - speaker: Mas Rizal
+      text: Karena bahasa resmi suka kata benda. Seperti masdar dalam bahasa Arab, kan?
+      ar_eg: عشان اللغة الرسمية بتحب الأسماء. زي المصدر في العربي، مش كده؟
+      ar: لأنّ اللغة الرسمية تؤثر الأسماء، كالمصدر في العربية، أليس كذلك؟
+      en: Because formal language loves nouns. Like the masdar in Arabic, right?
+    - speaker: Mohamed
+      text: Betul! Jadi penggunaan itu seperti istikhdam dalam bahasa Arab.
+      ar_eg: بالظبط! يعني penggunaan زي «استخدام» في العربي.
+      ar: تمامًا! فـ penggunaan مثل «استخدام» في العربية.
+      en: Exactly! So penggunaan is like istikhdam in Arabic.
+    - speaker: Mas Rizal
+      text: Ya. Dan keamanan data itu topik besar di sini sekarang.
+      ar_eg: أيوه. وأمان البيانات موضوع كبير هنا دلوقتي.
+      ar: نعم. وأمن البيانات موضوع كبير هنا الآن.
+      en: Yes. And data security is a big topic here now.
+new_words:
+  - word: pembangunan
+    pos: noun
+    ar_eg: بناء / تنمية
+    ar: بناء، تنمية
+    en: construction, development
+  - word: penggunaan
+    pos: noun
+    ar_eg: استخدام
+    ar: استخدام
+    en: use, usage
+  - word: perubahan
+    pos: noun
+    ar_eg: تغيّر
+    ar: تغيّر
+    en: change
+  - word: kemudahan
+    pos: noun
+    ar_eg: سهولة
+    ar: سهولة
+    en: ease, convenience
+  - word: keamanan
+    pos: noun
+    arabic: أمان
+    ar_eg: أمان
+    ar: أمن، أمان
+    en: security, safety
+review:
+  status: draft
+  verified: false
