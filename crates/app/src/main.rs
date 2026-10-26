@@ -101,6 +101,11 @@ impl Screen {
     /// thumb reach. Kak Nur, the journal, Watch & listen, Chat and Settings are
     /// linked from Today there (the journal from Kak Nur too); Studio and Pen
     /// Lab from Settings.
+    /// Pen tools: shown on a tablet only (`Ui::tablet`).
+    pub fn pen_only(self) -> bool {
+        matches!(self, Self::Studio | Self::PenLab)
+    }
+
     fn secondary(self) -> bool {
         matches!(
             self,
@@ -123,6 +128,10 @@ impl Screen {
 pub struct Ui {
     pub settings: Signal<Settings>,
     pub width: Signal<WidthClass>,
+    /// An Android tablet (smallest screen side ≥ 600 dp): the only place
+    /// the pen tools (Studio, Pen Lab) apply while phone and Mac pen work
+    /// is deferred (SPEC §23). Fixed per device, unlike `width`.
+    pub tablet: Signal<bool>,
     pub screen: Signal<Screen>,
     /// The lesson the player shows (curriculum lesson id).
     pub lesson: Signal<Option<String>>,
@@ -256,6 +265,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let ui = use_context_provider(|| Ui {
         settings: Signal::new(initial),
         width: Signal::new(WidthClass::Expanded),
+        tablet: Signal::new(false),
         screen: Signal::new(match (&open_lesson, open_screen) {
             (Some(_), _) => Screen::Lesson,
             (None, Some(s)) => s,
@@ -273,7 +283,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let audio_dir = path.parent().map(|d| d.join("audio")).unwrap_or_else(|| "audio".into());
     use_context_provider(|| audio::AudioCache::new(audio_dir, link.clone()));
     let coach = use_context_provider(|| Coach::load(&db));
-    use_width_tracking(ui.width);
+    use_width_tracking(ui.width, ui.tablet);
     use_cloud(&db, path, ui, link);
     coach::use_clock(coach, db.clone());
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
@@ -407,20 +417,24 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
 
 /// Mirrors the window width into `width`, so layout follows the window,
 /// not the device (split screen, DeX and Mac windows all just work).
-fn use_width_tracking(mut width: Signal<WidthClass>) {
+fn use_width_tracking(mut width: Signal<WidthClass>, mut tablet: Signal<bool>) {
     use_future(move || async move {
         let mut eval = document::eval(
             r#"
-            const send = () => dioxus.send(window.innerWidth);
+            const send = () => dioxus.send([window.innerWidth, Math.min(screen.width, screen.height)]);
             window.addEventListener("resize", send);
             send();
             await new Promise(() => {});
             "#,
         );
-        while let Ok(w) = eval.recv::<f64>().await {
+        while let Ok((w, smallest)) = eval.recv::<(f64, f64)>().await {
             let class = WidthClass::from_width(w);
             if *width.peek() != class {
                 width.set(class);
+            }
+            let is_tablet = cfg!(target_os = "android") && smallest >= 600.0;
+            if *tablet.peek() != is_tablet {
+                tablet.set(is_tablet);
             }
         }
     });
@@ -453,6 +467,14 @@ fn use_share_inbox(ui: Ui, inbox: reader::Inbox) {
 fn Shell() -> Element {
     let ui = use_context::<Ui>();
     let current = *ui.screen.read();
+    // A new screen starts at its top, not at the last screen's scroll
+    // position. Sent during render, so it lands before a screen's own
+    // scroll (the Journey Map centres the current lesson in an effect).
+    let last = use_hook(|| std::rc::Rc::new(std::cell::Cell::new(current)));
+    if last.replace(current) != current {
+        document::eval(r#"window.scrollTo({ top: 0, left: 0, behavior: "instant" });"#);
+    }
+    let tablet = *ui.tablet.read();
     let items = [
         Screen::Today,
         Screen::Journey,
@@ -474,7 +496,7 @@ fn Shell() -> Element {
         div { class: "shell",
             nav { class: "nav", aria_label: "Kabar",
                 div { class: "brand latin", "Kabar" }
-                for item in items {
+                for item in items.into_iter().filter(|s| tablet || !s.pen_only()) {
                     button {
                         key: "{item:?}",
                         class: if item.secondary() { "nav-item secondary" } else { "nav-item" },

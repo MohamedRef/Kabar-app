@@ -96,16 +96,24 @@ pub fn skill(s: Skill) -> Msg {
     }
 }
 
-/// "15 دقيقة", "5 دقايق", "15 min".
+/// "دقيقتين", "5 دقايق", "15 دقيقة", "15 min".
 pub fn minutes(ui: &Ui, n: u32) -> String {
-    let lang = ui.lang();
-    let unit = match (lang, n) {
-        (UiLanguage::En, _) => "min",
-        (UiLanguage::ArEg, 3..=10) => "دقايق",
-        (UiLanguage::Ar, 3..=10) => "دقائق",
-        _ => "دقيقة",
-    };
-    format!("{} {unit}", ui.num(n))
+    minutes_text(ui.lang(), n, &ui.num(n))
+}
+
+/// Arabic number agreement: 1 and 2 are said by the noun alone (dual for 2),
+/// 3–10 take the plural, everything else the singular. `num` is `n` in the
+/// learner's digits.
+pub fn minutes_text(lang: UiLanguage, n: u32, num: &str) -> String {
+    match (lang, n) {
+        (UiLanguage::En, _) => format!("{num} min"),
+        (_, 1) => "دقيقة".into(),
+        (UiLanguage::ArEg, 2) => "دقيقتين".into(),
+        (UiLanguage::Ar, 2) => "دقيقتان".into(),
+        (UiLanguage::ArEg, 3..=10) => format!("{num} دقايق"),
+        (UiLanguage::Ar, 3..=10) => format!("{num} دقائق"),
+        _ => format!("{num} دقيقة"),
+    }
 }
 
 /// A short date: "26/10", or "26/10/2025" outside the current year.
@@ -223,6 +231,18 @@ pub fn plan_voice_args(ui: &Ui, items: &[PlanItem]) -> (String, String) {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn minutes_agree_with_the_number() {
+        let eg = |n: u32| minutes_text(UiLanguage::ArEg, n, &n.to_string());
+        assert_eq!(eg(1), "دقيقة");
+        assert_eq!(eg(2), "دقيقتين");
+        assert_eq!(eg(5), "5 دقايق");
+        assert_eq!(eg(15), "15 دقيقة");
+        assert_eq!(minutes_text(UiLanguage::Ar, 2, "٢"), "دقيقتان");
+        assert_eq!(minutes_text(UiLanguage::Ar, 7, "٧"), "٧ دقائق");
+        assert_eq!(minutes_text(UiLanguage::En, 2, "2"), "2 min");
+    }
 
     #[test]
     fn level_names() {
