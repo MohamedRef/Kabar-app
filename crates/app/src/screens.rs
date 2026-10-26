@@ -172,7 +172,7 @@ pub fn SettingsScreen() -> Element {
                     },
                     "{ui.t(Msg::SettingsShowWelcome)}"
                 }
-                for screen in [Screen::Studio, Screen::PenLab] {
+                for screen in [Screen::Devices, Screen::Studio, Screen::PenLab] {
                     button {
                         key: "{screen:?}",
                         onclick: move |_| {

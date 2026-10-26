@@ -158,9 +158,13 @@ pub enum SyncErrorCode {
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(tag = "type", rename_all = "snake_case")]
 pub enum ServerMsg {
-    /// A page of the account's log, oldest first.
+    /// A page of the account's log, oldest first. Live updates use the same
+    /// message.
     Ops {
         ops: Vec<SeqOp>,
+        /// The hub stopped sending before the head (one hello sends at most a
+        /// few thousand ops): send [`ClientMsg::Hello`] again with the last
+        /// `seq` applied. No [`ServerMsg::CaughtUp`] follows this page.
         more: bool,
     },
     /// Everything up to `head_seq` has been sent; live updates follow.
