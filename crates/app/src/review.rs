@@ -12,10 +12,12 @@ use kabar_core::review::{
     seed_words, wall_rating,
 };
 use kabar_core::srs::{Pile, Scheduler};
+use kabar_protocol::coach::ActivityKind;
 use kabar_protocol::lesson::Localized;
 use kabar_protocol::srs::{Card, CardKind, MeaningShift, Rating, ReviewMode, StudyLanguage};
 use serde::Deserialize;
 
+use crate::coach::Coach;
 use crate::i18n::Msg;
 use crate::{Db, Ui};
 
@@ -76,6 +78,7 @@ enum View {
 #[derive(Clone)]
 struct Engine {
     db: Db,
+    coach: Coach,
     sched: Rc<Scheduler>,
     deck: Signal<Deck>,
     session: Signal<Option<Session>>,
@@ -198,7 +201,12 @@ impl Engine {
             view.set(View::Home);
             return;
         }
-        summary.set(Some(done.summary(now_ms())));
+        let s = done.summary(now_ms());
+        // Kak Nur counts reviews toward today's goal and the weekly report.
+        let cards = s.answers as u32;
+        let correct = (s.answers - s.again) as u32;
+        self.coach.record(&self.db, ActivityKind::Reviews { cards, correct }, (s.duration_ms / 1000) as u32);
+        summary.set(Some(s));
         view.set(View::Done);
     }
 
@@ -420,8 +428,10 @@ pub fn ReviewScreen() -> Element {
         let (db, sched) = (db.clone(), sched.clone());
         move || load_deck(&db, &sched)
     });
+    let coach = use_context::<Coach>();
     let engine = use_context_provider(|| Engine {
         db: db.clone(),
+        coach,
         sched: sched.clone(),
         deck,
         session: Signal::new(None),

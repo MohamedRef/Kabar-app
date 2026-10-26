@@ -12,11 +12,13 @@ use kabar_core::lesson::{
     Answer, Grade, Player, Step, display_answer, parse_lesson, pick, references, validate,
 };
 use kabar_core::locale::{UiLanguage, eastern_arabic_digits, format_number};
+use kabar_protocol::coach::{ActivityKind, Skill};
 use kabar_protocol::lesson::{
     Dialogue, Direction, Exercise, ExerciseKind, LessonContent, LessonPosition, LessonStep, Localized,
 };
 
 use self::text::{L, lt};
+use crate::coach::Coach;
 use crate::{Db, Ui};
 
 const LESSON_CSS: &str = include_str!("../assets/lesson.css");
@@ -219,6 +221,29 @@ pub fn speak(text: &str, language: &str, slow: bool, audio: Option<&str>, mut mi
     });
 }
 
+/// Tells Kak Nur about the finished lesson: the unit step, the words taught
+/// and how the exercises went (the coach's daily plan and reports read these).
+fn log_activity(coach: Coach, db: &Db, p: &Player) {
+    let lesson = p.lesson();
+    let summary = p.summary();
+    let seconds = (summary.duration_ms / 1000) as u32;
+    let unit_id = lesson.id.rsplit_once('.').map_or(lesson.id.as_str(), |(unit, _)| unit).to_owned();
+    coach.record(db, ActivityKind::LessonStep { unit_id, done: true }, seconds);
+    let words: Vec<String> = lesson.new_words.iter().map(|w| w.word.clone()).collect();
+    if !words.is_empty() {
+        coach.record(db, ActivityKind::NewWords { words }, 0);
+    }
+    if summary.graded > 0 {
+        let practice = ActivityKind::Practice {
+            skill: Skill::Vocabulary,
+            topic: lesson.title.clone(),
+            correct: summary.correct,
+            total: summary.graded,
+        };
+        coach.record(db, practice, 0);
+    }
+}
+
 /// A soft two-note chime for a right answer (synthesized; no sound files).
 /// Silent when sounds are off in Settings.
 fn chime(ui: Ui) {
@@ -317,6 +342,7 @@ fn PlayerView(lesson: LessonContent) -> Element {
     let ui = use_context::<Ui>();
     let db_ctx = use_context::<Db>();
     let db = use_hook(|| CopyValue::new(db_ctx));
+    let coach = use_context::<Coach>();
     let settings = ui.settings.read().clone();
     let lang = settings.ui_language;
 
@@ -366,13 +392,16 @@ fn PlayerView(lesson: LessonContent) -> Element {
             if !*finished.peek() {
                 finished.set(true);
                 let db = db.read();
-                let mut store = db.0.borrow_mut();
-                if let Err(e) = store.record_lesson_event(&p.lesson().id, "completed", &p.completed()) {
-                    eprintln!("kabar: saving the lesson result failed: {e}");
+                {
+                    let mut store = db.0.borrow_mut();
+                    if let Err(e) = store.record_lesson_event(&p.lesson().id, "completed", &p.completed()) {
+                        eprintln!("kabar: saving the lesson result failed: {e}");
+                    }
+                    if let Err(e) = store.clear_position() {
+                        eprintln!("kabar: clearing the lesson position failed: {e}");
+                    }
                 }
-                if let Err(e) = store.clear_position() {
-                    eprintln!("kabar: clearing the lesson position failed: {e}");
-                }
+                log_activity(coach, &db, &p);
             }
         } else {
             save(db, &pos);
