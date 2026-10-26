@@ -2,10 +2,7 @@
 //! guesses what it is, in Indonesian. Picking words and scoring guesses is
 //! deterministic; the guess itself is the `guess_sketch` task.
 
-use kabar_protocol::ai::Task;
 use serde::{Deserialize, Serialize};
-
-use crate::ai::AiOutput;
 
 /// Seconds to draw.
 pub const ROUND_SECONDS: u32 = 60;
@@ -84,53 +81,8 @@ pub const DRAWABLE: &[(&str, &str)] = &[
     ("bola", "ball"),
 ];
 
-/// The model's guess (`prompts/guess_sketch@v1.md`).
-#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
-pub struct SketchGuess {
-    /// One Indonesian lemma in snake_case; `tidak_jelas` when unclear.
-    pub guess_id: String,
-    /// 1–3 other plausible lemmas, never the guess itself.
-    #[serde(default)]
-    pub alternatives: Vec<String>,
-    /// What the model says, in Indonesian, e.g. "Itu kucing!".
-    #[serde(default)]
-    pub say: Option<String>,
-}
-
-pub const UNCLEAR: &str = "tidak_jelas";
-
-fn is_lemma(s: &str) -> bool {
-    !s.is_empty() && s.chars().all(|c| c.is_ascii_lowercase() || c == '_' || c == '-')
-}
-
-impl AiOutput for SketchGuess {
-    const TASK: Task = Task::GuessSketch;
-
-    fn validate(&self) -> Result<(), String> {
-        if !is_lemma(&self.guess_id) {
-            return Err(format!(
-                "guess_id must be one lowercase Indonesian lemma in snake_case, got `{}`",
-                self.guess_id
-            ));
-        }
-        if self.alternatives.len() > 3 {
-            return Err("give at most 3 alternatives".into());
-        }
-        for a in &self.alternatives {
-            if !is_lemma(a) {
-                return Err(format!("alternative `{a}` must be a lowercase lemma in snake_case"));
-            }
-            if *a == self.guess_id {
-                return Err("alternatives must not repeat guess_id".into());
-            }
-        }
-        if self.guess_id == UNCLEAR && !self.alternatives.is_empty() {
-            return Err("an unclear sketch has no alternatives".into());
-        }
-        Ok(())
-    }
-}
+/// The model's guess (`prompts/guess_sketch@v1.md`); `tidak_jelas` when unclear.
+pub use crate::ai::tasks::{GuessSketch as SketchGuess, UNCLEAR_SKETCH as UNCLEAR};
 
 /// How the round went.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
@@ -184,13 +136,10 @@ pub fn next_word(known: &[&str], recent: &[&str], seed: u64) -> &'static (&'stat
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::ai::AiOutput;
 
     fn guess(id: &str, alts: &[&str]) -> SketchGuess {
-        SketchGuess {
-            guess_id: id.into(),
-            alternatives: alts.iter().map(|s| s.to_string()).collect(),
-            say: None,
-        }
+        SketchGuess { guess_id: id.into(), alternatives: alts.iter().map(|s| s.to_string()).collect() }
     }
 
     #[test]
@@ -229,6 +178,6 @@ mod tests {
         let _ = next_word(&[], &all, 1);
         let lemmas: std::collections::BTreeSet<_> = DRAWABLE.iter().map(|d| d.0).collect();
         assert_eq!(lemmas.len(), DRAWABLE.len());
-        assert!(DRAWABLE.iter().all(|d| is_lemma(d.0)));
+        assert!(DRAWABLE.iter().all(|d| guess(d.0, &[]).validate().is_ok()));
     }
 }

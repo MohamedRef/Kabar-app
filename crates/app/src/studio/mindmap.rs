@@ -58,7 +58,7 @@ pub fn MindMapScreen() -> Element {
                     kind: DocKind::MindMap,
                     notebook: None,
                     title: answer.value.center.clone(),
-                    lang: answer.value.lang.unwrap_or(l2),
+                    lang: l2,
                     order: maps.read().len() as u32,
                     anchor: None,
                     size: None,

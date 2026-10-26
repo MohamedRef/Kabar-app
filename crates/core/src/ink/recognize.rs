@@ -4,33 +4,16 @@
 //! learner's own: requests are always personal (never sent to an engine
 //! that trains on inputs).
 
-use kabar_protocol::ai::Task;
 use kabar_protocol::content::Lang;
 use kabar_protocol::ink::{InkTranscript, TranscriptSource};
-use serde::{Deserialize, Serialize};
 use serde_json::json;
 
 use super::group::StrokeGroup;
-use crate::ai::{AiOutput, AiRequest};
+use crate::ai::AiRequest;
 
-/// The model's transcription (`prompts/read_handwriting@v1.md`).
-#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
-pub struct Handwriting {
-    /// Exactly what is written, misspellings included; empty for scribbles.
-    pub text: String,
-}
-
-impl AiOutput for Handwriting {
-    const TASK: Task = Task::ReadHandwriting;
-
-    fn validate(&self) -> Result<(), String> {
-        if self.text.chars().count() > 2000 {
-            return Err("text is too long for one canvas".into());
-        }
-        Ok(())
-    }
-}
+/// The model's transcription (`prompts/read_handwriting@v1.md`): exactly
+/// what is written, misspellings included; empty for scribbles.
+pub use crate::ai::tasks::ReadHandwriting as Handwriting;
 
 /// `read_handwriting` for a PNG already uploaded as `image_sha256`.
 /// `expected` (dictation) helps reading but must not be copied.
@@ -127,6 +110,5 @@ mod tests {
         ));
         assert!(!should_replace(Some(&typed), TranscriptSource::MlKit, true));
         assert!(should_replace(Some(&typed), TranscriptSource::Typed, false));
-        assert!(Handwriting { text: String::new() }.validate().is_ok());
     }
 }

@@ -2,85 +2,16 @@
 //! writes the words; this validates them and lays them out radially as
 //! notebook items the learner then extends with the pen.
 
-use std::collections::BTreeSet;
 use std::f32::consts::TAU;
 
-use kabar_protocol::ai::Task;
 use kabar_protocol::content::Lang;
 use kabar_protocol::ink::{ItemKind, NotebookItem};
-use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
 
-use crate::ai::{AiOutput, AiRequest};
-
-#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
-pub struct MapWord {
-    pub word: String,
-    pub gloss_en: String,
-    /// Short MSA gloss.
-    pub gloss_ar: String,
-    /// Javanese only: ngoko, krama or krama_inggil, where it matters.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub level: Option<String>,
-}
-
-#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
-pub struct Branch {
-    pub label: String,
-    pub words: Vec<MapWord>,
-}
+use crate::ai::AiRequest;
 
 /// The model's map (`prompts/mind_map@v1.md`), shaped like the golden set.
-#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
-pub struct MindMap {
-    pub center: String,
-    pub branches: Vec<Branch>,
-    /// `id` or `jv`; filled from the request when the model leaves it out.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub lang: Option<Lang>,
-}
-
-impl AiOutput for MindMap {
-    const TASK: Task = Task::MindMap;
-
-    fn validate(&self) -> Result<(), String> {
-        if self.center.trim().is_empty() {
-            return Err("center must name the topic".into());
-        }
-        if !(3..=6).contains(&self.branches.len()) {
-            return Err(format!("give 3-6 branches, got {}", self.branches.len()));
-        }
-        let mut seen = BTreeSet::new();
-        for b in &self.branches {
-            if b.label.trim().is_empty() {
-                return Err("every branch needs a label".into());
-            }
-            if !(2..=6).contains(&b.words.len()) {
-                return Err(format!("branch `{}` needs 2-6 words, got {}", b.label, b.words.len()));
-            }
-            for w in &b.words {
-                if w.word.trim().is_empty() || w.gloss_en.trim().is_empty() || w.gloss_ar.trim().is_empty() {
-                    return Err(format!("`{}`: word, gloss_en and gloss_ar are required", w.word));
-                }
-                if !w.gloss_ar.chars().any(|c| ('\u{0600}'..='\u{06FF}').contains(&c)) {
-                    return Err(format!("`{}`: gloss_ar must be in Arabic script", w.word));
-                }
-                if !seen.insert(w.word.trim().to_lowercase()) {
-                    return Err(format!("`{}` appears twice; every word once", w.word));
-                }
-            }
-        }
-        Ok(())
-    }
-
-    /// Javanese maps stay unverified until reviewed.
-    fn needs_review(&self) -> bool {
-        self.lang == Some(Lang::Jv) || self.branches.iter().flat_map(|b| &b.words).any(|w| w.level.is_some())
-    }
-}
+pub use crate::ai::tasks::{GlossedWord as MapWord, MapBranch as Branch, MindMap};
 
 /// The `mind_map` request: learning text only (topic, level, known words).
 pub fn request(topic: &str, level: &str, known_words: &[String], lang: Lang) -> AiRequest {
@@ -172,13 +103,13 @@ pub fn words(map: &MindMap) -> Vec<Value> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::ai::AiOutput;
 
     fn pasar() -> MindMap {
         let w = |word: &str, en: &str, ar: &str| MapWord {
             word: word.into(),
             gloss_en: en.into(),
             gloss_ar: ar.into(),
-            level: None,
         };
         MindMap {
             center: "di pasar".into(),
@@ -200,7 +131,6 @@ mod tests {
                     words: vec![w("murah", "cheap", "رخيص"), w("mahal", "expensive", "غالٍ")],
                 },
             ],
-            lang: Some(Lang::Id),
         }
     }
 
@@ -212,7 +142,7 @@ mod tests {
 
         let mut two = m.clone();
         two.branches.pop();
-        assert!(two.validate().unwrap_err().contains("3-6 branches"));
+        assert!(two.check(&json!({})).unwrap_err().contains("3-6 branches"));
 
         let mut dup = m.clone();
         dup.branches[2].words[0].word = "Ikan".into();

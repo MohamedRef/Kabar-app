@@ -221,7 +221,7 @@ pub fn GambarScreen() -> Element {
                         if let Some(g) = guess {
                             p {
                                 "{tr(l, T::KabarSaw)} "
-                                bdi { class: "latin", lang: "id", {g.say.clone().unwrap_or_else(|| display(&g.guess_id))} }
+                                bdi { class: "latin", lang: "id", {display(&g.guess_id)} }
                             }
                         }
                         p {

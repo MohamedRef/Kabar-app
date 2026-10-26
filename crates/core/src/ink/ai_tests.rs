@@ -96,7 +96,6 @@ fn sketches_are_personal_and_skip_gemini() {
     let req = recognize::sketch_request("ab12");
     let answer = block_on(r.run::<SketchGuess>(&req)).unwrap();
     assert_eq!(judge("kucing", &answer.value), Verdict::Got);
-    assert_eq!(answer.value.say.as_deref(), Some("Itu kucing, ya?"));
     let call = &wai.calls.borrow()[0];
     assert!(call.personal && call.image_sha256.as_deref() == Some("ab12"));
     assert!(!call.user.contains("kucing"), "the target word is never sent");

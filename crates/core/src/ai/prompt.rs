@@ -90,12 +90,23 @@ macro_rules! bundled {
 
 const BUILTIN: &[(&str, &str)] = bundled![
     "analyze_text@v1.md",
+    "explain_sentence@v1.md",
     "grade_answer@v1.md",
+    "roleplay_turn@v1.md",
     "learn_entry@v1.md",
-    "story_episode@v1.md",
+    "structure_screenshot@v1.md",
     "read_handwriting@v1.md",
     "guess_sketch@v1.md",
+    "check_strokes@v1.md",
     "mind_map@v1.md",
+    "story_episode@v1.md",
+    "radio_script@v1.md",
+    "placement_test@v1.md",
+    "level_check@v1.md",
+    "daily_plan@v1.md",
+    "daily_recap@v1.md",
+    "weekly_report@v1.md",
+    "coach_message@v1.md",
 ];
 
 /// Who the prompts are written for (spec §19).
@@ -157,7 +168,9 @@ mod tests {
         let t = set.get(Task::AnalyzeText, None).unwrap();
         assert_eq!((t.task, t.version), (Task::AnalyzeText, 1));
         assert!(set.get(Task::AnalyzeText, Some(9)).is_none());
-        assert!(set.get(Task::GradeAnswer, None).is_some());
+        for task in Task::ALL {
+            assert!(set.get(task, None).is_some(), "no bundled prompt for {task:?}");
+        }
 
         let set = PromptSet::from_files([
             ("mind_map@v1.md", "<!-- system -->\nA\n<!-- user -->\n{{input}}"),
