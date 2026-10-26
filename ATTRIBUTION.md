@@ -13,6 +13,8 @@ Every dataset, corpus, font and sound used by Kabar, with its license.
 
 Glosses, examples and Arabic Bridge cards under `content/glosses/` and `content/bridge/` are original, written for Kabar with Claude Code (`prompts/gloss@v1.md`, `prompts/bridge@v1.md`) and reviewed by the learner. The About screen must credit Wiktionary (CC BY-SA) and the frequency sources above.
 
+Kak Nur's lines (`content/coach/`), Kabar Pagi stories (`content/pagi/`) and Pasar! seller lines (`content/games/`) are original, written for Kabar with Claude Code and reviewed by the learner.
+
 ## Curriculum references
 Cited for structure only (unit titles, grammar topics, competency wording); no text or
 exercises are copied. Kabar's lessons and grammar explanations are original.
