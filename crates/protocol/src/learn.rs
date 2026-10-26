@@ -151,6 +151,8 @@ mod tests {
                 note: None,
                 false_friend: None,
                 arabic_origin: None,
+                indonesian: None,
+                speech_level: None,
                 status: ReviewStatus::Unverified,
                 provenance: TaughtEntry::provenance("learn_entry@v1"),
                 indonesian: None,

@@ -19,6 +19,7 @@ use serde::Deserialize;
 
 use crate::coach::Coach;
 use crate::i18n::Msg;
+use crate::platform::{self, SpeakError};
 use crate::{Db, Ui};
 
 const REVIEW_CSS: &str = include_str!("../assets/review.css");
@@ -418,9 +419,19 @@ fn rating_msg(r: Rating) -> Msg {
     }
 }
 
-/// Speaks a word with the WebView's own voices: the free fallback until
-/// cached Azure audio exists (SPEC §20). Silent where unsupported.
+/// Speaks a word with the device's own voices: the free fallback until
+/// cached Azure audio exists (SPEC §20). Android uses the system
+/// TextToSpeech engine (its WebView has no `speechSynthesis`); elsewhere the
+/// WebView speaks. Silent where unsupported.
 fn speak(text: &str, language: StudyLanguage) {
+    match platform::speak(text, language.speech_tag(), false) {
+        Err(SpeakError::UseWebView) => {}
+        Ok(()) => return,
+        Err(e) => {
+            eprintln!("kabar: no review audio: {e:?}");
+            return;
+        }
+    }
     let payload = serde_json::json!({ "text": text, "lang": language.speech_tag() });
     document::eval(&format!(
         r#"const p = {payload};
