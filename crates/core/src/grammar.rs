@@ -10,12 +10,10 @@
 
 use std::collections::{BTreeMap, BTreeSet};
 
-use kabar_protocol::ai::Task;
 use kabar_protocol::grammar::GrammarPoint;
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
 
-use crate::ai::AiOutput;
 use crate::lang::Lang;
 use crate::lang::analyze::{AnalyzedToken, Morph};
 
@@ -462,72 +460,6 @@ pub fn explain_input(text: &str, lang: Lang, voice: Voice, candidates: &[Candida
         "voice": voice,
         "grammar_candidates": candidates.iter().map(|c| c.id.as_str()).collect::<Vec<_>>(),
     })
-}
-
-/// The model's answer: which entries apply, plus short glue text.
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
-pub struct ExplainSentence {
-    /// A subset of the candidates, most important first.
-    pub grammar_ids: Vec<String>,
-    /// chat, formal, neutral, slang, krama, ngoko or mixed.
-    pub register: String,
-    /// Only when there is something real to say.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub culture: Option<String>,
-    /// The whole sentence in the voice's language.
-    pub paraphrase: String,
-    /// What the picked entries don't cover (affixes, -nya, particles).
-    pub explanation: String,
-}
-
-const REGISTERS: &[&str] = &["chat", "formal", "neutral", "slang", "krama", "ngoko", "mixed"];
-
-fn has_arabic(s: &str) -> bool {
-    s.chars().any(|c| ('\u{0600}'..='\u{06FF}').contains(&c))
-}
-
-impl ExplainSentence {
-    /// The checks that need the request: ids must come from the candidates,
-    /// and Arabic voices must be written in Arabic script.
-    pub fn check(&self, candidates: &[String], voice: Voice) -> Result<(), String> {
-        for id in &self.grammar_ids {
-            if !candidates.contains(id) {
-                return Err(format!("grammar_ids may only use grammar_candidates; `{id}` isn't one"));
-            }
-        }
-        if voice != Voice::En && !(has_arabic(&self.paraphrase) && has_arabic(&self.explanation)) {
-            return Err("paraphrase and explanation must be in Arabic script for this voice".into());
-        }
-        Ok(())
-    }
-
-    /// Drops ids the model invented instead of failing the whole answer.
-    pub fn keep_known(&mut self, candidates: &[String]) {
-        self.grammar_ids.retain(|id| candidates.contains(id));
-    }
-}
-
-impl AiOutput for ExplainSentence {
-    const TASK: Task = Task::ExplainSentence;
-
-    fn validate(&self) -> Result<(), String> {
-        if self.paraphrase.trim().is_empty() || self.explanation.trim().is_empty() {
-            return Err("paraphrase and explanation must not be empty".into());
-        }
-        if !REGISTERS.contains(&self.register.as_str()) {
-            return Err(format!("register must be one of {}", REGISTERS.join(", ")));
-        }
-        if self.explanation.chars().count() > 1200 {
-            return Err("explanation is glue text: keep it under ~150 words".into());
-        }
-        Ok(())
-    }
-
-    fn needs_review(&self) -> bool {
-        // Javanese explanations stay unverified until the learner approves them.
-        matches!(self.register.as_str(), "krama" | "ngoko")
-    }
 }
 
 #[cfg(test)]

@@ -1,6 +1,8 @@
 use std::path::PathBuf;
 
 use super::*;
+use crate::ai::AiOutput;
+use crate::ai::tasks::ExplainSentence;
 use crate::lang::analyze::Engine;
 
 fn repo() -> PathBuf {
@@ -108,25 +110,23 @@ fn golden_set_recall() {
 
 #[test]
 fn explain_answer_checks() {
-    let cands = vec!["id.aspect.markers".to_string(), "id.prefix.men.basic".to_string()];
+    // The answer type lives with the other tasks (`ai::tasks`); this checks
+    // that the input built here is what its request checks read.
+    let c = |id: &str| Candidate { id: id.into(), score: 1, matched: Vec::new() };
+    let cands = [c("id.aspect.markers"), c("id.prefix.men.basic")];
+    let input = explain_input("Saya sedang membaca buku.", Lang::Indonesian, Voice::Arz, &cands);
     let ok: ExplainSentence = serde_json::from_str(include_str!(
         "../../../../fixtures/ai/explain_sentence.saya_sedang_membaca_buku.workers_ai.json"
     ))
     .unwrap();
     ok.validate().unwrap();
-    ok.check(&cands, Voice::Arz).unwrap();
+    ok.check(&input).unwrap();
     let mut bad = ok.clone();
     bad.grammar_ids.push("id.made.up".into());
-    assert!(bad.check(&cands, Voice::Arz).is_err());
-    bad.keep_known(&cands);
-    assert_eq!(bad.grammar_ids, ok.grammar_ids);
-    assert!(ok.check(&cands, Voice::En).is_ok());
-    let mut latin = ok.clone();
+    assert!(bad.check(&input).is_err());
+    let mut latin = ok;
     latin.paraphrase = "Ana ba2ra ktab".into();
-    assert!(latin.check(&cands, Voice::Arz).is_err());
-    let mut reg = ok;
-    reg.register = "casual".into();
-    assert!(reg.validate().is_err());
+    assert!(latin.check(&input).is_err());
 }
 
 #[test]

@@ -7,8 +7,9 @@
 use std::sync::OnceLock;
 
 use dioxus::prelude::*;
+use kabar_core::ai::tasks::{ExplainSentence, Register};
 use kabar_core::ai::{AiRequest, FriendlyReason};
-use kabar_core::grammar::{self, Candidate, ExplainSentence, Library, MAX_CANDIDATES, Voice};
+use kabar_core::grammar::{self, Candidate, Library, MAX_CANDIDATES, Voice};
 use kabar_core::lang::Lang;
 use kabar_core::lang::analyze::AnalyzedToken;
 use kabar_core::locale::UiLanguage;
@@ -58,6 +59,7 @@ impl Sentence {
         Some(Self { text: doc.text(start, end).to_string(), lang, candidates })
     }
 
+    #[cfg(test)]
     fn ids(&self) -> Vec<String> {
         self.candidates.iter().map(|c| c.id.clone()).collect()
     }
@@ -103,16 +105,11 @@ pub struct Glue {
     pub unverified: bool,
 }
 
-/// Validates the answer against this request: invented ids are dropped, a
-/// wrong-script answer is refused.
-fn accept(mut answer: ExplainSentence, s: &Sentence, voice: Voice, needs_review: bool) -> Result<Glue, Msg> {
-    let ids = s.ids();
-    answer.keep_known(&ids);
-    if answer.check(&ids, voice).is_err() {
-        return Err(Msg::ExplainTryAgain);
-    }
+/// The router already checked the answer against the request (ids from the
+/// candidates, the voice's script); Javanese and unproven routes stay unverified.
+fn accept(answer: ExplainSentence, s: &Sentence, needs_review: bool) -> Glue {
     let unverified = needs_review || s.lang == Lang::Javanese;
-    Ok(Glue { answer, unverified })
+    Glue { answer, unverified }
 }
 
 fn friendly(r: FriendlyReason) -> Msg {
@@ -124,17 +121,16 @@ fn friendly(r: FriendlyReason) -> Msg {
     }
 }
 
-fn register_msg(r: &str) -> Option<Msg> {
-    Some(match r {
-        "chat" => Msg::RegisterChat,
-        "formal" => Msg::RegisterFormal,
-        "neutral" => Msg::RegisterNeutral,
-        "slang" => Msg::RegisterSlang,
-        "krama" => Msg::RegisterKrama,
-        "ngoko" => Msg::RegisterNgoko,
-        "mixed" => Msg::RegisterMixed,
-        _ => return None,
-    })
+fn register_msg(r: Register) -> Msg {
+    match r {
+        Register::Chat => Msg::RegisterChat,
+        Register::Formal => Msg::RegisterFormal,
+        Register::Neutral | Register::Standard => Msg::RegisterNeutral,
+        Register::Slang | Register::Casual => Msg::RegisterSlang,
+        Register::Krama | Register::KramaInggil | Register::Madya => Msg::RegisterKrama,
+        Register::Ngoko => Msg::RegisterNgoko,
+        Register::Mixed => Msg::RegisterMixed,
+    }
 }
 
 /// Shown in the side panel / bottom sheet, keyed by text and token.
@@ -161,7 +157,7 @@ pub fn ExplainCard(token: usize) -> Element {
                 image_sha256: None,
             };
             let a = ai.0.run::<ExplainSentence>(&req).await.map_err(|e| friendly(e.friendly()))?;
-            accept(a.value, &s, voice, a.needs_review || a.provisional)
+            Ok(accept(a.value, &s, a.needs_review || a.provisional))
         }
     });
 
@@ -200,11 +196,9 @@ pub fn ExplainCard(token: usize) -> Element {
                             p { class: "big", "{g.answer.paraphrase}" }
                         }
                         p { "{g.answer.explanation}" }
-                        if let Some(m) = register_msg(&g.answer.register) {
-                            p {
-                                span { class: "label", "{ui.t(Msg::RegisterLabel)} " }
-                                span { class: "chip", "{ui.t(m)}" }
-                            }
+                        p {
+                            span { class: "label", "{ui.t(Msg::RegisterLabel)} " }
+                            span { class: "chip", "{ui.t(register_msg(g.answer.register))}" }
                         }
                         if let Some(c) = g.answer.culture.as_deref().filter(|c| !c.trim().is_empty()) {
                             div { class: "field note",
@@ -337,20 +331,16 @@ mod tests {
     }
 
     #[test]
-    fn answers_are_checked_against_the_request() {
-        let d = doc("Saya sedang membaca buku.");
-        let s = Sentence::around(&d, at(&d, "buku")).unwrap();
+    fn javanese_answers_stay_unverified() {
         let fixture =
             include_str!("../../../../fixtures/ai/explain_sentence.saya_sedang_membaca_buku.workers_ai.json");
-        let mut answer: ExplainSentence = serde_json::from_str(fixture).unwrap();
-        answer.grammar_ids.push("id.invented.point".into());
-
-        let g = accept(answer.clone(), &s, Voice::Arz, false).unwrap();
-        assert!(!g.answer.grammar_ids.contains(&"id.invented.point".to_string()));
-        assert!(!g.unverified);
-        // An Arabic answer for an English learner's voice is fine; the reverse isn't.
-        assert_eq!(accept(answer.clone(), &s, Voice::En, false).map(|_| ()), Ok(()));
-        answer.paraphrase = "I am reading a book.".into();
-        assert_eq!(accept(answer, &s, Voice::Arz, false), Err(Msg::ExplainTryAgain));
+        let answer: ExplainSentence = serde_json::from_str(fixture).unwrap();
+        let d = doc("Saya sedang membaca buku.");
+        let s = Sentence::around(&d, at(&d, "buku")).unwrap();
+        assert!(!accept(answer.clone(), &s, false).unverified);
+        assert!(accept(answer.clone(), &s, true).unverified);
+        let jv = doc("Sek tak lapor pusat");
+        let s = Sentence::around(&jv, at(&jv, "lapor")).unwrap();
+        assert!(accept(answer, &s, false).unverified);
     }
 }
