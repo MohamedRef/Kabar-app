@@ -1,0 +1,73 @@
+schema: kabar.grammar/v1
+id: id.conjunction.basic
+language: id
+level: bipa1
+title:
+  target: dan, atau, tetapi (tapi), lalu, jadi
+  en: "and, or, but, then, so"
+  ar_eg: و، أو، بس، وبعدين، فـ
+  ar: أدوات الربط الأساسية
+summary:
+  ar_eg: dan = و، atau = ولا/أو، tetapi / tapi = بس/لكن، lalu = وبعدين، jadi = يعني/فـ.
+  ar: dan = و، atau = أو، tetapi = لكن، lalu = ثم، jadi = إذن / لذلك.
+  en: dan (and), atau (or), tetapi / tapi (but), lalu (then), jadi (so).
+pattern:
+  - A dan B · A atau B
+  - clause, tetapi clause
+  - clause, lalu clause
+  - clause, jadi clause
+explanation:
+  ar_eg: |
+    - dan = و: kopi dan teh = قهوة وشاي.
+    - atau = أو / ولا (في السؤال): Kopi atau teh? = قهوة ولا شاي؟
+    - tetapi (الكلام: tapi) = بس / لكن: Murah, tapi enak = رخيص بس حلو.
+    - lalu / kemudian = وبعدين (للترتيب، مفيدة جدًا في الاتجاهات): Lurus, lalu belok kanan = دغري وبعدين يمين.
+    - jadi = فـ / عشان كده: Hujan, jadi saya di rumah = كانت بتمطر، فقعدت في البيت.
+    في الشات: dn، atw، tp، jd.
+  ar: |
+    - dan = و: kopi dan teh.
+    - atau = أو، وفي السؤال «أم»: Kopi atau teh؟ = قهوة أم شاي؟
+    - tetapi (وفي العامية tapi) = لكن: Murah, tapi enak = رخيص لكنه لذيذ.
+    - lalu / kemudian = ثم: Lurus, lalu belok kanan = امشِ مستقيمًا ثم انعطف يمينًا.
+    - jadi = لذلك / فـ: Hujan, jadi saya di rumah.
+    وفي المحادثات: dn، atw، tp، jd.
+  en: |
+    - dan = and: kopi dan teh.
+    - atau = or (also "or" in questions): Kopi atau teh? = Coffee or tea?
+    - tetapi (casual tapi) = but: Murah, tapi enak = Cheap but tasty.
+    - lalu / kemudian = then — great for directions: Lurus, lalu belok kanan = Go straight, then turn right.
+    - jadi = so: Hujan, jadi saya di rumah = It rained, so I stayed home.
+    Chat: dn, atw, tp, jd.
+examples:
+  - text: Jalan lurus, lalu belok kiri di masjid.
+    en: Go straight, then turn left at the mosque.
+    ar_eg: امشي دغري وبعدين خش شمال عند الجامع.
+    ar: امشِ مستقيمًا ثم انعطف يسارًا عند المسجد.
+  - text: Mau kopi atau teh?
+    en: Would you like coffee or tea?
+    ar_eg: تشرب قهوة ولا شاي؟
+    ar: أتريد قهوة أم شايًا؟
+  - text: Rumahnya kecil, tetapi nyaman.
+    en: The house is small but comfortable.
+    ar_eg: البيت صغير بس مريح.
+    ar: البيت صغير لكنه مريح.
+  - text: Saya lapar, jadi saya makan dulu.
+    en: I'm hungry, so I'll eat first.
+    ar_eg: أنا جعان، فهاكل الأول.
+    ar: أنا جائع، لذا سآكل أولًا.
+mistakes:
+  - wrong: Kopi dan teh? (offering a choice)
+    right: Kopi atau teh?
+    why:
+      ar_eg: للاختيار استخدم atau (ولا).
+      ar: للتخيير atau.
+      en: Use atau for a choice.
+arabic_bridge:
+  ar_eg: dan = و، atau = «ولا» في السؤال، tapi = «بس»، jadi = «فـ / عشان كده». سهلة.
+  ar: الأدوات تقابل «و / أو / لكن / ثم / فـ».
+  en: dan / atau / tapi / lalu / jadi ≈ و / أو / لكن / ثم / فـ.
+tags: [conjunction]
+see_also: [id.conjunction.sequence, id.question.mengapa]
+review:
+  status: draft
+  verified: false

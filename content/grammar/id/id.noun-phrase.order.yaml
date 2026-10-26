@@ -1,0 +1,77 @@
+schema: kabar.grammar/v1
+id: id.noun-phrase.order
+language: id
+level: bipa1
+title:
+  target: rumah besar itu
+  en: Word order in noun phrases
+  ar_eg: ترتيب الاسم والصفة
+  ar: ترتيب المركب الوصفي
+summary:
+  ar_eg: الاسم الأول وبعده كل اللي بيوصفه (صفة، صاحب، إشارة) — زي العربي. الأرقام والكميات بس بتيجي قبله.
+  ar: الموصوف أولًا ثم ما يصفه من صفة ومالك وإشارة، كالعربية؛ والأعداد والكميات تتقدم عليه.
+  en: Head noun first, then everything describing it (adjective, owner, demonstrative) — like Arabic. Only numbers and quantities come before.
+pattern:
+  - noun + adjective + owner + ini/itu (rumah besar saya itu)
+  - number / quantity + noun (dua buku, banyak orang)
+explanation:
+  ar_eg: |
+    القاعدة الذهبية (اسمها في كتب الإندونيسي «D-M»: المشروح قبل الشارح): الاسم الأول.
+    - rumah besar = بيت كبير (زي العربي، وعكس الإنجليزي big house).
+    - rumah besar saya = بيتي الكبير.
+    - rumah besar saya itu = بيتي الكبير ده.
+    لو عايز تحط أكتر من صفة ممكن تستخدم yang: rumah besar yang baru = البيت الكبير الجديد.
+    الاستثناء: الأرقام والكميات قبل الاسم: dua kucing = قطتين، banyak orang = ناس كتير، semua mahasiswa = كل الطلاب.
+  ar: |
+    القاعدة (وتسمى في كتب النحو الإندونيسي قاعدة «المشروح قبل الشارح»): يتقدم الموصوف.
+    - rumah besar = بيت كبير، كالعربية وخلافًا للإنجليزية.
+    - rumah besar saya = بيتي الكبير.
+    - rumah besar saya itu = بيتي الكبير ذاك.
+    ولتعدد الصفات تُستعمل yang: rumah besar yang baru = البيت الكبير الجديد.
+    ويُستثنى العدد والكم فيتقدمان: dua kucing = قطتان، banyak orang = كثير من الناس.
+  en: |
+    The golden rule (Indonesian grammars call it "D-M": described before describer): the noun comes first.
+    - rumah besar = big house (Arabic order, the reverse of English).
+    - rumah besar saya = my big house.
+    - rumah besar saya itu = that big house of mine.
+    Stack more describers with yang: rumah besar yang baru = the big new house.
+    Exception: numbers and quantities go before: dua kucing = two cats, banyak orang = many people, semua mahasiswa = all students.
+examples:
+  - text: Saya punya kucing hitam.
+    en: I have a black cat.
+    ar_eg: عندي قطة سودا.
+    ar: عندي قطة سوداء.
+  - text: Kakak saya yang tinggi itu dokter.
+    en: My tall older sibling is a doctor.
+    ar_eg: أخويا الكبير الطويل ده دكتور.
+    ar: أخي الأكبر الطويل ذاك طبيب.
+  - text: Ada tiga restoran Mesir di Jakarta.
+    en: There are three Egyptian restaurants in Jakarta.
+    ar_eg: فيه تلات مطاعم مصري في جاكرتا.
+    ar: توجد ثلاثة مطاعم مصرية في جاكرتا.
+  - text: Banyak orang suka nasi goreng.
+    en: Many people like fried rice.
+    ar_eg: ناس كتير بتحب الرز المقلي.
+    ar: كثير من الناس يحبون الأرز المقلي.
+mistakes:
+  - wrong: besar rumah
+    right: rumah besar
+    why:
+      ar_eg: "ماتمشيش ورا الإنجليزي؛ امشي ورا العربي: «بيت كبير»."
+      ar: اتبع ترتيب العربية لا الإنجليزية.
+      en: Follow Arabic order, not English.
+  - wrong: buku dua
+    right: dua buku
+    why:
+      ar_eg: الرقم بس هو اللي بيتقدم.
+      ar: العدد وحده يتقدم على المعدود.
+      en: Numbers go first.
+arabic_bridge:
+  ar_eg: "هنا العربي بيساعدك تاني: «بيت كبير» = rumah besar. والأرقام قبل الاسم زي «تلات كتب» = tiga buku."
+  ar: الصفة بعد الموصوف كما في العربية، والعدد قبل المعدود كـ«ثلاثة كتب» = tiga buku.
+  en: "Arabic order again: «بيت كبير» = rumah besar; numbers first as in «ثلاثة كتب» = tiga buku."
+tags: [noun-phrase, word-order]
+see_also: [id.possessive, id.demonstrative.ini-itu, id.yang.basic]
+review:
+  status: draft
+  verified: false

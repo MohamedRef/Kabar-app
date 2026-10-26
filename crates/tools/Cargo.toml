@@ -1,0 +1,30 @@
+[package]
+name = "kabar-tools"
+description = "Kabar's build-time content pipeline: frequency lists, Wiktionary import, glosses, Arabic Bridge."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[[bin]]
+name = "kabar-tools"
+path = "src/main.rs"
+
+[dependencies]
+kabar-protocol = { workspace = true, features = ["schema"] }
+serde.workspace = true
+serde_json.workspace = true
+schemars.workspace = true
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+flate2 = "1"
+rmp-serde = "1"
+bzip2 = "0.6"
+quick-xml = "0.38"
+unicode-normalization = "0.1"
+
+[dev-dependencies]
+jsonschema = { version = "0.33", default-features = false }
+
+[lints]
+workspace = true

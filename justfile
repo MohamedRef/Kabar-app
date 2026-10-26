@@ -22,6 +22,40 @@ check:
 fmt:
     cargo fmt --all
 
+# --- content pipeline (docs/CONTENT.md) ---------------------------------------
+
+tools := "cargo run -q --release -p kabar-tools --"
+
+# Download corpora/dictionaries into data/raw/: `just content-fetch` (freq), `kaikki`, `jvwiki` or `all`
+content-fetch what="freq":
+    scripts/fetch-sources.sh {{what}}
+
+# Rebuild the Indonesian frequency list (needs `just content-fetch`)
+content-freq:
+    {{tools}} freq id
+
+# Import Wiktionary (needs `just content-fetch kaikki`), then cross-check the Arabic Bridge
+content-kaikki:
+    {{tools}} kaikki --lang id
+    {{tools}} kaikki --lang jv
+    {{tools}} bridge crosscheck
+
+# Javanese frequency list from Javanese Wikipedia (needs `just content-fetch jvwiki`)
+content-freq-jv:
+    {{tools}} freq jv
+
+# Progress of the gloss batches
+content-status:
+    {{tools}} gloss status
+
+# Validate every content file (schemas, glosses, Bridge); CI runs the same checks
+content-check:
+    {{tools}} validate
+
+# Markdown review sheet for one gloss batch: `just content-review 3`
+content-review batch:
+    {{tools}} gloss review {{batch}}
+
 # --- Mac ---------------------------------------------------------------------
 
 # One-time toolchain setup on the MacBook (Rust targets, dx, Java, Android SDK/NDK)

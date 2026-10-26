@@ -1,0 +1,68 @@
+schema: kabar.grammar/v1
+id: id.origin.orang-bahasa
+language: id
+level: bipa1
+title:
+  target: orang Mesir, bahasa Arab
+  en: Nationality and language
+  ar_eg: الجنسية واللغة
+  ar: الجنسية واللغة
+summary:
+  ar_eg: الجنسية = orang + البلد، واللغة = bahasa + اسمها، من غير أي تغيير في الكلمة.
+  ar: الجنسية = orang + اسم البلد، واللغة = bahasa + اسمها، بلا أي تصريف.
+  en: Nationality is orang + country; language is bahasa + name — no endings needed.
+pattern:
+  - orang + country / ethnic group (orang Mesir, orang Jawa)
+  - bahasa + language (bahasa Arab, bahasa Inggris)
+  - Saya bisa / berbicara bahasa …
+explanation:
+  ar_eg: |
+    مفيش حاجة زي «مصري / مصرية». بتقول «orang» (شخص / إنسان) + اسم البلد:
+    orang Mesir = مصري، orang Indonesia = إندونيسي، orang Jawa = جاوي.
+    واللغة: bahasa + اسمها: bahasa Arab = عربي، bahasa Inggris = إنجليزي، bahasa Jawa = جاوي.
+    ولما تقول بتتكلم إيه: Saya bisa bahasa Indonesia sedikit = بعرف إندونيسي شوية.
+    وللحاجات: makanan Mesir = أكل مصري (الصفة بتيجي بعد الاسم زي العربي).
+  ar: |
+    لا توجد نسبة مثل «مصري / مصرية»، بل يقال orang (إنسان) + اسم البلد:
+    orang Mesir = مصري، orang Indonesia = إندونيسي، orang Jawa = جاوي.
+    واللغة: bahasa + اسمها: bahasa Arab = العربية، bahasa Inggris = الإنجليزية.
+    وللتعبير عن القدرة: Saya bisa bahasa Indonesia sedikit = أعرف الإندونيسية قليلًا.
+    ولغير البشر: makanan Mesir = طعام مصري، والوصف يتبع الموصوف كما في العربية.
+  en: |
+    There is no "-ian" ending. Say orang (person) + country: orang Mesir = Egyptian, orang Indonesia = Indonesian, orang Jawa = Javanese.
+    Languages: bahasa + name: bahasa Arab = Arabic, bahasa Inggris = English, bahasa Jawa = Javanese.
+    Saying what you speak: Saya bisa bahasa Indonesia sedikit = I speak a little Indonesian.
+    For things, the country follows the noun: makanan Mesir = Egyptian food.
+examples:
+  - text: Saya orang Mesir.
+    en: I'm Egyptian.
+    ar_eg: أنا مصري.
+    ar: أنا مصري.
+  - text: Dia orang Jawa, tapi tinggal di Kairo.
+    en: He/She is Javanese but lives in Cairo.
+    ar_eg: هو جاوي بس ساكن في القاهرة.
+    ar: هو جاوي لكنه يسكن في القاهرة.
+  - text: Saya bisa bahasa Arab dan bahasa Inggris.
+    en: I speak Arabic and English.
+    ar_eg: بعرف عربي وإنجليزي.
+    ar: أتكلم العربية والإنجليزية.
+  - text: Saya suka makanan Indonesia.
+    en: I like Indonesian food.
+    ar_eg: بحب الأكل الإندونيسي.
+    ar: أحب الطعام الإندونيسي.
+mistakes:
+  - wrong: Saya Mesir.
+    right: Saya orang Mesir.
+    why:
+      ar_eg: «Saya Mesir» معناها «أنا مصر» نفسها!
+      ar: «Saya Mesir» تعني «أنا مصر» نفسها.
+      en: '"Saya Mesir" means "I am Egypt".'
+arabic_bridge:
+  ar_eg: Mesir ← «مصر» وArab ← «عرب». الإندونيسيين بيعرفوا مصر كويس بسبب الأزهر، فـ«Saya orang Mesir» بتفتح كلام على طول.
+  ar: Mesir من «مصر»، وArab من «عرب». ومصر معروفة جيدًا هناك بفضل الأزهر.
+  en: Mesir ← «مصر», Arab ← «عرب». Egypt is well known thanks to Al-Azhar, so "Saya orang Mesir" opens conversations.
+tags: [nationality, introduction]
+see_also: [id.question.mana, id.noun-phrase.order]
+review:
+  status: draft
+  verified: false
