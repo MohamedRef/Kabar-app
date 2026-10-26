@@ -14,7 +14,7 @@ use std::path::{Path, PathBuf};
 
 use anyhow::{Context, Result, bail};
 use clap::Subcommand;
-use kabar_protocol::content::{GlossEntry, Lang, MeaningShift, Trilingual};
+use kabar_protocol::content::{GlossEntry, Lang, MeaningShift, Pos, Trilingual};
 
 use crate::bridge;
 use crate::freq::{parse_lang, read_list};
@@ -52,6 +52,9 @@ pub enum Cmd {
     Validate {
         #[arg(long)]
         batch: Option<u32>,
+        /// Only this language (`id` or `jv`); both by default.
+        #[arg(long)]
+        lang: Option<String>,
     },
     /// Write a Markdown review sheet for one batch to build/review/.
     Review {
@@ -111,11 +114,17 @@ pub fn run(root: &Root, cmd: Cmd) -> Result<()> {
             print_words(&Plan::load(root, parse_lang(&lang)?)?, batch);
             Ok(())
         }
-        Cmd::Validate { batch } => {
+        Cmd::Validate { batch, lang } => {
+            let langs = match lang {
+                Some(l) => vec![parse_lang(&l)?],
+                None => vec![Lang::Id, Lang::Jv],
+            };
             let mut failures = 0;
-            for lang in [Lang::Id, Lang::Jv] {
+            for &lang in &langs {
                 let Ok(plan) = Plan::load(root, lang) else { continue };
                 let batches: Vec<u32> = match batch {
+                    // Without --lang, a batch number only checks the languages that have that file.
+                    Some(b) if langs.len() > 1 && !batch_path(root, lang, b).exists() => vec![],
                     Some(b) => vec![b],
                     None => plan.batches().filter(|b| batch_path(root, lang, *b).exists()).collect(),
                 };
@@ -306,11 +315,14 @@ pub fn crosscheck_bridge(root: &Root, lang: Lang) -> Result<Vec<String>> {
             // the first Indonesian equivalent counts for an Arabic-origin gloss,
             // but only the word's own card demands one (pas ≠ waktu).
             let via_indonesian = || {
-                let first = e.indonesian.as_deref()?.split(',').next()?.trim();
-                cards.get(first)
+                let first = e.indonesian.as_deref()?.split(',').next()?.trim().to_lowercase();
+                cards.get(first.as_str())
             };
+            // Names (Musa, Mesir) and set phrases (swt) carry an Arabic origin
+            // without being Bridge material.
+            let name_or_phrase = e.senses.iter().all(|s| matches!(s.pos, Pos::ProperNoun | Pos::Phrase));
             match (card, &e.arabic_origin) {
-                (None, Some(_)) if via_indonesian().is_some() => {}
+                (None, Some(_)) if name_or_phrase || via_indonesian().is_some() => {}
                 (None, Some(a)) => issues.push(format!("{}: arabic_origin {a} but no Bridge card", e.word)),
                 (Some(_), None) => issues.push(format!("{}: has a Bridge card but no arabic_origin", e.word)),
                 (Some(MeaningShift::FalseFriend), Some(_)) if e.false_friend.is_none() => {
