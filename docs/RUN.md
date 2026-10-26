@@ -167,6 +167,12 @@ Open **Play** (ألعاب) in the sidebar or the phone's bottom bar.
 - **Pasar!**: haggle within a budget. The iPhone listing is the bonus round; Javanese sellers are marked unverified.
 - **Kabar Pagi**: the morning story from your due words plus a few new ones. On Today it appears every morning until you've read it. Audio uses the Mac's Indonesian voice (System Settings → Accessibility → Spoken Content → System voice → Manage Voices → Indonesian "Damayanti", if it isn't installed). Android's WebView has no voices, so on the Galaxy devices audio arrives with Kabar Cloud's TTS (follow-up).
 
+### Javanese manners and sounds (M11)
+
+- **Unggah-Ungguh**: talk with Bayu (a friend, J1), Bu Darmi at the market (J2), and Mbah, a teacher and an elder neighbour (J3). Each turn gives the same thing said at different speech levels. The Respect Meter rises when the choice fits the person and dips when it doesn't, and Kak Nur always explains why. Scenes above your Javanese target level show which level opens them. The lesson j3.u01.l03 ends with a button that opens this game.
+- **d/dh · t/th**: tell Javanese *wedi* (afraid) from *wedhi* (sand), and Indonesian *dada* from Javanese *dhadha*. **Listen** mode appears only when the device has a Javanese voice; Indonesian voices can't make the curled sound, so Kabar never uses one for this. Without a Javanese voice you get **Read** mode, where you see the meaning and pick the spelling. Javanese audio from Kabar Cloud's TTS (jv-ID voices) is a follow-up.
+- All Javanese here is marked unverified until you approve it (`content/games/unggah-ungguh.toml`, `content/games/minimal-pairs.toml`).
+
 ## 11. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
