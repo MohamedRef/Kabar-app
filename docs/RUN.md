@@ -185,15 +185,14 @@ Open **Play** (ألعاب) in the sidebar or the phone's bottom bar.
 - **d/dh · t/th**: tell Javanese *wedi* (afraid) from *wedhi* (sand), and Indonesian *dada* from Javanese *dhadha*. **Listen** mode appears only when the device has a Javanese voice; Indonesian voices can't make the curled sound, so Kabar never uses one for this. Without a Javanese voice you get **Read** mode, where you see the meaning and pick the spelling. Javanese audio from Kabar Cloud's TTS (jv-ID voices) is a follow-up.
 - All Javanese here is marked unverified until you approve it (`content/games/unggah-ungguh.toml`, `content/games/minimal-pairs.toml`).
 
-## 11. Troubleshooting
+## 11. Stats and the monthly level check (spec §16, §6)
 
-- `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
-- `just logs <serial>` streams the app's log while it's running.
-- Build out of memory on 8 GB: `CARGO_BUILD_JOBS=2 just apk`.
-- `dx did not build android/ into the APK`: make sure `dx --version` says 0.7.10 (it must match the `manganis` version in `crates/app/Cargo.toml`), then check that `target/dx/kabar/release/android/app/settings.gradle` contains `include ':plugins:plugin'`.
-- Gradle can't resolve `com.google.mlkit:text-recognition`: the first build needs internet (Google Maven).
+- **Stats**: Review → "All stats" (under the forecast), or Today → "All stats". Study heatmap (20 weeks), time studied, known words per language, true retention (mature/young, 7 and 30 days) and the 30-day review forecast. Hover a cell or bar on the Mac for its numbers; every chart also has a sentence under it.
+- **Monthly level check**: offered on Today once a month (the first one about 4 weeks after you start); "Later" hides it for 3 days on that device. You can also take it any time from Stats. It's ~10 minutes of your current level's test items, then the skill radar vs last month, Kak Nur's decision and "BIPA N around <date>". Fully offline. Levels without test items yet (BIPA 3+, Javanese) get a history-only check.
+- Preview on the Mac: `KABAR_OPEN_SCREEN=stats just run-mac` or `KABAR_OPEN_SCREEN=level_check just run-mac`.
+- Demo data for screenshots (a throwaway database, never your real one): `KABAR_DEMO_DB=/tmp/kabar-demo.db cargo test -p kabar-app seed_stats_demo -- --ignored`, then run the app with its data dir pointing there (see `crates/app/src/stats/demo.rs`).
 
-## 11. Offline packs (audio per unit)
+## 12. Offline packs (audio per unit)
 
 Each unit has a pack of pre-generated Azure neural audio (Gadis/Ardi for Indonesian, Siti/Dimas for Javanese; dialogue lines in the speaker's voice) so its lessons sound natural with no network. Manifests are committed under `content/packs/`; the audio lives on the `packs` GitHub release of this repository (free), never in git.
 
@@ -215,3 +214,11 @@ git add content/packs && git commit -m "Packs: audio hashes" && git push
 Commit `content/packs/` after bundling: the app build embeds `content/packs/index.json`, so it lists every unit offline. Javanese text is still unverified; if a reviewed lesson changes, `just packs` marks only the changed lines as missing and `just packs-audio` regenerates just those.
 
 **In the app:** Settings → **Offline packs** lists every unit with its size, Download / Update / Remove, total storage, and "Download the current and next unit automatically" (on by default: opening a lesson fetches its unit and the next one in the background). The Lesson Player plays a downloaded clip first, then the device's own voice (Android TextToSpeech, or the WebView voice on the Mac), exactly as before. A run-time `KABAR_PACKS_URL` points the app at another release; an empty one turns downloads off.
+
+## 13. Troubleshooting
+
+- `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
+- `just logs <serial>` streams the app's log while it's running.
+- Build out of memory on 8 GB: `CARGO_BUILD_JOBS=2 just apk`.
+- `dx did not build android/ into the APK`: make sure `dx --version` says 0.7.10 (it must match the `manganis` version in `crates/app/Cargo.toml`), then check that `target/dx/kabar/release/android/app/settings.gradle` contains `include ':plugins:plugin'`.
+- Gradle can't resolve `com.google.mlkit:text-recognition`: the first build needs internet (Google Maven).
