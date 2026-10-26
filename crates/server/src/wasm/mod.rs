@@ -21,10 +21,13 @@ use worker::{
 };
 
 use crate::ai::{self, Route};
+use crate::blobs::{self, Image};
 use crate::config::Config;
 use crate::fcm;
 use crate::google::{self, Jwks};
-use crate::internal::{DEVICE_HEADER, Expiry, Refresh, Register, Revoke, SetPush};
+use crate::internal::{
+    BlobData, BlobGet, BlobPut, DEVICE_HEADER, Expiry, Refresh, Register, Revoke, SetPush,
+};
 use crate::quota::{self, Service};
 use crate::tokens::{self, AccessClaims, TokenKey};
 use crate::tts;
@@ -47,7 +50,7 @@ fn status_for(code: ErrorCode) -> u16 {
         ErrorCode::InvalidRequest => 400,
         ErrorCode::Unauthorized | ErrorCode::DeviceRevoked => 401,
         ErrorCode::NotAllowed => 403,
-        ErrorCode::NotFound => 404,
+        ErrorCode::NotFound | ErrorCode::BlobMissing => 404,
         ErrorCode::NotConfigured => 503,
         ErrorCode::QuotaExhausted => 429,
         ErrorCode::Upstream => 502,
@@ -296,11 +299,12 @@ async fn run_engine(
     env: &Env,
     route: &Route,
     call: &EngineCall,
+    image: Option<&Image>,
     now: u64,
 ) -> Result<std::result::Result<String, EngineError>> {
     Ok(match route {
         Route::WorkersAi { model } => {
-            match env.ai("AI")?.run::<Value, Value>(model, ai::workers_ai_input(call)).await {
+            match env.ai("AI")?.run::<Value, Value>(model, ai::workers_ai_input(call, image)).await {
                 Ok(out) => ai::parse_workers_ai(&out),
                 Err(e) => Err(ai::workers_ai_error(&e.to_string(), Service::WorkersAi.retry_after_s(now))),
             }
@@ -308,7 +312,7 @@ async fn run_engine(
         Route::Gemini { model, key } => {
             let headers = Headers::new();
             headers.set("x-goog-api-key", key.expose())?;
-            match post_json(&ai::gemini_url(model), headers, &ai::gemini_body(call)).await? {
+            match post_json(&ai::gemini_url(model), headers, &ai::gemini_body(call, image)).await? {
                 (200, _, out) => ai::parse_gemini(&out),
                 (status, retry, _) => Err(ai::upstream_status_error("gemini", status, retry)),
             }
@@ -317,7 +321,7 @@ async fn run_engine(
             let headers = Headers::new();
             headers.set("x-api-key", key.expose())?;
             headers.set("anthropic-version", ai::ANTHROPIC_VERSION)?;
-            match post_json(ai::ANTHROPIC_URL, headers, &ai::claude_body(call, model)).await? {
+            match post_json(ai::ANTHROPIC_URL, headers, &ai::claude_body(call, model, image)).await? {
                 (200, _, out) => ai::parse_claude(&out),
                 (status, retry, _) => Err(ai::upstream_status_error("claude", status, retry)),
             }
@@ -329,6 +333,20 @@ async fn ai_proxy(mut req: Request, env: &Env, cfg: &Config, claims: &AccessClai
     let call: EngineCall = match body(&mut req).await {
         Ok(b) => b,
         Err(r) => return r,
+    };
+    // A missing image is the device's to fix (upload it again), so it is
+    // reported before anything about the engines.
+    let image = match &call.image_sha256 {
+        None => None,
+        Some(sha) => {
+            let get = BlobGet { sha256: sha.clone() };
+            let mut resp = call_do(env, &claims.sub, Method::Post, "/blob/get", None, Some(&get)).await?;
+            if resp.status_code() != 200 {
+                return Ok(resp);
+            }
+            let data: BlobData = resp.json().await?;
+            Some(Image { mime: data.mime, base64: data.data_b64 })
+        }
     };
     let route = match ai::route(&call, cfg) {
         Ok(r) => r,
@@ -355,7 +373,7 @@ async fn ai_proxy(mut req: Request, env: &Env, cfg: &Config, claims: &AccessClai
             retry_after_s: Some(service.retry_after_s(now)),
         });
     }
-    let result = run_engine(env, &route, &call, now).await?;
+    let result = run_engine(env, &route, &call, image.as_ref(), now).await?;
     quota_add(env, service, now, 1).await?;
     let text = match result.and_then(ai::finish) {
         Ok(t) => t,
@@ -379,6 +397,24 @@ async fn ai_proxy(mut req: Request, env: &Env, cfg: &Config, claims: &AccessClai
         .await?;
     }
     Response::from_json(&reply(text))
+}
+
+/// `PUT /v1/blobs/{sha256}`: an image for the next vision calls.
+async fn put_blob(mut req: Request, env: &Env, claims: &AccessClaims, sha: &str) -> Result<Response> {
+    if let Some(revoked) = ensure_active(env, claims).await? {
+        return Ok(revoked);
+    }
+    let bytes = req.bytes().await?;
+    let mime = match blobs::validate(sha, &bytes) {
+        Ok(m) => m,
+        Err(e) => return api_error(ErrorCode::InvalidRequest, e.to_string()),
+    };
+    let put = BlobPut { sha256: sha.to_owned(), mime: mime.to_owned(), data_b64: blobs::encode(&bytes) };
+    let resp = call_do(env, &claims.sub, Method::Post, "/blob/put", None, Some(&put)).await?;
+    if resp.status_code() != 200 {
+        return Ok(resp);
+    }
+    Ok(Response::empty()?.with_status(204))
 }
 
 fn audio_response(bytes: Vec<u8>, cached: bool) -> Result<Response> {
@@ -509,6 +545,10 @@ async fn route(mut req: Request, env: &Env, cfg: &Config, method: Method, path: 
                 (Method::Get, "/v1/vault") => Response::from_json(&cfg.vault_status()),
                 (Method::Post, "/v1/ai") => ai_proxy(req, env, cfg, &claims).await,
                 (Method::Post, "/v1/tts") => tts_proxy(req, env, cfg, &claims).await,
+                (Method::Put, p) if p.starts_with("/v1/blobs/") => {
+                    let sha = p["/v1/blobs/".len()..].to_owned();
+                    put_blob(req, env, &claims, &sha).await
+                }
                 _ => api_error(ErrorCode::NotFound, "not found"),
             }
         }
