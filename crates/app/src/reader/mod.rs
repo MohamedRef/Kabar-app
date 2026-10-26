@@ -784,6 +784,10 @@ fn ReadView(open: Open, mode: Mode) -> Element {
             .clone()
             .filter_map(|i| {
                 let w = doc.tokens[i].word.as_ref()?;
+                // English the learner reads needs no chip.
+                if w.is_english_aside() {
+                    return None;
+                }
                 let gloss =
                     w.shown().map_or_else(|| "…".to_string(), |info| info.gloss.get(voice).to_string());
                 Some((i, doc.text(doc.tokens[i].start, doc.tokens[i].end).to_string(), gloss))
