@@ -13,41 +13,35 @@ slides:
         عشان تحكي رحلة:
         - الترتيب: pertama / mula-mula → lalu / kemudian → setelah itu / selanjutnya → akhirnya.
         - في نفس الوقت: ketika / waktu (لما)، sambil (وأنا بـ… لنفس الشخص)، selama (طول ما).
-      ar: |
-        لسرد رحلة:
-        - الترتيب: pertama / mula-mula ← lalu / kemudian ← setelah itu / selanjutnya ← akhirnya.
-        - التزامن: ketika / waktu (عندما)، sambil (لفاعل واحد)، selama (طوال).
-      en: |
-        To tell a trip:
-        - Order: pertama / mula-mula → lalu / kemudian → setelah itu / selanjutnya → akhirnya.
-        - At the same time: ketika / waktu (when), sambil (while, same person), selama (all the while).
-    grammar: id.conjunction.sequence
-    examples:
-      - text: Pertama, saya naik ojek. Lalu, saya naik bus sambil mendengarkan musik.
-        ar_eg: الأول ركبت أوجيك، وبعدين ركبت أتوبيس وأنا بسمع مزيكا.
-        ar: أولًا ركبت درّاجة أجرة، ثم ركبت الحافلة وأنا أستمع إلى الموسيقى.
-        en: First I took an ojek. Then I took a bus while listening to music.
-  - title: Jalan-jalan pelan-pelan
-    body:
-      ar_eg: |
         التكرار مش للجمع بس:
         - فعل مكرر = براحته: jalan-jalan، lihat-lihat.
         - صفة مكررة = حال: pelan-pelan، cepat-cepat.
         - أداة سؤال مكررة = أي: tidak apa-apa، kapan-kapan، di mana-mana.
         - تنوّع: sayur-mayur، bolak-balik.
       ar: |
+        لسرد رحلة:
+        - الترتيب: pertama / mula-mula ← lalu / kemudian ← setelah itu / selanjutnya ← akhirnya.
+        - التزامن: ketika / waktu (عندما)، sambil (لفاعل واحد)، selama (طوال).
         للتكرار معانٍ غير الجمع:
         - الفعل المكرر: jalan-jalan، lihat-lihat.
         - الصفة المكررة حالًا: pelan-pelan، cepat-cepat.
         - أداة الاستفهام المكررة للإبهام: tidak apa-apa، kapan-kapan، di mana-mana.
         - التنوع: sayur-mayur، bolak-balik.
       en: |
+        To tell a trip:
+        - Order: pertama / mula-mula → lalu / kemudian → setelah itu / selanjutnya → akhirnya.
+        - At the same time: ketika / waktu (when), sambil (while, same person), selama (all the while).
         Doubling does more than plurals:
         - verb: casual action (jalan-jalan, lihat-lihat).
         - adjective: manner (pelan-pelan, cepat-cepat).
         - question word: "any-" (tidak apa-apa, kapan-kapan, di mana-mana).
         - variety: sayur-mayur, bolak-balik.
-    grammar: id.reduplication.types
+    grammar: id.conjunction.sequence
+    examples:
+      - text: Pertama, saya naik ojek. Lalu, saya naik bus sambil mendengarkan musik.
+        ar_eg: الأول ركبت أوجيك، وبعدين ركبت أتوبيس وأنا بسمع مزيكا.
+        ar: أولًا ركبت درّاجة أجرة، ثم ركبت الحافلة وأنا أستمع إلى الموسيقى.
+        en: First I took an ojek. Then I took a bus while listening to music.
 exercises:
   - id: e01
     type: match_pairs
@@ -76,7 +70,7 @@ exercises:
       ar_eg: إيه الكلمة اللي بتختم الحكاية؟
       ar: ما الكلمة التي تختم الحكاية؟
       en: Which word closes the story?
-    options: ["Pertama", "Akhirnya", "Mula-mula"]
+    options: [Pertama, Akhirnya, Mula-mula]
     answer: 1
     words: [akhirnya]
   - id: e03
@@ -86,7 +80,7 @@ exercises:
       ar_eg: ماما بتطبخ لما بابا بيقرا.
       ar: الأم تطبخ بينما يقرأ الأب.
       en: Mum cooks while Dad reads.
-    options: ["ketika", "sambil"]
+    options: [ketika, sambil]
     answer: 0
     explain:
       ar_eg: شخصين مختلفين يبقى ketika؛ sambil لنفس الشخص بس.
@@ -96,50 +90,30 @@ exercises:
   - id: e04
     type: listen
     text: Lihat-lihat dulu, ya, Bu.
-    options: ["Jalan-jalan dulu, ya, Bu.", "Lihat-lihat dulu, ya, Bu.", "Lihat dulu, ya, Bu."]
+    options: ['Jalan-jalan dulu, ya, Bu.', 'Lihat-lihat dulu, ya, Bu.', 'Lihat dulu, ya, Bu.']
     answer: 1
     words: [lihat-lihat]
   - id: e05
-    type: multiple_choice
-    question: "Maaf, Pak! — ___"
-    question_meaning:
-      ar_eg: حد بيعتذرلك. ترد بإيه؟
-      ar: يعتذر إليك شخص. بماذا تردّ؟
-      en: Someone apologises to you. Your reply?
-    options: ["Siapa-siapa.", "Tidak apa-apa.", "Bolak-balik."]
-    answer: 1
-    words: [apa-apa]
-  - id: e06
     type: fill_blank
     sentence: Saya mendengarkan musik ___ naik bus.
     meaning:
       ar_eg: بسمع مزيكا وأنا راكب الأتوبيس.
       ar: أستمع إلى الموسيقى وأنا أركب الحافلة.
       en: I listen to music while riding the bus.
-    options: ["setelah itu", "sambil", "akhirnya"]
+    options: [setelah itu, sambil, akhirnya]
     answers: [sambil]
     words: [sambil]
-  - id: e07
+  - id: e06
     type: fill_blank
     sentence: ___ kecil, saya tinggal di Kairo.
     meaning:
       ar_eg: وأنا صغير كنت عايش في القاهرة.
       ar: عندما كنت صغيرًا عشت في القاهرة.
       en: When I was little, I lived in Cairo.
-    options: ["Waktu", "Selanjutnya", "Sambil"]
+    options: [Waktu, Selanjutnya, Sambil]
     answers: [Waktu]
     words: [waktu]
-  - id: e08
-    type: fill_blank
-    sentence: Jalannya licin. ___ saja, Pak!
-    meaning:
-      ar_eg: الطريق بيزحلق. بالراحة يا أسطى!
-      ar: الطريق زلق. على مهلك يا سيدي!
-      en: The road is slippery. Slowly, sir!
-    options: ["Kapan-kapan", "Pelan-pelan", "Jalan-jalan"]
-    answers: [Pelan-pelan]
-    words: [pelan-pelan, licin]
-  - id: e09
+  - id: e07
     type: build_sentence
     source:
       ar_eg: الأول ركبت ميكروباص للموقف.
@@ -148,7 +122,7 @@ exercises:
     answer: Pertama, saya naik angkot ke terminal.
     distractors: [akhirnya, di]
     words: [pertama, angkot, terminal]
-  - id: e10
+  - id: e08
     type: build_sentence
     source:
       ar_eg: لما وصلنا، المطر بدأ ينزل.
@@ -157,35 +131,25 @@ exercises:
     answer: Ketika kami sampai, hujan mulai turun.
     distractors: [sambil, sudah]
     words: [ketika, hujan]
-  - id: e11
+  - id: e09
     type: translate
     direction: to_target
     source_meaning:
       ar_eg: بعد كده اتفسحنا في بيدوجول.
       ar: بعد ذلك تنزهنا في بيدوغول.
       en: After that, we went sightseeing in Bedugul.
-    answers:
-      - Setelah itu, kami jalan-jalan di Bedugul.
-      - Setelah itu kami jalan-jalan di Bedugul.
-      - Setelah itu, kami jalan-jalan di Bedugul
-      - Setelah itu, kami jalan-jalan ke Bedugul.
-      - Setelah itu kami jalan-jalan ke Bedugul.
-      - Setelah itu, kita jalan-jalan di Bedugul.
-      - Sesudah itu, kami jalan-jalan di Bedugul.
-      - Sesudah itu kami jalan-jalan di Bedugul.
-      - Sesudah itu, kami jalan-jalan ke Bedugul.
-      - Setelah itu, kami berjalan-jalan di Bedugul.
+    answers: ['Setelah itu, kami jalan-jalan di Bedugul.', Setelah itu kami jalan-jalan di Bedugul., 'Setelah itu, kami jalan-jalan di Bedugul', 'Setelah itu, kami jalan-jalan ke Bedugul.', Setelah itu kami jalan-jalan ke Bedugul., 'Setelah itu, kita jalan-jalan di Bedugul.', 'Sesudah itu, kami jalan-jalan di Bedugul.', Sesudah itu kami jalan-jalan di Bedugul., 'Sesudah itu, kami jalan-jalan ke Bedugul.', 'Setelah itu, kami berjalan-jalan di Bedugul.']
     words: [setelah itu, jalan-jalan]
-  - id: e12
+  - id: e10
     type: translate
     direction: from_target
     source_text: Mula-mula kami naik ojek, kemudian kami naik bus ke Bedugul.
     answers_meaning:
-      ar_eg: ["في الأول ركبنا أوجيك، وبعدين ركبنا أتوبيس لبيدوجول.", "الأول ركبنا موتوسيكل أجرة وبعدين أتوبيس لبيدوجول"]
-      ar: ["في البداية ركبنا درّاجة أجرة، ثم ركبنا الحافلة إلى بيدوغول.", "أولًا ركبنا دراجة أجرة ثم الحافلة إلى بيدوغول"]
-      en: ["At first we took an ojek, then we took a bus to Bedugul.", "First we rode a motorbike taxi, then a bus to Bedugul."]
+      ar_eg: [في الأول ركبنا أوجيك، وبعدين ركبنا أتوبيس لبيدوجول., الأول ركبنا موتوسيكل أجرة وبعدين أتوبيس لبيدوجول]
+      ar: [في البداية ركبنا درّاجة أجرة، ثم ركبنا الحافلة إلى بيدوغول., أولًا ركبنا دراجة أجرة ثم الحافلة إلى بيدوغول]
+      en: ['At first we took an ojek, then we took a bus to Bedugul.', 'First we rode a motorbike taxi, then a bus to Bedugul.']
     words: [mula-mula, kemudian]
-  - id: e13
+  - id: e11
     type: dictation
     text: Akhirnya kami sampai di Bedugul.
     meaning:
@@ -193,7 +157,7 @@ exercises:
       ar: وصلنا أخيرًا إلى بيدوغول.
       en: We finally arrived in Bedugul.
     words: [akhirnya]
-  - id: e14
+  - id: e12
     type: speaking
     text: Pertama, saya naik ojek. Lalu, saya naik bus. Setelah itu, saya jalan-jalan di danau. Akhirnya, saya pulang.
     meaning:

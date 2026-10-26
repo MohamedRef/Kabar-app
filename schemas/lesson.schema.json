@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://kabar.local/schemas/lesson.schema.json",
   "title": "Kabar lesson (kabar.lesson/v1)",
-  "description": "One lesson for the Lesson Player (SPEC §14): 3–6 teaching slides → 8–15 exercises → mini dialogue → new-words summary → souvenir. Mirrors kabar_protocol::lesson::LessonContent; kabar_core::lesson::validate adds the cross-field rules (unique exercise ids, answer indexes in range, exactly one ___ in fill_blank, ...).",
+  "description": "One lesson for the Lesson Player (SPEC §14): 1–4 teaching slides → 6–12 exercises → mini dialogue (4–6 lines) → new-words summary → souvenir, at most 7 minutes. Per-kind caps and the time model live in kabar_core::lesson::pacing (docs/PEDAGOGY.md). Mirrors kabar_protocol::lesson::LessonContent; kabar_core::lesson::validate adds the cross-field rules (unique exercise ids, answer indexes in range, exactly one ___ in fill_blank, ...).",
   "type": "object",
   "required": ["schema", "id", "language", "title", "can_do", "exercises"],
   "properties": {
@@ -11,8 +11,8 @@
     "language": { "enum": ["id", "jv"] },
     "title": { "type": "string", "minLength": 1, "description": "Target-language title, as in the curriculum." },
     "can_do": { "$ref": "#/$defs/localized" },
-    "slides": { "type": "array", "maxItems": 6, "items": { "$ref": "#/$defs/slide" } },
-    "exercises": { "type": "array", "minItems": 8, "maxItems": 15, "items": { "$ref": "#/$defs/exercise" } },
+    "slides": { "type": "array", "maxItems": 4, "items": { "$ref": "#/$defs/slide" } },
+    "exercises": { "type": "array", "minItems": 6, "maxItems": 12, "items": { "$ref": "#/$defs/exercise" } },
     "dialogue": { "$ref": "#/$defs/dialogue" },
     "new_words": { "type": "array", "items": { "$ref": "#/$defs/new_word" } },
     "souvenir": { "$ref": "#/$defs/souvenir" },
@@ -58,7 +58,7 @@
       "properties": {
         "title": { "type": "string" },
         "body": { "$ref": "#/$defs/localized" },
-        "examples": { "type": "array", "items": { "$ref": "#/$defs/with_meaning", "unevaluatedProperties": false } },
+        "examples": { "type": "array", "maxItems": 3, "items": { "$ref": "#/$defs/with_meaning", "unevaluatedProperties": false } },
         "grammar": { "type": "string", "description": "Grammar-library id, e.g. id.greeting.selamat." }
       },
       "additionalProperties": false
@@ -180,7 +180,8 @@
         "title": { "type": "string" },
         "lines": {
           "type": "array",
-          "minItems": 2,
+          "minItems": 4,
+          "maxItems": 6,
           "items": {
             "$ref": "#/$defs/with_meaning",
             "required": ["speaker"],

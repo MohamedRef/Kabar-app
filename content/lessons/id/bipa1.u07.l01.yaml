@@ -3,9 +3,9 @@ id: bipa1.u07.l01
 language: id
 title: Saya suka membaca
 can_do:
-  ar_eg: تقول بتحب إيه، وعايز إيه، وتقدر تعمل إيه.
-  ar: أن تقول ما تحب وما تريد وما تستطيع.
-  en: Say likes, wants and abilities.
+  ar_eg: تقول بتحب تعمل إيه ونفسك تعمل إيه.
+  ar: أن تقول ما تحب أن تفعله وما تتمنى فعله.
+  en: Say what you like and would like to do.
 slides:
   - title: Saya mau makan
     body:
@@ -54,151 +54,21 @@ slides:
         ar_eg: ديماس بيحب يلعب ريشة.
         ar: يحب ديماس لعب الريشة الطائرة.
         en: Dimas likes playing badminton.
-  - title: bisa
-    body:
-      ar_eg: |
-        bisa = أقدر / بعرف (قدرة):
-        Saya bisa berenang = بعرف أعوم.
-        Bisa bahasa Indonesia? = بتعرف إندونيسي؟
-        ولو لسه مابتعرفش بس بتتعلم، قول «Belum bisa» = لسه مابعرفش. أحلى من «Tidak bisa»!
-      ar: |
-        bisa = يستطيع / يُحسن (القدرة):
-        Saya bisa berenang = أستطيع السباحة.
-        Bisa bahasa Indonesia? = هل تتكلم الإندونيسية؟
-        ومن لا يُحسن الشيء بعدُ يقول «Belum bisa» = لا أستطيع بعد، وهي ألطف من «Tidak bisa».
-      en: |
-        bisa = can, know how to (ability):
-        Saya bisa berenang = I can swim.
-        Bisa bahasa Indonesia? = Do you speak Indonesian?
-        Still learning? Say "Belum bisa" = I can't yet. Much nicer than "Tidak bisa"!
-    grammar: id.verb.modal
-    examples:
-      - text: Maaf, saya tidak bisa datang besok.
-        ar_eg: معلش، مش هقدر آجي بكرة.
-        ar: عذرًا، لا أستطيع المجيء غدًا.
-        en: Sorry, I can't come tomorrow.
-  - title: boleh, harus, perlu
-    body:
-      ar_eg: |
-        - boleh = مسموح (إذن). فاكرها من «Boleh saya foto?»
-        خلي بالك: bisa = قدرة، boleh = إذن. «ممكن أدخل؟» = Boleh saya masuk?
-        - harus = لازم: Saya harus bekerja = لازم أشتغل.
-        - perlu = محتاج: Kamu tidak perlu datang = مش محتاج تيجي.
-        النفي بـ tidak قبلها: tidak bisa (مقدرش)، tidak boleh (ممنوع)، وفي الكلام العادي tidak usah = مالوش لزوم.
-      ar: |
-        - boleh = يجوز / مسموح (الإذن)، كما في «Boleh saya foto?»
-        وانتبه: bisa للقدرة وboleh للإذن: «هل يمكنني الدخول؟» = Boleh saya masuk?
-        - harus = يجب: Saya harus bekerja = يجب أن أعمل.
-        - perlu = يحتاج: Kamu tidak perlu datang = لا تحتاج إلى المجيء.
-        والنفي بـ tidak قبلها: tidak bisa، tidak boleh (ممنوع)، وفي العامية tidak usah = لا داعي.
-      en: |
-        - boleh = may (permission) — remember "Boleh saya foto?"
-        Careful: bisa = ability, boleh = permission. "May I come in?" = Boleh saya masuk?
-        - harus = must: Saya harus bekerja = I must work.
-        - perlu = need: Kamu tidak perlu datang = You don't need to come.
-        Negate with tidak: tidak bisa (can't), tidak boleh (not allowed); casual tidak usah = no need.
-    grammar: id.verb.modal
-    examples:
-      - text: Di masjid tidak boleh pakai sepatu.
-        ar_eg: ممنوع تلبس جزمة في الجامع.
-        ar: لا يجوز لبس الأحذية في المسجد.
-        en: You may not wear shoes in the mosque.
-      - text: Kamu harus coba rendang!
-        ar_eg: لازم تجرب الرندانج!
-        ar: يجب أن تجرّب الرندانغ!
-        en: You must try rendang!
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: suka
-        ar_eg: بيحب
-        ar: يحب
-        en: like
-      - text: mau
-        ar_eg: عايز
-        ar: يريد
-        en: want
-      - text: bisa
-        ar_eg: يقدر / بيعرف
-        ar: يستطيع
-        en: can
-      - text: harus
-        ar_eg: لازم
-        ar: يجب
-        en: must
-      - text: perlu
-        ar_eg: محتاج
-        ar: يحتاج
-        en: need
-    words: [suka, mau, bisa, harus, perlu]
-  - id: e02
     type: multiple_choice
     question_meaning:
       ar_eg: أنهي جملة صح بمعنى «عايز آكل»؟
       ar: أيّ جملة صحيحة بمعنى «أريد أن آكل»؟
       en: Which sentence correctly says "I want to eat"?
-    options: ["Saya mau makan.", "Saya mau untuk makan.", "Saya makan mau."]
+    options: [Saya mau makan., Saya mau untuk makan., Saya makan mau.]
     answer: 0
     explain:
       ar_eg: الفعل بييجي بعد mau على طول، زي «عايز آكل».
       ar: يأتي الفعل بعد mau مباشرة.
       en: The verb follows mau directly, like «عايز آكل».
     words: [mau]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: واقف على باب مكتب أستاذ بودي. عايز تستأذن تدخل.
-      ar: تقف على باب مكتب الأستاذ بودي وتريد أن تستأذن في الدخول.
-      en: You're at Pak Budi's office door and want permission to come in.
-    options: ["Bisa saya masuk?", "Harus saya masuk?", "Boleh saya masuk?"]
-    answer: 2
-    explain:
-      ar_eg: الإذن = boleh. bisa للقدرة.
-      ar: الإذن بـ boleh، وbisa للقدرة.
-      en: Permission = boleh; bisa is ability.
-    words: [boleh, masuk]
-  - id: e04
-    type: listen
-    text: Saya bisa berenang.
-    options: ["Saya suka berenang.", "Saya mau berenang.", "Saya bisa berenang."]
-    answer: 2
-    words: [bisa, berenang]
-  - id: e05
-    type: fill_blank
-    sentence: Maaf, saya tidak ___ datang besok.
-    meaning:
-      ar_eg: معلش، مش هقدر آجي بكرة.
-      ar: عذرًا، لا أستطيع المجيء غدًا.
-      en: Sorry, I can't come tomorrow.
-    options: ["bisa", "suka", "boleh"]
-    answers: [bisa]
-    explain:
-      ar_eg: «مقدرش» = tidak bisa. tidak boleh معناها «ممنوع».
-      ar: «لا أستطيع» = tidak bisa، أما tidak boleh فـ «ممنوع».
-      en: '"Can''t" = tidak bisa; tidak boleh means "not allowed".'
-    words: [bisa]
-  - id: e06
-    type: fill_blank
-    sentence: Di masjid tidak ___ pakai sepatu.
-    meaning:
-      ar_eg: ممنوع تلبس جزمة في الجامع.
-      ar: لا يجوز لبس الأحذية في المسجد.
-      en: You may not wear shoes in the mosque.
-    options: ["perlu", "boleh", "bisa"]
-    answers: [boleh]
-    words: [boleh, sepatu]
-  - id: e07
-    type: fill_blank
-    sentence: Kamu ___ coba rendang!
-    meaning:
-      ar_eg: لازم تجرب الرندانج!
-      ar: يجب أن تجرّب الرندانغ!
-      en: You must try rendang!
-    options: ["boleh", "ingin", "harus"]
-    answers: [harus]
-    words: [harus, coba]
-  - id: e08
+  - id: e02
     type: build_sentence
     source:
       ar_eg: بحب ألعب ريشة.
@@ -207,47 +77,16 @@ exercises:
     answer: Saya suka bermain bulu tangkis.
     distractors: [harus, sepak]
     words: [suka, bermain, bulu tangkis]
-  - id: e09
+  - id: e03
     type: translate
     direction: to_target
     source_meaning:
       ar_eg: بحب القراية.
       ar: أحب القراءة.
       en: I like reading.
-    answers:
-      - Saya suka membaca.
-      - Saya suka membaca
-      - Aku suka membaca.
-      - Aku suka membaca
-      - Saya suka baca.
-      - Aku suka baca.
+    answers: [Saya suka membaca., Saya suka membaca, Aku suka membaca., Aku suka membaca, Saya suka baca., Aku suka baca.]
     words: [suka, membaca]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: بتعرف إندونيسي؟
-      ar: هل تتكلم الإندونيسية؟
-      en: Do you speak Indonesian?
-    answers:
-      - Bisa bahasa Indonesia?
-      - Kamu bisa bahasa Indonesia?
-      - Anda bisa bahasa Indonesia?
-      - Kamu bisa berbicara bahasa Indonesia?
-      - Anda bisa berbicara bahasa Indonesia?
-      - Apakah kamu bisa bahasa Indonesia?
-      - Apakah Anda bisa berbicara bahasa Indonesia?
-    words: [bisa]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: Kamu tidak perlu datang.
-    answers_meaning:
-      ar_eg: ["مش محتاج تيجي.", "مش لازم تيجي", "إنت مش محتاج تيجي"]
-      ar: ["لا تحتاج إلى المجيء.", "لا داعي لأن تأتي", "ليس عليك أن تأتي"]
-      en: ["You don't need to come.", "You don't have to come", "No need for you to come"]
-    words: [perlu]
-  - id: e12
+  - id: e04
     type: dictation
     text: Saya ingin ke Mekkah.
     meaning:
@@ -255,7 +94,7 @@ exercises:
       ar: أتمنى الذهاب إلى مكة.
       en: I'd love to go to Mecca.
     words: [ingin]
-  - id: e13
+  - id: e05
     type: speaking
     text: Hobi saya bermain sepak bola.
     meaning:
@@ -263,6 +102,40 @@ exercises:
       ar: هوايتي لعب كرة القدم.
       en: My hobby is playing football.
     words: [hobi, sepak bola]
+  - id: e06
+    type: match_pairs
+    pairs:
+      - text: suka
+        ar_eg: يحب
+        ar: يحب
+        en: to like
+      - text: ingin
+        ar_eg: نفسه / يتمنى
+        ar: يتمنى / يرغب
+        en: to wish, would like
+      - text: hobi
+        ar_eg: هواية
+        ar: هواية
+        en: hobby
+      - text: sepak bola
+        ar_eg: كورة قدم
+        ar: كرة القدم
+        en: football
+      - text: bulu tangkis
+        ar_eg: ريشة طايرة
+        ar: الريشة الطائرة
+        en: badminton
+    words: [suka, ingin, hobi, sepak bola, bulu tangkis]
+  - id: e07
+    type: listen
+    text: Saya suka minum teh manis.
+    options: [Saya suka minum kopi., Saya suka minum teh manis., Saya ingin minum teh.]
+    answer: 1
+    meaning:
+      ar_eg: بحب أشرب شاي بسكر.
+      ar: أحب شرب الشاي المحلّى.
+      en: I like drinking sweet tea.
+    words: [suka, manis]
 dialogue:
   title: Hobimu apa?
   lines:
@@ -297,36 +170,11 @@ new_words:
     ar_eg: بيحب
     ar: يحب
     en: to like
-  - word: mau
-    pos: verb
-    ar_eg: عايز
-    ar: يريد
-    en: to want
   - word: ingin
     pos: verb
     ar_eg: نفسه / يتمنى
     ar: يرغب / يتمنى
     en: to wish, would like
-  - word: bisa
-    pos: verb
-    ar_eg: يقدر / بيعرف
-    ar: يستطيع
-    en: can, be able to
-  - word: harus
-    pos: verb
-    ar_eg: لازم
-    ar: يجب
-    en: must, have to
-  - word: perlu
-    pos: verb
-    ar_eg: محتاج
-    ar: يحتاج
-    en: to need
-  - word: tidak usah
-    pos: phrase
-    ar_eg: مالوش لزوم (عامية)
-    ar: لا داعي (عامية)
-    en: no need (casual)
   - word: hobi
     pos: noun
     ar_eg: هواية
@@ -342,41 +190,11 @@ new_words:
     ar_eg: كورة
     ar: كرة القدم
     en: football, soccer
-  - word: masuk
-    pos: verb
-    ar_eg: يدخل
-    ar: يدخل
-    en: to enter, to come in
-  - word: pulang
-    pos: verb
-    ar_eg: يروّح (البيت)
-    ar: يعود إلى البيت
-    en: to go home
-  - word: coba
-    pos: verb
-    ar_eg: يجرب
-    ar: يجرّب
-    en: to try
-  - word: sepatu
-    pos: noun
-    ar_eg: جزمة
-    ar: حذاء
-    en: shoes
-  - word: teh
-    pos: noun
-    ar_eg: شاي
-    ar: شاي
-    en: tea
   - word: manis
     pos: adjective
     ar_eg: مسكّر / حلو
     ar: حلو المذاق
     en: sweet
-  - word: tapi
-    pos: conjunction
-    ar_eg: بس / لكن
-    ar: لكن
-    en: but
 review:
   status: draft
   verified: false

@@ -15,6 +15,9 @@ pub struct DayStats {
     /// In first-seen order, without duplicates.
     pub new_words: Vec<String>,
     pub lessons_done: Vec<String>,
+    /// Lessons finished per unit today (a unit has several short lessons, so
+    /// a 30-minute plan can ask for two from the same unit).
+    pub lessons_finished: BTreeMap<String, u32>,
     pub items_done: BTreeSet<String>,
     pub practice: Vec<PracticeTally>,
     pub xp: u32,
@@ -61,8 +64,11 @@ impl DayStats {
                 }
             }
             ActivityKind::LessonStep { unit_id, done } => {
-                if *done && !self.lessons_done.contains(unit_id) {
-                    self.lessons_done.push(unit_id.clone());
+                if *done {
+                    if !self.lessons_done.contains(unit_id) {
+                        self.lessons_done.push(unit_id.clone());
+                    }
+                    *self.lessons_finished.entry(unit_id.clone()).or_default() += 1;
                 }
             }
             ActivityKind::Practice { skill, topic, correct, total } => {

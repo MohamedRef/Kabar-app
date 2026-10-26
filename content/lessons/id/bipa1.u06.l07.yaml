@@ -1,0 +1,210 @@
+schema: kabar.lesson/v1
+id: bipa1.u06.l07
+language: id
+title: Di sini, di sana
+can_do:
+  ar_eg: تقول هنا وهناك وبعيد هناك، وكام مرة في اليوم.
+  ar: أن تقول هنا وهناك وهنالك، وكم مرة في اليوم.
+  en: Say here, there and over there, and how many times a day.
+slides:
+  - title: Setiap hari, lima kali sehari
+    body:
+      ar_eg: |
+        - setiap = كل: setiap hari = كل يوم، setiap pagi = كل صبح.
+        - kali = مرة: dua kali sehari = مرتين في اليوم، sekali seminggu = مرة في الأسبوع.
+        وsalat (وكتير بيكتبوها sholat) جاية من العربي «صلاة».
+      ar: |
+        - setiap = كل: setiap hari = كل يوم، setiap pagi = كل صباح.
+        - kali = مرة: dua kali sehari = مرتان في اليوم، sekali seminggu = مرة في الأسبوع.
+        وsalat (وتُكتب كثيرًا sholat) من العربية «صلاة».
+      en: |
+        - setiap = every: setiap hari = every day, setiap pagi = every morning.
+        - kali = time(s): dua kali sehari = twice a day, sekali seminggu = once a week.
+        salat (often written sholat) comes from Arabic «صلاة».
+    grammar: id.frequency.adverbs
+    examples:
+      - text: Saya salat lima kali sehari.
+        ar_eg: بصلي خمس مرات في اليوم.
+        ar: أصلي خمس مرات في اليوم.
+        en: I pray five times a day.
+  - title: Di sini, di situ, di sana
+    body:
+      ar_eg: |
+        الإندونيسي عنده ٣ أماكن بدل اتنين:
+        - sini = هنا، جنبي.
+        - situ = عندك، جنب اللي بكلمه.
+        - sana = هناك، بعيد عن الاتنين.
+        وعلى طول قبلها di (في)، ke (لـ)، dari (من): di sini، ke sana، dari situ.
+        Ke sini! = تعالى هنا!
+      ar: |
+        للإشارة المكانية ثلاث درجات:
+        - sini = هنا، قرب المتكلم.
+        - situ = هناك، قرب المخاطب.
+        - sana = هنالك، بعيدًا عنهما.
+        وتسبقها di (في) أو ke (إلى) أو dari (من): di sini، ke sana، dari situ.
+        Ke sini! = تعالَ إلى هنا!
+      en: |
+        Indonesian has three distances instead of two:
+        - sini = here, near me.
+        - situ = there, near you.
+        - sana = over there, away from both of us.
+        Always after di (at), ke (to) or dari (from): di sini, ke sana, dari situ.
+        Ke sini! = Come here!
+    grammar: id.demonstrative.sini-situ-sana
+    examples:
+      - text: Tasnya di situ.
+        ar_eg: الشنطة عندك (جنبك).
+        ar: الحقيبة عندك.
+        en: The bag is there (by you).
+      - text: Masjidnya di sana.
+        ar_eg: الجامع هناك.
+        ar: المسجد هناك.
+        en: The mosque is over there.
+exercises:
+  - id: e01
+    type: fill_blank
+    sentence: Tasmu di ___.
+    meaning:
+      ar_eg: شنطتك عندك (جنبك).
+      ar: حقيبتك عندك (بجانبك).
+      en: Your bag is there (right by you).
+    options: [sini, situ, sana]
+    answers: [situ]
+    explain:
+      ar_eg: الحاجة جنب اللي بتكلمه، يبقى situ.
+      ar: الشيء قرب المخاطب فيُشار إليه بـ situ.
+      en: It's next to the person you're talking to, so situ.
+    words: [situ, tas]
+  - id: e02
+    type: fill_blank
+    sentence: Saya salat lima ___ sehari.
+    meaning:
+      ar_eg: بصلي خمس مرات في اليوم.
+      ar: أصلي خمس مرات في اليوم.
+      en: I pray five times a day.
+    options: [kali, hari, jam]
+    answers: [kali]
+    words: [kali, salat]
+  - id: e03
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: تعالى هنا!
+      ar: تعالَ إلى هنا!
+      en: Come here!
+    answers: [Ke sini!, Ke sini, Sini!, Sini, Datang ke sini!, Ayo ke sini!]
+    words: [sini]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: di sini
+        ar_eg: هنا
+        ar: هنا
+        en: here
+      - text: di situ
+        ar_eg: عندك (قريب منك)
+        ar: هناك (قربك)
+        en: there (near you)
+      - text: di sana
+        ar_eg: هناك (بعيد)
+        ar: هنالك (بعيدًا)
+        en: over there
+      - text: pasar
+        ar_eg: السوق
+        ar: السوق
+        en: market
+    words: [sini, situ, sana, pasar]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: صاحبك بيدور على شنطته وهي جنبه هو. تقول إيه؟
+      ar: صديقك يبحث عن حقيبته وهي بجانبه. ماذا تقول؟
+      en: Your friend is looking for their bag, and it's right next to them. What do you say?
+    options: [Tasmu di sana., Tasmu di situ., Tasmu di sini.]
+    answer: 1
+    explain:
+      ar_eg: situ = عندك، قريب من اللي بتكلمه.
+      ar: situ = قرب المخاطَب.
+      en: Situ = there, near the person you're talking to.
+    words: [situ]
+  - id: e06
+    type: dictation
+    text: Masjidnya di sana.
+    meaning:
+      ar_eg: الجامع هناك.
+      ar: المسجد هنالك.
+      en: The mosque is over there.
+    words: [sana]
+dialogue:
+  title: Makan di Blok M
+  lines:
+    - speaker: Rina
+      text: Mohamed, kamu sering makan di Blok M?
+      ar_eg: محمد، إنت بتاكل في بلوك إم كتير؟
+      ar: يا محمد، هل تأكل في بلوك إم كثيرًا؟
+      en: Mohamed, do you often eat at Blok M?
+    - speaker: Mohamed
+      text: Kadang-kadang. Biasanya saya makan di rumah.
+      ar_eg: ساعات. عادةً باكل في البيت.
+      ar: أحيانًا. عادةً آكل في البيت.
+      en: Sometimes. I usually eat at home.
+    - speaker: Rina
+      text: Saya sering makan di sini sesudah bekerja.
+      ar_eg: أنا باكل هنا كتير بعد الشغل.
+      ar: آكل هنا كثيرًا بعد العمل.
+      en: I often eat here after work.
+    - speaker: Mohamed
+      text: Sate di sana enak?
+      ar_eg: الساتيه اللي هناك حلو؟
+      ar: هل الساتيه هناك لذيذ؟
+      en: Is the satay over there good?
+    - speaker: Rina
+      text: Enak! Tadi siang saya makan sate di sana.
+      ar_eg: حلو! النهارده الضهر كلت ساتيه هناك.
+      ar: لذيذ! أكلت الساتيه هناك ظهر اليوم.
+      en: It's good! I had satay there at lunchtime today.
+    - speaker: Mohamed
+      text: Oke, nanti malam kita ke sana!
+      ar_eg: خلاص، بالليل نروح هناك!
+      ar: حسنًا، لنذهب إلى هناك الليلة!
+      en: OK, tonight we'll go there!
+new_words:
+  - word: sini
+    pos: pronoun
+    ar_eg: هنا
+    ar: هنا
+    en: here
+  - word: situ
+    pos: pronoun
+    ar_eg: عندك (جنبك)
+    ar: هناك (قرب المخاطب)
+    en: there (near you)
+  - word: sana
+    pos: pronoun
+    ar_eg: هناك
+    ar: هنالك
+    en: over there
+  - word: pedas
+    pos: adjective
+    ar_eg: حرّاق / حار
+    ar: حارّ (لاذع)
+    en: spicy
+  - word: pasar
+    pos: noun
+    ar_eg: سوق
+    ar: سوق
+    en: market
+  - word: salat
+    pos: noun
+    ar_eg: صلاة
+    ar: صلاة
+    en: (Islamic) prayer; to pray
+    arabic: صلاة
+  - word: kali
+    pos: noun
+    ar_eg: مرة
+    ar: مرة
+    en: time(s), occurrence
+review:
+  status: draft
+  verified: false

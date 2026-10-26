@@ -99,10 +99,6 @@ slides:
         ar_eg: أنهي أرخص، ده ولا ده؟
         ar: أيهما أرخص، هذا أم ذاك؟
         en: Which is cheaper, this or that?
-      - text: Lebih baik kita naik taksi.
-        ar_eg: الأحسن نركب تاكسي.
-        ar: الأفضل أن نركب سيارة أجرة.
-        en: We'd better take a taxi.
 exercises:
   - id: e01
     type: match_pairs
@@ -134,7 +130,7 @@ exercises:
       ar_eg: أنهي جملة معناها «الجونج أكبر من الناي»؟
       ar: أيّ جملة تعني «الغونغ أكبر من الناي»؟
       en: Which sentence means "The gong is bigger than the flute"?
-    options: ["Gong lebih besar daripada suling.", "Gong lebih besar dengan suling.", "Gong besar lebih daripada suling."]
+    options: [Gong lebih besar daripada suling., Gong lebih besar dengan suling., Gong besar lebih daripada suling.]
     answer: 0
     explain:
       ar_eg: lebih قبل الصفة، و«من» = daripada مش dengan.
@@ -144,56 +140,20 @@ exercises:
   - id: e03
     type: listen
     text: Suling lebih ringan daripada gendang.
-    options: ["Suling lebih ringan daripada gendang.", "Gendang lebih ringan daripada suling.", "Suling lebih berat daripada gendang."]
+    options: [Suling lebih ringan daripada gendang., Gendang lebih ringan daripada suling., Suling lebih berat daripada gendang.]
     answer: 0
     words: [suling, ringan, gendang]
   - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: "في محل، عايز تسأل البياعة: «أنهي أرخص، ده ولا ده؟»"
-      ar: "في متجر تريد أن تسأل البائعة: «أيهما أرخص، هذا أم ذاك؟»"
-      en: In a shop you want to ask, "Which is cheaper, this or that?"
-    options: ["Mana yang lebih murah, ini atau itu?", "Mana yang murah lebih, ini atau itu?", "Berapa lebih murah, ini atau itu?"]
-    answer: 0
-    words: [mana, lebih, murah]
-  - id: e05
     type: fill_blank
     sentence: Gitar ini ___ mahal daripada gitar itu.
     meaning:
       ar_eg: الجيتار ده أغلى من الجيتار ده.
       ar: هذه القيثارة أغلى من تلك.
       en: This guitar is more expensive than that guitar.
-    options: ["daripada", "lebih", "kurang"]
+    options: [daripada, lebih, kurang]
     answers: [lebih]
     words: [lebih, mahal]
-  - id: e06
-    type: fill_blank
-    sentence: Suara gong lebih keras ___ suara suling.
-    meaning:
-      ar_eg: صوت الجونج أعلى من صوت الناي.
-      ar: صوت الغونغ أعلى من صوت الناي.
-      en: The gong's sound is louder than the flute's.
-    options: ["dan", "daripada", "dengan"]
-    answers: [daripada]
-    explain:
-      ar_eg: «من» في المقارنة daripada (أو dari في الكلام). dengan = مع.
-      ar: «من» في المقارنة daripada (أو dari عاميةً)، أما dengan فتعني «مع».
-      en: '"Than" is daripada (or dari in speech); dengan means "with".'
-    words: [daripada, suara, keras]
-  - id: e07
-    type: multiple_choice
-    question_meaning:
-      ar_eg: القهوة محتاجة سكر زيادة. تقول إيه؟
-      ar: القهوة تحتاج إلى مزيد من السكر. ماذا تقول؟
-      en: Your coffee needs more sugar. What do you say?
-    options: ["Kopinya lebih manis.", "Kopinya kurang manis.", "Kopinya manis sekali."]
-    answer: 1
-    explain:
-      ar_eg: kurang manis = سكرها قليل / مش مسكّرة كفاية.
-      ar: kurang manis = قليلة الحلاوة.
-      en: kurang manis = not sweet enough.
-    words: [kurang, manis]
-  - id: e08
+  - id: e05
     type: build_sentence
     source:
       ar_eg: بالي أصغر من جاوة.
@@ -203,42 +163,7 @@ exercises:
     alternatives: []
     distractors: [dengan, besar]
     words: [lebih, kecil, daripada]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنهي أخف، الناي ولا الطبلة؟
-      ar: أيهما أخف، الناي أم الطبل؟
-      en: Which is lighter, the flute or the drum?
-    answers:
-      - Mana yang lebih ringan, suling atau gendang?
-      - Mana yang lebih ringan, suling atau gendang
-      - Yang mana yang lebih ringan, suling atau gendang?
-      - Yang mana lebih ringan, suling atau gendang?
-      - Mana lebih ringan, suling atau gendang?
-    words: [mana, lebih, ringan, suling, gendang]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Lebih baik kita naik taksi.
-    answers_meaning:
-      ar_eg: ["الأحسن نركب تاكسي", "الأحسن ناخد تاكسي", "أحسن نركب تاكسي"]
-      ar: ["الأفضل أن نركب سيارة أجرة", "من الأفضل أن نركب تاكسي", "الأفضل أن نأخذ سيارة أجرة"]
-      en: ["We'd better take a taxi.", "It's better if we take a taxi.", "It's better to take a taxi.", "We had better take a taxi."]
-    explain:
-      ar_eg: lebih baik + فعل = «الأحسن إن…».
-      ar: lebih baik + فعل = «الأفضل أن…».
-      en: lebih baik + verb = "it's better to …".
-    words: [lebih baik]
-  - id: e11
-    type: dictation
-    text: Gendang ini lebih berat daripada gitar itu.
-    meaning:
-      ar_eg: الطبلة دي أتقل من الجيتار ده.
-      ar: هذا الطبل أثقل من تلك القيثارة.
-      en: This drum is heavier than that guitar.
-    words: [gendang, berat, daripada]
-  - id: e12
+  - id: e06
     type: speaking
     text: Suara gong lebih keras daripada suara suling.
     meaning:
@@ -280,12 +205,6 @@ dialogue:
       ar: جيد! والناي أرخص أيضًا.
       en: Great! The flute is cheaper, too.
 new_words:
-  - word: alat musik
-    pos: noun
-    ar_eg: آلة موسيقية
-    ar: آلة موسيقية
-    en: musical instrument
-    arabic: آلة
   - word: lebih
     pos: adverb
     ar_eg: أكتر (قبل الصفة = أفعل)
@@ -296,16 +215,6 @@ new_words:
     ar_eg: من (في المقارنة)
     ar: من (في المقارنة)
     en: than
-  - word: kurang
-    pos: adverb
-    ar_eg: أقل / مش كفاية
-    ar: أقل / غير كافٍ
-    en: less; not … enough
-  - word: lebih baik
-    pos: phrase
-    ar_eg: الأحسن (إن…)
-    ar: الأفضل (أن…)
-    en: it's better to; had better
   - word: gendang
     pos: noun
     ar_eg: طبلة
