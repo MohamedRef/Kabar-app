@@ -5,6 +5,7 @@ pub mod ai;
 pub mod cloud;
 pub mod content;
 pub mod hlc;
+pub mod learn;
 pub mod pen;
 pub mod srs;
 pub mod sync;

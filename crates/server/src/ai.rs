@@ -72,7 +72,7 @@ impl Route {
 /// on inputs.
 pub fn route(call: &EngineCall, config: &Config) -> Result<Route, EngineError> {
     let key = &call.cache_key;
-    if key.task.is_personal() && key.engine.trains_on_inputs() {
+    if call.is_personal() && key.engine.trains_on_inputs() {
         return Err(EngineError::PrivacyBlocked);
     }
     if call.user.trim().is_empty()
@@ -116,7 +116,7 @@ pub fn cache_id(call: &EngineCall, model: &str) -> String {
 
 /// Personal answers stay out of the shared cache; the app keeps them locally.
 pub fn may_cache(call: &EngineCall) -> bool {
-    !call.cache_key.task.is_personal()
+    !call.is_personal()
 }
 
 /// A repair retry exists because the last answer was bad: don't serve it again.
@@ -256,6 +256,7 @@ mod tests {
             is_repair: false,
             json: true,
             max_tokens: None,
+            personal: false,
         }
     }
 
@@ -268,6 +269,9 @@ mod tests {
     fn personal_tasks_never_reach_gemini_free() {
         let c = config(&[("GEMINI_API_KEY", "k")]);
         assert!(route(&call(Task::AnalyzeText, EngineId::GeminiFree), &c).is_ok());
+        let screenshot = EngineCall { personal: true, ..call(Task::LearnEntry, EngineId::GeminiFree) };
+        assert_eq!(route(&screenshot, &c), Err(EngineError::PrivacyBlocked));
+        assert!(!may_cache(&screenshot));
         for task in Task::ALL.into_iter().filter(|t| t.is_personal()) {
             assert_eq!(route(&call(task, EngineId::GeminiFree), &c), Err(EngineError::PrivacyBlocked));
             assert!(route(&call(task, EngineId::WorkersAi), &c).is_ok());

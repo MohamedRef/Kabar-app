@@ -6,6 +6,7 @@ mod penlab;
 mod platform;
 mod screens;
 mod store;
+mod teach;
 mod theme;
 
 use std::cell::RefCell;
@@ -29,6 +30,8 @@ pub enum Screen {
     Studio,
     Settings,
     PenLab,
+    /// Teach Kabar a word (spec §26).
+    Teach,
 }
 
 impl Screen {
@@ -41,12 +44,13 @@ impl Screen {
             Self::Studio => Msg::NavStudio,
             Self::Settings => Msg::NavSettings,
             Self::PenLab => Msg::NavPenLab,
+            Self::Teach => Msg::NavTeach,
         }
     }
 
     /// Hidden from the phone's bottom bar; reachable from Settings there.
     fn secondary(self) -> bool {
-        matches!(self, Self::Studio | Self::PenLab)
+        matches!(self, Self::Studio | Self::PenLab | Self::Teach)
     }
 }
 
@@ -143,6 +147,8 @@ fn Loaded(db: Db) -> Element {
         screen: Signal::new(Screen::Today),
     });
     use_context_provider(|| db.clone());
+    use_context_provider(|| teach::TeachInbox(Signal::new(None)));
+    use_context_provider(|| teach::Ai(Rc::new(ai_router())));
     use_width_tracking(ui.width);
 
     let settings = ui.settings.read();
@@ -168,6 +174,14 @@ fn Loaded(db: Db) -> Element {
             }
         }
     }
+}
+
+/// The AI router with the bundled routes and prompts. Engines (Kabar Cloud,
+/// Kabar Home) are registered here once the app talks to them; until then
+/// AI features say "not connected yet" instead of failing silently.
+fn ai_router() -> kabar_core::ai::Router {
+    use kabar_core::ai::{MemoryCache, PromptSet, RouteTable, Router};
+    Router::new(RouteTable::builtin(), PromptSet::builtin(), Box::new(MemoryCache::default()))
 }
 
 /// Mirrors the window width into `width`, so layout follows the window,
@@ -201,6 +215,7 @@ fn Shell() -> Element {
         Screen::Reader,
         Screen::Review,
         Screen::Studio,
+        Screen::Teach,
         Screen::PenLab,
         Screen::Settings,
     ];
@@ -232,6 +247,7 @@ fn Shell() -> Element {
                     Screen::Studio => rsx! { screens::ComingSoon { title: Msg::NavStudio, milestone: "M9" } },
                     Screen::Settings => rsx! { screens::SettingsScreen {} },
                     Screen::PenLab => rsx! { penlab::PenLab {} },
+                    Screen::Teach => rsx! { teach::TeachScreen {} },
                 }
             }
         }

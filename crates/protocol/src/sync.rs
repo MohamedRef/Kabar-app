@@ -38,6 +38,8 @@ pub enum SyncKind {
 pub const TABLES: &[(&str, SyncKind)] = &[
     // Reading
     ("texts", SyncKind::Lww),
+    // Teach Kabar: the personal dictionary, one row per `{lang}:{word}`.
+    ("taught_entries", SyncKind::Lww),
     ("highlights", SyncKind::Lww),
     ("word_status", SyncKind::Lww),
     // Learning

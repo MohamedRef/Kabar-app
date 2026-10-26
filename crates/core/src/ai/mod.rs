@@ -289,6 +289,7 @@ impl Router {
                 is_repair: false,
                 json: true,
                 max_tokens: route.max_tokens,
+                personal: req.personal,
             };
             match self.call_validated::<T>(e, &mut call).await {
                 Ok((value, json)) => {
