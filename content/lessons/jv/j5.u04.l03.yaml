@@ -1,0 +1,200 @@
+schema: kabar.lesson/v1
+id: j5.u04.l03
+language: jv
+title: Komentar TikTok
+can_do:
+  ar_eg: تفكّ سلسلة تعليقات.
+  ar: أن تفكّ سلسلة تعليقات.
+  en: Decode a comment thread.
+slides:
+  - title: Komentar ing video sepur
+    body:
+      ar_eg: |
+        فيديو على تيك توك عن قطر أمباراوا القديم، وتحته التعليقات دي. اعمل زي ما اتعلمت: لاقي الهيكل الجاوي، علّم الباقي، ورجّع إملا الشات.
+        كلمات جديدة: min = اختصار admin (صاحب الصفحة)، mampir = يعدّي / يزور زيارة قصيرة، udh = sudah، tau = قبل كده (pernah)، healing = فسحة تريّح الأعصاب (سلانج إندونيسي من الإنجليزي).
+      ar: |
+        فيديو على تيك توك عن قطار أمباراوا القديم، وتحته هذه التعليقات. افعل ما تعلمت: جد الهيكل الجاوي، وصنّف البقية، وردّ إملاء الدردشة.
+        كلمات جديدة: min = اختصار admin (صاحب الصفحة)، وmampir = يمرّ بزيارة قصيرة، وudh = sudah، وtau = سبق أن (pernah)، وhealing = نزهة للترويح عن النفس (عامية إندونيسية من الإنجليزية).
+      en: |
+        A TikTok video about Ambarawa's old train, with these comments under it. Do what you've learned: find the Javanese frame, tag the rest, restore chat spelling.
+        New words: min = short for admin (the page owner), mampir = drop by, udh = sudah, tau = ever, have been (pernah), healing = a getaway to unwind (Indonesian slang from English).
+    grammar: jv.codemix
+    examples:
+      - text: Wah, sepure apik bgt! Iki neng ngendi, min?
+        ar_eg: الله، القطر حلو أوي! ده فين يا أدمن؟
+        ar: رائع، القطار جميل جدًا! أين هذا يا مشرف الصفحة؟
+        en: Wow, the train is really nice! Where is this, admin?
+      - text: Neng Ambarawa, kak. Mampir wae!
+        ar_eg: في أمباراوا. عدّي علينا!
+        ar: في أمباراوا. مُرّ بنا!
+        en: In Ambarawa. Drop by!
+      - text: Aku udh tau mrana, healing tenan.
+        ar_eg: أنا رحت هناك قبل كده، فسحة تريّح بجد.
+        ar: سبق أن ذهبت إلى هناك، نزهة مريحة حقًا.
+        en: I've been there before, a real getaway.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question: Wah, sepure apik bgt! Iki neng ngendi, min?
+    question_meaning:
+      ar_eg: صاحب التعليق بيسأل عن إيه؟
+      ar: عمَّ يسأل صاحب التعليق؟
+      en: What is the commenter asking?
+    options: ['Di mana ini?', 'Berapa harganya?', 'Kapan ke sana?']
+    answer: 0
+    explain:
+      ar_eg: neng ngendi = di mana. وmin = الأدمن.
+      ar: neng ngendi = di mana، وmin = مشرف الصفحة.
+      en: neng ngendi = di mana; min = the admin.
+    words: [min]
+  - id: e02
+    type: listen
+    text: Neng Ambarawa, kak. Mampir wae!
+    question:
+      ar_eg: الأدمن بيعزم على إيه؟
+      ar: إلامَ يدعو مشرف الصفحة؟
+      en: What does the admin invite people to do?
+    options: [mulih, mampir, turu]
+    answer: 1
+    meaning:
+      ar_eg: في أمباراوا. عدّي علينا!
+      ar: في أمباراوا. مُرّ بنا!
+      en: In Ambarawa. Drop by!
+    words: [mampir]
+  - id: e03
+    type: fill_blank
+    sentence: Aku ___ tau mrana.
+    meaning:
+      ar_eg: أنا رحت هناك قبل كده.
+      ar: سبق أن ذهبت إلى هناك.
+      en: I've been there before.
+    options: [bgt, min, udh]
+    answers: [udh]
+    words: [udh, tau]
+  - id: e04
+    type: fill_blank
+    sentence: Iki neng ngendi, ___?
+    meaning:
+      ar_eg: ده فين يا أدمن؟
+      ar: أين هذا يا مشرف الصفحة؟
+      en: Where is this, admin?
+    answers: [min, admin]
+    words: [min]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: أنا رحت هناك قبل كده، فسحة تريّح بجد.
+      ar: سبق أن ذهبت إلى هناك، نزهة مريحة حقًا.
+      en: I've been there before, a real getaway.
+    answer: Aku udh tau mrana, healing tenan.
+    distractors: [mampir, min]
+    words: [udh, tau, healing]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (تعليق) عدّي على أمباراوا!
+      ar: (تعليق) مُرّ بأمباراوا!
+      en: (a comment) Drop by Ambarawa!
+    answers:
+      - Mampir neng Ambarawa!
+      - Mampir nang Ambarawa!
+      - Mampir menyang Ambarawa!
+      - Mampir neng Ambarawa, ya!
+      - Mampir wae neng Ambarawa!
+      - Mampir ing Ambarawa!
+    words: [mampir]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Aku udh tau mrana, healing tenan.
+    answers_meaning:
+      ar_eg:
+        - أنا رحت هناك قبل كده، فسحة تريّح بجد.
+        - رحت هناك قبل كده، فسحة حلوة بجد.
+        - أنا رحت هناك قبل كده، بجد بتريّح الأعصاب.
+        - أنا روحت هناك قبل كده، فسحة تريّح بجد.
+      ar:
+        - سبق أن ذهبت إلى هناك، نزهة مريحة حقًا.
+        - ذهبت إلى هناك من قبل، نزهة مريحة حقًا.
+        - سبق أن زرت المكان، وكان نزهة مريحة حقًا.
+      en:
+        - I've been there before, a real getaway.
+        - I've been there before, really relaxing.
+        - I've already been there, a real getaway.
+        - I've been there before, it's really relaxing.
+        - I've already been there, really relaxing.
+    words: [healing, tau, udh]
+  - id: e08
+    type: dictation
+    text: Iki neng ngendi, min?
+    meaning:
+      ar_eg: ده فين يا أدمن؟
+      ar: أين هذا يا مشرف الصفحة؟
+      en: Where is this, admin?
+    words: [min]
+  - id: e09
+    type: speaking
+    text: Mampir wae neng Ambarawa, healing tenan!
+    meaning:
+      ar_eg: عدّي على أمباراوا، فسحة تريّح بجد!
+      ar: مُرّ بأمباراوا، إنها نزهة مريحة حقًا!
+      en: Drop by Ambarawa, it's a real getaway!
+    words: [mampir, healing]
+dialogue:
+  title: Maca komentar
+  lines:
+    - speaker: Mohamed
+      text: Mas, "min" iku apa?
+      ar_eg: يا بايو، يعني إيه «min»؟
+      ar: يا بايو، ما «min»؟
+      en: Bayu, what's "min"?
+    - speaker: Mas Bayu
+      text: Min iku admin, sing nggawe postingan.
+      ar_eg: min يعني الأدمن، اللي عامل البوست.
+      ar: min هو مشرف الصفحة، صاحب المنشور.
+      en: Min is the admin, the one who made the post.
+    - speaker: Mohamed
+      text: Lan "healing"? Iku basa Inggris, ta?
+      ar_eg: وhealing؟ دي إنجليزي، مش كده؟
+      ar: وhealing؟ إنها إنجليزية، أليس كذلك؟
+      en: And "healing"? That's English, right?
+    - speaker: Mas Bayu
+      text: Iya. Healing iku dolan, lelungan, ben ati seneng.
+      ar_eg: آه. healing يعني تخرج وتسافر عشان تفرّح قلبك.
+      ar: نعم. healing أن تتنزّه وتسافر ليفرح قلبك.
+      en: Yes. Healing means going out, travelling, to cheer yourself up.
+    - speaker: Mohamed
+      text: Wah, aku butuh healing neng Ambarawa!
+      ar_eg: يا سلام، أنا محتاج فسحة في أمباراوا!
+      ar: رائع، أحتاج نزهة في أمباراوا!
+      en: Wow, I need some healing in Ambarawa!
+new_words:
+  - word: min
+    pos: noun
+    ar_eg: الأدمن (اختصار admin)
+    ar: مشرف الصفحة (اختصار admin)
+    en: admin (short form), the page owner
+  - word: mampir
+    pos: verb
+    ar_eg: يعدّي على / يزور زيارة قصيرة
+    ar: يمرّ بزيارة قصيرة
+    en: drop by = mampir
+  - word: udh
+    pos: adverb
+    ar_eg: خلاص (اختصار sudah)
+    ar: قد (اختصار sudah)
+    en: already (short for sudah)
+  - word: tau
+    pos: adverb
+    ar_eg: قبل كده / سبق إن (pernah)
+    ar: سبق أن (pernah)
+    en: ever, have been = pernah
+  - word: healing
+    pos: noun
+    ar_eg: فسحة تريّح الأعصاب (سلانج)
+    ar: نزهة للترويح عن النفس (عامية)
+    en: a getaway to unwind (slang)
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,224 @@
+schema: kabar.lesson/v1
+id: j5.u03.l01
+language: jv
+title: Pira utawa piro?
+can_do:
+  ar_eg: ترجّع الـ o اللي بتتسمع لـ a الإملا الرسمي.
+  ar: أن تردّ الـ o المسموعة إلى a في الإملاء القياسي.
+  en: Map the spoken o back to the standard a.
+slides:
+  - title: A sing muni o
+    body:
+      ar_eg: |
+        من J1 وإنت شايف الشات بيكتب piro وopo. ده مش غلط في النطق: الجاوي فعلًا بيقول «پيرو».
+        القاعدة: الـ a في آخر الكلمة (مقطع مفتوح) بتتنطق قريب من o. ولو المقطعين الأخيرين الاتنين فيهم a، الاتنين بيبقوا o: apa = «أوپو».
+        بس الإملا الرسمي، في الكتب وويكيبيديا، بيكتب a: pira، sega، apa.
+      ar: |
+        منذ J1 ترى الدردشة تكتب piro وopo، وليس هذا خطأ نطق: فالجاوي ينطق «پيرو» حقًا.
+        القاعدة: a في آخر الكلمة (المقطع المفتوح) تُنطق قريبة من o، وإذا كان في المقطعين الأخيرين a نُطقتا o: apa = «أوپو».
+        لكن الإملاء القياسي في الكتب وويكيبيديا يكتب a: pira، sega، apa.
+      en: |
+        Since J1 you've seen chats write piro and opo. That's no mistake: Javanese really says "piro".
+        The rule: a at the end of a word (an open syllable) sounds close to o. If the last two syllables both have a, both sound o: apa ≈ "opo".
+        But standard spelling, in books and on Wikipedia, writes a: pira, sega, apa.
+    grammar: jv.orthography
+    examples:
+      - text: Regane pira?
+        ar_eg: بكام؟ (بتتنطق «ريغاني پيرو»)
+        ar: بكم ثمنه؟ (تُنطق «ريغاني پيرو»)
+        en: How much is it? (said "regane piro")
+      - text: Aku arep mangan sega.
+        ar_eg: هاكل رز. (sega بتتنطق «سِغو»)
+        ar: سآكل أرزًا. (sega تُنطق «سِغو»)
+        en: I'm going to eat rice. (sega is said "sego")
+      - text: Kowe arep apa?
+        ar_eg: إنت عايز إيه؟ (apa بتتنطق «أوپو»)
+        ar: ماذا تريد؟ (apa تُنطق «أوپو»)
+        en: What do you want? (apa is said "opo")
+  - title: Chat → tulisan baku
+    body:
+      ar_eg: |
+        لما تقرا شات، رجّع كل كلمة لإملاها الرسمي: opo → apa، sego → sega، ojo → aja (ماتعملش)، piro → pira، wes → wis.
+        tulisan = الكتابة (tulisan)، وmuni = بيرنّ / صوته (berbunyi). يعني: «tulisane pira, munine piro» = بتتكتب pira وبتتنطق piro.
+      ar: |
+        حين تقرأ دردشة ردّ كل كلمة إلى إملائها القياسي: opo ← apa، وsego ← sega، وojo ← aja (لا تفعل)، وpiro ← pira، وwes ← wis.
+        tulisan = الكتابة، وmuni = يُنطق / يرنّ (berbunyi): «tulisane pira, munine piro» = تُكتب pira وتُنطق piro.
+      en: |
+        When you read a chat, restore each word's standard spelling: opo → apa, sego → sega, ojo → aja (don't), piro → pira, wes → wis.
+        tulisan = writing, and muni = to sound (berbunyi): "tulisane pira, munine piro" = it's written pira and sounds piro.
+    grammar: jv.orthography
+    examples:
+      - text: Aja lali, segane wis mateng.
+        ar_eg: "ماتنساش، الرز استوى. (في الشات: ojo lali, sego ne wes mateng)"
+        ar: "لا تنسَ، الأرز قد نضج. (في الدردشة: ojo lali, sego ne wes mateng)"
+        en: "Don't forget, the rice is cooked. (in a chat: ojo lali, sego ne wes mateng)"
+      - text: Tulisane pira, munine piro.
+        ar_eg: بتتكتب pira، وبتتنطق piro.
+        ar: تُكتب pira وتُنطق piro.
+        en: It's written pira and sounds like piro.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: piro
+        ar_eg: pira (بكام) مكتوبة زي ما بتتسمع
+        ar: pira (كم) مكتوبة كما تُسمع
+        en: pira (how much), spelled by ear
+      - text: opo
+        ar_eg: apa (إيه) مكتوبة زي ما بتتسمع
+        ar: apa (ماذا) مكتوبة كما تُسمع
+        en: apa (what), spelled by ear
+      - text: sego
+        ar_eg: sega (رز) مكتوبة زي ما بتتسمع
+        ar: sega (أرز) مكتوبة كما تُسمع
+        en: sega (rice), spelled by ear
+      - text: ojo
+        ar_eg: aja (ماتعملش) مكتوبة زي ما بتتسمع
+        ar: aja (لا تفعل) مكتوبة كما تُسمع
+        en: aja (don't), spelled by ear
+    words: [pira, apa, sega, aja]
+  - id: e02
+    type: multiple_choice
+    question: Tulisan sing bener, piro utawa pira?
+    question_meaning:
+      ar_eg: أنهي إملا صح في الكتب وويكيبيديا؟
+      ar: أي إملاء صحيح في الكتب وويكيبيديا؟
+      en: Which spelling is right in books and on Wikipedia?
+    options: [piro, pira]
+    answer: 1
+    explain:
+      ar_eg: الإملا الرسمي a. الـ o ده نطق بس.
+      ar: الإملاء القياسي a، وo نطق فقط.
+      en: Standard spelling has a; the o is only how it sounds.
+    words: [tulisan, pira]
+  - id: e03
+    type: multiple_choice
+    question: Tembung "sega" munine kaya apa?
+    question_meaning:
+      ar_eg: كلمة sega بتتنطق إزاي؟
+      ar: كيف تُنطق كلمة sega؟
+      en: How does the word sega sound?
+    options: [sega, segu, sego]
+    answer: 2
+    explain:
+      ar_eg: الـ a الأخيرة في مقطع مفتوح، فبتتنطق o.
+      ar: a الأخيرة في مقطع مفتوح فتُنطق o.
+      en: The final a is in an open syllable, so it sounds like o.
+    words: [muni, sega]
+  - id: e04
+    type: fill_blank
+    sentence: Aja lali, segane wis ___.
+    meaning:
+      ar_eg: ماتنساش، الرز استوى.
+      ar: لا تنسَ، الأرز قد نضج.
+      en: Don't forget, the rice is cooked.
+    options: [muni, mateng, lali]
+    answers: [mateng]
+    words: [mateng]
+  - id: e05
+    type: fill_blank
+    sentence: Pira ___ kaya piro.
+    meaning:
+      ar_eg: pira بتتنطق زي piro.
+      ar: تُنطق pira مثل piro.
+      en: Pira sounds like piro.
+    options: [tulisan, mateng, muni]
+    answers: [muni]
+    words: [muni]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: "اكتب الشات ده بالإملا الرسمي: «ojo lali, sego ne wes mateng»"
+      ar: "اكتب هذه الدردشة بالإملاء القياسي: «ojo lali, sego ne wes mateng»"
+      en: "Write this chat in standard spelling: «ojo lali, sego ne wes mateng»"
+    answer: Aja lali, segane wis mateng.
+    distractors: [ojo, sego]
+    words: [aja, sega, mateng]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: بتتكتب apa، وبتتنطق opo.
+      ar: تُكتب apa وتُنطق opo.
+      en: It's written apa and sounds like opo.
+    answer: Tulisane apa, munine opo.
+    distractors: [pira, sego]
+    words: [tulisan, muni]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بالإملا الرسمي) الرز استوى؟
+      ar: (بالإملاء القياسي) هل نضج الأرز؟
+      en: (standard spelling) Is the rice cooked yet?
+    answers:
+      - Segane wis mateng?
+      - Segane wis mateng durung?
+      - Sega wis mateng?
+      - Sega wis mateng durung?
+      - Segane wis mateng apa durung?
+      - Apa segane wis mateng?
+    explain:
+      ar_eg: sega مش sego، وwis مش wes.
+      ar: sega لا sego، وwis لا wes.
+      en: sega, not sego; wis, not wes.
+    words: [mateng, sega]
+  - id: e09
+    type: listen
+    text: Regane pira?
+    options: ['Regane sapa?', 'Regane pira?', 'Jenenge apa?']
+    answer: 1
+    meaning:
+      ar_eg: بكام؟
+      ar: بكم ثمنه؟
+      en: How much is it?
+    words: [pira]
+  - id: e10
+    type: speaking
+    text: Tulisane pira, munine piro.
+    meaning:
+      ar_eg: بتتكتب pira، وبتتنطق piro.
+      ar: تُكتب pira وتُنطق piro.
+      en: It's written pira and sounds like piro.
+    words: [tulisan, muni, pira]
+dialogue:
+  title: Chat saka Mbak Ayu
+  lines:
+    - speaker: Mohamed
+      text: Mbak, kok kowe nulis "piro", ora "pira"?
+      ar_eg: يا آيو، إنتي ليه بتكتبي «piro» مش «pira»؟
+      ar: يا آيو، لماذا تكتبين «piro» لا «pira»؟
+      en: Ayu, how come you write "piro", not "pira"?
+    - speaker: Mbak Ayu
+      text: Merga munine piro. Ing chat, aku nulis kaya munine.
+      ar_eg: عشان بتتنطق piro. في الشات بكتب زي ما بسمع.
+      ar: لأنها تُنطق piro، وفي الدردشة أكتب كما أسمع.
+      en: Because it sounds like piro. In chats I write the way it sounds.
+    - speaker: Mohamed
+      text: Nanging tulisan sing bener "pira", ta?
+      ar_eg: بس الكتابة الصح «pira»، مش كده؟
+      ar: لكن الكتابة الصحيحة «pira»، أليس كذلك؟
+      en: But the correct spelling is "pira", right?
+    - speaker: Mbak Ayu
+      text: Iya. Ing buku lan Wikipedia, tulisane pira.
+      ar_eg: آه. في الكتب وويكيبيديا بتتكتب pira.
+      ar: نعم. في الكتب وويكيبيديا تُكتب pira.
+      en: Yes. In books and on Wikipedia it's written pira.
+new_words:
+  - word: tulisan
+    pos: noun
+    ar_eg: كتابة / المكتوب
+    ar: كتابة / المكتوب
+    en: writing, spelling = tulisan
+  - word: muni
+    pos: verb
+    ar_eg: بيتنطق / صوته (يرنّ)
+    ar: يُنطق / يرنّ
+    en: to sound = berbunyi
+  - word: mateng
+    pos: adjective
+    ar_eg: مستوي (أكل) / مستوية (فاكهة)
+    ar: ناضج / مطبوخ
+    en: cooked, ripe = matang
+review:
+  status: draft
+  verified: false

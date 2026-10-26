@@ -1,0 +1,250 @@
+schema: kabar.lesson/v1
+id: j5.u02.l05
+language: jv
+title: Ulangan J5.2
+can_do:
+  ar_eg: تحكي خبر بكلامك.
+  ar: أن تعيد رواية خبر بكلماتك.
+  en: Retell a news item.
+slides:
+  - title: Kabeh pasif
+    body:
+      ar_eg: |
+        كل أشكال المجهول اللي في الأخبار:
+        - di- + فعل + dening = اتعمل على إيد … (oleh)
+        - ka- (رسمي): kapilih، kasebut
+        - -in- (أدبي): tinulis، sinebut، kinurmatan
+        - dipun- (كراما مكتوبة): dipunbangun
+        - ولو «أنا»: dak- / tak-، مش dening aku.
+        ولما تحكي الخبر لصاحبك، ارجع للكلام العادي: di- وsing وneng.
+      ar: |
+        صيغ المجهول كلها في الأخبار:
+        - di- + الفعل + dening = فُعل على يد … (oleh)
+        - ka- (رسمية): kapilih، kasebut
+        - -in- (أدبية): tinulis، sinebut، kinurmatan
+        - dipun- (كراما مكتوبة): dipunbangun
+        - ومع المتكلم dak- / tak- لا dening aku.
+        وحين تحكي الخبر لصديقك عُد إلى لغة الكلام: di- وsing وneng.
+      en: |
+        Every passive the news uses:
+        - di- + verb + dening = done by … (oleh)
+        - ka- (formal): kapilih, kasebut
+        - -in- (literary): tinulis, sinebut, kinurmatan
+        - dipun- (written krama): dipunbangun
+        - with "I": dak- / tak-, never dening aku.
+        When you retell the news to a friend, go back to speech: di-, sing, neng.
+    grammar: jv.passive.written
+    examples:
+      - text: Lawang Sewu dibangun dening perusahaan sepur Walanda.
+        ar_eg: لاوانج سيوو اتبنى على إيد شركة سكة حديد هولندية.
+        ar: بنت شركةُ سكك حديد هولندية لاوانغ سيوو.
+        en: Lawang Sewu was built by a Dutch railway company.
+      - text: Pak Slamet kapilih dadi lurah.
+        ar_eg: الأستاذ سلامت اتنتخب عمدة.
+        ar: انتُخب السيد سلامت عمدةً.
+        en: Pak Slamet was elected village head.
+      - text: Masjid enggal dipunbangun dening warga.
+        ar_eg: الجامع الجديد بناه الأهالي. (كراما)
+        ar: بنى الأهالي المسجد الجديد. (كراما)
+        en: The new mosque was built by the residents. (krama)
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: dening
+        ar_eg: على إيد (= oleh)
+        ar: من قِبَل (= oleh)
+        en: by (= oleh)
+      - text: kapilih
+        ar_eg: اتنتخب (= dipilih)
+        ar: انتُخب (= dipilih)
+        en: was elected (= dipilih)
+      - text: sinebut
+        ar_eg: بيتسمّى (= disebut)
+        ar: يُسمّى (= disebut)
+        en: is called (= disebut)
+      - text: tinulis
+        ar_eg: مكتوب (= ditulis)
+        ar: مكتوب (= ditulis)
+        en: written (= ditulis)
+      - text: dipunbangun
+        ar_eg: اتبنى (كراما)
+        ar: بُني (كراما)
+        en: was built (krama)
+      - text: dakwaca
+        ar_eg: أنا قريته
+        ar: قرأتُه
+        en: I read it
+    words: [dening, kapilih, sinebut, tinulis]
+  - id: e02
+    type: multiple_choice
+    question: Lurah kasebut kapilih dening warga.
+    question_meaning:
+      ar_eg: يعني إيه بالإندونيسي؟
+      ar: ما معناها بالإندونيسية؟
+      en: What does it mean in Indonesian?
+    options: ['Warga memilih lurah itu.', 'Lurah itu memilih warga.', 'Lurah itu menulis warta.']
+    answer: 0
+    explain:
+      ar_eg: الفاعل بعد dening (warga). يعني الأهالي هما اللي انتخبوا.
+      ar: الفاعل بعد dening (warga)، فالأهالي هم المنتخِبون.
+      en: "The doer follows dening (warga): the residents did the electing."
+    words: [lurah, kapilih, kasebut]
+  - id: e03
+    type: listen
+    text: Dalan iku didandani dening warga.
+    options:
+      - Dalan iku diresiki dening warga.
+      - Dalan iku kebanjiran rob.
+      - Dalan iku didandani dening warga.
+    answer: 2
+    meaning:
+      ar_eg: الطريق اتصلّح على إيد الأهالي.
+      ar: أصلح الأهالي الطريق.
+      en: The road was repaired by the residents.
+    words: [didandani, warga]
+  - id: e04
+    type: multiple_choice
+    question: sinebut
+    question_meaning:
+      ar_eg: شيل -in-. إيه أصل الكلمة؟
+      ar: احذف -in-. ما جذر الكلمة؟
+      en: Take out -in-. What's the root?
+    options: [inebut, sebut, nebut]
+    answer: 1
+    words: [sinebut]
+  - id: e05
+    type: listen
+    text: Esuk iki, dalan kasebut wis diresiki dening warga.
+    question:
+      ar_eg: الشارع اتنضّف إمتى؟
+      ar: متى نُظِّف الشارع؟
+      en: When was the road cleaned?
+    options: [esuk iki, wingi sore, sesuk]
+    answer: 0
+    meaning:
+      ar_eg: الصبح ده، الأهالي نضّفوا الشارع المذكور خلاص.
+      ar: وفي صباح اليوم نظّف الأهالي الشارع المذكور.
+      en: This morning, the said road was cleaned up by the residents.
+    words: [diresiki, kasebut]
+  - id: e06
+    type: fill_blank
+    sentence: Buku iki ___ wingi.
+    meaning:
+      ar_eg: الكتاب ده قريته امبارح.
+      ar: قرأتُ هذا الكتاب أمس.
+      en: I read this book yesterday.
+    options: [dakwaca, diwaca dening aku, kapilih]
+    answers: [dakwaca]
+    explain:
+      ar_eg: مع «أنا» بنقول dak- / tak-، مش dening aku.
+      ar: مع المتكلم dak- / tak- لا dening aku.
+      en: With "I" it's dak- / tak-, never dening aku.
+    words: [dening]
+  - id: e07
+    type: fill_blank
+    sentence: Kutha iki ___ Kutha Lumpia.
+    meaning:
+      ar_eg: المدينة دي بيسموها «مدينة اللومبيا».
+      ar: تُسمّى هذه المدينة «مدينة اللومبيا».
+      en: This city is called the City of Lumpia.
+    options: [didandani, kebanjiran, sinebut]
+    answers: [sinebut]
+    words: [sinebut]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: لاوانج سيوو اتبنى أيام الهولنديين.
+      ar: بُني لاوانغ سيوو في عهد الهولنديين.
+      en: Lawang Sewu was built in the Dutch era.
+    answer: Lawang Sewu dibangun ing jaman Walanda.
+    distractors: [dening, kang]
+    words: [dibangun, jaman, Walanda]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بأسلوب الخبر) الطريق اتصلّح على إيد الأهالي.
+      ar: (بأسلوب الخبر) أصلح الأهالي الطريق.
+      en: (news style) The road was repaired by the residents.
+    answers:
+      - Dalan iku didandani dening warga.
+      - Dalan kasebut didandani dening warga.
+      - Dalane didandani dening warga.
+      - Dalan iki didandani dening warga.
+      - Dalan didandani dening warga.
+    words: [didandani, dening, warga]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Lurah enggal kapilih dening warga, jenenge tinulis ing koran.
+    answers_meaning:
+      ar_eg:
+        - العمدة الجديد اتنتخب على إيد الأهالي، واسمه مكتوب في الجرنال.
+        - الأهالي انتخبوا العمدة الجديد، واسمه مكتوب في الجرنال.
+        - العمدة الجديد الأهالي انتخبوه، واسمه مكتوب في الجرنال.
+        - العمدة الجديد اتنتخب من الأهالي، واسمه مكتوب في الجرنال.
+      ar:
+        - انتخب الأهالي العمدةَ الجديد، واسمه مكتوب في الجريدة.
+        - انتُخب العمدة الجديد من قِبَل الأهالي، واسمه مكتوب في الجريدة.
+        - العمدة الجديد انتخبه الأهالي، واسمه مكتوب في الجريدة.
+        - انتخب السكان العمدةَ الجديد، واسمه مكتوب في الصحيفة.
+      en:
+        - The new village head was elected by the residents, and his name is written in the paper.
+        - The new village head was elected by the residents; his name is in the paper.
+        - The residents elected the new village head, and his name is written in the paper.
+        - The new village head was elected by the residents, his name is written in the newspaper.
+        - The new village head was elected by the residents, and his name is in the newspaper.
+    words: [lurah, kapilih, tinulis, enggal]
+  - id: e11
+    type: dictation
+    text: Pak Slamet kapilih dadi lurah.
+    meaning:
+      ar_eg: الأستاذ سلامت اتنتخب عمدة.
+      ar: انتُخب السيد سلامت عمدةً.
+      en: Pak Slamet was elected village head.
+    words: [kapilih, lurah]
+  - id: e12
+    type: speaking
+    text: Wingi dalan ing Kutha Lama kebanjiran rob, esuk iki diresiki dening warga.
+    meaning:
+      ar_eg: امبارح الشارع في كوتا لاما غرق من مية البحر، والنهارده الصبح الأهالي نضّفوه.
+      ar: غمر المدُّ أمس الشارعَ في كوتا لاما، ونظّفه الأهالي صباح اليوم.
+      en: Yesterday the road in Kota Lama was flooded by the tide; this morning the residents cleaned it up.
+    words: [kebanjiran, rob, diresiki]
+dialogue:
+  title: Nyritakake warta
+  lines:
+    - speaker: Mbak Ayu
+      text: Ana warta apa, Mohamed?
+      ar_eg: فيه أخبار إيه يا محمد؟
+      ar: ما الأخبار يا محمد؟
+      en: What's the news, Mohamed?
+    - speaker: Mohamed
+      text: Wingi dalan ing Kutha Lama kebanjiran rob.
+      ar_eg: امبارح الشارع في كوتا لاما غرق من مية البحر.
+      ar: غمر المدُّ أمس الشارعَ في كوتا لاما.
+      en: Yesterday the road in Kota Lama got flooded by the tide.
+    - speaker: Mbak Ayu
+      text: Waduh! Saiki piye?
+      ar_eg: يا خبر! وإيه الأخبار دلوقتي؟
+      ar: يا للهول! وكيف الحال الآن؟
+      en: Oh no! How is it now?
+    - speaker: Mohamed
+      text: Wis diresiki dening warga. Aman, Mbak.
+      ar_eg: الأهالي نضّفوه خلاص. كله تمام يا آيو.
+      ar: نظّفه الأهالي. كل شيء بخير يا آيو.
+      en: The residents have cleaned it up. All fine, Ayu.
+souvenir:
+  id: j5.u02.souvenir
+  title: Lawang Sewu
+  note:
+    ar_eg: |
+      Lawang Sewu يعني «الألف باب»: مبنى ضخم في وسط سيمارانج، اتبنى أوائل القرن العشرين مقرّ لشركة سكة حديد هولندية، وأبوابه وشبابيكه كتير لدرجة إن الناس قالوا عليه ألف. ودلوقتي متحف بيحكي حكاية القطر في جاوة. ومن عشرات السنين فيه تلفزيونات محلية ومجلات زي Panjebar Semangat وJaya Baya بتنشر بالجاوي، فالأخبار اللي بتقراها دلوقتي ليها تاريخ طويل.
+    ar: |
+      Lawang Sewu تعني «ألف باب»: مبنى ضخم في وسط سيمارانج، بُني مطلع القرن العشرين مقرًّا لشركة سكك حديد هولندية، وكثرت أبوابه ونوافذه حتى قال الناس إنها ألف. وهو اليوم متحف يروي قصة القطار في جاوة. ومنذ عقود تنشر قنوات محلية ومجلات مثل Panjebar Semangat وJaya Baya بالجاوية، فالأخبار التي تقرؤها الآن لها تاريخ طويل.
+    en: |
+      Lawang Sewu means "a thousand doors": a huge building in central Semarang, built in the early 20th century as the head office of a Dutch railway company, with so many doors and windows that people called them a thousand. Today it's a museum telling the story of Java's railways. And for decades, regional TV and magazines like Panjebar Semangat and Jaya Baya have published in Javanese, so the news you're reading now has a long history.
+review:
+  status: draft
+  verified: false
