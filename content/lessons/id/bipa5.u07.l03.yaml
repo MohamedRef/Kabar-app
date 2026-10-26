@@ -1,0 +1,197 @@
+schema: kabar.lesson/v1
+id: bipa5.u07.l03
+language: id
+title: Pasar terapung
+can_do:
+  ar_eg: توصف عادة أو تقليد بالترتيب، إمتى وفين وإزاي وليه.
+  ar: أن تصف عادة أو تقليدًا بترتيب، متى وأين وكيف ولماذا.
+  en: Describe a tradition in order, when, where, how and why.
+slides:
+  - title: Menggambarkan tradisi
+    body:
+      ar_eg: |
+        عشان توصف عادة:
+        - Tradisi ini sudah ada sejak … = العادة دي موجودة من …
+        - Biasanya, … = عادةً …
+        - Pertama … kemudian … akhirnya … = الأول … بعدين … في الآخر …
+        - Tradisi ini penting karena … = العادة دي مهمة عشان …
+        السوق العايم في لوك بايتان بيبدأ قبل الفجر، والبياعات بيقعدوا في مراكب صغيرة اسمها jukung.
+      ar: |
+        لتصف عادة:
+        - Tradisi ini sudah ada sejak … = هذه العادة قائمة منذ …
+        - Biasanya, … = في العادة …
+        - Pertama … kemudian … akhirnya … = أوّلًا … ثم … وأخيرًا …
+        - Tradisi ini penting karena … = هذه العادة مهمّة لأنّ …
+        وسوق لوك بايتان العائم يبدأ قبل الفجر، والبائعات في قوارب صغيرة تسمّى jukung.
+      en: |
+        To describe a tradition:
+        - Tradisi ini sudah ada sejak … = This tradition dates back to …
+        - Biasanya, … = Usually, …
+        - Pertama … kemudian … akhirnya … = First … then … finally …
+        - Tradisi ini penting karena … = This tradition matters because …
+        The Lok Baintan floating market starts before dawn; the sellers sit in small boats called jukung.
+    examples:
+      - text: Biasanya, para pedagang sudah berkumpul sebelum subuh.
+        ar_eg: عادةً، التجار بيتجمعوا قبل الفجر.
+        ar: في العادة يجتمع التجّار قبل الفجر.
+        en: Usually, the traders have gathered before dawn prayer.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: terapung
+        ar_eg: عايم
+        ar: عائم
+        en: floating
+      - text: tradisi
+        ar_eg: عادة / تقليد
+        ar: تقليد
+        en: tradition
+      - text: berkumpul
+        ar_eg: يتجمّع
+        ar: يجتمع
+        en: to gather
+      - text: menukar
+        ar_eg: يبدّل / يقايض
+        ar: يقايض
+        en: to swap, barter
+      - text: perahu
+        ar_eg: مركب
+        ar: قارب
+        en: boat
+    words: [terapung, tradisi, berkumpul, menukar, perahu]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «pasar terapung» معناها إيه؟
+      ar: ما معنى «pasar terapung»؟
+      en: What does "pasar terapung" mean?
+    options:
+      - سوق السمك.
+      - السوق العايم.
+      - سوق بالليل.
+    answer: 1
+    words: [terapung]
+  - id: e03
+    type: fill_blank
+    sentence: Para pedagang ___ di sungai sebelum matahari terbit.
+    meaning:
+      ar_eg: التجار بيتجمعوا في النهر قبل الشمس ما تطلع.
+      ar: يجتمع التجّار في النهر قبل طلوع الشمس.
+      en: The traders gather on the river before sunrise.
+    options: [berkumpul, menukar, terapung]
+    answers: [berkumpul]
+    words: [berkumpul]
+  - id: e04
+    type: listen
+    text: Dulu orang menukar sayur dengan ikan, tanpa uang.
+    question:
+      ar_eg: زمان الناس كانوا بيشتروا إزاي؟
+      ar: كيف كان الناس يتبادلون قديمًا؟
+      en: How did people trade in the past?
+    options:
+      - بالفلوس بس.
+      - بالكارت.
+      - بيبدّلوا خضار بسمك، من غير فلوس.
+    answer: 2
+    words: [menukar]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: العادة دي موجودة من مئات السنين.
+      ar: هذا التقليد قائم منذ مئات السنين.
+      en: This tradition has existed for hundreds of years.
+    answer: Tradisi ini sudah ada sejak ratusan tahun lalu.
+    distractors: [perahu, berkumpul]
+    words: [tradisi]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: البياعات بيبيعوا الفاكهة من على مراكب صغيرة.
+      ar: تبيع البائعات الفاكهة من قوارب صغيرة.
+      en: The women sellers sell fruit from small boats.
+    answers:
+      - Para pedagang perempuan menjual buah dari perahu kecil.
+      - Pedagang perempuan menjual buah dari perahu kecil.
+      - Para pedagang wanita menjual buah dari perahu kecil.
+      - Para pedagang perempuan menjual buah-buahan dari perahu kecil.
+    words: [perahu]
+  - id: e07
+    type: multiple_choice
+    question: "Petani itu ___ beras dengan ikan dari nelayan."
+    question_meaning:
+      ar_eg: كمّل الجملة. «الفلاح … الرز بسمك من الصياد.»
+      ar: أكمل الجملة. «… المزارع الأرزّ بسمك من الصيّاد.»
+      en: Complete the sentence. "The farmer … rice for fish from the fisherman."
+    options: [menukar, berkumpul, terapung]
+    answer: 0
+    words: [menukar]
+  - id: e08
+    type: speaking
+    text: Tradisi pasar terapung penting karena menyatukan warga sungai.
+    meaning:
+      ar_eg: عادة السوق العايم مهمة عشان بتجمع أهل النهر.
+      ar: تقليد السوق العائم مهمّ لأنّه يجمع أهل النهر.
+      en: The floating market tradition matters because it brings river people together.
+    words: [terapung, tradisi]
+  - id: e09
+    type: dictation
+    text: Pagi-pagi, perahu kecil berkumpul di tengah sungai.
+    meaning:
+      ar_eg: الصبح بدري، المراكب الصغيرة بتتجمع في نص النهر.
+      ar: في الصباح الباكر تجتمع القوارب الصغيرة وسط النهر.
+      en: Early in the morning, small boats gather in the middle of the river.
+    words: [perahu, berkumpul]
+dialogue:
+  title: Di Lok Baintan, jam lima pagi
+  lines:
+    - speaker: Mohamed
+      text: Masya Allah, banyak sekali perahu! Semua penjualnya ibu-ibu?
+      ar_eg: ما شاء الله، مراكب كتير قوي! كل البياعين ستات؟
+      ar: ما شاء الله، ما أكثر القوارب! أكلّ البائعين نساء؟
+      en: Masha'Allah, so many boats! Are all the sellers women?
+    - speaker: Mas Rizal
+      text: Sebagian besar, ya. Tradisi ini sudah ada sejak zaman Kesultanan Banjar.
+      ar_eg: أغلبهم أيوه. العادة دي موجودة من أيام سلطنة بانجار.
+      ar: معظمهنّ نعم، وهذا التقليد قائم منذ عهد سلطنة بانجار.
+      en: Mostly, yes. This tradition dates back to the Banjar Sultanate.
+    - speaker: Mohamed
+      text: Apakah orang masih menukar barang?
+      ar_eg: لسه الناس بتبدّل حاجات ببعض؟
+      ar: هل ما زال الناس يتقايضون؟
+      en: Do people still barter?
+    - speaker: Mas Rizal
+      text: Kadang-kadang. Kebanyakan pakai uang, tetapi semangat berkumpulnya tetap sama.
+      ar_eg: ساعات. أغلبهم بالفلوس، بس روح التجمّع لسه زي ما هي.
+      ar: أحيانًا. يستعمل أكثرهم المال، لكنّ روح الاجتماع باقية.
+      en: Sometimes. Most use money, but the spirit of gathering is the same.
+new_words:
+  - word: terapung
+    pos: adjective
+    ar_eg: عايم
+    ar: عائم
+    en: floating
+  - word: tradisi
+    pos: noun
+    ar_eg: عادة / تقليد
+    ar: تقليد
+    en: tradition
+  - word: berkumpul
+    pos: verb
+    ar_eg: يتجمّع
+    ar: يجتمع
+    en: to gather
+  - word: menukar
+    pos: verb
+    ar_eg: يبدّل / يقايض
+    ar: يقايض
+    en: to swap, to barter
+  - word: perahu
+    pos: noun
+    ar_eg: مركب
+    ar: قارب
+    en: boat
+review:
+  status: draft
+  verified: false

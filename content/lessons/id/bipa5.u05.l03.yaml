@@ -1,0 +1,196 @@
+schema: kabar.lesson/v1
+id: bipa5.u05.l03
+language: id
+title: Orangutan dan hutan adat
+can_do:
+  ar_eg: تتكلم عن حماية الطبيعة بدقة، من غير ما تبالغ ولا تتحيز.
+  ar: أن تتحدّث عن حماية الطبيعة بدقّة ودون مبالغة أو انحياز.
+  en: Discuss conservation with nuance, without exaggerating or taking sides too fast.
+slides:
+  - title: Berbicara dengan nuansa
+    body:
+      ar_eg: |
+        الموضوعات الحساسة محتاجة كلام دقيق:
+        - Di satu sisi … di sisi lain … = تبيّن الجانبين.
+        - cukup / agak = لحد ما (بدل sangat): Situasinya cukup serius. = الوضع خطير لحد ما.
+        - sebagian besar ≠ semua = أغلب ≠ كل.
+        وهنا كلمتين مهمين: hutan adat = غابة الأعراف (الغابة اللي بتملكها قبيلة بالعُرف)، وmasyarakat adat = المجتمعات الأصلية زي الداياك.
+      ar: |
+        تحتاج الموضوعات الحسّاسة إلى عبارة دقيقة:
+        - Di satu sisi … di sisi lain … لعرض الجانبين.
+        - cukup / agak = إلى حدّ ما (بدل sangat): Situasinya cukup serius.
+        - sebagian besar ≠ semua = أغلب ≠ كلّ.
+        وكلمتان مهمّتان: hutan adat = الغابة العرفية (تملكها جماعة بحكم العرف)، وmasyarakat adat = الشعوب الأصلية كالداياك.
+      en: |
+        Sensitive topics need careful wording:
+        - Di satu sisi … di sisi lain … = show both sides.
+        - cukup / agak = fairly, somewhat (instead of sangat): Situasinya cukup serius.
+        - sebagian besar ≠ semua = most ≠ all.
+        Two key terms: hutan adat = customary forest (owned by a community under custom), and masyarakat adat = indigenous communities such as the Dayak.
+    examples:
+      - text: Sebagian besar orangutan hidup di Kalimantan, tetapi jumlahnya terus turun.
+        ar_eg: أغلب الأورانجوتان عايش في كاليمانتان، بس عددهم بيقل على طول.
+        ar: يعيش معظم إنسان الغاب في كاليمانتان، لكنّ عدده يتناقص.
+        en: Most orangutans live in Kalimantan, but their numbers keep falling.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: hutan adat
+        ar_eg: غابة الأعراف
+        ar: الغابة العرفية
+        en: customary forest
+      - text: masyarakat adat
+        ar_eg: المجتمعات الأصلية
+        ar: الشعوب الأصلية
+        en: indigenous community
+      - text: sebagian besar
+        ar_eg: أغلب
+        ar: معظم
+        en: most
+      - text: melestarikan
+        ar_eg: يحافظ على
+        ar: يصون
+        en: to conserve
+      - text: punah
+        ar_eg: ينقرض
+        ar: ينقرض
+        en: to go extinct
+    words: [hutan adat, masyarakat adat, sebagian besar, melestarikan, punah]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة أدق؟
+      ar: أيّ جملة أدقّ؟
+      en: Which sentence is more accurate and careful?
+    options:
+      - Semua orang Kalimantan merusak hutan.
+      - Sebagian besar hutan rusak karena perluasan kebun dan kebakaran.
+      - Hutan Kalimantan sudah habis total.
+    answer: 1
+    explain:
+      ar_eg: sebagian besar ومعاها الأسباب، من غير تعميم.
+      ar: sebagian besar مع ذكر الأسباب، دون تعميم.
+      en: sebagian besar plus causes, with no sweeping claim.
+    words: [sebagian besar]
+  - id: e03
+    type: fill_blank
+    sentence: Orangutan bisa ___ kalau hutannya terus hilang.
+    meaning:
+      ar_eg: الأورانجوتان ممكن ينقرض لو غابته فضلت تختفي.
+      ar: قد ينقرض إنسان الغاب إن استمرّ اختفاء غابته.
+      en: Orangutans could go extinct if their forest keeps disappearing.
+    options: [punah, lestari, adat]
+    answers: [punah]
+    words: [punah]
+  - id: e04
+    type: listen
+    text: Masyarakat adat Dayak menjaga hutan adat mereka.
+    question:
+      ar_eg: مين بيحمي الغابة؟
+      ar: من يحمي الغابة؟
+      en: Who protects the forest?
+    options:
+      - شركات النخيل.
+      - السيّاح.
+      - مجتمع الداياك الأصلي.
+    answer: 2
+    words: [masyarakat adat, hutan adat]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: لازم نحافظ على الغابة عشان الأورانجوتان.
+      ar: يجب أن نصون الغابة من أجل إنسان الغاب.
+      en: We must conserve the forest for the orangutans.
+    answer: Kita harus melestarikan hutan untuk orangutan.
+    distractors: [punah, adat]
+    words: [melestarikan]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أغلب الغابة العرفية لسه سليمة.
+      ar: معظم الغابة العرفية ما زالت سليمة.
+      en: Most of the customary forest is still intact.
+    answers:
+      - Sebagian besar hutan adat masih utuh.
+      - Sebagian besar hutan adat masih terjaga.
+      - Sebagian besar hutan adatnya masih utuh.
+      - Sebagian besar hutan adat masih baik.
+    words: [sebagian besar, hutan adat]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «melestarikan» معناها إيه؟
+      ar: ما معنى «melestarikan»؟
+      en: What does "melestarikan" mean?
+    options: [يحافظ على, ينقرض, يحرق]
+    answer: 0
+    words: [melestarikan, punah]
+  - id: e08
+    type: speaking
+    text: Masyarakat adat ingin melestarikan hutan mereka.
+    meaning:
+      ar_eg: المجتمعات الأصلية عايزة تحافظ على غابتها.
+      ar: تريد الشعوب الأصلية صون غابتها.
+      en: Indigenous communities want to conserve their forest.
+    words: [masyarakat adat, melestarikan]
+  - id: e09
+    type: dictation
+    text: Tanpa hutan adat, banyak hewan bisa punah.
+    meaning:
+      ar_eg: من غير غابة الأعراف، حيوانات كتير ممكن تنقرض.
+      ar: بلا الغابة العرفية قد تنقرض حيوانات كثيرة.
+      en: Without the customary forest, many animals could go extinct.
+    words: [hutan adat, punah]
+dialogue:
+  title: Di Camp Leakey
+  lines:
+    - speaker: Pak Hendra
+      text: Selamat datang di Camp Leakey. Di sini orangutan yatim dirawat sampai bisa kembali ke hutan.
+      ar_eg: أهلًا بيكم في كامب ليكي. هنا الأورانجوتان اليتيم بيتربّى لحد ما يقدر يرجع الغابة.
+      ar: مرحبًا بكم في كامب ليكي، وهنا يُرعى صغار إنسان الغاب الأيتام حتى يعودوا إلى الغابة.
+      en: Welcome to Camp Leakey. Orphaned orangutans are cared for here until they can return to the forest.
+    - speaker: Mohamed
+      text: Apakah orangutan akan punah, Pak?
+      ar_eg: هو الأورانجوتان هينقرض يا أستاذ؟
+      ar: هل سينقرض إنسان الغاب يا أستاذ؟
+      en: Will orangutans go extinct, sir?
+    - speaker: Pak Hendra
+      text: Situasinya cukup serius, tetapi masyarakat adat dan taman nasional membantu melestarikannya.
+      ar_eg: الوضع خطير لحد ما، بس المجتمعات الأصلية والمحمية الوطنية بيساعدوا يحافظوا عليه.
+      ar: الوضع خطير إلى حدّ ما، لكنّ الشعوب الأصلية والمنتزه الوطني يساعدان على صونه.
+      en: The situation is fairly serious, but indigenous communities and the national park are helping conserve them.
+    - speaker: Mohamed
+      text: Jadi harapan masih ada.
+      ar_eg: يعني لسه فيه أمل.
+      ar: إذن ما زال هناك أمل.
+      en: So there is still hope.
+new_words:
+  - word: hutan adat
+    pos: noun
+    ar_eg: غابة الأعراف
+    ar: الغابة العرفية
+    en: customary forest
+  - word: masyarakat adat
+    pos: noun
+    ar_eg: المجتمعات الأصلية
+    ar: الشعوب الأصلية
+    en: indigenous community
+  - word: sebagian besar
+    ar_eg: أغلب
+    ar: معظم
+    en: most
+  - word: melestarikan
+    pos: verb
+    ar_eg: يحافظ على
+    ar: يصون
+    en: to conserve
+  - word: punah
+    pos: verb
+    ar_eg: ينقرض
+    ar: ينقرض
+    en: to go extinct
+review:
+  status: draft
+  verified: false

@@ -82,6 +82,8 @@ pub fn PeekView(peek: Peek) -> Element {
                         }
                     }
                 },
+                // The headline's English tag says it all.
+                None if w.is_english_aside() => rsx! {},
                 None => rsx! {
                     p { class: "muted small", "{ui.t(Msg::NoLocalGloss)}" }
                 },
@@ -176,7 +178,11 @@ fn WordCard(i: usize) -> Element {
     let breakdown = w.breakdown();
     let speak_text = w.analyzed.normalized.as_ref().map_or(surface.clone(), |n| n.full.clone());
     let taught = w.taught_approved().and_then(taught_info);
-    let speech_tag = if w.tag == Tag::Javanese { "jv-ID" } else { "id-ID" };
+    let speech_tag = match w.tag {
+        Tag::Javanese => "jv-ID",
+        Tag::English => "en-US",
+        _ => "id-ID",
+    };
     let teach = use_context::<TeachInbox>();
     // Names and words with a draft waiting don't offer teaching.
     let teach_seed = (w.key.is_some() && w.taught_draft().is_none()).then(|| TeachSeed {
@@ -211,6 +217,9 @@ fn WordCard(i: usize) -> Element {
                         span { class: "label", "{ui.t(Msg::KabarDictionary)}" }
                     }
                     InfoView { info, voice }
+                },
+                None if w.is_english_aside() => rsx! {
+                    p { class: "muted", "{ui.t(Msg::EnglishInChat)}" }
                 },
                 None if w.taught_approved().is_none() => rsx! {
                     p { class: "muted", "{ui.t(Msg::NoLocalGloss)}" }
