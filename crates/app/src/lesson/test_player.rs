@@ -597,7 +597,7 @@ fn ItemView(
 }
 
 /// What an item asked, in a line (for the self-check and the results).
-fn item_prompt(item: &TestItem, lang: UiLanguage) -> String {
+pub(crate) fn item_prompt(item: &TestItem, lang: UiLanguage) -> String {
     use ExerciseKind as K;
     match &item.kind {
         TestItemKind::WritingTask(t) | TestItemKind::SpeakingTask(t) => {
