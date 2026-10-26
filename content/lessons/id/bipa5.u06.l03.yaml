@@ -1,0 +1,194 @@
+schema: kabar.lesson/v1
+id: bipa5.u06.l03
+language: id
+title: Tari enggang
+can_do:
+  ar_eg: توصف عرض فني بالتفصيل، الحركة واللبس والموسيقى والمعنى.
+  ar: أن تصف عرضًا فنّيًّا بالتفصيل، حركةً وزيًّا وموسيقى ومعنى.
+  en: Describe a performance in detail, its movement, costume, music and meaning.
+slides:
+  - title: Mendeskripsikan pertunjukan
+    body:
+      ar_eg: |
+        عشان توصف عرض، اتكلم عن 4 حاجات:
+        - gerakan (الحركة): Gerakannya meniru burung enggang yang terbang. = الحركة بتقلّد طائر أبو قرن وهو طاير.
+        - kostum (اللبس): bulu enggang = ريش أبو قرن
+        - musik: sape = آلة وترية بتاعة الداياك
+        - makna (المعنى): Tarian ini melambangkan … = الرقصة دي بترمز لـ …
+        طائر أبو قرن (enggang) مقدّس عند الداياك.
+      ar: |
+        لتصف عرضًا تحدّث عن أربعة أمور:
+        - gerakan (الحركة): Gerakannya meniru burung enggang yang terbang. = تحاكي الحركة طائر أبي قرن في طيرانه.
+        - kostum (الزيّ): bulu enggang = ريش أبي قرن
+        - musik: sape = آلة وترية عند الداياك
+        - makna (المعنى): Tarian ini melambangkan … = ترمز هذه الرقصة إلى …
+        وطائر أبي قرن (enggang) مقدّس عند الداياك.
+      en: |
+        To describe a show, cover four things:
+        - gerakan (movement): Gerakannya meniru burung enggang yang terbang. = The moves imitate a hornbill in flight.
+        - kostum (costume): bulu enggang = hornbill feathers
+        - musik: sape = the Dayak lute
+        - makna (meaning): Tarian ini melambangkan … = This dance symbolises …
+        The hornbill (enggang) is sacred to the Dayak.
+    examples:
+      - text: Tarian ini melambangkan hubungan manusia dengan alam.
+        ar_eg: الرقصة دي بترمز لعلاقة الإنسان بالطبيعة.
+        ar: ترمز هذه الرقصة إلى علاقة الإنسان بالطبيعة.
+        en: This dance symbolises the bond between people and nature.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: gerakan
+        ar_eg: حركة
+        ar: حركة
+        en: movement
+      - text: meniru
+        ar_eg: يقلّد
+        ar: يحاكي
+        en: to imitate
+      - text: melambangkan
+        ar_eg: يرمز لـ
+        ar: يرمز إلى
+        en: to symbolise
+      - text: bulu
+        ar_eg: ريش
+        ar: ريش
+        en: feathers
+      - text: makna
+        ar_eg: معنى
+        ar: معنى
+        en: meaning
+    words: [gerakan, meniru, melambangkan, bulu, makna]
+  - id: e02
+    type: multiple_choice
+    question: "Para penari ___ burung enggang yang sedang terbang."
+    question_meaning:
+      ar_eg: كمّل الجملة. «الراقصين … طائر أبو قرن وهو طاير.»
+      ar: أكمل الجملة. «… الراقصون طائر أبي قرن وهو يطير.»
+      en: Complete the sentence. "The dancers … a hornbill in flight."
+    options: [melambangkan, meniru, makna]
+    answer: 1
+    words: [meniru]
+  - id: e03
+    type: fill_blank
+    sentence: Kostum penari dihias dengan ___ enggang.
+    meaning:
+      ar_eg: لبس الراقصين متزيّن بريش أبو قرن.
+      ar: زيّ الراقصين مزيّن بريش أبي قرن.
+      en: The dancers' costumes are decorated with hornbill feathers.
+    options: [bulu, gerakan, makna]
+    answers: [bulu]
+    words: [bulu]
+  - id: e04
+    type: listen
+    text: Gerakan tarian ini pelan dan anggun.
+    options:
+      - Gerakan tarian ini pelan dan anggun.
+      - Gerakan tarian ini cepat dan keras.
+      - Makna tarian ini pelan dan anggun.
+    answer: 0
+    words: [gerakan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: طائر أبو قرن بيرمز للشجاعة والإخلاص.
+      ar: يرمز طائر أبي قرن إلى الشجاعة والوفاء.
+      en: The hornbill symbolises courage and loyalty.
+    answer: Burung enggang melambangkan keberanian dan kesetiaan.
+    distractors: [meniru, bulu]
+    words: [melambangkan]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: إيه معنى الرقصة دي؟
+      ar: ما معنى هذه الرقصة؟
+      en: What is the meaning of this dance?
+    answers:
+      - Apa makna tarian ini?
+      - Apa makna tari ini?
+      - Tarian ini apa maknanya?
+      - Apakah makna tarian ini?
+    words: [makna]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ليه الداياك بيستخدموا ريش أبو قرن؟
+      ar: لماذا يستعمل الداياك ريش أبي قرن؟
+      en: Why do the Dayak use hornbill feathers?
+    options:
+      - عشان رخيص.
+      - عشان لونه أبيض بس.
+      - عشان الطائر ده مقدّس عندهم.
+    answer: 2
+    words: [bulu, makna]
+  - id: e08
+    type: speaking
+    text: Tarian enggang melambangkan hubungan manusia dengan alam.
+    meaning:
+      ar_eg: رقصة أبو قرن بترمز لعلاقة الإنسان بالطبيعة.
+      ar: ترمز رقصة أبي قرن إلى علاقة الإنسان بالطبيعة.
+      en: The hornbill dance symbolises the bond between people and nature.
+    words: [melambangkan]
+  - id: e09
+    type: dictation
+    text: Gerakannya meniru burung yang terbang tinggi.
+    meaning:
+      ar_eg: الحركة بتقلّد طير طاير عالي.
+      ar: تحاكي الحركة طائرًا يحلّق عاليًا.
+      en: The movement imitates a bird flying high.
+    words: [gerakan, meniru]
+dialogue:
+  title: Di belakang panggung
+  lines:
+    - speaker: Mohamed
+      text: Bu Lestari, kenapa gerakan tangan penari seperti sayap?
+      ar_eg: يا أستاذة ليستاري، ليه حركة إيدين الراقصين زي الجناح؟
+      ar: يا أستاذة ليستاري، لماذا تشبه حركة أيدي الراقصين الأجنحة؟
+      en: Bu Lestari, why do the dancers' hand movements look like wings?
+    - speaker: Bu Lestari
+      text: Karena tarian ini meniru burung enggang. Bagi orang Dayak, burung ini suci.
+      ar_eg: عشان الرقصة دي بتقلّد طائر أبو قرن. والطائر ده مقدّس عند الداياك.
+      ar: لأنّ الرقصة تحاكي طائر أبي قرن، وهو مقدّس عند الداياك.
+      en: Because this dance imitates the hornbill. To the Dayak, this bird is sacred.
+    - speaker: Mohamed
+      text: Lalu apa makna bulu di kepala mereka?
+      ar_eg: طب إيه معنى الريش اللي على راسهم؟
+      ar: وما معنى الريش على رؤوسهم؟
+      en: And what do the feathers on their heads mean?
+    - speaker: Bu Lestari
+      text: Bulu itu melambangkan keberanian dan kehormatan.
+      ar_eg: الريش ده بيرمز للشجاعة والشرف.
+      ar: يرمز ذلك الريش إلى الشجاعة والشرف.
+      en: Those feathers symbolise courage and honour.
+new_words:
+  - word: gerakan
+    pos: noun
+    ar_eg: حركة
+    ar: حركة
+    en: movement
+  - word: meniru
+    pos: verb
+    ar_eg: يقلّد
+    ar: يحاكي
+    en: to imitate
+  - word: melambangkan
+    pos: verb
+    ar_eg: يرمز لـ
+    ar: يرمز إلى
+    en: to symbolise
+  - word: bulu
+    pos: noun
+    ar_eg: ريش
+    ar: ريش
+    en: feathers
+  - word: makna
+    pos: noun
+    arabic: معنى
+    ar_eg: معنى
+    ar: معنى
+    en: meaning
+review:
+  status: draft
+  verified: false

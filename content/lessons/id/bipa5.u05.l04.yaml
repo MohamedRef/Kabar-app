@@ -1,0 +1,175 @@
+schema: kabar.lesson/v1
+id: bipa5.u05.l04
+language: id
+title: Sudut pandang
+can_do:
+  ar_eg: تعرض وجهتين نظر مختلفتين عن موضوع، بعدل وبالترتيب.
+  ar: أن تعرض وجهتي نظر مختلفتين في موضوع بإنصاف وترتيب.
+  en: Present two viewpoints on an issue fairly and in order.
+slides:
+  - title: Dua sudut pandang
+    grammar: id.passive.ter-ke-an
+    body:
+      ar_eg: |
+        عشان تعرض رأيين بعدل:
+        - Dari sudut pandang petani, … = من وجهة نظر الفلاح …
+        - Bagi para aktivis, … = بالنسبة للناشطين …
+        - Kedua pihak setuju bahwa … = الطرفين متفقين إن …
+        وهتحتاج ter- وke-…-an كتير: petani kehilangan penghasilan، hutan terbakar.
+      ar: |
+        لتعرض رأيين بإنصاف:
+        - Dari sudut pandang petani, … = من وجهة نظر المزارع …
+        - Bagi para aktivis, … = بالنسبة إلى الناشطين …
+        - Kedua pihak setuju bahwa … = يتّفق الطرفان على أنّ …
+        وستحتاج ter- وke-…-an كثيرًا: petani kehilangan penghasilan، hutan terbakar.
+      en: |
+        To present two views fairly:
+        - Dari sudut pandang petani, … = From the farmers' point of view, …
+        - Bagi para aktivis, … = For the activists, …
+        - Kedua pihak setuju bahwa … = Both sides agree that …
+        You'll need ter- and ke-…-an a lot: petani kehilangan penghasilan, hutan terbakar.
+    examples:
+      - text: Dari sudut pandang petani, sawit adalah sumber penghasilan utama.
+        ar_eg: من وجهة نظر الفلاح، النخيل هو مصدر الدخل الأساسي.
+        ar: من وجهة نظر المزارع، النخيل مصدر الدخل الرئيسي.
+        en: From the farmers' point of view, oil palm is the main source of income.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: sudut pandang
+        ar_eg: وجهة نظر
+        ar: وجهة نظر
+        en: point of view
+      - text: pihak
+        ar_eg: طرف
+        ar: طرف
+        en: side, party
+      - text: penghasilan
+        ar_eg: دخل
+        ar: دخل
+        en: income
+      - text: bagi
+        ar_eg: بالنسبة لـ
+        ar: بالنسبة إلى
+        en: for, to
+    words: [sudut pandang, pihak, penghasilan, bagi]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة بتعرض رأي الطرفين؟
+      ar: أيّ جملة تعرض رأي الطرفين؟
+      en: Which sentence presents both sides?
+    options:
+      - Sawit itu jahat dan harus dilarang.
+      - Bagi petani, sawit penting. Bagi aktivis, hutan lebih penting.
+      - Petani selalu benar.
+    answer: 1
+    words: [bagi]
+  - id: e03
+    type: fill_blank
+    sentence: Kedua ___ setuju bahwa kebakaran hutan harus dihentikan.
+    meaning:
+      ar_eg: الطرفين متفقين إن حرايق الغابات لازم تقف.
+      ar: يتّفق الطرفان على وجوب وقف حرائق الغابات.
+      en: Both sides agree that forest fires must be stopped.
+    options: [pihak, sudut, bagi]
+    answers: [pihak]
+    words: [pihak]
+  - id: e04
+    type: listen
+    text: Kalau kebun ditutup, petani kehilangan penghasilan.
+    question:
+      ar_eg: إيه اللي هيحصل لو المزارع اتقفلت؟
+      ar: ماذا يحدث إن أُغلقت المزارع؟
+      en: What happens if the plantations close?
+    options:
+      - الفلاحين هيخسروا دخلهم.
+      - الغابة هتولّع.
+      - الفلاحين هيكسبوا أكتر.
+    answer: 0
+    words: [penghasilan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: من وجهة نظر الناشطين، الغابة لازم تتحمي.
+      ar: من وجهة نظر الناشطين، يجب حماية الغابة.
+      en: From the activists' point of view, the forest must be protected.
+    answer: Dari sudut pandang aktivis, hutan harus dilindungi.
+    distractors: [pihak, terbakar]
+    words: [sudut pandang]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: بالنسبة للفلاحين، الدخل أهم حاجة.
+      ar: بالنسبة إلى المزارعين، الدخل أهمّ شيء.
+      en: For the farmers, income is the most important thing.
+    answers:
+      - Bagi petani, penghasilan adalah hal yang paling penting.
+      - Bagi para petani, penghasilan adalah hal yang paling penting.
+      - Bagi petani, penghasilan paling penting.
+      - Bagi petani, penghasilan adalah yang paling penting.
+    words: [bagi, penghasilan]
+  - id: e07
+    type: dictation
+    text: Setiap pihak punya sudut pandang sendiri.
+    meaning:
+      ar_eg: كل طرف عنده وجهة نظره.
+      ar: لكلّ طرف وجهة نظره.
+      en: Each side has its own point of view.
+    words: [pihak, sudut pandang]
+  - id: e08
+    type: speaking
+    text: Dari sudut pandang saya, kedua pihak ada benarnya.
+    meaning:
+      ar_eg: من وجهة نظري، الطرفين عندهم حق في حاجات.
+      ar: من وجهة نظري، لكلا الطرفين شيء من الحقّ.
+      en: From my point of view, both sides have a point.
+    words: [sudut pandang, pihak]
+dialogue:
+  title: Diskusi di perahu klotok
+  lines:
+    - speaker: Rina
+      text: Mohamed, menurutmu siapa yang benar, petani atau aktivis?
+      ar_eg: يا محمد، في رأيك مين اللي معاه حق، الفلاحين ولا الناشطين؟
+      ar: يا محمد، من المحقّ في رأيك، المزارعون أم الناشطون؟
+      en: Mohamed, who do you think is right, the farmers or the activists?
+    - speaker: Mohamed
+      text: Bagi petani, sawit berarti penghasilan. Itu masuk akal.
+      ar_eg: بالنسبة للفلاحين، النخيل يعني دخل. وده منطقي.
+      ar: بالنسبة إلى المزارعين، النخيل يعني الدخل، وهذا منطقي.
+      en: For the farmers, palm oil means income. That makes sense.
+    - speaker: Rina
+      text: Tetapi dari sudut pandang aktivis, hutan tidak bisa diganti.
+      ar_eg: بس من وجهة نظر الناشطين، الغابة مالهاش بديل.
+      ar: لكن من وجهة نظر الناشطين، الغابة لا تُعوَّض.
+      en: But from the activists' point of view, the forest can't be replaced.
+    - speaker: Mohamed
+      text: Setuju. Kedua pihak ada benarnya, jadi solusinya harus adil.
+      ar_eg: موافق. الطرفين عندهم حق، فالحل لازم يكون عادل.
+      ar: أوافق. لكلّ طرف شيء من الحقّ، فيجب أن يكون الحلّ عادلًا.
+      en: Agreed. Both sides have a point, so the solution must be fair.
+new_words:
+  - word: sudut pandang
+    pos: noun
+    ar_eg: وجهة نظر
+    ar: وجهة نظر
+    en: point of view
+  - word: pihak
+    pos: noun
+    ar_eg: طرف
+    ar: طرف
+    en: side, party
+  - word: penghasilan
+    pos: noun
+    ar_eg: دخل
+    ar: دخل
+    en: income
+  - word: bagi
+    ar_eg: بالنسبة لـ
+    ar: بالنسبة إلى
+    en: for, to
+review:
+  status: draft
+  verified: false
