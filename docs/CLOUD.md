@@ -45,7 +45,8 @@ All JSON. Authenticated routes take `Authorization: Bearer <access_token>`. Erro
 | `GET /v1/sync` | WebSocket; messages in `crates/protocol/src/sync.rs` |
 | `GET /v1/vault` | which engines are configured (never the keys) |
 | `POST /v1/ai` | `EngineCall` → `EngineReply` |
-| `POST /v1/tts` | `{ segments: [{ voice, text }], rate_percent }` → `audio/mpeg` |
+| `POST /v1/tts` | `{ segments: [{ voice, text, pitch_percent? }], rate_percent }` → `audio/mpeg` |
+| `PUT /v1/blobs/{sha256}` | raw PNG or JPEG ≤ 1 MB whose SHA-256 is the name → `204`; kept 7 days in the account's Durable Object (no R2: it needs a card). `400` for a bad name, type or hash. A `/v1/ai` call with `image_sha256` reads it, `404 blob_missing` once it's gone, and runs on `WORKERS_AI_VISION_MODEL` (provisional until the bake-off), Gemini `inline_data` or a Claude image block |
 
 Sync in one paragraph: the device sends `hello { last_seq }`, gets the missing ops in pages and `caught_up`, then pushes its outbox as `push { batch, ops ≤ 50 }` and gets an `ack` listing what can leave the outbox. Other devices' ops arrive as `ops` the moment they're stored. LWW tables keep the newest HLC, append-only tables insert once, ink strokes only take tombstones. Unknown tables, wrong device ids and clocks more than 5 minutes ahead are rejected with a reason.
 
@@ -144,6 +145,6 @@ Counters are in D1 `quota_usage`; a call that would cross a limit is refused bef
 - **Push tokens**: the app doesn't send its FCM token yet; that arrives with the Android notification code (M7).
 - On Linux (development and CI only) the session is kept in memory, so you sign in on every launch. The Mac uses the Keychain and Android the Keystore.
 
-- Vision tasks (`read_handwriting`, `guess_sketch`, `check_strokes`) and any call with an image answer `unavailable` until the blob store lands. `structure_screenshot` already works from the on-device OCR text alone (no image attached); it is personal (other people's chats), so it never goes to `gemini_free` or the shared cache.
+- Vision tasks (`read_handwriting`, `guess_sketch`, `check_strokes`) need an image (`image_sha256`, see `/v1/blobs`). `structure_screenshot` also works from the on-device OCR text alone (no image attached); it is personal (other people's chats), so it never goes to `gemini_free` or the shared cache.
 - Op-log compaction (monthly snapshot) arrives once the log is big enough to matter.
 - `fixtures/server/*.json` are written from the providers' documented shapes; replace them with real recordings on the first bake-off run (the `fcm_*.json` ones on the first real push).

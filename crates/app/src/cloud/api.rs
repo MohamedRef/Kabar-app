@@ -131,6 +131,19 @@ impl Api {
     }
 }
 
+impl Api {
+    /// `PUT /v1/blobs/{sha256}`: an image for the vision tasks, kept a week.
+    pub fn put_blob(&self, access: &str, sha256: &str, bytes: &[u8]) -> Result<(), CloudError> {
+        let res = self
+            .agent
+            .put(format!("{}/v1/blobs/{sha256}", self.base))
+            .header("authorization", bearer(access))
+            .header("content-type", "application/octet-stream")
+            .send(bytes);
+        read_empty(res)
+    }
+}
+
 /// Far above the proxy's 5,000-character requests (about 1 MB of MP3).
 const MAX_AUDIO_BYTES: u64 = 16 * 1024 * 1024;
 

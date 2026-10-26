@@ -9,6 +9,8 @@ use kabar_protocol::cloud::{EngineStatus, VaultStatus};
 use crate::tokens::TokenKey;
 
 pub const DEFAULT_WORKERS_AI_MODEL: &str = "@cf/aisingapore/gemma-sea-lion-v4-27b-it";
+/// For calls with an image. SEA-LION is text-only on Workers AI.
+pub const DEFAULT_WORKERS_AI_VISION_MODEL: &str = "@cf/meta/llama-4-scout-17b-16e-instruct";
 pub const DEFAULT_GEMINI_MODEL: &str = "gemini-2.5-flash";
 pub const DEFAULT_CLAUDE_MODEL: &str = "claude-opus-5-5";
 
@@ -57,6 +59,7 @@ pub struct Config {
     pub allowed_emails: Vec<String>,
     pub token_key: Option<TokenKey>,
     pub workers_ai_model: String,
+    pub workers_ai_vision_model: String,
     /// The `AI` binding exists (always true on a real deployment).
     pub workers_ai_bound: bool,
     pub gemini_model: String,
@@ -112,6 +115,8 @@ impl Config {
                 .unwrap_or_default(),
             token_key,
             workers_ai_model: get("WORKERS_AI_MODEL").unwrap_or_else(|| DEFAULT_WORKERS_AI_MODEL.into()),
+            workers_ai_vision_model: get("WORKERS_AI_VISION_MODEL")
+                .unwrap_or_else(|| DEFAULT_WORKERS_AI_VISION_MODEL.into()),
             workers_ai_bound,
             gemini_model: get("GEMINI_MODEL").unwrap_or_else(|| DEFAULT_GEMINI_MODEL.into()),
             gemini_key: secret("GEMINI_API_KEY"),
