@@ -1,0 +1,231 @@
+schema: kabar.lesson/v1
+id: j5.u06.l02
+language: jv
+title: Campursari
+can_do:
+  ar_eg: تمشي ورا حكاية أغنية حب حديثة.
+  ar: أن تتتبّع حكاية أغنية حب حديثة.
+  en: Follow the story in a modern love song.
+slides:
+  - title: Tembung tresna
+    body:
+      ar_eg: |
+        campursari = مزيكا بتخلط الجاميلان مع آلات حديثة (campur = يخلط، فاكرها؟). أغانيه أغلبها حب وفراق، وقلب مكسور.
+        كلمات الحب: tresna = حب (بتتنطق «تريسنو»، زي pira و piro!)، kangen = وحشتني / مشتاق (kangen)، ati = قلب، janji = وعد. وسلانج مشهور: ambyar = اتكسر حتت، يعني قلبه اتكسر.
+      ar: |
+        campursari = موسيقى تمزج الغاميلان بالآلات الحديثة (campur = يمزج، أتذكرها؟)، وأكثر أغانيها عن الحب والفراق والقلب المكسور.
+        ومفردات الحب: tresna = حب (تُنطق «تريسنو» كما في pira وpiro)، وkangen = اشتياق، وati = قلب، وjanji = وعد. وكلمة عامية شهيرة: ambyar = تحطّم شظايا، أي انكسر القلب.
+      en: |
+        campursari = music that mixes gamelan with modern instruments (campur = mix, remember?). Its songs are mostly about love, parting and broken hearts.
+        Love words: tresna = love (said "tresno", like pira and piro!), kangen = to miss someone, ati = heart, janji = promise. And a famous slang word: ambyar = shattered to pieces, i.e. heartbroken.
+    grammar: jv.narrative.connectors
+    examples:
+      - text: Aku tresna marang kowe.
+        ar_eg: أنا بحبك.
+        ar: أحبك.
+        en: I love you.
+      - text: Aku kangen kowe.
+        ar_eg: وحشتني.
+        ar: اشتقت إليك.
+        en: I miss you.
+  - title: Crita ing tembang
+    body:
+      ar_eg: |
+        أغنية الـ campursari غالبًا بتحكي حكاية، وبنفس كلمات الـ cerkak: biyen، nalika، sawise، pungkasane. الأبيات دي إحنا كاتبينها على طريقة الأغاني دي:
+      ar: |
+        كثيرًا ما تحكي أغنية الـ campursari حكاية بأدوات الـ cerkak نفسها: biyen، وnalika، وsawise، وpungkasane. وهذه أبيات كتبناها على طريقتها:
+      en: |
+        A campursari song often tells a story, with the same words as a cerkak: biyen, nalika, sawise, pungkasane. These lines were written for Kabar in that style:
+    grammar: jv.narrative.connectors
+    examples:
+      - text: Nalika kowe lunga, atiku lara.
+        ar_eg: لما مشيت، قلبي وجعني.
+        ar: حين رحلتَ تألّم قلبي.
+        en: When you left, my heart ached.
+      - text: Pungkasane, atiku ambyar.
+        ar_eg: وفي الآخر، قلبي اتكسر حتت.
+        ar: وفي النهاية تحطّم قلبي.
+        en: In the end, my heart was shattered.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tresna
+        ar_eg: حب
+        ar: حب
+        en: love
+      - text: kangen
+        ar_eg: مشتاق / وحشني
+        ar: مشتاق
+        en: to miss someone
+      - text: ati
+        ar_eg: قلب
+        ar: قلب
+        en: heart
+      - text: ambyar
+        ar_eg: اتكسر حتت (سلانج)
+        ar: تحطّم (عامية)
+        en: shattered, heartbroken (slang)
+      - text: janji
+        ar_eg: وعد
+        ar: وعد
+        en: promise
+    words: [tresna, kangen, ati, ambyar, janji]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: كلمة «حب» بتتنطق «tresno». إزاي بتتكتب في الإملا الرسمي؟
+      ar: تُنطق كلمة «حب» «tresno». كيف تُكتب في الإملاء القياسي؟
+      en: The word for "love" sounds like "tresno". How is it spelled in standard spelling?
+    options: [tresno, tresna]
+    answer: 1
+    explain:
+      ar_eg: نفس قاعدة pira / piro، الـ a الأخيرة بتتنطق o.
+      ar: "القاعدة نفسها في pira / piro: a الأخيرة تُنطق o."
+      en: "Same rule as pira / piro: the final a sounds like o."
+    words: [tresna]
+  - id: e03
+    type: multiple_choice
+    question: Nalika kowe lunga, atiku lara.
+    question_meaning:
+      ar_eg: قلبه وجعه إمتى؟
+      ar: متى تألّم قلبه؟
+      en: When did his heart ache?
+    options: ['Ketika kamu pergi.', 'Sebelum kamu datang.', 'Besok pagi.']
+    answer: 0
+    words: [ati]
+  - id: e04
+    type: listen
+    text: Pungkasane, atiku ambyar.
+    options: ['Pungkasane, atiku seneng.', 'Saiki, atiku ambyar.', 'Pungkasane, atiku ambyar.']
+    answer: 2
+    meaning:
+      ar_eg: وفي الآخر، قلبي اتكسر حتت.
+      ar: وفي النهاية تحطّم قلبي.
+      en: In the end, my heart was shattered.
+    words: [ambyar, ati]
+  - id: e05
+    type: fill_blank
+    sentence: Aku ___ kowe.
+    meaning:
+      ar_eg: وحشتني.
+      ar: اشتقت إليك.
+      en: I miss you.
+    options: [ambyar, kangen, janji]
+    answers: [kangen]
+    words: [kangen]
+  - id: e06
+    type: fill_blank
+    sentence: Biyen kowe ___ ora bakal lunga.
+    meaning:
+      ar_eg: زمان إنت وعدت إنك مش هتمشي.
+      ar: وعدتَ قديمًا بألّا ترحل.
+      en: Back then you promised you'd never leave.
+    options: [tresna, kangen, janji]
+    answers: [janji]
+    words: [janji]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: بعد ما مشيت، بقيت مشتاق وبس.
+      ar: بعد أن رحلتَ لم يبقَ لي إلا الشوق.
+      en: After you left, all I do is miss you.
+    answer: Sawise kowe lunga, aku mung kangen.
+    distractors: [sadurunge, ambyar]
+    words: [kangen]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (نغوكو) أنا بحبك.
+      ar: (نغوكو) أحبك.
+      en: (ngoko) I love you.
+    answers:
+      - Aku tresna marang kowe.
+      - Aku tresna karo kowe.
+      - Aku tresna kowe.
+      - Aku tresno marang kowe.
+      - Aku tresno karo kowe.
+      - Aku tresno kowe.
+    words: [tresna]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Biyen kowe janji ora bakal lunga, nanging pungkasane kowe lunga.
+    answers_meaning:
+      ar_eg:
+        - زمان إنت وعدت إنك مش هتمشي، بس في الآخر مشيت.
+        - زمان وعدت إنك مش هتمشي، بس في الآخر مشيت.
+        - إنت وعدت زمان إنك مش هتسيبني، بس في الآخر مشيت.
+        - زمان وعدتني إنك مش هتمشي، بس في الآخر مشيت.
+      ar:
+        - وعدتَ قديمًا بألّا ترحل، لكنك رحلت في النهاية.
+        - كنت وعدتَ ألّا ترحل، لكنك في النهاية رحلت.
+        - وعدتَ من قبل بألّا ترحل، لكنك رحلت في النهاية.
+      en:
+        - Back then you promised you'd never leave, but in the end you left.
+        - You once promised you wouldn't leave, but in the end you left.
+        - You promised you would never leave, but in the end you left.
+        - Back then you promised you wouldn't leave, but in the end you left.
+        - You promised long ago that you'd never leave, but in the end you left.
+    words: [janji]
+  - id: e10
+    type: speaking
+    text: Nalika kowe lunga, atiku ambyar.
+    meaning:
+      ar_eg: لما مشيت، قلبي اتكسر حتت.
+      ar: حين رحلتَ تحطّم قلبي.
+      en: When you left, my heart was shattered.
+    words: [ati, ambyar]
+dialogue:
+  title: Campursari ing warung
+  lines:
+    - speaker: Mas Rizal
+      text: Rungokna, iki campursari. Critane wong sing ditinggal lunga.
+      ar_eg: اسمع، ده campursari. حكايته عن حد حبيبه سابه ومشي.
+      ar: استمع، هذا campursari، وحكايته عن شخص هجره من يحب.
+      en: Listen, this is campursari. It's about someone who was left behind.
+    - speaker: Mohamed
+      text: Nalika kekasihe lunga, atine ambyar?
+      ar_eg: لما حبيبه مشي، قلبه اتكسر؟
+      ar: حين رحل حبيبه، هل تحطّم قلبه؟
+      en: When his love left, his heart was shattered?
+    - speaker: Mas Rizal
+      text: Bener! Akeh tembang campursari critane kaya ngono.
+      ar_eg: صح! أغاني campursari كتير حكايتها كده.
+      ar: صحيح! كثير من أغاني campursari حكايتها هكذا.
+      en: Right! Lots of campursari songs tell a story like that.
+    - speaker: Mohamed
+      text: Sedhih, nanging apik banget.
+      ar_eg: حزينة، بس حلوة أوي.
+      ar: حزينة، لكنها جميلة جدًا.
+      en: Sad, but really beautiful.
+new_words:
+  - word: tresna
+    pos: verb
+    ar_eg: يحب / حب (بتتنطق «تريسنو»)
+    ar: يحب / حب (تُنطق «تريسنو»)
+    en: to love, love (said "tresno") = cinta
+  - word: kangen
+    pos: verb
+    ar_eg: مشتاق / وحشه
+    ar: يشتاق
+    en: to miss someone = kangen, rindu
+  - word: ati
+    pos: noun
+    ar_eg: قلب
+    ar: قلب
+    en: heart = hati
+  - word: ambyar
+    pos: adjective
+    ar_eg: اتكسر حتت (للقلب، سلانج)
+    ar: محطّم (للقلب، عامية)
+    en: shattered, heartbroken (slang) = hancur
+  - word: janji
+    pos: noun
+    ar_eg: وعد / يوعد
+    ar: وعد
+    en: promise = janji
+review:
+  status: draft
+  verified: false

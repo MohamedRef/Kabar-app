@@ -1,0 +1,227 @@
+schema: kabar.lesson/v1
+id: bipa3.u09.l03
+language: id
+title: Pada zaman dahulu
+can_do:
+  ar_eg: 'تبني حدوتة بالترتيب: البداية، المشكلة، النهاية، والعبرة.'
+  ar: 'أن تبني حكاية مرتبة: البداية والعقدة والحل والعبرة.'
+  en: Build a tale in order, with an opening, a problem, an ending and a moral.
+slides:
+  - title: Pada zaman dahulu, hiduplah …
+    body:
+      ar_eg: |
+        الحدوتة الإندونيسية ليها قالب ثابت:
+        1) البداية: Pada zaman dahulu, hiduplah seorang … = كان يا ما كان، كان فيه…
+        2) المشكلة: Suatu hari, … = في يوم من الأيام…
+        وzaman جاية من العربي «زمان». وhiduplah = hidup + -lah (كان عايش).
+      ar: |
+        للحكاية الإندونيسية قالب ثابت:
+        1) الافتتاح: Pada zaman dahulu, hiduplah seorang … = كان يا ما كان، كان هناك…
+        2) العقدة: Suatu hari, … = وفي يوم من الأيام…
+        وzaman من العربية «زمان»، وhiduplah = hidup مع -lah (عاش).
+      en: |
+        Indonesian folk tales follow a fixed frame:
+        1) Opening: Pada zaman dahulu, hiduplah seorang … = Once upon a time there lived a …
+        2) Problem: Suatu hari, … = One day, …
+        zaman comes from Arabic «زمان»; hiduplah = hidup + -lah (there lived).
+    examples:
+      - text: Pada zaman dahulu, hiduplah seorang raja yang sombong.
+        ar_eg: كان يا ما كان، كان فيه ملك متكبّر.
+        ar: كان يا ما كان، عاش ملكٌ متكبّر.
+        en: Once upon a time there lived an arrogant king.
+      - text: Suatu hari, datang seorang anak yang cerdik.
+        ar_eg: في يوم من الأيام، جه ولد مكّار.
+        ar: وفي يوم من الأيام جاء ولدٌ ذكي.
+        en: One day, a clever child came.
+  - title: Akhirnya … · Amanat
+    body:
+      ar_eg: |
+        3) النهاية: Akhirnya, … = وفي الآخر…
+        4) العبرة: Amanat cerita ini adalah … = العبرة من الحدوتة إن…
+        وamanat جاية من العربي «أمانة»: الرسالة اللي الحدوتة شايلاها لك.
+      ar: |
+        3) الحل: Akhirnya, … = وفي النهاية…
+        4) العبرة: Amanat cerita ini adalah … = العبرة من هذه الحكاية أنّ…
+        وamanat من العربية «أمانة»: الرسالة التي تحملها الحكاية إليك.
+      en: |
+        3) Ending: Akhirnya, … = In the end, …
+        4) Moral: Amanat cerita ini adalah … = The moral of this story is …
+        amanat comes from Arabic «أمانة»: the message the story carries for you.
+    examples:
+      - text: Akhirnya, raja itu tidak sombong lagi.
+        ar_eg: وفي الآخر، الملك بطّل يتكبّر.
+        ar: وفي النهاية لم يعد الملك متكبّرًا.
+        en: In the end, the king was no longer arrogant.
+      - text: Amanat cerita ini adalah jangan sombong.
+        ar_eg: 'العبرة من الحدوتة: ما تتكبّرش.'
+        ar: 'العبرة من هذه الحكاية: لا تتكبّر.'
+        en: The moral of this story is don't be arrogant.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: zaman
+        ar_eg: زمن / عصر
+        ar: زمن / عصر
+        en: era, age
+      - text: hiduplah
+        ar_eg: كان عايش / كان فيه
+        ar: عاش / كان هناك
+        en: there lived
+      - text: raja
+        ar_eg: ملك
+        ar: ملك
+        en: king
+      - text: suatu hari
+        ar_eg: في يوم من الأيام
+        ar: في يوم من الأيام
+        en: one day
+      - text: amanat
+        ar_eg: العبرة / الرسالة
+        ar: العبرة / المغزى
+        en: moral, message
+      - text: sombong
+        ar_eg: متكبّر / شايف نفسه
+        ar: متكبّر
+        en: arrogant
+    words: [zaman, hiduplah, raja, suatu hari, amanat, sombong]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الحدوتة الإندونيسية بتبدأ عادةً إزاي؟
+      ar: بمَ تبدأ الحكاية الإندونيسية عادةً؟
+      en: How does an Indonesian folk tale usually begin?
+    options:
+      - Pada zaman dahulu, hiduplah seorang raja.
+      - Akhirnya, raja itu pulang ke istana.
+      - Amanat cerita ini adalah jangan sombong.
+    answer: 0
+    words: [zaman, hiduplah, raja]
+  - id: e03
+    type: listen
+    text: Suatu hari, putri itu pergi ke pantai.
+    options:
+      - Suatu hari, putri itu pergi ke pasar.
+      - Suatu hari, putri itu pergi ke pantai.
+      - Setiap hari, putri itu pergi ke pantai.
+    answer: 1
+    meaning:
+      ar_eg: في يوم من الأيام، الأميرة راحت الشط.
+      ar: وفي يوم من الأيام ذهبت الأميرة إلى الشاطئ.
+      en: One day, the princess went to the beach.
+    words: [suatu hari, putri]
+  - id: e04
+    type: multiple_choice
+    question: Raja itu ___. Dia merasa paling hebat.
+    options: [cerdik, ramah, sombong]
+    answer: 2
+    words: [sombong]
+  - id: e05
+    type: fill_blank
+    sentence: ___ cerita ini adalah jangan sombong.
+    meaning:
+      ar_eg: 'العبرة من الحدوتة دي: ما تتكبّرش.'
+      ar: 'العبرة من هذه الحكاية: لا تتكبّر.'
+      en: The moral of this story is don't be arrogant.
+    options: [Zaman, Suatu hari, Amanat]
+    answers: [Amanat]
+    words: [amanat]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: كان يا ما كان، كان فيه أميرة جميلة.
+      ar: كان يا ما كان، عاشت أميرة جميلة.
+      en: Once upon a time there lived a beautiful princess.
+    answer: Pada zaman dahulu, hiduplah seorang putri yang cantik.
+    distractors: [suatu, raja]
+    words: [zaman, hiduplah, putri]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: في يوم من الأيام، الملك راح البحر.
+      ar: وفي يوم من الأيام ذهب الملك إلى البحر.
+      en: One day, the king went to the sea.
+    answers:
+      - Suatu hari, raja itu pergi ke laut.
+      - Suatu hari, raja itu pergi ke laut
+      - Suatu hari raja itu pergi ke laut.
+      - Suatu hari raja itu pergi ke laut
+      - Pada suatu hari, raja itu pergi ke laut.
+      - Pada suatu hari raja itu pergi ke laut.
+      - Suatu hari, raja pergi ke laut.
+      - Suatu hari, sang raja pergi ke laut.
+      - Suatu hari, raja itu pergi ke pantai.
+    words: [suatu hari, raja]
+  - id: e08
+    type: speaking
+    text: Amanat cerita ini adalah jangan sombong.
+    meaning:
+      ar_eg: 'العبرة من الحدوتة دي: ما تتكبّرش.'
+      ar: 'العبرة من هذه الحكاية: لا تتكبّر.'
+      en: The moral of this story is don't be arrogant.
+    words: [amanat, sombong]
+dialogue:
+  title: Menulis dongeng
+  lines:
+    - speaker: Mohamed
+      text: Mas, saya mau menulis dongeng. Mulainya bagaimana?
+      ar_eg: يا ماس، عايز أكتب حدوتة. أبدأ إزاي؟
+      ar: يا ماس، أريد أن أكتب حكاية. كيف أبدأ؟
+      en: Mas, I want to write a folk tale. How do I start?
+    - speaker: Mas Rizal
+      text: Mulai dengan “Pada zaman dahulu, hiduplah …”.
+      ar_eg: ابدأ بـ «كان يا ما كان، كان فيه…».
+      ar: ابدأ بـ«كان يا ما كان، كان هناك…».
+      en: Start with "Once upon a time there lived …".
+    - speaker: Mohamed
+      text: Lalu?
+      ar_eg: وبعدين؟
+      ar: ثم؟
+      en: And then?
+    - speaker: Mas Rizal
+      text: Lalu “Suatu hari …”, ada masalah. Akhirnya, masalah itu selesai.
+      ar_eg: وبعدين «في يوم من الأيام…» وتحصل مشكلة. وفي الآخر المشكلة تتحل.
+      ar: ثم «وفي يوم من الأيام…» فتقع مشكلة، وفي النهاية تُحلّ.
+      en: Then "One day …", and there's a problem. In the end, the problem is solved.
+    - speaker: Mas Rizal
+      text: Jangan lupa amanatnya. Misalnya, jangan sombong!
+      ar_eg: 'وما تنساش العبرة. مثلًا: ما تتكبّرش!'
+      ar: 'ولا تنسَ العبرة، مثل: لا تتكبّر!'
+      en: Don't forget the moral. For example, don't be arrogant!
+new_words:
+  - word: zaman
+    pos: noun
+    ar_eg: زمن / عصر (pada zaman dahulu = زمان أوي)
+    ar: زمن / عصر (pada zaman dahulu = في قديم الزمان)
+    en: era, age (pada zaman dahulu = long, long ago)
+    arabic: زمان
+  - word: hiduplah
+    pos: verb
+    ar_eg: كان عايش / كان فيه (في أول الحدوتة)
+    ar: عاش / كان هناك (في افتتاح الحكاية)
+    en: there lived (tale opening)
+  - word: raja
+    pos: noun
+    ar_eg: ملك
+    ar: ملك
+    en: king
+  - word: suatu hari
+    pos: phrase
+    ar_eg: في يوم من الأيام
+    ar: في يوم من الأيام
+    en: one day
+  - word: amanat
+    pos: noun
+    ar_eg: العبرة / الرسالة (من حدوتة)
+    ar: العبرة / المغزى
+    en: moral, message (of a story)
+    arabic: أمانة
+  - word: sombong
+    pos: adjective
+    ar_eg: متكبّر / شايف نفسه
+    ar: متكبّر
+    en: arrogant
+review:
+  status: draft
+  verified: false

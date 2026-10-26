@@ -1,0 +1,235 @@
+schema: kabar.lesson/v1
+id: bipa3.u07.l03
+language: id
+title: Buku itu saya baca
+can_do:
+  ar_eg: تبدأ الجملة بالحاجة لما الفاعل أنا / إحنا / إنت (Foto ini saya ambil).
+  ar: أن تبدأ الجملة بالمفعول حين يكون الفاعل متكلمًا أو مخاطبًا (Foto ini saya ambil).
+  en: Put the object first when the doer is I / we / you (Foto ini saya ambil).
+slides:
+  - title: Buku itu saya baca
+    body:
+      ar_eg: |
+        مع saya / kami / kita / kamu / Anda ما بنستعملش di-. بنقول: المفعول + الضمير + الجذر من غير meN-:
+        Saya membaca buku itu → Buku itu saya baca.
+        ده بالظبط زي المصري: «الكتاب ده أنا قريته».
+      ar: |
+        مع saya / kami / kita / kamu / Anda لا تُستعمل di-، بل: المفعول + الضمير + الجذر بلا meN-:
+        Saya membaca buku itu → Buku itu saya baca.
+        وهو كقولنا: «الكتابُ قرأتُه».
+      en: |
+        With saya / kami / kita / kamu / Anda you don't use di-. Say: object + pronoun + bare root (no meN-):
+        Saya membaca buku itu → Buku itu saya baca.
+        Just like Egyptian «الكتاب ده أنا قريته» (that book, I read it).
+    grammar: id.voice.active-passive
+    examples:
+      - text: Saya membaca buku itu. → Buku itu saya baca.
+        ar_eg: أنا قريت الكتاب ده. ← الكتاب ده أنا قريته.
+        ar: قرأتُ ذلك الكتاب. ← ذلك الكتابُ قرأتُه.
+        en: I read that book. → That book, I read.
+      - text: Foto ini saya ambil di Sade.
+        ar_eg: الصورة دي أنا صورتها في ساديه.
+        ar: التقطتُ هذه الصورة في سادي.
+        en: I took this photo in Sade.
+  - title: Sudah saya baca
+    body:
+      ar_eg: |
+        الضمير والفعل لازقين، مفيش حاجة بينهم. sudah / belum / akan بييجوا قبل الضمير:
+        Buku itu sudah saya baca (مش saya sudah baca).
+        والردود الرسمية بتحب الشكل ده: Pesan Anda sudah kami terima = رسالتك وصلتنا.
+      ar: |
+        لا يُفصل بين الضمير والفعل، وتتقدم sudah / belum / akan على الضمير:
+        Buku itu sudah saya baca (لا saya sudah baca).
+        وتكثر في الردود الرسمية: Pesan Anda sudah kami terima = تسلّمنا رسالتكم.
+      en: |
+        Pronoun and verb stick together; nothing goes between them. sudah / belum / akan go before the pronoun:
+        Buku itu sudah saya baca (not saya sudah baca).
+        Formal replies love it: Pesan Anda sudah kami terima = We have received your message.
+    grammar: id.voice.active-passive
+    examples:
+      - text: Buku tentang pahlawan itu sudah saya baca.
+        ar_eg: الكتاب اللي عن البطل ده قريته خلاص.
+        ar: قرأتُ ذلك الكتاب عن البطل.
+        en: I've already read that book about the hero.
+      - text: Pesan Anda sudah kami terima.
+        ar_eg: رسالتك وصلتنا.
+        ar: تسلّمنا رسالتكم.
+        en: We have received your message.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: menerima
+        ar_eg: يستلم / يستقبل
+        ar: يتسلّم / يستقبل
+        en: to receive
+      - text: mengambil
+        ar_eg: ياخد (mengambil foto = يصوّر)
+        ar: يأخذ (mengambil foto = يلتقط صورة)
+        en: to take (mengambil foto = to take a photo)
+      - text: oleh-oleh
+        ar_eg: هدية من السفر
+        ar: هدية من السفر
+        en: souvenir gift (from a trip)
+      - text: menenun
+        ar_eg: ينسج
+        ar: ينسج
+        en: to weave
+      - text: membalas
+        ar_eg: يرد (على رسالة)
+        ar: يردّ (على رسالة)
+        en: to reply
+    words: [menerima, mengambil, oleh-oleh, menenun, membalas]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة صح لـ «الصورة دي أنا صورتها في ساديه»؟
+      ar: أيّ جملة صحيحة لـ «التقطتُ هذه الصورة في سادي»؟
+      en: Which is correct for "I took this photo in Sade"?
+    options:
+      - Foto ini saya mengambil di Sade.
+      - Foto ini saya ambil di Sade.
+      - Foto ini diambil oleh saya di Sade.
+    answer: 1
+    explain:
+      ar_eg: مع saya بنستعمل الجذر من غير meN- (ambil). وdi- … oleh saya مش طبيعية.
+      ar: مع saya يُستعمل الجذر بلا meN- (ambil)، ولا يقال di- … oleh saya.
+      en: With saya use the bare root (ambil); di- … oleh saya isn't natural.
+    words: [mengambil]
+  - id: e03
+    type: listen
+    text: Kain ini saya tenun sendiri. Bagus untuk oleh-oleh!
+    options:
+      - Kain ini saya beli sendiri. Bagus untuk oleh-oleh!
+      - Kain ini saya tenun sendiri. Bagus untuk ibu-ibu!
+      - Kain ini saya tenun sendiri. Bagus untuk oleh-oleh!
+    answer: 2
+    meaning:
+      ar_eg: القماش ده أنا نسجته بنفسي. حلو كهدية من السفر!
+      ar: نسجتُ هذا القماش بنفسي. إنه هدية سفر جميلة!
+      en: I wove this cloth myself. It makes a nice souvenir!
+    words: [menenun, oleh-oleh]
+  - id: e04
+    type: multiple_choice
+    question: Oleh-oleh ini saya ___ di Sade.
+    options: [membeli, beli, dibeli]
+    answer: 1
+    explain:
+      ar_eg: 'بعد saya على طول بييجي الجذر بس: saya beli.'
+      ar: 'بعد saya مباشرةً يأتي الجذر وحده: saya beli.'
+      en: 'Right after saya comes the bare root: saya beli.'
+    words: [oleh-oleh]
+  - id: e05
+    type: fill_blank
+    sentence: Maaf, pesan itu belum saya ___.
+    meaning:
+      ar_eg: معلش، لسه ما رديتش على الرسالة دي.
+      ar: عذرًا، لم أردّ على تلك الرسالة بعد.
+      en: Sorry, I haven't replied to that message yet.
+    options: [membalas, balas, dibalas]
+    answers: [balas]
+    words: [membalas]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: رسالتك وصلتنا.
+      ar: تسلّمنا رسالتكم.
+      en: We have received your message.
+    answer: Pesan Anda sudah kami terima.
+    distractors: [menerima, oleh]
+    words: [menerima]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الصورة دي أنا صورتها قدام البيت التقليدي.
+      ar: التقطتُ هذه الصورة أمام البيت التقليدي.
+      en: I took this photo in front of the traditional house.
+    answers:
+      - Foto ini saya ambil di depan rumah adat.
+      - Foto ini saya ambil di depan rumah adat
+      - Foto ini aku ambil di depan rumah adat.
+      - Foto ini aku ambil di depan rumah adat
+      - Foto ini kuambil di depan rumah adat.
+      - Saya mengambil foto ini di depan rumah adat.
+      - Saya mengambil foto ini di depan rumah adat
+      - Aku mengambil foto ini di depan rumah adat.
+    explain:
+      ar_eg: 'الأحسن تبدأ بالصورة لأنها موضوعك: Foto ini saya ambil… (والجملة المعلوم كمان صح).'
+      ar: 'الأحسن البدء بالصورة لأنها الموضوع: Foto ini saya ambil… (والمبني للمعلوم صحيح أيضًا).'
+      en: Starting with the photo (your topic) sounds best — Foto ini saya ambil… — but the active is correct too.
+    words: [mengambil, rumah adat]
+  - id: e08
+    type: speaking
+    text: Email Anda sudah saya terima dan saya balas.
+    meaning:
+      ar_eg: إيميلك وصلني ورديت عليه.
+      ar: تسلّمتُ بريدك وردَدتُ عليه.
+      en: I've received your email and replied to it.
+    words: [menerima, membalas]
+  - id: e09
+    type: fill_blank
+    sentence: Ibu-ibu di Sade ___ kain setiap hari.
+    meaning:
+      ar_eg: الستات في ساديه بينسجوا قماش كل يوم.
+      ar: تنسج نساء سادي القماش كل يوم.
+      en: The women in Sade weave cloth every day.
+    options: [menenun, tenun, ditenun]
+    answers: [menenun]
+    explain:
+      ar_eg: هنا الجملة معلوم عادية (الفاعل ibu-ibu في الأول)، فبنستعمل meN-.
+      ar: الجملة هنا مبنية للمعلوم والفاعل في أولها، فنستعمل meN-.
+      en: This is an ordinary active sentence (the doer comes first), so use meN-.
+    words: [menenun]
+dialogue:
+  title: Penenun di Sade
+  lines:
+    - speaker: Mohamed
+      text: Bu, kain ini Ibu tenun sendiri?
+      ar_eg: يا مدام، القماش ده حضرتك نسجتيه بنفسك؟
+      ar: يا سيدتي، هل نسجتِ هذا القماش بنفسك؟
+      en: Did you weave this cloth yourself?
+    - speaker: Inaq Sumi
+      text: Ya, kain ini saya tenun sendiri, selama dua minggu.
+      ar_eg: أيوه، نسجته بنفسي في أسبوعين.
+      ar: نعم، نسجته بنفسي في أسبوعين.
+      en: Yes, I wove it myself, over two weeks.
+    - speaker: Mohamed
+      text: Bagus sekali! Kain ini saya beli untuk oleh-oleh. Boleh saya ambil fotonya?
+      ar_eg: حلو أوي! هشتريه هدية. ممكن أصوّره؟
+      ar: جميل جدًا! سأشتريه هدية. هل لي أن ألتقط صورته؟
+      en: It's beautiful! I'll buy it as a souvenir. May I take a photo of it?
+    - speaker: Inaq Sumi
+      text: Silakan! Nanti fotonya kirim ke saya, ya.
+      ar_eg: اتفضل! وبعدين ابعتلي الصورة، ماشي؟
+      ar: تفضّل! وأرسل إليّ الصورة لاحقًا.
+      en: Go ahead! Send me the photo later, OK?
+new_words:
+  - word: menerima
+    pos: verb
+    ar_eg: يستلم / يستقبل
+    ar: يتسلّم / يستقبل
+    en: to receive
+  - word: mengambil
+    pos: verb
+    ar_eg: ياخد (mengambil foto = يصوّر)
+    ar: يأخذ (mengambil foto = يلتقط صورة)
+    en: to take (mengambil foto = to take a photo)
+  - word: oleh-oleh
+    pos: noun
+    ar_eg: هدية من السفر
+    ar: هدية يُؤتى بها من السفر
+    en: souvenir gift brought back from a trip
+  - word: menenun
+    pos: verb
+    ar_eg: ينسج
+    ar: ينسج
+    en: to weave
+  - word: membalas
+    pos: verb
+    ar_eg: يرد (على رسالة)
+    ar: يردّ (على رسالة)
+    en: to reply
+review:
+  status: draft
+  verified: false

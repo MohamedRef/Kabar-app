@@ -1,0 +1,210 @@
+schema: kabar.lesson/v1
+id: j6.u01.l04
+language: jv
+title: Ma ga ba tha nga
+can_do:
+  ar_eg: تكمّل الحروف العشرين.
+  ar: أن تكمل الحروف العشرين.
+  en: Complete the 20 letters.
+slides:
+  - title: Ma ga ba tha nga
+    body:
+      ar_eg: |
+        آخر خمسة: ꦩ ma (مَ) · ꦒ ga (الجيم المصري، g) · ꦧ ba (بَ) · ꦛ tha (تَ تقيلة) · ꦔ nga (نجَ من الأنف).
+        ꦒ هي «ج» بتاعتنا في «جمل» بالنطق المصري. وꦔ صوت واحد، زي ng في sing، وممكن ييجي في أول الكلمة: ꦔꦥ ngapa (ليه؟).
+      ar: |
+        الخمسة الأخيرة: ꦩ ma (مَ) · ꦒ ga (g، كالجيم المصرية) · ꦧ ba (بَ) · ꦛ tha (تاء ثقيلة) · ꦔ nga (نون أنفية).
+        ꦒ هي الجيم بنطقها المصري، وꦔ صوت واحد كـ ng في sing، وقد يقع أول الكلمة: ꦔꦥ ngapa (لماذا؟).
+      en: |
+        The last five: ꦩ ma · ꦒ ga (Egyptian ج, a hard g) · ꦧ ba · ꦛ tha (heavy t) · ꦔ nga.
+        ꦒ is the g of Egyptian «جمل». ꦔ is one sound, the ng of "sing", and it can start a word: ꦔꦥ ngapa (why?).
+    grammar: jv.aksara.nglegena
+    examples:
+      - text: ꦩꦠ (mata)
+        ar_eg: عين
+        ar: عين
+        en: eye
+      - text: ꦔꦥ (ngapa)
+        ar_eg: ليه؟
+        ar: لماذا؟
+        en: why?
+  - title: Maga bathanga
+    body:
+      ar_eg: |
+        ꦠ ta الخفيفة وꦛ tha التقيلة، زي da وdha بالظبط.
+        وآخر سطر في القصيدة: «Maga bathanga» = والاتنين ماتوا. القصيدة كلها:
+        Hana caraka · data sawala · padha jayanya · maga bathanga.
+      ar: |
+        ꦠ ta الخفيفة وꦛ tha الثقيلة، كما في da وdha.
+        وآخر سطر في القصيدة: «Maga bathanga» = فهلكا معًا. والقصيدة كاملة:
+        Hana caraka · data sawala · padha jayanya · maga bathanga.
+      en: |
+        ꦠ light ta and ꦛ heavy tha, exactly like da and dha.
+        The poem's last line: "Maga bathanga" = and both died. The whole poem:
+        Hana caraka · data sawala · padha jayanya · maga bathanga.
+    grammar: jv.aksara.nglegena
+    examples:
+      - text: ꦗꦒ (jaga)
+        ar_eg: يحرس — ꦗ ثم ꦒ
+        ar: يحرس — ꦗ ثم ꦒ
+        en: guard, keep watch — ꦗ then ꦒ
+      - text: ꦩꦒꦧꦛꦔ (maga bathanga)
+        ar_eg: والاتنين ماتوا
+        ar: فهلكا معًا
+        en: and both died
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ꦩ
+        ar_eg: ma (مَ)
+        ar: ma (مَ)
+        en: ma
+      - text: ꦒ
+        ar_eg: ga (جَ المصرية)
+        ar: ga (g، كالجيم المصرية)
+        en: ga (hard g)
+      - text: ꦧ
+        ar_eg: ba (بَ)
+        ar: ba (بَ)
+        en: ba
+      - text: ꦛ
+        ar_eg: tha (تَ تقيلة)
+        ar: tha (تاء ثقيلة)
+        en: tha (heavy t)
+      - text: ꦔ
+        ar_eg: nga (نجَ من الأنف)
+        ar: nga (نون أنفية)
+        en: nga (ng as in sing)
+    words: [ꦩ, ꦒ, ꦧ, ꦛ, ꦔ]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي حرف هو ga (زي «ج» في «جمل» بالمصري)؟
+      ar: أي حرف هو ga (كالجيم في «جمل» بالنطق المصري)؟
+      en: Which letter is ga (the Egyptian ج of «جمل»)?
+    options: ["ꦗ", "ꦒ", "ꦔ"]
+    answer: 1
+    words: [ꦒ]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الحرف ده بيتقري إزاي؟ ꦛ
+      ar: كيف يُقرأ هذا الحرف؟ ꦛ
+      en: How do you read this letter? ꦛ
+    options: [ta, tha, dha]
+    answer: 1
+    words: [ꦛ]
+  - id: e04
+    type: listen
+    text: mata
+    question:
+      ar_eg: سمعت أنهي كلمة؟
+      ar: أي كلمة سمعت؟
+      en: Which word did you hear?
+    options: ["ꦩꦠ", "ꦧꦠ", "ꦩꦛ"]
+    answer: 0
+    meaning:
+      ar_eg: عين
+      ar: عين
+      en: eye
+    words: [ꦩ, ꦧ]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ꦔꦥ معناها إيه؟ اختار القراية.
+      ar: اختر قراءة ꦔꦥ.
+      en: Pick the reading of ꦔꦥ.
+    options: [napa, gapa, ngapa]
+    answer: 2
+    explain:
+      ar_eg: ꦔ حرف واحد = nga، وبعده ꦥ. ngapa = ليه؟
+      ar: "ꦔ حرف واحد = nga، ثم ꦥ: ngapa = لماذا؟"
+      en: ꦔ is one letter = nga, then ꦥ. ngapa = why?
+    words: [ꦔ]
+  - id: e06
+    type: fill_blank
+    sentence: ꦗꦒ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: يحرس)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: يحرس)"
+      en: Type the reading in Latin letters. (It means "keep watch".)
+    answers: [jaga]
+    words: [ꦒ]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: "رتّب الحروف دي بالترتيب: ma ga ba tha nga."
+      ar: "رتّب هذه الحروف: ma ga ba tha nga."
+      en: "Put these letters in order: ma ga ba tha nga."
+    answer: ꦩ ꦒ ꦧ ꦛ ꦔ
+    distractors: ["ꦠ"]
+    words: [ꦩ, ꦒ, ꦧ, ꦛ, ꦔ]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦩꦒꦧꦛꦔ"
+      ar: "اكتب بالحروف اللاتينية: ꦩꦒꦧꦛꦔ"
+      en: "Write in Latin letters: ꦩꦒꦧꦛꦔ"
+    answers: [maga bathanga, magabathanga, ma ga ba tha nga]
+    words: [ꦩ, ꦒ, ꦧ, ꦛ, ꦔ]
+  - id: e09
+    type: speaking
+    text: Hana caraka, data sawala, padha jayanya, maga bathanga.
+    meaning:
+      ar_eg: كان فيه رسولين، اتخانقوا، كانوا قد بعض في القوة، والاتنين ماتوا.
+      ar: كان هناك رسولان، فتنازعا، وتكافآ قوة، فهلكا معًا.
+      en: There were two messengers; they quarrelled; they were equally strong; and both died.
+dialogue:
+  title: Rong puluh aksara
+  lines:
+    - speaker: Dimas
+      text: Med, saiki kowe wis ngerti aksara pira?
+      ar_eg: يا محمد، دلوقتي بقيت تعرف كام حرف؟
+      ar: يا محمد، كم حرفًا تعرف الآن؟
+      en: Med, how many letters do you know now?
+    - speaker: Mohamed
+      text: Wis rong puluh, Mas!
+      ar_eg: عشرين خلاص يا ديماس!
+      ar: صاروا عشرين يا ديماس!
+      en: Twenty already, Mas!
+    - speaker: Dimas
+      text: Wah, apik tenan! Coba wacanen iki.
+      ar_eg: يا سلام، حلو قوي! جرّب اقرا دي.
+      ar: رائع حقًا! جرّب أن تقرأ هذه.
+      en: Wow, really good! Try reading this.
+    - speaker: Mohamed
+      text: Ma, ta... mata!
+      ar_eg: ma، ta... mata (عين)!
+      ar: ma، ta... mata (عين)!
+      en: Ma, ta... mata!
+new_words:
+  - word: ꦩ
+    pos: letter
+    ar_eg: الحرف ma (مَ)
+    ar: الحرف ma (مَ)
+    en: the letter ma
+  - word: ꦒ
+    pos: letter
+    ar_eg: الحرف ga (الجيم المصري)
+    ar: الحرف ga (g، كالجيم المصرية)
+    en: the letter ga (hard g)
+  - word: ꦧ
+    pos: letter
+    ar_eg: الحرف ba (بَ)
+    ar: الحرف ba (بَ)
+    en: the letter ba
+  - word: ꦛ
+    pos: letter
+    ar_eg: الحرف tha (تَ التقيلة)
+    ar: الحرف tha (التاء الثقيلة)
+    en: the letter tha (heavy, retroflex t)
+  - word: ꦔ
+    pos: letter
+    ar_eg: الحرف nga (نجَ من الأنف، زي ng في sing)
+    ar: الحرف nga (نون أنفية كـ ng في sing)
+    en: the letter nga (ng as in sing)
+review:
+  status: draft
+  verified: false

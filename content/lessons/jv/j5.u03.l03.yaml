@@ -1,0 +1,232 @@
+schema: kabar.lesson/v1
+id: j5.u03.l03
+language: jv
+title: Dh / d, th / t
+can_do:
+  ar_eg: تفرّق بين الحروف «التقيلة» dh وth والعادية d وt.
+  ar: أن تميّز الحرفين الارتداديين dh وth من d وt.
+  en: Tell retroflex from dental.
+slides:
+  - title: D lan dh
+    body:
+      ar_eg: |
+        d الجاوي = الدال بتاعتنا بالظبط: طرف اللسان ورا السنان اللي فوق.
+        dh: رجّع طرف لسانك لورا واثنيه لفوق شوية ورا اللثة، واضرب من هناك. الصوت بيطلع أتقل. وخد بالك: dh مش ذ! ولا ض كمان.
+        الفرق ده بيغيّر المعنى: wedi = خايف، wedhi = رملة. والشات كتير بيوقّع الـ h، فلازم تعرف الكلمة.
+      ar: |
+        d الجاوية هي الدال العربية تمامًا: طرف اللسان خلف الأسنان العليا.
+        أما dh فأرجِع طرف اللسان إلى الخلف وأثنِه قليلًا خلف اللثة ثم أطلقه، فيخرج الصوت أثقل. وليست dh ذالًا ولا ضادًا.
+        والفرق يغيّر المعنى: wedi = خائف، وwedhi = رمل. وكثيرًا ما تُسقط الدردشة h فاعرف الكلمة.
+      en: |
+        Javanese d = Arabic د exactly: tongue tip behind the upper teeth.
+        dh: pull the tongue tip back, curl it up a little behind the gum ridge, and release from there. It sounds heavier. And note: dh is not ذ, nor ض.
+        The difference changes meaning: wedi = afraid, wedhi = sand. Chats often drop the h, so you need to know the word.
+    grammar: jv.orthography
+    examples:
+      - text: Aku ora wedi.
+        ar_eg: أنا مش خايف. (d عادية)
+        ar: لستُ خائفًا. (d عادية)
+        en: I'm not afraid. (plain d)
+      - text: Bocah-bocah dolanan wedhi.
+        ar_eg: العيال بيلعبوا بالرملة. (dh تقيلة)
+        ar: الأطفال يلعبون بالرمل. (dh ارتدادية)
+        en: The children are playing with sand. (curled dh)
+  - title: T lan th
+    body:
+      ar_eg: |
+        نفس الحكاية مع t: الـ t الجاوي = التاء بتاعتنا. وth مش ث الإنجليزي! هي t ولسانك راجع لورا.
+        putu = حفيد، puthu = كيكة رز صغيرة على البخار بسكر النخل.
+        وكلمات كتير إندونيسي ليها نسخة جاوي بـ h: dada → dhadha (صدر)، kentang → kenthang (بطاطس).
+      ar: |
+        والأمر نفسه مع t: t الجاوية هي التاء العربية، وth ليست ثاءً، بل تاء ارتدّ لسانها إلى الخلف.
+        putu = حفيد، وputhu = كعكة أرز صغيرة على البخار بسكر النخيل.
+        ولكلمات إندونيسية كثيرة نظير جاوي بـ h: dada ← dhadha (صدر)، kentang ← kenthang (بطاطا).
+      en: |
+        Same story with t: Javanese t = Arabic ت. And th is not English th (ث)! It's a t with the tongue pulled back.
+        putu = grandchild, puthu = a small steamed rice cake with palm sugar.
+        Many Indonesian words have a Javanese twin with h: dada → dhadha (chest), kentang → kenthang (potato).
+    grammar: jv.orthography
+    examples:
+      - text: Simbah tuku puthu kanggo putune.
+        ar_eg: الجدة اشترت puthu لحفيدها.
+        ar: اشترت الجدة puthu لحفيدها.
+        en: Grandma bought puthu for her grandchild.
+      - text: Simbah masak kenthang goreng.
+        ar_eg: الجدة بتعمل بطاطس محمّرة.
+        ar: الجدة تطبخ بطاطا مقلية.
+        en: Grandma is making fried potatoes.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: wedi
+        ar_eg: خايف
+        ar: خائف
+        en: afraid
+      - text: wedhi
+        ar_eg: رملة
+        ar: رمل
+        en: sand
+      - text: putu
+        ar_eg: حفيد
+        ar: حفيد
+        en: grandchild
+      - text: puthu
+        ar_eg: كيكة رز على البخار
+        ar: كعكة أرز على البخار
+        en: steamed rice cake
+      - text: dhadha
+        ar_eg: صدر
+        ar: صدر
+        en: chest
+      - text: kenthang
+        ar_eg: بطاطس
+        ar: بطاطا
+        en: potato
+    words: [wedhi, puthu, dhadha, kenthang]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «رملة»؟
+      ar: أي كلمة معناها «رمل»؟
+      en: Which word means "sand"?
+    options: [wedi, wedhi]
+    answer: 1
+    explain:
+      ar_eg: wedhi بـ dh تقيلة = رملة. wedi بـ d عادية = خايف.
+      ar: wedhi بـ dh الارتدادية = رمل، وwedi بـ d العادية = خائف.
+      en: wedhi with curled dh = sand; wedi with plain d = afraid.
+    words: [wedhi]
+  - id: e03
+    type: listen
+    text: Bocah-bocah dolanan wedhi.
+    options: ['Bocah-bocah dolanan wedi.', 'Bocah-bocah dolanan wedhi.']
+    answer: 1
+    meaning:
+      ar_eg: العيال بيلعبوا بالرملة.
+      ar: الأطفال يلعبون بالرمل.
+      en: The children are playing with sand.
+    words: [wedhi]
+  - id: e04
+    type: listen
+    text: Simbah tuku puthu kanggo putune.
+    options: ['Simbah tuku puthu kanggo putune.', 'Simbah tuku putu kanggo puthune.']
+    answer: 0
+    meaning:
+      ar_eg: الجدة اشترت puthu لحفيدها.
+      ar: اشترت الجدة puthu لحفيدها.
+      en: Grandma bought puthu for her grandchild.
+    words: [puthu]
+  - id: e05
+    type: fill_blank
+    sentence: ___ku lara.
+    meaning:
+      ar_eg: صدري واجعني.
+      ar: صدري يؤلمني.
+      en: My chest hurts.
+    options: [Dada, Dhadha]
+    answers: [Dhadha]
+    explain:
+      ar_eg: dada إندونيسي. بالجاوي dhadha، بـ dh مرتين.
+      ar: dada إندونيسية، وبالجاوية dhadha بـ dh مرتين.
+      en: dada is Indonesian; Javanese says dhadha, with dh twice.
+    words: [dhadha]
+  - id: e06
+    type: fill_blank
+    sentence: Simbah masak ___ goreng.
+    meaning:
+      ar_eg: الجدة بتعمل بطاطس محمّرة.
+      ar: الجدة تطبخ بطاطا مقلية.
+      en: Grandma is making fried potatoes.
+    options: [kentang, kenthang]
+    answers: [kenthang]
+    explain:
+      ar_eg: kentang إندونيسي، kenthang جاوي بـ th.
+      ar: kentang إندونيسية، وkenthang جاوية بـ th.
+      en: kentang is Indonesian; Javanese kenthang has th.
+    words: [kenthang]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: الجدة اشترت puthu لحفيدها.
+      ar: اشترت الجدة puthu لحفيدها.
+      en: Grandma bought puthu for her grandchild.
+    answer: Simbah tuku puthu kanggo putune.
+    distractors: [puthune, putu]
+    words: [puthu]
+  - id: e08
+    type: dictation
+    text: Bocah-bocah dolanan wedhi.
+    meaning:
+      ar_eg: العيال بيلعبوا بالرملة.
+      ar: الأطفال يلعبون بالرمل.
+      en: The children are playing with sand.
+    words: [wedhi]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بالجاوي) صدري واجعني.
+      ar: (بالجاوية) صدري يؤلمني.
+      en: (in Javanese) My chest hurts.
+    answers:
+      - Dhadhaku lara.
+      - Dhadhaku krasa lara.
+      - Dhadhaku lagi lara.
+    words: [dhadha]
+  - id: e10
+    type: speaking
+    text: Aku seneng kenthang goreng.
+    meaning:
+      ar_eg: أنا بحب البطاطس المحمّرة.
+      ar: أحب البطاطا المقلية.
+      en: I love fried potatoes.
+    words: [kenthang]
+dialogue:
+  title: Tuku puthu ing Simpang Lima
+  lines:
+    - speaker: Mohamed
+      text: Bu, puthu setunggal pinten?
+      ar_eg: يا حاجة، الـ puthu الواحدة بكام؟
+      ar: يا سيدتي، بكم قطعة الـ puthu؟
+      en: Ma'am, how much is one puthu?
+    - speaker: Bu Sri
+      text: Sewu, Mas.
+      ar_eg: بألف يا ابني.
+      ar: بألف يا بني.
+      en: A thousand, young man.
+    - speaker: Mohamed
+      text: Kula tumbas kalih, Bu.
+      ar_eg: هاخد اتنين يا حاجة.
+      ar: سآخذ اثنتين يا سيدتي.
+      en: I'll buy two, ma'am.
+    - speaker: Bu Sri
+      text: Wah, Mase pinter, munine "puthu" wis bener!
+      ar_eg: يا سلام، إنت شاطر، نطقك لـ «puthu» مظبوط!
+      ar: رائع، أنت بارع، نطقك لـ «puthu» صحيح!
+      en: Wow, you're good, your "puthu" sounds just right!
+new_words:
+  - word: wedhi
+    pos: noun
+    ar_eg: رملة (dh تقيلة)
+    ar: رمل (dh ارتدادية)
+    en: sand (curled dh) = pasir
+  - word: puthu
+    pos: noun
+    ar_eg: كيكة رز صغيرة على البخار بسكر النخل
+    ar: كعكة أرز صغيرة على البخار بسكر النخيل
+    en: small steamed rice cake with palm sugar = kue putu
+  - word: dhadha
+    pos: noun
+    ar_eg: صدر
+    ar: صدر
+    en: chest = dada
+  - word: kenthang
+    pos: noun
+    ar_eg: بطاطس
+    ar: بطاطا
+    en: potato = kentang
+game: mp.wedi-wedhi
+review:
+  status: draft
+  verified: false

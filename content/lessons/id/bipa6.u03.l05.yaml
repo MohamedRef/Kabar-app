@@ -1,0 +1,185 @@
+schema: kabar.lesson/v1
+id: bipa6.u03.l05
+language: id
+title: Peribahasa dalam percakapan
+can_do:
+  ar_eg: تستخدم مثل في كلامك في الوقت المناسب، من غير ما يبان متكلّف.
+  ar: أن توظّف مثلًا في حديثك في موضعه، دون تكلّف.
+  en: Use a proverb in conversation at the right moment, without sounding forced.
+slides:
+  - title: Peribahasa yang pas
+    grammar: id.proverb
+    body:
+      ar_eg: |
+        المثل بيحلى لما ييجي في وقته:
+        - حد غلط واتكسف: Tak ada gading yang tak retak. = مفيش سنّ عاج مافيهوش شرخ: محدش كامل.
+        - فريق محتاج يتّحد: Bersatu kita teguh, bercerai kita runtuh. = متحدين نبقى ثابتين، متفرقين نقع.
+        - حد بيحوّش أو بيتعلم: Sedikit demi sedikit, lama-lama menjadi bukit. = شوية على شوية، بيبقوا جبل.
+        ومتكترش: مثل واحد في الكلام كفاية.
+      ar: |
+        يحلو المثل في موضعه:
+        - لمن أخطأ وخجل: Tak ada gading yang tak retak. = ما من عاجٍ بلا شرخ، أي لا أحد كامل.
+        - لفريق يحتاج إلى الوحدة: Bersatu kita teguh, bercerai kita runtuh. = متّحدين نثبت ومتفرّقين ننهار.
+        - لمن يدّخر أو يتعلّم: Sedikit demi sedikit, lama-lama menjadi bukit. = قليلٌ على قليل يصير جبلًا.
+        ولا تُكثر، فمثل واحد في الحديث يكفي.
+      en: |
+        A proverb shines at the right moment:
+        - Someone erred and is embarrassed: Tak ada gading yang tak retak. = No ivory without a crack: nobody's perfect.
+        - A team needs to unite: Bersatu kita teguh, bercerai kita runtuh. = United we stand, divided we fall.
+        - Someone is saving or studying: Sedikit demi sedikit, lama-lama menjadi bukit. = Little by little becomes a hill.
+        Don't overdo it: one proverb per conversation is plenty.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: gading
+        ar_eg: عاج
+        ar: عاج
+        en: ivory
+      - text: retak
+        ar_eg: مشروخ
+        ar: متصدّع
+        en: cracked
+      - text: teguh
+        ar_eg: ثابت / متين
+        ar: راسخ
+        en: firm, steadfast
+      - text: sedikit demi sedikit
+        ar_eg: شوية بشوية
+        ar: شيئًا فشيئًا
+        en: little by little
+    words: [gading, retak, teguh, sedikit demi sedikit]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: صاحبك غلط في الحساب واتكسف. تقول أنهي مثل؟
+      ar: أخطأ صديقك في الحساب وخجل. أيّ مثل تقول؟
+      en: Your friend made a maths mistake and is embarrassed. Which proverb do you say?
+    options:
+      - Bersatu kita teguh, bercerai kita runtuh.
+      - Sedikit demi sedikit, lama-lama menjadi bukit.
+      - Tak ada gading yang tak retak.
+    answer: 2
+    words: [gading, retak]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي مثل يناسب واحد بيحوّش فلوس كل شهر؟
+      ar: أيّ مثل يناسب من يدّخر كلّ شهر؟
+      en: Which proverb suits someone saving money every month?
+    options:
+      - Sedikit demi sedikit, lama-lama menjadi bukit.
+      - Tak ada gading yang tak retak.
+      - Nasi sudah menjadi bubur.
+    answer: 0
+    words: [sedikit demi sedikit]
+  - id: e04
+    type: fill_blank
+    sentence: Bersatu kita ___, bercerai kita runtuh.
+    meaning:
+      ar_eg: متحدين نبقى ثابتين، متفرقين نقع.
+      ar: متّحدين نثبت، ومتفرّقين ننهار.
+      en: United we stand, divided we fall.
+    options: [teguh, retak, gading]
+    answers: [teguh]
+    words: [teguh]
+  - id: e05
+    type: listen
+    text: Saya belajar bahasa Indonesia sedikit demi sedikit setiap hari.
+    question:
+      ar_eg: المتكلم بيتعلم إزاي؟
+      ar: كيف يتعلّم المتكلّم؟
+      en: How does the speaker learn?
+    options:
+      - كله مرة واحدة.
+      - شوية بشوية كل يوم.
+      - مرة في الأسبوع.
+    answer: 1
+    words: [sedikit demi sedikit]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: الكوباية دي مشروخة، ماتستعملهاش.
+      ar: هذه الكأس متصدّعة، فلا تستعملها.
+      en: This glass is cracked; don't use it.
+    answer: Gelas ini retak, jangan dipakai.
+    distractors: [teguh, gading]
+    words: [retak]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Tidak apa-apa, tak ada gading yang tak retak.
+    answers_meaning:
+      ar_eg:
+        - ولا يهمك، محدش كامل.
+        - مفيش مشكلة، الكمال لله.
+      ar:
+        - لا بأس، لا أحد كامل.
+        - لا عليك، الكمال لله.
+      en:
+        - It's fine; nobody's perfect.
+        - Never mind; no ivory is without a crack.
+    words: [gading, retak]
+  - id: e08
+    type: speaking
+    text: Kalau kita bersatu, tim kita akan tetap teguh.
+    meaning:
+      ar_eg: لو اتّحدنا، فريقنا هيفضل ثابت.
+      ar: إن اتّحدنا ظلّ فريقنا راسخًا.
+      en: If we stand together, our team will stay strong.
+    words: [teguh]
+  - id: e09
+    type: dictation
+    text: Gading yang paling indah pun bisa retak.
+    meaning:
+      ar_eg: حتى أجمل عاج ممكن يتشرخ.
+      ar: حتى أجمل العاج قد يتصدّع.
+      en: Even the finest ivory can crack.
+    words: [gading, retak]
+dialogue:
+  title: Salah hitung
+  lines:
+    - speaker: Uni Lisa
+      text: Aduh, maaf! Saya salah menghitung harga rendang untuk acara besok.
+      ar_eg: يا لهوي، آسفة! غلطت في حساب سعر الرندانج لمناسبة بكرة.
+      ar: يا للأسف، آسفة! أخطأت في حساب ثمن الرندانغ لمناسبة الغد.
+      en: Oh no, sorry! I miscalculated the price of the rendang for tomorrow's event.
+    - speaker: Mohamed
+      text: Tidak apa-apa, Uni. Tak ada gading yang tak retak.
+      ar_eg: ولا يهمك يا أوني. محدش كامل.
+      ar: لا بأس. لا أحد كامل.
+      en: No problem, Uni. Nobody's perfect.
+    - speaker: Uni Lisa
+      text: Wah, Mohamed sudah pakai peribahasa! Siapa yang mengajar?
+      ar_eg: يا سلام، محمد بقى بيستعمل أمثال! مين علّمك؟
+      ar: يا للروعة، صار محمد يستعمل الأمثال! مَن علّمك؟
+      en: Wow, Mohamed's using proverbs now! Who taught you?
+    - speaker: Mohamed
+      text: Uda Rafi. Saya belajar sedikit demi sedikit.
+      ar_eg: أودا رافي. أنا بتعلّم شوية بشوية.
+      ar: أودا رافي. أتعلّم شيئًا فشيئًا.
+      en: Uda Rafi. I'm learning little by little.
+new_words:
+  - word: gading
+    pos: noun
+    ar_eg: عاج
+    ar: عاج
+    en: ivory
+  - word: retak
+    pos: adjective
+    ar_eg: مشروخ
+    ar: متصدّع
+    en: cracked
+  - word: teguh
+    pos: adjective
+    ar_eg: ثابت / متين
+    ar: راسخ
+    en: firm, steadfast
+  - word: sedikit demi sedikit
+    pos: phrase
+    ar_eg: شوية بشوية
+    ar: شيئًا فشيئًا
+    en: little by little
+review:
+  status: draft
+  verified: false

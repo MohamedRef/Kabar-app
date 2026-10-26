@@ -1,0 +1,195 @@
+schema: kabar.lesson/v1
+id: j5.u02.l03
+language: jv
+title: Warta cekak
+can_do:
+  ar_eg: تقرا خبر قصير.
+  ar: أن تقرأ خبرًا قصيرًا.
+  en: Read a short news item.
+slides:
+  - title: Rob ing Semarang
+    body:
+      ar_eg: |
+        خبر قصير من جرنال سيمارانج. اسأل نفسك تلات أسئلة: حصل إيه؟ مين عمل؟ إمتى؟
+        rob = لما مية البحر تطلع على الشوارع وقت المد العالي، وده بيحصل كتير في سيمارانج. kebanjiran = غرقت مية (ke-…-an = حاجة حصلتلها). diresiki = اتنضّفت (resik = نضيف).
+      ar: |
+        خبر قصير من جريدة في سيمارانج. اسأل نفسك ثلاثة أسئلة: ماذا حدث؟ من فعل؟ متى؟
+        rob = طغيان ماء البحر على الشوارع عند المدّ العالي، وهو كثير في سيمارانج. وkebanjiran = غمرته المياه (ke-…-an لما أصاب الشيء)، وdiresiki = نُظِّف (resik = نظيف).
+      en: |
+        A short news item from a Semarang paper. Ask three questions: what happened? who did it? when?
+        rob = seawater spilling onto the streets at high tide, common in Semarang. kebanjiran = got flooded (ke-…-an = something happened to it). diresiki = was cleaned (resik = clean).
+    grammar: jv.passive.written
+    examples:
+      - text: Dalan ing Kutha Lama kebanjiran rob wingi sore.
+        ar_eg: الشارع في كوتا لاما غرق من مية البحر امبارح العصر.
+        ar: غمر ماءُ المدّ الشارعَ في كوتا لاما عصر أمس.
+        en: The road in Kota Lama was flooded by the tide yesterday afternoon.
+      - text: Esuk iki, dalan kasebut wis diresiki dening warga.
+        ar_eg: الصبح ده، الأهالي نضّفوا الشارع المذكور خلاص.
+        ar: وفي صباح اليوم نظّف الأهالي الشارع المذكور.
+        en: This morning, the said road was cleaned up by the residents.
+      - text: Rob kerep teka ing pesisir lor.
+        ar_eg: المد العالي بييجي كتير على الساحل الشمالي.
+        ar: يأتي المدّ العالي كثيرًا على الساحل الشمالي.
+        en: Tidal floods often come to the north coast.
+exercises:
+  - id: e01
+    type: listen
+    text: Dalan ing Kutha Lama kebanjiran rob wingi sore.
+    question:
+      ar_eg: إيه اللي حصل للشارع؟
+      ar: ماذا حدث للشارع؟
+      en: What happened to the road?
+    options: [didandani dening warga, kebanjiran rob, dibangun maneh]
+    answer: 1
+    meaning:
+      ar_eg: الشارع في كوتا لاما غرق من مية البحر امبارح العصر.
+      ar: غمر ماءُ المدّ الشارعَ في كوتا لاما عصر أمس.
+      en: The road in Kota Lama was flooded by the tide yesterday afternoon.
+    words: [kebanjiran, rob]
+  - id: e02
+    type: multiple_choice
+    question: Esuk iki, dalan kasebut wis diresiki dening warga.
+    question_meaning:
+      ar_eg: مين اللي نضّف الشارع؟
+      ar: من نظّف الشارع؟
+      en: Who cleaned the road?
+    options: [warga, lurah, Pak Harjo]
+    answer: 0
+    words: [diresiki, dening]
+  - id: e03
+    type: fill_blank
+    sentence: Dalan kasebut wis ___ dening warga.
+    meaning:
+      ar_eg: الأهالي نضّفوا الشارع المذكور خلاص.
+      ar: نظّف الأهالي الشارع المذكور.
+      en: The said road has been cleaned up by the residents.
+    options: [kebanjiran, kapilih, diresiki]
+    answers: [diresiki]
+    words: [diresiki]
+  - id: e04
+    type: fill_blank
+    sentence: Rob ___ teka ing pesisir lor.
+    meaning:
+      ar_eg: المد العالي بييجي كتير على الساحل الشمالي.
+      ar: يأتي المدّ العالي كثيرًا على الساحل الشمالي.
+      en: Tidal floods often come to the north coast.
+    options: [lawas, kerep, misuwur]
+    answers: [kerep]
+    words: [kerep, rob]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الساحل الشمالي كتير بيغرق من المد العالي.
+      ar: كثيرًا ما يغمر المدُّ الساحلَ الشمالي.
+      en: The north coast often gets flooded by the tide.
+    answer: Pesisir lor kerep kebanjiran rob.
+    distractors: [kidul, dening]
+    words: [kerep, kebanjiran, rob]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بأسلوب الخبر) الشارع غرق من مية البحر امبارح.
+      ar: (بأسلوب الخبر) غمر ماءُ المدّ الشارعَ أمس.
+      en: (news style) The road was flooded by the tide yesterday.
+    answers:
+      - Dalan iku kebanjiran rob wingi.
+      - Wingi dalan iku kebanjiran rob.
+      - Dalan kasebut kebanjiran rob wingi.
+      - Wingi dalan kasebut kebanjiran rob.
+      - Dalane kebanjiran rob wingi.
+      - Wingi dalane kebanjiran rob.
+      - Dalan iki kebanjiran rob wingi.
+    words: [kebanjiran, rob]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Rob kerep teka ing pesisir lor.
+    answers_meaning:
+      ar_eg:
+        - المد العالي بييجي كتير على الساحل الشمالي.
+        - مية البحر بتطلع كتير على الساحل الشمالي.
+        - الـ rob بييجي كتير على الساحل الشمالي.
+        - المد بييجي كتير في الساحل الشمالي.
+      ar:
+        - يأتي المدّ العالي كثيرًا على الساحل الشمالي.
+        - كثيرًا ما يأتي المدّ على الساحل الشمالي.
+        - يكثر طغيان ماء البحر على الساحل الشمالي.
+        - يأتي الـ rob كثيرًا على الساحل الشمالي.
+      en:
+        - Tidal floods often come to the north coast.
+        - Tidal flooding often comes to the north coast.
+        - The tide often floods the north coast.
+        - Rob often comes to the north coast.
+        - Tidal floods often hit the north coast.
+        - Tidal flooding often hits the north coast.
+    words: [kerep, rob]
+  - id: e08
+    type: dictation
+    text: Esuk iki, dalan kasebut wis diresiki dening warga.
+    meaning:
+      ar_eg: الصبح ده، الأهالي نضّفوا الشارع المذكور خلاص.
+      ar: وفي صباح اليوم نظّف الأهالي الشارع المذكور.
+      en: This morning, the said road was cleaned up by the residents.
+    words: [diresiki, kasebut]
+  - id: e09
+    type: speaking
+    text: Dalan ing Kutha Lama kebanjiran rob.
+    meaning:
+      ar_eg: الشارع في كوتا لاما غرق من مية البحر.
+      ar: غمر ماءُ المدّ الشارعَ في كوتا لاما.
+      en: The road in Kota Lama got flooded by the tide.
+    words: [kebanjiran, rob]
+dialogue:
+  title: Warta ing warung
+  lines:
+    - speaker: Mohamed
+      text: Pak, wonten warta menapa ing koran?
+      ar_eg: يا عمّو، فيه أخبار إيه في الجرنال؟
+      ar: يا سيدي، ما الأخبار في الجريدة؟
+      en: Sir, what news is in the paper?
+    - speaker: Pak Harjo
+      text: Dalan ing Kutha Lama kebanjiran rob wingi sore.
+      ar_eg: الشارع في كوتا لاما غرق من مية البحر امبارح العصر.
+      ar: غمر المدُّ الشارعَ في كوتا لاما عصر أمس.
+      en: The road in Kota Lama was flooded by the tide yesterday afternoon.
+    - speaker: Mohamed
+      text: Rob menika menapa, Pak?
+      ar_eg: يعني إيه rob يا عمّو؟
+      ar: ما الـ rob يا سيدي؟
+      en: What's rob, sir?
+    - speaker: Pak Harjo
+      text: Banyu segara sing munggah menyang dalan. Ing Semarang kerep.
+      ar_eg: مية البحر اللي بتطلع على الشوارع. بتحصل كتير في سيمارانج.
+      ar: ماء البحر حين يصعد إلى الشوارع، ويكثر في سيمارانج.
+      en: Seawater that comes up onto the streets. It happens a lot in Semarang.
+    - speaker: Mohamed
+      text: Oh, kula ngertos. Matur nuwun, Pak.
+      ar_eg: آه، فهمت. متشكر يا عمّو.
+      ar: آه، فهمت. شكرًا يا سيدي.
+      en: Oh, I see. Thank you, sir.
+new_words:
+  - word: rob
+    pos: noun
+    ar_eg: طغيان مية البحر على الشوارع وقت المد العالي
+    ar: طغيان ماء البحر على اليابسة عند المدّ العالي
+    en: tidal flood = banjir rob
+  - word: kebanjiran
+    pos: verb
+    ar_eg: غرق مية (اتعرّض لفيضان)
+    ar: غمرته المياه
+    en: got flooded = kebanjiran
+  - word: diresiki
+    pos: verb
+    ar_eg: اتنضّف (من resik = نضيف)
+    ar: نُظِّف (من resik = نظيف)
+    en: was cleaned (from resik, clean) = dibersihkan
+  - word: kerep
+    pos: adverb
+    ar_eg: كتير / غالبًا
+    ar: كثيرًا / غالبًا
+    en: often = sering
+review:
+  status: draft
+  verified: false
