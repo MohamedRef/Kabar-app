@@ -232,6 +232,86 @@ pub fn open_url(url: &str) -> Result<(), String> {
     })
 }
 
+// ----------------------------------------------------------- background audio
+//
+// Downloaded episodes play in `PlaybackService` (android/…/PlaybackService.kt):
+// a foreground media service with a MediaSession, so they keep playing with
+// the screen off and show lock-screen controls. Rust drives it through the
+// static `PlaybackBridge` methods and polls its position.
+
+fn playback<T>(f: impl FnOnce(&mut Env, &JClass, &JObject) -> jni::errors::Result<T>) -> Result<T, String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.PlaybackBridge"))?;
+        f(env, &class, activity)
+    })
+}
+
+/// Loads the MP3 at `path` (if it isn't already) and plays it from `at` seconds.
+pub fn track_play(path: &str, title: &str, show: &str, at: f64, rate: f32) -> Result<(), String> {
+    playback(|env, class, activity| {
+        let (path, title, show) = (env.new_string(path)?, env.new_string(title)?, env.new_string(show)?);
+        env.call_static_method(
+            class,
+            jni_str!("play"),
+            jni_sig!("(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;DF)V"),
+            &[
+                JValue::Object(activity),
+                JValue::Object(&path),
+                JValue::Object(&title),
+                JValue::Object(&show),
+                JValue::Double(at),
+                JValue::Float(rate),
+            ],
+        )?;
+        Ok(())
+    })
+}
+
+pub fn track_pause() -> Result<(), String> {
+    playback(|env, class, _| env.call_static_method(class, jni_str!("pause"), jni_sig!("()V"), &[]).map(drop))
+}
+
+pub fn track_resume() -> Result<(), String> {
+    playback(|env, class, _| {
+        env.call_static_method(class, jni_str!("resume"), jni_sig!("()V"), &[]).map(drop)
+    })
+}
+
+pub fn track_seek(at: f64) -> Result<(), String> {
+    playback(|env, class, _| {
+        env.call_static_method(class, jni_str!("seek"), jni_sig!("(D)V"), &[JValue::Double(at)]).map(drop)
+    })
+}
+
+pub fn track_rate(rate: f32) -> Result<(), String> {
+    playback(|env, class, _| {
+        env.call_static_method(class, jni_str!("setRate"), jni_sig!("(F)V"), &[JValue::Float(rate)]).map(drop)
+    })
+}
+
+/// Stops playback and the service.
+pub fn track_stop() -> Result<(), String> {
+    playback(|env, class, activity| {
+        env.call_static_method(
+            class,
+            jni_str!("stop"),
+            jni_sig!("(Landroid/content/Context;)V"),
+            &[JValue::Object(activity)],
+        )
+        .map(drop)
+    })
+}
+
+/// (seconds into the track or -1 when nothing is loaded, playing, ended).
+pub fn track_state() -> Result<(f64, bool, bool), String> {
+    playback(|env, class, _| {
+        let at = env.call_static_method(class, jni_str!("position"), jni_sig!("()D"), &[])?.d()?;
+        let playing = env.call_static_method(class, jni_str!("isPlaying"), jni_sig!("()Z"), &[])?.z()?;
+        let ended = env.call_static_method(class, jni_str!("hasEnded"), jni_sig!("()Z"), &[])?.z()?;
+        Ok((at, playing, ended))
+    })
+}
+
 // ---------------------------------------------------------------- text-to-speech
 //
 // Android's System WebView has no `speechSynthesis`, so lesson and review

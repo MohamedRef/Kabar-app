@@ -35,6 +35,8 @@ pub fn nav(screen: Screen) -> Element {
         Screen::Cost => "M4 16a8 8 0 0 1 16 0M12 16l4-5M3 20h18",
         // headphones: Sinetron and Kabar Radio
         Screen::Listen => "M4 15v-3a8 8 0 0 1 16 0v3M4 15h3v5H4zM17 15h3v5h-3z",
+        // two speech bubbles
+        Screen::Chat => "M4 5h11v8H9l-3 3v-3H4zM15 9h5v8h-2v3l-3-3h-4v-2",
         // sliders
         Screen::Settings => "M4 7h10M18 7h2M4 17h4M12 17h8M14 5v4M8 15v4",
         // a game controller
