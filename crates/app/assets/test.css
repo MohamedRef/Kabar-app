@@ -36,3 +36,18 @@
 @media (prefers-reduced-motion: no-preference) {
   .lt-skill-fill { transition: inline-size 400ms ease-out; }
 }
+.lt-parts.eastern { list-style-type: arabic-indic; }
+
+/* "Leave the test?" */
+.lt-confirm-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding-inline: 16px;
+  background: color-mix(in srgb, var(--text) 35%, transparent);
+}
+.lt-confirm { max-inline-size: 26rem; inline-size: 100%; }
+.lt-confirm h2 { margin-block: 0 0.5rem; font-size: 1.2rem; }
+.lt-confirm-buttons { gap: 0.6rem; flex-wrap: wrap; margin-block-start: 1rem; }

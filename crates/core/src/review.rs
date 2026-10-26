@@ -2,10 +2,12 @@
 //! which cards to show, in what order, the stats on the Review home and the
 //! end-of-session summary. Pure: callers pass the time in.
 
+mod from_lesson;
 mod seed;
 
 use std::collections::{BTreeMap, HashSet, VecDeque};
 
+pub use from_lesson::{lesson_card_id, lesson_cards};
 use kabar_protocol::srs::{Card, CardKind, Rating, ReviewEvent, ReviewMode};
 pub use seed::{seed_bridge_deck, seed_words};
 
