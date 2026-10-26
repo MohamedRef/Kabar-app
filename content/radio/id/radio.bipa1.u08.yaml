@@ -1,0 +1,425 @@
+schema: kabar.radio/v1
+id: radio.bipa1.u08
+language: id
+level: bipa1
+unit: bipa1.u08
+title:
+  target: Coba tebak, siapa dia?
+  ar_eg: خمّن، مين ده؟
+  ar: خمّن، من هو؟
+  en: Guess who?
+hosts:
+  - name: Mbak Gadis
+    voice: id-ID-GadisNeural
+  - name: Mas Ardi
+    voice: id-ID-ArdiNeural
+minutes: 5
+segments:
+  - kind: intro
+    title: Halo dari Glodok
+    lines:
+      - speaker: Mbak Gadis
+        text: Halo, selamat malam! Selamat datang di Kabar Radio! Saya Gadis.
+        ar_eg: أهلًا، مساء الخير! أهلًا بيك في كبار راديو! أنا جاديس.
+        ar: مرحبًا، مساء الخير! أهلًا بك في كبار راديو! أنا غاديس.
+        en: Hello, good evening! Welcome to Kabar Radio! I'm Gadis.
+      - speaker: Mas Ardi
+        text: Dan saya Ardi. Selamat malam, Mbak Gadis! Malam ini kita di Glodok.
+        ar_eg: وأنا أردي. مساء الخير يا جاديس! الليلة دي إحنا في جلودوك.
+        ar: وأنا أردي. مساء الخير يا غاديس! الليلة نحن في غلودوك.
+        en: And I'm Ardi. Good evening, Gadis! Tonight we're in Glodok.
+        note:
+          ar_eg: جلودوك هي الحي الصيني في جاكرتا، فيها معابد قديمة وفوانيس حمرا.
+          ar: غلودوك هو الحي الصيني في جاكرتا، وفيه معابد قديمة وفوانيس حمراء.
+          en: Glodok is Jakarta's Chinatown, with old temples and red lanterns.
+      - speaker: Mbak Gadis
+        text: Ya. Di Glodok ada banyak lampion merah. Indah sekali!
+        ar_eg: أيوه. في جلودوك فيه فوانيس حمرا كتير. جميلة أوي!
+        ar: نعم. في غلودوك فوانيس حمراء كثيرة. جميلة جدًا!
+        en: Yes. In Glodok there are lots of red lanterns. Very beautiful!
+      - speaker: Mas Ardi
+        text: Dan ada banyak orang. Ada yang tinggi, ada yang pendek. Ada yang ramah, ada yang pendiam.
+        ar_eg: وفيه ناس كتير. فيه اللي طويل، وفيه اللي قصير. فيه اللي ودود، وفيه اللي هادي.
+        ar: وفيه ناس كثيرون. منهم الطويل ومنهم القصير. منهم الودود ومنهم الهادئ.
+        en: And there are lots of people. Some are tall, some are short. Some are friendly, some are quiet.
+      - speaker: Mbak Gadis
+        text: Mas Ardi, orangnya bagaimana?
+        ar_eg: يا أردي، إنت شخصيتك عاملة إزاي؟
+        ar: يا أردي، كيف شخصيتك؟
+        en: Ardi, what are you like as a person?
+      - speaker: Mas Ardi
+        text: Saya ramah dan lucu! Tapi saya agak malas.
+        ar_eg: أنا ودود ودمي خفيف! بس كسلان شوية.
+        ar: أنا ودود ومرح! لكني كسول قليلًا.
+        en: I'm friendly and funny! But I'm a bit lazy.
+      - speaker: Mbak Gadis
+        text: Betul! Mas Ardi tidak rajin, tapi Mas Ardi baik.
+        ar_eg: صح! أردي مش مجتهد، بس طيب.
+        ar: صحيح! أردي ليس مجتهدًا، لكنه طيب.
+        en: True! Ardi isn't hard-working, but he's nice.
+      - speaker: Mas Ardi
+        text: Sifat, tinggi, pendek, cantik, ganteng. Tidak dan bukan. Yang mana?
+        ar_eg: صفة، طويل، قصير، حلوة، وسيم. tidak وbukan. أنهي واحد؟
+        ar: صفة، طويل، قصير، جميلة، وسيم. tidak وbukan. أيّها؟
+        en: Character, tall, short, pretty, handsome. Tidak and bukan. Which one?
+        note:
+          ar_eg: موضوع النهارده - وصف الناس، والفرق بين tidak وbukan، وyang زي «اللي».
+          ar: موضوع اليوم - وصف الناس، والفرق بين tidak وbukan، وyang بمعنى «الذي».
+          en: Today's topic - describing people, tidak versus bukan, and yang ("the one who").
+      - speaker: Mbak Gadis
+        text: Halo, Mohamed! Selamat datang di Glodok! Orangnya bagaimana, Mohamed?
+        ar_eg: أهلًا يا محمد! أهلًا بيك في جلودوك! وإنت شخصيتك عاملة إزاي يا محمد؟
+        ar: مرحبًا يا محمد! أهلًا بك في غلودوك! وكيف شخصيتك يا محمد؟
+        en: Hello, Mohamed! Welcome to Glodok! And what are you like, Mohamed?
+  - kind: dialogue
+    title: Coba tebak!
+    lines:
+      - speaker: Mbak Gadis
+        text: Mas, kita main tebak, ya. Coba tebak. Siapa dia? Orangnya sabar dan pintar.
+        ar_eg: يلا نلعب لعبة التخمين. خمّن. مين ده؟ صبور وذكي.
+        ar: لنلعب لعبة التخمين. خمّن. من هو؟ صبور وذكي.
+        en: Let's play a guessing game. Guess. Who is he? He's patient and clever.
+      - speaker: Mas Ardi
+        text: Hmm. Dimas, bukan?
+        ar_eg: امم. ديماس، صح؟
+        ar: همم. ديماس، أليس كذلك؟
+        en: Hmm. Dimas, right?
+      - speaker: Mbak Gadis
+        text: Bukan! Dimas lucu, tapi dia tidak sabar.
+        ar_eg: لأ! ديماس دمه خفيف، بس مش صبور.
+        ar: لا! ديماس مرح، لكنه ليس صبورًا.
+        en: No! Dimas is funny, but he isn't patient.
+      - speaker: Mas Ardi
+        text: Dia guru?
+        ar_eg: هو مدرس؟
+        ar: هل هو معلم؟
+        en: Is he a teacher?
+      - speaker: Mbak Gadis
+        text: Ya, dia guru. Dia yang pakai kacamata.
+        ar_eg: أيوه، هو مدرس. هو اللي لابس نضارة.
+        ar: نعم، هو معلم. هو الذي يلبس نظارة.
+        en: Yes, he's a teacher. He's the one who wears glasses.
+      - speaker: Mas Ardi
+        text: Oh, Pak Budi!
+        ar_eg: آه، أستاذ بودي!
+        ar: آه، الأستاذ بودي!
+        en: Oh, Pak Budi!
+      - speaker: Mbak Gadis
+        text: Betul! Pak Budi sabar sekali. Sekarang Mas.
+        ar_eg: صح! أستاذ بودي صبور أوي. دورك دلوقتي.
+        ar: صحيح! الأستاذ بودي صبور جدًا. الآن دورك.
+        en: Right! Pak Budi is very patient. Now you.
+      - speaker: Mas Ardi
+        text: Dia dari Bali. Rambutnya panjang, dan dia ramah sekali. Dia suka menari.
+        ar_eg: هي من بالي. شعرها طويل، وودودة أوي. بتحب الرقص.
+        ar: هي من بالي. شعرها طويل، وودودة جدًا. تحب الرقص.
+        en: She's from Bali. Her hair is long, and she's very friendly. She likes dancing.
+      - speaker: Mbak Gadis
+        text: Rina, bukan?
+        ar_eg: رينا، صح؟
+        ar: رينا، أليس كذلك؟
+        en: Rina, right?
+      - speaker: Mas Ardi
+        text: Salah! Rina bukan orang Bali. Rina orang Jakarta.
+        ar_eg: غلط! رينا مش من بالي. رينا من جاكرتا.
+        ar: خطأ! رينا ليست من بالي. رينا من جاكرتا.
+        en: Wrong! Rina isn't Balinese. Rina is from Jakarta.
+      - speaker: Mbak Gadis
+        text: Oh, itu Ni Luh, teman saya yang dari Bali!
+        ar_eg: آه، دي ني لوه، صاحبتي اللي من بالي!
+        ar: آه، هذه ني لوه، صديقتي التي من بالي!
+        en: Oh, that's Ni Luh, my friend from Bali!
+      - speaker: Mas Ardi
+        text: Betul! Ni Luh cantik, pintar, dan lucu.
+        ar_eg: صح! ني لوه حلوة وذكية ودمها خفيف.
+        ar: صحيح! ني لوه جميلة وذكية ومرحة.
+        en: Right! Ni Luh is pretty, clever and funny.
+      - speaker: Mbak Gadis
+        text: Satu lagi! Dia tinggi dan ganteng. Dia lucu, tapi agak malas. Dia tidak suka bangun pagi.
+        ar_eg: واحد كمان! طويل ووسيم. دمه خفيف، بس كسلان شوية. مبيحبش يصحى بدري.
+        ar: واحد آخر! طويل ووسيم. مرح، لكنه كسول قليلًا. لا يحب الاستيقاظ مبكرًا.
+        en: One more! He's tall and handsome. He's funny, but a bit lazy. He doesn't like getting up early.
+      - speaker: Mas Ardi
+        text: Itu saya, bukan?
+        ar_eg: ده أنا، صح؟
+        ar: هذا أنا، أليس كذلك؟
+        en: That's me, isn't it?
+      - speaker: Mbak Gadis
+        text: Bukan, Mas! Mas Ardi tidak tinggi! Itu Dimas.
+        ar_eg: لأ يا أردي! إنت مش طويل! ده ديماس.
+        ar: لا يا أردي! أنت لست طويلًا! هذا ديماس.
+        en: No, Ardi! You're not tall! That's Dimas.
+        note:
+          ar_eg: bukan للأسماء والضماير (bukan saya)، وtidak للصفات والأفعال (tidak tinggi).
+          ar: bukan للأسماء والضمائر (bukan saya)، وtidak للصفات والأفعال (tidak tinggi).
+          en: bukan negates nouns and pronouns (bukan saya), tidak negates adjectives and verbs (tidak tinggi).
+      - speaker: Mas Ardi
+        text: Wah, Mbak Gadis lucu sekali! Sekarang Mbak beli lampion, ya!
+        ar_eg: يا سلام، دمك خفيف أوي! يلا اشتري فانوس دلوقتي!
+        ar: يا لكِ من مرحة! والآن اشتري فانوسًا!
+        en: Wow, you're so funny, Gadis! Now go and buy a lantern!
+        note:
+          ar_eg: مشهد تمثيلي - أردي بياع فوانيس في جلودوك، وجاديس الزبونة.
+          ar: مشهد تمثيلي - أردي بائع فوانيس في غلودوك، وغاديس الزبونة.
+          en: A role-play - Ardi sells lanterns in Glodok, Gadis is the customer.
+      - speaker: Mas Ardi
+        text: Mau lampion, Mbak?
+        ar_eg: عايزة فانوس يا آنسة؟
+        ar: هل تريدين فانوسًا يا آنسة؟
+        en: Would you like a lantern?
+      - speaker: Mbak Gadis
+        text: Ya, Pak. Yang merah berapa?
+        ar_eg: أيوه يا عم. الأحمر بكام؟
+        ar: نعم يا سيدي. بكم الأحمر؟
+        en: Yes. How much is the red one?
+      - speaker: Mas Ardi
+        text: Yang mana? Ada yang besar, ada yang kecil.
+        ar_eg: أنهي واحد؟ فيه الكبير وفيه الصغير.
+        ar: أيّها؟ هناك الكبير وهناك الصغير.
+        en: Which one? There's a big one and a small one.
+      - speaker: Mbak Gadis
+        text: Yang kecil, Pak. Yang besar mahal.
+        ar_eg: الصغير يا عم. الكبير غالي.
+        ar: الصغير يا سيدي. الكبير غالٍ.
+        en: The small one. The big one is expensive.
+      - speaker: Mas Ardi
+        text: Yang kecil dua puluh ribu. Yang putih juga dua puluh ribu.
+        ar_eg: الصغير بعشرين ألف. والأبيض كمان بعشرين ألف.
+        ar: الصغير بعشرين ألفًا. والأبيض أيضًا بعشرين ألفًا.
+        en: The small one is twenty thousand. The white one is twenty thousand too.
+      - speaker: Mbak Gadis
+        text: Saya mau yang merah, bukan yang putih. Terima kasih, Pak!
+        ar_eg: أنا عايزة الأحمر، مش الأبيض. شكرًا يا عم!
+        ar: أريد الأحمر، لا الأبيض. شكرًا يا سيدي!
+        en: I want the red one, not the white one. Thank you!
+  - kind: word_spotlight
+    title: Sifat, bukan, yang
+    lines:
+      - speaker: Mbak Gadis
+        text: Sifat. Sifat. Orangnya bagaimana? Orangnya sabar.
+        ar_eg: صفة. صفة. شخصيته عاملة إزاي؟ صبور.
+        ar: صفة. صفة. كيف شخصيته؟ صبور.
+        en: Character trait. Character trait. What's he like? He's patient.
+        note:
+          ar_eg: الجسر العربي - sifat من «صفة»، وsabar من «صبر».
+          ar: الجسر العربي - sifat من «صفة»، وsabar من «صبر».
+          en: Arabic Bridge - sifat comes from «صفة», and sabar from «صبر».
+      - speaker: Mas Ardi
+        text: Sabar. Sabar. Pak Budi sabar sekali.
+        ar_eg: صبور. صبور. أستاذ بودي صبور أوي.
+        ar: صبور. صبور. الأستاذ بودي صبور جدًا.
+        en: Patient. Patient. Pak Budi is very patient.
+      - speaker: Mbak Gadis
+        text: Ramah, pendiam. Rajin, malas. Pintar, lucu.
+        ar_eg: ودود، هادي. مجتهد، كسلان. ذكي، دمه خفيف.
+        ar: ودود، هادئ. مجتهد، كسول. ذكي، مرح.
+        en: Friendly, quiet. Hard-working, lazy. Clever, funny.
+      - speaker: Mas Ardi
+        text: Rina rajin. Dimas agak malas! Teman saya pintar dan lucu.
+        ar_eg: رينا مجتهدة. ديماس كسلان شوية! صاحبي ذكي ودمه خفيف.
+        ar: رينا مجتهدة. ديماس كسول قليلًا! صديقي ذكي ومرح.
+        en: Rina is hard-working. Dimas is a bit lazy! My friend is clever and funny.
+      - speaker: Mbak Gadis
+        text: Tinggi, pendek. Rambutnya panjang. Ni Luh cantik. Dimas ganteng.
+        ar_eg: طويل، قصير. شعرها طويل. ني لوه حلوة. ديماس وسيم.
+        ar: طويل، قصير. شعرها طويل. ني لوه جميلة. ديماس وسيم.
+        en: Tall, short. Her hair is long. Ni Luh is pretty. Dimas is handsome.
+      - speaker: Mas Ardi
+        text: Tidak. Saya tidak suka kopi. Rumahnya tidak besar.
+        ar_eg: مش (للفعل والصفة). أنا مبحبش القهوة. البيت مش كبير.
+        ar: لا (للفعل والصفة). لا أحب القهوة. البيت ليس كبيرًا.
+        en: Not, for verbs and adjectives. I don't like coffee. The house isn't big.
+      - speaker: Mbak Gadis
+        text: Bukan. Dia bukan guru, dia dokter. Saya bukan orang Malaysia, tapi orang Mesir.
+        ar_eg: مش (للاسم). هو مش مدرس، هو دكتور. أنا مش ماليزي، أنا مصري.
+        ar: ليس (للاسم). ليس معلمًا، بل طبيب. لستُ ماليزيًا، بل مصري.
+        en: Not, for nouns. He isn't a teacher, he's a doctor. I'm not Malaysian, I'm Egyptian.
+      - speaker: Mas Ardi
+        text: Ini halal, bukan? Bukan kopi, tapi teh.
+        ar_eg: ده حلال، صح؟ مش قهوة، ده شاي.
+        ar: هذا حلال، أليس كذلك؟ ليس قهوة، بل شاي.
+        en: This is halal, isn't it? Not coffee, but tea.
+        note:
+          ar_eg: bukan في آخر الجملة زي «صح؟» - Ini halal, bukan?
+          ar: bukan في آخر الجملة تعني «أليس كذلك؟» - Ini halal, bukan?
+          en: bukan at the end of a sentence means "isn't it?" - Ini halal, bukan?
+      - speaker: Mbak Gadis
+        text: Nggak. Saya nggak tahu. Nggak apa-apa.
+        ar_eg: مش (بين الصحاب). معرفش. ولا يهمك.
+        ar: لا (عامية). لا أعرف. لا بأس.
+        en: Not, casual. I don't know. No worries.
+        note:
+          ar_eg: nggak هي tidak بس في الكلام اليومي والشات.
+          ar: nggak صيغة عامية من tidak في الكلام اليومي والمحادثات.
+          en: nggak is the everyday, chatty form of tidak.
+      - speaker: Mas Ardi
+        text: Yang. Yang merah. Yang kecil. Saya mau yang merah.
+        ar_eg: اللي. الأحمر. الصغير. أنا عايز الأحمر.
+        ar: الذي. الأحمر. الصغير. أريد الأحمر.
+        en: The one. The red one. The small one. I want the red one.
+        note:
+          ar_eg: yang زي «اللي» في المصري بالظبط - yang merah يعني «اللي أحمر».
+          ar: yang مثل «الذي» - yang merah أي «الذي هو أحمر».
+          en: yang works just like Egyptian «اللي» - yang merah is "the one that's red".
+      - speaker: Mbak Gadis
+        text: Yang mana? Dimas yang mana? Yang pakai kacamata.
+        ar_eg: أنهي واحد؟ ديماس أنهي واحد؟ اللي لابس نضارة.
+        ar: أيّهم؟ أيّهم ديماس؟ الذي يلبس النظارة.
+        en: Which one? Which one is Dimas? The one wearing glasses.
+      - speaker: Mas Ardi
+        text: Teman saya yang dari Bandung sangat ramah.
+        ar_eg: صاحبي اللي من باندونج ودود جدًا.
+        ar: صديقي الذي من باندونغ ودود جدًا.
+        en: My friend from Bandung is very friendly.
+  - kind: recap
+    title: Orangnya bagaimana?
+    lines:
+      - speaker: Mbak Gadis
+        text: Orangnya bagaimana?
+        ar_eg: شخصيته عاملة إزاي؟
+        ar: كيف شخصيته؟
+        en: What's he like?
+        note:
+          ar_eg: بالراحة. كرر ورانا كل جملة.
+          ar: ببطء. ردّد كل جملة بعدنا.
+          en: Slowly. Repeat each sentence after us.
+      - speaker: Mas Ardi
+        text: Orangnya sabar dan pintar.
+        ar_eg: صبور وذكي.
+        ar: صبور وذكي.
+        en: He's patient and clever.
+      - speaker: Mbak Gadis
+        text: Orangnya sabar dan pintar.
+        ar_eg: صبور وذكي.
+        ar: صبور وذكي.
+        en: He's patient and clever.
+      - speaker: Mas Ardi
+        text: Dia ramah sekali dan lucu. Rambutnya panjang.
+        ar_eg: هي ودودة أوي ودمها خفيف. شعرها طويل.
+        ar: هي ودودة جدًا ومرحة. شعرها طويل.
+        en: She's very friendly and funny. Her hair is long.
+      - speaker: Mbak Gadis
+        text: Dia ramah sekali dan lucu. Rambutnya panjang.
+        ar_eg: هي ودودة أوي ودمها خفيف. شعرها طويل.
+        ar: هي ودودة جدًا ومرحة. شعرها طويل.
+        en: She's very friendly and funny. Her hair is long.
+      - speaker: Mas Ardi
+        text: Dimas tinggi dan ganteng, tapi agak malas.
+        ar_eg: ديماس طويل ووسيم، بس كسلان شوية.
+        ar: ديماس طويل ووسيم، لكنه كسول قليلًا.
+        en: Dimas is tall and handsome, but a bit lazy.
+      - speaker: Mbak Gadis
+        text: Dimas tinggi dan ganteng, tapi agak malas.
+        ar_eg: ديماس طويل ووسيم، بس كسلان شوية.
+        ar: ديماس طويل ووسيم، لكنه كسول قليلًا.
+        en: Dimas is tall and handsome, but a bit lazy.
+      - speaker: Mas Ardi
+        text: Rina bukan orang Bali. Dia orang Jakarta.
+        ar_eg: رينا مش من بالي. هي من جاكرتا.
+        ar: رينا ليست من بالي. إنها من جاكرتا.
+        en: Rina isn't Balinese. She's from Jakarta.
+      - speaker: Mbak Gadis
+        text: Rina bukan orang Bali. Dia orang Jakarta.
+        ar_eg: رينا مش من بالي. هي من جاكرتا.
+        ar: رينا ليست من بالي. إنها من جاكرتا.
+        en: Rina isn't Balinese. She's from Jakarta.
+      - speaker: Mas Ardi
+        text: Saya bukan orang Malaysia. Saya orang Mesir.
+        ar_eg: أنا مش ماليزي. أنا مصري.
+        ar: لستُ ماليزيًا. أنا مصري.
+        en: I'm not Malaysian. I'm Egyptian.
+      - speaker: Mbak Gadis
+        text: Saya bukan orang Malaysia. Saya orang Mesir.
+        ar_eg: أنا مش ماليزي. أنا مصري.
+        ar: لستُ ماليزيًا. أنا مصري.
+        en: I'm not Malaysian. I'm Egyptian.
+      - speaker: Mas Ardi
+        text: Mas Ardi tidak tinggi. Dia tidak rajin.
+        ar_eg: أردي مش طويل. ومش مجتهد.
+        ar: أردي ليس طويلًا. وليس مجتهدًا.
+        en: Ardi isn't tall. He isn't hard-working.
+      - speaker: Mbak Gadis
+        text: Tapi Mas Ardi ramah dan lucu!
+        ar_eg: بس أردي ودود ودمه خفيف!
+        ar: لكن أردي ودود ومرح!
+        en: But Ardi is friendly and funny!
+      - speaker: Mas Ardi
+        text: Pak Budi yang mana? Yang pakai kacamata.
+        ar_eg: أستاذ بودي أنهي واحد؟ اللي لابس نضارة.
+        ar: أيّهم الأستاذ بودي؟ الذي يلبس النظارة.
+        en: Which one is Pak Budi? The one wearing glasses.
+      - speaker: Mbak Gadis
+        text: Pak Budi yang mana? Yang pakai kacamata.
+        ar_eg: أستاذ بودي أنهي واحد؟ اللي لابس نضارة.
+        ar: أيّهم الأستاذ بودي؟ الذي يلبس النظارة.
+        en: Which one is Pak Budi? The one wearing glasses.
+      - speaker: Mas Ardi
+        text: Saya mau yang merah, bukan yang putih.
+        ar_eg: أنا عايز الأحمر، مش الأبيض.
+        ar: أريد الأحمر، لا الأبيض.
+        en: I want the red one, not the white one.
+      - speaker: Mbak Gadis
+        text: Saya mau yang merah, bukan yang putih.
+        ar_eg: أنا عايزة الأحمر، مش الأبيض.
+        ar: أريد الأحمر، لا الأبيض.
+        en: I want the red one, not the white one.
+      - speaker: Mas Ardi
+        text: Lampion yang kecil murah. Yang besar mahal.
+        ar_eg: الفانوس الصغير رخيص. والكبير غالي.
+        ar: الفانوس الصغير رخيص. والكبير غالٍ.
+        en: The small lantern is cheap. The big one is expensive.
+      - speaker: Mbak Gadis
+        text: Lampion yang kecil murah. Yang besar mahal.
+        ar_eg: الفانوس الصغير رخيص. والكبير غالي.
+        ar: الفانوس الصغير رخيص. والكبير غالٍ.
+        en: The small lantern is cheap. The big one is expensive.
+  - kind: outro
+    title: Teman barumu yang mana?
+    lines:
+      - speaker: Mbak Gadis
+        text: Mohamed, teman kamu orangnya bagaimana? Dia tinggi? Dia pendek?
+        ar_eg: يا محمد، صاحبك شخصيته عاملة إزاي؟ طويل؟ قصير؟
+        ar: يا محمد، كيف شخصية صديقك؟ أهو طويل؟ قصير؟
+        en: Mohamed, what's your friend like? Tall? Short?
+        note:
+          ar_eg: دورك! جاوب بصوت عالي بجملة أو اتنين.
+          ar: دورك! أجب بصوت مسموع بجملة أو جملتين.
+          en: Your turn! Answer out loud in a sentence or two.
+      - speaker: Mas Ardi
+        text: Teman saya tinggi. Dia ramah dan pintar, tapi dia tidak sabar. Dia bukan guru, dia dokter.
+        ar_eg: صاحبي طويل. ودود وذكي، بس مش صبور. هو مش مدرس، هو دكتور.
+        ar: صديقي طويل. ودود وذكي، لكنه ليس صبورًا. ليس معلمًا، بل طبيب.
+        en: My friend is tall. He's friendly and clever, but he isn't patient. He isn't a teacher, he's a doctor.
+      - speaker: Mbak Gadis
+        text: Bagus sekali, Mohamed! Tidak dan bukan, betul semua!
+        ar_eg: برافو عليك يا محمد! tidak وbukan، كله صح!
+        ar: أحسنت جدًا يا محمد! tidak وbukan، كلها صحيحة!
+        en: Very good, Mohamed! Tidak and bukan, all correct!
+      - speaker: Mas Ardi
+        text: Besok, coba tebak. Siapa dia? Orangnya bagaimana?
+        ar_eg: بكرة، جرّب لعبة التخمين. مين ده؟ شخصيته إيه؟
+        ar: غدًا، جرّب لعبة التخمين. من هو؟ كيف شخصيته؟
+        en: Tomorrow, play the guessing game. Who is it? What are they like?
+        note:
+          ar_eg: تحدي بكرة الصغير - وصف حد بتعرفه في تلات جمل، وخلّي حد يخمّن هو مين.
+          ar: تحدّي الغد الصغير - صِف شخصًا تعرفه في ثلاث جمل، ودع أحدًا يخمّن من هو.
+          en: Tomorrow's tiny challenge - describe someone you know in three sentences and let someone guess who it is.
+      - speaker: Mbak Gadis
+        text: Terima kasih, Mas Ardi. Mas ramah dan lucu, tapi agak malas!
+        ar_eg: شكرًا يا أردي. إنت ودود ودمك خفيف، بس كسلان شوية!
+        ar: شكرًا يا أردي. أنت ودود ومرح، لكنك كسول قليلًا!
+        en: Thank you, Ardi. You're friendly and funny, but a bit lazy!
+      - speaker: Mas Ardi
+        text: Dan Mbak Gadis pintar dan sabar! Terima kasih, Mohamed.
+        ar_eg: وإنتي ذكية وصبورة! شكرًا يا محمد.
+        ar: وأنتِ ذكية وصبورة! شكرًا يا محمد.
+        en: And you're clever and patient, Gadis! Thank you, Mohamed.
+      - speaker: Mbak Gadis
+        text: Sampai jumpa besok di Kabar Radio, Mohamed! Selamat malam!
+        ar_eg: أشوفك بكرة في كبار راديو يا محمد! تصبح على خير!
+        ar: إلى اللقاء غدًا في كبار راديو يا محمد! تصبح على خير!
+        en: See you tomorrow on Kabar Radio, Mohamed! Good night!
+words: [sifat, ramah, sabar, pintar, lucu, malas, tinggi, pendek, rambut, tidak, bukan, yang, yang mana]
+review:
+  status: draft
+  verified: false

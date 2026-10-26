@@ -12,7 +12,7 @@ use anyhow::{Context, Result, bail};
 use clap::Subcommand;
 use kabar_core::ai::tasks::{
     AiOutput, AnalyzeText, CheckStrokes, CoachMessage, DailyPlan, DailyRecap, ExplainSentence, GradeAnswer,
-    GuessSketch, LevelCheck, MindMap, Placement, RadioScript, ReadHandwriting, RoleplayTurn, StoryEpisode,
+    GuessSketch, LevelCheck, MindMap, Placement, RadioScript, ReadHandwriting, RoleplayTurn,
     StructureScreenshot, WeeklyReport,
 };
 use kabar_core::learn::LearnEntry;
@@ -204,7 +204,11 @@ fn check_typed(task: Task, input: &Value, expect: &Value) -> Vec<String> {
             if !str_list("target_words") {
                 p.push("input needs target_words[]".into());
             }
-            typed::<StoryEpisode>(input, expect, &mut p);
+            // Not typed yet: the set's `expect` is still the pre-M10 shape
+            // ({title, text, glossary, summary}), while the players parse
+            // `kabar_core::pagi::Story` ({title, level, sentences[{id, arz,
+            // ar, en}], words, summary?}). The set has to be rewritten to
+            // `Story` before this can check it.
         }
         Task::RadioScript => {
             if !str_list("voices") || !input.get("target_words").is_some_and(Value::is_array) {

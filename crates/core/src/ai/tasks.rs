@@ -16,7 +16,7 @@ pub use coach::{
     CoachMessage, Confidence, DailyPlan, DailyRecap, LevelCheck, LevelMove, Placement, PlanKind, PlanStep,
     WeeklyReport,
 };
-pub use content::{RadioLine, RadioScript, StoryEpisode};
+pub use content::{RadioLine, RadioScript};
 pub use practice::{
     CheckStrokes, Correction, GuessSketch, MapBranch, MindMap, ReadHandwriting, RoleplayTurn, UNCLEAR_SKETCH,
 };

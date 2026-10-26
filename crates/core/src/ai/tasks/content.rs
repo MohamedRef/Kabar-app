@@ -1,10 +1,12 @@
-//! Generated listening and reading material: story episodes, radio scripts.
+//! Generated listening material: radio scripts. `story_episode` is
+//! `crate::pagi::Story`, which the Kabar Pagi and Sinetron players already
+//! use.
 
 use kabar_protocol::ai::Task;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
-use super::{AiOutput, GlossedWord, arabic, filled, input_str, input_strs};
+use super::{AiOutput, arabic, filled, input_strs};
 
 /// Lowercased words of `text`; hyphenated words (kupu-kupu) stay whole.
 fn words(text: &str) -> Vec<String> {
@@ -21,46 +23,6 @@ fn words(text: &str) -> Vec<String> {
 fn uses(text_words: &[String], target: &str) -> bool {
     let t = target.trim().to_lowercase();
     t.contains(char::is_whitespace) || text_words.contains(&t)
-}
-
-/// One Sinetron or Kabar Pagi episode built around the target words.
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
-pub struct StoryEpisode {
-    pub title: String,
-    pub text: String,
-    pub glossary: Vec<GlossedWord>,
-    /// Plain English; the next episode's `previous_summary`.
-    pub summary: String,
-}
-
-impl AiOutput for StoryEpisode {
-    const TASK: Task = Task::StoryEpisode;
-    const EXPECT_IS_WHOLE_ANSWER: bool = false;
-
-    fn validate(&self) -> Result<(), String> {
-        filled(&self.title, "title")?;
-        filled(&self.text, "text")?;
-        filled(&self.summary, "summary")?;
-        self.glossary.iter().try_for_each(GlossedWord::validate)
-    }
-
-    fn check(&self, input: &Value) -> Result<(), String> {
-        let text_words = words(&self.text);
-        for target in input_strs(input, "target_words") {
-            if !uses(&text_words, target) {
-                return Err(format!("target word `{target}` must appear in text exactly as given"));
-            }
-            if !self.glossary.iter().any(|g| g.word.trim().eq_ignore_ascii_case(target.trim())) {
-                return Err(format!("target word `{target}` needs a glossary entry"));
-            }
-        }
-        Ok(())
-    }
-
-    fn input_needs_review(input: &Value) -> bool {
-        input_str(input, "level").is_some_and(|l| l.starts_with('J'))
-    }
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]

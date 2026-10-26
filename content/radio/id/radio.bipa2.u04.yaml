@@ -1,0 +1,408 @@
+schema: kabar.radio/v1
+id: radio.bipa2.u04
+language: id
+level: bipa2
+unit: bipa2.u04
+title:
+  target: Boleh kurang, Bu?
+  ar_eg: ممكن تنزلي شوية؟
+  ar: هل يمكن تخفيض السعر؟
+  en: Can you go lower?
+hosts:
+  - name: Mbak Gadis
+    voice: id-ID-GadisNeural
+  - name: Mas Ardi
+    voice: id-ID-ArdiNeural
+minutes: 5
+segments:
+  - kind: intro
+    title: Pagi di Pasar Seni Sukawati
+    lines:
+      - speaker: Mbak Gadis
+        text: Halo, selamat pagi! Selamat datang di Kabar Radio! Saya Gadis.
+        ar_eg: أهلًا، صباح الخير! أهلًا بيك في كبار راديو! أنا جاديس.
+        ar: مرحبًا، صباح الخير! أهلًا بك في كبار راديو! أنا غاديس.
+        en: Hello, good morning! Welcome to Kabar Radio! I'm Gadis.
+      - speaker: Mas Ardi
+        text: Dan saya Ardi. Selamat pagi, Mbak Gadis! Ayo, kita ke pasar!
+        ar_eg: وأنا أردي. صباح الخير يا جاديس! يلا بينا على السوق!
+        ar: وأنا أردي. صباح الخير يا غاديس! هيا بنا إلى السوق!
+        en: And I'm Ardi. Good morning, Gadis! Come on, let's go to the market!
+      - speaker: Mbak Gadis
+        text: Ayo! Hari ini kita di Pasar Seni Sukawati, di Bali.
+        ar_eg: يلا! النهارده إحنا في سوق الفنون في سوكاواتي، في بالي.
+        ar: هيا! اليوم نحن في سوق الفنون في سوكاواتي، في بالي.
+        en: Let's go! Today we're at Sukawati Art Market, in Bali.
+        note:
+          ar_eg: سوق سوكاواتي مشهور بالقماش والتماثيل الخشب واللوحات، وكل حاجة فيه بالفصال.
+          ar: سوق سوكاواتي مشهور بالأقمشة والتماثيل الخشبية واللوحات، وكل شيء فيه بالمساومة.
+          en: Sukawati market is famous for cloth, wooden carvings and paintings - and everything there is bargained for.
+      - speaker: Mas Ardi
+        text: Di sini ada kain, ada patung, ada lukisan. Banyak sekali!
+        ar_eg: هنا فيه قماش، وفيه تماثيل، وفيه لوحات. كتير أوي!
+        ar: هنا أقمشة وتماثيل ولوحات. كثيرة جدًا!
+        en: Here there's cloth, carvings, paintings. So much!
+      - speaker: Mbak Gadis
+        text: Tapi Mas, jangan lupa menawar, ya. Jangan langsung bayar!
+        ar_eg: بس يا أردي، متنساش تفاصل. متدفعش على طول!
+        ar: لكن يا أردي، لا تنسَ المساومة. لا تدفع مباشرة!
+        en: But Ardi, don't forget to bargain. Don't pay straight away!
+        note:
+          ar_eg: الفصال متوقع في الأسواق التقليدية، بس بابتسامة. تبدأ بنص السعر وتتقابلوا في النص. السوبرماركت أسعاره ثابتة.
+          ar: المساومة متوقعة في الأسواق التقليدية، لكن بابتسامة. تبدأ بنصف السعر وتلتقيان في المنتصف. أسعار المتاجر الكبرى ثابتة.
+          en: Bargaining is expected in traditional markets, with a smile. Start at half the price and meet in the middle. Supermarkets have fixed prices.
+      - speaker: Mas Ardi
+        text: Sebuah, seekor, selembar. Ayo, mari, jangan. Sama mahalnya.
+        ar_eg: واحدة، واحد (حيوان)، فرخ. يلا، تعالوا، متعملش. غاليين زي بعض.
+        ar: واحدة، واحد (لحيوان)، ورقة. هيا، لِنَـ، لا تفعل. بالغلاء نفسه.
+        en: One thing, one animal, one sheet. Come on, let us, don't. Just as expensive.
+        note:
+          ar_eg: موضوع النهارده - كلمات العد (sebuah وseekor)، والدعوة بـ ayo وmari، والنهي بـ jangan، والفصال.
+          ar: موضوع اليوم - كلمات العدّ (sebuah وseekor)، والدعوة بـ ayo وmari، والنهي بـ jangan، والمساومة.
+          en: Today's topic - counting words (sebuah, seekor), inviting with ayo and mari, "don't" with jangan, and bargaining.
+      - speaker: Mbak Gadis
+        text: Halo, Mohamed! Selamat datang di Sukawati! Kamu pintar menawar?
+        ar_eg: أهلًا يا محمد! أهلًا بيك في سوكاواتي! إنت شاطر في الفصال؟
+        ar: مرحبًا يا محمد! أهلًا بك في سوكاواتي! هل أنت ماهر في المساومة؟
+        en: Hello, Mohamed! Welcome to Sukawati! Are you good at bargaining?
+  - kind: dialogue
+    title: Tawar-menawar
+    lines:
+      - speaker: Mas Ardi
+        text: Jangan khawatir, Mbak. Saya pintar menawar! Mbak jadi Bu Nyoman, ya.
+        ar_eg: متقلقيش. أنا شاطر في الفصال! إنتي هتبقي مدام نيومان.
+        ar: لا تقلقي. أنا ماهر في المساومة! ستكونين السيدة نيومان.
+        en: Don't worry. I'm good at bargaining! You be Bu Nyoman.
+        note:
+          ar_eg: مشهد تمثيلي - جاديس بياعة القماش، وأردي زبون بيفاصل.
+          ar: مشهد تمثيلي - غاديس بائعة الأقمشة، وأردي زبون يساوم.
+          en: A role-play - Gadis is the cloth seller, Ardi a customer who haggles.
+      - speaker: Mbak Gadis
+        text: Mari, Pak, silakan lihat-lihat! Kainnya bagus-bagus.
+        ar_eg: اتفضل يا أستاذ، اتفرج! القماش كله حلو.
+        ar: تفضّل يا سيدي، تفرّج! الأقمشة كلها جميلة.
+        en: Come in, sir, have a look around! The fabrics are all lovely.
+      - speaker: Mas Ardi
+        text: Bu, mana yang lebih bagus, kain merah atau kain biru?
+        ar_eg: يا مدام، أنهي أحلى، القماش الأحمر ولا الأزرق؟
+        ar: يا سيدتي، أيّهما أجمل، القماش الأحمر أم الأزرق؟
+        en: Which is nicer, the red cloth or the blue cloth?
+      - speaker: Mbak Gadis
+        text: Sama saja, Pak. Kain merah sama bagusnya dengan kain biru.
+        ar_eg: زي بعض يا أستاذ. القماش الأحمر حلو زي الأزرق بالظبط.
+        ar: سيّان يا سيدي. القماش الأحمر جميل مثل الأزرق تمامًا.
+        en: It's all the same, sir. The red cloth is just as nice as the blue cloth.
+      - speaker: Mas Ardi
+        text: Berapa harga kain ini, Bu?
+        ar_eg: القماش ده بكام يا مدام؟
+        ar: كم سعر هذا القماش يا سيدتي؟
+        en: How much is this cloth?
+      - speaker: Mbak Gadis
+        text: Dua ratus ribu, Pak. Dua-duanya sama mahalnya.
+        ar_eg: ميتين ألف يا أستاذ. الاتنين بنفس السعر.
+        ar: مئتا ألف يا سيدي. الاثنان بالسعر نفسه.
+        en: Two hundred thousand, sir. Both are the same price.
+      - speaker: Mas Ardi
+        text: Wah, terlalu mahal. Seratus ribu, boleh?
+        ar_eg: يا خبر، غالي أوي. مية ألف، ينفع؟
+        ar: يا للغلاء. مئة ألف، هل يجوز؟
+        en: Oh, too expensive. A hundred thousand, OK?
+      - speaker: Mbak Gadis
+        text: Aduh, jangan seratus, Pak. Saya rugi! Seratus delapan puluh.
+        ar_eg: يا لهوي، مش مية يا أستاذ. أنا كده هخسر! مية وتمانين.
+        ar: آه، ليس مئة يا سيدي. سأخسر! مئة وثمانون.
+        en: Oh no, not a hundred, sir. I'd make a loss! A hundred and eighty.
+      - speaker: Mas Ardi
+        text: Di toko sebelah, kain yang sama seratus dua puluh ribu.
+        ar_eg: في المحل اللي جنبك، نفس القماش بمية وعشرين ألف.
+        ar: في المتجر المجاور، القماش نفسه بمئة وعشرين ألفًا.
+        en: At the shop next door, the same cloth is a hundred and twenty thousand.
+      - speaker: Mbak Gadis
+        text: Seratus lima puluh. Itu harga pas.
+        ar_eg: مية وخمسين. ده آخر سعر.
+        ar: مئة وخمسون. هذا السعر النهائي.
+        en: A hundred and fifty. That's my final price.
+      - speaker: Mas Ardi
+        text: Seratus tiga puluh ribu, dan saya beli dua lembar. Boleh kurang?
+        ar_eg: مية وتلاتين ألف، وهاخد اتنين. ممكن تنزلي؟
+        ar: مئة وثلاثون ألفًا، وسآخذ قطعتين. هل يمكن التخفيض؟
+        en: A hundred and thirty thousand, and I'll take two pieces. Can you go lower?
+      - speaker: Mbak Gadis
+        text: Ya sudah, boleh. Jangan lupa datang lagi, ya!
+        ar_eg: خلاص، ماشي. متنساش تيجي تاني!
+        ar: حسنًا، موافقة. لا تنسَ أن تعود مرة أخرى!
+        en: OK then, fine. Don't forget to come again!
+      - speaker: Mas Ardi
+        text: Terima kasih, Bu. Pasti!
+        ar_eg: شكرًا يا مدام. أكيد!
+        ar: شكرًا يا سيدتي. بالتأكيد!
+        en: Thank you. Definitely!
+      - speaker: Mbak Gadis
+        text: Mas Ardi, hebat! Sekarang kita beli buah dan sayur. Mas mau apa?
+        ar_eg: جامد يا أردي! دلوقتي نشتري فاكهة وخضار. عايز إيه؟
+        ar: رائع يا أردي! الآن نشتري الفاكهة والخضار. ماذا تريد؟
+        en: Great job, Ardi! Now let's buy fruit and vegetables. What do you want?
+        note:
+          ar_eg: جاديس رجعت جاديس، وبيكملوا التسوق سوا.
+          ar: عادت غاديس إلى نفسها، ويكملان التسوق معًا.
+          en: Gadis is herself again, and they carry on shopping together.
+      - speaker: Mas Ardi
+        text: Saya mau sekilo jeruk, dua ikat sayur, dan sebotol air.
+        ar_eg: عايز كيلو برتقان، وربطتين خضار، وإزازة مية.
+        ar: أريد كيلو برتقال، وحزمتين من الخضار، وزجاجة ماء.
+        en: I want a kilo of oranges, two bunches of vegetables and a bottle of water.
+      - speaker: Mbak Gadis
+        text: Kelapanya juga mau? Satu biji sepuluh ribu.
+        ar_eg: وعايز جوز هند كمان؟ الواحدة بعشرة آلاف.
+        ar: وهل تريد جوز الهند أيضًا؟ الواحدة بعشرة آلاف.
+        en: Do you want coconuts too? Ten thousand each.
+      - speaker: Mas Ardi
+        text: Boleh, dua biji. Dan sebuah patung kayu untuk ibu saya.
+        ar_eg: ماشي، اتنين. وتمثال خشب لأمي.
+        ar: حسنًا، اثنتان. وتمثال خشبي لأمي.
+        en: OK, two. And a wooden carving for my mother.
+      - speaker: Mbak Gadis
+        text: Mas, lihat! Ada seekor kucing di bawah meja. Lucu sekali!
+        ar_eg: بص! فيه قطة تحت الترابيزة. عسولة أوي!
+        ar: انظر! هناك قطة تحت الطاولة. لطيفة جدًا!
+        en: Look! There's a cat under the table. So cute!
+      - speaker: Mas Ardi
+        text: Jangan pegang, Mbak! Kucing itu galak.
+        ar_eg: متلمسيهاش! القطة دي شرسة.
+        ar: لا تلمسيها! تلك القطة شرسة.
+        en: Don't touch it! That cat is fierce.
+      - speaker: Mbak Gadis
+        text: Oke, oke! Ayo, kita pulang. Semuanya berapa, Mas?
+        ar_eg: ماشي، ماشي! يلا نروّح. الحساب كله كام؟
+        ar: حسنًا، حسنًا! هيا نعود. كم المجموع؟
+        en: OK, OK! Come on, let's go home. How much was it all?
+      - speaker: Mas Ardi
+        text: Semuanya empat ratus ribu. Tapi saya menawar, jadi tidak mahal!
+        ar_eg: كله بأربعمية ألف. بس أنا فاصلت، فمش غالي!
+        ar: المجموع أربعمئة ألف. لكني ساومتُ، لذلك ليس غاليًا!
+        en: Four hundred thousand altogether. But I bargained, so it's not expensive!
+  - kind: word_spotlight
+    title: Sebuah, ayo, jangan
+    lines:
+      - speaker: Mbak Gadis
+        text: Orang. Di kelas ada dua puluh orang mahasiswa.
+        ar_eg: شخص. في الفصل فيه عشرين طالب.
+        ar: شخص. في الصف عشرون طالبًا.
+        en: People. There are twenty students in the class.
+        note:
+          ar_eg: كلمات العد بتيجي بين الرقم والاسم - dua orang، seekor kucing. والـ se- معناها «واحد».
+          ar: تأتي كلمات العدّ بين العدد والاسم - dua orang، seekor kucing. وse- تعني «واحد».
+          en: Counting words go between the number and the noun - dua orang, seekor kucing. se- means "one".
+      - speaker: Mas Ardi
+        text: Ekor. Pak Budi punya seekor kucing. Berapa ekor?
+        ar_eg: ديل (للحيوانات). أستاذ بودي عنده قطة. كام واحدة؟
+        ar: ذيل (للحيوانات). لدى الأستاذ بودي قطة. كم واحدة؟
+        en: Tail, for animals. Pak Budi has a cat. How many?
+      - speaker: Mbak Gadis
+        text: Buah. Saya beli sebuah patung kayu. Lembar. Ni Luh minta selembar kain batik.
+        ar_eg: حبة (للحاجات). اشتريت تمثال خشب. فرخ (للورق والقماش). ني لوه طلبت حتة قماش باتيك.
+        ar: حبة (للأشياء). اشتريتُ تمثالًا خشبيًا. ورقة (للورق والقماش). طلبت ني لوه قطعة قماش باتيك.
+        en: For things. I bought a wooden carving. For sheets. Ni Luh asks for a piece of batik cloth.
+      - speaker: Mas Ardi
+        text: Ikat, botol, kilo. Saya beli dua ikat sayur dan sekilo jeruk. Minta segelas teh manis, Mbak.
+        ar_eg: ربطة، إزازة، كيلو. اشتريت ربطتين خضار وكيلو برتقان. كوباية شاي بسكر لو سمحتي.
+        ar: حزمة، زجاجة، كيلو. اشتريتُ حزمتين من الخضار وكيلو برتقال. كوب شاي محلّى من فضلك.
+        en: Bunch, bottle, kilo. I bought two bunches of vegetables and a kilo of oranges. A glass of sweet tea, please.
+      - speaker: Mbak Gadis
+        text: Kertas, kertas. Selembar kertas.
+        ar_eg: ورق، ورق. فرخ ورق.
+        ar: ورق، ورق. ورقة.
+        en: Paper, paper. A sheet of paper.
+        note:
+          ar_eg: الجسر العربي - kertas من «قرطاس»، وkhawatir من «خاطر».
+          ar: الجسر العربي - kertas من «قرطاس»، وkhawatir من «خاطر».
+          en: Arabic Bridge - kertas comes from «قرطاس», and khawatir from «خاطر».
+      - speaker: Mas Ardi
+        text: Ayo, yuk, mari. Ayo, kita ke pasar! Ngopi, yuk! Mari kita mulai.
+        ar_eg: يلا، يلا بينا، تعالوا. يلا على السوق! نشرب قهوة؟ يلا نبدأ.
+        ar: هيا، هيا بنا، لِنَبدأ. هيا إلى السوق! لنشرب القهوة! لنبدأ.
+        en: Come on, let's, let us. Come on, to the market! Coffee, anyone? Let us begin.
+        note:
+          ar_eg: ayo عادية، yuk ناعمة وبين الصحاب، mari رسمية ومؤدبة.
+          ar: ayo عادية، وyuk ناعمة عامية، وmari رسمية مهذبة.
+          en: ayo is everyday, yuk soft and casual, mari formal and polite.
+      - speaker: Mbak Gadis
+        text: Jangan. Jangan lupa bawa payung. Jangan khawatir, saya bisa sendiri.
+        ar_eg: متعملش. متنساش تاخد شمسية. متقلقش، أنا أقدر لوحدي.
+        ar: لا تفعل. لا تنسَ المظلة. لا تقلق، أستطيع وحدي.
+        en: Don't. Don't forget your umbrella. Don't worry, I can do it myself.
+        note:
+          ar_eg: jangan للنهي (متعملش)، وtidak للنفي (مش). Jangan pergi! يعني «متمشيش!».
+          ar: jangan للنهي، وtidak للنفي. Jangan pergi! أي «لا تذهب!».
+          en: jangan forbids (don't!), tidak just negates (not). Jangan pergi! means "Don't go!".
+      - speaker: Mas Ardi
+        text: Jangan mahal-mahal, Bu! Boleh kurang? Harga pas.
+        ar_eg: متغليش يا مدام! ممكن تنزلي؟ آخر سعر.
+        ar: لا تغالي يا سيدتي! هل يمكن التخفيض؟ السعر النهائي.
+        en: Don't make it so expensive! Can you go lower? Final price.
+      - speaker: Mbak Gadis
+        text: Setinggi, semahal. Adik saya setinggi saya. Patung ini semahal patung itu.
+        ar_eg: طول، غلو. أخويا الصغير طولي. التمثال ده غالي زي التمثال ده.
+        ar: بطول، بغلاء. أخي الصغير بطولي. هذا التمثال بغلاء ذلك التمثال.
+        en: As tall as, as expensive as. My younger brother is as tall as me. This carving is as expensive as that one.
+      - speaker: Mas Ardi
+        text: Sama dengan. Warnanya sama dengan baju saya. Tidak semahal. Harga di sini tidak semahal di Kuta.
+        ar_eg: زي. لونه زي قميصي. مش غالي زي. الأسعار هنا مش غالية زي كوتا.
+        ar: مثل. لونه مثل قميصي. ليس بغلاء. الأسعار هنا ليست بغلاء كوتا.
+        en: The same as. The colour is the same as my shirt. Not as expensive. Prices here aren't as high as in Kuta.
+  - kind: recap
+    title: Ya sudah, boleh!
+    lines:
+      - speaker: Mbak Gadis
+        text: Ayo, kita ke pasar!
+        ar_eg: يلا بينا على السوق!
+        ar: هيا بنا إلى السوق!
+        en: Come on, let's go to the market!
+        note:
+          ar_eg: بالراحة. كرر ورانا كل جملة.
+          ar: ببطء. ردّد كل جملة بعدنا.
+          en: Slowly. Repeat each sentence after us.
+      - speaker: Mas Ardi
+        text: Ayo, kita ke pasar!
+        ar_eg: يلا بينا على السوق!
+        ar: هيا بنا إلى السوق!
+        en: Come on, let's go to the market!
+      - speaker: Mbak Gadis
+        text: Jangan lupa menawar. Jangan langsung bayar!
+        ar_eg: متنساش تفاصل. متدفعش على طول!
+        ar: لا تنسَ المساومة. لا تدفع مباشرة!
+        en: Don't forget to bargain. Don't pay straight away!
+      - speaker: Mas Ardi
+        text: Jangan lupa menawar. Jangan langsung bayar!
+        ar_eg: متنساش تفاصل. متدفعش على طول!
+        ar: لا تنسَ المساومة. لا تدفع مباشرة!
+        en: Don't forget to bargain. Don't pay straight away!
+      - speaker: Mbak Gadis
+        text: Berapa harga kain ini, Bu?
+        ar_eg: القماش ده بكام يا مدام؟
+        ar: كم سعر هذا القماش يا سيدتي؟
+        en: How much is this cloth?
+      - speaker: Mas Ardi
+        text: Berapa harga kain ini, Bu?
+        ar_eg: القماش ده بكام يا مدام؟
+        ar: كم سعر هذا القماش يا سيدتي؟
+        en: How much is this cloth?
+      - speaker: Mbak Gadis
+        text: Terlalu mahal. Boleh kurang?
+        ar_eg: غالي أوي. ممكن تنزلي؟
+        ar: غالٍ جدًا. هل يمكن التخفيض؟
+        en: Too expensive. Can you go lower?
+      - speaker: Mas Ardi
+        text: Terlalu mahal. Boleh kurang?
+        ar_eg: غالي أوي. ممكن تنزلي؟
+        ar: غالٍ جدًا. هل يمكن التخفيض؟
+        en: Too expensive. Can you go lower?
+      - speaker: Mbak Gadis
+        text: Saya beli dua lembar. Seratus tiga puluh ribu, boleh?
+        ar_eg: هاخد حتتين. مية وتلاتين ألف، ينفع؟
+        ar: سآخذ قطعتين. مئة وثلاثون ألفًا، هل يجوز؟
+        en: I'll take two pieces. A hundred and thirty thousand, OK?
+      - speaker: Mas Ardi
+        text: Saya beli dua lembar. Seratus tiga puluh ribu, boleh?
+        ar_eg: هاخد حتتين. مية وتلاتين ألف، ينفع؟
+        ar: سآخذ قطعتين. مئة وثلاثون ألفًا، هل يجوز؟
+        en: I'll take two pieces. A hundred and thirty thousand, OK?
+      - speaker: Mbak Gadis
+        text: Ya sudah, boleh.
+        ar_eg: خلاص، ماشي.
+        ar: حسنًا، موافقة.
+        en: OK then, fine.
+      - speaker: Mas Ardi
+        text: Kain merah sama bagusnya dengan kain biru.
+        ar_eg: القماش الأحمر حلو زي الأزرق.
+        ar: القماش الأحمر جميل مثل الأزرق.
+        en: The red cloth is just as nice as the blue cloth.
+      - speaker: Mbak Gadis
+        text: Kain merah sama bagusnya dengan kain biru.
+        ar_eg: القماش الأحمر حلو زي الأزرق.
+        ar: القماش الأحمر جميل مثل الأزرق.
+        en: The red cloth is just as nice as the blue cloth.
+      - speaker: Mas Ardi
+        text: Saya mau sekilo jeruk dan dua ikat sayur.
+        ar_eg: عايز كيلو برتقان وربطتين خضار.
+        ar: أريد كيلو برتقال وحزمتين من الخضار.
+        en: I want a kilo of oranges and two bunches of vegetables.
+      - speaker: Mbak Gadis
+        text: Saya mau sekilo jeruk dan dua ikat sayur.
+        ar_eg: عايزة كيلو برتقان وربطتين خضار.
+        ar: أريد كيلو برتقال وحزمتين من الخضار.
+        en: I want a kilo of oranges and two bunches of vegetables.
+      - speaker: Mas Ardi
+        text: Pak Budi punya seekor kucing.
+        ar_eg: أستاذ بودي عنده قطة.
+        ar: لدى الأستاذ بودي قطة.
+        en: Pak Budi has a cat.
+      - speaker: Mbak Gadis
+        text: Pak Budi punya seekor kucing.
+        ar_eg: أستاذ بودي عنده قطة.
+        ar: لدى الأستاذ بودي قطة.
+        en: Pak Budi has a cat.
+      - speaker: Mas Ardi
+        text: Jangan khawatir!
+        ar_eg: متقلقش!
+        ar: لا تقلق!
+        en: Don't worry!
+      - speaker: Mbak Gadis
+        text: Jangan khawatir!
+        ar_eg: متقلقش!
+        ar: لا تقلق!
+        en: Don't worry!
+  - kind: outro
+    title: Jangan lupa datang lagi!
+    lines:
+      - speaker: Mbak Gadis
+        text: Mohamed, kain ini dua ratus ribu. Kamu mau bayar berapa?
+        ar_eg: يا محمد، القماش ده بميتين ألف. هتدفع كام؟
+        ar: يا محمد، هذا القماش بمئتي ألف. كم ستدفع؟
+        en: Mohamed, this cloth is two hundred thousand. How much will you pay?
+        note:
+          ar_eg: دورك! فاصل بصوت عالي بجملة أو اتنين.
+          ar: دورك! ساوم بصوت مسموع بجملة أو جملتين.
+          en: Your turn! Haggle out loud in a sentence or two.
+      - speaker: Mas Ardi
+        text: Wah, terlalu mahal, Bu! Jangan mahal-mahal. Seratus ribu, boleh?
+        ar_eg: يا خبر، غالي أوي يا مدام! متغليش. مية ألف، ينفع؟
+        ar: يا للغلاء يا سيدتي! لا تغالي. مئة ألف، هل يجوز؟
+        en: Oh, too expensive! Don't make it so pricey. A hundred thousand, OK?
+      - speaker: Mbak Gadis
+        text: Aduh, saya rugi! Tapi ya sudah, boleh. Orang Mesir pintar menawar!
+        ar_eg: يا لهوي، أنا كده خسرانة! بس خلاص، ماشي. المصريين شاطرين في الفصال!
+        ar: آه، سأخسر! لكن حسنًا، موافقة. المصريون ماهرون في المساومة!
+        en: Oh no, I'm losing money! But OK then, fine. Egyptians are good at bargaining!
+      - speaker: Mas Ardi
+        text: Besok, coba lihat dapur kamu. Ada apa di sana? Sebuah, sebotol, seikat.
+        ar_eg: بكرة بص في مطبخك. فيه إيه هناك؟ واحدة، إزازة، ربطة.
+        ar: غدًا انظر في مطبخك. ماذا يوجد هناك؟ حبة، زجاجة، حزمة.
+        en: Tomorrow, look in your kitchen. What's there? One thing, a bottle, a bunch.
+        note:
+          ar_eg: تحدي بكرة الصغير - قول تلات حاجات في مطبخك بكلمة العد الصح - sebotol air، sekilo gula.
+          ar: تحدّي الغد الصغير - اذكر ثلاثة أشياء في مطبخك بكلمة العدّ الصحيحة - sebotol air، sekilo gula.
+          en: Tomorrow's tiny challenge - name three things in your kitchen with the right counting word - sebotol air, sekilo gula.
+      - speaker: Mbak Gadis
+        text: Terima kasih, Mas Ardi. Jangan lupa patung untuk ibumu!
+        ar_eg: شكرًا يا أردي. متنساش التمثال بتاع مامتك!
+        ar: شكرًا يا أردي. لا تنسَ التمثال لأمك!
+        en: Thank you, Ardi. Don't forget the carving for your mother!
+      - speaker: Mas Ardi
+        text: Pasti! Terima kasih, Mohamed. Mari!
+        ar_eg: أكيد! شكرًا يا محمد. سلام!
+        ar: بالتأكيد! شكرًا يا محمد. إلى اللقاء!
+        en: Definitely! Thank you, Mohamed. Bye now!
+        note:
+          ar_eg: Mari! لوحدها تحية وداع مؤدبة، زي «أستأذن».
+          ar: Mari! وحدها تحية وداع مهذبة، مثل «أستأذن».
+          en: On its own, "Mari!" is a polite way to say goodbye.
+      - speaker: Mbak Gadis
+        text: Sampai jumpa besok di Kabar Radio, Mohamed!
+        ar_eg: أشوفك بكرة في كبار راديو يا محمد!
+        ar: إلى اللقاء غدًا في كبار راديو يا محمد!
+        en: See you tomorrow on Kabar Radio, Mohamed!
+words: [sebuah, seekor, selembar, ikat, sekilo, ayo, mari, jangan, khawatir, sama, menawar, boleh kurang, harga pas, kertas]
+review:
+  status: draft
+  verified: false
