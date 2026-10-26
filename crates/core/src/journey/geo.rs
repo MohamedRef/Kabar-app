@@ -34,6 +34,15 @@ impl ViewBox {
         Self { x: x0, y: y0, w: x1 - x0, h: y1 - y0 }
     }
 
+    /// `p` moved inside the box, at least `margin` from every edge (or to
+    /// the middle, on an axis narrower than two margins).
+    pub fn clamp(&self, p: (f64, f64), margin: f64) -> (f64, f64) {
+        let axis = |v: f64, lo: f64, len: f64| {
+            if len <= 2.0 * margin { lo + len / 2.0 } else { v.clamp(lo + margin, lo + len - margin) }
+        };
+        (axis(p.0, self.x, self.w), axis(p.1, self.y, self.h))
+    }
+
     /// The SVG `viewBox` attribute.
     pub fn attr(&self) -> String {
         format!("{:.1} {:.1} {:.1} {:.1}", self.x, self.y, self.w, self.h)

@@ -10,7 +10,7 @@ use std::rc::Rc;
 use std::sync::LazyLock;
 
 use dioxus::prelude::*;
-use kabar_core::journey::layout::{MapLayout, RouteStyle, SegmentKind};
+use kabar_core::journey::layout::{LevelPin, MapLayout, RouteStyle, SegmentKind};
 use kabar_core::journey::{
     Curriculum, LessonKind, LessonState, Level, Progress, Text, Unit, parse_curriculum, souvenirs,
 };
@@ -39,7 +39,10 @@ struct Routes {
 static ROUTES: LazyLock<Result<Routes, String>> = LazyLock::new(|| {
     let id = parse_curriculum(CURRICULUM_ID).map_err(|e| e.to_string())?;
     let jv = parse_curriculum(CURRICULUM_JV).map_err(|e| e.to_string())?;
-    let (id_map, jv_map) = (MapLayout::new(&id), MapLayout::new(&jv));
+    let (mut id_map, mut jv_map) = (MapLayout::new(&id), MapLayout::new(&jv));
+    for map in [&mut id_map, &mut jv_map] {
+        map.spread_pins(PIN_GAP * pin_scale(map));
+    }
     Ok(Routes { id, jv, id_map, jv_map })
 });
 
@@ -512,17 +515,11 @@ fn MapView(j: Journey) -> Element {
     let (land_id, land_other) = (land_path(base, "land-id"), land_path(base, "land-other"));
     // Pins are drawn in a small design space, scaled so they keep the same
     // on-screen size on both maps (the JS counter-scales them while zooming).
-    let k = map.view.w / 200.0;
+    let k = pin_scale(map);
     let dot = map.radius * 0.22;
     let current_level = selected.read().clone();
     let panel_level = current_level.as_deref().and_then(|id| cur.level(id));
-    let spots = label_spots(
-        &cur.levels
-            .iter()
-            .zip(map.pins.iter())
-            .map(|(level, pin)| (pin.x / k, pin.y / k, short_place(level.place()).chars().count()))
-            .collect::<Vec<_>>(),
-    );
+    let spots = map_label_spots(cur, map);
     let rail = map.style == RouteStyle::Rail;
 
     rsx! {
@@ -587,7 +584,8 @@ fn MapView(j: Journey) -> Element {
                                     let label = format!("{}, {}: {done}/{total}", level.place(), level.code);
                                     let short = short_place(level.place());
                                     rsx! {
-                                        g { key: "{level.id}", class: "jm-level", "data-state": state,
+                                        // A nudged pin moves with its stops, so they stay under it.
+                                        g { key: "{level.id}", class: "jm-level jm-nudge", "data-state": state, style: nudge_style(pin),
                                             path { class: "unit-loop", d: "{pin.units_d()}" }
                                             for (u, (ux, uy)) in level.units.iter().zip(pin.units.iter()) {
                                                 circle {
@@ -848,6 +846,47 @@ fn icon_reset() -> Element {
     stroke_icon("M4 12a8 8 0 1 0 3-6.2M4 4v4h4")
 }
 
+/// Map units per pin design unit: pins and labels are drawn at this scale
+/// so they keep the same size on both maps.
+fn pin_scale(map: &MapLayout) -> f64 {
+    map.view.w / 200.0
+}
+
+/// The CSS that draws a nudged pin (Bali, Lombok) beside its real place at
+/// the default zoom and slides it home as the learner zooms in, following
+/// [`LevelPin::drawn_at`]: the offset is `nudge * max(0, (fade / s - 1) /
+/// (fade - 1))`, and the JS keeps `--inv` at `1 / s`. Empty for a pin with
+/// room around it.
+fn nudge_style(pin: &LevelPin) -> String {
+    if pin.nudge == (0.0, 0.0) || pin.fade_zoom <= 1.0 {
+        return String::new();
+    }
+    let per = pin.fade_zoom - 1.0;
+    format!(
+        "--fade: {:.4}; --nx: {:.3}px; --ny: {:.3}px",
+        pin.fade_zoom,
+        pin.nudge.0 / per,
+        pin.nudge.1 / per
+    )
+}
+
+/// Label spots for a whole map, from where the pins are drawn at the
+/// default zoom, kept inside the map's edges.
+fn map_label_spots(cur: &Curriculum, map: &MapLayout) -> Vec<LabelSpot> {
+    let k = pin_scale(map);
+    let pins: Vec<_> = cur
+        .levels
+        .iter()
+        .zip(map.pins.iter())
+        .map(|(level, pin)| {
+            let (x, y) = pin.drawn_at(1.0);
+            (x / k, y / k, short_place(level.place()).chars().count())
+        })
+        .collect();
+    let v = map.view;
+    label_spots(&pins, (v.x / k, v.y / k, (v.x + v.w) / k, (v.y + v.h) / k))
+}
+
 /// "Bali (Ubud)" → "Bali": the name drawn next to a map pin.
 fn short_place(place: &str) -> String {
     place.split([',', '(']).next().unwrap_or_default().trim().to_string()
@@ -868,6 +907,9 @@ enum LabelSpot {
 /// pin's own radius with its progress ring, and the label's font metrics.
 const HALO: f64 = 8.0;
 const PIN: f64 = 5.0;
+/// The closest two pins may sit at the default zoom: clear of each other's
+/// disc and progress ring, with the selection halo just touching.
+const PIN_GAP: f64 = HALO + 4.0;
 const CHAR_W: f64 = 2.4;
 const ASCENT: f64 = 3.2;
 const DESCENT: f64 = 1.0;
@@ -900,27 +942,91 @@ fn overlaps(a: (f64, f64, f64, f64), b: (f64, f64, f64, f64)) -> bool {
     a.0 < b.2 && b.0 < a.2 && a.1 < b.3 && b.1 < a.3
 }
 
-/// Picks a spot per pin, given (x, y, label length) in pin design units:
-/// the first of above, below, east, west that covers no other pin and no
-/// label already placed. Falls back to above.
-fn label_spots(pins: &[(f64, f64, usize)]) -> Vec<LabelSpot> {
-    let discs: Vec<_> = pins.iter().map(|&(x, y, _)| (x - PIN, y - PIN, x + PIN, y + PIN)).collect();
-    let mut placed: Vec<(f64, f64, f64, f64)> = Vec::new();
-    let mut out = Vec::with_capacity(pins.len());
-    for (i, &(x, y, chars)) in pins.iter().enumerate() {
-        let free = |spot: LabelSpot| {
-            let r = spot.rect(x, y, chars);
-            !discs.iter().enumerate().any(|(j, d)| j != i && overlaps(r, *d))
-                && !placed.iter().any(|p| overlaps(r, *p))
-        };
-        let spot = [LabelSpot::Above, LabelSpot::Below, LabelSpot::East, LabelSpot::West]
-            .into_iter()
-            .find(|s| free(*s))
-            .unwrap_or(LabelSpot::Above);
-        placed.push(spot.rect(x, y, chars));
-        out.push(spot);
+/// A label spot, its box, and its cost on its own (see `label_spots`).
+type SpotOption = (LabelSpot, (f64, f64, f64, f64), f64);
+
+fn inside(r: (f64, f64, f64, f64), b: (f64, f64, f64, f64)) -> bool {
+    r.0 >= b.0 && r.1 >= b.1 && r.2 <= b.2 && r.3 <= b.3
+}
+
+/// Picks a spot per pin, given (x, y, label length) in pin design units and
+/// the map's edges in the same units. Every name stays on the map and off
+/// the other pins and names when that's possible at all; among such layouts
+/// the one with the fewest names moved off "above" wins (below next, then
+/// beside), and a tie goes to the names leaning toward the middle of the
+/// route, where the map is in view (Bali's name west, Lombok's above, rather
+/// than Lombok's pushed out east).
+fn label_spots(pins: &[(f64, f64, usize)], bounds: (f64, f64, f64, f64)) -> Vec<LabelSpot> {
+    const ORDER: [LabelSpot; 4] = [LabelSpot::Above, LabelSpot::Below, LabelSpot::West, LabelSpot::East];
+    const RANK: [f64; 4] = [0.0, 1.0, 2.0, 2.0];
+    /// Far more than any choice of spots: a name off the map or on another
+    /// pin or name only when nothing else fits.
+    const CLASH: f64 = 100.0;
+    if pins.is_empty() {
+        return Vec::new();
     }
-    out
+    let n = pins.len() as f64;
+    let (mx, my) = pins.iter().fold((0.0, 0.0), |(a, b), &(x, y, _)| (a + x / n, b + y / n));
+    let discs: Vec<_> = pins.iter().map(|&(x, y, _)| (x - PIN, y - PIN, x + PIN, y + PIN)).collect();
+    // Each pin's four spots: (spot, label box, cost on its own).
+    let options: Vec<Vec<SpotOption>> = pins
+        .iter()
+        .enumerate()
+        .map(|(i, &(x, y, chars))| {
+            let mut o: Vec<_> = ORDER
+                .iter()
+                .zip(RANK)
+                .map(|(&spot, rank)| {
+                    let r = spot.rect(x, y, chars);
+                    let lean = ((r.0 + r.2) / 2.0 - mx).hypot((r.1 + r.3) / 2.0 - my) / 100.0;
+                    let off = if inside(r, bounds) { 0.0 } else { CLASH };
+                    let covers = discs.iter().enumerate().filter(|&(j, d)| j != i && overlaps(r, *d)).count();
+                    (spot, r, rank + lean + off + CLASH * covers as f64)
+                })
+                .collect();
+            o.sort_by(|a, b| a.2.total_cmp(&b.2));
+            o
+        })
+        .collect();
+
+    // Branch and bound over the pins in order (a map has a handful of pins;
+    // the budget keeps a pathological input from taking long).
+    struct Search<'a> {
+        options: &'a [Vec<SpotOption>],
+        pick: Vec<usize>,
+        best: Vec<usize>,
+        best_cost: f64,
+        budget: u32,
+    }
+    impl Search<'_> {
+        fn go(&mut self, i: usize, cost: f64) {
+            if cost >= self.best_cost || self.budget == 0 {
+                return;
+            }
+            self.budget -= 1;
+            if i == self.options.len() {
+                self.best_cost = cost;
+                self.best.clone_from(&self.pick);
+                return;
+            }
+            for k in 0..self.options[i].len() {
+                let (_, r, own) = self.options[i][k];
+                let clashes = (0..i).filter(|&j| overlaps(r, self.options[j][self.pick[j]].1)).count() as f64;
+                self.pick.push(k);
+                self.go(i + 1, cost + own + CLASH * clashes);
+                self.pick.pop();
+            }
+        }
+    }
+    let mut search = Search {
+        options: &options,
+        pick: Vec::with_capacity(pins.len()),
+        best: vec![0; pins.len()],
+        best_cost: f64::INFINITY,
+        budget: 200_000,
+    };
+    search.go(0, 0.0);
+    search.best.iter().zip(&options).map(|(&k, o)| o[k].0).collect()
 }
 
 #[cfg(test)]
@@ -948,40 +1054,98 @@ mod tests {
 
     #[test]
     fn map_labels_stay_off_other_pins_and_labels() {
-        // Two pins almost touching, like Bali and Lombok.
-        let spots = label_spots(&[(0.0, 0.0, 4), (7.0, 1.0, 6), (60.0, 0.0, 7)]);
-        assert_eq!(spots[0], LabelSpot::Above);
-        assert_ne!(spots[1], LabelSpot::Above, "would cover Bali's name");
+        let open = (-1000.0, -1000.0, 1000.0, 1000.0);
+        let clear = |pins: &[(f64, f64, usize)], spots: &[LabelSpot]| {
+            let rects: Vec<_> = pins.iter().zip(spots).map(|(&(x, y, n), s)| s.rect(x, y, n)).collect();
+            rects.iter().enumerate().all(|(i, a)| {
+                rects[i + 1..].iter().all(|b| !overlaps(*a, *b))
+                    && pins
+                        .iter()
+                        .enumerate()
+                        .all(|(j, &(x, y, _))| i == j || !overlaps(*a, (x - PIN, y - PIN, x + PIN, y + PIN)))
+            })
+        };
+        // Two pins almost touching, like Bali and Lombok: one name moves.
+        let pins = [(0.0, 0.0, 4), (7.0, 1.0, 6), (60.0, 0.0, 7)];
+        let spots = label_spots(&pins, open);
+        assert!(clear(&pins, &spots), "{spots:?}");
+        assert_eq!(spots.iter().filter(|s| **s == LabelSpot::Above).count(), 2, "{spots:?}");
         assert_eq!(spots[2], LabelSpot::Above, "a lone pin keeps the default");
         // Above clears the selection halo.
         let (_, _, _, bottom) = LabelSpot::Above.rect(0.0, 0.0, 7);
         assert!(bottom <= -HALO + 0.01, "{bottom}");
-        // The real maps: no label covers another pin or label.
+        // Near the map's edges, labels turn back onto the map: Lombok sits
+        // 10 units above the bottom edge, so no name can go below it, and
+        // Bali's name moves west (toward the route) rather than Lombok's
+        // being pushed out east.
+        let edge = (0.0, 0.0, 200.0, 75.0);
+        let pins = [(88.0, 64.0, 4), (98.0, 65.0, 6)];
+        let spots = label_spots(&pins, edge);
+        assert_eq!(spots, [LabelSpot::West, LabelSpot::Above]);
+        assert!(clear(&pins, &spots));
+        assert!(label_spots(&[], edge).is_empty());
+        let spots = label_spots(&[(4.0, 40.0, 6), (196.0, 4.0, 6)], edge);
+        // At the west edge the name goes east; in the north-east corner, west.
+        assert_eq!(spots, [LabelSpot::East, LabelSpot::West]);
+
+        // The real maps, as drawn at the default zoom.
         let r = ROUTES.as_ref().unwrap();
         for (cur, map) in [(&r.id, &r.id_map), (&r.jv, &r.jv_map)] {
-            let k = map.view.w / 200.0;
+            let k = pin_scale(map);
+            let v = map.view;
+            let bounds = (v.x / k, v.y / k, (v.x + v.w) / k, (v.y + v.h) / k);
             let pins: Vec<_> = cur
                 .levels
                 .iter()
                 .zip(map.pins.iter())
-                .map(|(l, p)| (p.x / k, p.y / k, short_place(l.place()).chars().count()))
+                .map(|(l, p)| {
+                    let (x, y) = p.drawn_at(1.0);
+                    (x / k, y / k, short_place(l.place()).chars().count())
+                })
                 .collect();
-            let spots = label_spots(&pins);
+            let spots = map_label_spots(cur, map);
             let rects: Vec<_> = pins.iter().zip(&spots).map(|(&(x, y, n), s)| s.rect(x, y, n)).collect();
             for (i, a) in rects.iter().enumerate() {
+                // Every name stays inside the map, never clipped at its edge.
+                assert!(inside(*a, bounds), "label {i} leaves the map: {a:?}");
                 for (j, &(x, y, _)) in pins.iter().enumerate() {
                     if i != j {
                         assert!(
                             !overlaps(*a, (x - PIN, y - PIN, x + PIN, y + PIN)),
                             "label {i} covers pin {j}"
                         );
+                        // No two pins cover each other.
+                        let (xi, yi, _) = pins[i];
+                        assert!((x - xi).hypot(y - yi) >= PIN_GAP - 1e-3, "pins {i} and {j} overlap");
                     }
                 }
                 for b in &rects[i + 1..] {
                     assert!(!overlaps(*a, *b), "label {i} overlaps another");
                 }
+                // Every pin is drawn inside the map.
+                let (x, y, _) = pins[i];
+                assert!(x > bounds.0 && x < bounds.2 && y > bounds.1 && y < bounds.3, "pin {i} off the map");
+            }
+            // Zooming in never makes two pins overlap on screen.
+            for zoom in [1.0, 1.2, 1.5, 2.0, 3.0, 6.0, 12.0] {
+                for (i, a) in map.pins.iter().enumerate() {
+                    for b in &map.pins[i + 1..] {
+                        let (pa, pb) = (a.drawn_at(zoom), b.drawn_at(zoom));
+                        let screen = (pa.0 - pb.0).hypot(pa.1 - pb.1) / k * zoom;
+                        assert!(screen >= 2.0 * PIN, "{} and {} at zoom {zoom}", a.level_id, b.level_id);
+                    }
+                }
             }
         }
+        // Bali and Lombok were the pair that touched: they are spread now,
+        // and slide back to their real places by 3x zoom.
+        let (bali, lombok) = (r.id_map.pin("bipa2").unwrap(), r.id_map.pin("bipa3").unwrap());
+        let k = pin_scale(&r.id_map);
+        assert!((bali.x - lombok.x).hypot(bali.y - lombok.y) / k < 2.0 * PIN);
+        assert!(bali.nudge.0 < 0.0 && lombok.nudge.0 > 0.0);
+        assert_eq!(bali.drawn_at(3.0), (bali.x, bali.y));
+        assert!(nudge_style(bali).contains("--fade"));
+        assert_eq!(nudge_style(r.id_map.pin("bipa1").unwrap()), "");
     }
 
     #[test]
