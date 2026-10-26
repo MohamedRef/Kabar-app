@@ -5,7 +5,7 @@
 use std::fs;
 
 use anyhow::{Result, bail};
-use kabar_protocol::content::{BridgeEntry, DictEntry, GlossEntry, SoundRule};
+use kabar_protocol::content::{BridgeEntry, DictEntry, GlossEntry, GoldenSet, SoundRule, SpeechLevelEntry};
 use schemars::{JsonSchema, schema_for};
 
 use crate::paths::Root;
@@ -20,6 +20,8 @@ pub fn all() -> Vec<(&'static str, String)> {
         ("bridge-entry.schema.json", render::<BridgeEntry>()),
         ("sound-rule.schema.json", render::<SoundRule>()),
         ("dict-entry.schema.json", render::<DictEntry>()),
+        ("speech-level-entry.schema.json", render::<SpeechLevelEntry>()),
+        ("golden-set.schema.json", render::<GoldenSet>()),
     ]
 }
 
@@ -52,7 +54,7 @@ mod tests {
     use kabar_protocol::content::Lang;
 
     use super::*;
-    use crate::{bridge, gloss};
+    use crate::{bridge, gloss, golden, levels};
 
     fn root() -> Root {
         Root::new(None)
@@ -82,12 +84,14 @@ mod tests {
     #[test]
     fn committed_content_is_valid() {
         let root = root();
-        let dir = root.gloss_dir(Lang::Id);
         let mut glossed = 0;
-        for entry in fs::read_dir(&dir).unwrap() {
-            let path = entry.unwrap().path();
-            if path.extension().is_some_and(|e| e == "jsonl") {
-                glossed += check_jsonl("gloss-entry.schema.json", &path);
+        for lang in [Lang::Id, Lang::Jv] {
+            let Ok(entries) = fs::read_dir(root.gloss_dir(lang)) else { continue };
+            for entry in entries {
+                let path = entry.unwrap().path();
+                if path.extension().is_some_and(|e| e == "jsonl") {
+                    glossed += check_jsonl("gloss-entry.schema.json", &path);
+                }
             }
         }
         gloss::run(&root, gloss::Cmd::Validate { batch: None }).unwrap();
@@ -96,9 +100,17 @@ mod tests {
         if cards.exists() {
             check_jsonl("bridge-entry.schema.json", &cards);
             bridge::run(&root, bridge::Cmd::Validate).unwrap();
-            let issues = gloss::crosscheck_bridge(&root, Lang::Id).unwrap();
-            assert!(issues.is_empty(), "{issues:?}");
+            for lang in [Lang::Id, Lang::Jv] {
+                let issues = gloss::crosscheck_bridge(&root, lang).unwrap();
+                assert!(issues.is_empty(), "{issues:?}");
+            }
         }
+        let levels = levels::path(&root);
+        if levels.exists() {
+            check_jsonl("speech-level-entry.schema.json", &levels);
+            levels::run(&root, levels::Cmd::Validate).unwrap();
+        }
+        golden::run(&root, golden::Cmd::Validate).unwrap();
         let wikt = bridge::wiktionary_path(&root);
         if wikt.exists() {
             check_jsonl("dict-entry.schema.json", &wikt);

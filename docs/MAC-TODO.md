@@ -35,6 +35,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] Start the big downloads in a second terminal now so they run during the builds below:
   ```bash
   just content-fetch            # frequency sources, ~60 MB
+  just content-fetch nusa       # Javanese corpora from GitHub, ~5 MB
   just content-fetch kaikki     # Wiktionary extracts, ~100 MB
   just content-fetch jvwiki     # Javanese Wikipedia dump, ~70 MB
   ```
@@ -60,6 +61,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] Check the launcher icon (round and adaptive), the notification-bar icon and the splash screen on both devices.
 - [ ] **Pen Lab** on each device (phone: Settings → Pen Lab), following the 7 steps in RUN.md §4. Save, **Copy JSON**, and send me one report per device. DeX on the tablet is a bonus third report.
 - [ ] Tell me how the ink *feels*: does it trail behind the pen tip, and by roughly how much?
+- [ ] **Golden captures** for the pen tasks (~30 min, any time): `cargo run -p kabar-tools -- golden stats` lists 104 items tagged `needs-capture` in `content/golden/read_handwriting.yaml`, `guess_sketch.yaml` and `check_strokes.yaml`. Each item's `input.capture` says what to write or draw, on which device and with which pen. Save each as `fixtures/golden/<task>/<item id>.png` (strokes as JSON if the app offers it) and push or send them; I wire them in.
 
 ## 3b. Journey Map and Lesson Player (~15 min) — [RUN.md](RUN.md)
 
@@ -99,10 +101,11 @@ just check                # fmt + clippy + tests: all green
 ## 6. Content pipeline (~30 min, needs the downloads from step 1) — [CONTENT.md](CONTENT.md), [RUN.md §6](RUN.md)
 
 - [ ] `just content-freq`: should produce no diff in `content/freq/id.tsv`.
-- [ ] `just content-kaikki`: Wiktionary import plus the Arabic Bridge cross-check report.
-- [ ] `just content-freq-jv` → `content/freq/jv.tsv` (Javanese frequency list).
+- [ ] `just content-kaikki`: Wiktionary import plus the Arabic Bridge cross-check report. Send me `build/bridge-todo.txt`.
+- [ ] `just content-freq-jv` → `content/freq/jv.tsv`: adds Javanese Wikipedia to the NusaWrites/NusaX counts. The Javanese gloss plan doesn't move.
 - [ ] `just content-check`: everything validates.
 - [ ] `just content-review 1` → open the review sheet in `build/review/` and mark what's wrong.
+- [ ] No rush: Javanese review with a native speaker if you can (`content/javanese/speech-levels.jsonl`, `content/glosses/jv/`, `cargo run -p kabar-tools -- gloss review --lang jv 1`). Everything Javanese stays *unverified* until then.
 - [ ] Commit the changed files under `content/` and push.
 
 ## 7. Engine bake-off (~1 h, can run overnight) — [BAKEOFF.md](BAKEOFF.md)
