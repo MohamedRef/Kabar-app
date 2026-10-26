@@ -1,0 +1,206 @@
+schema: kabar.lesson/v1
+id: bipa7.u10.l02
+language: id
+title: Seminar
+can_do:
+  ar_eg: تتابع ندوة علمية سريعة وتفهم دور كل واحد فيها.
+  ar: أن تتابع ندوة علمية سريعة وتفهم دور كلّ مشارك فيها.
+  en: Follow a fast-paced seminar and know who does what.
+slides:
+  - title: Susunan acara seminar
+    body:
+      ar_eg: |
+        ندوة متألّفة للدرس في كلية في وامينا:
+        - الـ moderator (مدير الجلسة) بيفتح ويقدّم الضيوف ويظبط الوقت.
+        - الـ pemakalah (صاحب الورقة) بيعرض makalah (ورقة بحثية) في 15 دقيقة.
+        - قبل الندوة، الجمهور بيقرا abstrak (ملخّص البحث) في البرنامج.
+        - في الآخر، sesi tanya jawab (جلسة الأسئلة والأجوبة).
+        جملة بتتقال كتير: «Waktu kami terbatas. Silakan, pemakalah pertama, sepuluh menit.» الكلام بيبقى سريع، فاسمع الكلمات المفتاحية.
+      ar: |
+        ندوة مؤلَّفة للدرس في كلّية بوامينا:
+        - يفتتح الـ moderator (مدير الجلسة) ويقدّم الضيوف ويضبط الوقت.
+        - يعرض الـ pemakalah (صاحب الورقة) makalah (ورقة بحثية) في ربع ساعة.
+        - يقرأ الحضور قبلها abstrak (ملخّص البحث) في البرنامج.
+        - وفي الختام sesi tanya jawab (جلسة الأسئلة والأجوبة).
+        عبارة شائعة: «Waktu kami terbatas. Silakan, pemakalah pertama, sepuluh menit.» والكلام سريع، فالتقط الكلمات المفتاحية.
+      en: |
+        A seminar invented for the lesson at a college in Wamena:
+        - The moderator opens, introduces the speakers and keeps time.
+        - The pemakalah (presenter) gives a makalah (paper) in 15 minutes.
+        - Beforehand, the audience reads the abstrak (abstract) in the programme.
+        - At the end comes the sesi tanya jawab (Q&A session).
+        A common line: «Waktu kami terbatas. Silakan, pemakalah pertama, sepuluh menit.» Speech is fast, so listen for key words.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: makalah
+        ar_eg: ورقة بحثية
+        ar: ورقة بحثية
+        en: paper
+      - text: pemakalah
+        ar_eg: صاحب الورقة
+        ar: صاحب الورقة
+        en: presenter (of a paper)
+      - text: moderator
+        ar_eg: مدير الجلسة
+        ar: مدير الجلسة
+        en: moderator
+      - text: abstrak
+        ar_eg: ملخّص البحث
+        ar: ملخّص البحث
+        en: abstract
+      - text: sesi tanya jawab
+        ar_eg: جلسة الأسئلة
+        ar: جلسة الأسئلة والأجوبة
+        en: Q&A session
+    words: [makalah, pemakalah, moderator, abstrak, sesi tanya jawab]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مين اللي بيظبط الوقت في الندوة؟
+      ar: من يضبط الوقت في الندوة؟
+      en: Who keeps time at the seminar?
+    options: [pemakalah, moderator, penonton]
+    answer: 1
+    words: [moderator]
+  - id: e03
+    type: fill_blank
+    sentence: Bacalah ___ dulu supaya kamu tahu isi makalah secara singkat.
+    meaning:
+      ar_eg: اقرا الملخّص الأول علشان تعرف محتوى الورقة باختصار.
+      ar: اقرأ الملخّص أوّلًا لتعرف مضمون الورقة باختصار.
+      en: Read the abstract first so you know the paper's content in brief.
+    options: [abstrak, moderator, pemakalah]
+    answers: [abstrak]
+    words: [abstrak]
+  - id: e04
+    type: listen
+    text: Setelah semua pemakalah selesai, kita masuk ke sesi tanya jawab.
+    question:
+      ar_eg: إيه اللي هييجي بعد ما كل أصحاب الأوراق يخلّصوا؟
+      ar: ماذا يأتي بعد أن ينتهي جميع أصحاب الأوراق؟
+      en: What comes after all the presenters finish?
+    options:
+      - جلسة الأسئلة والأجوبة.
+      - الغدا.
+      - امتحان.
+    answer: 0
+    words: [pemakalah, sesi tanya jawab]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الورقة دي بتتكلّم عن البيوت التقليدية.
+      ar: تتناول هذه الورقة البيوت التقليدية.
+      en: This paper discusses traditional houses.
+    answer: Makalah ini membahas rumah adat.
+    distractors: [abstrak, moderator]
+    words: [makalah]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مدير الجلسة قال «Waktu kami terbatas». يقصد إيه؟
+      ar: قال مدير الجلسة «Waktu kami terbatas»، فماذا يقصد؟
+      en: The moderator said "Waktu kami terbatas". What does he mean?
+    options:
+      - الندوة اتلغت.
+      - عايز أسئلة كتير.
+      - الوقت قليل، فلازم نختصر.
+    answer: 2
+    words: [moderator]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: صاحب الورقة التاني جاي من جايابورا.
+      ar: صاحب الورقة الثاني قادم من جايابورا.
+      en: The second presenter comes from Jayapura.
+    answers:
+      - Pemakalah kedua berasal dari Jayapura.
+      - Pemakalah kedua datang dari Jayapura.
+      - Pemakalah yang kedua berasal dari Jayapura.
+    words: [pemakalah]
+  - id: e08
+    type: speaking
+    text: Moderator membuka sesi tanya jawab dan memberikan waktu lima menit.
+    meaning:
+      ar_eg: مدير الجلسة فتح جلسة الأسئلة وادّى خمس دقايق.
+      ar: افتتح مدير الجلسة الأسئلة ومنح خمس دقائق.
+      en: The moderator opened the Q&A and gave five minutes.
+    words: [moderator, sesi tanya jawab]
+  - id: e09
+    type: dictation
+    text: Abstrak makalah itu hanya dua ratus kata.
+    meaning:
+      ar_eg: ملخّص الورقة دي ميتين كلمة بس.
+      ar: لا يتجاوز ملخّص تلك الورقة مئتي كلمة.
+      en: That paper's abstract is only two hundred words.
+    words: [abstrak, makalah]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Pemakalah berbicara sangat cepat, jadi saya mencatat kata kuncinya saja.
+    answers_meaning:
+      ar_eg:
+        - صاحب الورقة كان بيتكلّم بسرعة جدًّا، فكتبت الكلمات المفتاحية بس.
+        - المحاضر كان سريع قوي، فدوّنت الكلمات المهمّة بس.
+      ar:
+        - تحدّث صاحب الورقة بسرعة كبيرة، فدوّنت الكلمات المفتاحية فقط.
+        - كان المتحدّث سريعًا جدًّا، فاكتفيت بتدوين الكلمات المفتاحية.
+      en:
+        - The presenter spoke very fast, so I only noted the key words.
+        - The speaker was very quick, so I just jotted down the keywords.
+    words: [pemakalah]
+dialogue:
+  title: Di aula kampus
+  lines:
+    - speaker: Pak Elias
+      text: Saya moderator hari ini. Kamu duduk di depan, ya, karena kamu pemakalah ketiga.
+      ar_eg: أنا مدير الجلسة النهارده. اقعد قدّام، علشان إنت صاحب الورقة التالتة.
+      ar: أنا مدير الجلسة اليوم. اجلس في الأمام، فأنت صاحب الورقة الثالثة.
+      en: I'm moderating today. Sit at the front, you're the third presenter.
+    - speaker: Mohamed
+      text: Saya agak gugup, Pak. Pemakalah pertama bicaranya cepat sekali.
+      ar_eg: أنا متوتّر شوية يا أستاذ. صاحب الورقة الأولى بيتكلّم بسرعة قوي.
+      ar: أنا متوتّر قليلًا يا أستاذ، فصاحب الورقة الأولى سريع الكلام جدًّا.
+      en: I'm a bit nervous, Pak. The first presenter talks really fast.
+    - speaker: Pak Elias
+      text: Tidak apa-apa. Penonton sudah membaca abstrakmu. Mereka tertarik.
+      ar_eg: ماتقلقش. الجمهور قرا الملخّص بتاعك، ومهتمّين.
+      ar: لا بأس، قرأ الحضور ملخّصك وهم مهتمّون.
+      en: It's fine. The audience has read your abstract. They're interested.
+    - speaker: Mohamed
+      text: Semoga sesi tanya jawabnya lancar.
+      ar_eg: يا رب جلسة الأسئلة تعدّي على خير.
+      ar: عسى أن تمضي جلسة الأسئلة بسلاسة.
+      en: I hope the Q&A goes smoothly.
+new_words:
+  - word: makalah
+    pos: noun
+    arabic: مقالة
+    ar_eg: ورقة بحثية
+    ar: ورقة بحثية
+    en: paper
+  - word: pemakalah
+    pos: noun
+    ar_eg: صاحب الورقة
+    ar: صاحب الورقة
+    en: presenter (of a paper)
+  - word: moderator
+    pos: noun
+    ar_eg: مدير الجلسة
+    ar: مدير الجلسة
+    en: moderator
+  - word: abstrak
+    pos: noun
+    ar_eg: ملخّص البحث
+    ar: ملخّص البحث
+    en: abstract
+  - word: sesi tanya jawab
+    pos: noun
+    ar_eg: جلسة الأسئلة
+    ar: جلسة الأسئلة والأجوبة
+    en: Q&A session
+review:
+  status: draft
+  verified: false

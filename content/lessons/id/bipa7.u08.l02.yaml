@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: bipa7.u08.l02
+language: id
+title: Data ekonomi
+can_do:
+  ar_eg: توصف أرقام الاقتصاد واتجاهاتها، النمو والتضخّم والتجارة.
+  ar: أن تصف أرقام الاقتصاد واتّجاهاتها من نموّ وتضخّم وتجارة.
+  en: Describe economic figures and trends, growth, inflation and trade.
+slides:
+  - title: Angka-angka besar
+    body:
+      ar_eg: |
+        إندونيسيا أكبر اقتصاد في جنوب شرق آسيا.
+        - produk domestik bruto (PDB، الناتج المحلي الإجمالي) بتاعها أكتر من تريليون دولار.
+        - pertumbuhan ekonomi (النمو الاقتصادي) في السنين الأخيرة حوالي 5٪ في السنة.
+        - inflasi (التضخّم) يعني الأسعار بتطلع. لو التضخّم عالي، الفلوس قيمتها بتقلّ.
+        - ekspor (صادرات): الفحم وزيت النخيل والنيكل من أهمّها.
+        - impor (واردات): زي البترول والقمح.
+        وصف الرسم: Pertumbuhan ekonomi relatif stabil, sementara itu inflasi menurun.
+      ar: |
+        إندونيسيا أكبر اقتصاد في جنوب شرق آسيا.
+        - يتجاوز produk domestik bruto (PDB، الناتج المحلي الإجمالي) تريليون دولار.
+        - بلغ pertumbuhan ekonomi (النموّ الاقتصادي) في السنوات الأخيرة نحو 5٪ سنويًّا.
+        - inflasi (التضخّم) ارتفاع الأسعار، فإذا ارتفع قلّت قيمة النقود.
+        - ekspor (الصادرات): الفحم وزيت النخيل والنيكل من أهمّها.
+        - impor (الواردات): كالنفط والقمح.
+        وصف الرسم: Pertumbuhan ekonomi relatif stabil, sementara itu inflasi menurun.
+      en: |
+        Indonesia is the largest economy in Southeast Asia.
+        - Its produk domestik bruto (PDB, GDP) is over a trillion US dollars.
+        - Pertumbuhan ekonomi (economic growth) has run at about 5% a year recently.
+        - Inflasi (inflation) means prices rising; when it's high, money loses value.
+        - Ekspor (exports): coal, palm oil and nickel are among the biggest.
+        - Impor (imports): things like oil and wheat.
+        Describing a chart: Pertumbuhan ekonomi relatif stabil, sementara itu inflasi menurun.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: produk domestik bruto
+        ar_eg: الناتج المحلي الإجمالي
+        ar: الناتج المحلي الإجمالي
+        en: gross domestic product
+      - text: pertumbuhan ekonomi
+        ar_eg: النمو الاقتصادي
+        ar: النموّ الاقتصادي
+        en: economic growth
+      - text: inflasi
+        ar_eg: تضخّم
+        ar: تضخّم
+        en: inflation
+      - text: ekspor
+        ar_eg: صادرات
+        ar: صادرات
+        en: exports
+      - text: impor
+        ar_eg: واردات
+        ar: واردات
+        en: imports
+    words: [produk domestik bruto, pertumbuhan ekonomi, inflasi, ekspor, impor]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: لو الأسعار كلها طلعت بسرعة، ده اسمه إيه؟
+      ar: إذا ارتفعت الأسعار كلّها بسرعة، فما اسم ذلك؟
+      en: If all prices rise fast, what is that called?
+    options: [ekspor, inflasi, impor]
+    answer: 1
+    words: [inflasi]
+  - id: e03
+    type: fill_blank
+    sentence: Indonesia menjual minyak sawit ke luar negeri. Itu adalah ___.
+    meaning:
+      ar_eg: إندونيسيا بتبيع زيت النخيل برّه. ده اسمه صادرات.
+      ar: تبيع إندونيسيا زيت النخيل إلى الخارج، وهذا تصدير.
+      en: Indonesia sells palm oil abroad. That is exporting.
+    options: [ekspor, impor, inflasi]
+    answers: [ekspor]
+    words: [ekspor, impor]
+  - id: e04
+    type: listen
+    text: Pertumbuhan ekonomi Indonesia sekitar lima persen per tahun.
+    question:
+      ar_eg: النمو الاقتصادي في إندونيسيا قد إيه؟
+      ar: كم يبلغ النموّ الاقتصادي في إندونيسيا؟
+      en: How much is Indonesia's economic growth?
+    options:
+      - حوالي 5٪ في السنة.
+      - 50٪ في السنة.
+      - صفر.
+    answer: 0
+    words: [pertumbuhan ekonomi]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: إندونيسيا بتستورد قمح.
+      ar: تستورد إندونيسيا القمح.
+      en: Indonesia imports wheat.
+    answer: Indonesia mengimpor gandum.
+    distractors: [mengekspor, inflasi]
+    words: [impor]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «PDB» بيقيس إيه؟
+      ar: ماذا يقيس «PDB»؟
+      en: What does "PDB" measure?
+    options:
+      - عدد السكان.
+      - سعر الدولار.
+      - قيمة كل اللي البلد بتنتجه في سنة.
+    answer: 2
+    words: [produk domestik bruto]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: التضخّم نزل السنة دي.
+      ar: انخفض التضخّم هذا العام.
+      en: Inflation fell this year.
+    answers:
+      - Inflasi turun tahun ini.
+      - Inflasi menurun tahun ini.
+      - Tahun ini inflasi turun.
+      - Tahun ini inflasi menurun.
+    words: [inflasi]
+  - id: e08
+    type: speaking
+    text: Produk domestik bruto Indonesia lebih dari satu triliun dolar.
+    meaning:
+      ar_eg: الناتج المحلي الإجمالي لإندونيسيا أكتر من تريليون دولار.
+      ar: يتجاوز الناتج المحلي الإجمالي لإندونيسيا تريليون دولار.
+      en: Indonesia's GDP is more than a trillion dollars.
+    words: [produk domestik bruto]
+  - id: e09
+    type: dictation
+    text: Ekspor batu bara dan nikel mendorong pertumbuhan ekonomi.
+    meaning:
+      ar_eg: صادرات الفحم والنيكل بتزقّ النمو الاقتصادي.
+      ar: تدفع صادرات الفحم والنيكل النموّ الاقتصادي.
+      en: Coal and nickel exports drive economic growth.
+    words: [ekspor, pertumbuhan ekonomi]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Ketika impor lebih besar daripada ekspor, neraca perdagangan menjadi defisit.
+    answers_meaning:
+      ar_eg:
+        - لما الواردات تبقى أكتر من الصادرات، الميزان التجاري بيبقى فيه عجز.
+        - لو بنستورد أكتر ما بنصدّر، الميزان التجاري بيعجز.
+      ar:
+        - حين تزيد الواردات على الصادرات يصير الميزان التجاري في عجز.
+        - إذا فاقت الوارداتُ الصادراتِ عجز الميزان التجاري.
+      en:
+        - When imports exceed exports, the trade balance goes into deficit.
+        - If a country imports more than it exports, its trade balance is in deficit.
+    words: [impor, ekspor]
+dialogue:
+  title: Membaca grafik
+  lines:
+    - speaker: Bu Frida
+      text: Lihat grafik ini. Apa yang terjadi pada inflasi?
+      ar_eg: بص على الرسم ده. إيه اللي حصل للتضخّم؟
+      ar: انظر إلى هذا الرسم. ما الذي جرى للتضخّم؟
+      en: Look at this chart. What happened to inflation?
+    - speaker: Mohamed
+      text: Inflasi menurun. Sementara itu, pertumbuhan ekonomi relatif stabil.
+      ar_eg: التضخّم بينزل. وفي نفس الوقت، النمو الاقتصادي ثابت تقريبًا.
+      ar: التضخّم ينخفض، وفي الأثناء يبقى النموّ مستقرًّا نسبيًّا.
+      en: Inflation is falling. Meanwhile, growth is fairly stable.
+    - speaker: Bu Frida
+      text: Bagus. Dan garis hijau ini?
+      ar_eg: حلو. والخط الأخضر ده؟
+      ar: جيّد. وهذا الخطّ الأخضر؟
+      en: Good. And this green line?
+    - speaker: Mohamed
+      text: Itu ekspor. Ekspor meningkat tajam, bahkan lebih cepat daripada impor.
+      ar_eg: دي الصادرات. زادت جامد، لا وكمان أسرع من الواردات.
+      ar: هذه الصادرات، ارتفعت بحدّة، بل أسرع من الواردات.
+      en: That's exports. They rose sharply, even faster than imports.
+new_words:
+  - word: produk domestik bruto
+    pos: noun
+    ar_eg: الناتج المحلي الإجمالي
+    ar: الناتج المحلي الإجمالي
+    en: gross domestic product
+  - word: pertumbuhan ekonomi
+    pos: noun
+    ar_eg: النمو الاقتصادي
+    ar: النموّ الاقتصادي
+    en: economic growth
+  - word: inflasi
+    pos: noun
+    ar_eg: تضخّم
+    ar: تضخّم
+    en: inflation
+  - word: ekspor
+    pos: noun
+    ar_eg: صادرات
+    ar: صادرات
+    en: exports
+  - word: impor
+    pos: noun
+    ar_eg: واردات
+    ar: واردات
+    en: imports
+review:
+  status: draft
+  verified: false
