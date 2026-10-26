@@ -433,7 +433,8 @@ fn InputCard(busy: Signal<bool>, recent: Signal<Vec<SavedText>>) -> Element {
                 lang: "id",
                 rows: "5",
                 placeholder: "{ui.t(Msg::ReaderPlaceholder)}",
-                value: "{draft}",
+                // Uncontrolled: fast typing, IMEs and Samsung's handwriting
+                // keyboard never lose characters to a re-render.
                 oninput: move |e| draft.set(e.value()),
             }
             div { class: "row",
@@ -445,7 +446,6 @@ fn InputCard(busy: Signal<bool>, recent: Signal<Vec<SavedText>>) -> Element {
                         move |_| {
                             let body = draft.read().clone();
                             open_new(&db, st, &body, TextKind::Pasted, None, None, recent);
-                            draft.set(String::new());
                         }
                     },
                     "{ui.t(Msg::ReaderRead)}"
@@ -539,7 +539,7 @@ fn ReadView(open: Open, mode: Mode) -> Element {
             None => c.push_str(" name"),
         }
         if w.is_bridge() {
-            c.push_str(" bridge");
+            c.push_str(" from-arabic");
             if w.info.as_ref().and_then(|i| i.bridge.as_ref()).is_some_and(|b| b.shift == Shift::FalseFriend)
             {
                 c.push_str(" false-friend");
