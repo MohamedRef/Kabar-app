@@ -1,0 +1,76 @@
+schema: kabar.grammar/v1
+id: id.chat.abbreviations
+language: id
+level: bipa2
+title:
+  target: yg, gk, udh, bgt, dr, utk, sy, tp, jd, otw, wkwk
+  en: Chat spelling
+  ar_eg: كتابة الشات (الاختصارات)
+  ar: الاختصارات في المحادثات
+summary:
+  ar_eg: "الشات الإندونيسي بيشيل الحروف المتحركة ويستخدم أرقام: yg = yang، gk = nggak، udh = sudah، anak2 = anak-anak."
+  ar: "تحذف المحادثات الحروف الصائتة وتستعمل الأرقام: yg = yang، gk = tidak، udh = sudah."
+  en: Chats drop vowels and use digits — yg = yang, gk = nggak, udh = sudah, anak2 = anak-anak.
+pattern:
+  - drop vowels (yg, dgn, dr, sy, tp, krn, utk, blm)
+  - spoken forms (gk / ga / gak = nggak = tidak; udh / udah = sudah; aja = saja)
+  - 2 = reduplication (anak2, hati2)
+  - borrowed shortcuts (otw, btw, cmiiw) and laughter (wkwk, haha)
+explanation:
+  ar_eg: |
+    رسايل الواتساب والتعليقات مليانة اختصارات. اللي لازم تعرفه:
+    - yg = yang، dgn = dengan، dr = dari، utk = untuk، krn = karena، tp = tapi، jd = jadi، sy = saya، km = kamu، blm = belum، sdh / udh / udah = sudah، bgt = banget، aja = saja، gmn = gimana (bagaimana)، knp = kenapa، brp = berapa.
+    - النفي: gk / ga / gak / g = nggak = tidak.
+    - الرقم 2 = تكرار: hati2 = hati-hati (خلي بالك).
+    - إنجليزي: otw (في الطريق)، btw، OK.
+    - الضحك: wkwk / wkwkwk (زي «هههه»).
+    Kabar's Reader بيحوّل ده تلقائي، بس لما تعرف تقراه بنفسك هتفهم الشات أسرع بكتير.
+    واكتب بالشكل ده مع الصحاب بس.
+  ar: |
+    تمتلئ المحادثات بالاختصارات، وأهمها:
+    yg = yang، dgn = dengan، dr = dari، utk = untuk، krn = karena، tp = tapi، jd = jadi، sy = saya، km = kamu، blm = belum، udh = sudah، bgt = banget، gmn = bagaimana، brp = berapa.
+    والنفي: gk / ga / gak = tidak. والرقم 2 للتكرار: hati2 = hati-hati. وwkwk للضحك.
+    وتستعمل مع الأصدقاء فقط.
+  en: |
+    WhatsApp and comments are full of shortcuts. The core set:
+    yg = yang, dgn = dengan, dr = dari, utk = untuk, krn = karena, tp = tapi, jd = jadi, sy = saya, km = kamu, blm = belum, udh / udah / sdh = sudah, bgt = banget, aja = saja, gmn = gimana (bagaimana), knp = kenapa, brp = berapa.
+    Negation: gk / ga / gak / g = nggak = tidak. Digit 2 = reduplication: hati2 = hati-hati. English: otw, btw. Laughter: wkwk.
+    Kabar's Reader normalises these automatically — but reading them yourself makes chats far faster. Use them only with friends.
+examples:
+  - text: iphone 17 pm 512gb resmi ibox mulus nomin garansi jalan minat wa
+    breakdown: pm = Pro Max · resmi ibox = official iBox unit · mulus = flawless · nomin = no minus · garansi jalan = warranty active · minat wa = interested? WhatsApp
+    en: "iPhone 17 Pro Max 512 GB, official iBox unit, flawless, no defects, warranty active — interested? WhatsApp me."
+    ar_eg: "آيفون ١٧ برو ماكس ٥١٢ جيجا، رسمي من iBox، زي الفل، مفيهوش أي عيب، الضمان شغال — اللي عايز يكلمني واتساب."
+    ar: "آيفون ١٧ برو ماكس ٥١٢ غيغابايت، جهاز رسمي من iBox، سليم تمامًا، بلا عيوب، الضمان سارٍ — للمهتمين: واتساب."
+    register: chat
+  - text: udh smp blm? aku otw nih
+    en: Have you arrived yet? I'm on my way.
+    ar_eg: وصلت ولا لسه؟ أنا في السكة أهو.
+    ar: هل وصلت؟ أنا في الطريق.
+    register: chat
+  - text: gk papa kok, santai aja
+    en: It's fine, relax.
+    ar_eg: ولا يهمك، روق كده.
+    ar: لا بأس، استرخِ.
+    register: chat
+  - text: hati2 di jln ya
+    en: Be careful on the road, OK?
+    ar_eg: خلي بالك في الطريق.
+    ar: انتبه في الطريق.
+    register: chat
+mistakes:
+  - wrong: yg (in a formal email)
+    right: yang
+    why:
+      ar_eg: الاختصارات للشات بس.
+      ar: الاختصارات للمحادثات غير الرسمية فقط.
+      en: Abbreviations are for chats only.
+arabic_bridge:
+  ar_eg: "زي «فرانكو» عندنا: «7abibi» و«msh» — نفس فكرة شيل الحروف واستخدام الأرقام."
+  ar: يشبه ما يُعرف عندنا بـ«الفرانكو أراب» في حذف الحروف واستعمال الأرقام.
+  en: "Like Egyptian \"Franco-Arabic\" texting (msh, 7abibi): dropped vowels and digits."
+tags: [chat, informal, spelling]
+see_also: [id.interjection.particles, id.reduplication.plural, id.negation.tidak-bukan]
+review:
+  status: draft
+  verified: false

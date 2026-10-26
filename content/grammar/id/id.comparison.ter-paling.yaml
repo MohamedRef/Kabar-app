@@ -1,0 +1,69 @@
+schema: kabar.grammar/v1
+id: id.comparison.ter-paling
+language: id
+level: bipa2
+title:
+  target: paling besar, terbesar
+  en: Superlatives
+  ar_eg: الأفعل (الأكبر، الأحسن)
+  ar: التفضيل المطلق
+summary:
+  ar_eg: «الأكبر» = paling besar أو terbesar. paling أسهل وتنفع مع كل صفة، وter- في الكتابة والكلام الرسمي.
+  ar: «الأكبر» = paling besar أو terbesar؛ paling عامة، وter- أكثر رسمية.
+  en: '"The biggest" = paling besar or terbesar; paling works everywhere, ter- is more formal.'
+pattern:
+  - paling + adjective
+  - ter- + adjective
+  - … di + place / dari + group (… in / of …)
+explanation:
+  ar_eg: |
+    طريقتين للأفعل:
+    - paling + صفة: paling besar = الأكبر، paling enak = الأحلى. دي تنفع دايمًا.
+    - ter- + صفة: terbesar، terbaik (الأحسن)، termahal (الأغلى). بتتسمع في الأخبار والإعلانات.
+    مع المجموعة: Gamelan Bali paling cepat di Indonesia = جاميلان بالي أسرع واحد في إندونيسيا.
+    خلي بالك: ter- ليها معاني تانية (زي tertidur = غفل)، فلو الكلمة مش صفة متعتبرهاش أفعل.
+  ar: |
+    للتفضيل المطلق طريقتان:
+    - paling + الصفة: paling besar = الأكبر، وتصلح دائمًا.
+    - ter- + الصفة: terbesar، terbaik (الأفضل)، termahal (الأغلى)، وهي أكثر رسمية.
+    ومع المجموعة: … paling cepat di Indonesia = الأسرع في إندونيسيا.
+    ولـ ter- معانٍ أخرى (كـ tertidur = غلبه النوم)، فلا تُحمل على التفضيل إلا مع الصفات.
+  en: |
+    Two ways:
+    - paling + adjective: paling besar = biggest, paling enak = tastiest. Always works.
+    - ter- + adjective: terbesar, terbaik (best), termahal (most expensive). Common in news and ads.
+    With a group: … paling cepat di Indonesia = the fastest in Indonesia.
+    Careful: ter- has other meanings (tertidur = dozed off); it's superlative only on adjectives.
+examples:
+  - text: Ini restoran terbaik di Ubud.
+    en: This is the best restaurant in Ubud.
+    ar_eg: ده أحسن مطعم في أوبود.
+    ar: هذا أفضل مطعم في أوبود.
+  - text: Gong adalah alat musik paling besar dalam gamelan.
+    en: The gong is the biggest instrument in a gamelan.
+    ar_eg: الجونج أكبر آلة في الجاميلان.
+    ar: الصنج الكبير أكبر آلة في الغاميلان.
+  - text: Mana yang paling enak?
+    en: Which is the tastiest?
+    ar_eg: أنهي أحلى واحد؟
+    ar: أيها ألذ؟
+  - text: Harga termurah!
+    en: Lowest price!
+    ar_eg: أرخص سعر!
+    ar: أرخص سعر!
+mistakes:
+  - wrong: paling terbesar
+    right: paling besar / terbesar
+    why:
+      ar_eg: واحدة بس منهم.
+      ar: يكفي أحدهما.
+      en: Use one, not both.
+arabic_bridge:
+  ar_eg: terbaik ≈ «الأفضل»، paling enak ≈ «أحلى حاجة».
+  ar: terbaik ≈ الأفضل.
+  en: terbaik ≈ «الأفضل».
+tags: [comparison, adjective, affix]
+see_also: [id.comparison.lebih, id.adverb.degree]
+review:
+  status: draft
+  verified: false

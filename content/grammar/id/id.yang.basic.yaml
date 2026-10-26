@@ -1,0 +1,73 @@
+schema: kabar.grammar/v1
+id: id.yang.basic
+language: id
+level: bipa1
+title:
+  target: yang (yang besar, orang yang tinggal di sini)
+  en: "yang: the one that / who"
+  ar_eg: "yang: اللي"
+  ar: "yang: الذي / التي"
+summary:
+  ar_eg: "yang = «اللي» المصرية بالظبط: bukan yang merah = مش اللي أحمر، orang yang tinggal di sini = الراجل اللي ساكن هنا."
+  ar: yang اسم موصول بمعنى «الذي / التي / الذين» لا يتغير.
+  en: yang is the all-purpose "who / which / the one that" — exactly Egyptian «اللي».
+pattern:
+  - noun + yang + description (orang yang ramah)
+  - yang + adjective = the … one (yang merah)
+  - Yang mana? (Which one?)
+explanation:
+  ar_eg: |
+    yang = «اللي» ومابتتغيرش أبدًا (لا مذكر ولا مؤنث ولا جمع):
+    - مع اسم: orang yang tinggal di sini = الراجل اللي ساكن هنا. buku yang saya baca = الكتاب اللي بقراه.
+    - لوحدها: yang merah = اللي لونه أحمر. Saya mau yang besar = عايز الكبير.
+    - للتأكيد والتمييز: Kakak saya yang tinggi = أخويا الطويل (مش التاني).
+    - Yang mana? = أنهي واحد؟
+    في الشات: yg.
+  ar: |
+    yang اسم موصول عام لا يتغير بالجنس ولا بالعدد:
+    - بعد اسم: orang yang tinggal di sini = الرجل الذي يسكن هنا، buku yang saya baca = الكتاب الذي أقرؤه.
+    - وحدها: yang merah = الأحمر منها، Saya mau yang besar = أريد الكبير.
+    - للتمييز: Kakak saya yang tinggi = أخي الطويل (دون الآخر).
+    - Yang mana؟ = أيّها؟
+    وتُكتب في المحادثات yg.
+  en: |
+    yang never changes and means "who / which / that / the one":
+    - After a noun: orang yang tinggal di sini = the person who lives here; buku yang saya baca = the book (that) I'm reading.
+    - Alone: yang merah = the red one; Saya mau yang besar = I want the big one.
+    - To single out: Kakak saya yang tinggi = my tall older sibling (not the other one).
+    - Yang mana? = Which one?
+    Chat spelling: yg.
+examples:
+  - text: Saya mau yang merah.
+    en: I want the red one.
+    ar_eg: عايز الأحمر.
+    ar: أريد الأحمر.
+  - text: Orang yang memakai batik itu dosen saya.
+    en: The person wearing batik is my lecturer.
+    ar_eg: اللي لابس باتيك ده الدكتور بتاعي.
+    ar: الذي يرتدي الباتيك أستاذي الجامعي.
+  - text: Teman saya yang dari Bandung sangat ramah.
+    en: My friend from Bandung is very friendly.
+    ar_eg: صاحبي اللي من باندونج لطيف جدًا.
+    ar: صديقي الذي من باندونغ ودود جدًا.
+  - text: yg mana?
+    en: Which one? (chat)
+    ar_eg: أنهي واحد؟
+    ar: أيّها؟
+    register: chat
+mistakes:
+  - wrong: orang tinggal di sini itu (meaning "the person who lives here")
+    right: orang yang tinggal di sini
+    why:
+      ar_eg: محتاج «اللي» عشان الوصف يتربط بالاسم.
+      ar: يلزم الموصول لربط الصلة بالاسم.
+      en: You need yang to link the description to the noun.
+arabic_bridge:
+  ar_eg: "هدية للمصري: yang = «اللي» في كل استخداماتها، حتى «عايز اللي أحمر» = Saya mau yang merah."
+  ar: yang يقابل «الذي» بصوره كلها، وأقرب منه «اللي» في العامية لأنه لا يتغير.
+  en: yang is Egyptian «اللي» in every use — even «عايز اللي أحمر» = Saya mau yang merah.
+tags: [relative, noun-phrase]
+see_also: [id.noun-phrase.order, id.question.mana]
+review:
+  status: draft
+  verified: false

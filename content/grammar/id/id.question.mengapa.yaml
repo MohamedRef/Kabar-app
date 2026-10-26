@@ -1,0 +1,70 @@
+schema: kabar.grammar/v1
+id: id.question.mengapa
+language: id
+level: bipa2
+title:
+  target: mengapa / kenapa … karena / sebab
+  en: Why … because
+  ar_eg: ليه … عشان
+  ar: لماذا … لأن
+summary:
+  ar_eg: mengapa (رسمية) / kenapa (عادية) = ليه، والرد karena / soalnya = عشان.
+  ar: mengapa (فصيحة) / kenapa (عامية) = لماذا، والجواب karena / sebab = لأن.
+  en: mengapa (formal) / kenapa (everyday) = why; answer with karena / sebab (because), casual soalnya.
+pattern:
+  - Mengapa / Kenapa + clause?
+  - clause + karena + reason
+  - Karena + reason, clause
+explanation:
+  ar_eg: |
+    - mengapa = ليه (في الكتابة والكلام الرسمي)، kenapa = ليه (في الكلام اليومي).
+    - karena / sebab = عشان / لأن: Saya belajar bahasa Indonesia karena saya suka Bali.
+    - soalnya = أصل / عشان (عامية جدًا): Nggak bisa, soalnya sibuk = مش هقدر، أصلي مشغول.
+    - ممكن تبدأ بالسبب: Karena hujan, kami di rumah = عشان كانت بتمطر قعدنا في البيت.
+    - kenapa ممكن تيجي في الآخر: Kamu kenapa? = مالك؟ (حرفيًا: إنت ليه؟)
+  ar: |
+    - mengapa = لماذا (فصيحة)، وkenapa (عامية).
+    - karena / sebab = لأن: Saya belajar bahasa Indonesia karena saya suka Bali.
+    - soalnya = إذ إن (عامية).
+    - ويجوز تقديم العلة: Karena hujan, kami di rumah.
+    - وKamu kenapa؟ = ما بك؟
+  en: |
+    - mengapa = why (formal), kenapa = why (everyday).
+    - karena / sebab = because: Saya belajar bahasa Indonesia karena saya suka Bali.
+    - soalnya = 'cause (very casual): Nggak bisa, soalnya sibuk.
+    - The reason can lead: Karena hujan, kami di rumah.
+    - Kamu kenapa? = What's wrong with you? (literally "you why?")
+examples:
+  - text: Mengapa Anda memilih pekerjaan ini?
+    en: Why did you choose this job?
+    ar_eg: حضرتك اخترت الشغلانة دي ليه؟
+    ar: لماذا اخترت هذا العمل؟
+    register: formal
+  - text: Karena saya suka bertemu orang baru.
+    en: Because I like meeting new people.
+    ar_eg: عشان بحب أقابل ناس جديدة.
+    ar: لأنني أحب لقاء أناس جدد.
+  - text: Kenapa kamu terlambat?
+    en: Why are you late?
+    ar_eg: اتأخرت ليه؟
+    ar: لماذا تأخرت؟
+  - text: Kamu kenapa? Sakit?
+    en: What's wrong? Are you ill?
+    ar_eg: مالك؟ تعبان؟
+    ar: ما بك؟ هل أنت مريض؟
+mistakes:
+  - wrong: Karena hujan. Jadi kami di rumah. (as two full sentences in writing)
+    right: Karena hujan, kami di rumah.
+    why:
+      ar_eg: جملة السبب لوحدها مش جملة كاملة في الكتابة.
+      ar: جملة العلة وحدها ليست جملة تامة كتابةً.
+      en: A karena-clause alone isn't a full written sentence.
+arabic_bridge:
+  ar_eg: sebab ← «سبب» من العربي. وKamu kenapa? ≈ «مالك؟».
+  ar: sebab من «سبب» العربية.
+  en: sebab ← Arabic «سبب»; Kamu kenapa? ≈ «مالك؟».
+tags: [question, conjunction, arabic-loan]
+see_also: [id.conjunction.basic]
+review:
+  status: draft
+  verified: false

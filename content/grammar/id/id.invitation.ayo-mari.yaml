@@ -1,0 +1,70 @@
+schema: kabar.grammar/v1
+id: id.invitation.ayo-mari
+language: id
+level: bipa2
+title:
+  target: ayo, mari, yuk
+  en: "Let's …"
+  ar_eg: يلا…
+  ar: هيّا…
+summary:
+  ar_eg: ayo / yuk = يلا (عادية)، mari = هيا بنا (أرسمي). مع kita أو من غيرها.
+  ar: ayo / yuk = هيّا (عامية)، mari = هلمّ (رسمية).
+  en: ayo / yuk = let's (casual), mari = let us (formal); often with kita.
+pattern:
+  - Ayo (kita) + verb!
+  - verb + yuk! / Yuk, …
+  - Mari (kita) + verb.
+explanation:
+  ar_eg: |
+    - ayo = يلا: Ayo makan! = يلا ناكل!
+    - yuk = يلا (ألطف، بتيجي في الأول أو الآخر): Makan, yuk! / Yuk, makan!
+    - mari = هيا بنا (رسمية، في الخطب والإعلانات): Mari kita mulai = هيا نبدأ.
+    - Mari! لوحدها كمان معناها «سلام / عن إذنك» لما تمشي.
+    الرد: Ayo! = يلا!، Boleh = ماشي، Nanti dulu = بعدين.
+  ar: |
+    - ayo = هيّا: Ayo makan!
+    - yuk = هيّا بلطف، في أول الجملة أو آخرها.
+    - mari = هلمّ / لِنَفعل (رسمية): Mari kita mulai = لنبدأ.
+    - و«Mari!» وحدها قد تعني الاستئذان بالانصراف.
+  en: |
+    - ayo = come on / let's: Ayo makan!
+    - yuk = let's (softer; at the start or end): Makan, yuk!
+    - mari = let us (formal, speeches, ads): Mari kita mulai = Let's begin.
+    - "Mari!" alone can also mean "I'll be off then".
+    Replies: Ayo! = Let's!, Boleh = Sure, Nanti dulu = Later.
+examples:
+  - text: Ayo, kita ke pasar!
+    en: Come on, let's go to the market!
+    ar_eg: يلا نروح السوق!
+    ar: هيّا نذهب إلى السوق!
+  - text: Ngopi, yuk!
+    en: Let's grab a coffee!
+    ar_eg: يلا نشرب قهوة!
+    ar: هيا نشرب القهوة!
+    register: informal
+  - text: Mari kita jaga kebersihan.
+    en: Let us keep things clean.
+    ar_eg: هيا نحافظ على النضافة.
+    ar: لنحافظ على النظافة.
+    register: formal
+  - text: Ayo, istirahat dulu supaya cepat sembuh.
+    en: Come on, get some rest so you get well soon.
+    ar_eg: يلا ارتاح شوية عشان تخف بسرعة.
+    ar: هيّا استرح قليلًا لتشفى سريعًا.
+mistakes:
+  - wrong: Ayo kami makan! (inviting the listener)
+    right: Ayo kita makan!
+    why:
+      ar_eg: الدعوة فيها اللي قدامك، يبقى kita.
+      ar: الدعوة تشمل المخاطب فيلزم kita.
+      en: Inviting includes the listener, so kita.
+arabic_bridge:
+  ar_eg: ayo / yuk = «يلا» بالظبط، وmari = «هيا بنا».
+  ar: ayo ≈ هيّا، وmari ≈ هلمّ.
+  en: ayo / yuk = «يلا», mari = «هيا بنا».
+tags: [invitation, imperative]
+see_also: [id.pronoun.personal, id.prohibition.jangan, id.imperative.basic]
+review:
+  status: draft
+  verified: false

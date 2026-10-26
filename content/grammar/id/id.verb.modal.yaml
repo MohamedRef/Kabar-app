@@ -1,0 +1,83 @@
+schema: kabar.grammar/v1
+id: id.verb.modal
+language: id
+level: bipa1
+title:
+  target: suka, mau, ingin, bisa, boleh, harus, perlu
+  en: Like, want, can, may, must, need
+  ar_eg: بحب، عايز، أقدر، مسموح، لازم، محتاج
+  ar: أفعال الرغبة والقدرة والإذن والوجوب
+summary:
+  ar_eg: "الكلمات دي بتيجي قبل الفعل على طول من غير «أن»: Saya mau makan = عايز آكل."
+  ar: "تأتي هذه الألفاظ قبل الفعل مباشرة بلا «أن»: Saya mau makan = أريد أن آكل."
+  en: "These go straight before the verb, no \"to\" needed: Saya mau makan = I want to eat."
+pattern:
+  - subject + suka / mau / ingin / bisa / boleh / harus / perlu + verb
+  - tidak + modal (tidak bisa, tidak boleh, tidak perlu)
+explanation:
+  ar_eg: |
+    - suka = بحب (أعمل حاجة): Saya suka membaca = بحب القراية.
+    - mau = عايز (عادي، كمان بمعنى «هـ» للمستقبل القريب): Saya mau pulang = عايز أروح.
+    - ingin = نفسي / أتمنى (أرسمي شوية): Saya ingin ke Mekkah = نفسي أروح مكة.
+    - bisa = أقدر / أعرف: Saya bisa berenang = بعرف أعوم. Bisa bahasa Indonesia? = بتعرف إندونيسي؟
+    - boleh = مسموح / ممكن (إذن): Boleh masuk? = ممكن أدخل؟
+    - harus = لازم: Saya harus bekerja = لازم أشتغل.
+    - perlu = محتاج: Kamu tidak perlu datang = مش محتاج تيجي.
+    النفي: tidak قبلها: tidak bisa (مقدرش)، tidak boleh (ممنوع)، tidak usah (مالوش لازمة، عامية).
+  ar: |
+    - suka = يحب أن: Saya suka membaca.
+    - mau = يريد (وللمستقبل القريب): Saya mau pulang.
+    - ingin = يرغب / يتمنى (أكثر رسمية): Saya ingin ke Mekkah.
+    - bisa = يستطيع / يعرف: Saya bisa berenang.
+    - boleh = يجوز / مسموح: Boleh masuk؟
+    - harus = يجب: Saya harus bekerja.
+    - perlu = يحتاج: Kamu tidak perlu datang.
+    والنفي بـ tidak قبلها: tidak bisa، tidak boleh، tidak usah (عامية: لا داعي).
+  en: |
+    - suka = like (to): Saya suka membaca = I like reading.
+    - mau = want (also near future): Saya mau pulang = I want to go home.
+    - ingin = wish / would like (more formal): Saya ingin ke Mekkah.
+    - bisa = can / know how: Saya bisa berenang = I can swim. Bisa bahasa Indonesia? = Do you speak Indonesian?
+    - boleh = may (permission): Boleh masuk? = May I come in?
+    - harus = must: Saya harus bekerja.
+    - perlu = need: Kamu tidak perlu datang = You don't need to come.
+    Negate with tidak: tidak bisa, tidak boleh; tidak usah = no need (casual).
+examples:
+  - text: Saya suka minum teh manis.
+    en: I like drinking sweet tea.
+    ar_eg: بحب أشرب شاي بسكر.
+    ar: أحب شرب الشاي المحلّى.
+  - text: Maaf, saya tidak bisa datang besok.
+    en: Sorry, I can't come tomorrow.
+    ar_eg: معلش، مش هقدر آجي بكرة.
+    ar: عذرًا، لا أستطيع المجيء غدًا.
+  - text: Di masjid tidak boleh pakai sepatu.
+    en: You may not wear shoes in the mosque.
+    ar_eg: ممنوع تلبس جزمة في الجامع.
+    ar: لا يجوز لبس الأحذية في المسجد.
+  - text: Kamu harus coba rendang!
+    en: You must try rendang!
+    ar_eg: لازم تجرب الرندانج!
+    ar: يجب أن تجرّب الرندانغ!
+mistakes:
+  - wrong: Saya mau untuk makan.
+    right: Saya mau makan.
+    why:
+      ar_eg: مفيش «to» ولا «أن»؛ الفعل بعدها على طول.
+      ar: لا حاجة لأداة بين الفعلين.
+      en: No "to" between the modal and the verb.
+  - wrong: Saya bisa makan di sini? (asking permission)
+    right: Boleh saya makan di sini?
+    why:
+      ar_eg: bisa = قدرة، boleh = إذن.
+      ar: bisa للقدرة، وboleh للإذن.
+      en: bisa is ability; boleh is permission.
+arabic_bridge:
+  ar_eg: "زي «عايز آكل» و«لازم أشتغل» بالمصري: الفعل التاني ورا الأول على طول من غير «أن»."
+  ar: "كالعامية المصرية «عايز آكل»: يتلو الفعلُ الفعلَ مباشرة."
+  en: Just like Egyptian «عايز آكل» — verb right after verb, no «أن».
+tags: [modal, verb]
+see_also: [id.politeness.phrases, id.negation.tidak-bukan]
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,76 @@
+schema: kabar.grammar/v1
+id: id.reduplication.plural
+language: id
+level: bipa1
+title:
+  target: anak-anak, buku-buku
+  en: Plural by repetition
+  ar_eg: الجمع بالتكرار
+  ar: الجمع بالتكرار
+summary:
+  ar_eg: الإندونيسي مالوش جمع؛ لو عايز تأكد إنهم كتير بتكرر الكلمة (anak-anak)، بس مش مع الأرقام.
+  ar: لا صيغة للجمع؛ يُؤكد التعدد بتكرار الاسم، ولا يُكرر مع العدد أو ألفاظ الكم.
+  en: There is no plural ending; repeat the noun to stress "many / various", but never with a number or quantity word.
+pattern:
+  - noun-noun (anak-anak = children)
+  - number / banyak / semua + noun (no repetition)
+explanation:
+  ar_eg: |
+    الاسم لوحده ممكن يبقى مفرد أو جمع حسب السياق: Saya beli buku = اشتريت كتاب أو كتب.
+    لو عايز توضح إنهم كتير أو أنواع مختلفة كرر الكلمة بشرطة: buku-buku = كتب (كذا كتاب)، anak-anak = عيال/أطفال.
+    بس لو فيه رقم أو كلمة كمية زي banyak / semua / beberapa خلاص مش محتاج تكرر: dua buku، banyak anak.
+    في الشات بيكتبوا التكرار برقم 2: anak2 = anak-anak.
+    التكرار ليه معاني تانية كتير هتشوفها في BIPA 2 (jalan-jalan، pelan-pelan).
+  ar: |
+    الاسم المجرد يحتمل الإفراد والجمع بحسب السياق: Saya beli buku = اشتريت كتابًا أو كتبًا.
+    ولتأكيد الكثرة أو التنوع يُكرر الاسم بشرطة: buku-buku = كتب، anak-anak = أطفال.
+    ولا يُكرر إذا سبقه عدد أو لفظ كم مثل banyak / semua / beberapa: dua buku، banyak anak.
+    وفي المحادثات يُكتب التكرار بالرقم 2: anak2.
+    وللتكرار معانٍ أخرى تأتي في المستوى الثاني.
+  en: |
+    A bare noun can be one or many: Saya beli buku = I bought a book / books.
+    To stress plurality or variety, repeat it with a hyphen: buku-buku = (various) books, anak-anak = children.
+    Never repeat after a number or quantity word (banyak, semua, beberapa): dua buku, banyak anak.
+    Chats write the repeat as 2: anak2 = anak-anak.
+    Reduplication has other meanings too (jalan-jalan, pelan-pelan) — BIPA 2.
+examples:
+  - text: Anak-anak bermain di taman.
+    breakdown: anak-anak (children) · ber- + main (play) · di taman (in the park)
+    en: The children are playing in the park.
+    ar_eg: العيال بيلعبوا في الجنينة.
+    ar: الأطفال يلعبون في الحديقة.
+  - text: Buku-buku itu milik perpustakaan.
+    en: Those books belong to the library.
+    ar_eg: الكتب دي بتاعة المكتبة.
+    ar: تلك الكتب ملك للمكتبة.
+  - text: Saya punya dua adik.
+    en: I have two younger siblings.
+    ar_eg: عندي اتنين إخوات أصغر مني.
+    ar: لي أخوان أصغر مني.
+  - text: anak2 udh tidur
+    en: The kids are already asleep. (chat spelling)
+    ar_eg: العيال ناموا خلاص.
+    ar: نام الأطفال.
+    register: chat
+mistakes:
+  - wrong: dua buku-buku
+    right: dua buku
+    why:
+      ar_eg: الرقم كفاية يوضح الجمع.
+      ar: العدد يغني عن التكرار.
+      en: The number already shows plurality.
+  - wrong: banyak orang-orang
+    right: banyak orang
+    why:
+      ar_eg: نفس الكلام مع banyak.
+      ar: وكذلك مع banyak.
+      en: Same with banyak.
+arabic_bridge:
+  ar_eg: مفيش جمع تكسير ولا مذكر سالم! لما تسمع «anak-anak» افتكر إن التكرار هو الجمع.
+  ar: لا جمع تكسير ولا سالم؛ التكرار هو أداة الجمع.
+  en: No broken or sound plurals to learn — repetition does the job.
+tags: [plural, reduplication]
+see_also: [id.reduplication.types, id.number.cardinal]
+review:
+  status: draft
+  verified: false

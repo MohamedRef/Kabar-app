@@ -1,0 +1,70 @@
+schema: kabar.grammar/v1
+id: id.aspect.pernah
+language: id
+level: bipa1
+title:
+  target: pernah, belum pernah, tidak pernah
+  en: "pernah: have ever"
+  ar_eg: "pernah: قبل كده / عمرك"
+  ar: "pernah: سبق أن"
+summary:
+  ar_eg: "pernah = حصل قبل كده (ولو مرة): Pernah ke Mesir? = رحت مصر قبل كده؟ النفي belum pernah (لسه) أو tidak pernah (عمري ما)."
+  ar: pernah = سبق أن، ونفيها belum pernah (لم يسبق بعدُ) أو tidak pernah (لم يحدث قط).
+  en: pernah = have ever (at least once); negatives belum pernah (not yet ever) and tidak pernah (never).
+pattern:
+  - subject + pernah + verb / ke + place
+  - Pernah …? → Pernah. / Belum (pernah).
+  - tidak pernah = never
+explanation:
+  ar_eg: |
+    pernah بتسأل عن التجربة:
+    Kamu pernah makan durian? = عمرك كلت دوريان؟ — Pernah = أيوه، كلت قبل كده. — Belum pernah = لسه ماجربتش.
+    Saya pernah tinggal di Jakarta = عشت في جاكرتا قبل كده.
+    - belum pernah = لسه ماحصلش (بس ممكن يحصل) — الرد المؤدب.
+    - tidak pernah = عمري ما (أبدًا): Dia tidak pernah terlambat = عمره ما بيتأخر.
+    «Pernah ke Mesir?» سؤال بيتسأل للمصريين كتير بالعكس: «Pernah ke Indonesia?».
+  ar: |
+    pernah للسؤال عن التجربة:
+    Kamu pernah makan durian؟ = هل سبق أن أكلت الدوريان؟ — Pernah = نعم سبق. — Belum pernah = لم يسبق بعد.
+    Saya pernah tinggal di Jakarta = سبق أن عشت في جاكرتا.
+    - belum pernah = لم يحدث بعدُ (وقد يحدث)، وهو الجواب المهذب.
+    - tidak pernah = لم يحدث قط: Dia tidak pernah terlambat = لا يتأخر أبدًا.
+  en: |
+    pernah asks about experience:
+    Kamu pernah makan durian? = Have you ever eaten durian? — Pernah = Yes, I have. — Belum pernah = Not yet.
+    Saya pernah tinggal di Jakarta = I once lived in Jakarta.
+    - belum pernah = not yet (but maybe one day) — the polite answer.
+    - tidak pernah = never: Dia tidak pernah terlambat = He's never late.
+examples:
+  - text: Kamu pernah ke Mesir?
+    en: Have you ever been to Egypt?
+    ar_eg: عمرك رحت مصر؟
+    ar: هل سبق أن زرت مصر؟
+  - text: Saya belum pernah naik kapal.
+    en: I've never been on a boat (yet).
+    ar_eg: لسه عمري ما ركبت مركب.
+    ar: لم يسبق لي أن ركبت قاربًا بعد.
+  - text: Saya pernah belajar di Al-Azhar.
+    en: I once studied at Al-Azhar.
+    ar_eg: درست في الأزهر قبل كده.
+    ar: سبق أن درست في الأزهر.
+  - text: Dia tidak pernah makan pedas.
+    en: He/She never eats spicy food.
+    ar_eg: عمره ما بياكل حراق.
+    ar: لا يأكل الطعام الحار أبدًا.
+mistakes:
+  - wrong: Pernah? — Tidak.
+    right: Pernah? — Belum (pernah).
+    why:
+      ar_eg: belum أذوق ومعناها «لسه».
+      ar: belum ألطف وتحمل معنى «بعدُ».
+      en: belum is softer and leaves the door open.
+arabic_bridge:
+  ar_eg: pernah ≈ «عمرك…؟» في السؤال، و«قبل كده» في الإثبات.
+  ar: pernah ≈ «سبق أن».
+  en: pernah ≈ «عمرك…؟» / «سبق أن».
+tags: [aspect, experience]
+see_also: [id.aspect.markers, id.frequency.adverbs]
+review:
+  status: draft
+  verified: false
