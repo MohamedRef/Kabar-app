@@ -491,6 +491,27 @@ pub enum Msg {
     RemoveHighlight,
     ExplainSentence,
     ExplainNeedsCloud,
+    ExplainThinking,
+    ExplainResetsLater,
+    ExplainUnreachable,
+    ExplainTryAgain,
+    InOtherWords,
+    RegisterLabel,
+    RegisterChat,
+    RegisterFormal,
+    RegisterNeutral,
+    RegisterSlang,
+    RegisterKrama,
+    RegisterNgoko,
+    RegisterMixed,
+    CultureNote,
+    GrammarInSentence,
+    NoGrammarMatched,
+    FoundBy,
+    CommonMistake,
+    ExplainWord,
+    UrlFetching,
+    UrlImportFailed,
     OcrWorking,
     OcrFailed,
     OcrUnavailable,
@@ -2010,14 +2031,93 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (ExplainSentence, Ar) => "اشرح الجملة",
         (ExplainSentence, En) => "Explain this sentence",
         (ExplainNeedsCloud, ArEg) => {
-            "شرح الجملة كاملة (القواعد والمستوى والثقافة) هييجي مع \u{2068}Kabar Cloud\u{2069}. لحد دلوقتي، معاني كل كلمة قدامك."
+            "الشرح الكامل بالذكاء الاصطناعي (معنى الجملة والأسلوب والثقافة) بيشتغل لما توصّل \u{2068}Kabar Cloud\u{2069}. القواعد اللي تحت من مكتبة \u{2068}Kabar\u{2069} نفسها."
         }
         (ExplainNeedsCloud, Ar) => {
-            "شرح الجملة كاملة (القواعد والمستوى والثقافة) يأتي مع \u{2068}Kabar Cloud\u{2069}. حتى ذلك الحين، معاني الكلمات أمامك."
+            "الشرح الكامل بالذكاء الاصطناعي (معنى الجملة والأسلوب والثقافة) يعمل عند ربط \u{2068}Kabar Cloud\u{2069}. القواعد أدناه من مكتبة \u{2068}Kabar\u{2069} نفسها."
         }
         (ExplainNeedsCloud, En) => {
-            "The full sentence explanation (grammar, register, culture) arrives with Kabar Cloud. Until then, every word's meaning is right here."
+            "The full AI explanation (meaning, register, culture) works once Kabar Cloud is connected. The grammar below is from Kabar's own library."
         }
+        (ExplainThinking, ArEg) => "بحضّرلك الشرح…",
+        (ExplainThinking, Ar) => "جارٍ تحضير الشرح…",
+        (ExplainThinking, En) => "Writing the explanation…",
+        (ExplainResetsLater, ArEg) => {
+            "الشرح بالذكاء الاصطناعي خلص رصيده المجاني النهارده، بيرجع بكرة. القواعد اللي تحت من مكتبة \u{2068}Kabar\u{2069} نفسها."
+        }
+        (ExplainResetsLater, Ar) => {
+            "انتهى الرصيد المجاني للشرح بالذكاء الاصطناعي اليوم، ويعود غدًا. القواعد أدناه من مكتبة \u{2068}Kabar\u{2069} نفسها."
+        }
+        (ExplainResetsLater, En) => {
+            "Today's free AI allowance is used up; it's back tomorrow. The grammar below is from Kabar's own library."
+        }
+        (ExplainUnreachable, ArEg) => {
+            "مش قادر أوصل للشرح دلوقتي (النت أو \u{2068}Kabar Home\u{2069}). القواعد اللي تحت شغالة من غير نت."
+        }
+        (ExplainUnreachable, Ar) => {
+            "تعذّر الوصول إلى الشرح الآن (الإنترنت أو \u{2068}Kabar Home\u{2069}). القواعد أدناه تعمل دون اتصال."
+        }
+        (ExplainUnreachable, En) => {
+            "Can't reach the explanation right now (offline, or Kabar Home is asleep). The grammar below works offline."
+        }
+        (ExplainTryAgain, ArEg) => "الشرح مطلعش مظبوط المرة دي، جرّب تاني بعد شوية. القواعد اللي تحت سليمة.",
+        (ExplainTryAgain, Ar) => "لم يخرج الشرح سليمًا هذه المرة، حاول لاحقًا. القواعد أدناه سليمة.",
+        (ExplainTryAgain, En) => {
+            "The explanation didn't come out right this time; try again in a bit. The grammar below is solid."
+        }
+        (InOtherWords, ArEg) => "يعني",
+        (InOtherWords, Ar) => "المعنى",
+        (InOtherWords, En) => "In other words",
+        (RegisterLabel, ArEg) => "الأسلوب:",
+        (RegisterLabel, Ar) => "الأسلوب:",
+        (RegisterLabel, En) => "Register:",
+        (RegisterChat, ArEg) => "كلام شات",
+        (RegisterChat, Ar) => "أسلوب المحادثة",
+        (RegisterChat, En) => "chat",
+        (RegisterFormal, ArEg) => "رسمي",
+        (RegisterFormal, Ar) => "رسمي",
+        (RegisterFormal, En) => "formal",
+        (RegisterNeutral, ArEg) => "عادي",
+        (RegisterNeutral, Ar) => "محايد",
+        (RegisterNeutral, En) => "neutral",
+        (RegisterSlang, ArEg) => "عامية شبابي",
+        (RegisterSlang, Ar) => "عامية",
+        (RegisterSlang, En) => "slang",
+        (RegisterKrama, ArEg) => "كراما (مؤدب)",
+        (RegisterKrama, Ar) => "كراما (مهذّب)",
+        (RegisterKrama, En) => "krama (polite)",
+        (RegisterNgoko, ArEg) => "نغوكو (بين الأصحاب)",
+        (RegisterNgoko, Ar) => "نغوكو (بين المقرّبين)",
+        (RegisterNgoko, En) => "ngoko (casual)",
+        (RegisterMixed, ArEg) => "خليط",
+        (RegisterMixed, Ar) => "مختلط",
+        (RegisterMixed, En) => "mixed",
+        (CultureNote, ArEg) => "لمسة ثقافية",
+        (CultureNote, Ar) => "ملاحظة ثقافية",
+        (CultureNote, En) => "Culture note",
+        (GrammarInSentence, ArEg) => "القواعد اللي في الجملة",
+        (GrammarInSentence, Ar) => "القواعد في هذه الجملة",
+        (GrammarInSentence, En) => "Grammar in this sentence",
+        (NoGrammarMatched, ArEg) => "مفيش قاعدة من المكتبة باينة في الجملة دي، معاني الكلمات كفاية هنا.",
+        (NoGrammarMatched, Ar) => "لا تظهر قاعدة من المكتبة في هذه الجملة، ومعاني الكلمات تكفي هنا.",
+        (NoGrammarMatched, En) => {
+            "No library grammar point shows up in this sentence; the word meanings cover it."
+        }
+        (FoundBy, ArEg) => "لقيتها من:",
+        (FoundBy, Ar) => "وُجدت عبر:",
+        (FoundBy, En) => "Spotted by:",
+        (CommonMistake, ArEg) => "غلطة شائعة",
+        (CommonMistake, Ar) => "خطأ شائع",
+        (CommonMistake, En) => "Common mistake",
+        (ExplainWord, ArEg) => "اشرح الجملة دي",
+        (ExplainWord, Ar) => "اشرح هذه الجملة",
+        (ExplainWord, En) => "Explain the sentence",
+        (UrlFetching, ArEg) => "بجيب الصفحة…",
+        (UrlFetching, Ar) => "جارٍ جلب الصفحة…",
+        (UrlFetching, En) => "Fetching the page…",
+        (UrlImportFailed, ArEg) => "مقدرتش أقرا الصفحة دي. انسخ النص نفسه والصقه هنا وهيشتغل على طول.",
+        (UrlImportFailed, Ar) => "تعذّرت قراءة هذه الصفحة. انسخ النص نفسه والصقه هنا.",
+        (UrlImportFailed, En) => "Couldn't read that page. Copy the text itself and paste it here instead.",
         (OcrWorking, ArEg) => "بقرا الصورة…",
         (OcrWorking, Ar) => "جارٍ قراءة الصورة…",
         (OcrWorking, En) => "Reading the image…",
