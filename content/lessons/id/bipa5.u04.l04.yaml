@@ -1,0 +1,180 @@
+schema: kabar.lesson/v1
+id: bipa5.u04.l04
+language: id
+title: Wawancara alumni
+can_do:
+  ar_eg: تعمل مقابلة مع خريج وبعدين تحكي اللي قاله لغيرك.
+  ar: أن تحاور خرّيجًا ثم تنقل ما قاله إلى غيرك.
+  en: Interview a graduate, then report what they said.
+slides:
+  - title: Dari wawancara ke laporan
+    grammar: id.reported-speech
+    body:
+      ar_eg: |
+        بعد المقابلة بتحوّل الكلام المباشر لكلام منقول:
+        - «Saya lulus tahun 2015.» → Beliau mengatakan bahwa beliau lulus tahun 2015.
+        - «Apakah kamu suka Kairo?» → Beliau bertanya apakah saya suka Kairo.
+        - «Belajarlah bahasa Arab!» → Beliau menyarankan agar kami belajar bahasa Arab.
+        ومع الكبار استخدم beliau بدل dia، دي أدب.
+      ar: |
+        بعد المقابلة تحوّل الكلام المباشر إلى كلام منقول:
+        - «Saya lulus tahun 2015.» → Beliau mengatakan bahwa beliau lulus tahun 2015.
+        - «Apakah kamu suka Kairo?» → Beliau bertanya apakah saya suka Kairo.
+        - «Belajarlah bahasa Arab!» → Beliau menyarankan agar kami belajar bahasa Arab.
+        واستعمل beliau بدل dia مع الكبار احترامًا.
+      en: |
+        After the interview, turn direct speech into reported speech:
+        - «Saya lulus tahun 2015.» → Beliau mengatakan bahwa beliau lulus tahun 2015.
+        - «Apakah kamu suka Kairo?» → Beliau bertanya apakah saya suka Kairo.
+        - «Belajarlah bahasa Arab!» → Beliau menyarankan agar kami belajar bahasa Arab.
+        Use beliau instead of dia for respected elders.
+    examples:
+      - text: Beliau menjelaskan bahwa hidup di Kairo tidak mudah, tetapi menyenangkan.
+        ar_eg: هو وضّح إن العيشة في القاهرة مش سهلة، بس ممتعة.
+        ar: أوضح أنّ العيش في القاهرة ليس سهلًا لكنه ممتع.
+        en: He explained that life in Cairo isn't easy, but it's enjoyable.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: alumni
+        ar_eg: خريجين
+        ar: خرّيجون
+        en: alumni
+      - text: beliau
+        ar_eg: هو / هي (باحترام)
+        ar: هو / هي (توقيرًا)
+        en: he / she (respectful)
+      - text: menjelaskan
+        ar_eg: يوضّح / يشرح
+        ar: يوضّح، يشرح
+        en: to explain
+      - text: menyarankan
+        ar_eg: ينصح / يقترح
+        ar: ينصح، يقترح
+        en: to advise, to suggest
+    words: [alumni, beliau, menjelaskan, menyarankan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الخريج قال «Saya kuliah di Kairo lima tahun.» تنقلها إزاي؟
+      ar: قال الخرّيج «Saya kuliah di Kairo lima tahun.» كيف تنقلها؟
+      en: The graduate said "Saya kuliah di Kairo lima tahun." How do you report it?
+    options:
+      - Beliau bertanya apakah kuliah di Kairo lima tahun.
+      - Beliau menyarankan agar kuliah di Kairo lima tahun.
+      - Beliau mengatakan bahwa beliau kuliah di Kairo lima tahun.
+    answer: 2
+    words: [beliau]
+  - id: e03
+    type: fill_blank
+    sentence: Beliau ___ agar kami belajar bahasa Arab sejak sekarang.
+    meaning:
+      ar_eg: هو نصحنا نتعلم عربي من دلوقتي.
+      ar: نصحنا أن نتعلّم العربية منذ الآن.
+      en: He advised us to start learning Arabic now.
+    options: [menyarankan, menjelaskan, bertanya]
+    answers: [menyarankan]
+    words: [menyarankan, beliau]
+  - id: e04
+    type: listen
+    text: Para alumni menjelaskan bahwa ujian di Al-Azhar sangat sulit.
+    question:
+      ar_eg: الخريجين قالوا إيه؟
+      ar: ماذا قال الخرّيجون؟
+      en: What did the alumni say?
+    options:
+      - إن امتحانات الأزهر صعبة جدًا.
+      - إن امتحانات الأزهر سهلة.
+      - إن الأزهر مافيهوش امتحانات.
+    answer: 0
+    words: [alumni, menjelaskan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: هو سألني إذا كنت عايز أدرس في القاهرة.
+      ar: سألني إن كنت أريد الدراسة في القاهرة.
+      en: He asked me whether I wanted to study in Cairo.
+    answer: Beliau bertanya apakah saya ingin kuliah di Kairo.
+    distractors: [bahwa, agar]
+    words: [beliau]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الخريجين نصحوا الطلاب يتعلموا اللهجة المصرية.
+      ar: نصح الخرّيجون الطلّاب بتعلّم اللهجة المصرية.
+      en: The alumni advised students to learn the Egyptian dialect.
+    answers:
+      - Para alumni menyarankan agar mahasiswa belajar dialek Mesir.
+      - Alumni menyarankan agar mahasiswa belajar dialek Mesir.
+      - Para alumni menyarankan mahasiswa untuk belajar dialek Mesir.
+      - Para alumni menyarankan agar para mahasiswa belajar dialek Mesir.
+    words: [alumni, menyarankan]
+  - id: e07
+    type: dictation
+    text: Beliau menjelaskan bahwa Kairo kota yang ramah.
+    meaning:
+      ar_eg: هو وضّح إن القاهرة مدينة ودودة.
+      ar: أوضح أنّ القاهرة مدينة ودودة.
+      en: He explained that Cairo is a friendly city.
+    words: [beliau, menjelaskan]
+  - id: e08
+    type: speaking
+    text: Beliau menyarankan agar saya membaca kitab setiap hari.
+    meaning:
+      ar_eg: هو نصحني أقرا في الكتب كل يوم.
+      ar: نصحني أن أقرأ في الكتب كلّ يوم.
+      en: He advised me to read the classical books every day.
+    words: [menyarankan]
+dialogue:
+  title: Wawancara dengan Ustaz Hasan
+  lines:
+    - speaker: Mohamed
+      text: Ustaz, kapan Ustaz lulus dari Al-Azhar?
+      ar_eg: يا أستاذ، اتخرجت من الأزهر إمتى؟
+      ar: يا أستاذ، متى تخرّجتَ في الأزهر؟
+      en: Ustaz, when did you graduate from Al-Azhar?
+    - speaker: Ustaz Hasan
+      text: Tahun 2015. Saya tinggal di Hayy Asyir selama enam tahun.
+      ar_eg: سنة 2015. سكنت في الحي العاشر ست سنين.
+      ar: سنة 2015، وسكنتُ الحيّ العاشر ستّ سنوات.
+      en: In 2015. I lived in the Tenth District for six years.
+    - speaker: Mohamed
+      text: Apa saran Ustaz untuk santri yang ingin ke sana?
+      ar_eg: إيه نصيحتك للطلاب اللي عايزين يروحوا هناك؟
+      ar: ما نصيحتك للطلّاب الراغبين في الذهاب إلى هناك؟
+      en: What's your advice for students who want to go there?
+    - speaker: Ustaz Hasan
+      text: Belajarlah bahasa Arab dari sekarang, dan jangan takut berbicara dengan orang Mesir.
+      ar_eg: اتعلموا عربي من دلوقتي، وماتخافوش تتكلموا مع المصريين.
+      ar: تعلّموا العربية من الآن، ولا تخشوا الحديث مع المصريين.
+      en: Learn Arabic from now on, and don't be afraid to talk with Egyptians.
+    - speaker: Rina
+      text: Jadi, beliau menyarankan agar kami berani berbicara. Saya suka itu!
+      ar_eg: يعني هو بينصحنا نتجرأ ونتكلم. عجبني ده!
+      ar: إذن ينصحنا بالجرأة في الكلام. أعجبني ذلك!
+      en: So he advises us to be brave and speak. I like that!
+new_words:
+  - word: alumni
+    pos: noun
+    ar_eg: خريجين
+    ar: خرّيجون
+    en: alumni
+  - word: beliau
+    ar_eg: هو / هي (باحترام)
+    ar: هو / هي (توقيرًا)
+    en: he / she (respectful)
+  - word: menjelaskan
+    pos: verb
+    ar_eg: يوضّح / يشرح
+    ar: يوضّح، يشرح
+    en: to explain
+  - word: menyarankan
+    pos: verb
+    ar_eg: ينصح / يقترح
+    ar: ينصح، يقترح
+    en: to advise, to suggest
+review:
+  status: draft
+  verified: false
