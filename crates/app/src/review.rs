@@ -285,7 +285,7 @@ fn localized<'a>(ui: &Ui, l: &'a Localized) -> &'a str {
 /// each snippet rendered as a real `<bdi>`: not every WebView honors the
 /// isolate characters themselves.
 #[component]
-fn Isolated(text: String) -> Element {
+pub(crate) fn Isolated(text: String) -> Element {
     let mut parts: Vec<(bool, String)> = Vec::new();
     for (i, chunk) in text.split('\u{2068}').enumerate() {
         match chunk.split_once('\u{2069}') {
@@ -299,7 +299,7 @@ fn Isolated(text: String) -> Element {
     rsx! {
         for (i, (latin, part)) in parts.into_iter().enumerate() {
             if latin {
-                bdi { key: "{i}", class: "latin", "{part}" }
+                bdi { key: "{i}", class: "latin", dir: "ltr", "{part}" }
             } else {
                 span { key: "{i}", "{part}" }
             }
@@ -576,6 +576,7 @@ fn ReviewHome() -> Element {
                     }
                 }
             }
+            crate::stats::StatsButton {}
         }
         div { class: "rev-modes",
             for (mode, title, hint) in modes {
@@ -585,7 +586,7 @@ fn ReviewHome() -> Element {
                     let burst_secs = num(&ui, BURST_MS / 1000);
                     rsx! {
                         div { key: "{mode:?}", class: if mode == ReviewMode::Burst { "card rev-mode mode-burst" } else { "card rev-mode" },
-                            h3 { class: "rev-h3", "{ui.t(title)}" }
+                            h3 { class: "rev-h3", Isolated { text: ui.t(title).to_string() } }
                             p { class: "muted", Isolated { text: ui.t(hint).replace("{n}", &burst_secs) } }
                             if mode == ReviewMode::CardWall && width == WidthClass::Compact {
                                 p { class: "muted small", "{ui.t(Msg::RevWallPhone)}" }
@@ -631,7 +632,7 @@ fn Word(card: Card, big: bool) -> Element {
     let language = card.language;
     rsx! {
         div { class: "rev-word-row",
-            bdi { class: if big { "rev-word big" } else { "rev-word" }, lang: language.tag(), "{card.word}" }
+            bdi { class: if big { "rev-word big" } else { "rev-word" }, lang: language.tag(), dir: "ltr", "{card.word}" }
             button {
                 class: "icon-btn",
                 aria_label: ui.t(Msg::RevPlay),
@@ -754,14 +755,14 @@ fn Back(card: Card) -> Element {
             }
             if let Some(ex) = &card.example {
                 div { class: "rev-example",
-                    p { class: "ex-text", lang: card.language.tag(), bdi { "{ex.text}" } }
+                    p { class: "ex-text", lang: card.language.tag(), bdi { dir: "ltr", "{ex.text}" } }
                     p { class: "muted", "{localized(&ui, &ex.meaning)}" }
                 }
             }
             if let Some(a) = &card.arabic {
                 div { class: if a.shift == MeaningShift::FalseFriend { "rev-bridge alarm" } else { "rev-bridge" },
                     div { class: "bridge-line",
-                        bdi { class: "latin", lang: card.language.tag(), "{card.word}" }
+                        bdi { class: "latin", lang: card.language.tag(), dir: "ltr", "{card.word}" }
                         span { aria_hidden: "true", "{arrow}" }
                         span { class: "ar", lang: "ar", "{a.word}" }
                         if let Some(root) = &a.root {
@@ -931,7 +932,7 @@ fn Classic() -> Element {
                         if m != AnswerMatch::Exact && !typed.read().trim().is_empty() {
                             p { class: "muted",
                                 "{ui.t(Msg::RevYouWrote)}: "
-                                bdi { lang: card.language.tag(), class: "struck", "{typed}" }
+                                bdi { lang: card.language.tag(), dir: "ltr", class: "struck", "{typed}" }
                             }
                         }
                     }
@@ -1128,15 +1129,21 @@ fn CardWall() -> Element {
         .read()
         .iter()
         .enumerate()
-        .map(|(i, s)| (s.as_ref().map_or_else(|| format!("empty-{i}"), |s| s.card_id.clone()), s.clone()))
+        .map(|(i, s)| {
+            (
+                s.as_ref().map_or_else(|| format!("empty-{i}"), |s| format!("{}@{}", s.card_id, s.dealt_ms)),
+                s.clone(),
+            )
+        })
         .collect();
 
     rsx! {
         div { class: "wall",
             p { class: "muted small wall-help", "{ui.t(Msg::RevWallHelp)}" }
             div { id: "card-wall", class: "wall-table", "data-seats": "{seats}",
-                // Seats are keyed by their card, so a new card gets a fresh
-                // element (no leftover drag transform from the last one).
+                // Seats are keyed by their card and deal time, so a new card,
+                // or a "belum" card dealt again, gets a fresh element (no
+                // leftover drag transform from the last throw).
                 for (seat_key, slot) in seat_view {
                     div { key: "{seat_key}", class: "seat",
                         if let Some(slot) = slot {
@@ -1196,7 +1203,7 @@ fn WallCard(card: Card, flipped: bool, sort: Callback<(String, Pile)>) -> Elemen
             }
             div { class: "face back",
                 if card.kind == CardKind::Bridge {
-                    bdi { class: "wall-word small latin", lang: card.language.tag(), "{card.word}" }
+                    bdi { class: "wall-word small latin", lang: card.language.tag(), dir: "ltr", "{card.word}" }
                 }
                 span { class: "wall-meaning", "{localized(&ui, &card.meaning)}" }
                 if false_friend {
@@ -1310,7 +1317,7 @@ fn Burst() -> Element {
                 }
                 if revealed() {
                     if front_ar {
-                        bdi { class: "burst-sub latin", lang: card.language.tag(), "{card.word}" }
+                        bdi { class: "burst-sub latin", lang: card.language.tag(), dir: "ltr", "{card.word}" }
                     }
                     span { class: "burst-meaning", "{localized(&ui, &card.meaning)}" }
                     if card.language == StudyLanguage::Jv && !card.verified {
@@ -1396,14 +1403,14 @@ fn Done() -> Element {
             if let Some((w, lang)) = strongest {
                 p {
                     "{ui.t(Msg::RevStrongest)}: "
-                    bdi { class: "chip", lang, "{w}" }
+                    bdi { class: "chip", lang, dir: "ltr", "{w}" }
                 }
             }
             if !revisit.is_empty() {
                 p { "{ui.t(Msg::RevRevisit)}:" }
                 div { class: "row",
                     for (w, lang) in revisit {
-                        bdi { key: "{w}", class: "chip soft", lang, "{w}" }
+                        bdi { key: "{w}", class: "chip soft", lang, dir: "ltr", "{w}" }
                     }
                 }
             }

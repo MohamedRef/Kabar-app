@@ -7,13 +7,13 @@
 
 mod test_player;
 pub use test_player::PlacementInvite;
-mod text;
+pub(crate) mod text;
 
 use dioxus::prelude::*;
 use kabar_core::lesson::{
     Answer, Grade, Player, Step, display_answer, parse_lesson, pick, references, validate,
 };
-use kabar_core::locale::{UiLanguage, eastern_arabic_digits, format_number};
+use kabar_core::locale::{UiLanguage, eastern_arabic_digits, format_number, localize_digits};
 use kabar_protocol::coach::{ActivityKind, Skill};
 use kabar_protocol::lesson::{
     Dialogue, Direction, Exercise, ExerciseKind, LessonContent, LessonPosition, LessonStep, Localized,
@@ -45,9 +45,9 @@ pub fn test_content(id: &str) -> Option<&'static str> {
 }
 
 /// Idle gaps longer than this don't count as lesson time.
-const MAX_STEP_MS: u64 = 120_000;
+pub(crate) const MAX_STEP_MS: u64 = 120_000;
 
-fn now_ms() -> u64 {
+pub(crate) fn now_ms() -> u64 {
     std::time::SystemTime::now()
         .duration_since(std::time::UNIX_EPOCH)
         .map(|d| d.as_millis() as u64)
@@ -105,7 +105,7 @@ fn Notice(title: &'static str, body: String, id: String) -> Element {
                         h2 { "{title}" }
                         p { class: "pre", "{body}" }
                         p { class: "muted mono", bdi { "{id}" } }
-                        button { class: "primary", onclick: move |_| ui.close_lesson(), "{lt(lang, L::BackToJourney)}" }
+                        button { class: "primary", onclick: move |_| ui.close_lesson(), "{lt(lang, back_label(ui))}" }
                     }
                 }
             }
@@ -147,12 +147,39 @@ pub fn draft_answer(ex: &Exercise, d: &Draft, tiles: &[String]) -> Option<Answer
     }
 }
 
+/// The label of the button that closes the player: back to where it was
+/// opened from.
+pub(crate) fn back_label(ui: Ui) -> L {
+    match *ui.lesson_from.read() {
+        crate::Screen::Journey => L::BackToJourney,
+        crate::Screen::Today => L::BackToToday,
+        _ => L::Back,
+    }
+}
+
+/// How many options the number keys can pick from (0: none).
+pub(crate) fn option_count(ex: &Exercise) -> usize {
+    match &ex.kind {
+        ExerciseKind::MultipleChoice { options, options_meaning, .. } => {
+            options.len().max(options_meaning.len())
+        }
+        ExerciseKind::Listen { options, .. } | ExerciseKind::FillBlank { options, .. } => options.len(),
+        _ => 0,
+    }
+}
+
+/// Exercises that can't be done without hearing the target language: with
+/// no voice on the device they're skipped like "can't listen now".
+pub(crate) fn needs_audio(ex: &Exercise) -> bool {
+    matches!(ex.kind, ExerciseKind::Listen { .. } | ExerciseKind::Dictation { .. })
+}
+
 /// BCP 47 tag for target-language text (the IME and the voice follow it).
 pub(crate) fn target_tag(language: &str) -> &'static str {
     if language == "jv" { "jv" } else { "id" }
 }
 
-fn instruction(ex: &Exercise, language: &str) -> L {
+pub(crate) fn instruction(ex: &Exercise, language: &str) -> L {
     use ExerciseKind as K;
     match &ex.kind {
         K::MultipleChoice { options_meaning, .. } if !options_meaning.is_empty() => L::PickMeaning,
@@ -172,7 +199,7 @@ fn instruction(ex: &Exercise, language: &str) -> L {
 }
 
 /// The text an exercise plays on its own when it opens.
-fn autoplay_text(ex: &Exercise) -> Option<(String, Option<String>)> {
+pub(crate) fn autoplay_text(ex: &Exercise) -> Option<(String, Option<String>)> {
     match &ex.kind {
         ExerciseKind::Listen { text, audio, .. } | ExerciseKind::Dictation { text, audio, .. } => {
             Some((text.clone(), audio.clone()))
@@ -378,35 +405,66 @@ fn is_latin_letter(c: char) -> bool {
 }
 
 /// Splits mixed text into (is_latin, run) so Latin snippets inside Arabic
-/// explanations get their own `<bdi>` (SPEC §9).
+/// explanations get their own `<bdi>` (SPEC §9). A run keeps together what
+/// reads as one left-to-right phrase: several Latin sentences in a row
+/// ("Ni Luh membawa tas. Tasnya dari kain."), affix hyphens ("-nya", "ber-"),
+/// chains like "ora ↔ tidak · wis ↔ sudah", and parentheses it opened.
 pub fn latin_runs(s: &str) -> Vec<(bool, String)> {
     let mut out: Vec<(bool, String)> = Vec::new();
     let chars: Vec<char> = s.chars().collect();
+    let latin = |i: usize| chars.get(i).is_some_and(|&c| is_latin_letter(c));
+    // The next non-space character after `i` is a capital Latin letter.
+    let capital_after = |i: usize| {
+        chars[i..]
+            .iter()
+            .find(|c| !c.is_whitespace())
+            .is_some_and(|&c| is_latin_letter(c) && c.is_uppercase())
+    };
     let mut i = 0;
     while i < chars.len() {
-        if is_latin_letter(chars[i]) {
+        let affix = chars[i] == '-' && latin(i + 1) && (i == 0 || !chars[i - 1].is_alphanumeric());
+        if latin(i) || affix {
             let start = i;
             let mut end = i;
+            if affix {
+                i += 1;
+            }
             while i < chars.len() {
                 let c = chars[i];
-                // Letters and digits extend the run; ? and ! join it only
-                // straight after a letter ("Apa kabar?").
+                // Letters and digits extend the run; ? ! and a suffix hyphen
+                // join it only straight after a letter ("Apa kabar?", "ber-").
                 // A trailing … belongs to the pattern it ends ("Menurut X, …").
-                if is_latin_letter(c) || c.is_ascii_digit() || c == '…' || ("?!".contains(c) && end == i) {
+                if is_latin_letter(c) || c.is_ascii_digit() || c == '…' || ("?!-".contains(c) && end == i) {
                     end = i + 1;
                 } else if c == '.' && chars.get(i + 1).is_none_or(|n| n.is_whitespace()) {
-                    // A full stop ends the Arabic sentence, not the Latin run.
-                    break;
-                } else if !" -'’.,…/".contains(c) {
+                    // A full stop ends the Arabic sentence, unless another
+                    // Latin sentence follows it.
+                    if !capital_after(i + 1) {
+                        // A run made of sentences keeps its last full stop.
+                        if run_has_sentence_break(&chars[start..end]) {
+                            end = i + 1;
+                        }
+                        break;
+                    }
+                } else if !" -'’.,…/↔→·=+()".contains(c) {
                     break;
                 }
                 i += 1;
+            }
+            // Close a parenthesis the run opened.
+            let open = chars[start..end].iter().filter(|&&c| c == '(').count();
+            let close = chars[start..end].iter().filter(|&&c| c == ')').count();
+            if open > close && chars.get(end) == Some(&')') {
+                end += 1;
             }
             out.push((true, chars[start..end].iter().collect()));
             i = end;
         } else {
             let start = i;
-            while i < chars.len() && !is_latin_letter(chars[i]) {
+            while i < chars.len()
+                && !latin(i)
+                && !(chars[i] == '-' && latin(i + 1) && (i == 0 || !chars[i - 1].is_alphanumeric()))
+            {
                 i += 1;
             }
             let run: String = chars[start..i].iter().collect();
@@ -419,17 +477,74 @@ pub fn latin_runs(s: &str) -> Vec<(bool, String)> {
     out
 }
 
-/// Explanation text with Latin runs isolated.
+/// A run that already holds a sentence break (". " before a capital) is
+/// itself made of sentences, so its final full stop belongs to it too.
+fn run_has_sentence_break(run: &[char]) -> bool {
+    run.windows(3).any(|w| w[0] == '.' && w[1] == ' ' && w[2].is_uppercase())
+}
+
+/// Explanation text with Latin runs isolated (explicitly left-to-right: some
+/// WebViews don't resolve `dir=auto` on an inline `<bdi>`, which turned
+/// «Apa kabar?» into «?Apa kabar»). Digits outside the Latin runs follow the
+/// Eastern-digits setting, whichever digits the content was written with.
+/// `**words**` in the content are shown in bold.
 #[component]
 pub(crate) fn Rich(text: String, target: &'static str) -> Element {
     rsx! {
-        for (i, (latin, run)) in latin_runs(&text).into_iter().enumerate() {
-            if latin {
-                bdi { key: "{i}", lang: target, class: "latin", "{run}" }
+        for (j, (bold, part)) in bold_parts(&text).into_iter().enumerate() {
+            if bold {
+                strong { key: "b{j}", RichRuns { text: part, target } }
             } else {
-                span { key: "{i}", "{run}" }
+                RichRuns { key: "p{j}", text: part, target }
             }
         }
+    }
+}
+
+/// Splits `**bold**` markup out of content text: (is bold, text) parts in
+/// order. An unpaired `**` stays as written.
+pub(crate) fn bold_parts(text: &str) -> Vec<(bool, String)> {
+    let pieces: Vec<&str> = text.split("**").collect();
+    // An even piece count means one `**` has no partner: the last one.
+    let paired = if pieces.len() % 2 == 1 { pieces.len() } else { pieces.len() - 1 };
+    let mut parts: Vec<(bool, String)> = pieces[..paired]
+        .iter()
+        .enumerate()
+        .filter(|(_, p)| !p.is_empty())
+        .map(|(i, p)| (i % 2 == 1, (*p).to_string()))
+        .collect();
+    if paired < pieces.len() {
+        parts.push((false, format!("**{}", pieces[paired])));
+    }
+    parts
+}
+
+#[component]
+fn RichRuns(text: String, target: &'static str) -> Element {
+    let ui = use_context::<Ui>();
+    let (lang, eastern) = {
+        let s = ui.settings.read();
+        (s.ui_language, s.eastern_digits)
+    };
+    rsx! {
+        for (i, (latin, run)) in latin_runs(&text).into_iter().enumerate() {
+            if latin {
+                bdi { key: "{i}", lang: target, dir: "ltr", class: "latin", "{run}" }
+            } else {
+                span { key: "{i}", "{localize_digits(&run, lang, eastern)}" }
+            }
+        }
+    }
+}
+
+/// A slide title: target-language text isolated left to right, or, when it
+/// mixes in Arabic ("-nya = الـ / بتاعه"), laid out like [`Rich`] text.
+#[component]
+fn Title(text: String, target: &'static str) -> Element {
+    if text.chars().any(|c| ('\u{0600}'..='\u{06FF}').contains(&c)) {
+        rsx! { Rich { text, target } }
+    } else {
+        rsx! { bdi { lang: target, dir: "ltr", "{text}" } }
     }
 }
 
@@ -477,6 +592,8 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
     let revealed = use_signal(|| 1usize);
     let audio_missing = use_signal(|| false);
     let mut finished = use_signal(|| false);
+    // Listening items skipped because the device has no voice for them.
+    let mut voice_skips = use_signal(|| 0u32);
 
     // Save where we are on open (Lanjut) and play the first exercise's audio.
     use_hook(move || {
@@ -517,6 +634,10 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                     let mut store = db.0.borrow_mut();
                     if let Err(e) = store.record_lesson_event(&p.lesson().id, "completed", &p.completed()) {
                         eprintln!("kabar: saving the lesson result failed: {e}");
+                    }
+                    // The new words join the review deck.
+                    if !episode && let Err(e) = store.add_lesson_cards(p.lesson()) {
+                        eprintln!("kabar: adding the lesson's words to review failed: {e}");
                     }
                     if !episode && let Err(e) = store.clear_position() {
                         eprintln!("kabar: clearing the lesson position failed: {e}");
@@ -594,10 +715,29 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
         }
     };
 
+    // No sound for the target language (the `missing` signal): listening
+    // items are skipped the "can't listen now" way, with a note, instead of
+    // asking for audio that can't play.
+    use_effect(move || {
+        if !*audio_missing.read() {
+            return;
+        }
+        let skip = {
+            let p = player.read();
+            matches!(p.step(), Step::Exercise { .. })
+                && p.pending().is_none()
+                && p.exercise().is_some_and(needs_audio)
+        };
+        if skip {
+            voice_skips += 1;
+            commit(&|p| Some(p.skip()));
+        }
+    });
+
     // Keys are caught on the document, not on the player element: a tapped
     // tile or option can be disabled under the focus, and the next Enter must
     // still check. Enter = check/continue (Shift+Enter is a new line in text
-    // answers), 1–4 = pick an option. Buttons in the feedback sheet and the
+    // answers), 1–9 = pick an option or a fill-in chip. Buttons in the feedback sheet and the
     // close button keep their native Enter.
     use_future(move || async move {
         let mut eval = document::eval(
@@ -611,7 +751,7 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                 if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault();
                     dioxus.send("enter");
-                } else if (!typing && /^[1-4]$/.test(e.key)) {
+                } else if (!typing && !e.ctrlKey && !e.metaKey && !e.altKey && /^[1-9]$/.test(e.key)) {
                     dioxus.send(e.key);
                 }
             };
@@ -627,15 +767,7 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                     if player.peek().pending().is_some() {
                         continue;
                     }
-                    let count = player.peek().exercise().map_or(0, |ex| match &ex.kind {
-                        ExerciseKind::MultipleChoice { options, options_meaning, .. } => {
-                            options.len().max(options_meaning.len())
-                        }
-                        ExerciseKind::Listen { options, .. } | ExerciseKind::FillBlank { options, .. } => {
-                            options.len()
-                        }
-                        _ => 0,
-                    });
+                    let count = player.peek().exercise().map_or(0, option_count);
                     if n <= count {
                         let mut d = draft;
                         d.write().choice = Some(n - 1);
@@ -672,7 +804,7 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
             let n = l.dialogue.as_ref().map_or(0, |d| d.lines.len());
             if *revealed.read() < n { (lt(lang, L::NextLine), true) } else { (lt(lang, L::Continue), true) }
         }
-        (Step::Summary, _) => (lt(lang, if episode { L::BackToEpisodes } else { L::BackToJourney }), true),
+        (Step::Summary, _) => (lt(lang, if episode { L::BackToEpisodes } else { back_label(ui) }), true),
         (Step::Slide(_), _) => (lt(lang, L::Continue), true),
     };
     let feedback_class = match &pending {
@@ -718,6 +850,9 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
             }
             div { class: "lp-body",
                 div { class: "lp-col", key: "{step:?}",
+                    if *voice_skips.read() > 0 {
+                        p { class: "muted lp-small lp-voice-note", role: "status", "{lt(lang, L::NoVoiceSkipped)}" }
+                    }
                     match step {
                         Step::Slide(i) => rsx! {
                             SlideView { lesson: lesson.clone(), index: i, missing: audio_missing }
@@ -879,7 +1014,7 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
         article { class: "lp-slide lp-enter",
             if index == 0 {
                 p { class: "lp-lesson-title",
-                    bdi { lang: target, "{lesson.title}" }
+                    bdi { lang: target, dir: "ltr", "{lesson.title}" }
                     if !lesson.review.verified {
                         span { class: "pill lp-draft", "{lt(lang, L::NotReviewed)}" }
                     }
@@ -887,7 +1022,7 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
                 p { class: "muted", Rich { text: pick(&lesson.can_do, lang).to_string(), target } }
             }
             if let Some(title) = &slide.title {
-                h2 { class: "lp-slide-title", bdi { lang: target, "{title}" } }
+                h2 { class: "lp-slide-title", Title { text: title.clone(), target } }
             }
             p { class: "lp-slide-body pre", Rich { text: pick(&slide.body, lang).trim().to_string(), target } }
             if !slide.examples.is_empty() {
@@ -903,7 +1038,7 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
                                 },
                                 span { class: "lp-example-icon", {speaker_icon()} }
                                 span { class: "lp-example-text",
-                                    bdi { lang: target, class: "latin lp-target", "{ex.text}" }
+                                    bdi { lang: target, dir: "ltr", class: "latin lp-target", "{ex.text}" }
                                     span { class: "muted", Rich { text: pick(&ex.meaning, lang).to_string(), target } }
                                 }
                             }
@@ -925,7 +1060,7 @@ fn DialogueView(dialogue: Dialogue, language: String, shown: usize, missing: Sig
         article { class: "lp-dialogue",
             p { class: "lp-instruction", "{lt(lang, L::Dialogue)}" }
             if let Some(t) = &dialogue.title {
-                h2 { class: "lp-slide-title", bdi { lang: target, "{t}" } }
+                h2 { class: "lp-slide-title", bdi { lang: target, dir: "ltr", "{t}" } }
             }
             p { class: "muted lp-small", "{lt(lang, L::TapToHear)}" }
             ol { class: "lp-lines",
@@ -940,7 +1075,7 @@ fn DialogueView(dialogue: Dialogue, language: String, shown: usize, missing: Sig
                                 move |_| speak_line(&d, i, &l, missing)
                             },
                             span { class: "lp-speaker", bdi { "{line.speaker}" } }
-                            bdi { lang: target, class: "latin lp-target", "{line.text}" }
+                            bdi { lang: target, dir: "ltr", class: "latin lp-target", "{line.text}" }
                             span { class: "muted", Rich { text: pick(&line.meaning, lang).to_string(), target } }
                         }
                     }
@@ -975,7 +1110,7 @@ fn SummaryView(
     rsx! {
         article { class: "lp-summary",
             h2 { class: "lp-done reveal", "{lt(lang, L::Done)}" }
-            p { class: "lp-lesson-title reveal", bdi { lang: target, "{lesson.title}" } }
+            p { class: "lp-lesson-title reveal", bdi { lang: target, dir: "ltr", "{lesson.title}" } }
             if perfect {
                 p { class: "ok reveal", "{lt(lang, L::Perfect)}" }
             }
@@ -990,7 +1125,7 @@ fn SummaryView(
                     ul { class: "lp-words",
                         for w in lesson.new_words.iter() {
                             li { key: "{w.word}", class: if w.arabic.is_some() { "bridge-row" } else { "" },
-                                bdi { lang: target, class: if w.arabic.is_some() { "latin bridge-word" } else { "latin" }, "{w.word}" }
+                                bdi { lang: target, dir: "ltr", class: if w.arabic.is_some() { "latin bridge-word" } else { "latin" }, "{w.word}" }
                                 span { class: "muted", Rich { text: pick(&w.meaning, lang).to_string(), target } }
                                 if let Some(ar) = &w.arabic {
                                     span { class: "lp-bridge", title: lt(lang, L::FromArabic),
@@ -1008,7 +1143,7 @@ fn SummaryView(
                     h3 { "{lt(lang, L::Tomorrow)}" }
                     p { class: "row",
                         for m in mistakes.iter() {
-                            bdi { key: "{m}", lang: target, class: "pill latin", "{m}" }
+                            bdi { key: "{m}", lang: target, dir: "ltr", class: "pill latin", "{m}" }
                         }
                     }
                 }
@@ -1016,7 +1151,7 @@ fn SummaryView(
             if let Some(s) = &lesson.souvenir {
                 section { class: "card lp-souvenir reveal d3",
                     p { class: "muted lp-small", "{lt(lang, L::Souvenir)}" }
-                    h3 { bdi { lang: target, "{s.title}" } }
+                    h3 { bdi { lang: target, dir: "ltr", "{s.title}" } }
                     p { Rich { text: pick(&s.note, lang).to_string(), target } }
                 }
             }
@@ -1102,11 +1237,11 @@ fn Feedback(
                 },
                 Grade::Almost { expected } => rsx! {
                     p { class: "lp-verdict", "{lt(lang, L::Almost)}" }
-                    p { bdi { lang: target, class: "lp-answer latin", "{expected}" } }
+                    p { bdi { lang: target, dir: "ltr", class: "lp-answer latin", "{expected}" } }
                 },
                 Grade::Wrong => rsx! {
                     p { class: "lp-verdict", "{lt(lang, L::NotYet)}" }
-                    p { bdi { lang: answer_tag, class: "lp-answer", "{answer}" } }
+                    p { bdi { lang: answer_tag, dir: if answer_tag == target { "ltr" } else { "auto" }, class: "lp-answer", "{answer}" } }
                     if !retry {
                         p { class: "muted lp-small", "{lt(lang, L::AgainAtEnd)}" }
                     }
@@ -1115,7 +1250,7 @@ fn Feedback(
                     p { class: "lp-verdict", "{lt(lang, L::NeedsReview)}" }
                     ul { class: "lp-refs",
                         for r in references(&ex, lang).into_iter().take(3) {
-                            li { key: "{r}", bdi { lang: answer_tag, class: "lp-answer", "{r}" } }
+                            li { key: "{r}", bdi { lang: answer_tag, dir: if answer_tag == target { "ltr" } else { "auto" }, class: "lp-answer", "{r}" } }
                         }
                     }
                     p { "{lt(lang, L::SameMeaning)}" }
@@ -1128,7 +1263,7 @@ fn Feedback(
             if let Some(t) = transcript {
                 p { class: "lp-small",
                     span { class: "muted", "{lt(lang, L::Transcript)} " }
-                    bdi { lang: target, class: "latin lp-target", "{t}" }
+                    bdi { lang: target, dir: "ltr", class: "latin lp-target", "{t}" }
                 }
             }
             if let Some(m) = meaning {
@@ -1177,7 +1312,7 @@ pub fn ExerciseView(
                     if !question.trim().is_empty() {
                         div { class: "row",
                             PlayButton { text: question.clone(), language: language.clone(), audio: None, missing, big: false }
-                            p { class: "lp-question", bdi { lang: target, class: "latin", "{question}" } }
+                            p { class: "lp-question pre", bdi { lang: target, dir: "ltr", class: "latin", "{question}" } }
                         }
                     }
                     if let Some(q) = question_meaning {
@@ -1203,7 +1338,7 @@ pub fn ExerciseView(
                     if let Some(t) = prompt {
                         div { class: "row",
                             PlayButton { text: t.clone(), language: language.clone(), audio: None, missing, big: false }
-                            p { class: "lp-question", bdi { lang: target, class: "latin", "{t}" } }
+                            p { class: "lp-question", bdi { lang: target, dir: "ltr", class: "latin", "{t}" } }
                         }
                     }
                 }
@@ -1269,7 +1404,7 @@ pub fn ExerciseView(
         },
         K::Speaking { text, meaning } => rsx! {
             div { class: "lp-prompt center",
-                p { class: "lp-question big", bdi { lang: target, class: "latin", "{text}" } }
+                p { class: "lp-question big", bdi { lang: target, dir: "ltr", class: "latin", "{text}" } }
                 p { class: "muted", Rich { text: pick(&meaning, lang).to_string(), target } }
                 PlayButton { text: text.clone(), language: language.clone(), audio: None, missing, big: true }
                 p { class: "muted lp-small", "{lt(lang, L::SpeakingLater)}" }
@@ -1278,7 +1413,7 @@ pub fn ExerciseView(
     }
 }
 
-/// Option buttons (keys 1–4 pick them too). After checking, the right one is
+/// Option buttons and fill-in chips (keys 1–9 pick them too). After checking, the right one is
 /// marked and a wrong pick is shown gently.
 #[component]
 fn Choices(
@@ -1303,7 +1438,7 @@ fn Choices(
                     aria_pressed: if chosen == Some(i) { "true" } else { "false" },
                     disabled: locked,
                     onclick: move |_| draft.write().choice = Some(i),
-                    if !chips {
+                    if i < 9 {
                         span { class: "lp-key", aria_hidden: "true", "{i + 1}" }
                     }
                     bdi { lang: tag, dir: "auto", "{label}" }
@@ -1318,7 +1453,7 @@ fn Choices(
 /// listener); Shift+Enter is a
 /// new line.
 #[component]
-fn TextAnswer(tag: &'static str, draft: Signal<Draft>, locked: bool) -> Element {
+pub(crate) fn TextAnswer(tag: &'static str, draft: Signal<Draft>, locked: bool) -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.settings.read().ui_language;
     let dir = if tag.starts_with("ar") { "rtl" } else { "ltr" };
@@ -1411,7 +1546,7 @@ fn MatchPairs(
                                 try_match(draft, &words, on_matched);
                             }
                         },
-                        bdi { lang: target, class: "latin", "{word}" }
+                        bdi { lang: target, dir: "ltr", class: "latin", "{word}" }
                     }
                 }
             }
@@ -1429,7 +1564,7 @@ fn MatchPairs(
                                 try_match(draft, &words, on_matched);
                             }
                         },
-                        "{pairs[i].1}"
+                        Rich { text: pairs[i].1.clone(), target }
                     }
                 }
             }
@@ -1568,6 +1703,18 @@ mod tests {
     }
 
     #[test]
+    fn bold_markup_is_split_out() {
+        let parts = bold_parts("فيه كلمات **مشتركة** بين اللغتين");
+        assert_eq!(
+            parts,
+            vec![(false, "فيه كلمات ".into()), (true, "مشتركة".into()), (false, " بين اللغتين".into())]
+        );
+        assert_eq!(bold_parts("**Aku**"), vec![(true, "Aku".into())]);
+        assert_eq!(bold_parts("no markup"), vec![(false, "no markup".into())]);
+        assert_eq!(bold_parts("a ** b"), vec![(false, "a ".into()), (false, "** b".into())]);
+    }
+
+    #[test]
     fn latin_runs_isolate_target_text() {
         let runs = latin_runs("«Apa kabar?» يعني «إزيك؟»");
         assert_eq!(
@@ -1587,6 +1734,32 @@ mod tests {
         let runs = latin_runs("- Menurut X, … = على حسب X …");
         assert_eq!(runs[1], (true, "Menurut X, …".into()));
         assert_eq!(runs[3], (true, "X …".into()));
+    }
+
+    #[test]
+    fn latin_runs_keep_phrases_whole() {
+        let latin = |s: &str| -> Vec<String> {
+            latin_runs(s).into_iter().filter(|(l, _)| *l).map(|(_, r)| r).collect()
+        };
+        // bipa3.u02.l01: two Latin sentences inside an Arabic line.
+        assert_eq!(
+            latin("Ni Luh membawa tas. Tasnya dari kain = الشنطة (اللي اتكلمنا عنها) من القماش."),
+            ["Ni Luh membawa tas. Tasnya dari kain"]
+        );
+        assert_eq!(
+            latin("قول Ni Luh membawa tas. Tasnya dari kain. يعني"),
+            ["Ni Luh membawa tas. Tasnya dari kain."]
+        );
+        // Affix hyphens stay with the word.
+        assert_eq!(latin("بتاعه / الـ = -nya"), ["-nya"]);
+        assert_eq!(latin("البادئة ber- بتعمل فعل"), ["ber-"]);
+        assert_eq!(latin("- Menurut X"), ["Menurut X"]);
+        // Javanese ↔ Indonesian chains read left to right as one run.
+        assert_eq!(latin("قارن: ora ↔ tidak · wis ↔ sudah"), ["ora ↔ tidak · wis ↔ sudah"]);
+        // A parenthesis opened inside the run closes inside it.
+        assert_eq!(latin("pantainya (pantai + nya) يعني"), ["pantainya (pantai + nya)"]);
+        // The Arabic sentence's own full stop stays Arabic.
+        assert_eq!(latin("بنقول sore. malam بتبدأ"), ["sore", "malam"]);
     }
 
     #[test]

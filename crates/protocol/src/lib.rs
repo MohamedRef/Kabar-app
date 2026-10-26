@@ -11,6 +11,7 @@ pub mod ink;
 pub mod journal;
 pub mod learn;
 pub mod lesson;
+pub mod level_check;
 pub mod pack;
 pub mod pen;
 pub mod reader;

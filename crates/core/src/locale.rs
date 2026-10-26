@@ -72,6 +72,23 @@ pub fn eastern_arabic_digits(s: &str) -> String {
         .collect()
 }
 
+/// Replaces Eastern Arabic (and Persian) digits with ASCII digits.
+pub fn western_digits(s: &str) -> String {
+    s.chars()
+        .map(|c| match c as u32 {
+            d @ 0x0660..=0x0669 => char::from_u32(u32::from('0') + d - 0x0660).unwrap_or(c),
+            d @ 0x06F0..=0x06F9 => char::from_u32(u32::from('0') + d - 0x06F0).unwrap_or(c),
+            _ => c,
+        })
+        .collect()
+}
+
+/// Writes the digits of UI text (content included) the way the learner
+/// chose: Eastern Arabic in Arabic with the setting on, ASCII otherwise.
+pub fn localize_digits(s: &str, lang: UiLanguage, eastern_digits: bool) -> String {
+    if eastern_digits && lang.dir() == Direction::Rtl { eastern_arabic_digits(s) } else { western_digits(s) }
+}
+
 /// Formats a number for the UI, honoring the Eastern-digits setting in Arabic.
 pub fn format_number(n: u64, lang: UiLanguage, eastern_digits: bool) -> String {
     let s = n.to_string();
@@ -102,5 +119,12 @@ mod tests {
         assert_eq!(format_number(2026, UiLanguage::ArEg, false), "2026");
         assert_eq!(format_number(2026, UiLanguage::En, true), "2026");
         assert_eq!(eastern_arabic_digits("Rp26.000"), "Rp٢٦.٠٠٠");
+    }
+
+    #[test]
+    fn content_digits_follow_the_setting() {
+        assert_eq!(localize_digits("حوالي ١٠ دقايق", UiLanguage::ArEg, false), "حوالي 10 دقايق");
+        assert_eq!(localize_digits("حوالي 10 دقايق", UiLanguage::ArEg, true), "حوالي ١٠ دقايق");
+        assert_eq!(localize_digits("About ۱۰", UiLanguage::En, true), "About 10");
     }
 }
