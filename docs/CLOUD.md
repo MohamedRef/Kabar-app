@@ -44,6 +44,7 @@ All JSON. Authenticated routes take `Authorization: Bearer <access_token>`. Erro
 | `PUT /v1/devices/me/push` | `{ token }` (this device's FCM token; `""` turns push off) → `{ registered, push_configured }` |
 | `GET /v1/sync` | WebSocket; messages in `crates/protocol/src/sync.rs` |
 | `GET /v1/vault` | which engines are configured (never the keys) |
+| `GET /v1/usage` | cost dashboard: `UsageReport { services: [ServiceUsage { service, unit, used, limit, period, resets_at_ms, enabled, configured }], platform: [PlatformLimit], spend_usd_cents: 0, hard_stops: true, generated_at_ms }` |
 | `POST /v1/ai` | `EngineCall` → `EngineReply` |
 | `POST /v1/tts` | `{ segments: [{ voice, text, pitch_percent? }], rate_percent }` → `audio/mpeg` |
 | `PUT /v1/blobs/{sha256}` | raw PNG or JPEG ≤ 1 MB whose SHA-256 is the name → `204`; kept 7 days in the account's Durable Object (no R2: it needs a card). `400` for a bad name, type or hash. A `/v1/ai` call with `image_sha256` reads it, `404 blob_missing` once it's gone, and runs on `WORKERS_AI_VISION_MODEL` (provisional until the bake-off), Gemini `inline_data` or a Claude image block |
@@ -131,6 +132,8 @@ Counters are in D1 `quota_usage`; a call that would cross a limit is refused bef
 | Claude | 300 requests/month, **off** | paid unless Max credit |
 | Reminder alarm | 96 alarms/day/account (one per 15 min) | Durable Objects free: 100,000 requests/day; each `setAlarm()` is one of 100,000 free rows written/day |
 | FCM | one message per device per reminder | free on Spark, no quota charges |
+
+`GET /v1/usage` reads these counters for the current period (`crates/server/src/usage.rs`, tested natively; the Worker glue only reads D1) and feeds the app's **Settings → Cost & limits**. `spend_usd_cents` is always 0: every metered call is refused before it would cross a stop, and Claude is off by default. The report also lists Cloudflare's Free-plan limits (Workers 100,000 requests/day, Durable Objects 100,000 requests/day, D1 5M rows read and 100,000 rows written/day, Workers AI 10,000 Neurons/day) as fixed information: the Free plan has no card on file, so Cloudflare pauses at a limit instead of billing. Cloudflare's own API is not called. Unknown `service`/`unit`/`period` values parse as `other`, so an older app skips rows a newer server adds.
 
 ## 6. Privacy
 
