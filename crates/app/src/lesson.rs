@@ -191,7 +191,22 @@ fn autoplay_text(ex: &Exercise) -> Option<(String, Option<String>)> {
 /// falls back to an id-ID voice, which reads Javanese passably): the
 /// WebView's `speechSynthesis` on desktop, and the system TextToSpeech engine
 /// on Android, whose WebView has no `speechSynthesis`.
-pub fn speak(text: &str, language: &str, slow: bool, audio: Option<&str>, mut missing: Signal<bool>) {
+pub fn speak(text: &str, language: &str, slow: bool, audio: Option<&str>, missing: Signal<bool>) {
+    // Azure's neural voice (cached on the device) when there is no file.
+    if audio.is_none()
+        && let Some(url) = crate::audio::neural(text, language)
+    {
+        let (text, language) = (text.to_owned(), language.to_owned());
+        spawn(async move {
+            let url = url.await;
+            speak_with(&text, &language, slow, url.as_deref(), missing);
+        });
+        return;
+    }
+    speak_with(text, language, slow, audio, missing);
+}
+
+fn speak_with(text: &str, language: &str, slow: bool, audio: Option<&str>, mut missing: Signal<bool>) {
     let lang = if language == "jv" { "jv-ID" } else { "id-ID" };
     let mut native = move |text: &str| {
         let ok = platform::speak(text, lang, slow).is_ok();

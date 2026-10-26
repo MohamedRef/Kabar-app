@@ -149,9 +149,11 @@ impl Coach {
     }
 }
 
-/// Builds the plan for `date` (not saved). Due reviews and the current unit
-/// come from M6/M8; until then: none due, and the starting unit.
+/// Builds the plan for `date` (not saved). `due_reviews` comes from the
+/// review deck; the current unit is still the starting unit until the
+/// Journey reports progress.
 pub fn build_plan(
+    due_reviews: u32,
     profile: &CoachProfile,
     events: &[ActivityEvent],
     date: LocalDate,
@@ -161,7 +163,7 @@ pub fn build_plan(
     plan::build_plan(&PlanInputs {
         date,
         size,
-        due_reviews: 0,
+        due_reviews,
         current_unit: Some(core_onboarding::starting_unit(profile.start)),
         weak_spots: &weak,
         last_study_day: history::last_study_day(events, date),
@@ -174,7 +176,8 @@ pub fn plan_for(db: &Db, profile: &CoachProfile, events: &[ActivityEvent], date:
     if let Ok(Some(plan)) = db.0.borrow().plan_for(date) {
         return plan;
     }
-    let plan = build_plan(profile, events, date, profile.daily_size);
+    let due = crate::review::due_words(db, crate::store::now_ms()).len() as u32;
+    let plan = build_plan(due, profile, events, date, profile.daily_size);
     if let Err(e) = db.0.borrow_mut().save_plan(&plan) {
         eprintln!("kabar: saving today's plan failed: {e}");
     }
