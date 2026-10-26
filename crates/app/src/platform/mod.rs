@@ -35,3 +35,16 @@ pub fn device_model() -> Option<String> {
         None
     }
 }
+
+// TEMP stubs until the native glue branch lands.
+pub fn take_shared_input() -> Option<kabar_protocol::reader::SharedInput> {
+    None
+}
+
+pub fn ocr_image(_path: &std::path::Path) -> Result<kabar_protocol::reader::OcrResult, String> {
+    Err("not yet".into())
+}
+
+pub fn ocr_available() -> bool {
+    false
+}

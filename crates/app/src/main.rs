@@ -4,6 +4,7 @@ mod i18n;
 mod icons;
 mod penlab;
 mod platform;
+mod reader;
 mod screens;
 mod store;
 mod theme;
@@ -143,7 +144,9 @@ fn Loaded(db: Db) -> Element {
         screen: Signal::new(Screen::Today),
     });
     use_context_provider(|| db.clone());
+    let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
     use_width_tracking(ui.width);
+    use_share_inbox(ui, inbox);
 
     let settings = ui.settings.read();
     let lang = settings.ui_language;
@@ -191,6 +194,29 @@ fn use_width_tracking(mut width: Signal<WidthClass>) {
     });
 }
 
+/// Checks for text or images shared to Kabar (Android share sheet) at start
+/// and whenever the window comes back to the front, and opens the Reader.
+fn use_share_inbox(ui: Ui, inbox: reader::Inbox) {
+    use_future(move || async move {
+        let mut eval = document::eval(
+            r#"
+            const send = () => { if (!document.hidden) dioxus.send(true); };
+            document.addEventListener("visibilitychange", send);
+            window.addEventListener("focus", send);
+            send();
+            await new Promise(() => {});
+            "#,
+        );
+        while eval.recv::<bool>().await.is_ok() {
+            if let Some(input) = platform::take_shared_input() {
+                let (mut slot, mut screen) = (inbox.0, ui.screen);
+                slot.set(Some(input));
+                screen.set(Screen::Reader);
+            }
+        }
+    });
+}
+
 #[component]
 fn Shell() -> Element {
     let ui = use_context::<Ui>();
@@ -227,7 +253,7 @@ fn Shell() -> Element {
                 match current {
                     Screen::Today => rsx! { screens::Today {} },
                     Screen::Journey => rsx! { screens::ComingSoon { title: Msg::NavJourney, milestone: "M8" } },
-                    Screen::Reader => rsx! { screens::ComingSoon { title: Msg::NavReader, milestone: "M5" } },
+                    Screen::Reader => rsx! { reader::Reader {} },
                     Screen::Review => rsx! { screens::ComingSoon { title: Msg::NavReview, milestone: "M6" } },
                     Screen::Studio => rsx! { screens::ComingSoon { title: Msg::NavStudio, milestone: "M9" } },
                     Screen::Settings => rsx! { screens::SettingsScreen {} },

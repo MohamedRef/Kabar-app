@@ -20,6 +20,7 @@ thiserror.workspace = true
 
 rusqlite = { version = "0.41", features = ["bundled"] }
 uuid = { version = "1", features = ["v4"] }
+futures-channel = "0.3"
 
 [target.'cfg(not(target_os = "android"))'.dependencies]
 directories = "6"

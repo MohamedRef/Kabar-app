@@ -9,6 +9,9 @@ use kabar_protocol::pen::PenLabReport;
 use kabar_protocol::{DeviceId, Hlc};
 use rusqlite::{Connection, OptionalExtension, params};
 
+mod reader;
+pub use reader::{Highlight, SavedText, TextKind};
+
 #[derive(Debug, thiserror::Error)]
 pub enum StoreError {
     #[error("database: {0}")]
@@ -46,7 +49,70 @@ const MIGRATIONS: &[&str] = &[
         hlc_counter INTEGER NOT NULL,
         deleted     INTEGER NOT NULL DEFAULT 0
     ) STRICT;",
+    // 2: Reader: texts, word statuses, highlights, saved words, feedback.
+    "CREATE TABLE texts (
+        id          TEXT PRIMARY KEY,
+        title       TEXT NOT NULL,
+        body        TEXT NOT NULL,
+        kind        TEXT NOT NULL,
+        source      TEXT,
+        layout      TEXT,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE TABLE word_status (
+        lexeme      TEXT PRIMARY KEY,
+        status      TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE TABLE highlights (
+        id          TEXT PRIMARY KEY,
+        text_id     TEXT NOT NULL,
+        start_byte  INTEGER NOT NULL,
+        end_byte    INTEGER NOT NULL,
+        phrase      TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE INDEX highlights_text ON highlights (text_id);
+    CREATE TABLE saved_words (
+        id          TEXT PRIMARY KEY,
+        lexeme      TEXT NOT NULL,
+        surface     TEXT NOT NULL,
+        sentence    TEXT NOT NULL,
+        text_id     TEXT,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE TABLE quality_feedback (
+        id          TEXT PRIMARY KEY,
+        task        TEXT NOT NULL,
+        item        TEXT NOT NULL,
+        vote        INTEGER NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;",
 ];
+
+/// Every table that carries this device's HLC timestamps.
+const HLC_TABLES: &[&str] =
+    &["settings", "pen_lab_runs", "texts", "word_status", "highlights", "saved_words", "quality_feedback"];
 
 pub struct Store {
     conn: Connection,
@@ -88,13 +154,14 @@ impl Store {
         };
 
         // Never issue a timestamp at or below the newest one already written here.
+        let union = HLC_TABLES
+            .iter()
+            .map(|t| format!("SELECT hlc_wall, hlc_counter FROM {t} WHERE device_id = ?1"))
+            .collect::<Vec<_>>()
+            .join(" UNION ALL ");
         let last = conn
             .query_row(
-                "SELECT hlc_wall, hlc_counter FROM (
-                    SELECT hlc_wall, hlc_counter FROM settings WHERE device_id = ?1
-                    UNION ALL
-                    SELECT hlc_wall, hlc_counter FROM pen_lab_runs WHERE device_id = ?1
-                 ) ORDER BY hlc_wall DESC, hlc_counter DESC LIMIT 1",
+                &format!("SELECT hlc_wall, hlc_counter FROM ({union}) ORDER BY hlc_wall DESC, hlc_counter DESC LIMIT 1"),
                 [&device.0],
                 |r| {
                     Ok(Hlc {
