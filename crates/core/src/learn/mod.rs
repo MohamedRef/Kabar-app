@@ -362,8 +362,6 @@ pub fn draft(prepared: &Prepared, answer: &Answer<LearnEntry>) -> TaughtEntry {
             speech_level: None,
             status: ReviewStatus::Unverified,
             provenance: TaughtEntry::provenance(&format!("learn_entry@v{}", answer.prompt_version)),
-            indonesian: None,
-            speech_level: None,
         },
         bridge: a.bridge.clone(),
         levels: if prepared.lang == Lang::Jv { a.levels.clone() } else { None },

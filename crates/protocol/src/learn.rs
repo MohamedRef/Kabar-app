@@ -155,8 +155,6 @@ mod tests {
                 speech_level: None,
                 status: ReviewStatus::Unverified,
                 provenance: TaughtEntry::provenance("learn_entry@v1"),
-                indonesian: None,
-                speech_level: None,
             },
             bridge: None,
             levels: Some(SpeechLevels { level: "ngoko".into(), ..Default::default() }),
