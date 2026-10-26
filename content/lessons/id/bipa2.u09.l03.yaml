@@ -117,59 +117,30 @@ exercises:
       ar_eg: أجازتك كانت ممتعة جدًا. تختار أنهي صفة؟
       ar: كانت عطلتك ممتعة جدًا. أيّ صفة تختار؟
       en: Your holiday was really fun. Which adjective?
-    options: ["melelahkan", "sepi", "menyenangkan"]
+    options: [melelahkan, sepi, menyenangkan]
     answer: 2
     words: [menyenangkan]
   - id: e03
-    type: fill_blank
-    sentence: Udara pagi di Lovina ___ sekali.
-    meaning:
-      ar_eg: هوا الصبح في لوفينا منعش جدًا.
-      ar: هواء الصباح في لوفينا منعش جدًا.
-      en: The morning air in Lovina is very cool and fresh.
-    options: ["sejuk", "ramai", "mahal"]
-    answers: [sejuk]
-    words: [sejuk]
-  - id: e04
     type: listen
     text: Kami naik perahu jam enam pagi.
-    options: ["Kami naik perahu jam enam pagi.", "Kami naik bus jam enam pagi.", "Kami naik perahu jam enam sore."]
+    options: [Kami naik perahu jam enam pagi., Kami naik bus jam enam pagi., Kami naik perahu jam enam sore.]
     answer: 0
     words: [perahu]
-  - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة بتختم الحكاية؟
-      ar: أيّ جملة تختم السرد؟
-      en: Which sentence ends the story?
-    options: ["Pertama, kami bangun jam lima.", "Akhirnya, kami pulang ke hotel.", "Lalu, kami naik perahu."]
-    answer: 1
-    words: [akhirnya]
-  - id: e06
-    type: fill_blank
-    sentence: ___, kami melihat matahari terbit. Lalu, kami melihat lumba-lumba.
-    meaning:
-      ar_eg: الأول شفنا الشروق، وبعدين شفنا الدلافين.
-      ar: أولًا شاهدنا الشروق، ثم رأينا الدلافين.
-      en: First we watched the sunrise. Then we saw dolphins.
-    options: ["Pertama", "Akhirnya", "Setelah itu"]
-    answers: [Pertama]
-    words: [pertama, matahari terbit]
-  - id: e07
+  - id: e04
     type: fill_blank
     sentence: Perjalanannya panjang dan ___, tapi kami senang.
     meaning:
       ar_eg: الرحلة كانت طويلة ومتعبة، بس كنا مبسوطين.
       ar: كانت الرحلة طويلة ومتعبة، لكننا كنا سعداء.
       en: The journey was long and tiring, but we were happy.
-    options: ["sejuk", "menyenangkan", "melelahkan"]
+    options: [sejuk, menyenangkan, melelahkan]
     answers: [melelahkan]
     explain:
       ar_eg: tapi (بس) بتقول إن اللي قبلها عكس «مبسوطين»، يبقى melelahkan.
       ar: tapi تدل على تضاد مع «سعداء»، فالمناسب melelahkan.
       en: tapi (but) signals a contrast with "happy", so melelahkan.
     words: [melelahkan, perjalanan]
-  - id: e08
+  - id: e05
     type: build_sentence
     source:
       ar_eg: بعد كده شفنا دلافين كتير.
@@ -182,47 +153,7 @@ exercises:
       ar: lumba-lumba كلمة مكررة في أصلها حتى للمفرد، لذا تأتي بعد banyak بلا إشكال.
       en: lumba-lumba is always doubled, even for one dolphin, so it's fine after banyak.
     words: [setelah itu, lumba-lumba]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: الأجازة في لوفينا كانت ممتعة جدًا.
-      ar: كانت العطلة في لوفينا ممتعة جدًا.
-      en: The holiday in Lovina was really fun.
-    answer: Liburan di Lovina sangat menyenangkan.
-    distractors: [melelahkan, ke]
-    words: [menyenangkan]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: البحر كان هادي وجميل.
-      ar: كان البحر هادئًا وجميلًا.
-      en: The sea was calm and beautiful.
-    answers:
-      - Lautnya tenang dan indah.
-      - Lautnya tenang dan indah
-      - Laut itu tenang dan indah.
-      - Lautnya indah dan tenang.
-      - Laut tenang dan indah.
-    words: [tenang, indah]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: Capek, tapi senang!
-    answers_meaning:
-      ar_eg: ["تعبان بس مبسوط!", "تعبانين بس مبسوطين!", "تعبت بس انبسطت!"]
-      ar: ["متعب لكني سعيد!", "متعبون لكن سعداء!"]
-      en: ["Tired but happy!", "Tired, but happy!"]
-    words: [capek, senang]
-  - id: e12
-    type: dictation
-    text: Akhirnya, kami pulang ke hotel.
-    meaning:
-      ar_eg: وفي الآخر رجعنا الفندق.
-      ar: وأخيرًا عدنا إلى الفندق.
-      en: Finally, we went back to the hotel.
-    words: [akhirnya]
-  - id: e13
+  - id: e06
     type: speaking
     text: Pertama, kami melihat matahari terbit. Setelah itu, kami melihat lumba-lumba. Seru sekali!
     meaning:
@@ -269,21 +200,11 @@ new_words:
     ar_eg: ممتع، بيبسط
     ar: ممتع
     en: fun, pleasant
-  - word: seru
-    pos: adjective
-    ar_eg: جامد، مثير (عامية)
-    ar: مثير (عامية)
-    en: exciting (casual)
   - word: sejuk
     pos: adjective
     ar_eg: منعش، بارد لطيف
     ar: منعش، بارد معتدل
     en: cool and fresh
-  - word: tenang
-    pos: adjective
-    ar_eg: هادي
-    ar: هادئ
-    en: calm, quiet
   - word: melelahkan
     pos: adjective
     ar_eg: متعب

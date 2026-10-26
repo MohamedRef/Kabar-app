@@ -142,76 +142,33 @@ exercises:
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: «حلو أوي». أنهي صح؟
-      ar: «جميل جدًا». أيّها الصحيح؟
-      en: "\"Really nice.\" Which is right?"
-    options: ["apik banget", "banget apik", "apik rada"]
-    answer: 0
-    explain:
-      ar_eg: banget بعد الصفة، وrada قبلها.
-      ar: banget بعد الصفة، وrada قبلها.
-      en: banget follows the adjective; rada goes before it.
-    words: [banget, apik]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «غالي شوية». أنهي صح؟
-      ar: «غالٍ قليلًا». أيّها الصحيح؟
-      en: "\"A bit expensive.\" Which is right?"
-    options: ["larang rada", "larang tenan", "rada larang"]
-    answer: 2
-    words: [rada, larang]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
       ar_eg: «ده أرخص واحد». أنهي صح؟
       ar: «هذا هو الأرخص». أيّها الصحيح؟
-      en: "\"This is the cheapest.\" Which is right?"
-    options: ["Iki sing paling murah.", "Iki rada murah.", "Iki murah banget."]
+      en: '"This is the cheapest." Which is right?'
+    options: [Iki sing paling murah., Iki rada murah., Iki murah banget.]
     answer: 0
     explain:
       ar_eg: murah banget = رخيص أوي، بس مش بالضرورة الأرخص. الأكتر = sing paling أو dhéwé.
       ar: murah banget = رخيص جدًا لا الأرخص، والتفضيل بـ sing paling أو dhéwé.
       en: murah banget = very cheap, not necessarily the cheapest; "the most" is sing paling or dhéwé.
     words: [paling, murah]
-  - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي كلمة هي «حر أوي» بالمطّ بتاع شرق جاوة؟
-      ar: أي لفظ هو «حارّ جدًا» بالمدّ في شرق جاوة؟
-      en: Which word is "sooo hot" in the East Java stretched style?
-    options: ["puanas", "panas-panas", "panasé"]
-    answer: 0
-    words: [puanas]
-  - id: e06
+  - id: e03
     type: listen
     text: Klambiné apik banget.
-    options: ["Klambiné rada apik.", "Klambiné apik dhéwé.", "Klambiné apik banget."]
+    options: [Klambiné rada apik., Klambiné apik dhéwé., Klambiné apik banget.]
     answer: 2
     words: [apik, banget]
-  - id: e07
+  - id: e04
     type: fill_blank
     sentence: Aku kesel ___!
     meaning:
       ar_eg: أنا تعبان بجد!
       ar: أنا متعب حقًا!
       en: I'm really tired!
-    options: ["rada", "kurang", "tenan"]
+    options: [rada, kurang, tenan]
     answers: [tenan]
     words: [kesel, tenan]
-  - id: e08
-    type: fill_blank
-    sentence: Omahé Pak Budi gedhé ___.
-    meaning:
-      ar_eg: بيت باك بودي هو الأكبر.
-      ar: بيت باك بودي هو الأكبر.
-      en: Pak Budi's house is the biggest.
-    answers:
-      - dhéwé
-      - dhewe
-      - dewe
-    words: [dhéwé, gedhé]
-  - id: e09
+  - id: e05
     type: build_sentence
     source:
       ar_eg: القلعة حلوة بجد.
@@ -220,58 +177,7 @@ exercises:
     answer: Bentengé apik tenan.
     distractors: [rada, paling]
     words: [apik, tenan]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا مبسوط أوي.
-      ar: أنا سعيد جدًا.
-      en: I'm very happy.
-    answers:
-      - Aku seneng banget.
-      - Aku seneng banget
-      - Aku seneng tenan.
-      - Aku seneng tenan
-      - Aku seneng pol.
-      - Aku seneng pol
-    words: [seneng, banget]
-  - id: e11
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: سعره غالي شوية.
-      ar: ثمنه غالٍ قليلًا.
-      en: It's a bit expensive.
-    answers:
-      - Regané rada larang.
-      - Regané rada larang
-      - Regane rada larang.
-      - Regane rada larang
-      - Rada larang.
-      - Rada larang
-    words: [rada, larang]
-  - id: e12
-    type: translate
-    direction: from_target
-    source_text: Saiki puanas, rek!
-    answers_meaning:
-      ar_eg: ["الجو حررر دلوقتي يا جماعة!", "الدنيا حر أوي دلوقتي يا جماعة", "حر نار دلوقتي يا رجالة"]
-      ar: ["الجو حارّ جدًا الآن يا جماعة!", "الطقس حار جدًا الآن يا رفاق"]
-      en: ["It's sooo hot now, guys!", "It's really hot now, guys", "It's boiling now, mates"]
-    explain:
-      ar_eg: puanas = panas بالمطّ (شرق جاوة)، وrek نداء سورابايا للأصحاب.
-      ar: puanas = panas بالمدّ (شرق جاوة)، وrek نداء أهل سورابايا للأصدقاء.
-      en: puanas is stretched panas (East Java); rek is Surabaya's "guys".
-    words: [puanas, saiki]
-  - id: e13
-    type: dictation
-    text: Aku seneng banget.
-    meaning:
-      ar_eg: أنا مبسوط أوي.
-      ar: أنا سعيد جدًا.
-      en: I'm so happy.
-    words: [seneng, banget]
-  - id: e14
+  - id: e06
     type: speaking
     text: Enak pol!
     meaning:
@@ -353,11 +259,6 @@ new_words:
     ar_eg: خايف
     ar: خائف
     en: afraid (takut)
-  - word: bosen
-    pos: adjective
-    ar_eg: زهقان
-    ar: ضَجِر
-    en: bored (bosan)
 review:
   status: draft
   verified: false

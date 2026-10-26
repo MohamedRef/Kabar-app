@@ -5,6 +5,7 @@
 
 pub mod clock;
 pub mod coach_screen;
+pub mod journal;
 pub mod labels;
 pub mod logic;
 pub mod onboarding;
@@ -151,18 +152,21 @@ impl Coach {
 
 /// Builds the plan for `date` (not saved). `due_reviews` comes from the
 /// review deck; the current unit is still the starting unit until the
-/// Journey reports progress.
+/// Journey reports progress. `picked`: the learner chose `size` just now (a
+/// bigger size then wins over a welcome-back plan).
 pub fn build_plan(
     due_reviews: u32,
     profile: &CoachProfile,
     events: &[ActivityEvent],
     date: LocalDate,
     size: PlanSize,
+    picked: bool,
 ) -> DailyPlan {
     let weak = plan::weak_spots(events, date, WEAK_SPOT_WINDOW_DAYS);
     plan::build_plan(&PlanInputs {
         date,
         size,
+        picked,
         due_reviews,
         current_unit: Some(core_onboarding::starting_unit(profile.start)),
         weak_spots: &weak,
@@ -177,7 +181,7 @@ pub fn plan_for(db: &Db, profile: &CoachProfile, events: &[ActivityEvent], date:
         return plan;
     }
     let due = crate::review::due_words(db, crate::store::now_ms()).len() as u32;
-    let plan = build_plan(due, profile, events, date, profile.daily_size);
+    let plan = build_plan(due, profile, events, date, profile.daily_size, false);
     if let Err(e) = db.0.borrow_mut().save_plan(&plan) {
         eprintln!("kabar: saving today's plan failed: {e}");
     }

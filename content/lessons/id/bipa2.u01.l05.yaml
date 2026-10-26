@@ -54,7 +54,7 @@ exercises:
   - id: e03
     type: listen
     text: Mana yang paling ringan?
-    options: ["Mana yang paling ringan?", "Mana yang lebih ringan?", "Mana yang paling berat?"]
+    options: ['Mana yang paling ringan?', 'Mana yang lebih ringan?', 'Mana yang paling berat?']
     answer: 0
     words: [paling, ringan]
   - id: e04
@@ -63,7 +63,7 @@ exercises:
       ar_eg: أنهي جملة معناها «الجونج أعلى صوتًا من الطبلة»؟
       ar: أيّ جملة تعني «صوت الغونغ أعلى من صوت الطبل»؟
       en: Which sentence means "The gong is louder than the drum"?
-    options: ["Gong lebih keras daripada gendang.", "Gong lebih keras dengan gendang.", "Gong paling keras daripada gendang."]
+    options: [Gong lebih keras daripada gendang., Gong lebih keras dengan gendang., Gong paling keras daripada gendang.]
     answer: 0
     explain:
       ar_eg: بين حاجتين lebih … daripada. paling للأكتر في المجموعة كلها.
@@ -76,7 +76,7 @@ exercises:
       ar_eg: صاحبك عزف على الجيتار وكان مش بطال. تقوله إيه؟
       ar: عزف صديقك على القيثارة وكان عزفه لا بأس به. ماذا تقول له؟
       en: Your friend played the guitar and it was not bad. What do you say?
-    options: ["Kurang!", "Lumayan!", "Terlalu bagus!"]
+    options: [Kurang!, Lumayan!, Terlalu bagus!]
     answer: 1
     words: [lumayan]
   - id: e06
@@ -86,7 +86,7 @@ exercises:
       ar_eg: القهوة سكرها قليل. عايز سكر تاني.
       ar: القهوة قليلة الحلاوة. أريد مزيدًا من السكر.
       en: The coffee isn't sweet enough. I want more sugar.
-    options: ["lebih", "terlalu", "kurang"]
+    options: [lebih, terlalu, kurang]
     answers: [kurang]
     words: [kurang]
   - id: e07
@@ -99,20 +99,6 @@ exercises:
     answers: [terbaik]
     words: [terbaik]
   - id: e08
-    type: fill_blank
-    sentence: Lebih ___ kita naik taksi, hujan!
-    meaning:
-      ar_eg: الأحسن نركب تاكسي، الدنيا بتمطر!
-      ar: الأفضل أن نركب سيارة أجرة، إنها تمطر!
-      en: We'd better take a taxi, it's raining!
-    options: ["bagus", "besar", "baik"]
-    answers: [baik]
-    explain:
-      ar_eg: التعبير الثابت هو lebih baik = الأحسن.
-      ar: العبارة الثابتة هي lebih baik = الأفضل.
-      en: The fixed phrase is lebih baik = it's better to.
-    words: [lebih baik]
-  - id: e09
     type: build_sentence
     source:
       ar_eg: الكمنجة أخف من الجيتار.
@@ -121,7 +107,7 @@ exercises:
     answer: Biola lebih ringan daripada gitar.
     distractors: [paling, dengan]
     words: [biola, lebih, ringan, daripada]
-  - id: e10
+  - id: e09
     type: build_sentence
     source:
       ar_eg: الجاميلان البالي مشهور في العالم.
@@ -130,43 +116,16 @@ exercises:
     answer: Gamelan Bali terkenal di dunia.
     distractors: [paling, lebih]
     words: [terkenal, dunia]
-  - id: e11
+  - id: e10
     type: translate
     direction: to_target
     source_meaning:
       ar_eg: الصوت عالي زيادة.
       ar: الصوت عالٍ أكثر من اللازم.
       en: The sound is too loud.
-    answers:
-      - Suaranya terlalu keras.
-      - Suaranya terlalu keras
-      - Suara ini terlalu keras.
-      - Suaranya terlalu kencang.
+    answers: [Suaranya terlalu keras., Suaranya terlalu keras, Suara ini terlalu keras., Suaranya terlalu kencang.]
     words: [suara, terlalu, keras]
-  - id: e12
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنهي أرخص، الناي ولا الكمنجة؟
-      ar: أيهما أرخص، الناي أم الكمان؟
-      en: Which is cheaper, the flute or the violin?
-    answers:
-      - Mana yang lebih murah, suling atau biola?
-      - Mana yang lebih murah, suling atau biola
-      - Yang mana yang lebih murah, suling atau biola?
-      - Yang mana lebih murah, suling atau biola?
-      - Mana lebih murah, suling atau biola?
-    words: [mana, lebih, murah]
-  - id: e13
-    type: translate
-    direction: from_target
-    source_text: Gong adalah alat musik terbesar dalam gamelan, dan suaranya cukup keras.
-    answers_meaning:
-      ar_eg: ["الجونج أكبر آلة في الجاميلان، وصوته عالي برضه", "الجونج أكبر آلة موسيقية في الجاميلان وصوته عالي شوية"]
-      ar: ["الغونغ أكبر آلة في الغاميلان، وصوته عالٍ إلى حد ما", "الغونغ أكبر آلة موسيقية في الغاميلان وصوته مرتفع نسبيًا"]
-      en: ["The gong is the biggest instrument in the gamelan, and it's fairly loud.", "The gong is the largest instrument in a gamelan, and its sound is quite loud."]
-    words: [terbesar, alat musik, cukup, keras]
-  - id: e14
+  - id: e11
     type: dictation
     text: Pura ini paling indah di Ubud.
     meaning:
@@ -174,7 +133,7 @@ exercises:
       ar: هذا المعبد أجمل معبد في أوبود.
       en: This temple is the most beautiful in Ubud.
     words: [paling, indah, pura]
-  - id: e15
+  - id: e12
     type: speaking
     text: Suling ini agak kecil, tapi lebih murah daripada biola.
     meaning:

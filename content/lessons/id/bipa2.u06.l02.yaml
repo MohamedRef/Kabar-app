@@ -116,7 +116,7 @@ exercises:
       ar_eg: ضيف خبّط على الباب وعايز تقوله «اتفضل ادخل». تقول إيه؟
       ar: طرق ضيف الباب وتريد أن تقول له «تفضّل بالدخول». ماذا تقول؟
       en: A guest knocks and you want to say "please come in". What do you say?
-    options: ["Silakan masuk.", "Minta masuk.", "Tolong masuk."]
+    options: [Silakan masuk., Minta masuk., Tolong masuk.]
     answer: 0
     explain:
       ar_eg: العزومة = silakan. tolong لما تطلب منه خدمة.
@@ -124,72 +124,22 @@ exercises:
       en: Inviting = silakan; tolong asks a favour.
     words: [silakan]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إيديك مشغولة وعايز مدام ساري تقفل الباب. تقول إيه؟
-      ar: يداك مشغولتان وتريد من السيدة ساري أن تغلق الباب. ماذا تقول؟
-      en: Your hands are full and you want Bu Sari to close the door. What do you say?
-    options: ["Mohon pintunya, Bu.", "Tolong tutup pintunya, Bu.", "Silakan tutup pintunya, Bu."]
-    answer: 1
-    explain:
-      ar_eg: إنت بتطلب خدمة، يبقى tolong. silakan معناها «اتفضلي اقفليه لو حابة».
-      ar: هذا طلب خدمة فهو tolong، أما silakan فإذن لها.
-      en: You're asking a favour, so tolong; silakan would mean "go ahead and close it if you like".
-    words: [tolong, tutup]
-  - id: e04
     type: listen
     text: Boleh minta air putih?
-    options: ["Boleh minta air putih?", "Tolong minum air putih.", "Boleh minta teh manis?"]
+    options: ['Boleh minta air putih?', Tolong minum air putih., 'Boleh minta teh manis?']
     answer: 0
     words: [minta, air putih]
-  - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: يافطة رسمية في شباك مكتب بتطلب من الناس يستنوا. مكتوب عليها إيه؟
-      ar: لافتة رسمية عند شبّاك مكتب تطلب من الناس الانتظار. ماذا كُتب عليها؟
-      en: A formal sign at an office counter asks people to wait. What does it say?
-    options: ["Mohon tunggu sebentar.", "Tolong! Tunggu!", "Minta tunggu sebentar."]
-    answer: 0
-    explain:
-      ar_eg: mohon هي الكلمة الرسمية للطلب على اليافطات.
-      ar: mohon هي صيغة الرجاء الرسمية في اللافتات.
-      en: mohon is the formal "please" on signs.
-    words: [mohon, tunggu, sebentar]
-  - id: e06
+  - id: e04
     type: fill_blank
     sentence: ___ duduk, Pak. Mau minum apa?
     meaning:
       ar_eg: اتفضل اقعد يا أستاذ. تشرب إيه؟
       ar: تفضّل بالجلوس يا سيدي. ماذا تشرب؟
       en: Please sit down, sir. What would you like to drink?
-    options: ["Tolong", "Silakan", "Minta"]
+    options: [Tolong, Silakan, Minta]
     answers: [Silakan]
     words: [silakan]
-  - id: e07
-    type: fill_blank
-    sentence: Mbak, ___ segelas teh manis.
-    meaning:
-      ar_eg: كوباية شاي بسكر لو سمحتي.
-      ar: كوب شاي حلو من فضلكِ.
-      en: A glass of sweet tea, please.
-    options: ["tolong", "minta", "silakan"]
-    answers: [minta]
-    explain:
-      ar_eg: بتطلب حاجة تاخدها، يبقى minta.
-      ar: تطلب شيئًا تأخذه، فهي minta.
-      en: You're asking for a thing, so minta.
-    words: [minta]
-  - id: e08
-    type: fill_blank
-    sentence: ___ bantu saya, Pak. Tas ini berat sekali.
-    meaning:
-      ar_eg: لو سمحت ساعدني يا أستاذ. الشنطة دي تقيلة قوي.
-      ar: ساعدني من فضلك يا سيدي، فهذه الحقيبة ثقيلة جدًّا.
-      en: Please help me, sir. This bag is very heavy.
-    options: ["Tolong", "Silakan", "Minta"]
-    answers: [Tolong]
-    words: [tolong, bantu]
-  - id: e09
+  - id: e05
     type: build_sentence
     source:
       ar_eg: اتفضل ادخل واقعد يا أستاذ.
@@ -198,39 +148,7 @@ exercises:
     answer: Silakan masuk dan duduk, Pak.
     distractors: [tolong, minta]
     words: [silakan]
-  - id: e10
-    type: build_sentence
-    source:
-      ar_eg: ممكن رقم تليفونك؟
-      ar: هل لي برقم هاتفك؟
-      en: Could I have your phone number?
-    answer: Boleh minta nomor teleponnya?
-    distractors: [silakan, tolong]
-    words: [minta, boleh]
-  - id: e11
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: لو سمحت ساعدني يا أستاذ.
-      ar: ساعدني من فضلك يا سيدي.
-      en: Please help me, sir.
-    answers:
-      - Tolong bantu saya, Pak.
-      - Tolong bantu saya, Pak
-      - Tolong bantu saya, Pak!
-      - Pak, tolong bantu saya.
-      - Pak, tolong bantu saya
-    words: [tolong, bantu]
-  - id: e12
-    type: translate
-    direction: from_target
-    source_text: Silakan makan, Pak Mohamed.
-    answers_meaning:
-      ar_eg: ["اتفضل كُل يا أستاذ محمد.", "اتفضل يا أستاذ محمد، كُل", "بالهنا والشفا يا أستاذ محمد"]
-      ar: ["تفضّل بالأكل يا سيد محمد.", "تفضّل كُل يا سيد محمد"]
-      en: ["Please eat, Mr Mohamed.", "Please help yourself, Mr Mohamed", "Go ahead and eat, Mr Mohamed"]
-    words: [silakan]
-  - id: e13
+  - id: e06
     type: dictation
     text: Mohon tunggu sebentar.
     meaning:
@@ -238,7 +156,7 @@ exercises:
       ar: يُرجى الانتظار قليلًا.
       en: Please wait a moment.
     words: [mohon, tunggu, sebentar]
-  - id: e14
+  - id: e07
     type: speaking
     text: Tolong tutup pintunya, ya.
     meaning:
@@ -285,31 +203,11 @@ new_words:
     ar_eg: لو سمحت (اعملّي)؛ لوحدها = إلحقوني!
     ar: من فضلك (افعل لي)؛ وحدها = النجدة!
     en: please (asking a favour); alone = Help!
-  - word: silakan
-    pos: particle
-    ar_eg: اتفضل
-    ar: تفضّل
-    en: please (go ahead)
-  - word: minta
-    pos: verb
-    ar_eg: يطلب حاجة
-    ar: يطلب شيئًا
-    en: to ask for
-  - word: mohon
-    pos: verb
-    ar_eg: برجاء (رسمي)
-    ar: يُرجى (رسمي)
-    en: kindly, request (formal)
   - word: bantu
     pos: verb
     ar_eg: ساعد (membantu = يساعد)
     ar: ساعِد (membantu = يساعد)
     en: help (membantu = to help)
-  - word: tutup
-    pos: verb
-    ar_eg: اقفل / مقفول
-    ar: أغلِق / مغلق
-    en: close; closed
   - word: tunggu
     pos: verb
     ar_eg: استنى (menunggu = يستنى)
@@ -320,11 +218,6 @@ new_words:
     ar_eg: شوية، لحظة
     ar: قليلًا، لحظة
     en: a moment
-  - word: air putih
-    pos: noun
-    ar_eg: مية (للشرب)
-    ar: ماء الشرب
-    en: drinking water
   - word: tentu
     pos: adverb
     ar_eg: أكيد، طبعًا

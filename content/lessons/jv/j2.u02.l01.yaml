@@ -134,12 +134,12 @@ exercises:
     words: [nulis, maca, ngombé, nyapu, nggawé]
   - id: e02
     type: multiple_choice
-    question: "N- + tulis → ?"
+    question: N- + tulis → ?
     question_meaning:
       ar_eg: حط N- على tulis (يكتب). تبقى إيه؟
       ar: أضف N- إلى tulis (يكتب). ما الناتج؟
       en: Put N- on tulis (write). What do you get?
-    options: ["nulis", "ngtulis", "nyulis"]
+    options: [nulis, ngtulis, nyulis]
     answer: 0
     explain:
       ar_eg: t بتتحول n، زي الإندونيسي menulis.
@@ -147,81 +147,26 @@ exercises:
       en: t becomes n, as in Indonesian menulis.
     words: [nulis]
   - id: e03
-    type: multiple_choice
-    question: "N- + sapu → ?"
-    question_meaning:
-      ar_eg: حط N- على sapu (مقشة). تبقى إيه؟
-      ar: أضف N- إلى sapu (مكنسة). ما الناتج؟
-      en: Put N- on sapu (broom). What do you get?
-    options: ["napu", "nyapu", "mapu"]
-    answer: 1
-    explain:
-      ar_eg: s بتتحول ny، زي الإندونيسي menyapu.
-      ar: تتحول s إلى ny كما في menyapu.
-      en: s becomes ny, as in Indonesian menyapu.
-    words: [nyapu]
-  - id: e04
-    type: multiple_choice
-    question: "N- + gawé → ?"
-    question_meaning:
-      ar_eg: حط N- على gawé (شغل / عمل). تبقى إيه؟
-      ar: أضف N- إلى gawé. ما الناتج؟
-      en: Put N- on gawé. What do you get?
-    options: ["ngawé", "mawé", "nggawé"]
-    answer: 2
-    explain:
-      ar_eg: "g مابتقعش، بيتحط ng قدامها: nggawé."
-      ar: "لا تسقط g، بل تسبقها ng: nggawé."
-      en: "g doesn't drop; ng goes in front: nggawé."
-    words: [nggawé]
-  - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إزاي تقول «أنا بشتري عيش»؟
-      ar: كيف تقول «أنا أشتري خبزًا»؟
-      en: How do you say "I'm buying bread"?
-    options: ["Aku tuku roti.", "Aku muku roti.", "Aku nuku roti."]
-    answer: 0
-    explain:
-      ar_eg: tuku من الأفعال اللي مابتاخدش N- خالص.
-      ar: tuku من الأفعال التي لا تأخذ N-.
-      en: tuku is one of the verbs that never take N-.
-    words: [tuku]
-  - id: e06
     type: listen
     text: Bapak ngombé kopi.
-    options: ["Bapak ngombé kopi.", "Bapak tuku kopi.", "Bapak nggawé kopi."]
+    options: [Bapak ngombé kopi., Bapak tuku kopi., Bapak nggawé kopi.]
     answer: 0
     words: [ngombé, kopi]
-  - id: e07
+  - id: e04
     type: fill_blank
     sentence: Bukuné wis di___.
     meaning:
       ar_eg: الكتاب اتقرا خلاص.
       ar: قُرئ الكتاب.
       en: The book has been read.
-    options: ["nulis", "waca", "maca"]
+    options: [nulis, waca, maca]
     answers: [waca]
     explain:
       ar_eg: di- بتاخد الأصل waca، مش maca. زي dibaca مش dimembaca.
       ar: تدخل di- على الجذر waca لا على maca.
       en: di- takes the base waca, not maca — like dibaca, not dimembaca.
     words: [waca, maca]
-  - id: e08
-    type: fill_blank
-    sentence: Sari lagi ___ layang.
-    meaning:
-      ar_eg: ساري بتكتب جواب.
-      ar: ساري تكتب رسالة.
-      en: Sari is writing a letter.
-    options: ["nulis", "ditulis", "tulis"]
-    answers: [nulis]
-    explain:
-      ar_eg: "بعد lagi بنستخدم الفعل المعلوم بـ N-: nulis."
-      ar: "بعد lagi يأتي الفعل المعلوم بـ N-: nulis."
-      en: "After lagi we use the active N- verb: nulis."
-    words: [nulis, layang]
-  - id: e09
+  - id: e05
     type: build_sentence
     source:
       ar_eg: أنا بكتب جواب.
@@ -230,37 +175,7 @@ exercises:
     answer: Aku lagi nulis layang.
     distractors: [tulis, kowé]
     words: [nulis, layang]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا بشرب قهوة.
-      ar: أنا أشرب قهوة.
-      en: I'm drinking coffee.
-    answers:
-      - Aku lagi ngombé kopi.
-      - Aku lagi ngombé kopi
-      - Aku lagi ngombe kopi.
-      - Aku lagi ngombe kopi
-      - Aku ngombé kopi.
-      - Aku ngombé kopi
-      - Aku ngombe kopi.
-      - Aku ngombe kopi
-    words: [ngombé, kopi]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: Mohamed lagi mikir.
-    answers_meaning:
-      ar_eg: ["محمد بيفكر.", "محمد بيفكر", "محمد قاعد بيفكر"]
-      ar: ["محمد يفكر.", "محمد يفكر"]
-      en: ["Mohamed is thinking.", "Mohamed is thinking"]
-    explain:
-      ar_eg: mikir من pikir (فكر)، وp بتتحول m.
-      ar: mikir من pikir (فكر)، وتتحول p إلى m.
-      en: mikir comes from pikir (فكر); p becomes m.
-    words: [mikir]
-  - id: e12
+  - id: e06
     type: dictation
     text: Aku seneng maca buku.
     meaning:
@@ -268,7 +183,7 @@ exercises:
       ar: أحب قراءة الكتب.
       en: I like reading books.
     words: [seneng, maca]
-  - id: e13
+  - id: e07
     type: speaking
     text: Ibu nggawé sambel pecel.
     meaning:
@@ -341,11 +256,6 @@ new_words:
     ar_eg: ياخد
     ar: يأخذ
     en: to take (mengambil)
-  - word: mbukak (bukak)
-    pos: verb
-    ar_eg: يفتح
-    ar: يفتح
-    en: to open (membuka)
   - word: seneng
     pos: verb
     ar_eg: يحب / مبسوط

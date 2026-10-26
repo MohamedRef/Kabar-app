@@ -1,10 +1,15 @@
 //! Small pure helpers behind the coach screens (kept out of the components so
 //! they can be tested without a WebView).
 
-use kabar_core::coach::history;
+use std::collections::{BTreeMap, HashMap, HashSet};
+
+use kabar_core::coach::history::{self, DayStats};
 use kabar_core::coach::plan::COMEBACK_AFTER_DAYS;
 use kabar_core::coach::voice::Line;
 use kabar_protocol::coach::{ActivityEvent, ActivityKind, LocalDate, LocalTime, WeeklyReport};
+use kabar_protocol::journal::{JournalEntry, MAX_REFLECTION_CHARS};
+
+use crate::store::{LessonDone, TaughtAt};
 
 /// Study times as the profile keeps them: sorted, no duplicates.
 pub fn normalize_times(mut times: Vec<LocalTime>) -> Vec<LocalTime> {
@@ -26,22 +31,218 @@ pub fn next_time(times: &[LocalTime]) -> LocalTime {
     t
 }
 
-/// The learning journal: days newest first, each day's events newest first.
-pub fn journal(events: &[ActivityEvent]) -> Vec<(LocalDate, Vec<&ActivityEvent>)> {
-    let mut days: Vec<(LocalDate, Vec<&ActivityEvent>)> = Vec::new();
-    let mut seen = std::collections::HashSet::new();
-    let mut sorted: Vec<&ActivityEvent> = events.iter().collect();
-    sorted.sort_by(|a, b| b.date.cmp(&a.date).then(b.at_ms.cmp(&a.at_ms)).then(b.hlc.cmp(&a.hlc)));
-    for e in sorted {
+// --- the learning journal timeline -------------------------------------------
+
+/// Lesson titles and unit souvenirs from the bundled curricula, so the
+/// timeline can name what was finished.
+#[derive(Clone, Debug, Default, PartialEq)]
+pub struct Catalog {
+    /// Lesson id → title; level test id → level code ("BIPA 1").
+    pub titles: HashMap<String, String>,
+    pub tests: HashSet<String>,
+    pub units: Vec<UnitInfo>,
+}
+
+/// A unit that earns a souvenir once all of its lessons are finished.
+#[derive(Clone, Debug, PartialEq)]
+pub struct UnitInfo {
+    pub id: String,
+    pub souvenir: String,
+    pub lessons: Vec<String>,
+}
+
+/// What one line of the timeline says.
+#[derive(Clone, Debug, PartialEq)]
+pub enum EntryKind {
+    Activity(ActivityKind),
+    LessonDone { lesson_id: String, title: Option<String>, test: bool, score: Option<u32> },
+    Souvenir { unit_id: String, name: String },
+    Taught { word: String, draft: bool },
+}
+
+#[derive(Clone, Debug, PartialEq)]
+pub struct TimelineEntry {
+    /// Stable within the timeline (RSX key).
+    pub key: String,
+    pub at_ms: u64,
+    pub kind: EntryKind,
+}
+
+/// One day of the journal: what happened, what it added up to, and the
+/// learner's own reflections.
+#[derive(Clone, Debug, PartialEq)]
+pub struct JournalDay {
+    pub date: LocalDate,
+    /// Newest first.
+    pub entries: Vec<TimelineEntry>,
+    pub stats: DayStats,
+    /// In writing order.
+    pub reflections: Vec<JournalEntry>,
+}
+
+/// The timeline's filter chips.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum JournalFilter {
+    #[default]
+    All,
+    /// Reviews, lessons, practice, plan items and souvenirs.
+    Learning,
+    /// New words and words taught to Kabar.
+    Words,
+    /// Only days with a reflection, and only the reflections.
+    Reflections,
+}
+
+impl JournalFilter {
+    pub const ALL: [Self; 4] = [Self::All, Self::Learning, Self::Words, Self::Reflections];
+
+    fn keeps(self, kind: &EntryKind) -> bool {
+        use ActivityKind as A;
+        match self {
+            Self::All => true,
+            Self::Reflections => false,
+            Self::Words => matches!(kind, EntryKind::Taught { .. } | EntryKind::Activity(A::NewWords { .. })),
+            Self::Learning => match kind {
+                EntryKind::LessonDone { .. } | EntryKind::Souvenir { .. } => true,
+                EntryKind::Taught { .. } => false,
+                EntryKind::Activity(a) => !matches!(a, A::NewWords { .. } | A::Purchase { .. }),
+            },
+        }
+    }
+
+    fn shows_reflections(self) -> bool {
+        matches!(self, Self::All | Self::Reflections)
+    }
+}
+
+/// Everything the timeline is built from, besides the activity log.
+#[derive(Clone, Debug, Default)]
+pub struct JournalSources<'a> {
+    pub lessons: &'a [LessonDone],
+    pub taught: &'a [TaughtAt],
+    pub reflections: &'a [JournalEntry],
+}
+
+/// A finished-lesson line already says what the generic "lesson step done"
+/// event says, so that event is folded into it when they match.
+const SAME_LESSON_WINDOW_MS: u64 = 10 * 60 * 1000;
+
+/// Souvenirs earned: a unit's souvenir arrives when its last lesson is first
+/// finished.
+pub fn souvenirs_earned(units: &[UnitInfo], lessons: &[LessonDone]) -> Vec<(String, String, u64)> {
+    let first_done = |id: &str| lessons.iter().filter(|l| l.lesson_id == id).map(|l| l.at_ms).min();
+    units
+        .iter()
+        .filter(|u| !u.lessons.is_empty())
+        .filter_map(|u| {
+            let times: Option<Vec<u64>> = u.lessons.iter().map(|l| first_done(l)).collect();
+            Some((u.id.clone(), u.souvenir.clone(), times?.into_iter().max()?))
+        })
+        .collect()
+}
+
+/// The learning journal: days newest first, each day's lines newest first,
+/// with the day's totals and reflections. Replayed events show once. In the
+/// unfiltered view today is always there, so a reflection can be written
+/// before anything else happens.
+pub fn timeline(
+    events: &[ActivityEvent],
+    src: &JournalSources<'_>,
+    catalog: &Catalog,
+    utc_offset_min: i16,
+    today: LocalDate,
+    filter: JournalFilter,
+) -> Vec<JournalDay> {
+    let stats = history::by_day(events);
+    let day_of = |ms: u64| LocalDate::from_unix_ms(ms, utc_offset_min);
+    let mut lines: Vec<(LocalDate, TimelineEntry)> = Vec::new();
+
+    let mut seen = HashSet::new();
+    for e in events {
         if !seen.insert(e.id.as_str()) {
             continue; // a replayed event
         }
-        match days.last_mut() {
-            Some((d, es)) if *d == e.date => es.push(e),
-            _ => days.push((e.date, vec![e])),
+        if let ActivityKind::LessonStep { unit_id, done: true } = &e.kind {
+            let prefix = format!("{unit_id}.");
+            let folded = src.lessons.iter().any(|l| {
+                l.lesson_id.starts_with(&prefix) && l.at_ms.abs_diff(e.at_ms) <= SAME_LESSON_WINDOW_MS
+            });
+            if folded {
+                continue;
+            }
+        }
+        let entry =
+            TimelineEntry { key: e.id.clone(), at_ms: e.at_ms, kind: EntryKind::Activity(e.kind.clone()) };
+        lines.push((e.date, entry));
+    }
+    for (i, l) in src.lessons.iter().enumerate() {
+        let kind = EntryKind::LessonDone {
+            lesson_id: l.lesson_id.clone(),
+            title: catalog.titles.get(&l.lesson_id).cloned(),
+            test: catalog.tests.contains(&l.lesson_id),
+            score: l.score,
+        };
+        lines.push((
+            day_of(l.at_ms),
+            TimelineEntry { key: format!("lesson:{i}:{}", l.lesson_id), at_ms: l.at_ms, kind },
+        ));
+    }
+    for (unit_id, name, at_ms) in souvenirs_earned(&catalog.units, src.lessons) {
+        let key = format!("souvenir:{unit_id}");
+        lines
+            .push((day_of(at_ms), TimelineEntry { key, at_ms, kind: EntryKind::Souvenir { unit_id, name } }));
+    }
+    for t in src.taught {
+        let kind = EntryKind::Taught { word: t.entry.entry.word.clone(), draft: t.entry.is_draft() };
+        lines.push((
+            day_of(t.at_ms),
+            TimelineEntry { key: format!("taught:{}", t.entry.row_id()), at_ms: t.at_ms, kind },
+        ));
+    }
+    lines.retain(|(_, e)| filter.keeps(&e.kind));
+
+    fn day<'m>(
+        days: &'m mut BTreeMap<LocalDate, JournalDay>,
+        stats: &BTreeMap<LocalDate, DayStats>,
+        date: LocalDate,
+    ) -> &'m mut JournalDay {
+        days.entry(date).or_insert_with(|| JournalDay {
+            date,
+            entries: Vec::new(),
+            stats: stats.get(&date).cloned().unwrap_or_default(),
+            reflections: Vec::new(),
+        })
+    }
+    let mut days: BTreeMap<LocalDate, JournalDay> = BTreeMap::new();
+    for (date, entry) in lines {
+        day(&mut days, &stats, date).entries.push(entry);
+    }
+    if filter.shows_reflections() {
+        for r in src.reflections {
+            day(&mut days, &stats, r.date).reflections.push(r.clone());
         }
     }
-    days
+    if filter == JournalFilter::All {
+        day(&mut days, &stats, today);
+    }
+
+    let mut out: Vec<JournalDay> = days.into_values().rev().collect();
+    for d in &mut out {
+        d.entries.sort_by(|a, b| b.at_ms.cmp(&a.at_ms).then_with(|| a.key.cmp(&b.key)));
+        d.reflections.sort_by(|a, b| a.created_ms.cmp(&b.created_ms).then_with(|| a.id.cmp(&b.id)));
+    }
+    out
+}
+
+/// A reflection as typed, ready to save: trimmed at the ends (inner line
+/// breaks kept) and capped at [`MAX_REFLECTION_CHARS`]. `None` when there's
+/// nothing to keep.
+pub fn clean_reflection(text: &str) -> Option<String> {
+    let t = text.trim();
+    if t.is_empty() {
+        return None;
+    }
+    Some(t.chars().take(MAX_REFLECTION_CHARS).collect())
 }
 
 /// Today's `PlanItemDone` events for one item (what "untick" retracts).
@@ -139,13 +340,175 @@ mod tests {
             ev("c", mon, 30, ActivityKind::PlanItemDone { item_id: "review".into() }),
             ev("c", mon, 30, ActivityKind::PlanItemDone { item_id: "review".into() }),
         ];
-        let j = journal(&events);
+        let j =
+            timeline(&events, &JournalSources::default(), &Catalog::default(), 0, mon, JournalFilter::All);
         assert_eq!(j.len(), 2);
-        assert_eq!(j[0].0, mon);
-        assert_eq!(j[0].1.iter().map(|e| e.id.as_str()).collect::<Vec<_>>(), ["c", "b"]);
-        assert_eq!(j[1].0, mon.add_days(-1));
+        assert_eq!(j[0].date, mon);
+        assert_eq!(j[0].entries.iter().map(|e| e.key.as_str()).collect::<Vec<_>>(), ["c", "b"]);
+        assert_eq!(j[0].stats.reviews, 5, "the replay counts once");
+        assert_eq!(j[1].date, mon.add_days(-1));
         assert_eq!(done_events(&events, mon, "review"), ["c", "c"]);
         assert!(done_events(&events, mon, "reading").is_empty());
+    }
+
+    /// Unix ms at `h:00` UTC on `date`.
+    fn at(date: LocalDate, h: u64) -> u64 {
+        date.0 as u64 * 86_400_000 + h * 3_600_000
+    }
+
+    fn catalog() -> Catalog {
+        Catalog {
+            titles: [("bipa1.u01.l01", "Halo!"), ("bipa1.u01.l02", "Nama saya…"), ("bipa1.test", "BIPA 1")]
+                .into_iter()
+                .map(|(k, v)| (k.to_string(), v.to_string()))
+                .collect(),
+            tests: ["bipa1.test".to_string()].into(),
+            units: vec![UnitInfo {
+                id: "bipa1.u01".into(),
+                souvenir: "Batik".into(),
+                lessons: vec!["bipa1.u01.l01".into(), "bipa1.u01.l02".into()],
+            }],
+        }
+    }
+
+    fn note(id: &str, date: LocalDate, created: u64) -> JournalEntry {
+        JournalEntry {
+            id: id.into(),
+            date,
+            text: "Saya sedang belajar bahasa Indonesia.".into(),
+            ink: None,
+            created_ms: created,
+            updated_ms: created,
+        }
+    }
+
+    #[test]
+    fn timeline_merges_every_source_by_day() {
+        let mon = d(2026, 10, 26);
+        let sun = mon.add_days(-1);
+        let events = vec![
+            ev("rev", sun, at(sun, 8), reviews()),
+            ev("step", mon, at(mon, 9), ActivityKind::LessonStep { unit_id: "bipa1.u01".into(), done: true }),
+            ev(
+                "words",
+                mon,
+                at(mon, 9) + 1,
+                ActivityKind::NewWords { words: vec!["pasar".into(), "murah".into()] },
+            ),
+            ev("buy", mon, at(mon, 11), ActivityKind::Purchase { item_id: "batik-parang".into(), koin: 50 }),
+        ];
+        let lessons = vec![
+            LessonDone { lesson_id: "bipa1.u01.l01".into(), at_ms: at(sun, 7), score: Some(90) },
+            LessonDone { lesson_id: "bipa1.u01.l02".into(), at_ms: at(mon, 9) - 1000, score: Some(81) },
+        ];
+        let taught: TaughtAt = TaughtAt {
+            entry: serde_json::from_str(include_str!("../../../../fixtures/learn/taught.kalimat.json"))
+                .unwrap(),
+            at_ms: at(mon, 10),
+        };
+        let taught = [taught];
+        let reflections = [note("r2", mon, 5), note("r1", mon, 3)];
+        let src = JournalSources { lessons: &lessons, taught: &taught, reflections: &reflections };
+        let j = timeline(&events, &src, &catalog(), 0, mon, JournalFilter::All);
+
+        assert_eq!(j.iter().map(|d| d.date).collect::<Vec<_>>(), [mon, sun]);
+        let keys: Vec<&str> = j[0].entries.iter().map(|e| e.key.as_str()).collect();
+        // The generic "lesson step" is folded into the finished lesson it matches;
+        // finishing the unit's last lesson earns its souvenir.
+        assert_eq!(
+            keys,
+            ["buy", "taught:id:kalimat", "words", "lesson:1:bipa1.u01.l02", "souvenir:bipa1.u01"]
+        );
+        assert_eq!(j[0].entries[1].kind, EntryKind::Taught { word: "kalimat".into(), draft: true });
+        let lesson = &j[0].entries[3].kind;
+        assert_eq!(
+            lesson,
+            &EntryKind::LessonDone {
+                lesson_id: "bipa1.u01.l02".into(),
+                title: Some("Nama saya…".into()),
+                test: false,
+                score: Some(81)
+            }
+        );
+        assert!(matches!(&j[0].entries[4].kind, EntryKind::Souvenir { name, .. } if name == "Batik"));
+        assert_eq!(j[0].reflections.iter().map(|r| r.id.as_str()).collect::<Vec<_>>(), ["r1", "r2"]);
+        assert_eq!(j[0].stats.new_words, ["pasar", "murah"]);
+        assert_eq!(
+            j[1].entries.iter().map(|e| e.key.as_str()).collect::<Vec<_>>(),
+            ["rev", "lesson:0:bipa1.u01.l01"]
+        );
+    }
+
+    #[test]
+    fn timeline_days_follow_the_learners_clock() {
+        // 22:30 UTC on Sunday is already Monday in Jakarta, still Sunday in London.
+        let mon = d(2026, 10, 26);
+        let sun = mon.add_days(-1);
+        let lessons =
+            [LessonDone { lesson_id: "bipa1.test".into(), at_ms: at(sun, 22) + 1_800_000, score: None }];
+        let src = JournalSources { lessons: &lessons, ..Default::default() };
+        let j = timeline(&[], &src, &catalog(), 420, mon, JournalFilter::Learning);
+        assert_eq!(j.len(), 1);
+        assert_eq!(j[0].date, mon);
+        assert!(matches!(j[0].entries[0].kind, EntryKind::LessonDone { test: true, .. }));
+        let j = timeline(&[], &src, &catalog(), 0, mon, JournalFilter::Learning);
+        assert_eq!(j[0].date, sun);
+    }
+
+    #[test]
+    fn timeline_filters_and_keeps_today_open() {
+        let mon = d(2026, 10, 26);
+        let fri = mon.add_days(-3);
+        let events = vec![
+            ev("rev", fri, at(fri, 8), reviews()),
+            ev("words", fri, at(fri, 9), ActivityKind::NewWords { words: vec!["kabar".into()] }),
+            ev("buy", fri, at(fri, 10), ActivityKind::Purchase { item_id: "x".into(), koin: 5 }),
+        ];
+        let reflections = [note("r", fri.add_days(-1), 1)];
+        let src = JournalSources { reflections: &reflections, ..Default::default() };
+        let run = |f| timeline(&events, &src, &Catalog::default(), 0, mon, f);
+
+        let all = run(JournalFilter::All);
+        // Today (empty, ready for a reflection), Friday, Thursday's reflection.
+        assert_eq!(all.iter().map(|d| d.date).collect::<Vec<_>>(), [mon, fri, fri.add_days(-1)]);
+        assert!(all[0].entries.is_empty());
+        assert_eq!(all[1].entries.len(), 3);
+
+        let keys = |days: &[JournalDay]| -> Vec<String> {
+            days.iter().flat_map(|d| d.entries.iter().map(|e| e.key.clone())).collect()
+        };
+        assert_eq!(keys(&run(JournalFilter::Learning)), ["rev"]);
+        assert_eq!(keys(&run(JournalFilter::Words)), ["words"]);
+        let only_notes = run(JournalFilter::Reflections);
+        assert_eq!(only_notes.len(), 1);
+        assert!(only_notes[0].entries.is_empty());
+        assert_eq!(only_notes[0].reflections.len(), 1);
+        assert!(run(JournalFilter::Words).iter().all(|d| d.reflections.is_empty()));
+    }
+
+    #[test]
+    fn souvenirs_need_every_lesson_of_the_unit() {
+        let units = catalog().units;
+        let one = [LessonDone { lesson_id: "bipa1.u01.l01".into(), at_ms: 5, score: None }];
+        assert!(souvenirs_earned(&units, &one).is_empty());
+        let both = [
+            LessonDone { lesson_id: "bipa1.u01.l02".into(), at_ms: 9, score: None },
+            one[0].clone(),
+            // Redoing a lesson later doesn't move the souvenir.
+            LessonDone { lesson_id: "bipa1.u01.l02".into(), at_ms: 20, score: None },
+        ];
+        assert_eq!(souvenirs_earned(&units, &both), [("bipa1.u01".into(), "Batik".into(), 9)]);
+    }
+
+    #[test]
+    fn reflections_are_trimmed_and_capped() {
+        assert_eq!(clean_reflection("  \n "), None);
+        assert_eq!(
+            clean_reflection("  Saya mau ke pasar.\nMurah sekali!\n").as_deref(),
+            Some("Saya mau ke pasar.\nMurah sekali!")
+        );
+        let long = "ا".repeat(MAX_REFLECTION_CHARS + 10);
+        assert_eq!(clean_reflection(&long).unwrap().chars().count(), MAX_REFLECTION_CHARS);
     }
 
     #[test]
