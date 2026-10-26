@@ -45,7 +45,8 @@ All JSON. Authenticated routes take `Authorization: Bearer <access_token>`. Erro
 | `GET /v1/sync` | WebSocket; messages in `crates/protocol/src/sync.rs` |
 | `GET /v1/vault` | which engines are configured (never the keys) |
 | `POST /v1/ai` | `EngineCall` → `EngineReply` |
-| `POST /v1/tts` | `{ segments: [{ voice, text }], rate_percent }` → `audio/mpeg` |
+| `POST /v1/tts` | `{ segments: [{ voice, text, pitch_percent? }], rate_percent }` → `audio/mpeg` |
+| `PUT /v1/blobs/{sha256}` | raw PNG or JPEG ≤ 1 MB whose SHA-256 is the name → `204`; kept 7 days in the account's Durable Object (no R2: it needs a card). `400` for a bad name, type or hash. A `/v1/ai` call with `image_sha256` reads it, `404 blob_missing` once it's gone, and runs on `WORKERS_AI_VISION_MODEL` (provisional until the bake-off), Gemini `inline_data` or a Claude image block |
 
 Sync in one paragraph: the device sends `hello { last_seq }`, gets the missing ops in pages and `caught_up`, then pushes its outbox as `push { batch, ops ≤ 50 }` and gets an `ack` listing what can leave the outbox. Other devices' ops arrive as `ops` the moment they're stored. LWW tables keep the newest HLC, append-only tables insert once, ink strokes only take tombstones. Unknown tables, wrong device ids and clocks more than 5 minutes ahead are rejected with a reason.
 
