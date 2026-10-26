@@ -14,35 +14,28 @@ slides:
         - بين اتنين: lebih + صفة + daripada → Yang ini lebih murah daripada yang itu.
         - الأكتر في الكل: paling + صفة أو ter- → Mana yang paling bagus? / Ini yang terbaik.
         - Ada yang lebih …? = فيه حاجة … أكتر؟
+        وانت بتشتري: agak (شوية)، cukup (برضه / كفاية)، terlalu (زيادة)، lumayan (مش بطال).
+        Terlalu mahal untuk saya = غالي عليّا زيادة. جملة مؤدبة ومش بتجرح البياع.
       ar: |
         تذكير سريع قبل دخول المتجر:
         - بين اثنين: lebih + الصفة + daripada.
         - الأكثر بين الجميع: paling + الصفة أو ter-.
         - Ada yang lebih …؟ = هل يوجد ما هو … أكثر؟
+        عند الشراء: agak (قليلًا)، cukup (إلى حد ما)، terlalu (أكثر من اللازم)، lumayan (لا بأس).
+        Terlalu mahal untuk saya = غالٍ جدًا بالنسبة لي، وهي عبارة مهذبة.
       en: |
         Quick reminder before you walk in:
         - Between two: lebih + adjective + daripada.
         - The most of all: paling + adjective, or ter-.
         - Ada yang lebih …? = Is there a more … one?
+        While shopping: agak (a bit), cukup (fairly), terlalu (too), lumayan (not bad).
+        Terlalu mahal untuk saya = too expensive for me — polite and easy on the seller.
     grammar: id.comparison.lebih
     examples:
       - text: Ada yang lebih murah?
         ar_eg: فيه حاجة أرخص؟
         ar: هل يوجد ما هو أرخص؟
         en: Is there a cheaper one?
-  - title: Terlalu mahal untuk saya
-    body:
-      ar_eg: |
-        وانت بتشتري: agak (شوية)، cukup (برضه / كفاية)، terlalu (زيادة)، lumayan (مش بطال).
-        Terlalu mahal untuk saya = غالي عليّا زيادة. جملة مؤدبة ومش بتجرح البياع.
-      ar: |
-        عند الشراء: agak (قليلًا)، cukup (إلى حد ما)، terlalu (أكثر من اللازم)، lumayan (لا بأس).
-        Terlalu mahal untuk saya = غالٍ جدًا بالنسبة لي، وهي عبارة مهذبة.
-      en: |
-        While shopping: agak (a bit), cukup (fairly), terlalu (too), lumayan (not bad).
-        Terlalu mahal untuk saya = too expensive for me — polite and easy on the seller.
-    grammar: id.adverb.degree
-    examples:
       - text: Terlalu mahal untuk saya.
         ar_eg: غالي عليّا زيادة.
         ar: إنه غالٍ جدًا بالنسبة لي.
@@ -51,7 +44,7 @@ exercises:
   - id: e01
     type: listen
     text: Ada yang lebih murah?
-    options: ["Ada yang lebih murah?", "Ada yang paling murah?", "Ada yang lebih mahal?"]
+    options: ['Ada yang lebih murah?', 'Ada yang paling murah?', 'Ada yang lebih mahal?']
     answer: 0
     words: [lebih, murah]
   - id: e02
@@ -60,7 +53,7 @@ exercises:
       ar_eg: بو كومانج بتقول «Yang ini terbaik». قصدها إيه؟ اختار الجملة اللي بنفس المعنى.
       ar: تقول بو كومانغ «Yang ini terbaik». اختر الجملة التي بالمعنى نفسه.
       en: Bu Komang says "Yang ini terbaik". Pick the sentence with the same meaning.
-    options: ["Yang ini cukup baik.", "Yang ini paling baik.", "Yang ini lebih baik."]
+    options: [Yang ini cukup baik., Yang ini paling baik., Yang ini lebih baik.]
     answer: 1
     explain:
       ar_eg: terbaik = paling baik = الأحسن في الكل.
@@ -92,28 +85,9 @@ exercises:
       ar_eg: غالي عليّا زيادة.
       ar: إنه غالٍ جدًا بالنسبة لي.
       en: It's too expensive for me.
-    answers:
-      - Terlalu mahal untuk saya.
-      - Terlalu mahal untuk saya
-      - Terlalu mahal buat saya.
-      - Ini terlalu mahal untuk saya.
-      - Harganya terlalu mahal untuk saya.
-      - Terlalu mahal bagi saya.
+    answers: [Terlalu mahal untuk saya., Terlalu mahal untuk saya, Terlalu mahal buat saya., Ini terlalu mahal untuk saya., Harganya terlalu mahal untuk saya., Terlalu mahal bagi saya.]
     words: [terlalu, mahal]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: فيه حاجة أرخص؟
-      ar: هل يوجد ما هو أرخص؟
-      en: Is there a cheaper one?
-    answers:
-      - Ada yang lebih murah?
-      - Ada yang lebih murah
-      - Apakah ada yang lebih murah?
-      - Ada yang lebih murah, Bu?
-    words: [lebih, murah]
-  - id: e07
     type: build_sentence
     source:
       ar_eg: الصغير أخف.
@@ -122,29 +96,16 @@ exercises:
     answer: Yang kecil lebih ringan.
     distractors: [paling, besar]
     words: [lebih, ringan, kecil]
-  - id: e08
-    type: translate
-    direction: from_target
-    source_text: Agak kecil, tapi suaranya lumayan.
-    answers_meaning:
-      ar_eg: ["صغير شوية، بس صوته مش بطال", "صغير حبتين بس صوته كويس"]
-      ar: ["صغير قليلًا، لكن صوته لا بأس به", "صغير نوعًا ما لكن صوته مقبول"]
-      en: ["It's a bit small, but it sounds not bad.", "A bit small, but the sound is not bad.", "It's rather small, but it sounds OK."]
-    words: [agak, lumayan, suara]
-  - id: e09
+  - id: e07
     type: translate
     direction: to_target
     source_meaning:
       ar_eg: البامبو بتاعه قوي وصوته جميل.
       ar: خيزرانه متين وصوته جميل.
       en: Its bamboo is strong and it sounds beautiful.
-    answers:
-      - Bambunya kuat dan suaranya indah.
-      - Bambunya kuat dan suaranya indah
-      - Bambunya kuat, suaranya indah.
-      - Bambunya kuat dan suaranya bagus.
+    answers: [Bambunya kuat dan suaranya indah., Bambunya kuat dan suaranya indah, 'Bambunya kuat, suaranya indah.', Bambunya kuat dan suaranya bagus.]
     words: [kuat, bambu, indah]
-  - id: e10
+  - id: e08
     type: fill_blank
     sentence: Gitar ini bagus, tapi ___ berat untuk saya.
     meaning:
@@ -153,7 +114,7 @@ exercises:
       en: This guitar is nice, but too heavy for me.
     answers: [terlalu]
     words: [terlalu, berat]
-  - id: e11
+  - id: e09
     type: dictation
     text: Saya beli yang ini saja.
     meaning:
@@ -161,7 +122,7 @@ exercises:
       ar: سأشتري هذا فقط.
       en: I'll just take this one.
     words: [beli]
-  - id: e12
+  - id: e10
     type: speaking
     text: Wah, terlalu mahal untuk saya. Ada yang lebih murah?
     meaning:
@@ -172,21 +133,6 @@ exercises:
 dialogue:
   title: Di toko Bu Komang, Ubud
   lines:
-    - speaker: Bu Komang
-      text: Selamat siang! Mau cari apa?
-      ar_eg: نهارك سعيد! بتدوّر على إيه؟
-      ar: طاب نهارك! عمّ تبحث؟
-      en: Good afternoon! What are you looking for?
-    - speaker: Mohamed
-      text: Saya mau beli suling. Mana yang paling bagus?
-      ar_eg: عايز أشتري ناي. أنهي أحسن واحد؟
-      ar: أريد أن أشتري نايًا. أيها الأفضل؟
-      en: I want to buy a flute. Which is the best?
-    - speaker: Bu Komang
-      text: Yang ini terbaik. Bambunya kuat dan suaranya indah.
-      ar_eg: ده الأحسن. البامبو بتاعه قوي وصوته جميل.
-      ar: هذا هو الأفضل؛ خيزرانه متين وصوته جميل.
-      en: This one is the best. The bamboo is strong and it sounds beautiful.
     - speaker: Mohamed
       text: Berapa harganya?
       ar_eg: بكام؟

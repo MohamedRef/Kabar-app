@@ -62,11 +62,11 @@ exercises:
       ar_eg: صاحبك Dimas. «إنت» = ؟
       ar: صديقك Dimas. «أنت» = ؟
       en: Your friend Dimas. "You" = ?
-    options: ["panjenengan", "kowé", "sampéyan"]
+    options: [panjenengan, kowé, sampéyan]
     answer: 1
     explain:
-      ar_eg: "صاحبك: kowé."
-      ar: "الصديق: kowé."
+      ar_eg: 'صاحبك: kowé.'
+      ar: 'الصديق: kowé.'
       en: A friend — kowé.
     words: [kowé]
   - id: e03
@@ -75,11 +75,11 @@ exercises:
       ar_eg: Bu Siti البياعة في Pasar Gede. «إنتي» = ؟
       ar: Bu Siti البائعة في Pasar Gede. «أنتِ» = ؟
       en: Bu Siti, the seller at Pasar Gede. "You" = ?
-    options: ["sampéyan", "dheweke", "kowé"]
+    options: [sampéyan, dheweke, kowé]
     answer: 0
     explain:
-      ar_eg: "البياعة: sampéyan (مؤدبة ويومية)."
-      ar: "البائعة: sampéyan (مهذبة يومية)."
+      ar_eg: 'البياعة: sampéyan (مؤدبة ويومية).'
+      ar: 'البائعة: sampéyan (مهذبة يومية).'
       en: A seller — sampéyan (polite, everyday).
     words: [sampéyan]
   - id: e04
@@ -88,60 +88,47 @@ exercises:
       ar_eg: جدة Dimas. «حضرتك» = ؟
       ar: جدة Dimas. «حضرتكِ» = ؟
       en: Dimas's grandmother. "You" = ?
-    options: ["panjenengan", "piyambakipun", "sampéyan"]
+    options: [panjenengan, piyambakipun, sampéyan]
     answer: 0
     explain:
-      ar_eg: "الجدة: panjenengan. piyambakipun = «هي» مش «إنتي»."
-      ar: "الجدة: panjenengan، أما piyambakipun فمعناها «هي»."
+      ar_eg: 'الجدة: panjenengan. piyambakipun = «هي» مش «إنتي».'
+      ar: 'الجدة: panjenengan، أما piyambakipun فمعناها «هي».'
       en: Grandma — panjenengan. Piyambakipun means "she", not "you".
     words: [panjenengan]
   - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: "بتحكي لـ Bu Siti عن Dimas (مش موجود): «هو من يوجيا». أنهي جملة؟"
-      ar: "تحدّث Bu Siti عن Dimas الغائب: «هو من يوغياكرتا». أيّ جملة؟"
-      en: You tell Bu Siti about Dimas (not there) — "He's from Yogya". Which sentence?
-    options: ["Dheweke saka Yogya.", "Piyambakipun saking Yogya.", "Panjenengan saking Yogya."]
-    answer: 1
-    explain:
-      ar_eg: "مع Bu Siti بتتكلم كراما: piyambakipun + saking. الأولى ngoko، والتالتة معناها «حضرتك من يوجيا»."
-      ar: "مع Bu Siti تتكلم بالكراما: piyambakipun مع saking. والأولى ngoko، والثالثة معناها «أنتم من يوغياكرتا»."
-      en: With Bu Siti you speak krama — piyambakipun + saking. The first is ngoko; the third means "you're from Yogya".
-    words: [piyambakipun, saking]
-  - id: e06
     type: listen
     text: Dalem, Mbah?
-    options: ["Dalem, Mbah?", "Dèrèng, Mbah.", "Inggih, Mbak."]
+    options: ['Dalem, Mbah?', 'Dèrèng, Mbah.', 'Inggih, Mbak.']
     answer: 0
     words: [dalem]
-  - id: e07
+  - id: e06
     type: fill_blank
     sentence: Nami ___ Mohamed, Bu.
     meaning:
       ar_eg: اسمي محمد يا مدام.
       ar: اسمي محمد يا سيدتي.
       en: My name is Mohamed, ma'am.
-    answers: ["kula", "kulo"]
+    answers: [kula, kulo]
     explain:
-      ar_eg: "«اسمي» بالكراما: nami kula."
-      ar: "«اسمي» بالكراما: nami kula."
+      ar_eg: '«اسمي» بالكراما: nami kula.'
+      ar: '«اسمي» بالكراما: nami kula.'
       en: '"My name" in krama: nami kula.'
     words: [nami, kula]
-  - id: e08
+  - id: e07
     type: fill_blank
     sentence: Menika griya ___, Mbah?
     meaning:
       ar_eg: ده بيت حضرتك يا تيتة؟
       ar: أهذا بيتك يا جدتي؟
       en: Is this your house, Grandma?
-    options: ["kula", "kowé", "panjenengan"]
+    options: [kula, kowé, panjenengan]
     answers: [panjenengan]
     explain:
-      ar_eg: "«بيتك» للجدة: griya panjenengan. griya kula = بيتي."
-      ar: "«بيتكِ» للجدة: griya panjenengan، أما griya kula فـ«بيتي»."
+      ar_eg: '«بيتك» للجدة: griya panjenengan. griya kula = بيتي.'
+      ar: '«بيتكِ» للجدة: griya panjenengan، أما griya kula فـ«بيتي».'
       en: '"Your house" to Grandma: griya panjenengan. Griya kula = my house.'
     words: [griya, panjenengan]
-  - id: e09
+  - id: e08
     type: build_sentence
     source:
       ar_eg: حضرتك كلت يا أستاذ؟ (لراجل غريب في سنك)
@@ -150,38 +137,29 @@ exercises:
     answer: Sampéyan sampun nedha, Mas?
     distractors: [kowé, wis]
     words: [sampéyan, sampun, nedha]
-  - id: e10
+  - id: e09
     type: translate
     direction: to_target
     source_meaning:
       ar_eg: اسمي محمد، من مصر. (بالكراما)
       ar: اسمي محمد، من مصر. (بالكراما)
       en: My name is Mohamed, from Egypt. (krama)
-    answers: ["Nami kula Mohamed, saking Mesir.", "Nami kulo Mohamed, saking Mesir.", "Nami kula Mohamed, saking Mesir", "Nami kulo Mohamed, saking Mesir", "Nami kula Mohamed. Kula saking Mesir.", "Nami kulo Mohamed. Kulo saking Mesir.", "Nami kula Mohamed. Kula saking Mesir", "Nami kulo Mohamed. Kulo saking Mesir", "Nami kula Mohamed, kula saking Mesir.", "Nami kulo Mohamed, kulo saking Mesir.", "Nami kula Mohamed, kula saking Mesir", "Nami kulo Mohamed, kulo saking Mesir"]
+    answers: ['Nami kula Mohamed, saking Mesir.', 'Nami kulo Mohamed, saking Mesir.', 'Nami kula Mohamed, saking Mesir', 'Nami kulo Mohamed, saking Mesir', Nami kula Mohamed. Kula saking Mesir., Nami kulo Mohamed. Kulo saking Mesir., Nami kula Mohamed. Kula saking Mesir, Nami kulo Mohamed. Kulo saking Mesir, 'Nami kula Mohamed, kula saking Mesir.', 'Nami kulo Mohamed, kulo saking Mesir.', 'Nami kula Mohamed, kula saking Mesir', 'Nami kulo Mohamed, kulo saking Mesir']
     words: [nami, kula, saking]
-  - id: e11
+  - id: e10
     type: translate
     direction: to_target
     source_meaning:
       ar_eg: هي كلت خلاص. (بتتكلم بأدب عن Bu Siti)
       ar: قد أكلَتْ. (تتحدث بأدب عن Bu Siti)
       en: She has eaten. (speaking politely about Bu Siti)
-    answers: ["Piyambakipun sampun nedha.", "Piyambakipun sampun nedha", "Bu Siti sampun nedha.", "Bu Siti sampun nedha"]
+    answers: [Piyambakipun sampun nedha., Piyambakipun sampun nedha, Bu Siti sampun nedha., Bu Siti sampun nedha]
     explain:
       ar_eg: هي بالكراما piyambakipun، والفعل nedha (krama عادية).
       ar: «هي» بالكراما piyambakipun، والفعل nedha.
       en: '"She" in krama is piyambakipun, with nedha.'
     words: [piyambakipun, sampun, nedha]
-  - id: e12
-    type: translate
-    direction: from_target
-    source_text: Panjenengan sampun dhahar, Pak?
-    answers_meaning:
-      ar_eg: ["حضرتك أكلت يا أستاذ؟", "حضرتك كلت يا أستاذ؟", "سيادتك أكلت يا فندم؟"]
-      ar: ["هل تفضلتَ بالأكل يا سيدي؟", "هل أكلتَ يا سيدي؟"]
-      en: ["Have you eaten, sir?", "Have you eaten yet, sir?"]
-    words: [panjenengan, dhahar]
-  - id: e13
+  - id: e11
     type: dictation
     text: Piyambakipun saking Yogya.
     meaning:
@@ -189,7 +167,7 @@ exercises:
       ar: هو من يوغياكرتا.
       en: He's from Yogya.
     words: [piyambakipun, saking]
-  - id: e14
+  - id: e12
     type: speaking
     text: Dalem, Mbah? Inggih, kula sampun nedha.
     meaning:
@@ -234,7 +212,7 @@ souvenir:
   id: j3.u02.souvenir
   title: Pasar Gede
   note:
-    ar_eg: "Pasar Gede هو أكبر وأقدم سوق في سولو، ببوابته الكبيرة ودوشة البياعين من الفجر. هنا هتسمع «sampéyan» في كل حتة: مؤدبة بس دافية، زي «حضرتك» بتاعة السوق. ولما تقابل حد كبير، panjenengan بتفتحلك القلوب."
+    ar_eg: 'Pasar Gede هو أكبر وأقدم سوق في سولو، ببوابته الكبيرة ودوشة البياعين من الفجر. هنا هتسمع «sampéyan» في كل حتة: مؤدبة بس دافية، زي «حضرتك» بتاعة السوق. ولما تقابل حد كبير، panjenengan بتفتحلك القلوب.'
     ar: Pasar Gede أكبر أسواق سولو وأعرقها، ببوابته الكبيرة وصخب الباعة منذ الفجر. وفيه تسمع «sampéyan» في كل مكان، مهذبة دافئة كـ«حضرتك» في الأسواق. أما مع الكبار فتفتح لك panjenengan القلوب.
     en: Pasar Gede is Solo's great old market, with its grand gateway and sellers busy from dawn. Here you'll hear "sampéyan" everywhere — polite but warm, the market's «حضرتك». And with elders, panjenengan opens every heart.
 review:

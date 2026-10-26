@@ -1,0 +1,177 @@
+schema: kabar.lesson/v1
+id: bipa1.u04.l07
+language: id
+title: Senin, Selasa, Rabu
+can_do:
+  ar_eg: تقول الأيام من الاتنين للجمعة والنهارده إيه.
+  ar: أن تذكر الأيام من الاثنين إلى الجمعة وما اليوم.
+  en: Say the days from Monday to Friday and what day it is.
+slides:
+  - title: Senin, Selasa, Rabu…
+    body:
+      ar_eg: |
+        هتفرح: ستة من سبع أيام الأسبوع جايين من العربي!
+        Senin (الاتنين) · Selasa (التلات) · Rabu (الأربع) · Kamis (الخميس) · Jumat (الجمعة) · Sabtu (السبت)
+        والحد = Minggu، من البرتغالي domingo. (وفيه كمان Ahad من «الأحد» بس أقل.)
+        وMinggu بحرف صغير = أسبوع: dua minggu = أسبوعين.
+      ar: |
+        ستّة من أيام الأسبوع السبعة عربية الأصل:
+        Senin (الاثنين) · Selasa (الثلاثاء) · Rabu (الأربعاء) · Kamis (الخميس) · Jumat (الجمعة) · Sabtu (السبت)
+        أما الأحد فهو Minggu، من البرتغالية domingo، وتوجد أيضًا Ahad من «الأحد» لكنها أقل شيوعًا.
+        وminggu بحرف صغير تعني «أسبوع»: dua minggu = أسبوعان.
+      en: |
+        Good news: six of the seven weekdays come from Arabic!
+        Senin (Mon) · Selasa (Tue) · Rabu (Wed) · Kamis (Thu) · Jumat (Fri) · Sabtu (Sat)
+        Sunday is Minggu, from Portuguese domingo (Ahad, from «الأحد», also exists but is less common).
+        Lower-case minggu means "week": dua minggu = two weeks.
+    grammar: id.time.calendar
+    examples:
+      - text: Hari ini hari apa? — Hari ini hari Jumat.
+        ar_eg: النهارده إيه؟ — النهارده الجمعة.
+        ar: ما اليوم؟ — اليوم الجمعة.
+        en: What day is it today? — Today is Friday.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: Senin
+        ar_eg: الاتنين
+        ar: الاثنين
+        en: Monday
+      - text: Selasa
+        ar_eg: التلات
+        ar: الثلاثاء
+        en: Tuesday
+      - text: Rabu
+        ar_eg: الأربع
+        ar: الأربعاء
+        en: Wednesday
+      - text: Kamis
+        ar_eg: الخميس
+        ar: الخميس
+        en: Thursday
+      - text: Jumat
+        ar_eg: الجمعة
+        ar: الجمعة
+        en: Friday
+    words: [Senin, Selasa, Rabu, Kamis, Jumat]
+  - id: e02
+    type: fill_blank
+    sentence: Hari ini hari ___? — Hari Jumat.
+    meaning:
+      ar_eg: النهارده إيه؟ — الجمعة.
+      ar: ما اليوم؟ — الجمعة.
+      en: What day is it today? — Friday.
+    options: [siapa, apa, berapa]
+    answers: [apa]
+    explain:
+      ar_eg: اسم اليوم مش رقم، يبقى apa. للتاريخ بنقول tanggal berapa.
+      ar: اسم اليوم ليس عددًا فيُسأل عنه بـ apa، أما التاريخ فـ tanggal berapa.
+      en: A day name isn't a number, so it's apa; for the date, tanggal berapa.
+    words: [hari, apa]
+  - id: e03
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: النهارده الجمعة.
+      ar: اليوم الجمعة.
+      en: Today is Friday.
+    answers: [Hari ini hari Jumat., Hari ini hari Jumat, Hari ini Jumat., Hari ini Jumat, Sekarang hari Jumat.]
+    words: [hari ini, Jumat]
+  - id: e04
+    type: dictation
+    text: Hari ini hari Senin.
+    meaning:
+      ar_eg: النهارده الاتنين.
+      ar: اليوم الاثنين.
+      en: Today is Monday.
+    words: [hari ini, Senin]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه اليوم اللي بعد Rabu؟
+      ar: ما اليوم الذي يلي Rabu؟
+      en: Which day comes after Rabu?
+    options: [Selasa, Kamis, Senin]
+    answer: 1
+    explain:
+      ar_eg: Rabu = الأربع (أربعاء)، وبعده Kamis = الخميس. الأيام جاية من العربي!
+      ar: Rabu = الأربعاء، ويليه Kamis = الخميس. أسماء الأيام عربية الأصل!
+      en: Rabu = Wednesday (Arabic arbaʿāʾ), then Kamis = Thursday (khamīs). The days come from Arabic!
+    words: [Rabu, Kamis]
+  - id: e06
+    type: listen
+    text: Hari ini hari Kamis.
+    options: [Hari ini hari Jumat., Hari ini hari Selasa., Hari ini hari Kamis.]
+    answer: 2
+    meaning:
+      ar_eg: النهارده الخميس.
+      ar: اليوم الخميس.
+      en: Today is Thursday.
+    words: [hari ini, Kamis]
+dialogue:
+  lines:
+    - speaker: Mohamed
+      text: Rina, hari ini hari apa?
+      ar_eg: رينا، النهارده إيه؟
+      ar: رينا، ما اليوم؟
+      en: Rina, what day is it today?
+    - speaker: Rina
+      text: Hari ini hari Rabu.
+      ar_eg: النهارده الأربع.
+      ar: اليوم الأربعاء.
+      en: Today is Wednesday.
+    - speaker: Mohamed
+      text: Rabu? Kursus bahasa Indonesia hari Kamis, ya?
+      ar_eg: الأربع؟ كورس الإندونيسي يوم الخميس، صح؟
+      ar: الأربعاء؟ دورة الإندونيسية يوم الخميس، صحيح؟
+      en: Wednesday? The Indonesian course is on Thursday, right?
+    - speaker: Rina
+      text: Ya, hari Kamis dan hari Jumat.
+      ar_eg: أيوه، الخميس والجمعة.
+      ar: نعم، الخميس والجمعة.
+      en: Yes, Thursday and Friday.
+new_words:
+  - word: hari
+    pos: noun
+    ar_eg: يوم
+    ar: يوم
+    en: day
+  - word: hari ini
+    pos: adverb
+    ar_eg: النهارده
+    ar: اليوم
+    en: today
+  - word: Senin
+    pos: noun
+    ar_eg: الاتنين
+    ar: الاثنين
+    en: Monday
+    arabic: الاثنين
+  - word: Selasa
+    pos: noun
+    ar_eg: التلات
+    ar: الثلاثاء
+    en: Tuesday
+    arabic: الثلاثاء
+  - word: Rabu
+    pos: noun
+    ar_eg: الأربع
+    ar: الأربعاء
+    en: Wednesday
+    arabic: الأربعاء
+  - word: Kamis
+    pos: noun
+    ar_eg: الخميس
+    ar: الخميس
+    en: Thursday
+    arabic: الخميس
+  - word: Jumat
+    pos: noun
+    ar_eg: الجمعة
+    ar: الجمعة
+    en: Friday
+    arabic: الجمعة
+review:
+  status: draft
+  verified: false

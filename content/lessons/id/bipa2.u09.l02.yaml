@@ -122,101 +122,30 @@ exercises:
         en: banget (really, so)
     words: [yang, nggak, sudah, banget]
   - id: e02
-    type: match_pairs
-    pairs:
-      - text: dr
-        ar_eg: dari (من)
-        ar: dari (من)
-        en: dari (from)
-      - text: utk
-        ar_eg: untuk (عشان / لـ)
-        ar: untuk (لأجل)
-        en: untuk (for)
-      - text: tp
-        ar_eg: tapi (بس / لكن)
-        ar: tapi (لكن)
-        en: tapi (but)
-      - text: blm
-        ar_eg: belum (لسه)
-        ar: belum (لم … بعد)
-        en: belum (not yet)
-    words: [dari, untuk, tapi, belum]
-  - id: e03
-    type: multiple_choice
-    question: hati2 di jln ya
-    question_meaning:
-      ar_eg: إيه الكتابة الكاملة للرسالة دي؟
-      ar: ما الكتابة الكاملة لهذه الرسالة؟
-      en: What is this message written out in full?
-    options: ["Hati di jalan, ya.", "Hati-hati di jalan, ya.", "Hati-hati di jalan-jalan, ya."]
-    answer: 1
-    explain:
-      ar_eg: الرقم 2 = تكرار الكلمة، يعني hati-hati. وjln = jalan.
-      ar: "الرقم 2 يعني تكرار الكلمة: hati-hati، وjln = jalan."
-      en: 2 repeats the word (hati-hati); jln = jalan.
-    words: [hati-hati]
-  - id: e04
     type: multiple_choice
     question: gk papa kok, santai aja
     question_meaning:
       ar_eg: إيه الكتابة الكاملة؟
       ar: ما الكتابة الكاملة؟
       en: Which is the full spelling?
-    options: ["Sudah apa-apa kok, santai saja.", "Nggak apa-apa kok, sama saja.", "Nggak apa-apa kok, santai saja."]
+    options: ['Sudah apa-apa kok, santai saja.', 'Nggak apa-apa kok, sama saja.', 'Nggak apa-apa kok, santai saja.']
     answer: 2
     explain:
       ar_eg: gk = nggak، papa = apa-apa (في الكلام)، aja = saja.
       ar: gk = nggak، وpapa = apa-apa، وaja = saja.
       en: gk = nggak, papa = apa-apa (spoken), aja = saja.
     words: [nggak, saja]
-  - id: e05
-    type: multiple_choice
-    question: udh smp blm? aku otw nih
-    question_meaning:
-      ar_eg: ديماس بعتلك الرسالة دي. معناها إيه بالإندونيسي الكامل؟
-      ar: أرسل إليك ديماس هذه الرسالة. ما صيغتها الكاملة؟
-      en: Dimas sent you this. What is it in full Indonesian?
-    options: ["Sudah sampai di mana? Aku belum berangkat.", "Belum sampai? Aku tidak ikut.", "Sudah sampai belum? Aku on the way nih."]
-    answer: 2
-    words: [sudah, sampai, belum, otw]
-  - id: e06
+  - id: e03
     type: fill_blank
     sentence: pantainya bagus ___!
     meaning:
       ar_eg: (شات) البحر حلو أوي!
       ar: (محادثة) الشاطئ جميل جدًا!
       en: (chat) The beach is really nice!
-    options: ["dr", "yg", "bgt"]
+    options: [dr, yg, bgt]
     answers: [bgt]
     words: [banget]
-  - id: e07
-    type: fill_blank
-    sentence: aku ___ sampai di Lovina
-    meaning:
-      ar_eg: (شات) أنا وصلت لوفينا خلاص.
-      ar: (محادثة) لقد وصلت إلى لوفينا.
-      en: (chat) I've arrived in Lovina.
-    options: ["blm", "gk", "udh"]
-    answers: [udh]
-    explain:
-      ar_eg: udh = sudah (خلاص حصل). blm = لسه، وgk = لأ.
-      ar: udh = sudah، أما blm فمعناها «لم بعد» وgk للنفي.
-      en: udh = sudah (already); blm = not yet, gk = not.
-    words: [sudah]
-  - id: e08
-    type: fill_blank
-    sentence: hotel ___ di dekat pantai bagus bgt
-    meaning:
-      ar_eg: (شات) الفندق اللي جنب البحر حلو أوي.
-      ar: (محادثة) الفندق الذي قرب الشاطئ جميل جدًا.
-      en: (chat) The hotel near the beach is really nice.
-    answers: [yg, yang]
-    explain:
-      ar_eg: «اللي» = yang، وفي الشات yg.
-      ar: «الذي» = yang، وتُختصر yg.
-      en: '"which" = yang, shortened to yg.'
-    words: [yang]
-  - id: e09
+  - id: e04
     type: build_sentence
     source:
       ar_eg: (شات) وصلت ولا لسه؟ أنا في السكة أهو.
@@ -225,46 +154,20 @@ exercises:
     answer: udh smp blm? aku otw nih
     distractors: [yg, bgt]
     words: [sudah, sampai, belum, otw]
-  - id: e10
-    type: build_sentence
-    source:
-      ar_eg: (شات) خلي بالك في الطريق، ماشي؟
-      ar: (محادثة) انتبه في الطريق.
-      en: (chat) Be careful on the road, OK?
-    answer: hati2 di jln ya
-    distractors: [gk, udh]
-    words: [hati-hati, jalan]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: aku blm makan, km udh?
-    answers_meaning:
-      ar_eg: ["أنا لسه ماكلتش، وإنت أكلت؟", "أنا لسه ماكلتش، إنت أكلت ولا لأ؟"]
-      ar: ["لم آكل بعد، وأنت هل أكلت؟", "لم أتناول الطعام بعد، هل أكلت أنت؟"]
-      en: ["I haven't eaten yet, have you?", "I haven't eaten yet. Have you?"]
-    words: [belum, kamu, sudah]
-  - id: e12
+  - id: e05
     type: multiple_choice
     question_meaning:
       ar_eg: هتبعت رسالة لبك بودي (المدرس). أنهي واحدة مناسبة؟
       ar: سترسل رسالة إلى الأستاذ بودي. أيّها مناسبة؟
       en: You're texting Pak Budi, your teacher. Which message fits?
-    options: ["Selamat pagi, Pak. Saya sudah sampai di Lovina.", "pagi pak, sy udh smp lovina wkwk"]
+    options: ['Selamat pagi, Pak. Saya sudah sampai di Lovina.', 'pagi pak, sy udh smp lovina wkwk']
     answer: 0
     explain:
       ar_eg: الاختصارات وwkwk للصحاب بس. مع المدرس اكتب كامل وبأدب.
       ar: الاختصارات وwkwk للأصدقاء، ومع المعلم تُكتب الكلمات كاملة.
       en: Abbreviations and wkwk are for friends; write in full to a teacher.
     words: [wkwk]
-  - id: e13
-    type: dictation
-    text: Aku sudah sampai di Lovina.
-    meaning:
-      ar_eg: أنا وصلت لوفينا.
-      ar: وصلت إلى لوفينا.
-      en: I've arrived in Lovina.
-    words: [sudah, sampai]
-  - id: e14
+  - id: e06
     type: speaking
     text: Hati-hati di jalan, ya!
     meaning:
@@ -341,11 +244,6 @@ new_words:
     ar_eg: هههه
     ar: ضحك (هههه)
     en: haha
-  - word: mantap
-    pos: adjective
-    ar_eg: جامد! / تحفة!
-    ar: رائع!
-    en: awesome, great (informal)
   - word: makasih
     pos: interjection
     ar_eg: شكرًا (عامية من terima kasih)

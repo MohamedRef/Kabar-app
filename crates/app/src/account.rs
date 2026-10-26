@@ -3,7 +3,7 @@
 
 use dioxus::prelude::*;
 use kabar_core::locale::{UiLanguage, format_number};
-use kabar_protocol::cloud::{DeviceSummary, Platform};
+use kabar_protocol::cloud::{DeviceSummary, Platform, UsageReport};
 use kabar_protocol::sync::OpKind;
 use tokio::sync::mpsc::UnboundedSender;
 
@@ -16,6 +16,8 @@ use crate::{Db, Ui};
 pub struct Cloud {
     pub status: Signal<CloudStatus>,
     pub devices: Signal<Option<Result<Vec<DeviceSummary>, Problem>>>,
+    /// The cost dashboard's counters, once asked for.
+    pub usage: Signal<Option<Result<UsageReport, Problem>>>,
     pub signing_in: Signal<bool>,
     /// Bumped when remote ops change rows the UI shows.
     pub revision: Signal<u64>,
@@ -30,7 +32,7 @@ impl Cloud {
     }
 }
 
-fn problem_msg(p: Problem) -> Msg {
+pub fn problem_msg(p: Problem) -> Msg {
     match p {
         Problem::NotConfigured => Msg::CloudNotConfigured,
         Problem::NotAllowed => Msg::ProblemNotAllowed,

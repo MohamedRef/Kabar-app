@@ -172,7 +172,7 @@
         "can_do": { "type": "string", "minLength": 1 },
         "grammar": { "type": "array", "items": { "$ref": "#/$defs/grammar_id" } },
         "vocabulary": { "$ref": "#/$defs/strings" },
-        "minutes": { "type": "integer", "minimum": 5, "maximum": 30 }
+        "minutes": { "type": "integer", "minimum": 3, "maximum": 7, "description": "Estimated minutes; a lesson fits in 7 (docs/PEDAGOGY.md)." }
       }
     }
   }

@@ -14,7 +14,7 @@ use std::collections::BTreeSet;
 use std::path::PathBuf;
 
 use kabar_protocol::DeviceId;
-use kabar_protocol::cloud::{DeviceInfo, DeviceSummary};
+use kabar_protocol::cloud::{DeviceInfo, DeviceSummary, UsageReport};
 use tokio::sync::mpsc::{UnboundedReceiver, UnboundedSender, unbounded_channel};
 
 use self::oauth::GoogleClient;
@@ -55,6 +55,8 @@ pub enum Command {
     SignOut,
     LoadDevices,
     RevokeDevice(DeviceId),
+    /// Read the cost dashboard's counters (`GET /v1/usage`).
+    LoadUsage,
     /// A local write landed in the outbox.
     Kick,
     /// A fresh access token for calls made off the sync thread (AI, TTS).
@@ -72,6 +74,7 @@ pub enum Command {
 pub enum Event {
     Status(CloudStatus),
     Devices(Result<Vec<DeviceSummary>, Problem>),
+    Usage(Result<UsageReport, Problem>),
     /// Remote ops changed these tables.
     Changed(BTreeSet<String>),
     /// The browser is open for Google sign-in.
