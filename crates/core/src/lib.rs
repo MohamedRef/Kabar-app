@@ -3,6 +3,7 @@
 //! and tests.
 
 pub mod clock;
+pub mod lang;
 pub mod layout;
 pub mod locale;
 pub mod penlab;
