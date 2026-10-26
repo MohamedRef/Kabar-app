@@ -1,16 +1,1373 @@
-//! Review screens (SPEC §16): classic cards, Card Wall, quick bursts.
+//! Review screens (SPEC §16): classic cards, the Card Wall, and one-minute
+//! bursts, on top of `kabar_core::review` (queues, stats) and the FSRS
+//! scheduler. Card state is always derived from the review log.
+
+use std::rc::Rc;
 
 use dioxus::prelude::*;
+use kabar_core::layout::WidthClass;
+use kabar_core::locale::{UiLanguage, format_number};
+use kabar_core::review::{
+    AnswerMatch, BURST_MS, Deck, Session, Span, Summary, cloze, compare_answer, is_quick, seed_bridge_deck,
+    seed_words, wall_rating,
+};
+use kabar_core::srs::{Pile, Scheduler};
+use kabar_protocol::lesson::Localized;
+use kabar_protocol::srs::{Card, CardKind, MeaningShift, Rating, ReviewMode, StudyLanguage};
+use serde::Deserialize;
 
-use crate::Ui;
 use crate::i18n::Msg;
+use crate::{Db, Ui};
+
+const REVIEW_CSS: &str = include_str!("../assets/review.css");
+const WALL_JS: &str = include_str!("../assets/wall.js");
+
+/// Classic-review keys, from anywhere on the page: Space reveals, 1–4 rate,
+/// Ctrl/⌘+Z undoes. Never while typing an answer. Space is taken over on
+/// buttons too, so it can't re-press a focused button by accident.
+const KEYS_JS: &str = r#"
+if (window.__kabarKeys) window.__kabarKeys();
+const typing = (t) =>
+  t && (t.tagName === "TEXTAREA" || (t.tagName === "INPUT" && !t.readOnly) || t.isContentEditable);
+const down = (e) => {
+  if (!document.getElementById("review-classic")) return off();
+  if (e.altKey || e.repeat || typing(e.target)) return;
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") {
+    e.preventDefault();
+    return dioxus.send("undo");
+  }
+  if (e.ctrlKey || e.metaKey) return;
+  if (e.key === " " || /^[1-4]$/.test(e.key)) {
+    e.preventDefault();
+    dioxus.send(e.key);
+  }
+};
+const up = (e) => {
+  if (e.key === " " && !typing(e.target) && document.getElementById("review-classic")) e.preventDefault();
+};
+document.addEventListener("keydown", down);
+document.addEventListener("keyup", up);
+function off() {
+  document.removeEventListener("keydown", down);
+  document.removeEventListener("keyup", up);
+  if (window.__kabarKeys === off) window.__kabarKeys = null;
+}
+window.__kabarKeys = off;
+await new Promise(() => {});
+"#;
+
+fn now_ms() -> u64 {
+    std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .map(|d| d.as_millis() as u64)
+        .unwrap_or_default()
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+enum View {
+    Home,
+    Classic,
+    Wall,
+    Burst,
+    Done,
+}
+
+/// Review state shared by the review views.
+#[derive(Clone)]
+struct Engine {
+    db: Db,
+    sched: Rc<Scheduler>,
+    deck: Signal<Deck>,
+    session: Signal<Option<Session>>,
+    view: Signal<View>,
+    summary: Signal<Option<Summary>>,
+    error: Signal<Option<Msg>>,
+}
+
+impl PartialEq for Engine {
+    fn eq(&self, other: &Self) -> bool {
+        self.db == other.db && Rc::ptr_eq(&self.sched, &other.sched)
+    }
+}
+
+fn load_deck(db: &Db, sched: &Scheduler) -> Deck {
+    let store = db.0.borrow();
+    let cards = store.cards().unwrap_or_else(|e| {
+        eprintln!("kabar: reading cards failed: {e}");
+        Vec::new()
+    });
+    let log = store.review_log().unwrap_or_else(|e| {
+        eprintln!("kabar: reading the review log failed: {e}");
+        Vec::new()
+    });
+    Deck::new(cards, log, sched)
+}
+
+fn fits(mode: ReviewMode) -> fn(&Card) -> bool {
+    match mode {
+        ReviewMode::Classic => |_| true,
+        ReviewMode::CardWall | ReviewMode::Burst => is_quick,
+    }
+}
+
+impl Engine {
+    fn queue_len(&self, mode: ReviewMode, now: u64) -> usize {
+        self.deck.read().queue(&self.sched, now, fits(mode)).len()
+    }
+
+    fn start(&self, mode: ReviewMode) {
+        let now = now_ms();
+        let queue = self.deck.read().queue(&self.sched, now, fits(mode));
+        let (mut session, mut view, mut error) = (self.session, self.view, self.error);
+        session.set(Some(Session::new(mode, queue, now)));
+        error.set(None);
+        view.set(match mode {
+            ReviewMode::Classic => View::Classic,
+            ReviewMode::CardWall => View::Wall,
+            ReviewMode::Burst => View::Burst,
+        });
+    }
+
+    fn pull(&self) -> Option<String> {
+        let mut session = self.session;
+        session.write().as_mut().and_then(Session::pull)
+    }
+
+    fn put_back(&self, card_id: String) {
+        let mut session = self.session;
+        if let Some(s) = session.write().as_mut() {
+            s.put_back(card_id);
+        }
+    }
+
+    fn mode(&self) -> ReviewMode {
+        self.session.read().as_ref().map_or(ReviewMode::Classic, |s| s.mode)
+    }
+
+    /// Writes the answer to the log, then updates the deck and the session.
+    fn answer(&self, card_id: &str, rating: Rating, duration_ms: u64) -> bool {
+        let mode = self.mode();
+        let duration = duration_ms.min(u64::from(u32::MAX)) as u32;
+        let recorded = self.db.0.borrow_mut().record_review(card_id, rating, now_ms(), duration, mode);
+        let (mut deck, mut session, mut error) = (self.deck, self.session, self.error);
+        match recorded {
+            Ok(event) => {
+                let id = event.id.clone();
+                deck.write().record(event, &self.sched);
+                if let Some(s) = session.write().as_mut() {
+                    s.answer(id, card_id.to_string(), rating, duration);
+                }
+                error.set(None);
+                true
+            }
+            Err(e) => {
+                eprintln!("kabar: saving a review failed: {e}");
+                error.set(Some(Msg::RevSaveFailed));
+                false
+            }
+        }
+    }
+
+    fn can_undo(&self) -> bool {
+        self.session.read().as_ref().is_some_and(|s| !s.answers().is_empty())
+    }
+
+    /// Takes back the last answer; its card goes to the front of the queue.
+    fn undo(&self) -> bool {
+        let mut session = self.session;
+        let Some(answer) = session.write().as_mut().and_then(Session::undo) else { return false };
+        match self.db.0.borrow_mut().undo_review(&answer.event_id) {
+            Ok(_) => {
+                let mut deck = self.deck;
+                deck.write().forget(&answer.event_id, &self.sched);
+                true
+            }
+            Err(e) => {
+                eprintln!("kabar: undo failed: {e}");
+                false
+            }
+        }
+    }
+
+    /// Ends the session (once: effects may ask twice before unmounting).
+    fn finish(&self) {
+        let (mut session, mut summary, mut view) = (self.session, self.summary, self.view);
+        let Some(done) = session.write().take() else { return };
+        if done.answers().is_empty() {
+            // Nothing answered: no summary to show, just go back.
+            view.set(View::Home);
+            return;
+        }
+        summary.set(Some(done.summary(now_ms())));
+        view.set(View::Done);
+    }
+
+    fn home(&self) {
+        let (mut session, mut view) = (self.session, self.view);
+        session.set(None);
+        view.set(View::Home);
+    }
+
+    fn seed(&self) {
+        let mut deck = self.deck;
+        if let Err(e) = self.db.0.borrow_mut().upsert_cards(&seed_bridge_deck()) {
+            eprintln!("kabar: seeding the starter deck failed: {e}");
+            let mut error = self.error;
+            error.set(Some(Msg::RevSaveFailed));
+            return;
+        }
+        deck.set(load_deck(&self.db, &self.sched));
+    }
+
+    fn card(&self, id: &str) -> Option<Card> {
+        self.deck.read().card(id).cloned()
+    }
+}
+
+// ---------------------------------------------------------------- text helpers
+
+fn lang_of(ui: &Ui) -> (UiLanguage, bool) {
+    let s = ui.settings.read();
+    (s.ui_language, s.eastern_digits)
+}
+
+fn num(ui: &Ui, n: u64) -> String {
+    let (lang, eastern) = lang_of(ui);
+    format_number(n, lang, eastern)
+}
+
+fn percent(ui: &Ui, share: f32) -> String {
+    let (lang, eastern) = lang_of(ui);
+    let n = format_number((share * 100.0).round() as u64, lang, eastern);
+    if eastern && lang != UiLanguage::En { format!("{n}٪") } else { format!("{n}%") }
+}
+
+fn localized<'a>(ui: &Ui, l: &'a Localized) -> &'a str {
+    match ui.settings.read().ui_language {
+        UiLanguage::ArEg => &l.ar_eg,
+        UiLanguage::Ar => &l.ar,
+        UiLanguage::En => &l.en,
+    }
+}
+
+/// Text whose Latin snippets are marked with FSI…PDI (U+2068…U+2069), with
+/// each snippet rendered as a real `<bdi>`: not every WebView honors the
+/// isolate characters themselves.
+#[component]
+fn Isolated(text: String) -> Element {
+    let mut parts: Vec<(bool, String)> = Vec::new();
+    for (i, chunk) in text.split('\u{2068}').enumerate() {
+        match chunk.split_once('\u{2069}') {
+            Some((latin, rest)) if i > 0 => {
+                parts.push((true, latin.to_string()));
+                parts.push((false, rest.to_string()));
+            }
+            _ => parts.push((false, chunk.to_string())),
+        }
+    }
+    rsx! {
+        for (i, (latin, part)) in parts.into_iter().enumerate() {
+            if latin {
+                bdi { key: "{i}", class: "latin", "{part}" }
+            } else {
+                span { key: "{i}", "{part}" }
+            }
+        }
+    }
+}
+
+/// Applies the Eastern-digits setting to text that contains digits.
+fn localize_digits(ui: &Ui, s: &str) -> String {
+    let (lang, eastern) = lang_of(ui);
+    if eastern && lang != UiLanguage::En {
+        kabar_core::locale::eastern_arabic_digits(s)
+    } else {
+        s.to_string()
+    }
+}
+
+fn mm_ss(ui: &Ui, ms: u64) -> String {
+    let secs = ms / 1000;
+    localize_digits(ui, &format!("{}:{:02}", secs / 60, secs % 60))
+}
+
+/// A span in words. Arabic counts: 1 and 2 have their own forms, 3–10 take
+/// the plural, 11+ the singular. `after_prep`: MSA duals after «بعد».
+fn span_text(ui: &Ui, span: Span, after_prep: bool) -> String {
+    let (lang, eastern) = lang_of(ui);
+    let (n, unit) = match span {
+        Span::Minutes(n) => (n, 0),
+        Span::Hours(n) => (n, 1),
+        Span::Days(n) => (n, 2),
+        Span::Months(n) => (n, 3),
+        Span::Years(n) => (n, 4),
+    };
+    let d = format_number(n, lang, eastern);
+    let arabic = |forms: [(&str, &str, &str, &str); 5]| {
+        let (one, two, few, many) = forms[unit];
+        match n {
+            1 => one.to_string(),
+            2 => two.to_string(),
+            3..=10 => format!("{d} {few}"),
+            _ => format!("{d} {many}"),
+        }
+    };
+    match lang {
+        UiLanguage::En => {
+            let (one, many) = [
+                ("minute", "minutes"),
+                ("hour", "hours"),
+                ("day", "days"),
+                ("month", "months"),
+                ("year", "years"),
+            ][unit];
+            format!("{d} {}", if n == 1 { one } else { many })
+        }
+        UiLanguage::ArEg => arabic([
+            ("دقيقة", "دقيقتين", "دقايق", "دقيقة"),
+            ("ساعة", "ساعتين", "ساعات", "ساعة"),
+            ("يوم", "يومين", "أيام", "يوم"),
+            ("شهر", "شهرين", "شهور", "شهر"),
+            ("سنة", "سنتين", "سنين", "سنة"),
+        ]),
+        UiLanguage::Ar if after_prep => arabic([
+            ("دقيقة", "دقيقتين", "دقائق", "دقيقة"),
+            ("ساعة", "ساعتين", "ساعات", "ساعة"),
+            ("يوم", "يومين", "أيام", "يومًا"),
+            ("شهر", "شهرين", "أشهر", "شهرًا"),
+            ("سنة", "سنتين", "سنوات", "سنة"),
+        ]),
+        UiLanguage::Ar => arabic([
+            ("دقيقة", "دقيقتان", "دقائق", "دقيقة"),
+            ("ساعة", "ساعتان", "ساعات", "ساعة"),
+            ("يوم", "يومان", "أيام", "يومًا"),
+            ("شهر", "شهران", "أشهر", "شهرًا"),
+            ("سنة", "سنتان", "سنوات", "سنة"),
+        ]),
+    }
+}
+
+/// Compact interval for an answer button: "10m · 1d · 3d" in English.
+fn span_short(ui: &Ui, span: Span) -> String {
+    if ui.settings.read().ui_language != UiLanguage::En {
+        return span_text(ui, span, false);
+    }
+    match span {
+        Span::Minutes(n) => format!("{n}m"),
+        Span::Hours(n) => format!("{n}h"),
+        Span::Days(n) => format!("{n}d"),
+        Span::Months(n) => format!("{n}mo"),
+        Span::Years(n) => format!("{n}y"),
+    }
+}
+
+/// "in 10 minutes", "tomorrow", "in 3 days".
+fn when_text(ui: &Ui, sched: &Scheduler, now: u64, due: u64) -> String {
+    match Span::until(sched, now, due) {
+        Span::Days(1) => ui.t(Msg::RevTomorrow).to_string(),
+        span => ui.t(Msg::RevIn).replace("{span}", &span_text(ui, span, true)),
+    }
+}
+
+fn weekday(ui: &Ui, day: i64) -> &'static str {
+    // Day 0 of the learner's calendar (1 Jan 1970) was a Thursday.
+    let i = (day + 4).rem_euclid(7) as usize;
+    match ui.settings.read().ui_language {
+        UiLanguage::ArEg => ["الحد", "الاتنين", "التلات", "الأربع", "الخميس", "الجمعة", "السبت"][i],
+        UiLanguage::Ar => ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"][i],
+        UiLanguage::En => ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][i],
+    }
+}
+
+fn rating_msg(r: Rating) -> Msg {
+    match r {
+        Rating::Again => Msg::RateAgain,
+        Rating::Hard => Msg::RateHard,
+        Rating::Good => Msg::RateGood,
+        Rating::Easy => Msg::RateEasy,
+    }
+}
+
+/// Speaks a word with the WebView's own voices: the free fallback until
+/// cached Azure audio exists (SPEC §20). Silent where unsupported.
+fn speak(text: &str, language: StudyLanguage) {
+    let payload = serde_json::json!({ "text": text, "lang": language.speech_tag() });
+    document::eval(&format!(
+        r#"const p = {payload};
+        if ("speechSynthesis" in window) {{
+          const synth = window.speechSynthesis;
+          synth.cancel();
+          const u = new SpeechSynthesisUtterance(p.text);
+          u.lang = p.lang;
+          u.rate = 0.9;
+          const voices = synth.getVoices();
+          const norm = (l) => l.replace("_", "-").toLowerCase();
+          const v = voices.find((v) => norm(v.lang) === p.lang.toLowerCase())
+            || voices.find((v) => norm(v.lang).startsWith(p.lang.slice(0, 2)));
+          if (v) u.voice = v;
+          synth.speak(u);
+        }}"#
+    ));
+}
+
+// ---------------------------------------------------------------- screen
 
 #[component]
 pub fn ReviewScreen() -> Element {
+    let db = use_context::<Db>();
+    let sched = use_hook(|| Rc::new(Scheduler::default()));
+    let deck = use_signal({
+        let (db, sched) = (db.clone(), sched.clone());
+        move || load_deck(&db, &sched)
+    });
+    let engine = use_context_provider(|| Engine {
+        db: db.clone(),
+        sched: sched.clone(),
+        deck,
+        session: Signal::new(None),
+        view: Signal::new(View::Home),
+        summary: Signal::new(None),
+        error: Signal::new(None),
+    });
     let ui = use_context::<Ui>();
+    let view = *engine.view.read();
+    let error = *engine.error.read();
+
+    rsx! {
+        style { {REVIEW_CSS} }
+        div { class: "review",
+            if let Some(msg) = error {
+                p { class: "review-error", role: "alert", "{ui.t(msg)}" }
+            }
+            match view {
+                View::Home => rsx! { ReviewHome {} },
+                View::Classic => rsx! { Classic {} },
+                View::Wall => rsx! { CardWall {} },
+                View::Burst => rsx! { Burst {} },
+                View::Done => rsx! { Done {} },
+            }
+        }
+    }
+}
+
+// ---------------------------------------------------------------- home
+
+#[component]
+fn ReviewHome() -> Element {
+    let ui = use_context::<Ui>();
+    let engine = use_context::<Engine>();
+    let now = now_ms();
+    let empty = engine.deck.read().is_empty();
+
+    if empty {
+        let count = num(&ui, seed_words().count() as u64);
+        return rsx! {
+            div { class: "card review-seed",
+                h2 { "{ui.t(Msg::RevSeedTitle)}" }
+                p { {ui.t(Msg::RevSeedBody).replace("{n}", &count)} }
+                ul { class: "seed-words", lang: "id",
+                    for w in seed_words() {
+                        li { key: "{w}", bdi { "{w}" } }
+                    }
+                }
+                button { class: "primary", onclick: move |_| engine.seed(), "{ui.t(Msg::RevSeedButton)}" }
+            }
+        };
+    }
+
+    let sched = engine.sched.clone();
+    let deck = engine.deck.read();
+    let stats = deck.stats(&sched, now);
+    let forecast = deck.forecast(&sched, now, 7);
+    let today = sched.day.day(now);
+    let peak = forecast.iter().copied().max().unwrap_or(0).max(1);
+    let next_due = deck.next_due_ms(now).map(|d| when_text(&ui, &sched, now, d));
+    drop(deck);
+    let width = *ui.width.read();
+    let modes = [
+        (ReviewMode::Classic, Msg::RevClassic, Msg::RevClassicHint),
+        (ReviewMode::CardWall, Msg::RevWall, Msg::RevWallHint),
+        (ReviewMode::Burst, Msg::RevBurst, Msg::RevBurstHint),
+    ];
+    let nothing_due = stats.due + stats.new_available == 0;
+
     rsx! {
         div { class: "card",
             h2 { "{ui.t(Msg::NavReview)}" }
+            div { class: "rev-stats",
+                Stat { label: Msg::RevDue, value: num(&ui, stats.due as u64), accent: true }
+                Stat { label: Msg::RevNew, value: num(&ui, stats.new_available as u64), accent: false }
+                Stat { label: Msg::RevReviewedToday, value: num(&ui, stats.reviews_today as u64), accent: false }
+                Stat {
+                    label: Msg::RevRetention,
+                    value: stats.retention.map(|r| percent(&ui, r)).unwrap_or_else(|| "–".into()),
+                    accent: false,
+                }
+            }
+            if nothing_due {
+                p { class: "rev-calm", "{ui.t(Msg::RevAllDone)}" }
+                if let Some(when) = &next_due {
+                    p { class: "muted", {ui.t(Msg::RevNextReview).replace("{when}", when)} }
+                }
+            }
+        }
+        div { class: "card",
+            h3 { class: "rev-h3", "{ui.t(Msg::RevForecast)}" }
+            ol { class: "forecast",
+                for (i, n) in forecast.iter().copied().enumerate() {
+                    li {
+                        key: "{i}",
+                        class: if i == 0 { "today" } else { "" },
+                        aria_label: format!(
+                            "{}: {}",
+                            if i == 0 { ui.t(Msg::RevToday) } else { weekday(&ui, today + i as i64) },
+                            num(&ui, u64::from(n)),
+                        ),
+                        span { class: "fc-n", aria_hidden: "true", if n > 0 { "{num(&ui, u64::from(n))}" } }
+                        span { class: "fc-bar", aria_hidden: "true",
+                            span { class: "fc-fill", style: "block-size: {n * 100 / peak}%" }
+                        }
+                        span { class: "fc-day", aria_hidden: "true",
+                            if i == 0 { "{ui.t(Msg::RevToday)}" } else { "{weekday(&ui, today + i as i64)}" }
+                        }
+                    }
+                }
+            }
+        }
+        div { class: "rev-modes",
+            for (mode, title, hint) in modes {
+                {
+                    let count = engine.queue_len(mode, now);
+                    let engine = engine.clone();
+                    let burst_secs = num(&ui, BURST_MS / 1000);
+                    rsx! {
+                        div { key: "{mode:?}", class: if mode == ReviewMode::Burst { "card rev-mode mode-burst" } else { "card rev-mode" },
+                            h3 { class: "rev-h3", "{ui.t(title)}" }
+                            p { class: "muted", Isolated { text: ui.t(hint).replace("{n}", &burst_secs) } }
+                            if mode == ReviewMode::CardWall && width == WidthClass::Compact {
+                                p { class: "muted small", "{ui.t(Msg::RevWallPhone)}" }
+                            }
+                            if count == 0 {
+                                p { class: "muted small", "{ui.t(Msg::RevNothingHere)}" }
+                            }
+                            button {
+                                class: "primary",
+                                disabled: count == 0,
+                                onclick: move |_| engine.start(mode),
+                                "{ui.t(Msg::RevStart)}"
+                                if count > 0 {
+                                    span { class: "count-badge", "{num(&ui, count as u64)}" }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#[component]
+fn Stat(label: Msg, value: String, accent: bool) -> Element {
+    let ui = use_context::<Ui>();
+    rsx! {
+        div { class: if accent { "rev-stat accent" } else { "rev-stat" },
+            span { class: "rev-stat-value", "{value}" }
+            span { class: "rev-stat-label", "{ui.t(label)}" }
+        }
+    }
+}
+
+// ---------------------------------------------------------------- card faces
+
+/// The word, isolated from the surrounding UI direction.
+#[component]
+fn Word(card: Card, big: bool) -> Element {
+    let ui = use_context::<Ui>();
+    let text = card.word.clone();
+    let language = card.language;
+    rsx! {
+        div { class: "rev-word-row",
+            bdi { class: if big { "rev-word big" } else { "rev-word" }, lang: language.tag(), "{card.word}" }
+            button {
+                class: "icon-btn",
+                aria_label: ui.t(Msg::RevPlay),
+                title: ui.t(Msg::RevPlay),
+                onclick: move |e| {
+                    e.stop_propagation();
+                    speak(&text, language);
+                },
+                SpeakerIcon {}
+            }
+        }
+    }
+}
+
+#[component]
+fn SpeakerIcon() -> Element {
+    rsx! {
+        svg {
+            view_box: "0 0 24 24",
+            width: "22",
+            height: "22",
+            fill: "none",
+            stroke: "currentColor",
+            stroke_width: "2",
+            stroke_linecap: "round",
+            stroke_linejoin: "round",
+            "aria-hidden": "true",
+            path { d: "M11 5 6 9H3v6h3l5 4zM15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" }
+        }
+    }
+}
+
+#[component]
+fn Badges(card: Card) -> Element {
+    let ui = use_context::<Ui>();
+    let unverified = card.language == StudyLanguage::Jv && !card.verified;
+    rsx! {
+        if card.arabic.is_some() || unverified {
+            div { class: "rev-badges",
+                if card.arabic.is_some() {
+                    span { class: "badge gold", "{ui.t(Msg::RevFromArabic)}" }
+                }
+                if unverified {
+                    span { class: "badge warn", "{ui.t(Msg::RevUnverified)}" }
+                }
+            }
+        }
+    }
+}
+
+/// What the learner sees before answering.
+#[component]
+fn Front(card: Card) -> Element {
+    let ui = use_context::<Ui>();
+    let prompt = match card.kind {
+        CardKind::Recognition => Msg::RevPromptMeaning,
+        CardKind::Production => Msg::RevPromptProduce,
+        CardKind::AudioMeaning => Msg::RevPromptListen,
+        CardKind::Cloze => Msg::RevPromptCloze,
+        CardKind::Bridge => Msg::RevPromptBridge,
+    };
+    let gap = card.example.as_ref().and_then(|ex| {
+        cloze(&ex.text, &card.word)
+            .map(|(a, _, b)| (a.to_string(), b.to_string(), localized(&ui, &ex.meaning).to_string()))
+    });
+    let (text, language) = (card.word.clone(), card.language);
+    rsx! {
+        p { class: "rev-prompt", "{ui.t(prompt)}" }
+        match card.kind {
+            CardKind::Recognition => rsx! { Word { card: card.clone(), big: true } },
+            CardKind::Production => rsx! {
+                p { class: "rev-meaning big", "{localized(&ui, &card.meaning)}" }
+            },
+            CardKind::AudioMeaning => rsx! {
+                button {
+                    class: "rev-listen",
+                    aria_label: ui.t(Msg::RevPlay),
+                    onclick: move |e| {
+                        e.stop_propagation();
+                        speak(&text, language);
+                    },
+                    SpeakerIcon {}
+                }
+            },
+            CardKind::Cloze => match gap {
+                Some((before, after, meaning)) => rsx! {
+                    p { class: "rev-cloze", lang: card.language.tag(), dir: "ltr",
+                        "{before}"
+                        span { class: "gap", aria_label: "…", "＿＿＿" }
+                        "{after}"
+                    }
+                    p { class: "muted", "{meaning}" }
+                },
+                None => rsx! { Word { card: card.clone(), big: true } },
+            },
+            CardKind::Bridge => rsx! {
+                p { class: "rev-arabic", lang: "ar",
+                    {card.arabic.as_ref().map(|a| a.word.clone()).unwrap_or_default()}
+                }
+            },
+        }
+    }
+}
+
+/// The answer side: word, meaning, note, example and the Arabic Bridge.
+#[component]
+fn Back(card: Card) -> Element {
+    let ui = use_context::<Ui>();
+    // Arrow from the Arabic origin to the word, mirrored with the UI.
+    let arrow = if ui.settings.read().ui_language == UiLanguage::En { "←" } else { "→" };
+    rsx! {
+        div { class: "rev-back",
+            // A recognition card already shows the word on its front.
+            if card.kind != CardKind::Recognition {
+                Word { card: card.clone(), big: false }
+            }
+            p { class: "rev-meaning", "{localized(&ui, &card.meaning)}" }
+            if let Some(note) = &card.note {
+                p { class: "muted rev-note", Isolated { text: localized(&ui, note).to_string() } }
+            }
+            if let Some(ex) = &card.example {
+                div { class: "rev-example",
+                    p { class: "ex-text", lang: card.language.tag(), bdi { "{ex.text}" } }
+                    p { class: "muted", "{localized(&ui, &ex.meaning)}" }
+                }
+            }
+            if let Some(a) = &card.arabic {
+                div { class: if a.shift == MeaningShift::FalseFriend { "rev-bridge alarm" } else { "rev-bridge" },
+                    div { class: "bridge-line",
+                        bdi { class: "latin", lang: card.language.tag(), "{card.word}" }
+                        span { aria_hidden: "true", "{arrow}" }
+                        span { class: "ar", lang: "ar", "{a.word}" }
+                        if let Some(root) = &a.root {
+                            span { class: "root", lang: "ar", "({root})" }
+                        }
+                    }
+                    match a.shift {
+                        MeaningShift::FalseFriend => rsx! { p { class: "shift", "{ui.t(Msg::RevFalseFriend)}" } },
+                        MeaningShift::Shifted => rsx! { p { class: "shift", "{ui.t(Msg::RevShifted)}" } },
+                        MeaningShift::Same => rsx! {},
+                    }
+                    if let Some(note) = &a.note {
+                        p { class: "bridge-note", Isolated { text: localized(&ui, note).to_string() } }
+                    }
+                }
+            }
+            Badges { card: card.clone() }
+        }
+    }
+}
+
+// ---------------------------------------------------------------- classic
+
+#[component]
+fn Classic() -> Element {
+    let ui = use_context::<Ui>();
+    let engine = use_context::<Engine>();
+    let mut hand = use_signal({
+        let engine = engine.clone();
+        move || engine.pull().map(|id| (id, now_ms()))
+    });
+    let mut revealed = use_signal(|| false);
+    let mut typed = use_signal(String::new);
+    let mut checked = use_signal(|| None::<AnswerMatch>);
+
+    use_effect({
+        let engine = engine.clone();
+        move || {
+            if hand.read().is_none() {
+                engine.finish();
+            }
+        }
+    });
+    // Audio cards speak as soon as they are shown.
+    use_effect({
+        let engine = engine.clone();
+        move || {
+            if let Some((id, _)) = hand.read().as_ref()
+                && let Some(card) = engine.deck.peek().card(id)
+                && card.kind == CardKind::AudioMeaning
+            {
+                speak(&card.word, card.language);
+            }
+        }
+    });
+
+    // Hand the next card over with a clean slate.
+    let mut advance = move |engine: &Engine| {
+        hand.set(engine.pull().map(|id| (id, now_ms())));
+        revealed.set(false);
+        typed.set(String::new());
+        checked.set(None);
+    };
+    let rate = use_callback({
+        let engine = engine.clone();
+        move |r: Rating| {
+            let Some((card_id, shown_ms)) = hand() else { return };
+            if engine.answer(&card_id, r, now_ms().saturating_sub(shown_ms)) {
+                advance(&engine);
+            }
+        }
+    });
+    let undo = use_callback({
+        let engine = engine.clone();
+        move |()| {
+            if let Some((card_id, _)) = hand() {
+                engine.put_back(card_id);
+            }
+            engine.undo();
+            advance(&engine);
+        }
+    });
+    // Keys come from a document-level listener, so they work wherever focus
+    // is (a button that just became disabled drops it to the body).
+    let on_key = use_callback(move |key: String| match key.as_str() {
+        " " if !revealed() => revealed.set(true),
+        "1" | "2" | "3" | "4" if revealed() => {
+            let i = key.parse::<usize>().unwrap_or(1) - 1;
+            rate.call(Rating::ALL[i]);
+        }
+        "undo" => undo.call(()),
+        _ => {}
+    });
+    use_future(move || async move {
+        let mut eval = document::eval(KEYS_JS);
+        while let Ok(key) = eval.recv::<String>().await {
+            on_key.call(key);
+        }
+    });
+
+    let Some((card_id, _)) = hand() else { return rsx! {} };
+    let Some(card) = engine.card(&card_id) else { return rsx! {} };
+    let now = now_ms();
+    let previews = engine.sched.preview(&engine.deck.read().state(&card_id), now);
+    let left = engine.session.read().as_ref().map_or(0, Session::remaining);
+    let is_production = card.kind == CardKind::Production;
+    let suggested = checked().map(AnswerMatch::suggested);
+
+    let check = {
+        let word = card.word.clone();
+        move || {
+            checked.set(Some(compare_answer(&typed.read(), &word)));
+            revealed.set(true);
+        }
+    };
+
+    rsx! {
+        div { id: "review-classic", class: "rev-session",
+            SessionBar { left }
+            article {
+                key: "{card_id}",
+                class: "card rev-card",
+                aria_live: "polite",
+                Front { card: card.clone() }
+                if is_production {
+                    form {
+                        class: "rev-answer",
+                        onsubmit: {
+                            let mut check = check.clone();
+                            move |e: FormEvent| {
+                                e.prevent_default();
+                                if !revealed() {
+                                    check();
+                                }
+                            }
+                        },
+                        input {
+                            r#type: "text",
+                            lang: card.language.tag(),
+                            dir: "ltr",
+                            autocomplete: "off",
+                            autocapitalize: "off",
+                            spellcheck: "false",
+                            readonly: revealed(),
+                            placeholder: ui.t(Msg::RevAnswerPlaceholder),
+                            aria_label: ui.t(Msg::RevPromptProduce),
+                            value: "{typed}",
+                            oninput: move |e: FormEvent| typed.set(e.value()),
+                            onmounted: move |e: MountedEvent| async move {
+                                let _ = e.set_focus(true).await;
+                            },
+                        }
+                        if !revealed() {
+                            button { r#type: "submit", class: "primary", "{ui.t(Msg::RevCheck)}" }
+                        }
+                    }
+                    if let Some(m) = checked() {
+                        p { class: if m == AnswerMatch::Exact { "rev-verdict ok" } else { "rev-verdict" },
+                            {
+                                match m {
+                                    AnswerMatch::Exact => ui.t(Msg::RevExact),
+                                    AnswerMatch::Close => ui.t(Msg::RevClose),
+                                    AnswerMatch::Wrong => ui.t(Msg::RevWrong),
+                                }
+                            }
+                        }
+                        if m != AnswerMatch::Exact && !typed.read().trim().is_empty() {
+                            p { class: "muted",
+                                "{ui.t(Msg::RevYouWrote)}: "
+                                bdi { lang: card.language.tag(), class: "struck", "{typed}" }
+                            }
+                        }
+                    }
+                }
+                if revealed() {
+                    Back { card: card.clone() }
+                }
+            }
+            if revealed() {
+                div { class: "rate-row", role: "group",
+                    for (i, p) in previews.iter().enumerate() {
+                        {
+                            let r = p.rating;
+                            let span = span_short(&ui, Span::from_days(p.interval_days));
+                            let class = match (r, suggested == Some(r)) {
+                                (Rating::Again, true) => "rate again suggested",
+                                (Rating::Again, false) => "rate again",
+                                (Rating::Hard, true) => "rate hard suggested",
+                                (Rating::Hard, false) => "rate hard",
+                                (Rating::Good, true) => "rate good suggested",
+                                (Rating::Good, false) => "rate good",
+                                (Rating::Easy, true) => "rate easy suggested",
+                                (Rating::Easy, false) => "rate easy",
+                            };
+                            rsx! {
+                                button {
+                                    key: "{i}",
+                                    class,
+                                    "aria-keyshortcuts": "{i + 1}",
+                                    onclick: move |_| rate.call(r),
+                                    span { class: "rate-label", "{ui.t(rating_msg(r))}" }
+                                    span { class: "rate-span", "{span}" }
+                                }
+                            }
+                        }
+                    }
+                }
+            } else if !is_production {
+                div { class: "rate-row",
+                    button {
+                        class: "primary reveal-btn",
+                        "aria-keyshortcuts": "Space",
+                        onclick: move |_| revealed.set(true),
+                        "{ui.t(Msg::RevShowAnswer)}"
+                    }
+                }
+            }
+            div { class: "rev-foot",
+                span { class: "muted small kbd-hint", {localize_digits(&ui, ui.t(Msg::RevKeysHint))} }
+                SessionActions { on_undo: move |_| undo.call(()) }
+            }
+        }
+    }
+}
+
+#[component]
+fn SessionBar(left: usize) -> Element {
+    let ui = use_context::<Ui>();
+    let engine = use_context::<Engine>();
+    let done = engine.session.read().as_ref().map_or(0, |s| s.answers().len());
+    let total = done + left + 1;
+    rsx! {
+        div { class: "session-bar",
+            div {
+                class: "progress",
+                role: "progressbar",
+                aria_valuemin: "0",
+                aria_valuemax: "{total}",
+                aria_valuenow: "{done}",
+                span { class: "progress-fill", style: "inline-size: {done * 100 / total.max(1)}%" }
+            }
+            span { class: "muted small", {ui.t(Msg::RevLeft).replace("{n}", &num(&ui, (left + 1) as u64))} }
+        }
+    }
+}
+
+#[component]
+fn SessionActions(on_undo: EventHandler<()>) -> Element {
+    let ui = use_context::<Ui>();
+    let engine = use_context::<Engine>();
+    let can_undo = engine.can_undo();
+    rsx! {
+        div { class: "row",
+            button { disabled: !can_undo, onclick: move |_| on_undo.call(()), "{ui.t(Msg::RevUndo)}" }
+            button { onclick: move |_| engine.finish(), "{ui.t(Msg::RevFinish)}" }
+        }
+    }
+}
+
+// ---------------------------------------------------------------- card wall
+
+#[derive(Clone, Debug, PartialEq)]
+struct Slot {
+    card_id: String,
+    dealt_ms: u64,
+    flipped: bool,
+}
+
+#[derive(Deserialize)]
+#[serde(tag = "t", rename_all = "lowercase")]
+enum FromWall {
+    Flip { id: String },
+    Drop { id: String, pile: Pile },
+}
+
+/// A small, stable tilt per card so the table looks dealt by hand.
+fn tilt(card_id: &str) -> i32 {
+    let h = card_id.bytes().fold(7u32, |h, b| h.wrapping_mul(31).wrapping_add(u32::from(b)));
+    (h % 7) as i32 - 3
+}
+
+#[component]
+fn CardWall() -> Element {
+    let ui = use_context::<Ui>();
+    let engine = use_context::<Engine>();
+    let seats = match *ui.width.peek() {
+        WidthClass::Compact => 1,
+        WidthClass::Medium => 4,
+        _ => 6,
+    };
+    let mut slots = use_signal({
+        let engine = engine.clone();
+        move || {
+            let now = now_ms();
+            (0..seats)
+                .map(|_| engine.pull().map(|card_id| Slot { card_id, dealt_ms: now, flipped: false }))
+                .collect::<Vec<_>>()
+        }
+    });
+    let mut last_sort = use_signal(now_ms);
+    let mut freed = use_signal(Vec::<usize>::new);
+
+    let sort = use_callback({
+        let engine = engine.clone();
+        move |(card_id, pile): (String, Pile)| {
+            let Some(i) = slots.peek().iter().position(|s| s.as_ref().is_some_and(|s| s.card_id == card_id))
+            else {
+                return;
+            };
+            let slot = slots.peek()[i].clone().expect("slot is filled");
+            let now = now_ms();
+            // Sorting time: from when this card could get attention (dealt,
+            // or the previous card left the table) to the drop.
+            let since = slot.dealt_ms.max(*last_sort.peek());
+            let sort_ms = now.saturating_sub(since).min(u64::from(u32::MAX)) as u32;
+            let rating = wall_rating(pile, sort_ms, slot.flipped);
+            if engine.answer(&card_id, rating, now.saturating_sub(since)) {
+                last_sort.set(now);
+                freed.write().push(i);
+                slots.write()[i] =
+                    engine.pull().map(|card_id| Slot { card_id, dealt_ms: now, flipped: false });
+                if slots.peek().iter().all(Option::is_none) {
+                    engine.finish();
+                }
+            }
+        }
+    });
+    let flip = use_callback(move |card_id: String| {
+        if let Some(s) = slots.write().iter_mut().flatten().find(|s| s.card_id == card_id) {
+            s.flipped = !s.flipped;
+        }
+    });
+
+    use_future(move || async move {
+        let mut eval = document::eval(WALL_JS);
+        while let Ok(msg) = eval.recv::<FromWall>().await {
+            match msg {
+                FromWall::Flip { id } => flip.call(id),
+                FromWall::Drop { id, pile } => sort.call((id, pile)),
+            }
+        }
+    });
+
+    let undo = {
+        let engine = engine.clone();
+        move |_| {
+            let Some(i) = freed.write().pop() else { return };
+            if let Some(Some(current)) = slots.peek().get(i).cloned() {
+                engine.put_back(current.card_id);
+            }
+            if engine.undo() {
+                slots.write()[i] =
+                    engine.pull().map(|card_id| Slot { card_id, dealt_ms: now_ms(), flipped: false });
+            }
+        }
+    };
+
+    let (tahu, belum) = engine.session.read().as_ref().map_or((0, 0), |s| {
+        let belum = s.answers().iter().filter(|a| a.rating == Rating::Again).count();
+        (s.answers().len() - belum, belum)
+    });
+    let left = engine.session.read().as_ref().map_or(0, Session::remaining);
+    let seat_view: Vec<(String, Option<Slot>)> = slots
+        .read()
+        .iter()
+        .enumerate()
+        .map(|(i, s)| (s.as_ref().map_or_else(|| format!("empty-{i}"), |s| s.card_id.clone()), s.clone()))
+        .collect();
+
+    rsx! {
+        div { class: "wall",
+            p { class: "muted small wall-help", "{ui.t(Msg::RevWallHelp)}" }
+            div { id: "card-wall", class: "wall-table", "data-seats": "{seats}",
+                // Seats are keyed by their card, so a new card gets a fresh
+                // element (no leftover drag transform from the last one).
+                for (seat_key, slot) in seat_view {
+                    div { key: "{seat_key}", class: "seat",
+                        if let Some(slot) = slot {
+                            if let Some(card) = engine.card(&slot.card_id) {
+                                WallCard { card, flipped: slot.flipped, sort }
+                            }
+                        }
+                    }
+                }
+            }
+            div { class: "piles",
+                div { class: "pile belum", "data-pile": "belum",
+                    span { class: "pile-word latin", lang: "id", "belum" }
+                    span { class: "pile-label", "{ui.t(Msg::RevBelum)}" }
+                    span { class: "pile-count", "{num(&ui, belum as u64)}" }
+                }
+                div { class: "pile tahu", "data-pile": "tahu",
+                    span { class: "pile-word latin", lang: "id", "tahu" }
+                    span { class: "pile-label", "{ui.t(Msg::RevTahu)}" }
+                    span { class: "pile-count", "{num(&ui, tahu as u64)}" }
+                }
+            }
+            div { class: "rev-foot",
+                span { class: "muted small", {ui.t(Msg::RevLeft).replace("{n}", &num(&ui, left as u64))} }
+                SessionActions { on_undo: undo }
+            }
+        }
+    }
+}
+
+#[component]
+fn WallCard(card: Card, flipped: bool, sort: Callback<(String, Pile)>) -> Element {
+    let ui = use_context::<Ui>();
+    let id = card.id.clone();
+    let front = match card.kind {
+        CardKind::Bridge => card.arabic.as_ref().map(|a| a.word.clone()).unwrap_or_default(),
+        _ => card.word.clone(),
+    };
+    let front_lang = if card.kind == CardKind::Bridge { "ar" } else { card.language.tag() };
+    let label = if flipped { localized(&ui, &card.meaning).to_string() } else { front.clone() };
+    let false_friend = card.arabic.as_ref().is_some_and(|a| a.shift == MeaningShift::FalseFriend);
+    rsx! {
+        div {
+            class: if flipped { "wall-card flipped" } else { "wall-card" },
+            "data-id": "{id}",
+            role: "group",
+            aria_label: "{label}",
+            style: "--tilt: {tilt(&id)}deg",
+            tabindex: "0",
+            div { class: "face front",
+                if card.arabic.is_some() {
+                    span { class: "dot-gold", aria_hidden: "true" }
+                }
+                span { class: if front_lang == "ar" { "wall-word ar" } else { "wall-word latin" }, lang: front_lang,
+                    bdi { "{front}" }
+                }
+            }
+            div { class: "face back",
+                if card.kind == CardKind::Bridge {
+                    bdi { class: "wall-word small latin", lang: card.language.tag(), "{card.word}" }
+                }
+                span { class: "wall-meaning", "{localized(&ui, &card.meaning)}" }
+                if false_friend {
+                    span { class: "badge alarm", "{ui.t(Msg::RevFalseFriend)}" }
+                }
+                if card.language == StudyLanguage::Jv && !card.verified {
+                    span { class: "badge warn", "{ui.t(Msg::RevUnverified)}" }
+                }
+            }
+            // Keyboard and screen-reader path; shown on focus.
+            div { class: "wall-keys",
+                button {
+                    onclick: {
+                        let id = id.clone();
+                        move |_| sort.call((id.clone(), Pile::Belum))
+                    },
+                    "{ui.t(Msg::RevBelum)}"
+                }
+                button {
+                    onclick: {
+                        let id = id.clone();
+                        move |_| sort.call((id.clone(), Pile::Tahu))
+                    },
+                    "{ui.t(Msg::RevTahu)}"
+                }
+            }
+        }
+    }
+}
+
+// ---------------------------------------------------------------- burst
+
+#[component]
+fn Burst() -> Element {
+    let ui = use_context::<Ui>();
+    let engine = use_context::<Engine>();
+    let started = engine.session.peek().as_ref().map_or_else(now_ms, |s| s.started_ms);
+    let mut hand = use_signal({
+        let engine = engine.clone();
+        move || engine.pull().map(|id| (id, now_ms()))
+    });
+    let mut revealed = use_signal(|| false);
+    let mut tick = use_signal(now_ms);
+
+    use_future(move || async move {
+        let mut eval = document::eval(
+            r#"for (let i = 0; i < 400; i++) {
+                 await new Promise((r) => setTimeout(r, 250));
+                 dioxus.send(i);
+               }"#,
+        );
+        while eval.recv::<u32>().await.is_ok() {
+            tick.set(now_ms());
+        }
+    });
+    use_effect({
+        let engine = engine.clone();
+        move || {
+            if tick().saturating_sub(started) >= BURST_MS || hand.read().is_none() {
+                engine.finish();
+            }
+        }
+    });
+
+    let Some((card_id, shown_ms)) = hand() else { return rsx! {} };
+    let Some(card) = engine.card(&card_id) else { return rsx! {} };
+    let left_ms = BURST_MS.saturating_sub(tick().saturating_sub(started));
+    let secs = left_ms.div_ceil(1000);
+
+    let answer = {
+        let (engine, card_id) = (engine.clone(), card_id.clone());
+        move |r: Rating| {
+            if engine.answer(&card_id, r, now_ms().saturating_sub(shown_ms)) {
+                hand.set(engine.pull().map(|id| (id, now_ms())));
+                revealed.set(false);
+            }
+        }
+    };
+    let undo = {
+        let (engine, card_id) = (engine.clone(), card_id.clone());
+        move |_| {
+            engine.put_back(card_id.clone());
+            engine.undo();
+            hand.set(engine.pull().map(|id| (id, now_ms())));
+            revealed.set(false);
+        }
+    };
+    let front = match card.kind {
+        CardKind::Bridge => card.arabic.as_ref().map(|a| a.word.clone()).unwrap_or_default(),
+        _ => card.word.clone(),
+    };
+    let front_ar = card.kind == CardKind::Bridge;
+
+    rsx! {
+        div { class: "burst",
+            div { class: "burst-timer", role: "timer",
+                span { class: "burst-secs", "{num(&ui, secs)}" }
+                span { class: "muted small", "{ui.t(Msg::RevSecondsLeft)}" }
+                div { class: "progress",
+                    span { class: "progress-fill", style: "inline-size: {left_ms * 100 / BURST_MS}%" }
+                }
+            }
+            button {
+                key: "{card_id}",
+                class: if revealed() { "card burst-card revealed" } else { "card burst-card" },
+                aria_expanded: if revealed() { "true" } else { "false" },
+                onclick: move |_| revealed.set(true),
+                span { class: if front_ar { "burst-word ar" } else { "burst-word latin" },
+                    lang: if front_ar { "ar" } else { card.language.tag() },
+                    bdi { "{front}" }
+                }
+                if revealed() {
+                    if front_ar {
+                        bdi { class: "burst-sub latin", lang: card.language.tag(), "{card.word}" }
+                    }
+                    span { class: "burst-meaning", "{localized(&ui, &card.meaning)}" }
+                    if card.language == StudyLanguage::Jv && !card.verified {
+                        span { class: "badge warn", "{ui.t(Msg::RevUnverified)}" }
+                    }
+                } else {
+                    span { class: "muted small", "{ui.t(Msg::RevTapToReveal)}" }
+                }
+            }
+            div { class: "burst-answers",
+                button {
+                    class: "rate again",
+                    onclick: {
+                        let mut answer = answer.clone();
+                        move |_| answer(Rating::Again)
+                    },
+                    "{ui.t(Msg::RevNotYet)}"
+                }
+                button {
+                    class: "rate good",
+                    onclick: {
+                        let mut answer = answer.clone();
+                        move |_| answer(Rating::Good)
+                    },
+                    "{ui.t(Msg::RevKnow)}"
+                }
+            }
+            div { class: "rev-foot",
+                span {}
+                SessionActions { on_undo: undo }
+            }
+        }
+    }
+}
+
+// ---------------------------------------------------------------- summary
+
+#[component]
+fn Done() -> Element {
+    let ui = use_context::<Ui>();
+    let engine = use_context::<Engine>();
+    let summary = engine.summary.read().clone().unwrap_or_default();
+    let now = now_ms();
+    let deck = engine.deck.read();
+    let word = |id: &String| deck.card(id).map(|c| (c.word.clone(), c.language.tag()));
+    let strongest = summary.strongest.as_ref().and_then(word);
+    let revisit: Vec<(String, &'static str)> = summary.revisit.iter().filter_map(word).collect();
+    let next = deck.next_due_ms(now).map(|d| when_text(&ui, &engine.sched, now, d));
+    drop(deck);
+
+    if summary.answers == 0 {
+        return rsx! {
+            div { class: "card rev-done",
+                p { "{ui.t(Msg::RevNothingHere)}" }
+                if let Some(when) = &next {
+                    p { class: "muted", {ui.t(Msg::RevNextReview).replace("{when}", when)} }
+                }
+                button { class: "primary", onclick: move |_| engine.home(), "{ui.t(Msg::RevBackHome)}" }
+            }
+        };
+    }
+
+    rsx! {
+        div { class: "card rev-done",
+            h2 { "{ui.t(Msg::RevDoneTitle)}" }
+            div { class: "rev-stats",
+                Stat { label: Msg::RevCards, value: num(&ui, summary.answers as u64), accent: false }
+                Stat {
+                    label: Msg::RevRemembered,
+                    value: num(&ui, (summary.answers - summary.again) as u64),
+                    accent: true,
+                }
+                Stat {
+                    label: Msg::RevRetention,
+                    value: summary.retention.map(|r| percent(&ui, r)).unwrap_or_else(|| "–".into()),
+                    accent: false,
+                }
+                Stat { label: Msg::RevTime, value: mm_ss(&ui, summary.duration_ms), accent: false }
+            }
+            if summary.again == 0 {
+                p { class: "rev-cheer", "{ui.t(Msg::RevAllRemembered)}" }
+            }
+            if let Some((w, lang)) = strongest {
+                p {
+                    "{ui.t(Msg::RevStrongest)}: "
+                    bdi { class: "chip", lang, "{w}" }
+                }
+            }
+            if !revisit.is_empty() {
+                p { "{ui.t(Msg::RevRevisit)}:" }
+                div { class: "row",
+                    for (w, lang) in revisit {
+                        bdi { key: "{w}", class: "chip soft", lang, "{w}" }
+                    }
+                }
+            }
+            if let Some(when) = &next {
+                p { class: "muted", {ui.t(Msg::RevNextReview).replace("{when}", when)} }
+            }
+            button { class: "primary", onclick: move |_| engine.home(), "{ui.t(Msg::RevBackHome)}" }
         }
     }
 }
