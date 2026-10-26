@@ -1,0 +1,85 @@
+schema: kabar.grammar/v1
+id: id.time.clock
+language: id
+level: bipa1
+title:
+  target: jam / pukul, setengah, lewat, kurang
+  en: Telling the time
+  ar_eg: الساعة كام؟
+  ar: قراءة الساعة
+summary:
+  ar_eg: "pukul / jam + الرقم. وخلي بالك: setengah delapan = سبعة ونص (نص قبل التمانية)، مش تمانية ونص!"
+  ar: "pukul / jam + العدد، وانتبه: setengah delapan = السابعة والنصف لا الثامنة والنصف."
+  en: pukul / jam + number. Careful — setengah delapan is 7:30 ("half to eight"), not 8:30.
+pattern:
+  - pukul / jam + hour (+ pagi / siang / sore / malam)
+  - jam + hour + lewat + minutes (past)
+  - jam + hour + kurang + minutes (to)
+  - setengah + NEXT hour (half past the previous hour)
+  - seperempat (quarter)
+explanation:
+  ar_eg: |
+    «الساعة كام؟» = Jam berapa? / Pukul berapa? (pukul أرسمي).
+    - jam tujuh = الساعة سبعة. والإندونيسي بيستخدم ١٢ ساعة + وقت اليوم: jam tujuh pagi = ٧ الصبح، jam tujuh malam = ٧ بالليل.
+    - lewat = و: jam tujuh lewat sepuluh = سبعة وعشرة.
+    - kurang = إلا: jam delapan kurang sepuluh = تمانية إلا عشرة.
+    - seperempat = ربع: jam tujuh lewat seperempat = سبعة وربع.
+    - الفخ الكبير: setengah delapan = «نص على التمانية» = سبعة ونص. يعني setengah + الساعة الجاية.
+    وفرق تاني مهم: jam tujuh = الساعة سبعة، بس tujuh jam = سبع ساعات (مدة).
+  ar: |
+    «كم الساعة؟» = Jam berapa? / Pukul berapa? (وpukul أكثر رسمية).
+    - jam tujuh = الساعة السابعة، مع تحديد وقت اليوم: jam tujuh pagi = السابعة صباحًا، jam tujuh malam = السابعة مساءً.
+    - lewat = و: jam tujuh lewat sepuluh = السابعة وعشر دقائق.
+    - kurang = إلا: jam delapan kurang sepuluh = الثامنة إلا عشر دقائق.
+    - seperempat = ربع.
+    - وأهم فخ: setengah delapan = نصف قبل الثامنة = السابعة والنصف، فـ setengah تُقرن بالساعة التالية.
+    وفرق آخر: jam tujuh = الساعة السابعة، أما tujuh jam = سبع ساعات (مدة).
+  en: |
+    "What time is it?" = Jam berapa? / Pukul berapa? (pukul is more formal).
+    - jam tujuh = seven o'clock, usually with the part of day: jam tujuh pagi = 7 a.m., jam tujuh malam = 7 p.m.
+    - lewat = past: jam tujuh lewat sepuluh = 7:10.
+    - kurang = to: jam delapan kurang sepuluh = 7:50.
+    - seperempat = quarter: jam tujuh lewat seperempat = 7:15.
+    - The big trap: setengah delapan = "half to eight" = 7:30. setengah takes the NEXT hour.
+    Also: jam tujuh = seven o'clock, but tujuh jam = seven hours (duration).
+examples:
+  - text: Sekarang jam berapa? — Jam setengah delapan.
+    en: What time is it now? — Half past seven.
+    ar_eg: الساعة كام دلوقتي؟ — سبعة ونص.
+    ar: كم الساعة الآن؟ — السابعة والنصف.
+  - text: Kereta berangkat pukul 06.15.
+    en: The train leaves at 6:15.
+    ar_eg: القطر بيتحرك الساعة ستة وربع.
+    ar: يغادر القطار في السادسة والربع.
+    register: formal
+  - text: Kita ketemu jam tiga sore, ya.
+    en: Let's meet at 3 p.m., OK?
+    ar_eg: نتقابل الساعة تلاتة العصر، ماشي؟
+    ar: لنلتقِ في الثالثة عصرًا.
+    register: informal
+  - text: Saya tidur tujuh jam.
+    en: I slept (for) seven hours.
+    ar_eg: نمت سبع ساعات.
+    ar: نمت سبع ساعات.
+mistakes:
+  - wrong: setengah delapan = 8:30
+    right: setengah sembilan = 8:30
+    why:
+      ar_eg: إحنا بنقول «تمانية ونص»، الإندونيسي بيقول «نص على تسعة».
+      ar: نقول «الثامنة والنصف»، والإندونيسية تقول «نصف قبل التاسعة».
+      en: Indonesian counts half toward the next hour.
+  - wrong: tujuh jam (meaning 7 o'clock)
+    right: jam tujuh
+    why:
+      ar_eg: الرقم بعد jam = الساعة كام، قبل jam = عدد ساعات.
+      ar: العدد بعد jam للتوقيت، وقبله للمدة.
+      en: Number after jam = clock time; before jam = number of hours.
+arabic_bridge:
+  ar_eg: kurang زي «إلا» في «تمانية إلا عشرة»، وlewat زي «و». بس setengah عكسنا.
+  ar: kurang كـ«إلا» وlewat كـ«و»، لكن setengah على خلاف العادة العربية.
+  en: kurang is Arabic «إلا», lewat is «و» — but setengah runs the other way.
+tags: [time, numbers]
+see_also: [id.number.cardinal, id.time.calendar, id.greeting.selamat]
+review:
+  status: draft
+  verified: false

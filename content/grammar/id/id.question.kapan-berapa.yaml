@@ -1,0 +1,78 @@
+schema: kabar.grammar/v1
+id: id.question.kapan-berapa
+language: id
+level: bipa1
+title:
+  target: kapan, berapa, jam berapa
+  en: "kapan (when) and berapa (how much / how many)"
+  ar_eg: "kapan (إمتى) و berapa (كام)"
+  ar: "kapan (متى) و berapa (كم)"
+summary:
+  ar_eg: kapan = إمتى، berapa = كام (للسعر والعدد والسن والرقم)، وjam berapa = الساعة كام.
+  ar: kapan = متى، وberapa = كم للسعر والعدد والعمر والرقم، وjam berapa = في أي ساعة.
+  en: kapan = when; berapa = how much / how many / what number; jam berapa = what time.
+pattern:
+  - Kapan + clause? (when …?)
+  - berapa + noun / noun + berapa (how many / what number)
+  - Berapa harganya? · Umurnya berapa? · Nomornya berapa?
+explanation:
+  ar_eg: |
+    - kapan = إمتى: Kapan kamu datang? = جيت إمتى؟ / هتيجي إمتى؟ (السياق بيحدد الماضي والمستقبل).
+    - berapa = كام لأي حاجة فيها رقم:
+      Berapa harganya? = بكام؟ — Umurmu berapa? = عندك كام سنة؟ — Nomor HP-mu berapa? = رقمك كام؟
+      Berapa orang? = كام واحد؟
+    - jam berapa = الساعة كام / في أنهي ساعة: Jam berapa kita berangkat? = هنمشي الساعة كام؟
+    - berapa lama = قد إيه (مدة) — هتيجي في BIPA 2.
+    في الشات: brp = berapa، kpn = kapan.
+  ar: |
+    - kapan = متى: Kapan kamu datang؟ = متى جئت / متى ستأتي؟ والسياق يحدد الزمن.
+    - berapa = كم لكل ما فيه عدد:
+      Berapa harganya؟ = بكم؟ — Umurmu berapa؟ = كم عمرك؟ — Nomor HP-mu berapa؟ = ما رقم هاتفك؟
+    - jam berapa = في أي ساعة.
+    - berapa lama = كم من الوقت (المستوى الثاني).
+    وفي المحادثات: brp = berapa، وkpn = kapan.
+  en: |
+    - kapan = when: Kapan kamu datang? = When did / will you come? (context decides).
+    - berapa = how much / many, or "what number":
+      Berapa harganya? = How much is it? — Umurmu berapa? = How old are you? — Nomor HP-mu berapa? = What's your number?
+    - jam berapa = (at) what time.
+    - berapa lama = how long (BIPA 2).
+    Chat spelling: brp = berapa, kpn = kapan.
+examples:
+  - text: Berapa harganya, Bu?
+    en: How much is it, ma'am?
+    ar_eg: بكام دي يا حاجة؟
+    ar: بكم هذا يا سيدتي؟
+  - text: Kapan ulang tahunmu?
+    en: When is your birthday?
+    ar_eg: عيد ميلادك إمتى؟
+    ar: متى عيد ميلادك؟
+  - text: Umur saya tiga puluh tahun.
+    en: I'm thirty years old.
+    ar_eg: عندي تلاتين سنة.
+    ar: عمري ثلاثون عامًا.
+  - text: Jam berapa toko itu buka?
+    en: What time does that shop open?
+    ar_eg: المحل ده بيفتح الساعة كام؟
+    ar: متى يفتح ذلك المتجر؟
+  - text: arp dicul piro?
+    en: How much will you sell it for? (Javanese chat — piro = Indonesian berapa)
+    ar_eg: "هتبيعها بكام؟ (شات جاوي: piro = berapa)"
+    ar: "بكم ستبيعه؟ (محادثة جاوية: piro تقابل berapa)"
+    register: chat
+mistakes:
+  - wrong: Apa harganya?
+    right: Berapa harganya?
+    why:
+      ar_eg: السعر رقم، يبقى berapa مش apa.
+      ar: الثمن عدد، فالسؤال بـ berapa.
+      en: A price is a number, so ask with berapa.
+arabic_bridge:
+  ar_eg: "berapa بتغطي «كام» المصرية بكل استخداماتها: بكام، كام سنة، رقمك كام."
+  ar: berapa تقابل «كم» بكل استعمالاتها.
+  en: berapa covers every use of Egyptian «كام».
+tags: [question, numbers, time]
+see_also: [id.number.cardinal, id.time.clock, id.duration]
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,75 @@
+schema: kabar.grammar/v1
+id: id.sentence.no-copula
+language: id
+level: bipa1
+title:
+  target: Saya mahasiswa. (tanpa "is")
+  en: "Sentences without 'to be'"
+  ar_eg: الجملة من غير «يكون»
+  ar: الجملة الاسمية بلا فعل كينونة
+summary:
+  ar_eg: "زي العربي بالظبط: «أنا طالب» من غير فعل. adalah بتيجي في التعريفات الرسمية بس."
+  ar: "كالجملة الاسمية العربية تمامًا: مبتدأ وخبر بلا فعل، وadalah للتعريف في الأسلوب الرسمي."
+  en: Like Arabic nominal sentences, Indonesian needs no "is/am/are"; adalah appears only in formal definitions.
+pattern:
+  - subject + noun / adjective / place
+  - subject + adalah + noun (formal definition)
+explanation:
+  ar_eg: |
+    الإندونيسي مابيحتاجش فعل «يكون» (is / am / are):
+    Saya mahasiswa = أنا طالب. Dia ramah = هو لطيف. Kami di Jakarta = إحنا في جاكرتا.
+    ده نفس منطق الجملة الاسمية في العربي، فمش هتحتاج تتعود على حاجة جديدة.
+    adalah بتتسمع في الأخبار والكتب والتعريفات: Jakarta adalah ibu kota Indonesia = جاكرتا هي عاصمة إندونيسيا. بتيجي قبل اسم بس، مش قبل صفة.
+    وللنفي: قبل الاسم bukan، وقبل الصفة tidak (فيه درس مخصوص).
+  ar: |
+    لا تحتاج الإندونيسية إلى فعل الكينونة:
+    Saya mahasiswa = أنا طالب. Dia ramah = هو لطيف. Kami di Jakarta = نحن في جاكرتا.
+    وهذا هو منطق الجملة الاسمية العربية نفسه.
+    أما adalah فتظهر في الأسلوب الرسمي والتعريفات: Jakarta adalah ibu kota Indonesia = جاكرتا هي عاصمة إندونيسيا، ولا تأتي إلا قبل اسم، لا قبل صفة.
+    والنفي: bukan قبل الاسم، وtidak قبل الصفة.
+  en: |
+    Indonesian has no verb "to be" in ordinary sentences:
+    Saya mahasiswa = I am a student. Dia ramah = He/She is friendly. Kami di Jakarta = We are in Jakarta.
+    This is exactly the logic of the Arabic nominal sentence (أنا طالب).
+    adalah appears in news, books and definitions: Jakarta adalah ibu kota Indonesia = Jakarta is the capital of Indonesia. Use it only before a noun, never before an adjective.
+    Negation: bukan before nouns, tidak before adjectives (separate lesson).
+examples:
+  - text: Saya mahasiswa.
+    en: I'm a student.
+    ar_eg: أنا طالب.
+    ar: أنا طالب.
+  - text: Nama saya Mohamed.
+    en: My name is Mohamed.
+    ar_eg: اسمي محمد.
+    ar: اسمي محمد.
+  - text: Rumahnya besar.
+    en: His/Her house is big.
+    ar_eg: بيته كبير.
+    ar: بيته كبير.
+  - text: Kairo adalah ibu kota Mesir.
+    en: Cairo is the capital of Egypt.
+    ar_eg: القاهرة هي عاصمة مصر.
+    ar: القاهرة هي عاصمة مصر.
+    register: formal
+mistakes:
+  - wrong: Dia adalah ramah.
+    right: Dia ramah.
+    why:
+      ar_eg: adalah مابتجيش قبل صفة.
+      ar: لا تأتي adalah قبل الصفة.
+      en: adalah never comes before an adjective.
+  - wrong: Saya adalah lapar.
+    right: Saya lapar.
+    why:
+      ar_eg: «أنا جعان» على طول، زي العربي.
+      ar: «أنا جائع» مباشرة كما في العربية.
+      en: Just "I hungry", exactly like Arabic.
+arabic_bridge:
+  ar_eg: "ميزة ليك كمتكلم عربي: الجملة الاسمية عندك أصلًا. و«adalah» شبه «هو/هي» اللي بنحطها في التعريف: «القاهرة هي العاصمة»."
+  ar: "هذه ميزة للعربي: الجملة الاسمية مألوفة، وadalah تشبه ضمير الفصل في «القاهرةُ هي العاصمةُ»."
+  en: "An advantage for Arabic speakers: the nominal sentence is native to you, and adalah behaves like the Arabic pronoun of separation («القاهرة هي العاصمة»)."
+tags: [sentence, copula]
+see_also: [id.negation.tidak-bukan, id.sentence.word-order]
+review:
+  status: draft
+  verified: false

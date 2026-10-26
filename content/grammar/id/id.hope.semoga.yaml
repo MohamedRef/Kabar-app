@@ -1,0 +1,69 @@
+schema: kabar.grammar/v1
+id: id.hope.semoga
+language: id
+level: bipa2
+title:
+  target: semoga, mudah-mudahan, insya Allah, amin
+  en: Wishes and hopes
+  ar_eg: الأمنيات والدعاء (يا رب، إن شاء الله)
+  ar: التمني والدعاء
+summary:
+  ar_eg: "semoga / mudah-mudahan + جملة = يا رب… / إن شاء الله…: Semoga cepat sembuh = ألف سلامة. والرد: Amin."
+  ar: semoga / mudah-mudahan + جملة = عسى / لعل، والجواب «آمين».
+  en: semoga / mudah-mudahan + clause = I hope / may …; reply amin.
+pattern:
+  - Semoga / Mudah-mudahan + clause
+  - Semoga + adjective / noun (Semoga sukses!)
+  - insya Allah (God willing) · amin (amen)
+explanation:
+  ar_eg: |
+    - semoga = يا رب / إن شاء الله (في الأمنية): Semoga cepat sembuh = ربنا يشفيك / ألف سلامة.
+    - mudah-mudahan = نفس المعنى، أعمّ في الكلام: Mudah-mudahan besok tidak hujan = يا رب بكرة ماتمطرش.
+    - تهاني ثابتة: Semoga sukses! = بالتوفيق!، Semoga lancar = ربنا يسهّل، Semoga betah = يا رب تتبسط هنا.
+    - insya Allah = إن شاء الله (بنفس المعنى، وأحيانًا بنفس التهرّب المصري!).
+    - الرد على الدعاء: Amin / Aamiin = آمين.
+    - Alhamdulillah = الحمد لله، بتتقال زي عندنا بالظبط.
+  ar: |
+    - semoga = عسى / أرجو أن: Semoga cepat sembuh = أرجو لك الشفاء العاجل.
+    - mudah-mudahan بالمعنى نفسه وأكثر شيوعًا في الحديث.
+    - عبارات ثابتة: Semoga sukses = بالتوفيق، Semoga lancar = تيسّر الله أمرك.
+    - insya Allah = إن شاء الله، وAmin = آمين، وAlhamdulillah = الحمد لله.
+  en: |
+    - semoga = may … / I hope: Semoga cepat sembuh = Get well soon.
+    - mudah-mudahan = same, very common in speech: Mudah-mudahan besok tidak hujan.
+    - Set wishes: Semoga sukses! (good luck), Semoga lancar (hope it goes smoothly), Semoga betah (hope you settle in).
+    - insya Allah = God willing (with the same range of meanings as in Egypt!).
+    - Reply to a wish: Amin / Aamiin. Alhamdulillah works exactly as in Arabic.
+examples:
+  - text: Semoga cepat sembuh, ya!
+    en: Get well soon!
+    ar_eg: ألف سلامة عليك!
+    ar: شفاك الله سريعًا!
+  - text: Mudah-mudahan kita bisa bertemu lagi.
+    en: Hopefully we can meet again.
+    ar_eg: يا رب نتقابل تاني.
+    ar: عسى أن نلتقي مرة أخرى.
+  - text: Besok kamu datang? — Insya Allah.
+    en: Are you coming tomorrow? — God willing.
+    ar_eg: جاي بكرة؟ — إن شاء الله.
+    ar: هل ستأتي غدًا؟ — إن شاء الله.
+  - text: Semoga sukses ujiannya! — Aamiin, terima kasih.
+    en: Good luck with the exam! — Amen, thank you.
+    ar_eg: بالتوفيق في الامتحان! — يا رب، شكرًا.
+    ar: بالتوفيق في الامتحان! — آمين، شكرًا.
+mistakes:
+  - wrong: Saya semoga lulus.
+    right: Semoga saya lulus.
+    why:
+      ar_eg: semoga بتيجي في أول الجملة.
+      ar: semoga تتصدر الجملة.
+      en: semoga opens the sentence.
+arabic_bridge:
+  ar_eg: insya Allah، amin، alhamdulillah، masya Allah — كلها عربي ومستخدمة يوميًا. هتحس إنك في البيت.
+  ar: ألفاظ الدعاء العربية كـ«إن شاء الله» و«آمين» و«الحمد لله» و«ما شاء الله» شائعة في الكلام اليومي.
+  en: insya Allah, amin, alhamdulillah, masya Allah — Arabic phrases in daily use; you'll feel at home.
+tags: [wishes, arabic-loan, culture]
+see_also: [id.pattern.sakit, id.greeting.selamat]
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,89 @@
+schema: kabar.grammar/v1
+id: id.greeting.selamat
+language: id
+level: bipa1
+title:
+  target: Selamat pagi / siang / sore / malam
+  en: Greetings with selamat
+  ar_eg: التحية بكلمة selamat
+  ar: التحية بكلمة selamat
+summary:
+  ar_eg: selamat + وقت اليوم = صباح الخير / مساء الخير، وselamat + حاجة = مبروك أو بالسلامة.
+  ar: selamat مع وقت اليوم تحية، ومع مناسبة أو فعل تهنئة أو دعاء بالسلامة.
+  en: selamat + time of day is a greeting; selamat + an event or action is a wish ("safe …", "happy …").
+pattern:
+  - selamat + pagi / siang / sore / malam
+  - selamat + datang / jalan / tinggal / tidur / makan
+  - selamat + ulang tahun / hari raya / ...
+explanation:
+  ar_eg: |
+    كلمة selamat جاية من العربي «سلامة»، وعشان كده معناها الأصلي «بالسلامة / سالم».
+    الإندونيسيين بيستخدموها في التحية حسب الوقت:
+    - selamat pagi: من الفجر لحد حوالي الساعة ١١ الصبح.
+    - selamat siang: من ١١ لحد ٣ العصر تقريبًا (وقت الضهر والحر).
+    - selamat sore: من ٣ لحد المغرب.
+    - selamat malam: بعد المغرب. وبتتقال للتحية وكمان للوداع بالليل.
+    ومع حاجات تانية بتبقى دعوة أو تهنئة: selamat datang = أهلًا وسهلًا، selamat jalan = مع السلامة (للي ماشي)، selamat tinggal = مع السلامة (من اللي ماشي للي قاعد)، selamat ulang tahun = كل سنة وإنت طيب.
+    في الكلام العادي بين الصحاب كتير بيشيلوا selamat ويقولوا «Pagi!» بس.
+  ar: |
+    كلمة selamat مأخوذة من العربية «سلامة»، ومعناها الأصلي السلامة والنجاة.
+    تُستعمل في التحية بحسب الوقت:
+    - selamat pagi: من الفجر إلى نحو الحادية عشرة صباحًا.
+    - selamat siang: من الحادية عشرة إلى نحو الثالثة عصرًا.
+    - selamat sore: من الثالثة إلى المغرب.
+    - selamat malam: بعد المغرب، للتحية وللوداع أيضًا.
+    وتأتي مع ألفاظ أخرى للدعاء أو التهنئة: selamat datang (أهلًا وسهلًا)، selamat jalan (في أمان الله، تقال لمن يرحل)، selamat tinggal (يقولها الراحل لمن يبقى)، selamat ulang tahun (عيد ميلاد سعيد).
+    وفي الحديث غير الرسمي قد تُحذف selamat فيقال «Pagi!» فقط.
+  en: |
+    selamat comes from Arabic «سلامة» (safety), so at heart it means "safe and sound".
+    With a time of day it is the standard greeting:
+    - selamat pagi: dawn to about 11 a.m.
+    - selamat siang: about 11 a.m. to 3 p.m. (the hot middle of the day).
+    - selamat sore: about 3 p.m. to sunset.
+    - selamat malam: after dark, both hello and goodnight.
+    With other words it becomes a wish: selamat datang (welcome), selamat jalan (goodbye, said to the one leaving), selamat tinggal (goodbye, said by the one leaving), selamat ulang tahun (happy birthday).
+    Among friends selamat is often dropped: "Pagi!"
+examples:
+  - text: Selamat pagi, Bu!
+    en: Good morning, ma'am!
+    ar_eg: صباح الخير يا مدام!
+    ar: صباح الخير يا سيدتي!
+  - text: Selamat datang di Jakarta.
+    en: Welcome to Jakarta.
+    ar_eg: أهلًا بيك في جاكرتا.
+    ar: أهلًا وسهلًا بك في جاكرتا.
+  - text: Selamat jalan! Hati-hati, ya.
+    en: Goodbye! Take care.
+    ar_eg: مع السلامة! خلي بالك من نفسك.
+    ar: في أمان الله! انتبه لنفسك.
+  - text: Selamat ulang tahun, Sari!
+    en: Happy birthday, Sari!
+    ar_eg: كل سنة وإنتي طيبة يا ساري!
+    ar: عيد ميلاد سعيد يا ساري!
+  - text: Pagi, Mas!
+    en: Morning! (casual)
+    ar_eg: صباحو!
+    ar: صباح الخير! (بأسلوب غير رسمي)
+    register: informal
+mistakes:
+  - wrong: Selamat malam (to greet someone at 4 p.m.)
+    right: Selamat sore
+    why:
+      ar_eg: الساعة ٤ لسه sore. malam بتبدأ بعد المغرب بس.
+      ar: الساعة الرابعة ما زالت من sore، وmalam لا يبدأ إلا بعد المغرب.
+      en: At 4 p.m. it is still sore; malam starts after sunset.
+  - wrong: Selamat tinggal (said to a guest who is leaving your house)
+    right: Selamat jalan
+    why:
+      ar_eg: اللي ماشي هو اللي بيقول selamat tinggal، واللي قاعد بيقوله selamat jalan.
+      ar: الراحل يقول selamat tinggal، والمقيم يقول للراحل selamat jalan.
+      en: The person leaving says selamat tinggal; the person staying says selamat jalan.
+arabic_bridge:
+  ar_eg: selamat ← «سلامة» بالظبط، والتاء المربوطة بقت -at زي ما بيحصل في كلمات كتير (rahmat ← رحمة). وsalam ← «سلام» برضه موجودة.
+  ar: selamat من «سلامة»، وقد صارت التاء المربوطة -at كما في كلمات كثيرة (rahmat ← رحمة). وكلمة salam من «سلام» مستعملة أيضًا.
+  en: selamat ← Arabic «سلامة»; the final tā' marbūṭa became -at, a regular sound shift (rahmat ← رحمة). salam ← «سلام» is used too.
+tags: [greeting, arabic-loan, time]
+see_also: [id.question.apa, id.time.clock]
+review:
+  status: draft
+  verified: false

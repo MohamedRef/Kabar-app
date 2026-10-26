@@ -1,0 +1,77 @@
+schema: kabar.grammar/v1
+id: id.preposition.di-ke-dari
+language: id
+level: bipa1
+title:
+  target: di, ke, dari
+  en: "at / in, to, from"
+  ar_eg: في، لـ، من
+  ar: في، إلى، من
+summary:
+  ar_eg: di = في (مكان)، ke = لـ / على (اتجاه)، dari = من. وdi حرف الجر بتتكتب منفصلة عكس di- بتاعة المبني للمجهول.
+  ar: di للمكان، وke للاتجاه، وdari للابتداء؛ وdi الجارة تُكتب منفصلة بخلاف سابقة المبني للمجهول di-.
+  en: di = at / in, ke = to, dari = from. The preposition di is written apart; the passive prefix di- is attached.
+pattern:
+  - di + place (di rumah)
+  - ke + place (ke pasar) — often without a verb
+  - dari + place / time / material (dari Mesir, dari jam 8)
+  - dari … sampai / ke … (from … to …)
+explanation:
+  ar_eg: |
+    - di = في / عند (مكان ثابت): Saya di rumah = أنا في البيت.
+    - ke = لـ / على (حركة لمكان): Saya ke pasar = رايح السوق. لاحظ: مش لازم فعل! ke لوحدها كفاية تقول «رايح».
+    - dari = من: Saya dari Mesir = أنا من مصر. dari jam delapan sampai jam lima = من ٨ لـ ٥.
+    - مع الناس: kepada / pada بدل ke / di (Saya bicara kepada guru) — دي هتيجي بعدين.
+    فخ الإملاء: di حرف جر = منفصلة (di rumah)، di- بتاعة المبني للمجهول = لازقة (dibaca). Kabar بيفرّق بينهم في القارئ.
+  ar: |
+    - di = في / عند للمكان الثابت: Saya di rumah = أنا في البيت.
+    - ke = إلى للحركة، وقد تُغني عن الفعل: Saya ke pasar = أنا ذاهب إلى السوق.
+    - dari = من: Saya dari Mesir، وdari jam delapan sampai jam lima = من الثامنة إلى الخامسة.
+    - ومع الأشخاص تُستعمل kepada / pada (لاحقًا).
+    وفي الإملاء: di الجارة منفصلة (di rumah)، وسابقة المبني للمجهول متصلة (dibaca).
+  en: |
+    - di = at / in (location): Saya di rumah = I'm at home.
+    - ke = to (movement); it can replace the verb: Saya ke pasar = I'm going to the market.
+    - dari = from: Saya dari Mesir; dari jam delapan sampai jam lima = from 8 to 5.
+    - With people, kepada / pada replace ke / di (later).
+    Spelling trap: preposition di is separate (di rumah); passive di- is attached (dibaca). Kabar's Reader tells them apart.
+examples:
+  - text: Anak-anak bermain di taman.
+    en: The children are playing in the park.
+    ar_eg: العيال بيلعبوا في الجنينة.
+    ar: الأطفال يلعبون في الحديقة.
+  - text: Besok saya ke Bandung.
+    en: Tomorrow I'm going to Bandung.
+    ar_eg: بكرة رايح باندونج.
+    ar: غدًا أذهب إلى باندونغ.
+  - text: Kereta dari Jakarta sudah datang.
+    en: The train from Jakarta has arrived.
+    ar_eg: القطر اللي جاي من جاكرتا وصل.
+    ar: وصل القطار القادم من جاكرتا.
+  - text: ng prabowo?
+    en: To Prabowo? (Javanese chat — ng = nang, Indonesian ke)
+    ar_eg: "لبرابوو؟ (شات جاوي: ng = nang = ke)"
+    ar: "إلى برابوو؟ (محادثة جاوية: ng تعني nang أي ke)"
+    register: chat
+mistakes:
+  - wrong: dirumah
+    right: di rumah
+    why:
+      ar_eg: حرف الجر منفصل.
+      ar: حرف الجر منفصل.
+      en: The preposition is a separate word.
+  - wrong: Saya pergi di pasar.
+    right: Saya pergi ke pasar.
+    why:
+      ar_eg: فيه حركة، يبقى ke.
+      ar: مع الحركة يُستعمل ke.
+      en: Movement needs ke.
+arabic_bridge:
+  ar_eg: di ≈ «في»، ke ≈ «لـ» (زي «رايح لِـ»)، dari ≈ «من». و«Saya ke pasar» من غير فعل زي ما بنقول «أنا على السوق».
+  ar: di ≈ في، ke ≈ إلى، dari ≈ من.
+  en: di ≈ في, ke ≈ إلى / لـ, dari ≈ من; "Saya ke pasar" with no verb is like Egyptian «أنا على السوق».
+tags: [preposition, place]
+see_also: [id.question.mana, id.location.words, id.demonstrative.sini-situ-sana]
+review:
+  status: draft
+  verified: false
