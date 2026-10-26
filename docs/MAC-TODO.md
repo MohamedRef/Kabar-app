@@ -32,3 +32,7 @@ These need your machine, your accounts or your devices. Nothing here costs money
 - [ ] Google Cloud Console: OAuth clients (Web, Android with the release SHA-1, Desktop); put the Web + Desktop ids in `crates/server/wrangler.toml`.
 - [ ] Optional: `wrangler secret put GEMINI_API_KEY` and `AZURE_SPEECH_KEY`.
 - [ ] `just deploy-cloud` and send me the `workers.dev` URL.
+
+## Kak Nur's reminders (M7) — docs/CLOUD.md §3.4
+- [ ] Firebase console: add Firebase to the "Kabar" Google Cloud project (Spark, free), add the Android app `app.kabar`, keep `google-services.json` for the app build.
+- [ ] Generate a service-account private key, then `cd crates/server && wrangler secret put FCM_SERVICE_ACCOUNT < that-file.json`, delete the file, `just deploy-cloud`.

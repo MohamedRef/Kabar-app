@@ -1,27 +1,38 @@
 //! The account's Durable Object: device registry + sync hub, with WebSocket
-//! hibernation so idle sockets cost nothing.
+//! hibernation so idle sockets cost nothing, plus Kak Nur's reminder alarm.
+
+use std::cell::RefCell;
+use std::time::Duration;
 
 use kabar_protocol::DeviceId;
-use kabar_protocol::cloud::{DeviceList, ErrorCode};
-use kabar_protocol::sync::ServerMsg;
+use kabar_protocol::cloud::{DeviceList, ErrorCode, PushTokenReply};
+use kabar_protocol::sync::{SeqOp, ServerMsg};
 use worker::{
-    DurableObject, Env, Method, Request, Response, Result, State, WebSocket, WebSocketIncomingMessage,
-    WebSocketPair, console_error, durable_object,
+    DurableObject, Env, Headers, Method, Request, Response, Result, State, WebSocket,
+    WebSocketIncomingMessage, WebSocketPair, console_error, console_log, durable_object,
 };
 
 use super::do_sql::DoSql;
-use super::{api_error, now_ms, random_hex};
-use crate::devices::{Devices, RefreshError};
+use super::{api_error, now_ms, post, post_json, random_hex};
+use crate::coach::{self, KakNur};
+use crate::devices::{Devices, PushTarget, RefreshError};
+use crate::fcm::{self, AccessToken, SendOutcome, ServiceAccount};
 use crate::hub::{Conn, Hub};
-use crate::internal::{DEVICE_HEADER, Expiry, Refresh, Register, Revoke};
+use crate::internal::{DEVICE_HEADER, Expiry, Refresh, Register, Revoke, SetPush};
 use crate::sql::Sql;
 
 /// Close code sent to a signed-out device.
 const CLOSE_REVOKED: u16 = 4001;
 
+thread_local! {
+    /// Google access token for FCM, per service account, cached ~55 minutes.
+    static FCM_TOKEN: RefCell<Option<(String, AccessToken)>> = const { RefCell::new(None) };
+}
+
 #[durable_object]
 pub struct Account {
     state: State,
+    env: Env,
 }
 
 impl Account {
@@ -49,6 +60,103 @@ impl Account {
             .ok_or_else(|| worker::Error::RustError("missing device header".into()))
     }
 
+    /// Sends stored ops to every ready socket except `except` (a conn id).
+    fn broadcast(&self, ops: Vec<SeqOp>, except: Option<&str>) {
+        if ops.is_empty() {
+            return;
+        }
+        let msg = ServerMsg::Ops { ops, more: false };
+        for other in self.state.get_websockets() {
+            let Ok(Some(c)) = other.deserialize_attachment::<Conn>() else { continue };
+            if c.ready && Some(c.conn_id.as_str()) != except {
+                Self::send(&other, &msg);
+            }
+        }
+    }
+
+    fn service_account(&self) -> Option<ServiceAccount> {
+        let json = self.env.secret("FCM_SERVICE_ACCOUNT").ok()?.to_string();
+        if json.trim().is_empty() {
+            return None;
+        }
+        ServiceAccount::from_json(&json).map_err(|e| console_error!("{e}")).ok()
+    }
+
+    /// Arms the reminder alarm unless one is pending. Each alarm re-arms the
+    /// next while some device can get pushes (at most 96 a day).
+    async fn ensure_alarm(&self) -> Result<()> {
+        let storage = self.state.storage();
+        if storage.get_alarm().await?.is_none() {
+            let now = now_ms();
+            storage.set_alarm(Duration::from_millis(coach::next_tick_ms(now) - now)).await?;
+        }
+        Ok(())
+    }
+
+    async fn fcm_token(sa: &ServiceAccount, now: u64) -> Result<String> {
+        let cached = FCM_TOKEN.with_borrow(|c| {
+            c.as_ref()
+                .filter(|(email, t)| *email == sa.client_email && t.use_until_ms > now)
+                .map(|(_, t)| t.token.clone())
+        });
+        if let Some(t) = cached {
+            return Ok(t);
+        }
+        let assertion = sa.assertion(now).map_err(js_err)?;
+        let headers = Headers::new();
+        headers.set("content-type", "application/x-www-form-urlencoded")?;
+        let (status, _, body) = post(fcm::TOKEN_URL, headers, &fcm::token_request_body(&assertion)).await?;
+        let token = fcm::parse_token_response(status, &body, now).map_err(js_err)?;
+        let out = token.token.clone();
+        FCM_TOKEN.with_borrow_mut(|c| *c = Some((sa.client_email.clone(), token)));
+        Ok(out)
+    }
+
+    /// One push to one device.
+    async fn send_push(
+        sa: &ServiceAccount,
+        target: &PushTarget,
+        due: &coach::Due,
+        now: u64,
+    ) -> Result<SendOutcome> {
+        let token = Self::fcm_token(sa, now).await?;
+        let headers = Headers::new();
+        headers.set("authorization", &format!("Bearer {token}"))?;
+        let (status, _, body) =
+            post_json(&sa.send_url(), headers, &fcm::message(&target.token, due.notice())).await?;
+        if status == 401 {
+            // Revoked early: mint a fresh one next time.
+            FCM_TOKEN.with_borrow_mut(|c| *c = None);
+        }
+        Ok(fcm::classify_send(status, &body))
+    }
+
+    /// The alarm's work: decide, push to every device, record what went out.
+    async fn remind(&self, sa: &ServiceAccount, targets: &[PushTarget], now: u64) -> Result<()> {
+        let db = self.db();
+        let tick = coach::tick(&db, &KakNur, now).map_err(sql_err)?;
+        if let Some(why) = tick.silence {
+            console_log!("reminder: silent ({why:?})");
+        }
+        for due in &tick.due {
+            let mut delivered = false;
+            for target in targets {
+                match Self::send_push(sa, target, due, now).await {
+                    Ok(SendOutcome::Sent) => delivered = true,
+                    Ok(SendOutcome::Unregistered) => {
+                        Devices::open(&db).drop_push_token(&target.device, &target.token).map_err(sql_err)?;
+                    }
+                    Ok(SendOutcome::Failed(why)) => console_error!("fcm to {}: {why}", target.device),
+                    Err(e) => console_error!("fcm to {}: {e}", target.device),
+                }
+            }
+            if delivered && let Some(op) = coach::commit(&db, &KakNur, due, now_ms()).map_err(sql_err)? {
+                self.broadcast(vec![op], None);
+            }
+        }
+        Ok(())
+    }
+
     fn accept_socket(&self, req: &Request) -> Result<Response> {
         let device = Self::device_header(req)?;
         let db = self.db();
@@ -68,15 +176,18 @@ fn sql_err(e: crate::sql::SqlError) -> worker::Error {
     worker::Error::RustError(e.to_string())
 }
 
+fn js_err(e: impl std::fmt::Display) -> worker::Error {
+    worker::Error::RustError(e.to_string())
+}
+
 impl DurableObject for Account {
-    fn new(state: State, _env: Env) -> Self {
+    fn new(state: State, env: Env) -> Self {
         let db = DoSql(state.storage().sql());
         // Synchronous, so it finishes before any event is delivered.
-        if let Err(e) = db.exec_batch(crate::devices::SCHEMA).and_then(|_| db.exec_batch(crate::hub::SCHEMA))
-        {
+        if let Err(e) = crate::devices::migrate(&db).and_then(|_| db.exec_batch(crate::hub::SCHEMA)) {
             console_error!("migration failed: {e}");
         }
-        Self { state }
+        Self { state, env }
     }
 
     async fn fetch(&self, mut req: Request) -> Result<Response> {
@@ -89,6 +200,7 @@ impl DurableObject for Account {
                 let body: Register = req.json().await?;
                 let expires =
                     devices.register(&body.info, &body.email, &body.refresh_hash, now).map_err(sql_err)?;
+                self.ensure_alarm().await?;
                 Response::from_json(&Expiry { refresh_expires_ms: expires, email: body.email })
             }
             (Method::Post, "/refresh") => {
@@ -109,6 +221,18 @@ impl DurableObject for Account {
                 let current = Self::device_header(&req)?;
                 let list = devices.list(&current).map_err(sql_err)?;
                 Response::from_json(&DeviceList { devices: list })
+            }
+            (Method::Post, "/push") => {
+                let device = Self::device_header(&req)?;
+                let body: SetPush = req.json().await?;
+                if !devices.set_push_token(&device, body.token.as_deref()).map_err(sql_err)? {
+                    return api_error(ErrorCode::DeviceRevoked, "this device was signed out");
+                }
+                let push_configured = self.service_account().is_some();
+                if body.token.is_some() && push_configured {
+                    self.ensure_alarm().await?;
+                }
+                Response::from_json(&PushTokenReply { registered: body.token.is_some(), push_configured })
             }
             (Method::Get, "/active") => {
                 let device = Self::device_header(&req)?;
@@ -162,17 +286,26 @@ impl DurableObject for Account {
         for reply in &outcome.replies {
             Self::send(&ws, reply);
         }
-        if !outcome.broadcast.is_empty() {
-            let msg = ServerMsg::Ops { ops: outcome.broadcast, more: false };
-            for other in self.state.get_websockets() {
-                let Ok(Some(c)) = other.deserialize_attachment::<Conn>() else { continue };
-                if c.ready && c.conn_id != conn.conn_id {
-                    Self::send(&other, &msg);
-                }
-            }
-        }
+        self.broadcast(outcome.broadcast, Some(&conn.conn_id));
         devices.touch(&conn.device, now, outcome.synced).map_err(sql_err)?;
         Ok(())
+    }
+
+    /// Kak Nur's 15-minute tick. Stops re-arming while no device has a push
+    /// token or Firebase isn't set up; the next `PUT /v1/devices/me/push`
+    /// arms it again, so an idle account costs nothing.
+    async fn alarm(&self) -> Result<Response> {
+        let now = now_ms();
+        let targets = Devices::open(&self.db()).push_targets().map_err(sql_err)?;
+        let Some(sa) = self.service_account().filter(|_| !targets.is_empty()) else {
+            return Response::empty();
+        };
+        // Re-arm first, so a failure below never stops the reminders.
+        self.state.storage().set_alarm(Duration::from_millis(coach::next_tick_ms(now) - now)).await?;
+        if let Err(e) = self.remind(&sa, &targets, now).await {
+            console_error!("reminder tick: {e}");
+        }
+        Response::empty()
     }
 
     async fn websocket_close(

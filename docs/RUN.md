@@ -71,6 +71,7 @@ just cloud-tools     # once: wrangler + worker-build
 wrangler login       # once: your free Cloudflare account
 just cloud-setup     # once: D1, signing key, allowlist
 just deploy-cloud    # after adding GOOGLE_CLIENT_IDS (CLOUD.md §3.2)
+# Reminders (M7): Firebase service account → `wrangler secret put FCM_SERVICE_ACCOUNT` (CLOUD.md §3.4)
 ```
 
 ## 6. Troubleshooting

@@ -31,7 +31,8 @@ tag = "v1"
 new_sqlite_classes = ["Account"]
 
 # Not secret. Secrets (ALLOWED_EMAILS, TOKEN_SIGNING_KEY, GEMINI_API_KEY,
-# AZURE_SPEECH_KEY, ANTHROPIC_API_KEY) go in with `wrangler secret put`.
+# AZURE_SPEECH_KEY, ANTHROPIC_API_KEY, FCM_SERVICE_ACCOUNT) go in with
+# `wrangler secret put`.
 [vars]
 # OAuth client ids (Android + macOS), comma-separated.
 GOOGLE_CLIENT_IDS = ""
