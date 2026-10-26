@@ -26,7 +26,7 @@ input word, nothing else** (no blank lines, no comments, no Markdown). Fields:
 | `lang` | `"id"` |
 | `word` | the input word, unchanged |
 | `rank` | the input rank, as a number |
-| `lemma` | the word without inflectional clitics (-nya, -ku, -mu, -lah, -kah, -pun): `rumahnya` → `rumah`, `membuatnya` → `membuat`. Otherwise the word itself. |
+| `lemma` | the word without inflectional clitics (-nya, -ku, -mu, -lah, -kah, -pun): `rumahnya` → `rumah`, `membuatnya` → `membuat`. Otherwise the word itself. Javanese is written with plain e, never é/è (`kowe`, `sampeyan`), in every field. |
 | `root` | the base when the word is derived (`membuat` → `buat`, `kesehatan` → `sehat`, `anak-anak` → `anak`). Omit for bare roots and particles. |
 | `affixes` | display breakdown in order, including the root: `["meN-","buat"]`, `["ke-","sehat","-an"]`, `["di-","bersih","-kan"]`, `["rumah","-nya"]`, `["anak","RED"]` (RED = reduplication), `["ber-","main"]`. Nasal prefix is always written `meN-` / `peN-`. Omit when there is no root. |
 | `senses` | 1–4, most common meaning first. Each: `pos`, `gloss` {`arz`,`ar`,`en`}, optional `register`. Glosses are short (1–6 words; synonyms separated by "، " or ", "). Only meanings a learner will actually meet. |
