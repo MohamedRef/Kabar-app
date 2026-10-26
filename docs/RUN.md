@@ -1,4 +1,4 @@
-# Running Kabar (M1–M2)
+# Running Kabar
 
 Everything below runs on the MacBook. Commands are `just` recipes from the repo root.
 
@@ -73,13 +73,42 @@ just cloud-setup     # once: D1, signing key, allowlist
 just deploy-cloud    # after adding GOOGLE_CLIENT_IDS (CLOUD.md §3.2)
 ```
 
-## 6. Troubleshooting
+## 6. Share-to-Kabar and the Screenshot Decoder (M5)
+
+### How the Kotlin glue gets into the APK
+`android/` (repo root) is a small Gradle library module: the share target (`ShareActivity`), the pending-share hand-off (`PendingShare`) and on-device OCR with ML Kit Text Recognition v2 (`OcrBridge`). Nothing to configure: the `#[manganis::ffi("../../android")]` marker in `crates/app/src/platform/android.rs` makes `dx` (0.7.10) copy the folder into its generated Gradle project as `:plugins:plugin`, add it as an app dependency, and let the manifest merger add the share activity. Gradle downloads ML Kit from Google's Maven repository (free) on the first Android build after this change, so be online for that one.
+
+`just apk` now stops with "dx did not build android/ into the APK" if the Kotlin classes are missing.
+
+The bundled Latin OCR model makes the APK a few MB bigger. OCR runs on the phone; images never leave it.
+
+### Try it on the S24 Ultra / Tab S11
+```bash
+just apk && just install <serial>          # same as before
+just share-text "arp dicul piro" <serial>  # simulates sharing text to Kabar
+```
+Then on the device:
+1. **Text:** in WhatsApp/Chrome, long-press a message or select text → Share → **Kabar**. Kabar opens with it in the Reader.
+2. **Selection menu:** select text in any app → ⋮ (more) → **Kabar**.
+3. **Screenshot:** take a screenshot → Share → **Kabar**. Kabar opens and reads the text in it (ML Kit, on-device).
+4. Share again while Kabar is already open: it comes to the front with the new item.
+
+`adb logcat -s KabarShare` shows why a share was ignored (e.g. an unreadable image).
+
+### Mac
+The Screenshot Decoder uses Apple Vision (built into macOS, nothing to install). It recognizes Indonesian when your macOS supports it and falls back to its general Latin model otherwise; language auto-correction is only on when Indonesian is supported, so Javanese and slang aren't "corrected" into English. Try it with `just run-mac` Reader → "Open a screenshot", or drag an image onto the Reader.
+
+Tesseract (`ind`/`jav`) as a third OCR engine is phased for later.
+
+## 7. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.
 - Build out of memory on 8 GB: `CARGO_BUILD_JOBS=2 just apk`.
+- `dx did not build android/ into the APK`: make sure `dx --version` says 0.7.10 (it must match the `manganis` version in `crates/app/Cargo.toml`), then check that `target/dx/kabar/release/android/app/settings.gradle` contains `include ':plugins:plugin'`.
+- Gradle can't resolve `com.google.mlkit:text-recognition`: the first build needs internet (Google Maven).
 
-## 6. Content pipeline (vocabulary, Arabic Bridge)
+## 8. Content pipeline (vocabulary, Arabic Bridge)
 
 Details in `docs/CONTENT.md`. On the Mac:
 
