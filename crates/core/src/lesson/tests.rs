@@ -95,6 +95,20 @@ fn validate_catches_broken_content() {
 }
 
 #[test]
+fn validate_checks_the_game_id() {
+    let mut l = l01();
+    let game_issues = |l: &LessonContent| validate(l).into_iter().filter(|i| i.path == "game").count();
+    for ok in ["uu.grandmother", "mp.wedi-wedhi"] {
+        l.game = Some(ok.into());
+        assert_eq!(game_issues(&l), 0, "{ok}");
+    }
+    for bad in ["pasar", "xx.wedi-wedhi", "mp.", "uu", ""] {
+        l.game = Some(bad.into());
+        assert_eq!(game_issues(&l), 1, "{bad:?}");
+    }
+}
+
+#[test]
 fn normalize_folds_case_punctuation_and_arabic_variants() {
     assert_eq!(normalize("  Apa   kabar?! "), "apa kabar");
     assert_eq!(normalize("Saya sedang membaca buku."), "saya sedang membaca buku");

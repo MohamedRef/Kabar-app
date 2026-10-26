@@ -453,6 +453,42 @@ pub enum Msg {
     Me,
     PenHint,
     Example,
+    // Unggah-Ungguh Simulator (M11)
+    UnggahTitle,
+    UnggahBlurb,
+    UnggahIntro,
+    UnggahNoScenes,
+    UnggahOpensAt,
+    UnggahMeter,
+    UnggahTurn,
+    UnggahYourTurn,
+    UnggahFits,
+    UnggahTooPlain,
+    UnggahTooStiff,
+    UnggahSelfRaised,
+    UnggahBetter,
+    UnggahFitting,
+    UnggahScenes,
+    UnggahEndGreat,
+    UnggahEndGood,
+    UnggahEndGentle,
+    // Minimal Pairs (M11)
+    PairsTitle,
+    PairsBlurb,
+    PairsIntro,
+    PairsBoth,
+    PairsListenMode,
+    PairsReadMode,
+    PairsNoJavaneseVoice,
+    PairsHear,
+    PairsWhichHeard,
+    PairsWhichSpelling,
+    PairsInJavanese,
+    PairsInIndonesian,
+    PairsJavanese,
+    PairsIndonesian,
+    PairsTipTitle,
+    PairsTheTwoWords,
 }
 
 pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
@@ -1775,5 +1811,132 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PenHint, En) => {
             "With the pen: hover to peek, tap a word for its card, loop a phrase to look it up, or stroke across it to save it."
         }
+        (UnggahTitle, _) => "Unggah-Ungguh",
+        (UnggahBlurb, ArEg) => "اتكلم جاوي مع صاحبك وتيتا والمدرّس، وشوف مقياس الاحترام.",
+        (UnggahBlurb, Ar) => "تحدّث بالجاوية مع صديق وجدّة ومعلّم، وراقب مقياس الاحترام.",
+        (UnggahBlurb, En) => {
+            "Talk Javanese with a friend, a grandmother and a teacher, and watch the Respect Meter."
+        }
+        (UnggahIntro, ArEg) => {
+            "اختار مشهد. في كل دور هتلاقي نفس الكلام بمستويات مختلفة؛ اختار اللي يليق بالشخص اللي قدامك، و«مقياس الاحترام» هيوريك وقعه عليه."
+        }
+        (UnggahIntro, Ar) => {
+            "اختر مشهدًا. في كل دور تجد الكلام نفسه بمستويات مختلفة؛ اختر ما يليق بمن تخاطبه، وسيُريك «مقياس الاحترام» وقعه عليه."
+        }
+        (UnggahIntro, En) => {
+            "Pick a scene. Each turn offers the same thing at different speech levels: choose what suits the person, and the Respect Meter shows how it lands."
+        }
+        (UnggahNoScenes, ArEg) => "المشاهد لسه بتتكتب. ارجع بعد التحديث الجاي.",
+        (UnggahNoScenes, Ar) => "المشاهد قيد الكتابة. عد بعد التحديث القادم.",
+        (UnggahNoScenes, En) => "The scenes are still being written. Come back after the next update.",
+        (UnggahOpensAt, ArEg) => "بيفتح في",
+        (UnggahOpensAt, Ar) => "يُفتح في",
+        (UnggahOpensAt, En) => "Opens at",
+        (UnggahMeter, ArEg | Ar) => "مقياس الاحترام",
+        (UnggahMeter, En) => "Respect Meter",
+        (UnggahTurn, ArEg) => "دور",
+        (UnggahTurn, Ar) => "الدور",
+        (UnggahTurn, En) => "Turn",
+        (UnggahYourTurn, ArEg) => "هتقول إيه؟",
+        (UnggahYourTurn, Ar) => "ماذا ستقول؟",
+        (UnggahYourTurn, En) => "What do you say?",
+        (UnggahFits, ArEg) => "في الجون",
+        (UnggahFits, Ar) => "في محلّها تمامًا",
+        (UnggahFits, En) => "Just right",
+        (UnggahTooPlain, ArEg) => "سادة شوية على الشخص ده",
+        (UnggahTooPlain, Ar) => "عادية قليلًا على هذا الشخص",
+        (UnggahTooPlain, En) => "A little plain for this person",
+        (UnggahTooStiff, ArEg) => "رسمية شوية على الموقف",
+        (UnggahTooStiff, Ar) => "رسمية قليلًا على الموقف",
+        (UnggahTooStiff, En) => "A little stiff for the moment",
+        (UnggahSelfRaised, ArEg) => "كلمة التبجيل دي ليهم، مش ليك",
+        (UnggahSelfRaised, Ar) => "لفظ التبجيل لهم، لا لك",
+        (UnggahSelfRaised, En) => "Honour words are for them, not for you",
+        (UnggahBetter, ArEg) => "اللي يليق هنا:",
+        (UnggahBetter, Ar) => "الأنسب هنا:",
+        (UnggahBetter, En) => "What fits here:",
+        (UnggahFitting, ArEg | Ar) => "اختيارات في محلّها",
+        (UnggahFitting, En) => "fitting choices",
+        (UnggahScenes, ArEg) => "مشاهد تانية",
+        (UnggahScenes, Ar) => "مشاهد أخرى",
+        (UnggahScenes, En) => "Other scenes",
+        (UnggahEndGreat, ArEg) => "\u{2068}Sopan!\u{2069} كلامك كان في محلّه، وحسّوا باحترامك.",
+        (UnggahEndGreat, Ar) => "\u{2068}Sopan!\u{2069} كان كلامك في محله، وشعروا باحترامك.",
+        (UnggahEndGreat, En) => "Sopan! Your words fit, and they felt respected.",
+        (UnggahEndGood, ArEg) => "حلو قوي. كام لمسة كمان وتبقى مظبوطة خالص.",
+        (UnggahEndGood, Ar) => "جيد جدًا. بضع لمسات أخرى وتصبح متقنًا.",
+        (UnggahEndGood, En) => "Really good. A few more touches and it'll be spot on.",
+        (UnggahEndGentle, ArEg) => {
+            "مستويات الكلام بتاخد وقت، حتى مع الجاويين نفسهم. اقرا الشرح تاني وجرّب المشهد كمان مرة."
+        }
+        (UnggahEndGentle, Ar) => {
+            "مستويات الكلام تحتاج وقتًا، حتى عند الجاويين أنفسهم. اقرأ الشرح مجددًا وجرّب المشهد مرة أخرى."
+        }
+        (UnggahEndGentle, En) => {
+            "Speech levels take time, even for Javanese speakers. Read the notes again and give the scene another go."
+        }
+        (PairsTitle, ArEg | Ar) => "\u{2068}d/dh · t/th\u{2069}",
+        (PairsTitle, En) => "d/dh · t/th",
+        (PairsBlurb, ArEg) => {
+            "فرّق بين \u{2068}d\u{2069} و\u{2068}dh\u{2069}، و\u{2068}t\u{2069} و\u{2068}th\u{2069} في الجاوي."
+        }
+        (PairsBlurb, Ar) => {
+            "ميّز بين \u{2068}d\u{2069} و\u{2068}dh\u{2069}، و\u{2068}t\u{2069} و\u{2068}th\u{2069} في الجاوية."
+        }
+        (PairsBlurb, En) => "Tell Javanese d from dh, and t from th.",
+        (PairsIntro, ArEg) => {
+            "الجاوي فيه نوعين من كل حرف: \u{2068}d\u{2069} و\u{2068}t\u{2069} زي الدال والتاء بتوعنا، و\u{2068}dh\u{2069} و\u{2068}th\u{2069} واللسان راجع لورا. في كل جولة كلمتين شبه بعض، اختار الكتابة الصح."
+        }
+        (PairsIntro, Ar) => {
+            "في الجاوية نوعان من كل حرف: \u{2068}d\u{2069} و\u{2068}t\u{2069} كالدال والتاء العربيتين، و\u{2068}dh\u{2069} و\u{2068}th\u{2069} واللسان مرتدّ إلى الخلف. في كل جولة كلمتان متشابهتان، فاختر الكتابة الصحيحة."
+        }
+        (PairsIntro, En) => {
+            "Javanese has two of each: d and t just like Arabic د and ت, and dh and th with the tongue pulled back. Each round has two look-alike words: pick the right spelling."
+        }
+        (PairsBoth, ArEg) => "الاتنين",
+        (PairsBoth, Ar) => "كلاهما",
+        (PairsBoth, En) => "Both",
+        (PairsListenMode, ArEg) => "اسمع",
+        (PairsListenMode, Ar) => "استمع",
+        (PairsListenMode, En) => "Listen",
+        (PairsReadMode, ArEg) => "اقرا",
+        (PairsReadMode, Ar) => "اقرأ",
+        (PairsReadMode, En) => "Read",
+        (PairsNoJavaneseVoice, ArEg) => {
+            "الجهاز ده مفيهوش صوت جاوي، فهنلعب بالقراية: تشوف المعنى وتختار الكتابة. (الصوت الإندونيسي مبيعرفش يقول \u{2068}dh\u{2069} و\u{2068}th\u{2069}، فمش هنستعمله هنا.)"
+        }
+        (PairsNoJavaneseVoice, Ar) => {
+            "لا يوجد صوت جاوي على هذا الجهاز، فسنلعب بالقراءة: ترى المعنى وتختار الكتابة. (الصوت الإندونيسي لا ينطق \u{2068}dh\u{2069} و\u{2068}th\u{2069}، فلن نستخدمه هنا.)"
+        }
+        (PairsNoJavaneseVoice, En) => {
+            "This device has no Javanese voice, so we'll play by reading: see the meaning, pick the spelling. (Indonesian voices can't make dh and th, so we don't use them here.)"
+        }
+        (PairsHear, ArEg) => "اسمعها",
+        (PairsHear, Ar) => "استمع إليها",
+        (PairsHear, En) => "Hear it",
+        (PairsWhichHeard, ArEg) => "سمعت أنهي كلمة؟",
+        (PairsWhichHeard, Ar) => "أيّ كلمة سمعت؟",
+        (PairsWhichHeard, En) => "Which word did you hear?",
+        (PairsWhichSpelling, ArEg) => "أنهي كتابة صح؟",
+        (PairsWhichSpelling, Ar) => "أيّ الكتابتين صحيحة؟",
+        (PairsWhichSpelling, En) => "Which spelling is it?",
+        (PairsInJavanese, ArEg) => "بالجاوي:",
+        (PairsInJavanese, Ar) => "بالجاوية:",
+        (PairsInJavanese, En) => "In Javanese:",
+        (PairsInIndonesian, ArEg) => "بالإندونيسي:",
+        (PairsInIndonesian, Ar) => "بالإندونيسية:",
+        (PairsInIndonesian, En) => "In Indonesian:",
+        (PairsJavanese, ArEg) => "جاوي",
+        (PairsJavanese, Ar) => "جاوية",
+        (PairsJavanese, En) => "Javanese",
+        (PairsIndonesian, ArEg) => "إندونيسي",
+        (PairsIndonesian, Ar) => "إندونيسية",
+        (PairsIndonesian, En) => "Indonesian",
+        (PairsTipTitle, ArEg) => "إزاي تقولها",
+        (PairsTipTitle, Ar) => "كيف تنطقها",
+        (PairsTipTitle, En) => "How to say it",
+        (PairsTheTwoWords, ArEg) => "الكلمتين",
+        (PairsTheTwoWords, Ar) => "الكلمتان",
+        (PairsTheTwoWords, En) => "The two words",
     }
 }
