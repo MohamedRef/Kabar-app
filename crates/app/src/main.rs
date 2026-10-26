@@ -11,6 +11,7 @@ mod i18n;
 mod icons;
 mod journey;
 mod lesson;
+mod packs;
 mod penlab;
 mod platform;
 mod play;
@@ -184,6 +185,7 @@ fn open_store() -> Result<(Store, std::path::PathBuf), String> {
     let dir = platform::data_dir()?;
     std::fs::create_dir_all(&dir).map_err(|e| format!("{}: {e}", dir.display()))?;
     let path = dir.join("kabar.db");
+    packs::init(&dir);
     Ok((Store::open(&path).map_err(|e| e.to_string())?, path))
 }
 
