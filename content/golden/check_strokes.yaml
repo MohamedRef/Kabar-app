@@ -1,0 +1,446 @@
+# Golden set: check_strokes (Aksara Jawa calligraphy and Latin letter practice, docs/SPEC.md §4, §19, §21 J6).
+# input: {target, script: latin|aksara_jawa, capture?}; the image (and stroke JSON) goes in `image` once captured.
+# expect: {correct, issues[]}: issues are short English notes on what differs from the target shape.
+# Every item needs a real capture: tag needs-capture, write exactly what input.capture says
+# (including the intended mistake), save under fixtures/golden/check_strokes/<id>.png + .json, then set `image`.
+# Aksara Jawa items are unverified until a native writer or teacher confirms the shapes and the intended errors.
+task: check_strokes
+version: 1
+rubric: |
+  correct must match expect.correct; a wrong boolean is 0 whatever the issues say.
+  For a flawed attempt, 3 = every intended mistake in expect.issues is named (same part of the glyph, same kind of fault) and nothing invented; 2 = the main mistake named, a secondary one missed; 1 = only says "something is off" without locating it; 0 = misses it or describes a mistake that is not there.
+  For a correct attempt, issues stay empty or hold only clearly optional style tips; flagging normal handwriting variation (slight slant, wobbly line, pressure changes) as an error costs a point.
+  Aksara Jawa: name the aksara and the sandhangan by their names (ha, na, ka…, wulu, suku, taling, tarung, pepet, cecak, layar, wignyan, pangkon) and say where a sign sits (above, below, before, after).
+  A different letter written instead of the target is reported as that letter ("this reads as ga, not ka"), not as a shape fault.
+  Issues are kind, concrete and short, the way a calligraphy teacher would say them; no scolding.
+items:
+  # --- Aksara Jawa: carakan, correct attempts ---
+  - id: check_strokes-001
+    lang: jv
+    input:
+      target: ꦲ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, Aksara Jawa calligraphy canvas, brush tool, pressure on. After the tracing round, write ha (ꦲ) freehand once, carefully and correctly, about 4 cm tall."
+    expect:
+      correct: true
+      issues: []
+    tags: [needs-capture, tablet, aksara-jawa, carakan, correct]
+    verified: false
+  - id: check_strokes-002
+    lang: jv
+    input:
+      target: ꦤ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas, brush tool. Write na (ꦤ) freehand once, correctly."
+    expect:
+      correct: true
+      issues: []
+    tags: [needs-capture, tablet, aksara-jawa, carakan, correct]
+    verified: false
+  - id: check_strokes-003
+    lang: jv
+    input:
+      target: ꦏ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas, fine pen tool. Write ka (ꦏ) freehand once, correctly but with a visibly shaky line (as a beginner would)."
+    expect:
+      correct: true
+      issues: []
+    avoid:
+      - "Calling the shaky line an error."
+    tags: [needs-capture, tablet, aksara-jawa, carakan, correct, shaky]
+    verified: false
+  - id: check_strokes-004
+    lang: jv
+    input:
+      target: ꦱ
+      script: aksara_jawa
+      capture: "Galaxy S24 Ultra, built-in S Pen, phone tracing screen. Write sa (ꦱ) freehand once, correctly, slanted about 10 degrees to the right."
+    expect:
+      correct: true
+      issues: []
+    tags: [needs-capture, phone, aksara-jawa, carakan, correct, slant]
+    verified: false
+
+  # --- Aksara Jawa: carakan, intended mistakes ---
+  - id: check_strokes-005
+    lang: jv
+    input:
+      target: ꦲ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Write ha (ꦲ) but stop before the last stroke: leave out the final right-hand part of the glyph entirely."
+    expect:
+      correct: false
+      issues:
+        - "The last stroke of ha (the right-hand part) is missing."
+    tags: [needs-capture, tablet, aksara-jawa, carakan, missing-stroke]
+    verified: false
+  - id: check_strokes-006
+    lang: jv
+    input:
+      target: ꦏ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Write ka (ꦏ) mirrored left-to-right, as if seen in a mirror."
+    expect:
+      correct: false
+      issues:
+        - "ka is mirrored left-to-right; the opening should face the other way."
+    tags: [needs-capture, tablet, aksara-jawa, carakan, mirrored]
+    verified: false
+  - id: check_strokes-007
+    lang: jv
+    input:
+      target: ꦏ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Instead of ka, write ga (ꦒ) correctly."
+    expect:
+      correct: false
+      issues:
+        - "This reads as ga (ꦒ), not ka (ꦏ)."
+    tags: [needs-capture, tablet, aksara-jawa, carakan, wrong-letter]
+    verified: false
+  - id: check_strokes-008
+    lang: jv
+    input:
+      target: ꦢ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Instead of da (ꦢ), write dha (ꦝ) correctly."
+    expect:
+      correct: false
+      issues:
+        - "This reads as dha (ꦝ), not da (ꦢ)."
+    tags: [needs-capture, tablet, aksara-jawa, carakan, wrong-letter, d-dh]
+    verified: false
+  - id: check_strokes-009
+    lang: jv
+    input:
+      target: ꦠ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Instead of ta (ꦠ), write tha (ꦛ) correctly."
+    expect:
+      correct: false
+      issues:
+        - "This reads as tha (ꦛ), not ta (ꦠ)."
+    tags: [needs-capture, tablet, aksara-jawa, carakan, wrong-letter, t-th]
+    verified: false
+  - id: check_strokes-010
+    lang: jv
+    input:
+      target: ꦩ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Write ma (ꦩ) with a clear gap (about 3 mm) at the point where the middle strokes should join, so the glyph is in two separate pieces."
+    expect:
+      correct: false
+      issues:
+        - "The strokes of ma don't join in the middle; close the gap so the letter is one connected shape."
+    tags: [needs-capture, tablet, aksara-jawa, carakan, broken-join]
+    verified: false
+  - id: check_strokes-011
+    lang: jv
+    input:
+      target: ꦫ
+      script: aksara_jawa
+      capture: "Galaxy S24 Ultra, S Pen, phone tracing screen. Write only the first half (left half) of ra (ꦫ) and stop."
+    expect:
+      correct: false
+      issues:
+        - "ra is unfinished: the right half of the letter is missing."
+    tags: [needs-capture, phone, aksara-jawa, carakan, incomplete]
+    verified: false
+  - id: check_strokes-012
+    lang: jv
+    input:
+      target: ꦥ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Write pa (ꦥ) correctly, then add one extra short vertical stroke on its right side that does not belong."
+    expect:
+      correct: false
+      issues:
+        - "There is an extra vertical stroke on the right of pa."
+    tags: [needs-capture, tablet, aksara-jawa, carakan, extra-stroke]
+    verified: false
+  - id: check_strokes-013
+    lang: jv
+    input:
+      target: ꦮ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Write wa (ꦮ) with its rounded loop left open (do not close the curve)."
+    expect:
+      correct: false
+      issues:
+        - "The loop of wa is left open; close the curve."
+    tags: [needs-capture, tablet, aksara-jawa, carakan, open-loop]
+    verified: false
+  - id: check_strokes-014
+    lang: jv
+    input:
+      target: ꦚ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Instead of nya (ꦚ), write na (ꦤ) correctly."
+    expect:
+      correct: false
+      issues:
+        - "This reads as na (ꦤ), not nya (ꦚ)."
+    tags: [needs-capture, tablet, aksara-jawa, carakan, wrong-letter]
+    verified: false
+  - id: check_strokes-015
+    lang: jv
+    input:
+      target: ꦔ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Write nga (ꦔ) correctly but squashed: twice as wide as it is tall."
+    expect:
+      correct: false
+      issues:
+        - "nga is stretched much wider than normal; keep the letter about as tall as it is wide."
+    criteria:
+      - "Recognises the letter as nga and names proportion as the only issue."
+    tags: [needs-capture, tablet, aksara-jawa, carakan, proportion]
+    verified: false
+
+  # --- Aksara Jawa: sandhangan (vowel signs and finals) ---
+  - id: check_strokes-016
+    lang: jv
+    input:
+      target: ꦱꦸ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Target is su. Write sa (ꦱ) with wulu (the i sign above) instead of suku (the u sign below), so it reads si (ꦱꦶ)."
+    expect:
+      correct: false
+      issues:
+        - "This has wulu (i), so it reads si; su needs suku below the letter."
+    tags: [needs-capture, tablet, aksara-jawa, sandhangan, wrong-vowel]
+    verified: false
+  - id: check_strokes-017
+    lang: jv
+    input:
+      target: ꦏꦸ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Write ku (ꦏꦸ) correctly: ka with suku attached below."
+    expect:
+      correct: true
+      issues: []
+    tags: [needs-capture, tablet, aksara-jawa, sandhangan, correct]
+    verified: false
+  - id: check_strokes-018
+    lang: jv
+    input:
+      target: ꦏꦸ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Write ka (ꦏ) and draw the suku shape above the letter instead of below it."
+    expect:
+      correct: false
+      issues:
+        - "suku belongs below ka, not above it."
+    tags: [needs-capture, tablet, aksara-jawa, sandhangan, wrong-position]
+    verified: false
+  - id: check_strokes-019
+    lang: jv
+    input:
+      target: ꦤꦺ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Target is né. Write na (ꦤ) first and then the taling after it on the right, instead of before it."
+    expect:
+      correct: false
+      issues:
+        - "taling goes before (to the left of) na, not after it."
+    tags: [needs-capture, tablet, aksara-jawa, sandhangan, wrong-position, taling]
+    verified: false
+  - id: check_strokes-020
+    lang: jv
+    input:
+      target: ꦱꦼꦒ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Write sega (rice) correctly: sa with pepet above, then ga."
+    expect:
+      correct: true
+      issues: []
+    tags: [needs-capture, tablet, aksara-jawa, sandhangan, word, correct]
+    verified: false
+  - id: check_strokes-021
+    lang: jv
+    input:
+      target: ꦱꦼꦒ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Write sega but leave out the pepet over sa, so it reads saga (ꦱꦒ)."
+    expect:
+      correct: false
+      issues:
+        - "pepet is missing above sa, so this reads saga instead of sega."
+    tags: [needs-capture, tablet, aksara-jawa, sandhangan, word, missing-sign]
+    verified: false
+  - id: check_strokes-022
+    lang: jv
+    input:
+      target: ꦥꦱꦂ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Write pasar: pa, sa, with layar (the final r sign) above sa. Write it correctly."
+    expect:
+      correct: true
+      issues: []
+    tags: [needs-capture, tablet, aksara-jawa, sandhangan, word, layar, correct]
+    verified: false
+  - id: check_strokes-023
+    lang: jv
+    input:
+      target: ꦢꦭꦤ꧀
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Write dalan (road): da, la, na, but forget the pangkon after na, so it reads dalana."
+    expect:
+      correct: false
+      issues:
+        - "pangkon is missing after na; without it the word reads dalana instead of dalan."
+    tags: [needs-capture, tablet, aksara-jawa, sandhangan, word, pangkon, missing-sign]
+    verified: false
+  - id: check_strokes-024
+    lang: jv
+    input:
+      target: ꦭꦺꦴꦫꦺꦴ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Write loro (two): la with taling before and tarung after, then ra with taling before and tarung after. Forget the tarung on the second syllable, so it reads loré (ꦭꦺꦴꦫꦺ)."
+    expect:
+      correct: false
+      issues:
+        - "The second syllable is missing tarung after ra, so it reads ré instead of ro."
+    tags: [needs-capture, tablet, aksara-jawa, sandhangan, word, tarung, number]
+    verified: false
+  - id: check_strokes-025
+    lang: jv
+    input:
+      target: ꦏꦸꦭ
+      script: aksara_jawa
+      capture: "Galaxy S24 Ultra, S Pen, phone tracing screen. Write kula (I, krama) correctly: ka with suku, then la."
+    expect:
+      correct: true
+      issues: []
+    tags: [needs-capture, phone, aksara-jawa, sandhangan, word, krama, correct]
+    verified: false
+  - id: check_strokes-026
+    lang: jv
+    input:
+      target: ꦗꦮ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Write jawa, but write ja (ꦗ) mirrored and wa correct."
+    expect:
+      correct: false
+      issues:
+        - "ja is mirrored left-to-right; wa is fine."
+    criteria:
+      - "Locates the error on the first letter and confirms the second is right."
+    tags: [needs-capture, tablet, aksara-jawa, word, mirrored]
+    verified: false
+
+  # --- Latin letters ---
+  - id: check_strokes-027
+    input:
+      target: a
+      script: latin
+      capture: "Galaxy S24 Ultra, S Pen, write-mode letter practice. Write a lowercase print a correctly, the single-storey (round) form."
+    expect:
+      correct: true
+      issues: []
+    avoid:
+      - "Flagging the single-storey a as wrong."
+    tags: [needs-capture, phone, latin, correct, variant]
+    verified: false
+  - id: check_strokes-028
+    input:
+      target: b
+      script: latin
+      capture: "Galaxy S24 Ultra, S Pen, write-mode letter practice. Write a lowercase d instead of b (bowl on the left)."
+    expect:
+      correct: false
+      issues:
+        - "This is d: in b the bowl sits on the right of the stem."
+    tags: [needs-capture, phone, latin, mirrored, b-d]
+    verified: false
+  - id: check_strokes-029
+    input:
+      target: p
+      script: latin
+      capture: "Galaxy S24 Ultra, S Pen, write-mode letter practice. Write a lowercase q instead of p (bowl on the left of the descender)."
+    expect:
+      correct: false
+      issues:
+        - "This is q: in p the bowl sits on the right of the stem."
+    tags: [needs-capture, phone, latin, mirrored, p-q, bridge]
+    verified: false
+  - id: check_strokes-030
+    input:
+      target: i
+      script: latin
+      capture: "Galaxy S24 Ultra, S Pen, write-mode letter practice. Write a lowercase i without its dot."
+    expect:
+      correct: false
+      issues:
+        - "The dot above i is missing."
+    tags: [needs-capture, phone, latin, missing-stroke]
+    verified: false
+  - id: check_strokes-031
+    input:
+      target: o
+      script: latin
+      capture: "Galaxy Tab S11, S Pen, write-mode letter practice. Write a lowercase o with a clear gap at the top so it looks like a u-shape curl."
+    expect:
+      correct: false
+      issues:
+        - "o is not closed at the top; it can read as u."
+    tags: [needs-capture, tablet, latin, open-loop]
+    verified: false
+  - id: check_strokes-032
+    input:
+      target: ng
+      script: latin
+      capture: "Galaxy Tab S11, S Pen, write-mode letter practice. Write ng correctly in lowercase print, with g in the open-tail form."
+    expect:
+      correct: true
+      issues: []
+    tags: [needs-capture, tablet, latin, digraph, correct]
+    verified: false
+  - id: check_strokes-033
+    input:
+      target: kursi
+      script: latin
+      capture: "Galaxy Tab S11, S Pen, write-mode letter practice. Write kursi in lowercase print, but write the r so tall it looks like a capital R: kuRsi."
+    expect:
+      correct: false
+      issues:
+        - "The r is written as a capital R; keep it lowercase and x-height."
+    tags: [needs-capture, tablet, latin, word, case, bridge]
+    verified: false
+  - id: check_strokes-034
+    input:
+      target: dhahar
+      script: latin
+      capture: "Galaxy Tab S11, S Pen, write-mode letter practice. Write dahar (leave out the h after d) in neat print."
+    expect:
+      correct: false
+      issues:
+        - "The h after d is missing: dhahar starts with the digraph dh."
+    tags: [needs-capture, tablet, latin, word, javanese, missing-letter]
+    verified: false
+  - id: check_strokes-035
+    input:
+      target: Q
+      script: latin
+      capture: "Galaxy S24 Ultra, S Pen, write-mode letter practice. Write a capital O with no tail, instead of Q."
+    expect:
+      correct: false
+      issues:
+        - "The tail of Q is missing, so it reads as O."
+    tags: [needs-capture, phone, latin, missing-stroke, capital]
+    verified: false
+  - id: check_strokes-036
+    lang: jv
+    input:
+      target: ꦲ
+      script: aksara_jawa
+      capture: "Galaxy Tab S11, S Pen, calligraphy canvas. Leave the canvas empty and submit."
+    expect:
+      correct: false
+      issues:
+        - "Nothing was written yet."
+    avoid:
+      - "Marking an empty canvas correct."
+    tags: [needs-capture, tablet, aksara-jawa, empty, edge]
+    verified: false

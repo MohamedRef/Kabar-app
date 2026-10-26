@@ -302,7 +302,15 @@ pub fn crosscheck_bridge(root: &Root, lang: Lang) -> Result<Vec<String>> {
                 .into_iter()
                 .flatten()
                 .find_map(|w| cards.get(w.as_str()));
+            // Javanese words borrow through Indonesian (kewan → hewan): the card of
+            // the first Indonesian equivalent counts for an Arabic-origin gloss,
+            // but only the word's own card demands one (pas ≠ waktu).
+            let via_indonesian = || {
+                let first = e.indonesian.as_deref()?.split(',').next()?.trim();
+                cards.get(first)
+            };
             match (card, &e.arabic_origin) {
+                (None, Some(_)) if via_indonesian().is_some() => {}
                 (None, Some(a)) => issues.push(format!("{}: arabic_origin {a} but no Bridge card", e.word)),
                 (Some(_), None) => issues.push(format!("{}: has a Bridge card but no arabic_origin", e.word)),
                 (Some(MeaningShift::FalseFriend), Some(_)) if e.false_friend.is_none() => {
@@ -374,6 +382,15 @@ pub fn check_entry(e: &GlossEntry, lang: Lang) -> Vec<String> {
         && !has_arabic(a)
     {
         p.push("arabic_origin must be in Arabic script".into());
+    }
+    match lang {
+        Lang::Jv if e.indonesian.as_deref().is_none_or(|i| i.trim().is_empty()) => {
+            p.push("Javanese glosses need the Indonesian equivalent".into())
+        }
+        Lang::Id if e.indonesian.is_some() || e.speech_level.is_some() => {
+            p.push("indonesian/speech_level are for Javanese glosses only".into())
+        }
+        _ => {}
     }
     if e.provenance.generator.trim().is_empty() {
         p.push("empty provenance.generator".into());
