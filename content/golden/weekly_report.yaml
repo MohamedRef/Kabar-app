@@ -49,17 +49,17 @@ items:
     - id: bipa1.u06.l01
       title: Saya membaca buku
     - id: bipa1.u06.l02
-      title: Sudah, belum, sedang, akan
+      title: Menonton dan mengajar
     - id: bipa1.u06.l03
-      title: Selalu, sering, jarang
+      title: Makan, minum, tidur
     - id: bipa1.u06.l04
-      title: Satu hari di Jakarta
+      title: Sudah, belum, sedang, akan
     weak_points:
     - meN- with t/p/s
   expect:
-    summary_ar: 'أسبوع كامل، ٧ أيام × ١٥ دقيقة، و٣٨ كلمة جديدة. خلّصت تقريبًا وحدة «Aktivitas Harianku» كلها، والدقة
+    summary_ar: 'أسبوع كامل، ٧ أيام × ١٥ دقيقة، و٣٨ كلمة جديدة. خلّصت أول نص وحدة «Aktivitas Harianku»، والدقة
       طلعت لحد ٩٤٪ يوم الأحد. الأسبوع الجاي: meN- مع t وp وs.'
-    summary_en: 'A full week: 7 days of 15 minutes and 38 new words. You covered almost all of ''Aktivitas Harianku'',
+    summary_en: 'A full week: 7 days of 15 minutes and 38 new words. You covered the first half of ''Aktivitas Harianku'',
       and accuracy climbed to 94% on Sunday. Next week: meN- with t, p and s.'
     wins:
     - 7 of 7 days at 15 minutes
@@ -67,7 +67,7 @@ items:
     - accuracy up from 0.90 to 0.94
     focus_next_week:
     - meN- with t/p/s (menulis, memakai, menyapu)
-    - bipa1.u06.l05 Ulangan Unit 6
+    - bipa1.u06.l05 Selalu, sering, jarang
   criteria:
   - 'totals quoted are right: 105 minutes over 7 active days, 265 reviews, 38 new words'
   - wins name actual lessons, numbers or weak points from the input; 2–4 wins
@@ -583,9 +583,9 @@ items:
       accuracy: 0.9
     new_words: 15
     lessons_done:
-    - id: bipa2.u10.l04
-      title: Ke dokter
     - id: bipa2.u10.l05
+      title: Ke dokter
+    - id: bipa2.u10.l06
       title: Ulangan Unit 10
     weak_points:
     - ketika vs sambil
@@ -668,17 +668,17 @@ items:
     weak_points:
     - kepada vs untuk
   expect:
-    summary_ar: 'أسبوع هادي ومنتظم: ١٠٥ دقيقة في ٧ أيام، وخلصت وحدة التهاني كلها لحد «Kartu Lebaran». الأسبوع الجاي:
+    summary_ar: 'أسبوع هادي ومنتظم: ١٠٥ دقيقة في ٧ أيام، وخلصت دروس وحدة التهاني التلاتة لحد «Kartu Lebaran». الأسبوع الجاي:
       kepada وuntuk.'
-    summary_en: 'A calm, steady week: 105 minutes over 7 days, and the whole greetings unit up to ''Kartu Lebaran''.
+    summary_en: 'A calm, steady week: 105 minutes over 7 days, and all three lessons of the greetings unit, up to ''Kartu Lebaran''.
       Next week: kepada vs untuk.'
     wins:
-    - all of bipa3.u01, ending with 'Kartu Lebaran'
+    - all three bipa3.u01 lessons, ending with 'Kartu Lebaran'
     - 7 of 7 days
     - 20 new words
     focus_next_week:
     - kepada vs untuk
-    - bipa3.u02
+    - bipa3.u01.l04 Ulangan Unit 1
   criteria:
   - 'totals quoted are right: 105 minutes over 7 active days, 215 reviews, 20 new words'
   - wins name actual lessons, numbers or weak points from the input; 2–4 wins
@@ -741,9 +741,9 @@ items:
     - id: bipa1.u01.l02
       title: Apa kabar?
     - id: bipa1.u01.l03
-      title: Saya dan aku
+      title: Apakah Ibu sehat?
     - id: bipa1.u01.l04
-      title: Bertemu di Kota Tua
+      title: Saya dan aku
     weak_points:
     - saya vs aku
   expect:
@@ -752,13 +752,12 @@ items:
     summary_en: 'Your first week on the journey! You started on Thursday, and in 4 days learned 25 words and 4 Jakarta
       lessons. Next week: saya vs aku, and who gets which.'
     wins:
-    - 4 lessons in bipa1.u01, from 'Selamat pagi!' to 'Bertemu di Kota Tua'
+    - 4 lessons in bipa1.u01, from 'Selamat pagi!' to 'Saya dan aku'
     - 25 new words
     - accuracy 0.80 → 0.86
     focus_next_week:
     - saya vs aku
-    - bipa1.u01.l05 Ulangan Unit 1
-    - bipa1.u02
+    - bipa1.u01.l05 Dia, kami, kita
   criteria:
   - 'totals quoted are right: 62 minutes over 4 active days, 50 reviews, 25 new words'
   - wins name actual lessons, numbers or weak points from the input; 2–4 wins
@@ -886,11 +885,11 @@ items:
       accuracy: 0.9
     new_words: 30
     lessons_done:
-    - id: j2.u03.l01
-      title: Sewelas nganti satus
     - id: j2.u03.l02
-      title: Ewu lan yuta
+      title: Seket, sewidak, satus
     - id: j2.u03.l03
+      title: Ewu lan yuta
+    - id: j2.u03.l04
       title: Pasar! Jawa
     weak_points:
     - selawe / seket
@@ -901,11 +900,11 @@ items:
       Javanese, with accuracy up to 90%. Next week: selawe and seket again.'
     wins:
     - '''Pasar! Jawa'' done'
-    - counting to 100 ('Sewelas nganti satus')
+    - counting to 100 ('Seket, sewidak, satus')
     - accuracy 0.82 → 0.90
     focus_next_week:
     - selawe (25) and seket (50) in prices
-    - j2.u03.l04 Ulangan J2.3
+    - j2.u03.l05 Ulangan J2.3
   criteria:
   - 'totals quoted are right: 125 minutes over 7 active days, 260 reviews, 30 new words'
   - wins name actual lessons, numbers or weak points from the input; 2–4 wins
@@ -1117,7 +1116,7 @@ items:
       accuracy: 0.88
     new_words: 20
     lessons_done:
-    - id: bipa1.u08.l02
+    - id: bipa1.u08.l03
       title: Tidak atau bukan?
     weak_points:
     - tidak vs bukan
@@ -1132,7 +1131,7 @@ items:
     - 7 of 7 days
     focus_next_week:
     - keep tidak vs bukan in reviews
-    - bipa1.u08.l03 Yang mana?
+    - bipa1.u08.l04 Yang mana?
   criteria:
   - 'totals quoted are right: 105 minutes over 7 active days, 210 reviews, 20 new words'
   - wins name actual lessons, numbers or weak points from the input; 2–4 wins
@@ -1282,7 +1281,7 @@ items:
     - steady 0.84–0.87 accuracy
     focus_next_week:
     - numbers 11–19 (sebelas, dua belas)
-    - bipa1.u04.l02 Jam berapa?
+    - bipa1.u04.l02 Belas, puluh, ribu
   criteria:
   - 'totals quoted are right: 105 minutes over 7 active days, 210 reviews, 20 new words'
   - wins name actual lessons, numbers or weak points from the input; 2–4 wins
@@ -1437,7 +1436,7 @@ items:
     - 2 lessons in bipa1.u09
     focus_next_week:
     - di vs ke
-    - bipa1.u09.l03 Lurus, lalu belok kiri
+    - bipa1.u09.l03 Depan, belakang, samping
   criteria:
   - 'totals quoted are right: 60 minutes over 4 active days, 120 reviews, 14 new words'
   - wins name actual lessons, numbers or weak points from the input; 2–4 wins
@@ -1659,8 +1658,8 @@ items:
     weak_points:
     - ꦢ (da) vs ꦝ (dha)
   expect:
-    summary_ar: 'أسبوع أكسارا! بقيت تقرا ha na ca ra ka وda ta sa wa la، بدقة فوق ٩٥٪. الأسبوع الجاي: da وdha.'
-    summary_en: 'An aksara week! You can now read ha na ca ra ka and da ta sa wa la, above 95% accuracy. Next week:
+    summary_ar: 'أسبوع أكسارا! بقيت تقرا ha na ca ra ka وda ta sa wa la، بدقة ٩٥٪ وأكتر. الأسبوع الجاي: da وdha.'
+    summary_en: 'An aksara week! You can now read ha na ca ra ka and da ta sa wa la, at 95% accuracy or more. Next week:
       da vs dha.'
     wins:
     - 10 aksara letters learned
@@ -1726,7 +1725,7 @@ items:
     lessons_done:
     - id: bipa1.u07.l01
       title: Saya suka membaca
-    - id: bipa1.u07.l02
+    - id: bipa1.u07.l03
       title: Makanan dan minuman
     weak_points:
     - kalimat (sentence) vs kata (word)
@@ -1800,9 +1799,9 @@ items:
       accuracy: null
     new_words: 30
     lessons_done:
-    - id: bipa2.u07.l01
-      title: Bersepeda dan berselancar
     - id: bipa2.u07.l02
+      title: Berkacamata, bertopi
+    - id: bipa2.u07.l03
       title: Sudah berapa lama?
     weak_points:
     - sudah berapa lama?
@@ -2030,23 +2029,23 @@ items:
       accuracy: 0.7
     new_words: 26
     lessons_done:
-    - id: bipa2.u10.l01
-      title: Kepala saya sakit
     - id: bipa2.u10.l02
+      title: Pusing, demam, batuk
+    - id: bipa2.u10.l03
       title: Di apotek
     weak_points:
     - body parts
   expect:
-    summary_ar: '٧٥ دقيقة في ٤ أيام، ودرسين عن الدكتور والصيدلية. يوم الأحد رجعت وراجعت ٨٠ كارت. الأسبوع الجاي:
+    summary_ar: '٧٥ دقيقة في ٤ أيام، ودرسين عن الأعراض والصيدلية. يوم الأحد رجعت وراجعت ٨٠ كارت. الأسبوع الجاي:
       أعضاء الجسم بالراحة.'
-    summary_en: '75 minutes over 4 days and two lessons on the doctor and the pharmacy. On Sunday you came back
+    summary_en: '75 minutes over 4 days and two lessons on symptoms and the pharmacy. On Sunday you came back
       and did 80 reviews. Next week: body parts, gently.'
     wins:
-    - '''Kepala saya sakit'' and ''Di apotek'''
+    - '''Pusing, demam, batuk'' and ''Di apotek'''
     - back on Sunday with 80 reviews
     focus_next_week:
     - body parts
-    - bipa2.u10.l03 Semoga cepat sembuh
+    - bipa2.u10.l04 Semoga cepat sembuh
   criteria:
   - 'totals quoted are right: 75 minutes over 4 active days, 215 reviews, 26 new words'
   - wins name actual lessons, numbers or weak points from the input; 2–4 wins
@@ -2113,16 +2112,16 @@ items:
     - peN-an vs ke-an nouns (peningkatan, kenaikan)
   expect:
     summary_ar: '٢١٠ دقيقة، ٥٠ كلمة، ودقة لحد ٩٦٪، ودخلت عالم الـNominalisasi: meningkat بقت peningkatan. الأسبوع
-      الجاي نستعملها في «Presentasi teknologi».'
+      الجاي نستعملها في «Privasi data».'
     summary_en: '210 minutes, 50 words and accuracy up to 96%, and you stepped into Nominalisasi: meningkat became
-      peningkatan. Next week we use it in ''Presentasi teknologi''.'
+      peningkatan. Next week we use it in ''Privasi data''.'
     wins:
     - accuracy 0.92 → 0.96
     - 50 new words
     - 7 of 7 days
     focus_next_week:
     - peN-an vs ke-an (peningkatan, kenaikan)
-    - bipa5.u03.l03 Presentasi teknologi
+    - bipa5.u03.l03 Privasi data
   criteria:
   - 'totals quoted are right: 210 minutes over 7 active days, 420 reviews, 50 new words'
   - wins name actual lessons, numbers or weak points from the input; 2–4 wins
@@ -2181,22 +2180,22 @@ items:
       accuracy: null
     new_words: 15
     lessons_done:
-    - id: j2.u01.l01
-      title: Pakdhe lan budhe
     - id: j2.u01.l02
+      title: Pakdhe, bulik, simbah
+    - id: j2.u01.l03
       title: Omahe, bukune
     weak_points:
     - -e vs -ne
   expect:
-    summary_ar: '٣ أيام و٧٥ دقيقة، وبقيت تسمّي العيلة بالجاوي: pakdhe وbudhe. الأسبوع الجاي: -e و-ne (omahe، bukune).'
-    summary_en: '3 days and 75 minutes, and you can name the family in Javanese: pakdhe and budhe. Next week: -e
+    summary_ar: '٣ أيام و٧٥ دقيقة، وبقيت تسمّي العيلة بالجاوي: pakdhe وbulik وsimbah. الأسبوع الجاي: -e و-ne (omahe، bukune).'
+    summary_en: '3 days and 75 minutes, and you can name the family in Javanese: pakdhe, bulik and simbah. Next week: -e
       vs -ne (omahe, bukune).'
     wins:
-    - '''Pakdhe lan budhe'' and ''Omahe, bukune'''
+    - '''Pakdhe, bulik, simbah'' and ''Omahe, bukune'''
     - 15 new words
     focus_next_week:
     - -e vs -ne
-    - j2.u01.l03 Kulawargane Pak Budi
+    - j2.u01.l04 Kulawargane Pak Budi
   criteria:
   - 'totals quoted are right: 75 minutes over 3 active days, 155 reviews, 15 new words'
   - wins name actual lessons, numbers or weak points from the input; 2–4 wins
@@ -2412,22 +2411,22 @@ items:
     new_words: 8
     lessons_done:
     - id: j3.u01.l01
-      title: Ngoko, krama, krama inggil
+      title: Ngoko lan krama
     weak_points:
     - choosing ngoko or krama
     - nedha vs dhahar
   expect:
-    summary_ar: '٧٠ دقيقة وبداية عالم الكراما: ngoko، krama، krama inggil. من Kowe wis mangan لـ Panjenengan sampun
-      dhahar. الأسبوع الجاي: nedha وdhahar.'
-    summary_en: '70 minutes and the start of krama: ngoko, krama, krama inggil, from ''Kowe wis mangan?'' to ''Panjenengan
-      sampun dhahar?''. Next week: nedha vs dhahar.'
+    summary_ar: '٧٠ دقيقة وبداية عالم الكراما مع «Ngoko lan krama»، أول خطوة في الطريق من Kowe wis mangan لـ Panjenengan
+      sampun dhahar. الأسبوع الجاي: krama inggil، وnedha وdhahar.'
+    summary_en: '70 minutes and the start of krama with ''Ngoko lan krama'', the first step on the road from ''Kowe wis mangan?''
+      to ''Panjenengan sampun dhahar?''. Next week: krama inggil, and nedha vs dhahar.'
     wins:
-    - '''Ngoko, krama, krama inggil'' done'
+    - '''Ngoko lan krama'' done'
     - accuracy 0.73 → 0.78
     - 7 of 7 days
     focus_next_week:
     - nedha vs dhahar
-    - j3.u01.l02 Kowe wis mangan?
+    - j3.u01.l02 Krama inggil
   criteria:
   - 'totals quoted are right: 70 minutes over 7 active days, 121 reviews, 8 new words'
   - wins name actual lessons, numbers or weak points from the input; 2–4 wins

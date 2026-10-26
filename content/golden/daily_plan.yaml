@@ -20,7 +20,7 @@ items:
     weak_points:
     - 'meN- prefix: baca → membaca'
     next_lesson:
-      id: bipa1.u06.l02
+      id: bipa1.u06.l04
       title: Sudah, belum, sedang, akan
       minutes: 12
     streak_days: 6
@@ -67,7 +67,7 @@ items:
     weak_points:
     - tidak vs bukan
     next_lesson:
-      id: bipa1.u08.l02
+      id: bipa1.u08.l03
       title: Tidak atau bukan?
       minutes: 12
     streak_days: 12
@@ -218,15 +218,15 @@ items:
   expect:
     items:
     - kind: review
-      minutes: 10
-      why: Start on the 160 due cards; the oldest and weakest come first
-    - kind: weak_spot
-      minutes: 5
-      why: '-nya: rumahnya vs katanya'
-    message_ar: حمد الله على السلامة! النهارده ١٠ دقايق مراجعة بس، مش لازم نخلّص الـ١٦٠ كلهم؛ هيتوزعوا على كام يوم.
-      و٥ دقايق على -nya في rumahnya وkatanya.
-    message_en: Welcome back! Just 10 minutes of reviews today; the 160 cards don't need to go in one day, they'll
-      spread over the week. Then 5 minutes on -nya (rumahnya, katanya).
+      minutes: 3
+      why: A first slice of the 160 due cards; the oldest and weakest come first
+    - kind: lesson
+      minutes: 12
+      why: 'Start ''-nya di mana-mana'', your -nya point (rumahnya, katanya); it resumes tomorrow'
+    message_ar: حمد الله على السلامة! ٣ دقايق مراجعة بس، والـ١٦٠ كارت هيتوزعوا على كام يوم. وبعدين نبدأ «-nya di
+      mana-mana» عشان rumahnya وkatanya، ونكمّله بكرة.
+    message_en: Welcome back! Just 3 minutes of reviews; the 160 cards will spread over the next few days. Then we
+      start '-nya di mana-mana' for rumahnya and katanya, and finish it tomorrow.
   criteria:
   - item minutes add up to exactly 15
   - reviews come first when due_reviews > 0
@@ -260,7 +260,7 @@ items:
     weak_points:
     - selawe (25) and seket (50)
     next_lesson:
-      id: j2.u03.l02
+      id: j2.u03.l03
       title: Ewu lan yuta
       minutes: 12
     streak_days: 20
@@ -356,7 +356,7 @@ items:
     - 'word order: rumah kakak saya'
     next_lesson:
       id: bipa1.u03.l03
-      title: Kakak saya yang tinggi
+      title: Rumah saya, rumahmu
       minutes: 12
     streak_days: 4
     time_of_day: night
@@ -367,10 +367,10 @@ items:
       why: 25 cards due
     - kind: lesson
       minutes: 12
-      why: '''Kakak saya yang tinggi'' is exactly your word-order point'
-    message_ar: 'سهرة هادية: ٣ دقايق مراجعة، وبعدين «Kakak saya yang tinggi»، نفس نقطة ترتيب الكلام اللي بنشتغل
+      why: '''Rumah saya, rumahmu'' is exactly your word-order point'
+    message_ar: 'سهرة هادية: ٣ دقايق مراجعة، وبعدين «Rumah saya, rumahmu»، نفس نقطة ترتيب الكلام اللي بنشتغل
       عليها (rumah kakak saya).'
-    message_en: 'A calm late session: 3 minutes of reviews, then ''Kakak saya yang tinggi'', the same word-order
+    message_en: 'A calm late session: 3 minutes of reviews, then ''Rumah saya, rumahmu'', the same word-order
       point you''re working on (rumah kakak saya).'
   criteria:
   - item minutes add up to exactly 15
@@ -563,7 +563,7 @@ items:
     - kalimat means sentence, not word (Arabic كلمة)
     - mungkin = maybe (not ممكن 'possible')
     next_lesson:
-      id: bipa1.u07.l02
+      id: bipa1.u07.l03
       title: Makanan dan minuman
       minutes: 12
     streak_days: 8
@@ -708,7 +708,7 @@ items:
     due_reviews: 0
     weak_points: []
     next_lesson:
-      id: j1.u07.l03
+      id: j1.u07.l05
       title: Arp dicul piro?
       minutes: 12
     streak_days: 7
@@ -963,11 +963,11 @@ items:
       why: kondur for others, wangsul for yourself
     - kind: roleplay
       minutes: 8
-      why: Visit simbah with Bu Siti and use dhahar, kondur, wangsul
+      why: Visit Mas Dimas's simbah and use dhahar, kondur, wangsul
     message_ar: '٦ دقايق مراجعة، ودرس «Rawuh lan kondur»، وبعدين نثبّت القاعدة: kondur للكبير، وwangsul ليك إنت.
-      ونختم بزيارة simbah مع Bu Siti.'
+      ونختم بزيارة simbah بتاعة Mas Dimas.'
     message_en: '6 minutes of reviews, then ''Rawuh lan kondur'', then we lock in the rule: kondur for the elder,
-      wangsul for yourself. We finish visiting simbah with Bu Siti.'
+      wangsul for yourself. We finish with a visit to Mas Dimas''s simbah.'
   criteria:
   - item minutes add up to exactly 30
   - reviews come first when due_reviews > 0
@@ -1145,7 +1145,7 @@ items:
     weak_points:
     - 'Respect Meter: ngoko or krama?'
     next_lesson:
-      id: j3.u01.l02
+      id: j3.u01.l03
       title: Kowe wis mangan?
       minutes: 12
     streak_days: 1
@@ -1243,7 +1243,7 @@ items:
     weak_points: []
     next_lesson:
       id: bipa2.u10.l01
-      title: Kepala saya sakit
+      title: Saya sakit perut
       minutes: 12
     streak_days: 25
     time_of_day: afternoon
@@ -1282,7 +1282,7 @@ items:
     weak_points:
     - 'bargaining: boleh kurang?'
     next_lesson:
-      id: bipa2.u04.l04
+      id: bipa2.u04.l06
       title: Pasar! (tawar-menawar)
       minutes: 12
     streak_days: 19
@@ -1472,7 +1472,7 @@ items:
     weak_points:
     - pecel order phrases
     next_lesson:
-      id: j2.u02.l03
+      id: j2.u02.l04
       title: Tuku pecel
       minutes: 10
     streak_days: 9
