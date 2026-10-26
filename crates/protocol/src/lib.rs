@@ -2,6 +2,7 @@
 //! and the Rust ↔ WebView bridge. Everything here is plain serde data.
 
 pub mod ai;
+pub mod coach;
 pub mod hlc;
 pub mod pen;
 
