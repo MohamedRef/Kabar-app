@@ -352,6 +352,45 @@ fn javanese_roleplay_and_maps_stay_unverified() {
 }
 
 #[test]
+fn a_persona_chat_turn_uses_the_style_guide_and_repairs_a_bad_quote() {
+    let dimas =
+        crate::story::parse_persona(include_str!("../../../../content/personas/mas-dimas.yaml")).unwrap();
+    let scene = crate::chat::scenarios(&dimas).into_iter().find(|s| s.id.as_deref() == Some("d01")).unwrap();
+    let opener = kabar_protocol::chat::ChatMessage {
+        id: "m1".into(),
+        doc: "c1".into(),
+        role: kabar_protocol::chat::ChatRole::Persona,
+        text: scene.opener.clone(),
+        corrections: vec![],
+        register: None,
+        unverified: true,
+        created_ms: 0,
+    };
+    let req =
+        crate::chat::request(&dimas, "j1", &scene, "ngoko", &[opener], "Aku belum makan, lapar banget.");
+    // The first answer quotes words the learner never wrote: repaired once.
+    let bad = EngineReply {
+        engine: EngineId::WorkersAi,
+        text: r#"{"reply": "Ayo mangan!", "corrections": [{"text": "aku ngelak", "fix": "aku ngelih", "why_en": "x", "why_ar": "س"}], "register": "ngoko"}"#.into(),
+        model: String::new(),
+    };
+    let wai = Scripted::new(
+        EngineId::WorkersAi,
+        vec![Ok(bad), Ok(fixture!("roleplay_turn.angkringan_dimas.workers_ai.json"))],
+    );
+    let r = router(&[&wai]);
+    let a = block_on(r.run::<RoleplayTurn>(&req)).unwrap();
+    assert_eq!(a.value.corrections.len(), 2);
+    assert!(a.needs_review);
+    assert_eq!(a.prompt_version, 2);
+    let calls = wai.calls();
+    assert_eq!(calls.len(), 2);
+    assert!(calls[1].is_repair);
+    assert!(calls[0].system.contains("character sheet"), "{}", calls[0].system);
+    assert!(calls[0].user.contains("level_guide") && calls[0].user.contains("register_hint"));
+}
+
+#[test]
 fn a_blank_sketch_is_unclear_and_lemmas_stay_indonesian() {
     let gem = Scripted::new(
         EngineId::GeminiFree,

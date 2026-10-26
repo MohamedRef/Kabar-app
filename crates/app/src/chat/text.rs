@@ -1,0 +1,155 @@
+//! Persona chat strings in Egyptian Arabic, MSA and English, typed like
+//! `crate::i18n` (a missing translation is a compile error).
+
+use kabar_core::locale::UiLanguage;
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum T {
+    Intro,
+    YourChats,
+    StartWith,
+    FreeChat,
+    Javanese,
+    Indonesian,
+    TalkToMe,
+    Ngoko,
+    Krama,
+    Casual,
+    Standard,
+    Placeholder,
+    Send,
+    Write,
+    Type,
+    Typing,
+    Privacy,
+    Unverified,
+    MoreNatural,
+    AllGood,
+    Listen,
+    Replay,
+    Back,
+    Delete,
+    TapWord,
+    Close,
+    ResetsLater,
+    Unreachable,
+    NotConnected,
+    TryAgain,
+    Retry,
+    Broken,
+    Messages,
+    You,
+}
+
+pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
+    use T::*;
+    use UiLanguage::*;
+    match (msg, lang) {
+        (Intro, ArEg) => {
+            "اتكلم مع أربع صحاب من إندونيسيا. بيردّوا عليك، ولو فيه حاجة تتقال أحسن بيقولولك بالراحة."
+        }
+        (Intro, Ar) => {
+            "تحدّث مع أربعة أصدقاء من إندونيسيا. يردّون عليك، وإن كان في كلامك ما يُقال أفضل نبّهوك بلطف."
+        }
+        (Intro, En) => {
+            "Talk with four friends from Indonesia. They answer, and gently show you a more natural way to say things."
+        }
+        (YourChats, ArEg) => "دردشاتك",
+        (YourChats, Ar) => "محادثاتك",
+        (YourChats, En) => "Your chats",
+        (StartWith, ArEg) => "ابدأ مع",
+        (StartWith, Ar) => "ابدأ مع",
+        (StartWith, En) => "Start with",
+        (FreeChat, ArEg) => "دردشة حرة",
+        (FreeChat, Ar) => "محادثة حرة",
+        (FreeChat, En) => "Free chat",
+        (Javanese, ArEg | Ar) => "جاوي",
+        (Javanese, En) => "Javanese",
+        (Indonesian, ArEg | Ar) => "إندونيسي",
+        (Indonesian, En) => "Indonesian",
+        (TalkToMe, ArEg) => "كلّمني بـ",
+        (TalkToMe, Ar) => "خاطبني بـ",
+        (TalkToMe, En) => "Talk to me in",
+        (Ngoko, ArEg | Ar) => "نغوكو (زي الصحاب)",
+        (Ngoko, En) => "ngoko (as friends)",
+        (Krama, ArEg | Ar) => "كراما (باحترام)",
+        (Krama, En) => "krama (politely)",
+        (Casual, ArEg) => "عادي (زي الصحاب)",
+        (Casual, Ar) => "عامية (كالأصدقاء)",
+        (Casual, En) => "casual (as friends)",
+        (Standard, ArEg | Ar) => "فصحى مهذبة",
+        (Standard, En) => "standard (politely)",
+        (Placeholder, ArEg) => "اكتب ردك…",
+        (Placeholder, Ar) => "اكتب ردك…",
+        (Placeholder, En) => "Write your reply…",
+        (Send, ArEg | Ar) => "ابعت",
+        (Send, En) => "Send",
+        (Write, ArEg) => "✍ بالقلم",
+        (Write, Ar) => "✍ بخط اليد",
+        (Write, En) => "✍ Handwrite",
+        (Type, ArEg) => "⌨ بالكيبورد",
+        (Type, Ar) => "⌨ بلوحة المفاتيح",
+        (Type, En) => "⌨ Type",
+        (Typing, ArEg) => "بيكتب…",
+        (Typing, Ar) => "يكتب…",
+        (Typing, En) => "is typing…",
+        (Privacy, ArEg) => {
+            "رسايلك بتروح لمحرك ذكاء اصطناعي مجاني كنص تعليمي. متكتبش بيانات شخصية حقيقية، والإيميلات وأرقام التليفون بتتشال قبل ما تتبعت."
+        }
+        (Privacy, Ar) => {
+            "تُرسَل رسائلك إلى محرك ذكاء اصطناعي مجاني بوصفها نصًا تعليميًا. لا تكتب بيانات شخصية حقيقية، وتُحذف عناوين البريد وأرقام الهواتف قبل الإرسال."
+        }
+        (Privacy, En) => {
+            "Your messages go to a free AI engine as learning text. Don't write real personal details; e-mail addresses and phone numbers are removed before sending."
+        }
+        (Unverified, ArEg) => "لسه محدش راجعه",
+        (Unverified, Ar) => "لم يُراجَع بعد",
+        (Unverified, En) => "Not checked yet",
+        (MoreNatural, ArEg) => "أطبع كده:",
+        (MoreNatural, Ar) => "الأكثر طبيعية:",
+        (MoreNatural, En) => "More natural:",
+        (AllGood, ArEg) => "✓ مظبوطة",
+        (AllGood, Ar) => "✓ سليمة",
+        (AllGood, En) => "✓ Spot on",
+        (Listen, ArEg | Ar) => "اسمع",
+        (Listen, En) => "Listen",
+        (Replay, ArEg) => "اسمعها كحوار",
+        (Replay, Ar) => "استمع إليها حوارًا",
+        (Replay, En) => "Replay as dialogue",
+        (Back, ArEg | Ar) => "رجوع",
+        (Back, En) => "Back",
+        (Delete, ArEg) => "امسح الدردشة",
+        (Delete, Ar) => "احذف المحادثة",
+        (Delete, En) => "Delete chat",
+        (TapWord, ArEg) => "دوس على أي كلمة تشوف معناها.",
+        (TapWord, Ar) => "اضغط أي كلمة لترى معناها.",
+        (TapWord, En) => "Tap any word to see what it means.",
+        (Close, ArEg | Ar) => "قفل",
+        (Close, En) => "Close",
+        (ResetsLater, ArEg) => "الحصة المجانية النهارده خلصت. نكمّل بكرة، ورسايلك متسيّفة.",
+        (ResetsLater, Ar) => "انتهت الحصة المجانية اليوم. نكمل غدًا، ورسائلك محفوظة.",
+        (ResetsLater, En) => {
+            "Today's free allowance is used up. Let's carry on tomorrow; your chat is saved."
+        }
+        (Unreachable, ArEg) => "مش قادر أوصل للسيرفر دلوقتي. اتأكد من النت وجرّب تاني.",
+        (Unreachable, Ar) => "تعذّر الوصول إلى الخادم الآن. تحقق من الاتصال وحاول مجددًا.",
+        (Unreachable, En) => "Can't reach the server right now. Check the connection and try again.",
+        (NotConnected, ArEg) => "الدردشة محتاجة Kabar Cloud. وصّله من الأجهزة وارجع.",
+        (NotConnected, Ar) => "المحادثة تحتاج إلى Kabar Cloud. اربطه من الأجهزة ثم عُد.",
+        (NotConnected, En) => "Chats need Kabar Cloud. Connect it under Devices, then come back.",
+        (TryAgain, ArEg) => "الرد مجاش مظبوط المرة دي. جرّب تاني.",
+        (TryAgain, Ar) => "لم يصل الرد سليمًا هذه المرة. حاول مجددًا.",
+        (TryAgain, En) => "The answer didn't come through right this time. Try again.",
+        (Retry, ArEg | Ar) => "جرّب تاني",
+        (Retry, En) => "Try again",
+        (Broken, ArEg) => "ملف الشخصية دي فيه مشكلة، ومش هتشتغل لحد ما يتصلّح.",
+        (Broken, Ar) => "في ملف هذه الشخصية مشكلة، ولن تعمل حتى يُصلَح.",
+        (Broken, En) => "This persona's file has a problem, so it can't chat until it's fixed.",
+        (Messages, ArEg) => "رسالة",
+        (Messages, Ar) => "رسالة",
+        (Messages, En) => "messages",
+        (You, ArEg) => "إنت",
+        (You, Ar) => "أنت",
+        (You, En) => "You",
+    }
+}
