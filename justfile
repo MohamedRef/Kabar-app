@@ -109,6 +109,19 @@ apk:
     scripts/android-check-apk.sh "$(find {{dist}}/android/raw -name '*.apk' | head -1)"
     scripts/android-sign.sh "$(find {{dist}}/android/raw -name '*.apk' | head -1)" "{{dist}}/android/kabar.apk" "{{keystore}}" "{{key_alias}}"
 
+# The release for your own devices (docs/RELEASE.md): every check, then
+# Kabar.app and the signed APK side by side in dist/release/<version>/
+release:
+    just check
+    cargo run -q -p kabar-tools -- validate
+    just bundle-mac
+    just apk
+    v="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"; \
+      out="{{dist}}/release/$v"; rm -rf "$out" && mkdir -p "$out"; \
+      cp -R "$(find {{dist}}/mac -maxdepth 4 -name '*.app' | head -1)" "$out/Kabar.app"; \
+      cp {{dist}}/android/kabar.apk "$out/kabar-$v.apk"; \
+      echo "Kabar $v → $out (Kabar.app, kabar-$v.apk). Next: docs/RELEASE.md §4."
+
 # Share a test text to Kabar on a device (M5): `just share-text "arp dicul piro"`
 share-text text serial="":
     adb {{ if serial != "" { "-s " + serial } else { "" } }} shell am start -a android.intent.action.SEND -t text/plain --es android.intent.extra.TEXT "'{{text}}'" -n app.kabar/app.kabar.ShareActivity
