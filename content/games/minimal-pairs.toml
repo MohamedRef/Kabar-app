@@ -1,0 +1,290 @@
+# Minimal Pairs: Javanese d/dh and t/th (spec §13). See content/games/README.md.
+#
+# Parsed by crates/core/src/games/pairs.rs (PairsData::parse), whose tests are
+# the content gate. Written by Claude Code; every pair stays unverified until
+# the learner approves the file. `confidence` says how sure we are of the pair
+# itself (both words real, with these meanings and spellings).
+#
+# ⁨ … ⁩ are FSI … PDI (first-strong isolate … pop directional isolate).
+# Every Latin snippet inside an Arabic line sits between them.
+
+reviewed = false
+version = 1
+
+# --- How to say it ----------------------------------------------------------
+
+[[tips]]
+contrast = "d_dh"
+arz = "الـ⁨d⁩ الجاوي هو الدال بتاعتنا بالظبط: طرف لسانك ورا سنانك اللي فوق. في الـ⁨dh⁩ رجّع طرف لسانك لورا واثنيه لفوق شوية، ورا اللثة (الحتة الناشفة اللي ورا السنان)، واضرب من هناك. الصوت بيطلع أتقل و«أغمق». ممكن تحسّ إن تقله شبه الضاد شوية، بس مكان اللسان مختلف: ده مش ضاد، ده دال واللسان راجع لورا. ولا هو ذال كمان. جرّب: ⁨wedi⁩ (خايف) و⁨wedhi⁩ (رملة)."
+ar = "الـ⁨d⁩ الجاوية هي الدال العربية تمامًا: طرف اللسان خلف الأسنان العليا. أما في الـ⁨dh⁩ فأرجِع طرف اللسان إلى الخلف وأثنِه قليلًا إلى أعلى خلف اللثة، ثم أطلقه من هناك؛ فيخرج الصوت أثقل وأعمق. قد تشعر بأن ثقله يشبه ثقل الضاد بعض الشيء، لكن موضع اللسان مختلف: ليست ضادًا، بل دالًا ارتدّ لسانها إلى الخلف، وليست ذالًا كذلك. جرّب: ⁨wedi⁩ (خائف) و⁨wedhi⁩ (رمل)."
+en = "Javanese d is just Arabic د: the tongue tip against the back of your upper teeth. For dh, pull the tongue tip back and curl it up a little, behind the gum ridge, and release it from there. It comes out heavier and 'darker'. It can feel a bit like ض in weight, but the tongue sits somewhere else: it isn't ض, it's a d with the tongue pulled back. It isn't ذ either. Try wedi (afraid) and wedhi (sand)."
+
+[[tips]]
+contrast = "t_th"
+arz = "الـ⁨t⁩ الجاوي هو التاء بتاعتنا: طرف لسانك ورا سنانك اللي فوق، ومن غير نفَس طالع وراه. الـ⁨th⁩ مش زي ⁨th⁩ الإنجليزي (مش ثاء!): رجّع طرف لسانك لورا واثنيه لفوق شوية ورا اللثة، واضرب من هناك. الصوت بيطلع أتقل و«أغمق». ممكن تحسّ إن تقله شبه الطاء شوية، بس مكان اللسان مختلف: ده مش طاء، ده تاء واللسان راجع لورا. جرّب: ⁨putu⁩ (حفيد) و⁨puthu⁩ (كيكة رز على البخار)."
+ar = "الـ⁨t⁩ الجاوية هي التاء العربية: طرف اللسان خلف الأسنان العليا، بلا نفَس يخرج بعدها. والـ⁨th⁩ ليست ⁨th⁩ الإنجليزية (ليست ثاءً): أرجِع طرف اللسان إلى الخلف وأثنِه قليلًا إلى أعلى خلف اللثة، ثم أطلقه من هناك؛ فيخرج الصوت أثقل وأعمق. قد تشعر بأن ثقله يشبه ثقل الطاء بعض الشيء، لكن موضع اللسان مختلف: ليست طاءً، بل تاءً ارتدّ لسانها إلى الخلف. جرّب: ⁨putu⁩ (حفيد) و⁨puthu⁩ (كعكة أرز على البخار)."
+en = "Javanese t is just Arabic ت: the tongue tip against the back of your upper teeth, with no puff of air after it. Javanese th is not English th (not ث): pull the tongue tip back and curl it up a little, behind the gum ridge, and release it from there. It comes out heavier and 'darker'. It can feel a bit like ط in weight, but the tongue sits somewhere else: it isn't ط, it's a t with the tongue pulled back. Try putu (grandchild) and puthu (a steamed rice cake)."
+
+# --- d / dh: two Javanese words ---------------------------------------------
+
+[[pairs]]
+id = "mp.wedi-wedhi"
+contrast = "d_dh"
+kind = "minimal"
+plain = { word = "wedi", lang = "jv", meaning = { arz = "خايف", ar = "خائف", en = "afraid" } }
+curled = { word = "wedhi", lang = "jv", meaning = { arz = "رملة", ar = "رمل", en = "sand" } }
+level = "j1"
+confidence = "high"
+note = { arz = "الزوج المشهور: الحروف واحدة، والفرق كله في مكان اللسان.", ar = "الزوج المشهور: الحروف نفسها، والفرق كله في موضع اللسان.", en = "The classic pair: the same letters, and the only difference is where the tongue goes." }
+
+[[pairs]]
+id = "mp.adi-adhi"
+contrast = "d_dh"
+kind = "minimal"
+plain = { word = "adi", lang = "jv", meaning = { arz = "عظيم، راقي (كلمة أدبية)", ar = "رفيع، نبيل (كلمة أدبية)", en = "fine, noble (literary)" } }
+curled = { word = "adhi", lang = "jv", meaning = { arz = "أخ أو أخت أصغر منك", ar = "أخ أو أخت أصغر", en = "younger brother or sister" } }
+level = "j2"
+confidence = "medium"
+note = { arz = "⁨adhi⁩ كلمة كل يوم (ولما تنادي حد أصغر منك بتتقصّر لـ⁨dhik⁩). أما ⁨adi⁩ فهتقابلها غالبًا جوه كلمات أدبية زي ⁨adiluhung⁩ (راقي، عالي القيمة).", ar = "⁨adhi⁩ كلمة يومية (وتُختصر إلى ⁨dhik⁩ عند مناداة من هو أصغر). أما ⁨adi⁩ فتلقاها غالبًا داخل كلمات أدبية مثل ⁨adiluhung⁩ (رفيع القيمة).", en = "Adhi is an everyday word (shortened to dhik when you call someone younger). Adi you'll mostly meet inside literary words like adiluhung (refined, of high worth)." }
+
+# --- d / dh: Indonesian word, Javanese cousin -------------------------------
+
+[[pairs]]
+id = "mp.dada-dhadha"
+contrast = "d_dh"
+kind = "cross"
+plain = { word = "dada", lang = "id", meaning = { arz = "صدر", ar = "صدر", en = "chest" } }
+curled = { word = "dhadha", lang = "jv", meaning = { arz = "صدر", ar = "صدر", en = "chest" } }
+level = "j1"
+confidence = "high"
+note = { arz = "نفس الكلمة ونفس المعنى، بس الجاوي بيقول الـ⁨dh⁩ مرتين.", ar = "الكلمة نفسها والمعنى نفسه، لكن الجاوية تنطق الـ⁨dh⁩ مرتين.", en = "Same word, same meaning: Javanese just says the curled dh, twice." }
+
+[[pairs]]
+id = "mp.beda-bedha"
+contrast = "d_dh"
+kind = "cross"
+plain = { word = "beda", lang = "id", meaning = { arz = "مختلف", ar = "مختلف", en = "different" } }
+curled = { word = "bedha", lang = "jv", meaning = { arz = "مختلف", ar = "مختلف", en = "different" } }
+level = "j1"
+confidence = "high"
+
+[[pairs]]
+id = "mp.gede-gedhe"
+contrast = "d_dh"
+kind = "cross"
+plain = { word = "gede", lang = "id", meaning = { arz = "كبير (عامية)", ar = "كبير (عامية)", en = "big (casual)" } }
+curled = { word = "gedhe", lang = "jv", meaning = { arz = "كبير", ar = "كبير", en = "big" } }
+level = "j1"
+confidence = "high"
+note = { arz = "⁨gede⁩ في الإندونيسي كلمة عامية (الرسمي ⁨besar⁩)، وجاية من الجاوي ⁨gedhe⁩.", ar = "⁨gede⁩ في الإندونيسية كلمة عامية (والفصيحة ⁨besar⁩)، وأصلها الجاوية ⁨gedhe⁩.", en = "Indonesian gede is casual (the standard word is besar); it comes from Javanese gedhe." }
+
+[[pairs]]
+id = "mp.pakde-pakdhe"
+contrast = "d_dh"
+kind = "cross"
+plain = { word = "pakde", lang = "id", meaning = { arz = "عمّ أو خال أكبر من بابا أو ماما", ar = "عمّ أو خال أكبر من الأب أو الأم", en = "uncle (older than your parent)" } }
+curled = { word = "pakdhe", lang = "jv", meaning = { arz = "عمّ أو خال أكبر من بابا أو ماما", ar = "عمّ أو خال أكبر من الأب أو الأم", en = "uncle (older than your parent)" } }
+level = "j1"
+confidence = "high"
+note = { arz = "⁨pakdhe⁩ = ⁨bapak gedhe⁩، يعني «الأب الكبير»، وعشان كده فيها ⁨dh⁩. الإندونيسيين بيكتبوها ⁨pakde⁩.", ar = "⁨pakdhe⁩ = ⁨bapak gedhe⁩ أي «الأب الكبير»، ولهذا فيها ⁨dh⁩. ويكتبها الإندونيسيون ⁨pakde⁩.", en = "Pakdhe is bapak gedhe, 'big father', which is why it has dh. Indonesians write it pakde." }
+
+[[pairs]]
+id = "mp.bude-budhe"
+contrast = "d_dh"
+kind = "cross"
+plain = { word = "bude", lang = "id", meaning = { arz = "عمّة أو خالة أكبر من بابا أو ماما", ar = "عمّة أو خالة أكبر من الأب أو الأم", en = "aunt (older than your parent)" } }
+curled = { word = "budhe", lang = "jv", meaning = { arz = "عمّة أو خالة أكبر من بابا أو ماما", ar = "عمّة أو خالة أكبر من الأب أو الأم", en = "aunt (older than your parent)" } }
+level = "j1"
+confidence = "high"
+note = { arz = "⁨budhe⁩ = ⁨ibu gedhe⁩، يعني «الأم الكبيرة». الإندونيسيين بيكتبوها ⁨bude⁩.", ar = "⁨budhe⁩ = ⁨ibu gedhe⁩ أي «الأم الكبيرة». ويكتبها الإندونيسيون ⁨bude⁩.", en = "Budhe is ibu gedhe, 'big mother'. Indonesians write it bude." }
+
+[[pairs]]
+id = "mp.sedih-sedhih"
+contrast = "d_dh"
+kind = "cross"
+plain = { word = "sedih", lang = "id", meaning = { arz = "زعلان، حزين", ar = "حزين", en = "sad" } }
+curled = { word = "sedhih", lang = "jv", meaning = { arz = "زعلان، حزين", ar = "حزين", en = "sad" } }
+level = "j2"
+confidence = "high"
+
+[[pairs]]
+id = "mp.pindah-pindhah"
+contrast = "d_dh"
+kind = "cross"
+plain = { word = "pindah", lang = "id", meaning = { arz = "ينقل (من مكان لمكان)", ar = "ينتقل", en = "to move (to another place)" } }
+curled = { word = "pindhah", lang = "jv", meaning = { arz = "ينقل (من مكان لمكان)", ar = "ينتقل", en = "to move (to another place)" } }
+level = "j2"
+confidence = "high"
+
+[[pairs]]
+id = "mp.adem-adhem"
+contrast = "d_dh"
+kind = "cross"
+plain = { word = "adem", lang = "id", meaning = { arz = "ساقع حلو، منعش", ar = "بارد منعش", en = "cool, pleasantly cold" } }
+curled = { word = "adhem", lang = "jv", meaning = { arz = "ساقع، بارد", ar = "بارد", en = "cold, cool" } }
+level = "j2"
+confidence = "high"
+
+[[pairs]]
+id = "mp.kadang-kadhang"
+contrast = "d_dh"
+kind = "cross"
+plain = { word = "kadang", lang = "id", meaning = { arz = "ساعات، أحيانًا", ar = "أحيانًا", en = "sometimes" } }
+curled = { word = "kadhang", lang = "jv", meaning = { arz = "ساعات، أحيانًا", ar = "أحيانًا", en = "sometimes" } }
+level = "j2"
+confidence = "high"
+note = { arz = "الاتنين بيتكرروا كتير: ⁨kadang-kadang⁩ و⁨kadhang-kadhang⁩.", ar = "وكلاهما يُكرَّر كثيرًا: ⁨kadang-kadang⁩ و⁨kadhang-kadhang⁩.", en = "Both are often doubled: kadang-kadang, kadhang-kadhang." }
+
+[[pairs]]
+id = "mp.tanda-tandha"
+contrast = "d_dh"
+kind = "cross"
+plain = { word = "tanda", lang = "id", meaning = { arz = "علامة", ar = "علامة", en = "sign, mark" } }
+curled = { word = "tandha", lang = "jv", meaning = { arz = "علامة", ar = "علامة", en = "sign, mark" } }
+level = "j2"
+confidence = "high"
+note = { arz = "الإمضا: ⁨tanda tangan⁩ بالإندونيسي، و⁨tandha tangan⁩ بالجاوي (حرفيًا «علامة الإيد»).", ar = "التوقيع: ⁨tanda tangan⁩ بالإندونيسية و⁨tandha tangan⁩ بالجاوية (حرفيًا «علامة اليد»).", en = "A signature is tanda tangan in Indonesian and tandha tangan in Javanese (literally 'hand mark')." }
+
+[[pairs]]
+id = "mp.sendok-sendhok"
+contrast = "d_dh"
+kind = "cross"
+plain = { word = "sendok", lang = "id", meaning = { arz = "معلقة", ar = "ملعقة", en = "spoon" } }
+curled = { word = "sendhok", lang = "jv", meaning = { arz = "معلقة", ar = "ملعقة", en = "spoon" } }
+level = "j2"
+confidence = "high"
+
+[[pairs]]
+id = "mp.candi-candhi"
+contrast = "d_dh"
+kind = "cross"
+plain = { word = "candi", lang = "id", meaning = { arz = "معبد قديم (زي بوروبودور)", ar = "معبد أثري (مثل بوروبودور)", en = "ancient temple (like Borobudur)" } }
+curled = { word = "candhi", lang = "jv", meaning = { arz = "معبد قديم (زي بوروبودور)", ar = "معبد أثري (مثل بوروبودور)", en = "ancient temple (like Borobudur)" } }
+level = "j2"
+confidence = "high"
+
+[[pairs]]
+id = "mp.kodok-kodhok"
+contrast = "d_dh"
+kind = "cross"
+plain = { word = "kodok", lang = "id", meaning = { arz = "ضفدعة", ar = "ضفدع", en = "frog" } }
+curled = { word = "kodhok", lang = "jv", meaning = { arz = "ضفدعة", ar = "ضفدع", en = "frog" } }
+level = "j2"
+confidence = "high"
+
+[[pairs]]
+id = "mp.dalang-dhalang"
+contrast = "d_dh"
+kind = "cross"
+plain = { word = "dalang", lang = "id", meaning = { arz = "اللي بيحرّك عرايس خيال الظل ويحكي الحكاية", ar = "محرّك دمى خيال الظل وراوي حكايتها", en = "puppet master of the shadow play" } }
+curled = { word = "dhalang", lang = "jv", meaning = { arz = "اللي بيحرّك عرايس خيال الظل ويحكي الحكاية", ar = "محرّك دمى خيال الظل وراوي حكايتها", en = "puppet master of the shadow play" } }
+level = "j3"
+confidence = "high"
+note = { arz = "خيال الظل الجاوي اسمه ⁨wayang kulit⁩.", ar = "يُسمّى خيال الظل الجاوي ⁨wayang kulit⁩.", en = "The Javanese shadow play is wayang kulit." }
+
+# --- t / th: two Javanese words ---------------------------------------------
+
+[[pairs]]
+id = "mp.putu-puthu"
+contrast = "t_th"
+kind = "minimal"
+plain = { word = "putu", lang = "jv", meaning = { arz = "حفيد أو حفيدة", ar = "حفيد أو حفيدة", en = "grandchild" } }
+curled = { word = "puthu", lang = "jv", meaning = { arz = "كيكة رز صغيرة على البخار وجواها سكر نخل", ar = "كعكة أرز صغيرة على البخار محشوّة بسكر النخيل", en = "small steamed rice cake with palm sugar inside" } }
+level = "j2"
+confidence = "medium"
+note = { arz = "بالإندونيسي الكيكة دي اسمها ⁨kue putu⁩ ومن غير ⁨h⁩، فبتتكتب زي «حفيد» بالظبط.", ar = "تُسمّى هذه الكعكة بالإندونيسية ⁨kue putu⁩ بلا ⁨h⁩، فتُكتب مثل «حفيد» تمامًا.", en = "In Indonesian the cake is kue putu, with no h, so it's spelled just like 'grandchild'." }
+
+[[pairs]]
+id = "mp.pati-pathi"
+contrast = "t_th"
+kind = "minimal"
+plain = { word = "pati", lang = "jv", meaning = { arz = "موت (كلمة أدبية)", ar = "موت (كلمة أدبية)", en = "death (literary)" } }
+curled = { word = "pathi", lang = "jv", meaning = { arz = "نشا", ar = "نشا", en = "starch" } }
+level = "j3"
+confidence = "medium"
+note = { arz = "خد بالك: بالإندونيسي النشا اسمه ⁨pati⁩ من غير ⁨h⁩.", ar = "انتبه: النشا بالإندونيسية ⁨pati⁩ بلا ⁨h⁩.", en = "Watch out: Indonesian spells starch pati, with no h." }
+
+# --- t / th: Indonesian word, Javanese cousin -------------------------------
+
+[[pairs]]
+id = "mp.batik-bathik"
+contrast = "t_th"
+kind = "cross"
+plain = { word = "batik", lang = "id", meaning = { arz = "باتيك: قماش بيترسم عليه بالشمع وبعدين يتصبغ", ar = "باتيك: قماش يُرسم عليه بالشمع ثم يُصبغ", en = "batik: cloth drawn on with wax, then dyed" } }
+curled = { word = "bathik", lang = "jv", meaning = { arz = "باتيك: قماش بيترسم عليه بالشمع وبعدين يتصبغ", ar = "باتيك: قماش يُرسم عليه بالشمع ثم يُصبغ", en = "batik: cloth drawn on with wax, then dyed" } }
+level = "j1"
+confidence = "high"
+note = { arz = "الكلمة اللي العالم كله عارفها بتتقال في جاوة بـ⁨th⁩.", ar = "الكلمة التي يعرفها العالم كله تُنطق في جاوة بـ⁨th⁩.", en = "The word the whole world knows is said with th in Java." }
+
+[[pairs]]
+id = "mp.mesti-mesthi"
+contrast = "t_th"
+kind = "cross"
+plain = { word = "mesti", lang = "id", meaning = { arz = "لازم؛ أكيد", ar = "يجب؛ لا بدّ", en = "must; surely" } }
+curled = { word = "mesthi", lang = "jv", meaning = { arz = "أكيد، أكيد يعني", ar = "حتمًا، بالتأكيد", en = "surely, definitely" } }
+level = "j2"
+confidence = "high"
+note = { arz = "في الشات بتلاقي الجاوي مكتوب ⁨mesti⁩ كمان، بس النطق والكتابة الأصلية ⁨mesthi⁩.", ar = "قد تجدها في المحادثات مكتوبة ⁨mesti⁩، لكن الكتابة القياسية والنطق ⁨mesthi⁩.", en = "In chats you'll also see Javanese written mesti, but the standard spelling and sound is mesthi." }
+
+[[pairs]]
+id = "mp.kentang-kenthang"
+contrast = "t_th"
+kind = "cross"
+plain = { word = "kentang", lang = "id", meaning = { arz = "بطاطس", ar = "بطاطا", en = "potato" } }
+curled = { word = "kenthang", lang = "jv", meaning = { arz = "بطاطس", ar = "بطاطا", en = "potato" } }
+level = "j2"
+confidence = "high"
+
+[[pairs]]
+id = "mp.kantong-kanthong"
+contrast = "t_th"
+kind = "cross"
+plain = { word = "kantong", lang = "id", meaning = { arz = "جيب؛ كيس", ar = "جيب؛ كيس", en = "pocket; small bag" } }
+curled = { word = "kanthong", lang = "jv", meaning = { arz = "جيب؛ كيس", ar = "جيب؛ كيس", en = "pocket; small bag" } }
+level = "j2"
+confidence = "medium"
+
+[[pairs]]
+id = "mp.getuk-gethuk"
+contrast = "t_th"
+kind = "cross"
+plain = { word = "getuk", lang = "id", meaning = { arz = "حلاوة من الكسافا المهروسة", ar = "حلوى من الكسافا المهروسة", en = "sweet made of mashed cassava" } }
+curled = { word = "gethuk", lang = "jv", meaning = { arz = "حلاوة من الكسافا المهروسة", ar = "حلوى من الكسافا المهروسة", en = "sweet made of mashed cassava" } }
+level = "j3"
+confidence = "high"
+
+[[pairs]]
+id = "mp.kentongan-kenthongan"
+contrast = "t_th"
+kind = "cross"
+plain = { word = "kentongan", lang = "id", meaning = { arz = "طبلة خشب أو بامبو مفتوحة بيخبطوا عليها عشان ينبّهوا الناس", ar = "طبل خشبي أو من الخيزران يُقرع لتنبيه الناس", en = "wooden or bamboo slit drum, struck to alert people" } }
+curled = { word = "kenthongan", lang = "jv", meaning = { arz = "طبلة خشب أو بامبو مفتوحة بيخبطوا عليها عشان ينبّهوا الناس", ar = "طبل خشبي أو من الخيزران يُقرع لتنبيه الناس", en = "wooden or bamboo slit drum, struck to alert people" } }
+level = "j3"
+confidence = "high"
+
+[[pairs]]
+id = "mp.batok-bathok"
+contrast = "t_th"
+kind = "cross"
+plain = { word = "batok", lang = "id", meaning = { arz = "قشرة جوز الهند الناشفة", ar = "قشرة جوز الهند الصلبة", en = "coconut shell" } }
+curled = { word = "bathok", lang = "jv", meaning = { arz = "قشرة جوز الهند الناشفة", ar = "قشرة جوز الهند الصلبة", en = "coconut shell" } }
+level = "j3"
+confidence = "high"
+
+[[pairs]]
+id = "mp.patok-pathok"
+contrast = "t_th"
+kind = "cross"
+plain = { word = "patok", lang = "id", meaning = { arz = "وتد، علامة حدود في الأرض", ar = "وتد، علامة حدود", en = "stake, boundary peg" } }
+curled = { word = "pathok", lang = "jv", meaning = { arz = "وتد، علامة حدود في الأرض", ar = "وتد، علامة حدود", en = "stake, boundary peg" } }
+level = "j3"
+confidence = "medium"
+
+[[pairs]]
+id = "mp.peti-pethi"
+contrast = "t_th"
+kind = "cross"
+plain = { word = "peti", lang = "id", meaning = { arz = "صندوق (خشب غالبًا)", ar = "صندوق (خشبي غالبًا)", en = "chest, box (often wooden)" } }
+curled = { word = "pethi", lang = "jv", meaning = { arz = "صندوق (خشب غالبًا)", ar = "صندوق (خشبي غالبًا)", en = "chest, box (often wooden)" } }
+level = "j3"
+confidence = "medium"
