@@ -1,0 +1,169 @@
+schema: kabar.lesson/v1
+id: j4.u01.l05
+language: jv
+title: Panjenengan sampun dhahar?
+can_do:
+  ar_eg: "تستضيف حد كبير: ترحّب بيه، تقعّده، وتعزم عليه بالأكل والشرب."
+  ar: أن تستضيف كبيرًا فترحّب به وتُجلسه وتعرض عليه الطعام والشراب.
+  en: Host an elder.
+slides:
+  - title: Kowe · sampeyan · panjenengan
+    body:
+      ar_eg: |
+        النهارده إنت المضيف: عملت كشري في بيت Pak Harsono وجاية تيتة Mbah Putri تاكل.
+        افتكر الجملة الواحدة في التلات مستويات. مع تيتة: krama + krama inggil لكل حاجة بتعملها هي (rawuh، lenggah، dhahar، ngunjuk، kersa)، وكراما عادية لكل حاجة بتعملها إنت (nedha، nginum، purun، wangsul).
+      ar: |
+        أنت المضيف اليوم: طبختَ الكشري في بيت Pak Harsono وستأتي الجدة Mbah Putri لتأكل.
+        تذكّر الجملة الواحدة بمستوياتها الثلاثة. ومع الجدة: krama مع krama inggil لكل أفعالها (rawuh، lenggah، dhahar، ngunjuk، kersa)، وكراما عادية لأفعالك (nedha، nginum، purun، wangsul).
+      en: |
+        Today you're the host: you've cooked koshari at Pak Harsono's house and Mbah Putri is coming to eat.
+        Remember the one sentence at three levels. With Grandma: krama plus krama inggil for everything she does (rawuh, lenggah, dhahar, ngunjuk, kersa), and plain krama for everything you do (nedha, nginum, purun, wangsul).
+    grammar: jv.krama-inggil.verbs
+    examples:
+      - text: Kowe wis mangan?
+        ar_eg: كلت؟ (لصاحبك)
+        ar: هل أكلتَ؟ (للصديق)
+        en: Have you eaten? (to a friend)
+      - text: Sampeyan sampun nedha?
+        ar_eg: حضرتك كلت؟ (لبياع أو حد قدّك)
+        ar: هل أكلتَ؟ (للبائع أو النظير)
+        en: Have you eaten? (to a seller or an equal)
+      - text: Panjenengan sampun dhahar?
+        ar_eg: سيادتك اتفضلت أكلت؟ (للكبير)
+        ar: هل تفضّلتم بالأكل؟ (للكبير)
+        en: Have you eaten? (to an elder)
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: تيتة قعدت على السفرة. تعزم عليها تاكل إزاي؟
+      ar: جلست الجدة إلى المائدة. كيف تدعوها إلى الأكل؟
+      en: Grandma sits down at the table. How do you invite her to eat?
+    options: ['Mangga nedha, Mbah.', 'Mangga dhahar, Mbah.', 'Ayo mangan, Mbah.']
+    answer: 1
+    explain:
+      ar_eg: الأكل أكلها هي، يبقى dhahar. nedha عن نفسك، وayo mangan نغوكو للصحاب.
+      ar: الأكل أكلها فيكون dhahar، وnedha للنفس، وayo mangan نغوكو.
+      en: It's her eating, so dhahar. nedha is for yourself; ayo mangan is ngoko for friends.
+    words: [dhahar]
+  - id: e02
+    type: listen
+    text: Mangga diunjuk rumiyin, Pak.
+    options: ['Mangga dhahar rumiyin, Pak.', 'Mangga lenggah rumiyin, Pak.', 'Mangga diunjuk rumiyin, Pak.']
+    answer: 2
+    meaning:
+      ar_eg: اتفضل اشرب الأول يا أستاذ.
+      ar: تفضّل بالشرب أولًا يا سيدي.
+      en: Please have a drink first, sir.
+    words: [mangga diunjuk]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: تيتة سألتك «Mas Mohamed sampun nedha?». إنت أكلت. ترد بإيه؟
+      ar: سألتك الجدة «Mas Mohamed sampun nedha?»، وقد أكلت. بمَ تجيب؟
+      en: Grandma asks "Mas Mohamed sampun nedha?". You have eaten. What do you answer?
+    options: ['Sampun, Mbah. Kula sampun nedha.', 'Sampun, Mbah. Kula sampun dhahar.', 'Uwis, Mbah. Aku wis mangan.']
+    answer: 0
+    explain:
+      ar_eg: حتى لو هي كرّمتك، إنت عن نفسك nedha. وuwis / aku / mangan نغوكو قليلة أدب مع تيتة.
+      ar: عن نفسك nedha، والنغوكو مع الجدة قلة أدب.
+      en: About yourself it's nedha. uwis / aku / mangan is ngoko, rude to a grandmother.
+    words: [nedha, dhahar]
+  - id: e04
+    type: fill_blank
+    sentence: Panjenengan sampun ___, Mbah?
+    meaning:
+      ar_eg: حضرتك أكلتي يا تيتة؟
+      ar: هل تفضّلتِ بالأكل يا جدتي؟
+      en: Have you eaten, Grandma?
+    answers: [dhahar]
+    words: [dhahar]
+  - id: e05
+    type: fill_blank
+    sentence: Mangga ___ rumiyin, Mbah.
+    meaning:
+      ar_eg: اتفضلي اقعدي الأول يا تيتة.
+      ar: تفضّلي بالجلوس أولًا يا جدتي.
+      en: Please sit down first, Grandma.
+    options: [linggih, lenggah, lungguh]
+    answers: [lenggah]
+    explain:
+      ar_eg: القعدة قعدتها هي، يبقى lenggah (krama inggil).
+      ar: الجلوس جلوسها فيكون lenggah.
+      en: It's her sitting, so lenggah (krama inggil).
+    words: [lenggah]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: يا تيتة، حضرتك تحبي تشربي شاي؟
+      ar: يا جدتي، هل تودّين شرب الشاي؟
+      en: Grandma, would you like some tea?
+    answer: Mbah, panjenengan kersa ngunjuk teh?
+    alternatives: ['Panjenengan kersa ngunjuk teh, Mbah?']
+    distractors: [purun, nginum]
+    words: [kersa, ngunjuk]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (لـ Pak Harsono) حضرتك أكلت يا أستاذ؟
+      ar: (إلى Pak Harsono) هل تفضّلت بالأكل يا سيدي؟
+      en: (to Pak Harsono) Have you eaten, sir?
+    answers: ['Panjenengan sampun dhahar, Pak?', 'Pak, panjenengan sampun dhahar?', 'Bapak sampun dhahar?', 'Sampun dhahar, Pak?', 'Panjenengan sampun dhahar?']
+    explain:
+      ar_eg: panjenengan (أو Bapak بدل الضمير) + sampun + dhahar.
+      ar: panjenengan (أو Bapak مكان الضمير) + sampun + dhahar.
+      en: panjenengan (or Bapak instead of a pronoun) + sampun + dhahar.
+    words: [dhahar, panjenengan]
+  - id: e08
+    type: dictation
+    text: Simbah saweg sare, Bapak dereng kondur.
+    meaning:
+      ar_eg: تيتة نايمة، والأستاذ لسه مارجعش البيت.
+      ar: الجدة نائمة، والأستاذ لم يعد بعد.
+      en: Grandma is asleep, and Father isn't home yet.
+    words: [saweg, sare, kondur]
+  - id: e09
+    type: speaking
+    text: Sugeng rawuh, Mbah. Mangga lenggah.
+    meaning:
+      ar_eg: أهلًا وسهلًا يا تيتة. اتفضلي اقعدي.
+      ar: أهلًا وسهلًا يا جدتي. تفضّلي بالجلوس.
+      en: Welcome, Grandma. Please have a seat.
+    words: [rawuh, lenggah]
+dialogue:
+  title: Koshari kagem Simbah
+  lines:
+    - speaker: Mohamed
+      text: Sugeng rawuh, Mbah. Mangga lenggah.
+      ar_eg: أهلًا وسهلًا يا تيتة. اتفضلي اقعدي.
+      ar: أهلًا وسهلًا يا جدتي. تفضّلي بالجلوس.
+      en: Welcome, Grandma. Please have a seat.
+    - speaker: Mbah Putri
+      text: Matur nuwun, Mas. Wah, menika menapa?
+      ar_eg: شكرًا يا ابني. الله، إيه ده؟
+      ar: شكرًا يا بني. ما هذا؟
+      en: Thank you. Oh, what's this?
+    - speaker: Mohamed
+      text: Menika koshari, saking Mesir. Mangga dhahar, Mbah.
+      ar_eg: ده كشري، من مصر. اتفضلي كلي يا تيتة.
+      ar: هذا كشري من مصر. تفضّلي بالأكل يا جدتي.
+      en: This is koshari, from Egypt. Please eat, Grandma.
+    - speaker: Mbah Putri
+      text: Mas Mohamed sampun nedha?
+      ar_eg: وإنت يا محمد أكلت؟
+      ar: وهل أكلتَ يا محمد؟
+      en: Have you eaten, Mohamed?
+    - speaker: Mohamed
+      text: Dereng, Mbah. Mangga, panjenengan rumiyin.
+      ar_eg: لسه يا تيتة. اتفضلي حضرتك الأول.
+      ar: ليس بعد يا جدتي. تفضّلي أنتِ أولًا.
+      en: Not yet, Grandma. Please, you first.
+    - speaker: Mbah Putri
+      text: Wah, sae sanget. Matur nuwun, Mas.
+      ar_eg: الله، حلو أوي. تسلم يا ابني.
+      ar: ما أطيبه! شكرًا يا بني.
+      en: Oh, it's very good. Thank you.
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,233 @@
+schema: kabar.lesson/v1
+id: bipa3.u07.l01
+language: id
+title: Dibuat, dikunjungi
+can_do:
+  ar_eg: تحوّل فعل meN- لمبني للمجهول بـ di- (membuat → dibuat).
+  ar: أن تحوّل فعل meN- إلى المبني للمجهول بـ di- (membuat → dibuat).
+  en: Turn a meN- verb into the di- passive (membuat → dibuat).
+slides:
+  - title: meN- → di-
+    body:
+      ar_eg: |
+        عايز تبدأ بالحاجة مش باللي عملها؟ شيل meN- وحط di- على الجذر:
+        membuat → dibuat (اتعمل)، mengunjungi → dikunjungi (اتزار)، membersihkan → dibersihkan.
+        الـ -kan و -i بيفضلوا زي ما هم. وده زي «كَتَب ← كُتِب» عندنا، أو «اتكتب» بالمصري.
+      ar: |
+        لتبدأ الجملة بالشيء لا بالفاعل، احذف meN- وضع di- على الجذر:
+        membuat → dibuat (صُنع)، mengunjungi → dikunjungi (زِير)، membersihkan → dibersihkan.
+        وتبقى -kan و-i كما هما، كما في «كَتَبَ ← كُتِبَ».
+      en: |
+        Want to start with the thing, not the doer? Drop meN- and put di- on the root:
+        membuat → dibuat (made), mengunjungi → dikunjungi (visited), membersihkan → dibersihkan (cleaned).
+        -kan and -i stay. It's Arabic كَتَبَ → كُتِبَ, or Egyptian «اتكتب».
+    grammar: id.passive.di
+    examples:
+      - text: Ibu-ibu Sade membuat kain tenun. → Kain tenun dibuat ibu-ibu Sade.
+        ar_eg: ستات ساديه بيعملوا القماش المنسوج. ← القماش المنسوج معمول بإيد ستات ساديه.
+        ar: تصنع نساء سادي القماش المنسوج. ← يُصنع القماش المنسوج بأيدي نساء سادي.
+        en: The women of Sade make woven cloth. → Woven cloth is made by the women of Sade.
+      - text: Banyak wisatawan mengunjungi Desa Sade. → Desa Sade dikunjungi banyak wisatawan.
+        ar_eg: سياح كتير بيزوروا قرية ساديه. ← قرية ساديه بيزورها سياح كتير.
+        ar: يزور سياح كثيرون قرية سادي. ← تُزار قرية سادي من سياح كثيرين.
+        en: Many tourists visit Sade village. → Sade village is visited by many tourists.
+  - title: dibangun di Sade
+    body:
+      ar_eg: |
+        بنستعمل di- لما الفاعل مش مهم أو مش معروف، وفي التاريخ واللافتات.
+        وأهم حاجة في الإملا: di- البادئة لازقة في الفعل (dibangun)، وdi حرف الجر منفصل قبل المكان (di Sade).
+        الاختبار: بعدها فعل؟ لازقة. بعدها مكان؟ منفصلة.
+      ar: |
+        نستعمل di- حين يكون الفاعل غير مهم أو مجهولًا، وفي التاريخ واللافتات.
+        وفي الإملاء: di- السابقة متصلة بالفعل (dibangun)، وdi حرف الجر منفصل قبل المكان (di Sade).
+        فإن تلاها فعل اتصلت، وإن تلاها مكان انفصلت.
+      en: |
+        Use di- when the doer is unknown or unimportant, and in history and signs.
+        Spelling: the prefix di- joins the verb (dibangun); the preposition di stands apart before a place (di Sade).
+        Test: a verb follows → join it. A place follows → leave a space.
+    grammar: id.passive.di
+    examples:
+      - text: Rumah adat ini dibangun di Sade.
+        ar_eg: البيت التقليدي ده اتبنى في ساديه.
+        ar: بُني هذا البيت التقليدي في سادي.
+        en: This traditional house was built in Sade.
+      - text: Lantai rumah adat dibersihkan dengan kotoran kerbau.
+        ar_eg: أرضية البيت التقليدي بتتمسح بروث الجاموس.
+        ar: تُنظَّف أرضية البيت التقليدي بروث الجاموس.
+        en: The floor of the traditional house is cleaned with buffalo dung.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: desa
+        ar_eg: قرية
+        ar: قرية
+        en: village
+      - text: rumah adat
+        ar_eg: بيت تقليدي
+        ar: بيت تقليدي
+        en: traditional house
+      - text: wisatawan
+        ar_eg: سايح
+        ar: سائح
+        en: tourist
+      - text: mengunjungi
+        ar_eg: يزور
+        ar: يزور
+        en: to visit
+      - text: kain tenun
+        ar_eg: قماش منسوج (على النول)
+        ar: قماش منسوج يدويًّا
+        en: hand-woven cloth
+      - text: membangun
+        ar_eg: يبني
+        ar: يبني
+        en: to build
+    words: [desa, rumah adat, wisatawan, mengunjungi, kain tenun, membangun]
+  - id: e02
+    type: multiple_choice
+    question: Desa Sade ___ banyak wisatawan.
+    options: [mengunjungi, dikunjungi, kunjungi]
+    answer: 1
+    explain:
+      ar_eg: القرية مش هي اللي بتزور، القرية بتتزار، فبنستعمل di-.
+      ar: القرية لا تزور بل تُزار، فنستعمل di-.
+      en: The village doesn't visit; it is visited, so use di-.
+    words: [desa, mengunjungi, wisatawan]
+  - id: e03
+    type: listen
+    text: Lantai rumah adat dibersihkan dengan kotoran kerbau.
+    options:
+      - Lantai rumah adat dibangun dengan kotoran kerbau.
+      - Lantai rumah makan dibersihkan dengan kotoran kerbau.
+      - Lantai rumah adat dibersihkan dengan kotoran kerbau.
+    answer: 2
+    meaning:
+      ar_eg: أرضية البيت التقليدي بتتمسح بروث الجاموس.
+      ar: تُنظَّف أرضية البيت التقليدي بروث الجاموس.
+      en: The floor of the traditional house is cleaned with buffalo dung.
+    words: [rumah adat]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة مكتوبة صح؟
+      ar: أيّ جملة مكتوبة بإملاء صحيح؟
+      en: Which sentence is spelled correctly?
+    options:
+      - Rumah adat ini dibangun di Sade.
+      - Rumah adat ini di bangun di Sade.
+      - Rumah adat ini dibangun diSade.
+    answer: 0
+    explain:
+      ar_eg: dibangun فعل، فـ di- لازقة. di Sade مكان، فـ di منفصلة.
+      ar: dibangun فعل فتتصل di-، وdi Sade مكان فتنفصل di.
+      en: dibangun is a verb, so di- joins; di Sade is a place, so di stands apart.
+    words: [membangun, rumah adat]
+  - id: e05
+    type: fill_blank
+    sentence: Kain tenun ini ___ ibu-ibu di Sade.
+    meaning:
+      ar_eg: القماش المنسوج ده معمول بإيد الستات في ساديه.
+      ar: صنعت هذا القماشَ المنسوج نساءٌ في سادي.
+      en: This woven cloth was made by the women in Sade.
+    options: [membuat, dibuat, buat]
+    answers: [dibuat]
+    words: [kain tenun]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: قرية ساديه بيزورها سياح كتير.
+      ar: تُزار قرية سادي من سياح كثيرين.
+      en: Sade village is visited by many tourists.
+    answer: Desa Sade dikunjungi banyak wisatawan.
+    distractors: [mengunjungi, di]
+    words: [desa, mengunjungi, wisatawan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: القماش المنسوج ده اتعمل في ساديه.
+      ar: صُنع هذا القماش المنسوج في سادي.
+      en: This woven cloth was made in Sade.
+    answers:
+      - Kain tenun ini dibuat di Sade.
+      - Kain tenun ini dibuat di Sade
+      - Kain tenun ini dibuat di Desa Sade.
+      - Kain tenun ini dibuat di Desa Sade
+      - Kain tenun ini dibuat di desa Sade.
+    explain:
+      ar_eg: dibuat لازقة (فعل)، وdi Sade منفصلة (مكان).
+      ar: dibuat متصلة لأنها فعل، وdi Sade منفصلة لأنها مكان.
+      en: dibuat is joined (verb); di Sade is separate (place).
+    words: [kain tenun]
+  - id: e08
+    type: speaking
+    text: Rumah adat ini dibangun dari bambu dan kayu.
+    meaning:
+      ar_eg: البيت التقليدي ده متبني من البامبو والخشب.
+      ar: بُني هذا البيت التقليدي من الخيزران والخشب.
+      en: This traditional house is built of bamboo and wood.
+    words: [rumah adat, membangun]
+dialogue:
+  title: Di Desa Sade
+  lines:
+    - speaker: Mas Rizal
+      text: Ini Desa Sade. Desa ini dikunjungi banyak wisatawan setiap hari.
+      ar_eg: دي قرية ساديه. القرية دي بيزورها سياح كتير كل يوم.
+      ar: هذه قرية سادي، ويزورها سياح كثيرون كل يوم.
+      en: This is Sade village. It's visited by many tourists every day.
+    - speaker: Mohamed
+      text: Rumah adat ini dibangun dari apa?
+      ar_eg: البيت التقليدي ده متبني من إيه؟
+      ar: مِمَّ بُني هذا البيت التقليدي؟
+      en: What is this traditional house built of?
+    - speaker: Mas Rizal
+      text: Dari bambu dan kayu. Lantainya dibersihkan dengan kotoran kerbau!
+      ar_eg: من البامبو والخشب. وأرضيته بتتمسح بروث الجاموس!
+      ar: من الخيزران والخشب، وتُنظَّف أرضيته بروث الجاموس!
+      en: Bamboo and wood. And the floor is cleaned with buffalo dung!
+    - speaker: Mohamed
+      text: Wah! Kain tenun ini juga dibuat di sini?
+      ar_eg: واو! والقماش المنسوج ده كمان معمول هنا؟
+      ar: عجيب! وهل يُصنع هذا القماش المنسوج هنا أيضًا؟
+      en: Wow! Is this woven cloth made here too?
+    - speaker: Mas Rizal
+      text: Ya, kain tenun ini dibuat ibu-ibu Sade.
+      ar_eg: أيوه، القماش ده معمول بإيد ستات ساديه.
+      ar: نعم، تصنعه نساء سادي.
+      en: Yes, this woven cloth is made by the women of Sade.
+new_words:
+  - word: desa
+    pos: noun
+    ar_eg: قرية
+    ar: قرية
+    en: village
+  - word: rumah adat
+    pos: noun
+    ar_eg: بيت تقليدي (adat من «عادة»)
+    ar: بيت تقليدي (adat من «عادة»)
+    en: traditional house (adat ← Arabic «عادة», custom)
+    arabic: عادة
+  - word: wisatawan
+    pos: noun
+    ar_eg: سايح
+    ar: سائح
+    en: tourist (formal)
+  - word: mengunjungi
+    pos: verb
+    ar_eg: يزور (dikunjungi = اتزار)
+    ar: يزور (dikunjungi = زِير)
+    en: to visit (dikunjungi = visited)
+  - word: kain tenun
+    pos: noun
+    ar_eg: قماش منسوج (على النول)
+    ar: قماش منسوج يدويًّا
+    en: hand-woven cloth
+  - word: membangun
+    pos: verb
+    ar_eg: يبني (dibangun = اتبنى)
+    ar: يبني (dibangun = بُني)
+    en: to build (dibangun = built)
+review:
+  status: draft
+  verified: false

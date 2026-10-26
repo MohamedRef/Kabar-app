@@ -1,0 +1,226 @@
+schema: kabar.lesson/v1
+id: bipa3.u07.l02
+language: id
+title: Oleh siapa?
+can_do:
+  ar_eg: تقول مين عمل الحاجة في المبني للمجهول (di- … oleh).
+  ar: أن تذكر الفاعل في المبني للمجهول (di- … oleh).
+  en: Name the doer in a di- passive (di- … oleh).
+slides:
+  - title: oleh = بواسطة
+    body:
+      ar_eg: |
+        لو عايز تقول مين عمل الحاجة في جملة di-، حطه بعد oleh (= من / بواسطة):
+        Pahlawan itu ditangkap oleh penjajah = البطل اتقبض عليه من المستعمر.
+        ولو الفاعل جه بعد الفعل على طول، ممكن تشيل oleh: ditangkap penjajah.
+      ar: |
+        لذكر الفاعل في جملة di- ضعه بعد oleh (= من قِبَل):
+        Pahlawan itu ditangkap oleh penjajah = قُبض على البطل من قِبَل المستعمِر.
+        وإذا تلا الفاعلُ الفعلَ مباشرةً جاز حذف oleh: ditangkap penjajah.
+      en: |
+        To say who did it in a di- sentence, put the doer after oleh (by):
+        Pahlawan itu ditangkap oleh penjajah = The hero was captured by the colonisers.
+        If the doer comes right after the verb, oleh can drop: ditangkap penjajah.
+    grammar: id.passive.di
+    examples:
+      - text: Pahlawan itu ditangkap oleh penjajah.
+        ar_eg: البطل ده اتقبض عليه من المستعمر.
+        ar: قُبض على ذلك البطل من قِبَل المستعمِر.
+        en: That hero was captured by the colonisers.
+      - text: Surat-surat itu ditulis oleh Kartini.
+        ar_eg: الجوابات دي كتبتها كارتيني.
+        ar: كتبت كارتيني تلك الرسائل.
+        en: Those letters were written by Kartini.
+  - title: Sejarah kemerdekaan
+    body:
+      ar_eg: |
+        كلمات التاريخ: pahlawan (بطل)، penjajah (مستعمر)، kemerdekaan (استقلال)، berjuang (يكافح).
+        وsejarah (تاريخ) جاية من العربي «شجرة»، يعني شجرة العيلة والنسب، وبعدين بقت «تاريخ».
+        والتاريخ مليان di-: dipelajari (بيتدرس)، ditangkap (اتقبض عليه).
+      ar: |
+        من مفردات التاريخ: pahlawan (بطل)، penjajah (مستعمِر)، kemerdekaan (استقلال)، berjuang (يكافح).
+        وsejarah (تاريخ) من العربية «شجرة» أي شجرة النسب، ثم صارت بمعنى التاريخ.
+        ويكثر المبني للمجهول في التاريخ: dipelajari، ditangkap.
+      en: |
+        History words: pahlawan (hero), penjajah (coloniser), kemerdekaan (independence), berjuang (to struggle, fight).
+        sejarah (history) comes from Arabic «شجرة», the family tree, and came to mean history.
+        History is full of di-: dipelajari (is studied), ditangkap (was captured).
+    grammar: id.passive.di
+    examples:
+      - text: Banyak pahlawan berjuang untuk kemerdekaan.
+        ar_eg: أبطال كتير كافحوا عشان الاستقلال.
+        ar: كافح أبطال كثيرون من أجل الاستقلال.
+        en: Many heroes fought for independence.
+      - text: Sejarah kemerdekaan dipelajari di sekolah.
+        ar_eg: تاريخ الاستقلال بيتدرس في المدرسة.
+        ar: يُدرَّس تاريخ الاستقلال في المدرسة.
+        en: The history of independence is studied at school.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pahlawan
+        ar_eg: بطل
+        ar: بطل
+        en: hero
+      - text: penjajah
+        ar_eg: مستعمر
+        ar: مستعمِر
+        en: coloniser
+      - text: kemerdekaan
+        ar_eg: استقلال
+        ar: استقلال
+        en: independence
+      - text: berjuang
+        ar_eg: يكافح / يناضل
+        ar: يكافح / يناضل
+        en: to struggle, to fight (for)
+      - text: menangkap
+        ar_eg: يقبض على / يمسك
+        ar: يقبض على
+        en: to capture, to catch
+      - text: sejarah
+        ar_eg: تاريخ
+        ar: تاريخ
+        en: history
+    words: [pahlawan, penjajah, kemerdekaan, berjuang, menangkap, sejarah]
+  - id: e02
+    type: multiple_choice
+    question: Pahlawan itu ditangkap ___ penjajah.
+    options: [dari, untuk, oleh]
+    answer: 2
+    explain:
+      ar_eg: الفاعل في جملة di- بييجي بعد oleh (بواسطة / من).
+      ar: يأتي الفاعل في جملة di- بعد oleh.
+      en: In a di- sentence, the doer comes after oleh (by).
+    words: [pahlawan, penjajah]
+  - id: e03
+    type: listen
+    text: Mereka berjuang untuk kemerdekaan Indonesia.
+    options:
+      - Mereka belajar untuk kemerdekaan Indonesia.
+      - Mereka berjuang untuk kemerdekaan Indonesia.
+      - Mereka berjuang untuk sejarah Indonesia.
+    answer: 1
+    meaning:
+      ar_eg: كافحوا عشان استقلال إندونيسيا.
+      ar: كافحوا من أجل استقلال إندونيسيا.
+      en: They fought for Indonesia's independence.
+    words: [berjuang, kemerdekaan]
+  - id: e04
+    type: multiple_choice
+    question: Pahlawan itu ditangkap oleh penjajah. Siapa yang menangkap?
+    options: [Pahlawan itu, Penjajah, Kartini]
+    answer: 1
+    explain:
+      ar_eg: اللي بعد oleh هو الفاعل. البطل هو اللي اتقبض عليه.
+      ar: ما بعد oleh هو الفاعل، والبطل هو المقبوض عليه.
+      en: Whoever follows oleh is the doer; the hero is the one captured.
+    words: [menangkap, penjajah]
+  - id: e05
+    type: fill_blank
+    sentence: Buku ___ ini bercerita tentang pahlawan Lombok.
+    meaning:
+      ar_eg: كتاب التاريخ ده بيحكي عن أبطال لومبوك.
+      ar: يحكي كتاب التاريخ هذا عن أبطال لومبوك.
+      en: This history book tells about Lombok's heroes.
+    options: [sejarah, kemerdekaan, penjajah]
+    answers: [sejarah]
+    words: [sejarah]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: أبطال كتير كافحوا عشان الاستقلال.
+      ar: كافح أبطال كثيرون من أجل الاستقلال.
+      en: Many heroes fought for independence.
+    answer: Banyak pahlawan berjuang untuk kemerdekaan.
+    distractors: [ditangkap, oleh]
+    words: [pahlawan, berjuang, kemerdekaan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: البطل اتقبض عليه من المستعمر.
+      ar: قُبض على البطل من قِبَل المستعمِر.
+      en: The hero was captured by the colonisers.
+    answers:
+      - Pahlawan itu ditangkap oleh penjajah.
+      - Pahlawan itu ditangkap oleh penjajah
+      - Pahlawan itu ditangkap penjajah.
+      - Pahlawan itu ditangkap penjajah
+      - Pahlawan ditangkap oleh penjajah.
+      - Pahlawan ditangkap oleh penjajah
+      - Pahlawan ditangkap penjajah.
+      - Pahlawan tersebut ditangkap oleh penjajah.
+    words: [pahlawan, menangkap, penjajah]
+  - id: e08
+    type: speaking
+    text: Sejarah kemerdekaan Indonesia dipelajari di sekolah.
+    meaning:
+      ar_eg: تاريخ استقلال إندونيسيا بيتدرس في المدرسة.
+      ar: يُدرَّس تاريخ استقلال إندونيسيا في المدرسة.
+      en: The history of Indonesian independence is studied at school.
+    words: [sejarah, kemerdekaan]
+dialogue:
+  title: Pahlawan siapa?
+  lines:
+    - speaker: Mohamed
+      text: Mas Rizal, siapa pahlawan Indonesia yang terkenal?
+      ar_eg: يا ماس ريزال، مين أشهر أبطال إندونيسيا؟
+      ar: يا ماس ريزال، مَن أبطال إندونيسيا المشهورون؟
+      en: Mas Rizal, who are the famous Indonesian heroes?
+    - speaker: Mas Rizal
+      text: Banyak! Misalnya Pangeran Diponegoro. Dia berjuang melawan penjajah Belanda.
+      ar_eg: كتير! مثلًا الأمير ديبونيجورو. كافح ضد المستعمر الهولندي.
+      ar: كثيرون! مثل الأمير ديبونيغورو الذي كافح ضد المستعمر الهولندي.
+      en: Lots! Prince Diponegoro, for example. He fought against the Dutch colonisers.
+    - speaker: Mohamed
+      text: Lalu dia ditangkap?
+      ar_eg: وبعدين اتقبض عليه؟
+      ar: ثم قُبض عليه؟
+      en: And then he was captured?
+    - speaker: Mas Rizal
+      text: Ya, dia ditangkap oleh Belanda pada tahun 1830.
+      ar_eg: أيوه، اتقبض عليه من الهولنديين سنة 1830.
+      ar: نعم، قبض عليه الهولنديون عام 1830.
+      en: Yes, he was captured by the Dutch in 1830.
+    - speaker: Mohamed
+      text: Sejarah Indonesia seru sekali!
+      ar_eg: تاريخ إندونيسيا شيق جدًا!
+      ar: تاريخ إندونيسيا مشوّق جدًا!
+      en: Indonesian history is so exciting!
+new_words:
+  - word: pahlawan
+    pos: noun
+    ar_eg: بطل
+    ar: بطل
+    en: hero
+  - word: penjajah
+    pos: noun
+    ar_eg: مستعمر
+    ar: مستعمِر
+    en: coloniser
+  - word: kemerdekaan
+    pos: noun
+    ar_eg: استقلال
+    ar: استقلال
+    en: independence
+  - word: berjuang
+    pos: verb
+    ar_eg: يكافح / يناضل
+    ar: يكافح / يناضل
+    en: to struggle, to fight (for)
+  - word: menangkap
+    pos: verb
+    ar_eg: يقبض على / يمسك
+    ar: يقبض على / يمسك
+    en: to capture, to catch
+  - word: sejarah
+    pos: noun
+    ar_eg: تاريخ
+    ar: تاريخ
+    en: history
+    arabic: شجرة
+review:
+  status: draft
+  verified: false

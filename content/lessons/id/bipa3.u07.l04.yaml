@@ -1,0 +1,228 @@
+schema: kabar.lesson/v1
+id: bipa3.u07.l04
+language: id
+title: Lahir, mendirikan, wafat
+can_do:
+  ar_eg: تحكي أهم محطات حياة شخص (اتولد، أسس، اتوفى).
+  ar: أن تسرد أهم محطات حياة شخص (وُلد، أسّس، تُوفّي).
+  en: Tell the key moments of a life (born, founded, died).
+slides:
+  - title: Kata kerja biografi
+    body:
+      ar_eg: |
+        السيرة الذاتية ليها أفعال ثابتة، وكتير منها عربي:
+        lahir = اتولد (من «ظاهر»: ظهر للدنيا)، wafat = اتوفى (من «وفاة»، أرسم من meninggal).
+        mendirikan = يأسس (sekolah، madrasah، organisasi).
+      ar: |
+        للسيرة أفعال ثابتة، وكثير منها عربي:
+        lahir = وُلد (من «ظاهر»: ظهر إلى الدنيا)، wafat = تُوفّي (من «وفاة»، وهي أرسم من meninggal).
+        mendirikan = أسّس (مدرسة، منظمة).
+      en: |
+        Biographies use a set of fixed verbs, several from Arabic:
+        lahir = to be born (from «ظاهر», to appear), wafat = to pass away (from «وفاة», more formal than meninggal).
+        mendirikan = to found (a school, a madrasah, an organisation).
+    examples:
+      - text: Kartini lahir di Jepara pada tahun 1879.
+        ar_eg: كارتيني اتولدت في جيبارا سنة 1879.
+        ar: وُلدت كارتيني في جيبارا عام 1879.
+        en: Kartini was born in Jepara in 1879.
+      - text: Kartini wafat pada tahun 1904.
+        ar_eg: كارتيني اتوفت سنة 1904.
+        ar: تُوفّيت كارتيني عام 1904.
+        en: Kartini passed away in 1904.
+  - title: Diangkat menjadi pahlawan
+    body:
+      ar_eg: |
+        السيرة مليانة di- كمان، لأن المهم الشخص مش اللي عمل الفعل:
+        diangkat menjadi pahlawan nasional = اتعيّن / اتعلن بطل قومي، didirikan oleh … = اتأسس على إيد…
+        وmadrasah وulama (علماء) من العربي، وفي الإندونيسي ulama ممكن تبقى لشخص واحد.
+      ar: |
+        ويكثر المبني للمجهول في السيرة لأن الشخص هو الموضوع:
+        diangkat menjadi pahlawan nasional = أُعلن بطلًا قوميًّا، didirikan oleh … = أسّسه…
+        وmadrasah وulama من العربية، وقد تُطلق ulama في الإندونيسية على عالم واحد.
+      en: |
+        Biographies are full of di- too, because the person is the topic:
+        diangkat menjadi pahlawan nasional = was made a national hero, didirikan oleh … = was founded by …
+        madrasah and ulama come from Arabic; in Indonesian ulama can mean a single scholar.
+    grammar: id.passive.di
+    examples:
+      - text: Kartini diangkat menjadi pahlawan nasional pada tahun 1964.
+        ar_eg: كارتيني اتعلنت بطلة قومية سنة 1964.
+        ar: أُعلنت كارتيني بطلةً قومية عام 1964.
+        en: Kartini was made a national hero in 1964.
+      - text: Madrasah itu didirikan oleh seorang ulama.
+        ar_eg: المدرسة دي أسسها عالم دين.
+        ar: أسّس تلك المدرسةَ عالمُ دين.
+        en: That madrasah was founded by an Islamic scholar.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: lahir
+        ar_eg: اتولد
+        ar: وُلد
+        en: to be born
+      - text: wafat
+        ar_eg: اتوفى
+        ar: تُوفّي
+        en: to pass away
+      - text: ulama
+        ar_eg: عالم دين / علماء
+        ar: عالم دين / علماء
+        en: Islamic scholar(s)
+      - text: mendirikan
+        ar_eg: يأسس
+        ar: يؤسّس
+        en: to found, to establish
+      - text: madrasah
+        ar_eg: مدرسة إسلامية
+        ar: مدرسة إسلامية
+        en: Islamic school
+      - text: gelar
+        ar_eg: لقب
+        ar: لقب
+        en: title (honour, degree)
+    words: [lahir, wafat, ulama, mendirikan, madrasah, gelar]
+  - id: e02
+    type: multiple_choice
+    question: Kartini ___ di Jepara pada tahun 1879.
+    options: [wafat, lahir, mendirikan]
+    answer: 1
+    words: [lahir]
+  - id: e03
+    type: listen
+    text: Madrasah itu didirikan oleh seorang ulama.
+    options:
+      - Madrasah itu didirikan oleh seorang ulama.
+      - Madrasah itu dikunjungi oleh seorang ulama.
+      - Masjid itu didirikan oleh seorang ulama.
+    answer: 0
+    meaning:
+      ar_eg: المدرسة دي أسسها عالم دين.
+      ar: أسّس تلك المدرسةَ عالمُ دين.
+      en: That madrasah was founded by an Islamic scholar.
+    words: [madrasah, mendirikan, ulama]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة معناها «أخد لقب بطل قومي»؟
+      ar: أيّ جملة تعني «نال لقب بطل قومي»؟
+      en: Which sentence means "He received the title of national hero"?
+    options:
+      - Dia mendirikan gelar pahlawan nasional.
+      - Dia lahir pahlawan nasional.
+      - Dia mendapat gelar pahlawan nasional.
+    answer: 2
+    words: [gelar]
+  - id: e05
+    type: fill_blank
+    sentence: Pada tahun 2017, dia mendapat ___ pahlawan nasional.
+    meaning:
+      ar_eg: سنة 2017 أخد لقب بطل قومي.
+      ar: نال عام 2017 لقب بطل قومي.
+      en: In 2017 he received the title of national hero.
+    options: [gelar, madrasah, ulama]
+    answers: [gelar]
+    words: [gelar]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: أسس مدرسة إسلامية في قريته.
+      ar: أسّس مدرسة إسلامية في قريته.
+      en: He founded a madrasah in his village.
+    answer: Dia mendirikan sebuah madrasah di desanya.
+    distractors: [didirikan, wafat]
+    words: [mendirikan, madrasah]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: كارتيني اتوفت سنة 1904.
+      ar: تُوفّيت كارتيني عام 1904.
+      en: Kartini passed away in 1904.
+    answers:
+      - Kartini wafat pada tahun 1904.
+      - Kartini wafat pada tahun 1904
+      - Kartini wafat tahun 1904.
+      - Kartini wafat tahun 1904
+      - Kartini wafat pada 1904.
+      - Kartini meninggal pada tahun 1904.
+      - Kartini meninggal pada tahun 1904
+      - Kartini meninggal tahun 1904.
+      - Kartini meninggal dunia pada tahun 1904.
+      - Kartini meninggal dunia tahun 1904.
+    words: [wafat]
+  - id: e08
+    type: speaking
+    text: Ulama itu lahir di Lombok dan wafat pada tahun 1997.
+    meaning:
+      ar_eg: عالم الدين ده اتولد في لومبوك واتوفى سنة 1997.
+      ar: وُلد ذلك العالم في لومبوك وتُوفّي عام 1997.
+      en: That scholar was born in Lombok and passed away in 1997.
+    words: [ulama, lahir, wafat]
+dialogue:
+  title: Siapa Kartini?
+  lines:
+    - speaker: Rina
+      text: Mohamed, kamu tahu Kartini?
+      ar_eg: يا محمد، تعرف كارتيني؟
+      ar: يا محمد، هل تعرف كارتيني؟
+      en: Mohamed, do you know about Kartini?
+    - speaker: Mohamed
+      text: Sedikit. Dia lahir di Jepara, kan?
+      ar_eg: شوية. اتولدت في جيبارا، مش كده؟
+      ar: قليلًا. وُلدت في جيبارا، أليس كذلك؟
+      en: A little. She was born in Jepara, right?
+    - speaker: Rina
+      text: Betul. Dia ingin perempuan Indonesia juga bisa sekolah.
+      ar_eg: مظبوط. كانت عايزة الستات في إندونيسيا يتعلموا هم كمان.
+      ar: صحيح. أرادت أن تتعلم النساء في إندونيسيا أيضًا.
+      en: Right. She wanted Indonesian women to be able to go to school too.
+    - speaker: Mohamed
+      text: Kapan dia wafat?
+      ar_eg: اتوفت إمتى؟
+      ar: متى تُوفّيت؟
+      en: When did she pass away?
+    - speaker: Rina
+      text: Tahun 1904. Pada tahun 1964, dia diangkat menjadi pahlawan nasional.
+      ar_eg: سنة 1904. وسنة 1964 اتعلنت بطلة قومية.
+      ar: عام 1904. وفي عام 1964 أُعلنت بطلةً قومية.
+      en: In 1904. In 1964 she was made a national hero.
+new_words:
+  - word: lahir
+    pos: verb
+    ar_eg: اتولد
+    ar: وُلد
+    en: to be born
+    arabic: ظاهر
+  - word: wafat
+    pos: verb
+    ar_eg: اتوفى (رسمي)
+    ar: تُوفّي
+    en: to pass away (formal)
+    arabic: وفاة
+  - word: ulama
+    pos: noun
+    ar_eg: عالم دين / علماء
+    ar: عالم دين / علماء
+    en: Islamic scholar(s)
+    arabic: علماء
+  - word: mendirikan
+    pos: verb
+    ar_eg: يأسس
+    ar: يؤسّس
+    en: to found, to establish
+  - word: madrasah
+    pos: noun
+    ar_eg: مدرسة إسلامية
+    ar: مدرسة إسلامية
+    en: Islamic school
+    arabic: مدرسة
+  - word: gelar
+    pos: noun
+    ar_eg: لقب
+    ar: لقب
+    en: title (honour, degree)
+review:
+  status: draft
+  verified: false

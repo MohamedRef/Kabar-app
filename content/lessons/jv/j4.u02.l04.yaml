@@ -1,0 +1,170 @@
+schema: kabar.lesson/v1
+id: j4.u02.l04
+language: jv
+title: Sowan simbah
+can_do:
+  ar_eg: تطمّن على حد كبير بأدب.
+  ar: أن تسأل عن حال الكبير بأدب.
+  en: Ask after an elder politely.
+slides:
+  - title: Kagem Simbah, kangge kula
+    body:
+      ar_eg: |
+        Mbah Putri كانت تعبانة، وإنت رايح تطمّن عليها ومعاك برتقان.
+        افتكر: كل حاجة بتاعتها مرفوعة (asma، yuswa، dalem، garwa، putra، asta، mustaka، ageman، dhaharan، gerah، kagem)، وكل حاجة بتاعتك عادية (nami، umur، griya، anak، sirah، sakit، kangge).
+        وهي كمان لما تتكلم عن نفسها بتقول الكلمات العادية: «sirah kula».
+      ar: |
+        كانت Mbah Putri مريضة، وأنت ذاهب للاطمئنان عليها ومعك برتقال.
+        تذكّر: كل ما لها مرفوع (asma، yuswa، dalem، garwa، putra، asta، mustaka، ageman، dhaharan، gerah، kagem)، وكل ما لك عادي (nami، umur، griya، anak، sirah، sakit، kangge).
+        وهي أيضًا تقول عن نفسها الألفاظ العادية: «sirah kula».
+      en: |
+        Mbah Putri has been unwell, and you're going to see how she is, with some oranges.
+        Remember: everything of hers is raised (asma, yuswa, dalem, garwa, putra, asta, mustaka, ageman, dhaharan, gerah, kagem); everything of yours is plain (nami, umur, griya, anak, sirah, sakit, kangge).
+        She too uses the plain words about herself: "sirah kula".
+    grammar: jv.krama-inggil.nouns
+    examples:
+      - text: Mustakanipun Simbah taksih sakit?
+        ar_eg: راسك لسه بتوجعك يا تيتة؟
+        ar: هل ما زال رأسكِ يؤلمكِ يا جدتي؟
+        en: Is your head still hurting, Grandma?
+      - text: Menika jeruk kagem Simbah.
+        ar_eg: ده برتقان عشانك يا تيتة.
+        ar: هذا برتقال لكِ يا جدتي.
+        en: These oranges are for you, Grandma.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: تسأل تيتة لو لسه تعبانة. تقول إيه؟
+      ar: تسأل الجدة هل ما زالت مريضة. ماذا تقول؟
+      en: You ask Grandma whether she's still unwell. What do you say?
+    options: ['Simbah taksih gerah?', 'Kowe isih lara, Mbah?', 'Kula taksih gerah?']
+    answer: 0
+    explain:
+      ar_eg: تعبها هي، يبقى gerah. kowe isih lara نغوكو، وkula taksih gerah بتسأل عن نفسك!
+      ar: مرضها هي فيكون gerah، والثانية نغوكو، والثالثة تسأل عن نفسك.
+      en: It's her illness, so gerah. The second is ngoko; the third asks about yourself!
+    words: [gerah]
+  - id: e02
+    type: listen
+    text: Nanging sirah kula taksih rada sakit.
+    options: ['Nanging mustaka kula taksih rada sakit.', 'Nanging sirah kula taksih rada sakit.', 'Nanging astanipun taksih rada sakit.']
+    answer: 1
+    meaning:
+      ar_eg: بس راسي لسه بتوجعني شوية.
+      ar: لكن رأسي ما زال يؤلمني قليلًا.
+      en: But my head still hurts a little.
+    explain:
+      ar_eg: تيتة بتتكلم عن راسها هي، فبتقول sirah مش mustaka. الكبير كمان مابيكرّمش نفسه.
+      ar: تتحدث الجدة عن رأسها فتقول sirah لا mustaka؛ فالكبير لا يكرّم نفسه أيضًا.
+      en: Grandma is talking about her own head, so she says sirah, not mustaka. Elders don't honour themselves either.
+    words: [sirah]
+  - id: e03
+    type: fill_blank
+    sentence: Menika jeruk ___ Simbah.
+    meaning:
+      ar_eg: ده برتقان عشانك يا تيتة.
+      ar: هذا برتقال لكِ يا جدتي.
+      en: These oranges are for you, Grandma.
+    answers: [kagem]
+    words: [kagem]
+  - id: e04
+    type: fill_blank
+    sentence: ___ Simbah pinten?
+    meaning:
+      ar_eg: تيتة عندها كام سنة؟
+      ar: كم عمر الجدة؟
+      en: How old is Grandma?
+    answers: [Yuswanipun]
+    explain:
+      ar_eg: yuswa + -nipun (بعد حرف متحرك).
+      ar: yuswa + -nipun (بعد حرف علة).
+      en: yuswa + -nipun (after a vowel).
+    words: [yuswa]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: يا تيتة، البرتقان ده عشانك.
+      ar: يا جدتي، هذا البرتقال لكِ.
+      en: Grandma, these oranges are for you.
+    answer: Mbah, jeruk menika kagem panjenengan.
+    distractors: [kangge, kula]
+    words: [kagem, panjenengan]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (لتيتة) راسك لسه بتوجعك يا تيتة؟
+      ar: (إلى الجدة) هل ما زال رأسكِ يؤلمكِ يا جدتي؟
+      en: (to Grandma) Is your head still hurting, Grandma?
+    answers: ['Mustakanipun taksih sakit, Mbah?', 'Mbah, mustakanipun taksih sakit?', 'Mustakanipun Simbah taksih sakit?', 'Mustaka panjenengan taksih sakit, Mbah?']
+    explain:
+      ar_eg: راسها هي mustaka + -nipun. taksih = isih (لسه).
+      ar: رأسها mustakanipun، وtaksih = isih (ما زال).
+      en: Her head is mustaka + -nipun; taksih = isih (still).
+    words: [mustaka]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (عن نفسك) راسي لسه بتوجعني شوية.
+      ar: (عن نفسك) ما زال رأسي يؤلمني قليلًا.
+      en: (about yourself) My head still hurts a little.
+    answers: ['Sirah kula taksih rada sakit.', 'Sirah kula taksih sakit sekedhik.']
+    explain:
+      ar_eg: راسك إنت sirah، حتى في الكراما.
+      ar: رأسك sirah ولو في الكراما.
+      en: Your own head is sirah, even in krama.
+    words: [sirah]
+  - id: e08
+    type: dictation
+    text: Agemanipun Simbah sae sanget.
+    meaning:
+      ar_eg: لبس تيتة حلو أوي.
+      ar: ثياب الجدة جميلة جدًا.
+      en: Grandma's clothes are lovely.
+    words: [ageman]
+  - id: e09
+    type: speaking
+    text: Sugeng enjing, Mbah. Pripun, taksih gerah?
+    meaning:
+      ar_eg: صباح الخير يا تيتة. عاملة إيه، لسه تعبانة؟
+      ar: صباح الخير يا جدتي. كيف حالكِ، أما زلتِ مريضة؟
+      en: Good morning, Grandma. How are you, still unwell?
+    words: [gerah]
+dialogue:
+  title: Tilik Simbah
+  lines:
+    - speaker: Mohamed
+      text: Sugeng enjing, Mbah. Pripun, taksih gerah?
+      ar_eg: صباح الخير يا تيتة. عاملة إيه، لسه تعبانة؟
+      ar: صباح الخير يا جدتي. كيف حالكِ، أما زلتِ مريضة؟
+      en: Good morning, Grandma. How are you, still unwell?
+    - speaker: Mbah Putri
+      text: Sampun mboten, Mas. Nanging sirah kula taksih rada sakit.
+      ar_eg: لأ خلاص يا ابني. بس راسي لسه بتوجعني شوية.
+      ar: لا، تعافيتُ يا بني. لكن رأسي ما زال يؤلمني قليلًا.
+      en: Not any more. But my head still hurts a little.
+    - speaker: Mohamed
+      text: Menika jeruk kagem Simbah.
+      ar_eg: ده برتقان عشانك يا تيتة.
+      ar: هذا برتقال لكِ يا جدتي.
+      en: These oranges are for you, Grandma.
+    - speaker: Mbah Putri
+      text: Wah, matur nuwun, Mas. Mas Mohamed sampun nedha?
+      ar_eg: الله، تسلم يا ابني. وإنت أكلت يا محمد؟
+      ar: شكرًا يا بني. وهل أكلتَ يا محمد؟
+      en: Oh, thank you. Have you eaten, Mohamed?
+    - speaker: Mohamed
+      text: Sampun, Mbah. Simbah sampun dhahar?
+      ar_eg: أكلت يا تيتة. وحضرتك أكلتي؟
+      ar: أكلتُ يا جدتي. وهل أكلتِ أنتِ؟
+      en: Yes, Grandma. Have you eaten?
+    - speaker: Mbah Putri
+      text: Sampun, Mas. Matur nuwun.
+      ar_eg: أكلت يا ابني. تسلم.
+      ar: أكلتُ يا بني. شكرًا.
+      en: Yes, I have. Thank you.
+review:
+  status: draft
+  verified: false

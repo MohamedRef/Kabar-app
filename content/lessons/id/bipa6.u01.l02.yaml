@@ -1,0 +1,191 @@
+schema: kabar.lesson/v1
+id: bipa6.u01.l02
+language: id
+title: Membaca cerpen
+can_do:
+  ar_eg: تقرا قصة قصيرة وتطلّع منها الحبكة والموضوع واللي مش مكتوب.
+  ar: أن تقرأ قصّة قصيرة وتستخرج حبكتها وموضوعها وما لم يُكتب.
+  en: Read a short story and draw out its plot, its theme and what isn't written.
+slides:
+  - title: Kursi di teras
+    body:
+      ar_eg: |
+        اقرا البداية دي من cerpen (قصة قصيرة) كاتبينها للدرس:
+        Setiap sore, Pak Lubis duduk di kursi rotan di teras. Kursi kedua di sebelahnya selalu kosong, tetapi setiap sore ia membersihkannya. Anaknya merantau ke Jakarta sepuluh tahun yang lalu. Telepon di meja jarang berbunyi.
+        - alur (الحبكة): أب بيستنى كل يوم.
+        - tema (الموضوع): rindu (الشوق) والـ merantau (السفر للشغل بعيد عن البلد).
+        الكاتب ماقالش «الأب مشتاق»؛ الكرسي الفاضي هو اللي بيقول.
+      ar: |
+        اقرأ مطلع هذه الـ cerpen (قصّة قصيرة) المكتوبة للدرس:
+        Setiap sore, Pak Lubis duduk di kursi rotan di teras. Kursi kedua di sebelahnya selalu kosong, tetapi setiap sore ia membersihkannya. Anaknya merantau ke Jakarta sepuluh tahun yang lalu. Telepon di meja jarang berbunyi.
+        - alur (الحبكة): أبٌ ينتظر كلّ يوم.
+        - tema (الموضوع): rindu (الشوق) والـ merantau (الاغتراب للعمل).
+        لم يقل الكاتب «الأب مشتاق»؛ الكرسيّ الفارغ يقولها.
+      en: |
+        Read this opening of a cerpen (short story) written for the lesson:
+        Setiap sore, Pak Lubis duduk di kursi rotan di teras. Kursi kedua di sebelahnya selalu kosong, tetapi setiap sore ia membersihkannya. Anaknya merantau ke Jakarta sepuluh tahun yang lalu. Telepon di meja jarang berbunyi.
+        - alur (plot): a father waits every day.
+        - tema (theme): rindu (longing) and merantau (leaving home to work far away).
+        The writer never says "the father misses him"; the empty chair does.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: cerpen
+        ar_eg: قصة قصيرة
+        ar: قصّة قصيرة
+        en: short story
+      - text: alur
+        ar_eg: حبكة
+        ar: حبكة
+        en: plot
+      - text: tema
+        ar_eg: موضوع
+        ar: موضوع
+        en: theme
+      - text: merantau
+        ar_eg: يسافر يشتغل بعيد عن بلده
+        ar: يغترب للعمل
+        en: to leave home to seek a living
+      - text: rindu
+        ar_eg: شوق / وحشة
+        ar: شوق
+        en: longing, to miss
+    words: [cerpen, alur, tema, merantau, rindu]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ليه بينضّف الكرسي التاني كل يوم؟
+      ar: لماذا ينظّف الكرسيّ الثاني كلّ يوم؟
+      en: Why does he clean the second chair every day?
+    options:
+      - علشان الكرسي غالي.
+      - علشان مستني ابنه يرجع.
+      - علشان جاي له ضيوف كل يوم.
+    answer: 1
+    words: [rindu, merantau]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Telepon di meja jarang berbunyi» بتلمّح لإيه؟
+      ar: إلامَ تلمّح «Telepon di meja jarang berbunyi»؟
+      en: What does "Telepon di meja jarang berbunyi" hint at?
+    options:
+      - التليفون بايظ.
+      - الأب مش بيحب التليفون.
+      - الابن نادرًا ما بيتصل.
+    answer: 2
+    words: [cerpen]
+  - id: e04
+    type: fill_blank
+    sentence: ___ cerpen ini adalah kerinduan seorang ayah.
+    meaning:
+      ar_eg: موضوع القصة دي هو شوق أب.
+      ar: موضوع هذه القصّة شوقُ أب.
+      en: The theme of this story is a father's longing.
+    options: [Tema, Alur, Rindu]
+    answers: [Tema]
+    words: [tema, cerpen]
+  - id: e05
+    type: listen
+    text: Anaknya merantau ke Jakarta sepuluh tahun yang lalu.
+    question:
+      ar_eg: الابن عمل إيه؟
+      ar: ماذا فعل الابن؟
+      en: What did the son do?
+    options:
+      - سافر جاكرتا يشتغل من عشر سنين.
+      - رجع من جاكرتا امبارح.
+      - اشترى بيت في جاكرتا.
+    answer: 0
+    words: [merantau]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: حبكة القصة دي بسيطة بس مؤثّرة.
+      ar: حبكة هذه القصّة بسيطة لكنّها مؤثّرة.
+      en: This story's plot is simple but moving.
+    answer: Alur cerpen ini sederhana tetapi menyentuh.
+    distractors: [tema, rindu]
+    words: [alur, cerpen]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أنا مشتاق لأهلي في مصر.
+      ar: أشتاق إلى أهلي في مصر.
+      en: I miss my family in Egypt.
+    answers:
+      - Saya rindu keluarga saya di Mesir.
+      - Saya rindu pada keluarga saya di Mesir.
+      - Saya rindu kepada keluarga di Mesir.
+      - Aku rindu keluargaku di Mesir.
+    words: [rindu]
+  - id: e08
+    type: speaking
+    text: Banyak orang Batak merantau, tetapi mereka tidak lupa kampungnya.
+    meaning:
+      ar_eg: ناس كتير من الباتاك بيسافروا يشتغلوا بعيد، بس مابينسوش بلدهم.
+      ar: يغترب كثير من الباتاك، لكنّهم لا ينسون قراهم.
+      en: Many Batak people leave home to work, but they don't forget their villages.
+    words: [merantau]
+  - id: e09
+    type: dictation
+    text: Alur dan tema cerpen itu sangat kuat.
+    meaning:
+      ar_eg: حبكة وموضوع القصة دي قويين جدًا.
+      ar: حبكة تلك القصّة وموضوعها قويّان جدًّا.
+      en: That story's plot and theme are very strong.
+    words: [alur, tema]
+dialogue:
+  title: Klub buku
+  lines:
+    - speaker: Bang Togar
+      text: Jadi, Mohamed, apa tema cerpen "Kursi di Teras"?
+      ar_eg: ها يا محمد، إيه موضوع قصة «الكرسي في التراس»؟
+      ar: إذن يا محمد، ما موضوع قصّة «الكرسيّ في الشرفة»؟
+      en: So, Mohamed, what's the theme of "The Chair on the Porch"?
+    - speaker: Mohamed
+      text: Menurut saya, rindu. Penulisnya tidak menulis kata "rindu", tetapi kursi kosong itu isyaratnya.
+      ar_eg: في رأيي، الشوق. الكاتب ماكتبش كلمة «شوق»، بس الكرسي الفاضي هو الإشارة.
+      ar: في رأيي، الشوق. لم يكتب الكاتب كلمة «شوق»، لكنّ الكرسيّ الفارغ إشارته.
+      en: In my view, longing. The writer never writes the word "longing", but the empty chair is the sign.
+    - speaker: Bang Togar
+      text: Betul. Saya juga anak rantau. Ibu saya di Samosir masih menunggu.
+      ar_eg: مظبوط. أنا كمان مغترب. أمي في ساموسير لسه مستنياني.
+      ar: صحيح. أنا أيضًا مغترب، وأمّي في ساموسير ما زالت تنتظر.
+      en: Exactly. I'm a perantau too. My mother in Samosir is still waiting.
+    - speaker: Mohamed
+      text: Kalau begitu, telepon ibumu malam ini, Bang.
+      ar_eg: يبقى كلّم أمك النهارده بالليل يا بانج.
+      ar: إذن اتّصل بأمّك الليلة.
+      en: Then call your mother tonight, Bang.
+new_words:
+  - word: cerpen
+    pos: noun
+    ar_eg: قصة قصيرة
+    ar: قصّة قصيرة
+    en: short story (cerita pendek)
+  - word: alur
+    pos: noun
+    ar_eg: حبكة
+    ar: حبكة
+    en: plot
+  - word: tema
+    pos: noun
+    ar_eg: موضوع
+    ar: موضوع
+    en: theme
+  - word: merantau
+    pos: verb
+    ar_eg: يسافر يشتغل بعيد عن بلده
+    ar: يغترب للعمل
+    en: to leave home to seek a living
+  - word: rindu
+    pos: verb
+    ar_eg: شوق / وحشة
+    ar: يشتاق
+    en: to long for, to miss
+review:
+  status: draft
+  verified: false

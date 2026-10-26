@@ -1,0 +1,210 @@
+schema: kabar.lesson/v1
+id: j6.u01.l02
+language: jv
+title: Da ta sa wa la
+can_do:
+  ar_eg: تقرا وتكتب الخمس حروف اللي بعدهم.
+  ar: أن تقرأ الحروف الخمسة التالية وتكتبها.
+  en: Read and write the next five letters.
+slides:
+  - title: Da ta sa wa la
+    body:
+      ar_eg: |
+        الخمسة الجايين، وكل واحد برضه فيه a:
+        ꦢ da (دَ) · ꦠ ta (تَ) · ꦱ sa (سَ) · ꦮ wa (وَ) · ꦭ la (لَ).
+        دول بقى «دَ» و«تَ» الخفاف (السنّية). وفيه «dha» و«tha» التقال ليهم حروف تانية، هتيجي في الدرسين الجايين.
+      ar: |
+        الحروف الخمسة التالية، وفي كل منها a:
+        ꦢ da (دَ) · ꦠ ta (تَ) · ꦱ sa (سَ) · ꦮ wa (وَ) · ꦭ la (لَ).
+        وهذان هما الدال والتاء الأسنانيتان الخفيفتان، أما dha وtha الثقيلتان فلهما حرفان آخران في الدرسين القادمين.
+      en: |
+        The next five, each with its built-in a:
+        ꦢ da · ꦠ ta · ꦱ sa · ꦮ wa · ꦭ la.
+        These are the light (dental) d and t. The heavy dha and tha have letters of their own, coming in the next two lessons.
+    grammar: jv.aksara.nglegena
+    examples:
+      - text: ꦫꦱ (rasa)
+        ar_eg: طعم
+        ar: طعم
+        en: taste
+      - text: ꦱꦏ (saka)
+        ar_eg: من (مكان)
+        ar: من (مكان)
+        en: from
+  - title: Data sawala
+    body:
+      ar_eg: |
+        زي الإملا اللاتيني بالظبط: الـ a بتتنطق o في نفس الأماكن. ꦭꦫ = lara (عيان)، وبتتنطق «لورو» — زي pira اللي بتتنطق piro.
+        والسطر التاني من القصيدة: «Data sawala» = اتخانقوا (الرسولين).
+      ar: |
+        كما في الإملاء اللاتيني تُنطق a كالـ o في المواضع نفسها: ꦭꦫ = lara (مريض) وتُنطق «لورو»، كما تُنطق pira «piro».
+        والسطر الثاني من القصيدة: «Data sawala» = فتنازعا.
+      en: |
+        Just like Latin spelling, the a is said o in the same places: ꦭꦫ = lara (sick), said "loro" — like pira said "piro".
+        The poem's second line: "Data sawala" = they quarrelled.
+    grammar: jv.aksara.nglegena
+    examples:
+      - text: ꦭꦫ (lara)
+        ar_eg: عيان — بتتنطق «لورو»
+        ar: مريض — تُنطق «لورو»
+        en: sick — said "loro"
+      - text: ꦢꦠꦱꦮꦭ (data sawala)
+        ar_eg: اتخانقوا
+        ar: فتنازعا
+        en: they quarrelled
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ꦢ
+        ar_eg: da (دَ)
+        ar: da (دَ)
+        en: da
+      - text: ꦠ
+        ar_eg: ta (تَ)
+        ar: ta (تَ)
+        en: ta
+      - text: ꦱ
+        ar_eg: sa (سَ)
+        ar: sa (سَ)
+        en: sa
+      - text: ꦮ
+        ar_eg: wa (وَ)
+        ar: wa (وَ)
+        en: wa
+      - text: ꦭ
+        ar_eg: la (لَ)
+        ar: la (لَ)
+        en: la
+    words: [ꦢ, ꦠ, ꦱ, ꦮ, ꦭ]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الحرف ده بيتقري إزاي؟ ꦮ
+      ar: كيف يُقرأ هذا الحرف؟ ꦮ
+      en: How do you read this letter? ꦮ
+    options: [la, wa, sa]
+    answer: 1
+    words: [ꦮ]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي حرف هو ta؟
+      ar: أي حرف هو ta؟
+      en: Which letter is ta?
+    options: ["ꦠ", "ꦢ", "ꦏ"]
+    answer: 0
+    words: [ꦠ]
+  - id: e04
+    type: listen
+    text: rasa
+    question:
+      ar_eg: سمعت أنهي كلمة؟
+      ar: أي كلمة سمعت؟
+      en: Which word did you hear?
+    options: ["ꦱꦏ", "ꦭꦫ", "ꦫꦱ"]
+    answer: 2
+    meaning:
+      ar_eg: طعم
+      ar: طعم
+      en: taste
+    words: [ꦱ]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ꦭꦫ (عيان) بتتكتب إزاي بالإملا اللاتيني الرسمي؟
+      ar: كيف تُكتب ꦭꦫ (مريض) بالإملاء اللاتيني الرسمي؟
+      en: How is ꦭꦫ (sick) written in standard Latin spelling?
+    options: [loro, rala, lara]
+    answer: 2
+    explain:
+      ar_eg: الحرفين ꦭ وꦫ = lara. بتتنطق «لورو»، وفي الشات بيكتبوها loro، بس الإملا الرسمي lara.
+      ar: ꦭ وꦫ = lara، وتُنطق «لورو» وتُكتب في الدردشة loro، أما الإملاء الرسمي فـ lara.
+      en: ꦭ + ꦫ = lara. It's said "loro" and chats write loro, but the standard spelling is lara.
+    words: [ꦭ]
+  - id: e06
+    type: fill_blank
+    sentence: ꦱꦏ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: من)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: من)"
+      en: Type the reading in Latin letters. (It means "from".)
+    answers: [saka]
+    words: [ꦱ]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: "رتّب الحروف دي بالترتيب: da ta sa wa la."
+      ar: "رتّب هذه الحروف: da ta sa wa la."
+      en: "Put these letters in order: da ta sa wa la."
+    answer: ꦢ ꦠ ꦱ ꦮ ꦭ
+    distractors: ["ꦏ"]
+    words: [ꦢ, ꦠ, ꦱ, ꦮ, ꦭ]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦢꦠꦱꦮꦭ"
+      ar: "اكتب بالحروف اللاتينية: ꦢꦠꦱꦮꦭ"
+      en: "Write in Latin letters: ꦢꦠꦱꦮꦭ"
+    answers: [data sawala, datasawala, da ta sa wa la]
+    words: [ꦢ, ꦠ, ꦱ, ꦮ, ꦭ]
+  - id: e09
+    type: speaking
+    text: Hana caraka, data sawala.
+    meaning:
+      ar_eg: كان فيه رسولين، واتخانقوا.
+      ar: كان هناك رسولان، فتنازعا.
+      en: There were two messengers; they quarrelled.
+dialogue:
+  title: Ing pinggir dalan
+  lines:
+    - speaker: Mohamed
+      text: Mas, tembung iki diwaca rasa?
+      ar_eg: يا ديماس، الكلمة دي بتتقري rasa؟
+      ar: يا ديماس، هل تُقرأ هذه الكلمة rasa؟
+      en: Mas, is this word read rasa?
+    - speaker: Dimas
+      text: Iya, rasa. Ra lan sa.
+      ar_eg: أيوه، rasa. ra وsa.
+      ar: "نعم، rasa: ra وsa."
+      en: Yes, rasa. Ra and sa.
+    - speaker: Mohamed
+      text: Lha iki? Lara?
+      ar_eg: طب ودي؟ lara؟
+      ar: وهذه؟ lara؟
+      en: And this one? Lara?
+    - speaker: Dimas
+      text: Iya, nanging diwaca loro. Kaya pira lan piro.
+      ar_eg: أيوه، بس بتتقري «لورو». زي pira وpiro.
+      ar: نعم، لكنها تُقرأ «لورو»، كـ pira وpiro.
+      en: Yes, but it's said loro. Like pira and piro.
+new_words:
+  - word: ꦢ
+    pos: letter
+    ar_eg: الحرف da (دَ الخفيفة)
+    ar: الحرف da (الدال الأسنانية)
+    en: the letter da (light, dental d)
+  - word: ꦠ
+    pos: letter
+    ar_eg: الحرف ta (تَ الخفيفة)
+    ar: الحرف ta (التاء الأسنانية)
+    en: the letter ta (light, dental t)
+  - word: ꦱ
+    pos: letter
+    ar_eg: الحرف sa (سَ)
+    ar: الحرف sa (سَ)
+    en: the letter sa
+  - word: ꦮ
+    pos: letter
+    ar_eg: الحرف wa (وَ)
+    ar: الحرف wa (وَ)
+    en: the letter wa
+  - word: ꦭ
+    pos: letter
+    ar_eg: الحرف la (لَ)
+    ar: الحرف la (لَ)
+    en: the letter la
+review:
+  status: draft
+  verified: false

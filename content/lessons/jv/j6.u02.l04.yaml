@@ -1,0 +1,135 @@
+schema: kabar.lesson/v1
+id: j6.u02.l04
+language: jv
+title: Maca tembung
+can_do:
+  ar_eg: تقرا كلمات قصيرة بكل الحركات.
+  ar: أن تقرأ كلمات قصيرة بكل الصوائت.
+  en: Read short words with every vowel.
+slides:
+  - title: Ka, ki, ku, ke, ke, ko
+    body:
+      ar_eg: |
+        كل الحركات على حرف واحد:
+        ꦏ ka · ꦏꦶ ki (wulu) · ꦏꦸ ku (suku) · ꦏꦺ ke (taling) · ꦏꦼ ke بالـ pepet · ꦏꦺꦴ ko (taling tarung).
+        النهارده ديماس هيختبرك: هو يكتب، وإنت تقرا.
+      ar: |
+        الصوائت كلها على حرف واحد:
+        ꦏ ka · ꦏꦶ ki (wulu) · ꦏꦸ ku (suku) · ꦏꦺ ke (taling) · ꦏꦼ ke بالـ pepet · ꦏꦺꦴ ko (taling tarung).
+        واليوم يختبرك ديماس: يكتب وأنت تقرأ.
+      en: |
+        Every vowel on one letter:
+        ꦏ ka · ꦏꦶ ki (wulu) · ꦏꦸ ku (suku) · ꦏꦺ ke (taling) · ꦏꦼ ke with pepet · ꦏꦺꦴ ko (taling tarung).
+        Today Dimas tests you: he writes, you read.
+    grammar: jv.aksara.sandhangan-swara
+    examples:
+      - text: ꦱꦺꦴꦫꦺꦏꦺꦤꦺ (sore kene)
+        ar_eg: العصر هنا
+        ar: العصر هنا
+        en: this afternoon, here
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "اقرا: ꦱꦥꦶ"
+      ar: "اقرأ: ꦱꦥꦶ"
+      en: "Read: ꦱꦥꦶ"
+    options: [sapu, sapi, supi]
+    answer: 1
+  - id: e02
+    type: listen
+    text: kowe
+    question:
+      ar_eg: سمعت أنهي كلمة؟
+      ar: أي كلمة سمعت؟
+      en: Which word did you hear?
+    options: ["ꦏꦮꦺ", "ꦏꦺꦮꦺꦴ", "ꦏꦺꦴꦮꦺ"]
+    answer: 2
+    meaning:
+      ar_eg: إنت (نغوكو)
+      ar: أنت (نغوكو)
+      en: you (ngoko)
+  - id: e03
+    type: fill_blank
+    sentence: ꦱꦶꦗꦶ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: واحد)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: واحد)"
+      en: Type the reading in Latin letters. (It means "one".)
+    answers: [siji]
+  - id: e04
+    type: fill_blank
+    sentence: ꦠꦼꦭꦸ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: تلاتة)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: ثلاثة)"
+      en: Type the reading in Latin letters. (It means "three".)
+    answers: [telu]
+  - id: e05
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦧꦸꦏꦸꦭꦺꦴꦫꦺꦴ"
+      ar: "اكتب بالحروف اللاتينية: ꦧꦸꦏꦸꦭꦺꦴꦫꦺꦴ"
+      en: "Write in Latin letters: ꦧꦸꦏꦸꦭꦺꦴꦫꦺꦴ"
+    answers: [buku loro, bukuloro]
+    explain:
+      ar_eg: bu-ku (suku) + lo-ro (taling tarung) = buku loro، يعني كتابين.
+      ar: bu-ku (suku) + lo-ro (taling tarung) = buku loro، أي كتابان.
+      en: bu-ku (suku) + lo-ro (taling tarung) = buku loro, two books.
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: ابني «sega telu» (تلات أطباق رز) مقطع مقطع.
+      ar: ركّب «sega telu» (ثلاثة أطباق أرز) مقطعًا مقطعًا.
+      en: Build "sega telu" (three plates of rice), syllable by syllable.
+    answer: ꦱꦼ ꦒ ꦠꦼ ꦭꦸ
+    distractors: ["ꦱꦺ", "ꦠꦺ"]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦏꦺꦴꦮꦺꦠꦼꦏ"
+      ar: "اكتب بالحروف اللاتينية: ꦏꦺꦴꦮꦺꦠꦼꦏ"
+      en: "Write in Latin letters: ꦏꦺꦴꦮꦺꦠꦼꦏ"
+    answers: [kowe teka, koweteka, "Kowe teka?"]
+  - id: e08
+    type: dictation
+    text: Sega telu, Mas.
+    meaning:
+      ar_eg: تلات أطباق رز يا أستاذ.
+      ar: ثلاثة أطباق أرز يا أخي.
+      en: Three plates of rice, please.
+  - id: e09
+    type: speaking
+    text: Siji, loro, telu.
+    meaning:
+      ar_eg: واحد، اتنين، تلاتة.
+      ar: واحد، اثنان، ثلاثة.
+      en: One, two, three.
+dialogue:
+  title: Dolanan maca
+  lines:
+    - speaker: Dimas
+      text: Med, ayo dolanan. Aku nulis, kowe maca.
+      ar_eg: يا محمد، يلا نلعب. أنا أكتب وإنت تقرا.
+      ar: "يا محمد، هيا نلعب: أكتب وأنت تقرأ."
+      en: Med, let's play. I write, you read.
+    - speaker: Mohamed
+      text: Oke. Iki sore, lan iki kowe.
+      ar_eg: ماشي. دي sore، ودي kowe.
+      ar: حسنًا. هذه sore، وهذه kowe.
+      en: OK. This is sore, and this is kowe.
+    - speaker: Dimas
+      text: Bener kabeh! Saiki iki?
+      ar_eg: كله صح! طب ودي؟
+      ar: كلها صحيحة! وهذه؟
+      en: All correct! Now this one?
+    - speaker: Mohamed
+      text: Sega telu! Ayo mangan, Mas.
+      ar_eg: sega telu (تلات أطباق رز)! يلا ناكل يا ديماس.
+      ar: sega telu (ثلاثة أطباق أرز)! هيا نأكل يا ديماس.
+      en: Sega telu! Let's eat, Mas.
+review:
+  status: draft
+  verified: false

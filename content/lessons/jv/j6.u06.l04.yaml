@@ -1,0 +1,151 @@
+schema: kabar.lesson/v1
+id: j6.u06.l04
+language: jv
+title: Telung aksara
+can_do:
+  ar_eg: تقرا نفس الكلمة بالخطوط التلاتة.
+  ar: أن تقرأ الكلمة نفسها بالخطوط الثلاثة.
+  en: Read the same word in all three scripts.
+slides:
+  - title: Siji tembung, telung aksara
+    body:
+      ar_eg: |
+        دلوقتي بقيت تقرا الجاوي بتلات خطوط: اللاتيني، والـ aksara Jawa، والبيجون. نفس الكلمة، تلات أشكال:
+        - في الـ aksara Jawa الحرف شايل a، والحركات علامات حواليه.
+        - في البيجون كل حركة بتتكتب حرف (ا ي و).
+      ar: |
+        صرت تقرأ الجاوية بثلاثة خطوط: اللاتيني والـ aksara Jawa والبيجون؛ كلمة واحدة بثلاث صور:
+        - في الـ aksara Jawa يحمل الحرف a، والصوائت علامات حوله.
+        - وفي البيجون يُكتب كل صائت حرفًا (ا ي و).
+      en: |
+        You can now read Javanese in three scripts: Latin, aksara Jawa and Pegon. One word, three shapes:
+        - In aksara Jawa each letter carries a, and vowels are signs around it.
+        - In Pegon every vowel is written as a letter (ا ي و).
+    grammar: jv.pegon.basics
+    examples:
+      - text: sapa · ꦱꦥ · ساڤا
+        ar_eg: مين؟
+        ar: من؟
+        en: who?
+      - text: gula · ꦒꦸꦭ · ڮولا
+        ar_eg: سكر
+        ar: سكر
+        en: sugar
+      - text: omah · ꦲꦺꦴꦩꦃ · اوماه
+        ar_eg: بيت
+        ar: بيت
+        en: house
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ꦱꦥ
+        ar_eg: sapa — مين؟
+        ar: sapa — من؟
+        en: sapa — who?
+      - text: ڮولا
+        ar_eg: gula — سكر
+        ar: gula — سكر
+        en: gula — sugar
+      - text: ꦲꦏꦸ
+        ar_eg: aku — أنا
+        ar: aku — أنا
+        en: aku — I
+      - text: چارا
+        ar_eg: cara — طريقة
+        ar: cara — طريقة
+        en: cara — way
+      - text: ꦲꦺꦴꦩꦃ
+        ar_eg: omah — بيت
+        ar: omah — بيت
+        en: omah — house
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "ꦱꦥ بالبيجون تبقى إيه؟"
+      ar: "ما ꦱꦥ بالبيجون؟"
+      en: "What is ꦱꦥ in Pegon?"
+    options: ["كاڤا", "ساڤا", "ساما"]
+    answer: 1
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "ڠاجي بالـ aksara Jawa تبقى إيه؟"
+      ar: "ما ڠاجي بالـ aksara Jawa؟"
+      en: "What is ڠاجي in aksara Jawa?"
+    options: ["ꦔꦗꦶ", "ꦤꦗꦶ", "ꦔꦗ"]
+    answer: 0
+  - id: e04
+    type: listen
+    text: dhadha
+    question:
+      ar_eg: سمعت dhadha (صدر). بتتكتب إزاي بالـ aksara Jawa؟
+      ar: سمعت dhadha (صدر). كيف تُكتب بالـ aksara Jawa؟
+      en: You heard dhadha (chest). How is it written in aksara Jawa?
+    options: ["ꦢꦢ", "ꦝꦢ", "ꦝꦝ"]
+    answer: 2
+    meaning:
+      ar_eg: صدر
+      ar: صدر
+      en: chest
+  - id: e05
+    type: fill_blank
+    sentence: ꦲꦺꦴꦩꦃ = اوماه = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: بيت)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: بيت)"
+      en: Type the reading in Latin letters. (It means "house".)
+    answers: [omah]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: اكو اورا ڠاجي"
+      ar: "اكتب بالحروف اللاتينية: اكو اورا ڠاجي"
+      en: "Write in Latin letters: اكو اورا ڠاجي"
+    answers: ["Aku ora ngaji.", aku ora ngaji]
+    explain:
+      ar_eg: اكو = aku، اورا = ora (الألف شايلة الـ o)، ڠاجي = ngaji. يعني «أنا مش بقرا».
+      ar: "اكو = aku، واورا = ora (الألف تحمل o)، وڠاجي = ngaji: «لا أقرأ»."
+      en: "اكو = aku, اورا = ora (alif carries the o), ڠاجي = ngaji: \"I'm not reciting.\""
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: "ابني بالبيجون: aku ora ngaji (أنا مش بقرا)"
+      ar: "ركّب بالبيجون: aku ora ngaji (لا أقرأ)"
+      en: "Build in Pegon: aku ora ngaji (I'm not reciting)"
+    answer: اكو اورا ڠاجي
+    distractors: ["ايكي"]
+  - id: e08
+    type: dictation
+    text: Aku ora ngaji.
+    meaning:
+      ar_eg: أنا مش بقرا.
+      ar: لا أقرأ.
+      en: I'm not reciting.
+dialogue:
+  title: Jeneng ing telung aksara
+  lines:
+    - speaker: Dimas
+      text: Med, jenengmu tulisen nganggo aksara Jawa.
+      ar_eg: يا محمد، اكتب اسمك بالـ aksara Jawa.
+      ar: يا محمد، اكتب اسمك بالـ aksara Jawa.
+      en: Med, write your name in aksara Jawa.
+    - speaker: Mohamed
+      text: Wis. Saiki nganggo Pegon uga!
+      ar_eg: خلصت. ودلوقتي بالبيجون كمان!
+      ar: انتهيت. والآن بالبيجون أيضًا!
+      en: Done. And now in Pegon too!
+    - speaker: Dimas
+      text: Wah, telung aksara! Latin, Jawa, Pegon.
+      ar_eg: يا سلام، تلات خطوط! لاتيني، جاوي، بيجون.
+      ar: رائع، ثلاثة خطوط! لاتيني وجاوي وبيجون.
+      en: Wow, three scripts! Latin, Javanese, Pegon.
+    - speaker: Mohamed
+      text: Lan aksara Arab, aksaraku dhewe!
+      ar_eg: والحروف العربية، حروفي أنا!
+      ar: والحرف العربي، حرفي أنا!
+      en: And Arabic script, my very own!
+review:
+  status: draft
+  verified: false

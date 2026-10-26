@@ -1,0 +1,217 @@
+schema: kabar.lesson/v1
+id: bipa3.u08.l04
+language: id
+title: Pertama, selanjutnya, akhirnya
+can_do:
+  ar_eg: تفهم وتدّي تعليمات أمان بالترتيب.
+  ar: أن تفهم تعليمات السلامة وتعطيها بالترتيب.
+  en: Follow and give safety instructions in order.
+slides:
+  - title: Langkah demi langkah
+    body:
+      ar_eg: |
+        فاكر من المستوى التاني: pertama / mula-mula (الأول)، lalu / kemudian (بعدين)، setelah itu (بعد كده)، selanjutnya (وبعد كده)، akhirnya (في الآخر).
+        تعليمات الأمان بتستعملهم مع فعل أمر: jauhi = ابعد عن (أمر من menjauhi).
+      ar: |
+        تذكّر من المستوى الثاني: pertama / mula-mula (أولًا)، lalu / kemudian (ثم)، setelah itu (بعد ذلك)، selanjutnya (بعدئذ)، akhirnya (أخيرًا).
+        وتستعملها تعليمات السلامة مع فعل الأمر: jauhi = ابتعد عن (أمر من menjauhi).
+      en: |
+        Remember from BIPA 2: pertama / mula-mula (first), lalu / kemudian (then), setelah itu (after that), selanjutnya (next), akhirnya (finally).
+        Safety instructions use them with commands: jauhi = keep away from (command form of menjauhi).
+    grammar: id.conjunction.sequence
+    examples:
+      - text: Pertama, berlindung di bawah meja.
+        ar_eg: الأول، استخبى تحت الترابيزة.
+        ar: أولًا، احتمِ تحت الطاولة.
+        en: First, take shelter under a table.
+      - text: Kemudian, jauhi jendela dan lemari.
+        ar_eg: بعدين، ابعد عن الشبابيك والدواليب.
+        ar: ثم ابتعد عن النوافذ والخزائن.
+        en: Then keep away from windows and cupboards.
+  - title: Tas siaga bencana
+    body:
+      ar_eg: |
+        bencana = كارثة، وbencana alam = كارثة طبيعية.
+        في إندونيسيا بينصحوا كل بيت يجهّز tas siaga bencana (شنطة طوارئ): air (مية)، senter (كشاف)، obat (دوا)، وورق مهم.
+      ar: |
+        bencana = كارثة، وbencana alam = كارثة طبيعية.
+        ويُنصح كل بيت في إندونيسيا بتجهيز tas siaga bencana (حقيبة طوارئ): air (ماء) وsenter (مصباح يدوي) وobat (دواء) ووثائق مهمة.
+      en: |
+        bencana = disaster; bencana alam = natural disaster.
+        Indonesian households are advised to keep a tas siaga bencana (emergency bag): air (water), senter (a torch), obat (medicine) and important papers.
+    grammar: id.conjunction.sequence
+    examples:
+      - text: Selanjutnya, bawa tas siaga bencana.
+        ar_eg: وبعد كده، خد شنطة الطوارئ.
+        ar: بعد ذلك، خذ حقيبة الطوارئ.
+        en: Next, take the emergency bag.
+      - text: Akhirnya, tunggu di lapangan sampai gempa selesai.
+        ar_eg: وفي الآخر، استنى في الساحة لحد ما الزلزال يخلص.
+        ar: وأخيرًا، انتظر في الساحة حتى ينتهي الزلزال.
+        en: Finally, wait in the open field until the earthquake is over.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: berlindung
+        ar_eg: يستخبى / يحتمي
+        ar: يحتمي
+        en: to take shelter
+      - text: jendela
+        ar_eg: شباك
+        ar: نافذة
+        en: window
+      - text: menjauhi
+        ar_eg: يبعد عن
+        ar: يبتعد عن
+        en: to keep away from
+      - text: lapangan
+        ar_eg: ساحة / ملعب مفتوح
+        ar: ساحة مفتوحة
+        en: open field, square
+      - text: bencana
+        ar_eg: كارثة
+        ar: كارثة
+        en: disaster
+      - text: tas siaga
+        ar_eg: شنطة طوارئ
+        ar: حقيبة طوارئ
+        en: emergency bag
+    words: [berlindung, jendela, menjauhi, lapangan, bencana, tas siaga]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الأرض بتتهز. أول خطوة صح إيه؟
+      ar: الأرض تهتز. ما الخطوة الأولى الصحيحة؟
+      en: The ground is shaking. What's the right first step?
+    options:
+      - Pertama, berdiri di dekat jendela.
+      - Pertama, berlindung di bawah meja.
+      - Pertama, tidur lagi.
+    answer: 1
+    words: [berlindung, jendela]
+  - id: e03
+    type: listen
+    text: Kemudian, jauhi jendela dan lemari.
+    options:
+      - Kemudian, buka jendela dan lemari.
+      - Akhirnya, jauhi jendela dan lemari.
+      - Kemudian, jauhi jendela dan lemari.
+    answer: 2
+    meaning:
+      ar_eg: بعدين، ابعد عن الشبابيك والدواليب.
+      ar: ثم ابتعد عن النوافذ والخزائن.
+      en: Then keep away from windows and cupboards.
+    words: [menjauhi, jendela]
+  - id: e04
+    type: multiple_choice
+    question: Di dalam ___ ada air, senter, dan obat.
+    options: [tas siaga, lapangan, jendela]
+    answer: 0
+    words: [tas siaga]
+  - id: e05
+    type: fill_blank
+    sentence: Setelah gempa berhenti, segera keluar ke ___.
+    meaning:
+      ar_eg: (الساحة المفتوحة) بعد ما الزلزال يقف، اطلع على الساحة على طول.
+      ar: (الساحة المفتوحة) بعد أن يتوقف الزلزال، اخرج فورًا إلى الساحة.
+      en: (the open field) After the earthquake stops, go out to the open field right away.
+    answers: [lapangan, lapangan terbuka]
+    words: [lapangan]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: وبعد كده، خد شنطة الطوارئ.
+      ar: بعد ذلك، خذ حقيبة الطوارئ.
+      en: Next, take the emergency bag.
+    answer: Selanjutnya, bawa tas siaga bencana.
+    distractors: [pertama, jendela]
+    words: [tas siaga, bencana]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الزلازل والفيضانات كوارث طبيعية.
+      ar: الزلازل والفيضانات كوارث طبيعية.
+      en: Earthquakes and floods are natural disasters.
+    answers:
+      - Gempa dan banjir adalah bencana alam.
+      - Gempa dan banjir adalah bencana alam
+      - Gempa bumi dan banjir adalah bencana alam.
+      - Gempa bumi dan banjir adalah bencana alam
+      - Gempa dan banjir merupakan bencana alam.
+      - Gempa bumi dan banjir merupakan bencana alam.
+      - Gempa dan banjir itu bencana alam.
+      - Gempa dan banjir bencana alam.
+    words: [bencana]
+  - id: e08
+    type: speaking
+    text: Pertama, berlindung di bawah meja. Kemudian, jauhi jendela.
+    meaning:
+      ar_eg: الأول، استخبى تحت الترابيزة. بعدين، ابعد عن الشباك.
+      ar: أولًا، احتمِ تحت الطاولة. ثم ابتعد عن النافذة.
+      en: First, take shelter under a table. Then keep away from the window.
+    words: [berlindung, menjauhi, jendela]
+  - id: e09
+    type: multiple_choice
+    question: Setelah gempa berhenti, semua warga pergi ke ___.
+    options: [jendela, lapangan, tas siaga]
+    answer: 1
+    words: [lapangan]
+dialogue:
+  title: Poster di sekolah
+  lines:
+    - speaker: Mohamed
+      text: Mas, ini poster tentang apa?
+      ar_eg: يا ماس، البوستر ده عن إيه؟
+      ar: يا ماس، عمَّ هذا الملصق؟
+      en: Mas, what's this poster about?
+    - speaker: Mas Rizal
+      text: Tentang gempa. Pertama, berlindung di bawah meja. Kemudian, jauhi jendela.
+      ar_eg: عن الزلزال. الأول، استخبى تحت الترابيزة. بعدين، ابعد عن الشباك.
+      ar: عن الزلزال. أولًا، احتمِ تحت الطاولة. ثم ابتعد عن النافذة.
+      en: Earthquakes. First, take shelter under a table. Then keep away from the window.
+    - speaker: Mohamed
+      text: Setelah itu?
+      ar_eg: وبعد كده؟
+      ar: وبعد ذلك؟
+      en: And after that?
+    - speaker: Mas Rizal
+      text: Setelah gempa berhenti, bawa tas siaga bencana dan keluar ke lapangan.
+      ar_eg: بعد ما الزلزال يقف، خد شنطة الطوارئ واطلع على الساحة.
+      ar: بعد أن يتوقف الزلزال، خذ حقيبة الطوارئ واخرج إلى الساحة.
+      en: Once the earthquake stops, take the emergency bag and go out to the open field.
+new_words:
+  - word: berlindung
+    pos: verb
+    ar_eg: يستخبى / يحتمي
+    ar: يحتمي
+    en: to take shelter
+  - word: jendela
+    pos: noun
+    ar_eg: شباك
+    ar: نافذة
+    en: window
+  - word: menjauhi
+    pos: verb
+    ar_eg: يبعد عن (jauhi! = ابعد عن)
+    ar: يبتعد عن (jauhi! = ابتعد عن)
+    en: to keep away from (jauhi! = keep away from)
+  - word: lapangan
+    pos: noun
+    ar_eg: ساحة / ملعب مفتوح
+    ar: ساحة مفتوحة
+    en: open field, square
+  - word: bencana
+    pos: noun
+    ar_eg: كارثة
+    ar: كارثة
+    en: disaster
+  - word: tas siaga
+    pos: noun
+    ar_eg: شنطة طوارئ (tas siaga bencana)
+    ar: حقيبة طوارئ (tas siaga bencana)
+    en: emergency bag (tas siaga bencana)
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,227 @@
+schema: kabar.lesson/v1
+id: bipa3.u05.l01
+language: id
+title: Kata kerja transitif
+can_do:
+  ar_eg: تستعمل الأفعال المتعدية والمفعول بعدها على طول، من غير حرف جر.
+  ar: أن تستعمل الأفعال المتعدية ويأتي المفعول بعدها مباشرة بلا حرف جر.
+  en: Use verbs with objects.
+slides:
+  - title: meN- + objek
+    grammar: id.verb.transitive
+    body:
+      ar_eg: |
+        زي العربي بالظبط: فيه فعل لازم (نام، مشي) وفعل متعدي (شال، زار).
+        في الإندونيسي البادئة غالبًا بتقولك: meN- = متعدي، والمفعول بييجي بعده على طول:
+        mendaki gunung = يطلع الجبل، membawa tenda = يشيل الخيمة.
+      ar: |
+        كما في العربية: فعل لازم (نام، مشى) وفعل متعدٍّ (حمل، زار).
+        وفي الإندونيسية تدلّ السابقة غالبًا على النوع: meN- للمتعدي، ويأتي المفعول بعده مباشرة:
+        mendaki gunung = يصعد الجبل، membawa tenda = يحمل الخيمة.
+      en: |
+        Just like Arabic: some verbs take no object (sleep, walk), some do (carry, visit).
+        In Indonesian the prefix usually tells you: meN- = transitive, and the object comes right after:
+        mendaki gunung = climb the mountain, membawa tenda = carry the tent.
+    examples:
+      - text: Para porter membawa tenda dan makanan.
+        ar_eg: الشيّالين بيشيلوا الخيم والأكل.
+        ar: يحمل الحمّالون الخيام والطعام.
+        en: The porters carry the tents and the food.
+      - text: Kami mendaki Gunung Rinjani dengan Mas Rizal.
+        ar_eg: طلعنا جبل رينجاني مع ريزال.
+        ar: صعدنا جبل رينجاني مع ريزال.
+        en: We climbed Mount Rinjani with Mas Rizal.
+  - title: pergi ke … / mengunjungi …
+    grammar: id.verb.transitive
+    body:
+      ar_eg: |
+        الفعل اللازم (ber- أو من غير بادئة) محتاج حرف جر: pergi ke Senaru، tidur di tenda.
+        المتعدي مش محتاج: mengunjungi Senaru (زي «زار المكان»)، مش mengunjungi ke Senaru.
+      ar: |
+        الفعل اللازم (بـber- أو بلا سابقة) يحتاج إلى حرف جر: pergi ke Senaru، tidur di tenda.
+        أما المتعدي فلا: mengunjungi Senaru (كـ«زار المكانَ»)، لا mengunjungi ke Senaru.
+      en: |
+        Intransitive verbs (ber- or bare) need a preposition: pergi ke Senaru, tidur di tenda.
+        Transitive ones don't: mengunjungi Senaru (visit Senaru), not mengunjungi ke Senaru.
+    examples:
+      - text: Kami pergi ke Senaru. Kami mengunjungi Senaru.
+        ar_eg: رحنا سنارو. زرنا سنارو.
+        ar: ذهبنا إلى سنارو. زرنا سنارو.
+        en: We went to Senaru. We visited Senaru.
+      - text: Malam itu kami tidur di tenda.
+        ar_eg: الليلة دي نمنا في الخيمة.
+        ar: في تلك الليلة نمنا في الخيمة.
+        en: That night we slept in a tent.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: mendaki
+        ar_eg: يطلع (جبل)
+        ar: يتسلّق
+        en: to climb (a mountain)
+      - text: gunung
+        ar_eg: جبل
+        ar: جبل
+        en: mountain
+      - text: tenda
+        ar_eg: خيمة
+        ar: خيمة
+        en: tent
+      - text: porter
+        ar_eg: شيّال (في الجبل)
+        ar: حمّال
+        en: porter
+      - text: jalur
+        ar_eg: طريق، مدق
+        ar: مسار
+        en: trail, route
+      - text: puncak
+        ar_eg: قمّة
+        ar: قمّة
+        en: summit, peak
+    words: [mendaki, gunung, tenda, porter, jalur, puncak]
+  - id: e02
+    type: multiple_choice
+    question: Kami ___ Senaru kemarin.
+    options: [mengunjungi ke, mengunjungi, pergi]
+    answer: 1
+    explain:
+      ar_eg: mengunjungi متعدي، المفعول بعده على طول. pergi لازم ومحتاجة ke.
+      ar: mengunjungi متعدٍّ يليه المفعول مباشرة، أما pergi فلازم يحتاج إلى ke.
+      en: mengunjungi is transitive, so the object follows directly; pergi is intransitive and needs ke.
+  - id: e03
+    type: listen
+    text: Para porter membawa tenda dan makanan.
+    options: ["Para porter membawa tenda dan air.", "Para pemandu membawa tenda dan makanan.", "Para porter membawa tenda dan makanan."]
+    answer: 2
+    meaning:
+      ar_eg: الشيّالين بيشيلوا الخيم والأكل.
+      ar: يحمل الحمّالون الخيام والطعام.
+      en: The porters carry the tents and the food.
+    words: [porter, tenda]
+  - id: e04
+    type: multiple_choice
+    question: Jalur ke ___ Rinjani sangat panjang.
+    options: [puncak, tenda, porter]
+    answer: 0
+    words: [jalur, puncak]
+  - id: e05
+    type: fill_blank
+    sentence: Besok kami ___ Gunung Rinjani.
+    meaning:
+      ar_eg: بكرة هنطلع جبل رينجاني.
+      ar: غدًا سنصعد جبل رينجاني.
+      en: Tomorrow we're climbing Mount Rinjani.
+    options: [tidur, mendaki, berjalan]
+    answers: [mendaki]
+    explain:
+      ar_eg: محتاجين فعل متعدي ياخد «جبل رينجاني» مفعول. tidur و berjalan لازمين.
+      ar: نحتاج فعلًا متعديًا مفعوله «جبل رينجاني»؛ أما tidur وberjalan فلازمان.
+      en: A transitive verb is needed to take Gunung Rinjani as its object; tidur and berjalan are intransitive.
+    words: [mendaki, gunung]
+  - id: e06
+    type: fill_blank
+    sentence: Kita harus berjalan di ___ ini. Jangan ke kiri!
+    meaning:
+      ar_eg: لازم نمشي في المدق ده. ماتروحش شمال!
+      ar: يجب أن نمشي على هذا المسار. لا تذهب يسارًا!
+      en: We have to walk on this trail. Don't go left!
+    options: [puncak, jalur, tenda]
+    answers: [jalur]
+    words: [jalur]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: الشيّالين بيشيلوا الخيم للقمة.
+      ar: يحمل الحمّالون الخيام إلى القمة.
+      en: The porters carry the tents to the summit.
+    answer: Para porter membawa tenda ke puncak.
+    distractors: [dengan, berjalan]
+    words: [porter, tenda, puncak]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: طلعنا جبل رينجاني مع ريزال.
+      ar: صعدنا جبل رينجاني مع ريزال.
+      en: We climbed Mount Rinjani with Mas Rizal.
+    answers:
+      - Kami mendaki Gunung Rinjani dengan Mas Rizal.
+      - Kami mendaki Gunung Rinjani dengan Mas Rizal
+      - Kami mendaki Gunung Rinjani bersama Mas Rizal.
+      - Kita mendaki Gunung Rinjani dengan Mas Rizal.
+      - Kami sudah mendaki Gunung Rinjani dengan Mas Rizal.
+      - Kami mendaki gunung Rinjani dengan Mas Rizal.
+      - Kami mendaki Rinjani dengan Mas Rizal.
+    words: [mendaki, gunung]
+  - id: e09
+    type: speaking
+    text: Saya melihat puncak gunung dari jalur ini.
+    meaning:
+      ar_eg: أنا شايف قمّة الجبل من المدق ده.
+      ar: أرى قمّة الجبل من هذا المسار.
+      en: I can see the mountain's summit from this trail.
+    words: [puncak, gunung, jalur]
+dialogue:
+  title: Selamat datang di Senaru
+  lines:
+    - speaker: Mas Rizal
+      text: Selamat datang di Senaru! Besok kita mendaki Gunung Rinjani.
+      ar_eg: أهلًا بيك في سنارو! بكرة هنطلع جبل رينجاني.
+      ar: أهلًا بك في سنارو! غدًا نصعد جبل رينجاني.
+      en: Welcome to Senaru! Tomorrow we climb Mount Rinjani.
+    - speaker: Mohamed
+      text: Siapa yang membawa tenda?
+      ar_eg: مين اللي هيشيل الخيمة؟
+      ar: مَن سيحمل الخيمة؟
+      en: Who's carrying the tent?
+    - speaker: Mas Rizal
+      text: Pak Sahdan. Dia porter. Para porter membawa tenda dan makanan.
+      ar_eg: عم سهدان. هو شيّال. الشيّالين بيشيلوا الخيم والأكل.
+      ar: السيد سهدان، وهو حمّال. يحمل الحمّالون الخيام والطعام.
+      en: Pak Sahdan. He's a porter. The porters carry the tents and the food.
+    - speaker: Pak Sahdan
+      text: Jalurnya panjang, Mas. Kita tidur di tenda dua malam.
+      ar_eg: الطريق طويل يا أستاذ. هننام في الخيمة ليلتين.
+      ar: المسار طويل يا سيدي، وسننام في الخيمة ليلتين.
+      en: The trail is long. We'll sleep in the tent for two nights.
+    - speaker: Mohamed
+      text: Wah! Saya ingin sekali melihat puncaknya.
+      ar_eg: واو! نفسي أوي أشوف القمّة.
+      ar: رائع! أتوق إلى رؤية القمّة.
+      en: Wow! I really want to see the summit.
+new_words:
+  - word: mendaki
+    pos: verb
+    ar_eg: يطلع (جبل)، يتسلّق
+    ar: يتسلّق، يصعد (جبلًا)
+    en: to climb (a mountain)
+  - word: gunung
+    pos: noun
+    ar_eg: جبل
+    ar: جبل
+    en: mountain
+  - word: tenda
+    pos: noun
+    ar_eg: خيمة
+    ar: خيمة
+    en: tent
+  - word: porter
+    pos: noun
+    ar_eg: شيّال (في الجبل)
+    ar: حمّال (في الجبال)
+    en: porter (on a mountain)
+  - word: jalur
+    pos: noun
+    ar_eg: طريق، مدق
+    ar: مسار
+    en: trail, route
+  - word: puncak
+    pos: noun
+    ar_eg: قمّة
+    ar: قمّة
+    en: summit, peak
+review:
+  status: draft
+  verified: false

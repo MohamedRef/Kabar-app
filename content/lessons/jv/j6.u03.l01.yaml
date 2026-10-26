@@ -1,0 +1,189 @@
+schema: kabar.lesson/v1
+id: j6.u03.l01
+language: jv
+title: Cecak lan layar
+can_do:
+  ar_eg: تكتب ng وr في آخر المقطع.
+  ar: أن تكتب ng وr في آخر المقطع.
+  en: Write final ng and r.
+slides:
+  - title: Cecak
+    body:
+      ar_eg: |
+        كلمات كتير بتخلص بحرف ساكن: wayang، pasar. العلامات اللي بتقفل المقطع اسمها panyigeg.
+        أشهرهم cecak ꦁ: شَرطة صغيرة فوق الحرف = ng في آخر المقطع.
+        ꦪ ya + cecak = ꦪꦁ yang. وماتكتبش ꦔ + علامة تانية: ng الساكنة ليها cecak.
+      ar: |
+        تنتهي كلمات كثيرة بساكن: wayang، pasar، وعلامات إغلاق المقطع اسمها panyigeg.
+        وأشهرها cecak ꦁ: شَرطة صغيرة فوق الحرف = ng في آخر المقطع.
+        ꦪ ya مع cecak = ꦪꦁ yang، ولا تُكتب ꦔ مع علامة أخرى، فلـ ng الساكنة cecak.
+      en: |
+        Many words end in a consonant: wayang, pasar. The marks that close a syllable are called panyigeg.
+        The commonest is cecak ꦁ: a small stroke above the letter = ng at the end of a syllable.
+        ꦪ ya + cecak = ꦪꦁ yang. Don't write ꦔ + another mark: a closing ng is cecak.
+    grammar: jv.aksara.panyigeg
+    examples:
+      - text: ꦮꦪꦁ (wayang)
+        ar_eg: عروسة خيال الظل
+        ar: دمية خيال الظل
+        en: shadow puppet
+      - text: ꦱꦼꦤꦼꦁ (seneng)
+        ar_eg: مبسوط
+        ar: مسرور
+        en: happy
+  - title: Layar
+    body:
+      ar_eg: |
+        layar ꦂ: علامة فوق الحرف = r في آخر المقطع. ꦱ sa + layar = ꦱꦂ sar.
+        وبعد cecak أو layar الحرف اللي بعدهم بيتكتب عادي: ꦥꦱꦂꦒꦼꦝꦺ pasar gedhe.
+      ar: |
+        layar ꦂ: علامة فوق الحرف = r في آخر المقطع: ꦱ sa مع layar = ꦱꦂ sar.
+        ويُكتب الحرف التالي لـ cecak أو layar عاديًا: ꦥꦱꦂꦒꦼꦝꦺ pasar gedhe.
+      en: |
+        layar ꦂ: a mark above the letter = r at the end of a syllable. ꦱ sa + layar = ꦱꦂ sar.
+        After cecak or layar the next letter is written normally: ꦥꦱꦂꦒꦼꦝꦺ pasar gedhe.
+    grammar: jv.aksara.panyigeg
+    examples:
+      - text: ꦥꦱꦂ (pasar)
+        ar_eg: سوق
+        ar: سوق
+        en: market
+      - text: ꦩꦠꦸꦂ (matur)
+        ar_eg: يقول لحد كبير (krama andhap)
+        ar: يقول للكبير (krama andhap)
+        en: speak to an elder (krama andhap)
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: cecak
+        ar_eg: ng في آخر المقطع — فوق الحرف
+        ar: ng في آخر المقطع — فوق الحرف
+        en: closing ng — above the letter
+      - text: layar
+        ar_eg: r في آخر المقطع — فوق الحرف
+        ar: r في آخر المقطع — فوق الحرف
+        en: closing r — above the letter
+      - text: panyigeg
+        ar_eg: العلامات اللي بتقفل المقطع
+        ar: علامات إغلاق المقطع
+        en: the marks that close a syllable
+      - text: ꦮꦪꦁ
+        ar_eg: wayang (خيال الظل)
+        ar: wayang (خيال الظل)
+        en: wayang (shadow puppet)
+    words: [cecak, layar, panyigeg]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "اقرا: ꦥꦱꦂ"
+      ar: "اقرأ: ꦥꦱꦂ"
+      en: "Read: ꦥꦱꦂ"
+    options: [pasa, pasar, pasang]
+    answer: 1
+    words: [layar]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تكتب wayang؟
+      ar: كيف تكتب wayang؟
+      en: How do you write wayang?
+    options: ["ꦮꦪ", "ꦮꦪꦂ", "ꦮꦪꦁ"]
+    answer: 2
+    words: [cecak]
+  - id: e04
+    type: listen
+    text: seneng
+    question:
+      ar_eg: سمعت seneng (مبسوط). بتتكتب إزاي؟
+      ar: سمعت seneng (مسرور). كيف تُكتب؟
+      en: You heard seneng (happy). How is it written?
+    options: ["ꦱꦼꦤꦼꦁ", "ꦱꦼꦤꦼꦂ", "ꦱꦼꦤꦼ"]
+    answer: 0
+    meaning:
+      ar_eg: مبسوط
+      ar: مسرور
+      en: happy
+    words: [cecak]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي علامة بتقفل آخر matur؟
+      ar: أي علامة تغلق آخر matur؟
+      en: Which mark closes the end of matur?
+    options: [cecak, layar, wulu]
+    answer: 1
+    words: [layar, panyigeg]
+  - id: e06
+    type: fill_blank
+    sentence: ꦩꦠꦸꦂ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: يقول لحد كبير)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: يقول للكبير)"
+      en: Type the reading in Latin letters. (It means "speak to an elder".)
+    answers: [matur]
+    words: [layar]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: ابني «aku seneng wayang» (أنا بحب الوايانغ) مقطع مقطع.
+      ar: ركّب «aku seneng wayang» (أحب الوايانغ) مقطعًا مقطعًا.
+      en: Build "aku seneng wayang" (I like wayang), syllable by syllable.
+    answer: ꦲ ꦏꦸ ꦱꦼ ꦤꦼꦁ ꦮ ꦪꦁ
+    distractors: ["ꦤꦼꦂ"]
+    words: [cecak, panyigeg]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦥꦱꦂꦒꦼꦝꦺ"
+      ar: "اكتب بالحروف اللاتينية: ꦥꦱꦂꦒꦼꦝꦺ"
+      en: "Write in Latin letters: ꦥꦱꦂꦒꦼꦝꦺ"
+    answers: [pasar gedhe, pasargedhe]
+    explain:
+      ar_eg: pa-sar (layar) ge-dhe. بعد layar الحرف ꦒ بيتكتب عادي.
+      ar: pa-sar (layar) ge-dhe، ويُكتب ꦒ بعد layar عاديًا.
+      en: pa-sar (layar) ge-dhe. After layar, ꦒ is written normally.
+    words: [layar, panyigeg]
+dialogue:
+  title: Sesuk menyang makam
+  lines:
+    - speaker: Dimas
+      text: Med, sesuk awake dhewe menyang Makam Raja Mataram.
+      ar_eg: يا محمد، بكرة هنروح مقابر ملوك ماتارام.
+      ar: يا محمد، غدًا نذهب إلى مقابر ملوك ماتارام.
+      en: Med, tomorrow we're going to the Royal Graves of Mataram.
+    - speaker: Mohamed
+      text: Seneng aku! Aku nganggo klambi apa?
+      ar_eg: مبسوط قوي! ألبس إيه؟
+      ar: هذا يسعدني! ماذا ألبس؟
+      en: Great! What should I wear?
+    - speaker: Dimas
+      text: Klambi Jawa. Ana ing pasar.
+      ar_eg: لبس جاوي. فيه في السوق.
+      ar: لباسًا جاويًا، تجده في السوق.
+      en: Javanese dress. They have it at the market.
+    - speaker: Mohamed
+      text: Ayo menyang pasar saiki!
+      ar_eg: يلا نروح السوق دلوقتي!
+      ar: هيا إلى السوق الآن!
+      en: Let's go to the market now!
+new_words:
+  - word: panyigeg
+    pos: noun
+    ar_eg: العلامات اللي بتقفل المقطع (cecak، layar، wignyan، pangkon)
+    ar: علامات إغلاق المقطع
+    en: the syllable-closing marks (cecak, layar, wignyan, pangkon)
+  - word: cecak
+    pos: noun
+    ar_eg: علامة ng في آخر المقطع، فوق الحرف
+    ar: علامة ng في آخر المقطع، فوق الحرف
+    en: the closing ng mark, above the letter
+  - word: layar
+    pos: noun
+    ar_eg: علامة r في آخر المقطع، فوق الحرف
+    ar: علامة r في آخر المقطع، فوق الحرف
+    en: the closing r mark, above the letter
+review:
+  status: draft
+  verified: false
