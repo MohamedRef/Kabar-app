@@ -1,0 +1,207 @@
+schema: kabar.lesson/v1
+id: j6.u05.l01
+language: jv
+title: Aksara murda
+can_do:
+  ar_eg: تعرف الحروف «الكبيرة» اللي بتتكتب للتكريم.
+  ar: أن تتعرّف الحروف المعظَّمة.
+  en: Recognise the honorific capitals.
+slides:
+  - title: Aksara murda
+    body:
+      ar_eg: |
+        تمن حروف ليهم شكل تاني «فخم» اسمه aksara murda:
+        ꦟ na · ꦑ ka · ꦡ ta · ꦯ sa · ꦦ pa · ꦘ nya · ꦓ ga · ꦨ ba.
+        بيتقروا زي الحروف العادية بالظبط؛ الفرق في الاحترام بس. مثال: ꦓꦸꦱ꧀ꦠꦶ Gusti، بـ ga murda بدل ꦒ.
+      ar: |
+        لثمانية حروف صورة أخرى فخمة اسمها aksara murda:
+        ꦟ na · ꦑ ka · ꦡ ta · ꦯ sa · ꦦ pa · ꦘ nya · ꦓ ga · ꦨ ba.
+        وتُقرأ كالحروف العادية تمامًا، والفرق في التعظيم: ꦓꦸꦱ꧀ꦠꦶ Gusti بـ ga murda بدل ꦒ.
+      en: |
+        Eight letters have a grand second form called aksara murda:
+        ꦟ na · ꦑ ka · ꦡ ta · ꦯ sa · ꦦ pa · ꦘ nya · ꦓ ga · ꦨ ba.
+        They read exactly like the ordinary letters; the difference is respect. Example: ꦓꦸꦱ꧀ꦠꦶ Gusti, with ga murda instead of ꦒ.
+    grammar: jv.aksara.murda-rekan
+    examples:
+      - text: ꦓꦸꦱ꧀ꦠꦶ (Gusti)
+        ar_eg: لقب تكريم، وفي الدعاء معناه «الرب»
+        ar: لقب تعظيم، ويعني «الرب» في الدعاء
+        en: an honorific title; "Lord" in prayer
+      - text: ꦯꦸꦭ꧀ꦠꦤ꧀ (Sultan)
+        ar_eg: السلطان — بـ sa murda
+        ar: السلطان — بـ sa murda
+        en: Sultan — with sa murda
+  - title: Kanggo ngurmati
+    body:
+      ar_eg: |
+        murda مش زي الـ capital letters في الإنجليزي اللي في أول كل جملة. دي للتكريم بس: أسماء وألقاب الناس المحترمين، والأماكن المقدسة أو الملكية. يعني الخط نفسه فيه unggah-ungguh!
+        وعادةً حرف murda واحد بس في الكلمة، في أول مقطع ليه شكل murda: ꦦꦔꦺꦫꦤ꧀ Pangeran (أمير) بـ pa murda.
+      ar: |
+        وليست murda كالحروف الكبيرة اللاتينية في أول كل جملة، بل للتعظيم: أسماء المحترمين وألقابهم والأماكن المقدسة والملكية، ففي الخط نفسه unggah-ungguh.
+        ويُكتب غالبًا حرف murda واحد في الكلمة، في أول مقطع له صورة murda: ꦦꦔꦺꦫꦤ꧀ Pangeran (أمير) بـ pa murda.
+      en: |
+        Murda aren't like English capitals at every sentence start. They're for honour: names and titles of respected people, sacred or royal places. The script itself has unggah-ungguh!
+        Usually only one murda letter per word, on the first syllable that has a murda form: ꦦꦔꦺꦫꦤ꧀ Pangeran (prince) with pa murda.
+    grammar: jv.aksara.murda-rekan
+    examples:
+      - text: ꦦꦔꦺꦫꦤ꧀ (Pangeran)
+        ar_eg: أمير
+        ar: أمير
+        en: prince
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ꦓ
+        ar_eg: ga murda (ga للتكريم)
+        ar: ga murda (ga المعظَّمة)
+        en: ga murda (honorific ga)
+      - text: ꦯ
+        ar_eg: sa murda (سَ للتكريم)
+        ar: sa murda (سَ المعظَّمة)
+        en: sa murda
+      - text: ꦦ
+        ar_eg: pa murda (پَ للتكريم)
+        ar: pa murda (پَ المعظَّمة)
+        en: pa murda
+      - text: aksara murda
+        ar_eg: حروف «كبيرة» للأسماء المحترمة
+        ar: حروف معظَّمة لأسماء المحترمين
+        en: honorific capitals for respected names
+    words: [ꦓ, ꦯ, ꦦ, aksara murda]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي واحد هو الـ murda بتاع ga؟
+      ar: أيّها صورة murda للحرف ga؟
+      en: Which one is the murda form of ga?
+    options: ["ꦒ", "ꦓ", "ꦔ"]
+    answer: 1
+    words: [ꦓ]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "اقرا: ꦯꦸꦭ꧀ꦠꦤ꧀"
+      ar: "اقرأ: ꦯꦸꦭ꧀ꦠꦤ꧀"
+      en: "Read: ꦯꦸꦭ꧀ꦠꦤ꧀"
+    options: [Sultan, Sutan, Sultana]
+    answer: 0
+    explain:
+      ar_eg: ꦯ sa murda + suku = Su، وl ساكنة وتحتها pasangan ta، وآخرها n بـ pangkon.
+      ar: ꦯ sa murda مع suku = Su، ثم l ساكنة تحتها pasangan ta، وآخرها n بـ pangkon.
+      en: ꦯ sa murda + suku = Su, then a vowel-less l with pasangan ta, then n with pangkon.
+    words: [ꦯ]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة ممكن تاخد حرف murda؟
+      ar: أي كلمة قد تأخذ حرف murda؟
+      en: Which word may take a murda letter?
+    options: [sega, pasar, Gusti]
+    answer: 2
+    explain:
+      ar_eg: Gusti لقب تكريم. sega وpasar كلام عادي، بيتكتبوا بحروف عادية حتى في أول الجملة.
+      ar: Gusti لقب تعظيم، وsega وpasar كلمات عادية تُكتب بالحروف العادية ولو في أول الجملة.
+      en: Gusti is an honorific title. sega and pasar are everyday words, written with ordinary letters even at a sentence start.
+    words: [aksara murda]
+  - id: e05
+    type: listen
+    text: Pangeran
+    question:
+      ar_eg: سمعت لقب. أنهي كتابة فيها تكريم؟
+      ar: سمعت لقبًا. أي كتابة فيها تعظيم؟
+      en: You heard a title. Which spelling shows honour?
+    options: ["ꦥꦔꦺꦫꦤ꧀", "ꦦꦔꦺꦫꦤ꧀", "ꦥꦔꦺꦫ"]
+    answer: 1
+    meaning:
+      ar_eg: أمير
+      ar: أمير
+      en: prince
+    words: [ꦦ]
+  - id: e06
+    type: fill_blank
+    sentence: ꦓꦸꦱ꧀ꦠꦶ = ___
+    meaning:
+      ar_eg: اكتب القراية بالحروف اللاتينية.
+      ar: اكتب القراءة بالحروف اللاتينية.
+      en: Type the reading in Latin letters.
+    answers: [Gusti]
+    words: [ꦓ]
+  - id: e07
+    type: fill_blank
+    sentence: Sultan = ___
+    meaning:
+      ar_eg: اختار الكتابة اللي فيها تكريم.
+      ar: اختر الكتابة التي فيها تعظيم.
+      en: Pick the spelling that shows honour.
+    options: ["ꦱꦸꦭ꧀ꦠꦤ꧀", "ꦯꦸꦭ꧀ꦠꦤ꧀", "ꦱꦸꦠꦤ꧀"]
+    answers: ["ꦯꦸꦭ꧀ꦠꦤ꧀"]
+    words: [ꦯ, aksara murda]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦓꦸꦱ꧀ꦠꦶꦦꦔꦺꦫꦤ꧀"
+      ar: "اكتب بالحروف اللاتينية: ꦓꦸꦱ꧀ꦠꦶꦦꦔꦺꦫꦤ꧀"
+      en: "Write in Latin letters: ꦓꦸꦱ꧀ꦠꦶꦦꦔꦺꦫꦤ꧀"
+    answers: [Gusti Pangeran, GustiPangeran]
+    explain:
+      ar_eg: Gusti Pangeran = «الرب» في الدعاء. الكلمتين بحروف murda للتكريم.
+      ar: Gusti Pangeran = «الرب» في الدعاء، والكلمتان بحروف murda تعظيمًا.
+      en: Gusti Pangeran = "the Lord" in prayer. Both words take murda letters out of respect.
+    words: [ꦓ, ꦦ, aksara murda]
+  - id: e09
+    type: speaking
+    text: Gusti, Sultan, Pangeran.
+    meaning:
+      ar_eg: Gusti، سلطان، أمير.
+      ar: Gusti، سلطان، أمير.
+      en: Gusti, Sultan, Prince.
+    words: [aksara murda]
+dialogue:
+  title: Dalan menyang Imogiri
+  lines:
+    - speaker: Dimas
+      text: Med, iki dalan menyang makam Sultan Agung.
+      ar_eg: يا محمد، ده الطريق لقبر السلطان أغونغ.
+      ar: يا محمد، هذا الطريق إلى قبر السلطان أغونغ.
+      en: Med, this is the way to Sultan Agung's tomb.
+    - speaker: Mohamed
+      text: Tulisane aneh, Mas. Iki sa?
+      ar_eg: الكتابة غريبة يا ديماس. دي sa؟
+      ar: الكتابة غريبة يا ديماس. هل هذه sa؟
+      en: The writing looks strange, Mas. Is this sa?
+    - speaker: Dimas
+      text: Iku sa murda, kanggo ngurmati Sultan.
+      ar_eg: دي sa murda، عشان تكرّم السلطان.
+      ar: هذه sa murda، تعظيمًا للسلطان.
+      en: That's sa murda, to honour the Sultan.
+    - speaker: Mohamed
+      text: Kaya krama inggil, nanging ing tulisan!
+      ar_eg: زي الـ krama inggil، بس في الكتابة!
+      ar: كالـ krama inggil، لكن في الكتابة!
+      en: Like krama inggil, but in writing!
+new_words:
+  - word: aksara murda
+    pos: noun
+    ar_eg: حروف «كبيرة» للتكريم (أسماء وألقاب المحترمين)
+    ar: حروف معظَّمة (لأسماء المحترمين وألقابهم)
+    en: honorific capitals (for names and titles of respected people)
+  - word: ꦓ
+    pos: letter
+    ar_eg: ga murda — زي ꦒ بس للتكريم
+    ar: ga murda — كـ ꦒ للتعظيم
+    en: ga murda — reads like ꦒ, used for honour
+  - word: ꦯ
+    pos: letter
+    ar_eg: sa murda — زي ꦱ بس للتكريم
+    ar: sa murda — كـ ꦱ للتعظيم
+    en: sa murda — reads like ꦱ, used for honour
+  - word: ꦦ
+    pos: letter
+    ar_eg: pa murda — زي ꦥ بس للتكريم
+    ar: pa murda — كـ ꦥ للتعظيم
+    en: pa murda — reads like ꦥ, used for honour
+review:
+  status: draft
+  verified: false

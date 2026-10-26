@@ -1,0 +1,196 @@
+schema: kabar.lesson/v1
+id: bipa6.u01.l03
+language: id
+title: Tokoh dan latar
+can_do:
+  ar_eg: تتكلم عن شخصيات القصة ومكانها وزمانها والصراع اللي فيها.
+  ar: أن تتحدّث عن شخصيات القصّة ومكانها وزمانها وصراعها.
+  en: Talk about a story's characters, setting and conflict.
+slides:
+  - title: Siapa, di mana, mengapa
+    body:
+      ar_eg: |
+        كمّل قصة «Kursi di Teras»:
+        Suatu sore, hujan turun di Medan. Sebuah mobil berhenti di depan rumah. Seorang laki-laki turun membawa koper, tetapi ia tidak langsung masuk. Ia berdiri lama di pagar. Pak Lubis tidak berdiri dari kursinya.
+        - tokoh = الشخصيات: Pak Lubis والابن.
+        - latar = المكان والزمان: بيت في ميدان، العصر، والمطر.
+        - watak = الطبع: الأب digambarkan (مرسوم) كراجل ساكت وعنيد.
+        - konflik = الصراع: ليه الابن واقف على الباب؟ وليه الأب ماقامش؟
+      ar: |
+        تابع قصّة «Kursi di Teras»:
+        Suatu sore, hujan turun di Medan. Sebuah mobil berhenti di depan rumah. Seorang laki-laki turun membawa koper, tetapi ia tidak langsung masuk. Ia berdiri lama di pagar. Pak Lubis tidak berdiri dari kursinya.
+        - tokoh = الشخصيات: Pak Lubis والابن.
+        - latar = المكان والزمان: بيت في ميدان، عصرًا، تحت المطر.
+        - watak = الطبع: الأب digambarkan (مصوَّر) رجلًا صامتًا عنيدًا.
+        - konflik = الصراع: لماذا يقف الابن عند السياج؟ ولماذا لم يقم الأب؟
+      en: |
+        Continue "Kursi di Teras":
+        Suatu sore, hujan turun di Medan. Sebuah mobil berhenti di depan rumah. Seorang laki-laki turun membawa koper, tetapi ia tidak langsung masuk. Ia berdiri lama di pagar. Pak Lubis tidak berdiri dari kursinya.
+        - tokoh = characters: Pak Lubis and the son.
+        - latar = setting: a house in Medan, late afternoon, rain.
+        - watak = character traits: the father is digambarkan (portrayed) as silent and proud.
+        - konflik = conflict: why does the son wait at the gate? Why doesn't the father stand up?
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tokoh
+        ar_eg: شخصية
+        ar: شخصيّة
+        en: character
+      - text: latar
+        ar_eg: المكان والزمان
+        ar: الإطار المكاني والزماني
+        en: setting
+      - text: watak
+        ar_eg: طبع
+        ar: طبع
+        en: character trait, temperament
+      - text: digambarkan
+        ar_eg: مرسوم / متصوَّر
+        ar: مصوَّر
+        en: to be portrayed
+      - text: konflik
+        ar_eg: صراع
+        ar: صراع
+        en: conflict
+    words: [tokoh, latar, watak, digambarkan, konflik]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه latar القصة؟
+      ar: ما latar القصّة؟
+      en: What is the story's latar?
+    options:
+      - مطار جاكرتا الصبح.
+      - بيت في ميدان العصر وهي بتمطر.
+      - مكتب في سورابايا بالليل.
+    answer: 1
+    words: [latar]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Pak Lubis tidak berdiri dari kursinya» بتقول إيه عن طبعه؟
+      ar: ماذا تقول «Pak Lubis tidak berdiri dari kursinya» عن طبعه؟
+      en: What does "Pak Lubis tidak berdiri dari kursinya" say about him?
+    options:
+      - إنه عنيد ولسه زعلان.
+      - إنه مش شايف العربية.
+      - إنه نايم.
+    answer: 0
+    words: [watak, tokoh]
+  - id: e04
+    type: fill_blank
+    sentence: Dalam cerpen ini, ayah ___ sebagai orang yang pendiam.
+    meaning:
+      ar_eg: في القصة دي، الأب مرسوم كراجل ساكت.
+      ar: في هذه القصّة يُصوَّر الأب رجلًا صامتًا.
+      en: In this story, the father is portrayed as a quiet man.
+    options: [digambarkan, merantau, konflik]
+    answers: [digambarkan]
+    words: [digambarkan]
+  - id: e05
+    type: listen
+    text: Konflik cerita ini adalah antara ayah dan anak.
+    question:
+      ar_eg: الصراع بين مين ومين؟
+      ar: بين مَن الصراع؟
+      en: Who is the conflict between?
+    options:
+      - بين جارين.
+      - بين أخين.
+      - بين أب وابنه.
+    answer: 2
+    words: [konflik]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: الشخصية الأساسية مرسومة كإنسان وحيد.
+      ar: تُصوَّر الشخصية الرئيسية إنسانًا وحيدًا.
+      en: The main character is portrayed as a lonely person.
+    answer: Tokoh utama digambarkan sebagai orang yang kesepian.
+    distractors: [latar, watak]
+    words: [tokoh, digambarkan]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Latar cerita itu sebuah kampung kecil di tepi Danau Toba.
+    answers_meaning:
+      ar_eg:
+        - مكان القصة دي قرية صغيرة على شط بحيرة توبا.
+        - القصة بتحصل في قرية صغيرة جنب بحيرة توبا.
+      ar:
+        - تدور تلك القصّة في قرية صغيرة على ضفّة بحيرة توبا.
+        - مكان القصّة قرية صغيرة على شاطئ بحيرة توبا.
+      en:
+        - The story is set in a small village on the shore of Lake Toba.
+        - That story's setting is a small village by Lake Toba.
+    words: [latar]
+  - id: e08
+    type: speaking
+    text: Watak ayah itu keras, tetapi hatinya lembut.
+    meaning:
+      ar_eg: طبع الأب ده ناشف، بس قلبه طيب.
+      ar: طبع ذلك الأب قاسٍ، لكنّ قلبه رقيق.
+      en: That father is hard by nature, but his heart is soft.
+    words: [watak]
+  - id: e09
+    type: dictation
+    text: Konflik dalam cerpen itu tidak pernah diselesaikan.
+    meaning:
+      ar_eg: الصراع في القصة دي عمره ما اتحل.
+      ar: لم يُحسم الصراع في تلك القصّة أبدًا.
+      en: The conflict in that story is never resolved.
+    words: [konflik]
+dialogue:
+  title: Akhir cerita
+  lines:
+    - speaker: Bang Togar
+      text: Menurutmu, kenapa anaknya berdiri lama di pagar?
+      ar_eg: في رأيك، ليه الابن وقف كتير عند السور؟
+      ar: في رأيك، لماذا وقف الابن طويلًا عند السياج؟
+      en: Why do you think the son stood so long at the gate?
+    - speaker: Mohamed
+      text: Barangkali dulu ada konflik. Dia takut ayahnya masih marah.
+      ar_eg: يمكن كان فيه خناقة زمان. خايف أبوه يكون لسه زعلان.
+      ar: ربّما كان بينهما صراع قديم، ويخشى أن يكون أبوه ما زال غاضبًا.
+      en: Perhaps there was a conflict before. He's afraid his father is still angry.
+    - speaker: Bang Togar
+      text: Lalu kalimat terakhir, "Pak Lubis menuang teh ke dua cangkir."
+      ar_eg: وبعدين آخر جملة، «باك لوبيس صبّ الشاي في فنجانين.»
+      ar: ثمّ الجملة الأخيرة، «صبّ باك لوبيس الشاي في فنجانين.»
+      en: And then the last line, "Pak Lubis poured tea into two cups."
+    - speaker: Mohamed
+      text: Dua cangkir! Jadi dia sudah memaafkan anaknya. Itu makna tersiratnya.
+      ar_eg: فنجانين! يبقى سامح ابنه. ده المعنى اللي بين السطور.
+      ar: فنجانان! إذن سامح ابنه. هذا هو المعنى الضمني.
+      en: Two cups! So he has forgiven his son. That's the implied meaning.
+new_words:
+  - word: tokoh
+    pos: noun
+    ar_eg: شخصية
+    ar: شخصيّة
+    en: character (in a story)
+  - word: latar
+    pos: noun
+    ar_eg: المكان والزمان
+    ar: الإطار المكاني والزماني
+    en: setting
+  - word: watak
+    pos: noun
+    ar_eg: طبع
+    ar: طبع
+    en: character trait, temperament
+  - word: digambarkan
+    pos: verb
+    ar_eg: مرسوم / متصوَّر
+    ar: يُصوَّر
+    en: to be portrayed
+  - word: konflik
+    pos: noun
+    ar_eg: صراع
+    ar: صراع
+    en: conflict
+review:
+  status: draft
+  verified: false

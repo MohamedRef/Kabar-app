@@ -1,0 +1,197 @@
+schema: kabar.lesson/v1
+id: bipa6.u04.l01
+language: id
+title: Inversi
+can_do:
+  ar_eg: تقرا وتستعمل الجمل المقلوبة اللي بتبدأ بالفعل، زي ما في كتب التاريخ.
+  ar: أن تقرأ الجمل المقلوبة المبدوءة بالفعل وتستعملها، كما في كتب التاريخ.
+  en: Read and use inverted, verb-first sentences, as in history books.
+slides:
+  - title: Berdirilah sebuah kerajaan
+    grammar: id.sentence.inversion
+    body:
+      ar_eg: |
+        الترتيب العادي فاعل + فعل. بس كتب التاريخ والحكايات بتقدّم الفعل وتزوّد -lah:
+        - Sebuah kerajaan berdiri. → Berdirilah sebuah kerajaan. = قامت مملكة.
+        - Para pedagang datang. → Datanglah para pedagang. = وجاء التجار.
+        وبتبدأ الحكاية بـ Konon, … (يقال إن …).
+        و Adapun X, … زي «أمّا X فـ…» في العربي بالظبط.
+      ar: |
+        الترتيب المعتاد فاعل ففعل، لكنّ كتب التاريخ والحكايات تقدّم الفعل وتضيف -lah:
+        - Sebuah kerajaan berdiri. → Berdirilah sebuah kerajaan. = قامت مملكة.
+        - Para pedagang datang. → Datanglah para pedagang. = وجاء التجّار.
+        وتبدأ الحكاية بـ Konon, … (يُروى أنّ …).
+        وAdapun X, … تطابق «أمّا X فـ…» في العربية.
+      en: |
+        Normal order is subject + verb. History books and tales put the verb first and add -lah:
+        - Sebuah kerajaan berdiri. → Berdirilah sebuah kerajaan. = There arose a kingdom.
+        - Para pedagang datang. → Datanglah para pedagang. = And the traders came.
+        Tales open with Konon, … (it is said that …).
+        Adapun X, … works exactly like Arabic «ammā X fa-…» (as for X, …).
+    examples:
+      - text: Pada abad ketujuh, berdirilah sebuah kerajaan di tepi Sungai Musi.
+        ar_eg: في القرن السابع، قامت مملكة على شط نهر موسي.
+        ar: في القرن السابع قامت مملكة على ضفّة نهر موسي.
+        en: In the seventh century, a kingdom arose on the banks of the Musi.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kerajaan
+        ar_eg: مملكة
+        ar: مملكة
+        en: kingdom
+      - text: abad
+        ar_eg: قرن
+        ar: قرن
+        en: century
+      - text: konon
+        ar_eg: بيقولوا إن
+        ar: يُروى أنّ
+        en: it is said, reportedly
+      - text: adapun
+        ar_eg: أمّا
+        ar: أمّا
+        en: as for
+      - text: masa jaya
+        ar_eg: عصر العز
+        ar: عصر الازدهار
+        en: heyday
+    words: [kerajaan, abad, konon, adapun, masa jaya]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة مقلوبة زي كتب التاريخ؟
+      ar: أيّ جملة مقلوبة على طريقة كتب التاريخ؟
+      en: Which sentence is inverted, history-book style?
+    options:
+      - Sebuah kerajaan berdiri di Palembang.
+      - Di Palembang ada kerajaan.
+      - Berdirilah sebuah kerajaan di Palembang.
+    answer: 2
+    words: [kerajaan]
+  - id: e03
+    type: fill_blank
+    sentence: ___ kerajaan itu, ibu kotanya di tepi sungai.
+    meaning:
+      ar_eg: أمّا المملكة دي، فعاصمتها على شط النهر.
+      ar: أمّا تلك المملكة فعاصمتها على ضفّة النهر.
+      en: As for that kingdom, its capital was on the riverbank.
+    options: [Adapun, Konon, Abad]
+    answers: [Adapun]
+    words: [adapun]
+  - id: e04
+    type: listen
+    text: Konon, raja pertama datang dari seberang lautan.
+    question:
+      ar_eg: الحكاية بتقول الملك الأول جه منين؟
+      ar: من أين جاء الملك الأوّل بحسب الرواية؟
+      en: According to the tale, where did the first king come from?
+    options:
+      - من الجبل.
+      - من ورا البحر.
+      - من المدينة نفسها.
+    answer: 1
+    words: [konon]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: أمّا الملك ده، فكان عادل جدًا.
+      ar: أمّا ذلك الملك فكان عادلًا جدًّا.
+      en: As for that king, he was very just.
+    answer: Adapun raja itu, ia sangat adil.
+    distractors: [konon, abad]
+    words: [adapun]
+  - id: e06
+    type: translate
+    direction: from_target
+    source_text: Pada masa jayanya, kerajaan itu menguasai banyak pelabuhan.
+    answers_meaning:
+      ar_eg:
+        - في عصر عزّها، المملكة دي كانت مسيطرة على موانئ كتير.
+        - أيام مجدها، المملكة كانت ماسكة موانئ كتير.
+      ar:
+        - في عصر ازدهارها سيطرت تلك المملكة على موانئ كثيرة.
+        - كانت المملكة في أوج مجدها تسيطر على موانئ عديدة.
+      en:
+        - In its heyday, the kingdom controlled many ports.
+        - At its peak, that kingdom ruled many harbours.
+    words: [masa jaya, kerajaan]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «abad» أصلها عربي. من أنهي كلمة؟
+      ar: «abad» عربية الأصل. من أيّ كلمة؟
+      en: The word "abad" comes from Arabic. Which word?
+    options: [أبد, عبد, بعد]
+    answer: 0
+    words: [abad]
+  - id: e08
+    type: speaking
+    text: Konon, pada abad ketujuh, berdirilah sebuah kerajaan besar.
+    meaning:
+      ar_eg: بيقولوا إن في القرن السابع، قامت مملكة كبيرة.
+      ar: يُروى أنّه في القرن السابع قامت مملكة عظيمة.
+      en: It is said that in the seventh century, a great kingdom arose.
+    words: [konon, abad]
+  - id: e09
+    type: dictation
+    text: Masa jaya kerajaan itu berlangsung beberapa abad.
+    meaning:
+      ar_eg: عصر عزّ المملكة دي استمر كذا قرن.
+      ar: دام عصر ازدهار تلك المملكة عدّة قرون.
+      en: That kingdom's heyday lasted several centuries.
+    words: [masa jaya, abad]
+dialogue:
+  title: Di tepi Sungai Musi
+  lines:
+    - speaker: Kak Dewi
+      text: Selamat datang di Palembang, Mohamed. Konon, di sungai inilah dulu berdiri Sriwijaya.
+      ar_eg: أهلًا بيك في باليمبانج يا محمد. بيقولوا إن على النهر ده كانت قايمة سريويجايا.
+      ar: مرحبًا بك في باليمبانغ يا محمد. يُروى أنّ سريويجايا قامت على هذا النهر.
+      en: Welcome to Palembang, Mohamed. It is said that Srivijaya once stood on this very river.
+    - speaker: Mohamed
+      text: Kalimat Kak Dewi seperti buku sejarah! "Berdirilah sebuah kerajaan …"
+      ar_eg: كلامك يا كاك زي كتب التاريخ! «قامت مملكة …»
+      ar: كلامك ككتب التاريخ! «قامت مملكة …»
+      en: You sound like a history book, Kak Dewi! "There arose a kingdom …"
+    - speaker: Kak Dewi
+      text: Ha! Adapun pempek, makanan khas kami, itu cerita lain.
+      ar_eg: ها! أمّا البيمبيك، أكلتنا المشهورة، فدي حكاية تانية.
+      ar: ها! أمّا البمبك، طعامنا المميّز، فتلك حكاية أخرى.
+      en: Ha! As for pempek, our local dish, that's another story.
+    - speaker: Mohamed
+      text: Kalau begitu, datanglah dua porsi pempek!
+      ar_eg: يبقى، فلتأتِ طبقين بيمبيك!
+      ar: إذن، فليأتِ طبقان من البمبك!
+      en: In that case, let there come two plates of pempek!
+new_words:
+  - word: kerajaan
+    pos: noun
+    ar_eg: مملكة
+    ar: مملكة
+    en: kingdom
+  - word: abad
+    pos: noun
+    arabic: أبد
+    ar_eg: قرن
+    ar: قرن
+    en: century
+  - word: konon
+    pos: adverb
+    ar_eg: بيقولوا إن
+    ar: يُروى أنّ
+    en: it is said, reportedly
+  - word: adapun
+    pos: conjunction
+    ar_eg: أمّا
+    ar: أمّا
+    en: as for
+  - word: masa jaya
+    pos: noun
+    ar_eg: عصر العز
+    ar: عصر الازدهار
+    en: heyday
+review:
+  status: draft
+  verified: false

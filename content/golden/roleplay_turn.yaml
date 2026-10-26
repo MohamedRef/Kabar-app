@@ -144,14 +144,14 @@ items:
         - { role: persona, text: "Kowe seneng panganan apa nang Jawa?" }
       learner: "Aku seneng pecel Madiun, enak banget!"
     expect:
-      reply: "Wah pinter! Pecel Madiun pancen enak. Aku malah seneng gudeg, legi. Kowe wis tau nyoba gudeg?"
+      reply: "Wah, mantep! Pecel Madiun pancen enak. Aku malah seneng gudeg, legi. Kowe wis tau nyoba gudeg?"
       corrections: []
       register: ngoko
     criteria:
       - "Responds to pecel Madiun with real food knowledge (e.g. gudeg from Yogyakarta)."
       - "Ends with a simple question the learner can answer at j2."
     avoid:
-      - "Correcting banget (it is common in Javanese chat)."
+      - "Correcting banget (it is ordinary ngoko Javanese too)."
     tags: [dimas, food, culture]
     verified: false
   - id: roleplay_turn-007
@@ -226,7 +226,7 @@ items:
         - { role: persona, text: "Monggo, Mas, pados napa?" }
       learner: "Bu, iki piro?"
     expect:
-      reply: "Sangang ewu sekilo, Mas. Nek karo bakul, \"pinten, Bu?\" luwih sopan."
+      reply: "Sangang ewu sekilo, Mas. Nek kalih bakul, \"pinten, Bu?\" langkung sopan."
       corrections:
         - text: iki piro
           fix: menika pinten
@@ -249,7 +249,7 @@ items:
         - { role: persona, text: "Kemeja batik niki satus ewu, Mas." }
       learner: "Larang banget, Bu. Pitung puluh ewu nggih?"
     expect:
-      reply: "Waduh, durung angsal, Mas. Sangang puluh ewu mawon, niki batik tulis lho."
+      reply: "Waduh, dereng angsal, Mas. Sangang puluh ewu mawon, niki batik cap lho."
       corrections: []
       register: madya
     criteria:
@@ -267,10 +267,10 @@ items:
       level: j1
       scenario: "Buying bananas at a market in Solo."
       history:
-        - { role: persona, text: "Monggo, Mas, gedhang e seger-seger." }
+        - { role: persona, text: "Monggo, Mas, gedhange seger-seger." }
       learner: "Berapa harganya, Bu?"
     expect:
-      reply: "Sesisir sepuluh ewu, Mas. (Berapa = pinten.) Pinten sisir?"
+      reply: "Sesisir sedasa ewu, Mas. (Berapa = pinten.) Pinten sisir?"
       corrections:
         - text: Berapa harganya
           fix: Pinten reginipun
@@ -337,7 +337,7 @@ items:
         - { role: persona, text: "Sedaya dados tigang dasa ewu, Mas." }
       learner: "Niki, Bu. Matur nuwun!"
     expect:
-      reply: "Sami-sami, Mas. Mugi-mugi seger. Mampir malih nggih!"
+      reply: "Sami-sami, Mas. Mugi-mugi cocok. Mampir malih nggih!"
       corrections: []
       register: krama
     criteria:

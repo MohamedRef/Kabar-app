@@ -1,0 +1,192 @@
+schema: kabar.lesson/v1
+id: bipa3.u08.l05
+language: id
+title: Gempa!
+can_do:
+  ar_eg: تشرح لصاحبك يعمل إيه وقت الزلزال، بالأسباب.
+  ar: أن تشرح لصديقك ما يفعله وقت الزلزال مع ذكر الأسباب.
+  en: Explain earthquake safety to a friend, with reasons.
+slides:
+  - title: Kalau …, supaya …
+    body:
+      ar_eg: |
+        شرح الأمان = شرط + خطوة + سبب:
+        Kalau ada guncangan (لو الأرض اتهزت)، jangan panik (ما تتخضّش)، berlindung di bawah meja supaya kepalamu terlindung (عشان راسك تبقى في أمان).
+        ولو حصلت نتيجة: Rumahnya retak sehingga kami mengungsi.
+      ar: |
+        شرح السلامة = شرط + خطوة + سبب:
+        Kalau ada guncangan (إذا اهتزت الأرض)، jangan panik (لا تفزع)، berlindung di bawah meja supaya kepalamu terlindung (لكي يبقى رأسك محميًّا).
+        وللنتيجة الواقعة: Rumahnya retak sehingga kami mengungsi.
+      en: |
+        Explaining safety = condition + step + reason:
+        Kalau ada guncangan (if there's shaking), jangan panik (don't panic), berlindung di bawah meja supaya kepalamu terlindung (so your head is protected).
+        For a result that happened: Rumahnya retak sehingga kami mengungsi.
+    grammar: id.conjunction.purpose-condition
+    examples:
+      - text: Kalau ada guncangan, jangan panik.
+        ar_eg: لو الأرض اتهزت، ما تتخضّش.
+        ar: إذا اهتزت الأرض فلا تفزع.
+        en: If there's shaking, don't panic.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: guncangan
+        ar_eg: هزّة
+        ar: هزّة / اهتزاز
+        en: shaking, tremor
+      - text: panik
+        ar_eg: يتخض / يتلخبط من الخوف
+        ar: يفزع / يرتبك
+        en: to panic
+      - text: retak
+        ar_eg: مشروخ
+        ar: متصدّع
+        en: cracked
+      - text: mengungsi
+        ar_eg: يخلي المكان
+        ar: ينزح / يُخلي المكان
+        en: to evacuate
+      - text: tas siaga
+        ar_eg: شنطة طوارئ
+        ar: حقيبة طوارئ
+        en: emergency bag
+    words: [guncangan, panik, retak, mengungsi, tas siaga]
+  - id: e02
+    type: listen
+    text: Kalau ada guncangan, jangan panik.
+    options:
+      - Kalau ada guncangan, jangan panik.
+      - Kalau ada guncangan, jangan pulang.
+      - Kalau ada banjir, jangan panik.
+    answer: 0
+    meaning:
+      ar_eg: لو الأرض اتهزت، ما تتخضّش.
+      ar: إذا اهتزت الأرض فلا تفزع.
+      en: If there's shaking, don't panic.
+    words: [guncangan, panik]
+  - id: e03
+    type: multiple_choice
+    question: Rumah itu ___ karena gempa, jadi jangan masuk.
+    options: [basah, deras, retak]
+    answer: 2
+    words: [retak]
+  - id: e04
+    type: fill_blank
+    sentence: Hujan deras semalaman ___ sungai meluap.
+    meaning:
+      ar_eg: المطر نزل جامد طول الليل لدرجة إن النهر فاض.
+      ar: هطل المطر بغزارة طوال الليل حتى فاض النهر.
+      en: It rained heavily all night, so the river overflowed.
+    options: [supaya, sehingga, kalau]
+    answers: [sehingga]
+    explain:
+      ar_eg: 'النهر فاض فعلًا: نتيجة، فـ sehingga.'
+      ar: فاض النهر فعلًا، فهي نتيجة والأداة sehingga.
+      en: The river really overflowed, a result, so sehingga.
+    words: [deras, meluap]
+  - id: e05
+    type: fill_blank
+    sentence: Siapkan tas siaga ___ kamu siap kalau terjadi bencana.
+    meaning:
+      ar_eg: (اكتب أداة الهدف) جهّز شنطة طوارئ عشان تبقى مستعد لو حصلت كارثة.
+      ar: (اكتب أداة الغاية) جهّز حقيبة طوارئ لكي تكون مستعدًّا إذا وقعت كارثة.
+      en: (Write the purpose word.) Prepare an emergency bag so you're ready if a disaster happens.
+    answers: [supaya, agar]
+    words: [tas siaga, bencana]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: ما تتخضّش لو الأرض اتهزت.
+      ar: لا تفزع إذا اهتزت الأرض.
+      en: Don't panic if there's shaking.
+    answer: Jangan panik kalau ada guncangan.
+    distractors: [sehingga, retak]
+    words: [panik, guncangan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: البيت مشروخ، فلازم نخلي المكان.
+      ar: البيت متصدّع، لذلك علينا أن نُخليه.
+      en: The house is cracked, so we must evacuate.
+    answers:
+      - Rumahnya retak sehingga kami harus mengungsi.
+      - Rumahnya retak sehingga kami harus mengungsi
+      - Rumahnya retak sehingga kita harus mengungsi.
+      - Rumahnya retak sehingga kita harus mengungsi
+      - Rumah itu retak sehingga kami harus mengungsi.
+      - Rumah itu retak sehingga kita harus mengungsi.
+      - Rumahnya retak, jadi kami harus mengungsi.
+      - Rumahnya retak, jadi kita harus mengungsi.
+      - Rumahnya retak, sehingga kami harus mengungsi.
+      - Rumahnya retak, karena itu kami harus mengungsi.
+    words: [retak, mengungsi]
+  - id: e08
+    type: dictation
+    text: Baik anak-anak maupun orang tua harus tahu jalur evakuasi.
+    meaning:
+      ar_eg: الصغيرين والكبار، الكل لازم يعرف طريق الإخلاء.
+      ar: يجب على الأطفال والكبار على السواء معرفة طريق الإخلاء.
+      en: Both children and adults need to know the evacuation route.
+    words: [maupun]
+  - id: e09
+    type: speaking
+    text: Pertama, berlindung di bawah meja. Setelah guncangan berhenti, keluar ke lapangan.
+    meaning:
+      ar_eg: الأول، استخبى تحت الترابيزة. بعد ما الهزة تقف، اطلع على الساحة.
+      ar: أولًا، احتمِ تحت الطاولة. وبعد أن تتوقف الهزة، اخرج إلى الساحة.
+      en: First, take shelter under a table. When the shaking stops, go out to the open field.
+    words: [berlindung, guncangan, lapangan]
+dialogue:
+  title: Dimas datang ke Tetebatu
+  lines:
+    - speaker: Dimas
+      text: Mohamed, ini pertama kali aku ke Lombok. Aku agak khawatir soal gempa.
+      ar_eg: يا محمد، دي أول مرة آجي لومبوك. أنا قلقان شوية من الزلازل.
+      ar: يا محمد، هذه أول مرة أزور فيها لومبوك، وأنا قلق قليلًا بشأن الزلازل.
+      en: Mohamed, it's my first time on Lombok. I'm a bit worried about earthquakes.
+    - speaker: Mohamed
+      text: Tenang. Kalau ada guncangan, jangan panik.
+      ar_eg: اهدى. لو الأرض اتهزت، ما تتخضّش.
+      ar: اهدأ. إذا اهتزت الأرض فلا تفزع.
+      en: Relax. If there's shaking, don't panic.
+    - speaker: Dimas
+      text: Lalu aku harus bagaimana?
+      ar_eg: طب أعمل إيه؟
+      ar: وماذا أفعل إذن؟
+      en: So what should I do?
+    - speaker: Mohamed
+      text: Pertama, berlindung di bawah meja supaya kepalamu terlindung.
+      ar_eg: الأول، استخبى تحت الترابيزة عشان راسك تبقى في أمان.
+      ar: أولًا، احتمِ تحت الطاولة لكي يبقى رأسك محميًّا.
+      en: First, take shelter under a table so your head is protected.
+    - speaker: Dimas
+      text: Setelah itu?
+      ar_eg: وبعد كده؟
+      ar: وبعد ذلك؟
+      en: After that?
+    - speaker: Mohamed
+      text: Setelah guncangan berhenti, keluar ke lapangan. Kalau rumahnya retak, jangan masuk lagi.
+      ar_eg: بعد ما الهزة تقف، اطلع على الساحة. ولو البيت اتشرخ، ما تدخلوش تاني.
+      ar: بعد أن تتوقف الهزة اخرج إلى الساحة، وإن تصدّع البيت فلا تدخله ثانية.
+      en: When the shaking stops, go out to the open field. If the house is cracked, don't go back in.
+new_words:
+  - word: guncangan
+    pos: noun
+    ar_eg: هزّة
+    ar: هزّة / اهتزاز
+    en: shaking, tremor
+  - word: panik
+    pos: verb
+    ar_eg: يتخض / يتلخبط من الخوف
+    ar: يفزع / يرتبك
+    en: to panic
+  - word: retak
+    pos: adjective
+    ar_eg: مشروخ
+    ar: متصدّع
+    en: cracked
+review:
+  status: draft
+  verified: false

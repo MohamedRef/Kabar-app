@@ -1503,7 +1503,7 @@ pub(crate) fn TextAnswer(tag: &'static str, draft: Signal<Draft>, locked: bool) 
 fn Tiles(tiles: Vec<String>, target: &'static str, draft: Signal<Draft>, locked: bool) -> Element {
     let picked = draft.read().picked.clone();
     rsx! {
-        div { class: "lp-answer-line", lang: target, dir: "ltr",
+        div { class: "lp-answer-line", lang: target, dir: "auto",
             for (pos, &i) in picked.iter().enumerate() {
                 button {
                     key: "a{i}",
@@ -1516,7 +1516,7 @@ fn Tiles(tiles: Vec<String>, target: &'static str, draft: Signal<Draft>, locked:
                 }
             }
         }
-        div { class: "lp-bank", lang: target, dir: "ltr",
+        div { class: "lp-bank", lang: target, dir: "auto",
             for (i, t) in tiles.iter().enumerate() {
                 button {
                     key: "b{i}",

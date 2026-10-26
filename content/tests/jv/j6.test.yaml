@@ -1,0 +1,613 @@
+schema: kabar.test/v1
+id: j6.test
+language: jv
+kind: level
+title:
+  ar_eg: اختبار مستوى J6 — كوتاغيدي (الحروف الجاوية والبيجون)
+  ar: اختبار مستوى J6 — كوتاغيدي (الحروف الجاوية والبيجون)
+  en: J6 level test — Kotagede (aksara Jawa and Pegon)
+intro:
+  ar_eg: |
+    آخر محطة في الرحلة! هنا هتقرا الحروف الجاوية (aksara Jawa): العشرين حرف، والحركات (sandhangan)، والسواكن اللي في الآخر، والـ pasangan، والحروف الكبيرة (murda) وحروف الأصوات العربي (rekan) والأرقام — وكمان البيجون، الجاوي بالحرف العربي.
+    كل الأسئلة بتتجاوب من الكيبورد العادي: يا تختار، يا تكتب القراية بالحروف اللاتيني. خد وقتك وفكّك الكلمة حرف حرف زي ما اتعلمت. في القراية اللاتيني، e عادية من غير علامات مقبولة (kene = kéné).
+    ولو جاي من "Take a flight" عشان تعدّي J6، أهلًا بيك — نفس الأسئلة.
+  ar: |
+    المحطة الأخيرة في الرحلة! ستقرأ هنا الحروف الجاوية (aksara Jawa): الحروف العشرين، والحركات (sandhangan)، والسواكن الأخيرة، والـ pasangan، والحروف التبجيلية (murda) وحروف الأصوات العربية (rekan) والأرقام، ثم البيجون: الجاوية بالحرف العربي.
+    تُجاب الأسئلة كلها من لوحة مفاتيح عادية: إمّا أن تختار، وإمّا أن تكتب القراءة بالحروف اللاتينية. خذ وقتك وفكّك الكلمة حرفًا حرفًا كما تعلّمت. وفي القراءة اللاتينية تُقبل e العادية بلا علامات (kene = kéné).
+    وإن جئت من "Take a flight" لتتجاوز J6، فأهلًا بك؛ الأسئلة نفسها.
+  en: |
+    The last stop of the journey! Here you'll read aksara Jawa: the twenty letters, the vowel marks (sandhangan), the closing consonants, pasangan, the honorific capitals (murda), the letters for Arabic sounds (rekan) and the numerals, and then Pegon, Javanese in Arabic letters.
+    Every item can be answered from a normal keyboard: either pick an option or type the reading in Latin letters. Take your time and take each word apart letter by letter, as you learned. In Latin readings a plain e without accents is accepted (kene = kéné).
+    If you came through "Take a flight" to skip J6, welcome: these are the same questions.
+minutes: 40
+pass_mark: 0.7
+scoring: Score = points earned / points available (closed items 1 point unless set; Latin readings and translate items are graded against reference answers first, with or without spaces between words and with or without accents, then AI grade_answer; writing_task and speaking_task are graded by AI against their rubric, each criterion an equal share of the item's points). Pass at >= 0.7 (the curriculum's J6 mark). Passing marks J6 and the whole Javanese journey complete; the same rule applies when the test is taken as the "Take a flight" skip-ahead over J6. Below the mark, show the per-skill results and suggest the units behind the missed items, with no penalty and an open retry. Javanese items, including every aksara Jawa and Pegon string, stay unverified until the learner approves them.
+sections:
+  - id: listening
+    skill: listening
+    title:
+      ar_eg: الاستماع
+      ar: الاستماع
+      en: Listening
+    instructions:
+      ar_eg: اسمع الكلمة، وعيد براحتك، واختار هي بتتكتب إزاي.
+      ar: استمع إلى الكلمة وأعِد كما تشاء، ثم اختر كيف تُكتب.
+      en: Listen to the word, replay as you like, then pick how it is written.
+    items:
+      - id: t01
+        type: listen
+        text: kanca
+        question:
+          ar_eg: سمعت كلمة معناها «صاحب». بتتكتب إزاي؟
+          ar: سمعت كلمة معناها «صديق». كيف تُكتب؟
+          en: You heard the word for "friend". How is it written?
+        options: ["ꦏꦤꦕ", "ꦏꦚ꧀ꦕ", "ꦏꦕ"]
+        answer: 1
+        meaning:
+          ar_eg: صاحب
+          ar: صديق
+          en: friend
+        words: [pasangan]
+      - id: t02
+        type: listen
+        text: gedhe
+        question:
+          ar_eg: سمعت كلمة معناها «كبير» (gê-dhé). بتتكتب إزاي؟
+          ar: سمعت كلمة معناها «كبير» (gê-dhé). كيف تُكتب؟
+          en: You heard the word for "big" (gê-dhé). How is it written?
+        options: ["ꦒꦺꦝꦺ", "ꦒꦼꦝꦼ", "ꦒꦼꦝꦺ"]
+        answer: 2
+        meaning:
+          ar_eg: كبير
+          ar: كبير
+          en: big
+        words: [pepet, taling]
+      - id: t03
+        type: listen
+        text: omah
+        question:
+          ar_eg: سمعت كلمة معناها «بيت». بتتكتب إزاي؟
+          ar: سمعت كلمة معناها «بيت». كيف تُكتب؟
+          en: You heard the word for "house". How is it written?
+        options: ["ꦲꦺꦴꦩꦃ", "ꦲꦺꦴꦩ", "ꦲꦺꦴꦩꦁ"]
+        answer: 0
+        meaning:
+          ar_eg: بيت
+          ar: بيت
+          en: house
+        words: [wignyan, taling tarung]
+      - id: t04
+        type: listen
+        text: Sultan
+        question:
+          ar_eg: سمعت كلمة «سلطان». أنهي واحدة مكتوبة صح؟
+          ar: سمعت كلمة «سلطان». أيّها مكتوبة صحيحًا؟
+          en: You heard the word "Sultan". Which one is spelled right?
+        options: ["ꦯꦸꦠꦤ꧀", "ꦯꦸꦭꦠꦤ꧀", "ꦯꦸꦭ꧀ꦠꦤ꧀"]
+        answer: 2
+        meaning:
+          ar_eg: سلطان (بـ sa murda، للتبجيل)
+          ar: سلطان (بـ sa murda للتبجيل)
+          en: Sultan (with sa murda, for honour)
+        words: [aksara murda, pasangan]
+      - id: t05
+        type: listen
+        text: taun rong ewu rong puluh enem
+        question:
+          ar_eg: أنهي سنة سمعتها؟
+          ar: أيّ سنة سمعت؟
+          en: Which year did you hear?
+        options: ["꧇꧒꧐꧒꧖꧇", "꧇꧒꧐꧖꧒꧇", "꧇꧒꧒꧐꧖꧇"]
+        answer: 0
+        meaning:
+          ar_eg: سنة ٢٠٢٦
+          ar: سنة ٢٠٢٦
+          en: the year 2026
+        words: [angka, pada pangkat]
+      - id: t06
+        type: listen
+        text: gula
+        question:
+          ar_eg: سمعت كلمة معناها «سكر». بتتكتب إزاي بالبيجون؟
+          ar: سمعت كلمة معناها «سكّر». كيف تُكتب بالبيجون؟
+          en: You heard the word for "sugar". How is it written in Pegon?
+        options: ["كولا", "ڮولا", "غولا"]
+        answer: 1
+        meaning:
+          ar_eg: سكر
+          ar: سكّر
+          en: sugar
+        words: [pegon]
+      - id: t07
+        type: dictation
+        text: Kancaku mlaku menyang pasar.
+        meaning:
+          ar_eg: صاحبي ماشي على رجليه للسوق.
+          ar: صديقي يمشي إلى السوق.
+          en: My friend is walking to the market.
+        words: [kanca, mlaku]
+  - id: reading
+    skill: reading
+    title:
+      ar_eg: القراية
+      ar: القراءة
+      en: Reading
+    instructions:
+      ar_eg: اقرا اللي مكتوب بالحروف الجاوية أو بالبيجون. اختار القراية الصح، أو اكتبها بالحروف اللاتيني (بمسافات أو من غيرها).
+      ar: اقرأ المكتوب بالحروف الجاوية أو بالبيجون، ثم اختر القراءة الصحيحة أو اكتبها بالحروف اللاتينية (بمسافات أو بدونها).
+      en: Read what is written in aksara Jawa or Pegon. Pick the right reading, or type it in Latin letters (with or without spaces).
+    items:
+      - id: t08
+        type: fill_blank
+        sentence: "ꦱꦥꦠꦼꦏ = ___"
+        meaning:
+          ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: مين جاي؟)"
+          ar: "اكتب القراءة بالحروف اللاتينية. (معناها: من القادم؟)"
+          en: Type the reading in Latin letters. (It means "who's coming?")
+        answers: [sapa teka, Sapa teka, sapateka, "Sapa teka?", "sapa teka?", Sapateka]
+        explain:
+          ar_eg: sa · pa · tê (pepet فوق ꦠ) · ka. ومفيش علامة استفهام في الحروف الجاوية.
+          ar: sa · pa · tê (pepet فوق ꦠ) · ka، ولا علامة استفهام في الحروف الجاوية.
+          en: sa · pa · tê (pepet above ꦠ) · ka. Aksara Jawa has no question mark.
+        words: [pepet]
+      - id: t09
+        type: fill_blank
+        sentence: "ꦲꦏꦸꦱꦼꦤꦼꦁꦱꦠꦺ = ___"
+        meaning:
+          ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: أنا بحب الساتيه)"
+          ar: "اكتب القراءة بالحروف اللاتينية. (معناها: أحبّ الساتيه)"
+          en: Type the reading in Latin letters. (It means "I like satay.")
+        answers: [aku seneng sate, Aku seneng sate, "Aku seneng sate.", akusenengsate, Akusenengsate]
+        explain:
+          ar_eg: الـ ng اللي في آخر seneng مكتوبة cecak فوق ꦤ، وte في sate بـ taling قبل الحرف.
+          ar: ng في آخر seneng مكتوبة cecak فوق ꦤ، وte في sate بـ taling قبل الحرف.
+          en: The final ng of seneng is a cecak over ꦤ, and the te of sate has taling written before the letter.
+        words: [cecak, taling]
+      - id: t10
+        type: multiple_choice
+        question: "ꦥꦱꦂꦒꦼꦝꦺ"
+        question_meaning:
+          ar_eg: اقرا اليافطة.
+          ar: اقرأ اللافتة.
+          en: Read the sign.
+        options: [pasang gedhe, pasa gedhe, pasar gedhe]
+        answer: 2
+        explain:
+          ar_eg: العلامة اللي فوق ꦱ هي layar = r في آخر المقطع. وبعد layar مفيش pasangan.
+          ar: العلامة فوق ꦱ هي layar = r في آخر المقطع، ولا pasangan بعد layar.
+          en: The mark above ꦱ is layar = a closing r. No pasangan follows a layar.
+        words: [layar]
+      - id: t11
+        type: multiple_choice
+        question: "ꦏꦺꦴꦮꦺꦮꦶꦱ꧀ꦩꦔꦤ꧀"
+        question_meaning:
+          ar_eg: اقرا الجملة.
+          ar: اقرأ الجملة.
+          en: Read the sentence.
+        options: ["Kowe wis mangan?", "Kowe wis turu?", "Kowe durung mangan?"]
+        answer: 0
+        words: [taling tarung, pasangan]
+      - id: t12
+        type: multiple_choice
+        question: "ꦧꦥꦏ꧀ꦩꦔꦤ꧀ꦱꦼꦒ꧉"
+        question_meaning:
+          ar_eg: اقرا الجملة.
+          ar: اقرأ الجملة.
+          en: Read the sentence.
+        options: ["Bapaka mangana sega.", "Bapak mangan sega.", "Bapak durung mangan."]
+        answer: 1
+        explain:
+          ar_eg: الـ k بتاعة bapak والـ n بتاعة mangan من غير حركة وبعدهم حرف ساكن، فالحرف اللي بعدهم مكتوب pasangan. و꧉ في الآخر = نقطة (pada lungsi).
+          ar: k في bapak وn في mangan بلا حركة ويليهما حرف ساكن، فيُكتب الحرف التالي pasangan، و꧉ في الآخر نقطة (pada lungsi).
+          en: The k of bapak and the n of mangan have no vowel and a consonant follows, so the next letter is a pasangan; ꧉ at the end is a full stop (pada lungsi).
+        words: [pasangan, pada lungsi]
+      - id: t13
+        type: fill_blank
+        sentence: "ꦗ꦳ꦏꦠ꧀ = ___"
+        meaning:
+          ar_eg: "اكتب القراية بالحروف اللاتينية. (كلمة عربية: زكاة)"
+          ar: "اكتب القراءة بالحروف اللاتينية. (كلمة عربية: زكاة)"
+          en: Type the reading in Latin letters. (An Arabic word, زكاة.)
+        answers: [zakat, Zakat]
+        explain:
+          ar_eg: ꦗ + تلات نقط (cecak telu) = za، زي ز. ده من الـ aksara rekan.
+          ar: ꦗ + ثلاث نقاط (cecak telu) = za، أي ز؛ وهو من الـ aksara rekan.
+          en: ꦗ + three dots (cecak telu) = za, Arabic ز. That's an aksara rekan.
+        words: [aksara rekan]
+      - id: t14
+        type: multiple_choice
+        question: "꧇꧔꧐꧙꧇"
+        question_meaning:
+          ar_eg: الرقم ده على يافطة سلالم Imogiri. كام؟
+          ar: هذا الرقم على لافتة درجات Imogiri. كم هو؟
+          en: This number is on the sign by the Imogiri steps. What is it?
+        options: ["409", "490", "49"]
+        answer: 0
+        words: [angka, pada pangkat]
+      - id: t15
+        type: multiple_choice
+        question: "ڤاسار"
+        question_meaning:
+          ar_eg: اقرا الكلمة دي بالبيجون.
+          ar: اقرأ هذه الكلمة المكتوبة بالبيجون.
+          en: Read this Pegon word.
+        options: [fasar, pasar, basar]
+        answer: 1
+        explain:
+          ar_eg: "ڤ في البيجون = p، مش f ولا v. والحركات بتتكتب حروف: ا = a."
+          ar: "ڤ في البيجون = p، لا f ولا v، والحركات تُكتب حروفًا: ا = a."
+          en: "In Pegon ڤ = p, not f or v. And vowels are written as letters: ا = a."
+        words: [pegon]
+      - id: t16
+        type: fill_blank
+        sentence: "چارا جاوا = ___"
+        meaning:
+          ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: الطريقة الجاوي)"
+          ar: "اكتب القراءة بالحروف اللاتينية. (معناها: الطريقة الجاوية)"
+          en: Type the reading in Latin letters. (It means "the Javanese way".)
+        answers: [cara Jawa, cara jawa, Cara Jawa, carajawa, Cara jawa]
+        explain:
+          ar_eg: چ = c (زي ch)، وج = j، وكل a مكتوبة ا.
+          ar: چ = c (كـ ch)، وج = j، وكل a مكتوبة ا.
+          en: چ = c (ch), ج = j, and every a is written ا.
+        words: [pegon]
+      - id: t17
+        type: multiple_choice
+        question: Utawi sakabehe puji iku kagungane Allah.
+        question_meaning:
+          ar_eg: في المعنى المعلّق (makna gandul) تحت «الحمد لله»، أنهي كلمة بتعلّم على المبتدأ؟
+          ar: في المعنى المعلَّق (makna gandul) تحت «الحمد لله»، أيّ كلمة تدلّ على المبتدأ؟
+          en: In the makna gandul gloss under «الحمد لله», which word marks the mubtada?
+        options: [iku, utawi, kagungane]
+        answer: 1
+        explain:
+          ar_eg: utawi علامة المبتدأ (مختصرها م)، وiku علامة الخبر (مختصرها خ).
+          ar: utawi علامة المبتدأ (رمزها م)، وiku علامة الخبر (رمزها خ).
+          en: utawi marks the mubtada (abbreviated م), and iku marks the khabar (abbreviated خ).
+        words: [makna gandul, utawi]
+      - id: t18
+        type: multiple_choice
+        question: Hana caraka, data sawala, padha jayanya, maga bathanga.
+        question_meaning:
+          ar_eg: آخر سطر في قصيدة الحروف «maga bathanga» بيحكي إيه؟
+          ar: ماذا يحكي السطر الأخير «maga bathanga» من قصيدة الحروف؟
+          en: What does the poem's last line, "maga bathanga", tell?
+        options: ["Ada dua utusan.", "Mereka bertengkar.", "Keduanya mati."]
+        answer: 2
+        explain:
+          ar_eg: خدّامين Aji Saka الاتنين كانوا مخلصين، فاتخانقوا لحد ما ماتوا هما الاتنين، فعمل الحروف دي على ذكراهم.
+          ar: كان خادما Aji Saka مخلصَين، فتقاتلا حتى هلكا معًا، فوضع هذه الحروف تخليدًا لذكراهما.
+          en: Aji Saka's two loyal servants fought until both died, and he made the letters in their memory.
+        words: [hanacaraka]
+  - id: vocabulary
+    skill: vocabulary
+    title:
+      ar_eg: أسامي العلامات والحروف
+      ar: أسماء العلامات والحروف
+      en: Names of the marks and letters
+    items:
+      - id: t19
+        type: match_pairs
+        pairs:
+          - text: wulu
+            ar_eg: علامة i (دايرة فوق الحرف)
+            ar: علامة i (دائرة فوق الحرف)
+            en: the i mark (a circle above the letter)
+          - text: suku
+            ar_eg: علامة u (خطّاف تحت الحرف)
+            ar: علامة u (خطّاف تحت الحرف)
+            en: the u mark (a hook below the letter)
+          - text: taling
+            ar_eg: علامة é / è (قبل الحرف)
+            ar: علامة é / è (قبل الحرف)
+            en: the é / è mark (before the letter)
+          - text: pepet
+            ar_eg: علامة ê الخفيفة (فوق الحرف)
+            ar: علامة ê الخفيفة (فوق الحرف)
+            en: the light ê mark (above the letter)
+          - text: taling tarung
+            ar_eg: علامة o (قبل الحرف وبعده)
+            ar: علامة o (قبل الحرف وبعده)
+            en: the o mark (before and after the letter)
+        words: [wulu, suku, taling, pepet, taling tarung]
+      - id: t20
+        type: match_pairs
+        pairs:
+          - text: cecak
+            ar_eg: ng في آخر المقطع
+            ar: ng في آخر المقطع
+            en: closing ng
+          - text: layar
+            ar_eg: r في آخر المقطع
+            ar: r في آخر المقطع
+            en: closing r
+          - text: wignyan
+            ar_eg: h في آخر المقطع
+            ar: h في آخر المقطع
+            en: closing h
+          - text: pangkon
+            ar_eg: بتشيل الـ a من الحرف (زي السكون)
+            ar: تحذف a من الحرف (كالسكون)
+            en: removes a letter's a (like sukun)
+        words: [cecak, layar, wignyan, pangkon]
+      - id: t21
+        type: match_pairs
+        pairs:
+          - text: pasangan
+            ar_eg: الشكل التاني للحرف تحت حرف من غير حركة
+            ar: الشكل الثاني للحرف تحت حرف بلا حركة
+            en: a letter's second form under a vowel-less letter
+          - text: cakra
+            ar_eg: r جوّه المقطع (kra، pra)
+            ar: r داخل المقطع (kra، pra)
+            en: an r inside the syllable (kra, pra)
+          - text: aksara murda
+            ar_eg: حروف التبجيل للأسامي والألقاب
+            ar: حروف التبجيل للأسماء والألقاب
+            en: honorific capitals for names and titles
+          - text: aksara rekan
+            ar_eg: حرف + تلات نقط لصوت عربي (خ ذ ف ز غ)
+            ar: حرف + ثلاث نقاط لصوت عربي (خ ذ ف ز غ)
+            en: letter + three dots for an Arabic sound (kh, dz, f, z, gh)
+          - text: pada pangkat
+            ar_eg: العلامة اللي حوالين الرقم
+            ar: العلامة المحيطة بالرقم
+            en: the mark around a number
+        words: [pasangan, cakra, aksara murda, aksara rekan, pada pangkat]
+      - id: t22
+        type: multiple_choice
+        question_meaning:
+          ar_eg: أنهي حرف بيجون معناه ng (زي ngaji)؟
+          ar: أيّ حرف في البيجون يدلّ على ng (كما في ngaji)؟
+          en: Which Pegon letter is ng (as in ngaji)?
+        options: ["ڠ", "غ", "ع"]
+        answer: 0
+        explain:
+          ar_eg: ڠ = ع بتلات نقط. غ صوتها gh، وع عين.
+          ar: ڠ = ع بثلاث نقاط، أما غ فصوتها gh، وع عين.
+          en: ڠ is ع with three dots. غ is gh, and ع is ʿayn.
+        words: [pegon]
+  - id: grammar
+    skill: grammar
+    title:
+      ar_eg: قواعد الكتابة
+      ar: قواعد الكتابة
+      en: Spelling rules
+    items:
+      - id: t23
+        type: multiple_choice
+        question_meaning:
+          ar_eg: إزاي تكتب sore (العصر)؟
+          ar: كيف تكتب sore (العصر)؟
+          en: How do you write sore (afternoon)?
+        options: ["ꦱꦫꦺ", "ꦱꦺꦴꦫ", "ꦱꦺꦴꦫꦺ"]
+        answer: 2
+        explain:
+          ar_eg: so = taling tarung (قبل الحرف وبعده)، وre = taling بس (قبل الحرف).
+          ar: so = taling tarung (قبل الحرف وبعده)، وre = taling وحدها (قبل الحرف).
+          en: so = taling tarung (before and after the letter), re = taling alone (before the letter).
+        words: [taling tarung, taling]
+      - id: t24
+        type: multiple_choice
+        question_meaning:
+          ar_eg: أنهي واحدة lara (عيان)، اللي بتتنطق «loro»؟
+          ar: أيّها lara (مريض)، التي تُنطق «loro»؟
+          en: Which one is lara (sick), the word said "loro"?
+        options: ["ꦭꦫ", "ꦭꦺꦴꦫꦺꦴ", "ꦭꦺꦴꦫ"]
+        answer: 0
+        explain:
+          ar_eg: lara من غير أي علامة (زي الإملاء اللاتيني)، مع إنها بتتنطق loro. loro (اتنين) هي اللي ليها taling tarung.
+          ar: تُكتب lara بلا علامات (كالتهجئة اللاتينية) وإن نُطقت loro، أما loro (اثنان) فلها taling tarung.
+          en: lara has no marks (like its Latin spelling) even though it's said loro. loro (two) is the one with taling tarung.
+        words: [lara, loro]
+      - id: t25
+        type: multiple_choice
+        question_meaning:
+          ar_eg: إزاي تكتب rega (السعر)؟
+          ar: كيف تكتب rega (السعر)؟
+          en: How do you write rega (price)?
+        options: ["ꦫꦼꦒ", "ꦉꦒ", "ꦫꦺꦒ"]
+        answer: 1
+        explain:
+          ar_eg: rê ليها حرف لوحدها (pa cerek ꦉ)، مش ꦫ + pepet.
+          ar: لـ rê حرف خاص (pa cerek ꦉ)، لا ꦫ + pepet.
+          en: rê has its own letter (pa cerek ꦉ), not ꦫ + pepet.
+        words: [pa cerek]
+      - id: t26
+        type: multiple_choice
+        question: "ꦧꦥꦏ"
+        question_meaning:
+          ar_eg: من غير pangkon في الآخر، دي بتتقري إزاي؟
+          ar: بلا pangkon في آخرها، كيف تُقرأ؟
+          en: Without a pangkon at the end, how does this read?
+        options: [bapak, bapa, bapaka]
+        answer: 2
+        explain:
+          ar_eg: "كل حرف فيه a لوحده؛ الـ pangkon (زي السكون) هي اللي بتشيلها: ꦧꦥꦏ꧀ = bapak."
+          ar: "كل حرف يحمل a في ذاته، والـ pangkon (كالسكون) هي التي تحذفها: ꦧꦥꦏ꧀ = bapak."
+          en: "Every letter carries its own a; pangkon (like sukun) removes it: ꦧꦥꦏ꧀ = bapak."
+        words: [pangkon]
+      - id: t27
+        type: multiple_choice
+        question_meaning:
+          ar_eg: في نص الجملة، حرف ساكن من غير حركة وبعده على طول حرف ساكن تاني. بيتكتب إزاي؟
+          ar: في وسط الجملة، حرف ساكن بلا حركة يليه مباشرة حرف ساكن آخر. كيف يُكتب؟
+          en: In the middle of a sentence, a vowel-less consonant is followed straight away by another consonant. How is it written?
+        options:
+          - Dengan pangkon.
+          - Huruf berikutnya ditulis sebagai pasangan.
+          - Dengan wignyan.
+        answer: 1
+        explain:
+          ar_eg: الـ pangkon بس عند الوقفة (قبل ꧈ أو ꧉ أو في آخر السطر). في النص، الحرف اللي بعده بيتكتب pasangan.
+          ar: الـ pangkon عند الوقف فقط (قبل ꧈ أو ꧉ أو في آخر السطر)، وفي الوسط يُكتب الحرف التالي pasangan.
+          en: Pangkon is only for a pause (before ꧈, ꧉ or at a line end). Mid-sentence, the next letter is written as a pasangan.
+        words: [pasangan, pangkon]
+      - id: t28
+        type: multiple_choice
+        question_meaning:
+          ar_eg: أنهي كلمة ممكن تتكتب بحرف murda؟
+          ar: أيّ كلمة يجوز أن تُكتب بحرف murda؟
+          en: Which word may be written with a murda letter?
+        options: [sega, pasar, Sultan]
+        answer: 2
+        explain:
+          ar_eg: "الـ murda للتبجيل: أسامي وألقاب ناس محترمين وأماكن مقدّسة أو ملكية، مش بداية كل جملة."
+          ar: "الـ murda للتبجيل: أسماء المعظَّمين وألقابهم والأماكن المقدّسة أو الملكية، لا بداية كل جملة."
+          en: "Murda are for honour: names and titles of respected people, sacred or royal places, not every sentence start."
+        words: [aksara murda]
+      - id: t29
+        type: multiple_choice
+        question_meaning:
+          ar_eg: kabar (من «خبر») بقت كلمة جاوي خالص. بتتكتب عادةً إزاي؟
+          ar: صارت kabar (من «خبر») كلمة جاوية تمامًا. كيف تُكتب عادةً؟
+          en: kabar (from «خبر») is now fully Javanese. How is it usually written?
+        options: ["ꦏ꦳ꦧꦂ", "ꦏꦧꦂ"]
+        answer: 1
+        explain:
+          ar_eg: الكلمات العربي القديمة اللي بقت جاوي بتتكتب بحروف عادية (kabar، pikir). الـ rekan للكلمات اللي لسه محتفظة بالصوت العربي (dzikir، zakat).
+          ar: الدخيل العربي القديم الذي صار جاويًا يُكتب بحروف عادية (kabar، pikir)، والـ rekan للكلمات التي ما زالت تحفظ الصوت العربي (dzikir، zakat).
+          en: Old Arabic loans that became fully Javanese use plain letters (kabar, pikir). Rekan is for words that keep the Arabic sound (dzikir, zakat).
+        words: [aksara rekan]
+      - id: t30
+        type: multiple_choice
+        question_meaning:
+          ar_eg: أنهي حرف بيجون معناه dh (زي dhadha)؟
+          ar: أيّ حرف في البيجون يدلّ على dh (كما في dhadha)؟
+          en: Which Pegon letter is dh (as in dhadha)?
+        options: ["ذ", "ض", "ڎ"]
+        answer: 2
+        explain:
+          ar_eg: ڎ = د بتلات نقط. الـ dh الجاوي «تقيلة» زي الدال، مش ذ ولا ض.
+          ar: ڎ = د بثلاث نقاط؛ فالـ dh الجاوية «ثقيلة» كالدال، لا ذ ولا ض.
+          en: ڎ is د with three dots. Javanese dh is a "heavy" d, not ذ or ض.
+        words: [pegon]
+      - id: t31
+        type: multiple_choice
+        question_meaning:
+          ar_eg: إزاي تكتب iki (ده) بالبيجون؟
+          ar: كيف تكتب iki (هذا) بالبيجون؟
+          en: How do you write iki (this) in Pegon?
+        options: ["ايكي", "اكي", "ايكو"]
+        answer: 0
+        explain:
+          ar_eg: "في البيجون الحركات حروف: الكلمة بتبدأ بألف، وi = ي. ايكو دي iku."
+          ar: "الحركات في البيجون حروف: تبدأ الكلمة بألف، وi = ي، أما ايكو فهي iku."
+          en: "In Pegon vowels are letters: the word starts with alif, and i = ي. ايكو is iku."
+        words: [pegon]
+      - id: t32
+        type: build_sentence
+        source:
+          ar_eg: ابني «sapa teka» (مين جاي؟) مقطع مقطع.
+          ar: ركّب «sapa teka» (من القادم؟) مقطعًا مقطعًا.
+          en: Build "sapa teka" (who's coming?), syllable by syllable.
+        answer: "ꦱ ꦥ ꦠꦼ ꦏ"
+        distractors: ["ꦠꦺ", "ꦏꦶ"]
+        words: [pepet, taling]
+  - id: writing
+    skill: writing
+    title:
+      ar_eg: الكتابة
+      ar: الكتابة
+      en: Writing
+    instructions:
+      ar_eg: اكتب القراية بالحروف اللاتينية، واشرح الكتابة بكلامك (بالعربي أو الإنجليزي أو الإندونيسي).
+      ar: اكتب القراءة بالحروف اللاتينية، واشرح الكتابة بكلماتك (بالعربية أو الإنجليزية أو الإندونيسية).
+      en: Write readings in Latin letters, and explain the spelling in your own words (Arabic, English or Indonesian).
+    items:
+      - id: t33
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: "اكتب بالحروف اللاتينية: ꦏꦚ꧀ꦕꦏꦸꦱꦼꦤꦼꦁꦮꦪꦁ꧉"
+          ar: "اكتب بالحروف اللاتينية: ꦏꦚ꧀ꦕꦏꦸꦱꦼꦤꦼꦁꦮꦪꦁ꧉"
+          en: "Write in Latin letters: ꦏꦚ꧀ꦕꦏꦸꦱꦼꦤꦼꦁꦮꦪꦁ꧉"
+        answers:
+          - Kancaku seneng wayang.
+          - Kancaku seneng wayang
+          - kancaku seneng wayang
+          - kancaku seneng wayang.
+          - kancakusenengwayang
+        explain:
+          ar_eg: ꦚ꧀ꦕ = n + pasangan ca (نْ قبل c بتتكتب nya)، وcecak مرتين للـ ng.
+          ar: ꦚ꧀ꦕ = n + pasangan ca (فالنون قبل c تُكتب nya)، وcecak مرتين لـ ng.
+          en: ꦚ꧀ꦕ = n + pasangan ca (an n before c is written nya), and two cecak for ng.
+        words: [pasangan, cecak]
+      - id: t34
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: "اكتب بالحروف اللاتينية (بيجون): ساڤا ماچا كتاب"
+          ar: "اكتب بالحروف اللاتينية (بيجون): ساڤا ماچا كتاب"
+          en: "Write in Latin letters (Pegon): ساڤا ماچا كتاب"
+        answers:
+          - Sapa maca kitab?
+          - Sapa maca kitab
+          - sapa maca kitab
+          - sapa maca kitab?
+          - sapamacakitab
+        explain:
+          ar_eg: ڤ = p وچ = c. وkitab محتفظة بإملائها العربي كتاب.
+          ar: ڤ = p، وچ = c، وتحتفظ kitab بإملائها العربي كتاب.
+          en: ڤ = p and چ = c. kitab keeps its Arabic spelling كتاب.
+        words: [pegon, kitab]
+      - id: t35
+        type: writing_task
+        points: 4
+        prompt:
+          ar_eg: |
+            Dimas بعتلك: "Med, piye carane nulis «Kowe wis mangan?» nganggo aksara Jawa?" اشرحله خطوة خطوة إزاي تكتب الجملة دي بالحروف الجاوية: كل مقطع بأنهي حرف وأنهي علامة، وإيه اللي بيحصل للـ s في wis، وإزاي تقفل آخر الجملة. اكتب الشرح بالعربي أو الإنجليزي أو الإندونيسي، والأسامي (taling، wulu…) بالحروف اللاتيني.
+          ar: |
+            كتب لك Dimas: "Med, piye carane nulis «Kowe wis mangan?» nganggo aksara Jawa?" اشرح له خطوة خطوة كيف تُكتب هذه الجملة بالحروف الجاوية: بأيّ حرف وأيّ علامة يُكتب كل مقطع، وماذا يحدث لـ s في wis، وكيف تُختم الجملة. اكتب الشرح بالعربية أو الإنجليزية أو الإندونيسية، وأسماء العلامات (taling، wulu…) بالحروف اللاتينية.
+          en: |
+            Dimas writes: "Med, piye carane nulis «Kowe wis mangan?» nganggo aksara Jawa?" Explain step by step how to write this sentence in aksara Jawa: which letter and which mark for each syllable, what happens to the s of wis, and how to close the sentence. Write in Arabic, English or Indonesian, with the names of the marks (taling, wulu …) in Latin letters.
+        rubric:
+          - Gets the vowels right (ko with taling tarung on ꦏ, we with taling on ꦮ, wi with wulu on ꦮ, and ma / nga with no mark).
+          - Explains that the s of wis has no vowel and is followed straight away by m, so the m is written as a pasangan (not pangkon, not a space).
+          - Closes mangan correctly (n with pangkon at the end, optionally followed by pada lungsi ꧉) and notes there is no question mark in aksara Jawa.
+          - Clear, ordered explanation that names the letters and marks correctly (small slips are fine).
+        sample: |
+          ko = ꦏ + taling tarung (ꦏꦺꦴ). we = ꦮ + taling (ꦮꦺ). wi = ꦮ + wulu (ꦮꦶ).
+          The s of wis has no vowel and m comes straight after it, so I write ꦱ and put ma as a pasangan under it (ꦱ꧀ꦩ).
+          Then nga (ꦔ), and the final n is ꦤ with pangkon (ꦤ꧀), because the sentence ends there; I can add pada lungsi ꧉.
+          Aksara Jawa has no question mark: ꦏꦺꦴꦮꦺꦮꦶꦱ꧀ꦩꦔꦤ꧀
+        words: [taling tarung, wulu, pasangan, pangkon]
+  - id: speaking
+    skill: speaking
+    title:
+      ar_eg: الكلام
+      ar: المحادثة
+      en: Speaking
+    instructions:
+      ar_eg: اقرا بصوت عالي واتكلم براحتك وبالراحة.
+      ar: اقرأ بصوت مسموع وتكلّم بهدوء وارتياح.
+      en: Read aloud and speak calmly and at ease.
+    items:
+      - id: t36
+        type: speaking
+        text: Hana caraka, data sawala, padha jayanya, maga bathanga.
+        meaning:
+          ar_eg: كان فيه رسولين، اتخانقوا، كانوا قد بعض في القوة، والاتنين ماتوا.
+          ar: كان هناك رسولان، فتنازعا، وتكافآ قوة، فهلكا معًا.
+          en: There were two messengers; they quarrelled; they were equally strong; and both died.
+        words: [hanacaraka]
+      - id: t37
+        type: speaking_task
+        points: 4
+        prompt:
+          ar_eg: 'إنت وDimas ماشيين في Kotagede. اتكلم حوالي دقيقة بالنغوكو: (١) اقرا بصوت عالي التلات حاجات دول اللي شايفهم: اليافطة ꦥꦱꦂꦊꦒꦶ، والرقم ꧇꧔꧐꧙꧇ على سلالم Imogiri، وكلمة البيجون ڠاجي، (٢) احكي لـ Dimas باختصار حكاية Aji Saka اللي ورا ترتيب الحروف.'
+          ar: 'تتجوّل مع Dimas في Kotagede. تحدّث نحو دقيقة بالنغوكو: (١) اقرأ بصوت مسموع هذه الأشياء الثلاثة التي تراها: اللافتة ꦥꦱꦂꦊꦒꦶ، والرقم ꧇꧔꧐꧙꧇ على درجات Imogiri، وكلمة البيجون ڠاجي، (٢) واحكِ لـ Dimas باختصار حكاية Aji Saka وراء ترتيب الحروف.'
+          en: 'You and Dimas are walking around Kotagede. Talk for about a minute in ngoko: (1) read aloud the three things you see: the sign ꦥꦱꦂꦊꦒꦶ, the number ꧇꧔꧐꧙꧇ on the Imogiri steps, and the Pegon word ڠاجي; (2) tell Dimas briefly the story of Aji Saka behind the letter order.'
+        rubric:
+          - Reads the three items correctly (Pasar Legi, patang atus sanga / four hundred and nine, ngaji).
+          - Tells the Aji Saka story in the right order (two loyal servants, the keris, the fight, both died, the letters made in their memory) and links it to the four lines of the poem.
+          - Speaks ngoko with a friend, with simple connectors (terus, banjur, pungkasane).
+          - Clear pronunciation, including heavy dh / th in padha and bathanga; small slips are fine.
+        sample: |
+          Iki tulisane Pasar Legi. Iki angka patang atus sanga. Lan iki Pegon, ngaji.
+          Mas, crita Aji Saka ngene: Aji Saka duwe abdi loro. Sembada njaga keris, Dora dikon njupuk keris iku.
+          Abdi loro padha setya, terus padha perang nganti mati kabeh. Pungkasane Aji Saka nggawe aksara iki: hana caraka, data sawala, padha jayanya, maga bathanga.
+        words: [hanacaraka, angka, pegon]
+review:
+  status: draft
+  verified: false

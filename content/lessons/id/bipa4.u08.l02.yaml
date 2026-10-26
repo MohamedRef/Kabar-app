@@ -1,0 +1,213 @@
+schema: kabar.lesson/v1
+id: bipa4.u08.l02
+language: id
+title: Sudah harus pulang
+can_do:
+  ar_eg: ترتّب عبارة الفعل (نفي/زمن + فعل مساعد + فعل) وتستعمل أدوات التوكيد صح في الحكاية.
+  ar: أن ترتّب العبارة الفعلية (نفي أو زمن + فعل مساعد + فعل) وتستعمل أدوات التوكيد صحيحًا في الحكاية.
+  en: Order verb phrases (aspect + modal + verb) and use intensifiers correctly in a tale.
+slides:
+  - title: Sudah harus pulang
+    body:
+      ar_eg: |
+        في عبارة الفعل الترتيب ثابت:
+        نفي / زمن (tidak، sudah، belum، akan) ← فعل مساعد (harus، bisa، boleh) ← الفعل.
+        sudah harus pulang = خلاص لازم يروّح، belum boleh masuk = لسه مش مسموح يدخل.
+      ar: |
+        ترتيب العبارة الفعلية ثابت:
+        النفي أو الزمن (tidak، sudah، belum، akan) ← الفعل المساعد (harus، bisa، boleh) ← الفعل.
+        sudah harus pulang = صار عليه أن يعود، وbelum boleh masuk = لا يُسمح له بالدخول بعد.
+      en: |
+        Verb phrases have a fixed order:
+        negation / aspect (tidak, sudah, belum, akan) → modal (harus, bisa, boleh) → verb.
+        sudah harus pulang = has to go home now; belum boleh masuk = may not come in yet.
+    grammar: id.phrase.complex
+    examples:
+      - text: Pemuda itu sudah harus pulang sebelum malam.
+        ar_eg: الشاب ده خلاص لازم يروّح قبل الليل.
+        ar: صار على ذلك الشاب أن يعود قبل الليل.
+        en: The young man has to go home before nightfall.
+      - text: Putri itu tidak boleh melanggar janjinya.
+        ar_eg: الأميرة دي ممنوع تخلف وعدها.
+        ar: لا يجوز لتلك الأميرة أن تنقض وعدها.
+        en: The princess must not break her promise.
+  - title: Sangat sakti atau sakti sekali
+    body:
+      ar_eg: |
+        «جدًا» يا sangat قبل الصفة، يا sekali بعدها، مش الاتنين مع بعض:
+        sangat sakti أو sakti sekali، بس sangat sakti sekali غلط في الكتابة.
+        وكلمتين من العربي: kisah = قصة، ajaib = عجيب (من «عجائب»).
+      ar: |
+        «جدًا» إما sangat قبل الصفة أو sekali بعدها، لا الاثنتان معًا:
+        sangat sakti أو sakti sekali، أما sangat sakti sekali فخطأ في الكتابة.
+        وكلمتان من العربية: kisah = قصة، وajaib = عجيب (من «عجائب»).
+      en: |
+        "Very" is either sangat before the adjective or sekali after it, not both:
+        sangat sakti or sakti sekali; sangat sakti sekali is wrong in writing.
+        Two Arabic loans: kisah = story (قصة), ajaib = wondrous, magic (عجائب).
+    grammar: id.phrase.complex
+    examples:
+      - text: Raja itu sangat sakti.
+        ar_eg: الملك ده عنده قوى سحرية جامدة.
+        ar: ذلك الملك ذو قوة خارقة عظيمة.
+        en: That king had great magical power.
+      - text: Kisah ini ajaib sekali.
+        ar_eg: الحكاية دي عجيبة جدًا.
+        ar: هذه القصة عجيبة جدًا.
+        en: This story is truly magical.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kisah
+        ar_eg: قصة / حكاية
+        ar: قصة
+        en: story, tale
+      - text: ajaib
+        ar_eg: عجيب / سحري
+        ar: عجيب، سحري
+        en: magical, wondrous
+      - text: sakti
+        ar_eg: عنده قوى خارقة
+        ar: ذو قوة خارقة
+        en: having magical power
+      - text: melanggar
+        ar_eg: يخالف / يخلف (وعد)
+        ar: ينقض، يخالف
+        en: to break, violate
+      - text: kutukan
+        ar_eg: لعنة
+        ar: لعنة
+        en: curse
+    words: [kisah, ajaib, sakti, melanggar, kutukan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة ترتيبها صح؟ («لسه مش مسموح لك تدخل.»)
+      ar: أيّ جملة ترتيبها صحيح؟ («لا يُسمح لك بالدخول بعد.»)
+      en: Which sentence is in the right order? ("You may not come in yet.")
+    options: ["Kamu boleh belum masuk.", "Kamu belum boleh masuk.", "Kamu masuk belum boleh."]
+    answer: 1
+    explain:
+      ar_eg: belum (زمن) قبل boleh (فعل مساعد)، وبعدين الفعل masuk.
+      ar: belum (الزمن) قبل boleh (الفعل المساعد)، ثم الفعل masuk.
+      en: belum (aspect) comes before boleh (modal), then the verb masuk.
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة صح في الكتابة؟
+      ar: أيّ جملة صحيحة في الكتابة؟
+      en: Which sentence is correct in writing?
+    options: ["Raja itu sakti sekali.", "Raja itu sangat sakti sekali.", "Raja itu sekali sakti."]
+    answer: 0
+    explain:
+      ar_eg: يا sangat قبل الصفة يا sekali بعدها، مش الاتنين.
+      ar: إما sangat قبل الصفة أو sekali بعدها، لا الاثنتان.
+      en: Use sangat before the adjective or sekali after it, not both.
+    words: [sakti]
+  - id: e04
+    type: listen
+    text: Pemuda itu melanggar janjinya, lalu kutukan itu datang.
+    options: ["Pemuda itu menepati janjinya, lalu kutukan itu hilang.", "Putri itu melanggar janjinya, lalu kutukan itu datang.", "Pemuda itu melanggar janjinya, lalu kutukan itu datang."]
+    answer: 2
+    meaning:
+      ar_eg: الشاب ده خلف وعده، وبعدين اللعنة جت.
+      ar: نقض ذلك الشاب وعده، ثم حلّت اللعنة.
+      en: The young man broke his promise, and then the curse came.
+    words: [melanggar, kutukan]
+  - id: e05
+    type: fill_blank
+    sentence: Ini ___ tentang seorang putri dan seekor burung ajaib.
+    meaning:
+      ar_eg: دي قصة عن أميرة وعصفورة سحرية.
+      ar: هذه قصة عن أميرة وطائر عجيب.
+      en: This is a story about a princess and a magical bird.
+    options: [kutukan, kisah, sakti]
+    answers: [kisah]
+    words: [kisah, ajaib]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: الشاب ده خلاص لازم يروّح قبل الليل.
+      ar: صار على ذلك الشاب أن يعود قبل الليل.
+      en: The young man has to go home before nightfall.
+    answer: Pemuda itu sudah harus pulang sebelum malam.
+    distractors: [sekali, kutukan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الأميرة ممنوع تخلف وعدها.
+      ar: لا يجوز للأميرة أن تنقض وعدها.
+      en: The princess must not break her promise.
+    answers:
+      - Putri itu tidak boleh melanggar janjinya.
+      - Putri itu tidak boleh melanggar janjinya
+      - Sang putri tidak boleh melanggar janjinya.
+      - Putri tidak boleh melanggar janjinya.
+      - Putri itu tidak boleh melanggar janji.
+      - Putri itu tidak boleh melanggar janjinya sendiri.
+      - Putri itu tidak boleh mengingkari janjinya.
+    words: [melanggar]
+  - id: e08
+    type: speaking
+    text: Raja sakti dalam kisah ajaib itu terkena kutukan.
+    meaning:
+      ar_eg: الملك صاحب القوى في الحكاية العجيبة دي اتصاب بلعنة.
+      ar: أصابت اللعنةُ الملكَ ذا القوة الخارقة في تلك القصة العجيبة.
+      en: The powerful king in that magical story was struck by a curse.
+    words: [sakti, kisah, ajaib, kutukan]
+dialogue:
+  title: Ikan ajaib
+  lines:
+    - speaker: Mohamed
+      text: Lalu, apa yang terjadi dengan nelayan tua itu?
+      ar_eg: وبعدين، إيه اللي حصل للصياد العجوز؟
+      ar: ثم ماذا حدث لذلك الصياد العجوز؟
+      en: So what happened to the old fisherman?
+    - speaker: Mas Rizal
+      text: Dia menemukan seekor ikan ajaib. Ikan itu bisa berbicara!
+      ar_eg: لقى سمكة سحرية. السمكة دي كانت بتتكلم!
+      ar: وجد سمكة عجيبة، وكانت تلك السمكة تتكلم!
+      en: He found a magical fish. The fish could talk!
+    - speaker: Mohamed
+      text: Wah, ikan itu sakti sekali!
+      ar_eg: ياه، السمكة دي عندها قوى خارقة!
+      ar: يا للعجب، ما أعظم قوة تلك السمكة!
+      en: Wow, that fish has real magic!
+    - speaker: Mas Rizal
+      text: Ya, tetapi nelayan itu tidak boleh melanggar janjinya. Kalau melanggar, kutukan akan datang.
+      ar_eg: أيوه، بس الصياد ممنوع يخلف وعده. لو خلفه، اللعنة هتيجي.
+      ar: نعم، لكن الصياد لا يجوز له أن ينقض وعده، وإن نقضه حلّت اللعنة.
+      en: Yes, but the fisherman must not break his promise. If he does, a curse will come.
+new_words:
+  - word: kisah
+    pos: noun
+    ar_eg: قصة / حكاية
+    ar: قصة
+    en: story, tale
+    arabic: قصة
+  - word: ajaib
+    pos: adjective
+    ar_eg: عجيب / سحري
+    ar: عجيب، سحري
+    en: magical, wondrous
+    arabic: عجائب
+  - word: sakti
+    pos: adjective
+    ar_eg: عنده قوى خارقة
+    ar: ذو قوة خارقة
+    en: having supernatural power
+  - word: melanggar
+    pos: verb
+    ar_eg: يخالف / يخلف (وعد أو قانون)
+    ar: ينقض، يخالف (وعدًا أو قانونًا)
+    en: to break, violate (a promise, a rule)
+  - word: kutukan
+    pos: noun
+    ar_eg: لعنة
+    ar: لعنة
+    en: curse
+review:
+  status: draft
+  verified: false

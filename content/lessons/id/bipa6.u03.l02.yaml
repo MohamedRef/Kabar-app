@@ -1,0 +1,194 @@
+schema: kabar.lesson/v1
+id: bipa6.u03.l02
+language: id
+title: Matrilineal
+can_do:
+  ar_eg: تقرا وتشرح نظام المينانجكاباو اللي النسب فيه من ناحية الأم.
+  ar: أن تقرأ عن نظام المينانغكاباو الأمومي وتشرحه.
+  en: Read about and explain the Minangkabau matrilineal system.
+slides:
+  - title: Garis ibu
+    body:
+      ar_eg: |
+        المينانجكاباو في سومطرة الغربية matrilineal: الـ garis keturunan (النسب) من ناحية الأم.
+        - الـ suku (العشيرة) بتيجي من الأم، مش من الأب.
+        - الـ pusaka (الإرث العائلي)، زي البيت والأرض، بيمشي من الستات للبنات.
+        - الـ mamak (الخال) هو اللي بيرشد ولاد أخته.
+        - وده غير الـ warisan (الميراث) الشرعي للأملاك الشخصية، اللي بيمشي على الشريعة.
+      ar: |
+        المينانغكاباو في سومطرة الغربية matrilineal، فالـ garis keturunan (النسب) من جهة الأم.
+        - تنتقل الـ suku (العشيرة) عن الأم لا الأب.
+        - ويمضي الـ pusaka (الإرث العائلي) كالبيت والأرض من النساء إلى البنات.
+        - والـ mamak (الخال) هو مرشد أبناء أخته.
+        - وهذا غير الـ warisan (الميراث) الشرعي للأملاك الشخصية، الذي يتبع الشريعة.
+      en: |
+        The Minangkabau of West Sumatra are matrilineal: the garis keturunan (line of descent) runs through the mother.
+        - Your suku (clan) comes from your mother, not your father.
+        - The pusaka (family heritage), such as the house and land, passes from women to daughters.
+        - The mamak (maternal uncle) guides his sister's children.
+        - This differs from warisan (inheritance) of personal property, which follows Islamic law.
+    examples:
+      - text: Suku saya sama dengan suku ibu saya.
+        ar_eg: عشيرتي هي نفس عشيرة أمي.
+        ar: عشيرتي هي عشيرة أمّي.
+        en: My clan is the same as my mother's.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: garis keturunan
+        ar_eg: نسب
+        ar: نسب
+        en: line of descent
+      - text: suku
+        ar_eg: عشيرة
+        ar: عشيرة
+        en: clan
+      - text: pusaka
+        ar_eg: إرث عيلة
+        ar: إرث عائلي
+        en: heirloom, family heritage
+      - text: mamak
+        ar_eg: خال
+        ar: خال
+        en: maternal uncle (Minang)
+      - text: warisan
+        ar_eg: ميراث
+        ar: ميراث
+        en: inheritance
+    words: [garis keturunan, suku, pusaka, mamak, warisan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عند المينانجكاباو، العشيرة بتيجي منين؟
+      ar: من أين تأتي العشيرة عند المينانغكاباو؟
+      en: Among the Minangkabau, where does your clan come from?
+    options:
+      - من الأب.
+      - من الأم.
+      - من الجد بتاع الأب.
+    answer: 1
+    words: [suku, garis keturunan]
+  - id: e03
+    type: fill_blank
+    sentence: Rumah gadang adalah ___ yang diwariskan kepada anak perempuan.
+    meaning:
+      ar_eg: البيت الكبير إرث عيلة بيتورث للبنات.
+      ar: الرومة غادانغ إرث عائلي يورَّث للبنات.
+      en: The rumah gadang is family heritage passed down to daughters.
+    options: [pusaka, mamak, suku]
+    answers: [pusaka]
+    words: [pusaka]
+  - id: e04
+    type: listen
+    text: Mamak bertanggung jawab membimbing anak-anak saudara perempuannya.
+    question:
+      ar_eg: الـ mamak مسؤول عن مين؟
+      ar: عمّن يكون الـ mamak مسؤولًا؟
+      en: Who is the mamak responsible for?
+    options:
+      - عن ولاده هو بس.
+      - عن جيرانه.
+      - عن ولاد أخته.
+    answer: 2
+    words: [mamak]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: النسب عند المينانج بيتبع الأم.
+      ar: يتبع النسب عند المينانغ الأمَّ.
+      en: Among the Minang, descent follows the mother.
+    answer: Garis keturunan orang Minang mengikuti ibu.
+    distractors: [mamak, warisan]
+    words: [garis keturunan]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الميراث الشخصي بيتقسم على حسب الشريعة.
+      ar: يُقسم الميراث الشخصي وفق الشريعة.
+      en: Personal inheritance is divided according to Islamic law.
+    answers:
+      - Warisan pribadi dibagi menurut syariat Islam.
+      - Warisan pribadi dibagi sesuai syariat.
+      - Harta warisan pribadi dibagi menurut hukum Islam.
+      - Warisan pribadi dibagi berdasarkan syariat Islam.
+    words: [warisan]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «warisan» أصلها من أنهي كلمة عربي؟
+      ar: من أيّ كلمة عربية جاءت «warisan»؟
+      en: Which Arabic word does "warisan" come from?
+    options: [وراثة, وارد, ورشة]
+    answer: 0
+    words: [warisan]
+  - id: e08
+    type: speaking
+    text: Mamak saya selalu memberi nasihat tentang suku kami.
+    meaning:
+      ar_eg: خالي دايمًا بينصحني عن عشيرتنا.
+      ar: يسدي إليّ خالي النصح دائمًا بشأن عشيرتنا.
+      en: My mamak always gives advice about our clan.
+    words: [mamak, suku]
+  - id: e09
+    type: dictation
+    text: Tanah pusaka itu milik keluarga ibu.
+    meaning:
+      ar_eg: أرض العيلة دي ملك عيلة الأم.
+      ar: تلك الأرض الموروثة ملك لأسرة الأمّ.
+      en: That heritage land belongs to the mother's family.
+    words: [pusaka]
+dialogue:
+  title: Di rumah gadang
+  lines:
+    - speaker: Uda Rafi
+      text: Rumah gadang ini milik nenek saya, lalu ibu saya, lalu adik perempuan saya.
+      ar_eg: البيت الكبير ده بتاع جدتي، وبعدين أمي، وبعدين أختي.
+      ar: هذا البيت لجدّتي، ثمّ لأمّي، ثمّ لأختي.
+      en: This rumah gadang belongs to my grandmother, then my mother, then my younger sister.
+    - speaker: Mohamed
+      text: Jadi Uda tidak dapat bagian?
+      ar_eg: يعني إنت مش ليك نصيب يا أودا؟
+      ar: إذن ليس لك نصيب منه؟
+      en: So you don't get a share, Uda?
+    - speaker: Uda Rafi
+      text: Rumah ini pusaka, bukan warisan pribadi. Tugas saya lain, saya mamak untuk anak-anak adik saya.
+      ar_eg: البيت ده إرث العيلة، مش ميراث شخصي. أنا دوري تاني، أنا الخال لولاد أختي.
+      ar: هذا البيت إرث عائلي لا ميراث شخصي. ودوري مختلف، فأنا خال أبناء أختي.
+      en: The house is pusaka, not personal inheritance. My role is different; I'm the mamak to my sister's children.
+    - speaker: Mohamed
+      text: Menarik sekali. Ternyata ada banyak cara untuk menjaga keluarga.
+      ar_eg: حلو قوي. طلع فيه طرق كتير نحافظ بيها على العيلة.
+      ar: شائق جدًّا. يتبيّن أنّ للحفاظ على الأسرة طرقًا كثيرة.
+      en: Fascinating. It turns out there are many ways to look after a family.
+new_words:
+  - word: garis keturunan
+    pos: noun
+    ar_eg: نسب
+    ar: نسب
+    en: line of descent
+  - word: suku
+    pos: noun
+    ar_eg: عشيرة
+    ar: عشيرة
+    en: clan, ethnic group
+  - word: pusaka
+    pos: noun
+    ar_eg: إرث عيلة
+    ar: إرث عائلي
+    en: heirloom, family heritage
+  - word: mamak
+    pos: noun
+    ar_eg: خال
+    ar: خال
+    en: maternal uncle (Minang)
+  - word: warisan
+    pos: noun
+    arabic: وراثة
+    ar_eg: ميراث
+    ar: ميراث
+    en: inheritance
+review:
+  status: draft
+  verified: false

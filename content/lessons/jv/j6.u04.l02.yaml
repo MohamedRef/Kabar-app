@@ -1,0 +1,199 @@
+schema: kabar.lesson/v1
+id: j6.u04.l02
+language: jv
+title: Pasangan ha, sa, pa
+can_do:
+  ar_eg: تقرا الـ pasangan اللي بتقعد جنب الحرف.
+  ar: أن تقرأ الـ pasangan التي تقع بجانب الحرف.
+  en: Read the pasangan that sit beside the letter.
+slides:
+  - title: Ing sisih tengen
+    body:
+      ar_eg: |
+        أغلب الـ pasangan بتقعد تحت الحرف. بس تلاتة بيقعدوا جنبه على اليمين: pasangan ha وsa وpa.
+        ꦠꦤ꧀ꦥ tanpa (من غير): na وجنبها pasangan pa.
+        ꦱꦩ꧀ꦥꦸꦤ꧀ sampun (خلاص، كراما): ma وجنبها pasangan pa.
+        والقاعدة واحدة: الحرف اللي قبل الـ pasangan ساكن.
+      ar: |
+        تقع أكثر الـ pasangan تحت الحرف، إلا ثلاثًا تقع إلى يمينه: pasangan ha وsa وpa.
+        ꦠꦤ꧀ꦥ tanpa (بدون): na وبجانبها pasangan pa.
+        ꦱꦩ꧀ꦥꦸꦤ꧀ sampun (قد، كراما): ma وبجانبها pasangan pa.
+        والقاعدة واحدة: الحرف الذي قبل pasangan ساكن.
+      en: |
+        Most pasangan sit below the letter, but three sit beside it, on the right: the pasangan of ha, sa and pa.
+        ꦠꦤ꧀ꦥ tanpa (without): na with pasangan pa beside it.
+        ꦱꦩ꧀ꦥꦸꦤ꧀ sampun (already, krama): ma with pasangan pa beside it.
+        Same rule: the letter before a pasangan is vowel-less.
+    grammar: jv.aksara.pasangan
+    examples:
+      - text: ꦠꦤ꧀ꦥ (tanpa)
+        ar_eg: من غير
+        ar: بدون
+        en: without
+      - text: ꦭꦩ꧀ꦥꦸ (lampu)
+        ar_eg: لمبة — pasangan pu جنب ꦩ
+        ar: مصباح — pasangan pu بجانب ꦩ
+        en: lamp — pasangan pu beside ꦩ
+  - title: Gang Rukunan
+    body:
+      ar_eg: |
+        فاكر؟ بعد cecak وlayar وwignyan مفيش pasangan: ꦥꦱꦂꦒꦼꦝꦺ pasar gedhe.
+        وفي Jagalan فيه حواري ضيقة (gang) زي «Rukunan»، من كلمة rukun = عايشين في وئام. ꦫꦸꦏꦸꦤ꧀ آخرها pangkon عشان هي آخر الكلام.
+      ar: |
+        تذكّر: لا pasangan بعد cecak وlayar وwignyan: ꦥꦱꦂꦒꦼꦝꦺ pasar gedhe.
+        وفي Jagalan أزقة ضيقة (gang) كـ«Rukunan»، من rukun = متآلفون. وꦫꦸꦏꦸꦤ꧀ آخرها pangkon لأنها آخر الكلام.
+      en: |
+        Remember: no pasangan after cecak, layar or wignyan: ꦥꦱꦂꦒꦼꦝꦺ pasar gedhe.
+        In Jagalan there are narrow alleys (gang) like "Rukunan", from rukun = living in harmony. ꦫꦸꦏꦸꦤ꧀ ends with pangkon because the phrase ends there.
+    grammar: jv.aksara.pasangan
+    examples:
+      - text: ꦒꦁ (gang)
+        ar_eg: حارة ضيقة
+        ar: زقاق ضيق
+        en: narrow alley
+      - text: ꦮꦺꦴꦁꦫꦸꦏꦸꦤ꧀ (wong rukun)
+        ar_eg: ناس عايشين في وئام
+        ar: أناس متآلفون
+        en: people living in harmony
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tanpa
+        ar_eg: من غير
+        ar: بدون
+        en: without
+      - text: rukun
+        ar_eg: عايشين في وئام / متفاهمين
+        ar: متآلف / متفاهم
+        en: living in harmony
+      - text: gang
+        ar_eg: حارة ضيقة
+        ar: زقاق ضيق
+        en: narrow alley
+      - text: ꦭꦩ꧀ꦥꦸ
+        ar_eg: lampu (لمبة)
+        ar: lampu (مصباح)
+        en: lampu (lamp)
+    words: [tanpa, rukun, gang]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "اقرا: ꦠꦤ꧀ꦥ"
+      ar: "اقرأ: ꦠꦤ꧀ꦥ"
+      en: "Read: ꦠꦤ꧀ꦥ"
+    options: [tanapa, tapa, tanpa]
+    answer: 2
+    explain:
+      ar_eg: "na ساكنة لأن جنبها pasangan pa: tan-pa."
+      ar: "na ساكنة لأن بجانبها pasangan pa: tan-pa."
+      en: "na is vowel-less because pasangan pa sits beside it: tan-pa."
+    words: [tanpa]
+  - id: e03
+    type: listen
+    text: lampu
+    question:
+      ar_eg: سمعت lampu (لمبة). بتتكتب إزاي؟
+      ar: سمعت lampu (مصباح). كيف تُكتب؟
+      en: You heard lampu (lamp). How is it written?
+    options: ["ꦭꦩ꧀ꦥꦸ", "ꦭꦥꦸ", "ꦭꦩꦥꦸ"]
+    answer: 0
+    meaning:
+      ar_eg: لمبة
+      ar: مصباح
+      en: lamp
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي واحدة بتتكتب من غير أي pasangan؟
+      ar: أيّها تُكتب بلا أي pasangan؟
+      en: Which one is written with no pasangan at all?
+    options: [mangan sega, pasar gedhe, sampun dhahar]
+    answer: 1
+    explain:
+      ar_eg: pasar بتخلص بـ layar، وبعد layar الحرف بيتكتب عادي. التانيين فيهم n أو m ساكنة قبل حرف ساكن.
+      ar: تنتهي pasar بـ layar فيُكتب ما بعدها عاديًا، وفي الأخريين n أو m ساكنة قبل ساكن.
+      en: pasar ends in layar, and after layar the next letter is written normally. The others have a vowel-less n or m before a consonant.
+  - id: e05
+    type: fill_blank
+    sentence: Wong ing gang iki ___ banget.
+    meaning:
+      ar_eg: الناس في الحارة دي عايشين في وئام خالص.
+      ar: أهل هذا الزقاق متآلفون جدًا.
+      en: The people in this alley live in real harmony.
+    options: [rukun, tanpa, gang]
+    answers: [rukun]
+    words: [rukun, gang]
+  - id: e06
+    type: fill_blank
+    sentence: ꦒꦁ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: حارة ضيقة)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: زقاق ضيق)"
+      en: Type the reading in Latin letters. (It means "narrow alley".)
+    answers: [gang]
+    words: [gang]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦏꦺꦴꦥꦶꦠꦤ꧀ꦥꦒꦸꦭ"
+      ar: "اكتب بالحروف اللاتينية: ꦏꦺꦴꦥꦶꦠꦤ꧀ꦥꦒꦸꦭ"
+      en: "Write in Latin letters: ꦏꦺꦴꦥꦶꦠꦤ꧀ꦥꦒꦸꦭ"
+    answers: [kopi tanpa gula, kopitanpagula]
+    explain:
+      ar_eg: ko-pi tan-pa gu-la = قهوة من غير سكر.
+      ar: ko-pi tan-pa gu-la = قهوة بلا سكر.
+      en: ko-pi tan-pa gu-la = coffee without sugar.
+    words: [tanpa]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: ابني «wong rukun» (ناس عايشين في وئام) مقطع مقطع.
+      ar: ركّب «wong rukun» (أناس متآلفون) مقطعًا مقطعًا.
+      en: Build "wong rukun" (people in harmony), syllable by syllable.
+    answer: ꦮꦺꦴꦁ ꦫꦸ ꦏꦸꦤ꧀
+    distractors: ["ꦫ"]
+    words: [rukun]
+dialogue:
+  title: Ing gang Rukunan
+  lines:
+    - speaker: Mohamed
+      text: Mas, gang iki jenenge apa?
+      ar_eg: يا ديماس، الحارة دي اسمها إيه؟
+      ar: يا ديماس، ما اسم هذا الزقاق؟
+      en: Mas, what's this alley called?
+    - speaker: Dimas
+      text: Rukunan. Saka tembung rukun.
+      ar_eg: «روكونان». من كلمة rukun.
+      ar: «روكونان»، من كلمة rukun.
+      en: Rukunan. From the word rukun.
+    - speaker: Mohamed
+      text: Omah-omahe cedhak banget.
+      ar_eg: البيوت لازقة في بعض خالص.
+      ar: البيوت متلاصقة جدًا.
+      en: The houses are really close together.
+    - speaker: Dimas
+      text: Iya. Wong kene urip rukun, kaya kulawarga.
+      ar_eg: أيوه. الناس هنا عايشين في وئام، زي عيلة واحدة.
+      ar: نعم. يعيش الناس هنا متآلفين كأسرة واحدة.
+      en: Yes. People here live in harmony, like one family.
+new_words:
+  - word: tanpa
+    pos: preposition
+    ar_eg: من غير
+    ar: بدون
+    en: without = tanpa
+  - word: rukun
+    pos: adjective
+    ar_eg: عايشين في وئام / متفاهمين
+    ar: متآلف / متفاهم
+    en: living in harmony = rukun
+  - word: gang
+    pos: noun
+    ar_eg: حارة ضيقة
+    ar: زقاق ضيق
+    en: narrow alley = gang
+review:
+  status: draft
+  verified: false

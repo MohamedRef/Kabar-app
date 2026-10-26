@@ -1,0 +1,212 @@
+schema: kabar.lesson/v1
+id: bipa6.u01.l01
+language: id
+title: Makna tersirat
+can_do:
+  ar_eg: تفهم اللي الإندونيسي بيقصده من غير ما يقوله، في الكلام وفي القصص.
+  ar: أن تفهم ما يقصده الإندونيسي دون أن يصرّح به، في الحديث وفي القصص.
+  en: Understand what Indonesians mean without saying it, in talk and in stories.
+slides:
+  - title: Tersurat dan tersirat
+    grammar: id.implicature
+    body:
+      ar_eg: |
+        tersurat = اللي مكتوب ومتقال صريح. tersirat = اللي بين السطور.
+        - «Panas, ya, di sini.» = شغّل المروحة لو سمحت.
+        - «Wah, sudah jam sepuluh, ya.» = أنا عايز أمشي.
+        - «Nanti saya kabari.» = غالبًا لأ.
+        - «Terserah.» بنبرة ناشفة = أنا مضايق، اعمل اللي إنت عايزه.
+        اسأل نفسك: ليه قال كده هنا؟ وإيه اللي ماقالوش؟
+      ar: |
+        tersurat = المصرَّح به. tersirat = ما بين السطور.
+        - «Panas, ya, di sini.» = شغّل المروحة من فضلك.
+        - «Wah, sudah jam sepuluh, ya.» = أريد الانصراف.
+        - «Nanti saya kabari.» = لا، على الأرجح.
+        - «Terserah.» بنبرة جافّة = أنا منزعج، افعل ما تشاء.
+        واسأل نفسك: لماذا قال هذا هنا؟ وما الذي سكت عنه؟
+      en: |
+        tersurat = what is stated outright. tersirat = what is between the lines.
+        - "Panas, ya, di sini." = please turn on the fan.
+        - "Wah, sudah jam sepuluh, ya." = I'd like to leave.
+        - "Nanti saya kabari." = probably no.
+        - "Terserah." said flatly = I'm annoyed; do what you like.
+        Ask yourself: why say it here? What was left unsaid?
+  - title: Dalam cerpen
+    grammar: id.implicature
+    body:
+      ar_eg: |
+        الكاتب مش هيقولك «كانت زعلانة». هيوريك isyarat (إشارة):
+        Ibu hanya diam, lalu kembali mengaduk teh yang sudah lama dingin.
+        السكوت والشاي البارد = حزن وسرحان. دوّر على السكوت والتكرار والتفاصيل الصغيرة.
+      ar: |
+        لن يقول الكاتب «كانت حزينة»، بل يعطيك isyarat (إشارة):
+        Ibu hanya diam, lalu kembali mengaduk teh yang sudah lama dingin.
+        الصمت والشاي البارد = حزن وشرود. فتّش عن الصمت والتكرار والتفاصيل الصغيرة.
+      en: |
+        The writer won't say "she was sad". They give you an isyarat (a sign):
+        Ibu hanya diam, lalu kembali mengaduk teh yang sudah lama dingin.
+        Silence and cold tea = sadness and distraction. Look for silence, repetition and small details.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tersirat
+        ar_eg: ضمني / بين السطور
+        ar: ضمني
+        en: implied
+      - text: tersurat
+        ar_eg: صريح / مكتوب
+        ar: صريح
+        en: explicit, stated
+      - text: isyarat
+        ar_eg: إشارة
+        ar: إشارة
+        en: sign, hint
+      - text: menyindir
+        ar_eg: يلقّح بالكلام
+        ar: يعرّض بـ / يلمّح ساخرًا
+        en: to make a dig, to insinuate
+      - text: terserah
+        ar_eg: على راحتك
+        ar: كما تشاء
+        en: up to you
+    words: [tersirat, tersurat, isyarat, menyindir, terserah]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ضيفك قال «Wah, sudah jam sepuluh, ya.» يقصد إيه؟
+      ar: قال ضيفك «Wah, sudah jam sepuluh, ya.» فماذا يقصد؟
+      en: Your guest says "Wah, sudah jam sepuluh, ya." What do they mean?
+    options:
+      - عايز يمشي.
+      - عايز يتعشى.
+      - الساعة بايظة.
+    answer: 0
+    words: [tersirat]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: صاحبتك ردّت «Terserah.» بنبرة ناشفة. ده معناه إيه غالبًا؟
+      ar: ردّت صديقتك «Terserah.» بنبرة جافّة. ماذا يعني ذلك غالبًا؟
+      en: Your friend replies "Terserah." flatly. What does it usually mean?
+    options:
+      - هي مبسوطة بأي اختيار.
+      - هي مش فاهمة السؤال.
+      - هي مضايقة.
+    answer: 2
+    words: [terserah, tersirat]
+  - id: e04
+    type: fill_blank
+    sentence: Makna yang ___ adalah makna yang ditulis dengan jelas.
+    meaning:
+      ar_eg: المعنى الصريح هو المعنى اللي مكتوب بوضوح.
+      ar: المعنى الصريح هو المكتوب بوضوح.
+      en: The explicit meaning is the meaning written clearly.
+    options: [tersurat, tersirat, terserah]
+    answers: [tersurat]
+    words: [tersurat]
+  - id: e05
+    type: listen
+    text: Ibu hanya diam, lalu kembali mengaduk teh yang sudah lama dingin.
+    question:
+      ar_eg: إيه اللي الجملة دي بتلمّح له؟
+      ar: إلامَ تلمّح هذه الجملة؟
+      en: What does this sentence hint at?
+    options:
+      - إن الأم جعانة.
+      - إن الأم حزينة وسرحانة.
+      - إن الشاي غالي.
+    answer: 1
+    words: [isyarat, tersirat]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: كلامه بيلقّح على جاره.
+      ar: كلامه تعريض بجاره.
+      en: His words are a dig at his neighbour.
+    answer: Kata-katanya menyindir tetangganya.
+    distractors: [terserah, isyarat]
+    words: [menyindir]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Penulis tidak menangis di cerita itu, tetapi isyaratnya jelas.
+    answers_meaning:
+      ar_eg:
+        - الكاتب مابيعيطش في القصة، بس الإشارة واضحة.
+        - مفيش عياط في القصة، لكن الإشارات بتقول كل حاجة.
+      ar:
+        - لا يبكي الكاتب في القصّة، لكنّ الإشارة واضحة.
+        - لا بكاء في القصّة، غير أنّ الإشارات بيّنة.
+      en:
+        - The writer doesn't cry in the story, but the signs are clear.
+        - There's no crying in the story, but the hints are obvious.
+    words: [isyarat]
+  - id: e08
+    type: speaking
+    text: Dia tidak marah secara tersurat, tetapi dia menyindir.
+    meaning:
+      ar_eg: هو مازعلش بشكل صريح، بس لقّح بالكلام.
+      ar: لم يغضب صراحةً، لكنّه عرّض بالكلام.
+      en: He didn't get angry openly, but he made a dig.
+    words: [tersurat, menyindir]
+  - id: e09
+    type: dictation
+    text: Kalau dia bilang terserah, jangan langsung pergi.
+    meaning:
+      ar_eg: لو قالت «على راحتك»، ماتمشيش على طول.
+      ar: إن قالت «كما تشاء»، فلا تنصرف فورًا.
+      en: If she says "up to you", don't just leave.
+    words: [terserah]
+dialogue:
+  title: Bertamu di Medan
+  lines:
+    - speaker: Kak Mei
+      text: Silakan, Mohamed. Kuenya enak? Ini buatan nenek saya.
+      ar_eg: اتفضل يا محمد. الكيكة حلوة؟ دي من عمل جدتي.
+      ar: تفضّل يا محمد. أتعجبك الحلوى؟ صنعتها جدّتي.
+      en: Help yourself, Mohamed. Is the cake good? My grandmother made it.
+    - speaker: Mohamed
+      text: Lumayan, Kak.
+      ar_eg: مش وحشة.
+      ar: لا بأس بها.
+      en: Not bad.
+    - speaker: Kak Mei
+      text: Lumayan saja? Wah, nenek pasti sedih mendengarnya.
+      ar_eg: مش وحشة وبس؟ يا خبر، جدتي أكيد هتزعل لو سمعت كده.
+      ar: لا بأس فقط؟ لا شكّ أنّ جدّتي ستحزن لو سمعت.
+      en: Just "not bad"? Oh, grandma would be sad to hear that.
+    - speaker: Mohamed
+      text: Maaf! Maksud saya, enak sekali. Saya belum paham makna tersiratnya.
+      ar_eg: آسف! قصدي حلوة جدًا. لسه مش فاهم المعنى اللي بين السطور.
+      ar: آسف! أقصد أنّها لذيذة جدًّا. لم أفهم المعنى الضمني بعد.
+      en: Sorry! I mean it's delicious. I don't get the implied meanings yet.
+new_words:
+  - word: tersirat
+    pos: adjective
+    ar_eg: ضمني / بين السطور
+    ar: ضمني
+    en: implied
+  - word: tersurat
+    pos: adjective
+    ar_eg: صريح / مكتوب
+    ar: صريح
+    en: explicit, stated
+  - word: isyarat
+    pos: noun
+    arabic: إشارة
+    ar_eg: إشارة
+    ar: إشارة
+    en: sign, hint
+  - word: menyindir
+    pos: verb
+    ar_eg: يلقّح بالكلام
+    ar: يعرّض بـ
+    en: to make a dig, to insinuate
+  - word: terserah
+    ar_eg: على راحتك
+    ar: كما تشاء
+    en: up to you
+review:
+  status: draft
+  verified: false

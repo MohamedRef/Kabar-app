@@ -3,7 +3,7 @@
 # content/grammar/<lang>/ that the deterministic engine pre-selected (with distractors).
 # expect = {grammar_ids[], register, culture?, paraphrase, explanation}; explanation and
 # paraphrase are reference sketches, judged by criteria rather than word for word.
-# There is no content/grammar/jv yet, so Javanese items offer Indonesian entries as parallels.
+# Javanese items pick from content/grammar/jv and may name the Indonesian parallel in one line.
 task: explain_sentence
 version: 1
 rubric: |
@@ -28,7 +28,7 @@ items:
     register: neutral
     paraphrase: أنا بقرا كتاب دلوقتي.
     explanation: 'sedang هنا زي «بـ» في «بقرا»: معناها إن الحاجة بتحصل دلوقتي، لأن الإندونيسي مفيهوش أزمنة
-      في الفعل نفسه. وmembaca جاية من baca (يقرا) + البادئة meN- اللي بتعمل فعل «نشط»، والـ meN- بتبقى
+      في الفعل نفسه. وmembaca جاية من baca (يقرا) + البادئة meN- اللي بتعمل فعل مبني للمعلوم (active)، والـ meN- بتبقى
       mem- قبل حرف b.'
   criteria:
   - paraphrase and explanation are in Egyptian colloquial Arabic (بالمصري), Arabic script; Indonesian/Javanese
@@ -337,11 +337,11 @@ items:
     voice: ar
     grammar_candidates: [id.prohibition.jangan, id.interjection.particles, id.aspect.markers, id.imperative.basic]
   expect:
-    grammar_ids: [id.prohibition.jangan]
+    grammar_ids: [id.prohibition.jangan, id.interjection.particles]
     register: neutral
-    paraphrase: لا تنسَ أن تأخذ المظلة، فالمطر لم يتوقف منذ قليل.
+    paraphrase: لا تنسَ أن تأخذ المظلة، فالمطر لم يتوقف منذ فترة.
     explanation: Jangan + فعل = النهي «لا تفعل»، وJangan lupa = «لا تنسَ». وya في آخر الجملة تلطّف الطلب.
-      وhujan terus = المطر مستمر، وdari tadi = منذ قليل (منذ فترة اليوم).
+      وhujan terus = المطر مستمر، وdari tadi = منذ فترة (منذ وقت سابق اليوم).
   criteria:
   - paraphrase and explanation are in Modern Standard Arabic (فصحى), not Egyptian dialect; Indonesian/Javanese
     words stay in Latin script
@@ -665,7 +665,8 @@ items:
     register: neutral
     paraphrase: He's Egyptian, but he can speak Javanese.
     explanation: orang + country = a person from there (orang Mesir = an Egyptian); bahasa + name = the
-      language. tapi = but. bisa + a language means 'can speak it', no verb needed.
+      language. tapi = but. bisa + a language means 'can speak it', no verb needed. dia can mean he or
+      she.
   criteria:
   - paraphrase and explanation are in plain English
   - Notes that dia can be he or she
@@ -939,7 +940,7 @@ items:
   expect:
     grammar_ids: [jv.krama.function-words, jv.krama.questions, jv.demonstrative]
     register: krama
-    culture: Using krama with an older market seller is warmly received and often gets a friendlier price.
+    culture: Using krama with an older market seller is warmly received and makes the bargaining friendlier.
     paraphrase: Excuse me, how much is this?
     explanation: Krama (polite) Javanese. Nyuwun pangapunten = 'I beg your pardon', a polite opener like
       permisi. menika = this (iki in ngoko, ini in Indonesian); regine = its price (regane); pinten =
