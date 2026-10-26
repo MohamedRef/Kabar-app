@@ -11,6 +11,7 @@ use super::doc::{Tag, Word};
 use super::glossary::{Shift, SpeechLevel, WordInfo, WordLang};
 use super::{Panel, Peek, ReaderState};
 use crate::i18n::Msg;
+use crate::platform::{self, SpeakError};
 use crate::teach::{TeachInbox, TeachSeed};
 use crate::{Db, Screen, Ui};
 
@@ -170,6 +171,7 @@ fn WordCard(i: usize) -> Element {
     let breakdown = w.breakdown();
     let speak_text = w.analyzed.normalized.as_ref().map_or(surface.clone(), |n| n.full.clone());
     let taught = w.taught_approved().and_then(taught_info);
+    let speech_tag = if w.tag == Tag::Javanese { "jv-ID" } else { "id-ID" };
     let teach = use_context::<TeachInbox>();
     // Names and words with a draft waiting don't offer teaching.
     let teach_seed = (w.key.is_some() && w.taught_draft().is_none()).then(|| TeachSeed {
@@ -241,7 +243,7 @@ fn WordCard(i: usize) -> Element {
                     }
                 }
                 button {
-                    onclick: move |_| speak(&speak_text),
+                    onclick: move |_| speak(&speak_text, speech_tag),
                     "🔊 {ui.t(Msg::Listen)}"
                 }
                 if let Some(k) = key.clone() {
@@ -440,7 +442,7 @@ fn PhraseCard(tokens: Vec<usize>, save_first: bool) -> Element {
                         button { class: if save_first { "primary" } else { "" }, onclick: save, "{ui.t(Msg::SavePhrase)}" }
                     },
                 }
-                button { onclick: move |_| speak(&phrase), "🔊 {ui.t(Msg::Listen)}" }
+                button { onclick: move |_| speak(&phrase, "id-ID"), "🔊 {ui.t(Msg::Listen)}" }
                 button {
                     onclick: move |_| {
                         let mut t = st.toast;
@@ -468,13 +470,23 @@ fn PhraseCard(tokens: Vec<usize>, save_first: bool) -> Element {
     }
 }
 
-/// System text-to-speech until the Azure voices arrive through Kabar Cloud.
-fn speak(text: &str) {
-    let text = serde_json::to_string(text).unwrap_or_default();
+/// The device's own voice until the Azure voices arrive through Kabar Cloud:
+/// Android's TextToSpeech engine, the WebView's `speechSynthesis` elsewhere.
+fn speak(text: &str, lang_tag: &str) {
+    match platform::speak(text, lang_tag, false) {
+        Err(SpeakError::UseWebView) => {}
+        Ok(()) => return,
+        Err(e) => {
+            eprintln!("kabar: no reader audio: {e:?}");
+            return;
+        }
+    }
+    let payload = serde_json::json!({ "text": text, "lang": lang_tag });
     document::eval(&format!(
-        r#"if ("speechSynthesis" in window) {{
-            const u = new SpeechSynthesisUtterance({text});
-            u.lang = "id-ID";
+        r#"const p = {payload};
+        if ("speechSynthesis" in window) {{
+            const u = new SpeechSynthesisUtterance(p.text);
+            u.lang = p.lang;
             u.rate = 0.9;
             speechSynthesis.cancel();
             speechSynthesis.speak(u);

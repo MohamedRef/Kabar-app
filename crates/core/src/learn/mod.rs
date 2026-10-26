@@ -358,8 +358,6 @@ pub fn draft(prepared: &Prepared, answer: &Answer<LearnEntry>) -> TaughtEntry {
             note: a.note.clone(),
             false_friend: a.false_friend.clone(),
             arabic_origin: a.arabic_origin.clone(),
-            // Taught entries carry their levels in `levels`; the speech-level
-            // table and the Indonesian equivalent come from content packs.
             indonesian: None,
             speech_level: None,
             status: ReviewStatus::Unverified,

@@ -23,6 +23,7 @@ use self::doc::{Lexicon, ReadDoc, SegKind};
 use self::glossary::{Glossary, Shift};
 use crate::i18n::Msg;
 use crate::store::{Highlight, SavedText, TextKind};
+use crate::account::Cloud;
 use crate::{Db, Ui, platform};
 
 const READER_JS: &str = include_str!("../../assets/reader.js");
@@ -147,6 +148,14 @@ impl ReaderState {
         self.open.set(Some(Open { text, doc: Rc::new(doc) }));
     }
 
+    /// Statuses and highlights changed on another device: recolor in place.
+    fn reload_marks(mut self, db: &Db) {
+        let Some(open) = self.open.peek().clone() else { return };
+        let store = db.0.borrow();
+        self.statuses.set(store.word_statuses(open.doc.keys()).unwrap_or_default());
+        self.highlights.set(store.highlights(&open.text.id).unwrap_or_default());
+    }
+
     /// Re-reads the open text, picking up words taught since it was opened;
     /// the word card stays open.
     fn refresh(mut self, db: &Db) {
@@ -188,6 +197,16 @@ pub fn Reader() -> Element {
     use_hook({
         let db = db.clone();
         move || st.refresh(&db)
+    });
+    // Synced from another device while the Reader is open.
+    let cloud = use_context::<Cloud>();
+    use_effect({
+        let db = db.clone();
+        move || {
+            if *cloud.revision.read() > 0 {
+                st.reload_marks(&db);
+            }
+        }
     });
     let busy = use_signal(|| false);
     let recent = use_signal(|| db.0.borrow().recent_texts(12).unwrap_or_default());

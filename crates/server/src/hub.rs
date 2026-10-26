@@ -133,8 +133,10 @@ impl<'a, S: Sql> Hub<'a, S> {
                         ..Default::default()
                     });
                 }
-                conn.ready = true;
                 let replies = self.catch_up(last_seq)?;
+                // Live ops only after the device has the whole log, so it can
+                // keep `last_seq` as the highest seq it has seen.
+                conn.ready = matches!(replies.last(), Some(ServerMsg::CaughtUp { .. }));
                 let synced =
                     replies.iter().any(|m| matches!(m, ServerMsg::Ops { ops, .. } if !ops.is_empty()));
                 Ok(Outcome { replies, broadcast: vec![], synced })
@@ -164,19 +166,21 @@ impl<'a, S: Sql> Hub<'a, S> {
     pub fn catch_up(&self, after_seq: u64) -> Result<Vec<ServerMsg>, SqlError> {
         let mut out = Vec::new();
         let mut cursor = after_seq;
-        for _ in 0..MAX_PAGES_PER_HELLO {
+        for page in 0..MAX_PAGES_PER_HELLO {
             let (ops, more) = self.page(cursor, OPS_PAGE_SIZE)?;
             if let Some(last) = ops.last() {
                 cursor = last.seq;
             }
-            let empty = ops.is_empty();
-            if !empty {
-                out.push(ServerMsg::Ops { ops, more });
-            }
             if !more {
+                if !ops.is_empty() {
+                    out.push(ServerMsg::Ops { ops, more: false });
+                }
                 out.push(ServerMsg::CaughtUp { head_seq: cursor.max(self.head_seq()?) });
                 return Ok(out);
             }
+            // `more` only on the last page of a capped burst: the device sends
+            // hello again from there.
+            out.push(ServerMsg::Ops { ops, more: page + 1 == MAX_PAGES_PER_HELLO });
         }
         Ok(out)
     }
@@ -604,8 +608,15 @@ mod tests {
         }
         let replies = hub.catch_up(0).unwrap();
         assert_eq!(replies.len(), MAX_PAGES_PER_HELLO);
+        assert!(matches!(&replies[0], ServerMsg::Ops { more: false, .. }));
         let Some(ServerMsg::Ops { ops, more: true }) = replies.last() else { panic!() };
         let resume = ops.last().unwrap().seq;
+        // Not live until it has everything.
+        let mut tablet = conn("tab");
+        send(&hub, &mut tablet, &hello(0));
+        assert!(!tablet.ready);
+        send(&hub, &mut tablet, &hello(resume));
+        assert!(tablet.ready);
         let rest = hub.catch_up(resume).unwrap();
         assert!(matches!(&rest[0], ServerMsg::Ops { ops, more: false } if ops.len() == 10));
         assert_eq!(rest[1], ServerMsg::CaughtUp { head_seq: total as u64 });

@@ -1,10 +1,13 @@
-//! Reader tables: texts (LWW), word statuses (LWW per lexeme), highlights
-//! (LWW), saved words and quality feedback (append-only).
+//! Reader tables: texts, word statuses (per `{lang}:{lexeme}`) and highlights
+//! sync last-writer-wins; quality feedback syncs append-only; saved words stay
+//! on the device.
 
 use std::collections::HashMap;
 
 use kabar_protocol::reader::WordStatus;
+use kabar_protocol::sync::{MAX_PAYLOAD_BYTES, OpKind};
 use rusqlite::{OptionalExtension, params};
+use serde::{Deserialize, Serialize};
 
 use super::{Result, Store, now_ms};
 
@@ -54,7 +57,34 @@ pub struct Highlight {
     pub phrase: String,
 }
 
+/// What syncs for a text; `id` is the row id.
+#[derive(Serialize, Deserialize)]
+struct TextRow {
+    title: String,
+    body: String,
+    kind: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    source: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    layout: Option<String>,
+}
+
+#[derive(Serialize, Deserialize)]
+struct HighlightRow {
+    text_id: String,
+    start: usize,
+    end: usize,
+    phrase: String,
+}
+
+/// `{lang}:{lexeme}` → (lang, lexeme). Keys without a language are Indonesian.
+fn split_key(key: &str) -> (&str, &str) {
+    key.split_once(':').unwrap_or(("id", key))
+}
+
 impl Store {
+    /// Saves and syncs a text. A text too big for one sync op (a very long
+    /// article, roughly 30+ pages) stays on this device.
     pub fn save_text(
         &mut self,
         body: &str,
@@ -62,24 +92,25 @@ impl Store {
         source: Option<&str>,
         layout: Option<&str>,
     ) -> Result<SavedText> {
-        let hlc = self.clock.tick(now_ms());
         let id = uuid::Uuid::new_v4().to_string();
         let title = title_of(body);
-        self.conn.execute(
-            "INSERT INTO texts (id, title, body, kind, source, layout, device_id, hlc_wall, hlc_counter)
-             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
-            params![
-                id,
-                title,
-                body,
-                kind.as_str(),
-                source,
-                layout,
-                self.device.0,
-                hlc.wall_ms as i64,
-                hlc.counter
-            ],
-        )?;
+        let row = TextRow {
+            title: title.clone(),
+            body: body.into(),
+            kind: kind.as_str().into(),
+            source: source.map(Into::into),
+            layout: layout.map(Into::into),
+        };
+        let payload = serde_json::to_value(&row)?;
+        if serde_json::to_string(&payload)?.len() < MAX_PAYLOAD_BYTES - 1024 {
+            self.write_synced("texts", &id, OpKind::Upsert, Some(payload))?;
+        } else {
+            let hlc = self.clock.tick(now_ms());
+            self.conn.execute(
+                "INSERT INTO texts (id, payload, device_id, hlc_wall, hlc_counter) VALUES (?1, ?2, ?3, ?4, ?5)",
+                params![id, payload.to_string(), self.device.0, hlc.wall_ms as i64, hlc.counter],
+            )?;
+        }
         Ok(SavedText {
             id,
             title,
@@ -93,63 +124,62 @@ impl Store {
     /// Newest first.
     pub fn recent_texts(&self, limit: usize) -> Result<Vec<SavedText>> {
         let mut stmt = self.conn.prepare(
-            "SELECT id, title, body, kind, source, layout FROM texts WHERE deleted = 0
+            "SELECT id, payload FROM texts WHERE deleted = 0
              ORDER BY hlc_wall DESC, hlc_counter DESC LIMIT ?1",
         )?;
-        let rows = stmt.query_map([limit as i64], |r| {
-            Ok(SavedText {
-                id: r.get(0)?,
-                title: r.get(1)?,
-                body: r.get(2)?,
-                kind: TextKind::parse(&r.get::<_, String>(3)?),
-                source: r.get(4)?,
-                layout: r.get(5)?,
+        let rows: Vec<(String, String)> = stmt
+            .query_map([limit as i64], |r| Ok((r.get(0)?, r.get(1)?)))?
+            .collect::<rusqlite::Result<_>>()?;
+        Ok(rows
+            .into_iter()
+            .filter_map(|(id, json)| {
+                let row: TextRow = serde_json::from_str(&json).ok()?;
+                Some(SavedText {
+                    id,
+                    title: row.title,
+                    body: row.body,
+                    kind: TextKind::parse(&row.kind),
+                    source: row.source,
+                    layout: row.layout,
+                })
             })
-        })?;
-        Ok(rows.collect::<rusqlite::Result<_>>()?)
+            .collect())
     }
 
     pub fn delete_text(&mut self, id: &str) -> Result<()> {
-        let hlc = self.clock.tick(now_ms());
-        self.conn.execute(
-            "UPDATE texts SET deleted = 1, device_id = ?2, hlc_wall = ?3, hlc_counter = ?4 WHERE id = ?1",
-            params![id, self.device.0, hlc.wall_ms as i64, hlc.counter],
-        )?;
+        self.write_synced("texts", id, OpKind::Delete, None)?;
         Ok(())
     }
 
-    /// Statuses for the given lexemes; missing ones are `New`.
+    /// Statuses for the given `{lang}:{lexeme}` keys; missing ones are `New`.
     pub fn word_statuses<'a>(
         &self,
-        lexemes: impl IntoIterator<Item = &'a str>,
+        keys: impl IntoIterator<Item = &'a str>,
     ) -> Result<HashMap<String, WordStatus>> {
-        let mut stmt =
-            self.conn.prepare_cached("SELECT status FROM word_status WHERE lexeme = ?1 AND deleted = 0")?;
+        let mut stmt = self.conn.prepare_cached(
+            "SELECT json_extract(payload, '$.status') FROM word_status WHERE id = ?1 AND deleted = 0",
+        )?;
         let mut out = HashMap::new();
-        for lexeme in lexemes {
-            if out.contains_key(lexeme) {
+        for key in keys {
+            if out.contains_key(key) {
                 continue;
             }
             let status = stmt
-                .query_row([lexeme], |r| r.get::<_, String>(0))
+                .query_row([key], |r| r.get::<_, Option<String>>(0))
                 .optional()?
+                .flatten()
                 .and_then(|s| WordStatus::parse(&s))
                 .unwrap_or_default();
-            out.insert(lexeme.to_string(), status);
+            out.insert(key.to_string(), status);
         }
         Ok(out)
     }
 
-    pub fn set_word_status(&mut self, lexeme: &str, status: WordStatus) -> Result<()> {
-        let hlc = self.clock.tick(now_ms());
-        self.conn.execute(
-            "INSERT INTO word_status (lexeme, status, device_id, hlc_wall, hlc_counter, deleted)
-             VALUES (?1, ?2, ?3, ?4, ?5, 0)
-             ON CONFLICT(lexeme) DO UPDATE SET
-                status = excluded.status, device_id = excluded.device_id,
-                hlc_wall = excluded.hlc_wall, hlc_counter = excluded.hlc_counter, deleted = 0",
-            params![lexeme, status.as_str(), self.device.0, hlc.wall_ms as i64, hlc.counter],
-        )?;
+    /// Last writer wins across devices, per `{lang}:{lexeme}`.
+    pub fn set_word_status(&mut self, key: &str, status: WordStatus) -> Result<()> {
+        let (lang, lexeme) = split_key(key);
+        let payload = serde_json::json!({ "lexeme": lexeme, "lang": lang, "status": status.as_str() });
+        self.write_synced("word_status", key, OpKind::Upsert, Some(payload))?;
         Ok(())
     }
 
@@ -160,40 +190,33 @@ impl Store {
         end: usize,
         phrase: &str,
     ) -> Result<Highlight> {
-        let hlc = self.clock.tick(now_ms());
         let id = uuid::Uuid::new_v4().to_string();
-        self.conn.execute(
-            "INSERT INTO highlights (id, text_id, start_byte, end_byte, phrase, device_id, hlc_wall, hlc_counter)
-             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
-            params![id, text_id, start as i64, end as i64, phrase, self.device.0, hlc.wall_ms as i64, hlc.counter],
-        )?;
+        let row = HighlightRow { text_id: text_id.into(), start, end, phrase: phrase.into() };
+        self.write_synced("highlights", &id, OpKind::Upsert, Some(serde_json::to_value(&row)?))?;
         Ok(Highlight { id, text_id: text_id.into(), start, end, phrase: phrase.into() })
     }
 
     pub fn remove_highlight(&mut self, id: &str) -> Result<()> {
-        let hlc = self.clock.tick(now_ms());
-        self.conn.execute(
-            "UPDATE highlights SET deleted = 1, device_id = ?2, hlc_wall = ?3, hlc_counter = ?4 WHERE id = ?1",
-            params![id, self.device.0, hlc.wall_ms as i64, hlc.counter],
-        )?;
+        self.write_synced("highlights", id, OpKind::Delete, None)?;
         Ok(())
     }
 
     pub fn highlights(&self, text_id: &str) -> Result<Vec<Highlight>> {
         let mut stmt = self.conn.prepare(
-            "SELECT id, text_id, start_byte, end_byte, phrase FROM highlights
-             WHERE text_id = ?1 AND deleted = 0 ORDER BY start_byte",
+            "SELECT id, payload FROM highlights
+             WHERE json_extract(payload, '$.text_id') = ?1 AND deleted = 0",
         )?;
-        let rows = stmt.query_map([text_id], |r| {
-            Ok(Highlight {
-                id: r.get(0)?,
-                text_id: r.get(1)?,
-                start: r.get::<_, i64>(2)? as usize,
-                end: r.get::<_, i64>(3)? as usize,
-                phrase: r.get(4)?,
+        let rows: Vec<(String, String)> =
+            stmt.query_map([text_id], |r| Ok((r.get(0)?, r.get(1)?)))?.collect::<rusqlite::Result<_>>()?;
+        let mut out: Vec<Highlight> = rows
+            .into_iter()
+            .filter_map(|(id, json)| {
+                let h: HighlightRow = serde_json::from_str(&json).ok()?;
+                Some(Highlight { id, text_id: h.text_id, start: h.start, end: h.end, phrase: h.phrase })
             })
-        })?;
-        Ok(rows.collect::<rusqlite::Result<_>>()?)
+            .collect();
+        out.sort_by_key(|h| h.start);
+        Ok(out)
     }
 
     /// "Add to review": remembers the word with the sentence it was met in,
@@ -224,15 +247,12 @@ impl Store {
         Ok(n as usize)
     }
 
-    /// 👍 / 👎 on an answer. Append-only; the quality dashboard reads it.
+    /// 👍 / 👎 on an answer. Append-only and synced; the quality dashboard
+    /// reads it from `synced_rows("quality_feedback")`.
     pub fn add_feedback(&mut self, task: &str, item: &str, up: bool) -> Result<()> {
-        let hlc = self.clock.tick(now_ms());
-        let id = uuid::Uuid::new_v4().to_string();
-        self.conn.execute(
-            "INSERT INTO quality_feedback (id, task, item, vote, device_id, hlc_wall, hlc_counter)
-             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)",
-            params![id, task, item, if up { 1 } else { -1 }, self.device.0, hlc.wall_ms as i64, hlc.counter],
-        )?;
+        let id = uuid::Uuid::now_v7().to_string();
+        let payload = serde_json::json!({ "task": task, "item": item, "vote": if up { 1 } else { -1 } });
+        self.write_synced("quality_feedback", &id, OpKind::Append, Some(payload))?;
         Ok(())
     }
 }
@@ -267,11 +287,57 @@ mod tests {
     #[test]
     fn statuses_default_to_new_and_last_write_wins() {
         let mut s = Store::open_in_memory().unwrap();
-        s.set_word_status("baca", WordStatus::Learning).unwrap();
-        s.set_word_status("baca", WordStatus::Known).unwrap();
-        let st = s.word_statuses(["baca", "pusat"]).unwrap();
-        assert_eq!(st["baca"], WordStatus::Known);
-        assert_eq!(st["pusat"], WordStatus::New);
+        s.set_word_status("id:baca", WordStatus::Learning).unwrap();
+        s.set_word_status("id:baca", WordStatus::Known).unwrap();
+        let st = s.word_statuses(["id:baca", "id:pusat"]).unwrap();
+        assert_eq!(st["id:baca"], WordStatus::Known);
+        assert_eq!(st["id:pusat"], WordStatus::New);
+    }
+
+    #[test]
+    fn reader_writes_go_through_sync() {
+        let mut s = Store::open_in_memory().unwrap();
+        s.set_word_status("jv:arep", WordStatus::Learning).unwrap();
+        let t = s.save_text("arp dicul piro", TextKind::Pasted, None, None).unwrap();
+        s.add_highlight(&t.id, 4, 9, "dicul").unwrap();
+        s.add_feedback("gloss", "jv:cul", false).unwrap();
+        let ops = s.outbox(10).unwrap();
+        let tables: Vec<&str> = ops.iter().map(|o| o.table.as_str()).collect();
+        assert_eq!(tables, ["word_status", "texts", "highlights", "quality_feedback"]);
+        assert_eq!(ops[0].row_id, "jv:arep");
+        assert_eq!(ops[0].payload.as_ref().unwrap()["lexeme"], "arep");
+        assert_eq!(ops[0].payload.as_ref().unwrap()["lang"], "jv");
+        assert_eq!(ops[3].kind, OpKind::Append);
+        assert_eq!(s.synced_rows("quality_feedback").unwrap().len(), 1);
+    }
+
+    #[test]
+    fn remote_reader_rows_show_up() {
+        let mut a = Store::open_in_memory().unwrap();
+        let mut b = Store::open_in_memory().unwrap();
+        a.set_word_status("id:kabar", WordStatus::Known).unwrap();
+        let t = a.save_text("Apa kabar?", TextKind::Pasted, None, None).unwrap();
+        let h = a.add_highlight(&t.id, 0, 3, "Apa").unwrap();
+        let ops: Vec<_> = a
+            .outbox(10)
+            .unwrap()
+            .into_iter()
+            .enumerate()
+            .map(|(i, op)| kabar_protocol::sync::SeqOp { seq: i as u64 + 1, op })
+            .collect();
+        b.apply_remote(&ops, ops.len() as u64).unwrap();
+        assert_eq!(b.word_statuses(["id:kabar"]).unwrap()["id:kabar"], WordStatus::Known);
+        assert_eq!(b.recent_texts(5).unwrap()[0].body, "Apa kabar?");
+        assert_eq!(b.highlights(&t.id).unwrap(), [h]);
+    }
+
+    #[test]
+    fn huge_texts_stay_on_the_device() {
+        let mut s = Store::open_in_memory().unwrap();
+        let body = "Saya sedang membaca buku. ".repeat(4000);
+        let t = s.save_text(&body, TextKind::Pasted, None, None).unwrap();
+        assert!(s.outbox(10).unwrap().is_empty());
+        assert_eq!(s.recent_texts(1).unwrap()[0].id, t.id);
     }
 
     #[test]
@@ -299,7 +365,7 @@ mod tests {
         let dir = tempfile::tempdir().unwrap();
         let path = dir.path().join("k.db");
         let mut s = Store::open(&path).unwrap();
-        s.set_word_status("kabar", WordStatus::Known).unwrap();
+        s.set_word_status("id:kabar", WordStatus::Known).unwrap();
         let written: (i64, u32) = s
             .conn
             .query_row("SELECT hlc_wall, hlc_counter FROM word_status", [], |r| Ok((r.get(0)?, r.get(1)?)))

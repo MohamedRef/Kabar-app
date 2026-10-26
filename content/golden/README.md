@@ -32,7 +32,7 @@ Rules for every item:
 | `grade_answer` | `{exercise, references[], answer}` | `GradeAnswer` from `crates/core/src/ai/tasks.rs`, exactly |
 | `roleplay_turn` | `{persona: mas_dimas\|bu_siti\|mbak_gadis\|mas_ardi, level, scenario, history[{role: persona\|learner, text}], learner}` | `{reply, corrections[{text, fix, why_en, why_ar}], register}` |
 | `placement_test` | `{lang, answers[{item, prompt, answer, correct}]}` | `{level, confidence, strengths[], gaps[]}` |
-| `level_check` | `{lang, current_level, stats{…}, samples[]}` | `{level, moved, evidence[], next_focus[]}` |
+| `level_check` | `{lang, current_level, stats{…}, samples[]}` | `{level, moved: up\|down\|stay, evidence[], next_focus[]}` |
 | `daily_plan` | `{date, goal_minutes, due_reviews, weak_points[], next_lesson, streak_days, time_of_day}` | `{items[{kind, minutes, why}], message_ar, message_en}` |
 | `daily_recap` | `{date, minutes, reviews{done, correct}, lessons_done[], mistakes[], goal_met}` | `{message_ar, message_en, highlight, tomorrow}` |
 | `weekly_report` | `{week, days[{date, minutes, reviews, accuracy}], new_words, lessons_done[], weak_points[]}` | `{summary_ar, summary_en, wins[], focus_next_week[]}` |
@@ -44,6 +44,7 @@ Rules for every item:
 | `guess_sketch` | `{target_word?, capture?}` | `{guess_id, alternatives[]}` |
 | `check_strokes` | `{target, script: latin\|aksara_jawa, capture?}` | `{correct, issues[]}` |
 | `mind_map` | `{topic, level, known_words[], lang}` | `{center, branches[{label, words[{word, gloss_en, gloss_ar}]}]}` |
+| `learn_entry` | `{lang, word, context, hints{normalized?, root?, affixes[]?}, sources[{kind, title, url, text}]}`, exactly as `kabar_core::learn::prepare` builds it | `LearnEntry` from `crates/core/src/learn/mod.rs`, exactly |
 
 The router thread writes each task's prompt against these shapes; change a
 shape only together with its prompt.
@@ -67,6 +68,9 @@ The router's prompts must agree with these (or the sets change with them):
   `lessons_done[{id, title}]`, `mistakes[{prompt, answer, expected}]`,
   `week` is the Monday's date, and `confidence` is `high|medium|low`.
   `daily_plan.items[].kind` is `review|lesson|weak_spot|roleplay|reading|listening`.
-- `level_check` never moves a learner down and never skips a level; a learner
-  moves up when the level test reaches its `pass_mark` (0.75 up to bipa2/j4,
-  0.70 above). This is a policy proposal pending the learner's approval.
+- `level_check` moves at most one level per check; `moved` is `up|down|stay`.
+  Up when the current level test reaches its `pass_mark` (0.75 up to bipa2/j4,
+  0.70 above). Otherwise down only on clear, sustained evidence: the level test
+  under 0.45, or `review_accuracy` < 0.55 and `retention` < 0.60 over at least
+  14 `active_days`. Never below bipa1/j1 or above bipa7/j6; otherwise stay.
+  The learner approved down moves; the thresholds are a proposal.
