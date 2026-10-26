@@ -236,6 +236,10 @@ fn is_zero(v: &i8) -> bool {
     *v == 0
 }
 
+/// The proxy's MP3 bitrate (`audio-24khz-48kbitrate-mono-mp3`, constant), so a
+/// file's size tells its length.
+pub const TTS_MP3_KBPS: u32 = 48;
+
 /// `POST /v1/tts` → `audio/mpeg` (24 kHz mono MP3). The server builds the
 /// SSML, so only plain text is accepted.
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]

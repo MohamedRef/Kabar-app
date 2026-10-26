@@ -11,6 +11,7 @@ mod i18n;
 mod icons;
 mod journey;
 mod lesson;
+mod listen;
 mod packs;
 mod penlab;
 mod platform;
@@ -59,6 +60,8 @@ pub enum Screen {
     Journal,
     /// Cost & limits (spec §19), from Settings.
     Cost,
+    /// Sinetron and Kabar Radio.
+    Listen,
 }
 
 impl Screen {
@@ -78,12 +81,14 @@ impl Screen {
             Self::Teach => Msg::NavTeach,
             Self::Journal => Msg::NavJournal,
             Self::Cost => Msg::CostTitle,
+            Self::Listen => Msg::NavListen,
         }
     }
 
     /// Hidden from the phone's bottom bar, which keeps five items within
-    /// thumb reach. Kak Nur, the journal and Settings are linked from Today
-    /// there (the journal from Kak Nur too); Studio and Pen Lab from Settings.
+    /// thumb reach. Kak Nur, the journal, Watch & listen and Settings are
+    /// linked from Today there (the journal from Kak Nur too); Studio and Pen
+    /// Lab from Settings.
     fn secondary(self) -> bool {
         matches!(
             self,
@@ -95,6 +100,7 @@ impl Screen {
                 | Self::Devices
                 | Self::Teach
                 | Self::Cost
+                | Self::Listen
         )
     }
 }
@@ -420,6 +426,7 @@ fn Shell() -> Element {
         Screen::Reader,
         Screen::Review,
         Screen::Play,
+        Screen::Listen,
         Screen::Coach,
         Screen::Journal,
         Screen::Studio,
@@ -462,6 +469,7 @@ fn Shell() -> Element {
                     Screen::Devices => rsx! { account::AccountScreen {} },
                     Screen::Teach => rsx! { teach::TeachScreen {} },
                     Screen::Cost => rsx! { cost::CostScreen {} },
+                    Screen::Listen => rsx! { listen::ListenScreen {} },
                     Screen::Lesson => rsx! { lesson::LessonScreen {} },
                 }
             }

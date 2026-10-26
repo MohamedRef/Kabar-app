@@ -56,6 +56,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] Read Kak Nur's lines in `content/coach/kak-nur.toml` (Egyptian Arabic, MSA, English). Mark what to change or say OK, and I set `reviewed = true`.
 - [ ] Play (M10, [RUN.md §10](RUN.md)): try each game once. For Kabar Pagi audio, install the Indonesian voice "Damayanti" (System Settings → Accessibility → Spoken Content → System voice → Manage Voices) and check a story plays.
 - [ ] Javanese games (M11, [RUN.md §10](RUN.md)): play the Unggah-Ungguh scenes and a d/dh · t/th round. Ask a Javanese speaker (or check yourself) whether the lines in `content/games/unggah-ungguh.toml` and the pairs in `content/games/minimal-pairs.toml` sound right; tell me what to fix and I'll set `reviewed = true`.
+- [ ] Watch & listen (M12, [RUN.md §13](RUN.md)): with Kabar Cloud signed in, play Sinetron episode 1 and Kabar Radio *Apa kabar, Kota Tua?*. Tell me if any character's voice or pitch sounds wrong. Then download the Radio episode on the S24 Ultra and play it in airplane mode.
 - [ ] Review the M10 content: the stories in `content/pagi/stories.jsonl` and the Pasar! seller lines in `content/games/pasar.toml` (Javanese register especially). Say OK or mark changes, and I set them reviewed.
 
 ## 3. Galaxy S24 Ultra and Tab S11 (~45 min) — [RUN.md §3–4](RUN.md)
@@ -121,7 +122,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] No rush: Javanese review with a native speaker if you can (`content/javanese/speech-levels.jsonl`, `content/glosses/jv/`, `cargo run -p kabar-tools -- gloss review --lang jv 1`). Everything Javanese stays *unverified* until then.
 - [ ] Commit the changed files under `content/` and push.
 
-## 6b. Offline packs: natural-voice audio per unit (~15 min of yours, ~3 h unattended) — [RUN.md §11](RUN.md)
+## 6b. Offline packs: natural-voice audio per unit (~15 min of yours, ~3 h unattended) — [RUN.md §12](RUN.md)
 
 Uses the same Azure F0 key as step 5.4 (free; F0 never bills). All of BIPA 1–2 and J1–J3 is ~83k characters, about a sixth of the monthly free quota.
 
@@ -144,7 +145,7 @@ This decides which free engine answers each AI task. Until it runs, every route 
 - [ ] Push `bakeoff/runs/<date>/` or zip and send it. I judge it blind, then write `docs/bakeoff-report.md` and the final `prompts/routes.toml`.
 - [ ] Spot-check at least 10% of the scored items, plus every Javanese one.
 
-## 7b. Teach Kabar (~10 min, after Kabar Cloud is up) — [RUN.md §9](RUN.md)
+## 7b. Teach Kabar (~10 min, after Kabar Cloud is up) — [RUN.md §8](RUN.md)
 
 - [ ] Mac app → **Teach Kabar**: tap **Search Google** and check it opens your browser (not a window inside Kabar). Same on the phone.
 - [ ] Choose **Wiktionary** for `kabar` and tap **Teach Kabar**. If it says Wiktionary can't be reached, tell me: the WebView may block the request.
