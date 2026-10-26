@@ -35,6 +35,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] Start the big downloads in a second terminal now so they run during the builds below:
   ```bash
   just content-fetch            # frequency sources, ~60 MB
+  just content-fetch nusa       # Javanese corpora from GitHub, ~5 MB
   just content-fetch kaikki     # Wiktionary extracts, ~100 MB
   just content-fetch jvwiki     # Javanese Wikipedia dump, ~70 MB
   ```
@@ -48,6 +49,8 @@ just check                # fmt + clippy + tests: all green
 - [ ] Build the app icon once: `cd assets/export/macos && iconutil -c icns Kabar.iconset -o Kabar.icns && cd -`.
 - [ ] `just bundle-mac` → `dist/mac/Kabar.app`. Open it from Finder and check the icon in the Dock and Finder.
 - [ ] Draw in Pen Lab with the trackpad once to check that strokes appear under the pointer.
+- [ ] Kak Nur (M7, [RUN.md §7](RUN.md)): go through onboarding, tick a plan item, open the recap and the Kak Nur screen. Tell me anything that reads wrong or feels off.
+- [ ] Read Kak Nur's lines in `content/coach/kak-nur.toml` (Egyptian Arabic, MSA, English). Mark what to change or say OK, and I set `reviewed = true`.
 
 ## 3. Galaxy S24 Ultra and Tab S11 (~45 min) — [RUN.md §3–4](RUN.md)
 
@@ -58,6 +61,16 @@ just check                # fmt + clippy + tests: all green
 - [ ] Check the launcher icon (round and adaptive), the notification-bar icon and the splash screen on both devices.
 - [ ] **Pen Lab** on each device (phone: Settings → Pen Lab), following the 7 steps in RUN.md §4. Save, **Copy JSON**, and send me one report per device. DeX on the tablet is a bonus third report.
 - [ ] Tell me how the ink *feels*: does it trail behind the pen tip, and by roughly how much?
+- [ ] **Golden captures** for the pen tasks (~30 min, any time): `cargo run -p kabar-tools -- golden stats` lists 104 items tagged `needs-capture` in `content/golden/read_handwriting.yaml`, `guess_sketch.yaml` and `check_strokes.yaml`. Each item's `input.capture` says what to write or draw, on which device and with which pen. Save each as `fixtures/golden/<task>/<item id>.png` (strokes as JSON if the app offers it) and push or send them; I wire them in.
+
+## 3b. Journey Map and Lesson Player (~15 min) — [RUN.md](RUN.md)
+
+- [ ] Mac: `just run-mac` → Journey. Drag the map, zoom with the trackpad pinch and the +/− buttons, open Jakarta, then open "Selamat pagi!".
+- [ ] Mac: play both test lessons (`bipa1.u01.l01`, `bipa1.u01.l02`) to the end. Check that the Indonesian voice speaks in listen and dictation exercises (macOS has an Indonesian system voice; if it's silent, add "Damayanti" under System Settings → Accessibility → Spoken Content → System voice → Manage Voices).
+- [ ] S24 Ultra: Journey shows the vertical route; "Lanjut" opens the current lesson. Answer one translation with the Samsung handwriting keyboard and the S Pen.
+- [ ] Tab S11: the full map pans with the pen and pinches with two fingers. Close a lesson halfway; reopening it resumes at the same exercise.
+- [ ] On both devices, check the Indonesian voice is installed: Settings → General management → Text-to-speech output → engine settings (Samsung or Google) → Install voice data → Indonesian. If the app shows "download the Indonesian voice", that's this step.
+- [ ] Tell me whether listen/dictation, slow replay and review audio cards speak on Android (the app now uses Android's own TextToSpeech). The first tap after launch can take a second while the voice engine starts.
 
 ## 4. Google sign-in clients (~10 min) — [CLOUD.md §3.2](CLOUD.md)
 
@@ -81,17 +94,20 @@ just check                # fmt + clippy + tests: all green
   cd -
   ```
   Only in a month with Max credit: `ANTHROPIC_API_KEY` plus `CLAUDE_ENABLED = "true"`.
+- [ ] 5.4b Reminders (M7, [CLOUD.md §3.4](CLOUD.md)): in the Firebase console add the Android app `app.kabar` and keep `google-services.json` for the app build, outside the repo. Then Project settings → Service accounts → Generate new private key, `cd crates/server && wrangler secret put FCM_SERVICE_ACCOUNT < that-file.json && cd -`, and delete the file.
 - [ ] 5.5 `just deploy-cloud`, then `curl https://kabar-cloud.<subdomain>.workers.dev/v1/health`.
 - [ ] 5.6 Commit `crates/server/wrangler.toml` (the ids aren't secrets), then send me the URL.
+- [ ] 5.6b Connect the app ([CLOUD.md §3.6](CLOUD.md)): `cp .env.example .env`, fill in the URL and the Desktop client's id + secret, then `just run-mac` → Settings → **Account & devices** → **Sign in with Google**. Rebuild the APK (`just apk`, `just install <serial>`) and sign in on both Galaxy devices. Save a word in **Try sync** on the phone and watch it appear on the tablet.
 - [ ] 5.7 Optional, if you use Claude Code on the Mac: `claude plugin marketplace add cloudflare/skills`, then `claude plugin install cloudflare@cloudflare` (Cloudflare's own skills + MCP; signs in to Cloudflare in the browser). Kabar keeps deploying with wrangler.
 
 ## 6. Content pipeline (~30 min, needs the downloads from step 1) — [CONTENT.md](CONTENT.md), [RUN.md §6](RUN.md)
 
 - [ ] `just content-freq`: should produce no diff in `content/freq/id.tsv`.
-- [ ] `just content-kaikki`: Wiktionary import plus the Arabic Bridge cross-check report.
-- [ ] `just content-freq-jv` → `content/freq/jv.tsv` (Javanese frequency list).
+- [ ] `just content-kaikki`: Wiktionary import plus the Arabic Bridge cross-check report. Send me `build/bridge-todo.txt`.
+- [ ] `just content-freq-jv` → `content/freq/jv.tsv`: adds Javanese Wikipedia to the NusaWrites/NusaX counts. The Javanese gloss plan doesn't move.
 - [ ] `just content-check`: everything validates.
 - [ ] `just content-review 1` → open the review sheet in `build/review/` and mark what's wrong.
+- [ ] No rush: Javanese review with a native speaker if you can (`content/javanese/speech-levels.jsonl`, `content/glosses/jv/`, `cargo run -p kabar-tools -- gloss review --lang jv 1`). Everything Javanese stays *unverified* until then.
 - [ ] Commit the changed files under `content/` and push.
 
 ## 7. Engine bake-off (~1 h, can run overnight) — [BAKEOFF.md](BAKEOFF.md)
@@ -102,6 +118,13 @@ This decides which free engine answers each AI task. Until it runs, every route 
 - [ ] Optional: add `DAYTONA_API_KEY` as an environment secret so the heavy 8–9B check can run there instead of the Mac.
 - [ ] Run the bake-off runner (command will be in BAKEOFF.md once it lands) and send me `bakeoff/runs/`. I score it blind with you, then write `docs/bakeoff-report.md` and the final `prompts/routes.toml`.
 - [ ] Spot-check at least 10% of the scored items, plus every Javanese one.
+
+## 7b. Teach Kabar (~10 min, after Kabar Cloud is up) — [RUN.md §8](RUN.md)
+
+- [ ] Mac app → **Teach Kabar**: tap **Search Google** and check it opens your browser (not a window inside Kabar). Same on the phone.
+- [ ] Choose **Wiktionary** for `kabar` and tap **Teach Kabar**. If it says Wiktionary can't be reached, tell me: the WebView may block the request.
+- [ ] Save the answer of `https://en.wiktionary.org/api/rest_v1/page/definition/kabar` (open it in the browser, then Save As) as `fixtures/learn/wiktionary.kabar.json`, replacing the hand-written one, and run `just check`.
+- [ ] Teach one real word you met (e.g. from a WhatsApp chat), approve it, and check it shows under **My dictionary** on the tablet after sync.
 
 ## 8. What to send back
 

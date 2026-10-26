@@ -1,0 +1,374 @@
+# Golden set: read_handwriting (docs/SPEC.md §3, §4, §5, §19).
+# input: {lang, expected?, capture?}; the image or stroke file goes in `image` once captured.
+# expect: {text} = exactly what the learner wrote (including the learner's own misspellings).
+# Every item needs a real capture on the learner's devices: tag needs-capture, follow input.capture,
+# save under fixtures/golden/read_handwriting/<id>.png (and .json strokes), then set `image`.
+task: read_handwriting
+version: 1
+rubric: |
+  Score on exact text: 3 = identical to expect.text (case, spaces, hyphens, punctuation, digits); 2 = one character off or a case/punctuation slip only; 1 = the words are recognisable but two or more characters are wrong; 0 = wrong words or invented text.
+  Transcribe what is on the canvas, never what `expected` says: a learner's misspelling (berkerja, makananya) must survive, because grade_answer judges it next.
+  Crossed-out words are left out; a word written above a caret is inserted where the caret points.
+  Indonesian/Javanese letter clusters must not be "autocorrected" to English words (nomin is not nominal, wes is not west).
+  Javanese chat spellings (arp, piro, ng) stay as written; Rupiah amounts keep their dots (Rp26.000.000).
+  Empty or scribble-only canvases return an empty string, never a guess.
+items:
+  # --- Dictation with an expected answer (write-mode lessons) ---
+  - id: read_handwriting-001
+    lang: id
+    input:
+      lang: id
+      expected: Saya sedang membaca buku.
+      capture: "Galaxy Tab S11, S Pen, write-mode lesson canvas, landscape. Write in neat print, one line, with a capital S and a final full stop: Saya sedang membaca buku."
+    expect:
+      text: Saya sedang membaca buku.
+    tags: [needs-capture, tablet, print, dictation, test-text]
+    verified: false
+  - id: read_handwriting-002
+    lang: id
+    input:
+      lang: id
+      expected: Rumahnya dibersihkan kemarin.
+      capture: "Galaxy Tab S11, S Pen, write-mode lesson canvas. Write in joined cursive at normal speed, one line: Rumahnya dibersihkan kemarin."
+    expect:
+      text: Rumahnya dibersihkan kemarin.
+    tags: [needs-capture, tablet, cursive, dictation, test-text]
+    verified: false
+  - id: read_handwriting-003
+    lang: id
+    input:
+      lang: id
+      expected: Anak-anak bermain di taman.
+      capture: "Galaxy S24 Ultra, built-in S Pen, review answer field, portrait. Write in print: Anak-anak bermain di taman. Make the hyphen in Anak-anak clearly visible."
+    expect:
+      text: Anak-anak bermain di taman.
+    tags: [needs-capture, phone, print, reduplication, test-text]
+    verified: false
+  - id: read_handwriting-004
+    lang: id
+    input:
+      lang: id
+      expected: Kesehatan itu penting.
+      capture: "Galaxy S24 Ultra, S Pen, review answer field. Write quickly and a bit messily, as on the bus: Kesehatan itu penting."
+    expect:
+      text: Kesehatan itu penting.
+    tags: [needs-capture, phone, messy, test-text]
+    verified: false
+  - id: read_handwriting-005
+    lang: id
+    input:
+      lang: id
+      expected: Apa kabar?
+      capture: "Galaxy S24 Ultra, S Pen, review answer field. Write in print with a large question mark: Apa kabar?"
+    expect:
+      text: Apa kabar?
+    tags: [needs-capture, phone, print, punctuation, test-text]
+    verified: false
+  - id: read_handwriting-006
+    lang: id
+    input:
+      lang: id
+      expected: bekerja
+      capture: "Galaxy Tab S11, S Pen, fill-in-the-blank canvas. Deliberately write the misspelling berkerja (with the extra r) in print, lowercase."
+    expect:
+      text: berkerja
+    criteria:
+      - "Returns berkerja exactly; does not silently fix it to the expected bekerja."
+    tags: [needs-capture, tablet, print, misspelling, expected-mismatch]
+    verified: false
+  - id: read_handwriting-007
+    lang: id
+    input:
+      lang: id
+      expected: Makanannya lezat.
+      capture: "Galaxy Tab S11, S Pen, write-mode lesson canvas. Deliberately write with two mistakes, in print: Makananya lesat. (one n missing, s instead of z)."
+    expect:
+      text: Makananya lesat.
+    criteria:
+      - "Keeps both learner mistakes (Makananya, lesat)."
+    tags: [needs-capture, tablet, misspelling, expected-mismatch]
+    verified: false
+  - id: read_handwriting-008
+    lang: id
+    input:
+      lang: id
+      expected: Surat itu ditulis oleh Sari.
+      capture: "Galaxy Tab S11, S Pen, write-mode lesson canvas. Write: Surat itu menulis oleh Sari. Then cross out menulis with one horizontal line and write ditulis right after it on the same line."
+    expect:
+      text: Surat itu ditulis oleh Sari.
+    criteria:
+      - "Drops the crossed-out menulis and keeps the replacement."
+    tags: [needs-capture, tablet, crossed-out, edit]
+    verified: false
+  - id: read_handwriting-009
+    lang: id
+    input:
+      lang: id
+      expected: Saya sedang minum teh.
+      capture: "Galaxy Tab S11, S Pen, write-mode lesson canvas. Write: Saya minum teh. Then draw a caret (^) between Saya and minum and write sedang small above the caret."
+    expect:
+      text: Saya sedang minum teh.
+    criteria:
+      - "Inserts the caret word in the right place."
+    tags: [needs-capture, tablet, caret, edit]
+    verified: false
+
+  # --- Quick Capture and Listening Companion (no expected answer) ---
+  - id: read_handwriting-010
+    lang: id
+    input:
+      lang: id
+      capture: "Galaxy S24 Ultra, S Pen pulled out, Quick Capture canvas. Write in lowercase print, one line: iphone 17 pm 512gb resmi ibox mulus nomin garansi jalan minat wa"
+    expect:
+      text: iphone 17 pm 512gb resmi ibox mulus nomin garansi jalan minat wa
+    criteria:
+      - "Keeps nomin, pm, wa and 512gb as written (no English autocorrect)."
+    tags: [needs-capture, phone, quick-capture, listing, digits, test-text]
+    verified: false
+  - id: read_handwriting-011
+    lang: id
+    input:
+      lang: id
+      capture: "Galaxy S24 Ultra, S Pen, Quick Capture canvas. Write the price exactly as shown, with dots: Rp26.000.000"
+    expect:
+      text: Rp26.000.000
+    tags: [needs-capture, phone, quick-capture, price, digits]
+    verified: false
+  - id: read_handwriting-012
+    lang: id
+    input:
+      lang: id
+      capture: "Galaxy S24 Ultra, S Pen, Quick Capture canvas. Write on two lines: first line Rp1.500, second line seribu lima ratus."
+    expect:
+      text: "Rp1.500\nseribu lima ratus"
+    criteria:
+      - "Keeps the line break between the two lines (or a single space if the engine flattens lines; anything else fails)."
+    tags: [needs-capture, phone, multiline, price]
+    verified: false
+  - id: read_handwriting-013
+    lang: id
+    input:
+      lang: id
+      capture: "Galaxy Tab S11, S Pen, Listening Companion side panel in split screen next to YouTube. Scribble fast, as heard, lowercase: gimana kabarnya"
+    expect:
+      text: gimana kabarnya
+    tags: [needs-capture, tablet, split-screen, fast, casual]
+    verified: false
+  - id: read_handwriting-014
+    lang: id
+    input:
+      lang: id
+      capture: "Galaxy Tab S11, S Pen, Listening Companion panel. Write the misheard spelling exactly: trimakasih (one word, no spaces)."
+    expect:
+      text: trimakasih
+    criteria:
+      - "Returns trimakasih as written, not terima kasih."
+    tags: [needs-capture, tablet, misspelling, listening]
+    verified: false
+  - id: read_handwriting-015
+    lang: id
+    input:
+      lang: id
+      capture: "Galaxy S24 Ultra, S Pen, Quick Capture canvas. Write in print, mixing Jakarta slang and English: Which is, gue literally capek banget."
+    expect:
+      text: Which is, gue literally capek banget.
+    tags: [needs-capture, phone, code-mixing, slang, test-text]
+    verified: false
+  - id: read_handwriting-016
+    lang: id
+    input:
+      lang: id
+      capture: "Galaxy S24 Ultra, S Pen, Quick Capture canvas. Write all in CAPITALS, as on a shop sign: WARUNG MAKAN SEDERHANA"
+    expect:
+      text: WARUNG MAKAN SEDERHANA
+    tags: [needs-capture, phone, capitals, sign]
+    verified: false
+  - id: read_handwriting-017
+    lang: id
+    input:
+      lang: id
+      capture: "Galaxy Tab S11, S Pen, Kabar Notebook canvas. Write the word large and slanted about 30 degrees upward: selamat"
+    expect:
+      text: selamat
+    tags: [needs-capture, tablet, notebook, slanted, bridge]
+    verified: false
+  - id: read_handwriting-018
+    lang: id
+    input:
+      lang: id
+      capture: "Galaxy Tab S11, S Pen, Kabar Notebook canvas. Write very small (letters about 3 mm high) in a corner: kalimat"
+    expect:
+      text: kalimat
+    tags: [needs-capture, tablet, notebook, tiny, bridge]
+    verified: false
+  - id: read_handwriting-019
+    lang: id
+    input:
+      lang: id
+      capture: "Galaxy S24 Ultra, S Pen, Quick Capture canvas. Write the word, then a heart emoji drawn by hand after it: kopi ♥ (draw the heart as a shape, not a letter)."
+    expect:
+      text: kopi
+    criteria:
+      - "Returns kopi; the drawn heart is either dropped or rendered as ♥/❤, never as letters."
+    tags: [needs-capture, phone, doodle, emoji]
+    verified: false
+  - id: read_handwriting-020
+    lang: id
+    input:
+      lang: id
+      capture: "Galaxy Tab S11, S Pen, Kabar Notebook canvas. Write the names in print with capitals: Pak Budi di Madiun, Sari di Kairo."
+    expect:
+      text: Pak Budi di Madiun, Sari di Kairo.
+    tags: [needs-capture, tablet, proper-nouns]
+    verified: false
+  - id: read_handwriting-021
+    lang: id
+    input:
+      lang: id
+      capture: "Galaxy S24 Ultra, S Pen, Quick Capture canvas. Write the time and date in print: jam 07.30, Senin 26/10"
+    expect:
+      text: jam 07.30, Senin 26/10
+    tags: [needs-capture, phone, digits, time, date]
+    verified: false
+  - id: read_handwriting-022
+    lang: id
+    input:
+      lang: id
+      capture: "Galaxy Tab S11, S Pen, write-mode lesson canvas. Write with the pen tip pressed very lightly so strokes are thin and faint: paham"
+    expect:
+      text: paham
+    tags: [needs-capture, tablet, faint, low-pressure, bridge]
+    verified: false
+
+  # --- Javanese (Latin script) ---
+  - id: read_handwriting-023
+    lang: jv
+    input:
+      lang: jv
+      capture: "Galaxy S24 Ultra, S Pen, Quick Capture canvas. Write in lowercase print, as seen in a chat: sek tak lapor pusat"
+    expect:
+      text: sek tak lapor pusat
+    tags: [needs-capture, phone, javanese, chat, test-text]
+    verified: false
+  - id: read_handwriting-024
+    lang: jv
+    input:
+      lang: jv
+      capture: "Galaxy S24 Ultra, S Pen, Quick Capture canvas. Write in lowercase print with the question mark: ng prabowo?"
+    expect:
+      text: ng prabowo?
+    criteria:
+      - "Keeps ng as written (not ng → nang) and prabowo lowercase as written."
+    tags: [needs-capture, phone, javanese, chat, proper-noun, test-text]
+    verified: false
+  - id: read_handwriting-025
+    lang: jv
+    input:
+      lang: jv
+      capture: "Galaxy S24 Ultra, S Pen, Quick Capture canvas. Write in quick lowercase cursive: arp dicul piro"
+    expect:
+      text: arp dicul piro
+    criteria:
+      - "Keeps the chat spellings arp and piro (not arep, pira)."
+    tags: [needs-capture, phone, javanese, chat, cursive, test-text]
+    verified: false
+  - id: read_handwriting-026
+    lang: jv
+    input:
+      lang: jv
+      expected: Kowe wis mangan?
+      capture: "Galaxy Tab S11, S Pen, Unggah-Ungguh Simulator answer box. Write in print: Kowe wis mangan?"
+    expect:
+      text: Kowe wis mangan?
+    tags: [needs-capture, tablet, javanese, ngoko, test-text]
+    verified: false
+  - id: read_handwriting-027
+    lang: jv
+    input:
+      lang: jv
+      expected: Panjenengan sampun dhahar?
+      capture: "Galaxy Tab S11, S Pen, Unggah-Ungguh Simulator answer box. Write in joined cursive: Panjenengan sampun dhahar? Make the dh clearly two letters."
+    expect:
+      text: Panjenengan sampun dhahar?
+    criteria:
+      - "Keeps the digraph dh (not d) and the double n in Panjenengan."
+    tags: [needs-capture, tablet, javanese, krama-inggil, cursive, test-text]
+    verified: false
+  - id: read_handwriting-028
+    lang: jv
+    input:
+      lang: jv
+      expected: Sampeyan sampun nedha?
+      capture: "Galaxy S24 Ultra, S Pen, review answer field. Deliberately write nedha without the h: Sampeyan sampun neda?"
+    expect:
+      text: Sampeyan sampun neda?
+    criteria:
+      - "Returns neda as written, not the expected nedha."
+    tags: [needs-capture, phone, javanese, krama, misspelling, expected-mismatch]
+    verified: false
+  - id: read_handwriting-029
+    lang: jv
+    input:
+      lang: jv
+      capture: "Galaxy S24 Ultra, S Pen, Quick Capture canvas. Write in print, Surabaya style: Koen wis mangan ta, rek?"
+    expect:
+      text: Koen wis mangan ta, rek?
+    tags: [needs-capture, phone, javanese, arek, dialect, test-text]
+    verified: false
+  - id: read_handwriting-030
+    lang: jv
+    input:
+      lang: jv
+      capture: "Galaxy Tab S11, S Pen, Kabar Notebook canvas. Write the word lèlè (catfish) in print, with a grave accent drawn clearly over each e."
+    expect:
+      text: lèlè
+    criteria:
+      - "Keeps both è accents; plain lele scores 2 at most."
+    tags: [needs-capture, tablet, javanese, diacritics]
+    verified: false
+
+  # --- Edge cases ---
+  - id: read_handwriting-031
+    lang: id
+    input:
+      lang: id
+      expected: kursi
+      capture: "Galaxy S24 Ultra, S Pen, review answer field. Leave the canvas empty except for one short accidental dot near the middle, then submit."
+    expect:
+      text: ""
+    criteria:
+      - "Returns an empty string; does not guess kursi from the expected answer."
+    tags: [needs-capture, phone, empty, edge, expected-mismatch]
+    verified: false
+  - id: read_handwriting-032
+    lang: id
+    input:
+      lang: id
+      expected: kursi
+      capture: "Galaxy S24 Ultra, S Pen, review answer field. Write the Arabic word in Arabic script instead of Latin: كرسي"
+    expect:
+      text: كرسي
+    criteria:
+      - "Recognises Arabic script and returns it as Arabic, not as a Latin guess."
+    tags: [needs-capture, phone, arabic-script, wrong-script, edge]
+    verified: false
+  - id: read_handwriting-033
+    lang: id
+    input:
+      lang: id
+      capture: "Galaxy Tab S11, S Pen, write-mode lesson canvas. Write cursive with a tight loop on the l and a tall t, so l and t look alike: lalat"
+    expect:
+      text: lalat
+    tags: [needs-capture, tablet, cursive, ambiguous-letters]
+    verified: false
+  - id: read_handwriting-034
+    lang: id
+    input:
+      lang: id
+      capture: "Galaxy Tab S11 in DeX mode, S Pen, Kabar Notebook. Write two words with no gap between them, as one run: tidakapa (meaning tidak apa)."
+    expect:
+      text: tidakapa
+    criteria:
+      - "Transcribes the run as written (tidakapa); splitting it into tidak apa scores 2."
+    tags: [needs-capture, tablet, dex, spacing, edge]
+    verified: false

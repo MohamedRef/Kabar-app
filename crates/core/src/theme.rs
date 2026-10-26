@@ -49,6 +49,14 @@ pub struct Palette {
     pub status_new: &'static str,
     pub status_learning: &'static str,
     pub status_known: &'static str,
+    /// Journey Map: sea, its wave lines, Indonesia, its coastline, the
+    /// neighbouring countries, and the bed under the railway ties.
+    pub map_sea: &'static str,
+    pub map_sea_ink: &'static str,
+    pub map_land: &'static str,
+    pub map_land_edge: &'static str,
+    pub map_land_other: &'static str,
+    pub map_rail_bed: &'static str,
     /// Stroke colour and opacity of the kawung background pattern.
     pub pattern: &'static str,
     pub pattern_opacity: f32,
@@ -75,6 +83,12 @@ pub const LIGHT: Palette = Palette {
     status_new: "#c0502f",
     status_learning: "#3d5bb0",
     status_known: "#2f7a3e",
+    map_sea: "#dbe7e9",
+    map_sea_ink: "#b9cfd3",
+    map_land: "#d3e0bd",
+    map_land_edge: "#a9bf8f",
+    map_land_other: "#e9e3d6",
+    map_rail_bed: "#fffaf1",
     pattern: "#2b3a70",
     pattern_opacity: 0.06,
 };
@@ -100,6 +114,12 @@ pub const DARK: Palette = Palette {
     status_new: "#f2a07f",
     status_learning: "#9fb1f0",
     status_known: "#7cc08a",
+    map_sea: "#172227",
+    map_sea_ink: "#23343b",
+    map_land: "#2b3a2b",
+    map_land_edge: "#4b6446",
+    map_land_other: "#2a2724",
+    map_rail_bed: "#171615",
     pattern: "#a9b8ee",
     pattern_opacity: 0.05,
 };
@@ -126,6 +146,12 @@ pub const NIGHT: Palette = Palette {
     status_new: "#e0956a",
     status_learning: "#c98f9a",
     status_known: "#b5b86a",
+    map_sea: "#17120c",
+    map_sea_ink: "#261e15",
+    map_land: "#2b2716",
+    map_land_edge: "#4f472a",
+    map_land_other: "#1f1912",
+    map_rail_bed: "#100c08",
     pattern: "#cfa48e",
     pattern_opacity: 0.04,
 };
@@ -151,6 +177,12 @@ pub const BATIK: Palette = Palette {
     status_new: "#f3a585",
     status_learning: "#b8c4f5",
     status_known: "#86c995",
+    map_sea: "#0f1a35",
+    map_sea_ink: "#1d2a50",
+    map_land: "#25392f",
+    map_land_edge: "#3f5a4e",
+    map_land_other: "#1f2340",
+    map_rail_bed: "#121830",
     pattern: "#b8c4f5",
     pattern_opacity: 0.07,
 };
@@ -176,6 +208,12 @@ pub const SAWAH: Palette = Palette {
     status_new: "#b8492b",
     status_learning: "#3b56a6",
     status_known: "#2a7038",
+    map_sea: "#d6e6e4",
+    map_sea_ink: "#b3cfcb",
+    map_land: "#cfe0b5",
+    map_land_edge: "#9fbb83",
+    map_land_other: "#e6e6d6",
+    map_rail_bed: "#f8fbf2",
     pattern: "#2a6334",
     pattern_opacity: 0.06,
 };
@@ -217,6 +255,12 @@ impl Palette {
             ("status-new", self.status_new),
             ("status-learning", self.status_learning),
             ("status-known", self.status_known),
+            ("sea", self.map_sea),
+            ("sea-ink", self.map_sea_ink),
+            ("land", self.map_land),
+            ("land-edge", self.map_land_edge),
+            ("land-other", self.map_land_other),
+            ("rail-bed", self.map_rail_bed),
         ];
         let mut out = String::new();
         for (name, value) in vars {
@@ -325,6 +369,17 @@ mod tests {
     }
 
     #[test]
+    fn map_keeps_land_and_sea_apart() {
+        for (theme, p) in all() {
+            // Land and sea differ mostly in hue (green vs blue), so the
+            // coastline carries the shape: it must stand out from the sea.
+            assert_ne!(p.map_land, p.map_sea, "{}: land vs sea", theme.as_str());
+            assert!(contrast(p.map_land_edge, p.map_sea) >= 1.5, "{}: coastline", theme.as_str());
+            assert_ne!(p.map_land, p.map_land_other, "{}: Indonesia vs neighbours", theme.as_str());
+        }
+    }
+
+    #[test]
     fn night_has_no_blue_heavy_colour() {
         let p = &NIGHT;
         let colours = [
@@ -347,6 +402,12 @@ mod tests {
             p.status_learning,
             p.status_known,
             p.pattern,
+            p.map_sea,
+            p.map_sea_ink,
+            p.map_land,
+            p.map_land_edge,
+            p.map_land_other,
+            p.map_rail_bed,
         ];
         for c in colours {
             let [r, _, b] = rgb(c);

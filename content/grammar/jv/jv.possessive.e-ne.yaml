@@ -1,0 +1,111 @@
+schema: kabar.grammar/v1
+id: jv.possessive.e-ne
+language: jv
+level: j2
+title:
+  target: -e / -ne (omahe, bukune) · -ku, -mu · duweke
+  en: "His, her, its, the: the suffix -e / -ne"
+  ar_eg: "اللاحقة -e / -ne (بتاعه / بتاعها / الـ)"
+  ar: "اللاحقة -e / -ne للملكية والتعريف"
+summary:
+  ar_eg: "-e / -ne هي -nya الإندونيسية: omahe = rumahnya (بيته / البيت)، bukune = bukunya. بعد ساكن -e، بعد متحرك -ne. وomahe Pak Budi = بيت باك بودي."
+  ar: "-e / -ne تقابل -nya: omahe = rumahnya، bukune = bukunya؛ -e بعد الساكن و-ne بعد الصائت، وomahe Pak Budi = بيت باك بودي."
+  en: "-e / -ne is Indonesian -nya: omahe = rumahnya (his house / the house), bukune = bukunya. -e after a consonant, -ne after a vowel. omahe Pak Budi = Pak Budi's house."
+pattern:
+  - "consonant + -e: omah → omahe, jeneng → jenenge, warung → warunge"
+  - "vowel + -ne: buku → bukune, rega → regane, klambi → klambine"
+  - "noun + -e / -ne + owner: omahe Pak Budi (rumah Pak Budi / rumahnya Pak Budi)"
+  - "noun + -ku / -mu: omahku (my house), omahmu (your house)"
+  - "duweke + owner = milik / punya: duweke sapa?"
+  - "pronunciation: é (omahé, bukuné); everyday writing drops the accent"
+explanation:
+  ar_eg: |
+    إنت عارف -nya في الإندونيسي: rumahnya = بيته / البيت. الجاوي عنده -e و-ne بنفس الشغل بالظبط:
+    - لو الكلمة آخرها ساكن: -e. omah (بيت) → omahe، jeneng (اسم) → jenenge، warung → warunge.
+    - لو آخرها حرف متحرك: -ne. buku → bukune، rega (سعر) → regane، klambi (قميص) → klambine.
+    - وبتتنطق é مفتوحة شوية: «omahé». القاموس بيكتبها بعلامة، والناس من غيرها.
+    ليها تلات شغلانات زي -nya:
+    1. بتاعه / بتاعها: Bukune ilang = كتابه ضاع.
+    2. «الـ» للتعريف: Regane pira? = السعر بكام؟ Omahe adoh = البيت بعيد.
+    3. «بتاع فلان»: omahe Pak Budi = بيت باك بودي (زي العامية الإندونيسية rumahnya Pak Budi).
+    وللمتكلم والمخاطب: -ku و-mu زي الإندونيسي: omahku = بيتي، omahmu = بيتك.
+    ولو عايز تسأل «بتاع مين؟»: Iki duweke sapa? = ده بتاع مين؟ (Ini punya siapa?)
+    في الكراما (J3) -e / -ne بتبقى -ipun / -nipun.
+  ar: |
+    تعرف -nya الإندونيسية (rumahnya = بيته / البيت)، ونظيرها الجاوي -e و-ne:
+    - بعد الساكن -e: omah → omahe، jeneng → jenenge.
+    - بعد الصائت -ne: buku → bukune، rega → regane، klambi → klambine.
+    - وتُنطق é: «omahé»، ويُهمل الضبط في الكتابة اليومية.
+    ولها ثلاث وظائف كـ -nya:
+    1. الملكية للغائب: Bukune ilang = ضاع كتابه.
+    2. التعريف: Regane pira? = كم الثمن؟
+    3. الإضافة إلى اسم: omahe Pak Budi = بيت باك بودي.
+    وللمتكلم والمخاطب -ku و-mu: omahku، omahmu. وللسؤال عن المالك: Iki duweke sapa? = لمن هذا؟
+    وفي الكراما (J3) تصير -ipun / -nipun.
+  en: |
+    You know Indonesian -nya: rumahnya = his house / the house. Javanese -e / -ne does the same jobs:
+    - After a consonant: -e. omah (house) → omahe, jeneng (name) → jenenge, warung → warunge.
+    - After a vowel: -ne. buku → bukune, rega (price) → regane, klambi (shirt) → klambine.
+    - It's pronounced é: "omahé". Dictionaries mark the accent; everyday writing doesn't.
+    Three jobs, like -nya:
+    1. his / her / its: Bukune ilang = His book is lost.
+    2. "the": Regane pira? = How much is the price? Omahe adoh = The house is far.
+    3. "X's": omahe Pak Budi = Pak Budi's house (like casual Indonesian rumahnya Pak Budi).
+    For "my" and "your": -ku and -mu, as in Indonesian: omahku, omahmu.
+    "Whose?": Iki duweke sapa? = Whose is this? (Ini punya siapa?)
+    In krama (J3) -e / -ne becomes -ipun / -nipun.
+examples:
+  - text: Warunge Pak Budi nang Madiun.
+    breakdown: warung + -e = warungnya · Pak Budi · nang = di · Madiun
+    en: Pak Budi's warung is in Madiun.
+    ar_eg: محل باك بودي في ماديون.
+    ar: مطعم باك بودي في ماديون.
+    register: informal
+  - text: Jenenge sapa?
+    breakdown: jeneng + -e = namanya · sapa = siapa
+    en: What's his / her name?
+    ar_eg: اسمه / اسمها إيه؟
+    ar: ما اسمه / ما اسمها؟
+    register: informal
+  - text: Regane pira, Bu?
+    breakdown: rega + -ne = harganya · pira = berapa · Bu
+    en: How much is it, ma'am?
+    ar_eg: بكام يا مدام؟
+    ar: بكم ثمنه يا سيدتي؟
+    register: informal
+  - text: Bukune Sari ilang.
+    breakdown: buku + -ne = bukunya · Sari · ilang = hilang
+    en: Sari's book is lost.
+    ar_eg: كتاب ساري ضاع.
+    ar: ضاع كتاب ساري.
+    register: informal
+  - text: Iki duweke sapa? — Duweke Dimas.
+    breakdown: iki = ini · duweke = punya · sapa = siapa · Dimas
+    en: Whose is this? — It's Dimas's.
+    ar_eg: ده بتاع مين؟ — بتاع ديماس.
+    ar: لمن هذا؟ — لديماس.
+    register: informal
+mistakes:
+  - wrong: bukue
+    right: bukune
+    why:
+      ar_eg: buku آخرها متحرك، فبتاخد -ne مش -e.
+      ar: buku تنتهي بصائت فتأخذ -ne.
+      en: buku ends in a vowel, so it takes -ne.
+  - wrong: Pak Budi omahe (for "Pak Budi's house")
+    right: omahe Pak Budi
+    why:
+      ar_eg: الحاجة الأول وبعدين صاحبها، زي العربي «بيت باك بودي» والإندونيسي rumah Pak Budi.
+      ar: المملوك أولًا ثم المالك، كالإضافة العربية.
+      en: Thing first, owner second, like Arabic iḍāfa and Indonesian rumah Pak Budi.
+arabic_bridge:
+  ar_eg: "omahe Pak Budi = «بيت باك بودي» بالظبط زي الإضافة في العربي: المملوك الأول. و-e زي ضمير «ـه» في «بيته»."
+  ar: "omahe Pak Budi إضافة كـ«بيت باك بودي»، و-e تشبه ضمير الغائب في «بيته»."
+  en: "omahe Pak Budi mirrors Arabic iḍāfa «بيت باك بودي»; -e is like the suffix «ـه» in «بيته»."
+tags: [possessive, suffix, noun, j2]
+prerequisites: [id.possessive, jv.pronoun.ngoko]
+see_also: [jv.kinship.terms, jv.krama.affixes]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker.

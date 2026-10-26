@@ -1,0 +1,101 @@
+schema: kabar.grammar/v1
+id: id.time.future-plans
+language: id
+level: bipa3
+title:
+  target: akan, mau, nanti, rencananya, berencana
+  en: Talking about future plans
+  ar_eg: الكلام عن المستقبل والخطط
+  ar: الحديث عن المستقبل والخطط
+summary:
+  ar_eg: "akan = هـ / سوف (رسمي)، mau = ناوي / هـ (عادي)، nanti = بعدين، rencananya = الخطة إن…، berencana = بيخطط إنه…"
+  ar: "akan للمستقبل (سوف)، وmau للنية في الكلام اليومي، وnanti بمعنى لاحقًا، وrencananya بمعنى «الخطة أنّ»، وberencana بمعنى يعتزم."
+  en: "akan = will (formal), mau = going to (everyday intention), nanti = later, rencananya = the plan is, berencana = plan to."
+pattern:
+  - subject + akan / mau + verb (+ time)
+  - nanti + time of day (nanti sore, nanti malam) · besok · lusa · minggu / bulan / tahun depan
+  - Rencananya, + clause · subject + berencana + verb
+  - subject + ingin / berniat + verb (want / intend to)
+  - sebentar lagi (soon) · suatu hari nanti (some day)
+explanation:
+  ar_eg: |
+    الفعل مش بيتغير، فالمستقبل بيتفهم من كلمة قبله أو من الوقت:
+    - akan = هـ / سوف — أرسم وأكتر في الكتابة: Kami akan mudik minggu depan.
+    - mau = «ناوي / هـ» في الكلام العادي: Aku mau ke Sumbawa besok.
+      ولو فيه كلمة وقت واضحة (besok، tahun depan) الإندونيسيين ساعات بيشيلوا akan خالص: Besok saya ke Sumbawa.
+    - nanti = بعدين / كمان شوية: nanti sore = النهارده بعد الضهر، nanti malam = النهارده بالليل. (عكسها tadi = من شوية).
+    - كلمات الوقت: besok (بكرة)، lusa (بعد بكرة)، minggu depan (الأسبوع الجاي)، tahun depan (السنة الجاية)، sebentar lagi (كمان شوية).
+    - الخطط: Rencananya, … = الخطة إن…، Saya berencana + فعل = بخطط إني…، Saya ingin / berniat … = نفسي / ناوي.
+    - insya Allah بتتقال كتير جدًا مع الخطط، زينا بالظبط.
+  ar: |
+    لا يتغير الفعل، ويُفهم المستقبل من أداة أو ظرف:
+    - akan: سوف / السين، وهي أكثر رسمية: Kami akan mudik minggu depan.
+    - mau: للنية في الكلام اليومي: Aku mau ke Sumbawa besok. ومع ظرف زمن صريح قد تُحذف الأداة.
+    - nanti: لاحقًا: nanti sore (عصر اليوم)، nanti malam (الليلة)، وضدها tadi (منذ قليل).
+    - الظروف: besok، lusa، minggu depan، tahun depan، sebentar lagi.
+    - الخطط: Rencananya, …، Saya berencana + الفعل، Saya ingin / berniat ….
+    - ويكثر قول insya Allah مع الخطط.
+  en: |
+    Verbs don't change; the future comes from a marker or a time word:
+    - akan = will, more formal / written: Kami akan mudik minggu depan.
+    - mau = going to, everyday intention: Aku mau ke Sumbawa besok. With a clear time word (besok, tahun depan) the marker is often dropped: Besok saya ke Sumbawa.
+    - nanti = later: nanti sore (this afternoon), nanti malam (tonight). Opposite: tadi (earlier today).
+    - Time words: besok (tomorrow), lusa (the day after tomorrow), minggu depan (next week), tahun depan (next year), sebentar lagi (soon).
+    - Plans: Rencananya, … (the plan is…), Saya berencana + verb (I plan to…), Saya ingin / berniat … (I'd like / intend to…).
+    - insya Allah goes with plans constantly — just as in Arabic.
+examples:
+  - text: Lebaran nanti, kami akan mudik ke kampung.
+    breakdown: Lebaran nanti (this coming Lebaran) · akan (will) · mudik (go home for the holiday)
+    en: This Lebaran we'll go back home to the village.
+    ar_eg: العيد الجاي هنسافر البلد.
+    ar: سنعود إلى القرية في العيد القادم.
+  - text: Rencananya, kami naik feri ke Sumbawa besok pagi.
+    en: The plan is to take the ferry to Sumbawa tomorrow morning.
+    ar_eg: الخطة إننا ناخد العبّارة لسومباوا بكرة الصبح.
+    ar: نعتزم ركوب العبّارة إلى سومباوا صباح الغد.
+  - text: Tahun depan saya berencana belajar di Yogyakarta.
+    en: Next year I'm planning to study in Yogyakarta.
+    ar_eg: السنة الجاية بخطط أدرس في يوجياكارتا.
+    ar: أخطط للدراسة في يوجياكرتا العام القادم.
+  - text: Nanti malam kita makan sate, yuk!
+    en: Let's have satay tonight!
+    ar_eg: يلا ناكل ساتيه النهارده بالليل!
+    ar: هيا نأكل الساتيه الليلة!
+    register: informal
+  - text: Insya Allah, saya akan datang ke pernikahanmu.
+    en: God willing, I'll come to your wedding.
+    ar_eg: إن شاء الله هاجي فرحك.
+    ar: إن شاء الله سأحضر حفل زفافك.
+  - text: Sebentar lagi kapal akan berangkat.
+    en: The ship will leave soon.
+    ar_eg: كمان شوية المركب هتمشي.
+    ar: ستبحر السفينة بعد قليل.
+mistakes:
+  - wrong: Saya rencana pergi ke Sumbawa.
+    right: Saya berencana pergi ke Sumbawa. / Rencananya, saya pergi ke Sumbawa.
+    why:
+      ar_eg: rencana اسم (خطة)؛ الفعل berencana.
+      ar: rencana اسم، والفعل berencana.
+      en: rencana is a noun; the verb is berencana.
+  - wrong: Tahun depan saya pergi akan ke Bali.
+    right: Tahun depan saya akan pergi ke Bali.
+    why:
+      ar_eg: akan بتيجي قبل الفعل على طول.
+      ar: تأتي akan قبل الفعل مباشرة.
+      en: akan goes right before the verb.
+  - wrong: Saya mau akan pergi.
+    right: Saya mau pergi. / Saya akan pergi.
+    why:
+      ar_eg: "اختار واحدة: mau (عادي) أو akan (رسمي)."
+      ar: "اختر إحداهما: mau أو akan."
+      en: Pick one — mau (everyday) or akan (formal).
+arabic_bridge:
+  ar_eg: "akan = «هـ» المصرية أو «سـ / سوف» في الفصحى، و nanti = «بعدين». و berniat جاية من «نيّة» (niat) — يعني «ناوي» حرفيًا! و insya Allah نفس اللي بنقوله."
+  ar: "akan تقابل السين وسوف، وnanti تقابل «لاحقًا / فيما بعد»، وberniat من «نيّة» (niat)، وinsya Allah كما هي."
+  en: akan ≈ سـ / سوف (Egyptian هـ); nanti ≈ بعدين; berniat comes from niat ← نيّة (intention); insya Allah is shared.
+tags: [time, future, plans]
+prerequisites: [id.aspect.markers, id.time.sequence]
+see_also: [id.hope.semoga, id.verb.modal]
+review:
+  status: draft
+  verified: false

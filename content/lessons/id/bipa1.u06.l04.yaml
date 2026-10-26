@@ -1,0 +1,285 @@
+schema: kabar.lesson/v1
+id: bipa1.u06.l04
+language: id
+title: Satu hari di Jakarta
+can_do:
+  ar_eg: تحكي يومك في ٦ جمل.
+  ar: أن تروي يومك في ست جمل.
+  en: Narrate your day in 6 sentences.
+slides:
+  - title: Cerita satu hari
+    body:
+      ar_eg: |
+        عشان تحكي يومك محتاج ٣ حاجات بس:
+        - وقت: jam lima، tadi pagi، nanti malam.
+        - ترتيب: lalu (وبعدين)، sesudah itu / setelah itu (بعد كده)، sebelum (قبل).
+        - حالة الفعل: sudah، belum، sedang، akan.
+        والفعل نفسه مابيتغيرش أبدًا. سهلة!
+      ar: |
+        لتروي يومك تحتاج ثلاثة أشياء:
+        - الوقت: jam lima، tadi pagi، nanti malam.
+        - الترتيب: lalu (ثم)، sesudah itu / setelah itu (بعد ذلك)، sebelum (قبل).
+        - حال الفعل: sudah، belum، sedang، akan.
+        والفعل نفسه لا يتغير أبدًا.
+      en: |
+        To tell your day you need just three things:
+        - Time: jam lima, tadi pagi, nanti malam.
+        - Order: lalu (then), sesudah itu / setelah itu (after that), sebelum (before).
+        - Aspect: sudah, belum, sedang, akan.
+        The verb itself never changes. Easy!
+    grammar: id.time.sequence
+    examples:
+      - text: Saya bangun jam lima, lalu salat subuh.
+        ar_eg: بصحى الساعة خمسة، وبعدين بصلي الفجر.
+        ar: أستيقظ في الخامسة ثم أصلي الفجر.
+        en: I wake up at five, then I pray the dawn prayer.
+      - text: Sesudah itu, saya sarapan.
+        ar_eg: بعد كده بفطر.
+        ar: بعد ذلك أتناول الفطور.
+        en: After that, I have breakfast.
+  - title: Biasanya…
+    body:
+      ar_eg: |
+        كلمات التكرار بتخلي الحكاية حقيقية: Biasanya saya…، Kadang-kadang saya…، Setiap malam saya…
+        ركز إنها قبل الفعل (biasanya بس ممكن تيجي في الأول).
+      ar: |
+        ظروف التكرار تجعل الحكاية واقعية: Biasanya saya…، Kadang-kadang saya…، Setiap malam saya…
+        وموضعها قبل الفعل (ويجوز تصدير biasanya).
+      en: |
+        Frequency words make your story real: Biasanya saya…, Kadang-kadang saya…, Setiap malam saya…
+        Keep them before the verb (biasanya may also come first).
+    grammar: id.frequency.adverbs
+    examples:
+      - text: Setiap malam saya belajar bahasa Indonesia.
+        ar_eg: كل ليلة بذاكر إندونيسي.
+        ar: أدرس الإندونيسية كل ليلة.
+        en: Every night I study Indonesian.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question: Sesudah mandi, saya sarapan.
+    question_meaning:
+      ar_eg: إيه اللي حصل الأول؟
+      ar: ماذا حدث أولًا؟
+      en: What happened first?
+    options: ["mandi", "sarapan"]
+    answer: 0
+    explain:
+      ar_eg: sesudah mandi = بعد الاستحمام، يعني الاستحمام الأول.
+      ar: sesudah mandi = بعد الاستحمام، فالاستحمام أولًا.
+      en: sesudah mandi = after showering, so the shower came first.
+    words: [sesudah, mandi, sarapan]
+  - id: e02
+    type: listen
+    text: Saya selalu bangun jam lima.
+    options: ["Saya selalu bangun jam lima.", "Saya selalu bangun jam sembilan.", "Saya jarang bangun jam lima."]
+    answer: 0
+    words: [selalu, bangun]
+  - id: e03
+    type: fill_blank
+    sentence: Saya bekerja ___ jam lima sore.
+    meaning:
+      ar_eg: بشتغل لحد الساعة خمسة العصر.
+      ar: أعمل حتى الساعة الخامسة مساءً.
+      en: I work until five in the afternoon.
+    options: ["sampai", "sering", "sebelum"]
+    answers: [sampai]
+    words: [sampai]
+  - id: e04
+    type: fill_blank
+    sentence: Saya ___ makan siang.
+    meaning:
+      ar_eg: لسه ماتغديتش.
+      ar: لم أتناول الغداء بعد.
+      en: I haven't had lunch yet.
+    answers: [belum]
+    explain:
+      ar_eg: «لسه ماحصلش» = belum.
+      ar: «لم … بعد» = belum.
+      en: '"Not yet" = belum.'
+    words: [belum, makan siang]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: قبل ما أنام بقرا كتاب.
+      ar: أقرأ كتابًا قبل النوم.
+      en: Before sleeping, I read a book.
+    answer: Sebelum tidur, saya membaca buku.
+    alternatives: ["Saya membaca buku sebelum tidur."]
+    distractors: [sesudah, menulis]
+    words: [sebelum, membaca]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: وبعدين برُوح المكتب الساعة سبعة.
+      ar: ثم أذهب إلى المكتب في السابعة.
+      en: Then I go to the office at seven.
+    answer: Lalu saya pergi ke kantor jam tujuh.
+    alternatives: ["Lalu jam tujuh saya pergi ke kantor."]
+    distractors: [sebelum, pulang]
+    words: [lalu, pergi, kantor]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أنا دايمًا بصحى الساعة خمسة.
+      ar: أستيقظ دائمًا في الساعة الخامسة.
+      en: I always wake up at five.
+    answers:
+      - Saya selalu bangun jam lima.
+      - Saya selalu bangun jam lima
+      - Aku selalu bangun jam lima.
+      - Saya selalu bangun pukul lima.
+      - Saya selalu bangun pukul 05.00.
+    words: [selalu, bangun]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: بعد كده بفطر.
+      ar: بعد ذلك أتناول الفطور.
+      en: After that, I have breakfast.
+    answers:
+      - Sesudah itu, saya sarapan.
+      - Sesudah itu saya sarapan.
+      - Setelah itu, saya sarapan.
+      - Setelah itu saya sarapan.
+      - Lalu saya sarapan.
+      - Sesudah itu, aku sarapan.
+      - Setelah itu, aku sarapan.
+    words: [sesudah, sarapan]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: بالليل النهارده هذاكر إندونيسي.
+      ar: سأدرس الإندونيسية الليلة.
+      en: Tonight I'll study Indonesian.
+    answers:
+      - Nanti malam saya akan belajar bahasa Indonesia.
+      - Nanti malam saya belajar bahasa Indonesia.
+      - Saya akan belajar bahasa Indonesia nanti malam.
+      - Nanti malam saya mau belajar bahasa Indonesia.
+      - Nanti malam aku akan belajar bahasa Indonesia.
+      - Nanti malam aku mau belajar bahasa Indonesia.
+    words: [nanti, akan, belajar]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أنا لسه في المكتب.
+      ar: ما زلت في المكتب.
+      en: I'm still at the office.
+    answers:
+      - Saya masih di kantor.
+      - Saya masih di kantor
+      - Aku masih di kantor.
+      - Aku masih di kantor
+    words: [masih, kantor]
+  - id: e11
+    type: translate
+    direction: from_target
+    source_text: Kadang-kadang saya makan di Blok M.
+    answers_meaning:
+      ar_eg: ["ساعات باكل في بلوك إم.", "أحيانًا باكل في بلوك إم", "ساعات بتغدى في بلوك إم"]
+      ar: ["أحيانًا آكل في بلوك إم.", "آكل أحيانًا في بلوك إم"]
+      en: ["Sometimes I eat at Blok M.", "I sometimes eat at Blok M"]
+    words: [kadang-kadang]
+  - id: e12
+    type: dictation
+    text: Saya bekerja sampai jam lima sore.
+    meaning:
+      ar_eg: بشتغل لحد الساعة خمسة العصر.
+      ar: أعمل حتى الساعة الخامسة مساءً.
+      en: I work until five in the afternoon.
+    words: [bekerja, sampai]
+  - id: e13
+    type: speaking
+    text: Sesudah mandi, saya sarapan.
+    meaning:
+      ar_eg: بعد ما أستحمى بفطر.
+      ar: بعد الاستحمام أتناول الفطور.
+      en: After showering, I have breakfast.
+    words: [sesudah, mandi, sarapan]
+dialogue:
+  title: Di kelas Pak Budi
+  lines:
+    - speaker: Pak Budi
+      text: Mohamed, biasanya kamu bangun jam berapa?
+      ar_eg: محمد، عادةً بتصحى الساعة كام؟
+      ar: يا محمد، في أيّ ساعة تستيقظ عادةً؟
+      en: Mohamed, what time do you usually wake up?
+    - speaker: Mohamed
+      text: Saya selalu bangun jam lima, Pak. Lalu saya salat subuh.
+      ar_eg: دايمًا بصحى الساعة خمسة يا أستاذ. وبعدين بصلي الفجر.
+      ar: أستيقظ دائمًا في الخامسة يا أستاذ، ثم أصلي الفجر.
+      en: I always wake up at five, sir. Then I pray the dawn prayer.
+    - speaker: Pak Budi
+      text: Wah, rajin! Sesudah itu?
+      ar_eg: يا سلام، شاطر! وبعد كده؟
+      ar: ما شاء الله، مجتهد! وبعد ذلك؟
+      en: Wow, so diligent! And after that?
+    - speaker: Mohamed
+      text: Sesudah mandi, saya sarapan. Biasanya saya makan nasi uduk.
+      ar_eg: بعد ما أستحمى بفطر. عادةً باكل ناسي أودوك.
+      ar: بعد الاستحمام أتناول الفطور، وعادةً آكل ناسي أودوك.
+      en: After showering, I have breakfast. I usually eat nasi uduk.
+    - speaker: Pak Budi
+      text: Jam berapa kamu ke kantor?
+      ar_eg: بتروح المكتب الساعة كام؟
+      ar: متى تذهب إلى المكتب؟
+      en: What time do you go to the office?
+    - speaker: Mohamed
+      text: Jam tujuh. Saya bekerja sampai jam lima sore.
+      ar_eg: الساعة سبعة. بشتغل لحد خمسة العصر.
+      ar: في السابعة. أعمل حتى الخامسة مساءً.
+      en: At seven. I work until five in the afternoon.
+    - speaker: Pak Budi
+      text: Malam hari kamu belajar bahasa Indonesia?
+      ar_eg: وبالليل بتذاكر إندونيسي؟
+      ar: وهل تدرس الإندونيسية في المساء؟
+      en: Do you study Indonesian in the evening?
+    - speaker: Mohamed
+      text: Ya, Pak. Setiap malam. Sebelum tidur, saya membaca buku.
+      ar_eg: أيوه يا أستاذ. كل ليلة. وقبل ما أنام بقرا كتاب.
+      ar: نعم يا أستاذ، كل ليلة. وقبل النوم أقرأ كتابًا.
+      en: Yes, sir. Every night. Before sleeping, I read a book.
+    - speaker: Pak Budi
+      text: Bagus! Sekarang kamu sudah makan siang?
+      ar_eg: برافو! طب دلوقتي اتغديت؟
+      ar: أحسنت! والآن، هل تناولت الغداء؟
+      en: Great! Have you had lunch yet?
+    - speaker: Mohamed
+      text: Belum, Pak. Nanti saya makan di Blok M.
+      ar_eg: لسه يا أستاذ. هاكل بعدين في بلوك إم.
+      ar: ليس بعد يا أستاذ. سآكل لاحقًا في بلوك إم.
+      en: Not yet, sir. I'll eat at Blok M later.
+new_words:
+  - word: sesudah itu
+    pos: phrase
+    ar_eg: بعد كده
+    ar: بعد ذلك
+    en: after that
+  - word: rajin
+    pos: adjective
+    ar_eg: شاطر / مجتهد
+    ar: مجتهد
+    en: diligent, hard-working
+  - word: sampai
+    pos: preposition
+    ar_eg: لحد
+    ar: حتى
+    en: until
+  - word: makan siang
+    pos: phrase
+    ar_eg: يتغدى / غدا
+    ar: يتغدى / الغداء
+    en: to have lunch; lunch
+  - word: nasi uduk
+    pos: noun
+    ar_eg: ناسي أودوك (رز بلبن جوز الهند، فطار جاكرتاوي)
+    ar: ناسي أودوك (أرز بحليب جوز الهند، فطور جاكرتا)
+    en: nasi uduk (coconut rice, a Jakarta breakfast)
+review:
+  status: draft
+  verified: false

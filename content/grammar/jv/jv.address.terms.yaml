@@ -1,0 +1,103 @@
+schema: kabar.grammar/v1
+id: jv.address.terms
+language: jv
+level: j1
+title:
+  target: mas, mbak, cak, ning, rek, dhe, le, nduk, Pak, Bu
+  en: Calling people (address terms)
+  ar_eg: إزاي تنادي الناس (ألقاب النداء)
+  ar: ألفاظ النداء والمخاطبة
+summary:
+  ar_eg: "الجاويين بينادوا الناس بألقاب العيلة: mas للشاب، mbak للبنت، وفي سورابايا cak وning، وrek للشلة كلها. والألقاب دي بتيجي مكان «إنت» كمان."
+  ar: "ينادي الجاويون الناس بألقاب القرابة: mas للشاب وmbak للفتاة، وفي سورابايا cak وning، وrek للجماعة. وتحل هذه الألقاب محل ضمير المخاطب أيضًا."
+  en: "Javanese calls people by family titles: mas for a young man, mbak for a young woman; in Surabaya cak and ning, and rek for the whole group. These titles also replace 'you'."
+pattern:
+  - "mas (young man, older brother) · mbak (young woman, older sister) — also used in Indonesian"
+  - "cak (Surabaya: man, brother) · ning (Surabaya: young woman)"
+  - "rek (Surabaya: guys, mate; from arek = kid)"
+  - "Pak / Bu (older man / woman) · dhe (short for pakdhe / budhe: uncle, auntie)"
+  - "le (to a boy, from thole) · nduk (to a girl)"
+  - "sentence + , + title: Piye kabare, Mas?"
+explanation:
+  ar_eg: |
+    في جاوة نادرًا ما بتنادي حد باسمه بس. بتحط لقب عيلة، حتى لو مش قريبك:
+    - mas = يا أستاذ / يا كابتن لشاب، وmbak = يا آنسة لبنت أو ست صغيرة. ودول بتسمعهم في الإندونيسي كمان (Mas Ardi).
+    - في سورابايا (Arek): cak = mas، وning = mbak. «Cak lan Ning Suroboyo» هم سفراء المدينة كل سنة.
+    - rek (من arek = عيل، ولد) = «يا جماعة / يا صاحبي». بتيجي في آخر الجملة: Ayo, rek! = يلا يا جماعة! دي علامة سورابايا المشهورة.
+    - Pak / Bu = للكبار، زي «يا حاج / يا حاجة» أو «يا أستاذ / يا مدام».
+    - dhe = اختصار pakdhe (عمو) أو budhe (طنط): «piye dhe» في شات = «إيه رأيك يا عمو؟».
+    - le (من thole) لولد صغير، وnduk لبنت صغيرة — زي «يا حبيبي / يا بنتي» من الكبار.
+    واللقب بيشتغل كضمير كمان: «Mas wis mangan?» = «حضرتك أكلت؟» (حرفيًا: الأستاذ أكل؟)، زي الإندونيسي «Bapak mau kopi?».
+  ar: |
+    قلّما يُنادى أحد في جاوة باسمه مجردًا، بل يُسبق بلقب قرابة وإن لم يكن قريبًا:
+    - mas للشاب، وmbak للفتاة أو المرأة الشابة، وهما مستعملان في الإندونيسية أيضًا.
+    - في سورابايا (لهجة Arek): cak بمعنى mas، وning بمعنى mbak.
+    - rek (من arek = الولد) = «يا جماعة / يا صاح»، ويأتي في آخر الجملة، وهو سمة سورابايا الشهيرة.
+    - Pak / Bu للكبار.
+    - dhe اختصار pakdhe (العم) أو budhe (العمة).
+    - le (من thole) للصبي، وnduk للبنت، يقولها الكبار.
+    ويقوم اللقب مقام الضمير: «Mas wis mangan?» = هل أكلتَ؟ (حرفيًا: هل أكل الأخ؟)، كما في الإندونيسية «Bapak mau kopi?».
+  en: |
+    In Java you rarely call someone by their bare name. You add a family title, even to strangers:
+    - mas for a young man, mbak for a young woman — also standard in Indonesian (Mas Ardi).
+    - Surabaya (Arek): cak = mas, ning = mbak. "Cak & Ning Suroboyo" are the city's yearly ambassadors.
+    - rek (from arek, kid) = "guys / mate", usually at the end: Ayo, rek! = Come on, guys! It's Surabaya's signature word.
+    - Pak / Bu for older men and women.
+    - dhe = short for pakdhe (uncle) / budhe (auntie): "piye dhe" in a chat = "what do you think, uncle?".
+    - le (from thole) to a boy, nduk to a girl — what older people call kids.
+    The title doubles as "you": "Mas wis mangan?" = Have you eaten? (literally "Has Mas eaten?"), like Indonesian "Bapak mau kopi?".
+examples:
+  - text: Piye kabare, Mas?
+    breakdown: piye = bagaimana · kabar + -e = kabarnya · Mas
+    en: How are you? (to a young man)
+    ar_eg: إزيك يا أستاذ؟
+    ar: كيف حالك يا أخي؟
+    register: informal
+  - text: Ayo mangan, rek!
+    breakdown: ayo = ayo · mangan = makan · rek = guys (Arek)
+    en: Let's eat, guys! (Surabaya)
+    ar_eg: يلا ناكل يا جماعة!
+    ar: هيا نأكل يا جماعة!
+    register: informal
+  - text: Cak, iki pira?
+    breakdown: cak = mas (Arek) · iki = ini · pira = berapa
+    en: Brother, how much is this? (Surabaya, to a seller)
+    ar_eg: يا معلم، ده بكام؟
+    ar: يا أخي، بكم هذا؟
+    register: informal
+  - text: piye dhe
+    breakdown: piye = bagaimana · dhe = Pakdhe / Budhe
+    en: So, what do you think, uncle? (chat)
+    ar_eg: إيه رأيك يا عمو؟
+    ar: ما رأيك يا عم؟
+    register: chat
+  - text: Mbak wis tau nang Suroboyo?
+    breakdown: mbak = Mbak (= kamu) · wis tau = sudah pernah · nang = ke · Suroboyo = Surabaya
+    en: Have you (miss) ever been to Surabaya?
+    ar_eg: حضرتك رحتي سورابايا قبل كده؟
+    ar: هل زرتِ سورابايا من قبل؟
+    register: informal
+mistakes:
+  - wrong: Rek, sampeyan arep tuku apa? (to one older seller)
+    right: Pak, sampeyan arep tuku apa?
+    why:
+      ar_eg: rek للشلة والصحاب في سنك، مش لراجل كبير. للكبير قول Pak.
+      ar: rek للأقران والجماعة، لا للرجل الكبير، فيقال له Pak.
+      en: rek is for friends your age, not an older man; use Pak.
+  - wrong: Mas Rina
+    right: Mbak Rina
+    why:
+      ar_eg: mas للراجل وmbak للبنت. اللقب لازم يناسب الشخص.
+      ar: mas للذكر وmbak للأنثى.
+      en: mas is for men, mbak for women.
+arabic_bridge:
+  ar_eg: "بالظبط زي المصري: «يا أسطى»، «يا حاج»، «يا أبلة»، «يا عمو» — بننادي الغريب بلقب عيلة. وmas ≈ «يا كابتن»، Pak ≈ «يا حاج»، dhe ≈ «يا عمو»، rek ≈ «يا جدعان»."
+  ar: "كما يُنادى الغريب في العامية العربية بـ«يا عم» و«يا حاج» و«يا أخي»، يناديه الجاويون بألقاب القرابة."
+  en: "Exactly like Egyptian «يا حاج», «يا عمو», «يا جدعان»: strangers get family titles. Pak ≈ «يا حاج», dhe ≈ «يا عمو», rek ≈ «يا جدعان»."
+tags: [address, politeness, arek, j1]
+prerequisites: [id.address.terms]
+see_also: [jv.pronoun.ngoko, jv.kinship.terms, jv.dialect.arek]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker (Arek ning and the reading of "piye dhe" especially).

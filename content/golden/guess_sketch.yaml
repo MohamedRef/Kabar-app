@@ -1,0 +1,343 @@
+# Golden set: guess_sketch (Gambar!, docs/SPEC.md §4, §19).
+# input: {target_word?, capture?}; the sketch image goes in `image` once captured.
+# expect: {guess_id, alternatives[]}: guess_id is the Indonesian lemma in snake_case (rumah, kucing, sepeda).
+# Every item needs a real capture: tag needs-capture, draw exactly what input.capture says,
+# save under fixtures/golden/guess_sketch/<id>.png, then set `image`.
+task: guess_sketch
+version: 1
+rubric: |
+  3 = guess_id equals expect.guess_id; 2 = guess_id is in expect.alternatives (a fair reading of the sketch) or expect.guess_id is the engine's first alternative; 1 = the right word appears somewhere in alternatives; 0 = otherwise.
+  guess_id is always one Indonesian lemma in snake_case (kucing, not "cat", "Kucing" or "seekor kucing"); multiword lemmas use underscores (nasi_goreng).
+  Judge the drawing, not the target: when target_word is given but the sketch shows something else, the honest guess wins and echoing the target scores 0.
+  alternatives are 1-3 distinct, plausible Indonesian lemmas for the same sketch, never the guess itself.
+  A blank canvas or pure scribble has no right answer: the honest result is guess_id "tidak_jelas" (unclear) with empty alternatives.
+items:
+  # --- Gambar! with a target word, sketch matches ---
+  - id: guess_sketch-001
+    input:
+      target_word: kucing
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas, black pen, 30 seconds. Draw a sitting cat seen from the front: round head, two pointed ears, whiskers, curled tail."
+    expect:
+      guess_id: kucing
+      alternatives: [anjing, harimau]
+    tags: [needs-capture, tablet, animal, target-match]
+    verified: false
+  - id: guess_sketch-002
+    input:
+      target_word: rumah
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas. Draw a simple house: square body, triangle roof, a door and one window."
+    expect:
+      guess_id: rumah
+      alternatives: [gedung, pondok]
+    tags: [needs-capture, tablet, building, target-match]
+    verified: false
+  - id: guess_sketch-003
+    input:
+      target_word: sepeda
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas. Draw a bicycle from the side: two wheels, triangle frame, handlebar, seat. No rider."
+    expect:
+      guess_id: sepeda
+      alternatives: [sepeda_motor, becak]
+    tags: [needs-capture, tablet, vehicle, target-match]
+    verified: false
+  - id: guess_sketch-004
+    input:
+      target_word: hujan
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas. Draw a cloud at the top with many short slanted lines falling from it."
+    expect:
+      guess_id: hujan
+      alternatives: [awan, badai]
+    tags: [needs-capture, tablet, weather, target-match]
+    verified: false
+  - id: guess_sketch-005
+    input:
+      target_word: pasar
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas, 60 seconds. Draw a market: two stalls with awnings, piles of round fruit on tables, one person behind a stall."
+    expect:
+      guess_id: pasar
+      alternatives: [toko, warung]
+    tags: [needs-capture, tablet, place, abstract-ish, target-match]
+    verified: false
+  - id: guess_sketch-006
+    input:
+      target_word: matahari
+      capture: "Galaxy S24 Ultra, S Pen, simplified Gambar! on the phone. Draw a circle with short straight rays all around it."
+    expect:
+      guess_id: matahari
+      alternatives: [bintang, bunga]
+    tags: [needs-capture, phone, nature, target-match]
+    verified: false
+  - id: guess_sketch-007
+    input:
+      target_word: pohon
+      capture: "Galaxy S24 Ultra, S Pen, simplified Gambar!. Draw a tree: brown trunk and a big cloud-shaped crown (use the green pen if offered)."
+    expect:
+      guess_id: pohon
+      alternatives: [semak, hutan]
+    tags: [needs-capture, phone, nature, colour, target-match]
+    verified: false
+  - id: guess_sketch-008
+    input:
+      target_word: ikan
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas. Draw a fish facing left: oval body, triangle tail, one eye, a few scales."
+    expect:
+      guess_id: ikan
+      alternatives: [lele, hiu]
+    tags: [needs-capture, tablet, animal, target-match]
+    verified: false
+  - id: guess_sketch-009
+    input:
+      target_word: mobil
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas. Draw a car from the side: body with two windows, two wheels, headlight."
+    expect:
+      guess_id: mobil
+      alternatives: [taksi, bus]
+    tags: [needs-capture, tablet, vehicle, target-match]
+    verified: false
+  - id: guess_sketch-010
+    input:
+      target_word: buku
+      capture: "Galaxy S24 Ultra, S Pen, simplified Gambar!. Draw an open book seen from above: two pages with lines of text."
+    expect:
+      guess_id: buku
+      alternatives: [majalah, koran]
+    tags: [needs-capture, phone, object, target-match]
+    verified: false
+  - id: guess_sketch-011
+    input:
+      target_word: kursi
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas. Draw a wooden chair in three-quarter view: four legs, seat, straight back."
+    expect:
+      guess_id: kursi
+      alternatives: [meja, bangku]
+    tags: [needs-capture, tablet, object, bridge, target-match]
+    verified: false
+  - id: guess_sketch-012
+    input:
+      target_word: gunung
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas. Draw two triangle mountains, the taller one with a little smoke cloud on top (a volcano like Merapi)."
+    expect:
+      guess_id: gunung
+      alternatives: [gunung_berapi, bukit]
+    criteria:
+      - "gunung_berapi as the guess scores 2; gunung or gunung_berapi are both honest readings."
+    tags: [needs-capture, tablet, nature, culture, target-match]
+    verified: false
+  - id: guess_sketch-013
+    input:
+      target_word: payung
+      capture: "Galaxy S24 Ultra, S Pen, simplified Gambar!. Draw an open umbrella with a J-shaped handle, no rain."
+    expect:
+      guess_id: payung
+      alternatives: [jamur, topi]
+    tags: [needs-capture, phone, object, target-match]
+    verified: false
+  - id: guess_sketch-014
+    input:
+      target_word: bulan
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas. Draw a crescent moon with three small stars around it."
+    expect:
+      guess_id: bulan
+      alternatives: [bintang, malam]
+    tags: [needs-capture, tablet, nature, target-match]
+    verified: false
+  - id: guess_sketch-015
+    input:
+      target_word: nasi_goreng
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas, 60 seconds. Draw a plate with a dome of rice, a fried egg on top and a spoon and fork beside it."
+    expect:
+      guess_id: nasi_goreng
+      alternatives: [nasi, telur]
+    criteria:
+      - "nasi or telur alone is a fair partial reading (score 2); a non-food guess is 0."
+    tags: [needs-capture, tablet, food, multiword, target-match]
+    verified: false
+  - id: guess_sketch-016
+    input:
+      target_word: becak
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas, 60 seconds. Draw a becak: a passenger seat with a hood at the front on two wheels, and a rider pedalling behind on a third wheel."
+    expect:
+      guess_id: becak
+      alternatives: [sepeda, gerobak]
+    tags: [needs-capture, tablet, vehicle, culture, target-match]
+    verified: false
+  - id: guess_sketch-017
+    input:
+      target_word: masjid
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas. Draw a building with a big dome and one tall minaret with a crescent on top."
+    expect:
+      guess_id: masjid
+      alternatives: [istana, gedung]
+    tags: [needs-capture, tablet, building, bridge, target-match]
+    verified: false
+  - id: guess_sketch-018
+    input:
+      target_word: wayang
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas, 90 seconds. Draw a flat shadow-puppet figure in profile with a long nose, thin arms and a stick running down from the body."
+    expect:
+      guess_id: wayang
+      alternatives: [boneka, orang]
+    tags: [needs-capture, tablet, culture, hard, target-match]
+    verified: false
+
+  # --- Target given but the sketch shows something else (honesty) ---
+  - id: guess_sketch-019
+    input:
+      target_word: kucing
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas. Ignore the target: draw a dog instead, with floppy ears hanging down, a long snout and a tongue out."
+    expect:
+      guess_id: anjing
+      alternatives: [kucing, serigala]
+    avoid:
+      - "Returning kucing as guess_id just because it is the target."
+    tags: [needs-capture, tablet, animal, target-mismatch, adversarial]
+    verified: false
+  - id: guess_sketch-020
+    input:
+      target_word: hujan
+      capture: "Galaxy S24 Ultra, S Pen, simplified Gambar!. Ignore the target: draw a big sun with rays and no clouds."
+    expect:
+      guess_id: matahari
+      alternatives: [bintang]
+    avoid:
+      - "Returning hujan."
+    tags: [needs-capture, phone, weather, target-mismatch, adversarial]
+    verified: false
+  - id: guess_sketch-021
+    input:
+      target_word: mobil
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas. Ignore the target: draw a motorbike from the side with a rider wearing a helmet."
+    expect:
+      guess_id: sepeda_motor
+      alternatives: [motor, sepeda]
+    criteria:
+      - "motor as guess_id scores 2 (it is the everyday word)."
+    tags: [needs-capture, tablet, vehicle, target-mismatch, near-miss]
+    verified: false
+
+  # --- Free drawing, no target ---
+  - id: guess_sketch-022
+    input:
+      capture: "Galaxy Tab S11, S Pen, Gambar! free-draw mode (no target). Draw a coffee cup with steam rising and a saucer."
+    expect:
+      guess_id: kopi
+      alternatives: [cangkir, teh]
+    criteria:
+      - "cangkir (cup) is an honest reading and scores 2."
+    tags: [needs-capture, tablet, food, no-target]
+    verified: false
+  - id: guess_sketch-023
+    input:
+      capture: "Galaxy Tab S11, S Pen, Gambar! free-draw mode. Draw a banana bunch: four curved bananas joined at the top."
+    expect:
+      guess_id: pisang
+      alternatives: [buah, cabai]
+    tags: [needs-capture, tablet, food, no-target]
+    verified: false
+  - id: guess_sketch-024
+    input:
+      capture: "Galaxy S24 Ultra, S Pen, simplified Gambar! free-draw. Draw a smartphone: rounded rectangle, screen, one camera dot."
+    expect:
+      guess_id: ponsel
+      alternatives: [hp, telepon_genggam, tablet]
+    criteria:
+      - "hp or telepon_genggam as guess_id scores 3 too: same object, everyday vs formal word."
+    tags: [needs-capture, phone, object, no-target, synonyms]
+    verified: false
+  - id: guess_sketch-025
+    input:
+      capture: "Galaxy Tab S11, S Pen, Gambar! free-draw. Draw the Great Pyramids: three triangles of different sizes on a flat line with a sun above."
+    expect:
+      guess_id: piramida
+      alternatives: [gunung, segitiga]
+    tags: [needs-capture, tablet, egypt, culture, no-target]
+    verified: false
+  - id: guess_sketch-026
+    input:
+      capture: "Galaxy Tab S11, S Pen, Gambar! free-draw. Draw a stick-figure family: two tall figures and two small ones holding hands."
+    expect:
+      guess_id: keluarga
+      alternatives: [orang, anak]
+    tags: [needs-capture, tablet, people, abstract-ish, no-target]
+    verified: false
+  - id: guess_sketch-027
+    input:
+      capture: "Galaxy Tab S11, S Pen, Gambar! free-draw. Draw a clock face showing 7 o'clock, with all 12 hour marks."
+    expect:
+      guess_id: jam
+      alternatives: [waktu, piring]
+    tags: [needs-capture, tablet, object, bridge, no-target]
+    verified: false
+  - id: guess_sketch-028
+    input:
+      capture: "Galaxy Tab S11, S Pen, Gambar! free-draw. Draw a chicken: round body, small head with a comb, two thin legs."
+    expect:
+      guess_id: ayam
+      alternatives: [burung, bebek]
+    tags: [needs-capture, tablet, animal, no-target]
+    verified: false
+
+  # --- Hard and edge cases ---
+  - id: guess_sketch-029
+    input:
+      target_word: kucing
+      capture: "Galaxy S24 Ultra, S Pen, simplified Gambar!, 10 seconds only. Draw a very rough cat: just a circle with two triangle ears, nothing else."
+    expect:
+      guess_id: kucing
+      alternatives: [beruang, tikus]
+    criteria:
+      - "A low-detail sketch; kucing is the best reading, related animals are fair alternatives."
+    tags: [needs-capture, phone, animal, minimal, hard]
+    verified: false
+  - id: guess_sketch-030
+    input:
+      target_word: hujan
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas. Draw a heart and write the word cinta inside it in letters."
+    expect:
+      guess_id: cinta
+      alternatives: [hati]
+    criteria:
+      - "Reads the written word or the heart shape; hati (heart) scores 2."
+    avoid:
+      - "Returning hujan."
+    tags: [needs-capture, tablet, text-in-drawing, target-mismatch, edge]
+    verified: false
+  - id: guess_sketch-031
+    input:
+      target_word: rumah
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas. Leave the canvas blank and submit."
+    expect:
+      guess_id: tidak_jelas
+      alternatives: []
+    avoid:
+      - "Guessing rumah from the target on an empty canvas."
+    tags: [needs-capture, tablet, empty, edge]
+    verified: false
+  - id: guess_sketch-032
+    input:
+      capture: "Galaxy S24 Ultra, S Pen, simplified Gambar! free-draw. Scribble random zigzags across the whole canvas for 3 seconds."
+    expect:
+      guess_id: tidak_jelas
+      alternatives: []
+    tags: [needs-capture, phone, scribble, edge]
+    verified: false
+  - id: guess_sketch-033
+    input:
+      target_word: gajah
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas, 60 seconds. Draw an elephant from the side with a long trunk, big ear and four thick legs, in a light grey pen at low pressure."
+    expect:
+      guess_id: gajah
+      alternatives: [badak, kuda_nil]
+    tags: [needs-capture, tablet, animal, faint, target-match]
+    verified: false
+  - id: guess_sketch-034
+    input:
+      target_word: kelapa
+      capture: "Galaxy Tab S11, S Pen, Gambar! canvas. Draw a palm tree on a small island with three round coconuts under the leaves."
+    expect:
+      guess_id: kelapa
+      alternatives: [pohon_kelapa, pulau, pantai]
+    criteria:
+      - "pohon_kelapa or pulau are fair readings (score 2)."
+    tags: [needs-capture, tablet, nature, ambiguous, target-match]
+    verified: false

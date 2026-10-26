@@ -36,6 +36,13 @@
         }
       ]
     },
+    "indonesian": {
+      "description": "Javanese only: the Indonesian equivalent, since the learner meets\nJavanese after BIPA 1 and compares the two.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "lang": {
       "$ref": "#/$defs/Lang"
     },
@@ -76,6 +83,17 @@
       "items": {
         "$ref": "#/$defs/Sense"
       }
+    },
+    "speech_level": {
+      "description": "Javanese only: the speech level of this form; its equivalents at the\nother levels live in the speech-level table.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SpeechLevel"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "status": {
       "$ref": "#/$defs/ReviewStatus",
@@ -233,6 +251,36 @@
       "required": [
         "pos",
         "gloss"
+      ]
+    },
+    "SpeechLevel": {
+      "description": "Javanese speech level (unggah-ungguh, §13).",
+      "oneOf": [
+        {
+          "description": "Plain speech: friends, younger people, yourself.",
+          "type": "string",
+          "const": "ngoko"
+        },
+        {
+          "description": "The in-between level used in markets and casual polite talk.",
+          "type": "string",
+          "const": "madya"
+        },
+        {
+          "description": "Polite speech to elders, strangers, people of higher status.",
+          "type": "string",
+          "const": "krama"
+        },
+        {
+          "description": "Honorific words that elevate the other person (their body, actions, belongings).",
+          "type": "string",
+          "const": "krama_inggil"
+        },
+        {
+          "description": "Humble words for your own actions toward a respected person.",
+          "type": "string",
+          "const": "krama_andhap"
+        }
       ]
     },
     "Trilingual": {

@@ -5,6 +5,8 @@
 // It checks M2's acceptance criterion — a word saved on the phone appears on
 // the tablet within seconds — plus sign-in, the allowlist, the Devices
 // screen, remote sign-out, refresh rotation and the proxy's privacy rule.
+// Then it runs the app's own sync engine (Rust, two devices) against the
+// same server. KABAR_E2E_SKIP_APP=1 skips that part.
 
 import { spawn, execFileSync } from "node:child_process";
 import { generateKeyPairSync, createSign, randomBytes } from "node:crypto";
@@ -26,7 +28,12 @@ const wrangler = process.env.WRANGLER ?? "wrangler";
 // --- fake Google ---------------------------------------------------------------
 const { privateKey, publicKey } = generateKeyPairSync("rsa", { modulusLength: 2048 });
 const jwk = { ...publicKey.export({ format: "jwk" }), kid: "e2e", alg: "RS256", use: "sig" };
-const jwks = createServer((_, res) => {
+const jwks = createServer((req, res) => {
+  // /token: an ID token for the app's end-to-end test (stands in for the browser sign-in).
+  if (req.url === "/token") {
+    res.writeHead(200, { "content-type": "text/plain" });
+    return res.end(idToken(EMAIL));
+  }
   res.writeHead(200, { "content-type": "application/json", "cache-control": "max-age=60" });
   res.end(JSON.stringify({ keys: [jwk] }));
 }).listen(JWKS_PORT, "127.0.0.1");
@@ -183,6 +190,16 @@ assert.deepEqual(names, ["Galaxy S24 Ultra", "Galaxy Tab S11"]);
 assert.ok(list.json.devices.find((d) => d.device_id === "tab-s11").current);
 assert.ok(list.json.devices.find((d) => d.device_id === "s24u").last_sync_ms);
 
+step("push tokens (M7): stored per device; Firebase isn't set up here");
+const push = await api("PUT", "/v1/devices/me/push", { token: tablet.json.access_token, body: { token: "e2e-fcm:APA91b-token" } });
+assert.equal(push.status, 200, JSON.stringify(push.json));
+assert.deepEqual(push.json, { registered: true, push_configured: false });
+const badPush = await api("PUT", "/v1/devices/me/push", { token: tablet.json.access_token, body: { token: "has spaces" } });
+assert.equal(badPush.status, 400);
+const noPush = await api("PUT", "/v1/devices/me/push", { token: tablet.json.access_token, body: { token: "" } });
+assert.deepEqual(noPush.json, { registered: false, push_configured: false });
+assert.equal((await signIn("server", "Impostor")).status, 400);
+
 step("refresh rotates the token");
 const refreshed = await api("POST", "/v1/auth/refresh", { body: { refresh_token: tablet.json.refresh_token } });
 assert.equal(refreshed.status, 200, JSON.stringify(refreshed.json));
@@ -201,6 +218,7 @@ assert.equal(noKey.status, 503);
 assert.equal(noKey.json.kind, "unavailable");
 const vault = await api("GET", "/v1/vault", { token: tablet.json.access_token });
 assert.equal(vault.json.tts_configured, false);
+assert.equal(vault.json.push_configured, false);
 
 step("remote sign-out from the tablet closes the phone's socket");
 const revoked = await api("DELETE", "/v1/devices/s24u", { token: refreshed.json.access_token });
@@ -215,5 +233,21 @@ step("no token, no entry");
 assert.equal((await api("GET", "/v1/devices")).status, 401);
 
 tabletWs.ws.close();
+
+if (!process.env.KABAR_E2E_SKIP_APP) {
+  step("the app's sync engine: phone → tablet, Devices, remote sign-out");
+  // Async, so this process keeps serving the fake Google meanwhile.
+  const app = spawn("cargo", [
+    "test", "-p", "kabar-app", "--no-default-features", "--",
+    "--ignored", "--exact", "cloud::e2e::phone_and_tablet_sync_through_kabar_cloud", "--nocapture",
+  ], {
+    cwd: join(serverDir, "..", ".."),
+    stdio: ["ignore", "inherit", "inherit"],
+    env: { ...process.env, KABAR_E2E_URL: BASE, KABAR_E2E_TOKEN_URL: `http://127.0.0.1:${JWKS_PORT}/token` },
+  });
+  const code = await new Promise((r) => app.on("exit", r));
+  assert.equal(code, 0, "the app's end-to-end test failed");
+}
+
 console.log(`\n✅ Kabar Cloud end-to-end: all checks passed (phone → tablet in ${latency} ms)`);
 process.exit(0);

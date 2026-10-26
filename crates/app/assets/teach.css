@@ -1,0 +1,30 @@
+/* Teach Kabar (spec §26). Logical properties only. */
+.teach input:not([type="checkbox"]), .teach textarea, .teach-review input {
+  inline-size: 100%; box-sizing: border-box; font: inherit; padding: 0.5rem 0.65rem;
+  border: 1px solid var(--line); border-radius: 0.6rem; background: var(--surface); color: var(--text);
+}
+.teach .row > input { flex: 1 1 12rem; inline-size: auto; }
+.teach textarea { resize: vertical; margin-block-start: 0.5rem; }
+.teach [role="tablist"] { margin-block-end: 0.25rem; }
+.teach [role="tab"][aria-selected="true"] { background: var(--surface-2); color: var(--indigo); font-weight: 600; }
+.teach a.button { display: inline-block; padding: 0.45rem 0.9rem; border-radius: 0.6rem; border: 1px solid var(--line); color: var(--indigo); text-decoration: none; }
+.small { font-size: 0.85rem; }
+.pill.taught { background: var(--gold-soft); color: var(--gold); }
+.pill.draft { background: var(--surface-2); }
+.teach-review h2 { margin: 0; }
+.teach-review .senses { padding-inline-start: 1.25rem; }
+.teach-review .senses li { margin-block-end: 0.35rem; }
+.teach-review .examples { list-style: none; padding: 0; }
+.teach-review .examples li { border-inline-start: 3px solid var(--line); padding-inline-start: 0.75rem; margin-block-end: 0.6rem; }
+.teach-review .examples p { margin: 0; }
+.teach-review .note { background: var(--surface-2); border-radius: 0.6rem; padding: 0.5rem 0.75rem; }
+.teach-review .false-friend { border-inline-start: 4px solid var(--dawn); padding-inline-start: 0.75rem; font-weight: 600; }
+.teach-review .bridge-card { border: 1px solid var(--gold); border-radius: 0.75rem; padding: 0.5rem 0.75rem; margin-block: 0.5rem; }
+.teach-review .bridge-card .ar { font-family: var(--font-arabic); font-size: 1.5rem; }
+.teach-review .doubts { border-inline-start: 4px solid var(--gold); padding-inline-start: 0.75rem; margin-block: 0.75rem; }
+.teach-review .sense-edit { border: 1px solid var(--line); border-radius: 0.6rem; margin-block-end: 0.75rem; display: grid; gap: 0.4rem; }
+.teach-review .sense-edit .label { font-size: 0.8rem; color: var(--muted); }
+.teach-review .sources pre { white-space: pre-wrap; font-size: 0.85rem; max-block-size: 12rem; overflow: auto; background: var(--surface-2); padding: 0.5rem; border-radius: 0.5rem; }
+.taught-list { list-style: none; padding: 0; display: grid; gap: 0.25rem; }
+.taught-list button { inline-size: 100%; text-align: start; }
+button.quiet { background: transparent; border-color: transparent; }

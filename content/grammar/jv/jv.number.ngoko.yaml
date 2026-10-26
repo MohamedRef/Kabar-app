@@ -1,0 +1,105 @@
+schema: kabar.grammar/v1
+id: jv.number.ngoko
+language: jv
+level: j1
+title:
+  target: siji … sepuluh · rong ewu, telung ewu · satus, sewu, sejuta
+  en: Numbers and prices (ngoko, basics)
+  ar_eg: الأرقام والأسعار (النغوكو، الأساسيات)
+  ar: الأعداد والأسعار (النغوكو، الأساسيات)
+summary:
+  ar_eg: "siji، loro، telu، papat، lima، enem، pitu، wolu، sanga، sepuluh. وقبل ewu (ألف) أو atus (مية) الرقم بيتغير شكله: rong ewu (ألفين)، telung ewu، limang ewu."
+  ar: "siji، loro، telu، papat، lima، enem، pitu، wolu، sanga، sepuluh، وقبل ewu (ألف) وatus (مئة) يتخذ العدد صورة وصل: rong ewu، telung ewu، limang ewu."
+  en: "siji, loro, telu, papat, lima, enem, pitu, wolu, sanga, sepuluh. Before ewu (thousand) or atus (hundred) numbers take a linking form: rong ewu, telung ewu, limang ewu."
+pattern:
+  - "1–10: siji, loro, telu, papat, lima, enem, pitu, wolu, sanga, sepuluh"
+  - "linking form + atus / ewu / juta / puluh: se-, rong, telung, patang, limang, nem, pitung, wolung, sangang"
+  - "satus (100) · sewu (1,000) · sepuluh ewu (10,000) · satus ewu (100,000) · sejuta (1,000,000)"
+  - "Regane pira? — Telung ewu."
+  - "chat: piro, limo, songo"
+explanation:
+  ar_eg: |
+    الأرقام من 1 لـ 10 (وجنبها الإندونيسي):
+    siji (satu)، loro (dua)، telu (tiga)، papat (empat)، lima (lima)، enem (enam)، pitu (tujuh)، wolu (delapan)، sanga (sembilan)، sepuluh (sepuluh).
+    الحتة المهمة للسوق: لما الرقم ييجي قبل atus (مية) أو ewu (ألف) أو juta (مليون)، بياخد «شكل وصل»:
+    - 1 → se-: satus (100)، sewu (1000)، sejuta (مليون).
+    - 2 → rong: rong atus (200)، rong ewu (2000).
+    - 3 → telung، 4 → patang، 5 → limang، 6 → nem، 7 → pitung، 8 → wolung، 9 → sangang: limang ewu = 5000، sangang ewu = 9000.
+    - 10.000 = sepuluh ewu، 100.000 = satus ewu، 2 مليون = rong juta.
+    وكلمات السوق: larang = غالي، murah = رخيص، Regane pira? = بكام؟ ولما تفاصل: Oleh kurang? = ينفع تنزّل؟
+    في الشات: piro، limo، songo. والرقم 50 ليه كلمة خاصة (seket) هنتعلمها مع باقي الأرقام في J2.
+  ar: |
+    الأعداد من 1 إلى 10 ومقابلها الإندونيسي:
+    siji (satu)، loro (dua)، telu (tiga)، papat (empat)، lima، enem (enam)، pitu (tujuh)، wolu (delapan)، sanga (sembilan)، sepuluh.
+    وقبل atus (مئة) وewu (ألف) وjuta (مليون) يتخذ العدد صورة وصل:
+    - 1 → se-: satus، sewu، sejuta.
+    - 2 → rong: rong atus، rong ewu.
+    - 3 → telung، 4 → patang، 5 → limang، 6 → nem، 7 → pitung، 8 → wolung، 9 → sangang.
+    - 10.000 = sepuluh ewu، و100.000 = satus ewu.
+    وألفاظ السوق: larang = غالٍ، murah = رخيص، Regane pira? = بكم؟، Oleh kurang? = هل تخفض السعر؟
+    وفي الدردشة piro وlimo وsongo، وللعدد 50 لفظ خاص (seket) يأتي في J2.
+  en: |
+    1–10, with Indonesian alongside:
+    siji (satu), loro (dua), telu (tiga), papat (empat), lima (lima), enem (enam), pitu (tujuh), wolu (delapan), sanga (sembilan), sepuluh (sepuluh).
+    The market trick: before atus (hundred), ewu (thousand) or juta (million), a number takes a linking form:
+    - 1 → se-: satus (100), sewu (1,000), sejuta (1,000,000).
+    - 2 → rong: rong atus (200), rong ewu (2,000).
+    - 3 → telung, 4 → patang, 5 → limang, 6 → nem, 7 → pitung, 8 → wolung, 9 → sangang: limang ewu = 5,000, sangang ewu = 9,000.
+    - 10,000 = sepuluh ewu, 100,000 = satus ewu, 2 million = rong juta.
+    Market words: larang = expensive, murah = cheap, Regane pira? = How much? Haggling: Oleh kurang? = Can you go lower?
+    Chats write piro, limo, songo. 50 has its own word (seket), coming with the full number system in J2.
+examples:
+  - text: Regane pira? — Telung ewu.
+    breakdown: rega + -ne = harganya · pira = berapa · telung = tiga (linking) · ewu = ribu
+    en: How much is it? — Three thousand.
+    ar_eg: بكام؟ — تلات آلاف.
+    ar: بكم؟ — ثلاثة آلاف.
+    register: informal
+  - text: Kopi loro, Cak.
+    breakdown: kopi · loro = dua · Cak = Mas (Arek)
+    en: Two coffees, brother. (Surabaya)
+    ar_eg: اتنين قهوة يا معلم.
+    ar: قهوتان من فضلك يا أخي.
+    register: informal
+  - text: Satus ewu? Larang!
+    breakdown: satus = seratus · ewu = ribu · larang = mahal
+    en: A hundred thousand? That's expensive!
+    ar_eg: مية ألف؟ غالي!
+    ar: مئة ألف؟ هذا غالٍ!
+    register: informal
+  - text: Oleh kurang? Rong juta ya.
+    breakdown: oleh = boleh · kurang = kurang · rong = dua (linking) · juta · ya
+    en: Can you go lower? Two million, OK?
+    ar_eg: ينفع تنزّل؟ مليونين، ماشي؟
+    ar: هل تخفض السعر؟ مليونان، اتفقنا؟
+    register: informal
+  - text: arp dicul piro
+    breakdown: arp = arep (mau) · dicul = diculke (dilepas / dijual) · piro = pira (berapa)
+    en: How much will you sell it for? (chat)
+    ar_eg: ناوي تبيعه بكام؟
+    ar: بكم ستبيعه؟
+    register: chat
+mistakes:
+  - wrong: loro ewu
+    right: rong ewu
+    why:
+      ar_eg: "قبل ewu وatus الرقم بياخد شكل الوصل: loro → rong، telu → telung، lima → limang."
+      ar: "قبل ewu وatus تُستعمل صورة الوصل: loro → rong، telu → telung."
+      en: "Before ewu and atus use the linking form: loro → rong, telu → telung, lima → limang."
+  - wrong: siji ewu
+    right: sewu
+    why:
+      ar_eg: «ألف واحد» = sewu، زي الإندونيسي seribu مش satu ribu.
+      ar: الألف الواحد sewu كما تقول الإندونيسية seribu.
+      en: One thousand is sewu, just as Indonesian says seribu, not satu ribu.
+arabic_bridge:
+  ar_eg: "زي المصري بالظبط: بنقول «تلاتة» لوحدها بس «تلات آلاف» و«تلت تيام»، الرقم بيتغير شكله قبل المعدود. loro → rong ewu زي «اتنين» → «ألفين»."
+  ar: "كما يتغير العدد في العامية قبل المعدود («ثلاثة» و«تلات آلاف»)، يتخذ العدد الجاوي صورة وصل قبل ewu وatus."
+  en: "Like Egyptian «تلاتة» vs «تلات آلاف», a Javanese number changes shape before ewu / atus."
+tags: [number, price, market, ngoko, j1]
+prerequisites: [id.number.cardinal]
+see_also: [jv.number.full, jv.krama.numbers, jv.suffix.ake]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker (linking forms and the chat spellings limo / songo especially).
