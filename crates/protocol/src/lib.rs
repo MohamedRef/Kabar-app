@@ -11,6 +11,7 @@ pub mod lesson;
 pub mod pen;
 pub mod srs;
 pub mod sync;
+pub mod test;
 
 pub use hlc::{DeviceId, Hlc};
 

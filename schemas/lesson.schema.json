@@ -136,10 +136,11 @@
             "audio": { "type": "string" },
             "options": { "type": "array", "minItems": 2, "maxItems": 4, "items": { "$ref": "#/$defs/text" } },
             "answer": { "type": "integer", "minimum": 0 },
-            "meaning": { "$ref": "#/$defs/localized" }
+            "meaning": { "$ref": "#/$defs/localized" },
+            "question": { "$ref": "#/$defs/localized", "description": "Listening comprehension: a question in the learner's language about what was heard; options[answer] answers it (and need not equal text)." }
           },
           "required": ["text"],
-          "dependentRequired": { "options": ["answer"], "answer": ["options"] }
+          "dependentRequired": { "options": ["answer"], "answer": ["options"], "question": ["options"] }
         },
         {
           "properties": {

@@ -135,6 +135,21 @@ fn first_not_done_lesson_is_current() {
 }
 
 #[test]
+fn placement_moves_lanjut_forward_but_marks_nothing_done() {
+    let c = parse_curriculum(BIPA).unwrap();
+    let p = Progress::new(&c, &set(&[])).start_at(&c, "bipa2");
+    assert_eq!(p.current(), Some("bipa2.u01.l01"));
+    assert_eq!(p.lesson_state("bipa1.u01.l01"), LessonState::Open);
+    assert!(!p.level_done("bipa1"));
+    // Already past the placement level: unchanged.
+    let p = Progress::new(&c, &set(&[])).start_at(&c, "bipa1");
+    assert_eq!(p.current(), Some("bipa1.u01.l01"));
+    // A level from another route changes nothing.
+    let p = Progress::new(&c, &set(&[])).start_at(&c, "j2");
+    assert_eq!(p.current(), Some("bipa1.u01.l01"));
+}
+
+#[test]
 fn finished_units_earn_souvenirs() {
     let c = parse_curriculum(BIPA).unwrap();
     let p = Progress::new(&c, &set(&["bipa1.u01.l01"]));
