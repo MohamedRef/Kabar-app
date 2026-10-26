@@ -147,7 +147,7 @@
 }
 .jm-map { display: grid; gap: 0.5rem; min-inline-size: 0; }
 .jm-stage {
-  position: relative; block-size: min(68dvh, 42rem); border-radius: var(--radius); overflow: hidden;
+  position: relative; inline-size: 100%; min-block-size: min(24rem, 62dvh); max-block-size: 72dvh; border-radius: var(--radius); overflow: hidden;
   border: 1px solid var(--line); background: var(--sea); touch-action: none;
   -webkit-user-select: none; user-select: none; cursor: grab;
 }
@@ -157,13 +157,13 @@
 .jm-stage .sea { fill: var(--sea); }
 .jm-stage .land-id { fill: var(--land); stroke: var(--land-edge); stroke-width: 0.25; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
 .jm-stage .land-other { fill: var(--land-other); stroke: var(--line); stroke-width: 0.25; vector-effect: non-scaling-stroke; }
-.jm-route .seg { fill: none; stroke-linecap: round; }
-.jm-route .flight { stroke: var(--flight); }
-.jm-route .rail { stroke: var(--rail); }
-.jm-route .branch { stroke: var(--rail); opacity: 0.85; }
-.jm-route .rail-bed { fill: none; stroke: var(--rail-bed); stroke-linecap: round; }
-.jm-level .unit-loop { fill: none; stroke: var(--indigo); stroke-opacity: 0.35; stroke-dasharray: 0.6 0.6; }
-.jm-level .unit-dot { fill: var(--surface); stroke: var(--indigo); stroke-width: 0.12; }
+.jm-route path, .jm-level .unit-loop { fill: none; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.jm-route .flight { stroke: var(--flight); stroke-width: 2.5; stroke-dasharray: 7 6; }
+.jm-route .rail { stroke: var(--rail); stroke-width: 4; }
+.jm-route .branch { stroke: var(--rail); stroke-width: 3; stroke-dasharray: 9 4; }
+.jm-route .rail-bed { stroke: var(--rail-bed); stroke-width: 8; }
+.jm-level .unit-loop { stroke: var(--indigo); stroke-opacity: 0.45; stroke-width: 1.5; stroke-dasharray: 3 4; }
+.jm-level .unit-dot { fill: var(--surface); stroke: var(--indigo); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
 .jm-level .unit-dot.done { fill: var(--sawah); stroke: var(--sawah); }
 .jm-pin { cursor: pointer; transform: scale(var(--inv)); outline: none; }
 .jm-pin .pin-hit { fill: transparent; }

@@ -472,9 +472,14 @@ fn MapView(j: Journey) -> Element {
         .and_then(|c| cur.levels.iter().find(|l| l.lessons().any(|x| x.id == c)))
         .or(cur.levels.first())
         .map(|l| l.id.clone());
-    let mut selected = use_signal(|| initial);
+    let mut selected = use_signal(|| initial.clone());
     let stage_id = format!("jm-stage-{}", j.route.target_lang());
-    let script = format!("{PAN_ZOOM_JS}({stage_id:?});");
+    // Start centred on the place the learner is at.
+    let focus = initial
+        .as_deref()
+        .and_then(|id| map.pin(id))
+        .map_or((map.view.x + map.view.w / 2.0, map.view.y + map.view.h / 2.0), |p| (p.x, p.y));
+    let script = format!("{PAN_ZOOM_JS}({stage_id:?}, {:.2}, {:.2});", focus.0, focus.1);
     let zoom = {
         let stage_id = stage_id.clone();
         move |how: &str| {
@@ -488,8 +493,10 @@ fn MapView(j: Journey) -> Element {
     };
     let base = j.route.base_map();
     let (land_id, land_other) = (land_path(base, "land-id"), land_path(base, "land-other"));
-    // Pins are drawn in a 10-unit design space, scaled to the map.
-    let k = map.radius / 5.0;
+    // Pins are drawn in a small design space, scaled so they keep the same
+    // on-screen size on both maps (the JS counter-scales them while zooming).
+    let k = map.view.w / 200.0;
+    let dot = map.radius * 0.22;
     let current_level = selected.read().clone();
     let panel_level = current_level.as_deref().and_then(|id| cur.level(id));
     let rail = map.style == RouteStyle::Rail;
@@ -500,6 +507,7 @@ fn MapView(j: Journey) -> Element {
                 div {
                     id: "{stage_id}",
                     class: "jm-stage",
+                    style: "aspect-ratio: {map.view.w:.1} / {map.view.h:.1}",
                     tabindex: "0",
                     aria_label: "{ui.t(map_label)}",
                     onmounted: move |_| {
@@ -507,7 +515,7 @@ fn MapView(j: Journey) -> Element {
                     },
                     svg {
                         view_box: "{map.view.attr()}",
-                        preserve_aspect_ratio: "xMidYMid meet",
+                        preserve_aspect_ratio: "xMidYMid slice",
                         role: "group",
                         "aria-label": "{ui.t(map_label)}",
                         rect {
@@ -524,7 +532,7 @@ fn MapView(j: Journey) -> Element {
                                 for (i, seg) in map.segments.iter().enumerate() {
                                     g { key: "{i}",
                                     if seg.kind != SegmentKind::Flight {
-                                        path { class: "rail-bed", d: "{seg.path_d()}", "stroke-width": "{0.55 * k}" }
+                                        path { class: "rail-bed", d: "{seg.path_d()}" }
                                     }
                                     path {
                                         class: match seg.kind {
@@ -533,8 +541,6 @@ fn MapView(j: Journey) -> Element {
                                             SegmentKind::Branch => "seg branch",
                                         },
                                         d: "{seg.path_d()}",
-                                        "stroke-width": "{0.35 * k}",
-                                        "stroke-dasharray": if seg.kind == SegmentKind::Flight { "{1.6 * k} {1.4 * k}" } else if seg.kind == SegmentKind::Branch { "{1.0 * k} {0.6 * k}" },
                                     }
                                     }
                                 }
@@ -557,14 +563,14 @@ fn MapView(j: Journey) -> Element {
                                     let short = level.place().split([',', '(']).next().unwrap_or_default().trim().to_string();
                                     rsx! {
                                         g { key: "{level.id}", class: "jm-level", "data-state": state,
-                                            path { class: "unit-loop", d: "{pin.units_d()}", "stroke-width": "{0.25 * k}" }
+                                            path { class: "unit-loop", d: "{pin.units_d()}" }
                                             for (u, (ux, uy)) in level.units.iter().zip(pin.units.iter()) {
                                                 circle {
                                                     key: "{u.id}",
                                                     class: if progress.unit_done(u) { "unit-dot done" } else { "unit-dot" },
                                                     cx: "{ux}",
                                                     cy: "{uy}",
-                                                    r: "{0.55 * k}",
+                                                    r: "{dot}",
                                                 }
                                             }
                                             g {
@@ -584,14 +590,16 @@ fn MapView(j: Journey) -> Element {
                                                             selected.set(Some(id2.clone()));
                                                         }
                                                     },
-                                                    circle { class: "pin-hit", r: "7" }
+                                                    circle { class: "pin-hit", r: "8" }
                                                     circle { class: "pin-disc", r: "3.6" }
-                                                    circle {
-                                                        class: "pin-ring",
-                                                        r: "4.6",
-                                                        "pathLength": "100",
-                                                        "stroke-dasharray": "{pct} 100",
-                                                        transform: "rotate(-90)",
+                                                    if pct > 0 {
+                                                        circle {
+                                                            class: "pin-ring",
+                                                            r: "4.6",
+                                                            "pathLength": "100",
+                                                            "stroke-dasharray": "{pct} 100",
+                                                            transform: "rotate(-90)",
+                                                        }
                                                     }
                                                     text { class: "pin-label", y: "-6.6", "text-anchor": "middle", lang: j.route.target_lang(), "{short}" }
                                                     text { class: "pin-code", y: "1.25", "text-anchor": "middle", "{level.code.replace(\"BIPA \", \"\")}" }
@@ -650,8 +658,6 @@ fn Suitcase(completed: Rc<BTreeSet<String>>) -> Element {
                         h3 { bdi { lang: tl, "{s.name}" } }
                         p { class: "muted souvenir-where",
                             bdi { lang: tl, "{s.stop}" }
-                            " · "
-                            bdi { class: "latin", "{s.level_code}" }
                             if s.unverified {
                                 " "
                                 span { class: "badge-unverified", "{ui.t(Msg::JourneyUnverified)}" }
