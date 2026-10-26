@@ -62,7 +62,10 @@ pub const TABLES: &[(&str, SyncKind)] = &[
     ("daily_plans", SyncKind::Lww),
     ("reminders", SyncKind::Lww),
     ("reports", SyncKind::Lww),
-    ("journal_entries", SyncKind::AppendOnly),
+    // Journal reflections: one row each, LWW because a reflection can be
+    // edited (a tombstone deletes it). The timeline itself is derived from
+    // `xp_events`, `lesson_events` and `taught_entries`, never stored twice.
+    ("journal_entries", SyncKind::Lww),
     ("coach_memory", SyncKind::Lww),
     ("skill_scores", SyncKind::Lww),
     // Account
@@ -208,6 +211,8 @@ mod tests {
         assert_eq!(table_kind("word_status"), Some(SyncKind::Lww));
         assert_eq!(table_kind("ink_strokes"), Some(SyncKind::Immutable));
         assert_eq!(table_kind("nope"), None);
+        // Reflections are edited in place.
+        assert_eq!(table_kind(crate::journal::JOURNAL_TABLE), Some(SyncKind::Lww));
     }
 
     #[test]
