@@ -72,7 +72,8 @@ pub fn Today() -> Element {
                             let profile = profile.clone();
                             move |size| {
                                 let events = coach.events.peek().clone();
-                                let fresh = build_plan(&profile, &events, today, size);
+                                let due = crate::review::due_words(&db, coach.now()).len() as u32;
+                                let fresh = build_plan(due, &profile, &events, today, size);
                                 if let Err(e) = db.0.borrow_mut().save_plan(&fresh) {
                                     eprintln!("kabar: saving today's plan failed: {e}");
                                 }
@@ -238,8 +239,11 @@ fn Snooze(profile: CoachProfile, goal_met: bool) -> Element {
 fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
     let ui = use_context::<Ui>();
     let coach = use_context::<Coach>();
+    let db = use_context::<Db>();
     let events = coach.events.read().clone();
-    let tomorrow = build_plan(&profile, &events, today.add_days(1), profile.daily_size);
+    // Cards due by tomorrow morning size tomorrow's first step.
+    let due = crate::review::due_words(&db, coach.now() + 86_400_000).len() as u32;
+    let tomorrow = build_plan(due, &profile, &events, today.add_days(1), profile.daily_size);
     let tomorrow_first = tomorrow.items.first().map(|i| i.kind.clone());
     let r = recap::day_recap(&events, today, plan.size.minutes(), plan.items.len(), tomorrow_first);
 

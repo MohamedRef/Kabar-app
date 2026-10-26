@@ -113,7 +113,18 @@ Open **Teach Kabar** (علّم كبر) from the side bar on the Mac and tablet, 
 
 Writing the draft needs an AI engine, so until the app is connected to Kabar Cloud the screen says "not connected yet". Search Google opens the browser; nothing from Google is read automatically.
 
-## 9. Troubleshooting
+## 9. Play: Arabic Bridge games, Kabar Pagi, Rupiah Reader, Pasar! (M10)
+
+Open **Play** (ألعاب) in the sidebar or the phone's bottom bar.
+
+- **Kamu sudah tahu N kata**: the Arabic loans you already understand. Tap a card to flip it; "I know it" adds the word to your log.
+- **Sound-Shift Detective**: pick a sound change (ف → p, خ → k, ة → -at …) or all, then 10 rounds.
+- **False Friends Alarm**: words that look Arabic but mean something else (kalimat, mungkin).
+- **Rupiah Reader**: type how a price is read (Rp26.000.000 → *dua puluh enam juta rupiah*). Speed counts, accuracy more.
+- **Pasar!**: haggle within a budget. The iPhone listing is the bonus round; Javanese sellers are marked unverified.
+- **Kabar Pagi**: the morning story from your due words plus a few new ones. On Today it appears every morning until you've read it. Audio uses the Mac's Indonesian voice (System Settings → Accessibility → Spoken Content → System voice → Manage Voices → Indonesian "Damayanti", if it isn't installed). Android's WebView has no voices, so on the Galaxy devices audio arrives with Kabar Cloud's TTS (follow-up).
+
+## 10. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.
