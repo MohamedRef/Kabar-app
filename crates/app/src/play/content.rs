@@ -4,7 +4,9 @@
 use std::sync::OnceLock;
 
 use kabar_core::games::bridge::BridgeData;
+use kabar_core::games::pairs::PairsData;
 use kabar_core::games::pasar::PasarData;
+use kabar_core::games::unggah::UnggahData;
 use kabar_core::pagi::StoryBank;
 
 use super::logic;
@@ -13,6 +15,9 @@ const BRIDGE_JSONL: &str = include_str!("../../../../content/bridge/id.jsonl");
 const SOUND_RULES_JSON: &str = include_str!("../../../../content/bridge/sound-rules.json");
 const FREQ_TSV: &str = include_str!("../../../../content/freq/id.tsv");
 const PASAR_TOML: &str = include_str!("../../../../content/games/pasar.toml");
+const UNGGAH_TOML: &str = include_str!("../../../../content/games/unggah-ungguh.toml");
+const SPEECH_LEVELS_JSONL: &str = include_str!("../../../../content/javanese/speech-levels.jsonl");
+const PAIRS_TOML: &str = include_str!("../../../../content/games/minimal-pairs.toml");
 const STORIES_JSONL: &str = include_str!("../../../../content/pagi/stories.jsonl");
 
 /// How many of the most frequent words Kabar Pagi may pick new words from.
@@ -40,6 +45,18 @@ pub fn bridge() -> &'static Loaded<BridgeData> {
 pub fn pasar() -> &'static Loaded<PasarData> {
     static DATA: OnceLock<Loaded<PasarData>> = OnceLock::new();
     DATA.get_or_init(|| guarded("content/games/pasar.toml", || PasarData::parse(PASAR_TOML)))
+}
+
+pub fn unggah() -> &'static Loaded<UnggahData> {
+    static DATA: OnceLock<Loaded<UnggahData>> = OnceLock::new();
+    DATA.get_or_init(|| {
+        guarded("content/games/unggah-ungguh.toml", || UnggahData::parse(UNGGAH_TOML, SPEECH_LEVELS_JSONL))
+    })
+}
+
+pub fn pairs() -> &'static Loaded<PairsData> {
+    static DATA: OnceLock<Loaded<PairsData>> = OnceLock::new();
+    DATA.get_or_init(|| guarded("content/games/minimal-pairs.toml", || PairsData::parse(PAIRS_TOML)))
 }
 
 pub fn stories() -> &'static Loaded<StoryBank> {
