@@ -61,6 +61,50 @@ pub enum L {
     NotReviewed,
     Retry,
     NoAudio,
+    ListenAnswer,
+    Transcript,
+    CloseTest,
+    TestStart,
+    TestMinutes,
+    TestNoFeedback,
+    PlacementNoFeedback,
+    TestPart,
+    TestNext,
+    SpeakTask,
+    SpeakTaskNote,
+    ISpoke,
+    SelfCheckTitle,
+    SelfCheckBody,
+    SelfRated,
+    YourAnswer,
+    Spoken,
+    Rubric,
+    Sample,
+    Accepted,
+    GradeNone,
+    GradePartly,
+    GradeFully,
+    SeeResults,
+    PassedTitle,
+    PassedBody,
+    NotPassedTitle,
+    NotPassedBody,
+    BySkill,
+    ToPractise,
+    Skipped,
+    TryAgain,
+    PlacementTitle,
+    PlacementBody,
+    GoToJourney,
+    InviteTitle,
+    InviteBody,
+    InviteButton,
+    SkillListening,
+    SkillReading,
+    SkillWriting,
+    SkillSpeaking,
+    SkillVocabulary,
+    SkillGrammar,
 }
 
 pub fn lt(lang: UiLanguage, msg: L) -> &'static str {
@@ -231,5 +275,163 @@ pub fn lt(lang: UiLanguage, msg: L) -> &'static str {
         (NoAudio, ArEg) => "الصوت لسه مش متاح على الجهاز ده",
         (NoAudio, Ar) => "الصوت غير متاح على هذا الجهاز بعد",
         (NoAudio, En) => "Audio isn't available on this device yet",
+        (ListenAnswer, ArEg) => "اسمع وجاوب على السؤال",
+        (ListenAnswer, Ar) => "استمع ثم أجب عن السؤال",
+        (ListenAnswer, En) => "Listen, then answer the question",
+        (Transcript, ArEg) => "اللي اتقال:",
+        (Transcript, Ar) => "ما قيل:",
+        (Transcript, En) => "What was said:",
+        (CloseTest, ArEg) => "اخرج من الاختبار (الإجابات مش هتتحفظ)",
+        (CloseTest, Ar) => "اخرج من الاختبار (لن تُحفظ الإجابات)",
+        (CloseTest, En) => "Leave the test (answers aren't kept)",
+        (TestStart, ArEg) => "يلا نبدأ",
+        (TestStart, Ar) => "لنبدأ",
+        (TestStart, En) => "Let's start",
+        (TestMinutes, ArEg) => "حوالي {n} دقيقة، ومفيش عدّاد.",
+        (TestMinutes, Ar) => "نحو {n} دقيقة، ولا يوجد عدّاد.",
+        (TestMinutes, En) => "About {n} minutes, and no timer.",
+        (TestNoFeedback, ArEg) => "مش هنقولك صح ولا غلط وإنت بتحل؛ هتشوف كل حاجة في الآخر.",
+        (TestNoFeedback, Ar) => "لن نقول صحيح أو خطأ أثناء الحل؛ سترى كل شيء في النهاية.",
+        (TestNoFeedback, En) => "No right-or-wrong during the test; you'll see everything at the end.",
+        (PlacementNoFeedback, ArEg) => "لو سؤال صعب عليك، عادي خالص — اختار أقرب حاجة وكمّل.",
+        (PlacementNoFeedback, Ar) => "إن صعب عليك سؤال فلا بأس — اختر الأقرب وتابع.",
+        (PlacementNoFeedback, En) => {
+            "If a question feels hard, that's completely fine — pick your best guess and carry on."
+        }
+        (TestPart, ArEg) => "الجزء {i} من {n}",
+        (TestPart, Ar) => "الجزء {i} من {n}",
+        (TestPart, En) => "Part {i} of {n}",
+        (TestNext, ArEg) => "اللي بعده",
+        (TestNext, Ar) => "التالي",
+        (TestNext, En) => "Next",
+        (SpeakTask, ArEg) => "اتكلم بصوت عالي",
+        (SpeakTask, Ar) => "تكلّم بصوت مسموع",
+        (SpeakTask, En) => "Speak out loud",
+        (SpeakTaskNote, ArEg) => "اتكلم حوالي دقيقة. في الآخر هتقارن كلامك بإجابة نموذجية.",
+        (SpeakTaskNote, Ar) => "تكلّم نحو دقيقة. في النهاية ستقارن كلامك بإجابة نموذجية.",
+        (SpeakTaskNote, En) => "Talk for about a minute. At the end you'll compare with a sample answer.",
+        (ISpoke, ArEg) => "اتكلمت",
+        (ISpoke, Ar) => "تكلّمت",
+        (ISpoke, En) => "I've said it",
+        (SelfCheckTitle, ArEg) => "قيّم نفسك بصراحة",
+        (SelfCheckTitle, Ar) => "قيّم نفسك بصدق",
+        (SelfCheckTitle, En) => "Your honest self-check",
+        (SelfCheckBody, ArEg) => {
+            "التصحيح الأوتوماتيك للإجابات المفتوحة جاي بعدين. دلوقتي قارن إجابتك بالنقط والإجابة النموذجية، وقيّمها بصراحة — ده لمصلحتك إنت بس."
+        }
+        (SelfCheckBody, Ar) => {
+            "التصحيح الآلي للإجابات المفتوحة قادم لاحقًا. الآن قارن إجابتك بالمعايير والإجابة النموذجية، وقيّمها بصدق — فهذا لمصلحتك وحدك."
+        }
+        (SelfCheckBody, En) => {
+            "Automatic grading of open answers comes later. For now, compare your answer with the checklist and the sample, and rate it honestly — it's only for you."
+        }
+        (SelfRated, ArEg) => "تقييمك إنت",
+        (SelfRated, Ar) => "تقييمك الذاتي",
+        (SelfRated, En) => "Your own rating",
+        (YourAnswer, ArEg) => "إجابتك",
+        (YourAnswer, Ar) => "إجابتك",
+        (YourAnswer, En) => "Your answer",
+        (Spoken, ArEg) => "(اتقالت بالصوت)",
+        (Spoken, Ar) => "(قيلت شفهيًّا)",
+        (Spoken, En) => "(spoken)",
+        (Rubric, ArEg) => "الإجابة الكويسة بتعمل كده",
+        (Rubric, Ar) => "الإجابة الجيدة تفعل ما يلي",
+        (Rubric, En) => "A good answer does this",
+        (Sample, ArEg) => "إجابة نموذجية",
+        (Sample, Ar) => "إجابة نموذجية",
+        (Sample, En) => "A sample answer",
+        (Accepted, ArEg) => "إجابات مقبولة",
+        (Accepted, Ar) => "إجابات مقبولة",
+        (Accepted, En) => "Accepted answers",
+        (GradeNone, ArEg) => "لسه",
+        (GradeNone, Ar) => "ليس بعد",
+        (GradeNone, En) => "Not yet",
+        (GradePartly, ArEg) => "جزء منها",
+        (GradePartly, Ar) => "جزئيًّا",
+        (GradePartly, En) => "Partly",
+        (GradeFully, ArEg) => "كلها",
+        (GradeFully, Ar) => "كليًّا",
+        (GradeFully, En) => "Fully",
+        (SeeResults, ArEg) => "وريني النتيجة",
+        (SeeResults, Ar) => "اعرض النتيجة",
+        (SeeResults, En) => "See my results",
+        (PassedTitle, ArEg) => "نجحت!",
+        (PassedTitle, Ar) => "نجحت!",
+        (PassedTitle, En) => "You passed!",
+        (PassedBody, ArEg) => "{level} خلصت — المستوى كله اتعلّم عليه في الخريطة.",
+        (PassedBody, Ar) => "أتممت {level} — صار المستوى كله مُعلَّمًا على الخريطة.",
+        (PassedBody, En) => "{level} is done — the whole level is marked on your map.",
+        (NotPassedTitle, ArEg) => "المرة دي لأ، ومفيش مشكلة خالص",
+        (NotPassedTitle, Ar) => "ليس هذه المرة، ولا بأس أبدًا",
+        (NotPassedTitle, En) => "Not this time — and that's completely okay",
+        (NotPassedBody, ArEg) => {
+            "النجاح محتاج {mark}. راجع الحاجات اللي تحت، وجرّب تاني وقت ما تحب. كل الدروس مفتوحة زي ما هي."
+        }
+        (NotPassedBody, Ar) => {
+            "يلزم للنجاح {mark}. راجع ما بالأسفل، ثم حاول مجددًا متى شئت. كل الدروس مفتوحة كما هي."
+        }
+        (NotPassedBody, En) => {
+            "Passing takes {mark}. Practise what's below, then try again whenever you like. Every lesson stays open."
+        }
+        (BySkill, ArEg) => "حسب المهارة",
+        (BySkill, Ar) => "حسب المهارة",
+        (BySkill, En) => "By skill",
+        (ToPractise, ArEg) => "حاجات نراجعها",
+        (ToPractise, Ar) => "ما نراجعه",
+        (ToPractise, En) => "Worth practising",
+        (Skipped, ArEg) => "{n} من أسئلة الاستماع مش محسوبة (ماكنتش تقدر تسمع).",
+        (Skipped, Ar) => "{n} من أسئلة الاستماع غير محسوبة (لم تستطع الاستماع).",
+        (Skipped, En) => "{n} listening items weren't counted (you couldn't listen).",
+        (TryAgain, ArEg) => "جرّب تاني",
+        (TryAgain, Ar) => "حاول مجددًا",
+        (TryAgain, En) => "Try again",
+        (PlacementTitle, ArEg) => "هنبدأ من هنا",
+        (PlacementTitle, Ar) => "سنبدأ من هنا",
+        (PlacementTitle, En) => "Here's where we start",
+        (PlacementBody, ArEg) => {
+            "هنبدأ من {level}. تقدر دايمًا ترجع لمحطات قبلها، أو تعدّي لقدّام بـ Take a flight."
+        }
+        (PlacementBody, Ar) => {
+            "سنبدأ من {level}. يمكنك دائمًا العودة إلى محطات سابقة أو التقدّم عبر Take a flight."
+        }
+        (PlacementBody, En) => {
+            "We'll start at {level}. You can always go back to earlier stops, or skip ahead with Take a flight."
+        }
+        (GoToJourney, ArEg) => "روح للرحلة",
+        (GoToJourney, Ar) => "انتقل إلى الرحلة",
+        (GoToJourney, En) => "Go to the journey",
+        (InviteTitle, ArEg) => "نبدأ منين بالظبط؟",
+        (InviteTitle, Ar) => "من أين نبدأ بالضبط؟",
+        (InviteTitle, En) => "Where exactly should we start?",
+        (InviteBody, ArEg) => {
+            "اختبار صغير حوالي ١٠ دقايق، بيبدأ سهل أوي وبيصعب شوية شوية، وبيحدد نقطة البداية في الرحلة. اختياري خالص."
+        }
+        (InviteBody, Ar) => {
+            "اختبار قصير نحو عشر دقائق، يبدأ سهلًا جدًّا ويصعب تدريجيًّا، ويحدد نقطة البداية في الرحلة. اختياري تمامًا."
+        }
+        (InviteBody, En) => {
+            "A short check, about 10 minutes, that starts very easy and gets harder bit by bit, to pick your starting point. Completely optional."
+        }
+        (InviteButton, ArEg) => "يلا نشوف",
+        (InviteButton, Ar) => "لنرَ",
+        (InviteButton, En) => "Let's find out",
+        (SkillListening, ArEg) => "الاستماع",
+        (SkillListening, Ar) => "الاستماع",
+        (SkillListening, En) => "Listening",
+        (SkillReading, ArEg) => "القراية",
+        (SkillReading, Ar) => "القراءة",
+        (SkillReading, En) => "Reading",
+        (SkillWriting, ArEg) => "الكتابة",
+        (SkillWriting, Ar) => "الكتابة",
+        (SkillWriting, En) => "Writing",
+        (SkillSpeaking, ArEg) => "الكلام",
+        (SkillSpeaking, Ar) => "المحادثة",
+        (SkillSpeaking, En) => "Speaking",
+        (SkillVocabulary, ArEg) => "الكلمات",
+        (SkillVocabulary, Ar) => "المفردات",
+        (SkillVocabulary, En) => "Vocabulary",
+        (SkillGrammar, ArEg) => "القواعد",
+        (SkillGrammar, Ar) => "القواعد",
+        (SkillGrammar, En) => "Grammar",
     }
 }

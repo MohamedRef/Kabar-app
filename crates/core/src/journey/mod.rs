@@ -214,6 +214,23 @@ impl Progress {
         Self { done, done_levels, current }
     }
 
+    /// Applies a placement result: when the current lesson sits before
+    /// `level_id` on the route, Lanjut moves to the first unfinished lesson
+    /// from that level on. Nothing is marked done, and earlier lessons stay
+    /// open. Unknown levels (e.g. the other route's) change nothing.
+    pub fn start_at(mut self, curriculum: &Curriculum, level_id: &str) -> Self {
+        let Some(start) = curriculum.levels.iter().position(|l| l.id == level_id) else { return self };
+        let level_of = |id: &str| curriculum.levels.iter().position(|l| l.lessons().any(|x| x.id == id));
+        if self.current.as_deref().and_then(level_of).is_some_and(|at| at < start) {
+            self.current = curriculum.levels[start..]
+                .iter()
+                .flat_map(Level::lessons)
+                .find(|l| !self.done.contains(&l.id))
+                .map(|l| l.id.clone());
+        }
+        self
+    }
+
     pub fn lesson_state(&self, lesson_id: &str) -> LessonState {
         if self.done.contains(lesson_id) {
             LessonState::Done

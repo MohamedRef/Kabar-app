@@ -5,6 +5,8 @@
 //! The exercise views below are standalone components (exercise + `Draft`
 //! signal in, events out) so level tests can reuse them without the player.
 
+mod test_player;
+pub use test_player::PlacementInvite;
 mod text;
 
 use dioxus::prelude::*;
@@ -23,16 +25,21 @@ use crate::{Db, Ui};
 
 const LESSON_CSS: &str = include_str!("../assets/lesson.css");
 
-/// Lesson files built into the app. One table, so the lead can point it at
-/// `content/lessons/` (or a content pack) later without touching the player.
-const LESSONS: &[(&str, &str)] = &[
-    ("bipa1.u01.l01", include_str!("../../../fixtures/lessons/bipa1.u01.l01.yaml")),
-    ("bipa1.u01.l02", include_str!("../../../fixtures/lessons/bipa1.u01.l02.yaml")),
-];
+/// Lesson and test files built into the app: `LESSONS` and `TESTS`, generated
+/// by `build.rs` from `content/lessons/**` and `content/tests/**`.
+mod embedded {
+    include!(concat!(env!("OUT_DIR"), "/content.rs"));
+}
+use embedded::{LESSONS, TESTS};
 
 /// The YAML of a lesson, if this build ships it.
 pub fn lesson_content(id: &str) -> Option<&'static str> {
     LESSONS.iter().find(|(lesson, _)| *lesson == id).map(|(_, yaml)| *yaml)
+}
+
+/// The YAML of a level or placement test (`bipa1.test`, `placement`), if shipped.
+pub fn test_content(id: &str) -> Option<&'static str> {
+    TESTS.iter().find(|(test, _)| *test == id).map(|(_, yaml)| *yaml)
 }
 
 /// Idle gaps longer than this don't count as lesson time.
@@ -51,6 +58,12 @@ pub fn LessonScreen() -> Element {
     let lang = ui.settings.read().ui_language;
     let id = ui.lesson.read().clone().unwrap_or_default();
 
+    if let Some(yaml) = test_content(&id) {
+        return rsx! {
+            style { {LESSON_CSS} }
+            test_player::TestScreen { id: id.clone(), yaml }
+        };
+    }
     let body = match lesson_content(&id).map(parse_lesson) {
         None => rsx! {
             Notice { title: lt(lang, L::PendingTitle), body: lt(lang, L::PendingBody).to_string(), id: id.clone() }
@@ -148,6 +161,7 @@ fn instruction(ex: &Exercise, language: &str) -> L {
         K::Translate { .. } => L::WriteMeaning,
         K::BuildSentence { .. } => L::BuildSentence,
         K::Listen { options, .. } if options.is_empty() => L::ListenType,
+        K::Listen { question: Some(_), .. } => L::ListenAnswer,
         K::Listen { .. } => L::ListenPick,
         K::FillBlank { .. } => L::FillBlank,
         K::Dictation { .. } => L::Dictation,
@@ -920,6 +934,11 @@ fn Feedback(
     let praise = [L::Correct1, L::Correct2, L::Correct3][ex.id.bytes().map(usize::from).sum::<usize>() % 3];
     let word = ex.words.first().cloned();
     let meaning = meaning_of(&ex).map(|m| pick(m, lang).to_string());
+    // Comprehension: the answer is about the audio, so also show what was said.
+    let transcript = match &ex.kind {
+        ExerciseKind::Listen { question: Some(_), text, .. } => Some(text.clone()),
+        _ => None,
+    };
     let explain = ex.explain.as_ref().map(|e| pick(e, lang).to_string());
     let answer = display_answer(&ex, lang);
     let answer_tag = match &ex.kind {
@@ -963,6 +982,12 @@ fn Feedback(
                         button { onclick: move |_| on_assess.call(false), "{lt(lang, L::NotQuite)}" }
                     }
                 },
+            }
+            if let Some(t) = transcript {
+                p { class: "lp-small",
+                    span { class: "muted", "{lt(lang, L::Transcript)} " }
+                    bdi { lang: target, class: "latin lp-target", "{t}" }
+                }
             }
             if let Some(m) = meaning {
                 p { class: "muted", Rich { text: m, target } }
@@ -1047,9 +1072,12 @@ pub fn ExerciseView(
             p { class: "lp-question-meaning", Rich { text: pick(&source, lang).to_string(), target } }
             Tiles { tiles, target, draft, locked }
         },
-        K::Listen { text, audio, options, answer, .. } => rsx! {
+        K::Listen { text, audio, options, answer, question, .. } => rsx! {
             div { class: "lp-prompt center",
                 PlayButton { text, language: language.clone(), audio, missing, big: true }
+            }
+            if let Some(q) = question {
+                p { class: "lp-question-meaning", Rich { text: pick(&q, lang).to_string(), target } }
             }
             if options.is_empty() {
                 TextAnswer { tag: target, draft, locked }
@@ -1300,14 +1328,92 @@ fn try_match(mut draft: Signal<Draft>, words: &[String], on_matched: EventHandle
 mod tests {
     use super::*;
 
+    const FIXTURE: &str = include_str!("../../../fixtures/lessons/bipa1.u01.l01.yaml");
+
+    use kabar_core::lesson::level_test::{SelfGrade, TestRunner, TestStep, parse_test, validate_test};
+
+    /// The reference answer for a closed exercise.
+    fn right_answer(ex: &Exercise) -> Answer {
+        use ExerciseKind as K;
+        match &ex.kind {
+            K::MultipleChoice { answer, .. } => Answer::Choice(*answer),
+            K::Listen { answer: Some(i), options, .. } if !options.is_empty() => Answer::Choice(*i),
+            K::Listen { text, .. } | K::Dictation { text, .. } => Answer::Text(text.clone()),
+            K::FillBlank { options, answers, .. } if !options.is_empty() => {
+                Answer::Choice(options.iter().position(|o| answers.contains(o)).unwrap())
+            }
+            K::FillBlank { answers, .. } => Answer::Text(answers[0].clone()),
+            K::Translate { answers, answers_meaning, .. } => Answer::Text(
+                answers
+                    .first()
+                    .cloned()
+                    .unwrap_or_else(|| answers_meaning.as_ref().unwrap().ar_eg[0].clone()),
+            ),
+            K::BuildSentence { answer, .. } => Answer::Text(answer.clone()),
+            K::MatchPairs { .. } => Answer::Matched { missed: vec![] },
+            K::Speaking { .. } => Answer::Practiced,
+        }
+    }
+
+    /// Takes a test answering everything right (open tasks self-rated fully).
+    fn take_perfectly(r: &mut TestRunner) {
+        r.start();
+        while let TestStep::Item { .. } = r.step() {
+            match r.exercise() {
+                Some(ex) => r.answer(&right_answer(&ex), UiLanguage::ArEg),
+                None => r.answer_open("Hai!"),
+            }
+        }
+        let ids: Vec<String> = r.open_answers().map(|o| o.id.clone()).collect();
+        for id in ids {
+            r.self_assess(&id, SelfGrade::Fully);
+        }
+        r.finish_self_check();
+        assert_eq!(r.step(), TestStep::Results);
+    }
+
+    #[test]
+    fn every_embedded_test_parses_validates_and_can_be_passed() {
+        assert!(TESTS.len() >= 3, "only {} tests embedded", TESTS.len());
+        for (id, yaml) in TESTS {
+            let test = parse_test(yaml).unwrap_or_else(|e| panic!("{id}: {e}"));
+            assert_eq!(&test.id, id);
+            let issues: Vec<String> = validate_test(&test).iter().map(|i| i.to_string()).collect();
+            assert!(issues.is_empty(), "{id}:\n{}", issues.join("\n"));
+            let mut r = TestRunner::new(test.clone());
+            take_perfectly(&mut r);
+            let res = r.results();
+            assert!(res.missed.is_empty(), "{id}: {:?}", res.missed);
+            match test.kind {
+                kabar_protocol::test::TestKind::Level => assert_eq!(res.passed, Some(true), "{id}"),
+                kabar_protocol::test::TestKind::Placement => {
+                    assert_eq!(res.start_level.as_deref(), Some("bipa5"), "{id}")
+                }
+            }
+        }
+        assert!(test_content("bipa1.test").is_some());
+        assert!(test_content("placement").is_some());
+        assert!(lesson_content("bipa1.test").is_none());
+    }
+
     #[test]
     fn every_embedded_lesson_parses_and_validates() {
+        assert!(LESSONS.len() >= 100, "only {} lessons embedded", LESSONS.len());
+        let mut problems = Vec::new();
         for (id, yaml) in LESSONS {
-            let lesson = parse_lesson(yaml).unwrap_or_else(|e| panic!("{id}: {e}"));
-            assert_eq!(&lesson.id, id);
-            assert_eq!(validate(&lesson), vec![], "{id}");
+            match parse_lesson(yaml) {
+                Ok(lesson) => {
+                    if lesson.id != *id {
+                        problems.push(format!("{id}: id is {:?}", lesson.id));
+                    }
+                    problems.extend(validate(&lesson).iter().map(|i| format!("{id}: {i}")));
+                }
+                Err(e) => problems.push(format!("{id}: {e}")),
+            }
         }
+        assert!(problems.is_empty(), "{}", problems.join("\n"));
         assert!(lesson_content("bipa1.u01.l01").is_some());
+        assert!(lesson_content("bipa2.u10.l05").is_some());
         assert!(lesson_content("bipa7.u10.l05").is_none());
     }
 
@@ -1332,7 +1438,7 @@ mod tests {
 
     #[test]
     fn draft_answers_follow_the_exercise_kind() {
-        let lesson = parse_lesson(LESSONS[0].1).unwrap();
+        let lesson = parse_lesson(FIXTURE).unwrap();
         let ex = |id: &str| lesson.exercises.iter().find(|e| e.id == id).unwrap().clone();
         let d = Draft::default();
         assert_eq!(draft_answer(&ex("e01"), &d, &[]), None);

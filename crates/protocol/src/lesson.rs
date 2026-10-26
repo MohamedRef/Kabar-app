@@ -151,7 +151,8 @@ pub enum ExerciseKind {
         #[serde(default)]
         distractors: Vec<String>,
     },
-    /// Hear `text` (pre-generated audio, else system TTS), then pick or type it.
+    /// Hear `text` (pre-generated audio, else system TTS), then pick or type
+    /// it, or (with `question`) answer a question about it.
     Listen {
         text: String,
         #[serde(default)]
@@ -165,6 +166,11 @@ pub enum ExerciseKind {
         /// Shown with the feedback, so hearing it also teaches what it means.
         #[serde(default, skip_serializing_if = "Option::is_none")]
         meaning: Option<Localized>,
+        /// Listening comprehension: a question in the learner's language
+        /// about what was heard. Then `options[answer]` answers it (and need
+        /// not be `text`); without it the options are transcripts.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        question: Option<Localized>,
     },
     /// `sentence` holds one `___`. Empty `options` → typed answer.
     FillBlank {
