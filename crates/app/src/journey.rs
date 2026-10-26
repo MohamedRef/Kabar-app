@@ -427,11 +427,10 @@ fn lessons(ui: &Ui, tl: &'static str, unit: &Unit, progress: &Progress, mark_cur
                     };
                     let id = lesson.id.clone();
                     let kind = ui.t(kind_label(lesson.kind));
-                    let minutes = num(&ui, lesson.minutes as usize);
+                    let minutes = crate::coach::labels::minutes(&ui, lesson.minutes);
                     let label = format!(
-                        "{}, {kind}, {minutes} {}{}",
+                        "{}, {kind}, {minutes}{}",
                         lesson.title,
-                        ui.t(Msg::JourneyMinutes),
                         state_msg.map(|m| format!(", {}", ui.t(m))).unwrap_or_default()
                     );
                     rsx! {
@@ -450,7 +449,7 @@ fn lessons(ui: &Ui, tl: &'static str, unit: &Unit, progress: &Progress, mark_cur
                                 span { class: "lesson-text",
                                     bdi { class: "lesson-title", lang: tl, "{lesson.title}" }
                                     span { class: "lesson-meta muted",
-                                        "{kind} · {minutes} {ui.t(Msg::JourneyMinutes)}"
+                                        "{kind} · {minutes}"
                                         if let Some(m) = state_msg {
                                             " · "
                                             span { class: "lesson-state", "{ui.t(m)}" }

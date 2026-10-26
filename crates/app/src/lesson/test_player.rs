@@ -480,7 +480,8 @@ fn Intro(test: TestContent) -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.settings.read().ui_language;
     let target = target_tag(&test.language);
-    let minutes_line = lt(lang, L::TestMinutes).replace("{n}", &ui.num(test.minutes));
+    let minutes_line =
+        lt(lang, L::TestMinutes).replace("{n}", &crate::coach::labels::minutes(&ui, test.minutes));
     let note = match test.kind {
         TestKind::Level => L::TestNoFeedback,
         TestKind::Placement => L::PlacementNoFeedback,

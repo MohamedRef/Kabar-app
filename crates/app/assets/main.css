@@ -202,6 +202,10 @@ h3 { font-size: 1rem; margin-block: 1rem 0.4rem; }
 
 .coach-grid { display: grid; gap: 0 1rem; align-items: start; }
 .app:not([data-width="compact"]) .coach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* Today: one centred column unless there are side cards to fill the second. */
+.app:not([data-width="compact"]) .today-grid { grid-template-columns: minmax(0, 1fr); max-inline-size: 46rem; margin-inline: auto; }
+.app:not([data-width="compact"]) .today-grid:has(> .today-side .card) { grid-template-columns: repeat(2, minmax(0, 1fr)); max-inline-size: none; }
+.app:not([data-width="compact"]) .today-grid:has(> .today-side .card) .today-side > :first-child { margin-block-start: 0 !important; }
 
 .nur { display: flex; gap: 0.75rem; align-items: flex-start; margin-block: 0.75rem; }
 .nur-avatar {
