@@ -121,7 +121,17 @@ impl Journey {
     }
 }
 
-fn local(lang: UiLanguage, text: &Text) -> &str {
+/// A curriculum built into the app, by language (`id`, `jv`).
+pub fn curriculum(language: &str) -> Option<&'static Curriculum> {
+    let r = ROUTES.as_ref().ok()?;
+    match language {
+        "id" => Some(&r.id),
+        "jv" => Some(&r.jv),
+        _ => None,
+    }
+}
+
+pub fn local(lang: UiLanguage, text: &Text) -> &str {
     match lang {
         UiLanguage::ArEg | UiLanguage::Ar => &text.ar,
         UiLanguage::En => &text.en,

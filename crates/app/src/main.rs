@@ -9,6 +9,7 @@ mod i18n;
 mod icons;
 mod journey;
 mod lesson;
+mod listen;
 mod penlab;
 mod platform;
 mod play;
@@ -51,6 +52,8 @@ pub enum Screen {
     Lesson,
     /// Teach Kabar a word (spec §26).
     Teach,
+    /// Sinetron and Kabar Radio.
+    Listen,
 }
 
 impl Screen {
@@ -68,16 +71,23 @@ impl Screen {
             Self::Devices => Msg::NavDevices,
             Self::Lesson => Msg::NavJourney,
             Self::Teach => Msg::NavTeach,
+            Self::Listen => Msg::NavListen,
         }
     }
 
     /// Hidden from the phone's bottom bar, which keeps five items within
-    /// thumb reach. Kak Nur and Settings are linked from Today there; Studio
-    /// and Pen Lab from Settings.
+    /// thumb reach. Kak Nur, Watch & listen and Settings are linked from
+    /// Today there; Studio and Pen Lab from Settings.
     fn secondary(self) -> bool {
         matches!(
             self,
-            Self::Coach | Self::Settings | Self::Studio | Self::PenLab | Self::Devices | Self::Teach
+            Self::Coach
+                | Self::Settings
+                | Self::Studio
+                | Self::PenLab
+                | Self::Devices
+                | Self::Teach
+                | Self::Listen
         )
     }
 }
@@ -398,6 +408,7 @@ fn Shell() -> Element {
         Screen::Reader,
         Screen::Review,
         Screen::Play,
+        Screen::Listen,
         Screen::Coach,
         Screen::Studio,
         Screen::Teach,
@@ -437,6 +448,7 @@ fn Shell() -> Element {
                     Screen::PenLab => rsx! { penlab::PenLab {} },
                     Screen::Devices => rsx! { account::AccountScreen {} },
                     Screen::Teach => rsx! { teach::TeachScreen {} },
+                    Screen::Listen => rsx! { listen::ListenScreen {} },
                     Screen::Lesson => rsx! { lesson::LessonScreen {} },
                 }
             }
