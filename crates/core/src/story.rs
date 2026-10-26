@@ -31,6 +31,7 @@ const SINETRON_CAST: &[(&str, bool, i8)] = &[
     ("Bayu", true, 12),
     ("Karim", true, -5),
     ("Petugas", true, -8),
+    ("Pak RT", true, -6),
     ("Sari", false, 0),
     ("Bu Rahayu", false, -10),
     ("Nadia", false, 10),
@@ -38,6 +39,8 @@ const SINETRON_CAST: &[(&str, bool, i8)] = &[
     ("Dokter Wulan", false, -5),
     ("Bu Sri", false, -14),
     ("Bu Tini", false, -3),
+    ("Bu Ani", false, -8),
+    ("Mbak Dewi", false, 6),
 ];
 
 /// A speaker's voice and pitch in a Sinetron episode. A character this
@@ -226,7 +229,7 @@ mod tests {
         let sari = p.cues.iter().find(|c| c.speaker == "Sari").unwrap();
         assert_eq!((sari.voice, sari.pitch_percent), (Voice::IdGadis, 0));
         assert_eq!(sinetron_voice("Pak Harto", "jv"), (Voice::JvDimas, 0));
-        assert_eq!(sinetron_voice("Bu Ani", "id"), (Voice::IdGadis, 0));
+        assert_eq!(sinetron_voice("Bu Wati", "id"), (Voice::IdGadis, 0));
         assert!(SINETRON_CAST.iter().all(|(_, _, pitch)| (-20..=20).contains(pitch)));
     }
 
