@@ -1,0 +1,192 @@
+schema: kabar.lesson/v1
+id: j6.u06.l03
+language: jv
+title: Makna gandul
+can_do:
+  ar_eg: تفهم الشرح الجاوي كلمة بكلمة تحت النص العربي.
+  ar: أن تفهم الشرح الجاوي الحرفي تحت النص العربي.
+  en: Follow a word-by-word Javanese gloss under Arabic text.
+slides:
+  - title: Makna gandul
+    body:
+      ar_eg: |
+        في الـ pesantren الطلبة بيقروا كتب عربي، وبيكتبوا تحت كل كلمة معناها بالجاوي، بالبيجون وبخط مايل كأنه «متعلّق». ده اسمه makna gandul.
+        مثلًا «الحمد لله» بتتشرح: utawi sakabehe puji iku kagungane Allah = «أما كل الحمد فهو ملك لله».
+        - utawi بتعلّم المبتدأ، ورمزها م.
+        - iku بتعلّم الخبر، ورمزها خ.
+        يعني النحو اللي اتعلمته في مصر، بس بالجاوي!
+      ar: |
+        يقرأ طلاب الـ pesantren الكتب العربية، ويكتبون تحت كل كلمة معناها بالجاوية، بالبيجون وبخط مائل كأنه معلَّق، ويسمّى ذلك makna gandul.
+        فيُشرح «الحمد لله»: utawi sakabehe puji iku kagungane Allah = «أما كل الحمد فهو ملك لله».
+        - utawi علامة المبتدأ، ورمزها م.
+        - iku علامة الخبر، ورمزها خ.
+        فهو النحو الذي تعرفه، لكن بالجاوية!
+      en: |
+        At a pesantren, students read Arabic books and write the Javanese meaning under each word, in Pegon, slanting as if it "hangs". This is makna gandul.
+        «الحمد لله» is glossed: utawi sakabehe puji iku kagungane Allah = "as for all praise, it belongs to God".
+        - utawi marks the mubtada (subject), abbreviated م.
+        - iku marks the khabar (predicate), abbreviated خ.
+        It's the Arabic grammar you learned at school, in Javanese!
+    grammar: jv.pegon.basics
+    examples:
+      - text: اوتاوي (utawi)
+        ar_eg: علامة المبتدأ — م
+        ar: علامة المبتدأ — م
+        en: marks the mubtada — م
+      - text: ايكو (iku)
+        ar_eg: علامة الخبر — خ
+        ar: علامة الخبر — خ
+        en: marks the khabar — خ
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: makna gandul
+        ar_eg: الشرح الجاوي «المتعلّق» تحت النص العربي
+        ar: الشرح الجاوي المعلَّق تحت النص العربي
+        en: the "hanging" Javanese gloss under Arabic text
+      - text: utawi
+        ar_eg: علامة المبتدأ (م)
+        ar: علامة المبتدأ (م)
+        en: marks the mubtada (م)
+      - text: iku
+        ar_eg: علامة الخبر (خ)
+        ar: علامة الخبر (خ)
+        en: marks the khabar (خ)
+      - text: kitab
+        ar_eg: كتاب (ديني)
+        ar: كتاب (ديني)
+        en: (religious) book
+    words: [makna gandul, utawi, kitab]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: utawi رمزها إيه في الـ makna gandul؟
+      ar: ما رمز utawi في الـ makna gandul؟
+      en: Which symbol stands for utawi in makna gandul?
+    options: [خ, م, ف]
+    answer: 1
+    explain:
+      ar_eg: utawi بتعلّم المبتدأ، فرمزها م. وiku للخبر، رمزها خ.
+      ar: utawi علامة المبتدأ فرمزها م، وiku علامة الخبر فرمزها خ.
+      en: utawi marks the mubtada, so م; iku marks the khabar, so خ.
+    words: [utawi, makna gandul]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "اقرا: اوتاوي"
+      ar: "اقرأ: اوتاوي"
+      en: "Read: اوتاوي"
+    options: [utawi, utami, otawa]
+    answer: 0
+    words: [utawi]
+  - id: e04
+    type: fill_blank
+    sentence: Utawi sakabehe puji ___ kagungane Allah.
+    meaning:
+      ar_eg: أما كل الحمد فهو ملك لله. (كلمة الخبر ناقصة)
+      ar: أما كل الحمد فهو ملك لله. (علامة الخبر ناقصة)
+      en: As for all praise, it belongs to God. (The khabar marker is missing.)
+    options: [utawi, iku, ing]
+    answers: [iku]
+    words: [makna gandul]
+  - id: e05
+    type: listen
+    text: Utawi sakabehe puji iku kagungane Allah.
+    question:
+      ar_eg: ده makna gandul لأنهي عبارة عربية؟
+      ar: هذا makna gandul لأي عبارة عربية؟
+      en: This is the makna gandul of which Arabic phrase?
+    options: [بسم الله, سبحان الله, الحمد لله]
+    answer: 2
+    meaning:
+      ar_eg: أما كل الحمد فهو ملك لله.
+      ar: أما كل الحمد فهو ملك لله.
+      en: As for all praise, it belongs to God.
+    words: [makna gandul, utawi]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الكلمات العربية الأصل في البيجون غالبًا بتتكتب إزاي؟ اختار kitab.
+      ar: كيف تُكتب الألفاظ العربية الأصل في البيجون غالبًا؟ اختر kitab.
+      en: Arabic loanwords usually keep their Arabic spelling in Pegon. Pick kitab.
+    options: [كيتاب, كيتب, كتاب]
+    answer: 2
+    explain:
+      ar_eg: "الكلمات العربية الأصل غالبًا بتفضل بإملاها العربي: كتاب."
+      ar: "يبقى الدخيل العربي غالبًا بإملائه الأصلي: كتاب."
+      en: "Arabic loanwords usually keep their Arabic spelling: كتاب."
+    words: [kitab]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: اكو ماچا كتاب"
+      ar: "اكتب بالحروف اللاتينية: اكو ماچا كتاب"
+      en: "Write in Latin letters: اكو ماچا كتاب"
+    answers: ["Aku maca kitab.", aku maca kitab]
+    explain:
+      ar_eg: اكو = aku، ماچا = maca (چ = c)، وكتاب = kitab بإملاها العربي. يعني «أنا بقرا كتاب».
+      ar: "اكو = aku، وماچا = maca، وكتاب = kitab بإملائها العربي: «أقرأ كتابًا»."
+      en: "اكو = aku, ماچا = maca (چ = c), and كتاب = kitab in its Arabic spelling: \"I'm reading a book.\""
+    words: [kitab]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: أما كل الحمد فهو ملك لله. (makna gandul لـ «الحمد لله»)
+      ar: أما كل الحمد فهو ملك لله. (makna gandul لـ «الحمد لله»)
+      en: As for all praise, it belongs to God. (makna gandul of «الحمد لله»)
+    answer: Utawi sakabehe puji iku kagungane Allah.
+    distractors: [ing]
+    words: [utawi, makna gandul]
+  - id: e09
+    type: speaking
+    text: Utawi sakabehe puji iku kagungane Allah.
+    meaning:
+      ar_eg: أما كل الحمد فهو ملك لله.
+      ar: أما كل الحمد فهو ملك لله.
+      en: As for all praise, it belongs to God.
+    words: [utawi]
+dialogue:
+  title: Ngaji kitab
+  lines:
+    - speaker: Gus Hanif
+      text: Mas, menika makna gandul. Tegesipun dipun serat ing ngandhap.
+      ar_eg: يا محمد، ده الـ makna gandul. المعنى بيتكتب تحت.
+      ar: يا محمد، هذا الـ makna gandul. يُكتب المعنى تحت.
+      en: This is makna gandul. The meaning is written underneath.
+    - speaker: Mohamed
+      text: Utawi menika tandha mubtada, nggih?
+      ar_eg: utawi دي علامة المبتدأ، صح؟
+      ar: utawi علامة المبتدأ، أليس كذلك؟
+      en: Utawi marks the mubtada, right?
+    - speaker: Gus Hanif
+      text: Leres! Lan iku tandha khabar.
+      ar_eg: صح! وiku علامة الخبر.
+      ar: صحيح! وiku علامة الخبر.
+      en: Right! And iku marks the khabar.
+    - speaker: Mohamed
+      text: Kados nahwu ing Mesir, nanging basa Jawa!
+      ar_eg: زي النحو في مصر، بس بالجاوي!
+      ar: كالنحو في مصر، لكن بالجاوية!
+      en: Like Arabic grammar back in Egypt, but in Javanese!
+new_words:
+  - word: makna gandul
+    pos: noun
+    ar_eg: الشرح الجاوي كلمة بكلمة «المتعلّق» تحت النص العربي
+    ar: الشرح الجاوي الحرفي المعلَّق تحت النص العربي
+    en: word-by-word Javanese gloss hanging under Arabic text
+  - word: utawi
+    pos: particle
+    ar_eg: علامة المبتدأ في الـ makna gandul (م)
+    ar: علامة المبتدأ في الـ makna gandul (م)
+    en: marks the mubtada in makna gandul (م)
+  - word: kitab
+    pos: noun
+    arabic: كتاب
+    ar_eg: كتاب (ديني غالبًا)
+    ar: كتاب (ديني غالبًا)
+    en: (religious) book = kitab
+review:
+  status: draft
+  verified: false

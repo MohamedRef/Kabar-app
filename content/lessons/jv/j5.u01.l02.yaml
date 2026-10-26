@@ -1,0 +1,243 @@
+schema: kabar.lesson/v1
+id: j5.u01.l02
+language: jv
+title: Ing lan kang
+can_do:
+  ar_eg: تقرا الحاجة فين وأنهي واحدة، بأسلوب الكتابة.
+  ar: أن تقرأ أين يقع الشيء وأيّها هو، بأسلوب الكتابة.
+  en: Read where things are and which ones, in written style.
+slides:
+  - title: Neng → ing
+    body:
+      ar_eg: |
+        في الكلام بتقول neng أو nang (في). في المقالة الكلمة دي بتتحول لـ ing.
+        وana ing = «موجود في / بيقع في» (terletak di). دي أكتر جملة هتقابلها في أي مقالة عن مكان.
+      ar: |
+        في الكلام تقول neng أو nang (في)، وفي المقالة تصير ing.
+        وana ing = «يقع في» (terletak di)، وهي أكثر عبارة ستلقاها في مقالات الأماكن.
+      en: |
+        In speech you say neng or nang (in, at). In an article it becomes ing.
+        And ana ing = "is located in" (terletak di), the phrase you'll meet most in any article about a place.
+    grammar: jv.reading.written-style
+    examples:
+      - text: Kutha iki ana ing pesisir lor pulo Jawa.
+        ar_eg: المدينة دي على الساحل الشمالي لجزيرة جاوة.
+        ar: تقع هذه المدينة على الساحل الشمالي لجزيرة جاوة.
+        en: This city lies on the north coast of Java.
+      - text: Lawang Sewu ana ing tengah kutha Semarang.
+        ar_eg: لاوانج سيوو في وسط مدينة سيمارانج.
+        ar: يقع لاوانغ سيوو في وسط مدينة سيمارانج.
+        en: Lawang Sewu is in the middle of Semarang.
+  - title: Sing → kang
+    body:
+      ar_eg: |
+        sing (اللي) في الكلام بتبقى kang في الكتابة. نفس yang الإندونيسي ونفس «الذي» عندنا.
+        ولما الكراما بتتكتب بتشوف ingkang، وده اتعلمناه في J3.
+      ar: |
+        sing (الذي) في الكلام تصير kang في الكتابة، مثل yang الإندونيسية و«الذي» العربية.
+        وفي الكراما المكتوبة ingkang، وقد عرفناها في J3.
+      en: |
+        Spoken sing (which, who) becomes kang in writing: Indonesian yang, Arabic «الذي».
+        Written krama has ingkang, which you met in J3.
+    grammar: jv.reading.written-style
+    examples:
+      - text: Stasiun Tawang iku stasiun sepur kang lawas.
+        ar_eg: محطة تاوانج محطة قطر قديمة.
+        ar: محطة تاوانغ محطة قطارات قديمة.
+        en: Tawang Station is an old railway station.
+      - text: Kutha Lama iku papan kang misuwur ing Semarang.
+        ar_eg: كوتا لاما (المدينة القديمة) مكان مشهور في سيمارانج.
+        ar: كوتا لاما (المدينة القديمة) مكان مشهور في سيمارانج.
+        en: Kota Lama (the Old Town) is a famous place in Semarang.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kang
+        ar_eg: اللي (= sing، yang)
+        ar: الذي (= sing، yang)
+        en: which, who (= sing, yang)
+      - text: lawas
+        ar_eg: قديم
+        ar: قديم
+        en: old (of things)
+      - text: sepur
+        ar_eg: قطر
+        ar: قطار
+        en: train
+      - text: misuwur
+        ar_eg: مشهور
+        ar: مشهور
+        en: famous
+      - text: papan
+        ar_eg: مكان
+        ar: مكان
+        en: place
+    words: [kang, lawas, sepur, misuwur, papan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة بأسلوب المقالة؟
+      ar: أي جملة بأسلوب المقالة؟
+      en: Which sentence is in article style?
+    options: ['Kutha iki neng pesisir lor.', 'Kutha iki ana ing pesisir lor.', 'Kutha iki nang pesisir lor.']
+    answer: 1
+    explain:
+      ar_eg: neng وnang للكلام. المقالة بتكتب ana ing.
+      ar: neng وnang للكلام، والمقالة تكتب ana ing.
+      en: neng and nang are spoken; an article writes ana ing.
+    words: [ana ing]
+  - id: e03
+    type: multiple_choice
+    question: Stasiun Tawang iku stasiun sepur kang lawas.
+    question_meaning:
+      ar_eg: kang هنا تساوي أنهي كلمة إندونيسي؟
+      ar: kang هنا تساوي أي كلمة إندونيسية؟
+      en: Which Indonesian word is kang here?
+    options: [yang, dari, oleh]
+    answer: 0
+    words: [kang, sepur, lawas]
+  - id: e04
+    type: listen
+    text: Kutha Lama iku papan kang misuwur ing Semarang.
+    options:
+      - Kutha Lama iku papan kang lawas ing Semarang.
+      - Kutha Lama iku kutha kang misuwur ing Jawa.
+      - Kutha Lama iku papan kang misuwur ing Semarang.
+    answer: 2
+    meaning:
+      ar_eg: كوتا لاما مكان مشهور في سيمارانج.
+      ar: كوتا لاما مكان مشهور في سيمارانج.
+      en: Kota Lama is a famous place in Semarang.
+    words: [papan, misuwur, kang]
+  - id: e05
+    type: fill_blank
+    sentence: Lawang Sewu ___ tengah kutha Semarang.
+    meaning:
+      ar_eg: لاوانج سيوو في وسط مدينة سيمارانج.
+      ar: يقع لاوانغ سيوو في وسط مدينة سيمارانج.
+      en: Lawang Sewu is in the middle of Semarang.
+    options: [kang, ana ing, saka]
+    answers: [ana ing]
+    words: [ana ing]
+  - id: e06
+    type: fill_blank
+    sentence: Semarang ___ amarga lumpiane.
+    meaning:
+      ar_eg: سيمارانج مشهورة بسبب اللومبيا بتاعتها.
+      ar: سيمارانج مشهورة بلومبيتها.
+      en: Semarang is famous for its lumpia.
+    options: [lawas, sepur, misuwur]
+    answers: [misuwur]
+    explain:
+      ar_eg: lumpia = سبرينج رول، أكلة سيمارانج المشهورة.
+      ar: lumpia لفائف مقلية، أشهر أطعمة سيمارانج.
+      en: lumpia = spring rolls, Semarang's famous snack.
+    words: [misuwur]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: (بأسلوب المقالة) القطر القديم موجود في محطة تاوانج.
+      ar: (بأسلوب المقالة) القطار القديم في محطة تاوانغ.
+      en: (article style) The old train is at Tawang Station.
+    answer: Sepur kang lawas ana ing Stasiun Tawang.
+    distractors: [neng, saka]
+    words: [sepur, kang, lawas, ana ing]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بأسلوب المقالة) كوتا لاما مكان قديم في سيمارانج.
+      ar: (بأسلوب المقالة) كوتا لاما مكان قديم في سيمارانج.
+      en: (article style) Kota Lama is an old place in Semarang.
+    answers:
+      - Kutha Lama iku papan kang lawas ing Semarang.
+      - Kutha Lama iku papan lawas ing Semarang.
+      - Kutha Lama papan kang lawas ing Semarang.
+      - Kutha Lama iku papan kang lawas ana ing Semarang.
+      - Kutha Lama iku papan lawas ana ing Semarang.
+    words: [papan, lawas]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Stasiun Tawang iku stasiun sepur kang lawas lan misuwur.
+    answers_meaning:
+      ar_eg:
+        - محطة تاوانج محطة قطر قديمة ومشهورة.
+        - محطة تاوانج محطة قطارات قديمة ومشهورة.
+        - محطة تاوانج هي محطة قطر قديمة ومشهورة.
+        - محطة تاوانج محطة قطر قديمة وشهيرة.
+      ar:
+        - محطة تاوانغ محطة قطارات قديمة ومشهورة.
+        - محطة تاوانغ محطة قطارات قديمة وشهيرة.
+        - محطة تاوانغ هي محطة قطارات قديمة ومشهورة.
+        - محطة تاوانغ محطة قطار قديمة ومشهورة.
+      en:
+        - Tawang Station is an old and famous railway station.
+        - Tawang Station is an old, famous railway station.
+        - Tawang Station is an old and famous train station.
+        - Tawang Station is an old, famous train station.
+        - Tawang Station is a railway station that is old and famous.
+    words: [sepur, lawas, misuwur, kang]
+dialogue:
+  title: Ing Kutha Lama
+  lines:
+    - speaker: Mohamed
+      text: Kutha Lama iku papan kang misuwur ing Semarang.
+      ar_eg: (بيقرا) كوتا لاما مكان مشهور في سيمارانج.
+      ar: (يقرأ) كوتا لاما مكان مشهور في سيمارانج.
+      en: (reading) Kota Lama is a famous place in Semarang.
+    - speaker: Mbak Ayu
+      text: Iya. Nek ngomong, aku ngomong "papan sing misuwur neng Semarang".
+      ar_eg: آه. لما بتكلم، بقول «papan sing misuwur neng Semarang».
+      ar: نعم. وحين أتكلم أقول «papan sing misuwur neng Semarang».
+      en: Yes. When I talk, I say "papan sing misuwur neng Semarang".
+    - speaker: Mohamed
+      text: Oh, kang iku sing, ing iku neng.
+      ar_eg: آه، kang هي sing، وing هي neng.
+      ar: آه، kang هي sing، وing هي neng.
+      en: Oh, kang is sing, and ing is neng.
+    - speaker: Mbak Ayu
+      text: Bener! Gedhong-gedhong neng kene lawas banget.
+      ar_eg: صح! المباني هنا قديمة أوي.
+      ar: صحيح! المباني هنا قديمة جدًا.
+      en: Right! The buildings here are really old.
+    - speaker: Mohamed
+      text: Aku seneng papan sing lawas.
+      ar_eg: أنا بحب الأماكن القديمة.
+      ar: أحب الأماكن القديمة.
+      en: I love old places.
+new_words:
+  - word: kang
+    pos: pronoun
+    ar_eg: اللي (في الكتابة، = sing)
+    ar: الذي (في الكتابة، = sing)
+    en: which, who (written; spoken sing) = yang
+  - word: ana ing
+    pos: phrase
+    ar_eg: موجود في / بيقع في (في الكتابة)
+    ar: يقع في (في الكتابة)
+    en: is located in (written) = terletak di
+  - word: lawas
+    pos: adjective
+    ar_eg: قديم (للحاجات)
+    ar: قديم (للأشياء)
+    en: old (of things) = lama
+  - word: sepur
+    pos: noun
+    ar_eg: قطر
+    ar: قطار
+    en: train = kereta api
+  - word: misuwur
+    pos: adjective
+    ar_eg: مشهور
+    ar: مشهور
+    en: famous = terkenal
+  - word: papan
+    pos: noun
+    ar_eg: مكان
+    ar: مكان
+    en: place = tempat
+review:
+  status: draft
+  verified: false

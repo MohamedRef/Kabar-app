@@ -1,0 +1,216 @@
+schema: kabar.lesson/v1
+id: bipa4.u07.l02
+language: id
+title: Pelayanan puskesmas
+can_do:
+  ar_eg: تتعامل في البوسكسماس (الوحدة الصحية) وتسأل عن التسجيل والتأمين.
+  ar: أن تتعامل في المركز الصحي (puskesmas) وتسأل عن التسجيل والتأمين.
+  en: Get around a puskesmas and ask about registration and insurance.
+slides:
+  - title: Melayani → pelayanan
+    body:
+      ar_eg: |
+        الأفعال اللي بتبدأ بـ me- بس (قبل l, r, m, n, w, y) بتاخد pe-…-an من غير أنف:
+        melayani (يخدم) → pelayanan (خدمة)
+        merawat (يرعى / يمرّض) → perawatan (رعاية)
+        والأفعال اللي فيها أنف بتفضل زي ما هي: mendaftar (يسجّل) → pendaftaran (تسجيل).
+      ar: |
+        الأفعال التي تبدأ بـ me- وحدها (قبل l, r, m, n, w, y) تأخذ pe-…-an بلا صوت أنفي:
+        melayani (يخدم) → pelayanan (خدمة)
+        merawat (يرعى) → perawatan (رعاية)
+        أما ذات الصوت الأنفي فتبقى كما هي: mendaftar (يسجّل) → pendaftaran (تسجيل).
+      en: |
+        Verbs with plain me- (before l, r, m, n, w, y) take pe-…-an with no nasal:
+        melayani (serve) → pelayanan (service)
+        merawat (care for) → perawatan (care, treatment)
+        Verbs with a nasal keep it: mendaftar (register) → pendaftaran (registration).
+    grammar: id.confix.peng-an
+    examples:
+      - text: Pelayanan di puskesmas Gorontalo cepat dan ramah.
+        ar_eg: الخدمة في بوسكسماس جورونتالو سريعة ولطيفة.
+        ar: الخدمة في المركز الصحي في غورونتالو سريعة ولطيفة.
+        en: The service at the Gorontalo puskesmas is quick and friendly.
+      - text: Silakan ke loket pendaftaran dulu.
+        ar_eg: اتفضل على شباك التسجيل الأول.
+        ar: تفضّل إلى شباك التسجيل أولًا.
+        en: Please go to the registration counter first.
+  - title: Puskesmas dan BPJS
+    body:
+      ar_eg: |
+        puskesmas = pusat kesehatan masyarakat، يعني الوحدة الصحية بتاعة الحي.
+        BPJS Kesehatan هو التأمين الصحي الحكومي (asuransi).
+        ditanggung = متغطّي / الجهة الفلانية بتدفعه.
+      ar: |
+        puskesmas = pusat kesehatan masyarakat، أي المركز الصحي المحلي.
+        وBPJS Kesehatan هو التأمين الصحي الوطني (asuransi).
+        ditanggung = مُغطّى، أي تتحمّله جهة ما.
+      en: |
+        puskesmas = pusat kesehatan masyarakat, the local community health centre.
+        BPJS Kesehatan is the national health insurance (asuransi).
+        ditanggung = covered (paid for by someone).
+    grammar: id.confix.peng-an
+    examples:
+      - text: Biaya pengobatan saya ditanggung BPJS.
+        ar_eg: مصاريف علاجي على حساب الـ BPJS.
+        ar: تتحمّل BPJS تكاليف علاجي.
+        en: My treatment costs are covered by BPJS.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: puskesmas
+        ar_eg: وحدة صحية (بتاعة الحي)
+        ar: مركز صحي محلي
+        en: community health centre
+      - text: pelayanan
+        ar_eg: خدمة
+        ar: خدمة
+        en: service
+      - text: perawatan
+        ar_eg: رعاية / تمريض
+        ar: رعاية، تمريض
+        en: care, nursing
+      - text: pendaftaran
+        ar_eg: تسجيل
+        ar: تسجيل
+        en: registration
+      - text: asuransi
+        ar_eg: تأمين
+        ar: تأمين
+        en: insurance
+    words: [puskesmas, pelayanan, perawatan, pendaftaran, asuransi]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه اسم peN-…-an من melayani؟
+      ar: ما اسم peN-…-an من melayani؟
+      en: What is the peN-…-an noun of melayani?
+    options: [pemlayanan, pelayanan, penglayanan]
+    answer: 1
+    explain:
+      ar_eg: melayani فيها me- بس (من غير أنف)، يبقى pe-…-an = pelayanan.
+      ar: في melayani البادئة me- بلا صوت أنفي، فيكون الاسم pelayanan.
+      en: melayani has plain me- (no nasal), so the noun is pe-…-an = pelayanan.
+    words: [pelayanan]
+  - id: e03
+    type: listen
+    text: Biaya pengobatan saya ditanggung asuransi.
+    options: ["Biaya pemeriksaan saya ditanggung asuransi.", "Biaya pengobatan saya tidak ditanggung asuransi.", "Biaya pengobatan saya ditanggung asuransi."]
+    answer: 2
+    meaning:
+      ar_eg: مصاريف علاجي على حساب التأمين.
+      ar: يغطي التأمين تكاليف علاجي.
+      en: My treatment costs are covered by insurance.
+    words: [ditanggung, asuransi]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أول ما تدخل البوسكسماس لازم تسجّل. تروح فين؟
+      ar: عند دخولك المركز الصحي يجب أن تسجّل أولًا. إلى أين تذهب؟
+      en: When you arrive at the puskesmas you must register first. Where do you go?
+    options: [loket pendaftaran, ruang perawatan, ruang tunggu]
+    answer: 0
+    explain:
+      ar_eg: loket = شباك. pendaftaran = تسجيل. ruang perawatan = أوضة الرعاية (للعيانين).
+      ar: loket = شباك، وpendaftaran = تسجيل، أما ruang perawatan فهي غرفة الرعاية للمرضى.
+      en: loket = counter, pendaftaran = registration; ruang perawatan is the ward where patients are cared for.
+    words: [pendaftaran, perawatan]
+  - id: e05
+    type: fill_blank
+    sentence: Silakan ke loket ___ dulu, Pak.
+    meaning:
+      ar_eg: اتفضل على شباك التسجيل الأول يا أستاذ.
+      ar: تفضّل إلى شباك التسجيل أولًا يا سيدي.
+      en: Please go to the registration counter first, sir.
+    options: [pelayanan, pendaftaran, perawatan]
+    answers: [pendaftaran]
+    words: [pendaftaran]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: مصاريف علاجي على حساب التأمين.
+      ar: يغطي التأمين تكاليف علاجي.
+      en: My treatment costs are covered by insurance.
+    answer: Biaya pengobatan saya ditanggung asuransi.
+    distractors: [pelayanan, mendaftar]
+    words: [ditanggung, asuransi]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: هو العلاج في البوسكسماس بيغطيه التأمين؟
+      ar: هل يغطي التأمين العلاج في المركز الصحي؟
+      en: Is treatment at the puskesmas covered by insurance?
+    answers:
+      - Apakah pengobatan di puskesmas ditanggung asuransi?
+      - Apakah pengobatan di puskesmas ditanggung asuransi
+      - Apakah pengobatan di puskesmas ditanggung oleh asuransi?
+      - Apakah biaya pengobatan di puskesmas ditanggung asuransi?
+      - Pengobatan di puskesmas ditanggung asuransi?
+      - Apakah pengobatan di puskesmas ditanggung asuransi, ya?
+    words: [puskesmas, ditanggung, asuransi]
+  - id: e08
+    type: speaking
+    text: Pelayanan dan perawatan di puskesmas ini sangat baik.
+    meaning:
+      ar_eg: الخدمة والرعاية في البوسكسماس ده كويسين جدًا.
+      ar: الخدمة والرعاية في هذا المركز الصحي جيدتان جدًا.
+      en: The service and care at this puskesmas are very good.
+    words: [pelayanan, perawatan, puskesmas]
+dialogue:
+  title: Di puskesmas
+  lines:
+    - speaker: Petugas
+      text: Selamat siang, Pak. Sudah ke loket pendaftaran?
+      ar_eg: مساء الخير يا أستاذ. رحت شباك التسجيل؟
+      ar: مساء الخير يا سيدي. هل ذهبت إلى شباك التسجيل؟
+      en: Good afternoon, sir. Have you been to the registration counter?
+    - speaker: Mohamed
+      text: Sudah. Apakah pengobatan di sini ditanggung asuransi?
+      ar_eg: أيوه. هو العلاج هنا بيغطيه التأمين؟
+      ar: نعم. هل يغطي التأمين العلاج هنا؟
+      en: Yes. Is treatment here covered by insurance?
+    - speaker: Petugas
+      text: Bisa, Pak, kalau Bapak punya kartu BPJS.
+      ar_eg: أيوه يا أستاذ، لو معاك كارت BPJS.
+      ar: نعم يا سيدي، إن كانت لديك بطاقة BPJS.
+      en: Yes, sir, if you have a BPJS card.
+    - speaker: Mohamed
+      text: Saya punya. Wah, pelayanan di sini cepat sekali, ya.
+      ar_eg: معايا. الله، الخدمة هنا سريعة أوي.
+      ar: لديّ واحدة. يا لها من خدمة سريعة هنا!
+      en: I have one. Wow, the service here is really quick.
+new_words:
+  - word: puskesmas
+    pos: noun
+    ar_eg: وحدة صحية (بتاعة الحي)
+    ar: مركز صحي محلي
+    en: community health centre
+  - word: pelayanan
+    pos: noun
+    ar_eg: خدمة
+    ar: خدمة
+    en: service
+  - word: perawatan
+    pos: noun
+    ar_eg: رعاية / تمريض
+    ar: رعاية، تمريض
+    en: care, nursing
+  - word: pendaftaran
+    pos: noun
+    ar_eg: تسجيل
+    ar: تسجيل
+    en: registration
+  - word: asuransi
+    pos: noun
+    ar_eg: تأمين
+    ar: تأمين
+    en: insurance
+  - word: ditanggung
+    pos: verb
+    ar_eg: متغطّي (حد تاني بيدفع)
+    ar: مُغطّى، تتحمّله جهة
+    en: covered (paid for)
+review:
+  status: draft
+  verified: false

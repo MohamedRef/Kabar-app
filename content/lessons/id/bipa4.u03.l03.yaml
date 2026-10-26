@@ -1,0 +1,227 @@
+schema: kabar.lesson/v1
+id: bipa4.u03.l03
+language: id
+title: Seperti perahu
+can_do:
+  ar_eg: توصف مبنى بالتشبيه (زي، كأنه).
+  ar: أن تصف مبنى بالتشبيه.
+  en: Describe a building with similes.
+slides:
+  - title: Seperti, bagaikan
+    body:
+      ar_eg: |
+        التشبيه = A + أداة + B:
+        seperti = زي (العادية، في الكلام اليومي)
+        bagai / bagaikan / laksana = كـ / كأنه (أدبية، في الوصف والشعر)
+        زي ما بنقول بالعربي «وجهها كالبدر» = Wajahnya bagaikan bulan purnama.
+      ar: |
+        التشبيه = A + الأداة + B:
+        seperti = مثل (الأداة اليومية)
+        bagai / bagaikan / laksana = كـ / كأنّ (أدبية، للوصف والشعر)
+        كقولنا «وجهها كالبدر» = Wajahnya bagaikan bulan purnama.
+      en: |
+        Simile = A + marker + B:
+        seperti = like (everyday)
+        bagai / bagaikan / laksana = like, as (literary: description, poetry)
+        Just like Arabic «وجهها كالبدر» = Wajahnya bagaikan bulan purnama.
+    grammar: id.figurative.simile-hyperbole
+    examples:
+      - text: Atap rumah tongkonan melengkung seperti perahu.
+        ar_eg: سقف بيت التونجكونان معووج زي المركب.
+        ar: ينحني سقف بيت التونغكونان كالقارب.
+        en: The roof of a tongkonan curves like a boat.
+      - text: Desa di lembah itu terlihat bagaikan lukisan.
+        ar_eg: القرية اللي في الوادي باينة كأنها لوحة.
+        ar: تبدو القرية في الوادي كأنها لوحة.
+        en: The village in the valley looks like a painting.
+  - title: Satu kata saja
+    body:
+      ar_eg: |
+        أداة تشبيه واحدة بس: seperti أو bagaikan، مش seperti bagaikan.
+        وفيه تشبيهات ثابتة ما تتغيرش كلماتها:
+        seperti pinang dibelah dua = زي الفولة اللي اتقسمت نصين (شبه بعض بالظبط).
+        خلي بالك: pinang (فوفل)، مش pisang (موز)!
+      ar: |
+        تكفي أداة واحدة: seperti أو bagaikan، لا كلتاهما.
+        ومن التشبيهات الثابتة التي لا تُغيَّر ألفاظها:
+        seperti pinang dibelah dua = متطابقان كشقّي ثمرة واحدة.
+        وانتبه: pinang (جوز الفوفل) لا pisang (الموز).
+      en: |
+        One marker only: seperti or bagaikan, not both.
+        Some similes are fixed — don't change the words:
+        seperti pinang dibelah dua = like an areca nut split in two (identical).
+        Careful: pinang (areca nut), not pisang (banana)!
+    grammar: id.figurative.simile-hyperbole
+    examples:
+      - text: Kedua tongkonan itu seperti pinang dibelah dua.
+        ar_eg: التونجكونانين دول زي الفولة اللي اتقسمت نصين.
+        ar: هذان التونغكونانان متطابقان تمامًا.
+        en: Those two tongkonan are like two peas in a pod.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: atap
+        ar_eg: سقف
+        ar: سقف
+        en: roof
+      - text: melengkung
+        ar_eg: معووج / مقوّس
+        ar: منحنٍ / مقوّس
+        en: curve(d)
+      - text: perahu
+        ar_eg: مركب / قارب
+        ar: قارب
+        en: boat
+      - text: tanduk
+        ar_eg: قرن
+        ar: قرن
+        en: horn
+      - text: kerbau
+        ar_eg: جاموسة
+        ar: جاموس
+        en: water buffalo
+      - text: bagaikan
+        ar_eg: كأنه / زي (أدبي)
+        ar: كأنّ / كـ (أدبية)
+        en: like, as (literary)
+    words: [atap, melengkung, perahu, tanduk, kerbau, bagaikan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة صح؟
+      ar: أيّ جملة صحيحة؟
+      en: Which sentence is correct?
+    options: ["Atapnya seperti bagaikan perahu.", "Atapnya melengkung seperti perahu.", "Atapnya adalah seperti perahu."]
+    answer: 1
+    explain:
+      ar_eg: أداة تشبيه واحدة بس، ومن غير adalah قبل seperti.
+      ar: أداة تشبيه واحدة، ولا تأتي adalah قبل seperti.
+      en: One simile marker only, and no adalah before seperti.
+    words: [atap, melengkung, perahu]
+  - id: e03
+    type: listen
+    text: Di depan tongkonan ada banyak tanduk kerbau.
+    options: ["Di depan tongkonan ada banyak tanduk kerbau.", "Di atas tongkonan ada banyak tanduk kerbau.", "Di depan tongkonan ada banyak kerbau."]
+    answer: 0
+    meaning:
+      ar_eg: قدام التونجكونان فيه قرون جاموس كتير.
+      ar: أمام التونغكونان قرون جواميس كثيرة.
+      en: There are many buffalo horns in front of the tongkonan.
+    words: [tanduk, kerbau]
+  - id: e04
+    type: multiple_choice
+    question: Kedua rumah itu sama persis, ___.
+    question_meaning:
+      ar_eg: البيتين دول شبه بعض بالظبط، …
+      ar: البيتان متطابقان تمامًا، …
+      en: The two houses are exactly the same, …
+    options: ["seperti perahu dibelah dua", "seperti pisang dibelah dua", "seperti pinang dibelah dua"]
+    answer: 2
+    explain:
+      ar_eg: التشبيه الثابت بـ pinang (فوفل)، وما بنغيرش كلماته.
+      ar: التشبيه الثابت بـ pinang، ولا تُغيَّر ألفاظه.
+      en: The fixed simile uses pinang (areca nut); its words never change.
+  - id: e05
+    type: fill_blank
+    sentence: Rumah itu indah ___ istana.
+    meaning:
+      ar_eg: البيت ده جميل كأنه قصر.
+      ar: ذلك البيت جميل كأنه قصر.
+      en: That house is as beautiful as a palace.
+    options: [bagaikan, adalah, oleh]
+    answers: [bagaikan]
+    words: [bagaikan]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: سقف التونجكونان معووج زي المركب.
+      ar: ينحني سقف التونغكونان كالقارب.
+      en: The tongkonan's roof curves like a boat.
+    answer: Atap tongkonan melengkung seperti perahu.
+    distractors: [adalah, tanduk]
+    words: [atap, melengkung, perahu]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: قدام البيت ده فيه قرون جاموس كتير.
+      ar: أمام ذلك البيت قرون جواميس كثيرة.
+      en: There are many buffalo horns in front of that house.
+    answers:
+      - Ada banyak tanduk kerbau di depan rumah itu.
+      - Ada banyak tanduk kerbau di depan rumah itu
+      - Di depan rumah itu ada banyak tanduk kerbau.
+      - Di depan rumah itu ada banyak tanduk kerbau
+      - Ada banyak tanduk kerbau di depan rumah tersebut.
+    words: [tanduk, kerbau]
+  - id: e08
+    type: speaking
+    text: Dari jauh, desa itu terlihat bagaikan lukisan.
+    meaning:
+      ar_eg: من بعيد، القرية دي باينة كأنها لوحة.
+      ar: تبدو تلك القرية من بعيد كأنها لوحة.
+      en: From afar, that village looks like a painting.
+    words: [bagaikan]
+dialogue:
+  title: Atap seperti perahu
+  lines:
+    - speaker: Mohamed
+      text: Mas, kenapa atap tongkonan melengkung seperti perahu?
+      ar_eg: يا مَس، ليه سقف التونجكونان معووج زي المركب؟
+      ar: يا ماس، لماذا ينحني سقف التونغكونان كالقارب؟
+      en: Mas, why does the tongkonan roof curve like a boat?
+    - speaker: Mas Rizal
+      text: Ada yang bilang leluhur orang Toraja datang dengan perahu.
+      ar_eg: فيه ناس بتقول إن أجداد أهل توراجا جم بالمراكب.
+      ar: يقال إن أسلاف أهل توراجا جاؤوا بالقوارب.
+      en: Some say the Toraja ancestors came by boat.
+    - speaker: Mohamed
+      text: Wah! Lalu tanduk-tanduk di depan rumah itu apa?
+      ar_eg: يا سلام! طب والقرون اللي قدام البيت دي إيه؟
+      ar: رائع! وما هذه القرون أمام البيت؟
+      en: Wow! And what are those horns in front of the house?
+    - speaker: Mas Rizal
+      text: Itu tanduk kerbau. Makin banyak tanduknya, makin tinggi status keluarganya.
+      ar_eg: دي قرون جاموس. كل ما القرون تكتر، مكانة العيلة تعلى.
+      ar: تلك قرون جواميس، وكلما كثرت علت مكانة الأسرة.
+      en: Those are buffalo horns. The more horns, the higher the family's status.
+    - speaker: Mohamed
+      text: Dari sini, desa ini terlihat bagaikan lukisan.
+      ar_eg: من هنا، القرية دي باينة كأنها لوحة.
+      ar: تبدو هذه القرية من هنا كأنها لوحة.
+      en: From here, this village looks like a painting.
+new_words:
+  - word: atap
+    pos: noun
+    ar_eg: سقف
+    ar: سقف
+    en: roof
+  - word: melengkung
+    pos: verb
+    ar_eg: معووج / مقوّس
+    ar: منحنٍ / مقوّس
+    en: curve, be curved
+  - word: perahu
+    pos: noun
+    ar_eg: مركب / قارب
+    ar: قارب
+    en: boat
+  - word: tanduk
+    pos: noun
+    ar_eg: قرن
+    ar: قرن
+    en: horn
+  - word: kerbau
+    pos: noun
+    ar_eg: جاموسة
+    ar: جاموس
+    en: water buffalo
+  - word: bagaikan
+    pos: conjunction
+    ar_eg: كأنه / زي (أدبي)
+    ar: كأنّ / كـ (أدبية)
+    en: like, as (literary)
+review:
+  status: draft
+  verified: false

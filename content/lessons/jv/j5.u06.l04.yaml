@@ -1,0 +1,186 @@
+schema: kabar.lesson/v1
+id: j5.u06.l04
+language: jv
+title: Tegese tembang
+can_do:
+  ar_eg: تشرح لصاحبك معنى أغنية.
+  ar: أن تشرح لصديقك معنى أغنية.
+  en: Explain what a song means to a friend.
+slides:
+  - title: Critane, tegese, piwulange
+    body:
+      ar_eg: |
+        عشان تشرح أغنية لصاحبك، قول تلات حاجات بنغوكو بسيطة:
+        - critane = حكايتها (بتحكي عن إيه؟)
+        - tegese = معناها (tegese = artinya / maksudnya)
+        - piwulange = الدرس أو الحكمة اللي فيها (piwulang = ajaran)
+      ar: |
+        لتشرح أغنية لصديقك قل ثلاثة أشياء بنغوكو بسيطة:
+        - critane = حكايتها (عمَّ تتحدث؟)
+        - tegese = معناها (artinya / maksudnya)
+        - piwulange = العبرة أو الحكمة فيها (piwulang = ajaran)
+      en: |
+        To explain a song to a friend, say three things in simple ngoko:
+        - critane = its story (what is it about?)
+        - tegese = its meaning (artinya / maksudnya)
+        - piwulange = its lesson, its wisdom (piwulang = ajaran)
+    grammar: jv.reading.written-style
+    examples:
+      - text: Critane cah angon sing dikon menek blimbing.
+        ar_eg: حكايتها عن ولد راعي بيقولوله اطلع شجرة الـ blimbing.
+        ar: حكايتها عن فتى راعٍ يُطلب منه تسلّق شجرة الـ blimbing.
+        en: It's about a shepherd boy who is told to climb a starfruit tree.
+      - text: Tegese, atine ambyar merga kekasihe lunga.
+        ar_eg: معناها إن قلبه اتكسر عشان حبيبه مشي.
+        ar: معناها أن قلبه تحطّم لأن حبيبه رحل.
+        en: It means his heart is shattered because his love left.
+      - text: Piwulange, ngelmu kudu dilakoni.
+        ar_eg: الحكمة إن العلم لازم يتعمل بيه.
+        ar: والعبرة أن العلم يجب أن يُعمل به.
+        en: The lesson is that knowledge must be practised.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question: Ngelmu iku kalakone kanthi laku.
+    question_meaning:
+      ar_eg: إيه الـ piwulang (الحكمة) هنا؟
+      ar: ما الـ piwulang (العبرة) هنا؟
+      en: What is the piwulang (lesson) here?
+    options: ['Ilmu harus diamalkan.', 'Ilmu cukup dibaca.', 'Ilmu itu mahal.']
+    answer: 0
+    words: [piwulang, ngelmu]
+  - id: e02
+    type: listen
+    text: Critane wong sing ditinggal lunga, atine ambyar.
+    question:
+      ar_eg: الأغنية بتحكي عن مين؟
+      ar: عمّن تحكي الأغنية؟
+      en: Who is the song about?
+    options: [wong sing seneng, wong sing ditinggal lunga, wong sing lara]
+    answer: 1
+    meaning:
+      ar_eg: حكايتها عن واحد حبيبه سابه ومشي، وقلبه اتكسر.
+      ar: حكايتها عن شخص هجره حبيبه فتحطّم قلبه.
+      en: It's about someone who was left behind, and his heart is shattered.
+    words: [ati, ambyar]
+  - id: e03
+    type: fill_blank
+    sentence: ___ tembang iki apa?
+    meaning:
+      ar_eg: معنى الأغنية دي إيه؟
+      ar: ما معنى هذه الأغنية؟
+      en: What does this song mean?
+    options: [Piwulange, Tegese, Pungkasane]
+    answers: [Tegese]
+    words: [tegese]
+  - id: e04
+    type: fill_blank
+    sentence: ___, ngelmu kudu dilakoni.
+    meaning:
+      ar_eg: الحكمة إن العلم لازم يتعمل بيه.
+      ar: والعبرة أن العلم يجب أن يُعمل به.
+      en: The lesson is that knowledge must be practised.
+    options: [Dumadakan, Biyen, Piwulange]
+    answers: [Piwulange]
+    words: [piwulang]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: معناها إن قلبه اتكسر عشان حبيبه مشي.
+      ar: معناها أن قلبه تحطّم لأن حبيبه رحل.
+      en: It means his heart is shattered because his love left.
+    answer: Tegese, atine ambyar merga kekasihe lunga.
+    distractors: [kang, wus]
+    words: [tegese, ambyar]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (لصاحبك) الحكمة إن العلم لازم يتعمل بيه.
+      ar: (لصديقك) العبرة أن العلم يجب أن يُعمل به.
+      en: (to a friend) The lesson is that knowledge must be practised.
+    answers:
+      - Piwulange, ngelmu kudu dilakoni.
+      - Piwulange, ilmu kudu dilakoni.
+      - Piwulange, ngelmu iku kudu dilakoni.
+      - Piwulange, ngelmu kudu ditindakake.
+    words: [piwulang]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Tegese, atine ambyar merga kekasihe lunga.
+    answers_meaning:
+      ar_eg:
+        - معناها إن قلبه اتكسر عشان حبيبه مشي.
+        - يعني قلبه اتكسر عشان حبيبته مشيت.
+        - معناها إن قلبه اتكسر حتت عشان حبيبه مشي.
+        - يعني قلبه اتكسر عشان حبيبه سابه.
+      ar:
+        - معناها أن قلبه تحطّم لأن حبيبه رحل.
+        - أي أن قلبه تحطّم لأن حبيبته رحلت.
+        - معناها أن قلبه انكسر لأن حبيبه رحل.
+      en:
+        - It means his heart is shattered because his love left.
+        - It means his heart is broken because his lover left.
+        - Meaning, his heart is shattered because his beloved left.
+        - It means her heart is shattered because her love left.
+        - It means he's heartbroken because his love left.
+    words: [tegese, ambyar]
+  - id: e08
+    type: dictation
+    text: Tak ijo royo-royo, tak sengguh temanten anyar.
+    meaning:
+      ar_eg: أخضر أخضر خالص، تقول عليه عريس جديد.
+      ar: شديد الخضرة، تحسبه عروسًا جديدًا.
+      en: So lush and green, you'd take it for a newlywed.
+    words: [ijo]
+  - id: e09
+    type: speaking
+    text: Tegese tembang iki, ngelmu iku kalakone kanthi laku.
+    meaning:
+      ar_eg: معنى الأغنية دي إن العلم بيتنال بالعمل.
+      ar: معنى هذه الأغنية أن العلم يُنال بالعمل.
+      en: This song means that knowledge is attained through practice.
+    words: [tegese, ngelmu]
+dialogue:
+  title: Mohamed nerangake Lir-ilir
+  lines:
+    - speaker: Mas Rizal
+      text: Mohamed, tegese Lir-ilir apa?
+      ar_eg: يا محمد، معنى Lir-ilir إيه؟
+      ar: يا محمد، ما معنى Lir-ilir؟
+      en: Mohamed, what does Lir-ilir mean?
+    - speaker: Mohamed
+      text: Critane cah angon sing dikon menek blimbing.
+      ar_eg: حكايتها عن ولد راعي بيقولوله اطلع شجرة الـ blimbing.
+      ar: حكايتها عن فتى راعٍ يُطلب منه تسلّق شجرة الـ blimbing.
+      en: It's about a shepherd boy who is told to climb a starfruit tree.
+    - speaker: Mas Rizal
+      text: Lan piwulange?
+      ar_eg: والحكمة إيه؟
+      ar: وما العبرة؟
+      en: And the lesson?
+    - speaker: Mohamed
+      text: Blimbing iku duwe limang sisi, kaya salat limang wektu. Nanging iku tafsiran.
+      ar_eg: الـ blimbing ليها خمس جوانب، زي الصلوات الخمسة. بس ده تفسير.
+      ar: للـ blimbing خمسة أضلاع كالصلوات الخمس، لكن هذا تفسير.
+      en: A starfruit has five sides, like the five daily prayers. But that's an interpretation.
+    - speaker: Mas Rizal
+      text: Wah, kowe wis bisa nerangake tembang!
+      ar_eg: يا سلام، إنت بقيت تعرف تشرح الأغاني!
+      ar: رائع، صرت تستطيع شرح الأغاني!
+      en: Wow, you can explain songs now!
+new_words:
+  - word: tegese
+    pos: noun
+    ar_eg: معناه (artinya)
+    ar: معناه (artinya)
+    en: its meaning; that is = artinya
+  - word: piwulang
+    pos: noun
+    ar_eg: درس / حكمة (ajaran)
+    ar: عبرة / تعليم (ajaran)
+    en: teaching, lesson = ajaran
+review:
+  status: draft
+  verified: false

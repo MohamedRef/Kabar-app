@@ -1,0 +1,181 @@
+schema: kabar.lesson/v1
+id: bipa4.u07.l05
+language: id
+title: Esai olahraga
+can_do:
+  ar_eg: تكتب مقال قصير عن فوايد الرياضة باستعمال أسماء peN-…-an.
+  ar: أن تكتب مقالًا قصيرًا عن فوائد الرياضة مستخدمًا أسماء peN-…-an.
+  en: Write a short essay on the benefits of exercise using peN-…-an nouns.
+slides:
+  - title: Esai kesehatan
+    body:
+      ar_eg: |
+        المقال الصحي بيحب أسماء peN-…-an: pencegahan، pemeriksaan، penggunaan، penguatan (تقوية، من menguatkan).
+        رتّب مقالك: Saya berpendapat bahwa … ← Pertama, … Kedua, … ← Dengan demikian, …
+        وsecara teratur = بانتظام (من atur = يرتّب).
+      ar: |
+        يكثر المقال الصحي من أسماء peN-…-an: pencegahan، pemeriksaan، penggunaan، penguatan (تقوية، من menguatkan).
+        رتّب مقالك: Saya berpendapat bahwa … ← Pertama, … Kedua, … ← Dengan demikian, …
+        وsecara teratur = بانتظام (من atur = يرتّب).
+      en: |
+        Health essays love peN-…-an nouns: pencegahan, pemeriksaan, penggunaan, penguatan (strengthening, from menguatkan).
+        Order your essay: Saya berpendapat bahwa … → Pertama, … Kedua, … → Dengan demikian, …
+        secara teratur = regularly (from atur, "arrange").
+    grammar: id.confix.peng-an
+    examples:
+      - text: Olahraga teratur menguatkan otot dan jantung.
+        ar_eg: الرياضة المنتظمة بتقوّي العضلات والقلب.
+        ar: الرياضة المنتظمة تقوّي العضلات والقلب.
+        en: Regular exercise strengthens the muscles and the heart.
+      - text: Dengan demikian, olahraga adalah bagian penting dari pencegahan penyakit.
+        ar_eg: وبكده، الرياضة جزء مهم من الوقاية من الأمراض.
+        ar: وبذلك، فالرياضة جزء مهم من الوقاية من الأمراض.
+        en: Thus, exercise is an important part of preventing illness.
+exercises:
+  - id: e01
+    type: listen
+    text: Olahraga teratur menjaga kesehatan jantung.
+    options: ["Olahraga teratur menjaga kesehatan otot.", "Olahraga teratur menjaga kesehatan jantung.", "Olahraga rutin menjaga kesehatan anak."]
+    answer: 1
+    meaning:
+      ar_eg: الرياضة المنتظمة بتحافظ على صحة القلب.
+      ar: الرياضة المنتظمة تحافظ على صحة القلب.
+      en: Regular exercise keeps the heart healthy.
+    words: [teratur, jantung]
+  - id: e02
+    type: multiple_choice
+    question: Latihan ini baik untuk ___ otot kaki.
+    question_meaning:
+      ar_eg: التمرين ده كويس لتقوية عضلات الرجل. اختار الاسم الصح.
+      ar: هذا التمرين جيد لتقوية عضلات الساق. اختر الاسم الصحيح.
+      en: This workout is good for strengthening the leg muscles. Pick the right noun.
+    options: [penguatan, pengkuatan, pekuatan]
+    answer: 0
+    explain:
+      ar_eg: menguatkan (من kuat) → الـ k بتقع بعد ng، يبقى penguatan.
+      ar: menguatkan (من kuat) تسقط فيها k بعد ng، فيكون الاسم penguatan.
+      en: menguatkan (from kuat) drops the k after ng, so the noun is penguatan.
+    words: [otot]
+  - id: e03
+    type: match_pairs
+    pairs:
+      - text: jantung
+        ar_eg: القلب
+        ar: القلب
+        en: heart
+      - text: otot
+        ar_eg: عضلة
+        ar: عضلة
+        en: muscle
+      - text: secara teratur
+        ar_eg: بانتظام
+        ar: بانتظام
+        en: regularly
+      - text: kebiasaan
+        ar_eg: عادة
+        ar: عادة
+        en: habit
+      - text: daya tahan tubuh
+        ar_eg: مناعة الجسم
+        ar: مناعة الجسم
+        en: immunity
+    words: [jantung, otot, teratur, kebiasaan, daya tahan tubuh]
+  - id: e04
+    type: fill_blank
+    sentence: Jalan kaki tiga puluh menit setiap hari baik untuk ___.
+    meaning:
+      ar_eg: المشي نص ساعة كل يوم كويس للقلب.
+      ar: المشي ثلاثين دقيقة يوميًا مفيد للقلب.
+      en: Walking for thirty minutes every day is good for the heart.
+    options: [gejala, jantung, penderita]
+    answers: [jantung]
+    words: [jantung]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الرياضة المنتظمة بتقوّي العضلات والقلب.
+      ar: الرياضة المنتظمة تقوّي العضلات والقلب.
+      en: Regular exercise strengthens the muscles and the heart.
+    answer: Olahraga teratur menguatkan otot dan jantung.
+    alternatives: ["Olahraga teratur menguatkan jantung dan otot."]
+    distractors: [penguatan, gejala]
+    words: [teratur, otot, jantung]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: وبكده، لازم نعمل رياضة بانتظام.
+      ar: وبذلك، يجب أن نمارس الرياضة بانتظام.
+      en: Thus, we must exercise regularly.
+    answers:
+      - Dengan demikian, kita harus berolahraga secara teratur.
+      - Dengan demikian, kita harus berolahraga secara teratur
+      - Dengan demikian kita harus berolahraga secara teratur.
+      - Dengan demikian, kita harus berolahraga dengan teratur.
+      - Dengan demikian, kita harus olahraga secara teratur.
+      - Dengan demikian, kita harus berolahraga teratur.
+      - Oleh karena itu, kita harus berolahraga secara teratur.
+    words: [teratur, dengan demikian]
+  - id: e07
+    type: dictation
+    text: Pemeriksaan jantung sebaiknya dilakukan secara rutin.
+    meaning:
+      ar_eg: الأحسن كشف القلب يتعمل بشكل دوري.
+      ar: يُستحسن إجراء فحص القلب بانتظام.
+      en: Heart check-ups should be done regularly.
+    words: [jantung, pemeriksaan]
+  - id: e08
+    type: speaking
+    text: Saya berpendapat bahwa olahraga teratur adalah pencegahan terbaik.
+    meaning:
+      ar_eg: رأيي إن الرياضة المنتظمة هي أحسن وقاية.
+      ar: أرى أنّ الرياضة المنتظمة هي أفضل وقاية.
+      en: I believe regular exercise is the best prevention.
+    words: [teratur, pencegahan]
+dialogue:
+  title: Tangga Benteng Otanaha
+  lines:
+    - speaker: Mas Rizal
+      text: Ayo naik tangga ke Benteng Otanaha! Bagus untuk jantung.
+      ar_eg: يلا نطلع السلم لقلعة أوتاناها! كويس للقلب.
+      ar: هيا نصعد الدرج إلى قلعة أوتاناها! هذا مفيد للقلب.
+      en: Come on, let's climb the steps to Otanaha Fort! Good for the heart.
+    - speaker: Mohamed
+      text: Wah, otot kaki saya sakit, Mas!
+      ar_eg: ياه، عضلات رجلي بتوجعني يا رزال!
+      ar: آه، عضلات ساقي تؤلمني يا رزال!
+      en: Ouch, my leg muscles hurt, Rizal!
+    - speaker: Mas Rizal
+      text: Itu karena kamu tidak berolahraga secara teratur.
+      ar_eg: ده عشان إنت مش بتعمل رياضة بانتظام.
+      ar: هذا لأنك لا تمارس الرياضة بانتظام.
+      en: That's because you don't exercise regularly.
+    - speaker: Mohamed
+      text: Benar. Nanti saya menulis esai tentang manfaat olahraga teratur.
+      ar_eg: صح. بعدين هكتب مقال عن فوايد الرياضة المنتظمة.
+      ar: صحيح. سأكتب لاحقًا مقالًا عن فوائد الرياضة المنتظمة.
+      en: True. Later I'll write an essay on the benefits of regular exercise.
+    - speaker: Mas Rizal
+      text: Ide bagus! Tapi naik dulu, baru menulis.
+      ar_eg: فكرة حلوة! بس اطلع الأول، وبعدين اكتب.
+      ar: فكرة جيدة! لكن اصعد أولًا ثم اكتب.
+      en: Good idea! But climb first, then write.
+new_words:
+  - word: jantung
+    pos: noun
+    ar_eg: القلب (العضو)
+    ar: القلب (العضو)
+    en: heart (the organ)
+  - word: otot
+    pos: noun
+    ar_eg: عضلة
+    ar: عضلة
+    en: muscle
+  - word: teratur
+    pos: adjective
+    ar_eg: منتظم (secara teratur = بانتظام)
+    ar: منتظم (secara teratur = بانتظام)
+    en: regular (secara teratur = regularly)
+review:
+  status: draft
+  verified: false

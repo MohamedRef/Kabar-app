@@ -1,0 +1,235 @@
+schema: kabar.lesson/v1
+id: bipa3.u03.l02
+language: id
+title: Menyukai film horor
+can_do:
+  ar_eg: تقول بتحب أنهي نوع أفلام وبتحس بإيه، بأفعال meN-…-i.
+  ar: أن تعبّر عن أنواع الأفلام التي تحبها ومشاعرك تجاهها بأفعال meN-…-i.
+  en: Say how you feel about films with meN-…-i.
+slides:
+  - title: suka → menyukai
+    grammar: id.confix.men-i
+    body:
+      ar_eg: |
+        مشاعر + -i = فعل بياخد مفعول:
+        suka → menyukai = يحب (رسمية أكتر من suka)، cinta → mencintai = يعشق / يحب جدًا، takut → menakuti = يخوّف.
+        Saya suka film itu = Saya menyukai film itu، المعنى واحد، بس التانية للكتابة والريفيوهات.
+        وخلي بالك: menyukai مش menyukakan.
+      ar: |
+        الشعور + -i = فعل متعدٍّ:
+        suka → menyukai = يحب (أرسم من suka)، cinta → mencintai = يحب حبًّا شديدًا، takut → menakuti = يخيف.
+        Saya suka film itu = Saya menyukai film itu، والمعنى واحد، لكن الثانية للكتابة والمراجعات.
+        وانتبه: menyukai لا menyukakan.
+      en: |
+        Feeling + -i = a verb that takes an object:
+        suka → menyukai = to like (more formal than suka), cinta → mencintai = to love, takut → menakuti = to frighten.
+        Saya suka film itu = Saya menyukai film itu; same meaning, but the second suits writing and reviews.
+        Careful: menyukai, never menyukakan.
+    examples:
+      - text: Saya sangat menyukai film itu.
+        ar_eg: أنا بحب الفيلم ده جدًا.
+        ar: أحبّ ذلك الفيلم كثيرًا.
+        en: I really like that film.
+      - text: Hantu di film itu menakuti semua penonton.
+        ar_eg: العفريت اللي في الفيلم ده خوّف كل المتفرجين.
+        ar: أخاف الشبحُ في ذلك الفيلم جميعَ المشاهدين.
+        en: The ghost in that film frightened the whole audience.
+  - title: Horor atau komedi?
+    body:
+      ar_eg: |
+        الأفلام الإندونيسية اللي بتكسّر الدنيا: film horor (رعب) وأفلام العيلة. وكمان komedi.
+        seram = مرعب. و hantu = عفريت / شبح، وموجود في نص أفلام الرعب هناك!
+      ar: |
+        أكثر الأفلام الإندونيسية رواجًا: film horor (أفلام الرعب) وأفلام العائلة، وكذلك komedi.
+        seram = مرعب، وhantu = شبح، وهو حاضر في كثير من أفلام الرعب هناك!
+      en: |
+        Indonesia's box-office hits: film horor (horror) and family dramas, plus komedi.
+        seram = scary, and hantu = ghost, the star of many Indonesian horror films!
+    examples:
+      - text: Film horor Indonesia sangat seram.
+        ar_eg: أفلام الرعب الإندونيسي مرعبة جدًا.
+        ar: أفلام الرعب الإندونيسية مرعبة جدًا.
+        en: Indonesian horror films are really scary.
+      - text: Dimas lebih menyukai komedi.
+        ar_eg: ديماس بيحب الكوميدي أكتر.
+        ar: يفضّل ديماس الكوميديا.
+        en: Dimas prefers comedy.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: mencintai
+        ar_eg: يعشق، يحب جدًا
+        ar: يحب حبًّا شديدًا
+        en: to love
+      - text: menakuti
+        ar_eg: يخوّف
+        ar: يخيف
+        en: to frighten
+      - text: film horor
+        ar_eg: فيلم رعب
+        ar: فيلم رعب
+        en: horror film
+      - text: komedi
+        ar_eg: كوميدي
+        ar: كوميديا
+        en: comedy
+      - text: seram
+        ar_eg: مرعب
+        ar: مرعب
+        en: scary
+      - text: hantu
+        ar_eg: عفريت، شبح
+        ar: شبح
+        en: ghost
+    words: [mencintai, menakuti, film horor, komedi, seram, hantu]
+  - id: e02
+    type: multiple_choice
+    question: Saya ___ film itu.
+    options: [menyukai, menyukakan, suka-i]
+    answer: 0
+    explain:
+      ar_eg: "الفعل من suka بياخد -i: menyukai."
+      ar: "الفعل من suka يأخذ -i: menyukai."
+      en: The verb from suka takes -i, menyukai.
+    words: [menyukai]
+  - id: e03
+    type: listen
+    text: Film horor ini seram sekali!
+    options: ["Film komedi ini lucu sekali!", "Film horor ini seram sekali!", "Film horor ini lama sekali!"]
+    answer: 1
+    meaning:
+      ar_eg: فيلم الرعب ده مرعب أوي!
+      ar: فيلم الرعب هذا مرعب جدًا!
+      en: This horror film is so scary!
+    words: [film horor, seram]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي نوع أفلام بيضحّك؟
+      ar: أيّ نوع من الأفلام يُضحك؟
+      en: Which kind of film makes you laugh?
+    options: [film horor, drama, komedi]
+    answer: 2
+    words: [komedi]
+  - id: e05
+    type: fill_blank
+    sentence: Ibu itu sangat ___ anak-anaknya.
+    meaning:
+      ar_eg: الأم دي بتحب ولادها جدًا.
+      ar: تلك الأم تحب أولادها حبًّا شديدًا.
+      en: That mother loves her children very much.
+    options: [menakuti, mencintai, menyukakan]
+    answers: [mencintai]
+    words: [mencintai]
+  - id: e06
+    type: fill_blank
+    sentence: Hantu di film itu ___ semua penonton.
+    meaning:
+      ar_eg: العفريت اللي في الفيلم خوّف كل المتفرجين.
+      ar: أخاف الشبحُ في الفيلم جميعَ المشاهدين.
+      en: The ghost in the film frightened the whole audience.
+    options: [mencintai, menghadiri, menakuti]
+    answers: [menakuti]
+    words: [menakuti, hantu]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: ديماس بيحب الكوميدي أكتر من أفلام الرعب.
+      ar: يحب ديماس الكوميديا أكثر من أفلام الرعب.
+      en: Dimas likes comedy more than horror films.
+    answer: Dimas lebih menyukai komedi daripada film horor.
+    distractors: [menyukakan, dengan]
+    words: [menyukai, komedi, film horor]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: مش بحب أفلام الرعب عشان مرعبة زيادة عن اللزوم.
+      ar: لا أحب أفلام الرعب لأنها مرعبة أكثر من اللازم.
+      en: I don't like horror films because they're too scary.
+    answers:
+      - Saya tidak menyukai film horor karena terlalu seram.
+      - Saya tidak menyukai film horor karena terlalu seram
+      - Saya tidak suka film horor karena terlalu seram.
+      - Aku tidak suka film horor karena terlalu seram.
+      - Aku tidak menyukai film horor karena terlalu seram.
+      - Saya tidak menyukai film horor karena film horor terlalu seram.
+      - Saya kurang menyukai film horor karena terlalu seram.
+      - Saya tidak menyukai film horor sebab terlalu seram.
+    words: [film horor, seram, menyukai]
+  - id: e09
+    type: speaking
+    text: Anak-anak mencintai film itu, tapi hantunya menakuti mereka.
+    meaning:
+      ar_eg: العيال بيحبوا الفيلم ده جدًا، بس العفريت بيخوّفهم.
+      ar: يحب الأطفال ذلك الفيلم كثيرًا، لكنّ الشبح فيه يخيفهم.
+      en: The children love that film, but its ghost frightens them.
+    words: [mencintai, menakuti, hantu]
+dialogue:
+  title: Film apa malam ini?
+  lines:
+    - speaker: Ni Luh
+      text: Malam ini filmnya film horor. Kamu suka?
+      ar_eg: فيلم النهارده بالليل رعب. بتحبه؟
+      ar: فيلم الليلة فيلم رعب. أتحبّه؟
+      en: Tonight's film is a horror film. Do you like those?
+    - speaker: Mohamed
+      text: Hmm, saya kurang menyukai film horor. Terlalu seram!
+      ar_eg: امم، مش بحب أفلام الرعب أوي. مرعبة زيادة!
+      ar: همم، لا أحب أفلام الرعب كثيرًا؛ إنها مرعبة جدًا!
+      en: Hmm, I'm not a big fan of horror films. Too scary!
+    - speaker: Dimas
+      text: Saya juga. Saya lebih menyukai komedi.
+      ar_eg: وانا كمان. أنا بحب الكوميدي أكتر.
+      ar: وأنا كذلك، أفضّل الكوميديا.
+      en: Me neither. I prefer comedy.
+    - speaker: Ni Luh
+      text: Tapi film horor Indonesia sangat terkenal. Hantunya tidak menakuti saya!
+      ar_eg: بس أفلام الرعب الإندونيسي مشهورة جدًا. والعفاريت مش بتخوّفني!
+      ar: لكنّ أفلام الرعب الإندونيسية مشهورة جدًا، وأشباحها لا تخيفني!
+      en: But Indonesian horror films are really famous. The ghosts don't scare me!
+    - speaker: Mohamed
+      text: Baiklah, saya ikut. Tapi saya duduk di belakang, ya!
+      ar_eg: ماشي، جاي. بس هقعد ورا!
+      ar: حسنًا، سآتي، لكنّي سأجلس في الخلف!
+      en: All right, I'll come. But I'm sitting at the back!
+new_words:
+  - word: menyukai
+    pos: verb
+    ar_eg: يحب (حاجة)، أرسم من suka
+    ar: يحب (أرسم من suka)
+    en: to like (more formal than suka)
+  - word: mencintai
+    pos: verb
+    ar_eg: يعشق، يحب جدًا
+    ar: يحب حبًّا شديدًا
+    en: to love
+  - word: menakuti
+    pos: verb
+    ar_eg: يخوّف
+    ar: يخيف
+    en: to frighten
+  - word: film horor
+    pos: noun
+    ar_eg: فيلم رعب
+    ar: فيلم رعب
+    en: horror film
+  - word: komedi
+    pos: noun
+    ar_eg: كوميدي
+    ar: كوميديا
+    en: comedy
+  - word: seram
+    pos: adjective
+    ar_eg: مرعب
+    ar: مرعب
+    en: scary
+  - word: hantu
+    pos: noun
+    ar_eg: عفريت، شبح
+    ar: شبح
+    en: ghost
+review:
+  status: draft
+  verified: false

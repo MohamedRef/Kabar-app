@@ -1,0 +1,232 @@
+schema: kabar.lesson/v1
+id: bipa3.u02.l02
+language: id
+title: Harganya, katanya
+can_do:
+  ar_eg: تستعمل -nya للمقاسات (السعر، الطول) وفي كلمات ثابتة زي katanya و sebaiknya.
+  ar: أن تستعمل -nya للمقادير (السعر، الطول) وفي ألفاظ ثابتة مثل katanya وsebaiknya.
+  en: Use -nya for measures and in set phrases.
+slides:
+  - title: Harganya, panjangnya
+    grammar: id.clitic.nya
+    body:
+      ar_eg: |
+        صفة (أو اسم زي harga) + -nya = اسم المقاس: harga (سعر) → harganya، panjang (طويل) → panjangnya = طوله، berat (تقيل) → beratnya = وزنه.
+        زي العربي بالظبط: «طولُه ٢ كيلو» = Panjangnya dua kilometer.
+      ar: |
+        الصفة (أو اسم مثل harga) + -nya = اسم المقدار: harga → harganya (سعره)، panjang → panjangnya (طوله)، berat → beratnya (وزنه).
+        تمامًا كالعربية: «طولُه كيلومتران» = Panjangnya dua kilometer.
+      en: |
+        Adjective (or a noun like harga) + -nya = the measure: harga → harganya (its price), panjang (long) → panjangnya (its length), berat (heavy) → beratnya (its weight).
+        Just like Arabic «طوله»: Panjangnya dua kilometer = It's two kilometres long.
+    examples:
+      - text: Tas kain ini harganya sepuluh ribu.
+        ar_eg: الشنطة القماش دي بعشرة آلاف.
+        ar: سعر هذه الحقيبة القماشية عشرة آلاف.
+        en: This cloth bag costs ten thousand.
+      - text: Pantai ini panjangnya dua kilometer.
+        ar_eg: الشط ده طوله ٢ كيلو.
+        ar: طول هذا الشاطئ كيلومتران.
+        en: This beach is two kilometres long.
+  - title: Katanya, sebaiknya, rupanya
+    grammar: id.clitic.nya
+    body:
+      ar_eg: |
+        كلمات ثابتة بـ -nya، بتسمعها كل شوية:
+        katanya = بيقولوا (سمعت إن…)، sebaiknya = الأحسن إن…، rupanya = طلع إن… (اكتشفت).
+      ar: |
+        ألفاظ ثابتة بـ-nya تسمعها كثيرًا:
+        katanya = يقولون / سمعتُ أن…، sebaiknya = الأفضل أن…، rupanya = تبيّن أن….
+      en: |
+        Set words with -nya you'll hear all the time:
+        katanya = people say / I hear that…, sebaiknya = it's best to…, rupanya = it turns out that….
+    examples:
+      - text: Katanya, di Gili tidak ada mobil.
+        ar_eg: بيقولوا إن مفيش عربيات في جيلي.
+        ar: يقولون إنه لا توجد سيارات في جيلي.
+        en: They say there are no cars on the Gilis.
+      - text: Sebaiknya kita membawa botol minum sendiri.
+        ar_eg: الأحسن نجيب إزازة مية بتاعتنا.
+        ar: الأفضل أن نحمل قارورة ماء خاصة بنا.
+        en: We'd better bring our own water bottles.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: katanya
+        ar_eg: بيقولوا إن…
+        ar: يقولون إن…
+        en: people say, I hear that
+      - text: sebaiknya
+        ar_eg: الأحسن إن…
+        ar: الأفضل أن…
+        en: it's best to
+      - text: rupanya
+        ar_eg: طلع إن…
+        ar: تبيّن أن…
+        en: it turns out
+      - text: kantong plastik
+        ar_eg: كيس بلاستيك
+        ar: كيس بلاستيكي
+        en: plastic bag
+      - text: sedotan
+        ar_eg: شفاطة
+        ar: مصّاصة
+        en: drinking straw
+      - text: daur ulang
+        ar_eg: إعادة تدوير
+        ar: إعادة تدوير
+        en: recycling, recycled
+    words: [katanya, sebaiknya, rupanya, kantong plastik, sedotan, daur ulang]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز تقول «بيقولوا إن مفيش عربيات في جيلي». تقول إيه؟
+      ar: تريد أن تقول «يقولون إنه لا توجد سيارات في جيلي». ماذا تقول؟
+      en: You want to say "They say there are no cars on the Gilis". Which one?
+    options: ["Sebaiknya di Gili tidak ada mobil.", "Rupanya di Gili tidak ada mobil.", "Katanya, di Gili tidak ada mobil."]
+    answer: 2
+    explain:
+      ar_eg: katanya = سمعت من الناس. rupanya = اكتشفت بنفسي، sebaiknya = الأحسن.
+      ar: katanya = سمعتُ من الناس، وrupanya = اكتشفتُ بنفسي، وsebaiknya = الأفضل.
+      en: katanya = I heard it from others; rupanya = I found out myself; sebaiknya = it's best.
+    words: [katanya]
+  - id: e03
+    type: listen
+    text: Sebaiknya kita membawa botol minum sendiri.
+    options: ["Katanya kita membawa botol minum sendiri.", "Sebaiknya kita membawa botol minum sendiri.", "Sebaiknya kita membeli botol minum sendiri."]
+    answer: 1
+    meaning:
+      ar_eg: الأحسن نجيب إزازة مية بتاعتنا.
+      ar: الأفضل أن نحمل قارورة ماء خاصة بنا.
+      en: We'd better bring our own water bottles.
+    words: [sebaiknya]
+  - id: e04
+    type: multiple_choice
+    question: Tas kain ini ___ sepuluh ribu.
+    options: [hargaku, harganya, harga-nya]
+    answer: 1
+    explain:
+      ar_eg: سعر الشنطة (حاجة تالتة) = harganya، لازقة من غير شَرطة.
+      ar: سعر الحقيبة (غائب) = harganya، متصلة بلا شرطة.
+      en: The bag's price is harganya, joined with no hyphen.
+  - id: e05
+    type: fill_blank
+    sentence: Saya tidak mau ___ plastik, terima kasih.
+    meaning:
+      ar_eg: مش عايز شفاطة بلاستيك، شكرًا.
+      ar: لا أريد مصّاصة بلاستيكية، شكرًا.
+      en: I don't want a plastic straw, thank you.
+    options: [sedotan, katanya, rupanya]
+    answers: [sedotan]
+    words: [sedotan]
+  - id: e06
+    type: fill_blank
+    sentence: Tas ini dari plastik ___.
+    meaning:
+      ar_eg: الشنطة دي من بلاستيك متدوّر.
+      ar: هذه الحقيبة من بلاستيك معاد تدويره.
+      en: This bag is made of recycled plastic.
+    options: [sebaiknya, sedotan, daur ulang]
+    answers: [daur ulang]
+    words: [daur ulang]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: طلع إن المحل ده مفيهوش أكياس بلاستيك.
+      ar: تبيّن أنه لا توجد أكياس بلاستيكية في هذا المحل.
+      en: It turns out there are no plastic bags in this shop.
+    answer: Rupanya di toko ini tidak ada kantong plastik.
+    alternatives: ["Rupanya tidak ada kantong plastik di toko ini."]
+    distractors: [dia, sedotan]
+    words: [rupanya, kantong plastik]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الأحسن مانستعملش أكياس بلاستيك.
+      ar: الأفضل ألّا نستعمل أكياسًا بلاستيكية.
+      en: We'd better not use plastic bags.
+    answers:
+      - Sebaiknya kita tidak memakai kantong plastik.
+      - Sebaiknya kita tidak memakai kantong plastik
+      - Sebaiknya kita jangan memakai kantong plastik.
+      - Sebaiknya kita tidak pakai kantong plastik.
+      - Sebaiknya kita jangan pakai kantong plastik.
+      - Sebaiknya kita tidak menggunakan kantong plastik.
+      - Sebaiknya kita jangan menggunakan kantong plastik.
+      - Sebaiknya kami tidak memakai kantong plastik.
+    words: [sebaiknya, kantong plastik]
+  - id: e09
+    type: speaking
+    text: Katanya, sedotan plastik dilarang di Gili.
+    meaning:
+      ar_eg: بيقولوا إن الشفاطات البلاستيك ممنوعة في جيلي.
+      ar: يقولون إن المصّاصات البلاستيكية ممنوعة في جيلي.
+      en: They say plastic straws are banned on the Gilis.
+    words: [katanya, sedotan]
+  - id: e10
+    type: dictation
+    text: Rupanya tas ini dari plastik daur ulang.
+    meaning:
+      ar_eg: طلع إن الشنطة دي من بلاستيك متدوّر.
+      ar: تبيّن أن هذه الحقيبة من بلاستيك معاد تدويره.
+      en: It turns out this bag is made of recycled plastic.
+    words: [rupanya, daur ulang]
+dialogue:
+  title: Di warung Senggigi
+  lines:
+    - speaker: Penjual
+      text: Mau pakai kantong plastik, Mas?
+      ar_eg: عايز كيس بلاستيك يا أستاذ؟
+      ar: هل تريد كيسًا بلاستيكيًا يا سيدي؟
+      en: Would you like a plastic bag?
+    - speaker: Mohamed
+      text: Tidak usah, terima kasih. Saya bawa tas kain. Berapa harganya?
+      ar_eg: لا مالوش لزوم، شكرًا. معايا شنطة قماش. بكام؟
+      ar: لا داعي، شكرًا، معي حقيبة قماشية. كم السعر؟
+      en: No need, thanks. I brought a cloth bag. How much is it?
+    - speaker: Penjual
+      text: Lima ribu. Mau sedotan juga?
+      ar_eg: خمسة آلاف. عايز شفاطة كمان؟
+      ar: خمسة آلاف. هل تريد مصّاصة أيضًا؟
+      en: Five thousand. Do you want a straw too?
+    - speaker: Mohamed
+      text: Tidak, terima kasih. Katanya, sedotan plastik tidak baik untuk penyu.
+      ar_eg: لأ، شكرًا. بيقولوا إن الشفاطات البلاستيك وحشة للسلاحف.
+      ar: لا، شكرًا. يقولون إن المصّاصات البلاستيكية مضرّة بالسلاحف.
+      en: No, thanks. They say plastic straws are bad for turtles.
+new_words:
+  - word: katanya
+    pos: adverb
+    ar_eg: بيقولوا إن…، سمعت إن…
+    ar: يقولون إن…
+    en: people say, reportedly
+  - word: sebaiknya
+    pos: adverb
+    ar_eg: الأحسن إن…
+    ar: الأفضل أن…
+    en: it's best to, you'd better
+  - word: rupanya
+    pos: adverb
+    ar_eg: طلع إن…
+    ar: تبيّن أن…
+    en: it turns out
+  - word: kantong plastik
+    pos: noun
+    ar_eg: كيس بلاستيك
+    ar: كيس بلاستيكي
+    en: plastic bag
+  - word: sedotan
+    pos: noun
+    ar_eg: شفاطة
+    ar: مصّاصة (للشرب)
+    en: drinking straw
+  - word: daur ulang
+    pos: noun
+    ar_eg: إعادة تدوير
+    ar: إعادة تدوير
+    en: recycling; recycled
+review:
+  status: draft
+  verified: false
