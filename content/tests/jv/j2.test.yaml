@@ -1,0 +1,552 @@
+schema: kabar.test/v1
+id: j2.test
+language: jv
+kind: level
+title:
+  ar_eg: اختبار مستوى J2 — ماديون
+  ar: اختبار مستوى J2 — ماديون
+  en: J2 level test — Madiun
+intro:
+  ar_eg: |
+    كمّلت الخط من Madiun لحد Ngawi! هنا هتتكلم عن العيلة والأكل، وتتعامل مع أرقام لحد الملايين، والساعة وأيام الـ pasaran، وتدّي أوامر بالنغوكو بأدب.
+    خد وقتك. السبيلنج العادي أو بتاع الشات، وبعلامات (é، è) أو من غيرها — كله مقبول.
+    ولو جاي من "Take a flight" عشان تعدّي J2، أهلًا بيك — نفس الأسئلة.
+  ar: |
+    أكملتَ الخط من Madiun إلى Ngawi! ستتحدث هنا عن العائلة والطعام، وتتعامل مع الأرقام حتى الملايين، والساعة وأيام الـ pasaran، وتُصدر أوامر بالنغوكو بلطف.
+    خذ وقتك. تُقبل التهجئة المعيارية أو تهجئة الدردشة، بالعلامات (é، è) أو بدونها.
+    وإن جئت من "Take a flight" لتتجاوز J2، فأهلًا بك؛ الأسئلة نفسها.
+  en: |
+    You've ridden the line from Madiun to Ngawi! Here you'll talk about family and food, handle numbers up to millions, tell the time and the pasaran days, and give friendly ngoko commands.
+    Take your time. Standard or chat spelling, with or without accents (é, è), is all accepted.
+    If you came through "Take a flight" to skip J2, welcome: these are the same questions.
+minutes: 30
+pass_mark: 0.75
+scoring: Score = points earned / points available (closed items 1 point unless set; translate items are graded against reference answers first, standard or chat spelling, with or without accents, then AI grade_answer; writing_task and speaking_task are graded by AI against their rubric, each criterion an equal share of the item's points). Pass at >= 0.75. Passing marks J2 complete and opens J3; the same rule applies when the test is taken as the "Take a flight" skip-ahead over J2. Below the mark, show the per-skill results and suggest the units behind the missed items, with no penalty and an open retry. Javanese items stay unverified until the learner approves them.
+sections:
+  - id: listening
+    skill: listening
+    title:
+      ar_eg: الاستماع
+      ar: الاستماع
+      en: Listening
+    instructions:
+      ar_eg: اسمع، وعيد براحتك، واختار اللي سمعته بالظبط أو اكتبه.
+      ar: استمع وأعِد كما تشاء، ثم اختر ما سمعته بالضبط أو اكتبه.
+      en: Listen, replay as you like, then pick exactly what you heard or write it.
+    items:
+      - id: t01
+        type: listen
+        text: Mbah putri lagi masak.
+        options: ["Mbah kakung lagi masak.", "Mbah putri lagi masak.", "Mbah putri lagi turu."]
+        answer: 1
+        words: [mbah putri, masak]
+      - id: t02
+        type: listen
+        text: Kabèh dadi satus seket ewu.
+        options: ["Kabèh dadi satus seket ewu.", "Kabèh dadi satus selawé ewu.", "Kabèh dadi seket ewu."]
+        answer: 0
+        words: [kabèh, dadi, seket]
+      - id: t03
+        type: listen
+        text: Saiki jam setengah wolu.
+        options: ["Saiki jam wolu.", "Saiki jam setengah pitu.", "Saiki jam setengah wolu."]
+        answer: 2
+        words: [jam, setengah]
+      - id: t04
+        type: listen
+        text: Dina iki Jemuwah Kliwon.
+        options: ["Dina iki Jemuwah Legi.", "Dina iki Jemuwah Kliwon.", "Sésuk Jemuwah Kliwon."]
+        answer: 1
+        words: [dina iki, Jemuwah, Kliwon]
+      - id: t05
+        type: listen
+        text: Tulung tukokna gula, ya.
+        options: ["Tulung tukokna gula, ya.", "Tulung jupukna gula, ya.", "Aja tuku gula, ya."]
+        answer: 0
+        words: [tulung, tukokna]
+      - id: t06
+        type: dictation
+        text: Bocah-bocah dolanan neng taman.
+        meaning:
+          ar_eg: العيال بيلعبوا في الجنينة.
+          ar: الأطفال يلعبون في الحديقة.
+          en: The children are playing in the park.
+        words: [bocah-bocah, dolanan, taman]
+  - id: reading
+    skill: reading
+    title:
+      ar_eg: القراية
+      ar: القراءة
+      en: Reading
+    instructions:
+      ar_eg: اقرا الحوارات والنص عن يوم Sari، وجاوب من اللي مكتوب.
+      ar: اقرأ الحوارات والنص عن يوم Sari، وأجب مما ورد فيها.
+      en: Read the dialogues and the text about Sari's day, and answer from what they say.
+    items:
+      - id: t07
+        type: multiple_choice
+        question: |
+          Bu Darmi: Pesen apa, Mas?
+          Mohamed: Sega pecel loro, Bu. Siji nganggo endhog.
+          Bu Darmi: Pedhes apa ora?
+          Mohamed: Aku sing pedhes. Sari ora pedhes, sambelé sithik wae.
+          Bu Darmi: Mangan kéné apa dibungkus?
+          Sari: Dibungkus, Bu. Karo es teh loro.
+        question_meaning:
+          ar_eg: مين اللي عايز أكله مش حرّاق؟
+          ar: مَن يريد طعامه غير حارّ؟
+          en: Who wants their food not spicy?
+        options: [Mohamed, Bu Darmi, Sari]
+        answer: 2
+        words: [pedhes, sithik]
+      - id: t08
+        type: multiple_choice
+        question: |
+          Bu Darmi: Pesen apa, Mas?
+          Mohamed: Sega pecel loro, Bu. Siji nganggo endhog.
+          Bu Darmi: Pedhes apa ora?
+          Mohamed: Aku sing pedhes. Sari ora pedhes, sambelé sithik wae.
+          Bu Darmi: Mangan kéné apa dibungkus?
+          Sari: Dibungkus, Bu. Karo es teh loro.
+        question_meaning:
+          ar_eg: هياكلوا عند Bu Darmi ولا هياخدوا الأكل تيك أواي؟
+          ar: هل سيأكلون عند Bu Darmi أم سيأخذون الطعام معهم؟
+          en: Are they eating at Bu Darmi's stall or taking it away?
+        options: ["Mangan kéné.", "Dibungkus."]
+        answer: 1
+        words: [dibungkus, kéné]
+      - id: t09
+        type: multiple_choice
+        question: |
+          Mohamed: Bu, bawang abang sekilo pira?
+          Bu Siti: Telung puluh ewu, Mas.
+          Mohamed: Wah, larang. Oleh kurang, Bu? Aku tuku telung kilo.
+          Bu Siti: Ya wis, selawé ewu.
+          Mohamed: Iki satus ewu, Bu.
+        question_meaning:
+          ar_eg: محمد دفع كام في الآخر عشان التلات كيلو؟
+          ar: كم دفع محمد في النهاية ثمنًا للكيلوغرامات الثلاثة؟
+          en: In the end, how much does Mohamed pay for the three kilos?
+        options: [sangang puluh ewu, pitung puluh lima ewu, satus ewu]
+        answer: 1
+        explain:
+          ar_eg: اتفقوا على selawé ewu (٢٥٫٠٠٠) للكيلو × ٣ = pitung puluh lima ewu (٧٥٫٠٠٠).
+          ar: اتفقا على selawé ewu (٢٥٫٠٠٠) للكيلو × ٣ = pitung puluh lima ewu (٧٥٫٠٠٠).
+          en: They agree on selawé ewu (25,000) a kilo × 3 = pitung puluh lima ewu (75,000).
+        words: [selawé, pitung puluh]
+      - id: t10
+        type: multiple_choice
+        question: |
+          Mohamed: Bu, bawang abang sekilo pira?
+          Bu Siti: Telung puluh ewu, Mas.
+          Mohamed: Wah, larang. Oleh kurang, Bu? Aku tuku telung kilo.
+          Bu Siti: Ya wis, selawé ewu.
+          Mohamed: Iki satus ewu, Bu.
+        question_meaning:
+          ar_eg: Bu Siti هترجّع لمحمد كام (susuk)؟
+          ar: كم ستعيد Bu Siti لمحمد من الباقي (susuk)؟
+          en: How much change (susuk) does Bu Siti give back?
+        options: [selawé ewu, limalas ewu, seket ewu]
+        answer: 0
+        words: [susuk, selawé]
+      - id: t11
+        type: multiple_choice
+        question: |
+          Saben dina Sari tangi jam setengah lima, terus salat Subuh. Jam enem Sari ngresiki omah, lan jam pitu sarapan karo Ibu. Awan Sari masak. Soré Sari nyirami kembang. Bengi Sari maca buku, terus turu jam sepuluh.
+        question_meaning:
+          ar_eg: Sari بتعمل إيه العصر (soré)؟
+          ar: ماذا تفعل Sari بعد الظهر (soré)؟
+          en: What does Sari do in the afternoon (soré)?
+        options: ["Masak.", "Maca buku.", "Nyirami kembang."]
+        answer: 2
+        words: [soré, nyirami]
+      - id: t12
+        type: multiple_choice
+        question: |
+          Saben dina Sari tangi jam setengah lima, terus salat Subuh. Jam enem Sari ngresiki omah, lan jam pitu sarapan karo Ibu. Awan Sari masak. Soré Sari nyirami kembang. Bengi Sari maca buku, terus turu jam sepuluh.
+        question_meaning:
+          ar_eg: Sari بتصحى الساعة كام؟
+          ar: متى تستيقظ Sari؟
+          en: What time does Sari wake up?
+        options: [jam lima, jam setengah lima, jam enem]
+        answer: 1
+        explain:
+          ar_eg: setengah lima = نص الطريق لخمسة، يعني ٤:٣٠ — زي الإندونيسي.
+          ar: setengah lima = منتصف الطريق إلى الخامسة، أي ٤:٣٠، كما في الإندونيسية.
+          en: setengah lima = halfway to five, i.e. 4:30, just as in Indonesian.
+        words: [tangi, setengah]
+      - id: t13
+        type: multiple_choice
+        question: sesuk jemuwah jam 4 sore iso?
+        question_meaning:
+          ar_eg: Dimas بعتلك الرسالة دي. أنهي جملة هي نفسها بالسبيلنج العادي؟
+          ar: أرسل Dimas هذه الرسالة. أيّ جملة هي نفسها بالتهجئة المعيارية؟
+          en: Dimas sends this message. Which option is the same sentence in standard spelling?
+        options:
+          - Wingi Jemuwah jam papat soré, isa?
+          - Sésuk Jemuwah jam papat esuk, isa?
+          - Sésuk Jemuwah jam papat soré, isa?
+        answer: 2
+        words: [sésuk, isa]
+  - id: vocabulary
+    skill: vocabulary
+    title:
+      ar_eg: الكلمات
+      ar: المفردات
+      en: Vocabulary
+    items:
+      - id: t14
+        type: match_pairs
+        pairs:
+          - text: pakdhe
+            ar_eg: عمّ / خال (أكبر من بابا أو ماما)
+            ar: العمّ أو الخال الأكبر من الوالد
+            en: parent's older brother
+          - text: bulik
+            ar_eg: عمّة / خالة (أصغر من بابا أو ماما)
+            ar: العمّة أو الخالة الأصغر من الوالد
+            en: parent's younger sister
+          - text: mbah kakung
+            ar_eg: جدّو
+            ar: الجدّ
+            en: grandfather
+          - text: putu
+            ar_eg: حفيد
+            ar: الحفيد
+            en: grandchild
+          - text: bojo
+            ar_eg: جوز / مراة
+            ar: الزوج أو الزوجة
+            en: husband / wife
+        words: [pakdhe, bulik, mbah kakung, putu, bojo]
+      - id: t15
+        type: match_pairs
+        pairs:
+          - text: pedhes
+            ar_eg: حرّاق
+            ar: حارّ
+            en: spicy
+          - text: legi
+            ar_eg: مسكّر، حلو
+            ar: حلو
+            en: sweet
+          - text: asin
+            ar_eg: مالح
+            ar: مالح
+            en: salty
+          - text: kecut
+            ar_eg: حامض
+            ar: حامض
+            en: sour
+          - text: pait
+            ar_eg: مُرّ
+            ar: مُرّ
+            en: bitter
+        words: [pedhes, legi, asin, kecut, pait]
+      - id: t16
+        type: match_pairs
+        pairs:
+          - text: rolas
+            ar_eg: اتناشر (12)
+            ar: اثنا عشر (12)
+            en: twelve (12)
+          - text: selikur
+            ar_eg: واحد وعشرين (21)
+            ar: واحد وعشرون (21)
+            en: twenty-one (21)
+          - text: selawé
+            ar_eg: خمسة وعشرين (25)
+            ar: خمسة وعشرون (25)
+            en: twenty-five (25)
+          - text: seket
+            ar_eg: خمسين (50)
+            ar: خمسون (50)
+            en: fifty (50)
+          - text: sewidak
+            ar_eg: ستين (60)
+            ar: ستون (60)
+            en: sixty (60)
+        words: [rolas, selikur, selawé, seket, sewidak]
+      - id: t17
+        type: fill_blank
+        sentence: Pecelé enak ___!
+        meaning:
+          ar_eg: البيتشل ده طعمه حلو بجد!
+          ar: البيتشل لذيذ حقًّا!
+          en: The pecel is really tasty!
+        options: [rada, kurang, tenan]
+        answers: [tenan]
+        words: [tenan]
+      - id: t18
+        type: multiple_choice
+        question: Kliwon → ?
+        question_meaning:
+          ar_eg: أنهي يوم pasaran بييجي بعد Kliwon؟
+          ar: أيّ يوم من أيام الـ pasaran يأتي بعد Kliwon؟
+          en: Which pasaran day comes after Kliwon?
+        options: [Pon, Legi, Wagé]
+        answer: 1
+        explain:
+          ar_eg: الدورة خمس أيام وبتلف — Legi، Pahing، Pon، Wagé، Kliwon، وبعدين Legi تاني.
+          ar: الدورة خمسة أيام تتكرر — Legi، Pahing، Pon، Wagé، Kliwon، ثم Legi من جديد.
+          en: The five-day cycle loops — Legi, Pahing, Pon, Wagé, Kliwon, then Legi again.
+        words: [pasaran, Legi, Kliwon]
+  - id: grammar
+    skill: grammar
+    title:
+      ar_eg: القواعد
+      ar: القواعد
+      en: Grammar
+    items:
+      - id: t19
+        type: multiple_choice
+        question: rega + -é / -né
+        question_meaning:
+          ar_eg: أنهي صيغة صح لـ "سعره / السعر"؟
+          ar: ما الصيغة الصحيحة لـ "سعره / السعر"؟
+          en: Which is the right form for "its price / the price"?
+        options: [regaé, regané, reganya]
+        answer: 1
+        explain:
+          ar_eg: بعد حرف متحرك (rega) بنحط -né؛ بعد ساكن (omah) بنحط -é.
+          ar: بعد الحرف الصائت (rega) نضيف -né، وبعد الصامت (omah) نضيف -é.
+          en: After a vowel (rega) add -né; after a consonant (omah) add -é.
+        words: [-né, rega]
+      - id: t20
+        type: multiple_choice
+        question: N- + sapu → ?
+        question_meaning:
+          ar_eg: حط N- على sapu (مقشة). يطلع إيه؟
+          ar: أضف N- إلى sapu (المكنسة). ماذا ينتج؟
+          en: Put N- on sapu (broom). What do you get?
+        options: [nyapu, napu, mapu]
+        answer: 0
+        words: [nyapu, N-]
+      - id: t21
+        type: fill_blank
+        sentence: Bukuné wis tak ___.
+        meaning:
+          ar_eg: الكتاب أنا قريته خلاص.
+          ar: لقد قرأتُ الكتاب.
+          en: I've already read the book.
+        options: [maca, waca]
+        answers: [waca]
+        words: [tak, waca]
+      - id: t22
+        type: multiple_choice
+        question_meaning:
+          ar_eg: '"كُل العيش!" (فيه مفعول). أنهي صح؟'
+          ar: '"كُلِ الخبز!" (مع مفعول به). أيّها الصحيح؟'
+          en: '"Eat the bread!" (with an object). Which is right?'
+        options: ["Mangana rotiné!", "Aja mangan rotiné!", "Panganen rotiné!"]
+        answer: 2
+        explain:
+          ar_eg: من غير مفعول → mangana. مع مفعول → panganen (من pangan + -en).
+          ar: بلا مفعول → mangana، ومع مفعول → panganen (من pangan + -en).
+          en: No object → mangana; with an object → panganen (pangan + -en).
+        words: [panganen, mangana]
+      - id: t23
+        type: fill_blank
+        sentence: ___ lali, ya!
+        meaning:
+          ar_eg: ما تنساش، ماشي!
+          ar: لا تنسَ، حسنًا!
+          en: Don't forget, OK!
+        options: [Dudu, Aja, Ora]
+        answers: [Aja]
+        words: [aja, lali]
+      - id: t24
+        type: fill_blank
+        sentence: Aku ___ kowé neng stasiun.
+        meaning:
+          ar_eg: أنا مستنيك في المحطة.
+          ar: أنا أنتظرك في المحطة.
+          en: I'm waiting for you at the station.
+        options: [ngenteni, enteni, nekani]
+        answers: [ngenteni]
+        explain:
+          ar_eg: enteni أمر (استناني!)؛ ngenteni الفعل العادي بـ N- (بستنى).
+          ar: enteni صيغة أمر (انتظرني!)، أما ngenteni فهو الفعل العادي بالسابقة N- (أنتظر).
+          en: enteni is the command (Wait for me!); ngenteni is the ordinary N- verb (I'm waiting for).
+        words: [ngenteni]
+      - id: t25
+        type: multiple_choice
+        question: 8:45 = ?
+        question_meaning:
+          ar_eg: إزاي تقول الساعة ٨:٤٥؟
+          ar: كيف تقول الساعة ٨:٤٥؟
+          en: How do you say 8:45?
+        options: [setengah sanga, jam wolu luwih seprapat, jam sanga kurang seprapat]
+        answer: 2
+        words: [kurang, seprapat]
+      - id: t26
+        type: fill_blank
+        sentence: Ayo ___ neng Benteng Pendem!
+        meaning:
+          ar_eg: يلا نتمشّى في Benteng Pendem!
+          ar: هيّا نتنزّه في Benteng Pendem!
+          en: Let's take a stroll at Benteng Pendem!
+        options: [bola-bali, mlaku-mlaku, bocah-bocah]
+        answers: [mlaku-mlaku]
+        words: [mlaku-mlaku]
+      - id: t27
+        type: fill_blank
+        sentence: Panganané enak, ___ rada larang.
+        meaning:
+          ar_eg: الأكل حلو، بس غالي شوية.
+          ar: الطعام لذيذ، لكنه غالٍ قليلًا.
+          en: The food is tasty, but a bit expensive.
+        options: [merga, nanging, terus]
+        answers: [nanging]
+        words: [nanging]
+      - id: t28
+        type: fill_blank
+        sentence: Wingi Rebo, dina iki ___.
+        meaning:
+          ar_eg: امبارح كان الأربع، النهارده ... (اكتب اليوم)
+          ar: أمس كان الأربعاء، واليوم ... (اكتب اليوم)
+          en: Yesterday was Wednesday, today is … (type the day)
+        answers: [Kemis, kemis]
+        words: [Kemis, wingi]
+      - id: t29
+        type: build_sentence
+        source:
+          ar_eg: كل يوم بصحى الساعة خمسة.
+          ar: أستيقظ كل يوم في الساعة الخامسة.
+          en: Every day I wake up at five.
+        answer: Saben dina aku tangi jam lima.
+        alternatives: ["Aku tangi jam lima saben dina."]
+        distractors: [turu, wingi]
+        words: [saben dina, tangi]
+  - id: writing
+    skill: writing
+    title:
+      ar_eg: الكتابة
+      ar: الكتابة
+      en: Writing
+    instructions:
+      ar_eg: اكتب بالنغوكو. السبيلنج العادي أو بتاع الشات، وبعلامات أو من غيرها — كله مقبول.
+      ar: اكتب بالنغوكو. تُقبل التهجئة المعيارية أو تهجئة الدردشة، بالعلامات أو بدونها.
+      en: Write in ngoko. Standard or chat spelling, with or without accents, is all fine.
+    items:
+      - id: t30
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: بكرة أنا رايح Ponorogo.
+          ar: غدًا سأذهب إلى Ponorogo.
+          en: Tomorrow I'm going to Ponorogo.
+        answers:
+          - Sésuk aku arep neng Ponorogo.
+          - Sésuk aku arep neng Ponorogo
+          - Sesuk aku arep neng Ponorogo.
+          - Sesuk aku arep neng Ponorogo
+          - Sésuk aku arep nang Ponorogo.
+          - Sésuk aku arep nang Ponorogo
+          - Sesuk aku arep nang Ponorogo.
+          - Sesuk aku arep nang Ponorogo
+          - Sésuk aku arep menyang Ponorogo.
+          - Sésuk aku arep menyang Ponorogo
+          - Sesuk aku arep menyang Ponorogo.
+          - Sesuk aku arep menyang Ponorogo
+          - Aku arep neng Ponorogo sésuk.
+          - Aku arep neng Ponorogo sésuk
+          - Aku arep neng Ponorogo sesuk.
+          - Aku arep neng Ponorogo sesuk
+        words: [sésuk, arep]
+      - id: t31
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: أخويا الكبير بيشتغل في سورابايا.
+          ar: أخي الأكبر يعمل في سورابايا.
+          en: My older brother works in Surabaya.
+        answers:
+          - Masku nyambut gawé neng Suroboyo.
+          - Masku nyambut gawé neng Suroboyo
+          - Masku nyambut gawe neng Suroboyo.
+          - Masku nyambut gawe neng Suroboyo
+          - Masku nyambut gawé nang Suroboyo.
+          - Masku nyambut gawé nang Suroboyo
+          - Masku nyambut gawe nang Suroboyo.
+          - Masku nyambut gawe nang Suroboyo
+          - Masku nyambut gawé neng Surabaya.
+          - Masku nyambut gawé neng Surabaya
+          - Masku nyambut gawe neng Surabaya.
+          - Masku nyambut gawe neng Surabaya
+          - Masku nyambut gawé nang Surabaya.
+          - Masku nyambut gawé nang Surabaya
+          - Masku nyambut gawe nang Surabaya.
+          - Masku nyambut gawe nang Surabaya
+        words: [mas, nyambut gawé]
+      - id: t32
+        type: translate
+        direction: from_target
+        source_text: Tulung tukokna gula, ya. Aja lali!
+        answers_meaning:
+          ar_eg: ["ممكن تشتريلي سكر؟ ما تنساش!", "من فضلك اشتريلي سكر، ماشي؟ ما تنساش!", "اشتريلي سكر لو سمحت. ما تنساش!"]
+          ar: ["من فضلك اشترِ لي سكرًا. لا تنسَ!", "هل يمكنك أن تشتري لي سكرًا؟ لا تنسَ!"]
+          en:
+            - Could you buy me some sugar? Don't forget!
+            - Please buy me some sugar, OK? Don't forget!
+            - Please buy some sugar for me. Don't forget!
+        words: [tulung, tukokna, aja, lali]
+      - id: t33
+        type: writing_task
+        points: 4
+        prompt:
+          ar_eg: 'اكتب ٦–٨ جمل بالنغوكو: عرّف بعيلتك (مين فيها وعايشين فين)، واحكي يومك العادي بالساعات (صحيت إمتى، أكلت إيه، عملت إيه الصبح والعصر وبالليل).'
+          ar: 'اكتب ٦–٨ جمل بالنغوكو: عرّف بعائلتك (مَن فيها وأين يعيشون)، وصِف يومك المعتاد مع الأوقات (متى تستيقظ، وماذا تأكل، وماذا تفعل صباحًا وبعد الظهر وليلًا).'
+          en: 'Write 6–8 sentences in ngoko: introduce your family (who they are and where they live) and describe your usual day with times (when you wake up, what you eat, what you do in the morning, afternoon and evening).'
+        rubric:
+          - Names family members with the right kinship words and possessives (bapakku, masku, mbakyuku, adhiné …).
+          - Gives a clear routine with times (jam lima, jam setengah wolu …) and time words (esuk, awan, soré, bengi, saben dina).
+          - Uses J2 verb forms correctly (N- verbs like nulis / ngombé / nyirami, -i verbs) and links sentences with lan / terus / nanging.
+          - Stays in ngoko with no Indonesian words where J1–J2 Javanese exists; 6–8 sentences.
+        sample: |
+          Bapak lan ibuku manggon neng Kairo. Aku duwé mbakyu siji lan adhi loro.
+          Aku ora duwé mas, nanging pakdheku nyambut gawé neng Aswan.
+          Saben dina aku tangi jam lima, terus salat Subuh.
+          Jam pitu aku sarapan lan ngombé teh anget.
+          Jam wolu aku mangkat kuliah. Awan aku mulih lan masak.
+          Soré aku sinau basa Jawa. Bengi aku maca buku, terus turu jam sepuluh.
+        words: [kulawarga, saben dina]
+  - id: speaking
+    skill: speaking
+    title:
+      ar_eg: الكلام
+      ar: المحادثة
+      en: Speaking
+    instructions:
+      ar_eg: اتكلم براحتك. المهم إن صاحبك من Madiun يفهمك.
+      ar: تكلّم بارتياح. المهم أن يفهمك صديقك من Madiun.
+      en: Speak at ease. What matters is that your friend from Madiun understands you.
+    items:
+      - id: t34
+        type: speaking
+        text: Sésuk Jemuwah jam papat soré, isa?
+        meaning:
+          ar_eg: بكرة الجمعة الساعة أربعة العصر، ينفع؟
+          ar: غدًا الجمعة في الرابعة عصرًا، هل يناسبك؟
+          en: Tomorrow, Friday, at 4 p.m. — can you?
+        words: [sésuk, soré, isa]
+      - id: t35
+        type: speaking_task
+        points: 4
+        prompt:
+          ar_eg: 'Dimas عايزك تيجي معاه تتفرج على Reog. اتكلم حوالي دقيقة ونص: اسأل الحفلة إمتى (يوم، pasaran، ساعة)، قول إمتى مش فاضي وليه، واقترح ميعاد ومكان تتقابلوا فيه، وبعدين احكي باختصار عملت إيه في آخر ويك إند.'
+          ar: 'يدعوك Dimas لمشاهدة Reog. تحدّث نحو دقيقة ونصف: اسأل متى العرض (اليوم، والـ pasaran، والساعة)، وقل متى لا تستطيع ولماذا، واقترح موعدًا ومكانًا للقاء، ثم احكِ باختصار ما فعلته في عطلة نهاية الأسبوع الماضية.'
+          en: 'Dimas invites you to watch Reog. Talk for about a minute and a half: ask when it is (day, pasaran, time), say when you can''t make it and why, suggest a time and a meeting place, then briefly tell what you did last weekend.'
+        rubric:
+          - Asks and answers about time with the right forms (jam pira, setengah …, kurang / luwih seprapat, soré / bengi) and days with pasaran.
+          - Turns down or accepts politely with a reason (aku ora isa, merga …) and proposes a plan (ketemu neng ngarep …).
+          - Tells a short weekend story with reduplication and linking words (dolan-dolan, mlaku-mlaku, terus, nanging).
+          - Speaks in ngoko a Madiun listener follows easily; pauses are fine.
+        sample: |
+          Reogé kapan, Dimas? Setu Pon, jam wolu bengi? Jemuwah aku ora isa, merga aku Jumatan lan sinau.
+          Setu isa! Ketemu jam setengah wolu neng ngarep alun-alun, ya.
+          Minggu wingi aku dolan-dolan neng Ngawi karo kancaku. Esuk mlaku-mlaku neng Benteng Pendem, terus ngombé es dawet. Apik tenan, nanging puanas!
+        words: [ketemu, dolan-dolan]
+review:
+  status: draft
+  verified: false
