@@ -20,10 +20,8 @@ use kabar_core::locale::{UiLanguage, format_number};
 use crate::i18n::Msg;
 use crate::{Db, Ui};
 
-// TODO: switch to curriculum/*.yaml once the curriculum PR lands.
-const CURRICULUM_ID: &str = include_str!("../assets/fixtures/curriculum-id.yaml");
-// TODO: switch to curriculum/*.yaml once the curriculum PR lands.
-const CURRICULUM_JV: &str = include_str!("../assets/fixtures/curriculum-jv.yaml");
+const CURRICULUM_ID: &str = include_str!("../../../curriculum/indonesian.yaml");
+const CURRICULUM_JV: &str = include_str!("../../../curriculum/javanese.yaml");
 
 const JOURNEY_CSS: &str = include_str!("../assets/journey.css");
 const PAN_ZOOM_JS: &str = include_str!("../assets/journey.js");
@@ -717,9 +715,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn fixtures_parse_and_lay_out() {
+    fn curricula_parse_and_lay_out() {
         let r = ROUTES.as_ref().unwrap();
-        assert_eq!(r.id.levels.len(), 2);
+        assert_eq!(r.id.levels.len(), 7);
+        assert_eq!(r.jv.levels.len(), 6);
         assert_eq!(r.id_map.style, RouteStyle::Islands);
         assert_eq!(r.jv_map.style, RouteStyle::Rail);
         assert!(r.jv.unverified());
