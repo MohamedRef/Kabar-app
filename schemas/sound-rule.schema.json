@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SoundRule",
+  "description": "A regular sound change from Arabic, e.g. ف → p.",
+  "type": "object",
+  "properties": {
+    "examples": {
+      "description": "Indonesian words that show the rule; each must exist in the dataset.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "explanation": {
+      "$ref": "#/$defs/Trilingual"
+    },
+    "from": {
+      "description": "Arabic side, e.g. `ف`.",
+      "type": "string"
+    },
+    "id": {
+      "description": "Stable snake_case id referenced by `BridgeEntry::sound_rules`.",
+      "type": "string"
+    },
+    "to": {
+      "description": "Indonesian side, e.g. `p`.",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "from",
+    "to",
+    "explanation",
+    "examples"
+  ],
+  "$defs": {
+    "Trilingual": {
+      "description": "The same text in the three explanation voices (§11).",
+      "type": "object",
+      "properties": {
+        "ar": {
+          "description": "Modern Standard Arabic.",
+          "type": "string"
+        },
+        "arz": {
+          "description": "Egyptian colloquial Arabic (بالمصري).",
+          "type": "string"
+        },
+        "en": {
+          "description": "English.",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "arz",
+        "ar",
+        "en"
+      ]
+    }
+  }
+}

@@ -1,0 +1,74 @@
+schema: kabar.grammar/v1
+id: id.intensifier.basic
+language: id
+level: bipa1
+title:
+  target: sangat, sekali, banget, amat
+  en: Very
+  ar_eg: أوي / جدًا
+  ar: ألفاظ التوكيد «جدًا»
+summary:
+  ar_eg: sangat قبل الصفة، sekali بعدها، banget بعدها في الكلام العادي. كلهم معناهم «أوي».
+  ar: sangat قبل الصفة، وsekali بعدها، وbanget بعدها في العامية؛ وكلها بمعنى «جدًا».
+  en: sangat goes before the adjective, sekali after it, banget after it in casual speech — all mean "very".
+pattern:
+  - sangat + adjective
+  - adjective + sekali
+  - adjective + banget (informal)
+explanation:
+  ar_eg: |
+    ٣ طرق لـ«أوي»:
+    - sangat قبل الصفة: sangat enak = حلو جدًا (أرسمي شوية).
+    - sekali بعد الصفة: enak sekali = حلو أوي (عادية ومؤدبة).
+    - banget بعد الصفة: enak banget = حلو أوووي (عامية، الشات مليان بيها: bgt).
+    وفيه amat (قديمة/أدبية) وterlalu = «زيادة عن اللزوم» (هتيجي في BIPA 2).
+    ماتحطش sangat وsekali مع بعض في الكتابة: «sangat enak sekali» غلط في القواعد الرسمية، رغم إن الناس بتقولها.
+  ar: |
+    ثلاث طرق للتعبير عن «جدًا»:
+    - sangat قبل الصفة: sangat enak (أكثر رسمية).
+    - sekali بعدها: enak sekali.
+    - banget بعدها في العامية: enak banget، وتُكتب في المحادثات bgt.
+    وهناك amat (أدبية)، وterlalu بمعنى «أكثر من اللازم».
+    ولا يُجمع بين sangat وsekali في الأسلوب الفصيح.
+  en: |
+    Three ways to say "very":
+    - sangat before: sangat enak (a bit formal).
+    - sekali after: enak sekali (neutral, polite).
+    - banget after: enak banget (casual; chats write bgt).
+    amat is literary; terlalu means "too" (BIPA 2).
+    Don't combine sangat … sekali in writing ("sangat enak sekali" is frowned on, though people say it).
+examples:
+  - text: Pemandangannya indah sekali.
+    en: The view is very beautiful.
+    ar_eg: المنظر جميل أوي.
+    ar: المنظر جميل جدًا.
+  - text: Bali sangat terkenal.
+    en: Bali is very famous.
+    ar_eg: بالي مشهورة جدًا.
+    ar: بالي مشهورة جدًا.
+  - text: Which is, gue literally capek banget.
+    en: I mean, I'm literally so tired. (Jakarta slang + English)
+    ar_eg: يعني بجد أنا تعبان أوي.
+    ar: أعني أنني متعب جدًا حرفيًا.
+    register: informal
+  - text: mahal bgt sih
+    en: That's so expensive. (chat)
+    ar_eg: غالي أوي بقى.
+    ar: غالٍ جدًا.
+    register: chat
+mistakes:
+  - wrong: enak sangat
+    right: sangat enak / enak sekali
+    why:
+      ar_eg: sangat قبل الصفة بس.
+      ar: sangat تتقدم على الصفة.
+      en: sangat only goes before.
+arabic_bridge:
+  ar_eg: sekali وbanget بييجوا بعد الصفة زي «حلو أوي» بالظبط، فابدأ بيهم؛ وsangat قبل الصفة للكلام الأرسمي.
+  ar: sekali وbanget تأتيان بعد الصفة كـ«جميل جدًا».
+  en: sekali / banget follow the adjective like «حلو أوي».
+tags: [adverb, adjective]
+see_also: [id.adverb.degree]
+review:
+  status: draft
+  verified: false

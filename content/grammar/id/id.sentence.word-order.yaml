@@ -1,0 +1,82 @@
+schema: kabar.grammar/v1
+id: id.sentence.word-order
+language: id
+level: bipa1
+title:
+  target: S-P-O-K (Subjek, Predikat, Objek, Keterangan)
+  en: Basic sentence order (S-P-O-K)
+  ar_eg: ترتيب الجملة (فاعل، فعل، مفعول، ظرف)
+  ar: ترتيب الجملة (المسند إليه، المسند، المفعول، الظرف)
+summary:
+  ar_eg: "الجملة الإندونيسية: الفاعل + الفعل + المفعول + الظرف (مكان/زمان). والظرف ممكن يروح الأول."
+  ar: "الجملة: مسند إليه + مسند + مفعول + ظرف، ويجوز تقديم الظرف."
+  en: Subject + predicate + object + adverbial (place / time); the adverbial may move to the front.
+pattern:
+  - S + P (+ O) (+ K)
+  - K, S + P (+ O)
+explanation:
+  ar_eg: |
+    كتب النحو الإندونيسي بتسميها SPOK:
+    S (subjek) = الفاعل / المبتدأ، P (predikat) = الفعل أو الخبر، O (objek) = المفعول، K (keterangan) = الظرف (مكان، زمان، طريقة).
+    Saya (S) membeli (P) buku (O) di Gramedia (K) = أنا اشتريت كتاب من جراميديا.
+    - الظرف بيتنقل للأول عادي: Kemarin, saya membeli buku.
+    - المفعول لازم بعد الفعل على طول.
+    - وفيه Pel (pelengkap = مكمّل) بعد أفعال زي belajar: Saya belajar bahasa Indonesia (S-P-Pel).
+    الترتيب ده هو اللي هيخليك تفهم أي جملة طويلة: دوّر على الفعل الأول.
+  ar: |
+    تسميه كتب النحو الإندونيسي SPOK:
+    S المسند إليه، P المسند (فعلًا كان أو خبرًا)، O المفعول، K الظرف (مكان أو زمان أو حال).
+    Saya (S) membeli (P) buku (O) di Gramedia (K).
+    - يجوز تقديم الظرف: Kemarin, saya membeli buku.
+    - ويلزم المفعول الفعل مباشرة.
+    - وثمة Pel (المكمّل) بعد أفعال مثل belajar: Saya belajar bahasa Indonesia.
+    ومفتاح فهم الجملة الطويلة: ابحث عن المسند أولًا.
+  en: |
+    Indonesian grammars call it SPOK:
+    S (subjek) = subject, P (predikat) = verb or predicate, O (objek) = object, K (keterangan) = adverbial (place, time, manner).
+    Saya (S) membeli (P) buku (O) di Gramedia (K) = I bought a book at Gramedia.
+    - The adverbial can move to the front: Kemarin, saya membeli buku.
+    - The object stays right after the verb.
+    - Some verbs take a complement (Pel): Saya belajar bahasa Indonesia (S-P-Pel).
+    To decode a long sentence, find the predicate first.
+examples:
+  - text: Saya membeli buku di Gramedia.
+    breakdown: Saya (S) · membeli (P) · buku (O) · di Gramedia (K)
+    en: I bought a book at Gramedia.
+    ar_eg: اشتريت كتاب من جراميديا.
+    ar: اشتريت كتابًا من غراميديا.
+  - text: Kemarin kami naik kapal ke Pulau Seribu.
+    breakdown: Kemarin (K) · kami (S) · naik (P) · kapal (O) · ke Pulau Seribu (K)
+    en: Yesterday we took a boat to the Thousand Islands.
+    ar_eg: امبارح ركبنا مركب لجزر الألف.
+    ar: أمس ركبنا قاربًا إلى جزر الألف.
+  - text: Dia belajar bahasa Arab.
+    en: He/She studies Arabic.
+    ar_eg: هو بيتعلم عربي.
+    ar: يدرس العربية.
+  - text: Ibu memasak nasi di dapur setiap pagi.
+    en: Mother cooks rice in the kitchen every morning.
+    ar_eg: ماما بتطبخ رز في المطبخ كل يوم الصبح.
+    ar: تطبخ الأم الأرز في المطبخ كل صباح.
+mistakes:
+  - wrong: Saya buku membeli.
+    right: Saya membeli buku.
+    why:
+      ar_eg: المفعول بعد الفعل.
+      ar: المفعول بعد الفعل.
+      en: The object follows the verb.
+  - wrong: Membeli saya buku. (as a statement)
+    right: Saya membeli buku.
+    why:
+      ar_eg: العربي بيبدأ بالفعل كتير («اشتريت»)، بس الإندونيسي بيبدأ بالفاعل.
+      ar: الجملة الفعلية العربية تبدأ بالفعل، أما الإندونيسية فتبدأ بالفاعل.
+      en: Arabic often starts with the verb; Indonesian starts with the subject.
+arabic_bridge:
+  ar_eg: "زي المصري «أنا اشتريت كتاب امبارح»: فاعل ثم فعل ثم مفعول. اللي بيتلخبط بس اللي واخد على الفصحى «اشتريتُ كتابًا»."
+  ar: الترتيب يوافق الجملة الاسمية الخبرية «أنا اشتريت كتابًا»، لا الجملة الفعلية.
+  en: Matches Egyptian «أنا اشتريت كتاب» (SVO), not Classical verb-first order.
+tags: [sentence, word-order]
+see_also: [id.sentence.no-copula, id.noun-phrase.order]
+review:
+  status: draft
+  verified: false

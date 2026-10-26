@@ -1,0 +1,82 @@
+schema: kabar.grammar/v1
+id: id.aspect.markers
+language: id
+level: bipa1
+title:
+  target: sudah, belum, sedang, akan, masih, baru
+  en: Time without tenses (aspect words)
+  ar_eg: الزمن من غير تصريف (sudah، belum، sedang، akan)
+  ar: الدلالة على الزمن بلا تصريف
+summary:
+  ar_eg: "الفعل مابيتغيرش أبدًا. بتحط كلمة قبله: sudah = خلاص عمل، belum = لسه ماعملش، sedang = بيعمل دلوقتي، akan = هيعمل."
+  ar: "لا يتصرف الفعل، وتُستعمل قبله ألفاظ: sudah للتمام، وbelum لعدمه بعدُ، وsedang للحال، وakan للاستقبال."
+  en: Verbs never change; time words before them do the job — sudah (already), belum (not yet), sedang (in the middle of), akan (will).
+pattern:
+  - subject + sudah / belum / sedang (lagi) / akan (mau) / masih / baru + verb
+  - "Sudah …? → Sudah. / Belum."
+explanation:
+  ar_eg: |
+    مفيش ماضي ولا مضارع في الفعل نفسه: makan = أكل / بياكل / هياكل. الكلمات دي بتوضح:
+    - sudah (sdh / udah) = خلاص / بالفعل: Saya sudah makan = أنا كلت خلاص.
+    - belum = لسه (ماحصلش): Saya belum makan = لسه ماكلتش. وده الرد المؤدب بدل tidak: «Sudah menikah?» — «Belum» (لسه، يعني مش «لأ» نهائية).
+    - sedang / lagi = دلوقتي، في النص: Saya sedang membaca buku = بقرا كتاب دلوقتي. (lagi عامية)
+    - akan / mau = هـ / حـ: Saya akan pergi besok = هسافر بكرة. mau في الكلام العادي.
+    - masih = لسه (مستمر): Dia masih tidur = لسه نايم.
+    - baru = لسه حالًا: Saya baru datang = لسه جاي حالًا.
+    ولو فيه كلمة زمن زي kemarin (امبارح) مش محتاج sudah: Kemarin saya ke pasar.
+  ar: |
+    لا يدل الفعل على الزمن بصيغته: makan = أكل / يأكل / سيأكل، وتحدده هذه الألفاظ:
+    - sudah = قد (تمام الفعل): Saya sudah makan = قد أكلتُ.
+    - belum = لمّا / لم ... بعدُ: Saya belum makan = لمّا آكل. وهو الجواب المؤدب بدل tidak.
+    - sedang (وفي العامية lagi) = يفعل الآن: Saya sedang membaca buku.
+    - akan (وفي العامية mau) = سـ / سوف: Saya akan pergi besok.
+    - masih = ما زال: Dia masih tidur.
+    - baru = للتو: Saya baru datang.
+    وإذا وُجد ظرف زمان كـ kemarin استُغني عن sudah.
+  en: |
+    The verb itself has no tense: makan = ate / eat / will eat. These words add time:
+    - sudah (sdh, udah) = already: Saya sudah makan = I've eaten.
+    - belum = not yet: Saya belum makan = I haven't eaten yet. It's the polite answer instead of tidak: "Sudah menikah?" — "Belum" (not yet — not a flat no).
+    - sedang / lagi = in the middle of: Saya sedang membaca buku = I'm reading a book (lagi is casual).
+    - akan / mau = will / going to: Saya akan pergi besok.
+    - masih = still: Dia masih tidur = He's still asleep.
+    - baru = just: Saya baru datang = I've just arrived.
+    With a time word like kemarin (yesterday), no marker is needed: Kemarin saya ke pasar.
+examples:
+  - text: Saya sedang membaca buku.
+    en: I'm reading a book.
+    ar_eg: أنا بقرا كتاب دلوقتي.
+    ar: أنا أقرأ كتابًا الآن.
+  - text: Kamu sudah makan? — Belum.
+    en: Have you eaten? — Not yet.
+    ar_eg: كلت؟ — لسه.
+    ar: هل أكلت؟ — ليس بعد.
+  - text: Kami akan ke Bali bulan depan.
+    en: We'll go to Bali next month.
+    ar_eg: هنروح بالي الشهر الجاي.
+    ar: سنذهب إلى بالي الشهر القادم.
+  - text: Dia masih di kantor.
+    en: He/She is still at the office.
+    ar_eg: لسه في المكتب.
+    ar: ما زال في المكتب.
+  - text: udh smp blm?
+    en: Have you arrived yet? (chat — sudah sampai belum?)
+    ar_eg: وصلت ولا لسه؟
+    ar: هل وصلت أم ليس بعد؟
+    register: chat
+mistakes:
+  - wrong: Sudah menikah? — Tidak.
+    right: Belum.
+    why:
+      ar_eg: tidak هنا معناها «لأ ومش ناوي»، وbelum هي الرد الطبيعي المؤدب.
+      ar: tidak توحي بالنفي القاطع، وbelum هو الجواب المهذب المعتاد.
+      en: tidak sounds like "never"; belum is the natural polite answer.
+arabic_bridge:
+  ar_eg: sudah ≈ «خلاص / قد»، belum ≈ «لسه»، sedang ≈ «بـ» في «بياكل»، akan ≈ «هـ» في «هياكل». بالظبط زي ما المصري بيحط حرف قدام الفعل.
+  ar: sudah ≈ «قد»، belum ≈ «لمّا»، akan ≈ «سـ / سوف»؛ أدوات منفصلة تسبق الفعل كما تسبقه السين وقد.
+  en: sudah ≈ قد / «خلاص», belum ≈ لمّا / «لسه», sedang ≈ Egyptian «بـ», akan ≈ «هـ» / سـ — particles before the verb, as in Arabic.
+tags: [aspect, time, verb]
+see_also: [id.aspect.pernah, id.time.sequence, id.negation.tidak-bukan]
+review:
+  status: draft
+  verified: false

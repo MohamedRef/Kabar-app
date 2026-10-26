@@ -1,0 +1,82 @@
+schema: kabar.grammar/v1
+id: id.question.apa
+language: id
+level: bipa1
+title:
+  target: Apa? · Apa kabar? · Apakah …?
+  en: "apa: 'what' and the yes/no question marker"
+  ar_eg: "apa: «إيه؟» وأداة سؤال «هل»"
+  ar: "apa: «ماذا؟» وأداة الاستفهام «هل»"
+summary:
+  ar_eg: apa يعني «إيه / ما»، ولو جت في أول جملة بتبقى زي «هل»، وapakah هي النسخة الرسمية.
+  ar: apa بمعنى «ما / ماذا»، وفي أول الجملة تعمل عمل «هل»، وapakah صيغتها الرسمية.
+  en: apa means "what"; at the start of a sentence it turns a statement into a yes/no question, and apakah is the formal version.
+pattern:
+  - Apa + noun/verb …? (what …?)
+  - Apa / Apakah + statement? (yes/no question)
+  - statement + ? (rising intonation, informal)
+explanation:
+  ar_eg: |
+    apa ليها شغلتين:
+    ١) «إيه؟»: Ini apa? = ده إيه؟ — Kamu makan apa? = بتاكل إيه؟ لاحظ إن كلمة السؤال ممكن تيجي في الآخر عادي جدًا.
+    ٢) أداة «هل»: لو حطيت apa في أول جملة عادية بقت سؤال جوابه «أيوه / لأ»: Apa kamu lapar? = إنت جعان؟
+       في الكتابة والكلام الرسمي بيستخدموا apakah: Apakah Anda dari Mesir? = هل حضرتك من مصر؟
+       وفي الكلام اليومي ممكن تشيلها خالص وتسأل بنبرة الصوت: Kamu lapar? ↗
+    الرد: ya / iya = أيوه، tidak / nggak = لأ (والتفاصيل في درس النفي).
+    و«Apa kabar?» حرفيًا «إيه الخبر؟» يعني «إزيك؟». الرد: Baik / Kabar baik = كويس، الحمد لله.
+  ar: |
+    لـ apa وظيفتان:
+    ١) أداة استفهام عن الشيء «ما / ماذا»: Ini apa? = ما هذا؟ — Kamu makan apa? = ماذا تأكل؟ ويجوز أن تأتي في آخر الجملة.
+    ٢) أداة استفهام تصديقي بمعنى «هل» إذا تصدّرت جملة خبرية: Apa kamu lapar? = هل أنت جائع؟
+       وفي الأسلوب الرسمي تُستعمل apakah: Apakah Anda dari Mesir? = هل أنت من مصر؟
+       وفي الكلام اليومي قد تُحذف الأداة ويُكتفى بنغمة الاستفهام.
+    الجواب: ya / iya = نعم، tidak = لا.
+    وعبارة «Apa kabar?» معناها الحرفي «ما الخبر؟» أي «كيف حالك؟»، وجوابها: Baik / Kabar baik = بخير.
+  en: |
+    apa does two jobs:
+    1) "what": Ini apa? = What is this? — Kamu makan apa? = What are you eating? The question word can sit at the end.
+    2) yes/no marker: put apa in front of a statement and it becomes a yes/no question: Apa kamu lapar? = Are you hungry?
+       Formal speech and writing use apakah: Apakah Anda dari Mesir? = Are you from Egypt?
+       Everyday speech often drops it and just uses rising intonation: Kamu lapar? ↗
+    Answers: ya / iya = yes; tidak / nggak = no.
+    "Apa kabar?" literally "what news?" means "How are you?"; reply Baik / Kabar baik = fine.
+examples:
+  - text: Apa kabar?
+    breakdown: apa (what) + kabar (news)
+    en: How are you?
+    ar_eg: إزيك؟ / أخبارك إيه؟
+    ar: كيف حالك؟
+  - text: Kabar baik, terima kasih.
+    en: I'm fine, thank you.
+    ar_eg: كويس، شكرًا.
+    ar: بخير، شكرًا.
+  - text: Ini apa?
+    en: What is this?
+    ar_eg: ده إيه؟
+    ar: ما هذا؟
+  - text: Apakah Anda mahasiswa?
+    en: Are you a student?
+    ar_eg: حضرتك طالب؟
+    ar: هل أنت طالب؟
+    register: formal
+  - text: Kamu sudah makan?
+    en: Have you eaten?
+    ar_eg: إنت كلت؟
+    ar: هل أكلت؟
+    register: informal
+mistakes:
+  - wrong: Apa nama kamu? (in formal speech)
+    right: Siapa nama Anda?
+    why:
+      ar_eg: إحنا بنقول «اسمك إيه؟» بس الإندونيسي الرسمي بيسأل عن الاسم بـ siapa (مين). apa nama مسموعة في الكلام العادي بس.
+      ar: العربية تسأل «ما اسمك؟»، أما الإندونيسية الفصيحة فتسأل عن الاسم بـ siapa (مَن). وapa nama شائعة في العامية فقط.
+      en: Arabic asks "what is your name", but standard Indonesian uses siapa (who) for names; apa nama is colloquial.
+arabic_bridge:
+  ar_eg: kabar جاية من «خبر» (خ بقت k). عشان كده «Apa kabar?» قريبة جدًا من «إيه الأخبار؟».
+  ar: كلمة kabar من «خبر» بعد تحوّل الخاء إلى k، فعبارة «Apa kabar?» قريبة من «ما الأخبار؟».
+  en: kabar ← «خبر» (kh → k), so "Apa kabar?" is close to Arabic «إيه الأخبار؟» — "what's the news?".
+tags: [question, greeting, arabic-loan]
+see_also: [id.question.siapa, id.negation.tidak-bukan]
+review:
+  status: draft
+  verified: false
