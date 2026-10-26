@@ -1,0 +1,200 @@
+schema: kabar.lesson/v1
+id: bipa6.u07.l01
+language: id
+title: Bahasa peraturan
+can_do:
+  ar_eg: تفك جمل القوانين واللوايح وتعرف مين لازم يعمل إيه.
+  ar: أن تفكّك جمل القوانين واللوائح وتعرف ما الذي يلزم كلّ طرف.
+  en: Unpack legal sentences and tell who must do what.
+slides:
+  - title: Membaca pasal
+    grammar: id.register.legal
+    body:
+      ar_eg: |
+        الـ peraturan (اللوايح) ليها قوالب ثابتة:
+        - pasal = مادة، ayat = فقرة: Pasal 5 ayat (1) = المادة 5 الفقرة 1.
+        - wajib = لازم، berhak = له الحق، dilarang = ممنوع، dapat = يجوز (مسموح، مش لازم!).
+        - Dalam hal … = في حالة …
+        - sebagaimana dimaksud dalam … = المذكور في … (سيبها في أول قراية).
+      ar: |
+        للـ peraturan (اللوائح) قوالب ثابتة:
+        - pasal = مادة، ayat = فقرة: Pasal 5 ayat (1) = المادة 5، الفقرة 1.
+        - wajib = يجب، berhak = يحقّ له، dilarang = يُحظر، dapat = يجوز (مباح لا واجب).
+        - Dalam hal … = في حالة …
+        - sebagaimana dimaksud dalam … = المنصوص عليه في … (تجاوزها في القراءة الأولى).
+      en: |
+        peraturan (regulations) run on fixed formulas:
+        - pasal = article, ayat = paragraph: Pasal 5 ayat (1) = Article 5, paragraph 1.
+        - wajib = must, berhak = is entitled to, dilarang = is prohibited, dapat = may (allowed, not required!).
+        - Dalam hal … = in the event that …
+        - sebagaimana dimaksud dalam … = as referred to in … (skip it on a first read).
+    examples:
+      - text: Setiap warga negara berhak mendapat pendidikan.
+        ar_eg: لكل مواطن الحق في التعليم. (الدستور، المادة 31 الفقرة 1)
+        ar: لكلّ مواطن الحقّ في التعليم. (الدستور، المادة 31، الفقرة 1)
+        en: Every citizen has the right to education. (Constitution, Article 31(1))
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pasal
+        ar_eg: مادة (في قانون)
+        ar: مادّة قانونية
+        en: article (of a law)
+      - text: ayat
+        ar_eg: فقرة
+        ar: فقرة
+        en: paragraph (of an article)
+      - text: berhak
+        ar_eg: ليه الحق
+        ar: يحقّ له
+        en: to be entitled to
+      - text: peraturan
+        ar_eg: لايحة / قانون
+        ar: لائحة
+        en: regulation
+      - text: dalam hal
+        ar_eg: في حالة
+        ar: في حال
+        en: in the event that
+    words: [pasal, ayat, berhak, peraturan, dalam hal]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في «Lembaga dapat menunjuk pengajar asing»، dapat معناها إيه؟
+      ar: ما معنى dapat في «Lembaga dapat menunjuk pengajar asing»؟
+      en: In "Lembaga dapat menunjuk pengajar asing", what does dapat mean?
+    options:
+      - لازم وإجباري.
+      - يجوز، مسموح بس مش لازم.
+      - ممنوع.
+    answer: 1
+  - id: e03
+    type: fill_blank
+    sentence: Setiap warga negara ___ mendapat pendidikan.
+    meaning:
+      ar_eg: لكل مواطن الحق في التعليم.
+      ar: لكلّ مواطن الحقّ في التعليم.
+      en: Every citizen is entitled to education.
+    options: [berhak, ayat, pasal]
+    answers: [berhak]
+    words: [berhak]
+  - id: e04
+    type: listen
+    text: Lihat Pasal 3 ayat (2) dalam peraturan itu.
+    question:
+      ar_eg: نبص فين؟
+      ar: أين ننظر؟
+      en: Where should we look?
+    options:
+      - المادة 3، الفقرة 2.
+      - المادة 2، الفقرة 3.
+      - صفحة 32.
+    answer: 0
+    words: [pasal, ayat, peraturan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: في حالة إن المشارك عيّان، الامتحان ممكن يتأجل.
+      ar: في حال مرض المشارك، يجوز تأجيل الامتحان.
+      en: In the event that a participant is ill, the exam may be postponed.
+    answer: Dalam hal peserta sakit, ujian dapat diundur.
+    distractors: [pasal, berhak]
+    words: [dalam hal]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة فيها إلزام، مش حق ولا إذن؟
+      ar: أيّ جملة فيها إلزام، لا حقّ ولا إذن؟
+      en: Which sentence states a duty, not a right or a permission?
+    options:
+      - Peserta dapat membawa kamus.
+      - Peserta berhak bertanya.
+      - Peserta wajib membawa kartu identitas.
+    answer: 2
+    words: [berhak]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Peraturan ini mulai berlaku pada tanggal diundangkan.
+    answers_meaning:
+      ar_eg:
+        - اللايحة دي بيتعمل بيها من يوم ما تتنشر.
+        - اللايحة دي بتسري من تاريخ نشرها.
+      ar:
+        - يُعمل بهذه اللائحة من تاريخ نشرها.
+        - تسري هذه اللائحة من تاريخ إصدارها.
+      en:
+        - This regulation comes into force on the date it is promulgated.
+        - This regulation takes effect from the date of its promulgation.
+    words: [peraturan]
+  - id: e08
+    type: speaking
+    text: Menurut Pasal 31 ayat (1), setiap warga negara berhak mendapat pendidikan.
+    meaning:
+      ar_eg: حسب المادة 31 الفقرة 1، لكل مواطن الحق في التعليم.
+      ar: بحسب المادة 31، الفقرة 1، لكلّ مواطن الحقّ في التعليم.
+      en: Under Article 31(1), every citizen is entitled to education.
+    words: [pasal, ayat, berhak]
+  - id: e09
+    type: dictation
+    text: Dalam hal hujan, acara dipindahkan ke aula.
+    meaning:
+      ar_eg: في حالة المطر، الفعالية بتتنقل للقاعة.
+      ar: في حال المطر، تُنقل الفعالية إلى القاعة.
+      en: In the event of rain, the event moves to the hall.
+    words: [dalam hal]
+dialogue:
+  title: Peraturan beasiswa
+  lines:
+    - speaker: Kak Nadia
+      text: Ini peraturan beasiswa kampus. Bahasanya kaku, ya?
+      ar_eg: دي لايحة منحة الجامعة. لغتها ناشفة، صح؟
+      ar: هذه لائحة منحة الجامعة. لغتها جافّة، أليس كذلك؟
+      en: This is the campus scholarship regulation. Stiff language, right?
+    - speaker: Mohamed
+      text: Kaku sekali. "Dalam hal penerima beasiswa tidak hadir …" Apa artinya?
+      ar_eg: ناشفة قوي. «في حالة إن الحاصل على المنحة ماحضرش…» يعني إيه؟
+      ar: جافّة جدًّا. «في حال تغيّب الحاصل على المنحة…» ما معناها؟
+      en: Very stiff. "In the event that the scholarship holder is absent …" What does that mean?
+    - speaker: Kak Nadia
+      text: Artinya, kalau kamu tidak datang. Sekarang lihat Pasal 4 ayat (2).
+      ar_eg: يعني لو إنت ماجيتش. دلوقتي بص على المادة 4 الفقرة 2.
+      ar: أي إن لم تحضر. والآن انظر إلى المادة 4، الفقرة 2.
+      en: It means if you don't show up. Now look at Article 4, paragraph 2.
+    - speaker: Mohamed
+      text: Oh, di sini tertulis saya berhak mendapat tiket pulang. Bagus!
+      ar_eg: آه، هنا مكتوب إن من حقي تذكرة رجوع. حلو!
+      ar: آه، مكتوب هنا أنّ من حقّي تذكرة عودة. ممتاز!
+      en: Oh, it says here I'm entitled to a ticket home. Great!
+new_words:
+  - word: pasal
+    pos: noun
+    ar_eg: مادة (في قانون)
+    ar: مادّة قانونية
+    en: article (of a law)
+  - word: ayat
+    pos: noun
+    arabic: آية
+    ar_eg: فقرة
+    ar: فقرة
+    en: paragraph (of an article)
+  - word: berhak
+    pos: verb
+    arabic: حقّ
+    ar_eg: ليه الحق
+    ar: يحقّ له
+    en: to be entitled to
+  - word: peraturan
+    pos: noun
+    ar_eg: لايحة / قانون
+    ar: لائحة
+    en: regulation
+  - word: dalam hal
+    pos: phrase
+    ar_eg: في حالة
+    ar: في حال
+    en: in the event that
+review:
+  status: draft
+  verified: false
