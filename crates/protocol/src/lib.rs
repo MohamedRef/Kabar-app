@@ -3,6 +3,7 @@
 
 pub mod ai;
 pub mod cloud;
+pub mod content;
 pub mod hlc;
 pub mod pen;
 pub mod sync;

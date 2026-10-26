@@ -1,0 +1,263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GlossEntry",
+  "description": "A prebuilt gloss for one frequent word form (§18), shown in the word\npopover and used by lessons. Keyed by surface form, because that is what\nthe Reader looks up; `lemma`/`root`/`affixes` give the breakdown.",
+  "type": "object",
+  "properties": {
+    "affixes": {
+      "description": "Display breakdown in order, e.g. `[\"meN-\", \"baca\"]` or `[\"ke-\", \"sehat\", \"-an\"]`.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "arabic_origin": {
+      "description": "The Arabic source word when this is an Arabic loan; the full card lives\nin the Arabic Bridge dataset under the same `word`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "examples": {
+      "description": "Two example sentences (three at most).",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Example"
+      }
+    },
+    "false_friend": {
+      "description": "Loud warning when the word looks like an Arabic word but means\nsomething else (kalimat ≠ «كلمة»).",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Trilingual"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "lang": {
+      "$ref": "#/$defs/Lang"
+    },
+    "lemma": {
+      "description": "Dictionary headword (equals `word` for bare roots and particles).",
+      "type": "string"
+    },
+    "note": {
+      "description": "Usage or register note worth knowing (optional).",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Trilingual"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "rank": {
+      "description": "Rank in the frequency list (1 = most frequent).",
+      "type": "integer",
+      "format": "uint32",
+      "minimum": 0
+    },
+    "root": {
+      "description": "Morphological root when the word is derived (membaca → baca).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "senses": {
+      "description": "Most common meaning first. 1–4 senses.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Sense"
+      }
+    },
+    "status": {
+      "$ref": "#/$defs/ReviewStatus",
+      "default": "unverified"
+    },
+    "word": {
+      "description": "Surface form, lowercase, as in the frequency list.",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "lang",
+    "word",
+    "rank",
+    "lemma",
+    "senses",
+    "examples",
+    "provenance"
+  ],
+  "$defs": {
+    "Example": {
+      "description": "An example sentence with its translations.",
+      "type": "object",
+      "properties": {
+        "sense": {
+          "description": "Index into `senses` of the meaning this example shows.",
+          "type": "integer",
+          "format": "uint8",
+          "default": 0,
+          "maximum": 255,
+          "minimum": 0
+        },
+        "text": {
+          "description": "The sentence in the learning language. Contains the word (or a form of it).",
+          "type": "string"
+        },
+        "translation": {
+          "$ref": "#/$defs/Trilingual"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "translation"
+      ]
+    },
+    "Lang": {
+      "description": "Learning language of an entry.",
+      "oneOf": [
+        {
+          "description": "Indonesian (`id`).",
+          "type": "string",
+          "const": "id"
+        },
+        {
+          "description": "Javanese (`jv`).",
+          "type": "string",
+          "const": "jv"
+        }
+      ]
+    },
+    "Pos": {
+      "description": "Part of speech, coarse enough for exercises and popovers.",
+      "type": "string",
+      "enum": [
+        "noun",
+        "proper_noun",
+        "verb",
+        "adjective",
+        "adverb",
+        "pronoun",
+        "preposition",
+        "conjunction",
+        "particle",
+        "numeral",
+        "classifier",
+        "determiner",
+        "interjection",
+        "phrase"
+      ]
+    },
+    "Provenance": {
+      "description": "Who produced a piece of content, so a better pass can replace it later.",
+      "type": "object",
+      "properties": {
+        "generator": {
+          "description": "`claude-code`, `wiktionary`, `user`, …",
+          "type": "string"
+        },
+        "prompt": {
+          "description": "Versioned prompt id, e.g. `gloss@v1`. Empty for imports.",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "generator"
+      ]
+    },
+    "Register": {
+      "description": "Register of a word or sense.",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "neutral",
+            "formal",
+            "informal",
+            "slang",
+            "literary",
+            "religious"
+          ]
+        },
+        {
+          "description": "Jakarta / chat Indonesian (gue, lo, banget).",
+          "type": "string",
+          "const": "colloquial"
+        }
+      ]
+    },
+    "ReviewStatus": {
+      "description": "Whether the learner has reviewed an item. Everything starts unverified;\nJavanese stays unverified until the learner (or a native speaker) approves it.",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "unverified",
+            "approved"
+          ]
+        },
+        {
+          "description": "Reviewed and found wrong; kept so the next batch regenerates it.",
+          "type": "string",
+          "const": "needs_fix"
+        }
+      ]
+    },
+    "Sense": {
+      "description": "One meaning of a word.",
+      "type": "object",
+      "properties": {
+        "gloss": {
+          "description": "Short gloss in each voice (a few words, not a definition essay).",
+          "$ref": "#/$defs/Trilingual"
+        },
+        "pos": {
+          "$ref": "#/$defs/Pos"
+        },
+        "register": {
+          "$ref": "#/$defs/Register"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "pos",
+        "gloss"
+      ]
+    },
+    "Trilingual": {
+      "description": "The same text in the three explanation voices (§11).",
+      "type": "object",
+      "properties": {
+        "ar": {
+          "description": "Modern Standard Arabic.",
+          "type": "string"
+        },
+        "arz": {
+          "description": "Egyptian colloquial Arabic (بالمصري).",
+          "type": "string"
+        },
+        "en": {
+          "description": "English.",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "arz",
+        "ar",
+        "en"
+      ]
+    }
+  }
+}

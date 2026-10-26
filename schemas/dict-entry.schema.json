@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DictEntry",
+  "description": "One Wiktionary entry (word + part of speech), normalized from kaikki.org JSONL.",
+  "type": "object",
+  "properties": {
+    "arabic": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ArabicEtymon"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "etymology": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "forms": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DictForm"
+      }
+    },
+    "ipa": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lang": {
+      "$ref": "#/$defs/Lang"
+    },
+    "pos": {
+      "description": "Wiktionary part of speech (`noun`, `verb`, `adj`, …), as kaikki writes it.",
+      "type": "string"
+    },
+    "senses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DictSense"
+      }
+    },
+    "speech_levels": {
+      "description": "Javanese speech-level tags found on the entry (`ngoko`, `krama`, `krama-inggil`, …).",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "word": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "lang",
+    "word",
+    "pos",
+    "senses"
+  ],
+  "$defs": {
+    "ArabicEtymon": {
+      "description": "An Arabic etymology link parsed from Wiktionary templates\n(`bor`/`der`/`inh` with source language `ar`).",
+      "type": "object",
+      "properties": {
+        "arabic": {
+          "description": "Arabic word as written in the template (may be empty when Wiktionary\nonly names the language).",
+          "type": "string"
+        },
+        "gloss": {
+          "description": "Gloss given in the template, if any.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "description": "Template kind: `bor` (borrowed), `der` (derived), `inh`, `cat` (category only).",
+          "type": "string"
+        },
+        "via": {
+          "description": "Intermediate languages in the etymology chain before Arabic.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "arabic",
+        "kind"
+      ]
+    },
+    "DictExample": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "translation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "text"
+      ]
+    },
+    "DictForm": {
+      "description": "An inflected or alternative form listed on a Wiktionary page.",
+      "type": "object",
+      "properties": {
+        "form": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "form"
+      ]
+    },
+    "DictSense": {
+      "description": "One Wiktionary sense, kept in English as Wiktionary has it.",
+      "type": "object",
+      "properties": {
+        "examples": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DictExample"
+          }
+        },
+        "form_of": {
+          "description": "Lemma this sense points to when it is a form-of / alternative / abbreviation entry.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "glosses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "glosses"
+      ]
+    },
+    "Lang": {
+      "description": "Learning language of an entry.",
+      "oneOf": [
+        {
+          "description": "Indonesian (`id`).",
+          "type": "string",
+          "const": "id"
+        },
+        {
+          "description": "Javanese (`jv`).",
+          "type": "string",
+          "const": "jv"
+        }
+      ]
+    }
+  }
+}
