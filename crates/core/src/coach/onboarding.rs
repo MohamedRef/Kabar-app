@@ -1,17 +1,41 @@
 //! Onboarding: why, minutes per day, a target, study times, reminder style,
 //! then where the journey starts.
 
+use std::sync::LazyLock;
+
 use kabar_protocol::coach::{CoachProfile, LocalDate, PlanSize, StartingPoint, Target};
+
+use super::plan::LESSON_MINUTES;
+use crate::journey::parse_curriculum;
 
 /// Curriculum level ids (spec §21): Indonesian BIPA 1–7, then Javanese J1–J6.
 pub const LEVELS: [&str; 13] =
     ["bipa1", "bipa2", "bipa3", "bipa4", "bipa5", "bipa6", "bipa7", "j1", "j2", "j3", "j4", "j5", "j6"];
 
-/// Rough hours of study to finish each BIPA level, from the level before it;
-/// used only for a suggested target date. BIPA programmes list roughly
-/// 100–136 contact hours per level, so the levels climb through that range
-/// (later levels need more).
-pub const BIPA_HOURS: [u32; 7] = [100, 106, 112, 118, 124, 130, 136];
+/// Share of a planned study day that goes to new lessons: a 15-minute day
+/// holds one [`LESSON_MINUTES`]-minute lesson, the rest is reviews, weak
+/// spots and reading. Dividing a level's lesson time by it gives the whole
+/// time the level takes.
+pub const LESSON_SHARE: f32 = LESSON_MINUTES as f32 / 15.0;
+
+/// Hours of study to finish each BIPA level, from the level before it, for
+/// the suggested target and the pace forecast. Measured from Kabar's own
+/// curriculum (every lesson's minutes plus the level test, over
+/// [`LESSON_SHARE`]), not classroom contact hours: docs/PEDAGOGY.md §5 keeps
+/// those as planning ceilings, never as a promise of dates.
+pub static BIPA_HOURS: LazyLock<[u32; 7]> = LazyLock::new(|| {
+    let curriculum = parse_curriculum(CURRICULUM_ID).expect("curriculum/indonesian.yaml is valid");
+    let mut hours = [0; 7];
+    for (i, h) in hours.iter_mut().enumerate() {
+        let Some(level) = curriculum.level(&format!("bipa{}", i + 1)) else { continue };
+        let minutes: u32 = level.lessons().map(|l| l.minutes).sum::<u32>()
+            + level.level_test.as_ref().map_or(0, |t| t.minutes);
+        *h = ((minutes as f32 / LESSON_SHARE / 60.0).ceil() as u32).max(1);
+    }
+    hours
+});
+
+const CURRICULUM_ID: &str = include_str!("../../../../curriculum/indonesian.yaml");
 
 /// Days a week we assume the learner actually studies, for target dates.
 pub const STUDY_DAYS_PER_WEEK: u32 = 6;
@@ -104,7 +128,8 @@ pub fn finish(mut profile: CoachProfile, today: LocalDate) -> Result<CoachProfil
 ///
 /// Brand new aims at BIPA 1, "knows the basics" at BIPA 2, "can chat" at
 /// BIPA 3. The date assumes [`BIPA_HOURS`] for that level at the daily
-/// minutes, six study days a week, rounded up to the first of a month.
+/// minutes, six study days a week, rounded up to the first of a month: a
+/// few months for a level, not years.
 pub fn suggest_target(start: StartingPoint, size: PlanSize, today: LocalDate) -> Target {
     let level = match start {
         StartingPoint::BrandNew => 1,
@@ -208,13 +233,24 @@ mod tests {
     #[test]
     fn suggested_targets_fit_the_pace() {
         let today = d(2026, 10, 26);
-        // 100 h at 15 min a day: 400 study days, 467 calendar days → 2028-02-05 → 2028-03-01.
+        // Hours come from the curriculum: every level has some, and none
+        // is anywhere near the classroom ceilings (100+ h) that once gave
+        // "BIPA 1 by March 2028" at 15 minutes a day.
+        assert!(BIPA_HOURS.iter().all(|h| (1..60).contains(h)), "{:?}", *BIPA_HOURS);
+        let bipa1_days = |size: PlanSize| {
+            let study = (BIPA_HOURS[0] * 60).div_ceil(u32::from(size.minutes()));
+            (study * 7).div_ceil(STUDY_DAYS_PER_WEEK) as i32
+        };
         let t = suggest_target(StartingPoint::BrandNew, PlanSize::Steady, today);
-        assert_eq!(t, Target { level: "bipa1".into(), by: d(2028, 3, 1) });
-        // 30 min a day: 234 days → 2027-06-17 → 2027-07-01.
-        assert_eq!(suggest_target(StartingPoint::BrandNew, PlanSize::Deep, today).by, d(2027, 7, 1));
-        assert!(BIPA_HOURS.windows(2).all(|w| w[0] < w[1]));
-        assert!(BIPA_HOURS.iter().all(|h| (100..=136).contains(h)));
+        assert_eq!(
+            t,
+            Target {
+                level: "bipa1".into(),
+                by: first_of_next_month(today.add_days(bipa1_days(PlanSize::Steady)))
+            }
+        );
+        // BIPA 1 at 15 minutes a day is months away, not years.
+        assert!(t.by > today.add_days(30) && t.by < today.add_days(365), "{:?}", t.by);
         assert_eq!(suggest_target(StartingPoint::KnowsBasics, PlanSize::Deep, today).level, "bipa2");
         assert_eq!(suggest_target(StartingPoint::CanChat, PlanSize::Deep, today).level, "bipa3");
         for start in [StartingPoint::BrandNew, StartingPoint::KnowsBasics, StartingPoint::CanChat] {
