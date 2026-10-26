@@ -286,3 +286,48 @@ Done when (spec §23): a 5-minute Kabar Radio episode plays offline on the phone
 4. Background playback.
 
 Each PR keeps `just check` green and ships its run/install steps in `docs/RUN.md`.
+
+## 17. Tablet Studio (M9, spec §4)
+
+M9 builds on the Pen Lab ink module (M1). One ink engine serves every surface: the Notebook, Gambar!, the Listening Companion, mind maps and write-mode lessons. The Study Desk and Card Wall are already done (M5/M6). Aksara Jawa calligraphy (`check_strokes`) stays in M13.
+
+```
+ WebView ink.js (pointer events, coalesced + predicted, desynchronized canvas, pan/zoom)
+      │ finished strokes (quantized points)        ▲ strokes / items to draw
+      ▼                                            │
+ kabar_core::ink  ── stroke model, simplify, bbox, eraser hit-test, grouping into lines/words,
+      │              spatial query, notebook search, letter diff, spelling suggestions,
+      │              Gambar! rounds, mind-map model + layout
+      ▼
+ SQLite: notebooks · ink_documents (LWW) · ink_strokes (immutable, delete = tombstone)
+         · notebook_items (LWW) · ink_transcripts (LWW)  ──▶ synced via Kabar Cloud
+```
+
+- **Data.**
+  - `InkStroke` holds points quantized to 1/10 px with pressure (0–255) and time offsets (ms). There is one immutable row per stroke; erasing tombstones it, and strokes over 2,000 points are split.
+  - `InkDocument` is one page of a notebook, or a Gambar! / Listening / mind-map / lesson canvas.
+  - `NotebookItem` is a word card, text box, arrow or mind-map node with a position. These items are LWW, so moving a card is one upsert.
+  - `InkTranscript` is the recognized text of a stroke group, with its source and confidence. Notebook search reads transcripts plus card and text items.
+- **Recognition, best first.**
+  1. **ML Kit Digital Ink Recognition** (Android): on-device, free, private, with `id` and `jv` models. It works on stroke data, not images. It arrives with the Android Kotlin glue; the bridge is `platform::recognize_ink(strokes, lang)`.
+  2. **The `read_handwriting` vision task** through the router, for the Mac and as a fallback. It needs the Cloud blob upload.
+  3. **Typed correction** by the learner, which always wins.
+
+  Until the first two are connected, the pads offer "type what you wrote" so nothing is blocked.
+- **Notebook.** One notebook per unit (`bipa1.u01` …) plus free notebooks. Each page is an infinite canvas with pan/zoom (two fingers, or a mouse wheel on the Mac/DeX). The pen writes, and the eraser button or the eraser tool erases. Word cards show the gloss (personal dictionary → prebuilt glosses), play audio and peek on hover. Search covers every page.
+- **Gambar!** Kabar picks a drawable word from the learner's words (curriculum nouns first). The learner sketches for 60 s, and the canvas goes as a PNG to `guess_sketch`. The guess is scored against the target and its alternatives, and every round logs an `ActivityEvent`.
+- **Listening Companion.** A narrow window or pane meant for split screen next to YouTube. The learner scribbles a word as they think it's spelled. Kabar suggests real words with deterministic fuzzy matching: edit distance with Indonesian/Javanese sound folding (old spelling dj→j, tj→c, oe→u, ch→c, double letters, e/é, final k/glottal). Each suggestion shows its gloss and audio, and one tap saves it to Review or Teach Kabar.
+- **Mind-map generator.** "Make me a map of *di pasar*" goes to the `mind_map` task (topic, level, known words, lang). The answer is validated, laid out radially, and saved as notebook items, which the learner extends with the pen.
+- **Write-mode lessons.** `InkPad` plus `ink::answer::letter_diff`; the Lesson Player (Journey thread) hosts it and grades the recognized text with its existing grader. The ink feedback circles wrong letters and writes the correct form underneath.
+- **Free tier.** Recognition is on-device. Vision calls use Workers AI or Gemini free (`guess_sketch` sends only a sketch, which is not personal). Each ink row is a few KB, so a heavy day is ~500 strokes ≈ 1 MB of DO storage.
+
+## 18. Aksara Jawa calligraphy (M13, spec §4)
+
+Practice for the J6 aksara units (`content/grammar/jv/jv.aksara.*`): the 20 letters, the vowel signs on ka, the final signs on ka, then words from those notes for free writing. It lives in the Studio as an **Aksara** tab and uses the M9 ink engine.
+
+- **Stroke data.** `content/aksara/strokes.json` holds one entry per practice item: the text, its strokes in order (points in 1/1000 em from the pen origin, y down, baseline 0) and the line width. It is drafted by `scripts/aksara/strokes.py` from Noto Sans Javanese (OFL, bundled): render, thin to a skeleton, split at junctions, chain into strokes left to right (straight through junctions), then bridge the tight U-turns and curls that thinning loses. `content/aksara/glyphs.yaml` lists the items and per-item `order` corrections; `scripts/aksara/preview.py` draws the numbered strokes over the glyphs for review. No open dataset of Javanese stroke order exists, so every item stays `verified: false` until Mohamed (or a teacher) checks the order; the app shows it as unverified.
+- **Screen.** Pick an item → **Watch** (the strokes draw themselves in order over a faint glyph, CSS dash animation) → **Trace** (ghost glyph under the canvas, brush with pressure) → **Write** (blank sheet). Check runs after Trace and Write.
+- **Offline shape check** (`kabar_core::aksara`), instant and free, always first. Learner and reference points are aligned by a small search over scale and anchoring (so a missing first or last part doesn't throw the alignment off), then compared both ways: how much of each reference stroke the ink covers, and how much ink lies off the letter. It reports, by part (left/middle/right, the mark above, the part below the line): a missing stroke, extra ink, a mirrored letter, or "this reads as ga, not ka" when another letter fits clearly better. Normal wobble and slant pass.
+- **`check_strokes` (vision).** When Kabar Cloud can see images, "Ask the teacher" uploads the sheet (`put_blob`) and sends `{target, script: aksara_jawa}`; the answer is `{correct, issues[]}` per the golden set (`prompts/check_strokes@v1.md`, typed as `ai::tasks::CheckStrokes`). Personal (it is the learner's handwriting), so it never reaches an engine that trains on inputs. The teacher's lines replace the offline result on screen and are marked unverified.
+- **Progress.** Each offline check of a non-empty sheet logs `Practice { skill: Writing, topic: "aksara:<id>" }` to the activity log.
+- **Later.** Pasangan and murda/rekan items; Latin letter practice through the same check (the golden set has both).
