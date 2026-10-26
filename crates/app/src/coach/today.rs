@@ -147,6 +147,7 @@ pub fn Today() -> Element {
                 }
                 crate::lesson::PlacementInvite {}
                 crate::play::PagiTodayCard {}
+                crate::stats::TodayCards {}
                 // On the phone, Kak Nur, the journal and Settings live here
                 // instead of the bottom bar (it keeps five items).
                 nav { class: "row compact-only more-links",

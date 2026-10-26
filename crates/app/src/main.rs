@@ -18,6 +18,7 @@ mod play;
 mod reader;
 mod review;
 mod screens;
+mod stats;
 mod store;
 mod teach;
 mod theme;
@@ -58,6 +59,10 @@ pub enum Screen {
     Journal,
     /// Cost & limits (spec §19), from Settings.
     Cost,
+    /// Stats (spec §16): from the Review home and Today.
+    Stats,
+    /// The monthly level check (spec §6).
+    LevelCheck,
 }
 
 impl Screen {
@@ -77,6 +82,8 @@ impl Screen {
             Self::Teach => Msg::NavTeach,
             Self::Journal => Msg::NavJournal,
             Self::Cost => Msg::CostTitle,
+            Self::Stats => Msg::NavReview,
+            Self::LevelCheck => Msg::NavCoach,
         }
     }
 
@@ -220,10 +227,20 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     // KABAR_OPEN_LESSON=bipa1.u01.l01 opens the Lesson Player at launch
     // (previews and screenshots on the Mac).
     let open_lesson = use_hook(|| std::env::var("KABAR_OPEN_LESSON").ok());
+    // KABAR_OPEN_SCREEN=stats | level_check opens those screens the same way.
+    let open_screen = use_hook(|| match std::env::var("KABAR_OPEN_SCREEN").as_deref() {
+        Ok("stats") => Some(Screen::Stats),
+        Ok("level_check") => Some(Screen::LevelCheck),
+        _ => None,
+    });
     let ui = use_context_provider(|| Ui {
         settings: Signal::new(initial),
         width: Signal::new(WidthClass::Expanded),
-        screen: Signal::new(if open_lesson.is_some() { Screen::Lesson } else { Screen::Today }),
+        screen: Signal::new(match (&open_lesson, open_screen) {
+            (Some(_), _) => Screen::Lesson,
+            (None, Some(s)) => s,
+            (None, None) => Screen::Today,
+        }),
         lesson: Signal::new(open_lesson),
     });
     use_context_provider(|| db.clone());
@@ -461,6 +478,8 @@ fn Shell() -> Element {
                     Screen::Teach => rsx! { teach::TeachScreen {} },
                     Screen::Cost => rsx! { cost::CostScreen {} },
                     Screen::Lesson => rsx! { lesson::LessonScreen {} },
+                    Screen::Stats => rsx! { stats::StatsScreen {} },
+                    Screen::LevelCheck => rsx! { stats::check::LevelCheckScreen {} },
                 }
             }
         }

@@ -576,6 +576,7 @@ fn ReviewHome() -> Element {
                     }
                 }
             }
+            crate::stats::StatsButton {}
         }
         div { class: "rev-modes",
             for (mode, title, hint) in modes {

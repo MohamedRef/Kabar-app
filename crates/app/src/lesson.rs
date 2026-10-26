@@ -7,7 +7,7 @@
 
 mod test_player;
 pub use test_player::PlacementInvite;
-mod text;
+pub(crate) mod text;
 
 use dioxus::prelude::*;
 use kabar_core::lesson::{
@@ -44,9 +44,9 @@ pub fn test_content(id: &str) -> Option<&'static str> {
 }
 
 /// Idle gaps longer than this don't count as lesson time.
-const MAX_STEP_MS: u64 = 120_000;
+pub(crate) const MAX_STEP_MS: u64 = 120_000;
 
-fn now_ms() -> u64 {
+pub(crate) fn now_ms() -> u64 {
     std::time::SystemTime::now()
         .duration_since(std::time::UNIX_EPOCH)
         .map(|d| d.as_millis() as u64)
@@ -147,11 +147,11 @@ pub fn draft_answer(ex: &Exercise, d: &Draft, tiles: &[String]) -> Option<Answer
 }
 
 /// BCP 47 tag for target-language text (the IME and the voice follow it).
-fn target_tag(language: &str) -> &'static str {
+pub(crate) fn target_tag(language: &str) -> &'static str {
     if language == "jv" { "jv" } else { "id" }
 }
 
-fn instruction(ex: &Exercise, language: &str) -> L {
+pub(crate) fn instruction(ex: &Exercise, language: &str) -> L {
     use ExerciseKind as K;
     match &ex.kind {
         K::MultipleChoice { options_meaning, .. } if !options_meaning.is_empty() => L::PickMeaning,
@@ -171,7 +171,7 @@ fn instruction(ex: &Exercise, language: &str) -> L {
 }
 
 /// The text an exercise plays on its own when it opens.
-fn autoplay_text(ex: &Exercise) -> Option<(String, Option<String>)> {
+pub(crate) fn autoplay_text(ex: &Exercise) -> Option<(String, Option<String>)> {
     match &ex.kind {
         ExerciseKind::Listen { text, audio, .. } | ExerciseKind::Dictation { text, audio, .. } => {
             Some((text.clone(), audio.clone()))
@@ -395,7 +395,7 @@ pub fn latin_runs(s: &str) -> Vec<(bool, String)> {
 
 /// Explanation text with Latin runs isolated.
 #[component]
-fn Rich(text: String, target: &'static str) -> Element {
+pub(crate) fn Rich(text: String, target: &'static str) -> Element {
     rsx! {
         for (i, (latin, run)) in latin_runs(&text).into_iter().enumerate() {
             if latin {
@@ -1270,7 +1270,7 @@ fn Choices(
 /// listener); Shift+Enter is a
 /// new line.
 #[component]
-fn TextAnswer(tag: &'static str, draft: Signal<Draft>, locked: bool) -> Element {
+pub(crate) fn TextAnswer(tag: &'static str, draft: Signal<Draft>, locked: bool) -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.settings.read().ui_language;
     let dir = if tag.starts_with("ar") { "rtl" } else { "ltr" };
