@@ -46,8 +46,14 @@ pub fn Today() -> Element {
     } else {
         Line::PlanMorning
     };
-    let minutes = goal.to_string();
-    let args = [("name", profile.name.as_str()), ("minutes", minutes.as_str())];
+    let minutes = ui.num(goal);
+    let (count, topic) = labels::plan_voice_args(&ui, &plan.items);
+    let args = [
+        ("name", profile.name.as_str()),
+        ("minutes", minutes.as_str()),
+        ("count", count.as_str()),
+        ("topic", topic.as_str()),
+    ];
     let recap_ready =
         recap::recap_ready(progress.goal_met, stats.studied(), coach.time_of_day(), &profile.study_times);
 
@@ -221,17 +227,32 @@ fn Recap(profile: CoachProfile, plan: DailyPlan, today: LocalDate) -> Element {
     let tomorrow_first = tomorrow.items.first().map(|i| i.kind.clone());
     let r = recap::day_recap(&events, today, plan.size.minutes(), plan.items.len(), tomorrow_first);
 
-    let minutes = r.minutes.to_string();
-    let words = r.new_words.len().to_string();
-    let base = [("name", profile.name.as_str()), ("minutes", minutes.as_str()), ("words", words.as_str())];
+    // Voice placeholders: text already localized, numbers in the UI's digits,
+    // and empty when they don't apply (say then picks a variant without them).
+    let minutes = ui.num(r.minutes);
+    let words = if r.new_words.is_empty() { String::new() } else { ui.num(r.new_words.len() as u64) };
+    let done = history::day(&events, today).items_done;
+    let worked_on = plan
+        .items
+        .iter()
+        .find(|i| done.contains(&i.id) && !matches!(i.kind, PlanItemKind::Review { .. }))
+        .map(|i| labels::plan_item_text(&ui, &i.kind))
+        .unwrap_or_default();
+    let base = [
+        ("name", profile.name.as_str()),
+        ("minutes", minutes.as_str()),
+        ("words", words.as_str()),
+        ("topic", worked_on.as_str()),
+    ];
     let headline = say(&ui, if r.goal_met { Line::RecapGoalMet } else { Line::RecapSomeStudy }, today, &base);
     let remember = r.remember.as_ref().map(|f| {
-        let skill = ui.t(labels::skill(f.skill));
-        say(&ui, Line::RecapRemember, today, &[("topic", f.topic.as_str()), ("skill", skill)])
+        let topic = format!("{} · {}", ui.t(labels::skill(f.skill)), f.topic);
+        say(&ui, Line::RecapRemember, today, &[("topic", topic.as_str())])
     });
-    let next = r.tomorrow.as_ref().map(|k| {
-        let step = labels::plan_item_text(&ui, k);
-        say(&ui, Line::RecapTomorrow, today, &[("step", step.as_str())])
+    let next = r.tomorrow.as_ref().map(|first| {
+        let (count, topic) = labels::plan_voice_args(&ui, &tomorrow.items);
+        let topic = if topic.is_empty() { labels::plan_item_text(&ui, first) } else { topic };
+        say(&ui, Line::RecapTomorrow, today, &[("topic", topic.as_str()), ("count", count.as_str())])
     });
 
     rsx! {

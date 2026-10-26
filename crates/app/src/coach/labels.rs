@@ -2,8 +2,8 @@
 
 use kabar_core::locale::UiLanguage;
 use kabar_protocol::coach::{
-    LanguageFocus, LocalDate, LocalTime, Motivation, PlanItemKind, ReminderStyle, Skill, StartingPoint,
-    Weekday,
+    LanguageFocus, LocalDate, LocalTime, Motivation, PlanItem, PlanItemKind, ReminderStyle, Skill,
+    StartingPoint, Weekday,
 };
 
 use crate::Ui;
@@ -154,6 +154,24 @@ pub fn plan_item_text(ui: &Ui, kind: &PlanItemKind) -> String {
         (msg, Some(detail)) => format!("{} ({detail})", ui.t(msg)),
         (msg, None) => ui.t(msg).to_string(),
     }
+}
+
+/// Kak Nur's `{count}` (reviews due; empty when none, so a variant without
+/// it is picked) and `{topic}` (the first non-review step) for a plan.
+pub fn plan_voice_args(ui: &Ui, items: &[PlanItem]) -> (String, String) {
+    let count = items
+        .iter()
+        .find_map(|i| match i.kind {
+            PlanItemKind::Review { cards } if cards > 0 => Some(ui.num(cards)),
+            _ => None,
+        })
+        .unwrap_or_default();
+    let topic = items
+        .iter()
+        .find(|i| !matches!(i.kind, PlanItemKind::Review { .. }))
+        .map(|i| plan_item_text(ui, &i.kind))
+        .unwrap_or_default();
+    (count, topic)
 }
 
 #[cfg(test)]

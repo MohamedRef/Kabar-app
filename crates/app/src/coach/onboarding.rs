@@ -11,19 +11,18 @@ use super::{Coach, labels, say};
 use crate::i18n::Msg;
 use crate::{Db, Ui};
 
-fn line(step: Step) -> Option<Line> {
-    Some(match step {
+fn line(step: Step) -> Line {
+    match step {
         Step::Name => Line::OnboardHello,
         Step::Why => Line::OnboardWhy,
-        // No voice line for the focus question yet; the UI asks it.
-        Step::Focus => return None,
+        Step::Focus => Line::OnboardFocus,
         Step::Minutes => Line::OnboardMinutes,
         Step::Target => Line::OnboardTarget,
         Step::Times => Line::OnboardTimes,
         Step::Reminders => Line::OnboardReminders,
         Step::Start => Line::OnboardStart,
         Step::Done => Line::OnboardDone,
-    })
+    }
 }
 
 fn error_step(e: &ProfileError) -> (Step, Msg) {
@@ -49,10 +48,15 @@ pub fn Onboarding() -> Element {
     let current = step();
     let p = draft.read().clone();
     let name = p.name.trim().to_string();
-    let text = match line(current) {
-        Some(l) => say(&ui, l, today, &[("name", name.as_str())]),
-        None => ui.t(Msg::OnbFocusAsk).to_string(),
-    };
+    // Voice placeholders: text already localized, numbers in the UI's digits.
+    let minutes = ui.num(p.daily_size.minutes());
+    let (level, by) = p
+        .target
+        .as_ref()
+        .map(|t| (labels::level_name(&t.level), labels::date(&ui, t.by, today)))
+        .unwrap_or_default();
+    let args = [("name", name.as_str()), ("minutes", minutes.as_str()), ("level", &level), ("date", &by)];
+    let text = say(&ui, line(current), today, &args);
     let can_next = match current {
         Step::Name => !name.is_empty(),
         Step::Times => !p.study_times.is_empty(),

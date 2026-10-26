@@ -79,12 +79,21 @@ fn ReportCard(profile: CoachProfile, today: LocalDate) -> Element {
         _ => (report_for_week(&events, this_week, today), true),
     };
     let note = logic::report_note(&r, &events);
-    let (minutes, days, words) = (r.minutes.to_string(), r.days_studied.to_string(), r.new_words.to_string());
+    // Voice placeholders: numbers in the UI's digits, skill names localized.
+    // A great week names the strongest skill; a steady one next week's focus.
+    let (minutes, days, words) = (ui.num(r.minutes), ui.num(r.days_studied), ui.num(r.new_words));
+    let skill = match note {
+        Line::ReportGreatWeek => r.strongest,
+        _ => r.next_focus.first().map(|f| f.skill).or(r.weakest),
+    }
+    .map(|s| ui.t(labels::skill(s)))
+    .unwrap_or_default();
     let args = [
         ("name", profile.name.as_str()),
         ("minutes", minutes.as_str()),
         ("days", days.as_str()),
         ("words", words.as_str()),
+        ("skill", skill),
     ];
     let retention =
         r.retention.map_or("–".to_string(), |x| format!("{}%", ui.num((x * 100.0).round() as u32)));
@@ -207,6 +216,7 @@ fn Warung(today: LocalDate) -> Element {
     let owned = rewards::owned(&events);
     let active = coach.batik.read().clone().filter(|s| !s.is_empty());
     let name = coach.profile.read().as_ref().map(|p| p.name.clone()).unwrap_or_default();
+    let koin_left = ui.num(balance);
 
     rsx! {
         div { class: "card",
@@ -218,7 +228,7 @@ fn Warung(today: LocalDate) -> Element {
             }
             if let Some(b) = toast() {
                 div { class: "toast", role: "status",
-                    Nur { text: say(&ui, Line::WarungBought, today, &[("name", name.as_str()), ("item", b.name)]) }
+                    Nur { text: say(&ui, Line::WarungBought, today, &[("name", name.as_str()), ("item", b.name), ("koin", &koin_left)]) }
                     div { class: "row",
                         button {
                             onclick: {
