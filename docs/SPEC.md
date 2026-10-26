@@ -94,6 +94,13 @@ These five rules beat any single feature. When in doubt, choose what serves them
 
 ## 4. The Tablet Studio (Galaxy Tab S11)
 
+> **Pen paused (2026-10-26, learner's call):** all stylus work waits until the
+> core app is finished, tablet included. The pen features below (Notebook
+> ink, Gambar!, Card Wall flicks, Listening Companion scribbles, write-mode
+> lessons, pen-extended mind maps, calligraphy) are later phases, not dropped
+> features; see §23 "Deferred". The tablet still runs every core feature with
+> touch, keyboard and DeX.
+
 The tablet is where Kabar becomes creative.
 
 - **Study Desk** (landscape): three panes — Journey/Library | original text | explanation. Drag a word with the pen into the Review Basket or the Notebook.
@@ -365,19 +372,27 @@ Refine in PLAN.md. Every synced table carries `account_id`, `device_id`, a hybri
 
 ### Deferred (2026-10-26, learner's call)
 
-The core is lessons, reviews, the Reader, the coach and content. These are
-later phases, after M13, and **not** dropped features. The Tab S11 keeps its
-pen throughout: it is the writing device.
+The core is lessons, reviews, the Reader, the coach and content: finish that
+first. Everything below is a later phase, after M13, and **not** a dropped
+feature. All stylus work is paused, on the phone and on the tablet.
 
 | Deferred | Was in | Comes back when |
 |---|---|---|
-| The S Pen on the phone (§5): Quick Capture, hover popovers, lasso lookup, handwritten answers on the S24 Ultra | M5, M6 | the core is comfortable and the phone pen is what's missing |
+| The S Pen on the phone (§5): Quick Capture, hover popovers, lasso lookup, handwritten answers on the S24 Ultra | M5, M6 | the core app is finished |
+| Pen in the Reader on the tablet: hover peek, lasso lookup, stroke-to-highlight, dragging words with the pen (§4, §11) | M5 | the same |
+| Handwritten review answers and **Card Wall** pen flicks (§4, §16) | M6 | the same |
+| **Kabar Notebook** ink and handwriting search, **Gambar!**, **Listening Companion** scribbles, **write-mode lessons**, extending mind maps with the pen (§4) | M9 | the same |
+| **Aksara Jawa calligraphy** (§4) | M13 | the same |
+| The pen AI tasks' golden captures (`read_handwriting`, `guess_sketch`, `check_strokes`) | M4 | the pen features above come back |
 | Mac Quick Lookup, the global clipboard hotkey (§11) | M13 | desk study on the Mac asks for it |
 | Mac-only polish beyond running and bundling the app | M13 | the same |
 
-M5 and M6 keep their tablet pen work: popovers, lasso and highlight on the
-Tab S11, write-mode lessons and calligraphy (M9, M13). The phone's own M5/M6
-goals stay too, with tap and scroll instead of the pen.
+What stays in the core: M5 is the Reader, Screenshot Decoder, Share-to-Kabar
+and tap popovers on every device; M6 is FSRS review with classic cards and
+1-minute bursts, typed answers, and stats; M9 keeps the AI mind-map generator
+(read and edit by touch) and the Study Desk panes. The pen-ready code that
+exists (Pen Lab, ink, the pen AI prompts and types) stays in the repo, so
+resuming is a matter of building the screens.
 
 ## 24. Test texts
 

@@ -9,8 +9,9 @@ belong to. Keep one checkbox per action.
 
 **Time:** about 3 hours, much of it downloads and builds you can leave running.
 
-The core is lessons, reviews, the Reader, the coach and content. Phone pen
-features and Mac extras are deferred (§9), so their steps are no longer here.
+The core is lessons, reviews, the Reader, the coach and content. All pen
+work (phone and tablet) and Mac extras are deferred (§9), so their steps are
+no longer here.
 
 ---
 
@@ -65,14 +66,13 @@ just check                # fmt + clippy + tests: all green
 - [ ] `just devices`, then `just install <serial>` for the S24 Ultra and again for the Tab S11. For wireless, use `just pair` / `just connect` (RUN.md §3).
 - [ ] Check the launcher icon (round and adaptive), the notification-bar icon and the splash screen on both devices.
 - [x] **Pen Lab** on the S24 Ultra: two reports sent 2026-10-26, findings in [PENLAB.md](PENLAB.md). The ink feels attached to the pen tip, so the web ink stays and no native Kotlin ink is needed.
-- [ ] **Golden captures** on the **Tab S11 only** (~20 min, any time, no rush): `cargo run -p kabar-tools -- golden stats` lists the items tagged `needs-capture` in `content/golden/read_handwriting.yaml`, `guess_sketch.yaml` and `check_strokes.yaml`. Each item's `input.capture` says what to write or draw. Save each as `fixtures/golden/<task>/<item id>.png` and push or send them; I wire them in. The phone captures are deferred with the phone pen (§9).
 
 ## 3b. Journey Map and Lesson Player (~15 min) — [RUN.md](RUN.md)
 
 - [ ] Mac: `just run-mac` → Journey. Drag the map, zoom with the trackpad pinch and the +/− buttons, open Jakarta, then open "Selamat pagi!".
 - [ ] Mac: play both test lessons (`bipa1.u01.l01`, `bipa1.u01.l02`) to the end. Check that the Indonesian voice speaks in listen and dictation exercises (macOS has an Indonesian system voice; if it's silent, add "Damayanti" under System Settings → Accessibility → Spoken Content → System voice → Manage Voices).
 - [ ] S24 Ultra: Journey shows the vertical route; "Lanjut" opens the current lesson. Answer one translation with the normal keyboard.
-- [ ] Tab S11: the full map pans with the pen and pinches with two fingers. Close a lesson halfway; reopening it resumes at the same exercise.
+- [ ] Tab S11: the full map pans and pinches with your fingers. Close a lesson halfway; reopening it resumes at the same exercise.
 - [ ] On both devices, check the Indonesian voice is installed: Settings → General management → Text-to-speech output → engine settings (Samsung or Google) → Install voice data → Indonesian. If the app shows "download the Indonesian voice", that's this step.
 - [ ] Tell me whether listen/dictation, slow replay and review audio cards speak on Android (the app now uses Android's own TextToSpeech). The first tap after launch can take a second while the voice engine starts.
 
@@ -81,7 +81,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] Mac OCR: Reader → "Open a screenshot" (or drag an image in) with a WhatsApp screenshot; check Apple Vision reads it (first real test of the Vision code).
 - [ ] `just apk` while online (first build fetches ML Kit from Google Maven; it must print "Kotlin glue present"), then `just install <serial>` on the S24 Ultra and Tab S11.
 - [ ] On each device: share text from WhatsApp → **Kabar**; select text → ⋮ → **Kabar**; take a screenshot → Share → **Kabar**. `adb logcat -s KabarShare` if a share is ignored.
-- [ ] **Tab S11** pen in the Reader: tap a word (card) and stroke across a phrase (highlight saved). Hover peek and lasso lookup are deferred (§9); on the phone, tap and scroll is the whole story now.
+- [ ] On both devices, tap a word in the Reader: the card opens with its meaning and audio.
 - [ ] Send me one or two real WhatsApp screenshots you decoded (and how well the bubbles came out), so I can tune the screenshot structuring on real data.
 
 ## 4. Google sign-in clients (~10 min) — [CLOUD.md §3.2](CLOUD.md)
@@ -157,16 +157,21 @@ This decides which free engine answers each AI task. Until it runs, every route 
 
 ## 9. Deferred, not dropped
 
-Moved out of the core on 2026-10-26, at your word: stylus features on the
-phone, and Mac extras that only polish the laptop. Nothing is deleted from
-`docs/SPEC.md` — each one is a later phase, and the steps come back here with
-it.
+Moved out of the core on 2026-10-26, at your word: all stylus work, on the
+phone and on the tablet, until the core app is finished, plus Mac extras
+that only polish the laptop. Nothing is deleted from `docs/SPEC.md` — each
+one is a later phase (SPEC §23 "Deferred"), and its steps come back here
+with it.
 
-- Phone pen: Quick Capture, lasso lookup, hover popovers, handwritten answers
-  on the S24 Ultra, and the phone's golden captures for the pen AI tasks.
+- Pen on both devices: Quick Capture, hover popovers, lasso lookup,
+  stroke-to-highlight, handwritten answers, Card Wall flicks, the Notebook,
+  Gambar!, Listening Companion scribbles, write-mode lessons and aksara Jawa
+  calligraphy.
+- The golden captures for the pen AI tasks (`read_handwriting`,
+  `guess_sketch`, `check_strokes`).
 - Mac extras: the global Quick Lookup hotkey, Mac-specific polish, drawing in
   Pen Lab with the trackpad, and the optional Cloudflare plugin for Claude
   Code.
 
-The Tab S11 keeps its pen: it is the writing device, and the writing lessons
-and calligraphy need it.
+Pen Lab already measured the S24 Ultra, so when the pen comes back the web
+ink is known to be good enough.

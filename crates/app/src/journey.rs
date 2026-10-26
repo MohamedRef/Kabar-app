@@ -19,6 +19,7 @@ use kabar_core::locale::{UiLanguage, format_number};
 
 use crate::i18n::Msg;
 use crate::{Db, Ui};
+use kabar_protocol::coach::CoachProfile;
 
 const CURRICULUM_ID: &str = include_str!("../../../curriculum/indonesian.yaml");
 const CURRICULUM_JV: &str = include_str!("../../../curriculum/javanese.yaml");
@@ -158,12 +159,8 @@ pub fn JourneyScreen() -> Element {
             BTreeSet::new()
         }))
     });
-    let start = use_hook(|| {
-        db.0.borrow().placement().map(|p| p.map(|p| p.start_level)).unwrap_or_else(|e| {
-            eprintln!("kabar: reading the placement result failed: {e}");
-            None
-        })
-    });
+    let coach = use_context::<crate::coach::Coach>();
+    let start = use_hook(|| start_level(&db, coach.profile.peek().as_ref()));
     let mut route = use_signal(|| Route::Indonesian);
     let mut pane = use_signal(|| Pane::Route);
 
@@ -673,6 +670,63 @@ pub fn journal_catalog() -> crate::coach::logic::Catalog {
     catalog
 }
 
+// ------------------------------------------------------------ for Today ----
+
+fn find_unit(unit_id: &str) -> Option<&'static Unit> {
+    let routes = ROUTES.as_ref().ok()?;
+    routes.id.levels.iter().chain(&routes.jv.levels).flat_map(|l| &l.units).find(|u| u.id == unit_id)
+}
+
+/// A unit's name for the daily plan: "التحية · Salam" (the UI language's
+/// title, then the target-language one, isolated so it reads right inside
+/// Arabic). `None` for an unknown id.
+pub fn unit_title(lang: UiLanguage, unit_id: &str) -> Option<String> {
+    let unit = find_unit(unit_id)?;
+    let local = local(lang, &unit.title);
+    Some(match unit.title.target.as_deref() {
+        Some(target) if target != local => format!("{local} · \u{2068}{target}\u{2069}"),
+        _ => local.to_string(),
+    })
+}
+
+/// The lesson a plan's "Start" opens: the unit's first unfinished lesson.
+/// `None` for an unknown unit or one already finished.
+pub fn next_lesson_in(unit_id: &str, completed: &BTreeSet<String>) -> Option<String> {
+    find_unit(unit_id)?.lessons.iter().find(|l| !completed.contains(&l.id)).map(|l| l.id.clone())
+}
+
+/// Where the Indonesian journey starts: the placement result, else the level
+/// the onboarding answer points at (`None`: from the very beginning).
+pub fn start_level(db: &Db, profile: Option<&CoachProfile>) -> Option<String> {
+    let placed = db.0.borrow().placement().unwrap_or_else(|e| {
+        eprintln!("kabar: reading the placement result failed: {e}");
+        None
+    });
+    placed.map(|p| p.start_level).or_else(|| {
+        let unit = kabar_core::coach::onboarding::starting_unit(profile?.start);
+        unit.split_once('.').map(|(level, _)| level.to_string())
+    })
+}
+
+/// The unit the learner is on: the one holding the Journey's next lesson
+/// (Javanese when that is the learner's only focus).
+pub fn current_unit(completed: &BTreeSet<String>, start: Option<&str>, javanese: bool) -> Option<String> {
+    let routes = ROUTES.as_ref().ok()?;
+    let curriculum = if javanese { &routes.jv } else { &routes.id };
+    let progress = Progress::new(curriculum, completed);
+    let progress = match start {
+        Some(level) if !javanese => progress.start_at(curriculum, level),
+        _ => progress,
+    };
+    let lesson = progress.current()?;
+    curriculum
+        .levels
+        .iter()
+        .flat_map(|l| &l.units)
+        .find(|u| u.lessons.iter().any(|l| l.id == lesson))
+        .map(|u| u.id.clone())
+}
+
 // ------------------------------------------------------------- suitcase ----
 
 #[component]
@@ -783,5 +837,36 @@ mod tests {
         }
         assert!(land_path(INDONESIA_SVG, "land-other").starts_with('M'));
         assert_eq!(land_path(INDONESIA_SVG, "nope"), "");
+    }
+
+    #[test]
+    fn today_names_units_and_opens_the_next_lesson() {
+        assert_eq!(
+            unit_title(UiLanguage::ArEg, "bipa1.u01").as_deref(),
+            Some("التحية · \u{2068}Salam\u{2069}")
+        );
+        assert_eq!(
+            unit_title(UiLanguage::En, "bipa1.u01").as_deref(),
+            Some("Greetings · \u{2068}Salam\u{2069}")
+        );
+        assert_eq!(unit_title(UiLanguage::En, "nope"), None);
+
+        let mut done = BTreeSet::new();
+        assert_eq!(next_lesson_in("bipa1.u01", &done).as_deref(), Some("bipa1.u01.l01"));
+        assert_eq!(current_unit(&done, None, false).as_deref(), Some("bipa1.u01"));
+        done.insert("bipa1.u01.l01".to_string());
+        assert_eq!(next_lesson_in("bipa1.u01", &done).as_deref(), Some("bipa1.u01.l02"));
+        assert_eq!(current_unit(&done, None, false).as_deref(), Some("bipa1.u01"));
+
+        // A finished unit has no next lesson; the plan moves on to the next unit.
+        let unit = find_unit("bipa1.u01").unwrap();
+        done.extend(unit.lessons.iter().map(|l| l.id.clone()));
+        assert_eq!(next_lesson_in("bipa1.u01", &done), None);
+        assert_eq!(current_unit(&done, None, false).as_deref(), Some("bipa1.u02"));
+        assert_eq!(next_lesson_in("nope", &done), None);
+
+        // "I know the basics" starts at BIPA 2; Javanese has its own route.
+        assert_eq!(current_unit(&BTreeSet::new(), Some("bipa2"), false).as_deref(), Some("bipa2.u01"));
+        assert_eq!(current_unit(&BTreeSet::new(), Some("bipa2"), true).as_deref(), Some("j1.u01"));
     }
 }

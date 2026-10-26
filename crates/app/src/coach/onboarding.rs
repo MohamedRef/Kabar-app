@@ -53,7 +53,7 @@ pub fn Onboarding() -> Element {
     let (level, by) = p
         .target
         .as_ref()
-        .map(|t| (labels::level_name(&t.level), labels::date(&ui, t.by, today)))
+        .map(|t| (labels::level_name(&t.level), labels::long_date(&ui, t.by)))
         .unwrap_or_default();
     let args = [("name", name.as_str()), ("minutes", minutes.as_str()), ("level", &level), ("date", &by)];
     let text = say(&ui, line(current), today, &args);
@@ -339,7 +339,10 @@ fn Summary(profile: CoachProfile, today: LocalDate) -> Element {
     let target = profile
         .target
         .as_ref()
-        .map(|t| format!("{} · {}", labels::level_name(&t.level), labels::date(&ui, t.by, today)));
+        // The date leads so an Arabic line stays right-to-left; the level is isolated.
+        .map(|t| {
+            format!("{} · \u{2068}{}\u{2069}", labels::long_date(&ui, t.by), labels::level_name(&t.level))
+        });
     rsx! {
         dl { class: "summary",
             dt { "{ui.t(Msg::OnbNameLabel)}" }
@@ -354,7 +357,7 @@ fn Summary(profile: CoachProfile, today: LocalDate) -> Element {
             dd { {labels::minutes(&ui, u32::from(profile.daily_size.minutes()))} }
             if let Some(target) = target {
                 dt { "{ui.t(Msg::OnbTarget)}" }
-                dd { bdi { "{target}" } }
+                dd { "{target}" }
             }
             dt { "{ui.t(Msg::StudyTimes)}" }
             dd { "{times}" }
