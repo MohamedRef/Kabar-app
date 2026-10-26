@@ -14,8 +14,10 @@ use dioxus::html::{FileData, HasFileData};
 use dioxus::prelude::*;
 use kabar_core::learn::PersonalDictionary;
 use kabar_core::locale::UiLanguage;
+use kabar_core::reader::screen_ai::{self, StructureScreenshot};
 use kabar_core::reader::screenshot::{ScreenDoc, Side, structure};
-use kabar_protocol::reader::{SharedInput, WordStatus};
+use kabar_protocol::ai::Task;
+use kabar_protocol::reader::{OcrResult, SharedInput, WordStatus};
 use serde::Deserialize;
 
 use self::content::LocalGlossary;
@@ -24,6 +26,7 @@ use self::glossary::{Glossary, Shift};
 use crate::account::Cloud;
 use crate::i18n::Msg;
 use crate::store::{Highlight, SavedText, TextKind};
+use crate::teach::Ai;
 use crate::{Db, Ui, platform};
 
 const READER_JS: &str = include_str!("../../assets/reader.js");
@@ -349,17 +352,21 @@ fn open_new(
     source: Option<&str>,
     layout: Option<&str>,
     mut recent: Signal<Vec<SavedText>>,
-) {
+) -> Option<SavedText> {
     if body.trim().is_empty() {
-        return;
+        return None;
     }
     let saved = db.0.borrow_mut().save_text(body, kind, source, layout);
     match saved {
         Ok(text) => {
-            st.load(db, text);
+            st.load(db, text.clone());
             recent.set(db.0.borrow().recent_texts(12).unwrap_or_default());
+            Some(text)
         }
-        Err(e) => eprintln!("kabar: saving text failed: {e}"),
+        Err(e) => {
+            eprintln!("kabar: saving text failed: {e}");
+            None
+        }
     }
 }
 
@@ -376,6 +383,7 @@ fn run_ocr(
         st.toast.set(Some(Msg::OcrUnavailable));
         return;
     }
+    let ai = try_consume_context::<Ai>();
     busy.set(true);
     spawn(async move {
         let (tx, rx) = futures_channel::oneshot::channel();
@@ -393,12 +401,78 @@ fn run_ocr(
                 }
                 let body = screen.reading_text();
                 let layout = serde_json::to_string(&screen).ok();
-                open_new(&db, st, &body, TextKind::Screenshot, source.as_deref(), layout.as_deref(), recent);
+                let saved = open_new(
+                    &db,
+                    st,
+                    &body,
+                    TextKind::Screenshot,
+                    source.as_deref(),
+                    layout.as_deref(),
+                    recent,
+                );
+                if let (Some(ai), Some(text)) = (ai, saved) {
+                    refine_with_ai(ai, db, st, recent, ocr, text);
+                }
             }
             Err(e) => {
                 eprintln!("kabar: OCR failed: {e}");
                 st.toast.set(Some(Msg::OcrFailed));
             }
+        }
+    });
+}
+
+/// The AI pass (`structure_screenshot`, spec §11) after the deterministic
+/// one is already on screen: when an engine is connected, ask it in the
+/// background and, if its answer validates, swap the saved text's body and
+/// layout for it. Any error keeps the deterministic layout, silently. The
+/// request is personal (a screenshot is someone's chat), so it never reaches
+/// an engine that trains on inputs.
+fn refine_with_ai(
+    ai: Ai,
+    db: Db,
+    st: ReaderState,
+    mut recent: Signal<Vec<SavedText>>,
+    ocr: OcrResult,
+    text: SavedText,
+) {
+    let req = screen_ai::request(&ocr);
+    if ai.0.plan(Task::StructureScreenshot, req.personal).is_err() {
+        return;
+    }
+    spawn(async move {
+        let answer = match ai.0.run::<StructureScreenshot>(&req).await {
+            Ok(a) => a,
+            Err(e) => {
+                eprintln!("kabar: structure_screenshot failed, keeping the on-device layout: {e:?}");
+                return;
+            }
+        };
+        let screen = screen_ai::to_screen_doc(&answer.value, &ocr);
+        let body = screen.reading_text();
+        // Highlights are byte ranges in the old body: don't move text under them.
+        let marked = db.0.borrow().highlights(&text.id).map_or(true, |h| !h.is_empty());
+        if body.trim().is_empty() || marked {
+            return;
+        }
+        let Ok(mut layout) = serde_json::to_value(&screen) else { return };
+        // Readers of ScreenDoc ignore this; it says where the layout came from.
+        layout["structured_by"] = serde_json::json!({
+            "task": "structure_screenshot",
+            "engine": answer.engine.as_str(),
+            "prompt_version": answer.prompt_version,
+            "provisional": answer.provisional,
+            "needs_review": answer.needs_review,
+        });
+        let updated = db.0.borrow_mut().update_text(&text, &body, Some(&layout.to_string()));
+        match updated {
+            Ok(t) => {
+                if st.open.peek().as_ref().is_some_and(|o| o.text.id == t.id) {
+                    st.load(&db, t);
+                }
+                recent.set(db.0.borrow().recent_texts(12).unwrap_or_default());
+            }
+            Err(e) => eprintln!("kabar: saving the AI layout failed: {e}"),
         }
     });
 }

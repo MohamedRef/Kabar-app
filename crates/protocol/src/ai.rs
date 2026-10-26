@@ -116,12 +116,14 @@ impl Task {
         Self::ALL.into_iter().find(|t| t.as_str() == s)
     }
 
-    /// Built from the learner's own data (coach memory, history, journal):
-    /// never sent to an engine that trains on inputs.
+    /// Built from the learner's own data (coach memory, history, journal) or
+    /// other people's (a screenshot of a chat): never sent to an engine that
+    /// trains on inputs, never put in a shared cache.
     pub fn is_personal(self) -> bool {
         matches!(
             self,
-            Self::PlacementTest
+            Self::StructureScreenshot
+                | Self::PlacementTest
                 | Self::LevelCheck
                 | Self::DailyPlan
                 | Self::DailyRecap

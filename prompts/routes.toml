@@ -29,9 +29,6 @@ engines = ["workers_ai", "gemini_free", "local", "claude"]
 status = "provisional"
 max_tokens = 2048
 
-[structure_screenshot]
-engines = ["local", "workers_ai", "gemini_free", "claude"]
-status = "provisional"
 
 # --- Practice --------------------------------------------------------------
 
@@ -70,6 +67,15 @@ engines = ["workers_ai", "gemini_free", "local", "claude"]
 status = "provisional"
 
 # --- Personal: never gemini_free --------------------------------------------
+
+# Screenshots are other people's chats: personal at task level
+# (Task::is_personal), and every request is flagged personal as well. Text
+# only (the OCR blocks) until the blob store lands. One message per bubble or
+# block on a long chat needs room.
+[structure_screenshot]
+engines = ["local", "workers_ai", "claude"]
+status = "provisional"
+max_tokens = 4096
 
 [placement_test]
 engines = ["workers_ai", "local", "claude"]

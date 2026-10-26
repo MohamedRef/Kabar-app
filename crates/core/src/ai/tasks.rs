@@ -4,11 +4,20 @@
 use kabar_protocol::ai::Task;
 use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
+use serde_json::Value;
 
 pub trait AiOutput: DeserializeOwned {
     const TASK: Task;
 
     fn validate(&self) -> Result<(), String> {
+        Ok(())
+    }
+
+    /// Checks that need the request input too (e.g. every chat message must
+    /// be traceable to the OCR text it came from). Runs after `validate`, on
+    /// fresh replies and on cache hits alike.
+    fn validate_against(&self, input: &Value) -> Result<(), String> {
+        let _ = input;
         Ok(())
     }
 

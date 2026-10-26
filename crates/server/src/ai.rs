@@ -3,7 +3,7 @@
 //! renders prompts and validates answers; the server adds the key, enforces
 //! privacy and quotas, and caches. HTTP calls live in `wasm`.
 
-use kabar_protocol::ai::{EngineCall, EngineError, EngineId};
+use kabar_protocol::ai::{EngineCall, EngineError, EngineId, Task};
 use serde_json::{Value, json};
 
 use crate::config::{Config, SecretString};
@@ -83,7 +83,10 @@ pub fn route(call: &EngineCall, config: &Config) -> Result<Route, EngineError> {
     if call.max_tokens.is_some_and(|m| m == 0 || m > MAX_MAX_TOKENS) {
         return Err(other(format!("max_tokens must be 1..={MAX_MAX_TOKENS}")));
     }
-    if key.task.needs_vision() || call.image_sha256.is_some() {
+    // structure_screenshot also works from the on-device OCR text alone, so
+    // it passes as long as no image is attached.
+    let text_only = key.task == Task::StructureScreenshot && call.image_sha256.is_none();
+    if (key.task.needs_vision() && !text_only) || call.image_sha256.is_some() {
         return Err(unavailable("vision tasks need the blob store, which Kabar Cloud doesn't have yet"));
     }
     match key.engine {
@@ -292,6 +295,11 @@ mod tests {
         assert_eq!((r.engine(), r.model()), (EngineId::Claude, "claude-opus-5-5"));
         assert!(unavailable(route(&call(Task::AnalyzeText, EngineId::Local), &ready)));
         assert!(unavailable(route(&call(Task::ReadHandwriting, EngineId::WorkersAi), &ready)));
+        // A screenshot's OCR text is fine; its image waits for the blob store.
+        let ocr_text = call(Task::StructureScreenshot, EngineId::WorkersAi);
+        assert!(route(&ocr_text, &none).is_ok());
+        let with_image = EngineCall { image_sha256: Some("ab".repeat(32)), ..ocr_text };
+        assert!(unavailable(route(&with_image, &none)));
         assert_eq!(
             route(&call(Task::AnalyzeText, EngineId::WorkersAi), &none).unwrap().service(),
             Service::WorkersAi
