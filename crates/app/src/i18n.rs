@@ -2287,3 +2287,31 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PairsTheTwoWords, En) => "The two words",
     }
 }
+
+/// A gloss's part of speech (`noun`, `proper_noun`, …) in the UI language.
+/// Unknown tags come back as written.
+pub fn part_of_speech(lang: UiLanguage, pos: &str) -> &str {
+    use UiLanguage::*;
+    let [arz, ar, en] = match pos {
+        "noun" => ["اسم", "اسم", "noun"],
+        "proper_noun" => ["اسم علم", "اسم علم", "proper noun"],
+        "verb" => ["فعل", "فعل", "verb"],
+        "adjective" => ["صفة", "صفة", "adjective"],
+        "adverb" => ["ظرف", "ظرف", "adverb"],
+        "pronoun" => ["ضمير", "ضمير", "pronoun"],
+        "preposition" => ["حرف جر", "حرف جر", "preposition"],
+        "conjunction" => ["أداة ربط", "حرف عطف أو ربط", "conjunction"],
+        "particle" => ["أداة", "أداة", "particle"],
+        "numeral" => ["رقم", "عدد", "numeral"],
+        "classifier" => ["كلمة عدّ", "مُصنِّف عددي", "classifier"],
+        "determiner" => ["محدِّد", "محدِّد", "determiner"],
+        "interjection" => ["كلمة تعجب", "أداة تعجب", "interjection"],
+        "phrase" => ["تعبير", "عبارة", "phrase"],
+        _ => return pos,
+    };
+    match lang {
+        ArEg => arz,
+        Ar => ar,
+        En => en,
+    }
+}
