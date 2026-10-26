@@ -653,7 +653,7 @@ pub fn check_lesson(file: &str, stem: &str, dir: &str, v: &Value, index: &Index,
         "lesson",
         v,
         &["schema", "id", "language", "title", "can_do", "exercises", "review"],
-        &["slides", "dialogue", "new_words", "souvenir"],
+        &["slides", "dialogue", "new_words", "souvenir", "game"],
     ) else {
         return;
     };
@@ -728,6 +728,18 @@ pub fn check_lesson(file: &str, stem: &str, dir: &str, v: &Value, index: &Index,
     }
     if kinds.len() < 4 {
         c.push("use at least 4 exercise types");
+    }
+
+    // Optional link to a mini-game scene: uu.<scene> (Unggah-Ungguh) or mp.<pair> (Minimal Pairs).
+    if let Some(game) = m.get("game") {
+        let ok = game.as_str().and_then(|g| g.split_once('.')).is_some_and(|(kind, id)| {
+            ["uu", "mp"].contains(&kind)
+                && !id.is_empty()
+                && id.chars().all(|ch| ch.is_ascii_lowercase() || ch.is_ascii_digit() || ch == '-')
+        });
+        if !ok {
+            c.push("game must look like uu.<scene> or mp.<pair>");
+        }
     }
 
     // Dialogue, new words, souvenir, review.
