@@ -12,4 +12,5 @@ _None bundled yet._ The UI uses system fonts and falls back through IBM Plex San
 _None yet._
 
 ## Artwork
+- App icon ("Dawn over sawah"): original artwork created for Kabar with Codex (`docs/VISUAL-ASSETS.md`, prompts 1–2). Masters in `assets/src/icon/`; every platform size is exported by `scripts/assets/export_icons.py`.
 - Background pattern: original kawung-inspired geometry generated in code (`crates/app/src/theme.rs`).
