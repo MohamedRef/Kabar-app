@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BridgeEntry",
+  "description": "One Arabic Bridge card (§12).",
+  "type": "object",
+  "properties": {
+    "arabic": {
+      "description": "The Arabic source word, vocalized where it helps (خَبَر).",
+      "type": "string"
+    },
+    "arabic_meaning": {
+      "description": "What the Arabic word means.",
+      "$ref": "#/$defs/Trilingual"
+    },
+    "confidence": {
+      "$ref": "#/$defs/Confidence"
+    },
+    "lang": {
+      "$ref": "#/$defs/Lang"
+    },
+    "meaning": {
+      "description": "What the word means in the learning language.",
+      "$ref": "#/$defs/Trilingual"
+    },
+    "root": {
+      "description": "Arabic root letters separated by spaces (خ ب ر); absent for non-triliteral words.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "shift": {
+      "$ref": "#/$defs/MeaningShift"
+    },
+    "shift_note": {
+      "description": "Explains the shift; required unless `shift` is `same`.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Trilingual"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sound_rules": {
+      "description": "Sound-change rule ids from `content/bridge/sound-rules.json`, for the\nSound-Shift Detective.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sources": {
+      "description": "Where the etymology was found or checked (`claude-code`, `wiktionary`).",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "$ref": "#/$defs/ReviewStatus",
+      "default": "unverified"
+    },
+    "via": {
+      "description": "Intermediate language when the word did not come straight from Arabic\n(e.g. Persian, Malay, Dutch).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "word": {
+      "description": "The Indonesian/Javanese word, lowercase.",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "lang",
+    "word",
+    "arabic",
+    "arabic_meaning",
+    "meaning",
+    "shift",
+    "confidence",
+    "sources"
+  ],
+  "$defs": {
+    "Confidence": {
+      "description": "How sure we are that the word comes from Arabic.",
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "Lang": {
+      "description": "Learning language of an entry.",
+      "oneOf": [
+        {
+          "description": "Indonesian (`id`).",
+          "type": "string",
+          "const": "id"
+        },
+        {
+          "description": "Javanese (`jv`).",
+          "type": "string",
+          "const": "jv"
+        }
+      ]
+    },
+    "MeaningShift": {
+      "description": "How the meaning moved from Arabic to the learning language.",
+      "oneOf": [
+        {
+          "description": "Same meaning as in Arabic.",
+          "type": "string",
+          "const": "same"
+        },
+        {
+          "description": "A narrower meaning than the Arabic word.",
+          "type": "string",
+          "const": "narrowed"
+        },
+        {
+          "description": "A wider meaning than the Arabic word.",
+          "type": "string",
+          "const": "broadened"
+        },
+        {
+          "description": "Related but noticeably different.",
+          "type": "string",
+          "const": "shifted"
+        },
+        {
+          "description": "Looks like an Arabic word an Egyptian knows, but means something else:\ntriggers the False Friends Alarm.",
+          "type": "string",
+          "const": "false_friend"
+        }
+      ]
+    },
+    "ReviewStatus": {
+      "description": "Whether the learner has reviewed an item. Everything starts unverified;\nJavanese stays unverified until the learner (or a native speaker) approves it.",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "unverified",
+            "approved"
+          ]
+        },
+        {
+          "description": "Reviewed and found wrong; kept so the next batch regenerates it.",
+          "type": "string",
+          "const": "needs_fix"
+        }
+      ]
+    },
+    "Trilingual": {
+      "description": "The same text in the three explanation voices (§11).",
+      "type": "object",
+      "properties": {
+        "ar": {
+          "description": "Modern Standard Arabic.",
+          "type": "string"
+        },
+        "arz": {
+          "description": "Egyptian colloquial Arabic (بالمصري).",
+          "type": "string"
+        },
+        "en": {
+          "description": "English.",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "arz",
+        "ar",
+        "en"
+      ]
+    }
+  }
+}

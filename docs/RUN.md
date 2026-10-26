@@ -1,6 +1,7 @@
 # Running Kabar (M1–M2)
 
 Everything below runs on the MacBook. Commands are `just` recipes from the repo root.
+For the first Mac session, follow the ordered checklist in [MAC-TODO.md](MAC-TODO.md); this page has the details.
 
 ## 1. One-time setup (about 20–30 min, mostly downloads)
 
@@ -73,7 +74,24 @@ just cloud-setup     # once: D1, signing key, allowlist
 just deploy-cloud    # after adding GOOGLE_CLIENT_IDS (CLOUD.md §3.2)
 ```
 
-## 6. Troubleshooting
+## 6. Content pipeline (vocabulary, Arabic Bridge)
+
+Details in `docs/CONTENT.md`. On the Mac:
+
+```bash
+just content-fetch           # frequency sources (~60 MB) into data/raw/
+just content-freq            # rebuilds content/freq/id.tsv (should produce no diff)
+just content-fetch kaikki    # Wiktionary extracts from kaikki.org (~100 MB)
+just content-kaikki          # import + Arabic Bridge cross-check report
+just content-fetch jvwiki    # Javanese Wikipedia dump (~70 MB)
+just content-freq-jv         # content/freq/jv.tsv
+just content-check           # validate everything
+just content-review 1        # review sheet for gloss batch 1 → build/review/
+```
+
+Commit the changed files under `content/` after the kaikki and jvwiki steps.
+
+## 7. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.
