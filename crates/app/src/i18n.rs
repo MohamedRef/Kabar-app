@@ -27,6 +27,7 @@ pub enum Msg {
     SettingsDigits,
     SettingsDevice,
     SettingsShowWelcome,
+    SettingsSounds,
     PenLabIntro,
     PenLabClear,
     PenLabSave,
@@ -123,6 +124,9 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (SettingsShowWelcome, ArEg) => "اعرض شاشة الترحيب تاني",
         (SettingsShowWelcome, Ar) => "اعرض شاشة الترحيب مجددًا",
         (SettingsShowWelcome, En) => "Show the welcome screen again",
+        (SettingsSounds, ArEg) => "أصوات الدروس والمراجعة",
+        (SettingsSounds, Ar) => "أصوات الدروس والمراجعة",
+        (SettingsSounds, En) => "Lesson and review sounds",
         (PenLabIntro, ArEg) => {
             "اكتب وارسم هنا بالقلم وبصباعك. جرّب تقرّب القلم من غير ما تلمس، وزرار القلم، والممحاة. وبعدين احفظ التقرير وابعته."
         }
