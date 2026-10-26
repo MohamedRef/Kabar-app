@@ -1,0 +1,89 @@
+# Route table for the AI router (spec §19, PLAN §9).
+#
+# Per task: engines that passed the task's golden set, best first. The router
+# also drops engines that are switched off, paid engines while the $0 hard
+# stop is on, and any engine that trains on inputs (gemini_free) for personal
+# tasks. A parse check rejects a personal task listed with gemini_free.
+#
+# status = "provisional" until the bake-off (docs/BAKEOFF.md) has run on the
+# Mac; answers from provisional routes carry a badge. Re-write this file from
+# the bake-off report. Optional per task: prompt_version (pin a template) and
+# max_tokens (output cap; the proxy default otherwise).
+
+# --- Reading ---------------------------------------------------------------
+
+[analyze_text]
+engines = ["workers_ai", "gemini_free", "local", "claude"]
+status = "provisional"
+# One entry per word plus two translations: long chat screenshots need room.
+max_tokens = 4096
+
+[explain_sentence]
+engines = ["workers_ai", "gemini_free", "local", "claude"]
+status = "provisional"
+
+[structure_screenshot]
+engines = ["local", "workers_ai", "gemini_free", "claude"]
+status = "provisional"
+
+# --- Practice --------------------------------------------------------------
+
+[grade_answer]
+engines = ["workers_ai", "gemini_free", "local", "claude"]
+status = "provisional"
+
+[roleplay_turn]
+engines = ["workers_ai", "gemini_free", "local", "claude"]
+status = "provisional"
+
+[read_handwriting]
+engines = ["local", "workers_ai", "gemini_free", "claude"]
+status = "provisional"
+
+[guess_sketch]
+engines = ["local", "workers_ai", "gemini_free", "claude"]
+status = "provisional"
+
+[check_strokes]
+engines = ["local", "workers_ai", "gemini_free", "claude"]
+status = "provisional"
+
+[mind_map]
+engines = ["workers_ai", "gemini_free", "local", "claude"]
+status = "provisional"
+
+# --- Content ---------------------------------------------------------------
+
+[story_episode]
+engines = ["workers_ai", "gemini_free", "local", "claude"]
+status = "provisional"
+
+[radio_script]
+engines = ["workers_ai", "gemini_free", "local", "claude"]
+status = "provisional"
+
+# --- Personal: never gemini_free --------------------------------------------
+
+[placement_test]
+engines = ["workers_ai", "local", "claude"]
+status = "provisional"
+
+[level_check]
+engines = ["workers_ai", "local", "claude"]
+status = "provisional"
+
+[daily_plan]
+engines = ["workers_ai", "local", "claude"]
+status = "provisional"
+
+[daily_recap]
+engines = ["workers_ai", "local", "claude"]
+status = "provisional"
+
+[weekly_report]
+engines = ["workers_ai", "local", "claude"]
+status = "provisional"
+
+[coach_message]
+engines = ["workers_ai", "local", "claude"]
+status = "provisional"
