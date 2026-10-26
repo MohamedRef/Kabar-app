@@ -79,7 +79,8 @@ jobs:
           # On failure, the tail of dx's output becomes annotations, readable
           # from the API without the raw log.
           if ! dx bundle --platform macos --release --package-types macos --out-dir ../../dist/mac > ../../dx-bundle.log 2>&1; then
-            tail -n 40 ../../dx-bundle.log | sed 's/^/::error::/'
+            # GitHub keeps 10 annotations per step: send the error lines.
+            grep -iE 'error|failed|panick|not found|no such' ../../dx-bundle.log | grep -v ' INFO Compiled' | tail -n 9 | sed 's/^/::error::/'
             exit 1
           fi
           tail -n 5 ../../dx-bundle.log
