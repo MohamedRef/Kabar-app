@@ -11,6 +11,7 @@ use std::path::{Path, PathBuf};
 use anyhow::{Context, Result, bail};
 use clap::Subcommand;
 use kabar_core::ai::tasks::{AiOutput, AnalyzeText, GradeAnswer};
+use kabar_core::learn::LearnEntry;
 use kabar_protocol::ai::Task;
 use kabar_protocol::content::GoldenSet;
 use serde_json::Value;
@@ -163,6 +164,22 @@ fn check_typed(task: Task, input: &Value, expect: &Value) -> Vec<String> {
                     }
                 }
                 Err(e) => p.push(format!("expect is not a GradeAnswer: {e}")),
+            }
+        }
+        Task::LearnEntry => {
+            let sources = input.get("sources").and_then(Value::as_array);
+            if !str_field("lang") || !str_field("word") || !sources.is_some_and(|s| !s.is_empty()) {
+                p.push("input needs lang, word and sources[]".into());
+            }
+            if !expect.is_null() {
+                match serde_json::from_value::<LearnEntry>(expect.clone()) {
+                    Ok(out) => {
+                        if let Err(e) = out.validate() {
+                            p.push(format!("expect: {e}"));
+                        }
+                    }
+                    Err(e) => p.push(format!("expect is not a LearnEntry: {e}")),
+                }
             }
         }
         _ => {}

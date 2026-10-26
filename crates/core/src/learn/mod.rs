@@ -355,13 +355,11 @@ pub fn draft(prepared: &Prepared, answer: &Answer<LearnEntry>) -> TaughtEntry {
             affixes: a.affixes.clone(),
             senses: a.senses.clone(),
             examples: a.examples.clone(),
-            // Filled in when the learner approves a Javanese entry against the
-            // speech-level table; the model doesn't guess them.
-            indonesian: None,
-            speech_level: None,
             note: a.note.clone(),
             false_friend: a.false_friend.clone(),
             arabic_origin: a.arabic_origin.clone(),
+            indonesian: None,
+            speech_level: None,
             status: ReviewStatus::Unverified,
             provenance: TaughtEntry::provenance(&format!("learn_entry@v{}", answer.prompt_version)),
         },
