@@ -1,0 +1,291 @@
+schema: kabar.lesson/v1
+id: j1.u04.l04
+language: jv
+title: Ulangan J1.4
+can_do:
+  ar_eg: ترد على أربع رسايل شات.
+  ar: أن تردّ على أربع رسائل دردشة.
+  en: Reply to four chat messages.
+slides:
+  - title: Tak, di, kok
+    body:
+      ar_eg: |
+        مراجعة الأفعال:
+        - tak + فعل = أنا (هـ): Tak tuku = هاخده (kubeli). Sek tak lapor pusat = استنى، هبلّغ الإدارة.
+        - di + فعل = المبني للمجهول: dituku = اتشرى (dibeli).
+        - kok + فعل = إنت (kau-): Layange wis kok waca? (أقل استخدامًا)
+        - بعد tak / di الفعل بيرجع لأصله: maca → tak waca، diwaca.
+      ar: |
+        مراجعة الأفعال:
+        - tak + فعل = سأفعل (kubeli): Tak tuku = سأشتريه، وSek tak lapor pusat = انتظر، سأبلغ المركز.
+        - di + فعل = المبني للمجهول: dituku = اشتُري (dibeli).
+        - kok + فعل = فعلتَه أنت (kau-): Layange wis kok waca? (أقل استعمالًا)
+        - بعد tak / di يعود الفعل إلى جذره: maca → tak waca، diwaca.
+      en: |
+        Verb review:
+        - tak + verb = I (will): Tak tuku = I'll buy it (kubeli). Sek tak lapor pusat = Hold on, I'll report to HQ.
+        - di + verb = passive: dituku = bought (dibeli).
+        - kok + verb = by you (kau-): Layange wis kok waca? (less common)
+        - After tak / di the verb takes its base form: maca → tak waca, diwaca.
+    grammar: jv.proclitic.tak-kok-di
+    examples:
+      - text: Tak tunggu, ya.
+        ar_eg: هستناك، ماشي؟
+        ar: سأنتظرك، حسنًا؟
+        en: I'll wait for you, OK?
+  - title: Ta, ae, lho, kok, ya
+    body:
+      ar_eg: |
+        والبهارات:
+        - ta / to = ولا إيه؟ · ae / wae = بس · lho = على فكرة!
+        - kok في الأول = ليه كده؟! · kok في الآخر = والله (بتطمّن)
+        - ya = ماشي؟ · sek = الأول / استنى · mbok = ما تـ… (وسط جاوة)
+      ar: |
+        والأدوات:
+        - ta / to = أليس كذلك؟ · ae / wae = فقط · lho = للتنبيه
+        - kok في الأول = للتعجب · kok في الآخر = للطمأنة
+        - ya = حسنًا؟ · sek = أولًا / انتظر · mbok = لِمَ لا (وسط جاوة)
+      en: |
+        And the spices:
+        - ta / to = right? · ae / wae = just · lho = you know!
+        - kok first = how come?! · kok last = really (reassuring)
+        - ya = OK? · sek = first / hold on · mbok = why don't you (Central Java)
+    grammar: jv.particle.basic
+    examples:
+      - text: Koen wis mangan ta, rek?
+        ar_eg: كلت، مش كده يا صاحبي؟
+        ar: أكلتَ، أليس كذلك يا صاح؟
+        en: You've eaten, right, mate?
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tak tuku
+        ar_eg: هشتريه (kubeli)
+        ar: سأشتريه (kubeli)
+        en: I'll buy it (kubeli)
+      - text: dituku
+        ar_eg: اتشرى (dibeli)
+        ar: اشتُري (dibeli)
+        en: bought (dibeli)
+      - text: kok tuku
+        ar_eg: إنت اشتريته (kaubeli)
+        ar: اشتريتَه أنت (kaubeli)
+        en: you buy it (kaubeli)
+      - text: tak tunggu
+        ar_eg: هستناك (kutunggu)
+        ar: سأنتظرك (kutunggu)
+        en: I'll wait (kutunggu)
+    words: [tuku, tunggu]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: lapor
+        ar_eg: يبلّغ
+        ar: يُبلغ
+        en: report
+      - text: takon
+        ar_eg: يسأل
+        ar: يسأل
+        en: ask
+      - text: ngomong
+        ar_eg: يتكلم
+        ar: يتكلم
+        en: speak, say
+      - text: larang
+        ar_eg: غالي
+        ar: غالٍ
+        en: expensive
+      - text: mulih
+        ar_eg: يروّح
+        ar: يعود إلى البيت
+        en: go home
+    words: [lapor, takon, ngomong, larang, mulih]
+  - id: e03
+    type: multiple_choice
+    question: Sek tak lapor pusat
+    question_meaning:
+      ar_eg: رسالة 1 — ترد بإيه؟
+      ar: الرسالة ١ — بمَ تردّ؟
+      en: Message 1 — how do you reply?
+    options: ["Iya, tak tunggu.", "Kok larang?", "Aku teh ae."]
+    answer: 0
+    explain:
+      ar_eg: |-
+        هو هيسأل الإدارة، فإنت تستنى: «Iya, tak tunggu».
+      ar: |-
+        سيسأل الإدارة، فتنتظر: «Iya, tak tunggu».
+      en: |-
+        He's checking with head office, so you wait: "Iya, tak tunggu".
+    words: [tunggu]
+  - id: e04
+    type: multiple_choice
+    question: Koen wis mangan ta, rek?
+    question_meaning:
+      ar_eg: رسالة 2 — لسه ماكلتش. ترد بإيه؟
+      ar: الرسالة ٢ — لم تأكل بعد. بمَ تردّ؟
+      en: Message 2 — you haven't eaten yet. How do you reply?
+    options: ["Durung, rek.", "Tak lapor, rek.", "Wis, rek."]
+    answer: 0
+    explain:
+      ar_eg: durung = لسه. ده الرد الطبيعي على «wis …?».
+      ar: durung = ليس بعد، وهو الجواب الطبيعي عن «wis …?».
+      en: durung = not yet, the natural answer to "wis …?".
+    words: [durung]
+  - id: e05
+    type: multiple_choice
+    question: arp dicul piro?
+    question_meaning:
+      ar_eg: رسالة 3 — حد عايز يشتري موبايلك القديم. بيسأل عن إيه؟
+      ar: الرسالة ٣ — أحدهم يريد شراء هاتفك القديم. عمّ يسأل؟
+      en: Message 3 — someone wants to buy your old phone. What are they asking?
+    options: ["The price you'll sell it for", "When you'll arrive", "Where you live"]
+    answer: 0
+    explain:
+      ar_eg: arp = arep، dicul = diculké (يتباع)، piro = pira (بكام).
+      ar: arp = arep، وdicul = diculké، وpiro = pira.
+      en: arp = arep, dicul = diculké (sold), piro = pira (how much).
+    words: [arep, diculké, pira]
+  - id: e06
+    type: multiple_choice
+    question: Kok larang?
+    question_meaning:
+      ar_eg: أنهي جملة ليها نفس الإحساس بالمصري؟
+      ar: أيّ عبارة عامية تحمل الإحساس نفسه؟
+      en: Which Egyptian phrase has the same feel?
+    options: ["غالي، مش كده؟", "غالي كده ليه؟!", "غالي بس."]
+    answer: 1
+    words: [kok, larang]
+  - id: e07
+    type: listen
+    text: Bukune wis tak waca.
+    options: ["Bukune wis tak waca.", "Bukune arep tak waca.", "Bukune wis diwaca."]
+    answer: 0
+    words: [maca]
+  - id: e08
+    type: fill_blank
+    sentence: HP-ne wis ___ Cak Heru.
+    meaning:
+      ar_eg: الموبايل هيرو اشتراه خلاص. (HP-nya sudah dibeli Cak Heru.)
+      ar: اشترى هيرو الهاتف. (HP-nya sudah dibeli Cak Heru.)
+      en: Cak Heru has bought the phone. (HP-nya sudah dibeli Cak Heru.)
+    options: ["dituku", "tak tuku", "tuku"]
+    answers: [dituku]
+    words: [tuku]
+  - id: e09
+    type: fill_blank
+    sentence: Aku kopi ___.
+    meaning:
+      ar_eg: أنا قهوة بس. (سورابايا)
+      ar: قهوة فقط من فضلك. (سورابايا)
+      en: Just coffee for me. (Surabaya)
+    options: ["ta", "ae", "lho"]
+    answers: [ae]
+    words: [ae]
+  - id: e10
+    type: build_sentence
+    source:
+      ar_eg: رسالة 4 — «هروّح الأول، ماشي؟»
+      ar: الرسالة ٤ — «سأعود إلى البيت أولًا، حسنًا؟»
+      en: Message 4 — "I'm heading home now, OK?"
+    answer: Aku mulih sek, ya.
+    distractors: [pulang, kok]
+    words: [mulih, sek]
+  - id: e11
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: استنى، هبلّغ الإدارة.
+      ar: انتظر، سأبلغ المركز.
+      en: Hold on, I'll report to HQ.
+    answers:
+      - Sek, tak lapor pusat.
+      - Sek tak lapor pusat
+      - Sek, tak lapor pusat
+      - Sek tak lapor pusat.
+      - Sik, tak lapor pusat.
+      - Sek, taklapor pusat.
+      - Dhisik, tak lapor pusat.
+    words: [sek, lapor, pusat]
+  - id: e12
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: مفيش مشكلة والله.
+      ar: لا بأس، صدقني.
+      en: It's fine, really.
+    answers:
+      - Ora apa-apa kok.
+      - Ora apa-apa kok
+      - Rapopo kok.
+      - Rapopo kok
+      - Ra papa kok
+      - Gak apa-apa kok.
+      - Gak popo kok
+    words: [ora apa-apa, kok]
+  - id: e13
+    type: translate
+    direction: from_target
+    source_text: Mbok mangan sek.
+    answers_meaning:
+      ar_eg: ["ما تاكل الأول!", "ما تاكل الأول", "كُل الأول طيب", "طب ما تاكل الأول"]
+      ar: ["لِمَ لا تأكل أولًا؟", "كُل أولًا", "هلّا أكلت أولًا"]
+      en: ["Why don't you eat first?", "Eat first, why don't you?", "Go on, eat first", "Why not eat first?"]
+    words: [mbok, mangan, sek]
+  - id: e14
+    type: dictation
+    text: Kurmane enak lho!
+    meaning:
+      ar_eg: البلح حلو أوي على فكرة!
+      ar: التمر لذيذ حقًا!
+      en: The dates are really good, you know!
+    words: [kurma, lho]
+  - id: e15
+    type: speaking
+    text: Sek, tak lapor pusat.
+    meaning:
+      ar_eg: استنى، هبلّغ الإدارة.
+      ar: انتظر، سأبلغ المركز.
+      en: Hold on, I'll report to HQ.
+    words: [sek, lapor]
+dialogue:
+  title: Sore nang Ampel
+  lines:
+    - speaker: Cak Heru
+      text: Mohamed, koen wis tuku kurma ta?
+      ar_eg: يا محمد، إنت اشتريت البلح، مش كده؟
+      ar: يا محمد، اشتريت التمر، أليس كذلك؟
+      en: Mohamed, you've bought the dates, right?
+    - speaker: Mohamed
+      text: Durung. Pak, kurma Ajwa isih ana?
+      ar_eg: لسه. يا حاج، بلح العجوة لسه موجود؟
+      ar: ليس بعد. يا سيدي، هل ما زال تمر العجوة متوفرًا؟
+      en: Not yet. Sir, are there still Ajwa dates?
+    - speaker: Pak Hasan
+      text: Isih ana lho, Mas.
+      ar_eg: لسه موجود على فكرة يا ابني.
+      ar: ما زال متوفرًا يا بنيّ.
+      en: Still got some, you know.
+    - speaker: Mohamed
+      text: Apik! Tak tuku, Pak.
+      ar_eg: حلو! هاخده يا حاج.
+      ar: جميل! سأشتريه يا سيدي.
+      en: Great! I'll take them, sir.
+    - speaker: Cak Heru
+      text: Wis, ayo mulih, rek!
+      ar_eg: خلاص، يلا نروّح يا جدعان!
+      ar: انتهينا، هيا نعود إلى البيت يا جماعة!
+      en: Right, let's go home, guys!
+souvenir:
+  id: j1.u04.souvenir
+  title: Masjid Sunan Ampel
+  note:
+    ar_eg: |
+      حي Ampel هو «الحي العربي» في سورابايا: بلح، وبرفانات، وعيلات عربية-جاوية عايشة هنا من القرن الخامستاشر. وفي قلبه مسجد Sunan Ampel، اللي أسسه Sunan Ampel — واحد من «الأولياء التسعة» (Wali Sanga) اللي نشروا الإسلام في جاوة. هتسمع هناك جاوي وإندونيسي وكلمات عربية في نفس الجملة، فإنت هنا في بيتك بالظبط!
+    ar: |
+      حيّ Ampel هو الحي العربي في سورابايا: تمور وعطور وأسر عربية جاوية مقيمة فيه منذ القرن الخامس عشر. وفي قلبه مسجد Sunan Ampel الذي أسسه Sunan Ampel، أحد «الأولياء التسعة» (Wali Sanga) الذين نشروا الإسلام في جاوة. وستسمع هناك الجاوية والإندونيسية وألفاظًا عربية في الجملة الواحدة، فأنت هنا في بيتك.
+    en: |
+      The Ampel quarter is Surabaya's Arab town: dates, perfume, and Arab-Javanese families since the 15th century. At its heart stands the mosque of Sunan Ampel, one of the Wali Sanga — the nine saints who brought Islam to Java. You'll hear Javanese, Indonesian and Arabic words in a single sentence there, so you'll feel right at home!
+review:
+  status: draft
+  verified: false

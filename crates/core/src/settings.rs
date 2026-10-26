@@ -9,20 +9,33 @@ use crate::locale::UiLanguage;
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum Theme {
+    /// Follows the OS: [`Theme::Light`] by day, [`Theme::Dark`] by night.
     #[default]
     System,
+    /// Paper: warm off-white.
     Light,
+    /// Merapi: black volcanic sand.
     Dark,
+    /// Malam: very dark and warm, low blue light, for studying at night.
+    Night,
+    /// Batik: deep indigo.
+    Batik,
+    /// Sawah: rice-terrace green.
+    Sawah,
 }
 
 impl Theme {
-    pub const ALL: [Self; 3] = [Self::System, Self::Light, Self::Dark];
+    pub const ALL: [Self; 6] = [Self::System, Self::Light, Self::Dark, Self::Night, Self::Batik, Self::Sawah];
 
+    /// Stable id: stored in settings, synced, and used as `data-theme`.
     pub fn as_str(self) -> &'static str {
         match self {
             Self::System => "system",
             Self::Light => "light",
             Self::Dark => "dark",
+            Self::Night => "night",
+            Self::Batik => "batik",
+            Self::Sawah => "sawah",
         }
     }
 }
@@ -114,5 +127,13 @@ mod tests {
         let s = Settings::from_pairs([("theme", "\"neon\""), ("eastern_digits", "true"), ("nope", "1")]);
         assert_eq!(s.theme, Theme::System);
         assert!(s.eastern_digits);
+    }
+
+    #[test]
+    fn theme_ids_round_trip() {
+        for theme in Theme::ALL {
+            let s = Settings::from_pairs([("theme", format!("\"{}\"", theme.as_str()).as_str())]);
+            assert_eq!(s.theme, theme);
+        }
     }
 }

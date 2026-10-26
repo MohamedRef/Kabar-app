@@ -74,6 +74,14 @@ just check                # fmt + clippy + tests: all green
 - [ ] On both devices, check the Indonesian voice is installed: Settings → General management → Text-to-speech output → engine settings (Samsung or Google) → Install voice data → Indonesian. If the app shows "download the Indonesian voice", that's this step.
 - [ ] Tell me whether listen/dictation, slow replay and review audio cards speak on Android (the app now uses Android's own TextToSpeech). The first tap after launch can take a second while the voice engine starts.
 
+## 3c. Reader and Screenshot Decoder (~20 min) — [RUN.md §9](RUN.md)
+- [ ] `git pull && just check && just run-mac`, open **Reader**, paste the §24 chat lines, hover and click words; try split mode and the three explanation voices.
+- [ ] Mac OCR: Reader → "Open a screenshot" (or drag an image in) with a WhatsApp screenshot; check Apple Vision reads it (first real test of the Vision code).
+- [ ] `just apk` while online (first build fetches ML Kit from Google Maven; it must print "Kotlin glue present"), then `just install <serial>` on the S24 Ultra and Tab S11.
+- [ ] On each device: share text from WhatsApp → **Kabar**; select text → ⋮ → **Kabar**; take a screenshot → Share → **Kabar**. `adb logcat -s KabarShare` if a share is ignored.
+- [ ] Pen in the Reader: hover a word (peek), tap it (card), loop around a phrase (lookup), stroke across a phrase (highlight saved). Tell me how it feels and anything that misfires.
+- [ ] Send me one or two real WhatsApp screenshots you decoded (and how well the bubbles came out), so I can tune the screenshot structuring on real data.
+
 ## 4. Google sign-in clients (~10 min) — [CLOUD.md §3.2](CLOUD.md)
 
 - [ ] Print the release SHA-1: `keytool -list -v -keystore ~/.kabar/kabar-release.jks -alias kabar`. The password is in Keychain under "kabar-android".
@@ -121,7 +129,7 @@ This decides which free engine answers each AI task. Until it runs, every route 
 - [ ] Run the bake-off runner (command will be in BAKEOFF.md once it lands) and send me `bakeoff/runs/`. I score it blind with you, then write `docs/bakeoff-report.md` and the final `prompts/routes.toml`.
 - [ ] Spot-check at least 10% of the scored items, plus every Javanese one.
 
-## 7b. Teach Kabar (~10 min, after Kabar Cloud is up) — [RUN.md §8](RUN.md)
+## 7b. Teach Kabar (~10 min, after Kabar Cloud is up) — [RUN.md §9](RUN.md)
 
 - [ ] Mac app → **Teach Kabar**: tap **Search Google** and check it opens your browser (not a window inside Kabar). Same on the phone.
 - [ ] Choose **Wiktionary** for `kabar` and tap **Teach Kabar**. If it says Wiktionary can't be reached, tell me: the WebView may block the request.

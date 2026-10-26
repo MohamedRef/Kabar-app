@@ -106,6 +106,7 @@ pub fn Today() -> Element {
                     }
                     Snooze { profile: profile.clone(), goal_met: progress.goal_met }
                 }
+                crate::lesson::PlacementInvite {}
                 crate::play::PagiTodayCard {}
                 // On the phone, Kak Nur and Settings live here instead of the
                 // bottom bar (it keeps five items).

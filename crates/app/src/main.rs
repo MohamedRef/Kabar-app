@@ -10,6 +10,7 @@ mod lesson;
 mod penlab;
 mod platform;
 mod play;
+mod reader;
 mod review;
 mod screens;
 mod store;
@@ -214,24 +215,38 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     use_width_tracking(ui.width);
     use_cloud(&db, path, ui);
     coach::use_clock(coach, db.clone());
+    let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
+    use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
+    use_share_inbox(ui, inbox);
 
     let settings = ui.settings.read();
     let lang = settings.ui_language;
     let theme = settings.theme.as_str();
     let width = ui.width.read().as_str();
-    let batik = use_memo(move || theme::kawung_tile(coach.batik_color(), 0.06, 72));
+    let theme_css = use_hook(theme::stylesheet);
+    // The theme draws the kawung background in its own colour; a batik from
+    // the Warung overrides it on this device.
+    let batik = use_memo(move || {
+        let chosen = coach.batik.read().as_deref().is_some_and(|id| !id.is_empty());
+        if chosen {
+            format!("--batik: {}", theme::kawung_tile(coach.batik_color(), 0.06, 72))
+        } else {
+            String::new()
+        }
+    });
     let onboarded = coach.profile.read().is_some();
 
     rsx! {
         document::Title { "Kabar" }
         style { {MAIN_CSS} }
+        style { {theme_css} }
         div {
             class: "app",
             lang: lang.tag(),
             dir: lang.dir().as_str(),
             "data-theme": theme,
             "data-width": width,
-            style: "--batik: {batik}",
+            style: "{batik}",
             if !settings.welcomed {
                 screens::Welcome {}
             } else if !onboarded {
@@ -352,6 +367,29 @@ fn use_width_tracking(mut width: Signal<WidthClass>) {
     });
 }
 
+/// Checks for text or images shared to Kabar (Android share sheet) at start
+/// and whenever the window comes back to the front, and opens the Reader.
+fn use_share_inbox(ui: Ui, inbox: reader::Inbox) {
+    use_future(move || async move {
+        let mut eval = document::eval(
+            r#"
+            const send = () => { if (!document.hidden) dioxus.send(true); };
+            document.addEventListener("visibilitychange", send);
+            window.addEventListener("focus", send);
+            send();
+            await new Promise(() => {});
+            "#,
+        );
+        while eval.recv::<bool>().await.is_ok() {
+            if let Some(input) = platform::take_shared_input() {
+                let (mut slot, mut screen) = (inbox.0, ui.screen);
+                slot.set(Some(input));
+                screen.set(Screen::Reader);
+            }
+        }
+    });
+}
+
 #[component]
 fn Shell() -> Element {
     let ui = use_context::<Ui>();
@@ -394,7 +432,7 @@ fn Shell() -> Element {
                     Screen::Coach => rsx! { coach::coach_screen::CoachScreen {} },
                     Screen::Play => rsx! { play::Play {} },
                     Screen::Journey => rsx! { journey::JourneyScreen {} },
-                    Screen::Reader => rsx! { screens::ComingSoon { title: Msg::NavReader, milestone: "M5" } },
+                    Screen::Reader => rsx! { reader::Reader {} },
                     Screen::Review => rsx! { review::ReviewScreen {} },
                     Screen::Studio => rsx! { screens::ComingSoon { title: Msg::NavStudio, milestone: "M9" } },
                     Screen::Settings => rsx! { screens::SettingsScreen {} },

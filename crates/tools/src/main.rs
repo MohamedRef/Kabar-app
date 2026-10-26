@@ -73,7 +73,7 @@ fn main() -> Result<()> {
         Command::Schemas { check } => schemas::run(&root, check),
         Command::Validate => {
             schemas::run(&root, true)?;
-            gloss::run(&root, gloss::Cmd::Validate { batch: None })?;
+            gloss::run(&root, gloss::Cmd::Validate { batch: None, lang: None })?;
             bridge::run(&root, bridge::Cmd::Validate)?;
             let mut issues = gloss::crosscheck_bridge(&root, kabar_protocol::content::Lang::Id)?;
             issues.extend(gloss::crosscheck_bridge(&root, kabar_protocol::content::Lang::Jv)?);

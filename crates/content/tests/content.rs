@@ -99,3 +99,14 @@ fn lesson_checks_reject_broken_lessons() {
         assert!(found.iter().any(|p| p.contains(expected)), "expected '{expected}', got {found:?}");
     }
 }
+
+#[test]
+fn javanese_lessons_and_story_assets_exist() {
+    let report = check_repo(root()).expect("content files load");
+    for (level, n) in [("j1.", 28), ("j2.", 24), ("j3.", 24)] {
+        assert_eq!(report.lessons.iter().filter(|l| l.starts_with(level)).count(), n, "{level} lessons");
+    }
+    for id in ["mas-dimas", "bu-siti", "mbak-gadis", "mas-ardi", "sinetron.e01", "radio.bipa1.u01"] {
+        assert!(report.stories.iter().any(|s| s == id), "missing {id}");
+    }
+}

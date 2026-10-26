@@ -1,6 +1,7 @@
 //! Build-time content for Kabar: the curriculum (`curriculum/*.yaml`), the
 //! grammar library (`content/grammar/**.yaml`), lessons
-//! (`content/lessons/**.yaml`) and level/placement tests (`content/tests/**.yaml`).
+//! (`content/lessons/**.yaml`), level/placement tests (`content/tests/**.yaml`),
+//! conversation personas, Sinetron episodes and Kabar Radio scripts.
 //!
 //! Every file is checked twice: structurally against its JSON Schema in
 //! `schemas/`, then semantically (unique ids, ids nested under their parents,
@@ -21,8 +22,8 @@ use model::{Curriculum, GrammarPoint};
 pub const GRAMMAR_LIBRARY_LEVELS: &[&str] =
     &["bipa1", "bipa2", "bipa3", "bipa4", "bipa5", "bipa6", "bipa7", "j1", "j2", "j3"];
 
-/// Levels whose every lesson must be written (M8: BIPA 1–2).
-pub const LESSON_LEVELS: &[&str] = &["bipa1", "bipa2"];
+/// Levels whose every lesson must be written (BIPA 1–2, J1–J3).
+pub const LESSON_LEVELS: &[&str] = &["bipa1", "bipa2", "j1", "j2", "j3"];
 
 pub const CURRICULUM_SCHEMA: &str = "schemas/curriculum.schema.json";
 pub const GRAMMAR_SCHEMA: &str = "schemas/grammar-point.schema.json";
@@ -51,6 +52,8 @@ pub struct Report {
     pub lessons: Vec<String>,
     /// Ids of the test files found (`bipa1.test`, `placement`, ...).
     pub tests: Vec<String>,
+    /// Ids of the persona, story and radio files found.
+    pub stories: Vec<String>,
 }
 
 impl Report {
@@ -184,6 +187,24 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
         let value = yaml_value(file)?;
         lessons::check_test(&file.display().to_string(), stem(file), &value, &index, &mut problems);
         report.tests.push(stem(file).to_owned());
+    }
+
+    type Checker = fn(&str, &str, &serde_json::Value, &lessons::Index, &mut Vec<String>);
+    let story_dirs: [(&str, Checker); 3] = [
+        ("content/personas", lessons::check_persona),
+        ("content/stories", lessons::check_story),
+        ("content/radio", lessons::check_radio),
+    ];
+    for (dir, check) in story_dirs {
+        let mut files = Vec::new();
+        if root.join(dir).exists() {
+            yaml_files(&root.join(dir), &mut files)?;
+        }
+        for file in &files {
+            let value = yaml_value(file)?;
+            check(&file.display().to_string(), stem(file), &value, &index, &mut problems);
+            report.stories.push(stem(file).to_owned());
+        }
     }
     report.problems.extend(problems);
     Ok(())

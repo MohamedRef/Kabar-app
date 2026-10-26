@@ -1,0 +1,260 @@
+schema: kabar.lesson/v1
+id: j3.u05.l03
+language: jv
+title: Tumbas batik
+can_do:
+  ar_eg: تشتري باتيك بالكراما.
+  ar: أن تشتري الباتيك بالكراما.
+  en: Buy batik in krama.
+slides:
+  - title: Batik tulis utawa batik cap?
+    body:
+      ar_eg: |
+        في Klewer هتلاقي نوعين:
+        - **batik tulis** = باتيك مرسوم باليد بالشمع، شغل أيام وأسابيع، وغالي.
+        - **batik cap** = باتيك مطبوع بختم نحاس، أسرع وأرخص.
+        كلمات مفيدة: **ingkang** = sing (yang، اللي): ingkang menika = اللي ده. **arta** = duit (فلوس).
+        وخطة الشرا كلها كراما: Nyuwun sewu → Reginipun pinten? → Awis… Saged kirang? → ... angsal? → Inggih، matur nuwun.
+      ar: |
+        ستجد في Klewer نوعين:
+        - **batik tulis** = باتيك يُرسم باليد بالشمع، يستغرق أيامًا أو أسابيع، وهو غالٍ.
+        - **batik cap** = باتيك يُطبع بختم نحاسي، أسرع وأرخص.
+        وكلمات مفيدة: **ingkang** = sing (yang، الذي): ingkang menika = هذا الذي هنا، و**arta** = duit (المال).
+        وخطة الشراء كلها كراما: Nyuwun sewu → Reginipun pinten? → Awis… Saged kirang? → ... angsal? → Inggih، matur nuwun.
+      en: |
+        At Klewer you'll find two kinds:
+        - **batik tulis** = hand-drawn with wax — days or weeks of work, and pricey.
+        - **batik cap** = stamped with a copper block — faster and cheaper.
+        Useful words: **ingkang** = sing (yang, the one that): ingkang menika = this one. **arta** = duit (money).
+        The whole purchase in krama: Nyuwun sewu → Reginipun pinten? → Awis… Saged kirang? → … angsal? → Inggih, matur nuwun.
+    grammar: jv.krama.numbers
+    examples:
+      - text: Ingkang menika batik tulis menapa batik cap, Bu?
+        ar_eg: اللي ده باتيك مرسوم ولا مطبوع يا حاجة؟
+        ar: هل هذا باتيك مرسوم باليد أم مطبوع يا سيدتي؟
+        en: Is this one hand-drawn or stamped batik, ma'am?
+      - text: Menika artanipun, Bu.
+        ar_eg: اتفضلي الفلوس يا حاجة.
+        ar: تفضّلي المال يا سيدتي.
+        en: Here's the money, ma'am.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: محمد عايز يعرف الباتيك ده مرسوم باليد ولا مطبوع. يسأل إزاي؟
+      ar: يريد محمد أن يعرف هل هذا الباتيك مرسوم باليد أم مطبوع. كيف يسأل؟
+      en: Mohamed wants to know whether this batik is hand-drawn or stamped. How does he ask?
+    options: ["Ingkang menika reginipun pinten, Bu?", "Ingkang menika batik tulis menapa batik cap, Bu?", "Batik menika saking pundi, Bu?"]
+    answer: 1
+    explain:
+      ar_eg: "tulis = مرسوم باليد، cap = مطبوع، وmenapa بين حاجتين معناها «ولا» (atau)."
+      ar: "tulis = مرسوم باليد، وcap = مطبوع، وmenapa بين خيارين بمعنى «أم» (atau)."
+      en: "tulis = hand-drawn, cap = stamped, and menapa between two choices means \"or\" (atau)."
+    words: [ingkang, batik tulis, batik cap]
+  - id: e02
+    type: listen
+    text: Batik tulis menika tigang atus ewu, Mas.
+    options: ["Batik cap menika tigang dasa ewu, Mas.", "Batik tulis menika tigang atus ewu, Mas.", "Batik tulis menika kalih atus ewu, Mas."]
+    answer: 1
+    words: [batik tulis, tiga, atus, ewu]
+  - id: e03
+    type: fill_blank
+    sentence: ___ menika pinten, Bu?
+    meaning:
+      ar_eg: اللي ده بكام يا حاجة؟
+      ar: بكم هذا (الذي هنا) يا سيدتي؟
+      en: How much is this one, ma'am?
+    options: ["Sinten", "Sing", "Ingkang"]
+    answers: [Ingkang]
+    explain:
+      ar_eg: sing نغوكو، وفي جملة كراما بتبقى ingkang.
+      ar: sing نغوكو، وهي في الكراما ingkang.
+      en: sing is ngoko; in krama it's ingkang.
+    words: [ingkang]
+  - id: e04
+    type: fill_blank
+    sentence: Wah, ___ sanget, Bu. Saged kirang?
+    meaning:
+      ar_eg: ياه، غالي أوي يا حاجة. ممكن تنزّلي؟
+      ar: يا له من غلاء يا سيدتي! هل يمكن التخفيض؟
+      en: Wow, very expensive, ma'am. Could you lower it?
+    answers: ["awis"]
+    explain:
+      ar_eg: awis = larang (غالي) بالكراما.
+      ar: awis = larang (غالٍ) بالكراما.
+      en: awis is krama larang (expensive).
+    words: [awis]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: عايز أشتري باتيك لماما.
+      ar: أريد أن أشتري باتيكًا لأمي.
+      en: I'd like to buy batik for my mother.
+    answer: Kula badhé tumbas batik kangge ibu kula.
+    distractors: [tuku, kanggo, aku]
+    explain:
+      ar_eg: kula (أنا) + badhé (arep) + tumbas (tuku) + kangge (kanggo) + ibu kula (ماما).
+      ar: kula (أنا) + badhé (arep) + tumbas (tuku) + kangge (kanggo) + ibu kula (أمي).
+      en: kula + badhé (arep) + tumbas (tuku) + kangge (kanggo) + ibu kula.
+    words: [badhé, tumbas, kangge]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: ميتين ألف ينفع يا حاجة؟
+      ar: هل يجوز بمئتي ألف يا سيدتي؟
+      en: Is two hundred thousand OK, ma'am?
+    answer: Kalih atus ewu angsal, Bu?
+    distractors: [rong, oleh]
+    words: [kalih, atus, ewu, angsal]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بالكراما) لا مؤاخذة يا حاجة، اللي ده بكام؟
+      ar: (بالكراما) عفوًا يا سيدتي، بكم هذا؟
+      en: (in krama) Excuse me, ma'am, how much is this one?
+    answers: ["Nyuwun sewu, Bu, ingkang menika pinten?", "Nyuwun sewu, Bu, ingkang menika pinten", "Nyuwun sewu Bu ingkang menika pinten?", "Nyuwun sewu Bu ingkang menika pinten", "Nyuwun sewu, Bu, ingkang menika reginipun pinten?", "Nyuwun sewu, Bu, ingkang menika reginipun pinten", "Nyuwun sewu Bu ingkang menika reginipun pinten?", "Nyuwun sewu Bu ingkang menika reginipun pinten", "Nyuwun sewu, Bu, menika pinten?", "Nyuwun sewu, Bu, menika pinten", "Nyuwun sewu Bu menika pinten?", "Nyuwun sewu Bu menika pinten", "Nyuwun sewu, Bu, niki pinten?", "Nyuwun sewu, Bu, niki pinten", "Nyuwun sewu Bu niki pinten?", "Nyuwun sewu Bu niki pinten", "Nyuwun sewu, Bu, ingkang niki pinten?", "Nyuwun sewu, Bu, ingkang niki pinten", "Nyuwun sewu Bu ingkang niki pinten?", "Nyuwun sewu Bu ingkang niki pinten", "Nyuwun sewu, Bu, reginipun pinten?", "Nyuwun sewu, Bu, reginipun pinten", "Nyuwun sewu Bu reginipun pinten?", "Nyuwun sewu Bu reginipun pinten"]
+    words: [nyuwun sewu, ingkang, pinten]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بالكراما) اتفضلي الفلوس يا حاجة.
+      ar: (بالكراما) تفضّلي المال يا سيدتي.
+      en: (in krama) Here's the money, ma'am.
+    answers: ["Menika artanipun, Bu.", "Menika artanipun, Bu", "Menika artanipun Bu.", "Menika artanipun Bu", "Niki artanipun, Bu.", "Niki artanipun, Bu", "Niki artanipun Bu.", "Niki artanipun Bu", "Menika arta, Bu.", "Menika arta, Bu", "Menika arta Bu.", "Menika arta Bu", "Mangga, menika artanipun, Bu.", "Mangga, menika artanipun, Bu", "Mangga menika artanipun Bu.", "Mangga menika artanipun Bu"]
+    explain:
+      ar_eg: arta = duit (فلوس) بالكراما، وartanipun = الفلوس دي (هنفهم -nipun في J3.6).
+      ar: arta = duit (المال) بالكراما، وartanipun = هذا المال (و-nipun في J3.6).
+      en: arta is krama duit (money); artanipun = the money (-nipun comes in J3.6).
+    words: [arta, menika]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بالكراما) أيوه، ينفع.
+      ar: (بالكراما) نعم، يجوز.
+      en: (in krama) Yes, that's OK.
+    answers: ["Inggih, angsal.", "Inggih, angsal", "Inggih angsal.", "Inggih angsal", "Nggih, angsal.", "Nggih, angsal", "Nggih angsal.", "Nggih angsal"]
+    words: [inggih, angsal]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Batik tulis langkung awis tinimbang batik cap.
+    answers_meaning:
+      ar_eg: ["الباتيك المرسوم أغلى من المطبوع.", "الباتيك اللي بالإيد أغلى من الباتيك المطبوع.", "batik tulis أغلى من batik cap."]
+      ar: ["الباتيك المرسوم باليد أغلى من المطبوع.", "batik tulis أغلى من batik cap."]
+      en: ["Hand-drawn batik is more expensive than stamped batik.", "Batik tulis is more expensive than batik cap.", "Hand-drawn batik costs more than stamped batik."]
+    explain:
+      ar_eg: langkung = luwih (أكتر، lebih) بالكراما، وtinimbang = من (daripada).
+      ar: langkung = luwih (أكثر، lebih) بالكراما، وtinimbang = من (daripada).
+      en: langkung is krama luwih (more, lebih); tinimbang = than (daripada).
+    words: [langkung, tinimbang, awis]
+  - id: e11
+    type: speaking
+    text: Wah, awis sanget, Bu. Kalih atus ewu angsal?
+    meaning:
+      ar_eg: ياه، غالي أوي يا حاجة. ميتين ألف ينفع؟
+      ar: إنه غالٍ جدًا يا سيدتي. هل يجوز بمئتي ألف؟
+      en: Wow, that's very expensive, ma'am. Is two hundred thousand OK?
+    words: [awis, kalih, atus, angsal]
+  - id: e12
+    type: dictation
+    text: Kalih atus seket ewu.
+    meaning:
+      ar_eg: ميتين وخمسين ألف.
+      ar: مئتان وخمسون ألفًا.
+      en: Two hundred and fifty thousand.
+    words: [kalih, atus, seket, ewu]
+dialogue:
+  title: Tumbas batik wonten Klewer
+  lines:
+    - speaker: Bu Siti
+      text: Mangga, Mas. Badhé pados menapa?
+      ar_eg: اتفضل يا أستاذ. بتدوّر على إيه؟
+      ar: تفضّل يا أستاذ. عمّ تبحث؟
+      en: Come in, please. What are you looking for?
+    - speaker: Mohamed
+      text: Kula badhé tumbas batik, Bu. Kangge ibu kula.
+      ar_eg: عايز أشتري باتيك يا حاجة. لماما.
+      ar: أريد أن أشتري باتيكًا يا سيدتي، لأمي.
+      en: I'd like to buy batik, ma'am. For my mother.
+    - speaker: Bu Siti
+      text: Menika batik tulis, menika batik cap.
+      ar_eg: ده باتيك مرسوم باليد، وده باتيك مطبوع.
+      ar: هذا باتيك مرسوم باليد، وهذا باتيك مطبوع.
+      en: This is hand-drawn batik, and this is stamped batik.
+    - speaker: Mohamed
+      text: Ingkang menika reginipun pinten, Bu?
+      ar_eg: اللي ده بكام يا حاجة؟
+      ar: بكم هذا يا سيدتي؟
+      en: How much is this one, ma'am?
+    - speaker: Bu Siti
+      text: Batik tulis menika tigang atus ewu, Mas.
+      ar_eg: الباتيك المرسوم ده بتلتمية ألف يا أستاذ.
+      ar: هذا الباتيك المرسوم بثلاثمئة ألف يا أستاذ.
+      en: This hand-drawn batik is three hundred thousand.
+    - speaker: Mohamed
+      text: Wah, awis sanget, Bu. Saged kirang?
+      ar_eg: ياه، غالي أوي يا حاجة. ممكن تنزّلي؟
+      ar: إنه غالٍ جدًا يا سيدتي. هل يمكن التخفيض؟
+      en: Wow, very expensive, ma'am. Could you lower it?
+    - speaker: Bu Siti
+      text: Kalih atus seket ewu, pripun?
+      ar_eg: ميتين وخمسين ألف، إيه رأيك؟
+      ar: مئتان وخمسون ألفًا، ما رأيك؟
+      en: Two hundred and fifty thousand, how's that?
+    - speaker: Mohamed
+      text: Kalih atus ewu angsal, Bu?
+      ar_eg: ميتين ألف ينفع يا حاجة؟
+      ar: هل يجوز بمئتي ألف يا سيدتي؟
+      en: Is two hundred thousand OK, ma'am?
+    - speaker: Bu Siti
+      text: Mas saged basa krama, nggih! Inggih sampun, angsal.
+      ar_eg: إنت بتعرف كراما كمان! خلاص، ماشي.
+      ar: أنت تتقن الكراما أيضًا! حسنًا، موافقة.
+      en: You can speak krama! All right then, OK.
+    - speaker: Mohamed
+      text: Matur nuwun sanget, Bu. Menika artanipun.
+      ar_eg: شكرًا جزيلًا يا حاجة. اتفضلي الفلوس.
+      ar: شكرًا جزيلًا يا سيدتي. تفضّلي المال.
+      en: Thank you very much, ma'am. Here's the money.
+new_words:
+  - word: batik tulis
+    pos: noun
+    ar_eg: باتيك مرسوم باليد بالشمع
+    ar: باتيك مرسوم باليد بالشمع
+    en: hand-drawn wax batik
+  - word: batik cap
+    pos: noun
+    ar_eg: باتيك مطبوع بختم نحاس
+    ar: باتيك مطبوع بختم نحاسي
+    en: stamped batik (copper block)
+  - word: ingkang
+    pos: conjunction
+    ar_eg: اللي (sing ← yang)، كراما
+    ar: الذي (sing ← yang)، كراما
+    en: who / which / the one that (ngoko sing, Indonesian yang), krama
+  - word: arta
+    pos: noun
+    ar_eg: فلوس (duit ← uang)، كراما
+    ar: مال (duit ← uang)، كراما
+    en: money (ngoko duit, Indonesian uang), krama
+  - word: pados
+    pos: verb
+    ar_eg: يدوّر على (golèk ← cari)، كراما
+    ar: يبحث عن (golèk ← cari)، كراما
+    en: to look for (ngoko golèk, Indonesian cari), krama
+  - word: langkung
+    pos: adverb
+    ar_eg: أكتر (luwih ← lebih)، كراما
+    ar: أكثر (luwih ← lebih)، كراما
+    en: more (ngoko luwih, Indonesian lebih), krama
+  - word: tinimbang
+    pos: preposition
+    ar_eg: من، في المقارنة (daripada)
+    ar: مِن، في المقارنة (daripada)
+    en: than (daripada)
+review:
+  status: draft
+  verified: false
