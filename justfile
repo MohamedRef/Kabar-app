@@ -2,6 +2,8 @@
 # Run `just` to list recipes.
 
 set shell := ["bash", "-euo", "pipefail", "-c"]
+# `.env` (git-ignored, see .env.example): Kabar Cloud URL and Google client for the app build.
+set dotenv-load := true
 
 app := "crates/app"
 dist := "dist"

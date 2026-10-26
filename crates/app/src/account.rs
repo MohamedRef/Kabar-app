@@ -105,9 +105,10 @@ pub fn AccountScreen() -> Element {
     let status = cloud.status.read().clone();
     let signed_in = status.email.is_some() || status.sync != SyncState::SignedOut;
 
-    // Load the device list whenever this screen opens signed in.
+    // Load the device list when this screen opens, and again after sign-in.
+    let state = use_memo(move || cloud.status.read().sync);
     use_effect(move || {
-        if cloud.status.read().sync != SyncState::SignedOut {
+        if matches!(state(), SyncState::Live | SyncState::CatchingUp) {
             cloud.send(Command::LoadDevices);
         }
     });
