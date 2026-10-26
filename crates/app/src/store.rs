@@ -190,7 +190,51 @@ const MIGRATIONS: &[&str] = &[
         op_id TEXT NOT NULL UNIQUE,
         op    TEXT NOT NULL
     ) STRICT;",
-    // 6: validated AI answers on this device, keyed by `CacheKey::id()`
+    // 6: Reader (M5). Texts, word statuses and highlights sync (one JSON
+    // document per row, mirrored from `sync_rows`); quality feedback lives
+    // only in `sync_rows` (append-only). Saved words stay on the device until
+    // the review deck takes them over.
+    "CREATE TABLE texts (
+        id          TEXT PRIMARY KEY,
+        payload     TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE TABLE word_status (
+        id          TEXT PRIMARY KEY,
+        payload     TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE TABLE highlights (
+        id          TEXT PRIMARY KEY,
+        payload     TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE INDEX highlights_text ON highlights (json_extract(payload, '$.text_id'));
+    CREATE TABLE saved_words (
+        id          TEXT PRIMARY KEY,
+        lexeme      TEXT NOT NULL,
+        surface     TEXT NOT NULL,
+        sentence    TEXT NOT NULL,
+        text_id     TEXT,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;",
+    // 7: validated AI answers on this device, keyed by `CacheKey::id()`
     // (task, engine, prompt version, input hash). Local only: every device
     // can re-ask, and Kabar Cloud keeps the shared copy in D1.
     "CREATE TABLE ai_cache (
@@ -218,6 +262,8 @@ const SYNCED_TABLES: &[&str] = &[
     "review_log",
     "taught_entries",
     "sync_rows",
+    "texts",
+    "saved_words",
 ];
 
 /// LWW tables that hold one JSON document per row id.
@@ -633,6 +679,16 @@ impl Store {
         Ok(LessonEvent { id, lesson_id: lesson_id.to_owned(), kind: kind.to_owned(), payload, hlc })
     }
 
+    /// The newest placement result (a `placed` event on lesson id
+    /// `placement`), from any device.
+    pub fn placement(&self) -> Result<Option<kabar_protocol::test::PlacementResult>> {
+        let last = self.lesson_events("placement")?.into_iter().rev().find(|e| e.kind == "placed");
+        Ok(match last {
+            Some(e) => Some(serde_json::from_str(&e.payload)?),
+            None => None,
+        })
+    }
+
     /// A lesson's events, oldest first.
     pub fn lesson_events(&self, lesson_id: &str) -> Result<Vec<LessonEvent>> {
         let mut stmt = self.conn.prepare(
@@ -705,7 +761,9 @@ pub struct LessonEvent {
 }
 
 // Review cards and the review log (M6).
+mod reader;
 mod reviews;
+pub use reader::{Highlight, SavedText, TextKind};
 // Teach Kabar's personal dictionary (spec §26).
 mod taught;
 
@@ -819,6 +877,10 @@ impl Typed {
             "cards" => Self::Doc("cards", "id", "payload"),
             "sessions" => Self::Doc("sessions", "device", "payload"),
             "taught_entries" => Self::Doc("taught_entries", "id", "entry"),
+            "texts" | "word_status" | "highlights" => {
+                let table = ["texts", "word_status", "highlights"].into_iter().find(|t| *t == table)?;
+                Self::Doc(table, "id", "payload")
+            }
             "xp_events" => Self::XpEvent,
             "review_log" => Self::Review,
             "lesson_events" => Self::LessonEvent,
@@ -1204,6 +1266,19 @@ mod tests {
         assert_eq!(events.iter().map(|e| e.id.as_str()).collect::<Vec<_>>(), [a.id.as_str(), b.id.as_str()]);
         let back: LessonCompleted = serde_json::from_str(&events[0].payload).unwrap();
         assert_eq!(back, done);
+    }
+
+    #[test]
+    fn the_newest_placement_wins() {
+        use kabar_protocol::test::PlacementResult;
+        let mut store = Store::open_in_memory().unwrap();
+        assert_eq!(store.placement().unwrap(), None);
+        let placed = |level: &str| PlacementResult { start_level: level.into(), sections: vec![] };
+        store.record_lesson_event("placement", "placed", &placed("bipa2")).unwrap();
+        store.record_lesson_event("placement", "placed", &placed("bipa3")).unwrap();
+        assert_eq!(store.placement().unwrap(), Some(placed("bipa3")));
+        // Placement never marks lessons done.
+        assert!(store.completed_lessons().unwrap().is_empty());
     }
 
     #[test]

@@ -1,0 +1,263 @@
+schema: kabar.lesson/v1
+id: j1.u04.l03
+language: jv
+title: Sek tak lapor pusat
+can_do:
+  ar_eg: تفك رسالة الشات بتاعة الـ SPEC وترد عليها.
+  ar: أن تفكّ رسالة الدردشة المرجعية وتردّ عليها.
+  en: Decode and answer the SPEC test chat.
+slides:
+  - title: Sek · tak · lapor · pusat
+    body:
+      ar_eg: |
+        الرسالة دي هتشوفها كتير لما تسأل محل على الواتساب. فكّها كلمة كلمة:
+        - sek = استنى / الأول (dhisik)
+        - tak = أنا هـ (مش tidak!)
+        - lapor = أبلّغ
+        - pusat = الإدارة / الفرع الرئيسي
+        يعني: «Sek tak lapor pusat» = «استنى، هبلّغ الإدارة (وأرجعلك)».
+        والرد المناسب: «Iya, tak tunggu» = ماشي، هستنى. أو «Oke, suwun».
+      ar: |
+        ستصادف هذه الرسالة كثيرًا حين تسأل متجرًا عبر واتساب، فلنفكّها كلمةً كلمة:
+        - sek = انتظر / أولًا (dhisik)
+        - tak = سأ… (لا tidak)
+        - lapor = أُبلغ
+        - pusat = الإدارة / الفرع الرئيسي
+        أي: «Sek tak lapor pusat» = «انتظر، سأبلغ الإدارة (ثم أعود إليك)».
+        والجواب المناسب: «Iya, tak tunggu» = حسنًا، سأنتظر، أو «Oke, suwun».
+      en: |
+        You'll get this message a lot when you ask a shop something on WhatsApp. Decode it word by word:
+        - sek = hold on / first (dhisik)
+        - tak = I'll (not tidak!)
+        - lapor = report
+        - pusat = head office / main branch
+        So "Sek tak lapor pusat" = "Hold on, I'll check with head office (and get back to you)."
+        A good reply: "Iya, tak tunggu" = OK, I'll wait. Or "Oke, suwun".
+    grammar: jv.proclitic.tak-kok-di
+    examples:
+      - text: Sek tak lapor pusat
+        ar_eg: استنى، هبلّغ الإدارة.
+        ar: انتظر، سأبلغ المركز.
+        en: Hold on, I'll report to HQ.
+      - text: Iya, tak tunggu.
+        ar_eg: ماشي، هستنى.
+        ar: حسنًا، سأنتظر.
+        en: OK, I'll wait.
+  - title: Isih ana lho!
+    body:
+      ar_eg: |
+        كلمات هتحتاجها في الشات ده (كلها اتعلمتها):
+        - isih ana? = لسه فيه؟ (= masih ada?)
+        - arep tuku kapan? = هتشتري إمتى؟
+        - lho / kok / ya = البهارات: Isih ana lho! = لسه فيه على فكرة!
+      ar: |
+        ألفاظ ستحتاجها في هذه الدردشة، وكلها مما تعلمت:
+        - isih ana? = هل ما زال متوفرًا؟ (= masih ada?)
+        - arep tuku kapan? = متى ستشتري؟
+        - lho / kok / ya للتلوين: Isih ana lho! = ما زال متوفرًا!
+      en: |
+        Words you'll need in this chat (you know them all):
+        - isih ana? = still available? (= masih ada?)
+        - arep tuku kapan? = when will you buy?
+        - lho / kok / ya for flavour: Isih ana lho! = Still got some, you know!
+    grammar: jv.particle.basic
+    examples:
+      - text: Kurma Ajwa isih ana?
+        ar_eg: بلح العجوة لسه موجود؟
+        ar: هل ما زال تمر العجوة متوفرًا؟
+        en: Are the Ajwa dates still available?
+exercises:
+  - id: e01
+    type: multiple_choice
+    question: Sek tak lapor pusat
+    question_meaning:
+      ar_eg: البيّاع بعتلك الرسالة دي. يقصد إيه؟
+      ar: أرسل لك البائع هذه الرسالة. ماذا يقصد؟
+      en: The shop assistant sends you this. What does he mean?
+    options: ["Sorry, I won't report it.", "Head office is closed.", "Hold on, I'll check with head office."]
+    answer: 2
+    explain:
+      ar_eg: sek = استنى، tak = أنا هـ، lapor = أبلّغ، pusat = الإدارة. tak هنا مش «لأ».
+      ar: sek = انتظر، وtak = سأ…، وlapor = أُبلغ، وpusat = الإدارة، وtak هنا ليست نفيًا.
+      en: sek = hold on, tak = I'll, lapor = report, pusat = head office. tak isn't "not" here.
+    words: [sek, lapor, pusat]
+  - id: e02
+    type: multiple_choice
+    question: Sek tak lapor pusat
+    question_meaning:
+      ar_eg: أنهي رد مناسب؟
+      ar: أيّ ردّ مناسب؟
+      en: Which reply fits?
+    options: ["Sugeng dalu.", "Iya, tak tunggu.", "Kowé ngapa?"]
+    answer: 1
+    explain:
+      ar_eg: هو هيسأل ويرجعلك، فإنت تقول «ماشي، هستنى».
+      ar: سيسأل ويعود إليك، فتقول «حسنًا، سأنتظر».
+      en: He'll check and get back to you, so you say "OK, I'll wait".
+    words: [tunggu]
+  - id: e03
+    type: listen
+    text: Sek, tak lapor pusat.
+    options: ["Sek, tak tuku pusat.", "Wis tak lapor pusat.", "Sek, tak lapor pusat."]
+    answer: 2
+    words: [sek, lapor]
+  - id: e04
+    type: fill_blank
+    sentence: Sek, tak ___ pusat.
+    meaning:
+      ar_eg: استنى، هبلّغ الإدارة.
+      ar: انتظر، سأبلغ المركز.
+      en: Hold on, I'll report to HQ.
+    answers: [lapor]
+    words: [lapor]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: ماشي يا كابتن، هستنى.
+      ar: حسنًا يا أخي، سأنتظر.
+      en: OK, Mas, I'll wait.
+    answer: Iya Mas, tak tunggu.
+    distractors: [tuku, ora]
+    words: [tunggu]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: بلح العجوة لسه موجود؟
+      ar: هل ما زال تمر العجوة متوفرًا؟
+      en: Are the Ajwa dates still available?
+    answers:
+      - Kurma Ajwa isih ana?
+      - Kurma Ajwa isih ana
+      - Kurma Ajwa isih ana, Mas?
+      - Mas, kurma Ajwa isih ana?
+      - Isih ana kurma Ajwa?
+      - Kurma Ajwa isih onok?
+      - Kurma Ajwane isih ana?
+    explain:
+      ar_eg: isih = masih، ana = ada. (وفي سورابايا onok.)
+      ar: isih = masih، وana = ada، وفي سورابايا onok.
+      en: isih = masih, ana = ada (Surabaya onok).
+    words: [isih, ana, kurma]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Sek tak lapor pusat
+    answers_meaning:
+      ar_eg: ["استنى، هبلّغ الإدارة.", "استنى، هبلغ الإدارة", "استنى هسأل الإدارة", "لحظة، هبلّغ الفرع الرئيسي", "استنى، هبلغ المركز"]
+      ar: ["انتظر، سأبلغ المركز.", "انتظر، سأبلغ الإدارة", "لحظة، سأبلغ المركز الرئيسي"]
+      en: ["Hold on, I'll report to HQ.", "Hold on, I'll check with head office.", "Wait, I'll report to head office", "One moment, I'll tell HQ", "Hold on, I'll report to the head office"]
+    words: [sek, lapor, pusat]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: هتشتري إمتى؟ (لصاحبك)
+      ar: متى ستشتري؟ (لصديقك)
+      en: When are you going to buy? (to a friend)
+    answers:
+      - Arep tuku kapan?
+      - Arep tuku kapan
+      - Kapan arep tuku?
+      - Kowé arep tuku kapan?
+      - Kowe arep tuku kapan?
+      - Kapan kowé arep tuku?
+      - Kapan kowe arep tuku?
+      - Koen kate tuku kapan?
+    words: [arep, tuku, kapan]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: هاخده يا كابتن. (هشتريه)
+      ar: سأشتريه يا أخي.
+      en: I'll buy it, Mas.
+    answers:
+      - Tak tuku, Mas.
+      - Tak tuku, Mas
+      - Tak tuku Mas
+      - Taktuku, Mas.
+      - Taktuku Mas
+    words: [tuku]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Isih ana lho, Mas!
+    answers_meaning:
+      ar_eg: ["لسه فيه على فكرة!", "لسه موجود على فكرة يا كابتن!", "لسه فيه يا كابتن!", "لسه موجود!"]
+      ar: ["ما زال متوفرًا!", "ما زال موجودًا يا أخي!", "ما زال هناك بعضه!"]
+      en: ["Still got some, you know!", "It's still available!", "They're still available, Mas!", "We still have some!"]
+    words: [isih, ana, lho]
+  - id: e11
+    type: dictation
+    text: Iya Mas, tak tunggu.
+    meaning:
+      ar_eg: ماشي يا كابتن، هستنى.
+      ar: حسنًا يا أخي، سأنتظر.
+      en: OK, Mas, I'll wait.
+    words: [tunggu]
+  - id: e12
+    type: speaking
+    text: Mas, kurma Ajwa isih ana?
+    meaning:
+      ar_eg: يا كابتن، بلح العجوة لسه موجود؟
+      ar: يا أخي، هل ما زال تمر العجوة متوفرًا؟
+      en: Excuse me, are the Ajwa dates still available?
+    words: [isih, ana]
+dialogue:
+  title: Chat karo toko kurma
+  lines:
+    - speaker: Mohamed
+      text: Sugeng siang, Mas. Kurma Ajwa isih ana?
+      ar_eg: نهارك سعيد يا كابتن. بلح العجوة لسه موجود؟
+      ar: طاب نهارك يا أخي. هل ما زال تمر العجوة متوفرًا؟
+      en: Good afternoon. Are the Ajwa dates still available?
+    - speaker: Mas Fikri
+      text: Sek tak lapor pusat
+      ar_eg: استنى، هبلّغ الإدارة.
+      ar: انتظر، سأبلغ المركز.
+      en: Hold on, I'll check with head office.
+    - speaker: Mohamed
+      text: Iya Mas, tak tunggu.
+      ar_eg: ماشي يا كابتن، هستنى.
+      ar: حسنًا يا أخي، سأنتظر.
+      en: OK, I'll wait.
+    - speaker: Mas Fikri
+      text: Isih ana lho, Mas! Arep tuku kapan?
+      ar_eg: لسه فيه على فكرة! هتشتري إمتى؟
+      ar: ما زال متوفرًا! متى ستشتري؟
+      en: Still got some! When are you coming to buy?
+    - speaker: Mohamed
+      text: Sore, Mas. Tak tuku.
+      ar_eg: العصر يا كابتن. هاخده.
+      ar: العصر يا أخي. سأشتريه.
+      en: This afternoon. I'll take them.
+    - speaker: Mas Fikri
+      text: Oke, tak tunggu ya, Mas.
+      ar_eg: تمام، هستناك يا كابتن.
+      ar: حسنًا، سأنتظرك يا أخي.
+      en: OK, I'll be waiting for you.
+    - speaker: Mohamed
+      text: Suwun, Mas!
+      ar_eg: ميرسي يا كابتن!
+      ar: شكرًا يا أخي!
+      en: Thanks!
+    - speaker: Mas Fikri
+      text: Padha-padha. Ati-ati, ya!
+      ar_eg: العفو. خلي بالك من نفسك!
+      ar: عفوًا. انتبه لنفسك!
+      en: You're welcome. Take care!
+new_words:
+  - word: isih ana
+    pos: phrase
+    ar_eg: لسه فيه / لسه موجود (= masih ada)
+    ar: ما زال متوفرًا (= masih ada)
+    en: still available (= masih ada)
+  - word: toko
+    pos: noun
+    ar_eg: محل (= toko)
+    ar: متجر (= toko)
+    en: shop (= toko)
+review:
+  status: draft
+  verified: false
