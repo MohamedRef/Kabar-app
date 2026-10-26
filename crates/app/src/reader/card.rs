@@ -8,6 +8,7 @@ use kabar_protocol::reader::WordStatus;
 
 use super::content::taught_info;
 use super::doc::{Tag, Word};
+use super::explain::ExplainCard;
 use super::glossary::{Shift, SpeechLevel, WordInfo, WordLang};
 use super::{Panel, Peek, ReaderState};
 use crate::i18n::Msg;
@@ -126,6 +127,7 @@ pub fn PanelView() -> Element {
     let ui = use_context::<Ui>();
     let st = use_context::<ReaderState>();
     let panel = st.panel.read().clone();
+    let text_id = st.open.read().as_ref().map(|o| o.text.id.clone()).unwrap_or_default();
     rsx! {
         aside { class: "card panel", aria_live: "polite",
             div { class: "panel-close",
@@ -145,6 +147,9 @@ pub fn PanelView() -> Element {
                 },
                 Some(Panel::Phrase { tokens, save_first }) => rsx! {
                     PhraseCard { tokens, save_first }
+                },
+                Some(Panel::Explain(i)) => rsx! {
+                    ExplainCard { key: "{text_id}-{i}", token: i }
                 },
                 None => rsx! {},
             }
@@ -225,7 +230,15 @@ fn WordCard(i: usize) -> Element {
 
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::InThisSentence)}" }
-                p { class: "sentence", dir: "ltr", lang: "id", "{sentence}" }
+                p { class: "sentence", dir: "ltr", lang: "id", bdi { "{sentence}" } }
+                button {
+                    class: "ghost small",
+                    onclick: move |_| {
+                        let mut p = st.panel;
+                        p.set(Some(Panel::Explain(i)));
+                    },
+                    "💡 {ui.t(Msg::ExplainWord)}"
+                }
             }
 
             div { class: "row",
@@ -322,7 +335,7 @@ fn InfoView(info: WordInfo, voice: UiLanguage) -> Element {
     rsx! {
         div { class: "field",
             if let Some(pos) = &info.pos {
-                span { class: "label latin", "{pos}" }
+                span { class: "label", "{crate::i18n::part_of_speech(ui.lang(), pos)}" }
             }
             p { class: "gloss big", "{info.gloss.get(voice)}" }
             if voice != UiLanguage::En {
@@ -444,9 +457,14 @@ fn PhraseCard(tokens: Vec<usize>, save_first: bool) -> Element {
                 }
                 button { onclick: move |_| speak(&phrase, "id-ID"), "🔊 {ui.t(Msg::Listen)}" }
                 button {
-                    onclick: move |_| {
-                        let mut t = st.toast;
-                        t.set(Some(Msg::ExplainNeedsCloud));
+                    onclick: {
+                        let first = tokens.first().copied();
+                        move |_| {
+                            if let Some(i) = first {
+                                let mut p = st.panel;
+                                p.set(Some(Panel::Explain(i)));
+                            }
+                        }
                     },
                     "{ui.t(Msg::ExplainSentence)}"
                 }
@@ -472,7 +490,7 @@ fn PhraseCard(tokens: Vec<usize>, save_first: bool) -> Element {
 
 /// The device's own voice until the Azure voices arrive through Kabar Cloud:
 /// Android's TextToSpeech engine, the WebView's `speechSynthesis` elsewhere.
-fn speak(text: &str, lang_tag: &str) {
+pub(crate) fn speak(text: &str, lang_tag: &str) {
     match platform::speak(text, lang_tag, false) {
         Err(SpeakError::UseWebView) => {}
         Ok(()) => return,

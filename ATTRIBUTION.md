@@ -27,10 +27,12 @@ exercises are copied. Kabar's lessons and grammar explanations are original.
 - Full source list with URLs: `curriculum/indonesian.yaml` → `sources`.
 
 ## Fonts
-_None bundled yet._ The UI uses system fonts and falls back through IBM Plex Sans Arabic / Noto (OFL) if installed. Bundled fonts arrive with the visual assets.
+The UI uses system fonts and falls back through IBM Plex Sans Arabic / Noto (OFL) if installed.
+
+- **Noto Sans Javanese** Regular v2.005 — © 2022 The Noto Project Authors, SIL Open Font License 1.1 (`content/fonts/NotoSansJavanese-OFL.txt`). Bundled in the app for the Aksara Jawa practice sheets, and the source that `scripts/aksara/strokes.py` traces the draft stroke data in `content/aksara/strokes.json` from (a derived dataset, same license terms apply to the font itself).
 
 ## Sounds
-_None yet._
+- **Offline pack audio** (`packs` GitHub release, built by `kabar-tools packs`): Kabar's own lesson lines read by **Microsoft Azure AI Speech** neural voices id-ID-GadisNeural, id-ID-ArdiNeural, jv-ID-SitiNeural and jv-ID-DimasNeural, generated on the free F0 tier. Used under the [Microsoft Product Terms](https://www.microsoft.com/licensing/terms/) for Azure AI Speech and its [Code of Conduct for text to speech](https://learn.microsoft.com/legal/ai-code-of-conduct). The clips are synthetic voices reading Kabar's own text; they are not recordings of real people.
 
 ## On-device models and system frameworks
 - **Google ML Kit Text Recognition v2** (`com.google.mlkit:text-recognition:16.0.1`, Latin script, model bundled in the APK; used by `android/` for the Screenshot Decoder on Android). Free of charge; proprietary, governed by the [ML Kit Terms of Service](https://developers.google.com/ml-kit/terms) and the [Google APIs Terms of Service](https://developers.google.com/terms). Recognition runs entirely on the device: images and recognized text are not sent to Google. Per Google's [ML Kit data disclosure](https://developers.google.com/ml-kit/android-data-disclosure), ML Kit may send anonymous usage and performance metrics (device info, API latency), never image content.

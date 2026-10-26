@@ -11,6 +11,7 @@ mod i18n;
 mod icons;
 mod journey;
 mod lesson;
+mod packs;
 mod penlab;
 mod platform;
 mod play;
@@ -18,6 +19,7 @@ mod reader;
 mod review;
 mod screens;
 mod store;
+mod studio;
 mod teach;
 mod theme;
 
@@ -184,6 +186,7 @@ fn open_store() -> Result<(Store, std::path::PathBuf), String> {
     let dir = platform::data_dir()?;
     std::fs::create_dir_all(&dir).map_err(|e| format!("{}: {e}", dir.display()))?;
     let path = dir.join("kabar.db");
+    packs::init(&dir);
     Ok((Store::open(&path).map_err(|e| e.to_string())?, path))
 }
 
@@ -228,6 +231,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     use_context_provider(play::PlayNav::new);
     use_context_provider(|| teach::TeachInbox(Signal::new(None)));
     let link = use_hook(cloud::link::CloudLink::default);
+    use_context_provider(|| link.clone());
     use_context_provider(|| teach::Ai(Rc::new(ai::router(db.clone(), link.clone()))));
     let audio_dir = path.parent().map(|d| d.join("audio")).unwrap_or_else(|| "audio".into());
     use_context_provider(|| audio::AudioCache::new(audio_dir, link.clone()));
@@ -452,7 +456,7 @@ fn Shell() -> Element {
                     Screen::Journey => rsx! { journey::JourneyScreen {} },
                     Screen::Reader => rsx! { reader::Reader {} },
                     Screen::Review => rsx! { review::ReviewScreen {} },
-                    Screen::Studio => rsx! { screens::ComingSoon { title: Msg::NavStudio, milestone: "M9" } },
+                    Screen::Studio => rsx! { studio::StudioScreen {} },
                     Screen::Settings => rsx! { screens::SettingsScreen {} },
                     Screen::PenLab => rsx! { penlab::PenLab {} },
                     Screen::Devices => rsx! { account::AccountScreen {} },

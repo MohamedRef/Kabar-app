@@ -140,6 +140,10 @@ Writing the draft needs an AI engine, so until the app is connected to Kabar Clo
 
 **Teach Kabar from the Reader:** open a word's card → **Teach Kabar** (it's the main button when Kabar has no gloss). The Teach screen opens with the word and its sentence filled in; go back to the Reader and the text is still open. Approved words show first in the card with a "taught by you" badge; a draft shows a "review it" chip instead.
 
+**Explain this sentence:** open a word's card → **💡 Explain the sentence**, or select a phrase → **Explain this sentence**. The sentence is outlined in the text and the panel lists the grammar points from `content/grammar` that fit it (title, summary, pattern, an example, a common mistake, the Arabic bridge), found on the device with no network. When Kabar Cloud is linked, an AI explanation (meaning in your voice, what the grammar cards don't cover, register, culture) appears on top. Reader texts can be private chats, so this request never goes to Gemini's free tier. Javanese answers stay marked "not reviewed yet". Try `Saya sedang membaca buku.` and `Rumahnya sudah dibersihkan kemarin.`
+
+**Import a web page:** paste just a link (`https://…`) into the Reader and press Read, or share a link to Kabar on the phone. Kabar fetches the page itself (no browser restrictions), keeps the article text, and saves it with a 🔗 icon. If a page can't be read (login wall, PDF, offline), Kabar asks you to paste the text instead.
+
 ### How the Kotlin glue gets into the APK
 `android/` (repo root) is a small Gradle library module: the share target (`ShareActivity`), the pending-share hand-off (`PendingShare`) and on-device OCR with ML Kit Text Recognition v2 (`OcrBridge`). Nothing to configure: the `#[manganis::ffi("../../android")]` marker in `crates/app/src/platform/android.rs` makes `dx` (0.7.10) copy the folder into its generated Gradle project as `:plugins:plugin`, add it as an app dependency, and let the manifest merger add the share activity. Gradle downloads ML Kit from Google's Maven repository (free) on the first Android build after this change, so be online for that one.
 
@@ -181,10 +185,48 @@ Open **Play** (ألعاب) in the sidebar or the phone's bottom bar.
 - **d/dh · t/th**: tell Javanese *wedi* (afraid) from *wedhi* (sand), and Indonesian *dada* from Javanese *dhadha*. **Listen** mode appears only when the device has a Javanese voice; Indonesian voices can't make the curled sound, so Kabar never uses one for this. Without a Javanese voice you get **Read** mode, where you see the meaning and pick the spelling. Javanese audio from Kabar Cloud's TTS (jv-ID voices) is a follow-up.
 - All Javanese here is marked unverified until you approve it (`content/games/unggah-ungguh.toml`, `content/games/minimal-pairs.toml`).
 
-## 11. Troubleshooting
+## 11. Tablet Studio (M9)
+
+Open **Studio** (الاستوديو) in the sidebar, or from Settings on the phone. Six tabs, all on the same ink engine:
+
+- **Notebook** (الكشكول): notebooks of infinite pages. The pen writes; two fingers (or the mouse wheel) pan and ctrl+wheel or a pinch zooms; the eraser tool rubs out whole strokes. **Add a word card** drops a live card on the page: it shows the gloss in your explanation voice and speaks the word. Every line you write is listed under **Your lines** — tap ✎ to scroll to it, or type what you wrote so search finds it. The search box searches handwriting, cards and map nodes across every notebook.
+- **Gambar!**: Kabar names a word (drawable ones you already know come first), you sketch it in 60 seconds, and Kabar guesses. Each round logs practice to Kak Nur.
+- **Mind map** (خريطة كلمات): type a topic (`di pasar`), pick `id` or `jv`, and Kabar lays out 3–6 branches you then extend with the pen. Javanese maps carry an "unverified" badge until you approve them.
+- **Listening Companion** (رفيق السماع): meant for split screen next to YouTube. Scribble a word the way it sounded, or type it, and Kabar suggests real words by sound (old spellings `oe/dj/tj`, `ng/ny`, `f→p`, final `k`), each with its gloss, audio, **Add to review**, and **Teach Kabar** when nothing fits.
+- **Dictation** (إملا): Kabar says a word, you write it with the pen, and the feedback circles the wrong letters, marks missing ones and strikes extra ones. The same pad goes into write-mode lessons in the Lesson Player.
+- **Aksara Jawa** (أكشارا جاوة, M13): pick a letter, a vowel or final sign on ka, or a word. **Watch** draws the strokes in order over a faint letter (Replay repeats it), **Trace** puts the faint letter and numbered start points under the sheet, **Write** leaves only the baseline. The brush thickens with S Pen pressure (pen and eraser are there too). **Check shape** is offline and instant: it says which numbered stroke is missing and where, extra ink, a mirrored letter, or "this reads as ga, not ka". **Ask the teacher** sends the sheet to the `check_strokes` vision task when you're signed in to Kabar Cloud. The stroke order is a draft traced from Noto Sans Javanese and shows "not reviewed yet" until you (or a teacher) approve it; review it with `python3 scripts/aksara/preview.py content/fonts/NotoSansJavanese-Regular.ttf content/aksara/strokes.json out.png`.
+
+**Reading handwriting, sketches and aksara** goes through Kabar Cloud's image upload, so it needs you signed in to Kabar Cloud (Settings). Signed out or offline, **Read my writing** and **Ask the teacher** say why and every screen falls back: type the line yourself in the Notebook and the pad, judge your own sketch in Gambar!, and use the offline shape check for aksara. Everything else (ink, pan/zoom, cards, maps, search, sync) works offline.
+
+Ink syncs like every other row (`notebooks`, `ink_documents`, `ink_strokes`, `notebook_items`, `ink_transcripts`), so a page you write on the tablet shows up on the phone. The three new tables need a Kabar Cloud redeploy: `just deploy-cloud`.
+
+## 12. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.
 - Build out of memory on 8 GB: `CARGO_BUILD_JOBS=2 just apk`.
 - `dx did not build android/ into the APK`: make sure `dx --version` says 0.7.10 (it must match the `manganis` version in `crates/app/Cargo.toml`), then check that `target/dx/kabar/release/android/app/settings.gradle` contains `include ':plugins:plugin'`.
 - Gradle can't resolve `com.google.mlkit:text-recognition`: the first build needs internet (Google Maven).
+
+## 11. Offline packs (audio per unit)
+
+Each unit has a pack of pre-generated Azure neural audio (Gadis/Ardi for Indonesian, Siti/Dimas for Javanese; dialogue lines in the speaker's voice) so its lessons sound natural with no network. Manifests are committed under `content/packs/`; the audio lives on the `packs` GitHub release of this repository (free), never in git.
+
+**Budget.** BIPA 1–2 and J1–J3 need about 83,000 characters in total (BIPA 1 ≈ 24.6k, BIPA 2 ≈ 29.2k, J1–J3 ≈ 29k), far under Azure F0's 500,000 a month. The tool refuses to spend more than `--budget` per calendar month (default 300,000, leaving the rest for Kabar Cloud's TTS proxy) and keeps its own count in `~/.kabar/audio/usage.json`. F0 never bills: past the quota Azure just says no until the next month.
+
+On the Mac, with `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` in `.env` (git-ignored; same F0 resource as Kabar Cloud):
+
+```bash
+just packs                     # after lesson edits: refresh content/packs/ (`just content-check` fails until you do)
+just packs-audio-plan          # what it would spend this month, without calling Azure
+just packs-audio bipa1.u01     # try one unit first and listen to a few clips in ~/.kabar/audio/
+just packs-audio               # the rest (resumable; F0 allows 20 requests a minute, so ~3,500 clips take ~3 h)
+just packs-bundle              # dist/packs/<unit>.tar + index.json (only fully synthesized units)
+gh auth login                  # once
+just packs-upload              # uploads to the `packs` release
+git add content/packs && git commit -m "Packs: audio hashes" && git push
+```
+
+Commit `content/packs/` after bundling: the app build embeds `content/packs/index.json`, so it lists every unit offline. Javanese text is still unverified; if a reviewed lesson changes, `just packs` marks only the changed lines as missing and `just packs-audio` regenerates just those.
+
+**In the app:** Settings → **Offline packs** lists every unit with its size, Download / Update / Remove, total storage, and "Download the current and next unit automatically" (on by default: opening a lesson fetches its unit and the next one in the background). The Lesson Player plays a downloaded clip first, then the device's own voice (Android TextToSpeech, or the WebView voice on the Mac), exactly as before. A run-time `KABAR_PACKS_URL` points the app at another release; an empty one turns downloads off.

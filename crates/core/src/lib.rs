@@ -3,15 +3,19 @@
 //! and tests.
 
 pub mod ai;
+pub mod aksara;
 pub mod clock;
 pub mod coach;
 pub mod games;
+pub mod grammar;
+pub mod ink;
 pub mod journey;
 pub mod lang;
 pub mod layout;
 pub mod learn;
 pub mod lesson;
 pub mod locale;
+pub mod packs;
 pub mod pagi;
 pub mod penlab;
 pub mod reader;
