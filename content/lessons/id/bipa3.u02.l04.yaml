@@ -1,0 +1,225 @@
+schema: kabar.lesson/v1
+id: bipa3.u02.l04
+language: id
+title: Siapa pun, walaupun
+can_do:
+  ar_eg: تستعمل pun بمعنى «كمان»، و«أي حد / أي حاجة»، وفي walaupun (مع إن).
+  ar: أن تستعمل pun بمعنى «أيضًا» و«أيّ أحد / أيّ شيء»، وفي walaupun (مع أنّ).
+  en: Use pun for 'too', 'any-' and 'although'.
+slides:
+  - title: pun = juga, siapa pun
+    grammar: id.particle.lah-kah-pun
+    body:
+      ar_eg: |
+        pun بعد اسم أو ضمير = «كمان / حتى»: Saya pun setuju = وانا كمان موافق.
+        بعد أداة سؤال = «أي»: siapa pun = أي حد، apa pun = أي حاجة، di mana pun = في أي حتة.
+        وهنا بتتكتب منفصلة: siapa pun، مش siapapun.
+      ar: |
+        pun بعد الاسم أو الضمير = «أيضًا / حتى»: Saya pun setuju = وأنا أيضًا موافق.
+        وبعد أداة الاستفهام = «أيّ»: siapa pun = أيّ أحد، apa pun = أيّ شيء، di mana pun = في أيّ مكان.
+        وتُكتب هنا منفصلة: siapa pun لا siapapun.
+      en: |
+        pun after a noun or pronoun = "too / even": Saya pun setuju = I agree too.
+        After a question word = "any-": siapa pun = anyone, apa pun = anything, di mana pun = anywhere.
+        Here it's written as a separate word: siapa pun, not siapapun.
+    examples:
+      - text: Siapa pun boleh ikut kegiatan ini.
+        ar_eg: أي حد ممكن يشارك في النشاط ده.
+        ar: يمكن لأيّ أحد أن يشارك في هذا النشاط.
+        en: Anyone may join this activity.
+      - text: Rina datang, Dimas pun datang.
+        ar_eg: رينا جت، وديماس كمان جه.
+        ar: جاءت رينا، وجاء ديماس أيضًا.
+        en: Rina came, and Dimas came too.
+  - title: walaupun = مع إن
+    grammar: id.particle.lah-kah-pun
+    body:
+      ar_eg: |
+        walaupun و meskipun = «مع إن / رغم إن»، وكل واحدة كلمة واحدة لازقة.
+        Walaupun capek, … = مع إنهم تعبانين، …
+      ar: |
+        walaupun وmeskipun = «مع أنّ / رغم أنّ»، وكلّ منهما كلمة واحدة متصلة.
+        Walaupun capek, … = مع أنهم متعبون، …
+      en: |
+        walaupun and meskipun = "although", and each is written as one word.
+        Walaupun capek, … = Although they're tired, …
+    examples:
+      - text: Walaupun capek, para relawan senang.
+        ar_eg: مع إنهم تعبانين، المتطوعين مبسوطين.
+        ar: مع أنّ المتطوعين متعبون، فهم سعداء.
+        en: Although they're tired, the volunteers are happy.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: siapa pun
+        ar_eg: أي حد
+        ar: أيّ أحد
+        en: anyone
+      - text: apa pun
+        ar_eg: أي حاجة
+        ar: أيّ شيء
+        en: anything
+      - text: walaupun
+        ar_eg: مع إن
+        ar: مع أنّ
+        en: although
+      - text: relawan
+        ar_eg: متطوّع
+        ar: متطوّع
+        en: volunteer
+      - text: kegiatan
+        ar_eg: نشاط
+        ar: نشاط
+        en: activity
+      - text: mengurangi
+        ar_eg: يقلّل
+        ar: يقلّل
+        en: to reduce
+    words: [siapa pun, apa pun, walaupun, relawan, kegiatan, mengurangi]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كتابة صح لـ «أي حد»؟
+      ar: ما الكتابة الصحيحة لـ«أيّ أحد»؟
+      en: Which is the right spelling of "anyone"?
+    options: [siapapun, siapa pun, siapa-pun]
+    answer: 1
+    explain:
+      ar_eg: بعد أدوات السؤال pun منفصلة. اللازقة بس في كلمات زي walaupun.
+      ar: بعد أدوات الاستفهام تُكتب pun منفصلة، ولا تتصل إلا في مثل walaupun.
+      en: After question words pun stands alone; it only joins in words like walaupun.
+    words: [siapa pun]
+  - id: e03
+    type: listen
+    text: Walaupun hujan, para relawan datang ke pantai.
+    options: ["Walaupun hujan, para relawan datang ke pantai.", "Walaupun panas, para relawan datang ke pantai.", "Kalau hujan, para relawan datang ke pantai."]
+    answer: 0
+    meaning:
+      ar_eg: مع إنها كانت بتمطر، المتطوعين جم الشط.
+      ar: مع أنها كانت تمطر، جاء المتطوعون إلى الشاطئ.
+      en: Although it was raining, the volunteers came to the beach.
+    words: [walaupun, relawan]
+  - id: e04
+    type: multiple_choice
+    question: Ini kegiatan untuk semua orang. ___ boleh ikut.
+    options: [Walaupun, Apa pun, Siapa pun]
+    answer: 2
+    words: [siapa pun, kegiatan]
+  - id: e05
+    type: fill_blank
+    sentence: Kita harus ___ sampah plastik.
+    meaning:
+      ar_eg: لازم نقلّل الزبالة البلاستيك.
+      ar: يجب أن نقلّل النفايات البلاستيكية.
+      en: We must reduce plastic waste.
+    options: [relawan, mengurangi, walaupun]
+    answers: [mengurangi]
+    words: [mengurangi]
+  - id: e06
+    type: fill_blank
+    sentence: Saya lapar sekali. Saya mau makan apa ___.
+    meaning:
+      ar_eg: أنا جعان أوي. هاكل أي حاجة.
+      ar: أنا جائع جدًا، سآكل أيّ شيء.
+      en: I'm really hungry. I'll eat anything.
+    options: [lah, pun, kah]
+    answers: [pun]
+    words: [apa pun]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: مع إنهم تعبانين، المتطوعين مبسوطين.
+      ar: مع أنّ المتطوعين متعبون، فهم سعداء.
+      en: Although they're tired, the volunteers are happy.
+    answer: Walaupun capek, para relawan senang.
+    alternatives: ["Para relawan senang walaupun capek."]
+    distractors: [siapa, kegiatan]
+    words: [walaupun, relawan]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أي حد ممكن يشارك في النشاط ده.
+      ar: يمكن لأيّ أحد أن يشارك في هذا النشاط.
+      en: Anyone can join this activity.
+    answers:
+      - Siapa pun boleh ikut kegiatan ini.
+      - Siapa pun boleh ikut kegiatan ini
+      - Siapa pun bisa ikut kegiatan ini.
+      - Siapa pun bisa ikut kegiatan ini
+      - Siapa pun boleh ikut dalam kegiatan ini.
+      - Siapa pun bisa ikut dalam kegiatan ini.
+      - Siapa pun boleh mengikuti kegiatan ini.
+      - Siapa pun bisa mengikuti kegiatan ini.
+    words: [siapa pun, kegiatan]
+  - id: e09
+    type: speaking
+    text: Apa pun pekerjaan kita, kita bisa mengurangi sampah.
+    meaning:
+      ar_eg: أيًا كان شغلنا، نقدر نقلّل الزبالة.
+      ar: أيًّا كان عملنا، نستطيع أن نقلّل النفايات.
+      en: Whatever our job is, we can reduce waste.
+    words: [apa pun, mengurangi]
+dialogue:
+  title: Bersih pantai
+  lines:
+    - speaker: Rina
+      text: Mohamed, Sabtu ini ada kegiatan bersih pantai di Senggigi.
+      ar_eg: يا محمد، السبت ده فيه نشاط تنضيف الشط في سنجيجي.
+      ar: يا محمد، هذا السبت نشاط لتنظيف الشاطئ في سنغيغي.
+      en: Mohamed, this Saturday there's a beach clean-up in Senggigi.
+    - speaker: Mohamed
+      text: Siapa yang boleh ikut?
+      ar_eg: مين ممكن يشارك؟
+      ar: مَن يمكنه المشاركة؟
+      en: Who can join?
+    - speaker: Rina
+      text: Siapa pun boleh ikut! Para relawan datang jam enam pagi.
+      ar_eg: أي حد! المتطوعين بييجوا الساعة ستة الصبح.
+      ar: أيّ أحد! يأتي المتطوعون في السادسة صباحًا.
+      en: Anyone can! The volunteers come at six in the morning.
+    - speaker: Mohamed
+      text: Jam enam? Walaupun pagi sekali, saya pun mau ikut!
+      ar_eg: الساعة ستة؟ مع إنها بدري أوي، أنا كمان عايز أشارك!
+      ar: في السادسة؟ مع أنه وقت مبكر جدًا، أريد أن أشارك أنا أيضًا!
+      en: Six? Although it's really early, I want to join too!
+    - speaker: Rina
+      text: Bagus! Kita semua bisa mengurangi sampah di pantai.
+      ar_eg: حلو! كلنا نقدر نقلّل الزبالة على الشط.
+      ar: رائع! كلّنا نستطيع أن نقلّل النفايات على الشاطئ.
+      en: Great! All of us can reduce the rubbish on the beach.
+new_words:
+  - word: siapa pun
+    pos: pronoun
+    ar_eg: أي حد
+    ar: أيّ أحد
+    en: anyone
+  - word: apa pun
+    pos: pronoun
+    ar_eg: أي حاجة
+    ar: أيّ شيء
+    en: anything, whatever
+  - word: walaupun
+    pos: conjunction
+    ar_eg: مع إن، رغم إن (زيها meskipun)
+    ar: مع أنّ (ومثلها meskipun)
+    en: although (also meskipun)
+  - word: relawan
+    pos: noun
+    ar_eg: متطوّع
+    ar: متطوّع
+    en: volunteer
+  - word: kegiatan
+    pos: noun
+    ar_eg: نشاط
+    ar: نشاط
+    en: activity
+  - word: mengurangi
+    pos: verb
+    ar_eg: يقلّل
+    ar: يقلّل
+    en: to reduce
+review:
+  status: draft
+  verified: false

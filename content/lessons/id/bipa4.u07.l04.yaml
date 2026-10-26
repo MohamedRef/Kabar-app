@@ -1,0 +1,220 @@
+schema: kabar.lesson/v1
+id: bipa4.u07.l04
+language: id
+title: Ceramah kesehatan
+can_do:
+  ar_eg: تفهم محاضرة صحية عن أمراض شائعة وتلخّص فكرتها الأساسية.
+  ar: أن تفهم محاضرة صحية عن أمراض شائعة وتلخّص فكرتها الرئيسية.
+  en: Follow a health talk about common conditions and sum up its main point.
+slides:
+  - title: Darah tinggi dan kencing manis
+    body:
+      ar_eg: |
+        مرضين هتسمع عنهم كتير:
+        darah tinggi = الضغط العالي (hipertensi)، kencing manis = السكر (diabetes).
+        gejala = أعراض، risiko = خطر / احتمال.
+        وخد بالك من peN-: menderita (يعاني) → penderita = المريض بالمرض ده.
+      ar: |
+        مرضان ستسمع عنهما كثيرًا:
+        darah tinggi = ارتفاع ضغط الدم (hipertensi)، وkencing manis = السكري (diabetes).
+        gejala = أعراض، وrisiko = خطر.
+        ولاحظ peN-: menderita (يعاني) → penderita = المصاب بالمرض.
+      en: |
+        Two conditions you'll hear about a lot:
+        darah tinggi = high blood pressure (hipertensi); kencing manis = diabetes (diabetes).
+        gejala = symptom(s); risiko = risk.
+        Note peN-: menderita (suffer) → penderita = a person who has the illness.
+    grammar: id.confix.peng-an
+    examples:
+      - text: Gejala darah tinggi sering tidak terasa.
+        ar_eg: أعراض الضغط العالي غالبًا مش بتتحس.
+        ar: كثيرًا ما لا تُلاحَظ أعراض ارتفاع الضغط.
+        en: The symptoms of high blood pressure often go unnoticed.
+      - text: Makanan manis meningkatkan risiko kencing manis.
+        ar_eg: الأكل المسكّر بيزوّد خطر السكر.
+        ar: الطعام الحلو يزيد خطر الإصابة بالسكري.
+        en: Sweet food increases the risk of diabetes.
+  - title: Intinya, …
+    body:
+      ar_eg: |
+        عشان تلخّص محاضرة:
+        Intinya, … = الخلاصة / الزبدة إن …
+        Menurut dokter, … = حسب كلام الدكتور …
+        Pembicara menjelaskan bahwa … = المتكلم شرح إن …
+      ar: |
+        لتلخيص محاضرة:
+        Intinya, … = خلاصة القول …
+        Menurut dokter, … = بحسب الطبيب …
+        Pembicara menjelaskan bahwa … = أوضح المتحدث أنّ …
+      en: |
+        To sum up a talk:
+        Intinya, … = The main point is …
+        Menurut dokter, … = According to the doctor, …
+        Pembicara menjelaskan bahwa … = The speaker explained that …
+    grammar: id.confix.peng-an
+    examples:
+      - text: Intinya, pencegahan lebih baik daripada pengobatan.
+        ar_eg: الخلاصة، الوقاية أحسن من العلاج.
+        ar: خلاصة القول، الوقاية خير من العلاج.
+        en: The main point is that prevention is better than cure.
+      - text: Menurut dokter, banyak penderita tidak tahu bahwa mereka sakit.
+        ar_eg: حسب كلام الدكتورة، عيانين كتير مايعرفوش إنهم عيانين.
+        ar: بحسب الطبيبة، كثير من المرضى لا يعرفون أنهم مرضى.
+        en: According to the doctor, many patients don't know they are ill.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: gejala
+        ar_eg: أعراض
+        ar: أعراض
+        en: symptom
+      - text: penderita
+        ar_eg: المريض (بمرض معيّن)
+        ar: المصاب بالمرض
+        en: sufferer, patient
+      - text: risiko
+        ar_eg: خطر
+        ar: خطر
+        en: risk
+      - text: darah tinggi
+        ar_eg: الضغط العالي
+        ar: ارتفاع ضغط الدم
+        en: high blood pressure
+      - text: kencing manis
+        ar_eg: السكر (مرض)
+        ar: داء السكري
+        en: diabetes
+    words: [gejala, penderita, risiko, darah tinggi, kencing manis]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «الشخص اللي عنده المرض»؟
+      ar: أيّ كلمة تعني «الشخص المصاب بالمرض»؟
+      en: Which word means "the person who has the illness"?
+    options: [penderitaan, penderita, menderita]
+    answer: 1
+    explain:
+      ar_eg: peN- = الشخص (penderita). menderita فعل (يعاني)، وpenderitaan = المعاناة.
+      ar: peN- للشخص (penderita)، وmenderita فعل (يعاني)، وpenderitaan = المعاناة.
+      en: peN- marks the person (penderita); menderita is the verb (suffer) and penderitaan means suffering.
+    words: [penderita]
+  - id: e03
+    type: listen
+    text: Gejala darah tinggi sering tidak terasa.
+    options: ["Gejala kencing manis sering tidak terasa.", "Gejala darah tinggi selalu terasa.", "Gejala darah tinggi sering tidak terasa."]
+    answer: 2
+    meaning:
+      ar_eg: أعراض الضغط العالي غالبًا مش بتتحس.
+      ar: كثيرًا ما لا تُلاحَظ أعراض ارتفاع الضغط.
+      en: The symptoms of high blood pressure often go unnoticed.
+    words: [gejala, darah tinggi]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز تلخّص المحاضرة في جملة واحدة. أنهي بداية مناسبة؟
+      ar: تريد تلخيص المحاضرة في جملة واحدة. أيّ بداية مناسبة؟
+      en: You want to sum up the talk in one sentence. Which opening fits?
+    options: ["Intinya, kita harus mengurangi gula.", "Pertama, kita harus mengurangi gula.", "Sayangnya, kita harus mengurangi gula."]
+    answer: 0
+    words: [intinya]
+  - id: e05
+    type: fill_blank
+    sentence: Makanan manis meningkatkan ___ kencing manis.
+    meaning:
+      ar_eg: الأكل المسكّر بيزوّد خطر السكر.
+      ar: الطعام الحلو يزيد خطر الإصابة بالسكري.
+      en: Sweet food increases the risk of diabetes.
+    options: [gejala, risiko, penderita]
+    answers: [risiko]
+    words: [risiko, kencing manis]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: الخلاصة، الوقاية أحسن من العلاج.
+      ar: خلاصة القول، الوقاية خير من العلاج.
+      en: The main point is that prevention is better than cure.
+    answer: Intinya, pencegahan lebih baik daripada pengobatan.
+    distractors: [gejala, risiko]
+    words: [intinya]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: عيانين سكر كتير مايعرفوش الأعراض.
+      ar: كثير من مرضى السكري لا يعرفون الأعراض.
+      en: Many people with diabetes don't know the symptoms.
+    answers:
+      - Banyak penderita kencing manis tidak tahu gejalanya.
+      - Banyak penderita kencing manis tidak tahu gejalanya
+      - Banyak penderita diabetes tidak tahu gejalanya.
+      - Banyak penderita kencing manis tidak mengetahui gejalanya.
+      - Banyak penderita kencing manis tidak tahu gejala-gejalanya.
+      - Banyak penderita kencing manis tidak tahu gejala penyakitnya.
+      - Banyak penderita kencing manis tidak mengenal gejalanya.
+    words: [penderita, kencing manis, gejala]
+  - id: e08
+    type: speaking
+    text: Intinya, gula dan garam meningkatkan risiko kencing manis dan darah tinggi.
+    meaning:
+      ar_eg: الخلاصة، السكر والملح بيزوّدوا خطر السكر والضغط العالي.
+      ar: خلاصة القول، السكر والملح يزيدان خطر السكري وارتفاع الضغط.
+      en: The main point is that sugar and salt raise the risk of diabetes and high blood pressure.
+    words: [intinya, risiko, kencing manis, darah tinggi]
+dialogue:
+  title: Setelah ceramah
+  lines:
+    - speaker: Mas Rizal
+      text: Bagaimana ceramah kesehatan tadi?
+      ar_eg: إيه أخبار المحاضرة الصحية اللي كانت من شوية؟
+      ar: كيف كانت المحاضرة الصحية قبل قليل؟
+      en: How was the health talk earlier?
+    - speaker: Mohamed
+      text: Menarik. Dokter Fitri berbicara tentang darah tinggi dan kencing manis.
+      ar_eg: حلوة. الدكتورة فطري اتكلمت عن الضغط والسكر.
+      ar: ممتعة. تحدثت الدكتورة فطري عن ارتفاع الضغط والسكري.
+      en: Interesting. Dr Fitri talked about high blood pressure and diabetes.
+    - speaker: Mas Rizal
+      text: Apa intinya?
+      ar_eg: والخلاصة إيه؟
+      ar: وما خلاصتها؟
+      en: What was the main point?
+    - speaker: Mohamed
+      text: Intinya, banyak penderita tidak merasakan gejala, jadi pemeriksaan rutin itu penting.
+      ar_eg: الخلاصة إن عيانين كتير مش بيحسوا بأعراض، عشان كده الكشف الدوري مهم.
+      ar: خلاصتها أنّ كثيرًا من المرضى لا يشعرون بالأعراض، لذا فالفحص الدوري مهم.
+      en: The main point is that many patients feel no symptoms, so routine check-ups matter.
+new_words:
+  - word: gejala
+    pos: noun
+    ar_eg: أعراض
+    ar: عَرَض، أعراض
+    en: symptom
+  - word: penderita
+    pos: noun
+    ar_eg: المريض (بمرض معيّن)
+    ar: المصاب بمرض
+    en: sufferer, patient (of an illness)
+  - word: risiko
+    pos: noun
+    ar_eg: خطر
+    ar: خطر، مجازفة
+    en: risk
+  - word: darah tinggi
+    pos: noun
+    ar_eg: الضغط العالي
+    ar: ارتفاع ضغط الدم
+    en: high blood pressure
+  - word: kencing manis
+    pos: noun
+    ar_eg: السكر (مرض)
+    ar: داء السكري
+    en: diabetes
+  - word: intinya
+    pos: phrase
+    ar_eg: الخلاصة / الزبدة
+    ar: خلاصة القول
+    en: the main point is, basically
+review:
+  status: draft
+  verified: false

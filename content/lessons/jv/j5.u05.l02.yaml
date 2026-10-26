@@ -1,0 +1,227 @@
+schema: kabar.lesson/v1
+id: j5.u05.l02
+language: jv
+title: Sawise, sadurunge, nalika
+can_do:
+  ar_eg: تمشي ورا «قبل» و«بعد» و«لما» في قصة.
+  ar: أن تتتبّع «قبل» و«بعد» و«حين» في قصة.
+  en: Follow before, after and when in a story.
+slides:
+  - title: Sawise lan sadurunge
+    body:
+      ar_eg: |
+        sawise = بعد ما (sesudah)، sadurunge = قبل ما (sebelum). وبعدهم جملة كاملة.
+        خلي بالك من الترتيب: في «Sawise mangan, dheweke banjur turu» الأكل الأول وبعدين النوم.
+        وفي الكراما: sasampunipun وsaderengipun.
+      ar: |
+        sawise = بعد أن (sesudah)، وsadurunge = قبل أن (sebelum)، وتليهما جملة كاملة.
+        وانتبه للترتيب: في «Sawise mangan, dheweke banjur turu» الأكل أولًا ثم النوم.
+        وفي الكراما: sasampunipun وsaderengipun.
+      en: |
+        sawise = after (sesudah), sadurunge = before (sebelum), each followed by a full clause.
+        Watch the order: in "Sawise mangan, dheweke banjur turu" the eating comes first, then the sleep.
+        In krama: sasampunipun and saderengipun.
+    grammar: jv.narrative.connectors
+    examples:
+      - text: Sawise mangan, dheweke banjur turu.
+        ar_eg: بعد ما أكل، نام.
+        ar: بعد أن أكل نام.
+        en: After eating, he went to sleep.
+      - text: Sadurunge turu, Bima maca buku.
+        ar_eg: قبل ما ينام، بيما قرا كتاب.
+        ar: قبل أن ينام قرأ بيما كتابًا.
+        en: Before sleeping, Bima read a book.
+  - title: Nalika = ketika
+    body:
+      ar_eg: |
+        nalika = لما / عندما، عن وقت في الماضي: «Nalika isih cilik, …» = لما كان صغير.
+        وnalika iku = ساعتها / وقتها.
+        خد بالك: nalika مش «لو». «لو» = yen.
+      ar: |
+        nalika = حين / عندما، لزمن مضى: «Nalika isih cilik, …» = حين كان صغيرًا.
+        وnalika iku = آنذاك.
+        وانتبه: nalika ليست «إن / لو»، فتلك yen.
+      en: |
+        nalika = when, for a time in the past: "Nalika isih cilik, …" = when he was little.
+        nalika iku = at that time.
+        Careful: nalika is not "if". "If" is yen.
+    grammar: jv.narrative.connectors
+    examples:
+      - text: Nalika isih cilik, Rina manggon ing Semarang.
+        ar_eg: لما رينا كانت صغيرة، كانت ساكنة في سيمارانج.
+        ar: حين كانت رينا صغيرة كانت تسكن سيمارانج.
+        en: When she was little, Rina lived in Semarang.
+      - text: Nalika iku, Bima isih cilik.
+        ar_eg: ساعتها، بيما كان لسه صغير.
+        ar: آنذاك كان بيما ما يزال صغيرًا.
+        en: At that time, Bima was still little.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: sawise
+        ar_eg: بعد ما (sesudah)
+        ar: بعد أن (sesudah)
+        en: after (sesudah)
+      - text: sadurunge
+        ar_eg: قبل ما (sebelum)
+        ar: قبل أن (sebelum)
+        en: before (sebelum)
+      - text: nalika
+        ar_eg: لما / عندما (ketika)
+        ar: حين (ketika)
+        en: when, in the past (ketika)
+      - text: nalika iku
+        ar_eg: ساعتها (saat itu)
+        ar: آنذاك (saat itu)
+        en: at that time (saat itu)
+    words: [sawise, sadurunge, nalika]
+  - id: e02
+    type: multiple_choice
+    question: Sawise mangan, dheweke banjur turu.
+    question_meaning:
+      ar_eg: عمل إيه الأول؟
+      ar: ماذا فعل أولًا؟
+      en: What did he do first?
+    options: [mangan, turu, adus]
+    answer: 0
+    words: [sawise]
+  - id: e03
+    type: multiple_choice
+    question: Sadurunge turu, Bima maca buku.
+    question_meaning:
+      ar_eg: بيما عمل إيه قبل ما ينام؟
+      ar: ماذا فعل بيما قبل أن ينام؟
+      en: What did Bima do before sleeping?
+    options: [adus, mangan, maca buku]
+    answer: 2
+    words: [sadurunge]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «لو»؟
+      ar: أي كلمة بمعنى «إن / لو»؟
+      en: Which word means "if"?
+    options: [nalika, yen, sawise]
+    answer: 1
+    explain:
+      ar_eg: nalika = لما (في الماضي). «لو» = yen.
+      ar: nalika = حين (في الماضي)، و«لو» = yen.
+      en: nalika = when (in the past); "if" = yen.
+    words: [nalika]
+  - id: e05
+    type: listen
+    text: Nalika isih cilik, Rina manggon ing Semarang.
+    options: ['Nalika isih cilik, Rina manggon ing Semarang.', 'Sawise gedhe, Rina manggon ing Semarang.', 'Nalika isih cilik, Rina lunga menyang Semarang.']
+    answer: 0
+    meaning:
+      ar_eg: لما رينا كانت صغيرة، كانت ساكنة في سيمارانج.
+      ar: حين كانت رينا صغيرة كانت تسكن سيمارانج.
+      en: When she was little, Rina lived in Semarang.
+    words: [nalika]
+  - id: e06
+    type: fill_blank
+    sentence: ___ mangan, dheweke banjur turu.
+    meaning:
+      ar_eg: بعد ما أكل، نام.
+      ar: بعد أن أكل نام.
+      en: After eating, he went to sleep.
+    options: [Sadurunge, Sawise, Nalika]
+    answers: [Sawise]
+    words: [sawise]
+  - id: e07
+    type: fill_blank
+    sentence: ___ turu, Bima maca buku.
+    meaning:
+      ar_eg: قبل ما ينام، بيما قرا كتاب.
+      ar: قبل أن ينام قرأ بيما كتابًا.
+      en: Before sleeping, Bima read a book.
+    options: [Sadurunge, Biyen, Sawise]
+    answers: [Sadurunge]
+    words: [sadurunge]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: لما كنت صغير، كنت ساكن في القاهرة.
+      ar: حين كنت صغيرًا كنت أسكن القاهرة.
+      en: When I was little, I lived in Cairo.
+    answer: Nalika isih cilik, aku manggon ing Kairo.
+    distractors: [sawise, kang]
+    words: [nalika]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بأسلوب الحكاية) بعد ما أكل، بيما نام.
+      ar: (بأسلوب الحكاية) بعد أن أكل بيما نام.
+      en: (story style) After eating, Bima went to sleep.
+    answers:
+      - Sawise mangan, Bima banjur turu.
+      - Sawise mangan, Bima turu.
+      - Bima turu sawise mangan.
+      - Sawise mangan, Bima nuli turu.
+      - Sawise mangan, Bima terus turu.
+      - Bima banjur turu sawise mangan.
+    words: [sawise]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Sadurunge lunga sekolah, Bima sarapan.
+    answers_meaning:
+      ar_eg:
+        - قبل ما يروح المدرسة، بيما فطر.
+        - بيما فطر قبل ما يروح المدرسة.
+        - قبل ما بيما يروح المدرسة، فطر.
+      ar:
+        - قبل أن يذهب إلى المدرسة تناول بيما فطوره.
+        - تناول بيما فطوره قبل أن يذهب إلى المدرسة.
+        - قبل الذهاب إلى المدرسة تناول بيما الفطور.
+      en:
+        - Before going to school, Bima had breakfast.
+        - Bima had breakfast before going to school.
+        - Before he went to school, Bima had breakfast.
+        - Before going to school, Bima ate breakfast.
+        - Bima ate breakfast before going to school.
+    words: [sadurunge]
+dialogue:
+  title: Nalika isih cilik
+  lines:
+    - speaker: Bu Nur
+      text: Mas, nalika isih cilik, sampeyan manggon ing ngendi?
+      ar_eg: يا محمد، لما كنت صغير كنت ساكن فين؟
+      ar: يا محمد، أين كنت تسكن حين كنت صغيرًا؟
+      en: Mohamed, where did you live when you were little?
+    - speaker: Mohamed
+      text: Nalika isih alit, kula manggen ing Kairo, Bu.
+      ar_eg: لما كنت صغير كنت ساكن في القاهرة يا أبلة.
+      ar: حين كنت صغيرًا كنت أسكن القاهرة يا سيدتي.
+      en: When I was little, I lived in Cairo, ma'am.
+    - speaker: Bu Nur
+      text: Sadurunge menyang Jawa, sampeyan sinau basa Indonesia?
+      ar_eg: قبل ما تيجي جاوة، اتعلمت إندونيسي؟
+      ar: قبل أن تأتي إلى جاوة، هل تعلمت الإندونيسية؟
+      en: Before coming to Java, did you study Indonesian?
+    - speaker: Mohamed
+      text: Inggih. Sasampunipun basa Indonesia, kula sinau basa Jawi.
+      ar_eg: أيوه. بعد الإندونيسي، اتعلمت جاوي.
+      ar: نعم. بعد الإندونيسية تعلمت الجاوية.
+      en: Yes. After Indonesian, I studied Javanese.
+new_words:
+  - word: sawise
+    pos: conjunction
+    ar_eg: بعد ما
+    ar: بعد أن
+    en: after = sesudah, setelah
+  - word: sadurunge
+    pos: conjunction
+    ar_eg: قبل ما
+    ar: قبل أن
+    en: before = sebelum
+  - word: nalika
+    pos: conjunction
+    ar_eg: لما / عندما (في الماضي)
+    ar: حين / عندما (في الماضي)
+    en: when (in the past) = ketika
+review:
+  status: draft
+  verified: false

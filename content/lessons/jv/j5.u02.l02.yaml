@@ -1,0 +1,247 @@
+schema: kabar.lesson/v1
+id: j5.u02.l02
+language: jv
+title: Kapilih lan tinulis
+can_do:
+  ar_eg: تعرف المجهول الرسمي بـ ka- و-in-.
+  ar: أن تتعرّف على المجهول الرسمي بـ ka- و-in-.
+  en: Recognise the formal ka- and -in- passives.
+slides:
+  - title: Ka- = di- (basa resmi)
+    body:
+      ar_eg: |
+        في الأخبار والكتب فيه مجهول تاني أشيك: ka- بدل di-.
+        kapilih = dipilih = «اتختار / اتنتخب». kasebut = «المذكور» (tersebut): الجرنال بيستخدمها عشان يرجع لحاجة اتقالت قبل كده، «kutha kasebut» = المدينة المذكورة.
+      ar: |
+        في الأخبار والكتب مجهول آخر أرسمى: ka- بدل di-.
+        kapilih = dipilih = «اختير / انتُخب»، وkasebut = «المذكور» (tersebut) تُستعمل للإحالة إلى ما سبق: «kutha kasebut» = المدينة المذكورة.
+      en: |
+        News and books have a smarter-sounding passive: ka- instead of di-.
+        kapilih = dipilih = "was chosen, elected". kasebut = "the aforementioned" (tersebut): news uses it to point back to something already named, "kutha kasebut" = the said city.
+    grammar: jv.passive.written
+    examples:
+      - text: Pak Harjo kapilih dadi lurah.
+        ar_eg: الأستاذ هارجو اتنتخب عمدة.
+        ar: انتُخب السيد هارجو عمدةً.
+        en: Pak Harjo was elected village head.
+      - text: Kutha kasebut ana ing pesisir lor.
+        ar_eg: المدينة المذكورة على الساحل الشمالي.
+        ar: تقع المدينة المذكورة على الساحل الشمالي.
+        en: The said city lies on the north coast.
+  - title: -in- ing tengah tembung
+    body:
+      ar_eg: |
+        وفيه حتة أغرب: -in- بتستخبى جوه الكلمة بعد أول حرف: tulis → tinulis (مكتوب)، sebut → sinebut (بيتسمّى).
+        لو لقيت كلمة غريبة فيها -in-، شيلها وهترجع للأصل. وده شبه العربي شوية: كَتَب ← كُتِب، التغيير جوه الكلمة مش بادئة.
+      ar: |
+        وأغرب منها -in- التي تختبئ داخل الكلمة بعد الحرف الأول: tulis ← tinulis (مكتوب)، وsebut ← sinebut (يُسمّى).
+        فإن صادفت كلمة غريبة فيها -in- فاحذفها يظهر الجذر. وهذا يشبه العربية قليلًا: كَتَب ← كُتِب، تغيير داخل الكلمة لا سابقة.
+      en: |
+        Stranger still, -in- hides inside the word after the first consonant: tulis → tinulis (written), sebut → sinebut (is called).
+        If you meet an odd word with -in-, take it out and the root appears. A little like Arabic كَتَب → كُتِب: a change inside the word, not a prefix.
+    grammar: jv.passive.written
+    examples:
+      - text: Kutha iki sinebut Kutha Lumpia.
+        ar_eg: المدينة دي بيسموها «مدينة اللومبيا».
+        ar: تُسمّى هذه المدينة «مدينة اللومبيا».
+        en: This city is called the City of Lumpia.
+      - text: Jenenge tinulis ing layang iki.
+        ar_eg: اسمه مكتوب في الجواب ده.
+        ar: اسمه مكتوب في هذه الرسالة.
+        en: His name is written in this letter.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kapilih
+        ar_eg: اتختار / اتنتخب (= dipilih)
+        ar: اختير / انتُخب (= dipilih)
+        en: was chosen, elected (= dipilih)
+      - text: kasebut
+        ar_eg: المذكور (= tersebut)
+        ar: المذكور (= tersebut)
+        en: the aforementioned (= tersebut)
+      - text: sinebut
+        ar_eg: بيتسمّى (= disebut)
+        ar: يُسمّى (= disebut)
+        en: is called (= disebut)
+      - text: tinulis
+        ar_eg: مكتوب (= ditulis)
+        ar: مكتوب (= ditulis)
+        en: written (= ditulis)
+      - text: lurah
+        ar_eg: عمدة القرية
+        ar: عمدة القرية
+        en: village head
+    words: [kapilih, kasebut, sinebut, tinulis, lurah]
+  - id: e02
+    type: multiple_choice
+    question: Pak Harjo kapilih dadi lurah.
+    question_meaning:
+      ar_eg: يعني إيه بالإندونيسي؟
+      ar: ما معناها بالإندونيسية؟
+      en: What does it mean in Indonesian?
+    options: ['Pak Harjo dipilih menjadi lurah.', 'Pak Harjo memilih lurah.', 'Pak Harjo bertemu lurah.']
+    answer: 0
+    explain:
+      ar_eg: ka- + pilih = kapilih = dipilih. هو اللي اتختار، مش هو اللي اختار.
+      ar: ka- + pilih = kapilih = dipilih، فهو المختار لا المختار غيرَه.
+      en: ka- + pilih = kapilih = dipilih. He was chosen; he didn't choose.
+    words: [kapilih, lurah]
+  - id: e03
+    type: multiple_choice
+    question: tinulis
+    question_meaning:
+      ar_eg: شيل -in-. إيه أصل الكلمة؟
+      ar: احذف -in-. ما جذر الكلمة؟
+      en: Take out -in-. What's the root?
+    options: [tinul, nulis, tulis]
+    answer: 2
+    explain:
+      ar_eg: t-in-ulis → tulis. ومعناها ditulis (مكتوب).
+      ar: t-in-ulis ← tulis، ومعناها ditulis (مكتوب).
+      en: t-in-ulis → tulis. It means ditulis (written).
+    words: [tinulis]
+  - id: e04
+    type: listen
+    text: Kutha iki sinebut Kutha Lumpia.
+    options:
+      - Kutha iki misuwur Kutha Lumpia.
+      - Kutha iki sinebut Kutha Lumpia.
+      - Kutha iki dudu Kutha Lumpia.
+    answer: 1
+    meaning:
+      ar_eg: المدينة دي بيسموها «مدينة اللومبيا».
+      ar: تُسمّى هذه المدينة «مدينة اللومبيا».
+      en: This city is called the City of Lumpia.
+    words: [sinebut]
+  - id: e05
+    type: fill_blank
+    sentence: Kutha ___ ana ing pesisir lor.
+    meaning:
+      ar_eg: المدينة المذكورة على الساحل الشمالي.
+      ar: تقع المدينة المذكورة على الساحل الشمالي.
+      en: The said city lies on the north coast.
+    options: [kapilih, tinulis, kasebut]
+    answers: [kasebut]
+    words: [kasebut]
+  - id: e06
+    type: fill_blank
+    sentence: Jenenge ___ ing layang iki.
+    meaning:
+      ar_eg: اسمه مكتوب في الجواب ده.
+      ar: اسمه مكتوب في هذه الرسالة.
+      en: His name is written in this letter.
+    options: [sinebut, tinulis, kapilih]
+    answers: [tinulis]
+    words: [tinulis]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: (بأسلوب الخبر) الأستاذ هارجو اتنتخب عمدة.
+      ar: (بأسلوب الخبر) انتُخب السيد هارجو عمدةً.
+      en: (news style) Pak Harjo was elected village head.
+    answer: Pak Harjo kapilih dadi lurah.
+    distractors: [dening, sinebut]
+    words: [kapilih, lurah]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Lurah kasebut kapilih dening warga.
+    answers_meaning:
+      ar_eg:
+        - العمدة المذكور اتنتخب على إيد الأهالي.
+        - العمدة ده الأهالي انتخبوه.
+        - العمدة المذكور انتخبه الأهالي.
+        - العمدة ده اتنتخب من الأهالي.
+        - العمدة المذكور اتنتخب من الأهالي.
+      ar:
+        - انتخب الأهالي العمدةَ المذكور.
+        - العمدة المذكور انتخبه الأهالي.
+        - انتُخب العمدة المذكور من قِبَل الأهالي.
+        - انتخب السكان العمدةَ المذكور.
+      en:
+        - The said village head was elected by the residents.
+        - That village head was elected by the residents.
+        - The village head in question was elected by the residents.
+        - The residents elected the said village head.
+        - The residents elected that village head.
+        - The aforementioned village head was elected by the residents.
+    words: [lurah, kapilih, kasebut]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بأسلوب الخبر) المدينة دي بيسموها «مدينة اللومبيا».
+      ar: (بأسلوب الخبر) تُسمّى هذه المدينة «مدينة اللومبيا».
+      en: (news style) This city is called the City of Lumpia.
+    answers:
+      - Kutha iki sinebut Kutha Lumpia.
+      - Kutha iki disebut Kutha Lumpia.
+      - Kutha iki sinebut Kutha Lunpia.
+      - Kutha iki disebut Kutha Lunpia.
+    explain:
+      ar_eg: sinebut هي الأشيك، بس disebut برضه صح.
+      ar: sinebut أرسمى، وdisebut صحيحة أيضًا.
+      en: sinebut is the formal choice, but disebut is right too.
+    words: [sinebut]
+  - id: e10
+    type: speaking
+    text: Jenenge tinulis ing layang iki.
+    meaning:
+      ar_eg: اسمه مكتوب في الجواب ده.
+      ar: اسمه مكتوب في هذه الرسالة.
+      en: His name is written in this letter.
+    words: [tinulis]
+dialogue:
+  title: Maca koran karo Pak Harjo
+  lines:
+    - speaker: Pak Harjo
+      text: Mas, wacanen. Pak Slamet kapilih dadi lurah.
+      ar_eg: اقرا يا ابني. الأستاذ سلامت اتنتخب عمدة.
+      ar: اقرأ يا بني. انتُخب السيد سلامت عمدةً.
+      en: Read this, young man. Pak Slamet was elected village head.
+    - speaker: Mohamed
+      text: Kapilih menika sami kaliyan dipilih, nggih, Pak?
+      ar_eg: kapilih زي dipilih، صح يا عمّو؟
+      ar: kapilih مثل dipilih، أليس كذلك يا سيدي؟
+      en: Kapilih is the same as dipilih, right, sir?
+    - speaker: Pak Harjo
+      text: Iya. Kapilih dening warga. Jenenge tinulis ing koran.
+      ar_eg: آه. الأهالي انتخبوه. واسمه مكتوب في الجرنال.
+      ar: نعم. انتخبه الأهالي، واسمه مكتوب في الجريدة.
+      en: Yes. Elected by the residents. His name is written in the paper.
+    - speaker: Mohamed
+      text: Tinulis, t-in-ulis, dados ditulis! Matur nuwun, Pak.
+      ar_eg: tinulis، يعني t-in-ulis، يبقى ditulis! متشكر يا عمّو.
+      ar: tinulis، أي t-in-ulis، فهي ditulis! شكرًا يا سيدي.
+      en: Tinulis, t-in-ulis, so it's ditulis! Thank you, sir.
+new_words:
+  - word: kapilih
+    pos: verb
+    ar_eg: اتختار / اتنتخب (رسمي)
+    ar: اختير / انتُخب (رسمي)
+    en: was chosen, elected (formal) = dipilih
+  - word: kasebut
+    pos: adjective
+    ar_eg: المذكور (رسمي)
+    ar: المذكور (رسمي)
+    en: the aforementioned (formal) = tersebut
+  - word: sinebut
+    pos: verb
+    ar_eg: بيتسمّى (أدبي)
+    ar: يُسمّى (أدبي)
+    en: is called (literary) = disebut
+  - word: tinulis
+    pos: verb
+    ar_eg: مكتوب (أدبي)
+    ar: مكتوب (أدبي)
+    en: written (literary) = ditulis
+  - word: lurah
+    pos: noun
+    ar_eg: عمدة القرية
+    ar: عمدة القرية
+    en: village head = lurah, kepala desa
+review:
+  status: draft
+  verified: false
