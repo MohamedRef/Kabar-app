@@ -4,7 +4,10 @@
 use std::time::Duration;
 
 use kabar_protocol::DeviceId;
-use kabar_protocol::cloud::{ApiError, DeviceList, ErrorCode, GoogleSignIn, RefreshRequest, Session};
+use kabar_protocol::ai::{EngineCall, EngineError, EngineReply};
+use kabar_protocol::cloud::{
+    ApiError, DeviceList, ErrorCode, GoogleSignIn, RefreshRequest, Session, TtsRequest,
+};
 use serde::de::DeserializeOwned;
 use ureq::http::Response;
 
@@ -29,6 +32,12 @@ impl CloudError {
 pub struct Api {
     agent: ureq::Agent,
     base: String,
+}
+
+impl std::fmt::Debug for Api {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("Api").field("base", &self.base).finish_non_exhaustive()
+    }
 }
 
 impl Api {
@@ -76,6 +85,54 @@ impl Api {
         read_empty(self.agent.delete(url).header("authorization", bearer(access)).call())
     }
 }
+
+impl Api {
+    /// `POST /v1/ai`: the proxy runs one engine on an already-rendered prompt.
+    /// The outer error is about reaching Kabar Cloud; the inner one is the
+    /// engine's (quota, rate limit, switched off), which the router handles.
+    pub fn ai(
+        &self,
+        access: &str,
+        call: &EngineCall,
+    ) -> Result<Result<EngineReply, EngineError>, CloudError> {
+        let res = self
+            .agent
+            .post(format!("{}/v1/ai", self.base))
+            .header("authorization", bearer(access))
+            .config()
+            .timeout_global(Some(Duration::from_secs(90)))
+            .build()
+            .send_json(call);
+        let mut res = res.map_err(|e| CloudError::Network(e.to_string()))?;
+        let status = res.status().as_u16();
+        let text = res.body_mut().read_to_string().map_err(|e| CloudError::Decode(e.to_string()))?;
+        if (200..300).contains(&status) {
+            return serde_json::from_str(&text).map(Ok).map_err(|e| CloudError::Decode(e.to_string()));
+        }
+        match serde_json::from_str::<EngineError>(&text) {
+            Ok(e) => Ok(Err(e)),
+            Err(_) => Err(api_error(status, &text)),
+        }
+    }
+
+    /// `POST /v1/tts` → MP3 bytes.
+    pub fn tts(&self, access: &str, req: &TtsRequest) -> Result<Vec<u8>, CloudError> {
+        let res = self
+            .agent
+            .post(format!("{}/v1/tts", self.base))
+            .header("authorization", bearer(access))
+            .send_json(req);
+        let mut res = check(res)?;
+        res.body_mut()
+            .with_config()
+            .limit(MAX_AUDIO_BYTES)
+            .read_to_vec()
+            .map_err(|e| CloudError::Decode(e.to_string()))
+    }
+}
+
+/// Far above the proxy's 5,000-character requests (about 1 MB of MP3).
+const MAX_AUDIO_BYTES: u64 = 16 * 1024 * 1024;
 
 fn bearer(token: &str) -> String {
     format!("Bearer {token}")

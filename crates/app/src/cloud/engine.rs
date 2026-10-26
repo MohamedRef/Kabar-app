@@ -164,6 +164,10 @@ impl Engine {
                 self.load_devices().await;
             }
             Command::Kick => self.pump().await,
+            Command::Access { force, reply } => {
+                let access = self.access(force).await;
+                reply.send(access.map(|token| (self.api.clone(), token))).ok();
+            }
             Command::Shutdown => {}
         }
     }

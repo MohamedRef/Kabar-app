@@ -59,6 +59,9 @@ pub fn validate(req: &TtsRequest) -> Result<(), Invalid> {
     if !(-50..=50).contains(&req.rate_percent) {
         return invalid("rate_percent must be -50..=50".into());
     }
+    if req.segments.iter().any(|s| !(-20..=20).contains(&s.pitch_percent)) {
+        return invalid("pitch_percent must be -20..=20".into());
+    }
     Ok(())
 }
 
@@ -69,10 +72,17 @@ pub fn ssml(req: &TtsRequest) -> String {
     for seg in &req.segments {
         let text = escape_xml(seg.text.trim());
         out.push_str(&format!(r#"<voice name="{}">"#, seg.voice.azure_name()));
-        if req.rate_percent == 0 {
+        let mut prosody = String::new();
+        if req.rate_percent != 0 {
+            prosody.push_str(&format!(r#" rate="{:+}%""#, req.rate_percent));
+        }
+        if seg.pitch_percent != 0 {
+            prosody.push_str(&format!(r#" pitch="{:+}%""#, seg.pitch_percent));
+        }
+        if prosody.is_empty() {
             out.push_str(&text);
         } else {
-            out.push_str(&format!(r#"<prosody rate="{:+}%">{text}</prosody>"#, req.rate_percent));
+            out.push_str(&format!("<prosody{prosody}>{text}</prosody>"));
         }
         out.push_str("</voice>");
     }
@@ -93,7 +103,10 @@ mod tests {
 
     fn req(segments: &[(Voice, &str)], rate: i8) -> TtsRequest {
         TtsRequest {
-            segments: segments.iter().map(|(v, t)| TtsSegment { voice: *v, text: (*t).into() }).collect(),
+            segments: segments
+                .iter()
+                .map(|(v, t)| TtsSegment { voice: *v, text: (*t).into(), pitch_percent: 0 })
+                .collect(),
             rate_percent: rate,
         }
     }
@@ -125,6 +138,20 @@ mod tests {
         let s = ssml(&req(&[(Voice::IdArdi, "<break time=\"9s\"/> & ok")], 10));
         assert!(s.contains("&lt;break time=&quot;9s&quot;/&gt; &amp; ok"));
         assert!(s.contains(r#"rate="+10%""#));
+    }
+
+    #[test]
+    fn pitch_tells_characters_apart() {
+        let mut r = req(&[(Voice::IdArdi, "Selamat siang!"), (Voice::IdArdi, "Siang, Pak!")], -10);
+        r.segments[0].pitch_percent = -10;
+        let s = ssml(&r);
+        assert!(s.contains(r#"<prosody rate="-10%" pitch="-10%">Selamat siang!</prosody>"#));
+        assert!(s.contains(r#"<prosody rate="-10%">Siang, Pak!</prosody>"#));
+        r.segments[1].pitch_percent = 25;
+        assert!(validate(&r).is_err());
+        // Old clients send no pitch; the JSON shape stays the same for them.
+        let json = serde_json::to_value(req(&[(Voice::IdGadis, "Halo")], 0)).unwrap();
+        assert!(json["segments"][0].get("pitch_percent").is_none());
     }
 
     #[test]

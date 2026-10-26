@@ -224,8 +224,8 @@ Done when (spec §23): a 5-minute Kabar Radio episode plays offline on the phone
   - One engine for each id the proxy serves (`workers_ai`, `gemini_free`, `claude`). The router still chooses by `prompts/routes.toml`, the $0 hard stop and the personal flag.
   - The router cache is backed by SQLite (`ai_cache`, local, not synced).
 - **`AudioCache`**:
-  - Fetches from `POST /v1/tts` and keeps each MP3 forever under the app data dir, keyed by sha256(voice, pitch, rate, text).
-  - A local `audio_files` table records each file's size and last use.
+  - Fetches from `POST /v1/tts` and keeps each MP3 forever under the app data dir (`audio/`), keyed by sha256(voice, pitch, rate, text). The files themselves are the index: "free up space" and download progress read the directory.
+  - Lessons and reviews already use it: with Kabar Cloud live (or the line cached), a line plays in Gadis's (id) or Siti's (jv) neural voice.
   - Missing audio never blocks anything. Indonesian falls back to the system voice (the existing `speak` path). Javanese shows "audio comes later" until the quota resets.
 - **`TtsSegment` gains an optional `pitch_percent`** (−20..=20, default 0); the server adds `<prosody pitch>`. Azure has only two voices per language, so the Sinetron cast has to share them, and pitch tells the characters apart. The change is additive and versioned, and old clients send nothing.
 
