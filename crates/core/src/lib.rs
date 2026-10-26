@@ -6,6 +6,7 @@ pub mod ai;
 pub mod clock;
 pub mod lang;
 pub mod layout;
+pub mod lesson;
 pub mod locale;
 pub mod penlab;
 pub mod settings;
