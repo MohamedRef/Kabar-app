@@ -76,14 +76,15 @@ const LEVELS: [SpeechLevel; 5] = [
     SpeechLevel::KramaAndhap,
 ];
 
-/// Javanese words: lowercase Latin letters with é/è, hyphens for
-/// reduplication and single spaces for multi-word forms.
+/// Javanese words: lowercase Latin letters (plain e, no é/è: the learner's
+/// chosen spelling), hyphens for reduplication and single spaces for
+/// multi-word forms.
 fn is_form(s: &str) -> bool {
     !s.is_empty()
         && s.split(' ').all(|w| {
             !w.is_empty()
                 && w.split('-').all(|p| {
-                    !p.is_empty() && p.chars().all(|c| c.is_ascii_lowercase() || matches!(c, 'é' | 'è'))
+                    !p.is_empty() && p.chars().all(|c| c.is_ascii_lowercase())
                 })
         })
 }

@@ -281,10 +281,30 @@ impl LocalGlossary {
 
 impl Glossary for LocalGlossary {
     fn lookup(&self, prefer: Option<WordLang>, forms: &[&str]) -> Option<&WordInfo> {
-        prefer
-            .and_then(|p| forms.iter().find_map(|f| self.get(f, p)))
-            .or_else(|| forms.iter().find_map(|f| self.words.get(*f).and_then(|l| l.first())))
+        let find = |forms: &[&str]| {
+            prefer
+                .and_then(|p| forms.iter().find_map(|f| self.get(f, p)))
+                .or_else(|| forms.iter().find_map(|f| self.words.get(*f).and_then(|l| l.first())))
+        };
+        find(forms).or_else(|| {
+            // Glosses spell Javanese without accents (kowe); kowé and kowè
+            // are accepted variants.
+            let plain: Vec<String> = forms.iter().map(|f| unaccented(f)).collect();
+            let plain: Vec<&str> = plain.iter().map(String::as_str).collect();
+            if plain != forms { find(&plain) } else { None }
+        })
     }
+}
+
+/// Javanese é/è written as plain e, the spelling the glosses use.
+fn unaccented(word: &str) -> String {
+    word.chars()
+        .map(|c| match c {
+            'é' | 'è' | 'ê' => 'e',
+            'É' | 'È' | 'Ê' => 'E',
+            c => c,
+        })
+        .collect()
 }
 
 #[cfg(test)]
@@ -301,6 +321,16 @@ mod tests {
                 .count();
             assert_eq!(on_disk, embedded.len(), "build.rs missed a {lang} gloss batch");
         }
+    }
+
+    #[test]
+    fn accented_javanese_finds_the_plain_gloss() {
+        assert_eq!(unaccented("kowé"), "kowe");
+        assert_eq!(unaccented("Sampèyan"), "Sampeyan");
+        let g = LocalGlossary::load();
+        let plain = g.lookup(Some(WordLang::Javanese), &["kowe"]).map(|w| w.lemma.clone());
+        assert!(plain.is_some());
+        assert_eq!(g.lookup(Some(WordLang::Javanese), &["kowé"]).map(|w| w.lemma.clone()), plain);
     }
 
     #[test]

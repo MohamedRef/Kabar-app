@@ -371,6 +371,17 @@ pub fn check_entry(e: &GlossEntry, lang: Lang) -> Vec<String> {
     if e.lemma.trim().is_empty() {
         p.push("empty lemma".into());
     }
+    // Javanese is spelled with plain e (kowe, not kowé), as the learner chose;
+    // the Reader still finds accented input.
+    let accented = |s: &str| s.contains(['é', 'è', 'É', 'È']);
+    if lang == Lang::Jv
+        && (accented(&e.word)
+            || accented(&e.lemma)
+            || e.root.as_deref().is_some_and(accented)
+            || e.examples.iter().any(|x| accented(&x.text)))
+    {
+        p.push("Javanese is spelled without é/è (kowe, not kowé)".into());
+    }
     if !(1..=4).contains(&e.senses.len()) {
         p.push(format!("{} senses (1–4 expected)", e.senses.len()));
     }

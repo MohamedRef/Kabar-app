@@ -18,6 +18,7 @@ Rules for every item:
 - Coach-facing text follows the §2 tone rules: warm, specific, no guilt, fear,
   fake urgency or dark patterns. Put violations in `avoid`.
 - Javanese items are `verified: false` until a native speaker checks them.
+- Javanese is spelled without accents (kowe, sampeyan, badhe), as the user decided. Accented input (kowé) is accepted and read as the plain form. The handwriting and aksara stroke sets keep é/è where the item is about writing the vowel itself.
 - Vision items point `image` at a fixture under `fixtures/golden/`, or carry the
   tag `needs-capture` with `input.capture` saying exactly what to record on a
   device.
