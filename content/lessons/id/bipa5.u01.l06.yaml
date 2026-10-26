@@ -1,0 +1,194 @@
+schema: kabar.lesson/v1
+id: bipa5.u01.l06
+language: id
+title: Ulangan Unit 1
+can_do:
+  ar_eg: تكتب جواب تقديم وتعمل مقابلة بالمستوى الرسمي الصح.
+  ar: أن تكتب رسالة تقديم وتُجري مقابلة بالمستوى الرسمي المناسب.
+  en: Write an application letter and handle an interview in the right register.
+slides:
+  - title: Ingat lagi
+    grammar: id.sentence.complex
+    body:
+      ar_eg: |
+        فكّر نفسك بسرعة:
+        - رسمي: saya، Anda، Bapak / Ibu، tidak، sudah، Apakah …؟ / عامي: aku، gue، nggak، udah.
+        - جواب التقديم: Dengan hormat → Sehubungan dengan … → Saya berminat melamar … → Hormat saya.
+        - الجملة المركّبة: رئيسية + karena / sehingga / agar / jika + تابعة. ولو التابعة الأول، حط فاصلة.
+        - كلمات الشغل: lowongan، syarat، pengalaman، gaji، tunjangan، wawancara، kelebihan، kekurangan.
+      ar: |
+        مراجعة سريعة:
+        - الرسمي: saya وAnda وBapak / Ibu وtidak وsudah وApakah؛ والعامي: aku وgue وnggak وudah.
+        - رسالة التقديم: Dengan hormat ← Sehubungan dengan … ← Saya berminat melamar … ← Hormat saya.
+        - الجملة المركّبة: رئيسية + karena / sehingga / agar / jika + تابعة، وإذا تقدّمت التابعة فضع فاصلة.
+        - مفردات العمل: lowongan وsyarat وpengalaman وgaji وtunjangan وwawancara وkelebihan وkekurangan.
+      en: |
+        Quick recap:
+        - Formal: saya, Anda, Bapak / Ibu, tidak, sudah, Apakah …? / casual: aku, gue, nggak, udah.
+        - Application letter: Dengan hormat → Sehubungan dengan … → Saya berminat melamar … → Hormat saya.
+        - Complex sentence: main clause + karena / sehingga / agar / jika + subordinate clause; subordinate first means a comma.
+        - Work words: lowongan, syarat, pengalaman, gaji, tunjangan, wawancara, kelebihan, kekurangan.
+    examples:
+      - text: Karena saya punya pengalaman lima tahun, saya berminat melamar posisi ini.
+        ar_eg: عشان عندي خبرة خمس سنين، حابب أقدّم على الوظيفة دي.
+        ar: لأنّ لديّ خبرة خمس سنوات، أرغب في التقدّم لهذه الوظيفة.
+        en: Because I have five years' experience, I am interested in applying for this position.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: lowongan
+        ar_eg: وظيفة فاضية
+        ar: وظيفة شاغرة
+        en: vacancy
+      - text: tunjangan
+        ar_eg: بدلات
+        ar: بدلات
+        en: allowance
+      - text: atasan
+        ar_eg: المدير
+        ar: الرئيس
+        en: superior
+      - text: kekurangan
+        ar_eg: نقطة ضعف
+        ar: نقطة ضعف
+        en: weakness
+      - text: syarat
+        ar_eg: شرط
+        ar: شرط
+        en: requirement
+    words: [lowongan, tunjangan, atasan, kekurangan, syarat]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة رسمية بالكامل؟
+      ar: أيّ جملة رسمية تمامًا؟
+      en: Which sentence is fully formal?
+    options:
+      - Apakah Ibu sudah membaca surat lamaran saya?
+      - Ibu udah baca surat lamaran saya?
+      - Apakah Ibu udah membaca surat lamaran gue?
+    answer: 0
+    words: [atasan]
+  - id: e03
+    type: listen
+    text: Lamaran dikirim paling lambat tanggal tiga puluh November.
+    question:
+      ar_eg: آخر ميعاد للتقديم إمتى؟
+      ar: ما آخر موعد للتقديم؟
+      en: What is the application deadline?
+    options:
+      - 13 نوفمبر
+      - 30 نوفمبر
+      - 30 ديسمبر
+    answer: 1
+  - id: e04
+    type: fill_blank
+    sentence: Saya belajar bahasa Inggris setiap malam ___ lulus tes wawancara.
+    meaning:
+      ar_eg: بذاكر إنجليزي كل ليلة عشان أنجح في اختبار المقابلة.
+      ar: أدرس الإنجليزية كل مساء لكي أنجح في اختبار المقابلة.
+      en: I study English every evening so that I pass the interview test.
+    options: [agar, sehingga, bahwa]
+    answers: [agar]
+    words: [lulus, wawancara]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة غلط في الكتابة الرسمية؟
+      ar: أيّ جملة خطأ في الكتابة الرسمية؟
+      en: Which sentence is wrong in formal writing?
+    options:
+      - Gajinya kecil, sehingga dia pindah kerja.
+      - Dia pindah kerja karena gajinya kecil.
+      - Karena gajinya kecil.
+    answer: 2
+    explain:
+      ar_eg: «Karena gajinya kecil.» تابعة لوحدها من غير جملة رئيسية، فهي ناقصة.
+      ar: «Karena gajinya kecil.» جملة تابعة بلا رئيسية، فهي ناقصة.
+      en: On its own, "Karena gajinya kecil." is a subordinate clause with no main clause, a fragment.
+    words: [gaji]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: لو حضرتك موافق، أقدر أبدأ الشهر الجاي.
+      ar: إن وافقتم، يمكنني البدء الشهر المقبل.
+      en: If you agree, I can start next month.
+    answer: Jika Bapak setuju, saya bisa mulai bulan depan.
+    distractors: [sehingga, gue]
+  - id: e07
+    type: listen
+    text: Kelebihan saya adalah saya teliti dan cepat belajar.
+    options:
+      - Kekurangan saya adalah saya teliti dan cepat belajar.
+      - Kelebihan saya adalah saya teliti dan cepat belajar.
+      - Kelebihan saya adalah saya terburu-buru.
+    answer: 1
+    words: [kelebihan]
+  - id: e08
+    type: dictation
+    text: Sehubungan dengan iklan lowongan itu, saya melampirkan ijazah saya.
+    meaning:
+      ar_eg: بخصوص إعلان الوظيفة ده، برفق شهادتي.
+      ar: بالإشارة إلى إعلان الوظيفة، أرفق شهادتي.
+      en: With reference to that job ad, I attach my diploma.
+    words: [sehubungan dengan, lowongan, melampirkan, ijazah]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الشركة كاتبة إن الشرط الأساسي خبرة سنتين.
+      ar: كتبت الشركة أنّ الشرط الأساسي خبرة سنتين.
+      en: The company wrote that the main requirement is two years' experience.
+    answers:
+      - Perusahaan menulis bahwa syarat utamanya adalah pengalaman dua tahun.
+      - Perusahaan itu menulis bahwa syarat utamanya adalah pengalaman dua tahun.
+      - Perusahaan menulis bahwa syarat utama adalah pengalaman dua tahun.
+      - Perusahaan menulis bahwa syarat utamanya pengalaman dua tahun.
+    words: [syarat, pengalaman]
+  - id: e10
+    type: speaking
+    text: Saya bersedia ditempatkan di Balikpapan, karena saya suka kota ini.
+    meaning:
+      ar_eg: أنا مستعد أشتغل في باليكبابان، عشان بحب المدينة دي.
+      ar: أنا مستعدّ للعمل في باليكبابان، لأنني أحبّ هذه المدينة.
+      en: I'm willing to be posted in Balikpapan, because I like this city.
+    words: [bersedia]
+dialogue:
+  title: Kabar baik dari Bu Lestari
+  lines:
+    - speaker: Bu Lestari
+      text: Selamat siang, Pak Mohamed. Kami sudah mempertimbangkan lamaran Anda.
+      ar_eg: مساء الخير يا أستاذ محمد. إحنا بصّينا في طلبك.
+      ar: مساء الخير يا أستاذ محمد. لقد نظرنا في طلبك.
+      en: Good afternoon, Pak Mohamed. We have considered your application.
+    - speaker: Mohamed
+      text: Terima kasih, Bu. Apakah ada kabar baik?
+      ar_eg: شكرًا يا أستاذة. فيه أخبار حلوة؟
+      ar: شكرًا يا سيدتي. هل من خبر سار؟
+      en: Thank you, ma'am. Is there good news?
+    - speaker: Bu Lestari
+      text: Ada. Karena pengalaman Anda sesuai, kami menerima Anda sebagai penerjemah.
+      ar_eg: أيوه. عشان خبرتك مناسبة، قبلناك مترجم.
+      ar: نعم. لأنّ خبرتك مناسبة، قبلناك مترجمًا.
+      en: Yes. Because your experience fits, we're taking you on as a translator.
+    - speaker: Mohamed
+      text: Alhamdulillah! Kapan saya bisa mulai, Bu?
+      ar_eg: الحمد لله! أبدأ إمتى يا أستاذة؟
+      ar: الحمد لله! متى يمكنني البدء يا سيدتي؟
+      en: Thank God! When can I start, ma'am?
+    - speaker: Bu Lestari
+      text: Senin depan. Rekan kerja Anda sudah menunggu.
+      ar_eg: الاتنين الجاي. زمايلك مستنيينك.
+      ar: الإثنين المقبل، وزملاؤك في انتظارك.
+      en: Next Monday. Your colleagues are already waiting.
+souvenir:
+  id: bipa5.u01.souvenir
+  title: Balikpapan, kota minyak
+  note:
+    ar_eg: باليكبابان اتبنت حوالين البترول من أيام الهولنديين، ولسه شركات الطاقة مالية المدينة، وناس جاية من كل جزر إندونيسيا عشان الشغل. وفي المكاتب هنا هتسمع Bapak وIbu طول الوقت، حتى مع المدير اللي في سنك. مناداة المدير باسمه بس بتبان قلة ذوق، فالـ Bapak / Ibu هي مفتاحك في أي شغل.
+    ar: نشأت باليكبابان حول النفط منذ العهد الهولندي، وما زالت شركات الطاقة تملأ المدينة ويقصدها الناس من جزر إندونيسيا كلها طلبًا للعمل. وفي مكاتبها تسمع Bapak وIbu دائمًا، حتى مع مدير في مثل سنّك، إذ تُعدّ مناداة الرئيس باسمه وحده قلّة أدب. فهاتان الكلمتان مفتاحك في بيئة العمل.
+    en: Balikpapan grew up around oil from Dutch times; energy companies still fill the city, and people come from every island for work. In its offices you'll hear Bapak and Ibu all day, even for a boss your own age; calling a superior by a bare first name comes across as rude. Bapak / Ibu is your key to any Indonesian workplace.
+review:
+  status: draft
+  verified: false
