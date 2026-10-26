@@ -21,9 +21,9 @@ use serde::Deserialize;
 use self::content::LocalGlossary;
 use self::doc::{Lexicon, ReadDoc, SegKind};
 use self::glossary::{Glossary, Shift};
+use crate::account::Cloud;
 use crate::i18n::Msg;
 use crate::store::{Highlight, SavedText, TextKind};
-use crate::account::Cloud;
 use crate::{Db, Ui, platform};
 
 const READER_JS: &str = include_str!("../../assets/reader.js");
