@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kabar.app/schemas/grammar-point.schema.json",
+  "title": "Kabar grammar library entry",
+  "description": "One grammar point, explained three ways (Egyptian Arabic, MSA, English) with examples. 'Explain this sentence' assembles answers from these.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "id", "language", "level", "title", "summary", "explanation", "examples", "review"],
+  "properties": {
+    "schema": { "const": "kabar.grammar/v1" },
+    "id": { "type": "string", "pattern": "^(id|jv)\\.[a-z0-9-]+(\\.[a-z0-9-]+)*$" },
+    "language": { "enum": ["id", "jv"] },
+    "level": { "type": "string", "pattern": "^(bipa[1-7]|j[1-6])$" },
+    "title": { "$ref": "#/$defs/three_with_target" },
+    "summary": { "$ref": "#/$defs/three" },
+    "pattern": {
+      "description": "Formula(s) in the target language, e.g. 'Subject + sudah + Verb'.",
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "explanation": { "$ref": "#/$defs/three" },
+    "examples": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["text", "en", "ar_eg", "ar"],
+        "properties": {
+          "text": { "type": "string", "minLength": 1 },
+          "breakdown": { "type": "string" },
+          "en": { "type": "string", "minLength": 1 },
+          "ar_eg": { "$ref": "#/$defs/arabic" },
+          "ar": { "$ref": "#/$defs/arabic" },
+          "register": { "enum": ["formal", "neutral", "informal", "chat"] }
+        }
+      }
+    },
+    "mistakes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["wrong", "right", "why"],
+        "properties": {
+          "wrong": { "type": "string", "minLength": 1 },
+          "right": { "type": "string", "minLength": 1 },
+          "why": { "$ref": "#/$defs/three" }
+        }
+      }
+    },
+    "arabic_bridge": { "$ref": "#/$defs/three" },
+    "tags": { "type": "array", "items": { "type": "string", "pattern": "^[a-z0-9-]+$" } },
+    "prerequisites": { "type": "array", "items": { "type": "string", "pattern": "^(id|jv)\\.[a-z0-9-]+(\\.[a-z0-9-]+)*$" } },
+    "see_also": { "type": "array", "items": { "type": "string", "pattern": "^(id|jv)\\.[a-z0-9-]+(\\.[a-z0-9-]+)*$" } },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "verified"],
+      "properties": {
+        "status": { "enum": ["draft", "approved", "needs-changes"] },
+        "verified": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    }
+  },
+  "$defs": {
+    "arabic": { "type": "string", "minLength": 1, "pattern": "[\\u0600-\\u06FF]" },
+    "three": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ar_eg", "ar", "en"],
+      "properties": {
+        "ar_eg": { "$ref": "#/$defs/arabic" },
+        "ar": { "$ref": "#/$defs/arabic" },
+        "en": { "type": "string", "minLength": 1 }
+      }
+    },
+    "three_with_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "ar_eg", "ar", "en"],
+      "properties": {
+        "target": { "type": "string", "minLength": 1 },
+        "ar_eg": { "$ref": "#/$defs/arabic" },
+        "ar": { "$ref": "#/$defs/arabic" },
+        "en": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

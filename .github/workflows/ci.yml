@@ -45,3 +45,25 @@ jobs:
           export AR_aarch64_linux_android="$BIN/llvm-ar"
           export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER="$BIN/aarch64-linux-android28-clang"
           cargo clippy -p kabar-app --target aarch64-linux-android --no-default-features --features mobile -- -D warnings
+
+  cloud:
+    name: Kabar Cloud (wasm build + local end-to-end)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Clippy for the Worker (wasm32)
+        run: cargo clippy -p kabar-server --target wasm32-unknown-unknown -- -D warnings
+      - name: Tools
+        run: |
+          cargo install worker-build --version ^0.8 --locked
+          npm install -g wrangler@4
+      - name: End-to-end on local workerd (fake Google, two devices)
+        run: node crates/server/tests/e2e.mjs

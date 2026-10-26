@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kabar.app/schemas/curriculum.schema.json",
+  "title": "Kabar curriculum (one language: level -> units -> lessons)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "language", "title", "framework", "sources", "levels"],
+  "properties": {
+    "schema": { "const": "kabar.curriculum/v1" },
+    "language": { "enum": ["id", "jv"] },
+    "title": { "$ref": "#/$defs/text" },
+    "framework": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "summary"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "regulation": { "type": "string" },
+        "summary": { "type": "string", "minLength": 1 },
+        "cefr_note": { "type": "string" },
+        "unlock": { "type": "string" },
+        "lesson_pattern": { "type": "string" },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "used_for"],
+        "properties": {
+          "id": { "$ref": "#/$defs/slug" },
+          "title": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "pattern": "^https://" },
+          "used_for": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "levels": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/level" } }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "level_id": { "type": "string", "pattern": "^(bipa[1-7]|j[1-6])$" },
+    "unit_id": { "type": "string", "pattern": "^(bipa[1-7]|j[1-6])\\.u[0-9]{2}$" },
+    "lesson_id": { "type": "string", "pattern": "^(bipa[1-7]|j[1-6])\\.u[0-9]{2}\\.l[0-9]{2}$" },
+    "grammar_id": { "type": "string", "pattern": "^(id|jv)\\.[a-z0-9-]+(\\.[a-z0-9-]+)*$" },
+    "text": {
+      "description": "A short label in the target language (optional) plus English and MSA Arabic.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["en", "ar"],
+      "properties": {
+        "target": { "type": "string", "minLength": 1 },
+        "en": { "type": "string", "minLength": 1 },
+        "ar": { "type": "string", "minLength": 1, "pattern": "[\\u0600-\\u06FF]" }
+      }
+    },
+    "cefr": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["approx", "confidence", "evidence"],
+      "properties": {
+        "approx": { "enum": ["A1", "A2", "B1", "B2", "C1", "C2", "C2+"] },
+        "confidence": { "enum": ["high", "medium", "low"] },
+        "evidence": { "type": "string", "minLength": 1 }
+      }
+    },
+    "skills": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "listening": { "$ref": "#/$defs/strings" },
+        "speaking": { "$ref": "#/$defs/strings" },
+        "reading": { "$ref": "#/$defs/strings" },
+        "writing": { "$ref": "#/$defs/strings" }
+      }
+    },
+    "strings": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "level": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "code", "title", "journey", "capability", "units", "level_test"],
+      "properties": {
+        "id": { "$ref": "#/$defs/level_id" },
+        "code": { "type": "string", "minLength": 1 },
+        "title": { "$ref": "#/$defs/text" },
+        "ukbi_band": { "type": "string" },
+        "cefr": { "$ref": "#/$defs/cefr" },
+        "requires": { "type": "array", "items": { "$ref": "#/$defs/level_id" } },
+        "journey": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["place", "kind"],
+          "properties": {
+            "place": { "type": "string", "minLength": 1 },
+            "kind": { "enum": ["island", "train_line", "branch_line", "city"] },
+            "note": { "type": "string" }
+          }
+        },
+        "capability": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["en"],
+          "properties": {
+            "official": { "type": "string", "description": "Verbatim SKL wording (Indonesian)." },
+            "en": { "type": "string", "minLength": 1 }
+          }
+        },
+        "skills": { "$ref": "#/$defs/skills" },
+        "source_units": {
+          "description": "Unit titles of the reference textbook this level follows, in order.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source", "titles"],
+          "properties": {
+            "source": { "$ref": "#/$defs/slug" },
+            "titles": { "$ref": "#/$defs/strings" },
+            "note": { "type": "string" }
+          }
+        },
+        "gaps": { "$ref": "#/$defs/strings" },
+        "units": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/unit" } },
+        "level_test": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "minutes", "covers"],
+          "properties": {
+            "id": { "type": "string", "pattern": "^(bipa[1-7]|j[1-6])\\.test$" },
+            "minutes": { "type": "integer", "minimum": 10, "maximum": 90 },
+            "covers": { "$ref": "#/$defs/strings" },
+            "pass_mark": { "type": "number", "minimum": 0.5, "maximum": 1 }
+          }
+        }
+      }
+    },
+    "unit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "stop", "can_do", "grammar", "vocabulary", "culture", "lessons"],
+      "properties": {
+        "id": { "$ref": "#/$defs/unit_id" },
+        "title": { "$ref": "#/$defs/text" },
+        "stop": { "type": "string", "minLength": 1, "description": "Town / station on the Journey Map." },
+        "source_ref": { "type": "string" },
+        "can_do": { "$ref": "#/$defs/strings", "minItems": 1 },
+        "grammar": { "type": "array", "items": { "$ref": "#/$defs/grammar_id" } },
+        "vocabulary": { "$ref": "#/$defs/strings", "minItems": 1 },
+        "culture": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["souvenir", "note"],
+          "properties": {
+            "souvenir": { "type": "string", "minLength": 1 },
+            "note": { "type": "string", "minLength": 1 }
+          }
+        },
+        "arabic_bridge": { "$ref": "#/$defs/strings" },
+        "register": { "type": "string" },
+        "lessons": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/lesson" } }
+      }
+    },
+    "lesson": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "title", "can_do", "minutes"],
+      "properties": {
+        "id": { "$ref": "#/$defs/lesson_id" },
+        "kind": { "enum": ["learn", "practice", "review"] },
+        "title": { "type": "string", "minLength": 1 },
+        "can_do": { "type": "string", "minLength": 1 },
+        "grammar": { "type": "array", "items": { "$ref": "#/$defs/grammar_id" } },
+        "vocabulary": { "$ref": "#/$defs/strings" },
+        "minutes": { "type": "integer", "minimum": 5, "maximum": 30 }
+      }
+    }
+  }
+}

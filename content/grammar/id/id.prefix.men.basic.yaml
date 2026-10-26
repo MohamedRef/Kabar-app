@@ -1,0 +1,96 @@
+schema: kabar.grammar/v1
+id: id.prefix.men.basic
+language: id
+level: bipa1
+title:
+  target: meN- (membaca, menulis, menyapu, mengirim)
+  en: "The active prefix meN- and its sound changes"
+  ar_eg: البادئة meN- وتغيراتها
+  ar: السابقة meN- وصورها الصوتية
+summary:
+  ar_eg: meN- بتعمل الفعل المعلوم (اللي غالبًا ليه مفعول)، وشكلها بيتغير حسب أول حرف في الجذر، وp/t/k/s بيقعوا.
+  ar: meN- تصوغ الفعل المبني للمعلوم المتعدي غالبًا، وتتغير صورتها بحسب أول الجذر، وتسقط p/t/k/s.
+  en: meN- forms active (usually transitive) verbs; its shape depends on the root's first sound, and p/t/k/s drop.
+pattern:
+  - "me- before l m n ng ny r w y: lihat → melihat"
+  - "mem- before b, p (p drops), f: baca → membaca, pakai → memakai"
+  - "men- before d, t (t drops), c, j, z: tulis → menulis, cari → mencari"
+  - "meny- for s (s drops): sapu → menyapu"
+  - "meng- before vowels, g, h, k (k drops): ambil → mengambil, kirim → mengirim"
+  - "menge- before one-syllable roots: cat → mengecat"
+explanation:
+  ar_eg: |
+    الـ N في meN- معناها «نون بتتشكل»: بتتغير على حسب أول حرف عشان النطق يبقى سهل.
+    - me-: lihat → melihat (يشوف)، minum → meminum، rasa → merasa.
+    - mem-: baca → membaca (يقرا)، pakai → memakai (يلبس/يستخدم) — الـ p بتقع.
+    - men-: dengar → mendengar (يسمع)، tulis → menulis (يكتب) — الـ t بتقع، cari → mencari (يدوّر)، jual → menjual (يبيع).
+    - meny-: sapu → menyapu (يكنس) — الـ s بتقع وتبقى ny.
+    - meng-: ambil → mengambil (ياخد)، goreng → menggoreng (يقلي)، kirim → mengirim (يبعت) — الـ k بتقع.
+    - menge-: لكلمات مقطع واحد: cat → mengecat (يدهن).
+    الحيلة: لو شفت كلمة بتبدأ بـ meny- جرّب s، men- + حرف متحرك جرّب t، mem- + متحرك جرّب p، meng- + متحرك جرّب k أو متحرك. ده بالظبط اللي محلّل الكلمات في Kabar بيعمله.
+    في الكلام العادي: «Saya baca buku» من غير me- مقبولة، وفي جاكرتا بيقولوا nulis، nyapu، ngirim.
+  ar: |
+    حرف N في meN- نون متشكّلة تتغير بحسب أول الجذر تيسيرًا للنطق:
+    - me-: lihat → melihat (يرى)، rasa → merasa (يشعر).
+    - mem-: baca → membaca (يقرأ)، pakai → memakai (يلبس / يستعمل) وتسقط p.
+    - men-: dengar → mendengar (يسمع)، tulis → menulis (يكتب) وتسقط t، cari → mencari (يبحث)، jual → menjual (يبيع).
+    - meny-: sapu → menyapu (يكنس) وتسقط s.
+    - meng-: ambil → mengambil (يأخذ)، goreng → menggoreng (يقلي)، kirim → mengirim (يرسل) وتسقط k.
+    - menge-: مع الجذور أحادية المقطع: cat → mengecat (يطلي).
+    ولاستخراج الجذر: meny- + صائت → s، men- + صائت → t، mem- + صائت → p، meng- + صائت → k أو صائت.
+    وفي العامية تُحذف السابقة أحيانًا أو تُختصر (nulis, nyapu, ngirim).
+  en: |
+    The N in meN- is a nasal that adapts to the root's first sound:
+    - me-: lihat → melihat (see), rasa → merasa (feel).
+    - mem-: baca → membaca (read), pakai → memakai (wear / use) — p drops.
+    - men-: dengar → mendengar (hear), tulis → menulis (write) — t drops; cari → mencari (look for), jual → menjual (sell).
+    - meny-: sapu → menyapu (sweep) — s drops.
+    - meng-: ambil → mengambil (take), goreng → menggoreng (fry), kirim → mengirim (send) — k drops.
+    - menge-: one-syllable roots: cat → mengecat (paint).
+    Root-finding trick: meny- + vowel → try s; men- + vowel → t; mem- + vowel → p; meng- + vowel → k or a vowel. This is exactly what Kabar's morphology analyser does.
+    Casual speech drops or shortens it: "Saya baca buku"; Jakarta says nulis, nyapu, ngirim.
+examples:
+  - text: Saya sedang membaca buku.
+    breakdown: saya · sedang (in the middle of) · meN- + baca → membaca · buku
+    en: I'm reading a book.
+    ar_eg: أنا بقرا كتاب دلوقتي.
+    ar: أنا أقرأ كتابًا الآن.
+  - text: Dia menulis surat untuk ibunya.
+    en: He/She is writing a letter to his/her mother.
+    ar_eg: هو بيكتب جواب لمامته.
+    ar: يكتب رسالة إلى أمه.
+  - text: Ibu menggoreng ikan.
+    en: Mother is frying fish.
+    ar_eg: ماما بتقلي سمك.
+    ar: الأم تقلي السمك.
+  - text: Saya mau mengirim pesan.
+    en: I want to send a message.
+    ar_eg: عايز أبعت رسالة.
+    ar: أريد أن أرسل رسالة.
+  - text: Aku lagi nyapu.
+    en: I'm sweeping. (casual, Jakarta-style)
+    ar_eg: أنا بكنس.
+    ar: أنا أكنس.
+    register: informal
+mistakes:
+  - wrong: mentulis
+    right: menulis
+    why:
+      ar_eg: الـ t بتقع بعد men-.
+      ar: تسقط t بعد men-.
+      en: t drops after men-.
+  - wrong: mempakai
+    right: memakai
+    why:
+      ar_eg: الـ p بتقع بعد mem-.
+      ar: تسقط p بعد mem-.
+      en: p drops after mem-.
+arabic_bridge:
+  ar_eg: "زي ما في العربي بندوّر على الجذر (ك ت ب) جوه «يكتب / مكتوب»، في الإندونيسي بتشيل البادئة وتشوف الجذر: menulis ← tulis. وتغير النون شبه «النون الساكنة» في التجويد: إخفاء وإقلاب حسب الحرف اللي بعدها!"
+  ar: "كما نستخرج الجذر العربي من «يكتب»، نستخرج الجذر الإندونيسي بنزع السابقة: menulis ← tulis. وتغيّر النون هنا يذكّر بأحكام النون الساكنة في التجويد (الإقلاب والإخفاء)."
+  en: Like extracting an Arabic root from يكتب, strip the prefix to find the root (menulis ← tulis). The nasal's assimilation recalls tajwīd rules for nūn sākina (iqlāb, ikhfāʾ).
+tags: [affix, verb, morphology]
+see_also: [id.prefix.ber.basic, id.prefix.peng.agent, id.imperative.basic]
+review:
+  status: draft
+  verified: false

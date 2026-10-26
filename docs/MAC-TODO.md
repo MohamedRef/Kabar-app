@@ -26,3 +26,9 @@ These need your machine, your accounts or your devices. Nothing here costs money
 - [ ] Enable Developer options + USB / Wireless debugging on the S24 Ultra and Tab S11.
 - [ ] `just android-keystore`, `just apk`, `just install <serial>` on both devices.
 - [ ] Run Pen Lab on both Galaxy devices and send me the JSON reports + how the ink feels.
+
+## Kabar Cloud (M2) — full steps in docs/CLOUD.md
+- [ ] Create a free Cloudflare account (no card), then `just cloud-tools`, `wrangler login`, `just cloud-setup`.
+- [ ] Google Cloud Console: OAuth clients (Web, Android with the release SHA-1, Desktop); put the Web + Desktop ids in `crates/server/wrangler.toml`.
+- [ ] Optional: `wrangler secret put GEMINI_API_KEY` and `AZURE_SPEECH_KEY`.
+- [ ] `just deploy-cloud` and send me the `workers.dev` URL.

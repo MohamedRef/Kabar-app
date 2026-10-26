@@ -1,0 +1,71 @@
+schema: kabar.grammar/v1
+id: id.time.sequence
+language: id
+level: bipa1
+title:
+  target: kemarin, tadi, sekarang, nanti, besok · sebelum, sesudah
+  en: Time words and before / after
+  ar_eg: كلمات الوقت وقبل / بعد
+  ar: ظروف الزمان وقبل / بعد
+summary:
+  ar_eg: "بما إن الفعل مابيتغيرش، كلمات الوقت هي اللي بتقول إمتى: kemarin (امبارح)، tadi (من شوية)، nanti (بعدين)، besok (بكرة). وsebelum/sesudah = قبل/بعد."
+  ar: لأن الفعل لا يتصرف، تحدد ظروف الزمان وقت الحدث، وsebelum / sesudah للترتيب.
+  en: With no tenses, time words carry the timing; sebelum / sesudah (setelah) order events.
+pattern:
+  - time word at start or end of the sentence
+  - sebelum / sesudah / setelah + verb or clause
+explanation:
+  ar_eg: |
+    الخط الزمني:
+    kemarin dulu (أول امبارح) — kemarin (امبارح) — tadi (من شوية، النهارده) — sekarang (دلوقتي) — nanti (بعدين، النهارده) — besok (بكرة) — lusa (بعد بكرة).
+    tadi pagi = النهارده الصبح (اللي فات)، nanti malam = بالليل النهارده (اللي جاي).
+    minggu lalu = الأسبوع اللي فات، tahun depan = السنة الجاية.
+    الكلمة دي تكفي تحدد الزمن: Kemarin saya ke pasar = امبارح رحت السوق.
+    ترتيب الأحداث:
+    - sebelum = قبل: Sebelum tidur, saya membaca = قبل ما أنام بقرا.
+    - sesudah / setelah = بعد: Setelah makan, kami jalan-jalan = بعد الأكل اتمشينا.
+    - lalu / kemudian = بعدين (في الحكاية).
+  ar: |
+    التسلسل الزمني:
+    kemarin dulu (أول أمس) — kemarin (أمس) — tadi (قبل قليل من اليوم) — sekarang (الآن) — nanti (لاحقًا اليوم) — besok (غدًا) — lusa (بعد غد).
+    tadi pagi = هذا الصباح (الماضي)، nanti malam = الليلة (القادمة)، minggu lalu = الأسبوع الماضي، tahun depan = العام القادم.
+    ويكفي الظرف لتحديد الزمن: Kemarin saya ke pasar.
+    وللترتيب: sebelum = قبل، sesudah / setelah = بعد، lalu / kemudian = ثم.
+  en: |
+    Timeline: kemarin dulu (day before yesterday) — kemarin (yesterday) — tadi (earlier today) — sekarang (now) — nanti (later today) — besok (tomorrow) — lusa (day after tomorrow).
+    tadi pagi = this (past) morning, nanti malam = tonight (to come); minggu lalu = last week, tahun depan = next year.
+    One time word is enough: Kemarin saya ke pasar = Yesterday I went to the market.
+    Ordering: sebelum = before, sesudah / setelah = after, lalu / kemudian = then.
+examples:
+  - text: Tadi pagi saya ke kantor naik ojek.
+    en: This morning I went to the office by motorbike taxi.
+    ar_eg: النهارده الصبح رحت المكتب بالأوجيك (موتوسيكل أجرة).
+    ar: هذا الصباح ذهبت إلى المكتب بدراجة نارية للأجرة.
+  - text: Nanti malam kita makan di luar.
+    en: Tonight we'll eat out.
+    ar_eg: بالليل هناكل بره.
+    ar: سنأكل خارج البيت الليلة.
+  - text: Sebelum tidur, saya membaca buku.
+    en: Before sleeping, I read a book.
+    ar_eg: قبل ما أنام بقرا كتاب.
+    ar: أقرأ كتابًا قبل النوم.
+  - text: Setelah sholat Jumat, kami makan siang.
+    en: After Friday prayers, we have lunch.
+    ar_eg: بعد صلاة الجمعة بنتغدى.
+    ar: بعد صلاة الجمعة نتناول الغداء.
+mistakes:
+  - wrong: tadi (for yesterday)
+    right: kemarin
+    why:
+      ar_eg: tadi للنهارده بس (من شوية).
+      ar: tadi لما مضى من اليوم نفسه.
+      en: tadi only covers earlier today.
+arabic_bridge:
+  ar_eg: زي «امبارح رحت» من غير ما الفعل يحتاج يتغير… بس في الإندونيسي حتى «رحت / بروح» نفس الكلمة!
+  ar: الظرف يحدد الزمن كما في العربية، لكن الفعل الإندونيسي لا يتغير أصلًا.
+  en: As in Arabic the time adverb sets the scene — but here the verb never changes at all.
+tags: [time, adverb, conjunction]
+see_also: [id.aspect.markers, id.conjunction.sequence]
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,67 @@
+schema: kabar.grammar/v1
+id: id.noun.compound
+language: id
+level: bipa2
+title:
+  target: kamar mandi, rumah sakit, kereta api
+  en: Compound nouns
+  ar_eg: الأسماء المركبة (أوضة النوم، المستشفى)
+  ar: الأسماء المركبة
+summary:
+  ar_eg: "اسمين ورا بعض بيعملوا كلمة واحدة بمعنى جديد: rumah sakit (بيت + عيان) = مستشفى. والملكية والإشارة بييجوا في الآخر."
+  ar: "اسمان متتاليان يكوّنان معنى جديدًا: rumah sakit = مستشفى، ويأتي المالك والإشارة بعدهما."
+  en: Two nouns side by side form a new word — rumah sakit (house + sick) = hospital; owners and ini/itu go after the whole compound.
+pattern:
+  - noun + noun = new noun (kamar mandi, rumah makan, kereta api)
+  - compound + owner / ini / itu (kamar mandi saya, rumah sakit itu)
+explanation:
+  ar_eg: |
+    كتير من الأسماء اليومية مركبة من كلمتين:
+    kamar mandi (أوضة + استحمام) = حمّام، kamar tidur = أوضة نوم، rumah sakit (بيت + عيان) = مستشفى، rumah makan = مطعم، kereta api (عربية + نار) = قطر، meja makan = سفرة، mata air (عين + مية) = ينبوع (زي «عين مية» بالعربي!)
+    القواعد:
+    - المركب بيتعامل كأنه كلمة واحدة، فـ saya وini بييجوا في الآخر: kamar mandi saya = حمامي (مش kamar saya mandi).
+    - الجمع بالتكرار للكلمة الأولى بس: rumah-rumah sakit.
+    فكرته شبه الإضافة: «أوضة النوم».
+  ar: |
+    كثير من الأسماء اليومية مركبة من اسمين:
+    kamar mandi = حمّام، kamar tidur = غرفة نوم، rumah sakit = مستشفى، rumah makan = مطعم، kereta api = قطار، meja makan = مائدة، mata air = عين ماء.
+    ويُعامل المركب معاملة الكلمة الواحدة، فيأتي المالك والإشارة بعده: kamar mandi saya.
+    ويُكرر الجزء الأول وحده في الجمع: rumah-rumah sakit.
+  en: |
+    Many everyday nouns are two words:
+    kamar mandi (room + bathe) = bathroom, kamar tidur = bedroom, rumah sakit (house + sick) = hospital, rumah makan = restaurant, kereta api (carriage + fire) = train, meja makan = dining table, mata air (eye + water) = spring (like Arabic «عين ماء»!).
+    Treat the compound as one word, so owners and ini/itu go after it: kamar mandi saya = my bathroom.
+    Plural repeats the first part only: rumah-rumah sakit.
+examples:
+  - text: Kamar mandinya di mana?
+    en: Where's the bathroom?
+    ar_eg: الحمام فين؟
+    ar: أين الحمّام؟
+  - text: Rumah sakit itu dekat dengan kos saya.
+    en: That hospital is near my boarding house.
+    ar_eg: المستشفى دي قريبة من السكن بتاعي.
+    ar: ذلك المستشفى قريب من سكني.
+  - text: Kamar tidur saya kecil, tetapi bersih.
+    en: My bedroom is small but clean.
+    ar_eg: أوضة نومي صغيرة بس نضيفة.
+    ar: غرفة نومي صغيرة لكنها نظيفة.
+  - text: Kami naik kereta api ke Yogyakarta.
+    en: We took the train to Yogyakarta.
+    ar_eg: ركبنا القطر ليوجياكرتا.
+    ar: ركبنا القطار إلى يوجياكرتا.
+mistakes:
+  - wrong: kamar saya mandi
+    right: kamar mandi saya
+    why:
+      ar_eg: ماتقطعش المركب؛ صاحبه في الآخر.
+      ar: لا يُفصل بين جزأي المركب.
+      en: Don't split the compound; the owner goes last.
+arabic_bridge:
+  ar_eg: "mata air = «عين مية» حرفيًا! وrumah sakit زي «دار الشفا» بس بالعكس: «بيت العيان»."
+  ar: mata air تطابق «عين الماء» حرفيًا.
+  en: mata air is literally Arabic «عين ماء».
+tags: [noun, compound, vocabulary]
+see_also: [id.noun-phrase.order, id.possessive]
+review:
+  status: draft
+  verified: false

@@ -2,9 +2,12 @@
 //! and the Rust ↔ WebView bridge. Everything here is plain serde data.
 
 pub mod ai;
+pub mod cloud;
+pub mod content;
 pub mod hlc;
 pub mod pen;
 pub mod reader;
+pub mod sync;
 
 pub use hlc::{DeviceId, Hlc};
 
