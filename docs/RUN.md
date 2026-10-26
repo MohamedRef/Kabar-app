@@ -20,6 +20,8 @@ just run-mac             # desktop app with hot reload
 just run-phone-preview   # same app in a 412×915 window, to check the phone layout
 ```
 
+To jump straight into a lesson (until the Journey Map links them), start the app with `KABAR_OPEN_LESSON`, e.g. `KABAR_OPEN_LESSON=bipa1.u01.l01 just run-mac`. The lessons built in so far are `bipa1.u01.l01` (Selamat pagi!) and `bipa1.u01.l02` (Apa kabar?). Closing a lesson saves your place; opening it again continues there.
+
 Data lives in `~/Library/Application Support/app.Kabar.Kabar/kabar.db`. Delete it to see the first-launch screen again (or use Settings → "Show the welcome screen again").
 
 ## 3. Galaxy S24 Ultra and Tab S11

@@ -714,12 +714,17 @@ impl Player {
     }
 
     /// Build-sentence tiles (answer words + distractors), shuffled the same way
-    /// on every device for this lesson.
+    /// on every device for this lesson. Edge punctuation is dropped so a tile
+    /// like "jumpa!" doesn't give away the sentence end (grading ignores it).
     pub fn tiles(&self, ex: &Exercise) -> Vec<String> {
         match &ex.kind {
             ExerciseKind::BuildSentence { answer, distractors, .. } => {
-                let all: Vec<&str> =
-                    answer.split_whitespace().chain(distractors.iter().map(String::as_str)).collect();
+                let all: Vec<&str> = answer
+                    .split_whitespace()
+                    .chain(distractors.iter().map(String::as_str))
+                    .map(|w| w.trim_matches(|c: char| !c.is_alphanumeric() && c != '-'))
+                    .filter(|w| !w.is_empty())
+                    .collect();
                 shuffled(all.len(), self.seed ^ seed_of(&ex.id))
                     .into_iter()
                     .map(|i| all[i].to_owned())
