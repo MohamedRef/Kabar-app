@@ -6,6 +6,7 @@
 use kabar_protocol::ai::{EngineCall, EngineError, EngineId};
 use serde_json::{Value, json};
 
+use crate::blobs::Image;
 use crate::config::{Config, SecretString};
 use crate::quota::Service;
 
@@ -83,12 +84,14 @@ pub fn route(call: &EngineCall, config: &Config) -> Result<Route, EngineError> {
     if call.max_tokens.is_some_and(|m| m == 0 || m > MAX_MAX_TOKENS) {
         return Err(other(format!("max_tokens must be 1..={MAX_MAX_TOKENS}")));
     }
-    if key.task.needs_vision() || call.image_sha256.is_some() {
-        return Err(unavailable("vision tasks need the blob store, which Kabar Cloud doesn't have yet"));
+    let vision = call.image_sha256.is_some();
+    if key.task.needs_vision() && !vision {
+        return Err(other("this task needs an image (image_sha256)"));
     }
     match key.engine {
         EngineId::WorkersAi if config.workers_ai_bound => {
-            Ok(Route::WorkersAi { model: config.workers_ai_model.clone() })
+            let model = if vision { &config.workers_ai_vision_model } else { &config.workers_ai_model };
+            Ok(Route::WorkersAi { model: model.clone() })
         }
         EngineId::WorkersAi => Err(unavailable("the AI binding is missing")),
         EngineId::GeminiFree => match &config.gemini_key {
@@ -135,12 +138,21 @@ pub fn finish(text: String) -> Result<String, EngineError> {
 
 // --- Workers AI ---------------------------------------------------------------
 
-pub fn workers_ai_input(call: &EngineCall) -> Value {
+/// With an image, the user turn uses OpenAI-style content parts, which
+/// Workers AI's vision models accept.
+pub fn workers_ai_input(call: &EngineCall, image: Option<&Image>) -> Value {
     let mut messages = Vec::new();
     if !call.system.trim().is_empty() {
         messages.push(json!({ "role": "system", "content": call.system }));
     }
-    messages.push(json!({ "role": "user", "content": call.user }));
+    let content = match image {
+        None => json!(call.user),
+        Some(img) => json!([
+            { "type": "image_url", "image_url": { "url": img.data_url() } },
+            { "type": "text", "text": call.user },
+        ]),
+    };
+    messages.push(json!({ "role": "user", "content": content }));
     // No `response_format` here: JSON mode isn't listed for SEA-LION on
     // Workers AI, and the router asks for JSON in the prompt and validates.
     json!({ "messages": messages, "max_tokens": max_tokens(call) })
@@ -174,9 +186,14 @@ pub fn gemini_url(model: &str) -> String {
     format!("{GEMINI_BASE}/{model}:generateContent")
 }
 
-pub fn gemini_body(call: &EngineCall) -> Value {
+pub fn gemini_body(call: &EngineCall, image: Option<&Image>) -> Value {
+    let mut parts = Vec::new();
+    if let Some(img) = image {
+        parts.push(json!({ "inline_data": { "mime_type": img.mime, "data": img.base64 } }));
+    }
+    parts.push(json!({ "text": call.user }));
     let mut body = json!({
-        "contents": [{ "role": "user", "parts": [{ "text": call.user }] }],
+        "contents": [{ "role": "user", "parts": parts }],
         "generationConfig": { "maxOutputTokens": max_tokens(call) },
     });
     if call.json {
@@ -199,11 +216,18 @@ pub fn parse_gemini(out: &Value) -> Result<String, EngineError> {
 
 // --- Claude -------------------------------------------------------------------
 
-pub fn claude_body(call: &EngineCall, model: &str) -> Value {
+pub fn claude_body(call: &EngineCall, model: &str, image: Option<&Image>) -> Value {
+    let content = match image {
+        None => json!(call.user),
+        Some(img) => json!([
+            { "type": "image", "source": { "type": "base64", "media_type": img.mime, "data": img.base64 } },
+            { "type": "text", "text": call.user },
+        ]),
+    };
     let mut body = json!({
         "model": model,
         "max_tokens": max_tokens(call),
-        "messages": [{ "role": "user", "content": call.user }],
+        "messages": [{ "role": "user", "content": content }],
     });
     if !call.system.trim().is_empty() {
         body["system"] = json!(call.system);
@@ -291,7 +315,11 @@ mod tests {
         let r = route(&call(Task::AnalyzeText, EngineId::Claude), &ready).unwrap();
         assert_eq!((r.engine(), r.model()), (EngineId::Claude, "claude-opus-5-5"));
         assert!(unavailable(route(&call(Task::AnalyzeText, EngineId::Local), &ready)));
-        assert!(unavailable(route(&call(Task::ReadHandwriting, EngineId::WorkersAi), &ready)));
+        // A vision task without an image is the caller's mistake.
+        assert!(matches!(
+            route(&call(Task::ReadHandwriting, EngineId::WorkersAi), &ready),
+            Err(EngineError::Other { .. })
+        ));
         assert_eq!(
             route(&call(Task::AnalyzeText, EngineId::WorkersAi), &none).unwrap().service(),
             Service::WorkersAi
@@ -323,7 +351,7 @@ mod tests {
 
     #[test]
     fn workers_ai_shapes() {
-        let input = workers_ai_input(&call(Task::AnalyzeText, EngineId::WorkersAi));
+        let input = workers_ai_input(&call(Task::AnalyzeText, EngineId::WorkersAi), None);
         assert_eq!(input["messages"][0]["role"], "system");
         assert_eq!(input["messages"][1]["content"], "Sek tak lapor pusat");
         assert_eq!(input["max_tokens"], DEFAULT_MAX_TOKENS);
@@ -338,7 +366,7 @@ mod tests {
 
     #[test]
     fn gemini_shapes() {
-        let body = gemini_body(&call(Task::AnalyzeText, EngineId::GeminiFree));
+        let body = gemini_body(&call(Task::AnalyzeText, EngineId::GeminiFree), None);
         assert_eq!(body["systemInstruction"]["parts"][0]["text"], "Return JSON.");
         assert_eq!(body["contents"][0]["parts"][0]["text"], "Sek tak lapor pusat");
         assert_eq!(body["generationConfig"]["responseMimeType"], "application/json");
@@ -347,7 +375,7 @@ mod tests {
             max_tokens: Some(4096),
             ..call(Task::RoleplayTurn, EngineId::GeminiFree)
         };
-        let body = gemini_body(&plain);
+        let body = gemini_body(&plain, None);
         assert!(body["generationConfig"].get("responseMimeType").is_none());
         assert_eq!(body["generationConfig"]["maxOutputTokens"], 4096);
         assert_eq!(gemini_url("gemini-2.5-flash"), format!("{GEMINI_BASE}/gemini-2.5-flash:generateContent"));
@@ -358,12 +386,42 @@ mod tests {
 
     #[test]
     fn claude_shapes() {
-        let body = claude_body(&call(Task::AnalyzeText, EngineId::Claude), "claude-opus-5-5");
+        let body = claude_body(&call(Task::AnalyzeText, EngineId::Claude), "claude-opus-5-5", None);
         assert_eq!(body["system"], "Return JSON.");
         assert!(body.get("temperature").is_none());
         assert!(parse_claude(&fixture("claude_analyze.json")).unwrap().contains("lapor"));
         let refusal = json!({ "stop_reason": "refusal", "content": [] });
         assert!(parse_claude(&refusal).is_err());
+    }
+
+    #[test]
+    fn images_go_to_a_vision_model_in_each_provider_shape() {
+        let c = config(&[("GEMINI_API_KEY", "k"), ("CLAUDE_ENABLED", "true"), ("ANTHROPIC_API_KEY", "k")]);
+        let mut sketch = call(Task::GuessSketch, EngineId::WorkersAi);
+        sketch.image_sha256 = Some("ab".repeat(32));
+        sketch.user = "What did the learner draw?".into();
+        let r = route(&sketch, &c).unwrap();
+        assert_eq!(r.model(), crate::config::DEFAULT_WORKERS_AI_VISION_MODEL);
+        // Text calls keep the Indonesian model.
+        assert_eq!(
+            route(&call(Task::AnalyzeText, EngineId::WorkersAi), &c).unwrap().model(),
+            crate::config::DEFAULT_WORKERS_AI_MODEL
+        );
+        let image = Image { mime: "image/png".into(), base64: "iVBOR".into() };
+        let input = workers_ai_input(&sketch, Some(&image));
+        let parts = &input["messages"][1]["content"];
+        assert_eq!(parts[0]["image_url"]["url"], "data:image/png;base64,iVBOR");
+        assert_eq!(parts[1]["text"], "What did the learner draw?");
+        let body = gemini_body(&sketch, Some(&image));
+        assert_eq!(body["contents"][0]["parts"][0]["inline_data"]["mime_type"], "image/png");
+        assert_eq!(body["contents"][0]["parts"][1]["text"], "What did the learner draw?");
+        let body = claude_body(&sketch, "claude-opus-5-5", Some(&image));
+        assert_eq!(body["messages"][0]["content"][0]["source"]["data"], "iVBOR");
+        // Handwriting is personal: never the engine that trains on inputs.
+        let mut page = call(Task::ReadHandwriting, EngineId::GeminiFree);
+        page.image_sha256 = Some("cd".repeat(32));
+        page.personal = true;
+        assert_eq!(route(&page, &c), Err(EngineError::PrivacyBlocked));
     }
 
     #[test]
