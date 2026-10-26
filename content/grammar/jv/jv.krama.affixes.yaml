@@ -1,0 +1,103 @@
+schema: kabar.grammar/v1
+id: jv.krama.affixes
+language: jv
+level: j3
+title:
+  target: -ipun / -nipun · dipun- · -aken
+  en: "Krama affixes: -ipun, dipun-, -aken"
+  ar_eg: "لواحق وسوابق الكراما: -ipun وdipun- و-aken"
+  ar: "لواصق الكراما: -ipun وdipun- و-aken"
+summary:
+  ar_eg: "الكراما ليها نسخ مؤدبة من اللواحق: -e / -ne → -ipun / -nipun (griyanipun)، di- → dipun- (dipunwaos)، -ake → -aken (tumbasaken). وtak- بتبقى kula + الفعل."
+  ar: "للكراما صور مهذبة من اللواصق: -e / -ne → -ipun / -nipun، وdi- → dipun-، و-ake → -aken، وتصير tak- «kula + الفعل»."
+  en: "Krama has polite versions of the affixes: -e / -ne → -ipun / -nipun (griyanipun), di- → dipun- (dipunwaos), -ake → -aken (tumbasaken). tak- becomes kula + verb."
+pattern:
+  - "-e / -ne → consonant + -ipun, vowel + -nipun: batik → batikipun, regi → reginipun, griya → griyanipun"
+  - "di- → dipun- (passive): dipunwaos (diwaca), dipundamel (digawe) · spoken krama often keeps di-: didamel"
+  - "-ake → -aken: tumbas → tumbasaken (tukokake), damel → damelaken"
+  - "tak- → kula + base: kula tumbas (tak tuku) · kok- → sampeyan / panjenengan + base"
+  - "-i usually stays -i"
+explanation:
+  ar_eg: |
+    مش بس الكلمات اللي بتتغير في الكراما — اللواحق كمان ليها نسخة مؤدبة:
+    - -e / -ne (= -nya) → -ipun بعد ساكن، -nipun بعد متحرك:
+      batik → batikipun، regi (سعر) → reginipun، griya (بيت) → griyanipun، kabar → kabaripun.
+    - di- (المبني للمجهول) → dipun-: dipunwaos = اتقرا (diwaca)، dipundamel = اتعمل (digawe).
+      في الكلام اليومي ناس كتير بتفضل تقول di- حتى في الكراما: didamel. dipun- أرسمى وأكتر في الكتابة والخطب.
+    - -ake → -aken: tumbas (يشتري) → tumbasaken = يشتري لحد (tukokake / belikan).
+    - tak- مالهاش نسخة كراما — بتقول kula + الفعل: kula tumbas = أنا هشتري (tak tuku). وkok- بتبقى sampeyan / panjenengan + الفعل.
+    - -i غالبًا بتفضل زي ما هي.
+    في Laweyan، حي تجار الباتيك القديم، هتلاقي الجمل دي في وصف صناعة الباتيك: Batikipun dipundamel wonten Laweyan = الباتيك ده اتعمل في لاوييان.
+  ar: |
+    لا تتغير المفردات وحدها في الكراما، بل اللواصق أيضًا:
+    - -e / -ne (= -nya) → -ipun بعد الساكن و-nipun بعد الصائت: batikipun، reginipun، griyanipun، kabaripun.
+    - di- → dipun-: dipunwaos = قُرئ (diwaca)، dipundamel = صُنع (digawe)، وفي الكلام اليومي تبقى di- كثيرًا (didamel)، وdipun- أرسم وأكثر في الكتابة والخطب.
+    - -ake → -aken: tumbas → tumbasaken = يشتري لغيره.
+    - لا نظير لـ tak- في الكراما، فيقال kula + الفعل: kula tumbas، ويقال sampeyan / panjenengan + الفعل بدل kok-.
+    - وتبقى -i في الغالب.
+    وفي حي لاوييان، حي تجار الباتيك، تسمع: Batikipun dipundamel wonten Laweyan = صُنع هذا الباتيك في لاوييان.
+  en: |
+    In krama it's not only words that change — the affixes have polite versions too:
+    - -e / -ne (= -nya) → -ipun after a consonant, -nipun after a vowel:
+      batik → batikipun, regi (price) → reginipun, griya (house) → griyanipun, kabar → kabaripun.
+    - di- (passive) → dipun-: dipunwaos = was read (diwaca), dipundamel = was made (digawe).
+      In everyday speech many people keep di- even in krama: didamel. dipun- is more formal, for writing and speeches.
+    - -ake → -aken: tumbas (buy) → tumbasaken = buy for someone (tukokake / belikan).
+    - tak- has no krama form — say kula + verb: kula tumbas = I'll buy (tak tuku). kok- becomes sampeyan / panjenengan + verb.
+    - -i usually stays -i.
+    In Laweyan, the old batik merchants' quarter, you'll hear these in batik talk: Batikipun dipundamel wonten Laweyan = The batik was made in Laweyan.
+examples:
+  - text: Batikipun dipundamel wonten Laweyan.
+    breakdown: batik + -ipun = batiknya · dipun- + damel = dibuat · wonten = di · Laweyan
+    en: The batik was made in Laweyan.
+    ar_eg: الباتيك ده اتعمل في لاوييان.
+    ar: صُنع هذا الباتيك في لاوييان.
+    register: formal
+  - text: Reginipun pinten?
+    breakdown: regi = harga · -nipun = -nya · pinten = berapa
+    en: How much is it?
+    ar_eg: سعره كام؟
+    ar: بكم ثمنه؟
+    register: formal
+  - text: Bukunipun sampun dipunwaos.
+    breakdown: buku + -nipun = bukunya · sampun = sudah · dipun- + waos = dibaca
+    en: The book has already been read.
+    ar_eg: الكتاب اتقرا خلاص.
+    ar: قد قُرئ الكتاب.
+    register: formal
+  - text: Kula tumbasaken batik kangge ibu kula.
+    breakdown: kula = saya · tumbas + -aken = belikan · batik · kangge = untuk · ibu kula = ibu saya
+    en: I'm buying batik for my mother.
+    ar_eg: بشتري باتيك لماما.
+    ar: أشتري باتيكًا لأمي.
+    register: formal
+  - text: Menika griyanipun kanca kula.
+    breakdown: menika = ini · griya + -nipun = rumahnya · kanca kula = teman saya
+    en: This is my friend's house.
+    ar_eg: ده بيت صاحبي.
+    ar: هذا بيت صديقي.
+    register: formal
+mistakes:
+  - wrong: Reginipun pira?
+    right: Reginipun pinten?
+    why:
+      ar_eg: "لو حطيت -nipun الكراما، كمّل الجملة كراما: pinten مش pira."
+      ar: "مع -nipun تكتمل الجملة بالكراما: pinten لا pira."
+      en: "Once you use -nipun, keep the rest krama: pinten, not pira."
+  - wrong: Batike dipundamel wonten Laweyan.
+    right: Batikipun dipundamel wonten Laweyan.
+    why:
+      ar_eg: -e نغوكو. في جملة فيها dipun- وwonten، اللاحقة كمان تبقى -ipun.
+      ar: -e من النغوكو، فتصير -ipun في جملة الكراما.
+      en: -e is ngoko; in a krama sentence it becomes -ipun.
+arabic_bridge:
+  ar_eg: "زي ما «اتعمل» العامية بتبقى «صُنِع» في الفصحى: نفس المعنى، بس الصيغة نفسها أرسمى. dipun- هي «صُنِع» وdi- هي «اتعمل»."
+  ar: "كما تقابل «اتعمل» العامية «صُنِع» الفصيحة، تقابل di- صيغة dipun- الأرسم."
+  en: "Like Egyptian «اتعمل» vs Fusha «صُنِع»: same meaning, more formal morphology — di- vs dipun-."
+tags: [krama, affix, morphology, passive, j3]
+prerequisites: [jv.possessive.e-ne, jv.proclitic.tak-kok-di, jv.suffix.ake, jv.krama.function-words]
+see_also: [jv.pronoun.krama, jv.passive.written, jv.reading.written-style]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker (damelaken, -i staying -i in krama, and how common dipun- is in speech).

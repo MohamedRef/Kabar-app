@@ -1,0 +1,100 @@
+schema: kabar.grammar/v1
+id: jv.demonstrative
+language: jv
+level: j1
+title:
+  target: iki, iku / kuwi, kae · ngene, ngono
+  en: "This, that, that over there"
+  ar_eg: "ده، داك، داك اللي هناك"
+  ar: "أسماء الإشارة: هذا، ذاك، ذلك"
+summary:
+  ar_eg: "iki = ini (ده). iku (سورابايا والكتابة) / kuwi (وسط جاوة) = itu (داك، قريب منك). kae = داك البعيد (sana). والجاوي عنده تلات مسافات، مش اتنين بس زي الإندونيسي."
+  ar: "iki = ini، وiku (سورابايا والكتابة) / kuwi (وسط جاوة) = itu للقريب من المخاطب، وkae للبعيد. فللجاوية ثلاث درجات للمسافة."
+  en: "iki = ini. iku (Surabaya, writing) / kuwi (Central Java) = itu, near you. kae = that one way over there. Javanese has three distances, not two."
+pattern:
+  - "iki = ini (near me)"
+  - "iku (Arek, written) / kuwi (Mataraman) = itu (near you / just mentioned)"
+  - "kae = that over there (far from both)"
+  - "noun + iki / kuwi / kae: omah iki (rumah ini)"
+  - "sing iki / sing kuwi / sing kae = yang ini / yang itu"
+  - "ngene = begini · ngono = begitu"
+explanation:
+  ar_eg: |
+    الإندونيسي فيه ini وitu بس. الجاوي فيه تلاتة، زي kene / kono / kana:
+    - iki = ini: الحاجة اللي جنبي. Iki apa? = ده إيه؟
+    - kuwi (سولو / يوجيا) أو iku (سورابايا، وفي الكتابة) = itu: الحاجة اللي جنبك إنت، أو اللي لسه اتكلمنا عنها.
+    - kae = الحاجة البعيدة عننا إحنا الاتنين: Wong kae sapa? = مين الراجل اللي هناك ده؟
+    - بعد الاسم زي الإندونيسي: omah iki = البيت ده (rumah ini).
+    - sing iki = اللي ده (yang ini)، sing kae = اللي هناك: Sing endi? — Sing kae. = أنهي؟ — اللي هناك.
+    - ngene = كده (begini)، ngono = كده برضه بس «زي ما إنت قلت» (begitu).
+  ar: |
+    للإندونيسية ini وitu فقط، وللجاوية ثلاث درجات كما في kene / kono / kana:
+    - iki = ini للقريب من المتكلم: Iki apa? = ما هذا؟
+    - kuwi (سولو / يوجيا) أو iku (سورابايا والكتابة) = itu للقريب من المخاطب أو المذكور قبل.
+    - kae للبعيد عنهما: Wong kae sapa? = من ذلك الرجل هناك؟
+    - ويأتي بعد الاسم: omah iki = هذا البيت.
+    - sing iki = الذي هنا (yang ini)، sing kae = الذي هناك.
+    - ngene = هكذا (begini)، ngono = كذلك (begitu).
+  en: |
+    Indonesian has only ini and itu. Javanese has three, matching kene / kono / kana:
+    - iki = ini: near me. Iki apa? = What's this?
+    - kuwi (Solo / Yogya) or iku (Surabaya, and in writing) = itu: near you, or the thing just mentioned.
+    - kae = far from both of us: Wong kae sapa? = Who's that person over there?
+    - After the noun, as in Indonesian: omah iki = this house (rumah ini).
+    - sing iki = this one (yang ini), sing kae = the one over there: Sing endi? — Sing kae. = Which one? — That one over there.
+    - ngene = like this (begini), ngono = like that (begitu).
+examples:
+  - text: Iki apa?
+    breakdown: iki = ini · apa = apa
+    en: What's this?
+    ar_eg: ده إيه؟
+    ar: ما هذا؟
+    register: informal
+  - text: Wong kae sapa?
+    breakdown: wong = orang · kae = itu (jauh) · sapa = siapa
+    en: Who's that person over there?
+    ar_eg: مين الراجل اللي هناك ده؟
+    ar: من ذلك الشخص هناك؟
+    register: informal
+  - text: Sing endi? — Sing kuwi.
+    breakdown: sing = yang · endi = mana · kuwi = itu
+    en: Which one? — That one (near you).
+    ar_eg: أنهي؟ — اللي عندك ده.
+    ar: أيّها؟ — ذاك الذي عندك.
+    register: informal
+  - text: Klambi iku apik, rek.
+    breakdown: klambi = baju · iku = itu (Arek) · apik = bagus · rek
+    en: That shirt is nice, mate. (Surabaya)
+    ar_eg: القميص ده حلو يا صاحبي.
+    ar: ذلك القميص جميل يا صاح.
+    register: informal
+  - text: Ngene wae.
+    breakdown: ngene = begini · wae = saja
+    en: Just like this. / Let's just do it this way.
+    ar_eg: كده وخلاص.
+    ar: هكذا فقط.
+    register: informal
+mistakes:
+  - wrong: iki omah (for "this house")
+    right: omah iki
+    why:
+      ar_eg: "اسم الإشارة بييجي بعد الاسم زي الإندونيسي rumah ini. «Iki omah» معناها جملة كاملة: «ده بيت»."
+      ar: "يأتي اسم الإشارة بعد الاسم، أما «Iki omah» فجملة: «هذا بيت»."
+      en: The demonstrative follows the noun (rumah ini); "Iki omah" is a full sentence, "This is a house."
+  - wrong: Wong kuwi sapa? (pointing at someone far across the street)
+    right: Wong kae sapa?
+    why:
+      ar_eg: لو بعيد عننا الاتنين، kae أدق من kuwi.
+      ar: للبعيد عن المتكلم والمخاطب معًا تُستعمل kae.
+      en: For something far from both of you, kae is the right one.
+arabic_bridge:
+  ar_eg: "النحو العربي برضه فيه تلات درجات: «ذا» للقريب، «ذاك» للمتوسط، «ذلك» للبعيد. iki ≈ ذا، kuwi ≈ ذاك، kae ≈ ذلك."
+  ar: "في العربية ثلاث مراتب للإشارة: ذا للقريب، وذاك للمتوسط، وذلك للبعيد، وهي تقابل iki وkuwi وkae."
+  en: "Classical Arabic grammar also has three ranks: ذا (near), ذاك (middle), ذلك (far) ≈ iki, kuwi, kae."
+tags: [demonstrative, place, arek, j1]
+prerequisites: [id.demonstrative.ini-itu]
+see_also: [jv.preposition.place, jv.question.words]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker (iku vs kuwi regional labels especially).

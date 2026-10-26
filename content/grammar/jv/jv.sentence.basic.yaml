@@ -1,0 +1,105 @@
+schema: kabar.grammar/v1
+id: jv.sentence.basic
+language: jv
+level: j1
+title:
+  target: "Jenengku … · Aku wong Mesir · Aku saka Kairo"
+  en: Basic sentences and introducing yourself
+  ar_eg: الجملة البسيطة والتعريف بنفسك
+  ar: الجملة البسيطة والتعريف بالنفس
+summary:
+  ar_eg: "الجملة الجاوية زي الإندونيسية: فاعل + خبر من غير «يكون»، والصفة بعد الاسم. Aku wong Mesir = أنا مصري."
+  ar: "الجملة الجاوية كالإندونيسية: مبتدأ + خبر بلا فعل كون، والصفة بعد الموصوف. Aku wong Mesir = أنا مصري."
+  en: "Javanese sentences work like Indonesian: subject + predicate, no 'to be', adjective after the noun. Aku wong Mesir = I'm Egyptian."
+pattern:
+  - "subject + noun / adjective / place (no 'to be'): Aku wong Mesir."
+  - "subject + verb + object: Aku sinau basa Jawa."
+  - "noun + adjective: omah gedhe (rumah besar)"
+  - "Jenengku + name · Aku saka + place · Aku + job"
+  - "yes / no question = rising voice: Kowe wong Mesir? — Iya. / Ora."
+explanation:
+  ar_eg: |
+    خبر حلو: لو فاهم الجملة الإندونيسية، فاهم الجاوية. نفس الترتيب، والكلمات بس اللي بتتغير:
+    - مفيش «يكون»: Aku wong Mesir = Saya orang Mesir = أنا مصري. wong = orang.
+    - فعل ومفعول: Aku sinau basa Jawa = Saya belajar bahasa Jawa. sinau = belajar، basa = bahasa.
+    - الصفة بعد الاسم: omah gedhe = rumah besar = بيت كبير.
+    - تعريف نفسك:
+      Jenengku Mohamed = Nama saya Mohamed (اسمي محمد). jeneng = nama.
+      Aku saka Kairo = Saya dari Kairo. saka = dari.
+      Aku mahasiswa / Aku guru = أنا طالب / مدرس.
+    - سؤال أيوه ولا لأ: بس علّي صوتك في الآخر: Kowe wong Mesir? والرد: Iya (أيوه)، وفي الكلام العادي ho'oh، أو Ora (لأ).
+    كل ده نغوكو (للصحاب). مع الكبار هنتعلم الكراما في J3.
+  ar: |
+    من فهم الجملة الإندونيسية فهم الجاوية، فالترتيب واحد والمفردات تختلف:
+    - لا فعل كون: Aku wong Mesir = Saya orang Mesir = أنا مصري، وwong = orang.
+    - فعل ومفعول: Aku sinau basa Jawa = Saya belajar bahasa Jawa، وsinau = belajar.
+    - الصفة بعد الموصوف: omah gedhe = rumah besar.
+    - التعريف بالنفس: Jenengku Mohamed (اسمي محمد)، Aku saka Kairo (أنا من القاهرة)، Aku mahasiswa (أنا طالب).
+    - السؤال بنعم أو لا بنغمة صاعدة: Kowe wong Mesir? والجواب Iya (وفي العامية ho'oh) أو Ora.
+    وكل هذا من النغوكو، أما الكراما للكبار ففي J3.
+  en: |
+    If you can build an Indonesian sentence, you can build a Javanese one: same order, new words.
+    - No "to be": Aku wong Mesir = Saya orang Mesir = I'm Egyptian. wong = orang.
+    - Verb + object: Aku sinau basa Jawa = Saya belajar bahasa Jawa. sinau = belajar, basa = bahasa.
+    - Adjective after the noun: omah gedhe = rumah besar = a big house.
+    - Introducing yourself:
+      Jenengku Mohamed = Nama saya Mohamed. jeneng = nama.
+      Aku saka Kairo = Saya dari Kairo. saka = dari.
+      Aku mahasiswa / Aku guru = I'm a student / a teacher.
+    - Yes / no questions: just raise your voice at the end: Kowe wong Mesir? Answer Iya (yes; casually ho'oh) or Ora (no).
+    All of this is ngoko, for friends. Krama for elders comes in J3.
+examples:
+  - text: Jenengku Mohamed.
+    breakdown: jeneng = nama · -ku = -ku / saya
+    en: My name is Mohamed.
+    ar_eg: اسمي محمد.
+    ar: اسمي محمد.
+    register: informal
+  - text: Aku wong Mesir, saka Kairo.
+    breakdown: aku · wong = orang · Mesir · saka = dari · Kairo
+    en: I'm Egyptian, from Cairo.
+    ar_eg: أنا مصري، من القاهرة.
+    ar: أنا مصري، من القاهرة.
+    register: informal
+  - text: Aku sinau basa Jawa.
+    breakdown: aku · sinau = belajar · basa = bahasa · Jawa
+    en: I'm learning Javanese.
+    ar_eg: أنا بتعلم جاوي.
+    ar: أنا أتعلم الجاوية.
+    register: informal
+  - text: Kowe wong Suroboyo? — Iya.
+    breakdown: kowe = kamu · wong = orang · Suroboyo = Surabaya · iya = ya
+    en: Are you from Surabaya? — Yes.
+    ar_eg: إنت من سورابايا؟ — أيوه.
+    ar: هل أنت من سورابايا؟ — نعم.
+    register: informal
+  - text: Omahe gedhe.
+    breakdown: omah = rumah · -e = -nya · gedhe = besar
+    en: The house is big.
+    ar_eg: البيت كبير.
+    ar: البيت كبير.
+    register: informal
+mistakes:
+  - wrong: Aku iku wong Mesir.
+    right: Aku wong Mesir.
+    why:
+      ar_eg: iku معناها «ده / دي» مش «يكون». زي الإندونيسي، مفيش كلمة بين الفاعل والخبر.
+      ar: iku اسم إشارة لا فعل كون، ولا يلزم بين المبتدأ والخبر شيء.
+      en: iku means "that", not "is"; nothing goes between subject and predicate.
+  - wrong: gedhe omah
+    right: omah gedhe
+    why:
+      ar_eg: الصفة بعد الاسم، زي العربي «بيت كبير» والإندونيسي rumah besar.
+      ar: الصفة تتبع الموصوف كما في العربية.
+      en: The adjective follows the noun, as in Arabic and Indonesian.
+arabic_bridge:
+  ar_eg: "Aku wong Mesir = «أنا مصري» بالظبط: جملة اسمية من غير فعل، والصفة بعد الاسم زي «بيت كبير»."
+  ar: "Aku wong Mesir جملة اسمية كـ«أنا مصري»، والصفة تتبع الموصوف كما في العربية."
+  en: "Aku wong Mesir is a nominal sentence like «أنا مصري»: no verb 'to be', adjective after the noun."
+tags: [sentence, word-order, introduction, ngoko, j1]
+prerequisites: [id.sentence.no-copula, id.sentence.word-order]
+see_also: [jv.pronoun.ngoko, jv.question.words, jv.negation.ora-dudu]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker.

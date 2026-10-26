@@ -1,0 +1,341 @@
+schema: kabar.lesson/v1
+id: bipa1.u10.l03
+language: id
+title: S-P-O-K
+can_do:
+  ar_eg: ترتّب جملة كاملة صح.
+  ar: أن ترتّب جملة كاملة ترتيبًا صحيحًا.
+  en: Order a full sentence.
+slides:
+  - title: Kalimat = جملة
+    body:
+      ar_eg: |
+        kalimat جاية من العربي «كلمة»، بس معناها في الإندونيسي «جملة»! (والكلمة نفسها اسمها kata.)
+        الجملة الإندونيسية ليها ترتيب ثابت اسمه SPOK:
+        - S (subjek) = الفاعل: مين؟
+        - P (predikat) = الفعل أو الخبر: عمل إيه؟
+        - O (objek) = المفعول: عمل إيه بالظبط؟
+        - K (keterangan) = الظرف: فين؟ إمتى؟
+      ar: |
+        كلمة kalimat من العربية «كلمة»، لكنها تعني في الإندونيسية «جملة»، أما الكلمة فهي kata.
+        وللجملة الإندونيسية ترتيب ثابت يسمى SPOK:
+        - S (subjek) = المسند إليه: من؟
+        - P (predikat) = المسند، فعلًا أو خبرًا: ماذا فعل؟
+        - O (objek) = المفعول به
+        - K (keterangan) = الظرف: أين؟ متى؟
+      en: |
+        kalimat comes from Arabic «كلمة» (word), but in Indonesian it means "sentence"! (A word is kata.)
+        An Indonesian sentence follows SPOK:
+        - S (subjek) = subject: who?
+        - P (predikat) = verb or predicate: does what?
+        - O (objek) = object: what exactly?
+        - K (keterangan) = adverbial: where? when?
+    grammar: id.sentence.word-order
+    examples:
+      - text: Saya membeli tiket di pelabuhan.
+        ar_eg: أنا اشتريت تذكرة من الميناء. — Saya (S) · membeli (P) · tiket (O) · di pelabuhan (K)
+        ar: اشتريت تذكرة من الميناء. — Saya (S) · membeli (P) · tiket (O) · di pelabuhan (K)
+        en: I bought a ticket at the harbour. — Saya (S) · membeli (P) · tiket (O) · di pelabuhan (K)
+  - title: Objek setelah predikat
+    body:
+      ar_eg: |
+        المفعول لازم ييجي بعد الفعل على طول، من غير حاجة في النص:
+        Saya membeli tiket ✓ — Saya tiket membeli ✗
+        والإندونيسي بيبدأ بالفاعل، زي المصري «أنا اشتريت»، مش زي الفصحى «اشتريتُ…». فـ«Membeli saya tiket» غلط.
+      ar: |
+        يلزم المفعولُ الفعلَ مباشرة:
+        Saya membeli tiket ✓ — Saya tiket membeli ✗
+        وتبدأ الجملة بالفاعل كقولنا «أنا اشتريت»، لا بالفعل كالجملة الفعلية الفصيحة؛ فـ«Membeli saya tiket» خطأ.
+      en: |
+        The object comes straight after the verb:
+        Saya membeli tiket ✓ — Saya tiket membeli ✗
+        And the sentence starts with the subject, like Egyptian «أنا اشتريت», not verb-first like Classical Arabic. So «Membeli saya tiket» is wrong.
+    grammar: id.sentence.word-order
+    examples:
+      - text: Ibu memasak nasi di dapur setiap pagi.
+        ar_eg: ماما بتطبخ رز في المطبخ كل يوم الصبح.
+        ar: تطبخ الأم الأرز في المطبخ كل صباح.
+        en: Mother cooks rice in the kitchen every morning.
+  - title: K bisa di depan
+    body:
+      ar_eg: |
+        الظرف (K) بس هو اللي حر: ممكن ييجي في الأول أو في الآخر:
+        - Kemarin kami naik kapal ke Pulau Seribu.
+        - Kami naik kapal ke Pulau Seribu kemarin.
+        الاتنين صح. ونصيحة: في أي جملة طويلة دوّر على الفعل (P) الأول، والباقي هيبان.
+        (بعض الأفعال زي belajar بعدها «مكمّل» مش مفعول: Saya belajar bahasa Indonesia.)
+      ar: |
+        الظرف (K) وحده حرّ الموضع، في أول الجملة أو آخرها:
+        - Kemarin kami naik kapal ke Pulau Seribu.
+        - Kami naik kapal ke Pulau Seribu kemarin.
+        وكلاهما صحيح. ولفهم أي جملة طويلة ابحث عن المسند (P) أولًا.
+        (وبعض الأفعال مثل belajar يتبعها «مكمّل» لا مفعول: Saya belajar bahasa Indonesia.)
+      en: |
+        Only the adverbial (K) is free — front or end:
+        - Kemarin kami naik kapal ke Pulau Seribu.
+        - Kami naik kapal ke Pulau Seribu kemarin.
+        Both are right. Tip: in any long sentence, find the predicate (P) first.
+        (Some verbs like belajar take a complement rather than an object: Saya belajar bahasa Indonesia.)
+    grammar: id.sentence.word-order
+    examples:
+      - text: Kemarin kami naik kapal ke Pulau Seribu.
+        ar_eg: امبارح ركبنا مركب لجزر الألف.
+        ar: أمس ركبنا قاربًا إلى جزر الألف.
+        en: Yesterday we took a boat to the Thousand Islands.
+      - text: Di pantai, Rina memotret laut.
+        ar_eg: على الشط، رينا صوّرت البحر.
+        ar: على الشاطئ، صوّرت رينا البحر.
+        en: On the beach, Rina took photos of the sea.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: subjek
+        ar_eg: الفاعل (مين؟)
+        ar: المسند إليه
+        en: subject
+      - text: predikat
+        ar_eg: الفعل / الخبر
+        ar: المسند
+        en: predicate
+      - text: objek
+        ar_eg: المفعول
+        ar: المفعول به
+        en: object
+      - text: keterangan
+        ar_eg: الظرف (فين؟ إمتى؟)
+        ar: الظرف
+        en: adverbial (place, time)
+    words: [subjek, predikat, objek, keterangan]
+  - id: e02
+    type: multiple_choice
+    question: Dimas membeli tiket di pelabuhan.
+    question_meaning:
+      ar_eg: أنهي كلمة هي الـ P (الفعل)؟
+      ar: أيّ كلمة هي المسند (P)؟
+      en: Which word is the P (predicate)?
+    options: ["di pelabuhan", "membeli", "Dimas", "tiket"]
+    answer: 1
+    explain:
+      ar_eg: membeli هو الفعل. Dimas (S) · membeli (P) · tiket (O) · di pelabuhan (K).
+      ar: membeli هو المسند. Dimas (S) · membeli (P) · tiket (O) · di pelabuhan (K).
+      en: Dimas (S) · membeli (P) · tiket (O) · di pelabuhan (K).
+    words: [predikat, pelabuhan]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة ترتيبها صح؟
+      ar: أيّ جملة ترتيبها صحيح؟
+      en: Which sentence is in the right order?
+    options: ["Membeli saya buku di Gramedia.", "Saya buku membeli di Gramedia.", "Saya membeli buku di Gramedia."]
+    answer: 2
+    explain:
+      ar_eg: S + P + O + K. المفعول (buku) بعد الفعل (membeli) على طول.
+      ar: S + P + O + K، والمفعول buku بعد الفعل membeli مباشرة.
+      en: S + P + O + K — the object (buku) follows the verb (membeli) directly.
+    words: [membeli]
+  - id: e04
+    type: multiple_choice
+    question: Kemarin kami naik kapal.
+    question_meaning:
+      ar_eg: Kemarin هنا إيه؟
+      ar: ما دور Kemarin هنا؟
+      en: What is Kemarin here?
+    options: ["K (keterangan)", "S (subjek)", "O (objek)"]
+    answer: 0
+    explain:
+      ar_eg: kemarin ظرف زمان (K)، ومسموح ييجي في الأول.
+      ar: kemarin ظرف زمان (K)، ويجوز تقديمه.
+      en: kemarin is a time adverbial (K), so it can come first.
+    words: [keterangan, kemarin]
+  - id: e05
+    type: listen
+    text: Rina memotret laut di pantai.
+    options: ["Rina memotret laut di pantai.", "Rina di pantai memotret.", "Laut memotret Rina di pantai."]
+    answer: 0
+    words: [memotret, laut]
+  - id: e06
+    type: fill_blank
+    sentence: Ibu memasak ___ di dapur.
+    meaning:
+      ar_eg: ماما بتطبخ رز في المطبخ.
+      ar: تطبخ الأم الأرز في المطبخ.
+      en: Mother cooks rice in the kitchen.
+    options: ["kemarin", "nasi", "pagi"]
+    answers: [nasi]
+    explain:
+      ar_eg: بعد الفعل memasak على طول بييجي المفعول، وهنا nasi.
+      ar: بعد الفعل memasak يأتي المفعول nasi.
+      en: The object, nasi, comes right after memasak.
+    words: [objek, memasak, nasi]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: أنا اشتريت تذكرة من الميناء.
+      ar: اشتريت تذكرة من الميناء.
+      en: I bought a ticket at the harbour.
+    answer: Saya membeli tiket di pelabuhan.
+    distractors: [ke, yang]
+    words: [membeli, tiket, pelabuhan]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: امبارح ركبنا مركب لجزر الألف.
+      ar: أمس ركبنا قاربًا إلى جزر الألف.
+      en: Yesterday we took a boat to the Thousand Islands.
+    answer: Kemarin kami naik kapal ke Pulau Seribu.
+    alternatives: ["Kami naik kapal ke Pulau Seribu kemarin."]
+    distractors: [dari, tadi]
+    words: [kemarin, naik, kapal, pulau]
+  - id: e09
+    type: build_sentence
+    source:
+      ar_eg: ديماس بيتعلم عربي في القاهرة.
+      ar: يتعلم ديماس العربية في القاهرة.
+      en: Dimas is studying Arabic in Cairo.
+    answer: Dimas belajar bahasa Arab di Kairo.
+    alternatives: ["Di Kairo Dimas belajar bahasa Arab."]
+    distractors: [ke, yang]
+    words: [belajar]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: رينا صوّرت البحر على الشط.
+      ar: صوّرت رينا البحر على الشاطئ.
+      en: Rina photographed the sea at the beach.
+    answers:
+      - Rina memotret laut di pantai.
+      - Di pantai, Rina memotret laut.
+      - Di pantai Rina memotret laut.
+      - Rina memotret laut di pantai
+      - Rina memfoto laut di pantai.
+    explain:
+      ar_eg: S (Rina) + P (memotret) + O (laut) + K (di pantai). والظرف ممكن ييجي الأول.
+      ar: S + P + O + K، ويجوز تقديم الظرف.
+      en: S + P + O + K; the adverbial may come first.
+    words: [memotret, laut, pantai]
+  - id: e11
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أنا بقرا كتاب دلوقتي.
+      ar: أنا أقرأ كتابًا الآن.
+      en: I'm reading a book right now.
+    answers:
+      - Saya sedang membaca buku.
+      - Sekarang saya sedang membaca buku.
+      - Saya sedang membaca buku sekarang.
+      - Saya lagi membaca buku.
+      - Aku sedang membaca buku.
+      - Saya sedang membaca buku
+      - Sekarang saya membaca buku.
+    words: [sedang, membaca, buku]
+  - id: e12
+    type: translate
+    direction: from_target
+    source_text: Setiap pagi Pak Budi minum kopi di warung.
+    answers_meaning:
+      ar_eg: ["كل يوم الصبح الأستاذ بودي بيشرب قهوة في الكشك.", "الأستاذ بودي بيشرب قهوة في الوارونج كل يوم الصبح", "كل صبح الأستاذ بودي بيشرب قهوة في الوارونج"]
+      ar: ["كل صباح يشرب الأستاذ بودي القهوة في المقهى الصغير.", "يشرب الأستاذ بودي القهوة في الوارونغ كل صباح"]
+      en: ["Every morning Pak Budi drinks coffee at the warung.", "Mr Budi drinks coffee at the food stall every morning", "Every morning Mr Budi has coffee at the warung"]
+    words: [setiap, minum, warung]
+  - id: e13
+    type: dictation
+    text: Kami naik kapal kemarin.
+    meaning:
+      ar_eg: ركبنا مركب امبارح.
+      ar: ركبنا قاربًا أمس.
+      en: We took a boat yesterday.
+    words: [naik, kapal, kemarin]
+  - id: e14
+    type: speaking
+    text: Kemarin saya membeli tiket di pelabuhan.
+    meaning:
+      ar_eg: امبارح اشتريت تذكرة من الميناء.
+      ar: أمس اشتريت تذكرة من الميناء.
+      en: Yesterday I bought a ticket at the harbour.
+    words: [membeli, tiket, pelabuhan]
+dialogue:
+  title: Kalimat yang benar
+  lines:
+    - speaker: Pak Budi
+      text: Mohamed, coba buat kalimat tentang kemarin.
+      ar_eg: يا محمد، جرّب تعمل جملة عن امبارح.
+      ar: يا محمد، حاول أن تكوّن جملة عن الأمس.
+      en: Mohamed, try making a sentence about yesterday.
+    - speaker: Mohamed
+      text: Kemarin saya tiket membeli di pelabuhan.
+      ar_eg: امبارح أنا تذكرة اشتريت من الميناء.
+      ar: أمس أنا تذكرة اشتريت من الميناء.
+      en: Yesterday I a ticket bought at the harbour.
+    - speaker: Pak Budi
+      text: Hampir betul! Objek setelah predikat.
+      ar_eg: قربت! المفعول بعد الفعل.
+      ar: أوشكت! المفعول بعد المسند.
+      en: Almost right! The object comes after the predicate.
+    - speaker: Mohamed
+      text: Kemarin saya membeli tiket di pelabuhan.
+      ar_eg: امبارح اشتريت تذكرة من الميناء.
+      ar: أمس اشتريت تذكرة من الميناء.
+      en: Yesterday I bought a ticket at the harbour.
+    - speaker: Pak Budi
+      text: Betul sekali! Kalimatmu bagus.
+      ar_eg: مظبوط جدًا! جملتك حلوة.
+      ar: صحيح تمامًا! جملتك جميلة.
+      en: Exactly right! Your sentence is good.
+new_words:
+  - word: kalimat
+    pos: noun
+    ar_eg: جملة
+    ar: جملة
+    en: sentence
+    arabic: كلمة
+  - word: subjek
+    pos: noun
+    ar_eg: الفاعل / المبتدأ
+    ar: المسند إليه
+    en: subject
+  - word: predikat
+    pos: noun
+    ar_eg: الفعل / الخبر في الجملة
+    ar: المسند
+    en: predicate
+  - word: objek
+    pos: noun
+    ar_eg: المفعول
+    ar: المفعول به
+    en: object
+  - word: keterangan
+    pos: noun
+    ar_eg: ظرف (مكان، زمان)
+    ar: ظرف
+    en: adverbial (of place, time)
+  - word: pelabuhan
+    pos: noun
+    ar_eg: ميناء
+    ar: ميناء
+    en: harbour, port
+  - word: memotret
+    pos: verb
+    ar_eg: يصوّر
+    ar: يصوّر
+    en: to take a photo of
+  - word: buat
+    pos: verb
+    ar_eg: يعمل، يكوّن
+    ar: يصنع، يكوّن
+    en: to make
+  - word: tentang
+    pos: preposition
+    ar_eg: عن
+    ar: عن، حول
+    en: about
+  - word: hampir
+    pos: adverb
+    ar_eg: تقريبًا، قرّب
+    ar: تقريبًا، كاد
+    en: almost
+review:
+  status: draft
+  verified: false

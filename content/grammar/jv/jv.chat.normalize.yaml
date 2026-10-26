@@ -1,0 +1,103 @@
+schema: kabar.grammar/v1
+id: jv.chat.normalize
+language: jv
+level: j1
+title:
+  target: arp → arep · ng → nang · gk → ora / gak · piro → pira
+  en: Reading chat Javanese (normalising spelling)
+  ar_eg: إزاي تقرا الجاوي بتاع الشات
+  ar: قراءة جاوية الدردشة وتسوية إملائها
+summary:
+  ar_eg: "الشباب بيكتبوا الجاوي مختصر وبالنطق: arp = arep، ng = nang، gk = gak، piro = pira، wes = wis. لو رجّعت كل كلمة لشكلها الأصلي، الجملة هتبان."
+  ar: "تُكتب الجاوية في الدردشة مختصرة وبحسب النطق: arp = arep، ng = nang، gk = gak، piro = pira، wes = wis. وبردّ كل كلمة إلى صورتها القياسية تتضح الجملة."
+  en: "Young people type Javanese shortened and as it sounds: arp = arep, ng = nang, gk = gak, piro = pira, wes = wis. Restore each word to its standard form and the sentence opens up."
+pattern:
+  - "dropped vowels: arp → arep, ws → wis, gk → gak"
+  - "a said as o: opo → apa, sopo → sapa, piro → pira, ojo → aja"
+  - "short forms: ng → nang / neng · gk, ga, g → gak (Arek) / ora · ra → ora · wes, ws → wis"
+  - "dh, th written d, t: dewe → dhewe, adem → adhem"
+  - "clipped words: dicul → diculke · rapopo → ora apa-apa · sek → dhisik (hold on, first)"
+explanation:
+  ar_eg: |
+    الشات الجاوي شبه «الفرانكو» عندنا: الناس بتكتب زي ما بتنطق، وبتختصر كل حاجة. الحيل اللي هتفك بيها أي رسالة:
+    1. الحروف المتحركة بتقع: arp = arep (هـ / ناوي)، ws = wis (خلاص)، gk = gak (لأ، Arek).
+    2. الـ a في آخر الكلمة بتتكتب o عشان كده بتتنطق: opo = apa، sopo = sapa، piro = pira، ojo = aja (ماتعملش). بس خلي بالك: فيه كلمات أصلها o فعلًا زي loro (اتنين) وkono (هناك)، فماتقلبش كل o لـ a.
+    3. اختصارات كلمات كاملة: ng = nang / neng (لـ / في)، ra = ora (لأ)، sek = sek / dhisik (استنى / الأول)، rapopo = ora apa-apa (مفيش مشكلة).
+    4. dh وth بيتكتبوا d وt: dewe = dhewe، adem = adhem (ساقع).
+    5. الكلمة الطويلة بتتقص: dicul = diculke (يتساب / يتباع).
+    ونفس الشات بيخلط إندونيسي (udh = sudah، blm = belum، jg = juga). وخلي بالك إن «wis» الجاوي و«udah» الإندونيسي نفس المعنى.
+    جربها على رسالة SPEC: «arp dicul piro» → arep diculke pira → «ناوي تبيعه بكام؟».
+    و«ng prabowo?» → nang Prabowo? → «لبرابوو؟ / عند برابوو؟». ng ممكن تكون nang أو neng، والسياق بيحدد.
+  ar: |
+    تشبه جاوية الدردشة «الفرانكو آراب»: كتابة بحسب النطق مع اختصار شديد. وأهم قواعد فكّها:
+    1. حذف الصوائت: arp = arep (سوف / ينوي)، ws = wis (قد / انتهى)، gk = gak (لا، لهجة Arek).
+    2. a الأخيرة تُكتب o لأنها تُنطق كذلك: opo = apa، sopo = sapa، piro = pira، ojo = aja (لا الناهية). مع الحذر من كلمات أصلها o مثل loro (اثنان) وkono (هناك).
+    3. اختصار كلمات كاملة: ng = nang / neng (إلى / في)، ra = ora (لا)، sek = dhisik (انتظر / أولًا)، rapopo = ora apa-apa (لا بأس).
+    4. dh وth تُكتبان d وt: dewe = dhewe.
+    5. بتر الكلمة الطويلة: dicul = diculke.
+    ويختلط بها الإندونيسي المختصر (udh = sudah، blm = belum، jg = juga).
+    مثال SPEC: «arp dicul piro» → arep diculke pira → بكم ستبيعه؟، و«ng prabowo?» → nang Prabowo? → إلى برابوو؟
+  en: |
+    Chat Javanese is a lot like Franco-Arabic: people type what they hear and shorten everything. The tricks that unlock almost any message:
+    1. Vowels drop: arp = arep (going to), ws = wis (already, done), gk = gak (no, Arek).
+    2. Final a is typed o because it's said that way: opo = apa, sopo = sapa, piro = pira, ojo = aja (don't). Careful: some words really have o (loro = two, kono = there), so don't flip every o.
+    3. Whole-word shortcuts: ng = nang / neng (to / at), ra = ora (not), sek = sek / dhisik (hold on / first), rapopo = ora apa-apa (no problem).
+    4. dh and th are typed d and t: dewe = dhewe, adem = adhem (cool).
+    5. Long words get clipped: dicul = diculke (released / sold off).
+    The same chats mix in Indonesian shorthand (udh = sudah, blm = belum, jg = juga); Javanese wis and Indonesian udah mean the same.
+    Try the SPEC messages: "arp dicul piro" → arep diculke pira → "How much will you let it go for?"; "ng prabowo?" → nang Prabowo? → "To Prabowo?" (ng can be nang or neng; context decides).
+examples:
+  - text: arp dicul piro
+    breakdown: arp = arep (mau) · dicul = diculke (dilepas / dijual) · piro = pira (berapa)
+    en: How much will you sell it for? (chat)
+    ar_eg: ناوي تبيعه بكام؟
+    ar: بكم ستبيعه؟
+    register: chat
+  - text: Sek tak lapor pusat
+    breakdown: sek = tunggu / dulu · tak = saya (akan) · lapor = lapor · pusat = pusat
+    en: Hold on, I'll report to HQ. (chat)
+    ar_eg: استنى، هبلّغ الإدارة.
+    ar: انتظر، سأبلغ المركز.
+    register: chat
+  - text: ng prabowo?
+    breakdown: ng = nang (ke) · Prabowo = a name
+    en: To Prabowo? (chat)
+    ar_eg: لبرابوو؟
+    ar: إلى برابوو؟
+    register: chat
+  - text: aku gk ngerti opo2
+    breakdown: aku · gk = gak / ora (tidak) · ngerti = mengerti · opo2 = apa-apa
+    en: I don't understand anything. (chat, Arek-flavoured)
+    ar_eg: أنا مش فاهم أي حاجة.
+    ar: لا أفهم شيئًا.
+    register: chat
+  - text: wes mangan durung?
+    breakdown: wes = wis (sudah) · mangan = makan · durung = belum
+    en: Have you eaten yet? (chat)
+    ar_eg: كلت ولا لسه؟
+    ar: هل أكلت أم ليس بعد؟
+    register: chat
+mistakes:
+  - wrong: loro → lara (normalising every o to a)
+    right: loro stays loro (two)
+    why:
+      ar_eg: مش كل o أصلها a. loro (اتنين) مكتوبة بـ o في الإملاء الرسمي. القاعدة بتشتغل في كلمات زي opo وpiro بس.
+      ar: ليست كل o أصلها a؛ فـ loro (اثنان) تُكتب بـ o قياسًا.
+      en: Not every o comes from a; loro (two) is spelled with o in standard Javanese.
+  - wrong: ng = Indonesian "yang"
+    right: ng = nang / neng (to, at)
+    why:
+      ar_eg: في الإندونيسي «yg» هي yang، لكن «ng» في الشات الجاوي غالبًا nang / neng.
+      ar: «yg» اختصار yang الإندونيسية، أما «ng» في الدردشة الجاوية فغالبًا nang / neng.
+      en: Indonesian "yg" is yang; Javanese chat "ng" is usually nang / neng.
+arabic_bridge:
+  ar_eg: "شبه «الفرانكو» بالظبط: زي ما بنكتب «3amel eh» بالنطق، الجاويين بيكتبوا «opo» بدل apa. ورجوع الكلمة لأصلها زي ما تحوّل الفرانكو لعربي."
+  ar: "يشبه هذا كتابة العربية بالحروف اللاتينية (الفرانكو): كتابة بحسب النطق تحتاج إلى ردّها إلى الإملاء القياسي."
+  en: "Just like Franco-Arabic: typed by sound, decoded by restoring the standard spelling."
+tags: [chat, spelling, reading, j1]
+prerequisites: [id.chat.abbreviations]
+see_also: [jv.marker.vs-indonesian, jv.aspect.wis-durung-lagi-arep, jv.suffix.ake, jv.preposition.place]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker (the chat shortcuts list and the reading of the SPEC chat lines).

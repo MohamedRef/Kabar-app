@@ -11,6 +11,7 @@ Every dataset, corpus, font and sound used by Kabar, with its license.
 | [Javanese Wikipedia](https://jv.wikipedia.org) articles dump | Javanese frequency list (built on the Mac) | CC BY-SA 4.0 | `content/freq/jv.tsv` |
 | [Wiktionary](https://en.wiktionary.org) via [kaikki.org](https://kaikki.org) (wiktextract, Tatu Ylonen) | dictionary import, Arabic etymologies for the Arabic Bridge cross-check | CC BY-SA 4.0 and GFDL | `build/dict/`, `content/bridge/wiktionary-*.jsonl` |
 | [Wiktionary](https://en.wiktionary.org) definition API (`/api/rest_v1/page/definition/<word>`) | Teach Kabar's free in-app lookup (spec §26): the excerpt is kept with the learner's taught entry, with a link back to the page | CC BY-SA 4.0 and GFDL | `taught_entries` sources (on the learner's devices only) |
+| [Natural Earth](https://www.naturalearthdata.com/) 1:10m Admin 0 countries (`ne_10m_admin_0_countries`, via [nvkelso/natural-earth-vector](https://github.com/nvkelso/natural-earth-vector)) | Journey Map base maps: clipped, simplified and restyled by `cargo run -p kabar-tools --bin journey-map` ("Made with Natural Earth") | public domain | `crates/app/assets/journey/*.svg` |
 
 Glosses, examples and Arabic Bridge cards under `content/glosses/` and `content/bridge/` are original, written for Kabar with Claude Code (`prompts/gloss@v1.md`, `prompts/bridge@v1.md`) and reviewed by the learner. The About screen must credit Wiktionary (CC BY-SA) and the frequency sources above.
 

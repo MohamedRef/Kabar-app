@@ -1,0 +1,104 @@
+schema: kabar.grammar/v1
+id: jv.pronoun.krama
+language: jv
+level: j3
+title:
+  target: kula, dalem · sampeyan, panjenengan · piyambakipun, panjenenganipun
+  en: Polite pronouns (krama)
+  ar_eg: الضماير المؤدبة (الكراما)
+  ar: الضمائر المهذبة (الكراما)
+summary:
+  ar_eg: "kula = أنا (مؤدب). sampeyan = حضرتك (اليومي). panjenengan = سيادتك (للكبار والمحترمين). piyambakipun = هو / هي بأدب. وفي الكراما «بتاعي» = اسم + kula: griya kula = بيتي."
+  ar: "kula = أنا (مهذبة)، وsampeyan = حضرتك (اليومية)، وpanjenengan = سيادتك (للمعظَّم)، وpiyambakipun = هو / هي، والملكية بالاسم + kula: griya kula = بيتي."
+  en: "kula = I (polite). sampeyan = you (everyday polite). panjenengan = you (honorific, for elders and people you honour). piyambakipun = he / she. 'My' becomes noun + kula: griya kula = my house."
+pattern:
+  - "I: aku (ngoko) → kula (krama) · dalem (very humble; also the polite reply 'yes?' when called)"
+  - "you: kowe (ngoko) → sampeyan (krama, everyday) → panjenengan (krama inggil)"
+  - "he / she: dheweke (ngoko) → piyambakipun (krama) → panjenenganipun (krama inggil)"
+  - "my: noun + kula (nami kula, griya kula) — not -ku"
+  - "your: noun + sampeyan / panjenengan (griya sampeyan) · honoured person's name: asma (asmanipun)"
+explanation:
+  ar_eg: |
+    في J1 اتعلمنا aku وkowe. ده المقابل المؤدب:
+    - kula = أنا بأدب (saya). في الشات kulo. وdalem أكتر تواضعًا، وكمان هي الرد المؤدب لما حد كبير يناديك: «Dalem?» = «أفندم؟».
+    - sampeyan = حضرتك. مؤدبة بس يومية: للبياع، لحد في سنك مش صاحبك. وفي سورابايا sampeyan بتستخدم كتير حتى في وسط كلام نغوكو.
+    - panjenengan = سيادتك. للكبار: جدة صاحبك، مدرسك، حد محترم. لو مش متأكد بين الاتنين، panjenengan أأمن مع الكبار.
+    - piyambakipun = هو / هي (بأدب). panjenenganipun = هو / هي لحد محترم جدًا (زي beliau في الإندونيسي).
+    - «بتاعي» في الكراما مش -ku: الاسم + kula: nami kula = اسمي (nama saya)، griya kula = بيتي.
+      و«بتاعك»: griya sampeyan / nami panjenengan. ولاسم الشخص المحترم فيه كلمة تعظيم: asma: Asmanipun sinten? = اسم حضرتك إيه؟
+  ar: |
+    عرفنا aku وkowe في J1، وهذا مقابلهما المهذب:
+    - kula = أنا (saya)، وفي الدردشة kulo. وdalem أشد تواضعًا، وهي الجواب المهذب إذا ناداك كبير: «Dalem?» = «أفندم؟».
+    - sampeyan = حضرتك، مهذبة يومية للبائع والنظير غير الصديق، وتكثر في سورابايا حتى وسط النغوكو.
+    - panjenengan = سيادتك، للجدة والمعلم والمعظَّم، وهي الأسلم مع الكبار عند الشك.
+    - piyambakipun = هو / هي بأدب، وpanjenenganipun للمعظَّم جدًا (كـ beliau).
+    - الملكية في الكراما بالاسم + kula لا بـ -ku: nami kula = اسمي، griya kula = بيتي، وgriya sampeyan = بيتك، ولاسم المعظَّم asma: Asmanipun sinten?
+  en: |
+    J1 gave you aku and kowe. Here are the polite versions:
+    - kula = I, politely (saya). Chat: kulo. dalem is even humbler, and it's the polite reply when an elder calls you: "Dalem?" ≈ «أفندم؟».
+    - sampeyan = you, polite but everyday: a seller, someone your age who isn't a friend. In Surabaya sampeyan is common even inside ngoko speech.
+    - panjenengan = you, honorific: a friend's grandmother, your teacher, someone you honour. Unsure between the two? With elders, panjenengan is safer.
+    - piyambakipun = he / she (polite). panjenenganipun = he / she for someone highly respected (like Indonesian beliau).
+    - "My" in krama is not -ku: noun + kula: nami kula = my name (nama saya), griya kula = my house.
+      "Your": griya sampeyan / nami panjenengan. A respected person's name uses the honorific asma: Asmanipun sinten? = What is your name?
+examples:
+  - text: Nami kula Mohamed, saking Mesir.
+    breakdown: nami = nama · kula = saya · saking = dari · Mesir
+    en: My name is Mohamed, from Egypt.
+    ar_eg: اسمي محمد، من مصر.
+    ar: اسمي محمد، من مصر.
+    register: formal
+  - text: Nyuwun sewu, asmanipun sinten?
+    breakdown: nyuwun sewu = permisi · asma + -nipun = namanya (honorific) · sinten = siapa
+    en: Excuse me, what is your name? (to an elder)
+    ar_eg: لا مؤاخذة، اسم حضرتك إيه؟
+    ar: عفوًا، ما اسمكم الكريم؟
+    register: formal
+  - text: Sampeyan saking pundi, Mas?
+    breakdown: sampeyan · saking = dari · pundi = mana · Mas
+    en: Where are you from? (polite, everyday)
+    ar_eg: حضرتك منين يا أستاذ؟
+    ar: من أين حضرتك؟
+    register: formal
+  - text: Panjenengan sampun dhahar, Mbah?
+    breakdown: panjenengan · sampun = sudah · dhahar = makan (krama inggil) · Mbah
+    en: Have you eaten, Grandma / Grandpa?
+    ar_eg: حضرتك أكلتي يا تيتة؟
+    ar: هل تفضلتِ بالأكل يا جدتي؟
+    register: formal
+  - text: Dalem, Bu?
+    breakdown: dalem = ya? (humble reply when called) · Bu
+    en: Yes, ma'am? (answering when an elder calls you)
+    ar_eg: أفندم يا ماما؟
+    ar: نعم يا سيدتي؟
+    register: formal
+mistakes:
+  - wrong: Nami-ku Mohamed.
+    right: Nami kula Mohamed.
+    why:
+      ar_eg: -ku نغوكو. في الكراما الملكية بـ kula بعد الاسم.
+      ar: -ku من النغوكو، والملكية في الكراما بـ kula بعد الاسم.
+      en: -ku is ngoko; krama puts kula after the noun.
+  - wrong: Nami panjenengan sinten? → Asma kula Mohamed.
+    right: Nami kula Mohamed.
+    why:
+      ar_eg: asma كلمة تعظيم للتاني بس. اسمك إنت nami.
+      ar: asma للتعظيم فلا تُقال عن النفس، واسمك nami.
+      en: asma honours the other person; your own name is nami.
+  - wrong: Kowe saking pundi, Pak?
+    right: Panjenengan / Sampeyan saking pundi, Pak?
+    why:
+      ar_eg: kowe نغوكو، مايمشيش في جملة كراما ولا مع Pak.
+      ar: kowe من النغوكو ولا تصلح في جملة كراما.
+      en: kowe is ngoko and clashes with a krama sentence and with Pak.
+arabic_bridge:
+  ar_eg: "sampeyan ≈ «حضرتك»، panjenengan ≈ «سيادتك»، و«Dalem?» لما حد كبير يناديك ≈ «أفندم؟» بالظبط."
+  ar: "sampeyan ≈ حضرتك، وpanjenengan ≈ سيادتك، وجواب «Dalem?» عند النداء ≈ «أفندم؟»."
+  en: "sampeyan ≈ حضرتك, panjenengan ≈ سيادتك, and answering «Dalem?» when called ≈ «أفندم؟»."
+tags: [pronoun, krama, politeness, j3]
+prerequisites: [jv.pronoun.ngoko, jv.speechlevel.overview]
+see_also: [jv.krama.function-words, jv.krama.questions, jv.krama.affixes, jv.krama-inggil.nouns]
+review:
+  status: draft
+  verified: false
+  notes: Draft by Claude; awaits review by a Javanese speaker (dalem as reply, asmanipun, and the sampeyan / panjenengan guidance especially).
