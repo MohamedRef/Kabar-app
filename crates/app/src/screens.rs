@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 use kabar_core::locale::{UiLanguage, format_number};
-use kabar_core::settings::Theme;
+use kabar_core::settings::{PronMode, Theme};
 use kabar_core::theme as palette;
 
 use crate::i18n::Msg;
@@ -172,6 +172,27 @@ pub fn SettingsScreen() -> Element {
             }
 
             div { class: "field",
+                span { class: "label", "{ui.t(Msg::SettingsPron)}" }
+                div { class: "row", role: "group",
+                    for mode in PronMode::ALL {
+                        button {
+                            key: "{mode:?}",
+                            aria_pressed: if mode == settings.pronunciation { "true" } else { "false" },
+                            onclick: {
+                                let db = db.clone();
+                                move |_| ui.update_settings(&db, |s| s.pronunciation = mode)
+                            },
+                            "{ui.t(pron_mode_label(mode))}"
+                        }
+                    }
+                }
+                details { class: "pron-details",
+                    summary { "{ui.t(Msg::PronHowToRead)}" }
+                    crate::pron::PronGuide {}
+                }
+            }
+
+            div { class: "field",
                 span { class: "label", "{ui.t(Msg::Width)}" }
                 span { class: "pill latin", bdi { "{width_class.as_str()}" } }
             }
@@ -204,5 +225,13 @@ pub fn SettingsScreen() -> Element {
         crate::coach::settings::CoachSettings {}
         crate::packs::settings::OfflinePacks {}
         crate::data_export::ExportCard {}
+    }
+}
+
+fn pron_mode_label(mode: PronMode) -> Msg {
+    match mode {
+        PronMode::On => Msg::PronModeOn,
+        PronMode::Tap => Msg::PronModeTap,
+        PronMode::Off => Msg::PronModeOff,
     }
 }

@@ -93,6 +93,7 @@ const BUILTIN: &[(&str, &str)] = bundled![
     "explain_sentence@v1.md",
     "grade_answer@v1.md",
     "roleplay_turn@v1.md",
+    "roleplay_turn@v2.md",
     "learn_entry@v1.md",
     "structure_screenshot@v1.md",
     "read_handwriting@v1.md",

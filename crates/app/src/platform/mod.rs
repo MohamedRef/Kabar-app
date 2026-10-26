@@ -208,6 +208,48 @@ pub fn open_url(url: &str) -> Result<(), String> {
     }
 }
 
+/// Downloaded episodes play in a native media service (Android), so they
+/// keep playing with the screen off. Elsewhere the WebView's `<audio>` does.
+pub const BACKGROUND_AUDIO: bool = cfg!(target_os = "android");
+
+/// The native player's calls; each is an error where [`BACKGROUND_AUDIO`]
+/// is false (callers check it first).
+pub mod track {
+    #[cfg(target_os = "android")]
+    pub use super::android::{
+        track_pause as pause, track_play as play, track_rate as rate, track_resume as resume,
+        track_seek as seek, track_state as state, track_stop as stop,
+    };
+
+    #[cfg(not(target_os = "android"))]
+    mod none {
+        const NONE: &str = "no native player on this platform";
+        pub fn play(_path: &str, _title: &str, _show: &str, _at: f64, _rate: f32) -> Result<(), String> {
+            Err(NONE.into())
+        }
+        pub fn pause() -> Result<(), String> {
+            Err(NONE.into())
+        }
+        pub fn resume() -> Result<(), String> {
+            Err(NONE.into())
+        }
+        pub fn seek(_at: f64) -> Result<(), String> {
+            Err(NONE.into())
+        }
+        pub fn rate(_rate: f32) -> Result<(), String> {
+            Err(NONE.into())
+        }
+        pub fn stop() -> Result<(), String> {
+            Err(NONE.into())
+        }
+        pub fn state() -> Result<(f64, bool, bool), String> {
+            Err(NONE.into())
+        }
+    }
+    #[cfg(not(target_os = "android"))]
+    pub use none::*;
+}
+
 #[cfg(all(test, not(target_os = "android")))]
 mod tests {
     use super::*;

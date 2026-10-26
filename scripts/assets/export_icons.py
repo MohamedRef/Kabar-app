@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import platform
+import shutil
 import subprocess
 from pathlib import Path
 from typing import Iterable
@@ -15,6 +16,11 @@ ANDROID_RES = OUT / "android" / "res"
 MACOS_DIR = OUT / "macos"
 WEB_DIR = OUT / "web"
 PREVIEW_PATH = OUT / "preview.png"
+# Kotlin glue module that dx builds into the APK (see android/build.gradle.kts).
+# dx writes its own default `ic_launcher` into the app module, and app resources
+# win over library ones, so ours ship under a different name and
+# crates/app/AndroidManifest.xml points at them.
+ANDROID_MODULE_RES = ROOT / "android" / "src" / "main" / "res"
 
 ADAPTIVE_SIZES = {
     "mipmap-mdpi": 108,
@@ -172,6 +178,19 @@ def write_android_xml(anydpi_dir: Path) -> None:
     (anydpi_dir / "ic_launcher_round.xml").write_text(xml, encoding="utf-8")
 
 
+def sync_android_module() -> None:
+    """Copy the launcher and notification icons into android/ as `ic_kabar_*`."""
+    for src in sorted(ANDROID_RES.glob("*/*")):
+        if src.parent.name == "drawable":  # splash art, not used by the app yet
+            continue
+        dest = ANDROID_MODULE_RES / src.parent.name / src.name.replace("ic_launcher", "ic_kabar_launcher")
+        ensure_dir(dest.parent)
+        if src.suffix == ".xml":
+            dest.write_text(src.read_text(encoding="utf-8").replace("ic_launcher", "ic_kabar_launcher"), encoding="utf-8")
+        else:
+            shutil.copyfile(src, dest)
+
+
 def build_preview(full_img: Image.Image, macos_master: Image.Image, notif_icon: Image.Image) -> None:
     bg = (245, 239, 227, 255)
     canvas = Image.new("RGBA", (2300, 950), bg)
@@ -240,6 +259,8 @@ def main() -> None:
     for dirname, px in NOTIFICATION_SIZES.items():
         d = ANDROID_RES / dirname
         save(fit_to_box(monochrome, px, 2 / 24), d / "ic_stat_kabar.png")
+
+    sync_android_module()
 
     # Splash icon, 960x960 with emblem inside central 2/3 circle
     splash = fit_transparent_to_circle(foreground, 960, int(round(960 * 2 / 3)))
