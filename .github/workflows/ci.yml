@@ -45,3 +45,15 @@ jobs:
           export AR_aarch64_linux_android="$BIN/llvm-ar"
           export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER="$BIN/aarch64-linux-android28-clang"
           cargo clippy -p kabar-app --target aarch64-linux-android --no-default-features --features mobile -- -D warnings
+
+  wasm:
+    name: core and protocol build for wasm32
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo clippy -p kabar-core -p kabar-protocol --target wasm32-unknown-unknown -- -D warnings
