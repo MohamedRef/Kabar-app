@@ -2,8 +2,9 @@
 // one path: drag with one pointer, pinch with two, wheel/trackpad to zoom.
 // Moves only touch one transform attribute on `.jm-viewport` (batched per
 // frame), so Dioxus never re-renders while the map moves.
-// Called as `kabarJourneyPanZoom(stageId)`; idempotent per element.
-(function (stageId) {
+// Called as `(this snippet)(stageId, focusX, focusY)`: the focus point (map
+// units) starts centred. Idempotent per element.
+(function (stageId, focusX, focusY) {
   const stage = document.getElementById(stageId);
   if (!stage || stage.__kz) return;
   const svg = stage.querySelector("svg");
@@ -16,19 +17,31 @@
   const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
   let raf = 0, anim = 0;
 
+  // The stage's visible rectangle in SVG user units (the SVG uses `slice`,
+  // so on narrow stages less than the whole viewBox shows).
+  function visible() {
+    const r = stage.getBoundingClientRect();
+    const a = toSvg(r.left, r.top), b = toSvg(r.right, r.bottom);
+    return { x0: Math.min(a.x, b.x), x1: Math.max(a.x, b.x), y0: Math.min(a.y, b.y), y1: Math.max(a.y, b.y) };
+  }
+  // Keep the map under the stage: no panning into the void. Where the map is
+  // smaller than the stage, centre it.
+  function clampAxis(t, v0, v1, b0, b1) {
+    const hi = v0 - st.s * b0, lo = v1 - st.s * b1;
+    return lo > hi ? (lo + hi) / 2 : Math.min(hi, Math.max(lo, t));
+  }
   function clamp() {
     st.s = Math.min(MAX, Math.max(MIN, st.s));
-    // Keep the original view covered by the map: no panning into the void.
-    const loX = (vb.x + vb.width) * (1 - st.s), hiX = vb.x * (1 - st.s);
-    const loY = (vb.y + vb.height) * (1 - st.s), hiY = vb.y * (1 - st.s);
-    st.x = Math.min(hiX, Math.max(loX, st.x));
-    st.y = Math.min(hiY, Math.max(loY, st.y));
+    const v = visible();
+    st.x = clampAxis(st.x, v.x0, v.x1, vb.x, vb.x + vb.width);
+    st.y = clampAxis(st.y, v.y0, v.y1, vb.y, vb.y + vb.height);
   }
   function apply() {
     raf = 0;
     g.setAttribute("transform", `translate(${st.x.toFixed(3)} ${st.y.toFixed(3)}) scale(${st.s.toFixed(4)})`);
-    // Pins and labels grow gently, not with the full zoom.
-    svg.style.setProperty("--inv", (1 / Math.sqrt(st.s)).toFixed(4));
+    // Pins and labels keep their size; the land and the stops around each
+    // place spread out underneath them.
+    svg.style.setProperty("--inv", (1 / st.s).toFixed(4));
     stage.dataset.zoomed = st.s > 1.01 ? "true" : "false";
   }
   function schedule() {
@@ -153,5 +166,13 @@
     zoom: (factor) => glide(target(factor, center())),
     reset: () => glide({ s: 1, x: 0, y: 0 }),
   };
+  if (typeof focusX === "number" && typeof focusY === "number") {
+    const v = visible();
+    st.x = (v.x0 + v.x1) / 2 - focusX;
+    st.y = (v.y0 + v.y1) / 2 - focusY;
+  }
+  clamp();
   apply();
+  // Window, split-screen or rotation changes: keep the map under the stage.
+  new ResizeObserver(() => schedule()).observe(stage);
 })
