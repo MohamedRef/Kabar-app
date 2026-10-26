@@ -1,0 +1,180 @@
+schema: kabar.lesson/v1
+id: j5.u05.l08
+language: jv
+title: Sepur telat
+can_do:
+  ar_eg: تقرا قصة قصيرة جدًا وتلاقي «أول ما» و«فجأة» و«في الآخر».
+  ar: أن تقرأ قصة قصيرة جدًا وتجد «ما إن» و«فجأة» و«في النهاية».
+  en: Read a very short story and find its "as soon as", "suddenly" and "in the end".
+slides:
+  - title: Cerkak cekak banget
+    body:
+      ar_eg: |
+        قصة من تلات جمل من كتاب cerkak بتاع بو نور. فيها مفاجأة صغيرة، دوّر عليها بعد dumadakan.
+        فاكر bareng = «أول ما» (begitu)؟ وtelat (متأخر) اتعلمناها في أمباراوا. كلمة جديدة: numpak = يركب (naik)، وpengumuman = إعلان زي الإندونيسي.
+      ar: |
+        قصة من ثلاث جمل من كتاب القصص القصيرة لبو نور، فيها مفاجأة صغيرة؛ ابحث عنها بعد dumadakan.
+        أتذكر bareng = «ما إن» (begitu)؟ وtelat (متأخر) تعلمناها في أمباراوا. كلمة جديدة: numpak = يركب (naik)، وpengumuman = إعلان كالإندونيسية.
+      en: |
+        A three-sentence story from Bu Nur's cerkak book, with a small twist: look for it after dumadakan.
+        Remember bareng = "as soon as" (begitu)? And telat (late) from Ambarawa. New word: numpak = ride, take (naik); pengumuman = announcement, as in Indonesian.
+    grammar: jv.narrative.connectors
+    examples:
+      - text: Esuk iku, Rina telat tangi, banjur mlayu menyang stasiun.
+        ar_eg: الصبح ده، رينا صحيت متأخر، وبعدين جريت على المحطة.
+        ar: في ذلك الصباح استيقظت رينا متأخرة، ثم جرت إلى المحطة.
+        en: That morning Rina woke up late, then ran to the station.
+      - text: Bareng tekan stasiun, dumadakan ana pengumuman, sepure telat sejam.
+        ar_eg: أول ما وصلت المحطة، فجأة طلع إعلان إن القطر متأخر ساعة.
+        ar: ما إن وصلت إلى المحطة حتى صدر فجأة إعلان بأن القطار متأخر ساعة.
+        en: As soon as she reached the station, suddenly there was an announcement that the train was an hour late.
+      - text: Pungkasane, Rina isih bisa numpak sepur.
+        ar_eg: وفي الآخر، رينا لحقت تركب القطر.
+        ar: وفي النهاية تمكّنت رينا من ركوب القطار.
+        en: In the end, Rina could still catch the train.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: رينا جريت ليه؟
+      ar: لماذا جرت رينا؟
+      en: Why did Rina run?
+    options: [amarga udan, amarga telat tangi, amarga lara]
+    answer: 1
+    words: [telat, mlayu]
+  - id: e02
+    type: listen
+    text: Bareng tekan stasiun, dumadakan ana pengumuman, sepure telat sejam.
+    question:
+      ar_eg: الإعلان قال إيه؟
+      ar: ماذا قال الإعلان؟
+      en: What did the announcement say?
+    options: ["Sepure wis lunga.", "Sepure ora ana.", "Sepure telat sejam."]
+    answer: 2
+    meaning:
+      ar_eg: أول ما وصلت المحطة، فجأة طلع إعلان إن القطر متأخر ساعة.
+      ar: ما إن وصلت إلى المحطة حتى صدر فجأة إعلان بأن القطار متأخر ساعة.
+      en: As soon as she reached the station, suddenly there was an announcement that the train was an hour late.
+    words: [bareng, dumadakan, telat]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: القصة خلصت إزاي؟
+      ar: كيف انتهت القصة؟
+      en: How does the story end?
+    options: [Rina bisa numpak sepur, Rina mulih, Rina turu ing stasiun]
+    answer: 0
+    explain:
+      ar_eg: 'الصدفة الحلوة: رينا اتأخرت، بس القطر اتأخر أكتر، فلحقته.'
+      ar: 'المفارقة الطريفة: تأخرت رينا، لكن القطار تأخر أكثر، فلحقت به.'
+      en: 'The happy twist: Rina was late, but the train was later, so she caught it.'
+    words: [pungkasane, numpak]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: bareng
+        ar_eg: أول ما
+        ar: ما إن
+        en: as soon as
+      - text: dumadakan
+        ar_eg: فجأة
+        ar: فجأة
+        en: suddenly
+      - text: pungkasane
+        ar_eg: في الآخر
+        ar: في النهاية
+        en: in the end
+      - text: numpak
+        ar_eg: يركب
+        ar: يركب
+        en: ride, take
+      - text: telat
+        ar_eg: متأخر
+        ar: متأخر
+        en: late
+    words: [bareng, dumadakan, pungkasane, numpak, telat]
+  - id: e05
+    type: fill_blank
+    sentence: ___ tekan stasiun, dumadakan ana pengumuman.
+    meaning:
+      ar_eg: أول ما وصلت المحطة، فجأة طلع إعلان.
+      ar: ما إن وصلت إلى المحطة حتى صدر فجأة إعلان.
+      en: As soon as she reached the station, suddenly there was an announcement.
+    options: [Biyen, Bareng, Pungkasane]
+    answers: [Bareng]
+    words: [bareng]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: (بأسلوب الحكاية) وفي الآخر، رينا لحقت تركب القطر.
+      ar: (بأسلوب الحكاية) وفي النهاية تمكّنت رينا من ركوب القطار.
+      en: (story style) In the end, Rina could still catch the train.
+    answer: Pungkasane, Rina isih bisa numpak sepur.
+    distractors: [dumadakan, mlayu]
+    words: [pungkasane, numpak]
+  - id: e07
+    type: dictation
+    text: Esuk iku, Rina telat tangi, banjur mlayu menyang stasiun.
+    meaning:
+      ar_eg: الصبح ده، رينا صحيت متأخر، وبعدين جريت على المحطة.
+      ar: في ذلك الصباح استيقظت رينا متأخرة، ثم جرت إلى المحطة.
+      en: That morning Rina woke up late, then ran to the station.
+    words: [telat, mlayu, banjur]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Bareng tekan stasiun, dumadakan ana pengumuman, sepure telat sejam.
+    answers_meaning:
+      ar_eg:
+        - أول ما وصلت المحطة، فجأة طلع إعلان إن القطر متأخر ساعة.
+        - أول ما وصلت المحطة، فجأة كان فيه إعلان، القطر متأخر ساعة.
+        - أول ما وصلت المحطة، فجأة قالوا في الإعلان إن القطر هيتأخر ساعة.
+        - أول ما وصلت للمحطة فجأة فيه إعلان إن القطر متأخر ساعة.
+      ar:
+        - ما إن وصلت إلى المحطة حتى صدر فجأة إعلان بأن القطار متأخر ساعة.
+        - حين وصلت إلى المحطة، صدر فجأة إعلان أن القطار متأخر ساعة.
+        - ما إن بلغت المحطة حتى كان هناك فجأة إعلان، القطار متأخر ساعة.
+      en:
+        - As soon as she reached the station, suddenly there was an announcement that the train was an hour late.
+        - As soon as she got to the station, suddenly there was an announcement, the train was an hour late.
+        - When she reached the station, suddenly there was an announcement that the train was an hour late.
+        - As soon as she arrived at the station, there was suddenly an announcement that the train was one hour late.
+        - As soon as she got to the station, suddenly an announcement said the train was an hour late.
+    words: [bareng, dumadakan]
+dialogue:
+  title: Critakna cekak
+  lines:
+    - speaker: Bu Nur
+      text: Mas, critakna cekak wae cerkak "Sepur telat".
+      ar_eg: يا محمد، احكيلي قصة «القطر المتأخر» باختصار.
+      ar: يا محمد، احكِ لي قصة «القطار المتأخر» باختصار.
+      en: Mohamed, retell "The Late Train" briefly.
+    - speaker: Mohamed
+      text: Rina telat tangi, banjur mlayu menyang stasiun.
+      ar_eg: رينا صحيت متأخر، وبعدين جريت على المحطة.
+      ar: استيقظت رينا متأخرة، ثم جرت إلى المحطة.
+      en: Rina woke up late, then ran to the station.
+    - speaker: Bu Nur
+      text: Terus, dumadakan apa?
+      ar_eg: وبعدين، فجأة إيه اللي حصل؟
+      ar: ثم ماذا حدث فجأة؟
+      en: And then, what suddenly happened?
+    - speaker: Mohamed
+      text: Ana pengumuman, sepure uga telat! Pungkasane Rina bisa numpak.
+      ar_eg: طلع إعلان إن القطر كمان متأخر! وفي الآخر رينا لحقت تركب.
+      ar: صدر إعلان بأن القطار متأخر أيضًا! وفي النهاية تمكنت رينا من الركوب.
+      en: There was an announcement, the train was late too! In the end Rina could get on.
+    - speaker: Bu Nur
+      text: Hehe, untung! Critamu cekak lan cetha.
+      ar_eg: هههه، حظها حلو! حكايتك قصيرة وواضحة.
+      ar: هههه، يا لحسن الحظ! حكايتك قصيرة وواضحة.
+      en: Haha, lucky her! Your retelling is short and clear.
+new_words:
+  - word: numpak
+    pos: verb
+    ar_eg: يركب (مواصلة)
+    ar: يركب (وسيلة نقل)
+    en: ride, take (transport) = naik
+review:
+  status: draft
+  verified: false
