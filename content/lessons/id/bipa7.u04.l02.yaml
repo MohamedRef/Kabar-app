@@ -1,0 +1,205 @@
+schema: kabar.lesson/v1
+id: bipa7.u04.l02
+language: id
+title: Laporan informatif
+can_do:
+  ar_eg: تقرا تقرير معلوماتي عن لهجة وتطلّع منه الحقايق الأساسية.
+  ar: أن تقرأ تقريرًا إعلاميًّا عن لهجة وتستخرج حقائقه الأساسية.
+  en: Read an informative report on a dialect and pull out the key facts.
+slides:
+  - title: Melayu Papua
+    body:
+      ar_eg: |
+        تقرير (مكتوب للدرس):
+        Melayu Papua adalah dialek bahasa Melayu yang digunakan di wilayah Papua. Dialek ini sudah lama menjadi bahasa pergaulan antarsuku. Ciri khasnya antara lain kata ganti sa, ko, dan kitong, serta bentuk pendek seperti su (sudah) dan pi (pergi). Ragam pesisir dan ragam pegunungan memiliki variasi kosakata dan logat. Meskipun begitu, penuturnya dapat saling memahami.
+        - dialek = لهجة، wilayah = منطقة / إقليم، ciri khas = سمة مميزة
+        - ragam = نوع / شكل من أشكال اللغة، variasi = اختلافات / تنوّع
+      ar: |
+        تقرير (مكتوب للدرس):
+        Melayu Papua adalah dialek bahasa Melayu yang digunakan di wilayah Papua. Dialek ini sudah lama menjadi bahasa pergaulan antarsuku. Ciri khasnya antara lain kata ganti sa, ko, dan kitong, serta bentuk pendek seperti su (sudah) dan pi (pergi). Ragam pesisir dan ragam pegunungan memiliki variasi kosakata dan logat. Meskipun begitu, penuturnya dapat saling memahami.
+        - dialek = لهجة، wilayah = إقليم، ciri khas = سمة مميّزة
+        - ragam = ضرب من ضروب اللغة، variasi = تنوّع
+      en: |
+        A report (written for the lesson):
+        Melayu Papua adalah dialek bahasa Melayu yang digunakan di wilayah Papua. Dialek ini sudah lama menjadi bahasa pergaulan antarsuku. Ciri khasnya antara lain kata ganti sa, ko, dan kitong, serta bentuk pendek seperti su (sudah) dan pi (pergi). Ragam pesisir dan ragam pegunungan memiliki variasi kosakata dan logat. Meskipun begitu, penuturnya dapat saling memahami.
+        - dialek = dialect, wilayah = region, ciri khas = distinctive feature
+        - ragam = variety (of a language), variasi = variation
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: dialek
+        ar_eg: لهجة
+        ar: لهجة
+        en: dialect
+      - text: ragam
+        ar_eg: نوع من اللغة
+        ar: ضرب من اللغة
+        en: variety, register
+      - text: ciri khas
+        ar_eg: سمة مميزة
+        ar: سمة مميّزة
+        en: distinctive feature
+      - text: wilayah
+        ar_eg: منطقة / إقليم
+        ar: إقليم
+        en: region, territory
+      - text: variasi
+        ar_eg: اختلافات / تنوّع
+        ar: تنوّع
+        en: variation
+    words: [dialek, ragam, ciri khas, wilayah, variasi]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: على حسب التقرير، إيه من السمات المميزة لملايو بابوا؟
+      ar: ما إحدى السمات المميّزة لملايو بابوا بحسب التقرير؟
+      en: According to the report, what is one distinctive feature of Papuan Malay?
+    options:
+      - الضماير gue وlu.
+      - الضماير sa وko وkitong.
+      - إنها مابتتكتبش خالص.
+    answer: 1
+    words: [ciri khas]
+  - id: e03
+    type: fill_blank
+    sentence: Melayu Papua adalah ___ bahasa Melayu.
+    meaning:
+      ar_eg: ملايو بابوا لهجة من لهجات الملايو.
+      ar: ملايو بابوا لهجة من لهجات الملايوية.
+      en: Papuan Malay is a dialect of Malay.
+    options: [dialek, wilayah, variasi]
+    answers: [dialek]
+    words: [dialek]
+  - id: e04
+    type: listen
+    text: Ragam pesisir dan ragam pegunungan memiliki variasi kosakata.
+    question:
+      ar_eg: إيه الفرق بين شكل الساحل وشكل الجبل؟
+      ar: ما الفرق بين ضرب الساحل وضرب الجبال؟
+      en: How do the coastal and highland varieties differ?
+    options:
+      - في بعض الكلمات.
+      - في كل حاجة، مش بيفهموا بعض.
+      - مفيش أي فرق.
+    answer: 0
+    words: [ragam, variasi]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: اللهجة دي مستعملة في المنطقة كلها.
+      ar: تُستعمل هذه اللهجة في الإقليم كلّه.
+      en: This dialect is used across the whole region.
+    answer: Dialek ini digunakan di seluruh wilayah.
+    distractors: [ragam, variasi]
+    words: [dialek, wilayah]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الناس اللي بتتكلم الأشكال المختلفة بيفهموا بعض؟
+      ar: هل يفهم متكلّمو الضروب المختلفة بعضهم بعضًا؟
+      en: Do speakers of the different varieties understand each other?
+    options:
+      - لأ، محتاجين مترجم.
+      - بس بالكتابة.
+      - أيوه، بيفهموا بعض.
+    answer: 2
+    words: [ragam]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: كل منطقة ليها سمة مميزة في الكلام.
+      ar: لكلّ منطقة سمة مميّزة في الكلام.
+      en: Every region has a distinctive way of speaking.
+    answers:
+      - Setiap wilayah punya ciri khas dalam berbicara.
+      - Setiap wilayah memiliki ciri khas dalam berbicara.
+      - Tiap wilayah punya ciri khas dalam berbicara.
+      - Setiap wilayah mempunyai ciri khas dalam berbicara.
+    words: [wilayah, ciri khas]
+  - id: e08
+    type: speaking
+    text: Variasi dialek membuat bahasa Indonesia makin kaya.
+    meaning:
+      ar_eg: تنوّع اللهجات بيخلّي الإندونيسي أغنى.
+      ar: يزيد تنوّعُ اللهجات الإندونيسيةَ ثراءً.
+      en: Dialect variation makes Indonesian ever richer.
+    words: [variasi, dialek]
+  - id: e09
+    type: dictation
+    text: Ciri khas ragam ini adalah bentuk kata yang pendek.
+    meaning:
+      ar_eg: السمة المميزة للشكل ده إن الكلمات قصيرة.
+      ar: السمة المميّزة لهذا الضرب قِصر الكلمات.
+      en: The distinctive feature of this variety is its short word forms.
+    words: [ciri khas, ragam]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Laporan ini memetakan variasi bahasa di wilayah timur Indonesia.
+    answers_meaning:
+      ar_eg:
+        - التقرير ده بيرسم خريطة لتنوّع اللغة في شرق إندونيسيا.
+        - التقرير ده بيوضّح اختلافات اللغة في المنطقة الشرقية لإندونيسيا.
+      ar:
+        - يرسم هذا التقرير خريطة التنوّع اللغوي في الإقليم الشرقي لإندونيسيا.
+        - يرصد هذا التقرير تنوّع اللغة في شرق إندونيسيا.
+      en:
+        - This report maps language variation in eastern Indonesia.
+        - This report charts how the language varies across eastern Indonesia.
+    words: [variasi, wilayah]
+dialogue:
+  title: Laporan untuk radio
+  lines:
+    - speaker: Mohamed
+      text: Om, Kaka Yohana minta saya menulis laporan tentang dialek di sini.
+      ar_eg: يا عمّ، كاكا يوهانا طلبت مني أكتب تقرير عن اللهجة هنا.
+      ar: يا عمّ، طلبت منّي كاكا يوهانا تقريرًا عن اللهجة هنا.
+      en: Om, Kaka Yohana asked me to write a report on the dialect here.
+    - speaker: Om Nus
+      text: Bagus. Tulis bahwa ragam di pantai dan di gunung berbeda sedikit.
+      ar_eg: حلو. اكتب إن الشكل اللي على الشط واللي في الجبل مختلفين شوية.
+      ar: جميل. اكتب أنّ ضرب الساحل وضرب الجبل يختلفان قليلًا.
+      en: Good. Write that the varieties on the coast and in the mountains differ a little.
+    - speaker: Mohamed
+      text: Apa ciri khas yang paling penting?
+      ar_eg: إيه أهم سمة مميزة؟
+      ar: ما أهمّ سمة مميّزة؟
+      en: What's the most important distinctive feature?
+    - speaker: Om Nus
+      text: Kata ganti, sa, ko, kitong. Itu yang orang dengar pertama kali.
+      ar_eg: الضماير، sa وko وkitong. دي أول حاجة الناس بتسمعها.
+      ar: الضمائر sa وko وkitong، فهي أوّل ما يسمعه الناس.
+      en: The pronouns, sa, ko, kitong. That's the first thing people hear.
+new_words:
+  - word: dialek
+    pos: noun
+    ar_eg: لهجة
+    ar: لهجة
+    en: dialect
+  - word: ragam
+    pos: noun
+    ar_eg: نوع من اللغة
+    ar: ضرب من اللغة
+    en: variety, register
+  - word: ciri khas
+    pos: noun
+    arabic: خاصّ
+    ar_eg: سمة مميزة
+    ar: سمة مميّزة
+    en: distinctive feature
+  - word: wilayah
+    pos: noun
+    arabic: ولاية
+    ar_eg: منطقة / إقليم
+    ar: إقليم
+    en: region, territory
+  - word: variasi
+    pos: noun
+    ar_eg: اختلافات / تنوّع
+    ar: تنوّع
+    en: variation
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: bipa7.u04.l01
+language: id
+title: Sa, ko, gue, lu
+can_do:
+  ar_eg: تفهم الضماير المحلية في بابوا وجاكرتا وتعرف إمتى ماتستعملهاش.
+  ar: أن تفهم الضمائر المحلّية في بابوا وجاكرتا وتعرف متى تتجنّبها.
+  en: Understand regional pronouns from Papua and Jakarta and know when not to use them.
+slides:
+  - title: Satu kata, banyak wajah
+    grammar: id.register.context
+    body:
+      ar_eg: |
+        «أنا» و«إنت» بتتغيّر حسب المكان:
+        - ملايو بابوا: sa (أنا)، ko (إنت)، kitong (إحنا)، dong (هم)، tra (مش).
+          Sa tra tahu. = مش عارف. / Kitong makan dulu. = ناكل الأول.
+        - جاكرتا: gue (أنا)، lu (إنت). Gue nggak tahu, lu tahu?
+        - الشكل المحايد اللي ينفع في كل حتة: saya، kamu، Anda، kita، mereka، tidak.
+        القاعدة الدهبية: افهم كل حاجة، بس اتكلم بالمحايد. «gue» من واحد غريب في سورونج بتبان تقليد.
+      ar: |
+        يتغيّر «أنا» و«أنت» بحسب المكان:
+        - ملايو بابوا: sa (أنا)، ko (أنت)، kitong (نحن)، dong (هم)، tra (لا).
+          Sa tra tahu. = لا أعرف. / Kitong makan dulu. = لنأكل أوّلًا.
+        - جاكرتا: gue (أنا)، lu (أنت). Gue nggak tahu, lu tahu?
+        - الصيغة المحايدة الصالحة في كلّ مكان: saya، kamu، Anda، kita، mereka، tidak.
+        والقاعدة الذهبية: افهم كلّ شيء، وتكلّم بالمحايد؛ فـ «gue» على لسان غريب في سورونغ تبدو تقليدًا.
+      en: |
+        "I" and "you" change with the place:
+        - Papuan Malay: sa (I), ko (you), kitong (we), dong (they), tra (not).
+          Sa tra tahu. = I don't know. / Kitong makan dulu. = Let's eat first.
+        - Jakarta: gue (I), lu (you). Gue nggak tahu, lu tahu?
+        - The neutral forms that work everywhere: saya, kamu, Anda, kita, mereka, tidak.
+        Golden rule: understand everything, but speak neutral. An outsider saying "gue" in Sorong sounds like mimicry.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: sa
+        ar_eg: أنا (بابوا)
+        ar: أنا (ملايو بابوا)
+        en: I (Papuan Malay)
+      - text: ko
+        ar_eg: إنت (بابوا)
+        ar: أنت (ملايو بابوا)
+        en: you (Papuan Malay)
+      - text: kitong
+        ar_eg: إحنا (بابوا)
+        ar: نحن (ملايو بابوا)
+        en: we (Papuan Malay)
+      - text: tra
+        ar_eg: مش (بابوا)
+        ar: لا / ليس (ملايو بابوا)
+        en: not (Papuan Malay)
+      - text: gue
+        ar_eg: أنا (جاكرتا)
+        ar: أنا (عامّية جاكرتا)
+        en: I (Jakarta slang)
+    words: [sa, ko, kitong, tra, gue]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Sa tra tahu» معناها إيه؟
+      ar: ما معنى «Sa tra tahu»؟
+      en: What does "Sa tra tahu" mean?
+    options:
+      - أنا عارف كويس.
+      - أنا مش عارف.
+      - إنت عارف؟
+    answer: 1
+    words: [sa, tra]
+  - id: e03
+    type: fill_blank
+    sentence: Om Nus bilang, "___ makan dulu, baru kitong pi mancing."
+    meaning:
+      ar_eg: عمّ نوس قال «ناكل الأول، وبعدين نروح نصطاد».
+      ar: قال العمّ نوس «لنأكل أوّلًا ثمّ نذهب للصيد».
+      en: Om Nus said, "Let's eat first, then we'll go fishing."
+    options: [Kitong, Gue, Tra]
+    answers: [Kitong]
+    words: [kitong]
+  - id: e04
+    type: listen
+    text: Ko mau ikut kitong ke Piaynemo?
+    question:
+      ar_eg: المتكلم بيسأل إيه؟
+      ar: عمَّ يسأل المتحدّث؟
+      en: What is the speaker asking?
+    options:
+      - لو إنت عايز تيجي معانا بيانيمو.
+      - لو إحنا رايحين بيانيمو بكرة.
+      - مين اللي راح بيانيمو.
+    answer: 0
+    words: [ko, kitong]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: أنا مش جعان. (بلهجة بابوا)
+      ar: لستُ جائعًا. (بملايو بابوا)
+      en: I'm not hungry. (Papuan Malay)
+    answer: Sa tra lapar.
+    distractors: [gue, ko]
+    words: [sa, tra]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إنت أجنبي وبتتكلم مع موظف في جاكرتا. تقول إيه؟
+      ar: أنت أجنبي تخاطب موظّفًا في جاكرتا. ماذا تقول؟
+      en: You're a foreigner talking to an official in Jakarta. What do you say?
+    options:
+      - Gue mau tanya, lu tahu nggak?
+      - Sa mau tanya, ko tahu?
+      - Saya mau bertanya, apakah Bapak tahu?
+    answer: 2
+    words: [gue, ko, sa]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: إنت رايح فين؟ (بلهجة بابوا)
+      ar: إلى أين تذهب؟ (بملايو بابوا)
+      en: Where are you going? (Papuan Malay)
+    answers:
+      - Ko mau pi mana?
+      - Ko pi mana?
+      - Ko mau pergi ke mana?
+    words: [ko]
+  - id: e08
+    type: speaking
+    text: Gue dari Jakarta, tapi di sini saya pakai bahasa yang netral.
+    meaning:
+      ar_eg: أنا من جاكرتا، بس هنا بستعمل لغة محايدة.
+      ar: أنا من جاكرتا، لكنّني أستعمل هنا لغة محايدة.
+      en: I'm from Jakarta, but here I use neutral language.
+    words: [gue]
+  - id: e09
+    type: dictation
+    text: Kitong tra pernah lupa sama tamu.
+    meaning:
+      ar_eg: إحنا عمرنا ما بننسى الضيف.
+      ar: نحن لا ننسى الضيف أبدًا.
+      en: We never forget our guests.
+    words: [kitong, tra]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Sa su bilang, ko harus coba ikan bakar di sini.
+    answers_meaning:
+      ar_eg:
+        - أنا قلتلك خلاص، لازم تجرّب السمك المشوي هنا.
+        - قلتلك، لازم تدوق السمك المشوي هنا.
+      ar:
+        - قلتُ لك، يجب أن تجرّب السمك المشوي هنا.
+        - سبق أن قلتُ إنّ عليك تذوّق السمك المشوي هنا.
+      en:
+        - I already told you, you have to try the grilled fish here.
+        - I've said it before, you must try the grilled fish here.
+    words: [sa, ko]
+dialogue:
+  title: Naik ke puncak Piaynemo
+  lines:
+    - speaker: Om Nus
+      text: Ko su capek? Tangganya masih banyak, e!
+      ar_eg: إنت تعبت خلاص؟ لسه السلالم كتير، أهو!
+      ar: هل تعبت؟ ما زالت الدرجات كثيرة!
+      en: Tired already? There are still lots of steps, eh!
+    - speaker: Mohamed
+      text: Sedikit, Om. Tadi Om bilang "ko", artinya "kamu", kan?
+      ar_eg: شوية يا عمّ. إنت قلت «ko» من شوية، معناها «إنت»، صح؟
+      ar: قليلًا يا عمّ. قلتَ «ko» قبل قليل، وتعني «أنت»، أليس كذلك؟
+      en: A bit, Om. You said "ko" just now, that means "kamu", right?
+    - speaker: Om Nus
+      text: Betul. Sa itu saya, kitong itu kita. Tapi ko bicara biasa saja, sa mengerti.
+      ar_eg: صح. sa يعني أنا، وkitong يعني إحنا. بس إنت اتكلم عادي، أنا فاهمك.
+      ar: صحيح. sa تعني أنا، وkitong تعني نحن. لكن تكلّم كعادتك، فأنا أفهمك.
+      en: Right. Sa is "saya", kitong is "kita". But you just speak normally, I understand you.
+    - speaker: Mohamed
+      text: Baik, Om. Saya mengerti semuanya, tapi saya bicara pakai bahasa yang netral.
+      ar_eg: ماشي يا عمّ. أنا فاهم كل حاجة، بس هتكلم بلغة محايدة.
+      ar: حسنًا يا عمّ، أفهم كلّ شيء، لكنّني أتكلّم بلغة محايدة.
+      en: All right, Om. I understand everything, but I speak neutral Indonesian.
+new_words:
+  - word: sa
+    pos: pronoun
+    ar_eg: أنا (بابوا)
+    ar: أنا (ملايو بابوا)
+    en: I (Papuan Malay)
+  - word: ko
+    pos: pronoun
+    ar_eg: إنت (بابوا)
+    ar: أنت (ملايو بابوا)
+    en: you (Papuan Malay)
+  - word: kitong
+    pos: pronoun
+    ar_eg: إحنا (بابوا)
+    ar: نحن (ملايو بابوا)
+    en: we (Papuan Malay)
+  - word: tra
+    pos: adverb
+    ar_eg: مش (بابوا)
+    ar: لا / ليس (ملايو بابوا)
+    en: not (Papuan Malay)
+  - word: gue
+    pos: pronoun
+    ar_eg: أنا (جاكرتا)
+    ar: أنا (عامّية جاكرتا)
+    en: I (Jakarta slang)
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,210 @@
+schema: kabar.lesson/v1
+id: bipa7.u01.l01
+language: id
+title: Ungkapan berita
+can_do:
+  ar_eg: تفهم وتستعمل لغة الأخبار في العنوان والاقتباس والتحفّظ.
+  ar: أن تفهم لغة الخبر وتستعملها في العنوان والاقتباس والتحفّظ.
+  en: Understand and use news language for headlines, quotes and careful claims.
+slides:
+  - title: Bentuk sebuah berita
+    grammar: id.news.expressions
+    body:
+      ar_eg: |
+        خبر (مكتوب للدرس):
+        Pelajar Sorong Raih Emas Olimpiade Sains
+        SORONG – Seorang pelajar SMA dari Sorong meraih medali emas dalam olimpiade sains nasional di Jakarta, Sabtu (24/10). "Saya ingin anak Papua percaya diri," ujarnya.
+        - العنوان: الفعل من غير meN-، يعني Raih بدل meraih (يحقّق / يكسب).
+        - الاقتباس وبعده ujarnya (قال / قالت).
+        - التحفّظ: dilaporkan (أفادت التقارير)، diduga (يُشتبه). مثلًا: Kebakaran itu diduga karena korsleting.
+      ar: |
+        خبر (مكتوب للدرس):
+        Pelajar Sorong Raih Emas Olimpiade Sains
+        SORONG – Seorang pelajar SMA dari Sorong meraih medali emas dalam olimpiade sains nasional di Jakarta, Sabtu (24/10). "Saya ingin anak Papua percaya diri," ujarnya.
+        - العنوان: فعل مجرّد من meN-، فـ Raih بدل meraih (يحرز).
+        - الاقتباس يليه ujarnya (قال / قالت).
+        - التحفّظ: dilaporkan (أفادت التقارير)، وdiduga (يُشتبه). مثل: Kebakaran itu diduga karena korsleting.
+      en: |
+        A news item (written for the lesson):
+        Pelajar Sorong Raih Emas Olimpiade Sains
+        SORONG – Seorang pelajar SMA dari Sorong meraih medali emas dalam olimpiade sains nasional di Jakarta, Sabtu (24/10). "Saya ingin anak Papua percaya diri," ujarnya.
+        - Headline: a bare verb, Raih instead of meraih (to win, achieve).
+        - The quote, then ujarnya (he / she said).
+        - Careful claims: dilaporkan (reportedly), diduga (suspected). For example: Kebakaran itu diduga karena korsleting.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: meraih
+        ar_eg: يحقّق / يكسب
+        ar: يحرز
+        en: to win, to achieve
+      - text: medali
+        ar_eg: ميدالية
+        ar: ميدالية
+        en: medal
+      - text: ujarnya
+        ar_eg: قال / قالت (في الأخبار)
+        ar: قال / قالت
+        en: he / she said (news style)
+      - text: dilaporkan
+        ar_eg: أفادت التقارير / اتقال
+        ar: أفادت التقارير
+        en: reportedly, it is reported
+      - text: diduga
+        ar_eg: يُشتبه / غالبًا
+        ar: يُشتبه
+        en: suspected, allegedly
+    words: [meraih, medali, ujarnya, dilaporkan, diduga]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي واحد شكله عنوان خبر إندونيسي؟
+      ar: أيّها يبدو عنوان خبر إندونيسي؟
+      en: Which one looks like an Indonesian news headline?
+    options:
+      - Pelajar itu sudah meraih medali yang emas.
+      - Pelajar Sorong Raih Medali Emas
+      - Apakah pelajar Sorong menang?
+    answer: 1
+    words: [meraih, medali]
+  - id: e03
+    type: fill_blank
+    sentence: '"Kami bangga sekali," ___ kepada wartawan, Senin (26/10).'
+    meaning:
+      ar_eg: «إحنا فخورين جدًا»، قالت للصحفيين يوم الاتنين (26/10).
+      ar: «نحن فخورون جدًّا»، قالت للصحفيين يوم الإثنين (26/10).
+      en: '"We are very proud," she told reporters on Monday (26/10).'
+    options: [ujarnya, diduga, meraih]
+    answers: [ujarnya]
+    words: [ujarnya]
+  - id: e04
+    type: listen
+    text: Kebakaran di pasar itu diduga karena korsleting listrik.
+    question:
+      ar_eg: سبب الحريق إيه، وقد إيه الخبر متأكّد؟
+      ar: ما سبب الحريق، وما مدى يقين الخبر؟
+      en: What caused the fire, and how sure is the report?
+    options:
+      - ماس كهربا، بس لسه مش مؤكّد.
+      - ماس كهربا، ومؤكّد رسمي.
+      - حد ولّع فيه عمدًا.
+    answer: 0
+    words: [diduga]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: أفادت التقارير إن ميت طالب شاركوا.
+      ar: أفادت التقارير بأنّ مئة طالب شاركوا.
+      en: Reportedly, a hundred students took part.
+    answer: Seratus pelajar dilaporkan ikut serta.
+    distractors: [diduga, ujarnya]
+    words: [dilaporkan]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ليه الصحفي بيكتب «terduga pelaku» أو «diduga» بدل «pelaku»؟
+      ar: لماذا يكتب الصحفي «diduga» بدل أن يجزم؟
+      en: Why does a journalist write "diduga" instead of stating it as fact?
+    options:
+      - علشان الكلمة أقصر.
+      - علشان القارئ يحب الغموض.
+      - علشان الأمر لسه ما اتثبتش، والصحفي مايحكمش.
+    answer: 2
+    words: [diduga]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الفريق كسب تلات ميداليات.
+      ar: أحرز الفريق ثلاث ميداليات.
+      en: The team won three medals.
+    answers:
+      - Tim itu meraih tiga medali.
+      - Tim meraih tiga medali.
+      - Tim tersebut meraih tiga medali.
+      - Tim itu meraih tiga buah medali.
+    words: [meraih, medali]
+  - id: e08
+    type: speaking
+    text: '"Medali ini untuk Papua," ujarnya sambil tersenyum.'
+    meaning:
+      ar_eg: «الميدالية دي لبابوا»، قالتها وهي بتبتسم.
+      ar: «هذه الميدالية لبابوا»، قالت مبتسمة.
+      en: '"This medal is for Papua," she said with a smile.'
+    words: [medali, ujarnya]
+  - id: e09
+    type: dictation
+    text: Dua orang dilaporkan hilang setelah banjir.
+    meaning:
+      ar_eg: أفادت التقارير إن اتنين اختفوا بعد الفيضان.
+      ar: أفادت التقارير بفقدان شخصين بعد الفيضان.
+      en: Two people are reported missing after the flood.
+    words: [dilaporkan]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Pelajar itu meraih medali emas dan dilaporkan akan mendapat beasiswa.
+    answers_meaning:
+      ar_eg:
+        - الطالب ده كسب ميدالية دهب، وبيقولوا إنه هياخد منحة.
+        - الطالب حقّق ميدالية دهب، وأفادت التقارير إنه هياخد منحة.
+      ar:
+        - أحرز الطالب ميدالية ذهبية، وأفادت التقارير بأنّه سينال منحة.
+        - فاز الطالب بميدالية ذهبية، ويُقال إنّه سيحصل على منحة دراسية.
+      en:
+        - The student won a gold medal and will reportedly get a scholarship.
+        - The student took gold and is reported to be getting a scholarship.
+    words: [meraih, medali, dilaporkan]
+dialogue:
+  title: Di ruang redaksi Sorong
+  lines:
+    - speaker: Kaka Yohana
+      text: Selamat datang di Sorong, Mohamed! Saya wartawan di radio lokal. Mau bantu menulis berita?
+      ar_eg: أهلًا بيك في سورونج يا محمد! أنا صحفية في راديو محلي. تحب تساعد في كتابة خبر؟
+      ar: مرحبًا بك في سورونغ يا محمد! أنا صحفية في إذاعة محلية. أتساعدني في كتابة خبر؟
+      en: Welcome to Sorong, Mohamed! I'm a reporter at the local radio. Want to help write a story?
+    - speaker: Mohamed
+      text: Mau sekali. Judulnya "Pelajar Sorong meraih medali emas"?
+      ar_eg: جدًا. العنوان «طالبة من سورونج كسبت ميدالية دهب»؟
+      ar: بكلّ سرور. العنوان «طالبة من سورونغ تحرز ميدالية ذهبية»؟
+      en: Gladly. The headline is "Sorong student wins gold medal"?
+    - speaker: Kaka Yohana
+      text: Hampir. Di judul, pakai "Raih", bukan "meraih". Lebih pendek dan kuat.
+      ar_eg: قرّبت. في العنوان استعمل «Raih» مش «meraih». أقصر وأقوى.
+      ar: قاربت. استعمل في العنوان «Raih» لا «meraih»، فهي أقصر وأقوى.
+      en: Almost. In a headline, use "Raih", not "meraih". Shorter and stronger.
+    - speaker: Mohamed
+      text: Lalu kutipannya, '"Saya ingin anak Papua percaya diri," ujarnya.'
+      ar_eg: وبعدين الاقتباس، «عايزة أطفال بابوا يثقوا في نفسهم»، قالت.
+      ar: ثمّ الاقتباس، «أريد أن يثق أطفال بابوا بأنفسهم»، قالت.
+      en: Then the quote, '"I want Papuan kids to believe in themselves," she said.'
+new_words:
+  - word: meraih
+    pos: verb
+    ar_eg: يحقّق / يكسب
+    ar: يحرز
+    en: to win, to achieve
+  - word: medali
+    pos: noun
+    ar_eg: ميدالية
+    ar: ميدالية
+    en: medal
+  - word: ujarnya
+    pos: phrase
+    ar_eg: قال / قالت (في الأخبار)
+    ar: قال / قالت
+    en: he / she said (news style)
+  - word: dilaporkan
+    pos: verb
+    ar_eg: أفادت التقارير / اتقال
+    ar: أفادت التقارير
+    en: reportedly, it is reported
+  - word: diduga
+    pos: verb
+    ar_eg: يُشتبه / غالبًا
+    ar: يُشتبه
+    en: suspected, allegedly
+review:
+  status: draft
+  verified: false
