@@ -50,6 +50,22 @@ content-freq-jv:
 content-status:
     {{tools}} gloss status
 
+# Engine bake-off (docs/BAKEOFF.md): every golden item to every free engine. Resumable.
+bakeoff engines="workers_ai,gemini_free,local=aisingapore/Gemma-SEA-LION-v4-4B-VL" *args="":
+    {{tools}} bakeoff run --engines {{engines}} {{args}}
+
+# A few minutes: the first 3 items of each set, to check keys and models
+bakeoff-smoke engines="workers_ai,gemini_free,local=aisingapore/Gemma-SEA-LION-v4-4B-VL":
+    {{tools}} bakeoff run --engines {{engines}} --limit 3 --out bakeoff/runs/smoke
+
+# Answers with engine names hidden, for blind judging
+bakeoff-blind run:
+    {{tools}} bakeoff blind {{run}}
+
+# Scores → report.md and a proposed routes.toml (add --write to replace the committed ones)
+bakeoff-report run *args="":
+    {{tools}} bakeoff report {{run}} {{args}}
+
 # Validate every content file (schemas, glosses, Bridge, speech levels, golden sets); CI runs the same checks
 content-check:
     {{tools}} validate
