@@ -2,8 +2,11 @@
 
 mod i18n;
 mod icons;
+mod journey;
+mod lesson;
 mod penlab;
 mod platform;
+mod review;
 mod screens;
 mod store;
 mod theme;
@@ -29,6 +32,8 @@ pub enum Screen {
     Studio,
     Settings,
     PenLab,
+    /// The Lesson Player, full screen; the lesson is `Ui::lesson`.
+    Lesson,
 }
 
 impl Screen {
@@ -41,6 +46,7 @@ impl Screen {
             Self::Studio => Msg::NavStudio,
             Self::Settings => Msg::NavSettings,
             Self::PenLab => Msg::NavPenLab,
+            Self::Lesson => Msg::NavJourney,
         }
     }
 
@@ -56,6 +62,8 @@ pub struct Ui {
     pub settings: Signal<Settings>,
     pub width: Signal<WidthClass>,
     pub screen: Signal<Screen>,
+    /// The lesson the player shows (curriculum lesson id).
+    pub lesson: Signal<Option<String>>,
 }
 
 /// The local database, shared through context.
@@ -76,6 +84,18 @@ impl Ui {
             eprintln!("kabar: saving settings failed: {e}");
         }
         self.settings.set(new);
+    }
+
+    /// Opens the Lesson Player on a lesson (from the Journey Map, Today or Lanjut).
+    pub fn open_lesson(mut self, lesson_id: impl Into<String>) {
+        self.lesson.set(Some(lesson_id.into()));
+        self.screen.set(Screen::Lesson);
+    }
+
+    /// Leaves the Lesson Player back to the Journey Map.
+    pub fn close_lesson(mut self) {
+        self.lesson.set(None);
+        self.screen.set(Screen::Journey);
     }
 }
 
@@ -141,6 +161,7 @@ fn Loaded(db: Db) -> Element {
         settings: Signal::new(initial),
         width: Signal::new(WidthClass::Expanded),
         screen: Signal::new(Screen::Today),
+        lesson: Signal::new(None),
     });
     use_context_provider(|| db.clone());
     use_width_tracking(ui.width);
@@ -226,12 +247,13 @@ fn Shell() -> Element {
             main { class: "content",
                 match current {
                     Screen::Today => rsx! { screens::Today {} },
-                    Screen::Journey => rsx! { screens::ComingSoon { title: Msg::NavJourney, milestone: "M8" } },
+                    Screen::Journey => rsx! { journey::JourneyScreen {} },
                     Screen::Reader => rsx! { screens::ComingSoon { title: Msg::NavReader, milestone: "M5" } },
-                    Screen::Review => rsx! { screens::ComingSoon { title: Msg::NavReview, milestone: "M6" } },
+                    Screen::Review => rsx! { review::ReviewScreen {} },
                     Screen::Studio => rsx! { screens::ComingSoon { title: Msg::NavStudio, milestone: "M9" } },
                     Screen::Settings => rsx! { screens::SettingsScreen {} },
                     Screen::PenLab => rsx! { penlab::PenLab {} },
+                    Screen::Lesson => rsx! { lesson::LessonScreen {} },
                 }
             }
         }

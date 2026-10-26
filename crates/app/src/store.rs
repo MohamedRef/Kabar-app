@@ -46,7 +46,54 @@ const MIGRATIONS: &[&str] = &[
         hlc_counter INTEGER NOT NULL,
         deleted     INTEGER NOT NULL DEFAULT 0
     ) STRICT;",
+    // 2: learning. Lesson and review events are append-only; cards and the
+    // Lanjut position are last-writer-wins by HLC. Payloads are protocol JSON.
+    "CREATE TABLE lesson_events (
+        id          TEXT PRIMARY KEY,
+        lesson_id   TEXT NOT NULL,
+        kind        TEXT NOT NULL,
+        payload     TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE INDEX lesson_events_lesson ON lesson_events (lesson_id);
+    CREATE TABLE sessions (
+        device      TEXT PRIMARY KEY,
+        payload     TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE TABLE cards (
+        id          TEXT PRIMARY KEY,
+        payload     TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE TABLE review_log (
+        id          TEXT PRIMARY KEY,
+        card_id     TEXT NOT NULL,
+        payload     TEXT NOT NULL,
+        account_id  TEXT,
+        device_id   TEXT NOT NULL,
+        hlc_wall    INTEGER NOT NULL,
+        hlc_counter INTEGER NOT NULL,
+        deleted     INTEGER NOT NULL DEFAULT 0
+    ) STRICT;
+    CREATE INDEX review_log_card ON review_log (card_id);",
 ];
+
+/// Every synced table, so the clock resumes above the newest local write.
+const SYNCED_TABLES: &[&str] =
+    &["settings", "pen_lab_runs", "lesson_events", "sessions", "cards", "review_log"];
 
 pub struct Store {
     conn: Connection,
@@ -88,13 +135,14 @@ impl Store {
         };
 
         // Never issue a timestamp at or below the newest one already written here.
+        let union = SYNCED_TABLES
+            .iter()
+            .map(|t| format!("SELECT hlc_wall, hlc_counter FROM {t} WHERE device_id = ?1"))
+            .collect::<Vec<_>>()
+            .join(" UNION ALL ");
         let last = conn
             .query_row(
-                "SELECT hlc_wall, hlc_counter FROM (
-                    SELECT hlc_wall, hlc_counter FROM settings WHERE device_id = ?1
-                    UNION ALL
-                    SELECT hlc_wall, hlc_counter FROM pen_lab_runs WHERE device_id = ?1
-                 ) ORDER BY hlc_wall DESC, hlc_counter DESC LIMIT 1",
+                &format!("SELECT hlc_wall, hlc_counter FROM ({union}) ORDER BY hlc_wall DESC, hlc_counter DESC LIMIT 1"),
                 [&device.0],
                 |r| {
                     Ok(Hlc {

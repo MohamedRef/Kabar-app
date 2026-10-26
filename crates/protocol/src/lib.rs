@@ -3,6 +3,7 @@
 
 pub mod ai;
 pub mod hlc;
+pub mod lesson;
 pub mod pen;
 pub mod srs;
 
