@@ -202,6 +202,7 @@ pub fn SettingsScreen() -> Element {
             }
         }
         crate::coach::settings::CoachSettings {}
+        crate::packs::settings::OfflinePacks {}
         crate::data_export::ExportCard {}
     }
 }

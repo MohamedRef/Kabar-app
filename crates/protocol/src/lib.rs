@@ -11,6 +11,7 @@ pub mod ink;
 pub mod journal;
 pub mod learn;
 pub mod lesson;
+pub mod pack;
 pub mod pen;
 pub mod reader;
 pub mod srs;

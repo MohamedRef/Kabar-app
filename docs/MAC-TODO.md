@@ -121,6 +121,18 @@ just check                # fmt + clippy + tests: all green
 - [ ] No rush: Javanese review with a native speaker if you can (`content/javanese/speech-levels.jsonl`, `content/glosses/jv/`, `cargo run -p kabar-tools -- gloss review --lang jv 1`). Everything Javanese stays *unverified* until then.
 - [ ] Commit the changed files under `content/` and push.
 
+## 6b. Offline packs: natural-voice audio per unit (~15 min of yours, ~3 h unattended) — [RUN.md §11](RUN.md)
+
+Uses the same Azure F0 key as step 5.4 (free; F0 never bills). All of BIPA 1–2 and J1–J3 is ~83k characters, about a sixth of the monthly free quota.
+
+- [ ] Put `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` in `.env` (git-ignored).
+- [ ] `just packs-audio-plan`: prints the characters it would use this month and refuses anything over the budget.
+- [ ] `just packs-audio bipa1.u01`, then play two or three files from `~/.kabar/audio/` to check the voices.
+- [ ] `just packs-audio` for the rest. It can run overnight and resumes where it stopped. Don't delete `~/.kabar/audio`: it holds the clips you already used quota on.
+- [ ] `just packs-bundle`, then `gh auth login` (once) and `just packs-upload`.
+- [ ] Commit and push `content/packs/` (the clips' hashes), then rebuild the app (`just run-mac`, `just apk` + `just install <serial>`).
+- [ ] On the phone: Settings → **Offline packs** → download BIPA 1 unit 1, switch on airplane mode, open a lesson and tap a play button. You should hear the Azure voice, not the phone's.
+
 ## 7. Engine bake-off (~1 h, can run overnight) — [BAKEOFF.md](BAKEOFF.md)
 
 This decides which free engine answers each AI task. Until it runs, every route in `prompts/routes.toml` is *provisional*, and its answers show a badge.
