@@ -393,7 +393,8 @@ pub fn latin_runs(s: &str) -> Vec<(bool, String)> {
                 let c = chars[i];
                 // Letters and digits extend the run; ? and ! join it only
                 // straight after a letter ("Apa kabar?").
-                if is_latin_letter(c) || c.is_ascii_digit() || ("?!".contains(c) && end == i) {
+                // A trailing … belongs to the pattern it ends ("Menurut X, …").
+                if is_latin_letter(c) || c.is_ascii_digit() || c == '…' || ("?!".contains(c) && end == i) {
                     end = i + 1;
                 } else if c == '.' && chars.get(i + 1).is_none_or(|n| n.is_whitespace()) {
                     // A full stop ends the Arabic sentence, not the Latin run.
@@ -1591,6 +1592,9 @@ mod tests {
             latin_runs("قول Selamat jalan, sampai jumpa!")[1],
             (true, "Selamat jalan, sampai jumpa!".into())
         );
+        let runs = latin_runs("- Menurut X, … = على حسب X …");
+        assert_eq!(runs[1], (true, "Menurut X, …".into()));
+        assert_eq!(runs[3], (true, "X …".into()));
     }
 
     #[test]

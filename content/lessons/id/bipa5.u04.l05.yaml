@@ -1,0 +1,168 @@
+schema: kabar.lesson/v1
+id: bipa5.u04.l05
+language: id
+title: Membandingkan sekolah
+can_do:
+  ar_eg: تكتب فقرة تقارن فيها نظام التعليم في مصر وإندونيسيا.
+  ar: أن تكتب فقرة تقارن فيها نظامي التعليم في مصر وإندونيسيا.
+  en: Write a paragraph comparing education in Egypt and Indonesia.
+slides:
+  - title: Paragraf perbandingan
+    grammar: id.reported-speech
+    body:
+      ar_eg: |
+        فقرة المقارنة الكويسة: جملة عامة، وبعدين الشبه، وبعدين الفرق، وفي الآخر رأيك. وتقدر تستشهد بكلام حد:
+        - Di Mesir maupun di Indonesia, … = في مصر وفي إندونيسيا على حد سواء …
+        - Berbeda dengan Mesir, … = على عكس مصر …
+        - Menurut Kementerian Pendidikan, … = حسب وزارة التعليم …
+        - Kata seorang guru, … = على رأي مدرّس …
+      ar: |
+        فقرة المقارنة الجيّدة: جملة عامة، ثم الشبه، ثم الفرق، ثم رأيك، ويمكنك الاستشهاد بقول أحد:
+        - Di Mesir maupun di Indonesia, … = في مصر وإندونيسيا على السواء …
+        - Berbeda dengan Mesir, … = خلافًا لمصر …
+        - Menurut Kementerian Pendidikan, … = بحسب وزارة التعليم …
+        - Kata seorang guru, … = كما يقول أحد المعلّمين …
+      en: |
+        A good comparison paragraph: a general sentence, the similarity, the difference, then your view. You can quote someone:
+        - Di Mesir maupun di Indonesia, … = In Egypt and Indonesia alike, …
+        - Berbeda dengan Mesir, … = Unlike Egypt, …
+        - Menurut Kementerian Pendidikan, … = According to the Ministry of Education, …
+        - Kata seorang guru, … = As one teacher puts it, …
+    examples:
+      - text: Berbeda dengan Mesir, tahun ajaran di Indonesia dimulai bulan Juli.
+        ar_eg: على عكس مصر، السنة الدراسية في إندونيسيا بتبدأ في يوليو.
+        ar: خلافًا لمصر، تبدأ السنة الدراسية في إندونيسيا في يوليو.
+        en: Unlike Egypt, the school year in Indonesia starts in July.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: maupun
+        ar_eg: وكمان / على حد سواء
+        ar: وكذلك، على السواء
+        en: as well as, alike
+      - text: berbeda dengan
+        ar_eg: على عكس
+        ar: خلافًا لـ
+        en: unlike
+      - text: tahun ajaran
+        ar_eg: سنة دراسية
+        ar: سنة دراسية
+        en: school year
+      - text: kurikulum
+        ar_eg: منهج
+        ar: منهج
+        en: curriculum
+    words: [maupun, berbeda dengan, tahun ajaran, kurikulum]
+  - id: e02
+    type: multiple_choice
+    question: "___ Mesir, sekolah di Indonesia memakai seragam setiap hari."
+    question_meaning:
+      ar_eg: كمّل الجملة. «… مصر، المدارس في إندونيسيا بتلبس يونيفورم كل يوم.» (المقصود الفرق)
+      ar: أكمل الجملة. «… مصر، يرتدي طلّاب إندونيسيا الزيّ كل يوم.» (المقصود الفرق)
+      en: Complete it, as a contrast. "… Egypt, Indonesian schools wear uniforms every day."
+    options: [Maupun, Berbeda dengan, Kata]
+    answer: 1
+    words: [berbeda dengan]
+  - id: e03
+    type: fill_blank
+    sentence: Di Mesir ___ di Indonesia, ujian akhir sangat penting.
+    meaning:
+      ar_eg: في مصر وفي إندونيسيا على حد سواء، امتحان آخر السنة مهم جدًا.
+      ar: في مصر وإندونيسيا على السواء، للامتحان النهائي أهمّية كبيرة.
+      en: In Egypt and Indonesia alike, final exams matter a great deal.
+    options: [maupun, berbeda, sementara]
+    answers: [maupun]
+    words: [maupun]
+  - id: e04
+    type: listen
+    text: Kurikulum baru di Indonesia bernama Kurikulum Merdeka.
+    options:
+      - Kurikulum baru di Indonesia bernama Kurikulum Merdeka.
+      - Kurikulum lama di Indonesia bernama Kurikulum Merdeka.
+      - Tahun ajaran baru di Indonesia bernama Merdeka.
+    answer: 0
+    words: [kurikulum]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: السنة الدراسية في مصر بتبدأ في سبتمبر.
+      ar: تبدأ السنة الدراسية في مصر في سبتمبر.
+      en: The school year in Egypt starts in September.
+    answer: Tahun ajaran di Mesir dimulai bulan September.
+    distractors: [maupun, Juli]
+    words: [tahun ajaran]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: على رأي مدرّس، المنهج الجديد أحسن.
+      ar: كما يقول أحد المعلّمين، المنهج الجديد أفضل.
+      en: As one teacher puts it, the new curriculum is better.
+    answers:
+      - Kata seorang guru, kurikulum baru lebih baik.
+      - Kata seorang guru, kurikulum yang baru lebih baik.
+      - Menurut seorang guru, kurikulum baru lebih baik.
+      - Menurut seorang guru, kurikulum yang baru lebih baik.
+    words: [kurikulum]
+  - id: e07
+    type: dictation
+    text: Berbeda dengan Mesir, tahun ajaran di sini dimulai bulan Juli.
+    meaning:
+      ar_eg: على عكس مصر، السنة الدراسية هنا بتبدأ في يوليو.
+      ar: خلافًا لمصر، تبدأ السنة الدراسية هنا في يوليو.
+      en: Unlike Egypt, the school year here starts in July.
+    words: [berbeda dengan, tahun ajaran]
+  - id: e08
+    type: speaking
+    text: Di Mesir maupun di Indonesia, guru sangat dihormati.
+    meaning:
+      ar_eg: في مصر وفي إندونيسيا على حد سواء، المدرّس محترم جدًا.
+      ar: في مصر وإندونيسيا على السواء، يحظى المعلّم باحترام كبير.
+      en: In Egypt and Indonesia alike, teachers are highly respected.
+    words: [maupun]
+dialogue:
+  title: Membaca draf Mohamed
+  lines:
+    - speaker: Mohamed
+      text: Mas Rizal, tolong baca paragraf saya tentang sekolah di Mesir dan Indonesia.
+      ar_eg: يا رزال، اقرا الفقرة بتاعتي عن المدارس في مصر وإندونيسيا لو سمحت.
+      ar: يا رزال، اقرأ من فضلك فقرتي عن المدارس في مصر وإندونيسيا.
+      en: Mas Rizal, please read my paragraph about schools in Egypt and Indonesia.
+    - speaker: Mas Rizal
+      text: Bagus. Kalimat berbeda dengan Mesir itu jelas sekali.
+      ar_eg: حلو. جملة «على عكس مصر» دي واضحة جدًا.
+      ar: جيّد. عبارة «خلافًا لمصر» واضحة جدًّا.
+      en: Good. The berbeda dengan Mesir sentence is very clear.
+    - speaker: Mohamed
+      text: Apakah saya perlu menulis pendapat seorang guru juga?
+      ar_eg: محتاج أكتب رأي مدرّس كمان؟
+      ar: هل عليّ أن أكتب رأي أحد المعلّمين أيضًا؟
+      en: Do I need to include a teacher's opinion too?
+    - speaker: Mas Rizal
+      text: Boleh. Tulis saja, kata seorang guru, kurikulum baru lebih fleksibel.
+      ar_eg: ممكن. اكتب بس «على رأي مدرّس، المنهج الجديد مرن أكتر».
+      ar: لا بأس. اكتب «كما يقول أحد المعلّمين، المنهج الجديد أكثر مرونة».
+      en: Sure. Just write that, as one teacher says, the new curriculum is more flexible.
+new_words:
+  - word: maupun
+    ar_eg: وكمان / على حد سواء
+    ar: وكذلك، على السواء
+    en: as well as, alike
+  - word: berbeda dengan
+    ar_eg: على عكس
+    ar: خلافًا لـ
+    en: unlike
+  - word: tahun ajaran
+    pos: noun
+    ar_eg: سنة دراسية
+    ar: سنة دراسية
+    en: school year
+  - word: kurikulum
+    pos: noun
+    ar_eg: منهج
+    ar: منهج
+    en: curriculum
+review:
+  status: draft
+  verified: false

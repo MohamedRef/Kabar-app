@@ -1,0 +1,202 @@
+schema: kabar.lesson/v1
+id: bipa5.u01.l04
+language: id
+title: Wawancara kerja
+can_do:
+  ar_eg: تعمل مقابلة شغل تجريبية بالإندونيسي الرسمي.
+  ar: أن تُجري مقابلة عمل تجريبية بالإندونيسية الرسمية.
+  en: Do a mock job interview in formal Indonesian.
+slides:
+  - title: Pertanyaan yang pasti muncul
+    grammar: id.sentence.complex
+    body:
+      ar_eg: |
+        في أي مقابلة هتتسأل الأسئلة دي، فجهّز ردود بجمل طويلة (karena، sehingga، setelah):
+        - Ceritakan tentang diri Anda. = احكيلنا عن نفسك.
+        - Apa kelebihan dan kekurangan Anda? = إيه نقط قوتك وضعفك؟
+        - Mengapa Anda ingin bekerja di sini? = ليه عايز تشتغل هنا؟
+        - Apakah Anda bersedia ditempatkan di luar kota? = مستعد تتنقل لمدينة تانية؟
+        رد بـ saya وBapak / Ibu، ومن غير nggak ولا udah.
+      ar: |
+        في كل مقابلة ستُسأل هذه الأسئلة، فجهّز إجابات بجمل مركّبة (karena، sehingga، setelah):
+        - Ceritakan tentang diri Anda. = حدّثنا عن نفسك.
+        - Apa kelebihan dan kekurangan Anda? = ما نقاط قوتك وضعفك؟
+        - Mengapa Anda ingin bekerja di sini? = لماذا تريد العمل هنا؟
+        - Apakah Anda bersedia ditempatkan di luar kota? = هل أنت مستعدّ للعمل في مدينة أخرى؟
+        وأجب بـ saya وBapak / Ibu، دون nggak أو udah.
+      en: |
+        Every interview asks these, so prepare answers with complex sentences (karena, sehingga, setelah):
+        - Ceritakan tentang diri Anda. = Tell us about yourself.
+        - Apa kelebihan dan kekurangan Anda? = What are your strengths and weaknesses?
+        - Mengapa Anda ingin bekerja di sini? = Why do you want to work here?
+        - Apakah Anda bersedia ditempatkan di luar kota? = Are you willing to be posted to another city?
+        Answer with saya and Bapak / Ibu, never nggak or udah.
+    examples:
+      - text: Kelebihan saya adalah teliti, sehingga laporan saya jarang salah.
+        ar_eg: نقطة قوتي إني دقيق، فتقاريري نادرًا ما بيبقى فيها غلط.
+        ar: نقطة قوّتي الدقّة، ولذلك نادرًا ما تخطئ تقاريري.
+        en: My strength is that I'm meticulous, so my reports rarely contain mistakes.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: المحاور سألك «Apa kekurangan Anda?» يعني إيه؟
+      ar: سألك المحاور «Apa kekurangan Anda?»، فما معناه؟
+      en: The interviewer asks "Apa kekurangan Anda?" What does it mean?
+    options:
+      - إيه نقط ضعفك؟
+      - إيه نقط قوتك؟
+      - إيه المرتب اللي عايزه؟
+    answer: 0
+    explain:
+      ar_eg: kekurangan من kurang (ناقص) = نقطة ضعف. وkelebihan من lebih (أكتر) = نقطة قوة.
+      ar: kekurangan من kurang (ناقص) أي نقطة الضعف، وkelebihan من lebih (أكثر) أي نقطة القوة.
+      en: kekurangan, from kurang (lacking), is a weakness; kelebihan, from lebih (more), is a strength.
+    words: [kekurangan, kelebihan]
+  - id: e02
+    type: listen
+    text: Apakah Anda bersedia ditempatkan di Samarinda?
+    question:
+      ar_eg: المحاور بيسأل عن إيه؟
+      ar: عمّ يسأل المحاور؟
+      en: What is the interviewer asking about?
+    options:
+      - المرتب في ساماريندا.
+      - إذا كنت مستعد تشتغل في ساماريندا.
+      - خبرتك في ساماريندا.
+    answer: 1
+    words: [bersedia]
+  - id: e03
+    type: fill_blank
+    sentence: Saya ___ bekerja lembur jika proyeknya mendesak.
+    meaning:
+      ar_eg: أنا مستعد أشتغل ساعات زيادة لو المشروع مستعجل.
+      ar: أنا مستعدّ للعمل ساعات إضافية إذا كان المشروع عاجلًا.
+      en: I'm willing to work overtime if the project is urgent.
+    options: [bersedia, kekurangan, kelebihan]
+    answers: [bersedia]
+    words: [bersedia]
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: نقطة ضعفي إني ساعات بكون مستعجل.
+      ar: نقطة ضعفي أنني أتعجّل أحيانًا.
+      en: My weakness is that I'm sometimes in a hurry.
+    answer: Kekurangan saya adalah kadang-kadang terburu-buru.
+    distractors: [kelebihan, nggak]
+    words: [kekurangan]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: Ceritakan tentang diri Anda.
+        ar_eg: احكيلنا عن نفسك.
+        ar: حدّثنا عن نفسك.
+        en: Tell us about yourself.
+      - text: Apa kelebihan Anda?
+        ar_eg: إيه نقط قوتك؟
+        ar: ما نقاط قوّتك؟
+        en: What are your strengths?
+      - text: Kapan Anda bisa mulai?
+        ar_eg: تقدر تبدأ إمتى؟
+        ar: متى يمكنك البدء؟
+        en: When can you start?
+      - text: Berapa gaji yang Anda harapkan?
+        ar_eg: إنت متوقع مرتب كام؟
+        ar: ما الراتب الذي تتوقّعه؟
+        en: What salary do you expect?
+    words: [kelebihan]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: عايز أشتغل هنا عشان الشركة دي بتشتغل مع الشرق الأوسط.
+      ar: أريد العمل هنا لأنّ هذه الشركة تعمل مع الشرق الأوسط.
+      en: I want to work here because this company works with the Middle East.
+    answers:
+      - Saya ingin bekerja di sini karena perusahaan ini bekerja sama dengan Timur Tengah.
+      - Saya ingin bekerja di sini karena perusahaan ini bekerja dengan Timur Tengah.
+      - Saya mau bekerja di sini karena perusahaan ini bekerja sama dengan Timur Tengah.
+      - Saya ingin bekerja di sini sebab perusahaan ini bekerja sama dengan Timur Tengah.
+    explain:
+      ar_eg: الرئيسية الأول (Saya ingin bekerja di sini) وبعدين karena من غير فاصلة.
+      ar: الرئيسية أولًا ثم karena بلا فاصلة.
+      en: Main clause first, then karena, with no comma.
+  - id: e07
+    type: dictation
+    text: Kelebihan saya adalah saya cepat belajar.
+    meaning:
+      ar_eg: نقطة قوتي إني بتعلم بسرعة.
+      ar: نقطة قوّتي أنني أتعلّم بسرعة.
+      en: My strength is that I learn quickly.
+    words: [kelebihan]
+  - id: e08
+    type: speaking
+    text: Saya bersedia ditempatkan di luar kota, karena saya suka tantangan baru.
+    meaning:
+      ar_eg: أنا مستعد أتنقل لمدينة تانية، عشان بحب التحديات الجديدة.
+      ar: أنا مستعدّ للعمل في مدينة أخرى، لأنني أحبّ التحدّيات الجديدة.
+      en: I'm willing to be posted to another city, because I like new challenges.
+    words: [bersedia]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي رد مناسب لـ «Apa kekurangan Anda?» في مقابلة؟
+      ar: أيّ إجابة تناسب «Apa kekurangan Anda?» في مقابلة؟
+      en: Which answer suits "Apa kekurangan Anda?" in an interview?
+    options:
+      - Nggak ada, Pak. Gue sempurna.
+      - Kadang saya terlalu detail, tetapi saya belajar mengatur waktu.
+      - Kekurangan saya gaji kecil.
+    answer: 1
+    explain:
+      ar_eg: رد رسمي وصادق، وكمان بيقول بتصلّح الضعف إزاي.
+      ar: إجابة رسمية صادقة، تبيّن كيف تعالج نقطة الضعف.
+      en: Formal and honest, and it shows how you're working on the weakness.
+    words: [kekurangan]
+dialogue:
+  title: Wawancara dengan Pak Hendra
+  lines:
+    - speaker: Pak Hendra
+      text: Selamat pagi, Pak Mohamed. Silakan ceritakan tentang diri Anda.
+      ar_eg: صباح الخير يا أستاذ محمد. اتفضل احكيلنا عن نفسك.
+      ar: صباح الخير يا أستاذ محمد. تفضّل حدّثنا عن نفسك.
+      en: Good morning, Pak Mohamed. Please tell us about yourself.
+    - speaker: Mohamed
+      text: Saya dari Kairo. Setelah saya lulus, saya bekerja sebagai penerjemah selama empat tahun.
+      ar_eg: أنا من القاهرة. بعد ما اتخرجت اشتغلت مترجم أربع سنين.
+      ar: أنا من القاهرة، وبعد تخرّجي عملت مترجمًا أربع سنوات.
+      en: I'm from Cairo. After I graduated, I worked as a translator for four years.
+    - speaker: Pak Hendra
+      text: Apa kelebihan Anda dibandingkan pelamar lain?
+      ar_eg: إيه اللي يميزك عن باقي المتقدمين؟
+      ar: ما الذي يميّزك عن المتقدّمين الآخرين؟
+      en: What is your strength compared with other applicants?
+    - speaker: Mohamed
+      text: Saya menguasai bahasa Arab, sehingga saya bisa membantu klien dari Timur Tengah.
+      ar_eg: أنا متمكن من العربي، فأقدر أساعد العملا اللي من الشرق الأوسط.
+      ar: أتقن العربية، ولذلك أستطيع مساعدة العملاء من الشرق الأوسط.
+      en: I'm fluent in Arabic, so I can help clients from the Middle East.
+    - speaker: Pak Hendra
+      text: Bagus. Apakah Anda bersedia ditempatkan di Samarinda?
+      ar_eg: كويس. مستعد تتنقل ساماريندا؟
+      ar: حسنًا. هل أنت مستعدّ للعمل في ساماريندا؟
+      en: Good. Are you willing to be posted to Samarinda?
+new_words:
+  - word: kelebihan
+    pos: noun
+    ar_eg: نقطة قوة / ميزة
+    ar: نقطة قوّة، ميزة
+    en: strength, advantage
+  - word: kekurangan
+    pos: noun
+    ar_eg: نقطة ضعف / عيب
+    ar: نقطة ضعف، نقص
+    en: weakness, shortcoming
+  - word: bersedia
+    pos: adjective
+    ar_eg: مستعد / موافق
+    ar: مستعدّ، راغب
+    en: willing, prepared
+review:
+  status: draft
+  verified: false
