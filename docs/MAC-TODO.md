@@ -69,7 +69,8 @@ just check                # fmt + clippy + tests: all green
 - [ ] Mac: play both test lessons (`bipa1.u01.l01`, `bipa1.u01.l02`) to the end. Check that the Indonesian voice speaks in listen and dictation exercises (macOS has an Indonesian system voice; if it's silent, add "Damayanti" under System Settings → Accessibility → Spoken Content → System voice → Manage Voices).
 - [ ] S24 Ultra: Journey shows the vertical route; "Lanjut" opens the current lesson. Answer one translation with the Samsung handwriting keyboard and the S Pen.
 - [ ] Tab S11: the full map pans with the pen and pinches with two fingers. Close a lesson halfway; reopening it resumes at the same exercise.
-- [ ] Tell me whether listen/dictation audio plays on Android. The built-in WebView may have no speech voice; if so the app says so, and a native TextToSpeech bridge comes next.
+- [ ] On both devices, check the Indonesian voice is installed: Settings → General management → Text-to-speech output → engine settings (Samsung or Google) → Install voice data → Indonesian. If the app shows "download the Indonesian voice", that's this step.
+- [ ] Tell me whether listen/dictation, slow replay and review audio cards speak on Android (the app now uses Android's own TextToSpeech). The first tap after launch can take a second while the voice engine starts.
 
 ## 4. Google sign-in clients (~10 min) — [CLOUD.md §3.2](CLOUD.md)
 
@@ -96,6 +97,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] 5.4b Reminders (M7, [CLOUD.md §3.4](CLOUD.md)): in the Firebase console add the Android app `app.kabar` and keep `google-services.json` for the app build, outside the repo. Then Project settings → Service accounts → Generate new private key, `cd crates/server && wrangler secret put FCM_SERVICE_ACCOUNT < that-file.json && cd -`, and delete the file.
 - [ ] 5.5 `just deploy-cloud`, then `curl https://kabar-cloud.<subdomain>.workers.dev/v1/health`.
 - [ ] 5.6 Commit `crates/server/wrangler.toml` (the ids aren't secrets), then send me the URL.
+- [ ] 5.6b Connect the app ([CLOUD.md §3.6](CLOUD.md)): `cp .env.example .env`, fill in the URL and the Desktop client's id + secret, then `just run-mac` → Settings → **Account & devices** → **Sign in with Google**. Rebuild the APK (`just apk`, `just install <serial>`) and sign in on both Galaxy devices. Save a word in **Try sync** on the phone and watch it appear on the tablet.
 - [ ] 5.7 Optional, if you use Claude Code on the Mac: `claude plugin marketplace add cloudflare/skills`, then `claude plugin install cloudflare@cloudflare` (Cloudflare's own skills + MCP; signs in to Cloudflare in the browser). Kabar keeps deploying with wrangler.
 
 ## 6. Content pipeline (~30 min, needs the downloads from step 1) — [CONTENT.md](CONTENT.md), [RUN.md §6](RUN.md)

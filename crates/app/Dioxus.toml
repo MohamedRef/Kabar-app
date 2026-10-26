@@ -17,3 +17,14 @@ icon = [
 
 [android]
 min_sdk = 28
+
+[android.raw]
+# Android 11+ package visibility: the app must be allowed to see installed
+# text-to-speech engines (Samsung, Google) or TextToSpeech can't bind to one.
+manifest = """
+<queries>
+    <intent>
+        <action android:name="android.intent.action.TTS_SERVICE" />
+    </intent>
+</queries>
+"""

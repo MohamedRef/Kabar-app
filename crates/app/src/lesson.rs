@@ -19,6 +19,7 @@ use kabar_protocol::lesson::{
 
 use self::text::{L, lt};
 use crate::coach::Coach;
+use crate::platform::{self, TtsStatus};
 use crate::{Db, Ui};
 
 const LESSON_CSS: &str = include_str!("../assets/lesson.css");
@@ -172,16 +173,27 @@ fn autoplay_text(ex: &Exercise) -> Option<(String, Option<String>)> {
 
 /// Plays target-language audio. A pre-generated `audio` file wins when the
 /// content has one (Azure voices, SPEC §20). Until the TTS pipeline lands we
-/// fall back to the WebView's `speechSynthesis` (id-ID; Javanese asks for
-/// jv-ID and falls back to an id-ID voice, which reads Javanese passably).
-/// Android's system WebView has no `speechSynthesis`, so there it reports
-/// "no audio" until the Kotlin TextToSpeech bridge or packaged audio exists.
+/// fall back to the device's own voice (id-ID; Javanese asks for jv-ID and
+/// falls back to an id-ID voice, which reads Javanese passably): the
+/// WebView's `speechSynthesis` on desktop, and the system TextToSpeech engine
+/// on Android, whose WebView has no `speechSynthesis`.
 pub fn speak(text: &str, language: &str, slow: bool, audio: Option<&str>, mut missing: Signal<bool>) {
     let lang = if language == "jv" { "jv-ID" } else { "id-ID" };
+    let mut native = move |text: &str| {
+        let ok = platform::speak(text, lang, slow).is_ok();
+        if ok == *missing.peek() {
+            missing.set(!ok);
+        }
+    };
+    if platform::NATIVE_TTS && audio.is_none() {
+        native(text);
+        return;
+    }
     let js = format!(
         r#"
-        const text = {text}, lang = {lang}, rate = {rate}, file = {file};
+        const text = {text}, lang = {lang}, rate = {rate}, file = {file}, web = {web};
         const tts = () => {{
+            if (!web) return false;
             const s = window.speechSynthesis;
             if (!s || typeof SpeechSynthesisUtterance === "undefined") return false;
             s.cancel();
@@ -212,11 +224,18 @@ pub fn speak(text: &str, language: &str, slow: bool, audio: Option<&str>, mut mi
         lang = serde_json::to_string(lang).unwrap_or_default(),
         rate = if slow { "0.7" } else { "0.95" },
         file = serde_json::to_string(&audio).unwrap_or_else(|_| "null".into()),
+        web = !platform::NATIVE_TTS,
     );
+    let text = text.to_owned();
     spawn(async move {
         let mut eval = document::eval(&js);
         if let Ok(false) = eval.recv::<bool>().await {
-            missing.set(true);
+            if platform::NATIVE_TTS {
+                // The audio file didn't play: let the system voice read it.
+                native(&text);
+            } else {
+                missing.set(true);
+            }
         }
     });
 }
@@ -709,9 +728,17 @@ fn PlayButton(
                 }
             }
             if *missing.read() {
-                span { class: "muted lp-small", "{lt(lang, L::NoAudio)}" }
+                span { class: "muted lp-small", "{lt(lang, no_audio_msg())}" }
             }
         }
+    }
+}
+
+/// Why there's no sound: a missing Indonesian voice gets an install hint.
+fn no_audio_msg() -> L {
+    match platform::tts_status() {
+        TtsStatus::MissingVoice | TtsStatus::Unsupported => L::NoVoiceData,
+        _ => L::NoAudio,
     }
 }
 
