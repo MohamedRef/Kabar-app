@@ -16,6 +16,8 @@ pub enum TextKind {
     Pasted,
     Shared,
     Screenshot,
+    /// Imported from a link; `source` is the URL.
+    Web,
 }
 
 impl TextKind {
@@ -24,6 +26,7 @@ impl TextKind {
             Self::Pasted => "pasted",
             Self::Shared => "shared",
             Self::Screenshot => "screenshot",
+            Self::Web => "web",
         }
     }
 
@@ -31,6 +34,7 @@ impl TextKind {
         match s {
             "shared" => Self::Shared,
             "screenshot" => Self::Screenshot,
+            "web" => Self::Web,
             _ => Self::Pasted,
         }
     }
@@ -92,8 +96,24 @@ impl Store {
         source: Option<&str>,
         layout: Option<&str>,
     ) -> Result<SavedText> {
+        self.insert_text(title_of(body), body, kind, source, layout)
+    }
+
+    /// A page imported from a link, under the page's own title.
+    pub fn save_web_text(&mut self, title: Option<&str>, body: &str, url: &str) -> Result<SavedText> {
+        let title = title.map(str::trim).filter(|t| !t.is_empty()).map_or_else(|| title_of(body), title_of);
+        self.insert_text(title, body, TextKind::Web, Some(url), None)
+    }
+
+    fn insert_text(
+        &mut self,
+        title: String,
+        body: &str,
+        kind: TextKind,
+        source: Option<&str>,
+        layout: Option<&str>,
+    ) -> Result<SavedText> {
         let id = uuid::Uuid::new_v4().to_string();
-        let title = title_of(body);
         let row = TextRow {
             title: title.clone(),
             body: body.into(),
@@ -101,16 +121,7 @@ impl Store {
             source: source.map(Into::into),
             layout: layout.map(Into::into),
         };
-        let payload = serde_json::to_value(&row)?;
-        if serde_json::to_string(&payload)?.len() < MAX_PAYLOAD_BYTES - 1024 {
-            self.write_synced("texts", &id, OpKind::Upsert, Some(payload))?;
-        } else {
-            let hlc = self.clock.tick(now_ms());
-            self.conn.execute(
-                "INSERT INTO texts (id, payload, device_id, hlc_wall, hlc_counter) VALUES (?1, ?2, ?3, ?4, ?5)",
-                params![id, payload.to_string(), self.device.0, hlc.wall_ms as i64, hlc.counter],
-            )?;
-        }
+        self.put_text(&id, &row)?;
         Ok(SavedText {
             id,
             title,
@@ -119,6 +130,37 @@ impl Store {
             source: source.map(Into::into),
             layout: layout.map(Into::into),
         })
+    }
+
+    /// Replaces a saved text's body and layout, keeping its id, kind and
+    /// source (the AI pass restructured a screenshot). Last write wins.
+    pub fn update_text(&mut self, text: &SavedText, body: &str, layout: Option<&str>) -> Result<SavedText> {
+        let title = title_of(body);
+        let row = TextRow {
+            title: title.clone(),
+            body: body.into(),
+            kind: text.kind.as_str().into(),
+            source: text.source.clone(),
+            layout: layout.map(Into::into),
+        };
+        self.put_text(&text.id, &row)?;
+        Ok(SavedText { title, body: body.into(), layout: layout.map(Into::into), ..text.clone() })
+    }
+
+    fn put_text(&mut self, id: &str, row: &TextRow) -> Result<()> {
+        let payload = serde_json::to_value(row)?;
+        if serde_json::to_string(&payload)?.len() < MAX_PAYLOAD_BYTES - 1024 {
+            self.write_synced("texts", id, OpKind::Upsert, Some(payload))?;
+        } else {
+            let hlc = self.clock.tick(now_ms());
+            self.conn.execute(
+                "INSERT INTO texts (id, payload, device_id, hlc_wall, hlc_counter) VALUES (?1, ?2, ?3, ?4, ?5)
+                 ON CONFLICT(id) DO UPDATE SET payload = excluded.payload,
+                     hlc_wall = excluded.hlc_wall, hlc_counter = excluded.hlc_counter",
+                params![id, payload.to_string(), self.device.0, hlc.wall_ms as i64, hlc.counter],
+            )?;
+        }
+        Ok(())
     }
 
     /// Newest first.
@@ -282,6 +324,28 @@ mod tests {
         assert_eq!(texts[0].title, "Sek tak lapor pusat");
         s.delete_text(&a.id).unwrap();
         assert_eq!(s.recent_texts(10).unwrap().len(), 1);
+    }
+
+    #[test]
+    fn update_text_keeps_id_kind_and_source() {
+        let mut s = Store::open_in_memory().unwrap();
+        let t = s
+            .save_text(
+                "Hari ini\nSek tak lapor pusat",
+                TextKind::Screenshot,
+                Some("com.whatsapp"),
+                Some("{}"),
+            )
+            .unwrap();
+        let u = s.update_text(&t, "Sek tak lapor pusat\nng prabowo?", Some(r#"{"items":[]}"#)).unwrap();
+        assert_eq!(
+            (u.id.as_str(), u.kind, u.source.as_deref()),
+            (t.id.as_str(), t.kind, Some("com.whatsapp"))
+        );
+        let texts = s.recent_texts(10).unwrap();
+        assert_eq!(texts.len(), 1);
+        assert_eq!(texts[0], u);
+        assert_eq!(texts[0].title, "Sek tak lapor pusat");
     }
 
     #[test]

@@ -157,7 +157,7 @@ M1 starts with the riskiest spikes, each a day or less: (a) Dioxus Android build
 | Risk | Impact | Mitigation |
 |---|---|---|
 | No official Kotlin interop in Dioxus | sign-in, push, ML Kit, share target | spike in M1; JNI + activity class loader; fallback Gradle template |
-| Android WebView pen events (hover, tilt, eraser, barrel button) incomplete | tablet pen features | measured on the S24 Ultra 2026-10-26 ([PENLAB.md](PENLAB.md)): 426 pressure levels, tilt and hover work, ~60 Hz, no barrel button. Phone pen features are deferred (SPEC §23), so the remaining risk is the Tab S11's |
+| Android WebView pen events (hover, tilt, eraser, barrel button) incomplete | tablet pen features | measured on the S24 Ultra 2026-10-26 ([PENLAB.md](PENLAB.md)): 426 pressure levels, tilt and hover work, ~60 Hz, no barrel button. All pen work is paused until the core app is finished (SPEC §23); the Tab S11 is measured when it comes back |
 | Ink latency in WebView | "feels attached to the pen" | settled: the learner says the ink feels attached (8.6 ms p50 input delay), so the web ink stays and the native front-buffer layer is not needed |
 | Worker 10 ms CPU | timeouts | thin Worker, heavy work in DO / devices; Ed25519 JWT |
 | Gemini free tier trains on inputs and limits shift | privacy, availability | learning text only; `personal` tasks blocked by code; Workers AI + local as alternatives |

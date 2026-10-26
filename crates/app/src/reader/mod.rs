@@ -4,7 +4,9 @@
 mod card;
 mod content;
 pub mod doc;
+pub mod explain;
 pub mod glossary;
+mod web;
 
 use std::collections::{HashMap, HashSet};
 use std::rc::Rc;
@@ -14,8 +16,10 @@ use dioxus::html::{FileData, HasFileData};
 use dioxus::prelude::*;
 use kabar_core::learn::PersonalDictionary;
 use kabar_core::locale::UiLanguage;
+use kabar_core::reader::screen_ai::{self, StructureScreenshot};
 use kabar_core::reader::screenshot::{ScreenDoc, Side, structure};
-use kabar_protocol::reader::{SharedInput, WordStatus};
+use kabar_protocol::ai::Task;
+use kabar_protocol::reader::{OcrResult, SharedInput, WordStatus};
 use serde::Deserialize;
 
 use self::content::LocalGlossary;
@@ -24,6 +28,7 @@ use self::glossary::{Glossary, Shift};
 use crate::account::Cloud;
 use crate::i18n::Msg;
 use crate::store::{Highlight, SavedText, TextKind};
+use crate::teach::Ai;
 use crate::{Db, Ui, platform};
 
 const READER_JS: &str = include_str!("../../assets/reader.js");
@@ -62,7 +67,12 @@ pub struct Peek {
 #[derive(Clone, Debug, PartialEq)]
 pub enum Panel {
     Word(usize),
-    Phrase { tokens: Vec<usize>, save_first: bool },
+    Phrase {
+        tokens: Vec<usize>,
+        save_first: bool,
+    },
+    /// "Explain this sentence": the sentence around this token.
+    Explain(usize),
 }
 
 /// The open text and everything the Reader shows about it.
@@ -217,7 +227,7 @@ pub fn Reader() -> Element {
             }
         }
     });
-    let busy = use_signal(|| false);
+    let busy = use_signal(|| None::<Msg>);
     let recent = use_signal(|| db.0.borrow().recent_texts(12).unwrap_or_default());
 
     // Pen, mouse and touch input from the WebView.
@@ -263,9 +273,12 @@ pub fn Reader() -> Element {
             let mut slot = inbox.0;
             slot.set(None);
             match input {
-                SharedInput::Text { text, source } => {
-                    open_new(&db, st, &text, TextKind::Shared, source.as_deref(), None, recent);
-                }
+                SharedInput::Text { text, source } => match web::as_url(&text) {
+                    Some(url) => import_url(db.clone(), st, busy, recent, url.to_string()),
+                    None => {
+                        open_new(&db, st, &text, TextKind::Shared, source.as_deref(), None, recent);
+                    }
+                },
                 SharedInput::Image { path, source, .. } => {
                     run_ocr(db.clone(), st, busy, recent, std::path::PathBuf::from(path), source);
                 }
@@ -318,8 +331,8 @@ pub fn Reader() -> Element {
                 }
             }
 
-            if *busy.read() {
-                div { class: "card", role: "status", "{ui.t(Msg::OcrWorking)}" }
+            if let Some(m) = *busy.read() {
+                div { class: "card", role: "status", "{ui.t(m)}" }
             }
 
             match open {
@@ -358,17 +371,21 @@ fn open_new(
     source: Option<&str>,
     layout: Option<&str>,
     mut recent: Signal<Vec<SavedText>>,
-) {
+) -> Option<SavedText> {
     if body.trim().is_empty() {
-        return;
+        return None;
     }
     let saved = db.0.borrow_mut().save_text(body, kind, source, layout);
     match saved {
         Ok(text) => {
-            st.load(db, text);
+            st.load(db, text.clone());
             recent.set(db.0.borrow().recent_texts(12).unwrap_or_default());
+            Some(text)
         }
-        Err(e) => eprintln!("kabar: saving text failed: {e}"),
+        Err(e) => {
+            eprintln!("kabar: saving text failed: {e}");
+            None
+        }
     }
 }
 
@@ -376,7 +393,7 @@ fn open_new(
 fn run_ocr(
     db: Db,
     mut st: ReaderState,
-    mut busy: Signal<bool>,
+    mut busy: Signal<Option<Msg>>,
     recent: Signal<Vec<SavedText>>,
     path: std::path::PathBuf,
     source: Option<String>,
@@ -385,14 +402,15 @@ fn run_ocr(
         st.toast.set(Some(Msg::OcrUnavailable));
         return;
     }
-    busy.set(true);
+    let ai = try_consume_context::<Ai>();
+    busy.set(Some(Msg::OcrWorking));
     spawn(async move {
         let (tx, rx) = futures_channel::oneshot::channel();
         std::thread::spawn(move || {
             let _ = tx.send(platform::ocr_image(&path));
         });
         let result = rx.await.unwrap_or_else(|_| Err("OCR thread stopped".into()));
-        busy.set(false);
+        busy.set(None);
         match result {
             Ok(ocr) => {
                 let screen = structure(&ocr);
@@ -402,12 +420,110 @@ fn run_ocr(
                 }
                 let body = screen.reading_text();
                 let layout = serde_json::to_string(&screen).ok();
-                open_new(&db, st, &body, TextKind::Screenshot, source.as_deref(), layout.as_deref(), recent);
+                let saved = open_new(
+                    &db,
+                    st,
+                    &body,
+                    TextKind::Screenshot,
+                    source.as_deref(),
+                    layout.as_deref(),
+                    recent,
+                );
+                if let (Some(ai), Some(text)) = (ai, saved) {
+                    refine_with_ai(ai, db, st, recent, ocr, text);
+                }
             }
             Err(e) => {
                 eprintln!("kabar: OCR failed: {e}");
                 st.toast.set(Some(Msg::OcrFailed));
             }
+        }
+    });
+}
+
+/// The AI pass (`structure_screenshot`, spec §11) after the deterministic
+/// one is already on screen: when an engine is connected, ask it in the
+/// background and, if its answer validates, swap the saved text's body and
+/// layout for it. Any error keeps the deterministic layout, silently. The
+/// request is personal (a screenshot is someone's chat), so it never reaches
+/// an engine that trains on inputs.
+fn refine_with_ai(
+    ai: Ai,
+    db: Db,
+    st: ReaderState,
+    mut recent: Signal<Vec<SavedText>>,
+    ocr: OcrResult,
+    text: SavedText,
+) {
+    let req = screen_ai::request(&ocr);
+    if ai.0.plan(Task::StructureScreenshot, req.personal).is_err() {
+        return;
+    }
+    spawn(async move {
+        let answer = match ai.0.run::<StructureScreenshot>(&req).await {
+            Ok(a) => a,
+            Err(e) => {
+                eprintln!("kabar: structure_screenshot failed, keeping the on-device layout: {e:?}");
+                return;
+            }
+        };
+        let screen = screen_ai::to_screen_doc(&answer.value, &ocr);
+        let body = screen.reading_text();
+        // Highlights are byte ranges in the old body: don't move text under them.
+        let marked = db.0.borrow().highlights(&text.id).map_or(true, |h| !h.is_empty());
+        if body.trim().is_empty() || marked {
+            return;
+        }
+        let Ok(mut layout) = serde_json::to_value(&screen) else { return };
+        // Readers of ScreenDoc ignore this; it says where the layout came from.
+        layout["structured_by"] = serde_json::json!({
+            "task": "structure_screenshot",
+            "engine": answer.engine.as_str(),
+            "prompt_version": answer.prompt_version,
+            "provisional": answer.provisional,
+            "needs_review": answer.needs_review,
+        });
+        let updated = db.0.borrow_mut().update_text(&text, &body, Some(&layout.to_string()));
+        match updated {
+            Ok(t) => {
+                if st.open.peek().as_ref().is_some_and(|o| o.text.id == t.id) {
+                    st.load(&db, t);
+                }
+                recent.set(db.0.borrow().recent_texts(12).unwrap_or_default());
+            }
+            Err(e) => eprintln!("kabar: saving the AI layout failed: {e}"),
+        }
+    });
+}
+
+/// A pasted, dropped or shared link: fetch the page and read its article.
+fn import_url(
+    db: Db,
+    st: ReaderState,
+    mut busy: Signal<Option<Msg>>,
+    mut recent: Signal<Vec<SavedText>>,
+    url: String,
+) {
+    busy.set(Some(Msg::UrlFetching));
+    spawn(async move {
+        let page = web::fetch(url.clone()).await;
+        busy.set(None);
+        let page = match page {
+            Ok(p) => p,
+            Err(e) => {
+                eprintln!("kabar: importing {url} failed: {e}");
+                let mut t = st.toast;
+                t.set(Some(Msg::UrlImportFailed));
+                return;
+            }
+        };
+        let saved = db.0.borrow_mut().save_web_text(page.title.as_deref(), &page.text, &url);
+        match saved {
+            Ok(text) => {
+                st.load(&db, text);
+                recent.set(db.0.borrow().recent_texts(12).unwrap_or_default());
+            }
+            Err(e) => eprintln!("kabar: saving the page failed: {e}"),
         }
     });
 }
@@ -432,7 +548,7 @@ fn is_image(file: &FileData) -> bool {
 }
 
 #[component]
-fn InputCard(busy: Signal<bool>, recent: Signal<Vec<SavedText>>) -> Element {
+fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Element {
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let st = use_context::<ReaderState>();
@@ -458,101 +574,111 @@ fn InputCard(busy: Signal<bool>, recent: Signal<Vec<SavedText>>) -> Element {
     };
 
     rsx! {
-        div {
-            class: if *dragging.read() { "card reader-input dragging" } else { "card reader-input" },
-            ondragover: move |e| {
-                e.prevent_default();
-                dragging.set(true);
-            },
-            ondragleave: move |_| dragging.set(false),
-            ondrop: {
-                let db = db.clone();
-                let pick = pick.clone();
-                move |e: DragEvent| {
+            div {
+                class: if *dragging.read() { "card reader-input dragging" } else { "card reader-input" },
+                ondragover: move |e| {
                     e.prevent_default();
-                    dragging.set(false);
-                    let files = e.files();
-                    if files.iter().any(is_image) {
-                        pick(files);
-                    } else if let Some(text) = e.data_transfer().get_as_text() {
-                        open_new(&db, st, &text, TextKind::Pasted, None, None, recent);
-                    }
-                }
-            },
-            p { class: "muted", "{ui.t(Msg::ReaderIntro)}" }
-            textarea {
-                class: "reader-textarea",
-                dir: "auto",
-                lang: "id",
-                rows: "5",
-                placeholder: "{ui.t(Msg::ReaderPlaceholder)}",
-                // Uncontrolled: fast typing, IMEs and Samsung's handwriting
-                // keyboard never lose characters to a re-render.
-                oninput: move |e| draft.set(e.value()),
-            }
-            div { class: "row",
-                button {
-                    class: "primary",
-                    disabled: draft.read().trim().is_empty(),
-                    onclick: {
-                        let db = db.clone();
-                        move |_| {
-                            let body = draft.read().clone();
-                            open_new(&db, st, &body, TextKind::Pasted, None, None, recent);
-                        }
-                    },
-                    "{ui.t(Msg::ReaderRead)}"
-                }
-                label { class: "button-like",
-                    "{ui.t(Msg::ReaderScreenshot)}"
-                    input {
-                        r#type: "file",
-                        accept: "image/*",
-                        class: "visually-hidden",
-                        onchange: {
-                            let pick = pick.clone();
-                            move |e: FormEvent| pick(e.files())
-                        },
-                    }
-                }
-                span { class: "muted", "{ui.t(Msg::ReaderDrop)}" }
-            }
-        }
-        if !recent.read().is_empty() {
-            div { class: "card",
-                h3 { "{ui.t(Msg::ReaderRecent)}" }
-                ul { class: "recent",
-                    for text in recent.read().iter().cloned() {
-                        li { key: "{text.id}",
-                            button {
-                                class: "recent-item",
-                                onclick: {
-                                    let db = db.clone();
-                                    let text = text.clone();
-                                    move |_| st.load(&db, text.clone())
-                                },
-                                span { class: "pill", "{kind_icon(text.kind)}" }
-                                bdi { lang: "id", " {text.title}" }
-                            }
-                            button {
-                                class: "ghost",
-                                aria_label: "{ui.t(Msg::Delete)}",
-                                onclick: {
-                                    let db = db.clone();
-                                    let id = text.id.clone();
-                                    move |_| {
-                                        let _ = db.0.borrow_mut().delete_text(&id);
-                                        recent.set(db.0.borrow().recent_texts(12).unwrap_or_default());
-                                    }
-                                },
-                                "×"
-                            }
-                        }
-                    }
-                }
-            }
-        }
+                    dragging.set(true);
+                },
+                ondragleave: move |_| dragging.set(false),
+                ondrop: {
+                    let db = db.clone();
+                    let pick = pick.clone();
+                    move |e: DragEvent| {
+                        e.prevent_default();
+                        dragging.set(false);
+                        let files = e.files();
+                        if files.iter().any(is_image) {
+                            pick(files);
+                        } else if let Some(text) = e.data_transfer().get_as_text() {
+                            match web::as_url(&text) {
+                                Some(url) => import_url(db.clone(), st, busy, recent, url.to_string()),
+                                None => {
+        open_new(&db, st, &text, TextKind::Pasted, None, None, recent);
     }
+                            }
+                        }
+                    }
+                },
+                p { class: "muted", "{ui.t(Msg::ReaderIntro)}" }
+                textarea {
+                    class: "reader-textarea",
+                    dir: "auto",
+                    lang: "id",
+                    rows: "5",
+                    placeholder: "{ui.t(Msg::ReaderPlaceholder)}",
+                    // Uncontrolled: fast typing, IMEs and Samsung's handwriting
+                    // keyboard never lose characters to a re-render.
+                    oninput: move |e| draft.set(e.value()),
+                }
+                div { class: "row",
+                    button {
+                        class: "primary",
+                        disabled: draft.read().trim().is_empty(),
+                        onclick: {
+                            let db = db.clone();
+                            move |_| {
+                                let body = draft.read().clone();
+                                match web::as_url(&body) {
+                                    Some(url) => import_url(db.clone(), st, busy, recent, url.to_string()),
+                                    None => {
+        open_new(&db, st, &body, TextKind::Pasted, None, None, recent);
+    }
+                                }
+                            }
+                        },
+                        "{ui.t(Msg::ReaderRead)}"
+                    }
+                    label { class: "button-like",
+                        "{ui.t(Msg::ReaderScreenshot)}"
+                        input {
+                            r#type: "file",
+                            accept: "image/*",
+                            class: "visually-hidden",
+                            onchange: {
+                                let pick = pick.clone();
+                                move |e: FormEvent| pick(e.files())
+                            },
+                        }
+                    }
+                    span { class: "muted", "{ui.t(Msg::ReaderDrop)}" }
+                }
+            }
+            if !recent.read().is_empty() {
+                div { class: "card",
+                    h3 { "{ui.t(Msg::ReaderRecent)}" }
+                    ul { class: "recent",
+                        for text in recent.read().iter().cloned() {
+                            li { key: "{text.id}",
+                                button {
+                                    class: "recent-item",
+                                    onclick: {
+                                        let db = db.clone();
+                                        let text = text.clone();
+                                        move |_| st.load(&db, text.clone())
+                                    },
+                                    span { class: "pill", "{kind_icon(text.kind)}" }
+                                    bdi { lang: "id", " {text.title}" }
+                                }
+                                button {
+                                    class: "ghost",
+                                    aria_label: "{ui.t(Msg::Delete)}",
+                                    onclick: {
+                                        let db = db.clone();
+                                        let id = text.id.clone();
+                                        move |_| {
+                                            let _ = db.0.borrow_mut().delete_text(&id);
+                                            recent.set(db.0.borrow().recent_texts(12).unwrap_or_default());
+                                        }
+                                    },
+                                    "×"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 }
 
 fn kind_icon(kind: TextKind) -> &'static str {
@@ -560,6 +686,7 @@ fn kind_icon(kind: TextKind) -> &'static str {
         TextKind::Pasted => "✎",
         TextKind::Shared => "↪",
         TextKind::Screenshot => "▣",
+        TextKind::Web => "🔗",
     }
 }
 
@@ -574,7 +701,11 @@ fn ReadView(open: Open, mode: Mode) -> Element {
     let selected: HashSet<usize> = match &*st.panel.read() {
         Some(Panel::Word(i)) => [*i].into(),
         Some(Panel::Phrase { tokens, .. }) => tokens.iter().copied().collect(),
-        None => HashSet::new(),
+        Some(Panel::Explain(i)) if *i < doc.tokens.len() => {
+            let (start, end) = doc.sentence_span(*i);
+            doc.tokens_in(start, end).collect()
+        }
+        Some(Panel::Explain(_)) | None => HashSet::new(),
     };
     let voice = *st.voice.read();
     let split = mode == Mode::Split;

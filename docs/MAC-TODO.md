@@ -9,8 +9,9 @@ belong to. Keep one checkbox per action.
 
 **Time:** about 3 hours, much of it downloads and builds you can leave running.
 
-The core is lessons, reviews, the Reader, the coach and content. Phone pen
-features and Mac extras are deferred (§9), so their steps are no longer here.
+The core is lessons, reviews, the Reader, the coach and content. All pen
+work (phone and tablet) and Mac extras are deferred (§9), so their steps are
+no longer here.
 
 ---
 
@@ -65,14 +66,13 @@ just check                # fmt + clippy + tests: all green
 - [ ] `just devices`, then `just install <serial>` for the S24 Ultra and again for the Tab S11. For wireless, use `just pair` / `just connect` (RUN.md §3).
 - [ ] Check the launcher icon (round and adaptive), the notification-bar icon and the splash screen on both devices.
 - [x] **Pen Lab** on the S24 Ultra: two reports sent 2026-10-26, findings in [PENLAB.md](PENLAB.md). The ink feels attached to the pen tip, so the web ink stays and no native Kotlin ink is needed.
-- [ ] **Golden captures** on the **Tab S11 only** (~20 min, any time, no rush): `cargo run -p kabar-tools -- golden stats` lists the items tagged `needs-capture` in `content/golden/read_handwriting.yaml`, `guess_sketch.yaml` and `check_strokes.yaml`. Each item's `input.capture` says what to write or draw. Save each as `fixtures/golden/<task>/<item id>.png` and push or send them; I wire them in. The phone captures are deferred with the phone pen (§9).
 
 ## 3b. Journey Map and Lesson Player (~15 min) — [RUN.md](RUN.md)
 
 - [ ] Mac: `just run-mac` → Journey. Drag the map, zoom with the trackpad pinch and the +/− buttons, open Jakarta, then open "Selamat pagi!".
 - [ ] Mac: play both test lessons (`bipa1.u01.l01`, `bipa1.u01.l02`) to the end. Check that the Indonesian voice speaks in listen and dictation exercises (macOS has an Indonesian system voice; if it's silent, add "Damayanti" under System Settings → Accessibility → Spoken Content → System voice → Manage Voices).
 - [ ] S24 Ultra: Journey shows the vertical route; "Lanjut" opens the current lesson. Answer one translation with the normal keyboard.
-- [ ] Tab S11: the full map pans with the pen and pinches with two fingers. Close a lesson halfway; reopening it resumes at the same exercise.
+- [ ] Tab S11: the full map pans and pinches with your fingers. Close a lesson halfway; reopening it resumes at the same exercise.
 - [ ] On both devices, check the Indonesian voice is installed: Settings → General management → Text-to-speech output → engine settings (Samsung or Google) → Install voice data → Indonesian. If the app shows "download the Indonesian voice", that's this step.
 - [ ] Tell me whether listen/dictation, slow replay and review audio cards speak on Android (the app now uses Android's own TextToSpeech). The first tap after launch can take a second while the voice engine starts.
 
@@ -81,7 +81,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] Mac OCR: Reader → "Open a screenshot" (or drag an image in) with a WhatsApp screenshot; check Apple Vision reads it (first real test of the Vision code).
 - [ ] `just apk` while online (first build fetches ML Kit from Google Maven; it must print "Kotlin glue present"), then `just install <serial>` on the S24 Ultra and Tab S11.
 - [ ] On each device: share text from WhatsApp → **Kabar**; select text → ⋮ → **Kabar**; take a screenshot → Share → **Kabar**. `adb logcat -s KabarShare` if a share is ignored.
-- [ ] **Tab S11** pen in the Reader: tap a word (card) and stroke across a phrase (highlight saved). Hover peek and lasso lookup are deferred (§9); on the phone, tap and scroll is the whole story now.
+- [ ] On both devices, tap a word in the Reader: the card opens with its meaning and audio.
 - [ ] Send me one or two real WhatsApp screenshots you decoded (and how well the bubbles came out), so I can tune the screenshot structuring on real data.
 
 ## 4. Google sign-in clients (~10 min) — [CLOUD.md §3.2](CLOUD.md)
@@ -137,44 +137,31 @@ This decides which free engine answers each AI task. Until it runs, every route 
 - [ ] Save the answer of `https://en.wiktionary.org/api/rest_v1/page/definition/kabar` (open it in the browser, then Save As) as `fixtures/learn/wiktionary.kabar.json`, replacing the hand-written one, and run `just check`.
 - [ ] Teach one real word you met (e.g. from a WhatsApp chat), approve it, and check it shows under **My dictionary** on the tablet after sync.
 
-## 7c. Tablet Studio (~20 min, best on the Tab S11) — [RUN.md §11](RUN.md)
-
-- [ ] `just deploy-cloud` once, so the three new ink tables (`notebook_items`, `ink_transcripts`, and the `ink_documents`/`ink_strokes`/`notebooks` set) are accepted by the server. Without it, ink stays on the device.
-- [ ] Tab S11 → **Studio** → **Notebook**: write a few lines with the S Pen while resting your palm on the glass. Tell me if any palm touch leaves a mark, and whether the ink still feels stuck to the pen tip.
-- [ ] Two fingers to pan, pinch to zoom, then the eraser tool. Does erasing feel like it catches the stroke you aim at?
-- [ ] **Add a word card** for `pasar`, move on to a second page, come back: the card should still be there, and on the phone after sync.
-- [ ] Search `pasar` in the Notebook side bar and tap the hit: it should scroll the page to it.
-- [ ] **Gambar!**: play two rounds. Signed in to Kabar Cloud, Kabar guesses from the sketch; signed out it asks you to judge your own drawing. Tell me whether the word choice felt reasonable.
-- [ ] **Listening Companion**: open YouTube in split screen, pause on a word you didn't catch, and write it as it sounded (e.g. `moerah`, `sinaoe`). The suggestions should include the real word; tell me when they don't.
-- [ ] **Mind map**: `di pasar`. It needs an AI engine, so it may say "not connected yet" until Kabar Cloud answers.
-- [ ] **Dictation**: write one word with the pen, then type it in the box and tap Check; the feedback should circle the wrong letters.
-
-## 7d. Aksara Jawa calligraphy (~20 min, Tab S11) — [RUN.md §11](RUN.md)
-
-- [ ] Review the stroke order draft: `python3 scripts/aksara/preview.py content/fonts/NotoSansJavanese-Regular.ttf content/aksara/strokes.json aksara.png` (needs `pip3 install pillow numpy pyyaml`), then open `aksara.png`. For each item, are the numbered strokes in the order and direction you (or a teacher) would write them? Send me the ids that are wrong and how; I fix `content/aksara/glyphs.yaml` and mark the rest `verified`. Known doubts: the direction of pangkon and wignyan, and ra drawn as one stroke.
-- [ ] **Studio → Aksara Jawa → ha**: Watch, then Trace with the brush. Does the brush thickness follow your pressure the way a calligraphy brush should?
-- [ ] **Write** ha freehand and tap **Check shape**: a careful ha should pass. Then write ka mirrored, and ha without its last stroke: the notes should say so. Tell me any note that is wrong or unkind.
-- [ ] Signed in to Kabar Cloud, tap **Ask the teacher** once and tell me what it said.
-
 ## 8. What to send back
 
-- [ ] A sentence on how the Studio's Notebook ink feels (palm rejection, eraser, pan/zoom).
 - [ ] The `workers.dev` URL.
 - [ ] Anything that failed: the command and its last 30 lines of output.
 - [ ] Pushed commits: `wrangler.toml`, `content/`, `bakeoff/runs/`.
 
 ## 9. Deferred, not dropped
 
-Moved out of the core on 2026-10-26, at your word: stylus features on the
-phone, and Mac extras that only polish the laptop. Nothing is deleted from
-`docs/SPEC.md` — each one is a later phase, and the steps come back here with
-it.
+Moved out of the core on 2026-10-26, at your word: all stylus work, on the
+phone and on the tablet, until the core app is finished, plus Mac extras
+that only polish the laptop. Nothing is deleted from `docs/SPEC.md` — each
+one is a later phase (SPEC §23 "Deferred"), and its steps come back here
+with it.
 
-- Phone pen: Quick Capture, lasso lookup, hover popovers, handwritten answers
-  on the S24 Ultra, and the phone's golden captures for the pen AI tasks.
+- Pen on both devices: Quick Capture, hover popovers, lasso lookup,
+  stroke-to-highlight, handwritten answers, Card Wall flicks, the Notebook,
+  Gambar!, Listening Companion scribbles, write-mode lessons and aksara Jawa
+  calligraphy. The Tablet Studio (M9) and aksara (M13) code is merged and
+  waits for this; its checks (deploy the ink tables, Notebook feel, the
+  stroke-order review in `scripts/aksara/preview.py`) return with the pen.
+- The golden captures for the pen AI tasks (`read_handwriting`,
+  `guess_sketch`, `check_strokes`).
 - Mac extras: the global Quick Lookup hotkey, Mac-specific polish, drawing in
   Pen Lab with the trackpad, and the optional Cloudflare plugin for Claude
   Code.
 
-The Tab S11 keeps its pen: it is the writing device, and the writing lessons
-and calligraphy need it.
+Pen Lab already measured the S24 Ultra, so when the pen comes back the web
+ink is known to be good enough.
