@@ -1,0 +1,180 @@
+# Aksara Jawa calligraphy practice set (PLAN §18), in teaching order: the 20 letters
+# (jv.aksara.nglegena), vowel signs on ka (jv.aksara.sandhangan-swara), final signs on ka
+# (jv.aksara.panyigeg), then words from those grammar notes for free writing.
+# scripts/aksara/strokes.py traces each `text` from Noto Sans Javanese into content/aksara/strokes.json.
+# kind: nglegena | sandhangan | panyigeg | word. `sign` names the mark a syllable practises.
+# order (optional): corrections to the drafted strokes, indices from 0; 2r = stroke 2 reversed; 0+1 = joined.
+glyphs:
+  - id: ha
+    text: ꦲ
+    latin: ha
+    kind: nglegena
+  - id: na
+    text: ꦤ
+    latin: na
+    kind: nglegena
+  - id: ca
+    text: ꦕ
+    latin: ca
+    kind: nglegena
+  - id: ra
+    text: ꦫ
+    latin: ra
+    kind: nglegena
+  - id: ka
+    text: ꦏ
+    latin: ka
+    kind: nglegena
+  - id: da
+    text: ꦢ
+    latin: da
+    kind: nglegena
+  - id: ta
+    text: ꦠ
+    latin: ta
+    kind: nglegena
+  - id: sa
+    text: ꦱ
+    latin: sa
+    kind: nglegena
+  - id: wa
+    text: ꦮ
+    latin: wa
+    kind: nglegena
+  - id: la
+    text: ꦭ
+    latin: la
+    kind: nglegena
+  - id: pa
+    text: ꦥ
+    latin: pa
+    kind: nglegena
+  - id: dha
+    text: ꦝ
+    latin: dha
+    kind: nglegena
+  - id: ja
+    text: ꦗ
+    latin: ja
+    kind: nglegena
+  - id: ya
+    text: ꦪ
+    latin: ya
+    kind: nglegena
+  - id: nya
+    text: ꦚ
+    latin: nya
+    kind: nglegena
+  - id: ma
+    text: ꦩ
+    latin: ma
+    kind: nglegena
+  - id: ga
+    text: ꦒ
+    latin: ga
+    kind: nglegena
+  - id: ba
+    text: ꦧ
+    latin: ba
+    kind: nglegena
+  - id: tha
+    text: ꦛ
+    latin: tha
+    kind: nglegena
+  - id: nga
+    text: ꦔ
+    latin: nga
+    kind: nglegena
+  - id: ki
+    text: ꦏꦶ
+    latin: ki
+    kind: sandhangan
+    sign: wulu
+  - id: ku
+    text: ꦏꦸ
+    latin: ku
+    kind: sandhangan
+    sign: suku
+  - id: ke
+    text: ꦏꦺ
+    latin: ke
+    kind: sandhangan
+    sign: taling
+  - id: ke-pepet
+    text: ꦏꦼ
+    latin: kê
+    kind: sandhangan
+    sign: pepet
+  - id: ko
+    text: ꦏꦺꦴ
+    latin: ko
+    kind: sandhangan
+    sign: taling tarung
+  - id: kang
+    text: ꦏꦁ
+    latin: kang
+    kind: panyigeg
+    sign: cecak
+  - id: kar
+    text: ꦏꦂ
+    latin: kar
+    kind: panyigeg
+    sign: layar
+  - id: kah
+    text: ꦏꦃ
+    latin: kah
+    kind: panyigeg
+    sign: wignyan
+  - id: k-pangkon
+    text: ꦏ꧀
+    latin: k
+    kind: panyigeg
+    sign: pangkon
+  - id: w-sapa
+    text: ꦱꦥ
+    latin: sapa
+    kind: word
+  - id: w-apa
+    text: ꦲꦥ
+    latin: apa
+    kind: word
+  - id: w-mata
+    text: ꦩꦠ
+    latin: mata
+    kind: word
+  - id: w-jaga
+    text: ꦗꦒ
+    latin: jaga
+    kind: word
+  - id: w-siji
+    text: ꦱꦶꦗꦶ
+    latin: siji
+    kind: word
+  - id: w-buku
+    text: ꦧꦸꦏꦸ
+    latin: buku
+    kind: word
+  - id: w-telu
+    text: ꦠꦼꦭꦸ
+    latin: telu
+    kind: word
+  - id: w-kowe
+    text: ꦏꦺꦴꦮꦺ
+    latin: kowe
+    kind: word
+  - id: w-wayang
+    text: ꦮꦪꦁ
+    latin: wayang
+    kind: word
+  - id: w-pasar
+    text: ꦥꦱꦂ
+    latin: pasar
+    kind: word
+  - id: w-omah
+    text: ꦲꦺꦴꦩꦃ
+    latin: omah
+    kind: word
+  - id: w-mangan
+    text: ꦩꦔꦤ꧀
+    latin: mangan
+    kind: word

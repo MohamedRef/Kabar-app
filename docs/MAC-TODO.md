@@ -121,7 +121,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] No rush: Javanese review with a native speaker if you can (`content/javanese/speech-levels.jsonl`, `content/glosses/jv/`, `cargo run -p kabar-tools -- gloss review --lang jv 1`). Everything Javanese stays *unverified* until then.
 - [ ] Commit the changed files under `content/` and push.
 
-## 6b. Offline packs: natural-voice audio per unit (~15 min of yours, ~3 h unattended) — [RUN.md §12](RUN.md)
+## 6b. Offline packs: natural-voice audio per unit (~15 min of yours, ~3 h unattended) — [RUN.md §13](RUN.md)
 
 Uses the same Azure F0 key as step 5.4 (free; F0 never bills). All of BIPA 1–2 and J1–J3 is ~83k characters, about a sixth of the monthly free quota.
 
@@ -166,7 +166,9 @@ with it.
 - Pen on both devices: Quick Capture, hover popovers, lasso lookup,
   stroke-to-highlight, handwritten answers, Card Wall flicks, the Notebook,
   Gambar!, Listening Companion scribbles, write-mode lessons and aksara Jawa
-  calligraphy.
+  calligraphy. The Tablet Studio (M9) and aksara (M13) code is merged and
+  waits for this; its checks (deploy the ink tables, Notebook feel, the
+  stroke-order review in `scripts/aksara/preview.py`) return with the pen.
 - The golden captures for the pen AI tasks (`read_handwriting`,
   `guess_sketch`, `check_strokes`).
 - Mac extras: the global Quick Lookup hotkey, Mac-specific polish, drawing in
