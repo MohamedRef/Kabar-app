@@ -200,7 +200,14 @@ Open **Studio** (الاستوديو) in the sidebar, or from Settings on the pho
 
 Ink syncs like every other row (`notebooks`, `ink_documents`, `ink_strokes`, `notebook_items`, `ink_transcripts`), so a page you write on the tablet shows up on the phone. The three new tables need a Kabar Cloud redeploy: `just deploy-cloud`.
 
-## 12. Offline packs (audio per unit)
+## 12. Stats and the monthly level check (spec §16, §6)
+
+- **Stats**: Review → "All stats" (under the forecast), or Today → "All stats". Study heatmap (20 weeks), time studied, known words per language, true retention (mature/young, 7 and 30 days) and the 30-day review forecast. Hover a cell or bar on the Mac for its numbers; every chart also has a sentence under it.
+- **Monthly level check**: offered on Today once a month (the first one about 4 weeks after you start); "Later" hides it for 3 days on that device. You can also take it any time from Stats. It's ~10 minutes of your current level's test items, then the skill radar vs last month, Kak Nur's decision and "BIPA N around <date>". Fully offline. Levels without test items yet (BIPA 3+, Javanese) get a history-only check.
+- Preview on the Mac: `KABAR_OPEN_SCREEN=stats just run-mac` or `KABAR_OPEN_SCREEN=level_check just run-mac`.
+- Demo data for screenshots (a throwaway database, never your real one): `KABAR_DEMO_DB=/tmp/kabar-demo.db cargo test -p kabar-app seed_stats_demo -- --ignored`, then run the app with its data dir pointing there (see `crates/app/src/stats/demo.rs`).
+
+## 13. Offline packs (audio per unit)
 
 Each unit has a pack of pre-generated Azure neural audio (Gadis/Ardi for Indonesian, Siti/Dimas for Javanese; dialogue lines in the speaker's voice) so its lessons sound natural with no network. Manifests are committed under `content/packs/`; the audio lives on the `packs` GitHub release of this repository (free), never in git.
 
@@ -223,7 +230,7 @@ Commit `content/packs/` after bundling: the app build embeds `content/packs/inde
 
 **In the app:** Settings → **Offline packs** lists every unit with its size, Download / Update / Remove, total storage, and "Download the current and next unit automatically" (on by default: opening a lesson fetches its unit and the next one in the background). The Lesson Player plays a downloaded clip first, then the device's own voice (Android TextToSpeech, or the WebView voice on the Mac), exactly as before. A run-time `KABAR_PACKS_URL` points the app at another release; an empty one turns downloads off.
 
-## 13. Watch & listen: Sinetron and Kabar Radio (M12)
+## 14. Watch & listen: Sinetron and Kabar Radio (M12)
 
 Open **Watch & listen** (اتفرج واسمع): in the sidebar on the Mac and the Tab S11, and from the links under Today on the S24 Ultra.
 
@@ -234,7 +241,7 @@ Open **Watch & listen** (اتفرج واسمع): in the sidebar on the Mac and t
 - To try it offline: open Kabar Radio → *Apa kabar, Kota Tua?* → **Download for offline**, wait for ✓, turn on airplane mode, then **Play**.
 - Still to come in M12: persona chats, and playback with the screen off (Android background audio). Daily Radio episodes "from my words" are waiting on the `radio_script` bake-off on the Mac.
 
-## 14. Troubleshooting
+## 15. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.

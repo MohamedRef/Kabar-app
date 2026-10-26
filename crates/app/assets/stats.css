@@ -1,0 +1,92 @@
+/* Stats and the monthly level check. Colours are theme tokens only (main.css);
+   charts use fill-opacity steps of one hue for magnitude. Logical properties
+   throughout, so RTL just works. */
+
+.st { display: grid; gap: 1rem; }
+.st-head { display: flex; align-items: center; gap: 0.75rem; }
+.st-head h2 { margin: 0; }
+.st-back { padding-inline: 0.8rem; }
+.st-grid { display: grid; gap: 1rem; align-items: start; }
+.app[data-width="medium"] .st-grid,
+.app[data-width="expanded"] .st-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.app[data-width="medium"] .st-wide,
+.app[data-width="expanded"] .st-wide { grid-column: 1 / -1; }
+.st-card { margin: 0; }
+.st-card h3, .st-card h4 { margin-block: 0 0.6rem; }
+.st-summary { color: var(--muted); margin-block: 0.5rem 0; }
+.st-big { font-weight: 700; font-variant-numeric: tabular-nums; }
+.st-open { margin-block-start: 0.75rem; }
+.st-link { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; justify-content: space-between; }
+.st-link p { margin: 0; }
+
+/* charts */
+.st-chart svg { display: block; inline-size: 100%; block-size: auto; overflow: visible; }
+.st-heat svg { max-inline-size: 36rem; }
+.st-forecast svg { block-size: 7rem; }
+.st-forecast .baseline { vector-effect: non-scaling-stroke; }
+.chart text, .chart .axis { fill: var(--muted); font-size: 10px; font-family: inherit; }
+.chart .baseline { stroke: var(--line); stroke-width: 1; }
+.chart .hit { fill: transparent; }
+
+.hm { fill: var(--sawah); }
+.hm-0 { fill: var(--line); fill-opacity: 0.55; }
+.hm-1 { fill-opacity: 0.3; }
+.hm-2 { fill-opacity: 0.55; }
+.hm-3 { fill-opacity: 0.78; }
+.hm-4 { fill-opacity: 1; }
+.st-legend { display: flex; align-items: center; gap: 0.4rem; color: var(--muted); font-size: 0.8rem; margin-block-start: 0.4rem; }
+.st-swatches svg { display: block; inline-size: 4.7rem; block-size: auto; }
+
+.fc .bar { fill: var(--indigo); }
+.fc.today .bar { fill: var(--sawah); }
+.fc:hover .bar { fill-opacity: 0.8; }
+.st-axis { display: flex; justify-content: space-between; color: var(--muted); font-size: 0.8rem; }
+
+.radar-svg .grid { fill: none; stroke: var(--line); stroke-width: 1; }
+.radar-svg .before { fill: none; stroke: var(--muted); stroke-width: 2; stroke-dasharray: 5 4; }
+.radar-svg .now { fill: var(--indigo); fill-opacity: 0.16; stroke: var(--indigo); stroke-width: 2; stroke-linejoin: round; }
+.radar-svg .mark { fill: var(--indigo); stroke: var(--surface); stroke-width: 2; }
+.radar-svg .axis { font-size: 12px; fill: var(--text); }
+.st-radar-chart svg { max-inline-size: 22rem; margin-inline: auto; }
+
+/* words: one stacked bar per language, 2px surface gaps between segments */
+.st-words { margin-block-end: 0.9rem; }
+.st-words-head { display: flex; justify-content: space-between; align-items: baseline; }
+.st-words-head .st-big { font-size: 1.4rem; }
+.st-stack { display: flex; gap: 2px; block-size: 0.75rem; margin-block: 0.4rem; border-radius: 4px; overflow: hidden; }
+.st-seg { display: block; min-inline-size: 2px; }
+.st-seg.known, .st-key.known { background: var(--sawah); }
+.st-seg.learning, .st-key.learning { background: var(--gold); }
+.st-seg.new, .st-key.new { background: var(--line); }
+.st-key.now { background: var(--indigo); }
+.st-key.before { background: none; inline-size: 1rem; block-size: 0; border-radius: 0; border-block-start: 2px dashed var(--muted); }
+.st-keys { list-style: none; padding: 0; margin: 0.3rem 0; display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; font-size: 0.85rem; color: var(--muted); }
+.st-keys li { display: inline-flex; align-items: center; gap: 0.35rem; }
+.st-key { display: inline-block; inline-size: 0.7rem; block-size: 0.7rem; border-radius: 3px; }
+
+/* retention table */
+.st-table { inline-size: 100%; border-collapse: collapse; }
+.st-table th, .st-table td { text-align: start; padding-block: 0.35rem; padding-inline: 0 0.5rem; vertical-align: baseline; }
+.st-table thead th { color: var(--muted); font-weight: 500; font-size: 0.8rem; }
+.st-table tbody th { font-weight: 500; }
+.st-table td { white-space: nowrap; }
+.st-table td .muted { display: block; }
+
+/* level check */
+.st-check { max-inline-size: 46rem; margin-inline: auto; inline-size: 100%; }
+.st-radar-list { list-style: none; padding: 0; margin: 0.6rem 0 0; display: grid; gap: 0.35rem; }
+.st-radar-list li { display: flex; gap: 0.6rem; align-items: baseline; }
+.st-radar-list li > span:first-child { flex: 1; }
+.st-delta { font-size: 0.8rem; color: var(--muted); padding-inline: 0.4rem; border-radius: 999px; background: var(--surface-2, var(--bg)); }
+.st-delta.up { color: var(--sawah); }
+.st-eta p { margin-block: 0 0.3rem; }
+.st-flight { border-block-start: 1px solid var(--line); margin-block-start: 0.8rem; padding-block-start: 0.6rem; }
+/* the Lesson Player's .lp is a full-screen overlay; the check runs inline */
+.st-runner { position: static; inset: auto; z-index: auto; background: none; display: grid; gap: 1rem; min-block-size: 0; }
+.st-runner .lp-col { max-inline-size: none; padding-inline: 0; }
+.st-runner-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: flex-end; }
+.st-outcome .stats-row { max-inline-size: 14rem; }
+
+@media (forced-colors: active) {
+  .hm, .fc .bar, .st-seg, .st-key { forced-color-adjust: none; }
+}
