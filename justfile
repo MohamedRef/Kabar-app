@@ -109,3 +109,32 @@ connect addr:
 # Stream Kabar's logs from a device (the app must be running)
 logs serial="":
     adb {{ if serial != "" { "-s " + serial } else { "" } }} logcat -v color --pid="$(adb {{ if serial != "" { "-s " + serial } else { "" } }} shell pidof -s app.kabar)"
+
+# --- Kabar Cloud (Cloudflare Workers Free) -----------------------------------
+
+server := "crates/server"
+
+# One-time: wrangler (Cloudflare CLI) and worker-build
+cloud-tools:
+    npm install -g wrangler@4
+    cargo install worker-build --version ^0.8 --locked
+
+# One-time, after `wrangler login`: D1 database, signing key, allowlist
+cloud-setup:
+    scripts/cloud-setup.sh
+
+# Run Kabar Cloud locally on http://127.0.0.1:8787 (local workerd; AI calls need a login)
+cloud-dev:
+    cd {{server}} && wrangler d1 migrations apply kabar --local && wrangler dev
+
+# End-to-end test on a local workerd with a fake Google: phone → tablet sync, devices, sign-out
+cloud-e2e:
+    node {{server}}/tests/e2e.mjs
+
+# Deploy to <name>.<your-subdomain>.workers.dev
+deploy-cloud:
+    cd {{server}} && wrangler d1 migrations apply kabar --remote && wrangler deploy
+
+# Stream live logs from the deployed Worker
+cloud-logs:
+    cd {{server}} && wrangler tail

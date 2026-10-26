@@ -1,0 +1,80 @@
+schema: kabar.grammar/v1
+id: id.question.mana
+language: id
+level: bipa1
+title:
+  target: di mana, ke mana, dari mana, yang mana
+  en: "mana: where and which"
+  ar_eg: "mana: فين، على فين، منين، أنهي"
+  ar: "mana: أين، إلى أين، من أين، أيّ"
+summary:
+  ar_eg: mana لوحدها يعني «فين/أنهي»، وبنحط قبلها di / ke / dari عشان نقول فين / على فين / منين.
+  ar: mana تعني «أين/أيّ»، وتسبقها di / ke / dari للدلالة على المكان والاتجاه والمصدر.
+  en: mana means "where / which"; put di, ke or dari in front for where (at), where to, and where from.
+pattern:
+  - di mana? (where — location)
+  - ke mana? (where to)
+  - dari mana? (where from)
+  - noun + yang mana? (which one)
+explanation:
+  ar_eg: |
+    الإندونيسي بيبني «فين» من حرف جر + mana:
+    - di mana = فين (مكان الحاجة): Toilet di mana? = الحمام فين؟
+    - ke mana = على فين / رايح فين: Mau ke mana? = رايح فين؟ (ودي تحية في الشارع كمان، ممكن ترد «Jalan-jalan» = بتمشى.)
+    - dari mana = منين: Anda dari mana? = حضرتك منين؟
+    - yang mana = أنهي واحد: Tas yang mana? = أنهي شنطة؟
+    في الكتابة الرسمية di mana بتتكتب كلمتين (مش dimana).
+    ولاحظ إن السؤال ممكن يكون في الآخر: Kamu tinggal di mana? = إنت ساكن فين؟
+  ar: |
+    تُبنى أدوات المكان من حرف جر مع mana:
+    - di mana = أين (موضع الشيء): Toilet di mana? = أين دورة المياه؟
+    - ke mana = إلى أين: Mau ke mana? = إلى أين تذهب؟ وهي تحية شائعة في الطريق.
+    - dari mana = من أين: Anda dari mana? = من أين أنت؟
+    - yang mana = أيّ واحد: Tas yang mana? = أيّ حقيبة؟
+    وتُكتب di mana كلمتين في الإملاء الرسمي، ويجوز وقوع أداة الاستفهام آخر الجملة.
+  en: |
+    "Where" is built from a preposition + mana:
+    - di mana = where (location): Toilet di mana? = Where is the toilet?
+    - ke mana = where to: Mau ke mana? = Where are you going? (also a street greeting; answer "Jalan-jalan" = just strolling)
+    - dari mana = where from: Anda dari mana? = Where are you from?
+    - yang mana = which one: Tas yang mana? = Which bag?
+    Standard spelling writes di mana as two words. The question phrase often goes last: Kamu tinggal di mana?
+examples:
+  - text: Stasiun di mana?
+    en: Where is the station?
+    ar_eg: المحطة فين؟
+    ar: أين المحطة؟
+  - text: Mau ke mana, Mas?
+    en: Where are you going?
+    ar_eg: على فين يا باشا؟
+    ar: إلى أين يا أخي؟
+  - text: Anda dari mana? — Saya dari Mesir.
+    en: Where are you from? — I'm from Egypt.
+    ar_eg: حضرتك منين؟ — أنا من مصر.
+    ar: من أين أنت؟ — أنا من مصر.
+  - text: Kamu suka yang mana?
+    en: Which one do you like?
+    ar_eg: بتحب أنهي واحد؟
+    ar: أيّها تحب؟
+mistakes:
+  - wrong: Mana kamu pergi?
+    right: Kamu pergi ke mana?
+    why:
+      ar_eg: للاتجاه لازم ke قبل mana.
+      ar: للاتجاه يلزم ke قبل mana.
+      en: Direction needs ke before mana.
+  - wrong: Dimana rumahmu? (formal writing)
+    right: Di mana rumahmu?
+    why:
+      ar_eg: هتشوف dimana لازقة في الشات كتير، بس الصح كلمتين.
+      ar: تُرى ملتصقة كثيرًا في المحادثات، والصواب كلمتان.
+      en: You'll see dimana in chats, but the standard spelling is two words.
+arabic_bridge:
+  ar_eg: "زي «فين / على فين / منين» بالظبط: حرف جر + أداة. di ≈ في، ke ≈ لـ/على، dari ≈ من."
+  ar: "كما في «في أين / إلى أين / من أين»: حرف جر مع أداة، وdi ≈ في، وke ≈ إلى، وdari ≈ من."
+  en: Mirrors Arabic «في/إلى/من + أين»; di ≈ في, ke ≈ إلى, dari ≈ من.
+tags: [question, place]
+see_also: [id.preposition.di-ke-dari, id.yang.basic]
+review:
+  status: draft
+  verified: false

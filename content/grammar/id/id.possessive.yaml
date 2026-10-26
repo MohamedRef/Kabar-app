@@ -1,0 +1,87 @@
+schema: kabar.grammar/v1
+id: id.possessive
+language: id
+level: bipa1
+title:
+  target: rumah saya, rumahku, rumahmu, rumahnya
+  en: Possession
+  ar_eg: الملكية (بتاعي، بتاعك، بتاعه)
+  ar: الإضافة والملكية
+summary:
+  ar_eg: صاحب الحاجة بييجي بعدها زي الإضافة في العربي، ولو ضمير ممكن يلزق في الآخر -ku / -mu / -nya.
+  ar: يأتي المالك بعد المملوك كالإضافة العربية، والضمير يمكن أن يتصل بآخر الاسم -ku / -mu / -nya.
+  en: The owner follows the thing, like Arabic iḍāfa; pronoun owners can attach as -ku, -mu, -nya.
+pattern:
+  - thing + owner (rumah saya, buku Ahmad)
+  - thing + -ku (my) / -mu (your) / -nya (his, her, its, their)
+  - punya / milik + owner (belonging to)
+explanation:
+  ar_eg: |
+    الترتيب زي العربي بالظبط: الحاجة الأول وبعدها صاحبها.
+    buku Ahmad = كتاب أحمد. rumah saya = بيتي (حرفيًا «بيت أنا»).
+    وفيه لواحق زي ضماير الملكية في العربي:
+    - -ku = ـي: bukuku = كتابي (مع aku، يعني عادي/حميمي)
+    - -mu = ـك: bukumu = كتابك
+    - -nya = ـه / ـها / ـهم: bukunya = كتابه / كتابها
+    مع الناس اللي محترمينهم بتقول الاسم كامل: rumah Bapak = بيت حضرتك، مش rumahmu.
+    -nya كمان ليها معنى «الـ» المعروفة، هتشوفه بعدين.
+    و«بتاع مين؟»: Ini punya siapa? — Punya saya = بتاعي.
+  ar: |
+    الترتيب كالإضافة العربية: المضاف أولًا ثم المضاف إليه.
+    buku Ahmad = كتاب أحمد، وrumah saya = بيتي.
+    وتتصل بالاسم لواحق كضمائر الملكية العربية:
+    - -ku = ياء المتكلم: bukuku = كتابي (أسلوب ودّي)
+    - -mu = كاف المخاطب: bukumu = كتابك
+    - -nya = هاء الغائب: bukunya = كتابه / كتابها
+    ومع المحترَمين يُذكر اللقب: rumah Bapak = بيت حضرتك.
+    وللسؤال عن المالك: Ini punya siapa؟ — Punya saya = لي.
+  en: |
+    Same order as Arabic iḍāfa: the thing first, then the owner.
+    buku Ahmad = Ahmad's book. rumah saya = my house (literally "house I").
+    Attached forms, like Arabic possessive suffixes:
+    - -ku = my: bukuku (casual, with aku)
+    - -mu = your: bukumu
+    - -nya = his / her / its / their: bukunya
+    With respected people use the title: rumah Bapak = your house (sir), not rumahmu.
+    -nya also works like "the" — later lesson.
+    "Whose?": Ini punya siapa? — Punya saya = It's mine.
+examples:
+  - text: Ini keluarga saya.
+    en: This is my family.
+    ar_eg: دي عيلتي.
+    ar: هذه عائلتي.
+  - text: Rumahnya dibersihkan kemarin.
+    breakdown: rumah + -nya (his/her) · di- (passive) + bersih + -kan · kemarin
+    en: His/Her house was cleaned yesterday.
+    ar_eg: بيته اتنضف امبارح.
+    ar: نُظِّف بيته أمس.
+  - text: Siapa nama ibumu?
+    en: What's your mother's name?
+    ar_eg: مامتك اسمها إيه؟
+    ar: ما اسم أمك؟
+  - text: Mobil Pak Budi warnanya merah.
+    en: Mr Budi's car is red.
+    ar_eg: عربية عم بودي لونها أحمر.
+    ar: سيارة السيد بودي لونها أحمر.
+mistakes:
+  - wrong: saya rumah
+    right: rumah saya
+    why:
+      ar_eg: "زي العربي: «بيت أنا» مش «أنا بيت»."
+      ar: المالك يأتي بعد المملوك كما في الإضافة.
+      en: The owner comes after, as in Arabic.
+  - wrong: rumahmu (to an older person)
+    right: rumah Bapak / rumah Ibu
+    why:
+      ar_eg: -mu فيها رفع كلفة؛ مع الكبار استخدم اللقب.
+      ar: في -mu رفع للكلفة، فاستعمل اللقب مع الكبار.
+      en: -mu is familiar; use the title with elders.
+arabic_bridge:
+  ar_eg: "هنا الإندونيسي هو العربي بالحرف: كتاب + أحمد، كتاب + ـي. حتى إن -ku / -mu / -nya بيلزقوا في الآخر زي ـي / ـك / ـه."
+  ar: هذا هو تركيب الإضافة العربي بعينه، واللواحق -ku / -mu / -nya تتصل بآخر الاسم كالضمائر المتصلة.
+  en: This is Arabic iḍāfa almost word for word, and -ku / -mu / -nya attach like ـي / ـك / ـه.
+tags: [possession, pronoun, clitic]
+see_also: [id.pronoun.personal, id.noun-phrase.order]
+review:
+  status: draft
+  verified: false

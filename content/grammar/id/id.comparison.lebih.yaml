@@ -1,0 +1,72 @@
+schema: kabar.grammar/v1
+id: id.comparison.lebih
+language: id
+level: bipa2
+title:
+  target: lebih … daripada, kurang … daripada
+  en: Comparatives
+  ar_eg: المقارنة (أكبر من، أقل من)
+  ar: التفضيل والمقارنة
+summary:
+  ar_eg: "lebih + صفة + daripada = أ… من: lebih besar daripada = أكبر من. kurang = أقل."
+  ar: lebih + الصفة + daripada = أفعل من، وkurang للأقل.
+  en: lebih + adjective + daripada = more … than; kurang … daripada = less … than.
+pattern:
+  - A + lebih + adjective + daripada + B
+  - A + kurang + adjective + daripada + B
+  - Lebih baik + verb (it's better to …)
+explanation:
+  ar_eg: |
+    مفيش وزن «أفعل» في الإندونيسي؛ بتحط lebih (أكتر) قبل الصفة:
+    besar = كبير → lebih besar = أكبر. Gamelan lebih besar daripada gitar = الجاميلان أكبر من الجيتار.
+    daripada = من (في المقارنة بس). في الكلام بيقولوا dari بس: lebih murah dari itu.
+    kurang = أقل: Ini kurang manis = ده مش مسكّر كفاية / أقل سكر.
+    lebih baik = الأحسن: Lebih baik kita naik kereta = الأحسن نركب القطر.
+    سؤال: Mana yang lebih …? = أنهي أكتر…؟
+  ar: |
+    لا وزن «أفعل» في الإندونيسية؛ تُقدَّم lebih (أكثر) على الصفة:
+    besar → lebih besar = أكبر: Gamelan lebih besar daripada gitar.
+    وdaripada = من في المقارنة، وفي العامية dari.
+    وkurang = أقل: Ini kurang manis.
+    وlebih baik = الأفضل أن: Lebih baik kita naik kereta.
+    ويُسأل: Mana yang lebih …؟ = أيهما أكثر …؟
+  en: |
+    There's no "-er" form; put lebih (more) before the adjective:
+    besar → lebih besar (bigger). Gamelan lebih besar daripada gitar = A gamelan is bigger than a guitar.
+    daripada = than (casual: dari).
+    kurang = less: Ini kurang manis = This isn't sweet enough.
+    lebih baik = it's better to: Lebih baik kita naik kereta.
+    Question: Mana yang lebih …? = Which is more …?
+examples:
+  - text: Jakarta lebih ramai daripada Ubud.
+    en: Jakarta is busier than Ubud.
+    ar_eg: جاكرتا زحمة أكتر من أوبود.
+    ar: جاكرتا أكثر ازدحامًا من أوبود.
+  - text: Mana yang lebih murah, ini atau itu?
+    en: Which is cheaper, this or that?
+    ar_eg: أنهي أرخص، ده ولا ده؟
+    ar: أيهما أرخص، هذا أم ذاك؟
+  - text: Kopinya kurang manis.
+    en: The coffee isn't sweet enough.
+    ar_eg: القهوة سكرها قليل.
+    ar: القهوة قليلة الحلاوة.
+  - text: Lebih baik kita berangkat sekarang.
+    en: We'd better leave now.
+    ar_eg: الأحسن نمشي دلوقتي.
+    ar: الأفضل أن ننطلق الآن.
+mistakes:
+  - wrong: lebih besar dengan gitar
+    right: lebih besar daripada gitar
+    why:
+      ar_eg: «من» في المقارنة = daripada / dari، مش dengan.
+      ar: أداة المقارنة daripada لا dengan.
+      en: '"Than" is daripada / dari, not dengan.'
+arabic_bridge:
+  ar_eg: lebih besar ≈ «أكبر»، بس من غير وزن؛ زي ما بنقول في العامية «أكتر حلاوة».
+  ar: lebih + الصفة يقابل صيغة «أفعل»، أو «أكثر + تمييز».
+  en: lebih + adjective does the work of Arabic أفعل.
+tags: [comparison, adjective]
+see_also: [id.comparison.ter-paling, id.comparison.equative]
+review:
+  status: draft
+  verified: false

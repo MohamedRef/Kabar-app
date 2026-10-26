@@ -1,4 +1,4 @@
-# Running Kabar (M1)
+# Running Kabar (M1–M2)
 
 Everything below runs on the MacBook. Commands are `just` recipes from the repo root.
 
@@ -61,7 +61,19 @@ On each Galaxy device: open Kabar → Pen Lab (on the phone: Settings → Pen La
 
 Also tell me how the ink *feels*: does it trail behind the pen tip, and by roughly how much?
 
-## 5. Troubleshooting
+## 5. Kabar Cloud (M2)
+
+Full guide: `docs/CLOUD.md`. Short version, on the Mac:
+
+```bash
+just cloud-e2e       # offline test: fake Google, phone + tablet, live sync, sign-out
+just cloud-tools     # once: wrangler + worker-build
+wrangler login       # once: your free Cloudflare account
+just cloud-setup     # once: D1, signing key, allowlist
+just deploy-cloud    # after adding GOOGLE_CLIENT_IDS (CLOUD.md §3.2)
+```
+
+## 6. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.

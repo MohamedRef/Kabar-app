@@ -1,0 +1,17 @@
+[package]
+name = "kabar-content"
+description = "Build-time content model (curriculum, grammar library), loaders and JSON Schema validation."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+serde_yaml_ng = "0.10"
+jsonschema = { version = "0.60", default-features = false }
+thiserror.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,2270 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kabar — Custom SVG icon review</title>
+<style>
+:root { color-scheme:light; --paper:#F5EFE3; --charcoal:#22201E; --line:#d7d5d1; --muted:#66625e; --gold:#C9A23A; }
+* { box-sizing:border-box; }
+body { margin:0; background:#f6f5f2; color:var(--charcoal); font: 14px/1.5 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+a { color:inherit; }
+a:hover { color:#554432; }
+.wrap { max-width:1580px; margin:auto; padding:40px 28px 64px; }
+.hero { display:flex; justify-content:space-between; gap:24px; align-items:end; margin-bottom:28px; }
+.eyebrow { margin:0 0 7px; letter-spacing:.14em; text-transform:uppercase; font-size:11px; font-weight:750; color:#77736e; }
+h1 { margin:0; letter-spacing:-.04em; font-size:clamp(29px,4vw,44px); font-weight:750; }
+.sub { color:#6a6661; max-width:750px; margin:8px 0 0; font-size:14px; }
+.hero-count { background:var(--charcoal); color:#fff; white-space:nowrap; padding:9px 15px; border-radius:99px; font-variant-numeric:tabular-nums; font-size:12px; }
+.legend { background:#fff; border:1px solid #e1ded9; border-radius:14px; padding:14px 18px; margin-bottom:18px; color:#5b5753; }
+.legend b { color:#22201e; }
+.icon-card { margin:0 0 18px; border:1px solid #e0ddd7; border-radius:16px; background:#fff; overflow:hidden; }
+.card-header { display:flex; justify-content:space-between; gap:18px; padding:19px 23px; border-bottom:1px solid #ebe8e3; align-items:center; }
+.index { font-size:10px; letter-spacing:.12em; color:#89837c; font-variant-numeric:tabular-nums; font-weight:700; }
+h2 { margin:1px 0 2px; font-size:20px; font-weight:680; line-height:1.22; letter-spacing:-.02em; }
+h2 a { text-decoration:none; border-bottom:1px solid transparent; } h2 a:hover { border-bottom-color:currentColor; }
+.card-header p { margin:0; color:#77716c; font-size:13px; }
+.card-meta { display:flex; align-items:flex-end; flex-flow:column; gap:6px; color:#78726d; font-size:11px; white-space:nowrap; }
+.direction-note, .mirror-note { border-radius:99px; border:1px solid #d9d6d0; color:#57534f; padding:2px 8px; font-weight:600; }
+.direction-note { border-color:#dfc89e; color:#806129; }
+.mode-row { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; padding:12px; }
+.mode { border-radius:11px; border:1px solid #ece9e3; overflow:hidden; background:#fff; color:#111; min-width:0; }
+.mode-dark { color:#fff; background:#22201E; border-color:#22201E; }
+.mode-mirror { background:#fff; }
+.mode-head { display:flex; align-items:baseline; justify-content:space-between; padding:12px 15px 5px; gap:8px; }
+.mode-head strong { font-size:13px; }
+.mode-head span { font-size:10px; opacity:.62; text-align:right; }
+.pair-key { display:flex; justify-content:center; gap:20px; font-size:10px; font-weight:600; opacity:.58; padding:1px 0 5px; }
+.size-grid { display:grid; grid-template-columns: repeat(4,minmax(112px,1fr)); align-items:center; gap:4px; padding:8px 9px 12px; overflow-x:auto; }
+.size-slot { text-align:center; min-width:0; }
+.px-label { display:block; font-size:10px; opacity:.6; margin:0 0 7px; font-variant-numeric:tabular-nums; }
+.glyph-pair { min-height:55px; display:flex; align-items:center; justify-content:center; gap:11px; }
+.glyph-pair > img, .glyph-pair > svg, .glyph-pair > i { display:block; flex-shrink:0; }
+.mode-dark img.custom-icon { filter:brightness(0) invert(1); }
+.mode-mirror img.custom-icon, .mode-mirror .lucide { transform:scaleX(-1); }
+.mode svg { stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.lucide-icon { display:inline-block; }
+footer { margin-top:32px; color:#7e7770; font-size:12px; }
+#cdn-warning { display:none; background:#fff4dc; padding:10px 14px; margin-bottom:14px; border-radius:9px; border:1px solid #e2c78e; }
+@media (max-width:1000px) { .mode-row { grid-template-columns:1fr; } .card-meta { display:none; } }
+@media (max-width:600px) { .wrap { padding:20px 12px 48px; } .hero { display:block; } .hero-count { display:inline-block; margin-top:14px; } .card-header { padding:15px; } .size-grid { gap:2px; padding:10px 5px; } .glyph-pair { gap:5px; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="hero"><div><p class="eyebrow">Kabar / Design system</p><h1>Custom icon review</h1><p class="sub">22 original outlined SVGs alongside pinned Lucide references. Compare line weight and legibility at small sizes in light, dark and mirrored RTL layouts. Click any icon name to open its SVG.</p></div><span class="hero-count">22 icons · 24 × 24 grid · 2px stroke</span></header>
+<div class="legend"><b>Reading the pairs:</b> the left glyph in each size cell is <b>Kabar</b>, the right glyph is its <b>Lucide</b> reference. Light and mirrored panels use black; the dark panel uses white. For RTL, only mirror non-directional icons; see README.</div>
+<div id="cdn-warning" role="status">Lucide reference icons require internet access to load from the pinned CDN; Kabar SVG previews work offline.</div>
+<article class="icon-card" id="bridge-word">
+<div class="card-header">
+ <div><div class="index">01 / 22</div><h2><a href="./bridge-word.svg" target="_blank" rel="noopener">bridge-word</a></h2><p>Arabic-origin word / shared vocabulary marker</p></div>
+ <div class="card-meta"><span>Reference: landmark</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="bridge-word Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="bridge-word" src="./bridge-word.svg" loading="lazy">
+    <i data-lucide="landmark" class="lucide-icon" aria-label="Lucide landmark" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="bridge-word" src="./bridge-word.svg" loading="lazy">
+    <i data-lucide="landmark" class="lucide-icon" aria-label="Lucide landmark" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="bridge-word" src="./bridge-word.svg" loading="lazy">
+    <i data-lucide="landmark" class="lucide-icon" aria-label="Lucide landmark" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="bridge-word" src="./bridge-word.svg" loading="lazy">
+    <i data-lucide="landmark" class="lucide-icon" aria-label="Lucide landmark" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="bridge-word Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="bridge-word" src="./bridge-word.svg" loading="lazy">
+    <i data-lucide="landmark" class="lucide-icon" aria-label="Lucide landmark" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="bridge-word" src="./bridge-word.svg" loading="lazy">
+    <i data-lucide="landmark" class="lucide-icon" aria-label="Lucide landmark" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="bridge-word" src="./bridge-word.svg" loading="lazy">
+    <i data-lucide="landmark" class="lucide-icon" aria-label="Lucide landmark" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="bridge-word" src="./bridge-word.svg" loading="lazy">
+    <i data-lucide="landmark" class="lucide-icon" aria-label="Lucide landmark" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="bridge-word RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="bridge-word" src="./bridge-word.svg" loading="lazy">
+    <i data-lucide="landmark" class="lucide-icon" aria-label="Lucide landmark" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="bridge-word" src="./bridge-word.svg" loading="lazy">
+    <i data-lucide="landmark" class="lucide-icon" aria-label="Lucide landmark" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="bridge-word" src="./bridge-word.svg" loading="lazy">
+    <i data-lucide="landmark" class="lucide-icon" aria-label="Lucide landmark" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="bridge-word" src="./bridge-word.svg" loading="lazy">
+    <i data-lucide="landmark" class="lucide-icon" aria-label="Lucide landmark" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="false-friend">
+<div class="card-header">
+ <div><div class="index">02 / 22</div><h2><a href="./false-friend.svg" target="_blank" rel="noopener">false-friend</a></h2><p>Words that look familiar but have different meanings</p></div>
+ <div class="card-meta"><span>Reference: messages-square</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="false-friend Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="false-friend" src="./false-friend.svg" loading="lazy">
+    <i data-lucide="messages-square" class="lucide-icon" aria-label="Lucide messages-square" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="false-friend" src="./false-friend.svg" loading="lazy">
+    <i data-lucide="messages-square" class="lucide-icon" aria-label="Lucide messages-square" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="false-friend" src="./false-friend.svg" loading="lazy">
+    <i data-lucide="messages-square" class="lucide-icon" aria-label="Lucide messages-square" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="false-friend" src="./false-friend.svg" loading="lazy">
+    <i data-lucide="messages-square" class="lucide-icon" aria-label="Lucide messages-square" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="false-friend Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="false-friend" src="./false-friend.svg" loading="lazy">
+    <i data-lucide="messages-square" class="lucide-icon" aria-label="Lucide messages-square" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="false-friend" src="./false-friend.svg" loading="lazy">
+    <i data-lucide="messages-square" class="lucide-icon" aria-label="Lucide messages-square" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="false-friend" src="./false-friend.svg" loading="lazy">
+    <i data-lucide="messages-square" class="lucide-icon" aria-label="Lucide messages-square" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="false-friend" src="./false-friend.svg" loading="lazy">
+    <i data-lucide="messages-square" class="lucide-icon" aria-label="Lucide messages-square" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="false-friend RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="false-friend" src="./false-friend.svg" loading="lazy">
+    <i data-lucide="messages-square" class="lucide-icon" aria-label="Lucide messages-square" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="false-friend" src="./false-friend.svg" loading="lazy">
+    <i data-lucide="messages-square" class="lucide-icon" aria-label="Lucide messages-square" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="false-friend" src="./false-friend.svg" loading="lazy">
+    <i data-lucide="messages-square" class="lucide-icon" aria-label="Lucide messages-square" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="false-friend" src="./false-friend.svg" loading="lazy">
+    <i data-lucide="messages-square" class="lucide-icon" aria-label="Lucide messages-square" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="souvenir">
+<div class="card-header">
+ <div><div class="index">03 / 22</div><h2><a href="./souvenir.svg" target="_blank" rel="noopener">souvenir</a></h2><p>Collected cultural mementos and vocabulary keepsakes</p></div>
+ <div class="card-meta"><span>Reference: tag</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="souvenir Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="souvenir" src="./souvenir.svg" loading="lazy">
+    <i data-lucide="tag" class="lucide-icon" aria-label="Lucide tag" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="souvenir" src="./souvenir.svg" loading="lazy">
+    <i data-lucide="tag" class="lucide-icon" aria-label="Lucide tag" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="souvenir" src="./souvenir.svg" loading="lazy">
+    <i data-lucide="tag" class="lucide-icon" aria-label="Lucide tag" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="souvenir" src="./souvenir.svg" loading="lazy">
+    <i data-lucide="tag" class="lucide-icon" aria-label="Lucide tag" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="souvenir Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="souvenir" src="./souvenir.svg" loading="lazy">
+    <i data-lucide="tag" class="lucide-icon" aria-label="Lucide tag" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="souvenir" src="./souvenir.svg" loading="lazy">
+    <i data-lucide="tag" class="lucide-icon" aria-label="Lucide tag" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="souvenir" src="./souvenir.svg" loading="lazy">
+    <i data-lucide="tag" class="lucide-icon" aria-label="Lucide tag" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="souvenir" src="./souvenir.svg" loading="lazy">
+    <i data-lucide="tag" class="lucide-icon" aria-label="Lucide tag" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="souvenir RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="souvenir" src="./souvenir.svg" loading="lazy">
+    <i data-lucide="tag" class="lucide-icon" aria-label="Lucide tag" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="souvenir" src="./souvenir.svg" loading="lazy">
+    <i data-lucide="tag" class="lucide-icon" aria-label="Lucide tag" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="souvenir" src="./souvenir.svg" loading="lazy">
+    <i data-lucide="tag" class="lucide-icon" aria-label="Lucide tag" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="souvenir" src="./souvenir.svg" loading="lazy">
+    <i data-lucide="tag" class="lucide-icon" aria-label="Lucide tag" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="suitcase">
+<div class="card-header">
+ <div><div class="index">04 / 22</div><h2><a href="./suitcase.svg" target="_blank" rel="noopener">suitcase</a></h2><p>Travel vocabulary and saved journey items</p></div>
+ <div class="card-meta"><span>Reference: briefcase</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="suitcase Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="suitcase" src="./suitcase.svg" loading="lazy">
+    <i data-lucide="briefcase" class="lucide-icon" aria-label="Lucide briefcase" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="suitcase" src="./suitcase.svg" loading="lazy">
+    <i data-lucide="briefcase" class="lucide-icon" aria-label="Lucide briefcase" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="suitcase" src="./suitcase.svg" loading="lazy">
+    <i data-lucide="briefcase" class="lucide-icon" aria-label="Lucide briefcase" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="suitcase" src="./suitcase.svg" loading="lazy">
+    <i data-lucide="briefcase" class="lucide-icon" aria-label="Lucide briefcase" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="suitcase Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="suitcase" src="./suitcase.svg" loading="lazy">
+    <i data-lucide="briefcase" class="lucide-icon" aria-label="Lucide briefcase" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="suitcase" src="./suitcase.svg" loading="lazy">
+    <i data-lucide="briefcase" class="lucide-icon" aria-label="Lucide briefcase" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="suitcase" src="./suitcase.svg" loading="lazy">
+    <i data-lucide="briefcase" class="lucide-icon" aria-label="Lucide briefcase" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="suitcase" src="./suitcase.svg" loading="lazy">
+    <i data-lucide="briefcase" class="lucide-icon" aria-label="Lucide briefcase" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="suitcase RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="suitcase" src="./suitcase.svg" loading="lazy">
+    <i data-lucide="briefcase" class="lucide-icon" aria-label="Lucide briefcase" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="suitcase" src="./suitcase.svg" loading="lazy">
+    <i data-lucide="briefcase" class="lucide-icon" aria-label="Lucide briefcase" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="suitcase" src="./suitcase.svg" loading="lazy">
+    <i data-lucide="briefcase" class="lucide-icon" aria-label="Lucide briefcase" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="suitcase" src="./suitcase.svg" loading="lazy">
+    <i data-lucide="briefcase" class="lucide-icon" aria-label="Lucide briefcase" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="take-a-flight">
+<div class="card-header">
+ <div><div class="index">05 / 22</div><h2><a href="./take-a-flight.svg" target="_blank" rel="noopener">take-a-flight</a></h2><p>Placement test / starting the learning journey</p></div>
+ <div class="card-meta"><span>Reference: plane-takeoff</span><span class="direction-note">Keep direction in RTL</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="take-a-flight Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="take-a-flight" src="./take-a-flight.svg" loading="lazy">
+    <i data-lucide="plane-takeoff" class="lucide-icon" aria-label="Lucide plane-takeoff" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="take-a-flight" src="./take-a-flight.svg" loading="lazy">
+    <i data-lucide="plane-takeoff" class="lucide-icon" aria-label="Lucide plane-takeoff" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="take-a-flight" src="./take-a-flight.svg" loading="lazy">
+    <i data-lucide="plane-takeoff" class="lucide-icon" aria-label="Lucide plane-takeoff" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="take-a-flight" src="./take-a-flight.svg" loading="lazy">
+    <i data-lucide="plane-takeoff" class="lucide-icon" aria-label="Lucide plane-takeoff" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="take-a-flight Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="take-a-flight" src="./take-a-flight.svg" loading="lazy">
+    <i data-lucide="plane-takeoff" class="lucide-icon" aria-label="Lucide plane-takeoff" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="take-a-flight" src="./take-a-flight.svg" loading="lazy">
+    <i data-lucide="plane-takeoff" class="lucide-icon" aria-label="Lucide plane-takeoff" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="take-a-flight" src="./take-a-flight.svg" loading="lazy">
+    <i data-lucide="plane-takeoff" class="lucide-icon" aria-label="Lucide plane-takeoff" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="take-a-flight" src="./take-a-flight.svg" loading="lazy">
+    <i data-lucide="plane-takeoff" class="lucide-icon" aria-label="Lucide plane-takeoff" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="take-a-flight RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="take-a-flight" src="./take-a-flight.svg" loading="lazy">
+    <i data-lucide="plane-takeoff" class="lucide-icon" aria-label="Lucide plane-takeoff" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="take-a-flight" src="./take-a-flight.svg" loading="lazy">
+    <i data-lucide="plane-takeoff" class="lucide-icon" aria-label="Lucide plane-takeoff" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="take-a-flight" src="./take-a-flight.svg" loading="lazy">
+    <i data-lucide="plane-takeoff" class="lucide-icon" aria-label="Lucide plane-takeoff" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="take-a-flight" src="./take-a-flight.svg" loading="lazy">
+    <i data-lucide="plane-takeoff" class="lucide-icon" aria-label="Lucide plane-takeoff" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="journey-island">
+<div class="card-header">
+ <div><div class="index">06 / 22</div><h2><a href="./journey-island.svg" target="_blank" rel="noopener">journey-island</a></h2><p>An island destination in the learning journey</p></div>
+ <div class="card-meta"><span>Reference: palmtree</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="journey-island Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="journey-island" src="./journey-island.svg" loading="lazy">
+    <i data-lucide="palmtree" class="lucide-icon" aria-label="Lucide palmtree" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="journey-island" src="./journey-island.svg" loading="lazy">
+    <i data-lucide="palmtree" class="lucide-icon" aria-label="Lucide palmtree" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="journey-island" src="./journey-island.svg" loading="lazy">
+    <i data-lucide="palmtree" class="lucide-icon" aria-label="Lucide palmtree" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="journey-island" src="./journey-island.svg" loading="lazy">
+    <i data-lucide="palmtree" class="lucide-icon" aria-label="Lucide palmtree" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="journey-island Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="journey-island" src="./journey-island.svg" loading="lazy">
+    <i data-lucide="palmtree" class="lucide-icon" aria-label="Lucide palmtree" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="journey-island" src="./journey-island.svg" loading="lazy">
+    <i data-lucide="palmtree" class="lucide-icon" aria-label="Lucide palmtree" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="journey-island" src="./journey-island.svg" loading="lazy">
+    <i data-lucide="palmtree" class="lucide-icon" aria-label="Lucide palmtree" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="journey-island" src="./journey-island.svg" loading="lazy">
+    <i data-lucide="palmtree" class="lucide-icon" aria-label="Lucide palmtree" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="journey-island RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="journey-island" src="./journey-island.svg" loading="lazy">
+    <i data-lucide="palmtree" class="lucide-icon" aria-label="Lucide palmtree" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="journey-island" src="./journey-island.svg" loading="lazy">
+    <i data-lucide="palmtree" class="lucide-icon" aria-label="Lucide palmtree" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="journey-island" src="./journey-island.svg" loading="lazy">
+    <i data-lucide="palmtree" class="lucide-icon" aria-label="Lucide palmtree" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="journey-island" src="./journey-island.svg" loading="lazy">
+    <i data-lucide="palmtree" class="lucide-icon" aria-label="Lucide palmtree" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="train-stop">
+<div class="card-header">
+ <div><div class="index">07 / 22</div><h2><a href="./train-stop.svg" target="_blank" rel="noopener">train-stop</a></h2><p>Train stop / a milestone along the route</p></div>
+ <div class="card-meta"><span>Reference: train-front</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="train-stop Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="train-stop" src="./train-stop.svg" loading="lazy">
+    <i data-lucide="train-front" class="lucide-icon" aria-label="Lucide train-front" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="train-stop" src="./train-stop.svg" loading="lazy">
+    <i data-lucide="train-front" class="lucide-icon" aria-label="Lucide train-front" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="train-stop" src="./train-stop.svg" loading="lazy">
+    <i data-lucide="train-front" class="lucide-icon" aria-label="Lucide train-front" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="train-stop" src="./train-stop.svg" loading="lazy">
+    <i data-lucide="train-front" class="lucide-icon" aria-label="Lucide train-front" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="train-stop Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="train-stop" src="./train-stop.svg" loading="lazy">
+    <i data-lucide="train-front" class="lucide-icon" aria-label="Lucide train-front" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="train-stop" src="./train-stop.svg" loading="lazy">
+    <i data-lucide="train-front" class="lucide-icon" aria-label="Lucide train-front" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="train-stop" src="./train-stop.svg" loading="lazy">
+    <i data-lucide="train-front" class="lucide-icon" aria-label="Lucide train-front" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="train-stop" src="./train-stop.svg" loading="lazy">
+    <i data-lucide="train-front" class="lucide-icon" aria-label="Lucide train-front" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="train-stop RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="train-stop" src="./train-stop.svg" loading="lazy">
+    <i data-lucide="train-front" class="lucide-icon" aria-label="Lucide train-front" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="train-stop" src="./train-stop.svg" loading="lazy">
+    <i data-lucide="train-front" class="lucide-icon" aria-label="Lucide train-front" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="train-stop" src="./train-stop.svg" loading="lazy">
+    <i data-lucide="train-front" class="lucide-icon" aria-label="Lucide train-front" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="train-stop" src="./train-stop.svg" loading="lazy">
+    <i data-lucide="train-front" class="lucide-icon" aria-label="Lucide train-front" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="respect-meter">
+<div class="card-header">
+ <div><div class="index">08 / 22</div><h2><a href="./respect-meter.svg" target="_blank" rel="noopener">respect-meter</a></h2><p>Context-dependent Javanese politeness / respect level</p></div>
+ <div class="card-meta"><span>Reference: gauge</span><span class="direction-note">Keep direction in RTL</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="respect-meter Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="respect-meter" src="./respect-meter.svg" loading="lazy">
+    <i data-lucide="gauge" class="lucide-icon" aria-label="Lucide gauge" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="respect-meter" src="./respect-meter.svg" loading="lazy">
+    <i data-lucide="gauge" class="lucide-icon" aria-label="Lucide gauge" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="respect-meter" src="./respect-meter.svg" loading="lazy">
+    <i data-lucide="gauge" class="lucide-icon" aria-label="Lucide gauge" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="respect-meter" src="./respect-meter.svg" loading="lazy">
+    <i data-lucide="gauge" class="lucide-icon" aria-label="Lucide gauge" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="respect-meter Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="respect-meter" src="./respect-meter.svg" loading="lazy">
+    <i data-lucide="gauge" class="lucide-icon" aria-label="Lucide gauge" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="respect-meter" src="./respect-meter.svg" loading="lazy">
+    <i data-lucide="gauge" class="lucide-icon" aria-label="Lucide gauge" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="respect-meter" src="./respect-meter.svg" loading="lazy">
+    <i data-lucide="gauge" class="lucide-icon" aria-label="Lucide gauge" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="respect-meter" src="./respect-meter.svg" loading="lazy">
+    <i data-lucide="gauge" class="lucide-icon" aria-label="Lucide gauge" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="respect-meter RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="respect-meter" src="./respect-meter.svg" loading="lazy">
+    <i data-lucide="gauge" class="lucide-icon" aria-label="Lucide gauge" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="respect-meter" src="./respect-meter.svg" loading="lazy">
+    <i data-lucide="gauge" class="lucide-icon" aria-label="Lucide gauge" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="respect-meter" src="./respect-meter.svg" loading="lazy">
+    <i data-lucide="gauge" class="lucide-icon" aria-label="Lucide gauge" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="respect-meter" src="./respect-meter.svg" loading="lazy">
+    <i data-lucide="gauge" class="lucide-icon" aria-label="Lucide gauge" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="ngoko">
+<div class="card-header">
+ <div><div class="index">09 / 22</div><h2><a href="./ngoko.svg" target="_blank" rel="noopener">ngoko</a></h2><p>Ngoko: everyday, familiar Javanese register (open palm)</p></div>
+ <div class="card-meta"><span>Reference: hand</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="ngoko Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="ngoko" src="./ngoko.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="ngoko" src="./ngoko.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="ngoko" src="./ngoko.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="ngoko" src="./ngoko.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="ngoko Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="ngoko" src="./ngoko.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="ngoko" src="./ngoko.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="ngoko" src="./ngoko.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="ngoko" src="./ngoko.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="ngoko RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="ngoko" src="./ngoko.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="ngoko" src="./ngoko.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="ngoko" src="./ngoko.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="ngoko" src="./ngoko.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="krama">
+<div class="card-header">
+ <div><div class="index">10 / 22</div><h2><a href="./krama.svg" target="_blank" rel="noopener">krama</a></h2><p>Krama: polite Javanese register (one bow line)</p></div>
+ <div class="card-meta"><span>Reference: hand</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="krama Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="krama" src="./krama.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="krama" src="./krama.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="krama" src="./krama.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="krama" src="./krama.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="krama Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="krama" src="./krama.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="krama" src="./krama.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="krama" src="./krama.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="krama" src="./krama.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="krama RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="krama" src="./krama.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="krama" src="./krama.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="krama" src="./krama.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="krama" src="./krama.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="krama-inggil">
+<div class="card-header">
+ <div><div class="index">11 / 22</div><h2><a href="./krama-inggil.svg" target="_blank" rel="noopener">krama-inggil</a></h2><p>Krama inggil: highest respect / honorific register (two bow lines)</p></div>
+ <div class="card-meta"><span>Reference: hand</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="krama-inggil Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="krama-inggil" src="./krama-inggil.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="krama-inggil" src="./krama-inggil.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="krama-inggil" src="./krama-inggil.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="krama-inggil" src="./krama-inggil.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="krama-inggil Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="krama-inggil" src="./krama-inggil.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="krama-inggil" src="./krama-inggil.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="krama-inggil" src="./krama-inggil.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="krama-inggil" src="./krama-inggil.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="krama-inggil RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="krama-inggil" src="./krama-inggil.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="krama-inggil" src="./krama-inggil.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="krama-inggil" src="./krama-inggil.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="krama-inggil" src="./krama-inggil.svg" loading="lazy">
+    <i data-lucide="hand" class="lucide-icon" aria-label="Lucide hand" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="pasar">
+<div class="card-header">
+ <div><div class="index">12 / 22</div><h2><a href="./pasar.svg" target="_blank" rel="noopener">pasar</a></h2><p>Pasar: traditional market / marketplace lesson</p></div>
+ <div class="card-meta"><span>Reference: store</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="pasar Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="pasar" src="./pasar.svg" loading="lazy">
+    <i data-lucide="store" class="lucide-icon" aria-label="Lucide store" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="pasar" src="./pasar.svg" loading="lazy">
+    <i data-lucide="store" class="lucide-icon" aria-label="Lucide store" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="pasar" src="./pasar.svg" loading="lazy">
+    <i data-lucide="store" class="lucide-icon" aria-label="Lucide store" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="pasar" src="./pasar.svg" loading="lazy">
+    <i data-lucide="store" class="lucide-icon" aria-label="Lucide store" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="pasar Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="pasar" src="./pasar.svg" loading="lazy">
+    <i data-lucide="store" class="lucide-icon" aria-label="Lucide store" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="pasar" src="./pasar.svg" loading="lazy">
+    <i data-lucide="store" class="lucide-icon" aria-label="Lucide store" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="pasar" src="./pasar.svg" loading="lazy">
+    <i data-lucide="store" class="lucide-icon" aria-label="Lucide store" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="pasar" src="./pasar.svg" loading="lazy">
+    <i data-lucide="store" class="lucide-icon" aria-label="Lucide store" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="pasar RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="pasar" src="./pasar.svg" loading="lazy">
+    <i data-lucide="store" class="lucide-icon" aria-label="Lucide store" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="pasar" src="./pasar.svg" loading="lazy">
+    <i data-lucide="store" class="lucide-icon" aria-label="Lucide store" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="pasar" src="./pasar.svg" loading="lazy">
+    <i data-lucide="store" class="lucide-icon" aria-label="Lucide store" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="pasar" src="./pasar.svg" loading="lazy">
+    <i data-lucide="store" class="lucide-icon" aria-label="Lucide store" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="rupiah">
+<div class="card-header">
+ <div><div class="index">13 / 22</div><h2><a href="./rupiah.svg" target="_blank" rel="noopener">rupiah</a></h2><p>Indonesian money / rupiah currency content</p></div>
+ <div class="card-meta"><span>Reference: banknote</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="rupiah Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="rupiah" src="./rupiah.svg" loading="lazy">
+    <i data-lucide="banknote" class="lucide-icon" aria-label="Lucide banknote" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="rupiah" src="./rupiah.svg" loading="lazy">
+    <i data-lucide="banknote" class="lucide-icon" aria-label="Lucide banknote" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="rupiah" src="./rupiah.svg" loading="lazy">
+    <i data-lucide="banknote" class="lucide-icon" aria-label="Lucide banknote" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="rupiah" src="./rupiah.svg" loading="lazy">
+    <i data-lucide="banknote" class="lucide-icon" aria-label="Lucide banknote" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="rupiah Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="rupiah" src="./rupiah.svg" loading="lazy">
+    <i data-lucide="banknote" class="lucide-icon" aria-label="Lucide banknote" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="rupiah" src="./rupiah.svg" loading="lazy">
+    <i data-lucide="banknote" class="lucide-icon" aria-label="Lucide banknote" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="rupiah" src="./rupiah.svg" loading="lazy">
+    <i data-lucide="banknote" class="lucide-icon" aria-label="Lucide banknote" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="rupiah" src="./rupiah.svg" loading="lazy">
+    <i data-lucide="banknote" class="lucide-icon" aria-label="Lucide banknote" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="rupiah RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="rupiah" src="./rupiah.svg" loading="lazy">
+    <i data-lucide="banknote" class="lucide-icon" aria-label="Lucide banknote" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="rupiah" src="./rupiah.svg" loading="lazy">
+    <i data-lucide="banknote" class="lucide-icon" aria-label="Lucide banknote" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="rupiah" src="./rupiah.svg" loading="lazy">
+    <i data-lucide="banknote" class="lucide-icon" aria-label="Lucide banknote" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="rupiah" src="./rupiah.svg" loading="lazy">
+    <i data-lucide="banknote" class="lucide-icon" aria-label="Lucide banknote" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="kabar-pagi">
+<div class="card-header">
+ <div><div class="index">14 / 22</div><h2><a href="./kabar-pagi.svg" target="_blank" rel="noopener">kabar-pagi</a></h2><p>Morning learning digest: sunrise and an open book</p></div>
+ <div class="card-meta"><span>Reference: book-open</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="kabar-pagi Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="kabar-pagi" src="./kabar-pagi.svg" loading="lazy">
+    <i data-lucide="book-open" class="lucide-icon" aria-label="Lucide book-open" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="kabar-pagi" src="./kabar-pagi.svg" loading="lazy">
+    <i data-lucide="book-open" class="lucide-icon" aria-label="Lucide book-open" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="kabar-pagi" src="./kabar-pagi.svg" loading="lazy">
+    <i data-lucide="book-open" class="lucide-icon" aria-label="Lucide book-open" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="kabar-pagi" src="./kabar-pagi.svg" loading="lazy">
+    <i data-lucide="book-open" class="lucide-icon" aria-label="Lucide book-open" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="kabar-pagi Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="kabar-pagi" src="./kabar-pagi.svg" loading="lazy">
+    <i data-lucide="book-open" class="lucide-icon" aria-label="Lucide book-open" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="kabar-pagi" src="./kabar-pagi.svg" loading="lazy">
+    <i data-lucide="book-open" class="lucide-icon" aria-label="Lucide book-open" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="kabar-pagi" src="./kabar-pagi.svg" loading="lazy">
+    <i data-lucide="book-open" class="lucide-icon" aria-label="Lucide book-open" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="kabar-pagi" src="./kabar-pagi.svg" loading="lazy">
+    <i data-lucide="book-open" class="lucide-icon" aria-label="Lucide book-open" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="kabar-pagi RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="kabar-pagi" src="./kabar-pagi.svg" loading="lazy">
+    <i data-lucide="book-open" class="lucide-icon" aria-label="Lucide book-open" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="kabar-pagi" src="./kabar-pagi.svg" loading="lazy">
+    <i data-lucide="book-open" class="lucide-icon" aria-label="Lucide book-open" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="kabar-pagi" src="./kabar-pagi.svg" loading="lazy">
+    <i data-lucide="book-open" class="lucide-icon" aria-label="Lucide book-open" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="kabar-pagi" src="./kabar-pagi.svg" loading="lazy">
+    <i data-lucide="book-open" class="lucide-icon" aria-label="Lucide book-open" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="kabar-radio">
+<div class="card-header">
+ <div><div class="index">15 / 22</div><h2><a href="./kabar-radio.svg" target="_blank" rel="noopener">kabar-radio</a></h2><p>Audio segment / radio-style listening practice</p></div>
+ <div class="card-meta"><span>Reference: radio</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="kabar-radio Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="kabar-radio" src="./kabar-radio.svg" loading="lazy">
+    <i data-lucide="radio" class="lucide-icon" aria-label="Lucide radio" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="kabar-radio" src="./kabar-radio.svg" loading="lazy">
+    <i data-lucide="radio" class="lucide-icon" aria-label="Lucide radio" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="kabar-radio" src="./kabar-radio.svg" loading="lazy">
+    <i data-lucide="radio" class="lucide-icon" aria-label="Lucide radio" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="kabar-radio" src="./kabar-radio.svg" loading="lazy">
+    <i data-lucide="radio" class="lucide-icon" aria-label="Lucide radio" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="kabar-radio Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="kabar-radio" src="./kabar-radio.svg" loading="lazy">
+    <i data-lucide="radio" class="lucide-icon" aria-label="Lucide radio" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="kabar-radio" src="./kabar-radio.svg" loading="lazy">
+    <i data-lucide="radio" class="lucide-icon" aria-label="Lucide radio" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="kabar-radio" src="./kabar-radio.svg" loading="lazy">
+    <i data-lucide="radio" class="lucide-icon" aria-label="Lucide radio" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="kabar-radio" src="./kabar-radio.svg" loading="lazy">
+    <i data-lucide="radio" class="lucide-icon" aria-label="Lucide radio" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="kabar-radio RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="kabar-radio" src="./kabar-radio.svg" loading="lazy">
+    <i data-lucide="radio" class="lucide-icon" aria-label="Lucide radio" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="kabar-radio" src="./kabar-radio.svg" loading="lazy">
+    <i data-lucide="radio" class="lucide-icon" aria-label="Lucide radio" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="kabar-radio" src="./kabar-radio.svg" loading="lazy">
+    <i data-lucide="radio" class="lucide-icon" aria-label="Lucide radio" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="kabar-radio" src="./kabar-radio.svg" loading="lazy">
+    <i data-lucide="radio" class="lucide-icon" aria-label="Lucide radio" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="sinetron">
+<div class="card-header">
+ <div><div class="index">16 / 22</div><h2><a href="./sinetron.svg" target="_blank" rel="noopener">sinetron</a></h2><p>TV-style story scene / Indonesian drama lesson</p></div>
+ <div class="card-meta"><span>Reference: tv</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="sinetron Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="sinetron" src="./sinetron.svg" loading="lazy">
+    <i data-lucide="tv" class="lucide-icon" aria-label="Lucide tv" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="sinetron" src="./sinetron.svg" loading="lazy">
+    <i data-lucide="tv" class="lucide-icon" aria-label="Lucide tv" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="sinetron" src="./sinetron.svg" loading="lazy">
+    <i data-lucide="tv" class="lucide-icon" aria-label="Lucide tv" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="sinetron" src="./sinetron.svg" loading="lazy">
+    <i data-lucide="tv" class="lucide-icon" aria-label="Lucide tv" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="sinetron Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="sinetron" src="./sinetron.svg" loading="lazy">
+    <i data-lucide="tv" class="lucide-icon" aria-label="Lucide tv" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="sinetron" src="./sinetron.svg" loading="lazy">
+    <i data-lucide="tv" class="lucide-icon" aria-label="Lucide tv" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="sinetron" src="./sinetron.svg" loading="lazy">
+    <i data-lucide="tv" class="lucide-icon" aria-label="Lucide tv" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="sinetron" src="./sinetron.svg" loading="lazy">
+    <i data-lucide="tv" class="lucide-icon" aria-label="Lucide tv" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="sinetron RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="sinetron" src="./sinetron.svg" loading="lazy">
+    <i data-lucide="tv" class="lucide-icon" aria-label="Lucide tv" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="sinetron" src="./sinetron.svg" loading="lazy">
+    <i data-lucide="tv" class="lucide-icon" aria-label="Lucide tv" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="sinetron" src="./sinetron.svg" loading="lazy">
+    <i data-lucide="tv" class="lucide-icon" aria-label="Lucide tv" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="sinetron" src="./sinetron.svg" loading="lazy">
+    <i data-lucide="tv" class="lucide-icon" aria-label="Lucide tv" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="coach">
+<div class="card-header">
+ <div><div class="index">17 / 22</div><h2><a href="./coach.svg" target="_blank" rel="noopener">coach</a></h2><p>Supportive learning coach / encouraging feedback</p></div>
+ <div class="card-meta"><span>Reference: message-circle</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="coach Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="coach" src="./coach.svg" loading="lazy">
+    <i data-lucide="message-circle" class="lucide-icon" aria-label="Lucide message-circle" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="coach" src="./coach.svg" loading="lazy">
+    <i data-lucide="message-circle" class="lucide-icon" aria-label="Lucide message-circle" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="coach" src="./coach.svg" loading="lazy">
+    <i data-lucide="message-circle" class="lucide-icon" aria-label="Lucide message-circle" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="coach" src="./coach.svg" loading="lazy">
+    <i data-lucide="message-circle" class="lucide-icon" aria-label="Lucide message-circle" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="coach Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="coach" src="./coach.svg" loading="lazy">
+    <i data-lucide="message-circle" class="lucide-icon" aria-label="Lucide message-circle" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="coach" src="./coach.svg" loading="lazy">
+    <i data-lucide="message-circle" class="lucide-icon" aria-label="Lucide message-circle" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="coach" src="./coach.svg" loading="lazy">
+    <i data-lucide="message-circle" class="lucide-icon" aria-label="Lucide message-circle" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="coach" src="./coach.svg" loading="lazy">
+    <i data-lucide="message-circle" class="lucide-icon" aria-label="Lucide message-circle" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="coach RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="coach" src="./coach.svg" loading="lazy">
+    <i data-lucide="message-circle" class="lucide-icon" aria-label="Lucide message-circle" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="coach" src="./coach.svg" loading="lazy">
+    <i data-lucide="message-circle" class="lucide-icon" aria-label="Lucide message-circle" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="coach" src="./coach.svg" loading="lazy">
+    <i data-lucide="message-circle" class="lucide-icon" aria-label="Lucide message-circle" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="coach" src="./coach.svg" loading="lazy">
+    <i data-lucide="message-circle" class="lucide-icon" aria-label="Lucide message-circle" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="lasso">
+<div class="card-header">
+ <div><div class="index">18 / 22</div><h2><a href="./lasso.svg" target="_blank" rel="noopener">lasso</a></h2><p>Select and annotate words / freehand selection tool</p></div>
+ <div class="card-meta"><span>Reference: pencil</span><span class="direction-note">Keep direction in RTL</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="lasso Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="lasso" src="./lasso.svg" loading="lazy">
+    <i data-lucide="pencil" class="lucide-icon" aria-label="Lucide pencil" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="lasso" src="./lasso.svg" loading="lazy">
+    <i data-lucide="pencil" class="lucide-icon" aria-label="Lucide pencil" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="lasso" src="./lasso.svg" loading="lazy">
+    <i data-lucide="pencil" class="lucide-icon" aria-label="Lucide pencil" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="lasso" src="./lasso.svg" loading="lazy">
+    <i data-lucide="pencil" class="lucide-icon" aria-label="Lucide pencil" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="lasso Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="lasso" src="./lasso.svg" loading="lazy">
+    <i data-lucide="pencil" class="lucide-icon" aria-label="Lucide pencil" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="lasso" src="./lasso.svg" loading="lazy">
+    <i data-lucide="pencil" class="lucide-icon" aria-label="Lucide pencil" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="lasso" src="./lasso.svg" loading="lazy">
+    <i data-lucide="pencil" class="lucide-icon" aria-label="Lucide pencil" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="lasso" src="./lasso.svg" loading="lazy">
+    <i data-lucide="pencil" class="lucide-icon" aria-label="Lucide pencil" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="lasso RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="lasso" src="./lasso.svg" loading="lazy">
+    <i data-lucide="pencil" class="lucide-icon" aria-label="Lucide pencil" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="lasso" src="./lasso.svg" loading="lazy">
+    <i data-lucide="pencil" class="lucide-icon" aria-label="Lucide pencil" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="lasso" src="./lasso.svg" loading="lazy">
+    <i data-lucide="pencil" class="lucide-icon" aria-label="Lucide pencil" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="lasso" src="./lasso.svg" loading="lazy">
+    <i data-lucide="pencil" class="lucide-icon" aria-label="Lucide pencil" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="card-wall">
+<div class="card-header">
+ <div><div class="index">19 / 22</div><h2><a href="./card-wall.svg" target="_blank" rel="noopener">card-wall</a></h2><p>Collection of cards / vocabulary card wall</p></div>
+ <div class="card-meta"><span>Reference: layers</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="card-wall Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="card-wall" src="./card-wall.svg" loading="lazy">
+    <i data-lucide="layers" class="lucide-icon" aria-label="Lucide layers" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="card-wall" src="./card-wall.svg" loading="lazy">
+    <i data-lucide="layers" class="lucide-icon" aria-label="Lucide layers" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="card-wall" src="./card-wall.svg" loading="lazy">
+    <i data-lucide="layers" class="lucide-icon" aria-label="Lucide layers" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="card-wall" src="./card-wall.svg" loading="lazy">
+    <i data-lucide="layers" class="lucide-icon" aria-label="Lucide layers" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="card-wall Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="card-wall" src="./card-wall.svg" loading="lazy">
+    <i data-lucide="layers" class="lucide-icon" aria-label="Lucide layers" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="card-wall" src="./card-wall.svg" loading="lazy">
+    <i data-lucide="layers" class="lucide-icon" aria-label="Lucide layers" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="card-wall" src="./card-wall.svg" loading="lazy">
+    <i data-lucide="layers" class="lucide-icon" aria-label="Lucide layers" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="card-wall" src="./card-wall.svg" loading="lazy">
+    <i data-lucide="layers" class="lucide-icon" aria-label="Lucide layers" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="card-wall RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="card-wall" src="./card-wall.svg" loading="lazy">
+    <i data-lucide="layers" class="lucide-icon" aria-label="Lucide layers" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="card-wall" src="./card-wall.svg" loading="lazy">
+    <i data-lucide="layers" class="lucide-icon" aria-label="Lucide layers" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="card-wall" src="./card-wall.svg" loading="lazy">
+    <i data-lucide="layers" class="lucide-icon" aria-label="Lucide layers" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="card-wall" src="./card-wall.svg" loading="lazy">
+    <i data-lucide="layers" class="lucide-icon" aria-label="Lucide layers" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="gong">
+<div class="card-header">
+ <div><div class="index">20 / 22</div><h2><a href="./gong.svg" target="_blank" rel="noopener">gong</a></h2><p>Javanese gong / gamelan cultural content</p></div>
+ <div class="card-meta"><span>Reference: music</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="gong Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="gong" src="./gong.svg" loading="lazy">
+    <i data-lucide="music" class="lucide-icon" aria-label="Lucide music" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="gong" src="./gong.svg" loading="lazy">
+    <i data-lucide="music" class="lucide-icon" aria-label="Lucide music" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="gong" src="./gong.svg" loading="lazy">
+    <i data-lucide="music" class="lucide-icon" aria-label="Lucide music" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="gong" src="./gong.svg" loading="lazy">
+    <i data-lucide="music" class="lucide-icon" aria-label="Lucide music" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="gong Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="gong" src="./gong.svg" loading="lazy">
+    <i data-lucide="music" class="lucide-icon" aria-label="Lucide music" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="gong" src="./gong.svg" loading="lazy">
+    <i data-lucide="music" class="lucide-icon" aria-label="Lucide music" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="gong" src="./gong.svg" loading="lazy">
+    <i data-lucide="music" class="lucide-icon" aria-label="Lucide music" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="gong" src="./gong.svg" loading="lazy">
+    <i data-lucide="music" class="lucide-icon" aria-label="Lucide music" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="gong RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="gong" src="./gong.svg" loading="lazy">
+    <i data-lucide="music" class="lucide-icon" aria-label="Lucide music" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="gong" src="./gong.svg" loading="lazy">
+    <i data-lucide="music" class="lucide-icon" aria-label="Lucide music" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="gong" src="./gong.svg" loading="lazy">
+    <i data-lucide="music" class="lucide-icon" aria-label="Lucide music" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="gong" src="./gong.svg" loading="lazy">
+    <i data-lucide="music" class="lucide-icon" aria-label="Lucide music" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="kendang">
+<div class="card-header">
+ <div><div class="index">21 / 22</div><h2><a href="./kendang.svg" target="_blank" rel="noopener">kendang</a></h2><p>Kendang drum / Javanese rhythm and culture</p></div>
+ <div class="card-meta"><span>Reference: music-2</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="kendang Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="kendang" src="./kendang.svg" loading="lazy">
+    <i data-lucide="music-2" class="lucide-icon" aria-label="Lucide music-2" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="kendang" src="./kendang.svg" loading="lazy">
+    <i data-lucide="music-2" class="lucide-icon" aria-label="Lucide music-2" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="kendang" src="./kendang.svg" loading="lazy">
+    <i data-lucide="music-2" class="lucide-icon" aria-label="Lucide music-2" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="kendang" src="./kendang.svg" loading="lazy">
+    <i data-lucide="music-2" class="lucide-icon" aria-label="Lucide music-2" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="kendang Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="kendang" src="./kendang.svg" loading="lazy">
+    <i data-lucide="music-2" class="lucide-icon" aria-label="Lucide music-2" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="kendang" src="./kendang.svg" loading="lazy">
+    <i data-lucide="music-2" class="lucide-icon" aria-label="Lucide music-2" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="kendang" src="./kendang.svg" loading="lazy">
+    <i data-lucide="music-2" class="lucide-icon" aria-label="Lucide music-2" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="kendang" src="./kendang.svg" loading="lazy">
+    <i data-lucide="music-2" class="lucide-icon" aria-label="Lucide music-2" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="kendang RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="kendang" src="./kendang.svg" loading="lazy">
+    <i data-lucide="music-2" class="lucide-icon" aria-label="Lucide music-2" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="kendang" src="./kendang.svg" loading="lazy">
+    <i data-lucide="music-2" class="lucide-icon" aria-label="Lucide music-2" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="kendang" src="./kendang.svg" loading="lazy">
+    <i data-lucide="music-2" class="lucide-icon" aria-label="Lucide music-2" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="kendang" src="./kendang.svg" loading="lazy">
+    <i data-lucide="music-2" class="lucide-icon" aria-label="Lucide music-2" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<article class="icon-card" id="streak-ember">
+<div class="card-header">
+ <div><div class="index">22 / 22</div><h2><a href="./streak-ember.svg" target="_blank" rel="noopener">streak-ember</a></h2><p>Encouraging learning streak / calm flame with a leaf</p></div>
+ <div class="card-meta"><span>Reference: flame</span><span class="mirror-note">Safe to mirror</span></div>
+</div>
+<div class="mode-row"><section class="mode mode-light" aria-label="streak-ember Light comparison">
+ <header class="mode-head"><strong>Light</strong><span>Black on white</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="streak-ember" src="./streak-ember.svg" loading="lazy">
+    <i data-lucide="flame" class="lucide-icon" aria-label="Lucide flame" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="streak-ember" src="./streak-ember.svg" loading="lazy">
+    <i data-lucide="flame" class="lucide-icon" aria-label="Lucide flame" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="streak-ember" src="./streak-ember.svg" loading="lazy">
+    <i data-lucide="flame" class="lucide-icon" aria-label="Lucide flame" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="streak-ember" src="./streak-ember.svg" loading="lazy">
+    <i data-lucide="flame" class="lucide-icon" aria-label="Lucide flame" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-dark" aria-label="streak-ember Dark comparison">
+ <header class="mode-head"><strong>Dark</strong><span>White on charcoal</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="streak-ember" src="./streak-ember.svg" loading="lazy">
+    <i data-lucide="flame" class="lucide-icon" aria-label="Lucide flame" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="streak-ember" src="./streak-ember.svg" loading="lazy">
+    <i data-lucide="flame" class="lucide-icon" aria-label="Lucide flame" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="streak-ember" src="./streak-ember.svg" loading="lazy">
+    <i data-lucide="flame" class="lucide-icon" aria-label="Lucide flame" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="streak-ember" src="./streak-ember.svg" loading="lazy">
+    <i data-lucide="flame" class="lucide-icon" aria-label="Lucide flame" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section><section class="mode mode-mirror" aria-label="streak-ember RTL mirror comparison">
+ <header class="mode-head"><strong>RTL mirror</strong><span>Flipped horizontally</span></header>
+ <div class="pair-key"><span>Kabar custom</span><span>Lucide reference</span></div>
+ <div class="size-grid"><div class="size-slot" role="group" aria-label="16-pixel side-by-side comparison">
+  <span class="px-label">16px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="16" height="16" alt="streak-ember" src="./streak-ember.svg" loading="lazy">
+    <i data-lucide="flame" class="lucide-icon" aria-label="Lucide flame" style="width:16px;height:16px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="20-pixel side-by-side comparison">
+  <span class="px-label">20px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="20" height="20" alt="streak-ember" src="./streak-ember.svg" loading="lazy">
+    <i data-lucide="flame" class="lucide-icon" aria-label="Lucide flame" style="width:20px;height:20px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="24-pixel side-by-side comparison">
+  <span class="px-label">24px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="24" height="24" alt="streak-ember" src="./streak-ember.svg" loading="lazy">
+    <i data-lucide="flame" class="lucide-icon" aria-label="Lucide flame" style="width:24px;height:24px"></i>
+  </div>
+</div>
+<div class="size-slot" role="group" aria-label="48-pixel side-by-side comparison">
+  <span class="px-label">48px</span>
+  <div class="glyph-pair">
+    <img class="custom-icon" width="48" height="48" alt="streak-ember" src="./streak-ember.svg" loading="lazy">
+    <i data-lucide="flame" class="lucide-icon" aria-label="Lucide flame" style="width:48px;height:48px"></i>
+  </div>
+</div></div>
+</section></div>
+</article>
+<footer>Original, created for Kabar; same license as the project. Custom SVG sources are in this directory. Lucide references loaded from version 0.456.0 (CDN).</footer>
+</main>
+<script src="https://unpkg.com/lucide@0.456.0/dist/umd/lucide.min.js"></script>
+<script>
+(function () {
+  const warning = document.getElementById('cdn-warning');
+  if (!window.lucide || typeof window.lucide.createIcons !== 'function') { warning.style.display = 'block'; return; }
+  try { window.lucide.createIcons(); }
+  catch (e) { warning.style.display = 'block'; console.warn('Lucide comparison failed:', e); }
+})();
+</script>
+</body>
+</html>

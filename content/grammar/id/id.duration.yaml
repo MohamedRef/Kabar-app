@@ -1,0 +1,79 @@
+schema: kabar.grammar/v1
+id: id.duration
+language: id
+level: bipa2
+title:
+  target: berapa lama, selama, sejak, … yang lalu, … lagi
+  en: Duration and "since"
+  ar_eg: المدة (بقالك قد إيه؟)
+  ar: المدة والابتداء الزمني
+summary:
+  ar_eg: berapa lama = قد إيه، selama = لمدة، sejak = من ساعة، dua tahun lalu = من سنتين، dua hari lagi = كمان يومين.
+  ar: berapa lama = كم من الوقت، selama = طوال / لمدة، sejak = منذ، … lalu = قبل …، … lagi = بعد …
+  en: berapa lama (how long), selama (for / during), sejak (since), … lalu (ago), … lagi (in … time).
+pattern:
+  - (Sudah) berapa lama …?
+  - selama + duration / event
+  - sejak + point in time
+  - duration + (yang) lalu (ago) · duration + lagi (from now)
+explanation:
+  ar_eg: |
+    - berapa lama = قد إيه: Sudah berapa lama di Bali? = بقالك قد إيه في بالي؟
+    - selama = لمدة / طول: selama dua minggu = لمدة أسبوعين، selama liburan = طول الأجازة.
+    - sejak = من (نقطة بداية): sejak tahun 2020 = من ٢٠٢٠، sejak kecil = من وأنا صغير.
+    - lalu = فات / من: tiga hari (yang) lalu = من تلات أيام.
+    - lagi = كمان (المستقبل): tiga hari lagi = كمان تلات أيام.
+    - sudah + مدة = بقالي: Saya sudah dua tahun belajar = بقالي سنتين بتعلم.
+  ar: |
+    - berapa lama = كم من الوقت: Sudah berapa lama di Bali؟ = منذ متى وأنت في بالي؟
+    - selama = لمدة / طوال: selama dua minggu، selama liburan.
+    - sejak = منذ: sejak tahun 2020، sejak kecil.
+    - lalu = مضت: tiga hari (yang) lalu = قبل ثلاثة أيام.
+    - lagi = بعد (في المستقبل): tiga hari lagi = بعد ثلاثة أيام.
+    - sudah + مدة: Saya sudah dua tahun belajar = أدرس منذ سنتين.
+  en: |
+    - berapa lama = how long: Sudah berapa lama di Bali? = How long have you been in Bali?
+    - selama = for / during: selama dua minggu, selama liburan.
+    - sejak = since: sejak tahun 2020, sejak kecil (since childhood).
+    - lalu = ago: tiga hari (yang) lalu.
+    - lagi = from now: tiga hari lagi = in three days.
+    - sudah + duration: Saya sudah dua tahun belajar = I've been studying for two years.
+examples:
+  - text: Sudah berapa lama kamu main bulu tangkis?
+    en: How long have you been playing badminton?
+    ar_eg: بقالك قد إيه بتلعب ريشة؟
+    ar: منذ متى تلعب الريشة الطائرة؟
+  - text: Saya berenang selama tiga puluh menit setiap pagi.
+    en: I swim for thirty minutes every morning.
+    ar_eg: بعوم نص ساعة كل يوم الصبح.
+    ar: أسبح ثلاثين دقيقة كل صباح.
+  - text: Saya tinggal di Indonesia sejak bulan Maret.
+    en: I've lived in Indonesia since March.
+    ar_eg: أنا عايش في إندونيسيا من شهر مارس.
+    ar: أعيش في إندونيسيا منذ مارس.
+  - text: Pertandingannya dua hari lagi.
+    en: The match is in two days.
+    ar_eg: الماتش كمان يومين.
+    ar: المباراة بعد يومين.
+mistakes:
+  - wrong: dua hari lalu (meaning "in two days")
+    right: dua hari lagi
+    why:
+      ar_eg: lalu للي فات، lagi للي جاي.
+      ar: lalu للماضي، وlagi للمستقبل.
+      en: lalu = ago, lagi = from now.
+  - wrong: selama tahun 2020 (meaning "since 2020")
+    right: sejak tahun 2020
+    why:
+      ar_eg: sejak = من نقطة بداية، selama = طول مدة.
+      ar: sejak لابتداء الزمن، وselama لامتداده.
+      en: sejak marks a starting point; selama a span.
+arabic_bridge:
+  ar_eg: «بقالك قد إيه؟» = Sudah berapa lama؟، و«كمان يومين» = dua hari lagi. وsejak قريبة من «من ساعة ما».
+  ar: sejak ≈ منذ، وselama ≈ طوال.
+  en: Sudah berapa lama? ≈ «بقالك قد إيه؟»; dua hari lagi ≈ «كمان يومين».
+tags: [time, duration]
+see_also: [id.question.kapan-berapa, id.time.sequence, id.aspect.markers]
+review:
+  status: draft
+  verified: false
