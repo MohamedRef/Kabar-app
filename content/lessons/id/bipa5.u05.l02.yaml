@@ -1,0 +1,187 @@
+schema: kabar.lesson/v1
+id: bipa5.u05.l02
+language: id
+title: Sawit
+can_do:
+  ar_eg: تقرا تقرير طويل عن زيت النخيل وتفرّق بين الحقيقة والرأي.
+  ar: أن تقرأ تقريرًا مطوّلًا عن زيت النخيل وتميّز الحقيقة من الرأي.
+  en: Read a long report on palm oil and tell facts from opinions.
+slides:
+  - title: Fakta atau opini?
+    body:
+      ar_eg: |
+        اقرا الفقرة دي:
+        Indonesia adalah produsen minyak sawit terbesar di dunia. Industri ini memberi pekerjaan kepada jutaan petani. Namun, perluasan kebun sawit menyebabkan hilangnya hutan hujan di Kalimantan. Menurut sebagian aktivis, pemerintah seharusnya menghentikan pembukaan lahan baru.
+        الحقيقة (fakta) حاجة تقدر تتأكد منها بالأرقام. الرأي (opini) فيه كلمات زي menurut، seharusnya (المفروض)، sebaiknya.
+      ar: |
+        اقرأ هذه الفقرة:
+        Indonesia adalah produsen minyak sawit terbesar di dunia. Industri ini memberi pekerjaan kepada jutaan petani. Namun, perluasan kebun sawit menyebabkan hilangnya hutan hujan di Kalimantan. Menurut sebagian aktivis, pemerintah seharusnya menghentikan pembukaan lahan baru.
+        الحقيقة (fakta) ما يمكن التحقّق منه بالأرقام، والرأي (opini) تدلّ عليه كلمات مثل menurut وseharusnya (ينبغي) وsebaiknya.
+      en: |
+        Read this paragraph:
+        Indonesia adalah produsen minyak sawit terbesar di dunia. Industri ini memberi pekerjaan kepada jutaan petani. Namun, perluasan kebun sawit menyebabkan hilangnya hutan hujan di Kalimantan. Menurut sebagian aktivis, pemerintah seharusnya menghentikan pembukaan lahan baru.
+        A fact (fakta) can be checked with numbers. An opinion (opini) shows in words like menurut, seharusnya (should) and sebaiknya.
+    examples:
+      - text: Menurut para aktivis, perusahaan seharusnya melindungi hutan.
+        ar_eg: حسب الناشطين، الشركات المفروض تحمي الغابة.
+        ar: يرى الناشطون أنّ على الشركات حماية الغابة.
+        en: According to activists, companies should protect the forest.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: sawit
+        ar_eg: نخيل الزيت
+        ar: نخيل الزيت
+        en: oil palm
+      - text: produsen
+        ar_eg: منتِج
+        ar: منتِج
+        en: producer
+      - text: petani
+        ar_eg: فلاح / مزارع
+        ar: مزارع
+        en: farmer
+      - text: perluasan
+        ar_eg: توسّع
+        ar: توسّع
+        en: expansion
+      - text: seharusnya
+        ar_eg: المفروض
+        ar: ينبغي
+        en: should
+    words: [sawit, produsen, petani, perluasan, seharusnya]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة رأي، مش حقيقة؟
+      ar: أيّ جملة رأي لا حقيقة؟
+      en: Which sentence is an opinion, not a fact?
+    options:
+      - Indonesia adalah produsen minyak sawit terbesar di dunia.
+      - Industri sawit memberi pekerjaan kepada jutaan petani.
+      - Pemerintah seharusnya menghentikan pembukaan lahan baru.
+    answer: 2
+    explain:
+      ar_eg: seharusnya (المفروض) علامة رأي.
+      ar: seharusnya علامة رأي.
+      en: seharusnya marks an opinion.
+    words: [seharusnya, produsen, petani]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حسب الفقرة، توسّع مزارع النخيل سبّب إيه؟
+      ar: بحسب الفقرة، ما الذي سبّبه توسّع مزارع النخيل؟
+      en: According to the paragraph, what has the palm expansion caused?
+    options:
+      - اختفاء الغابات المطيرة.
+      - زيادة الغابات.
+      - قلة الفلاحين.
+    answer: 0
+    words: [perluasan, sawit]
+  - id: e04
+    type: fill_blank
+    sentence: Jutaan ___ di Kalimantan menanam sawit.
+    meaning:
+      ar_eg: ملايين الفلاحين في كاليمانتان بيزرعوا نخيل الزيت.
+      ar: يزرع ملايين المزارعين في كاليمانتان نخيل الزيت.
+      en: Millions of farmers in Kalimantan grow oil palm.
+    options: [petani, produsen, perluasan]
+    answers: [petani]
+    words: [petani]
+  - id: e05
+    type: listen
+    text: Perluasan kebun sawit harus dibatasi.
+    question:
+      ar_eg: المتكلم عايز إيه؟
+      ar: ماذا يريد المتكلّم؟
+      en: What does the speaker want?
+    options:
+      - إن مزارع النخيل تزيد.
+      - إن توسّع مزارع النخيل يتحدّد.
+      - إن الفلاحين يسيبوا الشغل.
+    answer: 1
+    words: [perluasan, sawit]
+  - id: e06
+    type: translate
+    direction: from_target
+    source_text: Perusahaan seharusnya membayar petani dengan adil.
+    answers_meaning:
+      ar_eg:
+        - الشركات المفروض تدفع للفلاحين بالعدل.
+        - المفروض الشركة تدفع للفلاحين حقهم بالعدل.
+      ar:
+        - ينبغي للشركات أن تدفع للمزارعين بإنصاف.
+        - على الشركة أن تعطي المزارعين أجرًا عادلًا.
+      en:
+        - Companies should pay farmers fairly.
+        - The company ought to pay farmers fairly.
+    words: [seharusnya, petani]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: إندونيسيا أكبر منتِج لزيت النخيل.
+      ar: إندونيسيا أكبر منتِج لزيت النخيل.
+      en: Indonesia is the biggest palm oil producer.
+    answer: Indonesia adalah produsen minyak sawit terbesar.
+    distractors: [petani, seharusnya]
+    words: [produsen, sawit]
+  - id: e08
+    type: speaking
+    text: Menurut saya, pemerintah seharusnya melindungi hutan dan petani.
+    meaning:
+      ar_eg: في رأيي، الحكومة المفروض تحمي الغابة والفلاحين.
+      ar: في رأيي، ينبغي للحكومة أن تحمي الغابة والمزارعين.
+      en: In my view, the government should protect both the forest and the farmers.
+    words: [seharusnya]
+dialogue:
+  title: Kebun sawit di jalan ke Pangkalan Bun
+  lines:
+    - speaker: Mohamed
+      text: Wah, semua pohon di sini sama. Ini kebun apa, Mas?
+      ar_eg: يا خبر، كل الشجر هنا شبه بعضه. دي مزرعة إيه؟
+      ar: كلّ الأشجار هنا متشابهة. أيّ مزرعة هذه؟
+      en: Wow, all the trees here look the same. What plantation is this?
+    - speaker: Mas Rizal
+      text: Kebun sawit. Dulu di sini hutan hujan.
+      ar_eg: مزرعة نخيل زيت. زمان كان هنا غابة مطيرة.
+      ar: مزرعة نخيل زيت، وكانت هنا غابة مطيرة.
+      en: An oil palm plantation. This used to be rainforest.
+    - speaker: Mohamed
+      text: Sayang sekali. Tetapi banyak petani hidup dari sawit, kan?
+      ar_eg: خسارة قوي. بس فلاحين كتير عايشين من النخيل ده، صح؟
+      ar: يا للأسف. لكنّ كثيرًا من المزارعين يعيشون منه، أليس كذلك؟
+      en: What a shame. But many farmers live off palm oil, right?
+    - speaker: Mas Rizal
+      text: Betul. Itu sebabnya masalah ini rumit. Ada fakta, ada opini, dan ada kehidupan orang.
+      ar_eg: مظبوط. عشان كده الموضوع معقد. فيه حقايق، وفيه آراء، وفيه حياة ناس.
+      ar: صحيح، ولذلك المسألة معقّدة، ففيها حقائق وآراء وأرزاق ناس.
+      en: Right. That's why it's complicated. There are facts, opinions and people's livelihoods.
+new_words:
+  - word: sawit
+    pos: noun
+    ar_eg: نخيل الزيت
+    ar: نخيل الزيت
+    en: oil palm
+  - word: produsen
+    pos: noun
+    ar_eg: منتِج
+    ar: منتِج
+    en: producer
+  - word: petani
+    pos: noun
+    ar_eg: فلاح / مزارع
+    ar: مزارع
+    en: farmer
+  - word: perluasan
+    pos: noun
+    ar_eg: توسّع
+    ar: توسّع
+    en: expansion
+  - word: seharusnya
+    ar_eg: المفروض
+    ar: ينبغي
+    en: should
+review:
+  status: draft
+  verified: false
