@@ -32,3 +32,9 @@ These need your machine, your accounts or your devices. Nothing here costs money
 - [ ] Google Cloud Console: OAuth clients (Web, Android with the release SHA-1, Desktop); put the Web + Desktop ids in `crates/server/wrangler.toml`.
 - [ ] Optional: `wrangler secret put GEMINI_API_KEY` and `AZURE_SPEECH_KEY`.
 - [ ] `just deploy-cloud` and send me the `workers.dev` URL.
+
+## Kak Nur coach (M7) — full steps in docs/RUN.md §6
+- [ ] `just run-mac`: go through onboarding, tick a plan item, check the recap and the Kak Nur screen. Tell me anything that reads wrong or feels off.
+- [ ] Review Kak Nur's lines in `content/coach/kak-nur.toml` (Egyptian Arabic, MSA, English). Mark changes or say OK; then I set `reviewed = true`.
+- [ ] Install the new APK on the S24 Ultra and Tab S11 and check the plan is the same on both once sync is on.
+- [ ] Reminders (after the Kabar Cloud reminder PR lands): Firebase setup from docs/CLOUD.md and `wrangler secret put FCM_SERVICE_ACCOUNT`.
