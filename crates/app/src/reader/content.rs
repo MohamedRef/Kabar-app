@@ -137,6 +137,17 @@ pub fn taught_info(t: &TaughtEntry) -> Option<WordInfo> {
     Some(info)
 }
 
+/// The content pack's words and ranks (Indonesian and Javanese).
+pub fn known_words() -> Vec<kabar_core::ink::spell::Known> {
+    GLOSS_BATCHES
+        .iter()
+        .chain(GLOSS_BATCHES_JV)
+        .flat_map(|b| jsonl::<GlossEntry>(b))
+        .filter_map(Result::ok)
+        .map(|e| kabar_core::ink::spell::Known { lang: e.lang, word: e.word.to_lowercase(), rank: e.rank })
+        .collect()
+}
+
 impl LocalGlossary {
     pub fn load() -> Self {
         let mut g = Self { words: HashMap::new() };

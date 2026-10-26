@@ -65,6 +65,15 @@ mod tests {
     }
 
     #[test]
+    fn app_root_takes_its_text_colour_from_the_theme() {
+        let css = include_str!("../assets/main.css");
+        let start = css.find("\n.app {").expect("main.css has an .app rule");
+        let rule = &css[start..start + css[start..].find('}').expect("closed rule")];
+        assert!(rule.contains("color: var(--text)"), ".app must set color from --text: {rule}");
+        assert!(rule.contains("background-color: var(--bg)"));
+    }
+
+    #[test]
     fn every_theme_gets_a_batik_tile() {
         let css = stylesheet();
         for theme in Theme::ALL {
