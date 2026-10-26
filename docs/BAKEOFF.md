@@ -7,7 +7,7 @@ Goal: for each runtime AI task (`docs/SPEC.md` §19), find the cheapest **free**
 | Engine | Model(s) | Where it runs |
 |---|---|---|
 | `workers_ai` (proposed) | `@cf/aisingapore/gemma-sea-lion-v4-27b-it`; a vision model for sketches | Cloudflare, free 10k Neurons/day |
-| `local` | Apertus-SEA-LION-v4-8B-IT (GGUF), Sahabat-AI v1 Gemma-2 9B (GGUF), Gemma-SEA-LION-v4-27B-IT if RAM ≥ 24 GB, Gemma-SEA-LION-v4-4B-VL for vision | Ollama on the Mac |
+| `local` | Gemma-SEA-LION-v4-4B-VL and Qwen-SEA-LION-v4-4B-VL (Q4, fit 8 GB); one check of Apertus-SEA-LION-v4-8B-IT / Sahabat-AI Gemma-2 9B | Ollama on the Mac (8 GB); optional bigger run on Daytona |
 | `gemini_free` | current free Flash and Flash-Lite | Google AI Studio key |
 | `claude` (reference / optional) | current Claude model | Anthropic API (Max credit if available) |
 

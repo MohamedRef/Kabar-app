@@ -7,12 +7,17 @@ Status: **draft, waiting for approval.** Source of truth for features is `docs/S
 | # | Decision | Recommendation |
 |---|---|---|
 | D1 | Add Cloudflare **Workers AI** as a fourth engine (`workers_ai`), mainly SEA-LION v4 27B | Yes. Free 10k Neurons/day, SEA-tuned, server-side, no extra key. |
-| D2 | Local model shortlist | Benchmark Apertus-SEA-LION-v4-8B, Sahabat-AI v1 (Gemma-2 9B), and Gemma-SEA-LION-v4-27B only if the Mac has ≥24 GB RAM. |
+| D2 | Local model shortlist (Mac has **8 GB**) | Only ~4B models fit next to macOS: Gemma-SEA-LION-v4-4B-VL (text + vision) and Qwen-SEA-LION-v4-4B-VL at Q4. 8–9B models (Apertus-SEA-LION-v4-8B, Sahabat-AI Gemma-2 9B) are tested once but expected to swap. Kabar Home becomes a helper for vision, Whisper (small) and NLLB-600M, not the main text engine. |
 | D3 | Azure Speech via REST, not the `azure-speech` crate | Yes (crate last released Jul 2025; REST is small). |
 | D4 | Server storage split | Per-account data lives in the account's **Durable Object SQLite**; **D1** holds the shared AI/TTS cache, content-pack index, device registry and allowlist. (Spec says D1 for storage; DO SQLite is free and co-located with the sync hub, so it removes a hop and a consistency problem.) |
-| D5 | Javanese morphology | Own affix decomposer + Wiktionary lemmas; sastrawi-rs Javanese stemmer as a hint only (it missed diculke, tukokke, ditukoni). |
+| D5 | Javanese morphology — **you chose: most accurate** | Four layers, most trusted first: (1) a **build-time analysis table** for the top ~5,000 Javanese surface forms (root, affixes, level, gloss), generated with Claude Code, cross-checked against Wiktionary, reviewed by you; (2) our own rule-based decomposer (N-, di-, ka-, -ake/-ke, -i, -an, -e/-ne, -en, reduplication, krama/ngoko pairs) validated against Wiktionary lemmas + sastrawi-rs as one signal; (3) AI fallback, cached and badged **unverified**; (4) every new form you meet is queued for the next content batch so layer 1 keeps growing. |
 
-Need from you: **MacBook Air RAM** (8 / 16 / 24 GB) and whether you're on **Claude Max** (5x or 20x) for the `claude` engine credit.
+Answers so far (26 Oct): Mac has 8 GB RAM; Claude Max 20x now, but not guaranteed every month; Daytona is available for tests; D5 = most accurate.
+
+Consequences:
+- **Claude is never a runtime dependency.** When the Max credit is there, use it for big *build-time* batches through the Message Batches API (half price), e.g. the 10k glosses. Content is committed, so it stays after the credit ends. Runtime `claude` stays an optional switch.
+- **Runtime quality rests on build-time content + `workers_ai` + `gemini_free`**, with `local` for vision and speech.
+- **Daytona** = optional extra build/test machine (see §14). Not part of the runtime.
 
 ## 2. Architecture
 
@@ -159,9 +164,19 @@ M1 starts with the riskiest spikes, each a day or less: (a) Dioxus Android build
 | Javanese stemming weak | wrong roots in popovers | own decomposer + lemma list; tests from §24 |
 | Azure TTS quota | missing new audio | just-in-time pre-gen, cache forever, system TTS fallback |
 | sastrawi-rs tiny user base | abandonment | MIT, small; vendor/fork if it stalls |
+| 8 GB Mac limits local models | weak `local` engine; slow builds | small models only; heavy text tasks on `workers_ai`; Daytona for heavy builds/bake-off |
+| Max credit not every month | slower content pipeline | batch big generations into months with credit; pipeline is resumable |
 | Region of Worker egress for Gemini | blocked calls from unsupported colo | retry via Kabar Home or device; monitor errors |
 | Content pipeline volume vs Claude plan limits | slow M4/M13 | resumable, batched, idempotent scripts |
 
 ## 13. What runs where (for you on the Mac)
 
 Tracked in `docs/MAC-TODO.md`.
+
+## 14. Daytona (optional)
+
+Daytona sandboxes are billed per use (≈ $0.05/vCPU-h + $0.016/GiB-h; your account's credits cover it). Uses that fit Kabar:
+- `cargo test` / `clippy` / Android APK builds on a 4–8 vCPU Linux box, to spare the 8 GB Mac.
+- The bake-off runner for the cloud engines, and a one-off run of 8–27B local candidates on a bigger box, only to learn whether they'd be worth it (they can't be hosted there at runtime for $0).
+
+Not needed for: device tests and Pen Lab (need the Galaxy devices), macOS builds (need the Mac). To let me drive it from here, add a `DAYTONA_API_KEY` as an environment secret — never in the repo. I'll keep each run short and tell you the expected cost before starting.
