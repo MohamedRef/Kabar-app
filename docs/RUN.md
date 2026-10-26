@@ -1,4 +1,4 @@
-# Running Kabar (M1–M2)
+# Running Kabar (M1–M2, M7)
 
 Everything below runs on the MacBook. Commands are `just` recipes from the repo root.
 For the first Mac session, follow the ordered checklist in [MAC-TODO.md](MAC-TODO.md); this page has the details.
@@ -72,6 +72,7 @@ just cloud-tools     # once: wrangler + worker-build
 wrangler login       # once: your free Cloudflare account
 just cloud-setup     # once: D1, signing key, allowlist
 just deploy-cloud    # after adding GOOGLE_CLIENT_IDS (CLOUD.md §3.2)
+# Reminders (M7): Firebase service account → `wrangler secret put FCM_SERVICE_ACCOUNT` (CLOUD.md §3.4)
 ```
 
 ## 6. Content pipeline (vocabulary, Arabic Bridge)
@@ -91,7 +92,19 @@ just content-review 1        # review sheet for gloss batch 1 → build/review/
 
 Commit the changed files under `content/` after the kaikki and jvwiki steps.
 
-## 7. Troubleshooting
+## 7. Kak Nur coach (M7)
+
+On the Mac: `just run-mac`. After the welcome screen, Kak Nur's onboarding asks your name, why you're learning, Indonesian/Javanese, 5/15/30 minutes, a target, study times, reminders and where to start.
+
+- **Today**: Kak Nur's greeting, "5, 15 or 30 minutes today?", the plan, Pelita and Koin. Tick an item when you've done it (until reviews and lessons land, ticking is how study gets logged). The recap card appears once the goal is met or in the evening.
+- **Kak Nur** (nav): weekly report, Liga Pribadi, achievements, the Warung and the learning journal.
+- **Settings → Kak Nur**: reminder style, study times, quiet hours, report day.
+
+To start onboarding again, delete the database (§2). On the Galaxy devices: `just apk` and `just install <serial>` as in §3.
+
+Reminders arrive as push notifications once Kabar Cloud's reminder alarm and Firebase are set up (CLOUD.md §3.4).
+
+## 8. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.

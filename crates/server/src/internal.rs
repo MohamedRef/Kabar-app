@@ -28,6 +28,12 @@ pub struct Revoke {
     pub device: DeviceId,
 }
 
+/// Sets (or with `None`, clears) the calling device's FCM token.
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SetPush {
+    pub token: Option<String>,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Expiry {
     pub refresh_expires_ms: u64,
