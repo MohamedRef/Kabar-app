@@ -379,3 +379,37 @@ fn skipping_listening_neither_scores_nor_retries() {
     assert_eq!(s.score, 100);
     assert!(p.lesson().souvenir.is_some());
 }
+
+#[test]
+fn listening_comprehension_answers_a_question_about_the_text() {
+    let mut l = l01();
+    let i = l
+        .exercises
+        .iter()
+        .position(|e| matches!(&e.kind, ExerciseKind::Listen { options, .. } if !options.is_empty()))
+        .unwrap();
+    let q = Localized { ar_eg: "إمتى؟".into(), ar: "متى؟".into(), en: "When?".into() };
+    if let ExerciseKind::Listen { options, answer, question, .. } = &mut l.exercises[i].kind {
+        *options = vec!["pagi".into(), "siang".into(), "malam".into()];
+        *answer = Some(1);
+        *question = Some(q.clone());
+    }
+    assert_eq!(validate(&l), vec![]);
+    let ex = l.exercises[i].clone();
+    assert_eq!(grade(&ex, &Answer::Choice(1), EG), Grade::Correct);
+    assert_eq!(grade(&ex, &Answer::Choice(0), EG), Grade::Wrong);
+    assert_eq!(display_answer(&ex, EG), "siang");
+
+    // Without the question, the options must be transcripts again.
+    if let ExerciseKind::Listen { question, .. } = &mut l.exercises[i].kind {
+        *question = None;
+    }
+    assert!(validate(&l).iter().any(|i| i.message.contains("heard text")));
+    // A question needs options to answer it.
+    if let ExerciseKind::Listen { options, answer, question, .. } = &mut l.exercises[i].kind {
+        options.clear();
+        *answer = None;
+        *question = Some(q);
+    }
+    assert!(validate(&l).iter().any(|i| i.message.contains("needs options")));
+}

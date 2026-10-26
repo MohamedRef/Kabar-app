@@ -1,0 +1,38 @@
+/* Test player (level tests, placement): builds on lesson.css (.lp-*). */
+.lt-section { margin-block-end: 1rem; }
+.lt-section strong { margin-inline-start: 0.35rem; }
+.lt-section p { margin-block: 0.35rem 0; }
+.lt-intro .lp-draft { display: inline-block; margin-block-end: 0.75rem; }
+.lt-parts { padding-inline-start: 1.25rem; color: var(--muted); }
+.lt-parts li { margin-block: 0.2rem; }
+
+.lt-selfcheck .lt-open { margin-block: 1rem; display: grid; gap: 0.35rem; }
+.lt-open p { margin: 0; }
+.lt-answer, .lt-sample {
+  background: var(--surface-2, var(--surface));
+  border-radius: var(--radius);
+  padding: 0.6rem 0.8rem;
+}
+.lt-sample { border-inline-start: 3px solid var(--sawah); }
+.lt-rubric { margin: 0; padding-inline-start: 1.25rem; }
+.lt-rubric li { margin-block: 0.15rem; }
+.lt-grades { gap: 0.5rem; flex-wrap: wrap; margin-block-start: 0.5rem; }
+.lt-grades .chip { min-block-size: 44px; min-inline-size: 6rem; }
+.lt-grades .chip[aria-pressed="true"] { background: var(--lp-review); border-color: var(--indigo); }
+
+.lt-results { text-align: start; }
+.lt-skills { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.lt-skill { display: grid; grid-template-columns: 7rem 1fr 3.5rem; align-items: center; gap: 0.6rem; }
+.lt-skill-bar { block-size: 0.6rem; border-radius: 999px; background: var(--surface-2, var(--line)); overflow: hidden; }
+.lt-skill-fill { block-size: 100%; background: var(--sawah); border-radius: inherit; }
+.lt-skill-pct { text-align: end; font-variant-numeric: tabular-nums; color: var(--muted); }
+.lt-missed { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.lt-missed li { border-block-end: 1px solid var(--line); padding-block-end: 0.6rem; }
+.lt-missed li:last-child { border-block-end: 0; }
+.lt-missed p { margin: 0.15rem 0; }
+.lt-retry { margin-block-start: 1rem; }
+
+.app[data-width="compact"] .lt-skill { grid-template-columns: 5.5rem 1fr 3rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .lt-skill-fill { transition: inline-size 400ms ease-out; }
+}

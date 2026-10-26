@@ -478,6 +478,16 @@ impl Store {
         Ok(LessonEvent { id, lesson_id: lesson_id.to_owned(), kind: kind.to_owned(), payload, hlc })
     }
 
+    /// The newest placement result (a `placed` event on lesson id
+    /// `placement`), from any device.
+    pub fn placement(&self) -> Result<Option<kabar_protocol::test::PlacementResult>> {
+        let last = self.lesson_events("placement")?.into_iter().rev().find(|e| e.kind == "placed");
+        Ok(match last {
+            Some(e) => Some(serde_json::from_str(&e.payload)?),
+            None => None,
+        })
+    }
+
     /// A lesson's events, oldest first.
     pub fn lesson_events(&self, lesson_id: &str) -> Result<Vec<LessonEvent>> {
         let mut stmt = self.conn.prepare(
@@ -765,6 +775,19 @@ mod tests {
         assert_eq!(events.iter().map(|e| e.id.as_str()).collect::<Vec<_>>(), [a.id.as_str(), b.id.as_str()]);
         let back: LessonCompleted = serde_json::from_str(&events[0].payload).unwrap();
         assert_eq!(back, done);
+    }
+
+    #[test]
+    fn the_newest_placement_wins() {
+        use kabar_protocol::test::PlacementResult;
+        let mut store = Store::open_in_memory().unwrap();
+        assert_eq!(store.placement().unwrap(), None);
+        let placed = |level: &str| PlacementResult { start_level: level.into(), sections: vec![] };
+        store.record_lesson_event("placement", "placed", &placed("bipa2")).unwrap();
+        store.record_lesson_event("placement", "placed", &placed("bipa3")).unwrap();
+        assert_eq!(store.placement().unwrap(), Some(placed("bipa3")));
+        // Placement never marks lessons done.
+        assert!(store.completed_lessons().unwrap().is_empty());
     }
 
     #[test]
