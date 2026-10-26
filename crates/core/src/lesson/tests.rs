@@ -212,7 +212,7 @@ fn shuffles_are_deterministic_and_never_identity() {
     assert_eq!(tiles, Player::new(l01()).tiles(&b), "same order on every device");
     let mut sorted = tiles.clone();
     sorted.sort();
-    let mut expected = vec!["Selamat", "jalan,", "sampai", "jumpa!", "tinggal", "pagi"];
+    let mut expected = vec!["Selamat", "jalan", "sampai", "jumpa", "tinggal", "pagi"];
     expected.sort();
     assert_eq!(sorted, expected);
 }
