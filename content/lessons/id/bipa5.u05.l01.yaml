@@ -1,0 +1,223 @@
+schema: kabar.lesson/v1
+id: bipa5.u05.l01
+language: id
+title: Terbakar, kebanjiran
+can_do:
+  ar_eg: تعبّر عن الحالة واللي حصل من غير قصد بـ ter-، وعن المصيبة بـ ke-…-an.
+  ar: أن تعبّر عن الحالة وما يقع بلا قصد بـ ter-، وعمّا يصيب المرء بـ ke-…-an.
+  en: Express states and accidents with ter-, and adversity with ke-…-an.
+slides:
+  - title: di- atau ter-?
+    grammar: id.passive.ter-ke-an
+    body:
+      ar_eg: |
+        الاتنين مبني للمجهول، بس فيه فرق:
+        - di- = حد عملها بقصد: Hutan itu dibakar. = الغابة اتحرقت (حد حرقها).
+        - ter- = حصلت من غير قصد، أو بقت حالة: Hutan itu terbakar. = الغابة ولعت / محروقة.
+        وكمان tidak + ter- = مستحيل: tidak terhitung = مايتعدّش.
+      ar: |
+        كلاهما للمجهول، والفرق:
+        - di- لفعل مقصود: Hutan itu dibakar. = أُحرقت الغابة (أحرقها أحد).
+        - ter- لما وقع بلا قصد أو صار حالة: Hutan itu terbakar. = احترقت الغابة.
+        وtidak + ter- للاستحالة: tidak terhitung = لا يُحصى.
+      en: |
+        Both are passive, but:
+        - di- = someone did it on purpose: Hutan itu dibakar. = The forest was burned (by someone).
+        - ter- = it happened without intent, or it's a state: Hutan itu terbakar. = The forest caught fire / is burned.
+        And tidak + ter- = impossible: tidak terhitung = countless.
+  - title: ke-…-an untuk musibah
+    grammar: id.passive.ter-ke-an
+    body:
+      ar_eg: |
+        ke-…-an على فعل أو اسم = حاجة وحشة حصلتلك (من غير ما تختار):
+        - banjir → kebanjiran = غرقوا في الفيضان
+        - hujan → kehujanan = اتبلّوا من المطر
+        - hilang → kehilangan = خسروا / ضاع منهم
+        الفاعل هو اللي اتأذى: Desa itu kebanjiran. = القرية غرقت.
+      ar: |
+        ke-…-an على الجذر = مصيبة أصابت الفاعل دون اختياره:
+        - banjir → kebanjiran = أصابه الفيضان
+        - hujan → kehujanan = بلّله المطر
+        - hilang → kehilangan = فقدَ
+        والفاعل هو المتضرّر: Desa itu kebanjiran. = غمر الفيضان القرية.
+      en: |
+        ke-…-an on a root = something bad happened to the subject:
+        - banjir → kebanjiran = got flooded
+        - hujan → kehujanan = got caught in the rain
+        - hilang → kehilangan = lost
+        The subject is the one who suffers: Desa itu kebanjiran. = The village got flooded.
+    examples:
+      - text: Orangutan kehilangan rumahnya karena hutan terbakar.
+        ar_eg: الأورانجوتان خسر بيته عشان الغابة اتحرقت.
+        ar: فقد إنسان الغاب موطنه لاحتراق الغابة.
+        en: Orangutans lose their home because the forest burns.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: terbakar
+        ar_eg: ولّع / اتحرق
+        ar: احترق
+        en: caught fire, burned
+      - text: kebanjiran
+        ar_eg: غرق في الفيضان
+        ar: أصابه الفيضان
+        en: got flooded
+      - text: kehilangan
+        ar_eg: خسر / ضاع منه
+        ar: فقدَ
+        en: to lose
+      - text: kemarau
+        ar_eg: جفاف (موسم)
+        ar: الجفاف (موسم)
+        en: dry season
+      - text: gambut
+        ar_eg: خث (تربة المستنقعات)
+        ar: الخثّ
+        en: peat
+    words: [terbakar, kebanjiran, kehilangan, kemarau, gambut]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حد ولّع في الغابة عن قصد عشان يزرع. تقول إيه؟
+      ar: أشعل أحدهم الغابة عمدًا ليزرع. ماذا تقول؟
+      en: Someone set the forest on fire on purpose to plant crops. What do you say?
+    options:
+      - Hutan itu terbakar.
+      - Hutan itu dibakar.
+      - Hutan itu kebakaran.
+    answer: 1
+    explain:
+      ar_eg: فيه فاعل وقصد، يبقى di-.
+      ar: ثمّة فاعل وقصد، فالصيغة di-.
+      en: There's an agent and intent, so di-.
+    words: [terbakar]
+  - id: e03
+    type: fill_blank
+    sentence: Setiap musim hujan, desa di tepi sungai itu ___.
+    meaning:
+      ar_eg: كل موسم مطر، القرية اللي على شط النهر دي بتغرق.
+      ar: في كلّ موسم مطر يغمر الفيضان تلك القرية على ضفّة النهر.
+      en: Every rainy season, that riverside village gets flooded.
+    options: [kebanjiran, terbakar, dibanjiri]
+    answers: [kebanjiran]
+    words: [kebanjiran]
+  - id: e04
+    type: listen
+    text: Pada musim kemarau, lahan gambut mudah terbakar.
+    question:
+      ar_eg: إيه اللي بيحصل في موسم الجفاف؟
+      ar: ماذا يحدث في موسم الجفاف؟
+      en: What happens in the dry season?
+    options:
+      - الغابات بتغرق.
+      - أرض الخث بتولّع بسهولة.
+      - الناس بتزرع شجر.
+    answer: 1
+    words: [kemarau, terbakar, gambut]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: القرية خسرت الغابة بتاعتها.
+      ar: فقدت القرية غابتها.
+      en: The village lost its forest.
+    answer: Desa itu kehilangan hutannya.
+    distractors: [terbakar, dibakar]
+    words: [kehilangan]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: إحنا اتبلّينا من المطر وإحنا في الغابة.
+      ar: بلّلنا المطر ونحن في الغابة.
+      en: We got caught in the rain in the forest.
+    answers:
+      - Kami kehujanan di hutan.
+      - Kita kehujanan di hutan.
+      - Kami kehujanan waktu di hutan.
+      - Kami kehujanan ketika di hutan.
+    explain:
+      ar_eg: مصيبة صغيرة حصلتلنا = ke-…-an.
+      ar: ما أصابنا من ضرر = ke-…-an.
+      en: A small misfortune that happened to us = ke-…-an.
+    words: [kehilangan]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Rumah kami kebanjiran.» معناها إيه؟
+      ar: ما معنى «Rumah kami kebanjiran.»؟
+      en: What does "Rumah kami kebanjiran." mean?
+    options:
+      - بيتنا ولّع.
+      - إحنا بنينا بيت جديد.
+      - بيتنا غرق في الفيضان.
+    answer: 2
+    words: [kebanjiran]
+  - id: e08
+    type: speaking
+    text: Kalau hutan terbakar, orangutan kehilangan rumahnya.
+    meaning:
+      ar_eg: لو الغابة ولّعت، الأورانجوتان بيخسر بيته.
+      ar: إذا احترقت الغابة فقد إنسان الغاب موطنه.
+      en: If the forest burns, orangutans lose their home.
+    words: [terbakar, kehilangan]
+  - id: e09
+    type: dictation
+    text: Lahan gambut kering pada musim kemarau.
+    meaning:
+      ar_eg: أرض الخث بتنشف في موسم الجفاف.
+      ar: تجفّ أراضي الخثّ في موسم الجفاف.
+      en: Peatland dries out in the dry season.
+    words: [gambut, kemarau]
+dialogue:
+  title: Asap di Tanjung Puting
+  lines:
+    - speaker: Mohamed
+      text: Mas Rizal, kenapa langitnya abu-abu? Apakah ada hutan yang terbakar?
+      ar_eg: يا رزال، السما رمادي ليه؟ فيه غابة بتولّع؟
+      ar: يا رزال، لماذا السماء رمادية؟ هل تحترق غابة ما؟
+      en: Mas Rizal, why is the sky grey? Is a forest on fire?
+    - speaker: Mas Rizal
+      text: Ya. Musim kemarau ini panjang, jadi lahan gambut mudah terbakar.
+      ar_eg: أيوه. موسم الجفاف ده طويل، فأرض الخث بتولّع بسهولة.
+      ar: نعم. موسم الجفاف طويل، فتحترق أراضي الخثّ بسهولة.
+      en: Yes. This dry season is long, so the peatland catches fire easily.
+    - speaker: Mohamed
+      text: Tetapi tahun lalu daerah ini kebanjiran, kan?
+      ar_eg: بس السنة اللي فاتت المنطقة دي غرقت، مش كده؟
+      ar: لكنّ المنطقة غمرها الفيضان العام الماضي، أليس كذلك؟
+      en: But last year this area got flooded, didn't it?
+    - speaker: Mas Rizal
+      text: Betul. Banjir dan api, dua-duanya membuat warga kehilangan banyak hal.
+      ar_eg: مظبوط. الفيضان والنار، الاتنين بيخلّوا الناس تخسر حاجات كتير.
+      ar: صحيح. الفيضان والنار كلاهما يُفقد السكّان الكثير.
+      en: Right. Floods and fire both make people lose a lot.
+new_words:
+  - word: terbakar
+    pos: verb
+    ar_eg: ولّع / اتحرق
+    ar: احترق
+    en: to catch fire, burned
+  - word: kebanjiran
+    pos: verb
+    ar_eg: غرق في الفيضان
+    ar: أصابه الفيضان
+    en: to get flooded
+  - word: kehilangan
+    pos: verb
+    ar_eg: خسر / ضاع منه
+    ar: فقدَ
+    en: to lose
+  - word: kemarau
+    pos: noun
+    ar_eg: موسم الجفاف
+    ar: موسم الجفاف
+    en: dry season
+  - word: gambut
+    pos: noun
+    ar_eg: خث (تربة المستنقعات)
+    ar: الخثّ
+    en: peat
+review:
+  status: draft
+  verified: false

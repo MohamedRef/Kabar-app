@@ -1,0 +1,185 @@
+schema: kabar.lesson/v1
+id: bipa5.u08.l03
+language: id
+title: Survei dan data
+can_do:
+  ar_eg: تقرا نتايج استطلاع رأي وتقول الأرقام بالنسب والكسور.
+  ar: أن تقرأ نتائج استطلاع رأي وتعبّر عن الأرقام بالنسب والكسور.
+  en: Read opinion-poll results and say the numbers in percentages and fractions.
+slides:
+  - title: Angka dalam survei
+    body:
+      ar_eg: |
+        في الاستطلاعات هتقابل:
+        - persen (%) : 60 persen responden = 60% من المشاركين
+        - separuh / setengah = النص، sepertiga = التلت، seperempat = الربع
+        - mayoritas = الأغلبية، minoritas = الأقلية
+        - responden = اللي ردّوا على الاستطلاع
+        ولطّف زي ما اتعلمت: Hasil ini tampaknya menunjukkan bahwa … = النتيجة دي باين إنها بتوضّح إن …
+      ar: |
+        ستقابل في الاستطلاعات:
+        - persen (%) : 60 persen responden = 60% من المشاركين
+        - separuh / setengah = النصف، sepertiga = الثلث، seperempat = الربع
+        - mayoritas = الأغلبية، minoritas = الأقلّية
+        - responden = المستجيبون
+        ولطّف كما تعلّمت: Hasil ini tampaknya menunjukkan bahwa … = يبدو أنّ هذه النتيجة تُظهر أنّ …
+      en: |
+        In polls you'll meet:
+        - persen (%) : 60 persen responden = 60% of respondents
+        - separuh / setengah = half, sepertiga = a third, seperempat = a quarter
+        - mayoritas = majority, minoritas = minority
+        - responden = respondents
+        And hedge as you learned: Hasil ini tampaknya menunjukkan bahwa … = These results seem to show that …
+    examples:
+      - text: Sepertiga responden membaca berita setiap hari.
+        ar_eg: تلت المشاركين بيقروا الأخبار كل يوم.
+        ar: ثلث المستجيبين يقرؤون الأخبار يوميًّا.
+        en: A third of respondents read the news every day.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: responden
+        ar_eg: المشاركين في الاستطلاع
+        ar: المستجيبون
+        en: respondents
+      - text: mayoritas
+        ar_eg: الأغلبية
+        ar: الأغلبية
+        en: majority
+      - text: separuh
+        ar_eg: النص
+        ar: النصف
+        en: half
+      - text: sepertiga
+        ar_eg: التلت
+        ar: الثلث
+        en: a third
+      - text: hasil
+        ar_eg: نتيجة
+        ar: نتيجة
+        en: result
+    words: [responden, mayoritas, separuh, sepertiga, hasil]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: 50% يعني إيه بالإندونيسي؟
+      ar: كيف تقول 50% بالإندونيسية بكلمة؟
+      en: How do you say 50% as a word?
+    options: [sepertiga, separuh, seperempat]
+    answer: 1
+    words: [separuh]
+  - id: e03
+    type: fill_blank
+    sentence: ___ responden setuju dengan kebijakan baru itu.
+    meaning:
+      ar_eg: أغلبية المشاركين موافقين على السياسة الجديدة.
+      ar: توافق أغلبية المستجيبين على تلك السياسة الجديدة.
+      en: The majority of respondents agree with the new policy.
+    options: [Mayoritas, Minoritas, Hasil]
+    answers: [Mayoritas]
+    words: [mayoritas, responden]
+  - id: e04
+    type: listen
+    text: Hasil survei menunjukkan bahwa sepertiga warga belanja daring.
+    question:
+      ar_eg: كام واحد من الناس بيشتري أونلاين؟
+      ar: كم نسبة من يتسوّقون إلكترونيًّا؟
+      en: What share of residents shop online?
+    options:
+      - النص.
+      - الربع.
+      - التلت.
+    answer: 2
+    words: [hasil, sepertiga]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: نص المشاركين بيستخدموا المحفظة الإلكترونية.
+      ar: نصف المستجيبين يستعملون المحفظة الرقمية.
+      en: Half of the respondents use an e-wallet.
+    answer: Separuh responden memakai dompet digital.
+    distractors: [sepertiga, mayoritas]
+    words: [separuh, responden]
+  - id: e06
+    type: translate
+    direction: from_target
+    source_text: Hasil ini tampaknya menunjukkan bahwa mayoritas warga puas.
+    answers_meaning:
+      ar_eg:
+        - النتيجة دي باين إنها بتوضّح إن أغلبية الناس راضيين.
+        - يبدو إن النتيجة دي بتقول إن أغلب السكان مبسوطين.
+      ar:
+        - يبدو أنّ هذه النتيجة تُظهر رضا أغلبية السكّان.
+        - تشير هذه النتيجة على ما يبدو إلى أنّ أغلب السكّان راضون.
+      en:
+        - These results seem to show that most residents are satisfied.
+        - It seems these results show the majority of residents are happy.
+    words: [hasil, mayoritas]
+  - id: e07
+    type: dictation
+    text: Sepertiga responden tidak menjawab pertanyaan itu.
+    meaning:
+      ar_eg: تلت المشاركين ماردّوش على السؤال ده.
+      ar: لم يُجب ثلث المستجيبين عن ذلك السؤال.
+      en: A third of respondents didn't answer that question.
+    words: [sepertiga, responden]
+  - id: e08
+    type: speaking
+    text: Hasil survei ini menarik, tetapi respondennya hanya seratus orang.
+    meaning:
+      ar_eg: نتيجة الاستطلاع ده مثيرة، بس المشاركين مية واحد بس.
+      ar: نتيجة هذا الاستطلاع لافتة، لكنّ المستجيبين مئة شخص فقط.
+      en: This survey's result is interesting, but there were only a hundred respondents.
+    words: [hasil, responden]
+dialogue:
+  title: Membaca hasil survei
+  lines:
+    - speaker: Rina
+      text: Mohamed, lihat ini. Mayoritas anak muda membaca berita di TikTok!
+      ar_eg: يا محمد، بص ده. أغلبية الشباب بيقروا الأخبار على تيك توك!
+      ar: يا محمد، انظر. أغلبية الشباب يقرؤون الأخبار على تيك توك!
+      en: Mohamed, look at this. Most young people read the news on TikTok!
+    - speaker: Mohamed
+      text: Berapa respondennya?
+      ar_eg: المشاركين كام واحد؟
+      ar: كم عدد المستجيبين؟
+      en: How many respondents were there?
+    - speaker: Rina
+      text: Hanya dua ratus orang, dan separuhnya dari Jakarta.
+      ar_eg: ميتين واحد بس، ونصهم من جاكرتا.
+      ar: مئتان فقط، ونصفهم من جاكرتا.
+      en: Only two hundred, and half of them from Jakarta.
+    - speaker: Mohamed
+      text: Kalau begitu, hasilnya barangkali kurang mewakili seluruh Indonesia.
+      ar_eg: يبقى النتيجة يمكن ماتمثّلش إندونيسيا كلها قوي.
+      ar: إذن ربّما لا تمثّل النتيجة إندونيسيا كلّها تمامًا.
+      en: In that case, the result perhaps doesn't quite represent all of Indonesia.
+new_words:
+  - word: responden
+    pos: noun
+    ar_eg: المشاركين في الاستطلاع
+    ar: المستجيبون
+    en: respondents
+  - word: mayoritas
+    pos: noun
+    ar_eg: الأغلبية
+    ar: الأغلبية
+    en: majority
+  - word: separuh
+    ar_eg: النص
+    ar: النصف
+    en: half
+  - word: sepertiga
+    ar_eg: التلت
+    ar: الثلث
+    en: a third
+  - word: hasil
+    pos: noun
+    arabic: حاصل
+    ar_eg: نتيجة
+    ar: نتيجة
+    en: result
+review:
+  status: draft
+  verified: false
