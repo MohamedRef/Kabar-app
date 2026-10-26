@@ -8,5 +8,6 @@ pub mod lang;
 pub mod layout;
 pub mod locale;
 pub mod penlab;
+pub mod review;
 pub mod settings;
 pub mod srs;

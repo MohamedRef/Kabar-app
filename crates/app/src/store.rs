@@ -221,6 +221,9 @@ impl Store {
     }
 }
 
+// Review cards and the review log (M6).
+mod reviews;
+
 fn migrate(conn: &mut Connection) -> Result<()> {
     let known = MIGRATIONS.len() as u32;
     let current: u32 = conn.pragma_query_value(None, "user_version", |r| r.get(0))?;
