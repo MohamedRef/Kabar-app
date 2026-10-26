@@ -41,9 +41,12 @@ pub const TABLES: &[(&str, SyncKind)] = &[
     ("highlights", SyncKind::Lww),
     ("word_status", SyncKind::Lww),
     // Learning
+    ("cards", SyncKind::Lww),
     ("review_log", SyncKind::AppendOnly),
+    ("lesson_events", SyncKind::AppendOnly),
     ("attempts", SyncKind::AppendOnly),
-    ("xp_events", SyncKind::AppendOnly),
+    // Activity log: append-only, but a tombstone lets the learner undo a tick or a purchase.
+    ("xp_events", SyncKind::Immutable),
     ("conversations", SyncKind::Lww),
     ("stories", SyncKind::Lww),
     ("souvenirs", SyncKind::Lww),

@@ -183,6 +183,16 @@ assert.deepEqual(names, ["Galaxy S24 Ultra", "Galaxy Tab S11"]);
 assert.ok(list.json.devices.find((d) => d.device_id === "tab-s11").current);
 assert.ok(list.json.devices.find((d) => d.device_id === "s24u").last_sync_ms);
 
+step("push tokens (M7): stored per device; Firebase isn't set up here");
+const push = await api("PUT", "/v1/devices/me/push", { token: tablet.json.access_token, body: { token: "e2e-fcm:APA91b-token" } });
+assert.equal(push.status, 200, JSON.stringify(push.json));
+assert.deepEqual(push.json, { registered: true, push_configured: false });
+const badPush = await api("PUT", "/v1/devices/me/push", { token: tablet.json.access_token, body: { token: "has spaces" } });
+assert.equal(badPush.status, 400);
+const noPush = await api("PUT", "/v1/devices/me/push", { token: tablet.json.access_token, body: { token: "" } });
+assert.deepEqual(noPush.json, { registered: false, push_configured: false });
+assert.equal((await signIn("server", "Impostor")).status, 400);
+
 step("refresh rotates the token");
 const refreshed = await api("POST", "/v1/auth/refresh", { body: { refresh_token: tablet.json.refresh_token } });
 assert.equal(refreshed.status, 200, JSON.stringify(refreshed.json));
@@ -201,6 +211,7 @@ assert.equal(noKey.status, 503);
 assert.equal(noKey.json.kind, "unavailable");
 const vault = await api("GET", "/v1/vault", { token: tablet.json.access_token });
 assert.equal(vault.json.tts_configured, false);
+assert.equal(vault.json.push_configured, false);
 
 step("remote sign-out from the tablet closes the phone's socket");
 const revoked = await api("DELETE", "/v1/devices/s24u", { token: refreshed.json.access_token });

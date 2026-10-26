@@ -1,5 +1,6 @@
 //! Kabar: one Dioxus codebase for the Mac, the S24 Ultra and the Tab S11.
 
+mod coach;
 mod i18n;
 mod icons;
 mod journey;
@@ -16,8 +17,10 @@ use std::rc::Rc;
 
 use dioxus::prelude::*;
 use kabar_core::layout::WidthClass;
+use kabar_core::locale::{Direction, UiLanguage, format_number};
 use kabar_core::settings::Settings;
 
+use crate::coach::Coach;
 use crate::i18n::{Msg, t};
 use crate::store::Store;
 
@@ -29,6 +32,7 @@ pub enum Screen {
     Journey,
     Reader,
     Review,
+    Coach,
     Studio,
     Settings,
     PenLab,
@@ -43,6 +47,7 @@ impl Screen {
             Self::Journey => Msg::NavJourney,
             Self::Reader => Msg::NavReader,
             Self::Review => Msg::NavReview,
+            Self::Coach => Msg::NavCoach,
             Self::Studio => Msg::NavStudio,
             Self::Settings => Msg::NavSettings,
             Self::PenLab => Msg::NavPenLab,
@@ -73,6 +78,22 @@ pub struct Db(pub Rc<RefCell<Store>>);
 impl Ui {
     pub fn t(&self, msg: Msg) -> &'static str {
         t(self.settings.read().ui_language, msg)
+    }
+
+    pub fn lang(&self) -> UiLanguage {
+        self.settings.read().ui_language
+    }
+
+    /// Whether numbers use Eastern Arabic digits right now.
+    pub fn eastern(&self) -> bool {
+        let s = self.settings.read();
+        s.eastern_digits && s.ui_language.dir() == Direction::Rtl
+    }
+
+    /// A number in the UI's digits.
+    pub fn num(&self, n: impl Into<u64>) -> String {
+        let s = self.settings.read();
+        format_number(n.into(), s.ui_language, s.eastern_digits)
     }
 
     /// Saves changed settings and updates the UI.
@@ -167,13 +188,16 @@ fn Loaded(db: Db) -> Element {
         lesson: Signal::new(open_lesson),
     });
     use_context_provider(|| db.clone());
+    let coach = use_context_provider(|| Coach::load(&db));
     use_width_tracking(ui.width);
+    coach::use_clock(coach, db.clone());
 
     let settings = ui.settings.read();
     let lang = settings.ui_language;
     let theme = settings.theme.as_str();
     let width = ui.width.read().as_str();
-    let batik = use_hook(|| theme::kawung_tile("2b3a70", 0.06, 72));
+    let batik = use_memo(move || theme::kawung_tile(coach.batik_color(), 0.06, 72));
+    let onboarded = coach.profile.read().is_some();
 
     rsx! {
         document::Title { "Kabar" }
@@ -185,10 +209,12 @@ fn Loaded(db: Db) -> Element {
             "data-theme": theme,
             "data-width": width,
             style: "--batik: {batik}",
-            if settings.welcomed {
-                Shell {}
-            } else {
+            if !settings.welcomed {
                 screens::Welcome {}
+            } else if !onboarded {
+                coach::onboarding::Onboarding {}
+            } else {
+                Shell {}
             }
         }
     }
@@ -224,6 +250,7 @@ fn Shell() -> Element {
         Screen::Journey,
         Screen::Reader,
         Screen::Review,
+        Screen::Coach,
         Screen::Studio,
         Screen::PenLab,
         Screen::Settings,
@@ -249,7 +276,8 @@ fn Shell() -> Element {
             }
             main { class: "content",
                 match current {
-                    Screen::Today => rsx! { screens::Today {} },
+                    Screen::Today => rsx! { coach::today::Today {} },
+                    Screen::Coach => rsx! { coach::coach_screen::CoachScreen {} },
                     Screen::Journey => rsx! { journey::JourneyScreen {} },
                     Screen::Reader => rsx! { screens::ComingSoon { title: Msg::NavReader, milestone: "M5" } },
                     Screen::Review => rsx! { review::ReviewScreen {} },
