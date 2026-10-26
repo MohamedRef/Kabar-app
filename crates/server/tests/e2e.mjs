@@ -236,7 +236,8 @@ tabletWs.ws.close();
 
 if (!process.env.KABAR_E2E_SKIP_APP) {
   step("the app's sync engine: phone → tablet, Devices, remote sign-out");
-  execFileSync("cargo", [
+  // Async, so this process keeps serving the fake Google meanwhile.
+  const app = spawn("cargo", [
     "test", "-p", "kabar-app", "--no-default-features", "--",
     "--ignored", "--exact", "cloud::e2e::phone_and_tablet_sync_through_kabar_cloud", "--nocapture",
   ], {
@@ -244,6 +245,8 @@ if (!process.env.KABAR_E2E_SKIP_APP) {
     stdio: ["ignore", "inherit", "inherit"],
     env: { ...process.env, KABAR_E2E_URL: BASE, KABAR_E2E_TOKEN_URL: `http://127.0.0.1:${JWKS_PORT}/token` },
   });
+  const code = await new Promise((r) => app.on("exit", r));
+  assert.equal(code, 0, "the app's end-to-end test failed");
 }
 
 console.log(`\n✅ Kabar Cloud end-to-end: all checks passed (phone → tablet in ${latency} ms)`);
