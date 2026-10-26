@@ -1,0 +1,161 @@
+schema: kabar.lesson/v1
+id: j6.u05.l04
+language: jv
+title: Ing Imogiri
+can_do:
+  ar_eg: تقرا أسامي وكلمات عربية وأرقام في زيارة.
+  ar: أن تقرأ أسماء وألفاظًا عربية وأعدادًا في زيارة.
+  en: Read names, loanwords and numbers on a visit.
+slides:
+  - title: Murda, rekan, angka
+    body:
+      ar_eg: |
+        في إيموغيري هتشوف التلاتة مع بعض:
+        - murda للأسامي والألقاب المحترمة: ꦓꦸꦱ꧀ꦠꦶ.
+        - rekan للأصوات العربية: ꦢ꦳ꦶꦏꦶꦂ.
+        - الأرقام بين ꧇…꧇: ꧇꧔꧐꧙꧇.
+      ar: |
+        في إيموغيري تجد الثلاثة معًا:
+        - murda لأسماء المحترمين وألقابهم: ꦓꦸꦱ꧀ꦠꦶ.
+        - rekan للأصوات العربية: ꦢ꦳ꦶꦏꦶꦂ.
+        - الأعداد بين ꧇…꧇: ꧇꧔꧐꧙꧇.
+      en: |
+        At Imogiri you'll see all three together:
+        - murda for honoured names and titles: ꦓꦸꦱ꧀ꦠꦶ.
+        - rekan for Arabic sounds: ꦢ꦳ꦶꦏꦶꦂ.
+        - numbers between ꧇…꧇: ꧇꧔꧐꧙꧇.
+    grammar: jv.aksara.murda-rekan
+    examples:
+      - text: ꦯꦸꦭ꧀ꦠꦤ꧀ (Sultan)
+        ar_eg: السلطان
+        ar: السلطان
+        en: Sultan
+      - text: ꧇꧔꧐꧙꧇ (409)
+        ar_eg: أربعمية وتسعة
+        ar: أربعمائة وتسعة
+        en: four hundred and nine
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة على البوابة مكتوبة بحرف murda؟
+      ar: أي كلمة على البوابة مكتوبة بحرف murda؟
+      en: Which word on the gate is written with a murda letter?
+    options: ["ꦱꦼꦒ", "ꦧꦸꦏꦸ", "ꦓꦸꦱ꧀ꦠꦶ"]
+    answer: 2
+  - id: e02
+    type: listen
+    text: Undhak-undhakane ana patang atus sanga.
+    question:
+      ar_eg: السلالم عددها كام؟
+      ar: كم عدد الدرجات؟
+      en: How many steps are there?
+    options: ["꧇꧔꧐꧙꧇", "꧇꧔꧙꧐꧇", "꧇꧔꧙꧇"]
+    answer: 0
+    meaning:
+      ar_eg: السلالم عددها أربعمية وتسعة.
+      ar: عدد الدرجات أربعمائة وتسع.
+      en: There are four hundred and nine steps.
+    words: [undhak-undhakan]
+  - id: e03
+    type: fill_blank
+    sentence: ꦢ꦳ꦶꦏꦶꦂ = ___
+    meaning:
+      ar_eg: اكتب القراية بالحروف اللاتينية.
+      ar: اكتب القراءة بالحروف اللاتينية.
+      en: Type the reading in Latin letters.
+    answers: [dzikir]
+  - id: e04
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب التاريخ بالحروف والأرقام اللاتينية: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇"
+      ar: "اكتب التاريخ بالحروف والأرقام اللاتينية: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇"
+      en: "Write the date in Latin letters and digits: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇"
+    answers: [tanggal 17, tanggal pitulas]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: السلالم عددها أربعمية وتسعة.
+      ar: عدد الدرجات أربعمائة وتسع.
+      en: There are four hundred and nine steps.
+    answer: Undhak-undhakane ana patang atus sanga.
+    distractors: [papat, satus]
+    words: [undhak-undhakan]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الراجل اللي بيحرس القبور الملكية اسمه إيه؟
+      ar: ما اسم حارس المقابر الملكية؟
+      en: What do you call the keeper of the royal tombs?
+    options: [juru kunci, dhalang, bakul]
+    answer: 0
+    words: [juru kunci]
+  - id: e07
+    type: fill_blank
+    sentence: ___ njaga makam raja-raja.
+    meaning:
+      ar_eg: حارس المقابر بيحرس قبور الملوك.
+      ar: يحرس حارسُ المقابر قبورَ الملوك.
+      en: The tomb keeper looks after the kings' graves.
+    options: [juru kunci, undhak-undhakan, zakat]
+    answers: [juru kunci]
+    words: [juru kunci]
+  - id: e08
+    type: dictation
+    text: Juru kunci njaga makam.
+    meaning:
+      ar_eg: حارس المقابر بيحرس القبر.
+      ar: يحرس حارسُ المقابر القبر.
+      en: The tomb keeper looks after the grave.
+    words: [juru kunci]
+  - id: e09
+    type: speaking
+    text: Undhak-undhakane akeh banget!
+    meaning:
+      ar_eg: السلالم كتير قوي!
+      ar: الدرجات كثيرة جدًا!
+      en: There are so many steps!
+    words: [undhak-undhakan]
+dialogue:
+  title: Juru kunci
+  lines:
+    - speaker: Pak Harjo
+      text: Kula juru kunci ing Imogiri, Mas.
+      ar_eg: أنا حارس المقابر في إيموغيري يا ابني.
+      ar: أنا حارس المقابر في إيموغيري يا بني.
+      en: I'm the tomb keeper at Imogiri.
+    - speaker: Mohamed
+      text: Pak, kula badhe minggah dhateng makam.
+      ar_eg: يا عمّو، أنا عايز أطلع للمقابر.
+      ar: يا سيدي، أريد الصعود إلى المقابر.
+      en: Sir, I'd like to go up to the tombs.
+    - speaker: Pak Harjo
+      text: Mangga. Undhak-undhakanipun kathah sanget.
+      ar_eg: اتفضل. السلالم كتير قوي.
+      ar: تفضّل. الدرجات كثيرة جدًا.
+      en: Please do. There are a great many steps.
+    - speaker: Mohamed
+      text: Kula sampun maos ing papan, sekawan atus sanga!
+      ar_eg: "أنا قريت على اللوحة: أربعمية وتسعة!"
+      ar: "قرأتُ على اللوحة: أربعمائة وتسع!"
+      en: "I read it on the sign: four hundred and nine!"
+    - speaker: Pak Harjo
+      text: Leres! Ngatos-atos, Mas.
+      ar_eg: صح! خلي بالك من نفسك يا ابني.
+      ar: صحيح! انتبه لنفسك يا بني.
+      en: That's right! Take care.
+new_words:
+  - word: juru kunci
+    pos: noun
+    ar_eg: حارس المقابر / المكان المقدس
+    ar: حارس المقابر أو المزار
+    en: keeper of a tomb or sacred site = juru kunci
+  - word: undhak-undhakan
+    pos: noun
+    ar_eg: سلالم / درجات
+    ar: درجات السلّم
+    en: steps, stairs = anak tangga
+review:
+  status: draft
+  verified: false

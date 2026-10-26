@@ -1,0 +1,660 @@
+schema: kabar.test/v1
+id: j5.test
+language: jv
+kind: level
+title:
+  ar_eg: اختبار مستوى J5 — سيمارانج (قراية نصوص جاوي حقيقية)
+  ar: اختبار مستوى J5 — سيمارانج (قراءة نصوص جاوية حقيقية)
+  en: J5 level test — Semarang (reading real Javanese)
+intro:
+  ar_eg: |
+    خلّصت خط الشمال: Semarang وKudus وDemak! هنا هتقرا مقالة على طريقة ويكيبيديا، وخبر بالمبني للمجهول، وقصة قصيرة (cerkak)، وبوست متلخبط جاوي وإندونيسي وإنجليزي، وهترجّع سبيلنج الشات للسبيلنج القياسي، وتشرح أغنية.
+    خد وقتك. مش مطلوب تفهم كل كلمة؛ دوّر على الهيكل (iku، kang، dening، banjur، pungkasane) والمعنى هيبان. السبيلنج العادي مطلوب بس في الأسئلة اللي بتسأل عنه؛ غير كده بعلامات أو من غيرها — كله مقبول.
+    ولو جاي من "Take a flight" عشان تعدّي J5، أهلًا بيك — نفس الأسئلة.
+  ar: |
+    أنهيتَ الخط الشمالي: Semarang وKudus وDemak! ستقرأ هنا مقالة على طريقة ويكيبيديا، وخبرًا بالمبني للمجهول، وقصة قصيرة (cerkak)، ومنشورًا يمزج الجاوية بالإندونيسية والإنجليزية، وتعيد تهجئة الدردشة إلى التهجئة المعيارية، وتشرح أغنية.
+    خذ وقتك؛ لا يلزمك فهم كل كلمة، فابحث عن الهيكل (iku، kang، dening، banjur، pungkasane) يتّضح المعنى. التهجئة المعيارية مطلوبة فقط في الأسئلة التي تسأل عنها، وفيما عدا ذلك يُقبل الكلام بالعلامات أو بدونها.
+    وإن جئت من "Take a flight" لتتجاوز J5، فأهلًا بك؛ الأسئلة نفسها.
+  en: |
+    You've finished the north-coast branch line: Semarang, Kudus and Demak! Here you'll read an encyclopedia-style article, a news item in the passive, a short story (cerkak) and a post mixing Javanese, Indonesian and English; you'll turn chat spelling back into standard spelling, and explain a song.
+    Take your time. You don't need every word: find the skeleton (iku, kang, dening, banjur, pungkasane) and the meaning appears. Standard spelling only matters in the items that ask about it; elsewhere, with or without accents, all is accepted.
+    If you came through "Take a flight" to skip J5, welcome: these are the same questions.
+minutes: 40
+pass_mark: 0.7
+scoring: Score = points earned / points available (closed items 1 point unless set; translate items are graded against reference answers first, with or without accents, then AI grade_answer; the spelling-normalisation item requires standard spelling; writing_task and speaking_task are graded by AI against their rubric, each criterion an equal share of the item's points). Pass at >= 0.7 (the curriculum's J5 mark). Passing marks J5 complete and opens J6; the same rule applies when the test is taken as the "Take a flight" skip-ahead over J5. Below the mark, show the per-skill results and suggest the units behind the missed items, with no penalty and an open retry. Javanese items stay unverified until the learner approves them.
+sections:
+  - id: listening
+    skill: listening
+    title:
+      ar_eg: الاستماع
+      ar: الاستماع
+      en: Listening
+    instructions:
+      ar_eg: اسمع، وعيد براحتك، واختار اللي سمعته أو جاوب على السؤال أو اكتبه.
+      ar: استمع وأعِد كما تشاء، ثم اختر ما سمعته أو أجب عن السؤال أو اكتبه.
+      en: Listen, replay as you like, then pick what you heard, answer the question, or write it.
+    items:
+      - id: t01
+        type: listen
+        text: Kutha Lama iku papan kang misuwur ing Semarang.
+        options:
+          - Kutha Lama iku papan kang lawas ing Semarang.
+          - Kutha Lama iku papan kang misuwur ing Semarang.
+          - Kutha Lama iku papan sing misuwur neng Semarang.
+        answer: 1
+        words: [kang, misuwur]
+      - id: t02
+        type: listen
+        text: Dalan ing Kutha Lama kebanjiran rob wingi sore.
+        question:
+          ar_eg: الشارع غرق إمتى؟
+          ar: متى غمر الماءُ الشارع؟
+          en: When was the road flooded?
+        options: [esuk iki, sesuk esuk, wingi sore]
+        answer: 2
+        meaning:
+          ar_eg: الشارع في Kota Lama غرق من مية البحر امبارح العصر.
+          ar: غمر مدُّ البحر الشارعَ في Kota Lama عصر أمس.
+          en: The road in Kota Lama was flooded by the tide yesterday afternoon.
+        words: [kebanjiran, rob]
+      - id: t03
+        type: listen
+        text: Hawane adhem banget.
+        options: ["Hawane adhem banget.", "Hawane adem banget."]
+        answer: 0
+        meaning:
+          ar_eg: الجو برد قوي.
+          ar: الجو بارد جدًا.
+          en: The weather is really cold.
+        words: [adhem, hawa]
+      - id: t04
+        type: listen
+        text: Sabar ya, aku lagi OTW.
+        question:
+          ar_eg: صاحبك يقصد إيه؟
+          ar: ماذا يقصد صديقك؟
+          en: What does your friend mean?
+        options: ["Maaf, aku tidak bisa datang.", "Tunggu ya, aku sedang di jalan.", "Aku sudah sampai."]
+        answer: 1
+        meaning:
+          ar_eg: استنى شوية، أنا في الطريق.
+          ar: انتظر قليلًا، أنا في الطريق.
+          en: Hang on, I'm on my way.
+        words: [sabar, OTW]
+      - id: t05
+        type: listen
+        text: Ing sawijining dina, kucinge Sari ilang. Sari golek ing kebon, nuli ing pasar. Pungkasane, kucinge mulih dhewe.
+        question:
+          ar_eg: الحكاية خلصت إزاي؟
+          ar: كيف انتهت الحكاية؟
+          en: How does the story end?
+        options:
+          - Sari menemukan kucingnya di pasar.
+          - Kucingnya hilang lagi.
+          - Kucingnya pulang sendiri.
+        answer: 2
+        meaning:
+          ar_eg: في يوم من الأيام، قطة Sari ضاعت. Sari دوّرت في الجنينة، وبعدين في السوق. وفي الآخر القطة رجعت البيت لوحدها.
+          ar: في يوم من الأيام ضاعت قطة Sari، فبحثت عنها في الحديقة ثم في السوق، وفي النهاية عادت القطة إلى البيت وحدها.
+          en: One day, Sari's cat went missing. Sari searched in the garden, then at the market. In the end, the cat came home by itself.
+        words: [ing sawijining dina, nuli, pungkasane]
+      - id: t06
+        type: dictation
+        text: Lawang Sewu dibangun ing jaman Walanda.
+        meaning:
+          ar_eg: Lawang Sewu اتبنى أيام الهولنديين.
+          ar: بُني Lawang Sewu في العهد الهولندي.
+          en: Lawang Sewu was built in the Dutch era.
+        words: [dibangun, jaman]
+  - id: reading
+    skill: reading
+    title:
+      ar_eg: القراية
+      ar: القراءة
+      en: Reading
+    instructions:
+      ar_eg: اقرا المقالة والخبر والقصة والبوست، وجاوب من اللي مكتوب. دوّر على الهيكل الأول.
+      ar: اقرأ المقالة والخبر والقصة والمنشور، وأجب مما ورد فيها. ابحث عن الهيكل أولًا.
+      en: Read the article, the news item, the story and the post, and answer from what they say. Find the skeleton first.
+    items:
+      - id: t07
+        type: multiple_choice
+        question: |
+          LAWANG SEWU
+          Lawang Sewu iku sawijining gedhong lawas ing kutha Semarang. Gedhong iki ana ing tengah kutha, ora adoh saka Simpang Lima. Lawang Sewu dibangun dening perusahaan sepur Walanda ing jaman Walanda. Saiki Lawang Sewu dadi papan wisata, lan kalebu papan kang misuwur ing Jawa Tengah.
+        question_meaning:
+          ar_eg: Lawang Sewu إيه؟
+          ar: ما Lawang Sewu؟
+          en: What is Lawang Sewu?
+        options: ["Sebuah stasiun kereta di Kudus.", "Sebuah gedung tua di Semarang.", "Sebuah pasar di Simpang Lima."]
+        answer: 1
+        words: [sawijining, gedhong, lawas]
+      - id: t08
+        type: multiple_choice
+        question: |
+          LAWANG SEWU
+          Lawang Sewu iku sawijining gedhong lawas ing kutha Semarang. Gedhong iki ana ing tengah kutha, ora adoh saka Simpang Lima. Lawang Sewu dibangun dening perusahaan sepur Walanda ing jaman Walanda. Saiki Lawang Sewu dadi papan wisata, lan kalebu papan kang misuwur ing Jawa Tengah.
+        question_meaning:
+          ar_eg: مين اللي بنى Lawang Sewu؟
+          ar: مَن بنى Lawang Sewu؟
+          en: Who built Lawang Sewu?
+        options: ["Warga Semarang.", "Sultan Demak.", "Perusahaan kereta api Belanda."]
+        answer: 2
+        explain:
+          ar_eg: dibangun dening … = اتبنى على إيد … (dening = oleh)، والفاعل الحقيقي بييجي بعد dening.
+          ar: dibangun dening … = بُني على يد …، فـ dening = oleh، والفاعل الحقيقي يأتي بعدها.
+          en: dibangun dening … = was built by …; dening = oleh, and the real doer comes after it.
+        words: [dibangun, dening]
+      - id: t09
+        type: multiple_choice
+        question: |
+          LAWANG SEWU
+          Lawang Sewu iku sawijining gedhong lawas ing kutha Semarang. Gedhong iki ana ing tengah kutha, ora adoh saka Simpang Lima. Lawang Sewu dibangun dening perusahaan sepur Walanda ing jaman Walanda. Saiki Lawang Sewu dadi papan wisata, lan kalebu papan kang misuwur ing Jawa Tengah.
+        question_meaning:
+          ar_eg: Lawang Sewu بقى إيه دلوقتي؟
+          ar: ماذا صار Lawang Sewu اليوم؟
+          en: What is Lawang Sewu today?
+        options: ["Tempat wisata yang terkenal.", "Stasiun kereta api.", "Kantor lurah."]
+        answer: 0
+        words: [dadi, kalebu]
+      - id: t10
+        type: multiple_choice
+        question: |
+          WARTA CEKAK
+          Pak Slamet kapilih dadi lurah anyar dening warga desa. Wingi sore, dalan ing desa kasebut kebanjiran rob. Esuk iki, dalan kasebut wis diresiki dening warga lan lurah anyar.
+        question_meaning:
+          ar_eg: مين اللي اختار Pak Slamet؟
+          ar: مَن اختار Pak Slamet؟
+          en: Who chose Pak Slamet?
+        options: ["Pak Harjo.", "Warga desa.", "Perusahaan kereta api."]
+        answer: 1
+        explain:
+          ar_eg: kapilih = dipilih (مبني للمجهول رسمي)، وdening warga desa = على إيد أهل القرية.
+          ar: kapilih = dipilih (مبني للمجهول رسمي)، وdening warga desa = من قِبَل أهل القرية.
+          en: kapilih = dipilih (the formal passive), and dening warga desa = by the villagers.
+        words: [kapilih, dening]
+      - id: t11
+        type: multiple_choice
+        question: |
+          WARTA CEKAK
+          Pak Slamet kapilih dadi lurah anyar dening warga desa. Wingi sore, dalan ing desa kasebut kebanjiran rob. Esuk iki, dalan kasebut wis diresiki dening warga lan lurah anyar.
+        question_meaning:
+          ar_eg: إيه اللي حصل امبارح العصر، وإيه اللي حصل النهارده الصبح؟
+          ar: ماذا حدث عصر أمس، وماذا حدث صباح اليوم؟
+          en: What happened yesterday afternoon, and what happened this morning?
+        options:
+          - Jalannya dibangun kemarin, dan dibersihkan pagi ini.
+          - Jalannya kebanjiran rob kemarin sore, dan dibersihkan warga dan lurah pagi ini.
+          - Lurahnya dipilih pagi ini, dan jalannya kebanjiran sore nanti.
+        answer: 1
+        words: [kebanjiran, diresiki, kasebut]
+      - id: t12
+        type: multiple_choice
+        question: |
+          Ing sawijining dina, Bima lan simbahe lunga menyang pasar. Sadurunge lunga, simbah kandha, "Aja lali payung, ya." Nanging Bima lali. Bareng tekan pasar, dumadakan udan deres. Bima lan simbahe teles kabeh. Pungkasane, simbah tuku payung anyar ing pasar. Wiwit iku, Bima ora tau lali payung.
+        question_meaning:
+          ar_eg: الجدّ قال لـ Bima إيه قبل ما يمشوا؟
+          ar: ماذا قال الجدّ لـ Bima قبل أن يخرجا؟
+          en: What did Grandpa tell Bima before they left?
+        options: ["Ayo makan jenang.", "Jangan pergi ke pasar.", "Jangan lupa payung."]
+        answer: 2
+        words: [sadurunge, aja lali]
+      - id: t13
+        type: multiple_choice
+        question: |
+          Ing sawijining dina, Bima lan simbahe lunga menyang pasar. Sadurunge lunga, simbah kandha, "Aja lali payung, ya." Nanging Bima lali. Bareng tekan pasar, dumadakan udan deres. Bima lan simbahe teles kabeh. Pungkasane, simbah tuku payung anyar ing pasar. Wiwit iku, Bima ora tau lali payung.
+        question_meaning:
+          ar_eg: إيه اللي حصل أول ما وصلوا السوق؟
+          ar: ماذا حدث فور وصولهما إلى السوق؟
+          en: What happened as soon as they reached the market?
+        options: ["Tiba-tiba hujan deras.", "Bima hilang.", "Simbah membeli jenang."]
+        answer: 0
+        explain:
+          ar_eg: bareng في أول الجملة في الحكاية = «أول ما»، وdumadakan = فجأة.
+          ar: bareng في أول الجملة القصصية = «ما إن»، وdumadakan = فجأة.
+          en: bareng opening a clause in a story = "as soon as", and dumadakan = suddenly.
+        words: [bareng, tekan, dumadakan]
+      - id: t14
+        type: multiple_choice
+        question: |
+          Ing sawijining dina, Bima lan simbahe lunga menyang pasar. Sadurunge lunga, simbah kandha, "Aja lali payung, ya." Nanging Bima lali. Bareng tekan pasar, dumadakan udan deres. Bima lan simbahe teles kabeh. Pungkasane, simbah tuku payung anyar ing pasar. Wiwit iku, Bima ora tau lali payung.
+        question_meaning:
+          ar_eg: Bima اتغيّر إزاي من ساعتها؟
+          ar: كيف تغيّر Bima منذ ذلك الحين؟
+          en: How has Bima changed since then?
+        options:
+          - Bima tidak mau ke pasar lagi.
+          - Bima tidak pernah lupa payung lagi.
+          - Bima selalu membeli payung baru.
+        answer: 1
+        explain:
+          ar_eg: wiwit iku = من ساعتها، وora tau = عمره ما.
+          ar: wiwit iku = منذ ذلك الحين، وora tau = لم يحدث قط.
+          en: wiwit iku = from then on, and ora tau = never.
+        words: [wiwit iku, pungkasane]
+      - id: t15
+        type: multiple_choice
+        question: Guys, videone udh tak upload neng grup, ojo lali like yo!
+        question_meaning:
+          ar_eg: الكاتب عمل إيه؟
+          ar: ماذا فعل الكاتب؟
+          en: What has the writer done?
+        options:
+          - Dia lupa mengunggah videonya.
+          - Dia minta video dari grup.
+          - Dia sudah mengunggah videonya ke grup.
+        answer: 2
+        words: [udh, tak, neng]
+      - id: t16
+        type: multiple_choice
+        question: Guys, videone udh tak upload neng grup, ojo lali like yo!
+        question_meaning:
+          ar_eg: أنهي مجموعة كلها كلمات من الهيكل الجاوي؟
+          ar: أيّ مجموعة كلها من كلمات الهيكل الجاوي؟
+          en: Which group is all Javanese frame words?
+        options: ["guys, upload, like", "udh, grup", "tak, neng, ojo, yo"]
+        answer: 2
+        explain:
+          ar_eg: tak وneng وojo (= aja) وyo (= ya) جاوي. guys وupload وlike إنجليزي، وudh (sudah) إندونيسي.
+          ar: tak وneng وojo (= aja) وyo (= ya) جاوية، وguys وupload وlike إنجليزية، وudh (sudah) إندونيسية.
+          en: tak, neng, ojo (= aja) and yo (= ya) are Javanese; guys, upload and like are English; udh (sudah) is Indonesian.
+        words: [campur kode]
+  - id: vocabulary
+    skill: vocabulary
+    title:
+      ar_eg: الكلمات
+      ar: المفردات
+      en: Vocabulary
+    items:
+      - id: t17
+        type: match_pairs
+        pairs:
+          - text: iku
+            ar_eg: يكون، هو (في التعريف؛ = adalah)
+            ar: هو، يكون (في التعريف؛ = adalah)
+            en: is (defining; = adalah)
+          - text: yaiku
+            ar_eg: يعني، وهما (= yaitu)
+            ar: أي، وهي (= yaitu)
+            en: namely (= yaitu)
+          - text: kang
+            ar_eg: اللي (مكتوب؛ = yang)
+            ar: الذي (كتابةً؛ = yang)
+            en: which, who (written; = yang)
+          - text: minangka
+            ar_eg: بصفته، كـ (= sebagai)
+            ar: بوصفه (= sebagai)
+            en: as (= sebagai)
+          - text: kalebu
+            ar_eg: من ضمن (= termasuk)
+            ar: من ضمن (= termasuk)
+            en: is among (= termasuk)
+        words: [iku, yaiku, kang, minangka, kalebu]
+      - id: t18
+        type: match_pairs
+        pairs:
+          - text: biyen
+            ar_eg: زمان (= dulu)
+            ar: قديمًا (= dulu)
+            en: long ago (= dulu)
+          - text: sawise
+            ar_eg: بعد ما (= sesudah)
+            ar: بعد أن (= sesudah)
+            en: after (= sesudah)
+          - text: sadurunge
+            ar_eg: قبل ما (= sebelum)
+            ar: قبل أن (= sebelum)
+            en: before (= sebelum)
+          - text: nalika
+            ar_eg: لمّا، وقت ما (= ketika)
+            ar: حين، عندما (= ketika)
+            en: when, in the past (= ketika)
+          - text: dumadakan
+            ar_eg: فجأة (= tiba-tiba)
+            ar: فجأة (= tiba-tiba)
+            en: suddenly (= tiba-tiba)
+          - text: pungkasane
+            ar_eg: في الآخر (= akhirnya)
+            ar: في النهاية (= akhirnya)
+            en: in the end (= akhirnya)
+        words: [biyen, sawise, sadurunge, nalika, dumadakan, pungkasane]
+      - id: t19
+        type: match_pairs
+        pairs:
+          - text: bgt
+            ar_eg: قوي (اختصار banget)
+            ar: جدًا (اختصار banget)
+            en: really (short for banget)
+          - text: udh
+            ar_eg: خلاص، بالفعل (اختصار sudah)
+            ar: قد (اختصار sudah)
+            en: already (short for sudah)
+          - text: blm
+            ar_eg: لسه (اختصار belum)
+            ar: ليس بعد (اختصار belum)
+            en: not yet (short for belum)
+          - text: gpp
+            ar_eg: مفيش مشكلة (اختصار gak papa)
+            ar: لا بأس (اختصار gak papa)
+            en: no problem (short for gak papa)
+          - text: min
+            ar_eg: الأدمن، صاحب الصفحة
+            ar: المشرف، صاحب الصفحة
+            en: admin, the page owner
+        words: [bgt, udh, blm, gpp, min]
+      - id: t20
+        type: fill_blank
+        sentence: Nalika kowe lunga, atiku ___.
+        meaning:
+          ar_eg: لما مشيت، قلبي اتكسر حتت.
+          ar: حين رحلتَ، تحطّم قلبي.
+          en: When you left, my heart was shattered.
+        options: [kangen, ambyar, tresna]
+        answers: [ambyar]
+        words: [ambyar, ati]
+      - id: t21
+        type: multiple_choice
+        question: Lir-ilir, lir-ilir, tandure wus sumilir.
+        question_meaning:
+          ar_eg: wus هنا معناها إيه؟
+          ar: ما معنى wus هنا؟
+          en: What does wus mean here?
+        options: [sudah, belum, akan]
+        answer: 0
+        explain:
+          ar_eg: wus صيغة قديمة شعرية من wis (= sudah).
+          ar: wus صيغة قديمة شعرية لـ wis (= sudah).
+          en: wus is the old, poetic form of wis (= sudah).
+        words: [wus, tembang]
+  - id: grammar
+    skill: grammar
+    title:
+      ar_eg: القواعد والإملاء
+      ar: القواعد والإملاء
+      en: Grammar and spelling
+    items:
+      - id: t22
+        type: fill_blank
+        sentence: Lawang Sewu dibangun ___ perusahaan sepur Walanda.
+        meaning:
+          ar_eg: Lawang Sewu اتبنى على إيد شركة سكة حديد هولندية.
+          ar: بُني Lawang Sewu على يد شركة سكك حديد هولندية.
+          en: Lawang Sewu was built by a Dutch railway company.
+        options: [kang, dening, saka]
+        answers: [dening]
+        words: [dening]
+      - id: t23
+        type: multiple_choice
+        question_meaning:
+          ar_eg: إزاي تكتب «أنا قريت الكتاب ده امبارح» بأسلوب الكتابة؟
+          ar: كيف تكتب «قرأتُ هذا الكتاب أمس» بأسلوب الكتابة؟
+          en: How do you write "I read this book yesterday" in written style?
+        options:
+          - Buku iki diwaca dening aku wingi.
+          - Buku iki kapilih wingi.
+          - Buku iki dakwaca wingi.
+        answer: 2
+        explain:
+          ar_eg: الجاوي عمره ما بيقول «dening aku»؛ لما الفاعل «أنا» بيستعمل dak- (أو tak- في الكلام).
+          ar: لا تقول الجاوية «dening aku» أبدًا؛ فإذا كان الفاعل «أنا» استُعملت dak- (أو tak- في الكلام).
+          en: Javanese never says "dening aku"; when the doer is "I" it uses dak- (tak- in speech).
+        words: [dak-]
+      - id: t24
+        type: fill_blank
+        sentence: Semarang ana ing pesisir lor. Kutha ___ misuwur minangka Kutha Lumpia.
+        meaning:
+          ar_eg: سيمارانج على الساحل الشمالي. المدينة المذكورة مشهورة بلقب مدينة اللومبيا.
+          ar: تقع سيمارانج على الساحل الشمالي. والمدينة المذكورة مشهورة بلقب مدينة اللومبيا.
+          en: Semarang lies on the north coast. The said city is famous as the City of Lumpia.
+        options: [kapilih, kasebut, tinulis]
+        answers: [kasebut]
+        words: [kasebut, minangka]
+      - id: t25
+        type: multiple_choice
+        question: Kutha iki sinebut Kutha Lumpia.
+        question_meaning:
+          ar_eg: sinebut معناها إيه؟ (شيل الـ -in- من الكلمة)
+          ar: ما معنى sinebut؟ (انزع -in- من الكلمة)
+          en: What does sinebut mean? (Take the -in- out of the word.)
+        options: [disebut, menyebut, tersebut]
+        answer: 0
+        explain:
+          ar_eg: s-in-ebut ← sebut، و-in- جوّه الكلمة معناها مبني للمجهول، زي tinulis = ditulis.
+          ar: s-in-ebut ← sebut، و-in- داخل الكلمة تدلّ على المبني للمجهول، مثل tinulis = ditulis.
+          en: s-in-ebut ← sebut; -in- inside the word makes a passive, like tinulis = ditulis.
+        words: [sinebut, -in-]
+      - id: t26
+        type: multiple_choice
+        question: Redaksi ingkang kinurmatan,
+        question_meaning:
+          ar_eg: kinurmatan جاية من أنهي أصل؟
+          ar: من أيّ جذر جاءت kinurmatan؟
+          en: Which root does kinurmatan come from?
+        options: [urmat, kurmat, kinur]
+        answer: 1
+        explain:
+          ar_eg: k-in-urmatan ← kurmat (احترام)؛ يعني «المحترم».
+          ar: k-in-urmatan ← kurmat (الاحترام)، أي «المحترم».
+          en: k-in-urmatan ← kurmat (respect), so "respected, dear".
+        words: [kinurmatan]
+      - id: t27
+        type: fill_blank
+        sentence: Aku arep mangan ___.
+        meaning:
+          ar_eg: 'في الشات صاحبك كتب «aku arep mangan sego». اكتب الكلمة الناقصة بالإملاء القياسي.'
+          ar: 'كتب صديقك في الدردشة «aku arep mangan sego». اكتب الكلمة الناقصة بالتهجئة المعيارية.'
+          en: 'Your friend wrote in a chat: "aku arep mangan sego". Type the missing word in standard spelling.'
+        answers: [sega, Sega]
+        explain:
+          ar_eg: "الـ a في آخر الكلمة بتتنطق قريب من o، لكن الإملاء القياسي بيكتبها a: sega، pira، apa."
+          ar: "تُنطق a في آخر الكلمة قريبة من o، لكن التهجئة المعيارية تكتبها a: sega، pira، apa."
+          en: "A final a sounds close to o, but standard spelling writes a: sega, pira, apa."
+        words: [sega, baku]
+      - id: t28
+        type: multiple_choice
+        question_meaning:
+          ar_eg: أنهي كلمة فيها o حقيقية، بتتكتب o حتى في الإملاء القياسي؟
+          ar: أيّ كلمة فيها o حقيقية تُكتب o حتى في التهجئة المعيارية؟
+          en: Which word has a real o, written o even in standard spelling?
+        options: [ojo, kono, opo]
+        answer: 1
+        explain:
+          ar_eg: kono (هناك، جنبك) فيها o حقيقية. ojo = aja وopo = apa في الإملاء القياسي.
+          ar: kono (هناك، قربك) فيها o حقيقية، أما ojo فهي aja وopo هي apa في التهجئة المعيارية.
+          en: kono (there, near you) has a real o. ojo = aja and opo = apa in standard spelling.
+        words: [kono, baku]
+      - id: t29
+        type: fill_blank
+        sentence: Adhiku ___, ora bisa teka.
+        meaning:
+          ar_eg: أخويا الصغير عيان، مش هيقدر ييجي.
+          ar: أخي الأصغر مريض، لا يستطيع المجيء.
+          en: My little brother is sick, he can't come.
+        options: [loro, lara]
+        answers: [lara]
+        explain:
+          ar_eg: الاتنين بيتنطقوا «loro»، بس lara = عيان وloro = اتنين.
+          ar: كلتاهما تُنطق «loro»، لكن lara = مريض وloro = اثنان.
+          en: Both sound like "loro", but lara = sick and loro = two.
+        words: [lara, loro]
+      - id: t30
+        type: fill_blank
+        sentence: Hawane ___ banget.
+        meaning:
+          ar_eg: الجو برد قوي. (اختار السبيلنج الجاوي الصح)
+          ar: الجو بارد جدًا. (اختر التهجئة الجاوية الصحيحة)
+          en: The weather is really cold. (Pick the correct Javanese spelling.)
+        options: [adem, adhem]
+        answers: [adhem]
+        explain:
+          ar_eg: الجاوي adhem بـ dh (اللسان راجع لورا)؛ الإندونيسي بيكتبها adem.
+          ar: الجاوية adhem بـ dh (يرتدّ اللسان إلى الخلف)، والإندونيسية تكتبها adem.
+          en: Javanese adhem has dh (tongue pulled back); Indonesian writes adem.
+        words: [adhem, dh]
+      - id: t31
+        type: multiple_choice
+        question: Akunmu wis tak follow.
+        question_meaning:
+          ar_eg: الجملة دي معناها إيه؟ (اختار الجملة الإندونيسي)
+          ar: ما معنى هذه الجملة؟ (اختر الجملة الإندونيسية)
+          en: What does this mean? (Pick the Indonesian.)
+        options:
+          - Akun kamu sudah aku follow.
+          - Kamu sudah follow akunku.
+          - Akunmu sudah di-follow orang lain.
+        answer: 0
+        explain:
+          ar_eg: tak + follow = «أنا عملتله فولو» — بادئة جاوي على كلمة إنجليزي.
+          ar: "tak + follow = «تابعتُه أنا»: بادئة جاوية على كلمة إنجليزية."
+          en: "tak + follow = \"I followed it\": a Javanese prefix on an English word."
+        words: [tak, akun]
+      - id: t32
+        type: multiple_choice
+        question_meaning:
+          ar_eg: إنت متأخر وبتبعت رسالة لراجل كبير. أنهي رسالة تنفع؟
+          ar: أنت متأخر وترسل رسالة إلى رجل مسنّ. أيّ رسالة تليق؟
+          en: You're running late and messaging an older man. Which message fits?
+        options:
+          - Nuwun sewu, Pak, kula taksih wonten margi.
+          - Sorry Pak, aku lagi OTW, sabar ya!
+        answer: 0
+        explain:
+          ar_eg: الخلط بين اللغات بتاع الصحاب. مع الكبير كراما ومن غير إنجليزي.
+          ar: مزج اللغات لغة الأصدقاء، ومع الكبير كراما بلا إنجليزية.
+          en: "Mixing is friends' language. With an elder: krama, no English."
+        words: [campur kode, krama]
+      - id: t33
+        type: fill_blank
+        sentence: ___ isih cilik, aku manggon ing Kairo.
+        meaning:
+          ar_eg: لما كنت صغير، كنت ساكن في القاهرة.
+          ar: حين كنت صغيرًا، كنت أسكن في القاهرة.
+          en: When I was little, I lived in Cairo.
+        options: [Yen, Sawise, Nalika]
+        answers: [Nalika]
+        explain:
+          ar_eg: nalika = لمّا (في الماضي). yen = لو، وsawise = بعد ما.
+          ar: nalika = حين (في الماضي)، وyen = إذا، وsawise = بعد أن.
+          en: nalika = when (in the past). yen = if, sawise = after.
+        words: [nalika]
+      - id: t34
+        type: build_sentence
+        source:
+          ar_eg: (بأسلوب ويكيبيديا) كودوس مدينة من مدن جاوة الوسطى.
+          ar: (بأسلوب ويكيبيديا) كودوس إحدى مدن جاوة الوسطى.
+          en: (Wikipedia style) Kudus is one of the cities in Central Java.
+        answer: Kudus iku sawijining kutha ing Jawa Tengah.
+        distractors: [kang, dening, neng]
+        words: [iku, sawijining]
+  - id: writing
+    skill: writing
+    title:
+      ar_eg: الكتابة
+      ar: الكتابة
+      en: Writing
+    instructions:
+      ar_eg: ترجم، ورجّع الشات للإملاء القياسي، واحكي الحكاية تاني بالنغوكو اللي بنتكلمها.
+      ar: ترجم، وأعِد الدردشة إلى التهجئة المعيارية، وأعِد سرد الحكاية بالنغوكو المحكية.
+      en: Translate, bring a chat back to standard spelling, and retell the story in spoken ngoko.
+    items:
+      - id: t35
+        type: translate
+        direction: from_target
+        source_text: Lawang Sewu dibangun dening perusahaan sepur Walanda.
+        answers_meaning:
+          ar_eg:
+            - Lawang Sewu اتبنى على إيد شركة سكة حديد هولندية.
+            - Lawang Sewu اتبنى على إيد شركة قطر هولندية.
+            - Lawang Sewu بنته شركة سكة حديد هولندية.
+            - Lawang Sewu بنته شركة قطر هولندية.
+            - شركة سكة حديد هولندية هي اللي بنت Lawang Sewu.
+          ar:
+            - بُني Lawang Sewu على يد شركة سكك حديد هولندية.
+            - بُني Lawang Sewu من قِبَل شركة سكك حديد هولندية.
+            - بنت شركةُ سكك حديد هولندية Lawang Sewu.
+            - بُني Lawang Sewu على يد شركة قطارات هولندية.
+          en:
+            - Lawang Sewu was built by a Dutch railway company.
+            - Lawang Sewu was built by the Dutch railway company.
+            - A Dutch railway company built Lawang Sewu.
+            - Lawang Sewu was built by a Dutch train company.
+        words: [dibangun, dening, sepur]
+      - id: t36
+        type: translate
+        direction: to_target
+        source_meaning:
+          ar_eg: 'رجّع رسالة الشات دي للإملاء القياسي: «ojo lali, sego ne wes mateng»'
+          ar: 'أعِد رسالة الدردشة هذه إلى التهجئة المعيارية: «ojo lali, sego ne wes mateng»'
+          en: 'Rewrite this chat message in standard spelling: "ojo lali, sego ne wes mateng"'
+        answers:
+          - Aja lali, segane wis mateng.
+          - Aja lali, segane wis mateng
+          - Aja lali segane wis mateng.
+          - Aja lali segane wis mateng
+          - Aja lali, segane wis mateng!
+          - aja lali, segane wis mateng
+          - aja lali segane wis mateng
+        explain:
+          ar_eg: ojo ← aja، sego ne ← segane، wes ← wis. وmateng فيها e عادية فبتفضل زي ما هي.
+          ar: ojo ← aja، وsego ne ← segane، وwes ← wis، وتبقى mateng كما هي.
+          en: ojo → aja, sego ne → segane, wes → wis; mateng stays as it is.
+        words: [aja, sega, wis]
+      - id: t37
+        type: writing_task
+        points: 4
+        prompt:
+          ar_eg: |
+            Mas Rizal فاته يقرا القصة بتاعة Bima والشمسية (في قسم القراية). احكيهاله تاني بالنغوكو اللي بنتكلمها، في ٣–٥ جمل قصيرة: Bima راح فين ومع مين، إيه اللي حصل، وخلصت إزاي.
+          ar: |
+            لم يقرأ Mas Rizal قصة Bima والمظلّة (في قسم القراءة). أعِد سردها له بالنغوكو المحكية في ٣–٥ جمل قصيرة: إلى أين ذهب Bima ومع من، وماذا حدث، وكيف انتهت.
+          en: |
+            Mas Rizal missed the story about Bima and the umbrella (in the Reading section). Retell it to him in spoken ngoko, in 3–5 short sentences: where Bima went and with whom, what happened, and how it ended.
+        rubric:
+          - Retells the main events in the right order (going to the market with grandpa, forgetting the umbrella, the sudden rain, the new umbrella / never forgetting again).
+          - Uses story connectors correctly (sawise / sadurunge, bareng or dumadakan, terus / banjur, pungkasane or wiwit iku).
+          - Turns book style into everyday ngoko (ing → neng, lan → karo, nuli → terus) with short, clear sentences.
+          - Javanese is understandable and mostly correct; no krama or Indonesian mixed in where ngoko is expected (small slips are fine).
+        sample: |
+          Bima karo simbahe lunga neng pasar. Sadurunge lunga, simbah kandha aja lali payung, nanging Bima lali.
+          Bareng tekan pasar, dumadakan udan deres, terus Bima karo simbahe teles kabeh.
+          Pungkasane simbah tuku payung anyar. Wiwit iku Bima ora tau lali payung.
+        words: [critakna maneh, bareng, pungkasane]
+  - id: speaking
+    skill: speaking
+    title:
+      ar_eg: الكلام
+      ar: المحادثة
+      en: Speaking
+    instructions:
+      ar_eg: اتكلم براحتك وبالراحة. لما تحكي لصاحبك، رجّع لغة الكتب للغة الكلام.
+      ar: تكلّم بهدوء وارتياح، وحين تحكي لصديقك أعِد لغة الكتب إلى لغة الكلام.
+      en: Speak calmly and at ease. When you tell a friend, turn book language back into speech.
+    items:
+      - id: t38
+        type: speaking
+        text: Ngelmu iku kalakone kanthi laku.
+        meaning:
+          ar_eg: العلم بيتحقق بالعمل.
+          ar: العلم يُنال بالعمل.
+          en: Knowledge is attained through practice.
+        words: [ngelmu, kanthi, laku]
+      - id: t39
+        type: speaking_task
+        points: 4
+        prompt:
+          ar_eg: 'Mas Rizal قاعد معاك في وارونج في Demak. اتكلم حوالي دقيقة ونص بالنغوكو: (١) احكيله الخبر بتاع الـ rob (الشارع غرق امبارح العصر في Kota Lama، والنهارده الصبح الناس نضّفوه)، (٢) واشرحله بيت Pocung «Ngelmu iku kalakone kanthi laku»: حكايته (critane)، ومعناه (tegese)، والدرس اللي فيه (piwulange).'
+          ar: 'يجلس معك Mas Rizal في وارونج في Demak. تحدّث نحو دقيقة ونصف بالنغوكو: (١) احكِ له خبر الـ rob (غمر المدّ الشارع عصر أمس في Kota Lama، ونظّفه الأهالي صباح اليوم)، (٢) واشرح له بيت Pocung «Ngelmu iku kalakone kanthi laku»: قصته (critane) ومعناه (tegese) وعبرته (piwulange).'
+          en: 'Mas Rizal is sitting with you at a warung in Demak. Talk for about a minute and a half in ngoko: (1) tell him the rob news (the road in Kota Lama flooded yesterday afternoon, and residents cleaned it this morning), (2) explain the Pocung line "Ngelmu iku kalakone kanthi laku": what it''s about (critane), what it means (tegese) and its lesson (piwulange).'
+        rubric:
+          - Retells the news clearly in spoken ngoko (neng / sing instead of ing / kang), with when it happened and who cleaned the road (diresiki dening warga, or a natural spoken equivalent).
+          - Explains the Pocung line with critane / tegese / piwulange and gets its meaning right (knowledge has to be practised, not only read), and may link ngelmu to Arabic «علم».
+          - Uses ngoko with a friend throughout, with sensible connectors (wingi sore, esuk iki, terus, merga).
+          - Speaks clearly at a natural pace; small slips are fine.
+        sample: |
+          Mas, wingi sore dalan neng Kutha Lama kebanjiran rob. Esuk iki wis diresiki dening warga, saiki aman.
+          Terus, tembang Pocung iki saka Serat Wulangreh. Tegese, ngelmu iku ora cukup diwaca, kudu dilakoni.
+          Piwulange, ngelmu kudu dilakoni. Ngelmu iku saka basa Arab, «علم».
+        words: [critane, tegese, piwulange, rob]
+review:
+  status: draft
+  verified: false

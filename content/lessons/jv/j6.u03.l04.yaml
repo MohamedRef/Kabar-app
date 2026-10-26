@@ -1,0 +1,158 @@
+schema: kabar.lesson/v1
+id: j6.u03.l04
+language: jv
+title: Papan jeneng
+can_do:
+  ar_eg: تقرا لوحات الشوارع والأماكن في كوتاغيدي.
+  ar: أن تقرأ لافتات الشوارع والأماكن في كوتاغيدي.
+  en: Read street and place signs in Kotagede.
+slides:
+  - title: Papan ing Kotagedhe
+    body:
+      ar_eg: |
+        في يوجياكرتا اللوحات كتير منها مكتوب بالحرفين: لاتيني وتحته جاوي. وإنت دلوقتي تقدر تقرا التاني:
+        - cecak ꦁ = ng، layar ꦂ = r، wignyan ꦃ = h.
+        - pangkon ꧀ لأي حرف ساكن تاني في آخر الكلام.
+      ar: |
+        كثير من لافتات يوجياكرتا مكتوب بالخطين: اللاتيني وتحته الجاوي، وصرت تقرأ الثاني:
+        - cecak ꦁ = ng، وlayar ꦂ = r، وwignyan ꦃ = h.
+        - وpangkon ꧀ لسائر السواكن في آخر الكلام.
+      en: |
+        In Yogyakarta many signs are written twice: Latin, and aksara Jawa underneath. Now you can read the second line:
+        - cecak ꦁ = ng, layar ꦂ = r, wignyan ꦃ = h.
+        - pangkon ꧀ for any other consonant at the end.
+    grammar: jv.aksara.panyigeg
+    examples:
+      - text: ꦥꦱꦂꦊꦒꦶ (Pasar Legi)
+        ar_eg: سوق «ليغي» — سوق كوتاغيدي، على اسم يوم السوق Legi
+        ar: سوق «ليغي» — سوق كوتاغيدي المسمى بيوم السوق Legi
+        en: Pasar Legi — Kotagede's market, named after the market day Legi
+      - text: ꦲꦺꦴꦩꦃꦏꦭꦁ (Omah Kalang)
+        ar_eg: بيوت «كالانغ» القديمة
+        ar: بيوت «كالانغ» القديمة
+        en: the old Kalang houses
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "اقرا اللوحة: ꦥꦱꦂꦊꦒꦶ"
+      ar: "اقرأ اللافتة: ꦥꦱꦂꦊꦒꦶ"
+      en: "Read the sign: ꦥꦱꦂꦊꦒꦶ"
+    options: [Pasar Legi, Pasar Lagi, Pasang Legi]
+    answer: 0
+    explain:
+      ar_eg: ꦱꦂ فيها layar = sar، وꦊ هو nga lelet = le. وLegi زي يوم السوق في الـ weton!
+      ar: في ꦱꦂ layar = sar، وꦊ هو nga lelet = le، وLegi يوم السوق في الـ weton.
+      en: ꦱꦂ has layar = sar, and ꦊ is nga lelet = le. Legi is the market day from your weton lesson!
+    words: [papan]
+  - id: e02
+    type: listen
+    text: Omah Kalang
+    question:
+      ar_eg: ديماس قال اسم مكان. أنهي لوحة؟
+      ar: ذكر ديماس اسم مكان. أي لافتة هي؟
+      en: Dimas named a place. Which sign is it?
+    options: ["ꦲꦺꦴꦩꦏꦭꦁ", "ꦲꦺꦴꦩꦃꦏꦭ", "ꦲꦺꦴꦩꦃꦏꦭꦁ"]
+    answer: 2
+    meaning:
+      ar_eg: بيوت «كالانغ»
+      ar: بيوت «كالانغ»
+      en: the Kalang houses
+    words: [papan]
+  - id: e03
+    type: fill_blank
+    sentence: ꦏꦸꦛꦒꦼꦝꦺ = ___
+    meaning:
+      ar_eg: اكتب اللي مكتوب على اللوحة بالحروف اللاتينية. (اسم المدينة)
+      ar: اكتب ما على اللافتة بالحروف اللاتينية. (اسم المدينة)
+      en: Type what the sign says in Latin letters. (The town's name.)
+    answers: [Kutha Gedhe, Kuthagedhe]
+    explain:
+      ar_eg: Kutha Gedhe = «المدينة الكبيرة»، وده الاسم الجاوي لكوتاغيدي (Kotagede).
+      ar: Kutha Gedhe = «المدينة الكبيرة»، الاسم الجاوي لكوتاغيدي.
+      en: Kutha Gedhe = "the big town", the Javanese name of Kotagede.
+    words: [tulisan]
+  - id: e04
+    type: fill_blank
+    sentence: ꦩꦏꦩ꧀ = ___
+    meaning:
+      ar_eg: اكتب اللي مكتوب على اللوحة بالحروف اللاتينية.
+      ar: اكتب ما على اللافتة بالحروف اللاتينية.
+      en: Type what the sign says in Latin letters.
+    answers: [makam]
+    words: [tulisan]
+  - id: e05
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب اللي مكتوب على اللوحة بالحروف اللاتينية: ꦥꦱꦂꦒꦼꦝꦺ"
+      ar: "اكتب ما على اللافتة بالحروف اللاتينية: ꦥꦱꦂꦒꦼꦝꦺ"
+      en: "Write what the sign says in Latin letters: ꦥꦱꦂꦒꦼꦝꦺ"
+    answers: [Pasar Gedhe, Pasargedhe]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: ابني لوحة «Omah Kalang» مقطع مقطع.
+      ar: ركّب لافتة «Omah Kalang» مقطعًا مقطعًا.
+      en: Build the sign "Omah Kalang", syllable by syllable.
+    answer: ꦲꦺꦴ ꦩꦃ ꦏ ꦭꦁ
+    distractors: ["ꦩ"]
+    words: [papan, tulisan]
+  - id: e07
+    type: dictation
+    text: Papan iku tulisane aksara Jawa.
+    meaning:
+      ar_eg: اللوحة دي مكتوبة بالخط الجاوي.
+      ar: تلك اللافتة مكتوبة بالخط الجاوي.
+      en: That sign is written in aksara Jawa.
+    words: [papan, tulisan]
+  - id: e08
+    type: speaking
+    text: Tulisane Pasar Legi.
+    meaning:
+      ar_eg: مكتوب «باسار ليغي».
+      ar: المكتوب «باسار ليغي».
+      en: It says Pasar Legi.
+    words: [tulisan]
+dialogue:
+  title: Mlaku-mlaku ing Kotagedhe
+  lines:
+    - speaker: Dimas
+      text: Med, iki papan apa?
+      ar_eg: يا محمد، إيه اللوحة دي؟
+      ar: يا محمد، ما هذه اللافتة؟
+      en: Med, what's this sign?
+    - speaker: Mohamed
+      text: Tulisane Pasar Legi. Legi kaya ing weton!
+      ar_eg: مكتوب «باسار ليغي». Legi زي اللي في الـ weton!
+      ar: مكتوب «باسار ليغي». وLegi كالتي في الـ weton!
+      en: It says Pasar Legi. Legi, like in the weton!
+    - speaker: Dimas
+      text: Bener! Pasar iki rame saben Legi.
+      ar_eg: صح! السوق ده بيبقى زحمة كل يوم Legi.
+      ar: صحيح! يزدحم هذا السوق كل يوم Legi.
+      en: Right! This market is busy every Legi.
+    - speaker: Mohamed
+      text: Lan papan iku Omah Kalang.
+      ar_eg: واللوحة اللي هناك دي «أوماه كالانغ».
+      ar: وتلك اللافتة «أوماه كالانغ».
+      en: And that sign says Omah Kalang.
+    - speaker: Dimas
+      text: Wah, kowe wis isa maca papan jeneng!
+      ar_eg: يا سلام، بقيت تعرف تقرا لوحات الأسماء!
+      ar: رائع، صرت تقرأ لافتات الأسماء!
+      en: Wow, you can read name signs now!
+new_words:
+  - word: papan
+    pos: noun
+    ar_eg: لوحة / يافطة
+    ar: لوحة / لافتة
+    en: board, sign = papan
+  - word: tulisan
+    pos: noun
+    ar_eg: كتابة؛ tulisane = المكتوب عليها
+    ar: كتابة؛ tulisane = المكتوب عليها
+    en: writing; tulisane = what it says = tulisan
+review:
+  status: draft
+  verified: false

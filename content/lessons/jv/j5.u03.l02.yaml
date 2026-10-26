@@ -1,0 +1,232 @@
+schema: kabar.lesson/v1
+id: j5.u03.l02
+language: jv
+title: Loro utawa lara?
+can_do:
+  ar_eg: تفرّق بين o أصلية وa مكتوبة، وترجّع إملا الشات لأصله.
+  ar: أن تميّز o الأصلية من a المكتوبة، وتردّ إملاء الدردشة إلى أصله.
+  en: Tell a real o from a written a, and normalise chat spellings.
+slides:
+  - title: O sing asli
+    body:
+      ar_eg: |
+        خد بالك: مش كل o في الشات أصلها a. فيه كلمات الـ o فيها أصلية وبتتكتب o في الإملا الرسمي كمان:
+        - loro = اتنين، lara = عيان. الاتنين بيتنطقوا «لورو» تقريبًا، بس بيتكتبوا مختلف.
+        - kono = هناك (جنبك)، kana = هناك (بعيد).
+        فماتقلبش كل o لـ a بشكل أعمى. لو مش متأكد، القاموس هو الحَكَم.
+      ar: |
+        انتبه: ليست كل o في الدردشة أصلها a، ففي بعض الكلمات o أصلية تُكتب o في الإملاء القياسي أيضًا:
+        - loro = اثنان، وlara = مريض، يُنطقان «لورو» تقريبًا ويُكتبان مختلفين.
+        - kono = هناك (قربك)، وkana = هناك (بعيدًا).
+        فلا تقلب كل o إلى a، وارجع إلى المعجم عند الشك.
+      en: |
+        Careful: not every chat o is really an a. Some words have a real o, written o in standard spelling too:
+        - loro = two, lara = sick. Both sound roughly "loro", but they're spelled differently.
+        - kono = there (near you), kana = over there.
+        So don't flip every o to a blindly. When unsure, the dictionary decides.
+    grammar: jv.orthography
+    examples:
+      - text: Anakku loro.
+        ar_eg: عندي ولدين.
+        ar: لديّ ولدان.
+        en: I have two children.
+      - text: Adhiku lara, ora bisa teka.
+        ar_eg: أخويا الصغير عيان ومش هيقدر ييجي.
+        ar: أخي الصغير مريض ولا يستطيع الحضور.
+        en: My younger brother is sick and can't come.
+  - title: Chat liyane
+    body:
+      ar_eg: |
+        كلمات تانية الشات بيكتبها زي ما بتتسمع: nggih → inggih، monggo → mangga، dewe → dhewe (الشات بيوقّع h).
+        baku = رسمي / قياسي (baku). kliru = غلط (salah). يعني «monggo» مش kliru في الشات، بس في المقالة اكتب الـ baku: mangga.
+      ar: |
+        وكلمات أخرى تكتبها الدردشة كما تُسمع: nggih ← inggih، وmonggo ← mangga، وdewe ← dhewe (تسقط h).
+        baku = قياسي، وkliru = خطأ (salah). فـ «monggo» ليست kliru في الدردشة، لكن اكتب في المقالة الصيغة baku: mangga.
+      en: |
+        Other words chats spell by ear: nggih → inggih, monggo → mangga, dewe → dhewe (the h gets dropped).
+        baku = standard, and kliru = wrong (salah). So "monggo" isn't kliru in a chat, but in an article write the baku form: mangga.
+    grammar: jv.orthography
+    examples:
+      - text: Mangga pinarak, Pak.
+        ar_eg: "اتفضل ادخل يا عمّو. (في الشات: monggo pinarak)"
+        ar: "تفضل بالدخول يا سيدي. (في الدردشة: monggo pinarak)"
+        en: "Please come in, sir. (in a chat: monggo pinarak)"
+      - text: Aku dhewe wis mangan.
+        ar_eg: "أنا نفسي أكلت. (في الشات: aku dewe wes mangan)"
+        ar: "أنا نفسي أكلت. (في الدردشة: aku dewe wes mangan)"
+        en: "I've eaten myself. (in a chat: aku dewe wes mangan)"
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: loro
+        ar_eg: اتنين
+        ar: اثنان
+        en: two
+      - text: lara
+        ar_eg: عيان
+        ar: مريض
+        en: sick
+      - text: kono
+        ar_eg: هناك (جنبك)
+        ar: هناك (قربك)
+        en: there (near you)
+      - text: kana
+        ar_eg: هناك (بعيد)
+        ar: هناك (بعيدًا)
+        en: over there
+    words: [lara, loro]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تكتب «عندي ولدين»؟
+      ar: كيف تكتب «لديّ ولدان»؟
+      en: How do you write "I have two children"?
+    options: ['Anakku lara.', 'Anakku loro.']
+    answer: 1
+    explain:
+      ar_eg: loro (اتنين) الـ o فيها أصلية. lara = عيان.
+      ar: o في loro (اثنان) أصلية، وlara = مريض.
+      en: loro (two) has a real o; lara = sick.
+    words: [lara, loro]
+  - id: e03
+    type: multiple_choice
+    question: Tulisan baku saka "monggo"?
+    question_meaning:
+      ar_eg: إيه الإملا الرسمي لـ monggo؟
+      ar: ما الإملاء القياسي لـ monggo؟
+      en: What's the standard spelling of monggo?
+    options: [mangga, monggo, manggo]
+    answer: 0
+    words: [baku]
+  - id: e04
+    type: listen
+    text: Adhiku lara, ora bisa teka.
+    question:
+      ar_eg: الأخ الصغير مش هييجي ليه؟
+      ar: لماذا لن يأتي الأخ الصغير؟
+      en: Why isn't the little brother coming?
+    options: [merga lara, merga adoh, merga udan]
+    answer: 0
+    meaning:
+      ar_eg: أخويا الصغير عيان ومش هيقدر ييجي.
+      ar: أخي الصغير مريض ولا يستطيع الحضور.
+      en: My younger brother is sick and can't come.
+    words: [lara]
+  - id: e05
+    type: fill_blank
+    sentence: Nulis "loro" kanggo "sakit" iku ___.
+    meaning:
+      ar_eg: إنك تكتب loro بمعنى «عيان» غلط.
+      ar: كتابة loro بمعنى «مريض» خطأ.
+      en: Writing loro for "sick" is wrong.
+    options: [baku, kliru, bener]
+    answers: [kliru]
+    explain:
+      ar_eg: «عيان» بتتكتب lara. loro = اتنين.
+      ar: «مريض» تُكتب lara، وloro = اثنان.
+      en: The word for sick is spelled lara; loro = two.
+    words: [kliru, lara]
+  - id: e06
+    type: fill_blank
+    sentence: Mangga iku tulisan ___, monggo iku tulisan chat.
+    meaning:
+      ar_eg: mangga هي الكتابة الرسمية، وmonggo كتابة الشات.
+      ar: mangga هي الكتابة القياسية، وmonggo كتابة الدردشة.
+      en: Mangga is the standard spelling; monggo is chat spelling.
+    options: [kliru, lara, baku]
+    answers: [baku]
+    words: [baku]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: "اكتبها بالإملا الرسمي: «aku dewe wes mangan»"
+      ar: "اكتبها بالإملاء القياسي: «aku dewe wes mangan»"
+      en: "Write it in standard spelling: «aku dewe wes mangan»"
+    answer: Aku dhewe wis mangan.
+    distractors: [dewe, wes]
+    words: [baku]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بالإملا الرسمي) أخويا الصغير عيان.
+      ar: (بالإملاء القياسي) أخي الصغير مريض.
+      en: (standard spelling) My younger brother is sick.
+    answers:
+      - Adhiku lara.
+      - Adhiku lagi lara.
+      - Adhiku isih lara.
+      - Adhiku sing lanang lara.
+    words: [lara]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Tulisan "sego" kliru, sing baku "sega".
+    answers_meaning:
+      ar_eg:
+        - كتابة sego غلط، والرسمي sega.
+        - sego غلط، الكتابة الرسمية sega.
+        - كتابة sego غلط، والصح sega.
+        - الكتابة sego غلط، والرسمية sega.
+      ar:
+        - كتابة sego خطأ، والقياسية sega.
+        - sego خطأ، والكتابة القياسية sega.
+        - كتابة sego خطأ، والصحيح sega.
+      en:
+        - Writing sego is wrong; the standard is sega.
+        - The spelling sego is wrong; the standard is sega.
+        - Sego is wrong; the standard spelling is sega.
+        - The spelling sego is wrong, the standard one is sega.
+        - Sego is wrong, the standard is sega.
+    words: [kliru, baku]
+  - id: e10
+    type: speaking
+    text: Tulisan iki kliru, sing baku pira.
+    meaning:
+      ar_eg: الكتابة دي غلط، الرسمي pira.
+      ar: هذه الكتابة خطأ، والقياسية pira.
+      en: This spelling is wrong; the standard one is pira.
+    words: [kliru, baku]
+dialogue:
+  title: Lara apa loro?
+  lines:
+    - speaker: Mbak Ayu
+      text: Mohamed, adhiku lara. Aku ora bisa teka.
+      ar_eg: يا محمد، أخويا الصغير عيان. مش هقدر آجي.
+      ar: يا محمد، أخي الصغير مريض. لن أستطيع المجيء.
+      en: Mohamed, my little brother is sick. I can't come.
+    - speaker: Mohamed
+      text: Lara? Aku krungu "loro".
+      ar_eg: lara؟ أنا سامع «loro».
+      ar: lara؟ سمعتُ «loro».
+      en: Lara? I heard "loro".
+    - speaker: Mbak Ayu
+      text: Iya, munine loro, nanging tulisane lara. Loro iku angka loro.
+      ar_eg: آه، بتتنطق loro، بس بتتكتب lara. loro دي الرقم اتنين.
+      ar: نعم، تُنطق loro لكنها تُكتب lara، أما loro فالرقم اثنان.
+      en: Yes, it sounds like loro but it's written lara. Loro is the number two.
+    - speaker: Mohamed
+      text: Oh, ngerti. Muga-muga adhimu cepet mari, ya.
+      ar_eg: آه، فهمت. ربنا يشفي أخوكي بسرعة.
+      ar: آه، فهمت. أرجو أن يُشفى أخوك سريعًا.
+      en: Oh, got it. I hope your brother gets well soon.
+new_words:
+  - word: lara
+    pos: adjective
+    ar_eg: عيان (بتتنطق «لورو»)
+    ar: مريض (تُنطق «لورو»)
+    en: sick (said "loro") = sakit
+  - word: baku
+    pos: adjective
+    ar_eg: رسمي / قياسي (في الإملا)
+    ar: قياسي (في الإملاء)
+    en: standard (spelling) = baku
+  - word: kliru
+    pos: adjective
+    ar_eg: غلط
+    ar: خطأ
+    en: wrong, mistaken = salah, keliru
+review:
+  status: draft
+  verified: false

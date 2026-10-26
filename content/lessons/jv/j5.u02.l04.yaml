@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: j5.u02.l04
+language: jv
+title: Panjebar Semangat
+can_do:
+  ar_eg: تقرا جواب قارئ في مجلة جاوية.
+  ar: أن تقرأ رسالة قارئ في مجلة جاوية.
+  en: Read a reader's letter in a Javanese magazine.
+slides:
+  - title: Layang saka pamaca
+    body:
+      ar_eg: |
+        Panjebar Semangat مجلة أسبوعية بالجاوي من سورابايا، بتطلع من التلاتينات. وفيها صفحة جوابات القرّاء، والجوابات دي غالبًا كراما.
+        في الكراما المكتوبة المجهول dipun- بدل di- (عرفتها في J3): dipunbangun = اتبنى. وأول الجواب دايمًا «Redaksi ingkang kinurmatan» = «السادة المحررين المحترمين». kinurmatan فيها -in- جوه الكلمة: k-in-urmatan، من kurmat (احترام).
+      ar: |
+        Panjebar Semangat مجلة أسبوعية بالجاوية من سورابايا تصدر منذ الثلاثينيات، وفيها صفحة لرسائل القراء، وأغلبها بالكراما.
+        وفي الكراما المكتوبة يأتي المجهول بـ dipun- بدل di- (عرفتها في J3): dipunbangun = بُني. وتبدأ الرسالة عادة بـ «Redaksi ingkang kinurmatan» = «السادة المحررون المحترمون»، وفي kinurmatan -in- داخلية: k-in-urmatan من kurmat (الاحترام).
+      en: |
+        Panjebar Semangat is a Javanese-language weekly from Surabaya, published since the 1930s. It has a readers' letters page, and the letters are usually in krama.
+        Written krama makes the passive with dipun- instead of di- (you met it in J3): dipunbangun = was built. A letter opens with "Redaksi ingkang kinurmatan" = "Dear Editors". kinurmatan hides -in-: k-in-urmatan, from kurmat (respect).
+    grammar: jv.passive.written
+    examples:
+      - text: Redaksi ingkang kinurmatan,
+        ar_eg: السادة المحررين المحترمين،
+        ar: السادة المحررون المحترمون،
+        en: Dear Editors,
+      - text: Masjid enggal ing dhusun kula dipunbangun dening warga.
+        ar_eg: الجامع الجديد في قريتي بناه الأهالي.
+        ar: بنى الأهالي المسجد الجديد في قريتي.
+        en: The new mosque in my village was built by the residents.
+      - text: Kula nyuwun warta menika dipunmuat ing Panjebar Semangat.
+        ar_eg: برجو إن الخبر ده يتنشر في «بانجيبار سيمانغات».
+        ar: أرجو أن يُنشر هذا الخبر في «بانجيبار سيمانغات».
+        en: I kindly ask that this news be printed in Panjebar Semangat.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kinurmatan
+        ar_eg: المحترم (= terhormat)
+        ar: المحترم (= terhormat)
+        en: respected, dear (= terhormat)
+      - text: dhusun
+        ar_eg: قرية (كراما، = desa)
+        ar: قرية (كراما، = desa)
+        en: village (krama, = desa)
+      - text: enggal
+        ar_eg: جديد (كراما، = anyar)
+        ar: جديد (كراما، = anyar)
+        en: new (krama, = anyar)
+      - text: redaksi
+        ar_eg: هيئة التحرير
+        ar: هيئة التحرير
+        en: the editors
+      - text: dipunbangun
+        ar_eg: اتبنى (كراما، = dibangun)
+        ar: بُني (كراما، = dibangun)
+        en: was built (krama, = dibangun)
+    words: [kinurmatan, dhusun, enggal, redaksi]
+  - id: e02
+    type: multiple_choice
+    question: Masjid enggal ing dhusun kula dipunbangun dening warga.
+    question_meaning:
+      ar_eg: dipunbangun بالنغوكو تبقى إيه؟
+      ar: ما مقابل dipunbangun في النغوكو؟
+      en: What is dipunbangun in ngoko?
+    options: [dibangun, kapilih, tinulis]
+    answer: 0
+    explain:
+      ar_eg: dipun- هي di- بتاعة الكراما. dipunbangun = dibangun.
+      ar: dipun- هي di- في الكراما، فـ dipunbangun = dibangun.
+      en: dipun- is the krama di-, so dipunbangun = dibangun.
+    words: [enggal, dhusun]
+  - id: e03
+    type: listen
+    text: Masjid enggal ing dhusun kula dipunbangun dening warga.
+    question:
+      ar_eg: مين اللي بنى الجامع؟
+      ar: من بنى المسجد؟
+      en: Who built the mosque?
+    options: [redaksi, lurah, warga]
+    answer: 2
+    meaning:
+      ar_eg: الجامع الجديد في قريتي بناه الأهالي.
+      ar: بنى الأهالي المسجد الجديد في قريتي.
+      en: The new mosque in my village was built by the residents.
+    words: [dening, warga]
+  - id: e04
+    type: fill_blank
+    sentence: Masjid ___ ing dhusun kula dipunbangun dening warga.
+    meaning:
+      ar_eg: الجامع الجديد في قريتي بناه الأهالي.
+      ar: بنى الأهالي المسجد الجديد في قريتي.
+      en: The new mosque in my village was built by the residents.
+    options: [kinurmatan, enggal, redaksi]
+    answers: [enggal]
+    words: [enggal, dhusun]
+  - id: e05
+    type: fill_blank
+    sentence: Redaksi ingkang ___,
+    meaning:
+      ar_eg: السادة المحررين المحترمين،
+      ar: السادة المحررون المحترمون،
+      en: Dear Editors,
+    options: [kasebut, kinurmatan, enggal]
+    answers: [kinurmatan]
+    words: [kinurmatan]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: (جواب بالكراما) الجامع الجديد في قريتي بناه الأهالي.
+      ar: (رسالة بالكراما) بنى الأهالي المسجد الجديد في قريتي.
+      en: (krama letter) The new mosque in my village was built by the residents.
+    answer: Masjid enggal ing dhusun kula dipunbangun dening warga.
+    distractors: [anyar, aku]
+    words: [enggal, dhusun]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (أول جواب للمجلة) السادة المحررين المحترمين،
+      ar: (افتتاح رسالة إلى المجلة) السادة المحررون المحترمون،
+      en: (opening a letter to the magazine) Dear Editors,
+    answers:
+      - Redaksi ingkang kinurmatan,
+      - Redaksi ingkang kinurmatan.
+    words: [kinurmatan, redaksi]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Masjid enggal ing dhusun kula dipunbangun dening warga.
+    answers_meaning:
+      ar_eg:
+        - الجامع الجديد في قريتي بناه الأهالي.
+        - الجامع الجديد اللي في قريتي بناه الأهالي.
+        - الجامع الجديد في قريتي اتبنى على إيد الأهالي.
+        - الأهالي بنوا الجامع الجديد في قريتي.
+        - المسجد الجديد في قريتي بناه الأهالي.
+      ar:
+        - بنى الأهالي المسجد الجديد في قريتي.
+        - المسجد الجديد في قريتي بناه الأهالي.
+        - بُني المسجد الجديد في قريتي على يد الأهالي.
+        - بنى السكان المسجد الجديد في قريتي.
+      en:
+        - The new mosque in my village was built by the residents.
+        - The new mosque in my village was built by the villagers.
+        - The residents built the new mosque in my village.
+        - The villagers built the new mosque in my village.
+    words: [enggal, dhusun]
+  - id: e09
+    type: speaking
+    text: Redaksi ingkang kinurmatan, kula nyuwun warta menika dipunmuat.
+    meaning:
+      ar_eg: السادة المحررين المحترمين، برجو إن الخبر ده يتنشر.
+      ar: السادة المحررون المحترمون، أرجو أن يُنشر هذا الخبر.
+      en: Dear Editors, I kindly ask that this news be printed.
+    words: [kinurmatan, redaksi]
+dialogue:
+  title: Kalawarti basa Jawa
+  lines:
+    - speaker: Pak Harjo
+      text: Mas, iki Panjebar Semangat, kalawarti basa Jawa saka Surabaya.
+      ar_eg: يا ابني، دي «بانجيبار سيمانغات»، مجلة بالجاوي من سورابايا.
+      ar: يا بني، هذه «بانجيبار سيمانغات»، مجلة بالجاوية من سورابايا.
+      en: Young man, this is Panjebar Semangat, a Javanese magazine from Surabaya.
+    - speaker: Mohamed
+      text: Kalawarti menika sampun lami, Pak?
+      ar_eg: المجلة دي قديمة يا عمّو؟
+      ar: هل هذه المجلة قديمة يا سيدي؟
+      en: Has this magazine been around long, sir?
+    - speaker: Pak Harjo
+      text: Wis lawas banget, wiwit jaman Walanda.
+      ar_eg: قديمة أوي، من أيام الهولنديين.
+      ar: قديمة جدًا، منذ عهد الهولنديين.
+      en: A very long time, since the Dutch era.
+    - speaker: Mohamed
+      text: Menika layang saking sinten, Pak?
+      ar_eg: والجواب ده من مين يا عمّو؟
+      ar: وممّن هذه الرسالة يا سيدي؟
+      en: Who's this letter from, sir?
+    - speaker: Pak Harjo
+      text: Saka warga dhusun. Ditulis nganggo krama, kaya layang kanggo wong sepuh.
+      ar_eg: من واحد من أهل قرية. مكتوب بالكراما، زي جواب لحد كبير.
+      ar: من أحد أهل القرى، مكتوبة بالكراما كرسالة إلى شخص كبير.
+      en: From a villager. It's written in krama, like a letter to an elder.
+new_words:
+  - word: kinurmatan
+    pos: adjective
+    ar_eg: المحترم (في أول الجوابات)
+    ar: المحترم (في افتتاح الرسائل)
+    en: respected, dear (letter opening) = terhormat
+  - word: dhusun
+    pos: noun
+    ar_eg: قرية (كراما)
+    ar: قرية (كراما)
+    en: village (krama; ngoko desa) = desa
+  - word: enggal
+    pos: adjective
+    ar_eg: جديد (كراما)
+    ar: جديد (كراما)
+    en: new (krama; ngoko anyar) = baru
+  - word: redaksi
+    pos: noun
+    ar_eg: هيئة التحرير
+    ar: هيئة التحرير
+    en: the editors = redaksi
+review:
+  status: draft
+  verified: false

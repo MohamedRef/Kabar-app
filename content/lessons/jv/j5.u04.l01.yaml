@@ -1,0 +1,241 @@
+schema: kabar.lesson/v1
+id: j5.u04.l01
+language: jv
+title: Campur kode
+can_do:
+  ar_eg: تلاقي الهيكل الجاوي في بوست مخلوط.
+  ar: أن تجد الهيكل الجاوي في منشور ممزوج.
+  en: Find the Javanese frame in a mixed post.
+slides:
+  - title: Golek rangka Jawane
+    body:
+      ar_eg: |
+        على تيك توك وإنستجرام نادرًا ما هتلاقي جاوي «سادة». هتلاقي كلمة جاوي وكلمة إندونيسي وكلمة إنجليزي، زي ما إحنا بنقول «ابعتلي اللينك على الجروب».
+        السر: دوّر الأول على كلمات الهيكل الجاوية: wis، tak، neng، sing، durung، ya، ae، -ne. دول بيقولولك إن الجملة جاوي في الأساس، وبعدين الكلمات الغريبة بتدخل جواها.
+      ar: |
+        قلّما تجد على تيك توك وإنستغرام جاوية خالصة، بل كلمة جاوية وأخرى إندونيسية وثالثة إنجليزية، كما نقول «ابعتلي اللينك على الجروب».
+        والسر: ابحث أولًا عن كلمات الهيكل الجاوية: wis، وtak، وneng، وsing، وdurung، وya، وae، و-ne؛ فهي تخبرك أن الجملة جاوية في أصلها، ثم تدخلها الكلمات الأجنبية.
+      en: |
+        On TikTok and Instagram you'll rarely see "pure" Javanese. You'll see a Javanese word, an Indonesian word, an English word, just like Egyptians say «ابعتلي اللينك على الجروب».
+        The key: first find the Javanese frame words: wis, tak, neng, sing, durung, ya, ae, -ne. They tell you the sentence is Javanese at heart; the foreign words slot inside.
+    grammar: jv.codemix
+    examples:
+      - text: Wis tak share neng grup, guys.
+        ar_eg: "شيّرته على الجروب يا جماعة. (wis، tak، neng = جاوي)"
+        ar: "شاركتُه في المجموعة يا جماعة. (wis، tak، neng = جاوية)"
+        en: "I've shared it in the group, guys. (wis, tak, neng = Javanese)"
+      - text: Sabar ya, aku lagi OTW.
+        ar_eg: استنى شوية، أنا في الطريق.
+        ar: اصبر قليلًا، أنا في الطريق.
+        en: Hang on, I'm on my way.
+  - title: Telung basa
+    body:
+      ar_eg: |
+        علّم كل كلمة: جاوي؟ إندونيسي؟ إنجليزي؟ campur kode = خلط اللغات (campur = يخلط).
+        وكلمة حلوة: sabar = صبر، من العربي بالظبط! «Sabar ya» = اصبر شوية / استنى.
+        ومهم: الخلط ده لغة صحاب. مع حد كبير بالكراما ماتدخّلش إنجليزي.
+      ar: |
+        صنّف كل كلمة: جاوية أم إندونيسية أم إنجليزية؟ campur kode = الخلط اللغوي (campur = يخلط).
+        وكلمة مألوفة: sabar = صبر من العربية، و«Sabar ya» = اصبر قليلًا.
+        ومهم: هذا الخلط لغة الأصدقاء، فلا تُدخل الإنجليزية في الكراما مع الكبار.
+      en: |
+        Tag each word: Javanese? Indonesian? English? campur kode = code-mixing (campur = to mix).
+        A friendly word: sabar = patient, straight from Arabic «صبر». "Sabar ya" = hang on.
+        Important: mixing is friends' language. Don't drop English into krama with an elder.
+    grammar: jv.codemix
+    examples:
+      - text: Durung sempet, sorry banget.
+        ar_eg: "لسه ملحقتش، سوري جدًا. (durung = جاوي، sempet = من الإندونيسي sempat، sorry = إنجليزي)"
+        ar: "لم تسنح لي الفرصة بعد، آسف جدًا. (durung جاوية، sempet من الإندونيسية sempat، sorry إنجليزية)"
+        en: "Haven't had the chance yet, really sorry. (durung = Javanese, sempet = from Indonesian sempat, sorry = English)"
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: campur
+        ar_eg: يخلط
+        ar: يخلط / يمزج
+        en: to mix
+      - text: sabar
+        ar_eg: صبور / اصبر (من «صبر»)
+        ar: صبور (من «صبر»)
+        en: patient (from «صبر»)
+      - text: sempet
+        ar_eg: يلحق / يلاقي وقت
+        ar: تسنح له الفرصة
+        en: to have the chance, find time
+      - text: OTW
+        ar_eg: في الطريق
+        ar: في الطريق
+        en: on the way
+      - text: grup
+        ar_eg: جروب (شات)
+        ar: مجموعة (محادثة)
+        en: group (chat)
+    words: [campur, sabar, sempet, OTW, grup]
+  - id: e02
+    type: multiple_choice
+    question: Wis tak share neng grup, guys.
+    question_meaning:
+      ar_eg: أنهي كلمة هنا جاوي؟
+      ar: أي كلمة هنا جاوية؟
+      en: Which word here is Javanese?
+    options: [share, guys, wis]
+    answer: 2
+    explain:
+      ar_eg: wis (خلاص) من الهيكل الجاوي. share وguys إنجليزي.
+      ar: wis (قد) من الهيكل الجاوي، وshare وguys إنجليزيتان.
+      en: wis (already) is part of the Javanese frame; share and guys are English.
+    words: [grup]
+  - id: e03
+    type: multiple_choice
+    question: Sabar ya, aku lagi OTW.
+    question_meaning:
+      ar_eg: OTW من أنهي لغة؟
+      ar: من أي لغة OTW؟
+      en: Which language is OTW from?
+    options: [basa Jawa, basa Inggris, basa Indonesia]
+    answer: 1
+    explain:
+      ar_eg: OTW = on the way، اختصار إنجليزي.
+      ar: OTW = on the way، اختصار إنجليزي.
+      en: OTW = on the way, an English abbreviation.
+    words: [OTW, sabar]
+  - id: e04
+    type: listen
+    text: Durung sempet, sorry banget.
+    options: ['Durung sempet, sorry banget.', 'Wis sempet, makasih banget.', 'Durung mangan, sorry banget.']
+    answer: 0
+    meaning:
+      ar_eg: لسه ملحقتش، سوري جدًا.
+      ar: لم تسنح لي الفرصة بعد، آسف جدًا.
+      en: Haven't had the chance yet, really sorry.
+    words: [sempet]
+  - id: e05
+    type: fill_blank
+    sentence: ___ ya, aku lagi OTW.
+    meaning:
+      ar_eg: استنى شوية، أنا في الطريق.
+      ar: اصبر قليلًا، أنا في الطريق.
+      en: Hang on, I'm on my way.
+    options: [Sempet, Sabar, Campur]
+    answers: [Sabar]
+    words: [sabar, OTW]
+  - id: e06
+    type: fill_blank
+    sentence: Postingan iki basa Jawa ___ basa Inggris.
+    meaning:
+      ar_eg: البوست ده جاوي مخلوط بإنجليزي.
+      ar: هذا المنشور جاوية ممزوجة بالإنجليزية.
+      en: This post is Javanese mixed with English.
+    options: [sabar, sempet, campur]
+    answers: [campur]
+    words: [campur]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: (شات) شيّرته على الجروب خلاص.
+      ar: (دردشة) شاركتُه في المجموعة.
+      en: (chat) I've shared it in the group.
+    answer: Wis tak share neng grup.
+    distractors: [dishare, sing]
+    words: [grup]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Sabar ya, aku lagi OTW.
+    answers_meaning:
+      ar_eg:
+        - استنى شوية، أنا في الطريق.
+        - اصبر شوية، أنا في الطريق.
+        - استنى، أنا جاي في الطريق.
+        - استنى شوية، أنا جاي.
+        - اصبر شوية، أنا جاي في السكة.
+      ar:
+        - اصبر قليلًا، أنا في الطريق.
+        - انتظر قليلًا، أنا في الطريق.
+        - اصبر، أنا في الطريق.
+      en:
+        - Hang on, I'm on my way.
+        - Be patient, I'm on my way.
+        - Wait a bit, I'm on my way.
+        - Hang on, I'm on the way.
+        - Be patient, I'm on the way.
+    words: [sabar, OTW]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (شات لصاحبك) لسه ملحقتش، سوري جدًا.
+      ar: (دردشة مع صديق) لم تسنح لي الفرصة بعد، آسف جدًا.
+      en: (chat to a friend) Haven't had the chance yet, really sorry.
+    answers:
+      - Durung sempet, sorry banget.
+      - Durung sempet, sori banget.
+      - Aku durung sempet, sorry banget.
+      - Aku durung sempet, sori banget.
+      - Sorry banget, durung sempet.
+      - Sorry banget, aku durung sempet.
+      - Durung sempet, sorry ya.
+    words: [sempet]
+  - id: e10
+    type: speaking
+    text: Campur kode iku kanggo kanca, dudu kanggo simbah.
+    meaning:
+      ar_eg: خلط اللغات ده للصحاب، مش للجدّ.
+      ar: الخلط اللغوي للأصدقاء لا للجدّ.
+      en: Code-mixing is for friends, not for grandpa.
+    words: [campur]
+dialogue:
+  title: Ing Museum Ambarawa
+  lines:
+    - speaker: Mas Bayu
+      text: Guys, aku lagi neng Museum Kereta Api Ambarawa!
+      ar_eg: يا جماعة، أنا دلوقتي في متحف القطر في أمباراوا!
+      ar: يا جماعة، أنا الآن في متحف القطارات في أمباراوا!
+      en: Guys, I'm at the Ambarawa Railway Museum right now!
+    - speaker: Mohamed
+      text: Mas, kok campur basa Inggris?
+      ar_eg: يا بايو، إنت ليه بتخلط إنجليزي؟
+      ar: يا بايو، لماذا تمزج الإنجليزية؟
+      en: Bayu, how come you mix in English?
+    - speaker: Mas Bayu
+      text: Nek nggawe video, mesthi campur. Nanging karo simbah ora!
+      ar_eg: لما بعمل فيديو، أكيد بخلط. بس مع جدّي لأ!
+      ar: حين أصنع فيديو أمزج حتمًا، لكن ليس مع جدّي!
+      en: When I make videos, I always mix. But not with grandpa!
+    - speaker: Mohamed
+      text: Oh, karo kanca campur, karo simbah krama. Ngerti!
+      ar_eg: آه، مع الصحاب خلط، ومع الجدّ كراما. فهمت!
+      ar: آه، مع الأصدقاء خلط ومع الجدّ كراما. فهمت!
+      en: Oh, mixing with friends, krama with grandpa. Got it!
+new_words:
+  - word: campur
+    pos: verb
+    ar_eg: يخلط
+    ar: يخلط / يمزج
+    en: to mix = campur
+  - word: sabar
+    pos: adjective
+    ar_eg: صبور / اصبر
+    ar: صبور
+    en: patient = sabar
+    arabic: صبر
+  - word: sempet
+    pos: verb
+    ar_eg: يلحق / يلاقي وقت
+    ar: تسنح له الفرصة
+    en: to have the chance, find time = sempat
+  - word: OTW
+    pos: phrase
+    ar_eg: في الطريق (من الإنجليزي on the way)
+    ar: في الطريق (من الإنجليزية on the way)
+    en: on the way (English shorthand)
+  - word: grup
+    pos: noun
+    ar_eg: جروب (شات)
+    ar: مجموعة (محادثة)
+    en: group chat = grup
+review:
+  status: draft
+  verified: false

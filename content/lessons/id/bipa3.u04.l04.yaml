@@ -1,0 +1,225 @@
+schema: kabar.lesson/v1
+id: bipa3.u04.l04
+language: id
+title: Menaikkan, menyenangkan
+can_do:
+  ar_eg: تستعمل أفعال -kan من أفعال الحركة (naik → menaikkan) ومن المشاعر (bosan → membosankan).
+  ar: أن تستعمل أفعال -kan المشتقة من أفعال الحركة (naik → menaikkan) ومن المشاعر (bosan → membosankan).
+  en: Use -kan verbs from movement and feelings.
+slides:
+  - title: naik → menaikkan
+    grammar: id.confix.men-kan.causative
+    body:
+      ar_eg: |
+        فعل لازم + -kan = تخلّي حاجة تعمله:
+        naik (يطلع) → menaikkan (يرفع / يعلّي)، turun (ينزل) → menurunkan (ينزّل)، mati (يموت / يطفي) → mematikan (يطفي حاجة).
+        زي «نزل → نزّل» في العربي.
+        وخلي بالك من الإملا: الجذر لو آخره k + -kan = kk: menaikkan.
+      ar: |
+        الفعل اللازم + -kan = جعل الشيء يفعل ذلك:
+        naik (يصعد) → menaikkan (يرفع)، turun (ينزل) → menurunkan (يُنزِل / يخفّض)، mati (يموت / ينطفئ) → mematikan (يُطفئ).
+        كقولنا في العربية: نزل → أنزل.
+        وانتبه للإملاء: إذا انتهى الجذر بـk ثم -kan صارت kk: menaikkan.
+      en: |
+        Intransitive verb + -kan = make something do it:
+        naik (go up) → menaikkan (raise), turun (go down) → menurunkan (lower), mati (die / go off) → mematikan (switch off).
+        Like Arabic نزل → أنزل.
+        Spelling: a root ending in k plus -kan gives kk: menaikkan.
+    examples:
+      - text: Terlalu banyak garam bisa menaikkan tekanan darah.
+        ar_eg: الملح الكتير ممكن يعلّي الضغط.
+        ar: الإكثار من الملح قد يرفع ضغط الدم.
+        en: Too much salt can raise your blood pressure.
+      - text: Jalan kaki bisa menurunkan tekanan darah.
+        ar_eg: المشي ممكن ينزّل الضغط.
+        ar: المشي قد يخفّض ضغط الدم.
+        en: Walking can lower blood pressure.
+  - title: menyenangkan, membosankan
+    grammar: id.confix.men-kan.causative
+    body:
+      ar_eg: |
+        شعور + -kan = حاجة بتعمل الشعور ده فيك:
+        senang (مبسوط) → menyenangkan (ممتع، بيبسط)، bosan (زهقان) → membosankan (مملّ، بيزهّق).
+      ar: |
+        الشعور + -kan = شيء يبعث فيك ذلك الشعور:
+        senang (مسرور) → menyenangkan (ممتع)، bosan (ضَجِر) → membosankan (مملّ).
+      en: |
+        Feeling + -kan = something that causes that feeling:
+        senang (happy) → menyenangkan (fun, pleasant), bosan (bored) → membosankan (boring).
+    examples:
+      - text: Makanan yang sama setiap hari membosankan.
+        ar_eg: نفس الأكل كل يوم بيزهّق.
+        ar: الطعام نفسه كل يوم مملّ.
+        en: The same food every day is boring.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: menaikkan
+        ar_eg: يعلّي، يرفع
+        ar: يرفع
+        en: to raise
+      - text: menurunkan
+        ar_eg: ينزّل، يقلّل
+        ar: يخفّض
+        en: to lower
+      - text: tekanan darah
+        ar_eg: الضغط (ضغط الدم)
+        ar: ضغط الدم
+        en: blood pressure
+      - text: kebiasaan
+        ar_eg: عادة
+        ar: عادة
+        en: habit
+      - text: membosankan
+        ar_eg: مملّ، بيزهّق
+        ar: مملّ
+        en: boring
+      - text: mematikan
+        ar_eg: يطفي
+        ar: يُطفئ
+        en: to switch off
+    words: [menaikkan, menurunkan, tekanan darah, kebiasaan, membosankan, mematikan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «يرفع» (السعر أو الضغط) بتتكتب إزاي؟
+      ar: كيف تُكتب «يرفع» (السعر أو الضغط)؟
+      en: How do you spell "to raise" (prices, blood pressure)?
+    options: [menaikkan, menaikan, menaiki]
+    answer: 0
+    explain:
+      ar_eg: "naik + -kan = kk. و menaiki فعل تاني خالص: يركب / يطلع على."
+      ar: naik + -kan = kk، أما menaiki ففعل آخر بمعنى يركب / يصعد.
+      en: naik + -kan gives kk. menaiki is a different verb, "to ride / climb onto".
+    words: [menaikkan]
+  - id: e03
+    type: listen
+    text: Terlalu banyak garam bisa menaikkan tekanan darah.
+    options: ["Terlalu banyak garam bisa menurunkan tekanan darah.", "Terlalu banyak gula bisa menaikkan tekanan darah.", "Terlalu banyak garam bisa menaikkan tekanan darah."]
+    answer: 2
+    meaning:
+      ar_eg: الملح الكتير ممكن يعلّي الضغط.
+      ar: الإكثار من الملح قد يرفع ضغط الدم.
+      en: Too much salt can raise your blood pressure.
+    words: [menaikkan, tekanan darah]
+  - id: e04
+    type: multiple_choice
+    question: Saya tidak suka makanan yang sama setiap hari. ___!
+    options: [Menyenangkan, Membosankan, Menurunkan]
+    answer: 1
+    words: [membosankan]
+  - id: e05
+    type: fill_blank
+    sentence: Olahraga bisa ___ tekanan darah.
+    meaning:
+      ar_eg: الرياضة ممكن تنزّل الضغط.
+      ar: الرياضة قد تخفّض ضغط الدم.
+      en: Exercise can lower blood pressure.
+    options: [membosankan, menurunkan, mematikan]
+    answers: [menurunkan]
+    words: [menurunkan, tekanan darah]
+  - id: e06
+    type: fill_blank
+    sentence: Jangan lupa ___ TV sebelum tidur.
+    meaning:
+      ar_eg: ماتنساش تطفي التلفزيون قبل ما تنام.
+      ar: لا تنسَ أن تطفئ التلفاز قبل النوم.
+      en: Don't forget to switch off the TV before you sleep.
+    options: [menaikkan, mematikan, membersihkan]
+    answers: [mematikan]
+    words: [mematikan]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: العادات الصحية بتنزّل الضغط.
+      ar: العادات الصحية تخفّض ضغط الدم.
+      en: Healthy habits lower blood pressure.
+    answer: Kebiasaan sehat menurunkan tekanan darah.
+    distractors: [turun, menaikan]
+    words: [kebiasaan, menurunkan, tekanan darah]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أكل نفس الأكل كل يوم بيزهّق.
+      ar: تناول الطعام نفسه كل يوم مملّ.
+      en: Eating the same food every day is boring.
+    answers:
+      - Makan makanan yang sama setiap hari membosankan.
+      - Makan makanan yang sama setiap hari membosankan
+      - Makan makanan yang sama tiap hari membosankan.
+      - Makan makanan yang sama setiap hari itu membosankan.
+      - Makan makanan yang sama setiap hari sangat membosankan.
+      - Makan yang sama setiap hari membosankan.
+    words: [membosankan]
+  - id: e09
+    type: speaking
+    text: Saya mematikan HP jam sembilan malam. Itu kebiasaan baru saya.
+    meaning:
+      ar_eg: بطفي الموبايل الساعة تسعة بالليل. دي عادتي الجديدة.
+      ar: أطفئ الهاتف في التاسعة مساءً؛ تلك عادتي الجديدة.
+      en: I switch off my phone at nine p.m. That's my new habit.
+    words: [mematikan, kebiasaan]
+dialogue:
+  title: Jalan kaki ke kebun stroberi
+  lines:
+    - speaker: Mas Rizal
+      text: Mohamed, ayo kita memetik stroberi di kebun Bu Rohani!
+      ar_eg: يا محمد، يلا نقطف فراولة من جنينة مدام روحاني!
+      ar: يا محمد، هيا نقطف الفراولة من بستان السيدة روحاني!
+      en: Mohamed, let's go and pick strawberries in Bu Rohani's garden!
+    - speaker: Mohamed
+      text: Ayo! Tunggu, saya mematikan HP dulu.
+      ar_eg: يلا! استنى، هطفي الموبايل الأول.
+      ar: هيا! انتظر، سأطفئ الهاتف أولًا.
+      en: Let's go! Wait, I'll switch off my phone first.
+    - speaker: Mas Rizal
+      text: Itu kebiasaan baik! Di kota kamu jarang jalan kaki, kan?
+      ar_eg: دي عادة حلوة! في المدينة نادرًا لما بتمشي، صح؟
+      ar: هذه عادة جيدة! نادرًا ما تمشي في المدينة، أليس كذلك؟
+      en: That's a good habit! In the city you rarely walk, right?
+    - speaker: Mohamed
+      text: Betul. Kata dokter, tekanan darah saya agak tinggi.
+      ar_eg: صح. الدكتور بيقول إن ضغطي عالي شوية.
+      ar: صحيح. يقول الطبيب إنّ ضغط دمي مرتفع قليلًا.
+      en: True. The doctor says my blood pressure is a bit high.
+    - speaker: Mas Rizal
+      text: Jalan kaki bisa menurunkan tekanan darah. Dan memetik stroberi sangat menyenangkan!
+      ar_eg: المشي ممكن ينزّل الضغط. وقطف الفراولة ممتع جدًا!
+      ar: المشي قد يخفّض ضغط الدم، وقطف الفراولة ممتع جدًا!
+      en: Walking can lower blood pressure. And picking strawberries is great fun!
+new_words:
+  - word: menaikkan
+    pos: verb
+    ar_eg: يعلّي، يرفع — من naik
+    ar: يرفع — من naik
+    en: to raise — from naik
+  - word: menurunkan
+    pos: verb
+    ar_eg: ينزّل، يقلّل — من turun
+    ar: يخفّض — من turun
+    en: to lower — from turun
+  - word: tekanan darah
+    pos: noun
+    ar_eg: ضغط الدم
+    ar: ضغط الدم
+    en: blood pressure
+  - word: kebiasaan
+    pos: noun
+    ar_eg: عادة
+    ar: عادة
+    en: habit
+  - word: membosankan
+    pos: adjective
+    ar_eg: مملّ — من bosan
+    ar: مملّ — من bosan
+    en: boring — from bosan
+  - word: mematikan
+    pos: verb
+    ar_eg: يطفي (نور، تلفزيون) — من mati
+    ar: يُطفئ — من mati
+    en: to switch off — from mati
+review:
+  status: draft
+  verified: false

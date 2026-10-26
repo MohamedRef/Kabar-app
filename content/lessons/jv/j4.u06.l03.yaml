@@ -1,0 +1,231 @@
+schema: kabar.lesson/v1
+id: j4.u06.l03
+language: jv
+title: Gamelan
+can_do:
+  ar_eg: تسمّي آلات الجاميلان الأساسية وتتابع عرض.
+  ar: أن تسمّي آلات الغاميلان الرئيسية وتتابع عرضًا.
+  en: Name the main gamelan instruments and follow a performance.
+slides:
+  - title: Gong, kendhang, saron
+    body:
+      ar_eg: |
+        gamelan = الفرقة الموسيقية الجاوية: آلات نحاس بتتخبط، وطبول، وغنا. أهم تلاتة تعرفهم:
+        - gong: الجونج الكبير، ضربته العميقة بتقفل كل جملة موسيقية.
+        - kendhang: الطبلة، هي اللي بتقود السرعة وبتدّي الإشارات.
+        - saron: ألواح معدن بتتخبط بمطرقة، بتعزف اللحن.
+        ومن غير الجاميلان مفيش وايانغ.
+      ar: |
+        gamelan هي الفرقة الجاوية: آلات نحاسية تُقرع، وطبول، وغناء. وأهم ثلاث:
+        - gong: الصنج الكبير، تختم ضربته العميقة كل جملة موسيقية.
+        - kendhang: الطبل، يقود الإيقاع ويعطي الإشارات.
+        - saron: ألواح معدنية تُقرع بمطرقة، تؤدي اللحن.
+        ولا وايانغ بلا غاميلان.
+      en: |
+        gamelan = the Javanese orchestra: struck bronze, drums and voice. Three to know first:
+        - gong: the great gong; its deep stroke closes each musical phrase.
+        - kendhang: the drum; it leads the tempo and gives the cues.
+        - saron: metal bars struck with a mallet; they carry the melody.
+        No gamelan, no wayang.
+    grammar: jv.speechlevel.overview
+    examples:
+      - text: Gong iku gedhe banget.
+        ar_eg: الجونج ده كبير قوي.
+        ar: هذا الصنج كبير جدًا.
+        en: That gong is really big.
+      - text: Kendhang, saron lan gong.
+        ar_eg: الطبلة والسارون والجونج.
+        ar: الطبل والسارون والصنج.
+        en: Drum, saron and gong.
+  - title: Gendhing lan sindhen
+    body:
+      ar_eg: |
+        القطعة الموسيقية اللي الجاميلان بتعزفها اسمها gendhing، والمطربة اللي بتغني معاها اسمها sindhen.
+        وعشان تتكلم عن العرض، المستويات زي ما هي:
+        - لصاحبك: «Kowe seneng gamelan?» (ngoko)
+        - لكبير: «Panjenengan remen gamelan?» (krama alus)
+      ar: |
+        القطعة التي تعزفها الغاميلان تسمى gendhing، والمغنية المصاحبة لها sindhen.
+        وللحديث عن العرض تبقى المستويات كما هي:
+        - للصديق: «Kowe seneng gamelan?» (ngoko)
+        - للكبير: «Panjenengan remen gamelan?» (krama alus)
+      en: |
+        A piece of gamelan music is a gendhing, and the woman who sings with the orchestra is the sindhen.
+        To talk about the show, the levels work as always:
+        - to a friend: "Kowe seneng gamelan?" (ngoko)
+        - to an elder: "Panjenengan remen gamelan?" (krama alus)
+    grammar: jv.speechlevel.overview
+    examples:
+      - text: Panjenengan remen gendhing Jawa, Mbah?
+        ar_eg: حضرتك بتحبي المزيكا الجاوية يا تيتة؟
+        ar: هل تحبين الألحان الجاوية يا جدّتي؟
+        en: Do you like Javanese gamelan pieces, Grandma?
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: gong
+        ar_eg: الجونج الكبير
+        ar: الصنج الكبير
+        en: the great gong
+      - text: kendhang
+        ar_eg: الطبلة
+        ar: الطبل
+        en: drum
+      - text: saron
+        ar_eg: ألواح معدن للّحن
+        ar: ألواح معدنية للّحن
+        en: metal bars for the melody
+      - text: sindhen
+        ar_eg: مطربة الجاميلان
+        ar: مغنية الغاميلان
+        en: gamelan singer
+    words: [gong, kendhang, saron, sindhen]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: القطعة الموسيقية اللي الجاميلان بتعزفها اسمها إيه؟
+      ar: ما اسم القطعة التي تعزفها الغاميلان؟
+      en: What do you call a piece played by the gamelan?
+    options: [gendhing, gong, sindhen]
+    answer: 0
+    words: [gendhing]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مين اللي بتغني مع الجاميلان؟
+      ar: من التي تغني مع الغاميلان؟
+      en: Who sings with the gamelan?
+    options: [dhalang, sindhen, kendhang]
+    answer: 1
+    explain:
+      ar_eg: الـ sindhen بتغني، والدالانغ بيحكي ويحرّك العرايس.
+      ar: الـ sindhen تغني، والدالانغ يروي ويحرّك الدمى.
+      en: The sindhen sings; the dhalang narrates and moves the puppets.
+    words: [sindhen]
+  - id: e04
+    type: listen
+    text: Panjenengan remen gamelan?
+    options: ['Kowe seneng gamelan?', 'Panjenengan remen gendhing?', 'Panjenengan remen gamelan?']
+    answer: 2
+    meaning:
+      ar_eg: حضرتك بتحب الجاميلان؟ (krama alus)
+      ar: هل تحبون الغاميلان؟ (krama alus)
+      en: Do you like gamelan? (krama alus)
+    words: [gamelan]
+  - id: e05
+    type: fill_blank
+    sentence: Sing paling gedhe iku ___.
+    meaning:
+      ar_eg: أكبر واحد هو الجونج.
+      ar: أكبرها هو الصنج.
+      en: The biggest one is the gong.
+    options: [saron, gong, kendhang]
+    answers: [gong]
+    words: [gong]
+  - id: e06
+    type: fill_blank
+    sentence: Aku seneng ___ Jawa.
+    meaning:
+      ar_eg: أنا بحب الجاميلان الجاوي.
+      ar: أحب الغاميلان الجاوية.
+      en: I like Javanese gamelan.
+    options: [gamelan, sindhen, kendhang]
+    answers: [gamelan]
+    words: [gamelan]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: أبلة راتري بتحب المزيكا الجاوية.
+      ar: راتري تحب ألحان الغاميلان الجاوية.
+      en: Mbak Ratri likes Javanese gamelan pieces.
+    answer: Mbak Ratri seneng gendhing Jawa.
+    distractors: [remen, kowe]
+    words: [gendhing]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (krama alus، لـ Pak Harsono) حضرتك بتحب المزيكا الجاوية يا عمّو؟
+      ar: (krama alus، إلى Pak Harsono) هل تحب ألحان الغاميلان الجاوية يا سيدي؟
+      en: (krama alus, to Pak Harsono) Do you like Javanese gamelan pieces, sir?
+    answers: ['Panjenengan remen gendhing Jawa, Pak?', 'Pak, panjenengan remen gendhing Jawa?', 'Bapak remen gendhing Jawa?', 'Panjenengan remen gendhing Jawa?', 'Remen gendhing Jawa, Pak?']
+    words: [gendhing]
+  - id: e09
+    type: dictation
+    text: Aku seneng gamelan. Kendhang, saron lan gong.
+    meaning:
+      ar_eg: "أنا بحب الجاميلان: الطبلة والسارون والجونج."
+      ar: "أحب الغاميلان: الطبل والسارون والصنج."
+      en: I love gamelan. Drum, saron and gong.
+    words: [gamelan, kendhang, saron, gong]
+  - id: e10
+    type: speaking
+    text: Sindhene apik, saron lan kendhange uga apik.
+    meaning:
+      ar_eg: المطربة حلوة، والسارون والطبلة كمان حلوين.
+      ar: المغنية رائعة، والسارون والطبل رائعان أيضًا.
+      en: The singer is great, and the saron and drum are too.
+    words: [sindhen, saron, kendhang]
+dialogue:
+  title: Gamelan ing pendhapa
+  lines:
+    - speaker: Mbah Putri
+      text: Mas Mohamed, mangga. Menika gamelan.
+      ar_eg: اتفضل يا محمد. ده الجاميلان.
+      ar: تفضّل يا محمد. هذه الغاميلان.
+      en: Come in, Mohamed. This is the gamelan.
+    - speaker: Mohamed
+      text: Wah, gongipun ageng sanget, Mbah!
+      ar_eg: الله، الجونج كبير قوي يا تيتة!
+      ar: يا للروعة، الصنج كبير جدًا يا جدّتي!
+      en: Wow, the gong is huge, Grandma!
+    - speaker: Mbah Putri
+      text: Inggih. Menika kendhang, menika saron.
+      ar_eg: آه. دي الطبلة، ودي السارون.
+      ar: نعم. هذا الطبل، وهذا السارون.
+      en: Yes. This is the drum, and this is the saron.
+    - speaker: Mohamed
+      text: Panjenengan remen gendhing menapa, Mbah?
+      ar_eg: حضرتك بتحبي أنهي مزيكا يا تيتة؟
+      ar: أي الألحان تحبين يا جدّتي؟
+      en: Which gamelan pieces do you like, Grandma?
+    - speaker: Mbah Putri
+      text: Kula remen gendhing Jawa, Mas.
+      ar_eg: أنا بحب المزيكا الجاوية يا ابني.
+      ar: أحب الألحان الجاوية يا بني.
+      en: I love Javanese pieces.
+new_words:
+  - word: gamelan
+    pos: noun
+    ar_eg: الفرقة الموسيقية الجاوية
+    ar: الفرقة الموسيقية الجاوية
+    en: Javanese orchestra = gamelan
+  - word: gong
+    pos: noun
+    ar_eg: الجونج الكبير
+    ar: الصنج الكبير
+    en: great gong
+  - word: kendhang
+    pos: noun
+    ar_eg: الطبلة (بتقود السرعة)
+    ar: الطبل (يقود الإيقاع)
+    en: drum (leads the tempo) = kendang
+  - word: saron
+    pos: noun
+    ar_eg: ألواح معدن بتعزف اللحن
+    ar: ألواح معدنية تؤدي اللحن
+    en: metal-bar instrument (the melody)
+  - word: gendhing
+    pos: noun
+    ar_eg: قطعة موسيقى جاميلان
+    ar: قطعة موسيقية للغاميلان
+    en: a gamelan piece = gending
+  - word: sindhen
+    pos: noun
+    ar_eg: مطربة الجاميلان
+    ar: مغنية الغاميلان
+    en: female gamelan singer = pesinden
+review:
+  status: draft
+  verified: false

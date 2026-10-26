@@ -66,7 +66,7 @@ kabar/
 
 ## 4. Client stack
 
-- **Dioxus 0.7.x** for macOS (aarch64-apple-darwin) and Android (arm64-v8a); web build as a bonus.
+- **Dioxus 0.7.x** for macOS (aarch64-apple-darwin) and Android (arm64-v8a); web build as milestone M2+ after Kabar Cloud is deployed (SPEC §23): today only `core`, `protocol` and `server` build for wasm32; the app still needs browser storage, fetch/WebSocket, Web Speech TTS and redirect sign-in. Host: Cloudflare Pages behind Cloudflare Access, both free.
 - **SQLite** via `rusqlite` (bundled, FTS5) with embedded migrations (`rusqlite_migration` or hand-rolled numbered SQL).
 - **Ink:** a small TypeScript module inside the WebView: Pointer Events (`pointerType="pen"`), `getCoalescedEvents()`, `getPredictedEvents()`, `desynchronized: true` 2D canvas. Points batched to Rust per stroke (points + pressure + tilt + t).
 - **Native bridges (Android):** JNI from Rust (`jni` crate) using `ndk_context` for the JavaVM and the activity's class loader to reach our Kotlin classes. Dioxus has no official Kotlin interop yet, so M1 proves this with one call (e.g., read the S Pen "in range" state) before anything depends on it. Fallback: a custom Gradle template via `dx` bundling.

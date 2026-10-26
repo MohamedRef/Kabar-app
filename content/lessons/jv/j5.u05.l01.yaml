@@ -1,0 +1,241 @@
+schema: kabar.lesson/v1
+id: j5.u05.l01
+language: jv
+title: Ing sawijining dina
+can_do:
+  ar_eg: تعرف بداية الحكاية وكلمة «وبعدين» فيها.
+  ar: أن تتعرّف على افتتاح القصة وأداة «ثم» فيها.
+  en: Spot a story's opening and its 'then'.
+slides:
+  - title: Biyen ana …
+    body:
+      ar_eg: |
+        أهلًا بيك في كودوس! cerkak = قصة قصيرة (crita cekak). وأي قصة جاوي بتبدأ بجملة من دول:
+        - «Ing sawijining dina, …» = في يوم من الأيام … (فاكر sawijining من ويكيبيديا؟)
+        - «Biyen ana …» = كان يا ما كان، كان فيه … (biyen = زمان / dulu)
+        نفس هيكل الحدوتة المصري بالظبط.
+      ar: |
+        مرحبًا بك في كودوس! cerkak = قصة قصيرة (crita cekak)، وتبدأ القصة الجاوية عادة بإحدى هاتين:
+        - «Ing sawijining dina, …» = في يوم من الأيام … (أتذكر sawijining من ويكيبيديا؟)
+        - «Biyen ana …» = كان يا ما كان … (biyen = قديمًا / dulu)
+        وهو هيكل الحكاية العربية نفسه.
+      en: |
+        Welcome to Kudus! cerkak = short story (crita cekak). A Javanese story usually opens with one of these:
+        - "Ing sawijining dina, …" = one day … (remember sawijining from Wikipedia?)
+        - "Biyen ana …" = once upon a time there was … (biyen = long ago, dulu)
+        The very same skeleton as an Arabic folk tale: «في يوم من الأيام», «كان يا ما كان».
+    grammar: jv.narrative.connectors
+    examples:
+      - text: Ing sawijining dina, Dimas lunga menyang pasar.
+        ar_eg: في يوم من الأيام، ديماس راح السوق.
+        ar: في يوم من الأيام ذهب ديماس إلى السوق.
+        en: One day, Dimas went to the market.
+      - text: Biyen ana bocah cilik jenenge Bima.
+        ar_eg: كان يا ما كان، كان فيه ولد صغير اسمه بيما.
+        ar: كان يا ما كان ولد صغير اسمه بيما.
+        en: Once upon a time there was a little boy called Bima.
+  - title: Terus, banjur, nuli
+    body:
+      ar_eg: |
+        التلاتة معناهم «وبعدين / ثم»، بس كل واحدة ليها مكانها:
+        - terus: في الكلام (عرفتها في J2).
+        - banjur: في الحكي والكتابة.
+        - nuli: أدبية أكتر، هتلاقيها في القصص والكتب.
+        لما تقرا قصة، علّم على الكلمات دي الأول، هتشوف ترتيب الأحداث قدامك.
+      ar: |
+        الثلاث بمعنى «ثم»، ولكل منها موضعها:
+        - terus: في الكلام (عرفتها في J2).
+        - banjur: في السرد والكتابة.
+        - nuli: أدبية أكثر، تكثر في القصص والكتب.
+        وحين تقرأ قصة ظلّل هذه الكلمات أولًا يظهر لك ترتيب الأحداث.
+      en: |
+        All three mean "then", each in its own place:
+        - terus: in speech (you met it in J2).
+        - banjur: in storytelling and writing.
+        - nuli: more literary, common in stories and books.
+        When you read a story, mark these first and the order of events appears.
+    grammar: jv.narrative.connectors
+    examples:
+      - text: Bima tangi esuk, banjur adus.
+        ar_eg: بيما صحي بدري، وبعدين استحمّى.
+        ar: استيقظ بيما باكرًا ثم استحمّ.
+        en: Bima got up early, then had a bath.
+      - text: Dheweke sarapan, nuli lunga sekolah.
+        ar_eg: فطر، وبعدين راح المدرسة.
+        ar: تناول فطوره ثم ذهب إلى المدرسة.
+        en: He had breakfast, then went to school.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: biyen
+        ar_eg: زمان / قديمًا (dulu)
+        ar: قديمًا (dulu)
+        en: long ago (dulu)
+      - text: cilik
+        ar_eg: صغير
+        ar: صغير
+        en: small, little
+      - text: cerkak
+        ar_eg: قصة قصيرة
+        ar: قصة قصيرة
+        en: short story
+      - text: nuli
+        ar_eg: وبعدين (أدبي)
+        ar: ثم (أدبية)
+        en: then (literary)
+      - text: terus
+        ar_eg: وبعدين (في الكلام)
+        ar: ثم (في الكلام)
+        en: then (in speech)
+    words: [biyen, cilik, cerkak, nuli]
+  - id: e02
+    type: multiple_choice
+    question: Ing sawijining dina
+    question_meaning:
+      ar_eg: يعني إيه بالإندونيسي؟
+      ar: ما معناها بالإندونيسية؟
+      en: What is it in Indonesian?
+    options: [Pada suatu hari, Setiap hari, Hari ini]
+    answer: 0
+    words: [sawijining]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي «وبعدين» هي الأكتر أدبية؟
+      ar: أيّ «ثم» أكثرها أدبية؟
+      en: Which "then" is the most literary?
+    options: [terus, banjur, nuli]
+    answer: 2
+    explain:
+      ar_eg: terus للكلام، banjur للحكي، nuli للكتب والقصص.
+      ar: terus للكلام، وbanjur للسرد، وnuli للكتب والقصص.
+      en: terus is spoken, banjur is storytelling, nuli is bookish.
+    words: [nuli]
+  - id: e04
+    type: listen
+    text: Biyen ana bocah cilik jenenge Bima.
+    options: ['Saiki ana bocah cilik jenenge Bima.', 'Biyen ana bocah cilik jenenge Bima.', 'Biyen ana wong gedhe jenenge Bima.']
+    answer: 1
+    meaning:
+      ar_eg: كان يا ما كان، كان فيه ولد صغير اسمه بيما.
+      ar: كان يا ما كان ولد صغير اسمه بيما.
+      en: Once upon a time there was a little boy called Bima.
+    words: [biyen, cilik]
+  - id: e05
+    type: fill_blank
+    sentence: ___ ana bocah cilik jenenge Bima.
+    meaning:
+      ar_eg: كان يا ما كان، كان فيه ولد صغير اسمه بيما.
+      ar: كان يا ما كان ولد صغير اسمه بيما.
+      en: Once upon a time there was a little boy called Bima.
+    options: [Nuli, Biyen, Banjur]
+    answers: [Biyen]
+    words: [biyen]
+  - id: e06
+    type: fill_blank
+    sentence: Dheweke sarapan, ___ lunga sekolah.
+    meaning:
+      ar_eg: فطر، وبعدين راح المدرسة.
+      ar: تناول فطوره ثم ذهب إلى المدرسة.
+      en: He had breakfast, then went to school.
+    options: [biyen, cilik, nuli]
+    answers: [nuli]
+    words: [nuli]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: في يوم من الأيام، بيما راح كودوس.
+      ar: في يوم من الأيام ذهب بيما إلى كودوس.
+      en: One day, Bima went to Kudus.
+    answer: Ing sawijining dina, Bima lunga menyang Kudus.
+    distractors: [biyen, saben]
+    words: [sawijining]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بأسلوب الحكاية) كان يا ما كان، كان فيه ولد صغير.
+      ar: (بأسلوب الحكاية) كان يا ما كان ولد صغير.
+      en: (story style) Once upon a time there was a little boy.
+    answers:
+      - Biyen ana bocah cilik.
+      - Biyen ana sawijining bocah cilik.
+      - Ing jaman biyen ana bocah cilik.
+      - Biyen ana bocah lanang cilik.
+    words: [biyen, cilik]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Bu Nur nulis cerkak, banjur dikirim menyang Panjebar Semangat.
+    answers_meaning:
+      ar_eg:
+        - الأستاذة نور كتبت قصة قصيرة، وبعدين اتبعتت لـ «بانجيبار سيمانغات».
+        - الأستاذة نور كتبت قصة قصيرة، وبعدين بعتتها لـ «بانجيبار سيمانغات».
+        - أبلة نور كتبت قصة قصيرة، وبعدين اتبعتت لمجلة بانجيبار سيمانغات.
+        - الأستاذة نور كتبت قصة قصيرة وبعدين اتبعتت لـ Panjebar Semangat.
+      ar:
+        - كتبت السيدة نور قصة قصيرة، ثم أُرسلت إلى «بانجيبار سيمانغات».
+        - كتبت السيدة نور قصة قصيرة ثم أرسلتها إلى «بانجيبار سيمانغات».
+        - كتبت السيدة نور قصة قصيرة، ثم أُرسلت إلى Panjebar Semangat.
+      en:
+        - Bu Nur wrote a short story, then it was sent to Panjebar Semangat.
+        - Bu Nur wrote a short story and then sent it to Panjebar Semangat.
+        - Bu Nur wrote a short story, then sent it to Panjebar Semangat.
+        - Mrs Nur wrote a short story, then it was sent to Panjebar Semangat.
+    words: [cerkak]
+  - id: e10
+    type: speaking
+    text: Aku seneng maca cerkak.
+    meaning:
+      ar_eg: أنا بحب أقرا قصص قصيرة.
+      ar: أحب قراءة القصص القصيرة.
+      en: I love reading short stories.
+    words: [cerkak]
+dialogue:
+  title: Cerkake Bu Nur
+  lines:
+    - speaker: Bu Nur
+      text: Mas Mohamed, iki cerkakku. Wacanen, ya.
+      ar_eg: يا محمد، دي قصتي القصيرة. اقراها.
+      ar: يا محمد، هذه قصتي القصيرة. اقرأها.
+      en: Mohamed, this is my short story. Have a read.
+    - speaker: Mohamed
+      text: Matur nuwun, Bu. Ing sawijining dina, menika "pada suatu hari", nggih?
+      ar_eg: متشكر يا أبلة. ing sawijining dina يعني «في يوم من الأيام»، صح؟
+      ar: شكرًا يا سيدتي. ing sawijining dina تعني «في يوم من الأيام»، أليس كذلك؟
+      en: Thank you, ma'am. Ing sawijining dina means "one day", right?
+    - speaker: Bu Nur
+      text: Bener. Banjur wacanen nganti rampung.
+      ar_eg: صح. وبعدين اقراها للآخر.
+      ar: صحيح. ثم اقرأها حتى النهاية.
+      en: Right. Then read it to the end.
+    - speaker: Mohamed
+      text: Inggih, Bu. Kula remen cerkak.
+      ar_eg: حاضر يا أبلة. أنا بحب القصص القصيرة.
+      ar: حسنًا يا سيدتي. أحب القصص القصيرة.
+      en: Yes, ma'am. I love short stories.
+new_words:
+  - word: cerkak
+    pos: noun
+    ar_eg: قصة قصيرة (crita cekak)
+    ar: قصة قصيرة (crita cekak)
+    en: short story (crita cekak) = cerpen
+  - word: biyen
+    pos: adverb
+    ar_eg: زمان / قديمًا
+    ar: قديمًا / في الماضي
+    en: long ago, in the past = dulu
+  - word: cilik
+    pos: adjective
+    ar_eg: صغير
+    ar: صغير
+    en: small, little = kecil
+  - word: nuli
+    pos: conjunction
+    ar_eg: وبعدين (أدبي)
+    ar: ثم (أدبية)
+    en: then (literary) = lalu
+review:
+  status: draft
+  verified: false
