@@ -1,0 +1,123 @@
+schema: kabar.grammar/v1
+id: jv.aksara.pasangan
+language: jv
+level: j6
+title:
+  target: pasangan · ꦏꦤ꧀ꦕ kanca · ꦩꦔꦤ꧀ꦱꦼꦒ mangan sega
+  en: Pasangan — the second form of each letter, for consonant clusters
+  ar_eg: الـ pasangan — الشكل التاني لكل حرف، للحروف الساكنة اللي بتيجي ورا بعض
+  ar: الـ pasangan — الصورة الثانية لكل حرف، لتتابع السواكن
+summary:
+  ar_eg: "لما حرف ساكن ييجي وراه حرف ساكن تاني (kanca، tanpa، mangan sega)، الجاوي مش بيستخدم pangkon. بيكتب الحرف التاني في شكله «المتصل» (pasangan) تحت الحرف الأولاني أو جنبه، وده بيموّت حركة الأولاني لوحده: ꦏꦤ꧀ꦕ = kanca."
+  ar: "إذا تلا الساكنَ ساكنٌ آخر (kanca، tanpa، mangan sega) لم تُستعمل pangkon، بل يُكتب الحرف الثاني بصورته الملحقة (pasangan) تحت الأول أو بجانبه، فيسكن الأول تلقائيًا: ꦏꦤ꧀ꦕ = kanca."
+  en: "When a consonant with no vowel is followed by another consonant (kanca, tanpa, mangan sega), Javanese doesn't use pangkon. It writes the second consonant in its 'paired' form (pasangan) under or beside the first, which silences the first one's vowel: ꦏꦤ꧀ꦕ = kanca."
+pattern:
+  - "C1 (no vowel) + C2 → C1 with C2 as pasangan: ka-n-ca → ꦏꦤ꧀ꦕ"
+  - "typing (Unicode): letter + ꧀ + next letter; the font draws the pasangan shape"
+  - "most pasangan sit below the letter; ha, sa and pa pasangan sit to its right"
+  - "works across word boundaries (no spaces): mangan sega → ꦩꦔꦤ꧀ꦱꦼꦒ"
+  - "no pasangan after cecak / layar / wignyan: pasar gedhe → ꦥꦱꦂꦒꦼꦝꦺ"
+  - "clusters inside a syllable: ml → ꦩ꧀ꦭꦏꦸ mlaku · special marks: cakra ꦿ (-r-: ꦏꦿꦩ krama), keret ꦽ (-rê-), pengkal ꦾ (-y-)"
+  - "vowel marks attach to the pasangan: ꦠꦶꦤ꧀ꦢꦏ꧀ tindak"
+explanation:
+  ar_eg: |
+    ده أصعب جزء في الخط الجاوي، بس منطقه بسيط.
+    في الدرس اللي فات: pangkon ꧀ بتشيل الـ a من الحرف، بس بنستخدمها لما الكلام يقف. طب لو الحرف الساكن وراه حرف ساكن تاني على طول؟ زي kanca (صاحب): ka + n + ca.
+    هنا الجاوي بيعمل حاجة ذكية: الحرف التاني (ca) بيتكتب في شكل صغير مخصوص اسمه pasangan تحت الحرف الأولاني (na). مجرد وجود الـ pasangan تحته معناه إن na فقدت الـ a بتاعتها.
+    كل حرف من العشرين ليه شكل pasangan. أغلبهم بيقعدوا تحت الحرف، وتلاتة (ha وsa وpa) بيقعدوا على اليمين جنبه.
+    أمثلة:
+    - ꦏꦤ꧀ꦕ = kanca: na وتحتها pasangan ca.
+    - ꦠꦤ꧀ꦥ = tanpa (من غير).
+    - وبين الكلمات كمان، لأن مفيش مسافات: ꦩꦔꦤ꧀ꦱꦼꦒ = mangan sega (ياكل رز). الـ n بتاعة mangan بتشيل pasangan sa.
+    - ꦲꦤꦏ꧀ꦭꦤꦁ = anak lanang (ابن).
+    - ꦱꦩ꧀ꦥꦸꦤ꧀ꦝꦲꦂ = sampun dhahar: اتنين pasangan في جملة واحدة.
+    استثناء مهم: لو الحرف الساكن ng أو r أو h، بنكتبه بـ cecak / layar / wignyan، ومش محتاجين pasangan بعده: ꦥꦱꦂꦒꦼꦝꦺ = pasar gedhe.
+    وجوه المقطع نفسه: mlaku = ma + pasangan la + ku (ꦩ꧀ꦭꦏꦸ). وفيه علامات خاصة لأشهر التجمعات: cakra ꦿ لـ r جوه المقطع (ꦏꦿꦩ = krama)، keret ꦽ لـ rê، pengkal ꦾ لـ y.
+    على الكمبيوتر / التابلت: بتكتب الحرف + pangkon + الحرف اللي بعده، والخط بيرسم الـ pasangan لوحده.
+  ar: |
+    هذا أصعب أبواب الخط الجاوي، ومنطقه بسيط:
+    pangkon ꧀ للوقف، فإذا تلا الساكنَ ساكنٌ مباشرة كما في kanca (ka + n + ca) كُتب الحرف الثاني بصورة صغيرة خاصة (pasangan) تحت الأول، فدلّ ذلك على سكون الأول.
+    ولكل حرف من العشرين صورة pasangan، أغلبها تحت الحرف، وثلاث منها (ha وsa وpa) إلى يمينه.
+    أمثلة: ꦏꦤ꧀ꦕ = kanca، ꦠꦤ꧀ꦥ = tanpa، وبين الكلمات لغياب المسافات: ꦩꦔꦤ꧀ꦱꦼꦒ = mangan sega، وꦲꦤꦏ꧀ꦭꦤꦁ = anak lanang، وꦱꦩ꧀ꦥꦸꦤ꧀ꦝꦲꦂ = sampun dhahar.
+    ولا pasangan بعد cecak وlayar وwignyan: ꦥꦱꦂꦒꦼꦝꦺ = pasar gedhe.
+    وداخل المقطع: ꦩ꧀ꦭꦏꦸ = mlaku، وللتجمعات الشائعة علامات: cakra ꦿ لـ r (ꦏꦿꦩ = krama)، وkeret ꦽ لـ rê، وpengkal ꦾ لـ y.
+    وعند الطباعة: الحرف ثم pangkon ثم الحرف التالي، ويرسم الخط الـ pasangan.
+  en: |
+    This is the hardest part of the script, but the logic is simple.
+    Last unit: pangkon ꧀ removes a letter's a, but only where speech pauses. What if a vowel-less consonant runs straight into another consonant, as in kanca (friend): ka + n + ca?
+    Javanese does something neat: the second consonant (ca) is written in a small special form called pasangan under the first (na). The pasangan's presence tells you na has lost its a.
+    Each of the 20 letters has a pasangan form. Most sit below the letter; three (ha, sa, pa) sit to its right.
+    Examples:
+    - ꦏꦤ꧀ꦕ = kanca: na with pasangan ca below.
+    - ꦠꦤ꧀ꦥ = tanpa (without).
+    - Across words too, since there are no spaces: ꦩꦔꦤ꧀ꦱꦼꦒ = mangan sega (eat rice); the n of mangan carries pasangan sa.
+    - ꦲꦤꦏ꧀ꦭꦤꦁ = anak lanang (son).
+    - ꦱꦩ꧀ꦥꦸꦤ꧀ꦝꦲꦂ = sampun dhahar: two pasangan in one phrase.
+    Key exception: if the closing consonant is ng, r or h, write cecak / layar / wignyan and no pasangan follows: ꦥꦱꦂꦒꦼꦝꦺ = pasar gedhe.
+    Inside a syllable: mlaku = ma + pasangan la + ku (ꦩ꧀ꦭꦏꦸ). The commonest clusters have their own marks: cakra ꦿ for -r- (ꦏꦿꦩ = krama), keret ꦽ for -rê-, pengkal ꦾ for -y-.
+    On a keyboard or tablet: type letter + pangkon + next letter, and the font draws the pasangan.
+examples:
+  - text: ꦏꦤ꧀ꦕ (kanca)
+    breakdown: ꦏ ka · ꦤ na + pasangan ꦕ ca → n-ca
+    en: friend (ngoko)
+    ar_eg: صاحب
+    ar: صديق
+  - text: ꦠꦤ꧀ꦥ (tanpa)
+    breakdown: ꦠ ta · ꦤ na + pasangan ꦥ pa (sits to the right) → n-pa
+    en: without
+    ar_eg: من غير
+    ar: بدون
+  - text: ꦩꦔꦤ꧀ꦱꦼꦒ (mangan sega)
+    breakdown: ꦩ ma · ꦔ nga · ꦤ na + pasangan ꦱ sa with pepet → n-sê · ꦒ ga
+    en: eat rice
+    ar_eg: ياكل رز
+    ar: يأكل الأرز
+  - text: ꦲꦤꦏ꧀ꦭꦤꦁ (anak lanang)
+    breakdown: ꦲ a · ꦤ na · ꦏ ka + pasangan ꦭ la → k-la · ꦤ na + ꦁ cecak → nang
+    en: son
+    ar_eg: ابن
+    ar: ابن
+  - text: ꦩ꧀ꦭꦏꦸ (mlaku)
+    breakdown: ꦩ ma + pasangan ꦭ la → mla · ꦏ ka + suku → ku
+    en: walk (ngoko)
+    ar_eg: يمشي
+    ar: يمشي
+  - text: ꦏꦿꦩ (krama)
+    breakdown: ꦏ ka + ꦿ cakra → kra · ꦩ ma
+    en: krama (the polite speech level)
+    ar_eg: الكراما
+    ar: الكراما
+mistakes:
+  - wrong: ꦏꦤ꧀ ꦕ (kan + space + ca, pangkon in mid-word).
+    right: ꦏꦤ꧀ꦕ — ca as pasangan under na.
+    why:
+      ar_eg: pangkon للوقف بس. جوه الكلمة أو الجملة بنستخدم pasangan.
+      ar: pangkon للوقف فقط، وفي الوصل تُستعمل pasangan.
+      en: pangkon is for pauses; inside a word or sentence use pasangan.
+  - wrong: Adding a pasangan after layar (pasar gedhe with a ga pasangan).
+    right: ꦥꦱꦂꦒꦼꦝꦺ — layar already closes the syllable.
+    why:
+      ar_eg: layar وcecak وwignyan بيقفلوا المقطع لوحدهم؛ الحرف اللي بعدهم بيتكتب عادي.
+      ar: layar وcecak وwignyan تغلق المقطع، فيُكتب ما بعدها عاديًا.
+      en: layar, cecak and wignyan close the syllable themselves; the next letter is written normally.
+  - wrong: Reading a pasangan as an extra syllable.
+    right: The letter above a pasangan loses its a; the pasangan carries the next vowel.
+    why:
+      ar_eg: الحرف اللي فوق الـ pasangan ساكن. ꦏꦤ꧀ꦕ = kan-ca مش ka-na-ca.
+      ar: "الحرف الذي فوق pasangan ساكن: ꦏꦤ꧀ꦕ = kan-ca لا ka-na-ca."
+      en: The letter carrying a pasangan is vowel-less; ꦏꦤ꧀ꦕ is kan-ca, not ka-na-ca.
+arabic_bridge:
+  ar_eg: "في العربي الحرف الساكن بنحط عليه سكون وخلاص، والحروف بتتشبك في بعض بالوصل. الجاوي اختار طريق تاني: بدل السكون في نص الكلام، بيكتب الحرف اللي بعده «متعلّق» تحته — شبه الشدّة في إنها علامة واحدة بتقول «فيه ساكن هنا من غير ما تكتبه»."
+  ar: "تكتفي العربية بالسكون، أما الجاوية فتكتب الحرف التالي معلّقًا تحت الساكن في الوصل؛ وهي تشبه الشدّة في دلالتها على ساكن دون كتابة علامته."
+  en: "Arabic just puts a sukun on the silent consonant. Javanese instead hangs the next letter under it — a bit like shadda, a single device that signals a silent consonant without writing it out."
+tags: [aksara-jawa, script, cluster, writing, j6]
+prerequisites: [jv.aksara.panyigeg]
+see_also: [jv.aksara.nglegena, jv.aksara.sandhangan-swara, jv.aksara.murda-rekan]
+review:
+  status: draft
+  verified: false
+  notes: >-
+    Draft by Claude; awaits review by a Javanese speaker. Javanese-script strings were generated from Unicode code points
+    (letter + pangkon U+A9C0 + letter); check them in a font with pasangan shaping. Please check that the ha / sa / pa
+    pasangan sit to the right, the cakra / keret / pengkal descriptions, and the example words kanca, tanpa, mangan sega,
+    anak lanang, mlaku, krama, sampun dhahar.
