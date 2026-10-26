@@ -1,0 +1,212 @@
+schema: kabar.lesson/v1
+id: bipa5.u07.l01
+language: id
+title: Perdagangan, perkebunan
+can_do:
+  ar_eg: تفهم وتستخدم أسماء per-…-an اللي بتدل على مجال أو مكان أو حدث.
+  ar: أن تفهم أسماء per-…-an الدالّة على مجال أو مكان أو حدث وتستعملها.
+  en: Understand and use per-…-an nouns for fields, places and events.
+slides:
+  - title: Dari ber- ke per-…-an
+    grammar: id.confix.per-an
+    body:
+      ar_eg: |
+        per-…-an بتعمل اسم من فعل ber- أو memper-:
+        - berdagang (يتاجر) → perdagangan = التجارة (مجال)
+        - bertemu (يقابل) → pertemuan = لقاء (حدث)
+        - memperbaiki (يصلّح) → perbaikan = تصليح
+        وإنت عارف pertunjukan (عرض) من mempertunjukkan.
+      ar: |
+        تصوغ per-…-an اسمًا من فعل ber- أو memper-:
+        - berdagang (يتاجر) → perdagangan = التجارة (مجال)
+        - bertemu (يلتقي) → pertemuan = لقاء (حدث)
+        - memperbaiki (يُصلح) → perbaikan = إصلاح
+        وتعرف pertunjukan (عرض) من mempertunjukkan.
+      en: |
+        per-…-an makes a noun from a ber- or memper- verb:
+        - berdagang (to trade) → perdagangan = trade (a field)
+        - bertemu (to meet) → pertemuan = a meeting (an event)
+        - memperbaiki (to repair) → perbaikan = repair
+        You already know pertunjukan (a show) from mempertunjukkan.
+    examples:
+      - text: Banjarmasin dulu pusat perdagangan di Kalimantan Selatan.
+        ar_eg: بانجارماسين كانت زمان مركز التجارة في جنوب كاليمانتان.
+        ar: كانت بانجارماسين مركز التجارة في جنوب كاليمانتان.
+        en: Banjarmasin used to be the trading centre of South Kalimantan.
+  - title: Tempat dan kumpulan
+    grammar: id.confix.per-an
+    body:
+      ar_eg: |
+        ومن اسم، per-…-an بتعمل مكان أو مجموعة كبيرة:
+        - kebun (جنينة) → perkebunan = مزارع كبيرة
+        - kota (مدينة) → perkotaan = المناطق الحضرية
+        - rumah (بيت) → perumahan = مجمّع سكني
+        - kampung → perkampungan = حي / قرى
+      ar: |
+        ومن الاسم تصوغ per-…-an مكانًا أو مجموعًا:
+        - kebun (بستان) → perkebunan = مزارع واسعة
+        - kota (مدينة) → perkotaan = المناطق الحضرية
+        - rumah (بيت) → perumahan = مجمّع سكني
+        - kampung → perkampungan = حيّ، قرى
+      en: |
+        From a noun, per-…-an makes a place or large set:
+        - kebun (garden) → perkebunan = plantations
+        - kota (city) → perkotaan = urban areas
+        - rumah (house) → perumahan = housing estate
+        - kampung → perkampungan = settlement
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: perdagangan
+        ar_eg: تجارة
+        ar: تجارة
+        en: trade
+      - text: perkebunan
+        ar_eg: مزارع كبيرة
+        ar: مزارع واسعة
+        en: plantations
+      - text: pertemuan
+        ar_eg: لقاء
+        ar: لقاء
+        en: meeting
+      - text: perumahan
+        ar_eg: مجمّع سكني
+        ar: مجمّع سكني
+        en: housing estate
+      - text: perkampungan
+        ar_eg: حي / قرى
+        ar: حيّ، قرى
+        en: settlement
+    words: [perdagangan, perkebunan, pertemuan, perumahan, perkampungan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه الاسم من bertemu؟
+      ar: ما الاسم المشتقّ من bertemu؟
+      en: What is the noun from bertemu?
+    options: [temuan, penemuan, pertemuan]
+    answer: 2
+    words: [pertemuan]
+  - id: e03
+    type: fill_blank
+    sentence: Kalimantan Selatan terkenal dengan ___ karet dan sawit.
+    meaning:
+      ar_eg: جنوب كاليمانتان مشهورة بمزارع المطاط والنخيل.
+      ar: تشتهر جنوب كاليمانتان بمزارع المطّاط والنخيل.
+      en: South Kalimantan is known for its rubber and oil palm plantations.
+    options: [perkebunan, perumahan, pertemuan]
+    answers: [perkebunan]
+    words: [perkebunan]
+  - id: e04
+    type: listen
+    text: Pertemuan para pedagang dimulai sebelum matahari terbit.
+    question:
+      ar_eg: إمتى بيتقابل التجار؟
+      ar: متى يلتقي التجّار؟
+      en: When do the traders meet?
+    options:
+      - بالليل.
+      - قبل الشمس ما تطلع.
+      - الضهر.
+    answer: 1
+    words: [pertemuan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: التجارة على النهر مهمة جدًا هنا.
+      ar: التجارة على النهر مهمّة جدًّا هنا.
+      en: River trade is very important here.
+    answer: Perdagangan di sungai sangat penting di sini.
+    distractors: [berdagang, perumahan]
+    words: [perdagangan]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: فيه مجمّع سكني جديد جنب السوق.
+      ar: ثمّة مجمّع سكني جديد قرب السوق.
+      en: There's a new housing estate near the market.
+    answers:
+      - Ada perumahan baru di dekat pasar.
+      - Ada perumahan baru dekat pasar.
+      - Ada perumahan yang baru di dekat pasar.
+      - Di dekat pasar ada perumahan baru.
+    words: [perumahan]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «perkampungan» جاية من إيه؟
+      ar: من أيّ كلمة تأتي «perkampungan»؟
+      en: Where does "perkampungan" come from?
+    options: [kampung, kampus, berkampung]
+    answer: 0
+    words: [perkampungan]
+  - id: e08
+    type: speaking
+    text: Perdagangan dan perkebunan membuat kota ini kaya.
+    meaning:
+      ar_eg: التجارة والمزارع خلّوا المدينة دي غنية.
+      ar: جعلت التجارة والمزارع هذه المدينة غنيّة.
+      en: Trade and plantations made this city rich.
+    words: [perdagangan, perkebunan]
+  - id: e09
+    type: dictation
+    text: Perkampungan itu dekat dengan perumahan baru.
+    meaning:
+      ar_eg: الحي ده قريب من المجمّع السكني الجديد.
+      ar: ذلك الحيّ قريب من المجمّع السكني الجديد.
+      en: That settlement is close to the new housing estate.
+    words: [perkampungan, perumahan]
+dialogue:
+  title: Tiba di Banjarmasin
+  lines:
+    - speaker: Mas Rizal
+      text: Selamat datang di Banjarmasin, kota seribu sungai!
+      ar_eg: أهلًا بيك في بانجارماسين، مدينة الألف نهر!
+      ar: مرحبًا بك في بانجارماسين، مدينة الألف نهر!
+      en: Welcome to Banjarmasin, the city of a thousand rivers!
+    - speaker: Mohamed
+      text: Kenapa banyak perkampungan dibangun di atas air?
+      ar_eg: ليه أحياء كتير متبنية فوق المية؟
+      ar: لماذا بُنيت أحياء كثيرة فوق الماء؟
+      en: Why are so many settlements built over the water?
+    - speaker: Mas Rizal
+      text: Karena dulu semua perdagangan lewat sungai. Pasar pun ada di atas perahu.
+      ar_eg: عشان زمان كل التجارة كانت بتعدّي من النهر. حتى السوق كان على المراكب.
+      ar: لأنّ التجارة كلّها كانت تمرّ عبر النهر، حتى السوق كان على المراكب.
+      en: Because trade used to go entirely by river. Even the market is on boats.
+    - speaker: Mohamed
+      text: Menarik sekali. Besok pagi kita ke pasar terapung, ya?
+      ar_eg: حلو قوي. بكرة الصبح نروح السوق العايم؟
+      ar: مثير جدًّا. هل نذهب صباح الغد إلى السوق العائم؟
+      en: Fascinating. Shall we go to the floating market tomorrow morning?
+new_words:
+  - word: perdagangan
+    pos: noun
+    ar_eg: تجارة
+    ar: تجارة
+    en: trade
+  - word: perkebunan
+    pos: noun
+    ar_eg: مزارع كبيرة
+    ar: مزارع واسعة
+    en: plantations
+  - word: pertemuan
+    pos: noun
+    ar_eg: لقاء
+    ar: لقاء
+    en: meeting
+  - word: perumahan
+    pos: noun
+    ar_eg: مجمّع سكني
+    ar: مجمّع سكني
+    en: housing estate
+  - word: perkampungan
+    pos: noun
+    ar_eg: حي / قرى
+    ar: حيّ، قرى
+    en: settlement
+review:
+  status: draft
+  verified: false

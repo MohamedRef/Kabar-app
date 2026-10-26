@@ -1,0 +1,191 @@
+schema: kabar.lesson/v1
+id: bipa5.u09.l03
+language: id
+title: Bahasa daerah
+can_do:
+  ar_eg: تتكلم عن اللغات المحلية في إندونيسيا واللهجات واللي بيتكلموها.
+  ar: أن تتحدّث عن اللغات المحلّية في إندونيسيا ولهجاتها والناطقين بها.
+  en: Talk about Indonesia's regional languages, accents and their speakers.
+slides:
+  - title: Lebih dari 700 bahasa
+    body:
+      ar_eg: |
+        إندونيسيا فيها أكتر من 700 bahasa daerah (لغة محلية). أغلب الإندونيسيين bahasa ibu (لغتهم الأم) لغة محلية، والإندونيسي لغتهم التانية.
+        - في بونتياناك: ملايو بونتياناك (kamek = أنا، kitak = إنت)، وصيني تيوتشيو، ولغات الداياك.
+        - logat = لهجة / نطق. تسمع logat Jawa أو logat Batak في الإندونيسي نفسه.
+        - penutur = اللي بيتكلم اللغة. لغات كتير penuturnya قليلين وممكن تنقرض.
+      ar: |
+        في إندونيسيا أكثر من 700 bahasa daerah (لغة محلّية). ولغة الأمّ (bahasa ibu) عند أغلب الإندونيسيين لغة محلّية، والإندونيسية لغتهم الثانية.
+        - في بونتياناك: ملايوية بونتياناك (kamek = أنا، kitak = أنت)، وصينية تيوتشيو، ولغات الداياك.
+        - logat = لكنة. تسمع logat Jawa أو logat Batak في الإندونيسية نفسها.
+        - penutur = الناطق باللغة. ولغات كثيرة قلّ penuturnya ومهدّدة بالانقراض.
+      en: |
+        Indonesia has over 700 bahasa daerah (regional languages). For most Indonesians the bahasa ibu (mother tongue) is a regional language, and Indonesian is their second.
+        - In Pontianak: Pontianak Malay (kamek = I, kitak = you), Teochew Chinese, and Dayak languages.
+        - logat = accent. You hear a logat Jawa or logat Batak inside Indonesian itself.
+        - penutur = speaker. Many languages have few penutur left and may die out.
+    examples:
+      - text: Bahasa ibu saya bahasa Arab Mesir.
+        ar_eg: لغتي الأم هي العربي المصري.
+        ar: لغتي الأمّ هي العربية المصرية.
+        en: My mother tongue is Egyptian Arabic.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: bahasa daerah
+        ar_eg: لغة محلية
+        ar: لغة محلّية
+        en: regional language
+      - text: bahasa ibu
+        ar_eg: اللغة الأم
+        ar: اللغة الأمّ
+        en: mother tongue
+      - text: logat
+        ar_eg: لهجة / نطق
+        ar: لكنة
+        en: accent
+      - text: penutur
+        ar_eg: اللي بيتكلم اللغة
+        ar: ناطق
+        en: speaker
+      - text: beragam
+        ar_eg: متنوّع
+        ar: متنوّع
+        en: diverse
+    words: [bahasa daerah, bahasa ibu, logat, penutur, beragam]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في ملايو بونتياناك، «kamek» معناها إيه؟
+      ar: ما معنى «kamek» في ملايوية بونتياناك؟
+      en: In Pontianak Malay, what does "kamek" mean?
+    options: [إنت, هو, أنا]
+    answer: 2
+    words: [bahasa daerah]
+  - id: e03
+    type: fill_blank
+    sentence: Bahasa itu hampir punah karena ___ hanya tinggal seratus orang.
+    meaning:
+      ar_eg: اللغة دي قربت تنقرض علشان اللي بيتكلموها فاضلين مية واحد بس.
+      ar: أوشكت تلك اللغة على الانقراض، فلم يبقَ من الناطقين بها إلا مئة.
+      en: That language is nearly extinct because only a hundred speakers are left.
+    options: [penuturnya, logatnya, bahasa ibunya]
+    answers: [penuturnya]
+    words: [penutur]
+  - id: e04
+    type: listen
+    text: Logat Pak Hendra seperti orang Banjar.
+    question:
+      ar_eg: إيه اللي زي البانجاريين عند الأستاذ هندرا؟
+      ar: ما الذي يشبه أهل بانجار عند السيد هندرا؟
+      en: What about Pak Hendra sounds Banjarese?
+    options:
+      - لبسه.
+      - لهجته.
+      - أكله.
+    answer: 1
+    words: [logat]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: اللغات المحلية في إندونيسيا متنوعة قوي.
+      ar: اللغات المحلّية في إندونيسيا متنوّعة جدًّا.
+      en: Indonesia's regional languages are very diverse.
+    answer: Bahasa daerah di Indonesia sangat beragam.
+    distractors: [logat, penutur]
+    words: [bahasa daerah, beragam]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: لغة أمها هي الداياك، بس بتتكلم إندونيسي كويس.
+      ar: لغتها الأمّ هي الداياكية، لكنّها تتكلّم الإندونيسية جيّدًا.
+      en: Her mother tongue is Dayak, but she speaks Indonesian well.
+    answers:
+      - Bahasa ibunya bahasa Dayak, tetapi dia lancar berbahasa Indonesia.
+      - Bahasa ibu dia bahasa Dayak, tetapi bahasa Indonesianya bagus.
+      - Bahasa ibunya bahasa Dayak, tapi dia pandai berbahasa Indonesia.
+      - Bahasa ibunya adalah bahasa Dayak, tetapi bahasa Indonesianya baik.
+    words: [bahasa ibu]
+  - id: e07
+    type: speaking
+    text: Penutur bahasa daerah perlu bangga dan melestarikan bahasanya.
+    meaning:
+      ar_eg: اللي بيتكلموا اللغات المحلية لازم يفتخروا بيها ويحافظوا عليها.
+      ar: على الناطقين باللغات المحلّية أن يفخروا بها ويحافظوا عليها.
+      en: Speakers of regional languages should be proud and preserve them.
+    words: [penutur, bahasa daerah]
+  - id: e08
+    type: dictation
+    text: Pontianak adalah kota yang beragam.
+    meaning:
+      ar_eg: بونتياناك مدينة متنوّعة.
+      ar: بونتياناك مدينة متنوّعة.
+      en: Pontianak is a diverse city.
+    words: [beragam]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أغلب الإندونيسيين لغتهم الأم …
+      ar: لغة الأمّ عند أغلب الإندونيسيين …
+      en: For most Indonesians, the mother tongue is …
+    options:
+      - bahasa daerah.
+      - bahasa Inggris.
+      - bahasa Belanda.
+    answer: 0
+    words: [bahasa ibu, logat]
+dialogue:
+  title: Warung kopi di Pontianak
+  lines:
+    - speaker: Penjual kopi
+      text: Kitak mau minum ape?
+      ar_eg: (بملايو بونتياناك) تحب تشرب إيه؟
+      ar: (بملايوية بونتياناك) ماذا تريد أن تشرب؟
+      en: (in Pontianak Malay) What would you like to drink?
+    - speaker: Mohamed
+      text: Maaf, Pak, saya belum paham bahasa daerah di sini.
+      ar_eg: معلش يا عم، أنا لسه مش فاهم اللغة المحلية هنا.
+      ar: عذرًا يا عمّ، لم أفهم اللغة المحلّية هنا بعد.
+      en: Sorry, sir, I don't understand the local language here yet.
+    - speaker: Penjual kopi
+      text: Oh, maaf! Mau minum apa? Logat saya kental, ya?
+      ar_eg: آه، معلش! تحب تشرب إيه؟ لهجتي تقيلة، صح؟
+      ar: آه، عذرًا! ماذا تشرب؟ لكنتي ثقيلة، أليس كذلك؟
+      en: Oh, sorry! What would you like to drink? My accent is strong, isn't it?
+    - speaker: Mohamed
+      text: Sedikit, tetapi saya suka. Kopi susu satu, Pak.
+      ar_eg: شوية، بس عاجباني. قهوة بلبن واحد يا عم.
+      ar: قليلًا، لكنّها تعجبني. قهوة بالحليب من فضلك.
+      en: A little, but I like it. One coffee with milk, please.
+new_words:
+  - word: bahasa daerah
+    pos: noun
+    ar_eg: لغة محلية
+    ar: لغة محلّية
+    en: regional language
+  - word: bahasa ibu
+    pos: noun
+    ar_eg: اللغة الأم
+    ar: اللغة الأمّ
+    en: mother tongue
+  - word: logat
+    pos: noun
+    arabic: لغات
+    ar_eg: لهجة / نطق
+    ar: لكنة
+    en: accent
+  - word: penutur
+    pos: noun
+    ar_eg: اللي بيتكلم اللغة
+    ar: ناطق
+    en: speaker (of a language)
+  - word: beragam
+    pos: adjective
+    ar_eg: متنوّع
+    ar: متنوّع
+    en: diverse
+review:
+  status: draft
+  verified: false

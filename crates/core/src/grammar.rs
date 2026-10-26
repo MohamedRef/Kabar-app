@@ -34,6 +34,9 @@ struct Cues {
     /// Words and affixes the entry is named after (`id.demonstrative.ini-itu`,
     /// `id.prefix.ber.basic`): a match on these counts extra.
     namesake: BTreeSet<String>,
+    /// A chat-spelling entry (`id.chat.*`): fits any sentence with
+    /// abbreviations the normalizer expanded.
+    chat: bool,
 }
 
 /// Id segments that describe, rather than name, a form.
@@ -201,6 +204,9 @@ impl Cues {
         let mut out: Vec<String> = self.words.iter().map(|w| format!("w:{w}")).collect();
         out.extend(self.phrases.iter().map(|p| format!("p:{}", p.join(" "))));
         out.extend(self.affixes.iter().map(|a| format!("a:{}", a.join("…"))));
+        if self.chat {
+            out.push(CHAT_KEY.to_string());
+        }
         out.sort();
         out.dedup();
         out
@@ -208,8 +214,15 @@ impl Cues {
 
     fn of(p: &GrammarPoint) -> Self {
         let mut cues = Cues::default();
-        let mut sources: Vec<String> = vec![p.title.target.clone()];
-        sources.extend(p.pattern.iter().cloned());
+        let parts: Vec<&str> = p.id.split('.').collect();
+        cues.chat = parts.get(1) == Some(&"chat");
+        // Aksara entries list syllables ("ha na ca … wa"), not words a Latin
+        // sentence could contain: only their id names them.
+        let mut sources: Vec<String> = Vec::new();
+        if parts.get(1) != Some(&"aksara") {
+            sources.push(p.title.target.clone());
+            sources.extend(p.pattern.iter().cloned());
+        }
         for src in &sources {
             // Drop parenthesized English hints: "(there isn't, none)".
             let mut clean = String::new();
@@ -222,8 +235,8 @@ impl Cues {
                     _ => {}
                 }
             }
-            for chunk in clean.split([',', '/', '·', '+', '—', '→', '?', '!', ':', ';', '=', '"', '«', '»'])
-            {
+            let pieces = clean.split([',', '·', '—', '→', '?', '!', ':', ';', '=', '"', '«', '»']);
+            for chunk in pieces.flat_map(expand_alternatives) {
                 let chunk = chunk.trim().trim_matches(['…', '.', '\'']).trim();
                 if chunk.is_empty() {
                     continue;
@@ -267,7 +280,6 @@ impl Cues {
         }
         // The id names the point too: id.clitic.nya, id.prefix.ber.basic,
         // id.demonstrative.ini-itu, jv.aspect.wis-durung-lagi-arep.
-        let parts: Vec<&str> = p.id.split('.').collect();
         if !matches!(parts.get(1), Some(&("prefix" | "suffix" | "confix" | "clitic" | "reduplication"))) {
             for seg in parts.iter().skip(1) {
                 for w in seg.split('-') {
@@ -296,6 +308,35 @@ impl Cues {
         }
         cues
     }
+}
+
+/// The df key of the chat-spelling cue.
+const CHAT_KEY: &str = "s:chat";
+
+/// Splits "selamat + datang / jalan" into the phrases it stands for
+/// ("selamat datang", "selamat jalan"), so "jalan" alone isn't a cue.
+/// Anything else ("meN- + root + -kan", "gk / ga") splits into its pieces.
+fn expand_alternatives(piece: &str) -> Vec<String> {
+    let parts: Vec<Vec<&str>> = piece
+        .split('+')
+        .map(|p| p.split('/').map(str::trim).filter(|a| !a.is_empty()).collect::<Vec<_>>())
+        .filter(|alts| !alts.is_empty())
+        .collect();
+    let plain = |a: &str| {
+        a.split_whitespace().all(|w| {
+            let t = w.trim_matches(['…', '.', '\'', '*']);
+            is_latin_word(t) && !PLACEHOLDERS.contains(&t.to_lowercase().as_str())
+        })
+    };
+    let combos: usize = parts.iter().map(Vec::len).product();
+    if parts.len() >= 2 && combos <= 16 && parts.iter().flatten().all(|a| plain(a)) {
+        let mut out = vec![String::new()];
+        for alts in &parts {
+            out = out.iter().flat_map(|head| alts.iter().map(move |a| format!("{head} {a}"))).collect();
+        }
+        return out.into_iter().map(|p| p.trim_start().to_string()).collect();
+    }
+    parts.into_iter().flatten().map(str::to_string).collect()
 }
 
 /// Affixes on one analyzed word, canonical ("men-", "-kan", "-nya").
@@ -383,8 +424,14 @@ impl Library {
         let words: Vec<(String, String, BTreeSet<String>)> = tokens
             .iter()
             .filter(|t| t.token.is_wordlike())
-            .map(|t| (t.token.lower(), t.lookup_form(), word_affixes(t)))
+            .map(|t| {
+                // "wa" → "WhatsApp" is a brand, not a grammar cue.
+                let norm = if t.lang.lang == Lang::English { t.token.lower() } else { t.lookup_form() };
+                (t.token.lower(), norm, word_affixes(t))
+            })
             .collect();
+        let expanded: Vec<String> =
+            tokens.iter().filter(|t| t.normalized.is_some()).map(|t| t.token.lower()).collect();
         let forms: Vec<&str> = words.iter().map(|(_, n, _)| n.as_str()).collect();
         let want = if lang == Lang::Javanese { "jv" } else { "id" };
 
@@ -420,6 +467,10 @@ impl Library {
                     }
                     matched.push(key);
                 }
+            }
+            if cues.chat && !expanded.is_empty() {
+                score += weight(self.df(CHAT_KEY)) + 2 * expanded.len().min(3) as u32;
+                matched.extend(expanded.iter().cloned());
             }
             if score == 0 {
                 continue;

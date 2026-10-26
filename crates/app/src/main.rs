@@ -11,6 +11,7 @@ mod i18n;
 mod icons;
 mod journey;
 mod lesson;
+mod listen;
 mod packs;
 mod penlab;
 mod platform;
@@ -64,6 +65,8 @@ pub enum Screen {
     Stats,
     /// The monthly level check (spec §6).
     LevelCheck,
+    /// Sinetron and Kabar Radio.
+    Listen,
 }
 
 impl Screen {
@@ -85,12 +88,14 @@ impl Screen {
             Self::Cost => Msg::CostTitle,
             Self::Stats => Msg::NavReview,
             Self::LevelCheck => Msg::NavCoach,
+            Self::Listen => Msg::NavListen,
         }
     }
 
     /// Hidden from the phone's bottom bar, which keeps five items within
-    /// thumb reach. Kak Nur, the journal and Settings are linked from Today
-    /// there (the journal from Kak Nur too); Studio and Pen Lab from Settings.
+    /// thumb reach. Kak Nur, the journal, Watch & listen and Settings are
+    /// linked from Today there (the journal from Kak Nur too); Studio and Pen
+    /// Lab from Settings.
     fn secondary(self) -> bool {
         matches!(
             self,
@@ -102,6 +107,7 @@ impl Screen {
                 | Self::Devices
                 | Self::Teach
                 | Self::Cost
+                | Self::Listen
         )
     }
 }
@@ -445,6 +451,7 @@ fn Shell() -> Element {
         Screen::Reader,
         Screen::Review,
         Screen::Play,
+        Screen::Listen,
         Screen::Coach,
         Screen::Journal,
         Screen::Studio,
@@ -487,6 +494,7 @@ fn Shell() -> Element {
                     Screen::Devices => rsx! { account::AccountScreen {} },
                     Screen::Teach => rsx! { teach::TeachScreen {} },
                     Screen::Cost => rsx! { cost::CostScreen {} },
+                    Screen::Listen => rsx! { listen::ListenScreen {} },
                     Screen::Lesson => rsx! { lesson::LessonScreen {} },
                     Screen::Stats => rsx! { stats::StatsScreen {} },
                     Screen::LevelCheck => rsx! { stats::check::LevelCheckScreen {} },

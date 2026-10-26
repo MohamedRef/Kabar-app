@@ -230,7 +230,18 @@ Commit `content/packs/` after bundling: the app build embeds `content/packs/inde
 
 **In the app:** Settings → **Offline packs** lists every unit with its size, Download / Update / Remove, total storage, and "Download the current and next unit automatically" (on by default: opening a lesson fetches its unit and the next one in the background). The Lesson Player plays a downloaded clip first, then the device's own voice (Android TextToSpeech, or the WebView voice on the Mac), exactly as before. A run-time `KABAR_PACKS_URL` points the app at another release; an empty one turns downloads off.
 
-## 14. Troubleshooting
+## 14. Watch & listen: Sinetron and Kabar Radio (M12)
+
+Open **Watch & listen** (اتفرج واسمع): in the sidebar on the Mac and the Tab S11, and from the links under Today on the S24 Ultra.
+
+- **Sinetron**: Pak Budi in Madiun and his daughter Sari in Cairo. Episode N opens when its Journey unit is finished (levels before the one your placement test started you at count as finished). Tap **Play** and the episode plays line by line, with the transcript following along. Tap any line to hear it again, tap **…** to see one line's meaning, or use **Translations** to show them all. **Note** chips explain culture and grammar. **A bit slower** plays at 80 %. After the last line, **On to the questions** runs the episode's questions in the Lesson Player, and finishing them marks the episode watched on every device.
+- **Kabar Radio**: one 3–5 minute show per unit with Gadis and Ardi (intro, dialogue, word spotlight, recap, outro). Listening to the end marks it listened and counts toward today's minutes.
+- **Voices** are Azure's neural voices through Kabar Cloud (sign in under Account & devices). The four voices are shared, so pitch tells the Sinetron characters apart. Without Kabar Cloud, Indonesian lines are read by the device's voice (the Mac's "Damayanti", see section 10).
+- **Offline**: **Download for offline** on an episode fetches every line and stores the episode as a single MP3 track. It then plays with no network, for example in airplane mode on the S24 Ultra. **Free up space** at the bottom of the list removes all downloads. An episode takes about 2 MB and about 3,000 of Azure's 500,000 free characters a month.
+- To try it offline: open Kabar Radio → *Apa kabar, Kota Tua?* → **Download for offline**, wait for ✓, turn on airplane mode, then **Play**.
+- Still to come in M12: persona chats, and playback with the screen off (Android background audio). Daily Radio episodes "from my words" are waiting on the `radio_script` bake-off on the Mac.
+
+## 15. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.

@@ -56,6 +56,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] Read Kak Nur's lines in `content/coach/kak-nur.toml` (Egyptian Arabic, MSA, English). Mark what to change or say OK, and I set `reviewed = true`.
 - [ ] Play (M10, [RUN.md §10](RUN.md)): try each game once. For Kabar Pagi audio, install the Indonesian voice "Damayanti" (System Settings → Accessibility → Spoken Content → System voice → Manage Voices) and check a story plays.
 - [ ] Javanese games (M11, [RUN.md §10](RUN.md)): play the Unggah-Ungguh scenes and a d/dh · t/th round. Ask a Javanese speaker (or check yourself) whether the lines in `content/games/unggah-ungguh.toml` and the pairs in `content/games/minimal-pairs.toml` sound right; tell me what to fix and I'll set `reviewed = true`.
+- [ ] Watch & listen (M12, [RUN.md §13](RUN.md)): with Kabar Cloud signed in, play Sinetron episode 1 and Kabar Radio *Apa kabar, Kota Tua?*. Tell me if any character's voice or pitch sounds wrong. Then download the Radio episode on the S24 Ultra and play it in airplane mode.
 - [ ] Review the M10 content: the stories in `content/pagi/stories.jsonl` and the Pasar! seller lines in `content/games/pasar.toml` (Javanese register especially). Say OK or mark changes, and I set them reviewed.
 
 ## 3. Galaxy S24 Ultra and Tab S11 (~45 min) — [RUN.md §3–4](RUN.md)
@@ -137,12 +138,14 @@ Uses the same Azure F0 key as step 5.4 (free; F0 never bills). All of BIPA 1–2
 
 This decides which free engine answers each AI task. Until it runs, every route in `prompts/routes.toml` is *provisional*, and its answers show a badge.
 
-- [ ] `brew install ollama`, then pull the two 4B SEA-LION v4 models (Gemma-SEA-LION-v4-4B-VL and Qwen-SEA-LION-v4-4B-VL at Q4). Exact `ollama pull` names will be in BAKEOFF.md with the runner.
-- [ ] Optional: add `DAYTONA_API_KEY` as an environment secret so the heavy 8–9B check can run there instead of the Mac.
-- [ ] Run the bake-off runner (command will be in BAKEOFF.md once it lands) and send me `bakeoff/runs/`. I score it blind with you, then write `docs/bakeoff-report.md` and the final `prompts/routes.toml`.
+- [ ] Add `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_API_TOKEN` (template "Workers AI") and `GEMINI_API_KEY` to `.env` ([BAKEOFF.md](BAKEOFF.md) "Running it" step 1).
+- [ ] `brew install ollama`, start it, then `ollama pull aisingapore/Gemma-SEA-LION-v4-4B-VL` (and the Qwen 4B if you find its tag; BAKEOFF.md step 2).
+- [ ] `just bakeoff-smoke`: a few minutes, 3 items per task. Send me the last lines if anything says *stopped* or *unreachable*.
+- [ ] `just bakeoff` overnight. If it stops on Workers AI's daily limit, run it again the next day; it carries on where it stopped.
+- [ ] Push `bakeoff/runs/<date>/` or zip and send it. I judge it blind, then write `docs/bakeoff-report.md` and the final `prompts/routes.toml`.
 - [ ] Spot-check at least 10% of the scored items, plus every Javanese one.
 
-## 7b. Teach Kabar (~10 min, after Kabar Cloud is up) — [RUN.md §9](RUN.md)
+## 7b. Teach Kabar (~10 min, after Kabar Cloud is up) — [RUN.md §8](RUN.md)
 
 - [ ] Mac app → **Teach Kabar**: tap **Search Google** and check it opens your browser (not a window inside Kabar). Same on the phone.
 - [ ] Choose **Wiktionary** for `kabar` and tap **Teach Kabar**. If it says Wiktionary can't be reached, tell me: the WebView may block the request.

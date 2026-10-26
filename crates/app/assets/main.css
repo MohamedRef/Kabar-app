@@ -540,7 +540,8 @@ button:disabled { opacity: 0.5; cursor: default; }
 canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; pointer-events: none; }
 
 /* word statuses (highlighter colors match, SPEC §9) */
-.w { border-radius: 4px; cursor: pointer; padding-inline: 1px; text-decoration-skip-ink: none; }
+/* nowrap keeps "anak-anak" on one line. */
+.w { border-radius: 4px; cursor: pointer; padding-inline: 1px; text-decoration-skip-ink: none; white-space: nowrap; }
 .w.st-new { background: color-mix(in srgb, var(--dawn) 16%, transparent); }
 .w.st-learning { background: color-mix(in srgb, var(--indigo) 16%, transparent); }
 .w.st-known { background: transparent; }
@@ -626,6 +627,8 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 .levels .note { margin-block-start: 0.5rem; }
 .tag.taught { background: var(--indigo); color: var(--surface); }
 .panel .phrase { margin-block-start: 1.5rem; }
+/* Room for the close button beside a long headline. */
+.panel .headline { padding-inline-end: 1.75rem; }
 .explain-glue { display: grid; gap: 0.5rem; justify-items: start; border-inline-start: 3px solid var(--indigo); padding-inline-start: 0.75rem; }
 .explain-glue p { margin: 0; }
 .grammar-entry { border: 1px solid var(--line); border-radius: 12px; padding-block: 0.5rem; padding-inline: 0.75rem; }

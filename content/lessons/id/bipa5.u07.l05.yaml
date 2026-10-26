@@ -1,0 +1,176 @@
+schema: kabar.lesson/v1
+id: bipa5.u07.l05
+language: id
+title: Diskusi budaya makan
+can_do:
+  ar_eg: تتناقش في عادات الأكل في مصر وإندونيسيا، وتسأل وتقارن.
+  ar: أن تناقش عادات الأكل في مصر وإندونيسيا فتسأل وتقارن.
+  en: Discuss eating customs in Egypt and Indonesia, asking and comparing.
+slides:
+  - title: Adab makan
+    grammar: id.confix.per-an
+    body:
+      ar_eg: |
+        عادات الأكل (adab makan) حاجة حلوة تتكلم فيها:
+        - Di Indonesia, orang makan dengan tangan kanan. = في إندونيسيا بياكلوا بإيدهم اليمين.
+        - Sudah menjadi kebiasaan … = بقت عادة إن …
+        - Hal itu dianggap tidak sopan. = ده بيتعتبر قلة ذوق.
+        وخد بالك: perbedaan (الفرق) وpersamaan (الشبه) بتوع per-…-an.
+      ar: |
+        آداب الطعام (adab makan) موضوع لطيف للنقاش:
+        - Di Indonesia, orang makan dengan tangan kanan. = يأكل الناس في إندونيسيا باليد اليمنى.
+        - Sudah menjadi kebiasaan … = صار من العادة أن …
+        - Hal itu dianggap tidak sopan. = يُعدّ ذلك قلّة أدب.
+        ولاحظ perbedaan وpersamaan من صيغة per-…-an.
+      en: |
+        Eating etiquette (adab makan) is a nice topic to discuss:
+        - Di Indonesia, orang makan dengan tangan kanan. = In Indonesia, people eat with the right hand.
+        - Sudah menjadi kebiasaan … = It has become a custom to …
+        - Hal itu dianggap tidak sopan. = That is considered impolite.
+        Note perbedaan (difference) and persamaan (similarity), both per-…-an.
+    examples:
+      - text: Sudah menjadi kebiasaan orang Banjar makan bersama di lantai.
+        ar_eg: بقت عادة عند البانجار ياكلوا مع بعض على الأرض.
+        ar: من عادة أهل بانجار أن يأكلوا معًا على الأرض.
+        en: It's a Banjar custom to eat together on the floor.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: adab
+        ar_eg: أدب / آداب
+        ar: آداب
+        en: etiquette
+      - text: kebiasaan
+        ar_eg: عادة
+        ar: عادة
+        en: habit, custom
+      - text: dianggap
+        ar_eg: بيتعتبر
+        ar: يُعدّ
+        en: to be considered
+      - text: bersama
+        ar_eg: مع بعض
+        ar: معًا
+        en: together
+    words: [adab, kebiasaan, dianggap, bersama]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في إندونيسيا، الأكل بالإيد الشمال …
+      ar: في إندونيسيا، الأكل باليد اليسرى …
+      en: In Indonesia, eating with the left hand is …
+    options:
+      - dianggap sopan.
+      - dianggap biasa saja.
+      - dianggap tidak sopan.
+    answer: 2
+    words: [dianggap]
+  - id: e03
+    type: fill_blank
+    sentence: Di Mesir, sudah menjadi ___ minum teh setelah makan.
+    meaning:
+      ar_eg: في مصر، بقت عادة إن الناس تشرب شاي بعد الأكل.
+      ar: من العادة في مصر شرب الشاي بعد الطعام.
+      en: In Egypt, it's a custom to drink tea after eating.
+    options: [kebiasaan, adab, bersama]
+    answers: [kebiasaan]
+    words: [kebiasaan]
+  - id: e04
+    type: listen
+    text: Keluarga kami selalu makan bersama setiap malam.
+    question:
+      ar_eg: العيلة بتاكل إزاي؟
+      ar: كيف تأكل العائلة؟
+      en: How does the family eat?
+    options:
+      - كل واحد لوحده.
+      - مع بعض كل ليلة.
+      - برا البيت دايمًا.
+    answer: 1
+    words: [bersama]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: آداب الأكل مهمة في الثقافتين.
+      ar: آداب الطعام مهمّة في الثقافتين.
+      en: Eating etiquette matters in both cultures.
+    answer: Adab makan penting dalam kedua budaya.
+    distractors: [kebiasaan, dianggap]
+    words: [adab]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الأكل بالشوكة والمعلقة بيتعتبر عادي هنا.
+      ar: يُعدّ الأكل بالشوكة والملعقة عاديًّا هنا.
+      en: Eating with a fork and spoon is considered normal here.
+    answers:
+      - Makan dengan garpu dan sendok dianggap biasa di sini.
+      - Makan pakai garpu dan sendok dianggap biasa di sini.
+      - Di sini, makan dengan sendok dan garpu dianggap biasa.
+      - Makan dengan sendok dan garpu dianggap biasa di sini.
+    words: [dianggap]
+  - id: e07
+    type: dictation
+    text: Adab makan di rumah nenek sangat ketat.
+    meaning:
+      ar_eg: آداب الأكل في بيت تيتا صارمة قوي.
+      ar: آداب الطعام في بيت الجدّة صارمة جدًّا.
+      en: Table manners at grandmother's house are very strict.
+    words: [adab]
+  - id: e08
+    type: speaking
+    text: Di Mesir dan Indonesia, makan bersama keluarga adalah kebiasaan yang indah.
+    meaning:
+      ar_eg: في مصر وإندونيسيا، الأكل مع العيلة عادة حلوة.
+      ar: في مصر وإندونيسيا، الأكل مع العائلة عادة جميلة.
+      en: In Egypt and Indonesia, eating with the family is a lovely custom.
+    words: [bersama, kebiasaan]
+dialogue:
+  title: Makan malam di rumah Rina
+  lines:
+    - speaker: Rina
+      text: Silakan, Mohamed. Di sini kami biasa makan dengan tangan.
+      ar_eg: اتفضل يا محمد. إحنا هنا متعودين ناكل بإيدينا.
+      ar: تفضّل يا محمد، فنحن نأكل هنا بأيدينا عادة.
+      en: Please, Mohamed. Here we usually eat with our hands.
+    - speaker: Mohamed
+      text: Tidak apa-apa. Di Mesir, makan roti dengan tangan juga kebiasaan.
+      ar_eg: ولا يهمك. في مصر كمان الأكل بالعيش بالإيد عادة.
+      ar: لا بأس. في مصر أيضًا من العادة أكل الخبز باليد.
+      en: No problem. In Egypt, eating bread by hand is a custom too.
+    - speaker: Rina
+      text: Tetapi pakai tangan kanan, ya. Tangan kiri dianggap tidak sopan.
+      ar_eg: بس بالإيد اليمين، ماشي؟ الإيد الشمال بتتعتبر قلة ذوق.
+      ar: لكن باليمنى، فاليسرى تُعدّ قلّة أدب.
+      en: But use your right hand. The left is considered impolite.
+    - speaker: Mohamed
+      text: Sama dengan adab makan di Mesir! Ternyata kita punya banyak persamaan.
+      ar_eg: زي آداب الأكل في مصر بالظبط! طلع عندنا حاجات مشتركة كتير.
+      ar: مثل آداب الطعام في مصر تمامًا! تبيّن أنّ بيننا أوجه شبه كثيرة.
+      en: Same as Egyptian table manners! It turns out we have a lot in common.
+new_words:
+  - word: adab
+    pos: noun
+    arabic: أدب
+    ar_eg: أدب / آداب
+    ar: آداب
+    en: etiquette, manners
+  - word: kebiasaan
+    pos: noun
+    ar_eg: عادة
+    ar: عادة
+    en: habit, custom
+  - word: dianggap
+    pos: verb
+    ar_eg: بيتعتبر
+    ar: يُعدّ
+    en: to be considered
+  - word: bersama
+    ar_eg: مع بعض
+    ar: معًا
+    en: together
+review:
+  status: draft
+  verified: false

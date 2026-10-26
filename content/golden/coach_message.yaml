@@ -127,18 +127,18 @@ items:
       days_missed: 1
       streak_days: 9
       freeze_used: true
-      last_lesson: Sampéyan utawa panjenengan?
+      last_lesson: Sampeyan utawa panjenengan?
       due_reviews: 18
   expect:
-    message_ar: Pelita لسه منوّرة. آخر مرة كنا في sampéyan وpanjenengan؛ ١٨ كارت صغيرين ونرجع للإيقاع.
-    message_en: Pelita is still lit. Last time we were on sampéyan vs panjenengan; 18 small cards and we're back
+    message_ar: Pelita لسه منوّرة. آخر مرة كنا في sampeyan وpanjenengan؛ ١٨ كارت صغيرين ونرجع للإيقاع.
+    message_en: Pelita is still lit. Last time we were on sampeyan vs panjenengan; 18 small cards and we're back
       in rhythm.
   criteria:
   - message_ar is warm Egyptian Arabic (عامية مصرية, e.g. 'برافو', 'النهارده', 'إنت'), not MSA; Indonesian words
     stay in Latin script
   - message_en carries the same content in plain English
   - 'short: 1–3 sentences each, fits a notification or a card'
-  - names sampéyan / panjenengan and the 18 cards
+  - names sampeyan / panjenengan and the 18 cards
   avoid:
   - guilt about missed days or a broken streak (e.g. 'you broke your streak', 'Pelita went out because of you',
     'don't let me down')
@@ -337,20 +337,20 @@ items:
     trigger: comeback
     context:
       days_away: 21
-      last_lesson: Kowé wis mangan?
+      last_lesson: Kowe wis mangan?
       due_reviews: 95
       plan_today: 8 minutes
   expect:
-    message_ar: 'أهلًا بيك تاني! ٨ دقايق النهارده. نبدأ بالسؤال اللي وقفنا عنده: Kowé wis mangan? إنت بقى، wis mangan؟
+    message_ar: 'أهلًا بيك تاني! ٨ دقايق النهارده. نبدأ بالسؤال اللي وقفنا عنده: Kowe wis mangan? إنت بقى، wis mangan؟
       😊'
-    message_en: 'Welcome back! 8 minutes today. We start with the question we stopped on: ''Kowé wis mangan?'' So,
+    message_en: 'Welcome back! 8 minutes today. We start with the question we stopped on: ''Kowe wis mangan?'' So,
       have you eaten?'
   criteria:
   - message_ar is warm Egyptian Arabic (عامية مصرية, e.g. 'برافو', 'النهارده', 'إنت'), not MSA; Indonesian words
     stay in Latin script
   - message_en carries the same content in plain English
   - 'short: 1–3 sentences each, fits a notification or a card'
-  - uses 'Kowé wis mangan?' playfully
+  - uses 'Kowe wis mangan?' playfully
   - 8-minute plan
   avoid:
   - guilt about missed days or a broken streak (e.g. 'you broke your streak', 'Pelita went out because of you',
@@ -904,18 +904,18 @@ items:
     trigger: struggle
     context:
       weak_point: kondur vs wangsul
-      example: Kula badhé kondur.
+      example: Kula badhe kondur.
       accuracy_last_20: 0.55
   expect:
-    message_ar: 'دي أصعب قاعدة في الجاوي، وإنت قربت. kondur احترام للكبير، فمانقولهاش عن نفسنا: Kula badhé wangsul.'
+    message_ar: 'دي أصعب قاعدة في الجاوي، وإنت قربت. kondur احترام للكبير، فمانقولهاش عن نفسنا: Kula badhe wangsul.'
     message_en: 'This is one of the trickiest rules in Javanese, and you''re close. Kondur is respect for the elder,
-      so we don''t use it about ourselves: ''Kula badhé wangsul''.'
+      so we don''t use it about ourselves: ''Kula badhe wangsul''.'
   criteria:
   - message_ar is warm Egyptian Arabic (عامية مصرية, e.g. 'برافو', 'النهارده', 'إنت'), not MSA; Indonesian words
     stay in Latin script
   - message_en carries the same content in plain English
   - 'short: 1–3 sentences each, fits a notification or a card'
-  - fixes 'Kula badhé kondur' to 'wangsul' with the reason
+  - fixes 'Kula badhe kondur' to 'wangsul' with the reason
   avoid:
   - guilt about missed days or a broken streak (e.g. 'you broke your streak', 'Pelita went out because of you',
     'don't let me down')
