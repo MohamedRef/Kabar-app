@@ -185,7 +185,30 @@ Open **Play** (ألعاب) in the sidebar or the phone's bottom bar.
 - **d/dh · t/th**: tell Javanese *wedi* (afraid) from *wedhi* (sand), and Indonesian *dada* from Javanese *dhadha*. **Listen** mode appears only when the device has a Javanese voice; Indonesian voices can't make the curled sound, so Kabar never uses one for this. Without a Javanese voice you get **Read** mode, where you see the meaning and pick the spelling. Javanese audio from Kabar Cloud's TTS (jv-ID voices) is a follow-up.
 - All Javanese here is marked unverified until you approve it (`content/games/unggah-ungguh.toml`, `content/games/minimal-pairs.toml`).
 
-## 11. Watch & listen: Sinetron and Kabar Radio (M12)
+## 11. Offline packs (audio per unit)
+
+Each unit has a pack of pre-generated Azure neural audio (Gadis/Ardi for Indonesian, Siti/Dimas for Javanese; dialogue lines in the speaker's voice) so its lessons sound natural with no network. Manifests are committed under `content/packs/`; the audio lives on the `packs` GitHub release of this repository (free), never in git.
+
+**Budget.** BIPA 1–2 and J1–J3 need about 83,000 characters in total (BIPA 1 ≈ 24.6k, BIPA 2 ≈ 29.2k, J1–J3 ≈ 29k), far under Azure F0's 500,000 a month. The tool refuses to spend more than `--budget` per calendar month (default 300,000, leaving the rest for Kabar Cloud's TTS proxy) and keeps its own count in `~/.kabar/audio/usage.json`. F0 never bills: past the quota Azure just says no until the next month.
+
+On the Mac, with `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` in `.env` (git-ignored; same F0 resource as Kabar Cloud):
+
+```bash
+just packs                     # after lesson edits: refresh content/packs/ (`just content-check` fails until you do)
+just packs-audio-plan          # what it would spend this month, without calling Azure
+just packs-audio bipa1.u01     # try one unit first and listen to a few clips in ~/.kabar/audio/
+just packs-audio               # the rest (resumable; F0 allows 20 requests a minute, so ~3,500 clips take ~3 h)
+just packs-bundle              # dist/packs/<unit>.tar + index.json (only fully synthesized units)
+gh auth login                  # once
+just packs-upload              # uploads to the `packs` release
+git add content/packs && git commit -m "Packs: audio hashes" && git push
+```
+
+Commit `content/packs/` after bundling: the app build embeds `content/packs/index.json`, so it lists every unit offline. Javanese text is still unverified; if a reviewed lesson changes, `just packs` marks only the changed lines as missing and `just packs-audio` regenerates just those.
+
+**In the app:** Settings → **Offline packs** lists every unit with its size, Download / Update / Remove, total storage, and "Download the current and next unit automatically" (on by default: opening a lesson fetches its unit and the next one in the background). The Lesson Player plays a downloaded clip first, then the device's own voice (Android TextToSpeech, or the WebView voice on the Mac), exactly as before. A run-time `KABAR_PACKS_URL` points the app at another release; an empty one turns downloads off.
+
+## 12. Watch & listen: Sinetron and Kabar Radio (M12)
 
 Open **Watch & listen** (اتفرج واسمع): in the sidebar on the Mac and the Tab S11, and from the links under Today on the S24 Ultra.
 
@@ -196,7 +219,7 @@ Open **Watch & listen** (اتفرج واسمع): in the sidebar on the Mac and t
 - To try it offline: open Kabar Radio → *Apa kabar, Kota Tua?* → **Download for offline**, wait for ✓, turn on airplane mode, then **Play**.
 - Still to come in M12: persona chats, and playback with the screen off (Android background audio). Daily Radio episodes "from my words" are waiting on the `radio_script` bake-off on the Mac.
 
-## 12. Troubleshooting
+## 13. Troubleshooting
 
 - `dx` can't find the NDK: `echo $ANDROID_NDK_HOME` should print the NDK path; re-run `source ~/.kabar/env.sh`.
 - `just logs <serial>` streams the app's log while it's running.

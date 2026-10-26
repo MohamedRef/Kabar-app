@@ -283,7 +283,15 @@ button.check[aria-checked="true"] { background: var(--sawah); }
 .league { border-block-start: 1px solid var(--line); margin-block-start: 1rem; }
 
 /* onboarding */
-.onboarding { min-block-size: 100dvh; display: grid; place-items: center; padding: 1rem; }
+/* Pinned near the top, not centred: the buttons stay put as steps change height. */
+.onboarding {
+  min-block-size: 100dvh;
+  display: grid;
+  align-items: start;
+  justify-items: center;
+  padding: 1rem;
+  padding-block-start: clamp(1rem, 10vh, 5rem);
+}
 .onboarding .card { inline-size: 100%; max-inline-size: 40rem; }
 .dots { display: flex; gap: 0.35rem; list-style: none; padding: 0; margin: 0 0 0.5rem; }
 .dot { flex: 1; block-size: 0.3rem; border-radius: 999px; background: var(--surface-2); }
