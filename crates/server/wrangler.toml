@@ -1,0 +1,57 @@
+# Kabar Cloud on the Cloudflare Workers Free plan. See docs/CLOUD.md.
+name = "kabar-cloud"
+main = "build/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+[build]
+command = "CARGO_PROFILE_RELEASE_STRIP=false worker-build --release"
+
+[observability]
+enabled = true
+
+# Workers AI (SEA-LION v4 27B by default): 10,000 free Neurons a day.
+[ai]
+binding = "AI"
+
+# Shared AI cache + free-tier counters. `just cloud-setup` fills in the id.
+[[d1_databases]]
+binding = "DB"
+database_name = "kabar"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
+# One Durable Object per account: devices + sync hub (SQLite storage, the
+# only kind on the Free plan).
+[durable_objects]
+bindings = [{ name = "ACCOUNT", class_name = "Account" }]
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Account"]
+
+# Not secret. Secrets (ALLOWED_EMAILS, TOKEN_SIGNING_KEY, GEMINI_API_KEY,
+# AZURE_SPEECH_KEY, ANTHROPIC_API_KEY) go in with `wrangler secret put`.
+[vars]
+# OAuth client ids (Android + macOS), comma-separated.
+GOOGLE_CLIENT_IDS = ""
+WORKERS_AI_MODEL = "@cf/aisingapore/gemma-sea-lion-v4-27b-it"
+GEMINI_MODEL = "gemini-2.5-flash"
+AZURE_SPEECH_REGION = "southeastasia"
+# Paid unless you have Max credit: off by default.
+CLAUDE_ENABLED = "false"
+CLAUDE_MODEL = "claude-opus-5-5"
+# Hard stops, under each free tier.
+WORKERS_AI_DAILY_REQUESTS = "300"
+GEMINI_DAILY_REQUESTS = "1000"
+CLAUDE_MONTHLY_REQUESTS = "300"
+TTS_MONTHLY_CHARS = "450000"
+
+# `just cloud-e2e`: the same Worker without the Workers AI binding, which
+# always needs a Cloudflare login, so the test runs fully offline.
+[env.e2e]
+vars = { GOOGLE_CLIENT_IDS = "", CLAUDE_ENABLED = "false" }
+d1_databases = [
+  { binding = "DB", database_name = "kabar", database_id = "00000000-0000-0000-0000-000000000000", migrations_dir = "migrations" },
+]
+durable_objects = { bindings = [{ name = "ACCOUNT", class_name = "Account" }] }

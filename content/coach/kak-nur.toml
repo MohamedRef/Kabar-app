@@ -1,0 +1,591 @@
+# Kak Nur's voice: every line the coach says, in Egyptian Arabic (ar-eg),
+# Modern Standard Arabic (ar) and English (en). Format, placeholders and tone
+# rules: see README.md in this folder. Rendered by crates/core/src/coach/voice.rs,
+# whose tests are the content gate.
+#
+# ⁨ … ⁩ are FSI … PDI (first-strong isolate … pop directional
+# isolate). Every Latin snippet and every text placeholder inside an Arabic
+# line sits between them so right-to-left text renders correctly.
+
+reviewed = false
+version = 1
+
+# --- Onboarding -------------------------------------------------------------
+
+[lines.onboard_hello]
+moment = "First screen of onboarding: Kak Nur introduces themself and asks for a name."
+placeholders = []
+ar-eg = [
+  "أهلاً بيك! أنا ⁨Kak Nur⁩. ⁨Kak⁩ يعني الأخ أو الأخت الكبيرة بالإندونيسي، و⁨Nur⁩ يعني «نور». أحب أناديك بإيه؟",
+  "⁨Halo⁩، يعني أهلاً. أنا ⁨Kak Nur⁩، وهكون معاك خطوة بخطوة في الرحلة دي. قولّي اسمك إيه؟",
+]
+ar = [
+  "أهلًا بك. أنا ⁨Kak Nur⁩؛ و⁨Kak⁩ تعني بالإندونيسية الأخ أو الأخت الأكبر، و⁨Nur⁩ تعني «نور». بمَ تحب أن أناديك؟",
+  "⁨Halo⁩، أي مرحبًا. أنا ⁨Kak Nur⁩، وسأرافقك في هذه الرحلة خطوة بخطوة. ما اسمك؟",
+]
+en = [
+  "Halo! I'm Kak Nur. Kak is what Indonesians call an older sibling, and Nur means light. What should I call you?",
+  "Hi, I'm Kak Nur, and I'll walk this road with you one step at a time. What's your name?",
+]
+
+[lines.onboard_why]
+moment = "Onboarding: why are you learning? (several motivations, plus an optional note)"
+placeholders = ["name"]
+ar-eg = [
+  "تشرفنا يا ⁨{name}⁩. إيه اللي شدّك للإندونيسي؟ اختار كل اللي ينطبق، ولو حابب اكتب بكلامك.",
+  "يا أهلاً يا ⁨{name}⁩. كل واحد وليه سببه: سفر، شغل، أصحاب، أفلام… سببك إنت إيه؟",
+]
+ar = [
+  "تشرفنا يا ⁨{name}⁩. ما الذي جذبك إلى الإندونيسية؟ اختر كل ما ينطبق، ويمكنك أن تكتب بكلماتك أيضًا.",
+  "أهلًا يا ⁨{name}⁩. لكلٍّ سببه: سفر، أو عمل، أو أصدقاء، أو أفلام… فما سببك أنت؟",
+]
+en = [
+  "Nice to meet you, {name}. What draws you to Indonesian? Pick everything that fits, and add your own words if you like.",
+  "Welcome, {name}. Everyone has their reason: travel, work, friends, films… What's yours?",
+]
+
+[lines.onboard_focus]
+moment = "Onboarding: Indonesian, Javanese, or both?"
+placeholders = []
+ar-eg = [
+  "نبدأ بإيه؟ الإندونيسي هو الأساس، والجاوي (⁨Bahasa Jawa⁩) هو لغة البيت في جاوة. ممكن تاخد الاتنين، على راحتك.",
+  "عايز تركّز على الإندونيسي، ولا الجاوي، ولا الاتنين مع بعض؟ مفيش اختيار غلط، وتقدر تغيّره بعدين.",
+]
+ar = [
+  "بمَ نبدأ؟ الإندونيسية هي الأساس، والجاوية (⁨Bahasa Jawa⁩) لغة البيت في جاوة. يمكنك أن تتعلم الاثنتين على مهل.",
+  "هل تريد التركيز على الإندونيسية، أم الجاوية، أم الاثنتين معًا؟ لا يوجد اختيار خاطئ، ويمكنك تغييره لاحقًا.",
+]
+en = [
+  "Where shall we start? Indonesian is the foundation, and Javanese (Bahasa Jawa) is the language of home in Java. You can take both, at your own pace.",
+  "Indonesian, Javanese, or both together? There's no wrong choice, and you can change it later.",
+]
+
+[lines.onboard_minutes]
+moment = "Onboarding: the usual daily size (5, 15 or 30 minutes)."
+placeholders = ["name"]
+ar-eg = [
+  "⁨{name}⁩، خلينا نختار مقاس يومك: خمس دقايق، ولا ربع ساعة، ولا نص ساعة؟ اختار اللي تقدر تكمّل عليه، مش اللي يتعبك.",
+  "قد إيه في اليوم يريّحك؟ خمس دقايق، ربع ساعة، ولا نص ساعة؟ شوية كل يوم أحسن من كتير مرة واحدة. ⁨Sedikit demi sedikit⁩، يعني شوية بشوية.",
+]
+ar = [
+  "كم من وقتك يناسبك يوميًا؟ خمس دقائق، أم ربع ساعة، أم نصف ساعة؟ اختر ما تستطيع الاستمرار عليه، لا ما يرهقك.",
+  "قليل دائم خير من كثير منقطع. خمس دقائق في اليوم، أم ربع ساعة، أم نصف ساعة؟ ⁨Sedikit demi sedikit⁩، أي شيئًا فشيئًا.",
+]
+en = [
+  "How much time suits you each day: 5, 15 or 30 minutes? Pick what you can keep doing, not what wears you out.",
+  "A little every day beats a lot once in a while. 5, 15 or 30 minutes a day? Sedikit demi sedikit: little by little.",
+]
+
+[lines.onboard_target]
+moment = "Onboarding: Kak Nur suggests a realistic target, e.g. BIPA 2 by a date."
+placeholders = ["level", "date"]
+ar-eg = [
+  "إيه رأيك نحط هدف: ⁨{level}⁩ قبل ⁨{date}⁩؟ ده هدف واقعي على قد وقتك، وتقدر تغيّره في أي وقت.",
+  "اقتراحي: نوصل ⁨{level}⁩ حوالين ⁨{date}⁩. لو حاسس إنه كتير أو قليل، عدّله على راحتك.",
+]
+ar = [
+  "ما رأيك في هدف: ⁨{level}⁩ قبل ⁨{date}⁩؟ إنه هدف واقعي بحسب وقتك، ويمكنك تغييره متى شئت.",
+  "أقترح أن نصل إلى ⁨{level}⁩ في حدود ⁨{date}⁩. إن بدا لك كثيرًا أو قليلًا، فعدّله كما تحب.",
+]
+en = [
+  "How about a target: {level} by {date}? It's realistic for your pace, and you can change it any time.",
+  "My suggestion: reach {level} around {date}. If that feels like too much or too little, adjust it freely.",
+]
+
+[lines.onboard_times]
+moment = "Onboarding: preferred study times."
+placeholders = []
+ar-eg = [
+  "إمتى عادةً بتبقى فاضي؟ اختار وقت أو اتنين، وأنا هتعلّم مواعيدك الحقيقية مع الوقت.",
+  "الصبح، بعد الشغل، ولا قبل النوم؟ قولّي أنسب وقت للمذاكرة، وأنا هظبط نفسي عليه.",
+]
+ar = [
+  "متى تكون متفرغًا عادةً؟ اختر وقتًا أو وقتين، وسأتعلم مواعيدك الفعلية مع الوقت.",
+  "صباحًا، أم بعد العمل، أم قبل النوم؟ أخبرني بأنسب وقت للدراسة، وسأتكيّف معه.",
+]
+en = [
+  "When are you usually free? Pick a time or two, and I'll learn your real rhythm as we go.",
+  "Morning, after work, or before bed? Tell me when studying suits you best, and I'll fit around it.",
+]
+
+[lines.onboard_reminders]
+moment = "Onboarding: reminder style (gentle, steady, off)."
+placeholders = []
+ar-eg = [
+  "تحب أفكّرك إزاي؟ تذكير هادي مرة في اليوم، ولا في كل ميعاد اخترته، ولا من غير تذكير خالص؟ ولما تخلّص هدف اليوم على أي جهاز، كل الأجهزة هتسكت.",
+  "أنا مش هزنّ عليك. اختار: تذكير واحد لطيف، ولا في مواعيدك، ولا ولا حاجة. وفي أي وقت تقدر تأجّله بلمسة.",
+]
+ar = [
+  "كيف تحب أن أذكّرك؟ تذكير هادئ مرة في اليوم، أم في كل موعد اخترته، أم بلا تذكير؟ وحين تُنهي هدف اليوم على أي جهاز، تسكت الأجهزة كلها.",
+  "لن ألحّ عليك. اختر: تذكيرًا واحدًا لطيفًا، أو تذكيرًا في مواعيدك، أو لا شيء. ويمكنك تأجيله بلمسة واحدة في أي وقت.",
+]
+en = [
+  "How would you like reminders? One gentle nudge a day, one at each time you picked, or none at all? Once today's goal is done on any device, they all go quiet.",
+  "I won't nag. Choose one gentle reminder, one at each of your times, or none. You can snooze any of them with a single tap.",
+]
+
+[lines.onboard_start]
+moment = "Onboarding: where to start, then a two-minute placement chat with Mas Ardi."
+placeholders = []
+ar-eg = [
+  "آخر حاجة: دردشة صغيرة دقيقتين مع ⁨Mas Ardi⁩ عشان نعرف نبدأ منين. دي مش امتحان، مجرد تعارف.",
+  "تعرف شوية إندونيسي قبل كده؟ اختار أقرب وصف ليك، و⁨Mas Ardi⁩ هيدردش معاك دقيقتين عشان نظبط نقطة البداية.",
+]
+ar = [
+  "أمر أخير: محادثة قصيرة مدتها دقيقتان مع ⁨Mas Ardi⁩ لنعرف من أين نبدأ. ليست امتحانًا، بل مجرد تعارف.",
+  "هل تعرف شيئًا من الإندونيسية من قبل؟ اختر أقرب وصف لك، وسيحادثك ⁨Mas Ardi⁩ دقيقتين لنضبط نقطة البداية.",
+]
+en = [
+  "One last thing: a two-minute chat with Mas Ardi so we know where to begin. It's not an exam, just getting acquainted.",
+  "Do you know some Indonesian already? Pick what fits best, and Mas Ardi will chat with you for two minutes to set your starting point.",
+]
+
+[lines.onboard_done]
+moment = "Onboarding finished; the first plan is ready."
+placeholders = ["name", "minutes"]
+ar-eg = [
+  "كده إحنا جاهزين يا ⁨{name}⁩. {minutes|دقيقة|دقيقتين|دقايق} في اليوم وهتحس بالفرق. ⁨Ayo⁩، يعني يلا بينا.",
+  "تمام يا ⁨{name}⁩، خطتك جاهزة: {minutes|دقيقة|دقيقتين|دقايق} كل يوم. ⁨Selamat datang⁩، يعني أهلاً بيك في ⁨Kabar⁩.",
+]
+ar = [
+  "أصبحنا جاهزين يا ⁨{name}⁩. {minutes|دقيقة|دقيقتان|دقائق} في اليوم، وسترى الفرق. ⁨Ayo⁩، أي هيا بنا.",
+  "حسنًا يا ⁨{name}⁩، خطتك جاهزة: {minutes|دقيقة|دقيقتان|دقائق} كل يوم. ⁨Selamat datang⁩، أي أهلًا بك في ⁨Kabar⁩.",
+]
+en = [
+  "We're all set, {name}. {minutes|minute|minutes} a day and you'll feel the difference. Ayo, let's go.",
+  "Done, {name}: your plan is {minutes|minute|minutes} a day. Selamat datang, welcome to Kabar.",
+]
+
+# --- Daily plan (Rencana Hari Ini) -------------------------------------------
+
+[lines.plan_morning]
+moment = "Today's plan card. Omit `count` when no reviews are due; a variant without it is picked."
+placeholders = ["name", "minutes", "count", "topic"]
+ar-eg = [
+  "⁨Selamat pagi⁩ يا ⁨{name}⁩، يعني صباح الخير. خطة النهارده {minutes|دقيقة|دقيقتين|دقايق}: {count|مراجعة|مراجعتين|مراجعات} وبعدها ⁨{topic}⁩.",
+  "صباح الفل يا ⁨{name}⁩. النهارده عندنا ⁨{topic}⁩، كله في {minutes|دقيقة|دقيقتين|دقايق}. ⁨Ayo⁩، يعني يلا.",
+  "⁨Rencana Hari Ini⁩، يعني خطة النهارده: {count|مراجعة|مراجعتين|مراجعات} الأول عشان نسخّن، وبعدين حاجة جديدة: ⁨{topic}⁩.",
+  "يومك جاهز يا ⁨{name}⁩: ⁨{topic}⁩ في {minutes|دقيقة|دقيقتين|دقايق} على مهلك. ⁨Semangat⁩، يعني شد حيلك.",
+]
+ar = [
+  "⁨Selamat pagi⁩ يا ⁨{name}⁩، أي صباح الخير. خطة اليوم {minutes|دقيقة|دقيقتان|دقائق}: {count|مراجعة|مراجعتان|مراجعات} ثم ⁨{topic}⁩.",
+  "صباح الخير يا ⁨{name}⁩. نبدأ اليوم بـ⁨{topic}⁩، والمجموع {minutes|دقيقة|دقيقتان|دقائق}. ⁨Ayo⁩، أي هيا.",
+  "⁨Rencana Hari Ini⁩، أي خطة اليوم: {count|مراجعة|مراجعتان|مراجعات} للتحمية، ثم درس جديد: ⁨{topic}⁩. ⁨Semangat⁩، أي بالهمّة.",
+]
+en = [
+  "Selamat pagi, {name}: good morning. Today's plan takes {minutes|minute|minutes}: {count|review|reviews}, then {topic}.",
+  "Morning, {name}. Today we start with {topic}, {minutes|minute|minutes} in all. Ayo, let's go.",
+  "Rencana Hari Ini, today's plan: {count|review|reviews} to warm up, then something new: {topic}. Semangat, you've got this.",
+]
+
+[lines.plan_comeback]
+moment = "Today's plan after a break: short and light. Never mention how long the break was."
+placeholders = ["name", "minutes"]
+ar-eg = [
+  "⁨Apa kabar⁩ يا ⁨{name}⁩؟ يعني عامل إيه؟ النهارده خطة خفيفة، {minutes|دقيقة|دقيقتين|دقايق} بس، نفتكر بيها اللي إحنا عارفينه.",
+  "أهلاً بيك تاني يا ⁨{name}⁩. نبدأ بهدوء: {minutes|دقيقة|دقيقتين|دقايق} مراجعة سهلة. ⁨Pelan-pelan saja⁩، يعني على مهلك.",
+]
+ar = [
+  "⁨Apa kabar⁩ يا ⁨{name}⁩؟ أي كيف حالك؟ خطة اليوم خفيفة: {minutes|دقيقة|دقيقتان|دقائق} فقط نستعيد فيها ما نعرفه.",
+  "مرحبًا بعودتك يا ⁨{name}⁩. نبدأ بهدوء: {minutes|دقيقة|دقيقتان|دقائق} من المراجعة السهلة. ⁨Pelan-pelan saja⁩، أي على مهلك.",
+]
+en = [
+  "Apa kabar, {name}? Good to see you. Today's plan is light: just {minutes|minute|minutes} to wake up what you already know.",
+  "Welcome back, {name}. We'll ease in with {minutes|minute|minutes} of easy review. Pelan-pelan saja: nice and slow.",
+]
+
+[lines.plan_all_done]
+moment = "Today's plan is complete."
+placeholders = ["name", "minutes"]
+ar-eg = [
+  "خلّصت خطة النهارده يا ⁨{name}⁩. ⁨Hebat⁩، يعني برافو عليك. الباقي من يومك ليك.",
+  "كده يومك كمل: {minutes|دقيقة|دقيقتين|دقايق} مذاكرة. لو حابب تكمّل، القارئ مستنيك؛ ولو لأ، ⁨sampai besok⁩، يعني نشوفك بكرة.",
+  "⁨Mantap⁩ يا ⁨{name}⁩، يعني جامد. الخطة خلصت، والمجهود الصغير اللي بيتكرر ده هو اللي بيفرق.",
+]
+ar = [
+  "أنهيت خطة اليوم يا ⁨{name}⁩. ⁨Hebat⁩، أي أحسنت. بقية يومك لك.",
+  "اكتمل يومك: {minutes|دقيقة|دقيقتان|دقائق} من الدراسة. إن أحببت المتابعة فالقارئ بانتظارك، وإلا فـ⁨sampai besok⁩، أي إلى الغد.",
+  "⁨Mantap⁩ يا ⁨{name}⁩، أي رائع. انتهت الخطة، وهذا الجهد القليل المتكرر هو ما يصنع الفرق.",
+]
+en = [
+  "Today's plan is done, {name}. Hebat, well done. The rest of the day is yours.",
+  "Your day is complete: {minutes|minute|minutes} of study. Keep going in the Reader if you like; otherwise, sampai besok, see you tomorrow.",
+  "Mantap, {name}, that's great. Plan finished, and this small, steady effort is what makes the difference.",
+]
+
+[lines.plan_ask_size]
+moment = "The one question that sizes today's plan: 5, 15 or 30 minutes?"
+placeholders = ["name"]
+ar-eg = [
+  "النهارده قد إيه يا ⁨{name}⁩؟ خمس دقايق، ربع ساعة، ولا نص ساعة؟ أي اختيار كويس.",
+  "يومك عامل إيه؟ لو زحمة، خمس دقايق كفاية. خمسة، ربع ساعة، ولا نص ساعة؟",
+  "نعمل قد إيه النهارده؟ خمس دقايق، ربع ساعة، ولا نص ساعة. اللي يناسب مزاجك.",
+]
+ar = [
+  "كم تريد اليوم يا ⁨{name}⁩؟ خمس دقائق، أم ربع ساعة، أم نصف ساعة؟ كل اختيار جيد.",
+  "كيف يومك؟ إن كان مزدحمًا فخمس دقائق تكفي. خمس دقائق، أم ربع ساعة، أم نصف ساعة؟",
+]
+en = [
+  "How much today, {name}? 5, 15 or 30 minutes? Any choice is a good one.",
+  "How's your day looking? If it's busy, 5 minutes is plenty. 5, 15 or 30?",
+  "What fits today: 5, 15 or 30 minutes? Whatever suits your mood.",
+]
+
+# --- End-of-day recap ----------------------------------------------------------
+
+[lines.recap_goal_met]
+moment = "Recap: today's goal was met."
+placeholders = ["name", "minutes", "words", "topic"]
+ar-eg = [
+  "يوم حلو يا ⁨{name}⁩: {minutes|دقيقة|دقيقتين|دقايق} و{words|كلمة جديدة|كلمتين جداد|كلمات جديدة}. ⁨Hebat⁩، يعني برافو.",
+  "هدف النهارده اتحقق. شغلك على ⁨{topic}⁩ كان باين، وده بيتراكم يوم ورا يوم.",
+  "⁨Mantap⁩ يا ⁨{name}⁩، يعني جامد. خلّصت هدفك وعرفت {words|كلمة جديدة|كلمتين جداد|كلمات جديدة}. ارتاح، تستاهل.",
+]
+ar = [
+  "يوم جميل يا ⁨{name}⁩: {minutes|دقيقة|دقيقتان|دقائق} و{words|كلمة جديدة|كلمتان جديدتان|كلمات جديدة}. ⁨Hebat⁩، أي أحسنت.",
+  "تحقق هدف اليوم. اجتهادك في ⁨{topic}⁩ كان واضحًا، وهذا يتراكم يومًا بعد يوم.",
+  "⁨Mantap⁩ يا ⁨{name}⁩، أي رائع. أتممت هدفك وتعلمت {words|كلمة جديدة|كلمتين جديدتين|كلمات جديدة|كلمةً جديدةً}. استرح، فأنت تستحق.",
+]
+en = [
+  "A good day, {name}: {minutes|minute|minutes} and {words|new word|new words}. Hebat, well done.",
+  "Today's goal: done. Your work on {topic} really showed, and it adds up day after day.",
+  "Mantap, {name}: great. Goal reached and {words|new word|new words} learned. Rest up, you've earned it.",
+]
+
+[lines.recap_some_study]
+moment = "Recap: some study, but less than today's goal. Celebrate the effort."
+placeholders = ["name", "minutes"]
+ar-eg = [
+  "{minutes|دقيقة|دقيقتين|دقايق} النهارده أحسن بكتير من ولا حاجة. كل دقيقة بتفرق يا ⁨{name}⁩.",
+  "حتى في يوم مشغول لقيت وقت تذاكر، وده هو الالتزام الحقيقي. ⁨Sedikit demi sedikit⁩، يعني شوية بشوية.",
+  "ذاكرت {minutes|دقيقة|دقيقتين|دقايق}، وده اللي فارق. بكرة نكمّل من نفس النقطة.",
+]
+ar = [
+  "{minutes|دقيقة|دقيقتان|دقائق} اليوم خير بكثير من لا شيء. كل دقيقة تُحتسب يا ⁨{name}⁩.",
+  "حتى في يوم مزدحم وجدت وقتًا للدراسة، وهذا هو الالتزام الحقيقي. ⁨Sedikit demi sedikit⁩، أي شيئًا فشيئًا.",
+]
+en = [
+  "{minutes|minute|minutes} today is so much better than none. Every minute counts, {name}.",
+  "Even on a busy day you found time to study. That's what real consistency looks like. Sedikit demi sedikit: little by little.",
+  "You put in {minutes|minute|minutes}, and that's what matters. Tomorrow we pick up right where you left off.",
+]
+
+[lines.recap_remember]
+moment = "Recap: the one thing to remember from today."
+placeholders = ["topic"]
+ar-eg = [
+  "حاجة واحدة تفتكرها من النهارده: ⁨{topic}⁩.",
+  "لو هتفتكر حاجة واحدة بس، خليها دي: ⁨{topic}⁩.",
+  "خد دي معاك لبكرة: ⁨{topic}⁩.",
+]
+ar = [
+  "شيء واحد تتذكره من اليوم: ⁨{topic}⁩.",
+  "إن تذكرت شيئًا واحدًا فليكن هذا: ⁨{topic}⁩.",
+]
+en = [
+  "One thing to remember from today: {topic}.",
+  "If you keep just one thing, keep this: {topic}.",
+  "Take this one with you: {topic}.",
+]
+
+[lines.recap_tomorrow]
+moment = "Recap: tomorrow's first step. Today's mistakes become tomorrow's plan. `count` = reviews due tomorrow (optional)."
+placeholders = ["topic", "count"]
+ar-eg = [
+  "أول خطوة بكرة: ⁨{topic}⁩. الحاجات اللي لخبطتك النهارده هي بالظبط خطة بكرة.",
+  "بكرة أول حاجة {count|مراجعة|مراجعتين|مراجعات}، وبعدها ⁨{topic}⁩. ⁨Sampai besok⁩، يعني نشوفك بكرة.",
+  "اللي ما ظبطش النهارده مش مشكلة، ده بقى أول حاجة في خطة بكرة: ⁨{topic}⁩.",
+]
+ar = [
+  "خطوتك الأولى غدًا: ⁨{topic}⁩. ما أربكك اليوم هو بالضبط خطة الغد.",
+  "في الغد {count|مراجعة واحدة|مراجعتان|مراجعات|مراجعة} أولًا، ثم ⁨{topic}⁩. ⁨Sampai besok⁩، أي إلى الغد.",
+]
+en = [
+  "Tomorrow's first step: {topic}. Whatever tripped you up today is simply tomorrow's plan.",
+  "Tomorrow we start with {count|review|reviews}, then {topic}. Sampai besok: see you tomorrow.",
+  "What didn't click today isn't a problem; it's now the first thing on tomorrow's plan: {topic}.",
+]
+
+# --- Reminders -------------------------------------------------------------
+
+[lines.remind_study]
+moment = "Reminder at a chosen study time (steady style)."
+placeholders = ["name", "minutes"]
+ar-eg = [
+  "يا ⁨{name}⁩، خطة النهارده مستنياك: {minutes|دقيقة|دقيقتين|دقايق}، وقت ما يناسبك.",
+  "⁨Halo⁩ يا ⁨{name}⁩. عندك {minutes|دقيقة|دقيقتين|دقايق} النهارده؟ ⁨Ayo⁩، يعني يلا بينا.",
+  "ده ميعادك اللي اخترته. لو الوقت مناسب، شوية إندونيسي ونرتاح؛ ولو لأ، أجّلني بلمسة.",
+  "كوباية شاي و{minutes|دقيقة|دقيقتين|دقايق} إندونيسي؟ لو مش دلوقتي، أجّلني بلمسة.",
+]
+ar = [
+  "يا ⁨{name}⁩، خطة اليوم بانتظارك: {minutes|دقيقة|دقيقتان|دقائق}، متى ناسبك.",
+  "⁨Halo⁩ يا ⁨{name}⁩. هل لديك {minutes|دقيقة|دقيقتان|دقائق} اليوم؟ ⁨Ayo⁩، أي هيا بنا.",
+  "هذا موعدك الذي اخترته. إن كان الوقت مناسبًا فلنتعلم قليلًا من الإندونيسية، وإن لم يكن فأجّلني بلمسة.",
+]
+en = [
+  "{name}, today's plan is ready when you are: {minutes|minute|minutes}.",
+  "Halo, {name}. Got {minutes|minute|minutes} today? Ayo, let's go.",
+  "It's the time you picked. If it suits you, a little Indonesian; if not, snooze me with a tap.",
+]
+
+[lines.remind_gentle]
+moment = "The one reminder of the day (gentle style). Soft, zero pressure."
+placeholders = ["name"]
+ar-eg = [
+  "⁨Apa kabar⁩ يا ⁨{name}⁩؟ لو عندك دقيقة النهارده، ⁨Kabar⁩ موجود.",
+  "سلام يا ⁨{name}⁩. تذكير هادي: خطة صغيرة مستنياك، من غير أي ضغط.",
+  "لو اليوم سمح، خمس دقايق إندونيسي هتفرق معاك. ولو لأ، عادي خالص.",
+]
+ar = [
+  "⁨Apa kabar⁩ يا ⁨{name}⁩؟ إن كانت لديك دقيقة اليوم، فـ⁨Kabar⁩ هنا.",
+  "سلام يا ⁨{name}⁩. تذكير هادئ: خطة صغيرة بانتظارك، بلا أي ضغط.",
+]
+en = [
+  "Apa kabar, {name}? If you have a minute today, Kabar is here.",
+  "Hi {name}, just a gentle note: a small plan is waiting, no pressure at all.",
+  "If the day allows, five minutes of Indonesian goes a long way. If not, that's completely fine.",
+]
+
+[lines.remind_welcome_back]
+moment = "Reminder after a break. Light, no streak talk, never mentions how long it was."
+placeholders = ["name"]
+ar-eg = [
+  "⁨Apa kabar⁩ يا ⁨{name}⁩؟ عملتلك جلسة صغيرة وخفيفة، خمس دقايق ونرجع للجو.",
+  "وحشتني يا ⁨{name}⁩. لما تحب، نبدأ بحاجة سهلة. ⁨Pelan-pelan saja⁩، يعني على مهلك.",
+  "أهلاً بيك تاني. اللي اتعلمته لسه موجود، تعالى نصحّيه سوا.",
+]
+ar = [
+  "⁨Apa kabar⁩ يا ⁨{name}⁩؟ أعددت لك جلسة صغيرة خفيفة: خمس دقائق ونعود إلى الأجواء.",
+  "اشتقنا إليك يا ⁨{name}⁩. حين تحب، نبدأ بشيء سهل. ⁨Pelan-pelan saja⁩، أي على مهلك.",
+  "مرحبًا بعودتك. ما تعلمته ما زال معك، فلنوقظه معًا.",
+]
+en = [
+  "Apa kabar, {name}? I've set up a small, light session: five minutes to get back into it.",
+  "Good to see you, {name}. Whenever you like, we'll start with something easy. Pelan-pelan saja: no rush.",
+  "Welcome back. What you learned is still there; let's wake it up together.",
+]
+
+[lines.remind_report]
+moment = "Notification: the weekly report is ready (Thursday evening by default)."
+placeholders = ["name"]
+ar-eg = [
+  "تقرير الأسبوع جاهز يا ⁨{name}⁩. تعالى نشوف عملت إيه، ونخطط للأسبوع الجاي.",
+  "أسبوعك في صفحة واحدة: وقتك، كلماتك الجديدة، وخطة الأسبوع الجاي. لما تفضى.",
+  "⁨Laporan⁩ الأسبوع، يعني التقرير، جاهز يا ⁨{name}⁩. فيه ملاحظة صغيرة مني ليك.",
+]
+ar = [
+  "تقرير الأسبوع جاهز يا ⁨{name}⁩. تعال نرَ ما أنجزت، ونخطط للأسبوع القادم.",
+  "أسبوعك في صفحة واحدة: وقتك، وكلماتك الجديدة، وخطة الأسبوع القادم. حين تتفرغ.",
+]
+en = [
+  "Your weekly report is ready, {name}. Let's look at what you did and plan next week.",
+  "Your week on one page: time, new words and next week's plan. Whenever you're free.",
+]
+
+# --- Weekly report notes -------------------------------------------------------
+
+[lines.report_great_week]
+moment = "Kak Nur's note on a strong week. `skill` is the strongest skill's name in the UI language."
+placeholders = ["name", "minutes", "words", "skill", "days"]
+ar-eg = [
+  "أسبوع جامد يا ⁨{name}⁩: {days|يوم|يومين|أيام} مذاكرة و{words|كلمة جديدة|كلمتين جداد|كلمات جديدة}. ⁨Luar biasa⁩، يعني حاجة فوق العادة.",
+  "{minutes|دقيقة|دقيقتين|دقايق} في أسبوع واحد. ده مجهود حقيقي، وأنا شايفه. ⁨Hebat⁩، يعني برافو.",
+  "⁨Mantap⁩ يا ⁨{name}⁩، يعني جامد. أكتر حاجة لمعت الأسبوع ده: ⁨{skill}⁩. الأسبوع الجاي نبني عليها.",
+]
+ar = [
+  "أسبوع رائع يا ⁨{name}⁩: {days|يوم|يومان|أيام} من الدراسة و{words|كلمة جديدة|كلمتان جديدتان|كلمات جديدة}. ⁨Luar biasa⁩، أي مدهش.",
+  "{minutes|دقيقة|دقيقتان|دقائق} في أسبوع واحد. هذا جهد حقيقي، وأنا أراه. ⁨Hebat⁩، أي أحسنت.",
+  "⁨Mantap⁩ يا ⁨{name}⁩، أي رائع. أكثر ما لمع هذا الأسبوع: ⁨{skill}⁩. سنبني عليه الأسبوع القادم.",
+]
+en = [
+  "A brilliant week, {name}: {days|day|days} of study and {words|new word|new words}. Luar biasa: outstanding.",
+  "{minutes|minute|minutes} in a single week. That's real effort, and I see it. Hebat, well done.",
+  "Mantap, {name}. What shone most this week: {skill}. Next week we build on it.",
+]
+
+[lines.report_steady_week]
+moment = "Kak Nur's note on a steady week. `skill` is next week's focus skill."
+placeholders = ["name", "days", "words", "skill"]
+ar-eg = [
+  "أسبوع ثابت يا ⁨{name}⁩: {days|يوم|يومين|أيام} مذاكرة. الثبات ده هو اللي بيوصّل.",
+  "خطوة بخطوة، وده بالظبط المطلوب: {words|كلمة جديدة|كلمتين جداد|كلمات جديدة} الأسبوع ده. ⁨Sedikit demi sedikit⁩، يعني شوية بشوية.",
+  "أسبوع متوازن. الأسبوع الجاي هنهتم بـ⁨{skill}⁩ شوية زيادة.",
+]
+ar = [
+  "أسبوع ثابت يا ⁨{name}⁩: {days|يوم|يومان|أيام} من الدراسة. هذا الثبات هو ما يوصلك.",
+  "خطوة بخطوة، وهذا هو المطلوب بالضبط: {words|كلمة جديدة|كلمتان جديدتان|كلمات جديدة} هذا الأسبوع. ⁨Sedikit demi sedikit⁩، أي شيئًا فشيئًا.",
+  "أسبوع متوازن. في الأسبوع القادم سنعطي ⁨{skill}⁩ اهتمامًا أكبر قليلًا.",
+]
+en = [
+  "A steady week, {name}: {days|day|days} of study. Steadiness is what gets you there.",
+  "Step by step, exactly right: {words|new word|new words} this week. Sedikit demi sedikit, little by little.",
+  "A balanced week. Next week we'll give {skill} a little extra attention.",
+]
+
+[lines.report_light_week]
+moment = "Kak Nur's note on a light week. No guilt: life has its weeks."
+placeholders = ["name", "minutes"]
+ar-eg = [
+  "الأسبوع ده كان خفيف، وده عادي خالص يا ⁨{name}⁩. الحياة ليها أسابيعها. الأسبوع الجاي نبدأ بهدوء.",
+  "حتى في أسبوع مشغول ذاكرت {minutes|دقيقة|دقيقتين|دقايق}، وده حافظ على الخيط. الأسبوع الجاي نمشي ⁨pelan-pelan⁩، يعني على مهلنا.",
+  "الأسابيع الخفيفة جزء طبيعي من أي رحلة. خطة الأسبوع الجاي صغيرة وسهلة عشان نرجع للإيقاع.",
+]
+ar = [
+  "كان هذا الأسبوع خفيفًا، وهذا طبيعي تمامًا يا ⁨{name}⁩. للحياة أسابيعها. سنبدأ الأسبوع القادم بهدوء.",
+  "حتى في أسبوع مزدحم درست {minutes|دقيقة|دقيقتين|دقائق|دقيقةً}، وهذا حافظ على الخيط. سنمضي الأسبوع القادم ⁨pelan-pelan⁩، أي على مهل.",
+]
+en = [
+  "This week was a light one, and that's completely okay, {name}. Life has its weeks. We'll ease into next week.",
+  "Even in a busy week you studied {minutes|minute|minutes}, and that kept the thread going. Next week we go pelan-pelan: slow and easy.",
+  "Light weeks are a normal part of any journey. Next week's plan is small and easy, to find the rhythm again.",
+]
+
+[lines.report_comeback]
+moment = "Kak Nur's note on a week with a comeback after a break. Celebrate the return."
+placeholders = ["name", "days"]
+ar-eg = [
+  "أحلى حاجة في الأسبوع ده: إنك رجعت يا ⁨{name}⁩. الرجوع أصعب من البداية، وإنت عملتها.",
+  "رجعت وذاكرت {days|يوم|يومين|أيام} الأسبوع ده. ⁨Selamat datang kembali⁩، يعني أهلاً بيك تاني.",
+]
+ar = [
+  "أجمل ما في هذا الأسبوع أنك عدت يا ⁨{name}⁩. العودة أصعب من البداية، وقد فعلتها.",
+  "عدت ودرست {days|يومًا|يومين|أيام|يومًا} هذا الأسبوع. ⁨Selamat datang kembali⁩، أي مرحبًا بعودتك.",
+]
+en = [
+  "The best thing about this week: you came back, {name}. Coming back is harder than starting, and you did it.",
+  "You came back and studied {days|day|days} this week. Selamat datang kembali: welcome back.",
+]
+
+# --- Rewards -----------------------------------------------------------------
+
+[lines.pelita_lit]
+moment = "Pelita (the streak lamp) is lit for today."
+placeholders = ["streak"]
+ar-eg = [
+  "قنديلك (⁨Pelita⁩) منوّر بقاله {streak|يوم|يومين|أيام}. ⁨Hebat⁩، يعني برافو.",
+  "النهارده نوّرت الـ⁨Pelita⁩، القنديل بتاعك. كل يوم بتنوّره بيزود النور حبة.",
+  "يوم كمان والقنديل منوّر. ⁨Mantap⁩، يعني جامد.",
+]
+ar = [
+  "قنديلك (⁨Pelita⁩) مضاء منذ {streak|يوم|يومين|أيام|يومًا}. ⁨Hebat⁩، أي أحسنت.",
+  "أضأت قنديلك (⁨Pelita⁩) اليوم. كل يوم تضيئه يزيده نورًا.",
+]
+en = [
+  "Your Pelita, your lamp, has been lit for {streak|day|days}. Hebat, well done.",
+  "You lit your Pelita today. Every day you light it adds a little more glow.",
+  "Another day, and the lamp is glowing. Mantap: great.",
+]
+
+[lines.pelita_frozen]
+moment = "A rest day was covered by an earned freeze. `count` = freezes left (omit when zero)."
+placeholders = ["count"]
+ar-eg = [
+  "خدت يوم راحة، والـ⁨Pelita⁩ فضلت منوّرة بفضل التجميد اللي كسبته. معاك لسه {count|تجميد|تجميدين|تجميدات}.",
+  "خدت يوم راحة، والتجميد اللي كسبته حافظ على نور القنديل. الراحة جزء من الرحلة.",
+]
+ar = [
+  "أخذت يوم راحة، وبقي قنديلك (⁨Pelita⁩) مضاءً بفضل التجميد الذي كسبته. ولديك الآن {count|تجميد واحد|تجميدان|تجميدات|تجميدًا}.",
+  "أخذت يوم راحة، وحفظ التجميد الذي كسبته نور القنديل. الراحة جزء من الرحلة.",
+]
+en = [
+  "You took a rest day, and the freeze you earned kept your Pelita lit. You have {count|freeze|freezes} left.",
+  "A rest day, and your earned freeze kept the lamp glowing. Rest is part of the journey too.",
+]
+
+[lines.pelita_relit]
+moment = "Pelita lit again after it went out. No drama about the gap."
+placeholders = ["name"]
+ar-eg = [
+  "الـ⁨Pelita⁩ نوّرت تاني يا ⁨{name}⁩. أهم يوم هو اليوم اللي بترجع فيه.",
+  "قنديل جديد ونور جديد. ⁨Ayo⁩ يا ⁨{name}⁩، يعني يلا نكمّل.",
+]
+ar = [
+  "عاد قنديلك (⁨Pelita⁩) يضيء يا ⁨{name}⁩. أهم يوم هو يوم العودة.",
+  "قنديل جديد ونور جديد. ⁨Ayo⁩ يا ⁨{name}⁩، أي هيا نكمل.",
+]
+en = [
+  "Your Pelita is lit again, {name}. The day you come back is the one that counts most.",
+  "A fresh lamp, a fresh light. Ayo, {name}, let's keep going.",
+]
+
+[lines.freeze_earned]
+moment = "A Pelita freeze was earned (never bought). `count` = freezes now held."
+placeholders = ["count"]
+ar-eg = [
+  "كسبت تجميد للـ⁨Pelita⁩. لو احتجت يوم راحة، القنديل هيفضل منوّر.",
+  "مكافأة على ثباتك: تجميد جديد. دلوقتي معاك {count|تجميد|تجميدين|تجميدات}.",
+]
+ar = [
+  "كسبت تجميدًا لقنديلك (⁨Pelita⁩). إن احتجت يوم راحة، سيبقى مضاءً.",
+  "مكافأة على ثباتك: تجميد جديد. لديك الآن {count|تجميد واحد|تجميدان|تجميدات|تجميدًا}.",
+]
+en = [
+  "You earned a freeze for your Pelita. If you need a rest day, the lamp stays lit.",
+  "A reward for your steadiness: a new freeze. You now have {count|freeze|freezes}.",
+]
+
+[lines.achievement_unlocked]
+moment = "An achievement (named after an Indonesian proverb) unlocked. The card shows the proverb's meaning."
+placeholders = ["proverb", "name"]
+ar-eg = [
+  "إنجاز جديد: «⁨{proverb}⁩». تعبك باين يا ⁨{name}⁩.",
+  "⁨Selamat⁩، يعني مبروك. فتحت إنجاز «⁨{proverb}⁩».",
+]
+ar = [
+  "إنجاز جديد: «⁨{proverb}⁩». جهدك ظاهر يا ⁨{name}⁩.",
+  "⁨Selamat⁩، أي مبارك. فتحت إنجاز «⁨{proverb}⁩».",
+]
+en = [
+  "New achievement: “{proverb}”. Your effort shows, {name}.",
+  "Selamat, congratulations. You unlocked “{proverb}”.",
+]
+
+[lines.warung_bought]
+moment = "A cosmetic batik theme bought in the Warung. `koin` = Koin left."
+placeholders = ["item", "koin"]
+ar-eg = [
+  "⁨{item}⁩ بقى بتاعك. استمتع بيه، ده من تعبك. باقيلك {koin} ⁨Koin⁩.",
+  "اخترت ⁨{item}⁩ من الـ⁨Warung⁩، يعني الدكانة. ذوقك حلو.",
+]
+ar = [
+  "أصبح ⁨{item}⁩ لك. استمتع به، فقد جاء من جهدك. رصيدك الآن {koin} ⁨Koin⁩.",
+  "اخترت ⁨{item}⁩ من ⁨Warung⁩، أي الدكّان. ذوق جميل.",
+]
+en = [
+  "{item} is yours. Enjoy it, you earned it. You have {koin} Koin left.",
+  "You picked {item} from the Warung, the little shop. Lovely taste.",
+]
+
+# --- Monthly level check -------------------------------------------------------
+
+[lines.level_check_invite]
+moment = "Invitation to the monthly 10-minute level check."
+placeholders = ["name"]
+ar-eg = [
+  "عدّى شهر يا ⁨{name}⁩. تيجي نعمل فحص مستوى صغير، عشر دقايق؟ مش امتحان، بس عشان نشوف وصلنا لفين.",
+  "ميعاد الفحص الشهري: عشر دقايق نحدّث بيها خريطة مهاراتك. لما تفضى.",
+]
+ar = [
+  "مرّ شهر يا ⁨{name}⁩. ما رأيك في فحص مستوى قصير، عشر دقائق؟ ليس امتحانًا، بل لنرى أين وصلنا.",
+  "موعد الفحص الشهري: عشر دقائق نحدّث بها خريطة مهاراتك، حين تتفرغ.",
+]
+en = [
+  "It's been a month, {name}. Fancy a short level check, ten minutes? Not an exam, just a look at how far we've come.",
+  "Time for the monthly check: ten minutes to update your skill map, whenever you're free.",
+]
+
+[lines.level_forecast]
+moment = "Forecast after the level check: at this pace you reach a level around a date."
+placeholders = ["level", "date"]
+ar-eg = [
+  "بالمعدل ده، هتوصل ⁨{level}⁩ حوالين ⁨{date}⁩. ده تقدير، مش وعد ولا ضغط.",
+  "على نفس الإيقاع، ⁨{level}⁩ مستنياك حوالين ⁨{date}⁩. ⁨Semangat⁩، يعني شد حيلك.",
+]
+ar = [
+  "بهذا المعدل ستبلغ ⁨{level}⁩ في حدود ⁨{date}⁩. هذا تقدير، لا وعد ولا ضغط.",
+  "على الإيقاع نفسه تصل إلى ⁨{level}⁩ قرابة ⁨{date}⁩. ⁨Semangat⁩، أي بالهمّة.",
+]
+en = [
+  "At this pace you'll reach {level} around {date}. That's an estimate, not a promise or a deadline.",
+  "Keep this rhythm and {level} is waiting for you around {date}. Semangat: keep it up.",
+]
