@@ -66,7 +66,7 @@ kabar/
 
 ## 4. Client stack
 
-- **Dioxus 0.7.x** for macOS (aarch64-apple-darwin) and Android (arm64-v8a); web build as a bonus.
+- **Dioxus 0.7.x** for macOS (aarch64-apple-darwin) and Android (arm64-v8a); web build as milestone M2+ after Kabar Cloud is deployed (SPEC §23): today only `core`, `protocol` and `server` build for wasm32; the app still needs browser storage, fetch/WebSocket, Web Speech TTS and redirect sign-in. Host: Cloudflare Pages behind Cloudflare Access, both free.
 - **SQLite** via `rusqlite` (bundled, FTS5) with embedded migrations (`rusqlite_migration` or hand-rolled numbered SQL).
 - **Ink:** a small TypeScript module inside the WebView: Pointer Events (`pointerType="pen"`), `getCoalescedEvents()`, `getPredictedEvents()`, `desynchronized: true` 2D canvas. Points batched to Rust per stroke (points + pressure + tilt + t).
 - **Native bridges (Android):** JNI from Rust (`jni` crate) using `ndk_context` for the JavaVM and the activity's class loader to reach our Kotlin classes. Dioxus has no official Kotlin interop yet, so M1 proves this with one call (e.g., read the S Pen "in range" state) before anything depends on it. Fallback: a custom Gradle template via `dx` bundling.
@@ -244,6 +244,14 @@ Done when (spec §23): a 5-minute Kabar Radio episode plays offline on the phone
   - Downloads are per unit, and a "free up space" button removes them.
 - **Background playback** with the screen off (earbuds on the way out) needs an Android `MediaSession` foreground service in Kotlin. It is part of M12, but it lands last, after in-app playback works.
 - **Daily episodes "from my words"** (spec §14) use the `radio_script` task. They switch on once that task passes its golden set in the bake-off, which runs on the Mac. Until then Radio plays the prebuilt unit episodes, and the gap is reported, not hidden.
+- **As built** (`crates/app/src/listen/`, `kabar_core::story`):
+  - Both shows are on one screen, **Watch & listen**, linked from Today on the phone.
+  - Downloads are per episode (Sinetron too); each unit has one of each.
+  - A download keeps the joined track plus a `<id>.json` of line start times, computed from file sizes because the proxy's MP3 is constant 48 kbit/s. The single lines are then deleted.
+  - Tapping a line in a downloaded episode seeks the track.
+  - The questions run in the Lesson Player in episode mode: no Lanjut position, and finishing records `completed` on the episode id (synced). Radio records `completed` when the last line plays.
+  - Sinetron episodes of levels before the placement start level are open.
+  - Radio episodes are never locked, like the Journey map.
 
 **Phase C: persona chats (needs #25 and the Reader, PR #14).**
 - **Prompt:** each of the four personas has a style guide, and they all feed `prompts/roleplay_turn@v1.md`:
