@@ -106,149 +106,57 @@ slides:
         en: Just a little sugar for me, please.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: beberapa
-        ar_eg: كام، بعض
-        ar: بضعة، بعض
-        en: several, a few
-      - text: banyak
-        ar_eg: كتير
-        ar: كثير
-        en: many, a lot
-      - text: sedikit
-        ar_eg: شوية
-        ar: قليل
-        en: a little
-      - text: semua
-        ar_eg: كل (المجموعة)
-        ar: جميع
-        en: all
-      - text: setiap
-        ar_eg: كل (واحد واحد)
-        ar: كل (مع المفرد)
-        en: every
-    words: [beberapa, banyak, sedikit, semua, setiap]
-  - id: e02
     type: multiple_choice
     question_meaning:
       ar_eg: أنهي جملة صح؟
       ar: أيّ جملة صحيحة؟
       en: Which sentence is correct?
-    options: ["Di bandara ada banyak orang.", "Di bandara ada orang banyak-banyak.", "Di bandara ada banyak orang-orang."]
+    options: [Di bandara ada banyak orang., Di bandara ada orang banyak-banyak., Di bandara ada banyak orang-orang.]
     answer: 0
     explain:
       ar_eg: بعد banyak الاسم بيفضل مفرد من غير تكرار.
       ar: بعد banyak يبقى الاسم دون تكرار.
       en: After banyak the noun isn't reduplicated.
     words: [banyak]
-  - id: e03
+  - id: e02
     type: listen
     text: Beberapa pesawat berangkat pagi ini.
-    options: ["Beberapa pesawat berangkat pagi ini.", "Semua pesawat berangkat pagi ini.", "Banyak pesawat berangkat pagi ini."]
+    options: [Beberapa pesawat berangkat pagi ini., Semua pesawat berangkat pagi ini., Banyak pesawat berangkat pagi ini.]
     answer: 0
     words: [beberapa, pesawat]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إعلان المطار بيبدأ بـ «حضرات الركاب الكرام». أنهي جملة؟
-      ar: يبدأ إعلان المطار بـ «السادة الركاب الكرام». أيّ جملة هي؟
-      en: The airport announcement starts with "Dear passengers". Which sentence is it?
-    options: ["Penumpang-penumpang terhormat", "Semua penumpang yang terhormat", "Para penumpang yang terhormat"]
-    answer: 2
-    words: [para, penumpang]
-  - id: e05
-    type: fill_blank
-    sentence: ___ hari saya minum kopi.
-    meaning:
-      ar_eg: كل يوم بشرب قهوة.
-      ar: أشرب القهوة كل يوم.
-      en: I drink coffee every day.
-    options: ["Semua", "Para", "Setiap"]
-    answers: [Setiap]
-    explain:
-      ar_eg: «كل يوم» = كل واحد لوحده = setiap.
-      ar: «كل يوم» توزيعية فتأتي setiap.
-      en: '"Every day" counts each one: setiap.'
-    words: [setiap]
-  - id: e06
+  - id: e03
     type: fill_blank
     sentence: ___ penumpang harus membawa paspor.
     meaning:
       ar_eg: كل الركاب لازم يجيبوا الباسبور.
       ar: يجب على جميع الركاب إحضار جوازات السفر.
       en: All passengers must bring their passports.
-    options: ["Setiap hari", "Semua", "Sedikit"]
+    options: [Setiap hari, Semua, Sedikit]
     answers: [Semua]
     words: [semua, penumpang, paspor]
-  - id: e07
-    type: fill_blank
-    sentence: Saya minta gula ___ saja.
-    meaning:
-      ar_eg: سكر شوية بس لو سمحت.
-      ar: قليل من السكر فقط من فضلك.
-      en: Just a little sugar, please.
-    answers: [sedikit]
-    words: [sedikit]
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: كل يوم فيه طيارة للقاهرة.
-      ar: كل يوم توجد طائرة إلى القاهرة.
-      en: There's a plane to Cairo every day.
-    answer: Setiap hari ada pesawat ke Kairo.
-    distractors: [semua, para]
-    words: [setiap, pesawat]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: كل الناس بتحب بالي.
-      ar: الجميع يحبون بالي.
-      en: Everyone loves Bali.
-    answers:
-      - Semua orang suka Bali.
-      - Semua orang suka Bali
-      - Semua orang senang Bali.
-      - Semua orang cinta Bali.
-      - Semua orang menyukai Bali.
-    words: [semua]
-  - id: e10
+  - id: e04
     type: translate
     direction: to_target
     source_meaning:
       ar_eg: عندي كام شنطة.
       ar: عندي بضع حقائب.
       en: I have a few suitcases.
-    answers:
-      - Saya punya beberapa koper.
-      - Saya punya beberapa koper
-      - Saya bawa beberapa koper.
-      - Saya membawa beberapa koper.
-      - Aku punya beberapa koper.
+    answers: [Saya punya beberapa koper., Saya punya beberapa koper, Saya bawa beberapa koper., Saya membawa beberapa koper., Aku punya beberapa koper.]
     words: [beberapa, koper]
-  - id: e11
+  - id: e05
     type: translate
     direction: from_target
     source_text: Seluruh Bali indah.
     answers_meaning:
-      ar_eg: ["بالي كلها جميلة", "بالي كلها حلوة"]
-      ar: ["بالي كلها جميلة", "جزيرة بالي بأكملها جميلة"]
-      en: ["All of Bali is beautiful.", "The whole of Bali is beautiful.", "Bali is beautiful everywhere."]
+      ar_eg: [بالي كلها جميلة, بالي كلها حلوة]
+      ar: [بالي كلها جميلة, جزيرة بالي بأكملها جميلة]
+      en: [All of Bali is beautiful., The whole of Bali is beautiful., Bali is beautiful everywhere.]
     explain:
       ar_eg: seluruh = الحاجة كلها على بعضها.
       ar: seluruh = الشيء بأكمله.
       en: seluruh = the whole thing.
     words: [seluruh]
-  - id: e12
-    type: dictation
-    text: Di bandara ada banyak penumpang.
-    meaning:
-      ar_eg: في المطار فيه ركاب كتير.
-      ar: في المطار ركاب كثيرون.
-      en: There are many passengers at the airport.
-    words: [banyak, penumpang, bandara]
-  - id: e13
+  - id: e06
     type: speaking
     text: Para penumpang yang terhormat, selamat datang di Bali.
     meaning:
@@ -259,7 +167,7 @@ exercises:
 dialogue:
   title: Tiba di Ngurah Rai
   lines:
-    - speaker: Mas Ardi
+    - speaker: Mas Rizal
       text: Mohamed! Selamat datang di Bali! Bagaimana perjalananmu?
       ar_eg: محمد! أهلًا بيك في بالي! الرحلة كانت عاملة إيه؟
       ar: محمد! أهلًا بك في بالي! كيف كانت الرحلة؟
@@ -269,7 +177,7 @@ dialogue:
       ar_eg: مش بطالة. بس كام راكب تعبوا.
       ar: لا بأس بها، لكن بعض الركاب مرضوا.
       en: Not bad. But a few passengers got sick.
-    - speaker: Mas Ardi
+    - speaker: Mas Rizal
       text: Wah, kasihan. Kopernya berapa?
       ar_eg: يا حرام. معاك كام شنطة؟
       ar: يا للأسف. كم حقيبة معك؟
@@ -279,7 +187,7 @@ dialogue:
       ar_eg: اتنين بس. كل الهدايا اللي من مصر هنا.
       ar: اثنتان فقط. وكل الهدايا من مصر هنا.
       en: Just two. All the gifts from Egypt are in here.
-    - speaker: Mas Ardi
+    - speaker: Mas Rizal
       text: Bagus! Kita pergi sekarang. Di bandara ada banyak orang.
       ar_eg: حلو! نمشي دلوقتي. المطار فيه ناس كتير.
       ar: جيد! لنذهب الآن، ففي المطار أناس كثيرون.
@@ -290,26 +198,11 @@ new_words:
     ar_eg: كام، بعض
     ar: بضعة، بعض
     en: several, a few
-  - word: sedikit
-    pos: adjective
-    ar_eg: شوية
-    ar: قليل
-    en: a little, few
-  - word: semua
-    pos: adjective
-    ar_eg: كل (المجموعة)
-    ar: جميع
-    en: all
   - word: seluruh
     pos: adjective
     ar_eg: كل (الحاجة كلها)
     ar: كامل، كل
     en: whole, entire
-  - word: setiap
-    pos: adjective
-    ar_eg: كل (واحد واحد)
-    ar: كل (مع المفرد)
-    en: every, each
   - word: para
     pos: particle
     ar_eg: حضرات (قبل الناس)
@@ -340,16 +233,6 @@ new_words:
     ar_eg: باسبور
     ar: جواز سفر
     en: passport
-  - word: oleh-oleh
-    pos: noun
-    ar_eg: هدايا من السفر
-    ar: هدايا السفر
-    en: gifts brought back from a trip
-  - word: kasihan
-    pos: interjection
-    ar_eg: يا حرام / يا عيني
-    ar: يا للمسكين
-    en: poor thing; what a pity
 review:
   status: draft
   verified: false

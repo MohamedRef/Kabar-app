@@ -1,0 +1,205 @@
+schema: kabar.lesson/v1
+id: bipa1.u01.l07
+language: id
+title: Ulangan Unit 1
+can_do:
+  ar_eg: تسلّم وترد من غير مساعدة.
+  ar: أن تُحيّي وتجيب دون مساعدة.
+  en: Greet and answer without help.
+slides:
+  - title: Unit 1 dalam satu halaman
+    body:
+      ar_eg: |
+        - selamat (← سلامة) + pagi / siang / sore / malam = تحية حسب الوقت. selamat datang = أهلًا بيك، selamat jalan = مع السلامة (للي ماشي).
+        - Apa kabar? (kabar ← خبر) → Baik / Kabar baik / Baik-baik saja. وترجّع السؤال بـ Dan kamu? / Dan Ibu?
+        - apa / apakah في أول الجملة = «هل».
+        - saya (مؤدبة) وaku (مع الصحاب)، kamu / Anda / Bapak / Ibu = إنت، dia = هو أو هي، kita = إحنا وإنت، kami = إحنا من غيرك.
+        - terima kasih ← → sama-sama، maaf (← معافاة)، permisi، salam kenal.
+      ar: |
+        - selamat (← سلامة) + pagi / siang / sore / malam = تحية بحسب الوقت. selamat datang = أهلًا وسهلًا، selamat jalan = في أمان الله (للراحل).
+        - Apa kabar? (kabar ← خبر) ← Baik / Kabar baik / Baik-baik saja، ثم يُردّ السؤال بـ Dan kamu? / Dan Ibu?
+        - apa / apakah في صدر الجملة = «هل».
+        - saya (مهذبة) وaku (ودّية)، وkamu / Anda / Bapak / Ibu = أنت، وdia = هو أو هي، وkita = نحن مع المخاطَب، وkami = نحن دونه.
+        - terima kasih وجوابها sama-sama، وmaaf (← معافاة)، وpermisi، وsalam kenal.
+      en: |
+        - selamat (← سلامة) + pagi / siang / sore / malam = greeting by time. selamat datang = welcome; selamat jalan = goodbye (to the one leaving).
+        - Apa kabar? (kabar ← خبر) → Baik / Kabar baik / Baik-baik saja; ask back with Dan kamu? / Dan Ibu?
+        - apa / apakah at the start = yes/no question.
+        - saya (polite) and aku (casual); kamu / Anda / Bapak / Ibu = you; dia = he or she; kita = we incl. you; kami = we excl. you.
+        - terima kasih → sama-sama; maaf (← معافاة); permisi; salam kenal.
+    grammar: id.greeting.selamat
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: maaf
+        ar_eg: آسف
+        ar: عفوًا
+        en: sorry
+      - text: permisi
+        ar_eg: بعد إذنك
+        ar: بعد إذنك
+        en: excuse me
+      - text: sama-sama
+        ar_eg: العفو
+        ar: العفو
+        en: you're welcome
+      - text: salam kenal
+        ar_eg: اتشرفنا
+        ar: تشرّفنا
+        en: nice to meet you
+      - text: besok
+        ar_eg: بكرة
+        ar: غدًا
+        en: tomorrow
+    words: [maaf, permisi, sama-sama, salam kenal, besok]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الساعة ١٢ الضهر. بتسلّم على Bu Sari. تقول إيه؟
+      ar: الساعة الثانية عشرة ظهرًا، وتحيّي Bu Sari. ماذا تقول؟
+      en: It's 12 noon and you greet Bu Sari. What do you say?
+    options: ['Selamat siang, Bu!', 'Selamat malam, Bu!', 'Selamat pagi, Bu!']
+    answer: 0
+    explain:
+      ar_eg: من ١١ لحد ٣ ده siang.
+      ar: من الحادية عشرة إلى الثالثة هو الـ siang.
+      en: 11 to 3 is siang.
+    words: [selamat, siang]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: Dimas ماشي من عندك وإنت قاعد. تقوله إيه؟
+      ar: يغادر Dimas وأنت باقٍ. ماذا تقول له؟
+      en: Dimas is leaving and you are staying. What do you say to him?
+    options: [Selamat datang!, Selamat jalan!, Selamat tinggal!]
+    answer: 1
+    explain:
+      ar_eg: selamat jalan للي ماشي، وselamat tinggal بيقولها اللي ماشي للي قاعد.
+      ar: selamat jalan تقال للراحل، وselamat tinggal يقولها الراحل للمقيم.
+      en: selamat jalan is said to the one leaving; selamat tinggal is said by the one leaving.
+    words: [selamat jalan]
+  - id: e04
+    type: listen
+    text: Baik-baik saja
+    options: [Baik-baik saja, Kurang baik, Baik juga]
+    answer: 0
+    words: [baik-baik saja]
+  - id: e05
+    type: fill_blank
+    sentence: Selamat ___ di Kota Tua!
+    meaning:
+      ar_eg: أهلًا بيك في كوتا توا!
+      ar: أهلًا وسهلًا بك في كوتا توا!
+      en: Welcome to Kota Tua!
+    options: [tinggal, datang, jalan]
+    answers: [datang]
+    words: [selamat datang]
+  - id: e06
+    type: fill_blank
+    sentence: Terima kasih, Bu! — ___!
+    meaning:
+      ar_eg: شكرًا يا مدام! — العفو!
+      ar: شكرًا يا سيدتي! — العفو!
+      en: Thank you, ma'am! — You're welcome!
+    answers: [Sama-sama, sama-sama]
+    words: [sama-sama]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: بعد إذنك يا أستاذ. أنا محمد.
+      ar: بعد إذنك يا سيدي. أنا محمد.
+      en: Excuse me, sir. I'm Mohamed.
+    answer: Permisi, Pak. Saya Mohamed.
+    distractors: [aku, kamu]
+    explain:
+      ar_eg: مع Pak بنستخدم saya مش aku.
+      ar: مع Pak تُستعمل saya لا aku.
+      en: With Pak, use saya, not aku.
+    words: [permisi, saya]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: إحنا (أنا وإنت) في جاكرتا!
+      ar: نحن (أنا وأنت) في جاكرتا!
+      en: We (you and I) are in Jakarta!
+    answer: Kita di Jakarta!
+    distractors: [kami, dia]
+    words: [kita]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: صباح الخير يا مدام! إزيك؟
+      ar: صباح الخير يا سيدتي! كيف حالكِ؟
+      en: Good morning, ma'am! How are you?
+    answers: ['Selamat pagi, Bu! Apa kabar?', 'Selamat pagi, Bu. Apa kabar?', 'Selamat pagi, Bu! Apa kabar', 'Selamat pagi Bu, apa kabar?', 'Selamat pagi, Ibu! Apa kabar?', 'Selamat pagi, Ibu. Apa kabar?', 'Pagi, Bu! Apa kabar?']
+    words: [selamat, pagi, apa, kabar]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Maaf, Anda Pak Budi?
+    answers_meaning:
+      ar_eg: [لا مؤاخذة، حضرتك الأستاذ بودي؟, آسف، حضرتك أستاذ بودي؟, لو سمحت، إنت الأستاذ بودي؟]
+      ar: [عفوًا، هل أنت الأستاذ بودي؟, عذرًا، أأنت السيد بودي؟]
+      en: ['Excuse me, are you Pak Budi?', 'Sorry, are you Mr Budi?', 'Excuse me, are you Mr Budi?']
+    words: [maaf, Anda]
+  - id: e11
+    type: dictation
+    text: Sampai jumpa besok!
+    meaning:
+      ar_eg: أشوفك بكرة!
+      ar: إلى اللقاء غدًا!
+      en: See you tomorrow!
+    words: [sampai jumpa, besok]
+  - id: e12
+    type: speaking
+    text: Selamat malam, Pak. Saya Mohamed. Salam kenal.
+    meaning:
+      ar_eg: مساء الخير يا أستاذ. أنا محمد. اتشرفنا.
+      ar: مساء الخير يا سيدي. أنا محمد. تشرّفنا.
+      en: Good evening, sir. I'm Mohamed. Nice to meet you.
+    words: [selamat, malam, saya, salam kenal]
+dialogue:
+  title: Malam di Kota Tua
+  lines:
+    - speaker: Ni Luh
+      text: Selamat malam! Maaf, kamu Mohamed?
+      ar_eg: مساء الخير! لا مؤاخذة، إنت محمد؟
+      ar: مساء الخير! عفوًا، أأنت محمد؟
+      en: Good evening! Sorry, are you Mohamed?
+    - speaker: Mohamed
+      text: Ya, saya Mohamed. Selamat malam!
+      ar_eg: أيوه، أنا محمد. مساء الخير!
+      ar: نعم، أنا محمد. مساء الخير!
+      en: Yes, I'm Mohamed. Good evening!
+    - speaker: Ni Luh
+      text: Aku Ni Luh. Salam kenal!
+      ar_eg: أنا ني لوه. اتشرفنا!
+      ar: أنا ني لوه. تشرّفنا!
+      en: I'm Ni Luh. Nice to meet you!
+    - speaker: Mohamed
+      text: Salam kenal, Ni Luh. Apa kabar?
+      ar_eg: اتشرفنا يا ني لوه. إزيك؟
+      ar: تشرّفنا يا ني لوه. كيف حالكِ؟
+      en: Nice to meet you, Ni Luh. How are you?
+    - speaker: Ni Luh
+      text: Baik, terima kasih. Selamat datang di Jakarta!
+      ar_eg: كويسة، شكرًا. أهلًا بيك في جاكرتا!
+      ar: بخير، شكرًا. أهلًا بك في جاكرتا!
+      en: Fine, thanks. Welcome to Jakarta!
+    - speaker: Mohamed
+      text: Terima kasih, Ni Luh!
+      ar_eg: شكرًا يا ني لوه!
+      ar: شكرًا يا ني لوه!
+      en: Thank you, Ni Luh!
+souvenir:
+  id: bipa1.u01.souvenir
+  title: Taman Fatahillah
+  note:
+    ar_eg: جاكرتا بدأت ميناء صغير اسمه Sunda Kelapa، وبعدين بقت Batavia أيام الهولنديين، وKota Tua هي البلد القديمة بتاعتها. في ميدان Fatahillah الناس بتتمشى وتتصور قدام المباني القديمة. ولما تسلّم على حد هناك، هتلاحظ إنهم بيسلّموا حسب وقت اليوم، وكتير بيهزّوا راسهم أو يحطّوا إيدهم على صدرهم — جرّبها، هتعجبهم جدًا!
+    ar: بدأت جاكرتا ميناءً صغيرًا اسمه Sunda Kelapa، ثم صارت Batavia في عهد الهولنديين، وKota Tua هي مدينتها القديمة. وفي ساحة Fatahillah يتنزّه الناس ويلتقطون الصور أمام المباني العتيقة. وستلاحظ أن الإندونيسيين يحيّون بحسب وقت اليوم، وكثيرًا ما يومئون برؤوسهم أو يضعون اليد على الصدر، فجرّب ذلك وسيسرّهم كثيرًا.
+    en: Jakarta began as the small port of Sunda Kelapa, then became Dutch Batavia; Kota Tua is its old town. In Fatahillah Square people stroll and take photos in front of the old buildings. Indonesians greet by time of day and often add a nod or a hand to the chest — try it, people will love it.
+review:
+  status: draft
+  verified: false

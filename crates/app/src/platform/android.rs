@@ -102,6 +102,29 @@ pub fn files_dir() -> Result<String, String> {
     })
 }
 
+/// `Context.getExternalFilesDir(null).getAbsolutePath()`: app storage a
+/// computer can reach over USB (`Android/data/app.kabar/files`). Errors when
+/// shared storage isn't mounted.
+pub fn external_files_dir() -> Result<String, String> {
+    let path = with_activity(|env, activity| {
+        let dir = env
+            .call_method(
+                activity,
+                jni_str!("getExternalFilesDir"),
+                jni_sig!("(Ljava/lang/String;)Ljava/io/File;"),
+                &[JValue::Object(&JObject::null())],
+            )?
+            .l()?;
+        if dir.is_null() {
+            return Ok(None);
+        }
+        let path =
+            env.call_method(&dir, jni_str!("getAbsolutePath"), jni_sig!("()Ljava/lang/String;"), &[])?.l()?;
+        to_string(env, path)
+    })?;
+    path.ok_or_else(|| "external storage is not available".to_string())
+}
+
 /// `PendingShare.take(activity)`: the JSON `ShareActivity` stored, parsed.
 pub fn take_shared_input() -> Result<Option<SharedInput>, String> {
     let json = with_activity(|env, activity| {

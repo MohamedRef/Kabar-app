@@ -96,21 +96,21 @@ slides:
     body:
       ar_eg: |
         الحيلة الرابعة: dh وth بيتكتبوا d وt: dewe = dhewe، deweke = dheweke.
-        والخامسة: الكلمة الطويلة بتتقص: dicul = diculké (يتساب / يتباع؛ في الشات diculke).
+        والخامسة: الكلمة الطويلة بتتقص: dicul = diculke (يتساب / يتباع؛ في الشات diculke).
         جرّب على رسالة حقيقية:
-        «arp dicul piro» → arep diculké pira? → «ناوي تبيعه بكام؟»
+        «arp dicul piro» → arep diculke pira? → «ناوي تبيعه بكام؟»
         وكمان «aku gk ngerti opo2» → aku gak ngerti apa-apa → «مش فاهم أي حاجة». (ngerti = mengerti، و2 = تكرار الكلمة زي الإندونيسي)
       ar: |
         الرابعة: dh وth تُكتبان d وt: dewe = dhewe، deweke = dheweke.
-        والخامسة: بتر الكلمة الطويلة: dicul = diculké (يُطلق / يُباع؛ وفي الدردشة diculke).
+        والخامسة: بتر الكلمة الطويلة: dicul = diculke (يُطلق / يُباع؛ وفي الدردشة diculke).
         وطبّق ذلك على رسالة حقيقية:
-        «arp dicul piro» → arep diculké pira? → «بكم ستبيعه؟»
+        «arp dicul piro» → arep diculke pira? → «بكم ستبيعه؟»
         و«aku gk ngerti opo2» → aku gak ngerti apa-apa → «لا أفهم شيئًا» (ngerti = mengerti، و2 لتكرار الكلمة كالإندونيسية).
       en: |
         Trick four: dh and th are typed d and t: dewe = dhewe, deweke = dheweke.
-        Trick five: long words get clipped: dicul = diculké (let go / sold off; chat diculke).
+        Trick five: long words get clipped: dicul = diculke (let go / sold off; chat diculke).
         Try it on a real message:
-        "arp dicul piro" → arep diculké pira? → "How much will you sell it for?"
+        "arp dicul piro" → arep diculke pira? → "How much will you sell it for?"
         And "aku gk ngerti opo2" → aku gak ngerti apa-apa → "I don't understand anything." (ngerti = mengerti; 2 doubles the word, as in Indonesian)
     grammar: jv.chat.normalize
     examples:
@@ -158,7 +158,7 @@ exercises:
       ar_eg: إيه الكتابة الرسمية للكلمة دي من الشات؟
       ar: ما الإملاء القياسي لهذه الكلمة من الدردشة؟
       en: What's the standard spelling of this chat word?
-    options: ["ape", "opa", "apa"]
+    options: [ape, opa, apa]
     answer: 2
     explain:
       ar_eg: الـ a الأخيرة بتتنطق o، فـ opo = apa.
@@ -166,124 +166,34 @@ exercises:
       en: Final a is said o, so opo = apa.
     words: [apa]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي كلمة من دول الـ o فيها أصلية، ومش لازم تتقلب a؟
-      ar: في أيّ هذه الكلمات تكون o أصلية فلا تُقلب a؟
-      en: Which word has a real o that must NOT be turned into a?
-    options: ["sopo", "piro", "loro"]
-    answer: 2
-    explain:
-      ar_eg: loro (اتنين) مكتوبة بـ o في الإملاء الرسمي. piro = pira وsopo = sapa.
-      ar: loro (اثنان) تُكتب بـ o قياسًا، أما piro فـ pira وsopo فـ sapa.
-      en: loro (two) is spelled with o in standard Javanese; piro = pira, sopo = sapa.
-    words: [pira, sapa]
-  - id: e04
-    type: multiple_choice
-    question: ng prabowo?
-    question_meaning:
-      ar_eg: ng هنا معناها إيه؟
-      ar: ما معنى ng هنا؟
-      en: What does ng mean here?
-    options: ["yang (which)", "nang (to / at)", "ngapa (why)"]
-    answer: 1
-    explain:
-      ar_eg: ng في الشات الجاوي = nang / neng. yang الإندونيسي بيتكتب yg.
-      ar: ng في الدردشة الجاوية = nang / neng، أما yang الإندونيسية فتُختصر yg.
-      en: Javanese chat ng = nang / neng; Indonesian yang is yg.
-    words: [nang]
-  - id: e05
-    type: multiple_choice
-    question: gk
-    question_meaning:
-      ar_eg: في رسالة من صاحبك في سورابايا، gk معناها إيه؟
-      ar: في رسالة من صديقك في سورابايا، ما معنى gk؟
-      en: In a message from your Surabaya friend, what does gk mean?
-    options: ["jg (also)", "gak (no / not)", "ngapa (why)"]
-    answer: 1
-    explain:
-      ar_eg: gk = gak (Arek) = ora = tidak = لأ / مش.
-      ar: gk = gak (Arek) = ora = tidak = لا.
-      en: gk = gak (Arek) = ora = tidak.
-    words: [gak]
-  - id: e06
     type: listen
     text: Ora apa-apa.
-    options: ["Ora apa-apa.", "Wis apa durung?", "Arep apa?"]
+    options: [Ora apa-apa., 'Wis apa durung?', 'Arep apa?']
     answer: 0
     words: [ora apa-apa]
-  - id: e07
+  - id: e04
     type: fill_blank
-    sentence: "arp dicul piro → ___ diculké pira?"
+    sentence: arp dicul piro → ___ diculke pira?
     meaning:
       ar_eg: ناوي تبيعه بكام؟
       ar: بكم ستبيعه؟
       en: How much will you sell it for?
     answers: [arep]
     explain:
-      ar_eg: |-
-        arp = arep: الحروف المتحركة وقعت.
+      ar_eg: 'arp = arep: الحروف المتحركة وقعت.'
       ar: arp = arep بعد حذف الصوائت.
       en: arp = arep with the vowels dropped.
     words: [arep]
-  - id: e08
-    type: fill_blank
-    sentence: "ws mangan? → ___ mangan?"
-    meaning:
-      ar_eg: كلت؟
-      ar: هل أكلت؟
-      en: Have you eaten?
-    answers: [wis, Wis]
-    words: [wis]
-  - id: e09
-    type: fill_blank
-    sentence: "rapopo → ora ___"
-    meaning:
-      ar_eg: عادي، مفيش مشكلة
-      ar: لا بأس
-      en: no problem, it's fine
-    answers: [apa-apa]
-    words: [ora apa-apa]
-  - id: e10
-    type: build_sentence
-    source:
-      ar_eg: اكتب «wes mangan durung?» بالإملاء الرسمي (كلت ولا لسه؟)
-      ar: اكتب «wes mangan durung?» بالإملاء القياسي (هل أكلت أم ليس بعد؟)
-      en: Write "wes mangan durung?" in standard spelling (Have you eaten yet?)
-    answer: Wis mangan durung?
-    distractors: [sudah, ora]
-    words: [wis, mangan, durung]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: arp dicul piro
-    answers_meaning:
-      ar_eg: ["ناوي تبيعه بكام؟", "هتبيعه بكام؟", "عايز تبيعه بكام؟", "هتسيبه بكام؟"]
-      ar: ["بكم ستبيعه؟", "بكم تريد أن تبيعه؟", "بكم ستتركه؟"]
-      en: ["How much will you sell it for?", "How much are you selling it for?", "How much will you let it go for?", "How much do you want for it?"]
-    explain:
-      ar_eg: arp = arep (هـ)، dicul = diculké (يتساب / يتباع)، piro = pira (بكام).
-      ar: arp = arep، وdicul = diculké (يُطلق / يُباع)، وpiro = pira.
-      en: arp = arep, dicul = diculké (let go / sold), piro = pira.
-    words: [arep, diculké, pira]
-  - id: e12
+  - id: e05
     type: translate
     direction: from_target
     source_text: aku gk ngerti opo2
     answers_meaning:
-      ar_eg: ["أنا مش فاهم أي حاجة.", "مش فاهم حاجة", "أنا مش فاهم حاجة خالص", "مش فاهم أي حاجة"]
-      ar: ["لا أفهم شيئًا.", "لا أفهم أي شيء", "أنا لا أفهم شيئًا"]
-      en: ["I don't understand anything.", "I don't understand anything", "I understand nothing", "I don't get anything"]
+      ar_eg: [أنا مش فاهم أي حاجة., مش فاهم حاجة, أنا مش فاهم حاجة خالص, مش فاهم أي حاجة]
+      ar: [لا أفهم شيئًا., لا أفهم أي شيء, أنا لا أفهم شيئًا]
+      en: [I don't understand anything., I don't understand anything, I understand nothing, I don't get anything]
     words: [gak, ngerti, apa-apa]
-  - id: e13
-    type: dictation
-    text: Sek, aku lagi mangan.
-    meaning:
-      ar_eg: استنى، أنا باكل.
-      ar: انتظر، أنا آكل الآن.
-      en: Hold on, I'm eating.
-    words: [sek, lagi, mangan]
-  - id: e14
+  - id: e06
     type: speaking
     text: Ora apa-apa.
     meaning:
@@ -350,7 +260,7 @@ new_words:
     ar_eg: يفهم (= mengerti)
     ar: يفهم (= mengerti)
     en: to understand (= mengerti)
-  - word: diculké
+  - word: diculke
     pos: verb
     ar_eg: يتساب / يتباع (شات dicul)
     ar: يُطلق / يُباع (دردشة dicul)

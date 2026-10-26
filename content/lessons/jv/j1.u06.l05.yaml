@@ -1,0 +1,217 @@
+schema: kabar.lesson/v1
+id: j1.u06.l05
+language: jv
+title: Ulangan J1.6
+can_do:
+  ar_eg: توصف الطريق بالنغوكو.
+  ar: أن تصف الطريق بالنغوكو.
+  en: Give directions in ngoko.
+slides:
+  - title: Nang, saka, kene, kana
+    body:
+      ar_eg: |
+        مراجعة الوحدة:
+        - nang / neng (شات ng) = ke + di · saka (Arek teko) = dari.
+        - kene / kono / kana = sini / situ / sana.
+        - nang ngarep / mburi / jejere = قدام / ورا / جنب.
+        - lurus، ngiwa، nengen، terus = على طول، شمال، يمين، وبعدين.
+        - iki (ده، جنبي) · kuwi / iku (داك، جنبك) · kae (داك اللي هناك).
+        - بعد الاسم: omah iki = البيت ده.
+        - sing endi? = أنهي؟ · sing kae = اللي هناك · ngene / ngono = كده.
+      ar: |
+        مراجعة الوحدة:
+        - nang / neng (في الدردشة ng) = ke + di، وsaka (Arek teko) = dari.
+        - kene / kono / kana = sini / situ / sana.
+        - nang ngarep / mburi / jejere = أمام / خلف / بجانب.
+        - lurus وngiwa وnengen وterus = مباشرة، يسارًا، يمينًا، ثم.
+        - iki (هذا) · kuwi / iku (ذاك) · kae (ذلك البعيد).
+        - بعد الاسم: omah iki = هذا البيت.
+        - sing endi? = أيّها؟ · sing kae = ذلك الذي هناك · ngene / ngono = هكذا / كذلك.
+      en: |
+        Unit recap:
+        - nang / neng (chat ng) = ke + di · saka (Arek teko) = dari.
+        - kene / kono / kana = sini / situ / sana.
+        - nang ngarep / mburi / jejere = in front of / behind / next to.
+        - lurus, ngiwa, nengen, terus = straight, left, right, then.
+        - iki (this, by me) · kuwi / iku (that, by you) · kae (that over there).
+        - After the noun: omah iki = this house.
+        - sing endi? = which one? · sing kae = the one over there · ngene / ngono = like this / like that.
+    grammar: jv.preposition.place
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ngiwa
+        ar_eg: شمال (خش شمال)
+        ar: يسارًا
+        en: (turn) left
+      - text: nengen
+        ar_eg: يمين (خش يمين)
+        ar: يمينًا
+        en: (turn) right
+      - text: jejere
+        ar_eg: جنب
+        ar: بجانب
+        en: next to
+      - text: mburi
+        ar_eg: ورا
+        ar: خلف
+        en: behind
+      - text: kae
+        ar_eg: داك اللي هناك
+        ar: ذلك البعيد
+        en: that over there
+    words: [ngiwa, nengen, jejere, mburi, kae]
+  - id: e02
+    type: multiple_choice
+    question: ng prabowo?
+    question_meaning:
+      ar_eg: الرسالة دي معناها إيه؟
+      ar: ما معنى هذه الرسالة؟
+      en: What does this message mean?
+    options: ['Ngarep Prabowo?', 'Nang Prabowo?', 'Ngendi Prabowo?']
+    answer: 1
+    explain:
+      ar_eg: 'ng = nang / neng: «لبرابوو؟».'
+      ar: ng = nang / neng، أي «إلى برابوو؟».
+      en: 'ng = nang / neng: "To Prabowo?"'
+    words: [nang]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: صاحبك ماسك موبايل في إيده. تسأله «الموبايل ده بتاع مين؟» بأنهي اسم إشارة؟
+      ar: يمسك صديقك هاتفًا بيده. أيّ اسم إشارة تستعمل لتسأل عن هذا الهاتف؟
+      en: Your friend is holding a phone. Which pointer do you use to ask about that phone?
+    options: [iki, kae, kuwi]
+    answer: 2
+    explain:
+      ar_eg: الحاجة جنب اللي بتكلمه ⇐ kuwi (وفي سورابايا iku).
+      ar: ما كان عند المخاطب ⇐ kuwi (وفي سورابايا iku).
+      en: 'Near the person you''re talking to ⇒ kuwi (Surabaya: iku).'
+    words: [kuwi]
+  - id: e04
+    type: multiple_choice
+    question: Aku saka pasar.
+    question_meaning:
+      ar_eg: يعني إيه؟
+      ar: ما معناها؟
+      en: What does it mean?
+    options: [Saya dari pasar., Saya ke pasar., Saya di pasar.]
+    answer: 0
+    words: [saka]
+  - id: e05
+    type: listen
+    text: Omahku nang mburi masjid.
+    options: [Omahku nang mburi masjid., Omahku nang jejere masjid., Omahku nang ngarep masjid.]
+    answer: 0
+    words: [mburi]
+  - id: e06
+    type: fill_blank
+    sentence: Kowe saka ___?
+    meaning:
+      ar_eg: إنت منين؟
+      ar: من أين أنت؟
+      en: Where are you from?
+    answers: [ngendi, endi]
+    words: [saka, ngendi]
+  - id: e07
+    type: fill_blank
+    sentence: Omah ___ gedhe.
+    meaning:
+      ar_eg: البيت اللي هناك ده كبير. (بعيد)
+      ar: ذلك البيت هناك كبير. (بعيد)
+      en: That house over there is big. (far)
+    options: [kana, iki, kae]
+    answers: [kae]
+    explain:
+      ar_eg: بعد الاسم بييجي اسم الإشارة kae، مش ظرف المكان kana.
+      ar: يأتي بعد الاسم اسم الإشارة kae لا ظرف المكان kana.
+      en: After a noun comes the pointer kae, not the place word kana.
+    words: [kae]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: المحطة قدام السوق.
+      ar: المحطة أمام السوق.
+      en: The station is in front of the market.
+    answer: Stasiune nang ngarep pasar.
+    distractors: [mburi, saka]
+    words: [ngarep, nang]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: 'وصف الطريق: «على طول، وبعدين شمال. السوق جنب المحطة.»'
+      ar: 'صف الطريق: «امشِ مباشرة ثم يسارًا. السوق بجانب المحطة.»'
+      en: 'Give directions: "Go straight, then left. The market is next to the station."'
+    answers: ["Lurus wae, terus ngiwa. Pasare nang jejere stasiun.", "Lurus wae, terus ngiwa. Pasare nang jejere stasiun", "Lurus wae terus ngiwa. Pasare nang jejere stasiun.", "Lurus wae terus ngiwa. Pasare nang jejere stasiun", "Lurus, terus ngiwa. Pasare nang jejere stasiun.", "Lurus, terus ngiwa. Pasare nang jejere stasiun", "Lurus terus ngiwa. Pasare nang jejere stasiun.", "Lurus terus ngiwa. Pasare nang jejere stasiun", "Lurus wae, terus ngiwa. Pasare neng jejere stasiun.", "Lurus wae, terus ngiwa. Pasare neng jejere stasiun", "Lurus wae terus ngiwa. Pasare neng jejere stasiun.", "Lurus wae terus ngiwa. Pasare neng jejere stasiun", "Lurus, terus ngiwa. Pasare neng jejere stasiun.", "Lurus, terus ngiwa. Pasare neng jejere stasiun", "Lurus terus ngiwa. Pasare neng jejere stasiun.", "Lurus terus ngiwa. Pasare neng jejere stasiun", "Lurus wae, terus ngiwa. Pasar nang jejere stasiun.", "Lurus wae, terus ngiwa. Pasar nang jejere stasiun", "Lurus wae terus ngiwa. Pasar nang jejere stasiun.", "Lurus wae terus ngiwa. Pasar nang jejere stasiun", "Lurus wae, terus ngiwa. Pasar neng jejere stasiun.", "Lurus wae, terus ngiwa. Pasar neng jejere stasiun", "Lurus wae terus ngiwa. Pasar neng jejere stasiun.", "Lurus wae terus ngiwa. Pasar neng jejere stasiun"]
+    words: [lurus, ngiwa, jejere]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أنا هنا، جنب الجامع!
+      ar: أنا هنا، بجانب المسجد!
+      en: I'm here, next to the mosque!
+    answers: ["Aku nang kene, nang jejere masjid!", "Aku nang kene, nang jejere masjid", "Aku nang kene nang jejere masjid!", Aku nang kene nang jejere masjid, "Aku neng kene, neng jejere masjid!", "Aku neng kene, neng jejere masjid", "Aku neng kene neng jejere masjid!", Aku neng kene neng jejere masjid, "Aku nang kene, jejere masjid!", "Aku nang kene, jejere masjid", "Aku nang kene jejere masjid!", Aku nang kene jejere masjid, "Aku neng kene, jejere masjid!", "Aku neng kene, jejere masjid", "Aku neng kene jejere masjid!", Aku neng kene jejere masjid]
+    words: [kene, jejere]
+  - id: e11
+    type: dictation
+    text: Aku arep nang pasar.
+    meaning:
+      ar_eg: أنا رايح السوق.
+      ar: سأذهب إلى السوق.
+      en: I'm going to the market.
+    words: [nang]
+  - id: e12
+    type: speaking
+    text: Saka kene lurus wae, terus ngiwa.
+    meaning:
+      ar_eg: من هنا على طول، وبعدين شمال.
+      ar: من هنا امشِ مباشرة ثم يسارًا.
+      en: From here go straight, then left.
+    words: [saka, lurus, ngiwa]
+dialogue:
+  title: ng prabowo?
+  lines:
+    - speaker: Cak Heru
+      text: ng prabowo?
+      ar_eg: لبرابوو؟ (شات)
+      ar: إلى برابوو؟ (دردشة)
+      en: To Prabowo? (chat)
+    - speaker: Mohamed
+      text: Dudu, Cak. Aku arep nang kebun binatang.
+      ar_eg: لأ يا معلم. أنا رايح جنينة الحيوانات.
+      ar: لا يا أخي. سأذهب إلى حديقة الحيوان.
+      en: No, Cak. I'm going to the zoo.
+    - speaker: Cak Heru
+      text: Saka stasiun lurus wae, terus nengen.
+      ar_eg: من المحطة على طول، وبعدين يمين.
+      ar: من المحطة امشِ مباشرة ثم يمينًا.
+      en: From the station go straight, then right.
+    - speaker: Mohamed
+      text: Nang jejere terminal Joyoboyo, ta?
+      ar_eg: جنب موقف جويوبويو، مش كده؟
+      ar: بجانب موقف جويوبويو، أليس كذلك؟
+      en: Next to Joyoboyo terminal, right?
+    - speaker: Cak Heru
+      text: Iya, rek! Ati-ati, ya!
+      ar_eg: أيوه يا صاحبي! خلي بالك من نفسك!
+      ar: نعم يا صاح! انتبه لنفسك!
+      en: Yes, mate! Take care!
+souvenir:
+  id: j1.u06.souvenir
+  title: Kebun Binatang Surabaya
+  note:
+    ar_eg: |
+      جنينة حيوانات سورابايا في وونوكرومو، من أقدم جناين الحيوانات في إندونيسيا، وأهل البلد بيدلّعوها «Bonbin». الكومودو هناك نجم الزيارة.
+      ومن هنا اتعلمت إن «ng» في الشات ممكن تبقى nang أو neng، والسياق هو اللي بيقولك هي «لـ» ولا «في». دلوقتي تقدر تسأل عن أي مكان في سورابايا، وتفهم الرد كمان.
+    ar: |
+      تقع حديقة حيوان سورابايا في وونوكرومو، وهي من أقدم حدائق الحيوان في إندونيسيا، ويسمّيها أهل المدينة تحببًا «Bonbin»، والكومودو نجمها.
+      ومن هنا تعلّمتَ أن «ng» في الدردشة قد تكون nang أو neng، والسياق يبيّن أهي «إلى» أم «في». صرتَ الآن تسأل عن أي مكان في سورابايا وتفهم الجواب.
+    en: |
+      Surabaya Zoo in Wonokromo is one of Indonesia's oldest zoos; locals fondly call it "Bonbin", and its komodo dragons steal the show.
+      Here you learned that "ng" in a chat can be nang or neng, and context tells you whether it means "to" or "at". You can now ask your way anywhere in Surabaya, and follow the answer too.
+review:
+  status: draft
+  verified: false

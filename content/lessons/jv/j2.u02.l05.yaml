@@ -1,0 +1,207 @@
+schema: kabar.lesson/v1
+id: j2.u02.l05
+language: jv
+title: Ulangan J2.2
+can_do:
+  ar_eg: تطلب وجبة كاملة بالجاوي.
+  ar: أن تطلب وجبة كاملة بالجاوية.
+  en: Order a meal.
+slides:
+  - title: Ringkesan J2.2
+    body:
+      ar_eg: |
+        - N- = meN- من غير «me»: tulis → nulis، waca → maca، ombe → ngombe، gawe → nggawe، sapu → nyapu، kirim → ngirim، pikir → mikir (فكر)، jupuk → njupuk، bukak → mbukak.
+        - من غير N-: tuku، turu، lunga، teka، adus.
+        - مع di- / tak- الأصل بيرجع: diwaca، tak tulis.
+        - الطعم: enak، pedhes، legi، asin، kecut، pait، anyep + tenan / banget (بعد الصفة)، rada / kurang (قبلها).
+        - الطلب: Sega pecel siji, nganggo endhog. · Pedhes apa ora? · Mangan kene apa dibungkus? · Kabeh pira?
+      ar: |
+        - N- = meN- بلا «me»: tulis → nulis، waca → maca، ombe → ngombe، gawe → nggawe، sapu → nyapu، kirim → ngirim، pikir → mikir (فكر)، jupuk → njupuk، bukak → mbukak.
+        - بلا N-: tuku، turu، lunga، teka، adus.
+        - مع di- / tak- يعود الجذر: diwaca، tak tulis.
+        - الطعم: enak، pedhes، legi، asin، kecut، pait، anyep، مع tenan / banget بعد الصفة، وrada / kurang قبلها.
+        - الطلب: Sega pecel siji, nganggo endhog. · Pedhes apa ora? · Mangan kene apa dibungkus? · Kabeh pira?
+      en: |
+        - N- = meN- without "me": tulis → nulis, waca → maca, ombe → ngombe, gawe → nggawe, sapu → nyapu, kirim → ngirim, pikir → mikir (فكر), jupuk → njupuk, bukak → mbukak.
+        - No N-: tuku, turu, lunga, teka, adus.
+        - With di- / tak- the base returns: diwaca, tak tulis.
+        - Taste: enak, pedhes, legi, asin, kecut, pait, anyep + tenan / banget (after), rada / kurang (before).
+        - Ordering: Sega pecel siji, nganggo endhog. · Pedhes apa ora? · Mangan kene apa dibungkus? · Kabeh pira?
+    grammar: jv.prefix.nasal
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: mikir
+        ar_eg: يفكر
+        ar: يفكر
+        en: think
+      - text: njupuk
+        ar_eg: ياخد
+        ar: يأخذ
+        en: take
+      - text: ngirim
+        ar_eg: يبعت
+        ar: يرسل
+        en: send
+      - text: anyep
+        ar_eg: ماسخ
+        ar: بلا طعم
+        en: bland
+      - text: kecut
+        ar_eg: حامض
+        ar: حامض
+        en: sour
+    words: [mikir, njupuk, ngirim, anyep, kecut]
+  - id: e02
+    type: multiple_choice
+    question: N- + pangan → ?
+    question_meaning:
+      ar_eg: حط N- على pangan (أكل). تبقى إيه؟
+      ar: أضف N- إلى pangan (طعام). ما الناتج؟
+      en: Put N- on pangan (food). What do you get?
+    options: [ngpangan, mangan, nangan]
+    answer: 1
+    explain:
+      ar_eg: 'p بتتحول m: pangan → mangan.'
+      ar: 'تتحول p إلى m: pangan → mangan.'
+      en: 'p becomes m: pangan → mangan.'
+    words: [mangan]
+  - id: e03
+    type: multiple_choice
+    question: nyapu ← ?
+    question_meaning:
+      ar_eg: nyapu جاية من أنهي أصل؟
+      ar: من أي جذر جاءت nyapu؟
+      en: Which base does nyapu come from?
+    options: [sapu, papu, tapu]
+    answer: 0
+    explain:
+      ar_eg: ny- جاية من s أو c. tapu كانت هتبقى napu، وpapu كانت هتبقى mapu.
+      ar: ny- تأتي من s أو c، أما tapu فتصير napu، وpapu تصير mapu.
+      en: ny- comes from s or c; tapu would give napu, papu would give mapu.
+    words: [nyapu]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الشوربة ناقصها ملح. تقول إيه؟
+      ar: الحساء ينقصه ملح. ماذا تقول؟
+      en: The soup needs salt. What do you say?
+    options: [Rada legi., Kurang asin., Asin banget.]
+    answer: 1
+    words: [kurang, asin]
+  - id: e05
+    type: listen
+    text: Mangan kene apa dibungkus?
+    options: ['Pedhes apa ora?', 'Mangan kene apa dibungkus?', Mangan kene wae.]
+    answer: 1
+    words: [kene, dibungkus]
+  - id: e06
+    type: fill_blank
+    sentence: Bukune wis tak ___.
+    meaning:
+      ar_eg: الكتاب أنا قريته خلاص.
+      ar: الكتاب قرأتُه.
+      en: I've read the book.
+    options: [maca, waca]
+    answers: [waca]
+    explain:
+      ar_eg: بعد tak الفعل بيرجع لأصله waca.
+      ar: بعد tak يعود الفعل إلى جذره waca.
+      en: After tak the verb goes back to its base, waca.
+    words: [waca, tak]
+  - id: e07
+    type: fill_blank
+    sentence: Aku lagi ___ teh anget.
+    meaning:
+      ar_eg: أنا بشرب شاي دافي.
+      ar: أنا أشرب شايًا دافئًا.
+      en: I'm drinking warm tea.
+    answers: [ngombe]
+    words: [ngombe, teh anget]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: ماما بتعمل صوص البيتشل.
+      ar: أمي تصنع صلصة البيتشل.
+      en: Mum is making pecel sauce.
+    answer: Ibu lagi nggawe sambel pecel.
+    distractors: [gawe, maca]
+    words: [nggawe, sambel, pecel]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: واحد رز بيتشل بالبيض يا طنط.
+      ar: طبق أرز بيتشل واحد بالبيض يا سيدتي.
+      en: One pecel rice with egg, ma'am.
+    answers: ['Sega pecel siji, nganggo endhog, Bu.', 'Sega pecel siji, nganggo endhog, Bu', 'Sega pecel siji nganggo endhog, Bu.', 'Sega pecel siji nganggo endhog, Bu', 'Sego pecel siji, nganggo endhog, Bu.', 'Sego pecel siji, nganggo endhog, Bu', 'Sego pecel siji nganggo endhog, Bu.', 'Sego pecel siji nganggo endhog, Bu', Sega pecel siji nganggo endhog., Sega pecel siji nganggo endhog]
+    words: [sega, pecel, nganggo, endhog]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Kopine kurang legi.
+    answers_meaning:
+      ar_eg: [القهوة عايزة سكر., القهوة ناقصها سكر, القهوة مش مسكرة كفاية]
+      ar: [القهوة ينقصها سكر., القهوة ليست حلوة بما يكفي]
+      en: [The coffee isn't sweet enough., The coffee needs more sugar, The coffee isn't sweet enough]
+    words: [kurang, legi]
+  - id: e11
+    type: dictation
+    text: Aku lagi ngirim layang.
+    meaning:
+      ar_eg: أنا ببعت جواب.
+      ar: أنا أرسل رسالة.
+      en: I'm sending a letter.
+    words: [ngirim, layang]
+  - id: e12
+    type: speaking
+    text: Kabeh pira, Bu? Enak tenan!
+    meaning:
+      ar_eg: الحساب كام يا طنط؟ حلو بجد!
+      ar: كم الحساب يا سيدتي؟ لذيذ حقًا!
+      en: How much altogether, ma'am? Really tasty!
+    words: [kabeh, pira, enak, tenan]
+dialogue:
+  title: Mohamed pesen dhewe
+  lines:
+    - speaker: Bu Darmi
+      text: Mas Mohamed! Pesen apa?
+      ar_eg: أستاذ محمد! هتطلب إيه؟
+      ar: أخي محمد! ماذا تطلب؟
+      en: Mas Mohamed! What are you having?
+    - speaker: Mohamed
+      text: Sega pecel siji, nganggo endhog. Pedhes, Bu!
+      ar_eg: واحد رز بيتشل بالبيض. حرّاق يا طنط!
+      ar: طبق أرز بيتشل بالبيض. حارًّا يا سيدتي!
+      en: One pecel rice with egg. Spicy, ma'am!
+    - speaker: Bu Darmi
+      text: Pedhes? Tenan?
+      ar_eg: حرّاق؟ بجد؟
+      ar: حارًّا؟ حقًا؟
+      en: Spicy? Really?
+    - speaker: Mohamed
+      text: Iya, Bu. Aku seneng sing pedhes.
+      ar_eg: أيوه يا طنط. أنا بحب الحرّاق.
+      ar: نعم يا سيدتي. أحب الطعام الحارّ.
+      en: Yes, ma'am. I like it spicy.
+    - speaker: Bu Darmi
+      text: Wah, apik! Mangan kene apa dibungkus?
+      ar_eg: الله! هتاكل هنا ولا تيك أواي؟
+      ar: رائع! تأكل هنا أم سفري؟
+      en: Great! Eating here or take away?
+    - speaker: Mohamed
+      text: Mangan kene, Bu. Karo es teh legi.
+      ar_eg: هاكل هنا يا طنط. ومعاه شاي بتلج مسكّر.
+      ar: سآكل هنا يا سيدتي، ومعه شاي مثلّج حلو.
+      en: Eating here, ma'am. With a sweet iced tea.
+souvenir:
+  id: j2.u02.souvenir
+  title: Nasi pecel Madiun
+  note:
+    ar_eg: 'ماديون هي بيت الـ nasi pecel: خضار مسلوقة عليها صوص فول سوداني، وتيمبيه وrempeyek مقرمش، وساعات بتتقدم على ورقة شجر الساج (godhong jati) بدل الطبق. لما تقول للبياعة «Pedhes, Bu!» هتعرف إنك بقيت من أهل البيت. ومعاك دلوقتي طلبك كامل بالجاوي، بالهنا والشفا!'
+    ar: 'ماديون موطن الـ nasi pecel: خضار مسلوقة بصلصة الفول السوداني، مع التمبيه ورقائق rempeyek المقرمشة، وقد يُقدَّم على ورقة شجر الساج (godhong jati) بدل الطبق. وحين تقول للبائعة «Pedhes, Bu!» تكون قد صرت من أهل المكان. صار طلبك كله بالجاوية، فهنيئًا مريئًا!'
+    en: Madiun is the home of nasi pecel — boiled greens under peanut sauce, with tempeh and crunchy rempeyek, sometimes served on a teak leaf (godhong jati) instead of a plate. Say "Pedhes, Bu!" to the seller and you'll feel like a local. You can now order a whole meal in Javanese — enjoy it!
+review:
+  status: draft
+  verified: false

@@ -4,8 +4,7 @@ language: jv
 title: Jawa apa Indonesia?
 can_do:
   ar_eg: تعرف كل كلمة جاوي ولا إندونيسي.
-  ar: |-
-    أن تحدد لغة كل كلمة: جاوية أم إندونيسية.
+  ar: 'أن تحدد لغة كل كلمة: جاوية أم إندونيسية.'
   en: Tag each word's language.
 slides:
   - title: Basa campur
@@ -34,17 +33,17 @@ slides:
       ar_eg: |
         الكلمات دي بتقولك فورًا «ده جاوي»:
         - ora ↔ tidak · wis ↔ sudah · durung ↔ belum · arep ↔ mau / akan
-        - piye ↔ bagaimana · kowé ↔ kamu · mangan ↔ makan
+        - piye ↔ bagaimana · kowe ↔ kamu · mangan ↔ makan
         وgak؟ هي Arek، بس كمان إندونيسي عامي (Jakarta)، فلوحدها دليل ضعيف.
       ar: |
         هذه الكلمات تدل فورًا على الجاوية:
         - ora ↔ tidak · wis ↔ sudah · durung ↔ belum · arep ↔ mau / akan
-        - piye ↔ bagaimana · kowé ↔ kamu · mangan ↔ makan
+        - piye ↔ bagaimana · kowe ↔ kamu · mangan ↔ makan
         أما gak فمن Arek، لكنها في العامية الإندونيسية أيضًا، فدلالتها وحدها ضعيفة.
       en: |
         These words shout "Javanese":
         - ora ↔ tidak · wis ↔ sudah · durung ↔ belum · arep ↔ mau / akan
-        - piye ↔ bagaimana · kowé ↔ kamu · mangan ↔ makan
+        - piye ↔ bagaimana · kowe ↔ kamu · mangan ↔ makan
         And gak? It's Arek — but also casual Indonesian (Jakarta), so on its own it's a weak clue.
     grammar: jv.marker.vs-indonesian
     examples:
@@ -146,7 +145,7 @@ exercises:
       ar_eg: الجملة دي جاوي ولا إندونيسي؟
       ar: هذه الجملة جاوية أم إندونيسية؟
       en: Is this sentence Javanese or Indonesian?
-    options: ["Basa Indonesia", "Basa Jawa"]
+    options: [Basa Indonesia, Basa Jawa]
     answer: 0
     explain:
       ar_eg: aku وlagi وkok مشتركين. الدليل makan — بالجاوي mangan.
@@ -154,123 +153,26 @@ exercises:
       en: aku, lagi and kok are shared; the clue is makan (Javanese says mangan).
     words: [mangan]
   - id: e03
-    type: multiple_choice
-    question: Aku durung turu.
-    question_meaning:
-      ar_eg: الجملة دي جاوي ولا إندونيسي؟
-      ar: هذه الجملة جاوية أم إندونيسية؟
-      en: Is this sentence Javanese or Indonesian?
-    options: ["Basa Indonesia", "Basa Jawa"]
-    answer: 1
-    explain:
-      ar_eg: durung (= belum) وturu (= tidur) جاوي.
-      ar: durung (= belum) وturu (= tidur) جاويتان.
-      en: durung (= belum) and turu (= tidur) are Javanese.
-    words: [durung, turu]
-  - id: e04
-    type: multiple_choice
-    question: Aku lagi nang omah.
-    question_meaning:
-      ar_eg: أنهي كلمة بتقولك إن الجملة جاوي؟
-      ar: أيّ كلمة تدل على أن الجملة جاوية؟
-      en: Which word tells you the sentence is Javanese?
-    options: ["lagi", "aku", "nang"]
-    answer: 2
-    explain:
-      ar_eg: aku وlagi مشتركين، لكن nang (= di) جاوي. (وomah = rumah كمان جاوي.)
-      ar: aku وlagi مشتركتان، أما nang (= di) فجاوية، وكذلك omah.
-      en: aku and lagi are shared; nang (= di) is Javanese (so is omah = rumah).
-    words: [nang]
-  - id: e05
     type: listen
     text: Aku ora ngerti.
-    options: ["Aku wis ngerti.", "Aku ora ngerti.", "Aku tidak mengerti."]
+    options: [Aku wis ngerti., Aku ora ngerti., Aku tidak mengerti.]
     answer: 1
     words: [ora, ngerti]
-  - id: e06
+  - id: e04
     type: fill_blank
     sentence: Aku nang pasar ___ ibuku.
     meaning:
       ar_eg: أنا في السوق مع ماما. (جاوي من غير خلط)
       ar: أنا في السوق مع أمي. (جاوية خالصة)
       en: I'm at the market with my mum. (clean Javanese)
-    options: ["karo", "dengan", "sama"]
+    options: [karo, dengan, sama]
     answers: [karo]
     explain:
       ar_eg: sama وdengan إندونيسي. الشات بيخلط كتير، بس الجاوي النضيف karo.
       ar: sama وdengan إندونيسيتان، والجاوية الخالصة karo وإن كثر الخلط في الدردشة.
       en: sama and dengan are Indonesian; chats mix freely, but clean ngoko uses karo.
     words: [karo]
-  - id: e07
-    type: fill_blank
-    sentence: ___ abang regane pira?
-    meaning:
-      ar_eg: الأحمر بكام؟
-      ar: بكم الأحمر؟
-      en: How much is the red one?
-    options: ["Yang", "Sing"]
-    answers: [Sing]
-    explain:
-      ar_eg: sing = yang، وباقي الجملة جاوي (abang، regane، pira).
-      ar: sing = yang، وبقية الجملة جاوية (abang، regane، pira).
-      en: sing = yang, and the rest is Javanese (abang, regane, pira).
-    words: [sing, abang]
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: أنا في السوق مع ماما. (بالجاوي)
-      ar: أنا في السوق مع أمي. (بالجاوية)
-      en: I'm at the market with my mum. (in Javanese)
-    answer: Aku lagi nang pasar karo ibuku.
-    distractors: [di, sama]
-    words: [lagi, nang, karo]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا مش فاهم. (بالجاوي)
-      ar: لا أفهم. (بالجاوية)
-      en: I don't understand. (in Javanese)
-    answers:
-      - Aku ora ngerti.
-      - Aku ora ngerti
-      - Aku ra ngerti.
-      - Aku ra ngerti
-      - Aku gak ngerti.
-      - Aku gak ngerti
-      - Aku gk ngerti
-    explain:
-      ar_eg: ora = tidak، ngerti = mengerti. وفي سورابايا gak.
-      ar: ora = tidak، وngerti = mengerti، وفي سورابايا gak.
-      en: ora = tidak, ngerti = mengerti; Surabaya says gak.
-    words: [ora, ngerti]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: فيه قهوة؟ (بالجاوي)
-      ar: هل توجد قهوة؟ (بالجاوية)
-      en: Is there any coffee? (in Javanese)
-    answers: ["Ana kopi?", "Ana kopi", "Kopi ana?", "Kopine ana?", "Onok kopi?"]
-    explain:
-      ar_eg: ana = ada. (وفي سورابايا onok.)
-      ar: ana = ada، وفي سورابايا onok.
-      en: ana = ada (Surabaya onok).
-    words: [ana]
-  - id: e11
-    type: translate
-    direction: from_target
-    source_text: Wis tekan durung?
-    answers_meaning:
-      ar_eg: ["وصلت ولا لسه؟", "وصلت ولا لسه", "إنت وصلت ولا لسه؟", "وصلت؟"]
-      ar: ["هل وصلت أم ليس بعد؟", "هل وصلت؟", "أوصلت أم لا بعد؟"]
-      en: ["Have you arrived yet?", "Have you arrived or not yet?", "Arrived yet?", "Are you there yet?"]
-    explain:
-      ar_eg: زي الإندونيسي «Sudah sampai belum?» بالظبط، بس wis وtekan وdurung جاوي.
-      ar: تقابل الإندونيسية «Sudah sampai belum?»، وwis وtekan وdurung جاوية.
-      en: Exactly Indonesian "Sudah sampai belum?" — wis, tekan and durung are the Javanese markers.
-    words: [wis, tekan, durung]
-  - id: e12
+  - id: e05
     type: dictation
     text: Sing abang regane pira?
     meaning:
@@ -278,7 +180,7 @@ exercises:
       ar: بكم الأحمر؟
       en: How much is the red one?
     words: [sing, abang, rega, pira]
-  - id: e13
+  - id: e06
     type: speaking
     text: Aku lagi nang pasar karo ibuku.
     meaning:
@@ -340,11 +242,6 @@ new_words:
     ar_eg: أحمر (= merah)
     ar: أحمر (= merah)
     en: red (= merah)
-  - word: apa
-    pos: conjunction
-    ar_eg: ولا (في السؤال، = atau)
-    ar: أم (في السؤال، = atau)
-    en: or (in questions, = atau)
 review:
   status: draft
   verified: false

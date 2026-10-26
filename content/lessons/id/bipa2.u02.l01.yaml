@@ -1,11 +1,11 @@
 schema: kabar.lesson/v1
 id: bipa2.u02.l01
 language: id
-title: Penulis, pelukis, pedagang
+title: Penulis, pelukis, penari
 can_do:
-  ar_eg: تسمّي المهن بالبادئة peN- (كاتب، رسام، تاجر).
-  ar: أن تسمّي المهن باستعمال البادئة peN-.
-  en: Name professions with peN-.
+  ar_eg: تسمّي الناس بشغلهم بـ peN-.
+  ar: أن تسمي الناس بحسب عملهم بـ peN-.
+  en: Name people by what they do with peN-.
 slides:
   - title: peN- = فاعل
     body:
@@ -56,61 +56,14 @@ slides:
         - peng- before k, g, h and vowels (k drops): pengunjung (visitor)
     grammar: id.prefix.peng.agent
     examples:
-      - text: Mas Ardi pemandu wisata di Ubud.
-        ar_eg: ماس أردي مرشد سياحي في أوبود.
-        ar: ماس أردي مرشد سياحي في أوبود.
-        en: Mas Ardi is a tour guide in Ubud.
+      - text: Mas Rizal pemandu wisata di Ubud.
+        ar_eg: ماس ريزال مرشد سياحي في أوبود.
+        ar: ماس ريزال مرشد سياحي في أوبود.
+        en: Mas Rizal is a tour guide in Ubud.
       - text: Penari itu cantik sekali.
         ar_eg: الراقصة دي حلوة أوي.
         ar: تلك الراقصة جميلة جدًا.
         en: That dancer is very beautiful.
-  - title: ber- → pe-
-    body:
-      ar_eg: |
-        مع أفعال ber- غالبًا بتبقى pe- بس من غير تغيير:
-        berdagang (يتاجر) → pedagang (تاجر)
-        bertani (يزرع) → petani (فلاح)
-        belajar (يتعلم) → pelajar (تلميذ)
-      ar: |
-        ومع أفعال ber- تأتي غالبًا pe- دون تغيير:
-        berdagang → pedagang (تاجر)
-        bertani → petani (فلاح)
-        belajar → pelajar (تلميذ)
-      en: |
-        With ber- verbs it's usually plain pe-:
-        berdagang (to trade) → pedagang (trader)
-        bertani (to farm) → petani (farmer)
-        belajar (to study) → pelajar (pupil)
-    grammar: id.prefix.peng.agent
-    examples:
-      - text: Ibu Wayan pedagang di Pasar Badung.
-        ar_eg: والدة وايان تاجرة في سوق بادونج.
-        ar: والدة وايان تاجرة في سوق بادونغ.
-        en: Wayan's mother is a trader at Badung Market.
-      - text: Ayah saya petani.
-        ar_eg: أبويا فلاح.
-        ar: أبي فلاح.
-        en: My father is a farmer.
-  - title: Apa pekerjaan Anda?
-    body:
-      ar_eg: |
-        مش كل المهن بـ peN-: guru (مدرس)، dokter (دكتور)، sopir (سواق) كلمات عادية.
-        السؤال: Apa pekerjaan Anda? = بتشتغل إيه؟
-        والرد سهل: Saya penulis. = أنا كاتب. (مفيش «يكون» في الإندونيسي.)
-      ar: |
-        ليست كل المهن بـ peN-: guru (معلم)، dokter (طبيب)، sopir (سائق).
-        السؤال: Apa pekerjaan Anda؟ = ما عملك؟
-        والجواب: Saya penulis. = أنا كاتب.
-      en: |
-        Not every job uses peN-: guru (teacher), dokter (doctor), sopir (driver) are plain words.
-        Ask: Apa pekerjaan Anda? = What do you do?
-        Answer: Saya penulis. = I'm a writer. (No "to be" needed.)
-    grammar: id.prefix.peng.agent
-    examples:
-      - text: Apa pekerjaan Anda? — Saya pemandu wisata.
-        ar_eg: بتشتغل إيه؟ — أنا مرشد سياحي.
-        ar: ما عملك؟ — أنا مرشد سياحي.
-        en: What do you do? — I'm a tour guide.
 exercises:
   - id: e01
     type: match_pairs
@@ -139,46 +92,27 @@ exercises:
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: menjual = بيبيع. الشخص اللي بيبيع اسمه إيه؟
-      ar: menjual = يبيع. ما اسم من يبيع؟
-      en: menjual = to sell. What do you call the person who sells?
-    options: ["penjual", "pejual", "pemjual"]
-    answer: 0
-    explain:
-      ar_eg: j بتاخد pen-، زي menjual بالظبط.
-      ar: مع j تأتي pen-، كما في menjual.
-      en: j takes pen-, just like menjual.
-    words: [penjual]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
       ar_eg: membaca = بيقرا. القارئ اسمه إيه؟
       ar: membaca = يقرأ. ما اسم القارئ؟
       en: membaca = to read. What is a reader?
-    options: ["pebaca", "penbaca", "pembaca"]
+    options: [pebaca, penbaca, pembaca]
     answer: 2
     words: [pembaca]
-  - id: e04
-    type: listen
-    text: Ibu Wayan pedagang di pasar.
-    options: ["Ibu Wayan penari di pasar.", "Ibu Wayan petani di pasar.", "Ibu Wayan pedagang di pasar."]
-    answer: 2
-    words: [pedagang]
-  - id: e05
+  - id: e03
     type: fill_blank
     sentence: Orang yang menulis buku adalah ___.
     meaning:
       ar_eg: الشخص اللي بيكتب كتب اسمه كاتب.
       ar: من يكتب الكتب يُسمّى كاتبًا.
       en: A person who writes books is a writer.
-    options: ["petulis", "menulis", "penulis"]
+    options: [petulis, menulis, penulis]
     answers: [penulis]
     explain:
-      ar_eg: "زي menulis: t بتقع وتبقى pen-."
-      ar: "كما في menulis: تسقط t وتصير pen-."
+      ar_eg: 'زي menulis: t بتقع وتبقى pen-.'
+      ar: 'كما في menulis: تسقط t وتصير pen-.'
       en: As in menulis, t drops and it becomes pen-.
     words: [penulis]
-  - id: e06
+  - id: e04
     type: fill_blank
     sentence: Orang yang melukis adalah ___.
     meaning:
@@ -187,56 +121,16 @@ exercises:
       en: (Type the word.) A person who paints is a painter.
     answers: [pelukis]
     words: [pelukis]
-  - id: e07
-    type: fill_blank
-    sentence: Mas Ardi ___ wisata. Dia memandu turis di Ubud setiap hari.
-    meaning:
-      ar_eg: (اكتب الكلمة) ماس أردي مرشد سياحي. بيرشد السياح في أوبود كل يوم.
-      ar: (اكتب الكلمة) ماس أردي مرشد سياحي، يرشد السياح في أوبود كل يوم.
-      en: (Type the word.) Mas Ardi is a tour guide. He guides tourists in Ubud every day.
-    answers: [pemandu]
-    explain:
-      ar_eg: memandu (بيرشد) → pemandu (مرشد).
-      ar: memandu (يرشد) → pemandu (مرشد).
-      en: memandu (to guide) → pemandu (guide).
-    words: [pemandu, turis]
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: أبويا فلاح في بالي.
-      ar: أبي مزارع في بالي.
-      en: My father is a farmer in Bali.
-    answer: Ayah saya petani di Bali.
-    distractors: [bertani, penari]
-    words: [petani]
-  - id: e09
+  - id: e05
     type: translate
     direction: to_target
     source_meaning:
       ar_eg: هي مغنية.
       ar: هي مغنّية.
       en: She is a singer.
-    answers:
-      - Dia penyanyi.
-      - Dia penyanyi
-      - Dia seorang penyanyi.
-      - Dia adalah penyanyi.
-      - Ia penyanyi.
+    answers: [Dia penyanyi., Dia penyanyi, Dia seorang penyanyi., Dia adalah penyanyi., Ia penyanyi.]
     words: [penyanyi]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Banyak pengunjung datang ke Ubud.
-    answers_meaning:
-      ar_eg: ["زوار كتير بييجوا أوبود", "فيه زوار كتير بييجوا أوبود"]
-      ar: ["يأتي زوار كثيرون إلى أوبود", "كثير من الزوار يأتون إلى أوبود"]
-      en: ["Many visitors come to Ubud.", "Lots of visitors come to Ubud."]
-    explain:
-      ar_eg: kunjung (زيارة) → pengunjung = زائر. k بتقع زي mengunjungi.
-      ar: kunjung → pengunjung = زائر، وتسقط k كما في mengunjungi.
-      en: kunjung (visit) → pengunjung (visitor); k drops as in mengunjungi.
-    words: [pengunjung]
-  - id: e11
+  - id: e06
     type: dictation
     text: Pelukis itu tinggal di Ubud.
     meaning:
@@ -244,7 +138,7 @@ exercises:
       ar: ذلك الرسام يسكن في أوبود.
       en: That painter lives in Ubud.
     words: [pelukis]
-  - id: e12
+  - id: e07
     type: speaking
     text: Kakak saya penari, dan adik saya pelukis.
     meaning:
@@ -253,33 +147,27 @@ exercises:
       en: My older sister is a dancer, and my younger brother is a painter.
     words: [penari, pelukis]
 dialogue:
-  title: Di Pasar Badung
   lines:
-    - speaker: Dimas
-      text: Mohamed, ini teman saya, Wayan. Dia pelukis.
-      ar_eg: يا محمد، ده صاحبي وايان. هو رسام.
-      ar: يا محمد، هذا صديقي وايان، وهو رسّام.
-      en: Mohamed, this is my friend Wayan. He's a painter.
     - speaker: Mohamed
-      text: Wah, pelukis! Saya suka lukisan Bali.
-      ar_eg: الله، رسام! أنا بحب اللوحات البالية.
-      ar: رائع، رسّام! أنا أحب اللوحات البالية.
-      en: Wow, a painter! I love Balinese paintings.
-    - speaker: Wayan
-      text: Terima kasih. Ibu saya pedagang di pasar ini.
-      ar_eg: شكرًا. أمي تاجرة في السوق ده.
-      ar: شكرًا. أمي تاجرة في هذا السوق.
-      en: Thank you. My mother is a trader in this market.
+      text: Rina, siapa penulis buku ini?
+      ar_eg: رينا، مين كاتب الكتاب ده؟
+      ar: رينا، من كاتب هذا الكتاب؟
+      en: Rina, who's the author of this book?
+    - speaker: Rina
+      text: Penulisnya orang Bali. Dia juga pelukis.
+      ar_eg: الكاتب من بالي. وهو رسام كمان.
+      ar: الكاتب من بالي. وهو رسام أيضًا.
+      en: The author is Balinese. He's a painter too.
     - speaker: Mohamed
-      text: Dan kamu, Dimas? Apa pekerjaanmu?
-      ar_eg: وإنت يا ديماس؟ بتشتغل إيه؟
-      ar: وأنت يا ديماس؟ ما عملك؟
-      en: And you, Dimas? What do you do?
-    - speaker: Dimas
-      text: Saya pemandu wisata. Banyak pengunjung dari Mesir juga!
-      ar_eg: أنا مرشد سياحي. وفيه زوار كتير من مصر كمان!
-      ar: أنا مرشد سياحي، ويأتي زوار كثيرون من مصر أيضًا!
-      en: I'm a tour guide. Lots of visitors from Egypt, too!
+      text: Wah! Lukisannya bagus?
+      ar_eg: الله! لوحاته حلوة؟
+      ar: رائع! هل لوحاته جميلة؟
+      en: Wow! Are his paintings good?
+    - speaker: Rina
+      text: Bagus sekali. Istrinya penari terkenal.
+      ar_eg: حلوة قوي. ومراته راقصة مشهورة.
+      ar: جميلة جدًّا. وزوجته راقصة مشهورة.
+      en: Very good. His wife is a famous dancer.
 new_words:
   - word: penulis
     pos: noun
@@ -306,41 +194,6 @@ new_words:
     ar_eg: مغني / مغنية
     ar: مغنٍّ
     en: singer
-  - word: penjual
-    pos: noun
-    ar_eg: بيّاع
-    ar: بائع
-    en: seller
-  - word: pedagang
-    pos: noun
-    ar_eg: تاجر
-    ar: تاجر
-    en: trader, merchant
-  - word: petani
-    pos: noun
-    ar_eg: فلاح
-    ar: مزارع
-    en: farmer
-  - word: pemandu wisata
-    pos: noun
-    ar_eg: مرشد سياحي
-    ar: مرشد سياحي
-    en: tour guide
-  - word: pengunjung
-    pos: noun
-    ar_eg: زائر
-    ar: زائر
-    en: visitor
-  - word: pekerjaan
-    pos: noun
-    ar_eg: شغل، شغلانة
-    ar: عمل، وظيفة
-    en: job, work
-  - word: turis
-    pos: noun
-    ar_eg: سايح
-    ar: سائح
-    en: tourist
   - word: lukisan
     pos: noun
     ar_eg: لوحة

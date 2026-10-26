@@ -39,21 +39,21 @@ slides:
       ar_eg: |
         piye (= bagaimana) في الكراما **kados pundi**، وفي الكلام اليومي الأقصر **pripun**. الاتنين صح؛ pripun هتسمعها أكتر في السوق والشارع.
         - Pripun kabaripun? = أخبار حضرتك إيه؟ (Bagaimana kabarnya?) — وkabar جاية من العربي «خبر»!
-        - الرد: Saé, matur nuwun. = كويس، شكرًا. (saé = apik / baik)
-        - Batik menika pripun? — Saé sanget! = الباتيك ده إيه رأيك فيه؟ — حلو جدًا! (sanget = banget)
+        - الرد: Sae, matur nuwun. = كويس، شكرًا. (sae = apik / baik)
+        - Batik menika pripun? — Sae sanget! = الباتيك ده إيه رأيك فيه؟ — حلو جدًا! (sanget = banget)
       ar: |
         piye (= bagaimana) في الكراما **kados pundi**، وفي الكلام اليومي الأقصر **pripun**، وكلاهما صحيح، وpripun أكثر سماعًا في السوق والشارع.
         - Pripun kabaripun? = كيف حالكم؟ (Bagaimana kabarnya?)، وkabar من العربية «خبر».
-        - والجواب: Saé, matur nuwun. = بخير، شكرًا. (saé = apik / baik)
-        - Batik menika pripun? — Saé sanget! = ما رأيك في هذا الباتيك؟ — جميل جدًا! (sanget = banget)
+        - والجواب: Sae, matur nuwun. = بخير، شكرًا. (sae = apik / baik)
+        - Batik menika pripun? — Sae sanget! = ما رأيك في هذا الباتيك؟ — جميل جدًا! (sanget = banget)
       en: |
         piye (= bagaimana) is **kados pundi** in krama; in everyday speech the shorter **pripun**. Both are right; you'll hear pripun more at the market and in the street.
         - Pripun kabaripun? = How are you? (Bagaimana kabarnya?) — and kabar is Arabic «خبر»!
-        - Answer: Saé, matur nuwun. = Fine, thank you. (saé = apik / baik)
-        - Batik menika pripun? — Saé sanget! = How's this batik? — Very nice! (sanget = banget)
+        - Answer: Sae, matur nuwun. = Fine, thank you. (sae = apik / baik)
+        - Batik menika pripun? — Sae sanget! = How's this batik? — Very nice! (sanget = banget)
     grammar: jv.krama.questions
     examples:
-      - text: Pripun kabaripun? — Saé, matur nuwun.
+      - text: Pripun kabaripun? — Sae, matur nuwun.
         ar_eg: أخبار حضرتك إيه؟ — كويس، شكرًا.
         ar: كيف حالكم؟ — بخير، شكرًا.
         en: How are you? — Fine, thank you.
@@ -123,169 +123,65 @@ slides:
     grammar: jv.krama.questions
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: pinten
-        ar_eg: كام (berapa)
-        ar: كم (berapa)
-        en: how much / how many (berapa)
-      - text: pripun
-        ar_eg: إزاي (bagaimana)
-        ar: كيف (bagaimana)
-        en: how (bagaimana)
-      - text: kenging menapa
-        ar_eg: ليه (kenapa)
-        ar: لماذا (kenapa)
-        en: why (kenapa)
-      - text: kapan
-        ar_eg: إمتى (kapan)
-        ar: متى (kapan)
-        en: when (kapan)
-    words: [pinten, pripun, kenging menapa, kapan]
-  - id: e02
     type: multiple_choice
     question_meaning:
       ar_eg: إيه نسخة الكراما من piye؟
       ar: ما صورة الكراما من piye؟
       en: What is the krama form of piye?
-    options: ["kenging menapa", "kados pundi", "pinten"]
+    options: [kenging menapa, kados pundi, pinten]
     answer: 1
     explain:
       ar_eg: piye → kados pundi (وفي الكلام pripun). pinten = كام، kenging menapa = ليه.
       ar: piye → kados pundi (وفي الكلام pripun)، وpinten = كم، وkenging menapa = لماذا.
       en: piye → kados pundi (spoken pripun). pinten = how much, kenging menapa = why.
     words: [kados pundi]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي كلمة مابتتغيرش بين النغوكو والكراما؟
-      ar: أي كلمة لا تتغير بين النغوكو والكراما؟
-      en: Which question word is the same in ngoko and krama?
-    options: ["sinten", "kapan", "pinten"]
-    answer: 1
-    explain:
-      ar_eg: kapan هي هي في الاتنين (وفي الإندونيسي كمان). pira → pinten وsapa → sinten.
-      ar: kapan واحدة في المستويين وفي الإندونيسية، أما pira فتصير pinten وsapa تصير sinten.
-      en: kapan stays kapan (also in Indonesian). pira → pinten, sapa → sinten.
-    words: [kapan]
-  - id: e04
+  - id: e02
     type: listen
     text: Pripun kabaripun?
-    options: ["Reginipun pinten?", "Pripun kabaripun?", "Asmanipun sinten?"]
+    options: ['Reginipun pinten?', 'Pripun kabaripun?', 'Asmanipun sinten?']
     answer: 1
     words: [pripun, kabar]
-  - id: e05
-    type: multiple_choice
-    question: Pripun kabaripun?
-    question_meaning:
-      ar_eg: أنهي رد مناسب؟
-      ar: أي جواب يناسب؟
-      en: Which answer fits?
-    options: ["Kula saking Kairo.", "Jam wolu.", "Saé, matur nuwun."]
-    answer: 2
-    explain:
-      ar_eg: Pripun kabaripun = أخبارك إيه، فالرد Saé = كويس.
-      ar: Pripun kabaripun = كيف حالكم، فالجواب Saé = بخير.
-      en: Pripun kabaripun = how are you, so the answer is Saé = fine.
-    words: [saé]
-  - id: e06
-    type: fill_blank
-    sentence: Nyuwun sewu, Pak, jam ___? — Jam sanga.
-    meaning:
-      ar_eg: لا مؤاخذة يا حاج، الساعة كام؟ — تسعة.
-      ar: عفوًا يا سيدي، كم الساعة؟ — التاسعة.
-      en: Excuse me, sir, what time is it? — Nine o'clock.
-    options: ["pinten", "pira", "pundi"]
-    answers: [pinten]
-    explain:
-      ar_eg: pira نغوكو، ومع Nyuwun sewu وPak بنقول pinten. والرد sanga (٩) هو هو في المستويين.
-      ar: pira من النغوكو، ومع Nyuwun sewu نقول pinten، والعدد sanga (٩) واحد في المستويين.
-      en: pira is ngoko; with Nyuwun sewu and Pak use pinten. sanga (9) is the same in both levels.
-    words: [pinten, jam]
-  - id: e07
+  - id: e03
     type: fill_blank
     sentence: ___ panjenengan sinau basa Jawi? — Kula remen basa Jawi.
     meaning:
       ar_eg: حضرتك بتتعلم جاوي ليه؟ — عشان بحب الجاوي.
       ar: لماذا تتعلم الجاوية؟ — لأني أحب الجاوية.
       en: Why are you learning Javanese? — Because I like Javanese.
-    options: ["Kados pundi", "Kenging menapa", "Pinten"]
+    options: [Kados pundi, Kenging menapa, Pinten]
     answers: [Kenging menapa]
     explain:
       ar_eg: الرد سبب (بحب الجاوي)، يبقى السؤال «ليه» = kenging menapa.
       ar: الجواب سبب، فالسؤال «لماذا» = kenging menapa.
       en: The answer gives a reason, so the question is "why" = kenging menapa.
     words: [kenging menapa, remen]
-  - id: e08
-    type: multiple_choice
-    question_meaning:
-      ar_eg: محمد عايز يسأل بو سيتي عن سعر الباتيك بأدب. يقول إيه؟
-      ar: يريد محمد أن يسأل بو سيتي بأدب عن ثمن الباتيك. ماذا يقول؟
-      en: Mohamed wants to ask Bu Siti the price of the batik politely. What does he say?
-    options: ["Regane pira, Bu?", "Reginipun pinten, Bu?", "Reginipun pira, Bu?"]
-    answer: 1
-    explain:
-      ar_eg: "Regane pira نغوكو كلها. وReginipun pira خلطة: بدأت كراما وخلصت نغوكو. الصح كراما للآخر: Reginipun pinten."
-      ar: "Regane pira كلها نغوكو، وReginipun pira خليط، والصواب كراما خالصة: Reginipun pinten."
-      en: "Regane pira is all ngoko; Reginipun pira mixes levels. Keep it krama all the way: Reginipun pinten."
-    words: [pinten, regi]
-  - id: e09
+  - id: e04
     type: build_sentence
     source:
       ar_eg: أخبار حضرتك إيه يا حاجة؟
       ar: كيف حالكِ يا سيدتي؟
       en: How are you, ma'am?
     answer: Pripun kabaripun, Bu?
-    distractors: [piye, kabaré]
+    distractors: [piye, kabare]
     explain:
-      ar_eg: pripun (piye بالكراما) + kabaripun (kabaré بالكراما).
-      ar: pripun (كراما piye) + kabaripun (كراما kabaré).
-      en: pripun (krama piye) + kabaripun (krama kabaré).
+      ar_eg: pripun (piye بالكراما) + kabaripun (kabare بالكراما).
+      ar: pripun (كراما piye) + kabaripun (كراما kabare).
+      en: pripun (krama piye) + kabaripun (krama kabare).
     words: [pripun, kabar]
-  - id: e10
-    type: build_sentence
-    source:
-      ar_eg: حضرتك بتتعلم جاوي ليه؟
-      ar: لماذا تتعلم الجاوية؟
-      en: Why are you learning Javanese?
-    answer: Kenging menapa panjenengan sinau basa Jawi?
-    distractors: [ngapa, Jawa]
-    explain:
-      ar_eg: ngapa → kenging menapa، وJawa → Jawi في الكراما.
-      ar: ngapa → kenging menapa، وJawa → Jawi في الكراما.
-      en: ngapa → kenging menapa, and Jawa → Jawi in krama.
-    words: [kenging menapa, sinau, basa Jawi]
-  - id: e11
+  - id: e05
     type: translate
     direction: to_target
     source_meaning:
       ar_eg: الباتيك ده حلو جدًا!
       ar: هذا الباتيك جميل جدًا!
       en: This batik is very nice!
-    answers: ["Batik menika saé sanget!", "Batik menika saé sanget", "Batik menika sae sanget!", "Batik menika sae sanget", "Batik niki saé sanget!", "Batik niki saé sanget", "Batik niki sae sanget!", "Batik niki sae sanget"]
+    answers: ["Batik menika sae sanget!", Batik menika sae sanget, "Batik niki sae sanget!", Batik niki sae sanget]
     explain:
-      ar_eg: menika = iki (ده)، saé = apik، sanget = banget. وفي الكلام niki بدل menika.
-      ar: menika = iki (هذا)، وsaé = apik، وsanget = banget، وفي الكلام niki.
-      en: "menika = iki (this), saé = apik, sanget = banget. Spoken: niki."
-    words: [menika, saé, sanget]
-  - id: e12
-    type: translate
-    direction: from_target
-    source_text: Kenging menapa panjenengan sinau basa Jawi?
-    answers_meaning:
-      ar_eg: ["حضرتك بتتعلم جاوي ليه؟", "ليه حضرتك بتتعلم الجاوي؟", "بتتعلم جاوي ليه؟", "إنت بتتعلم جاوي ليه؟"]
-      ar: ["لماذا تتعلم الجاوية؟", "لماذا تتعلمون اللغة الجاوية؟", "لماذا تدرس الجاوية؟"]
-      en: ["Why are you learning Javanese?", "Why do you study Javanese?", "Why are you studying Javanese?", "Why do you learn Javanese?"]
-    words: [kenging menapa, sinau]
-  - id: e13
-    type: dictation
-    text: Pripun kabaripun?
-    meaning:
-      ar_eg: أخبار حضرتك إيه؟
-      ar: كيف حالكم؟
-      en: How are you?
-    words: [pripun, kabar]
-  - id: e14
+      ar_eg: menika = iki (ده)، sae = apik، sanget = banget. وفي الكلام niki بدل menika.
+      ar: menika = iki (هذا)، وsae = apik، وsanget = banget، وفي الكلام niki.
+      en: 'menika = iki (this), sae = apik, sanget = banget. Spoken: niki.'
+    words: [menika, sae, sanget]
+  - id: e06
     type: speaking
     text: Nyuwun sewu, Bu, reginipun pinten?
     meaning:
@@ -302,22 +198,22 @@ dialogue:
       ar: صباح الخير يا محمد. كيف حالك؟
       en: Good morning, Mohamed. How are you?
     - speaker: Mohamed
-      text: Saé, Pak, matur nuwun. Nyuwun sewu, jam pinten?
+      text: Sae, Pak, matur nuwun. Nyuwun sewu, jam pinten?
       ar_eg: كويس يا حاج، شكرًا. لا مؤاخذة، الساعة كام؟
       ar: بخير يا سيدي، شكرًا. عفوًا، كم الساعة؟
       en: Fine, thank you, sir. Excuse me, what time is it?
     - speaker: Pak Wiryo
-      text: Jam sanga, Mas. Sampéyan badhé dhateng pundi?
+      text: Jam sanga, Mas. Sampeyan badhe dhateng pundi?
       ar_eg: الساعة تسعة يا ابني. إنت رايح فين؟
       ar: التاسعة يا بني. إلى أين أنت ذاهب؟
       en: Nine o'clock. Where are you going?
     - speaker: Mohamed
-      text: Kula badhé dhateng Pasar Klewer, Pak.
+      text: Kula badhe dhateng Pasar Klewer, Pak.
       ar_eg: رايح سوق كليوير يا حاج.
       ar: إلى سوق كليوير يا سيدي.
       en: To Pasar Klewer, sir.
     - speaker: Pak Wiryo
-      text: Batik Klewer saé sanget, Mas!
+      text: Batik Klewer sae sanget, Mas!
       ar_eg: باتيك كليوير حلو جدًا يا ابني!
       ar: باتيك كليوير جميل جدًا يا بني!
       en: Klewer batik is very nice!
@@ -347,11 +243,6 @@ new_words:
     ar_eg: ليه (ngapa ← kenapa)، كراما
     ar: لماذا (ngapa ← kenapa)، كراما
     en: why (ngoko ngapa, Indonesian kenapa), krama
-  - word: saé
-    pos: adjective
-    ar_eg: كويس / حلو (apik ← baik / bagus)، كراما
-    ar: جيد / جميل (apik ← baik / bagus)، كراما
-    en: good, fine, nice (ngoko apik), krama
   - word: sanget
     pos: adverb
     ar_eg: جدًا (banget)، كراما
