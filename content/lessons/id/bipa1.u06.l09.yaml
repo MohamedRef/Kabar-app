@@ -1,215 +1,236 @@
 schema: kabar.lesson/v1
 id: bipa1.u06.l09
 language: id
-title: Ulangan Unit 6
+title: Roti, susu, sendok
 can_do:
-  ar_eg: توصف روتينك اليومي.
-  ar: أن تصف روتينك اليومي.
-  en: Describe your routine.
+  ar_eg: تطلب الفطار وتسمّي الكوباية والطبق والمعلقة والشوكة والسكينة.
+  ar: أن تطلب الفطور وتسمّي الكوب والطبق والملعقة والشوكة والسكين.
+  en: Order breakfast and name the glass, plate, spoon, fork and knife.
 slides:
-  - title: Aktivitas harianku — ringkasan
+  - title: Sarapan
     body:
       ar_eg: |
-        اللي أخدناه في الوحدة دي:
-        - meN-: membaca، menulis، menonton، menyapu، mengirim (p / t / k / s بيقعوا).
-        - sudah، belum، sedang، akan، masih، baru قبل الفعل.
-        - selalu، biasanya، sering، kadang-kadang، jarang، tidak pernah.
-        - kemarin، tadi، sekarang، nanti · sebelum، sesudah، lalu.
-        - di sini، di situ، di sana.
+        على الفطار: roti (عيش أو توست)، susu (لبن)، es (تلج: es teh = شاي بالتلج).
+        gelas = كوباية، piring = طبق، sendok = معلقة، garpu = شوكة، pisau = سكينة.
+        الإندونيسيين بياكلوا الرز بالمعلقة في اليمين والشوكة في الشمال، والسكينة قليل. وكتير بياكلوا بإيدهم اليمين.
       ar: |
-        ما تعلمناه في هذه الوحدة:
-        - meN-: membaca، menulis، menonton، menyapu، mengirim (مع سقوط p / t / k / s).
-        - sudah، belum، sedang، akan، masih، baru قبل الفعل.
-        - selalu، biasanya، sering، kadang-kadang، jarang، tidak pernah.
-        - kemarin، tadi، sekarang، nanti · sebelum، sesudah، lalu.
-        - di sini، di situ، di sana.
+        على الفطور: roti (خبز)، وsusu (حليب)، وes (ثلج: es teh = شاي مثلّج).
+        gelas = كوب، piring = طبق، sendok = ملعقة، garpu = شوكة، pisau = سكين.
+        يأكل الإندونيسيون الأرز بالملعقة في اليمنى والشوكة في اليسرى، ونادرًا ما يستعملون السكين، وكثيرون يأكلون باليد اليمنى.
       en: |
-        What this unit covered:
-        - meN-: membaca, menulis, menonton, menyapu, mengirim (p / t / k / s drop).
-        - sudah, belum, sedang, akan, masih, baru before the verb.
-        - selalu, biasanya, sering, kadang-kadang, jarang, tidak pernah.
-        - kemarin, tadi, sekarang, nanti · sebelum, sesudah, lalu.
-        - di sini, di situ, di sana.
-    grammar: id.prefix.men.basic
+        At breakfast: roti (bread), susu (milk), es (ice: es teh = iced tea).
+        gelas = glass, piring = plate, sendok = spoon, garpu = fork, pisau = knife.
+        Indonesians eat rice with a spoon in the right hand and a fork in the left, rarely a knife, and many eat with the right hand.
     examples:
-      - text: Saya sedang membaca buku.
-        ar_eg: أنا بقرا كتاب دلوقتي.
-        ar: أنا أقرأ كتابًا الآن.
-        en: I'm reading a book.
+      - text: Saya sarapan roti dan susu.
+        ar_eg: بفطر عيش ولبن.
+        ar: أفطر خبزًا وحليبًا.
+        en: I have bread and milk for breakfast.
+      - text: Orang Indonesia makan nasi memakai sendok dan garpu.
+        ar_eg: الإندونيسيين بياكلوا الرز بالمعلقة والشوكة.
+        ar: يأكل الإندونيسيون الأرز بالملعقة والشوكة.
+        en: Indonesians eat rice with a spoon and fork.
+      - text: Minta es teh satu gelas!
+        ar_eg: واحد شاي بالتلج لو سمحت!
+        ar: كوب شاي مثلّج من فضلك!
+        en: One glass of iced tea, please!
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: menulis
-        ar_eg: يكتب
-        ar: يكتب
-        en: write
-      - text: memasak
-        ar_eg: يطبخ
-        ar: يطبخ
-        en: cook
-      - text: mencuci
-        ar_eg: يغسل
-        ar: يغسل
-        en: wash
-      - text: mengirim
-        ar_eg: يبعت
-        ar: يرسل
-        en: send
-      - text: menyapu
-        ar_eg: يكنس
-        ar: يكنس
-        en: sweep
-    words: [menulis, memasak, mencuci, mengirim, menyapu]
+      - text: roti
+        ar_eg: عيش، توست
+        ar: خبز
+        en: bread
+      - text: susu
+        ar_eg: لبن
+        ar: حليب
+        en: milk
+      - text: es
+        ar_eg: تلج
+        ar: ثلج
+        en: ice
+      - text: gelas
+        ar_eg: كوباية
+        ar: كوب
+        en: glass
+    words: [roti, susu, es, gelas]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إيه جذر menonton؟
-      ar: ما جذر menonton؟
-      en: What's the root of menonton?
-    options: [onton, nonton, tonton]
-    answer: 2
-    explain:
-      ar_eg: men- + حرف متحرك؟ جرّب t، الجذر tonton. (nonton هي الصيغة العامية)
-      ar: men- + صائت يدل على t، فالجذر tonton. (وnonton صيغة عامية)
-      en: men- + vowel → try t; the root is tonton. (nonton is the casual form.)
-    words: [menonton]
+    type: match_pairs
+    pairs:
+      - text: piring
+        ar_eg: طبق
+        ar: طبق
+        en: plate
+      - text: sendok
+        ar_eg: معلقة
+        ar: ملعقة
+        en: spoon
+      - text: garpu
+        ar_eg: شوكة
+        ar: شوكة
+        en: fork
+      - text: pisau
+        ar_eg: سكينة
+        ar: سكين
+        en: knife
+    words: [piring, sendok, garpu, pisau]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: meN- + baca تبقى إيه؟
-      ar: ما ناتج meN- + baca؟
-      en: What does meN- + baca become?
-    options: [membaca, mebaca, menbaca]
-    answer: 0
-    explain:
-      ar_eg: قبل b بتبقى mem-، والـ b مابتقعش.
-      ar: قبل b تصير mem- ولا تسقط b.
-      en: Before b it's mem-, and b stays.
-    words: [membaca]
-  - id: e04
-    type: multiple_choice
-    question: Sudah menikah?
-    question_meaning:
-      ar_eg: إنت مش متجوز. الرد الطبيعي؟
-      ar: لست متزوجًا. ما الجواب الطبيعي؟
-      en: You're not married. What's the natural reply?
-    options: [Tidak., Belum., Sudah.]
-    answer: 1
-    explain:
-      ar_eg: belum = لسه، وده الرد المؤدب المعتاد.
-      ar: belum = ليس بعد، وهو الجواب المهذب المعتاد.
-      en: belum (not yet) is the usual polite reply.
-    words: [belum]
-  - id: e05
     type: listen
-    text: Dia sedang memasak.
-    options: [Dia sedang memasak., Dia sudah memasak., Dia akan memasak.]
+    text: Setiap pagi saya minum susu dan makan roti.
+    question:
+      ar_eg: بيفطر إيه؟
+      ar: ماذا يفطر؟
+      en: What does he have for breakfast?
+    options: [عيش ولبن, رز وسمك, شاي وكيك]
     answer: 0
-    words: [sedang, memasak]
+    meaning:
+      ar_eg: كل يوم الصبح بشرب لبن وباكل عيش.
+      ar: كل صباح أشرب الحليب وآكل الخبز.
+      en: Every morning I drink milk and eat bread.
+    words: [susu, roti]
+  - id: e04
+    type: fill_blank
+    sentence: Minta es teh satu ___!
+    meaning:
+      ar_eg: واحد شاي بالتلج، ___ لو سمحت!
+      ar: ___ شاي مثلّج من فضلك!
+      en: One ___ of iced tea, please!
+    options: [gelas, piring, pisau]
+    answers: [gelas]
+    words: [es, gelas, piring, pisau]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الإندونيسيين غالبًا بياكلوا الرز بإيه؟
+      ar: بمَ يأكل الإندونيسيون الأرز غالبًا؟
+      en: What do Indonesians usually eat rice with?
+    options: [sendok dan garpu, pisau dan garpu, gelas dan piring]
+    answer: 0
+    explain:
+      ar_eg: معلقة في اليمين وشوكة في الشمال. السكينة قليل.
+      ar: ملعقة في اليمنى وشوكة في اليسرى، والسكين نادر.
+      en: A spoon in the right hand and a fork in the left; knives are rare.
+    words: [sendok, garpu, pisau, gelas, piring]
   - id: e06
     type: fill_blank
-    sentence: Saya ___ minum kopi setiap pagi.
+    sentence: Nasi uduk di ___ itu enak.
     meaning:
-      ar_eg: أنا دايمًا بشرب قهوة كل صبح.
-      ar: أشرب القهوة دائمًا كل صباح.
-      en: I always drink coffee every morning.
-    options: [selalu, jarang, tidak pernah]
-    answers: [selalu]
-    words: [selalu, kopi]
+      ar_eg: الناسي أودوك اللي في ___ ده حلو.
+      ar: الناسي أودوك في ذلك ___ لذيذ.
+      en: The nasi uduk on that ___ is good.
+    options: [piring, gelas, susu]
+    answers: [piring]
+    words: [piring]
   - id: e07
-    type: fill_blank
-    sentence: Masjidnya di ___.
-    meaning:
-      ar_eg: الجامع هناك (بعيد عننا إحنا الاتنين).
-      ar: المسجد هناك (بعيدًا عنا).
-      en: The mosque is over there (far from both of us).
-    options: [sini, sana, situ]
-    answers: [sana]
-    words: [sana]
-  - id: e08
     type: build_sentence
     source:
-      ar_eg: ماما بتقلي سمك دلوقتي.
-      ar: الأم تقلي السمك الآن.
-      en: Mother is frying fish right now.
-    answer: Ibu sedang menggoreng ikan.
-    distractors: [minum, sudah]
-    words: [sedang, menggoreng, ikan]
+      ar_eg: عايز سكينة وشوكة لو سمحت.
+      ar: أريد سكينًا وشوكة من فضلك.
+      en: I'd like a knife and fork, please.
+    answer: Saya minta pisau dan garpu.
+    distractors: [roti, es]
+    words: [pisau, garpu]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Kopi susunya enak, esnya banyak.
+    answers_meaning:
+      ar_eg: [القهوة باللبن حلوة، والتلج كتير, القهوة باللبن طعمها حلو وفيها تلج كتير]
+      ar: [القهوة بالحليب لذيذة، والثلج كثير, قهوة الحليب لذيذة وفيها ثلج كثير]
+      en: ['The milk coffee is good, and there''s lots of ice', 'The coffee with milk is tasty, with lots of ice']
+    words: [susu, es]
   - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: رينا لسه نايمة.
-      ar: ما زالت رينا نائمة.
-      en: Rina is still asleep.
-    answers: [Rina masih tidur., Rina masih tidur]
-    words: [masih, tidur]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا نادرًا لما بطبخ.
-      ar: نادرًا ما أطبخ.
-      en: I rarely cook.
-    answers: [Saya jarang memasak., Saya jarang memasak, Aku jarang memasak., Saya jarang masak., Aku jarang masak.]
-    words: [jarang, memasak]
-  - id: e11
-    type: dictation
-    text: Saya sedang membaca buku.
-    meaning:
-      ar_eg: أنا بقرا كتاب دلوقتي.
-      ar: أنا أقرأ كتابًا الآن.
-      en: I'm reading a book.
-    words: [sedang, membaca, buku]
-  - id: e12
     type: speaking
-    text: Kami akan ke Blok M nanti malam.
+    text: Roti ini enak. Minta satu piring lagi!
     meaning:
-      ar_eg: هنروح بلوك إم بالليل.
-      ar: سنذهب إلى بلوك إم الليلة.
-      en: We'll go to Blok M tonight.
-    words: [akan, nanti]
+      ar_eg: العيش ده حلو. عايز طبق كمان لو سمحت!
+      ar: هذا الخبز لذيذ. طبقًا آخر من فضلك!
+      en: This bread is good. One more plate, please!
+    words: [roti, piring]
+  - id: e10
+    type: multiple_choice
+    question: Saya makan nasi memakai ___.
+    options: [sendok, gelas, susu]
+    answer: 0
+    explain:
+      ar_eg: 'الرز بيتاكل بالمعلقة: sendok. gelas كوباية وsusu لبن.'
+      ar: 'يؤكل الأرز بالملعقة: sendok، أما gelas فكوب وsusu حليب.'
+      en: 'Rice is eaten with a spoon: sendok. gelas is a glass and susu milk.'
+    words: [sendok, gelas, susu]
 dialogue:
-  title: Sudah makan, Mohamed?
   lines:
-    - speaker: Bu Yanti
-      text: Pagi, Mohamed! Sudah makan?
-      ar_eg: صباح الخير يا محمد! فطرت؟
-      ar: صباح الخير يا محمد! هل أكلت؟
-      en: Morning, Mohamed! Have you eaten?
+    - speaker: Pelayan
+      text: Selamat pagi, Pak. Mau sarapan apa?
+      ar_eg: صباح الخير يا أستاذ. تحب تفطر إيه؟
+      ar: صباح الخير يا سيدي. ماذا تريد للفطور؟
+      en: Good morning, sir. What would you like for breakfast?
     - speaker: Mohamed
-      text: Belum, Bu. Saya baru bangun.
-      ar_eg: لسه يا مدام. لسه صاحي حالًا.
-      ar: ليس بعد يا سيدتي. استيقظت للتو.
-      en: Not yet, ma'am. I've just woken up.
-    - speaker: Bu Yanti
-      text: Ibu sudah memasak nasi uduk. Silakan!
-      ar_eg: أنا طبخت ناسي أودوك خلاص. اتفضل!
-      ar: لقد طبخت ناسي أودوك. تفضل!
-      en: I've already cooked nasi uduk. Help yourself!
+      text: Saya mau roti dan susu.
+      ar_eg: عايز عيش ولبن.
+      ar: أريد خبزًا وحليبًا.
+      en: I'd like bread and milk.
+    - speaker: Pelayan
+      text: Mau es, Pak?
+      ar_eg: تحب تلج يا أستاذ؟
+      ar: هل تريد ثلجًا يا سيدي؟
+      en: Would you like ice, sir?
     - speaker: Mohamed
-      text: Terima kasih, Bu! Biasanya saya sarapan di Blok M.
-      ar_eg: شكرًا يا مدام! عادةً بفطر في بلوك إم.
-      ar: شكرًا يا سيدتي! عادةً أفطر في بلوك إم.
-      en: Thank you! I usually have breakfast at Blok M.
-    - speaker: Bu Yanti
-      text: Hari ini makan di sini, ya.
-      ar_eg: النهارده كُل هنا بقى.
-      ar: كُل هنا اليوم إذن.
-      en: Today, eat here, OK?
+      text: Tidak, terima kasih. Minta satu gelas air putih juga.
+      ar_eg: لأ، شكرًا. وكوباية مية كمان لو سمحت.
+      ar: لا، شكرًا. وكوب ماء أيضًا من فضلك.
+      en: No, thanks. And a glass of water too, please.
+    - speaker: Pelayan
+      text: Baik. Ini piring, sendok, dan garpu.
+      ar_eg: حاضر. دا الطبق والمعلقة والشوكة.
+      ar: حسنًا. هذا الطبق والملعقة والشوكة.
+      en: Sure. Here's a plate, a spoon and a fork.
     - speaker: Mohamed
-      text: Baik, Bu. Sesudah sarapan, saya akan menyapu lantai.
-      ar_eg: حاضر يا مدام. بعد الفطار هكنس الأرضية.
-      ar: حسنًا يا سيدتي. بعد الفطور سأكنس الأرض.
-      en: All right. After breakfast, I'll sweep the floor.
-souvenir:
-  id: bipa1.u06.souvenir
-  title: Warung makan Blok M
-  note:
-    ar_eg: كتير من أهل جاكرتا بيصحوا الساعة ٥ الصبح عشان يسبقوا الزحمة، ويفطروا على الماشي من عربيات وأكشاك بلوك إم. ولو حد سألك «Sudah makan?» ماتستغربش، دي تحية زي «عامل إيه»، مش عزومة. ردّ بابتسامة، قول «Sudah!» أو «Belum!».
-    ar: يستيقظ كثير من أهل جاكرتا في الخامسة صباحًا ليسبقوا الزحام، ويتناولون فطورهم من أكشاك الطعام في بلوك إم. وإذا سألك أحد «Sudah makan?» فهي تحية مثل «كيف حالك»، لا دعوة إلى الطعام. أجب بابتسامة بـ «Sudah!» أو «Belum!».
-    en: Many Jakartans start the day at 5 a.m. to beat the traffic, grabbing breakfast from Blok M's food stalls on the way. If someone asks "Sudah makan?", it's a greeting like "how are you", not an invitation. Just smile and answer "Sudah!" or "Belum!".
+      text: Terima kasih. Pisaunya di mana?
+      ar_eg: شكرًا. والسكينة فين؟
+      ar: شكرًا. وأين السكين؟
+      en: Thanks. Where's the knife?
+new_words:
+  - word: roti
+    pos: noun
+    ar_eg: عيش، توست
+    ar: خبز
+    en: bread
+  - word: susu
+    pos: noun
+    ar_eg: لبن
+    ar: حليب
+    en: milk
+  - word: es
+    pos: noun
+    ar_eg: تلج
+    ar: ثلج
+    en: ice
+  - word: gelas
+    pos: noun
+    ar_eg: كوباية
+    ar: كوب
+    en: glass
+  - word: piring
+    pos: noun
+    ar_eg: طبق
+    ar: طبق
+    en: plate
+  - word: sendok
+    pos: noun
+    ar_eg: معلقة
+    ar: ملعقة
+    en: spoon
+  - word: garpu
+    pos: noun
+    ar_eg: شوكة
+    ar: شوكة
+    en: fork
+  - word: pisau
+    pos: noun
+    ar_eg: سكينة
+    ar: سكين
+    en: knife
 review:
   status: draft
   verified: false

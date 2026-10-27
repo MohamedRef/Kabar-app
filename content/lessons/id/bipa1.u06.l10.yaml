@@ -1,0 +1,239 @@
+schema: kabar.lesson/v1
+id: bipa1.u06.l10
+language: id
+title: Tugas sudah selesai
+can_do:
+  ar_eg: 'تتكلم عن يوم الشغل: المهام والتليفون والإيميل والكمبيوتر والنت.'
+  ar: 'أن تتحدث عن يوم العمل: المهام والهاتف والبريد الإلكتروني والحاسوب والإنترنت.'
+  en: 'Talk about a working day: tasks, phone, email, computer and internet.'
+slides:
+  - title: Di kantor
+    body:
+      ar_eg: |
+        في المكتب: komputer، internet، email، ponsel (الموبايل، والناس بتقول HP أكتر)، telepon (تليفون أو مكالمة).
+        tugas = مهمة أو واجب: tugas kantor، tugas sekolah.
+        selesai = خلص: «Sudah selesai?» — «Selesai!».
+        koran = جرنال. وبرضه كتير بيقروا الأخبار على الموبايل دلوقتي.
+      ar: |
+        في المكتب: komputer وinternet وemail وponsel (الهاتف المحمول، ويقول الناس HP أكثر) وtelepon (هاتف أو مكالمة).
+        tugas = مهمّة أو واجب: tugas kantor، tugas sekolah.
+        selesai = انتهى: «Sudah selesai?» — «Selesai!».
+        koran = جريدة، وإن كان كثيرون اليوم يقرؤون الأخبار على الهاتف.
+      en: |
+        At the office: komputer, internet, email, ponsel (mobile phone; people say HP more) and telepon (phone, call).
+        tugas = task or homework: tugas kantor, tugas sekolah.
+        selesai = finished: "Sudah selesai?" — "Selesai!".
+        koran = newspaper, though many now read the news on their phone.
+    examples:
+      - text: Ayah membaca koran setiap pagi.
+        ar_eg: بابا بيقرا الجرنال كل يوم الصبح.
+        ar: يقرأ أبي الجريدة كل صباح.
+        en: Dad reads the newspaper every morning.
+      - text: Tugas saya sudah selesai!
+        ar_eg: المهمة بتاعتي خلصت!
+        ar: أنهيت مهمّتي!
+        en: My task is finished!
+      - text: Di kantor ada komputer dan internet.
+        ar_eg: في المكتب فيه كمبيوتر ونت.
+        ar: في المكتب حاسوب وإنترنت.
+        en: There's a computer and internet at the office.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tugas
+        ar_eg: مهمة، واجب
+        ar: مهمّة، واجب
+        en: task
+      - text: telepon
+        ar_eg: تليفون
+        ar: هاتف
+        en: phone
+      - text: ponsel
+        ar_eg: موبايل
+        ar: هاتف محمول
+        en: mobile phone
+      - text: email
+        ar_eg: إيميل
+        ar: بريد إلكتروني
+        en: email
+    words: [tugas, telepon, ponsel, email]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: komputer
+        ar_eg: كمبيوتر
+        ar: حاسوب
+        en: computer
+      - text: internet
+        ar_eg: نت
+        ar: إنترنت
+        en: internet
+      - text: koran
+        ar_eg: جرنال
+        ar: جريدة
+        en: newspaper
+      - text: selesai
+        ar_eg: خلص
+        ar: انتهى
+        en: finished
+    words: [komputer, internet, koran, selesai]
+  - id: e03
+    type: listen
+    text: Tugas saya sudah selesai. Saya mau makan siang.
+    question:
+      ar_eg: إيه اللي خلص؟
+      ar: ما الذي انتهى؟
+      en: What's finished?
+    options: [الشغل بتاعه, الأكل, الجرنال]
+    answer: 0
+    meaning:
+      ar_eg: المهمة بتاعتي خلصت. عايز أتغدى.
+      ar: أنهيت مهمّتي، وأريد الغداء.
+      en: My task is done. I want to have lunch.
+    words: [tugas, selesai]
+  - id: e04
+    type: fill_blank
+    sentence: Saya mengirim ___ ke bos saya.
+    meaning:
+      ar_eg: ببعت ___ للمدير بتاعي.
+      ar: أرسل ___ إلى مديري.
+      en: I'm sending an ___ to my boss.
+    options: [email, koran, internet]
+    answers: [email]
+    words: [email, koran, internet]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الـ HP اسمه الرسمي إيه؟
+      ar: ما الاسم الرسمي للـ HP؟
+      en: What's the formal word for HP?
+    options: [ponsel, komputer, telepon]
+    answer: 0
+    explain:
+      ar_eg: ponsel = موبايل. telepon ممكن يبقى تليفون البيت أو مكالمة.
+      ar: ponsel الهاتف المحمول، أما telepon فالهاتف أو المكالمة.
+      en: ponsel = mobile phone; telepon is a phone or a call.
+    words: [ponsel, komputer, telepon]
+  - id: e06
+    type: fill_blank
+    sentence: Ayah membaca ___ setiap pagi.
+    meaning:
+      ar_eg: بابا بيقرا ___ كل يوم الصبح.
+      ar: يقرأ أبي ___ كل صباح.
+      en: Dad reads the ___ every morning.
+    options: [koran, tugas, ponsel]
+    answers: [koran]
+    words: [koran]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: مفيش نت، فمش هقدر أبعت إيميل.
+      ar: لا إنترنت، فلا أستطيع إرسال بريد.
+      en: There's no internet, so I can't send an email.
+    answer: Tidak ada internet, jadi saya tidak bisa mengirim email.
+    distractors: [koran, ponsel]
+    words: [internet, email]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Ada telepon untuk Bapak!
+    answers_meaning:
+      ar_eg: [فيه تليفون لحضرتك!, فيه مكالمة لحضرتك!, تليفون لحضرتك!]
+      ar: [هناك مكالمة لك يا سيدي!, مكالمة لك يا سيدي!]
+      en: ['There''s a phone call for you, sir!', 'Phone for you, sir!', 'There''s a call for you!']
+    words: [telepon]
+  - id: e09
+    type: speaking
+    text: Saya kerja memakai komputer dan ponsel.
+    meaning:
+      ar_eg: بشتغل على الكمبيوتر والموبايل.
+      ar: أعمل بالحاسوب والهاتف المحمول.
+      en: I work on a computer and a mobile phone.
+    words: [komputer, ponsel]
+  - id: e10
+    type: multiple_choice
+    question: Tugasnya sudah ___? — Sudah!
+    options: [selesai, telepon, koran]
+    answer: 0
+    explain:
+      ar_eg: Sudah selesai? = خلصت؟
+      ar: Sudah selesai? = هل انتهيت؟
+      en: Sudah selesai? = Is it finished?
+    words: [selesai, tugas, telepon]
+dialogue:
+  lines:
+    - speaker: Bu Yanti
+      text: Mas Rizal, tugasnya sudah selesai?
+      ar_eg: يا ريزال، المهمة خلصت؟
+      ar: يا ريزال، هل أنهيت المهمّة؟
+      en: Rizal, is the task finished?
+    - speaker: Mas Rizal
+      text: Belum, Bu. Tidak ada internet hari ini.
+      ar_eg: لسه يا مدام. مفيش نت النهارده.
+      ar: ليس بعد يا سيدتي، فلا إنترنت اليوم.
+      en: Not yet. There's no internet today.
+    - speaker: Bu Yanti
+      text: Oh, begitu. Mengirim email dari ponsel, bisa?
+      ar_eg: آه، كده. تقدر تبعت الإيميل من الموبايل؟
+      ar: آه، فهمت. أتستطيع إرسال البريد من الهاتف؟
+      en: Oh, I see. Can you send the email from your phone?
+    - speaker: Mas Rizal
+      text: Bisa, Bu. Nanti saya mengirim emailnya.
+      ar_eg: أقدر يا مدام. شوية وأبعت الإيميل.
+      ar: نعم يا سيدتي، سأرسل البريد بعد قليل.
+      en: Yes. I'll send the email later.
+    - speaker: Bu Yanti
+      text: Terima kasih. Dan ada telepon untuk kamu.
+      ar_eg: شكرًا. وفيه تليفون عشانك.
+      ar: شكرًا. وهناك مكالمة لك.
+      en: Thanks. And there's a phone call for you.
+    - speaker: Mas Rizal
+      text: Baik, Bu!
+      ar_eg: حاضر يا مدام!
+      ar: حسنًا يا سيدتي!
+      en: OK!
+new_words:
+  - word: tugas
+    pos: noun
+    ar_eg: مهمة، واجب
+    ar: مهمّة، واجب
+    en: task, assignment
+  - word: telepon
+    pos: noun
+    ar_eg: تليفون، مكالمة
+    ar: هاتف، مكالمة
+    en: telephone, phone call
+  - word: ponsel
+    pos: noun
+    ar_eg: موبايل
+    ar: هاتف محمول
+    en: mobile phone
+  - word: email
+    pos: noun
+    ar_eg: إيميل
+    ar: بريد إلكتروني
+    en: email
+  - word: komputer
+    pos: noun
+    ar_eg: كمبيوتر
+    ar: حاسوب
+    en: computer
+  - word: internet
+    pos: noun
+    ar_eg: نت
+    ar: إنترنت
+    en: internet
+  - word: koran
+    pos: noun
+    ar_eg: جرنال
+    ar: جريدة
+    en: newspaper
+  - word: selesai
+    pos: verb
+    ar_eg: خلص
+    ar: انتهى
+    en: finished, done
+review:
+  status: draft
+  verified: false
