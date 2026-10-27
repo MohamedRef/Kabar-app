@@ -112,6 +112,10 @@ fn seed_stats_demo() {
         missed: Vec::new(),
         duration_ms: 560_000,
     };
+    // KABAR_DEMO_FIRST_CHECK: no check yet, for the first check's welcome.
+    if std::env::var("KABAR_DEMO_FIRST_CHECK").is_ok() {
+        return;
+    }
     store.record_lesson_event(LEVEL_CHECK_LESSON_ID, LEVEL_CHECK_KIND, &prev).unwrap();
     if std::env::var("KABAR_DEMO_TWO_CHECKS").is_ok() {
         let now_check = LevelCheckResult {

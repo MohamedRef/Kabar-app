@@ -260,3 +260,71 @@ fn every_place_is_on_the_map_and_found_by_name() {
     let (x, y) = geo::project(geo::LON_MIN, geo::LAT_MAX);
     assert_eq!((x, y), (0.0, 0.0));
 }
+
+fn pins_at(points: &[(f64, f64)]) -> MapLayout {
+    let c = parse_curriculum(BIPA).unwrap();
+    let mut m = MapLayout::new(&c);
+    m.pins = points
+        .iter()
+        .enumerate()
+        .map(|(i, &(x, y))| layout::LevelPin {
+            level_id: format!("p{i}"),
+            x,
+            y,
+            units: Vec::new(),
+            nudge: (0.0, 0.0),
+            fade_zoom: 1.0,
+        })
+        .collect();
+    m
+}
+
+fn dist(a: (f64, f64), b: (f64, f64)) -> f64 {
+    (a.0 - b.0).hypot(a.1 - b.1)
+}
+
+#[test]
+fn close_pins_spread_apart_and_settle_back_when_zoomed() {
+    // Like Bali and Lombok: 4 apart where pins need 10; a third pin far away.
+    let mut m = pins_at(&[(400.0, 300.0), (404.0, 301.0), (600.0, 100.0)]);
+    m.spread_pins(10.0);
+    let (a, b, far) = (&m.pins[0], &m.pins[1], &m.pins[2]);
+    assert!(dist(a.drawn_at(1.0), b.drawn_at(1.0)) >= 10.0 - 1e-6);
+    // Pushed apart along the line between them, half each way.
+    assert!(a.drawn_at(1.0).0 < a.x && b.drawn_at(1.0).0 > b.x);
+    assert!((dist(a.drawn_at(1.0), (a.x, a.y)) - dist(b.drawn_at(1.0), (b.x, b.y))).abs() < 1e-6);
+    // A pin with room keeps its place.
+    assert_eq!(far.nudge, (0.0, 0.0));
+    assert_eq!(far.drawn_at(1.0), (600.0, 100.0));
+    // Zooming in: the pins stay clear of each other at every zoom (the gap
+    // they need shrinks as 1/s in map units), and the nudge fades away.
+    for s in [1.0, 1.25, 1.5, 2.0, 2.4, 3.0, 6.0, 12.0] {
+        let d = dist(a.drawn_at(s), b.drawn_at(s));
+        assert!(d * s >= 10.0 - 1e-6, "zoom {s}: {d}");
+    }
+    assert!(a.fade_zoom > 1.0 && a.fade_zoom < 3.0, "{}", a.fade_zoom);
+    assert_eq!(a.drawn_at(a.fade_zoom), (a.x, a.y));
+    assert_eq!(b.drawn_at(12.0), (b.x, b.y));
+}
+
+#[test]
+fn spread_handles_clusters_shared_spots_and_edges() {
+    // Three pins in a tight row, and two on the very same spot.
+    let mut m = pins_at(&[(300.0, 200.0), (303.0, 200.0), (306.0, 200.0), (100.0, 100.0), (100.0, 100.0)]);
+    m.spread_pins(10.0);
+    for (i, p) in m.pins.iter().enumerate() {
+        for q in &m.pins[i + 1..] {
+            let d = dist(p.drawn_at(1.0), q.drawn_at(1.0));
+            assert!(d >= 10.0 - 1e-3, "{} and {}: {d}", p.level_id, q.level_id);
+        }
+    }
+    // Two pins at the bottom edge: spread, but never off the map.
+    let bottom = m.view.y + m.view.h;
+    let mut m = pins_at(&[(500.0, bottom - 1.0), (500.0, bottom - 4.0)]);
+    m.spread_pins(10.0);
+    let (a, b) = (m.pins[0].drawn_at(1.0), m.pins[1].drawn_at(1.0));
+    for p in [a, b] {
+        assert!(p.1 <= bottom - 5.0 + 1e-9 && p.0 > m.view.x && p.0 < m.view.x + m.view.w, "{p:?}");
+    }
+    assert!(dist(a, b) >= 10.0 - 1e-3, "{a:?} {b:?}");
+}

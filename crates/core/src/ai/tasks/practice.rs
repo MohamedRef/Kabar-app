@@ -4,6 +4,7 @@
 use std::collections::BTreeSet;
 
 use kabar_protocol::ai::Task;
+use kabar_protocol::story::canonical_persona_id;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
@@ -67,13 +68,10 @@ impl AiOutput for RoleplayTurn {
         let javanese_reply = matches!(self.register, Ngoko | Madya | Krama | KramaInggil);
         let persona = input_str(input, "persona").unwrap_or_default();
         let level = input_str(input, "level").unwrap_or_default();
-        if matches!(persona, "mbak_gadis" | "mas_ardi" | "mbak-gadis" | "mas-ardi") && javanese_reply {
+        if persona_language(persona) == Some("id") && javanese_reply {
             return Err(format!("{persona} speaks Indonesian; register must be casual or standard"));
         }
-        if matches!(persona, "mas_dimas" | "bu_siti" | "mas-dimas" | "bu-siti")
-            && level.starts_with('j')
-            && !javanese_reply
-        {
+        if persona_language(persona) == Some("jv") && level.starts_with('j') && !javanese_reply {
             return Err(format!(
                 "{persona} speaks Javanese at {level}; register must be ngoko, madya, krama or krama_inggil"
             ));
@@ -82,8 +80,19 @@ impl AiOutput for RoleplayTurn {
     }
 
     fn input_needs_review(input: &Value) -> bool {
-        matches!(input_str(input, "persona"), Some("mas_dimas" | "bu_siti" | "mas-dimas" | "bu-siti"))
+        input_str(input, "persona").and_then(persona_language) == Some("jv")
             || input_str(input, "level").is_some_and(|l| l.starts_with('j'))
+    }
+}
+
+/// The language a chat persona speaks (`content/personas/*.yaml`), for ids in
+/// either spelling (`mas-dimas`, `mas_dimas`). A test keeps it in step with
+/// the files.
+pub(crate) fn persona_language(id: &str) -> Option<&'static str> {
+    match canonical_persona_id(id).as_str() {
+        "mbak-gadis" | "mas-ardi" | "bu-lestari" | "bang-togar" | "kaka-yohana" => Some("id"),
+        "mas-dimas" | "bu-siti" | "mbah-putri" | "mbak-ayu" | "pak-slamet" => Some("jv"),
+        _ => None,
     }
 }
 
@@ -227,5 +236,27 @@ impl AiOutput for MindMap {
 
     fn input_needs_review(input: &Value) -> bool {
         input_is_javanese(input)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::persona_language;
+
+    #[test]
+    fn every_persona_file_has_its_language_listed() {
+        let dir = concat!(env!("CARGO_MANIFEST_DIR"), "/../../content/personas");
+        let mut seen = 0;
+        for entry in std::fs::read_dir(dir).unwrap() {
+            let path = entry.unwrap().path();
+            if path.extension().is_none_or(|e| e != "yaml") {
+                continue;
+            }
+            let p = crate::story::parse_persona(&std::fs::read_to_string(&path).unwrap()).unwrap();
+            assert_eq!(persona_language(&p.id), Some(p.language.as_str()), "{}", path.display());
+            assert_eq!(persona_language(&p.id.replace('-', "_")), Some(p.language.as_str()));
+            seen += 1;
+        }
+        assert!(seen >= 10, "found {seen} persona files");
     }
 }

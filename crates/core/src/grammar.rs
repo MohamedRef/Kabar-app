@@ -515,3 +515,4 @@ pub fn explain_input(text: &str, lang: Lang, voice: Voice, candidates: &[Candida
 
 #[cfg(test)]
 mod tests;
+pub mod word;

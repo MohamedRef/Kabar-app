@@ -268,3 +268,9 @@
   25% { transform: translateX(-4px); }
   75% { transform: translateX(4px); }
 }
+
+/* A bracketed group mixing Arabic and a Latin run, e.g. "(هو ngendika)":
+   isolated in the UI direction so its brackets pair up, and kept on one
+   line when short. */
+.bidi-group { unicode-bidi: isolate; }
+.bidi-group.nowrap { white-space: nowrap; }

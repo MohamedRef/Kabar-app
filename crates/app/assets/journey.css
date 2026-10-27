@@ -142,6 +142,12 @@
 .jm-level .unit-loop { stroke: var(--indigo); stroke-opacity: 0.45; stroke-width: 1.5; stroke-dasharray: 3 4; }
 .jm-level .unit-dot { fill: var(--surface); stroke: var(--indigo); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
 .jm-level .unit-dot.done { fill: var(--sawah); stroke: var(--sawah); }
+/* Pins too close to a neighbour (Bali, Lombok) sit a little apart at the
+   default zoom and slide home as the map zooms in: see `nudge_style`. */
+.jm-nudge {
+  --slide: max(0, var(--fade, 1) * var(--inv) - 1);
+  transform: translate(calc(var(--slide) * var(--nx, 0px)), calc(var(--slide) * var(--ny, 0px)));
+}
 .jm-pin { cursor: pointer; transform: scale(var(--inv)); outline: none; }
 .jm-pin .pin-hit { fill: transparent; }
 .jm-pin .pin-disc { fill: var(--pin-open); stroke: var(--indigo); stroke-width: 0.7; }
