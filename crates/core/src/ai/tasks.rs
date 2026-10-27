@@ -20,7 +20,7 @@ pub use content::{RadioLine, RadioScript};
 pub use practice::{
     CheckStrokes, Correction, GuessSketch, MapBranch, MindMap, ReadHandwriting, RoleplayTurn, UNCLEAR_SKETCH,
 };
-pub use reading::ExplainSentence;
+pub use reading::{ExplainSentence, LineTranslation, TranslateText};
 // structure_screenshot's answer lives with the rest of the screenshot code.
 pub use crate::reader::screen_ai::{ScreenKind, ScreenMessage, StructureScreenshot};
 pub use crate::reader::screenshot::Side;
@@ -72,6 +72,7 @@ pub fn check_reply(task: Task, text: &str, input: &Value) -> Result<Value, Strin
     match task {
         Task::AnalyzeText => run::<AnalyzeText>(text, input),
         Task::ExplainSentence => run::<ExplainSentence>(text, input),
+        Task::TranslateText => run::<TranslateText>(text, input),
         Task::GradeAnswer => run::<GradeAnswer>(text, input),
         Task::RoleplayTurn => run::<RoleplayTurn>(text, input),
         Task::LearnEntry => run::<crate::learn::LearnEntry>(text, input),
