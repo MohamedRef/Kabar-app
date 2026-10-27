@@ -667,7 +667,8 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
                         eprintln!("kabar: saving the lesson result failed: {e}");
                     }
                     // The new words join the review deck.
-                    if !episode && let Err(e) = store.add_lesson_cards(p.lesson()) {
+                    let approved = kabar_core::lesson::approves(&p.completed());
+                    if !episode && let Err(e) = store.add_lesson_cards(p.lesson(), approved) {
                         eprintln!("kabar: adding the lesson's words to review failed: {e}");
                     }
                     if !episode && let Err(e) = store.clear_position() {
@@ -1039,6 +1040,9 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
     let ui = use_context::<Ui>();
     let lang = ui.settings.read().ui_language;
     let target = target_tag(&lesson.language);
+    // Passed earlier with a reasonable score: the learner approved it.
+    let db = use_context::<Db>();
+    let approved = use_hook(|| db.0.borrow().approved_lessons().is_ok_and(|ids| ids.contains(&lesson.id)));
     let Some(slide) = lesson.slides.get(index).cloned() else { return rsx! {} };
     let language = lesson.language.clone();
     rsx! {
@@ -1046,7 +1050,7 @@ fn SlideView(lesson: LessonContent, index: usize, missing: Signal<bool>) -> Elem
             if index == 0 {
                 p { class: "lp-lesson-title",
                     bdi { lang: target, dir: "ltr", "{lesson.title}" }
-                    if !lesson.review.verified {
+                    if !lesson.review.verified && !approved {
                         span { class: "pill lp-draft", "{lt(lang, L::NotReviewed)}" }
                     }
                 }

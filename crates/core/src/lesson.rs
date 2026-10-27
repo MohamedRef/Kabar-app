@@ -958,6 +958,19 @@ impl Player {
     }
 }
 
+/// First-try score (0–100) at which finishing a lesson approves it.
+pub const APPROVE_SCORE: u32 = 80;
+
+/// Whether a finished lesson counts as approved by the learner, so its
+/// "not reviewed yet" flag comes off (Javanese included). The learner must
+/// score at least [`APPROVE_SCORE`] on the first try, with at least half of
+/// the gradable exercises actually answered rather than skipped.
+pub fn approves(done: &LessonCompleted) -> bool {
+    let count = |o: Outcome| done.results.iter().filter(|r| r.first == o).count();
+    let graded = count(Outcome::Correct) + count(Outcome::Almost) + count(Outcome::Missed);
+    graded > 0 && graded >= count(Outcome::Skipped) && done.score >= APPROVE_SCORE
+}
+
 /// Build-sentence tiles (answer words + distractors), shuffled by `seed` and
 /// the exercise id. Edge punctuation is dropped so a tile like "jumpa!"
 /// doesn't give away the sentence end (grading ignores it).
