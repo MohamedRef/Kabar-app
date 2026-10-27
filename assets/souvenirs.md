@@ -130,16 +130,16 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 | j2.u05 | Magetan | Telaga Sarangan (Lake Sarangan) | `j2.u05.png` |
 | j2.u06 | Ngawi | Benteng Pendem Ngawi (Benteng Pendem Ngawi) | `j2.u06.png` |
 
-## J3 · Solo (Surakarta)
+## J3 · Yogyakarta
 
 | unit | stop | souvenir | art |
 |---|---|---|---|
-| j3.u01 | Solo Balapan | Stasiun Solo Balapan (Solo Balapan station) | `j3.u01.png` |
-| j3.u02 | Pasar Gede | Pasar Gede (Pasar Gede) | `j3.u02.png` |
-| j3.u03 | Jalan Kaliurang | Kampung Batik Kauman (Kauman batik village) | `j3.u03.png` |
-| j3.u04 | Mangkunegaran | Pura Mangkunegaran (Pura Mangkunegaran) | `j3.u04.png` |
-| j3.u05 | Pasar Klewer | Batik Klewer (Batik from Klewer) | `j3.u05.png` |
-| j3.u06 | Laweyan | Rumah saudagar Laweyan (Laweyan merchants' houses) | `j3.u06.png` |
+| j3.u01 | Lempuyangan | Stasiun Lempuyangan (Lempuyangan station) | `j3.u01.png` |
+| j3.u02 | Pasar Kranggan | Pasar Kranggan (Pasar Kranggan) | `j3.u02.png` |
+| j3.u03 | Jalan Kaliurang | Kampung Kauman (Kampung Kauman) | `j3.u03.png` |
+| j3.u04 | Pakualaman | Pura Pakualaman (Pura Pakualaman) | `j3.u04.png` |
+| j3.u05 | Pasar Beringharjo | Batik Beringharjo (Batik from Beringharjo) | `j3.u05.png` |
+| j3.u06 | Giriloyo | Batik tulis Giriloyo (Giriloyo batik tulis) | `j3.u06.png` |
 
 ## J4 · Yogyakarta
 

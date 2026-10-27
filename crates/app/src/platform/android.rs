@@ -311,6 +311,34 @@ pub fn network_metered() -> Result<bool, String> {
     })
 }
 
+/// `Haptics.available(activity)`: the device has a vibration motor.
+pub fn has_vibrator() -> Result<bool, String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.Haptics"))?;
+        env.call_static_method(
+            &class,
+            jni_str!("available"),
+            jni_sig!("(Landroid/content/Context;)Z"),
+            &[JValue::Object(activity)],
+        )?
+        .z()
+    })
+}
+
+/// `Haptics.play(activity, kind)`.
+pub fn vibrate(kind: i32) -> Result<(), String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.Haptics"))?;
+        env.call_static_method(
+            &class,
+            jni_str!("play"),
+            jni_sig!("(Landroid/content/Context;I)V"),
+            &[JValue::Object(activity), JValue::Int(kind)],
+        )?;
+        Ok(())
+    })
+}
+
 /// `UpdateInstaller.showPendingConfirm(activity)`: the confirmation screen
 /// that arrived while Kabar was in the background.
 pub fn show_pending_confirm() -> Result<(), String> {

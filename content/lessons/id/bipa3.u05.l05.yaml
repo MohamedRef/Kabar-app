@@ -1,172 +1,234 @@
 schema: kabar.lesson/v1
 id: bipa3.u05.l05
 language: id
-title: Jurnal mingguan
+title: Mampir dan beristirahat
 can_do:
-  ar_eg: تكتب يومياتك عن أسبوعك، بالترتيب والأفعال المتعدية صح.
-  ar: أن تكتب يوميات أسبوعك مرتّبة، مستعملًا الأفعال المتعدية استعمالًا صحيحًا.
-  en: Write a weekly journal entry.
+  ar_eg: 'تحكي يوم مشغول: تخلّص ورق، تجهّز للرحلة، تعدّي على حد، وترتاح في الآخر.'
+  ar: 'أن تحكي يومًا مزدحمًا: تنهي الأوراق، وتستعد للرحلة، وتمرّ على أحد، ثم ترتاح.'
+  en: 'Recount a busy day: sort out paperwork, get ready for a trip, drop in on someone, then rest.'
+slides:
+  - title: Hari yang sibuk
+    body:
+      ar_eg: |
+        mengurus = يخلّص (ورق)، ياخد باله من: mengurus izin = يطلّع تصريح.
+        mengerjakan = يعمل (شغل، واجب)، menyelesaikan = يخلّص، ينهي.
+        menyiapkan = يجهّز، persiapan = تجهيز، استعداد.
+        mampir = يعدّي على (زيارة قصيرة). seharian = طول اليوم. beristirahat = يرتاح.
+      ar: |
+        mengurus = يتولّى، ينجز (الأوراق): mengurus izin = يستخرج تصريحًا.
+        mengerjakan = يعمل على (عمل، واجب)، menyelesaikan = يُنهي.
+        menyiapkan = يُعِدّ، persiapan = استعداد، تحضير.
+        mampir = يمرّ على (زيارة قصيرة). seharian = طوال اليوم. beristirahat = يستريح.
+      en: |
+        mengurus = take care of, sort out: mengurus izin = get a permit.
+        mengerjakan = work on, do (a task), menyelesaikan = finish, complete.
+        menyiapkan = prepare, persiapan = preparation.
+        mampir = drop in, stop by. seharian = all day. beristirahat = rest.
+    examples:
+      - text: Pagi ini saya mengurus izin mendaki.
+        ar_eg: الصبح ده طلّعت تصريح الطلوع.
+        ar: هذا الصباح استخرجت تصريح التسلّق.
+        en: This morning I sorted out the climbing permit.
+      - text: Setelah menyelesaikan pekerjaan, saya mampir ke warung.
+        ar_eg: بعد ما خلّصت الشغل، عدّيت على الوارونج.
+        ar: بعد أن أنهيت العمل مررت بالمطعم الشعبي.
+        en: After finishing work, I stopped by the warung.
+      - text: Kami beristirahat seharian sebelum mendaki.
+        ar_eg: ارتحنا طول اليوم قبل الطلوع.
+        ar: استرحنا طوال اليوم قبل التسلّق.
+        en: We rested all day before the climb.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: jurnal
-        ar_eg: يوميات (مذكّرات)
-        ar: يوميات
-        en: journal, diary
-      - text: mencatat
-        ar_eg: يدوّن، يكتب ملاحظة
-        ar: يدوّن
-        en: to note down
-      - text: sesampainya
-        ar_eg: أول ما وصل
-        ar: حين وصل
-        en: on arriving
-      - text: keesokan harinya
-        ar_eg: تاني يوم
-        ar: في اليوم التالي
-        en: the next day
-    words: [jurnal, mencatat, sesampainya, keesokan harinya]
+      - text: mengurus
+        ar_eg: يخلّص (ورق)
+        ar: يتولّى، ينجز
+        en: sort out
+      - text: mengerjakan
+        ar_eg: يعمل (شغل)
+        ar: يعمل على
+        en: work on
+      - text: menyelesaikan
+        ar_eg: يخلّص، ينهي
+        ar: يُنهي
+        en: finish
+      - text: menyiapkan
+        ar_eg: يجهّز
+        ar: يُعِدّ
+        en: prepare
+    words: [mengurus, mengerjakan, menyelesaikan, menyiapkan]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة ترتيبها صح في اليوميات؟
-      ar: أيّ جملة ترتيبها صحيح في اليوميات؟
-      en: Which journal sentence has the right word order?
-    options: ["Hari Selasa saya mengirim surat ke Kairo.", "Saya mengirim hari Selasa surat ke Kairo.", "Saya hari Selasa surat mengirim ke Kairo."]
-    answer: 0
-    explain:
-      ar_eg: الفعل والمفعول (mengirim surat) لازقين؛ الوقت في الأول أو الآخر.
-      ar: الفعل ومفعوله (mengirim surat) متلازمان، والزمان أولًا أو آخرًا.
-      en: Verb and object (mengirim surat) stay together; time goes first or last.
+    type: match_pairs
+    pairs:
+      - text: persiapan
+        ar_eg: تجهيز
+        ar: استعداد
+        en: preparation
+      - text: mampir
+        ar_eg: يعدّي على
+        ar: يمرّ على
+        en: drop in
+      - text: seharian
+        ar_eg: طول اليوم
+        ar: طوال اليوم
+        en: all day
+      - text: beristirahat
+        ar_eg: يرتاح
+        ar: يستريح
+        en: rest
+    words: [persiapan, mampir, seharian, beristirahat]
   - id: e03
     type: listen
-    text: Senin pagi saya menyapu kamar. Siangnya saya membayar tagihan listrik. Malamnya saya mencatat semuanya di jurnal.
+    text: Nanti sore saya mampir ke rumahmu sebentar, ya.
     question:
-      ar_eg: عمل إيه يوم الاتنين الضهر؟
-      ar: ماذا فعل ظهر يوم الاثنين؟
-      en: What did he do on Monday at midday?
-    options: ["menyapu kamar", "membayar tagihan listrik", "menjemur cucian"]
-    answer: 1
+      ar_eg: هيعمل إيه؟
+      ar: ماذا سيفعل؟
+      en: What will he do?
+    options: [هيعدّي عليه شوية, هينام عنده, هيكلمه في التليفون]
+    answer: 0
     meaning:
-      ar_eg: يوم الاتنين الصبح كنست الأوضة. الضهر دفعت فاتورة الكهربا. وبالليل كتبت كل ده في اليوميات.
-      ar: صباح الاثنين كنستُ الغرفة، وظهرًا دفعتُ فاتورة الكهرباء، ومساءً دوّنتُ ذلك كله في يومياتي.
-      en: On Monday morning I swept my room. At midday I paid the electricity bill. In the evening I noted it all in my journal.
-    words: [jurnal, mencatat, membayar, tagihan]
+      ar_eg: العصر هعدّي عليك شوية.
+      ar: سأمرّ ببيتك قليلًا بعد العصر.
+      en: I'll drop by your place for a bit this afternoon.
+    words: [mampir]
   - id: e04
     type: fill_blank
-    sentence: Setiap malam saya ___ kegiatan saya di jurnal.
+    sentence: Saya harus ___ tugas ini sebelum hari Jumat.
     meaning:
-      ar_eg: كل ليلة بدوّن أنشطتي في اليوميات.
-      ar: أدوّن أنشطتي في يومياتي كل ليلة.
-      en: Every evening I note down my activities in my journal.
-    options: [membayar, mendaki, mencatat]
-    answers: [mencatat]
-    words: [mencatat]
+      ar_eg: لازم ___ المهمة دي قبل الجمعة.
+      ar: يجب أن ___ هذه المهمة قبل الجمعة.
+      en: I have to ___ this task before Friday.
+    options: [seharian, menyelesaikan, persiapan]
+    answers: [menyelesaikan]
+    words: [menyelesaikan, seharian, persiapan]
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: كلمة معناها «طول اليوم»؟
+      ar: أي كلمة تعني «طوال اليوم»؟
+      en: Which word means 'all day'?
+    options: [mampir, mengurus, seharian]
+    answer: 2
+    explain:
+      ar_eg: seharian = طول اليوم (se- + hari + -an).
+      ar: seharian = طوال اليوم (se- + hari + -an).
+      en: seharian = all day (se- + hari + -an).
+    words: [seharian, mampir, mengurus]
+  - id: e06
+    type: fill_blank
+    sentence: Ibu sedang ___ makan malam di dapur.
+    meaning:
+      ar_eg: ماما بتـ ___ العشا في المطبخ.
+      ar: أمي ___ العشاء في المطبخ.
+      en: Mum is ___ dinner in the kitchen.
+    options: [menyiapkan, beristirahat, mengerjakan]
+    answers: [menyiapkan]
+    words: [menyiapkan, beristirahat, mengerjakan]
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: يوم الأربع كويت هدومي.
-      ar: يوم الأربعاء كويتُ ثيابي.
-      en: On Wednesday I ironed my clothes.
-    answer: Hari Rabu saya menyetrika baju.
-    alternatives: ["Saya menyetrika baju hari Rabu."]
-    distractors: [di, kemarin]
-    words: [menyetrika]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: يوم الخميس عم سهدان إدّاني خريطة.
-      ar: يوم الخميس أعطاني السيد سهدان خريطة.
-      en: On Thursday Pak Sahdan gave me a map.
-    answers:
-      - Hari Kamis Pak Sahdan memberi saya peta.
-      - Hari Kamis Pak Sahdan memberi saya peta
-      - Hari Kamis, Pak Sahdan memberi saya peta.
-      - Pak Sahdan memberi saya peta hari Kamis.
-      - Hari Kamis Pak Sahdan memberikan peta kepada saya.
-      - Pak Sahdan memberikan peta kepada saya hari Kamis.
-      - Pada hari Kamis Pak Sahdan memberi saya peta.
-      - Pada hari Kamis, Pak Sahdan memberikan peta kepada saya.
-      - Hari Kamis Pak Sahdan memberi aku peta.
-    words: [memberi, memberikan]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: كل ليلة بكتب يومياتي.
-      ar: أكتب يومياتي كل ليلة.
-      en: Every evening I write my journal.
-    answers:
-      - Setiap malam saya menulis jurnal.
-      - Setiap malam saya menulis jurnal
-      - Setiap malam saya menulis jurnal saya.
-      - Saya menulis jurnal setiap malam.
-      - Tiap malam saya menulis jurnal.
-      - Setiap malam aku menulis jurnal.
-      - Setiap malam saya menulis di jurnal.
-    words: [jurnal]
+      ar_eg: أخويا بيعمل الواجب في أوضته.
+      ar: أخي يحلّ واجبه في غرفته.
+      en: My brother is doing his homework in his room.
+    answer: Adik saya mengerjakan PR di kamarnya.
+    distractors: [mampir, persiapan]
+    words: [mengerjakan]
   - id: e08
-    type: dictation
-    text: Keesokan harinya, saya mengantar Rina ke bandara.
-    meaning:
-      ar_eg: تاني يوم، وصّلت رينا المطار.
-      ar: في اليوم التالي أوصلتُ رينا إلى المطار.
-      en: The next day, I took Rina to the airport.
-    words: [keesokan harinya, mengantar]
+    type: translate
+    direction: from_target
+    source_text: Persiapan untuk mendaki Rinjani sudah selesai.
+    answers_meaning:
+      ar_eg: [التجهيز لطلوع رينجاني خلص, خلّصنا التجهيز لطلوع جبل رينجاني]
+      ar: [انتهى الاستعداد لتسلّق رينجاني, اكتمل التحضير لصعود رينجاني]
+      en: [The preparations for climbing Rinjani are done, Preparation for the Rinjani climb is finished]
+    words: [persiapan]
   - id: e09
     type: speaking
-    text: Minggu ini sangat berkesan. Saya mencatat semuanya di jurnal.
+    text: Setelah menyelesaikan semuanya, saya mau beristirahat seharian.
     meaning:
-      ar_eg: الأسبوع ده فضل في بالي جدًا. كتبت كل حاجة في اليوميات.
-      ar: كان هذا الأسبوع لا يُنسى، ودوّنتُ كل شيء في يومياتي.
-      en: This week was really memorable. I noted everything down in my journal.
-    words: [mencatat, jurnal]
+      ar_eg: بعد ما أخلّص كل حاجة، عايز أرتاح طول اليوم.
+      ar: بعد أن أُنهي كل شيء، أريد أن أستريح طوال اليوم.
+      en: After finishing everything, I want to rest all day.
+    words: [menyelesaikan, beristirahat, seharian]
+  - id: e10
+    type: multiple_choice
+    question: Saya menyiapkan tas, dan Pak Sahdan ___ izin untuk mendaki.
+    options: [beristirahat, mengurus, persiapan]
+    answer: 1
+    explain:
+      ar_eg: mengurus izin = يطلّع تصريح.
+      ar: mengurus izin = يستخرج تصريحًا.
+      en: mengurus izin = sort out a permit.
+    words: [mengurus, beristirahat, persiapan, menyiapkan]
 dialogue:
-  title: Jurnal Mohamed
   lines:
-    - speaker: Bu Yanti
-      text: Mohamed, kamu menulis apa?
-      ar_eg: يا محمد، بتكتب إيه؟
-      ar: يا محمد، ماذا تكتب؟
-      en: Mohamed, what are you writing?
+    - speaker: Rina
+      text: Mohamed, kamu sibuk hari ini?
+      ar_eg: يا محمد، إنت مشغول النهارده؟
+      ar: يا محمد، هل أنت مشغول اليوم؟
+      en: Mohamed, are you busy today?
     - speaker: Mohamed
-      text: Jurnal mingguan, Bu. Saya mencatat kegiatan saya setiap hari.
-      ar_eg: يوميات الأسبوع يا حاجة. بدوّن اللي بعمله كل يوم.
-      ar: يوميات الأسبوع يا سيدتي؛ أدوّن أنشطتي كل يوم.
-      en: My weekly journal, Bu. I note down what I do every day.
-    - speaker: Bu Yanti
-      text: Bagus! Coba baca satu hari.
-      ar_eg: حلو! اقرالي يوم واحد.
-      ar: جميل! اقرأ لي يومًا واحدًا.
-      en: Lovely! Read me one day.
+      text: Ya, seharian. Pagi saya mengurus izin mendaki, lalu menyiapkan tas.
+      ar_eg: أيوه، طول اليوم. الصبح خلّصت تصريح الطلوع، وبعدين جهّزت الشنطة.
+      ar: نعم، طوال اليوم. صباحًا استخرجت تصريح التسلّق ثم جهّزت الحقيبة.
+      en: Yes, all day. This morning I got the climbing permit, then packed my bag.
+    - speaker: Rina
+      text: Persiapanmu sudah selesai?
+      ar_eg: خلّصت تجهيزاتك؟
+      ar: هل انتهت استعداداتك؟
+      en: Are your preparations done?
     - speaker: Mohamed
-      text: '"Hari Selasa saya mendaki Rinjani. Para porter membawa tenda dan bekal."'
-      ar_eg: «يوم التلات طلعت رينجاني. الشيّالين شالوا الخيم والزوّادة».
-      ar: «يوم الثلاثاء صعدتُ رينجاني، وحمل الحمّالون الخيام والزاد».
-      en: '"On Tuesday I climbed Rinjani. The porters carried the tents and the food."'
-    - speaker: Bu Yanti
-      text: Lalu?
-      ar_eg: وبعدين؟
-      ar: ثم؟
-      en: And then?
-    - speaker: Mohamed
-      text: '"Keesokan harinya, saya melihat matahari terbit dari puncak."'
-      ar_eg: «تاني يوم شفت الشروق من القمّة».
-      ar: «في اليوم التالي رأيتُ شروق الشمس من القمّة».
-      en: '"The next day, I saw the sunrise from the summit."'
+      text: Hampir. Saya masih mengerjakan tugas kantor sedikit.
+      ar_eg: تقريبًا. لسه بعمل شوية شغل للمكتب.
+      ar: تقريبًا. ما زلت أعمل على بعض مهام المكتب.
+      en: Almost. I'm still doing a bit of office work.
+    - speaker: Rina
+      text: Nanti malam mampir ke warung, ya. Lalu beristirahat!
+      ar_eg: بالليل عدّي على الوارونج. وبعدين ارتاح!
+      ar: مُرّ بالمطعم مساءً، ثم استرح!
+      en: Drop by the warung tonight. Then get some rest!
 new_words:
-  - word: jurnal
-    pos: noun
-    ar_eg: يوميات، مذكّرات
-    ar: يوميات
-    en: journal, diary
-  - word: mencatat
+  - word: mengurus
     pos: verb
-    ar_eg: يدوّن، يكتب ملاحظة
-    ar: يدوّن
-    en: to note down
+    ar_eg: يخلّص (ورق)، ياخد باله من
+    ar: يتولّى، يُنجز
+    en: take care of, sort out
+  - word: mengerjakan
+    pos: verb
+    ar_eg: يعمل (شغل، واجب)
+    ar: يعمل على، يُنجز
+    en: work on, do
+  - word: menyelesaikan
+    pos: verb
+    ar_eg: يخلّص، ينهي
+    ar: يُنهي، يُكمل
+    en: finish, complete
+  - word: menyiapkan
+    pos: verb
+    ar_eg: يجهّز
+    ar: يُعِدّ، يُحضّر
+    en: prepare
+  - word: persiapan
+    pos: noun
+    ar_eg: تجهيز، استعداد
+    ar: استعداد، تحضير
+    en: preparation
+  - word: mampir
+    pos: verb
+    ar_eg: يعدّي على
+    ar: يمرّ على
+    en: drop in, stop by
+  - word: seharian
+    pos: adverb
+    ar_eg: طول اليوم
+    ar: طوال اليوم
+    en: all day
+  - word: beristirahat
+    pos: verb
+    ar_eg: يرتاح
+    ar: يستريح
+    en: rest
 review:
   status: draft
   verified: false

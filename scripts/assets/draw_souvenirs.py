@@ -2191,12 +2191,12 @@ def benteng_pendem():
     return "".join(z)
 
 
-# ---------------------------------------------------------------- J3 · Solo
+# ---------------------------------------------------------------- J3 · Jogja
 
 
 @scene("j3.u01")
-def solo_balapan():
-    """Solo Balapan station: the green-roofed hall and a train pulling in."""
+def lempuyangan():
+    """Lempuyangan station: the green-roofed hall and a train pulling in."""
     z = [sky(sun=(760, 260), r=70)]
     z.append(rect(200, 420, 624, 280, P, 4, C, 7))
     z.append(path("M170 430 L854 430 L780 320 L244 320Z", G, C, 7) + path("M400 320 L624 320 L560 250 L464 250Z", G, C, 6))
@@ -2208,8 +2208,8 @@ def solo_balapan():
 
 
 @scene("j3.u02")
-def pasar_gede():
-    """Pasar Gede: the market's broad gateway roof, fruit baskets in front."""
+def pasar_kranggan():
+    """Pasar Kranggan: the old market's broad roof, fruit baskets in front."""
     z = [sky(sun=(250, 260), r=70)]
     z.append(rect(150, 500, 724, 300, P, 4, C, 7))
     z.append(path("M120 510 L904 510 L840 420 L184 420Z", "#6E5A50", C, 7))
@@ -2227,8 +2227,8 @@ def pasar_gede():
 
 
 @scene("j3.u04")
-def mangkunegaran():
-    """Pura Mangkunegaran: the great open pendopo under its joglo roof."""
+def pakualaman():
+    """Pura Pakualaman: the open pendopo under its joglo roof."""
     z = [sky(sun=(780, 250), r=60)]
     z.append(rect(X0, 760, W, 212, S))
     z.append(joglo(512, 780, 640, 160, "#4F6A50", 7))
@@ -2241,17 +2241,25 @@ def mangkunegaran():
 
 
 @scene("j3.u06")
-def laweyan():
-    """Laweyan: a merchant's high-walled lane, batik cloth drying on bamboo poles."""
-    z = [sky(sun=(512, 240), r=60)]
-    z.append(path("M126 300 L380 360 L380 972 L126 972Z", P, C, 6) + path("M898 300 L644 360 L644 972 L898 972Z", "#E3C9A8", C, 6))
-    z.append(path("M380 360 L644 360 L644 520 L380 520Z", "#6E5A50", C, 5) + path("M380 360 L512 300 L644 360", G, C, 5))
-    z.append(path("M380 972 L460 600 L564 600 L644 972Z", S, C, 4))
-    z.append(path("M160 420 L340 450 M160 500 L340 520", stroke=C, sw=3, op=0.3) + rect(220, 640, 100, 180, D, 40, C, 5))
-    z.append(line(126, 560, 898, 560, D, 8))
-    for k, (x, col) in enumerate(((220, I), (360, "#B8582E"), (560, I), (700, "#B8582E"))):
-        z.append(rect(x, 560, 110, 220, col, 0, C, 5))
-        z.append("".join(kawung(x + 30 + (j % 2) * 50, 600 + (j // 2) * 50, 0.4, 0.6) for j in range(8)))
+def giriloyo():
+    """Giriloyo: batik drawn in an open pendopo below the stairway to the Imogiri hill graves."""
+    z = [sky(sun=(700, 250), r=60), hills()]
+    z.append(path("M300 780 Q420 520 540 390 Q660 520 800 780Z", G, C, 5))  # the Imogiri hill
+    z.append(path("M520 420 L560 420 L640 760 L560 760Z", S, C, 4))  # the long stairway up the hill
+    for k in range(9):
+        y = 450 + k * 34
+        z.append(line(526 + k * 9, y, 562 + k * 9 + 8, y, C, 2, 0.5))
+    z.append(rect(500, 360, 80, 60, P, 3, C, 5) + path("M488 362 L592 362 L540 318Z", "#6E5A50", C, 5))  # the gate at the top
+    z.append(tree(220, 700, 0.8) + tree(860, 690, 0.7))
+    z.append(joglo(400, 900, 480, 130, "#4F6A50", 5))
+    for k, x in enumerate((300, 420, 540)):  # women drawing batik at their frames
+        z.append(rect(x - 46, 830, 92, 50, P, 3, C, 4))
+        z.append("".join(kawung(x - 22 + j * 22, 848, 0.25, 0.7) for j in range(3)))
+        z.append(person(x, 900, 0.6, (I, "#B8582E", I)[k], scarf=C))
+    z.append(line(680, 700, 680, 960, D, 8) + line(880, 700, 880, 960, D, 8) + line(670, 712, 890, 712, D, 8))
+    for x, col in ((700, I), (790, "#B8582E")):
+        z.append(rect(x, 712, 80, 180, col, 0, C, 5))
+        z.append("".join(kawung(x + 22 + (j % 2) * 36, 750 + (j // 2) * 44, 0.35, 0.6) for j in range(6)))
     return "".join(z)
 
 
