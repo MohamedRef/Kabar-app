@@ -188,7 +188,9 @@ pub fn plan_for(db: &Db, profile: &CoachProfile, events: &[ActivityEvent], date:
     if let Ok(Some(plan)) = db.0.borrow().plan_for(date) {
         return plan;
     }
-    let due = crate::review::due_words(db, crate::store::now_ms()).len() as u32;
+    let settings = db.0.borrow().settings().unwrap_or_default();
+    let sched = crate::schedule::scheduler_at(profile.utc_offset_min, &settings);
+    let due = crate::review::due_words(db, &sched, crate::store::now_ms()).len() as u32;
     let plan = build_plan(db, due, profile, events, date, profile.daily_size, false);
     if let Err(e) = db.0.borrow_mut().save_plan(&plan) {
         eprintln!("kabar: saving today's plan failed: {e}");
@@ -210,8 +212,10 @@ pub fn use_clock(coach: Coach, db: Db) {
         async move {
             let mut eval = document::eval(
                 r#"
-                const send = () => dioxus.send(new Date().getTimezoneOffset());
+                // Once a minute while Kabar is on screen, and right as it comes back.
+                const send = () => { if (!document.hidden) dioxus.send(new Date().getTimezoneOffset()); };
                 setInterval(send, 60000);
+                document.addEventListener("visibilitychange", send);
                 send();
                 await new Promise(() => {});
                 "#,

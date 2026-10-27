@@ -21,6 +21,8 @@ thiserror.workspace = true
 rusqlite = { version = "0.41", features = ["bundled"] }
 uuid = { version = "1", features = ["v4", "v7"] }
 futures-channel = "0.3"
+# Unpacks the content build.rs compresses (pure Rust, already in the tree).
+miniz_oxide = "0.8"
 
 # Kabar Cloud client: TLS is rustls + ring with webpki roots everywhere, so the
 # Android build needs no Java trust-store glue.
@@ -55,6 +57,9 @@ objc2-core-foundation = { version = "0.3", default-features = false, features = 
 objc2-core-graphics = { version = "0.3", default-features = false, features = ["std", "CGImage"] }
 objc2-image-io = { version = "0.3", default-features = false, features = ["std", "CGImageProperties", "CGImageSource", "objc2-core-graphics"] }
 objc2-vision = { version = "0.3", default-features = false, features = ["std", "VNObservation", "VNRecognizeTextRequest", "VNRequest", "VNRequestHandler", "VNTypes", "objc2-core-foundation", "objc2-core-graphics", "objc2-image-io"] }
+
+[build-dependencies]
+miniz_oxide = "0.8"
 
 [dev-dependencies]
 tempfile = "3"

@@ -67,26 +67,23 @@ exercises:
     words: [kosong]
   - id: e04
     type: fill_blank
-    sentence: Boleh saya ___ kamarnya?
+    sentence: Sewanya sejuta ___.
     meaning:
-      ar_eg: ممكن أشوف الأوضة؟
-      ar: هل يمكنني رؤية الغرفة؟
-      en: May I see the room?
-    answers: [lihat, melihat]
-    explain:
-      ar_eg: في الكلام العادي بيقولوا lihat، وmelihat صح برضه.
-      ar: lihat شائعة في الكلام، وmelihat صحيحة أيضًا.
-      en: lihat is usual in speech; melihat is also correct.
-    words: [lihat]
+      ar_eg: الإيجار مليون في الشهر.
+      ar: الإيجار مليون في الشهر.
+      en: The rent is a million a month.
+    options: [sebulan, listrik, lemari]
+    answers: [sebulan]
+    words: [sewa, sebulan]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: الحمّام جوّه ولا بره؟
-      ar: هل الحمّام في الداخل أم في الخارج؟
-      en: Is the bathroom inside or outside?
-    answer: Kamar mandinya di dalam atau di luar?
-    distractors: [seberang, tidur]
-    words: [kamar mandi, dalam, luar]
+      ar_eg: فيه دولاب في الأوضة دي؟
+      ar: هل في تلك الغرفة خزانة؟
+      en: Is there a wardrobe in that room?
+    answer: Ada lemari di kamar itu?
+    distractors: [listrik, kosong]
+    words: [lemari]
   - id: e06
     type: build_sentence
     source:
@@ -97,14 +94,15 @@ exercises:
     distractors: [kosong, belum]
     words: [sewa, termasuk, listrik]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: لو سمحتي يا مدام، فيه أوضة فاضية؟
-      ar: عفوًا يا سيدتي، هل توجد غرفة شاغرة؟
-      en: Excuse me, ma'am, is there a free room?
-    answers: ['Permisi, Bu. Ada kamar kosong?', 'Permisi, Bu, ada kamar kosong?', 'Permisi, Bu. Ada kamar kosong', 'Permisi, Bu, ada kamar kosong', 'Permisi, Bu. Apakah ada kamar kosong?', 'Permisi, Bu, apakah ada kamar kosong?', 'Permisi, Bu. Masih ada kamar kosong?']
-    words: [kosong]
+    type: listen
+    text: Ada lemari, tapi listriknya belum termasuk.
+    options: ['Ada lemari, tapi listriknya belum termasuk.', 'Ada lemari, dan listriknya sudah termasuk.', 'Tidak ada lemari, tapi listriknya sudah termasuk.']
+    answer: 0
+    meaning:
+      ar_eg: فيه دولاب، بس الكهربا مش شاملة.
+      ar: توجد خزانة، لكن الكهرباء غير مشمولة.
+      en: There's a wardrobe, but electricity isn't included.
+    words: [lemari, listrik, termasuk]
   - id: e08
     type: translate
     direction: to_target
@@ -124,12 +122,12 @@ exercises:
     words: [kosong, lantai]
   - id: e10
     type: speaking
-    text: Boleh saya lihat kamarnya, Bu?
+    text: Berapa sewanya sebulan? Ada lemari?
     meaning:
-      ar_eg: ممكن أشوف الأوضة يا مدام؟
-      ar: هل يمكنني رؤية الغرفة يا سيدتي؟
-      en: May I see the room, ma'am?
-    words: [lihat]
+      ar_eg: الإيجار كام في الشهر؟ فيه دولاب؟
+      ar: كم الإيجار في الشهر؟ هل توجد خزانة؟
+      en: How much is the rent a month? Is there a wardrobe?
+    words: [sewa, sebulan, lemari]
 dialogue:
   title: Kos Bu Yanti
   lines:

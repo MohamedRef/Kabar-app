@@ -60,7 +60,7 @@ exercises:
     pairs:
       - text: demam
         ar_eg: سخونية
-        ar: حمّى
+        ar: حُمّى
         en: fever
       - text: batuk
         ar_eg: كحة
@@ -70,11 +70,19 @@ exercises:
         ar_eg: رشح
         ar: زكام
         en: runny nose
-      - text: pusing
-        ar_eg: دايخ
-        ar: دوار
-        en: dizzy
-    words: [demam, batuk, pilek, pusing]
+      - text: mual
+        ar_eg: نفسي غامّة
+        ar: غثيان
+        en: nauseous
+      - text: lemas
+        ar_eg: هبطان، مفيش طاقة
+        ar: واهن
+        en: weak, drained
+      - text: masuk angin
+        ar_eg: دور برد خفيف (حرفيًا «الهوا دخل»)
+        ar: نزلة برد خفيفة
+        en: a chill (lit. wind got in)
+    words: [demam, batuk, pilek, mual, lemas, masuk angin]
   - id: e02
     type: fill_blank
     sentence: Saya merasa ___.
@@ -106,14 +114,15 @@ exercises:
     answer: 1
     words: [sejak]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا سخن. (عندي سخونية)
-      ar: عندي حمّى.
-      en: I have a fever.
-    answers: [Saya demam., Saya demam, Aku demam., Aku demam, Saya sedang demam., Saya sakit demam.]
-    words: [demam]
+    type: listen
+    text: Saya merasa mual dan lemas.
+    options: [Saya merasa mual dan lemas., Saya merasa pusing dan lemas., Saya masuk angin dan pilek.]
+    answer: 0
+    meaning:
+      ar_eg: حاسس إن نفسي غامّة وجسمي هبطان.
+      ar: أشعر بالغثيان والوهن.
+      en: I feel nauseous and weak.
+    words: [merasa, mual, lemas, pusing, masuk angin, pilek]
   - id: e06
     type: translate
     direction: from_target
@@ -131,6 +140,29 @@ exercises:
       ar: يا دكتور، عندي حمّى وصداع منذ أمس.
       en: Doctor, I've had a fever and a headache since yesterday.
     words: [demam, sakit kepala, sejak]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «رشح» (مناخيرك بتنقّط)؟
+      ar: أيّ كلمة تعني «زكام» (سيلان الأنف)؟
+      en: Which word means "runny nose"?
+    options: [batuk, pilek, masuk angin]
+    answer: 1
+    explain:
+      ar_eg: batuk = كحة، وmasuk angin = دور برد خفيف بتسمعه كتير في إندونيسيا.
+      ar: batuk = سعال، وmasuk angin = نزلة برد خفيفة تُذكر كثيرًا في إندونيسيا.
+      en: batuk = cough; masuk angin = a mild chill, a very common Indonesian complaint.
+    words: [pilek, batuk, masuk angin]
+  - id: e09
+    type: fill_blank
+    sentence: Saya ___ mual sejak pagi.
+    meaning:
+      ar_eg: حاسس إن نفسي غامّة من الصبح.
+      ar: أشعر بالغثيان منذ الصباح.
+      en: I've been feeling nauseous since the morning.
+    options: [merasa, batuk, sakit]
+    answers: [merasa]
+    words: [merasa, mual]
 dialogue:
   title: Setelah berenang di Amed
   lines:

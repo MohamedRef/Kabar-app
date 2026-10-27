@@ -21,7 +21,7 @@ use self::player::ProgramPlayer;
 use self::text::{T, tt};
 use crate::audio::AudioCache;
 use crate::coach::Coach;
-use crate::lesson::embedded::{RADIO, STORIES};
+use crate::embedded::{self, RADIO, STORIES};
 use crate::lesson::{EpisodeQuiz, Rich, target_tag};
 use crate::{Db, Ui};
 
@@ -34,14 +34,12 @@ struct Shows {
 }
 
 static SHOWS: LazyLock<Shows> = LazyLock::new(|| {
-    let mut sinetron: Vec<_> = STORIES
-        .iter()
-        .map(|(id, yaml)| parse_story(yaml).map_err(|e| (id.to_string(), e.to_string())))
+    let mut sinetron: Vec<_> = embedded::all(STORIES)
+        .map(|(id, yaml)| parse_story(&yaml).map_err(|e| (id.to_string(), e.to_string())))
         .collect();
     sinetron.sort_by_key(|s| s.as_ref().map_or(u32::MAX, |s| s.episode));
-    let radio = RADIO
-        .iter()
-        .map(|(id, yaml)| parse_radio(yaml).map_err(|e| (id.to_string(), e.to_string())))
+    let radio = embedded::all(RADIO)
+        .map(|(id, yaml)| parse_radio(&yaml).map_err(|e| (id.to_string(), e.to_string())))
         .collect();
     Shows { sinetron, radio }
 });
@@ -339,7 +337,7 @@ fn RadioEnd(episode: RadioEpisode) -> Element {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::lesson::embedded::PERSONAS;
+    use crate::embedded::{self, PERSONAS};
 
     #[test]
     fn every_shipped_episode_and_persona_parses() {
@@ -367,8 +365,8 @@ mod tests {
                 r.segments.iter().map(|s| s.lines.len()).sum::<usize>()
             );
         }
-        for (id, yaml) in PERSONAS {
-            let p = kabar_core::story::parse_persona(yaml).unwrap();
+        for (id, yaml) in embedded::all(PERSONAS) {
+            let p = kabar_core::story::parse_persona(&yaml).unwrap();
             assert_eq!(&p.id, id);
         }
         // Episodes come in order.
