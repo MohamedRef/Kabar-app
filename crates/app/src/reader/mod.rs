@@ -54,7 +54,7 @@ pub fn warm_up() {
             let t = std::time::Instant::now();
             glossary();
             // `just logs` shows it: the cold first popover waits at most this long.
-            eprintln!("kabar: glossary ready in {} ms", t.elapsed().as_millis());
+            crate::diag::report!("glossary ready in {} ms", t.elapsed().as_millis());
         });
     });
 }
@@ -135,7 +135,7 @@ impl ReaderState {
     /// A store write didn't happen: say so kindly, and leave the screen as
     /// it was so it never shows something saved that isn't.
     pub fn write_failed(mut self, what: &str, e: &dyn std::fmt::Display) {
-        eprintln!("kabar: {what} failed: {e}");
+        crate::diag::report!("{what} failed: {e}");
         self.toast.set(Some(Msg::ReaderWriteFailed));
     }
 
@@ -455,7 +455,7 @@ fn open_new(
             Some(text)
         }
         Err(e) => {
-            eprintln!("kabar: saving text failed: {e}");
+            crate::diag::report!("saving text failed: {e}");
             None
         }
     }
@@ -506,7 +506,7 @@ fn run_ocr(
                 }
             }
             Err(e) => {
-                eprintln!("kabar: OCR failed: {e}");
+                crate::diag::report!("OCR failed: {e}");
                 st.toast.set(Some(Msg::OcrFailed));
             }
         }
@@ -535,7 +535,7 @@ fn refine_with_ai(
         let answer = match ai.0.run::<StructureScreenshot>(&req).await {
             Ok(a) => a,
             Err(e) => {
-                eprintln!("kabar: structure_screenshot failed, keeping the on-device layout: {e:?}");
+                crate::diag::report!("structure_screenshot failed, keeping the on-device layout: {e:?}");
                 return;
             }
         };
@@ -563,7 +563,7 @@ fn refine_with_ai(
                 }
                 recent.set(db.0.borrow().recent_texts(12).unwrap_or_default());
             }
-            Err(e) => eprintln!("kabar: saving the AI layout failed: {e}"),
+            Err(e) => crate::diag::report!("saving the AI layout failed: {e}"),
         }
     });
 }
@@ -583,7 +583,7 @@ fn import_url(
         let page = match page {
             Ok(p) => p,
             Err(e) => {
-                eprintln!("kabar: importing {url} failed: {e}");
+                crate::diag::report!("importing {url} failed: {e}");
                 let mut t = st.toast;
                 t.set(Some(Msg::UrlImportFailed));
                 return;
@@ -595,7 +595,7 @@ fn import_url(
                 st.load(&db, text);
                 recent.set(db.0.borrow().recent_texts(12).unwrap_or_default());
             }
-            Err(e) => eprintln!("kabar: saving the page failed: {e}"),
+            Err(e) => crate::diag::report!("saving the page failed: {e}"),
         }
     });
 }
@@ -618,7 +618,7 @@ async fn stash_image(file: &FileData) -> Result<std::path::PathBuf, String> {
 /// resume check may take it first; either way it arrives once.
 fn pick_native(st: ReaderState, inbox: Inbox) {
     if let Err(e) = platform::pick_image() {
-        eprintln!("kabar: opening the photo picker failed: {e}");
+        crate::diag::report!("opening the photo picker failed: {e}");
         let mut t = st.toast;
         t.set(Some(Msg::PickFailed));
         return;
@@ -672,7 +672,7 @@ fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Eleme
                 match stash_image(&file).await {
                     Ok(path) => run_ocr(db, st, busy, recent, path, None),
                     Err(e) => {
-                        eprintln!("kabar: reading the image failed: {e}");
+                        crate::diag::report!("reading the image failed: {e}");
                         let mut t = st.toast;
                         t.set(Some(Msg::OcrFailed));
                     }
