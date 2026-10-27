@@ -1,5 +1,6 @@
 //! The Mac menu bar: Kabar › Settings… (⌘,), the standard Edit and Window
-//! menus (so ⌘C, ⌘V and ⌘W work as everywhere else), and Go with ⌘1–⌘7.
+//! menus (so ⌘C, ⌘V and ⌘W work as everywhere else), Go with ⌘1–⌘7, and
+//! Help › Keyboard Shortcuts (also the "?" key).
 //! Built on every desktop so it is type-checked here; only macOS installs it.
 
 use dioxus::desktop::muda::accelerator::{Accelerator, Code, Modifiers};
@@ -97,8 +98,29 @@ pub fn menu_bar() -> Menu {
     menu
 }
 
-/// Answers the menu's own items.
+/// Answers the menu's own items, and "?" (outside text fields) opens the
+/// shortcut list like Help › Keyboard Shortcuts.
 pub fn use_menu_events(ui: Ui, nav: SettingsNav) {
+    use_future(move || async move {
+        let mut eval = document::eval(
+            r#"
+            if (window.__kabarHelpKey) document.removeEventListener("keydown", window.__kabarHelpKey);
+            window.__kabarHelpKey = (e) => {
+                const t = e.target;
+                const typing = t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable);
+                if (e.key === "?" && !typing && !e.metaKey && !e.ctrlKey && !e.altKey) {
+                    e.preventDefault();
+                    dioxus.send("help");
+                }
+            };
+            document.addEventListener("keydown", window.__kabarHelpKey);
+            await new Promise(() => {});
+            "#,
+        );
+        while eval.recv::<String>().await.is_ok() {
+            nav.show(Some(Section::Mac));
+        }
+    });
     dioxus::desktop::use_muda_event_handler(move |event| {
         let id = event.id().0.as_str();
         match id {

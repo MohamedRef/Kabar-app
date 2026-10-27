@@ -114,76 +114,110 @@ exercises:
     words: [rong, ewu]
   - id: e02
     type: multiple_choice
+    question: rong puluh ewu
     question_meaning:
-      ar_eg: إزاي تقول ٢٠٠٠ صح؟
-      ar: كيف تقول ٢٠٠٠ بصورة صحيحة؟
-      en: Which is the correct way to say 2,000?
-    options: [rong ewu, loro ewu, siji ewu]
+      ar_eg: كام؟
+      ar: كم؟
+      en: How much?
+    options: ['20.000', '2.000', '200.000']
     answer: 0
     explain:
-      ar_eg: 'قبل ewu الرقم بياخد شكل الوصل: loro → rong.'
-      ar: 'قبل ewu تُستعمل صورة الوصل: loro → rong.'
-      en: 'Before ewu use the linking form: loro → rong.'
-    words: [rong, ewu]
+      ar_eg: rong = 2، puluh = عشرات، ewu = ألف. يعني 20 × 1000.
+      ar: rong = 2، وpuluh = عشرات، وewu = ألف، أي 20 × 1000.
+      en: rong = 2, puluh = tens, ewu = thousand, so 20 × 1,000.
+    words: [rong, puluh, ewu]
   - id: e03
     type: listen
     text: Telung ewu.
-    options: [Telung atus., Patang ewu., Telung ewu.]
+    options: [Telung atus., Telung juta., Telung ewu.]
     answer: 2
-    words: [telung, ewu]
+    words: [telung, ewu, atus, juta]
   - id: e04
     type: fill_blank
-    sentence: ___ ewu.
+    sentence: Dhuwitku ___ ewu.
     meaning:
-      ar_eg: خمس آلاف (5000).
-      ar: خمسة آلاف (5000).
-      en: Five thousand (5,000).
-    answers: [Limang, limang]
+      ar_eg: معايا خمس آلاف (5000).
+      ar: معي خمسة آلاف (5000).
+      en: I've got five thousand (5,000).
+    answers: [limang, Limang]
     explain:
-      ar_eg: lima قبل ewu بتبقى limang.
-      ar: تصير lima قبل ewu ‏limang.
-      en: lima becomes limang before ewu.
-    words: [limang, ewu]
+      ar_eg: lima قبل ewu بتبقى limang. وdhuwitku = فلوسي.
+      ar: تصير lima قبل ewu ‏limang، وdhuwitku = نقودي.
+      en: lima becomes limang before ewu; dhuwitku = my money.
+    words: [dhuwit, limang, ewu]
   - id: e05
     type: fill_blank
-    sentence: Satus ewu? ___!
+    sentence: Sepuluh ewu? ___! Aku tuku.
     meaning:
-      ar_eg: مية ألف؟ غالي!
-      ar: مئة ألف؟ غالٍ!
-      en: A hundred thousand? That's expensive!
-    options: [Apik, Murah, Larang]
-    answers: [Larang]
-    words: [larang]
+      ar_eg: عشرة آلاف؟ رخيص! هشتري.
+      ar: عشرة آلاف؟ رخيص! سأشتري.
+      en: Ten thousand? That's cheap! I'll buy it.
+    options: [Larang, Murah, Apik]
+    answers: [Murah]
+    words: [murah, tuku]
   - id: e06
     type: build_sentence
     source:
-      ar_eg: بكام؟ — تلات آلاف.
-      ar: بكم؟ — ثلاثة آلاف.
-      en: How much? — Three thousand.
-    answer: Regane pira? Telung ewu.
+      ar_eg: بكام؟ — تلتمية ألف. ينفع تنزّل؟
+      ar: بكم؟ — ثلاثمئة ألف. هل تخفض السعر؟
+      en: How much? — Three hundred thousand. Can you go lower?
+    answer: Regane pira? Telung atus ewu. Oleh kurang?
     distractors: [telu, loro]
     explain:
       ar_eg: telu قبل ewu بتبقى telung.
       ar: تصير telu قبل ewu ‏telung.
       en: telu becomes telung before ewu.
-    words: [rega, pira, telung, ewu]
+    words: [rega, pira, telung, atus, ewu, oleh kurang]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: ينفع تنزّل؟ عشرة آلاف، ماشي؟
-      ar: هل تخفض السعر؟ عشرة آلاف، اتفقنا؟
-      en: Can you go lower? Ten thousand, OK?
-    answers: ['Oleh kurang? Sepuluh ewu, ya.', 'Oleh kurang? Sepuluh ewu, ya', 'Oleh kurang? Sepuluh ewu ya.', 'Oleh kurang? Sepuluh ewu ya', 'Oleh kurang? Sepuluh ewu ya?', 'Oleh kurang? Sepuluh ewu.', 'Oleh kurang? Sepuluh ewu', 'Oleh kurang, Cak? Sepuluh ewu, ya.', 'Oleh kurang, Cak? Sepuluh ewu, ya', 'Oleh kurang Cak? Sepuluh ewu ya.', 'Oleh kurang Cak? Sepuluh ewu ya', 'Oleh kurang, Mas? Sepuluh ewu, ya.', 'Oleh kurang, Mas? Sepuluh ewu, ya', 'Oleh kurang Mas? Sepuluh ewu ya.', 'Oleh kurang Mas? Sepuluh ewu ya']
-    words: [oleh kurang, sepuluh, ewu]
+    type: match_pairs
+    pairs:
+      - text: puluh
+        ar_eg: عشرات
+        ar: عشرات
+        en: tens
+      - text: atus
+        ar_eg: مية
+        ar: مئة
+        en: hundred
+      - text: ewu
+        ar_eg: ألف
+        ar: ألف
+        en: thousand
+      - text: juta
+        ar_eg: مليون
+        ar: مليون
+        en: million
+      - text: murah
+        ar_eg: رخيص
+        ar: رخيص
+        en: cheap
+      - text: dhuwit
+        ar_eg: فلوس
+        ar: نقود
+        en: money
+    words: [puluh, atus, ewu, juta, murah, dhuwit]
   - id: e08
     type: speaking
-    text: Regane pira? Oleh kurang?
+    text: Dhuwitku rong puluh ewu. Oleh kurang?
     meaning:
-      ar_eg: بكام؟ ينفع تنزّل؟
-      ar: بكم؟ هل تخفض السعر؟
-      en: How much? Can you go lower?
-    words: [pira, oleh kurang]
+      ar_eg: معايا عشرين ألف. ينفع تنزّل؟
+      ar: معي عشرون ألفًا. هل تخفض السعر؟
+      en: I've got twenty thousand. Can you go lower?
+    words: [dhuwit, rong, puluh, ewu, oleh kurang]
+  - id: e09
+    type: multiple_choice
+    question: Sejuta? Oleh kurang?
+    question_meaning:
+      ar_eg: إنت بتفاصل. معنى كلامك إيه بالإندونيسي؟
+      ar: أنت تساوم. ما معنى كلامك بالإندونيسية؟
+      en: You're haggling. What are you saying in Indonesian?
+    options: ['Sejuta? Boleh kurang?', 'Sejuta? Boleh tambah?', 'Sejuta? Ada yang murah?']
+    answer: 0
+    explain:
+      ar_eg: oleh kurang = boleh kurang = ينفع تنزّل؟ وsejuta = مليون.
+      ar: oleh kurang = boleh kurang، وsejuta = مليون.
+      en: oleh kurang = boleh kurang; sejuta = one million.
+    words: [juta, oleh kurang, murah]
 dialogue:
   title: Nang Pasar Atom
   lines:

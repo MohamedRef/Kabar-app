@@ -126,23 +126,43 @@ exercises:
       en: isih = masih, ana = ada (Surabaya onok).
     words: [isih, ana, kurma]
   - id: e07
-    type: translate
-    direction: from_target
-    source_text: Sek tak lapor pusat
-    answers_meaning:
-      ar_eg: [استنى، هبلّغ الإدارة., استنى، هبلغ الإدارة, استنى هسأل الإدارة, لحظة، هبلّغ الفرع الرئيسي, استنى، هبلغ المركز]
-      ar: [انتظر، سأبلغ المركز., انتظر، سأبلغ الإدارة, لحظة، سأبلغ المركز الرئيسي]
-      en: ['Hold on, I''ll report to HQ.', 'Hold on, I''ll check with head office.', 'Wait, I''ll report to head office', 'One moment, I''ll tell HQ', 'Hold on, I''ll report to the head office']
-    words: [sek, lapor, pusat]
+    type: match_pairs
+    pairs:
+      - text: isih ana
+        ar_eg: لسه فيه
+        ar: ما زال موجودًا
+        en: still available
+      - text: toko
+        ar_eg: محل
+        ar: متجر
+        en: shop
+      - text: pusat
+        ar_eg: الإدارة
+        ar: المركز الرئيسي
+        en: head office
+      - text: lapor
+        ar_eg: يبلّغ
+        ar: يبلّغ
+        en: report
+      - text: tunggu
+        ar_eg: يستنى
+        ar: ينتظر
+        en: wait
+      - text: tuku
+        ar_eg: يشتري
+        ar: يشتري
+        en: buy
+    words: [isih ana, toko, pusat, lapor, tunggu, tuku]
   - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: هتشتري إمتى؟ (لصاحبك)
-      ar: متى ستشتري؟ (لصديقك)
-      en: When are you going to buy? (to a friend)
-    answers: ["Arep tuku kapan?", Arep tuku kapan, "Kapan arep tuku?", "Kowe arep tuku kapan?", "Kapan kowe arep tuku?", "Koen kate tuku kapan?"]
-    words: [arep, tuku, kapan]
+    type: listen
+    text: Kurma Ajwa isih ana nang toko?
+    options: ['Kurma Ajwa isih ana nang toko?', 'Kurma Ajwa wis ana nang toko?', 'Kurma Ajwa isih ana nang omah?']
+    answer: 0
+    meaning:
+      ar_eg: بلح العجوة لسه موجود في المحل؟
+      ar: هل ما زال تمر العجوة موجودًا في المتجر؟
+      en: Are Ajwa dates still in stock at the shop?
+    words: [kurma, isih ana, toko, nang]
   - id: e09
     type: dictation
     text: Iya Mas, tak tunggu.
@@ -153,12 +173,12 @@ exercises:
     words: [tunggu]
   - id: e10
     type: speaking
-    text: Mas, kurma Ajwa isih ana?
+    text: Mas, kurma Ajwa isih ana nang toko?
     meaning:
-      ar_eg: يا كابتن، بلح العجوة لسه موجود؟
-      ar: يا أخي، هل ما زال تمر العجوة متوفرًا؟
-      en: Excuse me, are the Ajwa dates still available?
-    words: [isih, ana]
+      ar_eg: يا كابتن، بلح العجوة لسه موجود في المحل؟
+      ar: يا أخي، هل ما زال تمر العجوة موجودًا في المتجر؟
+      en: Mas, are Ajwa dates still in stock at the shop?
+    words: [isih ana, toko]
 dialogue:
   title: Chat karo toko kurma
   lines:

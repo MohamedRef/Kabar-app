@@ -85,32 +85,52 @@ exercises:
     distractors: [bengi, turu]
     words: [sarapan, karo]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الساعة عشرة بنام.
-      ar: في العاشرة أنام.
-      en: At ten I go to sleep.
-    answers: [Jam sepuluh aku turu., Jam sepuluh aku turu, Aku turu jam sepuluh., Aku turu jam sepuluh, Jam sepuluh bengi aku turu., Jam sepuluh bengi aku turu, Aku turu jam sepuluh bengi., Aku turu jam sepuluh bengi]
-    words: [turu, sepuluh]
+    type: match_pairs
+    pairs:
+      - text: saben dina
+        ar_eg: كل يوم
+        ar: كل يوم
+        en: every day
+      - text: sarapan
+        ar_eg: يفطر
+        ar: يفطر
+        en: have breakfast
+      - text: masak
+        ar_eg: يطبخ
+        ar: يطبخ
+        en: cook
+      - text: salat
+        ar_eg: صلاة
+        ar: صلاة
+        en: prayer
+      - text: Subuh
+        ar_eg: الفجر
+        ar: الفجر
+        en: dawn prayer
+      - text: sibuk
+        ar_eg: مشغول
+        ar: مشغول
+        en: busy
+    words: [saben dina, sarapan, masak, salat, Subuh, sibuk]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: العصر بطبخ.
-      ar: في العصر أطبخ.
-      en: In the afternoon I cook.
-    answers: ["Sore aku masak.", Sore aku masak, "Aku masak sore.", Aku masak sore, "Saben sore aku masak.", Saben sore aku masak]
-    words: [sore, masak]
+    type: listen
+    text: Saben dina aku salat Subuh jam lima.
+    options: [Saben dina aku salat Subuh jam lima., Saben dina aku sarapan jam lima., Saben dina aku masak jam lima.]
+    answer: 0
+    meaning:
+      ar_eg: كل يوم بصلي الفجر الساعة خمسة.
+      ar: أصلي الفجر كل يوم الساعة الخامسة.
+      en: Every day I pray Subuh at five.
+    words: [saben dina, salat, Subuh, sarapan, masak]
   - id: e07
-    type: translate
-    direction: from_target
-    source_text: Jam lima aku salat Subuh.
-    answers_meaning:
-      ar_eg: [الساعة خمسة بصلي الصبح., بصلي الفجر الساعة خمسة, الساعة خمسة بصلي الفجر]
-      ar: [في الخامسة أصلي الفجر., أصلي الصبح في الخامسة]
-      en: [At five I pray the dawn prayer., At five I pray Fajr, I pray Subuh at five]
-    words: [salat, Subuh]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة معناها «ساري مشغولة كل يوم»؟
+      ar: أيّ جملة تعني «ساري مشغولة كل يوم»؟
+      en: Which sentence means "Sari is busy every day"?
+    options: [Sari sibuk saben dina., Sari masak saben dina., Sari salat saben dina.]
+    answer: 0
+    words: [sibuk, saben dina, masak, salat]
   - id: e08
     type: listen
     text: Sari tangi jam setengah lima.
@@ -127,12 +147,12 @@ exercises:
     words: [sarapan]
   - id: e10
     type: speaking
-    text: Saben dina aku tangi jam lima.
+    text: Aku sibuk saben dina, tangi, salat Subuh, sarapan.
     meaning:
-      ar_eg: كل يوم بصحى الساعة خمسة.
-      ar: أستيقظ كل يوم في الخامسة.
-      en: Every day I wake up at five.
-    words: [saben, tangi]
+      ar_eg: أنا مشغول كل يوم، بصحى وبصلي الفجر وبفطر.
+      ar: أنا مشغول كل يوم، أستيقظ وأصلي الفجر وأفطر.
+      en: I'm busy every day, I wake up, pray Subuh, have breakfast.
+    words: [sibuk, saben dina, tangi, salat, Subuh, sarapan]
 dialogue:
   title: Saben dina neng omah
   lines:

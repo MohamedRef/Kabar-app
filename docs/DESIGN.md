@@ -58,3 +58,21 @@ Rules:
 - Logical properties only (`inline-size`, `margin-inline-start`…), so the
   Arabic UI mirrors. Latin snippets in Arabic text go in `<bdi>`.
 - Touch targets are at least 44 px.
+
+## Components
+
+Use these before inventing a new look.
+
+| Component | Classes | Notes |
+|---|---|---|
+| Primary button | `button.primary` | One per view: the step that moves the learner on. Disabled turns neutral grey, never pale green |
+| Button | `button` | Pill, 44 px tall, quiet hover on pointer devices |
+| Quiet button | `button.quiet`, `.ghost` | Secondary actions, icons |
+| Card | `.card` | Surface, `--line-soft` border, `--card-pad`; one topic per card |
+| Pill | `.pill` + `neutral` / `info` / `gold` / `good` | Short labels and states. Default (dawn) for levels and "new" |
+| Note / callout | `.note` | Tinted surface with an indigo start border |
+| Side pane | `.panel`, `.lp-notes` | Supporting content beside the main column on expanded+; a bottom sheet on phones |
+| Feedback | glyph + words + colour | Never colour alone (✓ / ↺ / –, a verdict line) |
+
+Disabled controls say why when it isn't obvious from the screen (a line of
+muted text next to them), instead of only greying out.

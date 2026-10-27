@@ -117,25 +117,29 @@ exercises:
     pairs:
       - text: wis
         ar_eg: خلاص (sudah)
-        ar: قد / تمّ (sudah)
-        en: already (sudah)
+        ar: sudah (قد)
+        en: sudah (already)
       - text: durung
         ar_eg: لسه ماحصلش (belum)
-        ar: لم … بعد (belum)
-        en: not yet (belum)
+        ar: belum (لم بعد)
+        en: belum (not yet)
       - text: lagi
         ar_eg: بيعمل دلوقتي (sedang)
-        ar: يفعل الآن (sedang)
-        en: in the middle of (sedang)
+        ar: sedang (يفعل الآن)
+        en: sedang (in the middle of)
       - text: arep
         ar_eg: هـ / ناوي (akan)
-        ar: سوف (akan)
-        en: going to (akan)
+        ar: akan (سوف)
+        en: akan (going to)
       - text: isih
         ar_eg: لسه مستمر (masih)
-        ar: ما زال (masih)
-        en: still (masih)
-    words: [wis, durung, lagi, arep, isih]
+        ar: masih (ما زال)
+        en: masih (still)
+      - text: turu
+        ar_eg: ينام (tidur)
+        ar: tidur (ينام)
+        en: tidur (sleep)
+    words: [wis, durung, lagi, arep, isih, turu]
   - id: e02
     type: multiple_choice
     question: Kowe wis mangan?
@@ -171,22 +175,23 @@ exercises:
       en: still = isih (masih); durung is "not yet".
     words: [isih, turu]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: أنا كلت خلاص.
-      ar: قد أكلت.
-      en: I've already eaten.
-    answer: Aku wis mangan.
-    distractors: [sudah, durung]
-    words: [wis, mangan]
+    type: listen
+    text: Aku arep turu.
+    options: [Aku arep turu., Aku isih turu., Aku arep mangan., Aku lagi maca.]
+    answer: 0
+    meaning:
+      ar_eg: أنا هنام.
+      ar: سأنام.
+      en: I'm going to sleep.
+    words: [arep, turu, isih, mangan, lagi, maca]
   - id: e06
     type: speaking
-    text: Kowe wis mangan? — Durung.
+    text: Kowe wis mangan? — Durung, aku lagi maca.
     meaning:
-      ar_eg: كلت؟ — لسه.
-      ar: هل أكلت؟ — ليس بعد.
-      en: Have you eaten? — Not yet.
-    words: [wis, durung, mangan]
+      ar_eg: كلت؟ — لسه، أنا بقرا.
+      ar: هل أكلت؟ — ليس بعد، أنا أقرأ.
+      en: Have you eaten? — Not yet, I'm reading.
+    words: [wis, durung, mangan, lagi, maca]
 dialogue:
   title: Bengi nang Tunjungan
   lines:

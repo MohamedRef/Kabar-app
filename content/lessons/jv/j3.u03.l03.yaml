@@ -48,10 +48,10 @@ exercises:
     words: [sampeyan, sampun, nedha]
   - id: e02
     type: listen
-    text: Sampun, Mas. Sampeyan?
-    options: ['Dereng, Mas. Sampeyan?', 'Sampun, Mas. Sampeyan?', 'Wis, Mas. Kowe?']
-    answer: 1
-    words: [sampun, sampeyan]
+    text: Kula badhe dhateng masjid.
+    options: [Kula badhe dhateng masjid., Kula badhe dhateng peken., Aku arep nang masjid.]
+    answer: 0
+    words: [badhe, dhateng, masjid]
   - id: e03
     type: translate
     direction: to_target
@@ -82,7 +82,7 @@ exercises:
       en: I'm going to the mosque with Dimas.
     answer: Kula badhe dhateng masjid kaliyan Mas Dimas.
     distractors: [arep, karo]
-    words: [badhe, dhateng, kaliyan]
+    words: [badhe, dhateng, kaliyan, masjid]
   - id: e06
     type: fill_blank
     sentence: Inggih, kula ___ sinau krama.
@@ -98,13 +98,13 @@ exercises:
     words: [taksih]
   - id: e07
     type: fill_blank
-    sentence: Nyuwun sewu, Pak, kula ___ ngertos.
+    sentence: Nyuwun sewu, Pak, teh ___ wonten.
     meaning:
-      ar_eg: لا مؤاخذة يا عم، أنا مش فاهم.
-      ar: عفوًا يا سيدي، لا أفهم.
-      en: Excuse me, sir, I don't understand.
+      ar_eg: لا مؤاخذة يا عم، مفيش شاي.
+      ar: عفوًا يا سيدي، لا يوجد شاي.
+      en: Sorry, sir, there's no tea.
     answers: [mboten]
-    words: [mboten]
+    words: [mboten, teh]
   - id: e08
     type: translate
     direction: to_target
@@ -113,23 +113,23 @@ exercises:
       ar: هل يوجد شاي يا سيدي؟ (بالكراما — «شاي» = teh)
       en: Is there tea, sir? (krama — "tea" = teh)
     answers: ["Wonten teh, Pak?", "Wonten teh, Pak", "Pak, wonten teh?", "Pak, wonten teh", "Nyuwun sewu, wonten teh, Pak?", "Nyuwun sewu, wonten teh, Pak", "Nyuwun sewu, Pak, wonten teh?", "Nyuwun sewu, Pak, wonten teh"]
-    words: [wonten]
+    words: [wonten, teh]
   - id: e09
     type: dictation
-    text: Sampeyan sampun nedha?
+    text: Wonten teh, Pak?
     meaning:
-      ar_eg: حضرتك كلت؟
-      ar: هل أكلتَ؟
-      en: Have you eaten?
-    words: [sampeyan, sampun, nedha]
+      ar_eg: فيه شاي يا عم؟
+      ar: هل يوجد شاي يا سيدي؟
+      en: Is there any tea, sir?
+    words: [wonten, teh]
   - id: e10
     type: speaking
-    text: Dereng, Pak. Kula badhe nedha kaliyan Mas Dimas.
+    text: Dereng, Pak. Kula badhe dhateng masjid kaliyan Mas Dimas.
     meaning:
-      ar_eg: لسه يا عم. أنا هاكل مع دِيماس.
-      ar: ليس بعد يا سيدي. سآكل مع ديماس.
-      en: Not yet, sir. I'm going to eat with Dimas.
-    words: [dereng, badhe, nedha, kaliyan]
+      ar_eg: لسه يا عم. أنا رايح الجامع مع دِيماس.
+      ar: ليس بعد يا سيدي. سأذهب إلى المسجد مع ديماس.
+      en: Not yet, sir. I'm going to the mosque with Dimas.
+    words: [dereng, badhe, dhateng, masjid, kaliyan]
 dialogue:
   title: Awan ing Kauman
   lines:

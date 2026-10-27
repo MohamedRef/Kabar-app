@@ -71,13 +71,13 @@ exercises:
       ar_eg: أخو بابا وهو أكبر من بابا. تقوله إيه؟
       ar: أخو أبيك وهو أكبر من أبيك. بمَ تناديه؟
       en: Your father's brother, older than your father. What do you call him?
-    options: [pakdhe, mbah, paklik]
+    options: [pakdhe, simbah, paklik]
     answer: 0
     explain:
       ar_eg: pakdhe = الأكبر من أبوك أو أمك. paklik = الأصغر.
       ar: pakdhe لمن هو أكبر من الوالد، وpaklik للأصغر.
       en: pakdhe is older than your parent; paklik is younger.
-    words: [pakdhe, paklik]
+    words: [pakdhe, paklik, simbah]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -94,9 +94,9 @@ exercises:
   - id: e03
     type: listen
     text: Mbah putri lagi masak.
-    options: [Mbah kakung lagi masak., Mbakyu lagi masak., Mbah putri lagi masak.]
+    options: [Mbah kakung lagi masak., Bulik lagi masak., Mbah putri lagi masak.]
     answer: 2
-    words: [mbah putri]
+    words: [mbah putri, mbah kakung, bulik]
   - id: e04
     type: fill_blank
     sentence: Pakdhe karo ___ manggon neng Madiun.
@@ -117,50 +117,75 @@ exercises:
     answers: ['Iki bojoku, lan iki anak-anakku.', 'Iki bojoku, lan iki anak-anakku', Iki bojoku lan iki anak-anakku., Iki bojoku lan iki anak-anakku, 'Iki bojoku, iki anak-anakku.', 'Iki bojoku, iki anak-anakku', Iki bojoku iki anak-anakku., Iki bojoku iki anak-anakku, 'Iki bojoku, lan iki anakku.', 'Iki bojoku, lan iki anakku', Iki bojoku lan iki anakku., Iki bojoku lan iki anakku, Iki bojoku lan anak-anakku., Iki bojoku lan anak-anakku, Iki bojoku karo anak-anakku., Iki bojoku karo anak-anakku]
     words: [bojo, anak]
   - id: e06
-    type: translate
-    direction: from_target
-    source_text: Pakdhe karo budhe manggon neng Madiun.
-    answers_meaning:
-      ar_eg: [عمي وطنط ساكنين في ماديون, عمي ومراته ساكنين في ماديون, خالي وخالتي ساكنين في ماديون, عمي وعمتي ساكنين في ماديون]
-      ar: [عمي وعمتي يسكنان في ماديون, خالي وخالتي يسكنان في ماديون, عمي وزوجته يسكنان في ماديون]
-      en: [My uncle and aunt live in Madiun, Uncle and auntie live in Madiun, My uncle and aunt live in Madiun.]
+    type: multiple_choice
+    question: Simbah duwe putu lima.
+    question_meaning:
+      ar_eg: يعني إيه بالإندونيسي؟
+      ar: ما معناها بالإندونيسية؟
+      en: What does it mean in Indonesian?
+    options: ['Kakek-nenek punya lima cucu.', 'Kakek-nenek punya lima anak.', 'Paman punya lima cucu.']
+    answer: 0
     explain:
-      ar_eg: pakdhe / budhe ممكن يبقوا من ناحية الأب أو الأم، المهم إنهم أكبر من أبوك أو أمك.
-      ar: قد يكون pakdhe / budhe من جهة الأب أو الأم، والمهم أنهما أكبر من الوالد.
-      en: pakdhe / budhe can be on either side; what matters is they're older than your parent.
-    words: [pakdhe, budhe, manggon]
+      ar_eg: simbah = جدو أو تيتة، putu = حفيد (cucu).
+      ar: simbah = الجد أو الجدة، وputu = حفيد (cucu).
+      en: simbah = grandparent, putu = grandchild (cucu).
+    words: [simbah, duwe, putu]
   - id: e07
     type: dictation
-    text: Mbah putri lagi masak.
+    text: Bulik iku bojone paklik.
     meaning:
-      ar_eg: تيتة بتطبخ.
-      ar: الجدة تطبخ.
-      en: Grandma is cooking.
-    words: [mbah putri]
+      ar_eg: الطنط دي مرات عمي الصغير.
+      ar: هذه العمة زوجة العم الأصغر.
+      en: Aunty is my younger uncle's wife.
+    words: [bulik, bojo, paklik]
   - id: e08
     type: match_pairs
     pairs:
       - text: paklik
         ar_eg: عمي / خالي الأصغر
         ar: العم / الخال الأصغر
-        en: parent's younger brother
+        en: younger uncle
       - text: bulik
         ar_eg: عمتي / خالتي الأصغر
         ar: العمة / الخالة الصغرى
-        en: parent's younger sister
+        en: younger aunt
       - text: mbah kakung
         ar_eg: جدو
         ar: الجد
-        en: grandfather
+        en: grandpa
       - text: mbah putri
         ar_eg: تيتة
         ar: الجدة
-        en: grandmother
-      - text: bojo
-        ar_eg: جوز / مرات
-        ar: الزوج / الزوجة
-        en: husband / wife
-    words: [paklik, bulik, mbah kakung, mbah putri, bojo]
+        en: grandma
+      - text: simbah
+        ar_eg: جدو / تيتة
+        ar: الجد / الجدة
+        en: grandparent
+      - text: putu
+        ar_eg: حفيد / حفيدة
+        ar: حفيد
+        en: grandchild
+    words: [paklik, bulik, mbah kakung, mbah putri, simbah, putu]
+  - id: e09
+    type: listen
+    text: Paklik karo bojone manggon neng kene.
+    options: ['Paklik karo bojone manggon neng kene.', 'Bulik karo bojone manggon neng kene.', 'Paklik karo putune manggon neng kene.']
+    answer: 0
+    meaning:
+      ar_eg: عمي الصغير ومراته ساكنين هنا.
+      ar: عمي الأصغر وزوجته يسكنان هنا.
+      en: My younger uncle and his wife live here.
+    words: [paklik, bojo, manggon, bulik, putu]
+  - id: e10
+    type: fill_blank
+    sentence: Mbah kakung karo mbah putri ___ neng Madiun.
+    meaning:
+      ar_eg: جدو وتيتة ساكنين في ماديون.
+      ar: الجد والجدة يسكنان في ماديون.
+      en: Grandpa and grandma live in Madiun.
+    options: [manggon, bojo, putu]
+    answers: [manggon]
+    words: [mbah kakung, mbah putri, manggon]
 dialogue:
   title: Neng warunge Pak Budi
   lines:

@@ -85,22 +85,22 @@ exercises:
   - id: e03
     type: listen
     text: Malin Kundang menyesal, tetapi sudah terlambat.
-    options: ["Malin Kundang tidak menyesal, dan sudah terlambat.", "Malin Kundang menyesal, tetapi sudah terlambat.", "Ibu Malin Kundang menyesal, tetapi sudah terlambat."]
+    options: ["Malin Kundang malu, tetapi sudah terlambat.", "Malin Kundang menyesal, tetapi sudah terlambat.", "Ibu Malin Kundang menyesal, tetapi sudah terlambat."]
     answer: 1
     meaning:
       ar_eg: مالين كوندانج ندم، بس كان الوقت فات.
       ar: ندم مالين كوندانغ، لكن بعد فوات الأوان.
       en: Malin Kundang regretted it, but it was too late.
-    words: [menyesal]
+    words: [menyesal, malu]
   - id: e04
     type: multiple_choice
     question_meaning:
       ar_eg: مالين كوندانج اتكسف من أمه الفقيرة وأنكرها. أنهي كلمة بتوصفه؟
       ar: خجل مالين كوندانغ من أمه الفقيرة وأنكرها. أيّ كلمة تصفه؟
       en: Malin Kundang was ashamed of his poor mother and denied her. Which word describes him?
-    options: [durhaka, setia, pemberani]
+    options: [durhaka, miskin, setia]
     answer: 0
-    words: [durhaka]
+    words: [durhaka, miskin]
   - id: e05
     type: multiple_choice
     question: Dalam alur cerita, ___ biasanya datang sebelum penyelesaian.
@@ -147,12 +147,36 @@ exercises:
     words: [alur]
   - id: e09
     type: speaking
-    text: Pada akhir cerita, Malin Kundang menyesal dan menjadi batu.
+    text: Malin Kundang malu karena ibunya miskin. Akhirnya dia menyesal.
     meaning:
-      ar_eg: في آخر الحكاية، مالين كوندانج ندم واتحوّل حجر.
-      ar: في نهاية الحكاية ندم مالين كوندانغ وتحوّل إلى حجر.
-      en: At the end of the story, Malin Kundang regrets it and turns to stone.
-    words: [menyesal]
+      ar_eg: مالين كوندانج اتكسف عشان أمه فقيرة. وفي الآخر ندم.
+      ar: خجل مالين كوندانغ لأن أمه فقيرة، وفي النهاية ندم.
+      en: Malin Kundang was ashamed because his mother was poor. In the end he regretted it.
+    words: [malu, miskin, menyesal]
+  - id: e10
+    type: match_pairs
+    pairs:
+      - text: malu
+        ar_eg: مكسوف
+        ar: خجلان
+        en: ashamed
+      - text: miskin
+        ar_eg: فقير
+        ar: فقير
+        en: poor
+      - text: kaya
+        ar_eg: غني
+        ar: غني
+        en: rich
+      - text: durhaka
+        ar_eg: عاق
+        ar: عاقّ
+        en: disobedient to parents
+      - text: menyesal
+        ar_eg: يندم
+        ar: يندم
+        en: to regret
+    words: [malu, miskin, kaya, durhaka, menyesal]
 dialogue:
   title: Kisah Malin Kundang
   lines:

@@ -129,14 +129,33 @@ exercises:
     answers: [lali]
     words: [aja, lali]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: كُل الأول، ماشي؟
-      ar: كُل أولًا، حسنًا؟
-      en: Eat first, OK?
-    answers: ['Mangana sik, ya.', 'Mangana sik, ya', Mangana sik ya., Mangana sik ya, 'Mangana dhisik, ya.', 'Mangana dhisik, ya', 'Mangan sik, ya.', 'Mangan sik, ya', Mbok mangan sik., Mbok mangan sik]
-    words: [mangana, sik]
+    type: match_pairs
+    pairs:
+      - text: mangana
+        ar_eg: كُل!
+        ar: كُلْ!
+        en: eat!
+      - text: adusa
+        ar_eg: استحمى!
+        ar: استحمّ!
+        en: take a bath!
+      - text: panganen
+        ar_eg: كُله!
+        ar: كُلْه!
+        en: eat it!
+      - text: wacanen
+        ar_eg: اقراه!
+        ar: اقرأه!
+        en: read it!
+      - text: aja
+        ar_eg: ماتـ… (نهي)
+        ar: لا تـ… (نهي)
+        en: don't…
+      - text: tangi
+        ar_eg: يصحى
+        ar: يستيقظ
+        en: wake up
+    words: [mangana, adusa, panganen, wacanen, aja, tangi]
   - id: e06
     type: listen
     text: Mangana sik, ya.
@@ -151,6 +170,39 @@ exercises:
       ar: لا تنسَ!
       en: Don't forget!
     words: [aja, lali]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي فعل معناه «يصحى من النوم»؟
+      ar: أيّ فعل يعني «يستيقظ»؟
+      en: Which verb means "wake up"?
+    options: [tangi, turu, adusa]
+    answer: 0
+    explain:
+      ar_eg: tangi = يصحى، turu = ينام، adusa = استحمى!
+      ar: tangi = يستيقظ، وturu = ينام، وadusa = استحمّ!
+      en: tangi = wake up, turu = sleep, adusa = take a bath!
+    words: [tangi, turu, adusa]
+  - id: e09
+    type: fill_blank
+    sentence: Wis jam pitu. Ayo ___, Nduk!
+    meaning:
+      ar_eg: الساعة بقت سبعة. يلا اصحي يا بنتي!
+      ar: صارت الساعة السابعة. هيّا استيقظي يا ابنتي!
+      en: It's already seven. Come on, wake up, dear!
+    options: [tangi, lali, turu]
+    answers: [tangi]
+    words: [tangi]
+  - id: e10
+    type: listen
+    text: Wacanen bukune, terus adusa.
+    options: ['Wacanen bukune, terus adusa.', 'Panganen segane, terus adusa.', 'Wacanen bukune, terus mangana.']
+    answer: 0
+    meaning:
+      ar_eg: اقرا الكتاب، وبعدين استحمى.
+      ar: اقرأ الكتاب، ثم استحمّ.
+      en: Read the book, then take a bath.
+    words: [wacanen, adusa, panganen, mangana]
 dialogue:
   lines:
     - speaker: Bu Rahayu

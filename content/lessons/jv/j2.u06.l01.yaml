@@ -127,7 +127,11 @@ exercises:
         ar_eg: سفرية
         ar: رحلة
         en: a trip
-    words: [bocah, mlaku-mlaku, dolan-dolan, bola-bali, lelungan]
+      - text: clingak-clinguk
+        ar_eg: يبص يمين وشمال
+        ar: يتلفّت حوله
+        en: look around, lost
+    words: [bocah, mlaku / mlaku-mlaku, dolan / dolan-dolan, bola-bali, lelungan, clingak-clinguk]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -144,19 +148,19 @@ exercises:
   - id: e03
     type: listen
     text: Bocah-bocah dolanan neng taman.
-    options: [Bocah-bocah mangan neng taman., Bocah telu dolanan neng taman., Bocah-bocah dolanan neng taman.]
+    options: [Bocah-bocah clingak-clinguk neng taman., Bocah telu dolanan neng taman., Bocah-bocah dolanan neng taman.]
     answer: 2
-    words: [bocah, dolanan, taman]
+    words: [bocah, dolanan, taman, clingak-clinguk]
   - id: e04
     type: fill_blank
-    sentence: Ayo ___ neng Benteng Pendem!
+    sentence: Lelungan iki apik. Ayo ___ neng Benteng Pendem!
     meaning:
-      ar_eg: يلا نتمشى عند قلعة بنتنج بندم!
-      ar: هيا نتنزّه إلى قلعة بنتنغ بندم!
-      en: Let's take a stroll to Benteng Pendem!
+      ar_eg: السفرية دي حلوة. يلا نتمشى عند قلعة بنتنج بندم!
+      ar: هذه الرحلة جميلة. هيا نتنزّه إلى قلعة بنتنغ بندم!
+      en: This trip is great. Let's take a stroll to Benteng Pendem!
     options: [bola-bali, mlaku-mlaku, bocah-bocah]
     answers: [mlaku-mlaku]
-    words: [mlaku-mlaku]
+    words: [lelungan, mlaku / mlaku-mlaku]
   - id: e05
     type: build_sentence
     source:
@@ -167,22 +171,36 @@ exercises:
     distractors: [telu, omah]
     words: [bocah, dolanan, taman]
   - id: e06
-    type: translate
-    direction: from_target
-    source_text: Mohamed clingak-clinguk neng stasiun.
-    answers_meaning:
-      ar_eg: [محمد كان بيبص يمين وشمال في المحطة., محمد بيتلفت في المحطة زي التايه, محمد كان تايه وبيبص حواليه في المحطة]
-      ar: [كان محمد يتلفت يمينًا وشمالًا في المحطة., محمد يتلفت حائرًا في المحطة]
-      en: [Mohamed was looking around at the station., Mohamed looked left and right at the station, 'Mohamed was looking around, lost, at the station']
-    words: [clingak-clinguk]
+    type: listen
+    text: Mohamed clingak-clinguk neng taman.
+    options: [Mohamed clingak-clinguk neng taman., Mohamed bola-bali neng taman., Mohamed mlaku-mlaku neng taman., Mohamed dolan neng taman.]
+    answer: 0
+    meaning:
+      ar_eg: محمد بيبص يمين وشمال في الجنينة.
+      ar: محمد يتلفّت حوله في الحديقة.
+      en: Mohamed is looking around, lost, in the park.
+    words: [clingak-clinguk, taman, bola-bali, mlaku / mlaku-mlaku, dolan / dolan-dolan]
   - id: e07
     type: speaking
-    text: Dolan neng omahku, ya!
+    text: Dolan neng omahku, ya! Ana dolanan akeh.
     meaning:
-      ar_eg: تعالى زورني في البيت!
-      ar: زُرني في بيتي!
-      en: Come visit me at home!
-    words: [dolan]
+      ar_eg: تعالى زورني في البيت! فيه لعب كتير.
+      ar: تعال زرني في البيت! عندنا ألعاب كثيرة.
+      en: Come over to my house! There are lots of toys.
+    words: [dolan / dolan-dolan, dolanan, akeh]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «سفرية / رحلة»؟
+      ar: أيّ كلمة تعني «رحلة»؟
+      en: Which word means "a trip"?
+    options: [lelungan, dolanan, bola-bali]
+    answer: 0
+    explain:
+      ar_eg: lelungan = سفرية، dolanan = يلعب / لعبة، bola-bali = رايح جاي.
+      ar: lelungan = رحلة، وdolanan = يلعب / لعبة، وbola-bali = ذهابًا وإيابًا.
+      en: lelungan = a trip, dolanan = play / toy, bola-bali = back and forth.
+    words: [lelungan, dolanan, bola-bali]
 dialogue:
   title: Dolan-dolan neng Ngawi
   lines:

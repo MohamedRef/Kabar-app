@@ -168,28 +168,42 @@ exercises:
   - id: e05
     type: build_sentence
     source:
-      ar_eg: ممكن تنزّلي شوية يا حاجة؟ (بالكراما)
-      ar: هل يمكن تخفيض السعر يا سيدتي؟ (بالكراما)
-      en: (in krama) Could you lower the price a little, ma'am?
-    answer: Saged kirang, Bu?
-    distractors: [isa, kurang]
-    words: [saged, kirang]
+      ar_eg: ينفع تنزّلي شوية يا حاجة؟ (بالكراما)
+      ar: هل يجوز أن تخفّضي قليلًا يا سيدتي؟ (بالكراما)
+      en: May it be a bit less, ma'am? (krama)
+    answer: Angsal kirang, Bu?
+    distractors: [oleh, kurang]
+    words: [angsal, kirang]
   - id: e06
     type: dictation
-    text: Gangsal ewu.
+    text: Niki mirah, Bu.
     meaning:
-      ar_eg: خمس آلاف.
-      ar: خمسة آلاف.
-      en: Five thousand.
-    words: [gangsal, ewu]
+      ar_eg: ده رخيص يا حاجة.
+      ar: هذا رخيص يا سيدتي.
+      en: This one is cheap, ma'am.
+    words: [niki, mirah]
   - id: e07
     type: speaking
-    text: Nyuwun sewu, Bu, reginipun pinten? Saged kirang?
+    text: Niki reginipun pinten, Bu? Awis sanget. Angsal kirang?
     meaning:
-      ar_eg: لا مؤاخذة يا حاجة، بكام؟ ممكن تنزّلي شوية؟
-      ar: عفوًا يا سيدتي، بكم ثمنه؟ هل يمكن التخفيض؟
-      en: Excuse me, ma'am, how much is it? Could you lower it a little?
-    words: [regi, pinten, saged, kirang]
+      ar_eg: ده بكام يا حاجة؟ غالي أوي. ينفع تنزّلي؟
+      ar: بكم هذا يا سيدتي؟ غالٍ جدًا. هل يجوز التخفيض؟
+      en: How much is this, ma'am? That's very pricey. Could it be less?
+    words: [niki, regi, pinten, awis, angsal, kirang]
+  - id: e08
+    type: multiple_choice
+    question: Niki mirah, mboten awis.
+    question_meaning:
+      ar_eg: معناها إيه بالإندونيسي؟
+      ar: ما معناها بالإندونيسية؟
+      en: What does it mean in Indonesian?
+    options: ['Ini murah, tidak mahal.', 'Ini mahal, tidak murah.', 'Ini boleh, tidak kurang.']
+    answer: 0
+    explain:
+      ar_eg: niki = ini، mirah = murah (رخيص)، awis = mahal (غالي).
+      ar: niki = ini، وmirah = murah (رخيص)، وawis = mahal (غالٍ).
+      en: niki = ini, mirah = murah (cheap), awis = mahal (expensive).
+    words: [niki, mirah, awis]
 dialogue:
   title: Pinten, Bu?
   lines:

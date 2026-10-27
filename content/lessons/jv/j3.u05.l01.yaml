@@ -92,28 +92,28 @@ exercises:
       ar_eg: أنهي رقم هو هو في النغوكو والكراما؟
       ar: أي عدد واحد في النغوكو والكراما؟
       en: Which number is the same in ngoko and krama?
-    options: [setunggal, wolu, gangsal]
+    options: [setunggal, wolu, gangsal, sekawan]
     answer: 1
     explain:
       ar_eg: من ٦ لـ ٩ (enem، pitu، wolu، sanga) زي ما هم. setunggal وgangsal كراما بس.
       ar: الأعداد من ٦ إلى ٩ واحدة في المستويين، أما setunggal وgangsal فكراما فقط.
       en: 6–9 (enem, pitu, wolu, sanga) don't change. setunggal and gangsal are krama only.
-    words: [wolu]
+    words: [wolu, setunggal, gangsal, sekawan]
   - id: e02
     type: multiple_choice
     question_meaning:
       ar_eg: إيه الكراما من papat (٤)؟
       ar: ما صورة الكراما من papat (٤)؟
       en: What is krama for papat (4)?
-    options: [sekawan, kalih, gangsal]
+    options: [sekawan, kalih, gangsal, tiga]
     answer: 0
-    words: [sekawan]
+    words: [sekawan, kalih, gangsal, tiga]
   - id: e03
     type: listen
     text: gangsal
-    options: [gangsal, sedasa, kalih]
+    options: [gangsal, tiga, setunggal]
     answer: 0
-    words: [gangsal]
+    words: [gangsal, tiga, setunggal]
   - id: e04
     type: fill_blank
     sentence: Kula tumbas ___, Bu. (٢)
@@ -131,21 +131,21 @@ exercises:
   - id: e05
     type: build_sentence
     source:
-      ar_eg: هاخد أربعة يا حاجة.
-      ar: سأشتري أربعة يا سيدتي.
-      en: I'll buy four, ma'am.
-    answer: Kula tumbas sekawan, Bu.
-    distractors: [papat, tuku]
-    words: [tumbas, sekawan]
+      ar_eg: هاخد تلاتة لدِيماس.
+      ar: سأشتري ثلاثة لديماس.
+      en: I'll buy three for Mas Dimas.
+    answer: Kula tumbas tiga kangge Mas Dimas.
+    distractors: [telu, kanggo]
+    words: [tumbas, tiga, kangge]
   - id: e06
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: (بالكراما) واحدة بس.
-      ar: (بالكراما) واحدة فقط.
-      en: (in krama) Just one.
-    answers: [Setunggal kemawon., Setunggal kemawon, Setunggal mawon., Setunggal mawon]
-    words: [setunggal, kemawon]
+      ar_eg: (بالكراما) واحدة بس، عشان أبويا.
+      ar: (بالكراما) واحدة فقط، لأبي.
+      en: (in krama) Just one, for my father.
+    answers: ['Setunggal kemawon, kangge bapak kula.', 'Setunggal kemawon, kangge bapak kula', Setunggal kemawon kangge bapak kula., Setunggal kemawon kangge bapak kula, 'Setunggal mawon, kangge bapak kula.', 'Setunggal mawon, kangge bapak kula', Setunggal mawon kangge bapak kula., Setunggal mawon kangge bapak kula]
+    words: [setunggal, kemawon, kangge]
   - id: e07
     type: translate
     direction: from_target
@@ -157,12 +157,12 @@ exercises:
     words: [tumbas, kalih]
   - id: e08
     type: dictation
-    text: Sekawan kemawon.
+    text: Sekawan kemawon, kangge kula.
     meaning:
-      ar_eg: أربعة بس.
-      ar: أربعة فقط.
-      en: Just four.
-    words: [sekawan, kemawon]
+      ar_eg: أربعة بس، عشاني.
+      ar: أربعة فقط، لي.
+      en: Just four, for me.
+    words: [sekawan, kemawon, kangge]
 dialogue:
   title: Wonten Pasar Klewer
   lines:

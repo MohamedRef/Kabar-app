@@ -94,14 +94,15 @@ exercises:
     answers: [Pon]
     words: [Pon]
   - id: e05
-    type: translate
-    direction: from_target
-    source_text: Wetonku Senen Pahing.
-    answers_meaning:
-      ar_eg: [أنا مولود يوم اتنين باهينج., الـ weton بتاعي اتنين باهينج, يوم ميلادي الجاوي الاتنين باهينج]
-      ar: [وُلدتُ يوم الاثنين باهينغ., يوم مولدي الجاوي الاثنين باهينغ]
-      en: [My weton is Monday Pahing., I was born on Monday Pahing, My Javanese birth day is Monday Pahing]
-    words: [weton, Senen, Pahing]
+    type: listen
+    text: Bener, wetonku Senen Pahing.
+    options: ['Bener, wetonku Senen Pahing.', 'Bener, wetonku Selasa Pahing.', 'Ora bener, wetonku Senen Pon.']
+    answer: 0
+    meaning:
+      ar_eg: صح، الـ weton بتاعي اتنين باهينج.
+      ar: صحيح، يوم ميلادي الجاوي الاثنين باهينغ.
+      en: Right, my weton is Monday Pahing.
+    words: [bener, weton, Senen, Pahing, Selasa, Pon]
   - id: e06
     type: dictation
     text: Senen Legi, Selasa Pahing
@@ -112,12 +113,64 @@ exercises:
     words: [Senen, Legi, Selasa, Pahing]
   - id: e07
     type: speaking
-    text: Dina iki Jemuwah Kliwon.
+    text: Cepet, Mas! Pasaran dina iki Legi.
     meaning:
-      ar_eg: النهارده جمعة كليوون.
-      ar: اليوم جمعة كليوون.
-      en: Today is Friday Kliwon.
-    words: [dina iki, Jemuwah, Kliwon]
+      ar_eg: بسرعة يا كابتن! يوم السوق النهارده ليجي.
+      ar: بسرعة يا أخي! يوم السوق اليوم ليغي.
+      en: Quick, Mas! Today's market day is Legi.
+    words: [cepet, pasaran, dina iki, Legi]
+  - id: e08
+    type: match_pairs
+    pairs:
+      - text: pasaran
+        ar_eg: أيام السوق الخمسة
+        ar: أيام السوق الخمسة
+        en: the five market days
+      - text: weton
+        ar_eg: يوم الميلاد الجاوي
+        ar: يوم الميلاد الجاوي
+        en: Javanese birth day
+      - text: bener
+        ar_eg: صح
+        ar: صحيح
+        en: right, correct
+      - text: cepet
+        ar_eg: بسرعة
+        ar: بسرعة
+        en: quick, fast
+      - text: Legi
+        ar_eg: أول يوم سوق
+        ar: أول أيام السوق
+        en: first market day
+      - text: Kliwon
+        ar_eg: خامس يوم سوق
+        ar: خامس أيام السوق
+        en: fifth market day
+    words: [pasaran, weton, bener, cepet, Legi, Kliwon]
+  - id: e09
+    type: multiple_choice
+    question: Cepet! Pasaran dina iki apa?
+    question_meaning:
+      ar_eg: صاحبك مستعجل وسألك كده. بيسأل عن إيه؟ اختار الرد المناسب.
+      ar: صديقك مستعجل وسألك هذا. اختر الرد المناسب.
+      en: Your friend is in a hurry and asks this. Pick a fitting answer.
+    options: [Kliwon., Senen., Sore.]
+    answer: 0
+    explain:
+      ar_eg: pasaran = يوم من الخمسة (Legi … Kliwon)، مش يوم الأسبوع زي Senen.
+      ar: pasaran واحد من الأيام الخمسة (Legi … Kliwon)، لا يوم الأسبوع مثل Senen.
+      en: pasaran is one of the five days (Legi … Kliwon), not a weekday like Senen.
+    words: [cepet, pasaran, Kliwon, Senen]
+  - id: e10
+    type: fill_blank
+    sentence: Wetonku Rebo Wage, ___ ora?
+    meaning:
+      ar_eg: الـ weton بتاعي أربع واجي، صح ولا لأ؟
+      ar: يوم ميلادي الجاوي الأربعاء واجي، صحيح أم لا؟
+      en: My weton is Wednesday Wage, right?
+    options: [bener, cepet, pasaran]
+    answers: [bener]
+    words: [weton, Rebo, Wage, bener]
 dialogue:
   title: Jemuwah Kliwon neng Ponorogo
   lines:

@@ -10,10 +10,8 @@ pub mod text;
 #[cfg(test)]
 mod demo;
 
-use std::sync::LazyLock;
-
 use dioxus::prelude::*;
-use kabar_core::journey::{Curriculum, Progress, parse_curriculum};
+use kabar_core::journey::{Curriculum, Progress};
 use kabar_core::locale::{Direction, UiLanguage};
 use kabar_core::review::Deck;
 use kabar_core::stats::level_check::{self as lc, check_due};
@@ -32,9 +30,10 @@ use crate::{Db, Screen, Ui};
 
 const STATS_CSS: &str = include_str!("../../assets/stats.css");
 
-/// The Indonesian route, parsed once.
-pub static CURRICULUM: LazyLock<Option<Curriculum>> =
-    LazyLock::new(|| parse_curriculum(&crate::embedded::unpack(crate::embedded::CURRICULUM_ID)).ok());
+/// The Indonesian route, parsed once (shared with the Journey Map).
+fn curriculum() -> Option<&'static Curriculum> {
+    crate::journey::curriculum("id")
+}
 
 /// Where "Back" on Stats and the level check returns to.
 static RETURN_TO: GlobalSignal<Screen> = Signal::global(|| Screen::Today);
@@ -69,8 +68,7 @@ pub fn rtl(ui: &Ui) -> bool {
 
 /// "87%" in the UI's digits (and the Arabic percent sign with Eastern digits).
 pub fn pct(ui: &Ui, share: f32) -> String {
-    let n = ui.num((share.clamp(0.0, 1.0) * 100.0).round() as u64);
-    if ui.eastern() { format!("{n}٪") } else { format!("{n}%") }
+    ui.percent(share)
 }
 
 /// Minutes, or hours once there are a couple of them.
@@ -139,7 +137,7 @@ pub fn level_checks(db: &Db) -> Vec<LevelCheckResult> {
 
 /// Where the learner is on the Indonesian route: (level, share of it done).
 pub fn journey_position(db: &Db) -> Option<(String, f32)> {
-    let cur = CURRICULUM.as_ref()?;
+    let cur = curriculum()?;
     let store = db.0.borrow();
     let completed = store.completed_lessons().unwrap_or_default();
     let mut progress = Progress::new(cur, &completed);
@@ -151,7 +149,7 @@ pub fn journey_position(db: &Db) -> Option<(String, f32)> {
 
 /// Share of `level`'s lessons done.
 pub fn level_share(db: &Db, level: &str) -> f32 {
-    let Some(cur) = CURRICULUM.as_ref() else { return 0.0 };
+    let Some(cur) = curriculum() else { return 0.0 };
     let Some(l) = cur.level(level) else { return 0.0 };
     let completed = db.0.borrow().completed_lessons().unwrap_or_default();
     let (done, total) = Progress::new(cur, &completed).level_counts(l);
@@ -171,8 +169,7 @@ pub fn level_tests(db: &Db, level: &str, offset: i16) -> (Vec<(f32, LocalDate)>,
         .filter(|e| e.kind == "test_finished")
         .filter_map(|e| serde_json::from_str::<TestFinished>(&e.payload).ok().map(|f| (f.score, day(&e.hlc))))
         .collect();
-    let last_pass = CURRICULUM
-        .as_ref()
+    let last_pass = curriculum()
         .into_iter()
         .flat_map(|c| c.levels.iter().filter_map(|l| l.level_test.as_ref()))
         .flat_map(|t| {

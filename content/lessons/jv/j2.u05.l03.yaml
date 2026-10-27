@@ -88,27 +88,31 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: nyirami
-        ar_eg: يسقي
-        ar: يسقي
-        en: to water
       - text: nekani
         ar_eg: يحضر / يروح لـ
-        ar: يحضر إلى
-        en: to attend, come to
+        ar: يحضر / يزور
+        en: attend, visit
       - text: ngancani
         ar_eg: يونّس / يرافق
         ar: يرافق
-        en: to keep company
+        en: keep company
       - text: ngenteni
         ar_eg: يستنى
         ar: ينتظر
-        en: to wait for
+        en: wait for
       - text: mateni
         ar_eg: يطفي
-        ar: يطفئ
-        en: to turn off
-    words: [nyirami, nekani, ngancani, ngenteni, mateni]
+        ar: يُطفئ
+        en: switch off
+      - text: kembang
+        ar_eg: ورد
+        ar: زهور
+        en: flowers
+      - text: lampu
+        ar_eg: نور / لمبة
+        ar: مصباح
+        en: lamp, light
+    words: [nekani, ngancani, ngenteni, mateni, kembang, lampu]
   - id: e02
     type: multiple_choice
     question: N- + teka + -i → ?
@@ -153,14 +157,15 @@ exercises:
     distractors: [siram, bengi]
     words: [nyirami, kembang, saben]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: اطفي النور، ماشي؟
-      ar: أطفئ المصباح من فضلك.
-      en: Turn off the light, OK?
-    answers: ["Pateni lampune, ya.", "Pateni lampune, ya", "Pateni lampune ya.", Pateni lampune ya, "Lampune dipateni, ya.", "Lampune dipateni, ya", "Tulung pateni lampune, ya.", "Tulung pateni lampune, ya"]
-    words: [mateni, lampu]
+    type: listen
+    text: Bapak mateni lampu saben bengi.
+    options: [Bapak mateni lampu saben bengi., Bapak nyirami kembang saben bengi., Bapak ngenteni ibu saben bengi.]
+    answer: 0
+    meaning:
+      ar_eg: بابا بيطفي النور كل ليلة.
+      ar: يُطفئ أبي المصباح كل ليلة.
+      en: Dad switches off the light every night.
+    words: [mateni, lampu, saben, nyirami, kembang, ngenteni]
   - id: e07
     type: speaking
     text: Ayo, tak kancani.
@@ -168,7 +173,21 @@ exercises:
       ar_eg: يلا، هاجي معاك.
       ar: هيا، سأرافقك.
       en: Come on, I'll keep you company.
-    words: [kancani]
+    words: [ngancani]
+  - id: e08
+    type: multiple_choice
+    question: Bapak lagi ___ lampu.
+    question_meaning:
+      ar_eg: بابا بيطفي النور. أنهي فعل؟
+      ar: أبي يُطفئ المصباح. أيّ فعل؟
+      en: Dad is switching off the light. Which verb?
+    options: [mateni, nekani, ngancani]
+    answer: 0
+    explain:
+      ar_eg: mateni = يطفي، nekani = يحضر، ngancani = يرافق.
+      ar: mateni = يُطفئ، وnekani = يحضر، وngancani = يرافق.
+      en: mateni = switch off, nekani = attend, ngancani = keep company.
+    words: [mateni, lampu, nekani, ngancani]
 dialogue:
   title: Kembang lan mantenan
   lines:

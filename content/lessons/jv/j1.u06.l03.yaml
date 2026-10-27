@@ -138,46 +138,50 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: iki
-        ar_eg: ده (قريب مني) = ini
-        ar: هذا (قريب) = ini
-        en: this (near me) = ini
-      - text: kuwi
-        ar_eg: داك (قريب منك) = itu
-        ar: ذاك (قرب المخاطب) = itu
-        en: that (near you) = itu
+      - text: iku
+        ar_eg: داك (= kuwi = itu)
+        ar: ذلك (= itu)
+        en: that (= itu)
       - text: kae
         ar_eg: داك اللي هناك (بعيد)
-        ar: ذلك (بعيد)
-        en: that over there (far)
+        ar: ذلك البعيد
+        en: that one over there
       - text: ngene
         ar_eg: كده (= begini)
         ar: هكذا (= begini)
         en: like this (= begini)
+      - text: ngono
+        ar_eg: كده، زي ما قلت (= begitu)
+        ar: هكذا، كما قلت (= begitu)
+        en: like that (= begitu)
       - text: sing endi
         ar_eg: أنهي؟ (= yang mana)
-        ar: أيّ؟ (= yang mana)
-        en: which one (= yang mana)
-    words: [iki, kuwi, kae, ngene, sing endi]
+        ar: أيّ واحد؟ (= yang mana)
+        en: which one? (= yang mana)
+      - text: klambi
+        ar_eg: قميص / هدوم (= baju)
+        ar: قميص / ثياب (= baju)
+        en: shirt, clothes (= baju)
+    words: [iku, kae, ngene, ngono, sing endi, klambi]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: إزاي تقول «البيت ده»؟
-      ar: كيف تقول «هذا البيت»؟
-      en: How do you say "this house"?
-    options: [omah iki, iki omah, omah kae]
+      ar_eg: إزاي تقول «القميص ده»؟
+      ar: كيف تقول «هذا القميص»؟
+      en: How do you say "this shirt"?
+    options: [klambi iki, iki klambi, klambi kae]
     answer: 0
     explain:
-      ar_eg: 'اسم الإشارة بعد الاسم: omah iki. أما «Iki omah» فمعناها «ده بيت».'
-      ar: 'يأتي اسم الإشارة بعد الاسم: omah iki، أما «Iki omah» فمعناها «هذا بيت».'
-      en: 'The pointer follows the noun: omah iki. "Iki omah" means "This is a house".'
-    words: [iki, omah]
+      ar_eg: 'اسم الإشارة بعد الاسم: klambi iki. أما «Iki klambi» فمعناها «ده قميص».'
+      ar: 'يأتي اسم الإشارة بعد الاسم: klambi iki، أما «Iki klambi» فمعناها «هذا قميص».'
+      en: 'The pointer follows the noun: klambi iki. "Iki klambi" means "This is a shirt".'
+    words: [iki, klambi]
   - id: e03
     type: listen
     text: Sing endi? Sing kae?
-    options: ['Sing endi? Sing kae?', 'Sing endi? Sing iki?', 'Sing endi? Sing kuwi?']
+    options: ['Sing endi? Sing kae?', 'Sing endi? Sing iku?', 'Ora ngono, ngene!']
     answer: 0
-    words: [sing endi, kae]
+    words: [sing endi, kae, iku, ngono, ngene]
   - id: e04
     type: fill_blank
     sentence: Wong ___ sapa?
@@ -203,12 +207,12 @@ exercises:
     words: [klambi, iku, apik]
   - id: e06
     type: speaking
-    text: Sing endi? Sing kae!
+    text: Sing endi? Ora ngono, rek, ngene!
     meaning:
-      ar_eg: أنهي؟ اللي هناك!
-      ar: أيّها؟ ذلك الذي هناك!
-      en: Which one? That one over there!
-    words: [sing endi, kae]
+      ar_eg: أنهي؟ مش كده يا جماعة، كده!
+      ar: أيّ واحد؟ ليس هكذا يا رفاق، بل هكذا!
+      en: Which one? Not like that, guys, like this!
+    words: [sing endi, ngono, ngene, rek]
 dialogue:
   title: Nang kebun binatang
   lines:

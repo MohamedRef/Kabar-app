@@ -7,7 +7,7 @@
 //! text alone, so nothing gives the answer away (same rule as `crate::pron`).
 
 pub mod parts;
-mod text;
+pub mod text;
 
 use std::rc::Rc;
 

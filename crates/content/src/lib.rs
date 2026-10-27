@@ -11,6 +11,7 @@
 pub mod cast;
 pub mod lessons;
 pub mod model;
+pub mod retrieval;
 
 use std::collections::{BTreeMap, BTreeSet};
 use std::fs;
@@ -171,6 +172,7 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
         }
         let lang = file.parent().and_then(Path::file_name).and_then(|s| s.to_str()).unwrap_or("");
         lessons::check_lesson(&file.display().to_string(), stem(file), lang, &value, &index, &mut problems);
+        retrieval::check(stem(file), &value, &mut problems);
         seen.lesson(&file.display().to_string(), stem(file), &value);
         report.lessons.push(stem(file).to_owned());
         lesson_values.insert(stem(file).to_owned(), value);
@@ -204,6 +206,7 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
         ("content/radio", lessons::check_radio),
     ];
     let mut personas = Vec::new();
+    let mut radios = Vec::new();
     for (dir, check) in story_dirs {
         let mut files = Vec::new();
         if root.join(dir).exists() {
@@ -220,10 +223,14 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
                     personas.push((name, value));
                 }
                 "content/stories" => seen.story(&name, &value),
-                _ => seen.radio(&name, &value),
+                _ => {
+                    seen.radio(&name, &value);
+                    radios.push((name, value));
+                }
             }
         }
     }
+    check_radio_words(&report.curricula, &lesson_values, &radios, &mut problems);
     let games = root.join("content/games/unggah-ungguh.toml");
     if games.exists() {
         seen.unggah_ungguh("content/games/unggah-ungguh.toml", &read(&games)?);
@@ -282,6 +289,43 @@ fn check_forward_words(
                     }
                 }
             }
+        }
+    }
+}
+
+/// A Radio episode spotlights unit words on its end card, so each of its
+/// `words` must be taught (a lesson's `new_words`) in its unit or an earlier
+/// one of the same curriculum: the show reviews, it never introduces (#198).
+fn check_radio_words(
+    curricula: &[Curriculum],
+    lessons: &BTreeMap<String, serde_json::Value>,
+    radios: &[(String, serde_json::Value)],
+    problems: &mut Vec<String>,
+) {
+    use serde_json::Value;
+    // Unit id -> every word taught up to and including that unit.
+    let mut taught_by: BTreeMap<&str, BTreeSet<String>> = BTreeMap::new();
+    for c in curricula {
+        let mut taught = BTreeSet::new();
+        for unit in c.levels.iter().flat_map(|l| &l.units) {
+            for lesson in unit.lessons.iter().filter_map(|l| lessons.get(&l.id)) {
+                let new_words = lesson.get("new_words").and_then(Value::as_array).into_iter().flatten();
+                taught.extend(
+                    new_words.filter_map(|w| w.get("word").and_then(Value::as_str)).map(str::to_lowercase),
+                );
+            }
+            taught_by.insert(unit.id.as_str(), taught.clone());
+        }
+    }
+    for (file, radio) in radios {
+        let unit = radio.get("unit").and_then(Value::as_str).unwrap_or_default();
+        let Some(taught) = taught_by.get(unit) else { continue };
+        let words =
+            radio.get("words").and_then(Value::as_array).into_iter().flatten().filter_map(Value::as_str);
+        for w in words.filter(|w| !taught.contains(&w.to_lowercase())) {
+            problems.push(format!(
+                "{file}: spotlight word '{w}' is not taught by {unit} or earlier (use a lesson's new_words, or teach it first)"
+            ));
         }
     }
 }

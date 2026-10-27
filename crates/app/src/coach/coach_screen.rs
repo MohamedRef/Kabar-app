@@ -95,8 +95,7 @@ fn ReportCard(profile: CoachProfile, today: LocalDate) -> Element {
         ("words", words.as_str()),
         ("skill", skill),
     ];
-    let retention =
-        r.retention.map_or("–".to_string(), |x| format!("{}%", ui.num((x * 100.0).round() as u32)));
+    let retention = r.retention.map_or("–".to_string(), |x| ui.percent(x));
 
     rsx! {
         div { class: "card",

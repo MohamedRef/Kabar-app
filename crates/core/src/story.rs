@@ -34,6 +34,13 @@ const SINETRON_CAST: &[(&str, bool, i8)] = &[
     ("Pak RT", true, -6),
     ("Pak Hendra", true, -2),
     ("Pak Mahmoud", true, -15),
+    // Javanese season (e71+).
+    ("Cak Heru", true, 8),
+    ("Mas Yudha", true, 14),
+    ("Mas Dimas", true, 2),
+    ("Pak Harsono", true, -10),
+    ("Pak Slamet", true, -13),
+    ("Pak Harjo", true, -18),
     ("Sari", false, 0),
     ("Bu Rahayu", false, -10),
     ("Nadia", false, 10),
@@ -44,6 +51,12 @@ const SINETRON_CAST: &[(&str, bool, i8)] = &[
     ("Bu Ani", false, -8),
     ("Mbak Dewi", false, 6),
     ("Bu Samia", false, -12),
+    ("Bu Darmi", false, -4),
+    ("Bu Siti", false, 2),
+    ("Bu Harjo", false, -9),
+    ("Bu Harsono", false, -6),
+    ("Mbak Ayu", false, 8),
+    ("Mbah Putri", false, -16),
 ];
 
 /// A speaker's voice and pitch in a Sinetron episode. A character this

@@ -12,13 +12,14 @@ use std::sync::LazyLock;
 use dioxus::prelude::*;
 use kabar_core::journey::Progress;
 use kabar_core::lesson::pick;
-use kabar_core::locale::{UiLanguage, eastern_arabic_digits};
+use kabar_core::locale::UiLanguage;
 use kabar_core::story::{Program, parse_radio, parse_story, quiz, unlocked};
 use kabar_protocol::coach::{ActivityKind, Skill};
 use kabar_protocol::story::{RadioEpisode, Story};
 
 use self::player::ProgramPlayer;
 use self::text::{T, tt};
+use crate::annotated::Annotated;
 use crate::audio::AudioCache;
 use crate::coach::Coach;
 use crate::embedded::{self, RADIO, STORIES};
@@ -67,8 +68,7 @@ enum Open {
 
 /// "3.4 MB", in the UI's digits.
 fn megabytes(ui: &Ui, bytes: u64) -> String {
-    let s = format!("{:.1} MB", bytes as f64 / 1_000_000.0);
-    if ui.eastern() { eastern_arabic_digits(&s) } else { s }
+    ui.digits(&format!("{:.1} MB", bytes as f64 / 1_000_000.0))
 }
 
 #[component]
@@ -402,9 +402,10 @@ fn RadioEnd(episode: RadioEpisode) -> Element {
     let target = target_tag(&episode.language);
     rsx! {
         h3 { "{tt(ui.lang(), T::Words)}" }
-        p { class: "row",
+        p { class: "muted", "{tt(ui.lang(), T::WordsHint)}" }
+        div { class: "row",
             for w in episode.words.iter() {
-                bdi { key: "{w}", lang: target, class: "pill latin", "{w}" }
+                span { key: "{w}", class: "pill", Annotated { text: w.clone(), tag: target, inline: true } }
             }
         }
     }

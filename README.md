@@ -57,23 +57,23 @@ every morning. CI warns when the table below is behind the content.
 | BIPA 1 | Jakarta | A1 | 10 | 74 | 693 | 413 | ~8 h | 35 |
 | BIPA 2 | Bali | A2 | 10 | 62 | 556 | 298 | ~7 h | 35 |
 | BIPA 3 | Lombok | B1 | 10 | 70 | 647 | 269 | ~8 h | 39 |
-| BIPA 4 | Sulawesi | B2 | 10 | 80 | 679 | 205 | ~8 h | 37 |
-| BIPA 5 | Kalimantan | C1 | 10 | 90 | 854 | 298 | ~9 h | 38 |
-| BIPA 6 | Sumatra | C2 | 10 | 100 | 986 | 380 | ~10 h | 38 |
+| BIPA 4 | Sulawesi | B2 | 10 | 80 | 680 | 205 | ~8 h | 37 |
+| BIPA 5 | Kalimantan | C1 | 10 | 90 | 856 | 298 | ~9 h | 38 |
+| BIPA 6 | Sumatra | C2 | 10 | 100 | 987 | 380 | ~10 h | 38 |
 | BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 100 | 1,009 | 385 | ~10 h | 38 |
-| **Total** |  | — | 70 | 576 | 5,424 | 2,248 | ~60 h | 260 |
+| **Total** |  | — | 70 | 576 | 5,428 | 2,248 | ~60 h | 260 |
 
 **Javanese (J1–J6)**
 
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|
-| J1 | Surabaya | — | 7 | 36 | 292 | 143 | ~4 h | 34 |
-| J2 | Madiun | — | 6 | 36 | 308 | 146 | ~4 h | 35 |
-| J3 | Solo (Surakarta) | — | 6 | 42 | 348 | 96 | ~4 h | 35 |
+| J1 | Surabaya | — | 7 | 36 | 311 | 143 | ~4 h | 34 |
+| J2 | Madiun | — | 6 | 36 | 340 | 146 | ~4 h | 35 |
+| J3 | Solo (Surakarta) | — | 6 | 42 | 362 | 96 | ~4 h | 35 |
 | J4 | Yogyakarta | — | 6 | 48 | 431 | 87 | ~5 h | 38 |
 | J5 | Semarang | — | 6 | 54 | 492 | 151 | ~6 h | 39 |
 | J6 | Kotagede, old Mataram capital | — | 6 | 60 | 541 | 93 | ~6 h | 37 |
-| **Total** |  | — | 37 | 276 | 2,412 | 716 | ~29 h | 218 |
+| **Total** |  | — | 37 | 276 | 2,477 | 716 | ~29 h | 218 |
 
 **Reference content and stories**
 
@@ -86,8 +86,8 @@ every morning. CI warns when the table below is behind the content.
 | Arabic Bridge entries | 628 | Arabic loans, shifts and false friends |
 | Javanese speech-level rows | 365 | ngoko / krama / krama inggil |
 | Pronunciation lexicon | 18,309 | plus 30 hand overrides |
-| Sinetron episodes | 70 | each unlocks after its unit |
-| Kabar Radio episodes | 70 | prebuilt, downloadable for offline |
+| Sinetron episodes | 107 | each unlocks after its unit |
+| Kabar Radio episodes | 107 | prebuilt, downloadable for offline |
 | Conversation personas | 10 |  |
 | Kabar Pagi stories | 24 | morning stories |
 | Games | 3 | Pasar!, Unggah-Ungguh, Minimal Pairs |
