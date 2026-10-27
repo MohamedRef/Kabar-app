@@ -63,7 +63,7 @@ pub(crate) fn forms(word: &str) -> Vec<String> {
     forms
 }
 
-fn tags(e: &Value) -> Vec<String> {
+pub(crate) fn tags(e: &Value) -> Vec<String> {
     let words = e.get("words").and_then(Value::as_array).into_iter().flatten();
     words.filter_map(Value::as_str).map(str::to_lowercase).collect()
 }
@@ -120,7 +120,7 @@ fn is_word_char(c: char) -> bool {
 
 /// Whole-word match; a form starting with "-" is a suffix and must follow a
 /// word character instead ("-nya" in "rumahnya").
-fn contains_word(text: &str, form: &str) -> bool {
+pub(crate) fn contains_word(text: &str, form: &str) -> bool {
     let (needle, suffix) = match form.strip_prefix('-') {
         Some(rest) => (rest, true),
         None => (form, false),

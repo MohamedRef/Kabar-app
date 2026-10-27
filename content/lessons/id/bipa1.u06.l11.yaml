@@ -1,244 +1,216 @@
 schema: kabar.lesson/v1
 id: bipa1.u06.l11
 language: id
-title: Kuliah di kampus
+title: Pensil dan pulpen
 can_do:
-  ar_eg: 'تتكلم عن الجامعة: المحاضرات والفصل والامتحان والإجابة والقاموس.'
-  ar: 'أن تتحدث عن الجامعة: المحاضرات والفصل والامتحان والإجابة والقاموس.'
-  en: 'Talk about university: lectures, class, exams, answers and the dictionary.'
+  ar_eg: تتكلم عن أدوات الفصل والاختبار، وتسأل عن معنى حاجة.
+  ar: أن تتحدث عن أدوات الصفّ والاختبار، وتسأل عن معنى شيء.
+  en: Talk about classroom things and quizzes, and ask what something means.
 slides:
-  - title: Di kampus
+  - title: Di kelas
     body:
       ar_eg: |
-        kuliah = يدرس في الجامعة أو يحضر محاضرة: «Rina kuliah di UI.»
-        kampus = حرم الجامعة، وuniversitas = جامعة.
-        kelas = فصل أو حصة، وpelajaran = درس أو مادة.
-        ujian = امتحان، وjawaban = إجابة.
-        kamus = قاموس، من العربي «قاموس» زي ما هي.
+        pensil = قلم رصاص، pulpen = قلم جاف، papan tulis = سبورة (papan = لوح).
+        tes = اختبار قصير (أصغر من ujian).
+        arti = معنى. إنت عارف «Apa artinya?»: معناها إيه؟
+        dengar = اسمع. المدرس بيقول: «Dengar, ya!» = اسمعوا كويس! (وفي الكتابة mendengar، اللي اتعلمتها.)
       ar: |
-        kuliah = يدرس في الجامعة أو يحضر محاضرة: «Rina kuliah di UI.»
-        kampus = الحرم الجامعي، وuniversitas = جامعة.
-        kelas = صفّ أو حصّة، وpelajaran = درس أو مادة.
-        ujian = امتحان، وjawaban = إجابة.
-        kamus = قاموس، من العربية كما هي.
+        pensil = قلم رصاص، pulpen = قلم حبر جاف، papan tulis = سبّورة (papan = لوح).
+        tes = اختبار قصير (أصغر من ujian).
+        arti = معنى، وأنت تعرف «Apa artinya?»: ما معناه؟
+        dengar = اسمع. يقول المعلّم: «Dengar, ya!» = أنصتوا! (والفعل الكامل mendengar الذي تعلّمته.)
       en: |
-        kuliah = study at university, attend lectures: "Rina kuliah di UI."
-        kampus = campus, universitas = university.
-        kelas = class (room or session), pelajaran = lesson, subject.
-        ujian = exam, jawaban = answer.
-        kamus = dictionary, straight from Arabic قاموس.
+        pensil = pencil, pulpen = pen, papan tulis = whiteboard (papan = board).
+        tes = a quiz, smaller than ujian.
+        arti = meaning; you know "Apa artinya?": what does it mean?
+        dengar = listen. Teachers say "Dengar, ya!" = Listen up! (The full verb is mendengar, which you've learnt.)
     examples:
-      - text: Rina kuliah di Universitas Indonesia.
-        ar_eg: رينا بتدرس في جامعة إندونيسيا.
-        ar: تدرس رينا في جامعة إندونيسيا.
-        en: Rina studies at the University of Indonesia.
-      - text: Hari ini ada ujian bahasa Inggris.
-        ar_eg: النهارده فيه امتحان إنجليزي.
-        ar: اليوم امتحان اللغة الإنجليزية.
-        en: There's an English exam today.
-      - text: Kamus saya selalu di tas.
-        ar_eg: القاموس بتاعي دايمًا في الشنطة.
-        ar: قاموسي دائمًا في الحقيبة.
-        en: My dictionary is always in my bag.
+      - text: Pak guru menulis di papan tulis.
+        ar_eg: الأستاذ بيكتب على السبورة.
+        ar: يكتب الأستاذ على السبّورة.
+        en: The teacher is writing on the whiteboard.
+      - text: Untuk tes, kita memakai pensil.
+        ar_eg: في الاختبار بنستخدم قلم رصاص.
+        ar: في الاختبار نستعمل قلم رصاص.
+        en: For the quiz, we use a pencil.
+      - text: Dengar, ya! Apa artinya?
+        ar_eg: اسمعوا! معناها إيه؟
+        ar: أنصتوا! ما معناه؟
+        en: Listen! What does it mean?
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: kelas
-        ar_eg: فصل، حصة
-        ar: صفّ، حصّة
-        en: class
-      - text: ujian
-        ar_eg: امتحان
-        ar: امتحان
-        en: exam
-      - text: kuliah
-        ar_eg: يدرس في الجامعة
-        ar: يدرس في الجامعة
-        en: study at university
-      - text: kampus
-        ar_eg: حرم الجامعة
-        ar: حرم جامعي
-        en: campus
-    words: [kelas, ujian, kuliah, kampus]
+      - text: pensil
+        ar_eg: قلم رصاص
+        ar: قلم رصاص
+        en: pencil
+      - text: pulpen
+        ar_eg: قلم جاف
+        ar: قلم حبر جاف
+        en: pen
+      - text: papan tulis
+        ar_eg: سبورة
+        ar: سبّورة
+        en: whiteboard
+    words: [pensil, pulpen, papan tulis]
   - id: e02
     type: match_pairs
     pairs:
-      - text: universitas
-        ar_eg: جامعة
-        ar: جامعة
-        en: university
-      - text: pelajaran
-        ar_eg: درس، مادة
-        ar: درس، مادة
-        en: lesson
-      - text: jawaban
-        ar_eg: إجابة
-        ar: إجابة
-        en: answer
-      - text: kamus
-        ar_eg: قاموس
-        ar: قاموس
-        en: dictionary
-    words: [universitas, pelajaran, jawaban, kamus]
+      - text: tes
+        ar_eg: اختبار قصير
+        ar: اختبار قصير
+        en: quiz
+      - text: arti
+        ar_eg: معنى
+        ar: معنى
+        en: meaning
+      - text: dengar
+        ar_eg: اسمع
+        ar: اسمع
+        en: listen
+    words: [tes, arti, dengar]
   - id: e03
     type: listen
-    text: Besok ada ujian. Saya belajar di kampus.
+    text: Dengar, ya! Besok ada tes.
     question:
       ar_eg: بكرة فيه إيه؟
       ar: ماذا هناك غدًا؟
       en: What's on tomorrow?
-    options: [امتحان, حفلة, إجازة]
+    options: [اختبار قصير, حفلة, إجازة]
     answer: 0
     meaning:
-      ar_eg: بكرة فيه امتحان. أنا بذاكر في الجامعة.
-      ar: غدًا امتحان، وأنا أذاكر في الحرم الجامعي.
-      en: There's an exam tomorrow. I'm studying on campus.
-    words: [ujian, kampus]
+      ar_eg: اسمعوا! بكرة فيه اختبار.
+      ar: أنصتوا! غدًا اختبار.
+      en: Listen! There's a quiz tomorrow.
+    words: [dengar, tes]
   - id: e04
     type: fill_blank
-    sentence: Rina ___ di Universitas Indonesia.
+    sentence: Pak guru menulis di ___.
     meaning:
-      ar_eg: رينا ___ في جامعة إندونيسيا.
-      ar: رينا ___ في جامعة إندونيسيا.
-      en: Rina ___ at the University of Indonesia.
-    options: [kuliah, kamus, kelas]
-    answers: [kuliah]
-    words: [kuliah, universitas]
+      ar_eg: الأستاذ بيكتب على ___.
+      ar: يكتب الأستاذ على ___.
+      en: The teacher writes on the ___.
+    options: [papan tulis, pensil, arti]
+    answers: [papan tulis]
+    words: [papan tulis, pensil, arti]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: عايز تعرف معنى كلمة جديدة. تستخدم إيه؟
-      ar: تريد معرفة معنى كلمة جديدة. ماذا تستعمل؟
-      en: You want the meaning of a new word. What do you use?
-    options: [kamus, ujian, kampus]
+      ar_eg: عايز تكتب حاجة وتقدر تمسحها بالأستيكة. تستخدم…؟
+      ar: تريد أن تكتب شيئًا يمكن محوه بالممحاة. ماذا تستعمل؟
+      en: You want to write something you can rub out. What do you use?
+    options: [pensil, pulpen, papan tulis]
     answer: 0
     explain:
-      ar_eg: kamus = قاموس. ujian امتحان وkampus حرم الجامعة.
-      ar: kamus قاموس، أما ujian فامتحان وkampus الحرم الجامعي.
-      en: kamus = dictionary; ujian is an exam and kampus a campus.
-    words: [kamus, ujian, kampus]
+      ar_eg: pensil بيتمسح بالأستيكة، pulpen لأ.
+      ar: يُمحى الـ pensil بالممحاة، أما الـ pulpen فلا.
+      en: A pensil rubs out; a pulpen doesn't.
+    words: [pensil, pulpen, papan tulis]
   - id: e06
     type: fill_blank
-    sentence: Ada dua puluh mahasiswa di ___ ini.
+    sentence: Apa ___ «kamus»? — Kamus = قاموس.
     meaning:
-      ar_eg: فيه ٢٠ طالب في ___ ده.
-      ar: في هذا ___ عشرون طالبًا.
-      en: There are twenty students in this ___.
-    options: [kelas, jawaban, pelajaran]
-    answers: [kelas]
-    words: [kelas, pelajaran]
+      ar_eg: إيه ___ «kamus»؟ — kamus = قاموس.
+      ar: ما ___ «kamus»؟ — kamus = قاموس.
+      en: What's the ___ of "kamus"? — kamus = dictionary.
+    options: [arti, tes, pulpen]
+    answers: [arti]
+    words: [arti, tes, pulpen]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: إجابتك إيه؟
-      ar: ما إجابتك؟
-      en: What's your answer?
-    answer: Apa jawaban kamu?
-    distractors: [kelas, kamus]
-    words: [jawaban]
+      ar_eg: عندك قلم جاف؟
+      ar: هل عندك قلم حبر؟
+      en: Do you have a pen?
+    answer: Kamu punya pulpen?
+    distractors: [tes, arti]
+    words: [pulpen]
   - id: e08
     type: translate
     direction: from_target
-    source_text: Pelajaran di kelas hari ini sudah selesai.
+    source_text: Untuk tes, kita memakai pensil.
     answers_meaning:
-      ar_eg: [درس النهارده في الفصل خلص, حصة النهارده خلصت]
-      ar: [انتهى درس اليوم في الصفّ, انتهت حصّة اليوم]
-      en: ['Today''s lesson in class is over', 'Today''s class lesson has finished', 'Today''s lesson is finished']
-    words: [pelajaran, kelas]
+      ar_eg: [في الاختبار بنستخدم قلم رصاص, للاختبار بنكتب بالقلم الرصاص]
+      ar: [في الاختبار نستعمل قلم رصاص, نكتب الاختبار بقلم رصاص]
+      en: ['For the quiz, we use a pencil', We use a pencil for the test]
+    words: [tes, pensil]
   - id: e09
     type: speaking
-    text: Saya mau kuliah di universitas ini.
+    text: Dengar, ya! Apa artinya?
     meaning:
-      ar_eg: عايز أدرس في الجامعة دي.
-      ar: أريد أن أدرس في هذه الجامعة.
-      en: I want to study at this university.
-    words: [kuliah, universitas]
+      ar_eg: اسمعوا! معناها إيه؟
+      ar: أنصتوا! ما معناه؟
+      en: Listen! What does it mean?
+    words: [dengar, arti]
   - id: e10
     type: multiple_choice
-    question: Ujian sudah selesai! ___ saya bagus.
-    options: [Jawaban, Kamus, Kampus]
+    question: 'Bu guru: «___, ya! Saya mau membaca.»'
+    options: [Dengar, Papan tulis, Pensil]
     answer: 0
     explain:
-      ar_eg: 'بعد الامتحان بنتكلم عن الإجابات: jawaban.'
-      ar: 'بعد الامتحان نتحدّث عن الإجابات: jawaban.'
-      en: 'After an exam you talk about your answers: jawaban.'
-    words: [ujian, jawaban, kamus, kampus]
+      ar_eg: 'المدرسة عايزاهم يسمعوا: Dengar!'
+      ar: 'تريد المعلّمة أن ينصتوا: Dengar!'
+      en: 'The teacher wants them to listen: Dengar!'
+    words: [dengar, papan tulis]
 dialogue:
   lines:
-    - speaker: Rina
-      text: Mohamed, ini kampus saya!
-      ar_eg: يا محمد، دي جامعتي!
-      ar: يا محمد، هذا حرم جامعتي!
-      en: Mohamed, this is my campus!
+    - speaker: Pak Irwan
+      text: Selamat pagi! Dengar, ya. Hari ini ada tes.
+      ar_eg: صباح الخير! اسمعوا. النهارده فيه اختبار.
+      ar: صباح الخير! أنصتوا، اليوم اختبار.
+      en: Good morning! Listen up. There's a quiz today.
     - speaker: Mohamed
-      text: Besar! Kamu kuliah di universitas ini?
-      ar_eg: كبيرة! إنتي بتدرسي في الجامعة دي؟
-      ar: كبير! هل تدرسين في هذه الجامعة؟
-      en: It's big! You study at this university?
+      text: Tes, Pak? Boleh memakai kamus?
+      ar_eg: اختبار يا أستاذ؟ ينفع نستخدم القاموس؟
+      ar: اختبار يا أستاذ؟ هل نستعمل القاموس؟
+      en: A quiz? Can we use a dictionary?
+    - speaker: Pak Irwan
+      text: Tidak boleh. Kalian memakai pensil, ya.
+      ar_eg: لأ، ممنوع. واكتبوا بالقلم الرصاص.
+      ar: لا، ممنوع. واكتبوا بقلم الرصاص.
+      en: No. And use a pencil, please.
     - speaker: Rina
-      text: Ya. Hari ini ada ujian bahasa Arab!
-      ar_eg: أيوه. والنهارده عندي امتحان عربي!
-      ar: نعم، واليوم امتحان العربية!
-      en: Yes. There's an Arabic exam today!
-    - speaker: Mohamed
-      text: Bahasa Arab? Ini kamus saya.
-      ar_eg: عربي؟ خدي القاموس بتاعي.
-      ar: العربية؟ هذا قاموسي.
-      en: Arabic? Here's my dictionary.
-    - speaker: Rina
-      text: Terima kasih! Tapi di kelas tidak boleh memakai kamus.
-      ar_eg: شكرًا! بس ممنوع القاموس في الفصل.
-      ar: شكرًا! لكن القاموس ممنوع في الصفّ.
-      en: Thanks! But dictionaries aren't allowed in class.
-    - speaker: Mohamed
-      text: Oh, begitu. Sampai nanti, Rina!
-      ar_eg: آه، كده. أشوفك بعدين يا رينا!
-      ar: آه، فهمت. إلى اللقاء يا رينا!
-      en: Oh, I see. See you later, Rina!
+      text: Pak, apa artinya ini, di papan tulis?
+      ar_eg: يا أستاذ، معنى دي إيه، اللي على السبورة؟
+      ar: يا أستاذ، ما معنى هذا على السبّورة؟
+      en: Sir, what does this on the whiteboard mean?
+    - speaker: Pak Irwan
+      text: Artinya «tes». Silakan, sekarang!
+      ar_eg: معناها «اختبار». يلّا، اتفضلوا دلوقتي!
+      ar: معناه «اختبار». تفضّلوا، ابدؤوا الآن!
+      en: It means "quiz". Go ahead, now!
 new_words:
-  - word: kelas
+  - word: pensil
     pos: noun
-    ar_eg: فصل، حصة
-    ar: صفّ، حصّة
-    en: class, classroom
-  - word: ujian
+    ar_eg: قلم رصاص
+    ar: قلم رصاص
+    en: pencil
+  - word: pulpen
     pos: noun
-    ar_eg: امتحان
-    ar: امتحان
-    en: exam
-  - word: kuliah
+    ar_eg: قلم جاف
+    ar: قلم حبر جاف
+    en: pen
+  - word: papan tulis
+    pos: noun
+    ar_eg: سبورة
+    ar: سبّورة
+    en: whiteboard, blackboard
+  - word: tes
+    pos: noun
+    ar_eg: اختبار قصير
+    ar: اختبار قصير
+    en: test, quiz
+  - word: arti
+    pos: noun
+    ar_eg: معنى
+    ar: معنى
+    en: meaning
+  - word: dengar
     pos: verb
-    ar_eg: يدرس في الجامعة، محاضرة
-    ar: يدرس في الجامعة، محاضرة
-    en: study at university; lecture
-  - word: kampus
-    pos: noun
-    ar_eg: حرم الجامعة
-    ar: حرم جامعي
-    en: campus
-  - word: universitas
-    pos: noun
-    ar_eg: جامعة
-    ar: جامعة
-    en: university
-  - word: pelajaran
-    pos: noun
-    ar_eg: درس، مادة
-    ar: درس، مادة
-    en: lesson, subject
-  - word: jawaban
-    pos: noun
-    arabic: جواب
-    ar_eg: إجابة
-    ar: إجابة، جواب
-    en: answer
-  - word: kamus
-    pos: noun
-    arabic: قاموس
-    ar_eg: قاموس
-    ar: قاموس
-    en: dictionary
+    ar_eg: اسمع (أمر، أو عامية)
+    ar: اسمع (أمرًا أو بالعامية)
+    en: listen, hear (command, casual)
 review:
   status: draft
   verified: false
