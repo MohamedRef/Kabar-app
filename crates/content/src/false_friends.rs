@@ -3,9 +3,11 @@
 //! `mau` ("want") unless the lesson says otherwise. When the English glosses
 //! of the pair share no content word, the Javanese entry must either name the
 //! false friend (`false_friend: mau`) or confirm the match (`same_as_id: true`).
+//! A false friend may also be an Indonesian street form (`aja` for `saja`).
 
 use std::collections::{BTreeMap, BTreeSet};
 
+use kabar_core::lang::{Lang, street};
 use serde_json::Value;
 
 /// Gloss words that carry no meaning of their own.
@@ -42,13 +44,20 @@ fn text<'a>(w: &'a Value, key: &str) -> &'a str {
     w.get(key).and_then(Value::as_str).unwrap_or("")
 }
 
+/// Lowercase spellings of a headword: `aja / ojo` is both `aja` and `ojo`.
+fn variants(word: &str) -> Vec<String> {
+    word.split(" / ").map(|f| f.trim().to_lowercase()).filter(|f| !f.is_empty()).collect()
+}
+
 pub fn check(lessons: &BTreeMap<String, Value>, out: &mut Vec<String>) {
     let lang = |v: &Value| v.get("language").and_then(Value::as_str).unwrap_or("").to_owned();
     // Indonesian new words: lowercase word -> (lesson, English gloss), first teaching wins.
     let mut id: BTreeMap<String, (&str, &str)> = BTreeMap::new();
     for (lesson, v) in lessons.iter().filter(|(_, v)| lang(v) == "id") {
         for w in words(v) {
-            id.entry(text(w, "word").to_lowercase()).or_insert((lesson, text(w, "en")));
+            for form in variants(text(w, "word")) {
+                id.entry(form).or_insert((lesson, text(w, "en")));
+            }
         }
     }
     for (lesson, v) in lessons {
@@ -61,10 +70,13 @@ pub fn check(lessons: &BTreeMap<String, Value>, out: &mut Vec<String>) {
                 out.push(format!("{lesson}: {word}: false_friend / same_as_id are for Javanese words only"));
                 continue;
             }
-            if let Some(f) = ff
-                && !id.contains_key(&f.to_lowercase())
+            if let Some(f) = ff.map(str::to_lowercase)
+                && !id.contains_key(&f)
+                && !street::formal(Lang::Indonesian, &f).is_some_and(|s| id.contains_key(s))
             {
-                out.push(format!("{lesson}: {word}: false_friend '{f}' is not an Indonesian new word"));
+                out.push(format!(
+                    "{lesson}: {word}: false_friend '{f}' is neither an Indonesian new word nor a street form of one"
+                ));
             }
             if ff.is_some() && same {
                 out.push(format!("{lesson}: {word}: false_friend and same_as_id contradict each other"));
@@ -72,12 +84,14 @@ pub fn check(lessons: &BTreeMap<String, Value>, out: &mut Vec<String>) {
             if !jv || ff.is_some() || same {
                 continue;
             }
-            let Some((id_lesson, id_gloss)) = id.get(&word.to_lowercase()) else { continue };
-            if content_words(text(w, "en")).is_disjoint(&content_words(id_gloss)) {
-                out.push(format!(
-                    "{lesson}: {word} looks like Indonesian {word} \"{id_gloss}\" ({id_lesson}); \
-                     add false_friend: {word} with a ≠ note in the gloss, or same_as_id: true"
-                ));
+            for form in variants(word) {
+                let Some((id_lesson, id_gloss)) = id.get(&form) else { continue };
+                if content_words(text(w, "en")).is_disjoint(&content_words(id_gloss)) {
+                    out.push(format!(
+                        "{lesson}: {word} looks like Indonesian {form} \"{id_gloss}\" ({id_lesson}); \
+                         add false_friend: {form} with a ≠ note in the gloss, or same_as_id: true"
+                    ));
+                }
             }
         }
     }
@@ -107,6 +121,13 @@ mod tests {
     #[test]
     fn unflagged_false_friend_is_reported() {
         let p = problems(json!({"word": "mau", "en": "a moment ago (= tadi)"}));
+        assert_eq!(p.len(), 1, "{p:?}");
+        assert!(p[0].contains("false_friend: mau"));
+    }
+
+    #[test]
+    fn slash_headwords_are_checked_per_form() {
+        let p = problems(json!({"word": "arep / mau", "en": "a moment ago"}));
         assert_eq!(p.len(), 1, "{p:?}");
         assert!(p[0].contains("false_friend: mau"));
     }
