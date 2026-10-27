@@ -38,6 +38,16 @@ pub enum Route {
     Pairs,
 }
 
+impl Route {
+    /// Whether this game's title is Indonesian/Latin in every UI language
+    /// ("Pasar!", "Kabar Pagi"...). Such titles are bidi-isolated as LTR so
+    /// trailing punctuation stays put in the Arabic UI. The hub cards and
+    /// the game headers both read this one flag.
+    pub fn latin_title(self) -> bool {
+        matches!(self, Route::Pagi | Route::Pasar | Route::Unggah | Route::Pairs)
+    }
+}
+
 /// The open Play screen, shared through context so Today can open Kabar Pagi.
 #[derive(Clone, Copy)]
 pub struct PlayNav(pub Signal<Route>);
@@ -125,6 +135,10 @@ fn Hub() -> Element {
                             strong { class: "gold-text", lang: "id",
                                 bdi { {deck_headline(known.unwrap_or_default())} }
                             }
+                        } else if game.route.latin_title() {
+                            strong { lang: "id",
+                                bdi { dir: "ltr", "{ui.t(game.title)}" }
+                            }
                         } else {
                             strong { "{ui.t(game.title)}" }
                         }
@@ -154,7 +168,7 @@ pub fn PlayHeader(title: Msg, #[props(default)] latin: bool) -> Element {
                 " {ui.t(Msg::NavPlay)}"
             }
             if latin {
-                h2 { lang: "id", bdi { "{ui.t(title)}" } }
+                h2 { lang: "id", bdi { dir: "ltr", "{ui.t(title)}" } }
             } else {
                 h2 { "{ui.t(title)}" }
             }
@@ -211,4 +225,28 @@ pub fn seconds_since(start_ms: u64) -> u32 {
 /// A fresh seed for games that should vary each time.
 pub fn fresh_seed() -> u64 {
     crate::store::now_ms()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use kabar_core::locale::UiLanguage;
+
+    fn has_arabic(s: &str) -> bool {
+        s.chars().any(|c| ('\u{0600}'..='\u{06FF}').contains(&c))
+    }
+
+    /// The hub isolates exactly the titles that stay Latin in the Arabic UI,
+    /// so "Pasar!" never renders as "!Pasar" (#147).
+    #[test]
+    fn latin_title_flag_matches_the_arabic_titles() {
+        for game in GAMES.iter() {
+            for lang in [UiLanguage::ArEg, UiLanguage::Ar] {
+                let title = crate::i18n::t(lang, game.title);
+                assert_eq!(game.route.latin_title(), !has_arabic(title), "{:?} {title}", game.route);
+            }
+        }
+        assert!(Route::Pasar.latin_title());
+        assert!(!Route::Deck.latin_title());
+    }
 }
