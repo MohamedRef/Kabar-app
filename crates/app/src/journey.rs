@@ -18,6 +18,7 @@ use kabar_core::layout::WidthClass;
 use kabar_core::locale::{UiLanguage, format_number};
 
 use crate::i18n::Msg;
+use crate::map_art::{self, Size as ArtSize};
 use crate::{Db, Ui};
 use kabar_protocol::coach::CoachProfile;
 
@@ -196,6 +197,7 @@ pub fn JourneyScreen() -> Element {
 
     rsx! {
         style { {JOURNEY_CSS} }
+        style { {crate::map_art::paper_css()} }
         div { class: "journey",
             header { class: "journey-bar",
                 div { class: "seg", role: "group", aria_label: "{ui.t(Msg::NavJourney)}",
@@ -313,11 +315,17 @@ fn level_head(
     };
     let test = level.level_test.as_ref().map(|t| t.id.clone());
     let pct = (done * 100).checked_div(total).unwrap_or(0);
+    let size = if *ui.width.read() == WidthClass::Compact { ArtSize::Small } else { ArtSize::Large };
+    let art = map_art::vignette(&level.id, size);
     rsx! {
         header { class: "level-head", "data-done": if finished { "true" } else { "false" },
             div { class: "level-title",
-                span { class: "level-icon", aria_hidden: "true",
-                    if j.route == Route::Indonesian { {icon_island()} } else { {icon_train()} }
+                if let Some(src) = art {
+                    img { class: "level-art", src: "{src}", alt: "", aria_hidden: "true", draggable: "false" }
+                } else {
+                    span { class: "level-icon", aria_hidden: "true",
+                        if j.route == Route::Indonesian { {icon_island()} } else { {icon_train()} }
+                    }
                 }
                 div {
                     h2 {
@@ -515,14 +523,9 @@ fn MapView(j: Journey) -> Element {
     let dot = map.radius * 0.22;
     let current_level = selected.read().clone();
     let panel_level = current_level.as_deref().and_then(|id| cur.level(id));
-    let spots = label_spots(
-        &cur.levels
-            .iter()
-            .zip(map.pins.iter())
-            .map(|(level, pin)| (pin.x / k, pin.y / k, short_place(level.place()).chars().count()))
-            .collect::<Vec<_>>(),
-    );
+    let spots = label_spots(&design_pins(cur, map));
     let rail = map.style == RouteStyle::Rail;
+    let stickers = sticker_spots(&design_pins(cur, map), map_bounds(map));
 
     rsx! {
         div { class: "jm", "data-panel": if panel_level.is_some() { "open" } else { "closed" },
@@ -565,6 +568,53 @@ fn MapView(j: Journey) -> Element {
                                         },
                                         d: "{seg.path_d()}",
                                     }
+                                    }
+                                }
+                            }
+                            g { class: "jm-stickers",
+                                for ((level, pin), spot) in cur.levels.iter().zip(map.pins.iter()).zip(stickers.iter().copied()) {
+                                    if let (Some((sx, sy)), Some(src)) = (spot, map_art::vignette(&level.id, ArtSize::Small)) {
+                                        {
+                                            let id = level.id.clone();
+                                            let is_sel = current_level.as_deref() == Some(level.id.as_str());
+                                            rsx! {
+                                                g {
+                                                    key: "{level.id}",
+                                                    class: "jm-sticker-at",
+                                                    transform: "translate({pin.x} {pin.y}) scale({k})",
+                                                    g {
+                                                        class: "jm-sticker",
+                                                        "aria-hidden": "true",
+                                                        "data-selected": if is_sel { "true" } else { "false" },
+                                                        onclick: move |_| selected.set(Some(id.clone())),
+                                                        {
+                                                            // A short leader from the pin's edge to the sticker's,
+                                                            // so a sticker never reads as its neighbour's.
+                                                            let len = sx.hypot(sy);
+                                                            let (ux, uy) = (sx / len, sy / len);
+                                                            let (a, b) = (PIN + 0.5, len - STICKER / 2.0 - 0.8);
+                                                            rsx! {
+                                                                line {
+                                                                    class: "sticker-leader",
+                                                                    x1: "{ux * a}",
+                                                                    y1: "{uy * a}",
+                                                                    x2: "{ux * b}",
+                                                                    y2: "{uy * b}",
+                                                                }
+                                                            }
+                                                        }
+                                                        circle { class: "sticker-edge", cx: "{sx}", cy: "{sy}", r: "{STICKER / 2.0 + 0.8}" }
+                                                        image {
+                                                            href: "{src}",
+                                                            x: "{sx - STICKER / 2.0}",
+                                                            y: "{sy - STICKER / 2.0}",
+                                                            width: "{STICKER}",
+                                                            height: "{STICKER}",
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -899,6 +949,69 @@ fn overlaps(a: (f64, f64, f64, f64), b: (f64, f64, f64, f64)) -> bool {
     a.0 < b.2 && b.0 < a.2 && a.1 < b.3 && b.1 < a.3
 }
 
+/// Every pin as (x, y, label length) in pin design units.
+fn design_pins(cur: &Curriculum, map: &MapLayout) -> Vec<(f64, f64, usize)> {
+    let k = map.view.w / 200.0;
+    cur.levels
+        .iter()
+        .zip(map.pins.iter())
+        .map(|(level, pin)| (pin.x / k, pin.y / k, short_place(level.place()).chars().count()))
+        .collect()
+}
+
+/// The map's view box (x0, y0, x1, y1) in pin design units.
+fn map_bounds(map: &MapLayout) -> (f64, f64, f64, f64) {
+    let k = map.view.w / 200.0;
+    let v = &map.view;
+    (v.x / k, v.y / k, (v.x + v.w) / k, (v.y + v.h) / k)
+}
+
+/// Diameter of a landmark sticker, in pin design units.
+const STICKER: f64 = 14.0;
+
+/// Where each pin's landmark sticker goes, as the sticker's centre relative
+/// to the pin: the first diagonal or side spot that stays clear of every
+/// pin's halo, every name, the stickers already placed and the map's edge.
+/// `None` when nothing fits; the art still shows in the level's header.
+fn sticker_spots(pins: &[(f64, f64, usize)], bounds: (f64, f64, f64, f64)) -> Vec<Option<(f64, f64)>> {
+    let labels: Vec<_> = pins.iter().zip(label_spots(pins)).map(|(&(x, y, n), s)| s.rect(x, y, n)).collect();
+    let r = STICKER / 2.0;
+    // Up-right first, then round the pin in eighths and sixteenths, a bit
+    // farther out each time the closer rings are taken (Bali and Lombok
+    // nearly share one spot).
+    let spots: Vec<(f64, f64)> = (0..5)
+        .map(|ring| HALO + r + 1.0 + f64::from(ring) * 5.0)
+        .flat_map(|d| {
+            [
+                -45.0_f64, -135.0, 45.0, 135.0, 0.0, 180.0, 90.0, -90.0, -22.5, -157.5, 22.5, 157.5, -67.5,
+                -112.5, 67.5, 112.5,
+            ]
+            .map(|a: f64| (d * a.to_radians().cos(), d * a.to_radians().sin()))
+        })
+        .collect();
+    let mut placed: Vec<(f64, f64)> = Vec::new();
+    pins.iter()
+        .map(|&(x, y, _)| {
+            let free = |&(dx, dy): &(f64, f64)| {
+                let (cx, cy) = (x + dx, y + dy);
+                let bx = (cx - r, cy - r, cx + r, cy + r);
+                bx.0 >= bounds.0 + 1.0
+                    && bx.1 >= bounds.1 + 1.0
+                    && bx.2 <= bounds.2 - 1.0
+                    && bx.3 <= bounds.3 - 1.0
+                    && pins.iter().all(|&(px, py, _)| (cx - px).hypot(cy - py) >= HALO + r + 0.5)
+                    && !labels.iter().any(|l| overlaps(bx, *l))
+                    && placed.iter().all(|&(qx, qy)| (cx - qx).hypot(cy - qy) >= STICKER + 1.0)
+            };
+            let spot = spots.iter().copied().find(free);
+            if let Some((dx, dy)) = spot {
+                placed.push((x + dx, y + dy));
+            }
+            spot
+        })
+        .collect()
+}
+
 /// Picks a spot per pin, given (x, y, label length) in pin design units:
 /// the first of above, below, east, west that covers no other pin and no
 /// label already placed. Falls back to above.
@@ -978,6 +1091,37 @@ mod tests {
                 }
                 for b in &rects[i + 1..] {
                     assert!(!overlaps(*a, *b), "label {i} overlaps another");
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn landmark_stickers_stay_clear_of_pins_names_and_each_other() {
+        let r = ROUTES.as_ref().unwrap();
+        for (cur, map) in [(&r.id, &r.id_map), (&r.jv, &r.jv_map)] {
+            let pins = design_pins(cur, map);
+            let stickers = sticker_spots(&pins, map_bounds(map));
+            let labels: Vec<_> =
+                pins.iter().zip(label_spots(&pins)).map(|(&(x, y, n), s)| s.rect(x, y, n)).collect();
+            let placed: Vec<_> = pins
+                .iter()
+                .zip(&stickers)
+                .filter_map(|(&(x, y, _), s)| s.map(|(dx, dy)| (x + dx, y + dy)))
+                .collect();
+            let missing: Vec<_> =
+                cur.levels.iter().zip(&stickers).filter(|(_, s)| s.is_none()).map(|(l, _)| &l.id).collect();
+            assert!(missing.is_empty(), "no room for the stickers of {missing:?}");
+            let h = STICKER / 2.0;
+            for (i, &(cx, cy)) in placed.iter().enumerate() {
+                for &(px, py, _) in &pins {
+                    assert!((cx - px).hypot(cy - py) >= HALO + h, "sticker {i} covers a pin");
+                }
+                for l in &labels {
+                    assert!(!overlaps((cx - h, cy - h, cx + h, cy + h), *l), "sticker {i} covers a name");
+                }
+                for &(qx, qy) in &placed[i + 1..] {
+                    assert!((cx - qx).hypot(cy - qy) >= STICKER, "sticker {i} overlaps another");
                 }
             }
         }

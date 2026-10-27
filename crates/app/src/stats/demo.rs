@@ -7,7 +7,7 @@
 //!
 //! Then point the app's data dir at it (on Linux: `HOME` such that
 //! `$HOME/.local/share/kabar/kabar.db` is that file) and open
-//! `KABAR_OPEN_SCREEN=stats` or `level_check`.
+//! `KABAR_OPEN_SCREEN=stats`, `level_check` or `journey`.
 
 use kabar_core::review::seed_bridge_deck;
 use kabar_core::settings::Settings;
