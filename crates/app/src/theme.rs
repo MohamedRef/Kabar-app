@@ -74,6 +74,32 @@ mod tests {
     }
 
     #[test]
+    fn design_tokens_are_defined() {
+        // docs/DESIGN.md lists these; screens rely on them existing.
+        let css = include_str!("../assets/main.css");
+        for token in [
+            "--fs-xs:",
+            "--fs-md:",
+            "--fs-3xl:",
+            "--lh-arabic:",
+            "--measure:",
+            "--measure-ar:",
+            "--sp-1:",
+            "--sp-8:",
+            "--gutter:",
+            "--stack:",
+            "--card-pad:",
+            "--line-soft:",
+            "--shadow-raised:",
+            "--dur:",
+            "--ease:",
+        ] {
+            assert!(css.contains(token), "main.css must define {token}");
+        }
+        assert!(css.contains("@media (prefers-reduced-motion: reduce)"));
+    }
+
+    #[test]
     fn every_theme_gets_a_batik_tile() {
         let css = stylesheet();
         for theme in Theme::ALL {
