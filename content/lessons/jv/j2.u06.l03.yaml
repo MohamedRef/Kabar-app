@@ -105,13 +105,13 @@ exercises:
       ar_eg: في السؤال اليومي «أو» = apa، زي «ولا» عندنا. utawa صح بس أرسمي.
       ar: في السؤال اليومي «أو» = apa، وutawa صحيحة لكنها أرسمي.
       en: In everyday questions "or" is apa, like Egyptian «ولا»; utawa is correct but more formal.
-    words: [apa, utawa]
+    words: [apa, utawa, merga / amarga, nanging / ning]
   - id: e02
     type: listen
     text: Nek udan, aku neng omah wae.
-    options: ['Nek udan, aku neng pasar wae.', 'Nek udan, aku neng omah wae.', 'Merga udan, aku neng omah wae.']
+    options: ['Nek udan, aku neng pasar wae.', 'Nek udan, aku neng omah wae.', 'Udan, mula aku neng omah wae.']
     answer: 1
-    words: [nek, udan]
+    words: [yen / nek, udan, mula]
   - id: e03
     type: fill_blank
     sentence: Aku mangan sik, ___ adus.
@@ -124,29 +124,62 @@ exercises:
   - id: e04
     type: build_sentence
     source:
-      ar_eg: أنا وديماس خرجنا نتفسح في نغاوي.
-      ar: خرجتُ أنا وديماس للنزهة في نغاوي.
-      en: Dimas and I went out to Ngawi.
-    answer: Aku karo Dimas dolan neng Ngawi.
-    distractors: [nanging, merga]
-    words: [karo, dolan]
+      ar_eg: بحب الأكل الجاوي، بس مش الحرّاق.
+      ar: أحب الطعام الجاوي، لكن ليس الحارّ.
+      en: I like Javanese food, but not the spicy kind.
+    answer: Aku seneng panganan Jawa, nanging ora sing pedhes.
+    distractors: [merga, mula]
+    words: [seneng, panganan, nanging / ning, pedhes]
   - id: e05
-    type: translate
-    direction: from_target
-    source_text: Aku kesel, mula aku turu.
-    answers_meaning:
-      ar_eg: [أنا تعبان، عشان كده هنام., أنا تعبان عشان كده بنام, تعبت، فهنام]
-      ar: [أنا متعب، لذلك أنام., أنا متعب ولذلك سأنام]
-      en: ['I''m tired, so I''m going to sleep.', 'I''m tired, that''s why I''m sleeping', 'I''m tired, so I''ll sleep']
-    words: [mula, kesel]
+    type: match_pairs
+    pairs:
+      - text: utawa
+        ar_eg: أو
+        ar: أو
+        en: or
+      - text: nanging
+        ar_eg: بس / لكن
+        ar: لكن
+        en: but
+      - text: banjur
+        ar_eg: وبعدين
+        ar: ثم
+        en: then
+      - text: merga
+        ar_eg: عشان / لأن
+        ar: لأن
+        en: because
+      - text: mula
+        ar_eg: عشان كده
+        ar: لذلك
+        en: so, that's why
+      - text: panganan
+        ar_eg: أكل
+        ar: طعام
+        en: food
+    words: [utawa, nanging / ning, banjur, merga / amarga, mula, panganan]
   - id: e06
     type: speaking
-    text: Kopi apa teh?
+    text: Nek udan, aku mangan panganan neng omah utawa neng warung.
     meaning:
-      ar_eg: قهوة ولا شاي؟
-      ar: قهوة أم شاي؟
-      en: Coffee or tea?
-    words: [apa]
+      ar_eg: لو بتمطر، باكل في البيت أو في المطعم الصغير.
+      ar: إذا أمطرت، آكل في البيت أو في المطعم الصغير.
+      en: If it rains, I eat at home or at a warung.
+    words: [yen / nek, udan, panganan, utawa]
+  - id: e07
+    type: multiple_choice
+    question: Udan. ___ aku neng omah wae.
+    question_meaning:
+      ar_eg: بتمطر. عشان كده أنا قاعد في البيت.
+      ar: إنها تمطر. لذلك أبقى في البيت.
+      en: It's raining. So I'm staying home.
+    options: [Yen, Merga, Banjur, Mula]
+    answer: 3
+    explain:
+      ar_eg: mula = عشان كده. yen = لو، banjur = وبعدين، merga = عشان (لأن).
+      ar: mula = لذلك، وyen = إذا، وbanjur = ثم، وmerga = لأن.
+      en: mula = so; yen = if, banjur = then, merga = because.
+    words: [udan, mula, yen / nek, banjur, merga / amarga]
 dialogue:
   title: Neng pinggir Bengawan Solo
   lines:
