@@ -130,7 +130,7 @@ On the Mac: `just run-mac`. After the welcome screen, Kak Nur's onboarding asks 
 
 To start onboarding again, delete the database (§2). On the Galaxy devices: `just apk` and `just install <serial>` as in §3.
 
-Reminders arrive as push notifications once Kabar Cloud's reminder alarm and Firebase are set up (CLOUD.md §3.4).
+On the S24 Ultra and Tab S11, reminders are local notifications from Kak Nur: choosing a reminder style asks for Android's notification permission, and the app schedules the next few reminders itself, so they work offline and without Kabar Cloud. Studying, snoozing or changing a setting re-plans them; a goal met on another device silences the rest once this device has synced. If notifications are off, Settings → Kak Nur says so and opens the system setting. Push through FCM (reminders even when the app hasn't been opened for days) and Mac notifications come next (issue #127); the Mac shows reminders as "coming soon".
 
 ### Settings: Cost & limits, and Export everything
 
