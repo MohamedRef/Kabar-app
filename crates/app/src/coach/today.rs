@@ -95,6 +95,8 @@ pub fn Today() -> Element {
         ("count", count.as_str()),
         ("topic", topic.as_str()),
     ];
+    // The one clear next step: the first thing on the plan not done yet.
+    let next = (0..plan.items.len()).find(|&i| !progress.done.get(i).copied().unwrap_or(false));
     let recap_ready =
         recap::recap_ready(progress.goal_met, stats.studied(), coach.time_of_day(), &profile.study_times);
 
@@ -139,6 +141,7 @@ pub fn Today() -> Element {
                                 done: progress.done.get(i).copied().unwrap_or(false),
                                 today,
                                 show_start: true,
+                                next: next == Some(i),
                                 break_text: (break_at == Some(i))
                                     .then(|| say(&ui, Line::PlanBreak, today, &args)),
                             }
@@ -267,6 +270,7 @@ fn PlanRow(
     done: bool,
     today: LocalDate,
     show_start: bool,
+    #[props(default)] next: bool,
     break_text: Option<String>,
 ) -> Element {
     let ui = use_context::<Ui>();
@@ -277,7 +281,7 @@ fn PlanRow(
     let id = item.id.clone();
     let seconds = u32::from(item.minutes) * 60;
     rsx! {
-        li { class: if done { "plan-item done" } else { "plan-item" },
+        li { class: if done { "plan-item done" } else if next { "plan-item next" } else { "plan-item" },
             button {
                 class: "check",
                 role: "checkbox",
@@ -305,6 +309,7 @@ fn PlanRow(
             }
             if !done && show_start {
                 button {
+                    class: if next { "primary" } else { "" },
                     onclick: {
                         let db = db.clone();
                         move |_| start_item(ui, &db, coach, &kind)
