@@ -8,6 +8,8 @@ use fsrs::{FSRS, FSRSItem, FSRSReview, MemoryState};
 use kabar_protocol::srs::{Rating, ReviewEvent};
 use serde::{Deserialize, Serialize};
 
+use crate::settings::Settings;
+
 const DAY_MS: u64 = 86_400_000;
 const MIN_SHORT_INTERVAL_MS: u64 = 10 * 60_000;
 /// Below this many reviews, personal parameters are noise; keep the defaults.
@@ -21,14 +23,24 @@ pub struct DayClock {
     pub rollover_hour: u8,
 }
 
+/// Reviews before 4 am still count for the day before, like Anki.
+pub const ROLLOVER_HOUR: u8 = 4;
+
 impl Default for DayClock {
     fn default() -> Self {
-        // Cairo, rolling over at 4 am like Anki.
-        Self { utc_offset_minutes: 180, rollover_hour: 4 }
+        // Cairo summer time. Tests only: the app builds its clock from the
+        // coach's offset (`DayClock::local`).
+        Self { utc_offset_minutes: 180, rollover_hour: ROLLOVER_HOUR }
     }
 }
 
 impl DayClock {
+    /// The learner's day in their current time zone (the coach's offset,
+    /// minutes east of UTC), rolling over at [`ROLLOVER_HOUR`].
+    pub fn local(utc_offset_min: i16) -> Self {
+        Self { utc_offset_minutes: i32::from(utc_offset_min), rollover_hour: ROLLOVER_HOUR }
+    }
+
     fn shift_ms(&self) -> i64 {
         i64::from(self.utc_offset_minutes) * 60_000 - i64::from(self.rollover_hour) * 3_600_000
     }
@@ -78,6 +90,29 @@ pub struct Preview {
     pub interval_days: f32,
 }
 
+/// FSRS parameters trained on the learner's own review log
+/// ([`Scheduler::optimize`]); a synced setting.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct FsrsParams {
+    pub weights: Vec<f32>,
+    /// Training items (reviews after a card's first) they were fitted on.
+    pub reviews: u32,
+    pub trained_at_ms: u64,
+}
+
+// Compared bit for bit, so `Eq` holds even for NaN (which `Scheduler::new`
+// rejects anyway).
+impl PartialEq for FsrsParams {
+    fn eq(&self, other: &Self) -> bool {
+        self.reviews == other.reviews
+            && self.trained_at_ms == other.trained_at_ms
+            && self.weights.len() == other.weights.len()
+            && self.weights.iter().zip(&other.weights).all(|(a, b)| a.to_bits() == b.to_bits())
+    }
+}
+
+impl Eq for FsrsParams {}
+
 pub struct Scheduler {
     fsrs: FSRS,
     decay: f32,
@@ -97,6 +132,20 @@ impl Scheduler {
         let fsrs = FSRS::new(parameters)?;
         let decay = parameters.get(20).copied().unwrap_or(fsrs::DEFAULT_PARAMETERS[20]);
         Ok(Self { fsrs, decay, desired_retention, day, max_interval_days: 3650.0 })
+    }
+
+    /// The learner's scheduler: their personal parameters when they have
+    /// valid ones (else FSRS defaults), their desired retention, and their
+    /// day in their time zone.
+    pub fn from_settings(settings: &Settings, utc_offset_min: i16) -> Self {
+        let day = DayClock::local(utc_offset_min);
+        let retention = settings.desired_retention.as_f32();
+        if let Some(params) = &settings.fsrs
+            && let Ok(s) = Self::new(&params.weights, retention, day)
+        {
+            return s;
+        }
+        Self::new(&fsrs::DEFAULT_PARAMETERS, retention, day).expect("default parameters are valid")
     }
 
     fn elapsed_days(&self, state: &CardState, at_ms: u64) -> u32 {
@@ -232,8 +281,9 @@ impl Scheduler {
         out
     }
 
-    /// FSRS training items from the log: every review after a card's first,
-    /// with the history before it. Day gaps use the learner's day clock.
+    /// FSRS training items from the log: every review after a card's first
+    /// that came on a later learner day, with the history before it. Day
+    /// gaps use the learner's day clock.
     pub fn training_items(&self, events: &[ReviewEvent]) -> Vec<FSRSItem> {
         let mut by_card: BTreeMap<&str, Vec<&ReviewEvent>> = BTreeMap::new();
         let mut seen = HashSet::new();
@@ -255,7 +305,9 @@ impl Scheduler {
                     },
                 })
                 .collect();
-            for end in 2..=reviews.len() {
+            // Same-day repeats are short-term steps, not something FSRS can
+            // fit (it rejects an item without a gap of a day or more), as in Anki.
+            for end in (2..=reviews.len()).filter(|&end| reviews[end - 1].delta_t > 0) {
                 items.push(FSRSItem { reviews: reviews[..end].to_vec() });
             }
         }
@@ -458,6 +510,22 @@ mod tests {
     }
 
     #[test]
+    fn scheduler_from_settings_uses_the_offset_retention_and_valid_params() {
+        let mut settings = Settings::default();
+        let s = Scheduler::from_settings(&settings, 420);
+        assert_eq!(s.day, DayClock { utc_offset_minutes: 420, rollover_hour: 4 });
+        assert_eq!(s.desired_retention, 0.9);
+        // Broken stored parameters fall back to the defaults instead of failing.
+        settings.fsrs = Some(FsrsParams { weights: vec![f32::NAN; 3], reviews: 500, trained_at_ms: T0 });
+        settings.desired_retention = crate::settings::RetentionPct(85);
+        let s = Scheduler::from_settings(&settings, 120);
+        assert_eq!(s.desired_retention, 0.85);
+        let card = s.apply(&CardState::new("x"), Rating::Good, T0);
+        let default = Scheduler::new(&fsrs::DEFAULT_PARAMETERS, 0.85, DayClock::local(120)).unwrap();
+        assert_eq!(card, default.apply(&CardState::new("x"), Rating::Good, T0));
+    }
+
+    #[test]
     fn retrievability_drops_over_time() {
         let s = Scheduler::default();
         let card = s.apply(&CardState::new("x"), Rating::Good, T0);
@@ -483,12 +551,32 @@ mod tests {
             ev("1", "a", T0, "m", Rating::Good),
             ev("2", "a", T0 + 2 * DAY_MS, "m", Rating::Good),
             ev("3", "a", T0 + 7 * DAY_MS, "m", Rating::Again),
-            ev("4", "b", T0, "m", Rating::Easy),
+            ev("4", "b", T0, "m", Rating::Again),
+            // A same-day relearning step: FSRS can't train on it (and panics
+            // on an item without a day gap), so it is left out.
+            ev("5", "b", T0 + 600_000, "m", Rating::Good),
         ];
         let items = s.training_items(&log);
         assert_eq!(items.len(), 2);
         assert_eq!(items[1].reviews.iter().map(|r| r.delta_t).collect::<Vec<_>>(), [0, 2, 5]);
         assert!(s.optimize(&log).is_none(), "too little history keeps the defaults");
+    }
+
+    #[test]
+    fn optimizer_fits_a_long_enough_history() {
+        let s = Scheduler::default();
+        let log = mixed_log(150, 5);
+        assert!(s.training_items(&log).len() >= MIN_REVIEWS_TO_OPTIMIZE);
+        let params = s.optimize(&log).expect("enough history to fit");
+        assert_eq!(params.len(), fsrs::DEFAULT_PARAMETERS.len());
+        assert!(params.iter().all(|w| w.is_finite()));
+        let settings = Settings {
+            fsrs: Some(FsrsParams { weights: params, reviews: 600, trained_at_ms: T0 }),
+            ..Settings::default()
+        };
+        // The fitted parameters build a working scheduler.
+        let fitted = Scheduler::from_settings(&settings, 120);
+        assert!(fitted.apply(&CardState::new("x"), Rating::Good, T0).due_ms.is_some());
     }
 
     #[test]
