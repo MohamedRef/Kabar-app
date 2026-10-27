@@ -1,198 +1,241 @@
 schema: kabar.lesson/v1
 id: bipa1.u10.l05
 language: id
-title: Ulangan Unit 10
+title: Mimpi dan cita-cita
 can_do:
-  ar_eg: تحكي تجربة عدّت عليك.
-  ar: أن تعيد رواية تجربة مررت بها.
-  en: Retell an experience.
+  ar_eg: 'تتكلم عن أحلامك وطموحك: تتمنى، متأكد، تنجح أو تفشل، فخور، وتدعي.'
+  ar: 'أن تتحدث عن أحلامك وطموحك: تأمل، متأكد، تنجح أو تفشل، فخور، وتدعو.'
+  en: 'Talk about dreams and ambitions: hope, be sure, succeed or fail, be proud, and pray.'
 slides:
-  - title: Ingat!
+  - title: Cita-cita
     body:
       ar_eg: |
-        - مفيش ماضي في الفعل: كلمة الوقت هي اللي بتقول (kemarin، tadi، minggu lalu).
-        - pernah = قبل كده / عمرك؛ والرد Pernah أو Belum (pernah). وtidak pernah = أبدًا.
-        - الترتيب S + P + O + K، والظرف بس ممكن ييجي الأول.
-        - sebelum / setelah / lalu عشان ترتّب الحكاية.
+        mimpi = حلم (وإنت نايم أو حلم في حياتك). cita-cita = طموح، الحلم الكبير: «Cita-cita saya jadi dokter.»
+        berharap = يتمنى ويأمل. yakin = متأكد: «Saya yakin!»
+        sukses = نجاح أو ناجح، وgagal = يفشل. bangga = فخور.
+        berdoa = يدعي (من doa = دعاء، من العربي). أما salat فهي الصلاة نفسها.
       ar: |
-        - لا يتصرف الفعل؛ ظرف الزمان يحدد الوقت (kemarin، tadi، minggu lalu).
-        - pernah = سبق أن، والجواب Pernah أو Belum (pernah)، وtidak pernah = أبدًا.
-        - الترتيب S + P + O + K، والظرف وحده يجوز تقديمه.
-        - sebelum / setelah / lalu لترتيب القصة.
+        mimpi = حلم (في النوم أو في الحياة). cita-cita = الطموح، الحلم الكبير: «Cita-cita saya jadi dokter.»
+        berharap = يأمل. yakin = متأكد: «Saya yakin!»
+        sukses = النجاح أو ناجح، وgagal = يفشل. bangga = فخور.
+        berdoa = يدعو (من doa = دعاء، من العربية)، أما salat فالصلاة نفسها.
       en: |
-        - No past tense: the time word does it (kemarin, tadi, minggu lalu).
-        - pernah = ever; answer Pernah or Belum (pernah); tidak pernah = never.
-        - Order S + P + O + K; only the adverbial can move to the front.
-        - sebelum / setelah / lalu to order the story.
-    grammar: id.aspect.pernah
+        mimpi = dream (asleep or in life). cita-cita = ambition, your big dream: "Cita-cita saya jadi dokter."
+        berharap = hope. yakin = sure: "Saya yakin!"
+        sukses = success, successful; gagal = fail. bangga = proud.
+        berdoa = pray, make du'a (doa, from Arabic دعاء); salat is ritual prayer.
+    examples:
+      - text: Cita-cita saya jadi dokter.
+        ar_eg: حلمي أبقى دكتور.
+        ar: طموحي أن أصبح طبيبًا.
+        en: My ambition is to be a doctor.
+      - text: Saya yakin kamu sukses!
+        ar_eg: أنا متأكد إنك هتنجح!
+        ar: أنا متأكد أنك ستنجح!
+        en: I'm sure you'll succeed!
+      - text: Sebelum ujian, saya berdoa.
+        ar_eg: قبل الامتحان بدعي ربنا.
+        ar: قبل الامتحان أدعو الله.
+        en: Before an exam, I pray.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: kemarin
-        ar_eg: امبارح
-        ar: أمس
-        en: yesterday
-      - text: tadi pagi
-        ar_eg: النهارده الصبح (اللي فات)
-        ar: هذا الصباح
-        en: this morning (past)
-      - text: tahun lalu
-        ar_eg: السنة اللي فاتت
-        ar: العام الماضي
-        en: last year
-      - text: pelabuhan
-        ar_eg: ميناء
-        ar: ميناء
-        en: harbour
-      - text: kapal
-        ar_eg: مركب
-        ar: قارب
-        en: boat
-    words: [kemarin, tadi, tahun lalu, pelabuhan, kapal]
+      - text: mimpi
+        ar_eg: حلم
+        ar: حلم
+        en: dream
+      - text: yakin
+        ar_eg: متأكد
+        ar: متأكد
+        en: sure
+      - text: sukses
+        ar_eg: نجاح، ناجح
+        ar: نجاح، ناجح
+        en: success
+      - text: berdoa
+        ar_eg: يدعي
+        ar: يدعو
+        en: pray
+    words: [mimpi, yakin, sukses, berdoa]
   - id: e02
-    type: multiple_choice
-    question: Kamu pernah naik kapal?
-    question_meaning:
-      ar_eg: إنت لسه عمرك ما ركبت مركب. ترد بإيه بأدب؟
-      ar: لم تركب قاربًا بعد. بماذا تجيب بلطف؟
-      en: You've never been on a boat yet. What's the polite answer?
-    options: [Tidak tahu., Bukan., Belum pernah.]
-    answer: 2
-    explain:
-      ar_eg: Belum pernah = لسه، وده الرد المؤدب.
-      ar: Belum pernah = لم يسبق بعدُ، وهو الجواب المهذب.
-      en: Belum pernah = not yet — the polite answer.
-    words: [belum pernah]
+    type: match_pairs
+    pairs:
+      - text: berharap
+        ar_eg: يتمنى
+        ar: يأمل
+        en: hope
+      - text: cita-cita
+        ar_eg: طموح
+        ar: طموح
+        en: ambition
+      - text: bangga
+        ar_eg: فخور
+        ar: فخور
+        en: proud
+      - text: gagal
+        ar_eg: يفشل
+        ar: يفشل
+        en: fail
+    words: [berharap, cita-cita, bangga, gagal]
   - id: e03
+    type: listen
+    text: Tadi malam saya mimpi pergi ke Bali.
+    question:
+      ar_eg: حلم بإيه؟
+      ar: بمَ حلم؟
+      en: What did he dream about?
+    options: [إنه راح بالي, إنه فشل, إنه نجح]
+    answer: 0
+    meaning:
+      ar_eg: امبارح بالليل حلمت إني رحت بالي.
+      ar: حلمت الليلة الماضية أني ذهبت إلى بالي.
+      en: Last night I dreamt I went to Bali.
+    words: [mimpi]
+  - id: e04
+    type: fill_blank
+    sentence: Cita-cita saya jadi dokter. Saya ___ sukses!
+    meaning:
+      ar_eg: حلمي أبقى دكتور. ___ أنجح!
+      ar: طموحي أن أصبح طبيبًا، و___ أن أنجح!
+      en: My ambition is to be a doctor. I ___ I succeed!
+    options: [berharap, gagal, bangga]
+    answers: [berharap]
+    words: [berharap, sukses, gagal, bangga, cita-cita]
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة ترتيبها صح؟
-      ar: أيّ جملة ترتيبها صحيح؟
-      en: Which sentence is in the right order?
-    options: [Membeli Rina tiket kemarin di pelabuhan., Kemarin Rina membeli tiket di pelabuhan., Kemarin Rina tiket membeli di pelabuhan.]
-    answer: 1
+      ar_eg: قبل الامتحان بتطلب من ربنا يوفقك. بالإندونيسي؟
+      ar: قبل الامتحان تسأل الله التوفيق. بالإندونيسية؟
+      en: Before an exam you ask God for help. In Indonesian?
+    options: [berdoa, gagal, mimpi]
+    answer: 0
     explain:
-      ar_eg: 'الترتيب: K (kemarin) + S (Rina) + P (membeli) + O (tiket) + K (di pelabuhan).'
-      ar: الظرف ثم المسند إليه ثم المسند ثم المفعول ثم الظرف.
-      en: K + S + P + O + K — the object right after the verb.
-    words: [membeli, pelabuhan]
-  - id: e04
-    type: listen
-    text: Saya pernah tinggal di Jakarta.
-    options: [Saya pernah tinggal di Jakarta., Saya belum pernah ke Jakarta., Saya tinggal di Jakarta sekarang.]
-    answer: 0
-    words: [pernah, tinggal]
-  - id: e05
-    type: listen
-    text: Setelah itu, kami makan ikan bakar.
-    options: ['Setelah itu, kami makan ikan bakar.', 'Setelah itu, kami membeli ikan.', 'Sebelum itu, kami makan ikan bakar.']
-    answer: 0
-    words: [setelah itu, ikan bakar]
+      ar_eg: berdoa = يدعي. gagal يفشل وmimpi حلم.
+      ar: berdoa يدعو، أما gagal فيفشل وmimpi حلم.
+      en: berdoa = pray; gagal is fail and mimpi dream.
+    words: [berdoa, gagal, mimpi]
   - id: e06
     type: fill_blank
-    sentence: Dia ___ pernah terlambat. Dia selalu datang pagi.
+    sentence: Anak saya pintar dan rajin. Saya ___!
     meaning:
-      ar_eg: هو عمره ما بيتأخر. دايمًا بييجي بدري.
-      ar: لا يتأخر أبدًا، فهو يأتي باكرًا دائمًا.
-      en: He's never late. He always comes early.
-    options: [sudah, bukan, tidak]
-    answers: [tidak]
-    words: [tidak pernah, terlambat]
+      ar_eg: ابني شاطر ومجتهد. أنا ___!
+      ar: ابني ذكي ومجتهد. أنا ___!
+      en: My child is clever and hard-working. I'm ___!
+    options: [bangga, gagal, yakin]
+    answers: [bangga]
+    words: [bangga, yakin]
   - id: e07
-    type: fill_blank
-    sentence: ___ naik kapal, kami membeli air.
-    meaning:
-      ar_eg: قبل ما نركب المركب، اشترينا مية.
-      ar: قبل ركوب القارب، اشترينا ماءً.
-      en: Before boarding the boat, we bought water.
-    options: [Setelah, Sebelum, Lalu]
-    answers: [Sebelum]
-    words: [sebelum]
+    type: build_sentence
+    source:
+      ar_eg: أنا متأكد إنك هتنجح!
+      ar: أنا متأكد أنك ستنجح!
+      en: I'm sure you'll succeed!
+    answer: Saya yakin kamu sukses!
+    distractors: [gagal, mimpi]
+    words: [yakin, sukses]
   - id: e08
-    type: build_sentence
-    source:
-      ar_eg: امبارح ركبنا مركب لجزر الألف.
-      ar: أمس ركبنا قاربًا إلى جزر الألف.
-      en: Yesterday we took a boat to the Thousand Islands.
-    answer: Kemarin kami naik kapal ke Kepulauan Seribu.
-    alternatives: [Kami naik kapal ke Kepulauan Seribu kemarin.]
-    distractors: [tadi, dari]
-    words: [kemarin, naik, kapal]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: عمرك كلت دوريان؟
-      ar: هل سبق أن أكلت الدوريان؟
-      en: Have you ever eaten durian?
-    answer: Kamu pernah makan durian?
-    distractors: [belum, ke]
-    words: [pernah, durian]
-  - id: e10
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: عمرك رحت مصر؟
-      ar: هل سبق أن زرت مصر؟
-      en: Have you ever been to Egypt?
-    answers: ['Kamu pernah ke Mesir?', 'Pernah ke Mesir?', 'Kamu pernah pergi ke Mesir?', 'Anda pernah ke Mesir?', 'Apakah kamu pernah ke Mesir?', Kamu pernah ke Mesir]
-    words: [pernah]
-  - id: e11
-    type: dictation
-    text: Ini pertama kali saya ke pulau.
-    meaning:
-      ar_eg: دي أول مرة أروح جزيرة.
-      ar: هذه أول مرة أذهب فيها إلى جزيرة.
-      en: This is my first time going to an island.
-    words: [pertama kali, pulau]
-  - id: e12
+    direction: from_target
+    source_text: Tidak apa-apa gagal. Coba lagi!
+    answers_meaning:
+      ar_eg: [مش مشكلة لو فشلت. جرّب تاني!, عادي تفشل. حاول تاني!]
+      ar: [لا بأس بالفشل. حاول مرة أخرى!, لا بأس أن تفشل. جرّب ثانية!]
+      en: ['It''s OK to fail. Try again!', Failing is fine. Try again!]
+    words: [gagal]
+  - id: e09
     type: speaking
-    text: Kemarin saya ke Kepulauan Seribu. Saya belum pernah naik kapal, jadi ini pertama kali. Saya capek, tapi senang!
+    text: Cita-cita saya jadi guru. Saya berharap sukses.
     meaning:
-      ar_eg: امبارح رحت جزر الألف. عمري ما كنت ركبت مركب، فدي كانت أول مرة. أنا تعبان، بس مبسوط!
-      ar: أمس ذهبت إلى جزر الألف. لم أركب قاربًا من قبل، فكانت هذه أول مرة. أنا متعب لكني سعيد!
-      en: Yesterday I went to the Thousand Islands. I'd never been on a boat, so it was the first time. I'm tired, but happy!
-    words: [kemarin, belum pernah, pertama kali, capek, senang]
+      ar_eg: حلمي أبقى مدرس. وبتمنى أنجح.
+      ar: طموحي أن أصبح معلّمًا، وآمل أن أنجح.
+      en: My ambition is to be a teacher. I hope I succeed.
+    words: [cita-cita, berharap]
+  - id: e10
+    type: multiple_choice
+    question: Setiap malam, sebelum tidur, saya ___.
+    options: [berdoa, sukses, cita-cita]
+    answer: 0
+    explain:
+      ar_eg: 'قبل النوم بيدعي: berdoa.'
+      ar: 'قبل النوم يدعو: berdoa.'
+      en: 'Before sleep, he prays: berdoa.'
+    words: [berdoa, sukses, cita-cita]
 dialogue:
-  title: Cerita untuk Bu Yanti
   lines:
-    - speaker: Bu Yanti
-      text: Mohamed, kemarin kamu ke mana?
-      ar_eg: يا محمد، امبارح رحت فين؟
-      ar: يا محمد، إلى أين ذهبت أمس؟
-      en: Mohamed, where did you go yesterday?
+    - speaker: Rina
+      text: Mohamed, apa cita-cita kamu?
+      ar_eg: يا محمد، إيه حلمك الكبير؟
+      ar: يا محمد، ما طموحك؟
+      en: Mohamed, what's your big dream?
     - speaker: Mohamed
-      text: Kemarin saya ke Pulau Pramuka, Bu. Saya naik kapal dari Marina Ancol.
-      ar_eg: امبارح رحت جزيرة برامُكا يا طنط. ركبت مركب من مارينا أنكول.
-      ar: أمس ذهبت إلى جزيرة برامُكا يا سيدتي، وركبت قاربًا من مارينا أنكول.
-      en: Yesterday I went to Pramuka Island, ma'am. I took a boat from Marina Ancol.
-    - speaker: Bu Yanti
-      text: Wah! Kamu pernah ke sana?
-      ar_eg: الله! كنت رحت هناك قبل كده؟
-      ar: رائع! هل سبق أن ذهبت إلى هناك؟
-      en: Wow! Had you been there before?
+      text: Saya berharap bisa berbicara bahasa Indonesia setiap hari.
+      ar_eg: بتمنى أقدر أتكلم إندونيسي كل يوم.
+      ar: آمل أن أتحدّث الإندونيسية كل يوم.
+      en: I hope to speak Indonesian every day.
+    - speaker: Rina
+      text: Saya yakin kamu sukses! Kamu rajin.
+      ar_eg: أنا متأكدة إنك هتنجح! إنت مجتهد.
+      ar: أنا متأكدة أنك ستنجح! أنت مجتهد.
+      en: I'm sure you'll make it! You work hard.
     - speaker: Mohamed
-      text: Belum pernah. Ini pertama kali. Setelah makan, kami berenang di laut.
-      ar_eg: لأ، عمري ما رحت. دي كانت أول مرة. بعد الأكل عُمنا في البحر.
-      ar: لم يسبق. كانت أول مرة، وبعد الأكل سبحنا في البحر.
-      en: Never. It was the first time. After eating, we swam in the sea.
-    - speaker: Bu Yanti
-      text: Wah, saya tidak pernah berenang di laut!
-      ar_eg: يا خبر، أنا عمري ما عُمت في البحر!
-      ar: يا للعجب، لم أسبح في البحر قط!
-      en: Wow, I've never swum in the sea!
+      text: Terima kasih. Kadang-kadang saya gagal…
+      ar_eg: شكرًا. ساعات بفشل…
+      ar: شكرًا. أحيانًا أفشل…
+      en: Thanks. Sometimes I fail…
+    - speaker: Rina
+      text: Tidak apa-apa. Saya bangga, kamu sudah banyak belajar!
+      ar_eg: عادي. أنا فخورة بيك، إنت اتعلمت كتير!
+      ar: لا بأس. أنا فخورة، فقد تعلّمت الكثير!
+      en: 'That''s OK. I''m proud: you''ve learnt so much!'
     - speaker: Mohamed
-      text: Lautnya bagus sekali, Bu. Bu Yanti harus mencoba!
-      ar_eg: البحر هناك حلو أوي يا طنط. لازم تجربي!
-      ar: البحر جميل جدًا يا سيدتي، يجب أن تجرّبي!
-      en: The sea is so beautiful, ma'am. You have to try it!
-souvenir:
-  id: bipa1.u10.souvenir
-  title: Kapal ke Kepulauan Seribu
-  note:
-    ar_eg: 'اسمها «الألف جزيرة»، بس في الحقيقة هي حوالي مية وكام جزيرة صغيرة في خليج جاكرتا، والمراكب بتطلع لها من Muara Angke وMarina Ancol. وفي الرحلة هتلاحظ إن الإندونيسي مالوش ماضي: كلمة «kemarin» بتعمل الشغل كله. ولما الناس يعرفوا إنك مصري، هيقولولك بابتسامة «Saya belum pernah ke Mesir!»، وده أحلى باب للكلام.'
-    ar: اسمها «الجزر الألف»، لكنها في الحقيقة نحو مئة ونيّف من الجزر الصغيرة في خليج جاكرتا، وتنطلق القوارب إليها من Muara Angke وMarina Ancol. وفي هذه الرحلة تلاحظ أن الإندونيسية بلا زمن ماضٍ، فكلمة «kemarin» تؤدي المهمة كلها. وحين يعرف الناس أنك مصري يقولون مبتسمين «Saya belum pernah ke Mesir!»، وهو أجمل مدخل للحديث.
-    en: They're called the "Thousand Islands", but there are really only a hundred-odd small islands in Jakarta Bay, reached by boat from Muara Angke and Marina Ancol. On the trip you'll notice Indonesian has no past tense — "kemarin" does all the work. And when people learn you're Egyptian they'll smile and say "Saya belum pernah ke Mesir!" — the warmest way into a conversation.
+      text: Saya juga berdoa setiap hari.
+      ar_eg: وأنا كمان بدعي كل يوم.
+      ar: وأنا أيضًا أدعو كل يوم.
+      en: I pray every day too.
+new_words:
+  - word: mimpi
+    pos: noun
+    ar_eg: حلم؛ يحلم
+    ar: حلم؛ يحلم
+    en: dream
+  - word: yakin
+    pos: adjective
+    arabic: يقين
+    ar_eg: متأكد
+    ar: متأكد، واثق
+    en: sure, certain
+  - word: sukses
+    pos: adjective
+    ar_eg: نجاح، ناجح
+    ar: نجاح، ناجح
+    en: success, successful
+  - word: berdoa
+    pos: verb
+    arabic: دعاء
+    ar_eg: يدعي (ربنا)
+    ar: يدعو (الله)
+    en: pray, make du'a
+  - word: berharap
+    pos: verb
+    ar_eg: يتمنى، يأمل
+    ar: يأمل
+    en: hope
+  - word: cita-cita
+    pos: noun
+    ar_eg: طموح، حلم الحياة
+    ar: طموح، أمنية
+    en: ambition, life goal
+  - word: bangga
+    pos: adjective
+    ar_eg: فخور
+    ar: فخور
+    en: proud
+  - word: gagal
+    pos: verb
+    ar_eg: يفشل
+    ar: يفشل
+    en: fail
 review:
   status: draft
   verified: false
