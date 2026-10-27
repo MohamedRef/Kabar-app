@@ -1,172 +1,165 @@
 schema: kabar.lesson/v1
 id: j6.u06.l10
 language: jv
-title: Ulangan J6.6
+title: Layang saka Ali
 can_do:
-  ar_eg: تقرا كلمات وسطر makna gandul بالبيجون.
-  ar: أن تقرأ كلمات وسطر makna gandul بالبيجون.
-  en: Read Pegon words and a makna gandul line.
+  ar_eg: تقرا رسالة قصيرة من صاحب مكتوبة بالبيجون.
+  ar: أن تقرأ رسالة قصيرة من صديق مكتوبة بالبيجون.
+  en: Read a short note from a friend written in Pegon.
+slides:
+  - title: Layang Pegon
+    body:
+      ar_eg: |
+        Ali، طالب في البيسانترين، بعت لمحمد ورقة بالبيجون والنغوكو.
+        بص: محمد وعلي وكتاب أسامي وكلمات عربي، فبتتكتب بالعربي زي ما هي. والباقي جاوي بحروف عربي: ايكي = iki، انا = ana، مريني = mrene (تعالى هنا).
+      ar: |
+        أرسل علي، طالب البيسانترين، إلى محمد ورقة بالبيجون وبالنغوكو.
+        لاحظ: محمد وعلي وكتاب أسماء وألفاظ عربية، فتُكتب بالعربية كما هي، والباقي جاوي بحروف عربية: ايكي = iki، انا = ana، مريني = mrene (تعالَ هنا).
+      en: |
+        Ali, a pesantren student, sent Mohamed a note in Pegon, in ngoko.
+        Notice: محمد, علي and كتاب are Arabic names and words, so they keep their Arabic spelling. The rest is Javanese in Arabic letters: ايكي = iki, انا = ana, مريني = mrene (come here).
+    grammar: jv.pegon.basics
+    examples:
+      - text: ماس محمد، سوري ايكي انا ڠاجي كتاب. (Mas Mohamed, sore iki ana ngaji kitab.)
+        ar_eg: يا محمد، النهارده العصر فيه درس كتب.
+        ar: يا محمد، عصر اليوم درس كتب.
+        en: Mohamed, there's kitab study this afternoon.
+      - text: ايو مريني، ڮاوا كتابمو. (Ayo mrene, gawa kitabmu.)
+        ar_eg: تعالى هنا، وهات كتابك.
+        ar: تعالَ إلى هنا، وأحضر كتابك.
+        en: Come over, and bring your kitab.
+      - text: علي (Ali)
+        ar_eg: علي
+        ar: علي
+        en: Ali
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: ڠ
-        ar_eg: nga (عين بتلات نقط)
-        ar: nga (عين بثلاث نقاط)
-        en: nga
-      - text: چ
-        ar_eg: ca (تش)
-        ar: ca (تش)
-        en: ca
-      - text: ڤ
-        ar_eg: pa (فا بتلات نقط)
-        ar: pa (فاء بثلاث نقاط)
-        en: pa
-      - text: ڎ
-        ar_eg: dha (دال بتلات نقط)
-        ar: dha (دال بثلاث نقاط)
-        en: dha
-      - text: ڟ
-        ar_eg: tha (طا بتلات نقط)
-        ar: tha (طاء بثلاث نقاط)
-        en: tha
-    words: [ڠ, چ, ڤ, ڎ, ڟ]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: فيه إيه النهارده؟
+      ar: ماذا هناك اليوم؟
+      en: What's on today?
+    options: [ngaji kitab, kerja bakti, wayang]
+    answer: 0
+    words: [ڠ, kitab]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: "اقرا: ساڤا"
-      ar: "اقرأ: ساڤا"
-      en: "Read: ساڤا"
-    options: [safa, sapa, saba]
+      ar_eg: إمتى؟
+      ar: متى؟
+      en: When?
+    options: [esuk iki, sore iki, sesuk]
     answer: 1
-    words: [ڤ]
+    explain:
+      ar_eg: سوري ايكي = sore iki (النهارده العصر).
+      ar: سوري ايكي = sore iki (عصر اليوم).
+      en: سوري ايكي = sore iki (this afternoon).
   - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: "اقرا: ۑاتا"
-      ar: "اقرأ: ۑاتا"
-      en: "Read: ۑاتا"
-    options: [yata, nata, nyata]
-    answer: 2
-    words: [ۑ]
-  - id: e04
-    type: listen
-    text: pathi
-    question:
-      ar_eg: سمعت pathi (نشا). بتتكتب إزاي بالبيجون؟
-      ar: سمعت pathi (نشا). كيف تُكتب بالبيجون؟
-      en: You heard pathi (starch). How is it written in Pegon?
-    options: ["ڤاتي", "ڤاڟي", "ڤاڎي"]
-    answer: 1
-    meaning:
-      ar_eg: نشا
-      ar: نشا
-      en: starch
-    words: [ڟ]
-  - id: e05
-    type: fill_blank
-    sentence: ڮولا = ___
-    meaning:
-      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: سكر)"
-      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: سكر)"
-      en: Type the reading in Latin letters. (It means "sugar".)
-    answers: [gula]
-    words: [ڮ]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: iku رمزها إيه في الـ makna gandul؟
-      ar: ما رمز iku في الـ makna gandul؟
-      en: Which symbol stands for iku in makna gandul?
-    options: [م, خ, ف]
+      ar_eg: علي عايز محمد يجيب إيه؟
+      ar: ماذا يريد علي أن يُحضر محمد؟
+      en: What should Mohamed bring?
+    options: [gula, kitab, sega]
     answer: 1
     explain:
-      ar_eg: iku بتعلّم الخبر، فرمزها خ. وutawi للمبتدأ، رمزها م.
-      ar: iku علامة الخبر فرمزها خ، وutawi علامة المبتدأ فرمزها م.
-      en: iku marks the khabar, so خ; utawi marks the mubtada, so م.
-    words: [makna gandul]
-  - id: e07
-    type: fill_blank
-    sentence: ___ sakabehe puji iku kagungane Allah.
+      ar_eg: ڮاوا كتابمو = gawa kitabmu (هات كتابك). ‑mu = بتاعك.
+      ar: ڮاوا كتابمو = gawa kitabmu (أحضر كتابك)، و‑mu = لك.
+      en: ڮاوا كتابمو = gawa kitabmu (bring your kitab). ‑mu = your.
+    words: [kitab, ڮ]
+  - id: e04
+    type: listen
+    text: Ayo mrene, gawa kitabmu.
+    question:
+      ar_eg: علي قال سطر من الورقة. أنهي سطر؟
+      ar: قال علي سطرًا من الورقة. أيّه؟
+      en: Ali read one line of the note aloud. Which one?
+    options: [ايو مريني، ڮاوا كتابمو, سوري ايكي انا ڠاجي كتاب, ماس محمد]
+    answer: 0
     meaning:
-      ar_eg: أما كل الحمد فهو ملك لله. (علامة المبتدأ ناقصة)
-      ar: أما كل الحمد فهو ملك لله. (علامة المبتدأ ناقصة)
-      en: As for all praise, it belongs to God. (The mubtada marker is missing.)
-    options: [Iku, Utawi, Kitab]
-    answers: [Utawi]
-    words: [utawi]
-  - id: e08
+      ar_eg: تعالى هنا، وهات كتابك.
+      ar: تعالَ إلى هنا، وأحضر كتابك.
+      en: Come over, and bring your kitab.
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: انا
+        ar_eg: ana — فيه
+        ar: ana — يوجد
+        en: ana — there is
+      - text: ايكي
+        ar_eg: iki — ده / النهارده (مع sore)
+        ar: iki — هذا
+        en: iki — this
+      - text: مريني
+        ar_eg: mrene — لهنا
+        ar: mrene — إلى هنا
+        en: mrene — (to) here
+      - text: ڮاوا
+        ar_eg: gawa — يجيب / يشيل
+        ar: gawa — يُحضر / يحمل
+        en: gawa — bring
+    words: [ڮ, pegon]
+  - id: e06
+    type: fill_blank
+    sentence: مريني = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: لهنا)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: إلى هنا)"
+      en: Type the reading in Latin letters. (It means "(to) here".)
+    answers: [mrene]
+    explain:
+      ar_eg: "م ر، وبعدين ي = é، ن، ي = é: mrene."
+      ar: "م ر، ثم ي = é، ن، ي = é: mrene."
+      en: "م ر, then ي = é, ن, ي = é: mrene."
+  - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: اكو ڠاجي كتاب"
-      ar: "اكتب بالحروف اللاتينية: اكو ڠاجي كتاب"
-      en: "Write in Latin letters: اكو ڠاجي كتاب"
-    answers: ["Aku ngaji kitab.", aku ngaji kitab]
-    explain:
-      ar_eg: اكو = aku، ڠاجي = ngaji، وكتاب = kitab بإملاها العربي. يعني «أنا بدرس كتاب».
-      ar: "اكو = aku، وڠاجي = ngaji، وكتاب = kitab بإملائها العربي: «أدرس كتابًا»."
-      en: "اكو = aku, ڠاجي = ngaji, and كتاب = kitab in its Arabic spelling: \"I'm studying a kitab.\""
-    words: [kitab, ڠ]
-  - id: e09
-    type: multiple_choice
-    question_meaning:
-      ar_eg: "ڎاڎا بالـ aksara Jawa تبقى إيه؟"
-      ar: "ما ڎاڎا بالـ aksara Jawa؟"
-      en: "What is ڎاڎا in aksara Jawa?"
-    options: ["ꦝꦝ", "ꦢꦢ", "ꦛꦛ"]
-    answer: 0
-    words: [ڎ]
-  - id: e10
+      ar_eg: "اكتب بالحروف اللاتينية: سوري ايكي انا ڠاجي كتاب"
+      ar: "اكتب بالحروف اللاتينية: سوري ايكي انا ڠاجي كتاب"
+      en: "Write in Latin letters: سوري ايكي انا ڠاجي كتاب"
+    answers: [sore iki ana ngaji kitab, "Sore iki ana ngaji kitab."]
+    words: [ڠ, kitab]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: الطالب بيدرس كتاب في الـ pesantren.
-      ar: يدرس الطالب كتابًا في الـ pesantren.
-      en: The student studies a kitab at the pesantren.
-    answer: Santri ngaji kitab ing pesantren.
-    distractors: [pegon]
-    words: [kitab, pesantren]
-  - id: e11
-    type: speaking
-    text: Aku isa maca Pegon!
-    meaning:
-      ar_eg: أنا أعرف أقرا بيجون!
-      ar: أستطيع قراءة البيجون!
-      en: I can read Pegon!
+      ar_eg: "اكتب الرد بالبيجون: aku mrene ngaji (جاي الدرس)"
+      ar: "اكتب الردّ بالبيجون: aku mrene ngaji (قادم إلى الدرس)"
+      en: "Write a reply in Pegon: aku mrene ngaji (I'm coming over to study)"
+    answer: اكو مريني ڠاجي
+    distractors: [اورا]
     words: [pegon]
+  - id: e09
+    type: speaking
+    text: Iya, aku mrene. Matur nuwun, Ali!
+    meaning:
+      ar_eg: حاضر، أنا جاي. شكرًا يا علي!
+      ar: حسنًا، أنا قادم. شكرًا يا علي!
+      en: Sure, I'm coming. Thanks, Ali!
 dialogue:
-  title: Pamit saking pesantren
+  title: Ali lan Mohamed
   lines:
-    - speaker: Gus Hanif
-      text: Mas Mohamed, menika kitab kagem panjenengan.
-      ar_eg: يا محمد، ده كتاب ليك هدية.
-      ar: يا محمد، هذا كتاب لك.
-      en: Mohamed, this kitab is for you.
+    - speaker: Ali
+      text: Mas, wis maca layangku?
+      ar_eg: يا محمد، قريت ورقتي؟
+      ar: يا محمد، أقرأت ورقتي؟
+      en: Mas, did you read my note?
     - speaker: Mohamed
-      text: Matur nuwun sanget, Gus! Kula badhe sinau Pegon malih.
-      ar_eg: شكرًا جدًا يا شيخ! هكمّل أذاكر بيجون.
-      ar: شكرًا جزيلًا يا شيخ! سأواصل تعلّم البيجون.
-      en: Thank you so much, Gus! I'll keep studying Pegon.
-    - speaker: Gus Hanif
-      text: Mangga. Mugi-mugi manfaat, Mas.
-      ar_eg: اتفضل. ربنا يجعله نافع.
-      ar: تفضّل. نسأل الله أن ينفعك به.
-      en: Please. May it be of benefit.
+      text: Wis! Tulisan Pegon gampang kok kanggo aku.
+      ar_eg: قريتها! البيجون سهل عليّ.
+      ar: نعم! البيجون سهل عليّ.
+      en: Yes! Pegon is easy for me.
+    - speaker: Ali
+      text: Jenengmu ditulis Arab, ya. محمد!
+      ar_eg: "واسمك مكتوب بالعربي: محمد!"
+      ar: "واسمك مكتوب بالعربية: محمد!"
+      en: Your name is in Arabic spelling, see — محمد!
     - speaker: Mohamed
-      text: Amin. Aksara Jawa lan Pegon, kula remen sedaya!
-      ar_eg: آمين. الـ aksara Jawa والبيجون، أنا بحبهم الاتنين!
-      ar: آمين. الـ aksara Jawa والبيجون، أحبهما كليهما!
-      en: Amen. Aksara Jawa and Pegon, I love them both!
-souvenir:
-  id: j6.u06.souvenir
-  title: Kitab Pegon
-  note:
-    ar_eg: |
-      من قرون والـ pesantren في جاوة بتكتب الجاوي بالحروف العربية. ولحد النهارده طلبة كتير شايلين كتاب عربي، وتحت كل سطر فيه شرح كلمة بكلمة بالبيجون، مايل كأنه متعلّق: الـ makna gandul. نفس العربي اللي اتربيت عليه، مشروح بالجاوي اللي اتعلمته في الرحلة دي. مبروك، خلّصت J6!
-    ar: |
-      منذ قرون تكتب الـ pesantren في جاوة الجاوية بالحرف العربي، وما زال كثير من الطلاب يحملون كتبًا عربية تحت كل سطر منها شرح حرفي بالبيجون، مائل كأنه معلَّق: الـ makna gandul. هي العربية التي نشأت عليها، مشروحة بالجاوية التي تعلمتها في هذه الرحلة. مبارك، أتممت J6!
-    en: |
-      For centuries, pesantren across Java have written Javanese in Arabic letters. Many students still carry an Arabic kitab with a word-by-word Pegon gloss slanting under every line: makna gandul. The Arabic you grew up with, explained in the Javanese you learned on this journey. Congratulations, you've finished J6!
+      text: Iya, lan jenengmu uga, علي. Ayo ngaji!
+      ar_eg: "أيوه، واسمك كمان: علي. يلا على الدرس!"
+      ar: "نعم، واسمك أيضًا: علي. هيا إلى الدرس!"
+      en: Yes, and yours too — علي. Let's go to class!
 review:
   status: draft
   verified: false

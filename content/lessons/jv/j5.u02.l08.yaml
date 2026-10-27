@@ -9,25 +9,25 @@ can_do:
 exercises:
   - id: e01
     type: listen
-    text: Warta saka Semarang. Esuk iki, dalan ing Kaligawe kebanjiran rob maneh.
+    text: Warta saka Madiun. Esuk iki, dalan ing Manguharjo kebanjiran maneh.
     question:
       ar_eg: دي نشرة الراديو الصبح. إيه اللي حصل؟
       ar: هذه نشرة الإذاعة صباحًا. ماذا حدث؟
       en: This is the morning radio news. What happened?
     options:
-      - Dalan ing Kaligawe kebanjiran rob.
-      - Ana pameran ing Lawang Sewu.
+      - Dalan ing Manguharjo kebanjiran.
+      - Ana pameran ing Stasiun Madiun.
       - Sepur saka Jakarta wis teka.
     answer: 0
     meaning:
-      ar_eg: أخبار من سيمارانج. النهارده الصبح، الشارع في كاليجاوي غرق من المد تاني.
-      ar: أخبار من سيمارانج. صباح اليوم غمر المدُّ طريقَ كاليغاوي مرة أخرى.
-      en: News from Semarang. This morning the road in Kaligawe was flooded by the tide again.
+      ar_eg: أخبار من ماديون. النهارده الصبح، الشارع في مانجوهارجو غرق مية تاني.
+      ar: أخبار من ماديون. صباح اليوم غمرت المياهُ طريقَ مانغوهارجو مرة أخرى.
+      en: News from Madiun. This morning the road in Manguharjo was flooded again.
     explain:
       ar_eg: maneh = تاني (lagi). يعني ده بيحصل كتير هناك، فاكر kerep؟
       ar: maneh = مرة أخرى (lagi)، أي أن ذلك يتكرر هناك، كما في kerep.
       en: maneh = again (lagi), so it happens often there; remember kerep?
-    words: [rob, kebanjiran, maneh]
+    words: [kebanjiran, maneh]
   - id: e02
     type: listen
     text: Dalan kasebut ditutup dening polisi nganti sore.
@@ -75,15 +75,15 @@ exercises:
         ar_eg: غرق / اتغمر بالمية
         ar: غمرته المياه
         en: got flooded
-      - text: rob
-        ar_eg: فيضان المد
-        ar: فيضان المدّ
-        en: tidal flood
+      - text: luber
+        ar_eg: فاض / طفح
+        ar: فاض
+        en: overflowed
       - text: kerep
         ar_eg: كتير / غالبًا
         ar: كثيرًا
         en: often
-    words: [ditutup, diresiki, kebanjiran, rob, kerep]
+    words: [ditutup, diresiki, kebanjiran, luber, kerep]
   - id: e05
     type: fill_blank
     sentence: Dalan kasebut ___ dening polisi nganti sore.
@@ -118,12 +118,12 @@ exercises:
     words: [ditutup, dening]
   - id: e08
     type: speaking
-    text: Warta saka Semarang. Dalan ing Kaligawe kebanjiran rob maneh.
+    text: Warta saka Madiun. Dalan ing Manguharjo kebanjiran maneh.
     meaning:
-      ar_eg: أخبار من سيمارانج. الشارع في كاليجاوي غرق من المد تاني.
-      ar: أخبار من سيمارانج. غمر المدُّ طريقَ كاليغاوي مرة أخرى.
-      en: News from Semarang. The road in Kaligawe was flooded by the tide again.
-    words: [kebanjiran, rob, maneh]
+      ar_eg: أخبار من ماديون. الشارع في مانجوهارجو غرق مية تاني.
+      ar: أخبار من ماديون. غمرت المياهُ طريقَ مانغوهارجو مرة أخرى.
+      en: News from Madiun. The road in Manguharjo was flooded again.
+    words: [kebanjiran, maneh]
   - id: e09
     type: fill_blank
     sentence: Sesuk dalan iki ___ diresiki.
@@ -136,18 +136,18 @@ exercises:
     words: [bakal]
   - id: e10
     type: multiple_choice
-    question: Dalan ing Kaligawe kebanjiran rob maneh.
+    question: Dalan ing Manguharjo kebanjiran maneh.
     question_meaning:
       ar_eg: معنى الجملة دي إيه؟
       ar: ما معنى هذه الجملة؟
       en: What does this sentence mean?
-    options: ['الشارع في كاليجاوي غرق تاني من مية البحر.', 'الشارع في كاليجاوي لسه ماغرقش.', 'الشارع في كاليجاوي عمره ما غرق.']
+    options: ['الشارع في مانجوهارجو غرق مية تاني.', 'الشارع في مانجوهارجو لسه ماغرقش.', 'الشارع في مانجوهارجو عمره ما غرق.']
     answer: 0
     explain:
       ar_eg: maneh = تاني (lagi). بتيجي بعد الفعل.
       ar: maneh = مرة أخرى (lagi)، وتأتي بعد الفعل.
       en: maneh = again (lagi); it comes after the verb.
-    words: [maneh, rob]
+    words: [maneh, kebanjiran]
 dialogue:
   title: Krungu warta radio
   lines:
@@ -157,15 +157,15 @@ dialogue:
       ar: يا محمد، هل سمعت نشرة الإذاعة صباح اليوم؟
       en: Mohamed, did you hear the radio news this morning?
     - speaker: Mohamed
-      text: Krungu. Dalan ing Kaligawe kebanjiran rob maneh.
-      ar_eg: سمعت. الشارع في كاليجاوي غرق من المد تاني.
-      ar: سمعت. غمر المدُّ طريق كاليغاوي مرة أخرى.
-      en: I did. The road in Kaligawe flooded with the tide again.
+      text: Krungu. Dalan ing Manguharjo kebanjiran maneh.
+      ar_eg: سمعت. الشارع في مانجوهارجو غرق مية تاني.
+      ar: سمعت. غمرت المياهُ طريقَ مانغوهارجو مرة أخرى.
+      en: I did. The road in Manguharjo flooded again.
     - speaker: Mbak Ayu
-      text: Waduh, aku arep menyang Kaligawe.
-      ar_eg: يا خبر، ده أنا رايحة كاليجاوي.
-      ar: يا للأسف، كنت أنوي الذهاب إلى كاليغاوي.
-      en: Oh no, I'm about to go to Kaligawe.
+      text: Waduh, aku arep menyang Manguharjo.
+      ar_eg: يا خبر، ده أنا رايحة مانجوهارجو.
+      ar: يا للأسف، كنت أنوي الذهاب إلى مانغوهارجو.
+      en: Oh no, I'm about to go to Manguharjo.
     - speaker: Mohamed
       text: Aja saiki! Dalane ditutup dening polisi nganti sore.
       ar_eg: بلاش دلوقتي! الشرطة قافلة الشارع لحد العصر.

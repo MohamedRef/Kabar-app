@@ -130,7 +130,7 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 | j2.u05 | Magetan | Telaga Sarangan (Lake Sarangan) | `j2.u05.png` |
 | j2.u06 | Ngawi | Benteng Pendem Ngawi (Benteng Pendem Ngawi) | `j2.u06.png` |
 
-## J3 · Yogyakarta
+## J3 · Pakualaman, Yogyakarta
 
 | unit | stop | souvenir | art |
 |---|---|---|---|
@@ -152,13 +152,13 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 | j4.u05 | Kotabaru | Kotabaru (Kotabaru colonial quarter) | `j4.u05.png` |
 | j4.u06 | Prambanan | Sendratari Ramayana Prambanan (Ramayana ballet at Prambanan) | `j4.u06.png` |
 
-## J5 · Semarang
+## J5 · Kutha Pendekar (Madiun)
 
 | unit | stop | souvenir | art |
 |---|---|---|---|
-| j5.u01 | Semarang Tawang | Kutha Lama Semarang (Kota Lama Semarang) | `j5.u01.png` |
-| j5.u02 | Lawang Sewu | Lawang Sewu (Lawang Sewu) | `j5.u02.png` |
-| j5.u03 | Simpang Lima | Alun-alun Simpang Lima (Simpang Lima square) | `j5.u03.png` |
+| j5.u01 | Stasiun Madiun | Jalan Pahlawan Madiun (Jalan Pahlawan Madiun) | `j5.u01.png` |
+| j5.u02 | INKA | Gerbong INKA (Gerbong INKA) | `j5.u02.png` |
+| j5.u03 | Alun-alun Madiun | Alun-alun Madiun (Alun-alun Madiun) | `j5.u03.png` |
 | j5.u04 | Ambarawa | Museum Kereta Api Ambarawa (Ambarawa railway museum) | `j5.u04.png` |
 | j5.u05 | Kudus | Menara Kudus (Menara Kudus) | `j5.u05.png` |
 | j5.u06 | Demak | Masjid Agung Demak (Demak Great Mosque) | `j5.u06.png` |

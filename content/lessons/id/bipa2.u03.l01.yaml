@@ -15,18 +15,27 @@ slides:
         - banyak = كتير: banyak orang = ناس كتير
         - sedikit = شوية: sedikit gula = سكر شوية
         والمهم: متكررش الاسم بعدهم! banyak orang، مش banyak orang-orang.
+        في الشارع بيقولوا:
+        - aja = saja (بس، وخلاص)
+        - gimana = bagaimana (إزاي، عامل إيه)
       ar: |
         ألفاظ الكم تسبق الاسم:
         - beberapa = بضعة / بعض: beberapa hari
         - banyak = كثير: banyak orang
         - sedikit = قليل: sedikit gula
         ولا يُكرَّر الاسم بعدها: banyak orang لا banyak orang-orang.
+        في كلام الشارع:
+        - aja = saja (فقط)
+        - gimana = bagaimana (كيف)
       en: |
         Quantity words go before the noun:
         - beberapa = several, a few: beberapa hari
         - banyak = many, a lot of: banyak orang
         - sedikit = a little, few: sedikit gula
         No reduplication after them: banyak orang, not banyak orang-orang.
+        On the street:
+        - aja = saja (just, only)
+        - gimana = bagaimana (how)
     grammar: id.quantifier.basic
     examples:
       - text: Beberapa pesawat berangkat pagi ini.
@@ -134,6 +143,10 @@ exercises:
     options: [Setiap hari, Semua, Sedikit]
     answers: [Semua]
     words: [semua, penumpang, paspor, koper]
+    explain:
+      ar_eg: "semua + اسم = كل الـ…: semua penumpang = كل الركاب. setiap hari = كل يوم، وsedikit = شوية."
+      ar: "semua + اسم = جميع: semua penumpang. أما setiap hari فـ«كل يوم» وsedikit «قليل»."
+      en: "semua + noun = all the…: semua penumpang. setiap hari is \"every day\", sedikit is \"a little\"."
   - id: e04
     type: match_pairs
     pairs:
@@ -190,11 +203,15 @@ exercises:
     options: [koper, pesawat, bandara]
     answers: [koper]
     words: [paspor, koper]
+    explain:
+      ar_eg: الباسبور بيبقى جوه koper (الشنطة). pesawat طيارة وbandara مطار، ودول أكبر من إن الباسبور يبقى «جواهم».
+      ar: يكون الجواز داخل koper (الحقيبة). أما pesawat فطائرة وbandara مطار.
+      en: The passport is inside the koper (suitcase). pesawat is the plane, bandara the airport.
 dialogue:
   title: Tiba di Ngurah Rai
   lines:
     - speaker: Mas Rizal
-      text: Mohamed! Selamat datang di Bali! Bagaimana perjalananmu?
+      text: Mohamed! Selamat datang di Bali! Gimana perjalananmu?
       ar_eg: محمد! أهلًا بيك في بالي! الرحلة كانت عاملة إيه؟
       ar: محمد! أهلًا بك في بالي! كيف كانت الرحلة؟
       en: Mohamed! Welcome to Bali! How was the flight?
@@ -209,7 +226,7 @@ dialogue:
       ar: يا للأسف. كم حقيبة معك؟
       en: Oh, poor things. How many suitcases do you have?
     - speaker: Mohamed
-      text: Dua saja. Semua oleh-oleh dari Mesir ada di sini.
+      text: Dua aja. Semua oleh-oleh dari Mesir ada di sini.
       ar_eg: اتنين بس. كل الهدايا اللي من مصر هنا.
       ar: اثنتان فقط. وكل الهدايا من مصر هنا.
       en: Just two. All the gifts from Egypt are in here.

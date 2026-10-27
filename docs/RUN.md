@@ -239,7 +239,7 @@ Ink syncs like every other row (`notebooks`, `ink_documents`, `ink_strokes`, `no
 
 Each unit has a pack of pre-generated Azure neural audio (Gadis/Ardi for Indonesian, Siti/Dimas for Javanese; dialogue lines in the speaker's voice) so its lessons sound natural with no network. Manifests are committed under `content/packs/`; the audio lives on the `packs` GitHub release of this repository (free), never in git.
 
-**Budget.** BIPA 1–2 and J1–J3 need about 83,000 characters in total (BIPA 1 ≈ 24.6k, BIPA 2 ≈ 29.2k, J1–J3 ≈ 29k), far under Azure F0's 500,000 a month. The tool refuses to spend more than `--budget` per calendar month (default 300,000, leaving the rest for Kabar Cloud's TTS proxy) and keeps its own count in `~/.kabar/audio/usage.json`. F0 never bills: past the quota Azure just says no until the next month.
+**Budget.** Every unit of every level is about 565,000 characters (`cargo run -p kabar-tools -- packs stats`; BIPA 1–2 and J1–J3 alone are about 83,000), more than Azure F0's 500,000 a month, so the first full run spreads over two months. The tool never spends more than `--budget` per calendar month (default 300,000; Kabar Cloud's TTS proxy stops at 200,000, so the two stay inside the free tier on one key) and keeps its own count in `~/.kabar/audio/usage.json`. `just packs-audio` takes whole units in order until the month's budget is used; run it again next month for the rest. Clips are cached by a hash of their text and voice, so after a lesson edit only the changed lines cost characters. F0 never bills: past the quota Azure just says no until the next month.
 
 On the Mac, with `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` in `.env` (git-ignored; same F0 resource as Kabar Cloud):
 

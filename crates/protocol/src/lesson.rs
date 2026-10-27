@@ -238,6 +238,10 @@ pub struct NewWord {
     /// Arabic origin when it's an Arabic loan (Bridge gold), e.g. "خبر".
     #[serde(default)]
     pub arabic: Option<String>,
+    /// The Bridge card it shares when its own spelling has none
+    /// (bersalaman → salam, Senen → senin).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub bridge: Option<String>,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]

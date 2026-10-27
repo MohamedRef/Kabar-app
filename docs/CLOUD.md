@@ -129,7 +129,7 @@ Counters are in D1 `quota_usage`; a call that would cross a limit is refused bef
 |---|---|---|
 | Workers AI | 300 requests/day | 10,000 Neurons/day |
 | Gemini free | 1,000 requests/day | ≈1,500/day (unofficial) |
-| Azure TTS | 450,000 chars/month | 500,000 chars/month |
+| Azure TTS | 200,000 chars/month (offline packs take up to 300,000 of the same key) | 500,000 chars/month |
 | Claude | 300 requests/month, **off** | paid unless Max credit |
 | Reminder alarm | 96 alarms/day/account (one per 15 min) | Durable Objects free: 100,000 requests/day; each `setAlarm()` is one of 100,000 free rows written/day |
 | FCM | one message per device per reminder | free on Spark, no quota charges |

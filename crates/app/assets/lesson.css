@@ -176,7 +176,9 @@
 .lp-pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
 .lp-pair-col { display: grid; gap: 0.6rem; align-content: start; }
 .lp-pair { border-radius: var(--radius); border-width: 2px; min-block-size: 52px; font-size: 1.05rem; }
-.lp-pair.selected { border-color: var(--indigo); background: var(--lp-review); }
+/* Selected tiles set aria-pressed, whose base rule paints text in --surface for
+   an indigo fill; on this light tint the text must go back to --text (#228). */
+.lp-pair.selected { border-color: var(--indigo); background: var(--lp-review); color: var(--text); }
 /* A matched couple reads as done, not disabled: full-strength text, a tick and
    one shared tint per couple so the pairing stays visible (#149). */
 .lp-pair.done {
