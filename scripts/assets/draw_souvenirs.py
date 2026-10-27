@@ -1845,6 +1845,471 @@ def baliem():
     return "".join(z)
 
 
+# ---------------------------------------------------------------- Javanese · shared shapes
+
+
+def joglo(cx, y, w=420, h=120, roof="#6E5A50", posts=6):
+    """A Javanese pendopo: open pillars under a high-peaked joglo roof."""
+    z = [rect(cx - w / 2, y - 24, w, 24, S, 3, C, 5)]
+    for k in range(posts):
+        x = cx - w * 0.42 + k * (w * 0.84 / (posts - 1))
+        z.append(rect(x - 8, y - 24 - h, 16, h, D, 2, C, 4))
+    top = y - 24 - h
+    z.append(path(f"M{cx - w * 0.6} {top + 10} L{cx + w * 0.6} {top + 10} L{cx + w * 0.3} {top - 60} L{cx - w * 0.3} {top - 60}Z", roof, C, 6))
+    z.append(path(f"M{cx - w * 0.3} {top - 60} L{cx + w * 0.3} {top - 60} L{cx + w * 0.12} {top - 170} L{cx - w * 0.12} {top - 170}Z", roof, C, 6))
+    z.append(line(cx - w * 0.14, top - 170, cx + w * 0.14, top - 170, C, 8))
+    return "".join(z)
+
+
+def tajug(cx, y, w=420, tiers=3, roof="#4A4A50", walls=P):
+    """A old Javanese mosque: square hall under a stacked pyramid roof."""
+    z = [rect(cx - w * 0.4, y - 130, w * 0.8, 130, walls, 3, C, 6)]
+    z.append(windows(cx - w * 0.32, y - 100, 4, 1, 36, 70, (w * 0.64 - 144) / 3, 0, I, arch=False))
+    yy = y - 130
+    for k in range(tiers):
+        ww = w * (1 - k * 0.28)
+        hh = 70 - k * 8
+        z.append(path(f"M{cx - ww / 2} {yy + 6} L{cx + ww / 2} {yy + 6} L{cx + ww * 0.3} {yy - hh} L{cx - ww * 0.3} {yy - hh}Z", roof, C, 6))
+        if k < tiers - 1:
+            z.append(rect(cx - ww * 0.3, yy - hh - 30, ww * 0.6, 30, walls, 2, C, 4))
+            yy -= hh + 30
+        else:
+            yy -= hh
+    z.append(path(f"M{cx - 20} {yy} L{cx} {yy - 40} L{cx + 20} {yy}Z", roof, C, 4))
+    return "".join(z)
+
+
+def train(x, y, s=1.0, body="#C8483A", cars=2):
+    z = []
+    for k in range(cars):
+        cx = x + k * 250 * s
+        z.append(rect(cx, y - 110 * s, 240 * s, 100 * s, body if k == 0 else P, 14, C, 6))
+        z.append(windows(cx + 20 * s, y - 92 * s, 4, 1, 36 * s, 34 * s, 20 * s, 0, I))
+        z.append(rect(cx, y - 40 * s, 240 * s, 10 * s, I, 0))
+        for dx in (40, 200):
+            z.append(circle(cx + dx * s, y - 4 * s, 16 * s, C))
+    return "".join(z)
+
+
+def rails(y):
+    return path(f"M126 {y} L898 {y} M126 {y + 20} L898 {y + 20}", stroke=C, sw=5) + "".join(line(140 + k * 40, y - 6, 140 + k * 40, y + 26, D, 6, 0.8) for k in range(20))
+
+
+# ---------------------------------------------------------------- J1 · Surabaya
+
+
+@scene("j1.u01")
+def suroboyo_bus():
+    """Suroboyo Bus: the red city bus you pay for with plastic bottles."""
+    z = [sky(sun=(760, 250), r=70), city_far(640, 0.3)]
+    z.append(rect(X0, 760, W, 212, "#7A7A80") + path("M126 870 L898 870", stroke=P, sw=8, dash="50 40"))
+    z.append(rect(180, 520, 620, 240, R, 30, C, 7))
+    z.append(windows(220, 560, 6, 1, 70, 80, 22, 0, "#9CC9D9"))
+    z.append(rect(180, 680, 620, 18, P, 0) + rect(700, 560, 70, 190, "#9CC9D9", 6, C, 5))
+    for x in (290, 680):
+        z.append(circle(x, 760, 46, C) + circle(x, 760, 18, "#9C9488"))
+    # a bag of plastic bottles: the fare
+    z.append(group(path("M-50 0 L-40 -110 L40 -110 L50 0Z", P, C, 5, 0.9) + "".join(rect(-34 + k * 24, -96, 18, 60, "#9CC9D9", 6, C, 3) for k in range(3)), 250, 950, 0.9))
+    z.append(person(340, 960, 0.8, O, scarf=I))
+    return "".join(z)
+
+
+@scene("j1.u02")
+def gubeng():
+    """Gubeng station: a long train hall and a train at the platform."""
+    z = [sky(sun=(250, 260), r=70)]
+    z.append(rect(160, 420, 704, 300, P, 4, C, 7))
+    z.append(path("M140 420 Q512 300 884 420Z", "#6E7FA8", C, 7))
+    z.append(windows(200, 470, 9, 1, 50, 90, 23, 0, I, arch=True))
+    z.append(rect(X0, 720, W, 40, S, 0, C, 4) + rect(X0, 760, W, 212, "#9C9488"))
+    z.append(train(180, 850, 1.0, R, 3))
+    z.append(rails(860))
+    z.append(path("M480 600 L544 600 L544 720 L480 720Z", I, C, 5))
+    return "".join(z)
+
+
+@scene("j1.u03")
+def tunjungan():
+    """Jalan Tunjungan at night: old shopfronts lit up, a scooter's streak of light."""
+    z = [rect(X0, Y0, W, H, I)]
+    z.append(circle(760, 230, 50, P, op=0.7))
+    z.append(rect(140, 380, 300, 420, "#E3C9A8", 4, C, 6) + rect(250, 300, 80, 80, "#E3C9A8", 4, C, 6) + path("M250 300 L290 250 L330 300Z", O, C, 5))
+    z.append(windows(170, 420, 4, 3, 46, 60, 22, 40, "#F2C94C"))
+    z.append(rect(500, 440, 360, 360, P, 4, C, 6) + windows(530, 470, 5, 3, 44, 56, 22, 34, "#F2C94C", arch=True))
+    z.append(rect(X0, 800, W, 172, "#3A3A48"))
+    for k in range(5):
+        x = 180 + k * 170
+        z.append(line(x, 800, x, 600, C, 5) + circle(x, 594, 16, "#F2C94C", C, 3) + circle(x, 594, 40, "#F2C94C", op=0.2))
+    z.append(path("M126 900 Q512 870 898 900", stroke=O, sw=10, op=0.8) + path("M126 920 Q512 890 898 920", stroke=R, sw=6, op=0.6))
+    z.append(person(300, 860, 0.7, K) + person(340, 865, 0.7, O))
+    return "".join(z)
+
+
+@scene("j1.u04")
+def ampel():
+    """The Sunan Ampel mosque: a tiered roof, the tall old minaret, pilgrims' lane."""
+    z = [sky(sun=(250, 270), r=70)]
+    z.append(rect(X0, 820, W, 152, S))
+    z.append(tajug(430, 820, 480, 3, "#4A4A50"))
+    z.append(rect(720, 340, 70, 480, P, 4, C, 6) + rect(706, 340, 98, 30, P, 3, C, 5) + path("M714 340 Q755 270 796 340Z", G, C, 5))
+    z.append(windows(740, 400, 1, 4, 30, 50, 0, 50, I, arch=True))
+    for k, col in enumerate((P, I, O, K)):
+        z.append(person(220 + k * 120, 950, 0.8, col, scarf=P if k % 2 else None))
+    return "".join(z)
+
+
+def suramadu(y):
+    z = [path(f"M126 {y} L898 {y}", stroke=C, sw=6)]
+    for tx in (380, 640):
+        z.append(rect(tx - 10, y - 140, 20, 160, "#9C9488", 2, C, 3))
+        for k in range(5):
+            z.append(line(tx, y - 130, tx - 30 - k * 24, y, C, 2) + line(tx, y - 130, tx + 30 + k * 24, y, C, 2))
+    return "".join(z)
+
+
+@scene("j1.u05")
+def kenjeran():
+    """Kenjeran beach: painted fishing boats on the sand, Suramadu bridge beyond."""
+    z = [sky(sun=(700, 300), r=80), sea(620)]
+    z.append(group(suramadu(0), 0, 600, 1))
+    z.append(path("M126 800 Q500 760 898 800 L898 972 L126 972Z", S))
+    z.append(boat(330, 860, 1.0, "#3F7AB0") + boat(680, 900, 0.9, G))
+    z.append(person(520, 930, 0.7, O, scarf=I))
+    return "".join(z)
+
+
+def komodo(x, y, s=1.0):
+    col = "#7A7A5A"
+    b = path("M-200 0 Q-120 -50 0 -40 Q100 -36 160 -10 Q200 0 230 -6 Q200 16 150 14 Q60 30 -60 20 Q-200 30 -320 10 Q-220 6 -200 0Z", col, C, 6)
+    for lx, d in ((-120, 1), (-60, -1), (60, 1), (110, -1)):
+        b += path(f"M{lx} 10 q{d * 10} 30 {d * 30} 40", stroke=col, sw=22) + path(f"M{lx} 10 q{d * 10} 30 {d * 30} 40", stroke=C, sw=2, op=0.5)
+    b += circle(190, -14, 5, C) + path("M230 0 l30 -6 l-10 6 l10 6Z", O)
+    r = random.Random(2)
+    for _ in range(18):
+        b += circle(r.uniform(-180, 140), r.uniform(-30, 10), 4, C, op=0.25)
+    return group(b, x, y, s)
+
+
+@scene("j1.u06")
+def kebun_binatang():
+    """The Surabaya zoo: a Komodo dragon basking, the shark-and-crocodile statue behind."""
+    z = [sky(sun=(250, 270), r=70)]
+    # the city's emblem statue: a shark and a crocodile circling each other
+    z.append(rect(580, 560, 160, 120, "#9C9488", 4, C, 5))
+    z.append(path("M600 560 Q580 420 660 360 Q680 420 640 470 Q620 520 650 560Z", "#9C9488", C, 5))
+    z.append(path("M720 560 Q760 440 680 380 Q690 450 700 480 Q700 520 690 560Z", "#B8B4C8", C, 5))
+    z.append(path("M126 700 Q512 660 898 710 L898 972 L126 972Z", "#B8A070"))
+    z.append(tree(200, 720, 0.8))
+    z.append(komodo(470, 850, 1.1))
+    z.append(path("M126 960 L898 960", stroke=D, sw=12) + "".join(line(160 + k * 90, 900, 160 + k * 90, 972, D, 8) for k in range(9)))
+    return "".join(z)
+
+
+@scene("j1.u07")
+def pasar_atom():
+    """Pasar Atom: a tall market block, bolts of cloth and shoppers outside."""
+    z = [sky(sun=(780, 250), r=60)]
+    z.append(rect(180, 300, 664, 500, P, 4, C, 7))
+    for r_ in range(4):
+        z.append(rect(180, 340 + r_ * 110, 664, 14, O, 0, C, 3))
+        z.append(windows(210, 370 + r_ * 110, 9, 1, 50, 50, 22, 0, "#9CC9D9"))
+    z.append(rect(420, 700, 184, 100, C, 6))
+    z.append(rect(X0, 800, W, 172, S))
+    z.append(stall(150, 940, 220, R, (P, K, O)) + stall(660, 940, 220, G, (O, I, P)))
+    z.append(person(460, 920, 0.8, K, scarf=I) + person(560, 925, 0.8, I))
+    return "".join(z)
+
+
+# ---------------------------------------------------------------- J2 · Madiun line
+
+
+def bench(x, y, w=220):
+    return rect(x, y - 50, w, 16, D, 3, C, 4) + line(x + 14, y - 34, x + 14, y, C, 6) + line(x + w - 14, y - 34, x + w - 14, y, C, 6)
+
+
+def glass(x, y, fill="#B8582E"):
+    return path(f"M{x - 18} {y - 50} L{x + 18} {y - 50} L{x + 14} {y} L{x - 14} {y}Z", fill, C, 4, 0.95) + rect(x - 18, y - 52, 36, 6, P, 2, C, 2)
+
+
+@scene("j2.u01")
+def warung_pak_budi():
+    """Pak Budi's warung: a small roadside stall, glasses of sweet tea, a bench."""
+    z = [sky(sun=(760, 260), r=70), hills(True)]
+    z.append(rect(X0, 800, W, 172, S))
+    z.append(rect(220, 520, 580, 280, D, 6, C, 7) + rect(250, 560, 520, 120, P, 4, C, 5))
+    z.append(path("M190 530 L830 530 L780 430 L240 430Z", G, C, 6) + path("M190 530 L830 530", stroke=P, sw=8, dash="40 40"))
+    for k in range(5):
+        z.append(rect(280 + k * 96, 590, 70, 70, "none", 30, C, 3, 0.6) + circle(315 + k * 96, 625, 24, (O, "#F2C94C", K, G, O)[k], C, 3))
+    z.append(rect(220, 690, 580, 26, P, 3, C, 5))
+    z.append(glass(330, 690) + glass(380, 690) + glass(620, 690, "#F2C94C"))
+    z.append(bench(260, 900, 220) + bench(560, 900, 220))
+    z.append(person(380, 850, 0.6, I) + person(660, 850, 0.6, O, scarf=K))
+    return "".join(z)
+
+
+@scene("j2.u02")
+def nasi_pecel():
+    """Nasi pecel Madiun on a banana leaf: greens, peanut sauce, a rempeyek cracker."""
+    z = [rect(X0, Y0, W, H, D)]
+    for k in range(10):
+        z.append(line(126, 160 + k * 90, 898, 160 + k * 90, C, 2, 0.25))
+    z.append(ellipse(512, 560, 340, 300, "#5A8F3E", C, 7) + path("M200 560 L824 560", stroke="#3F7A33", sw=6))
+    for k in range(8):
+        z.append(path(f"M{240 + k * 75} 400 L{280 + k * 70} 560", stroke="#3F7A33", sw=3, op=0.6))
+    z.append(ellipse(420, 560, 120, 90, P, C, 5))  # rice
+    for k in range(6):
+        z.append(path(f"M{560 + k * 18} {470 + (k % 2) * 30} q30 30 0 60 q-20 20 10 40", stroke=G, sw=14))
+    z.append(path("M520 560 Q600 520 680 560 Q700 640 600 660 Q520 650 520 560Z", "#9C5A2A", C, 5))  # peanut sauce
+    z.append(path("M330 660 Q420 640 520 690 Q480 760 380 750 Q300 720 330 660Z", "#E8C178", C, 5))  # rempeyek
+    for k in range(6):
+        z.append(circle(360 + k * 26, 700 + (k % 2) * 14, 7, "#9C5A2A"))
+    z.append(ellipse(640, 420, 40, 26, "#B8582E", C, 4) + ellipse(700, 440, 34, 22, "#E8C178", C, 4))
+    z.append(path("M780 880 L860 700", stroke=P, sw=14) + ellipse(870, 680, 22, 36, P, C, 4, extra='transform="rotate(25 870 680)"'))
+    return "".join(z)
+
+
+@scene("j2.u03")
+def bawang_merah():
+    """Nganjuk shallots: bundles drying on racks above the green field."""
+    z = [sky(sun=(250, 260), r=70)]
+    z.append(path("M126 600 Q512 560 898 610 L898 972 L126 972Z", G))
+    for row in range(6):
+        y = 640 + row * 52
+        z.append(path(f"M126 {y} Q512 {y - 20} 898 {y + 6}", stroke="#3F7A33", sw=12))
+    z.append(line(180, 760, 840, 760, D, 10) + line(220, 760, 220, 972, D, 10) + line(800, 760, 800, 972, D, 10))
+    for k in range(12):
+        x = 240 + k * 48
+        z.append(line(x, 760, x, 790, "#C8B060", 4))
+        for j in range(4):
+            z.append(ellipse(x - 12 + j * 8, 810 + (j % 2) * 8, 14, 18, "#B8485A", C, 3))
+    z.append(path("M126 972 L898 972 L898 920 Q512 880 126 920Z", S))
+    for k in range(9):
+        z.append(ellipse(180 + k * 80, 940, 22, 26, "#B8485A", C, 3))
+    z.append(person(700, 920, 0.8, I, scarf=O))
+    return "".join(z)
+
+
+@scene("j2.u04")
+def reog():
+    """Reog Ponorogo: the tiger mask under its towering fan of peacock feathers."""
+    z = [sky(sun=None, glow=True)]
+    z.append(rect(X0, 860, W, 112, S))
+    cx, cy = 512, 700
+    for k in range(23):
+        a = math.radians(180 + k * (180 / 22))
+        ex, ey = cx + math.cos(a) * 400, cy + math.sin(a) * 440
+        z.append(path(f"M{cx} {cy} L{ex} {ey}", stroke=G, sw=20) + path(f"M{cx} {cy} L{ex} {ey}", stroke=C, sw=2, op=0.5))
+        z.append(ellipse(ex, ey, 26, 34, "#3F7AB0", C, 3, extra=f'transform="rotate({math.degrees(a) + 90} {ex} {ey})"') + circle(ex, ey, 10, I) + circle(ex, ey, 4, "#F2C94C"))
+    for k in range(17):
+        a = math.radians(180 + k * (180 / 16))
+        z.append(ellipse(cx + math.cos(a) * 240, cy + math.sin(a) * 270, 16, 22, "#3F7AB0", C, 3) + circle(cx + math.cos(a) * 240, cy + math.sin(a) * 270, 6, I))
+    # the tiger head
+    z.append(ellipse(cx, cy + 30, 150, 120, O, C, 7))
+    for d in (-1, 1):
+        z.append(path(f"M{cx + d * 60} {cy - 60} q{d * 20} 40 {d * 50} 60 M{cx + d * 100} {cy - 20} q{d * 20} 40 {d * 40} 60", stroke=C, sw=8))
+        z.append(ellipse(cx + d * 55, cy + 10, 26, 18, P, C, 4) + circle(cx + d * 55, cy + 10, 8, C))
+        z.append(path(f"M{cx + d * 120} {cy - 70} l{d * 30} -40 l{d * 10} 50Z", O, C, 4))
+    z.append(ellipse(cx, cy + 60, 30, 20, C) + path(f"M{cx - 70} {cy + 100} Q{cx} {cy + 150} {cx + 70} {cy + 100}", P, C, 5))
+    z.append(path(f"M{cx - 60} {cy + 140} L{cx - 60} {cy + 160} M{cx + 60} {cy + 140} L{cx + 60} {cy + 160}", stroke=C, sw=6))
+    z.append(path(f"M{cx - 110} 972 L{cx - 90} {cy + 150} L{cx + 90} {cy + 150} L{cx + 110} 972Z", C))
+    return "".join(z)
+
+
+@scene("j2.u05")
+def sarangan():
+    """Lake Sarangan below Mount Lawu: pine slopes, a horse, a little boat."""
+    z = [sky(sun=(700, 260), r=70)]
+    z.append(path("M126 600 Q300 340 512 300 Q720 340 898 600Z", "#6E7FA8"))
+    z.append(path("M126 640 Q260 520 380 600 L126 700Z", G) + path("M898 640 Q760 520 640 600 L898 700Z", G))
+    for k in range(7):
+        x = 150 + k * 40
+        z.append(poly([(x, 660 - (k % 3) * 20), (x - 20, 720), (x + 20, 720)], "#2F5E2A", C, 3))
+        z.append(poly([(874 - k * 40, 660 - (k % 3) * 20), (854 - k * 40, 720), (894 - k * 40, 720)], "#2F5E2A", C, 3))
+    z.append(ellipse(512, 760, 360, 110, T2, C, 5) + path("M300 760 q30 -10 60 0 M600 790 q30 -10 60 0", stroke=P, sw=5, op=0.6))
+    z.append(group(path("M-60 -10 Q0 14 70 -14 L56 6 Q0 24 -50 6Z", P, C, 4) + path("M-30 -10 L-20 -40 L30 -40 L36 -12", R, C, 4), 560, 760, 1.1))
+    z.append(path("M126 860 Q512 830 898 870 L898 972 L126 972Z", "#7FA65A"))
+    horse = path("M-60 -40 Q0 -60 50 -40 L70 -90 L90 -80 L80 -40 L70 0 M-60 -40 L-60 0 M-40 -30 L-40 0 M30 -30 L30 0 M50 -30 L50 0", "#8A5A3C", C, 5) + path("M-60 -40 Q0 -60 50 -40 L50 -16 Q0 -10 -60 -16Z", "#8A5A3C", C, 5)
+    z.append(group(horse, 300, 940, 1.2) + person(400, 940, 0.75, I, scarf=O))
+    return "".join(z)
+
+
+@scene("j2.u06")
+def benteng_pendem():
+    """Benteng Pendem Ngawi: the Dutch fort's brick arches behind its earth bank."""
+    z = [sky(sun=(250, 270), r=70)]
+    z.append(rect(160, 440, 704, 340, BRICK, 4, C, 7))
+    z.append(windows(200, 540, 6, 1, 70, 140, 46, 0, "#4A3A30", arch=True))
+    z.append(rect(160, 440, 704, 40, "#C88A6A", 0, C, 5))
+    for k in range(12):
+        z.append(line(160, 500 + k * 24, 864, 500 + k * 24, C, 1.5, 0.15))
+    z.append(path("M160 440 L220 480 M864 440 L800 480", stroke=C, sw=3, op=0.4))
+    for x in (260, 700):
+        z.append(path(f"M{x} 440 q20 -50 60 -30 q30 -40 60 0", G, C, 4))
+    z.append(path("M126 760 Q512 700 898 770 L898 840 L126 840Z", G))
+    z.append(rect(X0, 840, W, 132, T3) + path("M126 880 q60 -10 120 0 M500 920 q60 -10 120 0", stroke=P, sw=5, op=0.5))
+    return "".join(z)
+
+
+# ---------------------------------------------------------------- J3 · Solo
+
+
+@scene("j3.u01")
+def solo_balapan():
+    """Solo Balapan station: the green-roofed hall and a train pulling in."""
+    z = [sky(sun=(760, 260), r=70)]
+    z.append(rect(200, 420, 624, 280, P, 4, C, 7))
+    z.append(path("M170 430 L854 430 L780 320 L244 320Z", G, C, 7) + path("M400 320 L624 320 L560 250 L464 250Z", G, C, 6))
+    z.append(windows(240, 470, 8, 1, 50, 100, 25, 0, I, arch=True))
+    z.append(rect(X0, 700, W, 60, S, 0, C, 4) + rect(X0, 760, W, 212, "#9C9488"))
+    z.append(train(150, 850, 1.0, I, 3))
+    z.append(rails(860))
+    return "".join(z)
+
+
+@scene("j3.u02")
+def pasar_gede():
+    """Pasar Gede: the market's broad gateway roof, fruit baskets in front."""
+    z = [sky(sun=(250, 260), r=70)]
+    z.append(rect(150, 500, 724, 300, P, 4, C, 7))
+    z.append(path("M120 510 L904 510 L840 420 L184 420Z", "#6E5A50", C, 7))
+    z.append(rect(380, 360, 264, 160, P, 4, C, 6) + path("M350 370 L674 370 L620 280 L404 280Z", "#6E5A50", C, 6))
+    z.append(rect(440, 400, 144, 40, I, 4, C, 4))
+    z.append(windows(190, 560, 3, 1, 50, 90, 26, 0, I) + windows(638, 560, 3, 1, 50, 90, 26, 0, I))
+    z.append(rect(430, 560, 164, 240, C, 6))
+    z.append(rect(X0, 800, W, 172, S))
+    for k, col in enumerate((O, G, "#F2C94C", R, K)):
+        x = 200 + k * 155
+        z.append(ellipse(x, 900, 60, 22, D, C, 4) + path(f"M{x - 60} 900 L{x - 46} 950 L{x + 46} 950 L{x + 60} 900", D, C, 4))
+        for j in range(4):
+            z.append(circle(x - 30 + j * 20, 888 - (j % 2) * 10, 14, col, C, 3))
+    return "".join(z)
+
+
+@scene("j3.u04")
+def mangkunegaran():
+    """Pura Mangkunegaran: the great open pendopo under its joglo roof."""
+    z = [sky(sun=(780, 250), r=60)]
+    z.append(rect(X0, 760, W, 212, S))
+    z.append(joglo(512, 780, 640, 160, "#4F6A50", 7))
+    z.append(path("M200 780 L824 780 L860 840 L164 840Z", P, C, 5))
+    for k in range(3):  # the pendopo's hanging lamps
+        x = 360 + k * 152
+        z.append(line(x, 470, x, 540, C, 3) + path(f"M{x - 34} 540 L{x + 34} 540 L{x + 18} 580 L{x - 18} 580Z", P, C, 4) + circle(x, 590, 8, O, C, 2))
+    z.append(person(420, 940, 0.8, I, scarf=C) + person(600, 940, 0.8, "#6E5A50", scarf=C))
+    return "".join(z)
+
+
+@scene("j3.u06")
+def laweyan():
+    """Laweyan: a merchant's high-walled lane, batik cloth drying on bamboo poles."""
+    z = [sky(sun=(512, 240), r=60)]
+    z.append(path("M126 300 L380 360 L380 972 L126 972Z", P, C, 6) + path("M898 300 L644 360 L644 972 L898 972Z", "#E3C9A8", C, 6))
+    z.append(path("M380 360 L644 360 L644 520 L380 520Z", "#6E5A50", C, 5) + path("M380 360 L512 300 L644 360", G, C, 5))
+    z.append(path("M380 972 L460 600 L564 600 L644 972Z", S, C, 4))
+    z.append(path("M160 420 L340 450 M160 500 L340 520", stroke=C, sw=3, op=0.3) + rect(220, 640, 100, 180, D, 40, C, 5))
+    z.append(line(126, 560, 898, 560, D, 8))
+    for k, (x, col) in enumerate(((220, I), (360, "#B8582E"), (560, I), (700, "#B8582E"))):
+        z.append(rect(x, 560, 110, 220, col, 0, C, 5))
+        z.append("".join(kawung(x + 30 + (j % 2) * 50, 600 + (j // 2) * 50, 0.4, 0.6) for j in range(8)))
+    return "".join(z)
+
+
+# ---------------------------------------------------------------- J4 · Yogyakarta
+
+
+@scene("j4.u01")
+def tugu():
+    """Tugu Yogyakarta: the white pillar with its pointed top at the crossroads."""
+    z = [sky(sun=(250, 260), r=70)]
+    z.append(path("M126 760 L898 760 L898 972 L126 972Z", "#7A7A80"))
+    z.append(path("M512 760 L360 972 M512 760 L664 972 M126 860 L898 860", stroke=P, sw=6, dash="40 30"))
+    z.append(rect(440, 700, 144, 60, P, 4, C, 6) + rect(460, 560, 104, 140, P, 4, C, 6))
+    z.append(path("M470 560 Q470 480 512 470 Q554 480 554 560Z", P, C, 6))
+    z.append(path("M490 470 L490 380 Q512 340 534 380 L534 470Z", P, C, 6) + path("M512 360 L512 280", stroke=O, sw=12) + path("M500 300 Q512 260 524 300", O, C, 3))
+    z.append(path("M480 600 Q512 620 544 600 M480 640 Q512 660 544 640", stroke=O, sw=5))
+    z.append(group(path("M-60 -20 L60 -20 L70 0 L-70 0Z", R, C, 4) + circle(-40, 4, 14, C) + circle(40, 4, 14, C), 280, 920, 1.0))
+    z.append(person(760, 930, 0.8, I, scarf=O))
+    return "".join(z)
+
+
+@scene("j4.u03")
+def kraton():
+    """Kraton Yogyakarta: a pavilion of the palace and a palace servant in blangkon."""
+    z = [sky(sun=(780, 250), r=60)]
+    z.append(rect(X0, 720, W, 252, S))
+    z.append(joglo(470, 760, 560, 150, "#3F5A42", 6))
+    for k in range(6):
+        z.append(rect(222 + k * 92, 590, 16, 146, "#3F5A42", 2, C, 4))
+    z.append(path("M190 760 L750 760 L780 800 L160 800Z", P, C, 5))
+    z.append(banyan(820, 760, 0.55))
+    z.append(person(400, 930, 0.95, "#6E5A50", scarf=C) + rect(384, 860, 32, 40, I, 4))
+    return "".join(z)
+
+
+@scene("j4.u04")
+def taman_sari():
+    """Taman Sari, the water palace: bathing pools beneath a carved gate."""
+    z = [sky(sun=(250, 260), r=70)]
+    z.append(rect(230, 360, 564, 300, "#E3D3B5", 4, C, 7))
+    z.append(path("M230 360 L330 300 L694 300 L794 360Z", "#E3D3B5", C, 6) + path("M430 300 L512 230 L594 300Z", "#E3D3B5", C, 6))
+    z.append(path("M440 660 L440 470 Q512 400 584 470 L584 660Z", "#4A3A30", C, 6))
+    z.append(windows(280, 440, 2, 1, 50, 90, 40, 0, "#4A3A30", arch=True) + windows(654, 440, 2, 1, 50, 90, 40, 0, "#4A3A30", arch=True))
+    for x in (300, 724):
+        z.append(path(f"M{x - 20} 380 q20 -30 40 0 q-20 20 -40 0", G, C, 3))
+    z.append(rect(X0, 660, W, 312, "#C8B898"))
+    z.append(rect(200, 720, 624, 200, T2, 6, C, 6) + rect(220, 740, 584, 160, T1, 4))
+    for k in range(4):
+        z.append(path(f"M{260 + k * 140} 800 q30 -10 60 0", stroke=P, sw=5, op=0.6))
+    for x in (230, 794):
+        z.append(rect(x - 20, 660, 40, 90, "#E3D3B5", 4, C, 5) + ellipse(x, 650, 34, 18, G, C, 4))
+    return "".join(z)
+
+
+@scene("j4.u05")
+def kotabaru():
+    """Kotabaru: Dutch-era villas and a church spire along a shady boulevard."""
+    z = [sky(sun=(760, 250), r=60)]
+    z.append(rect(560, 300, 140, 420, P, 4, C, 6) + path("M560 300 L630 160 L700 300Z", "#B5654A", C, 6) + line(630, 160, 630, 120, C, 5) + line(612, 136, 648, 136, C, 5))
+    z.append(windows(600, 380, 1, 3, 60, 70, 0, 40, I, arch=True))
+    for cx, col in ((300, "#E3C9A8"), (820, P)):
+        z.append(rect(cx - 140, 560, 280, 200, col, 4, C, 6) + path(f"M{cx - 170} 570 L{cx} 450 L{cx + 170} 570Z", "#B5654A", C, 6))
+        z.append(windows(cx - 110, 600, 3, 1, 50, 70, 30, 0, I, shutter=True))
+    z.append(rect(X0, 760, W, 212, "#7A7A80") + path("M126 860 L898 860", stroke=P, sw=6, dash="40 30"))
+    for x in (180, 470, 760):
+        z.append(tree(x, 800, 0.75))
+    z.append(group(path("M-50 0 L-30 -40 L30 -40 L50 0Z", G, C, 4) + circle(-30, 6, 14, C) + circle(30, 6, 14, C), 620, 920, 1))
+    return "".join(z)
+
+
+def prambanan_tower(cx, y, w, h, color="#5A5060"):
+    z = []
+    yy = y
+    for k in range(7):
+        ww = w * (1 - k * 0.12)
+        hh = h * (0.22 if k == 0 else 0.11)
+        z.append(rect(cx - ww / 2, yy - hh, ww, hh, color, 3, C, 4))
+        yy -= hh
+    z.append(path(f"M{cx - w * 0.15} {yy} L{cx} {yy - h * 0.12} L{cx + w * 0.15} {yy}Z", color, C, 4))
+    return "".join(z)
+
+
+@scene("j4.u06")
+def ramayana():
+    """The Ramayana ballet at Prambanan: dancers on the open stage before the temple."""
+    z = [rect(X0, Y0, W, H, I)]
+    z.append(circle(760, 230, 50, P, op=0.7))
+    z.append(prambanan_tower(512, 700, 220, 480) + prambanan_tower(300, 700, 150, 320) + prambanan_tower(724, 700, 150, 320))
+    z.append(rect(X0, 700, W, 272, "#4A3A30") + rect(180, 740, 664, 120, "#6E5A50", 6, C, 6))
+    z.append(path("M180 740 L320 600 L460 740Z", "#F2C94C", op=0.18) + path("M564 740 L704 600 L844 740Z", "#F2C94C", op=0.18))
+    # Rama with his bow, Sinta, and a dancer with fire
+    z.append(person(380, 760, 1.0, G, scarf=C) + path("M420 640 Q460 700 420 760", stroke=O, sw=6) + line(420, 640, 420, 760, P, 2))
+    z.append(person(520, 760, 1.0, R, scarf=C) + path("M500 650 L470 620 M540 650 L570 620", stroke=C, sw=8))
+    z.append(person(660, 760, 1.0, "#6E5A50", scarf=C) + path("M690 640 q-10 -40 10 -60 q10 30 0 60Z", O, C, 3))
+    for k in range(7):
+        z.append(circle(200 + k * 105, 940, 26, C, op=0.8))
+    return "".join(z)
+
+
 # ---------------------------------------------------------------- frame
 
 
