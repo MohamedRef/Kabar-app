@@ -125,14 +125,21 @@ exercises:
     distractors: [ini, apa]
     words: [rumah, itu, punya, siapa]
   - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أبويا مدرّس، وأمي دكتورة.
-      ar: أبي معلّم، وأمي طبيبة.
-      en: My father is a teacher, and my mother is a doctor.
-    answers: ['Ayah saya guru, dan ibu saya dokter.', 'Ayah saya guru, ibu saya dokter.', Ayah saya guru dan ibu saya dokter., Ayah saya guru. Ibu saya dokter., 'Bapak saya guru, dan ibu saya dokter.', 'Ayahku guru, dan ibuku dokter.']
-    words: [ayah, ibu, guru, dokter]
+    type: match_pairs
+    pairs:
+      - text: paman
+        ar_eg: عم أو خال
+        ar: عمّ أو خال
+        en: uncle
+      - text: bibi
+        ar_eg: عمة أو خالة
+        ar: عمّة أو خالة
+        en: aunt
+      - text: sepupu
+        ar_eg: ابن أو بنت العم أو الخال
+        ar: ابن العمّ أو الخال وأمثاله
+        en: cousin
+    words: [paman, bibi, sepupu]
   - id: e10
     type: translate
     direction: to_target

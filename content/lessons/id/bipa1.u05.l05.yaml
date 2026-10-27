@@ -1,38 +1,38 @@
 schema: kabar.lesson/v1
 id: bipa1.u05.l05
 language: id
-title: Langit dan matahari
+title: Pagi di rumah Ni Luh
 can_do:
-  ar_eg: 'توصف الطبيعة في الإجازة: السما والشمس والهوا والشجر والطيور والنهر.'
-  ar: 'أن تصف الطبيعة في العطلة: السماء والشمس والهواء والأشجار والطيور والنهر.'
-  en: 'Describe nature on holiday: sky, sun, air, trees, birds and rivers.'
+  ar_eg: 'توصف صباح في الريف: السما والشمس والهوا، والفراخ والبقر والخيل.'
+  ar: 'أن تصف صباحًا في الريف: السماء والشمس والهواء، والدجاج والأبقار والخيل.'
+  en: 'Describe a country morning: sky, sun and air, chickens, cows and horses.'
 slides:
   - title: Air bukan udara
     body:
       ar_eg: |
         خلي بالك: air بالإندونيسي = مية! أما الهوا اللي بنتنفسه فـ udara، والريح angin.
-        matahari = الشمس، وحرفيًا «عين النهار» (mata = عين، hari = يوم).
-        langit = السما، pohon = شجرة، burung = عصفورة أو طير، sungai = نهر.
+        matahari = الشمس، وحرفيًا «عين النهار» (mata = عين، hari = يوم). langit = السما.
         salju = تلج، من العربي «ثلج». في إندونيسيا مفيش تلج غير على قمة جبل في بابوا.
+        وفي بيوت الريف: ayam = فرخة، sapi = بقرة، kuda = حصان (جزيرة سومبا مشهورة بالخيل).
       ar: |
         انتبه: air في الإندونيسية = ماء! أما الهواء الذي نتنفّسه فـ udara، والريح angin.
-        matahari = الشمس، وحرفيًا «عين النهار» (mata = عين، hari = يوم).
-        langit = السماء، pohon = شجرة، burung = طائر، sungai = نهر.
+        matahari = الشمس، وحرفيًا «عين النهار» (mata = عين، hari = يوم). langit = السماء.
         salju = الثلج، من العربية «ثلج»، ولا ثلج في إندونيسيا إلا على قمّة جبل في بابوا.
+        وفي بيوت الريف: ayam = دجاجة، sapi = بقرة، kuda = حصان (وجزيرة سومبا مشهورة بالخيل).
       en: |
         Careful: air in Indonesian = water! The air you breathe is udara, and wind is angin.
-        matahari = the sun, literally "eye of the day" (mata = eye, hari = day).
-        langit = sky, pohon = tree, burung = bird, sungai = river.
+        matahari = the sun, literally "eye of the day" (mata = eye, hari = day). langit = sky.
         salju = snow, from Arabic ثلج. Indonesia has none, except on one mountain top in Papua.
+        Around a country house: ayam = chicken, sapi = cow, kuda = horse (Sumba island is famous for them).
     examples:
       - text: Langitnya cerah, mataharinya panas.
         ar_eg: السما صافية والشمس حامية.
         ar: السماء صافية والشمس حارّة.
         en: The sky is clear and the sun is hot.
-      - text: Ada banyak burung di pohon itu.
-        ar_eg: فيه عصافير كتير على الشجرة دي.
-        ar: على تلك الشجرة طيور كثيرة.
-        en: There are lots of birds in that tree.
+      - text: Di rumah Ni Luh ada ayam, sapi, dan kuda.
+        ar_eg: في بيت ني لوه فيه فراخ وبقر وخيل.
+        ar: في بيت ني لوه دجاج وأبقار وخيل.
+        en: Ni Luh's house has chickens, cows and horses.
       - text: Di Indonesia tidak ada salju.
         ar_eg: مفيش تلج في إندونيسيا.
         ar: لا ثلج في إندونيسيا.
@@ -41,10 +41,6 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: sungai
-        ar_eg: نهر
-        ar: نهر
-        en: river
       - text: langit
         ar_eg: سما
         ar: سماء
@@ -53,18 +49,6 @@ exercises:
         ar_eg: ريح، هوا
         ar: ريح
         en: wind
-      - text: pohon
-        ar_eg: شجرة
-        ar: شجرة
-        en: tree
-    words: [sungai, langit, angin, pohon]
-  - id: e02
-    type: match_pairs
-    pairs:
-      - text: burung
-        ar_eg: عصفورة، طير
-        ar: طائر
-        en: bird
       - text: matahari
         ar_eg: شمس
         ar: شمس
@@ -73,11 +57,27 @@ exercises:
         ar_eg: هوا (للتنفس)
         ar: هواء
         en: air
+    words: [langit, angin, matahari, udara]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: ayam
+        ar_eg: فرخة
+        ar: دجاجة
+        en: chicken
+      - text: sapi
+        ar_eg: بقرة
+        ar: بقرة
+        en: cow
+      - text: kuda
+        ar_eg: حصان
+        ar: حصان
+        en: horse
       - text: salju
         ar_eg: تلج
         ar: ثلج
         en: snow
-    words: [burung, matahari, udara, salju]
+    words: [ayam, sapi, kuda, salju]
   - id: e03
     type: listen
     text: Langitnya cerah. Mataharinya panas.
@@ -99,9 +99,9 @@ exercises:
       ar_eg: مفيش ___ في إندونيسيا، بس فيه مطر كتير.
       ar: لا ___ في إندونيسيا، لكن فيها مطر كثير.
       en: There's no ___ in Indonesia, but there's lots of rain.
-    options: [salju, burung, pohon]
+    options: [salju, sapi, langit]
     answers: [salju]
-    words: [salju, burung, pohon]
+    words: [salju, sapi, langit]
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -117,23 +117,23 @@ exercises:
     words: [udara, angin]
   - id: e06
     type: fill_blank
-    sentence: Ada banyak ___ di pohon itu.
+    sentence: Di rumah nenek ada banyak ___ dan ayam.
     meaning:
-      ar_eg: فيه ___ كتير على الشجرة دي.
-      ar: على تلك الشجرة ___ كثيرة.
-      en: There are lots of ___ in that tree.
-    options: [burung, sungai, angin]
-    answers: [burung]
-    words: [burung, pohon, sungai]
+      ar_eg: في بيت جدتي فيه ___ كتير وفراخ.
+      ar: في بيت جدّتي ___ كثيرة ودجاج.
+      en: Grandma's house has lots of ___ and chickens.
+    options: [sapi, salju, udara]
+    answers: [sapi]
+    words: [sapi, ayam, salju, udara]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: بنعوم في النهر.
-      ar: نسبح في النهر.
-      en: We swim in the river.
-    answer: Kami berenang di sungai.
-    distractors: [pohon, langit]
-    words: [sungai]
+      ar_eg: في سومبا فيه خيل كتير.
+      ar: في سومبا خيل كثيرة.
+      en: There are lots of horses in Sumba.
+    answer: Di Sumba ada banyak kuda.
+    distractors: [ayam, angin]
+    words: [kuda]
   - id: e08
     type: translate
     direction: from_target
@@ -145,63 +145,58 @@ exercises:
     words: [angin]
   - id: e09
     type: speaking
-    text: Udaranya bagus, langitnya cerah.
+    text: Di rumah ini ada ayam, sapi, dan kuda. Udaranya bagus!
     meaning:
-      ar_eg: الهوا حلو والسما صافية.
-      ar: الهواء جميل والسماء صافية.
-      en: The air is nice and the sky is clear.
-    words: [udara, langit]
+      ar_eg: هنا فيه فراخ وبقر وخيل. والهوا حلو!
+      ar: هنا دجاج وأبقار وخيل، والهواء جميل!
+      en: There are chickens, cows and horses here. The air is lovely!
+    words: [ayam, sapi, kuda, udara]
   - id: e10
     type: multiple_choice
     question_meaning:
       ar_eg: حاجة بيضا وساقعة بتنزل من السما في الشتا في أوروبا. اسمها إيه؟
       ar: شيء أبيض بارد ينزل من السماء في شتاء أوروبا. ما اسمه؟
       en: Something white and cold falls from the sky in a European winter. What is it?
-    options: [salju, matahari, sungai]
+    options: [salju, matahari, ayam]
     answer: 0
     explain:
       ar_eg: salju = تلج، زي الكلمة العربية.
       ar: salju = ثلج، كالكلمة العربية.
       en: salju = snow, like the Arabic word.
-    words: [salju, matahari, sungai]
+    words: [salju, matahari, ayam]
 dialogue:
   lines:
     - speaker: Ni Luh
-      text: Mohamed, bagaimana liburanmu di Bali?
-      ar_eg: يا محمد، إجازتك في بالي عاملة إيه؟
-      ar: يا محمد، كيف عطلتك في بالي؟
-      en: Mohamed, how's your holiday in Bali?
+      text: Selamat pagi, Mohamed! Ini rumah saya.
+      ar_eg: صباح الخير يا محمد! ده بيتي.
+      ar: صباح الخير يا محمد! هذا بيتي.
+      en: Good morning, Mohamed! This is my house.
     - speaker: Mohamed
-      text: Seru! Cuacanya cerah, mataharinya panas.
-      ar_eg: تحفة! الجو صحو والشمس حامية.
-      ar: رائعة! الطقس صحو والشمس حارّة.
-      en: Great! The weather's clear and the sun is hot.
+      text: Udaranya bagus! Langitnya cerah.
+      ar_eg: الهوا حلو! والسما صافية.
+      ar: الهواء جميل! والسماء صافية.
+      en: The air is lovely! The sky is clear.
     - speaker: Ni Luh
-      text: Kamu berenang di pantai?
-      ar_eg: عمت في البحر؟
-      ar: هل سبحت في البحر؟
-      en: Did you swim at the beach?
+      text: Ya. Di rumah saya ada ayam, sapi, dan kuda.
+      ar_eg: أيوه. هنا فيه فراخ وبقر وخيل.
+      ar: نعم. هنا دجاج وأبقار وخيل.
+      en: Yes. There are chickens, cows and horses here.
     - speaker: Mohamed
-      text: Ya, dan di sungai juga. Ada banyak pohon dan burung.
-      ar_eg: أيوه، وفي النهر كمان. فيه شجر وعصافير كتير.
-      ar: نعم، وفي النهر أيضًا. هناك أشجار وطيور كثيرة.
-      en: Yes, and in the river too. There are lots of trees and birds.
+      text: Di Mesir ada sapi juga. Tapi mataharinya panas!
+      ar_eg: في مصر فيه بقر برضه. بس الشمس حامية!
+      ar: في مصر أبقار أيضًا، لكن الشمس حارّة!
+      en: There are cows in Egypt too. But the sun is hot!
     - speaker: Ni Luh
       text: Di Mesir ada salju?
       ar_eg: في مصر فيه تلج؟
       ar: هل في مصر ثلج؟
       en: Is there snow in Egypt?
     - speaker: Mohamed
-      text: Tidak ada! Di Mesir mataharinya panas.
-      ar_eg: لأ خالص! في مصر الشمس حامية.
-      ar: لا! في مصر الشمس حارّة.
-      en: No! In Egypt the sun is hot.
+      text: Tidak ada! Ada angin, tapi tidak ada salju.
+      ar_eg: لأ خالص! فيه هوا، بس مفيش تلج.
+      ar: لا! فيها رياح، لكن لا ثلج.
+      en: No! There's wind, but no snow.
 new_words:
-  - word: sungai
-    pos: noun
-    ar_eg: نهر
-    ar: نهر
-    en: river
   - word: langit
     pos: noun
     ar_eg: سما
@@ -212,16 +207,6 @@ new_words:
     ar_eg: ريح، هوا
     ar: ريح
     en: wind
-  - word: pohon
-    pos: noun
-    ar_eg: شجرة
-    ar: شجرة
-    en: tree
-  - word: burung
-    pos: noun
-    ar_eg: عصفورة، طير
-    ar: طائر
-    en: bird
   - word: matahari
     pos: noun
     ar_eg: شمس
@@ -232,6 +217,21 @@ new_words:
     ar_eg: هوا (اللي بنتنفسه)
     ar: هواء
     en: air
+  - word: ayam
+    pos: noun
+    ar_eg: فرخة
+    ar: دجاجة
+    en: chicken
+  - word: sapi
+    pos: noun
+    ar_eg: بقرة
+    ar: بقرة
+    en: cow
+  - word: kuda
+    pos: noun
+    ar_eg: حصان
+    ar: حصان
+    en: horse
   - word: salju
     pos: noun
     arabic: ثلج

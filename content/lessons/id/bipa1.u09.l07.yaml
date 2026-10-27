@@ -12,24 +12,24 @@ slides:
       ar_eg: |
         gedung = مبنى، bank = بنك، warung = مطعم أو دكان صغير شعبي، gereja = كنيسة (وmasjid انت عارفها).
         tangga = سلم: naik tangga (يطلع السلم)، turun tangga (ينزل السلم). وturun كمان «ينزل» من الأتوبيس.
-        jarak = مسافة: Jaraknya dua ratus meter. (meter = متر.)
+        meter = متر: Bank itu dua ratus meter dari sini. وtruk = عربية نقل كبيرة، بتقف قدام المحلات الصبح.
       ar: |
         gedung = مبنى، bank = مصرف، warung = مطعم أو دكّان شعبي صغير، gereja = كنيسة (وmasjid تعرفها).
         tangga = درج: naik tangga (يصعد الدرج)، turun tangga (ينزل الدرج). وturun أيضًا «ينزل» من الحافلة.
-        jarak = مسافة: Jaraknya dua ratus meter. (meter = متر.)
+        meter = متر: Bank itu dua ratus meter dari sini. وtruk = شاحنة، تقف أمام المتاجر صباحًا.
       en: |
         gedung = building, bank = bank, warung = a small local eatery or shop, gereja = church (you know masjid).
         tangga = stairs: naik tangga (go upstairs), turun tangga (go downstairs). turun also means get off a bus.
-        jarak = distance: Jaraknya dua ratus meter. (meter = metre.)
+        meter = metre: Bank itu dua ratus meter dari sini. truk = lorry, truck; they stop outside the shops in the morning.
     examples:
       - text: Bank itu di sebelah kiri gedung besar.
         ar_eg: البنك على شمال المبنى الكبير.
         ar: المصرف على يسار المبنى الكبير.
         en: The bank is to the left of the big building.
-      - text: Jaraknya dua ratus meter dari sini.
-        ar_eg: المسافة ٢٠٠ متر من هنا.
-        ar: المسافة مئتا متر من هنا.
-        en: It's two hundred metres from here.
+      - text: Bank itu dua ratus meter dari sini.
+        ar_eg: البنك ده على بعد ٢٠٠ متر من هنا.
+        ar: ذلك المصرف على بعد مئتي متر من هنا.
+        en: That bank is two hundred metres from here.
       - text: Turun dari bus di halte Monas.
         ar_eg: انزل من الأتوبيس عند محطة موناس.
         ar: انزل من الحافلة عند محطة موناس.
@@ -66,15 +66,15 @@ exercises:
         ar_eg: ينزل
         ar: ينزل
         en: go down
-      - text: jarak
-        ar_eg: مسافة
-        ar: مسافة
-        en: distance
       - text: meter
         ar_eg: متر
         ar: متر
         en: metre
-    words: [tangga, turun, jarak, meter]
+      - text: truk
+        ar_eg: عربية نقل
+        ar: شاحنة
+        en: truck
+    words: [tangga, turun, meter, truk]
   - id: e03
     type: listen
     text: Warung itu di depan gereja.
@@ -91,14 +91,14 @@ exercises:
     words: [warung, gereja]
   - id: e04
     type: fill_blank
-    sentence: Jaraknya lima ratus ___.
+    sentence: Gereja itu lima ratus ___ dari sini.
     meaning:
-      ar_eg: المسافة خمسمية ___.
-      ar: المسافة خمسمئة ___.
-      en: It's five hundred ___ away.
+      ar_eg: الكنيسة دي على بعد خمسمية ___ من هنا.
+      ar: تلك الكنيسة على بعد خمسمئة ___ من هنا.
+      en: That church is five hundred ___ from here.
     options: [meter, tangga, gedung]
     answers: [meter]
-    words: [jarak, meter, tangga, gedung]
+    words: [meter, tangga, gedung]
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -119,9 +119,9 @@ exercises:
       ar_eg: مكتبي في الدور التالت. بطلع على ___.
       ar: مكتبي في الطابق الثالث، فأصعد ___.
       en: My office is on the third floor. I take the ___.
-    options: [tangga, jarak, bank]
+    options: [tangga, truk, bank]
     answers: [tangga]
-    words: [tangga, jarak, bank]
+    words: [tangga, truk, bank]
   - id: e07
     type: build_sentence
     source:
@@ -134,24 +134,24 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Gedung itu tinggi sekali.
+    source_text: Gedung itu seratus meter dari stasiun.
     answers_meaning:
-      ar_eg: [المبنى ده عالي أوي, العمارة دي عالية جدًا]
-      ar: [ذلك المبنى عالٍ جدًا, ذلك المبنى شاهق]
-      en: [That building is very tall, That building is really tall]
-    words: [gedung]
+      ar_eg: [المبنى ده على بعد مية متر من المحطة, العمارة دي على بعد ١٠٠ متر من المحطة]
+      ar: [ذلك المبنى على بعد مئة متر من المحطة, يبعد ذلك المبنى مئة متر عن المحطة]
+      en: [That building is a hundred metres from the station, That building is 100 metres from the station]
+    words: [gedung, meter]
   - id: e09
     type: speaking
-    text: Jarak dari stasiun ke museum dua ratus meter.
+    text: Ada truk besar di depan bank.
     meaning:
-      ar_eg: المسافة من المحطة للمتحف ٢٠٠ متر.
-      ar: المسافة من المحطة إلى المتحف مئتا متر.
-      en: It's two hundred metres from the station to the museum.
-    words: [jarak, meter]
+      ar_eg: فيه عربية نقل كبيرة قدام البنك.
+      ar: هناك شاحنة كبيرة أمام المصرف.
+      en: There's a big truck in front of the bank.
+    words: [truk, bank]
   - id: e10
     type: multiple_choice
     question: Dari lantai dua ke lantai satu, kita ___.
-    options: [turun, naik, jarak]
+    options: [turun, naik, meter]
     answer: 0
     explain:
       ar_eg: من فوق لتحت = turun. naik العكس.
@@ -176,20 +176,20 @@ dialogue:
       ar: هل هو بعيد يا سيدي؟
       en: Is it far?
     - speaker: Satpam
-      text: Tidak. Jaraknya seratus meter. Jalan lurus, lalu belok kanan.
-      ar_eg: لأ. المسافة ١٠٠ متر. امشي على طول، وبعدين حوّد يمين.
-      ar: لا، المسافة مئة متر. امشِ مستقيمًا ثم انعطف يمينًا.
-      en: No. It's a hundred metres. Go straight, then turn right.
+      text: Tidak. Seratus meter dari sini. Jalan lurus, lalu belok kanan.
+      ar_eg: لأ. ١٠٠ متر من هنا. امشي على طول، وبعدين حوّد يمين.
+      ar: لا، مئة متر من هنا. امشِ مستقيمًا ثم انعطف يمينًا.
+      en: No. A hundred metres from here. Go straight, then turn right.
     - speaker: Mohamed
       text: Ada warung di dekat bank?
       ar_eg: فيه مطعم صغير جنب البنك؟
       ar: هل هناك مطعم شعبي قرب المصرف؟
       en: Is there a warung near the bank?
     - speaker: Satpam
-      text: Ada, di bawah, dekat tangga.
-      ar_eg: أيوه، تحت، جنب السلم.
-      ar: نعم، في الأسفل قرب الدرج.
-      en: Yes, downstairs, near the stairs.
+      text: Ada, di bawah, dekat tangga. Di depannya ada truk besar.
+      ar_eg: أيوه، تحت، جنب السلم. قدامه عربية نقل كبيرة.
+      ar: نعم، في الأسفل قرب الدرج، وأمامه شاحنة كبيرة.
+      en: Yes, downstairs, near the stairs. There's a big truck in front of it.
 new_words:
   - word: gedung
     pos: noun
@@ -221,16 +221,16 @@ new_words:
     ar_eg: ينزل
     ar: ينزل
     en: go down, get off
-  - word: jarak
-    pos: noun
-    ar_eg: مسافة
-    ar: مسافة
-    en: distance
   - word: meter
     pos: noun
     ar_eg: متر
     ar: متر
     en: metre
+  - word: truk
+    pos: noun
+    ar_eg: عربية نقل
+    ar: شاحنة
+    en: truck, lorry
 review:
   status: draft
   verified: false
