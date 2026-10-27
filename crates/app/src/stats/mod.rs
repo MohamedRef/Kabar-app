@@ -40,11 +40,18 @@ pub static CURRICULUM: LazyLock<Option<Curriculum>> =
 /// Where "Back" on Stats and the level check returns to.
 static RETURN_TO: GlobalSignal<Screen> = Signal::global(|| Screen::Today);
 
+/// Whether the open level check came from the monthly invitation, so its
+/// welcome fits how it was reached (see `check::welcome_line`).
+static CHECK_INVITED: GlobalSignal<bool> = Signal::global(|| false);
+
 /// Opens a stats screen, remembering where the learner came from.
 pub fn open(ui: Ui, screen: Screen) {
     let from = *ui.screen.peek();
     if !matches!(from, Screen::Stats | Screen::LevelCheck) {
         *RETURN_TO.write() = from;
+    }
+    if screen == Screen::LevelCheck {
+        *CHECK_INVITED.write() = false;
     }
     let mut s = ui.screen;
     s.set(screen);
@@ -238,7 +245,14 @@ pub fn TodayCards() -> Element {
                 h3 { "{st(lang, S::CheckTitle)}" }
                 crate::coach::widgets::Nur { text: invite }
                 div { class: "row",
-                    button { class: "primary", onclick: move |_| open(ui, Screen::LevelCheck), "{st(lang, S::CheckDoNow)}" }
+                    button {
+                        class: "primary",
+                        onclick: move |_| {
+                            open(ui, Screen::LevelCheck);
+                            *CHECK_INVITED.write() = true;
+                        },
+                        "{st(lang, S::CheckDoNow)}"
+                    }
                     button {
                         onclick: move |_| {
                             if let Err(e) = db_later.0.borrow_mut().set_local_value(SNOOZE_KEY, &today.to_string()) {

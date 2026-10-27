@@ -66,9 +66,13 @@ bakeoff-blind run:
 bakeoff-report run *args="":
     {{tools}} bakeoff report {{run}} {{args}}
 
-# Validate every content file (schemas, glosses, Bridge, speech levels, golden sets); CI runs the same checks
+# Validate every content file (schemas, glosses, Bridge, speech levels, golden sets, pack manifests, README numbers); CI runs the same checks
 content-check:
     {{tools}} validate
+
+# Refresh the generated numbers in README.md (CI fails when they are stale)
+readme:
+    {{tools}} readme
 
 # Markdown review sheet for one gloss batch: `just content-review 3`
 content-review batch:

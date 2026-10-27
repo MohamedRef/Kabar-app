@@ -41,7 +41,18 @@ const CHAT_CSS: &str = include_str!("../../assets/chat.css");
 /// Every persona file, parsed once, in the order the spec lists them; a
 /// broken file stays listed with its error.
 static PERSONA_LIST: LazyLock<Vec<Result<Persona, (String, String)>>> = LazyLock::new(|| {
-    const ORDER: [&str; 4] = ["mas-dimas", "bu-siti", "mbak-gadis", "mas-ardi"];
+    const ORDER: [&str; 10] = [
+        "mas-dimas",
+        "bu-siti",
+        "mbah-putri",
+        "mbak-ayu",
+        "pak-slamet",
+        "mbak-gadis",
+        "mas-ardi",
+        "bu-lestari",
+        "bang-togar",
+        "kaka-yohana",
+    ];
     let mut all: Vec<_> = embedded::all(PERSONAS)
         .map(|(id, yaml)| parse_persona(&yaml).map_err(|e| (id.to_string(), e.to_string())))
         .collect();
@@ -257,6 +268,9 @@ fn Home(on_persona: EventHandler<String>, on_chat: EventHandler<String>) -> Elem
                     Ok(p) => {
                         let id = p.id.clone();
                         let jv = is_javanese(p);
+                        // The levels the persona is written for, so the
+                        // learner can find the partner for their unit.
+                        let bands = p.style.levels.iter().map(|b| b.level.to_uppercase()).collect::<Vec<_>>().join(" · ");
                         rsx! {
                             li { key: "{p.id}",
                                 button { class: "card ch-persona", onclick: move |_| on_persona.call(id.clone()),
@@ -264,6 +278,7 @@ fn Home(on_persona: EventHandler<String>, on_chat: EventHandler<String>) -> Elem
                                     span { class: "ch-who",
                                         strong { bdi { class: "latin", "{p.name}" } }
                                         span { class: "pill small", if jv { "{tt(lang, T::Javanese)}" } else { "{tt(lang, T::Indonesian)}" } }
+                                        span { class: "pill small latin", dir: "ltr", "{bands}" }
                                         span { class: "muted small", "{pick(&p.role, lang)}" }
                                     }
                                 }

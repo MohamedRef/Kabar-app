@@ -110,8 +110,9 @@ pub fn is_javanese(persona: &Persona) -> bool {
 /// What the register switch offers for this persona, its default first.
 pub fn registers(persona: &Persona) -> [&'static str; 2] {
     match (is_javanese(persona), persona.id.as_str()) {
-        // A market seller is a stranger: polite until the learner relaxes.
-        (true, "bu-siti") => ["krama", "ngoko"],
+        // A market seller is a stranger, and the learner owes Simbah and
+        // Pak Slamet krama: polite first.
+        (true, "bu-siti" | "mbah-putri" | "pak-slamet") => ["krama", "ngoko"],
         (true, _) => ["ngoko", "krama"],
         (false, "mbak-gadis") => ["casual", "standard"],
         (false, _) => ["standard", "casual"],
