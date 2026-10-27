@@ -1,0 +1,206 @@
+schema: kabar.lesson/v1
+id: j1.u02.l06
+language: jv
+title: Kenalan nang warung kopi
+can_do:
+  ar_eg: تدردش مع حد غريب في قهوة على الرصيف.
+  ar: أن تتحادث مع غريب في كشك قهوة.
+  en: Chat with a stranger at a coffee stall.
+slides:
+  - title: Mas wong ngendi?
+    body:
+      ar_eg: |
+        في الوارونج (warung kopi = قهوة شعبية صغيرة) الناس بتتعرف على بعض بسرعة. أهم سؤال:
+        - Mas wong ngendi? = حضرتك منين؟ (حرفيًا «إنت شخص من فين؟»، زي Orang mana?)
+        والرد: Aku wong Mesir / Aku saka Kairo.
+        وبعدين: Jenengmu sapa? · Sinau apa? · Omahmu ngendi?
+        وفي العنوان: kenalan = نتعرّف، وnang = di (في) — هنتعلمها كويس في J1.6.
+      ar: |
+        في الـ warung kopi (مقهى شعبي صغير) يتعارف الناس سريعًا، وأهم سؤال:
+        - Mas wong ngendi? = من أين أنت؟ (حرفيًا «أنت شخص من أين؟»، كـ Orang mana?)
+        والجواب: Aku wong Mesir / Aku saka Kairo.
+        ثم: Jenengmu sapa? · Sinau apa? · Omahmu ngendi?
+        وفي العنوان: kenalan = نتعارف، وnang = di (في)، وتأتي مفصّلة في J1.6.
+      en: |
+        At a warung kopi (a small street coffee stall) people get to know each other fast. The key question:
+        - Mas wong ngendi? = Where are you from? (literally "person from where?", like Orang mana?)
+        The answer: Aku wong Mesir / Aku saka Kairo.
+        Then: Jenengmu sapa? · Sinau apa? · Omahmu ngendi?
+        In the title: kenalan = getting acquainted, nang = di (at) — full lesson in J1.6.
+    grammar: jv.question.words
+    examples:
+      - text: Mas wong ngendi? — Aku wong Mesir.
+        ar_eg: حضرتك منين؟ — أنا مصري.
+        ar: من أين أنت؟ — أنا مصري.
+        en: Where are you from? — I'm Egyptian.
+      - text: Kopine, rek!
+        ar_eg: القهوة يا جماعة! (اتفضلوا)
+        ar: القهوة يا جماعة! (تفضلوا)
+        en: Here's your coffee, guys!
+exercises:
+  - id: e01
+    type: multiple_choice
+    question: Mas wong ngendi?
+    question_meaning:
+      ar_eg: واحد في القهوة سألك كده. يقصد إيه؟
+      ar: سألك أحدهم في المقهى هذا السؤال. ماذا يقصد؟
+      en: Someone at the stall asks you this. What do they mean?
+    options: ['Where are you from?', 'What''s your name?', 'Where are you going?']
+    answer: 0
+    explain:
+      ar_eg: wong ngendi = orang mana = منين.
+      ar: wong ngendi = orang mana = من أين.
+      en: wong ngendi = orang mana = from where.
+    words: [wong, ngendi]
+  - id: e02
+    type: listen
+    text: Aku wong Suroboyo.
+    options: [Aku wong Suroboyo., 'Aku saka Suroboyo?', Aku bakul warung kopi.]
+    answer: 0
+    words: [wong, warung kopi, bakul]
+  - id: e03
+    type: build_sentence
+    source:
+      ar_eg: حضرتك منين يا كابتن؟
+      ar: من أين أنت يا أخي؟
+      en: Where are you from? (to a young man)
+    answer: Mas wong ngendi?
+    distractors: [sapa, saya]
+    words: [wong, ngendi]
+  - id: e04
+    type: fill_blank
+    sentence: Aku ___ basa Jawa.
+    meaning:
+      ar_eg: أنا بتعلم جاوي.
+      ar: أنا أتعلّم الجاوية.
+      en: I'm learning Javanese.
+    answers: [sinau]
+    explain:
+      ar_eg: sinau = belajar (يتعلم).
+      ar: sinau = belajar (يتعلّم).
+      en: sinau = belajar.
+    words: [sinau]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: kenalan
+        ar_eg: يتعرّف على حد
+        ar: يتعارف
+        en: get acquainted
+      - text: wong ngendi
+        ar_eg: منين؟
+        ar: من أين؟
+        en: where from?
+      - text: warung kopi
+        ar_eg: قهوة شعبية
+        ar: مقهى شعبي
+        en: coffee stall
+      - text: sinau
+        ar_eg: يتعلم
+        ar: يتعلم
+        en: learn
+      - text: bakul
+        ar_eg: بيّاع
+        ar: بائع
+        en: seller
+      - text: gedhe
+        ar_eg: كبير
+        ar: كبير
+        en: big
+    words: [kenalan, wong ngendi, warung kopi, sinau, bakul, gedhe]
+  - id: e06
+    type: listen
+    text: Kenalan, jenengku Yudi.
+    options: ['Kenalan, jenengku Yudi.', 'Kenalan, jenengku Yuda.', 'Sugeng sonten, jenengku Yudi.']
+    answer: 0
+    meaning:
+      ar_eg: أعرّفك بنفسي، اسمي يودي.
+      ar: دعني أعرّفك بنفسي، اسمي يودي.
+      en: Let me introduce myself, I'm Yudi.
+    words: [kenalan, jeneng]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي حاجة معناها «قهوة شعبية صغيرة»؟
+      ar: أيّها تعني «مقهى شعبي صغير»؟
+      en: Which one means "a small coffee stall"?
+    options: [warung kopi, omah, basa]
+    answer: 0
+    words: [warung kopi, omah, basa]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: لأ، أنا مدرس.
+      ar: لا، أنا معلم.
+      en: No, I'm a teacher.
+    answer: Ora, aku guru.
+    distractors: [iya, mahasiswa]
+    words: [ora, guru]
+  - id: e09
+    type: dictation
+    text: Jenengku Yudi, aku wong Suroboyo.
+    meaning:
+      ar_eg: اسمي يودي، أنا من سورابايا.
+      ar: اسمي يودي، أنا من أهل سورابايا.
+      en: My name is Yudi, I'm from Surabaya.
+    words: [jeneng, wong]
+  - id: e10
+    type: speaking
+    text: Sugeng sonten, Mas. Kenalan, jenengku Mohamed.
+    meaning:
+      ar_eg: مساء الخير يا كابتن. أعرّفك بنفسي، اسمي محمد.
+      ar: مساء الخير يا أخي. دعني أعرّفك بنفسي، اسمي محمد.
+      en: Good afternoon, Mas. Let me introduce myself, I'm Mohamed.
+    words: [kenalan, jeneng]
+dialogue:
+  title: Warung Cak Mat
+  lines:
+    - speaker: Mas Yudi
+      text: Sugeng sonten, Mas.
+      ar_eg: مساء الخير يا كابتن.
+      ar: مساء الخير يا أخي.
+      en: Good afternoon.
+    - speaker: Mohamed
+      text: Sugeng sonten. Piye kabare, Mas?
+      ar_eg: مساء النور. إزيك؟
+      ar: مساء النور. كيف حالك؟
+      en: Good afternoon. How are you?
+    - speaker: Mas Yudi
+      text: Apik. Mas wong ngendi?
+      ar_eg: كويس. حضرتك منين؟
+      ar: بخير. من أين أنت؟
+      en: Good. Where are you from?
+    - speaker: Mohamed
+      text: Aku wong Mesir, saka Kairo. Jenengku Mohamed.
+      ar_eg: أنا مصري، من القاهرة. اسمي محمد.
+      ar: أنا مصري، من القاهرة. اسمي محمد.
+      en: I'm Egyptian, from Cairo. My name is Mohamed.
+    - speaker: Mas Yudi
+      text: Jenengku Yudi, aku wong Suroboyo. Mas sinau apa?
+      ar_eg: اسمي يودي، أنا من سورابايا. بتدرس إيه؟
+      ar: اسمي يودي، من سورابايا. ماذا تدرس؟
+      en: I'm Yudi, from Surabaya. What are you studying?
+    - speaker: Mohamed
+      text: Aku sinau basa Jawa. Aku guru basa Arab.
+      ar_eg: بتعلم جاوي. أنا مدرس عربي.
+      ar: أتعلّم الجاوية، وأنا معلم لغة عربية.
+      en: I'm learning Javanese. I'm an Arabic teacher.
+new_words:
+  - word: kenalan
+    pos: verb
+    ar_eg: يتعرّف على حد (= berkenalan)
+    ar: يتعارف (= berkenalan)
+    en: to get acquainted (= berkenalan)
+  - word: wong ngendi
+    pos: phrase
+    ar_eg: منين؟ (= orang mana)
+    ar: من أين؟ (= orang mana)
+    en: from where? (= orang mana)
+  - word: warung kopi
+    pos: noun
+    ar_eg: قهوة شعبية صغيرة
+    ar: مقهى شعبي صغير
+    en: small street coffee stall
+review:
+  status: draft
+  verified: false
