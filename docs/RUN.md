@@ -25,7 +25,17 @@ To jump straight into a lesson or test, start the app with `KABAR_OPEN_LESSON`, 
 
 Lessons start marked "not reviewed yet". Finishing one with 80% or more right on the first try (with at least half the exercises answered, not skipped) counts as your approval: the badge comes off that lesson and its words in Review, and off a unit's souvenir and a level's title once all their lessons are passed. This works the same for Javanese, on every device after sync.
 
-Data lives in `~/Library/Application Support/app.Kabar.Kabar/kabar.db`. Delete it to see the first-launch screen again (or use Settings → "Show the welcome screen again").
+Data lives in `~/Library/Application Support/app.Kabar.Kabar/kabar.db`. Delete it to see the first-launch screen again (or use Settings → About Kabar → "Show the welcome screen again").
+
+**Settings** opens as a sheet over whatever you're doing, so a lesson or Reader page stays where it was:
+
+| Where | How to open it |
+|---|---|
+| Mac | **Kabar › Settings…** in the menu bar, or **⌘,**. The menu bar also has Edit (⌘C/⌘V), **Go** (⌘1 Today … ⌘7 Chat), Window and Help › Keyboard Shortcuts. |
+| Phone | the **gear** at the top of every screen (or Settings in Today's links) |
+| Tablet and wide windows | **Settings**, pinned to the foot of the side bar |
+
+Sections: Learning (pronunciation, translation under sentences, sounds), Look & language (language, theme, text size, digits), Kak Nur & reminders, Android (notifications for the lock-screen player, background audio, S Pen hover, App info), Tablet (slim side bar, layout), Mac (shortcuts, mouse hover peek, slim side bar, Quick Lookup coming later), Offline & storage (packs, export, data folder), Account & sync (Kabar Cloud, devices, Cost & limits) and About. Android, Tablet and Mac only appear on those devices. Choices marked "This device only" (text size, hover peek, side bar) stay on that device; the rest sync. Escape closes the sheet. `KABAR_OPEN_SETTINGS=<section>` (`learning`, `look`, `coach`, `mac`, `storage`, `account`, `about`…) opens it at launch for previews.
 
 ## 3. Galaxy S24 Ultra and Tab S11
 
@@ -83,7 +93,7 @@ Then connect the app (CLOUD.md §3.6):
 
 ```bash
 cp .env.example .env   # put in the workers.dev URL and the Desktop client id + secret
-just run-mac           # Settings → Account & devices → Sign in with Google
+just run-mac           # Settings → Account & sync → Sign in with Google
 just apk && just install <serial>   # same on the S24 Ultra and the Tab S11
 ```
 
@@ -116,7 +126,7 @@ On the Mac: `just run-mac`. After the welcome screen, Kak Nur's onboarding asks 
 - **Today**: Kak Nur's greeting, "5, 15 or 30 minutes today?", the plan, Pelita and Koin. Tick an item when you've done it (until reviews and lessons land, ticking is how study gets logged). The recap card appears once the goal is met or in the evening.
 - **Kak Nur** (nav): weekly report, Liga Pribadi, achievements, the Warung and a link to the learning journal.
 - **Journal** (nav on the Mac and tablet; on the phone from Today's links under the plan, or from Kak Nur): every day's reviews, new words, lessons and level tests, practice, plan items, purchases, souvenirs and taught words, newest first, with the day's minutes and XP. Filter by All / Study / Words / Reflections; "Show older days" pages back two weeks at a time. Write a reflection on any day (typed, several lines); edit or delete it. Reflections sync between devices and are never sent to any AI. Handwritten reflections come with Tablet Studio.
-- **Settings → Kak Nur**: reminder style, study times, quiet hours, report day.
+- **Settings → Kak Nur & reminders**: daily size, reminder style, study times, quiet hours, report day.
 
 To start onboarding again, delete the database (§2). On the Galaxy devices: `just apk` and `just install <serial>` as in §3.
 
@@ -124,14 +134,14 @@ Reminders arrive as push notifications once Kabar Cloud's reminder alarm and Fir
 
 ### Settings: Cost & limits, and Export everything
 
-- **Settings → Cost & limits** shows "$0.00 this month", one bar per free allowance (Gemini, Workers AI, Azure TTS) with its local reset time, a warning from 80% ("…Kabar pauses it rather than pay; it's back tomorrow at 02:00"), and Cloudflare's Free-plan limits (no card, so it can't bill). The counters come from `GET /v1/usage` (CLOUD.md §2); signed out or offline, the screen still says $0 and explains the hard stops. **Turn on Claude…** asks first ("This could cost money", default No). There is no in-app engine switch yet: Claude is switched on in Kabar Cloud with `CLAUDE_ENABLED = "true"` in `crates/server/wrangler.toml` and `just deploy-cloud`.
-- **Settings → Your data → Export everything** writes every table of the local database to one `kabar-export-YYYY-MM-DD.json` (`-2`, `-3`… if one exists). Sign-in tokens live in the Keychain/Keystore and are never in it.
+- **Settings → Account & sync → Cost & limits** shows "$0.00 this month", one bar per free allowance (Gemini, Workers AI, Azure TTS) with its local reset time, a warning from 80% ("…Kabar pauses it rather than pay; it's back tomorrow at 02:00"), and Cloudflare's Free-plan limits (no card, so it can't bill). The counters come from `GET /v1/usage` (CLOUD.md §2); signed out or offline, the screen still says $0 and explains the hard stops. **Turn on Claude…** asks first ("This could cost money", default No). There is no in-app engine switch yet: Claude is switched on in Kabar Cloud with `CLAUDE_ENABLED = "true"` in `crates/server/wrangler.toml` and `just deploy-cloud`.
+- **Settings → Offline & storage → Export everything** writes every table of the local database to one `kabar-export-YYYY-MM-DD.json` (`-2`, `-3`… if one exists). Sign-in tokens live in the Keychain/Keystore and are never in it.
   - Mac: `~/Downloads`.
   - S24 Ultra / Tab S11: `Android/data/app.kabar/files/` (the app's external files folder). Copy it over USB (it shows in the phone's folder on the Mac with Android File Transfer/OpenMTP) or `adb pull /sdcard/Android/data/app.kabar/files/kabar-export-2026-10-26.json`. A share-sheet button needs a FileProvider in `android/` and is a follow-up.
 
 ## 8. Teach Kabar (spec §26)
 
-Open **Teach Kabar** (علّم كبر) from the side bar on the Mac and tablet, or from Settings on the phone. Type the word, optionally the sentence you met it in, then paste what you found (or a link, or use Wiktionary) and tap **Teach Kabar**. The draft appears below for review: approve it, edit it, ask for another version, or discard it. Approved words show in **My dictionary** and in Reader popovers with a "taught by you" badge.
+Open **Teach Kabar** (علّم كبر) from the side bar on the Mac and tablet, or from the links at the foot of Today on the phone. Type the word, optionally the sentence you met it in, then paste what you found (or a link, or use Wiktionary) and tap **Teach Kabar**. The draft appears below for review: approve it, edit it, ask for another version, or discard it. Approved words show in **My dictionary** and in Reader popovers with a "taught by you" badge.
 
 Writing the draft needs an AI engine, so until the app is connected to Kabar Cloud the screen says "not connected yet". Search Google opens the browser; nothing from Google is read automatically.
 

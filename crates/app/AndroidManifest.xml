@@ -21,6 +21,11 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Android 13+: Kak Nur's reminders are notifications. Declared so
+         Settings › Android can send the learner to Kabar's notification page,
+         where the switch then works. (PlaybackService's media notification
+         is exempt and works either way.) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <!-- Android 11+ package visibility: the app must be allowed to see installed
          text-to-speech engines (Samsung, Google) or TextToSpeech can't bind to one. -->

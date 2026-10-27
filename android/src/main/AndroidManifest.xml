@@ -50,5 +50,13 @@
             android:excludeFromRecents="true"
             android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize|keyboardHidden"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- Settings › Export everything: the system "Save to" dialog (SAF), then
+             a copy of the export into the chosen place. Same shape as the picker. -->
+        <activity
+            android:name="app.kabar.ExportSaveActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize|keyboardHidden"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 </manifest>
