@@ -147,7 +147,7 @@ Worked examples:
 - **Mini-games** (Pasar!, Rupiah Reader, Minimal Pairs, Sound-Shift Detective, Unggah-Ungguh Simulator): their length is set per game. They introduce no new words that are not already on the learner's cards [synth].
 - **Kabar Radio**: ≤ 8 min. The validator already enforces 3–8. SPEC §14 says "5-minute", which sits inside that range.
 - **Kabar Pagi**: 2 min.
-- **Level tests / monthly check**: ≤ 30 min, split into sections that can each be resumed. The 10-minute monthly check from SPEC §6 is one such section.
+- **Level tests / monthly check**: ≤ 30 min, split into sections that can each be resumed. The 10-minute monthly check from SPEC §6 is one such section. Every test item names the unit it tests (`unit:`), so a missed item can send the learner back to that unit.
 
 ---
 

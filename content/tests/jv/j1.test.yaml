@@ -35,36 +35,42 @@ sections:
       en: Listen, replay as you like, then pick exactly what you heard or write it.
     items:
       - id: t01
+        unit: j1.u02
         type: listen
         text: Kowe saka ngendi?
         options: ["Kowe arep nang ngendi?", "Omahmu ngendi?", "Kowe saka ngendi?"]
         answer: 2
         words: [saka, ngendi]
       - id: t02
+        unit: j1.u04
         type: listen
         text: Sek, tak lapor pusat.
         options: ["Sek, tak lapor pusat.", "Iya, tak tunggu.", "Sek, tak jupukke."]
         answer: 0
         words: [sek, tak, lapor]
       - id: t03
+        unit: j1.u07
         type: listen
         text: Telung ewu.
         options: ["Rong ewu.", "Telung ewu.", "Telung atus."]
         answer: 1
         words: [telung, ewu]
       - id: t04
+        unit: j1.u05
         type: listen
         text: Koen wis mangan ta, rek?
         options: ["Kowe wis mangan?", "Kowe wis mangan to?", "Koen wis mangan ta, rek?"]
         answer: 2
         words: [koen, ta, rek]
       - id: t05
+        unit: j1.u06
         type: listen
         text: Saka kene lurus wae, terus nengen.
         options: ["Saka kene lurus wae, terus ngiwa.", "Saka kene lurus wae, terus nengen.", "Lurus wae, terus ngiwa."]
         answer: 1
         words: [lurus, terus, nengen]
       - id: t06
+        unit: j1.u03
         type: dictation
         text: Aku durung mangan.
         meaning:
@@ -84,6 +90,7 @@ sections:
       en: WhatsApp messages from your Surabaya friends in chat spelling. Decode them and answer.
     items:
       - id: t07
+        unit: j1.u04
         type: multiple_choice
         question: Sek tak lapor pusat
         question_meaning:
@@ -94,6 +101,7 @@ sections:
         answer: 2
         words: [sek, tak, lapor, pusat]
       - id: t08
+        unit: j1.u03
         type: multiple_choice
         question: arp dicul piro?
         question_meaning:
@@ -108,6 +116,7 @@ sections:
           en: arp = arep, dicul = diculke (let go, sold), piro = pira, so "How much will you sell it for?"
         words: [arep, diculke, pira]
       - id: t09
+        unit: j1.u03
         type: multiple_choice
         question: ng prabowo?
         question_meaning:
@@ -118,6 +127,7 @@ sections:
         answer: 2
         words: [nang]
       - id: t10
+        unit: j1.u03
         type: multiple_choice
         question: |
           Mbak Rara: rek, ws tekan durung?
@@ -132,6 +142,7 @@ sections:
         answer: 1
         words: [isih, sepur]
       - id: t11
+        unit: j1.u03
         type: multiple_choice
         question: |
           Mbak Rara: rek, ws tekan durung?
@@ -146,6 +157,7 @@ sections:
         answer: 0
         words: [arep, karo]
       - id: t12
+        unit: j1.u03
         type: multiple_choice
         question: rek, aku gk ngerti opo2
         question_meaning:
@@ -159,6 +171,7 @@ sections:
         answer: 0
         words: [gak, ngerti, apa-apa]
       - id: t13
+        unit: j1.u05
         type: multiple_choice
         question: Koen kate nang endi?
         question_meaning:
@@ -180,6 +193,7 @@ sections:
       en: Vocabulary
     items:
       - id: t14
+        unit: j1.u02
         type: match_pairs
         pairs:
           - text: apa
@@ -204,6 +218,7 @@ sections:
             en: how much, how many
         words: [apa, sapa, ngendi, kapan, pira]
       - id: t15
+        unit: j1.u07
         type: match_pairs
         pairs:
           - text: loro
@@ -228,6 +243,7 @@ sections:
             en: ten (10)
         words: [loro, papat, pitu, sanga, sepuluh]
       - id: t16
+        unit: j1.u07
         type: fill_blank
         sentence: Satus ewu? ___! Oleh kurang?
         meaning:
@@ -238,6 +254,7 @@ sections:
         answers: [Larang]
         words: [larang, oleh kurang]
       - id: t17
+        unit: j1.u01
         type: fill_blank
         sentence: Sugeng ___, Pakdhe.
         meaning:
@@ -248,6 +265,7 @@ sections:
         answers: [dalu]
         words: [sugeng dalu]
       - id: t18
+        unit: j1.u01
         type: multiple_choice
         question_meaning:
           ar_eg: Lia بنت شابة من سورابايا. تناديها إزاي بطريقة Arek؟
@@ -264,6 +282,7 @@ sections:
       en: Grammar
     items:
       - id: t19
+        unit: j1.u05
         type: fill_blank
         sentence: Iki ___ kopiku.
         meaning:
@@ -278,6 +297,7 @@ sections:
           en: dudu negates nouns (= bukan); ora negates verbs and adjectives (= tidak).
         words: [dudu]
       - id: t20
+        unit: j1.u05
         type: fill_blank
         sentence: Aku ___ ngerti.
         meaning:
@@ -288,6 +308,7 @@ sections:
         answers: [ora]
         words: [ora, ngerti]
       - id: t21
+        unit: j1.u03
         type: fill_blank
         sentence: Dheweke ___ turu.
         meaning:
@@ -298,6 +319,7 @@ sections:
         answers: [isih]
         words: [isih, turu]
       - id: t22
+        unit: j1.u04
         type: multiple_choice
         question_meaning:
           ar_eg: إزاي تقول "Bukunya sudah kubaca" (الكتاب أنا قريته) بالجاوي؟
@@ -311,6 +333,7 @@ sections:
           en: tak- = by me (ku-), kok- = by you (kau-). After tak the verb has no N-, so waca, not maca.
         words: [tak, waca]
       - id: t23
+        unit: j1.u04
         type: fill_blank
         sentence: Kurmane wis ___ Mohamed.
         meaning:
@@ -321,6 +344,7 @@ sections:
         answers: [dituku]
         words: [dituku]
       - id: t24
+        unit: j1.u04
         type: fill_blank
         sentence: Aku teh ___.
         meaning:
@@ -331,6 +355,7 @@ sections:
         answers: [ae]
         words: [ae]
       - id: t25
+        unit: j1.u06
         type: multiple_choice
         question_meaning:
           ar_eg: فيه راجل واقف بعيد خالص في آخر الشارع. تسأل صاحبك هو مين إزاي؟
@@ -340,6 +365,7 @@ sections:
         answer: 1
         words: [kae]
       - id: t26
+        unit: j1.u07
         type: fill_blank
         sentence: Tak ___ kopi, ya.
         meaning:
@@ -350,6 +376,7 @@ sections:
         answers: [tukokke]
         words: [tukokke]
       - id: t27
+        unit: j1.u07
         type: fill_blank
         sentence: Regane ___?
         meaning:
@@ -359,6 +386,7 @@ sections:
         answers: [pira, Pira, piro, Piro]
         words: [pira, rega]
       - id: t28
+        unit: j1.u05
         type: build_sentence
         source:
           ar_eg: أنا مش جاوي، أنا مصري.
@@ -379,6 +407,7 @@ sections:
       en: Write in ngoko. Standard or chat spelling, with or without accents, is all fine.
     items:
       - id: t29
+        unit: j1.u02
         type: translate
         direction: to_target
         source_meaning:
@@ -404,6 +433,7 @@ sections:
           - Aku wong Mesir seko Kairo
         words: [wong, saka]
       - id: t30
+        unit: j1.u04
         type: translate
         direction: to_target
         source_meaning:
@@ -433,6 +463,7 @@ sections:
           - Sek taklapor pusat
         words: [sek, tak, lapor, pusat]
       - id: t31
+        unit: j1.u05
         type: translate
         direction: from_target
         source_text: Lapo koen gak mangan?
@@ -442,6 +473,7 @@ sections:
           en: ["Why aren't you eating?", Why aren't you eating, "Why don't you eat?", "Why didn't you eat?"]
         words: [lapo, koen, gak]
       - id: t32
+        unit: j1.u03
         type: writing_task
         points: 4
         prompt:
@@ -471,6 +503,7 @@ sections:
       en: Speak at ease. What matters is that your Javanese friend understands you.
     items:
       - id: t33
+        unit: j1.u02
         type: speaking
         text: Jenengku Mohamed. Aku wong Mesir, saka Kairo. Kowe saka ngendi?
         meaning:
@@ -479,6 +512,7 @@ sections:
           en: My name is Mohamed. I'm Egyptian, from Cairo. Where are you from?
         words: [jeneng, wong, saka]
       - id: t34
+        unit: j1.u02
         type: speaking_task
         points: 4
         prompt:

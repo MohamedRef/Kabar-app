@@ -43,42 +43,49 @@ sections:
       en: Airport and station announcements and market talk. Listen, replay as you like, then pick exactly what you heard or write it.
     items:
       - id: t01
+        unit: bipa2.u03
         type: listen
         text: Para penumpang yang terhormat, penerbangan ke Jakarta ditunda satu jam.
         options: ["Para penumpang yang terhormat, penerbangan ke Jakarta ditunda satu jam.", "Para penumpang yang terhormat, penerbangan ke Yogyakarta ditunda satu jam.", "Para penumpang yang terhormat, penerbangan ke Jakarta ditunda dua jam."]
         answer: 0
         words: [penumpang, penerbangan, ditunda]
       - id: t02
+        unit: bipa2.u03
         type: listen
         text: Penumpang tujuan Lombok, silakan naik ke pesawat melalui pintu tiga.
         options: ["Penumpang tujuan Lombok, silakan menunggu di pintu tiga.", "Penumpang tujuan Lombok, silakan naik ke pesawat melalui pintu tiga.", "Penumpang tujuan Lombok, silakan naik ke pesawat melalui pintu tujuh."]
         answer: 1
         words: [tujuan, pintu, silakan]
       - id: t03
+        unit: bipa2.u03
         type: listen
         text: Harap tenang. Dilarang merokok di ruang tunggu.
         options: ["Harap antre. Dilarang merokok di ruang tunggu.", "Harap tenang. Dilarang makan di ruang tunggu.", "Harap tenang. Dilarang merokok di ruang tunggu."]
         answer: 2
         words: [harap, dilarang, merokok]
       - id: t04
+        unit: bipa2.u04
         type: listen
         text: Berapa harga sekilo mangga ini, Bu?
         options: ["Berapa harga sekilo mangga ini, Bu?", "Berapa harga sebuah mangga ini, Bu?", "Berapa harga sekilo jeruk ini, Bu?"]
         answer: 0
         words: [berapa, sekilo, mangga]
       - id: t05
+        unit: bipa2.u04
         type: listen
         text: Wah, mahal sekali! Dua puluh ribu boleh, Bu?
         options: ["Wah, mahal sekali! Dua belas ribu boleh, Bu?", "Wah, murah sekali! Dua puluh ribu boleh, Bu?", "Wah, mahal sekali! Dua puluh ribu boleh, Bu?"]
         answer: 2
         words: [mahal, boleh]
       - id: t06
+        unit: bipa2.u08
         type: listen
         text: Pertama kami naik bus ke Denpasar, lalu naik ojek ke Sanur.
         options: ["Pertama kami naik bus ke Sanur, lalu naik ojek ke Denpasar.", "Pertama kami naik ojek ke Denpasar, lalu naik bus ke Sanur.", "Pertama kami naik bus ke Denpasar, lalu naik ojek ke Sanur."]
         answer: 2
         words: [pertama, lalu, ojek]
       - id: t07
+        unit: bipa2.u07
         type: dictation
         text: Anak-anak bermain di taman.
         meaning:
@@ -87,6 +94,7 @@ sections:
           en: The children are playing in the park.
         words: [anak-anak, bermain, taman]
       - id: t08
+        unit: bipa2.u10
         type: dictation
         text: Semoga cepat sembuh!
         meaning:
@@ -106,6 +114,7 @@ sections:
       en: Read the recipe, the medicine label, the sign and the messages, and answer from what they say.
     items:
       - id: t09
+        unit: bipa2.u05
         type: multiple_choice
         question: |
           TELUR DADAR (untuk 2 orang)
@@ -123,6 +132,7 @@ sections:
         answer: 2
         words: [butir, telur]
       - id: t10
+        unit: bipa2.u05
         type: multiple_choice
         question: |
           TELUR DADAR (untuk 2 orang)
@@ -140,6 +150,7 @@ sections:
         answer: 0
         words: [kocok, potong]
       - id: t11
+        unit: bipa2.u10
         type: multiple_choice
         question: |
           APOTEK SEHAT — Amed
@@ -155,6 +166,7 @@ sections:
         answer: 0
         words: [sehari, kali, tablet]
       - id: t12
+        unit: bipa2.u10
         type: multiple_choice
         question: |
           APOTEK SEHAT — Amed
@@ -170,6 +182,7 @@ sections:
         answer: 0
         words: [sesudah, makan]
       - id: t13
+        unit: bipa2.u03
         type: multiple_choice
         question: |
           PERHATIAN!
@@ -183,6 +196,7 @@ sections:
         answer: 2
         words: [dilarang, ombak]
       - id: t14
+        unit: bipa2.u09
         type: multiple_choice
         question: |
           Ni Luh: Mohamed, kmrn liburan ke Lovina gmn?
@@ -199,6 +213,7 @@ sections:
           en: He wrote "lihat lumba-lumba", and says he blm (belum, not yet) made it to the waterfall.
         words: [lumba-lumba, perahu]
       - id: t15
+        unit: bipa2.u09
         type: multiple_choice
         question: |
           Ni Luh: Mohamed, kmrn liburan ke Lovina gmn?
@@ -211,6 +226,7 @@ sections:
         answer: 2
         words: [belum]
       - id: t16
+        unit: bipa2.u04
         type: multiple_choice
         question: |
           Penjual: Mari, Mas! Mangganya manis-manis.
@@ -238,6 +254,7 @@ sections:
       en: Vocabulary
     items:
       - id: t17
+        unit: bipa2.u02
         type: match_pairs
         pairs:
           - text: penulis
@@ -258,6 +275,7 @@ sections:
             en: singer
         words: [penulis, pedagang, pelukis, penyanyi]
       - id: t18
+        unit: bipa2.u10
         type: match_pairs
         pairs:
           - text: kepala
@@ -278,6 +296,7 @@ sections:
             en: foot, leg
         words: [kepala, perut, gigi, kaki]
       - id: t19
+        unit: bipa2.u09
         type: match_pairs
         pairs:
           - text: senang
@@ -298,6 +317,7 @@ sections:
             en: afraid
         words: [senang, sedih, marah, takut]
       - id: t20
+        unit: bipa2.u05
         type: fill_blank
         sentence: Sambal ini ___ sekali! Mulut saya panas.
         meaning:
@@ -308,6 +328,7 @@ sections:
         answers: [pedas]
         words: [pedas]
       - id: t21
+        unit: bipa2.u06
         type: fill_blank
         sentence: Saya mandi di ___.
         meaning:
@@ -325,6 +346,7 @@ sections:
       en: Grammar
     items:
       - id: t22
+        unit: bipa2.u01
         type: fill_blank
         sentence: Gong lebih besar ___ suling.
         meaning:
@@ -335,6 +357,7 @@ sections:
         answers: [daripada]
         words: [lebih, daripada]
       - id: t23
+        unit: bipa2.u01
         type: fill_blank
         sentence: Gunung Agung adalah gunung ___ tinggi di Bali.
         meaning:
@@ -345,6 +368,7 @@ sections:
         answers: [paling]
         words: [paling]
       - id: t24
+        unit: bipa2.u04
         type: fill_blank
         sentence: Bu Yanti membeli ___ ayam di pasar.
         meaning:
@@ -359,6 +383,7 @@ sections:
           en: "Animals are counted with ekor: seekor ayam."
         words: [seekor, ayam]
       - id: t25
+        unit: bipa2.u04
         type: fill_blank
         sentence: ___ berenang di sini! Ombaknya besar.
         meaning:
@@ -369,6 +394,7 @@ sections:
         answers: [Jangan]
         words: [jangan]
       - id: t26
+        unit: bipa2.u02
         type: multiple_choice
         question: Mengapa kamu tidak masuk kerja kemarin?
         question_meaning:
@@ -379,6 +405,7 @@ sections:
         answer: 1
         words: [mengapa, karena]
       - id: t27
+        unit: bipa2.u06
         type: multiple_choice
         question_meaning:
           ar_eg: عايز Bu Yanti تفتحلك الباب. تقول إيه؟
@@ -392,6 +419,7 @@ sections:
           en: tolong asks for something for you; silakan offers or permits.
         words: [tolong, silakan]
       - id: t28
+        unit: bipa2.u07
         type: fill_blank
         sentence: Saya sudah tinggal di Bali ___ dua tahun.
         meaning:
@@ -406,6 +434,7 @@ sections:
           en: selama goes with a length of time (dua tahun); sejak with a starting point (sejak 2024).
         words: [selama, tinggal]
       - id: t29
+        unit: bipa2.u08
         type: fill_blank
         sentence: Ni Luh minum kopi ___ membaca koran.
         meaning:
@@ -416,6 +445,7 @@ sections:
         answers: [sambil]
         words: [sambil]
       - id: t30
+        unit: bipa2.u07
         type: fill_blank
         sentence: Setiap pagi Raka ___ di pantai Sanur.
         meaning:
@@ -426,6 +456,7 @@ sections:
         answers: [bersepeda]
         words: [bersepeda]
       - id: t31
+        unit: bipa2.u08
         type: build_sentence
         source:
           ar_eg: الأول ركبنا الأتوبيس، وبعدين ركبنا أوجيك.
@@ -442,6 +473,7 @@ sections:
       en: Writing
     items:
       - id: t32
+        unit: bipa2.u10
         type: translate
         direction: to_target
         source_meaning:
@@ -459,6 +491,7 @@ sections:
           - Aku sakit perut
         words: [perut, sakit]
       - id: t33
+        unit: bipa2.u09
         type: writing_task
         points: 4
         prompt:
@@ -488,6 +521,7 @@ sections:
       en: Speak at ease. What matters is that a listener understands you, not perfection.
     items:
       - id: t34
+        unit: bipa2.u06
         type: speaking
         text: Kamar saya kecil, tetapi bersih dan nyaman.
         meaning:
@@ -496,6 +530,7 @@ sections:
           en: My room is small, but clean and comfortable.
         words: [kamar, bersih, nyaman]
       - id: t35
+        unit: bipa2.u06
         type: speaking_task
         points: 4
         prompt:
