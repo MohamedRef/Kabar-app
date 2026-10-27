@@ -1370,9 +1370,9 @@ items:
     largest_cm: 4
     vascular_invasion: false
     extrahepatic: false
-    child_pugh: A5
+    child_pugh_points: 5
     ascites: false
-  expect: BCLC A (early)
+  expect: Stage A
   interpret: 'Solitary <=5 cm with preserved function and PS 0: early stage, for resection, ablation or transplant.'
   src:
     page: 362
@@ -1394,9 +1394,9 @@ items:
     largest_cm: 4
     vascular_invasion: false
     extrahepatic: false
-    child_pugh: A6
+    child_pugh_points: 6
     ascites: false
-  expect: BCLC B (intermediate)
+  expect: Stage B
   interpret: 'Multifocal beyond BCLC-A with preserved function: first line TACE or TARE.'
   src:
     page: 362
@@ -1412,9 +1412,9 @@ items:
     largest_cm: 6
     vascular_invasion: true
     extrahepatic: false
-    child_pugh: A6
+    child_pugh_points: 6
     ascites: false
-  expect: BCLC C (advanced)
+  expect: Stage C
   interpret: 'Vascular invasion with PS <=2 and preserved function: first line systemic therapy (atezolizumab plus
     bevacizumab if Child-Pugh A and ECOG 0-1).'
   src:
@@ -1431,9 +1431,9 @@ items:
     largest_cm: 3
     vascular_invasion: false
     extrahepatic: false
-    child_pugh: C11
+    child_pugh_points: 11
     ascites: true
-  expect: BCLC D (end stage)
+  expect: Stage D
   interpret: 'PS >2 and impaired liver function: hospice and palliative care (transplant only if PS <=1 within Milan,
     which he is not).'
   src:
@@ -1514,11 +1514,11 @@ items:
   kind: calc
   topic: staging
   calculator: albi
-  stem: A man with HCC has bilirubin 34 micromol/L and albumin 30 g/L.
+  stem: A man with HCC has bilirubin 2.0 mg/dL (34 micromol/L) and albumin 3.0 g/dL (30 g/L).
   inputs:
-    bilirubin_umol_l: 34
-    albumin_g_l: 30
-  expect: Score about -1.54 (1.01 - 2.55)
+    bilirubin_mg_dl: 2.0
+    albumin_g_dl: 3.0
+  expect: '-1.54'
   interpret: ALBI grade II (> -2.60 to <= -1.39).
   src:
     page: 363
@@ -1527,11 +1527,11 @@ items:
   kind: calc
   topic: staging
   calculator: albi
-  stem: A woman with HCC has bilirubin 10 micromol/L and albumin 42 g/L.
+  stem: A woman with HCC has bilirubin 0.6 mg/dL (10 micromol/L) and albumin 4.2 g/dL (42 g/L).
   inputs:
-    bilirubin_umol_l: 10
-    albumin_g_l: 42
-  expect: Score about -2.91 (0.66 - 3.57)
+    bilirubin_mg_dl: 0.6
+    albumin_g_dl: 4.2
+  expect: '-2.90'
   interpret: 'ALBI grade I (<= -2.60): best liver function.'
   src:
     page: 363
