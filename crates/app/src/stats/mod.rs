@@ -115,7 +115,7 @@ pub struct Logs {
 
 pub fn load_logs(db: &Db) -> Logs {
     let store = db.0.borrow();
-    let warn = |what: &str, e: &dyn std::fmt::Display| eprintln!("kabar: reading {what} failed: {e}");
+    let warn = |what: &str, e: &dyn std::fmt::Display| crate::diag::report!("reading {what} failed: {e}");
     let cards = store.cards().unwrap_or_else(|e| {
         warn("cards", &e);
         Vec::new()
@@ -255,7 +255,7 @@ pub fn TodayCards() -> Element {
                     button {
                         onclick: move |_| {
                             if let Err(e) = db_later.0.borrow_mut().set_local_value(SNOOZE_KEY, &today.to_string()) {
-                                eprintln!("kabar: saving the snooze failed: {e}");
+                                crate::diag::report!("saving the snooze failed: {e}");
                             }
                             snoozed.set(true);
                         },

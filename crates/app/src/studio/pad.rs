@@ -62,7 +62,7 @@ pub fn InkPad(
             created_ms: now_ms(),
         };
         if let Err(e) = db.0.borrow_mut().save_ink_document(&doc) {
-            eprintln!("kabar: saving the answer sheet failed: {e}");
+            crate::diag::report!("saving the answer sheet failed: {e}");
         }
         doc.id
     });

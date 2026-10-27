@@ -527,7 +527,7 @@ pub fn speak(text: &str, lang_tag: &str, rate: f32) -> Result<(), SpeakError> {
                 t.status = TtsStatus::Starting;
             }
             Err(e) => {
-                eprintln!("kabar: TextToSpeech could not start: {e}");
+                crate::diag::report!("TextToSpeech could not start: {e}");
                 t.failed = Some(Instant::now());
                 t.status = TtsStatus::NoEngine;
                 return Err(SpeakError::NoEngine);
@@ -573,7 +573,7 @@ fn wait_until_ready() {
                 None => Ok(()),
             };
             if let Err(e) = &result {
-                eprintln!("kabar: TextToSpeech: {e:?}");
+                crate::diag::report!("TextToSpeech: {e:?}");
             }
             t.status = status_of(&result);
             t.waiting = false;
@@ -582,7 +582,7 @@ fn wait_until_ready() {
         if t.created.is_none_or(|at| at.elapsed() > CONNECT_TIMEOUT) {
             // No engine ever answered (none installed or all disabled).
             // Release this one and allow a fresh try later.
-            eprintln!("kabar: TextToSpeech did not connect within {CONNECT_TIMEOUT:?}");
+            crate::diag::report!("TextToSpeech did not connect within {CONNECT_TIMEOUT:?}");
             if let Some(engine) = t.engine.take() {
                 let _ = with_activity(|env, _| {
                     env.call_method(engine.as_obj(), jni_str!("shutdown"), jni_sig!("()V"), &[])?;
@@ -738,5 +738,34 @@ pub fn request_notifications() -> Result<(), String> {
             &[JValue::Object(activity)],
         )
         .map(drop)
+    })
+}
+
+/// The reminders Android showed since the last call, as unix ms.
+pub fn take_delivered_reminders() -> Result<Vec<u64>, String> {
+    let json = reminders(|env, class, activity| {
+        let s = env
+            .call_static_method(
+                class,
+                jni_str!("takeDelivered"),
+                jni_sig!("(Landroid/content/Context;)Ljava/lang/String;"),
+                &[JValue::Object(activity)],
+            )?
+            .l()?;
+        to_string(env, s)
+    })?;
+    Ok(json.and_then(|j| serde_json::from_str(&j).ok()).unwrap_or_default())
+}
+
+/// Whether Kabar is exempt from battery optimisation (Samsung's sleeping apps).
+pub fn battery_unrestricted() -> Result<bool, String> {
+    reminders(|env, class, activity| {
+        env.call_static_method(
+            class,
+            jni_str!("batteryUnrestricted"),
+            jni_sig!("(Landroid/content/Context;)Z"),
+            &[JValue::Object(activity)],
+        )?
+        .z()
     })
 }

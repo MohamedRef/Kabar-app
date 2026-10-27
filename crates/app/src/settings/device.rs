@@ -10,6 +10,7 @@ const TEXT_SIZE_KEY: &str = "pref.text_size";
 const PEN_HOVER_KEY: &str = "pref.pen_hover_peek";
 const MOUSE_HOVER_KEY: &str = "pref.mouse_hover_peek";
 const NAV_STYLE_KEY: &str = "pref.nav_style";
+const REMIND_HERE_KEY: &str = "pref.remind_here";
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub enum TextSize {
@@ -70,6 +71,10 @@ pub struct DevicePrefs {
     /// The Reader's peek card when the mouse rests on a word.
     pub mouse_hover: Signal<bool>,
     pub nav_style: Signal<NavStyle>,
+    /// Kak Nur's local reminders ring here. `None` until the learner picks:
+    /// then only the phone rings (see [`Self::reminds_here`]), so the phone
+    /// and the tablet never both go off.
+    pub remind_here: Signal<Option<bool>>,
 }
 
 impl DevicePrefs {
@@ -86,7 +91,20 @@ impl DevicePrefs {
             nav_style: Signal::new(
                 get(NAV_STYLE_KEY).map_or_else(NavStyle::default, |v| NavStyle::parse(&v)),
             ),
+            remind_here: Signal::new(get(REMIND_HERE_KEY).map(|v| v == "on")),
         }
+    }
+
+    /// Whether this device rings: the learner's choice, else only an
+    /// Android device that isn't a tablet (smallest side < 600 dp, never by
+    /// device name). The Mac and the tablet ring once the learner asks.
+    pub fn reminds_here(&self, tablet: bool) -> bool {
+        remind_default(*self.remind_here.read(), cfg!(target_os = "android") && !tablet)
+    }
+
+    pub fn set_remind_here(mut self, db: &Db, on: bool) {
+        save(db, REMIND_HERE_KEY, if on { "on" } else { "off" });
+        self.remind_here.set(Some(on));
     }
 
     pub fn set_text_size(mut self, db: &Db, size: TextSize) {
@@ -110,9 +128,13 @@ impl DevicePrefs {
     }
 }
 
+fn remind_default(choice: Option<bool>, phone: bool) -> bool {
+    choice.unwrap_or(phone)
+}
+
 fn save(db: &Db, key: &str, value: &str) {
     if let Err(e) = db.0.borrow_mut().set_local_value(key, value) {
-        eprintln!("kabar: saving {key} failed: {e}");
+        crate::diag::report!("saving {key} failed: {e}");
     }
 }
 
@@ -130,5 +152,13 @@ mod tests {
         for n in NavStyle::ALL {
             assert_eq!(NavStyle::parse(n.as_str()), n);
         }
+    }
+
+    #[test]
+    fn only_the_phone_rings_until_the_learner_picks() {
+        assert!(remind_default(None, true), "phone");
+        assert!(!remind_default(None, false), "tablet or Mac");
+        assert!(remind_default(Some(true), false));
+        assert!(!remind_default(Some(false), true));
     }
 }

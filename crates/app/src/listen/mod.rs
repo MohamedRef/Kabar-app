@@ -131,7 +131,7 @@ pub fn ListenScreen() -> Element {
                             // Listened to the end: synced like a finished lesson.
                             let done = serde_json::json!({ "minutes": r.minutes });
                             if let Err(e) = db.0.borrow_mut().record_lesson_event(&r.id, "completed", &done) {
-                                eprintln!("kabar: saving the radio episode failed: {e}");
+                                crate::diag::report!("saving the radio episode failed: {e}");
                             }
                             let listened = ActivityKind::Practice {
                                 skill: Skill::Listening,
@@ -183,7 +183,7 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
     let cache = try_use_context::<AudioCache>();
     let _ = revision; // A new value re-renders the lists.
     let completed: BTreeSet<String> = db.0.borrow().completed_lessons().unwrap_or_else(|e| {
-        eprintln!("kabar: reading finished lessons failed: {e}");
+        crate::diag::report!("reading finished lessons failed: {e}");
         BTreeSet::new()
     });
     let start = db.0.borrow().placement().ok().flatten().map(|p| p.start_level);
