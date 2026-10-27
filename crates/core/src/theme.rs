@@ -60,6 +60,25 @@ pub struct Palette {
     /// Stroke colour and opacity of the kawung background pattern.
     pub pattern: &'static str,
     pub pattern_opacity: f32,
+    /// Word classes and word parts (`kabar_core::grammar::word`).
+    pub words: WordColors,
+}
+
+/// The fixed colours for kinds of words and pieces of words. The same
+/// colour marks a verb in the text, in its breakdown and in the grammar
+/// notes. Roots take their word's class colour; clitics (-nya, -ku) share
+/// the function-word colour, since they are pronouns and particles glued on.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct WordColors {
+    pub verb: &'static str,
+    pub noun: &'static str,
+    pub adjective: &'static str,
+    /// Pronouns, prepositions, conjunctions, particles, time words.
+    pub function: &'static str,
+    pub prefix: &'static str,
+    pub suffix: &'static str,
+    /// ke-…-an, peN-…-an: both halves.
+    pub confix: &'static str,
 }
 
 /// Paper: warm off-white, the default light theme.
@@ -91,6 +110,15 @@ pub const LIGHT: Palette = Palette {
     map_rail_bed: "#fffaf1",
     pattern: "#2b3a70",
     pattern_opacity: 0.06,
+    words: WordColors {
+        verb: "#a61e4d",
+        noun: "#1f5fa6",
+        adjective: "#6b3fa0",
+        function: "#5d574e",
+        prefix: "#a84300",
+        suffix: "#0b7062",
+        confix: "#4d6b0f",
+    },
 };
 
 /// Merapi: black volcanic sand, the default dark theme.
@@ -122,6 +150,15 @@ pub const DARK: Palette = Palette {
     map_rail_bed: "#171615",
     pattern: "#a9b8ee",
     pattern_opacity: 0.05,
+    words: WordColors {
+        verb: "#f28fae",
+        noun: "#8fbcf2",
+        adjective: "#c6a6f0",
+        function: "#b3aa9c",
+        prefix: "#f39f6c",
+        suffix: "#6fd0bd",
+        confix: "#b9d47a",
+    },
 };
 
 /// Malam: for studying at night. Very dark and warm, with no colour where
@@ -154,6 +191,15 @@ pub const NIGHT: Palette = Palette {
     map_rail_bed: "#100c08",
     pattern: "#cfa48e",
     pattern_opacity: 0.04,
+    words: WordColors {
+        verb: "#f0909a",
+        noun: "#a8c89a",
+        adjective: "#d6a6d6",
+        function: "#a8916f",
+        prefix: "#eba25e",
+        suffix: "#d2d27e",
+        confix: "#c4a690",
+    },
 };
 
 /// Batik: deep indigo, where Bridge gold glows.
@@ -185,6 +231,15 @@ pub const BATIK: Palette = Palette {
     map_rail_bed: "#121830",
     pattern: "#b8c4f5",
     pattern_opacity: 0.07,
+    words: WordColors {
+        verb: "#f79ab6",
+        noun: "#96c4f7",
+        adjective: "#d2b4f7",
+        function: "#b0b3cf",
+        prefix: "#f8a878",
+        suffix: "#78d8c4",
+        confix: "#c2dc84",
+    },
 };
 
 /// Sawah: a fresh rice-terrace green light theme.
@@ -216,6 +271,15 @@ pub const SAWAH: Palette = Palette {
     map_rail_bed: "#f8fbf2",
     pattern: "#2a6334",
     pattern_opacity: 0.06,
+    words: WordColors {
+        verb: "#a01d4a",
+        noun: "#1d5a9e",
+        adjective: "#673c9a",
+        function: "#4f5c4a",
+        prefix: "#a84300",
+        suffix: "#0a6a5d",
+        confix: "#46640c",
+    },
 };
 
 impl Theme {
@@ -261,6 +325,15 @@ impl Palette {
             ("land-edge", self.map_land_edge),
             ("land-other", self.map_land_other),
             ("rail-bed", self.map_rail_bed),
+            ("wc-verb", self.words.verb),
+            ("wc-noun", self.words.noun),
+            ("wc-adj", self.words.adjective),
+            ("wc-func", self.words.function),
+            ("wp-prefix", self.words.prefix),
+            ("wp-suffix", self.words.suffix),
+            ("wp-confix", self.words.confix),
+            ("wp-clitic", self.words.function),
+            ("wp-root", self.text),
         ];
         let mut out = String::new();
         for (name, value) in vars {
@@ -347,6 +420,13 @@ mod tests {
                 ("status new", p.status_new, p.surface, 3.0),
                 ("status learning", p.status_learning, p.surface, 3.0),
                 ("status known", p.status_known, p.surface, 3.0),
+                ("verb", p.words.verb, p.surface_2, 4.5),
+                ("noun", p.words.noun, p.surface_2, 4.5),
+                ("adjective", p.words.adjective, p.surface_2, 4.5),
+                ("function word", p.words.function, p.surface_2, 4.5),
+                ("prefix", p.words.prefix, p.surface_2, 4.5),
+                ("suffix", p.words.suffix, p.surface_2, 4.5),
+                ("confix", p.words.confix, p.surface_2, 4.5),
             ];
             for (what, fg, bg, min) in checks {
                 let ratio = contrast(fg, bg);
@@ -365,6 +445,34 @@ mod tests {
                 }
             }
             assert_ne!(p.gold, p.indigo, "{}: Bridge gold must not double as the accent", theme.as_str());
+        }
+    }
+
+    #[test]
+    fn word_colours_are_told_apart() {
+        // Euclidean RGB distance: far enough to name the colour at a glance.
+        let dist = |a: &str, b: &str| {
+            let (a, b) = (rgb(a), rgb(b));
+            (0..3).map(|i| (f64::from(a[i]) - f64::from(b[i])).powi(2)).sum::<f64>().sqrt()
+        };
+        for (theme, p) in all() {
+            let w = &p.words;
+            let colours = [
+                ("verb", w.verb),
+                ("noun", w.noun),
+                ("adjective", w.adjective),
+                ("function", w.function),
+                ("prefix", w.prefix),
+                ("suffix", w.suffix),
+                ("confix", w.confix),
+                ("Bridge gold", p.gold),
+            ];
+            for (i, (an, a)) in colours.iter().enumerate() {
+                for (bn, b) in &colours[i + 1..] {
+                    let d = dist(a, b);
+                    assert!(d >= 38.0, "{}: {an} and {bn} are too close ({d:.0})", theme.as_str());
+                }
+            }
         }
     }
 
@@ -408,6 +516,13 @@ mod tests {
             p.map_land_edge,
             p.map_land_other,
             p.map_rail_bed,
+            p.words.verb,
+            p.words.noun,
+            p.words.adjective,
+            p.words.function,
+            p.words.prefix,
+            p.words.suffix,
+            p.words.confix,
         ];
         for c in colours {
             let [r, _, b] = rgb(c);
@@ -423,6 +538,7 @@ mod tests {
         }
         assert!(css.contains("@media (prefers-color-scheme: dark)"));
         assert!(css.contains("--status-known"));
+        assert!(css.contains("--wc-verb") && css.contains("--wp-suffix"));
         assert!(!css.contains("{{"));
     }
 }
