@@ -12,6 +12,7 @@ check:
     cargo clippy --workspace --all-targets -- -D warnings
     cargo test --workspace
     cargo run -q -p batna-tools -- validate
+    cargo run -q -p batna-tools -- packs build --check
 
 fmt:
     cargo fmt --all
@@ -19,6 +20,10 @@ fmt:
 # Check the content files (SPLIT.md §4–5)
 validate:
     cargo run -q -p batna-tools -- validate
+
+# One Anki file with every written lecture: dist/anki/batna.apkg (docs/ANKI.md)
+anki:
+    cargo run -q -p batna-tools -- anki
 
 # Run the desktop app (BATNA_WINDOW_SIZE=412x900 previews the phone layout)
 run:

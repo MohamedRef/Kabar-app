@@ -1,0 +1,991 @@
+schema: batna.content/v1
+lecture: hb.L11
+title: Liver Transplantation
+author: Dr. Amany Saleh Elyamany
+book:
+  chapter: 1
+  pages:
+  - 188
+  - 194
+topics:
+- id: timing
+  title: Timing, referral and MELD
+- id: indications
+  title: Indications and listing rules
+- id: meld-exceptions
+  title: MELD exception points
+- id: hcc
+  title: HCC criteria for transplant
+- id: pediatric
+  title: Pediatric indications
+- id: contraindications
+  title: Contraindications and high-risk factors
+- id: evaluation
+  title: Pre-transplant evaluation and recipient criteria
+- id: hbv
+  title: HBV before and after transplant
+- id: underlying
+  title: Treating the underlying disease (HHC, PBC, PSC, AIH)
+items:
+- id: hb.L11.001
+  kind: cloze
+  topic: timing
+  text: In cirrhosis, the onset of decompensation drops median survival from more than {{c1::12 years}} to about
+    {{c2::2 years}}.
+  src:
+    page: 188
+    quote: decreased median survival from greater than 12 years to 2 years
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L11.002
+  kind: enumerate
+  topic: timing
+  prompt: According to the AASLD (as quoted in the book), when should a cirrhotic patient be evaluated for liver
+    transplantation? Mention the 3 triggers.
+  points:
+  - First decompensation
+  - CTP (Child-Turcotte-Pugh) score ≥ 7
+  - MELD score ≥ 10
+  pass: 3
+  src:
+    page: 188
+    quote: develops a decompensation, reaches a CTP score of ≥ 7, or reaches a MELD score of ≥ 10
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L11.003
+  kind: card
+  topic: timing
+  front: What 3 lab values make up the MELD score?
+  back: Serum bilirubin, INR and serum creatinine.
+  src:
+    page: 188
+  status: unverified
+  update:
+    text: US allocation moved to MELD-Na (2016) and then MELD 3.0 (2023), which add sodium, albumin and female sex.
+    ref: OPTN/UNOS MELD 3.0 policy, 2023
+  tags:
+  - high-yield
+- id: hb.L11.004
+  kind: card
+  topic: timing
+  front: What was the MELD score originally developed for, and by whom?
+  back: To predict survival after TIPS placement in cirrhosis. It was developed at the Mayo Clinic (Rochester, Minnesota).
+  src:
+    page: 188
+  status: unverified
+- id: hb.L11.005
+  kind: cloze
+  topic: timing
+  text: MELD was adopted to prioritize end-stage liver disease patients for organ allocation in {{c1::February 2002}}.
+  src:
+    page: 188
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L11.006
+  kind: card
+  topic: timing
+  front: What is the ideal timing of liver transplantation?
+  back: When the risk of dying from the liver disease becomes greater than the risk of dying from the operation.
+  src:
+    page: 188
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L11.007
+  kind: card
+  topic: timing
+  front: What does the MELD score measure, in one phrase?
+  back: The "sickness of the liver", a calculated number that predicts short-term mortality and sets priority on
+    the waiting list.
+  src:
+    page: 188
+  status: unverified
+- id: hb.L11.008
+  kind: enumerate
+  topic: indications
+  prompt: Mention the indications for LDLT in end-stage liver disease with CTP class C (10–15).
+  points:
+  - Recurrent hepatic encephalopathy
+  - 'Portal hypertension: bleeding varices and/or intractable ascites'
+  - Hyperbilirubinemia
+  - 'Synthetic dysfunction: rising PT and/or falling albumin'
+  - 'Unacceptable quality of life: weakness, malaise, cholestasis, itching'
+  pass: 4
+  src:
+    page: 189
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L11.009
+  kind: cloze
+  topic: indications
+  text: 'Listing policy in the book: Child B patients with CPS > 7 are {{c1::listed but not transplanted}} unless
+    they become {{c2::Child C}} or reach MELD {{c3::15}}.'
+  src:
+    page: 189
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L11.010
+  kind: cloze
+  topic: indications
+  text: The program transplants patients with MELD {{c1::15 or higher}}; patients with MELD {{c2::> 30}} are discussed
+    case by case.
+  src:
+    page: 189
+    quote: We transplant patients with MELD 15 or higher
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L11.011
+  kind: card
+  topic: indications
+  front: Which patients with MELD < 15 are still transplanted?
+  back: Those with refractory ascites or repeated hepatic encephalopathy.
+  src:
+    page: 189
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L11.012
+  kind: enumerate
+  topic: indications
+  prompt: Enumerate the other (non-HCC) diseases treatable by liver transplantation, by group.
+  points:
+  - 'Cholestatic: PBC, PSC'
+  - 'Metabolic: hemochromatosis, alpha-1 antitrypsin deficiency, Wilson disease, tyrosinemia, cystic fibrosis'
+  - 'Hepatic malignancy other than HCC: hepatoblastoma, hepatic carcinoid (within criteria, no extrahepatic spread
+    or vascular invasion)'
+  - 'Miscellaneous: cryptogenic cirrhosis, polycystic liver disease, Budd-Chiari syndrome, amyloidosis'
+  pass: 3
+  src:
+    page: 190
+  status: unverified
+- id: hb.L11.013
+  kind: cloze
+  topic: indications
+  text: 'Metabolic diseases treatable by LT (adult list): {{c1::hemochromatosis}}, {{c2::alpha-1 antitrypsin deficiency}},
+    {{c3::Wilson disease}}, tyrosinemia and cystic fibrosis.'
+  src:
+    page: 190
+  status: unverified
+- id: hb.L11.014
+  kind: card
+  topic: indications
+  front: Which non-HCC hepatic malignancies can be treated by LT, and on what condition?
+  back: Hepatoblastoma and hepatic carcinoid, if within accepted criteria with no extrahepatic spread and no vascular
+    invasion.
+  src:
+    page: 190
+  status: unverified
+- id: hb.L11.015
+  kind: enumerate
+  topic: meld-exceptions
+  prompt: Enumerate the conditions for which MELD exception points may be allocated (10 in the book).
+  points:
+  - HCC
+  - Hepatopulmonary syndrome
+  - Portopulmonary hypertension
+  - Recurrent cholangitis
+  - Budd-Chiari syndrome
+  - Intractable pruritus
+  - Cystic fibrosis
+  - Familial amyloidosis
+  - Polycystic liver disease
+  - Small-for-size syndrome
+  pass: 6
+  src:
+    page: 189
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L11.016
+  kind: card
+  topic: meld-exceptions
+  front: Why do some patients get MELD exception points?
+  back: Their real risk (for example HCC progression, hepatopulmonary syndrome, portopulmonary hypertension) is
+    not captured by bilirubin, INR and creatinine, so the calculated MELD understates their priority.
+  src:
+    page: 189
+  status: unverified
+- id: hb.L11.017
+  kind: cloze
+  topic: meld-exceptions
+  text: 'Cardiopulmonary MELD exceptions: {{c1::hepatopulmonary syndrome}} and {{c2::portopulmonary hypertension}}.'
+  src:
+    page: 189
+  status: unverified
+- id: hb.L11.018
+  kind: enumerate
+  topic: hcc
+  prompt: Mention the conditions an HCC patient must meet to be accepted for LDLT.
+  points:
+  - Within accepted criteria (Milan and San Francisco criteria)
+  - No extrahepatic spread, with normal CT chest and bone scan
+  - No macrovascular invasion on a dedicated radiological work-up
+  - AFP < 400 ng/mL
+  pass: 4
+  src:
+    page: 190
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L11.019
+  kind: cloze
+  topic: hcc
+  text: For LT in HCC, the AFP must be below {{c1::400 ng/mL}}.
+  src:
+    page: 190
+    quote: AFP < 400 ng/ml
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L11.020
+  kind: card
+  topic: hcc
+  front: How are HCC patients managed while waiting for a donor?
+  back: With locoregional bridging therapy, if possible, until a donor becomes available.
+  src:
+    page: 190
+  status: unverified
+- id: hb.L11.021
+  kind: card
+  topic: hcc
+  front: Which 2 imaging tests exclude extrahepatic spread of HCC before LT?
+  back: CT chest and bone scan (both must be normal).
+  src:
+    page: 190
+  status: unverified
+- id: hb.L11.022
+  kind: cloze
+  topic: pediatric
+  text: The commonest pediatric indication for LDLT is {{c1::extrahepatic biliary atresia (EHBA)}}, in {{c2::50–60%}}
+    of cases.
+  src:
+    page: 190
+    quote: EHBA 50-60% of cases
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L11.023
+  kind: enumerate
+  topic: pediatric
+  prompt: Enumerate the pediatric indications for LDLT.
+  points:
+  - Extrahepatic biliary atresia (50–60%)
+  - Familial intrahepatic cholestasis (FIHC)
+  - Alagille syndrome
+  - Budd-Chiari syndrome
+  - Autoimmune hepatitis
+  - Rarely, viral hepatitis leading to ESLD
+  - 'Metabolic: alpha-1 antitrypsin deficiency, tyrosinemia, hyperoxaluria, amyloidosis'
+  pass: 5
+  src:
+    page: 190
+  status: unverified
+- id: hb.L11.024
+  kind: cloze
+  topic: pediatric
+  text: 'Pediatric metabolic indications for LDLT: alpha-1 antitrypsin deficiency, {{c1::tyrosinemia}}, {{c2::hyperoxaluria}}
+    and amyloidosis.'
+  src:
+    page: 191
+  status: unverified
+- id: hb.L11.025
+  kind: enumerate
+  topic: contraindications
+  prompt: Enumerate the contraindications (exclusion criteria) for LDLT.
+  points:
+  - Age > 70 years (physiological age judged case by case)
+  - Active uncontrolled systemic infection or sepsis
+  - Advanced cardiac or pulmonary disease
+  - HIV (confirmed twice by ELISA and PCR)
+  - Active alcoholism or substance abuse in the last 6 months
+  - HCC beyond acceptable criteria
+  - Cholangiocarcinoma
+  - Total or extensive occlusion of the splanchnic venous inflow (SMV)
+  pass: 6
+  src:
+    page: 191
+  status: unverified
+  tags:
+  - high-yield
+  - book-question
+- id: hb.L11.026
+  kind: cloze
+  topic: contraindications
+  text: Active alcoholism or substance abuse within the last {{c1::6 months}} excludes LDLT.
+  src:
+    page: 191
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L11.027
+  kind: card
+  topic: contraindications
+  front: How must HIV be confirmed before it counts as an exclusion for LDLT?
+  back: By ELISA and PCR, twice.
+  src:
+    page: 191
+  status: unverified
+- id: hb.L11.028
+  kind: card
+  topic: contraindications
+  front: Which vascular finding is an absolute exclusion for LDLT, and which is only a high-risk factor?
+  back: 'Exclusion: total or extensive occlusion of the splanchnic venous inflow (SMV). High-risk only: portal vein
+    thrombosis.'
+  src:
+    page: 191
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L11.029
+  kind: enumerate
+  topic: contraindications
+  prompt: Enumerate the high-risk factors for LT that are judged case by case and do not necessarily preclude transplant.
+  points:
+  - Active variceal hemorrhage
+  - Renal failure / HRS
+  - Multiple previous hepatobiliary operations
+  - Severe malnutrition / cachexia
+  - Diabetes mellitus
+  - Previous organ transplant
+  - Need for simultaneous organ transplant (e.g. liver-kidney)
+  - Portal vein thrombosis
+  pass: 5
+  src:
+    page: 191
+  status: unverified
+- id: hb.L11.030
+  kind: card
+  topic: contraindications
+  front: L01 and L11 list LT contraindications slightly differently. What are the differences?
+  back: L11 (p.191) lists age > 70 as an exclusion (physiological age case by case); L01 (p.18) calls age > 70 relative.
+    L01 also names morbid obesity, poor patient understanding and all malignancy except small HCC; L11 names HIV,
+    cholangiocarcinoma and splanchnic venous occlusion. Both exclude sepsis and advanced cardiopulmonary disease.
+    Quote the lecture you are asked about.
+  src:
+    page: 191
+  status: unverified
+- id: hb.L11.031
+  kind: table
+  topic: evaluation
+  title: How often MELD is updated on the waiting list
+  columns:
+  - MELD
+  - Update every
+  rows:
+  - - < 18
+    - Month
+  - - 18–25
+    - 2 weeks
+  - - '> 25'
+    - Week
+  blanks:
+  - - 0
+    - 1
+  - - 1
+    - 1
+  - - 2
+    - 1
+  src:
+    page: 192
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L11.032
+  kind: enumerate
+  topic: evaluation
+  prompt: Mention the recipient criteria for living donor liver transplantation.
+  points:
+  - No evidence of extrahepatic malignancy
+  - No percutaneous stents in place
+  - No previous portocaval shunt (a mesocaval shunt is the only exception)
+  pass: 3
+  src:
+    page: 192
+  status: unverified
+  tags:
+  - high-yield
+  - book-question
+- id: hb.L11.033
+  kind: card
+  topic: evaluation
+  front: Which previous shunt is still acceptable in an LDLT recipient?
+  back: A mesocaval shunt. Any other portocaval shunt excludes the recipient.
+  src:
+    page: 192
+  status: unverified
+- id: hb.L11.034
+  kind: card
+  topic: evaluation
+  front: What does the initial assessment of an LT candidate set out to do?
+  back: Confirm the cause of the chronic liver disease and calculate the Child-Pugh and MELD scores.
+  src:
+    page: 192
+  status: unverified
+- id: hb.L11.035
+  kind: card
+  topic: hbv
+  front: In HBV cirrhosis awaiting LT, when should antiviral therapy be considered?
+  back: When HBV is replicating (HBV DNA positive).
+  src:
+    page: 192
+  status: unverified
+- id: hb.L11.036
+  kind: card
+  topic: hbv
+  front: A candidate has been on lamivudine. What do you do before LT?
+  back: Keep lamivudine if HBV DNA is negative; switch to entecavir 1 mg daily if HBV DNA is positive.
+  src:
+    page: 192
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L11.037
+  kind: card
+  topic: hbv
+  front: How long is nucleos(t)ide analogue therapy continued in an HBV transplant recipient?
+  back: For life, before and after LT.
+  src:
+    page: 192
+  status: unverified
+- id: hb.L11.038
+  kind: cloze
+  topic: hbv
+  text: 'HBIg protocol: {{c1::4000 IU IM}} intraoperatively, then {{c2::2000 IU daily}} for one week until anti-HBs
+    is {{c3::> 300–500}}.'
+  src:
+    page: 192
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L11.039
+  kind: cloze
+  topic: hbv
+  text: After the first week, HBIg 2000 IU is given {{c1::weekly}} for the first month, then {{c2::monthly}} to
+    keep anti-HBs around {{c3::300}} for one year.
+  src:
+    page: 192
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L11.040
+  kind: card
+  topic: hbv
+  front: When is HBIg stopped after LT?
+  back: When HBsAg turns negative.
+  src:
+    page: 192
+  status: unverified
+- id: hb.L11.041
+  kind: card
+  topic: hbv
+  front: When does the program accept an anti-HBc (HBcIgG) positive donor?
+  back: When the recipient is also anti-HBc positive and accepts lifelong prophylaxis. All donors should be vaccinated.
+  src:
+    page: 193
+  status: unverified
+- id: hb.L11.042
+  kind: card
+  topic: underlying
+  front: AASLD advice for hereditary hemochromatosis with iron overload?
+  back: Regular phlebotomy until iron stores are depleted, then lifelong maintenance phlebotomy, with frequency
+    guided by serum ferritin.
+  src:
+    page: 193
+  status: unverified
+- id: hb.L11.043
+  kind: cloze
+  topic: underlying
+  text: The recommended UDCA dose in PBC is {{c1::13–15 mg/kg/day}}, as a single or divided dose.
+  src:
+    page: 193
+    quote: 13 to 15 mg/kg in a divided or single dose
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+  update:
+    text: PBC is now called primary biliary cholangitis (renamed 2015).
+    ref: EASL CPG PBC 2017
+- id: hb.L11.044
+  kind: card
+  topic: underlying
+  front: What does UDCA do, and not do, in PBC?
+  back: It markedly improves cholestatic biochemistry and slows progression, but it does not resolve the disease.
+  src:
+    page: 193
+  status: unverified
+- id: hb.L11.045
+  kind: card
+  topic: underlying
+  front: Which PBC patients should be considered for specific therapy?
+  back: All PBC patients with abnormal liver enzymes.
+  src:
+    page: 193
+  status: unverified
+- id: hb.L11.046
+  kind: card
+  topic: underlying
+  front: What is the most common known predisposing factor for cholangiocarcinoma?
+  back: Primary sclerosing cholangitis, with or without ulcerative colitis. PSC patients should be screened regularly.
+  src:
+    page: 193
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L11.047
+  kind: cloze
+  topic: underlying
+  text: CA 19-9 is raised in up to {{c1::85%}} of cholangiocarcinomas. In PSC, a value {{c2::> 100 U/mL}} has sensitivity
+    {{c3::75%}} and specificity 80%.
+  src:
+    page: 193
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L11.048
+  kind: enumerate
+  topic: underlying
+  prompt: When may immunosuppression NOT be indicated in autoimmune hepatitis?
+  points:
+  - Inactive cirrhosis
+  - Pre-existing comorbid conditions
+  - Drug intolerance
+  pass: 3
+  src:
+    page: 194
+  status: unverified
+- id: hb.L11.049
+  kind: cloze
+  topic: underlying
+  text: 'AASLD AIH regimens in the book: prednisone {{c1::10 mg/day}} plus {{c2::azathioprine}}, or prednisone {{c3::20
+    mg/day}} alone.'
+  src:
+    page: 194
+    quote: prednisone (10 mg/day) in combination with azathioprine or higher dose prednisone (20 mg/day) alone
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L11.050
+  kind: card
+  topic: underlying
+  front: In AIH with toxicity to prednisone or azathioprine, which drugs have been used successfully in isolated
+    cases?
+  back: Cyclosporine, 6-mercaptopurine, cyclophosphamide and mycophenolate mofetil.
+  src:
+    page: 194
+  status: unverified
+- id: hb.L11.051
+  kind: mcq
+  topic: timing
+  stem: A 52-year-old man with HCV cirrhosis has had no ascites, bleeding or encephalopathy. His labs give CTP 6
+    and MELD 11. By the AASLD triggers quoted in the book, should he be evaluated for transplantation?
+  options:
+  - No, MELD must reach 15 before evaluation
+  - No, because his CTP score is below 7
+  - Yes, because his MELD is ≥ 10
+  - Yes, but only if he also has HCC
+  - No, he must first decompensate
+  answer: 2
+  why:
+  - MELD 15 is the program's threshold to transplant, not to evaluate.
+  - The triggers are alternatives; MELD ≥ 10 alone qualifies.
+  - Correct. Any one trigger (decompensation, CTP ≥ 7 or MELD ≥ 10) is enough for evaluation.
+  - HCC is a reason for exception points, not a condition for evaluation.
+  - Decompensation is one trigger, not a requirement.
+  src:
+    page: 188
+  status: unverified
+- id: hb.L11.052
+  kind: mcq
+  topic: indications
+  stem: A 45-year-old woman with cirrhosis has Child-Pugh B (8) and MELD 13, but has had three admissions with overt
+    hepatic encephalopathy in four months despite lactulose and rifaximin. What does the book's program do?
+  options:
+  - List her and wait until she becomes Child C
+  - Refer for TIPS instead
+  - Transplant her, because repeated HE allows LT below MELD 15
+  - Decline, as Child B patients are never transplanted
+  - Wait until MELD exceeds 30
+  answer: 2
+  why:
+  - That is the rule for Child B without refractory ascites or repeated HE.
+  - TIPS would worsen her encephalopathy and is not the book's answer.
+  - Correct. Refractory ascites or repeated HE justify LT even with MELD < 15.
+  - Child B patients are listed, and transplanted when an exception applies.
+  - MELD > 30 is the case-by-case group, not a threshold to wait for.
+  src:
+    page: 189
+  status: unverified
+- id: hb.L11.053
+  kind: mcq
+  topic: hcc
+  stem: A 60-year-old with HBV cirrhosis has a 4 cm HCC within Milan criteria, normal CT chest and bone scan, and
+    no vascular invasion. His AFP is 620 ng/mL. What prevents LDLT by the book's criteria?
+  options:
+  - HBV aetiology
+  - The need for bridging therapy
+  - The tumour size
+  - AFP above 400 ng/mL
+  - His age
+  answer: 3
+  why:
+  - HBV cirrhosis is treated with antivirals and HBIg, not excluded.
+  - Bridging therapy is an option while waiting, not a barrier.
+  - A single 4 cm lesion is within Milan criteria.
+  - Correct. The book requires AFP < 400 ng/mL.
+  - Age 60 is below the 70-year limit.
+  src:
+    page: 190
+  status: unverified
+- id: hb.L11.054
+  kind: mcq
+  topic: contraindications
+  stem: Which of the following is an exclusion criterion for LDLT rather than a high-risk factor judged case by
+    case?
+  options:
+  - Cholangiocarcinoma
+  - Previous organ transplant
+  - Diabetes mellitus
+  - Hepatorenal syndrome
+  - Portal vein thrombosis
+  answer: 0
+  why:
+  - Correct. Cholangiocarcinoma is on the exclusion list.
+  - A previous transplant is a high-risk factor.
+  - Diabetes is a high-risk factor.
+  - Renal failure/HRS is a high-risk factor.
+  - Portal vein thrombosis is a high-risk factor; only extensive splanchnic (SMV) occlusion excludes.
+  src:
+    page: 191
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L11.055
+  kind: mcq
+  topic: contraindications
+  stem: A 50-year-old man with alcohol-related cirrhosis, MELD 22, stopped drinking 3 months ago. Echo and lungs
+    are normal. What is the main barrier to LDLT now?
+  options:
+  - Alcoholic aetiology itself
+  - Nothing; he should be transplanted now
+  - He needs a mesocaval shunt first
+  - MELD above 18
+  - Alcohol use within the last 6 months
+  answer: 4
+  why:
+  - Alcohol-related cirrhosis is transplantable after the abstinence period.
+  - He has not yet reached 6 months of abstinence.
+  - Shunts are not required; a mesocaval shunt is only tolerated if present.
+  - MELD 22 is above the transplant threshold of 15, so it supports LT.
+  - Correct. Active alcohol or substance abuse in the last 6 months is an exclusion.
+  src:
+    page: 191
+  status: unverified
+- id: hb.L11.056
+  kind: mcq
+  topic: evaluation
+  stem: A listed patient's MELD rises from 16 to 21. How often should his MELD now be updated?
+  options:
+  - Every 3 months
+  - Weekly
+  - Monthly
+  - Daily
+  - Every 2 weeks
+  answer: 4
+  why:
+  - The book gives no 3-month interval.
+  - Weekly is for MELD > 25.
+  - Monthly is for MELD < 18.
+  - The book gives no daily interval.
+  - Correct. MELD 18–25 is updated every 2 weeks.
+  src:
+    page: 192
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L11.057
+  kind: mcq
+  topic: evaluation
+  stem: Which previous procedure is still acceptable in a candidate for living donor LT?
+  options:
+  - Portocaval shunt
+  - Splenorenal shunt
+  - Resected colon cancer with liver metastasis
+  - Percutaneous biliary stent left in place
+  - Mesocaval shunt
+  answer: 4
+  why:
+  - A previous portocaval shunt excludes the recipient.
+  - The book allows no portocaval shunt other than mesocaval.
+  - There must be no extrahepatic malignancy.
+  - No percutaneous stents may be in place.
+  - Correct. A mesocaval shunt is the only exception.
+  src:
+    page: 192
+  status: unverified
+- id: hb.L11.058
+  kind: mcq
+  topic: hbv
+  stem: A man with HBV cirrhosis has taken lamivudine for 4 years and now has detectable HBV DNA. He is being prepared
+    for LT. What antiviral plan does the book give?
+  options:
+  - Switch to entecavir 1 mg daily
+  - Switch to interferon
+  - Stop antivirals and rely on HBIg after LT
+  - Continue lamivudine until after LT
+  - Continue lamivudine and add HBIg now
+  answer: 0
+  why:
+  - Correct. HBV DNA positive on lamivudine means switch to entecavir 1 mg daily.
+  - Interferon is not part of this protocol and is unsafe in decompensated cirrhosis.
+  - Antivirals are continued for life, before and after LT.
+  - Lamivudine is kept only if HBV DNA is negative.
+  - HBIg is given intra- and postoperatively; a viraemic patient on lamivudine needs a switch.
+  src:
+    page: 192
+  status: unverified
+- id: hb.L11.059
+  kind: mcq
+  topic: pediatric
+  stem: What is the most common indication for living donor liver transplantation in children?
+  options:
+  - Viral hepatitis
+  - Alagille syndrome
+  - Autoimmune hepatitis
+  - Tyrosinemia
+  - Extrahepatic biliary atresia
+  answer: 4
+  why:
+  - The book says viral hepatitis is a rare indication in children.
+  - Alagille is an indication, but much less common.
+  - AIH is an indication, but less common.
+  - Tyrosinemia is a rarer metabolic indication.
+  - Correct. EHBA accounts for 50–60% of cases.
+  src:
+    page: 190
+  status: unverified
+- id: hb.L11.060
+  kind: mcq
+  topic: underlying
+  stem: A 38-year-old man with PSC and ulcerative colitis has new jaundice. His CA 19-9 is 140 U/mL. What is the
+    best interpretation from the book?
+  options:
+  - Diagnostic of cholangiocarcinoma
+  - Raises suspicion of cholangiocarcinoma, with sensitivity about 75% and specificity about 80% at this cut-off
+  - Proof of benign dominant stricture
+  - Irrelevant, because CA 19-9 is not raised in cholangiocarcinoma
+  - Only meaningful above 1000 U/mL
+  answer: 1
+  why:
+  - Specificity is only 80%, so it is not diagnostic; early diagnosis stays difficult.
+  - Correct. Above 100 U/mL in PSC, sensitivity is 75% and specificity 80%.
+  - A raised marker cannot prove a benign cause.
+  - CA 19-9 is raised in up to 85% of cholangiocarcinomas.
+  - The book's cut-off is 100 U/mL.
+  src:
+    page: 193
+  status: unverified
+- id: hb.L11.061
+  kind: mcq
+  topic: meld-exceptions
+  stem: Which of these does NOT appear among the book's conditions for MELD exception points?
+  options:
+  - Refractory ascites
+  - Intractable pruritus
+  - Small-for-size syndrome
+  - Polycystic liver disease
+  - Hepatopulmonary syndrome
+  answer: 0
+  why:
+  - Correct. Refractory ascites is a reason to transplant below MELD 15 in this program, not on the exception list.
+  - Intractable pruritus is listed.
+  - Small-for-size syndrome is listed.
+  - Polycystic liver disease is listed.
+  - Hepatopulmonary syndrome is listed.
+  src:
+    page: 189
+  status: unverified
+- id: hb.L11.062
+  kind: case
+  topic: indications
+  stem: A 48-year-old man with HBV cirrhosis is seen in clinic. He had one variceal bleed a year ago, now has tense
+    ascites needing large-volume paracentesis every 2 weeks despite diuretics, bilirubin 2.4 mg/dL, INR 1.4, creatinine
+    1.1 mg/dL. HBV DNA is detectable on lamivudine.
+  steps:
+  - reveal: His Child-Pugh score is 9 (class B) and his MELD is 14.
+    question: Is he a candidate for LDLT under the book's program rules?
+    options:
+    - No, Child B is never transplanted
+    - Yes, refractory ascites allows LT below MELD 15
+    - No, MELD is below 15
+    - Only if he develops HCC
+    answer: 1
+    why: Patients with MELD < 15 are transplanted if they have refractory ascites or repeated HE.
+  - reveal: He is listed. His MELD rises to 19.
+    question: How often should his MELD be updated now?
+    options:
+    - Monthly
+    - Every 3 months
+    - Weekly
+    - Every 2 weeks
+    answer: 3
+    why: MELD 18–25 is updated every 2 weeks.
+  - reveal: Pre-transplant work-up continues.
+    question: What should be done with his antiviral?
+    options:
+    - Switch to entecavir 1 mg daily, continued for life
+    - Add interferon
+    - Keep lamivudine
+    - Stop until after LT
+    answer: 0
+    why: On lamivudine with positive HBV DNA, switch to entecavir; nucleos(t)ides continue for life.
+  - reveal: He receives the graft.
+    question: What HBIg dose is given intraoperatively?
+    options:
+    - None
+    - 2000 IU IM
+    - 10 000 IU IV
+    - 4000 IU IM
+    answer: 3
+    why: 4000 IU IM intraoperatively, then 2000 IU daily for a week until anti-HBs > 300–500.
+  src:
+    page: 192
+  status: unverified
+- id: hb.L11.063
+  kind: case
+  topic: hcc
+  stem: A 64-year-old woman with HCV cirrhosis (Child A) is found on surveillance to have a single 3.5 cm arterial-enhancing
+    lesion with washout.
+  steps:
+  - reveal: AFP is 85 ng/mL.
+    question: Which 2 tests are needed to exclude extrahepatic spread before listing?
+    options:
+    - PET and colonoscopy
+    - CT chest and bone scan
+    - Liver biopsy and CA 19-9
+    - Upper endoscopy and echo
+    answer: 1
+    why: The book requires normal CT chest and bone scan.
+  - reveal: Both are normal, and a dedicated work-up shows no macrovascular invasion.
+    question: Does she meet the book's HCC criteria for LT?
+    options:
+    - No, she is over 60
+    - 'Yes'
+    - No, she is Child A
+    - No, AFP must be under 20
+    answer: 1
+    why: Within Milan, no extrahepatic spread, no macrovascular invasion, AFP < 400.
+  - reveal: No donor is available yet.
+    question: What can be used while she waits?
+    options:
+    - Portocaval shunt
+    - Nothing, any treatment delays LT
+    - Locoregional bridging therapy
+    - Sorafenib for life
+    answer: 2
+    why: Locoregional bridging therapy is one option for patients on the waiting list.
+  src:
+    page: 190
+  status: unverified
+- id: hb.L11.064
+  kind: case
+  topic: contraindications
+  stem: A 58-year-old man with PSC and ulcerative colitis has progressive jaundice and pruritus. He is referred
+    for transplant assessment.
+  steps:
+  - reveal: CA 19-9 is 240 U/mL. MRCP shows a hilar mass; brush cytology confirms cholangiocarcinoma.
+    question: What does this mean for LDLT under the book's criteria?
+    options:
+    - It is an exclusion criterion
+    - It earns MELD exception points
+    - It is a high-risk factor judged case by case
+    - It is irrelevant if the tumour is small
+    answer: 0
+    why: Cholangiocarcinoma is on the exclusion list (p.191). Note it is HCC, not cholangiocarcinoma, that earns
+      exception points.
+  - question: Why was he at risk in the first place?
+    options:
+    - UDCA causes it
+    - Pruritus is a premalignant sign
+    - PSC is the most common known predisposing factor for cholangiocarcinoma
+    - Ulcerative colitis alone causes cholangiocarcinoma
+    answer: 2
+    why: PSC, with or without UC, is the commonest known predisposing factor, so PSC patients are screened regularly.
+  src:
+    page: 191
+  status: unverified
+- id: hb.L11.065
+  kind: essay
+  topic: indications
+  prompt: Mention the indications for liver transplantation.
+  outline:
+  - Timing and evaluation triggers:
+    - Evaluate at first decompensation, CTP ≥ 7 or MELD ≥ 10 (AASLD)
+    - Transplant when the risk of dying from liver disease exceeds surgical risk
+  - ESLD with CTP class C (10–15):
+    - Recurrent HE; portal hypertension (bleeding varices, intractable ascites)
+    - Hyperbilirubinemia; synthetic failure (rising PT, falling albumin); poor quality of life
+  - Program rules and MELD exceptions:
+    - MELD ≥ 15 transplanted; < 15 if refractory ascites or repeated HE; > 30 case by case
+    - Exception points for HCC, HPS, portopulmonary HTN, recurrent cholangitis, Budd-Chiari and others
+  - Disease groups:
+    - HCC within Milan/San Francisco, no spread, no macrovascular invasion, AFP < 400
+    - Cholestatic (PBC, PSC); metabolic (HHC, A1AT, Wilson, tyrosinemia, CF); hepatoblastoma, carcinoid; cryptogenic,
+      polycystic, Budd-Chiari, amyloidosis
+  - Pediatric:
+    - EHBA (50–60%), FIHC, Alagille, Budd-Chiari, AIH, rarely viral
+    - 'Metabolic: A1AT, tyrosinemia, hyperoxaluria, amyloidosis'
+  src:
+    page: 189
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L11.066
+  kind: essay
+  topic: contraindications
+  prompt: Enumerate the contraindications for liver transplantation.
+  outline:
+  - Exclusion criteria:
+    - Age > 70 (physiological age case by case); active sepsis; advanced cardiopulmonary disease
+    - HIV (ELISA and PCR twice); alcohol or substance abuse in the last 6 months
+    - HCC beyond criteria; cholangiocarcinoma; extensive splanchnic (SMV) venous occlusion
+  - High-risk factors (case by case):
+    - Active variceal bleeding, renal failure/HRS, multiple hepatobiliary operations
+    - Severe malnutrition, diabetes, previous or simultaneous organ transplant, portal vein thrombosis
+  src:
+    page: 191
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L11.067
+  kind: essay
+  topic: evaluation
+  prompt: Mention the recipient criteria required for liver transplantation.
+  outline:
+  - Recipient criteria for LDLT:
+    - No extrahepatic malignancy
+    - No percutaneous stents in place
+    - No previous portocaval shunt (mesocaval is the only exception)
+  - Initial assessment:
+    - Confirm the cause of the chronic liver disease
+    - Calculate Child-Pugh and MELD; update MELD monthly (< 18), 2-weekly (18–25), weekly (> 25)
+  - Treat the underlying disease:
+    - HBV antivirals for life plus HBIg; HHC phlebotomy; PBC UDCA 13–15 mg/kg; screen PSC for cholangiocarcinoma
+  src:
+    page: 192
+  status: unverified
+  tags:
+  - book-question

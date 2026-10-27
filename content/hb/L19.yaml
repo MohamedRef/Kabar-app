@@ -1,0 +1,1142 @@
+schema: batna.content/v1
+lecture: hb.L19
+title: Gall Bladder Diseases
+author: Dr. Yousry Taher, Prof. Ehab Hassouna
+book: { chapter: 1, pages: [375, 401] }
+topics:
+  - { id: anatomy, title: "Gallbladder function and congenital anomalies" }
+  - { id: epidemiology, title: "Epidemiology, Egypt prevalence and risk factors" }
+  - { id: pathogenesis, title: "Sludge, nucleation and stone growth" }
+  - { id: stone-types, title: "Cholesterol, black and brown pigment stones" }
+  - { id: biliary-pain, title: "Biliary pain and clinical findings" }
+  - { id: natural-history, title: "Natural history and prognosis" }
+  - { id: cholecystitis, title: "Acute, chronic and acalculous cholecystitis" }
+  - { id: complications, title: "Complications of gallstones" }
+  - { id: diagnosis, title: "Diagnostic tools and differential diagnosis" }
+  - { id: treatment, title: "Cholecystectomy and stone dissolution" }
+  - { id: post-chole, title: "Post-cholecystectomy problems" }
+items:
+  # ---------- anatomy (p375-376) ----------
+  - id: hb.L19.001
+    kind: card
+    topic: anatomy
+    front: Two functions of the gallbladder?
+    back: It stores bile made by the liver and concentrates it.
+    src: { page: 375, quote: "It stores and concentrates bile produced in the liver." }
+    status: unverified
+  - id: hb.L19.002
+    kind: card
+    topic: anatomy
+    front: What triggers release of bile from the gallbladder into the duodenum?
+    back: Food, especially fats.
+    src: { page: 375 }
+    status: unverified
+  - id: hb.L19.003
+    kind: enumerate
+    topic: anatomy
+    prompt: Enumerate the congenital gallbladder anomalies shown in the lecture's figure (9).
+    points:
+      - Double gallbladder
+      - Y-shaped cystic duct
+      - Bilobed gallbladder
+      - Folded gallbladder
+      - Retroserosal gallbladder
+      - Gallbladder diverticulum
+      - Hourglass gallbladder
+      - Intrahepatic gallbladder
+      - Gallbladder with a mesentery
+    pass: 5
+    src: { page: 376 }
+    status: unverified
+  - id: hb.L19.004
+    kind: card
+    topic: epidemiology
+    front: What is the commonest biliary pathology?
+    back: Gallstones. Most disorders of the biliary tract result from gallstones.
+    src: { page: 376, quote: "Gallstones are the commonest biliary pathology" }
+    status: unverified
+  # ---------- epidemiology (p377) ----------
+  - id: hb.L19.005
+    kind: cloze
+    topic: epidemiology
+    text: Gallstones affect {{c1::10–20%}} of the adult population, with a female-to-male ratio of about {{c2::2:1}}.
+    src: { page: 377 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L19.006
+    kind: cloze
+    topic: epidemiology
+    text: Gallstone prevalence in Egypt is {{c1::20%}}, and among cirrhotics it is {{c2::30%}}.
+    src: { page: 377 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L19.007
+    kind: card
+    topic: epidemiology
+    front: Which people are particularly prone to cholesterol stones?
+    back: Older people, women with a tendency to obesity, and people with rapid weight loss.
+    src: { page: 377 }
+    status: unverified
+  - id: hb.L19.008
+    kind: card
+    topic: epidemiology
+    front: Which patients are prone to pigment stones?
+    back: People with disorders of haemoglobin that increase haemolysis.
+    src: { page: 377 }
+    status: unverified
+  - id: hb.L19.009
+    kind: enumerate
+    topic: epidemiology
+    prompt: Enumerate the risk factors for gallstones given in the lecture.
+    points:
+      - Female sex
+      - Obesity
+      - Increasing age
+      - American Indian ethnicity
+      - Western diet
+      - Family history
+      - Rapid weight loss
+      - "Drugs: contraceptive pills, anabolic steroids, somatostatin analogues (long-term octreotide), lipid-lowering drugs"
+      - Diabetes, gastrectomy, ileal resection
+      - Cirrhosis
+      - Haemolytic disorders (pigment stones)
+    pass: 7
+    src: { page: 377 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L19.010
+    kind: cloze
+    topic: epidemiology
+    text: In Egypt, gallstone prevalence is higher in diabetics, after {{c1::gastrectomy}} and {{c2::ileal resection}}, and with long-term {{c3::octreotide}}, lipid-lowering drugs and contraceptive pills.
+    src: { page: 377 }
+    status: unverified
+  - id: hb.L19.011
+    kind: cloze
+    topic: natural-history
+    text: "{{c1::70–80%}} of people with gallstones stay asymptomatic for life, and about {{c2::1–3%}} of them develop symptoms each year; the risk {{c3::decreases}} with age."
+    src: { page: 377 }
+    status: unverified
+    tags: [numbers]
+  # ---------- pathogenesis (p378-379) ----------
+  - id: hb.L19.012
+    kind: enumerate
+    topic: pathogenesis
+    prompt: Mention the predisposing factors for gallbladder stone formation (4).
+    points:
+      - Impaired gallbladder function
+      - Supersaturated bile
+      - Cholesterol nucleating factors
+      - Absorption / enterohepatic circulation of bile acids
+    pass: 3
+    src: { page: 378 }
+    status: unverified
+  - id: hb.L19.013
+    kind: card
+    topic: pathogenesis
+    front: What is biliary sludge made of?
+    back: Calcium bilirubinate, cholesterol microcrystals and mucin.
+    src: { page: 378, quote: "It consists of Ca bilirubinate (a polymer of bilirubin), cholesterol microcrystals, and mucin." }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L19.014
+    kind: card
+    topic: pathogenesis
+    front: Two situations the book gives where sludge forms from gallbladder stasis?
+    back: Pregnancy and total parenteral nutrition (TPN).
+    src: { page: 378 }
+    status: unverified
+  - id: hb.L19.015
+    kind: card
+    topic: pathogenesis
+    front: What usually happens to biliary sludge, and what can it lead to?
+    back: Most is asymptomatic and disappears when the cause resolves. It can also become gallstones or migrate and obstruct the ducts, causing biliary pain, cholangitis or pancreatitis.
+    src: { page: 378 }
+    status: unverified
+  - id: hb.L19.016
+    kind: card
+    topic: pathogenesis
+    front: Which bile protein accelerates cholesterol precipitation and forms the scaffold (nucleus) for crystal growth?
+    back: Mucin (a glycoprotein).
+    src: { page: 379 }
+    status: unverified
+  - id: hb.L19.017
+    kind: enumerate
+    topic: pathogenesis
+    prompt: Enumerate the nucleating factors for gallstones (6).
+    points:
+      - Specific heat-labile glycoproteins
+      - Gallbladder mucus
+      - Biliary calcium
+      - Altered gallbladder prostaglandin metabolism
+      - Gallbladder stasis
+      - Altered gallbladder absorption
+    pass: 4
+    src: { page: 379 }
+    status: unverified
+  - id: hb.L19.018
+    kind: cloze
+    topic: pathogenesis
+    text: Once cholesterol crystals cluster, stones are inevitable and grow about {{c1::1–2 mm}} per year, taking {{c2::5–20 years}} to become large enough to cause problems.
+    src: { page: 380 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L19.019
+    kind: enumerate
+    topic: pathogenesis
+    prompt: Mention the biliary parasites commonly associated with cholelithiasis (4).
+    points:
+      - Fascioliasis
+      - Ascariasis
+      - Schistosomiasis
+      - Clonorchiasis (Clonorchis sinensis), which is precancerous
+    pass: 3
+    src: { page: 379 }
+    status: unverified
+  - id: hb.L19.020
+    kind: card
+    topic: pathogenesis
+    front: Which biliary parasite does the book flag as precancerous?
+    back: Clonorchis sinensis (clonorchiasis).
+    src: { page: 379 }
+    status: unverified
+  # ---------- stone types (p379-380) ----------
+  - id: hb.L19.021
+    kind: cloze
+    topic: stone-types
+    text: The three types of gallstones are {{c1::cholesterol}}, {{c2::pigment (black or brown)}} and {{c3::mixed}} stones.
+    src: { page: 379 }
+    status: unverified
+  - id: hb.L19.022
+    kind: cloze
+    topic: stone-types
+    text: Cholesterol stones make up {{c1::more than 85%}} of gallstones, especially in the Western world.
+    src: { page: 380 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L19.023
+    kind: card
+    topic: stone-types
+    front: How is water-insoluble cholesterol normally kept in solution in bile?
+    back: It combines with bile salts and lecithin to form mixed micelles.
+    src: { page: 380 }
+    status: unverified
+  - id: hb.L19.024
+    kind: card
+    topic: stone-types
+    front: Commonest cause of bile supersaturation with cholesterol, and two examples?
+    back: Excessive cholesterol secretion, as in obesity or diabetes.
+    src: { page: 380 }
+    status: unverified
+  - id: hb.L19.025
+    kind: cloze
+    topic: stone-types
+    text: Less often, supersaturation comes from low bile salt secretion, as in {{c1::cystic fibrosis}} (bile salt malabsorption), or low lecithin secretion, as in a rare form of {{c2::progressive familial intrahepatic cholestasis}}.
+    src: { page: 380 }
+    status: unverified
+  - id: hb.L19.026
+    kind: table
+    topic: stone-types
+    title: Types of gallstones
+    columns: [Type, Consistency, Composition, Where they form, Associations]
+    rows:
+      - [Cholesterol, "—", "Cholesterol (bile supersaturated with cholesterol)", Gallbladder, "Obesity, diabetes, female, older age, rapid weight loss; >85% of stones"]
+      - [Black pigment, Small and hard, "Calcium bilirubinate + inorganic calcium salts (carbonate, phosphate)", Gallbladder, "Alcoholic liver disease, chronic haemolysis, older age"]
+      - [Brown pigment, Soft and greasy, "Bilirubinate + fatty acids (calcium palmitate or stearate)", Bile ducts, "Infection, inflammation, parasites (liver flukes in Asia); behind strictures"]
+    blanks: [[1, 1], [1, 2], [1, 4], [2, 1], [2, 2], [2, 3], [2, 4]]
+    src: { page: 380 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L19.027
+    kind: card
+    topic: stone-types
+    front: Which gallstones form in the bile ducts rather than the gallbladder?
+    back: Brown pigment stones. They can also form behind strictures because of stasis and infection.
+    src: { page: 380, quote: "Most gallstones form within the gallbladder, but brown pigment stones form in the ducts." }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L19.028
+    kind: card
+    topic: stone-types
+    front: Three factors that speed up black pigment stone formation?
+    back: Alcoholic liver disease, chronic haemolysis and older age.
+    src: { page: 380 }
+    status: unverified
+  # ---------- biliary pain (p381-382) ----------
+  - id: hb.L19.029
+    kind: card
+    topic: biliary-pain
+    front: Most common symptom of gallstones?
+    back: Biliary colic (biliary-type pain).
+    src: { page: 381 }
+    status: unverified
+  - id: hb.L19.030
+    kind: card
+    topic: biliary-pain
+    front: What causes biliary colic?
+    back: A stone migrating into the cystic duct, even transiently.
+    src: { page: 381 }
+    status: unverified
+  - id: hb.L19.031
+    kind: card
+    topic: biliary-pain
+    front: Where does biliary pain start and radiate?
+    back: It usually starts in the right upper quadrant (it may be elsewhere in the upper abdomen) and may radiate to the back or down the arm.
+    src: { page: 381 }
+    status: unverified
+  - id: hb.L19.032
+    kind: card
+    topic: biliary-pain
+    front: In which patients is biliary pain often poorly localised?
+    back: Diabetics and the elderly.
+    src: { page: 381 }
+    status: unverified
+  - id: hb.L19.033
+    kind: order
+    topic: biliary-pain
+    prompt: The time course of an episode of biliary colic
+    steps:
+      - Begins suddenly
+      - Becomes intense within 15 min to 1 h
+      - Stays at a steady intensity for up to 12 h (usually under 6 h)
+      - Fades gradually over 30–90 min
+      - Leaves a dull ache
+    src: { page: 381 }
+    status: unverified
+  - id: hb.L19.034
+    kind: cloze
+    topic: biliary-pain
+    text: Biliary colic stays steady for up to {{c1::12 h}} (usually {{c2::under 6 h}}); pain lasting {{c3::more than 12 h}}, especially with vomiting or fever, suggests acute cholecystitis or pancreatitis.
+    src: { page: 382 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L19.035
+    kind: card
+    topic: biliary-pain
+    front: In simple biliary colic, do fever and chills occur? Are there peritoneal signs?
+    back: No fever or chills unless cholecystitis has developed, and no peritoneal signs. There may be mild RUQ or epigastric tenderness, and the patient is well between attacks.
+    src: { page: 381 }
+    status: unverified
+  - id: hb.L19.036
+    kind: card
+    topic: biliary-pain
+    front: Usual precipitant of biliary-type pain?
+    back: Fatty food (it can also follow a heavy meal).
+    src: { page: 382 }
+    status: unverified
+  - id: hb.L19.037
+    kind: card
+    topic: biliary-pain
+    front: Does the severity and frequency of biliary pain correlate with gallbladder pathology?
+    back: Little correlation. Biliary pain can occur without cholecystitis.
+    src: { page: 382 }
+    status: unverified
+  - id: hb.L19.038
+    kind: enumerate
+    topic: biliary-pain
+    prompt: Mention the clinical findings listed in the lecture (when inflammation is present).
+    points:
+      - Shallow respiration
+      - Fever
+      - Jaundice
+      - Positive Murphy's sign
+      - Tender mass in the gallbladder region
+      - High white cell count
+    pass: 4
+    src: { page: 381 }
+    status: unverified
+  # ---------- natural history (p382-383, figure on p382) ----------
+  - id: hb.L19.039
+    kind: cloze
+    topic: natural-history
+    text: "Natural history figure: of asymptomatic stones, about {{c1::2–3%}} per year develop biliary colic and about {{c2::0.2%}} per year present with acute cholecystitis."
+    src: { page: 382 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L19.040
+    kind: cloze
+    topic: natural-history
+    text: "Natural history figure: biliary colic recurs in {{c1::20–50%}} in the first year; acute cholecystitis recurs in {{c2::30%}} within the first month."
+    src: { page: 382 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L19.041
+    kind: cloze
+    topic: natural-history
+    text: Gallbladder carcinoma develops in about {{c1::0.08%}} per year of symptomatic patients over {{c2::50}} years old.
+    src: { page: 382 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L19.042
+    kind: cloze
+    topic: natural-history
+    text: Asymptomatic gallstones become symptomatic at about {{c1::2%}} a year, most often as {{c2::biliary pain}} rather than a major complication.
+    src: { page: 383 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L19.043
+    kind: cloze
+    topic: natural-history
+    text: Once symptoms start, pain returns in {{c1::20–40%}} of patients a year and {{c2::1–2%}} a year develop complications.
+    src: { page: 383 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L19.044
+    kind: card
+    topic: natural-history
+    front: Complications that develop in 1–2% a year of symptomatic gallstone patients?
+    back: Cholecystitis, choledocholithiasis, cholangitis and gallstone pancreatitis.
+    src: { page: 383 }
+    status: unverified
+  # ---------- cholecystitis (p383-384) ----------
+  - id: hb.L19.045
+    kind: cloze
+    topic: cholecystitis
+    text: In cholecystitis the cystic duct is obstructed in {{c1::96%}} of cases.
+    src: { page: 383 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L19.046
+    kind: card
+    topic: cholecystitis
+    front: Typical patient with cholecystitis, according to the book?
+    back: An obese, fertile woman over 40.
+    src: { page: 383 }
+    status: unverified
+  - id: hb.L19.047
+    kind: card
+    topic: cholecystitis
+    front: "Pain of cholecystitis: timing, site and referral?"
+    back: Late at night, in the right hypochondrium and epigastrium, referred to the right shoulder.
+    src: { page: 383 }
+    status: unverified
+  - id: hb.L19.048
+    kind: card
+    topic: cholecystitis
+    front: When does fever appear in cholecystitis?
+    back: When bacterial infection occurs.
+    src: { page: 383 }
+    status: unverified
+  - id: hb.L19.049
+    kind: cloze
+    topic: cholecystitis
+    text: Acalculous cholecystitis causes {{c1::5–10%}} of acute cholecystitis in adults and {{c2::30%}} in children.
+    src: { page: 384 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L19.050
+    kind: enumerate
+    topic: cholecystitis
+    prompt: Enumerate the causes/associations of acalculous cholecystitis.
+    points:
+      - "Critical illness: after major surgery, multiple injuries, major burns, severe sepsis, mechanical ventilation"
+      - Typhoid bacilli infection
+      - Actinomycosis
+      - Parasitic cholecystitis
+    pass: 3
+    src: { page: 384 }
+    status: unverified
+    tags: [high-yield]
+  # ---------- complications (p386-387) ----------
+  - id: hb.L19.051
+    kind: enumerate
+    topic: complications
+    prompt: Mention the complications of gallstone disease (summary list).
+    points:
+      - Acute cholecystitis
+      - Cholangitis
+      - Chronic cholecystitis
+      - Gallbladder cancer
+      - Mucocele and pyocele of the gallbladder
+      - Rupture of the gallbladder
+      - Acute biliary pancreatitis
+      - Obstructive jaundice
+      - Mirizzi syndrome
+      - Bouveret's syndrome
+      - Gallstone ileus
+    pass: 7
+    src: { page: 386 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L19.052
+    kind: table
+    topic: complications
+    title: Complications of gallstones by site
+    columns: [Site, Complications]
+    rows:
+      - [In the gallbladder, "Silent stones, acute and chronic cholecystitis, gangrene, perforation, mucocele, empyema, emphysematous cholecystitis, hydrops, adenomyomatosis, cholesterosis, polyposis, cholecystitis glandularis proliferans, diverticulosis, typhoid gallbladder, carcinoma"]
+      - [In the bile ducts, "Obstructive jaundice, cholangitis, acute relapsing pancreatitis"]
+      - [In the intestine, "Gallstone ileus (acute intestinal obstruction), Bouveret's syndrome"]
+    blanks: [[1, 1], [2, 1]]
+    src: { page: 387 }
+    status: unverified
+  - id: hb.L19.053
+    kind: card
+    topic: complications
+    front: Three complications of gallstones in the bile ducts?
+    back: Obstructive jaundice, cholangitis and acute relapsing pancreatitis.
+    src: { page: 387 }
+    status: unverified
+  - id: hb.L19.054
+    kind: card
+    topic: complications
+    front: Two intestinal complications of gallstones?
+    back: Gallstone ileus (acute intestinal obstruction) and Bouveret's syndrome.
+    src: { page: 387 }
+    status: unverified
+  - id: hb.L19.055
+    kind: enumerate
+    topic: complications
+    prompt: Enumerate at least 8 complications of gallstones within the gallbladder itself.
+    points:
+      - Silent gallstones
+      - Acute cholecystitis
+      - Chronic cholecystitis
+      - Gangrene
+      - Perforation
+      - Mucocele
+      - Empyema
+      - Emphysematous cholecystitis
+      - Hydrops
+      - Adenomyomatosis
+      - Cholesterosis
+      - Polyposis
+      - Cholecystitis glandularis proliferans
+      - Diverticulosis
+      - Typhoid gallbladder
+      - Carcinoma
+    pass: 8
+    src: { page: 386 }
+    status: unverified
+  - id: hb.L19.056
+    kind: card
+    topic: post-chole
+    front: How may gallstones reach the bile duct after cholecystectomy?
+    back: They may migrate there, or (especially brown pigment stones) form behind strictures from stasis and infection.
+    src: { page: 380 }
+    status: unverified
+  # ---------- diagnosis and DD (p391-398) ----------
+  - id: hb.L19.057
+    kind: enumerate
+    topic: diagnosis
+    prompt: Mention the diagnostic tools for gallbladder stone disease (7).
+    points:
+      - Clinical
+      - Ultrasound
+      - Cholecystography
+      - CT scan
+      - MRCP
+      - ERCP
+      - PTC
+    pass: 5
+    src: { page: 391 }
+    status: unverified
+  - id: hb.L19.058
+    kind: cloze
+    topic: diagnosis
+    text: Ultrasound is accurate for gallstones in {{c1::more than 95%}} of cases.
+    src: { page: 392 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L19.059
+    kind: enumerate
+    topic: diagnosis
+    prompt: Mention the differential diagnosis of gallbladder stone disease (5).
+    points:
+      - Appendicitis
+      - Perforated peptic ulcer
+      - Intestinal obstruction
+      - Pleurisy
+      - Myocardial infarction
+    pass: 4
+    src: { page: 398 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L19.060
+    kind: card
+    topic: treatment
+    front: First-aid treatment of an acute gallbladder attack (book)?
+    back: Antibiotics, analgesia and an antispasmodic, then surgery.
+    src: { page: 398 }
+    status: unverified
+  # ---------- treatment (p384-385) ----------
+  - id: hb.L19.061
+    kind: card
+    topic: treatment
+    front: Treatment of symptomatic gallstones?
+    back: Laparoscopic cholecystectomy, because pain is likely to recur and serious complications can develop.
+    src: { page: 384 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L19.062
+    kind: card
+    topic: treatment
+    front: Usual approach to asymptomatic gallstones?
+    back: Expectant management (sometimes stone dissolution).
+    src: { page: 384 }
+    status: unverified
+  - id: hb.L19.063
+    kind: cloze
+    topic: treatment
+    text: Elective open cholecystectomy, done when free of complications, has an overall mortality of about {{c1::0.1%}}.
+    src: { page: 384 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L19.064
+    kind: card
+    topic: treatment
+    front: Advantages of laparoscopic over open cholecystectomy?
+    back: Much shorter convalescence, less postoperative discomfort, better cosmetic result, with no increase in morbidity or mortality.
+    src: { page: 384 }
+    status: unverified
+  - id: hb.L19.065
+    kind: cloze
+    topic: treatment
+    text: Laparoscopic cholecystectomy is converted to open in {{c1::2–5%}} of patients, usually because {{c2::the biliary anatomy cannot be identified}} or a complication cannot be managed.
+    src: { page: 384 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L19.066
+    kind: card
+    topic: treatment
+    front: What does cholecystectomy prevent well, and what less well?
+    back: It effectively prevents future biliary colic, but is less effective for atypical symptoms such as dyspepsia.
+    src: { page: 385 }
+    status: unverified
+  - id: hb.L19.067
+    kind: card
+    topic: treatment
+    front: Does cholecystectomy need dietary restriction afterwards? Which bowel symptom can follow?
+    back: No nutritional problems or dietary limits. Some patients get diarrhoea, often from unmasked ileal bile salt malabsorption.
+    src: { page: 385 }
+    status: unverified
+  - id: hb.L19.068
+    kind: card
+    topic: treatment
+    front: Two indications for prophylactic cholecystectomy in asymptomatic gallstones?
+    back: Very large stones (over 3 cm) and a calcified (porcelain) gallbladder, because of the increased risk of gallbladder carcinoma.
+    src: { page: 385 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L19.069
+    kind: card
+    topic: treatment
+    front: Who is offered oral bile acid dissolution of gallstones?
+    back: Patients who decline surgery or are at high surgical risk (comorbidity, advanced age).
+    src: { page: 385 }
+    status: unverified
+  - id: hb.L19.070
+    kind: card
+    topic: treatment
+    front: Best candidates for oral stone dissolution?
+    back: Small, radiolucent (likely cholesterol) stones in a functioning, non-obstructed gallbladder, shown by normal filling on cholescintigraphy or oral cholecystography, or no stones in the neck.
+    src: { page: 385 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L19.071
+    kind: cloze
+    topic: treatment
+    text: Ursodeoxycholic acid {{c1::8–10 mg/kg/day}} orally dissolves {{c2::80%}} of tiny stones under {{c3::0.5 cm}} within 6 months.
+    src: { page: 385 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L19.072
+    kind: cloze
+    topic: treatment
+    text: After successful dissolution, gallstones recur in {{c1::50%}} within {{c2::5 years}}.
+    src: { page: 385 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L19.073
+    kind: card
+    topic: treatment
+    front: What does the book say about extracorporeal shock wave lithotripsy for gallstones?
+    back: Stone fragmentation by ESWL to help dissolution is now unavailable.
+    src: { page: 385 }
+    status: unverified
+  - id: hb.L19.074
+    kind: card
+    topic: treatment
+    front: Where is ursodeoxycholic acid useful to prevent gallstones?
+    back: In morbidly obese patients losing weight rapidly after bariatric surgery or on a very low calorie diet.
+    src: { page: 385 }
+    status: unverified
+    tags: [high-yield]
+  # ---------- post-cholecystectomy (p399-400) ----------
+  - id: hb.L19.075
+    kind: enumerate
+    topic: post-chole
+    prompt: Mention the causes of post-cholecystectomy problems.
+    points:
+      - Wrong diagnosis
+      - Papillary dysfunction or stenosis
+      - Psychosomatic disorders
+      - Irritable bowel syndrome
+      - Biliary stricture
+      - Retained/recurrent biliary stones
+      - Amputation neuroma
+      - Pancreatitis
+    pass: 5
+    src: { page: 399 }
+    status: unverified
+  - id: hb.L19.076
+    kind: card
+    topic: post-chole
+    front: Endoscopic treatment shown in the lecture for CBD stones?
+    back: ERCP with endoscopic sphincterotomy and stone extraction.
+    src: { page: 400 }
+    status: unverified
+  # ---------- MCQs ----------
+  - id: hb.L19.077
+    kind: mcq
+    topic: stone-types
+    stem: A 30-year-old man with sickle cell disease has small, hard, dark gallbladder stones on ultrasound. What are these stones most likely made of?
+    options:
+      - Cholesterol monohydrate crystals in mucin
+      - Calcium bilirubinate with inorganic calcium salts
+      - Bilirubinate with calcium palmitate and stearate
+      - Calcium oxalate
+      - Pure cholesterol with lecithin
+    answer: 1
+    why:
+      - Cholesterol stones go with obesity, diabetes and rapid weight loss, not haemolysis.
+      - Correct. Black pigment stones (Ca bilirubinate and inorganic Ca salts) form with chronic haemolysis.
+      - That is the brown pigment stone, which is soft and greasy and forms in the ducts with infection.
+      - Calcium oxalate is a kidney stone, not a gallstone type in the book.
+      - Lecithin keeps cholesterol in solution in micelles; it does not form stones.
+    src: { page: 380 }
+    status: unverified
+  - id: hb.L19.078
+    kind: mcq
+    topic: stone-types
+    stem: Years after cholecystectomy, a patient with recurrent cholangitis has soft, greasy stones in the common bile duct above a stricture. Which statement about these stones is true?
+    options:
+      - They are the commonest gallstone type worldwide
+      - They form during infection, inflammation and parasitic infestation
+      - They are typical of chronic haemolysis
+      - They form only inside the gallbladder
+      - They dissolve well with ursodeoxycholic acid
+    answer: 1
+    why:
+      - Cholesterol stones are the commonest (over 85%).
+      - Correct. Brown pigment stones form with infection, inflammation and parasites, and can form behind strictures.
+      - Haemolysis causes black pigment stones.
+      - Brown pigment stones form in the ducts.
+      - Dissolution suits small radiolucent cholesterol stones.
+    src: { page: 380 }
+    status: unverified
+  - id: hb.L19.079
+    kind: mcq
+    topic: pathogenesis
+    stem: A 28-year-old woman in her third trimester has echogenic layering material without shadowing in the gallbladder. She is pain free. Which statement is correct?
+    options:
+      - This is a cholesterol stone that needs cholecystectomy
+      - It is composed of calcium bilirubinate, cholesterol microcrystals and mucin and often resolves after the cause ends
+      - It is caused by Clonorchis sinensis
+      - It never migrates into the bile ducts
+      - It indicates acalculous cholecystitis
+    answer: 1
+    why:
+      - Sludge is not a stone, and asymptomatic findings do not need surgery.
+      - Correct. Biliary sludge forms with stasis (pregnancy, TPN), is mostly asymptomatic and disappears when the condition resolves.
+      - No parasite is suggested; pregnancy stasis is the cause.
+      - Sludge can migrate and cause biliary pain, cholangitis or pancreatitis.
+      - She has no pain or fever, and is not critically ill.
+    src: { page: 378 }
+    status: unverified
+  - id: hb.L19.080
+    kind: mcq
+    topic: biliary-pain
+    stem: A 42-year-old obese woman has had sudden epigastric and RUQ pain after a fatty dinner. It peaked within 30 minutes, stayed steady for 3 hours, then eased. She vomited once. Temperature 37.0 °C, mild RUQ tenderness, no guarding. What is the most likely diagnosis?
+    options:
+      - Biliary colic
+      - Acute cholecystitis
+      - Acute cholangitis
+      - Perforated peptic ulcer
+      - Acute appendicitis
+    answer: 0
+    why:
+      - Correct. Steady pain under 6 h, nausea or vomiting, no fever, no peritoneal signs.
+      - Cholecystitis is likely when pain lasts over 12 h with fever or vomiting.
+      - Cholangitis needs fever and jaundice; she has neither.
+      - Perforation gives peritoneal signs, which are absent.
+      - Appendicitis does not cause short RUQ pain after fatty food that settles in hours.
+    src: { page: 381 }
+    status: unverified
+  - id: hb.L19.081
+    kind: mcq
+    topic: biliary-pain
+    stem: A patient with known gallstones has RUQ pain for 18 hours with repeated vomiting and a temperature of 38.4 °C. Based on the lecture, what is most likely?
+    options:
+      - Uncomplicated biliary colic
+      - Acute cholecystitis or pancreatitis
+      - Sludge only
+      - Post-cholecystectomy syndrome
+      - Asymptomatic gallstones
+    answer: 1
+    why:
+      - Biliary colic usually lasts under 6 h and never with fever.
+      - Correct. Pain over 12 h with vomiting or fever makes acute cholecystitis or pancreatitis likely.
+      - Sludge does not explain fever and long pain.
+      - She still has her gallbladder.
+      - She is clearly symptomatic.
+    src: { page: 382 }
+    status: unverified
+  - id: hb.L19.082
+    kind: mcq
+    topic: natural-history
+    stem: A 50-year-old man has gallstones found by chance on ultrasound. He asks what is most likely to happen. Which is the best answer?
+    options:
+      - He will most likely develop acute cholecystitis within 5 years
+      - Most people with gallstones stay asymptomatic for life
+      - He has about a 20% yearly risk of pancreatitis
+      - Symptoms become more likely as he gets older
+      - He needs urgent cholecystectomy to prevent cancer
+    answer: 1
+    why:
+      - Only about 0.2% a year present with acute cholecystitis.
+      - Correct. 70–80% stay asymptomatic; symptoms develop in about 1–3% a year.
+      - Complications occur in 1–2% a year, and that is in symptomatic patients.
+      - The book says the risk decreases with age.
+      - Prophylactic surgery is only for stones over 3 cm or a porcelain gallbladder.
+    src: { page: 377 }
+    status: unverified
+  - id: hb.L19.083
+    kind: mcq
+    topic: treatment
+    stem: A 55-year-old woman has asymptomatic gallstones. Ultrasound shows one 3.5 cm stone and a normal gallbladder wall. What is the best management?
+    options:
+      - Expectant management
+      - Ursodeoxycholic acid for 6 months
+      - Prophylactic cholecystectomy
+      - ERCP with sphincterotomy
+      - Extracorporeal shock wave lithotripsy
+    answer: 2
+    why:
+      - Expectant care fits most asymptomatic stones, but not stones over 3 cm.
+      - UDCA works on tiny stones under 0.5 cm, not a 3.5 cm stone.
+      - Correct. Stones over 3 cm raise gallbladder cancer risk, so prophylactic cholecystectomy is warranted.
+      - ERCP treats bile duct stones, not gallbladder stones.
+      - The book says ESWL is now unavailable.
+    src: { page: 385 }
+    status: unverified
+  - id: hb.L19.084
+    kind: mcq
+    topic: treatment
+    stem: An 80-year-old man with severe heart failure has recurrent mild biliary colic. Ultrasound shows a few 4 mm radiolucent stones in a functioning gallbladder with no stones in the neck. He refuses surgery. What is the best option?
+    options:
+      - Ursodeoxycholic acid 8–10 mg/kg/day orally
+      - Chenodeoxycholic acid infusion
+      - ERCP stone extraction
+      - Low-fat diet only, no follow-up
+      - Shock wave lithotripsy
+    answer: 0
+    why:
+      - Correct. Small radiolucent stones in a functioning, unobstructed gallbladder in a high-risk patient suit UDCA; 80% of stones under 0.5 cm dissolve in 6 months.
+      - Not given in the book; dissolution is with oral bile acids.
+      - ERCP removes duct stones, not gallbladder stones.
+      - He is symptomatic and a dissolution candidate.
+      - ESWL is now unavailable.
+    src: { page: 385 }
+    status: unverified
+  - id: hb.L19.085
+    kind: mcq
+    topic: treatment
+    stem: A 35-year-old woman is starting a very low calorie diet after bariatric surgery for morbid obesity. What drug could reduce her risk of gallstones?
+    options:
+      - Octreotide
+      - Ursodeoxycholic acid
+      - Oral contraceptive pill
+      - A lipid-lowering drug
+      - Anabolic steroid
+    answer: 1
+    why:
+      - Long-term octreotide is a risk factor for gallstones.
+      - Correct. UDCA prevents stones in rapid weight loss after bariatric surgery or on a very low calorie diet.
+      - Contraceptive pills raise gallstone risk.
+      - Lipid-lowering drugs are listed as a gallstone risk factor.
+      - Anabolic steroids are a risk factor.
+    src: { page: 385 }
+    status: unverified
+  - id: hb.L19.086
+    kind: mcq
+    topic: cholecystitis
+    stem: A 45-year-old man in the burns ICU on mechanical ventilation develops fever and RUQ tenderness. Ultrasound shows a distended, thick-walled gallbladder with no stones. What is the most likely diagnosis?
+    options:
+      - Biliary colic
+      - Acalculous cholecystitis
+      - Mirizzi syndrome
+      - Gallstone ileus
+      - Porcelain gallbladder
+    answer: 1
+    why:
+      - Biliary colic needs a stone and has no fever.
+      - Correct. Critical illness (burns, sepsis, ventilation, major surgery) is the classic setting for acalculous cholecystitis.
+      - Mirizzi syndrome needs an impacted stone.
+      - Gallstone ileus is intestinal obstruction by a stone.
+      - A porcelain gallbladder is a calcified wall, not acute inflammation.
+    src: { page: 384 }
+    status: unverified
+  - id: hb.L19.087
+    kind: mcq
+    topic: cholecystitis
+    stem: Which proportion of acute cholecystitis in children is acalculous, according to the book?
+    options:
+      - 1%
+      - 5–10%
+      - 30%
+      - 70%
+      - 96%
+    answer: 2
+    why:
+      - Too low.
+      - 5–10% is the adult figure.
+      - Correct. About 30% in children.
+      - Too high.
+      - 96% is the share of cholecystitis with cystic duct obstruction.
+    src: { page: 384 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L19.088
+    kind: mcq
+    topic: diagnosis
+    stem: A 40-year-old woman has typical biliary colic. Which first imaging test does the lecture rate as accurate in more than 95%?
+    options:
+      - CT scan
+      - Ultrasound
+      - ERCP
+      - PTC
+      - Oral cholecystography
+    answer: 1
+    why:
+      - CT is less sensitive for gallstones and uses radiation.
+      - Correct. Ultrasound is accurate in more than 95%.
+      - ERCP is invasive and mainly therapeutic for duct stones.
+      - PTC is invasive and for ducts.
+      - Cholecystography is older and less used; the book does not give it 95%.
+    src: { page: 392 }
+    status: unverified
+  - id: hb.L19.089
+    kind: mcq
+    topic: complications
+    stem: Which of these is a complication of gallstones in the intestine rather than in the gallbladder or bile ducts?
+    options:
+      - Mucocele
+      - Cholangitis
+      - Bouveret's syndrome
+      - Emphysematous cholecystitis
+      - Acute relapsing pancreatitis
+    answer: 2
+    why:
+      - Mucocele is in the gallbladder.
+      - Cholangitis is a bile duct complication.
+      - Correct. Bouveret's syndrome and gallstone ileus are intestinal.
+      - Emphysematous cholecystitis is in the gallbladder.
+      - Relapsing pancreatitis is listed with bile duct complications.
+    src: { page: 387 }
+    status: unverified
+  - id: hb.L19.090
+    kind: mcq
+    topic: treatment
+    stem: Six months after laparoscopic cholecystectomy a patient has loose stools after meals. What is the most likely explanation in the book?
+    options:
+      - Retained common bile duct stone
+      - Unmasked bile salt malabsorption in the ileum
+      - Need for a fat-free diet after cholecystectomy
+      - Fat malnutrition caused by losing the gallbladder
+      - Gallstone ileus
+    answer: 1
+    why:
+      - A retained stone gives pain, jaundice or cholangitis, not isolated diarrhoea.
+      - Correct. Some patients develop diarrhoea because ileal bile salt malabsorption is unmasked.
+      - The book says no dietary limitations are needed.
+      - Cholecystectomy does not cause nutritional problems.
+      - Gallstone ileus causes obstruction, not diarrhoea.
+    src: { page: 385 }
+    status: unverified
+  - id: hb.L19.091
+    kind: mcq
+    topic: epidemiology
+    stem: Which of the following is NOT listed in the lecture as a risk factor for gallstones?
+    options:
+      - Long-term octreotide
+      - Ileal resection
+      - Cirrhosis
+      - Male sex
+      - Rapid weight loss
+    answer: 3
+    why:
+      - Somatostatin analogues are listed.
+      - Ileal resection is listed.
+      - Prevalence among cirrhotics is 30%.
+      - Correct. Female sex is the risk factor; women are affected twice as often.
+      - Rapid weight loss predisposes to cholesterol stones.
+    src: { page: 377 }
+    status: unverified
+  # ---------- cases ----------
+  - id: hb.L19.092
+    kind: case
+    topic: biliary-pain
+    stem: A 44-year-old obese mother of four comes to the emergency department at midnight with severe RUQ pain radiating to the back, 2 hours after a fatty meal. She is nauseated.
+    steps:
+      - reveal: Temperature 37.1 °C. Mild RUQ tenderness, no guarding, Murphy's sign negative. The pain started suddenly and has been steady.
+        question: What is the most likely diagnosis?
+        options: [Biliary colic, Acute cholecystitis, Acute pancreatitis, Perforated peptic ulcer]
+        answer: 0
+        why: Sudden steady RUQ pain after fatty food, no fever, no peritoneal signs. Fever does not occur unless cholecystitis has developed.
+      - reveal: The pain settles after analgesia within 4 hours.
+        question: Which first test confirms the cause?
+        options: [Abdominal ultrasound, ERCP, PTC, CT abdomen]
+        answer: 0
+        why: Ultrasound is accurate in more than 95%. ERCP and PTC are invasive.
+      - reveal: Ultrasound shows several gallbladder stones, a normal wall and a normal common bile duct.
+        question: What do you advise?
+        options: [Laparoscopic cholecystectomy, Expectant management, Ursodeoxycholic acid for 6 months, ERCP with sphincterotomy]
+        answer: 0
+        why: Once symptoms start they recur (20–40% a year) and complications follow in 1–2% a year, so symptomatic stones need laparoscopic cholecystectomy.
+      - question: She asks whether she will need a special diet after surgery. What do you tell her?
+        options: [No dietary limits are needed, Lifelong fat-free diet, Low-protein diet, Bile salt supplements for life]
+        answer: 0
+        why: Cholecystectomy causes no nutritional problems or need for dietary limits. A few patients get diarrhoea from unmasked bile salt malabsorption.
+    src: { page: 381 }
+    status: unverified
+  - id: hb.L19.093
+    kind: case
+    topic: cholecystitis
+    stem: A 48-year-old woman with known gallstones has had RUQ pain referred to the right shoulder for 20 hours, with vomiting.
+    steps:
+      - reveal: Temperature 38.6 °C, shallow breathing, positive Murphy's sign and a tender mass in the gallbladder region. WBC 16,000/µL.
+        question: What is the most likely diagnosis?
+        options: [Acute calculous cholecystitis, Biliary colic, Acalculous cholecystitis, Gallstone ileus]
+        answer: 0
+        why: Pain over 12 h with fever, Murphy's sign, a tender mass and leucocytosis in a patient with stones. In 96% the cystic duct is obstructed.
+      - question: Which condition must you exclude in the differential diagnosis?
+        options: [Myocardial infarction, Pleurisy, Perforated peptic ulcer, All of these]
+        answer: 3
+        why: The book's differential includes appendicitis, perforated peptic ulcer, intestinal obstruction, pleurisy and myocardial infarction.
+      - question: What is the first-aid treatment?
+        options: [Antibiotics, analgesia and an antispasmodic, Ursodeoxycholic acid, Oral contraceptive withdrawal only, Immediate ESWL]
+        answer: 0
+        why: First aid is antibiotics, analgesia and antispasmodics, followed by surgery.
+      - question: What is the definitive treatment?
+        options: [Cholecystectomy, Long-term antibiotics, UDCA, Observation]
+        answer: 0
+        why: Cholecystectomy, laparoscopic as the treatment of choice.
+    src: { page: 383 }
+    status: unverified
+  - id: hb.L19.094
+    kind: case
+    topic: treatment
+    stem: A 62-year-old man has gallstones found on an ultrasound done for another reason. He has never had pain.
+    steps:
+      - reveal: The stones are 1 cm, the wall is thin and not calcified.
+        question: What is the best plan?
+        options: [Expectant management, Prophylactic cholecystectomy, UDCA, ERCP]
+        answer: 0
+        why: Asymptomatic stones are managed expectantly; most patients decide elective surgery is not worth it.
+      - reveal: Two years later, a plain film shows a calcified gallbladder wall.
+        question: What now?
+        options: [Prophylactic cholecystectomy, Continue to observe, UDCA, ESWL]
+        answer: 0
+        why: A porcelain gallbladder (or stones over 3 cm) warrants prophylactic cholecystectomy because of gallbladder carcinoma risk.
+      - question: If laparoscopic surgery is attempted, how often is it converted to open?
+        options: [2–5%, 20–40%, 0.1%, 50%]
+        answer: 0
+        why: 2–5%, usually because the anatomy cannot be identified or a complication cannot be managed. 0.1% is the mortality of elective open cholecystectomy.
+    src: { page: 385 }
+    status: unverified
+  - id: hb.L19.095
+    kind: case
+    topic: post-chole
+    stem: A 50-year-old woman had a laparoscopic cholecystectomy a year ago. She now has recurrent upper abdominal pain.
+    steps:
+      - question: Which of these is a recognised cause of post-cholecystectomy problems?
+        options: [Papillary stenosis or dysfunction, Lack of a fat-free diet, Vitamin K deficiency, Porcelain gallbladder]
+        answer: 0
+        why: The book lists wrong diagnosis, papillary dysfunction/stenosis, psychosomatic disorders, IBS, biliary stricture, biliary stones, amputation neuroma and pancreatitis.
+      - reveal: She is jaundiced. MRCP shows a stone in the common bile duct.
+        question: What is the treatment?
+        options: [ERCP with sphincterotomy and stone extraction, UDCA, Repeat cholecystectomy, Antispasmodics only]
+        answer: 0
+        why: Endoscopic sphincterotomy with stone extraction clears duct stones.
+    src: { page: 399 }
+    status: unverified
+  # ---------- essays (end-of-lecture questions, p401) ----------
+  - id: hb.L19.096
+    kind: essay
+    topic: biliary-pain
+    prompt: Mention the clinical presentation and the risk factors for gallbladder stones.
+    outline:
+      - Presentation:
+          - About 80% asymptomatic; biliary colic is the commonest symptom; cholecystitis to cholangitis
+          - "Colic: sudden RUQ/epigastric pain after fatty food, radiates to back or arm, steady up to 12 h (usually <6 h), nausea, no fever"
+          - "Cholecystitis: pain >12 h, fever, Murphy's sign, tender mass, jaundice, high WBC"
+      - Risk factors:
+          - Female (2:1), obesity, older age, rapid weight loss, family history, Western diet, American Indian ethnicity
+          - Drugs (contraceptive pill, anabolic steroids, somatostatin analogues, lipid-lowering drugs); diabetes, gastrectomy, ileal resection, cirrhosis
+          - Haemolysis (pigment stones); parasites (Fasciola, Ascaris, Schistosoma, Clonorchis)
+    src: { page: 401 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L19.097
+    kind: essay
+    topic: complications
+    prompt: What are the complications of gallbladder stones?
+    outline:
+      - In the gallbladder:
+          - Acute and chronic cholecystitis, gangrene, perforation, empyema, mucocele, hydrops, emphysematous cholecystitis
+          - Mirizzi syndrome; carcinoma (0.08%/yr of symptomatic patients over 50)
+      - In the bile ducts:
+          - Obstructive jaundice, cholangitis, acute (relapsing) pancreatitis
+      - In the intestine:
+          - Gallstone ileus, Bouveret's syndrome
+    src: { page: 401 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L19.098
+    kind: essay
+    topic: diagnosis
+    prompt: What is the differential diagnosis of gallbladder stone disease?
+    outline:
+      - Abdominal:
+          - Appendicitis, perforated peptic ulcer, intestinal obstruction
+      - Chest:
+          - Pleurisy, myocardial infarction
+    src: { page: 401 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L19.099
+    kind: essay
+    topic: treatment
+    prompt: How do you diagnose and treat gallbladder stone disease?
+    outline:
+      - Diagnosis:
+          - Clinical; ultrasound (accurate >95%); cholecystography, CT, MRCP, ERCP, PTC
+      - Acute attack:
+          - Antibiotics, analgesia, antispasmodics, then surgery
+      - Symptomatic stones:
+          - Laparoscopic cholecystectomy (treatment of choice, 2–5% converted); open mortality ~0.1%
+      - Asymptomatic stones:
+          - Expectant; prophylactic cholecystectomy only for stones >3 cm or porcelain gallbladder
+      - Dissolution:
+          - UDCA 8–10 mg/kg/day for small radiolucent stones in a functioning gallbladder; 80% of <0.5 cm in 6 months; 50% recur in 5 yr
+          - UDCA prevents stones in rapid weight loss after bariatric surgery
+      - Duct stones:
+          - ERCP sphincterotomy and stone extraction
+    src: { page: 401 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L19.100
+    kind: table
+    topic: biliary-pain
+    title: Biliary colic versus acute cholecystitis
+    columns: [Feature, Biliary colic, Acute cholecystitis]
+    rows:
+      - [Duration, "Steady up to 12 h, usually under 6 h", "More than 12 h"]
+      - [Fever and chills, Absent, "Present once bacterial infection occurs"]
+      - [Abdominal signs, "Mild RUQ or epigastric tenderness, no peritoneal signs", "Murphy's sign, tender mass in the GB region"]
+      - [White cell count, "—", High]
+      - [Between attacks, Patient feels well, "—"]
+    blanks: [[0, 1], [0, 2], [1, 1], [2, 2], [3, 2]]
+    src: { page: 381 }
+    status: unverified
+    tags: [high-yield]
