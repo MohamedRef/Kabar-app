@@ -110,18 +110,33 @@ exercises:
     distractors: [mencicipi, jangan]
     words: [coba, cicipi]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: اغسل الفراخ، وبعدين قطّعها.
-      ar: اغسل الدجاج ثم قطّعه.
-      en: Wash the chicken, then cut it.
-    answers: ['Cuci ayamnya, lalu potong.', 'Cuci ayamnya, lalu potong', 'Cuci ayam, lalu potong.', 'Cuci ayam, lalu potong', Cuci ayamnya lalu potong., Cuci ayam lalu potong., 'Cuci ayamnya, kemudian potong.', 'Cuci ayam, kemudian potong.', 'Cuci ayamnya, lalu potong ayamnya.']
-    explain:
-      ar_eg: 'الأمرين من غير meN-: mencuci → cuci، memotong → potong.'
-      ar: كلا الأمرين بلا meN-.
-      en: Both commands drop meN-.
-    words: [cuci, potong]
+    type: match_pairs
+    pairs:
+      - text: cicipi
+        ar_eg: دوق
+        ar: تذوّق
+        en: taste
+      - text: masukkan
+        ar_eg: حط، دخّل
+        ar: ضَع
+        en: put in
+      - text: tambahkan
+        ar_eg: زوّد، ضيف
+        ar: أضِف
+        en: add
+      - text: rata
+        ar_eg: متساوي، كويس
+        ar: متساوٍ
+        en: even
+      - text: berhenti
+        ar_eg: يقف، يبطّل
+        ar: يتوقف
+        en: stop
+      - text: garam
+        ar_eg: ملح
+        ar: ملح
+        en: salt
+    words: [cicipi, masukkan, tambahkan, rata, berhenti, garam]
   - id: e06
     type: translate
     direction: from_target
@@ -139,6 +154,26 @@ exercises:
       ar: تفضّلي بالجلوس يا سيدتي، وتذوّقي الأرز المقلي!
       en: Do sit down, ma'am. Have a taste of the fried rice!
     words: [duduk, coba, cicipi]
+  - id: e08
+    type: listen
+    text: Berhenti! Jangan tambahkan garam lagi.
+    options: ['Berhenti! Jangan tambahkan garam lagi.', 'Berhenti! Jangan masukkan garam lagi.', 'Cicipi! Jangan tambahkan garam lagi.']
+    answer: 0
+    meaning:
+      ar_eg: بس! ماتزوّدش ملح تاني.
+      ar: توقّف! لا تُضِف ملحًا بعد الآن.
+      en: Stop! Don't add any more salt.
+    words: [berhenti, tambahkan, masukkan, cicipi]
+  - id: e09
+    type: fill_blank
+    sentence: Aduk sampai ___.
+    meaning:
+      ar_eg: قلّب لحد ما يتساوى كويس.
+      ar: قلّب حتى يتجانس.
+      en: Stir until even.
+    options: [rata, berhenti, cicipi]
+    answers: [rata]
+    words: [aduk, rata]
 dialogue:
   title: Dapur Ni Luh
   lines:

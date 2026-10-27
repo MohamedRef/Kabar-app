@@ -72,6 +72,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] `just devices`, then `just install <serial>` for the S24 Ultra and again for the Tab S11. For wireless, use `just pair` / `just connect` (RUN.md §3).
 - [ ] Open every screen once on the release APK (R8 shrinks it; a missing keep rule would crash on that screen) and tell me if anything closes the app.
 - [ ] Check the launcher icon (round and adaptive), the notification-bar icon and the splash screen on both devices.
+- [ ] On the S24 Ultra, open a typed-answer exercise and tap the answer box: the keyboard opens and the **Check** button stays visible above it. Do the same in Chat's compose box.
 - [ ] Mid-lesson, switch dark mode from quick settings, and on the Tab S11 open Kabar in split screen and pop-up view: the lesson stays exactly where it was.
 - [ ] Play a Radio episode, then take a call (or play a WhatsApp voice note): the episode pauses and carries on afterwards. Starting music in another app pauses it for good. The notification shows Kabar's icon.
 - [ ] In Gallery, select two screenshots and share them: Kabar is in the share sheet, reads the first and says so.
@@ -92,6 +93,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] `just apk` while online (first build fetches ML Kit from Google Maven; it must print "Kotlin glue present"), then `just install <serial>` on the S24 Ultra and Tab S11.
 - [ ] On each device: share text from WhatsApp → **Kabar**; select text → ⋮ → **Kabar**; take a screenshot → Share → **Kabar**. `adb logcat -s KabarShare` if a share is ignored.
 - [ ] On both devices, tap a word in the Reader: the card opens with its meaning and audio.
+- [ ] Cold first popover on the S24 (SPEC §25, under 100 ms): with `just logs` running, force-stop Kabar, open it, go to **Reader**, open a saved text at once and tap a word. Send me the `kabar: glossary ready in … ms` line and say whether the first card felt slower than the next ones.
 - [ ] Tab S11 with the S Pen in the Reader: hover over a word (the meaning floats up), tap it with the pen (the card opens), draw a loop around two words (the phrase is looked up), draw a line along a few words (they're highlighted and saved). Your palm on the screen shouldn't do anything while the pen is near. Tell me if any of these misses or feels slow.
 - [ ] Send me one or two real WhatsApp screenshots you decoded (and how well the bubbles came out), so I can tune the screenshot structuring on real data.
 

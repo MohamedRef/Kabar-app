@@ -120,7 +120,15 @@ exercises:
         ar_eg: banget (أوي)
         ar: banget (جدًا)
         en: banget (really, so)
-    words: [yang, nggak, sudah, banget]
+      - text: otw
+        ar_eg: في السكة
+        ar: في الطريق
+        en: on the way
+      - text: makasih
+        ar_eg: ميرسي
+        ar: شكرًا
+        en: thanks
+    words: [yg, gk, udh, bgt, otw, makasih]
   - id: e02
     type: multiple_choice
     question: gk papa kok, santai aja
@@ -137,23 +145,23 @@ exercises:
     words: [nggak, saja]
   - id: e03
     type: fill_blank
-    sentence: pantainya bagus ___!
+    sentence: pantai yg ini bagus ___!
     meaning:
-      ar_eg: (شات) البحر حلو أوي!
+      ar_eg: (شات) البحر ده حلو أوي!
       ar: (محادثة) الشاطئ جميل جدًا!
-      en: (chat) The beach is really nice!
+      en: (chat) This beach is really nice!
     options: [dr, yg, bgt]
     answers: [bgt]
-    words: [banget]
+    words: [bgt, yg]
   - id: e04
     type: build_sentence
     source:
       ar_eg: (شات) وصلت ولا لسه؟ أنا في السكة أهو.
       ar: (محادثة) هل وصلت؟ أنا في الطريق.
       en: (chat) Have you arrived yet? I'm on my way.
-    answer: udh smp blm? aku otw nih
+    answer: udh smp blm? aku otw nih wkwk
     distractors: [yg, bgt]
-    words: [sudah, sampai, belum, otw]
+    words: [sudah, sampai, belum, otw, wkwk]
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -169,12 +177,40 @@ exercises:
     words: [wkwk]
   - id: e06
     type: speaking
-    text: Hati-hati di jalan, ya!
+    text: Makasih, ya! Tunggu aja, aku otw.
     meaning:
-      ar_eg: خلي بالك في الطريق!
-      ar: انتبه في الطريق!
-      en: Be careful on the road!
-    words: [hati-hati]
+      ar_eg: ميرسي! استنى بس، أنا في السكة.
+      ar: شكرًا! انتظر فقط، أنا في الطريق.
+      en: Thanks! Just wait, I'm on my way.
+    words: [makasih, aja, otw]
+  - id: e07
+    type: multiple_choice
+    question: makasih bgt ya, aku otw wkwk
+    question_meaning:
+      ar_eg: إيه الكتابة الكاملة للرسالة دي؟
+      ar: ما الصيغة الكاملة لهذه الرسالة؟
+      en: Which is the full form of this message?
+    options: ['Terima kasih banyak, ya, aku sedang di jalan, haha.', 'Terima kasih, ya, aku sudah sampai, haha.', 'Tidak apa-apa, aku di jalan, haha.']
+    answer: 0
+    explain:
+      ar_eg: makasih = terima kasih، وotw = on the way (في السكة)، وwkwk = ضحك.
+      ar: makasih = terima kasih، وotw = في الطريق، وwkwk = ضحك.
+      en: makasih = terima kasih, otw = on the way, wkwk = laughter.
+    words: [makasih, bgt, otw, wkwk]
+  - id: e08
+    type: multiple_choice
+    question: gk papa, aku aja yg bawa makanan wkwk
+    question_meaning:
+      ar_eg: إيه الكتابة الكاملة للرسالة دي؟
+      ar: ما الصيغة الكاملة لهذه الرسالة؟
+      en: Which is the full form of this message?
+    options: ['Nggak apa-apa, aku saja yang bawa makanan, haha.', 'Nggak apa-apa, aku sudah bawa makanan, haha.', 'Nggak apa-apa, aku tidak bawa makanan, haha.']
+    answer: 0
+    explain:
+      ar_eg: gk = nggak، وaja = saja، وyg = yang. يعني «ولا يهمك، أنا اللي هجيب الأكل».
+      ar: gk = nggak، وaja = saja، وyg = yang، أي «لا بأس، أنا من سيحضر الطعام».
+      en: gk = nggak, aja = saja, yg = yang. So "It's fine, I'll be the one bringing food."
+    words: [gk, aja, yg, wkwk]
 dialogue:
   title: Chat dengan Raka
   lines:

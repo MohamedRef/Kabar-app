@@ -5,9 +5,9 @@
 //! with pan and zoom, and a side panel for the chosen place. Nothing is
 //! locked: every lesson opens, and "Take a flight" opens the level test.
 
-use std::collections::BTreeSet;
+use std::collections::{BTreeSet, HashMap};
 use std::rc::Rc;
-use std::sync::LazyLock;
+use std::sync::{LazyLock, Mutex};
 
 use dioxus::prelude::*;
 use kabar_core::journey::layout::{LevelPin, MapLayout, RouteStyle, SegmentKind};
@@ -21,9 +21,7 @@ use crate::i18n::Msg;
 use crate::map_art::{self, Size as ArtSize};
 use crate::{Db, Ui};
 use kabar_protocol::coach::CoachProfile;
-
-const CURRICULUM_ID: &str = include_str!("../../../curriculum/indonesian.yaml");
-const CURRICULUM_JV: &str = include_str!("../../../curriculum/javanese.yaml");
+use kabar_protocol::lesson::Souvenir;
 
 const JOURNEY_CSS: &str = include_str!("../assets/journey.css");
 const PAN_ZOOM_JS: &str = include_str!("../assets/journey.js");
@@ -38,8 +36,9 @@ struct Routes {
 }
 
 static ROUTES: LazyLock<Result<Routes, String>> = LazyLock::new(|| {
-    let id = parse_curriculum(CURRICULUM_ID).map_err(|e| e.to_string())?;
-    let jv = parse_curriculum(CURRICULUM_JV).map_err(|e| e.to_string())?;
+    use crate::embedded::{CURRICULUM_ID, CURRICULUM_JV, unpack};
+    let id = parse_curriculum(&unpack(CURRICULUM_ID)).map_err(|e| e.to_string())?;
+    let jv = parse_curriculum(&unpack(CURRICULUM_JV)).map_err(|e| e.to_string())?;
     let (mut id_map, mut jv_map) = (MapLayout::new(&id), MapLayout::new(&jv));
     for map in [&mut id_map, &mut jv_map] {
         map.spread_pins(PIN_GAP * pin_scale(map));
@@ -771,6 +770,17 @@ fn find_unit(unit_id: &str) -> Option<&'static Unit> {
     routes.id.levels.iter().chain(&routes.jv.levels).flat_map(|l| &l.units).find(|u| u.id == unit_id)
 }
 
+/// The lesson that goes back over a unit: its review lesson, else its
+/// first. `None` for an unknown unit.
+pub fn unit_refresher(unit_id: &str) -> Option<String> {
+    let unit = find_unit(unit_id)?;
+    unit.lessons
+        .iter()
+        .find(|l| l.kind == kabar_core::journey::LessonKind::Review)
+        .or(unit.lessons.first())
+        .map(|l| l.id.clone())
+}
+
 /// A unit's name for the daily plan: "التحية · Salam" (the UI language's
 /// title, then the target-language one, isolated so it reads right inside
 /// Arabic). `None` for an unknown id.
@@ -789,14 +799,16 @@ pub fn next_lesson_in(unit_id: &str, completed: &BTreeSet<String>) -> Option<Str
     find_unit(unit_id)?.lessons.iter().find(|l| !completed.contains(&l.id)).map(|l| l.id.clone())
 }
 
-/// Where the Indonesian journey starts: the placement result, else the level
-/// the onboarding answer points at (`None`: from the very beginning).
+/// Where the Indonesian journey starts: the placement result (its unit when
+/// the test could tell, else its level), else the level the onboarding answer
+/// points at (`None`: from the very beginning). Feed it to
+/// [`Progress::start_at`]; it is not always a level id.
 pub fn start_level(db: &Db, profile: Option<&CoachProfile>) -> Option<String> {
     let placed = db.0.borrow().placement().unwrap_or_else(|e| {
         eprintln!("kabar: reading the placement result failed: {e}");
         None
     });
-    placed.map(|p| p.start_level).or_else(|| {
+    placed.map(|p| p.start_unit.unwrap_or(p.start_level)).or_else(|| {
         let unit = kabar_core::coach::onboarding::starting_unit(profile?.start);
         unit.split_once('.').map(|(level, _)| level.to_string())
     })
@@ -813,7 +825,8 @@ pub fn learner_levels(db: &Db, profile: Option<&CoachProfile>) -> (String, Optio
     let start = start_level(db, profile);
     let id = current_unit(&completed, start.as_deref(), false)
         .map(|u| level_of(&u))
-        .or(start)
+        // Placement may start inside a level (a unit id).
+        .or(start.as_deref().map(level_of))
         .unwrap_or_else(|| "bipa1".into());
     let jv = completed
         .iter()
@@ -847,12 +860,16 @@ pub fn current_unit(completed: &BTreeSet<String>, start: Option<&str>, javanese:
 /// The souvenir a unit's lesson content ships (its target-language name and
 /// the note in the UI language). The curriculum's card is English only, so
 /// it's the fallback for units whose lessons aren't written yet.
+/// Each unit's lessons are unpacked and parsed once, not on every render.
 fn local_souvenir(unit_id: &str, lang: UiLanguage) -> Option<(String, String)> {
-    find_unit(unit_id)?.lessons.iter().rev().find_map(|l| {
-        let lesson = kabar_core::lesson::parse_lesson(crate::lesson::lesson_content(&l.id)?).ok()?;
-        let s = lesson.souvenir?;
-        Some((s.title, kabar_core::lesson::pick(&s.note, lang).to_string()))
-    })
+    static FOUND: LazyLock<Mutex<HashMap<String, Option<Souvenir>>>> = LazyLock::new(Default::default);
+    let mut found = FOUND.lock().unwrap_or_else(|e| e.into_inner());
+    let s = found.entry(unit_id.to_string()).or_insert_with(|| {
+        find_unit(unit_id)?.lessons.iter().rev().find_map(|l| {
+            kabar_core::lesson::parse_lesson(&crate::lesson::lesson_content(&l.id)?).ok()?.souvenir
+        })
+    });
+    s.as_ref().map(|s| (s.title.clone(), kabar_core::lesson::pick(&s.note, lang).to_string()))
 }
 
 #[component]

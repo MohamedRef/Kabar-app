@@ -165,6 +165,8 @@ pub struct ItemRecord {
     pub item: usize,
     pub id: String,
     pub skill: TestSkill,
+    /// The curriculum unit the item tests, when the content says.
+    pub unit: Option<String>,
     pub points: f32,
     pub scored: Scored,
     /// The learner's own grade, for items they assessed.
@@ -209,10 +211,16 @@ pub struct TestResults {
     pub skills: Vec<(TestSkill, Tally)>,
     /// Records of items not (fully) right, in test order.
     pub missed: Vec<ItemRecord>,
+    /// The units behind the missed points, most missed first (ties in
+    /// route order), with the points missed in each.
+    pub weak_units: Vec<(String, f32)>,
     /// Items not scored because the learner couldn't listen.
     pub skipped: usize,
     /// Placement: where the journey starts.
     pub start_level: Option<String>,
+    /// Placement: the first unit of `start_level` with missed points, when
+    /// the items are tagged with units.
+    pub start_unit: Option<String>,
     pub duration_ms: u64,
 }
 
@@ -339,6 +347,7 @@ impl TestRunner {
             item,
             id: it.id.clone(),
             skill: item_skill(s, it),
+            unit: it.unit.clone(),
             points: it.points(),
             scored,
             self_grade: None,
@@ -447,12 +456,32 @@ impl TestRunner {
             })
             .collect();
         let start_level = (self.test.kind == TestKind::Placement).then(|| self.start_level()).flatten();
+        let missed: Vec<ItemRecord> = self.records.iter().filter(|r| r.missed()).cloned().collect();
+        let mut by_unit: Vec<(String, f32)> = Vec::new();
+        for r in &missed {
+            let (Some(unit), &Scored::Earned(e)) = (&r.unit, &r.scored) else { continue };
+            match by_unit.iter_mut().find(|(u, _)| u == unit) {
+                Some((_, m)) => *m += r.points - e,
+                None => by_unit.push((unit.clone(), r.points - e)),
+            }
+        }
+        let start_unit = start_level.as_ref().and_then(|level| {
+            by_unit
+                .iter()
+                .map(|(u, _)| u)
+                .filter(|u| u.split_once('.').is_some_and(|(l, _)| l == level))
+                .min_by(|a, b| unit_order(a).cmp(&unit_order(b)))
+                .cloned()
+        });
+        let mut weak_units = by_unit;
+        weak_units.sort_by(|a, b| b.1.total_cmp(&a.1).then_with(|| unit_order(&a.0).cmp(&unit_order(&b.0))));
         TestResults {
             total,
             passed,
             sections,
             skills,
-            missed: self.records.iter().filter(|r| r.missed()).cloned().collect(),
+            missed,
+            weak_units,
             skipped: self
                 .records
                 .iter()
@@ -465,6 +494,7 @@ impl TestRunner {
                 })
                 .count(),
             start_level,
+            start_unit,
             duration_ms: self.elapsed_ms,
         }
     }
@@ -488,6 +518,7 @@ impl TestRunner {
         let r = self.results();
         Some(PlacementResult {
             start_level: r.start_level?,
+            start_unit: r.start_unit,
             sections: r
                 .sections
                 .iter()
@@ -510,6 +541,12 @@ impl TestRunner {
             missed: r.missed.iter().map(|m| m.id.clone()).collect(),
         }
     }
+}
+
+/// Sort key for unit ids in route order: `bipa2.u10` after `bipa2.u09`.
+fn unit_order(unit: &str) -> (String, u32) {
+    let (level, n) = unit.rsplit_once(".u").unwrap_or((unit, ""));
+    (level.to_owned(), n.parse().unwrap_or(0))
 }
 
 fn tally<'a>(records: impl Iterator<Item = &'a ItemRecord>) -> Tally {

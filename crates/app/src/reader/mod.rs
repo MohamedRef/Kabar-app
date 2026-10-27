@@ -37,17 +37,25 @@ use crate::{Db, Ui, platform};
 const READER_JS: &str = include_str!("../../assets/reader.js");
 
 /// The content pack merged over the seed; parsed once (~13k entries,
-/// ~100 ms on a desktop). `warm_up` does it at start-up, off the UI thread,
-/// so the first popover doesn't wait for it.
+/// ~150 ms and ~37 MB on a desktop). Only the Reader and Chat need it, so
+/// they `warm_up` when they open, off the UI thread; screens that never
+/// look a word up don't pay for it.
 pub fn glossary() -> &'static dyn Glossary {
     static LOCAL: OnceLock<LocalGlossary> = OnceLock::new();
     LOCAL.get_or_init(LocalGlossary::load)
 }
 
-/// Parses the glossary in the background (SPEC §25: popover under 100 ms).
+/// Parses the glossary in the background (SPEC §25: popover under 100 ms),
+/// once per run.
 pub fn warm_up() {
-    std::thread::spawn(|| {
-        glossary();
+    static STARTED: std::sync::Once = std::sync::Once::new();
+    STARTED.call_once(|| {
+        std::thread::spawn(|| {
+            let t = std::time::Instant::now();
+            glossary();
+            // `just logs` shows it: the cold first popover waits at most this long.
+            eprintln!("kabar: glossary ready in {} ms", t.elapsed().as_millis());
+        });
     });
 }
 
@@ -273,6 +281,7 @@ enum FromJs {
 
 #[component]
 pub fn Reader() -> Element {
+    use_hook(warm_up);
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let inbox = use_context::<Inbox>();
