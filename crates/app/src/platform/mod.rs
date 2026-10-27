@@ -74,6 +74,19 @@ pub enum TtsStatus {
     NoEngine,
 }
 
+/// Android: on mobile data or with Data Saver on (unknown counts as metered).
+/// Automatic downloads (app updates, audio packs) wait while this is true.
+pub fn metered_network() -> bool {
+    #[cfg(target_os = "android")]
+    {
+        android::network_metered().unwrap_or(true)
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        false
+    }
+}
+
 /// Speech rate for normal and slow replays (matches the WebView path).
 #[cfg_attr(not(target_os = "android"), allow(dead_code))]
 pub fn speech_rate(slow: bool) -> f32 {

@@ -1,239 +1,195 @@
 schema: kabar.lesson/v1
 id: bipa1.u08.l08
 language: id
-title: Marah, sedih, bosan
+title: Siapa dia?
 can_do:
-  ar_eg: 'تقول إنت حاسس بإيه: زعلان، متضايق، زهقان، عطشان، وتوصف الضحك والعياط.'
-  ar: 'أن تعبّر عن مشاعرك: غاضب، حزين، ضجِر، عطشان، وتصف الضحك والبكاء.'
-  en: Say how you feel (angry, sad, bored, thirsty) and describe laughing and crying.
+  ar_eg: تخمّن مين الشخص من وصفه.
+  ar: أن تخمّن الشخص من وصفه.
+  en: Guess a person from a description.
 slides:
-  - title: Perasaan
+  - title: Tebak, siapa dia?
     body:
-      ar_eg: |
-        marah = زعلان قوي، متعصب. sedih = حزين. bosan = زهقان. haus = عطشان (زي lapar للجوع).
-        tertawa = يضحك، tersenyum = يبتسم، menangis = يعيط.
-        lembut = ناعم أو حنين: Ibu saya orangnya lembut.
-        ولو عايز تبيّن مشاعرك بأدب، الإندونيسيين بيحبوا الهدوء: الزعل بصوت عالي مش مقبول قوي.
-      ar: |
-        marah = غاضب. sedih = حزين. bosan = ضجِر. haus = عطشان (مثل lapar للجوع).
-        tertawa = يضحك، tersenyum = يبتسم، menangis = يبكي.
-        lembut = ناعم أو رقيق: Ibu saya orangnya lembut.
-        ويقدّر الإندونيسيون الهدوء، فالغضب بصوت عالٍ غير مستحسن.
-      en: |
-        marah = angry. sedih = sad. bosan = bored. haus = thirsty (like lapar for hunger).
-        tertawa = laugh, tersenyum = smile, menangis = cry.
-        lembut = soft, gentle: Ibu saya orangnya lembut.
-        Indonesians value calm: loud anger goes down badly.
+      ar_eg: |-
+        لعبة النهارده: حد يوصف، والتاني يخمّن (tebak = خمّن).
+        كل اللي محتاجه من الوحدة دي:
+        - الصفة على طول: Dia tinggi. Orangnya sabar.
+        - tidak مع الصفة، وbukan مع الاسم: Dia tidak pendek. Dia bukan Raka.
+        - yang عشان تميّز: Dia yang pakai kacamata.
+        لو التخمين صح قول Betul! (صح!). ولو غلط: Bukan! أو Salah! (غلط!).
+      ar: |-
+        لعبة اليوم: يصف أحدهم شخصًا ويخمّن الآخر (tebak = خمِّن).
+        وكل ما تحتاجه من الوحدة:
+        - الصفة مباشرة: Dia tinggi. Orangnya sabar.
+        - tidak مع الصفة وbukan مع الاسم: Dia tidak pendek. Dia bukan Raka.
+        - yang للتمييز: Dia yang pakai kacamata.
+        إن أصاب التخمين فقل Betul! (صحيح!)، وإن أخطأ فقل Bukan! أو Salah! (خطأ!).
+      en: |-
+        Today's game: one person describes, the other guesses (tebak = guess).
+        Everything you need from this unit:
+        - Adjective straight after the person: Dia tinggi. Orangnya sabar.
+        - tidak with adjectives, bukan with nouns: Dia tidak pendek. Dia bukan Raka.
+        - yang to single someone out: Dia yang pakai kacamata.
+        If the guess is right, say Betul! (Right!). If not, Bukan! or Salah! (Wrong!).
+    grammar: id.negation.tidak-bukan
     examples:
-      - text: Bayi itu menangis. Dia lapar.
-        ar_eg: البيبي بيعيط. جعان.
-        ar: الرضيع يبكي، إنه جائع.
-        en: The baby is crying. He's hungry.
-      - text: Saya haus. Minta air putih!
-        ar_eg: أنا عطشان. مية لو سمحت!
-        ar: أنا عطشان. ماءً من فضلك!
-        en: I'm thirsty. Water, please!
-      - text: Rina tersenyum, Raka tertawa.
-        ar_eg: رينا بتبتسم، ورَكا بيضحك.
-        ar: رينا تبتسم وراكا يضحك.
-        en: Rina smiles and Raka laughs.
+      - text: Dia bukan Raka. Dia yang pakai kacamata.
+        ar_eg: هو مش راكا. هو اللي لابس نضارة.
+        ar: ليس راكا، بل الذي يلبس نظارة.
+        en: He's not Raka. He's the one wearing glasses.
+      - text: Ni Luh yang rambutnya panjang? — Betul!
+        ar_eg: ني لوه اللي شعرها طويل؟ — صح!
+        ar: ني لوه ذات الشعر الطويل؟ — صحيح!
+        en: Ni Luh, the one with long hair? — Right!
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: marah
-        ar_eg: زعلان، متعصب
-        ar: غاضب
-        en: angry
-      - text: sedih
-        ar_eg: حزين
-        ar: حزين
-        en: sad
-      - text: bosan
-        ar_eg: زهقان
-        ar: ضجِر
-        en: bored
-      - text: haus
-        ar_eg: عطشان
-        ar: عطشان
-        en: thirsty
-    words: [marah, sedih, bosan, haus]
+    type: multiple_choice
+    question: Tebak! Dia guru. Orangnya sabar, dan dia pakai kacamata. Siapa dia?
+    options: [Ni Luh, Pak Irwan, Raka]
+    answer: 1
+    explain:
+      ar_eg: مدرس صبور ولابس نضارة، يبقى الأستاذ إروان.
+      ar: 'معلم صبور يلبس نظارة: إنه الأستاذ إروان.'
+      en: 'A patient teacher in glasses: Pak Irwan.'
+    words: [tebak, sabar, kacamata, guru]
   - id: e02
-    type: match_pairs
-    pairs:
-      - text: tertawa
-        ar_eg: يضحك
-        ar: يضحك
-        en: laugh
-      - text: tersenyum
-        ar_eg: يبتسم
-        ar: يبتسم
-        en: smile
-      - text: menangis
-        ar_eg: يعيط
-        ar: يبكي
-        en: cry
-      - text: lembut
-        ar_eg: حنين، ناعم
-        ar: رقيق
-        en: gentle
-    words: [tertawa, tersenyum, menangis, lembut]
-  - id: e03
     type: listen
-    text: Saya haus. Minta air putih, ya!
-    question:
-      ar_eg: هو عايز إيه؟
-      ar: ماذا يريد؟
-      en: What does he want?
-    options: [مية, أكل, ينام]
+    text: Salah, dia bukan Raka.
+    options: ['Salah, dia bukan Raka.', 'Salah, dia tidak Raka.', 'Betul, dia Raka.']
     answer: 0
     meaning:
-      ar_eg: أنا عطشان. مية لو سمحت!
-      ar: أنا عطشان. ماءً من فضلك!
-      en: I'm thirsty. Water, please!
-    words: [haus]
+      ar_eg: غلط، ده مش راكا.
+      ar: خطأ، ليس راكا.
+      en: Wrong, he isn't Raka.
+    words: [salah, bukan]
+  - id: e03
+    type: fill_blank
+    sentence: Raka lucu, tapi dia ___ sabar.
+    meaning:
+      ar_eg: راكا دمه خفيف، بس مش صبور.
+      ar: راكا ظريف، لكنه ليس صبورًا.
+      en: Raka is funny, but he isn't patient.
+    answers: [tidak, nggak, gak]
+    explain:
+      ar_eg: sabar صفة، يبقى tidak.
+      ar: sabar صفة، فتُنفى بـ tidak.
+      en: sabar is an adjective → tidak.
+    words: [tidak, sabar, lucu]
   - id: e04
     type: fill_blank
-    sentence: Bayi itu ___. Dia lapar.
+    sentence: Salah! Dia ___ guru. Dia dokter.
     meaning:
-      ar_eg: البيبي ده ___. جعان.
-      ar: ذلك الرضيع ___، إنه جائع.
-      en: That baby is ___. He's hungry.
-    options: [menangis, tertawa, marah]
-    answers: [menangis]
-    words: [menangis, tertawa, marah]
-  - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الفيلم طويل ومفيش حاجة بتحصل. إنت حاسس بإيه؟
-      ar: الفيلم طويل ولا يحدث فيه شيء. بمَ تشعر؟
-      en: The film is long and nothing happens. How do you feel?
-    options: [bosan, haus, lembut]
-    answer: 0
+      ar_eg: غلط! هي مش مدرسة. هي دكتورة.
+      ar: خطأ! ليست معلمة، إنها طبيبة.
+      en: Wrong! She isn't a teacher. She's a doctor.
+    answers: [bukan]
     explain:
-      ar_eg: bosan = زهقان. haus عطشان، وlembut حنين.
-      ar: bosan ضجِر، أما haus فعطشان وlembut رقيق.
-      en: bosan = bored; haus is thirsty and lembut gentle.
-    words: [bosan, haus, lembut]
-  - id: e06
-    type: fill_blank
-    sentence: Filmnya lucu sekali! Kami ___.
-    meaning:
-      ar_eg: الفيلم مضحك جدًا! إحنا ___.
-      ar: الفيلم مضحك جدًا! نحن ___.
-      en: The film's so funny! We're ___.
-    options: [tertawa, menangis, sedih]
-    answers: [tertawa]
-    words: [tertawa, menangis, sedih]
-  - id: e07
+      ar_eg: guru اسم، يبقى bukan.
+      ar: guru اسم، فيُنفى بـ bukan.
+      en: guru is a noun → bukan.
+    words: [salah, bukan, guru]
+  - id: e05
     type: build_sentence
     source:
-      ar_eg: بابا زعلان، أنا اتأخرت.
-      ar: أبي غاضب، فقد تأخّرت.
-      en: Dad is angry. I was late.
-    answer: Ayah marah, saya terlambat.
-    distractors: [bosan, lembut]
-    words: [marah]
+      ar_eg: هو إنسان صبور وشاطر.
+      ar: إنه شخص صبور وذكي.
+      en: He's a patient and smart person.
+    answer: Orangnya sabar dan pintar.
+    alternatives: [Orangnya pintar dan sabar.]
+    distractors: [tidak, yang]
+    words: [sabar, pintar]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: هو اللي لابس نضارة.
+      ar: هو الذي يلبس نظارة.
+      en: He's the one wearing glasses.
+    answer: Dia yang pakai kacamata.
+    distractors: [mana, bukan]
+    words: [yang, pakai, kacamata]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أنهي واحد الأستاذ إروان؟
+      ar: أيّهم الأستاذ إروان؟
+      en: Which one is Pak Irwan?
+    answers: ['Pak Irwan yang mana?', Pak Irwan yang mana, 'Yang mana Pak Irwan?', Yang mana Pak Irwan]
+    words: [yang mana]
   - id: e08
     type: translate
-    direction: from_target
-    source_text: Ibu saya orangnya lembut dan selalu tersenyum.
-    answers_meaning:
-      ar_eg: [مامتي حنينة ودايمًا بتبتسم, أمي إنسانة حنينة ودايمًا مبتسمة]
-      ar: [أمي رقيقة ودائمًا تبتسم, أمي شخص رقيق ودائم الابتسام]
-      en: [My mother is gentle and always smiling, My mum is a gentle person who always smiles]
-    words: [lembut, tersenyum]
-  - id: e09
-    type: speaking
-    text: Saya sedih, tapi saya tersenyum.
-    meaning:
-      ar_eg: أنا حزين، بس بابتسم.
-      ar: أنا حزين، لكنّي أبتسم.
-      en: I'm sad, but I'm smiling.
-    words: [sedih, tersenyum]
-  - id: e10
-    type: multiple_choice
-    question: Rina tidak suka filmnya. Dia ___.
-    options: [bosan, haus, tertawa]
-    answer: 0
+    direction: to_target
+    source_meaning:
+      ar_eg: هي مش ني لوه. شعر ني لوه طويل.
+      ar: ليست ني لوه. شعر ني لوه طويل.
+      en: She's not Ni Luh. Ni Luh's hair is long.
+    answers: [Dia bukan Ni Luh. Rambut Ni Luh panjang., Dia bukan Ni Luh. Rambut Ni Luh panjang, 'Dia bukan Ni Luh, rambut Ni Luh panjang.', Itu bukan Ni Luh. Rambut Ni Luh panjang., Bukan Ni Luh. Rambut Ni Luh panjang.]
     explain:
-      ar_eg: 'ما بتحبش الفيلم، فهي زهقانة: bosan.'
-      ar: 'لا تحبّ الفيلم فهي ضجِرة: bosan.'
-      en: 'She doesn''t like the film, so she''s bored: bosan.'
-    words: [bosan, haus, tertawa]
+      ar_eg: Ni Luh اسم، يبقى bukan. وrambut Ni Luh = شعر ني لوه (الصاحب بعد الحاجة).
+      ar: Ni Luh اسم فيُنفى بـ bukan، وrambut Ni Luh = شعر ني لوه.
+      en: Ni Luh is a noun → bukan; rambut Ni Luh = Ni Luh's hair (owner after the thing).
+    words: [bukan, rambut, panjang]
+  - id: e09
+    type: fill_blank
+    sentence: Tebak, siapa dia? — Raka? — ___! Dia Pak Irwan.
+    meaning:
+      ar_eg: خمّن، مين ده؟ — راكا؟ — غلط! ده الأستاذ إروان.
+      ar: خمّن، من هذا؟ — راكا؟ — خطأ! إنه الأستاذ إروان.
+      en: Guess who he is! — Raka? — Wrong! It's Pak Irwan.
+    options: [Salah, Betul, Tebak]
+    answers: [Salah]
+    words: [tebak, salah]
+  - id: e10
+    type: speaking
+    text: Tebak, siapa dia? Dia tinggi, rambutnya pendek, dan orangnya lucu.
+    meaning:
+      ar_eg: خمّن مين ده؟ هو طويل، شعره قصير، ودمه خفيف.
+      ar: خمّن من هو؟ طويل، شعره قصير، وظريف.
+      en: Guess who? He's tall, his hair is short, and he's funny.
+    words: [tebak, tinggi, rambut, pendek, lucu]
 dialogue:
+  title: Tebak-tebakan di Petak Sembilan
   lines:
-    - speaker: Ni Luh
-      text: Mohamed, kamu bosan?
-      ar_eg: يا محمد، إنت زهقت؟
-      ar: يا محمد، هل ضجرت؟
-      en: Mohamed, are you bored?
+    - speaker: Rina
+      text: Mohamed, coba tebak. Siapa dia? Orangnya sabar dan pintar.
+      ar_eg: محمد، جرّب تخمّن. مين ده؟ إنسان صبور وشاطر.
+      ar: 'يا محمد، حاول أن تخمّن: من هو؟ إنه صبور وذكي.'
+      en: Mohamed, try to guess. Who is it? He's patient and smart.
     - speaker: Mohamed
-      text: Tidak. Tapi saya haus! Ada air?
-      ar_eg: لأ. بس أنا عطشان! فيه مية؟
-      ar: لا، لكنّي عطشان! أعندك ماء؟
-      en: No. But I'm thirsty! Is there water?
-    - speaker: Ni Luh
-      text: Ada. Gadis di film itu menangis.
-      ar_eg: فيه. البنت اللي في الفيلم بتعيط.
-      ar: نعم. الفتاة في الفيلم تبكي.
-      en: Yes. The girl in the film is crying.
+      text: Hmm… Raka, bukan?
+      ar_eg: امم… راكا، مش كده؟
+      ar: همم… راكا، أليس كذلك؟
+      en: Hmm… Raka, isn't it?
+    - speaker: Rina
+      text: Bukan! Raka lucu, tapi dia tidak sabar.
+      ar_eg: لأ! راكا دمه خفيف، بس مش صبور خالص.
+      ar: لا! راكا ظريف، لكنه ليس صبورًا.
+      en: No! Raka is funny, but he isn't patient.
     - speaker: Mohamed
-      text: Dia sedih. Ayahnya marah.
-      ar_eg: هي حزينة. أبوها زعلان.
-      ar: إنها حزينة، وأبوها غاضب.
-      en: She's sad. Her father is angry.
-    - speaker: Ni Luh
-      text: Tapi ibunya lembut. Sekarang dia tersenyum!
-      ar_eg: بس مامتها حنينة. ودلوقتي بتبتسم!
-      ar: لكن أمها رقيقة، والآن تبتسم!
-      en: But her mother is gentle. Now she's smiling!
+      text: Dia guru?
+      ar_eg: هو مدرس؟
+      ar: هل هو معلم؟
+      en: Is he a teacher?
+    - speaker: Rina
+      text: Ya, dia guru. Dia yang pakai kacamata.
+      ar_eg: أيوه، مدرس. هو اللي لابس نضارة.
+      ar: نعم، معلم. هو الذي يلبس نظارة.
+      en: Yes, he's a teacher. He's the one wearing glasses.
     - speaker: Mohamed
-      text: Dan sekarang semua tertawa. Filmnya bagus!
-      ar_eg: ودلوقتي كله بيضحك. الفيلم حلو!
-      ar: والآن يضحك الجميع. الفيلم جميل!
-      en: And now everyone's laughing. It's a good film!
+      text: Oh, Pak Irwan!
+      ar_eg: آه، الأستاذ إروان!
+      ar: آه، الأستاذ إروان!
+      en: Oh, Pak Irwan!
 new_words:
-  - word: marah
-    pos: adjective
-    ar_eg: زعلان، متعصب
-    ar: غاضب
-    en: angry
-  - word: sedih
-    pos: adjective
-    ar_eg: حزين
-    ar: حزين
-    en: sad
-  - word: bosan
-    pos: adjective
-    ar_eg: زهقان
-    ar: ضجِر، ملول
-    en: bored
-  - word: haus
-    pos: adjective
-    ar_eg: عطشان
-    ar: عطشان
-    en: thirsty
-  - word: tertawa
+  - word: tebak
     pos: verb
-    ar_eg: يضحك
-    ar: يضحك
-    en: laugh
-  - word: tersenyum
-    pos: verb
-    ar_eg: يبتسم
-    ar: يبتسم
-    en: smile
-  - word: menangis
-    pos: verb
-    ar_eg: يعيط
-    ar: يبكي
-    en: cry
-  - word: lembut
+    ar_eg: يخمّن
+    ar: يخمّن
+    en: to guess
+  - word: salah
     pos: adjective
-    ar_eg: حنين، ناعم
-    ar: رقيق، ناعم
-    en: gentle, soft
+    ar_eg: غلط
+    ar: خطأ
+    en: wrong
 review:
   status: draft
   verified: false

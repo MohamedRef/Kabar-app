@@ -1,0 +1,174 @@
+schema: kabar.lesson/v1
+id: j5.u03.l10
+language: jv
+title: Tulisane Mohamed
+can_do:
+  ar_eg: تقرا مذكّراتك المكتوبة على السمع وتصلّحها، وتسيب الـ o الحقيقية زي ما هي.
+  ar: أن تقرأ مذكراتك المكتوبة كما تُنطق وتصحّحها، مع إبقاء o الحقيقية كما هي.
+  en: Read your own ear-spelled diary, fix it, and leave the real o's alone.
+slides:
+  - title: Tulisan ing HP
+    body:
+      ar_eg: |
+        دي مذكّرات كتبتها إنت على موبايلك امبارح، على السمع زي أي حد في الشات. آيو قريتها وقالت: «فيه غلطات، بس مش كل o غلط!»
+        اقرا وافهم الأول، وبعدين قرّر: كل o هنا a مكتوبة على السمع، ولا o حقيقية زي loro (اتنين)؟
+      ar: |
+        هذه مذكرات كتبتها على هاتفك أمس كما تُنطق، كأي شخص في الدردشة. قرأتها آيو وقالت: «فيها أخطاء، لكن ليست كل o خطأ!»
+        اقرأ وافهم أولًا، ثم قرّر: هل كل o هنا a مكتوبة كما تُسمع، أم o حقيقية مثل loro (اثنان)؟
+      en: |
+        Here's the diary you typed on your phone yesterday, spelled by ear like anyone in a chat. Ayu read it and said: "There are mistakes, but not every o is wrong!"
+        Read for meaning first, then decide: is each o here an a written by ear, or a real o like loro (two)?
+    grammar: jv.orthography
+    examples:
+      - text: Dino iki aku tuku puthu loro neng Simpang Lima.
+        ar_eg: النهارده اشتريت اتنين بوتو في سيمبانج ليما. (الصح Dina … loro تفضل loro)
+        ar: اشتريتُ اليوم قطعتي بوتو في سيمبانغ ليما. (القياسي Dina … وloro تبقى loro)
+        en: Today I bought two puthu at Simpang Lima. (standard Dina … loro stays loro)
+      - text: Puthune enak tenan, nanging hawane adem.
+        ar_eg: البوتو كان حلو بجد، بس الجو كان برد. (الصح adhem)
+        ar: كان البوتو لذيذًا حقًا، لكن الجو كان باردًا. (القياسي adhem)
+        en: The puthu was really tasty, but the weather was cold. (standard adhem)
+      - text: Sesuk aku arep teko maneh karo Mbak Ayu.
+        ar_eg: بكرة هاجي تاني مع آيو. (الصح teka)
+        ar: غدًا سآتي مرة أخرى مع آيو. (القياسي teka)
+        en: Tomorrow I'll come again with Ayu. (standard teka)
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: محمد اشترى كام بوتو؟
+      ar: كم قطعة بوتو اشترى محمد؟
+      en: How many puthu did Mohamed buy?
+    options: [siji, loro, telu]
+    answer: 1
+  - id: e02
+    type: multiple_choice
+    question: Dino iki aku tuku puthu loro neng Simpang Lima.
+    question_meaning:
+      ar_eg: أنهي كلمة هنا لازم تتغيّر في الإملا الصح؟
+      ar: أي كلمة هنا يجب أن تتغير في الإملاء القياسي؟
+      en: Which word here must change in standard spelling?
+    options: [Dino, loro, puthu]
+    answer: 0
+    explain:
+      ar_eg: dino = dina (يوم). loro هنا «اتنين»، فيها o حقيقية فتفضل زي ما هي.
+      ar: dino = dina (يوم)، أما loro هنا فهي «اثنان» بـ o حقيقية فتبقى كما هي.
+      en: dino = dina (day). loro here is "two", with a real o, so it stays.
+    words: [dina, loro]
+  - id: e03
+    type: listen
+    text: Puthune enak tenan, nanging hawane adhem.
+    question:
+      ar_eg: الجو كان عامل إزاي؟
+      ar: كيف كان الجو؟
+      en: What was the weather like?
+    options: [panas, udan, adhem]
+    answer: 2
+    meaning:
+      ar_eg: البوتو كان حلو بجد، بس الجو كان برد.
+      ar: كان البوتو لذيذًا حقًا، لكن الجو كان باردًا.
+      en: The puthu was really tasty, but the weather was cold.
+    words: [adhem, hawa]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: dina
+        ar_eg: يوم
+        ar: يوم
+        en: day
+      - text: loro
+        ar_eg: اتنين
+        ar: اثنان
+        en: two
+      - text: lara
+        ar_eg: عيان
+        ar: مريض
+        en: sick
+      - text: teka
+        ar_eg: ييجي
+        ar: يأتي
+        en: come
+      - text: kliru
+        ar_eg: غلط
+        ar: خطأ
+        en: wrong
+    words: [dina, loro, lara, kliru]
+  - id: e05
+    type: fill_blank
+    sentence: Sesuk aku arep ___ maneh karo Mbak Ayu.
+    meaning:
+      ar_eg: بكرة هاجي تاني مع آيو.
+      ar: غدًا سآتي مرة أخرى مع آيو.
+      en: Tomorrow I'll come again with Ayu.
+    options: [teko, teka]
+    answers: [teka]
+    explain:
+      ar_eg: teka بتتنطق «تيكو»، بس بتتكتب بـ a.
+      ar: teka تُنطق «تيكو» لكنها تُكتب بـ a.
+      en: teka is said "teko" but written with a.
+    words: []
+  - id: e06
+    type: dictation
+    text: Dina iki aku tuku puthu loro neng Simpang Lima.
+    meaning:
+      ar_eg: النهارده اشتريت اتنين بوتو في سيمبانج ليما.
+      ar: اشتريتُ اليوم قطعتي بوتو في سيمبانغ ليما.
+      en: Today I bought two puthu at Simpang Lima.
+    explain:
+      ar_eg: هتسمع «دينو» و«لورو». الأولى dina، والتانية loro (اتنين) زي ما هي.
+      ar: 'ستسمع «دينو» و«لورو»: الأولى dina، والثانية loro (اثنان) كما هي.'
+      en: 'You hear "dino" and "loro": the first is dina, the second stays loro (two).'
+    words: [dina, loro, puthu]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بالإملا الصح) البوتو كان حلو بجد، بس الجو كان برد.
+      ar: (بالإملاء القياسي) كان البوتو لذيذًا حقًا، لكن الجو كان باردًا.
+      en: (standard spelling) The puthu was really tasty, but the weather was cold.
+    answers:
+      - Puthune enak tenan, nanging hawane adhem.
+      - Puthune enak banget, nanging hawane adhem.
+      - Puthune enak tenan, ning hawane adhem.
+      - Puthune enak banget, ning hawane adhem.
+      - Puthune enak tenan, nanging hawane adhem banget.
+    words: [adhem, puthu]
+  - id: e08
+    type: speaking
+    text: Sesuk aku arep teka maneh karo Mbak Ayu.
+    meaning:
+      ar_eg: بكرة هاجي تاني مع آيو.
+      ar: غدًا سآتي مرة أخرى مع آيو.
+      en: Tomorrow I'll come again with Ayu.
+    words: []
+dialogue:
+  title: Ana sing kliru
+  lines:
+    - speaker: Mbak Ayu
+      text: Mohamed, tulisanmu apik, nanging ana sing kliru.
+      ar_eg: يا محمد، كتابتك حلوة، بس فيه حاجات غلط.
+      ar: يا محمد، كتابتك جميلة، لكن فيها أخطاء.
+      en: Mohamed, your writing is good, but there are some mistakes.
+    - speaker: Mohamed
+      text: Sing endi, Mbak?
+      ar_eg: أنهي يا آيو؟
+      ar: أين يا آيو؟
+      en: Which ones, Ayu?
+    - speaker: Mbak Ayu
+      text: '"Dino" iku kliru. Tulisan baku "dina".'
+      ar_eg: «dino» غلط. الإملا الصح «dina».
+      ar: «dino» خطأ، والإملاء القياسي «dina».
+      en: '"Dino" is wrong. The standard spelling is "dina".'
+    - speaker: Mohamed
+      text: Lan "loro"? Iku ya kliru?
+      ar_eg: و«loro»؟ دي كمان غلط؟
+      ar: و«loro»؟ هل هي خطأ أيضًا؟
+      en: And "loro"? Is that wrong too?
+    - speaker: Mbak Ayu
+      text: Ora. Puthu loro, angka loro. Iku bener!
+      ar_eg: لأ. اتنين بوتو، الرقم اتنين. دي صح!
+      ar: لا. قطعتا بوتو، الرقم اثنان. هذه صحيحة!
+      en: No. Two puthu, the number two. That one's right!
+review:
+  status: draft
+  verified: false

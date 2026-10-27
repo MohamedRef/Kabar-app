@@ -51,15 +51,21 @@ exercises:
         en: go straight
     words: [belakang, antara, luar, belok, lurus]
   - id: e02
-    type: multiple_choice
-    question: Besok kami pergi ___ Kepulauan Seribu.
-    options: [di, ke, dari]
-    answer: 1
-    explain:
-      ar_eg: pergi حركة لمكان، يبقى ke.
-      ar: pergi حركة نحو مكان، فهي ke.
-      en: pergi is movement to a place → ke.
-    words: [ke, pergi]
+    type: match_pairs
+    pairs:
+      - text: sepeda
+        ar_eg: عجلة
+        ar: درّاجة
+        en: bicycle
+      - text: taksi
+        ar_eg: تاكسي
+        ar: سيارة أجرة
+        en: taxi
+      - text: motor
+        ar_eg: موتوسيكل
+        ar: درّاجة نارية
+        en: motorbike
+    words: [sepeda, taksi, motor]
   - id: e03
     type: multiple_choice
     question: Kereta ___ Bandung sudah datang.

@@ -12,19 +12,19 @@ slides:
       ar_eg: |
         ayo = يلا: Ayo ketemu! = يلا نتقابل!
         ketemu = يقابل، kenal = يعرف (شخص): Kowe kenal Cak Heru?
-        nyapa = يسلّم على حد ويسأل عليه.
+        salam = سلام، تحية: Salam saka Mesir! = سلام من مصر!
         pamit = يستأذن ويمشي، وdhisik = الأول: Aku pamit dhisik = أستأذن أنا.
         rame = زحمة ودوشة، sepi = هادي وفاضي.
       ar: |
         ayo = هيّا: Ayo ketemu! = هيّا نلتقِ!
         ketemu = يلتقي، kenal = يعرف (شخصًا): Kowe kenal Cak Heru?
-        nyapa = يحيّي أحدًا ويسأل عنه.
+        salam = تحية، سلام: Salam saka Mesir! = تحيّة من مصر!
         pamit = يستأذن في الانصراف، وdhisik = أوّلًا: Aku pamit dhisik = أستأذن أنا.
         rame = مزدحم وصاخب، sepi = هادئ وخالٍ.
       en: |
         ayo = come on, let's: Ayo ketemu! = Let's meet!
         ketemu = meet, kenal = know (a person): Kowe kenal Cak Heru?
-        nyapa = greet someone, say hello.
+        salam = greetings, regards: Salam saka Mesir! = Greetings from Egypt!
         pamit = take your leave, and dhisik = first: Aku pamit dhisik = I'll be off first.
         rame = busy, lively, noisy; sepi = quiet, empty.
     examples:
@@ -64,10 +64,10 @@ exercises:
   - id: e02
     type: match_pairs
     pairs:
-      - text: nyapa
-        ar_eg: يسلّم على
-        ar: يحيّي
-        en: greet
+      - text: salam
+        ar_eg: سلام، تحية
+        ar: تحية، سلام
+        en: greetings, regards
       - text: pamit
         ar_eg: يستأذن ويمشي
         ar: يستأذن في الانصراف
@@ -80,7 +80,7 @@ exercises:
         ar_eg: هادي وفاضي
         ar: هادئ وخالٍ
         en: quiet, empty
-    words: [nyapa, pamit, rame, sepi]
+    words: [salam, pamit, rame, sepi]
   - id: e03
     type: listen
     text: Aku pamit dhisik, Mas.
@@ -120,27 +120,27 @@ exercises:
     words: [ayo, pamit, sepi]
   - id: e06
     type: fill_blank
-    sentence: 'Aku ___ Pakdhe: «Sugeng enjing, Pakdhe!»'
+    sentence: ___, Pakdhe! Piye kabare?
     meaning:
-      ar_eg: 'أنا ___ عمّو: «صباح الخير يا عمّو!»'
-      ar: 'أنا ___ العمّ: «صباح الخير يا عمّ!»'
-      en: 'I ___ Pakdhe: "Good morning, Pakdhe!"'
-    options: [nyapa, pamit, ketemu]
-    answers: [nyapa]
-    words: [nyapa, pamit, ketemu]
+      ar_eg: ___ يا عمّو! أخبارك إيه؟
+      ar: ___ يا عمّ! كيف حالك؟
+      en: ___, Pakdhe! How are you?
+    options: [Salam, Pamit, Ketemu]
+    answers: [Salam]
+    words: [salam, pamit, ketemu]
   - id: e07
     type: multiple_choice
     question_meaning:
       ar_eg: «المكان هادي وفاضي» — أنهي كلمة؟
       ar: «المكان هادئ وخالٍ» — أيّ كلمة؟
       en: '"The place is quiet and empty" — which word?'
-    options: [rame, sepi, nyapa]
+    options: [rame, sepi, salam]
     answer: 1
     explain:
       ar_eg: sepi = هادي وفاضي، وعكسها rame.
       ar: sepi = هادئ وخالٍ، وعكسها rame.
       en: sepi = quiet, empty; the opposite is rame.
-    words: [sepi, rame, nyapa]
+    words: [sepi, rame, salam]
   - id: e08
     type: build_sentence
     source:
@@ -220,11 +220,12 @@ new_words:
     ar_eg: يعرف (شخص)
     ar: يعرف (شخصًا)
     en: know (a person)
-  - word: nyapa
-    pos: verb
-    ar_eg: يسلّم على
-    ar: يحيّي
-    en: greet, say hello to
+  - word: salam
+    pos: noun
+    arabic: سَلام
+    ar_eg: سلام، تحية
+    ar: تحية، سلام
+    en: greetings, regards
   - word: pamit
     pos: verb
     ar_eg: يستأذن ويمشي

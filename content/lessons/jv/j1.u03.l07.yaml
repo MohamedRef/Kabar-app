@@ -88,19 +88,13 @@ exercises:
         en: ask for
     words: [wis, durung, lagi, isih, ndelok, njaluk]
   - id: e03
-    type: multiple_choice
-    question: Kowe wis tekan?
-    question_meaning:
-      ar_eg: إنت لسه في القطر. ترد إزاي؟
-      ar: ما زلت في القطار. بمَ تجيب؟
-      en: You're still on the train. How do you answer?
-    options: ['Durung, isih nang sepur.', Arep turu., Wis.]
-    answer: 0
-    explain:
-      ar_eg: durung = لسه ماوصلتش، وisih nang sepur = لسه في القطر.
-      ar: durung = لم أصل بعد، وisih nang sepur = ما زلت في القطار.
-      en: durung = not yet; isih nang sepur = still on the train.
-    words: [durung, isih]
+    type: dictation
+    text: Sek, aku kesusu, durung mbales.
+    meaning:
+      ar_eg: استنى، أنا مستعجل، لسه ما رديتش.
+      ar: لحظة، أنا مستعجل، لم أردّ بعد.
+      en: Hold on, I'm in a hurry, haven't replied yet.
+    words: [kesusu, mbales]
   - id: e04
     type: multiple_choice
     question: Jebul dheweke dokter!
@@ -172,21 +166,21 @@ exercises:
       en: ['Guys, I don''t understand anything.', 'Guys, I don''t get anything', 'Mate, I don''t understand anything']
     words: [gak, ngerti, apa-apa]
   - id: e11
-    type: dictation
-    text: Sek, aku kesusu, durung mbales.
-    meaning:
-      ar_eg: استنى، أنا مستعجل، لسه ما رديتش.
-      ar: لحظة، أنا مستعجل، لم أردّ بعد.
-      en: Hold on, I'm in a hurry, haven't replied yet.
-    words: [kesusu, mbales]
-  - id: e12
-    type: speaking
-    text: Aku ora luwe, malah ngelak.
-    meaning:
-      ar_eg: أنا مش جعان، بالعكس عطشان.
-      ar: لست جائعًا، بل عطشان.
-      en: I'm not hungry; thirsty, if anything.
-    words: [malah]
+    type: match_pairs
+    pairs:
+      - text: karo
+        ar_eg: مع (= dengan / sama)
+        ar: مع (= dengan / sama)
+        en: with (= dengan / sama)
+      - text: sing
+        ar_eg: اللي (= yang)
+        ar: الذي (= yang)
+        en: that, which, the one (= yang)
+      - text: ana
+        ar_eg: فيه / موجود (= ada؛ Arek onok)
+        ar: يوجد (= ada؛ وفي Arek onok)
+        en: there is, to exist (= ada; Arek onok)
+    words: [karo, sing, ana]
 dialogue:
   title: Grup "Arek Tunjungan"
   lines:

@@ -1,197 +1,236 @@
 schema: kabar.lesson/v1
 id: bipa2.u08.l04
 language: id
-title: Pesan ojek
+title: Bensin, ban, bengkel
 can_do:
-  ar_eg: تطلب أوجيك من الأبلكيشن وتدردش مع السواق.
-  ar: أن تحجز رحلة بدرّاجة الأجرة وتتحدث مع السائق.
-  en: Book a ride and chat with the driver.
+  ar_eg: 'تتصرف لو العربية أو الموتوسيكل عطل: البنزين والكاوتش والورشة والرخصة والمرور.'
+  ar: 'أن تتصرّف إذا تعطّلت السيارة أو الدراجة النارية: الوقود والإطار والورشة والرخصة والمرور.'
+  en: 'Cope when a car or scooter breaks down: fuel, tyres, the garage, your licence and traffic.'
 slides:
-  - title: Pesan ojek online
+  - title: Di jalan
     body:
       ar_eg: |
-        في بالي أغلب الناس بتطلب ojek من أبلكيشن على الموبايل. الخطوات بالترتيب:
-        - Pertama, buka aplikasi. (الأول افتح الأبلكيشن)
-        - Lalu, tulis tujuan. (وبعدين اكتب المكان اللي رايحه)
-        - Setelah itu, tunggu sopir. (بعد كده استنى السواق) وابعتله إنت فين ولابس إيه.
-        - Akhirnya, bayar: tunai (كاش) أو في الأبلكيشن.
-        والسواق هيديك helm (خوذة). وقوله «Pelan-pelan, Pak» لو الطريق بيزحلق.
+        kendaraan = عربية أو أي حاجة بتمشي على الطريق. bensin = بنزين، ban = كاوتش (ban bocor = الكاوتش مخرّم).
+        bengkel = ورشة ميكانيكي. mogok = العربية عطلت ووقفت (ومعناها كمان إضراب).
+        jalan tol = طريق سريع بفلوس. lalu lintas = المرور. SIM = رخصة السواقة (Surat Izin Mengemudi).
       ar: |
-        يطلب أكثر الناس في بالي درّاجة الأجرة بتطبيق على الهاتف، بهذا الترتيب:
-        - Pertama, buka aplikasi. (أولًا افتح التطبيق)
-        - Lalu, tulis tujuan. (ثم اكتب وجهتك)
-        - Setelah itu, tunggu sopir. (بعد ذلك انتظر السائق) وأخبره بمكانك وما ترتديه.
-        - Akhirnya, bayar: tunai (نقدًا) أو عبر التطبيق.
-        وسيعطيك السائق helm (خوذة).
+        kendaraan = مركبة (كل ما يسير على الطريق). bensin = وقود، ban = إطار (ban bocor = إطار مثقوب).
+        bengkel = ورشة إصلاح. mogok = تعطّلت وتوقّفت (وتعني أيضًا إضرابًا).
+        jalan tol = طريق سريع برسوم. lalu lintas = حركة المرور. SIM = رخصة القيادة (Surat Izin Mengemudi).
       en: |
-        In Bali most people book an ojek in a phone app. In order:
-        - Pertama, buka aplikasi. (First, open the app.)
-        - Lalu, tulis tujuan. (Then, type your destination.)
-        - Setelah itu, tunggu sopir. (After that, wait for the driver) and tell him where you are and what you're wearing.
-        - Akhirnya, bayar: tunai (cash) or in the app.
-        The driver hands you a helm (helmet). Say "Pelan-pelan, Pak" if the road is slippery.
-    grammar: id.conjunction.sequence
+        kendaraan = vehicle. bensin = petrol, ban = tyre (ban bocor = a flat tyre).
+        bengkel = repair garage. mogok = break down, stall (also: go on strike).
+        jalan tol = toll road. lalu lintas = traffic. SIM = driving licence (Surat Izin Mengemudi).
     examples:
-      - text: Saya di depan pura, pakai baju biru.
-        ar_eg: أنا قدام المعبد، لابس قميص أزرق.
-        ar: أنا أمام المعبد، أرتدي قميصًا أزرق.
-        en: I'm in front of the temple, wearing a blue shirt.
+      - text: Motor saya mogok di jalan.
+        ar_eg: الموتوسيكل بتاعي عطل في الطريق.
+        ar: تعطّلت دراجتي النارية في الطريق.
+        en: My scooter broke down on the road.
+      - text: Ban mobil ini bocor. Ayo ke bengkel.
+        ar_eg: كاوتش العربية دي مخرّم. يلا على الورشة.
+        ar: إطار هذه السيارة مثقوب. هيّا إلى الورشة.
+        en: This car has a flat tyre. Let's go to the garage.
+      - text: Jalan tol ini bayar, tapi cepat.
+        ar_eg: الطريق السريع ده بفلوس، بس سريع.
+        ar: هذا الطريق برسوم، لكنه سريع.
+        en: This toll road costs money, but it's fast.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: السواق بعتلك «Mas di mana?». ترد بإيه؟
-      ar: أرسل إليك السائق «Mas di mana?». بماذا تردّ؟
-      en: The driver texts "Mas di mana?" (Where are you?). Your reply?
-    options: [Saya naik ojek sambil makan., 'Saya di depan pura, pakai baju biru.', Akhirnya saya pulang.]
-    answer: 1
-    words: [di depan, pakai]
-  - id: e02
-    type: listen
-    text: Tunggu lima menit, ya.
-    options: ['Tunggu lima menit, ya.', 'Tunggu satu menit, ya.', 'Tunggu lima belas menit, ya.']
-    answer: 0
-    words: [tunggu, menit]
-  - id: e03
-    type: fill_blank
-    sentence: Bayar ___ atau pakai aplikasi?
-    meaning:
-      ar_eg: هتدفع كاش ولا بالأبلكيشن؟
-      ar: هل تدفع نقدًا أم عبر التطبيق؟
-      en: Paying cash or with the app?
-    options: [tujuan, helm, tunai]
-    answers: [tunai]
-    words: [tunai, aplikasi]
-  - id: e04
-    type: build_sentence
-    source:
-      ar_eg: الأول، افتح أبلكيشن الأوجيك.
-      ar: أولًا، افتح تطبيق درّاجة الأجرة.
-      en: First, open the ojek app.
-    answer: Pertama, buka aplikasi ojek.
-    distractors: [akhirnya, tutup]
-    words: [pertama, buka, aplikasi]
-  - id: e05
-    type: build_sentence
-    source:
-      ar_eg: لو سمحت بالراحة، الطريق بيزحلق.
-      ar: من فضلك تمهّل، الطريق زلق.
-      en: Please go slowly, the road is slippery.
-    answer: Tolong pelan-pelan, jalannya licin.
-    distractors: [cepat-cepat, sambil]
-    words: [tolong, pelan-pelan, licin]
-  - id: e06
-    type: fill_blank
-    sentence: Saya melihat pemandangan ___ naik ojek.
-    meaning:
-      ar_eg: بتفرج على المنظر وأنا راكب الأوجيك.
-      ar: أتأمل المناظر وأنا أركب درّاجة الأجرة.
-      en: I look at the scenery while riding the ojek.
-    options: [akhirnya, pertama, sambil]
-    answers: [sambil]
-    words: [sambil, pemandangan]
-  - id: e07
-    type: listen
-    text: Saya bayar tunai, ya, Pak.
-    options: ['Saya bayar tunai, ya, Pak.', 'Saya bayar pakai aplikasi, ya, Pak.', 'Saya pakai helm, ya, Pak.']
-    answer: 0
-    meaning:
-      ar_eg: هدفع كاش يا أسطى.
-      ar: سأدفع نقدًا يا سيدي.
-      en: I'll pay cash, sir.
-    words: [tunai, aplikasi, helm]
-  - id: e08
     type: match_pairs
     pairs:
-      - text: aplikasi
-        ar_eg: أبلكيشن
-        ar: تطبيق
-        en: app
-      - text: helm
-        ar_eg: خوذة
-        ar: خوذة
-        en: helmet
-      - text: tunai
-        ar_eg: كاش
-        ar: نقدًا
-        en: cash
-      - text: ojek
-        ar_eg: موتوسيكل أجرة
-        ar: درّاجة نارية أجرة
-        en: motorbike taxi
-      - text: sopir
-        ar_eg: سوّاق
-        ar: سائق
-        en: driver
-      - text: pelan-pelan
-        ar_eg: بالراحة
-        ar: ببطء
-        en: slowly
-    words: [aplikasi, helm, tunai, ojek, sopir, pelan-pelan]
+      - text: kendaraan
+        ar_eg: عربية، مركبة
+        ar: مركبة
+        en: vehicle
+      - text: bensin
+        ar_eg: بنزين
+        ar: وقود
+        en: petrol
+      - text: ban
+        ar_eg: كاوتش
+        ar: إطار
+        en: tyre
+      - text: jalan tol
+        ar_eg: طريق سريع بفلوس
+        ar: طريق برسوم
+        en: toll road
+    words: [kendaraan, bensin, ban, jalan tol]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: bengkel
+        ar_eg: ورشة
+        ar: ورشة
+        en: garage
+      - text: mogok
+        ar_eg: عطل
+        ar: تعطّل
+        en: break down
+      - text: SIM
+        ar_eg: رخصة سواقة
+        ar: رخصة قيادة
+        en: driving licence
+      - text: lalu lintas
+        ar_eg: المرور
+        ar: المرور
+        en: traffic
+    words: [bengkel, mogok, SIM, lalu lintas]
+  - id: e03
+    type: listen
+    text: Motornya mogok. Bensinnya kosong!
+    question:
+      ar_eg: الموتوسيكل ماله؟
+      ar: ما مشكلة الدراجة؟
+      en: What's wrong with the scooter?
+    options: [البنزين خلص, الكاوتش مخرّم, الرخصة ضاعت]
+    answer: 0
+    meaning:
+      ar_eg: الموتوسيكل عطل. مفيش بنزين!
+      ar: تعطّلت الدراجة. لا وقود فيها!
+      en: The scooter's broken down. It's out of petrol!
+    words: [mogok, bensin]
+  - id: e04
+    type: fill_blank
+    sentence: Ban motor saya bocor. Saya bawa ke ___.
+    meaning:
+      ar_eg: كاوتش الموتوسيكل مخرّم. هوديه الـ ___.
+      ar: إطار دراجتي مثقوب. سآخذها إلى ___.
+      en: My scooter has a flat. I'll take it to the ___.
+    options: [bengkel, jalan tol, SIM]
+    answers: [bengkel]
+    words: [bengkel, ban, jalan tol, SIM]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: لازم يكون معاك إيه عشان تسوق؟
+      ar: ماذا يجب أن يكون معك لتقود؟
+      en: What must you carry to drive?
+    options: [SIM, ban, bensin]
+    answer: 0
+    explain:
+      ar_eg: SIM = رخصة السواقة.
+      ar: SIM = رخصة القيادة.
+      en: SIM = driving licence.
+    words: [SIM, ban, bensin]
+  - id: e06
+    type: fill_blank
+    sentence: Jam lima sore, ___ di Jakarta macet sekali.
+    meaning:
+      ar_eg: الساعة خمسة العصر، ___ في جاكرتا واقف خالص.
+      ar: في الخامسة مساءً تكون ___ في جاكرتا مزدحمة جدًا.
+      en: At five p.m. the ___ in Jakarta is jammed.
+    options: [lalu lintas, bengkel, kendaraan]
+    answers: [lalu lintas]
+    words: [lalu lintas, bengkel, kendaraan]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: الطريق السريع ده بفلوس، بس سريع.
+      ar: هذا الطريق برسوم لكنه سريع.
+      en: This toll road costs money, but it's fast.
+    answer: Jalan tol ini bayar, tapi cepat.
+    distractors: [ban, lambat]
+    words: [jalan tol]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Banyak kendaraan di jalan raya pagi ini.
+    answers_meaning:
+      ar_eg: [فيه عربيات كتير في الطريق الرئيسي النهارده الصبح, الطريق الرئيسي مليان عربيات الصبح ده]
+      ar: [هناك مركبات كثيرة على الطريق الرئيسي هذا الصباح]
+      en: [There are lots of vehicles on the main road this morning, Many vehicles on the main road this morning]
+    words: [kendaraan]
   - id: e09
-    type: dictation
-    text: Ini helmnya, Mas. Tolong pakai, ya.
-    meaning:
-      ar_eg: اتفضل الخوذة يا باشا. البسها لو سمحت.
-      ar: هذه خوذتك يا أخي. ارتدها من فضلك.
-      en: Here's your helmet, Mas. Please put it on.
-    words: [helm, tolong, pakai]
-  - id: e10
     type: speaking
-    text: Selamat sore, Pak. Saya di depan pura, pakai baju biru.
+    text: Mobil saya mogok di jalan tol.
     meaning:
-      ar_eg: مساء الخير يا أسطى. أنا قدام المعبد، لابس قميص أزرق.
-      ar: مساء الخير يا سيدي. أنا أمام المعبد، أرتدي قميصًا أزرق.
-      en: Good afternoon, sir. I'm in front of the temple, wearing a blue shirt.
+      ar_eg: عربيتي عطلت على الطريق السريع.
+      ar: تعطّلت سيارتي على الطريق السريع.
+      en: My car broke down on the toll road.
+    words: [mogok, jalan tol]
+  - id: e10
+    type: multiple_choice
+    question: Mobil minum ___, bukan air!
+    options: [bensin, ban, lalu lintas]
+    answer: 0
+    explain:
+      ar_eg: العربية بتشرب بنزين!
+      ar: السيارة تشرب الوقود!
+      en: Cars drink petrol!
+    words: [bensin, ban, lalu lintas]
 dialogue:
-  title: Ojek dari Pura Ulun Danu
   lines:
     - speaker: Mohamed
-      text: Selamat sore, Pak. Saya di depan Pura Ulun Danu, pakai baju biru.
-      ar_eg: مساء الخير يا أسطى. أنا قدام معبد أولون دانو، لابس قميص أزرق.
-      ar: مساء الخير يا سيدي. أنا أمام معبد أولون دانو، أرتدي قميصًا أزرق.
-      en: Good afternoon, sir. I'm in front of Ulun Danu Temple, wearing a blue shirt.
-    - speaker: Pak Wayan
-      text: Baik, Mas. Saya sudah dekat. Tunggu lima menit, ya.
-      ar_eg: تمام يا أستاذ. أنا قربت. استنى خمس دقايق.
-      ar: حسنًا يا أخي، أنا قريب. انتظر خمس دقائق.
-      en: OK. I'm close. Wait five minutes.
-    - speaker: Pak Wayan
-      text: Mas Mohamed? Ini helmnya. Ke terminal, ya?
-      ar_eg: أستاذ محمد؟ اتفضل الخوذة. على الموقف، صح؟
-      ar: الأستاذ محمد؟ تفضل الخوذة. إلى المحطة، صحيح؟
-      en: Mohamed? Here's your helmet. To the terminal, right?
+      text: Ni Luh, motor saya mogok di jalan!
+      ar_eg: يا ني لوه، الموتوسيكل عطل مني في الطريق!
+      ar: يا ني لوه، تعطّلت دراجتي في الطريق!
+      en: Ni Luh, my scooter's broken down on the road!
+    - speaker: Ni Luh
+      text: Bensinnya kosong?
+      ar_eg: البنزين خلص؟
+      ar: هل نفد الوقود؟
+      en: Out of petrol?
     - speaker: Mohamed
-      text: Betul, Pak. Tolong pelan-pelan saja, jalannya licin.
-      ar_eg: مظبوط يا أسطى. لو سمحت بالراحة، الطريق بيزحلق.
-      ar: صحيح يا سيدي. تمهّل من فضلك، الطريق زلق.
-      en: That's right. Please go slowly, the road is slippery.
-    - speaker: Pak Wayan
-      text: Sudah sampai, Mas. Bayar tunai atau pakai aplikasi?
-      ar_eg: وصلنا يا أستاذ. هتدفع كاش ولا بالأبلكيشن؟
-      ar: وصلنا. هل تدفع نقدًا أم عبر التطبيق؟
-      en: We're here. Paying cash or with the app?
+      text: Tidak. Bannya bocor.
+      ar_eg: لأ. الكاوتش مخرّم.
+      ar: لا. الإطار مثقوب.
+      en: No. It's got a flat.
+    - speaker: Ni Luh
+      text: Ada bengkel dekat kantor pos. Bawa ke sana.
+      ar_eg: فيه ورشة جنب البوسطة. وديه هناك.
+      ar: هناك ورشة قرب مكتب البريد. خذها إليها.
+      en: There's a garage near the post office. Take it there.
     - speaker: Mohamed
-      text: Tunai saja. Ini uangnya. Terima kasih, Pak!
-      ar_eg: كاش. اتفضل الفلوس. شكرًا يا أسطى!
-      ar: نقدًا. تفضّل المال. شكرًا يا سيدي!
-      en: Cash. Here's the money. Thank you!
+      text: Oke. Lalu lintasnya ramai sekali hari ini.
+      ar_eg: ماشي. المرور زحمة أوي النهارده.
+      ar: حسنًا. المرور مزدحم جدًا اليوم.
+      en: OK. The traffic's really heavy today.
+    - speaker: Ni Luh
+      text: Hati-hati, ya! Jangan lupa SIM-mu.
+      ar_eg: خلي بالك! ما تنساش رخصتك.
+      ar: انتبه! ولا تنسَ رخصتك.
+      en: Be careful! Don't forget your licence.
 new_words:
-  - word: aplikasi
+  - word: kendaraan
     pos: noun
-    ar_eg: أبلكيشن، تطبيق
-    ar: تطبيق
-    en: app
-  - word: helm
+    ar_eg: عربية، مركبة
+    ar: مركبة
+    en: vehicle
+  - word: bensin
     pos: noun
-    ar_eg: خوذة
-    ar: خوذة
-    en: helmet
-  - word: tunai
-    pos: adjective
-    ar_eg: كاش
-    ar: نقدًا
-    en: cash
+    ar_eg: بنزين
+    ar: وقود (بنزين)
+    en: petrol
+  - word: ban
+    pos: noun
+    ar_eg: كاوتش
+    ar: إطار
+    en: tyre
+  - word: jalan tol
+    pos: noun
+    ar_eg: طريق سريع بفلوس
+    ar: طريق برسوم
+    en: toll road
+  - word: bengkel
+    pos: noun
+    ar_eg: ورشة ميكانيكي
+    ar: ورشة إصلاح
+    en: repair garage, workshop
+  - word: mogok
+    pos: verb
+    ar_eg: يعطل؛ يضرب عن الشغل
+    ar: يتعطّل؛ يُضرب
+    en: break down; go on strike
+  - word: SIM
+    pos: noun
+    ar_eg: رخصة سواقة
+    ar: رخصة قيادة
+    en: driving licence
+  - word: lalu lintas
+    pos: noun
+    ar_eg: المرور
+    ar: حركة المرور
+    en: traffic
 review:
   status: draft
   verified: false

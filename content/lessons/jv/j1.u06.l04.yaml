@@ -1,11 +1,11 @@
 schema: kabar.lesson/v1
 id: j1.u06.l04
 language: jv
-title: Mlebu, metu, kesasar
+title: Mlebu, metu, nyabrang
 can_do:
-  ar_eg: تقول تدخل وتخرج وتطلع وتنزل، والحاجة قريبة ولا في أنهي ناحية، ولو تهت.
-  ar: أن تقول تدخل وتخرج وتصعد وتنزل، وأنّ الشيء قريب أو في أيّ ناحية، وإن ضللت الطريق.
-  en: Say go in, out, up and down, that something is near or on which side, and that you're lost.
+  ar_eg: تقول تدخل وتخرج وتطلع وتنزل وتعدّي الشارع، والحاجة قريبة ولا في أنهي ناحية.
+  ar: أن تقول تدخل وتخرج وتصعد وتنزل وتعبر الشارع، وأنّ الشيء قريب أو في أيّ ناحية.
+  en: Say go in, out, up, down and across the road, and that something is near or on which side.
 slides:
   - title: Mlebu, Mas!
     body:
@@ -15,21 +15,21 @@ slides:
         cedhak = قريب: cedhak kene = قريب من هنا.
         sisih = ناحية: sisih kiwa = الناحية الشمال.
         liwat = يعدّي من: Liwat ngarep masjid = عدّي من قدام الجامع.
-        kesasar = تاه في الطريق: Aku kesasar! = أنا تايه!
+        nyabrang = يعدّي الشارع: Ati-ati nyabrang! = خلّي بالك وإنت بتعدّي!
       ar: |
         mlebu = يدخل، metu = يخرج: Mlebu, Mas! = تفضّل بالدخول يا أخي!
         munggah = يصعد، mudhun = ينزل (ومن المركبة أيضًا): Mudhun ndek kene = أنزل هنا.
         cedhak = قريب: cedhak kene = قريب من هنا.
         sisih = جهة، ناحية: sisih kiwa = الجهة اليسرى.
         liwat = يمرّ من: Liwat ngarep masjid = مُرّ من أمام المسجد.
-        kesasar = ضلّ الطريق: Aku kesasar! = ضللت الطريق!
+        nyabrang = يعبر الطريق: Ati-ati nyabrang! = انتبه وأنت تعبر!
       en: |
         mlebu = go in, metu = go out: Mlebu, Mas! = Come in, Mas!
         munggah = go up, mudhun = go down, get off: Mudhun ndek kene = I'll get off here.
         cedhak = near: cedhak kene = near here.
         sisih = side: sisih kiwa = the left side.
         liwat = go via, pass: Liwat ngarep masjid = Go past the front of the mosque.
-        kesasar = get lost: Aku kesasar! = I'm lost!
+        nyabrang = cross the road: Ati-ati nyabrang! = Careful crossing!
     examples:
       - text: Mudhun ndek kene, Pak.
         ar_eg: هنزل هنا يا عم.
@@ -39,10 +39,10 @@ slides:
         ar_eg: المحطة قريبة من هنا.
         ar: المحطّة قريبة من هنا.
         en: The station is near here.
-      - text: Aku kesasar, Cak!
-        ar_eg: أنا تهت يا تشاك!
-        ar: ضللت الطريق يا تشاك!
-        en: I'm lost, Cak!
+      - text: Ati-ati nyabrang dalan, Le!
+        ar_eg: خلّي بالك وإنت بتعدّي الشارع يا ابني!
+        ar: انتبه وأنت تعبر الطريق يا بنيّ!
+        en: Careful crossing the road, son!
 exercises:
   - id: e01
     type: match_pairs
@@ -71,10 +71,10 @@ exercises:
         ar_eg: قريب
         ar: قريب
         en: near
-      - text: kesasar
-        ar_eg: تاه
-        ar: ضلّ الطريق
-        en: get lost
+      - text: nyabrang
+        ar_eg: يعدّي الشارع
+        ar: يعبر الطريق
+        en: cross (the road)
       - text: sisih
         ar_eg: ناحية
         ar: جهة
@@ -83,7 +83,7 @@ exercises:
         ar_eg: يعدّي من
         ar: يمرّ من
         en: go via, pass
-    words: [cedhak, kesasar, sisih, liwat]
+    words: [cedhak, nyabrang, sisih, liwat]
   - id: e03
     type: listen
     text: Mudhun ndek kene, Pak.
@@ -101,23 +101,23 @@ exercises:
       ar_eg: المحطة ___ من هنا، على طول.
       ar: المحطّة ___ من هنا، امشِ مباشرة.
       en: The station is ___ here, just go straight.
-    options: [cedhak, kesasar, sisih]
+    options: [cedhak, nyabrang, sisih]
     answers: [cedhak]
-    words: [cedhak, kesasar, sisih]
+    words: [cedhak, nyabrang, sisih]
   - id: e05
     type: multiple_choice
-    question: Aku kesasar, Cak!
+    question: Ati-ati nyabrang, Le!
     question_meaning:
-      ar_eg: حصل إيه؟
-      ar: ماذا حدث؟
-      en: What happened?
-    options: [تاه في الطريق, وصل بدري, خرج من البيت]
+      ar_eg: بيقوله إيه؟
+      ar: ماذا يقول له؟
+      en: What is he telling him?
+    options: [خلّي بالك وإنت بتعدّي الشارع, خلّي بالك وإنت داخل, خلّي بالك وإنت طالع]
     answer: 0
     explain:
-      ar_eg: kesasar = تاه في الطريق.
-      ar: kesasar = ضلّ الطريق.
-      en: kesasar = got lost.
-    words: [kesasar]
+      ar_eg: nyabrang = يعدّي الشارع. داخل = mlebu، طالع = munggah.
+      ar: nyabrang = يعبر الطريق. أمّا الدخول فـmlebu، والصعود فـmunggah.
+      en: nyabrang = cross. Going in is mlebu, going up is munggah.
+    words: [nyabrang, mlebu, munggah]
   - id: e06
     type: fill_blank
     sentence: ___ ngarep masjid, terus ngiwa.
@@ -148,7 +148,7 @@ exercises:
       ar: اخرج من هنا ثم اصعد.
       en: Go out of here, then go up.
     answer: Metu saka kene, terus munggah.
-    distractors: [mudhun, kesasar]
+    distractors: [mudhun, nyabrang]
     words: [metu, munggah, mudhun]
   - id: e09
     type: translate
@@ -161,19 +161,19 @@ exercises:
     words: [mlebu]
   - id: e10
     type: speaking
-    text: Aku kesasar. Terminale cedhak kene?
+    text: Aku nyabrang dhisik. Terminale cedhak kene?
     meaning:
-      ar_eg: أنا تهت. الموقف قريب من هنا؟
-      ar: ضللت الطريق. هل الموقف قريب من هنا؟
-      en: I'm lost. Is the bus terminal near here?
-    words: [kesasar, cedhak]
+      ar_eg: هعدّي الشارع الأول. الموقف قريب من هنا؟
+      ar: سأعبر الطريق أوّلًا. هل الموقف قريب من هنا؟
+      en: I'll cross first. Is the bus terminal near here?
+    words: [nyabrang, cedhak]
 dialogue:
   lines:
     - speaker: Mohamed
-      text: Sepurane, Pak. Aku kesasar. Kebun Binatang Suroboyo ngendi?
-      ar_eg: معلش يا عم. أنا تهت. جنينة حيوانات سورابايا فين؟
-      ar: عذرًا يا سيّدي. ضللت الطريق. أين حديقة حيوان سورابايا؟
-      en: Excuse me, sir. I'm lost. Where's Surabaya Zoo?
+      text: Sepurane, Pak. Aku bingung. Kebun Binatang Suroboyo ngendi?
+      ar_eg: معلش يا عم. أنا متلخبط. جنينة حيوانات سورابايا فين؟
+      ar: عذرًا يا سيّدي. أنا محتار. أين حديقة حيوان سورابايا؟
+      en: Excuse me, sir. I'm confused. Where's Surabaya Zoo?
     - speaker: Bapak
       text: Cedhak, Mas. Liwat prapatan kae, terus ngiwa.
       ar_eg: قريبة يا ماس. عدّي من التقاطع اللي هناك، وبعدين شمال.
@@ -220,11 +220,11 @@ new_words:
     ar_eg: قريب
     ar: قريب
     en: near, close
-  - word: kesasar
+  - word: nyabrang
     pos: verb
-    ar_eg: تاه في الطريق
-    ar: ضلّ الطريق
-    en: get lost
+    ar_eg: يعدّي الشارع
+    ar: يعبر الطريق
+    en: cross (the road)
   - word: sisih
     pos: noun
     ar_eg: ناحية
