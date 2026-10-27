@@ -249,6 +249,47 @@ pub fn WordGrammar(i: usize) -> Element {
     }
 }
 
+/// A row of rule chips under one line of the text (segment `seg`), learned
+/// ones first; a chip opens "Explain this sentence" for its sentence.
+#[component]
+pub fn LineGrammar(seg: usize) -> Element {
+    let ui = use_context::<Ui>();
+    let st = use_context::<ReaderState>();
+    let voice = voice_of(*st.voice.read());
+    let Some(grammar) = st.grammar.read().clone() else { return rsx! {} };
+    let Some(range) = st.open.read().as_ref().and_then(|o| o.doc.segments.get(seg).map(|s| (s.start, s.end)))
+    else {
+        return rsx! {};
+    };
+    let mut seen = BTreeSet::new();
+    let chips: Vec<(&Found, usize)> = grammar
+        .sentences
+        .iter()
+        .filter(|s| s.span.0 >= range.0 && s.span.1 <= range.1)
+        .flat_map(|s| s.found.iter().map(|f| (f, f.hits[0].tokens[0])))
+        .filter(|(f, _)| seen.insert(f.grammar.clone()))
+        .collect();
+    if chips.is_empty() {
+        return rsx! {};
+    }
+    rsx! {
+        p { class: "line-grammar",
+            for (f, token) in chips {
+                button {
+                    key: "{f.grammar}",
+                    class: "chip gr-chip {standing_class(f.standing)} {f.hits[0].role.css()}",
+                    title: if f.standing == Standing::Ahead { ui.t(Msg::GrammarNotYet) } else { "" },
+                    onclick: move |_| {
+                        let mut p = st.panel;
+                        p.set(Some(super::Panel::Explain(token)));
+                    },
+                    "{title(&f.grammar, voice)}"
+                }
+            }
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

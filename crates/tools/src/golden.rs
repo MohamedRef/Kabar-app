@@ -13,7 +13,7 @@ use clap::Subcommand;
 use kabar_core::ai::tasks::{
     AiOutput, AnalyzeText, CheckStrokes, CoachMessage, DailyPlan, DailyRecap, ExplainSentence, GradeAnswer,
     GuessSketch, LevelCheck, MindMap, Placement, RadioScript, ReadHandwriting, RoleplayTurn,
-    StructureScreenshot, WeeklyReport,
+    StructureScreenshot, TranslateText, WeeklyReport,
 };
 use kabar_core::learn::LearnEntry;
 use kabar_core::pagi::{self, Story};
@@ -173,6 +173,12 @@ fn check_typed(task: Task, input: &Value, expect: &Value) -> Vec<String> {
                 p.push("input needs text, lang and voice".into());
             }
             typed::<ExplainSentence>(input, expect, &mut p);
+        }
+        Task::TranslateText => {
+            if !str_field("lang") || !str_list("lines") {
+                p.push("input needs lang and lines[]".into());
+            }
+            typed::<TranslateText>(input, expect, &mut p);
         }
         Task::RoleplayTurn => {
             if !str_field("persona") || !str_field("level") || !str_field("learner") {
