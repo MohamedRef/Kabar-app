@@ -2,7 +2,7 @@
 //! tested: percentages, warning levels, "$0.00", reset times in local time,
 //! and the warnings Kak Nur's chrome shows before a free allowance runs out.
 
-use kabar_core::locale::{UiLanguage, eastern_arabic_digits};
+use kabar_core::locale::{UiLanguage, eastern_arabic_digits, localize_digits, uses_eastern_digits};
 use kabar_protocol::ai::EngineId;
 use kabar_protocol::cloud::{ServiceUsage, UsagePeriod, UsageService, UsageUnit};
 use kabar_protocol::coach::{LocalDate, LocalTime};
@@ -70,7 +70,7 @@ pub fn dollars(cents: u64) -> String {
 /// A number with thousands separators, in the UI's digits.
 pub fn grouped(n: u64, lang: UiLanguage, eastern: bool) -> String {
     let digits = n.to_string();
-    let rtl_eastern = eastern && lang != UiLanguage::En;
+    let rtl_eastern = uses_eastern_digits(lang, eastern);
     let sep = if rtl_eastern { '\u{066C}' } else { ',' };
     let mut out = String::with_capacity(digits.len() + digits.len() / 3);
     for (i, c) in digits.chars().enumerate() {
@@ -106,22 +106,15 @@ fn isolate(s: &str) -> String {
     format!("\u{2068}{s}\u{2069}")
 }
 
-fn digits(s: String, lang: UiLanguage, eastern: bool) -> String {
-    if eastern && lang != UiLanguage::En { eastern_arabic_digits(&s) } else { s }
-}
-
 /// "at 02:00", "tomorrow at 02:00" or "on 2026-11-01".
 pub fn when(r: Reset, lang: UiLanguage, eastern: bool) -> String {
     match r {
-        Reset::Today(time) => {
-            t(lang, Msg::CostAtTime).replace("{time}", &isolate(&digits(time.to_string(), lang, eastern)))
-        }
-        Reset::Tomorrow(time) => {
-            t(lang, Msg::CostTomorrowAt).replace("{time}", &isolate(&digits(time.to_string(), lang, eastern)))
-        }
-        Reset::On(date) => {
-            t(lang, Msg::CostOnDate).replace("{date}", &isolate(&digits(date.to_string(), lang, eastern)))
-        }
+        Reset::Today(time) => t(lang, Msg::CostAtTime)
+            .replace("{time}", &isolate(&localize_digits(&time.to_string(), lang, eastern))),
+        Reset::Tomorrow(time) => t(lang, Msg::CostTomorrowAt)
+            .replace("{time}", &isolate(&localize_digits(&time.to_string(), lang, eastern))),
+        Reset::On(date) => t(lang, Msg::CostOnDate)
+            .replace("{date}", &isolate(&localize_digits(&date.to_string(), lang, eastern))),
     }
 }
 

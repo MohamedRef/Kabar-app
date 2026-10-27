@@ -4,7 +4,7 @@
 use std::collections::BTreeMap;
 
 use dioxus::prelude::*;
-use kabar_core::locale::{UiLanguage, eastern_arabic_digits};
+use kabar_core::locale::UiLanguage;
 use kabar_protocol::pack::{PackIndex, PackSummary};
 
 use super::{NOT_CONFIGURED, base_url, download, downloading, refresh_index, store};
@@ -97,10 +97,6 @@ fn pt(lang: UiLanguage, p: P) -> &'static str {
     }
 }
 
-fn digits(ui: &Ui, s: String) -> String {
-    if ui.eastern() { eastern_arabic_digits(&s) } else { s }
-}
-
 /// `1.4 MB`, `820 KB`.
 fn size_text(ui: &Ui, bytes: u64) -> String {
     let s = if bytes >= 1024 * 1024 {
@@ -108,7 +104,7 @@ fn size_text(ui: &Ui, bytes: u64) -> String {
     } else {
         format!("{} KB", bytes.div_ceil(1024))
     };
-    digits(ui, s)
+    ui.digits(&s)
 }
 
 fn level_of(unit: &str) -> &str {
@@ -292,7 +288,7 @@ fn PackRow(
     let size = row.file_size.unwrap_or(row.audio_bytes);
     let ready = row.downloadable();
     let outdated = installed.is_some_and(|v| v < row.version);
-    let clips = digits(&ui, row.clips.to_string());
+    let clips = ui.num(row.clips);
     let (id1, id2) = (row.id.clone(), row.id.clone());
     rsx! {
         li { class: "packs-row",

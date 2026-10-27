@@ -15,7 +15,7 @@ use kabar_core::journey::{
     Curriculum, LessonKind, LessonState, Level, Progress, Text, Unit, parse_curriculum, souvenirs,
 };
 use kabar_core::layout::WidthClass;
-use kabar_core::locale::{UiLanguage, format_number};
+use kabar_core::locale::UiLanguage;
 
 use crate::i18n::Msg;
 use crate::map_art::{self, Size as ArtSize};
@@ -152,11 +152,6 @@ fn kind_label(kind: LessonKind) -> Msg {
     }
 }
 
-fn num(ui: &Ui, n: usize) -> String {
-    let s = ui.settings.read();
-    format_number(n as u64, s.ui_language, s.eastern_digits)
-}
-
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum Pane {
     Route,
@@ -243,7 +238,7 @@ pub fn JourneyScreen() -> Element {
                     onclick: move |_| pane.set(if pane() == Pane::Suitcase { Pane::Route } else { Pane::Suitcase }),
                     span { class: "seg-icon", aria_hidden: "true", {icon_suitcase()} }
                     "{ui.t(Msg::JourneySuitcase)} "
-                    span { class: "count", "{num(&ui, suitcase_count)}" }
+                    span { class: "count", "{ui.num(suitcase_count as u64)}" }
                 }
             }
             if pane() == Pane::Suitcase {
@@ -382,7 +377,7 @@ fn level_head(
                     aria_label: "{level.code}",
                     div { class: "fill", style: "inline-size: {pct}%" }
                 }
-                span { class: "count", if finished { "{ui.t(Msg::JourneyDone)} · " } "{num(&ui, done)}/{num(&ui, total)}" }
+                span { class: "count", if finished { "{ui.t(Msg::JourneyDone)} · " } "{ui.num(done as u64)}/{ui.num(total as u64)}" }
             }
             if !waiting.is_empty() {
                 p { class: "gentle-note",

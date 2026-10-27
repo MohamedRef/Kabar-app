@@ -117,6 +117,9 @@ pub struct Settings {
     pub translation: TranslationMode,
     /// Word-class and word-part colours are off (on by default).
     pub word_colours_off: bool,
+    /// Grammar hints (rule chips under Reader lines, "The rule here" in word
+    /// cards) are off (on by default).
+    pub grammar_hints_off: bool,
 }
 
 /// Keys as stored in the `settings` table.
@@ -131,6 +134,7 @@ pub mod keys {
     pub const FSRS_PARAMS: &str = "fsrs_params";
     pub const TRANSLATION: &str = "translation";
     pub const WORD_COLOURS_OFF: &str = "word_colours_off";
+    pub const GRAMMAR_HINTS_OFF: &str = "grammar_hints_off";
 }
 
 impl Settings {
@@ -153,6 +157,9 @@ impl Settings {
                 keys::TRANSLATION => s.translation = serde_json::from_str(value).unwrap_or_default(),
                 keys::WORD_COLOURS_OFF => {
                     s.word_colours_off = serde_json::from_str(value).unwrap_or_default()
+                }
+                keys::GRAMMAR_HINTS_OFF => {
+                    s.grammar_hints_off = serde_json::from_str(value).unwrap_or_default()
                 }
                 _ => {}
             }
@@ -185,6 +192,11 @@ impl Settings {
             self.word_colours_off != other.word_colours_off,
             keys::WORD_COLOURS_OFF,
             json(&other.word_colours_off),
+        );
+        push(
+            self.grammar_hints_off != other.grammar_hints_off,
+            keys::GRAMMAR_HINTS_OFF,
+            json(&other.grammar_hints_off),
         );
         out
     }
@@ -251,6 +263,15 @@ mod tests {
         let new = Settings { pronunciation: PronMode::Tap, ..Settings::default() };
         let pairs = Settings::default().changed_pairs(&new);
         assert_eq!(pairs, vec![("pronunciation", "\"tap\"".to_string())]);
+        assert_eq!(Settings::from_pairs(pairs.iter().map(|(k, v)| (*k, v.as_str()))), new);
+    }
+
+    #[test]
+    fn grammar_hints_default_on_and_round_trip() {
+        assert!(!Settings::default().grammar_hints_off);
+        let new = Settings { grammar_hints_off: true, ..Settings::default() };
+        let pairs = Settings::default().changed_pairs(&new);
+        assert_eq!(pairs, vec![("grammar_hints_off", "true".to_string())]);
         assert_eq!(Settings::from_pairs(pairs.iter().map(|(k, v)| (*k, v.as_str()))), new);
     }
 

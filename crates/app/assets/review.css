@@ -148,7 +148,8 @@
 .rev-bridge p { margin: 0.25rem 0 0; }
 .rev-bridge.alarm { background: var(--dawn-soft); border-inline-start-color: var(--dawn); }
 .bridge-line { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; font-size: 1.15rem; }
-.bridge-line .latin { font-weight: 700; color: var(--gold); text-decoration: underline 2px var(--gold); text-underline-offset: 4px; }
+/* The word itself is a .bridge-word (main.css), like everywhere else. */
+.bridge-line .latin { font-weight: 700; color: var(--gold); }
 .bridge-line .ar { font-family: var(--font-arabic); font-size: 1.5rem; color: var(--gold); }
 .bridge-line .root { color: var(--muted); font-size: 0.95rem; }
 .rev-bridge.alarm .shift { color: var(--dawn); font-weight: 700; }

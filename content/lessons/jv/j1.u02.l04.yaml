@@ -55,9 +55,9 @@ exercises:
   - id: e02
     type: listen
     text: Aku wong Suroboyo.
-    options: [Aku wong Suroboyo., 'Aku saka Suroboyo?', Omahku Suroboyo.]
+    options: [Aku wong Suroboyo., 'Aku saka Suroboyo?', Aku bakul warung kopi.]
     answer: 0
-    words: [wong]
+    words: [wong, warung kopi, bakul]
   - id: e03
     type: build_sentence
     source:
@@ -81,36 +81,52 @@ exercises:
       en: sinau = belajar.
     words: [sinau]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا مصري، من القاهرة.
-      ar: أنا مصري، من القاهرة.
-      en: I'm Egyptian, from Cairo.
-    answers: ['Aku wong Mesir, saka Kairo.', Aku wong Mesir saka Kairo., 'Aku wong Mesir, saka Kairo', Aku wong Mesir saka Kairo, 'Aku wong Mesir, soko Kairo.', Aku wong Mesir soko Kairo, Aku wong Mesir. Aku saka Kairo.]
-    words: [wong, saka]
+    type: match_pairs
+    pairs:
+      - text: kenalan
+        ar_eg: يتعرّف على حد
+        ar: يتعارف
+        en: get acquainted
+      - text: wong ngendi
+        ar_eg: منين؟
+        ar: من أين؟
+        en: where from?
+      - text: warung kopi
+        ar_eg: قهوة شعبية
+        ar: مقهى شعبي
+        en: coffee stall
+      - text: sinau
+        ar_eg: يتعلم
+        ar: يتعلم
+        en: learn
+      - text: bakul
+        ar_eg: بيّاع
+        ar: بائع
+        en: seller
+      - text: gedhe
+        ar_eg: كبير
+        ar: كبير
+        en: big
+    words: [kenalan, wong ngendi, warung kopi, sinau, bakul, gedhe]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: اسمك إيه يا كابتن؟
-      ar: ما اسمك يا أخي؟
-      en: What's your name? (to a young man)
-    answers: ['Jenengmu sapa, Mas?', 'Jenengmu sapa, Mas', 'Jenengmu sapa Mas?', 'Mas, jenengmu sapa?', 'Mas jenengmu sapa?', 'Jenengmu sopo, Mas?', 'Mas, jenengmu sopo?']
-    words: [jeneng, sapa, mas]
+    type: listen
+    text: Kenalan, jenengku Yudi.
+    options: ['Kenalan, jenengku Yudi.', 'Kenalan, jenengku Yuda.', 'Sugeng sonten, jenengku Yudi.']
+    answer: 0
+    meaning:
+      ar_eg: أعرّفك بنفسي، اسمي يودي.
+      ar: دعني أعرّفك بنفسي، اسمي يودي.
+      en: Let me introduce myself, I'm Yudi.
+    words: [kenalan, jeneng]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا مدرس عربي.
-      ar: أنا معلم لغة عربية.
-      en: I'm an Arabic teacher.
-    answers: [Aku guru basa Arab., Aku guru basa Arab]
-    explain:
-      ar_eg: basa = bahasa، ونفس ترتيب guru bahasa Arab.
-      ar: basa = bahasa، والمضاف إليه بعد المضاف كـ guru bahasa Arab.
-      en: basa = bahasa; same order as guru bahasa Arab.
-    words: [guru, basa]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي حاجة معناها «قهوة شعبية صغيرة»؟
+      ar: أيّها تعني «مقهى شعبي صغير»؟
+      en: Which one means "a small coffee stall"?
+    options: [warung kopi, omah, basa]
+    answer: 0
+    words: [warung kopi, omah, basa]
   - id: e08
     type: build_sentence
     source:
@@ -130,12 +146,12 @@ exercises:
     words: [jeneng, wong]
   - id: e10
     type: speaking
-    text: Sugeng sonten, Mas. Jenengku Mohamed, aku wong Mesir.
+    text: Sugeng sonten, Mas. Kenalan, jenengku Mohamed.
     meaning:
-      ar_eg: مساء الخير يا كابتن. اسمي محمد، أنا مصري.
-      ar: مساء الخير يا أخي. اسمي محمد، أنا مصري.
-      en: Good afternoon. My name is Mohamed, I'm Egyptian.
-    words: [jeneng, wong]
+      ar_eg: مساء الخير يا كابتن. أعرّفك بنفسي، اسمي محمد.
+      ar: مساء الخير يا أخي. دعني أعرّفك بنفسي، اسمي محمد.
+      en: Good afternoon, Mas. Let me introduce myself, I'm Mohamed.
+    words: [kenalan, jeneng]
 dialogue:
   title: Warung Cak Mat
   lines:

@@ -131,44 +131,48 @@ exercises:
     pairs:
       - text: mas
         ar_eg: يا كابتن (لشاب)
-        ar: يا أخي (للشاب)
-        en: young man, brother
+        ar: يا أخي (لشاب)
+        en: Mas (young man)
       - text: mbak
-        ar_eg: يا آنسة (لبنت)
-        ar: يا آنسة (للفتاة)
-        en: young woman, sister
-      - text: cak
-        ar_eg: يا معلم (لشاب، سورابايا)
-        ar: يا أخي (للشاب، سورابايا)
-        en: brother (Surabaya)
+        ar_eg: يا آنسة
+        ar: يا آنسة
+        en: Mbak (young woman)
       - text: rek
         ar_eg: يا جدعان
-        ar: يا جماعة
+        ar: يا رفاق
         en: guys, mate
-      - text: dhe
-        ar_eg: يا عمو / يا طنط
-        ar: يا عمّ / يا عمّة
-        en: uncle / auntie
-    words: [mas, mbak, cak, rek, dhe]
+      - text: pakdhe
+        ar_eg: عمو (الكبير)
+        ar: العم الأكبر
+        en: uncle (elder)
+      - text: budhe
+        ar_eg: طنط (الكبيرة)
+        ar: العمة الكبرى
+        en: aunt (elder)
+      - text: le
+        ar_eg: يا حبيبي (لولد صغير)
+        ar: يا بُنيّ
+        en: son (to a boy)
+    words: [mas, mbak, rek, pakdhe, budhe, le]
   - id: e02
     type: multiple_choice
     question_meaning:
       ar_eg: في سوق Pasar Turi، عايز تنادي بيّاع شاب على طريقة سورابايا. تقول إيه؟
       ar: في سوق Pasar Turi تريد مناداة بائع شاب على طريقة أهل سورابايا. ماذا تقول؟
       en: At Pasar Turi you want to call a young seller the Surabaya way. What do you say?
-    options: [Cak!, Nduk!, Budhe!]
+    options: [Cak!, Nduk!, Budhe!, Pakdhe!]
     answer: 0
     explain:
       ar_eg: cak = mas بتاعة سورابايا. nduk لبنت صغيرة، وbudhe لست كبيرة.
       ar: cak هي mas في سورابايا، أما nduk فللبنت الصغيرة، وbudhe للمرأة الكبيرة.
       en: cak is Surabaya's mas; nduk is for a little girl, budhe for an older woman.
-    words: [cak]
+    words: [cak, nduk, budhe, pakdhe]
   - id: e03
     type: listen
     text: Suwun, Cak!
-    options: ['Suwun, rek!', 'Suwun, Dhe!', 'Suwun, Cak!']
+    options: ['Suwun, rek!', 'Suwun, Le!', 'Suwun, Cak!']
     answer: 2
-    words: [suwun, cak]
+    words: [suwun, cak, rek, le]
   - id: e04
     type: fill_blank
     sentence: Piye kabare, ___?
@@ -184,26 +188,36 @@ exercises:
       en: budhe = auntie. rek is for mates, le for a little boy, mas for a young man.
     words: [budhe]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: صباح الخير يا عمو! (بأدب)
-      ar: صباح الخير يا عمّ! (بأدب)
-      en: Good morning, uncle! (politely)
-    answers: ['Sugeng enjing, Pakdhe!', 'Sugeng enjing, Pakdhe', Sugeng enjing Pakdhe, 'Sugeng enjing, Dhe!', 'Sugeng enjing, Dhe', Sugeng enjing Dhe, 'Sugeng enjing, Pakde!', 'Sugeng enjing, Pakde']
+    type: multiple_choice
+    question_meaning:
+      ar_eg: بتنادي على ولد صغير بحنية. تقول إيه؟
+      ar: تنادي صبيًّا صغيرًا بلطف. ماذا تقول؟
+      en: You call a little boy kindly. What do you say?
+    options: [Le!, Nduk!, Mbak!, Cak!]
+    answer: 0
     explain:
-      ar_eg: sugeng enjing = صباح الخير (مؤدبة)، وpakdhe (أو dhe اختصارًا) = عمو.
-      ar: sugeng enjing = صباح الخير بأدب، وpakdhe (أو dhe اختصارًا) = العم.
-      en: sugeng enjing = good morning (polite); pakdhe (short dhe) = uncle.
-    words: [sugeng enjing, pakdhe]
+      ar_eg: le للولد الصغير، وnduk للبنت الصغيرة، وmbak لبنت أو ست شابة.
+      ar: le للصبي، وnduk للبنت الصغيرة، وmbak للشابة.
+      en: le is for a little boy, nduk for a little girl, mbak for a young woman.
+    words: [le, nduk, mbak, cak]
   - id: e06
     type: speaking
-    text: Suwun, Cak!
+    text: Sugeng enjing, Pakdhe! Sugeng enjing, Mas!
     meaning:
-      ar_eg: ميرسي يا معلم!
-      ar: شكرًا يا أخي!
-      en: Thanks, brother!
-    words: [suwun, cak]
+      ar_eg: صباح الخير يا عمو! صباح الخير يا كابتن!
+      ar: صباح الخير يا عمّي! صباح الخير يا أخي!
+      en: Good morning, uncle! Good morning, Mas!
+    words: [sugeng enjing, pakdhe, mas]
+  - id: e07
+    type: listen
+    text: Piye kabare, Nduk?
+    options: ['Piye kabare, Nduk?', 'Piye kabare, rek?', 'Piye kabare, Mas?', 'Piye kabare, Mbak?']
+    answer: 0
+    meaning:
+      ar_eg: إزيك يا بنتي؟
+      ar: كيف حالك يا ابنتي؟
+      en: How are you, dear? (to a little girl)
+    words: [nduk, rek, mas, mbak]
 dialogue:
   title: Pakdhe Darmo
   lines:

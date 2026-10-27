@@ -7,7 +7,7 @@ use std::rc::{Rc, Weak};
 
 use dioxus::prelude::*;
 use kabar_core::layout::WidthClass;
-use kabar_core::locale::{UiLanguage, format_number};
+use kabar_core::locale::UiLanguage;
 use kabar_core::review::{
     AnswerMatch, BURST_MS, Deck, Session, Span, Summary, cloze, compare_answer, is_quick, seed_bridge_deck,
     seed_words, wall_rating,
@@ -350,22 +350,6 @@ impl Engine {
 
 // ---------------------------------------------------------------- text helpers
 
-fn lang_of(ui: &Ui) -> (UiLanguage, bool) {
-    let s = ui.settings.read();
-    (s.ui_language, s.eastern_digits)
-}
-
-fn num(ui: &Ui, n: u64) -> String {
-    let (lang, eastern) = lang_of(ui);
-    format_number(n, lang, eastern)
-}
-
-fn percent(ui: &Ui, share: f32) -> String {
-    let (lang, eastern) = lang_of(ui);
-    let n = format_number((share * 100.0).round() as u64, lang, eastern);
-    if eastern && lang != UiLanguage::En { format!("{n}٪") } else { format!("{n}%") }
-}
-
 fn localized<'a>(ui: &Ui, l: &'a Localized) -> &'a str {
     match ui.settings.read().ui_language {
         UiLanguage::ArEg => &l.ar_eg,
@@ -400,25 +384,15 @@ pub(crate) fn Isolated(text: String) -> Element {
     }
 }
 
-/// Applies the Eastern-digits setting to text that contains digits.
-fn localize_digits(ui: &Ui, s: &str) -> String {
-    let (lang, eastern) = lang_of(ui);
-    if eastern && lang != UiLanguage::En {
-        kabar_core::locale::eastern_arabic_digits(s)
-    } else {
-        s.to_string()
-    }
-}
-
 fn mm_ss(ui: &Ui, ms: u64) -> String {
     let secs = ms / 1000;
-    localize_digits(ui, &format!("{}:{:02}", secs / 60, secs % 60))
+    ui.digits(&format!("{}:{:02}", secs / 60, secs % 60))
 }
 
 /// A span in words. Arabic counts: 1 and 2 have their own forms, 3–10 take
 /// the plural, 11+ the singular. `after_prep`: MSA duals after «بعد».
 fn span_text(ui: &Ui, span: Span, after_prep: bool) -> String {
-    let (lang, eastern) = lang_of(ui);
+    let lang = ui.lang();
     let (n, unit) = match span {
         Span::Minutes(n) => (n, 0),
         Span::Hours(n) => (n, 1),
@@ -426,7 +400,7 @@ fn span_text(ui: &Ui, span: Span, after_prep: bool) -> String {
         Span::Months(n) => (n, 3),
         Span::Years(n) => (n, 4),
     };
-    let d = format_number(n, lang, eastern);
+    let d = ui.num(n);
     let arabic = |forms: [(&str, &str, &str, &str); 5]| {
         let (one, two, few, many) = forms[unit];
         match n {
@@ -496,11 +470,15 @@ fn when_text(ui: &Ui, sched: &Scheduler, now: u64, due: u64) -> String {
 fn weekday(ui: &Ui, day: i64) -> &'static str {
     // Day 0 of the learner's calendar (1 Jan 1970) was a Thursday.
     let i = (day + 4).rem_euclid(7) as usize;
-    match ui.settings.read().ui_language {
-        UiLanguage::ArEg => ["الحد", "الاتنين", "التلات", "الأربع", "الخميس", "الجمعة", "السبت"][i],
-        UiLanguage::Ar => ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"][i],
-        UiLanguage::En => ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][i],
-    }
+    ui.t([
+        Msg::SunShort,
+        Msg::MonShort,
+        Msg::TueShort,
+        Msg::WedShort,
+        Msg::ThuShort,
+        Msg::FriShort,
+        Msg::SatShort,
+    ][i])
 }
 
 fn rating_msg(r: Rating) -> Msg {
@@ -596,7 +574,7 @@ fn ReviewHome() -> Element {
     let empty = engine.deck.read().is_empty();
 
     if empty {
-        let count = num(&ui, seed_words().count() as u64);
+        let count = ui.num(seed_words().count() as u64);
         return rsx! {
             div { class: "card review-seed",
                 h2 { "{ui.t(Msg::RevSeedTitle)}" }
@@ -631,12 +609,12 @@ fn ReviewHome() -> Element {
         div { class: "card",
             h2 { "{ui.t(Msg::NavReview)}" }
             div { class: "rev-stats",
-                Stat { label: Msg::RevDue, value: num(&ui, stats.due as u64), accent: true }
-                Stat { label: Msg::RevNew, value: num(&ui, stats.new_available as u64), accent: false }
-                Stat { label: Msg::RevReviewedToday, value: num(&ui, stats.reviews_today as u64), accent: false }
+                Stat { label: Msg::RevDue, value: ui.num(stats.due as u64), accent: true }
+                Stat { label: Msg::RevNew, value: ui.num(stats.new_available as u64), accent: false }
+                Stat { label: Msg::RevReviewedToday, value: ui.num(stats.reviews_today as u64), accent: false }
                 Stat {
                     label: Msg::RevRetention,
-                    value: stats.retention.map(|r| percent(&ui, r)).unwrap_or_else(|| "–".into()),
+                    value: stats.retention.map(|r| ui.percent(r)).unwrap_or_else(|| "–".into()),
                     accent: false,
                 }
             }
@@ -658,9 +636,9 @@ fn ReviewHome() -> Element {
                         aria_label: format!(
                             "{}: {}",
                             if i == 0 { ui.t(Msg::RevToday) } else { weekday(&ui, today + i as i64) },
-                            num(&ui, u64::from(n)),
+                            ui.num(u64::from(n)),
                         ),
-                        span { class: "fc-n", aria_hidden: "true", if n > 0 { "{num(&ui, u64::from(n))}" } }
+                        span { class: "fc-n", aria_hidden: "true", if n > 0 { "{ui.num(u64::from(n))}" } }
                         span { class: "fc-bar", aria_hidden: "true",
                             span { class: "fc-fill", style: "block-size: {n * 100 / peak}%" }
                         }
@@ -677,7 +655,7 @@ fn ReviewHome() -> Element {
                 {
                     let count = engine.queue_len(mode, now);
                     let engine = engine.clone();
-                    let burst_secs = num(&ui, BURST_MS / 1000);
+                    let burst_secs = ui.num(BURST_MS / 1000);
                     rsx! {
                         div { key: "{mode:?}", class: if mode == ReviewMode::Burst { "card rev-mode mode-burst" } else { "card rev-mode" },
                             h3 { class: "rev-h3", Isolated { text: ui.t(title).to_string() } }
@@ -694,7 +672,7 @@ fn ReviewHome() -> Element {
                                 onclick: move |_| engine.start(mode),
                                 "{ui.t(Msg::RevStart)}"
                                 if count > 0 {
-                                    span { class: "count-badge", "{num(&ui, count as u64)}" }
+                                    span { class: "count-badge", "{ui.num(count as u64)}" }
                                 }
                             }
                         }
@@ -857,7 +835,7 @@ fn Back(card: Card) -> Element {
             if let Some(a) = &card.arabic {
                 div { class: if a.shift == MeaningShift::FalseFriend { "rev-bridge alarm" } else { "rev-bridge" },
                     div { class: "bridge-line",
-                        bdi { class: "latin", lang: card.language.tag(), dir: "ltr", "{card.word}" }
+                        bdi { class: "latin bridge-word", lang: card.language.tag(), dir: "ltr", "{card.word}" }
                         span { aria_hidden: "true", "{arrow}" }
                         span { class: "ar", lang: "ar", "{a.word}" }
                         if let Some(root) = &a.root {
@@ -1070,7 +1048,7 @@ fn Classic() -> Element {
                 }
             }
             div { class: "rev-foot",
-                span { class: "muted small kbd-hint", {localize_digits(&ui, ui.t(Msg::RevKeysHint))} }
+                span { class: "muted small kbd-hint", {ui.digits(ui.t(Msg::RevKeysHint))} }
                 SessionActions { on_undo: move |_| undo.call(()) }
             }
             if wide {
@@ -1174,7 +1152,7 @@ fn SessionBar(left: usize) -> Element {
                 aria_valuenow: "{done}",
                 span { class: "progress-fill", style: "inline-size: {done * 100 / total.max(1)}%" }
             }
-            span { class: "muted small", {ui.t(Msg::RevLeft).replace("{n}", &num(&ui, (left + 1) as u64))} }
+            span { class: "muted small", {ui.t(Msg::RevLeft).replace("{n}", &ui.num((left + 1) as u64))} }
         }
     }
 }
@@ -1328,16 +1306,16 @@ fn CardWall() -> Element {
                 div { class: "pile belum", "data-pile": "belum",
                     span { class: "pile-word latin", lang: "id", "belum" }
                     span { class: "pile-label", "{ui.t(Msg::RevBelum)}" }
-                    span { class: "pile-count", "{num(&ui, belum as u64)}" }
+                    span { class: "pile-count", "{ui.num(belum as u64)}" }
                 }
                 div { class: "pile tahu", "data-pile": "tahu",
                     span { class: "pile-word latin", lang: "id", "tahu" }
                     span { class: "pile-label", "{ui.t(Msg::RevTahu)}" }
-                    span { class: "pile-count", "{num(&ui, tahu as u64)}" }
+                    span { class: "pile-count", "{ui.num(tahu as u64)}" }
                 }
             }
             div { class: "rev-foot",
-                span { class: "muted small", {ui.t(Msg::RevLeft).replace("{n}", &num(&ui, left as u64))} }
+                span { class: "muted small", {ui.t(Msg::RevLeft).replace("{n}", &ui.num(left as u64))} }
                 SessionActions { on_undo: undo }
             }
         }
@@ -1471,7 +1449,7 @@ fn Burst() -> Element {
     rsx! {
         div { class: "burst",
             div { class: "burst-timer", role: "timer",
-                span { class: "burst-secs", "{num(&ui, secs)}" }
+                span { class: "burst-secs", "{ui.num(secs)}" }
                 span { class: "muted small", "{ui.t(Msg::RevSecondsLeft)}" }
                 div { class: "progress",
                     span { class: "progress-fill", style: "inline-size: {left_ms * 100 / BURST_MS}%" }
@@ -1555,15 +1533,15 @@ fn Done() -> Element {
         div { class: "card rev-done",
             h2 { "{ui.t(Msg::RevDoneTitle)}" }
             div { class: "rev-stats",
-                Stat { label: Msg::RevCards, value: num(&ui, summary.answers as u64), accent: false }
+                Stat { label: Msg::RevCards, value: ui.num(summary.answers as u64), accent: false }
                 Stat {
                     label: Msg::RevRemembered,
-                    value: num(&ui, (summary.answers - summary.again) as u64),
+                    value: ui.num((summary.answers - summary.again) as u64),
                     accent: true,
                 }
                 Stat {
                     label: Msg::RevRetention,
-                    value: summary.retention.map(|r| percent(&ui, r)).unwrap_or_else(|| "–".into()),
+                    value: summary.retention.map(|r| ui.percent(r)).unwrap_or_else(|| "–".into()),
                     accent: false,
                 }
                 Stat { label: Msg::RevTime, value: mm_ss(&ui, summary.duration_ms), accent: false }

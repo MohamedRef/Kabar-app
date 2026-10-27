@@ -118,18 +118,22 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: banget
-        ar_eg: أوي
-        ar: جدًا
-        en: very
-      - text: tenan
-        ar_eg: بجد
-        ar: حقًا
-        en: really
-      - text: rada
-        ar_eg: شوية
-        ar: قليلًا
-        en: a bit
+      - text: pol
+        ar_eg: للآخر / جدًا
+        ar: إلى أقصى حد
+        en: totally, super
+      - text: puanas
+        ar_eg: حررر (حر جدًا)
+        ar: حارّ جدًا
+        en: sooo hot
+      - text: sing paling
+        ar_eg: الأكتر
+        ar: الأكثر
+        en: the most
+      - text: sedhih
+        ar_eg: زعلان
+        ar: حزين
+        en: sad
       - text: kesel
         ar_eg: تعبان
         ar: متعب
@@ -137,8 +141,8 @@ exercises:
       - text: wedi
         ar_eg: خايف
         ar: خائف
-        en: afraid
-    words: [banget, tenan, rada, kesel, wedi]
+        en: scared
+    words: [pol, puanas / uenak, sing paling, sedhih, kesel, wedi]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -160,31 +164,49 @@ exercises:
     words: [apik, banget]
   - id: e04
     type: fill_blank
-    sentence: Aku kesel ___!
+    sentence: Sambele puanas ___!
     meaning:
-      ar_eg: أنا تعبان بجد!
-      ar: أنا متعب حقًا!
-      en: I'm really tired!
-    options: [rada, kurang, tenan]
-    answers: [tenan]
-    words: [kesel, tenan]
+      ar_eg: الصوص حرّاق للآخر!
+      ar: الصلصة حارّة جدًا جدًا!
+      en: The sambal is super hot!
+    options: [pol, dhewe, rada]
+    answers: [pol]
+    explain:
+      ar_eg: puanas = panas ممطوطة، وpol بعد الصفة = للآخر.
+      ar: puanas = panas ممدودة للمبالغة، وpol بعد الصفة = إلى أقصى حد.
+      en: puanas is a stretched panas; pol after the adjective = totally.
+    words: [puanas / uenak, pol]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: القلعة حلوة بجد.
-      ar: القلعة جميلة حقًا.
-      en: The fort is really beautiful.
-    answer: Bentenge apik tenan.
-    distractors: [rada, paling]
-    words: [apik, tenan]
+    type: listen
+    text: Uenak pol, rek!
+    options: ['Uenak pol, rek!', 'Puanas pol, rek!', 'Enak banget, rek!', 'Uenak dhewe, rek!']
+    answer: 0
+    meaning:
+      ar_eg: حلووو للآخر يا جماعة!
+      ar: لذيذ جدًا جدًا يا رفاق!
+      en: Sooo tasty, guys!
+    words: [puanas / uenak, pol, banget, dhewe]
   - id: e06
     type: speaking
-    text: Enak pol!
+    text: Aku sing paling kesel, ora sedhih, ora wedi.
     meaning:
-      ar_eg: طعمه جامد جدًا!
-      ar: لذيذ للغاية!
-      en: Insanely good!
-    words: [pol, enak]
+      ar_eg: أنا أكتر واحد تعبان، مش زعلان ومش خايف.
+      ar: أنا الأكثر تعبًا، لست حزينًا ولا خائفًا.
+      en: I'm the most tired one, not sad, not scared.
+    words: [sing paling, kesel, sedhih, wedi]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «خايف»؟
+      ar: أيّ كلمة تعني «خائف»؟
+      en: Which word means "scared"?
+    options: [wedi, sedhih, kesel, dhewe]
+    answer: 0
+    explain:
+      ar_eg: wedi = خايف، sedhih = زعلان، kesel = تعبان، dhewe = الأكتر.
+      ar: wedi = خائف، وsedhih = حزين، وkesel = متعب، وdhewe = الأكثر.
+      en: wedi = scared, sedhih = sad, kesel = tired, dhewe = the most.
+    words: [wedi, sedhih, kesel, dhewe]
 dialogue:
   title: Neng Benteng Pendem
   lines:

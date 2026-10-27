@@ -114,18 +114,6 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: esuk
-        ar_eg: الصبح
-        ar: الصباح
-        en: morning
-      - text: awan
-        ar_eg: الضهر
-        ar: الظهيرة
-        en: midday
-      - text: bengi
-        ar_eg: بالليل
-        ar: الليل
-        en: night
       - text: wingi
         ar_eg: امبارح
         ar: أمس
@@ -134,36 +122,52 @@ exercises:
         ar_eg: بكرة
         ar: غدًا
         en: tomorrow
-    words: [esuk, awan, bengi, wingi, sesuk]
+      - text: mengko
+        ar_eg: بعدين
+        ar: لاحقًا
+        en: later
+      - text: mau
+        ar_eg: من شوية
+        ar: منذ قليل
+        en: a while ago
+      - text: sore
+        ar_eg: العصر
+        ar: العصر
+        en: afternoon
+      - text: seprapat
+        ar_eg: ربع
+        ar: ربع
+        en: a quarter
+    words: [wingi, sesuk, mengko, mau, sore, seprapat]
   - id: e02
     type: multiple_choice
     question_meaning:
       ar_eg: أنهي جملة معناها «عايز آكل»؟
       ar: أي جملة تعني «أريد أن آكل»؟
       en: Which sentence means "I want to eat"?
-    options: [Aku wis mangan., Aku mau mangan., Aku arep mangan.]
+    options: [Aku wis mangan., Aku mau mangan., Aku arep mangan., Aku wingi mangan.]
     answer: 2
     explain:
       ar_eg: mau الجاوي = «من شوية»، فـ Aku mau mangan = «كلت من شوية». «عايز» = arep.
       ar: mau الجاوية = «قبل قليل»، والإرادة arep.
       en: Javanese mau = "a while ago", so Aku mau mangan = "I ate earlier". "Want" is arep.
-    words: [mau, arep]
+    words: [mau, arep, wingi]
   - id: e03
     type: listen
     text: Saiki jam setengah wolu.
-    options: [Saiki jam setengah pitu., Saiki jam setengah wolu., Saiki jam wolu.]
+    options: [Saiki jam setengah pitu., Saiki jam setengah wolu., Saiki jam wolu luwih seprapat.]
     answer: 1
-    words: [saiki, setengah]
+    words: [saiki, setengah, luwih, seprapat]
   - id: e04
     type: fill_blank
-    sentence: Reoge jam wolu ___.
+    sentence: Reoge sesuk jam papat luwih seprapat ___.
     meaning:
-      ar_eg: الريوج الساعة تمانية بالليل.
-      ar: عرض الريوغ في الثامنة ليلًا.
-      en: The Reog show is at 8 p.m.
-    options: [esuk, awan, bengi]
-    answers: [bengi]
-    words: [bengi]
+      ar_eg: الريوج بكرة الساعة أربعة وربع العصر.
+      ar: عرض الريوغ غدًا الساعة الرابعة والربع عصرًا.
+      en: The reog show is tomorrow at a quarter past four in the afternoon.
+    options: [esuk, sore, bengi]
+    answers: [sore]
+    words: [sesuk, luwih, seprapat, sore]
   - id: e05
     type: build_sentence
     source:
@@ -175,12 +179,25 @@ exercises:
     words: [saiki, jam, pira]
   - id: e06
     type: speaking
-    text: Jam papat luwih seprapat.
+    text: Mengko sore jam papat luwih seprapat.
     meaning:
-      ar_eg: أربعة وربع.
-      ar: الرابعة والربع.
-      en: A quarter past four.
-    words: [luwih, seprapat]
+      ar_eg: النهارده العصر الساعة أربعة وربع.
+      ar: لاحقًا عصرًا الساعة الرابعة والربع.
+      en: Later this afternoon at a quarter past four.
+    words: [mengko, sore, luwih, seprapat]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «امبارح»؟
+      ar: أيّ كلمة تعني «أمس»؟
+      en: Which word means "yesterday"?
+    options: [wingi, sesuk, mengko, mau]
+    answer: 0
+    explain:
+      ar_eg: wingi = امبارح، sesuk = بكرة، mengko = بعدين، mau = من شوية.
+      ar: wingi = أمس، وsesuk = غدًا، وmengko = لاحقًا، وmau = منذ قليل.
+      en: wingi = yesterday, sesuk = tomorrow, mengko = later, mau = a while ago.
+    words: [wingi, sesuk, mengko, mau]
 dialogue:
   title: Ngenteni Reog
   lines:

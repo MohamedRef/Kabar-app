@@ -83,16 +83,27 @@ pub fn western_digits(s: &str) -> String {
         .collect()
 }
 
+/// The one rule for UI digits: Eastern Arabic when the learner turned the
+/// setting on and the UI is Arabic, ASCII otherwise.
+pub fn uses_eastern_digits(lang: UiLanguage, eastern_digits: bool) -> bool {
+    eastern_digits && lang.dir() == Direction::Rtl
+}
+
 /// Writes the digits of UI text (content included) the way the learner
-/// chose: Eastern Arabic in Arabic with the setting on, ASCII otherwise.
+/// chose (`uses_eastern_digits`).
 pub fn localize_digits(s: &str, lang: UiLanguage, eastern_digits: bool) -> String {
-    if eastern_digits && lang.dir() == Direction::Rtl { eastern_arabic_digits(s) } else { western_digits(s) }
+    if uses_eastern_digits(lang, eastern_digits) { eastern_arabic_digits(s) } else { western_digits(s) }
 }
 
 /// Formats a number for the UI, honoring the Eastern-digits setting in Arabic.
 pub fn format_number(n: u64, lang: UiLanguage, eastern_digits: bool) -> String {
-    let s = n.to_string();
-    if eastern_digits && lang.dir() == Direction::Rtl { eastern_arabic_digits(&s) } else { s }
+    localize_digits(&n.to_string(), lang, eastern_digits)
+}
+
+/// "87%", or "٨٧٪" with Eastern digits (the Arabic percent sign goes with them).
+pub fn format_percent(n: u64, lang: UiLanguage, eastern_digits: bool) -> String {
+    let sign = if uses_eastern_digits(lang, eastern_digits) { '٪' } else { '%' };
+    format!("{}{sign}", format_number(n, lang, eastern_digits))
 }
 
 #[cfg(test)]
@@ -126,5 +137,12 @@ mod tests {
         assert_eq!(localize_digits("حوالي ١٠ دقايق", UiLanguage::ArEg, false), "حوالي 10 دقايق");
         assert_eq!(localize_digits("حوالي 10 دقايق", UiLanguage::ArEg, true), "حوالي ١٠ دقايق");
         assert_eq!(localize_digits("About ۱۰", UiLanguage::En, true), "About 10");
+    }
+
+    #[test]
+    fn percent_sign_follows_the_digits() {
+        assert_eq!(format_percent(87, UiLanguage::Ar, true), "٨٧٪");
+        assert_eq!(format_percent(87, UiLanguage::ArEg, false), "87%");
+        assert_eq!(format_percent(87, UiLanguage::En, true), "87%");
     }
 }

@@ -24,6 +24,23 @@ pub fn all(table: &'static [(&'static str, &'static [u8])]) -> impl Iterator<Ite
     table.iter().map(|(id, packed)| (*id, unpack(packed)))
 }
 
+/// A `data:` URL of `bytes`.
+pub fn data_url(mime: &str, bytes: &[u8]) -> String {
+    use base64::Engine as _;
+    format!("data:{mime};base64,{}", base64::engine::general_purpose::STANDARD.encode(bytes))
+}
+
+/// The `data:` URL of an embedded file (art, fonts), encoded the first time
+/// it's shown and kept, so pictures nobody opens cost no memory.
+pub fn cached_data_url(mime: &'static str, bytes: &'static [u8]) -> &'static str {
+    use std::collections::HashMap;
+    use std::sync::{LazyLock, Mutex};
+    // Keyed by address: each embedded file is one static.
+    static URLS: LazyLock<Mutex<HashMap<usize, &'static str>>> = LazyLock::new(Default::default);
+    let mut urls = URLS.lock().unwrap_or_else(|e| e.into_inner());
+    urls.entry(bytes.as_ptr() as usize).or_insert_with(|| data_url(mime, bytes).leak())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -36,5 +53,13 @@ mod tests {
         assert_eq!(unpack(BRIDGE_ID), disk("content/bridge/id.jsonl"));
         assert_eq!(find(LESSONS, "bipa1.u01.l01").unwrap(), disk("content/lessons/id/bipa1.u01.l01.yaml"));
         assert!(find(LESSONS, "bipa8.u01.l01").is_none());
+    }
+
+    #[test]
+    fn data_urls_are_encoded_once() {
+        static PNG: &[u8] = b"\x89PNG";
+        let a = cached_data_url("image/png", PNG);
+        assert_eq!(a, "data:image/png;base64,iVBORw==");
+        assert!(std::ptr::eq(a, cached_data_url("image/png", PNG)));
     }
 }
