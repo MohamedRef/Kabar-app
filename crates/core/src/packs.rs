@@ -551,7 +551,7 @@ mod tests {
         assert_eq!(speaker_voice("id", &d, "Mohamed"), Voice::IdArdi);
         assert_eq!(speaker_voice("jv", &d, "Bu Siti"), Voice::JvSiti);
         assert_eq!(speaker_voice("id", &d, "Mbak Rara"), Voice::IdGadis);
-        assert_eq!(speaker_voice("jv", &d, "Cak Heru"), Voice::JvDimas);
+        assert_eq!(speaker_voice("jv", &d, "Mas Heru"), Voice::JvDimas);
         assert_eq!(speaker_voice("id", &d, "Ni Luh"), Voice::IdGadis);
         assert_eq!(speaker_voice("jv", &d, "Mbah Putri"), Voice::JvSiti);
         assert_eq!(speaker_voice("jv", &d, "Mbah Darmi"), Voice::JvSiti);
