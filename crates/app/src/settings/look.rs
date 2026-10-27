@@ -1,0 +1,126 @@
+//! Settings › Look & language: the UI language, theme and digits (synced) and
+//! the text size (this device only: the phone and the Mac want different ones).
+
+use dioxus::prelude::*;
+use kabar_core::locale::format_number;
+use kabar_core::settings::Theme;
+use kabar_core::theme as palette;
+
+use super::Scope;
+use super::device::{DevicePrefs, TextSize};
+use super::text::{S, st};
+use crate::i18n::Msg;
+use crate::screens::LanguagePicker;
+use crate::{Db, Ui};
+
+#[component]
+pub fn LookSection() -> Element {
+    let ui = use_context::<Ui>();
+    let db = use_context::<Db>();
+    let prefs = use_context::<DevicePrefs>();
+    let settings = ui.settings.read().clone();
+    let lang = ui.lang();
+    let sample = format_number(2026, settings.ui_language, settings.eastern_digits);
+    let size = *prefs.text_size.read();
+
+    rsx! {
+        div { class: "card",
+            div { class: "field",
+                span { class: "label", "{ui.t(Msg::SettingsLanguage)}" }
+                LanguagePicker {}
+            }
+
+            div { class: "field",
+                span { class: "label", "{ui.t(Msg::SettingsTheme)}" }
+                div { class: "row", role: "group",
+                    for th in Theme::ALL {
+                        button {
+                            key: "{th.as_str()}",
+                            aria_pressed: if th == settings.theme { "true" } else { "false" },
+                            onclick: {
+                                let db = db.clone();
+                                move |_| ui.update_settings(&db, |s| s.theme = th)
+                            },
+                            span { class: "theme-swatch", aria_hidden: "true", style: "{swatch(th)}" }
+                            "{ui.t(theme_label(th))}"
+                        }
+                    }
+                }
+            }
+
+            div { class: "field",
+                span { class: "label", "{st(lang, S::TextSize)}" Scope { device_only: true } }
+                div { class: "row", role: "group",
+                    for t in TextSize::ALL {
+                        button {
+                            key: "{t.as_str()}",
+                            aria_pressed: if t == size { "true" } else { "false" },
+                            onclick: {
+                                let db = db.clone();
+                                move |_| prefs.set_text_size(&db, t)
+                            },
+                            "{st(lang, text_size_label(t))}"
+                        }
+                    }
+                }
+                div { class: "text-sample",
+                    p { lang: "id", dir: "ltr", class: "latin", "Apa kabar? Kabar baik." }
+                    p { class: "muted", "{st(lang, S::TextSample)}" }
+                }
+            }
+
+            div { class: "field",
+                label {
+                    input {
+                        r#type: "checkbox",
+                        checked: settings.eastern_digits,
+                        onchange: {
+                            let db = db.clone();
+                            move |e: FormEvent| {
+                                let on = e.checked();
+                                ui.update_settings(&db, |s| s.eastern_digits = on)
+                            }
+                        },
+                    }
+                    " {ui.t(Msg::SettingsDigits)} · {sample}"
+                }
+            }
+        }
+    }
+}
+
+fn theme_label(th: Theme) -> Msg {
+    match th {
+        Theme::System => Msg::ThemeSystem,
+        Theme::Light => Msg::ThemeLight,
+        Theme::Dark => Msg::ThemeDark,
+        Theme::Night => Msg::ThemeNight,
+        Theme::Batik => Msg::ThemeBatik,
+        Theme::Sawah => Msg::ThemeSawah,
+    }
+}
+
+/// A swatch previews the theme itself, not the current one: its surface,
+/// accent and Bridge gold. System shows Paper and Merapi side by side.
+fn swatch(th: Theme) -> String {
+    match th.palette() {
+        Some(p) => format!(
+            "background: linear-gradient(135deg, {} 50%, {} 50%); border-color: {}",
+            p.surface, p.indigo, p.gold
+        ),
+        None => format!(
+            "background: linear-gradient(135deg, {} 50%, {} 50%)",
+            palette::LIGHT.surface,
+            palette::DARK.surface
+        ),
+    }
+}
+
+fn text_size_label(t: TextSize) -> S {
+    match t {
+        TextSize::Small => S::TextSmall,
+        TextSize::Normal => S::TextNormal,
+        TextSize::Large => S::TextLarge,
+        TextSize::Larger => S::TextLarger,
+    }
+}

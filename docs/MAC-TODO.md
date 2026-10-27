@@ -52,6 +52,7 @@ just check                # fmt + clippy + tests: all green
 ## 2. Mac app (~20 min) — [RUN.md §2](RUN.md)
 
 - [ ] `just run-mac`: the welcome screen appears and the sidebar works.
+- [ ] In the Mac app, Cmd+V pastes into the Reader, Cmd+C/A/Z work in text fields, Cmd+, opens Settings, and Cmd+Q quits.
 - [ ] `just run-phone-preview`: the compact layout shows the bottom bar.
 - [ ] Build the app icon once: `cd assets/export/macos && iconutil -c icns Kabar.iconset -o Kabar.icns && cd -`.
 - [ ] `just bundle-mac` → `dist/mac/Kabar.app`. Open it from Finder and check the icon in the Dock and Finder.
