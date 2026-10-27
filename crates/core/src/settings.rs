@@ -92,7 +92,7 @@ pub struct Settings {
     pub sounds_off: bool,
     /// Arabic-script pronunciation next to target-language text.
     pub pronunciation: PronMode,
-    /// FSRS desired retention (no UI yet; 90%).
+    /// FSRS desired retention (Settings → "How firmly to remember words"; 90%).
     pub desired_retention: RetentionPct,
     /// FSRS parameters fitted to this learner's reviews, once there are enough.
     pub fsrs: Option<FsrsParams>,

@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 use kabar_core::locale::{UiLanguage, format_number};
-use kabar_core::settings::{PronMode, Theme};
+use kabar_core::settings::{PronMode, RetentionPct, Theme};
 use kabar_core::theme as palette;
 
 use crate::i18n::Msg;
@@ -93,6 +93,12 @@ pub fn SettingsScreen() -> Element {
     let settings = ui.settings.read().clone();
     let device = db.0.borrow().device_id().to_string();
     let width_class = *ui.width.read();
+    let tuning = match &settings.fsrs {
+        Some(p) => ui.t(Msg::RetentionTuned).replace("{n}", &ui.num(u64::from(p.reviews))),
+        None => ui
+            .t(Msg::RetentionLearning)
+            .replace("{n}", &ui.num(kabar_core::srs::MIN_REVIEWS_TO_OPTIMIZE as u64)),
+    };
     let sample = format_number(2026, settings.ui_language, settings.eastern_digits);
 
     let theme_label = |th: Theme| match th {
@@ -197,6 +203,25 @@ pub fn SettingsScreen() -> Element {
                     summary { "{ui.t(Msg::PronHowToRead)}" }
                     crate::pron::PronGuide {}
                 }
+            }
+
+            div { class: "field",
+                span { class: "label", "{ui.t(Msg::SettingsRetention)}" }
+                div { class: "row", role: "group",
+                    for (pct, label) in [(85u8, Msg::RetentionLight), (90, Msg::RetentionBalanced), (95, Msg::RetentionFirm)] {
+                        button {
+                            key: "{pct}",
+                            aria_pressed: if settings.desired_retention.0 == pct { "true" } else { "false" },
+                            onclick: {
+                                let db = db.clone();
+                                move |_| ui.update_settings(&db, |s| s.desired_retention = RetentionPct(pct))
+                            },
+                            "{ui.t(label)} · {ui.num(u64::from(pct))}%"
+                        }
+                    }
+                }
+                p { class: "muted small", "{ui.t(Msg::RetentionHint)}" }
+                p { class: "muted small", "{tuning}" }
             }
 
             div { class: "field",

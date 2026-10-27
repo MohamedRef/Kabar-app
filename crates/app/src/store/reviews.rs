@@ -4,7 +4,7 @@
 
 use kabar_core::sync::{Merge, merge};
 use kabar_protocol::Hlc;
-use kabar_protocol::srs::{Card, Rating, ReviewEvent, ReviewMode};
+use kabar_protocol::srs::{Card, Evidence, Rating, ReviewEvent, ReviewMode};
 use kabar_protocol::sync::{Op, OpKind, SyncKind};
 use rusqlite::params;
 
@@ -93,6 +93,7 @@ impl Store {
             rating,
             duration_ms,
             mode,
+            evidence: Default::default(),
         }
     }
 
@@ -133,6 +134,22 @@ impl Store {
         mode: ReviewMode,
     ) -> Result<ReviewEvent> {
         let event = self.new_review(card_id, rating, at_ms, duration_ms, mode);
+        self.append_review(&event)?;
+        Ok(event)
+    }
+
+    /// Records evidence of a word's strength from outside the Review screen
+    /// (a lesson exercise, a Reader lookup). Its time was already counted as
+    /// that activity, so the event carries none.
+    pub fn record_evidence(
+        &mut self,
+        card_id: &str,
+        rating: Rating,
+        at_ms: u64,
+        evidence: Evidence,
+    ) -> Result<ReviewEvent> {
+        let event =
+            ReviewEvent { evidence, ..self.new_review(card_id, rating, at_ms, 0, ReviewMode::Classic) };
         self.append_review(&event)?;
         Ok(event)
     }
@@ -238,6 +255,7 @@ mod tests {
             rating: Rating::Hard,
             duration_ms: 3000,
             mode: ReviewMode::CardWall,
+            evidence: Default::default(),
         };
         store.append_review(&remote).unwrap();
         store.append_review(&remote).unwrap();

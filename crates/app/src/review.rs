@@ -158,6 +158,43 @@ pub(crate) fn deck(db: &Db, sched: &Rc<Scheduler>) -> Rc<Deck> {
     })
 }
 
+/// Turns what a lesson or the Reader showed about deck words into review
+/// events (see `kabar_core::review::evidence` for the rules), so each word's
+/// schedule follows how well the learner really knows it. Returns how many
+/// events were recorded.
+pub(crate) fn note_evidence(
+    db: &Db,
+    coach: &Coach,
+    language: StudyLanguage,
+    signals: &[(String, kabar_core::review::Signal)],
+) -> usize {
+    note_evidence_at(db, coach.offset(), language, signals, now_ms())
+}
+
+fn note_evidence_at(
+    db: &Db,
+    utc_offset_min: i16,
+    language: StudyLanguage,
+    signals: &[(String, kabar_core::review::Signal)],
+    now: u64,
+) -> usize {
+    if signals.is_empty() {
+        return 0;
+    }
+    let settings = db.0.borrow().settings().unwrap_or_default();
+    let sched = crate::schedule::scheduler_at(utc_offset_min, &settings);
+    let events = kabar_core::review::evidence_reviews(&sched, &deck(db, &sched), language, signals, now);
+    let mut store = db.0.borrow_mut();
+    let mut recorded = 0;
+    for (card, rating, evidence) in events {
+        match store.record_evidence(&card, rating, now, evidence) {
+            Ok(_) => recorded += 1,
+            Err(e) => eprintln!("kabar: recording {evidence:?} for {card} failed: {e}"),
+        }
+    }
+    recorded
+}
+
 /// An owned deck for a review session to update as answers come in.
 pub(crate) fn load_deck(db: &Db, sched: &Rc<Scheduler>) -> Deck {
     Deck::clone(&deck(db, sched))
@@ -1508,5 +1545,37 @@ mod tests {
         // Nor does a deck built with another scheduler.
         let travel = crate::schedule::scheduler_at(420, &Default::default());
         assert!(!Rc::ptr_eq(&deck(&db, &sched), &deck(&db, &travel)));
+    }
+
+    #[test]
+    fn lessons_and_lookups_move_deck_words() {
+        use kabar_core::review::Signal as S;
+        use kabar_protocol::srs::Evidence;
+        const DAY: u64 = 86_400_000;
+        let t0 = 1_761_472_800_000;
+        let db = Db(Rc::new(RefCell::new(Store::open_in_memory().unwrap())));
+        let cards = seed_bridge_deck();
+        db.0.borrow_mut().upsert_cards(&cards).unwrap();
+        let mut recognition = cards.iter().filter(|c| c.kind == CardKind::Recognition);
+        let (a, b) = (recognition.next().unwrap(), recognition.next().unwrap());
+        for c in [a, b] {
+            db.0.borrow_mut().record_review(&c.id, Rating::Good, t0, 2000, ReviewMode::Classic).unwrap();
+        }
+        let signals = [(a.word.to_uppercase(), S::Recalled), (b.word.clone(), S::LookedUp)];
+        let lang = a.language;
+        // b's Bridge card was never reviewed, so only its recognition card moves.
+        assert_eq!(note_evidence_at(&db, 180, lang, &signals, t0 + 30 * DAY), 2);
+        // Once a day per card.
+        assert_eq!(note_evidence_at(&db, 180, lang, &signals, t0 + 30 * DAY + 60_000), 0);
+        let log = db.0.borrow().review_log().unwrap();
+        let evidence: Vec<(&str, Rating, Evidence)> =
+            log[2..].iter().map(|e| (e.card_id.as_str(), e.rating, e.evidence)).collect();
+        assert!(evidence.contains(&(a.id.as_str(), Rating::Good, Evidence::Exercise)), "{evidence:?}");
+        assert!(evidence.contains(&(b.id.as_str(), Rating::Again, Evidence::Lookup)), "{evidence:?}");
+        assert!(log[2..].iter().all(|e| e.duration_ms == 0));
+        let sched = Rc::new(Scheduler::default());
+        let deck = deck(&db, &sched);
+        assert_eq!(deck.state(&b.id).lapses, 1);
+        assert_eq!(deck.stats(&sched, t0 + 30 * DAY).reviews_today, 0, "evidence isn't a review");
     }
 }

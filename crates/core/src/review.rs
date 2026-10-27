@@ -2,11 +2,13 @@
 //! which cards to show, in what order, the stats on the Review home and the
 //! end-of-session summary. Pure: callers pass the time in.
 
+mod evidence;
 mod from_lesson;
 mod seed;
 
 use std::collections::{BTreeMap, HashSet, VecDeque};
 
+pub use evidence::{Signal, evidence_reviews, lesson_signals};
 pub use from_lesson::{lesson_card_id, lesson_cards};
 use kabar_protocol::srs::{Card, CardKind, Rating, ReviewEvent, ReviewMode};
 pub use seed::{seed_bridge_deck, seed_words};
@@ -168,14 +170,16 @@ impl Deck {
         let today = scheduler.day.day(now_ms);
         let due = self.due(scheduler, now_ms).len();
         let new_available = self.queue(scheduler, now_ms, |_| true).len() - due;
-        let reviews_today = self.log.iter().filter(|e| scheduler.day.day(e.at_ms) == today).count();
+        let reviews_today =
+            self.log.iter().filter(|e| e.evidence.is_review() && scheduler.day.day(e.at_ms) == today).count();
         let since = now_ms.saturating_sub(RETENTION_WINDOW_DAYS * DAY_MS);
         Stats { due, new_available, reviews_today, retention: retention(&self.log, since) }
     }
 }
 
 /// True retention: among reviews at or after `since_ms` of cards that had
-/// been reviewed before, the share not answered "Again".
+/// been reviewed before, the share not answered "Again". Evidence from
+/// lessons and lookups moves schedules but isn't a review, so it isn't counted.
 pub fn retention(log: &[ReviewEvent], since_ms: u64) -> Option<f32> {
     let mut sorted: Vec<&ReviewEvent> = log.iter().collect();
     sorted.sort_by(|a, b| a.hlc.cmp(&b.hlc));
@@ -184,7 +188,7 @@ pub fn retention(log: &[ReviewEvent], since_ms: u64) -> Option<f32> {
     let (mut total, mut passed) = (0u32, 0u32);
     for e in sorted.into_iter().filter(|e| seen_events.insert(e.id.as_str())) {
         let learned = !seen_cards.insert(e.card_id.as_str());
-        if learned && e.at_ms >= since_ms {
+        if learned && e.evidence.is_review() && e.at_ms >= since_ms {
             total += 1;
             passed += u32::from(e.rating != Rating::Again);
         }
@@ -450,6 +454,7 @@ mod tests {
             rating,
             duration_ms: 2000,
             mode: ReviewMode::Classic,
+            evidence: Default::default(),
         }
     }
 
