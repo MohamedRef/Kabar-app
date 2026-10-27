@@ -83,14 +83,18 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
+      - text: sifat
+        ar_eg: صفة، طبع
+        ar: صفة، طبع
+        en: character trait
       - text: ramah
-        ar_eg: بشوش ولطيف
+        ar_eg: ودود، بشوش
         ar: ودود
         en: friendly
-      - text: rajin
-        ar_eg: مجتهد
-        ar: مجتهد
-        en: hard-working
+      - text: pendiam
+        ar_eg: هادي، قليل الكلام
+        ar: قليل الكلام
+        en: quiet
       - text: malas
         ar_eg: كسلان
         ar: كسول
@@ -99,11 +103,11 @@ exercises:
         ar_eg: صبور
         ar: صبور
         en: patient
-      - text: lucu
-        ar_eg: دمه خفيف
-        ar: ظريف
-        en: funny
-    words: [ramah, rajin, malas, sabar, lucu]
+      - text: pintar
+        ar_eg: شاطر، ذكي
+        ar: ذكي
+        en: clever
+    words: [sifat, ramah, pendiam, malas, sabar, pintar]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -119,36 +123,33 @@ exercises:
     words: [ramah, pendiam]
   - id: e03
     type: fill_blank
-    sentence: Kakak saya ___ sekali. Dia belajar setiap hari.
+    sentence: Orangnya ___. Dia jarang berbicara.
     meaning:
-      ar_eg: أخويا الكبير مجتهد جدًا. بيذاكر كل يوم.
-      ar: أخي الأكبر مجتهد جدًا، يدرس كل يوم.
-      en: My older brother is very hard-working. He studies every day.
-    options: [pendek, rajin, malas]
-    answers: [rajin]
-    explain:
-      ar_eg: اللي بيذاكر كل يوم مجتهد، يعني rajin.
-      ar: من يدرس كل يوم مجتهد، أي rajin.
-      en: Someone who studies every day is rajin.
-    words: [rajin]
+      ar_eg: هو كإنسان هادي. نادرًا لما بيتكلم.
+      ar: إنه قليل الكلام، نادرًا ما يتحدث.
+      en: He's a quiet person. He rarely talks.
+    options: [pendiam, pintar, malas]
+    answers: [pendiam]
+    words: [orangnya, pendiam]
   - id: e04
     type: build_sentence
     source:
-      ar_eg: صاحبي لطيف جدًا.
-      ar: صديقي ودود جدًا.
-      en: My friend is very friendly.
-    answer: Teman saya sangat ramah.
+      ar_eg: صاحبي صبور ولطيف جدًا.
+      ar: صديقي صبور وودود جدًا.
+      en: My friend is very patient and friendly.
+    answer: Teman saya sangat sabar dan ramah.
     distractors: [malas, rambut]
-    words: [teman, ramah]
+    words: [teman, sabar, ramah]
   - id: e05
-    type: translate
-    direction: from_target
-    source_text: Pak Irwan sabar sekali.
-    answers_meaning:
-      ar_eg: [الأستاذ إروان صبور جدًا., الأستاذ إروان صبور قوي, أستاذ إروان صبور أوي]
-      ar: [الأستاذ إروان صبور جدًا., السيد إروان صبور جدًا]
-      en: [Mr Irwan is very patient., Pak Irwan is very patient, Mr. Irwan is very patient]
-    words: [sabar]
+    type: listen
+    text: Sifatnya bagaimana? — Orangnya sabar dan pintar.
+    options: ['Sifatnya bagaimana? — Orangnya sabar dan pintar.', 'Sifatnya bagaimana? — Orangnya malas dan pintar.', 'Sifatnya bagaimana? — Orangnya sabar dan pendiam.']
+    answer: 0
+    meaning:
+      ar_eg: طبعه إيه؟ — هو صبور وشاطر.
+      ar: ما طبعه؟ — إنه صبور وذكي.
+      en: What's he like? — He's patient and clever.
+    words: [sifat, orangnya, sabar, pintar, malas, pendiam]
   - id: e06
     type: dictation
     text: Orangnya ramah.
@@ -159,12 +160,12 @@ exercises:
     words: [ramah]
   - id: e07
     type: speaking
-    text: Teman saya pintar dan lucu.
+    text: "Sifat adik saya: pintar, tapi malas."
     meaning:
-      ar_eg: صاحبي شاطر ودمه خفيف.
-      ar: صديقي ذكي وظريف.
-      en: My friend is smart and funny.
-    words: [pintar, lucu]
+      ar_eg: "طبع أخويا الصغير: شاطر، بس كسلان."
+      ar: "طبع أخي الأصغر: ذكي لكنه كسول."
+      en: "My little brother's nature: clever, but lazy."
+    words: [sifat, pintar, malas]
 dialogue:
   title: Teman baru di Glodok
   lines:

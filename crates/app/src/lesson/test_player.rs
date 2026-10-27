@@ -20,6 +20,7 @@ use super::{
     Draft, ExerciseView, MAX_STEP_MS, Notice, Rich, TextAnswer, autoplay_text, back_label, draft_answer,
     instruction, needs_audio, now_ms, option_count, speak, target_tag,
 };
+use crate::annotated::Annotated;
 use crate::coach::Coach;
 use crate::{Db, Screen, Ui};
 
@@ -682,7 +683,7 @@ fn SelfCheck(runner: Signal<TestRunner>) -> Element {
                                 }
                             }
                             p { class: "muted lp-small", "{lt(lang, L::Sample)}" }
-                            p { class: "lt-sample pre", bdi { lang: target, dir: "ltr", class: "latin", "{task.sample.trim()}" } }
+                            p { class: "lt-sample pre", Annotated { text: task.sample.trim().to_string(), tag: target } }
                         },
                         None => rsx! {
                             p { class: "muted lp-small", "{lt(lang, L::Accepted)}" }

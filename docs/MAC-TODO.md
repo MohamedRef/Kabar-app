@@ -52,6 +52,7 @@ just check                # fmt + clippy + tests: all green
 ## 2. Mac app (~20 min) — [RUN.md §2](RUN.md)
 
 - [ ] `just run-mac`: the welcome screen appears and the sidebar works.
+- [ ] In the Mac app, Cmd+V pastes into the Reader, Cmd+C/A/Z work in text fields, Cmd+, opens Settings, and Cmd+Q quits.
 - [ ] `just run-phone-preview`: the compact layout shows the bottom bar.
 - [ ] Build the app icon once: `cd assets/export/macos && iconutil -c icns Kabar.iconset -o Kabar.icns && cd -`.
 - [ ] `just bundle-mac` → `dist/mac/Kabar.app`. Open it from Finder and check the icon in the Dock and Finder.
@@ -69,6 +70,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] `just android-keystore` (once). Back up `~/.kabar/kabar-release.jks` somewhere safe, such as an encrypted USB stick or a password manager attachment. Losing it means reinstalling the app from scratch.
 - [ ] `just apk` → `dist/android/kabar.apk`.
 - [ ] `just devices`, then `just install <serial>` for the S24 Ultra and again for the Tab S11. For wireless, use `just pair` / `just connect` (RUN.md §3).
+- [ ] Open every screen once on the release APK (R8 shrinks it; a missing keep rule would crash on that screen) and tell me if anything closes the app.
 - [ ] Check the launcher icon (round and adaptive), the notification-bar icon and the splash screen on both devices.
 - [ ] Mid-lesson, switch dark mode from quick settings, and on the Tab S11 open Kabar in split screen and pop-up view: the lesson stays exactly where it was.
 - [ ] Play a Radio episode, then take a call (or play a WhatsApp voice note): the episode pauses and carries on afterwards. Starting music in another app pauses it for good. The notification shows Kabar's icon.

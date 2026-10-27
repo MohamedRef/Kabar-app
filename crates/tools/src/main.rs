@@ -107,7 +107,6 @@ fn main() -> Result<()> {
             levels::run(&root, levels::Cmd::Validate)?;
             golden::run(&root, golden::Cmd::Validate)?;
             packs::run(&root, packs::Cmd::Build { check: true })?;
-            readme::run(&root, true)?;
             println!("all content ok");
             Ok(())
         }

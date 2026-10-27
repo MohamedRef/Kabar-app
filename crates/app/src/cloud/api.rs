@@ -4,7 +4,7 @@
 use std::time::Duration;
 
 use kabar_protocol::DeviceId;
-use kabar_protocol::ai::{EngineCall, EngineError, EngineReply};
+use kabar_protocol::ai::{AiReject, EngineCall, EngineError, EngineReply};
 use kabar_protocol::cloud::{
     ApiError, DeviceList, ErrorCode, GoogleSignIn, RefreshRequest, Session, TtsRequest, UsageReport,
 };
@@ -118,6 +118,16 @@ impl Api {
             Ok(e) => Ok(Err(e)),
             Err(_) => Err(api_error(status, &text)),
         }
+    }
+
+    /// `POST /v1/ai/reject` → `204`: drops a 👎'd answer from the shared cache.
+    pub fn ai_reject(&self, access: &str, reject: &AiReject) -> Result<(), CloudError> {
+        let res = self
+            .agent
+            .post(format!("{}/v1/ai/reject", self.base))
+            .header("authorization", bearer(access))
+            .send_json(reject);
+        read_empty(res)
     }
 
     /// `POST /v1/tts` → MP3 bytes.

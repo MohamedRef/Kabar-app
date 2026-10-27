@@ -126,6 +126,7 @@ fn phone_and_tablet_sync_through_kabar_cloud() {
             input_hash: "e2e".into(),
             engine: kabar_protocol::ai::EngineId::WorkersAi,
             prompt_version: 1,
+            profile_hash: String::new(),
         },
         system: "You are Mbak Gadis.".into(),
         user: "Halo, Mbak!".into(),
