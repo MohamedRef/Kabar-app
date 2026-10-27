@@ -120,9 +120,9 @@ exercises:
   - id: e03
     type: listen
     text: Ketika kami sampai, hujan mulai turun.
-    options: ['Setelah kami sampai, hujan mulai turun.', 'Sebelum kami sampai, hujan mulai turun.', 'Ketika kami sampai, hujan mulai turun.']
+    options: ['Setelah kami sampai, hujan mulai turun.', 'Saat kami sampai, hujan mulai turun.', 'Ketika kami sampai, hujan mulai turun.']
     answer: 2
-    words: [ketika]
+    words: [ketika, saat]
   - id: e04
     type: build_sentence
     source:
@@ -142,12 +142,25 @@ exercises:
     words: [sopir, menyetir, sambil]
   - id: e06
     type: speaking
-    text: Saya melihat pemandangan sambil naik bus ke Bedugul.
+    text: Saat Pak Sopir menyetir, kami bernyanyi.
     meaning:
-      ar_eg: بتفرج على المنظر وأنا راكب الأتوبيس لبيدوجول.
-      ar: أشاهد المناظر وأنا في الحافلة إلى بيدوغول.
-      en: I look at the scenery while riding the bus to Bedugul.
-    words: [pemandangan, sambil]
+      ar_eg: وإحنا الأسطى بيسوق، كنا بنغني.
+      ar: بينما كان السائق يقود، كنّا نغنّي.
+      en: While the driver was driving, we sang.
+    words: [saat, sopir, menyetir]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «سوّاق»؟
+      ar: أيّ كلمة تعني «سائق»؟
+      en: Which word means "driver"?
+    options: [menyetir, sopir, saat, ketika]
+    answer: 1
+    explain:
+      ar_eg: sopir هو السوّاق نفسه، وmenyetir هو اللي بيعمله (يسوق).
+      ar: sopir هو السائق، وmenyetir هو فعله (يقود).
+      en: sopir is the person; menyetir is what they do (drive).
+    words: [sopir, menyetir, saat, ketika]
 dialogue:
   title: Di bus ke Bedugul
   lines:

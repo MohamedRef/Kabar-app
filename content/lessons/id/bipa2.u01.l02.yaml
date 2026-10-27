@@ -120,11 +120,15 @@ exercises:
         ar_eg: الأرخص
         ar: الأرخص
         en: the cheapest
-      - text: indah
-        ar_eg: جميل
-        ar: جميل
-        en: beautiful
-    words: [paling, terbaik, termahal, termurah, indah]
+      - text: dunia
+        ar_eg: الدنيا، العالم
+        ar: العالم
+        en: world
+      - text: pura
+        ar_eg: معبد هندوسي (بالي)
+        ar: معبد هندوسي
+        en: Balinese temple
+    words: [paling, terbaik, termahal, termurah, dunia, pura]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -161,12 +165,12 @@ exercises:
   - id: e05
     type: build_sentence
     source:
-      ar_eg: أنهي أجمل واحد؟
-      ar: أيها الأجمل؟
-      en: Which one is the most beautiful?
-    answer: Mana yang paling indah?
+      ar_eg: ده أحسن معبد في بالي.
+      ar: هذا أفضل معبد في بالي.
+      en: This is the best temple in Bali.
+    answer: Ini pura terbaik di Bali.
     distractors: [lebih, daripada]
-    words: [mana, paling, indah]
+    words: [pura, terbaik]
   - id: e06
     type: speaking
     text: Gamelan Bali terkenal di dunia.
@@ -175,6 +179,19 @@ exercises:
       ar: الغاميلان البالي مشهور في العالم.
       en: Balinese gamelan is famous around the world.
     words: [terkenal, dunia]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «أحسن قهوة في الدنيا»؟
+      ar: كيف تقول «أفضل قهوة في العالم»؟
+      en: How do you say "The best coffee in the world"?
+    options: ['Kopi terbaik di dunia.', 'Kopi paling terbaik di dunia.', 'Kopi baik ter di dunia.']
+    answer: 0
+    explain:
+      ar_eg: ter- لوحدها معناها «الأكتر»، فمتحطش paling معاها.
+      ar: ter- وحدها تعني «الأكثر»، فلا تجمعها مع paling.
+      en: ter- already means "most", so don't add paling.
+    words: [terbaik, dunia]
 dialogue:
   title: Jalan-jalan di Ubud
   lines:
