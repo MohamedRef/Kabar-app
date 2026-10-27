@@ -1,0 +1,1152 @@
+schema: batna.content/v1
+lecture: hb.L20
+title: "Clinical Practice Guidelines: Nutrition in Chronic Liver Disease"
+author: Dr. Randa Salah Abdelmoneim
+book: { chapter: 1, pages: [402, 419] }
+topics:
+  - { id: malnutrition, title: "Malnutrition, sarcopenia and their impact" }
+  - { id: screening, title: "Screening and detailed assessment" }
+  - { id: requirements, title: "Energy and protein requirements" }
+  - { id: practical-advice, title: "Practical advice and meal pattern" }
+  - { id: sarcopenia, title: "Sarcopenia mechanisms and management" }
+  - { id: obesity, title: "Obesity and sarcopenic obesity in cirrhosis" }
+  - { id: micronutrients, title: "Vitamins, micronutrients and sodium" }
+  - { id: he, title: "Nutrition in hepatic encephalopathy" }
+  - { id: bone, title: "Bone disease in chronic liver disease" }
+  - { id: surgery-lt, title: "Liver surgery and transplantation" }
+  - { id: critical, title: "Critically ill, alcoholic hepatitis and GI bleeding" }
+items:
+  # ---------- malnutrition (p402-404) ----------
+  - id: hb.L20.001
+    kind: card
+    topic: malnutrition
+    front: What does the term "malnutrition" cover in this lecture?
+    back: Both deficiencies and excesses in nutritional status.
+    src: { page: 402 }
+    status: unverified
+  - id: hb.L20.002
+    kind: card
+    topic: malnutrition
+    front: Define sarcopenic obesity.
+    back: Decreased muscle mass in the setting of increased fat mass.
+    src: { page: 402, quote: "refers to the state of decreased muscle mass in the setting of increased fat mass" }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L20.003
+    kind: card
+    topic: malnutrition
+    front: Why is sarcopenic obesity hard to detect, and why is it increasing?
+    back: Fat mass can mask muscle wasting, so it needs dedicated testing. It is rising because of more NASH-related cirrhosis.
+    src: { page: 402 }
+    status: unverified
+  - id: hb.L20.004
+    kind: cloze
+    topic: malnutrition
+    text: Malnutrition is present in about {{c1::20%}} of patients with compensated cirrhosis and in {{c2::more than 50%}} of those with decompensated cirrhosis.
+    src: { page: 402 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L20.005
+    kind: card
+    topic: malnutrition
+    front: How does malnutrition track with liver disease?
+    back: It progresses as liver failure progresses; it may be less evident in compensated cirrhosis and is easy to recognise in decompensated cirrhosis.
+    src: { page: 402 }
+    status: unverified
+  - id: hb.L20.006
+    kind: cloze
+    topic: malnutrition
+    text: In cirrhosis, women more often lose {{c1::fat deposits}}, while men lose {{c2::muscle tissue}} more rapidly.
+    src: { page: 403 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L20.007
+    kind: card
+    topic: malnutrition
+    front: What is sarcopenia often used as an equivalent of?
+    back: Severe malnutrition.
+    src: { page: 403 }
+    status: unverified
+  - id: hb.L20.008
+    kind: enumerate
+    topic: malnutrition
+    prompt: Mention the complications associated with malnutrition and sarcopenia in cirrhosis.
+    points:
+      - Susceptibility to infections
+      - Hepatic encephalopathy
+      - Ascites
+      - Lower survival in cirrhosis and after liver transplantation (independent predictors)
+    pass: 3
+    src: { page: 403 }
+    status: unverified
+  - id: hb.L20.009
+    kind: card
+    topic: malnutrition
+    front: How should malnutrition and sarcopenia be regarded in cirrhosis?
+    back: As complications of cirrhosis that worsen prognosis.
+    src: { page: 403 }
+    status: unverified
+  - id: hb.L20.010
+    kind: card
+    topic: malnutrition
+    front: The vicious circle in the figure linking decompensated cirrhosis and malnutrition/sarcopenia goes through which three complications to reduced survival?
+    back: Hepatic encephalopathy, bacterial infections and recurrent ascites.
+    src: { page: 404 }
+    status: unverified
+  - id: hb.L20.011
+    kind: table
+    topic: malnutrition
+    title: Impact of malnutrition in special settings
+    columns: [Setting, Effect of malnutrition]
+    rows:
+      - [HCC, Increased complications and reduced survival]
+      - [After surgery, Reduced survival]
+      - [Liver transplantation, Increased waiting-list mortality and post-operative complications]
+    blanks: [[0, 1], [2, 1]]
+    src: { page: 404 }
+    status: unverified
+  # ---------- screening and assessment (p404-406) ----------
+  - id: hb.L20.012
+    kind: card
+    topic: screening
+    front: Who should get a rapid nutritional screen?
+    back: All patients with cirrhosis / advanced chronic liver disease, especially decompensated cirrhosis.
+    src: { page: 404 }
+    status: unverified
+  - id: hb.L20.013
+    kind: cloze
+    topic: screening
+    text: "Assume high malnutrition risk if BMI is {{c1::below 18.5 kg/m²}} or the patient is {{c2::Child–Pugh C}}."
+    src: { page: 404 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L20.014
+    kind: card
+    topic: screening
+    front: Who should assess patients at risk of malnutrition in detail?
+    back: A registered dietician or nutrition expert.
+    src: { page: 404 }
+    status: unverified
+  - id: hb.L20.015
+    kind: cloze
+    topic: screening
+    text: In high-risk patients, repeat the detailed nutritional assessment every {{c1::1–6 months}} as outpatients, and for inpatients {{c2::at admission and periodically during the stay}}.
+    src: { page: 405 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L20.016
+    kind: enumerate
+    topic: screening
+    prompt: Enumerate the components of the detailed nutritional assessment in cirrhosis.
+    points:
+      - "Muscle mass and sarcopenia: CT at L3, anthropometry (MAMC, MAMA, TSF), DEXA, handgrip strength"
+      - Subjective global assessment (SGA), including the Royal Free Hospital-global assessment (RFH-GA)
+      - Patient-reported dietary intake
+    pass: 3
+    src: { page: 405 }
+    status: unverified
+  - id: hb.L20.017
+    kind: card
+    topic: screening
+    front: How is skeletal muscle mass directly quantified, and when?
+    back: By CT image analysis at the L3 vertebra, only when a CT is done for other reasons.
+    src: { page: 405 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L20.018
+    kind: card
+    topic: screening
+    front: Which anthropometric measures are used for body mass assessment?
+    back: Mid-arm muscle circumference (MAMC), mid-arm muscular area (MAMA) and triceps skinfold (TSF).
+    src: { page: 405 }
+    status: unverified
+  - id: hb.L20.019
+    kind: card
+    topic: screening
+    front: What does DEXA measure in nutritional assessment?
+    back: Bone mineral density, fat mass and fat-free mass.
+    src: { page: 405 }
+    status: unverified
+  - id: hb.L20.020
+    kind: card
+    topic: screening
+    front: How is muscle function (contractile function) assessed in clinic?
+    back: Handgrip strength (HGS) and/or the short physical performance battery (SPPB).
+    src: { page: 405 }
+    status: unverified
+  - id: hb.L20.021
+    kind: card
+    topic: screening
+    front: What is subjective global assessment (SGA)?
+    back: An assessment of nutritional status from clinical evaluation data without objective measurements. It includes the RFH-GA.
+    src: { page: 405 }
+    status: unverified
+  - id: hb.L20.022
+    kind: enumerate
+    topic: screening
+    prompt: What should the dietary intake assessment include?
+    points:
+      - Quality and quantity of food and supplements
+      - Fluids
+      - Sodium in the diet
+      - Number and timing of meals during the day
+      - Barriers to eating
+    pass: 4
+    src: { page: 405 }
+    status: unverified
+  - id: hb.L20.023
+    kind: card
+    topic: screening
+    front: Alternatives to CT for assessing muscle mass that allow serial measurements?
+    back: Anthropometry, DEXA or bioimpedance analysis (BIA).
+    src: { page: 405 }
+    status: unverified
+  - id: hb.L20.024
+    kind: cloze
+    topic: screening
+    text: "To estimate dry weight in fluid retention, subtract {{c1::5%}} for mild, {{c2::10%}} for moderate and {{c3::15%}} for severe ascites."
+    extra: Add another 5% if there is bilateral pedal oedema. Or use post-paracentesis weight or weight before fluid retention.
+    src: { page: 406 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L20.025
+    kind: cloze
+    topic: screening
+    text: When estimating dry weight, subtract an extra {{c1::5%}} if {{c2::bilateral pedal oedema}} is present.
+    src: { page: 406 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L20.026
+    kind: table
+    topic: screening
+    title: Nutritional screening by BMI in cirrhosis (EASL summary)
+    columns: [Finding, Risk group, Next step]
+    rows:
+      - ["BMI <18.5 kg/m² or Child–Pugh C", High risk, "Detailed assessment by dietician (SGA/RFH-GA, intake) and assess sarcopenia (CT at L3; DEXA or BIA if no fluid retention)"]
+      - ["BMI 18.5–29.9 kg/m², Child A or B", "Screen with nutritional screening tools", "Medium or low risk by tool result"]
+      - ["Low risk", Low risk, "Re-screen at least once a year"]
+      - ["BMI ≥30 kg/m²", Obesity, "Nutritional assessment and lifestyle intervention (compensated cirrhosis); consider sarcopenia"]
+    blanks: [[0, 1], [2, 2], [3, 2]]
+    src: { page: 406 }
+    status: unverified
+  - id: hb.L20.027
+    kind: cloze
+    topic: screening
+    text: "Low-risk patients are re-screened at least {{c1::once a year}}; malnourished or sarcopenic patients get supplementation with reassessment every {{c2::1–3 months}} in the first year."
+    src: { page: 406 }
+    status: unverified
+    tags: [numbers]
+  # ---------- requirements (p407) ----------
+  - id: hb.L20.028
+    kind: card
+    topic: requirements
+    front: Why is cirrhosis called a state of accelerated starvation?
+    back: Rapid post-absorptive physiology with a reduced respiratory quotient. Protein synthesis falls and gluconeogenesis from amino acids rises, needing proteolysis, which drives sarcopenia.
+    src: { page: 407 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L20.029
+    kind: cloze
+    topic: requirements
+    text: Optimal daily energy intake in cirrhosis should not be lower than {{c1::35 kcal/kg}} actual body weight per day (in {{c2::non-obese}} patients).
+    extra: Actual body weight corrected for ascites is considered safe. L01 gives 35–40 kcal/kg/day.
+    src: { page: 407 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L20.030
+    kind: cloze
+    topic: requirements
+    text: Optimal daily protein intake in cirrhosis should not be lower than {{c1::1.2–1.5 g/kg}} actual body weight per day.
+    src: { page: 407 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L20.031
+    kind: card
+    topic: requirements
+    front: Which two meals should be included for malnourished patients with decompensated cirrhosis?
+    back: A late evening oral nutritional supplement (ONS) and breakfast.
+    src: { page: 407 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L20.032
+    kind: card
+    topic: requirements
+    front: Who should provide nutritional counselling in malnourished cirrhotics?
+    back: A multidisciplinary team, to help the patient reach adequate calorie and protein intake.
+    src: { page: 407 }
+    status: unverified
+  # ---------- practical advice (p407-408) ----------
+  - id: hb.L20.033
+    kind: card
+    topic: practical-advice
+    front: Which food is genuinely contraindicated in chronic liver disease?
+    back: Only alcohol. Virtually no other food damages the liver.
+    src: { page: 407 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L20.034
+    kind: cloze
+    topic: practical-advice
+    text: Food intake in cirrhosis is split into {{c1::three main meals}} and {{c2::three snacks}}; the {{c3::late-evening snack}} is the most important.
+    src: { page: 407 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L20.035
+    kind: card
+    topic: practical-advice
+    front: What are the three snacks in the cirrhosis meal plan?
+    back: Mid-morning, mid-afternoon and late evening.
+    src: { page: 407 }
+    status: unverified
+  - id: hb.L20.036
+    kind: card
+    topic: practical-advice
+    front: Advice on fruit, vegetables and salt in cirrhosis?
+    back: Always include fruit and vegetables, as many as possible; restrict salt. Patients should report reduced food intake caused by this advice.
+    src: { page: 408 }
+    status: unverified
+  - id: hb.L20.037
+    kind: card
+    topic: practical-advice
+    front: Which proteins do patients with hepatic encephalopathy tolerate better?
+    back: Vegetable and dairy proteins (animal proteins less well).
+    src: { page: 408 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L20.038
+    kind: card
+    topic: practical-advice
+    front: Is reducing total protein intake advisable in cirrhosis?
+    back: No. A reduction in total protein intake is not advisable; patients should consult a doctor or dietician before changing protein intake.
+    src: { page: 408, quote: "A reduction in total protein intake is not advisable in cirrhosis" }
+    status: unverified
+    tags: [high-yield]
+  # ---------- sarcopenia (p409-411) ----------
+  - id: hb.L20.039
+    kind: card
+    topic: sarcopenia
+    front: Which two processes cause sarcopenia and failure to respond to standard supplementation?
+    back: Anabolic resistance and dysregulated proteostasis.
+    src: { page: 409 }
+    status: unverified
+  - id: hb.L20.040
+    kind: enumerate
+    topic: sarcopenia
+    prompt: Enumerate the mechanisms of sarcopenia in cirrhosis shown in the figure.
+    points:
+      - Hyperammonaemia (from portosystemic shunting and hepatocellular dysfunction)
+      - Increased myostatin
+      - Endotoxin
+      - Low testosterone and growth hormone
+      - Mitochondrial dysfunction (low ATP, high ROS)
+      - Accelerated starvation with low amino acids and intermediates
+    pass: 4
+    src: { page: 409 }
+    status: unverified
+  - id: hb.L20.041
+    kind: card
+    topic: sarcopenia
+    front: What is the largest protein store in the body, and what does it depend on?
+    back: Skeletal muscle. It depends on age, gender, ethnicity and the severity and aetiology of liver disease.
+    src: { page: 409 }
+    status: unverified
+  - id: hb.L20.042
+    kind: card
+    topic: sarcopenia
+    front: Which type of exercise is recommended for sarcopenia in cirrhosis?
+    back: A combination of resistance and endurance exercise.
+    src: { page: 409 }
+    status: unverified
+  - id: hb.L20.043
+    kind: card
+    topic: sarcopenia
+    front: What if a malnourished cirrhotic cannot reach adequate intake by mouth, even with oral supplements?
+    back: Give a period of enteral nutrition.
+    src: { page: 410 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L20.044
+    kind: card
+    topic: sarcopenia
+    front: When should BCAA or leucine-enriched amino acid supplements be considered?
+    back: In decompensated cirrhosis when adequate nitrogen intake is not achieved by the oral diet.
+    src: { page: 410 }
+    status: unverified
+  - id: hb.L20.045
+    kind: card
+    topic: sarcopenia
+    front: Physical activity advice to prevent or improve sarcopenia in cirrhosis?
+    back: Avoid hypomobility whenever possible and progressively increase physical activity (a structured exercise programme).
+    src: { page: 411 }
+    status: unverified
+  - id: hb.L20.046
+    kind: table
+    topic: sarcopenia
+    title: Management approaches to sarcopenia and their targets
+    columns: [Approach, Target in the figure, Recommendation]
+    rows:
+      - [Oral supplements, "Accelerated starvation (calories, protein, amino acids)", "Enteral nutrition if adequate intake not reached orally"]
+      - [BCAA and anaplerotic agents, Low amino acids and intermediates, "In decompensated cirrhosis when nitrogen intake is inadequate"]
+      - [Structured exercise, Muscle contractile function, "Avoid hypomobility, progressively increase activity"]
+    blanks: [[0, 2], [1, 1], [2, 1]]
+    src: { page: 410 }
+    status: unverified
+  # ---------- obesity (p411-412) ----------
+  - id: hb.L20.047
+    kind: card
+    topic: obesity
+    front: Does obesity rule out malnutrition in cirrhosis?
+    back: No. Malnutrition should be estimated and treated routinely in obese cirrhotics (BMI over 30 without fluid retention).
+    src: { page: 411 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L20.048
+    kind: card
+    topic: obesity
+    front: In which cirrhosis is obesity present in most cases?
+    back: NASH-related cirrhosis.
+    src: { page: 411 }
+    status: unverified
+  - id: hb.L20.049
+    kind: card
+    topic: obesity
+    front: What must you always consider when diagnosing obesity (BMI >30) in cirrhosis?
+    back: The confounding effect of fluid retention. Estimate dry body weight, although accuracy is low.
+    src: { page: 411 }
+    status: unverified
+  - id: hb.L20.050
+    kind: card
+    topic: obesity
+    front: How does sedentary lifestyle relate to cirrhosis?
+    back: It is highly prevalent, raises obesity risk and may be a cofactor.
+    src: { page: 406 }
+    status: unverified
+  - id: hb.L20.051
+    kind: cloze
+    topic: obesity
+    text: In obese cirrhotics (BMI >30 corrected for water retention), aim for progressive weight loss of {{c1::≥5–10%}}.
+    src: { page: 412 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L20.052
+    kind: cloze
+    topic: obesity
+    text: For obese cirrhotics, use a moderately hypocaloric diet ({{c1::−500 to −800 kcal/day}}) with adequate protein ({{c2::>1.5 g/kg ideal body weight/day}}).
+    src: { page: 412 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L20.053
+    kind: card
+    topic: obesity
+    front: In which obese cirrhotic patients does weight loss improve outcomes, and how is it achieved?
+    back: Compensated cirrhosis. Through nutritional therapy plus supervised moderate-intensity exercise tailored to the patient.
+    src: { page: 412 }
+    status: unverified
+  # ---------- micronutrients (p412-413) ----------
+  - id: hb.L20.054
+    kind: card
+    topic: micronutrients
+    front: Why do vitamin deficiencies occur in liver disease?
+    back: Hepatic dysfunction and low reserves, with inadequate intake and malabsorption that increase with disease severity.
+    src: { page: 412 }
+    status: unverified
+  - id: hb.L20.055
+    kind: card
+    topic: micronutrients
+    front: Which two vitamin deficiencies do most transplant candidates have?
+    back: Vitamin A and vitamin D.
+    src: { page: 412 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L20.056
+    kind: cloze
+    topic: micronutrients
+    text: Vitamin D levels below {{c1::20 ng/ml}} are reported in chronic cholestasis and correlate inversely with {{c2::disease severity and Child–Pugh score}}.
+    src: { page: 412 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L20.057
+    kind: cloze
+    topic: micronutrients
+    text: In cirrhotics with vitamin D below {{c1::20 ng/ml}}, give oral vitamin D to reach serum 25(OH)D above {{c2::30 ng/ml}}.
+    src: { page: 412 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L20.058
+    kind: card
+    topic: micronutrients
+    front: Vitamin D level correlates with treatment response in which conditions?
+    back: HCV, NAFLD and patients who develop HCC.
+    src: { page: 412 }
+    status: unverified
+  - id: hb.L20.059
+    kind: card
+    topic: micronutrients
+    front: When is hyponatraemia more likely in cirrhosis?
+    back: When sodium intake is low with water intake unchanged or increased. Sodium and water intake need careful monitoring.
+    src: { page: 413 }
+    status: unverified
+  - id: hb.L20.060
+    kind: cloze
+    topic: micronutrients
+    text: Recommended sodium intake in cirrhosis with ascites is about {{c1::80 mmol/day}}, equal to {{c2::2 g sodium}} or {{c3::5 g of added salt}} daily.
+    extra: Keep the diet palatable, as salt restriction can reduce calorie intake.
+    src: { page: 413 }
+    status: unverified
+    tags: [numbers, high-yield]
+  # ---------- HE (p413) ----------
+  - id: hb.L20.061
+    kind: card
+    topic: he
+    front: Relationship between muscle mass and blood ammonia?
+    back: Inverse. HE is more common in malnourished cirrhotics, because muscle helps clear ammonia.
+    src: { page: 413 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L20.062
+    kind: card
+    topic: he
+    front: What does hyperammonaemia do to muscle?
+    back: It may impair muscle function and contribute to muscle loss.
+    src: { page: 413 }
+    status: unverified
+  - id: hb.L20.063
+    kind: card
+    topic: he
+    front: Energy and nitrogen requirements of cirrhotics with HE versus without HE?
+    back: The same.
+    src: { page: 413 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L20.064
+    kind: enumerate
+    topic: he
+    prompt: Enumerate the nutritional recommendations in hepatic encephalopathy.
+    points:
+      - Evaluate nutritional status and sarcopenia
+      - Avoid protein restriction
+      - Protein and energy intake not lower than for other cirrhotics
+      - Encourage vegetable and dairy protein
+      - Consider BCAA to improve neuropsychiatric performance and reach nitrogen target
+      - Oral intake preferred; in grade III–IV HE unable to eat, nasogastric tube (airway protected) or parenteral
+    pass: 4
+    src: { page: 413 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L20.065
+    kind: card
+    topic: he
+    front: How do you feed a patient with grade III–IV HE who cannot eat?
+    back: By nasogastric tube if the airway is protected, otherwise parenterally.
+    src: { page: 413 }
+    status: unverified
+  # ---------- bone (p414-415) ----------
+  - id: hb.L20.066
+    kind: cloze
+    topic: bone
+    text: About {{c1::30%}} of patients with chronic liver disease have osteoporosis, more often in {{c2::cholestasis}}.
+    src: { page: 414 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L20.067
+    kind: enumerate
+    topic: bone
+    prompt: Enumerate risk factors for osteoporosis in chronic liver disease (figure).
+    points:
+      - Male hypogonadism
+      - Alcohol abuse
+      - Smoking
+      - BMI <19 kg/m²
+      - Early menopause
+      - Family history of osteoporotic fracture
+      - Corticosteroid treatment
+      - Advanced age
+      - Secondary amenorrhoea >6 months
+    pass: 6
+    src: { page: 414 }
+    status: unverified
+  - id: hb.L20.068
+    kind: card
+    topic: bone
+    front: Gold standard for diagnosing osteoporosis and osteopenia (WHO)?
+    back: Bone densitometry (DEXA) of the lumbar spine and hip.
+    src: { page: 414 }
+    status: unverified
+  - id: hb.L20.069
+    kind: enumerate
+    topic: bone
+    prompt: In which liver patients should bone mineral density be evaluated?
+    points:
+      - Previous fragility fractures
+      - Corticosteroid treatment
+      - Before liver transplantation
+      - Cholestatic diseases
+      - Cirrhosis
+      - Any other risk factor
+    pass: 5
+    src: { page: 414 }
+    status: unverified
+  - id: hb.L20.070
+    kind: card
+    topic: bone
+    front: How are vertebral fractures diagnosed in liver patients?
+    back: Lateral X-rays of the dorsal and lumbar spine.
+    src: { page: 414 }
+    status: unverified
+  - id: hb.L20.071
+    kind: cloze
+    topic: bone
+    text: Repeat DEXA after {{c1::2–3 years}} if BMD is normal, and within {{c2::1 year}} when rapid bone loss is expected.
+    src: { page: 414 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L20.072
+    kind: table
+    topic: bone
+    title: Bone disease in chronic liver disease (summary)
+    columns: [DEXA result, T-score, Repeat DEXA, Treatment]
+    rows:
+      - [Normal, "> −1.5", In 2–3 years, "Ca + 25(OH)D"]
+      - [Osteopenia, "−1.5 to −2.5", In 1–2 years, "Ca + 25(OH)D ± bisphosphonates (by risk factors)"]
+      - [Osteoporosis, "≤ −2.5", In 1 year, "Ca + 25(OH)D + bisphosphonates; new agents"]
+    blanks: [[0, 1], [0, 2], [1, 1], [1, 2], [2, 1], [2, 3]]
+    src: { page: 415 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L20.073
+    kind: cloze
+    topic: bone
+    text: "Bone protection in liver disease: calcium {{c1::1,000–1,500 mg/day}} and 25-hydroxy-vitamin D {{c2::400–800 IU/day}} (or 260 µg every 2 weeks)."
+    src: { page: 415 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L20.074
+    kind: card
+    topic: bone
+    front: General measures for bone disease in cirrhosis?
+    back: Balanced diet with calcium and 25(OH)D, physical activity (especially spine exercises), and minimising alcohol, tobacco and corticosteroids.
+    src: { page: 415 }
+    status: unverified
+  - id: hb.L20.075
+    kind: card
+    topic: bone
+    front: In which liver disease are bisphosphonates reported to increase bone mass, and which ones?
+    back: Primary biliary cholangitis (PBC). Etidronate, alendronate and ibandronate, without serious adverse events.
+    src: { page: 415 }
+    status: unverified
+  # ---------- surgery and LT (p416-417) ----------
+  - id: hb.L20.076
+    kind: cloze
+    topic: surgery-lt
+    text: In liver surgery, morbidity and mortality are higher with severe undernutrition (BMI {{c1::<18.5}}) or obesity (BMI {{c2::>40}}).
+    src: { page: 416 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L20.077
+    kind: card
+    topic: surgery-lt
+    front: Why should fasting periods be shortened in cirrhotics before surgery?
+    back: Liver glycogen is depleted in cirrhosis.
+    src: { page: 416 }
+    status: unverified
+  - id: hb.L20.078
+    kind: table
+    topic: surgery-lt
+    title: Preoperative nutrition targets (LT candidates / elective surgery)
+    columns: [Goal, Energy, Protein]
+    rows:
+      - [Maintenance of nutritional status, 30 kcal/kg BW/day, 1.2 g/kg BW/day]
+      - [Improvement of nutritional status, 35 kcal/kg BW/day, 1.5 g/kg BW/day]
+    blanks: [[0, 1], [0, 2], [1, 1], [1, 2]]
+    src: { page: 416 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L20.079
+    kind: card
+    topic: surgery-lt
+    front: Before LT or elective surgery, which nutritional regimen should be used?
+    back: Standard regimens. Specialised ones (BCAA-enriched, immune-enhancing) have not been shown to improve morbidity or mortality. Treat sarcopenia before elective surgery.
+    src: { page: 416 }
+    status: unverified
+  - id: hb.L20.080
+    kind: enumerate
+    topic: surgery-lt
+    prompt: Compared with fluids and electrolytes only, what does post-operative nutrition decrease?
+    points:
+      - Ventilator time
+      - Length of ICU stay
+      - Bacterial and viral infections
+      - Bile duct and other complications
+    pass: 3
+    src: { page: 416 }
+    status: unverified
+  - id: hb.L20.081
+    kind: cloze
+    topic: surgery-lt
+    text: After liver transplantation, start normal food and/or enteral tube feeding within {{c1::12–24 hours}} to reduce infection rates.
+    src: { page: 416 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L20.082
+    kind: cloze
+    topic: surgery-lt
+    text: After the acute post-transplant phase, give {{c1::35 kcal/kg}} BW/day energy and {{c2::1.5 g/kg}} BW/day protein.
+    src: { page: 416 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L20.083
+    kind: card
+    topic: surgery-lt
+    front: After LT, if oral or enteral nutrition is not possible?
+    back: Use parenteral nutrition rather than no feeding.
+    src: { page: 416 }
+    status: unverified
+  - id: hb.L20.084
+    kind: card
+    topic: surgery-lt
+    front: After other (non-transplant) surgery in chronic liver disease, which protocol is used?
+    back: ERAS (enhanced recovery after surgery) protocols.
+    src: { page: 416 }
+    status: unverified
+  - id: hb.L20.085
+    kind: card
+    topic: surgery-lt
+    front: Nitrogen balance after liver transplantation, and its implication?
+    back: Patients remain in negative nitrogen balance, so protein or amino acid provision must be increased.
+    src: { page: 417 }
+    status: unverified
+  - id: hb.L20.086
+    kind: card
+    topic: surgery-lt
+    front: Why should chronic dilutional hyponatraemia be corrected carefully after LT?
+    back: To avoid (central) pontine myelinolysis.
+    src: { page: 417 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L20.087
+    kind: card
+    topic: surgery-lt
+    front: Long-term nutritional risk in LT survivors?
+    back: Weight gain and obesity due to metabolic syndrome.
+    src: { page: 417 }
+    status: unverified
+  - id: hb.L20.088
+    kind: cloze
+    topic: surgery-lt
+    text: In obese patients after LT needing tube or parenteral feeding, use a reduced energy target of {{c1::25 kcal/kg ideal BW/day}} and a higher protein target of {{c2::2.0 g/kg ideal BW/day}}.
+    src: { page: 417 }
+    status: unverified
+    tags: [numbers]
+  # ---------- critical illness (p417-418) ----------
+  - id: hb.L20.089
+    kind: enumerate
+    topic: critical
+    prompt: Who counts as a critically ill patient with cirrhosis?
+    points:
+      - Hospitalised for severe complications of chronic liver disease
+      - Acute-on-chronic liver failure
+      - In an ICU
+      - Acute alcoholic hepatitis
+    pass: 3
+    src: { page: 417 }
+    status: unverified
+  - id: hb.L20.090
+    kind: cloze
+    topic: critical
+    text: In critically ill cirrhotics, daily energy should be at least {{c1::35–40 kcal/kg}} BW/day (or {{c2::1.3 ×}} measured REE) and protein at least {{c3::1.2–1.3 g/kg}} BW/day.
+    src: { page: 417 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L20.091
+    kind: card
+    topic: critical
+    front: Best way to measure energy expenditure in critically ill cirrhotics?
+    back: Direct measurement of REE by indirect calorimetry.
+    src: { page: 417 }
+    status: unverified
+  - id: hb.L20.092
+    kind: card
+    topic: critical
+    front: Glucose and feeding route in critically ill cirrhotics?
+    back: Tight glucose control; enteral or parenteral nutrition is more likely to be needed. In HE, consider BCAA-enriched solutions.
+    src: { page: 417 }
+    status: unverified
+  - id: hb.L20.093
+    kind: card
+    topic: critical
+    front: Energy expenditure in active alcohol abuse?
+    back: REE may be higher.
+    src: { page: 418 }
+    status: unverified
+  - id: hb.L20.094
+    kind: card
+    topic: critical
+    front: Why give nutritional support in cirrhosis with severe/acute alcoholic hepatitis?
+    back: It may speed resolution of HE and improve survival in patients with low calorie intake.
+    src: { page: 418 }
+    status: unverified
+  - id: hb.L20.095
+    kind: cloze
+    topic: critical
+    text: After acute GI bleeding, withhold enteral nutrition for {{c1::48–72 hours}} because of the risk of raised portal pressure and {{c2::variceal re-bleeding}}.
+    src: { page: 418 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L20.096
+    kind: card
+    topic: critical
+    front: Are naso-gastroenteric tubes contraindicated with oesophageal varices? What about PEG?
+    back: Nasogastric tubes are not contraindicated with non-bleeding varices. Avoid PEG insertion in cirrhosis because of bleeding risk.
+    src: { page: 418 }
+    status: unverified
+    tags: [high-yield]
+  # ---------- MCQs ----------
+  - id: hb.L20.097
+    kind: mcq
+    topic: screening
+    stem: A 50-year-old man with Child–Pugh C alcohol-related cirrhosis has a BMI of 24 kg/m² after paracentesis. How should his malnutrition risk be classified?
+    options:
+      - Low risk; re-screen in a year
+      - Medium risk; use a screening tool
+      - High risk; proceed to detailed nutritional assessment
+      - Obese; start a hypocaloric diet
+      - Not assessable until ascites resolves
+    answer: 2
+    why:
+      - Child–Pugh C alone puts him at high risk.
+      - Screening tools are for Child A/B with BMI 18.5–29.9.
+      - Correct. Child–Pugh C or BMI <18.5 means high risk; do a detailed assessment.
+      - BMI 24 is not obese, and hypocaloric diets are for BMI >30.
+      - Dry weight can be estimated; assessment should not wait.
+    src: { page: 404 }
+    status: unverified
+  - id: hb.L20.098
+    kind: mcq
+    topic: requirements
+    stem: A 60-year-old woman with decompensated cirrhosis weighs 60 kg (dry). What daily protein intake should she receive?
+    options:
+      - 40 g
+      - 50 g
+      - 72–90 g
+      - 120 g
+      - Restrict to 0.6 g/kg because of ascites
+    answer: 2
+    why:
+      - Below 0.7 g/kg; too low.
+      - Below the 1.2 g/kg minimum.
+      - Correct. 1.2–1.5 g/kg × 60 kg = 72–90 g/day.
+      - 2 g/kg is the target only for obese patients on tube feeding after LT (ideal weight).
+      - Protein restriction is not advisable in cirrhosis.
+    src: { page: 407 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L20.099
+    kind: mcq
+    topic: practical-advice
+    stem: A patient with cirrhosis asks how to space his meals. What is the best advice?
+    options:
+      - Two large meals a day to rest the liver
+      - Three main meals and three snacks, with a late-evening snack as the most important
+      - Fasting overnight for 12 hours to reduce ammonia
+      - Avoid breakfast and eat a large lunch
+      - Only liquid supplements
+    answer: 1
+    why:
+      - Long gaps worsen the accelerated starvation of cirrhosis.
+      - Correct. Split intake into 3 meals and 3 snacks; the late-evening snack matters most.
+      - Overnight fasting worsens proteolysis; the late snack shortens it.
+      - Breakfast is specifically recommended.
+      - Normal food is preferred; supplements are added, not substituted.
+    src: { page: 407 }
+    status: unverified
+  - id: hb.L20.100
+    kind: mcq
+    topic: he
+    stem: A 58-year-old man with cirrhosis is admitted with grade II hepatic encephalopathy. He is eating. What is the right nutritional plan?
+    options:
+      - Stop all protein for 72 hours
+      - Restrict protein to 0.5 g/kg/day
+      - Keep normal energy and protein intake, favouring vegetable and dairy protein
+      - Give only intravenous glucose
+      - Insert a PEG tube
+    answer: 2
+    why:
+      - Protein restriction should be avoided in HE.
+      - Protein should not be lower than the general 1.2–1.5 g/kg.
+      - Correct. HE needs the same energy and nitrogen as other cirrhotics; encourage vegetable and dairy protein.
+      - He can eat; oral intake is preferred.
+      - PEG is avoided in cirrhosis because of bleeding risk.
+    src: { page: 413 }
+    status: unverified
+  - id: hb.L20.101
+    kind: mcq
+    topic: obesity
+    stem: A 52-year-old woman with compensated MASH cirrhosis has a BMI of 34 kg/m² with no fluid retention. Which plan matches the guideline in the lecture?
+    options:
+      - No dietary change; obesity protects against malnutrition
+      - A moderately hypocaloric diet (−500 to −800 kcal/day) with protein >1.5 g/kg ideal BW, aiming for ≥5–10% weight loss
+      - A very low calorie diet with protein restriction
+      - 35 kcal/kg actual BW and 1.2 g/kg actual BW
+      - Bariatric surgery for everyone
+    answer: 1
+    why:
+      - Obesity does not rule out malnutrition, and weight loss improves outcomes.
+      - Correct. Tailored hypocaloric diet, adequate protein, supervised moderate exercise.
+      - Protein restriction would worsen sarcopenia.
+      - 35 kcal/kg actual BW is for non-obese patients.
+      - Not part of the lecture's recommendations.
+    src: { page: 412 }
+    status: unverified
+  - id: hb.L20.102
+    kind: mcq
+    topic: critical
+    stem: A man with cirrhosis was admitted 12 hours ago with variceal bleeding, now controlled after band ligation. When should enteral feeding start?
+    options:
+      - Immediately
+      - After 48–72 hours
+      - After 7 days
+      - Only after a PEG is placed
+      - Never; use parenteral nutrition only
+    answer: 1
+    why:
+      - Early feeding risks raised portal pressure and re-bleeding.
+      - Correct. Withhold enteral nutrition for 48–72 h after acute bleeding.
+      - Too long; prolonged fasting worsens starvation.
+      - PEG should be avoided in cirrhosis.
+      - Enteral feeding is preferred once the window has passed.
+    src: { page: 418 }
+    status: unverified
+  - id: hb.L20.103
+    kind: mcq
+    topic: micronutrients
+    stem: A patient with cholestatic liver disease has 25(OH)D of 14 ng/ml. What is the treatment target?
+    options:
+      - Above 10 ng/ml
+      - Above 20 ng/ml
+      - Above 30 ng/ml
+      - Above 100 ng/ml
+      - No target; vitamin D is not checked in cirrhosis
+    answer: 2
+    why:
+      - Still deficient.
+      - 20 ng/ml is the deficiency threshold, not the target.
+      - Correct. Supplement orally to reach 25(OH)D >30 ng/ml.
+      - Far above the target.
+      - Vitamin D should be assessed because deficiency is common and affects outcome.
+    src: { page: 412 }
+    status: unverified
+  - id: hb.L20.104
+    kind: mcq
+    topic: bone
+    stem: A 55-year-old woman with PBC has a DEXA T-score of −2.8 at the lumbar spine. What is the management?
+    options:
+      - Calcium and 25(OH)D only, repeat DEXA in 3 years
+      - Calcium and 25(OH)D plus a bisphosphonate, repeat DEXA in 1 year
+      - Observation only
+      - Stop ursodeoxycholic acid
+      - Start corticosteroids
+    answer: 1
+    why:
+      - That is the plan for normal BMD.
+      - Correct. T-score ≤ −2.5 is osteoporosis; treat with Ca, 25(OH)D and bisphosphonates; repeat DEXA in a year.
+      - Osteoporosis needs treatment.
+      - UDCA is not a cause of bone loss in the lecture.
+      - Corticosteroids increase bone loss.
+    src: { page: 415 }
+    status: unverified
+  - id: hb.L20.105
+    kind: mcq
+    topic: screening
+    stem: A cirrhotic patient weighs 80 kg with moderate ascites and bilateral pedal oedema. No post-paracentesis weight is available. What is his estimated dry weight?
+    options:
+      - 80 kg
+      - 76 kg
+      - 72 kg
+      - 68 kg
+      - 64 kg
+    answer: 3
+    why:
+      - Fluid retention must be subtracted.
+      - That subtracts only 5%.
+      - That subtracts 10% for moderate ascites but forgets the extra 5% for pedal oedema.
+      - Correct. 10% (moderate ascites) + 5% (bilateral pedal oedema) = 15%; 80 − 12 = 68 kg.
+      - That subtracts 20%.
+    src: { page: 406 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L20.106
+    kind: mcq
+    topic: surgery-lt
+    stem: A cirrhotic patient listed for liver transplantation is malnourished and the goal is to improve nutritional status. Which target is right?
+    options:
+      - 30 kcal/kg and 1.2 g/kg protein
+      - 35 kcal/kg and 1.5 g/kg protein
+      - 25 kcal/kg and 2.0 g/kg protein
+      - 20 kcal/kg and 0.8 g/kg protein
+      - A BCAA-enriched immune-enhancing formula
+    answer: 1
+    why:
+      - That is the maintenance target.
+      - Correct. Improvement needs 35 kcal/kg and 1.5 g/kg BW/day.
+      - That is for obese patients on tube or parenteral feeding after LT (ideal BW).
+      - Too low for any group.
+      - Specialised regimens have not been shown to help; use standard ones.
+    src: { page: 416 }
+    status: unverified
+  - id: hb.L20.107
+    kind: mcq
+    topic: malnutrition
+    stem: Which statement about malnutrition in cirrhosis is correct?
+    options:
+      - It affects about 20% of decompensated patients
+      - Men lose fat stores faster, women lose muscle faster
+      - It affects more than half of decompensated patients and is an independent predictor of lower survival
+      - Obese patients cannot be malnourished
+      - It does not affect transplant outcomes
+    answer: 2
+    why:
+      - 20% is the compensated figure; decompensated is >50%.
+      - Reversed; women lose fat, men lose muscle faster.
+      - Correct.
+      - Sarcopenic obesity exists and obesity does not rule out malnutrition.
+      - It raises waiting-list mortality and post-operative complications.
+    src: { page: 402 }
+    status: unverified
+  - id: hb.L20.108
+    kind: mcq
+    topic: critical
+    stem: A 45-year-old man with severe alcoholic hepatitis in the ICU is eating little. Which statement fits the lecture?
+    options:
+      - His REE is likely lower than normal, so give 20 kcal/kg
+      - Give at least 35–40 kcal/kg/day and protein at least 1.2–1.3 g/kg/day, measuring REE by indirect calorimetry if possible
+      - Insert a PEG tube for long-term feeding
+      - Avoid nutritional support until alcohol is stopped for 6 months
+      - Use immune-enhancing regimens because they reduce mortality
+    answer: 1
+    why:
+      - Active alcohol abuse may raise REE.
+      - Correct. Critically ill targets, and nutritional support may improve HE and survival.
+      - PEG is avoided in cirrhosis because of bleeding.
+      - Nutritional support is recommended now.
+      - Specialised regimens have not been shown to improve outcomes.
+    src: { page: 417 }
+    status: unverified
+  # ---------- cases ----------
+  - id: hb.L20.109
+    kind: case
+    topic: screening
+    stem: A 62-year-old man with HCV cirrhosis, Child–Pugh B9, comes to clinic. He has moderate ascites. Scale weight 75 kg, height 1.75 m.
+    steps:
+      - question: How do you get his weight for nutritional calculations?
+        options: ["Use 75 kg", "Subtract 10% (moderate ascites): about 67.5 kg", "Subtract 15%: about 64 kg", "Use ideal body weight only"]
+        answer: 1
+        why: Without a post-paracentesis or pre-retention weight, subtract 5/10/15% for mild/moderate/severe ascites (+5% for pedal oedema).
+      - reveal: Dry weight about 67.5 kg, BMI about 22 kg/m².
+        question: How do you screen him?
+        options: [Use a nutritional screening tool, He is automatically high risk, No screening needed, Re-screen only after decompensation]
+        answer: 0
+        why: BMI 18.5–29.9 and Child A/B means screening with a tool to classify low, medium or high risk.
+      - reveal: The tool rates him high risk. CT done last month for HCC surveillance is available.
+        question: How do you assess his muscle mass?
+        options: [CT muscle area at L3, MRI of the thigh, Serum albumin, BMI only]
+        answer: 0
+        why: Use the CT already done for other reasons to measure skeletal muscle at L3.
+      - reveal: He is sarcopenic.
+        question: What are his daily energy and protein targets?
+        options: ["≥35 kcal/kg and 1.2–1.5 g/kg protein", "25 kcal/kg and 0.8 g/kg protein", "20 kcal/kg and 2 g/kg protein", "45 kcal/kg and protein restriction"]
+        answer: 0
+        why: Not lower than 35 kcal/kg/day and 1.2–1.5 g/kg/day, plus a late-evening snack and breakfast, and exercise.
+    src: { page: 406 }
+    status: unverified
+  - id: hb.L20.110
+    kind: case
+    topic: he
+    stem: A 66-year-old woman with cirrhosis is admitted confused and drowsy (grade III HE). She cannot swallow safely. Her family says she was put on a "no meat, low protein" diet last year.
+    steps:
+      - question: What is the link between her nutrition and HE?
+        options: [Low muscle mass is linked to higher ammonia, Muscle mass does not affect ammonia, High protein causes sarcopenia, HE needs fewer calories]
+        answer: 0
+        why: Muscle mass and blood ammonia are inversely related; HE is more common in malnourished patients, and hyperammonaemia worsens muscle loss.
+      - question: How should she be fed now?
+        options: [Nasogastric tube with airway protected or parenteral, PEG tube, Nothing by mouth for 5 days, Oral protein-free diet]
+        answer: 0
+        why: In grade III–IV HE unable to eat, feed by NG tube (protected airway) or parenterally. PEG is avoided in cirrhosis.
+      - question: Which supplement may improve her neuropsychiatric performance?
+        options: [BCAA, Vitamin A, Calcium, Iron]
+        answer: 0
+        why: BCAA supplementation can improve neuropsychiatric performance and help reach nitrogen targets.
+      - reveal: She recovers and goes home.
+        question: What protein advice do you give?
+        options: ["Do not restrict protein; prefer vegetable and dairy proteins", "Keep the low-protein diet", "Avoid all dairy", "Protein only at breakfast"]
+        answer: 0
+        why: Avoid protein restriction; nitrogen needs are the same as without HE, and vegetable and dairy protein are better tolerated.
+    src: { page: 413 }
+    status: unverified
+  - id: hb.L20.111
+    kind: case
+    topic: bone
+    stem: A 48-year-old woman with primary biliary cholangitis and early menopause asks about her bones.
+    steps:
+      - question: Should her bone mineral density be checked?
+        options: [Yes; cholestatic disease is an indication, No; only before transplant, Only after a fracture, Only if on steroids]
+        answer: 0
+        why: Evaluate BMD in cirrhosis, cholestatic disease, steroid treatment and before LT. About 30% of CLD patients have osteoporosis, more in cholestasis.
+      - reveal: DEXA lumbar spine T-score −1.9.
+        question: What is the diagnosis?
+        options: [Osteopenia, Normal, Osteoporosis, Vertebral fracture]
+        answer: 0
+        why: T-score ≤ −1.5 and > −2.5 is osteopenia.
+      - question: What is the plan?
+        options: ["Ca + 25(OH)D, bisphosphonate depending on risk factors, repeat DEXA in 1–2 years", "Nothing, repeat in 5 years", "Start corticosteroids", "Repeat DEXA in 3 years only"]
+        answer: 0
+        why: Osteopenia gets Ca and 25(OH)D, bisphosphonates by risk factors (early menopause counts), and repeat DEXA in 1–2 years.
+    src: { page: 415 }
+    status: unverified
+  # ---------- essays (p418) ----------
+  - id: hb.L20.112
+    kind: essay
+    topic: practical-advice
+    prompt: What would you advise your hepatic patient regarding eating?
+    outline:
+      - Energy and protein:
+          - "≥35 kcal/kg actual BW/day (non-obese); protein 1.2–1.5 g/kg/day; do not restrict protein"
+      - Meal pattern:
+          - 3 main meals + 3 snacks; late-evening snack most important; include breakfast
+      - Food choices:
+          - Only alcohol is contraindicated; plenty of fruit and vegetables
+          - Salt restriction with ascites (80 mmol Na = 5 g salt/day), keep food palatable
+          - In HE, vegetable and dairy protein are better tolerated
+      - Special cases:
+          - "Obese: −500 to −800 kcal/day, protein >1.5 g/kg ideal BW, ≥5–10% weight loss, exercise"
+          - Vitamin D, calcium; report reduced intake to doctor or dietician
+    src: { page: 418 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L20.113
+    kind: essay
+    topic: he
+    prompt: What is the role of sarcopenia in hepatic encephalopathy?
+    outline:
+      - Link:
+          - Muscle mass is inversely related to blood ammonia; HE is more common in malnourished cirrhotics
+          - Hyperammonaemia impairs muscle function and causes more muscle loss (vicious circle)
+      - Mechanisms of sarcopenia:
+          - Accelerated starvation, hyperammonaemia, myostatin, endotoxin, low testosterone/GH, mitochondrial dysfunction
+      - Management:
+          - Assess nutrition and sarcopenia in HE; avoid protein restriction; same energy/nitrogen as other cirrhotics
+          - Vegetable and dairy protein, BCAA, late-evening snack, exercise
+    src: { page: 418 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L20.114
+    kind: order
+    topic: screening
+    prompt: Nutritional screening and assessment pathway in cirrhosis
+    steps:
+      - Correct body weight for fluid retention (dry weight)
+      - Calculate Child–Pugh and BMI
+      - Classify risk (high if BMI <18.5 or Child C; screening tool otherwise)
+      - Detailed assessment by dietician and assessment of sarcopenia
+      - Treat with nutritional supplementation and reassess every 1–3 months in the first year
+    src: { page: 406 }
+    status: unverified
