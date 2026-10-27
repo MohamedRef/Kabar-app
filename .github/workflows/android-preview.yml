@@ -9,6 +9,11 @@ name: Android preview APK
 # Pull-request runs never touch that key: they sign with a one-off key (enough
 # to prove the APK signs) and get a read-only token. Only pushes to main and
 # manual runs restore the key, and only the separate `publish` job can write.
+#
+# Self-updates (docs/RELEASE.md §5): the APK is built for the `preview`
+# update channel with the public half of a second CI key (Ed25519, also kept
+# in the Actions cache), and the release carries a signed update.json, so an
+# installed preview updates itself after every merge to main.
 
 on:
   push:
@@ -55,6 +60,36 @@ jobs:
       - uses: cargo-bins/cargo-binstall@8a2045612414e945291083f820cd50b4d8fc2218 # v1.26.0
       - name: Install dx 0.7.10
         run: cargo binstall -y --force dioxus-cli@0.7.10
+
+      # The update key comes first: its public half is built into the app.
+      - name: Restore preview update key
+        if: env.KEEP_KEY == 'true'
+        id: update-key
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.kabar-preview-update
+          key: android-preview-update-key-v1
+      - name: Create preview update key
+        if: steps.update-key.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ~/.kabar-preview-update
+          cargo run -q -p kabar-tools -- update keygen --public-out ~/.kabar-preview-update/key.pub \
+            > ~/.kabar-preview-update/secret
+          chmod 600 ~/.kabar-preview-update/secret
+      - name: Save preview update key
+        if: env.KEEP_KEY == 'true' && steps.update-key.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ~/.kabar-preview-update
+          key: android-preview-update-key-v1
+      - name: Preview build identity
+        run: |
+          {
+            echo "KABAR_UPDATE_CHANNEL=preview"
+            echo "KABAR_UPDATE_KEY=$(grep -v '^#' ~/.kabar-preview-update/key.pub | head -1)"
+            echo "KABAR_BUILD=${{ github.run_number }}"
+            echo "KABAR_COMMIT=${GITHUB_SHA::7}"
+          } >> "$GITHUB_ENV"
 
       - name: Android environment
         run: |
@@ -113,10 +148,26 @@ jobs:
             || { echo "APK has no arm64-v8a library"; unzip -l dist/android/kabar-preview.apk; exit 1; }
           ls -lh dist/android/kabar-preview.apk
 
+      - name: Signed update feed (update.json + signature)
+        env:
+          COMMIT_SUBJECT: ${{ github.event.head_commit.message || github.event.pull_request.title || 'Preview build' }}
+        run: |
+          VERSION="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"
+          NOTES="$(printf '%s' "$COMMIT_SUBJECT" | head -1 | cut -c1-200)"
+          cargo run -q -p kabar-tools -- update manifest --channel preview --version "$VERSION" \
+            --build "$KABAR_BUILD" --commit "$KABAR_COMMIT" --notes-en "$NOTES" \
+            --asset android-arm64=dist/android/kabar-preview.apk --out dist/update
+          KABAR_UPDATE_SECRET="$(cat ~/.kabar-preview-update/secret)" \
+            cargo run -q -p kabar-tools -- update sign dist/update --public-key ~/.kabar-preview-update/key.pub
+          cargo run -q -p kabar-tools -- update verify dist/update --public-key ~/.kabar-preview-update/key.pub
+          ls -l dist/update
+
       - uses: actions/upload-artifact@v4
         with:
           name: kabar-preview-apk
-          path: dist/android/kabar-preview.apk
+          path: |
+            dist/android/kabar-preview.apk
+            dist/update/
           retention-days: 14
 
   publish:
@@ -131,13 +182,15 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: kabar-preview-apk
-          path: dist/android
+          path: dist
       - name: Publish as the "preview" release
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
           gh release delete preview --cleanup-tag -y || true
-          gh release create preview dist/android/kabar-preview.apk \
+          # The APK under its usual name for people, plus the signed update
+          # feed (update.json, its signature, the same APK) for the app.
+          gh release create preview dist/android/kabar-preview.apk dist/update/* \
             --prerelease --target "$GITHUB_SHA" --title "Kabar preview (Android)" \
             --notes "Preview build of ${GITHUB_SHA::7}, signed with a CI preview key (not the release key). Install: download kabar-preview.apk on the phone and allow installs from your browser."

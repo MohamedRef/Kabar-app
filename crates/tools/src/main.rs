@@ -23,6 +23,7 @@ mod pron;
 mod readme;
 mod schemas;
 mod text;
+mod update;
 mod wiki;
 
 #[derive(Parser)]
@@ -63,6 +64,9 @@ enum Command {
     /// Offline packs per unit: manifests, Azure audio within the free quota, release tars.
     #[command(subcommand)]
     Packs(packs::Cmd),
+    /// App update feeds: the signing key, `update.json` and its signature.
+    #[command(subcommand)]
+    Update(update::Cmd),
     /// Regenerate `schemas/*.schema.json` from the Rust content types.
     Schemas {
         /// Fail instead of writing when a schema is out of date.
@@ -92,6 +96,7 @@ fn main() -> Result<()> {
         Command::Golden(cmd) => golden::run(&root, cmd),
         Command::Bakeoff(cmd) => bakeoff::run(&root, cmd),
         Command::Packs(cmd) => packs::run(&root, cmd),
+        Command::Update(cmd) => update::run(&root, cmd),
         Command::Schemas { check } => schemas::run(&root, check),
         Command::Readme { check } => readme::run(&root, check),
         Command::Validate => {

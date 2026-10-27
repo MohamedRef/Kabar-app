@@ -38,6 +38,7 @@ mod store;
 mod studio;
 mod teach;
 mod theme;
+mod update;
 
 use std::cell::RefCell;
 use std::rc::Rc;
@@ -225,6 +226,10 @@ impl Ui {
 
 fn main() {
     diag::install_panic_hook();
+    // Automatic updates on the Mac: a verified download from the last
+    // session goes in before the window opens (and Kabar reopens).
+    #[cfg(target_os = "macos")]
+    update::apply_staged_on_launch();
     #[cfg(all(feature = "desktop", not(target_os = "android")))]
     {
         use dioxus::desktop::{Config, LogicalSize, WindowBuilder};
@@ -259,6 +264,7 @@ fn open_store() -> Result<(Store, std::path::PathBuf), String> {
     std::fs::create_dir_all(&dir).map_err(|e| format!("{}: {e}", dir.display()))?;
     let path = dir.join("kabar.db");
     packs::init(&dir);
+    update::init(&dir);
     Ok((Store::open(&path).map_err(|e| e.to_string())?, path))
 }
 
@@ -585,23 +591,21 @@ fn Shell() -> Element {
     settings::menu::use_menu_events(ui, settings_nav);
     let settings_open = *settings_nav.open.read();
     back::use_back(ui, current, settings_open);
+    update::view::use_android_install(ui);
     // Full-screen players keep the whole screen; everywhere else on the
     // phone a slim top bar carries the gear.
     let top_bar =
         *ui.width.read() == WidthClass::Compact && !matches!(current, Screen::Lesson | Screen::LevelCheck);
-    let items = [
-        Screen::Today,
-        Screen::Journey,
-        Screen::Reader,
-        Screen::Review,
-        Screen::Play,
-        Screen::Listen,
-        Screen::Chat,
-        Screen::Coach,
-        Screen::Journal,
-        Screen::Studio,
-        Screen::Teach,
-        Screen::PenLab,
+    // Grouped like a Mac sidebar (Apple HIG, Material 3): what you learn,
+    // where you practise, and your own corner. On the phone the groups melt
+    // into the bottom bar; on the rail they are small gaps.
+    let groups = [
+        (Msg::NavGroupLearn, &[Screen::Today, Screen::Journey, Screen::Reader, Screen::Review][..]),
+        (
+            Msg::NavGroupPractise,
+            &[Screen::Play, Screen::Listen, Screen::Chat, Screen::Teach, Screen::Studio, Screen::PenLab][..],
+        ),
+        (Msg::NavGroupMe, &[Screen::Coach, Screen::Journal][..]),
     ];
     // Re-tapping the tab you're on starts that section over (Games → the
     // hub, Chat → the list, Review → its home): the screen remounts.
@@ -611,7 +615,10 @@ fn Shell() -> Element {
         div { class: "shell",
             nav { class: "nav", aria_label: "Kabar",
                 div { class: "brand latin", "Kabar" }
-                for item in items.into_iter().filter(|s| tablet || !s.pen_only()) {
+                for (g, (title, screens)) in groups.into_iter().enumerate() {
+                    div { key: "{g}", class: "nav-group", role: "group", aria_labelledby: "nav-group-{g}",
+                        p { id: "nav-group-{g}", class: "nav-heading", "{ui.t(title)}" }
+                        for item in screens.iter().copied().filter(|s| tablet || !s.pen_only()) {
                     button {
                         key: "{item:?}",
                         class: if item.secondary() { "nav-item secondary" } else { "nav-item" },
@@ -631,6 +638,8 @@ fn Shell() -> Element {
                         span { class: "nav-icon", aria_hidden: "true", {icons::nav(item)} }
                         span { class: "nav-label",
                             "{more::rail_label(ui.lang(), item).unwrap_or(ui.t(item.label()))}"
+                        }
+                    }
                         }
                     }
                 }

@@ -943,6 +943,8 @@ fn Classic() -> Element {
     let left = engine.session.read().as_ref().map_or(0, Session::remaining);
     let is_production = card.kind == CardKind::Production;
     let suggested = checked().map(AnswerMatch::suggested);
+    // Expanded+ puts the session's progress beside the card (docs/DESIGN.md).
+    let wide = *ui.width.read() >= WidthClass::Expanded;
 
     let check = {
         let word = card.word.clone();
@@ -953,7 +955,7 @@ fn Classic() -> Element {
     };
 
     rsx! {
-        div { id: "review-classic", class: "rev-session",
+        div { id: "review-classic", class: if wide { "rev-session with-pane" } else { "rev-session" },
             SessionBar { left }
             article {
                 key: "{card_id}",
@@ -1020,16 +1022,8 @@ fn Classic() -> Element {
                         {
                             let r = p.rating;
                             let span = span_short(&ui, Span::from_days(p.interval_days));
-                            let class = match (r, suggested == Some(r)) {
-                                (Rating::Again, true) => "rate again suggested",
-                                (Rating::Again, false) => "rate again",
-                                (Rating::Hard, true) => "rate hard suggested",
-                                (Rating::Hard, false) => "rate hard",
-                                (Rating::Good, true) => "rate good suggested",
-                                (Rating::Good, false) => "rate good",
-                                (Rating::Easy, true) => "rate easy suggested",
-                                (Rating::Easy, false) => "rate easy",
-                            };
+                            let hint = if suggested == Some(r) { " suggested" } else { "" };
+                            let class = format!("rate {}{hint}", rate_class(r));
                             rsx! {
                                 button {
                                     key: "{i}",
@@ -1057,7 +1051,88 @@ fn Classic() -> Element {
                 span { class: "muted small kbd-hint", {ui.digits(ui.t(Msg::RevKeysHint))} }
                 SessionActions { on_undo: move |_| undo.call(()) }
             }
+            if wide {
+                SessionPane { left, on_undo: move |_| undo.call(()) }
+            }
         }
+    }
+}
+
+/// How many recent answers the side pane lists.
+const RECENT: usize = 8;
+
+/// The side pane on wide windows: answer counts per rating and the words just
+/// reviewed, newest first, with undo on the latest. Fills the margin with the
+/// session instead of leaving it empty.
+#[component]
+fn SessionPane(left: usize, on_undo: EventHandler<()>) -> Element {
+    let ui = use_context::<Ui>();
+    let engine = use_context::<Engine>();
+    let session = engine.session.read();
+    let answers = session.as_ref().map_or(&[][..], Session::answers);
+    let count = |r: Rating| answers.iter().filter(|a| a.rating == r).count() as u64;
+    let recent: Vec<(String, Card, Rating)> = answers
+        .iter()
+        .rev()
+        .take(RECENT)
+        .filter_map(|a| engine.card(&a.card_id).map(|c| (a.event_id.clone(), c, a.rating)))
+        .collect();
+    let can_undo = engine.can_undo();
+    rsx! {
+        aside { class: "rev-pane", aria_label: ui.t(Msg::RevThisSession),
+            h2 { class: "rev-pane-title", "{ui.t(Msg::RevThisSession)}" }
+            div { class: "rev-pane-counts",
+                div { class: "rev-pane-big",
+                    span { class: "rev-stat-value", "{ui.num(answers.len() as u64)}" }
+                    span { class: "rev-stat-label", "{ui.t(Msg::RevAnswered)}" }
+                }
+                div { class: "rev-pane-big",
+                    span { class: "rev-stat-value", "{ui.num((left + 1) as u64)}" }
+                    span { class: "rev-stat-label", "{ui.t(Msg::RevRemaining)}" }
+                }
+            }
+            ul { class: "rev-pane-ratings",
+                for r in Rating::ALL {
+                    li { key: "{r:?}", class: rate_class(r),
+                        span { class: "rev-pane-n", "{ui.num(count(r))}" }
+                        span { "{ui.t(rating_msg(r))}" }
+                    }
+                }
+            }
+            h3 { class: "rev-h3", "{ui.t(Msg::RevJustReviewed)}" }
+            if recent.is_empty() {
+                p { class: "muted small", "{ui.t(Msg::RevNoneYet)}" }
+            } else {
+                ol { class: "rev-recent",
+                    for (i, (key, card, r)) in recent.into_iter().enumerate() {
+                        li { key: "{key}",
+                            bdi { class: "latin rev-recent-word", lang: card.language.tag(), dir: "ltr", "{card.word}" }
+                            span { class: "pill {rate_class(r)}", "{ui.t(rating_msg(r))}" }
+                            if i == 0 && can_undo {
+                                button {
+                                    class: "ghost rev-recent-undo",
+                                    title: ui.t(Msg::RevUndo),
+                                    aria_label: ui.t(Msg::RevUndo),
+                                    "aria-keyshortcuts": "Control+Z Meta+Z",
+                                    onclick: move |_| on_undo.call(()),
+                                    "↶"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/// The rating's colour class, shared by the answer buttons and the pane.
+fn rate_class(r: Rating) -> &'static str {
+    match r {
+        Rating::Again => "again",
+        Rating::Hard => "hard",
+        Rating::Good => "good",
+        Rating::Easy => "easy",
     }
 }
 
@@ -1089,7 +1164,7 @@ fn SessionActions(on_undo: EventHandler<()>) -> Element {
     let can_undo = engine.can_undo();
     rsx! {
         div { class: "row",
-            button { disabled: !can_undo, onclick: move |_| on_undo.call(()), "{ui.t(Msg::RevUndo)}" }
+            button { class: "rev-undo", disabled: !can_undo, onclick: move |_| on_undo.call(()), "{ui.t(Msg::RevUndo)}" }
             button { onclick: move |_| engine.finish(), "{ui.t(Msg::RevFinish)}" }
         }
     }

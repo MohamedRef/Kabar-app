@@ -96,6 +96,16 @@ run-phone-preview:
 # Build a release .app for the Mac into dist/
 bundle-mac:
     cd {{app}} && dx bundle --platform macos --release --package-types macos --out-dir ../../{{dist}}/mac
+    # Same code identity for every build (Keychain trust survives updates):
+    # signed with "Kabar Code Signing" once `just mac-codesign-cert` made it.
+    if security find-identity -v -p codesigning | grep -q '"Kabar Code Signing"'; then \
+      app="$(find {{dist}}/mac -maxdepth 4 -name '*.app' | head -1)"; \
+      codesign --force --deep --sign "Kabar Code Signing" "$app" && codesign --verify --deep --strict "$app" && echo "signed $app"; \
+    else echo "Kabar.app is ad-hoc signed; run 'just mac-codesign-cert' once (docs/RELEASE.md §5)"; fi
+
+# One-time: a free self-signed code-signing certificate for Kabar.app
+mac-codesign-cert:
+    scripts/mac-codesign-cert.sh
 
 # --- Android -----------------------------------------------------------------
 
@@ -122,13 +132,22 @@ apk:
 release:
     just check
     cargo run -q -p kabar-tools -- validate
-    just bundle-mac
-    just apk
+    KABAR_COMMIT="$(git rev-parse --short HEAD)" just bundle-mac
+    KABAR_COMMIT="$(git rev-parse --short HEAD)" just apk
     v="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"; \
       out="{{dist}}/release/$v"; rm -rf "$out" && mkdir -p "$out"; \
       cp -R "$(find {{dist}}/mac -maxdepth 4 -name '*.app' | head -1)" "$out/Kabar.app"; \
       cp {{dist}}/android/kabar.apk "$out/kabar-$v.apk"; \
       echo "Kabar $v → $out (Kabar.app, kabar-$v.apk). Next: docs/RELEASE.md §4."
+
+# One-time: the update signing key (public half → crates/app/update-key.pub, secret → Keychain)
+update-keygen:
+    scripts/update-keygen.sh
+
+# After `just release`, only once the learner says go: publish it as an
+# over-the-air update to the phone, tablet and Mac (docs/RELEASE.md §5)
+publish-update notes_en="" notes_ar_eg="":
+    scripts/update-publish.sh "{{notes_en}}" "{{notes_ar_eg}}"
 
 # Share a test text to Kabar on a device (M5): `just share-text "arp dicul piro"`
 share-text text serial="":

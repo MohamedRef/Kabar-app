@@ -209,6 +209,145 @@ pub fn save_state() -> Result<super::SaveState, String> {
     })
 }
 
+/// What `UpdateInstaller` is doing (Settings › About › Updates).
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum InstallState {
+    Idle,
+    Working,
+    /// Android's confirmation screen is up.
+    WaitingUser,
+    Failed(String),
+    Cancelled,
+}
+
+/// `UpdateInstaller.canRequestInstalls(activity)`: "Install unknown apps" is on.
+pub fn can_request_installs() -> Result<bool, String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.UpdateInstaller"))?;
+        env.call_static_method(
+            &class,
+            jni_str!("canRequestInstalls"),
+            jni_sig!("(Landroid/app/Activity;)Z"),
+            &[JValue::Object(activity)],
+        )?
+        .z()
+    })
+}
+
+/// `UpdateInstaller.canInstallQuietly(activity)`: Android 12+ and Kabar
+/// installed itself last time, so no confirmation screen.
+pub fn can_install_quietly() -> Result<bool, String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.UpdateInstaller"))?;
+        env.call_static_method(
+            &class,
+            jni_str!("canInstallQuietly"),
+            jni_sig!("(Landroid/app/Activity;)Z"),
+            &[JValue::Object(activity)],
+        )?
+        .z()
+    })
+}
+
+/// `UpdateInstaller.openInstallPermission(activity)`.
+pub fn open_install_permission() -> Result<(), String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.UpdateInstaller"))?;
+        env.call_static_method(
+            &class,
+            jni_str!("openInstallPermission"),
+            jni_sig!("(Landroid/app/Activity;)V"),
+            &[JValue::Object(activity)],
+        )?;
+        Ok(())
+    })
+}
+
+/// `UpdateInstaller.install(...)`: checks the APK (package, signing key,
+/// versionCode) and hands it to PackageInstaller. Returns at once; poll
+/// [`install_state`].
+pub fn install_apk(
+    path: &str,
+    version_code: u64,
+    done_title: &str,
+    done_body: &str,
+    ready_title: &str,
+) -> Result<(), String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.UpdateInstaller"))?;
+        let (path, title, body) =
+            (env.new_string(path)?, env.new_string(done_title)?, env.new_string(done_body)?);
+        let ready = env.new_string(ready_title)?;
+        env.call_static_method(
+            &class,
+            jni_str!("install"),
+            jni_sig!(
+                "(Landroid/app/Activity;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
+            ),
+            &[
+                JValue::Object(activity),
+                JValue::Object(&path),
+                JValue::Long(i64::try_from(version_code).unwrap_or(0)),
+                JValue::Object(&title),
+                JValue::Object(&body),
+                JValue::Object(&ready),
+            ],
+        )?;
+        Ok(())
+    })
+}
+
+/// `UpdateInstaller.isMetered(activity)`: mobile data or Data Saver.
+pub fn network_metered() -> Result<bool, String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.UpdateInstaller"))?;
+        env.call_static_method(
+            &class,
+            jni_str!("isMetered"),
+            jni_sig!("(Landroid/app/Activity;)Z"),
+            &[JValue::Object(activity)],
+        )?
+        .z()
+    })
+}
+
+/// `UpdateInstaller.showPendingConfirm(activity)`: the confirmation screen
+/// that arrived while Kabar was in the background.
+pub fn show_pending_confirm() -> Result<(), String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.UpdateInstaller"))?;
+        env.call_static_method(
+            &class,
+            jni_str!("showPendingConfirm"),
+            jni_sig!("(Landroid/app/Activity;)V"),
+            &[JValue::Object(activity)],
+        )?;
+        Ok(())
+    })
+}
+
+/// `UpdateInstaller.state()`; a finished state is reset once read.
+pub fn install_state() -> Result<InstallState, String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.UpdateInstaller"))?;
+        let state = env.call_static_method(&class, jni_str!("state"), jni_sig!("()I"), &[])?.i()?;
+        let out = match state {
+            1 => return Ok(InstallState::Working),
+            2 => return Ok(InstallState::WaitingUser),
+            3 => {
+                let msg = env
+                    .call_static_method(&class, jni_str!("message"), jni_sig!("()Ljava/lang/String;"), &[])?
+                    .l()?;
+                InstallState::Failed(to_string(env, msg)?.unwrap_or_default())
+            }
+            4 => InstallState::Cancelled,
+            _ => InstallState::Idle,
+        };
+        env.call_static_method(&class, jni_str!("reset"), jni_sig!("()V"), &[])?;
+        Ok(out)
+    })
+}
+
 /// `OcrBridge.recognize(path)`: ML Kit Text Recognition v2, blocking.
 pub fn ocr_image(path: &Path) -> Result<OcrResult, String> {
     let path = path.to_str().ok_or("image path is not valid UTF-8")?;
