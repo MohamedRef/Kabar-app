@@ -374,9 +374,9 @@ mod tests {
     #[test]
     fn street_forms_count_once_their_formal_twin_is_taught() {
         let names = BTreeSet::new();
-        let (_, u) = measure(&track(), &names, 0, "Saya nggak makan. Makasih!", "");
+        let (_, u) = measure(&track(), &names, 0, "Saya nggak makan, makasih!", "");
         assert_eq!(u, vec!["nggak".to_owned(), "makasih".to_owned()]);
-        let (_, u) = measure(&track(), &names, 1, "Saya nggak makan. Makasih!", "");
+        let (_, u) = measure(&track(), &names, 1, "Saya nggak makan, makasih!", "");
         assert!(u.is_empty());
     }
 }
