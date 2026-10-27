@@ -17,6 +17,7 @@ mod lesson;
 mod listen;
 mod map_art;
 mod misc_art;
+mod more;
 mod packs;
 mod penlab;
 mod platform;
@@ -116,7 +117,8 @@ impl Screen {
     fn secondary(self) -> bool {
         matches!(
             self,
-            Self::Coach
+            Self::Play
+                | Self::Coach
                 | Self::Journal
                 | Self::Settings
                 | Self::Studio
@@ -292,6 +294,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     use_context_provider(|| db.clone());
     let prefs = use_context_provider(|| settings::device::DevicePrefs::load(&db));
     use_context_provider(settings::SettingsNav::new);
+    use_context_provider(more::MoreNav::new);
     use_context_provider(play::PlayNav::new);
     use_context_provider(|| teach::TeachInbox(Signal::new(None)));
     let link = use_hook(cloud::link::CloudLink::default);
@@ -527,8 +530,10 @@ fn Shell() -> Element {
         Screen::Studio,
         Screen::Teach,
         Screen::PenLab,
-        Screen::Devices,
     ];
+    // Re-tapping the tab you're on starts that section over (Games → the
+    // hub, Chat → the list, Review → its home): the screen remounts.
+    let mut generation = use_signal(|| 0u32);
 
     rsx! {
         div { class: "shell",
@@ -539,14 +544,25 @@ fn Shell() -> Element {
                         key: "{item:?}",
                         class: if item.secondary() { "nav-item secondary" } else { "nav-item" },
                         aria_current: if item == current { "page" } else { "false" },
+                        title: "{ui.t(item.label())}",
                         onclick: move |_| {
+                            if item == *ui.screen.peek() {
+                                generation += 1;
+                            }
+                            if item == Screen::Play {
+                                let play::PlayNav(mut nav) = consume_context::<play::PlayNav>();
+                                nav.set(play::Route::Hub);
+                            }
                             let mut screen = ui.screen;
                             screen.set(item);
                         },
                         span { class: "nav-icon", aria_hidden: "true", {icons::nav(item)} }
-                        span { "{ui.t(item.label())}" }
+                        span { class: "nav-label",
+                            "{more::rail_label(ui.lang(), item).unwrap_or(ui.t(item.label()))}"
+                        }
                     }
                 }
+                more::MoreTab { current }
                 // Pinned to the foot of the rail and sidebar (hidden in the
                 // phone's bottom bar, which has the gear up top instead).
                 button {
@@ -559,12 +575,9 @@ fn Shell() -> Element {
                 }
             }
             if top_bar {
-                header { class: "top-bar",
-                    span { class: "brand-small latin", "Kabar" }
-                    settings::GearButton {}
-                }
+                more::TopBar { current }
             }
-            main { class: "content",
+            main { class: "content", key: "{current:?}-{generation}",
                 match current {
                     Screen::Today => rsx! { coach::today::Today {} },
                     Screen::Coach => rsx! { coach::coach_screen::CoachScreen {} },
@@ -587,6 +600,7 @@ fn Shell() -> Element {
                     Screen::LevelCheck => rsx! { stats::check::LevelCheckScreen {} },
                 }
             }
+            more::MoreSheet {}
             settings::SettingsSheet {}
         }
     }

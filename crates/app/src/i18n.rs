@@ -996,12 +996,10 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (JourneyRoute, En) => "Route",
         (JourneyMap, ArEg | Ar) => "الخريطة",
         (JourneyMap, En) => "Map",
-        (JourneyMapHint, ArEg) => {
-            "دوس على أي محطة عشان تشوف دروسها. اسحب الخريطة أو قرّبها بصباعين أو بالقلم."
-        }
-        (JourneyMapHint, Ar) => "اضغط على أي محطة لترى دروسها. اسحب الخريطة أو كبّرها بإصبعين أو بالقلم.",
+        (JourneyMapHint, ArEg) => "دوس على أي محطة عشان تشوف دروسها. اسحب الخريطة أو قرّبها بصباعين.",
+        (JourneyMapHint, Ar) => "اضغط على أي محطة لترى دروسها. اسحب الخريطة أو كبّرها بإصبعين.",
         (JourneyMapHint, En) => {
-            "Tap any stop to see its lessons. Drag the map, or zoom with two fingers, the pen or the trackpad."
+            "Tap any stop to see its lessons. Drag the map, or zoom with two fingers or the trackpad."
         }
         (JourneyMapOfIndonesia, ArEg | Ar) => "خريطة إندونيسيا",
         (JourneyMapOfIndonesia, En) => "Map of Indonesia",

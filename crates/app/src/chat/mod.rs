@@ -9,6 +9,9 @@ mod text;
 
 use std::sync::LazyLock;
 
+/// Handwritten replies (the ✍ toggle). Paused with the other writing features.
+const HANDWRITING: bool = false;
+
 use dioxus::prelude::*;
 use kabar_core::ai::FriendlyReason;
 use kabar_core::ai::tasks::RoleplayTurn;
@@ -662,8 +665,12 @@ fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> E
                     }
                 }
                 div { class: "row ch-send",
-                    button { class: "quiet small", onclick: move |_| ink.toggle(),
-                        if ink() { "{tt(lang, T::Type)}" } else { "{tt(lang, T::Write)}" }
+                    // Handwriting is paused (Mohamed, 2026-10-26): the toggle
+                    // comes back with the tablet pen work.
+                    if HANDWRITING {
+                        button { class: "quiet small", onclick: move |_| ink.toggle(),
+                            if ink() { "{tt(lang, T::Type)}" } else { "{tt(lang, T::Write)}" }
+                        }
                     }
                     button {
                         class: "primary",

@@ -910,7 +910,7 @@ fn ReadView(open: Open) -> Element {
                     span { "{ui.t(Msg::Explanation)}" }
                 }
                 div { id: "reader-doc", class: "doc split", {rows} }
-                p { class: "muted small pen-hint", "{ui.t(Msg::PenHint)}" }
+                p { class: "muted small pen-hint", "{input_hint(ui.lang(), *ui.tablet.read())}" }
             }
             if panel_open {
                 card::PanelView {}
@@ -918,6 +918,33 @@ fn ReadView(open: Open) -> Element {
         }
         if let Some(p) = *st.peek.read() {
             card::PeekView { peek: p }
+        }
+    }
+}
+
+/// How to use the words below the text, for this device's input: the pen
+/// sentence on the tablet (S Pen), touch on a phone, the mouse on the Mac.
+fn input_hint(lang: kabar_core::locale::UiLanguage, tablet: bool) -> &'static str {
+    use kabar_core::locale::UiLanguage::*;
+    if tablet {
+        return crate::i18n::t(lang, Msg::PenHint);
+    }
+    match (cfg!(target_os = "android"), lang) {
+        (true, ArEg) => {
+            "دوس على أي كلمة تشوف معناها، ودوس مطوّل تفتح الكارت أو تحفظها. اسحب على عبارة تشرحها."
+        }
+        (true, Ar) => "المس أي كلمة لترى معناها، والمس مطوّلًا لفتح البطاقة أو حفظها. اسحب على عبارة لشرحها.",
+        (true, En) => {
+            "Tap any word to see its meaning; long-press to open its card or save it. Drag across a phrase to explain it."
+        }
+        (false, ArEg) => {
+            "وقّف الماوس على أي كلمة تشوف معناها، واضغط عليها تفتح الكارت. ظلّل عبارة تشرحها، وكليك يمين تحفظ."
+        }
+        (false, Ar) => {
+            "قف بالفأرة على أي كلمة لترى معناها، وانقرها لفتح البطاقة. ظلّل عبارة لشرحها، وانقر يمينًا للحفظ."
+        }
+        (false, En) => {
+            "Rest the mouse on any word to see its meaning; click it for its card. Select a phrase to explain it; right-click to save."
         }
     }
 }
