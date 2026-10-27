@@ -76,7 +76,7 @@ pub fn JournalScreen() -> Element {
     let offset = coach.offset();
     let (lessons, taught, reflections) = {
         let store = db.0.borrow();
-        let log = |what: &str, e: &dyn std::fmt::Display| eprintln!("kabar: loading {what} failed: {e}");
+        let log = |what: &str, e: &dyn std::fmt::Display| crate::diag::report!("loading {what} failed: {e}");
         (
             store.lesson_completions().unwrap_or_else(|e| {
                 log("finished lessons", &e);
@@ -242,7 +242,7 @@ fn Reflection(entry: JournalEntry, draft: Signal<Option<Draft>>, local_rev: Sign
                             class: "journal-delete",
                             onclick: move |_| {
                                 if let Err(e) = db.0.borrow_mut().delete_reflection(&id) {
-                                    eprintln!("kabar: deleting the reflection failed: {e}");
+                                    crate::diag::report!("deleting the reflection failed: {e}");
                                 }
                                 kick_sync(cloud);
                                 let mut rev = local_rev;
@@ -283,7 +283,7 @@ fn Editor(draft: Signal<Option<Draft>>, local_rev: Signal<u32>) -> Element {
             },
         };
         if let Err(e) = db.0.borrow_mut().save_reflection(&entry) {
-            eprintln!("kabar: saving the reflection failed: {e}");
+            crate::diag::report!("saving the reflection failed: {e}");
             return;
         }
         kick_sync(cloud);

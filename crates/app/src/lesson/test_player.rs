@@ -145,7 +145,7 @@ fn record(db: &Db, coach: Coach, r: &TestRunner) {
         match test.kind {
             TestKind::Level => {
                 if let Err(e) = store.record_lesson_event(&test.id, "test_finished", &r.finished()) {
-                    eprintln!("kabar: saving the test result failed: {e}");
+                    crate::diag::report!("saving the test result failed: {e}");
                 }
                 if res.passed == Some(true) {
                     let mut mistakes: Vec<String> = Vec::new();
@@ -165,7 +165,7 @@ fn record(db: &Db, coach: Coach, r: &TestRunner) {
                         results: Vec::new(),
                     };
                     if let Err(e) = store.record_lesson_event(&test.id, "completed", &done) {
-                        eprintln!("kabar: marking the level done failed: {e}");
+                        crate::diag::report!("marking the level done failed: {e}");
                     }
                 }
             }
@@ -173,7 +173,7 @@ fn record(db: &Db, coach: Coach, r: &TestRunner) {
                 if let Some(p) = r.placement()
                     && let Err(e) = store.record_lesson_event(&test.id, "placed", &p)
                 {
-                    eprintln!("kabar: saving the placement failed: {e}");
+                    crate::diag::report!("saving the placement failed: {e}");
                 }
             }
         }

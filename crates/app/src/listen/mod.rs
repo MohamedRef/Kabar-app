@@ -12,6 +12,7 @@ use std::sync::LazyLock;
 use dioxus::prelude::*;
 use kabar_core::journey::Progress;
 use kabar_core::lesson::pick;
+use kabar_core::locale::UiLanguage;
 use kabar_core::story::{Program, parse_radio, parse_story, quiz, unlocked};
 use kabar_protocol::coach::{ActivityKind, Skill};
 use kabar_protocol::story::{RadioEpisode, Story};
@@ -128,7 +129,7 @@ pub fn ListenScreen() -> Element {
                             // Listened to the end: synced like a finished lesson.
                             let done = serde_json::json!({ "minutes": r.minutes });
                             if let Err(e) = db.0.borrow_mut().record_lesson_event(&r.id, "completed", &done) {
-                                eprintln!("kabar: saving the radio episode failed: {e}");
+                                crate::diag::report!("saving the radio episode failed: {e}");
                             }
                             let listened = ActivityKind::Practice {
                                 skill: Skill::Listening,
@@ -153,6 +154,8 @@ pub fn ListenScreen() -> Element {
         style { {LISTEN_CSS} }
         div { class: "listen",
             if open().is_none() {
+                h2 { "{ui.t(crate::i18n::Msg::NavListen)}" }
+                p { class: "muted", "{tt(ui.lang(), T::ListenIntro)}" }
                 div { class: "seg", role: "tablist", aria_label: "{ui.t(crate::i18n::Msg::NavListen)}",
                     for (t, label) in [(Tab::Sinetron, "Sinetron"), (Tab::Radio, "Kabar Radio")] {
                         button {
@@ -178,7 +181,7 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
     let cache = try_use_context::<AudioCache>();
     let _ = revision; // A new value re-renders the lists.
     let completed: BTreeSet<String> = db.0.borrow().completed_lessons().unwrap_or_else(|e| {
-        eprintln!("kabar: reading finished lessons failed: {e}");
+        crate::diag::report!("reading finished lessons failed: {e}");
         BTreeSet::new()
     });
     let start = db.0.borrow().placement().ok().flatten().map(|p| p.start_level);
@@ -186,54 +189,79 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
     let usage = cache.as_ref().map(AudioCache::downloads).unwrap_or_default();
 
     let list = match tab {
-        Tab::Sinetron => rsx! {
-            p { class: "muted", "{tt(lang, T::SinetronIntro)}" }
-            ol { class: "lx-list",
-                for entry in SHOWS.sinetron.iter() {
-                    match entry {
-                        Ok(s) => {
-                            let target = target_tag(&s.language);
-                            let open = crate::journey::curriculum(&s.language).is_some_and(|c| {
-                                unlocked(c, &Progress::new(c, &completed), start.as_deref(), &s.unlock_after)
-                            });
-                            let unit = crate::journey::curriculum(&s.language)
-                                .and_then(|c| c.levels.iter().flat_map(|l| &l.units).find(|u| u.id == s.unlock_after))
-                                .map(|u| crate::journey::local(lang, &u.title).to_string())
-                                .unwrap_or_else(|| s.unlock_after.clone());
-                            let id = s.id.clone();
-                            rsx! {
-                                li { key: "{s.id}",
-                                    button {
-                                        class: if open { "card lx-card" } else { "card lx-card locked" },
-                                        disabled: !open,
-                                        onclick: move |_| on_open.call(Open::Sinetron(id.clone())),
-                                        span { class: "muted small", "{tt(lang, T::Episode)} {ui.num(s.episode)}" }
-                                        strong { bdi { lang: target, class: "latin", "{s.title.target}" } }
-                                        span { Rich { text: pick(&s.title.meaning, lang).to_string(), target } }
-                                        if open {
+        Tab::Sinetron => {
+            let open_of = |s: &Story| {
+                crate::journey::curriculum(&s.language).is_some_and(|c| {
+                    unlocked(c, &Progress::new(c, &completed), start.as_deref(), &s.unlock_after)
+                })
+            };
+            let (rows, hidden) = sinetron_rows(&SHOWS.sinetron, open_of);
+            rsx! {
+                p { class: "muted", "{tt(lang, T::SinetronIntro)}" }
+                ol { class: "lx-list",
+                    for row in rows {
+                        match row {
+                            Row::Open(s) => {
+                                let target = target_tag(&s.language);
+                                let id = s.id.clone();
+                                rsx! {
+                                    li { key: "{s.id}",
+                                        button {
+                                            class: "card lx-card",
+                                            onclick: move |_| on_open.call(Open::Sinetron(id.clone())),
+                                            span { class: "muted small", "{tt(lang, T::Episode)} {ui.num(s.episode)}" }
+                                            strong { bdi { lang: target, class: "latin", "{s.title.target}" } }
+                                            span { Rich { text: pick(&s.title.meaning, lang).to_string(), target } }
                                             span { class: "muted small", Rich { text: pick(&s.summary, lang).to_string(), target } }
-                                        } else {
-                                            span { class: "muted small", "🔒 {tt(lang, T::OpensAfter)}: " Rich { text: unit, target } }
-                                        }
-                                        span { class: "row",
-                                            if completed.contains(&s.id) {
-                                                span { class: "pill", "✓ {tt(lang, T::Watched)}" }
-                                            }
-                                            if has_track(&s.id) {
-                                                span { class: "pill lx-offline", "⤓ {tt(lang, T::Downloaded)}" }
+                                            span { class: "row",
+                                                if completed.contains(&s.id) {
+                                                    span { class: "pill", "✓ {tt(lang, T::Watched)}" }
+                                                }
+                                                if has_track(&s.id) {
+                                                    span { class: "pill lx-offline", "⤓ {tt(lang, T::Downloaded)}" }
+                                                }
                                             }
                                         }
                                     }
                                 }
                             }
+                            Row::Next(s) => {
+                                // The next locked episode: what's inside, and how close it is.
+                                let target = target_tag(&s.language);
+                                let curriculum = crate::journey::curriculum(&s.language);
+                                let unit = curriculum
+                                    .and_then(|c| c.levels.iter().flat_map(|l| &l.units).find(|u| u.id == s.unlock_after));
+                                let (done, total) = match (curriculum, unit) {
+                                    (Some(c), Some(u)) => Progress::new(c, &completed).unit_counts(u),
+                                    _ => (0, 0),
+                                };
+                                let unit_title = unit
+                                    .map(|u| crate::journey::local(lang, &u.title).to_string())
+                                    .unwrap_or_else(|| s.unlock_after.clone());
+                                rsx! {
+                                    li { key: "{s.id}", class: "card lx-card lx-teaser",
+                                        span { class: "muted small", "🔒 {tt(lang, T::Episode)} {ui.num(s.episode)}" }
+                                        strong { bdi { lang: target, class: "latin", "{s.title.target}" } }
+                                        span { Rich { text: pick(&s.title.meaning, lang).to_string(), target } }
+                                        span { class: "muted small", "{tt(lang, T::OpensAfter)}: " Rich { text: unit_title, target } }
+                                        if total > 0 {
+                                            progress { max: "{total}", value: "{done}" }
+                                            span { class: "small", "{lessons_left(&ui, total - done)}" }
+                                        }
+                                    }
+                                }
+                            }
+                            Row::Broken(id, e) => rsx! { Broken { key: "{id}", id: id.clone(), error: e.clone() } },
                         }
-                        Err((id, e)) => rsx! { Broken { key: "{id}", id: id.clone(), error: e.clone() } },
                     }
                 }
+                if hidden > 0 {
+                    p { class: "muted lx-more", "{more_episodes(&ui, hidden)}" }
+                }
             }
-        },
+        }
         Tab::Radio => rsx! {
-            p { class: "muted", "{tt(lang, T::RadioIntro)}" }
+            p { class: "muted", Rich { text: tt(lang, T::RadioIntro).to_string(), target: "id" } }
             ol { class: "lx-list",
                 for entry in SHOWS.radio.iter() {
                     match entry {
@@ -285,6 +313,55 @@ fn Lists(tab: Tab, revision: u32, on_open: EventHandler<Open>, on_changed: Event
                 }
             }
         }
+    }
+}
+
+/// One entry of the Sinetron list.
+enum Row<'a> {
+    Open(&'a Story),
+    /// The first locked episode of its language, shown as a teaser.
+    Next(&'a Story),
+    Broken(&'a String, &'a String),
+}
+
+/// The open episodes, then one teaser per language for the next locked
+/// one; the other locked episodes are only counted, not listed.
+fn sinetron_rows<'a>(
+    shows: &'a [Result<Story, (String, String)>],
+    open: impl Fn(&Story) -> bool,
+) -> (Vec<Row<'a>>, usize) {
+    let mut rows = Vec::new();
+    let mut teased = BTreeSet::new();
+    let mut hidden = 0;
+    for entry in shows {
+        match entry {
+            Ok(s) if open(s) => rows.push(Row::Open(s)),
+            Ok(s) if teased.insert(s.language.as_str()) => rows.push(Row::Next(s)),
+            Ok(_) => hidden += 1,
+            Err((id, e)) => rows.push(Row::Broken(id, e)),
+        }
+    }
+    (rows, hidden)
+}
+
+fn lessons_left(ui: &Ui, n: usize) -> String {
+    let n_text = ui.num(n as u64);
+    match (ui.lang(), n) {
+        (UiLanguage::ArEg, 1) => "فاضلك درس واحد في الوحدة".to_string(),
+        (UiLanguage::ArEg, _) => format!("فاضلك {n_text} من دروس الوحدة"),
+        (UiLanguage::Ar, 1) => "بقي لك درس واحد في الوحدة".to_string(),
+        (UiLanguage::Ar, _) => format!("بقي لك {n_text} من دروس الوحدة"),
+        (UiLanguage::En, 1) => "1 lesson to go in this unit".to_string(),
+        (UiLanguage::En, _) => format!("{n_text} lessons to go in this unit"),
+    }
+}
+
+fn more_episodes(ui: &Ui, n: usize) -> String {
+    let n_text = ui.num(n as u64);
+    match ui.lang() {
+        UiLanguage::ArEg => format!("وبعدها {n_text} حلقة كمان مستنياك."),
+        UiLanguage::Ar => format!("وبعدها {n_text} حلقة أخرى بانتظارك."),
+        UiLanguage::En => format!("And {n_text} more episodes after that."),
     }
 }
 
@@ -367,8 +444,49 @@ mod tests {
             let p = kabar_core::story::parse_persona(&yaml).unwrap();
             assert_eq!(&p.id, id);
         }
+        // The Radio intro names the hosts who actually present the shows.
+        for r in SHOWS.radio.iter().flatten() {
+            for h in &r.hosts {
+                for lang in [UiLanguage::ArEg, UiLanguage::Ar, UiLanguage::En] {
+                    assert!(
+                        tt(lang, T::RadioIntro).contains(&h.name),
+                        "{lang:?} RadioIntro misses {}",
+                        h.name
+                    );
+                }
+            }
+        }
         // Episodes come in order.
         let numbers: Vec<u32> = SHOWS.sinetron.iter().flatten().map(|s| s.episode).collect();
         assert!(numbers.windows(2).all(|w| w[0] < w[1]));
+    }
+
+    #[test]
+    fn locked_episodes_fold_into_one_teaser_per_language() {
+        let story = |n: u32, language: &str| {
+            let mut s = SHOWS.sinetron.iter().flatten().next().unwrap().clone();
+            s.episode = n;
+            s.id = format!("sinetron.e{n:02}");
+            s.language = language.to_string();
+            s
+        };
+        let shows: Vec<Result<Story, (String, String)>> = vec![
+            Ok(story(1, "id")),
+            Ok(story(2, "id")),
+            Ok(story(3, "id")),
+            Ok(story(4, "jv")),
+            Ok(story(5, "jv")),
+        ];
+        let (rows, hidden) = sinetron_rows(&shows, |s| s.episode == 1);
+        let kinds: Vec<String> = rows
+            .iter()
+            .map(|r| match r {
+                Row::Open(s) => format!("open {}", s.episode),
+                Row::Next(s) => format!("next {}", s.episode),
+                Row::Broken(id, _) => format!("broken {id}"),
+            })
+            .collect();
+        assert_eq!(kinds, ["open 1", "next 2", "next 4"]);
+        assert_eq!(hidden, 2);
     }
 }

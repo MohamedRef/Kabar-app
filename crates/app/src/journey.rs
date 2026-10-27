@@ -165,13 +165,13 @@ pub fn JourneyScreen() -> Element {
     // Re-read on every visit: the screen remounts when the player closes.
     let completed = use_hook(|| {
         Rc::new(db.0.borrow().completed_lessons().unwrap_or_else(|e| {
-            eprintln!("kabar: reading finished lessons failed: {e}");
+            crate::diag::report!("reading finished lessons failed: {e}");
             BTreeSet::new()
         }))
     });
     let approved = use_hook(|| {
         Rc::new(db.0.borrow().approved_lessons().unwrap_or_else(|e| {
-            eprintln!("kabar: reading approved lessons failed: {e}");
+            crate::diag::report!("reading approved lessons failed: {e}");
             BTreeSet::new()
         }))
     });
@@ -802,7 +802,7 @@ pub fn next_lesson_in(unit_id: &str, completed: &BTreeSet<String>) -> Option<Str
 /// [`Progress::start_at`]; it is not always a level id.
 pub fn start_level(db: &Db, profile: Option<&CoachProfile>) -> Option<String> {
     let placed = db.0.borrow().placement().unwrap_or_else(|e| {
-        eprintln!("kabar: reading the placement result failed: {e}");
+        crate::diag::report!("reading the placement result failed: {e}");
         None
     });
     placed.map(|p| p.start_unit.unwrap_or(p.start_level)).or_else(|| {

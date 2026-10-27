@@ -287,6 +287,11 @@ impl Progress {
         !unit.lessons.is_empty() && unit.lessons.iter().all(|l| self.done.contains(&l.id))
     }
 
+    /// (done, total) lessons in a unit.
+    pub fn unit_counts(&self, unit: &Unit) -> (usize, usize) {
+        (unit.lessons.iter().filter(|l| self.done.contains(&l.id)).count(), unit.lessons.len())
+    }
+
     /// (done, total) lessons in a level.
     pub fn level_counts(&self, level: &Level) -> (usize, usize) {
         level.lessons().fold((0, 0), |(d, t), l| (d + usize::from(self.done.contains(&l.id)), t + 1))
