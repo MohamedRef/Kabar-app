@@ -294,9 +294,10 @@ fn numbers(db: &Db, coach: &Coach) -> Numbers {
     let events = coach.events.read();
     let totals = core_stats::day_totals(&events, &log, coach.offset());
     let sched = Scheduler::default();
-    let week = core_stats::retention(&sched, &log, now, 7);
-    let month = core_stats::retention(&sched, &log, now, 30);
-    let deck = Deck::new(cards, log, &sched);
+    // One pass over the log for both windows and every card's state (#116).
+    let (states, windows) = core_stats::replay_with_retention(&sched, &log, now, &[7, 30]);
+    let (week, month) = (windows[0], windows[1]);
+    let deck = Deck::with_states(cards, log, states);
     let words = core_stats::word_counts(deck.cards(), |id| deck.state(id));
     let forecast = deck.forecast(&sched, now, FORECAST_DAYS);
     let due = check_is_due(&totals, &checks, today);
@@ -319,7 +320,10 @@ pub fn StatsScreen() -> Element {
     let db = use_context::<Db>();
     let coach = use_context::<Coach>();
     let lang = ui.lang();
-    let n = numbers(&db, &coach);
+    // Recomputed when the coach's events change (a finished session), not
+    // on every render.
+    let n = use_memo(move || numbers(&db, &coach));
+    let n = n.read();
     rsx! {
         style { {STATS_CSS} }
         div { class: "st",
