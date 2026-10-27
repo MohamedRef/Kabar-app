@@ -65,6 +65,11 @@ pub enum Line {
     // Monthly level check
     /// Invitation to the monthly 10-minute level check.
     LevelCheckInvite,
+    /// The level check's welcome when it's the learner's very first one.
+    LevelCheckFirst,
+    /// The level check's welcome when the learner opened it themselves,
+    /// whenever they like (not from the monthly invitation).
+    LevelCheckAnytime,
     /// "At this pace you reach {level} around {date}."
     LevelForecast,
     /// The check moved the learner up a level.
@@ -74,7 +79,7 @@ pub enum Line {
 }
 
 impl Line {
-    pub const ALL: [Self; 36] = [
+    pub const ALL: [Self; 38] = [
         Self::OnboardHello,
         Self::OnboardWhy,
         Self::OnboardFocus,
@@ -108,6 +113,8 @@ impl Line {
         Self::AchievementUnlocked,
         Self::WarungBought,
         Self::LevelCheckInvite,
+        Self::LevelCheckFirst,
+        Self::LevelCheckAnytime,
         Self::LevelForecast,
         Self::LevelUp,
         Self::LevelRebuild,
@@ -149,6 +156,8 @@ impl Line {
             Self::AchievementUnlocked => "achievement_unlocked",
             Self::WarungBought => "warung_bought",
             Self::LevelCheckInvite => "level_check_invite",
+            Self::LevelCheckFirst => "level_check_first",
+            Self::LevelCheckAnytime => "level_check_anytime",
             Self::LevelForecast => "level_forecast",
             Self::LevelUp => "level_up",
             Self::LevelRebuild => "level_rebuild",

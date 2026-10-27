@@ -65,6 +65,22 @@ titles).
 | Rina | the Jakarta friend (lessons and Kabar Pagi are the same Rina) | j1.u06 Mbak Wulan → Mbak Indri (so Wulan is no longer a recurring name) |
 | (Kabar Pagi) | | Dewi → Tasya, Lina → Nisa |
 
+## Chat partners by level
+
+Every level has at least one chat partner (`content/personas/`), and each
+persona lists the units it is written for in `units:`.
+
+| Level | Partner | Where | Speaks |
+|---|---|---|---|
+| BIPA 1–4 | Mbak Gadis, Mas Ardi | Jakarta office, Bali hotel | Indonesian |
+| BIPA 5 | Bu Lestari | Balikpapan office (HR, work talk) | Indonesian |
+| BIPA 6 | Bang Togar | Medan and Lake Toba (stories, satire, pantun) | Indonesian |
+| BIPA 7 | Kaka Yohana | Sorong radio newsroom (news, Papuan Malay, hoaxes) | Indonesian |
+| J1–J3 | Mas Dimas, Bu Siti | Yogyakarta angkringan, Solo market | Javanese ngoko / krama |
+| J4 | Mbah Putri | a village near Yogyakarta (krama inggil, wayang) | Javanese krama |
+| J5 | Mbak Ayu | Semarang (written Javanese, news, posts, cerkak) | Javanese ngoko |
+| J6 | Pak Slamet | Kotagede silver workshop (aksara Jawa, Pegon) | Javanese ngoko alus |
+
 ## Voices
 
 Azure's free tier has two neural voices per language, so characters share
@@ -90,9 +106,9 @@ the honorific or the name (`crates/core/src/packs.rs`).
 | `bu-yanti` | Bu Yanti | Jakarta | lessons, tests, radio | levels bipa1, bipa2, bipa3 |
 | `andi` | Andi | Makassar | lessons | bipa4.u01, bipa4.u04, bipa4.u06 |
 | `pak-hendra` | Pak Hendra | Balikpapan | lessons, sinetron | 7 units, bipa5.u01 … bipa5.u10 |
-| `bu-lestari` | Bu Lestari | Balikpapan | lessons | 6 units, bipa5.u01 … bipa5.u06 |
-| `bang-togar` | Bang Togar | Medan (family in Samosir) | lessons | bipa6.u01, bipa6.u06 |
-| `kaka-yohana` | Kaka Yohana | Sorong | lessons | bipa7.u01, bipa7.u04 |
+| `bu-lestari` | Bu Lestari | Balikpapan | lessons, chat | 8 units, bipa5.u01 … bipa5.u10 |
+| `bang-togar` | Bang Togar | Medan (family in Samosir) | lessons, chat | bipa6.u01, bipa6.u02, bipa6.u06, bipa7.u04 |
+| `kaka-yohana` | Kaka Yohana | Sorong | lessons, chat | bipa7.u01, bipa7.u04, bipa7.u06, bipa7.u07, bipa7.u09 |
 | `mbak-gadis` | Mbak Gadis | Jakarta | chat | 6 units, bipa1.u02 … bipa4.u01 |
 | `mas-ardi` | Mas Ardi | Bali | chat, placement | 6 units, bipa1.u02 … bipa4.u05 |
 | `mas-dimas` | Mas Dimas | Yogyakarta | chat, lessons, games | 16 units, j1.u01 … j6.u06 |
@@ -104,12 +120,12 @@ the honorific or the name (`crates/core/src/packs.rs`).
 | `bu-darmi` | Bu Darmi | Caruban | lessons | j2.u02 |
 | `pak-harjo` | Pak Harjo | Solo | lessons, games | j3.u03, j3.u06, j5.u02, j6.u05 |
 | `bu-harjo` | Bu Harjo | Solo | lessons | j3.u03 |
-| `mbah-putri` | Mbah Putri | a village near Yogyakarta | lessons, games | j3.u01, j3.u02, j4.u01, j4.u02, j4.u06 |
+| `mbah-putri` | Mbah Putri | a village near Yogyakarta | lessons, games, chat | 8 units, j3.u01 … j4.u06 |
 | `pak-karto` | Pak Karto | Solo | games | j3.u04, j4.u04 |
 | `pak-harsono` | Pak Harsono | Yogyakarta | lessons | j4.u01, j4.u03, j4.u06 |
 | `bu-harsono` | Bu Harsono | Yogyakarta | lessons | j4.u01, j4.u02, j4.u03 |
-| `mbak-ayu` | Mbak Ayu | Semarang | lessons | j5.u01, j5.u02, j5.u03 |
-| `pak-slamet` | Pak Slamet | Kotagede | lessons | j4.u02, j6.u01, j6.u04 |
+| `mbak-ayu` | Mbak Ayu | Semarang | lessons, chat | 6 units, j5.u01 … j5.u06 |
+| `pak-slamet` | Pak Slamet | Kotagede | lessons, chat | 7 units, j4.u02 … j6.u06 |
 | `pak-budi` | Pak Budi | Madiun | sinetron, lessons | levels bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7, j2 |
 | `bu-rahayu` | Bu Rahayu | Madiun | sinetron, lessons | levels bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7, j2 |
 | `sari` | Sari | Madiun (studies in Cairo) | sinetron, lessons | levels bipa1, bipa2, bipa3, bipa4, bipa5, bipa6, bipa7, j2 |
