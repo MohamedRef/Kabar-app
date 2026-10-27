@@ -412,7 +412,7 @@ pub mod reminders {
         #[cfg(target_os = "android")]
         {
             super::android::take_delivered_reminders()
-                .map_err(|e| eprintln!("kabar: delivered reminders: {e}"))
+                .map_err(|e| crate::diag::report!("delivered reminders: {e}"))
                 .unwrap_or_default()
         }
         #[cfg(not(target_os = "android"))]
@@ -426,7 +426,9 @@ pub mod reminders {
     pub fn battery_unrestricted() -> Option<bool> {
         #[cfg(target_os = "android")]
         {
-            super::android::battery_unrestricted().map_err(|e| eprintln!("kabar: battery check: {e}")).ok()
+            super::android::battery_unrestricted()
+                .map_err(|e| crate::diag::report!("battery check: {e}"))
+                .ok()
         }
         #[cfg(not(target_os = "android"))]
         {
