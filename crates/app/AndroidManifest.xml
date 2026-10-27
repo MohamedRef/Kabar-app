@@ -26,6 +26,8 @@
          where the switch then works. (PlaybackService's media notification
          is exempt and works either way.) -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Re-arms the local reminder schedule after a reboot (Reminders.kt). -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <!-- Android 11+ package visibility: the app must be allowed to see installed
          text-to-speech engines (Samsung, Google) or TextToSpeech can't bind to one. -->
