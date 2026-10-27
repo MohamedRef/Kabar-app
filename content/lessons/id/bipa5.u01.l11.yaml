@@ -1,0 +1,185 @@
+schema: kabar.lesson/v1
+id: bipa5.u01.l11
+language: id
+title: Surat lamaran
+can_do:
+  ar_eg: تكتب جواب تقديم على وظيفة بالإندونيسي الرسمي.
+  ar: أن تكتب رسالة تقديم لوظيفة بالإندونيسية الرسمية.
+  en: Write a formal job application letter.
+slides:
+  - title: Kerangka surat lamaran
+    grammar: id.register.formal-informal
+    body:
+      ar_eg: |
+        جواب التقديم ليه ترتيب ثابت:
+        1. Dengan hormat, (التحية)
+        2. Sehubungan dengan iklan lowongan di … = بخصوص إعلان الوظيفة في …
+        3. Saya berminat melamar posisi … = عندي اهتمام أقدّم على وظيفة …
+        4. جملة أو اتنين عن خبرتك (بـ karena / sehingga).
+        5. Besar harapan saya Bapak/Ibu bersedia mempertimbangkan lamaran ini. = أتمنى حضرتك تنظر في طلبي.
+        6. Hormat saya, + الاسم
+      ar: |
+        لرسالة التقديم ترتيب ثابت:
+        1. Dengan hormat, (التحية)
+        2. Sehubungan dengan iklan lowongan di … = بالإشارة إلى إعلان الوظيفة في …
+        3. Saya berminat melamar posisi … = أرغب في التقدّم لوظيفة …
+        4. جملة أو اثنتان عن خبرتك (بـ karena / sehingga).
+        5. Besar harapan saya Bapak/Ibu bersedia mempertimbangkan lamaran ini. = آمل أن تتفضّلوا بالنظر في طلبي.
+        6. Hormat saya, ثم الاسم
+      en: |
+        An application letter has a fixed order:
+        1. Dengan hormat, (greeting)
+        2. Sehubungan dengan iklan lowongan di … = With reference to the job ad in …
+        3. Saya berminat melamar posisi … = I am interested in applying for the position of …
+        4. One or two sentences on your experience (with karena / sehingga).
+        5. Besar harapan saya Bapak/Ibu bersedia mempertimbangkan lamaran ini. = I hope you will consider this application.
+        6. Hormat saya, + name
+    examples:
+      - text: Sehubungan dengan iklan lowongan di situs perusahaan, saya berminat melamar posisi penerjemah.
+        ar_eg: بخصوص إعلان الوظيفة على موقع الشركة، عندي اهتمام أقدّم على وظيفة مترجم.
+        ar: بالإشارة إلى إعلان الوظيفة على موقع الشركة، أرغب في التقدّم لوظيفة مترجم.
+        en: With reference to the vacancy on the company website, I am interested in applying for the translator position.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة تنفع بداية جواب تقديم؟
+      ar: أيّ جملة تصلح بدايةً لرسالة تقديم؟
+      en: Which sentence works as the opening of an application letter?
+    options:
+      - Halo Bro, gue minat lowongan itu.
+      - Sehubungan dengan iklan lowongan di koran Kaltim Post, saya berminat melamar.
+      - Hormat saya, Mohamed.
+    answer: 1
+    explain:
+      ar_eg: Sehubungan dengan … بداية رسمية. وHormat saya بتيجي في الآخر.
+      ar: Sehubungan dengan … افتتاح رسمي، وHormat saya تأتي في الختام.
+      en: Sehubungan dengan … is a formal opening; Hormat saya goes at the end.
+    words: [sehubungan dengan, berminat]
+  - id: e02
+    type: fill_blank
+    sentence: Besar harapan saya Ibu bersedia ___ lamaran ini.
+    meaning:
+      ar_eg: أتمنى حضرتك تنظري في طلبي ده.
+      ar: آمل أن تتفضّلي بالنظر في هذا الطلب.
+      en: I hope you will be willing to consider this application.
+    options: [mempertimbangkan, melamar, berminat]
+    answers: [mempertimbangkan]
+    words: [mempertimbangkan]
+  - id: e03
+    type: listen
+    text: Saya berminat melamar posisi penerjemah di perusahaan Bapak.
+    options:
+      - Saya berminat melamar posisi penerjemah di perusahaan Bapak.
+      - Saya bersedia melamar posisi penerjemah di perusahaan Bapak.
+      - Saya berminat melamar posisi pemasaran di perusahaan Bapak.
+    answer: 0
+    words: [berminat]
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: بخصوص إعلان الوظيفة ده، برفق السي في بتاعي.
+      ar: بالإشارة إلى هذا الإعلان، أرفق سيرتي الذاتية.
+      en: With reference to this ad, I attach my CV.
+    answer: Sehubungan dengan iklan ini, saya melampirkan CV saya.
+    distractors: [gue, udah]
+    words: [sehubungan dengan]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: Dengan hormat,
+        ar_eg: تحية طيبة،
+        ar: تحية طيبة،
+        en: Dear Sir or Madam,
+      - text: sehubungan dengan
+        ar_eg: بخصوص
+        ar: بالإشارة إلى
+        en: with reference to
+      - text: berminat
+        ar_eg: عنده اهتمام / عايز
+        ar: راغب، مهتمّ
+        en: interested
+      - text: mempertimbangkan
+        ar_eg: ينظر في / ياخد في اعتباره
+        ar: ينظر في، يدرس
+        en: to consider
+      - text: Hormat saya,
+        ar_eg: مع خالص الاحترام،
+        ar: وتفضّلوا بقبول الاحترام،
+        en: Yours faithfully,
+    words: [sehubungan dengan, berminat, mempertimbangkan]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أنا عايز أقدّم على الوظيفة دي عشان عندي خبرة في الترجمة.
+      ar: أرغب في التقدّم لهذه الوظيفة لأنّ لديّ خبرة في الترجمة.
+      en: I am interested in applying for this position because I have experience in translation.
+    answers:
+      - Saya berminat melamar posisi ini karena saya punya pengalaman di bidang penerjemahan.
+      - Saya berminat melamar posisi ini karena saya memiliki pengalaman di bidang penerjemahan.
+      - Saya berminat melamar posisi ini karena saya berpengalaman dalam penerjemahan.
+      - Saya berminat melamar posisi ini karena saya punya pengalaman menerjemahkan.
+    words: [berminat]
+  - id: e07
+    type: dictation
+    text: Terima kasih atas perhatian Bapak.
+    meaning:
+      ar_eg: شكرًا لاهتمام حضرتك.
+      ar: شكرًا على اهتمامكم.
+      en: Thank you for your attention.
+  - id: e08
+    type: speaking
+    text: Besar harapan saya Bapak bersedia mempertimbangkan lamaran saya.
+    meaning:
+      ar_eg: أتمنى حضرتك تنظر في طلبي.
+      ar: آمل أن تتفضّلوا بالنظر في طلبي.
+      en: I hope you will consider my application.
+    words: [mempertimbangkan]
+dialogue:
+  title: Rina membaca surat Mohamed
+  lines:
+    - speaker: Rina
+      text: Suratmu bagus, tapi kenapa ada kata "nggak" di sini?
+      ar_eg: جوابك حلو، بس ليه فيه كلمة «nggak» هنا؟
+      ar: رسالتك جيدة، لكن لماذا توجد كلمة «nggak» هنا؟
+      en: Your letter is good, but why is there "nggak" here?
+    - speaker: Mohamed
+      text: Waduh, saya lupa. Harus "tidak", ya?
+      ar_eg: يا خبر، نسيت. لازم «tidak»، صح؟
+      ar: يا للهول، نسيت. يجب أن تكون «tidak»، أليس كذلك؟
+      en: Oh no, I forgot. It has to be "tidak", right?
+    - speaker: Rina
+      text: Betul. Lalu tambahkan kalimat "sehubungan dengan iklan lowongan" di awal.
+      ar_eg: مظبوط. وبعدين زوّد جملة «sehubungan dengan iklan lowongan» في الأول.
+      ar: صحيح. ثم أضف عبارة «sehubungan dengan iklan lowongan» في البداية.
+      en: Right. Then add "sehubungan dengan iklan lowongan" at the start.
+    - speaker: Mohamed
+      text: Siap. Semoga mereka mau mempertimbangkan lamaran saya.
+      ar_eg: حاضر. يا رب يبصوا في طلبي.
+      ar: حاضر. عسى أن ينظروا في طلبي.
+      en: Will do. I hope they'll consider my application.
+    - speaker: Rina
+      text: Pasti! Kamu pelamar yang berminat dan berpengalaman.
+      ar_eg: أكيد! إنت متقدم عنده اهتمام وخبرة.
+      ar: بالتأكيد! أنت متقدّم راغب وذو خبرة.
+      en: Of course! You're a keen, experienced applicant.
+new_words:
+  - word: sehubungan dengan
+    pos: phrase
+    ar_eg: بخصوص
+    ar: بالإشارة إلى، فيما يتعلّق بـ
+    en: with reference to, regarding
+  - word: berminat
+    pos: adjective
+    ar_eg: عنده اهتمام / عايز
+    ar: راغب، مهتمّ
+    en: interested
+  - word: mempertimbangkan
+    pos: verb
+    ar_eg: ينظر في / ياخد في اعتباره
+    ar: ينظر في، يدرس
+    en: to consider
+review:
+  status: draft
+  verified: false

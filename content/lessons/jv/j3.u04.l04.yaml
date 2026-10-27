@@ -1,164 +1,242 @@
 schema: kabar.lesson/v1
 id: j3.u04.l04
 language: jv
-title: Papan ing Pura
+title: Budhal dhateng bandara
 can_do:
-  ar_eg: تقرا لافتة بالكراما في القصر وتسأل الحارس عن الطريق بأدب.
-  ar: أن تقرأ لافتة بالكراما في القصر وتسأل الحارس عن الطريق بأدب.
-  en: Read a krama sign at the palace and ask the guard the way politely.
+  ar_eg: 'تركب تاكسي للمطار بالكراما: اطلع، انزل هنا، أنا مستعجل، والطيارة بتقوم إمتى.'
+  ar: 'أن تركب سيارة أجرة إلى المطار بالكراما: اصعد، سأنزل هنا، أنا مستعجل، ومتى تقلع الطائرة.'
+  en: 'Take a taxi to the airport in krama: get in, I''ll get off here, I''m in a hurry, and when the plane leaves.'
 slides:
-  - title: Papan ing lawang Pura
+  - title: Minggah lan mandhap
     body:
       ar_eg: |
-        على باب Pura Mangkunegaran فيه لافتة للزوار. اقراها:
-        lurus kemawon = امشي على طول، lajeng = بعد كده، mboten kepareng = ممنوع (مش مسموح).
+        في المواصلات:
+        - munggah ← minggah = يطلع (العربية أو السلم): «Mangga minggah» = اتفضل اركب
+        - mudhun ← mandhap = ينزل: «Kula mandhap ing mriki» = هنزل هنا
+        budhal = يطلع على سفر، يبدأ المشوار. mangkat = يتحرك، يمشي (الأتوبيس أو الطيارة).
+        bandara = مطار، parkir = يركن، باركينج. koper = شنطة سفر، karcis = تذكرة. kesusu = مستعجل. penumpang = راكب.
       ar: |
-        على باب Pura Mangkunegaran لافتة للزوار. اقرأها:
-        lurus kemawon = امشِ مستقيمًا، وlajeng = ثم، وmboten kepareng = ممنوع (غير مسموح).
+        في المواصلات:
+        - munggah ← minggah = يصعد (السيارة أو الدرج): «Mangga minggah» = تفضّل اركب
+        - mudhun ← mandhap = ينزل: «Kula mandhap ing mriki» = سأنزل هنا
+        budhal = ينطلق في رحلة. mangkat = يغادر، ينطلق (الحافلة أو الطائرة).
+        bandara = مطار، parkir = يركن، موقف. koper = حقيبة سفر، karcis = تذكرة. kesusu = مستعجل. penumpang = راكب.
       en: |
-        At the gate of Pura Mangkunegaran there is a sign for visitors. Read it:
-        lurus kemawon = just go straight, lajeng = then, mboten kepareng = not allowed.
+        Getting around:
+        - munggah → minggah = go up, get in: "Mangga minggah" = please get in
+        - mudhun → mandhap = go down, get off: "Kula mandhap ing mriki" = I'll get off here
+        budhal = set off on a trip. mangkat = leave, depart (a bus or a plane).
+        bandara = airport, parkir = park, parking. koper = suitcase, karcis = ticket. kesusu = in a hurry. penumpang = passenger.
     examples:
-      - text: Sugeng rawuh ing Pura Mangkunegaran.
-        ar_eg: أهلًا وسهلًا في قصر Mangkunegaran.
-        ar: مرحبًا بكم في قصر Mangkunegaran.
-        en: Welcome to Pura Mangkunegaran.
-      - text: "Pendhapa: saking mriki lurus kemawon, lajeng nengen."
-        ar_eg: "الـ Pendhapa: من هنا على طول، وبعدين يمين."
-        ar: "الـ Pendhapa: من هنا مستقيمًا، ثم يمينًا."
-        en: "Pendhapa: from here just go straight, then turn right."
-      - text: Nyuwun sewu, mboten kepareng nedha ing pendhapa.
-        ar_eg: لا مؤاخذة، ممنوع الأكل في الـ pendhapa.
-        ar: عفوًا، لا يُسمح بالأكل في الـ pendhapa.
-        en: Sorry, no eating in the pendhapa.
-    grammar: jv.krama.questions
+      - text: Mangga minggah, Mas.
+        ar_eg: اتفضل اركب يا أستاذ.
+        ar: تفضّل اركب.
+        en: Please get in.
+      - text: Pesawat kula mangkat jam sanga enjing.
+        ar_eg: طيارتي بتقوم الساعة تسعة الصبح.
+        ar: تقلع طائرتي الساعة التاسعة صباحًا.
+        en: My plane leaves at nine in the morning.
+      - text: Kula mandhap ing bandara.
+        ar_eg: هنزل عند المطار.
+        ar: سأنزل عند المطار.
+        en: I'm getting off at the airport.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من اللافتة) إزاي توصل للـ pendhapa؟
-      ar: (من اللافتة) كيف تصل إلى الـ pendhapa؟
-      en: (from the sign) How do you get to the pendhapa?
-    options: ["lurus, lajeng ngiwa", "nengen, lajeng lurus", "lurus, lajeng nengen"]
-    answer: 2
-    words: [lajeng, mriki]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من اللافتة) إيه الممنوع في الـ pendhapa؟
-      ar: (من اللافتة) ما الممنوع في الـ pendhapa؟
-      en: (from the sign) What can't you do in the pendhapa?
-    options: [mlampah, nedha, taken]
-    answer: 1
-    words: [kepareng, nedha, pendhapa]
-  - id: e03
-    type: listen
-    text: Nyuwun sewu, Mas, mboten kepareng nedha ing pendhapa.
-    question:
-      ar_eg: الحارس قال لمحمد إيه؟ محمد يقدر ياكل في الـ pendhapa؟
-      ar: ماذا قال الحارس لمحمد؟ هل يستطيع الأكل في الـ pendhapa؟
-      en: What did the guard tell Mohamed? Can he eat in the pendhapa?
-    options: [Kepareng, Mboten kepareng]
-    answer: 1
-    meaning:
-      ar_eg: لا مؤاخذة يا أستاذ، ممنوع الأكل في الـ pendhapa.
-      ar: عفوًا يا أخي، لا يُسمح بالأكل في الـ pendhapa.
-      en: Sorry, you can't eat in the pendhapa.
-    words: [mboten, kepareng]
-  - id: e04
     type: match_pairs
     pairs:
-      - text: Sugeng rawuh
-        ar_eg: أهلًا وسهلًا
-        ar: مرحبًا بكم
-        en: Welcome
-      - text: lurus kemawon
-        ar_eg: على طول بس
-        ar: مستقيمًا فقط
-        en: just straight on
-      - text: lajeng nengen
-        ar_eg: وبعدين يمين
-        ar: ثم يمينًا
-        en: then turn right
-      - text: mboten kepareng
-        ar_eg: ممنوع / مش مسموح
-        ar: غير مسموح
-        en: not allowed
-    words: [kemawon, lajeng, kepareng]
-  - id: e05
-    type: fill_blank
-    sentence: Saking mriki lurus ___, lajeng nengen.
+      - text: budhal
+        ar_eg: يطلع على سفر
+        ar: ينطلق في رحلة
+        en: set off
+      - text: penumpang
+        ar_eg: راكب
+        ar: راكب
+        en: passenger
+      - text: bandara
+        ar_eg: مطار
+        ar: مطار
+        en: airport
+      - text: parkir
+        ar_eg: يركن
+        ar: يركن
+        en: park
+    words: [budhal, penumpang, bandara, parkir]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: koper
+        ar_eg: شنطة سفر
+        ar: حقيبة سفر
+        en: suitcase
+      - text: mandhap
+        ar_eg: ينزل (كراما)
+        ar: ينزل (كراما)
+        en: get off (krama)
+      - text: minggah
+        ar_eg: يطلع، يركب (كراما)
+        ar: يصعد، يركب (كراما)
+        en: get on, go up (krama)
+      - text: karcis
+        ar_eg: تذكرة
+        ar: تذكرة
+        en: ticket
+    words: [koper, mandhap, minggah, karcis]
+  - id: e03
+    type: listen
+    text: Kula mandhap ing bandara, Pak.
+    question:
+      ar_eg: هينزل فين؟
+      ar: أين سينزل؟
+      en: Where is he getting off?
+    options: [هنزل عند المحطة, هنزل عند المطار, هركب من المطار]
+    answer: 1
     meaning:
-      ar_eg: من هنا على طول، وبعدين يمين.
-      ar: من هنا مستقيمًا، ثم يمينًا.
-      en: From here just go straight, then turn right.
-    options: [wae, sanget, kemawon]
-    answers: [kemawon]
+      ar_eg: هنزل عند المطار يا أسطى.
+      ar: سأنزل عند المطار يا سيدي.
+      en: I'm getting off at the airport, sir.
+    words: [mandhap, bandara]
+  - id: e04
+    type: fill_blank
+    sentence: Wis jam pitu! Ayo ___!
+    meaning:
+      ar_eg: الساعة بقت سبعة! يلا ___!
+      ar: صارت الساعة السابعة! هيّا ___!
+      en: It's seven already! Let's ___!
+    options: [budhal, penumpang, mandhap]
+    answers: [budhal]
+    words: [budhal, penumpang, mandhap]
+  - id: e05
+    type: multiple_choice
+    question: Munggah (ngoko) → ___ (krama)
+    options: [mandhap, minggah, mudhun]
+    answer: 1
     explain:
-      ar_eg: '«بس / وخلاص» بالكراما kemawon (في الكلام mawon). wae نغوكو، وsanget معناها «جدًا».'
-      ar: '«فقط» بالكراما kemawon (وفي الكلام mawon)؛ wae من الـ ngoko، وsanget تعني «جدًا».'
-      en: '"Just" in krama is kemawon (spoken mawon). wae is ngoko; sanget means "very".'
-    words: [kemawon]
+      ar_eg: munggah ← minggah = يطلع، يركب. mudhun ← mandhap = ينزل.
+      ar: munggah ← minggah = يصعد. mudhun ← mandhap = ينزل.
+      en: munggah → minggah = go up, get in. mudhun → mandhap = get off.
+    words: [minggah, mandhap, mudhun]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: 'اسأل الحارس: لا مؤاخذة يا حاج، الـ pendhapa فين؟'
-      ar: 'اسأل الحارس: عفوًا يا سيدي، أين الـ pendhapa؟'
-      en: "Ask the guard: Excuse me, sir, where is the pendhapa?"
-    answers: ["Nyuwun sewu, Pak, pendhapa ing pundi?", "Nyuwun sewu, Pak, pendhapanipun ing pundi?", "Nyuwun sewu, pendhapa ing pundi, Pak?", "Nyuwun sewu, Pak, pendhapa wonten pundi?", "Nyuwun sewu, Pak, pendhapa wonten ing pundi?"]
-    explain:
-      ar_eg: 'فين = ing pundi (ngendi بالنغوكو). وابدأ دايمًا بـ Nyuwun sewu.'
-      ar: 'أين = ing pundi (وبالنغوكو ngendi)، وابدأ دائمًا بـ Nyuwun sewu.'
-      en: 'Where = ing pundi (ngoko ngendi). Always open with Nyuwun sewu.'
-    words: [nyuwun sewu, pundi, pendhapa]
+    type: fill_blank
+    sentence: Sopiripun ___ mobil ing bandara.
+    meaning:
+      ar_eg: السواق ___ العربية في المطار.
+      ar: السائق ___ السيارة في المطار.
+      en: The driver ___ the car at the airport.
+    options: [parkir, koper, minggah]
+    answers: [parkir]
+    words: [parkir, koper, minggah, bandara]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: أقدر أمشي لحد الـ pendhapa.
-      ar: أستطيع المشي إلى الـ pendhapa.
-      en: I can walk to the pendhapa.
-    answer: Kula saged mlampah dhateng pendhapa.
-    distractors: [isa, nang]
+      ar_eg: التذكرة معانا. يلا نطلع!
+      ar: التذكرة معنا. هيا ننطلق!
+      en: We've got the ticket. Let's set off!
+    answer: Karcisipun sampun wonten. Mangga budhal!
+    distractors: [mandhap, kesusu]
+    words: [karcis, budhal]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Karcis kula ing koper. Pesawat kula mangkat jam sedasa.
+    answers_meaning:
+      ar_eg: [تذكرتي في الشنطة. طيارتي هتقوم الساعة عشرة, التذكرة في شنطة السفر، والطيارة الساعة عشرة]
+      ar: [تذكرتي في الحقيبة. تقلع طائرتي الساعة العاشرة]
+      en: [My ticket is in my suitcase. My plane leaves at ten, 'The ticket''s in my suitcase; my flight leaves at ten']
+    words: [karcis, koper, mangkat]
+  - id: e09
+    type: speaking
+    text: Penumpang mandhap ing bandara.
+    meaning:
+      ar_eg: الركاب بينزلوا في المطار.
+      ar: ينزل الركاب في المطار.
+      en: The passengers get off at the airport.
+    words: [penumpang, mandhap, bandara]
+  - id: e10
+    type: multiple_choice
+    question_meaning:
+      ar_eg: بتقول إيه لو متأخر وبتجري؟
+      ar: ماذا تقول إن كنت متأخرًا ومسرعًا؟
+      en: What do you say when you're late and rushing?
+    options: [Kula parkir., Kula kesusu., Kula minggah.]
+    answer: 1
     explain:
-      ar_eg: 'saged = isa (يقدر)، mlampah = mlaku (يمشي)، dhateng = nang.'
-      ar: 'saged = isa (يستطيع)، وmlampah = mlaku (يمشي)، وdhateng = nang.'
-      en: 'saged = isa (can), mlampah = mlaku (walk), dhateng = nang.'
-    words: [saged, mlampah, dhateng]
+      ar_eg: kesusu = مستعجل.
+      ar: kesusu = مستعجل.
+      en: kesusu = in a hurry.
+    words: [kesusu, parkir, minggah]
 dialogue:
-  title: Ing lawang Pura
   lines:
+    - speaker: Sopir
+      text: Mangga minggah, Mas. Dhateng pundi?
+      ar_eg: اتفضل اركب يا أستاذ. على فين؟
+      ar: تفضّل اركب. إلى أين؟
+      en: Please get in. Where to?
     - speaker: Mohamed
-      text: Nyuwun sewu, Pak Wiryo. Pendhapa ing pundi?
-      ar_eg: لا مؤاخذة يا Pak Wiryo. الـ pendhapa فين؟
-      ar: عفوًا يا Pak Wiryo. أين الـ pendhapa؟
-      en: Excuse me, Pak Wiryo. Where is the pendhapa?
-    - speaker: Pak Wiryo
-      text: Saking mriki lurus kemawon, lajeng nengen, Mas.
-      ar_eg: من هنا على طول، وبعدين يمين يا أستاذ.
-      ar: من هنا مستقيمًا، ثم يمينًا يا أخي.
-      en: From here just go straight, then turn right.
+      text: Dhateng bandara, Pak. Kula kesusu sanget.
+      ar_eg: على المطار يا أسطى. أنا مستعجل أوي.
+      ar: إلى المطار يا سيدي. أنا مستعجل جدًا.
+      en: To the airport, sir. I'm in a big hurry.
+    - speaker: Sopir
+      text: Pesawatipun mangkat jam pinten?
+      ar_eg: الطيارة بتقوم الساعة كام؟
+      ar: متى تقلع الطائرة؟
+      en: What time does the plane leave?
     - speaker: Mohamed
-      text: Tebih, Pak?
-      ar_eg: بعيد يا حاج؟
-      ar: هل هو بعيد يا سيدي؟
-      en: Is it far, sir?
-    - speaker: Pak Wiryo
-      text: Mboten, celak kemawon. Nanging mboten kepareng nedha ing pendhapa, nggih.
-      ar_eg: لأ، قريب. بس ممنوع الأكل في الـ pendhapa، ماشي؟
-      ar: لا، قريب. لكن لا يُسمح بالأكل في الـ pendhapa، حسنًا؟
-      en: No, it's close. But no eating in the pendhapa, all right?
+      text: Jam sedasa. Kula wau budhal rada telat.
+      ar_eg: الساعة عشرة. أنا طلعت متأخر شوية.
+      ar: الساعة العاشرة. خرجتُ متأخرًا قليلًا.
+      en: At ten. I set off a bit late.
+    - speaker: Sopir
+      text: Mboten menapa-menapa. Marginipun taksih lancar.
+      ar_eg: ولا يهمك. الطريق لسه ماشي.
+      ar: لا بأس. الطريق ما زال سالكًا.
+      en: No problem. The road's still clear.
     - speaker: Mohamed
-      text: Inggih, Pak. Matur nuwun sanget.
-      ar_eg: حاضر يا حاج. شكرًا جدًا.
-      ar: حاضر يا سيدي. شكرًا جزيلًا.
-      en: Of course, sir. Thank you very much.
+      text: Kula mandhap ing ngriku, Pak. Pinten?
+      ar_eg: هنزل هناك يا أسطى. كام؟
+      ar: سأنزل هناك يا سيدي. كم الأجرة؟
+      en: I'll get off there, sir. How much?
 new_words:
-  - word: kepareng
+  - word: budhal
     pos: verb
-    ar_eg: 'مسموح (oleh ← boleh)، كراما إنغيل. على اللافتات: mboten kepareng = ممنوع'
-    ar: 'مسموح (oleh ← boleh)، كراما إنغيل. على اللافتات: mboten kepareng = ممنوع'
-    en: 'allowed, may (ngoko oleh, Indonesian boleh), krama inggil. On signs, mboten kepareng = not allowed'
+    ar_eg: يطلع على سفر، يبدأ المشوار
+    ar: ينطلق في رحلة
+    en: set off, start a trip (= berangkat)
+  - word: penumpang
+    pos: noun
+    ar_eg: راكب
+    ar: راكب
+    en: passenger (= penumpang)
+  - word: bandara
+    pos: noun
+    ar_eg: مطار
+    ar: مطار
+    en: airport (= bandara)
+  - word: parkir
+    pos: verb
+    ar_eg: يركن (العربية)
+    ar: يركن (السيارة)
+    en: park (a car); parking (= parkir)
+  - word: koper
+    pos: noun
+    ar_eg: شنطة سفر
+    ar: حقيبة سفر
+    en: suitcase (= koper)
+  - word: mandhap
+    pos: verb
+    ar_eg: ينزل (mudhun ← mandhap)، كراما
+    ar: ينزل (mudhun ← mandhap)، كراما
+    en: go down, get off (ngoko mudhun, Indonesian turun), krama
+  - word: minggah
+    pos: verb
+    ar_eg: يطلع، يركب (munggah ← minggah)، كراما
+    ar: يصعد، يركب (munggah ← minggah)، كراما
+    en: go up, get in (ngoko munggah, Indonesian naik), krama
+  - word: karcis
+    pos: noun
+    ar_eg: تذكرة
+    ar: تذكرة
+    en: ticket (= karcis, tiket)
 review:
   status: draft
   verified: false

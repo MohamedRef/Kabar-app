@@ -97,17 +97,29 @@ exercises:
     distractors: [dampak, sasaran]
     words: [ketentuan]
   - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة توصية؟
-      ar: أيّ جملة توصية؟
-      en: Which sentence is a recommendation?
-    options:
-      - Kebijakan ini mulai berlaku bulan Januari.
-      - Sampah plastik berkurang empat puluh persen.
-      - Sebaiknya kampus menyediakan gelas yang bisa dipakai ulang.
-    answer: 2
-    words: [rekomendasi]
+    type: match_pairs
+    pairs:
+      - text: pedoman
+        ar_eg: دليل إرشادات
+        ar: دليل إرشادي
+        en: guidelines, manual
+      - text: perpanjangan
+        ar_eg: تجديد، مدّ
+        ar: تمديد، تجديد
+        en: extension, renewal
+      - text: pembatalan
+        ar_eg: إلغاء
+        ar: إلغاء
+        en: cancellation
+      - text: pengembalian
+        ar_eg: استرجاع، رد
+        ar: إرجاع، استرداد
+        en: return, refund
+      - text: penegakan
+        ar_eg: تطبيق، إنفاذ
+        ar: إنفاذ
+        en: enforcement (penegakan hukum)
+    words: [pedoman, perpanjangan, pembatalan, pengembalian, penegakan]
   - id: e07
     type: translate
     direction: to_target

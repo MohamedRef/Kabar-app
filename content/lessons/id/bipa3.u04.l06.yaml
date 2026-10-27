@@ -1,195 +1,232 @@
 schema: kabar.lesson/v1
 id: bipa3.u04.l06
 language: id
-title: Tips sehat di radio
+title: Label makanan
 can_do:
-  ar_eg: تسمع نصايح أكل صحي في الراديو وتفهم إيه اللي لازم تاكله وليه.
-  ar: أن تستمع إلى نصائح غذائية في الإذاعة وتفهم ما ينبغي أكله ولماذا.
-  en: Follow healthy-eating tips on the radio and catch the reasons.
+  ar_eg: 'تقرا ورقة المكونات: إيه اللي جوه، صافي ولا لأ، مواد كيماوية وسموم، ورجيم.'
+  ar: 'أن تقرأ ملصق المكوّنات: ما يحتويه، هل هو نقي، المواد الكيميائية والسموم، والحمية.'
+  en: 'Read a food label: what''s inside, whether it''s pure, chemicals and poisons, and diets.'
 slides:
-  - title: Radio Sembalun pagi ini
-    grammar: id.definition.adalah-merupakan
+  - title: Apa bahannya?
     body:
       ar_eg: |
-        الصبح في سيمبالون، الراديو بيدّي نصايح عن الفطار الصحي. الدرس ده للسمع الأول:
-        اسمع الجمل في التمارين، وارجع هنا لو محتاج.
-        دوّر على: الفطار المتوازن فيه إيه؟ نقلّل إيه، وليه؟ والفاكهة مفيدة في إيه؟
+        bahan = مكوّن، خامة (bahan makanan = مكونات الأكل). kimia = كيميا (bahan kimia = مواد كيماوية).
+        berisi = فيه، جواه: Kotak ini berisi cokelat. murni = صافي، خالص (madu murni = عسل صافي).
+        racun = سم. cokelat = شوكولاتة (وبتتكتب كمان coklat). kering = ناشف (buah kering = فاكهة مجففة). diet = رجيم.
       ar: |
-        في الصباح في سيمبالون تقدّم الإذاعة نصائح عن الفطور الصحي. هذا الدرس للاستماع أولًا:
-        استمع إلى الجمل في التمارين، وعُد إلى هنا عند الحاجة.
-        ابحث عن: ممّ يتكوّن الفطور المتوازن؟ ماذا نقلّل ولماذا؟ وما فائدة الفاكهة؟
+        bahan = مكوّن، مادة (bahan makanan = مكوّنات الطعام). kimia = كيمياء (bahan kimia = مواد كيميائية).
+        berisi = يحتوي على: Kotak ini berisi cokelat. murni = نقيّ، خالص (madu murni = عسل نقي).
+        racun = سمّ. cokelat = شوكولاتة (وتُكتب أيضًا coklat). kering = جاف (buah kering = فاكهة مجففة). diet = حمية.
       en: |
-        Morning in Sembalun: the radio is giving tips on a healthy breakfast. This lesson is listening first:
-        hear the sentences in the exercises and come back here if you need to.
-        Listen for: what's in a balanced breakfast? What should we cut down on, and why? What is fruit good for?
+        bahan = ingredient, material (bahan makanan = food ingredients). kimia = chemistry (bahan kimia = chemicals).
+        berisi = contain, be filled with: Kotak ini berisi cokelat. murni = pure (madu murni = pure honey).
+        racun = poison. cokelat = chocolate (also spelt coklat). kering = dry, dried (buah kering = dried fruit). diet = diet.
     examples:
-      - text: Sarapan yang sehat adalah sarapan yang seimbang, yaitu ada nasi, sayur, dan protein.
-        ar_eg: الفطار الصحي هو الفطار المتوازن، يعني فيه رز وخضار وبروتين.
-        ar: الفطور الصحي هو الفطور المتوازن، أي فيه أرز وخضار وبروتين.
-        en: A healthy breakfast is a balanced breakfast, namely with rice, vegetables and protein.
-      - text: Kurangi makanan goreng, karena makanan goreng mengandung banyak lemak.
-        ar_eg: قلّل الأكل المقلي، عشان الأكل المقلي فيه دهون كتير.
-        ar: قلّل الطعام المقلي، لأنّ الطعام المقلي يحتوي على دهون كثيرة.
-        en: Cut down on fried food, because fried food contains a lot of fat.
-      - text: Jangan lupa makan buah. Buah kaya serat dan vitamin, jadi buah menyehatkan tubuh.
-        ar_eg: متنساش تاكل فاكهة. الفاكهة غنية بالألياف والفيتامينات، فبتخلّي الجسم صحي.
-        ar: لا تنسَ أكل الفاكهة؛ فهي غنية بالألياف والفيتامينات، ولذلك تقوّي صحة الجسم.
-        en: Don't forget to eat fruit. Fruit is rich in fibre and vitamins, so it keeps the body healthy.
+      - text: Kue ini memakai bahan alami, tidak pakai bahan kimia.
+        ar_eg: الكيكة دي معمولة من مكونات طبيعية، من غير كيماويات.
+        ar: تُصنع هذه الكعكة من مكوّنات طبيعية بلا مواد كيميائية.
+        en: This cake uses natural ingredients, no chemicals.
+      - text: Botol ini berisi madu murni dari Sumbawa.
+        ar_eg: الإزازة دي فيها عسل صافي من سومباوا.
+        ar: تحتوي هذه الزجاجة على عسل نقي من سومباوا.
+        en: This bottle holds pure honey from Sumbawa.
+      - text: Jangan makan jamur itu! Ada racunnya.
+        ar_eg: ما تاكلش عيش الغراب ده! فيه سم.
+        ar: لا تأكل ذلك الفطر! فيه سمّ.
+        en: Don't eat that mushroom! It's poisonous.
 exercises:
   - id: e01
-    type: listen
-    text: Sarapan yang sehat adalah sarapan yang seimbang, yaitu ada nasi, sayur, dan protein.
-    question:
-      ar_eg: حسب الراديو، الفطار المتوازن فيه إيه؟
-      ar: بحسب الإذاعة، ممّ يتكوّن الفطور المتوازن؟
-      en: According to the radio, what's in a balanced breakfast?
-    options: ["Nasi, sayur, dan protein.", "Roti, kopi, dan gula.", "Buah dan susu saja."]
-    answer: 0
-    meaning:
-      ar_eg: الفطار الصحي هو الفطار المتوازن، يعني فيه رز وخضار وبروتين.
-      ar: الفطور الصحي هو الفطور المتوازن، أي فيه أرز وخضار وبروتين.
-      en: A healthy breakfast is a balanced breakfast, namely with rice, vegetables and protein.
-    words: [seimbang, yaitu]
-  - id: e02
-    type: listen
-    text: Kurangi makanan goreng, karena makanan goreng mengandung banyak lemak.
-    question:
-      ar_eg: ليه لازم نقلّل الأكل المقلي؟
-      ar: لماذا ينبغي أن نقلّل الطعام المقلي؟
-      en: Why should we cut down on fried food?
-    options: ["Karena mahal.", "Karena tidak enak.", "Karena mengandung banyak lemak."]
-    answer: 2
-    meaning:
-      ar_eg: قلّل الأكل المقلي، عشان الأكل المقلي فيه دهون كتير.
-      ar: قلّل الطعام المقلي، لأنّ الطعام المقلي يحتوي على دهون كثيرة.
-      en: Cut down on fried food, because fried food contains a lot of fat.
-    words: [mengandung, lemak]
-  - id: e03
-    type: listen
-    text: Buah kaya serat dan vitamin, jadi buah menyehatkan tubuh.
-    options:
-      - Buah kaya serat dan vitamin, jadi buah menguatkan tulang.
-      - Buah kaya serat dan vitamin, jadi buah menyehatkan tubuh.
-      - Sayur kaya serat dan vitamin, jadi sayur menyehatkan tubuh.
-    answer: 1
-    meaning:
-      ar_eg: الفاكهة غنية بالألياف والفيتامينات، فبتخلّي الجسم صحي.
-      ar: الفاكهة غنية بالألياف والفيتامينات، ولذلك تقوّي صحة الجسم.
-      en: Fruit is rich in fibre and vitamins, so it keeps the body healthy.
-    words: [serat, menyehatkan]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الراديو قال نعمل إيه في الأكل المقلي؟
-      ar: ماذا قالت الإذاعة أن نفعل بالطعام المقلي؟
-      en: What did the radio say to do about fried food?
-    options: ["Makan lebih banyak.", "Menguranginya.", "Memanaskannya lagi."]
-    answer: 1
-    explain:
-      ar_eg: «Kurangi» أمر من mengurangi = قلّل.
-      ar: «Kurangi» صيغة أمر من mengurangi، أي قلّل.
-      en: '"Kurangi" is the command form of mengurangi, "cut down on".'
-    words: [mengurangi]
-  - id: e05
     type: match_pairs
     pairs:
-      - text: seimbang
-        ar_eg: متوازن
-        ar: متوازن
-        en: balanced
-      - text: lemak
-        ar_eg: دهون
-        ar: دهون
-        en: fat
-      - text: serat
-        ar_eg: ألياف
-        ar: ألياف
-        en: fibre
-      - text: mengandung
-        ar_eg: فيه، يحتوي على
+      - text: bahan
+        ar_eg: مكوّن
+        ar: مكوّن
+        en: ingredient
+      - text: kimia
+        ar_eg: كيميا
+        ar: كيمياء
+        en: chemistry
+      - text: berisi
+        ar_eg: فيه، جواه
         ar: يحتوي على
-        en: to contain
-      - text: menyehatkan
-        ar_eg: يخلّي الواحد صحي
-        ar: يجعله صحيًّا
-        en: to make healthy
-    words: [seimbang, lemak, serat, mengandung, menyehatkan]
-  - id: e06
-    type: multiple_choice
-    question: Buah ___ serat dan vitamin.
-    options: [kaya, bukan, yaitu]
-    answer: 0
-    explain:
-      ar_eg: kaya + حاجة = غني بحاجة. «Buah kaya serat» = الفاكهة غنية بالألياف.
-      ar: kaya + اسم = غنيّ بـ. «Buah kaya serat» أي الفاكهة غنية بالألياف.
-      en: kaya + noun = rich in. "Buah kaya serat" = fruit is rich in fibre.
-    words: [kaya, serat]
-  - id: e07
-    type: fill_blank
-    sentence: Makanan goreng ___ banyak lemak.
+        en: contain
+      - text: cokelat / coklat
+        ar_eg: شوكولاتة
+        ar: شوكولاتة
+        en: chocolate
+    words: [bahan, kimia, berisi, cokelat / coklat]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: racun
+        ar_eg: سم
+        ar: سمّ
+        en: poison
+      - text: murni
+        ar_eg: صافي
+        ar: نقيّ
+        en: pure
+      - text: kering
+        ar_eg: ناشف
+        ar: جاف
+        en: dry
+      - text: diet
+        ar_eg: رجيم
+        ar: حمية
+        en: diet
+    words: [racun, murni, kering, diet]
+  - id: e03
+    type: listen
+    text: Hati-hati, botol itu berisi racun tikus!
+    question:
+      ar_eg: في الإزازة إيه؟
+      ar: ماذا في الزجاجة؟
+      en: What's in the bottle?
+    options: [عصير, سم فيران, زيت]
+    answer: 1
     meaning:
-      ar_eg: الأكل المقلي فيه دهون كتير.
-      ar: يحتوي الطعام المقلي على دهون كثيرة.
-      en: Fried food contains a lot of fat.
-    answers: [mengandung]
-    words: [mengandung, lemak]
-  - id: e08
+      ar_eg: خلّي بالك، الإزازة دي فيها سم فيران!
+      ar: احذر، تلك الزجاجة فيها سمّ فئران!
+      en: Careful, that bottle has rat poison in it!
+    words: [berisi, racun]
+  - id: e04
+    type: fill_blank
+    sentence: Saya sedang ___. Saya tidak makan gula dan nasi.
+    meaning:
+      ar_eg: أنا عامل ___. مش باكل سكر ولا رز.
+      ar: أنا أتبع ___. لا آكل السكر ولا الأرز.
+      en: I'm on a ___. I don't eat sugar or rice.
+    options: [diet, kimia, murni]
+    answers: [diet]
+    words: [diet, kimia, murni]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حاجة حلوة بنية من الكاكاو؟
+      ar: حلوى بنية من الكاكاو؟
+      en: Something sweet and brown made from cocoa?
+    options: [racun, cokelat, bahan]
+    answer: 1
+    explain:
+      ar_eg: cokelat (أو coklat) = شوكولاتة.
+      ar: cokelat (أو coklat) = شوكولاتة.
+      en: cokelat (or coklat) = chocolate.
+    words: [cokelat / coklat, racun, bahan]
+  - id: e06
+    type: fill_blank
+    sentence: Madu ini ___, tidak dicampur gula.
+    meaning:
+      ar_eg: العسل ده ___، مش مخلوط بسكر.
+      ar: هذا العسل ___، غير مخلوط بالسكر.
+      en: This honey is ___, not mixed with sugar.
+    options: [kering, murni, berisi]
+    answers: [murni]
+    words: [murni, kering, berisi]
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: قلّل الأكل المقلي، واشرب مية كتير.
-      ar: قلّل الطعام المقلي، واشرب ماءً كثيرًا.
-      en: Cut down on fried food, and drink lots of water.
-    answer: Kurangi makanan goreng dan minum banyak air putih.
-    alternatives: ["Minum banyak air putih dan kurangi makanan goreng."]
-    distractors: [mengandung, sayur]
-    words: [mengurangi]
-  - id: e09
+      ar_eg: الأكل ده مافيهوش مواد كيماوية.
+      ar: هذا الطعام خالٍ من المواد الكيميائية.
+      en: This food has no chemicals in it.
+    answer: Makanan ini tidak memakai bahan kimia.
+    distractors: [racun, diet]
+    words: [bahan, kimia]
+  - id: e08
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الفطار الصحي هو الفطار المتوازن.
-      ar: الفطور الصحي هو الفطور المتوازن.
-      en: A healthy breakfast is a balanced breakfast.
-    answers:
-      - Sarapan yang sehat adalah sarapan yang seimbang.
-      - Sarapan yang sehat adalah sarapan yang seimbang
-      - Sarapan sehat adalah sarapan yang seimbang.
-      - Sarapan sehat adalah sarapan yang seimbang
-      - Sarapan yang sehat merupakan sarapan yang seimbang.
-      - Sarapan sehat merupakan sarapan yang seimbang.
+    direction: from_target
+    source_text: Kotak ini berisi buah kering dan cokelat.
+    answers_meaning:
+      ar_eg: [العلبة دي فيها فاكهة مجففة وشوكولاتة, جوه العلبة دي فاكهة ناشفة وشوكولاتة]
+      ar: [تحتوي هذه العلبة على فاكهة مجففة وشوكولاتة]
+      en: [This box contains dried fruit and chocolate, This box has dried fruit and chocolate in it]
+    words: [berisi, kering, cokelat / coklat]
+  - id: e09
+    type: speaking
+    text: Gula yang terlalu banyak adalah racun untuk tubuh.
+    meaning:
+      ar_eg: السكر الكتير سم للجسم.
+      ar: السكر الكثير سمّ للجسد.
+      en: Too much sugar is poison for the body.
+    words: [racun]
+  - id: e10
+    type: multiple_choice
+    question: Musim hujan sudah lewat. Sekarang tanahnya ___.
+    options: [murni, diet, kering]
+    answer: 2
     explain:
-      ar_eg: "هنا adalah (أو merupakan) لازم، عشان بعدها اسم: «sarapan yang seimbang»."
-      ar: "adalah (أو merupakan) لازمة هنا لأنّ بعدها اسمًا: «sarapan yang seimbang»."
-      en: adalah (or merupakan) is needed here because a noun follows, "sarapan yang seimbang".
-    words: [seimbang]
+      ar_eg: kering = ناشف، جاف.
+      ar: kering = جاف.
+      en: kering = dry.
+    words: [kering, murni, diet]
 dialogue:
-  title: Sarapan di rumah Bu Rohani
   lines:
-    - speaker: Bu Rohani
-      text: Mohamed, tadi kamu dengar radio? Katanya, sarapan harus seimbang.
-      ar_eg: محمد، سمعت الراديو من شوية؟ بيقولوا الفطار لازم يكون متوازن.
-      ar: يا محمد، هل سمعت الإذاعة قبل قليل؟ يقولون إنّ الفطور يجب أن يكون متوازنًا.
-      en: Mohamed, did you hear the radio just now? They say breakfast should be balanced.
+    - speaker: Penjual
+      text: Mau coba cokelat stroberi dari Sembalun, Mas?
+      ar_eg: تحب تجرب شوكولاتة بالفراولة من سمبالون؟
+      ar: أتحب أن تجرّب شوكولاتة الفراولة من سمبالون؟
+      en: Want to try strawberry chocolate from Sembalun?
     - speaker: Mohamed
-      text: Ya, Bu. Ada nasi, sayur, dan protein. Tapi saya biasanya makan nasi goreng saja.
-      ar_eg: أيوه يا طنط. رز وخضار وبروتين. بس أنا عادةً باكل رز مقلي وخلاص.
-      ar: "نعم يا سيدتي: أرز وخضار وبروتين. لكنّي عادةً آكل أرزًا مقليًّا فقط."
-      en: Yes, Ma'am. Rice, vegetables and protein. But I usually just eat fried rice.
-    - speaker: Bu Rohani
-      text: Wah, makanan goreng mengandung banyak lemak. Kurangi, ya!
-      ar_eg: يا خبر، الأكل المقلي فيه دهون كتير. قلّله بقى!
-      ar: أوه، الطعام المقلي يحتوي على دهون كثيرة. قلّل منه!
-      en: Oh dear, fried food contains a lot of fat. Cut down on it!
+      text: Boleh. Apa bahannya?
+      ar_eg: ماشي. مكوناتها إيه؟
+      ar: حسنًا. ما مكوّناتها؟
+      en: Sure. What's in it?
+    - speaker: Penjual
+      text: Cokelat, gula dan stroberi dari kebun. Tidak pakai bahan kimia.
+      ar_eg: شوكولاتة وسكر وفراولة من الجنينة. من غير كيماويات.
+      ar: شوكولاتة وسكر وفراولة من البستان. بلا مواد كيميائية.
+      en: Chocolate, sugar and strawberries from the farm. No chemicals.
     - speaker: Mohamed
-      text: Baik, Bu. Mulai besok saya makan buah juga.
-      ar_eg: حاضر. من بكرة هاكل فاكهة كمان.
-      ar: حسنًا يا سيدتي. ابتداءً من الغد سآكل الفاكهة أيضًا.
-      en: All right, Ma'am. From tomorrow I'll eat fruit too.
-    - speaker: Bu Rohani
-      text: Bagus! Ini, stroberi dari kebun saya. Kaya vitamin C!
-      ar_eg: برافو! خد، فراولة من الجنينة بتاعتي. غنية بفيتامين سي!
-      ar: أحسنت! تفضّل، فراولة من بستاني، غنية بفيتامين ج!
-      en: Great! Here, strawberries from my garden. Rich in vitamin C!
+      text: Kotak yang kecil itu berisi apa?
+      ar_eg: العلبة الصغيرة دي فيها إيه؟
+      ar: ماذا في تلك العلبة الصغيرة؟
+      en: What's in that little box?
+    - speaker: Penjual
+      text: Stroberi kering dengan madu murni. Bagus untuk yang sedang diet.
+      ar_eg: فراولة مجففة بعسل صافي. حلوة للي عامل رجيم.
+      ar: فراولة مجففة بعسل نقي. مناسبة لمن يتبع حمية.
+      en: Dried strawberries with pure honey. Good if you're on a diet.
+new_words:
+  - word: bahan
+    pos: noun
+    ar_eg: مكوّن، خامة
+    ar: مكوّن، مادة
+    en: ingredient, material
+  - word: kimia
+    pos: noun
+    arabic: كيمياء
+    ar_eg: كيميا
+    ar: كيمياء
+    en: chemistry, chemical
+  - word: berisi
+    pos: verb
+    ar_eg: فيه، جواه
+    ar: يحتوي على
+    en: contain, be filled with
+  - word: cokelat / coklat
+    pos: noun
+    ar_eg: شوكولاتة؛ بني
+    ar: شوكولاتة؛ بنّي
+    en: chocolate; brown
+  - word: racun
+    pos: noun
+    ar_eg: سم
+    ar: سمّ
+    en: poison
+  - word: murni
+    pos: adjective
+    ar_eg: صافي، خالص
+    ar: نقيّ، خالص
+    en: pure
+  - word: kering
+    pos: adjective
+    ar_eg: ناشف، مجفف
+    ar: جاف، مجفف
+    en: dry, dried
+  - word: diet
+    pos: noun
+    ar_eg: رجيم
+    ar: حمية
+    en: diet
 review:
   status: draft
   verified: false

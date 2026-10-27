@@ -1,0 +1,230 @@
+schema: kabar.lesson/v1
+id: j3.u06.l10
+language: jv
+title: Ulangan J3.6
+can_do:
+  ar_eg: تحوّل فقرة نغوكو لكراما.
+  ar: أن تحوّل فقرة من النغوكو إلى الكراما.
+  en: Convert a ngoko paragraph to krama.
+slides:
+  - title: Saking ngoko dhateng krama
+    body:
+      ar_eg: |
+        عشان تحوّل فقرة نغوكو لكراما، امشي على ٣ خطوات:
+        ١. الكلمات: aku → kula، saka → saking، arep → badhe، tuku → tumbas، omah → griya، rega → regi، larang → awis، gawe → damel، suwe → dangu، merga → amargi.
+        ٢. اللواحق: -e / -ne → -ipun / -nipun، di- → dipun-، -ake → -aken، tak- → kula + الفعل.
+        ٣. راجع: مافيش ولا كلمة نغوكو فاضلة؟
+        Aku arep tuku batik. → Kula badhe tumbas batik.
+        Batike digawe neng Giriloyo. → Batikipun dipundamel wonten Giriloyo.
+      ar: |
+        لتحويل فقرة من النغوكو إلى الكراما اتبع ثلاث خطوات:
+        ١. المفردات: aku → kula، saka → saking، arep → badhe، tuku → tumbas، omah → griya، rega → regi، larang → awis، gawe → damel، suwe → dangu، merga → amargi.
+        ٢. اللواحق: -e / -ne → -ipun / -nipun، وdi- → dipun-، و-ake → -aken، وtak- → kula + الفعل.
+        ٣. المراجعة: ألم تبقَ كلمة من النغوكو؟
+        Aku arep tuku batik. → Kula badhe tumbas batik.
+        Batike digawe neng Giriloyo. → Batikipun dipundamel wonten Giriloyo.
+      en: |
+        To turn a ngoko paragraph into krama, go in three steps:
+        1. Words: aku → kula, saka → saking, arep → badhe, tuku → tumbas, omah → griya, rega → regi, larang → awis, gawe → damel, suwe → dangu, merga → amargi.
+        2. Affixes: -e / -ne → -ipun / -nipun, di- → dipun-, -ake → -aken, tak- → kula + verb.
+        3. Check: is any ngoko word left?
+        Aku arep tuku batik. → Kula badhe tumbas batik.
+        Batike digawe neng Giriloyo. → Batikipun dipundamel wonten Giriloyo.
+    grammar: jv.krama.affixes
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: dipundamel
+        ar_eg: اتعمل (digawe)
+        ar: صُنع (digawe)
+        en: was made (digawe)
+      - text: dipunwaos
+        ar_eg: اتقرا (diwaca)
+        ar: قُرئ (diwaca)
+        en: was read (diwaca)
+      - text: tumbasaken
+        ar_eg: يشتري لحد (tukokake)
+        ar: يشتري لغيره (tukokake)
+        en: buy for someone (tukokake)
+      - text: reginipun
+        ar_eg: السعر (regane)
+        ar: السعر (regane)
+        en: the price (regane)
+    words: [damel, waos, tumbasaken, regi]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: kabar + -e بالكراما = ؟
+      ar: kabar + -e بالكراما = ؟
+      en: kabar + krama "-e" = ?
+    options: [kabarnipun, kabare, kabaripun]
+    answer: 2
+    explain:
+      ar_eg: 'kabar بتخلص بساكن (r)، يبقى -ipun: kabaripun — زي Pripun kabaripun؟ وkabar أصلها العربي «خبر».'
+      ar: 'تنتهي kabar بساكن فتأخذ -ipun: kabaripun، كما في Pripun kabaripun؟ وkabar من العربية «خبر».'
+      en: 'kabar ends in a consonant, so -ipun: kabaripun — as in Pripun kabaripun? (kabar is Arabic «خبر».)'
+    words: [kabar]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي تحويل صح لـ «Bukune wis tak waca»؟
+      ar: أي تحويل صحيح لـ «Bukune wis tak waca»؟
+      en: Which is the right krama version of "Bukune wis tak waca"?
+    options: [Bukunipun sampun kula waos., Bukune sampun kula waca., Bukunipun sampun tak waos.]
+    answer: 0
+    explain:
+      ar_eg: tak- مالهاش كراما → kula + waos، وbukune → bukunipun، وwis → sampun.
+      ar: لا نظير لـ tak- في الكراما، فيقال kula waos، وbukune → bukunipun، وwis → sampun.
+      en: tak- has no krama form → kula waos; bukune → bukunipun; wis → sampun.
+    words: [waos, sampun]
+  - id: e04
+    type: listen
+    text: Reginipun awis, amargi damelipun dangu.
+    options: ['Reginipun awis, amargi damelipun dangu.', 'Reginipun mirah, amargi damelipun dangu.', 'Reginipun awis, amargi damelipun alon.']
+    answer: 0
+    words: [regi, awis, amargi, dangu]
+  - id: e05
+    type: fill_blank
+    sentence: Batikipun ___ wonten Giriloyo.
+    meaning:
+      ar_eg: الباتيك اتعمل في جيريلويو.
+      ar: صُنع الباتيك في جيريلويو.
+      en: The batik was made in Giriloyo.
+    options: [digawe, dipungawe, dipundamel]
+    answers: [dipundamel]
+    explain:
+      ar_eg: 'gawe → damel، وdi- → dipun-: dipundamel. «dipungawe» خلطة كراما على نغوكو.'
+      ar: 'gawe → damel، وdi- → dipun-: dipundamel، و«dipungawe» خليط.'
+      en: 'gawe → damel and di- → dipun-: dipundamel. "dipungawe" mixes levels.'
+    words: [damel]
+  - id: e06
+    type: fill_blank
+    sentence: Kula ___ batik kangge ibu kula.
+    meaning:
+      ar_eg: بشتري باتيك لماما.
+      ar: أشتري باتيكًا لأمي.
+      en: I'm buying batik for my mother.
+    options: [tumbasaken, tumbasake, tukokake]
+    answers: [tumbasaken]
+    words: [tumbasaken]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: (حوّل للكراما) Aku arep tuku batik.
+      ar: (حوّل إلى الكراما) Aku arep tuku batik.
+      en: (turn into krama) Aku arep tuku batik.
+    answer: Kula badhe tumbas batik.
+    distractors: [aku, arep, tuku]
+    words: [kula, badhe, tumbas]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: (حوّل للكراما) Omahe Pak Harjo gedhe banget.
+      ar: (حوّل إلى الكراما) Omahe Pak Harjo gedhe banget.
+      en: (turn into krama) Omahe Pak Harjo gedhe banget.
+    answer: Griyanipun Pak Harjo ageng sanget.
+    distractors: [omahe, gedhe, banget]
+    words: [griya, ageng, sanget]
+  - id: e09
+    type: fill_blank
+    sentence: Kainipun dipunpepe ___ garing.
+    meaning:
+      ar_eg: القماش بيتنشر في الشمس ___ ينشف.
+      ar: يُنشر القماش في الشمس ___ يجفّ.
+      en: The cloth is hung in the sun ___ it's dry.
+    options: [ngantos, sida, kandel]
+    answers: [ngantos]
+    words: [ngantos, garing, sida, kandel]
+  - id: e10
+    type: multiple_choice
+    question: Swara (ngoko) → ___ (krama)
+    options: [swanten, rejeki, modal]
+    answer: 0
+    explain:
+      ar_eg: swara ← swanten = صوت. rejeki = رزق، modal = رأس مال.
+      ar: swara ← swanten = صوت. rejeki = رزق، modal = رأس مال.
+      en: swara → swanten = voice. rejeki = livelihood, modal = capital.
+    words: [swanten, rejeki, modal]
+  - id: e11
+    type: match_pairs
+    pairs:
+      - text: sekar
+        ar_eg: وردة (كراما)
+        ar: زهرة (كراما)
+        en: flower (krama)
+      - text: tlaten
+        ar_eg: صبور ودقيق
+        ar: صبور ومتقن
+        en: patient, meticulous
+      - text: juragan
+        ar_eg: صاحب الشغل
+        ar: صاحب العمل
+        en: owner, boss
+      - text: nyambut damel
+        ar_eg: يشتغل (كراما)
+        ar: يعمل (كراما)
+        en: work (krama)
+      - text: mireng
+        ar_eg: يسمع (كراما)
+        ar: يسمع (كراما)
+        en: hear (krama)
+      - text: wekdal
+        ar_eg: وقت (كراما)
+        ar: وقت (كراما)
+        en: time (krama)
+    words: [sekar, tlaten, juragan, nyambut damel, mireng, wekdal]
+  - id: e12
+    type: speaking
+    text: Kula saking Kairo. Kula badhe tumbas batik wonten Giriloyo. Reginipun awis, amargi damelipun dangu.
+    meaning:
+      ar_eg: أنا من القاهرة. عايز أشتري باتيك في جيريلويو. سعره غالي، عشان عمله بياخد وقت طويل.
+      ar: أنا من القاهرة. أريد أن أشتري باتيكًا في جيريلويو. ثمنه غالٍ لأن صنعه يستغرق وقتًا طويلًا.
+      en: I'm from Cairo. I want to buy batik in Giriloyo. It's expensive, because it takes a long time to make.
+    words: [saking, tumbas, regi, awis, amargi, dangu]
+dialogue:
+  title: Pamit saking Giriloyo
+  lines:
+    - speaker: Mohamed
+      text: Pak Harjo, batikipun sampun kula tumbas.
+      ar_eg: يا حاج هارجو، اشتريت الباتيك خلاص.
+      ar: يا سيد هارجو، اشتريتُ الباتيك.
+      en: Pak Harjo, I've bought the batik.
+    - speaker: Pak Harjo
+      text: Sae, Mas. Batik menika kangge sinten?
+      ar_eg: حلو يا ابني. الباتيك ده لمين؟
+      ar: حسنٌ يا بني. لمن هذا الباتيك؟
+      en: Good. Who is this batik for?
+    - speaker: Mohamed
+      text: Kangge ibu kula wonten Kairo.
+      ar_eg: لماما في القاهرة.
+      ar: لأمي في القاهرة.
+      en: For my mother in Cairo.
+    - speaker: Pak Harjo
+      text: Sae sanget. Batikipun dipundamel wonten Giriloyo, kangge ibu saking Mesir!
+      ar_eg: حلو أوي. باتيك معمول في جيريلويو، لأم من مصر!
+      ar: جميل جدًا. باتيك صُنع في جيريلويو لأمٍّ من مصر!
+      en: Lovely. Batik made in Giriloyo, for a mother from Egypt!
+    - speaker: Mohamed
+      text: Inggih, Pak. Matur nuwun sanget.
+      ar_eg: أيوه يا حاج. شكرًا جزيلًا.
+      ar: نعم يا سيدي. شكرًا جزيلًا.
+      en: Yes, sir. Thank you very much.
+    - speaker: Pak Harjo
+      text: Sami-sami, Mas Mohamed.
+      ar_eg: العفو يا محمد.
+      ar: عفوًا يا محمد.
+      en: You're welcome, Mohamed.
+souvenir:
+  id: j3.u06.souvenir
+  title: Batik tulis Giriloyo
+  note:
+    ar_eg: |
+      Giriloyo قرية في Imogiri جنوب يوجيا، تحت التل اللي عليه مقابر ملوك ماتارام. ستات القرية بيرسموا الـ batik tulis بالإيد من أجيال، وبعد زلزال ٢٠٠٦ القرية رجّعت ورشها وبقت بتعلّم الزوار الشغل بالـ canthing. والمقابر الملكية هناك اسمها makam، من العربي «مقام» — يعني حتى تحت تل الباتيك، العربي مستخبي في الأسامي.
+    ar: |
+      Giriloyo قرية في Imogiri جنوب يوجيا، عند سفح التل الذي تقوم عليه مقابر ملوك ماتارام. ونساء القرية يرسمن الـ batik tulis باليد منذ أجيال، وبعد زلزال ٢٠٠٦ أعادت القرية بناء ورشها، وصارت تعلّم الزوار العمل بالـ canthing. وتسمّى المقابر الملكية هناك makam، من العربية «مقام»، فالعربية حاضرة حتى تحت تلّ الباتيك.
+    en: |
+      Giriloyo is a village in Imogiri, south of Jogja, below the hill of the Mataram royal graves. Its women have drawn batik tulis by hand for generations; after the 2006 earthquake the village rebuilt its workshops and now teaches visitors the canthing. The royal graves are called makam, from Arabic «مقام» — Arabic hiding even under batik hill.
+review:
+  status: draft
+  verified: false
