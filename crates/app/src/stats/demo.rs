@@ -11,7 +11,6 @@
 
 use kabar_core::review::seed_bridge_deck;
 use kabar_core::settings::Settings;
-use kabar_core::srs::Scheduler;
 use kabar_protocol::coach::{ActivityKind, CoachProfile, LocalDate, Skill, Target};
 use kabar_protocol::level_check::{
     LEVEL_CHECK_KIND, LEVEL_CHECK_LESSON_ID, LEVEL_CHECK_VERSION, LevelCheckResult, LevelEta, LevelMove,
@@ -69,7 +68,8 @@ fn seed_stats_demo() {
     // Cards and a review history that makes some words known.
     let cards = seed_bridge_deck();
     store.upsert_cards(&cards).unwrap();
-    let sched = Scheduler::default();
+    // The app's scheduler for the demo profile's time zone.
+    let sched = crate::schedule::scheduler_at(profile.utc_offset_min, &store.settings().unwrap());
     for (i, c) in cards.iter().enumerate() {
         let mut t = now - (100 + i as u64 % 20) * DAY_MS;
         let mut s = kabar_core::srs::CardState::new(c.id.as_str());
@@ -88,7 +88,11 @@ fn seed_stats_demo() {
     // KABAR_DEMO_PLACED=bipa3: placed above the levels that have test items,
     // so the check goes straight to its outcome (history only).
     if let Ok(level) = std::env::var("KABAR_DEMO_PLACED") {
-        let placed = kabar_protocol::test::PlacementResult { start_level: level, sections: Vec::new() };
+        let placed = kabar_protocol::test::PlacementResult {
+            start_level: level,
+            start_unit: None,
+            sections: Vec::new(),
+        };
         store.record_lesson_event("placement", "placed", &placed).unwrap();
     }
 
