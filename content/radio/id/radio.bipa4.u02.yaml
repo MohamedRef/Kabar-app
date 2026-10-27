@@ -19,8 +19,24 @@ segments:
     title: Pagi di Maros
     lines:
       - {speaker: Kak Tiara, text: "Selamat pagi dari Maros! Ini Kabar Radio. Aku Tiara.", ar_eg: "صباح الخير من ماروس! ده كبار راديو. أنا تيارا.", ar: "صباح الخير من ماروس! هذا كبار راديو. أنا تيارا.", en: "Good morning from Maros! This is Kabar Radio. I'm Tiara."}
-      - {speaker: Kak Reza, text: "Aku Reza. Maros itu terkenal sama bukit kapur dan gua-gua tuanya.", ar_eg: "أنا رضا. ماروس مشهورة بتلال الحجر الجيري والكهوف القديمة.", ar: "أنا رضا. تشتهر ماروس بتلال الحجر الجيري والكهوف القديمة.", en: "I'm Reza. Maros is famous for its limestone hills and ancient caves."}
-      - {speaker: Kak Tiara, text: "Tapi pagi ini kita telat. Jalan ke desa rusak, bolong-bolong semua.", ar_eg: "بس الصبح ده اتأخرنا. الطريق للقرية بايظ ومليان حفر.", ar: "لكننا تأخرنا هذا الصباح، فالطريق إلى القرية متضرر ومليء بالحفر.", en: "But we were late this morning. The road to the village is broken and full of potholes.", note: {ar_eg: "bolong = berlubang في الكلام.", ar: "bolong = berlubang في الكلام اليومي.", en: "bolong = spoken berlubang."}}
+      - speaker: Kak Reza
+        text: "Aku Reza. Maros itu terkenal sama bukit kapur dan gua-gua tuanya."
+        ar_eg: "أنا رضا. ماروس مشهورة بتلال الحجر الجيري والكهوف القديمة."
+        ar: "أنا رضا. تشتهر ماروس بتلال الحجر الجيري والكهوف القديمة."
+        en: "I'm Reza. Maros is famous for its limestone hills and ancient caves."
+        note:
+          ar_eg: "كلمات: bukit = تل؛ gua-gua = كهوف، مغارات؛ kapur = طباشير."
+          ar: "مفردات: bukit = تلّ؛ gua-gua = كهوف؛ kapur = طباشير."
+          en: "Words: bukit = hill; gua-gua = caves; kapur = chalk."
+      - speaker: Kak Tiara
+        text: "Tapi pagi ini kita telat. Jalan ke desa rusak, bolong-bolong semua."
+        ar_eg: "بس الصبح ده اتأخرنا. الطريق للقرية بايظ ومليان حفر."
+        ar: "لكننا تأخرنا هذا الصباح، فالطريق إلى القرية متضرر ومليء بالحفر."
+        en: "But we were late this morning. The road to the village is broken and full of potholes."
+        note:
+          ar_eg: "bolong = berlubang في الكلام. كلمات: bolong-bolong = مليان حفر."
+          ar: "bolong = berlubang في الكلام اليومي. مفردات: bolong-bolong = مليء بالحفر."
+          en: "bolong = spoken berlubang. Words: bolong-bolong = full of holes."
       - speaker: Kak Reza
         text: "Warga udah lama ngeluh. Terus ada yang nulis surat pembaca ke koran."
         ar_eg: "الأهالي بقالهم كتير بيشتكوا. واحد منهم كتب رسالة قرّاء للجرنال."
@@ -34,18 +50,82 @@ segments:
   - kind: dialogue
     title: Surat dari warga Maros
     lines:
-      - {speaker: Kak Reza, text: "Tiara, tolong bacain suratnya, dong.", ar_eg: "يا تيارا، لو سمحتي اقريلنا الجواب.", ar: "يا تيارا، اقرئي لنا الرسالة من فضلك.", en: "Tiara, please read the letter out.", note: {ar_eg: "الجواب نفسه رسمي جدًا، زي أي جواب للجرنال. لاحظ الفرق بينه وبين كلامنا.", ar: "الرسالة نفسها رسمية جدًا مثل أي رسالة للصحيفة. لاحظ الفرق بينها وبين كلامنا.", en: "The letter itself is very formal, like any letter to a paper. Notice the gap with our chat."}}
+      - speaker: Kak Reza
+        text: "Tiara, tolong bacain suratnya, dong."
+        ar_eg: "يا تيارا، لو سمحتي اقريلنا الجواب."
+        ar: "يا تيارا، اقرئي لنا الرسالة من فضلك."
+        en: "Tiara, please read the letter out."
+        note:
+          ar_eg: "الجواب نفسه رسمي جدًا، زي أي جواب للجرنال. لاحظ الفرق بينه وبين كلامنا. كلمات: bacain = membacakan: يقرا بصوت عالي لحد."
+          ar: "الرسالة نفسها رسمية جدًا مثل أي رسالة للصحيفة. لاحظ الفرق بينها وبين كلامنا. مفردات: bacain = membacakan: يقرأ على الآخرين بصوت عالٍ."
+          en: "The letter itself is very formal, like any letter to a paper. Notice the gap with our chat. Words: bacain = membacakan: to read aloud."
       - {speaker: Kak Tiara, text: "Redaksi yang terhormat. Saya warga sebuah desa di Kabupaten Maros.", ar_eg: "حضرات التحرير المحترمين. أنا من أهالي قرية في محافظة ماروس.", ar: "هيئة التحرير المحترمة، أنا من سكان قرية في مقاطعة ماروس.", en: "Dear Editor. I live in a village in Maros Regency."}
       - {speaker: Kak Tiara, text: "Sudah dua tahun jalan utama desa kami rusak berat. Setiap hari truk dan motor bolak-balik di jalan itu.", ar_eg: "بقالها سنتين الطريق الرئيسي في قريتنا بايظ جامد. وكل يوم عربيات نقل وموتوسيكلات رايحة جاية عليه.", ar: "منذ عامين والطريق الرئيسي في قريتنا متضرر بشدة، والشاحنات والدراجات تذهب وتجيء عليه كل يوم.", en: "For two years our village's main road has been badly damaged. Every day trucks and motorbikes go back and forth on it."}
-      - {speaker: Kak Tiara, text: "Kalau hujan, lubang-lubang penuh air. Anak-anak sekolah sering terjatuh dari motor.", ar_eg: "لما بتمطر، الحفر بتتملي مية. وعيال المدارس بيقعوا من الموتوسيكلات كتير.", ar: "حين تمطر تمتلئ الحفر بالماء، وكثيرًا ما يسقط تلاميذ المدارس عن الدراجات.", en: "When it rains, the potholes fill with water. Schoolchildren often fall off motorbikes."}
-      - {speaker: Kak Tiara, text: "Kami sudah melapor ke kantor desa berkali-kali, tetapi belum ada tanggapan.", ar_eg: "اشتكينا لمكتب القرية مرات كتير، بس لسه مفيش رد.", ar: "أبلغنا مكتب القرية مرارًا، لكن لم يصلنا رد بعد.", en: "We've reported it to the village office many times, but there's been no response."}
+      - speaker: Kak Tiara
+        text: "Kalau hujan, lubang-lubang penuh air. Anak-anak sekolah sering terjatuh dari motor."
+        ar_eg: "لما بتمطر، الحفر بتتملي مية. وعيال المدارس بيقعوا من الموتوسيكلات كتير."
+        ar: "حين تمطر تمتلئ الحفر بالماء، وكثيرًا ما يسقط تلاميذ المدارس عن الدراجات."
+        en: "When it rains, the potholes fill with water. Schoolchildren often fall off motorbikes."
+        note:
+          ar_eg: "كلمات: lubang-lubang = حفر، مطبات."
+          ar: "مفردات: lubang-lubang = حفر."
+          en: "Words: lubang-lubang = holes, potholes."
+      - speaker: Kak Tiara
+        text: "Kami sudah melapor ke kantor desa berkali-kali, tetapi belum ada tanggapan."
+        ar_eg: "اشتكينا لمكتب القرية مرات كتير، بس لسه مفيش رد."
+        ar: "أبلغنا مكتب القرية مرارًا، لكن لم يصلنا رد بعد."
+        en: "We've reported it to the village office many times, but there's been no response."
+        note:
+          ar_eg: "كلمات: berkali-kali = كذا مرة، مرات كتير."
+          ar: "مفردات: berkali-kali = مرارًا."
+          en: "Words: berkali-kali = many times, repeatedly."
       - {speaker: Kak Tiara, text: "Kami mohon pemerintah daerah memperbaiki jalan ini sebaik-baiknya dan secepat-cepatnya.", ar_eg: "بنترجى الحكومة المحلية تصلّح الطريق ده على أحسن وجه وفي أسرع وقت.", ar: "نرجو من الحكومة المحلية إصلاح هذا الطريق على أكمل وجه وبأسرع ما يمكن.", en: "We ask the local government to repair this road as well and as quickly as possible."}
-      - {speaker: Kak Tiara, text: "Atas perhatian Bapak dan Ibu, kami ucapkan terima kasih. Hormat kami, warga desa.", ar_eg: "شاكرين اهتمامكم. مع خالص الاحترام، أهالي القرية.", ar: "نشكركم على اهتمامكم. مع فائق الاحترام، سكان القرية.", en: "Thank you for your attention. Respectfully, the villagers."}
-      - {speaker: Kak Reza, text: "Suratnya jelas, sopan. Ada fakta, ada akibat, ada permintaan.", ar_eg: "الجواب واضح ومؤدب. فيه حقايق، وفيه نتايج، وفيه طلب.", ar: "الرسالة واضحة ومهذبة: فيها حقائق، وعواقب، وطلب.", en: "The letter is clear and polite. It has facts, consequences and a request."}
-      - {speaker: Kak Tiara, text: "Seminggu kemudian, pemda jawab di koran yang sama.", ar_eg: "بعد أسبوع، الحكومة المحلية ردت في نفس الجرنال.", ar: "بعد أسبوع ردّت الحكومة المحلية في الصحيفة نفسها.", en: "A week later, the local government replied in the same paper.", note: {ar_eg: "pemda = pemerintah daerah، الناس بتختصرها.", ar: "pemda = pemerintah daerah، والناس يختصرونها.", en: "pemda = pemerintah daerah, as people say it."}}
+      - speaker: Kak Tiara
+        text: "Atas perhatian Bapak dan Ibu, kami ucapkan terima kasih. Hormat kami, warga desa."
+        ar_eg: "شاكرين اهتمامكم. مع خالص الاحترام، أهالي القرية."
+        ar: "نشكركم على اهتمامكم. مع فائق الاحترام، سكان القرية."
+        en: "Thank you for your attention. Respectfully, the villagers."
+        note:
+          ar_eg: "كلمات: ucapkan = يقول، ينطق."
+          ar: "مفردات: ucapkan = يقول، يلفظ."
+          en: "Words: ucapkan = to say, express."
+      - speaker: Kak Reza
+        text: "Suratnya jelas, sopan. Ada fakta, ada akibat, ada permintaan."
+        ar_eg: "الجواب واضح ومؤدب. فيه حقايق، وفيه نتايج، وفيه طلب."
+        ar: "الرسالة واضحة ومهذبة: فيها حقائق، وعواقب، وطلب."
+        en: "The letter is clear and polite. It has facts, consequences and a request."
+        note:
+          ar_eg: "كلمات: fakta = حقيقة."
+          ar: "مفردات: fakta = حقيقة."
+          en: "Words: fakta = fact."
+      - speaker: Kak Tiara
+        text: "Seminggu kemudian, pemda jawab di koran yang sama."
+        ar_eg: "بعد أسبوع، الحكومة المحلية ردت في نفس الجرنال."
+        ar: "بعد أسبوع ردّت الحكومة المحلية في الصحيفة نفسها."
+        en: "A week later, the local government replied in the same paper."
+        note:
+          ar_eg: "pemda = pemerintah daerah، الناس بتختصرها. كلمات: jawab = يرد، يجاوب."
+          ar: "pemda = pemerintah daerah، والناس يختصرونها. مفردات: jawab = يجيب."
+          en: "pemda = pemerintah daerah, as people say it. Words: jawab = to answer, reply."
       - {speaker: Kak Reza, text: "Jawabannya apa?", ar_eg: "قالوا إيه؟", ar: "بماذا ردّت؟", en: "What did they say?"}
-      - {speaker: Kak Tiara, text: "Mereka minta maaf, janji benerin jalannya bulan depan. Sementara itu warga gotong royong nambal lubangnya.", ar_eg: "اعتذروا ووعدوا يصلحوا الطريق الشهر الجاي. والأهالي اتعاونوا وردموا الحفر لحد ما يصلحوا.", ar: "اعتذروا ووعدوا بإصلاح الطريق الشهر القادم، وتعاون السكان على ردم الحفر مؤقتًا.", en: "They apologised and promised to fix it next month. Meanwhile residents worked together to fill the holes."}
-      - {speaker: Kak Reza, text: "Tolong-menolong. Keren, ya, budaya kayak gitu.", ar_eg: "التعاون. دي ثقافة حلوة.", ar: "التعاون. إنها ثقافة جميلة.", en: "Helping each other. That's a fine tradition."}
+      - speaker: Kak Tiara
+        text: "Mereka minta maaf, janji benerin jalannya bulan depan. Sementara itu warga gotong royong nambal lubangnya."
+        ar_eg: "اعتذروا ووعدوا يصلحوا الطريق الشهر الجاي. والأهالي اتعاونوا وردموا الحفر لحد ما يصلحوا."
+        ar: "اعتذروا ووعدوا بإصلاح الطريق الشهر القادم، وتعاون السكان على ردم الحفر مؤقتًا."
+        en: "They apologised and promised to fix it next month. Meanwhile residents worked together to fill the holes."
+        note:
+          ar_eg: "كلمات: gotong = gotong royong = التعاون، الكل يساعد؛ janji = وعد؛ lubangnya = lubang + -nya: خرم، حفرة."
+          ar: "مفردات: gotong = gotong royong = التعاون الجماعي؛ janji = وعد؛ lubangnya = lubang + -nya: ثقب، حفرة."
+          en: "Words: gotong = gotong royong = working together; janji = promise; lubangnya = lubang + -nya: hole."
+      - speaker: Kak Reza
+        text: "Tolong-menolong. Keren, ya, budaya kayak gitu."
+        ar_eg: "التعاون. دي ثقافة حلوة."
+        ar: "التعاون. إنها ثقافة جميلة."
+        en: "Helping each other. That's a fine tradition."
+        note:
+          ar_eg: "كلمات: budaya = ثقافة؛ kayak = زي، كأن."
+          ar: "مفردات: budaya = ثقافة؛ kayak = مثل."
+          en: "Words: budaya = culture; kayak = like, as if."
   - kind: word_spotlight
     title: Bolak-balik, tolong-menolong
     lines:
@@ -58,7 +138,15 @@ segments:
           ar_eg: "تكرار بتغيير الصوت أو بكلمتين عكس بعض بيدي معنى الحركة المتكررة."
           ar: "التكرار بتغيير الصوت أو بكلمتين متضادتين يفيد الحركة المتكررة."
           en: "Doubling with a sound change, or with two opposites, shows repeated movement."
-      - {speaker: Kak Reza, text: "Tolong-menolong, pukul-memukul, kirim-mengirim. Artinya saling.", ar_eg: "يساعدوا بعض، يضربوا بعض، يبعتوا لبعض. معناها «لبعض».", ar: "يتعاونون، يتضاربون، يتراسلون. أي «بعضهم بعضًا».", en: "Help each other, hit each other, send each other. It means 'each other'."}
+      - speaker: Kak Reza
+        text: "Tolong-menolong, pukul-memukul, kirim-mengirim. Artinya saling."
+        ar_eg: "يساعدوا بعض، يضربوا بعض، يبعتوا لبعض. معناها «لبعض»."
+        ar: "يتعاونون، يتضاربون، يتراسلون. أي «بعضهم بعضًا»."
+        en: "Help each other, hit each other, send each other. It means 'each other'."
+        note:
+          ar_eg: "كلمات: kirim-mengirim = يبعتوا لبعض."
+          ar: "مفردات: kirim-mengirim = يتبادلون الإرسال."
+          en: "Words: kirim-mengirim = send each other."
       - {speaker: Kak Tiara, text: "Pepohonan, rerumputan, dedaunan. Artinya banyak dan bermacam-macam.", ar_eg: "شجر كتير، حشايش، أوراق شجر. معناها كتير ومتنوع.", ar: "أشجار، أعشاب، أوراق. أي كثرة وتنوع.", en: "Trees, grasses, leaves. It means many and varied."}
       - {speaker: Kak Reza, text: "Sebaik-baiknya, secepat-cepatnya, setinggi-tingginya. Artinya sebisa mungkin.", ar_eg: "على أحسن وجه، في أسرع وقت، لأعلى حد. معناها «على قد ما تقدر».", ar: "على أكمل وجه، بأسرع ما يمكن، إلى أعلى حد. أي قدر الإمكان.", en: "As well as possible, as fast as possible, as high as possible."}
       - {speaker: Kak Tiara, text: "Redaksi yth., dengan hormat, atas perhatiannya, hormat kami.", ar_eg: "حضرات التحرير المحترمين، مع الاحترام، شاكرين اهتمامكم، مع خالص الاحترام.", ar: "هيئة التحرير المحترمة، مع الاحترام، شكرًا على اهتمامكم، مع فائق الاحترام.", en: "Dear Editor, respectfully, for your attention, yours faithfully."}
@@ -68,9 +156,9 @@ segments:
         ar: "في مجموعة الواتساب الكلام مختلف تمامًا: الطريق كله حفر! متى سيصلحونه؟"
         en: "In the residents' WhatsApp group it's different: The road's full of holes! When are they fixing it?"
         note:
-          ar_eg: "للجرنال: Kami mohon... diperbaiki. للجيران: Kapan dibenerin, sih? نفس الطلب، لغتين."
-          ar: "للصحيفة: Kami mohon... diperbaiki. وللجيران: Kapan dibenerin, sih? الطلب نفسه بلغتين."
-          en: "To the paper: Kami mohon... diperbaiki. To neighbours: Kapan dibenerin, sih? Same request, two registers."
+          ar_eg: "للجرنال: Kami mohon... diperbaiki. للجيران: Kapan dibenerin, sih? نفس الطلب، لغتين. كلمات: grup = جروب، مجموعة."
+          ar: "للصحيفة: Kami mohon... diperbaiki. وللجيران: Kapan dibenerin, sih? الطلب نفسه بلغتين. مفردات: grup = مجموعة."
+          en: "To the paper: Kami mohon... diperbaiki. To neighbours: Kapan dibenerin, sih? Same request, two registers. Words: grup = group."
   - kind: recap
     title: Ulangi, ya!
     lines:

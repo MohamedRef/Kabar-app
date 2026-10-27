@@ -369,7 +369,12 @@ impl Check<'_> {
     fn new_words(&mut self, v: Option<&Value>) {
         for (i, w) in v.and_then(Value::as_array).into_iter().flatten().enumerate() {
             let at = format!("new_words[{i}]");
-            self.localized(&at, Some(w), &["word"], &["pos", "arabic", "bridge"]);
+            self.localized(
+                &at,
+                Some(w),
+                &["word"],
+                &["pos", "arabic", "bridge", "false_friend", "same_as_id"],
+            );
             if w.get("arabic").is_some() {
                 self.arabic(&format!("{at}.arabic"), w.get("arabic"));
             } else if w.get("bridge").is_some() {
@@ -793,7 +798,7 @@ pub fn check_lesson(file: &str, stem: &str, dir: &str, v: &Value, index: &Index,
     c.within(&lesson.kind, "new_words", words.len(), &caps.new_words);
     for (i, w) in words.iter().enumerate() {
         let at = format!("new_words[{i}]");
-        c.localized(&at, Some(w), &["word"], &["pos", "arabic", "bridge"]);
+        c.localized(&at, Some(w), &["word"], &["pos", "arabic", "bridge", "false_friend", "same_as_id"]);
         if w.get("arabic").is_some() {
             c.arabic(&format!("{at}.arabic"), w.get("arabic"));
         }

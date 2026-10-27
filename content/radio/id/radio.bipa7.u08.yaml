@@ -19,13 +19,25 @@ segments:
     title: Pasar di Jayapura
     lines:
       - {speaker: Kak Tiara, text: "Selamat pagi dari Jayapura, di Teluk Humboldt! Ini Kabar Radio. Aku Tiara.", ar_eg: "صباح الخير من جايابورا، على خليج هومبولت! ده كبار راديو. أنا تيارا.", ar: "صباح الخير من جايابورا على خليج هومبولت! هذا كبار راديو. أنا تيارا.", en: "Good morning from Jayapura, on Humboldt Bay! This is Kabar Radio. I'm Tiara."}
-      - {speaker: Kak Reza, text: "Aku Reza. Tadi aku beli pinang sama sagu di pasar, terus bayarnya tinggal scan kode QR.", ar_eg: "أنا رضا. اشتريت من شوية جوز التنبول وساجو من السوق، ودفعت بإني عملت سكان لكود QR.", ar: "أنا رضا. اشتريت قبل قليل جوز الأريكا والساغو من السوق، ودفعت بمسح رمز QR.", en: "I'm Reza. I just bought betel nut and sago at the market, then paid by scanning a QR code.", note: {ar_eg: "في الكلام: scan بدل memindai، وtinggal = بس/كل اللي عليك.", ar: "في الكلام: scan بدل memindai، وtinggal = ما عليك إلا.", en: "In speech: scan for memindai; tinggal = all you do is."}}
+      - speaker: Kak Reza
+        text: "Aku Reza. Tadi aku beli pinang sama sagu di pasar, terus bayarnya tinggal scan kode QR."
+        ar_eg: "أنا رضا. اشتريت من شوية جوز التنبول وساجو من السوق، ودفعت بإني عملت سكان لكود QR."
+        ar: "أنا رضا. اشتريت قبل قليل جوز الأريكا والساغو من السوق، ودفعت بمسح رمز QR."
+        en: "I'm Reza. I just bought betel nut and sago at the market, then paid by scanning a QR code."
+        note:
+          ar_eg: "في الكلام: scan بدل memindai، وtinggal = بس/كل اللي عليك. كلمات: kode = كود، رمز."
+          ar: "في الكلام: scan بدل memindai، وtinggal = ما عليك إلا. مفردات: kode = رمز، شيفرة."
+          en: "In speech: scan for memindai; tinggal = all you do is. Words: kode = code."
       - {speaker: Kak Tiara, text: "Itu QRIS, standar kode QR nasional. Pedagang kecil aja pakai, lho.", ar_eg: "ده QRIS، كود QR الموحد على مستوى الدولة. وحتى البياعين الصغيرين بيستعملوه.", ar: "هذا QRIS، المعيار الوطني لرموز QR، ويستخدمه حتى صغار التجار.", en: "That's QRIS, the national QR standard. Even small traders use it."}
       - speaker: Kak Reza
         text: "Hari ini kita jelasin tren ekonomi, terus belajar konjungsi antarkalimat biar paragrafnya padu."
         ar_eg: "النهارده هنشرح اتجاهات الاقتصاد ونتعلم أدوات الربط بين الجمل عشان الفقرة تبقى مترابطة."
         ar: "اليوم نشرح الاتجاهات الاقتصادية ونتعلم أدوات الربط بين الجمل لتتماسك الفقرة."
         en: "Today we explain economic trends and learn sentence connectors for a coherent paragraph."
+        note:
+          ar_eg: "كلمات: biar = عشان، علشان؛ ekonomi = اقتصاد."
+          ar: "مفردات: biar = لكي؛ ekonomi = اقتصاد."
+          en: "Words: biar = so that; ekonomi = economy, economics."
       - {speaker: Kak Tiara, text: "Mohamed, di Kairo kamu bayar pakai cash atau HP?", ar_eg: "يا محمد، في القاهرة بتدفع كاش ولا بالموبايل؟", ar: "يا محمد، في القاهرة تدفع نقدًا أم بالهاتف؟", en: "Mohamed, in Cairo do you pay cash or by phone?"}
   - kind: dialogue
     title: Wawancara pengusaha
@@ -39,14 +51,70 @@ segments:
           ar_eg: "شخصية تمثيلية. Mama في بابوا لقب احترام للست الكبيرة."
           ar: "شخصية تمثيلية. Mama في بابوا لقب احترام للمرأة الكبيرة."
           en: "A role-play figure. In Papua, Mama is a respectful title for an older woman."
-      - {speaker: Kak Tiara, text: "Mama, bagaimana usaha rumput laut Mama dimulai?", ar_eg: "يا ماما، مشروع الطحالب بتاعك بدأ إزاي؟", ar: "يا ماما، كيف بدأ مشروع الأعشاب البحرية؟", en: "Mama, how did your seaweed business start?"}
-      - {speaker: Kak Reza, text: "Awalnya saya hanya menjual di pasar. Selain itu, saya juga membuat keripik dari rumput laut.", ar_eg: "في الأول كنت ببيع في السوق بس. وغير كده، كنت بعمل كمان شيبسي من الطحالب.", ar: "في البداية كنت أبيع في السوق فقط، وكنت أصنع أيضًا رقائق من الأعشاب البحرية.", en: "At first I only sold at the market. Besides that, I also made seaweed crisps."}
-      - {speaker: Kak Reza, text: "Kemudian, saya bergabung dengan koperasi. Oleh karena itu, saya bisa mendapat pinjaman modal.", ar_eg: "بعدين، دخلت جمعية تعاونية. وعشان كده، قدرت آخد قرض رأس مال.", ar: "ثم انضممت إلى تعاونية، ولذلك حصلت على قرض لرأس المال.", en: "Then I joined a cooperative. Because of that, I could get a start-up loan."}
+      - speaker: Kak Tiara
+        text: "Mama, bagaimana usaha rumput laut Mama dimulai?"
+        ar_eg: "يا ماما، مشروع الطحالب بتاعك بدأ إزاي؟"
+        ar: "يا ماما، كيف بدأ مشروع الأعشاب البحرية؟"
+        en: "Mama, how did your seaweed business start?"
+        note:
+          ar_eg: "كلمات: usaha = بيزنس، مشروع؛ مجهود؛ dimulai = يبدأ."
+          ar: "مفردات: usaha = عمل تجاري، مشروع؛ جهد؛ dimulai = يبدأ، يُستهَلّ."
+          en: "Words: usaha = business; effort; dimulai = to start, begin."
+      - speaker: Kak Reza
+        text: "Awalnya saya hanya menjual di pasar. Selain itu, saya juga membuat keripik dari rumput laut."
+        ar_eg: "في الأول كنت ببيع في السوق بس. وغير كده، كنت بعمل كمان شيبسي من الطحالب."
+        ar: "في البداية كنت أبيع في السوق فقط، وكنت أصنع أيضًا رقائق من الأعشاب البحرية."
+        en: "At first I only sold at the market. Besides that, I also made seaweed crisps."
+        note:
+          ar_eg: "كلمات: keripik = شيبسي، رقايق مقرمشة؛ menjual = يبيع."
+          ar: "مفردات: keripik = رقائق مقرمشة؛ menjual = يبيع."
+          en: "Words: keripik = chips, crisps; menjual = to sell."
+      - speaker: Kak Reza
+        text: "Kemudian, saya bergabung dengan koperasi. Oleh karena itu, saya bisa mendapat pinjaman modal."
+        ar_eg: "بعدين، دخلت جمعية تعاونية. وعشان كده، قدرت آخد قرض رأس مال."
+        ar: "ثم انضممت إلى تعاونية، ولذلك حصلت على قرض لرأس المال."
+        en: "Then I joined a cooperative. Because of that, I could get a start-up loan."
+        note:
+          ar_eg: "كلمات: bergabung = ينضم؛ mendapat = ياخد، يحصل على."
+          ar: "مفردات: bergabung = ينضمّ؛ mendapat = يحصل على، ينال."
+          en: "Words: bergabung = to join; mendapat = to get, to receive."
       - {speaker: Kak Tiara, text: "Apakah penjualannya meningkat?", ar_eg: "المبيعات زادت؟", ar: "هل ازدادت المبيعات؟", en: "Did sales go up?"}
-      - {speaker: Kak Reza, text: "Ya. Akan tetapi, harga bahan bakar naik tahun lalu. Akibatnya, biaya pengiriman juga naik.", ar_eg: "أيوه. بس أسعار الوقود زادت السنة اللي فاتت. والنتيجة، تكلفة الشحن كمان زادت.", ar: "نعم. غير أن أسعار الوقود ارتفعت العام الماضي، فارتفعت تكلفة الشحن أيضًا.", en: "Yes. However, fuel prices rose last year. As a result, shipping costs rose too."}
-      - {speaker: Kak Tiara, text: "Itu inflasi yang dirasakan langsung oleh pengusaha kecil.", ar_eg: "ده التضخم اللي أصحاب المشاريع الصغيرة بيحسوه على طول.", ar: "هذا هو التضخم الذي يلمسه صغار المنتجين مباشرة.", en: "That's inflation felt directly by small businesses."}
-      - {speaker: Kak Reza, text: "Betul. Meskipun demikian, sekarang pembeli bisa membayar dengan QRIS. Dengan begitu, transaksi lebih cepat.", ar_eg: "صح. ومع كده، دلوقتي المشترين يقدروا يدفعوا بـQRIS. وبكده، المعاملات بقت أسرع.", ar: "صحيح. ومع ذلك صار المشترون يدفعون عبر QRIS، فأصبحت المعاملات أسرع.", en: "Right. Even so, buyers can now pay with QRIS. That way, transactions are faster."}
-      - {speaker: Kak Tiara, text: "Apa rencana Mama berikutnya?", ar_eg: "إيه خطتك الجاية يا ماما؟", ar: "ما خطتك التالية يا ماما؟", en: "What's your next plan, Mama?"}
+      - speaker: Kak Reza
+        text: "Ya. Akan tetapi, harga bahan bakar naik tahun lalu. Akibatnya, biaya pengiriman juga naik."
+        ar_eg: "أيوه. بس أسعار الوقود زادت السنة اللي فاتت. والنتيجة، تكلفة الشحن كمان زادت."
+        ar: "نعم. غير أن أسعار الوقود ارتفعت العام الماضي، فارتفعت تكلفة الشحن أيضًا."
+        en: "Yes. However, fuel prices rose last year. As a result, shipping costs rose too."
+        note:
+          ar_eg: "كلمات: bakar = يحرق؛ bahan bakar = وقود؛ pengiriman = شحن، توصيل."
+          ar: "مفردات: bakar = يحرق؛ bahan bakar = وقود؛ pengiriman = شحن، إرسال."
+          en: "Words: bakar = burn; bahan bakar = fuel; pengiriman = shipping, delivery."
+      - speaker: Kak Tiara
+        text: "Itu inflasi yang dirasakan langsung oleh pengusaha kecil."
+        ar_eg: "ده التضخم اللي أصحاب المشاريع الصغيرة بيحسوه على طول."
+        ar: "هذا هو التضخم الذي يلمسه صغار المنتجين مباشرة."
+        en: "That's inflation felt directly by small businesses."
+        note:
+          ar_eg: "كلمات: dirasakan = اتحس بيه، بيتحس."
+          ar: "مفردات: dirasakan = يُحَسّ، يُشعَر به."
+          en: "Words: dirasakan = to be felt."
+      - speaker: Kak Reza
+        text: "Betul. Meskipun demikian, sekarang pembeli bisa membayar dengan QRIS. Dengan begitu, transaksi lebih cepat."
+        ar_eg: "صح. ومع كده، دلوقتي المشترين يقدروا يدفعوا بـQRIS. وبكده، المعاملات بقت أسرع."
+        ar: "صحيح. ومع ذلك صار المشترون يدفعون عبر QRIS، فأصبحت المعاملات أسرع."
+        en: "Right. Even so, buyers can now pay with QRIS. That way, transactions are faster."
+        note:
+          ar_eg: "كلمات: pembeli = زبون، مشتري."
+          ar: "مفردات: pembeli = مشترٍ، زبون."
+          en: "Words: pembeli = buyer, customer."
+      - speaker: Kak Tiara
+        text: "Apa rencana Mama berikutnya?"
+        ar_eg: "إيه خطتك الجاية يا ماما؟"
+        ar: "ما خطتك التالية يا ماما؟"
+        en: "What's your next plan, Mama?"
+        note:
+          ar_eg: "كلمات: berikutnya = الجاي، اللي بعده."
+          ar: "مفردات: berikutnya = التالي."
+          en: "Words: berikutnya = next, following."
       - {speaker: Kak Reza, text: "Saya ingin menjual keripik ke Jakarta. Pada akhirnya, saya ingin mempekerjakan lebih banyak mama di kampung.", ar_eg: "عايزة أبيع الشيبسي في جاكرتا. وفي الآخر، عايزة أشغّل ستات أكتر من القرية.", ar: "أريد بيع الرقائق في جاكرتا، وأريد في النهاية توظيف مزيد من نساء القرية.", en: "I want to sell the crisps in Jakarta. In the end, I want to employ more mamas from the village."}
   - kind: word_spotlight
     title: Konjungsi antarkalimat
