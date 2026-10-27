@@ -328,3 +328,14 @@ fn spread_handles_clusters_shared_spots_and_edges() {
     }
     assert!(dist(a, b) >= 10.0 - 1e-3, "{a:?} {b:?}");
 }
+
+#[test]
+fn placement_can_start_inside_a_level() {
+    let c = parse_curriculum(BIPA).unwrap();
+    let unit = c.levels.last().unwrap().units.last().unwrap();
+    let p = Progress::new(&c, &set(&[])).start_at(&c, &unit.id);
+    assert_eq!(p.current(), Some(unit.lessons[0].id.as_str()));
+    // An unknown unit changes nothing.
+    let p = Progress::new(&c, &set(&[])).start_at(&c, "bipa9.u01");
+    assert_eq!(p.current(), Some(c.levels[0].units[0].lessons[0].id.as_str()));
+}

@@ -22,6 +22,7 @@ fn review(id: &str, card: &str, at_ms: u64, rating: Rating, duration_ms: u32) ->
         rating,
         duration_ms,
         mode: ReviewMode::Classic,
+        evidence: Default::default(),
     }
 }
 
@@ -45,6 +46,21 @@ fn day_totals_take_the_larger_of_both_logs() {
     assert_eq!(t[&today], DayTotal { minutes: 5, reviews: 4, studied: true });
     assert_eq!(t[&today.add_days(-1)], DayTotal { minutes: 0, reviews: 0, studied: true });
     assert_eq!(t[&today.add_days(-2)], DayTotal { minutes: 2, reviews: 1, studied: true });
+}
+
+#[test]
+fn evidence_is_not_counted_as_reviews() {
+    use kabar_protocol::srs::Evidence;
+    let today = d(2026, 10, 26);
+    let s = Scheduler::default();
+    let mut lookup = review("l", "c", at(today), Rating::Again, 0);
+    lookup.evidence = Evidence::Lookup;
+    let log = vec![review("r1", "c", at(today.add_days(-9)), Rating::Good, 4000), lookup];
+    let t = day_totals(&[], &log, OFFSET);
+    assert!(!t.contains_key(&today), "{t:?}");
+    let r = retention(&s, &log, at(today) + 1, 30);
+    assert_eq!((r.mature, r.young), Default::default(), "a lookup isn't a failed review");
+    assert_eq!(s.replay("c", &log).lapses, 1, "but it does lapse the card");
 }
 
 #[test]
@@ -149,6 +165,11 @@ fn retention_splits_mature_and_young() {
     let all = retention(&sched, &log, now, 400);
     assert!(all.mature.total >= 1 && all.young.total >= 2);
     assert_eq!(retention(&sched, &[], now, 30).all().share(), None);
+
+    // One pass gives the same windows and the same card states.
+    let (states, windows) = replay_with_retention(&sched, &log, now, &[7, 30, 400]);
+    assert_eq!(windows, [r7, retention(&sched, &log, now, 30), all]);
+    assert_eq!(states, sched.replay_all(&log));
 }
 
 #[test]
