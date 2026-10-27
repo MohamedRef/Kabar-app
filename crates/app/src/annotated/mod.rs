@@ -26,6 +26,48 @@ use crate::{Db, Screen, Ui};
 
 pub const CSS: &str = include_str!("../../assets/annotated.css");
 
+/// What every annotated sentence shares: whether the glossary is parsed yet
+/// (it is ~100 ms of work, done off the UI thread at start-up) and the words
+/// the learner taught Kabar (read once, refreshed when they change).
+#[derive(Clone, Copy)]
+pub struct Words {
+    ready: Signal<bool>,
+    taught: Signal<Rc<PersonalDictionary>>,
+}
+
+impl Words {
+    /// Re-reads the taught words after Teach saves or sync brings new ones.
+    pub fn refresh(mut self, db: &Db) {
+        self.taught.set(Rc::new(taught(db)));
+    }
+}
+
+fn taught(db: &Db) -> PersonalDictionary {
+    PersonalDictionary::new(db.0.borrow().taught_entries().unwrap_or_default())
+}
+
+/// Provides [`Words`] to the app and parses the glossary in the background;
+/// sentences show plain text until it is ready.
+pub fn use_words(db: &Db) -> Words {
+    let words = use_context_provider(|| Words {
+        ready: Signal::new(false),
+        taught: Signal::new(Rc::new(taught(db))),
+    });
+    use_hook(move || {
+        let (tx, rx) = futures_channel::oneshot::channel::<()>();
+        std::thread::spawn(move || {
+            crate::reader::glossary();
+            let _ = tx.send(());
+        });
+        spawn(async move {
+            let _ = rx.await;
+            let mut ready = words.ready;
+            ready.set(true);
+        });
+    });
+    words
+}
+
 /// One run of the sentence: text between words, or a word (token index).
 #[derive(Clone, Debug, PartialEq)]
 struct Piece {
@@ -84,10 +126,12 @@ fn pieces(doc: &ReadDoc, marked: &[String]) -> Vec<Piece> {
 }
 
 /// Analyzes `text` with the Reader's engine and glossary, words the learner
-/// taught Kabar on top. Once per text: callers memoize it.
-fn analyze(db: &Db, text: &str) -> Rc<ReadDoc> {
-    let taught = PersonalDictionary::new(db.0.borrow().taught_entries().unwrap_or_default());
-    Rc::new(ReadDoc::from_text(text, Lexicon { glossary: crate::reader::glossary(), taught: &taught }))
+/// taught Kabar on top, and splits it into runs. Once per text: callers
+/// memoize it.
+fn analyze(text: &str, taught: &PersonalDictionary, marked: &[String]) -> (Rc<ReadDoc>, Rc<Vec<Piece>>) {
+    let doc = ReadDoc::from_text(text, Lexicon { glossary: crate::reader::glossary(), taught });
+    let parts = pieces(&doc, marked);
+    (Rc::new(doc), Rc::new(parts))
 }
 
 /// A target-language sentence (or word) with its layers.
@@ -112,31 +156,42 @@ pub fn Annotated(
     #[props(default)] marked: Vec<String>,
 ) -> Element {
     let ui = use_context::<Ui>();
-    let db = use_context::<Db>();
+    let words = use_context::<Words>();
     let mut open = use_signal(|| None::<usize>);
     let mut revealed = use_signal(|| false);
-    let doc = use_memo(use_reactive!(|text| (!plain).then(|| analyze(&db, &text))));
+    let analyzed = use_memo(use_reactive!(|text, marked| {
+        let ready = !plain && *words.ready.read();
+        ready.then(|| analyze(&text, &words.taught.read(), &marked))
+    }));
 
-    let lang_class = if tag == "jv" { "jv" } else { "id" };
-    let Some(doc) = doc() else {
+    if plain {
         return rsx! {
             bdi { class: "latin annot plain {class}", lang: tag, dir: "ltr", "{text}" }
         };
-    };
+    }
+    let lang_class = if tag == "jv" { "jv" } else { "id" };
     let translation = ui.settings.read().translation;
     let meaning = meaning.filter(|m| !m.trim().is_empty() && !inline && translation != TranslationMode::Off);
-    let parts = pieces(&doc, &marked);
     let kind = if inline { "annot inline" } else { "annot" };
+    // Until the glossary is parsed (a moment after start-up) the words are
+    // plain text; everything else already shows.
+    let (doc, parts) = match analyzed() {
+        Some((doc, parts)) => (Some(doc), parts),
+        None => (None, Rc::new(vec![Piece { text: text.clone(), word: None, bridge: false, marked: false }])),
+    };
 
     rsx! {
         span { class: "{kind} {lang_class}",
             bdi { class: "latin annot-text {class}", lang: tag, dir: "ltr",
-                for (k , p) in parts.into_iter().enumerate() {
+                for (k , p) in parts.iter().cloned().enumerate() {
                     match p.word {
                         Some(i) => rsx! {
                             span {
                                 key: "{k}",
-                                class: format!("{}{}", word_class(open() == Some(i), p.bridge), if p.marked { " target" } else { "" }),
+                                class: "annot-w",
+                                class: if open() == Some(i) { "on" },
+                                class: if p.bridge { "bridge-word" },
+                                class: if p.marked { "target" },
                                 role: "button",
                                 tabindex: "0",
                                 // Annotated text often sits inside a button (examples, dialogue lines).
@@ -187,19 +242,10 @@ pub fn Annotated(
                     span { class: "annot-tr", Rich { text: m, target: tag } }
                 }
             }
-            if let Some(i) = open() {
-                WordSheet { doc: doc.clone(), i, tag, on_close: move |_| open.set(None) }
+            if let (Some(doc), Some(i)) = (doc, open()) {
+                WordSheet { doc, i, tag, on_close: move |_| open.set(None) }
             }
         }
-    }
-}
-
-fn word_class(open: bool, bridge: bool) -> &'static str {
-    match (open, bridge) {
-        (true, true) => "annot-w bridge-word on",
-        (true, false) => "annot-w on",
-        (false, true) => "annot-w bridge-word",
-        (false, false) => "annot-w",
     }
 }
 
