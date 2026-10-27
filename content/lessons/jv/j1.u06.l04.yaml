@@ -11,27 +11,27 @@ slides:
     body:
       ar_eg: |
         mlebu = يدخل، metu = يخرج: Mlebu, Mas! = اتفضّل ادخل يا ماس!
-        munggah = يطلع لفوق، mudhun = ينزل (ومن العربية كمان): Mudhun ndek kene = هنزل هنا.
+        munggah = يطلع لفوق، mudhun = ينزل (ومن العربية كمان): Mudhun neng kene = هنزل هنا.
         cedhak = قريب: cedhak kene = قريب من هنا.
         sisih = ناحية: sisih kiwa = الناحية الشمال.
         liwat = يعدّي من: Liwat ngarep masjid = عدّي من قدام الجامع.
         nyabrang = يعدّي الشارع: Ati-ati nyabrang! = خلّي بالك وإنت بتعدّي!
       ar: |
         mlebu = يدخل، metu = يخرج: Mlebu, Mas! = تفضّل بالدخول يا أخي!
-        munggah = يصعد، mudhun = ينزل (ومن المركبة أيضًا): Mudhun ndek kene = أنزل هنا.
+        munggah = يصعد، mudhun = ينزل (ومن المركبة أيضًا): Mudhun neng kene = أنزل هنا.
         cedhak = قريب: cedhak kene = قريب من هنا.
         sisih = جهة، ناحية: sisih kiwa = الجهة اليسرى.
         liwat = يمرّ من: Liwat ngarep masjid = مُرّ من أمام المسجد.
         nyabrang = يعبر الطريق: Ati-ati nyabrang! = انتبه وأنت تعبر!
       en: |
         mlebu = go in, metu = go out: Mlebu, Mas! = Come in, Mas!
-        munggah = go up, mudhun = go down, get off: Mudhun ndek kene = I'll get off here.
+        munggah = go up, mudhun = go down, get off: Mudhun neng kene = I'll get off here.
         cedhak = near: cedhak kene = near here.
         sisih = side: sisih kiwa = the left side.
         liwat = go via, pass: Liwat ngarep masjid = Go past the front of the mosque.
         nyabrang = cross the road: Ati-ati nyabrang! = Careful crossing!
     examples:
-      - text: Mudhun ndek kene, Pak.
+      - text: Mudhun neng kene, Pak.
         ar_eg: هنزل هنا يا عم.
         ar: سأنزل هنا يا سيّدي.
         en: I'll get off here, sir.
@@ -86,8 +86,8 @@ exercises:
     words: [cedhak, nyabrang, sisih, liwat]
   - id: e03
     type: listen
-    text: Mudhun ndek kene, Pak.
-    options: ['Mudhun ndek kene, Pak.', 'Munggah ndek kene, Pak.', 'Mlebu ndek kene, Pak.']
+    text: Mudhun neng kene, Pak.
+    options: ['Mudhun neng kene, Pak.', 'Munggah neng kene, Pak.', 'Mlebu neng kene, Pak.']
     answer: 0
     meaning:
       ar_eg: هنزل هنا يا عم.
@@ -134,7 +134,7 @@ exercises:
       ar_eg: «الجامع في الناحية الشمال» بالجاوي؟
       ar: كيف تقول «المسجد في الجهة اليسرى» بالجاوية؟
       en: '"The mosque is on the left side" in Javanese?'
-    options: [Masjide nang sisih kiwa., Masjide liwat kiwa., Masjide mlebu kiwa.]
+    options: [Masjide neng sisih kiwa., Masjide liwat kiwa., Masjide mlebu kiwa.]
     answer: 0
     explain:
       ar_eg: 'sisih = ناحية: sisih kiwa = الناحية الشمال.'
@@ -153,7 +153,7 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Ayo mlebu, Mas, ndek kene adem.
+    source_text: Ayo mlebu, Mas, neng kene adem.
     answers_meaning:
       ar_eg: [اتفضّل ادخل يا ماس، هنا ساقع, يلا ادخل يا ماس، الجو هنا لطيف]
       ar: [تفضّل بالدخول يا أخي، فالمكان هنا بارد, هيّا ادخل يا أخي، الجوّ هنا منعش]
@@ -170,17 +170,17 @@ exercises:
 dialogue:
   lines:
     - speaker: Mohamed
-      text: Sepurane, Pak. Aku bingung. Kebun Binatang Suroboyo ngendi?
-      ar_eg: معلش يا عم. أنا متلخبط. جنينة حيوانات سورابايا فين؟
-      ar: عذرًا يا سيّدي. أنا محتار. أين حديقة حيوان سورابايا؟
-      en: Excuse me, sir. I'm confused. Where's Surabaya Zoo?
+      text: Ngapura, Pak. Aku bingung. Gembira Loka ngendi?
+      ar_eg: معلش يا عم. أنا متلخبط. جنينة حيوانات جمبيرا لوكا فين؟
+      ar: عذرًا يا سيّدي. أنا محتار. أين حديقة حيوان جمبيرا لوكا؟
+      en: Excuse me, sir. I'm confused. Where's Gembira Loka Zoo?
     - speaker: Bapak
       text: Cedhak, Mas. Liwat prapatan kae, terus ngiwa.
       ar_eg: قريبة يا ماس. عدّي من التقاطع اللي هناك، وبعدين شمال.
       ar: قريبة يا أخي. مُرّ من ذلك التقاطع، ثم يسارًا.
       en: It's close, Mas. Go past that crossroads, then left.
     - speaker: Mohamed
-      text: Lawange nang sisih endi?
+      text: Lawange neng sisih endi?
       ar_eg: البوابة في أنهي ناحية؟
       ar: في أيّ جهة البوّابة؟
       en: Which side is the gate on?
