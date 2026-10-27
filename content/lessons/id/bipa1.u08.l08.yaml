@@ -43,14 +43,14 @@ slides:
 exercises:
   - id: e01
     type: multiple_choice
-    question: Tebak! Dia guru. Orangnya sabar, dan dia pakai kacamata. Siapa dia?
+    question: Tebak! Rina bilang dia guru. Orangnya sabar, dan dia pakai kacamata. Siapa dia?
     options: [Ni Luh, Pak Irwan, Raka]
     answer: 1
     explain:
-      ar_eg: مدرس صبور ولابس نضارة، يبقى الأستاذ إروان.
-      ar: 'معلم صبور يلبس نظارة: إنه الأستاذ إروان.'
-      en: 'A patient teacher in glasses: Pak Irwan.'
-    words: [tebak, sabar, kacamata, guru]
+      ar_eg: Rina bilang = رينا بتقول. مدرس صبور ولابس نضارة، يبقى الأستاذ إروان.
+      ar: 'Rina bilang = تقول رينا. معلم صبور يلبس نظارة: إنه الأستاذ إروان.'
+      en: 'Rina bilang = Rina says. A patient teacher in glasses: Pak Irwan.'
+    words: [tebak, bilang, sabar, kacamata, guru]
   - id: e02
     type: listen
     text: Salah, dia bukan Raka.
@@ -63,17 +63,17 @@ exercises:
     words: [salah, bukan]
   - id: e03
     type: fill_blank
-    sentence: Raka lucu, tapi dia ___ sabar.
+    sentence: Kata Rina, Raka lucu, tapi dia ___ sabar.
     meaning:
-      ar_eg: راكا دمه خفيف، بس مش صبور.
-      ar: راكا ظريف، لكنه ليس صبورًا.
-      en: Raka is funny, but he isn't patient.
+      ar_eg: على حسب كلام رينا، راكا دمه خفيف، بس مش صبور.
+      ar: على حدّ قول رينا، راكا ظريف، لكنه ليس صبورًا.
+      en: According to Rina, Raka is funny, but he isn't patient.
     answers: [tidak, nggak, gak]
     explain:
       ar_eg: sabar صفة، يبقى tidak.
       ar: sabar صفة، فتُنفى بـ tidak.
       en: sabar is an adjective → tidak.
-    words: [tidak, sabar, lucu]
+    words: [kata, tidak, sabar, lucu]
   - id: e04
     type: fill_blank
     sentence: Salah! Dia ___ guru. Dia dokter.
@@ -90,44 +90,52 @@ exercises:
   - id: e05
     type: build_sentence
     source:
-      ar_eg: هو إنسان صبور وشاطر.
-      ar: إنه شخص صبور وذكي.
-      en: He's a patient and smart person.
-    answer: Orangnya sabar dan pintar.
-    alternatives: [Orangnya pintar dan sabar.]
+      ar_eg: رينا بتقول إنه إنسان صبور وشاطر.
+      ar: تقول رينا إنه شخص صبور وذكي.
+      en: Rina says he's a patient and smart person.
+    answer: Kata Rina, orangnya sabar dan pintar.
+    alternatives: ['Kata Rina, orangnya pintar dan sabar.']
     distractors: [tidak, yang]
-    words: [sabar, pintar]
+    words: [kata, sabar, pintar]
   - id: e06
     type: build_sentence
     source:
-      ar_eg: هو اللي لابس نضارة.
-      ar: هو الذي يلبس نظارة.
-      en: He's the one wearing glasses.
-    answer: Dia yang pakai kacamata.
-    distractors: [mana, bukan]
-    words: [yang, pakai, kacamata]
+      ar_eg: شعر راكا عادي خالص.
+      ar: شعر راكا عادي تمامًا.
+      en: Raka's hair is just normal.
+    answer: Rambut Raka biasa saja.
+    distractors: [panjang, yang]
+    explain:
+      ar_eg: biasa = عادي، وbiasa saja (في الشارع biasa aja) = عادي خالص، مفيهوش حاجة مميزة.
+      ar: biasa = عادي، وbiasa saja (في العامية biasa aja) = عادي تمامًا.
+      en: biasa = normal; biasa saja (street biasa aja) = nothing special.
+    words: [biasa, rambut]
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: أنهي واحد الأستاذ إروان؟
-      ar: أيّهم الأستاذ إروان؟
-      en: Which one is Pak Irwan?
-    answers: ['Pak Irwan yang mana?', Pak Irwan yang mana, 'Yang mana Pak Irwan?', Yang mana Pak Irwan]
-    words: [yang mana]
+      ar_eg: رينا بتقول إنه مدرس.
+      ar: تقول رينا إنه معلم.
+      en: Rina says he's a teacher.
+    answers: ['Kata Rina, dia guru.', 'Kata Rina dia guru.', 'Rina bilang dia guru.', 'Rina bilang, dia guru.', 'Kata Rina, dia seorang guru.', 'Rina bilang dia seorang guru.']
+    explain:
+      ar_eg: 'kata Rina = على حسب كلام رينا (أول الجملة)، وRina bilang = رينا بتقول: الاتنين صح، وbilang أخف وأكتر في الكلام.'
+      ar: 'kata Rina = على حدّ قول رينا (في أول الجملة)، وRina bilang = تقول رينا: كلاهما صحيح، وbilang أكثر في الكلام اليومي.'
+      en: 'kata Rina = according to Rina (at the start), Rina bilang = Rina says: both work, and bilang is the everyday one.'
+    words: [kata, bilang, guru]
   - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: هي مش ني لوه. شعر ني لوه طويل.
-      ar: ليست ني لوه. شعر ني لوه طويل.
-      en: She's not Ni Luh. Ni Luh's hair is long.
-    answers: [Dia bukan Ni Luh. Rambut Ni Luh panjang., Dia bukan Ni Luh. Rambut Ni Luh panjang, 'Dia bukan Ni Luh, rambut Ni Luh panjang.', Itu bukan Ni Luh. Rambut Ni Luh panjang., Bukan Ni Luh. Rambut Ni Luh panjang.]
+      ar_eg: هي مش ني لوه. شعر ني لوه طويل، مش عادي.
+      ar: ليست ني لوه. شعر ني لوه طويل، ليس عاديًّا.
+      en: She's not Ni Luh. Ni Luh's hair is long, not normal.
+    answers: ['Dia bukan Ni Luh. Rambut Ni Luh panjang, tidak biasa.', 'Dia bukan Ni Luh. Rambut Ni Luh panjang, tidak biasa', 'Dia bukan Ni Luh, rambut Ni Luh panjang, tidak biasa.', 'Itu bukan Ni Luh. Rambut Ni Luh panjang, tidak biasa.', 'Dia bukan Ni Luh. Rambut Ni Luh panjang, nggak biasa.', 'Bukan Ni Luh. Rambut Ni Luh panjang, tidak biasa.']
     explain:
-      ar_eg: Ni Luh اسم، يبقى bukan. وrambut Ni Luh = شعر ني لوه (الصاحب بعد الحاجة).
-      ar: Ni Luh اسم فيُنفى بـ bukan، وrambut Ni Luh = شعر ني لوه.
-      en: Ni Luh is a noun → bukan; rambut Ni Luh = Ni Luh's hair (owner after the thing).
-    words: [bukan, rambut, panjang]
+      ar_eg: Ni Luh اسم، يبقى bukan؛ biasa صفة، يبقى tidak biasa. وrambut Ni Luh = شعر ني لوه (الصاحب بعد الحاجة).
+      ar: Ni Luh اسم فيُنفى بـ bukan، وbiasa صفة فتُنفى بـ tidak. وrambut Ni Luh = شعر ني لوه.
+      en: Ni Luh is a noun → bukan; biasa is an adjective → tidak biasa. rambut Ni Luh = Ni Luh's hair (owner after the thing).
+    words: [bukan, biasa, rambut, panjang]
   - id: e09
     type: fill_blank
     sentence: Tebak, siapa dia? — Raka? — ___! Dia Pak Irwan.
@@ -140,12 +148,12 @@ exercises:
     words: [tebak, salah]
   - id: e10
     type: speaking
-    text: Tebak, siapa dia? Dia tinggi, rambutnya pendek, dan orangnya lucu.
+    text: Tebak, siapa dia? Rina bilang dia tinggi, rambutnya biasa, dan orangnya lucu.
     meaning:
-      ar_eg: خمّن مين ده؟ هو طويل، شعره قصير، ودمه خفيف.
-      ar: خمّن من هو؟ طويل، شعره قصير، وظريف.
-      en: Guess who? He's tall, his hair is short, and he's funny.
-    words: [tebak, tinggi, rambut, pendek, lucu]
+      ar_eg: خمّن مين ده؟ رينا بتقول إنه طويل، شعره عادي، ودمه خفيف.
+      ar: خمّن من هو؟ تقول رينا إنه طويل، شعره عادي، وظريف.
+      en: Guess who? Rina says he's tall, his hair is normal, and he's funny.
+    words: [tebak, bilang, tinggi, rambut, biasa, lucu]
 dialogue:
   title: Tebak-tebakan di Petak Sembilan
   lines:
@@ -190,6 +198,21 @@ new_words:
     ar_eg: غلط
     ar: خطأ
     en: wrong
+  - word: bilang
+    pos: verb
+    ar_eg: يقول، يقول لـ (عامي، زي «قال»)؛ الرسمي berkata
+    ar: يقول (عامّية)؛ والفصيح berkata
+    en: to say, to tell (everyday; formal berkata)
+  - word: kata
+    pos: noun
+    ar_eg: كلمة؛ kata Rina = على حسب كلام رينا
+    ar: كلمة؛ kata Rina = على حدّ قول رينا
+    en: word; kata Rina = according to Rina, Rina says
+  - word: biasa
+    pos: adjective
+    ar_eg: عادي (biasa saja، في الشارع biasa aja = عادي خالص)
+    ar: عادي (biasa saja، وفي العامية biasa aja = عادي تمامًا)
+    en: normal, usual (biasa saja, street biasa aja = nothing special)
 review:
   status: draft
   verified: false

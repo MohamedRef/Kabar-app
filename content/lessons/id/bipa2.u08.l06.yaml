@@ -75,7 +75,7 @@ exercises:
     words: [ketika, danau, tunggu]
   - id: e04
     type: listen
-    text: Jangan lupa bawa jaket, ya! Di Bedugul dingin.
+    text: Jangan lupa bawa jaket, ya! Kata berita, di Bedugul dingin.
     question:
       ar_eg: محمد لازم ياخد معاه إيه؟
       ar: ماذا يجب أن يأخذ محمد معه؟
@@ -83,10 +83,10 @@ exercises:
     options: [payung, helm, jaket]
     answer: 2
     meaning:
-      ar_eg: ما تنساش تجيب جاكت! بدوجول برد.
-      ar: لا تنسَ أن تحضر سترة! الجو بارد في بدوغول.
-      en: Don't forget to bring a jacket! It's cold in Bedugul.
-    words: [jaket, dingin, jangan, lupa]
+      ar_eg: ما تنساش تجيب جاكت! الأخبار بتقول بدوجول برد.
+      ar: لا تنسَ أن تحضر سترة! تقول الأخبار إن الجو بارد في بدوغول.
+      en: Don't forget to bring a jacket! The news says it's cold in Bedugul.
+    words: [jaket, dingin, berita, jangan, lupa]
   - id: e05
     type: match_pairs
     pairs:
@@ -143,24 +143,24 @@ exercises:
   - id: e08
     type: build_sentence
     source:
-      ar_eg: بعدين اركب الأتوبيس لبدوجول.
-      ar: ثم اركب الحافلة إلى بدوغول.
-      en: Then take the bus to Bedugul.
-    answer: Lalu, kamu naik bus ke Bedugul.
+      ar_eg: الأخبار بتقول بدوجول برد أوي.
+      ar: تقول الأخبار إن بدوغول باردة جدًا.
+      en: The news says Bedugul is very cold.
+    answer: Kata berita, Bedugul dingin sekali.
     distractors: [sambil, ketika]
-    words: [lalu]
+    words: [berita, dingin]
     explain:
-      ar_eg: Lalu = بعدين، خطوة بعد خطوة. sambil = وأنا بـ…، وketika = لما.
-      ar: Lalu = ثم، خطوة تلو خطوة. أما sambil فـ«في أثناء» وketika «عندما».
-      en: Lalu = then, the next step. sambil is "while", ketika "when".
+      ar_eg: kata berita = على حسب الأخبار (زي kata Rina). sambil = وأنا بـ…، وketika = لما.
+      ar: kata berita = بحسب الأخبار (مثل kata Rina). أما sambil فـ«في أثناء» وketika «عندما».
+      en: kata berita = according to the news (like kata Rina). sambil is "while", ketika "when".
   - id: e09
     type: dictation
-    text: Busnya bolak-balik dari Denpasar ke Bedugul.
+    text: Kata berita, besok hujan di Bedugul.
     meaning:
-      ar_eg: الأتوبيس رايح جاي من دنباسار لبدوجول.
-      ar: الحافلة تذهب وتعود بين دنباسار وبدوغول.
-      en: The bus goes back and forth between Denpasar and Bedugul.
-    words: [bolak-balik]
+      ar_eg: الأخبار بتقول بكرة هتمطر في بدوجول.
+      ar: تقول الأخبار إنها ستمطر غدًا في بدوغول.
+      en: The news says it'll rain in Bedugul tomorrow.
+    words: [berita]
   - id: e10
     type: translate
     direction: to_target
@@ -223,6 +223,11 @@ new_words:
     ar_eg: جاكت
     ar: سترة
     en: jacket
+  - word: berita
+    pos: noun
+    ar_eg: أخبار، خبر (kata berita = الأخبار بتقول)
+    ar: أخبار، خبر (kata berita = تقول الأخبار)
+    en: news (kata berita = the news says)
 review:
   status: draft
   verified: false

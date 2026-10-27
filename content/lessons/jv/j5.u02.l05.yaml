@@ -1,195 +1,236 @@
 schema: kabar.lesson/v1
 id: j5.u02.l05
 language: jv
-title: Warta cekak
+title: Kobong ing pasar
 can_do:
-  ar_eg: تقرا خبر قصير.
-  ar: أن تقرأ خبرًا قصيرًا.
-  en: Read a short news item.
+  ar_eg: 'تفهم خبر قصير عن حريقة في سوق: إيه اللي حصل، مين اتجرح، والشهود قالوا إيه.'
+  ar: 'أن تفهم خبرًا قصيرًا عن حريق في سوق: ما الذي حدث، ومن أصيب، وماذا قال الشهود.'
+  en: 'Follow a short news item about a market fire: what happened, who was hurt and what witnesses said.'
 slides:
-  - title: Banjir ing Madiun
+  - title: Pawarta
     body:
       ar_eg: |
-        خبر قصير من جرنال ماديون. اسأل نفسك تلات أسئلة: حصل إيه؟ مين عمل؟ إمتى؟
-        luber = فاض / طفح (المية زادت لحد ما طلعت برّه، زي نهر ماديون Kali Madiun في موسم المطر). kebanjiran = غرقت مية (ke-…-an = حاجة حصلتلها). diresiki = اتنضّفت (resik = نضيف).
+        pawarta = خبر (في الجرايد والراديو)، kedadeyan = حادثة، اللي حصل. kacilakan = حادثة (عربيات، طريق).
+        mbledhos = انفجر، kobong = اتحرق، ولّع. tatu = جرح، أو اتجرح.
+        ngungsi = يهرب لمكان أمان، ينزح. seksi = شاهد، اللي شاف الحادثة.
       ar: |
-        خبر قصير من جريدة في ماديون. اسأل نفسك ثلاثة أسئلة: ماذا حدث؟ من فعل؟ متى؟
-        luber = فاض (امتلأ حتى خرج الماء، كنهر ماديون Kali Madiun في موسم المطر). وkebanjiran = غمرته المياه (ke-…-an لما أصاب الشيء)، وdiresiki = نُظِّف (resik = نظيف).
+        pawarta = خبر (في الصحف والإذاعة)، kedadeyan = حادثة، واقعة. kacilakan = حادث (سير).
+        mbledhos = انفجر، kobong = احترق. tatu = جرح، أو أصيب بجرح.
+        ngungsi = نزح إلى مكان آمن. seksi = شاهد عيان.
       en: |
-        A short news item from a Madiun paper. Ask three questions: what happened? who did it? when?
-        luber = to overflow (filled until it spills out, like the Kali Madiun river in the rainy season) = Indonesian meluap. kebanjiran = got flooded (ke-…-an = something happened to it). diresiki = was cleaned (resik = clean).
-    grammar: jv.passive.written
+        pawarta = news (papers, radio); kedadeyan = incident, event. kacilakan = (traffic) accident.
+        mbledhos = explode, kobong = burn, catch fire. tatu = wound, wounded.
+        ngungsi = evacuate, take refuge. seksi = witness.
     examples:
-      - text: Dalan ing Manguharjo kebanjiran wingi sore.
-        ar_eg: الشارع في مانجوهارجو غرق مية امبارح العصر.
-        ar: غمرت المياهُ الشارعَ في مانغوهارجو عصر أمس.
-        en: The road in Manguharjo was flooded yesterday afternoon.
-      - text: Esuk iki, dalan kasebut wis diresiki dening warga.
-        ar_eg: الصبح ده، الأهالي نضّفوا الشارع المذكور خلاص.
-        ar: وفي صباح اليوم نظّف الأهالي الشارع المذكور.
-        en: This morning, the said road was cleaned up by the residents.
-      - text: Kali Madiun kerep luber yen udan gedhe.
-        ar_eg: نهر ماديون كتير بيفيض لما المطر يبقى جامد.
-        ar: كثيرًا ما يفيض نهر ماديون إذا اشتدّ المطر.
-        en: The Madiun river often overflows when it rains hard.
+      - text: Miturut pawarta, ana kedadeyan ing sawijining pasar.
+        ar_eg: حسب الخبر، فيه حادثة حصلت في سوق.
+        ar: بحسب الخبر، وقعت حادثة في أحد الأسواق.
+        en: According to the news, there was an incident at a market.
+      - text: Tabung gas mbledhos, banjur kios-kios kobong.
+        ar_eg: أنبوبة غاز انفجرت، وبعدين الأكشاك ولّعت.
+        ar: انفجرت أسطوانة غاز، ثم احترقت الأكشاك.
+        en: A gas cylinder exploded, then the stalls caught fire.
+      - text: Wong loro tatu, pedagang liyane padha ngungsi.
+        ar_eg: اتنين اتجرحوا، وباقي التجار هربوا لمكان أمان.
+        ar: أصيب شخصان، ونزح بقية التجار إلى مكان آمن.
+        en: Two people were hurt; the other traders took refuge.
 exercises:
   - id: e01
-    type: listen
-    text: Kali Madiun luber, dalan ing Manguharjo kebanjiran.
-    question:
-      ar_eg: إيه اللي حصل للشارع؟
-      ar: ماذا حدث للشارع؟
-      en: What happened to the road?
-    options: [didandani dening warga, kebanjiran, ditutup dening polisi]
-    answer: 1
-    meaning:
-      ar_eg: نهر ماديون فاض، والشارع في مانجوهارجو غرق مية.
-      ar: فاض نهر ماديون فغمرت المياه الشارع في مانغوهارجو.
-      en: The Madiun river overflowed, and the road in Manguharjo flooded.
-    words: [kebanjiran, luber]
+    type: match_pairs
+    pairs:
+      - text: pawarta
+        ar_eg: خبر
+        ar: خبر
+        en: news
+      - text: kedadeyan
+        ar_eg: حادثة، اللي حصل
+        ar: حادثة، واقعة
+        en: incident
+      - text: kacilakan
+        ar_eg: حادثة طريق
+        ar: حادث سير
+        en: accident
+      - text: kobong
+        ar_eg: اتحرق
+        ar: احترق
+        en: burn, catch fire
+    words: [pawarta, kedadeyan, kacilakan, kobong]
   - id: e02
-    type: multiple_choice
-    question: Esuk iki, dalan kasebut wis diresiki dening warga.
-    question_meaning:
-      ar_eg: مين اللي نضّف الشارع؟
-      ar: من نظّف الشارع؟
-      en: Who cleaned the road?
-    options: [warga, lurah, Pak Harjo]
-    answer: 0
-    words: [diresiki, dening]
+    type: match_pairs
+    pairs:
+      - text: mbledhos
+        ar_eg: انفجر
+        ar: انفجر
+        en: explode
+      - text: tatu
+        ar_eg: جرح
+        ar: جرح
+        en: wound, wounded
+      - text: ngungsi
+        ar_eg: يهرب لمكان أمان
+        ar: ينزح
+        en: take refuge
+      - text: seksi
+        ar_eg: شاهد
+        ar: شاهد
+        en: witness
+    words: [mbledhos, tatu, ngungsi, seksi]
   - id: e03
-    type: fill_blank
-    sentence: Dalan kasebut wis ___ dening warga.
+    type: listen
+    text: Tabung gas mbledhos, kiose kobong.
+    question:
+      ar_eg: إيه اللي حصل؟
+      ar: ماذا حدث؟
+      en: What happened?
+    options: [أنبوبة غاز انفجرت والكشك ولّع, الكشك اتقفل بدري, التاجر باع الغاز كله]
+    answer: 0
     meaning:
-      ar_eg: الأهالي نضّفوا الشارع المذكور خلاص.
-      ar: نظّف الأهالي الشارع المذكور.
-      en: The said road has been cleaned up by the residents.
-    options: [kebanjiran, kapilih, diresiki]
-    answers: [diresiki]
-    words: [diresiki, kebanjiran]
+      ar_eg: أنبوبة غاز انفجرت والكشك ولّع.
+      ar: انفجرت أسطوانة غاز فاحترق الكشك.
+      en: A gas cylinder exploded and the stall caught fire.
+    words: [mbledhos, kobong]
   - id: e04
     type: fill_blank
-    sentence: Kali Madiun ___ luber yen udan gedhe.
+    sentence: 'Ana ___ ing dalan: montor tabrakan karo truk.'
     meaning:
-      ar_eg: نهر ماديون كتير بيفيض لما المطر يبقى جامد.
-      ar: كثيرًا ما يفيض نهر ماديون إذا اشتدّ المطر.
-      en: The Madiun river often overflows when it rains hard.
-    options: [lawas, kerep, misuwur]
-    answers: [kerep]
-    words: [kerep, luber]
+      ar_eg: 'فيه ___ في الطريق: موتوسيكل خبط في تريلا.'
+      ar: 'وقع ___ في الطريق: اصطدمت دراجة نارية بشاحنة.'
+      en: 'There was an ___ on the road: a motorbike hit a truck.'
+    options: [kacilakan, seksi, pawarta]
+    answers: [kacilakan]
+    words: [kacilakan, seksi, pawarta]
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: اللي شاف الحادثة بعينه اسمه …
+      ar: من رأى الحادثة بعينه يسمّى …
+      en: Someone who saw the incident with their own eyes is a …
+    options: [tatu, seksi, pawarta]
+    answer: 1
+    explain:
+      ar_eg: seksi = شاهد. tatu = جرح، وpawarta = خبر.
+      ar: seksi = شاهد عيان؛ tatu = جرح، وpawarta = خبر.
+      en: seksi = witness; tatu = wound, pawarta = news.
+    words: [tatu, seksi, pawarta]
+  - id: e06
+    type: fill_blank
+    sentence: Warga ___ menyang balai desa amarga banjir.
+    meaning:
+      ar_eg: الأهالي ___ لدار القرية عشان الفيضان.
+      ar: ___ السكان إلى دار القرية بسبب الفيضان.
+      en: Residents ___ to the village hall because of the flood.
+    options: [ngungsi, mbledhos, kobong]
+    answers: [ngungsi]
+    words: [ngungsi, mbledhos, kobong]
+  - id: e07
+    type: multiple_choice
+    question: Sikile ___, banjur digawa menyang rumah sakit.
+    options: [ngungsi, tatu, kedadeyan]
+    answer: 1
+    explain:
+      ar_eg: 'اللي رجله اتجرحت بيروح المستشفى: tatu = اتجرح.'
+      ar: 'من جُرحت ساقه يُنقل إلى المستشفى: tatu = مجروح.'
+      en: 'Someone whose leg is hurt goes to hospital: tatu = wounded.'
+    words: [ngungsi, tatu, kedadeyan]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: نهر ماديون كتير بيفيض.
-      ar: كثيرًا ما يفيض نهر ماديون.
-      en: The Madiun river often overflows.
-    answer: Kali Madiun kerep luber.
-    distractors: [kidul, dening]
-    words: [kerep, luber]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (بأسلوب الخبر) النهر فاض امبارح.
-      ar: (بأسلوب الخبر) فاض النهر أمس.
-      en: (news style) The river overflowed yesterday.
-    answers:
-      - Kali iku luber wingi.
-      - Wingi kali iku luber.
-      - Kali kasebut luber wingi.
-      - Wingi kali kasebut luber.
-      - Kaline luber wingi.
-      - Wingi kaline luber.
-      - Kali iki luber wingi.
-      - Kali Madiun luber wingi.
-      - Wingi Kali Madiun luber.
-    words: [luber]
-  - id: e07
+      ar_eg: الخبر ده عن حادثة في السوق.
+      ar: هذا الخبر عن حادثة في السوق.
+      en: This news is about an incident at the market.
+    answer: Pawarta iki nyritakake kedadeyan ing pasar.
+    distractors: [seksi, tatu]
+    words: [pawarta, kedadeyan]
+  - id: e09
     type: translate
     direction: from_target
-    source_text: Kali Madiun kerep luber yen udan gedhe.
+    source_text: Seksi ndeleng kacilakan iku.
     answers_meaning:
-      ar_eg:
-        - نهر ماديون كتير بيفيض لما المطر يبقى جامد.
-        - نهر ماديون بيفيض كتير لما الدنيا تمطر جامد.
-        - نهر ماديون غالبًا بيفيض لو المطر كتير.
-        - نهر ماديون كتير بيطفح لما المطر يبقى شديد.
-      ar:
-        - كثيرًا ما يفيض نهر ماديون إذا اشتدّ المطر.
-        - يفيض نهر ماديون كثيرًا عند المطر الغزير.
-        - غالبًا ما يفيض نهر ماديون إذا كان المطر شديدًا.
-      en:
-        - The Madiun river often overflows when it rains hard.
-        - The Madiun river often overflows in heavy rain.
-        - The Madiun river often floods when it rains heavily.
-        - The Madiun River often overflows when there is heavy rain.
-        - The river in Madiun often overflows when it rains hard.
-    words: [kerep, luber]
-  - id: e08
-    type: dictation
-    text: Esuk iki, dalan kasebut wis diresiki dening warga.
-    meaning:
-      ar_eg: الصبح ده، الأهالي نضّفوا الشارع المذكور خلاص.
-      ar: وفي صباح اليوم نظّف الأهالي الشارع المذكور.
-      en: This morning, the said road was cleaned up by the residents.
-    words: [diresiki, kasebut]
-  - id: e09
+      ar_eg: [الشاهد شاف الحادثة دي, الشاهد شاف الحادثة]
+      ar: [رأى الشاهد ذلك الحادث, شاهد الشاهد الحادث]
+      en: [The witness saw the accident, A witness saw that accident]
+    words: [seksi, kacilakan]
+  - id: e10
     type: speaking
-    text: Dalan ing Manguharjo kebanjiran.
+    text: Omahe kobong, nanging ora ana sing tatu.
     meaning:
-      ar_eg: الشارع في مانجوهارجو غرق مية.
-      ar: غمرت المياه الشارع في مانغوهارجو.
-      en: The road in Manguharjo got flooded.
-    words: [kebanjiran]
+      ar_eg: البيت ولّع، بس محدش اتجرح.
+      ar: احترق البيت، لكن لم يُصب أحد.
+      en: The house burned, but nobody was hurt.
+    words: [kobong, tatu]
 dialogue:
-  title: Warta ing warung
   lines:
+    - speaker: Mbak Ayu
+      text: Mohamed, wis krungu pawarta esuk iki durung?
+      ar_eg: يا محمد، سمعت خبر النهارده الصبح؟
+      ar: يا محمد، هل سمعت خبر هذا الصباح؟
+      en: Mohamed, have you heard this morning's news?
     - speaker: Mohamed
-      text: Pak, wonten warta menapa ing koran?
-      ar_eg: يا عمّو، فيه أخبار إيه في الجرنال؟
-      ar: يا سيدي، ما الأخبار في الجريدة؟
-      en: Sir, what news is in the paper?
-    - speaker: Pak Harjo
-      text: Kali Madiun luber, dalan ing Manguharjo kebanjiran wingi sore.
-      ar_eg: نهر ماديون فاض، والشارع في مانجوهارجو غرق مية امبارح العصر.
-      ar: فاض نهر ماديون، فغمرت المياه الشارع في مانغوهارجو عصر أمس.
-      en: The Madiun river overflowed, and the road in Manguharjo flooded yesterday afternoon.
+      text: Durung. Ana kedadeyan apa ta?
+      ar_eg: لأ لسه. حصل إيه؟
+      ar: لا بعد. ماذا حدث؟
+      en: Not yet. What happened?
+    - speaker: Mbak Ayu
+      text: Ana tabung gas mbledhos ing pasar, kios telu kobong.
+      ar_eg: أنبوبة غاز انفجرت في السوق، وتلات أكشاك ولّعت.
+      ar: انفجرت أسطوانة غاز في السوق واحترقت ثلاثة أكشاك.
+      en: A gas cylinder exploded at the market and three stalls burned.
     - speaker: Mohamed
-      text: Luber menika menapa, Pak?
-      ar_eg: يعني إيه luber يا عمّو؟
-      ar: ما معنى luber يا سيدي؟
-      en: What does luber mean, sir?
-    - speaker: Pak Harjo
-      text: Banyu kali munggah nganti metu menyang dalan. Yen udan gedhe kerep, kok.
-      ar_eg: مية النهر بتعلى لحد ما تطلع على الشارع. ولما المطر يبقى جامد بتحصل كتير، عادي يعني.
-      ar: يرتفع ماء النهر حتى يخرج إلى الشارع، ويكثر ذلك حين يشتدّ المطر.
-      en: The river water rises until it spills onto the road. It happens a lot when it rains hard, you know.
+      text: Waduh! Ana sing tatu ora?
+      ar_eg: يا ساتر! فيه حد اتجرح؟
+      ar: يا إلهي! هل أصيب أحد؟
+      en: Oh no! Was anyone hurt?
+    - speaker: Mbak Ayu
+      text: Wong loro tatu sithik. Pedagang liyane padha ngungsi dhisik.
+      ar_eg: اتنين اتجرحوا جرح بسيط. وباقي التجار هربوا لمكان أمان الأول.
+      ar: أصيب شخصان إصابة طفيفة، ونزح بقية التجار أولًا.
+      en: Two people have minor injuries. The other traders got out first.
     - speaker: Mohamed
-      text: Oh, kula ngertos. Matur nuwun, Pak.
-      ar_eg: آه، فهمت. متشكر يا عمّو.
-      ar: آه، فهمت. شكرًا يا سيدي.
-      en: Oh, I see. Thank you, sir.
+      text: Untung ana seksi sing langsung nelpon pemadam, ya.
+      ar_eg: الحمد لله كان فيه شاهد كلّم المطافي على طول.
+      ar: من حسن الحظ أن شاهدًا اتصل بالإطفاء فورًا.
+      en: Luckily a witness called the fire brigade right away.
 new_words:
-  - word: luber
+  - word: pawarta
+    pos: noun
+    ar_eg: خبر
+    ar: خبر
+    en: news
+  - word: kedadeyan
+    pos: noun
+    ar_eg: حادثة، اللي حصل
+    ar: حادثة، واقعة
+    en: incident, event
+  - word: kacilakan
+    pos: noun
+    ar_eg: حادثة طريق
+    ar: حادث سير
+    en: accident
+  - word: kobong
     pos: verb
-    ar_eg: فاض / طفح (المية خرجت من كترها)
-    ar: فاض، طفح
-    en: to overflow = meluap, luber
-  - word: kebanjiran
+    ar_eg: اتحرق، ولّع
+    ar: احترق
+    en: burn, catch fire
+  - word: mbledhos
     pos: verb
-    ar_eg: غرق مية (اتعرّض لفيضان)
-    ar: غمرته المياه
-    en: got flooded = kebanjiran
-  - word: diresiki
+    ar_eg: انفجر
+    ar: انفجر
+    en: explode
+  - word: tatu
+    pos: noun
+    ar_eg: جرح؛ متعوّر
+    ar: جرح؛ مجروح
+    en: wound; wounded
+  - word: ngungsi
     pos: verb
-    ar_eg: اتنضّف (من resik = نضيف)
-    ar: نُظِّف (من resik = نظيف)
-    en: was cleaned (from resik, clean) = dibersihkan
-  - word: kerep
-    pos: adverb
-    ar_eg: كتير / غالبًا
-    ar: كثيرًا / غالبًا
-    en: often = sering
+    ar_eg: يهرب لمكان أمان
+    ar: ينزح، يلجأ
+    en: evacuate, take refuge
+  - word: seksi
+    pos: noun
+    ar_eg: شاهد
+    ar: شاهد
+    en: witness
 review:
   status: draft
   verified: false

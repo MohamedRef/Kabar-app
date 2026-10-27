@@ -1,12 +1,14 @@
 //! Spoken (street) forms and their formal twins: "nggak" → "tidak",
-//! "makasih" → "terima kasih". The list is `content/freq/id.street.tsv`,
-//! shared by reading coverage and answer grading so there is one source.
+//! "makasih" → "terima kasih". The lists are `content/freq/id.street.tsv`
+//! and `jv.street.tsv` ("nggih" → "inggih"), shared by reading coverage and
+//! answer grading so there is one source.
 
 use std::sync::OnceLock;
 
 use super::Lang;
 
 const ID: &str = include_str!("../../../../content/freq/id.street.tsv");
+const JV: &str = include_str!("../../../../content/freq/jv.street.tsv");
 
 fn parse(text: &'static str) -> Vec<(&'static str, &'static str)> {
     text.lines().filter(|l| !l.is_empty() && !l.starts_with('#')).filter_map(|l| l.split_once('\t')).collect()
@@ -14,8 +16,10 @@ fn parse(text: &'static str) -> Vec<(&'static str, &'static str)> {
 
 fn table(lang: Lang) -> &'static [(&'static str, &'static str)] {
     static ID_TABLE: OnceLock<Vec<(&str, &str)>> = OnceLock::new();
+    static JV_TABLE: OnceLock<Vec<(&str, &str)>> = OnceLock::new();
     match lang {
         Lang::Indonesian => ID_TABLE.get_or_init(|| parse(ID)),
+        Lang::Javanese => JV_TABLE.get_or_init(|| parse(JV)),
         _ => &[],
     }
 }
@@ -31,19 +35,21 @@ mod tests {
     use super::*;
 
     #[test]
-    fn list_is_sorted_unique_and_well_formed() {
-        let t = table(Lang::Indonesian);
-        assert!(t.len() > 30);
-        assert!(t.windows(2).all(|w| w[0].0 < w[1].0), "keep id.street.tsv sorted by street form");
-        for (s, f) in t {
-            assert!(!s.is_empty() && !f.is_empty() && s != f, "{s} → {f}");
-            assert_eq!(s.to_lowercase(), *s);
-        }
-        let rows = ID.lines().filter(|l| !l.is_empty() && !l.starts_with('#')).count();
-        assert_eq!(rows, t.len(), "every row is street<TAB>formal");
-        // Outputs are already formal, so folding twice changes nothing.
-        for (s, f) in t {
-            assert_eq!(formal(Lang::Indonesian, f), None, "{s} → {f} → ?");
+    fn lists_are_sorted_unique_and_well_formed() {
+        for (lang, text, min) in [(Lang::Indonesian, ID, 30), (Lang::Javanese, JV, 15)] {
+            let t = table(lang);
+            assert!(t.len() > min, "{lang:?}");
+            assert!(t.windows(2).all(|w| w[0].0 < w[1].0), "keep {lang:?} street list sorted by street form");
+            for (s, f) in t {
+                assert!(!s.is_empty() && !f.is_empty() && s != f, "{s} → {f}");
+                assert_eq!(s.to_lowercase(), *s);
+            }
+            let rows = text.lines().filter(|l| !l.is_empty() && !l.starts_with('#')).count();
+            assert_eq!(rows, t.len(), "every row is street<TAB>formal");
+            // Outputs are already formal, so folding twice changes nothing.
+            for (s, f) in t {
+                assert_eq!(formal(lang, f), None, "{s} → {f} → ?");
+            }
         }
     }
 
@@ -53,5 +59,7 @@ mod tests {
         assert_eq!(formal(Lang::Indonesian, "makasih"), Some("terima kasih"));
         assert_eq!(formal(Lang::Indonesian, "tidak"), None);
         assert_eq!(formal(Lang::Javanese, "nggak"), None);
+        assert_eq!(formal(Lang::Javanese, "nggih"), Some("inggih"));
+        assert_eq!(formal(Lang::Javanese, "monggo"), Some("mangga"));
     }
 }
