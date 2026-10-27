@@ -128,57 +128,72 @@ exercises:
         ar_eg: اتعمل (digawe / dibuat)
         ar: صُنع (digawe / dibuat)
         en: was made (digawe / dibuat)
-    words: [batik, griya, waos, damel]
+    words: [batik, griya, waos, damel, dipun-]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: regi (سعر) + -ne بالكراما = ؟
-      ar: regi (سعر) + -ne بالكراما = ؟
-      en: regi (price) + krama "-ne" = ?
-    options: [regine, regiipun, reginipun]
-    answer: 2
-    explain:
-      ar_eg: 'regi بتخلص بحرف متحرك (i)، يبقى -nipun: reginipun.'
-      ar: 'تنتهي regi بصائت، فتأخذ -nipun: reginipun.'
-      en: 'regi ends in a vowel, so it takes -nipun: reginipun.'
-    words: [regi]
+    type: match_pairs
+    pairs:
+      - text: saudagar
+        ar_eg: تاجر كبير
+        ar: تاجر كبير
+        en: wealthy merchant
+      - text: tiyang
+        ar_eg: شخص / ناس (wong) = orang
+        ar: شخص / ناس (wong) = orang
+        en: person, people (wong) = orang
+      - text: leres
+        ar_eg: صح (bener) = benar
+        ar: صحيح (bener) = benar
+        en: right, correct (bener) = benar
+      - text: ageng
+        ar_eg: كبير (gedhe) = besar
+        ar: كبير (gedhe) = besar
+        en: big (gedhe) = besar
+      - text: waos
+        ar_eg: يقرا (waca) = baca
+        ar: يقرأ (waca) = baca
+        en: read (waca) = baca
+      - text: damel
+        ar_eg: يعمل (gawe) = buat
+        ar: يصنع (gawe) = buat
+        en: make (gawe) = buat
+    words: [saudagar, tiyang, leres, ageng, waos, damel]
   - id: e03
     type: listen
-    text: Batikipun dipundamel wonten Laweyan.
-    options: [Batikipun dipundamel wonten Laweyan., Batike digawe nang Laweyan., Bukunipun dipunwaos wonten Laweyan.]
+    text: Tiyang menika saudagar batik.
+    options: [Tiyang menika saudagar batik., Wong iki saudagar batik., Tiyang menika saudagar ageng.]
     answer: 0
-    words: [batik, damel]
+    words: [tiyang, menika, saudagar, batik, ageng]
   - id: e04
     type: fill_blank
-    sentence: Bukunipun sampun ___.
+    sentence: Leres, bukunipun sampun ___.
     meaning:
-      ar_eg: الكتاب اتقرا خلاص.
-      ar: قد قُرئ الكتاب.
-      en: The book has already been read.
+      ar_eg: صح، الكتاب اتقرا خلاص.
+      ar: صحيح، قد قُرئ الكتاب.
+      en: Right, the book has already been read.
     options: [dipunwaca, diwaca, dipunwaos]
     answers: [dipunwaos]
     explain:
       ar_eg: 'في الكراما الفعل نفسه بيتغير (waca → waos) وdi- → dipun-: dipunwaos. «dipunwaca» خلطة.'
       ar: 'في الكراما يتغير الفعل (waca → waos) وتصير di- dipun-: dipunwaos، أما «dipunwaca» فخليط.'
       en: 'In krama the verb changes too (waca → waos) and di- → dipun-: dipunwaos. "dipunwaca" is a mix.'
-    words: [waos]
+    words: [leres, waos, dipun-]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: (بالكراما) الباتيك اتعمل في لاوييان.
-      ar: (بالكراما) صُنع الباتيك في لاوييان.
-      en: (in krama) The batik was made in Laweyan.
-    answer: Batikipun dipundamel wonten Laweyan.
-    distractors: [digawe, batike, nang]
-    words: [batik, damel]
+      ar_eg: (بالكراما) الباتيك اتعمل على إيد ناس لاوييان.
+      ar: (بالكراما) صنع الباتيكَ أهلُ لاوييان.
+      en: (in krama) The batik was made by Laweyan people.
+    answer: Batikipun dipundamel tiyang Laweyan.
+    distractors: [digawe, batike, wong]
+    words: [batik, damel, dipun-, tiyang]
   - id: e06
     type: speaking
-    text: Griyanipun Pak Harjo ageng sanget.
+    text: Leres, griyanipun saudagar menika ageng sanget.
     meaning:
-      ar_eg: بيت الحاج هارجو كبير أوي.
-      ar: بيت السيد هارجو كبير جدًا.
-      en: Pak Harjo's house is very big.
-    words: [griya, ageng]
+      ar_eg: صح، بيت التاجر ده كبير أوي.
+      ar: صحيح، بيت هذا التاجر كبير جدًا.
+      en: Right, this merchant's house is very big.
+    words: [leres, griya, saudagar, ageng]
 dialogue:
   title: Wonten Laweyan
   lines:
