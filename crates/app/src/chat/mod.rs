@@ -14,13 +14,17 @@ const HANDWRITING: bool = false;
 
 use dioxus::prelude::*;
 use kabar_core::ai::FriendlyReason;
-use kabar_core::ai::tasks::RoleplayTurn;
+use kabar_core::ai::tasks::{RoleplayTurn, TranslateText};
 use kabar_core::chat::{
     Scenario, chat_level, is_javanese, persona_voice, registers, replay, request, scenarios,
 };
+use kabar_core::lang::Lang as CoreLang;
 use kabar_core::lesson::pick;
 use kabar_core::locale::UiLanguage;
+use kabar_core::reader::translate;
+use kabar_core::settings::TranslationMode;
 use kabar_core::story::parse_persona;
+use kabar_protocol::ai::Task;
 use kabar_protocol::chat::{ChatCorrection, ChatMessage, ChatRole, ChatRow, Conversation, MAX_MESSAGE_CHARS};
 use kabar_protocol::coach::{ActivityKind, Skill};
 use kabar_protocol::content::Lang;
@@ -32,6 +36,7 @@ use crate::coach::Coach;
 use crate::embedded::{self, PERSONAS};
 use crate::lesson::target_tag;
 use crate::listen::player::ProgramPlayer;
+use crate::reader::translate::in_voice;
 use crate::store::now_ms;
 use crate::studio::pad::{InkAnswer, InkPad};
 use crate::teach::Ai;
@@ -559,12 +564,14 @@ fn Chat(id: String, on_back: EventHandler, on_replay: EventHandler<String>) -> E
                         ChatRole::Persona => rsx! {
                             li { key: "{m.id}", class: "ch-msg them",
                                 div { class: "ch-bubble",
-                                    Annotated { text: m.text.clone(), tag: target, class: "ch-text" }
-                                    div { class: "ch-tools",
-                                        ListenButton { text: m.text.clone(), language: p.language.clone(), voice: persona_voice(p) }
-                                        if m.unverified {
-                                            span { class: "pill small ch-unverified", "{tt(lang, T::Unverified)}" }
-                                        }
+                                    PersonaText {
+                                        text: m.text.clone(),
+                                        tag: target,
+                                        javanese: is_javanese(p),
+                                        unverified: m.unverified,
+                                        children: rsx! {
+                                            ListenButton { text: m.text.clone(), language: p.language.clone(), voice: persona_voice(p) }
+                                        },
                                     }
                                 }
                             }
@@ -680,6 +687,59 @@ fn ListenButton(text: String, language: String, voice: kabar_protocol::cloud::Vo
             aria_label: "{tt(ui.lang(), T::Listen)}",
             onclick: move |_| crate::lesson::speak_in(&text, &language, voice, missing),
             "🔊"
+        }
+    }
+}
+
+/// A persona's reply with its translation under it, in the learner's voice.
+/// The `translate_text` task runs once per reply (the router caches it, so
+/// reopening a chat costs nothing); with no engine the reply still shows
+/// word colours and meanings from the local dictionary.
+#[component]
+fn PersonaText(
+    text: String,
+    tag: &'static str,
+    javanese: bool,
+    unverified: bool,
+    children: Element,
+) -> Element {
+    let ui = use_context::<Ui>();
+    let ai = try_use_context::<Ai>();
+    let lang = ui.lang();
+    let source = text.clone();
+    let translated = use_resource(move || {
+        let (ai, text) = (ai.clone(), source.clone());
+        // Read here so turning translation on later fetches it.
+        let off = ui.settings.read().translation == TranslationMode::Off;
+        async move {
+            let ai = ai.filter(|_| !off)?;
+            ai.0.plan(Task::TranslateText, true).ok()?;
+            let code = if javanese { CoreLang::Javanese } else { CoreLang::Indonesian };
+            match ai.0.run::<TranslateText>(&translate::request(code, &[&text])).await {
+                Ok(a) => {
+                    let line = a.value.lines.into_iter().find(|l| l.i == 0)?;
+                    Some((line, a.needs_review || a.provisional))
+                }
+                Err(e) => {
+                    eprintln!("kabar: chat translate_text failed: {e:?}");
+                    None
+                }
+            }
+        }
+    });
+    let (meaning, guessed) = match &*translated.read() {
+        Some(Some((line, guessed))) => (Some(in_voice(line, lang).to_string()), *guessed),
+        _ => (None, false),
+    };
+    // Javanese and engine answers stay flagged until the learner approves them.
+    let flag = unverified || (meaning.is_some() && (javanese || guessed));
+    rsx! {
+        Annotated { text, tag, class: "ch-text", meaning }
+        div { class: "ch-tools",
+            {children}
+            if flag {
+                span { class: "pill small ch-unverified", "{tt(lang, T::Unverified)}" }
+            }
         }
     }
 }
