@@ -226,7 +226,7 @@ pub fn ExplainCard(token: usize) -> Element {
 }
 
 #[component]
-fn GrammarEntry(point: GrammarPoint, matched: Vec<String>, voice: Voice) -> Element {
+pub(crate) fn GrammarEntry(point: GrammarPoint, matched: Vec<String>, voice: Voice) -> Element {
     let ui = use_context::<Ui>();
     let p = point;
     let lang = if p.language == "jv" { "jv" } else { "id" };

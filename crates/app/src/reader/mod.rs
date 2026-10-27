@@ -6,6 +6,7 @@ mod content;
 pub mod doc;
 pub mod explain;
 pub mod glossary;
+pub mod grammar;
 mod web;
 
 use std::collections::{HashMap, HashSet};
@@ -906,6 +907,7 @@ fn ReadView(open: Open, mode: Mode) -> Element {
                     {rows}
                 }
                 p { class: "muted small pen-hint", "{ui.t(Msg::PenHint)}" }
+                grammar::TextGrammar {}
             }
             if panel_open {
                 card::PanelView {}
