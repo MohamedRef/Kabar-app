@@ -9,7 +9,7 @@ fn repo() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..")
 }
 
-fn library() -> Library {
+pub(crate) fn library() -> Library {
     let mut files: Vec<(String, String)> = Vec::new();
     for lang in ["id", "jv"] {
         for e in std::fs::read_dir(repo().join("content/grammar").join(lang)).unwrap() {
@@ -126,7 +126,7 @@ fn golden_set_recall() {
     let recall = hit as f64 / total.max(1) as f64;
     eprintln!("explain_sentence recall {hit}/{total} = {recall:.2}\n{}", misses.join("\n"));
     assert!(total > 20);
-    assert!(recall >= 0.7, "recall {recall:.2}");
+    assert!(recall >= 0.75, "recall {recall:.2}");
 }
 
 #[test]

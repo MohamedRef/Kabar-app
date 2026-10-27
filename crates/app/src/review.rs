@@ -18,6 +18,7 @@ use kabar_protocol::lesson::Localized;
 use kabar_protocol::srs::{Card, CardKind, MeaningShift, Rating, ReviewMode, StudyLanguage};
 use serde::Deserialize;
 
+use crate::annotated::Annotated;
 use crate::coach::Coach;
 use crate::i18n::Msg;
 use crate::platform::{self, SpeakError};
@@ -850,9 +851,7 @@ fn Back(card: Card) -> Element {
             }
             if let Some(ex) = &card.example {
                 div { class: "rev-example",
-                    p { class: "ex-text", lang: card.language.tag(), bdi { dir: "ltr", "{ex.text}" } }
-                    Pron { text: ex.text.clone(), tag: card.language.tag() }
-                    p { class: "muted", "{localized(&ui, &ex.meaning)}" }
+                    Annotated { text: ex.text.clone(), tag: card.language.tag(), meaning: localized(&ui, &ex.meaning).to_string(), class: "ex-text" }
                 }
             }
             if let Some(a) = &card.arabic {

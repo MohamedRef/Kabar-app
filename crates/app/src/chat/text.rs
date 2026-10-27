@@ -30,7 +30,6 @@ pub enum T {
     Back,
     Delete,
     TapWord,
-    Close,
     ResetsLater,
     Unreachable,
     NotConnected,
@@ -124,8 +123,6 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
         (TapWord, ArEg) => "دوس على أي كلمة تشوف معناها.",
         (TapWord, Ar) => "اضغط أي كلمة لترى معناها.",
         (TapWord, En) => "Tap any word to see what it means.",
-        (Close, ArEg | Ar) => "قفل",
-        (Close, En) => "Close",
         (ResetsLater, ArEg) => "الحصة المجانية النهارده خلصت. نكمّل بكرة، ورسايلك متسيّفة.",
         (ResetsLater, Ar) => "انتهت الحصة المجانية اليوم. نكمل غدًا، ورسائلك محفوظة.",
         (ResetsLater, En) => {
