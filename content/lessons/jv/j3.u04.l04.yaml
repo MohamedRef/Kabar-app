@@ -11,13 +11,13 @@ slides:
     body:
       ar_eg: |
         على باب Pura Mangkunegaran فيه لافتة للزوار. اقراها:
-        lurus kemawon = امشي على طول، lajeng = بعد كده، mboten saged = مينفعش.
+        lurus kemawon = امشي على طول، lajeng = بعد كده، mboten kepareng = ممنوع (مش مسموح).
       ar: |
         على باب Pura Mangkunegaran لافتة للزوار. اقرأها:
-        lurus kemawon = امشِ مستقيمًا، وlajeng = ثم، وmboten saged = لا يمكن.
+        lurus kemawon = امشِ مستقيمًا، وlajeng = ثم، وmboten kepareng = ممنوع (غير مسموح).
       en: |
         At the gate of Pura Mangkunegaran there is a sign for visitors. Read it:
-        lurus kemawon = just go straight, lajeng = then, mboten saged = you can't.
+        lurus kemawon = just go straight, lajeng = then, mboten kepareng = not allowed.
     examples:
       - text: Sugeng rawuh ing Pura Mangkunegaran.
         ar_eg: أهلًا وسهلًا في قصر Mangkunegaran.
@@ -27,7 +27,7 @@ slides:
         ar_eg: "الـ Pendhapa: من هنا على طول، وبعدين يمين."
         ar: "الـ Pendhapa: من هنا مستقيمًا، ثم يمينًا."
         en: "Pendhapa: from here just go straight, then turn right."
-      - text: Nyuwun sewu, mboten saged nedha ing pendhapa.
+      - text: Nyuwun sewu, mboten kepareng nedha ing pendhapa.
         ar_eg: لا مؤاخذة، ممنوع الأكل في الـ pendhapa.
         ar: عفوًا، لا يُسمح بالأكل في الـ pendhapa.
         en: Sorry, no eating in the pendhapa.
@@ -50,21 +50,21 @@ exercises:
       en: (from the sign) What can't you do in the pendhapa?
     options: [mlampah, nedha, taken]
     answer: 1
-    words: [saged, nedha, pendhapa]
+    words: [kepareng, nedha, pendhapa]
   - id: e03
     type: listen
-    text: Nyuwun sewu, Mas, mboten saged nedha ing pendhapa.
+    text: Nyuwun sewu, Mas, mboten kepareng nedha ing pendhapa.
     question:
       ar_eg: الحارس قال لمحمد إيه؟ محمد يقدر ياكل في الـ pendhapa؟
       ar: ماذا قال الحارس لمحمد؟ هل يستطيع الأكل في الـ pendhapa؟
       en: What did the guard tell Mohamed? Can he eat in the pendhapa?
-    options: [Saged, Mboten saged]
+    options: [Kepareng, Mboten kepareng]
     answer: 1
     meaning:
       ar_eg: لا مؤاخذة يا أستاذ، ممنوع الأكل في الـ pendhapa.
       ar: عفوًا يا أخي، لا يُسمح بالأكل في الـ pendhapa.
       en: Sorry, you can't eat in the pendhapa.
-    words: [mboten, saged]
+    words: [mboten, kepareng]
   - id: e04
     type: match_pairs
     pairs:
@@ -80,11 +80,11 @@ exercises:
         ar_eg: وبعدين يمين
         ar: ثم يمينًا
         en: then turn right
-      - text: mboten saged
-        ar_eg: مينفعش / مش ممكن
-        ar: لا يمكن
-        en: can't, not allowed
-    words: [kemawon, lajeng, saged]
+      - text: mboten kepareng
+        ar_eg: ممنوع / مش مسموح
+        ar: غير مسموح
+        en: not allowed
+    words: [kemawon, lajeng, kepareng]
   - id: e05
     type: fill_blank
     sentence: Saking mriki lurus ___, lajeng nengen.
@@ -144,7 +144,7 @@ dialogue:
       ar: هل هو بعيد يا سيدي؟
       en: Is it far, sir?
     - speaker: Pak Wiryo
-      text: Mboten, celak kemawon. Nanging mboten saged nedha ing pendhapa, nggih.
+      text: Mboten, celak kemawon. Nanging mboten kepareng nedha ing pendhapa, nggih.
       ar_eg: لأ، قريب. بس ممنوع الأكل في الـ pendhapa، ماشي؟
       ar: لا، قريب. لكن لا يُسمح بالأكل في الـ pendhapa، حسنًا؟
       en: No, it's close. But no eating in the pendhapa, all right?
@@ -153,6 +153,12 @@ dialogue:
       ar_eg: حاضر يا حاج. شكرًا جدًا.
       ar: حاضر يا سيدي. شكرًا جزيلًا.
       en: Of course, sir. Thank you very much.
+new_words:
+  - word: kepareng
+    pos: verb
+    ar_eg: 'مسموح (oleh ← boleh)، كراما إنغيل. على اللافتات: mboten kepareng = ممنوع'
+    ar: 'مسموح (oleh ← boleh)، كراما إنغيل. على اللافتات: mboten kepareng = ممنوع'
+    en: 'allowed, may (ngoko oleh, Indonesian boleh), krama inggil. On signs, mboten kepareng = not allowed'
 review:
   status: draft
   verified: false
