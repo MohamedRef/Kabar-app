@@ -2008,14 +2008,34 @@ def suramadu(y):
     return "".join(z)
 
 
+def kite(x, y, s=1.0, fill=R, tail=O):
+    """A diamond kite with a wavy tail and string."""
+    b = path("M0 -50 L36 0 L0 60 L-36 0Z", fill, C, 4) + line(0, -50, 0, 60, C, 2) + line(-36, 0, 36, 0, C, 2)
+    b += path("M0 60 Q-14 90 6 110 Q24 130 4 156", stroke=tail, sw=5)
+    return group(b, x, y, s)
+
+
+def andong(x, y, s=1.0):
+    """A Jogja horse cart: a horse, a cart under a curved roof, two big wheels."""
+    b = path("M-150 -40 L-90 -40 L-80 -90 L-60 -110 L-50 -96 L-66 -70 L-60 -40 L-60 0 L-70 0 L-74 -30 L-120 -30 L-128 0 L-140 0Z", "#6E4A30", C, 4)
+    b += rect(-50, -110, 170, 70, "#E3C9A8", 6, C, 4) + path("M-60 -110 Q35 -160 130 -110Z", "#3A3A40", C, 4)
+    b += circle(10, -20, 34, "none", C, 7) + circle(100, -20, 34, "none", C, 7)
+    b += line(-60, -60, -90, -60, C, 4)
+    return group(b, x, y, s)
+
+
 @scene("j1.u05")
-def kenjeran():
-    """Kenjeran beach: painted fishing boats on the sand, Suramadu bridge beyond."""
-    z = [sky(sun=(700, 300), r=80), sea(620)]
-    z.append(group(suramadu(0), 0, 600, 1))
-    z.append(path("M126 800 Q500 760 898 800 L898 972 L126 972Z", S))
-    z.append(boat(330, 860, 1.0, "#3F7AB0") + boat(680, 900, 0.9, G))
-    z.append(person(520, 930, 0.7, O, scarf=I))
+def parangtritis():
+    """Parangtritis at sunset: big waves, black volcanic sand, an andong and kites over the beach."""
+    z = [sky(sun=(512, 560), r=110), sea(560)]
+    for k in range(3):
+        y = 640 + k * 50
+        z.append(path(f"M126 {y} Q250 {y - 40} 380 {y} T640 {y} T898 {y}", stroke=P, sw=10 - k * 2, op=0.85))
+    z.append(path("M126 800 Q500 760 898 800 L898 972 L126 972Z", "#4A4A50"))
+    z.append(kite(250, 300, 0.9, R, O) + kite(780, 250, 0.8, G, P) + kite(640, 380, 0.6, "#F2C94C", R))
+    z.append(line(250, 410, 220, 830, C, 2, 0.6) + line(780, 360, 760, 840, C, 2, 0.6))
+    z.append(andong(470, 920, 1.0))
+    z.append(person(220, 920, 0.7, P, scarf=O) + person(760, 925, 0.7, K))
     return "".join(z)
 
 
