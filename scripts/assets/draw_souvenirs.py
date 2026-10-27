@@ -1950,33 +1950,52 @@ def stasiun_tugu():
     return "".join(z)
 
 
+def pedal_car(x, y, s=1.0, body=R):
+    """An Alkid pedal car: a little boxy cart trimmed with coloured lights."""
+    b = rect(-90, -80, 180, 70, body, 14, C, 5) + path("M-70 -80 L-50 -130 L60 -130 L80 -80Z", "none", C, 5)
+    b += circle(-55, -6, 18, C) + circle(55, -6, 18, C)
+    for k in range(7):
+        b += circle(-80 + k * 27, -134 + (k % 2) * 2, 7, ("#F2C94C", G, P, O)[k % 4], C, 2)
+        b += circle(-80 + k * 27, -134, 18, ("#F2C94C", G, P, O)[k % 4], op=0.25)
+    return group(b, x, y, s)
+
+
 @scene("j1.u03")
-def tunjungan():
-    """Jalan Tunjungan at night: old shopfronts lit up, a scooter's streak of light."""
+def alun_alun_kidul():
+    """Alun-alun Kidul at night: the twin banyans in the middle and pedal cars glowing round the square."""
     z = [rect(X0, Y0, W, H, I)]
-    z.append(circle(760, 230, 50, P, op=0.7))
-    z.append(rect(140, 380, 300, 420, "#E3C9A8", 4, C, 6) + rect(250, 300, 80, 80, "#E3C9A8", 4, C, 6) + path("M250 300 L290 250 L330 300Z", O, C, 5))
-    z.append(windows(170, 420, 4, 3, 46, 60, 22, 40, "#F2C94C"))
-    z.append(rect(500, 440, 360, 360, P, 4, C, 6) + windows(530, 470, 5, 3, 44, 56, 22, 34, "#F2C94C", arch=True))
-    z.append(rect(X0, 800, W, 172, "#3A3A48"))
-    for k in range(5):
-        x = 180 + k * 170
-        z.append(line(x, 800, x, 600, C, 5) + circle(x, 594, 16, "#F2C94C", C, 3) + circle(x, 594, 40, "#F2C94C", op=0.2))
-    z.append(path("M126 900 Q512 870 898 900", stroke=O, sw=10, op=0.8) + path("M126 920 Q512 890 898 920", stroke=R, sw=6, op=0.6))
-    z.append(person(300, 860, 0.7, K) + person(340, 865, 0.7, O))
+    z.append(circle(780, 220, 46, P, op=0.7))
+    z.append(rect(X0, 760, W, 212, "#4A5A3A"))
+    z.append(banyan(320, 780, 0.8) + banyan(704, 780, 0.8))
+    # someone walking blindfolded between the trees (masangin)
+    z.append(person(512, 860, 0.75, K, scarf=P) + line(492, 750, 532, 750, P, 6))
+    z.append(pedal_car(240, 930, 0.9, R) + pedal_car(800, 920, 0.85, "#6E7FA8"))
+    z.append(path("M126 960 Q512 930 898 960", stroke="#F2C94C", sw=4, op=0.5))
     return "".join(z)
 
 
 @scene("j1.u04")
-def ampel():
-    """The Sunan Ampel mosque: a tiered roof, the tall old minaret, pilgrims' lane."""
-    z = [sky(sun=(250, 270), r=70)]
-    z.append(rect(X0, 820, W, 152, S))
-    z.append(tajug(430, 820, 480, 3, "#4A4A50"))
-    z.append(rect(720, 340, 70, 480, P, 4, C, 6) + rect(706, 340, 98, 30, P, 3, C, 5) + path("M714 340 Q755 270 796 340Z", G, C, 5))
-    z.append(windows(740, 400, 1, 4, 30, 50, 0, 50, I, arch=True))
-    for k, col in enumerate((P, I, O, K)):
-        z.append(person(220 + k * 120, 950, 0.8, col, scarf=P if k % 2 else None))
+def jalan_kaliurang():
+    """Jalan Kaliurang: student kos and a parcel counter by the km 5 stone, Merapi far up the road."""
+    z = [sky(sun=(250, 250), r=60)]
+    z.append(path("M380 520 L512 380 L560 420 L644 520Z", "#8A8A9A", C, 5) + path("M486 410 L512 380 L540 404 L520 420Z", P, op=0.9))
+    z.append(path("M520 360 Q540 320 520 290 Q560 300 570 260", stroke=P, sw=10, op=0.6))
+    z.append(rect(X0, 520, W, 452, "#9C9488"))
+    z.append(path("M440 520 L584 520 L898 972 L126 972Z", "#5A5A66"))
+    z.append(path("M512 540 L512 580 M512 620 L512 680 M512 730 L512 820 M512 880 L512 972", stroke=P, sw=8))
+    # kos block on the left: three floors of windows and a laundry line
+    z.append(rect(140, 360, 200, 300, "#E3C9A8", 4, C, 6) + windows(160, 390, 3, 3, 40, 50, 20, 40, I))
+    z.append(line(150, 470, 330, 470, C, 2) + rect(180, 470, 24, 30, O, 2) + rect(230, 470, 24, 34, G, 2) + rect(280, 470, 24, 28, P, 2))
+    # parcel counter on the right: awning, boxes, a sign
+    z.append(rect(660, 440, 230, 220, P, 4, C, 6) + path("M640 440 L910 440 L890 400 L660 400Z", R, C, 5))
+    z.append(rect(690, 470, 170, 40, "#F2C94C", 4, C, 4))
+    for k, (bx, by) in enumerate(((690, 600), (740, 600), (715, 560), (800, 610))):
+        z.append(rect(bx, by, 46, 46, "#C8A070", 3, C, 4) + line(bx + 23, by, bx + 23, by + 46, C, 2))
+    # the km 5 roadside stone
+    z.append(path("M330 760 L330 700 Q360 670 390 700 L390 760Z", P, C, 5) + rect(330, 726, 60, 14, R, 0))
+    # a student on a scooter
+    z.append(circle(560, 900, 22, C) + circle(660, 900, 22, C) + path("M550 880 L670 880 L650 850 L580 850Z", "#6E7FA8", C, 4))
+    z.append(person(610, 852, 0.6, K, scarf=O))
     return "".join(z)
 
 

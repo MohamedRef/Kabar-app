@@ -113,8 +113,8 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 |---|---|---|---|
 | j1.u01 | Malioboro | Angkringan Malioboro (Angkringan Malioboro) | `j1.u01.png` |
 | j1.u02 | Tugu | Stasiun Tugu (Tugu station) | `j1.u02.png` |
-| j1.u03 | Tunjungan | Jalan Tunjungan di malam hari (Jalan Tunjungan at night) | `j1.u03.png` |
-| j1.u04 | Ampel | Masjid Sunan Ampel (Sunan Ampel mosque) | `j1.u04.png` |
+| j1.u03 | Alun-alun Kidul | Alun-alun Kidul di malam hari (Alun-alun Kidul at night) | `j1.u03.png` |
+| j1.u04 | Jalan Kaliurang | Jalan Kaliurang (Jalan Kaliurang) | `j1.u04.png` |
 | j1.u05 | Kenjeran | Pantai Kenjeran (Kenjeran beach) | `j1.u05.png` |
 | j1.u06 | Wonokromo | Kebun Binatang Surabaya (Surabaya zoo) | `j1.u06.png` |
 | j1.u07 | Pasar Atom | Pasar Atom (Pasar Atom) | `j1.u07.png` |
@@ -136,7 +136,7 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 |---|---|---|---|
 | j3.u01 | Solo Balapan | Stasiun Solo Balapan (Solo Balapan station) | `j3.u01.png` |
 | j3.u02 | Pasar Gede | Pasar Gede (Pasar Gede) | `j3.u02.png` |
-| j3.u03 | Kauman | Kampung Batik Kauman (Kauman batik village) | `j3.u03.png` |
+| j3.u03 | Jalan Kaliurang | Kampung Batik Kauman (Kauman batik village) | `j3.u03.png` |
 | j3.u04 | Mangkunegaran | Pura Mangkunegaran (Pura Mangkunegaran) | `j3.u04.png` |
 | j3.u05 | Pasar Klewer | Batik Klewer (Batik from Klewer) | `j3.u05.png` |
 | j3.u06 | Laweyan | Rumah saudagar Laweyan (Laweyan merchants' houses) | `j3.u06.png` |
