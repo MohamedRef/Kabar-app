@@ -105,36 +105,40 @@ exercises:
     type: match_pairs
     pairs:
       - text: di seberang
-        ar_eg: قصاد (الناحية التانية)
-        ar: في الجهة المقابلة
+        ar_eg: قصاد
+        ar: مقابل
         en: across from
       - text: di ujung
-        ar_eg: في آخر
+        ar_eg: في الآخر
         ar: في نهاية
         en: at the end of
-      - text: di sebelah
-        ar_eg: جنب
-        ar: بجانب
-        en: next to
-      - text: di antara
-        ar_eg: بين
-        ar: بين
-        en: between
-      - text: di belakang
-        ar_eg: ورا
-        ar: خلف
-        en: behind
-    words: [seberang, ujung, sebelah, antara, belakang]
+      - text: gang
+        ar_eg: حارة
+        ar: زقاق
+        en: alley
+      - text: tetangga
+        ar_eg: جار
+        ar: جار
+        en: neighbour
+      - text: anjing
+        ar_eg: كلب
+        ar: كلب
+        en: dog
+      - text: lengkap
+        ar_eg: كامل، فيه كل حاجة
+        ar: كامل
+        en: complete
+    words: [seberang, ujung, gang, tetangga, anjing, lengkap]
   - id: e02
     type: multiple_choice
-    question: Di depan pura ada ___ anjing.
+    question: Di depan rumah tetangga ada ___ anjing.
     options: [seekor, sebuah, seorang]
     answer: 0
     explain:
       ar_eg: الكلب حيوان، يبقى ekor.
       ar: الكلب حيوان فيُعدّ بـ ekor.
       en: A dog is an animal, so ekor.
-    words: [seekor, anjing, pura]
+    words: [seekor, anjing, tetangga]
   - id: e03
     type: listen
     text: Apotek itu di seberang warung.
@@ -154,28 +158,28 @@ exercises:
   - id: e05
     type: build_sentence
     source:
-      ar_eg: جاري عنده قطتين.
-      ar: لدى جاري قطّتان.
-      en: My neighbour has two cats.
-    answer: Tetangga saya punya dua ekor kucing.
-    distractors: [orang, buah]
-    words: [tetangga, ekor]
+      ar_eg: جاري عنده كلب.
+      ar: لدى جاري كلب.
+      en: My neighbour has a dog.
+    answer: Tetangga saya punya seekor anjing.
+    distractors: [sebuah, seorang]
+    words: [tetangga, anjing, ekor]
   - id: e06
     type: dictation
-    text: Ada sebuah warung di sebelah masjid.
+    text: Warung di ujung gang itu lengkap.
     meaning:
-      ar_eg: فيه وارونج جنب الجامع.
-      ar: يوجد مطعم صغير بجانب المسجد.
-      en: There's a warung next to the mosque.
-    words: [buah, sebelah]
+      ar_eg: الكشك اللي في آخر الحارة دي فيه كل حاجة.
+      ar: الدكان في نهاية ذلك الزقاق فيه كل شيء.
+      en: The shop at the end of that alley has everything.
+    words: [ujung, gang, lengkap]
   - id: e07
     type: speaking
-    text: Kos saya di antara warung dan apotek.
+    text: Kos saya di seberang warung. Warungnya lengkap!
     meaning:
-      ar_eg: السكن بتاعي بين الوارونج والصيدلية.
-      ar: سكني بين المطعم الصغير والصيدلية.
-      en: My boarding house is between the warung and the pharmacy.
-    words: [antara, kos]
+      ar_eg: سكني قصاد الكشك. والكشك فيه كل حاجة!
+      ar: سكني مقابل الدكان، والدكان فيه كل شيء!
+      en: My boarding house is across from a shop. The shop has everything!
+    words: [kos, seberang, lengkap]
 dialogue:
   title: Jalan di Sanur
   lines:

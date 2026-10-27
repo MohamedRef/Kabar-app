@@ -91,25 +91,25 @@ exercises:
     pairs:
       - text: tolong
         ar_eg: لو سمحت (اعملّي)
-        ar: من فضلك (افعل لي)
-        en: please (do me a favour)
-      - text: silakan
-        ar_eg: اتفضل
-        ar: تفضّل
-        en: please (go ahead)
-      - text: minta
-        ar_eg: عايز آخد
-        ar: أطلب (شيئًا)
-        en: ask for, may I have
-      - text: mohon
-        ar_eg: برجاء
-        ar: يُرجى
-        en: kindly (formal)
+        ar: من فضلك
+        en: please (a favour)
       - text: bantu
         ar_eg: ساعد
         ar: ساعِد
         en: help
-    words: [tolong, silakan, minta, mohon, bantu]
+      - text: tunggu
+        ar_eg: استنى
+        ar: انتظِر
+        en: wait
+      - text: sebentar
+        ar_eg: لحظة
+        ar: لحظة
+        en: a moment
+      - text: tentu
+        ar_eg: أكيد، طبعًا
+        ar: بالتأكيد
+        en: of course
+    words: [tolong, bantu, tunggu, sebentar, tentu]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -131,23 +131,23 @@ exercises:
     words: [minta, air putih]
   - id: e04
     type: fill_blank
-    sentence: ___ duduk, Pak. Mau minum apa?
+    sentence: Bisa bantu saya? — ___ bisa!
     meaning:
-      ar_eg: اتفضل اقعد يا أستاذ. تشرب إيه؟
-      ar: تفضّل بالجلوس يا سيدي. ماذا تشرب؟
-      en: Please sit down, sir. What would you like to drink?
-    options: [Tolong, Silakan, Minta]
-    answers: [Silakan]
-    words: [silakan]
+      ar_eg: ممكن تساعدني؟ — أكيد!
+      ar: هل يمكنك مساعدتي؟ — بالتأكيد!
+      en: Can you help me? — Of course!
+    options: [Tentu, Tunggu, Tolong]
+    answers: [Tentu]
+    words: [bantu, tentu]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: اتفضل ادخل واقعد يا أستاذ.
-      ar: تفضّل بالدخول والجلوس يا سيدي.
-      en: Please come in and sit down, sir.
-    answer: Silakan masuk dan duduk, Pak.
-    distractors: [tolong, minta]
-    words: [silakan]
+      ar_eg: استنى شوية، أنا هساعدك.
+      ar: انتظر قليلًا، سأساعدك.
+      en: Wait a moment, I'll help.
+    answer: Tunggu sebentar, ya. Saya bantu.
+    distractors: [tolong, silakan]
+    words: [tunggu, sebentar, bantu]
   - id: e06
     type: dictation
     text: Mohon tunggu sebentar.
@@ -158,12 +158,12 @@ exercises:
     words: [mohon, tunggu, sebentar]
   - id: e07
     type: speaking
-    text: Tolong tutup pintunya, ya.
+    text: Tentu! Tunggu sebentar, ya.
     meaning:
-      ar_eg: لو سمحت اقفل الباب.
-      ar: أغلق الباب من فضلك.
-      en: Please close the door.
-    words: [tolong, tutup]
+      ar_eg: أكيد! استنى لحظة.
+      ar: بالتأكيد! انتظر لحظة.
+      en: Of course! Just a moment.
+    words: [tentu, tunggu, sebentar]
 dialogue:
   title: Tamu di Sanur
   lines:
