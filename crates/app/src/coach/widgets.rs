@@ -6,14 +6,19 @@ use kabar_protocol::coach::{LocalTime, PlanSize, QuietHours, ReminderStyle};
 use super::{labels, logic};
 use crate::i18n::Msg;
 use crate::icons;
+use crate::portraits::{self, Face, Mood};
 use crate::{Ui, platform};
 
-/// Kak Nur speaking.
+/// Kak Nur speaking, with her portrait once Codex has drawn it.
 #[component]
-pub fn Nur(text: String) -> Element {
+pub fn Nur(text: String, #[props(default)] mood: Mood) -> Element {
     rsx! {
         div { class: "nur",
-            div { class: "nur-avatar", aria_hidden: "true", {icons::coach()} }
+            if let Some(src) = portraits::url("kak-nur", mood) {
+                Face { src, class: "nur-avatar" }
+            } else {
+                div { class: "nur-avatar", aria_hidden: "true", {icons::coach()} }
+            }
             div { class: "nur-bubble",
                 span { class: "nur-name latin", bdi { "Kak Nur" } }
                 p { "{text}" }

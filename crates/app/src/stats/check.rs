@@ -34,6 +34,7 @@ use crate::lesson::{
     Draft, ExerciseView, MAX_STEP_MS, Rich, TextAnswer, autoplay_text, draft_answer, instruction,
     item_prompt, needs_audio, now_ms, option_count, speak, target_tag,
 };
+use crate::portraits::Mood;
 use crate::{Db, Screen, Ui};
 
 const LESSON_CSS: &str = include_str!("../../assets/lesson.css");
@@ -248,7 +249,7 @@ fn Intro(level: String, welcome: Line, has_test: bool, on_start: EventHandler<()
     };
     rsx! {
         section { class: "card st-card",
-            Nur { text: invite }
+            Nur { mood: Mood::Listening, text: invite }
             p { "{text}" }
             button { class: "primary", onclick: move |_| on_start.call(()), "{st(lang, button)}" }
         }
@@ -667,7 +668,7 @@ fn Outcome(
         section { class: "card st-card st-outcome",
             h3 { class: "lp-done reveal", "{st(lang, title)}" }
             if let Some(t) = nur_text {
-                Nur { text: t }
+                Nur { mood: Mood::Explaining, text: t }
             }
             if let Some(b) = body_text {
                 p { class: "reveal d2", "{b}" }

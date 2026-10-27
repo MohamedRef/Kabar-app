@@ -9,6 +9,7 @@ use kabar_protocol::coach::{ActivityEvent, ActivityKind, CoachProfile, LocalDate
 use super::widgets::{Nur, Stat};
 use super::{Coach, labels, logic, say};
 use crate::i18n::Msg;
+use crate::portraits::Mood;
 use crate::{Db, Screen, Ui, icons, theme};
 
 /// How many past weeks Liga Pribadi compares against.
@@ -119,7 +120,7 @@ fn ReportCard(profile: CoachProfile, today: LocalDate) -> Element {
                 "{ui.t(Msg::WeekOf)} {labels::date(&ui, r.week_start, today)}"
                 if so_far { " · {ui.t(Msg::SoFar)}" }
             }
-            Nur { text: say(&ui, note, r.week_start, &args) }
+            Nur { mood: Mood::Explaining, text: say(&ui, note, r.week_start, &args) }
             div { class: "stats-row",
                 Stat { value: labels::minutes(&ui, r.minutes), label: Msg::StatTime }
                 Stat { value: ui.num(r.days_studied), label: Msg::StatDays }
@@ -229,7 +230,7 @@ fn Warung(today: LocalDate) -> Element {
             p { class: "muted small", "{ui.t(Msg::KoinEarnedFrom)}" }
             if let Some(b) = toast() {
                 div { class: "toast", role: "status",
-                    Nur { text: say(&ui, Line::WarungBought, today, &[("name", name.as_str()), ("item", b.name), ("koin", &koin_left)]) }
+                    Nur { mood: Mood::Laughing, text: say(&ui, Line::WarungBought, today, &[("name", name.as_str()), ("item", b.name), ("koin", &koin_left)]) }
                     div { class: "row",
                         button {
                             onclick: {

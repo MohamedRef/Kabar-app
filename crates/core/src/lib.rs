@@ -4,6 +4,7 @@
 
 pub mod ai;
 pub mod aksara;
+pub mod cast;
 pub mod chat;
 pub mod clock;
 pub mod coach;

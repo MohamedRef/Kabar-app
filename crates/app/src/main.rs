@@ -24,6 +24,7 @@ mod packs;
 mod penlab;
 mod platform;
 mod play;
+mod portraits;
 mod pron;
 mod reader;
 mod review;

@@ -419,6 +419,9 @@ h3 { font-size: var(--fs-md); margin-block: var(--sp-4) var(--sp-2); }
   background: var(--gold-soft);
   color: var(--gold);
 }
+/* Portraits (portraits.rs): a cover-cropped photo-style face in the avatar's circle. */
+img.face { object-fit: cover; object-position: 50% 30%; display: block; }
+img.face.nur-avatar { inline-size: 3.25rem; block-size: 3.25rem; box-shadow: 0 0 0 2px var(--gold-soft); }
 .nur-bubble {
   background: var(--surface-2);
   border-radius: var(--radius);

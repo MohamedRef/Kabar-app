@@ -16,6 +16,8 @@
   border-radius: 50%; background: var(--indigo); color: var(--surface); font-weight: 700; font-size: 1.1rem;
 }
 .ch-avatar.jv { background: var(--sawah); }
+img.face.ch-avatar { inline-size: 3rem; block-size: 3rem; }
+.ch-head img.face.ch-avatar { inline-size: 3.5rem; block-size: 3.5rem; transition: opacity 0.2s; }
 .ch-history { display: grid; gap: 0.5rem; }
 .ch-past { display: flex; align-items: center; gap: 0.5rem; margin: 0; }
 .ch-open { all: unset; flex: 1; display: flex; gap: 0.75rem; align-items: center; cursor: pointer; min-inline-size: 0; }

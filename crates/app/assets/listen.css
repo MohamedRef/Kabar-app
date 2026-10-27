@@ -27,7 +27,8 @@
 .lx-cue.on { border-inline-start-color: var(--sawah); box-shadow: var(--shadow); }
 .lx-line { all: unset; cursor: pointer; display: grid; gap: 0.1rem; }
 .lx-line:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 0.3rem; }
-.lx-speaker { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+.lx-speaker { font-size: 0.8rem; color: var(--muted); font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem; }
+.lx-face { inline-size: 1.75rem; block-size: 1.75rem; border-radius: 50%; }
 .lx-text { font-family: var(--font-latin); font-size: 1.1rem; }
 .lx-meaning, .lx-note { margin: 0; }
 .lx-reveal { min-inline-size: 2.75rem; padding: 0 0.5rem; color: var(--muted); text-decoration: none; }
