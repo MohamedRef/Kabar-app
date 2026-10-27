@@ -806,128 +806,215 @@ levels:
       - "Unit titles of Sahabatku Indonesia BIPA 5 (2019) could not be retrieved online (the PDF is behind a download page). Units below are derived from the SKL capability statement and C1 themes; re-align with the book when available."
       - The regulation gives only the capability statement for BIPA 5; per-skill units are not specified.
     units:
-      - { id: bipa5.u01, title: { target: "Dunia Kerja", en: "The world of work", ar: "عالم العمل" }, stop: Balikpapan,
-          can_do: ["Handle a job interview", "Write a formal application", "Use formal vs informal register deliberately"], grammar: [id.register.formal-informal, id.sentence.complex],
-          vocabulary: ["CV", "interview", "workplace culture"], culture: { souvenir: Oil-city Balikpapan, note: "Workplace hierarchy shows in language: 'Bapak/Ibu' for superiors, never first names alone." },
-          lessons: [ { id: bipa5.u01.l01, kind: learn, title: "Ragam resmi", can_do: "Switch register.", grammar: [id.register.formal-informal], minutes: 6 },
-                     { id: bipa5.u01.l02, kind: learn, title: "Kalimat majemuk bertingkat", can_do: "Build subordinate clauses.", grammar: [id.sentence.complex], minutes: 6 },
-                     { id: bipa5.u01.l03, kind: learn, title: "Membaca iklan lowongan", can_do: "Read a job advert.", minutes: 6 },
-                     { id: bipa5.u01.l04, kind: learn, title: "Riwayat hidup", can_do: "Describe your experience for a CV.", minutes: 6 },
-                     { id: bipa5.u01.l05, kind: learn, title: "Budaya kantor", can_do: "Talk about office life politely.", minutes: 6 },
-                     { id: bipa5.u01.l06, kind: practice, title: "Wawancara kerja", can_do: "Do a mock interview.", minutes: 6 },
-                     { id: bipa5.u01.l07, kind: practice, title: "Surat lamaran", can_do: "Write an application letter.", minutes: 6 },
-                     { id: bipa5.u01.l08, kind: practice, title: "Wawancara kedua", can_do: "Discuss terms in a second interview.", minutes: 6 },
-                     { id: bipa5.u01.l09, kind: review, title: "Ulangan Unit 1", can_do: "Handle the world of work in formal Indonesian.", minutes: 7 } ] }
-      - { id: bipa5.u02, title: { target: "Ibu Kota Baru", en: "The new capital", ar: "العاصمة الجديدة" }, stop: Penajam (IKN Nusantara),
-          can_do: ["Follow a policy debate", "Argue with concessive clauses"], grammar: [id.conjunction.concessive, id.argument.connectors],
-          vocabulary: ["urban planning", "policy", "migration"], culture: { souvenir: Nusantara capital site, note: "Indonesia is moving its capital from Jakarta to Nusantara (IKN) in East Kalimantan — a hot debate topic." },
-          lessons: [ { id: bipa5.u02.l01, kind: learn, title: "Meskipun, walaupun", can_do: "Concede and counter.", grammar: [id.conjunction.concessive], minutes: 7 },
-                     { id: bipa5.u02.l02, kind: learn, title: "Selain itu, dengan demikian", can_do: "Connect arguments.", grammar: [id.argument.connectors], minutes: 6 },
-                     { id: bipa5.u02.l03, kind: learn, title: "Pindah ibu kota", can_do: "Read a policy article.", minutes: 5 },
-                     { id: bipa5.u02.l04, kind: learn, title: "Tata kota", can_do: "Describe a planned city.", minutes: 6 },
-                     { id: bipa5.u02.l05, kind: learn, title: "Dampak dan manfaat", can_do: "Weigh effects of a policy.", minutes: 6 },
-                     { id: bipa5.u02.l06, kind: practice, title: "Debat IKN", can_do: "Argue a position.", minutes: 6 },
-                     { id: bipa5.u02.l07, kind: practice, title: "Esai argumentasi", can_do: "Write an argumentative essay.", minutes: 6 },
-                     { id: bipa5.u02.l08, kind: practice, title: "Suara warga", can_do: "Report residents' views.", minutes: 6 },
-                     { id: bipa5.u02.l09, kind: review, title: "Ulangan Unit 2", can_do: "Argue about the new capital.", minutes: 6 } ] }
-      - { id: bipa5.u03, title: { target: "Teknologi dan Kehidupan", en: "Technology and life", ar: "التكنولوجيا والحياة" }, stop: Samarinda,
-          can_do: ["Explain a technology's effects", "Turn verbs into nouns for formal writing"], grammar: [id.nominalization],
-          vocabulary: ["digital economy", "apps", "privacy"], culture: { souvenir: Mahakam river, note: "Indonesia has one of the world's largest app-based economies: ride-hailing, e-wallets, live-shopping." },
-          lessons: [ { id: bipa5.u03.l01, kind: learn, title: "Nominalisasi", can_do: "Nominalise for formal style.", grammar: [id.nominalization], minutes: 6 },
-                     { id: bipa5.u03.l02, kind: learn, title: "Ekonomi digital", can_do: "Read a long feature article.", minutes: 6 },
-                     { id: bipa5.u03.l03, kind: learn, title: "Privasi data", can_do: "Explain a technology risk.", minutes: 6 },
-                     { id: bipa5.u03.l04, kind: learn, title: "Belanja daring", can_do: "Shop and order online.", minutes: 6 },
-                     { id: bipa5.u03.l05, kind: learn, title: "Kecerdasan buatan", can_do: "Discuss automation and jobs.", minutes: 6 },
-                     { id: bipa5.u03.l06, kind: practice, title: "Presentasi teknologi", can_do: "Present an explanation.", minutes: 6 },
-                     { id: bipa5.u03.l07, kind: practice, title: "Ringkasan artikel", can_do: "Summarise a long text.", minutes: 5 },
-                     { id: bipa5.u03.l08, kind: practice, title: "Mesin dan manusia", can_do: "Discuss AI and jobs in a group.", minutes: 7 },
-                     { id: bipa5.u03.l09, kind: review, title: "Ulangan Unit 3", can_do: "Explain a technology and its effects.", minutes: 6 } ] }
-      - { id: bipa5.u04, title: { target: "Pendidikan", en: "Education", ar: "التعليم" }, stop: Tenggarong,
-          can_do: ["Compare education systems", "Report what others said"], grammar: [id.reported-speech],
-          vocabulary: ["schools", "pesantren", "universities", "scholarships"], arabic_bridge: ["pesantren & santri", "madrasah ← مدرسة", "ilmu ← علم", "kitab ← كتاب"],
-          culture: { souvenir: Kutai Kartanegara palace, note: "Pesantren (Islamic boarding schools) educate millions; many graduates go on to Al-Azhar in Cairo." },
-          lessons: [ { id: bipa5.u04.l01, kind: learn, title: "Katanya…", can_do: "Report speech.", grammar: [id.reported-speech], minutes: 6 },
-                     { id: bipa5.u04.l02, kind: learn, title: "Pesantren dan Al-Azhar", can_do: "Compare institutions.", minutes: 6 },
-                     { id: bipa5.u04.l03, kind: learn, title: "Beasiswa", can_do: "Read scholarship terms.", minutes: 6 },
-                     { id: bipa5.u04.l04, kind: learn, title: "Sekolah dan kampus", can_do: "Describe a school system.", minutes: 6 },
-                     { id: bipa5.u04.l05, kind: learn, title: "Kuliah di luar negeri", can_do: "Talk about studying abroad.", minutes: 6 },
-                     { id: bipa5.u04.l06, kind: practice, title: "Wawancara alumni", can_do: "Interview and report.", minutes: 6 },
-                     { id: bipa5.u04.l07, kind: practice, title: "Membandingkan sekolah", can_do: "Write a comparison.", minutes: 6 },
-                     { id: bipa5.u04.l08, kind: practice, title: "Esai beasiswa", can_do: "Write a scholarship essay.", minutes: 6 },
-                     { id: bipa5.u04.l09, kind: review, title: "Ulangan Unit 4", can_do: "Compare and report on education.", minutes: 6 } ] }
-      - { id: bipa5.u05, title: { target: "Hutan dan Sungai", en: "Forests and rivers", ar: "الغابات والأنهار" }, stop: Tanjung Puting,
-          can_do: ["Discuss conservation with nuance", "Use ter- / ke-…-an passives of state"], grammar: [id.passive.ter-ke-an],
-          vocabulary: ["rainforest", "orangutans", "palm oil", "deforestation"], culture: { souvenir: Orangutans of Camp Leakey, note: "Borneo's peat forests are central to the palm-oil debate; Dayak communities defend customary forest rights." },
-          lessons: [ { id: bipa5.u05.l01, kind: learn, title: "Terbakar, kebanjiran", can_do: "Express states and adversity.", grammar: [id.passive.ter-ke-an], minutes: 6 },
-                     { id: bipa5.u05.l02, kind: learn, title: "Sawit", can_do: "Read a long report.", minutes: 5 },
-                     { id: bipa5.u05.l03, kind: learn, title: "Orangutan dan hutan adat", can_do: "Discuss conservation with nuance.", minutes: 6 },
-                     { id: bipa5.u05.l04, kind: learn, title: "Gambut dan kabut asap", can_do: "Explain peat fires and haze.", minutes: 6 },
-                     { id: bipa5.u05.l05, kind: learn, title: "Masyarakat Dayak", can_do: "Describe customary rights.", minutes: 6 },
-                     { id: bipa5.u05.l06, kind: practice, title: "Sudut pandang", can_do: "Present two viewpoints.", minutes: 6 },
-                     { id: bipa5.u05.l07, kind: practice, title: "Esai sudut pandang", can_do: "Write a viewpoint essay.", minutes: 6 },
-                     { id: bipa5.u05.l08, kind: practice, title: "Laporan lapangan", can_do: "Report a field visit.", minutes: 6 },
-                     { id: bipa5.u05.l09, kind: review, title: "Ulangan Unit 5", can_do: "Discuss forests from more than one side.", minutes: 6 } ] }
-      - { id: bipa5.u06, title: { target: "Seni Pertunjukan", en: "Performing arts", ar: "الفنون الأدائية" }, stop: Palangka Raya,
-          can_do: ["Review a performance", "Use per- / memper- verbs"], grammar: [id.prefix.memper],
-          vocabulary: ["dance", "music", "theatre", "criticism"], culture: { souvenir: Dayak hornbill dance, note: "Dayak dances imitate the hornbill (enggang), a sacred bird of Borneo." },
-          lessons: [ { id: bipa5.u06.l01, kind: learn, title: "Memperbaiki, mempertunjukkan", can_do: "Use memper-.", grammar: [id.prefix.memper], minutes: 6 },
-                     { id: bipa5.u06.l02, kind: learn, title: "Ulasan", can_do: "Read a critical review.", minutes: 6 },
-                     { id: bipa5.u06.l03, kind: learn, title: "Tari enggang", can_do: "Describe a performance.", minutes: 6 },
-                     { id: bipa5.u06.l04, kind: learn, title: "Musik sape", can_do: "Describe music and instruments.", minutes: 6 },
-                     { id: bipa5.u06.l05, kind: learn, title: "Sanggar seni", can_do: "Talk about rehearsing a show.", minutes: 6 },
-                     { id: bipa5.u06.l06, kind: practice, title: "Menulis ulasan", can_do: "Review a performance.", minutes: 6 },
-                     { id: bipa5.u06.l07, kind: practice, title: "Diskusi pertunjukan", can_do: "Discuss a show you saw.", minutes: 6 },
-                     { id: bipa5.u06.l08, kind: practice, title: "Wawancara seniman", can_do: "Interview an artist.", minutes: 6 },
-                     { id: bipa5.u06.l09, kind: review, title: "Ulangan Unit 6", can_do: "Present a review.", minutes: 6 } ] }
-      - { id: bipa5.u07, title: { target: "Kuliner dan Identitas", en: "Food and identity", ar: "الطعام والهوية" }, stop: Banjarmasin,
-          can_do: ["Discuss food as identity", "Use per-…-an and ke-…-an abstract nouns"], grammar: [id.confix.per-an],
-          vocabulary: ["regional cuisine", "trade", "migration"], culture: { souvenir: Lok Baintan floating market, note: "Banjarmasin's floating markets trade from boats at dawn; soto Banjar shows Arab, Chinese and Malay influences." },
-          lessons: [ { id: bipa5.u07.l01, kind: learn, title: "Perdagangan, perkebunan", can_do: "Use per-…-an.", grammar: [id.confix.per-an], minutes: 6 },
-                     { id: bipa5.u07.l02, kind: learn, title: "Soto Banjar", can_do: "Read a cultural essay.", minutes: 5 },
-                     { id: bipa5.u07.l03, kind: learn, title: "Pasar terapung", can_do: "Describe a tradition.", minutes: 6 },
-                     { id: bipa5.u07.l04, kind: learn, title: "Cita rasa", can_do: "Describe flavours and seasoning.", minutes: 6 },
-                     { id: bipa5.u07.l05, kind: learn, title: "Halal dan tradisi", can_do: "Discuss food rules and customs.", minutes: 6 },
-                     { id: bipa5.u07.l06, kind: practice, title: "Identitas di piring", can_do: "Write an essay on food and identity.", minutes: 6 },
-                     { id: bipa5.u07.l07, kind: practice, title: "Diskusi budaya makan", can_do: "Discuss culture through food.", minutes: 6 },
-                     { id: bipa5.u07.l08, kind: practice, title: "Resep keluarga", can_do: "Tell a family recipe's story.", minutes: 7 },
-                     { id: bipa5.u07.l09, kind: review, title: "Ulangan Unit 7", can_do: "Talk about food as identity.", minutes: 6 } ] }
-      - { id: bipa5.u08, title: { target: "Opini Publik", en: "Public opinion", ar: "الرأي العام" }, stop: Martapura,
-          can_do: ["Hedge and soften claims", "Read an op-ed critically"], grammar: [id.hedging],
-          vocabulary: ["surveys", "opinion", "media bias"], culture: { souvenir: Martapura gem market, note: "Indonesian op-eds hedge often ('tampaknya', 'barangkali'); direct confrontation reads as rude." },
-          lessons: [ { id: bipa5.u08.l01, kind: learn, title: "Tampaknya, barangkali", can_do: "Hedge claims.", grammar: [id.hedging], minutes: 6 },
-                     { id: bipa5.u08.l02, kind: learn, title: "Membaca opini", can_do: "Analyse an op-ed.", minutes: 6 },
-                     { id: bipa5.u08.l03, kind: learn, title: "Survei dan data", can_do: "Read survey results.", minutes: 6 },
-                     { id: bipa5.u08.l04, kind: learn, title: "Jajak pendapat", can_do: "Read an opinion poll.", minutes: 6 },
-                     { id: bipa5.u08.l05, kind: learn, title: "Sikap penulis", can_do: "Recognise a writer's stance.", minutes: 6 },
-                     { id: bipa5.u08.l06, kind: practice, title: "Tanggapan", can_do: "Write a response piece.", minutes: 5 },
-                     { id: bipa5.u08.l07, kind: practice, title: "Debat bernuansa", can_do: "Debate with nuance.", minutes: 6 },
-                     { id: bipa5.u08.l08, kind: practice, title: "Kolom opini", can_do: "Write a short opinion column.", minutes: 6 },
-                     { id: bipa5.u08.l09, kind: review, title: "Ulangan Unit 8", can_do: "Read and answer an opinion piece.", minutes: 6 } ] }
-      - { id: bipa5.u09, title: { target: "Bahasa dan Masyarakat", en: "Language and society", ar: "اللغة والمجتمع" }, stop: Pontianak,
-          can_do: ["Discuss language variation and loanwords", "Explain how Arabic and other languages shaped Indonesian"], grammar: [id.register.formal-informal],
-          vocabulary: ["loanwords", "slang", "standard language (bahasa baku)"], arabic_bridge: ["sound-shift rules review", "false friends review"],
-          culture: { souvenir: Equator Monument, note: "Indonesian grew from Malay, the old trade lingua franca; Arabic, Sanskrit, Dutch, Portuguese, Chinese and English all left words." },
-          lessons: [ { id: bipa5.u09.l01, kind: learn, title: "Kata serapan", can_do: "Trace loanwords.", grammar: [id.register.formal-informal], minutes: 6 },
-                     { id: bipa5.u09.l02, kind: learn, title: "Bahasa baku dan gaul", can_do: "Compare standard and slang.", minutes: 6 },
-                     { id: bipa5.u09.l03, kind: learn, title: "Bahasa daerah", can_do: "Discuss regional languages.", minutes: 6 },
-                     { id: bipa5.u09.l04, kind: learn, title: "Dari Melayu ke Indonesia", can_do: "Tell how Malay became Indonesian.", minutes: 6 },
-                     { id: bipa5.u09.l05, kind: learn, title: "Campur kode", can_do: "Notice code-mixing.", minutes: 6 },
-                     { id: bipa5.u09.l06, kind: practice, title: "Jembatan Arab", can_do: "Present the Arabic Bridge in Indonesian.", minutes: 6 },
-                     { id: bipa5.u09.l07, kind: practice, title: "Salah kaprah", can_do: "Correct common mistakes in standard Indonesian.", minutes: 6 },
-                     { id: bipa5.u09.l08, kind: practice, title: "Diskusi bahasa", can_do: "Discuss language use with nuance.", minutes: 7 },
-                     { id: bipa5.u09.l09, kind: review, title: "Ulangan Unit 9", can_do: "Explain language variation.", minutes: 6 } ] }
-      - { id: bipa5.u10, title: { target: "Laporan dan Presentasi", en: "Reports and presentations", ar: "التقارير والعروض" }, stop: Singkawang,
-          can_do: ["Give a structured presentation", "Write a report with a point of view"], grammar: [id.argument.connectors, id.nominalization],
-          vocabulary: ["presentation language", "data description"], culture: { souvenir: Cap Go Meh in Singkawang, note: "Singkawang's Chinese-Dayak-Malay Cap Go Meh parade is a showcase of tolerance." },
-          lessons: [ { id: bipa5.u10.l01, kind: learn, title: "Struktur laporan", can_do: "Structure a report.", grammar: [id.nominalization], minutes: 6 },
-                     { id: bipa5.u10.l02, kind: learn, title: "Bahasa presentasi", can_do: "Signpost a talk.", grammar: [id.argument.connectors], minutes: 6 },
-                     { id: bipa5.u10.l03, kind: learn, title: "Mendeskripsikan data", can_do: "Describe a chart.", minutes: 6 },
-                     { id: bipa5.u10.l04, kind: learn, title: "Alat bantu presentasi", can_do: "Design clear visual aids.", minutes: 6 },
-                     { id: bipa5.u10.l05, kind: learn, title: "Tampil percaya diri", can_do: "Present with confidence.", minutes: 6 },
-                     { id: bipa5.u10.l06, kind: practice, title: "Presentasi 5 menit", can_do: "Present a topic with data.", minutes: 6 },
-                     { id: bipa5.u10.l07, kind: practice, title: "Menulis laporan", can_do: "Write a report.", minutes: 6 },
-                     { id: bipa5.u10.l08, kind: practice, title: "Laporan perjalanan", can_do: "Report on a journey with a view.", minutes: 7 },
-                     { id: bipa5.u10.l09, kind: review, title: "Ulangan Unit 10", can_do: "Report with a point of view.", minutes: 6 } ] }
+      - id: bipa5.u01
+        title: {"target": "Dunia Kerja", "en": "The world of work", "ar": "عالم العمل"}
+        stop: Balikpapan
+        can_do: ["Handle a job interview", "Write a formal application", "Use formal vs informal register deliberately"]
+        grammar: ["id.register.formal-informal", "id.sentence.complex"]
+        vocabulary: ["CV", "interview", "workplace culture"]
+        culture: {"souvenir": "Oil-city Balikpapan", "note": "Workplace hierarchy shows in language: 'Bapak/Ibu' for superiors, never first names alone."}
+        lessons:
+          - { id: bipa5.u01.l01, kind: learn, title: "Ragam resmi", can_do: "Switch register.", grammar: [id.register.formal-informal], minutes: 6 }
+          - { id: bipa5.u01.l02, kind: learn, title: "Kalimat majemuk bertingkat", can_do: "Build subordinate clauses.", grammar: [id.sentence.complex], minutes: 6 }
+          - { id: bipa5.u01.l03, kind: learn, title: "Membaca iklan lowongan", can_do: "Read a job advert.", minutes: 6 }
+          - { id: bipa5.u01.l04, kind: learn, title: "Riwayat hidup", can_do: "Describe your experience for a CV.", minutes: 6 }
+          - { id: bipa5.u01.l05, kind: learn, title: "Budaya kantor", can_do: "Talk about office life politely.", minutes: 6 }
+          - { id: bipa5.u01.l06, kind: learn, title: "Lowongan di perusahaan tambang", can_do: "Read a mining company's job advert: who they recruit, qualifications, pay and compensation, and the competition.", minutes: 7 }
+          - { id: bipa5.u01.l07, kind: learn, title: "Hari pertama di kantor", can_do: "Meet your colleagues on day one: your mentor, the expert, contractor, designer and accountant, and show commitment and initiative.", minutes: 7 }
+          - { id: bipa5.u01.l08, kind: learn, title: "Evaluasi tiga bulan", can_do: "Follow a performance review: productive, efficient, consistent, contribution and strengths, the adviser, and resigning.", minutes: 7 }
+          - { id: bipa5.u01.l09, kind: learn, title: "Gaji, tabungan, masa depan", can_do: "Talk about salary, saving and your financial future, and about unemployment, employers and consultants.", minutes: 7 }
+          - { id: bipa5.u01.l10, kind: practice, title: "Wawancara kerja", can_do: "Do a mock interview.", minutes: 6 }
+          - { id: bipa5.u01.l11, kind: practice, title: "Surat lamaran", can_do: "Write an application letter.", minutes: 6 }
+          - { id: bipa5.u01.l12, kind: practice, title: "Wawancara kedua", can_do: "Discuss terms in a second interview.", minutes: 6 }
+          - { id: bipa5.u01.l13, kind: review, title: "Ulangan Unit 1", can_do: "Handle the world of work in formal Indonesian.", minutes: 7 }
+      - id: bipa5.u02
+        title: {"target": "Ibu Kota Baru", "en": "The new capital", "ar": "العاصمة الجديدة"}
+        stop: Penajam (IKN Nusantara)
+        can_do: ["Follow a policy debate", "Argue with concessive clauses"]
+        grammar: ["id.conjunction.concessive", "id.argument.connectors"]
+        vocabulary: ["urban planning", "policy", "migration"]
+        culture: {"souvenir": "Nusantara capital site", "note": "Indonesia is moving its capital from Jakarta to Nusantara (IKN) in East Kalimantan — a hot debate topic."}
+        lessons:
+          - { id: bipa5.u02.l01, kind: learn, title: "Meskipun, walaupun", can_do: "Concede and counter.", grammar: [id.conjunction.concessive], minutes: 7 }
+          - { id: bipa5.u02.l02, kind: learn, title: "Selain itu, dengan demikian", can_do: "Connect arguments.", grammar: [id.argument.connectors], minutes: 6 }
+          - { id: bipa5.u02.l03, kind: learn, title: "Pindah ibu kota", can_do: "Read a policy article.", minutes: 5 }
+          - { id: bipa5.u02.l04, kind: learn, title: "Tata kota", can_do: "Describe a planned city.", minutes: 6 }
+          - { id: bipa5.u02.l05, kind: learn, title: "Dampak dan manfaat", can_do: "Weigh effects of a policy.", minutes: 6 }
+          - { id: bipa5.u02.l06, kind: learn, title: "Meninjau lokasi proyek", can_do: "Talk on a project-site visit: infrastructure, dams, concrete, cement and hectares, obstacles and impact.", minutes: 7 }
+          - { id: bipa5.u02.l07, kind: learn, title: "Berita dari parlemen", can_do: "Follow political news: cabinet, parliament and assembly, powers, and the controversy and its consequences.", minutes: 7 }
+          - { id: bipa5.u02.l08, kind: learn, title: "Bupati turun ke desa", can_do: "Report a regent's village visit: transport, institutions, the economy, people's welfare and their problems.", minutes: 7 }
+          - { id: bipa5.u02.l09, kind: learn, title: "Pendatang, pengungsi, keramaian", can_do: "Talk about people coming to the city: displaced people, shelters, crowds, lodgings and what observers say.", minutes: 7 }
+          - { id: bipa5.u02.l10, kind: practice, title: "Debat IKN", can_do: "Argue a position.", minutes: 6 }
+          - { id: bipa5.u02.l11, kind: practice, title: "Esai argumentasi", can_do: "Write an argumentative essay.", minutes: 6 }
+          - { id: bipa5.u02.l12, kind: practice, title: "Suara warga", can_do: "Report residents' views.", minutes: 6 }
+          - { id: bipa5.u02.l13, kind: review, title: "Ulangan Unit 2", can_do: "Argue about the new capital.", minutes: 6 }
+      - id: bipa5.u03
+        title: {"target": "Teknologi dan Kehidupan", "en": "Technology and life", "ar": "التكنولوجيا والحياة"}
+        stop: Samarinda
+        can_do: ["Explain a technology's effects", "Turn verbs into nouns for formal writing"]
+        grammar: ["id.nominalization"]
+        vocabulary: ["digital economy", "apps", "privacy"]
+        culture: {"souvenir": "Mahakam river", "note": "Indonesia has one of the world's largest app-based economies: ride-hailing, e-wallets, live-shopping."}
+        lessons:
+          - { id: bipa5.u03.l01, kind: learn, title: "Nominalisasi", can_do: "Nominalise for formal style.", grammar: [id.nominalization], minutes: 6 }
+          - { id: bipa5.u03.l02, kind: learn, title: "Ekonomi digital", can_do: "Read a long feature article.", minutes: 6 }
+          - { id: bipa5.u03.l03, kind: learn, title: "Privasi data", can_do: "Explain a technology risk.", minutes: 6 }
+          - { id: bipa5.u03.l04, kind: learn, title: "Belanja daring", can_do: "Shop and order online.", minutes: 6 }
+          - { id: bipa5.u03.l05, kind: learn, title: "Kecerdasan buatan", can_do: "Discuss automation and jobs.", minutes: 6 }
+          - { id: bipa5.u03.l06, kind: learn, title: "Akun kantor dibobol", can_do: "Describe a hacked work account: the hacker, password, admin, data leak and update, and reason it through.", minutes: 7 }
+          - { id: bipa5.u03.l07, kind: learn, title: "Siaran dari Sungai Mahakam", can_do: "Talk about a celebrity's live stream: viewers, sponsor, posting and uploading, the drone, the audio and popularity.", minutes: 7 }
+          - { id: bipa5.u03.l08, kind: learn, title: "Mesin pintar di tambang", can_do: "Explain new technology at a mine: engineering, breakthroughs, simulation, prediction and mechanism, the monitor and antenna, rationally.", minutes: 7 }
+          - { id: bipa5.u03.l09, kind: learn, title: "Rapat pemasaran", can_do: "Take part in a marketing meeting: trends, platforms, virtual events, an exclusive commercial deal, an idol and the lens.", minutes: 7 }
+          - { id: bipa5.u03.l10, kind: practice, title: "Presentasi teknologi", can_do: "Present an explanation.", minutes: 6 }
+          - { id: bipa5.u03.l11, kind: practice, title: "Ringkasan artikel", can_do: "Summarise a long text.", minutes: 5 }
+          - { id: bipa5.u03.l12, kind: practice, title: "Mesin dan manusia", can_do: "Discuss AI and jobs in a group.", minutes: 7 }
+          - { id: bipa5.u03.l13, kind: review, title: "Ulangan Unit 3", can_do: "Explain a technology and its effects.", minutes: 6 }
+      - id: bipa5.u04
+        title: {"target": "Pendidikan", "en": "Education", "ar": "التعليم"}
+        stop: Tenggarong
+        can_do: ["Compare education systems", "Report what others said"]
+        grammar: ["id.reported-speech"]
+        vocabulary: ["schools", "pesantren", "universities", "scholarships"]
+        arabic_bridge: ["pesantren & santri", "madrasah ← مدرسة", "ilmu ← علم", "kitab ← كتاب"]
+        culture: {"souvenir": "Kutai Kartanegara palace", "note": "Pesantren (Islamic boarding schools) educate millions; many graduates go on to Al-Azhar in Cairo."}
+        lessons:
+          - { id: bipa5.u04.l01, kind: learn, title: "Katanya…", can_do: "Report speech.", grammar: [id.reported-speech], minutes: 6 }
+          - { id: bipa5.u04.l02, kind: learn, title: "Pesantren dan Al-Azhar", can_do: "Compare institutions.", minutes: 6 }
+          - { id: bipa5.u04.l03, kind: learn, title: "Beasiswa", can_do: "Read scholarship terms.", minutes: 6 }
+          - { id: bipa5.u04.l04, kind: learn, title: "Sekolah dan kampus", can_do: "Describe a school system.", minutes: 6 }
+          - { id: bipa5.u04.l05, kind: learn, title: "Kuliah di luar negeri", can_do: "Talk about studying abroad.", minutes: 6 }
+          - { id: bipa5.u04.l06, kind: learn, title: "Sehari di kampus", can_do: "Talk about a day on campus: the seminar, canteen and locker, students, readings and formulas, and topics.", minutes: 7 }
+          - { id: bipa5.u04.l07, kind: learn, title: "Nasehat dari pesantren", can_do: "Talk about pesantren education: advice and role models, revelation, God's word and the hereafter, and teaching and learning.", minutes: 7 }
+          - { id: bipa5.u04.l08, kind: learn, title: "Sebelum berangkat ke Kairo", can_do: "Talk about leaving to study abroad: visa, customs and quarantine, homesickness and settling in, reunions, and religion.", minutes: 7 }
+          - { id: bipa5.u04.l09, kind: practice, title: "Wawancara alumni", can_do: "Interview and report.", minutes: 6 }
+          - { id: bipa5.u04.l10, kind: practice, title: "Membandingkan sekolah", can_do: "Write a comparison.", minutes: 6 }
+          - { id: bipa5.u04.l11, kind: practice, title: "Esai beasiswa", can_do: "Write a scholarship essay.", minutes: 6 }
+          - { id: bipa5.u04.l12, kind: review, title: "Ulangan Unit 4", can_do: "Compare and report on education.", minutes: 6 }
+      - id: bipa5.u05
+        title: {"target": "Hutan dan Sungai", "en": "Forests and rivers", "ar": "الغابات والأنهار"}
+        stop: Tanjung Puting
+        can_do: ["Discuss conservation with nuance", "Use ter- / ke-…-an passives of state"]
+        grammar: ["id.passive.ter-ke-an"]
+        vocabulary: ["rainforest", "orangutans", "palm oil", "deforestation"]
+        culture: {"souvenir": "Orangutans of Camp Leakey", "note": "Borneo's peat forests are central to the palm-oil debate; Dayak communities defend customary forest rights."}
+        lessons:
+          - { id: bipa5.u05.l01, kind: learn, title: "Terbakar, kebanjiran", can_do: "Express states and adversity.", grammar: [id.passive.ter-ke-an], minutes: 6 }
+          - { id: bipa5.u05.l02, kind: learn, title: "Sawit", can_do: "Read a long report.", minutes: 5 }
+          - { id: bipa5.u05.l03, kind: learn, title: "Orangutan dan hutan adat", can_do: "Discuss conservation with nuance.", minutes: 6 }
+          - { id: bipa5.u05.l04, kind: learn, title: "Gambut dan kabut asap", can_do: "Explain peat fires and haze.", minutes: 6 }
+          - { id: bipa5.u05.l05, kind: learn, title: "Masyarakat Dayak", can_do: "Describe customary rights.", minutes: 6 }
+          - { id: bipa5.u05.l06, kind: learn, title: "Malam di Tanjung Puting", can_do: "Describe a night on a jungle river trip: swamp, humidity, dense forest and shallow water, monkeys, bats, mosquitoes and wild beasts.", minutes: 7 }
+          - { id: bipa5.u05.l07, kind: learn, title: "Kebun di hulu sungai", can_do: "Talk about farming upriver: fertile soil, fertiliser, seeds and waste, and their effect on frogs, lizards and prey.", minutes: 7 }
+          - { id: bipa5.u05.l08, kind: learn, title: "Api di lahan gambut", can_do: "Explain peat fires: embers underground and putting them out, carbon and the atmosphere, disaster and danger, and animals dying out.", minutes: 7 }
+          - { id: bipa5.u05.l09, kind: learn, title: "Gugatan hutan adat", can_do: "Follow a customary-forest court case: the lawsuit, hearing, testimony, defender, verdict, sanctions and rejection, and ancestral land.", minutes: 7 }
+          - { id: bipa5.u05.l10, kind: practice, title: "Sudut pandang", can_do: "Present two viewpoints.", minutes: 6 }
+          - { id: bipa5.u05.l11, kind: practice, title: "Esai sudut pandang", can_do: "Write a viewpoint essay.", minutes: 6 }
+          - { id: bipa5.u05.l12, kind: practice, title: "Laporan lapangan", can_do: "Report a field visit.", minutes: 6 }
+          - { id: bipa5.u05.l13, kind: review, title: "Ulangan Unit 5", can_do: "Discuss forests from more than one side.", minutes: 6 }
+      - id: bipa5.u06
+        title: {"target": "Seni Pertunjukan", "en": "Performing arts", "ar": "الفنون الأدائية"}
+        stop: Palangka Raya
+        can_do: ["Review a performance", "Use per- / memper- verbs"]
+        grammar: ["id.prefix.memper"]
+        vocabulary: ["dance", "music", "theatre", "criticism"]
+        culture: {"souvenir": "Dayak hornbill dance", "note": "Dayak dances imitate the hornbill (enggang), a sacred bird of Borneo."}
+        lessons:
+          - { id: bipa5.u06.l01, kind: learn, title: "Memperbaiki, mempertunjukkan", can_do: "Use memper-.", grammar: [id.prefix.memper], minutes: 6 }
+          - { id: bipa5.u06.l02, kind: learn, title: "Ulasan", can_do: "Read a critical review.", minutes: 6 }
+          - { id: bipa5.u06.l03, kind: learn, title: "Tari enggang", can_do: "Describe a performance.", minutes: 6 }
+          - { id: bipa5.u06.l04, kind: learn, title: "Musik sape", can_do: "Describe music and instruments.", minutes: 6 }
+          - { id: bipa5.u06.l05, kind: learn, title: "Sanggar seni", can_do: "Talk about rehearsing a show.", minutes: 6 }
+          - { id: bipa5.u06.l06, kind: learn, title: "Latihan di sanggar", can_do: "Talk at a play rehearsal: acting, the narrator and a debut, costumes and sketches, instruments and enthusiasm.", minutes: 7 }
+          - { id: bipa5.u06.l07, kind: learn, title: "Musisi muda dari Palangka Raya", can_do: "Interview a young musician: jazz, bass and composition, singing and vibration, the producer, imagination and obsession.", minutes: 7 }
+          - { id: bipa5.u06.l08, kind: learn, title: "Pena seorang kritikus", can_do: "Write a critique of a show: dramatic or tragic, with humour, elegance and brilliance, fantasy and ink.", minutes: 7 }
+          - { id: bipa5.u06.l09, kind: learn, title: "Galeri kerajinan Dayak", can_do: "Visit a crafts gallery: thread, silk, brass and copper, bells and antiques.", minutes: 7 }
+          - { id: bipa5.u06.l10, kind: practice, title: "Menulis ulasan", can_do: "Review a performance.", minutes: 6 }
+          - { id: bipa5.u06.l11, kind: practice, title: "Diskusi pertunjukan", can_do: "Discuss a show you saw.", minutes: 6 }
+          - { id: bipa5.u06.l12, kind: practice, title: "Wawancara seniman", can_do: "Interview an artist.", minutes: 6 }
+          - { id: bipa5.u06.l13, kind: review, title: "Ulangan Unit 6", can_do: "Present a review.", minutes: 6 }
+      - id: bipa5.u07
+        title: {"target": "Kuliner dan Identitas", "en": "Food and identity", "ar": "الطعام والهوية"}
+        stop: Banjarmasin
+        can_do: ["Discuss food as identity", "Use per-…-an and ke-…-an abstract nouns"]
+        grammar: ["id.confix.per-an"]
+        vocabulary: ["regional cuisine", "trade", "migration"]
+        culture: {"souvenir": "Lok Baintan floating market", "note": "Banjarmasin's floating markets trade from boats at dawn; soto Banjar shows Arab, Chinese and Malay influences."}
+        lessons:
+          - { id: bipa5.u07.l01, kind: learn, title: "Perdagangan, perkebunan", can_do: "Use per-…-an.", grammar: [id.confix.per-an], minutes: 6 }
+          - { id: bipa5.u07.l02, kind: learn, title: "Soto Banjar", can_do: "Read a cultural essay.", minutes: 5 }
+          - { id: bipa5.u07.l03, kind: learn, title: "Pasar terapung", can_do: "Describe a tradition.", minutes: 6 }
+          - { id: bipa5.u07.l04, kind: learn, title: "Cita rasa", can_do: "Describe flavours and seasoning.", minutes: 6 }
+          - { id: bipa5.u07.l05, kind: learn, title: "Halal dan tradisi", can_do: "Discuss food rules and customs.", minutes: 6 }
+          - { id: bipa5.u07.l06, kind: learn, title: "Berdagang di atas perahu", can_do: "Talk at the floating market: trading, auctions, stock and supply, prawns, pumpkin and chillies, and lovely smells.", minutes: 7 }
+          - { id: bipa5.u07.l07, kind: learn, title: "Gudang di pelabuhan", can_do: "Explain a port food supply chain: cargo, distribution, consumption and the exchange, flour, wheat, tins and sausages.", minutes: 7 }
+          - { id: bipa5.u07.l08, kind: learn, title: "Buka puasa di rumah mertua", can_do: "Describe iftar at your in-laws': fasting, being treated, feeling full, crab, clams and butter, and something gross.", minutes: 7 }
+          - { id: bipa5.u07.l09, kind: learn, title: "Piknik sehat di tepi sungai", can_do: "Talk on a healthy picnic: herbs, vitamins, lemon, salad and calories, bakso anyway, and food security.", minutes: 7 }
+          - { id: bipa5.u07.l10, kind: practice, title: "Identitas di piring", can_do: "Write an essay on food and identity.", minutes: 6 }
+          - { id: bipa5.u07.l11, kind: practice, title: "Diskusi budaya makan", can_do: "Discuss culture through food.", minutes: 6 }
+          - { id: bipa5.u07.l12, kind: practice, title: "Resep keluarga", can_do: "Tell a family recipe's story.", minutes: 7 }
+          - { id: bipa5.u07.l13, kind: review, title: "Ulangan Unit 7", can_do: "Talk about food as identity.", minutes: 6 }
+      - id: bipa5.u08
+        title: {"target": "Opini Publik", "en": "Public opinion", "ar": "الرأي العام"}
+        stop: Martapura
+        can_do: ["Hedge and soften claims", "Read an op-ed critically"]
+        grammar: ["id.hedging"]
+        vocabulary: ["surveys", "opinion", "media bias"]
+        culture: {"souvenir": "Martapura gem market", "note": "Indonesian op-eds hedge often ('tampaknya', 'barangkali'); direct confrontation reads as rude."}
+        lessons:
+          - { id: bipa5.u08.l01, kind: learn, title: "Tampaknya, barangkali", can_do: "Hedge claims.", grammar: [id.hedging], minutes: 6 }
+          - { id: bipa5.u08.l02, kind: learn, title: "Membaca opini", can_do: "Analyse an op-ed.", minutes: 6 }
+          - { id: bipa5.u08.l03, kind: learn, title: "Survei dan data", can_do: "Read survey results.", minutes: 6 }
+          - { id: bipa5.u08.l04, kind: learn, title: "Jajak pendapat", can_do: "Read an opinion poll.", minutes: 6 }
+          - { id: bipa5.u08.l05, kind: learn, title: "Sikap penulis", can_do: "Recognise a writer's stance.", minutes: 6 }
+          - { id: bipa5.u08.l06, kind: learn, title: "Angka-angka anggaran", can_do: "Read budget figures and statistics: billions and trillions, maximum and minimum, and comment optimistically or realistically.", minutes: 7 }
+          - { id: bipa5.u08.l07, kind: learn, title: "Di ruang redaksi", can_do: "Talk in the newsroom: journalist, editor, scandal and forum, broadcasting, official notices, the spread of rumours and sensation.", minutes: 7 }
+          - { id: bipa5.u08.l08, kind: learn, title: "Membaca opini dengan kritis", can_do: "Read an op-ed critically: naive or extreme, independent or not, from which perspective, its drawbacks and how true it is.", minutes: 7 }
+          - { id: bipa5.u08.l09, kind: practice, title: "Tanggapan", can_do: "Write a response piece.", minutes: 5 }
+          - { id: bipa5.u08.l10, kind: practice, title: "Debat bernuansa", can_do: "Debate with nuance.", minutes: 6 }
+          - { id: bipa5.u08.l11, kind: practice, title: "Kolom opini", can_do: "Write a short opinion column.", minutes: 6 }
+          - { id: bipa5.u08.l12, kind: review, title: "Ulangan Unit 8", can_do: "Read and answer an opinion piece.", minutes: 6 }
+      - id: bipa5.u09
+        title: {"target": "Bahasa dan Masyarakat", "en": "Language and society", "ar": "اللغة والمجتمع"}
+        stop: Pontianak
+        can_do: ["Discuss language variation and loanwords", "Explain how Arabic and other languages shaped Indonesian"]
+        grammar: ["id.register.formal-informal"]
+        vocabulary: ["loanwords", "slang", "standard language (bahasa baku)"]
+        arabic_bridge: ["sound-shift rules review", "false friends review"]
+        culture: {"souvenir": "Equator Monument", "note": "Indonesian grew from Malay, the old trade lingua franca; Arabic, Sanskrit, Dutch, Portuguese, Chinese and English all left words."}
+        lessons:
+          - { id: bipa5.u09.l01, kind: learn, title: "Kata serapan", can_do: "Trace loanwords.", grammar: [id.register.formal-informal], minutes: 6 }
+          - { id: bipa5.u09.l02, kind: learn, title: "Bahasa baku dan gaul", can_do: "Compare standard and slang.", minutes: 6 }
+          - { id: bipa5.u09.l03, kind: learn, title: "Bahasa daerah", can_do: "Discuss regional languages.", minutes: 6 }
+          - { id: bipa5.u09.l04, kind: learn, title: "Dari Melayu ke Indonesia", can_do: "Tell how Malay became Indonesian.", minutes: 6 }
+          - { id: bipa5.u09.l05, kind: learn, title: "Campur kode", can_do: "Notice code-mixing.", minutes: 6 }
+          - { id: bipa5.u09.l06, kind: learn, title: "Chat dengan anak muda", can_do: "Understand young people's slang chat: elo, temen, ngerti, gini, kayaknya, cuman, lagian, sob, and their standard forms.", minutes: 7 }
+          - { id: bipa5.u09.l07, kind: learn, title: "Menerjemahkan ungkapan", can_do: "Translate idioms: literal versus meaning, description, dialogue and composition, identical forms, features and levels.", minutes: 7 }
+          - { id: bipa5.u09.l08, kind: learn, title: "Pontianak yang majemuk", can_do: "Talk about a plural city: brotherhood, togetherness, friendship, humanity, China and Hindus, the dominant language and in-laws.", minutes: 7 }
+          - { id: bipa5.u09.l09, kind: practice, title: "Jembatan Arab", can_do: "Present the Arabic Bridge in Indonesian.", minutes: 6 }
+          - { id: bipa5.u09.l10, kind: practice, title: "Salah kaprah", can_do: "Correct common mistakes in standard Indonesian.", minutes: 6 }
+          - { id: bipa5.u09.l11, kind: practice, title: "Diskusi bahasa", can_do: "Discuss language use with nuance.", minutes: 7 }
+          - { id: bipa5.u09.l12, kind: review, title: "Ulangan Unit 9", can_do: "Explain language variation.", minutes: 6 }
+      - id: bipa5.u10
+        title: {"target": "Laporan dan Presentasi", "en": "Reports and presentations", "ar": "التقارير والعروض"}
+        stop: Singkawang
+        can_do: ["Give a structured presentation", "Write a report with a point of view"]
+        grammar: ["id.argument.connectors", "id.nominalization"]
+        vocabulary: ["presentation language", "data description"]
+        culture: {"souvenir": "Cap Go Meh in Singkawang", "note": "Singkawang's Chinese-Dayak-Malay Cap Go Meh parade is a showcase of tolerance."}
+        lessons:
+          - { id: bipa5.u10.l01, kind: learn, title: "Struktur laporan", can_do: "Structure a report.", grammar: [id.nominalization], minutes: 6 }
+          - { id: bipa5.u10.l02, kind: learn, title: "Bahasa presentasi", can_do: "Signpost a talk.", grammar: [id.argument.connectors], minutes: 6 }
+          - { id: bipa5.u10.l03, kind: learn, title: "Mendeskripsikan data", can_do: "Describe a chart.", minutes: 6 }
+          - { id: bipa5.u10.l04, kind: learn, title: "Alat bantu presentasi", can_do: "Design clear visual aids.", minutes: 6 }
+          - { id: bipa5.u10.l05, kind: learn, title: "Tampil percaya diri", can_do: "Present with confidence.", minutes: 6 }
+          - { id: bipa5.u10.l06, kind: learn, title: "Menyiapkan presentasi", can_do: "Prepare a presentation: a demo and Zoom, structure and transitions, a quick overview and details, angles, and recommending.", minutes: 7 }
+          - { id: bipa5.u10.l07, kind: learn, title: "Membaca grafik penjualan", can_do: "Describe a chart: volume and comparison, the most and the lowest, the overall trend, proportionality, radius, and citing sources.", minutes: 7 }
+          - { id: bipa5.u10.l08, kind: learn, title: "Cap Go Meh di Singkawang", can_do: "Describe Cap Go Meh: the parade and procession, lion dance, firecrackers, Chinese temples and incense, the photographer and what stands out.", minutes: 7 }
+          - { id: bipa5.u10.l09, kind: learn, title: "Laporan dari perjalanan", can_do: "Write a travel report: compass, continents and oceans, the trek and the villa, decorations and fireworks, exploring and recommending.", minutes: 7 }
+          - { id: bipa5.u10.l10, kind: practice, title: "Presentasi 5 menit", can_do: "Present a topic with data.", minutes: 6 }
+          - { id: bipa5.u10.l11, kind: practice, title: "Menulis laporan", can_do: "Write a report.", minutes: 6 }
+          - { id: bipa5.u10.l12, kind: practice, title: "Laporan perjalanan", can_do: "Report on a journey with a view.", minutes: 7 }
+          - { id: bipa5.u10.l13, kind: review, title: "Ulangan Unit 10", can_do: "Report with a point of view.", minutes: 6 }
     level_test: { id: bipa5.test, minutes: 50, pass_mark: 0.7, covers: ["long complex reading", "viewpoint essay", "presentation", "interview"] }
 
   # ───────────────────────────── BIPA 6 · Sumatra ─────────────────────────────

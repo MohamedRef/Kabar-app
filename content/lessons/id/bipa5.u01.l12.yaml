@@ -1,0 +1,201 @@
+schema: kabar.lesson/v1
+id: bipa5.u01.l12
+language: id
+title: Wawancara kedua
+can_do:
+  ar_eg: تتكلم مع الـ HR في مقابلة تانية عن فترة التجربة واللايحة والتعريف بالشغل.
+  ar: أن تناقش مع الموارد البشرية في مقابلة ثانية فترة التجربة واللائحة وبرنامج التعريف.
+  en: Discuss probation, rules and orientation with HR in a second interview.
+slides:
+  - title: Sebelum kontrak
+    grammar: id.register.formal-informal
+    body:
+      ar_eg: |
+        في المقابلة التانية الـ HR بيشرحلك الشروط. خليك رسمي (saya، Bapak / Ibu، Apakah …؟):
+        - tata tertib = لايحة المكتب وقواعده
+        - orientasi = برنامج تعريف للموظفين الجداد
+        - masa percobaan، tunjangan، atasan: كلمات عرفتها قبل كده
+        وأحسن رد: «Saya bersedia» = أنا موافق ومستعد.
+      ar: |
+        في المقابلة الثانية تشرح لك الموارد البشرية الشروط، فالتزم الرسمي (saya وBapak / Ibu وApakah …؟):
+        - tata tertib = لائحة المكتب وقواعده
+        - orientasi = برنامج تعريف للموظفين الجدد
+        - masa percobaan وtunjangan وatasan: كلمات تعرفها
+        وأفضل جواب: «Saya bersedia» = أنا موافق ومستعدّ.
+      en: |
+        In a second interview HR explains the terms. Stay formal (saya, Bapak / Ibu, Apakah …?):
+        - tata tertib = office rules
+        - orientasi = orientation for new staff
+        - masa percobaan, tunjangan, atasan: words you know
+        The best reply: «Saya bersedia» = I'm willing.
+exercises:
+  - id: e01
+    type: listen
+    text: Minggu pertama ada orientasi untuk karyawan baru di ruang rapat.
+    question:
+      ar_eg: إيه اللي هيحصل أول أسبوع؟
+      ar: ماذا سيحدث في الأسبوع الأول؟
+      en: What happens in the first week?
+    options:
+      - اجتماع عن الميزانية.
+      - برنامج تعريف للموظفين الجداد.
+      - مقابلة شغل تالتة.
+    answer: 1
+    words: [orientasi]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «tata tertib kantor» معناها إيه؟
+      ar: ما معنى «tata tertib kantor»؟
+      en: What does "tata tertib kantor" mean?
+    options:
+      - لايحة المكتب وقواعده.
+      - مواعيد الغدا.
+      - مرتبات الموظفين.
+    answer: 0
+    words: [tata tertib]
+  - id: e03
+    type: fill_blank
+    sentence: Silakan baca ___ kantor sebelum mulai bekerja.
+    meaning:
+      ar_eg: اتفضل اقرا لايحة المكتب قبل ما تبدأ شغل.
+      ar: تفضّل اقرأ لائحة المكتب قبل أن تبدأ العمل.
+      en: Please read the office rules before you start work.
+    options: [tata tertib, basa-basi, jam karet]
+    answers: [tata tertib]
+    words: [tata tertib]
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: في فترة التجربة، هكون مسؤول عن ملفات العملا.
+      ar: خلال فترة التجربة، سأكون مسؤولًا عن ملفات العملاء.
+      en: During probation, I'll be responsible for client files.
+    answer: Selama masa percobaan, saya bertanggung jawab atas berkas klien.
+    distractors: [bawahan, gue]
+    words: [masa percobaan, bertanggung jawab]
+  - id: e05
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: شكرًا يا أستاذة، أنا مستعد أبدأ الاتنين الجاي.
+      ar: شكرًا يا سيدتي، أنا مستعدّ للبدء الإثنين المقبل.
+      en: Thank you, ma'am. I'm willing to start next Monday.
+    answers:
+      - Terima kasih, Bu. Saya bersedia mulai Senin depan.
+      - Terima kasih, Bu, saya bersedia mulai hari Senin depan.
+      - Terima kasih, Ibu. Saya bersedia mulai Senin depan.
+      - Terima kasih, Bu. Saya bersedia mulai bekerja Senin depan.
+    words: [bersedia]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أول ما تقابل مديرك الجديد، تقول إيه؟
+      ar: ماذا تقول حين تلتقي رئيسك الجديد أول مرة؟
+      en: What do you say when you first meet your new boss?
+    options:
+      - Hai, Hendra! Gue anak baru.
+      - Bro, aku Mohamed, ya.
+      - Selamat pagi, Pak Hendra. Saya Mohamed, karyawan baru.
+    answer: 2
+    explain:
+      ar_eg: 'مع الـ atasan: Pak + الاسم وsaya، ومن غير gue ولا bro.'
+      ar: 'مع الرئيس: Pak مع الاسم وsaya، دون gue أو bro.'
+      en: With a superior, use Pak + name and saya, never gue or bro.
+    words: [atasan]
+  - id: e07
+    type: speaking
+    text: Kapan orientasi untuk karyawan baru dimulai, Bu?
+    meaning:
+      ar_eg: برنامج التعريف للموظفين الجداد هيبدأ إمتى يا أستاذة؟
+      ar: متى يبدأ برنامج التعريف للموظفين الجدد يا سيدتي؟
+      en: When does orientation for new staff start, ma'am?
+    words: [orientasi]
+  - id: e08
+    type: dictation
+    text: Menurut tata tertib, karyawan tidak boleh pakai jam karet.
+    meaning:
+      ar_eg: حسب اللايحة، ممنوع الموظفين يتأخروا.
+      ar: بحسب اللائحة، لا يجوز للموظفين التأخّر.
+      en: According to the rules, staff may not run on rubber time.
+    words: [tata tertib, jam karet]
+  - id: e09
+    type: match_pairs
+    pairs:
+      - text: rekan kerja
+        ar_eg: زميل شغل
+        ar: زميل عمل
+        en: colleague
+      - text: sungkan
+        ar_eg: مكسوف من باب الاحترام
+        ar: محرج توقيرًا
+        en: reluctant out of deference
+      - text: basa-basi
+        ar_eg: كلام مجاملة
+        ar: كلام مجاملة
+        en: small talk
+      - text: orientasi
+        ar_eg: برنامج تعريف
+        ar: برنامج تعريف
+        en: orientation
+      - text: fasih
+        ar_eg: بطلاقة
+        ar: بطلاقة
+        en: fluent
+    words: [rekan kerja, sungkan, basa-basi, orientasi, fasih]
+  - id: e10
+    type: fill_blank
+    sentence: Saya ___ berbahasa Arab, jadi saya bisa menangani klien dari Mesir.
+    meaning:
+      ar_eg: أنا بتكلم عربي بطلاقة، فأقدر أتولى العملا اللي من مصر.
+      ar: أتحدّث العربية بطلاقة، فأستطيع أن أتولّى العملاء القادمين من مصر.
+      en: I'm fluent in Arabic, so I can handle clients from Egypt.
+    options: [fasih, sungkan, magang]
+    answers: [fasih]
+    words: [fasih, menangani]
+dialogue:
+  title: Wawancara dengan Bu Lestari
+  lines:
+    - speaker: Bu Lestari
+      text: Pak Mohamed, ini wawancara kedua. Saya ingin menjelaskan tata tertib kantor kami.
+      ar_eg: يا أستاذ محمد، دي المقابلة التانية. عايزة أشرحلك لايحة المكتب عندنا.
+      ar: يا أستاذ محمد، هذه المقابلة الثانية، وأودّ أن أشرح لك لائحة مكتبنا.
+      en: Pak Mohamed, this is the second interview. I'd like to explain our office rules.
+    - speaker: Mohamed
+      text: Baik, Bu. Apakah ada masa percobaan?
+      ar_eg: تمام يا أستاذة. فيه فترة تجربة؟
+      ar: حسنًا يا سيدتي. هل هناك فترة تجربة؟
+      en: Certainly, ma'am. Is there a probation period?
+    - speaker: Bu Lestari
+      text: Ada, tiga bulan. Minggu pertama ada orientasi untuk karyawan baru.
+      ar_eg: أيوه، ٣ شهور. وأول أسبوع فيه برنامج تعريف للموظفين الجداد.
+      ar: نعم، ثلاثة أشهر، وفي الأسبوع الأول برنامج تعريف للموظفين الجدد.
+      en: Yes, three months. In the first week there's orientation for new staff.
+    - speaker: Mohamed
+      text: Saya bersedia. Siapa yang bertanggung jawab atas orientasi itu?
+      ar_eg: أنا موافق. مين المسؤول عن برنامج التعريف ده؟
+      ar: أنا موافق. من المسؤول عن برنامج التعريف هذا؟
+      en: I'm willing. Who is responsible for the orientation?
+    - speaker: Bu Lestari
+      text: Pak Hendra, calon atasan Anda. Beliau tidak suka jam karet, ya!
+      ar_eg: الأستاذ هندرا، اللي هيبقى مديرك. وهو مابيحبش التأخير، خد بالك!
+      ar: الأستاذ هندرا، رئيسك المرتقب، وهو لا يحبّ التأخّر، فانتبه!
+      en: Pak Hendra, who would be your boss. He doesn't like rubber time!
+    - speaker: Mohamed
+      text: Tenang, Bu. Saya selalu datang tepat waktu.
+      ar_eg: اطمني يا أستاذة. أنا دايمًا بوصل في ميعادي.
+      ar: اطمئنّي يا سيدتي، فأنا أصل دائمًا في الموعد.
+      en: Don't worry, ma'am. I'm always on time.
+new_words:
+  - word: tata tertib
+    pos: noun
+    ar_eg: لايحة / قواعد
+    ar: لائحة، نظام داخلي
+    en: rules, regulations
+  - word: orientasi
+    pos: noun
+    ar_eg: برنامج تعريف للجداد
+    ar: برنامج تعريفي
+    en: orientation, induction
+review:
+  status: draft
+  verified: false
