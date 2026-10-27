@@ -740,3 +740,32 @@ pub fn request_notifications() -> Result<(), String> {
         .map(drop)
     })
 }
+
+/// The reminders Android showed since the last call, as unix ms.
+pub fn take_delivered_reminders() -> Result<Vec<u64>, String> {
+    let json = reminders(|env, class, activity| {
+        let s = env
+            .call_static_method(
+                class,
+                jni_str!("takeDelivered"),
+                jni_sig!("(Landroid/content/Context;)Ljava/lang/String;"),
+                &[JValue::Object(activity)],
+            )?
+            .l()?;
+        to_string(env, s)
+    })?;
+    Ok(json.and_then(|j| serde_json::from_str(&j).ok()).unwrap_or_default())
+}
+
+/// Whether Kabar is exempt from battery optimisation (Samsung's sleeping apps).
+pub fn battery_unrestricted() -> Result<bool, String> {
+    reminders(|env, class, activity| {
+        env.call_static_method(
+            class,
+            jni_str!("batteryUnrestricted"),
+            jni_sig!("(Landroid/content/Context;)Z"),
+            &[JValue::Object(activity)],
+        )?
+        .z()
+    })
+}
