@@ -104,7 +104,7 @@ id = "uu.grandmother"        # stable id; the curriculum links to it
 level = "j3"                 # Javanese level that opens it (j1, j2, j3)
 title.arz = "…"              # every text below is { arz, ar, en }
 setting.arz = "…"
-partner.name = "Mbah Sri"    # its words may appear in any line
+partner.name = "Mbah Putri"    # its words may appear in any line
 partner.owed = "krama"       # ngoko | madya | krama | krama_inggil | krama_andhap
 partner.role.arz = "…"
 
@@ -144,9 +144,9 @@ why.arz = "…"                # shown after every pick
 
 | id | Level | Partner | Fits |
 |---|---|---|---|
-| `uu.friend` | J1 | Bayu, a friend your age | ngoko |
-| `uu.market` | J2 | Bu Darmi, an older fruit seller | polite market speech (light krama with madya words) |
-| `uu.grandmother` | J3 | Mbah Sri, a friend's grandmother | krama; krama inggil for her, krama/andhap for you |
+| `uu.friend` | J1 | Dimas, a friend your age | ngoko |
+| `uu.market` | J2 | Bu Siti, the older fruit seller at Pasar Gede | polite market speech (light krama with madya words) |
+| `uu.grandmother` | J3 | Mbah Putri, Dimas's grandmother | krama; krama inggil for her, krama/andhap for you |
 | `uu.teacher` | J3 | Pak Harjo, your teacher | krama; krama inggil for him |
 | `uu.elder` | J3 | Pak Karto, an elderly neighbour | krama; krama inggil for him |
 
