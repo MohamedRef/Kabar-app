@@ -79,6 +79,23 @@ pub fn LearningSection() -> Element {
             }
 
             div { class: "field",
+                label {
+                    input {
+                        r#type: "checkbox",
+                        checked: !settings.grammar_hints_off,
+                        onchange: {
+                            let db = db.clone();
+                            move |e: FormEvent| {
+                                let on = e.checked();
+                                ui.update_settings(&db, |s| s.grammar_hints_off = !on)
+                            }
+                        },
+                    }
+                    " {st(lang, S::GrammarHints)}"
+                }
+            }
+
+            div { class: "field",
                 span { class: "label", "{ui.t(Msg::SettingsRetention)}" }
                 div { class: "row", role: "group",
                     for (pct, label) in [(85u8, Msg::RetentionLight), (90, Msg::RetentionBalanced), (95, Msg::RetentionFirm)] {

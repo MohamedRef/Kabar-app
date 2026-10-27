@@ -226,6 +226,9 @@ pub fn WordGrammar(i: usize) -> Element {
 #[component]
 pub fn GrammarAt(doc: Rc<ReadDoc>, grammar: Rc<DocGrammar>, i: usize, voice: Voice) -> Element {
     let ui = use_context::<Ui>();
+    if ui.settings.read().grammar_hints_off {
+        return rsx! {};
+    }
     let mut seen = BTreeSet::new();
     let here: Vec<(Found, Hit)> =
         grammar.at(i).into_iter().filter(|(f, _)| seen.insert(f.grammar.clone())).collect();
@@ -266,6 +269,9 @@ pub fn GrammarAt(doc: Rc<ReadDoc>, grammar: Rc<DocGrammar>, i: usize, voice: Voi
 pub fn LineGrammar(seg: usize) -> Element {
     let ui = use_context::<Ui>();
     let st = use_context::<ReaderState>();
+    if ui.settings.read().grammar_hints_off {
+        return rsx! {};
+    }
     let voice = voice_of(*st.voice.read());
     let Some(grammar) = st.grammar.read().clone() else { return rsx! {} };
     let Some(range) = st.open.read().as_ref().and_then(|o| o.doc.segments.get(seg).map(|s| (s.start, s.end)))
