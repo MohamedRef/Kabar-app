@@ -163,13 +163,22 @@
 .jm-level[data-state="current"] .pin-code { fill: var(--surface); }
 .jm-pin[aria-pressed="true"] .pin-hit { fill: var(--dawn-soft); fill-opacity: 0.7; }
 .jm-pin:focus-visible .pin-hit { stroke: var(--focus); stroke-width: 0.8; }
-.jm-controls { position: absolute; inset-block-end: 0.75rem; inset-inline-end: 0.75rem; display: grid; gap: 0.4rem; }
+/* Under the map, never over its art (#152). */
+.jm-controls { display: flex; gap: 0.4rem; justify-content: flex-end; margin-block-start: -0.25rem; }
 .jm-controls button {
   inline-size: 44px; block-size: 44px; padding: 0; display: grid; place-items: center;
-  font-size: 1.3rem; line-height: 1; box-shadow: var(--shadow);
+  font-size: 1.3rem; line-height: 1;
 }
 .jm-hint { margin: 0; font-size: 0.85rem; }
 .jm-map .continue-bar { position: static; justify-content: flex-start; }
+/* Tablet landscape and Mac: the map takes the height the window gives it
+   (top bar, the zoom row, hint and Lanjut under it and the page padding aside), instead of a
+   short strip over an empty half screen. */
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .jm-stage {
+  aspect-ratio: auto !important;
+  block-size: max(24rem, calc(100dvh - 16rem));
+  max-block-size: none;
+}
 .jm-panel {
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
   box-shadow: var(--shadow); padding: 1rem; display: grid; gap: 0.5rem;
