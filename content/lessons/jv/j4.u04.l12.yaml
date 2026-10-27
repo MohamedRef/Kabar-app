@@ -1,0 +1,241 @@
+schema: kabar.lesson/v1
+id: j4.u04.l12
+language: jv
+title: Ulangan J4.4
+can_do:
+  ar_eg: تعدّي زيارة كاملة بأدب.
+  ar: أن تُتمّ زيارة كاملة بأدب.
+  en: Handle a visit politely.
+slides:
+  - title: Tembung lan tangan
+    body:
+      ar_eg: |
+        الأدب الجاوي = كلمة + حركة:
+        - على الباب: Kula nuwun! · الضيف يدخل: Mangga pinarak · «إزيك؟»: Pangestunipun, sae.
+        - الأكل: Sampun repot-repot قبل، وSampun cekap بعد. · غلطت: Ngapunten / Nyuwun pangapunten.
+        - قدام الكبار القاعدين: توطّي + Nuwun sewu, ndherek langkung. · الإيد اليمين (tengen) دايمًا، والشاورة بالإبهام.
+        - ماشي: Kula nyuwun pamit rumiyin ← Ngatos-atos.
+      ar: |
+        الأدب الجاوي = كلمة + إيماءة:
+        - عند الباب: Kula nuwun! · دخول الضيف: Mangga pinarak · «كيف حالك؟»: Pangestunipun, sae.
+        - الطعام: Sampun repot-repot قبله، وSampun cekap بعده · الخطأ: Ngapunten / Nyuwun pangapunten.
+        - أمام الكبار الجالسين: انحناء + Nuwun sewu, ndherek langkung · اليد اليمنى (tengen) دائمًا، والإشارة بالإبهام.
+        - الانصراف: Kula nyuwun pamit rumiyin ← Ngatos-atos.
+      en: |
+        Javanese courtesy = word + gesture:
+        - At the door: Kula nuwun! · Guest comes in: Mangga pinarak · "How are you?": Pangestunipun, sae.
+        - Food: Sampun repot-repot before, Sampun cekap after. · A slip: Ngapunten / Nyuwun pangapunten.
+        - Past seated elders: stoop + Nuwun sewu, ndherek langkung. · Always the right hand (tengen); point with the thumb.
+        - Leaving: Kula nyuwun pamit rumiyin → Ngatos-atos.
+    grammar: jv.etiquette.phrases
+    examples:
+      - text: Nuwun sewu, ndherek langkung.
+        ar_eg: لا مؤاخذة، بعد إذنكم أعدّي.
+        ar: عفوًا، بعد إذنكم أمرّ.
+        en: Excuse me, may I pass?
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kula nuwun
+        ar_eg: على الباب
+        ar: عند الباب
+        en: at the door
+      - text: ndherek langkung
+        ar_eg: وإنت معدّي قدام ناس قاعدين
+        ar: عند المرور أمام الجالسين
+        en: passing seated people
+      - text: sampun repot-repot
+        ar_eg: المضيف جايب أكل
+        ar: حين يأتي المضيف بالطعام
+        en: the host brings food
+      - text: ngatos-atos
+        ar_eg: وإنت بتودّع حد
+        ar: عند توديع أحد
+        en: seeing someone off
+    words: [kula nuwun, ndherek langkung, sampun repot-repot, ngatos-atos]
+  - id: e02
+    type: listen
+    text: Pangestunipun, sae, Bu.
+    options: ['Pangestunipun, sae, Bu.', 'Sampun cekap, Bu.', 'Sami-sami, Bu.']
+    answer: 0
+    meaning:
+      ar_eg: بدعواتك، كويس يا هانم.
+      ar: بخير بدعائكِ يا سيدتي.
+      en: Fine, thanks to your blessing, ma'am.
+    words: [pangestunipun]
+  - id: e03
+    type: listen
+    text: Mangga pinarak, Mbah.
+    options: ['Mangga lenggah, Mbah.', 'Mangga pinarak, Mbah.', 'Mangga dhahar, Mbah.']
+    answer: 1
+    meaning:
+      ar_eg: اتفضلي ادخلي يا تيتة.
+      ar: تفضّلي بالدخول يا جدتي.
+      en: Please come in, Grandma.
+    words: [pinarak]
+  - id: e04
+    type: fill_blank
+    sentence: Sampun ___, matur nuwun.
+    meaning:
+      ar_eg: (بعد الأكل) كفاية كده، متشكر.
+      ar: (بعد الأكل) يكفي، شكرًا.
+      en: (after eating) That's plenty, thank you.
+    options: [cekap, repot-repot, pinarak]
+    answers: [cekap]
+    words: [cekap]
+  - id: e05
+    type: fill_blank
+    sentence: ___! — Mangga!
+    meaning:
+      ar_eg: يا أهل الدار! — اتفضل!
+      ar: يا أهل الدار! — تفضّل!
+      en: Hello, anyone home? — Come in!
+    options: [Kula nuwun, Ngatos-atos, Ngapunten]
+    answers: [Kula nuwun]
+    words: [kula nuwun]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: لا مؤاخذة يا هانم، بعد إذنك أعدّي.
+      ar: عفوًا يا سيدتي، بعد إذنكِ أمرّ.
+      en: Excuse me, ma'am, may I pass?
+    answer: Nuwun sewu, Bu, ndherek langkung.
+    distractors: [mangga, pinarak]
+    words: [ndherek langkung]
+  - id: e07
+    type: speaking
+    text: Matur nuwun sanget, Bu. Kula nyuwun pamit rumiyin.
+    meaning:
+      ar_eg: متشكر أوي يا هانم. أستأذن أنا.
+      ar: شكرًا جزيلًا يا سيدتي. أستأذنكِ في الانصراف.
+      en: Thank you very much, ma'am. Please excuse me, I'll be going.
+    words: [nyuwun pamit]
+  - id: e08
+    type: match_pairs
+    pairs:
+      - text: sopan
+        ar_eg: مؤدّب
+        ar: مؤدّب
+        en: polite
+      - text: lancang
+        ar_eg: بيتجرّأ
+        ar: متجرّئ
+        en: presumptuous
+      - text: ngajeni
+        ar_eg: يقدّر، يحترم
+        ar: يقدّر، يوقّر
+        en: show regard for
+      - text: ora ilok
+        ar_eg: عيب، مايصحّش
+        ar: لا يليق
+        en: improper
+      - text: nuding
+        ar_eg: يشاور على
+        ar: يشير إلى
+        en: point at
+      - text: sila
+        ar_eg: قعدة التربيعة
+        ar: جلسة التربّع
+        en: sit cross-legged
+    words: [sopan, lancang, ngajeni, ora ilok, nuding, sila]
+  - id: e09
+    type: match_pairs
+    pairs:
+      - text: jempol
+        ar_eg: الإبهام
+        ar: الإبهام
+        en: thumb
+      - text: mbungkuk
+        ar_eg: يوطّي ضهره
+        ar: ينحني بظهره
+        en: stoop
+      - text: andhap asor
+        ar_eg: متواضع
+        ar: متواضع
+        en: humble
+      - text: ngalah
+        ar_eg: يتنازل
+        ar: يتنازل
+        en: give way
+      - text: tepa slira
+        ar_eg: يراعي التاني
+        ar: يراعي الآخر
+        en: empathy
+      - text: sungkan
+        ar_eg: متحرّج من الاحترام
+        ar: متحرّج احترامًا
+        en: reluctant out of respect
+    words: [jempol, mbungkuk, andhap asor, ngalah, tepa slira, sungkan]
+  - id: e10
+    type: fill_blank
+    sentence: Turis iku ___, ora sopan.
+    meaning:
+      ar_eg: السايح ده ___، مش مؤدّب.
+      ar: ذلك السائح ___، غير مؤدّب.
+      en: That tourist is ___, not polite.
+    options: [kasar, alus, luhur]
+    answers: [kasar]
+    words: [kasar, alus, luhur]
+  - id: e11
+    type: match_pairs
+    pairs:
+      - text: grapyak
+        ar_eg: ودود، بشوش
+        ar: ودود، بشوش
+        en: friendly, warm
+      - text: sregep
+        ar_eg: شغّال، مجتهد
+        ar: مجتهد، نشيط
+        en: hard-working, diligent
+      - text: rewang
+        ar_eg: يساعد في مناسبة عند الجيران؛ اللي بيساعد
+        ar: يساعد في مناسبة عند الجيران؛ المساعِد
+        en: help out at a neighbour's event; helper
+    words: [grapyak, sregep, rewang]
+dialogue:
+  title: Wonten Taman Sari
+  lines:
+    - speaker: Bu Ningsih
+      text: Mas, menika Taman Sari.
+      ar_eg: يا ابني، دي تامان ساري.
+      ar: يا بني، هذه تامان ساري.
+      en: This is Taman Sari.
+    - speaker: Mohamed
+      text: Wah, sae sanget, Bu! Menika rumiyin kagem sinten?
+      ar_eg: الله، حلوة أوي يا هانم! دي كانت زمان لمين؟
+      ar: ما أجملها يا سيدتي! لمن كانت قديمًا؟
+      en: Oh, it's beautiful, ma'am! Who was it for, in the old days?
+    - speaker: Bu Ningsih
+      text: Kagem Sultan lan garwanipun, Mas.
+      ar_eg: للسلطان وزوجاته يا ابني.
+      ar: للسلطان وزوجاته يا بني.
+      en: For the Sultan and his wives.
+    - speaker: Mohamed
+      text: Nuwun sewu, ndherek langkung.
+      ar_eg: لا مؤاخذة، بعد إذنكم أعدّي.
+      ar: عفوًا، بعد إذنكم أمرّ.
+      en: Excuse me, may I pass?
+    - speaker: Pak Marto
+      text: Mangga, Mas, mangga.
+      ar_eg: اتفضل يا ابني، اتفضل.
+      ar: تفضّل يا بني، تفضّل.
+      en: Go ahead, go ahead.
+    - speaker: Bu Ningsih
+      text: Sae, Mas. Unggah-ungguh sampeyan sae sanget.
+      ar_eg: برافو يا ابني. أدبك حلو أوي.
+      ar: أحسنت يا بني. أدبك جميل جدًا.
+      en: Well done. Your manners are lovely.
+souvenir:
+  id: j4.u04.souvenir
+  title: Taman Sari
+  note:
+    ar_eg: |
+      تامان ساري «قصر المية» بتاع السلطان الأول، اتبنى في القرن التمنتاشر: حمّامات وجناين وممرات تحت الأرض، وفيها كمان مسجد تحت الأرض اسمه Sumur Gumuling بسلالم دايرة. وفي الحواري اللي حواليها، اللي اسمها Kampung Taman، هتلاقي الناس قاعدين قدام بيوتهم. عدّي من قدامهم موطّي شوية وإيدك اليمين لتحت، وقول «Nuwun sewu, ndherek langkung» — وهتشوف الابتسامة.
+    ar: |
+      تامان ساري «قصر الماء» للسلطان الأول، بُني في القرن الثامن عشر: أحواض وحدائق وممرات تحت الأرض، وفيه مسجد تحت الأرض يسمى Sumur Gumuling بسلالم دائرية. وفي الأزقة المحيطة به، Kampung Taman، يجلس الناس أمام بيوتهم؛ فمُرّ أمامهم منحنيًا قليلًا ويدك اليمنى إلى أسفل، وقل «Nuwun sewu, ndherek langkung»، وسترى الابتسامة.
+    en: |
+      Taman Sari, the "water palace" of the first Sultan, was built in the 18th century: bathing pools, gardens and underground passages, including an underground mosque, Sumur Gumuling, with circular stairways. In the lanes around it, Kampung Taman, people sit outside their houses. Pass them with a slight stoop, your right hand lowered, and say "Nuwun sewu, ndherek langkung", and watch the smiles.
+review:
+  status: draft
+  verified: false
