@@ -184,6 +184,11 @@ pub fn JourneyScreen() -> Element {
     let start = use_hook(|| start_level(&db, coach.profile.peek().as_ref()));
     let mut route = use_signal(|| Route::Indonesian);
     let mut pane = use_signal(|| Pane::Route);
+    // The stop picked on each route lives here, above the phone list and the
+    // map, so it survives a window resize or a trip to the suitcase
+    // (list-detail rule, docs/DESIGN.md). `None` = not picked yet.
+    let pick_id = use_signal(|| None::<Option<String>>);
+    let pick_jv = use_signal(|| None::<Option<String>>);
 
     let routes = match &*ROUTES {
         Ok(r) => r,
@@ -209,6 +214,7 @@ pub fn JourneyScreen() -> Element {
         .map(|c| souvenirs(c, &Progress::new(c, &completed)).len())
         .sum::<usize>();
     let compact = *ui.width.read() == WidthClass::Compact;
+    let picked = move || if route() == Route::Indonesian { pick_id } else { pick_jv };
 
     rsx! {
         style { {JOURNEY_CSS} }
@@ -243,9 +249,9 @@ pub fn JourneyScreen() -> Element {
             if pane() == Pane::Suitcase {
                 Suitcase { completed: completed.clone(), approved: approved.clone() }
             } else if compact {
-                RouteList { key: "{j.route:?}", j: j.clone() }
+                RouteList { key: "{j.route:?}", j: j.clone(), picked: picked() }
             } else {
-                MapView { key: "{j.route:?}", j: j.clone() }
+                MapView { key: "{j.route:?}", j: j.clone(), picked: picked() }
             }
         }
     }
@@ -254,26 +260,31 @@ pub fn JourneyScreen() -> Element {
 // ---------------------------------------------------------------- phone ----
 
 #[component]
-fn RouteList(j: Journey) -> Element {
+fn RouteList(j: Journey, picked: Signal<Option<Option<String>>>) -> Element {
     let ui = use_context::<Ui>();
     let cur = j.curriculum();
     let progress = j.progress();
     let elsewhere = j.done_elsewhere();
-    // Bring the current lesson into view once, gently.
-    use_effect(|| {
-        document::eval(
-            r#"const el = document.getElementById("journey-current");
-            if (el) {
+    // Bring the stop picked on the map (before a resize) or else the current
+    // lesson into view once, gently.
+    let (target, block) = match picked.peek().clone().flatten() {
+        Some(level) => (format!("rl-{level}"), "start"),
+        None => ("journey-current".to_string(), "center"),
+    };
+    use_effect(move || {
+        document::eval(&format!(
+            r#"const el = document.getElementById({target:?});
+            if (el) {{
               const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
-              el.scrollIntoView({ block: "center", behavior: still ? "auto" : "smooth" });
-            }"#,
-        );
+              el.scrollIntoView({{ block: "{block}", behavior: still ? "auto" : "smooth" }});
+            }}"#
+        ));
     });
 
     rsx! {
         div { class: "route-list",
             for level in cur.levels.iter() {
-                section { key: "{level.id}", class: "rl-level",
+                section { key: "{level.id}", id: "rl-{level.id}", class: "rl-level",
                     {level_head(&ui, &j, level, &progress, &elsewhere)}
                     {unit_stops(&ui, &j, level, &progress, true)}
                 }
@@ -500,7 +511,7 @@ fn kind_attr(kind: LessonKind) -> &'static str {
 // ------------------------------------------------------- tablet & Mac ----
 
 #[component]
-fn MapView(j: Journey) -> Element {
+fn MapView(j: Journey, picked: Signal<Option<Option<String>>>) -> Element {
     let ui = use_context::<Ui>();
     let cur = j.curriculum();
     let map = j.map();
@@ -511,11 +522,13 @@ fn MapView(j: Journey) -> Element {
         .and_then(|c| cur.levels.iter().find(|l| l.lessons().any(|x| x.id == c)))
         .or(cur.levels.first())
         .map(|l| l.id.clone());
-    let mut selected = use_signal(|| initial.clone());
+    let mut picked = picked;
+    let chosen = picked.read().clone().unwrap_or_else(|| initial.clone());
     let stage_id = format!("jm-stage-{}", j.route.target_lang());
     // Start centred on the place the learner is at.
-    let focus = initial
+    let focus = chosen
         .as_deref()
+        .or(initial.as_deref())
         .and_then(|id| map.pin(id))
         .map_or((map.view.x + map.view.w / 2.0, map.view.y + map.view.h / 2.0), |p| (p.x, p.y));
     let script = format!("{PAN_ZOOM_JS}({stage_id:?}, {:.2}, {:.2});", focus.0, focus.1);
@@ -536,7 +549,7 @@ fn MapView(j: Journey) -> Element {
     // on-screen size on both maps (the JS counter-scales them while zooming).
     let k = pin_scale(map);
     let dot = map.radius * 0.22;
-    let current_level = selected.read().clone();
+    let current_level = chosen.clone();
     let panel_level = current_level.as_deref().and_then(|id| cur.level(id));
     let spots = map_label_spots(cur, map);
     let rail = map.style == RouteStyle::Rail;
@@ -602,7 +615,7 @@ fn MapView(j: Journey) -> Element {
                                                             class: "jm-sticker",
                                                             "aria-hidden": "true",
                                                             "data-selected": if is_sel { "true" } else { "false" },
-                                                            onclick: move |_| selected.set(Some(id.clone())),
+                                                            onclick: move |_| picked.set(Some(Some(id.clone()))),
                                                             {
                                                                 // A short leader from the pin's edge to the sticker's,
                                                                 // so a sticker never reads as its neighbour's.
@@ -674,12 +687,12 @@ fn MapView(j: Journey) -> Element {
                                                     role: "button",
                                                     "aria-label": "{label}",
                                                     "aria-pressed": if is_sel { "true" } else { "false" },
-                                                    onclick: move |_| selected.set(Some(id.clone())),
+                                                    onclick: move |_| picked.set(Some(Some(id.clone()))),
                                                     onkeydown: move |e: KeyboardEvent| {
                                                         let key = e.key();
                                                         if key == Key::Enter || key == Key::Character(" ".into()) {
                                                             e.prevent_default();
-                                                            selected.set(Some(id2.clone()));
+                                                            picked.set(Some(Some(id2.clone())));
                                                         }
                                                     },
                                                     circle { class: "pin-hit", r: "8" }
@@ -725,7 +738,7 @@ fn MapView(j: Journey) -> Element {
             if let Some(level) = panel_level {
                 aside { class: "jm-panel", aria_label: "{level.place()}",
                     div { class: "jm-panel-close",
-                        button { aria_label: "{ui.t(Msg::JourneyClose)}", title: "{ui.t(Msg::JourneyClose)}", onclick: move |_| selected.set(None), "×" }
+                        button { aria_label: "{ui.t(Msg::JourneyClose)}", title: "{ui.t(Msg::JourneyClose)}", onclick: move |_| picked.set(Some(None)), "×" }
                     }
                     {level_head(&ui, &j, level, &progress, &elsewhere)}
                     {unit_stops(&ui, &j, level, &progress, false)}
