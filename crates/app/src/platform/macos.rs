@@ -166,7 +166,7 @@ pub mod reminders {
         }
         let done = RcBlock::new(|granted: Bool, _error: *mut NSError| {
             if !granted.as_bool() {
-                eprintln!("kabar: notifications not allowed on this Mac");
+                crate::diag::report!("notifications not allowed on this Mac");
             }
         });
         UNUserNotificationCenter::currentNotificationCenter()

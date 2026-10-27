@@ -16,7 +16,7 @@ if [ -n "$built" ]; then
 fi
 
 big="$(git ls-files -s | awk '{print $2}' | git cat-file --batch-check='%(objectsize) %(objectname)' \
-  | paste -d' ' - <(git ls-files) | awk -v limit="$LIMIT" '$1 > limit {print $1, $3}')"
+  | paste -d' ' - <(git ls-files) | awk -v limit="$LIMIT" '$1 > limit {size = $1; $1 = $2 = ""; sub(/^ +/, ""); print size, $0}')"
 if [ -n "$big" ]; then
   echo "Files over 5 MB are tracked:"
   head -10 <<<"$big"
