@@ -93,14 +93,10 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: indah
-        ar_eg: جميل
-        ar: جميل
-        en: beautiful
-      - text: seru
-        ar_eg: جامد، مثير
-        ar: مثير
-        en: exciting
+      - text: menyenangkan
+        ar_eg: ممتع
+        ar: ممتع
+        en: fun, pleasant
       - text: sejuk
         ar_eg: منعش (هوا)
         ar: منعش
@@ -109,7 +105,19 @@ exercises:
         ar_eg: متعب
         ar: مُتعب
         en: tiring
-    words: [indah, seru, sejuk, melelahkan]
+      - text: perahu
+        ar_eg: مركب
+        ar: قارب
+        en: boat
+      - text: matahari terbit
+        ar_eg: الشروق
+        ar: شروق الشمس
+        en: sunrise
+      - text: perjalanan
+        ar_eg: رحلة، مشوار
+        ar: رحلة
+        en: journey
+    words: [menyenangkan, sejuk, melelahkan, perahu, matahari terbit, perjalanan]
   - id: e02
     type: multiple_choice
     question: Liburan saya di Lovina sangat ___.
@@ -117,9 +125,9 @@ exercises:
       ar_eg: أجازتك كانت ممتعة جدًا. تختار أنهي صفة؟
       ar: كانت عطلتك ممتعة جدًا. أيّ صفة تختار؟
       en: Your holiday was really fun. Which adjective?
-    options: [melelahkan, sepi, menyenangkan]
+    options: [melelahkan, sejuk, menyenangkan]
     answer: 2
-    words: [menyenangkan]
+    words: [menyenangkan, sejuk, melelahkan]
   - id: e03
     type: listen
     text: Kami naik perahu jam enam pagi.
@@ -143,24 +151,30 @@ exercises:
   - id: e05
     type: build_sentence
     source:
-      ar_eg: بعد كده شفنا دلافين كتير.
-      ar: بعد ذلك رأينا دلافين كثيرة.
-      en: After that, we saw lots of dolphins.
-    answer: Setelah itu, kami melihat banyak lumba-lumba.
+      ar_eg: بعد كده ركبنا مركب وشفنا دلافين.
+      ar: بعد ذلك ركبنا قاربًا ورأينا دلافين.
+      en: After that, we took a boat and saw dolphins.
+    answer: Setelah itu, kami naik perahu dan melihat lumba-lumba.
     distractors: [akhirnya, sangat]
-    explain:
-      ar_eg: lumba-lumba كلمة واحدة مكررة دايمًا (حتى لو دلفين واحد)، فعادي تيجي بعد banyak.
-      ar: lumba-lumba كلمة مكررة في أصلها حتى للمفرد، لذا تأتي بعد banyak بلا إشكال.
-      en: lumba-lumba is always doubled, even for one dolphin, so it's fine after banyak.
-    words: [setelah itu, lumba-lumba]
+    words: [setelah itu, perahu, lumba-lumba]
   - id: e06
     type: speaking
-    text: Pertama, kami melihat matahari terbit. Setelah itu, kami melihat lumba-lumba. Seru sekali!
+    text: Pertama, kami melihat matahari terbit. Setelah itu, kami melihat lumba-lumba. Perjalanannya seru sekali!
     meaning:
-      ar_eg: الأول شفنا الشروق، وبعد كده شفنا الدلافين. كانت جامدة جدًا!
-      ar: أولًا شاهدنا الشروق، وبعد ذلك رأينا الدلافين. كان ذلك مثيرًا جدًا!
-      en: First we watched the sunrise. After that we saw the dolphins. So exciting!
-    words: [pertama, setelah itu, seru]
+      ar_eg: الأول شفنا الشروق، وبعد كده شفنا الدلافين. الرحلة كانت جامدة جدًا!
+      ar: أولًا شاهدنا الشروق، وبعد ذلك رأينا الدلافين. كانت الرحلة مثيرة جدًا!
+      en: First we watched the sunrise. After that we saw the dolphins. The trip was so exciting!
+    words: [pertama, matahari terbit, setelah itu, seru, perjalanan]
+  - id: e07
+    type: multiple_choice
+    question: Saat matahari terbit, pagi di Lovina ___.
+    question_meaning:
+      ar_eg: وقت الشروق الهوا كان منعش وبارد شوية. أنهي كلمة؟
+      ar: عند الشروق كان الهواء منعشًا وباردًا قليلًا. أيّ كلمة؟
+      en: At sunrise the air was cool and fresh. Which word?
+    options: [melelahkan, sejuk, menyenangkan]
+    answer: 1
+    words: [matahari terbit, sejuk, menyenangkan, melelahkan]
 dialogue:
   title: Cerita dari Lovina
   lines:
