@@ -137,10 +137,10 @@ exercises:
     words: [kados pundi]
   - id: e02
     type: listen
-    text: Pripun kabaripun?
-    options: ['Reginipun pinten?', 'Pripun kabaripun?', 'Asmanipun sinten?']
-    answer: 1
-    words: [pripun, kabar]
+    text: Kenging menapa panjenengan remen basa Jawi?
+    options: ['Kenging menapa panjenengan remen basa Jawi?', 'Kados pundi panjenengan sinau basa Jawi?', 'Pripun kabaripun?', 'Reginipun pinten?']
+    answer: 0
+    words: [kenging menapa, remen, basa Jawi, kados pundi, pripun, pinten]
   - id: e03
     type: fill_blank
     sentence: ___ panjenengan sinau basa Jawi? — Kula remen basa Jawi.
@@ -183,12 +183,26 @@ exercises:
     words: [menika, sae, sanget]
   - id: e06
     type: speaking
-    text: Nyuwun sewu, Bu, reginipun pinten?
+    text: Kula remen sanget sinau basa Jawi.
     meaning:
-      ar_eg: لا مؤاخذة يا حاجة، بكام؟
-      ar: عفوًا يا سيدتي، بكم ثمنه؟
-      en: Excuse me, ma'am, how much is it?
-    words: [nyuwun sewu, pinten]
+      ar_eg: أنا بحب أتعلم جاوي قوي.
+      ar: أحب تعلّم الجاوية كثيرًا.
+      en: I really love learning Javanese.
+    words: [kula, remen, sanget, basa Jawi]
+  - id: e07
+    type: multiple_choice
+    question: pripun
+    question_meaning:
+      ar_eg: pripun هي الشكل اليومي لأنهي كلمة؟
+      ar: pripun هي الصيغة اليومية لأي كلمة؟
+      en: pripun is the everyday form of which word?
+    options: [kados pundi, kenging menapa, sanget, pinten]
+    answer: 0
+    explain:
+      ar_eg: pripun = kados pundi = إزاي. kenging menapa = ليه، sanget = جدًا، pinten = كام.
+      ar: pripun = kados pundi = كيف، وkenging menapa = لماذا، وsanget = جدًا، وpinten = كم.
+      en: pripun = kados pundi = how; kenging menapa = why; sanget = very; pinten = how much.
+    words: [pripun, kados pundi, sanget, pinten]
 dialogue:
   title: Enjing wonten Mangkunegaran
   lines:
