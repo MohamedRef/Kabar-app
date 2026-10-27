@@ -97,46 +97,26 @@ static SEED: &[Norm] = &[
     n("yg", "yang", Id),
 ];
 
-/// Spoken Indonesian forms and their formal twins: the same word in the
-/// other register, not a synonym. Lessons accept both registers, so grading
-/// maps each side to the formal twin before comparing. Sorted by form.
-static SPOKEN: &[(&str, &str)] = &[
-    ("abis", "habis"),
-    ("aja", "saja"),
-    ("belom", "belum"),
-    ("bener", "benar"),
-    ("emang", "memang"),
-    ("engga", "tidak"),
-    ("enggak", "tidak"),
-    ("ga", "tidak"),
-    ("gak", "tidak"),
-    ("gimana", "bagaimana"),
-    ("gini", "begini"),
-    ("gitu", "begitu"),
-    ("kalo", "kalau"),
-    ("kayak", "seperti"),
-    ("ngerti", "mengerti"),
-    ("ngga", "tidak"),
-    ("nggak", "tidak"),
-    ("pake", "pakai"),
-    ("sampe", "sampai"),
-    ("tapi", "tetapi"),
-    ("tau", "tahu"),
-    ("udah", "sudah"),
-];
+/// Street forms whose formal twin is too loose to grade by: "terus" also
+/// means "keep on", not only "lalu".
+const NOT_FOR_GRADING: &[&str] = &["terus"];
 
-/// The formal twin of a lowercase Indonesian word ("udah" → "sudah",
-/// "tp" → "tapi" → "tetapi"), from [`SPOKEN`] and the one-word Indonesian
-/// chat forms in the seed list. `None` for a word that is already formal.
+/// The formal twin of a lowercase Indonesian word for grading ("udah" →
+/// "sudah", "tp" → "tapi" → "tetapi"), from the street list
+/// ([`super::street`]) and the one-word Indonesian chat forms in the seed
+/// list. One word maps to one word; `None` for a word that is already formal.
 pub fn formal_twin(word: &str) -> Option<&'static str> {
-    let spoken = |w: &str| SPOKEN.binary_search_by(|(f, _)| f.cmp(&w)).ok().map(|i| SPOKEN[i].1);
-    if let Some(twin) = spoken(word) {
+    let street = |w: &str| {
+        super::street::formal(Lang::Indonesian, w)
+            .filter(|f| !f.contains(' ') && !NOT_FOR_GRADING.contains(&w))
+    };
+    if let Some(twin) = street(word) {
         return Some(twin);
     }
     // "g" alone is too ambiguous (see `normalize`).
     let chat =
         lookup(word).filter(|n| n.lang == Lang::Indonesian && n.form != "g" && !n.full.contains(' '))?;
-    Some(spoken(chat.full).unwrap_or(chat.full))
+    Some(street(chat.full).unwrap_or(chat.full))
 }
 
 /// Looks up a lowercase form in the seed list.
@@ -167,17 +147,19 @@ mod tests {
     use super::*;
 
     #[test]
-    fn spoken_forms_are_sorted_and_map_to_formal_words() {
-        assert!(SPOKEN.windows(2).all(|w| w[0].0 < w[1].0), "keep SPOKEN sorted by form");
-        for (form, twin) in SPOKEN {
-            assert_eq!(formal_twin(twin), None, "{form} → {twin} must end on a formal word");
-        }
+    fn formal_twins_for_grading() {
         assert_eq!(formal_twin("nggak"), Some("tidak"));
+        assert_eq!(formal_twin("ngga"), Some("tidak"));
         assert_eq!(formal_twin("udh"), Some("sudah"));
-        assert_eq!(formal_twin("tp"), Some("tetapi"), "chat form → spoken → formal");
-        assert_eq!(formal_twin("gpp"), None, "several words: not a twin");
+        assert_eq!(formal_twin("tp"), Some("tetapi"), "chat form → street form → formal");
+        assert_eq!(formal_twin("makasih"), None, "two words: not a one-word twin");
+        assert_eq!(formal_twin("terus"), None, "too loose to grade by");
+        assert_eq!(formal_twin("gpp"), None);
         assert_eq!(formal_twin("ra"), None, "Javanese");
         assert_eq!(formal_twin("makan"), None);
+        for w in ["tidak", "sudah", "tetapi", "saja", "bagaimana"] {
+            assert_eq!(formal_twin(w), None, "{w} is already formal");
+        }
     }
 
     #[test]
