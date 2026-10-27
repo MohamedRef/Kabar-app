@@ -70,8 +70,7 @@ pub fn rtl(ui: &Ui) -> bool {
 
 /// "87%" in the UI's digits (and the Arabic percent sign with Eastern digits).
 pub fn pct(ui: &Ui, share: f32) -> String {
-    let n = ui.num((share.clamp(0.0, 1.0) * 100.0).round() as u64);
-    if ui.eastern() { format!("{n}٪") } else { format!("{n}%") }
+    ui.percent(share)
 }
 
 /// Minutes, or hours once there are a couple of them.

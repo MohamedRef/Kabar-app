@@ -42,7 +42,7 @@ use std::rc::Rc;
 
 use dioxus::prelude::*;
 use kabar_core::layout::WidthClass;
-use kabar_core::locale::{Direction, UiLanguage, format_number};
+use kabar_core::locale::{UiLanguage, format_number, format_percent, localize_digits, uses_eastern_digits};
 use kabar_core::settings::Settings;
 
 use crate::account::Cloud;
@@ -166,13 +166,30 @@ impl Ui {
     /// Whether numbers use Eastern Arabic digits right now.
     pub fn eastern(&self) -> bool {
         let s = self.settings.read();
-        s.eastern_digits && s.ui_language.dir() == Direction::Rtl
+        uses_eastern_digits(s.ui_language, s.eastern_digits)
     }
 
     /// A number in the UI's digits.
     pub fn num(&self, n: impl Into<u64>) -> String {
         let s = self.settings.read();
         format_number(n.into(), s.ui_language, s.eastern_digits)
+    }
+
+    /// Text with its digits in the UI's digits ("3:05", "1.4 MB").
+    pub fn digits(&self, text: &str) -> String {
+        let s = self.settings.read();
+        localize_digits(text, s.ui_language, s.eastern_digits)
+    }
+
+    /// A share (0.0–1.0) as a percentage in the UI's digits: "87%", "٨٧٪".
+    pub fn percent(&self, share: f32) -> String {
+        self.whole_percent((share.clamp(0.0, 1.0) * 100.0).round() as u64)
+    }
+
+    /// A whole percentage (87) in the UI's digits: "87%", "٨٧٪".
+    pub fn whole_percent(&self, n: impl Into<u64>) -> String {
+        let s = self.settings.read();
+        format_percent(n.into(), s.ui_language, s.eastern_digits)
     }
 
     /// Saves changed settings and updates the UI.
