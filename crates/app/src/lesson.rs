@@ -1354,7 +1354,12 @@ fn DialogueView(dialogue: Dialogue, language: String, shown: usize, missing: Sig
                                 let (d, l) = (dialogue.clone(), language.clone());
                                 move |_| speak_line(&d, i, &l, missing)
                             },
-                            span { class: "lp-speaker", bdi { "{line.speaker}" } }
+                            span { class: "lp-speaker",
+                                if let Some(src) = crate::portraits::of(&line.speaker, crate::portraits::Mood::Neutral) {
+                                    crate::portraits::Face { src, class: "lp-face" }
+                                }
+                                bdi { "{line.speaker}" }
+                            }
                             Annotated { text: line.text.clone(), tag: target, meaning: pick(&line.meaning, lang).to_string(), class: "lp-target" }
                         }
                     }
