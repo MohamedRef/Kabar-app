@@ -106,7 +106,7 @@ pub fn LearningSection() -> Element {
                                 let db = db.clone();
                                 move |_| ui.update_settings(&db, |s| s.desired_retention = RetentionPct(pct))
                             },
-                            "{ui.t(label)} · {ui.num(u64::from(pct))}%"
+                            "{ui.t(label)} · {ui.whole_percent(pct)}"
                         }
                     }
                 }

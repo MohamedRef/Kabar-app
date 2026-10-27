@@ -15,7 +15,7 @@ use dioxus::prelude::*;
 use kabar_core::lesson::{
     Answer, Grade, Player, Step, display_answer, parse_lesson, pick, references, validate,
 };
-use kabar_core::locale::{UiLanguage, eastern_arabic_digits, format_number, localize_digits};
+use kabar_core::locale::{UiLanguage, format_number, format_percent, localize_digits};
 use kabar_protocol::coach::{ActivityKind, Skill};
 use kabar_protocol::lesson::{
     Dialogue, Direction, Exercise, ExerciseKind, LessonContent, LessonPosition, LessonStep, Localized,
@@ -1366,8 +1366,7 @@ fn DialogueView(dialogue: Dialogue, language: String, shown: usize, missing: Sig
 
 fn duration_text(ms: u64, lang: UiLanguage, eastern: bool) -> String {
     let s = ms / 1000;
-    let text = format!("{}:{:02}", s / 60, s % 60);
-    if eastern && lang != UiLanguage::En { eastern_arabic_digits(&text) } else { text }
+    localize_digits(&format!("{}:{:02}", s / 60, s % 60), lang, eastern)
 }
 
 #[component]
@@ -1400,7 +1399,7 @@ fn SummaryView(
                 p { class: "ok reveal", "{lt(lang, L::Perfect)}" }
             }
             dl { class: "lp-stats reveal d2",
-                div { dt { "{lt(lang, L::Score)}" } dd { bdi { "{num(summary_score)}%" } } }
+                div { dt { "{lt(lang, L::Score)}" } dd { bdi { "{format_percent(u64::from(summary_score), lang, eastern)}" } } }
                 div { dt { "{lt(lang, L::Xp)}" } dd { bdi { "+{num(summary_xp)}" } } }
                 div { dt { "{lt(lang, L::Time)}" } dd { bdi { "{duration_text(duration_ms, lang, eastern)}" } } }
             }

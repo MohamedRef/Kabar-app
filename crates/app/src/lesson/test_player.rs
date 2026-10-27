@@ -9,7 +9,7 @@ use kabar_core::lesson::level_test::{
     ItemRecord, Scored, SelfGrade, Tally, TestResults, TestRunner, TestStep, parse_test, validate_test,
 };
 use kabar_core::lesson::{Answer, XP_FINISH, mistake_words, pick, references};
-use kabar_core::locale::{UiLanguage, format_number, localize_digits};
+use kabar_core::locale::{UiLanguage, format_percent, localize_digits};
 use kabar_protocol::coach::{ActivityKind, Skill};
 use kabar_protocol::coach::{CoachProfile, StartingPoint};
 use kabar_protocol::lesson::{Direction, ExerciseKind, LessonCompleted};
@@ -719,7 +719,7 @@ fn SkillBar(label: &'static str, tally: Tally) -> Element {
     let ui = use_context::<Ui>();
     let share = tally.share().unwrap_or(0.0);
     let pct = percent(share);
-    let shown = ui.num(pct);
+    let shown = ui.whole_percent(pct);
     rsx! {
         li { class: "lt-skill",
             span { class: "lt-skill-name", "{label}" }
@@ -732,7 +732,7 @@ fn SkillBar(label: &'static str, tally: Tally) -> Element {
                 aria_valuenow: "{pct}",
                 div { class: "lt-skill-fill", style: "inline-size: {pct}%" }
             }
-            span { class: "lt-skill-pct", bdi { "{shown}%" } }
+            span { class: "lt-skill-pct", bdi { "{shown}" } }
         }
     }
 }
@@ -744,11 +744,11 @@ fn Results(test: TestContent, results: TestResults, on_retry: EventHandler<()>) 
     let lang = settings.ui_language;
     let target = target_tag(&test.language);
     let score = percent(results.total.share().unwrap_or(0.0));
-    let score_text = format_number(u64::from(score), lang, settings.eastern_digits);
+    let score_text = format_percent(u64::from(score), lang, settings.eastern_digits);
     let level = test.id.strip_suffix(".test").map(level_label).unwrap_or_default();
     let mark = test
         .pass_mark
-        .map(|m| format!("{}%", format_number(u64::from(percent(m)), lang, settings.eastern_digits)))
+        .map(|m| format_percent(u64::from(percent(m)), lang, settings.eastern_digits))
         .unwrap_or_default();
     let not_passed = lt(lang, L::NotPassedBody).replace("{mark}", &mark);
     let skipped_line = lt(lang, L::Skipped).replace("{n}", &ui.num(results.skipped as u64));
@@ -808,7 +808,7 @@ fn Results(test: TestContent, results: TestResults, on_retry: EventHandler<()>) 
             }
             if test.kind == TestKind::Level {
                 dl { class: "lp-stats reveal d2",
-                    div { dt { "{lt(lang, L::Score)}" } dd { bdi { "{score_text}%" } } }
+                    div { dt { "{lt(lang, L::Score)}" } dd { bdi { "{score_text}" } } }
                 }
             }
             if !results.skills.is_empty() {
