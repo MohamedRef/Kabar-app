@@ -135,10 +135,14 @@ exercises:
         ar_eg: أنا
         ar: أنا
         en: I
-      - text: kowe
-        ar_eg: إنت / إنتِ
-        ar: أنتَ / أنتِ
-        en: you
+      - text: koen
+        ar_eg: إنت (سورابايا)
+        ar: أنت (سورابايا)
+        en: you (Surabaya)
+      - text: sampeyan
+        ar_eg: حضرتك
+        ar: حضرتك
+        en: you (polite)
       - text: dheweke
         ar_eg: هو / هي
         ar: هو / هي
@@ -151,7 +155,7 @@ exercises:
         ar_eg: صاحب
         ar: صديق
         en: friend
-    words: [aku, kowe, dheweke, awake dhewe, kanca]
+    words: [aku, koen, sampeyan, dheweke, awake dhewe, kanca]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -168,9 +172,9 @@ exercises:
   - id: e03
     type: listen
     text: Dheweke kancaku.
-    options: [Dheweke kancamu., Dheweke kancaku., Kowe kancaku.]
+    options: [Dheweke kancamu., Dheweke kancaku., Dheweke lan aku kanca.]
     answer: 1
-    words: [dheweke, kanca]
+    words: [dheweke, kanca, lan]
   - id: e04
     type: fill_blank
     sentence: Aku apik. ___ piye?
@@ -182,21 +186,32 @@ exercises:
     answers: [Kowe]
     words: [kowe]
   - id: e05
-    type: dictation
-    text: Aku lan kowe
+    type: listen
+    text: Awake dhewe kanca.
+    options: [Awake dhewe kanca., Dheweke kancaku., Aku lan kowe kanca.]
+    answer: 0
     meaning:
-      ar_eg: أنا وإنت
-      ar: أنا وأنت
-      en: you and me
-    words: [aku, lan, kowe]
+      ar_eg: إحنا صحاب.
+      ar: نحن أصدقاء.
+      en: We're friends.
+    words: [awake dhewe, kanca, dheweke, lan]
   - id: e06
     type: speaking
-    text: Kowe wis mangan?
+    text: Aku lan koen kanca.
     meaning:
-      ar_eg: إنت أكلت؟ (لصاحبك)
-      ar: هل أكلت؟ (لصديقك)
-      en: Have you eaten? (to a friend)
-    words: [kowe]
+      ar_eg: أنا وإنت صحاب. (سورابايا)
+      ar: أنا وأنت صديقان. (سورابايا)
+      en: You and I are friends. (Surabaya)
+    words: [aku, lan, koen, kanca]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «إحنا»؟
+      ar: أيّ كلمة تعني «نحن»؟
+      en: Which word means "we"?
+    options: [sampeyan, awake dhewe, dheweke, kowe]
+    answer: 1
+    words: [awake dhewe, sampeyan, dheweke, kowe]
 dialogue:
   title: Kanca anyar
   lines:
