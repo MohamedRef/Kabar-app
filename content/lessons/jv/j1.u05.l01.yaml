@@ -144,7 +144,11 @@ exercises:
         ar_eg: يفهم = mengerti
         ar: يفهم = mengerti
         en: understand = mengerti
-    words: [ora, dudu, ora ana, durung, ngerti]
+      - text: wong Jawa
+        ar_eg: واحد جاوي = orang Jawa
+        ar: جاويّ = orang Jawa
+        en: a Javanese person = orang Jawa
+    words: [ora, dudu, ora ana, durung, ngerti, wong Jawa]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -193,12 +197,26 @@ exercises:
     words: [dudu, wong]
   - id: e06
     type: speaking
-    text: Aku dudu wong Jawa, aku wong Mesir.
+    text: Aku dudu wong Jawa, aku wong Mesir. Nang omahku ora ana kopi.
     meaning:
-      ar_eg: أنا مش جاوي، أنا مصري.
-      ar: لستُ جاويًّا، أنا مصري.
-      en: I'm not Javanese, I'm Egyptian.
-    words: [dudu]
+      ar_eg: أنا مش جاوي، أنا مصري. في بيتي مفيش قهوة.
+      ar: لستُ جاويًّا، أنا مصري. لا توجد قهوة في بيتي.
+      en: I'm not Javanese, I'm Egyptian. There's no coffee at my house.
+    words: [dudu, wong Jawa, ora ana, kopi]
+  - id: e07
+    type: multiple_choice
+    question: Kopine ora ana.
+    question_meaning:
+      ar_eg: البيّاع قال كده. يقصد إيه بالإندونيسي؟
+      ar: قال البائع هذا. ماذا يقصد بالإندونيسية؟
+      en: The seller says this. What does he mean in Indonesian?
+    options: ['Kopinya tidak ada.', 'Ini bukan kopi.', 'Kopinya belum ada.']
+    answer: 0
+    explain:
+      ar_eg: ora ana = tidak ada = مفيش. dudu = bukan، وdurung = belum.
+      ar: ora ana = tidak ada = لا يوجد، وdudu = bukan، وdurung = belum.
+      en: ora ana = tidak ada; dudu = bukan, durung = belum.
+    words: [ora ana, kopi]
 dialogue:
   title: Kopi sapa?
   lines:

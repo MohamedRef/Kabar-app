@@ -145,7 +145,7 @@ exercises:
       ar_eg: kana = بعيد عن الاتنين (sana). kono = قريب منك (situ). kene = هنا.
       ar: kana للبعيد عنكما (sana)، وkono للقريب من المخاطب (situ)، وkene هنا.
       en: kana = far from both (sana); kono = near you (situ); kene = here.
-    words: [kana, kono, kene]
+    words: [kana, kono, kene, nang / neng]
   - id: e03
     type: fill_blank
     sentence: Aku ___ kene, Cak!
@@ -159,32 +159,66 @@ exercises:
       ar_eg: nang هنا بمعنى di (في). «Aku saka kene» تبقى «أنا من هنا»، معنى تاني.
       ar: nang هنا بمعنى di، أما «Aku saka kene» فمعناها «أنا من هنا».
       en: nang here means di. "Aku saka kene" would mean "I'm from here".
-    words: [nang, kene]
+    words: [nang / neng, kene]
   - id: e04
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا رايح وونوكرومو.
-      ar: سأذهب إلى وونوكرومو.
-      en: I'm going to Wonokromo.
-    answers: [Aku arep nang Wonokromo., Aku arep nang Wonokromo, Aku arep neng Wonokromo., Aku arep neng Wonokromo, Aku arep menyang Wonokromo., Aku arep menyang Wonokromo, Aku kate nang Wonokromo., Aku kate nang Wonokromo, Aku arep ng Wonokromo., Aku arep ng Wonokromo, Aku arp ng Wonokromo., Aku arp ng Wonokromo]
-    words: [arep, nang]
-  - id: e05
-    type: dictation
-    text: Aku saka Mesir.
+    type: listen
+    text: Aku arep menyang Wonokromo.
+    options: ['Aku arep menyang Wonokromo.', 'Aku arep nang kono.', 'Aku isih ing kene.']
+    answer: 0
     meaning:
-      ar_eg: أنا من مصر.
-      ar: أنا من مصر.
-      en: I'm from Egypt.
-    words: [saka]
+      ar_eg: أنا رايح وونوكرومو.
+      ar: سأذهب إلى ونوكرومو.
+      en: I'm going to Wonokromo.
+    words: [arep, menyang, nang / neng, kono, ing, kene]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: menyang
+        ar_eg: لـ (= ke، متأنية)
+        ar: إلى (= ke)
+        en: to (= ke, careful speech)
+      - text: ing
+        ar_eg: في (= di، رسمي)
+        ar: في (= di، رسمي)
+        en: in, at (= di, formal)
+      - text: kene
+        ar_eg: هنا (= sini)
+        ar: هنا (= sini)
+        en: here (= sini)
+      - text: kono
+        ar_eg: هناك قريب منك (= situ)
+        ar: هناك قربك (= situ)
+        en: there, near you (= situ)
+      - text: kana
+        ar_eg: هناك بعيد (= sana)
+        ar: هناك بعيدًا (= sana)
+        en: over there (= sana)
+      - text: saka
+        ar_eg: من (= dari)
+        ar: مِن (= dari)
+        en: from (= dari)
+    words: [menyang, ing, kene, kono, kana, saka]
   - id: e06
     type: speaking
-    text: Aku arep nang Wonokromo.
+    text: Aku arep menyang Wonokromo.
     meaning:
       ar_eg: أنا رايح وونوكرومو.
-      ar: سأذهب إلى وونوكرومو.
+      ar: سأذهب إلى ونوكرومو.
       en: I'm going to Wonokromo.
-    words: [nang]
+    words: [arep, menyang]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «في» وبتلاقيها في اللافتات والكلام الرسمي؟
+      ar: أيّ كلمة تعني «في» وتظهر في اللافتات والكلام الرسمي؟
+      en: Which word means "in / at" and appears on signs and in formal speech?
+    options: [ing, kana, kono]
+    answer: 0
+    explain:
+      ar_eg: ing = di بس رسمية. kana وkono معناهم «هناك».
+      ar: ing = di لكنها رسمية، أما kana وkono فتعنيان «هناك».
+      en: ing = di, but formal; kana and kono both mean "there".
+    words: [ing, kana, kono]
 dialogue:
   lines:
     - speaker: Mohamed
