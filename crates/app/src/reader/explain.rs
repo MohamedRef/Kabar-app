@@ -31,7 +31,7 @@ pub fn library() -> &'static Library {
         let files: Vec<_> = embedded::all(GRAMMAR).collect();
         let (library, problems) = Library::from_yaml(files.iter().map(|(id, yaml)| (*id, yaml.as_str())));
         for p in problems {
-            eprintln!("kabar: grammar entry skipped: {p}");
+            crate::diag::report!("grammar entry skipped: {p}");
         }
         library
     })

@@ -134,7 +134,7 @@ fn remind_default(choice: Option<bool>, phone: bool) -> bool {
 
 fn save(db: &Db, key: &str, value: &str) {
     if let Err(e) = db.0.borrow_mut().set_local_value(key, value) {
-        eprintln!("kabar: saving {key} failed: {e}");
+        crate::diag::report!("saving {key} failed: {e}");
     }
 }
 

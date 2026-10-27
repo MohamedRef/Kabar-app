@@ -140,7 +140,7 @@ pub fn take_shared_input() -> Option<SharedInput> {
         match android::take_shared_input() {
             Ok(input) => input,
             Err(e) => {
-                eprintln!("kabar: reading the shared item failed: {e}");
+                crate::diag::report!("reading the shared item failed: {e}");
                 None
             }
         }
@@ -186,7 +186,7 @@ pub fn pick_state() -> PickState {
     #[cfg(target_os = "android")]
     {
         android::pick_state().unwrap_or_else(|e| {
-            eprintln!("kabar: image picker state: {e}");
+            crate::diag::report!("image picker state: {e}");
             PickState::Failed
         })
     }
@@ -229,7 +229,7 @@ pub fn save_state() -> SaveState {
     #[cfg(target_os = "android")]
     {
         android::save_state().unwrap_or_else(|e| {
-            eprintln!("kabar: save dialog state: {e}");
+            crate::diag::report!("save dialog state: {e}");
             SaveState::Failed
         })
     }
@@ -308,7 +308,7 @@ pub enum AppPage {
 pub fn notifications_enabled() -> Option<bool> {
     #[cfg(target_os = "android")]
     {
-        android::notifications_enabled().map_err(|e| eprintln!("kabar: notification check: {e}")).ok()
+        android::notifications_enabled().map_err(|e| crate::diag::report!("notification check: {e}")).ok()
     }
     #[cfg(not(target_os = "android"))]
     {
@@ -438,7 +438,7 @@ pub mod reminders {
     pub fn request() {
         #[cfg(target_os = "android")]
         if let Err(e) = super::android::request_notifications() {
-            eprintln!("kabar: notification permission: {e}");
+            crate::diag::report!("notification permission: {e}");
         }
         #[cfg(target_os = "macos")]
         super::macos::reminders::request();
