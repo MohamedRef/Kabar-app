@@ -87,6 +87,52 @@ pub fn metered_network() -> bool {
     }
 }
 
+/// A light tap of vibration for lesson feedback.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Haptic {
+    Correct,
+    /// A wrong answer: barely there, never a scolding buzz.
+    Missed,
+    LessonEnd,
+}
+
+/// The device can vibrate (Android with a motor; most Galaxy tablets have
+/// none). Settings shows the vibration switch only then.
+pub fn can_vibrate() -> bool {
+    #[cfg(target_os = "android")]
+    {
+        static HAS: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
+        *HAS.get_or_init(|| android::has_vibrator().unwrap_or(false))
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        false
+    }
+}
+
+/// Vibrates once for `kind` where the device can; does nothing elsewhere.
+pub fn vibrate(kind: Haptic) {
+    #[cfg(target_os = "android")]
+    {
+        if !can_vibrate() {
+            return;
+        }
+        // Haptics.CORRECT, MISSED, LESSON_END
+        let code = match kind {
+            Haptic::Correct => 0,
+            Haptic::Missed => 1,
+            Haptic::LessonEnd => 2,
+        };
+        if let Err(e) = android::vibrate(code) {
+            crate::diag::report!("vibration failed: {e}");
+        }
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        let _ = kind;
+    }
+}
+
 /// Speech rate for normal and slow replays (matches the WebView path).
 #[cfg_attr(not(target_os = "android"), allow(dead_code))]
 pub fn speech_rate(slow: bool) -> f32 {

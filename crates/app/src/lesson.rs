@@ -410,9 +410,9 @@ fn log_episode(coach: Coach, db: &Db, p: &Player) {
     coach.record(db, practice, (summary.duration_ms / 1000) as u32);
 }
 
-/// The kendang tap for a right answer (silent when sounds are off).
+/// The chime (and phone tap) for a right answer (silent when sounds are off).
 fn chime(ui: Ui) {
-    crate::sounds::play(ui, crate::sounds::Sound::Kendang);
+    crate::sounds::play(ui, crate::sounds::Sound::Correct);
 }
 
 // ---------------------------------------------------------------------------
@@ -922,6 +922,8 @@ fn PlayerView(lesson: LessonContent, on_close: Option<EventHandler>) -> Element 
         let g = player.write().check(&answer, lang);
         if matches!(g, Grade::Correct | Grade::Almost { .. }) {
             chime(ui);
+        } else if g == Grade::Wrong {
+            crate::sounds::missed(ui);
         }
         if !episode {
             save(db, &player.peek().position());
@@ -1412,7 +1414,7 @@ fn SummaryView(
     let ui = use_context::<Ui>();
     let nav = use_context::<crate::play::PlayNav>();
     // The gong rings once when the summary appears.
-    use_hook(move || crate::sounds::play(ui, crate::sounds::Sound::Gong));
+    use_hook(move || crate::sounds::play(ui, crate::sounds::Sound::LessonEnd));
     let settings = ui.settings.read().clone();
     let lang = settings.ui_language;
     let eastern = settings.eastern_digits;
