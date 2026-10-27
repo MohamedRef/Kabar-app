@@ -1,0 +1,2040 @@
+schema: batna.content/v1
+lecture: hb.L10
+title: Acute Liver Failure
+author: Dr. Assem El-Shendidy
+book:
+  chapter: 1
+  pages:
+  - 172
+  - 187
+topics:
+- id: overview
+  title: Key points and outcome
+- id: definition
+  title: Definitions and time-based classification
+- id: presentation
+  title: Hyperacute vs subacute presentations, coagulopathy, exceptions
+- id: etiology
+  title: Causes of ALF and why the cause matters
+- id: clinical
+  title: Clinical features and complications
+- id: care
+  title: 'Standards of care: ICU, ICP, infection, coagulopathy, metabolism'
+- id: specific
+  title: 'Specific therapy: NAC, antivirals, Wilson'
+- id: support
+  title: Liver assist devices and plasma exchange
+- id: prognosis
+  title: Prognostic indicators
+- id: transplant
+  title: Emergent transplantation and selection criteria
+items:
+- id: hb.L10.001
+  kind: card
+  topic: overview
+  front: Three defining features of ALF?
+  back: Hepatic encephalopathy, coagulopathy and jaundice, in a patient without underlying liver disease.
+  src:
+    page: 172
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.002
+  kind: card
+  topic: overview
+  front: What defines the subtypes of ALF?
+  back: The jaundice-to-encephalopathy time interval.
+  src:
+    page: 172
+  status: unverified
+- id: hb.L10.003
+  kind: cloze
+  topic: overview
+  text: 'Leading causes of ALF in the US and Europe: {{c1::drug-induced liver injury and acetaminophen}}. In developing
+    countries: {{c2::acute viral hepatitis}}.'
+  src:
+    page: 172
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.004
+  kind: cloze
+  topic: overview
+  text: The commonest causes of death in ALF are {{c1::cerebral edema}} and {{c2::sepsis}}.
+  src:
+    page: 172
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.005
+  kind: card
+  topic: overview
+  front: Strongest predictor of survival in ALF?
+  back: The cause (etiology) of ALF.
+  src:
+    page: 172
+    quote: The cause of ALF is the strongest predictor of survival
+  status: unverified
+- id: hb.L10.006
+  kind: enumerate
+  topic: overview
+  prompt: Three pillars of ALF treatment.
+  points:
+  - ICU monitoring
+  - Specific therapy according to the cause
+  - Aggressive treatment of complications
+  pass: 3
+  src:
+    page: 172
+  status: unverified
+- id: hb.L10.007
+  kind: card
+  topic: overview
+  front: What should happen to an ALF patient who could be a transplant candidate?
+  back: Prompt referral to a liver transplant center.
+  src:
+    page: 172
+  status: unverified
+- id: hb.L10.008
+  kind: table
+  topic: overview
+  title: Prognosis of ALF by cause
+  columns:
+  - Cause
+  - Prognosis
+  rows:
+  - - Acetaminophen
+    - Better (spontaneous recovery >50%)
+  - - Acute viral hepatitis (e.g. HAV)
+    - Better (spontaneous recovery >50% for HAV)
+  - - Wilson disease
+    - Particularly poor (emergency LT)
+  - - Drugs other than acetaminophen
+    - Particularly poor
+  blanks:
+  - - 0
+    - 1
+  - - 2
+    - 1
+  - - 3
+    - 1
+  src:
+    page: 173
+  status: unverified
+- id: hb.L10.009
+  kind: card
+  topic: definition
+  front: What is acute liver injury (ALI), the step before ALF?
+  back: Acute liver damage (2–3-fold rise of transaminases) with impaired function (jaundice and coagulopathy),
+    usually before encephalopathy, in a patient without chronic liver disease.
+  src:
+    page: 173
+  status: unverified
+- id: hb.L10.010
+  kind: card
+  topic: definition
+  front: Trey and Davidson (1970) definition of fulminant liver failure?
+  back: A potentially reversible condition from severe liver injury with hepatic encephalopathy within 8 weeks of
+    the first symptoms, without pre-existing liver disease.
+  src:
+    page: 173
+    quote: onset of hepatic encephalopathy (HE) within 8 weeks of the appearance of the first symptoms
+  status: unverified
+- id: hb.L10.011
+  kind: table
+  topic: definition
+  title: 1993 classification (time from jaundice to encephalopathy)
+  columns:
+  - Type
+  - Jaundice → HE
+  rows:
+  - - Hyperacute liver failure
+    - Within 7 days
+  - - Acute liver failure
+    - 8–28 days
+  - - Subacute liver failure
+    - 5–12 weeks
+  - - Chronic liver disease
+    - '>28 weeks before encephalopathy'
+  blanks:
+  - - 0
+    - 1
+  - - 1
+    - 1
+  - - 2
+    - 1
+  - - 3
+    - 1
+  src:
+    page: 173
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L10.012
+  kind: table
+  topic: definition
+  title: IASL 1999 classification
+  columns:
+  - Type
+  - Interval
+  rows:
+  - - Hyperacute ALF
+    - <10 days
+  - - Fulminant ALF
+    - 10–30 days
+  - - Subacute ALF
+    - 5–24 weeks
+  blanks:
+  - - 0
+    - 1
+  - - 1
+    - 1
+  - - 2
+    - 1
+  src:
+    page: 173
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L10.013
+  kind: mcq
+  topic: definition
+  stem: 'A 24-year-old develops jaundice and, 20 days later, confusion. INR 3.1. No prior liver disease. Under the
+    1993 classification this is:'
+  options:
+  - Hyperacute liver failure
+  - Acute liver failure
+  - Subacute liver failure
+  - Chronic liver disease
+  - Acute liver injury without failure
+  answer: 1
+  why:
+  - Hyperacute is HE within 7 days of jaundice.
+  - 'Correct: HE 8–28 days after jaundice.'
+  - Subacute is HE at 5–12 weeks.
+  - Chronic disease is >28 weeks before HE.
+  - Encephalopathy is present, so this is failure, not injury.
+  src:
+    page: 173
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.014
+  kind: table
+  topic: presentation
+  title: Hyperacute vs subacute ALF
+  columns:
+  - Feature
+  - Hyperacute
+  - Subacute
+  rows:
+  - - Transaminases
+    - Markedly raised
+    - Milder rise
+  - - Bilirubin / jaundice
+    - Moderate rise at most, initially
+    - Deep jaundice
+  - - Coagulopathy
+    - Severe
+    - Mild to moderate
+  - - Other findings
+    - Significant extra-hepatic organ failure
+    - Splenomegaly, ascites, shrinking liver
+  - - Spontaneous recovery
+    - Much greater chance
+    - Very low once HE develops
+  blanks:
+  - - 0
+    - 1
+  - - 0
+    - 2
+  - - 1
+    - 2
+  - - 2
+    - 1
+  - - 3
+    - 2
+  - - 4
+    - 1
+  - - 4
+    - 2
+  src:
+    page: 173
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.015
+  kind: card
+  topic: presentation
+  front: Are transaminases a fully reliable diagnostic parameter in ALF?
+  back: No, the book says they may not be fully reliable for diagnosis.
+  src:
+    page: 174
+  status: unverified
+- id: hb.L10.016
+  kind: mcq
+  topic: presentation
+  stem: A 50-year-old has 8 weeks of deepening jaundice, new ascites, mild splenomegaly and a shrinking liver on
+    CT; ALT 450 U/L, INR 1.9, and new grade 1 HE. No known liver disease. Which statement is true?
+  options:
+  - He has a good chance of spontaneous recovery
+  - This is a hyperacute presentation
+  - Once HE develops in subacute ALF, spontaneous survival is very unlikely
+  - Ascites and splenomegaly exclude ALF
+  - Transplant referral can wait for grade 3 HE
+  answer: 2
+  why:
+  - Hyperacute disease recovers more often; subacute does poorly.
+  - Mild transaminases, deep jaundice and ascites over 8 weeks are subacute.
+  - 'Correct: in subacute ALF, HE comes late and survival without LT is very low.'
+  - Subacute ALF often has splenomegaly, ascites and a shrinking liver.
+  - In subacute ALF even low-grade HE indicates extremely poor prognosis; act now.
+  src:
+    page: 174
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.017
+  kind: cloze
+  topic: presentation
+  text: The coagulopathy defining ALF is a prolonged PT or an INR usually {{c1::>1.5}}.
+  src:
+    page: 174
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L10.018
+  kind: card
+  topic: presentation
+  front: Why do many clinicians prefer the PT (against the local lab range) to the INR in ALF?
+  back: The INR is not standardized for liver disease, so PT against the laboratory's normal range is more accurate.
+  src:
+    page: 174
+  status: unverified
+- id: hb.L10.019
+  kind: card
+  topic: presentation
+  front: Why should mental status be actively examined in acute hepatitis?
+  back: Early mental changes may be subtle, and encephalopathy is a defining and ominous feature.
+  src:
+    page: 174
+  status: unverified
+- id: hb.L10.020
+  kind: card
+  topic: presentation
+  front: 'Subacute liver failure with a shrinking liver: what do recent proposals allow?'
+  back: Super-urgent listing in the right clinical context, even without clinically clear encephalopathy.
+  src:
+    page: 174
+  status: unverified
+- id: hb.L10.021
+  kind: card
+  topic: presentation
+  front: Prerequisite about prior liver disease in defining ALF?
+  back: Absence of previous severe fibrotic or cirrhotic chronic liver disease.
+  src:
+    page: 175
+  status: unverified
+- id: hb.L10.022
+  kind: enumerate
+  topic: presentation
+  prompt: 'Exceptions: conditions counted as ALF despite possible underlying chronic disease.'
+  points:
+  - Acute de novo presentation of autoimmune hepatitis
+  - Budd-Chiari syndrome
+  - Wilson disease (even with clear chronic disease and splenomegaly)
+  pass: 3
+  src:
+    page: 175
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.023
+  kind: card
+  topic: presentation
+  front: Why is fulminant Wilson disease counted as ALF despite chronic disease?
+  back: It shares the poor prognosis and clinical picture of acute liver failure, with significant coagulopathy
+    and encephalopathy.
+  src:
+    page: 175
+  status: unverified
+- id: hb.L10.024
+  kind: card
+  topic: presentation
+  front: A patient with fatty liver or HBV/HCV but no overt fibrosis develops severe ALI with HE. ALF or not?
+  back: Normally categorized as ALF, if ultrasound and axial imaging show no overt fibrosis or portal hypertension.
+  src:
+    page: 175
+  status: unverified
+- id: hb.L10.025
+  kind: table
+  topic: etiology
+  title: Causes of ALF and their presentation
+  columns:
+  - Precipitant
+  - Examples
+  - Presentation
+  rows:
+  - - Infections
+    - HAV, HEV, HBV, CMV, HSV, VZV
+    - Acute
+  - - Drugs/toxins (dose-related)
+    - Acetaminophen, Amanita phalloides, phosphorus
+    - Acute
+  - - Drugs (idiosyncratic)
+    - Anti-TB drugs, chemotherapy, statins, NSAIDs, phenytoin, valproate, carbamazepine, ecstasy, flucloxacillin
+    - Acute and subacute
+  - - 'Vascular: Budd-Chiari'
+    - Budd-Chiari syndrome
+    - Acute and subacute
+  - - 'Vascular: hypoxic'
+    - Hypoxic hepatitis
+    - Acute
+  - - Pregnancy-related
+    - Acute fatty liver of pregnancy, HELLP, pre-eclamptic hepatic rupture
+    - Acute
+  - - Others
+    - Wilson disease, autoimmune liver disease, lymphoma, malignancy, HLH
+    - Acute and subacute
+  blanks:
+  - - 0
+    - 1
+  - - 1
+    - 1
+  - - 2
+    - 2
+  - - 3
+    - 2
+  - - 5
+    - 1
+  - - 6
+    - 1
+  src:
+    page: 176
+  status: unverified
+- id: hb.L10.026
+  kind: enumerate
+  topic: etiology
+  prompt: Viral causes of ALF listed in the lecture.
+  points:
+  - Hepatitis A
+  - Hepatitis E
+  - Hepatitis B
+  - Cytomegalovirus
+  - Herpes simplex virus
+  - Varicella zoster virus
+  pass: 4
+  src:
+    page: 176
+  status: unverified
+- id: hb.L10.027
+  kind: enumerate
+  topic: etiology
+  prompt: Drugs causing acute and subacute ALF (idiosyncratic).
+  points:
+  - Anti-tuberculous drugs
+  - Chemotherapeutic drugs
+  - Statins
+  - NSAIDs
+  - Phenytoin
+  - Valproate
+  - Carbamazepine
+  - Ecstasy
+  - Flucloxacillin
+  pass: 5
+  src:
+    page: 176
+  status: unverified
+- id: hb.L10.028
+  kind: cloze
+  topic: etiology
+  text: 'Toxins causing ALF besides acetaminophen: {{c1::Amanita phalloides}} (mushroom) and {{c2::phosphorus}}.'
+  src:
+    page: 176
+  status: unverified
+- id: hb.L10.029
+  kind: card
+  topic: etiology
+  front: Two reasons to determine the cause of ALF?
+  back: 1. Specific therapy may exist (e.g. acetaminophen, herpes hepatitis). 2. Prognosis differs by cause.
+  src:
+    page: 176
+  status: unverified
+- id: hb.L10.030
+  kind: cloze
+  topic: etiology
+  text: Spontaneous recovery from ALF due to acetaminophen or hepatitis A is {{c1::more than 50%}}, so be {{c2::cautious}}
+    before transplant; in Wilson disease recovery is {{c3::unusual}}.
+  src:
+    page: 176
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L10.031
+  kind: enumerate
+  topic: etiology
+  prompt: Most common identifiable causes of ALF in the US.
+  points:
+  - Acetaminophen hepatotoxicity
+  - Idiosyncratic drug reactions
+  - Wilson disease
+  - Hepatitis B
+  - Ischemia
+  pass: 4
+  src:
+    page: 176
+  status: unverified
+- id: hb.L10.032
+  kind: card
+  topic: etiology
+  front: Why take the history promptly in ALF, and what must it include?
+  back: Before mental status declines. It must cover prescription and non-prescription drugs, illicit substances
+    and alcohol, which bear on transplant candidacy.
+  src:
+    page: 176
+  status: unverified
+- id: hb.L10.033
+  kind: card
+  topic: etiology
+  front: 'Cause of ALF unknown after history and blood tests: next step?'
+  back: Liver biopsy, preferably transjugular, to exclude malignancy and autoimmune liver disease.
+  src:
+    page: 177
+  status: unverified
+- id: hb.L10.034
+  kind: card
+  topic: clinical
+  front: Usual presenting symptoms of ALF?
+  back: 'Those of acute hepatitis: malaise, nausea and jaundice.'
+  src:
+    page: 177
+  status: unverified
+- id: hb.L10.035
+  kind: card
+  topic: clinical
+  front: Range of encephalopathy in ALF?
+  back: From subtle changes such as poor concentration, to coma. HE is a required feature.
+  src:
+    page: 177
+  status: unverified
+- id: hb.L10.036
+  kind: cloze
+  topic: clinical
+  text: Aminotransferases in ALF are usually {{c1::>1,000 U/L}}; acetaminophen usually gives ALT {{c2::>3,500 U/L}}.
+  src:
+    page: 177
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L10.037
+  kind: card
+  topic: clinical
+  front: Typical labs of fulminant Wilson disease?
+  back: Only modest aminotransferase rise and a low or normal ALP, despite prolonged PT and high bilirubin.
+  src:
+    page: 177
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.038
+  kind: card
+  topic: clinical
+  front: How does the encephalopathy of ALF differ from that of chronic liver disease?
+  back: It tends to progress to cerebral edema.
+  src:
+    page: 177
+  status: unverified
+- id: hb.L10.039
+  kind: card
+  topic: clinical
+  front: Proposed mechanisms of cerebral edema in ALF?
+  back: Disruption of the blood-brain barrier and interference with cellular osmolality mechanisms.
+  src:
+    page: 177
+  status: unverified
+- id: hb.L10.040
+  kind: cloze
+  topic: clinical
+  text: Ammonia above {{c1::150 µmol/L}} is linked to raised ICP and poor outcome in ALF.
+  src:
+    page: 177
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L10.041
+  kind: card
+  topic: clinical
+  front: How does cerebral edema kill in ALF?
+  back: Through brain ischemia and cerebral herniation.
+  src:
+    page: 178
+  status: unverified
+- id: hb.L10.042
+  kind: card
+  topic: clinical
+  front: Why is infection easy to miss in ALF, and what follows?
+  back: Fever and leukocytosis may be absent. Any deterioration mandates a search for infection, with a low threshold
+    for antimicrobials.
+  src:
+    page: 178
+  status: unverified
+- id: hb.L10.043
+  kind: card
+  topic: clinical
+  front: Why is hypoglycemia common in ALF, and what does it mean?
+  back: Poor insulin degradation and reduced hepatic glucose production. It is a poor prognostic sign.
+  src:
+    page: 178
+  status: unverified
+- id: hb.L10.044
+  kind: card
+  topic: clinical
+  front: Circulatory picture in ALF?
+  back: Hyperdynamic circulation with low systemic vascular resistance; it can mimic SIRS and sepsis.
+  src:
+    page: 178
+  status: unverified
+- id: hb.L10.045
+  kind: enumerate
+  topic: clinical
+  prompt: Causes of kidney dysfunction in ALF.
+  points:
+  - The underlying disease (e.g. Wilson disease)
+  - 'Functional: sepsis or hepatorenal syndrome'
+  - Acute tubular necrosis
+  pass: 3
+  src:
+    page: 178
+  status: unverified
+- id: hb.L10.046
+  kind: card
+  topic: clinical
+  front: In which cause of ALF is kidney dysfunction particularly common?
+  back: Acetaminophen-induced ALF.
+  src:
+    page: 178
+  status: unverified
+- id: hb.L10.047
+  kind: card
+  topic: clinical
+  front: Significance of acidosis in ALF?
+  back: An indicator of poor outcome, used in some prognostic models.
+  src:
+    page: 178
+  status: unverified
+- id: hb.L10.048
+  kind: mcq
+  topic: clinical
+  stem: A 19-year-old with jaundice, Coombs-negative hemolysis and confusion has ALT 180 U/L, ALP 20 U/L, bilirubin
+    22 mg/dL and INR 3.4. Most likely cause?
+  options:
+  - Acetaminophen overdose
+  - Fulminant Wilson disease
+  - Acute hepatitis A
+  - Ischemic hepatitis
+  - Amanita poisoning
+  answer: 1
+  why:
+  - Acetaminophen usually gives ALT >3,500 U/L.
+  - 'Correct: modest aminotransferases and low/normal ALP despite liver failure is typical of fulminant Wilson.'
+  - Viral ALF usually has transaminases >1,000.
+  - Hypoxic hepatitis gives very high transaminases.
+  - Toxin ALF gives marked transaminase rises.
+  src:
+    page: 177
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.049
+  kind: mcq
+  topic: clinical
+  stem: In ALF, which are the leading causes of death?
+  options:
+  - GI bleeding and renal failure
+  - Cerebral edema and sepsis
+  - Hypoglycemia and acidosis
+  - Variceal bleeding and SBP
+  - Hepatopulmonary syndrome
+  answer: 1
+  why:
+  - Coagulopathy rarely causes major bleeding; not the leading causes.
+  - 'Correct: cerebral edema and sepsis.'
+  - Both are poor prognostic signs, not the leading causes of death.
+  - These are complications of cirrhosis with portal hypertension.
+  - Not discussed in the lecture.
+  src:
+    page: 178
+  status: unverified
+- id: hb.L10.050
+  kind: card
+  topic: care
+  front: Why monitor mental status closely in severe acute hepatitis?
+  back: HE precedes cerebral edema.
+  src:
+    page: 178
+  status: unverified
+- id: hb.L10.051
+  kind: card
+  topic: care
+  front: Lactulose and rifaximin in ALF encephalopathy?
+  back: Lactulose is less effective than in chronic liver disease and may not prevent later cerebral edema, but
+    is often given with monitoring. Rifaximin may be used; benefit unproven.
+  src:
+    page: 178
+  status: unverified
+- id: hb.L10.052
+  kind: cloze
+  topic: care
+  text: Patients with ALF and stage {{c1::2}} HE are usually admitted to ICU.
+  src:
+    page: 178
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L10.053
+  kind: card
+  topic: care
+  front: Why avoid sedatives early in ALF?
+  back: To allow close monitoring of mental status.
+  src:
+    page: 179
+  status: unverified
+- id: hb.L10.054
+  kind: card
+  topic: care
+  front: Why image the head (CT or MRI) in ALF with mental changes?
+  back: To exclude another cause of the mental status change.
+  src:
+    page: 179
+  status: unverified
+- id: hb.L10.055
+  kind: card
+  topic: care
+  front: What do many centers do when ALF reaches stage 3 HE, and why?
+  back: Intubate, ventilate and place an ICP monitor, because clinical signs and CT are insensitive for intracranial
+    hypertension.
+  src:
+    page: 179
+  status: unverified
+- id: hb.L10.056
+  kind: card
+  topic: care
+  front: Two goals of ICP monitoring in ALF?
+  back: To treat high pressure, and to identify patients too ill for transplant because of prolonged very high ICP.
+  src:
+    page: 179
+  status: unverified
+- id: hb.L10.057
+  kind: cloze
+  topic: care
+  text: 'ICP targets in ALF: ICP {{c1::<40 mmHg}} and cerebral perfusion pressure {{c2::60–100 mmHg}}; CPP {{c3::>120
+    mmHg}} can worsen edema.'
+  src:
+    page: 179
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L10.058
+  kind: card
+  topic: care
+  front: Cerebral perfusion pressure formula?
+  back: CPP = mean arterial pressure − intracranial pressure.
+  src:
+    page: 179
+  status: unverified
+- id: hb.L10.059
+  kind: cloze
+  topic: care
+  text: Hypertonic saline to a serum sodium of {{c1::145–155 mmol/L}} lowers the risk of intracranial hypertension
+    in ALF.
+  src:
+    page: 179
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L10.060
+  kind: enumerate
+  topic: care
+  prompt: Measures if ICP >20 mmHg or CPP <60 mmHg in ALF.
+  points:
+  - Elevate the head to 20°
+  - Hyperventilate to PaCO2 25 mmHg
+  - Mannitol 0.5 g/kg (100–200 mL of 20%) IV over 10 min, if kidney function is intact
+  - Avoid straining, including endotracheal suctioning
+  - Paralysis and sedation if needed
+  - Barbiturate coma for refractory cases
+  pass: 4
+  src:
+    page: 179
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.061
+  kind: cloze
+  topic: care
+  text: 'Mannitol for raised ICP in ALF: {{c1::0.5 g/kg}} ({{c2::100–200 mL of 20%}}) IV over 10 minutes, provided
+    {{c3::kidney function is intact}}.'
+  src:
+    page: 179
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L10.062
+  kind: card
+  topic: care
+  front: Prophylactic phenytoin for subclinical seizures in ALF?
+  back: Subclinical seizures are common, but the value of prophylactic phenytoin is uncertain.
+  src:
+    page: 179
+  status: unverified
+- id: hb.L10.063
+  kind: card
+  topic: care
+  front: Glucocorticoids in ALF despite frequent adrenal insufficiency?
+  back: They do not reduce mortality and may lower survival with a high MELD, though they may cut vasopressor need.
+  src:
+    page: 180
+  status: unverified
+- id: hb.L10.064
+  kind: card
+  topic: care
+  front: What does a sudden fall in ICP mean in ALF, and a prolonged ICP above MAP?
+  back: A sudden fall may mean brain herniation. ICP persistently above MAP may mean brain death, generally a contraindication
+    to LT.
+  src:
+    page: 180
+  status: unverified
+- id: hb.L10.065
+  kind: card
+  topic: care
+  front: Infection surveillance in ALF?
+  back: Periodic blood cultures (bacteremia and fungemia are frequent); antimicrobial prophylaxis may be started
+    though it has not improved survival; broad cover for suspected sepsis.
+  src:
+    page: 180
+  status: unverified
+- id: hb.L10.066
+  kind: card
+  topic: care
+  front: When is coagulopathy corrected in ALF, and with what first?
+  back: Only for bleeding or a planned invasive procedure (e.g. ICP monitor). FFP first; platelets, fibrinogen or
+    recombinant factor VIIa may be needed.
+  src:
+    page: 180
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.067
+  kind: card
+  topic: care
+  front: Why is the PT followed rather than corrected in ALF?
+  back: It is a simple non-invasive measure of the course of liver failure.
+  src:
+    page: 180
+  status: unverified
+- id: hb.L10.068
+  kind: card
+  topic: care
+  front: 'Fluids in ALF: what to avoid and why?'
+  back: Large volumes of hypotonic fluid, because excess fluid may worsen ICP.
+  src:
+    page: 180
+  status: unverified
+- id: hb.L10.069
+  kind: card
+  topic: care
+  front: Preferred vasopressor in ALF?
+  back: Norepinephrine.
+  src:
+    page: 180
+  status: unverified
+- id: hb.L10.070
+  kind: cloze
+  topic: care
+  text: In ALF, infuse {{c1::5% or 10% dextrose}} to keep plasma glucose at {{c2::100–200 mg/dL}}, checking it at
+    least {{c3::twice daily}}.
+  src:
+    page: 180
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L10.071
+  kind: cloze
+  topic: care
+  text: 'Enteral protein in ALF: {{c1::1–1.5 g/kg/day}} to preserve muscle mass and immune function.'
+  src:
+    page: 180
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L10.072
+  kind: mcq
+  topic: care
+  stem: A ventilated ALF patient has ICP 28 mmHg, MAP 80 mmHg, creatinine 0.9 mg/dL. Which is the best immediate
+    measure?
+  options:
+  - Lower the head of the bed flat
+  - Mannitol 0.5 g/kg IV over 10 minutes with head elevation to 20°
+  - Large-volume 0.45% saline infusion
+  - Hyperventilate to PaCO2 15 mmHg
+  - IV dexamethasone
+  answer: 1
+  why:
+  - The head should be elevated to 20°.
+  - 'Correct: ICP >20 (and CPP 52 <60) with normal kidneys: elevate head, mannitol, hyperventilation to 25.'
+  - Hypotonic fluids can worsen ICP.
+  - The target is PaCO2 25 mmHg.
+  - Glucocorticoids do not reduce mortality in ALF.
+  src:
+    page: 179
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.073
+  kind: mcq
+  topic: care
+  stem: An ALF patient has INR 4.2 and no bleeding. No procedure is planned. What about the coagulopathy?
+  options:
+  - Give FFP to normalize the INR
+  - Give recombinant factor VIIa
+  - Do not correct it; follow the PT as a marker
+  - Give vitamin K and platelets daily
+  - Give cryoprecipitate
+  answer: 2
+  why:
+  - Correction is only for bleeding or a planned invasive procedure.
+  - Reserved for bleeding or procedures.
+  - 'Correct: the PT is a simple non-invasive marker to follow; do not correct without bleeding or a procedure.'
+  - Not indicated without bleeding or procedure.
+  - Not indicated without bleeding or procedure.
+  src:
+    page: 180
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.074
+  kind: mcq
+  topic: care
+  stem: In ALF with hypotension despite fluids, which vasopressor is preferred?
+  options:
+  - Dopamine
+  - Norepinephrine
+  - Vasopressin alone
+  - Phenylephrine
+  - Adrenaline
+  answer: 1
+  why:
+  - Not the preferred agent in the lecture.
+  - 'Correct: norepinephrine is the preferred vasopressor.'
+  - Not named as preferred.
+  - Not named.
+  - Not named.
+  src:
+    page: 180
+  status: unverified
+- id: hb.L10.075
+  kind: mcq
+  topic: care
+  stem: An ALF patient with stage 2 HE is admitted to ICU. Which plan matches the lecture?
+  options:
+  - Sedate with benzodiazepines for comfort
+  - Avoid sedatives initially; image the head to exclude another cause
+  - Give prophylactic phenytoin to all
+  - Give high-dose steroids for adrenal insufficiency
+  - Intubate immediately regardless of HE grade
+  answer: 1
+  why:
+  - Sedatives should be avoided initially to allow mental status monitoring.
+  - 'Correct: avoid sedatives and do head CT or MRI to exclude other causes.'
+  - Its value is uncertain.
+  - Glucocorticoids do not reduce mortality.
+  - Intubation and ICP monitoring are usually instituted at stage 3 HE.
+  src:
+    page: 178
+  status: unverified
+- id: hb.L10.076
+  kind: card
+  topic: specific
+  front: Can NAC help ALF not caused by acetaminophen?
+  back: 'Yes: in one RCT, NAC gave better transplant-free survival in early-stage encephalopathy even when acetaminophen
+    was excluded.'
+  src:
+    page: 180
+  status: unverified
+- id: hb.L10.077
+  kind: cloze
+  topic: specific
+  text: 'Oral NAC: {{c1::140 mg/kg}} then {{c2::70 mg/kg every 4 h}} for 17 more doses.'
+  src:
+    page: 181
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L10.078
+  kind: cloze
+  topic: specific
+  text: 'IV NAC: {{c1::150 mg/kg}} in 5% dextrose over 15 min, then {{c2::50 mg/kg over 4 h}}, then {{c3::100 mg/kg
+    over 16 h}}.'
+  src:
+    page: 181
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L10.079
+  kind: cloze
+  topic: specific
+  text: NAC is indicated for acetaminophen toxicity up to {{c1::72 hours}} after ingestion.
+  src:
+    page: 181
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L10.080
+  kind: card
+  topic: specific
+  front: 'Massive acetaminophen overdose: how long to continue IV NAC?'
+  back: Until aminotransferases are falling and acetaminophen is undetectable.
+  src:
+    page: 181
+  status: unverified
+- id: hb.L10.081
+  kind: card
+  topic: specific
+  front: Benefits of NAC in stage 1–2 HE from ALF of any cause?
+  back: Better cerebral blood flow and oxygenation, and better transplant-free survival.
+  src:
+    page: 181
+  status: unverified
+- id: hb.L10.082
+  kind: card
+  topic: specific
+  front: Pitfalls and side effects of NAC?
+  back: It can prolong PT (falsely suggesting worsening liver failure), and cause nausea, vomiting and anaphylactoid
+    reactions, especially in asthma.
+  src:
+    page: 181
+  status: unverified
+- id: hb.L10.083
+  kind: table
+  topic: specific
+  title: Cause-specific treatment of ALF
+  columns:
+  - Cause
+  - Specific therapy
+  rows:
+  - - Acetaminophen
+    - N-acetylcysteine
+  - - Hepatitis B
+    - Nucleoside analogs
+  - - Herpes simplex hepatitis
+    - IV acyclovir
+  - - Wilson disease
+    - Plasmapheresis with D-penicillamine
+  blanks:
+  - - 0
+    - 1
+  - - 1
+    - 1
+  - - 2
+    - 1
+  - - 3
+    - 1
+  src:
+    page: 181
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.084
+  kind: mcq
+  topic: specific
+  stem: A woman with ALF has stage 1 HE; acetaminophen levels are undetectable and the cause is not yet known. INR
+    rises from 2.8 to 3.3 after she starts NAC. Best interpretation?
+  options:
+  - NAC is contraindicated in non-acetaminophen ALF
+  - The INR rise proves worsening liver failure; list for LT now
+  - NAC can prolong PT, so the rise may be drug effect; NAC is still reasonable
+  - Stop NAC because it causes cerebral edema
+  - Switch to acyclovir
+  answer: 2
+  why:
+  - One RCT showed benefit in early HE even without acetaminophen.
+  - NAC itself can prolong PT; do not over-read the change.
+  - 'Correct: NAC prolongs PT and helps stage 1–2 HE of any cause.'
+  - NAC improves cerebral blood flow and oxygenation.
+  - Acyclovir is for HSV hepatitis, which is not suggested.
+  src:
+    page: 181
+  status: unverified
+- id: hb.L10.085
+  kind: mcq
+  topic: specific
+  stem: A pregnant woman in her third trimester has ALF with fever, very high transaminases and a vesicular rash.
+    Specific therapy?
+  options:
+  - NAC alone
+  - IV acyclovir
+  - Plasmapheresis with D-penicillamine
+  - Nucleoside analog
+  - High-dose steroids
+  answer: 1
+  why:
+  - NAC is specific for acetaminophen.
+  - 'Correct: IV acyclovir has shown benefit in herpes simplex hepatitis.'
+  - This is for Wilson disease.
+  - This is for HBV.
+  - Not a specific ALF therapy in the lecture.
+  src:
+    page: 181
+  status: unverified
+- id: hb.L10.086
+  kind: card
+  topic: support
+  front: Hope behind liver assist devices, and current reality?
+  back: A bridge to transplant or recovery. The mechanical 'proxy liver' is far from realized; high general critical
+    care remains the emphasis.
+  src:
+    page: 181
+  status: unverified
+- id: hb.L10.087
+  kind: card
+  topic: support
+  front: Why is it hard to judge liver assist devices?
+  back: They can modulate the very prognostic markers of liver function used to assess the course.
+  src:
+    page: 181
+  status: unverified
+- id: hb.L10.088
+  kind: card
+  topic: support
+  front: 'Early artificial liver support devices: what were they and did they work?'
+  back: Filters removing toxins by dialysis or adsorption; no survival benefit in ALF.
+  src:
+    page: 182
+  status: unverified
+- id: hb.L10.089
+  kind: card
+  topic: support
+  front: What is MARS and its effect in ALF?
+  back: 'Molecular Adsorbent Recirculating System: an albumin-impregnated dialysis membrane extracting protein-bound
+    toxins. Better hemodynamics and HE, no overall mortality benefit (a trend in non-transplanted acetaminophen
+    cases).'
+  src:
+    page: 182
+  status: unverified
+- id: hb.L10.090
+  kind: enumerate
+  topic: support
+  prompt: Types of bio-artificial liver support.
+  points:
+  - Whole organ perfusion (human or xenoperfusion)
+  - Hepatocytes (porcine or hepatoblastoma) on columns perfused after plasma separation
+  - Hepatocyte or stem cell transplantation
+  pass: 3
+  src:
+    page: 182
+  status: unverified
+- id: hb.L10.091
+  kind: card
+  topic: support
+  front: 'ELAD: what cells and what result?'
+  back: Extracorporeal Liver Assist Device using hepatoblastoma cell lines; some physiological and biochemical benefit
+    but no mortality benefit.
+  src:
+    page: 182
+  status: unverified
+- id: hb.L10.092
+  kind: card
+  topic: support
+  front: Where has hepatocyte or stem cell transplantation shown benefit?
+  back: Case series in children, especially metabolic disease.
+  src:
+    page: 182
+  status: unverified
+- id: hb.L10.093
+  kind: card
+  topic: support
+  front: 'Plasma exchange in ALF: timing and effect?'
+  back: In the first 3 days of critical care. Physiological and biochemical benefits, lower ICP, and a mortality
+    benefit in patients not transplanted (including those with poor-prognosis criteria not listed due to comorbidity).
+  src:
+    page: 183
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.094
+  kind: card
+  topic: support
+  front: Proposed rationale for the survival benefit of plasma exchange?
+  back: Modifying monocyte immune function, plus clearing mediators and replacing plasma-derived factors.
+  src:
+    page: 183
+  status: unverified
+- id: hb.L10.095
+  kind: mcq
+  topic: support
+  stem: Which extracorporeal therapy has shown a mortality benefit in ALF patients who did not undergo transplant?
+  options:
+  - MARS
+  - ELAD
+  - Charcoal hemoperfusion
+  - High-volume plasma exchange in the first 3 days
+  - Porcine hepatocyte bioartificial liver
+  answer: 3
+  why:
+  - No overall mortality benefit.
+  - Failed to show mortality benefit.
+  - Early filters showed no survival benefit.
+  - 'Correct: plasma exchange in the first 3 days showed a mortality benefit in non-transplanted patients.'
+  - Later studies failed to show mortality benefit.
+  src:
+    page: 183
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.096
+  kind: card
+  topic: prognosis
+  front: What two things does LT selection in ALF depend on?
+  back: Predicted survival without LT, and survival potential after LT (too sick, not meeting listing criteria,
+    or comorbid contraindications).
+  src:
+    page: 183
+  status: unverified
+- id: hb.L10.097
+  kind: card
+  topic: prognosis
+  front: Where should prognostic assessment of ALF happen?
+  back: Both at the site of first presentation and at the transplant center, so transfer and LT decisions are made
+    early.
+  src:
+    page: 183
+  status: unverified
+- id: hb.L10.098
+  kind: enumerate
+  topic: prognosis
+  prompt: General early prognostic indicators in ALF (4 domains).
+  points:
+  - Encephalopathy
+  - Extra-hepatic (especially renal) organ failure
+  - Severity of liver injury (coagulopathy, jaundice)
+  - Adverse etiology and presentation (subacute, indeterminate)
+  pass: 4
+  src:
+    page: 184
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.099
+  kind: card
+  topic: prognosis
+  front: What should any evidence of HE in ALF trigger?
+  back: Local critical care assessment, discussion with and transfer to a specialist liver center.
+  src:
+    page: 184
+  status: unverified
+- id: hb.L10.100
+  kind: card
+  topic: prognosis
+  front: Is one HE-grade threshold for 'failure' appropriate across all ALF?
+  back: No. Low-grade HE is grave in subacute disease, while survival can be good in hyperacute disease with similar
+    HE.
+  src:
+    page: 184
+  status: unverified
+- id: hb.L10.101
+  kind: card
+  topic: prognosis
+  front: 'Several possible causes of reduced consciousness in ALF: what reliably indicates HE?'
+  back: A significantly raised arterial ammonia.
+  src:
+    page: 184
+  status: unverified
+- id: hb.L10.102
+  kind: card
+  topic: prognosis
+  front: Prognostic meaning of extra-hepatic (especially renal) failure in ALF?
+  back: A marker of severity and higher mortality; it should prompt critical care review and specialist discussion
+    or transfer.
+  src:
+    page: 184
+  status: unverified
+- id: hb.L10.103
+  kind: card
+  topic: prognosis
+  front: Problem with using INR across ALF causes?
+  back: Thresholds vary by etiology, evolution and age, and INR lacks international consistency.
+  src:
+    page: 184
+  status: unverified
+- id: hb.L10.104
+  kind: cloze
+  topic: prognosis
+  text: '{{c1::Subacute presentation}} and {{c2::indeterminate etiology}} have consistently poor survival without
+    LT and trigger immediate specialist discussion.'
+  src:
+    page: 184
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.105
+  kind: cloze
+  topic: prognosis
+  text: An INR of {{c1::2.5}} is of immediate concern in {{c2::subacute ALF}} but not in acetaminophen hepatotoxicity.
+  src:
+    page: 185
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L10.106
+  kind: card
+  topic: prognosis
+  front: Key outcome predictor in non-acetaminophen drug-induced ALF?
+  back: Bilirubin, especially in subacute and acute presentations.
+  src:
+    page: 185
+  status: unverified
+- id: hb.L10.107
+  kind: enumerate
+  topic: prognosis
+  prompt: Poor prognostic trends that should prompt transfer to a transplant center.
+  points:
+  - Falling transaminases
+  - Rising bilirubin
+  - Rising INR
+  - Shrinking liver
+  pass: 4
+  src:
+    page: 186
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.108
+  kind: mcq
+  topic: prognosis
+  stem: 'A patient with ALF from hepatitis B shows over 3 days: ALT 4,200 → 900 U/L, bilirubin 8 → 19 mg/dL, INR
+    2.6 → 4.0, and the liver shrinks on ultrasound. Interpretation?'
+  options:
+  - 'Recovery: falling ALT shows healing'
+  - 'Poor prognosis: transfer to a transplant center'
+  - Assay error
+  - Typical of acetaminophen recovery
+  - Cholestatic phase of hepatitis, routine follow-up
+  answer: 1
+  why:
+  - Falling transaminases with rising bilirubin and INR mean loss of hepatocyte mass, not healing.
+  - 'Correct: falling transaminases, rising bilirubin and INR and a shrinking liver are poor signs.'
+  - The changes are consistent and clinical.
+  - The cause is HBV, and rising INR is not recovery.
+  - Rising INR and a shrinking liver are not benign cholestasis.
+  src:
+    page: 186
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.109
+  kind: card
+  topic: transplant
+  front: Most significant development in the treatment of ALF?
+  back: Emergent liver transplantation; it has transformed survival.
+  src:
+    page: 183
+  status: unverified
+- id: hb.L10.110
+  kind: table
+  topic: transplant
+  title: Primary vs secondary ALF and emergent LT
+  columns:
+  - Group
+  - Primary ALF (LT may be an option)
+  - Secondary ALF (LT not an option)
+  rows:
+  - - Acute liver failure
+    - Acute viral hepatitis; drug/toxin-induced; acute Budd-Chiari; acute autoimmune liver disease; pregnancy-related
+    - 'Ischemic hepatitis; systemic diseases: HLH, metabolic, infiltrative, lymphoma, infections (malaria, leptospirosis,
+      rickettsiosis)'
+  - - Chronic liver disease with acute phenotype
+    - Fulminant Wilson; chronic autoimmune liver disease; chronic Budd-Chiari; HBV reactivation
+    - Severe alcoholic hepatitis; extensive liver resection
+  blanks:
+  - - 0
+    - 1
+  - - 0
+    - 2
+  - - 1
+    - 1
+  - - 1
+    - 2
+  src:
+    page: 185
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.111
+  kind: enumerate
+  topic: transplant
+  prompt: Etiologies of ALF eligible for emergent liver transplantation (primary ALF).
+  points:
+  - Acute viral hepatitis
+  - Drug/toxin-induced
+  - Acute Budd-Chiari syndrome
+  - Acute autoimmune liver disease
+  - Pregnancy-related
+  - Fulminant Wilson disease
+  - Chronic autoimmune liver disease (acute phenotype)
+  - Chronic Budd-Chiari syndrome
+  - HBV reactivation
+  pass: 6
+  src:
+    page: 185
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L10.112
+  kind: mcq
+  topic: transplant
+  stem: Which ALF patient is NOT a candidate for emergent liver transplantation according to the primary/secondary
+    etiology table?
+  options:
+  - Fulminant Wilson disease
+  - HBV reactivation during chemotherapy
+  - ALF from leptospirosis
+  - Acute Budd-Chiari syndrome
+  - Acetaminophen ALF
+  answer: 2
+  why:
+  - 'Primary ALF: LT may be an option.'
+  - 'Primary ALF: LT may be an option.'
+  - 'Correct: infections like leptospirosis cause secondary ALF, where LT is not an option.'
+  - 'Primary ALF: LT may be an option.'
+  - Drug/toxin-induced is primary ALF.
+  src:
+    page: 185
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.113
+  kind: mcq
+  topic: transplant
+  stem: A patient develops liver failure after extensive hepatic resection for metastases. Emergent LT?
+  options:
+  - Yes, it is primary ALF
+  - No, it is secondary ALF
+  - Yes, after MARS
+  - Only if King's criteria are met
+  - Only if MELD >32
+  answer: 1
+  why:
+  - Extensive resection is listed under secondary ALF.
+  - 'Correct: extensive liver resection is secondary, so emergent LT is not a treatment option.'
+  - MARS does not change candidacy.
+  - Secondary ALF is not an LT option regardless of scores.
+  - Secondary ALF is not an LT option regardless of scores.
+  src:
+    page: 185
+  status: unverified
+- id: hb.L10.114
+  kind: card
+  topic: transplant
+  front: What features do ALF prognostic systems share?
+  back: Presence of HE, plus patient age and liver injury severity (coagulopathy or jaundice).
+  src:
+    page: 186
+  status: unverified
+- id: hb.L10.115
+  kind: card
+  topic: transplant
+  front: Aim of ALF prognostic models?
+  back: To time LT before the patient is too ill to transplant, while still allowing time for spontaneous recovery.
+  src:
+    page: 186
+  status: unverified
+- id: hb.L10.116
+  kind: cloze
+  topic: transplant
+  text: The best-known ALF transplant criteria are the {{c1::King's College}} and the {{c2::Beaujon-Paul Brousse
+    (Clichy)}} criteria; a MELD above {{c3::32}} also predicts poor transplant-free survival.
+  src:
+    page: 186
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L10.117
+  kind: cloze
+  topic: transplant
+  text: ALF accounts for about {{c1::6%}} of liver transplants in the US.
+  src:
+    page: 186
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L10.118
+  kind: card
+  topic: transplant
+  front: Outcome of LT for ALF compared with other indications?
+  back: 1-year survival is lower, but far better than without LT when poor-prognosis criteria are met, and long-term
+    survival is excellent.
+  src:
+    page: 186
+  status: unverified
+- id: hb.L10.119
+  kind: enumerate
+  topic: transplant
+  prompt: 'King''s College criteria for ACETAMINOPHEN-induced ALF (book version: any one).'
+  points:
+  - Arterial pH <7.3 after resuscitation and 24 h after ingestion
+  - Serum lactate >3 mmol/L
+  - 'All 3 of: INR >6.5, creatinine >300 µmol/L (>3.4 mg/dL), HE stage 3 or 4'
+  pass: 3
+  src:
+    page: 187
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L10.120
+  kind: enumerate
+  topic: transplant
+  prompt: King's College criteria for NON-acetaminophen ALF.
+  points:
+  - 'INR >6.5 alone, OR any 3 of:'
+  - INR >3.5
+  - Bilirubin >300 µmol/L (>17.5 mg/dL)
+  - Jaundice-to-HE interval >7 days
+  - Age <10 or >40 years
+  - Indeterminate etiology or drug-induced hepatotoxicity
+  pass: 6
+  src:
+    page: 187
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L10.121
+  kind: cloze
+  topic: transplant
+  text: 'King''s College (book): ALF due to {{c1::Wilson disease}} or {{c2::Budd-Chiari syndrome}} is itself a criterion
+    for emergent LT.'
+  src:
+    page: 187
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.122
+  kind: cloze
+  topic: transplant
+  text: 'Beaujon-Paul Brousse (Clichy) criteria: HE {{c1::stage 3 or 4}} plus factor V {{c2::<20%}} if age <30,
+    or {{c3::<30%}} if age >30.'
+  src:
+    page: 187
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L10.123
+  kind: mcq
+  topic: transplant
+  stem: 'A 28-year-old took a large acetaminophen overdose 30 h ago. After fluid resuscitation: arterial pH 7.25,
+    lactate 2.4, INR 4.8, creatinine 2.1 mg/dL, HE grade 2. Does she meet King''s College criteria?'
+  options:
+  - No, because INR is <6.5
+  - Yes, because arterial pH <7.3 after resuscitation and >24 h after ingestion
+  - No, because HE is only grade 2
+  - Yes, because creatinine is >2 mg/dL
+  - Only if factor V is <20%
+  answer: 1
+  why:
+  - The INR limb is only one of the alternatives.
+  - 'Correct: pH <7.3 after resuscitation and 24 h after ingestion is enough on its own.'
+  - HE grade matters only in the 'all 3' limb.
+  - The creatinine threshold is >3.4 mg/dL and needs INR >6.5 and HE 3–4 as well.
+  - Factor V belongs to the Clichy criteria.
+  src:
+    page: 187
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.124
+  kind: mcq
+  topic: transplant
+  stem: A 45-year-old has ALF from an anti-TB drug; jaundice began 12 days before HE. INR 3.8, bilirubin 12 mg/dL.
+    How many King's College (non-acetaminophen) criteria does he meet, and is he a candidate?
+  options:
+  - '2 criteria: not yet'
+  - '3 criteria: candidate'
+  - '4 criteria: candidate'
+  - '1 criterion: not a candidate'
+  - None; King's applies only to acetaminophen
+  answer: 2
+  why:
+  - 'Count again: INR, interval, age and drug cause.'
+  - There are 4 (INR >3.5, interval >7 d, age >40, drug-induced).
+  - 'Correct: INR >3.5, jaundice-to-HE >7 days, age >40, drug-induced = 4 (bilirubin 12 <17.5); ≥3 meets the criteria.'
+  - More than one is met.
+  - There is a non-acetaminophen arm.
+  src:
+    page: 187
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.125
+  kind: mcq
+  topic: transplant
+  stem: A 25-year-old with grade 3 HE from hepatitis B ALF has factor V 15% of normal. Which criteria does this
+    fulfil?
+  options:
+  - King's College acetaminophen
+  - Beaujon-Paul Brousse (Clichy)
+  - Trey and Davidson
+  - IASL
+  - None
+  answer: 1
+  why:
+  - Not acetaminophen, and King's uses INR, not factor V.
+  - 'Correct: HE stage 3–4 with factor V <20% under age 30.'
+  - This is a definition, not transplant criteria.
+  - This is a time classification.
+  - Clichy criteria are met.
+  src:
+    page: 187
+  status: unverified
+- id: hb.L10.126
+  kind: calc
+  topic: transplant
+  calculator: kings_college
+  stem: 'A 34-year-old woman with ALF of indeterminate cause: jaundice 10 days before HE, INR 3.9, bilirubin 19
+    mg/dL, HE grade 3.'
+  question: Does she meet King's College criteria?
+  inputs:
+    acetaminophen: false
+    inr: 3.9
+    bilirubin_mg_dl: 19
+    jaundice_to_he_days: 10
+    age: 34
+    etiology: indeterminate
+  expect: 'Meets non-acetaminophen King''s criteria (4 of 5 minor: INR >3.5, bilirubin >17.5, interval >7 d, indeterminate)'
+  interpret: 'Poor prognosis without LT: list for emergent transplantation.'
+  src:
+    page: 187
+  status: unverified
+- id: hb.L10.127
+  kind: calc
+  topic: transplant
+  calculator: kings_college
+  stem: 'A 22-year-old after acetaminophen overdose, 36 h, resuscitated: pH 7.34, lactate 2.1 mmol/L, INR 7.2, creatinine
+    3.8 mg/dL, HE grade 3.'
+  question: Does he meet King's College criteria?
+  inputs:
+    acetaminophen: true
+    ph: 7.34
+    lactate: 2.1
+    inr: 7.2
+    creatinine_mg_dl: 3.8
+    he_grade: 3
+  expect: 'Meets acetaminophen King''s criteria (all 3: INR >6.5, creatinine >3.4 mg/dL, HE 3–4)'
+  interpret: 'Poor prognosis without LT: emergent listing.'
+  src:
+    page: 187
+  status: unverified
+- id: hb.L10.128
+  kind: mcq
+  topic: overview
+  stem: In Egypt and other developing countries, which cause of ALF still predominates per the lecture?
+  options:
+  - Acetaminophen
+  - Idiosyncratic DILI
+  - Acute viral hepatitis
+  - Wilson disease
+  - Budd-Chiari syndrome
+  answer: 2
+  why:
+  - Leading cause in the US and Europe, with DILI.
+  - Leading in the US and Europe, with acetaminophen.
+  - 'Correct: acute viral hepatitis still predominates in developing countries.'
+  - A recognized but less common cause.
+  - A vascular cause, not the commonest.
+  src:
+    page: 172
+  status: unverified
+- id: hb.L10.129
+  kind: mcq
+  topic: presentation
+  stem: A 30-year-old woman presents with jaundice, HE and INR 2.8; tests show high IgG and autoantibodies, no cirrhosis
+    on imaging or biopsy, and no known prior liver disease. Classification?
+  options:
+  - Not ALF, because autoimmune hepatitis is chronic
+  - 'ALF: acute de novo autoimmune hepatitis is an accepted exception'
+  - Acute-on-chronic liver failure
+  - Acute liver injury only
+  - Secondary ALF, LT not an option
+  answer: 1
+  why:
+  - De novo AIH is specifically counted as ALF.
+  - 'Correct: acute de novo AIH without cirrhosis is an accepted exception.'
+  - There is no known or evident chronic liver disease.
+  - HE and coagulopathy make it failure.
+  - Acute autoimmune liver disease is primary ALF (LT may be an option).
+  src:
+    page: 175
+  status: unverified
+- id: hb.L10.130
+  kind: mcq
+  topic: clinical
+  stem: In an ALF patient, which arterial ammonia level is associated with raised ICP and poor outcome?
+  options:
+  - '>50 µmol/L'
+  - '>80 µmol/L'
+  - '>100 µmol/L'
+  - '>150 µmol/L'
+  - '>300 µmol/L'
+  answer: 3
+  why:
+  - Too low; not the lecture's threshold.
+  - Not the lecture's threshold.
+  - Not the lecture's threshold.
+  - 'Correct: >150 µmol/L.'
+  - Higher than the stated threshold.
+  src:
+    page: 177
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L10.131
+  kind: mcq
+  topic: care
+  stem: Which serum sodium target with hypertonic saline lowers the risk of intracranial hypertension in ALF?
+  options:
+  - 130–135 mmol/L
+  - 135–140 mmol/L
+  - 145–155 mmol/L
+  - 160–170 mmol/L
+  - '>170 mmol/L'
+  answer: 2
+  why:
+  - Low sodium worsens brain swelling.
+  - Normal range; no specific effect.
+  - 'Correct: 145–155 mmol/L.'
+  - Above the target.
+  - Dangerous and above the target.
+  src:
+    page: 179
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L10.132
+  kind: mcq
+  topic: care
+  stem: An ALF patient with an ICP monitor suddenly shows a fall in ICP from 35 to 8 mmHg with fixed dilated pupils.
+    What does this suggest?
+  options:
+  - Successful treatment
+  - Monitor malfunction only
+  - Brain herniation
+  - Recovery of liver function
+  - Hypoglycemia
+  answer: 2
+  why:
+  - Treatment does not cause a sudden collapse with fixed pupils.
+  - Possible in general, but the clinical signs point elsewhere.
+  - 'Correct: a sudden decrease in ICP may indicate brain herniation.'
+  - Not shown by ICP alone.
+  - Not explained by an ICP fall.
+  src:
+    page: 180
+  status: unverified
+- id: hb.L10.133
+  kind: mcq
+  topic: care
+  stem: An ALF patient on vasopressors has a low random cortisol. What does the lecture say about glucocorticoids?
+  options:
+  - They reduce mortality and are standard
+  - They do not reduce mortality, may lower survival at high MELD, but may reduce vasopressor need
+  - They prevent cerebral edema
+  - They are contraindicated in all ALF
+  - They treat hepatic encephalopathy
+  answer: 1
+  why:
+  - They do not reduce mortality.
+  - 'Correct: as stated on pp. 179–180.'
+  - Not stated.
+  - The lecture does not forbid them; it says they are ineffective for mortality.
+  - Not stated.
+  src:
+    page: 179
+  status: unverified
+- id: hb.L10.134
+  kind: mcq
+  topic: transplant
+  stem: Which simple score above a given value is associated with poor transplant-free survival in ALF?
+  options:
+  - Child-Pugh >10
+  - MELD >32
+  - MELD >20
+  - Glasgow alcoholic hepatitis score >9
+  - Maddrey >32
+  answer: 1
+  why:
+  - Not stated in the lecture.
+  - 'Correct: MELD >32.'
+  - The lecture's threshold is 32.
+  - For alcoholic hepatitis, not ALF.
+  - Maddrey ≥32 is for alcoholic hepatitis, not ALF.
+  src:
+    page: 186
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L10.135
+  kind: mcq
+  topic: definition
+  stem: 'According to the IASL (1999) subcommittee, ''fulminant ALF'' means encephalopathy develops within:'
+  options:
+  - <10 days
+  - 10–30 days
+  - 8–28 days
+  - 5–24 weeks
+  - 5–12 weeks
+  answer: 1
+  why:
+  - That is hyperacute (IASL).
+  - 'Correct: 10 days to 30 days.'
+  - That is 'acute' in the 1993 scheme.
+  - That is IASL subacute.
+  - That is 1993 subacute.
+  src:
+    page: 173
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L10.136
+  kind: case
+  topic: care
+  stem: A 21-year-old student is brought 40 hours after taking 60 tablets of paracetamol 500 mg. He is drowsy but
+    rousable. ALT 6,800 U/L, INR 3.6, glucose 52 mg/dL.
+  steps:
+  - question: Which treatment is still indicated now?
+    options:
+    - None, it is too late after 24 h
+    - IV NAC 150 mg/kg over 15 min, then 50 mg/kg over 4 h, then 100 mg/kg over 16 h
+    - Oral activated charcoal only
+    - Plasmapheresis with D-penicillamine
+    answer: 1
+    why: NAC is indicated up to 72 h after ingestion, and helps stage 1–2 HE of any cause.
+  - question: How do you manage the glucose?
+    options:
+    - Ignore it
+    - Continuous 10% dextrose aiming for 100–200 mg/dL, checked at least twice daily
+    - Insulin infusion
+    - Large volumes of hypotonic fluid
+    answer: 1
+    why: Hypoglycemia is common and a poor sign; prevent it with 5–10% dextrose.
+  - reveal: 'Next day: confusion and drowsiness; creatinine 3.9 mg/dL; INR 7.0.'
+    question: He becomes confused and sleepy (stage 2 HE). Where should he be?
+    options:
+    - General ward with sedatives
+    - ICU, avoid sedatives, head CT to exclude other causes, discuss with a liver center
+    - Discharge with lactulose
+    - Psychiatric unit
+    answer: 1
+    why: Stage 2 HE goes to ICU; any HE should prompt specialist liver center discussion and transfer.
+  - question: Six hours later he is in grade 3 HE. Do King's College criteria apply?
+    options:
+    - 'No'
+    - 'Yes: INR >6.5, creatinine >3.4 mg/dL and HE stage 3–4'
+    - Only if pH <7.0
+    - Only if factor V <20%
+    answer: 1
+    why: All three of INR >6.5, creatinine >300 µmol/L (>3.4 mg/dL) and HE 3–4 meet the acetaminophen criteria.
+  - question: He is intubated with an ICP monitor. ICP 25 mmHg, MAP 75 mmHg, kidneys failing. Which measure is NOT
+      advised?
+    options:
+    - Head elevation 20°
+    - Hyperventilation to PaCO2 25 mmHg
+    - Mannitol 0.5 g/kg
+    - Hypertonic saline to Na 145–155
+    answer: 2
+    why: Mannitol is given only if kidney function is intact; here it is failing.
+  src:
+    page: 179
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.137
+  kind: case
+  topic: etiology
+  stem: 'A 17-year-old girl has 2 weeks of jaundice and now confusion. Exam: splenomegaly, Kayser-Fleischer rings.
+    ALT 210 U/L, ALP 18 U/L, bilirubin 28 mg/dL, INR 3.5, hemoglobin 8.9 g/dL.'
+  steps:
+  - question: Most likely cause?
+    options:
+    - Hepatitis A
+    - Fulminant Wilson disease
+    - Acetaminophen
+    - Ischemic hepatitis
+    answer: 1
+    why: Modest transaminases, low ALP and splenomegaly point to fulminant Wilson.
+  - question: She has splenomegaly suggesting chronic disease. Can this still be called ALF?
+    options:
+    - No, chronic disease excludes ALF
+    - Yes, Wilson disease is an accepted exception
+    - Only if biopsy shows no fibrosis
+    - Only if HE is grade 4
+    answer: 1
+    why: Wilson disease is counted as ALF because it shares the poor prognosis and picture of acute failure.
+  - question: Prognosis and plan?
+    options:
+    - Good spontaneous recovery; observe
+    - 'Spontaneous recovery is unusual: plan emergency LT; plasmapheresis with D-penicillamine meanwhile'
+    - NAC only
+    - Steroids
+    answer: 1
+    why: Wilson ALF rarely recovers; King's (book) lists Wilson ALF as a criterion. Plasmapheresis with D-penicillamine
+      has been used.
+  src:
+    page: 176
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L10.138
+  kind: case
+  topic: prognosis
+  stem: A 46-year-old man has 7 weeks of jaundice after starting isoniazid. Bilirubin 21 mg/dL, INR 2.5, ALT 380
+    U/L, mild ascites. Today his wife says he is 'a bit slow'.
+  steps:
+  - question: Which presentation is this?
+    options:
+    - Hyperacute
+    - Acute
+    - Subacute
+    - Chronic liver disease
+    answer: 2
+    why: 'HE about 7 weeks after jaundice (5–12 weeks) with deep jaundice and modest transaminases: subacute.'
+  - question: How worrying is the INR of 2.5 here?
+    options:
+    - Not worrying; INR 2.5 is mild
+    - Of immediate concern, because this is subacute ALF
+    - Only worrying if acetaminophen
+    - Irrelevant once HE is present
+    answer: 1
+    why: INR 2.5 is of immediate concern in subacute ALF but not in acetaminophen hepatotoxicity.
+  - question: Best action now?
+    options:
+    - Recheck in a week
+    - Immediate discussion and transfer to a specialist liver/transplant center
+    - Start steroids
+    - Discharge with lactulose
+    answer: 1
+    why: Subacute presentation with any HE has very poor survival without LT; drug-induced cause and age >40 add
+      King's points.
+  src:
+    page: 184
+  status: unverified
+- id: hb.L10.139
+  kind: essay
+  topic: definition
+  prompt: Mention the definition and clinical presentations of ALF.
+  outline:
+  - Definition:
+    - HE + coagulopathy (INR usually >1.5) + jaundice without prior cirrhosis
+    - 'Trey & Davidson: HE within 8 weeks; 1993: hyperacute ≤7 d, acute 8–28 d, subacute 5–12 weeks'
+    - 'Exceptions: de novo AIH, Budd-Chiari, Wilson'
+  - Presentations:
+    - 'Hyperacute: severe coagulopathy, very high transaminases, mild jaundice; better recovery'
+    - 'Subacute: deep jaundice, milder enzymes, ascites, splenomegaly, shrinking liver; poor once HE'
+  - Clinical features:
+    - Malaise, nausea, jaundice, HE → cerebral edema
+    - Infection, hypoglycemia, hyperdynamic circulation, renal failure, acidosis
+  src:
+    page: 187
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L10.140
+  kind: essay
+  topic: transplant
+  prompt: Mention the etiologies of ALF which are eligible for emergent liver transplantation.
+  outline:
+  - Primary ALF (LT an option):
+    - Acute viral, drug/toxin, acute Budd-Chiari, acute AIH, pregnancy-related
+    - 'Chronic with acute phenotype: fulminant Wilson, chronic AIH, chronic Budd-Chiari, HBV reactivation'
+  - Secondary ALF (LT not an option):
+    - Ischemic hepatitis; systemic diseases (HLH, metabolic, infiltrative, lymphoma, infections)
+    - Severe alcoholic hepatitis; extensive liver resection
+  src:
+    page: 187
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L10.141
+  kind: essay
+  topic: care
+  prompt: Outline the standards of care in ALF.
+  outline:
+  - Neurological:
+    - Monitor mental status; ICU at stage 2 HE; avoid sedatives; head CT/MRI
+    - 'Stage 3: intubate, ICP monitor; ICP <40, CPP 60–100; hypertonic saline to Na 145–155'
+    - 'ICP >20 or CPP <60: head 20°, PaCO2 25, mannitol 0.5 g/kg; barbiturates if refractory'
+  - Infection and coagulation:
+    - Periodic blood cultures, low threshold for antimicrobials
+    - Correct coagulopathy only for bleeding/procedures (FFP first)
+  - Metabolic and hemodynamic:
+    - Avoid hypotonic fluids; norepinephrine; dextrose to glucose 100–200 mg/dL
+    - RRT if needed; enteral protein 1–1.5 g/kg/day
+  - Specific therapy:
+    - NAC (acetaminophen, and early HE of any cause), nucleoside analogs for HBV, acyclovir for HSV, plasmapheresis
+      + D-penicillamine for Wilson
+    - Plasma exchange; early transplant referral
+  src:
+    page: 187
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L10.142
+  kind: essay
+  topic: prognosis
+  prompt: Describe the general prognostic indicators of ALF.
+  outline:
+  - Encephalopathy:
+    - Key indicator; any HE → critical care and specialist center
+    - Low-grade HE is grave in subacute disease
+  - Extra-hepatic organ failure:
+    - Especially renal; marks severity
+  - Severity of liver injury:
+    - Coagulopathy and jaundice; thresholds vary by cause and age
+    - Falling transaminases with rising bilirubin/INR and a shrinking liver are bad
+  - Etiology and presentation:
+    - Subacute and indeterminate cause do poorly; acetaminophen and HAV do better
+    - 'Other markers: ammonia >150 µmol/L, hypoglycemia, acidosis, MELD >32'
+  src:
+    page: 187
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L10.143
+  kind: essay
+  topic: transplant
+  prompt: Describe the King's College criteria for emergent liver transplantation in ALF.
+  outline:
+  - Wilson disease or Budd-Chiari ALF (book version):
+    - Criterion on its own
+  - Acetaminophen (any one):
+    - Arterial pH <7.3 after resuscitation and 24 h after ingestion
+    - Lactate >3 mmol/L
+    - 'All 3: INR >6.5, creatinine >3.4 mg/dL (>300 µmol/L), HE 3–4'
+  - Non-acetaminophen:
+    - 'INR >6.5, or any 3 of: INR >3.5, bilirubin >17.5 mg/dL (>300 µmol/L), jaundice→HE >7 days, age <10 or >40,
+      indeterminate or drug-induced'
+  src:
+    page: 187
+  status: unverified
+  tags:
+  - book-question

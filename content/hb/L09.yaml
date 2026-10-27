@@ -1,0 +1,2684 @@
+schema: batna.content/v1
+lecture: hb.L09
+title: Ascites
+author: Prof. Hoda El Aggan
+book:
+  chapter: 1
+  pages:
+  - 145
+  - 171
+topics:
+- id: causes
+  title: Definition, causes and general mechanisms
+- id: pathophysiology
+  title: Ascites formation in cirrhosis
+- id: clinical
+  title: Clinical picture, grades and hepatic hydrothorax
+- id: diagnosis
+  title: Paracentesis, ascitic fluid analysis and SAAG
+- id: treatment
+  title: Treatment of uncomplicated ascites
+- id: refractory
+  title: Refractory ascites
+- id: hrs
+  title: Hepatorenal syndrome
+- id: sbp
+  title: Spontaneous bacterial peritonitis
+- id: sfp
+  title: Spontaneous fungal peritonitis
+items:
+- id: hb.L09.001
+  kind: card
+  topic: causes
+  front: Definition of ascites?
+  back: Accumulation of free sterile fluid within the peritoneal cavity.
+  src:
+    page: 145
+    quote: accumulation of free sterile fluid within the peritoneal cavity
+  status: unverified
+- id: hb.L09.002
+  kind: enumerate
+  topic: causes
+  prompt: Enumerate the causes of ascites with a NORMAL peritoneum (6 groups).
+  points:
+  - 'Portal hypertension: cirrhosis, pre-sinusoidal and post-sinusoidal'
+  - 'Cardiac: right heart failure, constrictive pericarditis'
+  - 'Hypoproteinemia: nephrotic syndrome, protein-losing enteropathy'
+  - 'Pancreatic: acute pancreatitis, pancreatic pseudocyst'
+  - 'Endocrine: marked hypothyroidism, Meigs'' syndrome, ovarian hyperstimulation, struma ovarii'
+  - 'Miscellaneous: chylous, bile, nephrogenic and urine ascites'
+  pass: 4
+  src:
+    page: 145
+  status: unverified
+- id: hb.L09.003
+  kind: enumerate
+  topic: causes
+  prompt: Enumerate the causes of ascites with a DISEASED peritoneum (3 groups).
+  points:
+  - 'Infections: tuberculosis, Fitz-Hugh-Curtis syndrome, fungal (coccidioidomycosis), HIV-associated peritonitis,
+    Whipple''s disease'
+  - 'Malignant: primary mesothelioma, pseudomyxoma peritonei, HCC, massive hepatic metastases, intra-abdominal tumors'
+  - 'Rare: familial Mediterranean fever, collagen vascular disease, granulomatous peritonitis, eosinophilic peritonitis'
+  pass: 3
+  src:
+    page: 146
+  status: unverified
+- id: hb.L09.004
+  kind: cloze
+  topic: causes
+  text: 'Endocrine causes of ascites: marked {{c1::hypothyroidism}}, {{c2::Meigs'' syndrome}}, ovarian hyperstimulation
+    and {{c3::struma ovarii}}.'
+  src:
+    page: 145
+  status: unverified
+- id: hb.L09.005
+  kind: card
+  topic: causes
+  front: Two families of factors behind ascitic fluid accumulation?
+  back: '1. Mechanical forces that drive fluid transudation across the capillary endothelium.
+
+    2. Biochemical factors causing renal sodium and water retention (volume overload).'
+  src:
+    page: 146
+  status: unverified
+- id: hb.L09.006
+  kind: enumerate
+  topic: causes
+  prompt: Mention the MECHANICAL factors of ascites formation.
+  points:
+  - 'Increased hydrostatic pressure: portal hypertension, IVC narrowing at the diaphragm, hepatic vein block'
+  - 'Reduced colloid osmotic pressure (hypoproteinemia): nephrotic syndrome, protein-losing enteropathy, hepatic
+    insufficiency'
+  - Disturbed capillary permeability
+  - Increased lymph formation or insufficient lymphatic drainage
+  pass: 3
+  src:
+    page: 146
+  status: unverified
+- id: hb.L09.007
+  kind: cloze
+  topic: causes
+  text: 'Anti-natriuretic factors increased in ascites: {{c1::RAAS}}, {{c1::ADH}}, thromboxane, {{c2::endothelin}},
+    catecholamines and endotoxemia.'
+  src:
+    page: 146
+  status: unverified
+- id: hb.L09.008
+  kind: cloze
+  topic: causes
+  text: 'Natriuretic factors decreased in ascites: natriuretic peptides (atrial, renal), {{c1::kallikrein-kinin
+    system}}, {{c2::prostaglandin E2}} and {{c2::prostacyclin}}.'
+  src:
+    page: 146
+  status: unverified
+- id: hb.L09.009
+  kind: card
+  topic: pathophysiology
+  front: What is the most frequent first decompensating event in cirrhosis?
+  back: Development of ascites.
+  src:
+    page: 147
+    quote: the most frequent first decompensating event
+  status: unverified
+- id: hb.L09.010
+  kind: cloze
+  topic: pathophysiology
+  text: If untreated, nearly {{c1::60%}} of patients with compensated cirrhosis develop ascites within {{c2::10
+    years}}.
+  src:
+    page: 147
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.011
+  kind: card
+  topic: pathophysiology
+  front: The most accepted theory of ascites formation in cirrhosis?
+  back: The peripheral arterial vasodilatation hypothesis.
+  src:
+    page: 147
+  status: unverified
+- id: hb.L09.012
+  kind: card
+  topic: pathophysiology
+  front: Triggering factor of ascites formation in cirrhosis?
+  back: Accumulation of endogenous vasodilators (because of portal hypertension), causing splanchnic and systemic
+    arterial vasodilatation and arterial underfilling.
+  src:
+    page: 147
+  status: unverified
+- id: hb.L09.013
+  kind: enumerate
+  topic: pathophysiology
+  prompt: Name the endogenous vasodilators that accumulate in cirrhosis and trigger ascites.
+  points:
+  - Nitric oxide
+  - Carbon monoxide
+  - Glucagon
+  - Vasodilator peptides
+  - Prostaglandins
+  - Endocannabinoids
+  pass: 4
+  src:
+    page: 147
+  status: unverified
+- id: hb.L09.014
+  kind: order
+  topic: pathophysiology
+  prompt: 'Peripheral arterial vasodilatation hypothesis: from portal hypertension to ascites.'
+  steps:
+  - Portal hypertension leads to accumulation of endogenous vasodilators (NO, CO, glucagon, prostaglandins, endocannabinoids)
+  - Splanchnic and systemic arterial vasodilatation
+  - Underfilling of the circulation (arterial bed too big for the blood volume)
+  - Baroreceptor-mediated activation of RAAS, SNS and ADH
+  - Renal vasoconstriction with sodium and water retention (hypervolemia)
+  - 'Fluid transudates into the peritoneum, localized by portal hypertension: ascites'
+  src:
+    page: 147
+  status: unverified
+- id: hb.L09.015
+  kind: card
+  topic: pathophysiology
+  front: In ascites formation, what role does portal hypertension play besides triggering vasodilatation?
+  back: 'It is the localizing factor: it makes the retained fluid transudate into the peritoneal cavity.'
+  src:
+    page: 147
+  status: unverified
+- id: hb.L09.016
+  kind: card
+  topic: pathophysiology
+  front: How do gut bacteria worsen splanchnic vasodilatation in cirrhosis?
+  back: Bacterial translocation to mesenteric lymph nodes raises endotoxin, which stimulates pro-inflammatory cytokines
+    and nitric oxide production.
+  src:
+    page: 147
+  status: unverified
+- id: hb.L09.017
+  kind: cloze
+  topic: pathophysiology
+  text: ADH activation lowers tubular free water clearance, causing {{c1::dilutional hyponatremia}}, defined as
+    serum sodium below {{c2::130 mmol/L}}.
+  src:
+    page: 147
+    quote: serum sodium level of less than 130 mmol/L
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.018
+  kind: cloze
+  topic: clinical
+  text: At least {{c1::1–2 L}} of fluid must be in the abdomen before ascites is clinically detected.
+  src:
+    page: 148
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.019
+  kind: card
+  topic: clinical
+  front: 'In cirrhosis, which comes first: ascites or peripheral edema?'
+  back: Ascites precedes peripheral edema.
+  src:
+    page: 148
+  status: unverified
+- id: hb.L09.020
+  kind: enumerate
+  topic: clinical
+  prompt: Mention the clinical signs of ascites on examination.
+  points:
+  - Increased abdominal circumference and distension
+  - Full flanks
+  - Wide subcostal angle
+  - Divarication of the recti
+  - Umbilicus shifted downward and everted, umbilical hernia
+  - Other abdominal wall hernias
+  - Scrotal swelling
+  pass: 5
+  src:
+    page: 148
+  status: unverified
+- id: hb.L09.021
+  kind: table
+  topic: clinical
+  title: Grades of ascites
+  columns:
+  - Grade
+  - Amount
+  - Finding
+  rows:
+  - - Grade 1
+    - Mild
+    - Detectable only by ultrasound
+  - - Grade 2
+    - Moderate
+    - Moderate symmetrical distension with flank bulging and shifting dullness
+  - - Grade 3
+    - Severe
+    - Marked abdominal distension with a fluid thrill
+  blanks:
+  - - 0
+    - 2
+  - - 1
+    - 2
+  - - 2
+    - 2
+  src:
+    page: 148
+  status: unverified
+- id: hb.L09.022
+  kind: card
+  topic: clinical
+  front: Define tense ascites.
+  back: 'Severe ascites that markedly raises intra-abdominal pressure and causes pressure manifestations: dyspnea,
+    early satiety, functional IVC block, congested neck veins, and possible rupture of an umbilical hernia.'
+  src:
+    page: 149
+  status: unverified
+- id: hb.L09.023
+  kind: card
+  topic: clinical
+  front: What is hepatic hydrothorax and which side is it usually on?
+  back: A usually right-sided pleural effusion from ascitic fluid passing through diaphragmatic defects from the
+    peritoneum to the pleural space.
+  src:
+    page: 149
+  status: unverified
+- id: hb.L09.024
+  kind: cloze
+  topic: clinical
+  text: Pleural fluid in hepatic hydrothorax is a {{c1::transudate}} (low protein) with a serum-pleural fluid albumin
+    gradient of {{c2::≥1.1 g/dL}}.
+  src:
+    page: 149
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.025
+  kind: card
+  topic: clinical
+  front: How is spontaneous bacterial empyema (in hepatic hydrothorax) managed?
+  back: Like SBP.
+  src:
+    page: 149
+  status: unverified
+- id: hb.L09.026
+  kind: card
+  topic: clinical
+  front: Best option for refractory hepatic hydrothorax, and the bridge to it?
+  back: Liver transplantation is the best option. TIPS can bridge persistent hydrothorax to LT. Repeated thoracentesis
+    and pleurodesis are tried only if other therapies fail.
+  src:
+    page: 149
+  status: unverified
+- id: hb.L09.027
+  kind: enumerate
+  topic: clinical
+  prompt: 'Define complicated ascites: which 4 conditions make ascites ''complicated''?'
+  points:
+  - Refractoriness to diuretics (refractory ascites)
+  - Dilutional hyponatremia
+  - Hepatorenal syndrome
+  - Spontaneous bacterial peritonitis
+  pass: 4
+  src:
+    page: 149
+  status: unverified
+- id: hb.L09.028
+  kind: mcq
+  topic: clinical
+  stem: 'A man with alcohol-related cirrhosis has a large right pleural effusion and moderate ascites. He has no
+    heart or lung disease. Pleural fluid: protein low, serum-pleural fluid albumin gradient 1.4 g/dL, PMN 80/mm³.
+    Which statement about his condition is correct according to the lecture?'
+  options:
+  - It is most likely a malignant effusion because it is unilateral
+  - Fluid has crossed diaphragmatic defects; treat it like ascites
+  - Pleurodesis is the first-line treatment
+  - A gradient of 1.4 g/dL points to an exudate
+  - Diuretics are contraindicated in this condition
+  answer: 1
+  why:
+  - A right-sided transudate in a cirrhotic with ascites is hepatic hydrothorax; side alone does not suggest malignancy.
+  - 'Correct: hepatic hydrothorax is ascitic fluid crossing diaphragmatic defects, and its therapy corresponds to
+    that of ascites.'
+  - Pleurodesis and repeated thoracentesis are tried only when other therapies fail.
+  - A gradient ≥1.1 g/dL with low protein is a transudate like the ascites.
+  - Therapy corresponds to that of ascites, which includes sodium restriction and diuretics.
+  src:
+    page: 149
+  status: unverified
+- id: hb.L09.029
+  kind: cloze
+  topic: diagnosis
+  text: Ultrasound can detect as little as {{c1::100 mL}} of ascites; CT is indicated only for {{c2::problems with
+    the differential diagnosis}}.
+  src:
+    page: 149
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.030
+  kind: card
+  topic: diagnosis
+  front: When is a diagnostic paracentesis done in ascites?
+  back: At first presentation of grade 2 or 3 ascites, and to look for complications such as SBP.
+  src:
+    page: 150
+  status: unverified
+- id: hb.L09.031
+  kind: enumerate
+  topic: diagnosis
+  prompt: Mention the components of ascitic fluid analysis.
+  points:
+  - Appearance (transparent, yellow-tinged, hemorrhagic, chylous)
+  - Cell count with differential
+  - Total protein
+  - Albumin, to calculate the SAAG
+  - LDH
+  - 'Culture: 10–20 mL into aerobic and anaerobic blood culture bottles at the bedside'
+  - Cytology for malignant cells
+  pass: 5
+  src:
+    page: 150
+  status: unverified
+- id: hb.L09.032
+  kind: cloze
+  topic: diagnosis
+  text: Ascitic PMN count of {{c1::≥250 cells/mm³}} suggests SBP, while predominant {{c2::lymphocytes}} suggest
+    TB ascites.
+  src:
+    page: 150
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L09.033
+  kind: cloze
+  topic: diagnosis
+  text: Ascitic total protein is low ({{c1::<1.5 g/dL}}) in cirrhosis and high ({{c2::>2.5 g/dL}}) in heart failure
+    and malignant ascites.
+  src:
+    page: 150
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L09.034
+  kind: card
+  topic: diagnosis
+  front: Which ascitic enzyme is raised in malignant ascites?
+  back: LDH.
+  src:
+    page: 150
+  status: unverified
+- id: hb.L09.035
+  kind: card
+  topic: diagnosis
+  front: How should ascitic fluid be cultured?
+  back: Inoculate 10–20 mL into two blood culture bottles (aerobic and anaerobic) at the bedside.
+  src:
+    page: 150
+    quote: should be inoculated into two [aerobic and anaerobic] blood culture bottles at the bedside
+  status: unverified
+- id: hb.L09.036
+  kind: card
+  topic: diagnosis
+  front: Pitfall of ascitic cytology?
+  back: Normal peritoneal epithelial cells can resemble malignant cells, so cancer can be over-diagnosed.
+  src:
+    page: 150
+  status: unverified
+- id: hb.L09.037
+  kind: cloze
+  topic: diagnosis
+  text: SAAG = {{c1::serum albumin − ascitic albumin}} (g/dL).
+  src:
+    page: 150
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.038
+  kind: cloze
+  topic: diagnosis
+  text: SAAG {{c1::≥1.1 g/dL}} means ascites is most likely due to {{c2::portal hypertension}}; SAAG below this
+    suggests a non-portal-hypertensive cause.
+  src:
+    page: 150
+    quote: If SAAG is ≥ 1.1 g/dl (High SAAG), ascites is most likely due to portal hypertension
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L09.039
+  kind: card
+  topic: diagnosis
+  front: A patient has portal hypertension plus a second cause of ascites (e.g. peritoneal TB). What is the SAAG?
+  back: Still ≥1.1 g/dL (high).
+  src:
+    page: 151
+  status: unverified
+- id: hb.L09.040
+  kind: table
+  topic: diagnosis
+  title: Special ascitic fluid tests
+  columns:
+  - Test
+  - Used for
+  rows:
+  - - Glucose (low)
+    - Infection, TB and malignancy
+  - - PCR for TB
+    - Tuberculous peritonitis
+  - - Amylase
+    - Pancreatic disease
+  - - Triglycerides
+    - Chylous ascites
+  - - Alpha-fetoprotein
+    - Hepatocellular carcinoma
+  - - CEA
+    - Metastasis
+  - - Hyaluronic acid
+    - Mesothelioma
+  blanks:
+  - - 0
+    - 1
+  - - 2
+    - 1
+  - - 3
+    - 1
+  - - 4
+    - 1
+  - - 5
+    - 1
+  - - 6
+    - 1
+  src:
+    page: 151
+  status: unverified
+- id: hb.L09.041
+  kind: card
+  topic: diagnosis
+  front: Other lab tests in a patient with ascites besides the tap?
+  back: Serum sodium and potassium, serum creatinine, and urine sodium excretion.
+  src:
+    page: 151
+  status: unverified
+- id: hb.L09.042
+  kind: calc
+  topic: diagnosis
+  calculator: saag
+  stem: A 55-year-old with HCV cirrhosis has new grade 2 ascites. Serum albumin 2.9 g/dL, ascitic albumin 1.1 g/dL,
+    ascitic total protein 1.2 g/dL, PMN 60/mm³.
+  inputs:
+    serum_albumin: 2.9
+    ascites_albumin: 1.1
+  expect: SAAG = 1.8 g/dL (high)
+  interpret: 'High SAAG with low protein (<1.5 g/dL): portal-hypertensive ascites of cirrhosis. PMN <250, so no
+    SBP.'
+  src:
+    page: 150
+  status: unverified
+- id: hb.L09.043
+  kind: calc
+  topic: diagnosis
+  calculator: saag
+  stem: A 40-year-old woman with weight loss and night sweats has ascites. Serum albumin 3.6 g/dL, ascitic albumin
+    3.0 g/dL, ascitic protein 4.2 g/dL, mostly lymphocytes.
+  inputs:
+    serum_albumin: 3.6
+    ascites_albumin: 3.0
+  expect: SAAG = 0.6 g/dL (low)
+  interpret: 'Low SAAG: not portal hypertension. Lymphocyte-rich, high-protein fluid suggests TB peritonitis; send
+    PCR for TB.'
+  src:
+    page: 150
+  status: unverified
+- id: hb.L09.044
+  kind: calc
+  topic: diagnosis
+  calculator: saag
+  stem: A 68-year-old with ischemic cardiomyopathy and raised JVP has ascites. Serum albumin 3.4 g/dL, ascitic albumin
+    1.9 g/dL, ascitic protein 3.1 g/dL.
+  inputs:
+    serum_albumin: 3.4
+    ascites_albumin: 1.9
+  expect: SAAG = 1.5 g/dL (high)
+  interpret: 'High SAAG with HIGH protein (>2.5 g/dL): post-sinusoidal portal hypertension from heart failure, not
+    cirrhosis.'
+  src:
+    page: 150
+  status: unverified
+- id: hb.L09.045
+  kind: calc
+  topic: diagnosis
+  calculator: saag
+  stem: A 60-year-old with known cirrhosis has growing ascites and weight loss. Serum albumin 2.6 g/dL, ascitic
+    albumin 1.3 g/dL, ascitic LDH high, CEA high.
+  inputs:
+    serum_albumin: 2.6
+    ascites_albumin: 1.3
+  expect: SAAG = 1.3 g/dL (high)
+  interpret: 'Still high, because portal hypertension plus a second cause keeps SAAG ≥1.1 g/dL. High LDH and CEA
+    point to malignancy (metastasis): send cytology.'
+  src:
+    page: 151
+  status: unverified
+- id: hb.L09.046
+  kind: calc
+  topic: diagnosis
+  calculator: saag
+  stem: A 30-year-old with heavy proteinuria and generalized edema has ascites. Serum albumin 1.6 g/dL, ascitic
+    albumin 0.8 g/dL.
+  inputs:
+    serum_albumin: 1.6
+    ascites_albumin: 0.8
+  expect: SAAG = 0.8 g/dL (low)
+  interpret: 'Low SAAG: non-portal-hypertensive ascites, here from hypoproteinemia (nephrotic syndrome).'
+  src:
+    page: 150
+  status: unverified
+- id: hb.L09.047
+  kind: mcq
+  topic: diagnosis
+  stem: A 50-year-old woman has ascites. Serum albumin 3.2 g/dL, ascitic albumin 2.5 g/dL, ascitic amylase very
+    high. She had acute pancreatitis 6 weeks ago. What is the best interpretation?
+  options:
+  - High-SAAG ascites from portal vein thrombosis
+  - Low-SAAG pancreatic ascites
+  - High-SAAG cirrhotic ascites with SBP
+  - Low-SAAG chylous ascites
+  - SAAG cannot be used when amylase is high
+  answer: 1
+  why:
+  - SAAG here is 0.7 g/dL (low), so not portal hypertension.
+  - 'Correct: SAAG 3.2 − 2.5 = 0.7 g/dL (low); high amylase points to pancreatic disease.'
+  - SAAG is low, and nothing suggests SBP.
+  - Chylous ascites is confirmed by triglycerides, not amylase.
+  - SAAG is valid regardless of amylase; amylase is a special test added to it.
+  src:
+    page: 150
+  status: unverified
+- id: hb.L09.048
+  kind: mcq
+  topic: diagnosis
+  stem: Which ascitic fluid result best suggests ascites from heart failure rather than from cirrhosis?
+  options:
+  - SAAG 1.6 g/dL, total protein 3.0 g/dL
+  - SAAG 1.6 g/dL, total protein 1.0 g/dL
+  - SAAG 0.8 g/dL, total protein 3.5 g/dL
+  - SAAG 0.8 g/dL, total protein 1.0 g/dL
+  - PMN 400/mm³ with Gram-negative bacilli
+  answer: 0
+  why:
+  - 'Correct: both have high SAAG, but heart failure gives high protein (>2.5 g/dL).'
+  - High SAAG with low protein (<1.5 g/dL) is typical of cirrhosis.
+  - Low SAAG is not portal-hypertensive; high protein fits malignancy or TB.
+  - Low SAAG with low protein fits hypoproteinemia (e.g. nephrotic syndrome).
+  - This is SBP, an infection, not a cause of ascites.
+  src:
+    page: 150
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.049
+  kind: cloze
+  topic: diagnosis
+  text: Ascites carries a mortality of {{c1::50%}} at 2 years and {{c2::80%}} at 5 years after the first episode.
+  src:
+    page: 151
+    quote: mortality rate of 50% and 80% within 2 and 5 years respectively
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.050
+  kind: enumerate
+  topic: diagnosis
+  prompt: Which features identify cirrhotic patients with ascites at high mortality risk?
+  points:
+  - Persistent ascites
+  - Low serum sodium (<130 mmol/L)
+  - SBP
+  - Renal impairment
+  pass: 3
+  src:
+    page: 151
+  status: unverified
+- id: hb.L09.051
+  kind: enumerate
+  topic: treatment
+  prompt: Before treating cirrhotic ascites, what is mandatory?
+  points:
+  - Treat the underlying cause of liver disease
+  - Rule out SBP
+  - Monitor renal function and electrolytes
+  - Exclude associated causes of ascites
+  pass: 3
+  src:
+    page: 151
+  status: unverified
+- id: hb.L09.052
+  kind: card
+  topic: treatment
+  front: Aim of treating cirrhotic ascites?
+  back: To create a negative sodium and water balance.
+  src:
+    page: 151
+  status: unverified
+- id: hb.L09.053
+  kind: table
+  topic: treatment
+  title: Treatment by ascites grade
+  columns:
+  - Grade
+  - Treatment
+  rows:
+  - - Grade 1
+    - No treatment
+  - - Grade 2
+    - Sodium restriction plus diuretics (negative sodium balance)
+  - - Grade 3
+    - Large-volume paracentesis, then sodium restriction plus diuretics
+  blanks:
+  - - 0
+    - 1
+  - - 1
+    - 1
+  - - 2
+    - 1
+  src:
+    page: 152
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.054
+  kind: cloze
+  topic: treatment
+  text: In cirrhotic ascites, maintain a protein intake of {{c1::1.2–1.5 g/kg}}.
+  src:
+    page: 152
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.055
+  kind: enumerate
+  topic: treatment
+  prompt: General measures in cirrhotic ascites (5).
+  points:
+  - Protein intake 1.2–1.5 g/kg
+  - Stop alcohol
+  - Avoid ACE inhibitors, ARBs and NSAIDs
+  - Stop beta blockers only with low arterial pressure and renal dysfunction
+  - Avoid aminoglycosides for bacterial infections whenever possible
+  pass: 4
+  src:
+    page: 152
+  status: unverified
+- id: hb.L09.056
+  kind: card
+  topic: treatment
+  front: When are beta blockers stopped in a patient with ascites?
+  back: Only in the presence of low arterial pressure and renal dysfunction.
+  src:
+    page: 152
+  status: unverified
+- id: hb.L09.057
+  kind: cloze
+  topic: treatment
+  text: 'Daily sodium is moderately restricted to {{c1::2 g (90 mmol)/day}}: no added salt and no pre-prepared foods.'
+  src:
+    page: 152
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L09.058
+  kind: card
+  topic: treatment
+  front: Why not restrict sodium strictly in ascites?
+  back: Strict restriction interferes with nutrition.
+  src:
+    page: 152
+  status: unverified
+- id: hb.L09.059
+  kind: cloze
+  topic: treatment
+  text: In severe dilutional (hypervolemic) hyponatremia, serum Na {{c1::<125 mmol/L}}, restrict fluid to {{c2::1–1.5
+    L/day}}.
+  src:
+    page: 152
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.060
+  kind: card
+  topic: treatment
+  front: How do vaptans work?
+  back: They block the vasopressin V2 receptor in the collecting tubules, causing free-water clearance (aquaresis)
+    without changing electrolyte excretion, so hyponatremia improves.
+  src:
+    page: 152
+  status: unverified
+- id: hb.L09.061
+  kind: cloze
+  topic: treatment
+  text: Hypertonic (3%) saline is for rare severe hyponatremia with life-threatening complications, given slowly
+    ({{c1::≤8 mmol/L per day}}) to avoid {{c2::osmotic demyelination}}.
+  src:
+    page: 153
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.062
+  kind: card
+  topic: treatment
+  front: First-line diuretic for cirrhotic ascites, and why not furosemide alone?
+  back: An aldosterone antagonist (spironolactone). Furosemide monotherapy is less effective and not recommended.
+  src:
+    page: 153
+  status: unverified
+- id: hb.L09.063
+  kind: cloze
+  topic: treatment
+  text: 'Sequential method (grade 2): spironolactone starts at {{c1::100 mg/day}}, raised every {{c2::72 hours}}
+    to a maximum of {{c3::400 mg/day}}.'
+  src:
+    page: 153
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L09.064
+  kind: cloze
+  topic: treatment
+  text: 'Sequential method: if spironolactone fails within {{c1::2 weeks}}, add furosemide {{c2::40 mg/day}}, raised
+    every 2–3 days to a maximum of {{c3::160 mg/day}}.'
+  src:
+    page: 153
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L09.065
+  kind: cloze
+  topic: treatment
+  text: 'Combined method (grade 3 or recurrent ascites): spironolactone to furosemide in a ratio of {{c1::100 mg
+    : 40 mg}}, titrated after {{c2::4–5 days}}.'
+  src:
+    page: 153
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L09.066
+  kind: enumerate
+  topic: treatment
+  prompt: How is proper diuresis judged?
+  points:
+  - Daily weight loss ≤500 g without peripheral edema, ≤1 kg with edema
+  - Spot urine sodium/potassium ratio >1
+  - Urinary sodium excretion >78 mmol/day
+  pass: 3
+  src:
+    page: 153
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.067
+  kind: cloze
+  topic: treatment
+  text: 'Maximum daily weight loss on diuretics: {{c1::500 g}} without peripheral edema and {{c2::1 kg}} with edema.'
+  src:
+    page: 153
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.068
+  kind: enumerate
+  topic: treatment
+  prompt: Mention diuretic-induced complications.
+  points:
+  - Renal impairment
+  - Hepatic encephalopathy
+  - Hyponatremia (Na <125 mmol/L)
+  - Hypokalemia (<3 mmol/L) or hyperkalemia (>6 mmol/L)
+  - Incapacitating muscle cramps
+  pass: 4
+  src:
+    page: 154
+  status: unverified
+- id: hb.L09.069
+  kind: cloze
+  topic: treatment
+  text: Large-volume paracentesis means removing {{c1::5 L or more}}; for >5 L give albumin {{c2::6–8 g per liter
+    removed}}.
+  src:
+    page: 154
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L09.070
+  kind: card
+  topic: treatment
+  front: Why give albumin after large-volume paracentesis?
+  back: 'To prevent paracentesis-induced circulatory dysfunction: a rapid fall in effective arterial blood volume
+    with a rise in plasma renin activity.'
+  src:
+    page: 154
+  status: unverified
+- id: hb.L09.071
+  kind: card
+  topic: treatment
+  front: Three limits of large-volume paracentesis?
+  back: 'It is symptomatic only: it does not prevent recurrence, does not change survival, and worsens malnutrition.'
+  src:
+    page: 154
+  status: unverified
+- id: hb.L09.072
+  kind: card
+  topic: treatment
+  front: When should a patient with ascites be referred for LT evaluation?
+  back: Once grade 2 or 3 ascites develops, because it carries a poor prognosis.
+  src:
+    page: 154
+  status: unverified
+- id: hb.L09.073
+  kind: mcq
+  topic: treatment
+  stem: A 58-year-old with Child B cirrhosis has new grade 2 ascites. Creatinine 0.9 mg/dL, Na 136, K 4.2. What
+    is the best initial diuretic regimen by the sequential method?
+  options:
+  - Furosemide 40 mg/day alone
+  - Spironolactone 100 mg/day
+  - Spironolactone 400 mg/day plus furosemide 160 mg/day
+  - Spironolactone 100 mg plus furosemide 40 mg from day 1, as in grade 3
+  - Large-volume paracentesis with albumin
+  answer: 1
+  why:
+  - Furosemide monotherapy is less effective and not recommended.
+  - 'Correct: start spironolactone 100 mg/day and raise it every 72 h (max 400).'
+  - These are maximum doses, not starting doses.
+  - The combined 100:40 start is for grade 3 or recurrent ascites.
+  - LVP is for grade 3 (tense) ascites.
+  src:
+    page: 153
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.074
+  kind: mcq
+  topic: treatment
+  stem: A cirrhotic patient with ascites and no leg edema has been on spironolactone 200 mg/day for 5 days. Which
+    finding shows the diuresis is adequate and safe?
+  options:
+  - Weight loss of 1.5 kg/day
+  - Spot urine Na/K ratio of 0.6
+  - Weight loss of 400 g/day with a spot urine Na/K ratio of 1.8
+  - Urinary sodium excretion of 40 mmol/day
+  - Serum sodium falling to 123 mmol/L
+  answer: 2
+  why:
+  - Without edema, weight loss should not exceed 500 g/day.
+  - A Na/K ratio >1 is needed.
+  - 'Correct: ≤500 g/day without edema and Na/K >1 mean proper diuresis.'
+  - Proper diuresis needs >78 mmol/day.
+  - Na <125 mmol/L is a diuretic complication.
+  src:
+    page: 153
+  status: unverified
+- id: hb.L09.075
+  kind: mcq
+  topic: treatment
+  stem: A patient with tense ascites has 8 L removed by paracentesis. What should be given and how much?
+  options:
+  - Nothing, if the blood pressure is normal
+  - Normal saline 1 L per 2 L removed
+  - Albumin 6–8 g per liter removed (about 48–64 g)
+  - Albumin 1.5 g/kg on day 1 and 1 g/kg on day 3
+  - Terlipressin 1 mg every 6 hours
+  answer: 2
+  why:
+  - Albumin is recommended for every LVP over 5 L to prevent circulatory dysfunction.
+  - The lecture uses albumin and advises caution with saline in ascites.
+  - 'Correct: 6–8 g of albumin per liter removed for LVP >5 L.'
+  - This is the SBP albumin regimen.
+  - Vasoconstrictors are for HRS-AKI, not routine after LVP.
+  src:
+    page: 154
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.076
+  kind: mcq
+  topic: treatment
+  stem: A patient with cirrhotic ascites asks which drug is safe for knee pain and for his blood pressure. Which
+    is acceptable per the lecture?
+  options:
+  - Ibuprofen
+  - Lisinopril
+  - Losartan
+  - Paracetamol in usual doses
+  - Gentamicin for a UTI
+  answer: 3
+  why:
+  - NSAIDs must be avoided in ascites.
+  - ACE inhibitors must be avoided.
+  - ARBs must be avoided.
+  - 'Correct: not on the lecture''s avoid list (ACEi, ARBs, NSAIDs, aminoglycosides).'
+  - Aminoglycosides should be avoided whenever possible.
+  src:
+    page: 152
+  status: unverified
+- id: hb.L09.077
+  kind: mcq
+  topic: treatment
+  stem: A cirrhotic with ascites has serum sodium 122 mmol/L, no neurological symptoms, and is clinically hypervolemic.
+    Best next step?
+  options:
+  - 3% hypertonic saline to raise Na by 12 mmol/L today
+  - Fluid restriction to 1–1.5 L/day
+  - Isotonic saline infusion
+  - Strict sodium restriction to 0.5 g/day
+  - Stop all protein intake
+  answer: 1
+  why:
+  - Hypertonic saline is only for severe hyponatremia with life-threatening complications, and never more than 8
+    mmol/L per day.
+  - 'Correct: for Na <125 mmol/L, restrict fluid to 1–1.5 L/day.'
+  - Saline must be given cautiously in ascites; it worsens overload.
+  - Strict sodium restriction is not advised (hurts nutrition), and it does not treat dilutional hyponatremia.
+  - Protein intake should stay at 1.2–1.5 g/kg.
+  src:
+    page: 152
+  status: unverified
+- id: hb.L09.078
+  kind: cloze
+  topic: refractory
+  text: Refractory ascites occurs in {{c1::5–10%}} of cirrhotics with ascites; one-year mortality is over {{c2::40%}}.
+  src:
+    page: 154
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.079
+  kind: card
+  topic: refractory
+  front: Definition of refractory ascites?
+  back: Ascites that cannot be mobilized, or that recurs early after therapeutic paracentesis, despite dietary sodium
+    restriction and diuretics.
+  src:
+    page: 154
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.080
+  kind: cloze
+  topic: refractory
+  text: 'Lack of diuretic response: weight loss {{c1::<0.8 kg over 4 days}} and urinary sodium output {{c2::less
+    than sodium intake}}.'
+  src:
+    page: 155
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.081
+  kind: cloze
+  topic: refractory
+  text: 'Early recurrence: grade 2 or 3 ascites reappears within {{c1::4 weeks}} of initial mobilization.'
+  src:
+    page: 155
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.082
+  kind: table
+  topic: refractory
+  title: Types of refractory ascites
+  columns:
+  - Type
+  - Meaning
+  rows:
+  - - Diuretic-resistant
+    - No response to sodium restriction and maximum diuretic doses
+  - - Diuretic-intractable
+    - Diuretic-induced complications prevent using effective doses
+  blanks:
+  - - 0
+    - 1
+  - - 1
+    - 1
+  src:
+    page: 155
+  status: unverified
+- id: hb.L09.083
+  kind: cloze
+  topic: refractory
+  text: In refractory ascites, stop diuretics if urinary sodium stays {{c1::≤30 mmol/day}} on treatment.
+  src:
+    page: 155
+    quote: who do not excrete >30 mmol/day of sodium under diuretic treatment
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.084
+  kind: card
+  topic: refractory
+  front: 'Refractory ascites, not being evaluated for LT: what referral?'
+  back: Palliative care.
+  src:
+    page: 155
+  status: unverified
+- id: hb.L09.085
+  kind: card
+  topic: refractory
+  front: Most common treatment of refractory ascites?
+  back: Repeated large-volume paracentesis with albumin. Total-volume paracentesis (all fluid in one tap) cuts the
+    number of taps in selected patients.
+  src:
+    page: 155
+  status: unverified
+- id: hb.L09.086
+  kind: enumerate
+  topic: refractory
+  prompt: Enumerate treatment options for refractory ascites.
+  points:
+  - Sodium restriction (diuretics stopped if urine Na ≤30 mmol/day)
+  - Repeated LVP with albumin
+  - TIPS
+  - Liver transplantation (definitive)
+  - Alfapump
+  - Vasoconstrictors with albumin (terlipressin, midodrine)
+  - Vaptans
+  - CART (cell-free and concentrated ascites reinfusion)
+  - Tunneled peritoneal drainage catheter
+  - Peritoneovenous shunt
+  pass: 6
+  src:
+    page: 155
+  status: unverified
+- id: hb.L09.087
+  kind: card
+  topic: refractory
+  front: How does TIPS increase sodium excretion?
+  back: It is a side-to-side portocaval shunt that decompresses the portal system; lower portal pressure reduces
+    RAAS activation, so sodium excretion rises.
+  src:
+    page: 156
+  status: unverified
+- id: hb.L09.088
+  kind: cloze
+  topic: refractory
+  text: TIPS is considered when LVP is needed more than {{c1::3 times a month}} or paracentesis is ineffective.
+  src:
+    page: 156
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.089
+  kind: cloze
+  topic: refractory
+  text: 'Complications of TIPS: shunt dysfunction and hepatic encephalopathy in about {{c1::30%}}.'
+  src:
+    page: 156
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.090
+  kind: enumerate
+  topic: refractory
+  prompt: Contraindications to TIPS for refractory ascites.
+  points:
+  - Severe liver failure
+  - Concomitant active infection
+  - Progressive renal failure
+  - Severe cardiopulmonary disease
+  pass: 3
+  src:
+    page: 156
+  status: unverified
+- id: hb.L09.091
+  kind: card
+  topic: refractory
+  front: How is refractory ascites handled in LT allocation?
+  back: It is an exception to the MELD score in assigning waiting-list priority.
+  src:
+    page: 156
+  status: unverified
+- id: hb.L09.092
+  kind: card
+  topic: refractory
+  front: What is the Alfapump and who gets it?
+  back: A subcutaneous, battery-powered low-flow pump that moves ascites from the peritoneum to the bladder. For
+    refractory ascites when TIPS and LT are contraindicated.
+  src:
+    page: 157
+  status: unverified
+- id: hb.L09.093
+  kind: card
+  topic: refractory
+  front: Alfapump benefits and the usual adverse event?
+  back: Safe, effective, improves nutrition. Transient renal dysfunction can occur and reverses with volume expansion.
+  src:
+    page: 157
+  status: unverified
+- id: hb.L09.094
+  kind: card
+  topic: refractory
+  front: How do vasoconstrictors help refractory ascites, and which ones?
+  back: With albumin, IV terlipressin or oral midodrine reduce splanchnic vasodilatation and vasoconstrictor activation,
+    improving renal perfusion, filtration and sodium excretion.
+  src:
+    page: 157
+  status: unverified
+- id: hb.L09.095
+  kind: card
+  topic: refractory
+  front: 'Vaptans in refractory ascites: benefit and adverse effects?'
+  back: 'They reduce ascites volume and paracentesis need without raising diuretic dose. Adverse: sodium overcorrection
+    (osmotic demyelination), dehydration, renal injury, hepatotoxicity.'
+  src:
+    page: 157
+  status: unverified
+  update:
+    text: EASL 2018 does not recommend vaptans for ascites (satavaptan raised mortality in refractory ascites),
+      and AASLD 2021 limits tolvaptan to short courses for severe hyponatremia. Learn the book answer for the exam.
+    ref: EASL CPG decompensated cirrhosis 2018; AASLD ascites guidance 2021
+- id: hb.L09.096
+  kind: card
+  topic: refractory
+  front: What is CART, its advantages, and its contraindication?
+  back: 'Cell-free and concentrated ascites reinfusion: tap, filter out cells, concentrate, reinfuse. No effect
+    on renal function, less albumin needed, stable sodium. Contraindicated in SBP.'
+  src:
+    page: 158
+  status: unverified
+- id: hb.L09.097
+  kind: card
+  topic: refractory
+  front: 'Tunneled peritoneal drainage catheter: what is it and its risks?'
+  back: 'A one-way-valve tunneled catheter with a polyester cuff draining into a vacuum bottle; patients drain at
+    home. Risks: catheter problems and bacterial peritonitis.'
+  src:
+    page: 158
+  status: unverified
+- id: hb.L09.098
+  kind: card
+  topic: refractory
+  front: 'Peritoneovenous shunt: mechanism and candidates?'
+  back: A subcutaneous cannula with a one-way valve carries ascites into the systemic veins, raising cardiac output,
+    renal flow, GFR and sodium excretion. For refractory ascites unsuitable for paracentesis, LT or TIPS.
+  src:
+    page: 158
+  status: unverified
+- id: hb.L09.099
+  kind: cloze
+  topic: refractory
+  text: 'Complications of a peritoneovenous shunt: shunt occlusion, peritonitis, {{c1::disseminated intravascular
+    coagulation}} and bleeding.'
+  src:
+    page: 158
+  status: unverified
+- id: hb.L09.100
+  kind: mcq
+  topic: refractory
+  stem: A cirrhotic on spironolactone 400 mg and furosemide 160 mg with a 2 g sodium diet lost 0.5 kg over 4 days.
+    Urine sodium is below his intake. Creatinine and sodium are normal. Which term fits?
+  options:
+  - Diuretic-intractable ascites
+  - Diuretic-resistant ascites
+  - Grade 1 ascites
+  - Hepatorenal syndrome type non-AKI
+  - Non-adherence to diet
+  answer: 1
+  why:
+  - Intractable means complications stop dose increase; here doses are maximal with no complications.
+  - 'Correct: no response (<0.8 kg/4 days, urine Na < intake) despite maximum doses and sodium restriction.'
+  - Grade 1 is ultrasound-only ascites and needs no treatment.
+  - Renal function is normal.
+  - Urine sodium below intake on full diuretics shows true lack of response, not dietary excess.
+  src:
+    page: 155
+  status: unverified
+- id: hb.L09.101
+  kind: mcq
+  topic: refractory
+  stem: A 62-year-old with refractory ascites needs paracentesis 4 times a month. Bilirubin 2 mg/dL, creatinine
+    1.1, no infection, normal echo. Which option is best while he awaits LT?
+  options:
+  - Peritoneovenous shunt
+  - TIPS
+  - Increase spironolactone to 600 mg
+  - Furosemide infusion
+  - CART during an episode of SBP
+  answer: 1
+  why:
+  - PVS is reserved for patients who cannot have paracentesis, LT or TIPS.
+  - 'Correct: TIPS for LVP >3/month without contraindications (severe liver failure, infection, renal failure, cardiopulmonary
+    disease).'
+  - 400 mg/day is the maximum dose.
+  - Not a lecture option, and furosemide alone is not recommended.
+  - SBP contraindicates CART.
+  src:
+    page: 156
+  status: unverified
+- id: hb.L09.102
+  kind: mcq
+  topic: refractory
+  stem: Refractory ascites with severe heart disease and contraindication to LT. Which device moves ascites to the
+    bladder?
+  options:
+  - TIPS
+  - Alfapump
+  - Peritoneovenous shunt
+  - Tunneled peritoneal catheter
+  - CART
+  answer: 1
+  why:
+  - TIPS is a portocaval shunt and is contraindicated with severe cardiopulmonary disease.
+  - 'Correct: the Alfapump pumps fluid from the peritoneum to the bladder when TIPS and LT are not possible.'
+  - PVS drains ascites into the systemic veins.
+  - Drains into an external vacuum bottle.
+  - Reinfuses filtered ascites into a vein.
+  src:
+    page: 157
+  status: unverified
+- id: hb.L09.103
+  kind: card
+  topic: hrs
+  front: Definition of hepatorenal syndrome?
+  back: Renal dysfunction in severe liver disease (acute or chronic) with no other identifiable cause of renal pathology.
+  src:
+    page: 158
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.104
+  kind: cloze
+  topic: hrs
+  text: About {{c1::20%}} of cirrhotics with ascites and normal renal function develop HRS at 1 year, and {{c2::39%}}
+    at 5 years.
+  src:
+    page: 158
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.105
+  kind: card
+  topic: hrs
+  front: Is HRS functional or structural?
+  back: Traditionally functional; an additional structural component with some kidney parenchymal damage has been
+    suggested.
+  src:
+    page: 158
+  status: unverified
+- id: hb.L09.106
+  kind: card
+  topic: hrs
+  front: What causes the structural component of HRS?
+  back: 'Systemic inflammation from gut bacterial translocation: pro-inflammatory cytokines raise nitric oxide and
+    splanchnic vasodilatation.'
+  src:
+    page: 159
+  status: unverified
+- id: hb.L09.107
+  kind: table
+  topic: hrs
+  title: Renal vasoactive balance in HRS
+  columns:
+  - Side
+  - Mediators
+  rows:
+  - - Local renal vasodilators (fail)
+    - Nitric oxide, prostaglandins, kallikrein-kinin system
+  - - Vasoconstrictor neurohormones (win)
+    - Endothelin-1, thromboxane A2, leukotriene E4
+  blanks:
+  - - 0
+    - 1
+  - - 1
+    - 1
+  src:
+    page: 159
+  status: unverified
+- id: hb.L09.108
+  kind: card
+  topic: hrs
+  front: How does cirrhotic cardiomyopathy contribute to HRS?
+  back: Diastolic dysfunction lowers cardiac output, worsening arterial underfilling, renal vasoconstriction and
+    hypoperfusion.
+  src:
+    page: 159
+  status: unverified
+- id: hb.L09.109
+  kind: order
+  topic: hrs
+  prompt: Pathophysiology of HRS in advanced cirrhosis.
+  steps:
+  - Severe splanchnic arterial vasodilatation from endogenous vasodilators
+  - Marked fall in systemic vascular resistance and severe arterial underfilling
+  - Activation of RAAS, SNS and ADH
+  - Marked renal vasoconstriction that local renal vasodilators cannot counterbalance
+  - 'Severe fall in renal blood flow and GFR with corticomedullary shunting: HRS'
+  src:
+    page: 159
+  status: unverified
+- id: hb.L09.110
+  kind: enumerate
+  topic: hrs
+  prompt: ICA classification of hepatorenal syndrome.
+  points:
+  - HRS-AKI
+  - 'HRS-non-AKI: HRS-AKD (acute kidney disease)'
+  - 'HRS-non-AKI: HRS-CKD (chronic kidney disease)'
+  pass: 3
+  src:
+    page: 160
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.111
+  kind: enumerate
+  topic: hrs
+  prompt: KDIGO criteria for AKI used in HRS-AKI.
+  points:
+  - Creatinine rise ≥0.3 mg/dL (26.5 µmol/L) within 48 hours, or
+  - Creatinine rise ≥50% from baseline within the last 7 days, and/or
+  - Urine output ≤0.5 mL/kg for ≥6 hours
+  pass: 3
+  src:
+    page: 161
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L09.112
+  kind: enumerate
+  topic: hrs
+  prompt: Exclusion criteria (other causes of AKI) needed to diagnose HRS-AKI.
+  points:
+  - No full or partial response after ≥2 days of diuretic withdrawal and albumin 1 g/kg/day (max 100 g/day)
+  - No shock
+  - No current or recent nephrotoxic drugs
+  - 'No parenchymal kidney disease: proteinuria ≤500 mg/day, microhematuria ≤50 RBC/HPF, normal urinary injury biomarkers
+    and renal ultrasound'
+  pass: 4
+  src:
+    page: 161
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.113
+  kind: cloze
+  topic: hrs
+  text: 'HRS-AKI work-up: withdraw diuretics and expand volume with albumin {{c1::1 g/kg/day}} (max {{c2::100 g/day}})
+    for at least {{c3::2 days}}.'
+  src:
+    page: 161
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L09.114
+  kind: cloze
+  topic: hrs
+  text: In HRS, proteinuria is {{c1::<500 mg/day}} and microhematuria {{c2::<50 RBC/HPF}}.
+  src:
+    page: 161
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.115
+  kind: enumerate
+  topic: hrs
+  prompt: Additional findings associated with HRS-AKI.
+  points:
+  - Low urinary sodium (<10 mmol/L)
+  - Low serum sodium (<130 mmol/L)
+  - FENa <0.1%
+  - High urine osmolality
+  - Low plasma osmolality
+  pass: 4
+  src:
+    page: 161
+  status: unverified
+- id: hb.L09.116
+  kind: table
+  topic: hrs
+  title: HRS-non-AKI (ICA)
+  columns:
+  - Subtype
+  - Criteria (no other structural cause)
+  rows:
+  - - HRS-AKD
+    - eGFR <60 for <3 months, or eGFR fall ≥35% for <3 months, or creatinine rise ≥50% for <3 months
+  - - HRS-CKD
+    - eGFR <60 mL/min/1.73 m² for ≥3 months
+  blanks:
+  - - 0
+    - 1
+  - - 1
+    - 1
+  src:
+    page: 162
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.117
+  kind: card
+  topic: hrs
+  front: How does HRS usually present?
+  back: 'No specific symptoms: falling urine output and worsening renal tests; later nausea, vomiting, thirst, drowsiness.
+    Signs of advanced liver disease with low MAP (<80 mmHg), tachycardia and a bounding pulse.'
+  src:
+    page: 162
+  status: unverified
+- id: hb.L09.118
+  kind: table
+  topic: hrs
+  title: HRS-AKI vs HRS-non-AKI
+  columns:
+  - Feature
+  - HRS-AKI
+  - HRS-non-AKI
+  rows:
+  - - Course of renal failure
+    - Rapid and progressive
+    - Moderate, stable fall in GFR
+  - - Typical setting
+    - Most often precipitated by SBP
+    - Diuretic-resistant ascites
+  - - Untreated prognosis
+    - 80% mortality at 2 weeks
+    - Median survival 3–6 months
+  blanks:
+  - - 0
+    - 1
+  - - 0
+    - 2
+  - - 1
+    - 1
+  - - 1
+    - 2
+  - - 2
+    - 1
+  - - 2
+    - 2
+  src:
+    page: 162
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.119
+  kind: card
+  topic: hrs
+  front: Urine sodium cut-off that marks a risk for HRS (book p. 163)?
+  back: Low urine sodium excretion <5 mmol/L.
+  src:
+    page: 163
+  status: unverified
+- id: hb.L09.120
+  kind: card
+  topic: hrs
+  front: Which urinary biomarker may separate ATN-AKI from HRS-AKI, and how?
+  back: 'Urinary NGAL: higher in ATN-AKI than in HRS-AKI and prerenal AKI.'
+  src:
+    page: 163
+  status: unverified
+- id: hb.L09.121
+  kind: card
+  topic: hrs
+  front: Two other investigations recommended in HRS-AKI work-up?
+  back: Ascitic fluid analysis for SBP, and renal ultrasound (normal in HRS; excludes hydronephrosis and intrinsic
+    disease).
+  src:
+    page: 163
+  status: unverified
+- id: hb.L09.122
+  kind: enumerate
+  topic: hrs
+  prompt: Differential diagnosis of HRS-AKI (other causes of AKI in cirrhosis).
+  points:
+  - 'Prerenal: volume depletion (excess diuretics, lactulose diarrhea, GI bleeding)'
+  - 'Intrarenal: ATN, acute interstitial nephritis, glomerular and vasculitic disease'
+  - 'Post-renal: acute obstructive nephropathy'
+  pass: 3
+  src:
+    page: 163
+  status: unverified
+- id: hb.L09.123
+  kind: enumerate
+  topic: hrs
+  prompt: Differential diagnosis of HRS-CKD (primary kidney disease in cirrhosis).
+  points:
+  - Alcohol-related renal disease
+  - IgA mesangial deposits
+  - HBV/HCV immune-complex glomerulonephritis
+  - Diabetic or hypertensive nephropathy
+  - Renal vascular disease
+  pass: 4
+  src:
+    page: 164
+  status: unverified
+- id: hb.L09.124
+  kind: enumerate
+  topic: hrs
+  prompt: Prevention of HRS.
+  points:
+  - Careful use and monitoring of diuretics
+  - Early recognition of electrolyte imbalance, hemorrhage or infection
+  - Avoid nephrotoxic drugs (NSAIDs, aminoglycosides)
+  - Drain tense ascites to improve renal hemodynamics
+  - Salt-poor albumin after total-volume paracentesis and in SBP
+  - Prophylactic antibiotics after a first SBP episode
+  pass: 4
+  src:
+    page: 164
+  status: unverified
+- id: hb.L09.125
+  kind: enumerate
+  topic: hrs
+  prompt: General measures once HRS-AKI is diagnosed.
+  points:
+  - Stop diuretics, beta blockers and nephrotoxic drugs
+  - Monitor for fluid overload
+  - Exclude other causes of renal failure
+  - Plasma expansion with albumin (e.g. after excess diuretics or LVP)
+  - Adjust lactulose if it causes diarrhea
+  - Start a broad-spectrum antibiotic even without proof of infection
+  pass: 4
+  src:
+    page: 164
+  status: unverified
+- id: hb.L09.126
+  kind: card
+  topic: hrs
+  front: First-line treatment of HRS-AKI?
+  back: A systemic vasoconstrictor with albumin infusion.
+  src:
+    page: 165
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.127
+  kind: cloze
+  topic: hrs
+  text: In HRS-AKI, albumin 20% is given at {{c1::20–40 g/day}} IV with the vasoconstrictor.
+  src:
+    page: 165
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.128
+  kind: cloze
+  topic: hrs
+  text: 'Terlipressin in HRS-AKI: IV bolus {{c1::0.5–1 mg every 4–6 hours}} or continuous infusion starting at {{c2::2
+    mg/day}}.'
+  src:
+    page: 165
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L09.129
+  kind: cloze
+  topic: hrs
+  text: 'Norepinephrine in HRS-AKI: {{c1::0.5–3 mg/hour}} IV through a {{c2::central line}}, preferably in ICU.'
+  src:
+    page: 165
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.130
+  kind: cloze
+  topic: hrs
+  text: 'Midodrine + octreotide (less effective, used only if terlipressin/noradrenaline unavailable): midodrine
+    {{c1::7.5 mg every 8 h}} orally (max 15 mg/8 h); octreotide {{c2::50 mcg/hour IV or 100–200 mcg/8 h SC}}.'
+  src:
+    page: 165
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.131
+  kind: card
+  topic: hrs
+  front: Role of TIPS in HRS?
+  back: Used when medical treatment fails, as a bridge to LT; it improves renal perfusion and lowers RAAS activity.
+  src:
+    page: 166
+  status: unverified
+- id: hb.L09.132
+  kind: card
+  topic: hrs
+  front: When is renal replacement therapy used in HRS, and which form?
+  back: In non-responders to vasoconstrictors and in end-stage kidney disease. Continuous RRT is probably better
+    tolerated than hemodialysis.
+  src:
+    page: 166
+  status: unverified
+- id: hb.L09.133
+  kind: card
+  topic: hrs
+  front: Definitive treatment of HRS, and when is simultaneous liver-kidney transplant preferred?
+  back: Liver transplantation. SLKT if renal recovery is unlikely with liver transplant alone, or with significant
+    CKD.
+  src:
+    page: 166
+  status: unverified
+- id: hb.L09.134
+  kind: mcq
+  topic: hrs
+  stem: A man with cirrhosis and ascites has creatinine rising from 1.0 to 1.6 mg/dL over 3 days. Diuretics were
+    stopped and albumin 1 g/kg/day given for 48 h; creatinine is now 1.9. BP 100/60, no shock, no nephrotoxins,
+    urine protein 120 mg/day, no hematuria, normal renal ultrasound. Diagnosis?
+  options:
+  - Prerenal azotemia
+  - HRS-AKI
+  - HRS-CKD
+  - Acute tubular necrosis
+  - HRS-AKD
+  answer: 1
+  why:
+  - Prerenal AKI responds to diuretic withdrawal and albumin; this did not.
+  - 'Correct: KDIGO AKI (≥50% rise in <7 days), no response after 2 days of albumin, and all exclusions met.'
+  - CKD needs eGFR <60 for ≥3 months.
+  - ATN is unlikely with bland urine; urinary NGAL would be higher.
+  - AKD applies when AKI criteria are NOT met; here they are.
+  src:
+    page: 161
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.135
+  kind: mcq
+  topic: hrs
+  stem: A patient with HRS-AKI is on a general ward without central venous access. Which vasoconstrictor regimen
+    fits best?
+  options:
+  - Norepinephrine 0.5–3 mg/h peripherally
+  - Terlipressin 1 mg IV bolus every 4–6 hours plus albumin
+  - Midodrine and octreotide as first choice
+  - Dopamine renal-dose infusion
+  - Furosemide infusion plus albumin
+  answer: 1
+  why:
+  - Norepinephrine needs a central line and continuous (ICU) monitoring.
+  - 'Correct: terlipressin with albumin is first-line and can be given as IV boluses.'
+  - This combination is less effective and used only when terlipressin or noradrenaline are unavailable.
+  - Not a lecture option.
+  - Diuretics are stopped in HRS-AKI.
+  src:
+    page: 165
+  status: unverified
+- id: hb.L09.136
+  kind: mcq
+  topic: hrs
+  stem: Which finding argues AGAINST hepatorenal syndrome in a cirrhotic with AKI?
+  options:
+  - FENa 0.05%
+  - Urine sodium 6 mmol/L
+  - Proteinuria 1.2 g/day with 80 RBC/HPF
+  - Serum sodium 127 mmol/L
+  - Normal renal ultrasound
+  answer: 2
+  why:
+  - FENa <0.1% fits HRS (renal vasoconstriction).
+  - Low urine sodium fits HRS.
+  - 'Correct: proteinuria >500 mg/day and >50 RBC/HPF point to parenchymal kidney disease.'
+  - Dilutional hyponatremia <130 is associated with HRS-AKI.
+  - Renal ultrasound is normal in HRS.
+  src:
+    page: 163
+  status: unverified
+- id: hb.L09.137
+  kind: mcq
+  topic: hrs
+  stem: Which event most commonly precipitates HRS-AKI?
+  options:
+  - Large-volume paracentesis with albumin
+  - Spontaneous bacterial peritonitis
+  - Starting spironolactone
+  - High protein diet
+  - TIPS insertion
+  answer: 1
+  why:
+  - Albumin after LVP prevents circulatory dysfunction and HRS.
+  - 'Correct: HRS-AKI is most commonly precipitated by SBP.'
+  - Diuretics need monitoring, but SBP is the commonest trigger named.
+  - Not a precipitant in the lecture.
+  - TIPS is a treatment option for HRS.
+  src:
+    page: 162
+  status: unverified
+- id: hb.L09.138
+  kind: case
+  topic: hrs
+  stem: A 57-year-old with HCV cirrhosis and grade 3 ascites on spironolactone 200 mg, furosemide 80 mg, propranolol
+    40 mg and lactulose comes with drowsiness. Creatinine 2.1 mg/dL (1.1 mg/dL two weeks ago).
+  steps:
+  - question: First, which drugs should be stopped?
+    options:
+    - Lactulose only
+    - Diuretics, beta blocker and any nephrotoxic drug
+    - Nothing until the diagnosis is clear
+    - Only propranolol
+    answer: 1
+    why: 'General measures in AKI: stop diuretics, beta blockers and nephrotoxic drugs right away.'
+  - reveal: BP 95/55, pulse 104, temp 37.6 °C. He has 4–5 loose stools a day.
+    question: What else is mandatory early in the work-up?
+    options:
+    - Renal biopsy
+    - Diagnostic paracentesis for SBP
+    - CT with contrast
+    - Hemodialysis
+    answer: 1
+    why: Ascitic fluid analysis for SBP is recommended in HRS-AKI; SBP is the commonest trigger.
+  - question: 'Ascitic PMN 120/mm³. Given albumin 1 g/kg/day for 2 days, creatinine is 2.4. Urine: protein trace,
+      no RBCs. US kidneys normal. Diagnosis?'
+    options:
+    - Prerenal AKI from lactulose
+    - HRS-AKI
+    - ATN
+    - Post-renal obstruction
+    answer: 1
+    why: 'No response to 2 days of diuretic withdrawal plus albumin, no shock, bland urine and normal US: HRS-AKI.
+      (Lactulose dose should still be adjusted.)'
+  - question: Best treatment now?
+    options:
+    - Terlipressin plus albumin 20–40 g/day
+    - Furosemide infusion
+    - Large-volume paracentesis without albumin
+    - Peritoneovenous shunt
+    answer: 0
+    why: Vasoconstrictor plus albumin is first-line for HRS-AKI. LT is the definitive treatment.
+  src:
+    page: 164
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.139
+  kind: card
+  topic: sbp
+  front: Definition of SBP?
+  back: Acute bacterial infection of ascitic fluid without any intra-abdominal source of infection.
+  src:
+    page: 166
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.140
+  kind: enumerate
+  topic: sbp
+  prompt: Risk factors for SBP.
+  points:
+  - Acute GI bleeding
+  - Previous SBP episode
+  - Low ascitic protein (<1 g/dL)
+  - Severe liver dysfunction (Child-Pugh C)
+  - Long-term PPI therapy
+  pass: 4
+  src:
+    page: 166
+  status: unverified
+- id: hb.L09.141
+  kind: card
+  topic: sbp
+  front: Why do long-term PPIs raise SBP risk?
+  back: They promote gut bacterial overgrowth and translocation.
+  src:
+    page: 166
+  status: unverified
+- id: hb.L09.142
+  kind: card
+  topic: sbp
+  front: Pathogenesis of SBP?
+  back: Pathological bacterial translocation from gut to mesenteric nodes to ascites, from a leaky gut (impaired
+    permeability and motility from portal hypertension), plus impaired local and systemic immunity.
+  src:
+    page: 167
+  status: unverified
+- id: hb.L09.143
+  kind: card
+  topic: sbp
+  front: How does SBP present?
+  back: Often asymptomatic. Low-grade fever, abdominal pain and tenderness, nausea, vomiting, diarrhea; or worsening
+    liver function, unexplained encephalopathy, or new/worse renal dysfunction (HRS-AKI).
+  src:
+    page: 167
+  status: unverified
+- id: hb.L09.144
+  kind: card
+  topic: sbp
+  front: Who should have a diagnostic paracentesis for SBP?
+  back: All hospitalized patients with cirrhosis and ascites, and any who deteriorate clinically.
+  src:
+    page: 167
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.145
+  kind: cloze
+  topic: sbp
+  text: SBP is diagnosed by an ascitic PMN count {{c1::≥250 cells/mm³}} (neutrocytic ascites), {{c2::with or without}}
+    a positive culture.
+  src:
+    page: 167
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L09.146
+  kind: card
+  topic: sbp
+  front: Usual organisms in SBP?
+  back: 'Usually monomicrobial Gram-negatives (E. coli, Klebsiella pneumoniae). Less often Gram-positives: streptococci,
+    staphylococci, enterococci.'
+  src:
+    page: 167
+  status: unverified
+- id: hb.L09.147
+  kind: table
+  topic: sbp
+  title: Variants of ascitic infection
+  columns:
+  - Variant
+  - PMN (/mm³)
+  - Culture
+  rows:
+  - - Culture-positive neutrocytic ascites (SBP)
+    - ≥250
+    - Positive
+  - - Culture-negative neutrocytic ascites
+    - ≥250
+    - Negative (consider TB, carcinomatosis, fungal peritonitis)
+  - - Bacterascites
+    - <250
+    - Positive, single organism
+  - - Spontaneous fungal peritonitis
+    - ≥250
+    - Positive fungal culture
+  - - Fungal ascites
+    - <250
+    - Positive fungal culture
+  blanks:
+  - - 0
+    - 1
+  - - 1
+    - 2
+  - - 2
+    - 1
+  - - 2
+    - 2
+  - - 3
+    - 2
+  - - 4
+    - 1
+  src:
+    page: 168
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.148
+  kind: card
+  topic: sbp
+  front: What may bacterascites represent?
+  back: Either transient, self-resolving SBP (resolving) or the first step towards SBP (evolving).
+  src:
+    page: 168
+  status: unverified
+- id: hb.L09.149
+  kind: card
+  topic: sbp
+  front: Bedside rapid test for raised ascitic PMN?
+  back: Leukocyte esterase dipstick (100% sensitivity per the lecture).
+  src:
+    page: 168
+  status: unverified
+- id: hb.L09.150
+  kind: enumerate
+  topic: sbp
+  prompt: Features that suggest SECONDARY bacterial peritonitis rather than SBP.
+  points:
+  - Ascitic total protein >1.5 g/dL
+  - Ascitic PMN >5,000/mm³
+  - Polymicrobial culture
+  - PMN fails to fall after 48 h of antibiotics
+  - Ascitic glucose <50 mg/dL (the book prints mg/l)
+  - Ascitic LDH > serum LDH
+  pass: 4
+  src:
+    page: 168
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.151
+  kind: cloze
+  topic: sbp
+  text: Without adequate prophylaxis, {{c1::30–50%}} of SBP patients die during that admission and {{c2::69%}} recur
+    within 1 year.
+  src:
+    page: 168
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.152
+  kind: enumerate
+  topic: sbp
+  prompt: Predictors of mortality in SBP.
+  points:
+  - Severe underlying liver disease
+  - Renal impairment
+  - Severe sepsis
+  - Recent GI bleeding
+  pass: 3
+  src:
+    page: 168
+  status: unverified
+- id: hb.L09.153
+  kind: card
+  topic: sbp
+  front: What lowers in-hospital and 3-month mortality in SBP?
+  back: Early diagnostic paracentesis (within 11 hours of presentation) with early antibiotics.
+  src:
+    page: 169
+  status: unverified
+- id: hb.L09.154
+  kind: cloze
+  topic: sbp
+  text: 'First-line SBP antibiotic: a third-generation cephalosporin, e.g. cefotaxime {{c1::2 g every 8–12 h}} or
+    ceftriaxone {{c2::2 g every 24 h}} IV.'
+  src:
+    page: 169
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L09.155
+  kind: card
+  topic: sbp
+  front: Alternatives to cephalosporins for SBP with similar efficacy?
+  back: Amoxicillin-clavulanate, or fluoroquinolones (ciprofloxacin, ofloxacin).
+  src:
+    page: 169
+  status: unverified
+- id: hb.L09.156
+  kind: cloze
+  topic: sbp
+  text: Antibiotics for SBP are given for at least {{c1::5–7 days}}.
+  src:
+    page: 169
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.157
+  kind: cloze
+  topic: sbp
+  text: 'Albumin in SBP: {{c1::1.5 g/kg}} at diagnosis and {{c2::1 g/kg}} on {{c3::day 3}}.'
+  src:
+    page: 169
+    quote: albumin infusion (1.5 g/kg at diagnosis and 1 g/kg on day 3)
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L09.158
+  kind: card
+  topic: sbp
+  front: How is response to SBP treatment judged, and what if it fails?
+  back: 'Repeat the tap at 48 h: the PMN count should fall by more than 25% of the pre-treatment value. Failure:
+    broaden antibiotics and look for secondary peritonitis.'
+  src:
+    page: 169
+    quote: decreases to >25% of the pretreatment value after 48 hours
+  status: unverified
+- id: hb.L09.159
+  kind: card
+  topic: sbp
+  front: How are antibiotics adjusted when the culture is back?
+  back: 'Culture-positive neutrocytic ascites: adjust to sensitivity. Bacterascites: start antibiotics per sensitivity.
+    Culture-negative neutrocytic ascites: continue empirical therapy.'
+  src:
+    page: 169
+  status: unverified
+- id: hb.L09.160
+  kind: cloze
+  topic: sbp
+  text: In cirrhosis with acute GI bleeding, the prophylactic antibiotic of choice is IV {{c1::ceftriaxone 1 g/24
+    h}} for a maximum of {{c2::7 days}}.
+  src:
+    page: 170
+  status: unverified
+  tags:
+  - numbers
+  - high-yield
+- id: hb.L09.161
+  kind: cloze
+  topic: sbp
+  text: 'Oral SBP prophylaxis: norfloxacin {{c1::400 mg/day}} or ciprofloxacin {{c2::500 mg/day}}.'
+  src:
+    page: 170
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.162
+  kind: enumerate
+  topic: sbp
+  prompt: Indications for long-term oral SBP prophylaxis.
+  points:
+  - 'Secondary: any previous SBP episode'
+  - 'Primary: low-protein ascites (<1.5 g/dL; p. 170 prints g/L), particularly with Child-Pugh ≥9, bilirubin ≥3
+    mg/dL, impaired renal function or hyponatremia'
+  pass: 2
+  src:
+    page: 170
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.163
+  kind: mcq
+  topic: sbp
+  stem: A cirrhotic with ascites is admitted with hepatic encephalopathy and no fever or abdominal pain. Ascitic
+    PMN 420/mm³; culture pending. Next step?
+  options:
+  - Wait for culture before treating
+  - Start cefotaxime IV plus albumin 1.5 g/kg
+  - Repeat paracentesis in 48 h before deciding
+  - Oral norfloxacin 400 mg/day
+  - Emergency laparotomy
+  answer: 1
+  why:
+  - SBP is diagnosed by PMN ≥250 with or without positive culture; treat empirically at once.
+  - 'Correct: PMN ≥250 is SBP even when asymptomatic; give a third-generation cephalosporin and albumin on day 1
+    and day 3.'
+  - The 48 h tap assesses response after treatment starts.
+  - Norfloxacin is for prophylaxis, not treatment.
+  - No features of secondary peritonitis are given.
+  src:
+    page: 167
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.164
+  kind: mcq
+  topic: sbp
+  stem: 'Ascitic fluid in a cirrhotic: PMN 7,800/mm³, protein 2.6 g/dL, glucose 30 mg/dL, LDH above serum LDH, culture
+    grows E. coli, Bacteroides and Enterococcus. Most likely diagnosis?'
+  options:
+  - Culture-positive SBP
+  - Secondary bacterial peritonitis
+  - Bacterascites
+  - Spontaneous fungal peritonitis
+  - Culture-negative neutrocytic ascites
+  answer: 1
+  why:
+  - SBP is usually monomicrobial with protein <1 g/dL.
+  - 'Correct: protein >1.5, PMN >5,000, low glucose, LDH > serum and polymicrobial growth all point to a surgical
+    source.'
+  - Bacterascites has PMN <250 and a single organism.
+  - No fungus was grown.
+  - The culture is positive.
+  src:
+    page: 168
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.165
+  kind: mcq
+  topic: sbp
+  stem: 'Ascitic fluid: PMN 90/mm³, culture grows Klebsiella pneumoniae only. Name of this finding?'
+  options:
+  - Culture-negative neutrocytic ascites
+  - Bacterascites (monomicrobial non-neutrocytic)
+  - Secondary peritonitis
+  - SBP
+  - Contamination, always ignore
+  answer: 1
+  why:
+  - PMN is <250 and the culture is positive, the opposite pattern.
+  - 'Correct: PMN <250 with a single organism; it may be resolving or evolving SBP.'
+  - Secondary peritonitis is polymicrobial with very high PMN.
+  - SBP needs PMN ≥250.
+  - The lecture says to start antibiotics per sensitivity in bacterascites.
+  src:
+    page: 168
+  status: unverified
+- id: hb.L09.166
+  kind: mcq
+  topic: sbp
+  stem: A Child C cirrhotic with ascites has acute variceal bleeding. Which antibiotic prophylaxis is recommended?
+  options:
+  - Oral norfloxacin 400 mg/day indefinitely
+  - IV ceftriaxone 1 g/24 h for up to 7 days
+  - IV cefotaxime 2 g every 8 h for 14 days
+  - No antibiotic unless fever develops
+  - Oral rifaximin
+  answer: 1
+  why:
+  - Oral quinolones are for primary low-protein or secondary prophylaxis.
+  - 'Correct: ceftriaxone 1 g/24 h IV, maximum 7 days, in cirrhosis with GI bleeding.'
+  - That is a treatment dose, and too long.
+  - Prophylaxis is recommended because GI bleeding is a risk factor for SBP.
+  - Not named in this lecture for SBP prophylaxis.
+  src:
+    page: 170
+  status: unverified
+- id: hb.L09.167
+  kind: mcq
+  topic: sbp
+  stem: A patient with SBP (PMN 1,200/mm³) gets ceftriaxone. At 48 h the PMN is 1,050/mm³. What next?
+  options:
+  - Continue the same antibiotic for 5 days
+  - Broaden coverage and look for secondary bacterial peritonitis
+  - Stop antibiotics; this is bacterascites
+  - Start norfloxacin prophylaxis
+  - Give terlipressin
+  answer: 1
+  why:
+  - A fall of only ~12% is a treatment failure.
+  - 'Correct: failure to fall by >25% at 48 h means broaden antibiotics and exclude secondary peritonitis.'
+  - PMN is ≥250, so it is not bacterascites.
+  - Prophylaxis follows recovery, not failure.
+  - Terlipressin is for HRS-AKI.
+  src:
+    page: 169
+  status: unverified
+- id: hb.L09.168
+  kind: case
+  topic: sbp
+  stem: A 49-year-old with alcohol-related cirrhosis and ascites, on omeprazole for 2 years, comes with mild abdominal
+    pain and confusion. Temp 37.8 °C, BP 105/65.
+  steps:
+  - question: Best first investigation?
+    options:
+    - CT abdomen
+    - Diagnostic paracentesis
+    - Upper endoscopy
+    - Blood ammonia only
+    answer: 1
+    why: All hospitalized cirrhotics with ascites, and any who deteriorate, need a diagnostic tap; early tap (within
+      11 h) lowers mortality.
+  - reveal: 'Ascitic fluid: PMN 650/mm³, protein 0.7 g/dL, glucose normal.'
+    question: Diagnosis and treatment?
+    options:
+    - 'SBP: cefotaxime 2 g every 8–12 h'
+    - 'Secondary peritonitis: surgery'
+    - 'Bacterascites: no treatment'
+    - 'TB peritonitis: anti-TB drugs'
+    answer: 0
+    why: 'PMN ≥250 with low protein: SBP. Start a third-generation cephalosporin at once.'
+  - question: Creatinine is 1.6 mg/dL (baseline 0.9). What should be added?
+    options:
+    - Albumin 1.5 g/kg now and 1 g/kg on day 3
+    - Furosemide
+    - Normal saline 3 L
+    - Nothing extra
+    answer: 0
+    why: Albumin in SBP is especially helpful with AKI or hepatic dysfunction, and helps prevent HRS.
+  - question: He recovers. What should he receive afterwards?
+    options:
+    - No prophylaxis
+    - Long-term norfloxacin 400 mg/day (secondary prophylaxis), and LT evaluation
+    - Ceftriaxone 1 g for 7 days only
+    - Monthly paracentesis
+    answer: 1
+    why: Any previous SBP is an indication for secondary prophylaxis; LT should be considered after SBP. His long-term
+      PPI is a risk factor worth reviewing.
+  src:
+    page: 167
+  status: unverified
+  tags:
+  - high-yield
+- id: hb.L09.169
+  kind: card
+  topic: sfp
+  front: Definition of spontaneous fungal peritonitis?
+  back: Fungal infection of ascitic fluid without a known intra-abdominal source; a less common complication of
+    advanced cirrhosis.
+  src:
+    page: 170
+  status: unverified
+- id: hb.L09.170
+  kind: enumerate
+  topic: sfp
+  prompt: Factors that facilitate fungal translocation (SFP) in cirrhosis.
+  points:
+  - Antibiotic therapy
+  - Acute GI bleeding
+  - Immunosuppression
+  - Malnutrition
+  pass: 3
+  src:
+    page: 170
+  status: unverified
+- id: hb.L09.171
+  kind: cloze
+  topic: sfp
+  text: 'SFP: ascitic PMN {{c1::≥250 cells/mm³}} with a positive {{c2::fungal}} culture, regardless of bacterial
+    co-growth. Fungal ascites has PMN {{c3::<250}}.'
+  src:
+    page: 170
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.172
+  kind: card
+  topic: sfp
+  front: Most frequent fungus isolated in SFP?
+  back: Candida albicans.
+  src:
+    page: 170
+  status: unverified
+- id: hb.L09.173
+  kind: card
+  topic: sfp
+  front: Newer tests for SFP?
+  back: 'Pan-fungal PCR and 1,3-beta-D-glucan: more sensitive and faster than culture.'
+  src:
+    page: 170
+  status: unverified
+- id: hb.L09.174
+  kind: card
+  topic: sfp
+  front: Treatment of SFP?
+  back: Echinocandins first-line for critically ill patients; fluconazole for less severe infection.
+  src:
+    page: 171
+  status: unverified
+- id: hb.L09.175
+  kind: mcq
+  topic: pathophysiology
+  stem: Which mechanism best explains sodium retention in cirrhotic ascites under the peripheral arterial vasodilatation
+    hypothesis?
+  options:
+  - Primary renal sodium retention with plasma volume expansion
+  - Low oncotic pressure from hypoalbuminemia alone
+  - Arterial underfilling activating RAAS, SNS and ADH
+  - Increased natriuretic peptide activity
+  - Direct tubular damage from bilirubin
+  answer: 2
+  why:
+  - The lecture puts vasodilatation first; sodium retention follows it.
+  - Hypoproteinemia is a mechanical factor, not the accepted cirrhotic mechanism.
+  - 'Correct: vasodilators cause underfilling, which activates vasoconstrictor systems and renal retention.'
+  - Natriuretic factors are decreased, not increased.
+  - Not described in the lecture.
+  src:
+    page: 147
+  status: unverified
+- id: hb.L09.176
+  kind: mcq
+  topic: clinical
+  stem: Clinical examination shows symmetrical abdominal distension with flank bulging and shifting dullness but
+    no fluid thrill. Grade?
+  options:
+  - Grade 1
+  - Grade 2
+  - Grade 3
+  - Tense ascites
+  - Refractory ascites
+  answer: 1
+  why:
+  - Grade 1 is detectable only by ultrasound.
+  - 'Correct: moderate distension, flank bulging and shifting dullness.'
+  - Grade 3 has marked distension with a fluid thrill.
+  - Tense ascites has pressure manifestations.
+  - Refractory refers to treatment response, not amount.
+  src:
+    page: 148
+  status: unverified
+- id: hb.L09.177
+  kind: mcq
+  topic: refractory
+  stem: A cirrhotic with refractory ascites on full diuretics has 24 h urinary sodium of 20 mmol. What should be
+    done with his diuretics?
+  options:
+  - Double the spironolactone
+  - Stop them
+  - Switch to furosemide alone
+  - Add a thiazide
+  - Continue unchanged
+  answer: 1
+  why:
+  - 400 mg/day is the maximum.
+  - 'Correct: stop diuretics if urinary sodium is not >30 mmol/day on treatment.'
+  - Furosemide monotherapy is not recommended.
+  - Not a lecture option.
+  - They give no benefit and risk complications.
+  src:
+    page: 155
+  status: unverified
+- id: hb.L09.178
+  kind: mcq
+  topic: hrs
+  stem: Untreated HRS-AKI carries what mortality?
+  options:
+  - 20% at 1 year
+  - 50% at 2 years
+  - 80% at 2 weeks
+  - Median survival 3–6 months
+  - 40% at 1 year
+  answer: 2
+  why:
+  - This is the 1-year incidence of HRS in ascites.
+  - This is mortality after first ascites.
+  - 'Correct: 80% mortality at 2 weeks without treatment.'
+  - This is HRS-non-AKI.
+  - This is refractory ascites one-year mortality.
+  src:
+    page: 164
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.179
+  kind: mcq
+  topic: sfp
+  stem: A critically ill cirrhotic on broad-spectrum antibiotics has ascitic PMN 600/mm³ and Candida albicans in
+    the ascitic culture. First-line therapy?
+  options:
+  - Fluconazole
+  - An echinocandin
+  - Amphotericin B lipid
+  - Continue antibiotics only
+  - Ceftriaxone 2 g/day
+  answer: 1
+  why:
+  - Fluconazole is for less severe infection.
+  - 'Correct: echinocandins are first-line in critically ill patients with SFP.'
+  - Not the first-line named in the lecture.
+  - This is SFP and needs antifungal therapy.
+  - Antibacterials do not treat Candida.
+  src:
+    page: 171
+  status: unverified
+- id: hb.L09.180
+  kind: case
+  topic: diagnosis
+  stem: 'A 63-year-old man with no known liver disease presents with 2 months of abdominal swelling. Exam: shifting
+    dullness, no stigmata of chronic liver disease, JVP not raised.'
+  steps:
+  - question: First step to find the cause?
+    options:
+    - Start spironolactone
+    - Diagnostic paracentesis with albumin, protein, cell count, culture and cytology
+    - Large-volume paracentesis
+    - CT for everyone
+    answer: 1
+    why: A diagnostic tap at first presentation of grade 2–3 ascites guides the cause; CT is only for differential
+      diagnosis problems.
+  - reveal: 'Fluid: straw coloured. Serum albumin 3.8, ascitic albumin 3.1, total protein 4.5 g/dL, LDH high, PMN
+      40, lymphocytes 300/mm³.'
+    question: Serum albumin 3.8 g/dL, ascitic albumin 3.1 g/dL, protein 4.5 g/dL, LDH high. Interpretation?
+    options:
+    - High SAAG, portal hypertension
+    - 'Low SAAG (0.7), exudative: consider malignancy or TB'
+    - Cirrhotic ascites
+    - Nephrotic syndrome
+    answer: 1
+    why: SAAG 0.7 g/dL is low (non-portal-hypertensive), high protein and LDH suggest malignant ascites.
+  - question: Which ascitic test helps if mesothelioma is suspected?
+    options:
+    - Amylase
+    - Triglycerides
+    - Hyaluronic acid
+    - Alpha-fetoprotein
+    answer: 2
+    why: Hyaluronic acid for mesothelioma; CEA for metastasis, AFP for HCC, amylase for pancreas, TG for chylous.
+  - question: Cytology report says 'atypical cells'. Caution?
+    options:
+    - It is always diagnostic of cancer
+    - Normal peritoneal epithelial cells can mimic malignant cells
+    - Cytology is never useful
+    - Repeat SAAG instead
+    answer: 1
+    why: The lecture warns of over-diagnosis of cancer from reactive epithelial cells.
+  src:
+    page: 150
+  status: unverified
+- id: hb.L09.181
+  kind: mcq
+  topic: sbp
+  stem: Which patient with cirrhotic ascites has the HIGHEST risk of SBP according to the listed risk factors?
+  options:
+  - Child A, ascitic protein 2.0 g/dL
+  - Child C with a previous SBP episode and ascitic protein 0.6 g/dL
+  - Child B on spironolactone, protein 1.8 g/dL
+  - Child A after elective LVP with albumin
+  - Child B with grade 1 ascites
+  answer: 1
+  why:
+  - High protein and good liver function are low risk.
+  - 'Correct: previous SBP, protein <1 g/dL and Child C are all risk factors.'
+  - Diuretics are not a listed risk factor; protein is not low.
+  - Not a listed risk factor.
+  - No listed risk factor is present.
+  src:
+    page: 166
+  status: unverified
+- id: hb.L09.182
+  kind: mcq
+  topic: hrs
+  stem: By KDIGO criteria used for HRS-AKI, which change defines AKI?
+  options:
+  - Creatinine rise of 0.2 mg/dL in 24 h
+  - Creatinine rise ≥0.3 mg/dL within 48 h
+  - Creatinine >1.5 mg/dL at any time
+  - Creatinine rise of 25% over 2 weeks
+  - Urine output <1 mL/kg/h for 2 h
+  answer: 1
+  why:
+  - Below the 0.3 mg/dL threshold.
+  - 'Correct: ≥0.3 mg/dL (26.5 µmol/L) in <48 h, or ≥50% in 7 days.'
+  - A fixed creatinine cut-off is not part of the KDIGO criteria in the table.
+  - Needs ≥50% within 7 days.
+  - Urine criterion is ≤0.5 mL/kg for ≥6 h.
+  src:
+    page: 161
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.183
+  kind: mcq
+  topic: refractory
+  stem: Which treatment for refractory ascites is contraindicated in SBP?
+  options:
+  - Repeated LVP with albumin
+  - CART
+  - Antibiotics
+  - Albumin infusion
+  - Sodium restriction
+  answer: 1
+  why:
+  - LVP is not listed as contraindicated by SBP in the lecture.
+  - 'Correct: SBP is the contraindication to cell-free concentrated ascites reinfusion.'
+  - Antibiotics treat SBP.
+  - Albumin is given in SBP.
+  - Still important in refractory ascites.
+  src:
+    page: 158
+  status: unverified
+- id: hb.L09.184
+  kind: mcq
+  topic: refractory
+  stem: Which complication of TIPS for refractory ascites occurs in about 30% of patients?
+  options:
+  - Shunt infection
+  - Hepatic encephalopathy
+  - Heart failure
+  - SBP
+  - Hemobilia
+  answer: 1
+  why:
+  - Not named in the lecture.
+  - 'Correct: hepatic encephalopathy, about 30%.'
+  - Severe cardiopulmonary disease is a contraindication, not the 30% complication.
+  - Not a TIPS complication in the lecture.
+  - Not mentioned.
+  src:
+    page: 156
+  status: unverified
+  tags:
+  - numbers
+- id: hb.L09.185
+  kind: mcq
+  topic: pathophysiology
+  stem: A cirrhotic with ascites has serum sodium 127 mmol/L, normal glucose and lipids, and is not on diuretics.
+    Main mechanism?
+  options:
+  - Renal salt wasting
+  - ADH activation reducing tubular free-water clearance
+  - SIADH from lung cancer
+  - Pseudohyponatremia
+  - Excess aldosterone
+  answer: 1
+  why:
+  - Cirrhosis retains sodium avidly.
+  - 'Correct: dilutional hyponatremia (<130 mmol/L) from ADH activation.'
+  - No suggestion of a tumour; in cirrhosis ADH release is baroreceptor-driven.
+  - Normal lipids and glucose rule this out.
+  - Aldosterone retains sodium with water; it does not explain free-water excess.
+  src:
+    page: 147
+  status: unverified
+- id: hb.L09.186
+  kind: mcq
+  topic: diagnosis
+  stem: Milky ascitic fluid is tapped from a patient after abdominal lymph node surgery. Which test confirms the
+    type of ascites?
+  options:
+  - Amylase
+  - Triglycerides
+  - CEA
+  - Hyaluronic acid
+  - Glucose
+  answer: 1
+  why:
+  - Amylase is for pancreatic ascites.
+  - 'Correct: triglycerides confirm chylous ascites.'
+  - CEA is for metastasis.
+  - Hyaluronic acid is for mesothelioma.
+  - Low glucose suggests infection, TB or malignancy.
+  src:
+    page: 151
+  status: unverified
+- id: hb.L09.187
+  kind: essay
+  topic: treatment
+  prompt: Describe the pathogenesis, diagnosis, and treatment of uncomplicated cirrhotic ascites.
+  outline:
+  - Pathogenesis:
+    - Peripheral arterial vasodilatation (NO, CO, glucagon, prostaglandins, endocannabinoids) → underfilling
+    - RAAS, SNS, ADH → renal Na/water retention; portal hypertension localizes fluid
+    - Gut bacterial translocation adds vasodilatation
+  - Clinical and grading:
+    - Grade 1 US only, grade 2 shifting dullness, grade 3 fluid thrill
+    - ≥1–2 L needed to detect clinically
+  - Diagnosis:
+    - 'Diagnostic tap: appearance, cell count, protein, albumin (SAAG ≥1.1 = PHT), LDH, culture, cytology'
+    - Serum electrolytes, creatinine, urine sodium
+  - Treatment:
+    - Grade 1 none; grade 2 Na restriction 2 g/day + diuretics; grade 3 LVP + albumin 6–8 g/L then diuretics
+    - Spironolactone 100→400 mg, furosemide 40→160 mg (sequential vs combined 100:40)
+    - Avoid NSAIDs, ACEi/ARB, aminoglycosides; monitor weight, Na/K ratio; refer for LT
+  src:
+    page: 171
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L09.188
+  kind: essay
+  topic: refractory
+  prompt: Discuss the definition, types and treatment options of refractory ascites.
+  outline:
+  - Definition:
+    - Cannot be mobilized or recurs early (≤4 weeks) despite Na restriction and diuretics
+    - 'Lack of response: <0.8 kg in 4 days and urine Na < intake'
+  - Types:
+    - Diuretic-resistant
+    - Diuretic-intractable
+  - Treatment:
+    - Na restriction; stop diuretics if urine Na ≤30 mmol/day; palliative care if not for LT
+    - Repeated LVP + albumin; TIPS (LVP >3/month); LT definitive (MELD exception)
+    - Alfapump, vasoconstrictors, vaptans, CART, tunneled catheter, peritoneovenous shunt
+  src:
+    page: 171
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L09.189
+  kind: essay
+  topic: hrs
+  prompt: Mention the pathogenesis, classification, and management of hepatorenal syndrome.
+  outline:
+  - Pathogenesis:
+    - Severe splanchnic vasodilatation → underfilling → RAAS/SNS/ADH → renal vasoconstriction
+    - Failed renal vasodilators (NO, PG, kallikrein) vs ET-1, TXA2, LTE4; cirrhotic cardiomyopathy
+    - 'Structural part: inflammation from bacterial translocation'
+  - Classification (ICA):
+    - HRS-AKI (KDIGO + exclusions)
+    - 'HRS-non-AKI: AKD (<3 months) and CKD (≥3 months, eGFR <60)'
+  - Management:
+    - Stop diuretics, beta blockers, nephrotoxins; albumin; antibiotic; exclude other causes
+    - Terlipressin (or norepinephrine, or midodrine+octreotide) + albumin 20–40 g/day
+    - TIPS, RRT for non-responders; LT definitive; SLKT if renal recovery unlikely
+  src:
+    page: 171
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L09.190
+  kind: essay
+  topic: sbp
+  prompt: Outline the risk factors, clinical manifestations, diagnosis and treatment of spontaneous bacterial peritonitis.
+  outline:
+  - Risk factors:
+    - GI bleeding, previous SBP, ascitic protein <1 g/dL, Child C, long-term PPI
+  - Clinical:
+    - Often silent; fever, pain, tenderness, GI upset
+    - Worsening liver function, encephalopathy, HRS-AKI
+  - Diagnosis:
+    - PMN ≥250/mm³ ± culture; mostly monomicrobial Gram-negatives
+    - 'Variants: culture-positive, culture-negative neutrocytic, bacterascites; exclude secondary peritonitis'
+  - Treatment and prophylaxis:
+    - Cefotaxime 2 g 8–12 h or ceftriaxone 2 g/day, ≥5–7 days; albumin 1.5 g/kg + 1 g/kg day 3
+    - 'Response: PMN fall >25% at 48 h'
+    - 'Prophylaxis: ceftriaxone 1 g in GI bleed (≤7 days); norfloxacin 400/cipro 500 for low protein or prior SBP'
+  src:
+    page: 171
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L09.191
+  kind: essay
+  topic: clinical
+  prompt: Give a brief review on hepatic hydrothorax.
+  outline:
+  - Mechanism:
+    - Usually right-sided; ascites crosses diaphragmatic defects
+  - Features:
+    - Dyspnea; transudate with serum-pleural albumin gradient ≥1.1 g/dL
+    - Spontaneous bacterial empyema is managed like SBP
+  - Treatment:
+    - As for ascites; TIPS as bridge for refractory hydrothorax
+    - LT best; thoracentesis and pleurodesis if others fail
+  src:
+    page: 171
+  status: unverified
+  tags:
+  - book-question
+- id: hb.L09.192
+  kind: essay
+  topic: sfp
+  prompt: Give a brief review on spontaneous fungal peritonitis.
+  outline:
+  - Definition and pathogenesis:
+    - Fungal infection of ascites without a source; fungal translocation
+    - Promoted by antibiotics, GI bleeding, immunosuppression, malnutrition
+  - Diagnosis:
+    - PMN ≥250 + positive fungal culture; fungal ascites if PMN <250
+    - Candida albicans commonest; pan-fungal PCR and beta-D-glucan are faster
+  - Treatment:
+    - Echinocandins if critically ill; fluconazole if less severe
+  src:
+    page: 171
+  status: unverified
+  tags:
+  - book-question
