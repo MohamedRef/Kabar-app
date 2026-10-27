@@ -144,3 +144,67 @@ fn cast_checks_reject_orphans_and_name_clashes() {
     // The real Bu Siti is fine.
     assert!(!out.iter().any(|p| p.contains("'Bu Siti'")), "{out:#?}");
 }
+
+/// Every character in the cast has a portrait entry (`assets/portraits.yaml`,
+/// keyed by cast id), no entry names someone outside the cast, and every
+/// portrait file in `assets/src/personas/` belongs to an entry. The learner
+/// has no portrait.
+#[test]
+fn every_character_has_a_portrait_entry() {
+    use kabar_content::yaml_value;
+    use std::collections::BTreeSet;
+
+    const LEARNER: &str = "mohamed";
+    const EXPRESSIONS: [&str; 4] = ["listening", "laughing", "thinking", "explaining"];
+    let ids = |v: &serde_json::Value, key: &str| -> Vec<(String, bool)> {
+        v[key]
+            .as_array()
+            .unwrap_or_else(|| panic!("{key} is a list"))
+            .iter()
+            .map(|c| (c["id"].as_str().expect("id").to_string(), c["expressions"].as_bool().unwrap_or(false)))
+            .collect()
+    };
+    let cast: BTreeSet<String> =
+        ids(&yaml_value(&root().join("content/cast.yaml")).expect("cast.yaml"), "characters")
+            .into_iter()
+            .map(|(id, _)| id)
+            .collect();
+    let portraits = yaml_value(&root().join("assets/portraits.yaml")).expect("portraits.yaml");
+    assert_eq!(portraits["schema"], "kabar.portraits/v1");
+    let entries = ids(&portraits, "portraits");
+    let mut problems = Vec::new();
+    let listed: BTreeSet<&str> = entries.iter().map(|(id, _)| id.as_str()).collect();
+    if listed.len() != entries.len() {
+        problems.push("an id is listed twice".to_string());
+    }
+    for id in &cast {
+        if id != LEARNER && !listed.contains(id.as_str()) {
+            problems.push(format!("{id}: in content/cast.yaml but has no portrait entry"));
+        }
+    }
+    for id in &listed {
+        if !cast.contains(*id) || *id == LEARNER {
+            problems.push(format!("{id}: portrait entry for someone who isn't in the cast"));
+        }
+    }
+    if let Ok(dir) = std::fs::read_dir(root().join("assets/src/personas")) {
+        for file in dir.flatten() {
+            let name = file.file_name().to_string_lossy().into_owned();
+            let Some(stem) = name.strip_suffix(".png") else { continue };
+            if stem == "cast-sheet" {
+                continue;
+            }
+            let (id, expression) = match EXPRESSIONS.iter().find_map(|e| stem.strip_suffix(&format!("-{e}")))
+            {
+                Some(id) => (id, true),
+                None => (stem, false),
+            };
+            match entries.iter().find(|(e, _)| e == id) {
+                None => problems.push(format!("{name}: no portrait entry for {id}")),
+                Some((_, false)) if expression => problems.push(format!("{name}: {id} has no expressions")),
+                _ => {}
+            }
+        }
+    }
+    assert!(problems.is_empty(), "assets/portraits.yaml:\n{}", problems.join("\n"));
+}

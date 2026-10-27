@@ -550,6 +550,7 @@ fn ReviewHome() -> Element {
                 }
             }
             if nothing_due {
+                crate::misc_art::Picture { art: crate::misc_art::Art::AllReviewed, class: "empty-art" }
                 p { class: "rev-calm", "{ui.t(Msg::RevAllDone)}" }
                 if let Some(when) = &next_due {
                     p { class: "muted", {ui.t(Msg::RevNextReview).replace("{when}", when)} }
