@@ -7,6 +7,7 @@
 
 mod test_player;
 pub use test_player::PlacementInvite;
+pub(crate) use test_player::item_prompt;
 pub(crate) mod text;
 
 use dioxus::prelude::*;
@@ -388,30 +389,9 @@ fn log_episode(coach: Coach, db: &Db, p: &Player) {
     coach.record(db, practice, (summary.duration_ms / 1000) as u32);
 }
 
-/// A soft two-note chime for a right answer (synthesized; no sound files).
-/// Silent when sounds are off in Settings.
+/// The kendang tap for a right answer (silent when sounds are off).
 fn chime(ui: Ui) {
-    if ui.settings.peek().sounds_off {
-        return;
-    }
-    document::eval(
-        r#"
-        try {
-            const C = window.AudioContext || window.webkitAudioContext;
-            const c = new C(), t = c.currentTime;
-            [[659.25, 0], [987.77, 0.08]].forEach(([f, d]) => {
-                const o = c.createOscillator(), g = c.createGain();
-                o.type = "sine"; o.frequency.value = f;
-                g.gain.setValueAtTime(0.0001, t + d);
-                g.gain.exponentialRampToValueAtTime(0.08, t + d + 0.015);
-                g.gain.exponentialRampToValueAtTime(0.0001, t + d + 0.3);
-                o.connect(g).connect(c.destination);
-                o.start(t + d); o.stop(t + d + 0.35);
-            });
-            setTimeout(() => c.close(), 700);
-        } catch (e) {}
-        "#,
-    );
+    crate::sounds::play(ui, crate::sounds::Sound::Kendang);
 }
 
 // ---------------------------------------------------------------------------
@@ -553,19 +533,110 @@ fn RichRuns(text: String, target: &'static str, pron: bool) -> Element {
         let s = ui.settings.read();
         (s.ui_language, s.eastern_digits)
     };
-    rsx! {
-        for (i, (latin, run)) in latin_runs(&text).into_iter().enumerate() {
-            if latin {
-                bdi { key: "{i}", lang: target, dir: "ltr", class: "latin", "{run}" }
+    let dir = if lang.dir() == kabar_core::locale::Direction::Rtl { "rtl" } else { "ltr" };
+    let run = move |key: String, latin: bool, run: String| {
+        if latin {
+            rsx! {
+                bdi { key: "{key}", lang: target, dir: "ltr", class: "latin", "{run}" }
                 // Slides teach words inside Arabic sentences: say each one right there.
                 if pron && lang != UiLanguage::En && is_target_run(&run) {
-                    Pron { key: "p{i}", text: run.clone(), tag: target, inline: true }
+                    Pron { key: "p{key}", text: run.clone(), tag: target, inline: true }
                 }
-            } else {
-                span { key: "{i}", "{localize_digits(&run, lang, eastern)}" }
+            }
+        } else {
+            rsx! { span { key: "{key}", "{localize_digits(&run, lang, eastern)}" } }
+        }
+    };
+    rsx! {
+        for (i, piece) in bracket_groups(latin_runs(&text)).into_iter().enumerate() {
+            match piece {
+                Piece::Run(latin, text) => run(format!("{i}"), latin, text),
+                Piece::Group(runs) => {
+                    let short = runs.iter().map(|(_, r)| r.chars().count()).sum::<usize>() <= 28;
+                    rsx! {
+                        span { key: "{i}", dir, class: if short { "bidi-group nowrap" } else { "bidi-group" },
+                            for (j, (latin, text)) in runs.into_iter().enumerate() {
+                                {run(format!("{i}.{j}"), latin, text)}
+                            }
+                        }
+                    }
+                }
             }
         }
     }
+}
+
+/// A run of [`latin_runs`] output, or a bracketed group that mixes the UI
+/// language with a Latin run ("(هو ngendika)"). The group is isolated in
+/// the UI's direction so both brackets pair up around it, and a short one
+/// is kept on one line.
+#[derive(Debug, PartialEq)]
+enum Piece {
+    Run(bool, String),
+    Group(Vec<(bool, String)>),
+}
+
+fn bracket_groups(runs: Vec<(bool, String)>) -> Vec<Piece> {
+    let mut out = Vec::new();
+    let mut group: Option<Vec<(bool, String)>> = None;
+    for (latin, text) in runs {
+        if latin {
+            match &mut group {
+                Some(g) => g.push((true, text)),
+                None => out.push(Piece::Run(true, text)),
+            }
+            continue;
+        }
+        let mut rest = text.as_str();
+        loop {
+            match &mut group {
+                Some(g) => match rest.find(')') {
+                    // The group closes in this run.
+                    Some(at) => {
+                        let (inside, after) = rest.split_at(at + 1);
+                        g.push((false, inside.to_string()));
+                        out.push(Piece::Group(group.take().unwrap_or_default()));
+                        rest = after;
+                    }
+                    None => {
+                        g.push((false, rest.to_string()));
+                        break;
+                    }
+                },
+                None => {
+                    // An opening bracket whose partner isn't in this same run
+                    // starts a group; brackets closed within the run stay put.
+                    let open = rest
+                        .char_indices()
+                        .filter(|&(_, c)| c == '(')
+                        .find(|&(at, _)| !rest[at..].contains(')'));
+                    match open {
+                        Some((at, _)) => {
+                            if at > 0 {
+                                out.push(Piece::Run(false, rest[..at].to_string()));
+                            }
+                            group = Some(Vec::new());
+                            rest = &rest[at..];
+                        }
+                        None => {
+                            if !rest.is_empty() {
+                                out.push(Piece::Run(false, rest.to_string()));
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+            if rest.is_empty() {
+                break;
+            }
+        }
+    }
+    // A bracket that never closes: leave its runs as they were.
+    if let Some(g) = group {
+        out.extend(g.into_iter().map(|(l, t)| Piece::Run(l, t)));
+    }
+    out
 }
 
 /// A slide title: target-language text isolated left to right, or, when it
@@ -1139,6 +1210,8 @@ fn SummaryView(
 ) -> Element {
     let ui = use_context::<Ui>();
     let nav = use_context::<crate::play::PlayNav>();
+    // The gong rings once when the summary appears.
+    use_hook(move || crate::sounds::play(ui, crate::sounds::Sound::Gong));
     let settings = ui.settings.read().clone();
     let lang = settings.ui_language;
     let eastern = settings.eastern_digits;
@@ -1146,6 +1219,10 @@ fn SummaryView(
     let num = |n: u32| format_number(u64::from(n), lang, eastern);
     rsx! {
         article { class: "lp-summary",
+            div { class: "lp-gong reveal", aria_hidden: "true",
+                span { class: "lp-gong-ring" }
+                crate::misc_art::Picture { art: crate::misc_art::Art::Gong, class: "" }
+            }
             h2 { class: "lp-done reveal", "{lt(lang, L::Done)}" }
             p { class: "lp-lesson-title reveal", bdi { lang: target, dir: "ltr", "{lesson.title}" } }
             if perfect {
@@ -1784,6 +1861,30 @@ mod tests {
         let runs = latin_runs("- Menurut X, … = على حسب X …");
         assert_eq!(runs[1], (true, "Menurut X, …".into()));
         assert_eq!(runs[3], (true, "X …".into()));
+    }
+
+    #[test]
+    fn brackets_around_mixed_text_form_one_group() {
+        let pieces = bracket_groups(latin_runs("كلامك إنت للكبير (هو ngendika)"));
+        assert_eq!(
+            pieces,
+            vec![
+                Piece::Run(false, "كلامك إنت للكبير ".into()),
+                Piece::Group(vec![(false, "(هو ".into()), (true, "ngendika".into()), (false, ")".into())]),
+            ]
+        );
+        // Text after the group, and brackets that close inside one run, stay plain.
+        let pieces = bracket_groups(latin_runs("(شنطة) tas (يعني bag) وخلاص"));
+        assert_eq!(pieces[0], Piece::Run(false, "(شنطة) ".into()));
+        assert_eq!(pieces[1], Piece::Run(true, "tas".into()));
+        assert!(matches!(&pieces[3], Piece::Group(g) if g.len() == 3));
+        assert_eq!(pieces[4], Piece::Run(false, " وخلاص".into()));
+        // An unclosed bracket changes nothing.
+        let pieces = bracket_groups(latin_runs("قول (apa kabar"));
+        assert!(pieces.iter().all(|p| matches!(p, Piece::Run(..))));
+        let text: String =
+            pieces.iter().map(|p| if let Piece::Run(_, t) = p { t.as_str() } else { "" }).collect();
+        assert_eq!(text, "قول (apa kabar");
     }
 
     #[test]

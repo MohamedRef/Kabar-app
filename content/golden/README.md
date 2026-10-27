@@ -29,6 +29,7 @@ Rules for every item:
 | Task | `input` | `expect` |
 |---|---|---|
 | `analyze_text` | `{text, words[]}`: `words` is the tokenizer's word list; the model aligns by index | `AnalyzeText` from `crates/core/src/ai/tasks.rs`, exactly (one token per word) |
+| `translate_text` | `{lang: id\|jv, lines[]}`: the Reader's lines in order | `{lines[{i, arz, ar, en}], register}`: one entry per line |
 | `explain_sentence` | `{text, lang, voice: arz\|ar\|en, grammar_candidates[] (ids from content/grammar)}` | `{grammar_ids[], register, culture?, paraphrase, explanation}` |
 | `grade_answer` | `{exercise, references[], answer}` | `GradeAnswer` from `crates/core/src/ai/tasks.rs`, exactly |
 | `roleplay_turn` | `{persona: mas_dimas\|bu_siti\|mbak_gadis\|mas_ardi, level, scenario, history[{role: persona\|learner, text}], learner}` | `{reply, corrections[{text, fix, why_en, why_ar}], register}` |

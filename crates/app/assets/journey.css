@@ -142,6 +142,12 @@
 .jm-level .unit-loop { stroke: var(--indigo); stroke-opacity: 0.45; stroke-width: 1.5; stroke-dasharray: 3 4; }
 .jm-level .unit-dot { fill: var(--surface); stroke: var(--indigo); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
 .jm-level .unit-dot.done { fill: var(--sawah); stroke: var(--sawah); }
+/* Pins too close to a neighbour (Bali, Lombok) sit a little apart at the
+   default zoom and slide home as the map zooms in: see `nudge_style`. */
+.jm-nudge {
+  --slide: max(0, var(--fade, 1) * var(--inv) - 1);
+  transform: translate(calc(var(--slide) * var(--nx, 0px)), calc(var(--slide) * var(--ny, 0px)));
+}
 .jm-pin { cursor: pointer; transform: scale(var(--inv)); outline: none; }
 .jm-pin .pin-hit { fill: transparent; }
 .jm-pin .pin-disc { fill: var(--pin-open); stroke: var(--indigo); stroke-width: 0.7; }
@@ -185,8 +191,6 @@
   color: var(--dawn); font: 700 0.7rem var(--font-latin); transform: rotate(-6deg); opacity: 0.85;
 }
 .suitcase-empty { display: grid; justify-items: center; text-align: center; gap: 0.5rem; }
-.suitcase-art { color: var(--gold); }
-.suitcase-art svg { inline-size: 3rem; block-size: 3rem; }
 
 /* ---------- motion: calm, and off when asked ---------- */
 @media (prefers-reduced-motion: no-preference) {

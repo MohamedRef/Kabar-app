@@ -672,6 +672,10 @@ pub struct Player {
     progress: LessonProgress,
     /// The grade of the current exercise once checked, until Continue.
     pending: Option<Grade>,
+    /// On a retry of a choice item: the exercise with its options in a new
+    /// order (see [`retry_options`]), shown and graded in place of the
+    /// original so a remembered position isn't the answer.
+    retry_view: Option<Exercise>,
 }
 
 impl Player {
@@ -683,10 +687,27 @@ impl Player {
     }
 
     pub fn with_seed(lesson: LessonContent, seed: u64) -> Self {
-        let mut p =
-            Self { lesson, seed, step: Step::Summary, progress: LessonProgress::default(), pending: None };
-        p.step = p.first_step();
+        let mut p = Self {
+            lesson,
+            seed,
+            step: Step::Summary,
+            progress: LessonProgress::default(),
+            pending: None,
+            retry_view: None,
+        };
+        p.go(p.first_step());
         p
+    }
+
+    /// Moves to `step`, preparing the reshuffled options of a retry.
+    fn go(&mut self, step: Step) {
+        self.step = step;
+        self.retry_view = match step {
+            Step::Exercise { index, retry: true } => {
+                self.lesson.exercises.get(index).and_then(|ex| retry_options(ex, self.seed))
+            }
+            _ => None,
+        };
     }
 
     /// Picks up a saved position. Unknown ids (content changed since) fall
@@ -713,7 +734,7 @@ impl Player {
             _ => None,
         };
         if let Some(step) = step {
-            p.step = step;
+            p.go(step);
         }
         p
     }
@@ -730,9 +751,13 @@ impl Player {
         self.pending.as_ref()
     }
 
+    /// The current exercise as shown: on a retry of a choice item, with its
+    /// options reshuffled (answers and grading refer to this order).
     pub fn exercise(&self) -> Option<&Exercise> {
         match self.step {
-            Step::Exercise { index, .. } => self.lesson.exercises.get(index),
+            Step::Exercise { index, .. } => {
+                self.retry_view.as_ref().or_else(|| self.lesson.exercises.get(index))
+            }
             _ => None,
         }
     }
@@ -772,7 +797,7 @@ impl Player {
         if let Some(g) = &self.pending {
             return g.clone();
         }
-        let ex = &self.lesson.exercises[index];
+        let ex = self.retry_view.as_ref().unwrap_or(&self.lesson.exercises[index]);
         let g = grade(ex, answer, lang);
         let mut mistakes = Vec::new();
         if let Answer::Matched { missed } = answer {
@@ -885,7 +910,7 @@ impl Player {
 
     /// Continue. Returns the position to save for Lanjut.
     pub fn advance(&mut self) -> LessonPosition {
-        self.step = self.next_step();
+        self.go(self.next_step());
         self.pending = None;
         self.position()
     }
@@ -894,7 +919,7 @@ impl Player {
     pub fn back(&mut self) -> Option<LessonPosition> {
         match self.step {
             Step::Slide(i) if i > 0 => {
-                self.step = Step::Slide(i - 1);
+                self.go(Step::Slide(i - 1));
                 Some(self.position())
             }
             _ => None,
@@ -987,6 +1012,49 @@ pub fn tiles(ex: &Exercise, seed: u64) -> Vec<String> {
         }
         _ => Vec::new(),
     }
+}
+
+/// A missed choice item coming back as a retry, with its options in another
+/// order (never the same one), fixed by `seed` and the exercise id so a
+/// resumed lesson shows the same order. The answer index follows its option,
+/// so grading the copy is exactly grading the original. `None` for items
+/// without options to pick from.
+pub fn retry_options(ex: &Exercise, seed: u64) -> Option<Exercise> {
+    use ExerciseKind as K;
+    let order = |n: usize| shuffled(n, seed ^ seed_of(&ex.id) ^ 2);
+    fn apply<T: Clone>(items: &[T], order: &[usize]) -> Vec<T> {
+        order.iter().map(|&i| items[i].clone()).collect()
+    }
+    let moved = |order: &[usize], answer: usize| order.iter().position(|&i| i == answer).unwrap_or(answer);
+    let mut out = ex.clone();
+    match &mut out.kind {
+        K::MultipleChoice { options, options_meaning, answer, .. } => {
+            let n = options.len().max(options_meaning.len());
+            if n < 2 {
+                return None;
+            }
+            let o = order(n);
+            if options.len() == n {
+                *options = apply(options, &o);
+            }
+            if options_meaning.len() == n {
+                *options_meaning = apply(options_meaning, &o);
+            }
+            *answer = moved(&o, *answer);
+        }
+        K::Listen { options, answer, .. } if options.len() > 1 => {
+            let o = order(options.len());
+            *options = apply(options, &o);
+            *answer = answer.map(|a| moved(&o, a));
+        }
+        // Graded by the picked text, so only the order changes.
+        K::FillBlank { options, .. } if options.len() > 1 => {
+            let o = order(options.len());
+            *options = apply(options, &o);
+        }
+        _ => return None,
+    }
+    Some(out)
 }
 
 /// Order of the meanings column in match pairs, fixed by `seed`.
