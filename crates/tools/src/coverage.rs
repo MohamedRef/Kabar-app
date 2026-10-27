@@ -17,6 +17,9 @@ pub struct Args {
     /// List every item, not only those over the limit.
     #[arg(long)]
     pub all: bool,
+    /// List every unknown word of each item shown, not only the six most frequent.
+    #[arg(long)]
+    pub words: bool,
 }
 
 fn median(mut v: Vec<f64>) -> f64 {
@@ -27,9 +30,9 @@ fn median(mut v: Vec<f64>) -> f64 {
     v[v.len() / 2]
 }
 
-fn line(i: &Item) -> String {
+fn line(i: &Item, words: usize) -> String {
     let top: Vec<String> =
-        i.top(6).into_iter().map(|(w, c)| if c > 1 { format!("{w}×{c}") } else { w }).collect();
+        i.top(words).into_iter().map(|(w, c)| if c > 1 { format!("{w}×{c}") } else { w }).collect();
     format!(
         "{:<20} {:<9} {:<14} {:>5.1}% / {:>2}%  {}",
         i.id,
@@ -57,7 +60,7 @@ pub fn run(root: &Root, args: Args) -> Result<()> {
     let mut shown: Vec<&Item> = items.iter().filter(|i| args.all || i.over()).collect();
     shown.sort_by(|a, b| b.percent().total_cmp(&a.percent()));
     for i in &shown {
-        println!("{}", line(i));
+        println!("{}", line(i, if args.words { usize::MAX } else { 6 }));
     }
     if args.warn {
         for i in items.iter().filter(|i| i.over() && i.kind != "dialogue") {
