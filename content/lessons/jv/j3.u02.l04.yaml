@@ -50,7 +50,7 @@ exercises:
       en: (from the note) Where is Bu Siti now?
     options: [ing griya, ing stasiun, ing Pasar Gede]
     answer: 2
-    words: [ing]
+    words: [ing, Pasar Gede]
   - id: e03
     type: multiple_choice
     question_meaning:
@@ -133,6 +133,30 @@ exercises:
       ar: 'griya kula = بيتي بالكراما، وomah وaku من الـ ngoko.'
       en: griya kula = my house in krama; omah and aku are ngoko.
     words: [sugeng rawuh, griya, kula]
+  - id: e09
+    type: multiple_choice
+    question: Kula badhe dhateng Pasar Gede.
+    question_meaning:
+      ar_eg: Mas Mohamed رايح فين؟
+      ar: إلى أين يذهب Mas Mohamed؟
+      en: Where is Mas Mohamed going?
+    options: [Ke pasar besar di Solo., Ke stasiun., Ke rumah Bu Siti.]
+    answer: 0
+    explain:
+      ar_eg: Pasar Gede = السوق الكبير في سولو. gede = gedhe (كبير) بالعامية.
+      ar: Pasar Gede = السوق الكبير في سولو، وgede = gedhe (كبير) في الكلام الدارج.
+      en: Pasar Gede = Solo's big market. gede is the spoken form of gedhe (big).
+    words: [Pasar Gede]
+  - id: e10
+    type: listen
+    text: Kula lan Mas Dimas ing Pasar Gede.
+    options: ['Kula lan Mas Dimas ing Pasar Gede.', 'Kula lan Mas Dimas ing stasiun.', 'Kula lan Mas Dimas ing griya.']
+    answer: 0
+    meaning:
+      ar_eg: أنا وMas Dimas في Pasar Gede.
+      ar: أنا وMas Dimas في Pasar Gede.
+      en: Mas Dimas and I are at Pasar Gede.
+    words: [kula, Pasar Gede]
 dialogue:
   title: Bu Siti mulih
   lines:
@@ -166,6 +190,12 @@ dialogue:
       ar_eg: اتفضل يا أستاذ، اتفضل!
       ar: تفضّل يا أخي، تفضّل!
       en: Please, go ahead!
+new_words:
+  - word: Pasar Gede
+    pos: noun
+    ar_eg: «السوق الكبير» في سولو (gede = gedhe)
+    ar: «السوق الكبير» في سولو (gede = gedhe)
+    en: Solo's big market (gede = gedhe, big)
 review:
   status: draft
   verified: false

@@ -63,7 +63,7 @@ exercises:
       en: Complete it, as a contrast. "… Egypt, Indonesian schools wear uniforms every day."
     options: [Maupun, Berbeda dengan, Kata]
     answer: 1
-    words: [berbeda dengan]
+    words: [berbeda dengan, kata]
   - id: e03
     type: fill_blank
     sentence: Di Mesir ___ di Indonesia, ujian akhir sangat penting.
@@ -104,7 +104,7 @@ exercises:
       - Kata seorang guru, kurikulum yang baru lebih baik.
       - Menurut seorang guru, kurikulum baru lebih baik.
       - Menurut seorang guru, kurikulum yang baru lebih baik.
-    words: [kurikulum]
+    words: [kurikulum, kata]
   - id: e07
     type: dictation
     text: Berbeda dengan Mesir, tahun ajaran di sini dimulai bulan Juli.
@@ -121,6 +121,20 @@ exercises:
       ar: في مصر وإندونيسيا على السواء، يحظى المعلّم باحترام كبير.
       en: In Egypt and Indonesia alike, teachers are highly respected.
     words: [maupun]
+  - id: e09
+    type: multiple_choice
+    question: Kata Bu Sari, ujian akhir dimulai bulan Juni.
+    question_meaning:
+      ar_eg: مين اللي قال إن الامتحانات في يونيو؟
+      ar: من قال إن الامتحانات في يونيو؟
+      en: Who said the exams start in June?
+    options: ['Bu Sari.', 'Kepala sekolah.', 'Kurikulum baru.']
+    answer: 0
+    explain:
+      ar_eg: kata Bu Sari = مدام ساري بتقول / على حسب كلامها.
+      ar: kata Bu Sari = على حدّ قول السيدة ساري.
+      en: kata Bu Sari = Bu Sari says, according to Bu Sari.
+    words: [kata]
 dialogue:
   title: Membaca draf Mohamed
   lines:
@@ -159,6 +173,11 @@ new_words:
     ar_eg: منهج
     ar: منهج
     en: curriculum
+  - word: kata
+    pos: noun
+    ar_eg: كلمة؛ kata X = X بيقول / على حسب كلام X
+    ar: كلمة؛ kata X = على حدّ قول X
+    en: word; kata X = X says, according to X
 review:
   status: draft
   verified: false

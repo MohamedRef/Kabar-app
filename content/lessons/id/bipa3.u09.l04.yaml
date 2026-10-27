@@ -80,17 +80,17 @@ exercises:
       ar: (أفواجًا) يأتي الأهالي إلى الشاطئ أفواجًا للبحث عن النيالي.
       en: (in droves) Villagers come to the beach in droves to look for nyale.
     answers: [berbondong-bondong]
-    words: [berbondong-bondong, nyale]
+    words: [berbondong-bondong, nyale, mencari]
   - id: e05
     type: fill_blank
-    sentence: Putri Mandalika sayang kepada semua ___.
+    sentence: Semua ___ percaya kepada Putri Mandalika.
     meaning:
-      ar_eg: الأميرة مانداليكا كانت بتحب كل شعبها.
-      ar: كانت الأميرة مانداليكا تحب شعبها كله.
-      en: Princess Mandalika loved all her people.
+      ar_eg: الشعب كله كان بيثق في الأميرة مانداليكا.
+      ar: كان الشعب كله يثق بالأميرة مانداليكا.
+      en: All the people trusted Princess Mandalika.
     options: [nyale, raja, rakyat]
     answers: [rakyat]
-    words: [rakyat]
+    words: [rakyat, percaya]
   - id: e06
     type: build_sentence
     source:
@@ -118,7 +118,7 @@ exercises:
       - Orang mencari nyale di pantai setiap tahun.
       - Warga mencari nyale di pantai setiap tahun.
       - Tiap tahun, orang-orang mencari nyale di pantai.
-    words: [nyale]
+    words: [nyale, mencari]
   - id: e08
     type: dictation
     text: Putri Mandalika berpikir berhari-hari, lalu terjun ke laut.
@@ -134,7 +134,21 @@ exercises:
       ar_eg: الناس بتصدّق إن النيالي هي الأميرة مانداليكا.
       ar: يعتقد الناس أن النيالي هي الأميرة مانداليكا.
       en: The people believe the nyale are Princess Mandalika.
-    words: [rakyat, nyale]
+    words: [rakyat, nyale, percaya]
+  - id: e10
+    type: multiple_choice
+    question: Setiap tahun, rakyat mencari nyale di pantai.
+    question_meaning:
+      ar_eg: الناس بيدوّروا على النيالي ليه؟
+      ar: لماذا يبحث الناس عن النيالي؟
+      en: Why do people look for nyale?
+    options: ['Mereka percaya nyale adalah sang putri.', 'Mereka mau menjual nyale.', 'Mereka takut pada laut.']
+    answer: 0
+    explain:
+      ar_eg: mencari = يدوّر على، وpercaya = يصدّق.
+      ar: mencari = يبحث عن، وpercaya = يصدّق.
+      en: mencari = look for; percaya = believe.
+    words: [mencari, percaya, nyale]
 dialogue:
   title: Akhir cerita
   lines:
@@ -190,6 +204,16 @@ new_words:
     ar: الشعب / الرعية
     en: the people, subjects
     arabic: رعية
+  - word: mencari
+    pos: verb
+    ar_eg: يدوّر على
+    ar: يبحث عن
+    en: to look for, search
+  - word: percaya
+    pos: verb
+    ar_eg: يصدّق / يؤمن (percaya kepada = يثق في)
+    ar: يصدّق / يؤمن
+    en: to believe, trust
 review:
   status: draft
   verified: false

@@ -55,7 +55,7 @@ exercises:
       ar_eg: suwe = وقت طويل (lama). aja suwe = ما تتأخرش.
       ar: suwe = مدة طويلة (lama)، وaja suwe = لا تتأخر.
       en: suwe = a long time (lama); aja suwe = don't be long.
-    words: [adhem, hawa]
+    words: [adhem, hawa, suwe]
   - id: e04
     type: match_pairs
     pairs:
@@ -79,7 +79,7 @@ exercises:
         ar_eg: قدّام
         ar: أمام
         en: in front
-    words: [adhem, kenthang, puthu]
+    words: [adhem, kenthang, puthu, suwe]
   - id: e05
     type: multiple_choice
     question: Aja suwe ya, hawane adhem banget.
@@ -93,6 +93,7 @@ exercises:
       ar_eg: الاتنين a في آخر الكلمة بيتنطقوا o، فالشات بيكتب ojo. الإملا الصح aja.
       ar: حرفا a في آخر الكلمة يُنطقان o، فتكتبها الدردشة ojo، والقياسي aja.
       en: Both a's at the end are said o, so chats type ojo; the standard is aja.
+    words: [suwe]
   - id: e06
     type: fill_blank
     sentence: Ing kene ana puthu lan ___ goreng.
@@ -114,7 +115,7 @@ exercises:
       ar_eg: 'اكتب الإملا الصح: aja (مش ojo) وadhem بـ dh.'
       ar: 'اكتب بالإملاء القياسي: aja (لا ojo) وadhem بـ dh.'
       en: 'Write the standard spelling: aja (not ojo) and adhem with dh.'
-    words: [adhem]
+    words: [adhem, suwe]
   - id: e08
     type: translate
     direction: to_target
@@ -164,6 +165,12 @@ dialogue:
       ar_eg: adhem بـ dh. الجو برد، بس البوتو سخن!
       ar: adhem بـ dh. الجو بارد، لكن البوتو دافئ!
       en: Adhem, with dh. The weather's cold, but the puthu's warm!
+new_words:
+  - word: suwe
+    pos: adjective
+    ar_eg: وقت طويل، يتأخّر
+    ar: طويل (زمنًا)
+    en: long (time) = lama
 review:
   status: draft
   verified: false

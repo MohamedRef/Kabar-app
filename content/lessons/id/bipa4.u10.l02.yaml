@@ -122,7 +122,7 @@ exercises:
       en: He's very famous, but he stays humble.
     options: [tinggi, keras, rendah]
     answers: [rendah]
-    words: [rendah hati]
+    words: [rendah hati, tetap]
   - id: e07
     type: build_sentence
     source:
@@ -152,12 +152,26 @@ exercises:
     words: [makan garam]
   - id: e09
     type: speaking
-    text: Tokoh itu keras kepala, tetapi dia membanting tulang untuk rakyatnya.
+    text: Tokoh itu keras kepala, tetapi dia tetap membanting tulang untuk rakyatnya.
     meaning:
       ar_eg: الشخصية دي دماغها ناشفة، بس كان بيشتغل جامد عشان شعبه.
       ar: كانت تلك الشخصية عنيدة، لكنها كدحت من أجل شعبها.
       en: That figure was stubborn, but he worked himself to the bone for his people.
-    words: [keras kepala, banting tulang]
+    words: [keras kepala, banting tulang, tetap]
+  - id: e10
+    type: multiple_choice
+    question: Walaupun sudah kaya, Pak Irwan tetap rendah hati.
+    question_meaning:
+      ar_eg: الأستاذ إروان اتغيّر بعد ما بقى غني؟
+      ar: هل تغيّر السيد إروان بعد أن صار غنيًا؟
+      en: Did Pak Irwan change after getting rich?
+    options: ['Tidak, dia masih rendah hati.', 'Ya, dia menjadi tinggi hati.', 'Ya, dia menjadi keras kepala.']
+    answer: 0
+    explain:
+      ar_eg: tetap = فضل زي ما هو / برضه.
+      ar: tetap = ظلّ كما هو.
+      en: tetap = still, stays the same.
+    words: [tetap, rendah hati]
 dialogue:
   title: Kebun bunga Kakaskasen
   lines:
@@ -207,6 +221,11 @@ new_words:
     ar_eg: عنده خبرة (في الحياة)
     ar: ذو خبرة (في الحياة)
     en: to be experienced (in life)
+  - word: tetap
+    pos: adverb
+    ar_eg: برضه / فضل (tetap rendah hati = فضل متواضع)
+    ar: ظلّ / مع ذلك
+    en: still, all the same; to remain
 review:
   status: draft
   verified: false

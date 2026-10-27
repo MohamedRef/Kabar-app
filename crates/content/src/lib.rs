@@ -312,8 +312,11 @@ fn check_radio_words(
         for unit in c.levels.iter().flat_map(|l| &l.units) {
             for lesson in unit.lessons.iter().filter_map(|l| lessons.get(&l.id)) {
                 let new_words = lesson.get("new_words").and_then(Value::as_array).into_iter().flatten();
+                // Every form counts: "apa / opo" teaches apa and opo.
                 taught.extend(
-                    new_words.filter_map(|w| w.get("word").and_then(Value::as_str)).map(str::to_lowercase),
+                    new_words
+                        .filter_map(|w| w.get("word").and_then(Value::as_str))
+                        .flat_map(retrieval::forms),
                 );
             }
             taught_by.insert(unit.id.as_str(), taught.clone());

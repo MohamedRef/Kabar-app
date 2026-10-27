@@ -80,8 +80,14 @@ pub(crate) fn target_text(e: &Value, all_answers: bool) -> String {
     let mut out = Vec::new();
     match e.get("type").and_then(Value::as_str).unwrap_or("") {
         "multiple_choice" => {
-            out.push(s("question"));
-            out.extend(list("options"));
+            // A gapped question is read with its right answer in the gap.
+            let options = list("options");
+            let answer = e.get("answer").and_then(Value::as_u64).and_then(|i| options.get(i as usize));
+            match answer {
+                Some(answer) => out.push(s("question").replacen("___", answer, 1)),
+                None => out.push(s("question")),
+            }
+            out.extend(options);
         }
         "listen" => {
             out.push(s("text"));
@@ -171,5 +177,11 @@ mod tests {
         check("j3.u01.l03", &lesson, &mut problems);
         assert_eq!(problems.len(), 1, "{problems:?}");
         assert!(problems[0].contains("'dereng' is retrieved in 2 exercise(s) of 2 type(s)"));
+    }
+
+    #[test]
+    fn gapped_questions_read_with_their_answer() {
+        let e = json!({"type": "multiple_choice", "question": "Aku mangan karo ___ kerja.", "options": ["kanca", "omah"], "answer": 0});
+        assert!(target_text(&e, true).starts_with("aku mangan karo kanca kerja."));
     }
 }

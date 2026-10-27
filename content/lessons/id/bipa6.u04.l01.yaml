@@ -82,7 +82,7 @@ exercises:
     words: [adapun]
   - id: e04
     type: listen
-    text: Konon, raja pertama datang dari seberang lautan.
+    text: Konon, raja pertama datang dari seberang lautan. Ia membangun kerajaan ini.
     question:
       ar_eg: الحكاية بتقول الملك الأول جه منين؟
       ar: من أين جاء الملك الأوّل بحسب الرواية؟
@@ -92,7 +92,7 @@ exercises:
       - من ورا البحر.
       - من المدينة نفسها.
     answer: 1
-    words: [konon]
+    words: [konon, ia]
   - id: e05
     type: build_sentence
     source:
@@ -101,7 +101,7 @@ exercises:
       en: As for that king, he was very just.
     answer: Adapun raja itu, ia sangat adil.
     distractors: [konon, abad]
-    words: [adapun]
+    words: [adapun, ia]
   - id: e06
     type: translate
     direction: from_target
@@ -142,6 +142,20 @@ exercises:
       ar: دام عصر ازدهار تلك المملكة عدّة قرون.
       en: That kingdom's heyday lasted several centuries.
     words: [masa jaya, abad]
+  - id: e10
+    type: multiple_choice
+    question: Adapun ratu itu, ia sangat bijaksana.
+    question_meaning:
+      ar_eg: «ia» هنا بترجع على مين؟
+      ar: على من يعود «ia» هنا؟
+      en: Who does «ia» refer to here?
+    options: ['Ratu itu.', 'Rakyatnya.', 'Kerajaannya.']
+    answer: 0
+    explain:
+      ar_eg: «ia» هنا بترجع على الملكة. «ia» زي «dia» بس أرسمى، وبتلاقيها كتير في الكتابة والأخبار.
+      ar: «ia» يعود على الملكة؛ وهو مثل «dia» لكنّه أكثر رسمية ويكثر في الكتابة والأخبار.
+      en: «ia» refers back to the queen. It is a more formal «dia», common in writing and the news.
+    words: [ia, adapun]
 dialogue:
   title: Di tepi Sungai Musi
   lines:
@@ -192,6 +206,11 @@ new_words:
     ar_eg: عصر العز
     ar: عصر الازدهار
     en: heyday
+  - word: ia
+    pos: pronoun
+    ar_eg: هو / هي (رسمي)
+    ar: هو / هي
+    en: he, she (formal)
 review:
   status: draft
   verified: false

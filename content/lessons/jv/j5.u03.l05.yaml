@@ -136,7 +136,7 @@ exercises:
       - Hawane adhem, aku arep turu wae.
       - Hawane adhem banget, aku mung arep turu wae.
       - Hawane adhem, aku mung kepengin turu.
-    words: [adhem]
+    words: [adhem, mung]
   - id: e08
     type: build_sentence
     source:
@@ -146,6 +146,30 @@ exercises:
     answer: Sesuk aku mesthi wis mari.
     distractors: [mesti, wes]
     words: [mesthi, mari]
+  - id: e09
+    type: fill_blank
+    sentence: Aku ___ arep turu wae.
+    meaning:
+      ar_eg: أنا عايز أنام وبس.
+      ar: أريد أن أنام فقط.
+      en: I just want to sleep.
+    options: [mung, wis, lagi]
+    answers: [mung]
+    words: [mung]
+  - id: e10
+    type: multiple_choice
+    question: Aku mung ngombe teh.
+    question_meaning:
+      ar_eg: معنى الجملة دي إيه؟
+      ar: ما معنى هذه الجملة؟
+      en: What does this sentence mean?
+    options: ['أنا بشرب شاي بس.', 'أنا مش بشرب شاي.', 'أنا بشرب شاي كتير.']
+    answer: 0
+    explain:
+      ar_eg: mung = بس / فقط (hanya)، وبتيجي قبل الفعل.
+      ar: mung = فقط (hanya)، وتأتي قبل الفعل.
+      en: mung = only (hanya); it goes before the verb.
+    words: [mung]
 dialogue:
   title: Telpon saka Mohamed
   lines:
@@ -180,6 +204,11 @@ new_words:
     ar_eg: يخفّ / يبقى كويس
     ar: يُشفى
     en: get well, recover = sembuh
+  - word: mung
+    pos: adverb
+    ar_eg: بس، فقط
+    ar: فقط
+    en: only, just = hanya, cuma
 review:
   status: draft
   verified: false

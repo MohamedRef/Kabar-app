@@ -157,7 +157,31 @@ exercises:
       ar_eg: بسبب إنه قاعد على الموبايل على طول، أخويا الصغير كسلان يذاكر!
       ar: بسبب انشغاله الدائم بالهاتف صار أخي الصغير كسولًا عن الدراسة!
       en: Because he's always on his phone, my little brother is too lazy to study!
-    words: [gara-gara]
+    words: [gara-gara, terus]
+  - id: e09
+    type: multiple_choice
+    question: Harga beras terus naik.
+    question_meaning:
+      ar_eg: سعر الرز بيعمل إيه؟
+      ar: ماذا يحدث لسعر الأرز؟
+      en: What is the price of rice doing?
+    options: ['Naik dan naik lagi.', 'Turun sedikit.', 'Tidak berubah.']
+    answer: 0
+    explain:
+      ar_eg: terus = باستمرار / على طول.
+      ar: terus = باستمرار.
+      en: terus = keeps on (going).
+    words: [terus]
+  - id: e10
+    type: fill_blank
+    sentence: Gara-gara hujan ___, jalannya banjir.
+    meaning:
+      ar_eg: عشان المطر فضل نازل على طول، الطريق غرق.
+      ar: بسبب المطر المتواصل غرق الطريق.
+      en: Because it kept raining, the road flooded.
+    options: [terus, berkat, beasiswa]
+    answers: [terus]
+    words: [terus, gara-gara]
 dialogue:
   title: Berita pendidikan
   lines:
@@ -219,6 +243,11 @@ new_words:
     ar_eg: يسيب المدرسة
     ar: ينقطع عن الدراسة
     en: drop out of school
+  - word: terus
+    pos: adverb
+    ar_eg: على طول / باستمرار (main HP terus = بيلعب ع الموبايل على طول)
+    ar: باستمرار
+    en: continuously, keep on
 review:
   status: draft
   verified: false

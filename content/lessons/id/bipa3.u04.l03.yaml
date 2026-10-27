@@ -123,7 +123,7 @@ exercises:
       en: We have to heat the water before making tea.
     options: [menguatkan, memanaskan, menyehatkan]
     answers: [memanaskan]
-    words: [memanaskan]
+    words: [memanaskan, membuat]
   - id: e06
     type: fill_blank
     sentence: Kalsium menguatkan ___ dan gigi.
@@ -160,12 +160,26 @@ exercises:
     words: [menyehatkan, tubuh]
   - id: e09
     type: speaking
-    text: Panaskan airnya, lalu masukkan sayurnya.
+    text: Panaskan airnya untuk membuat teh.
     meaning:
-      ar_eg: سخّن المية، وبعدين حط الخضار.
-      ar: سخّن الماء ثم أضف الخضار.
-      en: Heat the water, then put the vegetables in.
-    words: [memanaskan]
+      ar_eg: سخّن المية عشان تعمل شاي.
+      ar: سخّن الماء لتحضير الشاي.
+      en: Heat the water to make tea.
+    words: [memanaskan, membuat]
+  - id: e10
+    type: multiple_choice
+    question: Bu Yanti ___ nasi goreng untuk anaknya.
+    question_meaning:
+      ar_eg: «مدام يانتي بتعمل رز مقلي لابنها.» أنهي فعل؟
+      ar: «تُعِدّ السيدة يانتي أرزًا مقليًّا لابنها.» أيّ فعل؟
+      en: '"Bu Yanti makes fried rice for her child." Which verb?'
+    options: [membuat, menguatkan, membersihkan]
+    answer: 0
+    explain:
+      ar_eg: membuat = يعمل / يحضّر. menguatkan = يقوّي، membersihkan = ينضّف.
+      ar: membuat = يصنع، وmenguatkan = يقوّي، وmembersihkan = ينظّف.
+      en: membuat = make; menguatkan = strengthen; membersihkan = clean.
+    words: [membuat]
 dialogue:
   title: Masak sayur bening
   lines:
@@ -225,6 +239,11 @@ new_words:
     ar_eg: يسخّن — من panas
     ar: يسخّن — من panas
     en: to heat — from panas
+  - word: membuat
+    pos: verb
+    ar_eg: يعمل / يحضّر (membuat teh = يعمل شاي)
+    ar: يصنع / يُعِدّ
+    en: to make
 review:
   status: draft
   verified: false

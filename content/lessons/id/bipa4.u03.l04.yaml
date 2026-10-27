@@ -154,7 +154,7 @@ exercises:
       - Patung itu terlihat seperti manusia.
       - Patung-patung itu terlihat bagaikan manusia.
       - Patung-patung itu tampak seperti manusia.
-    words: [patung]
+    words: [patung, manusia]
   - id: e08
     type: speaking
     text: Tamu di upacara itu tak terhitung, dan harga kerbaunya selangit!
@@ -163,6 +163,30 @@ exercises:
       ar: ضيوف تلك المراسم لا يُحصون، وثمن جواميسها باهظ جدًا!
       en: The guests at that ceremony were countless, and the buffalo cost a fortune!
     words: [tak terhitung, selangit]
+  - id: e09
+    type: multiple_choice
+    question: Tau-tau adalah patung kayu seperti manusia.
+    question_meaning:
+      ar_eg: يعني إيه tau-tau؟
+      ar: ما الـtau-tau؟
+      en: What is a tau-tau?
+    options: ['Patung kayu seperti manusia.', 'Rumah adat Toraja.', 'Makam di tebing.']
+    answer: 0
+    explain:
+      ar_eg: manusia = إنسان. tau-tau تماثيل خشب شبه الناس.
+      ar: manusia = إنسان، وtau-tau تماثيل خشبية تشبه البشر.
+      en: manusia = human; tau-tau are wooden figures that look like people.
+    words: [manusia, patung]
+  - id: e10
+    type: listen
+    text: Tau-tau dibuat mirip manusia yang sudah meninggal.
+    options: ['Tau-tau dibuat mirip manusia yang sudah meninggal.', 'Tau-tau dibuat mirip kerbau yang sudah mati.', 'Tau-tau dibuat di tebing yang tinggi.']
+    answer: 0
+    meaning:
+      ar_eg: التاو تاو بيتعمل شبه الإنسان اللي مات.
+      ar: يُصنع التاو تاو على هيئة الإنسان المتوفّى.
+      en: A tau-tau is made to look like the person who has died.
+    words: [manusia]
 dialogue:
   title: Di Londa
   lines:
@@ -213,6 +237,11 @@ new_words:
     ar: قبر / ضريح
     en: grave, tomb
     arabic: مقام
+  - word: manusia
+    pos: noun
+    ar_eg: إنسان / بني آدم
+    ar: إنسان
+    en: human being
 review:
   status: draft
   verified: false

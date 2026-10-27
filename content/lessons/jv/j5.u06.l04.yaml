@@ -46,7 +46,7 @@ exercises:
       ar_eg: إيه الـ piwulang (الحكمة) هنا؟
       ar: ما الـ piwulang (العبرة) هنا؟
       en: What is the piwulang (lesson) here?
-    options: ['Ilmu harus diamalkan.', 'Ilmu cukup dibaca.', 'Ilmu itu mahal.']
+    options: ['Ilmu harus diamalkan.', 'Ilmu dibaca saja.', 'Ilmu itu mahal.']
     answer: 0
     words: [piwulang, ngelmu]
   - id: e02
@@ -82,7 +82,7 @@ exercises:
       en: The lesson is that knowledge must be practised.
     options: [Dumadakan, Biyen, Piwulange]
     answers: [Piwulange]
-    words: [piwulang]
+    words: [piwulang, kudu, dilakoni]
   - id: e05
     type: build_sentence
     source:
@@ -104,7 +104,7 @@ exercises:
       - Piwulange, ilmu kudu dilakoni.
       - Piwulange, ngelmu iku kudu dilakoni.
       - Piwulange, ngelmu kudu ditindakake.
-    words: [piwulang]
+    words: [piwulang, kudu, dilakoni]
   - id: e07
     type: translate
     direction: from_target
@@ -142,6 +142,20 @@ exercises:
       ar: معنى هذه الأغنية أن العلم يُنال بالعمل.
       en: This song means that knowledge is attained through practice.
     words: [tegese, ngelmu]
+  - id: e10
+    type: multiple_choice
+    question: Ngelmu kudu dilakoni.
+    question_meaning:
+      ar_eg: معنى الجملة دي إيه؟
+      ar: ما معنى هذه الجملة؟
+      en: What does this sentence mean?
+    options: ['العلم لازم يتعمل بيه.', 'العلم يكفي يتقري.', 'العلم مالوش لازمة.']
+    answer: 0
+    explain:
+      ar_eg: kudu = لازم (harus)، وdilakoni = يتعمل بيه، من laku (العمل / السلوك).
+      ar: kudu = يجب (harus)، وdilakoni = يُعمَل به، من laku.
+      en: kudu = must (harus); dilakoni = is put into practice, from laku (conduct).
+    words: [kudu, dilakoni]
 dialogue:
   title: Mohamed nerangake Lir-ilir
   lines:
@@ -181,6 +195,16 @@ new_words:
     ar_eg: درس / حكمة (ajaran)
     ar: عبرة / تعليم (ajaran)
     en: teaching, lesson = ajaran
+  - word: kudu
+    pos: particle
+    ar_eg: لازم
+    ar: يجب
+    en: must = harus
+  - word: dilakoni
+    pos: verb
+    ar_eg: يتعمل بيه، يتطبّق
+    ar: يُعمَل به، يُطبَّق
+    en: to be practised, carried out = dijalani
 review:
   status: draft
   verified: false

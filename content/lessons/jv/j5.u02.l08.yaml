@@ -71,7 +71,7 @@ exercises:
       en: What is Lawang Sewu today?
     options: [kantor perusahaan sepur, sekolah, museum lan papan wisata]
     answer: 2
-    words: [misuwur]
+    words: [misuwur, sekolah]
   - id: e04
     type: match_pairs
     pairs:
@@ -151,6 +151,30 @@ exercises:
       - Gedhong kasebut saiki dadi museum.
     distractors: [sinebut, lawang]
     words: [kasebut]
+  - id: e09
+    type: fill_blank
+    sentence: Saben esuk Bima lunga ___.
+    meaning:
+      ar_eg: كل يوم الصبح بيما بيروح المدرسة.
+      ar: كل صباح يذهب بيما إلى المدرسة.
+      en: Every morning Bima goes to school.
+    options: [sekolah, lawang, sewu]
+    answers: [sekolah]
+    words: [sekolah]
+  - id: e10
+    type: multiple_choice
+    question: Bima sekolah ing Semarang.
+    question_meaning:
+      ar_eg: معنى الجملة دي إيه؟
+      ar: ما معنى هذه الجملة؟
+      en: What does this sentence mean?
+    options: ['بيما بيدرس في سمارانج.', 'بيما بيشتغل في سمارانج.', 'بيما بيبيع في سمارانج.']
+    answer: 0
+    explain:
+      ar_eg: 'sekolah زي الإندونيسي: مدرسة، وكمان «يدرس في مدرسة».'
+      ar: 'sekolah كالإندونيسية: مدرسة، وأيضًا «يدرس».'
+      en: 'sekolah as in Indonesian: school, and also ''to go to school''.'
+    words: [sekolah]
 dialogue:
   title: Lawange pira?
   lines:
@@ -195,6 +219,11 @@ new_words:
     ar_eg: مكتب / مقرّ
     ar: مكتب / مقرّ
     en: office = kantor
+  - word: sekolah
+    pos: noun
+    ar_eg: مدرسة؛ يدرس
+    ar: مدرسة
+    en: school; to go to school = sekolah
 review:
   status: draft
   verified: false

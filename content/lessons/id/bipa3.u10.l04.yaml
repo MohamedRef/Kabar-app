@@ -37,7 +37,7 @@ exercises:
       ar_eg: 'هترجع لومبوك، يعني محتاج ذهاب وعودة: pulang-pergi.'
       ar: 'ستعود إلى لومبوك، فتحتاج تذكرة ذهاب وإياب: pulang-pergi.'
       en: 'You''re coming back to Lombok, so you need a return: pulang-pergi.'
-    words: [pulang-pergi]
+    words: [pulang-pergi, kembali]
   - id: e02
     type: listen
     text: Maaf, feri jam sepuluh sudah penuh.
@@ -98,7 +98,7 @@ exercises:
       en: I'm not coming back to Lombok. Just a one-way ticket, please.
     options: [pulang-pergi, penuh, sekali jalan]
     answers: [sekali jalan]
-    words: [sekali jalan]
+    words: [sekali jalan, kembali]
   - id: e06
     type: build_sentence
     source:
@@ -135,12 +135,12 @@ exercises:
     words: [keberangkatan, feri]
   - id: e09
     type: speaking
-    text: Satu tiket pulang-pergi ke Sumbawa, untuk minggu depan.
+    text: Satu tiket pulang-pergi ke Sumbawa. Saya kembali minggu depan.
     meaning:
-      ar_eg: تذكرة ذهاب وعودة واحدة لسومباوا، للأسبوع الجاي.
-      ar: تذكرة ذهاب وإياب واحدة إلى سومباوا، للأسبوع القادم.
-      en: One return ticket to Sumbawa, for next week.
-    words: [pulang-pergi, minggu depan]
+      ar_eg: تذكرة ذهاب وعودة واحدة لسومباوا. هرجع الأسبوع الجاي.
+      ar: تذكرة ذهاب وإياب واحدة إلى سومباوا. سأعود الأسبوع القادم.
+      en: One return ticket to Sumbawa. I'm coming back next week.
+    words: [pulang-pergi, minggu depan, kembali]
 dialogue:
   title: Di loket Pelabuhan Kayangan
   lines:
@@ -195,6 +195,11 @@ new_words:
     ar_eg: القيام / ميعاد الطلوع
     ar: المغادرة
     en: departure
+  - word: kembali
+    pos: verb
+    ar_eg: يرجع
+    ar: يعود
+    en: to return, come back
 review:
   status: draft
   verified: false
