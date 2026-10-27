@@ -77,6 +77,42 @@ arabic_bridge:
   en: sudah ≈ قد / «خلاص», belum ≈ لمّا / «لسه», sedang ≈ Egyptian «بـ», akan ≈ «هـ» / سـ — particles before the verb, as in Arabic.
 tags: [aspect, time, verb]
 see_also: [id.aspect.pernah, id.time.sequence, id.negation.tidak-bukan]
+cues:
+  - match: "sudah|udah|dah"
+    note:
+      ar_eg: "sudah = خلاص حصل (already)؛ بتيجي قبل الفعل."
+      ar: "sudah = قد حدث (already)، وتأتي قبل الفعل."
+      en: "sudah = already: the action has happened."
+  - match: "belum"
+    note:
+      ar_eg: "belum = لسه ما حصلش، بس متوقع يحصل."
+      ar: "belum = لم يحدث بعد، ويُتوقَّع حدوثه."
+      en: "belum = not yet (but expected to happen)."
+  - match: "sedang"
+    note:
+      ar_eg: "sedang + فعل = بيعمل دلوقتي (عمّال)."
+      ar: "sedang + فعل = يفعل الآن."
+      en: "sedang + verb = is doing right now."
+  - match: "lagi"
+    note:
+      ar_eg: "lagi قبل فعل = بيعمل دلوقتي (عامية زي sedang)؛ بعد كلمة = تاني / كمان."
+      ar: "lagi قبل الفعل = يفعل الآن (عامية)، وبعد الكلمة = مرة أخرى / أيضًا."
+      en: "lagi before a verb = currently (casual sedang); after a word = again / more."
+  - match: "akan"
+    note:
+      ar_eg: "akan = هـ (مستقبل): akan pergi = هيروح."
+      ar: "akan = سـ (المستقبل): akan pergi = سيذهب."
+      en: "akan = will (future)."
+  - match: "masih"
+    note:
+      ar_eg: "masih = لسه (لسه بيعمل / لسه موجود)."
+      ar: "masih = ما زال."
+      en: "masih = still."
+  - match: "baru"
+    note:
+      ar_eg: "baru قبل فعل = لسه حالًا (just)؛ بعد اسم = جديد."
+      ar: "baru قبل الفعل = للتو، وبعد الاسم = جديد."
+      en: "baru before a verb = just (now); after a noun = new."
 review:
   status: draft
   verified: false

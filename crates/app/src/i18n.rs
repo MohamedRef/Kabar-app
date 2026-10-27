@@ -513,6 +513,16 @@ pub enum Msg {
     GrammarInSentence,
     NoGrammarMatched,
     FoundBy,
+    GrammarInText,
+    GrammarInTextHint,
+    GrammarForWord,
+    GrammarLearned,
+    GrammarAtLevel,
+    GrammarNotYet,
+    GrammarLearnedIn,
+    GrammarTaughtIn,
+    GrammarOpenLesson,
+    GrammarReadMore,
     CommonMistake,
     ExplainWord,
     UrlFetching,
@@ -541,6 +551,7 @@ pub enum Msg {
     TranslationUnreachable,
     TranslationTryAgain,
     TranslationRetry,
+    ReaderWriteFailed,
     // Unggah-Ungguh Simulator (M11)
     UnggahTitle,
     UnggahBlurb,
@@ -1957,6 +1968,11 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (TranslationRetry, ArEg) => "جرّب تاني",
         (TranslationRetry, Ar) => "أعد المحاولة",
         (TranslationRetry, En) => "Try again",
+        (ReaderWriteFailed, ArEg) => "معرفتش أحفظ ده دلوقتي، ومفيش حاجة اتغيّرت. جرّب تاني بعد شوية.",
+        (ReaderWriteFailed, Ar) => "تعذّر الحفظ الآن، ولم يتغيّر شيء. حاول مجددًا بعد قليل.",
+        (ReaderWriteFailed, En) => {
+            "Couldn't save that just now, so nothing changed. Please try again in a moment."
+        }
         (ReaderIntro, ArEg) => "الصق أي كلام إندونيسي أو جاوي، أو افتح سكرين شوت، وكل كلمة هتبقى ليها شرح.",
         (ReaderIntro, Ar) => "الصق أي نص إندونيسي أو جاوي، أو افتح لقطة شاشة، وستجد شرحًا لكل كلمة.",
         (ReaderIntro, En) => {
@@ -2195,6 +2211,40 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (FoundBy, ArEg) => "لقيتها من:",
         (FoundBy, Ar) => "وُجدت عبر:",
         (FoundBy, En) => "Spotted by:",
+        (GrammarInText, ArEg) => "القواعد اللي في النص",
+        (GrammarInText, Ar) => "القواعد في هذا النص",
+        (GrammarInText, En) => "Grammar in this text",
+        (GrammarInTextHint, ArEg) => {
+            "كبر لقاها في النص من غير نت. اللي اتعلمته الأول، واللي لسه جاي متعلّم عليه."
+        }
+        (GrammarInTextHint, Ar) => "وجدها كبر في النص دون اتصال. ما تعلّمتَه أولًا، وما لم يأتِ بعد عليه علامة.",
+        (GrammarInTextHint, En) => {
+            "Spotted offline. What you've learned comes first; what's still ahead is marked."
+        }
+        (GrammarForWord, ArEg) => "القاعدة هنا",
+        (GrammarForWord, Ar) => "القاعدة هنا",
+        (GrammarForWord, En) => "Grammar here",
+        (GrammarLearned, ArEg) => "اتعلمتها",
+        (GrammarLearned, Ar) => "تعلّمتَها",
+        (GrammarLearned, En) => "Learned",
+        (GrammarAtLevel, ArEg) => "في مستواك",
+        (GrammarAtLevel, Ar) => "في مستواك",
+        (GrammarAtLevel, En) => "At your level",
+        (GrammarNotYet, ArEg) => "لسه ماوصلتلهاش",
+        (GrammarNotYet, Ar) => "لم تُدرَّس بعد",
+        (GrammarNotYet, En) => "Not taught yet",
+        (GrammarLearnedIn, ArEg) => "اتعلمتها في درس",
+        (GrammarLearnedIn, Ar) => "تعلّمتَها في درس",
+        (GrammarLearnedIn, En) => "Learned in",
+        (GrammarTaughtIn, ArEg) => "هتيجي في درس",
+        (GrammarTaughtIn, Ar) => "تأتي في درس",
+        (GrammarTaughtIn, En) => "Taught in",
+        (GrammarOpenLesson, ArEg) => "افتح الدرس",
+        (GrammarOpenLesson, Ar) => "افتح الدرس",
+        (GrammarOpenLesson, En) => "Open lesson",
+        (GrammarReadMore, ArEg) => "الشرح كله",
+        (GrammarReadMore, Ar) => "الشرح الكامل",
+        (GrammarReadMore, En) => "Full explanation",
         (CommonMistake, ArEg) => "غلطة شائعة",
         (CommonMistake, Ar) => "خطأ شائع",
         (CommonMistake, En) => "Common mistake",

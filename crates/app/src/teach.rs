@@ -99,6 +99,7 @@ pub fn TeachScreen() -> Element {
     let db = use_context::<Db>();
     let ai = use_context::<Ai>();
     let inbox = use_context::<TeachInbox>();
+    let words = use_context::<crate::annotated::Words>();
     let engine = use_hook(|| Rc::new(Engine::default()));
 
     let mut lang = use_signal(|| Lang::Id);
@@ -131,6 +132,7 @@ pub fn TeachScreen() -> Element {
         move |entry: &TaughtEntry| {
             if db.0.borrow_mut().save_taught(entry).is_ok() {
                 entries.set(db.0.borrow().taught_entries().unwrap_or_default());
+                words.refresh(&db);
             }
         }
     };
@@ -347,6 +349,7 @@ pub fn TeachScreen() -> Element {
                     move |e: TaughtEntry| {
                         if db.0.borrow_mut().delete_taught(&e.row_id()).is_ok() {
                             entries.set(db.0.borrow().taught_entries().unwrap_or_default());
+                            words.refresh(&db);
                         }
                         current.set(None);
                     }
