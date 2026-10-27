@@ -12,17 +12,17 @@ slides:
       ar_eg: |
         guru = مدرّس، dokter = دكتور، penerjemah = مترجم: Aku penerjemah.
         pinter = شاطر. tuwa = كبير في السن، enom = صغير، شاب.
-        arek = واد، ابن البلد (ومنها rek!): arek Suroboyo = واد من سورابايا.
+        bocah = عيل، واد (ومنها cah!): bocah Jogja = واد من يوجيا.
         asli = أصلي: Aku wong Mesir asli = أنا مصري أصلي.
       ar: |
         guru = مدرّس، dokter = طبيب، penerjemah = مترجم: Aku penerjemah.
         pinter = ماهر، ذكي. tuwa = مسنّ، enom = شابّ.
-        arek = فتى، ابن البلد (ومنها rek!): arek Suroboyo = فتى من سورابايا.
+        bocah = ولد، فتى (ومنها cah!): bocah Jogja = فتى من يوجيا.
         asli = أصيل، أصلي: Aku wong Mesir asli = أنا مصري أصيل.
       en: |
         guru = teacher, dokter = doctor, penerjemah = translator: Aku penerjemah.
         pinter = clever. tuwa = old, enom = young.
-        arek = kid, local guy (that's where rek! comes from): arek Suroboyo = a Surabaya lad.
+        bocah = kid, lad (that's where cah! comes from): bocah Jogja = a Jogja lad.
         asli = original, born and bred: Aku wong Mesir asli = I'm Egyptian born and bred.
     examples:
       - text: Aku penerjemah saka Mesir.
@@ -33,10 +33,10 @@ slides:
         ar_eg: هو مدرّس لغة جاوية.
         ar: هو مدرّس للغة الجاوية.
         en: He's a Javanese teacher.
-      - text: Cak Heru arek Suroboyo asli.
-        ar_eg: تشاك هيرو ابن سورابايا أصلي.
-        ar: تشاك هيرو ابن سورابايا الأصيل.
-        en: Cak Heru is a true Surabaya lad.
+      - text: Mas Heru bocah Jogja asli.
+        ar_eg: ماس هيرو ابن يوجيا أصلي.
+        ar: ماس هيرو ابن يوجيا الأصيل.
+        en: Mas Heru is a true Jogja lad.
 exercises:
   - id: e01
     type: match_pairs
@@ -73,11 +73,11 @@ exercises:
         ar_eg: أصلي
         ar: أصيل
         en: original, true
-      - text: arek
+      - text: bocah
         ar_eg: واد، ابن البلد
         ar: فتى، ابن البلد
         en: kid, lad
-    words: [tuwa, enom, asli, arek]
+    words: [tuwa, enom, asli, bocah]
   - id: e03
     type: listen
     text: Aku penerjemah saka Mesir.
@@ -90,14 +90,14 @@ exercises:
     words: [penerjemah, guru, dokter]
   - id: e04
     type: fill_blank
-    sentence: Cak Heru arek Suroboyo ___.
+    sentence: Mas Heru bocah Jogja ___.
     meaning:
-      ar_eg: تشاك هيرو ابن سورابايا ___.
-      ar: تشاك هيرو ابن سورابايا ___.
-      en: Cak Heru is a ___ Surabaya lad.
+      ar_eg: ماس هيرو ابن يوجيا ___.
+      ar: ماس هيرو ابن يوجيا ___.
+      en: Mas Heru is a ___ Jogja lad.
     options: [asli, tuwa, pinter]
     answers: [asli]
-    words: [asli, tuwa, pinter, arek]
+    words: [asli, tuwa, pinter, bocah]
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -113,21 +113,21 @@ exercises:
     words: [dokter, guru]
   - id: e06
     type: fill_blank
-    sentence: Wong ___ lan arek enom.
+    sentence: Wong ___ lan bocah enom.
     meaning:
       ar_eg: ناس ___ وولاد صغيرين.
       ar: كبار ___ وفتيان شبّان.
       en: ___ people and young lads.
     options: [tuwa, asli, guru]
     answers: [tuwa]
-    words: [tuwa, enom, arek, asli]
+    words: [tuwa, enom, bocah, asli]
   - id: e07
     type: multiple_choice
     question_meaning:
       ar_eg: «إنت شاطر يا جدع!» بالجاوي؟
       ar: كيف تقول «أنت ماهر يا صاحبي!» بالجاوية؟
       en: '"You''re clever, mate!" in Javanese?'
-    options: ['Kowe pinter, rek!', 'Kowe tuwa, rek!', 'Kowe asli, rek!']
+    options: ['Kowe pinter, cah!', 'Kowe tuwa, cah!', 'Kowe asli, cah!']
     answer: 0
     explain:
       ar_eg: pinter = شاطر. tuwa = كبير في السن، asli = أصلي.
@@ -146,12 +146,12 @@ exercises:
   - id: e09
     type: translate
     direction: from_target
-    source_text: Mas Yudha arek enom saka Suroboyo.
+    source_text: Mas Yudha bocah enom saka Jogja.
     answers_meaning:
-      ar_eg: [ماس يودا واد صغير من سورابايا, ماس يودا شاب من سورابايا]
-      ar: [ماس يودا شابّ من سورابايا, ماس يودا فتى شابّ من سورابايا]
-      en: [Mas Yudha is a young lad from Surabaya, Mas Yudha is a young guy from Surabaya]
-    words: [arek, enom]
+      ar_eg: [ماس يودا واد صغير من يوجيا, ماس يودا شاب من يوجيا]
+      ar: [ماس يودا شابّ من يوجيا, ماس يودا فتى شابّ من يوجيا]
+      en: [Mas Yudha is a young lad from Jogja, Mas Yudha is a young guy from Jogja]
+    words: [bocah, enom]
   - id: e10
     type: speaking
     text: Aku penerjemah, aku sinau basa Jawa.
@@ -173,10 +173,10 @@ dialogue:
       ar: لا، أنا مترجم من مصر.
       en: No, I'm a translator from Egypt.
     - speaker: Mas Yudha
-      text: Wah, pinter! Aku mahasiswa, arek Suroboyo asli.
-      ar_eg: واو، شاطر! أنا طالب جامعة، ابن سورابايا أصلي.
-      ar: رائع، أنت ماهر! أنا طالب جامعي، ابن سورابايا الأصيل.
-      en: Wow, clever! I'm a student, a true Surabaya lad.
+      text: Wah, pinter! Aku mahasiswa, bocah Jogja asli.
+      ar_eg: واو، شاطر! أنا طالب جامعة، ابن يوجيا أصلي.
+      ar: رائع، أنت ماهر! أنا طالب جامعي، ابن يوجيا الأصيل.
+      en: Wow, clever! I'm a student, a true Jogja lad.
     - speaker: Mohamed
       text: Bapakmu dokter, ya?
       ar_eg: أبوك دكتور، صح؟
@@ -223,11 +223,11 @@ new_words:
     ar_eg: أصلي
     ar: أصيل، أصلي
     en: original, born and bred
-  - word: arek
+  - word: bocah
     pos: noun
-    ar_eg: واد، ابن البلد
-    ar: فتى، ابن البلد
-    en: kid, lad (Surabaya)
+    ar_eg: عيل، واد
+    ar: ولد، فتى
+    en: kid, lad (= anak)
 review:
   status: draft
   verified: false
