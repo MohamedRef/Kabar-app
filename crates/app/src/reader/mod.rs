@@ -367,7 +367,6 @@ pub fn Reader() -> Element {
     let voice = *st.voice.read();
 
     rsx! {
-        style { {grammar::CSS} }
         div { class: "reader",
             div { class: "card reader-bar",
                 div { class: "row",
