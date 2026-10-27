@@ -155,6 +155,9 @@ fn SignedIn(status: CloudStatus) -> Element {
             span { class: "label", "{ui.t(Msg::CloudSignedInAs)}" }
             bdi { class: "latin", "{email}" }
         }
+        if status.sync == SyncState::Offline {
+            crate::misc_art::Picture { art: crate::misc_art::Art::Offline, class: "empty-art small" }
+        }
         div { class: "field row",
             if let Some(msg) = sync_msg(status.sync) {
                 span {
