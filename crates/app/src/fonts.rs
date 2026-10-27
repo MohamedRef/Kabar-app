@@ -52,9 +52,18 @@ const FACES: [(&str, &str, &str, &[u8]); 6] = [
     ("Amiri", "400", ARABIC, font!("amiri/amiri-arabic-400-normal.woff2")),
 ];
 
+/// Whether this build bundles the Arabic faces. Not on desktop Linux: there
+/// WebKitGTK draws any word carrying tashkeel (أهلاً، قولّي، أصلاً) smaller
+/// and above the baseline when an Arabic web font has a `unicode-range`, and
+/// next to a fallback-font run even without one (#227). Arabic falls back to
+/// the system's Noto Arabic, which renders evenly. Android's WebView and the
+/// Mac keep Plex and Amiri.
+const ARABIC_FACES: bool = !cfg!(target_os = "linux");
+
 pub fn css() -> String {
     FACES
         .iter()
+        .filter(|(_, _, range, _)| ARABIC_FACES || *range != ARABIC)
         .map(|(family, weight, range, bytes)| {
             let b64 = base64::engine::general_purpose::STANDARD.encode(bytes);
             format!(
@@ -72,6 +81,7 @@ mod tests {
         for (family, _, _, bytes) in super::FACES {
             assert_eq!(&bytes[..4], b"wOF2", "{family}");
         }
-        assert_eq!(super::css().matches("@font-face").count(), 6);
+        let arabic = if super::ARABIC_FACES { 4 } else { 0 };
+        assert_eq!(super::css().matches("@font-face").count(), 2 + arabic);
     }
 }

@@ -1,0 +1,232 @@
+schema: kabar.lesson/v1
+id: j1.u03.l06
+language: jv
+title: Status WA
+can_do:
+  ar_eg: تقرا حالات واتساب صحابك المكتوبة بالشات الجاوي وترد عليهم.
+  ar: أن تقرأ حالات واتساب أصدقائك المكتوبة بأسلوب الدردشة الجاوية وتردّ عليها.
+  en: Read friends' chat statuses and reply.
+slides:
+  - title: Status WA bengi
+    grammar: jv.chat.normalize
+    body:
+      ar_eg: |
+        بالليل في سورابايا، فتحت الواتساب ولقيت حالات تلات صحاب. اقراها بالتلات خطوات بتوعك:
+        ١) رجّع الإملا: ws = wis، moco = maca، ng = nang، arp = arep، و2 بتكرر الكلمة: kanca2 = kanca-kanca.
+        ٢) دوّر على كلمات الوقت: wis، durung، lagi، isih، arep.
+        ٣) شوف الكلمات الصغيرة: جاوي ولا إندونيسي؟
+        tekan = وصل (sampai)، اتعلمتها مع «Wis tekan?».
+      ar: |
+        ليلًا في سورابايا، فتحت واتساب فوجدت حالات ثلاثة أصدقاء. اقرأها بخطواتك الثلاث:
+        ١) أعد الإملاء: ws = wis، وmoco = maca، وng = nang، وarp = arep، والرقم 2 يكرّر الكلمة: kanca2 = kanca-kanca.
+        ٢) ابحث عن كلمات الزمن: wis وdurung وlagi وisih وarep.
+        ٣) انظر إلى الكلمات الصغيرة: جاوية أم إندونيسية؟
+        tekan = وصل (sampai)، وقد عرفتها في «Wis tekan?».
+      en: |
+        It's evening in Surabaya. You open WhatsApp and find three friends' statuses. Read them with your three steps:
+        1) Restore the spelling: ws = wis, moco = maca, ng = nang, arp = arep, and 2 doubles a word: kanca2 = kanca-kanca.
+        2) Find the time words: wis, durung, lagi, isih, arep.
+        3) Check the small words: Javanese or Indonesian?
+        tekan = arrive (sampai), as in "Wis tekan?".
+    examples:
+      - text: ws tekan Tunjungan! lagi mangan sate karo kanca2
+        ar_eg: (Cak Heru) وصلت تونجونجان! باكل سَتيه مع الصحاب. = Wis tekan Tunjungan! Lagi mangan sate karo kanca-kanca.
+        ar: (Cak Heru) وصلت إلى تونجونجان! آكل الساتيه مع الأصدقاء. = Wis tekan Tunjungan! Lagi mangan sate karo kanca-kanca.
+        en: (Cak Heru) Made it to Tunjungan! Having satay with friends. = Wis tekan Tunjungan! Lagi mangan sate karo kanca-kanca.
+      - text: durung turu, isih moco buku
+        ar_eg: (Mbak Rara) لسه ما نمتش، لسه بقرا كتاب. = Durung turu, isih maca buku.
+        ar: (Mbak Rara) لم أنم بعد، ما زلت أقرأ كتابًا. = Durung turu, isih maca buku.
+        en: (Mbak Rara) Not asleep yet, still reading a book. = Durung turu, isih maca buku.
+      - text: aku mau ke Tunjungan. udah makan belum?
+        ar_eg: (Dimas) أنا رايح تونجونجان. كلتوا ولا لسه؟ (ده إندونيسي عامي!)
+        ar: (Dimas) أنا ذاهب إلى تونجونجان. هل أكلتم أم ليس بعد؟ (هذه إندونيسية عامّية!)
+        en: (Dimas) I'm heading to Tunjungan. Eaten yet? (This one is casual Indonesian!)
+exercises:
+  - id: e01
+    type: multiple_choice
+    question: ws tekan Tunjungan! lagi mangan sate karo kanca2
+    question_meaning:
+      ar_eg: دي حالة Cak Heru. بيعمل إيه دلوقتي؟
+      ar: هذه حالة Cak Heru. ماذا يفعل الآن؟
+      en: This is Cak Heru's status. What is he doing now?
+    options: ["Mangan sate.", "Maca buku.", "Turu."]
+    answer: 0
+    explain:
+      ar_eg: lagi mangan sate = بياكل سَتيه دلوقتي. lagi = sedang.
+      ar: lagi mangan sate = يأكل الساتيه الآن، وlagi = sedang.
+      en: lagi mangan sate = he's eating satay right now. lagi = sedang.
+    words: [lagi, mangan, tekan]
+  - id: e02
+    type: multiple_choice
+    question: durung turu, isih moco buku
+    question_meaning:
+      ar_eg: دي حالة Mbak Rara. أنهي جملة صح؟
+      ar: هذه حالة Mbak Rara. أيّ جملة صحيحة؟
+      en: This is Mbak Rara's status. Which sentence is true?
+    options: ["Rara wis turu.", "Rara arep mangan.", "Rara isih maca buku."]
+    answer: 2
+    explain:
+      ar_eg: durung turu = لسه ما نامتش، وisih moco = لسه بتقرا (moco = maca).
+      ar: durung turu = لم تنم بعد، وisih moco = ما زالت تقرأ (moco = maca).
+      en: durung turu = not asleep yet, isih moco = still reading (moco = maca).
+    words: [durung, isih, maca]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي واحد من الصحاب كتب حالته بالإندونيسي مش بالجاوي؟
+      ar: أيّ الأصدقاء كتب حالته بالإندونيسية لا بالجاوية؟
+      en: Which friend wrote their status in Indonesian, not Javanese?
+    options: [Cak Heru, Dimas, Mbak Rara]
+    answer: 1
+    explain:
+      ar_eg: mau ke وudah وbelum كلها إندونيسي. بالجاوي هتبقى arep nang وwis وdurung.
+      ar: "mau ke وudah وbelum كلها إندونيسية، وبالجاوية: arep nang وwis وdurung."
+      en: mau ke, udah and belum are Indonesian. In Javanese they'd be arep nang, wis and durung.
+    words: [arep, wis, durung]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: ws
+        ar_eg: wis (خلاص / بالفعل)
+        ar: wis (قد / بالفعل)
+        en: wis (already)
+      - text: moco
+        ar_eg: maca (يقرا)
+        ar: maca (يقرأ)
+        en: maca (read)
+      - text: arp
+        ar_eg: arep (هـ… / ناوي)
+        ar: arep (سوف)
+        en: arep (going to)
+      - text: ng
+        ar_eg: nang (لـ / في)
+        ar: nang (إلى / في)
+        en: nang (to / at)
+      - text: kanca2
+        ar_eg: kanca-kanca (صحاب)
+        ar: kanca-kanca (أصدقاء)
+        en: kanca-kanca (friends)
+    words: [wis, maca, arep, nang, kanca]
+  - id: e05
+    type: listen
+    text: Durung turu, isih maca buku.
+    options: ["Arep turu, wis maca buku.", "Durung turu, isih maca buku.", "Durung mangan, isih maca buku."]
+    answer: 1
+    meaning:
+      ar_eg: لسه ما نمتش، لسه بقرا كتاب.
+      ar: لم أنم بعد، ما زلت أقرأ كتابًا.
+      en: Not asleep yet, still reading a book.
+    words: [durung, turu, isih]
+  - id: e06
+    type: translate
+    direction: from_target
+    source_text: ws tekan Tunjungan! lagi mangan sate karo kanca2
+    answers_meaning:
+      ar_eg: ["وصلت تونجونجان! باكل سَتيه مع الصحاب.", "وصلت تونجونجان، باكل ساتيه مع صحابي", "وصلت تونجونجان! بناكل سَتيه مع الصحاب"]
+      ar: ["وصلت إلى تونجونجان! آكل الساتيه مع الأصدقاء.", "وصلت إلى تونجونجان، آكل الساتيه مع أصدقائي"]
+      en: ["Made it to Tunjungan! Having satay with friends.", "Arrived at Tunjungan! Eating satay with friends.", "I've arrived at Tunjungan, I'm eating satay with my friends.", "Got to Tunjungan! Having satay with my friends."]
+    explain:
+      ar_eg: ws = wis، وkanca2 = kanca-kanca (صحاب). tekan = وصل.
+      ar: ws = wis، وkanca2 = kanca-kanca (أصدقاء)، وtekan = وصل.
+      en: ws = wis, kanca2 = kanca-kanca (friends). tekan = arrive.
+    words: [wis, lagi, mangan, kanca, tekan]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: "قول حالة Dimas بالجاوي: «أنا رايح تونجونجان. كلتوا ولا لسه؟»"
+      ar: "قل حالة Dimas بالجاوية: «أنا ذاهب إلى تونجونجان. هل أكلتم أم ليس بعد؟»"
+      en: "Say Dimas's status in Javanese: \"I'm heading to Tunjungan. Eaten yet?\""
+    answer: Aku arep nang Tunjungan. Wis mangan durung?
+    distractors: [mau, ke, udah]
+    explain:
+      ar_eg: mau ke ← arep nang، udah ← wis، belum ← durung، makan ← mangan.
+      ar: mau ke ← arep nang، وudah ← wis، وbelum ← durung، وmakan ← mangan.
+      en: mau ke → arep nang, udah → wis, belum → durung, makan → mangan.
+    words: [arep, nang, wis, mangan, durung]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "رد على Cak Heru بالجاوي: «استنى، أنا رايح تونجونجان!»"
+      ar: "ردّ على Cak Heru بالجاوية: «انتظر، أنا ذاهب إلى تونجونجان!»"
+      en: "Reply to Cak Heru in Javanese: \"Hold on, I'm heading to Tunjungan!\""
+    answers:
+      - Sek, aku arep nang Tunjungan!
+      - Sek, aku arep nang Tunjungan.
+      - Sek, aku arep nang Tunjungan
+      - Sek aku arep nang Tunjungan
+      - Sek, aku arep neng Tunjungan!
+      - Sek, aku arep neng Tunjungan.
+      - Sek, arep nang Tunjungan!
+      - Sik, aku arep nang Tunjungan!
+      - sek, aku arp ng Tunjungan
+      - Sek, aku kate nang Tunjungan!
+    explain:
+      ar_eg: sek = استنى، arep nang = رايح لـ. في الشات ينفع «sek, aku arp ng Tunjungan».
+      ar: sek = انتظر، وarep nang = ذاهب إلى، وفي الدردشة يصحّ «sek, aku arp ng Tunjungan».
+      en: sek = hold on, arep nang = heading to. In a chat, "sek, aku arp ng Tunjungan" works too.
+    words: [sek, arep, nang]
+  - id: e09
+    type: speaking
+    text: Mbak Rara durung turu, isih maca buku.
+    meaning:
+      ar_eg: Mbak Rara لسه ما نامتش، لسه بتقرا كتاب.
+      ar: لم تنم Mbak Rara بعد، ما زالت تقرأ كتابًا.
+      en: Mbak Rara isn't asleep yet; she's still reading a book.
+    words: [durung, isih, maca]
+  - id: e10
+    type: multiple_choice
+    question: Rara wis tekan omah.
+    question_meaning:
+      ar_eg: رارا فين دلوقتي؟
+      ar: أين رارا الآن؟
+      en: Where is Rara now?
+    options: [Wis nang omah., Isih nang Tunjungan., Durung tekan.]
+    answer: 0
+    explain:
+      ar_eg: tekan = وصل (sampai). wis tekan omah = وصلت البيت.
+      ar: tekan = وصل (sampai)، وwis tekan omah = وصلت إلى البيت.
+      en: tekan = arrive (sampai). wis tekan omah = she's got home.
+    words: [tekan, wis, omah]
+dialogue:
+  title: Bengi nang Tunjungan
+  lines:
+    - speaker: Mohamed
+      text: Cak Heru! Aku wis tekan.
+      ar_eg: يا Cak Heru! أنا وصلت.
+      ar: يا Cak Heru! لقد وصلت.
+      en: Cak Heru! I'm here.
+    - speaker: Cak Heru
+      text: Ayo mangan sate, rek! Kowe wis mangan?
+      ar_eg: يلا ناكل سَتيه يا جدع! إنت كلت؟
+      ar: هيّا نأكل الساتيه يا صاحبي! هل أكلت؟
+      en: Come and have satay, mate! Have you eaten?
+    - speaker: Mohamed
+      text: Durung, Cak. Mbak Rara durung turu, isih maca buku.
+      ar_eg: لسه يا Cak. و Mbak Rara لسه ما نامتش، لسه بتقرا.
+      ar: ليس بعد يا Cak. وMbak Rara لم تنم بعد، ما زالت تقرأ.
+      en: Not yet, Cak. Mbak Rara isn't asleep yet; she's still reading.
+    - speaker: Cak Heru
+      text: Dimas piye?
+      ar_eg: وDimas عامل إيه؟
+      ar: وماذا عن Dimas؟
+      en: What about Dimas?
+    - speaker: Mohamed
+      text: Dimas arep nang Tunjungan. Statuse basa Indonesia, Cak!
+      ar_eg: Dimas جاي تونجونجان. حالته بالإندونيسي يا Cak!
+      ar: Dimas قادم إلى تونجونجان. حالته بالإندونيسية يا Cak!
+      en: Dimas is on his way to Tunjungan. His status is in Indonesian, Cak!
+    - speaker: Cak Heru
+      text: Ora apa-apa. Ayo mangan sek, rek!
+      ar_eg: مش مشكلة. يلا ناكل الأول يا جدع!
+      ar: لا بأس. هيّا نأكل أولًا يا صاحبي!
+      en: No problem. Let's eat first, mate!
+new_words:
+  - word: tekan
+    pos: verb
+    ar_eg: يوصل (ws tekan = وصلت)
+    ar: يصل (ws tekan = وصلتُ)
+    en: to arrive, reach (= sampai)
+review:
+  status: draft
+  verified: false
