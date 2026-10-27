@@ -27,6 +27,7 @@ mod play;
 mod pron;
 mod reader;
 mod review;
+mod schedule;
 mod screens;
 mod settings;
 mod sounds;
@@ -326,6 +327,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     use_width_tracking(ui.width, ui.tablet);
     use_cloud(&db, path, ui, link);
     coach::use_clock(coach, db.clone());
+    schedule::use_optimizer(db.clone(), ui, coach);
     use_learner_profile(&db, coach);
     coach::notify::use_local_reminders(&db, coach, ui);
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));

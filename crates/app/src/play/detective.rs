@@ -52,8 +52,14 @@ pub fn Detective() -> Element {
 fn Intro(rule: Signal<Option<String>>, session: Signal<Option<Session>>) -> Element {
     let Ok(data) = content::bridge() else { return rsx! {} };
     let ui = use_context::<Ui>();
+    let mut expanded = use_signal(|| false);
     let current = rule.read().clone();
     let selected: Option<&SoundRule> = current.as_deref().and_then(|id| data.rule(id));
+    // The picker starts with the common shifts; the rest are one tap away.
+    let ids: Vec<&str> = data.rules.iter().map(|r| r.id.as_str()).collect();
+    let shown = logic::picker_rules(&ids, *expanded.read(), current.as_deref());
+    let total = data.rules.len() as u64;
+    let more_label = ui.t(Msg::DetectiveShowAllRules).replace("{n}", &ui.num(total));
 
     rsx! {
         div { class: "card",
@@ -64,7 +70,7 @@ fn Intro(rule: Signal<Option<String>>, session: Signal<Option<Session>>) -> Elem
                     onclick: move |_| rule.set(None),
                     "{ui.t(Msg::DetectiveAllRules)}"
                 }
-                for r in data.rules.iter() {
+                for r in data.rules.iter().filter(|r| shown.contains(&r.id.as_str())) {
                     button {
                         key: "{r.id}",
                         aria_pressed: if current.as_deref() == Some(r.id.as_str()) { "true" } else { "false" },
@@ -72,9 +78,22 @@ fn Intro(rule: Signal<Option<String>>, session: Signal<Option<Session>>) -> Elem
                             let id = r.id.clone();
                             move |_| rule.set(Some(id.clone()))
                         },
-                        span { lang: "ar", "{r.from}" }
-                        span { class: "flip", aria_hidden: "true", " → " }
-                        bdi { class: "latin", "{r.to}" }
+                        RuleShift { from: r.from.clone(), to: r.to.clone() }
+                    }
+                }
+                if shown.len() < ids.len() {
+                    button {
+                        class: "quiet",
+                        aria_expanded: "false",
+                        onclick: move |_| expanded.set(true),
+                        "{more_label}"
+                    }
+                } else if *expanded.read() {
+                    button {
+                        class: "quiet",
+                        aria_expanded: "true",
+                        onclick: move |_| expanded.set(false),
+                        "{ui.t(Msg::DetectiveShowFewerRules)}"
                     }
                 }
             }
@@ -111,6 +130,27 @@ fn Intro(rule: Signal<Option<String>>, session: Signal<Option<Session>>) -> Elem
     }
 }
 
+/// "ف → p": the Arabic side, an arrow that follows the reading direction, and
+/// the Indonesian side. A side that describes rather than spells ("(vowel)",
+/// "(سكون)") comes from the UI text tables in the learner's language.
+#[component]
+fn RuleShift(from: String, to: String) -> Element {
+    let ui = use_context::<Ui>();
+    let from = match logic::rule_placeholder(&from) {
+        Some(msg) => rsx! { span { class: "rule-note", "{ui.t(msg)}" } },
+        None => rsx! { span { class: "ar", lang: "ar", "{from}" } },
+    };
+    let to = match logic::rule_placeholder(&to) {
+        Some(msg) => rsx! { span { class: "rule-note", "{ui.t(msg)}" } },
+        None => rsx! { bdi { class: "latin", lang: "id", dir: "ltr", "{to}" } },
+    };
+    rsx! {
+        {from}
+        span { class: "flip", aria_hidden: "true", " → " }
+        {to}
+    }
+}
+
 /// One sound change: from → to, why, and words that show it.
 #[component]
 fn RuleCard(rule: SoundRule) -> Element {
@@ -119,9 +159,7 @@ fn RuleCard(rule: SoundRule) -> Element {
     rsx! {
         div { class: "card rule-card reveal",
             p { class: "rule-shift",
-                span { class: "ar", lang: "ar", "{rule.from}" }
-                span { class: "flip", aria_hidden: "true", " → " }
-                bdi { class: "latin", lang: "id", "{rule.to}" }
+                RuleShift { from: rule.from.clone(), to: rule.to.clone() }
             }
             p { "{meaning(ui.lang(), &rule.explanation)}" }
             ul { class: "examples",
@@ -187,9 +225,7 @@ fn Rounds(session: Signal<Option<Session>>) -> Element {
                 p { class: "prompt ar", lang: "ar", dir: "rtl", "{round.prompt}" }
                 if let Some(r) = rule {
                     p { class: "muted small",
-                        span { lang: "ar", "{r.from}" }
-                        span { class: "flip", aria_hidden: "true", " → " }
-                        bdi { class: "latin", "{r.to}" }
+                        RuleShift { from: r.from.clone(), to: r.to.clone() }
                     }
                 }
             }

@@ -5,6 +5,7 @@
 use serde::{Deserialize, Serialize};
 
 use crate::locale::UiLanguage;
+use crate::srs::FsrsParams;
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
@@ -57,6 +58,28 @@ impl PronMode {
     pub const ALL: [Self; 3] = [Self::On, Self::Tap, Self::Off];
 }
 
+/// The share of reviews FSRS aims to have remembered, in percent.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(transparent)]
+pub struct RetentionPct(pub u8);
+
+impl RetentionPct {
+    /// Beyond these, FSRS either schedules absurdly often or lets most
+    /// cards slip; a stored value outside is clamped.
+    pub const MIN: u8 = 70;
+    pub const MAX: u8 = 97;
+
+    pub fn as_f32(self) -> f32 {
+        f32::from(self.0.clamp(Self::MIN, Self::MAX)) / 100.0
+    }
+}
+
+impl Default for RetentionPct {
+    fn default() -> Self {
+        Self(90)
+    }
+}
+
 /// How the translation shows under Indonesian and Javanese text outside an
 /// exercise (slides, dialogue, feedback, review backs, transcripts, chats).
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
@@ -86,6 +109,10 @@ pub struct Settings {
     pub sounds_off: bool,
     /// Arabic-script pronunciation next to target-language text.
     pub pronunciation: PronMode,
+    /// FSRS desired retention (Settings → "How firmly to remember words"; 90%).
+    pub desired_retention: RetentionPct,
+    /// FSRS parameters fitted to this learner's reviews, once there are enough.
+    pub fsrs: Option<FsrsParams>,
     /// Translation under target-language text.
     pub translation: TranslationMode,
     /// Word-class and word-part colours are off (on by default).
@@ -100,6 +127,8 @@ pub mod keys {
     pub const WELCOMED: &str = "welcomed";
     pub const SOUNDS_OFF: &str = "sounds_off";
     pub const PRONUNCIATION: &str = "pronunciation";
+    pub const DESIRED_RETENTION: &str = "desired_retention";
+    pub const FSRS_PARAMS: &str = "fsrs_params";
     pub const TRANSLATION: &str = "translation";
     pub const WORD_COLOURS_OFF: &str = "word_colours_off";
 }
@@ -117,6 +146,10 @@ impl Settings {
                 keys::WELCOMED => s.welcomed = serde_json::from_str(value).unwrap_or_default(),
                 keys::SOUNDS_OFF => s.sounds_off = serde_json::from_str(value).unwrap_or_default(),
                 keys::PRONUNCIATION => s.pronunciation = serde_json::from_str(value).unwrap_or_default(),
+                keys::DESIRED_RETENTION => {
+                    s.desired_retention = serde_json::from_str(value).unwrap_or_default()
+                }
+                keys::FSRS_PARAMS => s.fsrs = serde_json::from_str(value).unwrap_or_default(),
                 keys::TRANSLATION => s.translation = serde_json::from_str(value).unwrap_or_default(),
                 keys::WORD_COLOURS_OFF => {
                     s.word_colours_off = serde_json::from_str(value).unwrap_or_default()
@@ -141,6 +174,12 @@ impl Settings {
         push(self.welcomed != other.welcomed, keys::WELCOMED, json(&other.welcomed));
         push(self.sounds_off != other.sounds_off, keys::SOUNDS_OFF, json(&other.sounds_off));
         push(self.pronunciation != other.pronunciation, keys::PRONUNCIATION, json(&other.pronunciation));
+        push(
+            self.desired_retention != other.desired_retention,
+            keys::DESIRED_RETENTION,
+            json(&other.desired_retention),
+        );
+        push(self.fsrs != other.fsrs, keys::FSRS_PARAMS, json(&other.fsrs));
         push(self.translation != other.translation, keys::TRANSLATION, json(&other.translation));
         push(
             self.word_colours_off != other.word_colours_off,
@@ -190,6 +229,20 @@ mod tests {
             let s = Settings::from_pairs([("theme", format!("\"{}\"", theme.as_str()).as_str())]);
             assert_eq!(s.theme, theme);
         }
+    }
+
+    #[test]
+    fn fsrs_settings_round_trip_and_default_to_90_percent() {
+        let old = Settings::default();
+        assert_eq!(old.desired_retention.as_f32(), 0.9);
+        assert_eq!(old.fsrs, None);
+        let params =
+            FsrsParams { weights: vec![0.4, 1.2, 3.1], reviews: 512, trained_at_ms: 1_761_472_800_000 };
+        let new = Settings { fsrs: Some(params), desired_retention: RetentionPct(85), ..old.clone() };
+        let pairs = old.changed_pairs(&new);
+        assert_eq!(pairs.len(), 2);
+        assert_eq!(Settings::from_pairs(pairs.iter().map(|(k, v)| (*k, v.as_str()))), new);
+        assert_eq!(RetentionPct(99).as_f32(), 0.97, "clamped");
     }
 
     #[test]
