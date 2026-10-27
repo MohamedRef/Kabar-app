@@ -105,42 +105,50 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: pertama
-        ar_eg: الأول
-        ar: أولًا
-        en: first
-      - text: lalu
-        ar_eg: بعدين
-        ar: ثم
-        en: then
-      - text: setelah itu
-        ar_eg: بعد كده
-        ar: بعد ذلك
-        en: after that
-      - text: akhirnya
-        ar_eg: في الآخر
-        ar: أخيرًا
-        en: finally
-    words: [pertama, lalu, setelah itu, akhirnya]
+      - text: mula-mula
+        ar_eg: في الأول خالص
+        ar: في البداية
+        en: at first
+      - text: selanjutnya
+        ar_eg: وبعد كده (رسمي)
+        ar: بعد ذلك (رسمي)
+        en: next (formal)
+      - text: ojek
+        ar_eg: موتوسيكل أجرة
+        ar: درّاجة نارية أجرة
+        en: motorbike taxi
+      - text: angkot
+        ar_eg: ميكروباص
+        ar: حافلة صغيرة
+        en: minibus
+      - text: terminal
+        ar_eg: موقف الأتوبيسات
+        ar: محطة الحافلات
+        en: bus terminal
+      - text: danau
+        ar_eg: بحيرة
+        ar: بحيرة
+        en: lake
+    words: [mula-mula, selanjutnya, ojek, angkot, terminal, danau]
   - id: e02
     type: multiple_choice
     question_meaning:
       ar_eg: محمد بيحكي رحلته. أنهي كلمة بيبدأ بيها الحكاية؟
       ar: يسرد محمد رحلته. بأيّ كلمة يبدأ الحكاية؟
       en: Mohamed is telling his trip. Which word opens the story?
-    options: [Akhirnya, Setelah itu, Pertama]
+    options: [Akhirnya, Selanjutnya, Mula-mula]
     answer: 2
     explain:
-      ar_eg: pertama = الأول. setelah itu في النص، وakhirnya في الآخر.
-      ar: pertama = أولًا، وsetelah itu في الوسط، وakhirnya في الختام.
-      en: pertama = first; setelah itu goes in the middle, akhirnya at the end.
-    words: [pertama]
+      ar_eg: mula-mula = في الأول (زي pertama). selanjutnya في النص، وakhirnya في الآخر.
+      ar: mula-mula = في البداية (مثل pertama)، وselanjutnya في الوسط، وakhirnya في الختام.
+      en: mula-mula = at first (like pertama); selanjutnya goes in the middle, akhirnya at the end.
+    words: [mula-mula, selanjutnya, akhirnya]
   - id: e03
     type: listen
     text: Lalu, saya naik angkot ke terminal.
-    options: ['Lalu, saya naik angkot ke terminal.', 'Pertama, saya naik angkot ke terminal.', 'Akhirnya, saya naik angkot ke terminal.']
+    options: ['Lalu, saya naik angkot ke terminal.', 'Mula-mula, saya naik ojek ke terminal.', 'Akhirnya, saya naik angkot ke danau.']
     answer: 0
-    words: [lalu, angkot, terminal]
+    words: [lalu, angkot, terminal, mula-mula, ojek, akhirnya, danau]
   - id: e04
     type: fill_blank
     sentence: ___, silakan beli tiket di loket.
@@ -166,12 +174,12 @@ exercises:
     words: [setelah itu, danau]
   - id: e06
     type: speaking
-    text: Pertama, saya naik ojek. Lalu, saya naik bus. Akhirnya, saya sampai di Bedugul.
+    text: Mula-mula, saya naik ojek. Lalu, saya naik angkot ke terminal. Akhirnya, saya sampai di danau.
     meaning:
-      ar_eg: الأول ركبت أوجيك، وبعدين ركبت أتوبيس، وفي الآخر وصلت بيدوجول.
-      ar: أولًا ركبت درّاجة أجرة، ثم ركبت الحافلة، وأخيرًا وصلت إلى بيدوغول.
-      en: First I took an ojek. Then I took a bus. Finally, I arrived in Bedugul.
-    words: [pertama, lalu, akhirnya]
+      ar_eg: في الأول ركبت أوجيك، وبعدين ركبت ميكروباص للموقف، وفي الآخر وصلت البحيرة.
+      ar: في البداية ركبت درّاجة أجرة، ثم ركبت حافلة صغيرة إلى المحطة، وأخيرًا وصلت إلى البحيرة.
+      en: At first I took an ojek. Then I took an angkot to the terminal. Finally, I reached the lake.
+    words: [mula-mula, ojek, lalu, angkot, terminal, akhirnya, danau]
 dialogue:
   title: Naik apa ke Bedugul?
   lines:

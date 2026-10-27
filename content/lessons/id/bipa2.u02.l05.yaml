@@ -70,22 +70,42 @@ exercises:
     words: [karena]
   - id: e04
     type: fill_blank
-    sentence: Orang yang memandu turis adalah ___.
+    sentence: Saya bekerja di biro ___ di Kairo.
     meaning:
-      ar_eg: (اكتب الكلمة) الشخص اللي بيرشد السياح اسمه مرشد.
-      ar: (اكتب الكلمة) من يرشد السياح يُسمّى مرشدًا.
-      en: (Type the word.) A person who guides tourists is a guide.
-    answers: [pemandu, pemandu wisata]
-    words: [pemandu wisata]
+      ar_eg: أنا بشتغل في شركة سياحة في القاهرة.
+      ar: أعمل في وكالة سفر في القاهرة.
+      en: I work at a travel agency in Cairo.
+    options: [perjalanan, wawancara, penerjemah]
+    answers: [perjalanan]
+    words: [biro perjalanan]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (رسمي) حضرتك عايز تشتغل هنا ليه؟
-      ar: (رسمي) لماذا تريد العمل هنا؟
-      en: (formal) Why do you want to work here?
-    answers: ['Mengapa Anda mau bekerja di sini?', Mengapa Anda mau bekerja di sini, 'Mengapa Anda ingin bekerja di sini?', 'Kenapa Anda mau bekerja di sini?', 'Kenapa Anda ingin bekerja di sini?']
-    words: [mengapa, bekerja]
+    type: match_pairs
+    pairs:
+      - text: wawancara
+        ar_eg: مقابلة شغل
+        ar: مقابلة عمل
+        en: interview
+      - text: penerjemah
+        ar_eg: مترجم
+        ar: مترجم
+        en: translator
+      - text: menjadi
+        ar_eg: يبقى، يصبح
+        ar: يصبح
+        en: become
+      - text: Timur Tengah
+        ar_eg: الشرق الأوسط
+        ar: الشرق الأوسط
+        en: the Middle East
+      - text: biro perjalanan
+        ar_eg: شركة سياحة
+        ar: وكالة سفر
+        en: travel agency
+      - text: pemandu wisata
+        ar_eg: مرشد سياحي
+        ar: مرشد سياحي
+        en: tour guide
+    words: [wawancara, penerjemah, menjadi, Timur Tengah, biro perjalanan, pemandu wisata]
   - id: e06
     type: build_sentence
     source:
@@ -107,20 +127,20 @@ exercises:
   - id: e08
     type: build_sentence
     source:
-      ar_eg: (رسمي) تقدر تشتغل يوم السبت؟
-      ar: (رسمي) هل تستطيع العمل يوم السبت؟
-      en: (formal) Can you work on Saturday?
-    answer: Apakah Anda bisa bekerja hari Sabtu?
-    distractors: [mengapa, kamu]
-    words: [bisa, bekerja]
+      ar_eg: المقابلة بتاعتي في شركة السياحة يوم الاتنين.
+      ar: مقابلتي في وكالة السفر يوم الاثنين.
+      en: My interview at the travel agency is on Monday.
+    answer: Wawancara saya di biro perjalanan hari Senin.
+    distractors: [menjadi, karena]
+    words: [wawancara, biro perjalanan]
   - id: e09
     type: dictation
-    text: Saya suka pekerjaan ini karena saya bisa bertemu banyak orang.
+    text: Wawancara ini untuk penerjemah dari Timur Tengah.
     meaning:
-      ar_eg: بحب الشغلانة دي عشان بقابل ناس كتير.
-      ar: أحب هذا العمل لأنني ألتقي أناسًا كثيرين.
-      en: I like this job because I get to meet lots of people.
-    words: [pekerjaan, karena]
+      ar_eg: المقابلة دي لمترجمين من الشرق الأوسط.
+      ar: هذه المقابلة لمترجمين من الشرق الأوسط.
+      en: This interview is for translators from the Middle East.
+    words: [wawancara, penerjemah, Timur Tengah]
   - id: e10
     type: speaking
     text: Saya mau menjadi pemandu wisata karena saya suka bertemu orang baru.

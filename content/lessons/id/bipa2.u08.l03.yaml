@@ -124,23 +124,31 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: jalan-jalan
-        ar_eg: يتفسح
-        ar: يتنزه
-        en: to go out, stroll, travel for fun
-      - text: pelan-pelan
-        ar_eg: بالراحة
-        ar: ببطء
-        en: slowly
+      - text: lihat-lihat
+        ar_eg: يتفرّج بس
+        ar: يتفرّج فقط
+        en: just looking
+      - text: kapan-kapan
+        ar_eg: في يوم من الأيام
+        ar: يومًا ما
+        en: some time
+      - text: di mana-mana
+        ar_eg: في كل حتة
+        ar: في كل مكان
+        en: everywhere
+      - text: sayur-mayur
+        ar_eg: خضار من كل نوع
+        ar: خضروات متنوعة
+        en: all kinds of vegetables
       - text: bolak-balik
         ar_eg: رايح جاي
         ar: ذهابًا وإيابًا
         en: back and forth
-      - text: tidak apa-apa
-        ar_eg: ولا يهمك
-        ar: لا بأس
-        en: no problem
-    words: [jalan-jalan, pelan-pelan, bolak-balik, apa-apa]
+      - text: pelan-pelan
+        ar_eg: بالراحة
+        ar: ببطء
+        en: slowly
+    words: [lihat-lihat, kapan-kapan, di mana-mana, sayur-mayur, bolak-balik, pelan-pelan]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -152,37 +160,41 @@ exercises:
     words: [lihat-lihat]
   - id: e03
     type: listen
-    text: Tidak apa-apa.
-    options: [Tidak ada apa-apa., Tidak apa-apa., Tidak siapa-siapa.]
-    answer: 1
-    words: [apa-apa]
+    text: Kapan-kapan kita jalan-jalan ke pasar, ya.
+    options: ['Kapan-kapan kita jalan-jalan ke pasar, ya.', 'Kapan-kapan kita bolak-balik ke pasar, ya.', 'Di mana-mana ada pasar, ya.']
+    answer: 0
+    meaning:
+      ar_eg: في يوم من الأيام نتفسّح في السوق.
+      ar: يومًا ما نتنزّه في السوق.
+      en: Some time let's go out to the market.
+    words: [kapan-kapan, jalan-jalan, bolak-balik, di mana-mana]
   - id: e04
     type: fill_blank
-    sentence: Ibu membeli ___ di pasar.
+    sentence: Di pasar ini, ___ ada di mana-mana.
     meaning:
-      ar_eg: ماما اشترت خضار من كل نوع من السوق.
-      ar: اشترت أمي خضروات متنوعة من السوق.
-      en: Mum bought all kinds of vegetables at the market.
+      ar_eg: في السوق ده، الخضار من كل نوع في كل حتة.
+      ar: في هذا السوق، الخضروات المتنوعة في كل مكان.
+      en: In this market, vegetables of every kind are everywhere.
     options: [kapan-kapan, sayur-mayur, pelan-pelan]
     answers: [sayur-mayur]
-    words: [sayur-mayur]
+    words: [sayur-mayur, di mana-mana]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: بالراحة يا أسطى، الطريق بيزحلق.
-      ar: على مهلك يا سيدي، الطريق زلق.
-      en: Take it slowly, sir, the road is slippery.
-    answer: Pelan-pelan saja, Pak, jalannya licin.
-    distractors: [cepat-cepat, Bu]
-    words: [pelan-pelan, licin]
+      ar_eg: ماما رايحة جاية على السوق بتشتري خضار.
+      ar: أمي تذهب وتعود إلى السوق لتشتري الخضروات.
+      en: Mum goes back and forth to the market buying vegetables.
+    answer: Ibu bolak-balik ke pasar membeli sayur-mayur.
+    distractors: [kapan-kapan, pelan-pelan]
+    words: [bolak-balik, sayur-mayur]
   - id: e06
     type: speaking
-    text: Tidak apa-apa, saya lihat-lihat dulu.
+    text: Tidak apa-apa, saya lihat-lihat dulu. Kapan-kapan saya kembali.
     meaning:
-      ar_eg: ولا يهمك، أنا بتفرج بس دلوقتي.
-      ar: لا بأس، أتفرج فقط الآن.
-      en: It's fine, I'm just looking for now.
-    words: [apa-apa, lihat-lihat]
+      ar_eg: ولا يهمك، أنا بتفرج بس دلوقتي. هرجع في يوم تاني.
+      ar: لا بأس، أتفرج فقط الآن. سأعود يومًا ما.
+      en: It's fine, I'm just looking for now. I'll come back some time.
+    words: [apa-apa, lihat-lihat, kapan-kapan]
 dialogue:
   title: Naik ojek ke danau
   lines:

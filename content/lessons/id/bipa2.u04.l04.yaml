@@ -65,27 +65,31 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: Ayo makan!
-        ar_eg: يلا ناكل!
-        ar: هيّا نأكل!
-        en: Let's eat!
-      - text: Jangan lupa!
+      - text: jangan lupa!
         ar_eg: ماتنساش!
         ar: لا تنسَ!
-        en: Don't forget!
-      - text: Jangan khawatir.
-        ar_eg: ماتقلقش.
-        ar: لا تقلق.
-        en: Don't worry.
-      - text: Mari kita mulai.
-        ar_eg: هيا نبدأ.
-        ar: لنبدأ.
-        en: Let's begin.
-      - text: Nanti dulu.
-        ar_eg: بعدين.
-        ar: لاحقًا.
-        en: Later.
-    words: [ayo, jangan, lupa, khawatir, mari]
+        en: don't forget!
+      - text: khawatir
+        ar_eg: يقلق
+        ar: يقلق
+        en: worry
+      - text: pegang
+        ar_eg: يمسك
+        ar: يمسك
+        en: hold, touch
+      - text: payung
+        ar_eg: شمسية
+        ar: مظلة
+        en: umbrella
+      - text: menawar
+        ar_eg: يفاصل
+        ar: يساوم
+        en: bargain
+      - text: langsung
+        ar_eg: علطول
+        ar: مباشرةً
+        en: straight away
+    words: [jangan, lupa, khawatir, pegang, payung, menawar, langsung]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -125,30 +129,41 @@ exercises:
     distractors: [tidak, ayo]
     words: [jangan, lupa, payung]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: ماتدخنش هنا!
-      ar: لا تدخّن هنا!
-      en: Don't smoke here!
-    answers: [Jangan merokok di sini!, Jangan merokok di sini, Jangan merokok di sini., 'Jangan merokok di sini, ya!']
-    words: [jangan, merokok]
+    type: listen
+    text: Jangan langsung beli. Menawar dulu, ya!
+    options: ['Jangan langsung beli. Menawar dulu, ya!', 'Ayo langsung beli. Menawar dulu, ya!', 'Jangan langsung pegang. Menawar dulu, ya!']
+    answer: 0
+    meaning:
+      ar_eg: ماتشتريش علطول. فاصل الأول!
+      ar: لا تشترِ مباشرةً. ساوم أولًا!
+      en: Don't buy straight away. Bargain first!
+    words: [jangan, langsung, menawar, pegang]
   - id: e07
     type: dictation
-    text: Jangan pergi dulu!
+    text: Saya lupa payung saya.
     meaning:
-      ar_eg: ماتمشيش لسه!
-      ar: لا تذهب الآن!
-      en: Don't go yet!
-    words: [jangan]
+      ar_eg: نسيت الشمسية بتاعتي.
+      ar: نسيت مظلتي.
+      en: I forgot my umbrella.
+    words: [lupa, payung]
   - id: e08
     type: speaking
-    text: Ayo kita ke Sukawati! Jangan lupa bawa uang, ya.
+    text: Ayo kita langsung ke Sukawati! Jangan lupa bawa payung, ya.
     meaning:
-      ar_eg: يلا نروح سوكاواتي! ماتنساش تاخد فلوس.
-      ar: هيّا نذهب إلى سوكاواتي! لا تنسَ أن تأخذ نقودًا.
-      en: Let's go to Sukawati! Don't forget to bring money.
-    words: [ayo, jangan, lupa]
+      ar_eg: يلا نروح سوكاواتي علطول! ماتنساش تاخد الشمسية.
+      ar: هيّا نذهب إلى سوكاواتي مباشرةً! لا تنسَ أن تأخذ المظلة.
+      en: Let's go straight to Sukawati! Don't forget your umbrella.
+    words: [ayo, langsung, jangan, lupa, payung]
+  - id: e09
+    type: fill_blank
+    sentence: Jangan khawatir, kita bisa ___.
+    meaning:
+      ar_eg: ماتقلقش، نقدر نفاصل.
+      ar: لا تقلق، يمكننا المساومة.
+      en: Don't worry, we can bargain.
+    options: [menawar, langsung, payung]
+    answers: [menawar]
+    words: [khawatir, menawar]
 dialogue:
   title: Ajakan Ni Luh
   lines:
