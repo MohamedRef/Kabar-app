@@ -518,6 +518,7 @@ mod tests {
                 pos: None,
                 meaning: loc("news"),
                 arabic: Some("خبر".into()),
+                bridge: None,
             }],
             souvenir: Some(Souvenir { id: "s".into(), title: "t".into(), note: loc("") }),
             review: Default::default(),

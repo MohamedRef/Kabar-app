@@ -84,7 +84,7 @@ every morning. CI warns when the table below is behind the content.
 | Grammar points | 160 | 113 Indonesian, 47 Javanese |
 | Indonesian glosses | 10,000 | 10,000 awaiting your review |
 | Javanese glosses | 3,000 | 3,000 awaiting your review |
-| Arabic Bridge entries | 628 | Arabic loans, shifts and false friends |
+| Arabic Bridge entries | 632 | Arabic loans, shifts and false friends |
 | Javanese speech-level rows | 365 | ngoko / krama / krama inggil |
 | Pronunciation lexicon | 18,309 | plus 30 hand overrides |
 | Sinetron episodes | 107 | each unlocks after its unit |
