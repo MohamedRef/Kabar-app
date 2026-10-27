@@ -1,0 +1,194 @@
+schema: kabar.lesson/v1
+id: bipa3.u05.l10
+language: id
+title: Ulangan Unit 5
+can_do:
+  ar_eg: تحكي أسبوعك بالترتيب وبجمل صح.
+  ar: أن تسرد أحداث أسبوعك مرتّبة بجمل صحيحة.
+  en: Recount a week.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: mendaki
+        ar_eg: يطلع (جبل)
+        ar: يتسلّق
+        en: to climb
+      - text: menjemur
+        ar_eg: ينشر (الغسيل)
+        ar: ينشر (الغسيل)
+        en: to hang out to dry
+      - text: meminjam
+        ar_eg: يستلف
+        ar: يستعير
+        en: to borrow
+      - text: tagihan
+        ar_eg: فاتورة
+        ar: فاتورة
+        en: bill
+      - text: keesokan harinya
+        ar_eg: تاني يوم
+        ar: في اليوم التالي
+        en: the next day
+    words: [mendaki, menjemur, meminjam, tagihan, keesokan harinya]
+  - id: e02
+    type: multiple_choice
+    question: Kami ___ air terjun Sendang Gile.
+    options: [pergi, mengunjungi, mengunjungi ke]
+    answer: 1
+    explain:
+      ar_eg: mengunjungi متعدي، مش محتاج ke. و pergi محتاجة ke.
+      ar: mengunjungi متعدٍّ لا يحتاج إلى ke، أما pergi فتحتاج إليها.
+      en: mengunjungi is transitive and needs no ke; pergi would need ke.
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة صح؟
+      ar: أيّ جملة صحيحة؟
+      en: Which sentence is correct?
+    options: ["Saya bertemu Pak Sahdan dengan kemarin.", "Saya menemui dengan Pak Sahdan kemarin.", "Kemarin saya bertemu dengan Pak Sahdan."]
+    answer: 2
+    explain:
+      ar_eg: bertemu لازم وبياخد dengan؛ menemui متعدي من غير dengan.
+      ar: bertemu لازم يتعدى بـdengan، أما menemui فمتعدٍّ بلا dengan.
+      en: bertemu is intransitive and takes dengan; menemui is transitive, with no dengan.
+  - id: e04
+    type: listen
+    text: Para porter membawa tenda ke puncak.
+    options: ["Para porter membawa tenda ke puncak.", "Para porter membawa senter ke puncak.", "Para pemandu membawa tenda ke pantai."]
+    answer: 0
+    meaning:
+      ar_eg: الشيّالين بيشيلوا الخيم للقمّة.
+      ar: يحمل الحمّالون الخيام إلى القمّة.
+      en: The porters carry the tents to the summit.
+    words: [porter, tenda, puncak]
+  - id: e05
+    type: listen
+    text: Hari Jumat saya mengantar Rina ke stasiun. Keesokan harinya saya menyetrika baju.
+    question:
+      ar_eg: عمل إيه يوم السبت؟
+      ar: ماذا فعل يوم السبت؟
+      en: What did he do on Saturday?
+    options: ["mengantar Rina", "membayar tagihan", "menyetrika baju"]
+    answer: 2
+    meaning:
+      ar_eg: يوم الجمعة وصّلت رينا المحطة. وتاني يوم كويت الهدوم.
+      ar: يوم الجمعة أوصلتُ رينا إلى المحطة، وفي اليوم التالي كويتُ الثياب.
+      en: On Friday I took Rina to the station. The next day I ironed my clothes.
+    words: [mengantar, keesokan harinya, menyetrika]
+  - id: e06
+    type: fill_blank
+    sentence: Mas Rizal memberikan peta ___ saya.
+    meaning:
+      ar_eg: ريزال إدّى الخريطة ليّا.
+      ar: أعطى ريزال الخريطة لي.
+      en: Mas Rizal gave the map to me.
+    options: [kepada, dari, dengan]
+    answers: [kepada]
+    words: [memberikan]
+  - id: e07
+    type: fill_blank
+    sentence: ___ di Senaru, kami makan siang.
+    meaning:
+      ar_eg: أول ما وصلنا سنارو، اتغدّينا.
+      ar: حين وصلنا إلى سنارو تناولنا الغداء.
+      en: When we got to Senaru, we had lunch.
+    options: [Sesampainya, Keesokan harinya, Akhir pekan]
+    answers: [Sesampainya]
+    words: [sesampainya]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: إمبارح دفعت فاتورة الكهربا.
+      ar: أمس دفعتُ فاتورة الكهرباء.
+      en: Yesterday I paid the electricity bill.
+    answer: Kemarin saya membayar tagihan listrik.
+    alternatives: ["Saya membayar tagihan listrik kemarin."]
+    distractors: [di, dengan]
+    words: [membayar, tagihan]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: آخر الأسبوع اللي فات طلعنا جبل رينجاني.
+      ar: في عطلة نهاية الأسبوع الماضية صعدنا جبل رينجاني.
+      en: Last weekend we climbed Mount Rinjani.
+    answers:
+      - Akhir pekan lalu kami mendaki Gunung Rinjani.
+      - Akhir pekan lalu kami mendaki Gunung Rinjani
+      - Akhir pekan lalu, kami mendaki Gunung Rinjani.
+      - Kami mendaki Gunung Rinjani akhir pekan lalu.
+      - Akhir pekan lalu kita mendaki Gunung Rinjani.
+      - Akhir pekan lalu kami mendaki Rinjani.
+      - Minggu lalu kami mendaki Gunung Rinjani.
+    words: [akhir pekan, mendaki, gunung]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Bu Yanti memberi kami bekal nasi dan telur.
+    answers_meaning:
+      ar_eg:
+        - مدام يانتي إدّتنا زوّادة رز وبيض.
+        - مدام يانتي إدّتنا أكل للسكة، رز وبيض.
+      ar:
+        - أعطتنا السيدة يانتي زادًا من الأرز والبيض.
+        - أعطتنا السيدة يانتي طعامًا للطريق من الأرز والبيض.
+      en:
+        - Bu Yanti gave us a packed meal of rice and eggs.
+        - Bu Yanti gave us packed food of rice and eggs.
+        - Bu Yanti gave us rice and eggs to take with us.
+    words: [memberi, bekal]
+  - id: e11
+    type: dictation
+    text: Pengalaman itu sangat berkesan bagi saya.
+    meaning:
+      ar_eg: التجربة دي فضلت في بالي جدًا.
+      ar: كانت تلك التجربة مؤثّرة جدًا بالنسبة إليّ.
+      en: That experience really stayed with me.
+    words: [pengalaman, berkesan]
+  - id: e12
+    type: speaking
+    text: Boleh saya meminjam senter? Besok pagi kami mendaki gunung.
+    meaning:
+      ar_eg: ممكن أستلف كشّاف؟ بكرة الصبح هنطلع الجبل.
+      ar: هل يمكنني أن أستعير مصباحًا؟ سنصعد الجبل صباح الغد.
+      en: May I borrow a torch? Tomorrow morning we're climbing the mountain.
+    words: [meminjam, senter, mendaki]
+dialogue:
+  title: Di air terjun Sendang Gile
+  lines:
+    - speaker: Mas Rizal
+      text: Inilah air terjun Sendang Gile! Bagaimana minggumu, Mohamed?
+      ar_eg: أهو شلال سندانج جيلي! أسبوعك كان عامل إزاي يا محمد؟
+      ar: ها هو شلال سندانغ غيلي! كيف كان أسبوعك يا محمد؟
+      en: Here's Sendang Gile waterfall! How was your week, Mohamed?
+    - speaker: Mohamed
+      text: Luar biasa! Hari Selasa kami mendaki Rinjani dengan Pak Sahdan.
+      ar_eg: تحفة! يوم التلات طلعنا رينجاني مع عم سهدان.
+      ar: رائع! صعدنا رينجاني يوم الثلاثاء مع السيد سهدان.
+      en: Amazing! On Tuesday we climbed Rinjani with Pak Sahdan.
+    - speaker: Mas Rizal
+      text: Pak Sahdan porter terbaik di Senaru. Dia membawa tenda kita, kan?
+      ar_eg: عم سهدان أحسن شيّال في سنارو. هو اللي شال خيمتنا، صح؟
+      ar: السيد سهدان أفضل حمّال في سنارو، وهو من حمل خيمتنا، أليس كذلك؟
+      en: Pak Sahdan is the best porter in Senaru. He carried our tent, didn't he?
+    - speaker: Mohamed
+      text: Ya. Keesokan harinya, saya melihat matahari terbit dari puncak.
+      ar_eg: أيوه. وتاني يوم شفت الشروق من القمّة.
+      ar: نعم. وفي اليوم التالي رأيتُ شروق الشمس من القمّة.
+      en: Yes. The next day I saw the sunrise from the summit.
+    - speaker: Mas Rizal
+      text: Pengalaman yang berkesan! Sekarang, ayo kita berenang!
+      ar_eg: تجربة متتنسيش! يلا دلوقتي نعوم!
+      ar: تجربة لا تُنسى! والآن هيا نسبح!
+      en: A memorable experience! Now, let's go for a swim!
+souvenir:
+  id: bipa3.u05.souvenir
+  title: Air Terjun Sendang Gile
+  note:
+    ar_eg: سنارو قرية صغيرة على سفح رينجاني، وهي واحدة من نقطتين أساسيين بيبدأ منهم طلوع الجبل (التانية سمبالون). كتير من رجالة الساساك هناك شغالين شيّالين ومرشدين، بيشيلوا الخيم والأكل على كتافهم في طرق صعبة جدًا. وبعد الطلعة، أحسن مكافأة هي مية شلال سندانج جيلي الساقعة في وسط الغابة!
+    ar: سنارو قرية صغيرة على سفح رينجاني، وهي إحدى نقطتَي الانطلاق الرئيسيتين لصعود الجبل (والأخرى سمبالون). يعمل كثير من رجال الساساك فيها حمّالين ومرشدين، يحملون الخيام والطعام على أكتافهم في مسالك وعرة. وبعد الرحلة، خير مكافأة ماء شلال سندانغ غيلي البارد وسط الغابة!
+    en: Senaru is a small village on Rinjani's slopes and one of the two main starting points of the climb (the other is Sembalun). Many Sasak men there work as porters and guides, carrying tents and food on their shoulders up steep trails. And after the trek, the best reward is the cool water of Sendang Gile waterfall in the middle of the forest!
+review:
+  status: draft
+  verified: false

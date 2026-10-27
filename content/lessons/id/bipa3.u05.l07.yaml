@@ -1,194 +1,234 @@
 schema: kabar.lesson/v1
 id: bipa3.u05.l07
 language: id
-title: Ulangan Unit 5
+title: Ternyata berhasil
 can_do:
-  ar_eg: تحكي أسبوعك بالترتيب وبجمل صح.
-  ar: أن تسرد أحداث أسبوعك مرتّبة بجمل صحيحة.
-  en: Recount a week.
+  ar_eg: 'تحكي إنك نجحت في حاجة: «كنت قد…»، «طلع إن…»، «فعلًا»، «حد» و«حاجة».'
+  ar: 'أن تحكي نجاحك في أمر: «قد فعلت…»، «تبيّن أنّ…»، «فعلًا»، «أحد» و«شيء».'
+  en: 'Recount a success: ''had already'', ''it turned out'', ''indeed'', ''someone'' and ''something''.'
+slides:
+  - title: Kata untuk bercerita
+    body:
+      ar_eg: |
+        telah = خلاص، قد (زي sudah بس رسمي أكتر): Kami telah sampai di puncak.
+        berhasil = نجح، قدر يعمل. ternyata = طلع إن (اكتشفت إن). memang = فعلًا، بالفعل.
+        menggunakan = يستخدم (زي memakai). mendapatkan = يجيب، يحصل على.
+        sesuatu = حاجة. seseorang = حد، شخص.
+      ar: |
+        telah = قد (مثل sudah لكن أكثر رسمية): Kami telah sampai di puncak.
+        berhasil = نجح، تمكّن. ternyata = تبيّن أنّ. memang = فعلًا، حقًّا.
+        menggunakan = يستخدم (مثل memakai). mendapatkan = يحصل على.
+        sesuatu = شيء. seseorang = أحدهم، شخص ما.
+      en: |
+        telah = have/had (done) (like sudah, more formal): Kami telah sampai di puncak.
+        berhasil = succeed, manage. ternyata = it turned out. memang = indeed, really.
+        menggunakan = use (like memakai). mendapatkan = get, obtain.
+        sesuatu = something. seseorang = someone.
+    examples:
+      - text: Akhirnya kami berhasil sampai di puncak.
+        ar_eg: في الآخر قدرنا نوصل للقمة.
+        ar: في النهاية نجحنا في الوصول إلى القمة.
+        en: In the end we made it to the summit.
+      - text: Ternyata jalurnya tidak terlalu berat.
+        ar_eg: طلع إن الطريق مش صعب أوي.
+        ar: تبيّن أن المسار ليس شاقًّا جدًا.
+        en: It turned out the trail wasn't too hard.
+      - text: Seseorang memberi saya sesuatu yang enak.
+        ar_eg: حد اداني حاجة حلوة.
+        ar: أعطاني أحدهم شيئًا لذيذًا.
+        en: Someone gave me something tasty.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: mendaki
-        ar_eg: يطلع (جبل)
-        ar: يتسلّق
-        en: to climb
-      - text: menjemur
-        ar_eg: ينشر (الغسيل)
-        ar: ينشر (الغسيل)
-        en: to hang out to dry
-      - text: meminjam
-        ar_eg: يستلف
-        ar: يستعير
-        en: to borrow
-      - text: tagihan
-        ar_eg: فاتورة
-        ar: فاتورة
-        en: bill
-      - text: keesokan harinya
-        ar_eg: تاني يوم
-        ar: في اليوم التالي
-        en: the next day
-    words: [mendaki, menjemur, meminjam, tagihan, keesokan harinya]
+      - text: telah
+        ar_eg: خلاص، قد
+        ar: قد
+        en: have (done)
+      - text: berhasil
+        ar_eg: نجح
+        ar: نجح
+        en: succeed
+      - text: ternyata
+        ar_eg: طلع إن
+        ar: تبيّن أنّ
+        en: it turned out
+      - text: memang
+        ar_eg: فعلًا
+        ar: حقًّا
+        en: indeed
+    words: [telah, berhasil, ternyata, memang]
   - id: e02
-    type: multiple_choice
-    question: Kami ___ air terjun Sendang Gile.
-    options: [pergi, mengunjungi, mengunjungi ke]
-    answer: 1
-    explain:
-      ar_eg: mengunjungi متعدي، مش محتاج ke. و pergi محتاجة ke.
-      ar: mengunjungi متعدٍّ لا يحتاج إلى ke، أما pergi فتحتاج إليها.
-      en: mengunjungi is transitive and needs no ke; pergi would need ke.
+    type: match_pairs
+    pairs:
+      - text: menggunakan
+        ar_eg: يستخدم
+        ar: يستخدم
+        en: use
+      - text: mendapatkan
+        ar_eg: يحصل على
+        ar: يحصل على
+        en: get
+      - text: sesuatu
+        ar_eg: حاجة
+        ar: شيء
+        en: something
+      - text: seseorang
+        ar_eg: حد
+        ar: شخص ما
+        en: someone
+    words: [menggunakan, mendapatkan, sesuatu, seseorang]
   - id: e03
+    type: listen
+    text: Kemarin saya takut hujan, ternyata cerah sekali.
+    question:
+      ar_eg: الجو كان عامل إزاي؟
+      ar: كيف كان الجو؟
+      en: What was the weather like?
+    options: [كان بيمطر, الجو طلع حلو, الجو كان برد]
+    answer: 1
+    meaning:
+      ar_eg: امبارح كنت خايف تمطر، طلع الجو صحو خالص.
+      ar: أمس خشيت أن تمطر، فتبيّن أن الجو صافٍ جدًا.
+      en: Yesterday I was worried it would rain; it turned out lovely and clear.
+    words: [ternyata]
+  - id: e04
+    type: fill_blank
+    sentence: Kami ___ sampai di puncak sebelum matahari terbit.
+    meaning:
+      ar_eg: إحنا ___ وصلنا القمة قبل الشمس ما تطلع.
+      ar: ___ وصلنا إلى القمة قبل شروق الشمس.
+      en: We ___ reached the summit before sunrise.
+    options: [sesuatu, telah, seseorang]
+    answers: [telah]
+    words: [telah, sesuatu, seseorang]
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة صح؟
-      ar: أيّ جملة صحيحة؟
-      en: Which sentence is correct?
-    options: ["Saya bertemu Pak Sahdan dengan kemarin.", "Saya menemui dengan Pak Sahdan kemarin.", "Kemarin saya bertemu dengan Pak Sahdan."]
-    answer: 2
+      ar_eg: كلمة رسمية معناها «يستخدم» زي memakai؟
+      ar: أي كلمة رسمية تعني «يستخدم» مثل memakai؟
+      en: Which formal word means 'use', like memakai?
+    options: [mendapatkan, menggunakan, memang]
+    answer: 1
     explain:
-      ar_eg: bertemu لازم وبياخد dengan؛ menemui متعدي من غير dengan.
-      ar: bertemu لازم يتعدى بـdengan، أما menemui فمتعدٍّ بلا dengan.
-      en: bertemu is intransitive and takes dengan; menemui is transitive, with no dengan.
-  - id: e04
-    type: listen
-    text: Para porter membawa tenda ke puncak.
-    options: ["Para porter membawa tenda ke puncak.", "Para porter membawa senter ke puncak.", "Para pemandu membawa tenda ke pantai."]
-    answer: 0
-    meaning:
-      ar_eg: الشيّالين بيشيلوا الخيم للقمّة.
-      ar: يحمل الحمّالون الخيام إلى القمّة.
-      en: The porters carry the tents to the summit.
-    words: [porter, tenda, puncak]
-  - id: e05
-    type: listen
-    text: Hari Jumat saya mengantar Rina ke stasiun. Keesokan harinya saya menyetrika baju.
-    question:
-      ar_eg: عمل إيه يوم السبت؟
-      ar: ماذا فعل يوم السبت؟
-      en: What did he do on Saturday?
-    options: ["mengantar Rina", "membayar tagihan", "menyetrika baju"]
-    answer: 2
-    meaning:
-      ar_eg: يوم الجمعة وصّلت رينا المحطة. وتاني يوم كويت الهدوم.
-      ar: يوم الجمعة أوصلتُ رينا إلى المحطة، وفي اليوم التالي كويتُ الثياب.
-      en: On Friday I took Rina to the station. The next day I ironed my clothes.
-    words: [mengantar, keesokan harinya, menyetrika]
+      ar_eg: menggunakan = يستخدم.
+      ar: menggunakan = يستخدم.
+      en: menggunakan = use.
+    words: [menggunakan, mendapatkan, memang]
   - id: e06
     type: fill_blank
-    sentence: Mas Rizal memberikan peta ___ saya.
+    sentence: Ada ___ di depan pintu. Siapa dia?
     meaning:
-      ar_eg: ريزال إدّى الخريطة ليّا.
-      ar: أعطى ريزال الخريطة لي.
-      en: Mas Rizal gave the map to me.
-    options: [kepada, dari, dengan]
-    answers: [kepada]
-    words: [memberikan]
+      ar_eg: فيه ___ قدام الباب. مين ده؟
+      ar: هناك ___ أمام الباب. من هو؟
+      en: There's ___ at the door. Who is it?
+    options: [seseorang, sesuatu, berhasil]
+    answers: [seseorang]
+    words: [seseorang, sesuatu, berhasil]
   - id: e07
-    type: fill_blank
-    sentence: ___ di Senaru, kami makan siang.
-    meaning:
-      ar_eg: أول ما وصلنا سنارو، اتغدّينا.
-      ar: حين وصلنا إلى سنارو تناولنا الغداء.
-      en: When we got to Senaru, we had lunch.
-    options: [Sesampainya, Keesokan harinya, Akhir pekan]
-    answers: [Sesampainya]
-    words: [sesampainya]
-  - id: e08
     type: build_sentence
     source:
-      ar_eg: إمبارح دفعت فاتورة الكهربا.
-      ar: أمس دفعتُ فاتورة الكهرباء.
-      en: Yesterday I paid the electricity bill.
-    answer: Kemarin saya membayar tagihan listrik.
-    alternatives: ["Saya membayar tagihan listrik kemarin."]
-    distractors: [di, dengan]
-    words: [membayar, tagihan]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: آخر الأسبوع اللي فات طلعنا جبل رينجاني.
-      ar: في عطلة نهاية الأسبوع الماضية صعدنا جبل رينجاني.
-      en: Last weekend we climbed Mount Rinjani.
-    answers:
-      - Akhir pekan lalu kami mendaki Gunung Rinjani.
-      - Akhir pekan lalu kami mendaki Gunung Rinjani
-      - Akhir pekan lalu, kami mendaki Gunung Rinjani.
-      - Kami mendaki Gunung Rinjani akhir pekan lalu.
-      - Akhir pekan lalu kita mendaki Gunung Rinjani.
-      - Akhir pekan lalu kami mendaki Rinjani.
-      - Minggu lalu kami mendaki Gunung Rinjani.
-    words: [akhir pekan, mendaki, gunung]
-  - id: e10
+      ar_eg: الطريق ده فعلًا صعب.
+      ar: ذلك المسار شاقّ حقًّا.
+      en: That trail really is hard.
+    answer: Jalur itu memang berat.
+    distractors: [telah, ternyata]
+    words: [memang]
+  - id: e08
     type: translate
     direction: from_target
-    source_text: Bu Yanti memberi kami bekal nasi dan telur.
+    source_text: Saya mendapatkan sesuatu dari porter itu.
     answers_meaning:
-      ar_eg:
-        - مدام يانتي إدّتنا زوّادة رز وبيض.
-        - مدام يانتي إدّتنا أكل للسكة، رز وبيض.
-      ar:
-        - أعطتنا السيدة يانتي زادًا من الأرز والبيض.
-        - أعطتنا السيدة يانتي طعامًا للطريق من الأرز والبيض.
-      en:
-        - Bu Yanti gave us a packed meal of rice and eggs.
-        - Bu Yanti gave us packed food of rice and eggs.
-        - Bu Yanti gave us rice and eggs to take with us.
-    words: [memberi, bekal]
-  - id: e11
-    type: dictation
-    text: Pengalaman itu sangat berkesan bagi saya.
-    meaning:
-      ar_eg: التجربة دي فضلت في بالي جدًا.
-      ar: كانت تلك التجربة مؤثّرة جدًا بالنسبة إليّ.
-      en: That experience really stayed with me.
-    words: [pengalaman, berkesan]
-  - id: e12
+      ar_eg: [خدت حاجة من الشيّال ده, الشيّال اداني حاجة]
+      ar: [حصلت على شيء من ذلك الحمّال, أخذت شيئًا من ذلك الحمّال]
+      en: [I got something from that porter, I received something from the porter]
+    words: [mendapatkan, sesuatu]
+  - id: e09
     type: speaking
-    text: Boleh saya meminjam senter? Besok pagi kami mendaki gunung.
+    text: Kami berhasil! Kami telah sampai di puncak Rinjani.
     meaning:
-      ar_eg: ممكن أستلف كشّاف؟ بكرة الصبح هنطلع الجبل.
-      ar: هل يمكنني أن أستعير مصباحًا؟ سنصعد الجبل صباح الغد.
-      en: May I borrow a torch? Tomorrow morning we're climbing the mountain.
-    words: [meminjam, senter, mendaki]
+      ar_eg: نجحنا! وصلنا قمة رينجاني.
+      ar: نجحنا! لقد وصلنا إلى قمة رينجاني.
+      en: We did it! We've reached the top of Rinjani.
+    words: [berhasil, telah]
+  - id: e10
+    type: multiple_choice
+    question: Porter itu ___ senter untuk melihat jalur.
+    options: [menggunakan, seseorang, ternyata]
+    answer: 0
+    explain:
+      ar_eg: menggunakan senter = يستخدم كشاف.
+      ar: menggunakan senter = يستخدم مصباحًا يدويًا.
+      en: menggunakan senter = use a torch.
+    words: [menggunakan, seseorang, ternyata, mendapatkan, memang, berhasil]
 dialogue:
-  title: Di air terjun Sendang Gile
   lines:
-    - speaker: Mas Rizal
-      text: Inilah air terjun Sendang Gile! Bagaimana minggumu, Mohamed?
-      ar_eg: أهو شلال سندانج جيلي! أسبوعك كان عامل إزاي يا محمد؟
-      ar: ها هو شلال سندانغ غيلي! كيف كان أسبوعك يا محمد؟
-      en: Here's Sendang Gile waterfall! How was your week, Mohamed?
+    - speaker: Rina
+      text: Mohamed! Kamu berhasil sampai di puncak?
+      ar_eg: يا محمد! قدرت توصل للقمة؟
+      ar: يا محمد! هل نجحت في الوصول إلى القمة؟
+      en: Mohamed! Did you make it to the summit?
     - speaker: Mohamed
-      text: Luar biasa! Hari Selasa kami mendaki Rinjani dengan Pak Sahdan.
-      ar_eg: تحفة! يوم التلات طلعنا رينجاني مع عم سهدان.
-      ar: رائع! صعدنا رينجاني يوم الثلاثاء مع السيد سهدان.
-      en: Amazing! On Tuesday we climbed Rinjani with Pak Sahdan.
-    - speaker: Mas Rizal
-      text: Pak Sahdan porter terbaik di Senaru. Dia membawa tenda kita, kan?
-      ar_eg: عم سهدان أحسن شيّال في سنارو. هو اللي شال خيمتنا، صح؟
-      ar: السيد سهدان أفضل حمّال في سنارو، وهو من حمل خيمتنا، أليس كذلك؟
-      en: Pak Sahdan is the best porter in Senaru. He carried our tent, didn't he?
+      text: Ya! Kami telah sampai jam lima pagi.
+      ar_eg: أيوه! وصلنا الساعة خمسة الصبح.
+      ar: نعم! وصلنا في الخامسة صباحًا.
+      en: Yes! We got there at five in the morning.
+    - speaker: Rina
+      text: Wah, memang hebat! Jalurnya berat?
+      ar_eg: الله، فعلًا جامد! الطريق كان صعب؟
+      ar: رائع حقًّا! هل كان المسار شاقًّا؟
+      en: Wow, impressive! Was the trail hard?
     - speaker: Mohamed
-      text: Ya. Keesokan harinya, saya melihat matahari terbit dari puncak.
-      ar_eg: أيوه. وتاني يوم شفت الشروق من القمّة.
-      ar: نعم. وفي اليوم التالي رأيتُ شروق الشمس من القمّة.
-      en: Yes. The next day I saw the sunrise from the summit.
-    - speaker: Mas Rizal
-      text: Pengalaman yang berkesan! Sekarang, ayo kita berenang!
-      ar_eg: تجربة متتنسيش! يلا دلوقتي نعوم!
-      ar: تجربة لا تُنسى! والآن هيا نسبح!
-      en: A memorable experience! Now, let's go for a swim!
-souvenir:
-  id: bipa3.u05.souvenir
-  title: Air Terjun Sendang Gile
-  note:
-    ar_eg: سنارو قرية صغيرة على سفح رينجاني، وهي واحدة من نقطتين أساسيين بيبدأ منهم طلوع الجبل (التانية سمبالون). كتير من رجالة الساساك هناك شغالين شيّالين ومرشدين، بيشيلوا الخيم والأكل على كتافهم في طرق صعبة جدًا. وبعد الطلعة، أحسن مكافأة هي مية شلال سندانج جيلي الساقعة في وسط الغابة!
-    ar: سنارو قرية صغيرة على سفح رينجاني، وهي إحدى نقطتَي الانطلاق الرئيسيتين لصعود الجبل (والأخرى سمبالون). يعمل كثير من رجال الساساك فيها حمّالين ومرشدين، يحملون الخيام والطعام على أكتافهم في مسالك وعرة. وبعد الرحلة، خير مكافأة ماء شلال سندانغ غيلي البارد وسط الغابة!
-    en: Senaru is a small village on Rinjani's slopes and one of the two main starting points of the climb (the other is Sembalun). Many Sasak men there work as porters and guides, carrying tents and food on their shoulders up steep trails. And after the trek, the best reward is the cool water of Sendang Gile waterfall in the middle of the forest!
+      text: 'Berat, tapi ternyata porter kami membawa sesuatu yang enak: kopi panas!'
+      ar_eg: 'صعب، بس طلع إن الشيّال بتاعنا جايب حاجة بتفرق: قهوة سخنة!'
+      ar: 'شاقّ، لكن تبيّن أن حمّالنا أحضر شيئًا مفيدًا: قهوة ساخنة!'
+      en: 'Hard, but it turned out our porter had brought something that helped: hot coffee!'
+    - speaker: Rina
+      text: Ha ha! Seseorang di sana sangat pintar.
+      ar_eg: ها ها! فيه حد هناك ذكي جدًا.
+      ar: ها ها! أحدهم هناك ذكي جدًا.
+      en: Ha! Someone up there is very clever.
+new_words:
+  - word: telah
+    pos: adverb
+    ar_eg: خلاص، قد (رسمي)
+    ar: قد (رسمية)
+    en: have/had (done) (formal sudah)
+  - word: berhasil
+    pos: verb
+    ar_eg: نجح، قدر
+    ar: نجح، تمكّن
+    en: succeed, manage
+  - word: ternyata
+    pos: adverb
+    ar_eg: طلع إن
+    ar: تبيّن أنّ
+    en: it turned out
+  - word: memang
+    pos: adverb
+    ar_eg: فعلًا، بالفعل
+    ar: حقًّا، فعلًا
+    en: indeed, really
+  - word: menggunakan
+    pos: verb
+    ar_eg: يستخدم
+    ar: يستخدم
+    en: use
+  - word: mendapatkan
+    pos: verb
+    ar_eg: يحصل على، يجيب
+    ar: يحصل على
+    en: get, obtain
+  - word: sesuatu
+    pos: pronoun
+    ar_eg: حاجة
+    ar: شيء
+    en: something
+  - word: seseorang
+    pos: pronoun
+    ar_eg: حد، شخص
+    ar: أحدهم، شخص ما
+    en: someone
 review:
   status: draft
   verified: false
