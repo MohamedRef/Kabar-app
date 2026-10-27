@@ -134,6 +134,7 @@ mod tests {
             rating: Rating::Good,
             duration_ms: 3000,
             mode: ReviewMode::Classic,
+            evidence: Default::default(),
         }
     }
 

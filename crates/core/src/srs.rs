@@ -5,7 +5,7 @@
 use std::collections::{BTreeMap, HashMap, HashSet};
 
 use fsrs::{FSRS, FSRSItem, FSRSReview, MemoryState};
-use kabar_protocol::srs::{Rating, ReviewEvent};
+use kabar_protocol::srs::{Evidence, Rating, ReviewEvent};
 use serde::{Deserialize, Serialize};
 
 use crate::settings::Settings;
@@ -284,10 +284,14 @@ impl Scheduler {
     /// FSRS training items from the log: every review after a card's first
     /// that came on a later learner day, with the history before it. Day
     /// gaps use the learner's day clock.
+    /// Lookups are left out (see below).
     pub fn training_items(&self, events: &[ReviewEvent]) -> Vec<FSRSItem> {
         let mut by_card: BTreeMap<&str, Vec<&ReviewEvent>> = BTreeMap::new();
         let mut seen = HashSet::new();
-        for e in events.iter().filter(|e| seen.insert(e.id.as_str())) {
+        // A lookup is only ever a failure (nobody logs the words they didn't
+        // need to look up), so it would teach FSRS that memory is weaker than
+        // it is. It still moves the card's schedule.
+        for e in events.iter().filter(|e| seen.insert(e.id.as_str()) && e.evidence != Evidence::Lookup) {
             by_card.entry(e.card_id.as_str()).or_default().push(e);
         }
         let mut items = Vec::new();
@@ -386,6 +390,7 @@ mod tests {
             rating,
             duration_ms: 3000,
             mode: ReviewMode::Classic,
+            evidence: Default::default(),
         }
     }
 
@@ -560,6 +565,20 @@ mod tests {
         assert_eq!(items.len(), 2);
         assert_eq!(items[1].reviews.iter().map(|r| r.delta_t).collect::<Vec<_>>(), [0, 2, 5]);
         assert!(s.optimize(&log).is_none(), "too little history keeps the defaults");
+    }
+
+    #[test]
+    fn lookups_move_the_schedule_but_never_train() {
+        let s = Scheduler::default();
+        let mut lookup = ev("2", "a", T0 + 3 * DAY_MS, "m", Rating::Again);
+        lookup.evidence = Evidence::Lookup;
+        let mut exercise = ev("3", "a", T0 + 9 * DAY_MS, "m", Rating::Good);
+        exercise.evidence = Evidence::Exercise;
+        let log = vec![ev("1", "a", T0, "m", Rating::Good), lookup, exercise];
+        assert_eq!(s.replay("a", &log).lapses, 1, "the lookup is a lapse");
+        let items = s.training_items(&log);
+        assert_eq!(items.len(), 1, "only the exercise answer is a training item");
+        assert_eq!(items[0].reviews.iter().map(|r| r.delta_t).collect::<Vec<_>>(), [0, 9]);
     }
 
     #[test]

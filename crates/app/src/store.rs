@@ -1617,6 +1617,7 @@ mod tests {
             rating: Rating::Hard,
             duration_ms: 3000,
             mode: ReviewMode::CardWall,
+            evidence: Default::default(),
         };
         store.append_review(&remote).unwrap();
         assert_eq!(store.review_log().unwrap(), [remote]);

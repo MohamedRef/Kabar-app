@@ -61,7 +61,8 @@ pub fn day_totals(
     // The review log: answer time and count per day, each event once.
     let mut seen = HashSet::new();
     let mut by_day: BTreeMap<LocalDate, (u64, u32)> = BTreeMap::new();
-    for e in log.iter().filter(|e| seen.insert(e.id.as_str())) {
+    // Lesson and lookup evidence is study the activity log already counts.
+    for e in log.iter().filter(|e| seen.insert(e.id.as_str()) && e.evidence.is_review()) {
         let d = by_day.entry(LocalDate::from_unix_ms(e.at_ms, utc_offset_min)).or_default();
         d.0 += u64::from(e.duration_ms);
         d.1 += 1;
@@ -254,7 +255,7 @@ pub fn replay_with_retention(
     let since: Vec<u64> = windows_days.iter().map(|d| now_ms.saturating_sub(d * DAY_MS)).collect();
     let mut out = vec![Retention::default(); windows_days.len()];
     let states = scheduler.fold_log(log, |e, state| {
-        if state.is_new() {
+        if state.is_new() || !e.evidence.is_review() {
             return;
         }
         let interval_days = match (state.last_review_ms, state.due_ms) {
