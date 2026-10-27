@@ -1,0 +1,172 @@
+schema: kabar.lesson/v1
+id: bipa5.u06.l11
+language: id
+title: Diskusi pertunjukan
+can_do:
+  ar_eg: تتناقش مع صحابك في عرض شفته، وتقول رأيك وتسأل عن رأيهم.
+  ar: أن تتناقش مع أصدقائك في عرض شاهدته، فتبدي رأيك وتسأل عن آرائهم.
+  en: Discuss a show you saw with friends, giving your view and asking theirs.
+slides:
+  - title: Bertukar kesan
+    grammar: id.prefix.memper
+    body:
+      ar_eg: |
+        مع الصحاب (aku / kamu) الكلام أخف:
+        - Gimana menurutmu? = إيه رأيك؟
+        - Kesanku, … = انطباعي إن …
+        - Aku setuju, apalagi … = موافق، خصوصًا …
+        - Bagian mana yang paling berkesan? = أنهي جزء علّم معاك أكتر؟
+        وmemper- بتيجي في النقاش كمان: Pertunjukan itu memperkenalkan budaya Dayak.
+      ar: |
+        مع الأصدقاء (aku / kamu) يخفّ الكلام:
+        - Gimana menurutmu? = ما رأيك؟
+        - Kesanku, … = انطباعي أنّ …
+        - Aku setuju, apalagi … = أوافق، لا سيّما …
+        - Bagian mana yang paling berkesan? = أيّ جزء ترك فيك الأثر الأكبر؟
+        وتأتي memper- في النقاش أيضًا: Pertunjukan itu memperkenalkan budaya Dayak.
+      en: |
+        With friends (aku / kamu) the talk is lighter:
+        - Gimana menurutmu? = What did you think?
+        - Kesanku, … = My impression is …
+        - Aku setuju, apalagi … = I agree, especially …
+        - Bagian mana yang paling berkesan? = Which part stayed with you most?
+        memper- shows up here too: Pertunjukan itu memperkenalkan budaya Dayak.
+    examples:
+      - text: Kesanku, pertunjukan itu memperkenalkan budaya Dayak dengan indah.
+        ar_eg: انطباعي إن العرض ده عرّف بثقافة الداياك بشكل جميل.
+        ar: انطباعي أنّ العرض عرّف بثقافة الداياك تعريفًا جميلًا.
+        en: My impression is that the show introduced Dayak culture beautifully.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kesan
+        ar_eg: انطباع
+        ar: انطباع
+        en: impression
+      - text: berkesan
+        ar_eg: يعلّم معاك / مؤثر
+        ar: مؤثّر، لا يُنسى
+        en: memorable
+      - text: apalagi
+        ar_eg: خصوصًا
+        ar: لا سيّما
+        en: especially
+      - text: bagian
+        ar_eg: جزء
+        ar: جزء
+        en: part
+    words: [kesan, berkesan, apalagi, bagian]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز تسأل صاحبك عن رأيه بشكل ودّي. تقول إيه؟
+      ar: تريد أن تسأل صديقك عن رأيه بودّ. ماذا تقول؟
+      en: You want to ask your friend's opinion casually. What do you say?
+    options:
+      - Bagaimana pendapat Bapak?
+      - Gimana menurutmu?
+      - Mohon pendapat Anda.
+    answer: 1
+  - id: e03
+    type: fill_blank
+    sentence: Aku suka musiknya, ___ bagian penutupnya.
+    meaning:
+      ar_eg: عجبتني الموسيقى، خصوصًا الجزء الأخير.
+      ar: أعجبتني الموسيقى، لا سيّما الجزء الختامي.
+      en: I liked the music, especially the closing part.
+    options: [apalagi, kesan, bagian]
+    answers: [apalagi]
+    words: [apalagi, bagian]
+  - id: e04
+    type: listen
+    text: Bagian yang paling berkesan buatku adalah tarian anak-anak.
+    question:
+      ar_eg: أنهي جزء عجب المتكلم أكتر؟
+      ar: أيّ جزء أثّر في المتكلّم أكثر؟
+      en: Which part stayed with the speaker most?
+    options:
+      - رقصة الأطفال.
+      - الموسيقى.
+      - اللبس.
+    answer: 0
+    words: [bagian, berkesan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: انطباعي إن العرض كان مؤثر جدًا.
+      ar: انطباعي أنّ العرض كان مؤثّرًا جدًّا.
+      en: My impression is that the show was very memorable.
+    answer: Kesanku, pertunjukannya sangat berkesan.
+    distractors: [apalagi, bagian]
+    words: [kesan, berkesan]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أنهي جزء علّم معاك أكتر؟
+      ar: أيّ جزء ترك فيك الأثر الأكبر؟
+      en: Which part stayed with you most?
+    answers:
+      - Bagian mana yang paling berkesan?
+      - Bagian mana yang paling berkesan buatmu?
+      - Bagian mana yang paling berkesan untukmu?
+      - Bagian mana yang paling berkesan bagimu?
+    words: [bagian, berkesan]
+  - id: e07
+    type: dictation
+    text: Aku setuju, apalagi kostumnya sangat indah.
+    meaning:
+      ar_eg: موافق، خصوصًا إن اللبس كان حلو قوي.
+      ar: أوافق، لا سيّما أنّ الأزياء كانت جميلة جدًّا.
+      en: I agree, especially since the costumes were beautiful.
+    words: [apalagi]
+  - id: e08
+    type: speaking
+    text: Kesanku, pertunjukan ini memperkenalkan budaya Dayak dengan baik.
+    meaning:
+      ar_eg: انطباعي إن العرض ده عرّف بثقافة الداياك كويس.
+      ar: انطباعي أنّ هذا العرض أحسن التعريف بثقافة الداياك.
+      en: My impression is that this show introduced Dayak culture well.
+    words: [kesan]
+dialogue:
+  title: Di warung setelah pertunjukan
+  lines:
+    - speaker: Rina
+      text: Gimana menurutmu, Mohamed? Seru, kan?
+      ar_eg: إيه رأيك يا محمد؟ حلو، مش كده؟
+      ar: ما رأيك يا محمد؟ كان ممتعًا، أليس كذلك؟
+      en: What did you think, Mohamed? Fun, right?
+    - speaker: Mohamed
+      text: Seru sekali! Bagian yang paling berkesan buatku adalah tari enggang.
+      ar_eg: حلو جدًا! أكتر جزء علّم معايا هو رقصة أبو قرن.
+      ar: ممتع جدًّا! أكثر ما أثّر فيّ رقصة أبي قرن.
+      en: Great fun! The part that stayed with me most was the hornbill dance.
+    - speaker: Rina
+      text: Aku setuju, apalagi waktu musik sape mulai.
+      ar_eg: موافقة، خصوصًا لما موسيقى السابي بدأت.
+      ar: أوافق، لا سيّما حين بدأت موسيقى السابي.
+      en: I agree, especially when the sape music started.
+    - speaker: Mohamed
+      text: Kesanku, mereka bukan hanya menari, tetapi juga bercerita.
+      ar_eg: انطباعي إنهم مش بيرقصوا بس، دول بيحكوا حكاية كمان.
+      ar: انطباعي أنّهم لا يرقصون فحسب، بل يروون حكاية أيضًا.
+      en: My impression is that they weren't just dancing, they were telling a story.
+new_words:
+  - word: kesan
+    pos: noun
+    ar_eg: انطباع
+    ar: انطباع
+    en: impression
+  - word: apalagi
+    ar_eg: خصوصًا
+    ar: لا سيّما
+    en: especially
+  - word: bagian
+    pos: noun
+    ar_eg: جزء
+    ar: جزء
+    en: part
+review:
+  status: draft
+  verified: false

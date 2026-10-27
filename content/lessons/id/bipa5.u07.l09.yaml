@@ -1,182 +1,237 @@
 schema: kabar.lesson/v1
 id: bipa5.u07.l09
 language: id
-title: Ulangan Unit 7
+title: Piknik sehat di tepi sungai
 can_do:
-  ar_eg: تتكلم عن الأكل كهوية وعن عادات الأكل والتجارة على النهر.
-  ar: أن تتحدّث عن الطعام بوصفه هويّة، وعن آداب الأكل وتجارة النهر.
-  en: Talk about food as identity, eating customs and river trade.
+  ar_eg: 'تتكلم عن رحلة أكل صحي: الأعشاب والفيتامينات والليمون والسلطة والسعرات، ووسط ده كله البكسو، والأمن الغذائي.'
+  ar: 'أن تتحدث عن نزهة بطعام صحي: الأعشاب والفيتامينات والليمون والسلطة والسعرات، والباكسو أيضًا، والأمن الغذائي.'
+  en: 'Talk on a healthy picnic: herbs, vitamins, lemon, salad and calories, bakso anyway, and food security.'
+slides:
+  - title: Makan sehat
+    body:
+      ar_eg: |
+        piknik = رحلة، نزهة بأكل في الهوا الطلق.
+        herbal = بالأعشاب (jamu herbal = مشروب أعشاب تقليدي)، vitamin = فيتامين، kalori = سعرات.
+        lemon = ليمون أصفر (jeruk nipis = ليمون أخضر صغير)، salad = سلطة.
+        bakso = كور لحمة في شوربة (أكلة شعبية جدًا).
+        pangan = الغذا كموضوع رسمي: ketahanan pangan = الأمن الغذائي.
+      ar: |
+        piknik = نزهة مع طعام في الهواء الطلق.
+        herbal = عشبي (jamu herbal = مشروب أعشاب تقليدي)، vitamin = فيتامين، kalori = سعرات حرارية.
+        lemon = ليمون أصفر (jeruk nipis = ليمون أخضر صغير)، salad = سلطة.
+        bakso = كرات لحم في حساء (طبق شعبي جدًا).
+        pangan = الغذاء (مصطلح رسمي): ketahanan pangan = الأمن الغذائي.
+      en: |
+        piknik = picnic.
+        herbal = herbal (jamu herbal = traditional herbal drink), vitamin = vitamin, kalori = calories.
+        lemon = lemon (jeruk nipis = lime), salad = salad.
+        bakso = meatballs in broth (a hugely popular dish).
+        pangan = food (formal, policy word): ketahanan pangan = food security.
+    examples:
+      - text: Hari Minggu kami piknik di tepi Sungai Martapura.
+        ar_eg: يوم الحد عملنا رحلة على ضفة نهر مارتابورا.
+        ar: يوم الأحد تنزّهنا على ضفة نهر مارتابورا.
+        en: On Sunday we had a picnic by the Martapura River.
+      - text: Salad buah ini banyak vitamin dan rendah kalori.
+        ar_eg: سلطة الفاكهة دي فيها فيتامينات كتير وسعرات قليلة.
+        ar: سلطة الفاكهة هذه غنية بالفيتامينات قليلة السعرات.
+        en: This fruit salad is high in vitamins and low in calories.
+      - text: Pemerintah membicarakan ketahanan pangan di Kalimantan.
+        ar_eg: الحكومة بتتكلم عن الأمن الغذائي في كاليمانتان.
+        ar: تناقش الحكومة الأمن الغذائي في كاليمانتان.
+        en: The government is discussing food security in Kalimantan.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: perdagangan
-        ar_eg: تجارة
-        ar: تجارة
-        en: trade
-      - text: rempah
-        ar_eg: بهارات
-        ar: توابل
-        en: spices
-      - text: terapung
-        ar_eg: عايم
-        ar: عائم
-        en: floating
-      - text: identitas
-        ar_eg: هوية
-        ar: هويّة
-        en: identity
-      - text: kebiasaan
-        ar_eg: عادة
-        ar: عادة
-        en: custom
-    words: [perdagangan, rempah, terapung, identitas, kebiasaan]
+      - text: piknik
+        ar_eg: رحلة بأكل
+        ar: نزهة
+        en: picnic
+      - text: herbal
+        ar_eg: بالأعشاب
+        ar: عشبي
+        en: herbal
+      - text: vitamin
+        ar_eg: فيتامين
+        ar: فيتامين
+        en: vitamin
+      - text: kalori
+        ar_eg: سعرات
+        ar: سعرات حرارية
+        en: calories
+    words: [piknik, herbal, vitamin, kalori]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: lemon
+        ar_eg: ليمون أصفر
+        ar: ليمون
+        en: lemon
+      - text: salad
+        ar_eg: سلطة
+        ar: سلطة
+        en: salad
+      - text: bakso
+        ar_eg: كور لحمة بالشوربة
+        ar: كرات لحم بالحساء
+        en: meatball soup
+      - text: pangan
+        ar_eg: غذا
+        ar: غذاء
+        en: food
+    words: [lemon, salad, bakso, pangan]
+  - id: e03
+    type: listen
+    text: Minum teh herbal ini sebelum tidur.
+    question:
+      ar_eg: يشرب إيه قبل النوم؟
+      ar: ماذا يشرب قبل النوم؟
+      en: What should he drink before bed?
+    options: [شاي أعشاب, قهوة, عصير ليمون]
+    answer: 0
+    meaning:
+      ar_eg: اشرب شاي الأعشاب ده قبل النوم.
+      ar: اشرب شاي الأعشاب هذا قبل النوم.
+      en: Drink this herbal tea before bed.
+    words: [herbal]
+  - id: e04
+    type: fill_blank
+    sentence: Jeruk dan ___ banyak mengandung vitamin C.
+    meaning:
+      ar_eg: البرتقان و___ فيهم فيتامين سي كتير.
+      ar: يحتوي البرتقال و___ على كثير من فيتامين سي.
+      en: Oranges and ___s contain lots of vitamin C.
+    options: [lemon, bakso, kalori]
+    answers: [lemon]
+    words: [lemon, bakso, kalori]
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: إيه الاسم من rumah اللي معناه «مجمّع سكني»؟
-      ar: ما الاسم من rumah بمعنى «مجمّع سكني»؟
-      en: Which noun from rumah means "housing estate"?
-    options: [rumahan, perumahan, kerumahan]
-    answer: 1
-    words: [perumahan]
-  - id: e03
-    type: fill_blank
-    sentence: Soto Banjar ___ sejarah perdagangan di kota ini.
-    meaning:
-      ar_eg: سوتو بانجار بتعكس تاريخ التجارة في المدينة دي.
-      ar: تعكس سوتو بانجار تاريخ التجارة في هذه المدينة.
-      en: Soto Banjar reflects the history of trade in this city.
-    options: [mencerminkan, menukar, berkumpul]
-    answers: [mencerminkan]
-    words: [mencerminkan]
-  - id: e04
-    type: listen
-    text: Soto Banjar memakai kayu manis karena pengaruh pedagang Arab.
-    question:
-      ar_eg: ليه سوتو بانجار فيها قرفة؟
-      ar: لماذا في سوتو بانجار قرفة؟
-      en: Why does soto Banjar have cinnamon?
-    options:
-      - عشان رخيصة.
-      - عشان الأطفال بيحبوها.
-      - بسبب تأثير التجار العرب.
+      ar_eg: كور اللحمة في الشوربة اللي بيبيعوها على عربيات في كل حتة اسمها إيه؟
+      ar: ما اسم كرات اللحم في الحساء التي تُباع على العربات في كل مكان؟
+      en: What are the meatballs in broth sold from carts everywhere?
+    options: [salad, piknik, bakso]
     answer: 2
-    words: [pedagang, kayu manis]
-  - id: e05
+    explain:
+      ar_eg: bakso = كور لحمة في شوربة.
+      ar: bakso = كرات لحم في حساء.
+      en: bakso = meatballs in broth.
+    words: [salad, piknik, bakso]
+  - id: e06
+    type: fill_blank
+    sentence: Satu mangkuk nasi punya sekitar dua ratus ___.
+    meaning:
+      ar_eg: طبق الرز فيه حوالي ميتين ___.
+      ar: يحتوي وعاء الأرز على نحو مئتي ___.
+      en: A bowl of rice has about two hundred ___.
+    options: [kalori, pangan, herbal]
+    answers: [kalori]
+    words: [kalori, pangan, herbal]
+  - id: e07
+    type: multiple_choice
+    question: Harga ___ naik, jadi rakyat kecil makin susah.
+    options: [vitamin, pangan, lemon]
+    answer: 1
+    explain:
+      ar_eg: pangan = الغذا (كلمة رسمية).
+      ar: pangan = الغذاء (مصطلح رسمي).
+      en: pangan = food (formal).
+    words: [vitamin, pangan, lemon]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: التجار بيتجمعوا على المراكب قبل الفجر.
-      ar: يجتمع التجّار على القوارب قبل الفجر.
-      en: The traders gather on boats before dawn.
-    answer: Para pedagang berkumpul di perahu sebelum subuh.
-    distractors: [menukar, terapung]
-    words: [berkumpul, perahu, pedagang]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الأكل مش مجرد أكل، ده جزء من هويتنا.
-      ar: ليس الطعام مجرّد طعام، بل جزء من هويّتنا.
-      en: Food is more than food; it's part of our identity.
-    answers:
-      - Makanan bukan sekadar makanan, tetapi bagian dari identitas kita.
-      - Makanan bukan sekadar makanan, melainkan bagian dari identitas kita.
-      - Makanan bukan sekadar makanan, tapi bagian dari identitas kita.
-      - Makanan bukan sekadar makanan. Makanan adalah bagian dari identitas kita.
-    words: [bukan sekadar, identitas]
-  - id: e07
+      ar_eg: هنعمل سلطة ليمون للرحلة.
+      ar: سنعدّ سلطة بالليمون للنزهة.
+      en: We'll make a lemon salad for the picnic.
+    answer: Kita buat salad lemon untuk piknik.
+    distractors: [bakso, vitamin]
+    words: [salad, lemon, piknik]
+  - id: e09
     type: translate
     direction: from_target
-    source_text: Makan dengan tangan kiri dianggap tidak sopan.
+    source_text: Salad ini banyak vitamin dan rendah kalori.
     answers_meaning:
-      ar_eg:
-        - الأكل بالإيد الشمال بيتعتبر قلة ذوق.
-        - إنك تاكل بالشمال ده بيتعتبر مش مؤدب.
-      ar:
-        - يُعدّ الأكل باليد اليسرى قلّة أدب.
-        - الأكل باليسرى يُعتبر غير لائق.
-      en:
-        - Eating with the left hand is considered impolite.
-        - Eating with your left hand is seen as rude.
-    words: [dianggap]
-  - id: e08
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «pengaruh» معناها إيه؟
-      ar: ما معنى «pengaruh»؟
-      en: What does "pengaruh" mean?
-    options: [تأثير, بهارات, تاجر]
-    answer: 0
-    words: [pengaruh]
-  - id: e09
-    type: dictation
-    text: Tradisi pasar terapung sudah ada sejak zaman kesultanan.
-    meaning:
-      ar_eg: عادة السوق العايم موجودة من أيام السلطنة.
-      ar: تقليد السوق العائم قائم منذ عهد السلطنة.
-      en: The floating market tradition dates back to the sultanate.
-    words: [tradisi, terapung]
+      ar_eg: [السلطة دي فيها فيتامينات كتير وسعرات قليلة, السلطة دي مليانة فيتامينات وقليلة السعرات]
+      ar: [هذه السلطة غنية بالفيتامينات قليلة السعرات, في هذه السلطة فيتامينات كثيرة وسعرات قليلة]
+      en: [This salad has lots of vitamins and few calories, This salad is vitamin-rich and low in calories]
+    words: [salad, vitamin, kalori]
   - id: e10
     type: speaking
-    text: Adab makan di Mesir dan Indonesia punya banyak persamaan.
+    text: Setelah piknik sehat, kita tetap makan bakso!
     meaning:
-      ar_eg: آداب الأكل في مصر وإندونيسيا فيها حاجات مشتركة كتير.
-      ar: لآداب الطعام في مصر وإندونيسيا أوجه شبه كثيرة.
-      en: Table manners in Egypt and Indonesia have a lot in common.
-    words: [adab]
-  - id: e11
-    type: fill_blank
-    sentence: Kuah ketupat Kandangan kental dan gurih karena ___.
-    meaning:
-      ar_eg: مرقة كتوبات كاندانجان تقيلة ومسبّكة بسبب لبن جوز الهند.
-      ar: مرق كتوبات كاندانغان كثيف غنيّ بفضل حليب جوز الهند.
-      en: Ketupat Kandangan's broth is thick and rich because of the coconut milk.
-    options: [santan, resep, label halal]
-    answers: [santan]
-    words: [santan]
-  - id: e12
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «Dalam selamatan itu, tuan rumah menghidangkan masakan turun-temurun.» معناها إيه؟
-      ar: ما معنى «Dalam selamatan itu, tuan rumah menghidangkan masakan turun-temurun.»؟
-      en: What does "Dalam selamatan itu, tuan rumah menghidangkan masakan turun-temurun." mean?
-    options:
-      - في العزومة، صاحب البيت قدّم أكل متوارث في العيلة.
-      - في العزومة، صاحب البيت طلب أكل من برا.
-      - في العزومة، الضيوف هما اللي طبخوا.
-    answer: 0
-    words: [selamatan, menghidangkan, turun-temurun]
+      ar_eg: بعد الرحلة الصحية، برضه هناكل بكسو!
+      ar: بعد النزهة الصحية، سنأكل الباكسو رغم ذلك!
+      en: After a healthy picnic, we're still having bakso!
+    words: [piknik, bakso]
 dialogue:
-  title: Perahu terakhir di Lok Baintan
   lines:
+    - speaker: Bu Lestari
+      text: Hari Minggu kita piknik di tepi sungai, ya. Saya bawa salad buah.
+      ar_eg: يوم الحد هنعمل رحلة على النهر. أنا هجيب سلطة فواكه.
+      ar: يوم الأحد نتنزّه على ضفة النهر. سأحضر سلطة فواكه.
+      en: On Sunday let's picnic by the river. I'll bring fruit salad.
     - speaker: Mohamed
-      text: Bu, saya mau beli kue ini. Namanya apa?
-      ar_eg: يا حاجة، عايز أشتري الكيكة دي. اسمها إيه؟
-      ar: يا خالة، أريد شراء هذه الحلوى. ما اسمها؟
-      en: Ma'am, I'd like to buy this cake. What's it called?
-    - speaker: Bu Hamidah
-      text: Ini kue bingka, kue khas Banjar. Biasanya dimakan waktu buka puasa.
-      ar_eg: دي كيكة بينجكا، كيكة بانجارية. عادةً بتتاكل على الفطار في رمضان.
-      ar: هذه حلوى بينغكا البانجارية، وتؤكل عادة عند الإفطار في رمضان.
-      en: This is bingka, a Banjar speciality. It's usually eaten when breaking the fast.
-    - speaker: Mohamed
-      text: Wah, seperti kunafa di Mesir. Kue ini bagian dari identitas Ramadan di sini, ya?
-      ar_eg: يا سلام، زي الكنافة في مصر. الكيكة دي جزء من هوية رمضان هنا، صح؟
-      ar: مثل الكنافة في مصر! هذه الحلوى جزء من هويّة رمضان هنا، أليس كذلك؟
-      en: Oh, like kunafa in Egypt. This cake is part of Ramadan's identity here, right?
-    - speaker: Bu Hamidah
-      text: Betul sekali. Makanan memang bukan sekadar makanan.
-      ar_eg: بالظبط. الأكل فعلًا مش مجرد أكل.
-      ar: تمامًا. الطعام حقًّا ليس مجرّد طعام.
-      en: Exactly. Food really is more than food.
-souvenir:
-  id: bipa5.u07.souvenir
-  title: Pasar Terapung Lok Baintan
-  note:
-    ar_eg: في لوك بايتان، على نهر مارتابورا جنب بانجارماسين، الستات البياعين بيقعدوا في مراكب خشب صغيرة اسمها jukung من قبل الفجر، وبيبيعوا خضار وفاكهة وكيك. السوق ده بقاله قرون، من أيام سلطنة بانجار. وسوتو بانجار بتحكي نفس الحكاية، ففيها طريقة في البهارات اتعلموها من التجار العرب والهنود، وحاجات صيني وهولندي كمان.
-    ar: في لوك بايتان، على نهر مارتابورا قرب بانجارماسين، تجلس البائعات منذ ما قبل الفجر في قوارب خشبية صغيرة تسمّى jukung، يبعن الخضر والفاكهة والحلوى. ويرجع هذا السوق إلى قرون، منذ عهد سلطنة بانجار. وتروي سوتو بانجار الحكاية نفسها، ففيها طريقة في التوابل أخذوها عن التجّار العرب والهنود ولمسات صينية وهولندية.
-    en: At Lok Baintan, on the Martapura river near Banjarmasin, women sellers sit in small wooden boats called jukung from before dawn, selling vegetables, fruit and cakes. The market goes back centuries, to the Banjar Sultanate. Soto Banjar tells the same story, with a way of spicing learned from Arab and Indian traders and Chinese and Dutch touches.
+      text: Saya bawa jamu herbal dan air lemon. Banyak vitaminnya!
+      ar_eg: وأنا هجيب جامو أعشاب ومية بالليمون. فيتامينات كتير!
+      ar: وسأحضر مشروب أعشاب وماء بالليمون. فيهما فيتامينات كثيرة!
+      en: I'll bring herbal jamu and lemon water. Lots of vitamins!
+    - speaker: Rina
+      text: Wah, sehat sekali. Saya sedang menghitung kalori.
+      ar_eg: الله، صحي أوي. أنا بعد السعرات اليومين دول.
+      ar: رائع، صحي جدًا. أنا أحسب السعرات هذه الأيام.
+      en: Wow, so healthy. I'm counting calories at the moment.
+    - speaker: Bu Lestari
+      text: Tapi di dekat sungai ada penjual bakso terkenal...
+      ar_eg: بس جنب النهر فيه بياع بكسو مشهور...
+      ar: لكن قرب النهر بائع باكسو مشهور...
+      en: But there's a famous bakso seller near the river...
+    - speaker: Rina
+      text: Ya sudah, kalori dihitung mulai Senin!
+      ar_eg: خلاص، السعرات نعدها من يوم الاتنين!
+      ar: حسنًا، نحسب السعرات ابتداءً من الاثنين!
+      en: Fine, calorie counting starts on Monday!
+new_words:
+  - word: piknik
+    pos: noun
+    ar_eg: رحلة بأكل في الهوا
+    ar: نزهة
+    en: picnic
+  - word: herbal
+    pos: adjective
+    ar_eg: بالأعشاب
+    ar: عشبي
+    en: herbal
+  - word: vitamin
+    pos: noun
+    ar_eg: فيتامين
+    ar: فيتامين
+    en: vitamin
+  - word: kalori
+    pos: noun
+    ar_eg: سعرات
+    ar: سعرات حرارية
+    en: calories
+  - word: lemon
+    pos: noun
+    ar_eg: ليمون أصفر
+    ar: ليمون
+    en: lemon
+  - word: salad
+    pos: noun
+    ar_eg: سلطة
+    ar: سلطة
+    en: salad
+  - word: bakso
+    pos: noun
+    ar_eg: بكسو، كور لحمة بالشوربة
+    ar: باكسو، كرات لحم بالحساء
+    en: bakso, meatball soup
+  - word: pangan
+    pos: noun
+    ar_eg: غذا (رسمي)
+    ar: غذاء (مصطلح رسمي)
+    en: food (formal)
 review:
   status: draft
   verified: false

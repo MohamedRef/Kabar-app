@@ -1,182 +1,236 @@
 schema: kabar.lesson/v1
 id: bipa5.u10.l09
 language: id
-title: Ulangan Unit 10
+title: Laporan dari perjalanan
 can_do:
-  ar_eg: تقدّم تقرير بالبيانات وبوجهة نظرك، في كلام مرتّب ورسمي.
-  ar: أن تقدّم تقريرًا بالبيانات ووجهة نظرك، بكلام مرتّب ورسمي.
-  en: Present a report with data and your point of view, clearly and formally.
+  ar_eg: 'تكتب تقرير رحلة: البوصلة والقارات والمحيطات، المدق والفيلا، الزينة والألعاب النارية، وتستكشف وتوصي.'
+  ar: 'أن تكتب تقرير رحلة: البوصلة والقارات والمحيطات، والممرّ الجبلي والفيلا، والزينة والألعاب النارية، والاستكشاف والتوصية.'
+  en: 'Write a travel report: compass, continents and oceans, the trek and the villa, decorations and fireworks, exploring and recommending.'
+slides:
+  - title: Dari Kalimantan ke seluruh dunia
+    body:
+      ar_eg: |
+        menjelajahi = يستكشف (menjelajahi hutan)، kompas = بوصلة، trek = مدق، طريق مشي في الجبل أو الغابة.
+        benua = قارة (Benua Asia)، samudera = محيط (Samudera Hindia = المحيط الهندي؛ والرسمي samudra).
+        villa = فيلا، hiasan = زينة (hiasan lampion)، kembang api = ألعاب نارية.
+      ar: |
+        menjelajahi = يستكشف (menjelajahi hutan)، kompas = بوصلة، trek = درب، مسار مشي في الجبل أو الغابة.
+        benua = قارة (Benua Asia)، samudera = محيط (Samudera Hindia = المحيط الهندي؛ والمعيارية samudra).
+        villa = فيلا، hiasan = زينة (hiasan lampion)، kembang api = ألعاب نارية.
+      en: |
+        menjelajahi = to explore (menjelajahi hutan), kompas = compass, trek = trek, trail.
+        benua = continent (Benua Asia), samudera = ocean (Samudera Hindia = Indian Ocean; standard spelling samudra).
+        villa = villa, hiasan = decoration (hiasan lampion), kembang api = fireworks.
+    examples:
+      - text: Kalimantan adalah pulau terbesar ketiga di dunia, di Benua Asia.
+        ar_eg: كاليمانتان تالت أكبر جزيرة في العالم، في قارة آسيا.
+        ar: كاليمانتان ثالث أكبر جزيرة في العالم، في قارة آسيا.
+        en: Borneo is the world's third-largest island, in Asia.
+      - text: Kami menjelajahi hutan dengan kompas karena tidak ada sinyal.
+        ar_eg: استكشفنا الغابة ببوصلة عشان مافيش شبكة.
+        ar: استكشفنا الغابة ببوصلة لعدم وجود إشارة.
+        en: We explored the forest with a compass because there was no signal.
+      - text: Saya merekomendasikan villa di Singkawang, apalagi saat ada kembang api.
+        ar_eg: بوصي بالفيلا في سينجكاوانج، خصوصًا وقت الألعاب النارية.
+        ar: أوصي بالفيلا في سينغكاوانغ، خاصة وقت الألعاب النارية.
+        en: I recommend the villa in Singkawang, especially when there are fireworks.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: laporan
-        ar_eg: تقرير
-        ar: تقرير
-        en: report
-      - text: kesimpulan
-        ar_eg: خلاصة / استنتاج
-        ar: خلاصة
-        en: conclusion
-      - text: grafik
-        ar_eg: رسم بياني
-        ar: رسم بياني
-        en: chart, graph
-      - text: hadirin
-        ar_eg: الحاضرين
-        ar: الحضور
-        en: audience
-      - text: toleransi
-        ar_eg: تسامح
-        ar: تسامح
-        en: tolerance
-    words: [laporan, kesimpulan, grafik, hadirin, toleransi]
+      - text: menjelajahi
+        ar_eg: يستكشف
+        ar: يستكشف
+        en: to explore
+      - text: kompas
+        ar_eg: بوصلة
+        ar: بوصلة
+        en: compass
+      - text: trek
+        ar_eg: مدق، طريق مشي
+        ar: درب
+        en: trek, trail
+      - text: benua
+        ar_eg: قارة
+        ar: قارة
+        en: continent
+    words: [menjelajahi, kompas, trek, benua]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: samudera
+        ar_eg: محيط
+        ar: محيط
+        en: ocean
+      - text: villa
+        ar_eg: فيلا
+        ar: فيلا
+        en: villa
+      - text: hiasan
+        ar_eg: زينة
+        ar: زينة
+        en: decoration
+      - text: kembang api
+        ar_eg: ألعاب نارية
+        ar: ألعاب نارية
+        en: fireworks
+    words: [samudera, villa, hiasan, kembang api]
+  - id: e03
+    type: listen
+    text: Malam tahun baru ada kembang api di atas sungai.
+    question:
+      ar_eg: فيه إيه فوق النهر؟
+      ar: ماذا فوق النهر؟
+      en: What's over the river?
+    options: [ألعاب نارية, مطر, مركب]
+    answer: 0
+    meaning:
+      ar_eg: ليلة راس السنة فيه ألعاب نارية فوق النهر.
+      ar: ليلة رأس السنة ألعاب نارية فوق النهر.
+      en: On New Year's Eve there are fireworks over the river.
+    words: [kembang api]
+  - id: e04
+    type: fill_blank
+    sentence: Tanpa sinyal GPS, kami memakai ___ untuk mencari arah utara.
+    meaning:
+      ar_eg: من غير GPS، استعملنا ___ عشان نعرف الشمال.
+      ar: دون إشارة GPS استخدمنا ___ لتحديد الشمال.
+      en: Without GPS, we used a ___ to find north.
+    options: [kompas, villa, hiasan]
+    answers: [kompas]
+    words: [kompas, villa, hiasan]
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: إيه الاسم من turun؟
-      ar: ما الاسم من turun؟
-      en: What is the noun from turun?
-    options: [diturunkan, menurunkan, penurunan]
-    answer: 2
-    words: [penurunan]
-  - id: e03
+      ar_eg: آسيا وأفريقيا وأوروبا، كل واحدة فيهم إيه؟
+      ar: آسيا وأفريقيا وأوروبا، ما كلٌّ منها؟
+      en: 'Asia, Africa and Europe: what is each one?'
+    options: [samudera, benua, trek]
+    answer: 1
+    explain:
+      ar_eg: benua = قارة.
+      ar: benua = قارة.
+      en: benua = continent.
+    words: [samudera, benua, trek]
+  - id: e06
     type: fill_blank
-    sentence: ___ data, jumlah wisatawan meningkat setiap tahun.
+    sentence: Rumah-rumah penuh ___ lampion merah menjelang Imlek.
     meaning:
-      ar_eg: بناءً على البيانات، عدد السياح بيزيد كل سنة.
-      ar: بناءً على البيانات، يزداد عدد السيّاح كلّ عام.
-      en: Based on the data, tourist numbers rise every year.
-    options: [Berdasarkan, Sebagai penutup, Pertama-tama]
-    answers: [Berdasarkan]
-    words: [berdasarkan, meningkat]
-  - id: e04
-    type: listen
-    text: Sebagai penutup, saya menyarankan festival kecil setiap bulan.
-    question:
-      ar_eg: المتكلم بيقترح إيه؟
-      ar: ماذا يقترح المتكلّم؟
-      en: What does the speaker suggest?
-    options:
-      - مهرجان صغير كل شهر.
-      - يلغوا المهرجان.
-      - فندق جديد.
-    answer: 0
-    words: [sebagai penutup]
-  - id: e05
+      ar_eg: البيوت مليانة ___ فوانيس حمرا قبل رأس السنة الصينية.
+      ar: تمتلئ البيوت بـ___ الفوانيس الحمراء قبيل رأس السنة الصينية.
+      en: Houses are full of red lantern ___ before Chinese New Year.
+    options: [hiasan, benua, menjelajahi]
+    answers: [hiasan]
+    words: [hiasan, benua, menjelajahi]
+  - id: e07
+    type: multiple_choice
+    question: Indonesia terletak di antara Samudera Hindia dan ___ Pasifik.
+    options: [Villa, Kompas, Samudera]
+    answer: 2
+    explain:
+      ar_eg: Samudera Pasifik = المحيط الهادي.
+      ar: Samudera Pasifik = المحيط الهادئ.
+      en: Samudera Pasifik = the Pacific Ocean.
+    words: [villa, kompas, samudera]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: البحث ده بيعرض بيانات عن زيارات السياح.
-      ar: يعرض هذا البحث بيانات عن زيارات السيّاح.
-      en: This study presents data on tourist visits.
-    answer: Penelitian ini menyajikan data tentang kunjungan wisatawan.
-    distractors: [hadirin, rukun]
-    words: [penelitian, menyajikan, kunjungan]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي رابط بيقدّم نتيجة؟
-      ar: أيّ رابط يقدّم نتيجة؟
-      en: Which connector introduces a result?
-    options: [Pertama-tama, Oleh karena itu, Hadirin]
-    answer: 1
-    words: [oleh karena itu, pertama-tama]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: في المتوسط، عدد الزوار قلّ بعد المهرجان.
-      ar: في المتوسّط، انخفض عدد الزوّار بعد المهرجان.
-      en: On average, visitor numbers fell after the festival.
-    answers:
-      - Rata-rata, jumlah pengunjung menurun setelah festival.
-      - Rata-rata jumlah pengunjung menurun setelah festival.
-      - Rata-rata, jumlah pengunjung turun setelah festival.
-      - Setelah festival, rata-rata jumlah pengunjung menurun.
-    words: [rata-rata, jumlah, menurun]
-  - id: e08
+      ar_eg: المدق ده طويل بس يستاهل.
+      ar: هذا الدرب طويل لكنه يستحق.
+      en: This trail is long but worth it.
+    answer: Trek ini panjang, tetapi hasilnya sebanding.
+    distractors: [kompas, kembang api]
+    words: [trek, kembang api]
+  - id: e09
     type: translate
     direction: from_target
-    source_text: Keberagaman di Singkawang membuat warganya hidup rukun.
+    source_text: Kami menjelajahi hutan selama tiga hari.
     answers_meaning:
-      ar_eg:
-        - التنوّع في سينجكاوانج مخلّي أهلها عايشين في وفاق.
-        - تنوّع سينجكاوانج بيخلّي الناس هناك عايشين مع بعض في سلام.
-      ar:
-        - يجعل التنوّع في سينغكاوانغ أهلها يعيشون في وئام.
-        - التنوّع في سينغكاوانغ يجعل سكّانها متآلفين.
-      en:
-        - Diversity in Singkawang lets its people live in harmony.
-        - Singkawang's diversity keeps its residents living in harmony.
-    words: [keberagaman, rukun]
-  - id: e09
-    type: dictation
-    text: Apakah ada pertanyaan tentang kenaikan harga ini?
-    meaning:
-      ar_eg: فيه أسئلة عن زيادة الأسعار دي؟
-      ar: هل من أسئلة عن ارتفاع الأسعار هذا؟
-      en: Are there any questions about this price rise?
-    words: [pertanyaan, kenaikan]
+      ar_eg: [استكشفنا الغابة تلات أيام, قعدنا نستكشف الغابة لمدة تلات أيام]
+      ar: [استكشفنا الغابة ثلاثة أيام, استكشفنا الغابة مدة ثلاثة أيام]
+      en: [We explored the forest for three days, We spent three days exploring the forest]
+    words: [menjelajahi]
   - id: e10
     type: speaking
-    text: Hadirin yang saya hormati, saya menyimpulkan bahwa toleransi adalah kekuatan Singkawang.
+    text: Saya merekomendasikan villa ini dan trek di belakangnya.
     meaning:
-      ar_eg: حضراتكم المحترمين، أنا بستنتج إن التسامح هو قوة سينجكاوانج.
-      ar: أيّها الحضور الكرام، أستنتج أنّ التسامح هو قوّة سينغكاوانغ.
-      en: Distinguished audience, I conclude that tolerance is Singkawang's strength.
-    words: [hadirin, menyimpulkan, toleransi]
-  - id: e11
-    type: fill_blank
-    sentence: Pembicara yang ___ menjaga kontak mata dengan hadirin.
-    meaning:
-      ar_eg: المتكلم الواثق من نفسه بيبص في عيون الحاضرين.
-      ar: المتحدّث الواثق بنفسه يحافظ على التواصل البصري مع الحاضرين.
-      en: A confident speaker keeps eye contact with the audience.
-    options: [percaya diri, mencolok, gugup]
-    answers: [percaya diri]
-    words: [percaya diri, kontak mata]
-  - id: e12
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «Tulis poin penting saja, lalu pakai foto sebagai alat bantu.» معناها إيه؟
-      ar: ما معنى «Tulis poin penting saja, lalu pakai foto sebagai alat bantu.»؟
-      en: What does "Tulis poin penting saja, lalu pakai foto sebagai alat bantu." mean?
-    options:
-      - اكتب كل النص، ومن غير صور.
-      - اكتب النقط المهمة بس، واستخدم صور كوسيلة مساعدة.
-      - ماتعملش شرايح خالص.
-    answer: 1
-    words: [poin penting, alat bantu]
+      ar_eg: بوصي بالفيلا دي والمدق اللي وراها.
+      ar: أوصي بهذه الفيلا والدرب خلفها.
+      en: I recommend this villa and the trail behind it.
+    words: [merekomendasikan, villa, trek]
 dialogue:
-  title: Malam Cap Go Meh
   lines:
     - speaker: Rina
-      text: Mohamed, lihat lampion dan naganya! Semua orang ikut merayakan.
-      ar_eg: يا محمد، بص على الفوانيس والتنين! الكل بيحتفل.
-      ar: يا محمد، انظر إلى الفوانيس والتنّين! الجميع يحتفلون.
-      en: Mohamed, look at the lanterns and the dragon! Everyone's celebrating.
+      text: Mohamed, perjalananmu di Kalimantan sudah selesai. Laporanmu sudah jadi?
+      ar_eg: يا محمد، رحلتك في كاليمانتان خلصت. التقرير بتاعك خلص؟
+      ar: يا محمد، انتهت رحلتك في كاليمانتان. هل جهز تقريرك؟
+      en: Mohamed, your Kalimantan trip is over. Is your report ready?
     - speaker: Mohamed
-      text: Ada tatung Tionghoa dan juga tatung Dayak. Ini data terbaik untuk laporan saya.
-      ar_eg: فيه tatung صينيين وكمان tatung داياك. دي أحسن بيانات لتقريري.
-      ar: هناك tatung صينيون وtatung من الداياك أيضًا. هذه أفضل بيانات لتقريري.
-      en: There are Chinese tatung and Dayak tatung too. This is the best data for my report.
+      text: Hampir. Saya menulis tentang menjelajahi hutan dengan kompas dan trek di Tanjung Puting.
+      ar_eg: تقريبًا. بكتب عن استكشاف الغابة بالبوصلة والمدق في تانجونج بوتينج.
+      ar: تقريبًا. أكتب عن استكشاف الغابة بالبوصلة والدرب في تانجونغ بوتينغ.
+      en: Almost. I'm writing about exploring the forest with a compass and the trek at Tanjung Puting.
     - speaker: Rina
-      text: Jadi apa kesimpulanmu?
-      ar_eg: يعني إيه خلاصتك؟
-      ar: إذن ما خلاصتك؟
-      en: So what's your conclusion?
+      text: Ada bagian tentang Singkawang?
+      ar_eg: فيه جزء عن سينجكاوانج؟
+      ar: هل فيه قسم عن سينغكاوانغ؟
+      en: Is there a section on Singkawang?
     - speaker: Mohamed
-      text: Keberagaman bukan masalah. Di sini, keberagaman adalah perayaan.
-      ar_eg: التنوّع مش مشكلة. هنا التنوّع احتفال.
-      ar: التنوّع ليس مشكلة، بل هو هنا احتفال.
-      en: Diversity isn't a problem. Here, diversity is a celebration.
-souvenir:
-  id: bipa5.u10.souvenir
-  title: Cap Go Meh di Singkawang
-  note:
-    ar_eg: Cap Go Meh معناها «الليلة الخمستاشر» بلهجة هوكيين، وهي آخر يوم في احتفالات رأس السنة الصيني. في سينجكاوانج، اللي بيسموها «مدينة الألف معبد»، الموكب فيه فوانيس وتنانين، وفيه tatung، ناس في حالة غيبوبة طقسية، منهم صينيين ومنهم داياك. والملايو والداياك والصينيين بيتفرجوا ويحتفلوا مع بعض، وعشان كده الموكب بقى رمز للتسامح.
-    ar: Cap Go Meh تعني «الليلة الخامسة عشرة» بلهجة هوكيين، وهي ختام احتفالات رأس السنة الصينية. وفي سينغكاوانغ، الملقّبة «مدينة الألف معبد»، يضمّ الموكب فوانيس وتنانين ومؤدّين يسمّون tatung في حالة نشوة طقسية، بعضهم صينيون وبعضهم من الداياك. ويحتفل الملايو والداياك والصينيون معًا، فصار الموكب رمزًا للتسامح.
-    en: Cap Go Meh means "fifteenth night" in Hokkien, the last day of Chinese New Year celebrations. In Singkawang, nicknamed the "city of a thousand temples", the parade has lanterns, dragons and tatung, performers in a ritual trance, some Chinese and some Dayak. Malays, Dayaks and Chinese celebrate together, which has made the parade a symbol of tolerance.
+      text: Ada. Hiasan lampion, kembang api, dan villa kecil dekat pantai. Saya merekomendasikan tempat itu.
+      ar_eg: أيوه. زينة الفوانيس والألعاب النارية والفيلا الصغيرة جنب البحر. وبوصي بالمكان ده.
+      ar: نعم. زينة الفوانيس والألعاب النارية والفيلا الصغيرة قرب الشاطئ. وأوصي بذلك المكان.
+      en: Yes. Lantern decorations, fireworks and a little villa by the beach. I recommend the place.
+    - speaker: Rina
+      text: Kesimpulannya?
+      ar_eg: والخلاصة؟
+      ar: والخلاصة؟
+      en: And the conclusion?
+    - speaker: Mohamed
+      text: 'Kalimantan seperti satu benua kecil: hutan, sungai, dan samudera budaya.'
+      ar_eg: 'كاليمانتان زي قارة صغيرة: غابات وأنهار ومحيط من الثقافات.'
+      ar: 'كاليمانتان كقارة صغيرة: غابات وأنهار ومحيط من الثقافات.'
+      en: 'Kalimantan is like a small continent: forests, rivers and an ocean of cultures.'
+new_words:
+  - word: menjelajahi
+    pos: verb
+    ar_eg: يستكشف
+    ar: يستكشف
+    en: to explore
+  - word: kompas
+    pos: noun
+    ar_eg: بوصلة
+    ar: بوصلة
+    en: compass
+  - word: trek
+    pos: noun
+    ar_eg: مدق، طريق مشي
+    ar: درب، مسار مشي
+    en: trek, trail
+  - word: benua
+    pos: noun
+    ar_eg: قارة
+    ar: قارة
+    en: continent
+  - word: samudera
+    pos: noun
+    ar_eg: محيط
+    ar: محيط
+    en: ocean
+  - word: villa
+    pos: noun
+    ar_eg: فيلا
+    ar: فيلا
+    en: villa
+  - word: hiasan
+    pos: noun
+    ar_eg: زينة
+    ar: زينة
+    en: decoration
+  - word: kembang api
+    pos: noun
+    ar_eg: ألعاب نارية
+    ar: ألعاب نارية
+    en: fireworks
 review:
   status: draft
   verified: false

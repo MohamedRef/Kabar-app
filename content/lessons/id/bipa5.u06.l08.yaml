@@ -1,196 +1,239 @@
 schema: kabar.lesson/v1
 id: bipa5.u06.l08
 language: id
-title: Wawancara seniman
+title: Pena seorang kritikus
 can_do:
-  ar_eg: تعمل حوار مع فنان عن شغله وتسأله أسئلة مؤدبة ومفتوحة.
-  ar: أن تُجري حوارًا مع فنّان عن عمله وتطرح أسئلة لبقة مفتوحة.
-  en: Interview an artist about their work with polite, open questions.
+  ar_eg: 'تكتب نقد لعرض: درامي ولا مأساوي، فيه فكاهة وأناقة وعبقرية، والخيال، وبالحبر.'
+  ar: 'أن تكتب نقدًا لعرض: درامي أم مأساوي، وفيه الفكاهة والأناقة والعبقرية، والخيال، وبالحبر.'
+  en: 'Write a critique of a show: dramatic or tragic, with humour, elegance and brilliance, fantasy and ink.'
 slides:
-  - title: Bertanya kepada seniman
-    grammar: id.prefix.memper
+  - title: Kata-kata ulasan
     body:
       ar_eg: |
-        في الحوار مع فنان، اسأل أسئلة مفتوحة واستخدم أفعال memper-:
-        - Sejak kapan Bapak / Ibu berkarya? = بتعمل فن من إمتى؟
-        - Apa yang ingin Bapak / Ibu perkenalkan kepada penonton muda?
-        - Bagaimana Anda memperkuat tradisi ini?
-        كلمتين جداد: seniman = فنان، وberkarya = يبدع / يعمل أعمال فنية.
+        kritik = نقد (kritik seni = نقد فني)، والناقد kritikus.
+        dramatis = درامي، مثير، tragis = مأساوي، humor = فكاهة، دم خفيف.
+        elegan = أنيق، brilian = عبقري، رائع جدًا.
+        fantasi = خيال، فانتازيا (cerita fantasi)، tinta = حبر.
       ar: |
-        في الحوار مع فنّان، اطرح أسئلة مفتوحة واستعمل أفعال memper-:
-        - Sejak kapan Bapak / Ibu berkarya? = منذ متى تُبدع؟
-        - Apa yang ingin Bapak / Ibu perkenalkan kepada penonton muda?
-        - Bagaimana Anda memperkuat tradisi ini?
-        وكلمتان جديدتان: seniman = فنّان، وberkarya = يُبدع، ينتج أعمالًا فنية.
+        kritik = نقد (kritik seni = نقد فني)، والناقد kritikus.
+        dramatis = درامي، مثير، tragis = مأساوي، humor = فكاهة.
+        elegan = أنيق، brilian = بارع، عبقري.
+        fantasi = خيال، فانتازيا (cerita fantasi)، tinta = حبر.
       en: |
-        When interviewing an artist, ask open questions and use memper- verbs:
-        - Sejak kapan Bapak / Ibu berkarya? = Since when have you been making art?
-        - Apa yang ingin Bapak / Ibu perkenalkan kepada penonton muda?
-        - Bagaimana Anda memperkuat tradisi ini?
-        Two new words: seniman = artist; berkarya = to create, to produce work.
+        kritik = criticism, critique (kritik seni = art criticism); a critic is kritikus.
+        dramatis = dramatic, tragis = tragic, humor = humour.
+        elegan = elegant, brilian = brilliant.
+        fantasi = fantasy (cerita fantasi), tinta = ink.
+    examples:
+      - text: Akhir ceritanya tragis, tapi ada banyak humor di tengahnya.
+        ar_eg: نهاية القصة مأساوية، بس فيه فكاهة كتير في النص.
+        ar: نهاية القصة مأساوية، لكن في وسطها كثير من الفكاهة.
+        en: The ending is tragic, but there's lots of humour along the way.
+      - text: Tarian itu elegan dan musiknya brilian.
+        ar_eg: الرقصة دي أنيقة والمزيكا عبقرية.
+        ar: تلك الرقصة أنيقة وموسيقاها بارعة.
+        en: The dance was elegant and the music brilliant.
+      - text: Kritiknya tajam, seperti tinta merah guru.
+        ar_eg: نقده حاد، زي حبر المدرس الأحمر.
+        ar: نقده لاذع كحبر المعلّم الأحمر.
+        en: His critique is sharp, like a teacher's red ink.
 exercises:
   - id: e01
-    type: listen
-    text: Seniman itu sudah berkarya selama tiga puluh tahun.
-    question:
-      ar_eg: الفنان بيشتغل في الفن بقاله قد إيه؟
-      ar: منذ كم سنة يعمل الفنّان في الفنّ؟
-      en: How long has the artist been working?
-    options:
-      - تلات سنين.
-      - تلاتين سنة.
-      - تلتاشر سنة.
-    answer: 1
-    words: [seniman, berkarya]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «Saya ingin memperkenalkan sape kepada anak muda.» معناها إيه؟
-      ar: ما معنى «Saya ingin memperkenalkan sape kepada anak muda.»؟
-      en: What does "Saya ingin memperkenalkan sape kepada anak muda." mean?
-    options:
-      - عايز أعرّف الشباب بالسابي.
-      - عايز أبيع السابي للشباب.
-      - عايز أصلّح السابي بتاعة الشباب.
-    answer: 0
-    words: [memperkenalkan]
-  - id: e03
-    type: fill_blank
-    sentence: Pak Lawing adalah ___ sape yang terkenal di Kalimantan Tengah.
-    meaning:
-      ar_eg: الأستاذ لاوينج فنان سابي مشهور في وسط كاليمانتان.
-      ar: الأستاذ لاوينغ فنّان سابي مشهور في كاليمانتان الوسطى.
-      en: Pak Lawing is a well-known sape artist in Central Kalimantan.
-    options: [seniman, sanggar, naskah]
-    answers: [seniman]
-    words: [seniman]
-  - id: e04
-    type: build_sentence
-    source:
-      ar_eg: بقالي عشرين سنة بعمل فن في الفرقة دي.
-      ar: أُبدع في هذه الفرقة منذ عشرين سنة.
-      en: I've been creating work in this troupe for twenty years.
-    answer: Saya sudah berkarya di sanggar ini selama dua puluh tahun.
-    distractors: [seniman, pentas]
-    words: [berkarya, sanggar]
-  - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: إزاي حضرتك بتقوّي التقليد ده؟
-      ar: كيف تقوّي هذا التقليد؟
-      en: How do you strengthen this tradition?
-    answers:
-      - Bagaimana Bapak memperkuat tradisi ini?
-      - Bagaimana Ibu memperkuat tradisi ini?
-      - Bagaimana Anda memperkuat tradisi ini?
-      - Bagaimana cara Bapak memperkuat tradisi ini?
-    words: [memperkuat]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي سؤال مفتوح ومؤدب لفنان؟
-      ar: أيّ سؤال مفتوح ولبق لفنّان؟
-      en: Which is a polite, open question for an artist?
-    options:
-      - Bapak suka sape, ya?
-      - Kamu main musik nggak?
-      - Apa yang membuat Bapak mulai berkarya?
-    answer: 2
-    explain:
-      ar_eg: السؤال المفتوح (Apa / Bagaimana / Mengapa) بيخلي الفنان يحكي. أما «ya?» فإجابتها أيوه أو لأ بس.
-      ar: السؤال المفتوح (Apa / Bagaimana / Mengapa) يدفع الفنّان إلى الحديث، أمّا «ya?» فجوابه نعم أو لا فقط.
-      en: Open questions (Apa / Bagaimana / Mengapa) get the artist talking; a «ya?» question only gets yes or no.
-    words: [berkarya]
-  - id: e07
-    type: speaking
-    text: Sejak kapan Bapak berkarya sebagai seniman?
-    meaning:
-      ar_eg: حضرتك بتشتغل فنان من إمتى؟
-      ar: منذ متى تعمل فنّانًا؟
-      en: Since when have you worked as an artist?
-    words: [berkarya, seniman]
-  - id: e08
-    type: dictation
-    text: Para seniman muda mempertunjukkan tari enggang di Museum Balanga.
-    meaning:
-      ar_eg: الفنانين الشباب قدموا رقصة أبو قرن في متحف بالانجا.
-      ar: قدّم الفنّانون الشباب رقصة طائر أبي قرن في متحف بالانغا.
-      en: The young artists performed the hornbill dance at the Balanga Museum.
-    words: [seniman, mempertunjukkan]
-  - id: e09
     type: match_pairs
     pairs:
-      - text: dawai
-        ar_eg: وتر
-        ar: وتر
-        en: string
-      - text: merdu
-        ar_eg: صوته حلو
-        ar: عذب الصوت
-        en: melodious
-      - text: latihan
-        ar_eg: بروفة
-        ar: تدريب
-        en: rehearsal
-      - text: ulasan
-        ar_eg: نقد / مراجعة
-        ar: مراجعة نقدية
-        en: review
-      - text: melambangkan
-        ar_eg: يرمز لـ
-        ar: يرمز إلى
-        en: to symbolise
-    words: [dawai, merdu, latihan, ulasan, melambangkan]
-  - id: e10
-    type: fill_blank
-    sentence: Lewat lagunya, seniman itu ___ budaya Dayak kepada dunia.
+      - text: kritik
+        ar_eg: نقد
+        ar: نقد
+        en: criticism
+      - text: dramatis
+        ar_eg: درامي
+        ar: درامي
+        en: dramatic
+      - text: tragis
+        ar_eg: مأساوي
+        ar: مأساوي
+        en: tragic
+      - text: humor
+        ar_eg: فكاهة
+        ar: فكاهة
+        en: humour
+    words: [kritik, dramatis, tragis, humor]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: elegan
+        ar_eg: أنيق
+        ar: أنيق
+        en: elegant
+      - text: brilian
+        ar_eg: عبقري
+        ar: بارع
+        en: brilliant
+      - text: fantasi
+        ar_eg: فانتازيا، خيال
+        ar: خيال
+        en: fantasy
+      - text: tinta
+        ar_eg: حبر
+        ar: حبر
+        en: ink
+    words: [elegan, brilian, fantasi, tinta]
+  - id: e03
+    type: listen
+    text: Akhir ceritanya tragis sekali.
+    question:
+      ar_eg: النهاية عاملة إزاي؟
+      ar: كيف النهاية؟
+      en: What is the ending like?
+    options: [مأساوية, مضحكة, مملة]
+    answer: 0
     meaning:
-      ar_eg: من خلال أغانيه، الفنان ده بيعرّف العالم بثقافة الداياك.
-      ar: من خلال أغانيه، يعرّف ذلك الفنّان العالمَ بثقافة الدّاياك.
-      en: Through his songs, that artist introduces Dayak culture to the world.
-    options: [memperkenalkan, memperbaiki, memetik]
-    answers: [memperkenalkan]
-    words: [memperkenalkan, seniman]
+      ar_eg: نهاية القصة مأساوية أوي.
+      ar: نهاية القصة مأساوية جدًا.
+      en: The ending is very tragic.
+    words: [tragis]
+  - id: e04
+    type: fill_blank
+    sentence: Penonton tertawa terus. ___-nya segar sekali.
+    meaning:
+      ar_eg: الجمهور فضل يضحك. الـ ___ بتاعته خفيفة أوي.
+      ar: ظلّ الجمهور يضحك. ___ه منعشة جدًا.
+      en: The audience kept laughing. The ___ was so fresh.
+    options: [Humor, Tinta, Kritik]
+    answers: [Humor]
+    words: [humor, tinta, kritik]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: قصة فيها تنانين وسحر وعوالم مش حقيقية. نوعها إيه؟
+      ar: قصة فيها تنانين وسحر وعوالم غير حقيقية. ما نوعها؟
+      en: A story with dragons, magic and unreal worlds. What genre is it?
+    options: [fantasi, tragis, elegan]
+    answer: 0
+    explain:
+      ar_eg: fantasi = خيال، فانتازيا.
+      ar: fantasi = فانتازيا.
+      en: fantasi = fantasy.
+    words: [fantasi, tragis, elegan]
+  - id: e06
+    type: fill_blank
+    sentence: Gaun penari itu sederhana tapi ___.
+    meaning:
+      ar_eg: فستان الراقصة بسيط بس ___.
+      ar: فستان الراقصة بسيط لكنه ___.
+      en: The dancer's dress was simple but ___.
+    options: [elegan, dramatis, fantasi]
+    answers: [elegan]
+    words: [elegan, dramatis, fantasi]
+  - id: e07
+    type: multiple_choice
+    question: Ide sutradara itu ___! Belum pernah ada yang seperti itu.
+    options: [tragis, humor, brilian]
+    answer: 2
+    explain:
+      ar_eg: brilian = عبقري، رائع جدًا.
+      ar: brilian = عبقري، بارع.
+      en: brilian = brilliant.
+    words: [tragis, humor, brilian]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: النقد ده كان حاد بس مفيد.
+      ar: كان هذا النقد لاذعًا لكنه مفيد.
+      en: That critique was sharp but useful.
+    answer: Kritik itu tajam tapi berguna.
+    distractors: [humor, tinta]
+    words: [kritik, tinta]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Adegan terakhirnya sangat dramatis.
+    answers_meaning:
+      ar_eg: [المشهد الأخير كان درامي جدًا, آخر مشهد كان مثير أوي]
+      ar: [كان المشهد الأخير دراميًا جدًا, المشهد الأخير مثير للغاية]
+      en: [The last scene was very dramatic, The final scene is highly dramatic]
+    words: [dramatis]
+  - id: e10
+    type: speaking
+    text: Musiknya brilian dan tariannya elegan.
+    meaning:
+      ar_eg: المزيكا عبقرية والرقصة أنيقة.
+      ar: الموسيقى بارعة والرقصة أنيقة.
+      en: The music was brilliant and the dance elegant.
+    words: [brilian, elegan]
 dialogue:
-  title: Bersama Pak Lawing
   lines:
+    - speaker: Rina
+      text: Bagaimana sandiwara semalam? Kamu harus menulis ulasan, kan?
+      ar_eg: المسرحية امبارح كانت عاملة إزاي؟ مش لازم تكتب نقد؟
+      ar: كيف كانت مسرحية البارحة؟ عليك أن تكتب مراجعة، أليس كذلك؟
+      en: How was last night's play? You have to write a review, right?
     - speaker: Mohamed
-      text: Terima kasih atas waktunya, Pak. Sejak kapan Bapak berkarya dengan sape?
-      ar_eg: شكرًا على وقتك يا أستاذ. حضرتك بتعزف سابي من إمتى؟
-      ar: شكرًا على وقتك يا أستاذ. منذ متى تُبدع بالسابي؟
-      en: Thank you for your time, sir. Since when have you been making music with the sape?
-    - speaker: Pak Lawing
-      text: Sejak umur dua belas tahun. Kakek saya juga seniman sape.
-      ar_eg: من وأنا عندي اتناشر سنة. وجدي كمان كان فنان سابي.
-      ar: منذ الثانية عشرة، وكان جدّي فنّان سابي أيضًا.
-      en: Since I was twelve. My grandfather was a sape artist too.
+      text: Ya. Ceritanya fantasi, tapi akhirnya tragis.
+      ar_eg: أيوه. القصة فانتازيا، بس النهاية مأساوية.
+      ar: نعم. القصة خيالية لكن نهايتها مأساوية.
+      en: Yes. It's a fantasy, but the ending is tragic.
+    - speaker: Rina
+      text: Ada humornya?
+      ar_eg: كان فيها فكاهة؟
+      ar: هل فيها فكاهة؟
+      en: Was there any humour?
     - speaker: Mohamed
-      text: Apa yang ingin Bapak perkenalkan kepada anak muda sekarang?
-      ar_eg: عايز تعرّف الشباب دلوقتي بإيه؟
-      ar: ما الذي تودّ أن تعرّف به الشباب اليوم؟
-      en: What would you like to introduce to young people today?
-    - speaker: Pak Lawing
-      text: Bahwa sape bukan musik kuno. Kami memperbarui iramanya, tetapi maknanya tetap.
-      ar_eg: إن السابي مش موسيقى قديمة وخلاص. إحنا بنجدد إيقاعها، بس معناها زي ما هو.
-      ar: أنّ السابي ليست موسيقى بالية، فنحن نجدّد إيقاعها ويبقى معناها.
-      en: That the sape isn't old-fashioned music. We renew its rhythms, but the meaning stays.
+      text: Banyak! Dan tarian enggangnya elegan sekali. Musiknya brilian.
+      ar_eg: كتير! ورقصة الإنجانج كانت أنيقة جدًا. والمزيكا عبقرية.
+      ar: كثير! ورقصة الإنغانغ أنيقة جدًا، والموسيقى بارعة.
+      en: Loads! And the hornbill dance was so elegant. The music was brilliant.
+    - speaker: Rina
+      text: Jadi kritikmu positif semua?
+      ar_eg: يعني نقدك كله إيجابي؟
+      ar: إذن نقدك إيجابي كله؟
+      en: So your critique is all positive?
     - speaker: Mohamed
-      text: Kalimat yang indah. Boleh saya kutip dalam ulasan saya?
-      ar_eg: جملة جميلة. ينفع أنقلها في المقال بتاعي؟
-      ar: عبارة جميلة. هل تسمح بأن أقتبسها في مراجعتي؟
-      en: A beautiful line. May I quote it in my review?
+      text: Hampir. Adegan perangnya terlalu dramatis dan terlalu panjang.
+      ar_eg: تقريبًا. مشهد الحرب كان درامي زيادة وطويل زيادة.
+      ar: تقريبًا. كان مشهد الحرب مفرطًا في الدراما وطويلًا جدًا.
+      en: Almost. The battle scene was too dramatic and too long.
 new_words:
-  - word: seniman
+  - word: kritik
     pos: noun
-    ar_eg: فنان
-    ar: فنّان
-    en: artist
-  - word: berkarya
-    pos: verb
-    ar_eg: يبدع / يعمل أعمال فنية
-    ar: يُبدع
-    en: to create, to produce work
+    ar_eg: نقد
+    ar: نقد
+    en: criticism, critique
+  - word: dramatis
+    pos: adjective
+    ar_eg: درامي، مثير
+    ar: درامي، مثير
+    en: dramatic
+  - word: tragis
+    pos: adjective
+    ar_eg: مأساوي
+    ar: مأساوي
+    en: tragic
+  - word: humor
+    pos: noun
+    ar_eg: فكاهة، دم خفيف
+    ar: فكاهة
+    en: humour
+  - word: elegan
+    pos: adjective
+    ar_eg: أنيق
+    ar: أنيق
+    en: elegant
+  - word: brilian
+    pos: adjective
+    ar_eg: عبقري، رائع جدًا
+    ar: بارع، عبقري
+    en: brilliant
+  - word: fantasi
+    pos: noun
+    ar_eg: فانتازيا، خيال
+    ar: خيال، فانتازيا
+    en: fantasy
+  - word: tinta
+    pos: noun
+    ar_eg: حبر
+    ar: حبر
+    en: ink
 review:
   status: draft
   verified: false
