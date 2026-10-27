@@ -1,209 +1,236 @@
 schema: kabar.lesson/v1
 id: bipa2.u03.l05
 language: id
-title: Bandara
+title: Kedatangan
 can_do:
-  ar_eg: تفهم إعلان في المطار وتتصرف على أساسه.
-  ar: أن تفهم إعلانًا في المطار وتتصرف بحسبه.
-  en: Act on an airport announcement.
+  ar_eg: 'تفهم إعلانات الوصول في المطار: البوابة والجوازات والفيزا والشنط.'
+  ar: 'أن تفهم إعلانات الوصول في المطار: البوابة والجوازات والتأشيرة والأمتعة.'
+  en: 'Follow airport arrival announcements: gate, immigration, visa and baggage.'
 slides:
-  - title: Para penumpang, harap segera …
+  - title: Di bandara
     body:
       ar_eg: |
-        إعلانات المطار ليها ترتيب ثابت، ركّز في تلات حاجات:
-        1. مين؟ Para penumpang penerbangan … tujuan … = ركاب رحلة … المتجهة لـ …
-        2. إيه اللي حصل؟ terlambat (متأخرة) / pintu pindah (البوابة اتغيرت)
-        3. تعمل إيه؟ Harap segera menuju pintu … = برجاء التوجه فورًا لبوابة …
+        pengumuman = إعلان (من umum = عام). gerbang = بوابة: Gerbang 5.
+        mendarat = تهبط (darat = أرض). kedatangan = الوصول (ke-datang-an)، والباب اللي بيستناك فيه صحابك: pintu kedatangan.
+        imigrasi = الجوازات، وvisa = فيزا. وبعدها ambil bagasi: تاخد شنطك (ambil = ياخد).
       ar: |
-        لإعلانات المطار ترتيب ثابت؛ انتبه لثلاثة أمور:
-        1. مَن؟ Para penumpang penerbangan … tujuan …
-        2. ماذا حدث؟ terlambat (متأخرة) / pintu pindah (تغيّرت البوابة)
-        3. ماذا تفعل؟ Harap segera menuju pintu … = يُرجى التوجه فورًا إلى البوابة …
+        pengumuman = إعلان (من umum = عامّ). gerbang = بوابة: Gerbang 5.
+        mendarat = تهبط (darat = البرّ). kedatangan = الوصول (ke-datang-an)، وpintu kedatangan حيث ينتظرك أصدقاؤك.
+        imigrasi = الجوازات، وvisa = التأشيرة، ثم ambil bagasi: تأخذ أمتعتك (ambil = يأخذ).
       en: |
-        Airport announcements follow a fixed order. Listen for three things:
-        1. Who? Para penumpang penerbangan … tujuan … = passengers on flight … to …
-        2. What happened? terlambat (delayed) / pintu pindah (gate changed)
-        3. What to do? Harap segera menuju pintu … = please go to gate … immediately
-    grammar: id.notice.harap-dilarang
+        pengumuman = announcement (umum = public). gerbang = gate: Gerbang 5.
+        mendarat = land (darat = land). kedatangan = arrival (ke-datang-an); pintu kedatangan is where friends wait.
+        imigrasi = immigration, visa = visa, then ambil bagasi: collect your baggage (ambil = take).
     examples:
-      - text: Harap segera menuju pintu lima.
-        ar_eg: برجاء التوجه فورًا لبوابة خمسة.
-        ar: يُرجى التوجه فورًا إلى البوابة الخامسة.
-        en: Please go to gate five immediately.
+      - text: Perhatian! Ini pengumuman untuk penumpang ke Bali.
+        ar_eg: انتباه! ده إعلان لركاب بالي.
+        ar: انتباه! هذا إعلان للمسافرين إلى بالي.
+        en: Attention! This is an announcement for passengers to Bali.
+      - text: Pesawat dari Kairo sudah mendarat.
+        ar_eg: الطيارة اللي جاية من القاهرة نزلت.
+        ar: هبطت الطائرة القادمة من القاهرة.
+        en: The plane from Cairo has landed.
+      - text: Saya ambil bagasi, lalu ke pintu kedatangan.
+        ar_eg: باخد شنطي، وبعدين أروح باب الوصول.
+        ar: آخذ أمتعتي ثم أتوجّه إلى بوابة الوصول.
+        en: I collect my bags, then go to the arrivals door.
 exercises:
   - id: e01
-    type: listen
-    text: Harap segera menuju pintu lima.
-    options: [Dilarang menuju pintu lima., Harap segera menuju pintu lima., Harap segera menuju pintu sembilan.]
-    answer: 1
-    words: [harap, segera, menuju, pintu]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: سمعت «Para penumpang penerbangan GA 405, pintu pindah ke pintu tujuh». لازم تعمل إيه؟
-      ar: سمعت «Para penumpang penerbangan GA 405, pintu pindah ke pintu tujuh». ماذا تفعل؟
-      en: You hear "Para penumpang penerbangan GA 405, pintu pindah ke pintu tujuh". What do you do?
-    options: [Saya menunggu di pintu lama., Saya pulang ke hotel., Saya pergi ke pintu tujuh.]
-    answer: 2
-    explain:
-      ar_eg: pindah ke pintu tujuh = البوابة اتنقلت لبوابة سبعة.
-      ar: pindah ke pintu tujuh = انتقلت البوابة إلى السابعة.
-      en: pindah ke pintu tujuh = the gate moved to gate seven.
-    words: [pindah, pintu, menunggu, lama]
-  - id: e03
-    type: fill_blank
-    sentence: Mohon ___. Para penumpang penerbangan GA 405, harap segera naik ke pesawat.
-    meaning:
-      ar_eg: انتباه من فضلكم. حضرات ركاب رحلة GA 405، برجاء ركوب الطيارة فورًا.
-      ar: انتباه من فضلكم. السادة ركاب رحلة GA 405، يُرجى الصعود إلى الطائرة فورًا.
-      en: Attention please. Passengers on flight GA 405, please board the plane immediately.
-    answers: [perhatian]
-    words: [perhatian]
-  - id: e04
-    type: fill_blank
-    sentence: Penerbangan ke Jakarta ___ satu jam. Mohon maaf atas keterlambatan ini.
-    meaning:
-      ar_eg: رحلة جاكرتا متأخرة ساعة. بنعتذر عن التأخير ده.
-      ar: رحلة جاكرتا متأخرة ساعة. نعتذر عن هذا التأخير.
-      en: The flight to Jakarta is an hour late. We apologise for this delay.
-    answers: [terlambat]
-    words: [terlambat]
-  - id: e05
-    type: build_sentence
-    source:
-      ar_eg: لازم نتوجه حالًا لبوابة سبعة.
-      ar: يجب أن نتوجه فورًا إلى البوابة السابعة.
-      en: We have to head to gate seven right away.
-    answer: Kita harus segera menuju pintu tujuh.
-    distractors: [dilarang, pindah]
-    words: [harus, segera, menuju, pintu]
-  - id: e06
     type: match_pairs
     pairs:
-      - text: segera
-        ar_eg: فورًا، حالًا
-        ar: فورًا
-        en: right away
-      - text: menuju
-        ar_eg: يتوجه لـ
-        ar: يتوجه إلى
-        en: head for
-      - text: pindah
-        ar_eg: يتنقل
-        ar: ينتقل
-        en: move
-      - text: untung
-        ar_eg: من حسن الحظ
-        ar: لحسن الحظ
-        en: luckily
-      - text: jadwal
-        ar_eg: جدول مواعيد
-        ar: جدول مواعيد
-        en: timetable
-      - text: tujuan
-        ar_eg: وجهة
-        ar: وجهة
-        en: destination
-    words: [segera, menuju, pindah, untung, jadwal, tujuan]
-  - id: e07
-    type: fill_blank
-    sentence: ___ kita tidak terlambat!
+      - text: pengumuman
+        ar_eg: إعلان
+        ar: إعلان
+        en: announcement
+      - text: gerbang
+        ar_eg: بوابة
+        ar: بوابة
+        en: gate
+      - text: bagasi
+        ar_eg: شنط السفر
+        ar: أمتعة
+        en: baggage
+      - text: imigrasi
+        ar_eg: الجوازات
+        ar: الجوازات
+        en: immigration
+    words: [pengumuman, gerbang, bagasi, imigrasi]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: visa
+        ar_eg: فيزا
+        ar: تأشيرة
+        en: visa
+      - text: ambil
+        ar_eg: ياخد
+        ar: يأخذ
+        en: take
+      - text: mendarat
+        ar_eg: تهبط
+        ar: تهبط
+        en: land
+      - text: kedatangan
+        ar_eg: الوصول
+        ar: الوصول
+        en: arrival
+    words: [visa, ambil, mendarat, kedatangan]
+  - id: e03
+    type: listen
+    text: Penumpang ke Bali, harap ke gerbang lima sekarang.
+    question:
+      ar_eg: يروحوا فين؟
+      ar: إلى أين يتوجّهون؟
+      en: Where should they go?
+    options: [البوابة ٥, الجوازات, الشنط]
+    answer: 0
     meaning:
-      ar_eg: الحمد لله إننا ما اتأخرناش!
-      ar: لحسن الحظ لم نتأخر!
-      en: Luckily we're not late!
-    options: [Untung, Segera, Pindah]
-    answers: [Untung]
-    words: [untung]
-  - id: e08
+      ar_eg: ركاب بالي، يا ريت تروحوا البوابة ٥ حالًا.
+      ar: على المسافرين إلى بالي التوجّه فورًا إلى البوابة الخامسة.
+      en: Passengers to Bali, please go to gate five now.
+    words: [gerbang]
+  - id: e04
+    type: fill_blank
+    sentence: Pesawat dari Kairo sudah ___ di Jakarta.
+    meaning:
+      ar_eg: الطيارة اللي من القاهرة ___ في جاكرتا.
+      ar: الطائرة القادمة من القاهرة ___ في جاكرتا.
+      en: The plane from Cairo has ___ in Jakarta.
+    options: [mendarat, ambil, menunggu]
+    answers: [mendarat]
+    words: [mendarat, ambil]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الشنط اللي بتشحنها في الطيارة اسمها…؟
+      ar: ما اسم الحقائب التي تشحنها في الطائرة؟
+      en: The bags you check in on a plane are called…?
+    options: [bagasi, visa, gerbang]
+    answer: 0
+    explain:
+      ar_eg: bagasi = شنط السفر المشحونة.
+      ar: bagasi = الأمتعة.
+      en: bagasi = checked baggage.
+    words: [bagasi, visa, gerbang]
+  - id: e06
+    type: fill_blank
+    sentence: Di ___, petugas periksa paspor dan visa.
+    meaning:
+      ar_eg: في ___، الموظف بيكشف على الباسبور والفيزا.
+      ar: في ___ يفحص الموظّف الجواز والتأشيرة.
+      en: At ___, the officer checks passports and visas.
+    options: [imigrasi, kedatangan, pengumuman]
+    answers: [imigrasi]
+    words: [imigrasi, visa, kedatangan, pengumuman]
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: (إعلان) حضرات الركاب، برجاء الهدوء.
-      ar: (إعلان) السادة الركاب، يُرجى الهدوء.
-      en: (announcement) Passengers, please be quiet.
-    answer: Para penumpang, harap tenang.
-    distractors: [dilarang, merokok]
-    words: [para, penumpang, harap, tenang]
+      ar_eg: هاخد شنطي من هناك.
+      ar: سآخذ أمتعتي من هناك.
+      en: I'll collect my baggage over there.
+    answer: Saya ambil bagasi saya di sana.
+    distractors: [gerbang, visa]
+    words: [ambil, bagasi]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Dengar pengumuman itu! Pesawat kita terlambat.
+    answers_meaning:
+      ar_eg: [اسمع الإعلان ده! طيارتنا متأخرة, اسمع الإعلان! الطيارة بتاعتنا اتأخرت]
+      ar: [اسمع ذلك الإعلان! طائرتنا متأخّرة]
+      en: [Listen to that announcement! Our plane is late, Listen to the announcement! Our flight is delayed]
+    words: [pengumuman]
   - id: e09
-    type: dictation
-    text: Pintu pindah. Saya menunggu lama di pintu tujuh.
-    meaning:
-      ar_eg: البوابة اتنقلت. أنا استنيت كتير عند بوابة سبعة.
-      ar: انتقلت البوابة. انتظرتُ طويلًا عند البوابة السابعة.
-      en: The gate moved. I waited a long time at gate seven.
-    words: [pindah, pintu, menunggu, lama]
-  - id: e10
     type: speaking
-    text: Untung saya tidak menunggu lama. Saya segera menuju pintu tujuh.
+    text: Pesawatnya sudah mendarat. Saya ada di pintu kedatangan.
     meaning:
-      ar_eg: الحمد لله ما استنيتش كتير. أنا رايح حالًا على بوابة سبعة.
-      ar: لحسن الحظ لم أنتظر طويلًا. سأتوجه فورًا إلى البوابة السابعة.
-      en: Luckily I didn't wait long. I'm heading to gate seven right away.
-    words: [untung, menunggu, lama, segera, menuju]
+      ar_eg: الطيارة نزلت. أنا عند باب الوصول.
+      ar: هبطت الطائرة، وأنا عند بوابة الوصول.
+      en: The plane has landed. I'm at the arrivals door.
+    words: [mendarat, kedatangan]
+  - id: e10
+    type: multiple_choice
+    question: Saya orang Mesir. Untuk masuk Indonesia, saya perlu paspor dan ___.
+    options: [visa, imigrasi, bagasi]
+    answer: 0
+    explain:
+      ar_eg: المصري محتاج فيزا لإندونيسيا.
+      ar: يحتاج المصري إلى تأشيرة لدخول إندونيسيا.
+      en: An Egyptian needs a visa for Indonesia.
+    words: [visa, imigrasi, bagasi]
 dialogue:
-  title: Pintu pindah!
   lines:
-    - speaker: Pengumuman
-      text: Mohon perhatian. Para penumpang penerbangan GA 405 tujuan Jakarta, pintu pindah ke pintu lima. Harap segera menuju pintu lima.
-      ar_eg: انتباه من فضلكم. حضرات ركاب رحلة GA 405 المتجهة لجاكرتا، البوابة اتنقلت لبوابة خمسة. برجاء التوجه فورًا لبوابة خمسة.
-      ar: انتباه من فضلكم. السادة ركاب رحلة GA 405 المتجهة إلى جاكرتا، انتقلت البوابة إلى البوابة الخامسة. يُرجى التوجه فورًا إلى البوابة الخامسة.
-      en: Attention please. Passengers on flight GA 405 to Jakarta, your gate has changed to gate five. Please go to gate five immediately.
     - speaker: Mohamed
-      text: Mas, itu pesawat kita! Pintunya pindah?
-      ar_eg: يا ماس، دي طيارتنا! البوابة اتغيرت؟
-      ar: يا ماس، هذه طائرتنا! هل تغيّرت البوابة؟
-      en: Mas, that's our plane! Has the gate changed?
-    - speaker: Mas Rizal
-      text: Ya, ke pintu lima. Kita harus segera ke sana.
-      ar_eg: أيوه، لبوابة خمسة. لازم نروح هناك حالًا.
-      ar: نعم، إلى البوابة الخامسة. يجب أن نذهب إلى هناك فورًا.
-      en: Yes, to gate five. We have to go there right away.
+      text: Halo, Rina! Pesawat saya sudah mendarat.
+      ar_eg: ألو يا رينا! طيارتي نزلت.
+      ar: مرحبًا يا رينا! هبطت طائرتي.
+      en: Hi, Rina! My plane has landed.
+    - speaker: Rina
+      text: Selamat datang! Saya di pintu kedatangan.
+      ar_eg: أهلًا بيك! أنا عند باب الوصول.
+      ar: أهلًا بك! أنا عند بوابة الوصول.
+      en: Welcome! I'm at the arrivals door.
     - speaker: Mohamed
-      text: Permisi, Pak. Pintu lima di mana?
-      ar_eg: لو سمحت يا أستاذ. بوابة خمسة فين؟
-      ar: عفوًا يا سيدي. أين البوابة الخامسة؟
-      en: Excuse me, sir. Where is gate five?
-    - speaker: Petugas
-      text: Lurus saja, lalu belok kiri. Hati-hati, lantainya licin.
-      ar_eg: علطول، وبعدين حوّد شمال. خلي بالك، الأرض بتزحلق.
-      ar: امشِ مباشرةً ثم انعطف يسارًا. انتبه، الأرض زلقة.
-      en: Straight ahead, then turn left. Careful, the floor is slippery.
+      text: Saya masih di imigrasi. Antrenya panjang.
+      ar_eg: أنا لسه في الجوازات. الطابور طويل.
+      ar: ما زلت في الجوازات، والطابور طويل.
+      en: I'm still at immigration. The queue is long.
+    - speaker: Rina
+      text: Tidak apa-apa. Visamu sudah ada?
+      ar_eg: مش مشكلة. الفيزا معاك؟
+      ar: لا بأس. هل معك تأشيرتك؟
+      en: No problem. Have you got your visa?
     - speaker: Mohamed
-      text: Terima kasih, Pak! Untung pesawatnya belum berangkat.
-      ar_eg: شكرًا يا أستاذ! من حسن الحظ إن الطيارة لسه مطلعتش.
-      ar: شكرًا يا سيدي! لحسن الحظ أن الطائرة لم تُقلع بعد.
-      en: Thank you, sir! Luckily the plane hasn't left yet.
+      text: Sudah. Sesudah imigrasi, saya ambil bagasi.
+      ar_eg: أيوه. بعد الجوازات هاخد الشنط.
+      ar: نعم. بعد الجوازات آخذ أمتعتي.
+      en: Yes. After immigration, I'll get my bags.
+    - speaker: Rina
+      text: Baik! Saya menunggu di sini.
+      ar_eg: تمام! أنا مستنياك هنا.
+      ar: حسنًا! أنتظرك هنا.
+      en: OK! I'll wait here.
 new_words:
-  - word: segera
-    pos: adverb
-    ar_eg: فورًا، حالًا
-    ar: فورًا
-    en: immediately, right away
-  - word: menuju
+  - word: pengumuman
+    pos: noun
+    ar_eg: إعلان
+    ar: إعلان
+    en: announcement
+  - word: gerbang
+    pos: noun
+    ar_eg: بوابة
+    ar: بوابة
+    en: gate
+  - word: bagasi
+    pos: noun
+    ar_eg: شنط السفر
+    ar: أمتعة
+    en: baggage, luggage
+  - word: imigrasi
+    pos: noun
+    ar_eg: الجوازات
+    ar: الجوازات، الهجرة
+    en: immigration
+  - word: visa
+    pos: noun
+    ar_eg: فيزا
+    ar: تأشيرة
+    en: visa
+  - word: ambil
     pos: verb
-    ar_eg: يتوجه لـ
-    ar: يتوجه إلى
-    en: to head for
-  - word: pindah
+    ar_eg: ياخد
+    ar: يأخذ
+    en: take, collect
+  - word: mendarat
     pos: verb
-    ar_eg: يتنقل، يتغير مكانه
-    ar: ينتقل
-    en: to move, change place
-  - word: untung
-    pos: adverb
-    ar_eg: من حسن الحظ
-    ar: لحسن الحظ
-    en: luckily
-  - word: menunggu
-    pos: verb
-    ar_eg: يستنى
-    ar: ينتظر
-    en: to wait
-  - word: lama
-    pos: adjective
-    ar_eg: قديم، وكمان «مدة طويلة» (menunggu lama = استنى كتير)
-    ar: قديم، و«طويل المدة» (menunggu lama = انتظر طويلًا)
-    en: old (not new); long (time)
+    ar_eg: تهبط، تنزل
+    ar: تهبط
+    en: land
+  - word: kedatangan
+    pos: noun
+    ar_eg: الوصول
+    ar: الوصول
+    en: arrival
 review:
   status: draft
   verified: false

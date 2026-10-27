@@ -1,165 +1,224 @@
 schema: kabar.lesson/v1
 id: j5.u01.l07
 language: jv
-title: Kairo ing Wikipedia
+title: Ringkesan
 can_do:
-  ar_eg: تسمع مقالة ويكيبيديا جاوية عن القاهرة وتفهمها من غير ما تشوفها.
-  ar: أن تستمع إلى مقالة ويكيبيديا جاوية عن القاهرة وتفهمها دون أن تراها.
-  en: Follow a Javanese Wikipedia article about Cairo by ear.
+  ar_eg: تلخّص مقالة بالإندونيسي أو بالعربي.
+  ar: أن تلخّص مقالة بالإندونيسية أو بالعربية.
+  en: Summarise an article in Indonesian or Arabic.
+slides:
+  - title: Artikel Kutha Lama
+    body:
+      ar_eg: |
+        ringkesan = ملخّص (ringkasan). اقرا التلات جمل دول، وبعدين قول الفكرة في جملة واحدة.
+        الطريقة: لاقي iku (الموضوع إيه)، وبعدين saka (منين جه)، وdadi (بقى إيه).
+        وكلمة من العربي: jaman = زمن، من «زمان». jaman Walanda = أيام الهولنديين.
+      ar: |
+        ringkesan = ملخّص (ringkasan). اقرأ هذه الجمل الثلاث ثم قل فكرتها في جملة واحدة.
+        والطريقة: ابحث عن iku (ما الموضوع)، ثم saka (من أين أتى)، ثم dadi (ماذا صار).
+        وكلمة عربية الأصل: jaman = زمن، من «زمان»، وjaman Walanda = عهد الهولنديين.
+      en: |
+        ringkesan = summary (ringkasan). Read these three sentences, then give the idea in one.
+        The method: find iku (what it's about), then saka (where it comes from), then dadi (what it became).
+        A word from Arabic: jaman = era, from «زمان». jaman Walanda = the Dutch era.
+    grammar: jv.reading.written-style
+    examples:
+      - text: Kutha Lama iku papan kang lawas ing Semarang.
+        ar_eg: كوتا لاما مكان قديم في سيمارانج.
+        ar: كوتا لاما مكان قديم في سيمارانج.
+        en: Kota Lama is an old place in Semarang.
+      - text: Ing kono ana gedhong-gedhong lawas saka jaman Walanda.
+        ar_eg: هناك فيه مباني قديمة من أيام الهولنديين.
+        ar: هناك مبانٍ قديمة من عهد الهولنديين.
+        en: There are old buildings there from the Dutch era.
+      - text: Saiki Kutha Lama dadi papan wisata kang misuwur.
+        ar_eg: دلوقتي كوتا لاما بقت مكان سياحي مشهور.
+        ar: صارت كوتا لاما اليوم مكانًا سياحيًا مشهورًا.
+        en: Today Kota Lama has become a famous tourist spot.
 exercises:
   - id: e01
-    type: listen
-    text: Kairo iku ibukutha Mesir lan kutha kang paling gedhe ing Mesir.
-    question:
-      ar_eg: دي مقالة عن مدينتك! المقالة بتقول إن القاهرة إيه؟
-      ar: هذه مقالة عن مدينتك! ماذا تقول المقالة عن القاهرة؟
-      en: This article is about your city! What does it say Cairo is?
-    options: [ibukutha Mesir, pulo ing Mesir, provinsi ing Mesir]
-    answer: 0
-    meaning:
-      ar_eg: القاهرة هي عاصمة مصر وأكبر مدينة في مصر.
-      ar: القاهرة عاصمة مصر وأكبر مدنها.
-      en: Cairo is the capital of Egypt and the biggest city in Egypt.
-    explain:
-      ar_eg: kang paling gedhe = اللي هي الأكبر (yang paling besar).
-      ar: kang paling gedhe = الأكبر (yang paling besar).
-      en: kang paling gedhe = the biggest (yang paling besar).
-    words: [ibukutha]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: المقالة دي عن إيه أساسًا؟
+      ar: عمَّ تتحدث المقالة أساسًا؟
+      en: What is the article mainly about?
+    options: [Lumpia Semarang, Kutha Lama Semarang, Pesisir kidul]
+    answer: 1
+    words: [lawas]
   - id: e02
     type: listen
-    text: Kutha iki ana ing pinggir kali Nil.
-    question:
-      ar_eg: القاهرة فين؟
-      ar: أين تقع القاهرة؟
-      en: Where is Cairo?
-    options: [ing pinggir segara, ing pinggir kali Nil, ing pesisir kidul]
-    answer: 1
+    text: Ing kono ana gedhong-gedhong lawas saka jaman Walanda.
+    options:
+      - Ing kono ana gedhong-gedhong lawas saka jaman Walanda.
+      - Ing kono ana gedhong-gedhong anyar saka jaman saiki.
+      - Ing kene ana sepur lawas saka jaman Walanda.
+    answer: 0
     meaning:
-      ar_eg: المدينة دي على ضفة نهر النيل.
-      ar: تقع هذه المدينة على ضفة نهر النيل.
-      en: This city lies on the bank of the Nile.
-    explain:
-      ar_eg: kali = نهر، زي kali في الإندونيسي (sungai). pinggir = جنب / ضفة.
-      ar: kali = نهر، كـ kali في الإندونيسية (sungai)، وpinggir = حافة / ضفة.
-      en: kali = river, as in Indonesian kali (sungai); pinggir = edge, bank.
-    words: [kali]
+      ar_eg: هناك فيه مباني قديمة من أيام الهولنديين.
+      ar: هناك مبانٍ قديمة من عهد الهولنديين.
+      en: There are old buildings there from the Dutch era.
+    words: [jaman, Walanda, anyar]
   - id: e03
-    type: listen
-    text: Ing Kairo ana masjid kang lawas banget, yaiku Masjid Al-Azhar.
-    question:
-      ar_eg: المقالة ذكرت أنهي مكان؟
-      ar: أي مكان تذكره المقالة؟
-      en: Which place does the article name?
-    options: [Lawang Sewu, Menara Kudus, Masjid Al-Azhar]
-    answer: 2
-    meaning:
-      ar_eg: في القاهرة جامع قديم جدًا، هو الجامع الأزهر.
-      ar: في القاهرة مسجد قديم جدًا، هو الجامع الأزهر.
-      en: In Cairo there is a very old mosque, namely Al-Azhar Mosque.
-    words: [yaiku, lawas]
-  - id: e04
-    type: match_pairs
-    pairs:
-      - text: kali
-        ar_eg: نهر
-        ar: نهر
-        en: river
-      - text: segara
-        ar_eg: بحر
-        ar: بحر
-        en: sea
-      - text: pulo
-        ar_eg: جزيرة
-        ar: جزيرة
-        en: island
-      - text: ibukutha
-        ar_eg: عاصمة
-        ar: عاصمة
-        en: capital city
-      - text: paling gedhe
-        ar_eg: الأكبر
-        ar: الأكبر
-        en: the biggest
-    words: [kali, segara, pulo, ibukutha]
-  - id: e05
     type: fill_blank
-    sentence: Ing Kairo ana masjid kang lawas banget, ___ Masjid Al-Azhar.
+    sentence: Gedhong-gedhong iki saka ___ Walanda.
     meaning:
-      ar_eg: في القاهرة جامع قديم جدًا، هو الجامع الأزهر.
-      ar: في القاهرة مسجد قديم جدًا، هو الجامع الأزهر.
-      en: In Cairo there is a very old mosque, namely Al-Azhar Mosque.
-    options: [minangka, yaiku, kalebu]
-    answers: [yaiku]
+      ar_eg: المباني دي من أيام الهولنديين.
+      ar: هذه المباني من عهد الهولنديين.
+      en: These buildings are from the Dutch era.
+    options: [papan, jaman, donya]
+    answers: [jaman]
+    words: [jaman, Walanda]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة أحسن ringkesan (ملخّص) للمقالة؟
+      ar: أي جملة هي أفضل ringkesan (ملخّص) للمقالة؟
+      en: Which sentence is the best ringkesan (summary) of the article?
+    options:
+      - Semarang misuwur minangka Kutha Lumpia.
+      - Kutha Lama iku papan lawas saka jaman Walanda, saiki dadi papan wisata.
+      - Stasiun Tawang ana ing pesisir kidul.
+    answer: 1
     explain:
-      ar_eg: yaiku بتسمّي الحاجة اللي اتكلمنا عنها بشكل عام («جامع قديم» ← الأزهر).
-      ar: yaiku تسمّي ما ذُكر بشكل عام («مسجد قديم» ← الأزهر).
-      en: yaiku names the thing just mentioned in general terms ("an old mosque" → Al-Azhar).
-    words: [yaiku]
+      ar_eg: الملخّص فيه الموضوع (Kutha Lama)، وأصله (jaman Walanda)، وحاله دلوقتي (papan wisata).
+      ar: الملخّص فيه الموضوع (Kutha Lama) وأصله (jaman Walanda) وحاله اليوم (papan wisata).
+      en: The summary has the topic (Kutha Lama), its origin (jaman Walanda) and what it is now (papan wisata).
+    words: [ringkesan, jaman]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: كوتا لاما مكان قديم من أيام الهولنديين.
+      ar: كوتا لاما مكان قديم من عهد الهولنديين.
+      en: Kota Lama is an old place from the Dutch era.
+    answer: Kutha Lama iku papan lawas saka jaman Walanda.
+    distractors: [kang, segara]
+    words: [jaman, Walanda, papan]
   - id: e06
-    type: dictation
-    text: Kutha iki ana ing pinggir kali Nil.
-    meaning:
-      ar_eg: المدينة دي على ضفة نهر النيل.
-      ar: تقع هذه المدينة على ضفة نهر النيل.
-      en: This city lies on the bank of the Nile.
-    words: [kali]
+    type: translate
+    direction: from_target
+    source_text: Saiki Kutha Lama dadi papan wisata kang misuwur.
+    answers_meaning:
+      ar_eg:
+        - دلوقتي كوتا لاما بقت مكان سياحي مشهور.
+        - كوتا لاما دلوقتي بقت مكان سياحي مشهور.
+        - دلوقتي كوتا لاما بقت مكان سياحة مشهور.
+        - دلوقتي المدينة القديمة بقت مكان سياحي مشهور.
+      ar:
+        - صارت كوتا لاما اليوم مكانًا سياحيًا مشهورًا.
+        - أصبحت كوتا لاما الآن مكانًا سياحيًا مشهورًا.
+        - صارت كوتا لاما الآن مكانًا سياحيًا مشهورًا.
+        - أصبحت المدينة القديمة الآن مكانًا سياحيًا مشهورًا.
+      en:
+        - Today Kota Lama has become a famous tourist spot.
+        - Kota Lama has now become a famous tourist spot.
+        - Now Kota Lama has become a famous tourist spot.
+        - Now Kota Lama is a famous tourist spot.
+        - Kota Lama is now a famous tourist spot.
+        - Now Kota Lama has become a famous tourist attraction.
+        - Kota Lama has now become a famous tourist attraction.
+        - Kota Lama is now a famous tourist attraction.
+    words: [papan, misuwur]
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: (بأسلوب المقالة) القاهرة هي عاصمة مصر، وهي على ضفة نهر النيل.
-      ar: (بأسلوب المقالة) القاهرة عاصمة مصر، وتقع على ضفة نهر النيل.
-      en: (article style) Cairo is the capital of Egypt and lies on the bank of the Nile.
+      ar_eg: (بأسلوب المقالة) المباني القديمة دي من أيام الهولنديين.
+      ar: (بأسلوب المقالة) هذه المباني القديمة من عهد الهولنديين.
+      en: (article style) The old buildings are from the Dutch era.
     answers:
-      - Kairo iku ibukutha Mesir lan ana ing pinggir kali Nil.
-      - Kairo iku ibukutha Mesir, ana ing pinggir kali Nil.
-      - Kairo iku ibukutha Mesir lan kutha iki ana ing pinggir kali Nil.
-      - Kairo iku ibukutha Mesir. Kutha iki ana ing pinggir kali Nil.
-      - Kairo ibukutha Mesir lan ana ing pinggir kali Nil.
-      - Kairo iku ibukutha Mesir lan ana ing pinggire kali Nil.
-    words: [kali, ibukutha]
+      - Gedhong-gedhong lawas iku saka jaman Walanda.
+      - Gedhong-gedhong kang lawas iku saka jaman Walanda.
+      - Gedhong-gedhong lawas saka jaman Walanda.
+      - Gedhong lawas iku saka jaman Walanda.
+      - Gedhong-gedhong lawas iki saka jaman Walanda.
+      - Gedhong-gedhong kang lawas saka jaman Walanda.
+    words: [jaman, Walanda]
   - id: e08
-    type: speaking
-    text: Aku saka Kairo, ibukutha Mesir, ing pinggir kali Nil.
+    type: fill_blank
+    sentence: Iki ___ artikel anyar.
     meaning:
-      ar_eg: أنا من القاهرة، عاصمة مصر، على ضفة النيل.
-      ar: أنا من القاهرة، عاصمة مصر، على ضفة النيل.
-      en: I'm from Cairo, the capital of Egypt, on the bank of the Nile.
-    words: [kali, ibukutha]
+      ar_eg: ده ملخّص المقالة الجديدة.
+      ar: هذا ملخّص المقالة الجديدة.
+      en: This is the summary of the new article.
+    options: [jamane, ringkesane, papane]
+    answers: [ringkesane]
+    explain:
+      ar_eg: ringkesan + -e = ringkesane، يعني «ملخّص الـ…».
+      ar: ringkesan + -e = ringkesane، أي «ملخّص …».
+      en: ringkesan + -e = ringkesane, "the summary of …".
+    words: [ringkesan, anyar]
+  - id: e09
+    type: speaking
+    text: Ringkesane, Kutha Lama iku papan lawas saka jaman Walanda.
+    meaning:
+      ar_eg: الملخّص إن كوتا لاما مكان قديم من أيام الهولنديين.
+      ar: الملخّص أن كوتا لاما مكان قديم من عهد الهولنديين.
+      en: In short, Kota Lama is an old place from the Dutch era.
+    words: [ringkesan, Walanda]
+  - id: e10
+    type: multiple_choice
+    question: Gedhong iki anyar, dudu lawas.
+    question_meaning:
+      ar_eg: معنى الجملة دي إيه؟
+      ar: ما معنى هذه الجملة؟
+      en: What does this sentence mean?
+    options: ['المبنى ده جديد، مش قديم.', 'المبنى ده قديم، مش جديد.', 'المبنى ده كبير، مش صغير.']
+    answer: 0
+    explain:
+      ar_eg: anyar = جديد (baru)، وعكسها lawas = قديم (lama).
+      ar: anyar = جديد (baru)، وضدّها lawas = قديم.
+      en: anyar = new (baru); its opposite is lawas = old.
+    words: [anyar, lawas]
 dialogue:
-  title: Artikel Kairo
+  title: Ringkesane apa?
   lines:
     - speaker: Mbak Ayu
-      text: Mohamed, aku maca artikel Kairo ing Wikipedia basa Jawa.
-      ar_eg: يا محمد، أنا قريت مقالة القاهرة في ويكيبيديا الجاوية.
-      ar: يا محمد، قرأت مقالة القاهرة في ويكيبيديا الجاوية.
-      en: Mohamed, I read the Cairo article on Javanese Wikipedia.
+      text: Wis maca artikel Kutha Lama? Ringkesane apa?
+      ar_eg: قريت مقالة كوتا لاما؟ ملخّصها إيه؟
+      ar: هل قرأت مقالة كوتا لاما؟ ما ملخّصها؟
+      en: Have you read the Kota Lama article? What's the summary?
     - speaker: Mohamed
-      text: Tenan? Artikele ngomong apa?
-      ar_eg: بجد؟ المقالة بتقول إيه؟
-      ar: حقًا؟ ماذا تقول المقالة؟
-      en: Really? What does the article say?
+      text: Kutha Lama iku papan lawas saka jaman Walanda.
+      ar_eg: كوتا لاما مكان قديم من أيام الهولنديين.
+      ar: كوتا لاما مكان قديم من عهد الهولنديين.
+      en: Kota Lama is an old place from the Dutch era.
     - speaker: Mbak Ayu
-      text: Kairo iku kutha kang paling gedhe ing Mesir, ing pinggir kali Nil.
-      ar_eg: القاهرة أكبر مدينة في مصر، على النيل.
-      ar: القاهرة أكبر مدينة في مصر، على ضفة النيل.
-      en: Cairo is the biggest city in Egypt, on the Nile.
+      text: Bener. Lan saiki piye?
+      ar_eg: صح. وحالها إيه دلوقتي؟
+      ar: صحيح. وما حالها الآن؟
+      en: Right. And what about now?
     - speaker: Mohamed
-      text: Bener. Omahku ora adoh saka kali Nil.
-      ar_eg: صح. بيتي مش بعيد عن النيل.
-      ar: صحيح. بيتي ليس بعيدًا عن النيل.
-      en: Right. My home isn't far from the Nile.
+      text: Saiki dadi papan wisata kang misuwur. Eh, papan wisata sing misuwur!
+      ar_eg: دلوقتي بقت مكان سياحي مشهور. قصدي بالكلام، papan wisata sing misuwur!
+      ar: صارت الآن مكانًا سياحيًا مشهورًا. أقصد بلغة الكلام، papan wisata sing misuwur!
+      en: Now it's a famous tourist spot. Oops, I mean, papan wisata sing misuwur!
     - speaker: Mbak Ayu
-      text: Wah, aku uga arep dolan menyang Kairo!
-      ar_eg: الله، أنا كمان عايزة أزور القاهرة!
-      ar: رائع، أنا أيضًا أريد زيارة القاهرة!
-      en: Wow, I want to visit Cairo too!
+      text: Apik! Ringkesanmu cekak lan bener.
+      ar_eg: حلو! ملخّصك قصير وصح.
+      ar: أحسنت! ملخّصك قصير وصحيح.
+      en: Nice! Your summary is short and correct.
 new_words:
-  - word: kali
+  - word: ringkesan
     pos: noun
-    ar_eg: نهر
-    ar: نهر
-    en: river = sungai, kali
+    ar_eg: ملخّص
+    ar: ملخّص
+    en: summary = ringkasan
+  - word: jaman
+    pos: noun
+    ar_eg: زمن / أيام (من «زمان»)
+    ar: زمن / عهد (من «زمان»)
+    en: era, time = zaman
+    arabic: زمان
+  - word: Walanda
+    pos: noun
+    ar_eg: هولندا / الهولنديين
+    ar: هولندا / الهولنديون
+    en: Holland, the Dutch = Belanda
+  - word: anyar
+    pos: adjective
+    ar_eg: جديد
+    ar: جديد
+    en: new = baru
 review:
   status: draft
   verified: false

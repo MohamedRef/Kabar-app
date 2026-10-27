@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: bipa2.u03.l07
+language: id
+title: Bandara
+can_do:
+  ar_eg: تفهم إعلان في المطار وتتصرف على أساسه.
+  ar: أن تفهم إعلانًا في المطار وتتصرف بحسبه.
+  en: Act on an airport announcement.
+slides:
+  - title: Para penumpang, harap segera …
+    body:
+      ar_eg: |
+        إعلانات المطار ليها ترتيب ثابت، ركّز في تلات حاجات:
+        1. مين؟ Para penumpang penerbangan … tujuan … = ركاب رحلة … المتجهة لـ …
+        2. إيه اللي حصل؟ terlambat (متأخرة) / pintu pindah (البوابة اتغيرت)
+        3. تعمل إيه؟ Harap segera menuju pintu … = برجاء التوجه فورًا لبوابة …
+      ar: |
+        لإعلانات المطار ترتيب ثابت؛ انتبه لثلاثة أمور:
+        1. مَن؟ Para penumpang penerbangan … tujuan …
+        2. ماذا حدث؟ terlambat (متأخرة) / pintu pindah (تغيّرت البوابة)
+        3. ماذا تفعل؟ Harap segera menuju pintu … = يُرجى التوجه فورًا إلى البوابة …
+      en: |
+        Airport announcements follow a fixed order. Listen for three things:
+        1. Who? Para penumpang penerbangan … tujuan … = passengers on flight … to …
+        2. What happened? terlambat (delayed) / pintu pindah (gate changed)
+        3. What to do? Harap segera menuju pintu … = please go to gate … immediately
+    grammar: id.notice.harap-dilarang
+    examples:
+      - text: Harap segera menuju pintu lima.
+        ar_eg: برجاء التوجه فورًا لبوابة خمسة.
+        ar: يُرجى التوجه فورًا إلى البوابة الخامسة.
+        en: Please go to gate five immediately.
+exercises:
+  - id: e01
+    type: listen
+    text: Harap segera menuju pintu lima.
+    options: [Dilarang menuju pintu lima., Harap segera menuju pintu lima., Harap segera menuju pintu sembilan.]
+    answer: 1
+    words: [harap, segera, menuju, pintu]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: سمعت «Para penumpang penerbangan GA 405, pintu pindah ke pintu tujuh». لازم تعمل إيه؟
+      ar: سمعت «Para penumpang penerbangan GA 405, pintu pindah ke pintu tujuh». ماذا تفعل؟
+      en: You hear "Para penumpang penerbangan GA 405, pintu pindah ke pintu tujuh". What do you do?
+    options: [Saya menunggu di pintu lama., Saya pulang ke hotel., Saya pergi ke pintu tujuh.]
+    answer: 2
+    explain:
+      ar_eg: pindah ke pintu tujuh = البوابة اتنقلت لبوابة سبعة.
+      ar: pindah ke pintu tujuh = انتقلت البوابة إلى السابعة.
+      en: pindah ke pintu tujuh = the gate moved to gate seven.
+    words: [pindah, pintu, menunggu, lama]
+  - id: e03
+    type: fill_blank
+    sentence: Mohon ___. Para penumpang penerbangan GA 405, harap segera naik ke pesawat.
+    meaning:
+      ar_eg: انتباه من فضلكم. حضرات ركاب رحلة GA 405، برجاء ركوب الطيارة فورًا.
+      ar: انتباه من فضلكم. السادة ركاب رحلة GA 405، يُرجى الصعود إلى الطائرة فورًا.
+      en: Attention please. Passengers on flight GA 405, please board the plane immediately.
+    answers: [perhatian]
+    words: [perhatian]
+  - id: e04
+    type: fill_blank
+    sentence: Penerbangan ke Jakarta ___ satu jam. Mohon maaf atas keterlambatan ini.
+    meaning:
+      ar_eg: رحلة جاكرتا متأخرة ساعة. بنعتذر عن التأخير ده.
+      ar: رحلة جاكرتا متأخرة ساعة. نعتذر عن هذا التأخير.
+      en: The flight to Jakarta is an hour late. We apologise for this delay.
+    answers: [terlambat]
+    words: [terlambat]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: لازم نتوجه حالًا لبوابة سبعة.
+      ar: يجب أن نتوجه فورًا إلى البوابة السابعة.
+      en: We have to head to gate seven right away.
+    answer: Kita harus segera menuju pintu tujuh.
+    distractors: [dilarang, pindah]
+    words: [harus, segera, menuju, pintu]
+  - id: e06
+    type: match_pairs
+    pairs:
+      - text: segera
+        ar_eg: فورًا، حالًا
+        ar: فورًا
+        en: right away
+      - text: menuju
+        ar_eg: يتوجه لـ
+        ar: يتوجه إلى
+        en: head for
+      - text: pindah
+        ar_eg: يتنقل
+        ar: ينتقل
+        en: move
+      - text: untung
+        ar_eg: من حسن الحظ
+        ar: لحسن الحظ
+        en: luckily
+      - text: jadwal
+        ar_eg: جدول مواعيد
+        ar: جدول مواعيد
+        en: timetable
+      - text: tujuan
+        ar_eg: وجهة
+        ar: وجهة
+        en: destination
+    words: [segera, menuju, pindah, untung, jadwal, tujuan]
+  - id: e07
+    type: fill_blank
+    sentence: ___ kita tidak terlambat!
+    meaning:
+      ar_eg: الحمد لله إننا ما اتأخرناش!
+      ar: لحسن الحظ لم نتأخر!
+      en: Luckily we're not late!
+    options: [Untung, Segera, Pindah]
+    answers: [Untung]
+    words: [untung]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: (إعلان) حضرات الركاب، برجاء الهدوء.
+      ar: (إعلان) السادة الركاب، يُرجى الهدوء.
+      en: (announcement) Passengers, please be quiet.
+    answer: Para penumpang, harap tenang.
+    distractors: [dilarang, merokok]
+    words: [para, penumpang, harap, tenang]
+  - id: e09
+    type: dictation
+    text: Pintu pindah. Saya menunggu lama di pintu tujuh.
+    meaning:
+      ar_eg: البوابة اتنقلت. أنا استنيت كتير عند بوابة سبعة.
+      ar: انتقلت البوابة. انتظرتُ طويلًا عند البوابة السابعة.
+      en: The gate moved. I waited a long time at gate seven.
+    words: [pindah, pintu, menunggu, lama]
+  - id: e10
+    type: speaking
+    text: Untung saya tidak menunggu lama. Saya segera menuju pintu tujuh.
+    meaning:
+      ar_eg: الحمد لله ما استنيتش كتير. أنا رايح حالًا على بوابة سبعة.
+      ar: لحسن الحظ لم أنتظر طويلًا. سأتوجه فورًا إلى البوابة السابعة.
+      en: Luckily I didn't wait long. I'm heading to gate seven right away.
+    words: [untung, menunggu, lama, segera, menuju]
+dialogue:
+  title: Pintu pindah!
+  lines:
+    - speaker: Pengumuman
+      text: Mohon perhatian. Para penumpang penerbangan GA 405 tujuan Jakarta, pintu pindah ke pintu lima. Harap segera menuju pintu lima.
+      ar_eg: انتباه من فضلكم. حضرات ركاب رحلة GA 405 المتجهة لجاكرتا، البوابة اتنقلت لبوابة خمسة. برجاء التوجه فورًا لبوابة خمسة.
+      ar: انتباه من فضلكم. السادة ركاب رحلة GA 405 المتجهة إلى جاكرتا، انتقلت البوابة إلى البوابة الخامسة. يُرجى التوجه فورًا إلى البوابة الخامسة.
+      en: Attention please. Passengers on flight GA 405 to Jakarta, your gate has changed to gate five. Please go to gate five immediately.
+    - speaker: Mohamed
+      text: Mas, itu pesawat kita! Pintunya pindah?
+      ar_eg: يا ماس، دي طيارتنا! البوابة اتغيرت؟
+      ar: يا ماس، هذه طائرتنا! هل تغيّرت البوابة؟
+      en: Mas, that's our plane! Has the gate changed?
+    - speaker: Mas Rizal
+      text: Ya, ke pintu lima. Kita harus segera ke sana.
+      ar_eg: أيوه، لبوابة خمسة. لازم نروح هناك حالًا.
+      ar: نعم، إلى البوابة الخامسة. يجب أن نذهب إلى هناك فورًا.
+      en: Yes, to gate five. We have to go there right away.
+    - speaker: Mohamed
+      text: Permisi, Pak. Pintu lima di mana?
+      ar_eg: لو سمحت يا أستاذ. بوابة خمسة فين؟
+      ar: عفوًا يا سيدي. أين البوابة الخامسة؟
+      en: Excuse me, sir. Where is gate five?
+    - speaker: Petugas
+      text: Lurus saja, lalu belok kiri. Hati-hati, lantainya licin.
+      ar_eg: علطول، وبعدين حوّد شمال. خلي بالك، الأرض بتزحلق.
+      ar: امشِ مباشرةً ثم انعطف يسارًا. انتبه، الأرض زلقة.
+      en: Straight ahead, then turn left. Careful, the floor is slippery.
+    - speaker: Mohamed
+      text: Terima kasih, Pak! Untung pesawatnya belum berangkat.
+      ar_eg: شكرًا يا أستاذ! من حسن الحظ إن الطيارة لسه مطلعتش.
+      ar: شكرًا يا سيدي! لحسن الحظ أن الطائرة لم تُقلع بعد.
+      en: Thank you, sir! Luckily the plane hasn't left yet.
+new_words:
+  - word: segera
+    pos: adverb
+    ar_eg: فورًا، حالًا
+    ar: فورًا
+    en: immediately, right away
+  - word: menuju
+    pos: verb
+    ar_eg: يتوجه لـ
+    ar: يتوجه إلى
+    en: to head for
+  - word: pindah
+    pos: verb
+    ar_eg: يتنقل، يتغير مكانه
+    ar: ينتقل
+    en: to move, change place
+  - word: untung
+    pos: adverb
+    ar_eg: من حسن الحظ
+    ar: لحسن الحظ
+    en: luckily
+  - word: menunggu
+    pos: verb
+    ar_eg: يستنى
+    ar: ينتظر
+    en: to wait
+  - word: lama
+    pos: adjective
+    ar_eg: قديم، وكمان «مدة طويلة» (menunggu lama = استنى كتير)
+    ar: قديم، و«طويل المدة» (menunggu lama = انتظر طويلًا)
+    en: old (not new); long (time)
+review:
+  status: draft
+  verified: false

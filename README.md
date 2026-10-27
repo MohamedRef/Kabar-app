@@ -56,13 +56,13 @@ every morning. CI warns when the table below is behind the content.
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Known / target | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
 | BIPA 1 | Jakarta | A1 | 10 | 98 | 934 | 606 | 605 / 600 | ~11 h | 35 |
-| BIPA 2 | Bali | A2 | 10 | 62 | 561 | 314 | 919 / 1,100 | ~7 h | 35 |
-| BIPA 3 | Lombok | B1 | 10 | 70 | 660 | 289 | 1,208 / 1,600 | ~8 h | 39 |
-| BIPA 4 | Sulawesi | B2 | 10 | 80 | 709 | 230 | 1,438 / 2,100 | ~8 h | 37 |
-| BIPA 5 | Kalimantan | C1 | 10 | 90 | 865 | 306 | 1,743 / 2,700 | ~9 h | 38 |
-| BIPA 6 | Sumatra | C2 | 10 | 100 | 990 | 391 | 2,134 / 3,300 | ~10 h | 38 |
-| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 100 | 1,009 | 385 | 2,519 / 4,000 | ~10 h | 38 |
-| **Total** |  | — | 70 | 600 | 5,728 | 2,521 | 2,519 / 4,000 | ~63 h | 260 |
+| BIPA 2 | Bali | A2 | 10 | 85 | 791 | 497 | 1,102 / 1,100 | ~10 h | 35 |
+| BIPA 3 | Lombok | B1 | 10 | 70 | 660 | 289 | 1,391 / 1,600 | ~8 h | 39 |
+| BIPA 4 | Sulawesi | B2 | 10 | 80 | 709 | 230 | 1,621 / 2,100 | ~8 h | 37 |
+| BIPA 5 | Kalimantan | C1 | 10 | 90 | 865 | 306 | 1,926 / 2,700 | ~9 h | 38 |
+| BIPA 6 | Sumatra | C2 | 10 | 100 | 990 | 391 | 2,317 / 3,300 | ~10 h | 38 |
+| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 100 | 1,009 | 385 | 2,702 / 4,000 | ~10 h | 38 |
+| **Total** |  | — | 70 | 623 | 5,958 | 2,704 | 2,702 / 4,000 | ~66 h | 260 |
 
 **Javanese (J1–J6)**
 
@@ -70,11 +70,11 @@ every morning. CI warns when the table below is behind the content.
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
 | J1 | Surabaya | — | 7 | 36 | 312 | 146 | 146 / 250 | ~4 h | 34 |
 | J2 | Madiun | — | 6 | 36 | 341 | 149 | 295 / 500 | ~4 h | 35 |
-| J3 | Solo (Surakarta) | — | 6 | 61 | 554 | 250 | 545 / 750 | ~6 h | 35 |
-| J4 | Yogyakarta | — | 6 | 48 | 435 | 90 | 634 / 1,000 | ~5 h | 38 |
-| J5 | Semarang | — | 6 | 54 | 501 | 159 | 793 / 1,250 | ~6 h | 39 |
-| J6 | Kotagede, old Mataram capital | — | 6 | 60 | 542 | 95 | 887 / 1,500 | ~6 h | 37 |
-| **Total** |  | — | 37 | 295 | 2,685 | 889 | 887 / 1,500 | ~31 h | 218 |
+| J3 | Solo (Surakarta) | — | 6 | 42 | 364 | 98 | 393 / 750 | ~4 h | 35 |
+| J4 | Yogyakarta | — | 6 | 48 | 435 | 90 | 482 / 1,000 | ~5 h | 38 |
+| J5 | Semarang | — | 6 | 66 | 621 | 255 | 737 / 1,250 | ~7 h | 39 |
+| J6 | Kotagede, old Mataram capital | — | 6 | 60 | 542 | 95 | 831 / 1,500 | ~6 h | 37 |
+| **Total** |  | — | 37 | 288 | 2,615 | 833 | 831 / 1,500 | ~31 h | 218 |
 
 **Reference content and stories**
 

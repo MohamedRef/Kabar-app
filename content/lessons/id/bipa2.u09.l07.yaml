@@ -1,0 +1,198 @@
+schema: kabar.lesson/v1
+id: bipa2.u09.l07
+language: id
+title: Tulisan Rina tentang Lovina
+can_do:
+  ar_eg: تقرا بوست قصير عن أجازة وتفهم حصل إيه وبالترتيب، وترد عليه.
+  ar: أن تقرأ منشورًا قصيرًا عن عطلة وتفهم أحداثه بالترتيب وتتحدث عنه.
+  en: Read a short holiday post and talk about it.
+slides:
+  - title: Tulisan Rina tentang Lovina
+    body:
+      ar_eg: |
+        رينا كتبت بوست قصير عن أجازتها في لوفينا، بالإندونيسي العادي مش بلغة الشات. اقراه ودوّر على: wah و aduh، وكلمات الترتيب pertama و lalu.
+        كلمتين جداد: pasir (رملة) و hitam (أسود). شط لوفينا رملته سودا عشان هي رملة بركانية.
+      ar: |
+        كتبت رينا منشورًا قصيرًا عن عطلتها في لوفينا، بالإندونيسية العادية لا بلغة المحادثة. اقرأه وابحث عن: wah و aduh، وكلمتي الترتيب pertama و lalu.
+        كلمتان جديدتان: pasir (رمل) و hitam (أسود). رمل شاطئ لوفينا أسود لأنه رمل بركاني.
+      en: |
+        Rina wrote a short post about her holiday in Lovina, in normal Indonesian, not chat spelling. Read it and spot wah and aduh, and the order words pertama and lalu.
+        Two new words: pasir (sand) and hitam (black). Lovina's beach has black volcanic sand.
+    examples:
+      - text: Wah, liburan di Lovina menyenangkan sekali! Pasir pantainya hitam, dan lautnya tenang.
+        ar_eg: ياه، الأجازة في لوفينا كانت حلوة أوي! رملة الشط سودا، والبحر هادي.
+        ar: يا للروعة، كانت العطلة في لوفينا ممتعة جدًا! رمل الشاطئ أسود، والبحر هادئ.
+        en: Wow, the holiday in Lovina was so much fun! The beach sand is black and the sea is calm.
+      - text: Pertama, kami naik perahu jam enam pagi. Lalu, kami melihat banyak lumba-lumba.
+        ar_eg: الأول، ركبنا مركب الساعة ستة الصبح. بعدين، شفنا دلافين كتير.
+        ar: أولًا، ركبنا قاربًا في السادسة صباحًا. ثم رأينا دلافين كثيرة.
+        en: First, we took a boat at six in the morning. Then we saw lots of dolphins.
+      - text: Aduh, kamera saya ketinggalan di hotel! Jadi, saya memotret pakai HP. Capek, tapi seru!
+        ar_eg: يا خبر، الكاميرا بتاعتي اتنسيت في الفندق! فصوّرت بالموبايل. تعبت، بس كانت تجنن!
+        ar: آه، نسيت الكاميرا في الفندق! فصوّرت بالهاتف. كنت متعبة، لكنها كانت مثيرة!
+        en: Oh no, I left my camera at the hotel! So I took photos with my phone. Tiring, but exciting!
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pasir
+        ar_eg: رملة
+        ar: رمل
+        en: sand
+      - text: hitam
+        ar_eg: أسود
+        ar: أسود
+        en: black
+      - text: perahu
+        ar_eg: مركب
+        ar: قارب
+        en: boat
+      - text: tenang
+        ar_eg: هادي
+        ar: هادئ
+        en: calm
+      - text: ketinggalan
+        ar_eg: اتنسى (ورا)
+        ar: نُسي (في مكانه)
+        en: left behind
+    words: [pasir, hitam, perahu, tenang, ketinggalan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حسب البوست، شط لوفينا شكله إيه؟
+      ar: بحسب المنشور، كيف يبدو شاطئ لوفينا؟
+      en: According to the post, what is Lovina's beach like?
+    options:
+      - Pasirnya putih dan lautnya ramai.
+      - Pasirnya hitam dan lautnya tenang.
+      - Pasirnya hitam dan lautnya ramai.
+    answer: 1
+    words: [pasir, hitam, tenang]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ركبوا المركب إمتى؟
+      ar: متى ركبوا القارب؟
+      en: When did they take the boat?
+    options: [jam enam pagi, jam empat pagi, jam enam sore]
+    answer: 0
+    words: [perahu]
+  - id: e04
+    type: listen
+    text: Aduh, kamera saya ketinggalan di hotel! Jadi, saya memotret pakai HP.
+    question:
+      ar_eg: رينا صوّرت بإيه؟
+      ar: بماذا صوّرت رينا؟
+      en: What did Rina take photos with?
+    options: [pakai kamera, pakai HP Raka, pakai HP-nya]
+    answer: 2
+    meaning:
+      ar_eg: يا خبر، الكاميرا بتاعتي اتنسيت في الفندق! فصوّرت بالموبايل.
+      ar: آه، نسيت الكاميرا في الفندق! فصوّرت بالهاتف.
+      en: Oh no, I left my camera at the hotel! So I took photos with my phone.
+    words: [aduh, ketinggalan]
+  - id: e05
+    type: listen
+    text: Pasir pantainya hitam, dan lautnya tenang.
+    options:
+      - Pasir pantainya putih, dan lautnya tenang.
+      - Pasir pantainya hitam, dan lautnya tenang.
+      - Pasir pantainya hitam, dan lautnya ramai.
+    answer: 1
+    meaning:
+      ar_eg: رملة الشط سودا، والبحر هادي.
+      ar: رمل الشاطئ أسود، والبحر هادئ.
+      en: The beach sand is black and the sea is calm.
+    words: [pasir, hitam]
+  - id: e06
+    type: fill_blank
+    sentence: Kucing saya ___, bukan putih.
+    meaning:
+      ar_eg: القطة بتاعتي سودا، مش بيضا.
+      ar: قطتي سوداء، لا بيضاء.
+      en: My cat is black, not white.
+    answers: [hitam]
+    words: [hitam]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: الأول، ركبنا مركب الساعة ستة الصبح.
+      ar: أولًا، ركبنا قاربًا في السادسة صباحًا.
+      en: First, we took a boat at six in the morning.
+    answer: Pertama, kami naik perahu jam enam pagi.
+    distractors: [akhirnya, sambil]
+    words: [pertama, perahu]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: رملة الشط سودا.
+      ar: رمل الشاطئ أسود.
+      en: The beach sand is black.
+    answers:
+      - Pasir pantainya hitam.
+      - Pasir pantainya hitam
+      - Pasir pantai itu hitam.
+      - Pasir pantai itu hitam
+      - Pasir pantai hitam.
+      - Pasir di pantai hitam.
+      - Pasir di pantai itu hitam.
+      - Pasir di pantainya hitam.
+      - Pasirnya hitam.
+      - Pantainya berpasir hitam.
+    words: [pasir, hitam]
+  - id: e09
+    type: speaking
+    text: Wah, liburan di Lovina menyenangkan sekali!
+    meaning:
+      ar_eg: ياه، الأجازة في لوفينا كانت حلوة أوي!
+      ar: يا للروعة، كانت العطلة في لوفينا ممتعة جدًا!
+      en: Wow, the holiday in Lovina was so much fun!
+    words: [wah, menyenangkan]
+dialogue:
+  title: Di kos Bu Yanti, setelah liburan
+  lines:
+    - speaker: Bu Yanti
+      text: Rina, Ibu sudah membaca tulisanmu tentang Lovina. Seru sekali!
+      ar_eg: يا رينا، أنا قريت البوست بتاعك عن لوفينا. يجنن!
+      ar: يا رينا، قرأتُ ما كتبتِه عن لوفينا. مثير جدًا!
+      en: Rina, I read your post about Lovina. So exciting!
+    - speaker: Rina
+      text: Terima kasih, Bu! Pasirnya hitam, lho. Bagus untuk foto.
+      ar_eg: شكرًا يا طنط! على فكرة الرملة سودا. حلوة للتصوير.
+      ar: شكرًا يا سيدتي! الرمل أسود، صدّقيني. جميل للتصوير.
+      en: Thank you! The sand is black, you know. Great for photos.
+    - speaker: Mohamed
+      text: Lho, kameramu ketinggalan, kan?
+      ar_eg: إيه ده، مش الكاميرا بتاعتك اتنسيت؟
+      ar: مهلًا، ألم تنسي الكاميرا؟
+      en: Hang on, didn't you leave your camera behind?
+    - speaker: Rina
+      text: Iya, aduh! Tapi foto pakai HP juga bagus.
+      ar_eg: أيوه، يا خسارة! بس صور الموبايل حلوة برضه.
+      ar: نعم، للأسف! لكن صور الهاتف جميلة أيضًا.
+      en: Yes, ugh! But the phone photos are nice too.
+    - speaker: Bu Yanti
+      text: Pak Mohamed, Bapak melihat lumba-lumba?
+      ar_eg: يا أستاذ محمد، شفت دلافين؟
+      ar: يا أستاذ محمد، هل رأيت دلافين؟
+      en: Mohamed, did you see dolphins?
+    - speaker: Mohamed
+      text: Banyak sekali, Bu! Pertama kami naik perahu, lalu lumba-lumbanya datang.
+      ar_eg: كتير أوي يا طنط! الأول ركبنا مركب، وبعدين الدلافين جت.
+      ar: كثيرة جدًا يا سيدتي! أولًا ركبنا القارب، ثم جاءت الدلافين.
+      en: Loads! First we took a boat, then the dolphins came.
+new_words:
+  - word: pasir
+    pos: noun
+    ar_eg: رملة
+    ar: رمل
+    en: sand
+  - word: hitam
+    pos: adjective
+    ar_eg: أسود
+    ar: أسود
+    en: black
+review:
+  status: draft
+  verified: false

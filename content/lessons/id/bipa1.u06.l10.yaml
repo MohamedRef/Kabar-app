@@ -1,239 +1,244 @@
 schema: kabar.lesson/v1
 id: bipa1.u06.l10
 language: id
-title: Tugas sudah selesai
+title: Kuliah di kampus
 can_do:
-  ar_eg: 'تتكلم عن يوم الشغل: المهام والتليفون والإيميل والكمبيوتر والنت.'
-  ar: 'أن تتحدث عن يوم العمل: المهام والهاتف والبريد الإلكتروني والحاسوب والإنترنت.'
-  en: 'Talk about a working day: tasks, phone, email, computer and internet.'
+  ar_eg: 'تتكلم عن الجامعة: المحاضرات والفصل والامتحان والإجابة والقاموس.'
+  ar: 'أن تتحدث عن الجامعة: المحاضرات والفصل والامتحان والإجابة والقاموس.'
+  en: 'Talk about university: lectures, class, exams, answers and the dictionary.'
 slides:
-  - title: Di kantor
+  - title: Di kampus
     body:
       ar_eg: |
-        في المكتب: komputer، internet، email، ponsel (الموبايل، والناس بتقول HP أكتر)، telepon (تليفون أو مكالمة).
-        tugas = مهمة أو واجب: tugas kantor، tugas sekolah.
-        selesai = خلص: «Sudah selesai?» — «Selesai!».
-        koran = جرنال. وبرضه كتير بيقروا الأخبار على الموبايل دلوقتي.
+        kuliah = يدرس في الجامعة أو يحضر محاضرة: «Rina kuliah di UI.»
+        kampus = حرم الجامعة، وuniversitas = جامعة.
+        kelas = فصل أو حصة، وpelajaran = درس أو مادة.
+        ujian = امتحان، وjawaban = إجابة.
+        kamus = قاموس، من العربي «قاموس» زي ما هي.
       ar: |
-        في المكتب: komputer وinternet وemail وponsel (الهاتف المحمول، ويقول الناس HP أكثر) وtelepon (هاتف أو مكالمة).
-        tugas = مهمّة أو واجب: tugas kantor، tugas sekolah.
-        selesai = انتهى: «Sudah selesai?» — «Selesai!».
-        koran = جريدة، وإن كان كثيرون اليوم يقرؤون الأخبار على الهاتف.
+        kuliah = يدرس في الجامعة أو يحضر محاضرة: «Rina kuliah di UI.»
+        kampus = الحرم الجامعي، وuniversitas = جامعة.
+        kelas = صفّ أو حصّة، وpelajaran = درس أو مادة.
+        ujian = امتحان، وjawaban = إجابة.
+        kamus = قاموس، من العربية كما هي.
       en: |
-        At the office: komputer, internet, email, ponsel (mobile phone; people say HP more) and telepon (phone, call).
-        tugas = task or homework: tugas kantor, tugas sekolah.
-        selesai = finished: "Sudah selesai?" — "Selesai!".
-        koran = newspaper, though many now read the news on their phone.
+        kuliah = study at university, attend lectures: "Rina kuliah di UI."
+        kampus = campus, universitas = university.
+        kelas = class (room or session), pelajaran = lesson, subject.
+        ujian = exam, jawaban = answer.
+        kamus = dictionary, straight from Arabic قاموس.
     examples:
-      - text: Ayah membaca koran setiap pagi.
-        ar_eg: بابا بيقرا الجرنال كل يوم الصبح.
-        ar: يقرأ أبي الجريدة كل صباح.
-        en: Dad reads the newspaper every morning.
-      - text: Tugas saya sudah selesai!
-        ar_eg: المهمة بتاعتي خلصت!
-        ar: أنهيت مهمّتي!
-        en: My task is finished!
-      - text: Di kantor ada komputer dan internet.
-        ar_eg: في المكتب فيه كمبيوتر ونت.
-        ar: في المكتب حاسوب وإنترنت.
-        en: There's a computer and internet at the office.
+      - text: Rina kuliah di Universitas Indonesia.
+        ar_eg: رينا بتدرس في جامعة إندونيسيا.
+        ar: تدرس رينا في جامعة إندونيسيا.
+        en: Rina studies at the University of Indonesia.
+      - text: Hari ini ada ujian bahasa Inggris.
+        ar_eg: النهارده فيه امتحان إنجليزي.
+        ar: اليوم امتحان اللغة الإنجليزية.
+        en: There's an English exam today.
+      - text: Kamus saya selalu di tas.
+        ar_eg: القاموس بتاعي دايمًا في الشنطة.
+        ar: قاموسي دائمًا في الحقيبة.
+        en: My dictionary is always in my bag.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: tugas
-        ar_eg: مهمة، واجب
-        ar: مهمّة، واجب
-        en: task
-      - text: telepon
-        ar_eg: تليفون
-        ar: هاتف
-        en: phone
-      - text: ponsel
-        ar_eg: موبايل
-        ar: هاتف محمول
-        en: mobile phone
-      - text: email
-        ar_eg: إيميل
-        ar: بريد إلكتروني
-        en: email
-    words: [tugas, telepon, ponsel, email]
+      - text: kelas
+        ar_eg: فصل، حصة
+        ar: صفّ، حصّة
+        en: class
+      - text: ujian
+        ar_eg: امتحان
+        ar: امتحان
+        en: exam
+      - text: kuliah
+        ar_eg: يدرس في الجامعة
+        ar: يدرس في الجامعة
+        en: study at university
+      - text: kampus
+        ar_eg: حرم الجامعة
+        ar: حرم جامعي
+        en: campus
+    words: [kelas, ujian, kuliah, kampus]
   - id: e02
     type: match_pairs
     pairs:
-      - text: komputer
-        ar_eg: كمبيوتر
-        ar: حاسوب
-        en: computer
-      - text: internet
-        ar_eg: نت
-        ar: إنترنت
-        en: internet
-      - text: koran
-        ar_eg: جرنال
-        ar: جريدة
-        en: newspaper
-      - text: selesai
-        ar_eg: خلص
-        ar: انتهى
-        en: finished
-    words: [komputer, internet, koran, selesai]
+      - text: universitas
+        ar_eg: جامعة
+        ar: جامعة
+        en: university
+      - text: pelajaran
+        ar_eg: درس، مادة
+        ar: درس، مادة
+        en: lesson
+      - text: jawaban
+        ar_eg: إجابة
+        ar: إجابة
+        en: answer
+      - text: kamus
+        ar_eg: قاموس
+        ar: قاموس
+        en: dictionary
+    words: [universitas, pelajaran, jawaban, kamus]
   - id: e03
     type: listen
-    text: Tugas saya sudah selesai. Saya mau makan siang.
+    text: Besok ada ujian. Saya belajar di kampus.
     question:
-      ar_eg: إيه اللي خلص؟
-      ar: ما الذي انتهى؟
-      en: What's finished?
-    options: [الشغل بتاعه, الأكل, الجرنال]
+      ar_eg: بكرة فيه إيه؟
+      ar: ماذا هناك غدًا؟
+      en: What's on tomorrow?
+    options: [امتحان, حفلة, إجازة]
     answer: 0
     meaning:
-      ar_eg: المهمة بتاعتي خلصت. عايز أتغدى.
-      ar: أنهيت مهمّتي، وأريد الغداء.
-      en: My task is done. I want to have lunch.
-    words: [tugas, selesai]
+      ar_eg: بكرة فيه امتحان. أنا بذاكر في الجامعة.
+      ar: غدًا امتحان، وأنا أذاكر في الحرم الجامعي.
+      en: There's an exam tomorrow. I'm studying on campus.
+    words: [ujian, kampus]
   - id: e04
     type: fill_blank
-    sentence: Saya mengirim ___ ke bos saya.
+    sentence: Rina ___ di Universitas Indonesia.
     meaning:
-      ar_eg: ببعت ___ للمدير بتاعي.
-      ar: أرسل ___ إلى مديري.
-      en: I'm sending an ___ to my boss.
-    options: [email, koran, internet]
-    answers: [email]
-    words: [email, koran, internet]
+      ar_eg: رينا ___ في جامعة إندونيسيا.
+      ar: رينا ___ في جامعة إندونيسيا.
+      en: Rina ___ at the University of Indonesia.
+    options: [kuliah, kamus, kelas]
+    answers: [kuliah]
+    words: [kuliah, universitas]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: الـ HP اسمه الرسمي إيه؟
-      ar: ما الاسم الرسمي للـ HP؟
-      en: What's the formal word for HP?
-    options: [ponsel, komputer, telepon]
+      ar_eg: عايز تعرف معنى كلمة جديدة. تستخدم إيه؟
+      ar: تريد معرفة معنى كلمة جديدة. ماذا تستعمل؟
+      en: You want the meaning of a new word. What do you use?
+    options: [kamus, ujian, kampus]
     answer: 0
     explain:
-      ar_eg: ponsel = موبايل. telepon ممكن يبقى تليفون البيت أو مكالمة.
-      ar: ponsel الهاتف المحمول، أما telepon فالهاتف أو المكالمة.
-      en: ponsel = mobile phone; telepon is a phone or a call.
-    words: [ponsel, komputer, telepon]
+      ar_eg: kamus = قاموس. ujian امتحان وkampus حرم الجامعة.
+      ar: kamus قاموس، أما ujian فامتحان وkampus الحرم الجامعي.
+      en: kamus = dictionary; ujian is an exam and kampus a campus.
+    words: [kamus, ujian, kampus]
   - id: e06
     type: fill_blank
-    sentence: Ayah membaca ___ setiap pagi.
+    sentence: Ada dua puluh mahasiswa di ___ ini.
     meaning:
-      ar_eg: بابا بيقرا ___ كل يوم الصبح.
-      ar: يقرأ أبي ___ كل صباح.
-      en: Dad reads the ___ every morning.
-    options: [koran, tugas, ponsel]
-    answers: [koran]
-    words: [koran]
+      ar_eg: فيه ٢٠ طالب في ___ ده.
+      ar: في هذا ___ عشرون طالبًا.
+      en: There are twenty students in this ___.
+    options: [kelas, jawaban, pelajaran]
+    answers: [kelas]
+    words: [kelas, pelajaran]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: مفيش نت، فمش هقدر أبعت إيميل.
-      ar: لا إنترنت، فلا أستطيع إرسال بريد.
-      en: There's no internet, so I can't send an email.
-    answer: Tidak ada internet, jadi saya tidak bisa mengirim email.
-    distractors: [koran, ponsel]
-    words: [internet, email]
+      ar_eg: إجابتك إيه؟
+      ar: ما إجابتك؟
+      en: What's your answer?
+    answer: Apa jawaban kamu?
+    distractors: [kelas, kamus]
+    words: [jawaban]
   - id: e08
     type: translate
     direction: from_target
-    source_text: Ada telepon untuk Bapak!
+    source_text: Pelajaran di kelas hari ini sudah selesai.
     answers_meaning:
-      ar_eg: [فيه تليفون لحضرتك!, فيه مكالمة لحضرتك!, تليفون لحضرتك!]
-      ar: [هناك مكالمة لك يا سيدي!, مكالمة لك يا سيدي!]
-      en: ['There''s a phone call for you, sir!', 'Phone for you, sir!', 'There''s a call for you!']
-    words: [telepon]
+      ar_eg: [درس النهارده في الفصل خلص, حصة النهارده خلصت]
+      ar: [انتهى درس اليوم في الصفّ, انتهت حصّة اليوم]
+      en: ['Today''s lesson in class is over', 'Today''s class lesson has finished', 'Today''s lesson is finished']
+    words: [pelajaran, kelas]
   - id: e09
     type: speaking
-    text: Saya kerja memakai komputer dan ponsel.
+    text: Saya mau kuliah di universitas ini.
     meaning:
-      ar_eg: بشتغل على الكمبيوتر والموبايل.
-      ar: أعمل بالحاسوب والهاتف المحمول.
-      en: I work on a computer and a mobile phone.
-    words: [komputer, ponsel]
+      ar_eg: عايز أدرس في الجامعة دي.
+      ar: أريد أن أدرس في هذه الجامعة.
+      en: I want to study at this university.
+    words: [kuliah, universitas]
   - id: e10
     type: multiple_choice
-    question: Tugasnya sudah ___? — Sudah!
-    options: [selesai, telepon, koran]
+    question: Ujian sudah selesai! ___ saya bagus.
+    options: [Jawaban, Kamus, Kampus]
     answer: 0
     explain:
-      ar_eg: Sudah selesai? = خلصت؟
-      ar: Sudah selesai? = هل انتهيت؟
-      en: Sudah selesai? = Is it finished?
-    words: [selesai, tugas, telepon]
+      ar_eg: 'بعد الامتحان بنتكلم عن الإجابات: jawaban.'
+      ar: 'بعد الامتحان نتحدّث عن الإجابات: jawaban.'
+      en: 'After an exam you talk about your answers: jawaban.'
+    words: [ujian, jawaban, kamus, kampus]
 dialogue:
   lines:
-    - speaker: Bu Melati
-      text: Mas Eko, tugasnya sudah selesai?
-      ar_eg: يا إيكو، المهمة خلصت؟
-      ar: يا إيكو، هل أنهيت المهمّة؟
-      en: Eko, is the task finished?
-    - speaker: Mas Eko
-      text: Belum, Bu. Tidak ada internet hari ini.
-      ar_eg: لسه يا مدام. مفيش نت النهارده.
-      ar: ليس بعد يا سيدتي، فلا إنترنت اليوم.
-      en: Not yet. There's no internet today.
-    - speaker: Bu Melati
-      text: Oh, begitu. Mengirim email dari ponsel, bisa?
-      ar_eg: آه، كده. تقدر تبعت الإيميل من الموبايل؟
-      ar: آه، فهمت. أتستطيع إرسال البريد من الهاتف؟
-      en: Oh, I see. Can you send the email from your phone?
-    - speaker: Mas Eko
-      text: Bisa, Bu. Nanti saya mengirim emailnya.
-      ar_eg: أقدر يا مدام. شوية وأبعت الإيميل.
-      ar: نعم يا سيدتي، سأرسل البريد بعد قليل.
-      en: Yes. I'll send the email later.
-    - speaker: Bu Melati
-      text: Terima kasih. Dan ada telepon untuk kamu.
-      ar_eg: شكرًا. وفيه تليفون عشانك.
-      ar: شكرًا. وهناك مكالمة لك.
-      en: Thanks. And there's a phone call for you.
-    - speaker: Mas Eko
-      text: Baik, Bu!
-      ar_eg: حاضر يا مدام!
-      ar: حسنًا يا سيدتي!
-      en: OK!
+    - speaker: Rina
+      text: Mohamed, ini kampus saya!
+      ar_eg: يا محمد، دي جامعتي!
+      ar: يا محمد، هذا حرم جامعتي!
+      en: Mohamed, this is my campus!
+    - speaker: Mohamed
+      text: Besar! Kamu kuliah di universitas ini?
+      ar_eg: كبيرة! إنتي بتدرسي في الجامعة دي؟
+      ar: كبير! هل تدرسين في هذه الجامعة؟
+      en: It's big! You study at this university?
+    - speaker: Rina
+      text: Ya. Hari ini ada ujian bahasa Arab!
+      ar_eg: أيوه. والنهارده عندي امتحان عربي!
+      ar: نعم، واليوم امتحان العربية!
+      en: Yes. There's an Arabic exam today!
+    - speaker: Mohamed
+      text: Bahasa Arab? Ini kamus saya.
+      ar_eg: عربي؟ خدي القاموس بتاعي.
+      ar: العربية؟ هذا قاموسي.
+      en: Arabic? Here's my dictionary.
+    - speaker: Rina
+      text: Terima kasih! Tapi di kelas tidak boleh memakai kamus.
+      ar_eg: شكرًا! بس ممنوع القاموس في الفصل.
+      ar: شكرًا! لكن القاموس ممنوع في الصفّ.
+      en: Thanks! But dictionaries aren't allowed in class.
+    - speaker: Mohamed
+      text: Oh, begitu. Sampai nanti, Rina!
+      ar_eg: آه، كده. أشوفك بعدين يا رينا!
+      ar: آه، فهمت. إلى اللقاء يا رينا!
+      en: Oh, I see. See you later, Rina!
 new_words:
-  - word: tugas
+  - word: kelas
     pos: noun
-    ar_eg: مهمة، واجب
-    ar: مهمّة، واجب
-    en: task, assignment
-  - word: telepon
+    ar_eg: فصل، حصة
+    ar: صفّ، حصّة
+    en: class, classroom
+  - word: ujian
     pos: noun
-    ar_eg: تليفون، مكالمة
-    ar: هاتف، مكالمة
-    en: telephone, phone call
-  - word: ponsel
-    pos: noun
-    ar_eg: موبايل
-    ar: هاتف محمول
-    en: mobile phone
-  - word: email
-    pos: noun
-    ar_eg: إيميل
-    ar: بريد إلكتروني
-    en: email
-  - word: komputer
-    pos: noun
-    ar_eg: كمبيوتر
-    ar: حاسوب
-    en: computer
-  - word: internet
-    pos: noun
-    ar_eg: نت
-    ar: إنترنت
-    en: internet
-  - word: koran
-    pos: noun
-    ar_eg: جرنال
-    ar: جريدة
-    en: newspaper
-  - word: selesai
+    ar_eg: امتحان
+    ar: امتحان
+    en: exam
+  - word: kuliah
     pos: verb
-    ar_eg: خلص
-    ar: انتهى
-    en: finished, done
+    ar_eg: يدرس في الجامعة، محاضرة
+    ar: يدرس في الجامعة، محاضرة
+    en: study at university; lecture
+  - word: kampus
+    pos: noun
+    ar_eg: حرم الجامعة
+    ar: حرم جامعي
+    en: campus
+  - word: universitas
+    pos: noun
+    ar_eg: جامعة
+    ar: جامعة
+    en: university
+  - word: pelajaran
+    pos: noun
+    ar_eg: درس، مادة
+    ar: درس، مادة
+    en: lesson, subject
+  - word: jawaban
+    pos: noun
+    arabic: جواب
+    ar_eg: إجابة
+    ar: إجابة، جواب
+    en: answer
+  - word: kamus
+    pos: noun
+    arabic: قاموس
+    ar_eg: قاموس
+    ar: قاموس
+    en: dictionary
 review:
   status: draft
   verified: false

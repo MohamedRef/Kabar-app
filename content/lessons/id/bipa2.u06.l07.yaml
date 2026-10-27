@@ -1,0 +1,199 @@
+schema: kabar.lesson/v1
+id: bipa2.u06.l07
+language: id
+title: Kamar kosong di Sanur
+can_do:
+  ar_eg: تقرا إعلان أوضة للإيجار وتفهم فيها إيه وإيجارها كام ومكانها فين.
+  ar: أن تقرأ إعلانًا عن غرفة للإيجار وتفهم ما فيها وإيجارها ومكانها.
+  en: Read a room-for-rent notice and ask about it.
+slides:
+  - title: Kamar kosong di Sanur
+    body:
+      ar_eg: |
+        ده إعلان متعلّق على باب بيت بو يانتي. اقراه وشوف: فيه كام أوضة فاضية؟ الإيجار فيه الكهربا؟ والمكان فين؟
+        كلمتين جداد: kasur (مرتبة / سرير) و jendela (شباك).
+      ar: |
+        هذا إعلان معلّق على باب بيت بو يانتي. اقرأه وابحث: كم غرفة فارغة؟ هل الإيجار يشمل الكهرباء؟ وأين المكان؟
+        كلمتان جديدتان: kasur (فراش / سرير) و jendela (نافذة).
+      en: |
+        A notice on Bu Yanti's gate. Read it and find out: how many rooms are free? Is electricity included? Where is it?
+        Two new words: kasur (mattress, bed) and jendela (window).
+    examples:
+      - text: "Kos Bu Yanti, Sanur: ada dua kamar kosong di lantai dua."
+        ar_eg: "سكن بو يانتي، سانور: فيه أوضتين فاضيين في الدور التاني."
+        ar: "سكن بو يانتي، سانور: توجد غرفتان فارغتان في الطابق الثاني."
+        en: "Bu Yanti's kos, Sanur: two free rooms on the second floor."
+      - text: Di setiap kamar ada kasur, lemari, dan jendela besar. Kamar mandinya di dalam.
+        ar_eg: في كل أوضة فيه سرير ودولاب وشباك كبير. والحمام جوّه.
+        ar: في كل غرفة فراش وخزانة ونافذة كبيرة. والحمّام في الداخل.
+        en: Every room has a bed, a wardrobe and a big window. The bathroom is inside.
+      - text: Sewanya Rp1.500.000 sebulan, sudah termasuk listrik dan air. Kos ini ada di ujung gang, di seberang masjid.
+        ar_eg: الإيجار مليون وخمسمية ألف روبية في الشهر، شامل الكهربا والمية. السكن في آخر الحارة، قصاد الجامع.
+        ar: الإيجار مليون وخمسمئة ألف روبية شهريًا، شاملًا الكهرباء والماء. السكن في نهاية الزقاق، مقابل المسجد.
+        en: The rent is Rp1,500,000 a month, electricity and water included. The kos is at the end of the alley, across from the mosque.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kasur
+        ar_eg: مرتبة، سرير
+        ar: فراش، سرير
+        en: mattress, bed
+      - text: jendela
+        ar_eg: شباك
+        ar: نافذة
+        en: window
+      - text: lemari
+        ar_eg: دولاب
+        ar: خزانة
+        en: wardrobe
+      - text: kosong
+        ar_eg: فاضي
+        ar: فارغ
+        en: empty, free
+      - text: sewa
+        ar_eg: إيجار
+        ar: إيجار
+        en: rent
+    words: [kasur, jendela, lemari, kosong, sewa]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حسب الإعلان، فيه كام أوضة فاضية؟
+      ar: بحسب الإعلان، كم غرفة فارغة؟
+      en: According to the notice, how many rooms are free?
+    options: [satu kamar, dua kamar, tiga kamar]
+    answer: 1
+    words: [kosong]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "محمد بيسأل: «لازم أدفع الكهربا لوحدها؟» حسب الإعلان، الرد الصح إيه؟"
+      ar: "يسأل محمد: «هل أدفع الكهرباء وحدها؟» بحسب الإعلان، ما الرد الصحيح؟"
+      en: 'Mohamed asks: "Do I pay for electricity separately?" According to the notice, what is the right answer?'
+    options:
+      - Ya, listrik belum termasuk.
+      - Ya, tidak ada listrik.
+      - Tidak, sudah termasuk listrik.
+    answer: 2
+    words: [termasuk, listrik]
+  - id: e04
+    type: listen
+    text: Kos ini ada di ujung gang, di seberang masjid.
+    question:
+      ar_eg: إيه اللي قصاد السكن؟
+      ar: ما الذي يقع مقابل السكن؟
+      en: What is across from the kos?
+    options: [masjid, rumah makan, rumah sakit]
+    answer: 0
+    meaning:
+      ar_eg: السكن في آخر الحارة، قصاد الجامع.
+      ar: السكن في نهاية الزقاق، مقابل المسجد.
+      en: The kos is at the end of the alley, across from the mosque.
+    words: [seberang, ujung, gang]
+  - id: e05
+    type: listen
+    text: Di setiap kamar ada kasur dan jendela besar.
+    options:
+      - Di setiap kamar ada kursi dan jendela besar.
+      - Di setiap kamar ada kasur dan jendela besar.
+      - Di setiap kamar ada kasur dan lemari besar.
+    answer: 1
+    meaning:
+      ar_eg: في كل أوضة فيه سرير وشباك كبير.
+      ar: في كل غرفة فراش ونافذة كبيرة.
+      en: Every room has a bed and a big window.
+    words: [kasur, jendela]
+  - id: e06
+    type: fill_blank
+    sentence: Panas sekali. Tolong buka ___ itu, ya.
+    meaning:
+      ar_eg: الجو حر أوي. افتح الشباك ده لو سمحت.
+      ar: الجو حار جدًا. افتح تلك النافذة من فضلك.
+      en: It's really hot. Please open that window.
+    options: [kasur, jendela, gang]
+    answers: [jendela]
+    words: [jendela, tolong]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: في أوضتي فيه سرير ودولاب.
+      ar: في غرفتي فراش وخزانة.
+      en: In my room there's a bed and a wardrobe.
+    answer: Di kamar saya ada kasur dan lemari.
+    distractors: [seberang, tolong]
+    words: [kasur, lemari]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: السكن قصاد الجامع.
+      ar: السكن مقابل المسجد.
+      en: The kos is across from the mosque.
+    answers:
+      - Kos itu di seberang masjid.
+      - Kos itu di seberang masjid
+      - Kosnya di seberang masjid.
+      - Kosnya di seberang masjid
+      - Kos ada di seberang masjid.
+      - Kos itu ada di seberang masjid.
+      - Kosnya ada di seberang masjid.
+      - Kos di seberang masjid.
+      - Kos ini di seberang masjid.
+      - Kos ini ada di seberang masjid.
+    words: [seberang, kos]
+  - id: e09
+    type: speaking
+    text: Permisi, Bu. Masih ada kamar kosong?
+    meaning:
+      ar_eg: لو سمحتي يا مدام، لسه فيه أوضة فاضية؟
+      ar: عفوًا يا سيدتي، هل ما زالت هناك غرفة فارغة؟
+      en: Excuse me, ma'am. Is there still a free room?
+    words: [kosong]
+dialogue:
+  title: Di depan kos Bu Yanti, Sanur
+  lines:
+    - speaker: Mohamed
+      text: Permisi, Bu Yanti. Masih ada kamar kosong?
+      ar_eg: لو سمحتي يا بو يانتي، لسه فيه أوضة فاضية؟
+      ar: عفوًا يا بو يانتي، هل ما زالت هناك غرفة فارغة؟
+      en: Excuse me, Bu Yanti. Is there still a free room?
+    - speaker: Bu Yanti
+      text: Masih, Pak. Ada dua kamar di lantai dua.
+      ar_eg: لسه يا أستاذ. فيه أوضتين في الدور التاني.
+      ar: نعم يا سيدي. توجد غرفتان في الطابق الثاني.
+      en: Yes, there are, sir. Two rooms on the second floor.
+    - speaker: Mohamed
+      text: Di kamar ada kasur dan lemari?
+      ar_eg: في الأوضة فيه سرير ودولاب؟
+      ar: هل في الغرفة فراش وخزانة؟
+      en: Is there a bed and a wardrobe in the room?
+    - speaker: Bu Yanti
+      text: Ada. Ada jendela besar juga, jadi kamarnya tidak panas.
+      ar_eg: أيوه. وفيه شباك كبير كمان، فالأوضة مش حرّ.
+      ar: نعم. وفيها نافذة كبيرة أيضًا، لذلك الغرفة ليست حارة.
+      en: Yes. There's a big window too, so the room isn't hot.
+    - speaker: Mohamed
+      text: Masjidnya di mana, Bu?
+      ar_eg: الجامع فين يا مدام؟
+      ar: أين المسجد يا سيدتي؟
+      en: Where's the mosque, ma'am?
+    - speaker: Bu Yanti
+      text: Dekat sekali, di seberang kos. Silakan lihat kamarnya dulu, Pak.
+      ar_eg: قريب أوي، قصاد السكن. اتفضل شوف الأوضة الأول يا أستاذ.
+      ar: قريب جدًا، مقابل السكن. تفضّل بمشاهدة الغرفة أولًا يا سيدي.
+      en: Very close, across from the kos. Please have a look at the room first, sir.
+new_words:
+  - word: kasur
+    pos: noun
+    ar_eg: مرتبة، سرير
+    ar: فراش، سرير
+    en: mattress, bed
+  - word: jendela
+    pos: noun
+    ar_eg: شباك
+    ar: نافذة
+    en: window
+review:
+  status: draft
+  verified: false
