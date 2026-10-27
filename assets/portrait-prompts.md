@@ -1,7 +1,7 @@
 # Portrait prompts (Codex, prompt 6a-6e)
 Generated from `content/cast.yaml` and `assets/portraits.yaml` by `scripts/assets/portrait_prompts.py`; do not edit by hand. Send one batch at a time; each is self-contained.
 
-## Prompt 6a (7 characters)
+## Prompt 6a (9 characters)
 
 ```text
 Create character portraits for "Kabar", an Indonesian + Javanese learning app.
@@ -50,13 +50,17 @@ CHARACTERS. Each file is named by the character's id; never rename a file.
   Who they are: Kabar Radio host, a Jakarta teacher who travels the journey with you. Shares a voice with Mbak Gadis.
 - kak-reza.png (Kak Reza, Bandung): a friendly Bandung office worker in his mid 30s, short hair, rimless glasses, a plain shirt with rolled sleeves, studio headphones around his neck. Background: a cosy radio booth with a microphone on an arm.
   Who they are: Kabar Radio co-host, a Bandung office worker married to Laras. Shares a voice with Mas Ardi.
+- mbak-sekar.png (Mbak Sekar, Yogyakarta): a calm Javanese schoolteacher from Yogyakarta in her late 20s, hair in a neat low bun, a soft brown batik blouse, studio headphones around her neck. Background: a cosy radio booth with a microphone on an arm and a small gamelan gong on the shelf.
+  Who they are: Kabar Radio's Javanese host, a Jogja teacher who speaks everyday Jogja ngoko with friends and shop-and-neighbour krama with elders. Shares a voice with Bu Siti.
+- mas-danang.png (Mas Danang, Madiun): a cheerful Madiun radio host in his late 20s, short neat hair, a wide grin, a green batik shirt with sleeves rolled up, studio headphones around his neck. Background: a cosy radio booth with a microphone on an arm.
+  Who they are: Kabar Radio's Javanese co-host, a Madiun lad who speaks everyday Madiun ngoko, loves pecel and jokes a lot. Replaced Mas Galih when the Javanese track became Jogja and Madiun only. Shares a voice with Mas Dimas.
 
 THEN, for kak-nur, mbak-gadis, mas-ardi, mas-dimas, bu-siti: 4 extra expressions each, with the SAME face, hair,
 clothes, framing and background: <id>-listening.png, <id>-laughing.png,
 <id>-thinking.png, <id>-explaining.png (a light hand gesture). Keep the identity
 consistent; regenerate any that drift.
 
-SAVE: all 27 masters to assets/src/personas/ with exactly the file names above.
+SAVE: all 29 masters to assets/src/personas/ with exactly the file names above.
 Nothing else: Kabar's own script (scripts/assets/export_personas.py) makes the
 web sizes and the cast sheet.
 
@@ -231,10 +235,10 @@ HARD RULES: no text, letters, numbers, logos, name tags or cards with writing,
 watermarks or signatures. Square 1024x1024 PNG.
 
 CHARACTERS. Each file is named by the character's id; never rename a file.
-- cak-heru.png (Cak Heru, Surabaya): a Surabaya man in his late 20s, a big easygoing grin, short hair, a T-shirt and an open shirt, a motorbike helmet in hand. Background: a Surabaya street with old buildings.
-  Who they are: Your Surabaya mate in J1; speaks Arek Javanese.
-- mas-yudha.png (Mas Yudha, Surabaya (Gubeng)): a Surabaya university student, early 20s, glasses, a hoodie, earbuds around his neck. Background: Gubeng station hall.
-  Who they are: A student in Surabaya you meet in J1; later sends you code-mixed voice notes.
+- cak-heru.png (Mas Heru, Yogyakarta): a Surabaya man in his late 20s, a big easygoing grin, short hair, a T-shirt and an open shirt, a motorbike helmet in hand. Background: a Surabaya street with old buildings.
+  Who they are: Runs an angkringan near Malioboro and is your Jogja mate in J1; speaks Mataraman ngoko.
+- mas-yudha.png (Mas Yudha, Yogyakarta (Kotabaru)): a Surabaya university student, early 20s, glasses, a hoodie, earbuds around his neck. Background: Gubeng station hall.
+  Who they are: A student in Jogja you meet in J1; later sends you code-mixed voice notes.
 - bu-darmi.png (Bu Darmi, Caruban): the pecel warung owner in Caruban, late 50s, a headscarf, a batik apron, a plate of pecel on a banana leaf in hand. Background: a roadside warung with a bench.
   Who they are: Runs the pecel warung in Caruban where you order food in J2.
 - pak-harjo.png (Pak Harjo, Solo): an older Javanese gentleman from Solo, late 60s, a blangkon headcloth, a lurik jacket, a dignified, patient face. Background: a Solo pendopo with carved wooden pillars.
@@ -242,7 +246,7 @@ CHARACTERS. Each file is named by the character's id; never rename a file.
 - bu-harjo.png (Bu Harjo, Solo): Pak Harjo's wife, mid 60s, hair in a neat sanggul bun, a kebaya with a batik kain, a gentle smile. Background: a Javanese house interior with a batik cloth on a stand.
   Who they are: Pak Harjo's wife.
 - mbah-putri.png (Mbah Putri, a village near Yogyakarta): Mas Dimas's grandmother, late 70s, silver hair in a bun, a kebaya and a selendang over her shoulder, deep laugh lines. Background: a village house porch near Yogyakarta with rice fields beyond.
-  Who they are: Mas Dimas's grandmother. You use krama inggil for her; she answers a guest in simple polite krama. J4 chat partner.
+  Who they are: Mas Dimas's grandmother. You use krama inggil for her; she answers a guest in simple polite krama. J3 and J4 chat partner.
 - pak-karto.png (Pak Karto, Solo): an elderly neighbour from Solo, about 75, a black peci, a white beard, a sarong and a plain shirt. Background: a quiet Solo lane with a low fence.
   Who they are: Your elderly neighbour in the Unggah-Ungguh game; krama with a little krama inggil.
 - pak-harsono.png (Pak Harsono, Yogyakarta): the Yogyakarta host father, early 60s, a blangkon, a surjan striped jacket, a calm, formal kindness. Background: a Yogyakarta joglo house with a garden.
