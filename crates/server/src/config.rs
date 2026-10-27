@@ -36,7 +36,9 @@ pub struct Limits {
     pub workers_ai_daily_requests: u64,
     pub gemini_daily_requests: u64,
     pub claude_monthly_requests: u64,
-    /// Azure F0 gives 500k neural characters a month.
+    /// Azure F0 gives 500k neural characters a month, shared with the
+    /// offline-pack tool (`kabar-tools packs synthesize`, 300k by default) on
+    /// the same key, so the two defaults add up to the free tier.
     pub tts_monthly_chars: u64,
 }
 
@@ -46,7 +48,7 @@ impl Default for Limits {
             workers_ai_daily_requests: 300,
             gemini_daily_requests: 1_000,
             claude_monthly_requests: 300,
-            tts_monthly_chars: 450_000,
+            tts_monthly_chars: 200_000,
         }
     }
 }
@@ -192,7 +194,10 @@ mod tests {
         let c = cfg(&[]).unwrap();
         assert!(!c.claude_enabled);
         assert_eq!(c.workers_ai_model, DEFAULT_WORKERS_AI_MODEL);
-        assert!(c.limits.tts_monthly_chars < 500_000);
+        assert!(
+            c.limits.tts_monthly_chars + kabar_core::packs::DEFAULT_MONTHLY_BUDGET
+                <= kabar_core::packs::FREE_MONTHLY_CHARS
+        );
         assert_eq!(c.auth_ready().unwrap_err(), ConfigError::Missing("GOOGLE_CLIENT_IDS"));
         let status = c.vault_status();
         assert!(!status.tts_configured);
