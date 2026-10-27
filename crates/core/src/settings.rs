@@ -80,14 +80,15 @@ impl Default for RetentionPct {
     }
 }
 
-/// How the translation shows under Indonesian and Javanese sentences.
+/// How the translation shows under Indonesian and Javanese text outside an
+/// exercise (slides, dialogue, feedback, review backs, transcripts, chats).
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum TranslationMode {
     /// Always under the sentence.
     #[default]
     On,
-    /// Behind a tap, so the learner tries to read it first.
+    /// Behind a tap, to try reading first.
     Tap,
     Off,
 }
@@ -112,9 +113,9 @@ pub struct Settings {
     pub desired_retention: RetentionPct,
     /// FSRS parameters fitted to this learner's reviews, once there are enough.
     pub fsrs: Option<FsrsParams>,
-    /// The translation under target-language sentences.
+    /// Translation under target-language text.
     pub translation: TranslationMode,
-    /// Word colours (verb, noun, affixes) are off; on by default.
+    /// Word-class and word-part colours are off (on by default).
     pub word_colours_off: bool,
 }
 

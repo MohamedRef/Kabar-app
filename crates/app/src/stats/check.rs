@@ -27,6 +27,7 @@ use kabar_protocol::test::{TestContent, TestItemKind, TestSkill};
 
 use super::text::{S, st};
 use super::{fill, iso, level_label, level_tests, load_logs, pct, rtl};
+use crate::annotated::Annotated;
 use crate::coach::{Coach, labels, say, widgets::Nur};
 use crate::lesson::text::{L, lt};
 use crate::lesson::{
@@ -512,7 +513,7 @@ fn Runner(runner: Signal<Option<TestRunner>>, on_done: EventHandler<()>) -> Elem
                             }
                             p { class: "muted lp-small", "{lt(lang, L::Sample)}" }
                             for (i, a) in refs.iter().enumerate() {
-                                p { key: "{i}", class: "lt-sample pre", bdi { lang: target, dir: "ltr", class: "latin", "{a}" } }
+                                p { key: "{i}", class: "lt-sample pre", Annotated { text: a.clone(), tag: target } }
                             }
                             div { class: "row lt-grades", role: "group", aria_label: lt(lang, L::SelfRated),
                                 for (g, gl) in [(SelfGrade::NotYet, L::GradeNone), (SelfGrade::Partly, L::GradePartly), (SelfGrade::Fully, L::GradeFully)] {

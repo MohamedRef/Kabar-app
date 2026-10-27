@@ -290,6 +290,8 @@ fn WordCard(i: usize) -> Element {
                 }
             }
 
+            super::grammar::WordGrammar { i }
+
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::InThisSentence)}" }
                 p { class: "sentence", dir: "ltr", lang: "id", bdi { "{sentence}" } }

@@ -108,14 +108,6 @@ pub fn top_words(freq_tsv: &str, n: usize) -> Vec<String> {
         .collect()
 }
 
-/// A piece of a sentence: plain text, or a word that is one of today's targets.
-#[derive(Clone, Debug, PartialEq, Eq)]
-pub struct Segment {
-    pub text: String,
-    /// The target (dictionary form) this word is a form of.
-    pub target: Option<String>,
-}
-
 const PREFIXES: &[&str] = &[
     "memper", "menge", "meng", "meny", "mem", "men", "me", "di", "ber", "be", "ter", "per", "peng", "peny",
     "pem", "pen", "pe", "ke", "se",
@@ -155,40 +147,6 @@ pub fn is_form_of(token: &str, target: &str) -> bool {
     stems.iter().any(|stem| {
         stem == &target || SUFFIXES.iter().any(|s| stem.strip_suffix(s).is_some_and(|base| base == target))
     })
-}
-
-fn push_plain(out: &mut Vec<Segment>, s: &str) {
-    match out.last_mut() {
-        Some(Segment { text, target: None }) => text.push_str(s),
-        _ => out.push(Segment { text: s.to_string(), target: None }),
-    }
-}
-
-/// Splits a sentence so today's target words can be highlighted. Punctuation
-/// and spaces stay in plain segments.
-pub fn segments(text: &str, targets: &[String]) -> Vec<Segment> {
-    let mut out: Vec<Segment> = Vec::new();
-    let mut word = String::new();
-    let flush = |out: &mut Vec<Segment>, word: &mut String| {
-        if word.is_empty() {
-            return;
-        }
-        let w = std::mem::take(word);
-        match targets.iter().find(|t| is_form_of(&w, t)) {
-            Some(t) => out.push(Segment { text: w, target: Some(t.clone()) }),
-            None => push_plain(out, &w),
-        }
-    };
-    for ch in text.chars() {
-        if ch.is_alphanumeric() || (ch == '-' && !word.is_empty()) {
-            word.push(ch);
-        } else {
-            flush(&mut out, &mut word);
-            push_plain(&mut out, ch.encode_utf8(&mut [0; 4]));
-        }
-    }
-    flush(&mut out, &mut word);
-    out
 }
 
 /// What the learner can afford in Pasar!: the fair price plus a 10% cushion,
@@ -344,23 +302,6 @@ mod tests {
         for (token, target) in [("makan", "akan"), ("buku", "baca"), ("ini", "")] {
             assert!(!is_form_of(token, target), "{token} is not {target}");
         }
-    }
-
-    #[test]
-    fn segments_highlight_targets_and_keep_the_text() {
-        let text = "Saya sedang membaca buku.";
-        let segs = segments(text, &s(&["baca", "buku"]));
-        let joined: String = segs.iter().map(|s| s.text.as_str()).collect();
-        assert_eq!(joined, text);
-        let hits: Vec<(&str, &str)> =
-            segs.iter().filter_map(|s| s.target.as_deref().map(|t| (s.text.as_str(), t))).collect();
-        assert_eq!(hits, vec![("membaca", "baca"), ("buku", "buku")]);
-        assert_eq!(segs[0], Segment { text: "Saya sedang ".into(), target: None });
-        assert_eq!(segs.last().unwrap().text, ".");
-
-        let segs = segments("Anak-anak bermain di taman.", &s(&["anak", "main"]));
-        assert_eq!(segs[0], Segment { text: "Anak-anak".into(), target: Some("anak".into()) });
-        assert!(segments("Apa kabar?", &[]).iter().all(|s| s.target.is_none()));
     }
 
     #[test]
