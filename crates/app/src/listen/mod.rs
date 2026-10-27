@@ -19,6 +19,7 @@ use kabar_protocol::story::{RadioEpisode, Story};
 
 use self::player::ProgramPlayer;
 use self::text::{T, tt};
+use crate::annotated::Annotated;
 use crate::audio::AudioCache;
 use crate::coach::Coach;
 use crate::embedded::{self, RADIO, STORIES};
@@ -402,9 +403,10 @@ fn RadioEnd(episode: RadioEpisode) -> Element {
     let target = target_tag(&episode.language);
     rsx! {
         h3 { "{tt(ui.lang(), T::Words)}" }
-        p { class: "row",
+        p { class: "muted", "{tt(ui.lang(), T::WordsHint)}" }
+        div { class: "row",
             for w in episode.words.iter() {
-                bdi { key: "{w}", lang: target, class: "pill latin", "{w}" }
+                span { key: "{w}", class: "pill", Annotated { text: w.clone(), tag: target, inline: true } }
             }
         }
     }
