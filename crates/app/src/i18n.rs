@@ -286,6 +286,9 @@ pub enum Msg {
     StyleOff,
     StyleOffHint,
     QuietHours,
+    RemindersElsewhere,
+    RemindersBlocked,
+    RemindersAllow,
     QuietFrom,
     QuietTo,
     ReportWhen,
@@ -337,6 +340,8 @@ pub enum Msg {
     Use,
     InUse,
     NotEnoughKoin,
+    KoinToGo,
+    KoinEarnedFrom,
     JournalTitle,
     JournalEmpty,
     NavJournal,
@@ -1477,6 +1482,23 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (QuietHours, ArEg) => "ساعات الهدوء",
         (QuietHours, Ar) => "ساعات الهدوء",
         (QuietHours, En) => "Quiet hours",
+        (RemindersElsewhere, ArEg) => "التذكيرات بتوصلك على الموبايل والتابلت. على الماك لسه جاية قريب.",
+        (RemindersElsewhere, Ar) => "تصلك التذكيرات على الهاتف والجهاز اللوحي، وعلى الماك قريبًا.",
+        (RemindersElsewhere, En) => {
+            "Reminders reach you on your phone and tablet. On the Mac they're coming soon."
+        }
+        (RemindersBlocked, ArEg) => {
+            "الإشعارات مقفولة لـ\u{2068}Kabar\u{2069} على الجهاز ده، فمش هقدر أفكّرك هنا."
+        }
+        (RemindersBlocked, Ar) => {
+            "الإشعارات مغلقة لـ\u{2068}Kabar\u{2069} على هذا الجهاز، فلن أستطيع تذكيرك هنا."
+        }
+        (RemindersBlocked, En) => {
+            "Notifications are off for Kabar on this device, so I can't remind you here."
+        }
+        (RemindersAllow, ArEg) => "اسمح بالإشعارات",
+        (RemindersAllow, Ar) => "اسمح بالإشعارات",
+        (RemindersAllow, En) => "Allow notifications",
         (QuietFrom, ArEg | Ar) => "من",
         (QuietFrom, En) => "From",
         (QuietTo, ArEg) => "لحد",
@@ -1614,6 +1636,12 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (NotEnoughKoin, ArEg) => "محتاج كوين أكتر شوية",
         (NotEnoughKoin, Ar) => "تحتاج إلى مزيد من العملات",
         (NotEnoughKoin, En) => "A few more Koin needed",
+        (KoinToGo, ArEg) => "فاضلك {n}",
+        (KoinToGo, Ar) => "يتبقّى لك {n}",
+        (KoinToGo, En) => "{n} more",
+        (KoinEarnedFrom, ArEg) => "بتكسب الكوين من الدروس والمراجعة والألعاب.",
+        (KoinEarnedFrom, Ar) => "تكسب العملات من الدروس والمراجعة والألعاب.",
+        (KoinEarnedFrom, En) => "You earn Koin from lessons, reviews and games.",
         (JournalTitle, ArEg) => "يومياتك في التعلم",
         (JournalTitle, Ar) => "سجل التعلّم",
         (JournalTitle, En) => "Learning journal",

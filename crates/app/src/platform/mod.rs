@@ -370,6 +370,35 @@ pub mod track {
     pub use none::*;
 }
 
+/// Kak Nur's reminders reach this device as local notifications (Android).
+/// The Mac's (UNUserNotificationCenter) and push through FCM come next
+/// (issue #127); until then Settings says so.
+pub const LOCAL_REMINDERS: bool = cfg!(target_os = "android");
+
+/// Local reminder scheduling; no-ops where [`LOCAL_REMINDERS`] is false.
+pub mod reminders {
+    /// Replaces the scheduled reminders with `json` (`[{at, title, text}]`).
+    pub fn schedule(json: &str) -> Result<(), String> {
+        #[cfg(target_os = "android")]
+        {
+            super::android::schedule_reminders(json)
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            let _ = json;
+            Ok(())
+        }
+    }
+
+    /// Asks for the notification permission where the system needs one.
+    pub fn request() {
+        #[cfg(target_os = "android")]
+        if let Err(e) = super::android::request_notifications() {
+            crate::diag::report!("notification permission: {e}");
+        }
+    }
+}
+
 #[cfg(all(test, not(target_os = "android")))]
 mod tests {
     use super::*;

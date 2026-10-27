@@ -226,6 +226,7 @@ fn Warung(today: LocalDate) -> Element {
                 bdi { class: "latin", "Koin" }
                 " {ui.num(balance)}"
             }
+            p { class: "muted small", "{ui.t(Msg::KoinEarnedFrom)}" }
             if let Some(b) = toast() {
                 div { class: "toast", role: "status",
                     Nur { text: say(&ui, Line::WarungBought, today, &[("name", name.as_str()), ("item", b.name), ("koin", &koin_left)]) }
@@ -281,11 +282,27 @@ fn Warung(today: LocalDate) -> Element {
                                 },
                                 "{ui.t(Msg::Use)}"
                             }
+                        } else if balance < item.koin {
+                            // Not a dead button: how far off it is, at a glance.
+                            div {
+                                class: "koin-to-go",
+                                role: "img",
+                                aria_label: "{ui.t(Msg::NotEnoughKoin)}",
+                                span { class: "small",
+                                    {ui.t(Msg::KoinToGo).replace("{n}", &ui.num(item.koin - balance))}
+                                    " "
+                                    bdi { class: "latin", "Koin" }
+                                }
+                                div { class: "progress",
+                                    div {
+                                        class: "progress-fill",
+                                        style: "inline-size: {u64::from(balance) * 100 / u64::from(item.koin.max(1))}%",
+                                    }
+                                }
+                            }
                         } else {
                             button {
                                 class: "primary",
-                                disabled: balance < item.koin,
-                                title: if balance < item.koin { ui.t(Msg::NotEnoughKoin) } else { "" },
                                 onclick: {
                                     let db = db.clone();
                                     move |_| {
