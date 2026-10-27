@@ -52,11 +52,19 @@ exercises:
       en: First the pattern is drawn (dipungambar), then the wax, then the dye.
     words: [rumiyin, gambar, kain, celup]
   - id: e02
-    type: listen
-    text: Lajeng kainipun dipuncelup.
-    options: [Lajeng kainipun dipuncelup., Lajeng malamipun dipuncelup., Rumiyin kainipun dipuncelup.]
+    type: multiple_choice
+    question: Lajeng dipunbatik ngginakaken canthing lan malam.
+    question_meaning:
+      ar_eg: 'Tembung kembar: malam هنا معناها إيه؟ (اختار الإندونيسي)'
+      ar: 'Tembung kembar: ما معنى malam هنا؟ (اختر الإندونيسية)'
+      en: 'Tembung kembar: what does malam mean here? (Pick the Indonesian.)'
+    options: [lilin batik, waktu malam, kain batik]
     answer: 0
-    words: [lajeng, kain, celup, malam]
+    explain:
+      ar_eg: malam بالجاوي = شمع الباتيك. أما malam الإندونيسي = ليل (وده بالجاوي bengi أو dalu).
+      ar: malam بالجاوية = شمع الباتيك، أما malam الإندونيسية فتعني الليل (وبالجاوية bengi أو dalu).
+      en: Javanese malam = batik wax; Indonesian malam = night (Javanese bengi or dalu).
+    words: [malam, lajeng, ngginakaken, canthing]
   - id: e03
     type: fill_blank
     sentence: ___, motifipun dipungambar wonten kain.
@@ -192,9 +200,10 @@ new_words:
     en: one month (ngoko sesasi, Indonesian sebulan), krama
   - word: malam
     pos: noun
-    ar_eg: شمع الباتيك (lilin)
-    ar: شمع الباتيك (lilin)
-    en: batik wax (lilin)
+    ar_eg: شمع الباتيك (lilin) (≠ إندونيسي malam = ليل)
+    ar: شمع الباتيك (lilin) (≠ الإندونيسية malam = ليل)
+    en: batik wax (lilin) (≠ Indonesian malam "night")
+    false_friend: malam
   - word: kain
     pos: noun
     ar_eg: قماش
