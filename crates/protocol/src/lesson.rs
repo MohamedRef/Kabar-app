@@ -242,6 +242,14 @@ pub struct NewWord {
     /// (bersalaman → salam, Senen → senin).
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub bridge: Option<String>,
+    /// Javanese only: the Indonesian word spelled the same with another
+    /// meaning (mau "a moment ago" ≠ Indonesian mau "want"). Shown as a badge.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub false_friend: Option<String>,
+    /// Javanese only: spelled like an Indonesian word and means the same,
+    /// although the glosses are worded differently (kapan, salam).
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub same_as_id: bool,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
