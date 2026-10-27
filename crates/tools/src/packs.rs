@@ -314,6 +314,10 @@ fn print_stats(manifests: &[PackManifest]) {
     println!(
         "total        {clips:>6} clips {chars:>9} chars ({unique_chars} after dedupe across units; Azure F0 = {FREE_MONTHLY_CHARS}/month)"
     );
+    println!(
+        "a first full run takes {} month(s) at the default --budget {DEFAULT_MONTHLY_BUDGET}; later runs only pay for changed lines",
+        unique_chars.div_ceil(DEFAULT_MONTHLY_BUDGET).max(1)
+    );
 }
 
 // --- synthesize --------------------------------------------------------------------
