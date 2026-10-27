@@ -68,13 +68,13 @@ every morning. CI warns when the table below is behind the content.
 
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Known / target | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
-| J1 | Malioboro, Yogyakarta | — | 7 | 50 | 456 | 260 | 260 / 250 | ~6 h | 34 |
-| J2 | Madiun | — | 6 | 48 | 461 | 240 | 500 / 500 | ~5 h | 35 |
-| J3 | Yogyakarta | — | 6 | 61 | 554 | 250 | 750 / 750 | ~6 h | 35 |
-| J4 | Malioboro, Yogyakarta | — | 6 | 69 | 648 | 248 | 997 / 1,000 | ~8 h | 38 |
-| J5 | Semarang | — | 6 | 66 | 621 | 253 | 1,250 / 1,250 | ~7 h | 39 |
-| J6 | Kotagede, old Mataram capital | — | 6 | 80 | 748 | 246 | 1,495 / 1,500 | ~8 h | 37 |
-| **Total** |  | — | 37 | 374 | 3,488 | 1,497 | 1,495 / 1,500 | ~41 h | 218 |
+| J1 | Malioboro, Yogyakarta | — | 7 | 50 | 459 | 261 | 261 / 250 | ~6 h | 34 |
+| J2 | Madiun | — | 6 | 48 | 461 | 240 | 501 / 500 | ~5 h | 35 |
+| J3 | Yogyakarta | — | 6 | 61 | 554 | 250 | 751 / 750 | ~6 h | 35 |
+| J4 | Malioboro, Yogyakarta | — | 6 | 69 | 648 | 248 | 998 / 1,000 | ~8 h | 38 |
+| J5 | Semarang | — | 6 | 66 | 621 | 253 | 1,251 / 1,250 | ~7 h | 39 |
+| J6 | Kotagede, old Mataram capital | — | 6 | 60 | 542 | 95 | 1,345 / 1,500 | ~6 h | 37 |
+| **Total** |  | — | 37 | 354 | 3,285 | 1,347 | 1,345 / 1,500 | ~38 h | 218 |
 
 **Reference content and stories**
 
@@ -84,7 +84,7 @@ every morning. CI warns when the table below is behind the content.
 | Grammar points | 160 | 113 Indonesian, 47 Javanese |
 | Indonesian glosses | 10,000 | 10,000 awaiting your review |
 | Javanese glosses | 3,000 | 3,000 awaiting your review |
-| Arabic Bridge entries | 628 | Arabic loans, shifts and false friends |
+| Arabic Bridge entries | 633 | Arabic loans, shifts and false friends |
 | Javanese speech-level rows | 365 | ngoko / krama / krama inggil |
 | Pronunciation lexicon | 18,309 | plus 30 hand overrides |
 | Sinetron episodes | 107 | each unlocks after its unit |

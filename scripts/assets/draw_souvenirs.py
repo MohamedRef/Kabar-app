@@ -1999,13 +1999,6 @@ def jalan_kaliurang():
     return "".join(z)
 
 
-def suramadu(y):
-    z = [path(f"M126 {y} L898 {y}", stroke=C, sw=6)]
-    for tx in (380, 640):
-        z.append(rect(tx - 10, y - 140, 20, 160, "#9C9488", 2, C, 3))
-        for k in range(5):
-            z.append(line(tx, y - 130, tx - 30 - k * 24, y, C, 2) + line(tx, y - 130, tx + 30 + k * 24, y, C, 2))
-    return "".join(z)
 
 
 def kite(x, y, s=1.0, fill=R, tail=O):
@@ -2039,45 +2032,53 @@ def parangtritis():
     return "".join(z)
 
 
-def komodo(x, y, s=1.0):
-    col = "#7A7A5A"
-    b = path("M-200 0 Q-120 -50 0 -40 Q100 -36 160 -10 Q200 0 230 -6 Q200 16 150 14 Q60 30 -60 20 Q-200 30 -320 10 Q-220 6 -200 0Z", col, C, 6)
-    for lx, d in ((-120, 1), (-60, -1), (60, 1), (110, -1)):
-        b += path(f"M{lx} 10 q{d * 10} 30 {d * 30} 40", stroke=col, sw=22) + path(f"M{lx} 10 q{d * 10} 30 {d * 30} 40", stroke=C, sw=2, op=0.5)
-    b += circle(190, -14, 5, C) + path("M230 0 l30 -6 l-10 6 l10 6Z", O)
-    r = random.Random(2)
-    for _ in range(18):
-        b += circle(r.uniform(-180, 140), r.uniform(-30, 10), 4, C, op=0.25)
-    return group(b, x, y, s)
 
 
 @scene("j1.u06")
-def kebun_binatang():
-    """The Surabaya zoo: a Komodo dragon basking, the shark-and-crocodile statue behind."""
-    z = [sky(sun=(250, 270), r=70)]
-    # the city's emblem statue: a shark and a crocodile circling each other
-    z.append(rect(580, 560, 160, 120, "#9C9488", 4, C, 5))
-    z.append(path("M600 560 Q580 420 660 360 Q680 420 640 470 Q620 520 650 560Z", "#9C9488", C, 5))
-    z.append(path("M720 560 Q760 440 680 380 Q690 450 700 480 Q700 520 690 560Z", "#B8B4C8", C, 5))
-    z.append(path("M126 700 Q512 660 898 710 L898 972 L126 972Z", "#B8A070"))
-    z.append(tree(200, 720, 0.8))
-    z.append(komodo(470, 850, 1.1))
-    z.append(path("M126 960 L898 960", stroke=D, sw=12) + "".join(line(160 + k * 90, 900, 160 + k * 90, 972, D, 8) for k in range(9)))
+def trans_jogja():
+    """Trans Jogja: a green-and-white city bus pulling up at a raised halte shelter, a becak waiting."""
+    z = [sky(sun=(250, 260), r=70)]
+    z.append(city_far(560, 0.3))
+    z.append(rect(X0, 760, W, 212, "#5A5A66"))
+    z.append(path("M126 860 L898 860", stroke=P, sw=6) + path("M126 760 L898 760", stroke=S, sw=10))
+    # the raised halte: a platform on legs with a curved roof and a ramp
+    z.append(rect(560, 600, 300, 20, "#9C9488", 2, C, 5) + rect(580, 620, 14, 140, C) + rect(830, 620, 14, 140, C))
+    z.append(path("M540 470 Q710 420 880 470 L880 490 L540 490Z", "#3F7AB0", C, 5) + rect(560, 490, 300, 110, "#D9EEF2", 2, C, 4, 0.8))
+    z.append(rect(640, 500, 140, 30, "#F2C94C", 3, C, 3))
+    z.append(path("M860 620 L898 700 L898 720 L860 640Z", "#9C9488", C, 3))
+    z.append(person(660, 600, 0.6, O) + person(740, 600, 0.6, K, scarf=P))
+    # the bus
+    z.append(rect(150, 560, 400, 200, P, 18, C, 6) + rect(150, 680, 400, 40, G, 0))
+    z.append(windows(180, 590, 5, 1, 56, 60, 18, 0, "#9CC9D9"))
+    z.append(rect(500, 600, 40, 120, "#9CC9D9", 4, C, 4))
+    z.append(circle(230, 770, 30, C) + circle(470, 770, 30, C))
+    # a becak parked in front
+    z.append(circle(300, 930, 30, "none", C, 6) + circle(410, 930, 30, "none", C, 6) + path("M300 880 L380 880 L400 820 L300 820Z", R, C, 5) + path("M290 820 Q340 770 400 820Z", O, C, 4))
     return "".join(z)
 
 
 @scene("j1.u07")
-def pasar_atom():
-    """Pasar Atom: a tall market block, bolts of cloth and shoppers outside."""
+def pasar_klithikan():
+    """Pasar Klithikan: rows of second-hand stalls, old phones, cameras and tools on a mat."""
     z = [sky(sun=(780, 250), r=60)]
-    z.append(rect(180, 300, 664, 500, P, 4, C, 7))
-    for r_ in range(4):
-        z.append(rect(180, 340 + r_ * 110, 664, 14, O, 0, C, 3))
-        z.append(windows(210, 370 + r_ * 110, 9, 1, 50, 50, 22, 0, "#9CC9D9"))
-    z.append(rect(420, 700, 184, 100, C, 6))
+    z.append(rect(126, 380, 772, 60, "#6E7FA8", 0, C, 5) + rect(126, 440, 772, 360, "#E3C9A8", 0, C, 5))
+    for k in range(4):
+        x = 150 + k * 190
+        z.append(rect(x, 470, 160, 240, "#6E4A30", 4, C, 4) + line(x + 10, 500, x + 150, 500, C, 3))
+    # what hangs in each stall: shirts, helmets, a wall clock and wheels
+    z.append(path("M175 505 L205 505 L215 530 L205 530 L205 580 L175 580 L175 530 L165 530Z", G, C, 3) + path("M235 505 L265 505 L275 530 L265 530 L265 580 L235 580 L235 530 L225 530Z", O, C, 3))
+    z.append(path("M370 560 Q370 510 410 510 Q450 510 450 560Z", R, C, 4) + path("M380 640 Q380 590 420 590 Q460 590 460 640Z", "#F2C94C", C, 4))
+    z.append(circle(610, 560, 40, P, C, 5) + line(610, 560, 610, 530, C, 4) + line(610, 560, 632, 570, C, 4))
+    z.append(circle(780, 560, 44, "none", C, 8) + circle(780, 560, 8, C) + circle(820, 650, 34, "none", C, 7))
     z.append(rect(X0, 800, W, 172, S))
-    z.append(stall(150, 940, 220, R, (P, K, O)) + stall(660, 940, 220, G, (O, I, P)))
-    z.append(person(460, 920, 0.8, K, scarf=I) + person(560, 925, 0.8, I))
+    z.append(rect(200, 820, 620, 110, K, 6, C, 5))
+    # phones, a camera, spanners and a radio on the mat
+    for k in range(4):
+        z.append(rect(230 + k * 50, 840, 34, 60, C, 6) + rect(235 + k * 50, 846, 24, 44, "#9CC9D9", 3))
+    z.append(rect(460, 846, 90, 56, "#4A4A50", 8, C, 4) + circle(505, 874, 20, "#9CC9D9", C, 4))
+    z.append(line(590, 900, 650, 840, "#9C9488", 10) + line(620, 900, 680, 840, "#9C9488", 10))
+    z.append(rect(700, 846, 90, 56, O, 6, C, 4) + circle(725, 874, 14, P, C, 3))
+    z.append(person(380, 800, 0.75, I, scarf=O) + person(640, 805, 0.75, P, head=C))
     return "".join(z)
 
 
