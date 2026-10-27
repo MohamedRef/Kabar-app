@@ -1,194 +1,180 @@
 schema: kabar.lesson/v1
 id: bipa6.u02.l10
 language: id
-title: Ulangan Unit 2
+title: Menulis pantun
 can_do:
-  ar_eg: تفهم البانتون والشعر الحديث، وتألّف بانتون بنفسك.
-  ar: أن تفهم البانتون والشعر الحديث، وتنظم بانتونًا بنفسك.
-  en: Understand pantun and modern poetry, and compose a pantun yourself.
+  ar_eg: تألّف بانتون بسيط، تعدّ المقاطع وتلاقي القافية.
+  ar: أن تنظم بانتونًا بسيطًا فتعدّ المقاطع وتجد القافية.
+  en: Compose a simple pantun, counting syllables and finding rhymes.
+slides:
+  - title: Resep pantun
+    grammar: id.pantun.structure
+    body:
+      ar_eg: |
+        علشان menyusun (تألّف) بانتون:
+        1. ابدأ بالـ isi: قول رسالتك في سطرين.
+        2. شوف آخر مقطع في كل سطر: ده اللي لازم يبقى berima.
+        3. دوّر على صورة من الطبيعة بنفس الأصوات وحطّها sampiran.
+        4. كل سطر حوالي 8 لـ 12 suku kata (مقطع صوتي): ka-lau a-da su-mur di la-dang = 9.
+        والـ karmina بانتون صغير بسطرين بس: Dahulu parang, sekarang besi; dahulu sayang, sekarang benci.
+      ar: |
+        لكي menyusun (تنظم) بانتونًا:
+        1. ابدأ بالـ isi: رسالتك في سطرين.
+        2. انظر إلى آخر مقطع في كلّ سطر، فهو ما يجب أن يكون berima.
+        3. ابحث عن صورة من الطبيعة بالأصوات نفسها واجعلها sampiran.
+        4. في كلّ سطر نحو 8 إلى 12 suku kata (مقطعًا): ka-lau a-da su-mur di la-dang = 9.
+        والـ karmina بانتون قصير من سطرين: Dahulu parang, sekarang besi; dahulu sayang, sekarang benci.
+      en: |
+        To menyusun (compose) a pantun:
+        1. Start with the isi: your message in two lines.
+        2. Look at the last syllable of each line; those must be berima (rhyme).
+        3. Find a nature image with the same sounds for the sampiran.
+        4. Each line has about 8–12 suku kata (syllables): ka-lau a-da su-mur di la-dang = 9.
+        A karmina is a two-line mini pantun: Dahulu parang, sekarang besi; dahulu sayang, sekarang benci.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: sampiran
-        ar_eg: أول سطرين (الصورة)
-        ar: السطران الأوّلان
-        en: the opening image lines
-      - text: majas
-        ar_eg: مجاز / صورة بلاغية
-        ar: مجاز
-        en: figure of speech
-      - text: penyair
-        ar_eg: شاعر
-        ar: شاعر
-        en: poet
-      - text: rombongan
-        ar_eg: وفد / جماعة
-        ar: وفد
-        en: group, party
       - text: suku kata
         ar_eg: مقطع صوتي
         ar: مقطع صوتي
         en: syllable
-    words: [sampiran, majas, penyair, rombongan, suku kata]
+      - text: berima
+        ar_eg: مقفّى
+        ar: مقفّى
+        en: to rhyme
+      - text: menyusun
+        ar_eg: يألّف / يرتّب
+        ar: ينظم
+        en: to compose, to arrange
+      - text: karmina
+        ar_eg: بانتون بسطرين
+        ar: بانتون من سطرين
+        en: two-line pantun
+    words: [suku kata, berima, menyusun, karmina]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: «Kakeknya sudah berpulang» ده أنهي مجاز؟
-      ar: أيّ مجاز في «Kakeknya sudah berpulang»؟
-      en: Which figure is "Kakeknya sudah berpulang"?
-    options: [paradoks, eufemisme, personifikasi]
-    answer: 1
-    words: [eufemisme, berpulang]
+      ar_eg: «kota» بتقفّي مع أنهي كلمة؟
+      ar: أيّ كلمة تُقافي «kota»؟
+      en: Which word rhymes with "kota"?
+    options: [kita, kami, kamu]
+    answer: 0
+    words: [berima]
   - id: e03
-    type: fill_blank
-    sentence: Isi pantun ada di dua ___ terakhir.
-    meaning:
-      ar_eg: رسالة البانتون في آخر سطرين.
-      ar: مضمون البانتون في السطرين الأخيرين.
-      en: A pantun's message is in the last two lines.
-    options: [baris, bait, rima]
-    answers: [baris]
-    words: [isi, baris]
-  - id: e04
-    type: listen
-    text: Pantun jenaka dari rombongan pengantin laki-laki membuat tamu tertawa.
-    question:
-      ar_eg: مين اللي ضحّك الضيوف؟
-      ar: مَن أضحك الضيوف؟
-      en: Who made the guests laugh?
-    options:
-      - وفد العروسة.
-      - الشاعر.
-      - وفد العريس ببانتون هزار.
-    answer: 2
-    words: [jenaka, rombongan]
-  - id: e05
-    type: build_sentence
-    source:
-      ar_eg: المقطع ده ساكت وحزين.
-      ar: هذا المقطع صامت وحزين.
-      en: This stanza is silent and sad.
-    answer: Bait ini sunyi dan sedih.
-    distractors: [rima, gubuk]
-    words: [bait, sunyi]
-  - id: e06
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي كلمة بتقفّي مع «hati»؟
-      ar: أيّ كلمة تُقافي «hati»؟
-      en: Which word rhymes with "hati"?
-    options: [mati, hujan, kota]
-    answer: 0
-    words: [berima, rima]
+      ar_eg: «se-ka-rang» فيها كام مقطع؟
+      ar: كم مقطعًا في «se-ka-rang»؟
+      en: How many syllables in "se-ka-rang"?
+    options: ['2', '4', '3']
+    answer: 2
+    words: [suku kata]
+  - id: e04
+    type: fill_blank
+    sentence: Pantun dua baris disebut ___.
+    meaning:
+      ar_eg: البانتون اللي بسطرين اسمه karmina.
+      ar: يسمّى البانتون ذو السطرين karmina.
+      en: A two-line pantun is called a karmina.
+    options: [karmina, sampiran, suku kata]
+    answers: [karmina]
+    words: [karmina]
+  - id: e05
+    type: listen
+    text: Baris pertama dan ketiga harus berima.
+    question:
+      ar_eg: أنهي سطور لازم تقفّي مع بعض؟
+      ar: أيّ الأسطر يجب أن تتقافى؟
+      en: Which lines must rhyme?
+    options:
+      - التاني والتالت.
+      - الأول والتالت.
+      - الأول والرابع.
+    answer: 1
+    words: [berima]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: ألّفت بانتون عن مصر.
+      ar: نظمتُ بانتونًا عن مصر.
+      en: I composed a pantun about Egypt.
+    answer: Saya menyusun pantun tentang Mesir.
+    distractors: [berima, karmina]
+    words: [menyusun]
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: عليّ دين جميل لعيلتي في رياو.
-      ar: لعائلتي في رياو عليّ فضل لا يُنسى.
-      en: I owe a debt of gratitude to my family in Riau.
+      ar_eg: كل سطر فيه عشر مقاطع.
+      ar: في كلّ سطر عشرة مقاطع.
+      en: Each line has ten syllables.
     answers:
-      - Saya punya utang budi kepada keluarga saya di Riau.
-      - Saya berutang budi kepada keluarga saya di Riau.
-      - Saya punya utang budi pada keluarga di Riau.
-      - Aku punya utang budi kepada keluargaku di Riau.
-    words: [utang budi]
+      - Setiap baris punya sepuluh suku kata.
+      - Setiap baris terdiri atas sepuluh suku kata.
+      - Tiap baris memiliki sepuluh suku kata.
+      - Setiap baris ada sepuluh suku kata.
+    words: [suku kata]
   - id: e08
-    type: translate
-    direction: from_target
-    source_text: Penyair itu menyusun puisi tentang angin yang berbisik.
-    answers_meaning:
-      ar_eg:
-        - الشاعر ده ألّف قصيدة عن الهوا اللي بيوشوش.
-        - الشاعر كتب قصيدة عن ريح بتهمس.
-      ar:
-        - نظم ذلك الشاعر قصيدة عن ريح تهمس.
-        - كتب الشاعر قصيدة عن الريح الهامسة.
-      en:
-        - That poet composed a poem about a whispering wind.
-        - The poet wrote a poem about the wind that whispers.
-    words: [penyair, menyusun, puisi, personifikasi]
+    type: speaking
+    text: Sudah gaharu, cendana pula; sudah tahu, bertanya pula.
+    meaning:
+      ar_eg: عود وكمان صندل؛ عارف وكمان بيسأل!
+      ar: عودٌ ثم صندل أيضًا؛ يعرف ثم يسأل أيضًا!
+      en: Agarwood, and sandalwood too; you know it, and still you ask!
+    words: [karmina]
   - id: e09
     type: dictation
-    text: Silakan mampir ke gubuk kami, Encik.
+    text: Menyusun pantun itu seperti bermain teka-teki.
     meaning:
-      ar_eg: اتفضل شرّفنا في عشّتنا يا إنشيك.
-      ar: تفضّل بزيارة كوخنا يا سيّدي.
-      en: Please drop by our hut, sir.
-    words: [gubuk]
-  - id: e10
-    type: speaking
-    text: Mari berbalas pantun, karmina juga boleh.
-    meaning:
-      ar_eg: يلا نتبادل بانتون، وحتى karmina ينفع.
-      ar: هيّا نتبادل البانتون، ولا بأس بالـ karmina.
-      en: Let's trade pantun; even a karmina will do.
-    words: [berbalas, karmina]
-  - id: e11
-    type: match_pairs
-    pairs:
-      - text: gurindam
-        ar_eg: شعر سطرين، سبب ونتيجة
-        ar: بيتان، سبب ونتيجة
-        en: two-line verse, cause and result
-      - text: pelopor
-        ar_eg: رائد
-        ar: رائد
-        en: pioneer
-      - text: sajak
-        ar_eg: قصيدة
-        ar: قصيدة
-        en: poem
-      - text: menghayati
-        ar_eg: يعيش المعنى
-        ar: يتمثّل المعنى
-        en: to feel deeply
-      - text: juara
-        ar_eg: الفايز
-        ar: الفائز
-        en: winner
-    words: [gurindam, pelopor, sajak, menghayati, juara]
-  - id: e12
-    type: fill_blank
-    sentence: Setiap bait ___ terdiri atas empat larik yang berima sama.
-    meaning:
-      ar_eg: كل مقطع في الـ syair فيه أربع أسطر بنفس القافية.
-      ar: يتألّف كلّ مقطع من الـ syair من أربعة أسطر على قافية واحدة.
-      en: Every stanza of a syair has four lines on the same rhyme.
-    options: [syair, gurindam, deklamasi]
-    answers: [syair]
-    words: [syair, larik]
+      ar_eg: تأليف البانتون زي حل الفوازير.
+      ar: نظم البانتون أشبه بحلّ الألغاز.
+      en: Composing a pantun is like playing a puzzle.
+    words: [menyusun]
 dialogue:
-  title: Pantun perpisahan
+  title: Pantun pertama Mohamed
   lines:
-    - speaker: Encik Zul
-      text: Besok kamu ke Bukittinggi, Mohamed. Tutuplah dengan pantun.
-      ar_eg: بكرة رايح بوكيتينجي يا محمد. اختم ببانتون.
-      ar: غدًا تسافر إلى بوكيتينغي يا محمد، فاختم ببانتون.
-      en: Tomorrow you're off to Bukittinggi, Mohamed. Close with a pantun.
     - speaker: Mohamed
-      text: Perahu kecil di Sungai Siak, membawa ikan ke kota baru.
-      ar_eg: مركب صغير في نهر سياك، شايل سمك للمدينة الجديدة.
-      ar: قارب صغير في نهر سياك، يحمل السمك إلى المدينة الجديدة.
-      en: A small boat on the Siak River, carrying fish to the new town.
-    - speaker: Mohamed
-      text: Terima kasih, Encik dan Mak Cik, budi baik kalian kuingat selalu.
-      ar_eg: شكرًا يا إنشيك ويا ماك تشيك، والجميل ده عمري ما هنساه.
-      ar: شكرًا لكما، ولن أنسى معروفكما أبدًا.
-      en: Thank you, Encik and Mak Cik; your kindness I'll never forget.
+      text: Encik, saya mau menyusun pantun tentang Kairo, tetapi sulit mencari rima.
+      ar_eg: يا إنشيك، عايز أألّف بانتون عن القاهرة، بس صعب ألاقي قافية.
+      ar: أريد أن أنظم بانتونًا عن القاهرة، لكنّ إيجاد القافية صعب.
+      en: Encik, I want to compose a pantun about Cairo, but finding rhymes is hard.
     - speaker: Encik Zul
-      text: Rimanya agak bebas, tetapi isinya sampai ke hati. Selamat jalan!
-      ar_eg: القافية متساهلة شوية، بس الرسالة وصلت للقلب. مع السلامة!
-      ar: القافية متحرّرة قليلًا، لكنّ المضمون بلغ القلب. في أمان الله!
-      en: The rhyme is a bit loose, but the message reaches the heart. Safe travels!
-souvenir:
-  id: bipa6.u02.souvenir
-  title: Pantun di pesta pernikahan Melayu
-  note:
-    ar_eg: في رياو والملايو عمومًا، البانتون بيفتح الخطب والأفراح، ووفد العريس ووفد العروسة بيتبادلوه على الباب قبل ما يدخلوا. أربع سطور بقافية a-b-a-b، أول سطرين صورة وآخر سطرين الرسالة. وفي 2020 اليونسكو سجّلت البانتون تراث ثقافي غير مادي، بترشيح مشترك من إندونيسيا وماليزيا.
-    ar: في رياو وبلاد الملايو عامّةً يفتتح البانتون الخطب والأعراس، ويتبادله وفدا العريس والعروس عند الباب قبل الدخول. أربعة أسطر بقافية a-b-a-b، السطران الأوّلان صورة والأخيران رسالة. وفي 2020 أدرجت اليونسكو البانتون في قائمة التراث الثقافي غير المادّي بترشيح مشترك من إندونيسيا وماليزيا.
-    en: In Riau and across the Malay world, pantun open speeches and weddings, and the groom's and bride's parties trade them at the door before entering. Four lines rhyming a-b-a-b, the first two an image and the last two the message. In 2020 UNESCO inscribed pantun as Intangible Cultural Heritage, on a joint nomination by Indonesia and Malaysia.
+      text: Mulai dari isinya dulu. Apa pesanmu?
+      ar_eg: ابدأ بالرسالة الأول. إيه اللي عايز تقوله؟
+      ar: ابدأ بالمضمون أوّلًا. ما رسالتك؟
+      en: Start with the message first. What do you want to say?
+    - speaker: Mohamed
+      text: Walau jauh di Pekanbaru, hati saya tetap di Kairo.
+      ar_eg: حتى لو بعيد في بيكانبارو، قلبي لسه في القاهرة.
+      ar: وإن كنتُ بعيدًا في بيكانبارو، فقلبي ما زال في القاهرة.
+      en: Though I'm far away in Pekanbaru, my heart stays in Cairo.
+    - speaker: Encik Zul
+      text: Bagus. Sekarang cari sampiran yang berima dengan "baru" dan "Kairo". Hitung juga suku katanya.
+      ar_eg: حلو. دلوقتي دوّر على sampiran يقفّي مع baru وKairo. وعدّ المقاطع كمان.
+      ar: جميل. ابحث الآن عن sampiran يقافي baru وKairo، وعدّ المقاطع أيضًا.
+      en: Good. Now find a sampiran that rhymes with "baru" and "Kairo". Count the syllables too.
+new_words:
+  - word: suku kata
+    pos: noun
+    ar_eg: مقطع صوتي
+    ar: مقطع صوتي
+    en: syllable
+  - word: berima
+    pos: verb
+    ar_eg: مقفّى
+    ar: مقفّى
+    en: to rhyme
+  - word: menyusun
+    pos: verb
+    ar_eg: يألّف / يرتّب
+    ar: ينظم
+    en: to compose, to arrange
+  - word: karmina
+    pos: noun
+    ar_eg: بانتون بسطرين
+    ar: بانتون من سطرين
+    en: two-line pantun
 review:
   status: draft
   verified: false
