@@ -113,10 +113,10 @@ exercises:
         ar_eg: خلاص (wis) = sudah
         ar: قد (wis) = sudah
         en: already (wis) = sudah
-      - text: dereng
-        ar_eg: لسه ما (durung) = belum
-        ar: لم بعد (durung) = belum
-        en: not yet (durung) = belum
+      - text: peken
+        ar_eg: السوق (pasar)
+        ar: السوق (pasar)
+        en: market (pasar)
       - text: badhe
         ar_eg: هـ / عايز (arep) = akan
         ar: سوف (arep) = akan
@@ -129,7 +129,11 @@ exercises:
         ar_eg: لـ / على (nang) = ke
         ar: إلى (nang) = ke
         en: to (nang) = ke
-    words: [sampun, dereng, badhe, taksih, dhateng]
+      - text: sae
+        ar_eg: كويس / حلو (apik) = bagus
+        ar: جيد / جميل (apik) = bagus
+        en: good, nice (apik) = bagus
+    words: [sampun, peken, badhe, taksih, dhateng, sae]
   - id: e02
     type: multiple_choice
     question: arep
@@ -170,13 +174,11 @@ exercises:
     distractors: [arep, nang]
     words: [kula, badhe, dhateng]
   - id: e06
-    type: dictation
-    text: Kula taksih sinau.
-    meaning:
-      ar_eg: أنا لسه بتعلم.
-      ar: ما زلتُ أتعلم.
-      en: I'm still learning.
-    words: [taksih]
+    type: listen
+    text: Batik menika sae.
+    options: [Batik menika sae., Batik menika apik., Batik iki sae.]
+    answer: 0
+    words: [menika, sae]
   - id: e07
     type: speaking
     text: Kula badhe dhateng peken.
@@ -185,6 +187,20 @@ exercises:
       ar: سأذهب إلى السوق.
       en: I'm going to the market.
     words: [badhe, dhateng, peken]
+  - id: e08
+    type: multiple_choice
+    question: apik
+    question_meaning:
+      ar_eg: إيه الكراما بتاعة apik؟
+      ar: ما نظير apik في الكراما؟
+      en: What's the krama for apik?
+    options: [sae, sampun, peken]
+    answer: 0
+    explain:
+      ar_eg: apik (ngoko) ← sae (krama) = bagus. وpeken = السوق.
+      ar: apik (ngoko) ← sae (krama) = bagus، وpeken = السوق.
+      en: apik (ngoko) → sae (krama) = bagus; peken = market.
+    words: [sae]
 dialogue:
   title: Ing Kauman
   lines:
