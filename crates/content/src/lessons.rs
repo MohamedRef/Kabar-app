@@ -28,9 +28,9 @@ pub const VOICES: &[&str] =
 const SKILLS: &[&str] = &["listening", "reading", "writing", "speaking", "vocabulary", "grammar"];
 
 /// Collects problems for one file.
-struct Check<'a> {
-    file: &'a str,
-    out: &'a mut Vec<String>,
+pub(crate) struct Check<'a> {
+    pub(crate) file: &'a str,
+    pub(crate) out: &'a mut Vec<String>,
 }
 
 fn has_arabic(s: &str) -> bool {
@@ -38,7 +38,7 @@ fn has_arabic(s: &str) -> bool {
 }
 
 impl Check<'_> {
-    fn push(&mut self, msg: impl std::fmt::Display) {
+    pub(crate) fn push(&mut self, msg: impl std::fmt::Display) {
         self.out.push(format!("{}: {msg}", self.file));
     }
 
@@ -51,7 +51,7 @@ impl Check<'_> {
     }
 
     /// Requires `required` keys and rejects keys outside `required` + `optional`.
-    fn fields<'v>(
+    pub(crate) fn fields<'v>(
         &mut self,
         at: &str,
         v: &'v Value,
@@ -75,7 +75,7 @@ impl Check<'_> {
         Some(map)
     }
 
-    fn text<'v>(&mut self, at: &str, v: Option<&'v Value>) -> Option<&'v str> {
+    pub(crate) fn text<'v>(&mut self, at: &str, v: Option<&'v Value>) -> Option<&'v str> {
         match v.and_then(Value::as_str) {
             Some(s) if !s.trim().is_empty() => Some(s),
             _ => {
@@ -111,7 +111,7 @@ impl Check<'_> {
         }
     }
 
-    fn strings(&mut self, at: &str, v: Option<&Value>, min: usize) -> Vec<String> {
+    pub(crate) fn strings(&mut self, at: &str, v: Option<&Value>, min: usize) -> Vec<String> {
         let list: Option<Vec<String>> = v.and_then(Value::as_array).and_then(|a| {
             a.iter().map(|x| x.as_str().filter(|s| !s.trim().is_empty()).map(str::to_owned)).collect()
         });
@@ -333,7 +333,7 @@ impl Check<'_> {
 }
 
 impl Check<'_> {
-    fn tag(&mut self, m: &Map<String, Value>, tag: &str) {
+    pub(crate) fn tag(&mut self, m: &Map<String, Value>, tag: &str) {
         if m.get("schema").and_then(Value::as_str) != Some(tag) {
             self.push(format_args!("schema must be {tag}"));
         }
@@ -400,12 +400,19 @@ pub fn check_persona(file: &str, stem: &str, v: &Value, index: &Index, out: &mut
             "openers",
             "example_dialogues",
             "review",
+            "units",
         ],
         &["topics"],
     ) else {
         return;
     };
     c.tag(m, PERSONA_SCHEMA_TAG);
+    let units = c.strings("units", m.get("units"), 1);
+    for u in &units {
+        if !index.units.contains(u.as_str()) {
+            c.push(format_args!("units: '{u}' is not a curriculum unit id"));
+        }
+    }
     if m.get("id").and_then(Value::as_str) != Some(stem) {
         c.push("id must equal the file name");
     }
@@ -634,8 +641,8 @@ fn tiles(s: &str) -> Vec<String> {
 /// Curriculum lookups the lesson checks need.
 pub struct Index<'a> {
     lessons: BTreeMap<&'a str, (&'a str, &'a Unit, &'a Lesson)>,
-    levels: BTreeSet<&'a str>,
-    units: BTreeSet<&'a str>,
+    pub(crate) levels: BTreeSet<&'a str>,
+    pub(crate) units: BTreeSet<&'a str>,
     grammar: BTreeSet<&'a str>,
 }
 

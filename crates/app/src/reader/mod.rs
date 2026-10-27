@@ -554,6 +554,41 @@ async fn stash_image(file: &FileData) -> Result<std::path::PathBuf, String> {
     Ok(path)
 }
 
+/// Android's "Open a screenshot": the system photo picker hands the image
+/// over like a share (see `ImagePickActivity`), so it lands in the [`Inbox`]
+/// and opens exactly like a screenshot shared from another app. The app's own
+/// resume check may take it first; either way it arrives once.
+fn pick_native(st: ReaderState, inbox: Inbox) {
+    if let Err(e) = platform::pick_image() {
+        eprintln!("kabar: opening the photo picker failed: {e}");
+        let mut t = st.toast;
+        t.set(Some(Msg::PickFailed));
+        return;
+    }
+    spawn(async move {
+        // Ten minutes is far longer than anyone browses their photos.
+        for _ in 0..2400 {
+            tokio::time::sleep(std::time::Duration::from_millis(250)).await;
+            // State first: once it says done, the picked image is already stored.
+            let state = platform::pick_state();
+            if let Some(input) = platform::take_shared_input() {
+                let mut slot = inbox.0;
+                slot.set(Some(input));
+                return;
+            }
+            match state {
+                platform::PickState::Open => {}
+                platform::PickState::Done => return,
+                platform::PickState::Failed => {
+                    let mut t = st.toast;
+                    t.set(Some(Msg::PickFailed));
+                    return;
+                }
+            }
+        }
+    });
+}
+
 fn is_image(file: &FileData) -> bool {
     file.content_type().is_some_and(|t| t.starts_with("image/"))
         || file.name().rsplit_once('.').is_some_and(|(_, e)| {
@@ -566,6 +601,7 @@ fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Eleme
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let st = use_context::<ReaderState>();
+    let inbox = use_context::<Inbox>();
     let mut draft = use_signal(String::new);
     let mut dragging = use_signal(|| false);
 
@@ -617,7 +653,9 @@ fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Eleme
                 p { class: "muted", "{ui.t(Msg::ReaderIntro)}" }
                 textarea {
                     class: "reader-textarea",
-                    dir: "auto",
+                    // `auto` follows the typed text, but an empty box would lay
+                    // the Arabic placeholder out left-to-right.
+                    dir: if draft.read().is_empty() { ui.lang().dir().as_str() } else { "auto" },
                     lang: "id",
                     rows: "5",
                     placeholder: "{ui.t(Msg::ReaderPlaceholder)}",
@@ -643,16 +681,25 @@ fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Eleme
                         },
                         "{ui.t(Msg::ReaderRead)}"
                     }
-                    label { class: "button-like",
-                        "{ui.t(Msg::ReaderScreenshot)}"
-                        input {
-                            r#type: "file",
-                            accept: "image/*",
-                            class: "visually-hidden",
-                            onchange: {
-                                let pick = pick.clone();
-                                move |e: FormEvent| pick(e.files())
-                            },
+                    if platform::NATIVE_IMAGE_PICKER {
+                        button {
+                            disabled: busy.read().is_some(),
+                            onclick: move |_| pick_native(st, inbox),
+                            "{ui.t(Msg::ReaderScreenshot)}"
+                        }
+                    } else {
+                        label { class: "button-like",
+                            "{ui.t(Msg::ReaderScreenshot)}"
+                            input {
+                                r#type: "file",
+                                // macOS Vision also reads HEIC/TIFF (iPhone photos, older screenshots).
+                                accept: "image/*,.heic,.heif,.tif,.tiff,.bmp",
+                                class: "visually-hidden",
+                                onchange: {
+                                    let pick = pick.clone();
+                                    move |e: FormEvent| pick(e.files())
+                                },
+                            }
                         }
                     }
                     span { class: "muted", "{ui.t(Msg::ReaderDrop)}" }
