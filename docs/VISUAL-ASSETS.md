@@ -496,7 +496,20 @@ Never sent to Codex: Mohamed asked (2026-10-27) that Kabar draw in code whatever
 
 ---
 
-## Prompt 8 — Set up the free, openly licensed assets
+## Prompt 8 — Free, openly licensed assets: status (2026-10-27)
+
+Not sent to Codex. This is what Kabar has now. The original prompt is kept below for reference.
+
+| part | status |
+|---|---|
+| Icons | Kabar draws its own stroke icons on the Lucide 24 px grid (`crates/app/src/icons.rs`, `assets/icons/custom/`). No Lucide files are copied. |
+| Fonts | Plus Jakarta Sans, IBM Plex Sans Arabic and Amiri are bundled from Fontsource 5.3.0 (OFL 1.1, licenses checked). Noto Naskh Arabic and Noto Sans Javanese were already in `content/fonts/`. Noto Emoji is not added: the app uses no emoji glyphs that need it. |
+| Geodata | Already done: Natural Earth (public domain) via `kabar-tools --bin journey-map`. |
+| Gong and kendang | Synthesized by `scripts/assets/synth_sounds.py`, three variations each. Variation 1 ships; switch by changing `sounds.rs`. |
+| Kenney UI clicks | Not added. kenney.nl is blocked from the build container, and the app has no button clicks wired yet. Download *Interface Sounds* (CC0) on the Mac if we want clicks. |
+| Freesound gamelan | Skipped, as the prompt allows. |
+
+### Original prompt 8 (reference)
 
 ```text
 Set up the free third-party assets for "Kabar", a private, non-commercial Indonesian +
