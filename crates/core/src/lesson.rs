@@ -12,6 +12,7 @@ use kabar_protocol::lesson::{
     LessonContent, LessonPosition, LessonProgress, LessonStep, Localized, Outcome,
 };
 
+use crate::lang::Lang;
 use crate::locale::UiLanguage;
 
 // ---------------------------------------------------------------------------
@@ -492,18 +493,19 @@ fn is_close(given: &str, expected: &str) -> bool {
 enum Compare {
     /// Normalized text as is (Javanese, or answers in the learner's language).
     Plain,
-    /// Indonesian: each spoken form counts as its formal twin ("udah" =
-    /// "sudah", "nggak" = "tidak"), so either register, or a mix, is right.
-    Registers,
+    /// Target-language text where each street form counts as its formal twin
+    /// ("udah" = "sudah", "nggak" = "tidak"), so either register, or a mix,
+    /// is right. Javanese folds once its street list exists.
+    Registers(Lang),
 }
 
 fn canonical(s: &str, compare: Compare) -> String {
     let n = normalize(s);
     match compare {
         Compare::Plain => n,
-        Compare::Registers => n
+        Compare::Registers(lang) => n
             .split(' ')
-            .map(|w| crate::lang::normalize::formal_twin(w).unwrap_or(w))
+            .map(|w| crate::lang::normalize::formal_twin(lang, w).unwrap_or(w))
             .collect::<Vec<_>>()
             .join(" "),
     }
@@ -523,11 +525,15 @@ fn grade_text(given: &str, refs: &[String], allow_almost: bool, compare: Compare
 }
 
 /// Grades an answer. Deterministic, offline, no AI. `lesson_language` is the
-/// lesson's (`id` or `jv`): Indonesian answers may use the spoken or the
+/// lesson's or test's (`id` or `jv`): answers may use the street or the
 /// formal form of a word, whichever the reference has.
 pub fn grade(ex: &Exercise, answer: &Answer, lang: UiLanguage, lesson_language: &str) -> Grade {
     use ExerciseKind as K;
-    let target = if lesson_language == "id" { Compare::Registers } else { Compare::Plain };
+    let target = match lesson_language {
+        "id" => Compare::Registers(Lang::Indonesian),
+        "jv" => Compare::Registers(Lang::Javanese),
+        _ => Compare::Plain,
+    };
     let text = |a: &Answer| match a {
         Answer::Text(t) => Some(t.clone()),
         _ => None,

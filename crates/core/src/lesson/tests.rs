@@ -174,6 +174,15 @@ fn indonesian_answers_take_either_register() {
     // Twins are the same word, not synonyms: a different word stays wrong.
     assert_eq!(grade(&t, &text("Saya belum makan, tapi saya nggak lapar"), EG), Grade::NeedsReview);
 
+    // #298: bipa1.u02.l02.e03 lists only the formal answer.
+    let l02_e03 = to_target(&["Saya bisa bahasa Indonesia sedikit."]);
+    assert_eq!(
+        grade(&l02_e03, &text("Aku bisa bahasa Indonesia dikit"), EG),
+        Grade::NeedsReview,
+        "aku is not a twin"
+    );
+    assert_eq!(grade(&l02_e03, &text("Saya bisa bahasa Indonesia dikit"), EG), Grade::Correct);
+
     // A casual reference accepts the formal answer too.
     let casual = to_target(&["Gimana kabarnya?"]);
     assert_eq!(grade(&casual, &text("Bagaimana kabarnya?"), EG), Grade::Correct);
