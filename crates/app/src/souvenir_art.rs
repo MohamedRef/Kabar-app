@@ -95,7 +95,7 @@ mod tests {
                 .and_then(|u| u.lessons.last())
                 .unwrap();
             let lesson =
-                kabar_core::lesson::parse_lesson(crate::lesson::lesson_content(&last.id).unwrap()).unwrap();
+                kabar_core::lesson::parse_lesson(&crate::lesson::lesson_content(&last.id).unwrap()).unwrap();
             let s = lesson.souvenir.unwrap_or_else(|| panic!("{unit} has no souvenir"));
             assert_eq!(unit_of(&s.id), unit);
         }
@@ -129,7 +129,7 @@ mod tests {
                         .iter()
                         .rev()
                         .find_map(|l| {
-                            kabar_core::lesson::parse_lesson(crate::lesson::lesson_content(&l.id)?)
+                            kabar_core::lesson::parse_lesson(&crate::lesson::lesson_content(&l.id)?)
                                 .ok()?
                                 .souvenir
                         })

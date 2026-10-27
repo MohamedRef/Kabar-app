@@ -46,13 +46,13 @@ exercises:
       ar_eg: بعد ما تنام على اللوح، تعمل إيه على طول؟
       ar: بعد أن تستلقي على اللوح، ماذا تفعل مباشرة؟
       en: Right after lying down on the board, what do you do?
-    options: [Dayung dengan tangan., Bawa papan ke laut., Berdiri dengan cepat.]
+    options: [Dayung dengan tangan., Bawa papan selancar ke laut., Berdiri dengan cepat.]
     answer: 0
     explain:
       ar_eg: الخطوة ٣ بعد ٢، الأول تجدّف، وبعدين تقف لما الموجة تيجي.
       ar: الخطوة الثالثة تلي الثانية، فتجدّف أولًا ثم تقف عند الموجة.
       en: Step 3 follows step 2; you paddle first, then stand up for the wave.
-    words: [dayung, berbaring]
+    words: [dayung, berbaring, papan selancar]
   - id: e02
     type: listen
     text: Tekuk lutut sedikit.
@@ -101,23 +101,43 @@ exercises:
     distractors: [tolong, berhenti]
     words: [jangan, takut, jatuh]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: جدّف بإيديك.
-      ar: جدّف بيديك.
-      en: Paddle with your hands.
-    answers: [Dayung dengan tangan., Dayung dengan tangan, Dayung dengan tanganmu., Dayung dengan tangan!, Dayung pakai tangan.]
-    words: [dayung, tangan]
+    type: listen
+    text: Tekuk lutut, jangan takut jatuh.
+    options: ['Tekuk lutut, jangan takut jatuh.', 'Angkat lutut, jangan takut jatuh.', 'Tekuk lutut, jangan takut ombak.']
+    answer: 0
+    meaning:
+      ar_eg: اثني ركبتك، وماتخافش تقع.
+      ar: اثنِ ركبتيك، ولا تخف من السقوط.
+      en: Bend your knees, don't be afraid of falling.
+    words: [tekuk, lutut, jatuh, ombak]
   - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: بقالي أسبوعين بتعلّم السيرف.
-      ar: أتعلّم ركوب الأمواج منذ أسبوعين.
-      en: I've been learning to surf for two weeks.
-    answers: [Saya sudah dua minggu belajar berselancar., Saya sudah dua minggu belajar berselancar, Saya sudah belajar berselancar selama dua minggu., Saya sudah belajar berselancar selama dua minggu, Sudah dua minggu saya belajar berselancar., Saya belajar berselancar selama dua minggu., Aku sudah dua minggu belajar berselancar., Aku sudah belajar berselancar selama dua minggu.]
-    words: [berselancar, selama]
+    type: match_pairs
+    pairs:
+      - text: papan selancar
+        ar_eg: لوح السيرف
+        ar: لوح ركوب الأمواج
+        en: surfboard
+      - text: ombak
+        ar_eg: موج
+        ar: أمواج
+        en: wave
+      - text: tekuk
+        ar_eg: اثني
+        ar: اثنِ
+        en: bend
+      - text: jatuh
+        ar_eg: يقع
+        ar: يسقط
+        en: fall
+      - text: dayung
+        ar_eg: جدّف
+        ar: جدِّف
+        en: paddle
+      - text: berbaring
+        ar_eg: ينام على بطنه/ضهره
+        ar: يستلقي
+        en: lie down
+    words: [papan selancar, ombak, tekuk, jatuh, dayung, berbaring]
   - id: e09
     type: dictation
     text: Lihat ombaknya, lalu berdiri dengan cepat.

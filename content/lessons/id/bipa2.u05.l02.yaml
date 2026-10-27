@@ -114,6 +114,62 @@ exercises:
       ar: اقلِ البيض بقليل من الزيت.
       en: Fry the egg in a little oil.
     words: [goreng, minyak]
+  - id: e07
+    type: match_pairs
+    pairs:
+      - text: aduk
+        ar_eg: قلّب
+        ar: قلّب
+        en: stir
+      - text: cuci
+        ar_eg: اغسل
+        ar: اغسل
+        en: wash
+      - text: rebus
+        ar_eg: اسلق
+        ar: اسلق
+        en: boil
+      - text: bawang merah
+        ar_eg: بصل أحمر صغير
+        ar: شالوت
+        en: shallot
+      - text: bawang putih
+        ar_eg: توم
+        ar: ثوم
+        en: garlic
+      - text: minyak
+        ar_eg: زيت
+        ar: زيت
+        en: oil
+    words: [aduk, cuci, rebus, bawang merah, bawang putih, minyak]
+  - id: e08
+    type: listen
+    text: Rebus air, lalu aduk.
+    options: ['Rebus air, lalu aduk.', 'Goreng air, lalu aduk.', 'Rebus minyak, lalu cuci.']
+    answer: 0
+    meaning:
+      ar_eg: اسلق المية، وبعدين قلّب.
+      ar: اغلِ الماء ثم قلّب.
+      en: Boil the water, then stir.
+    words: [rebus, aduk, minyak, cuci]
+  - id: e09
+    type: fill_blank
+    sentence: Bawang putih ini ___ sekali!
+    meaning:
+      ar_eg: التوم ده ريحته حلوة أوي!
+      ar: رائحة هذا الثوم زكية جدًا!
+      en: This garlic smells wonderful!
+    options: [harum, minyak, rebus]
+    answers: [harum]
+    words: [bawang putih, harum]
+  - id: e10
+    type: speaking
+    text: Rebus telur, lalu goreng bawang putih.
+    meaning:
+      ar_eg: اسلق البيض، وبعدين اقلي التوم.
+      ar: اسلق البيض ثم اقلِ الثوم.
+      en: Boil the eggs, then fry the garlic.
+    words: [rebus, goreng, bawang putih]
 dialogue:
   lines:
     - speaker: Bu Yanti
