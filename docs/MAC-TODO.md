@@ -57,6 +57,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] Build the app icon once: `cd assets/export/macos && iconutil -c icns Kabar.iconset -o Kabar.icns && cd -`.
 - [ ] `just bundle-mac` → `dist/mac/Kabar.app`. Open it from Finder and check the icon in the Dock and Finder.
 - [ ] Kak Nur (M7, [RUN.md §7](RUN.md)): go through onboarding, tick a plan item, open the recap and the Kak Nur screen. Tell me anything that reads wrong or feels off.
+- [ ] Reminders on the Mac: open the bundled `Kabar.app`, Settings → Kak Nur → pick a reminder style, allow notifications when macOS asks, tick "Remind me on this device", and set a study time two minutes ahead. A Kak Nur notification should appear (RUN.md §7).
 - [ ] Read Kak Nur's lines in `content/coach/kak-nur.toml` (Egyptian Arabic, MSA, English). Mark what to change or say OK, and I set `reviewed = true`.
 - [ ] Play (M10, [RUN.md §10](RUN.md)): try each game once. For Kabar Pagi audio, install the Indonesian voice "Damayanti" (System Settings → Accessibility → Spoken Content → System voice → Manage Voices) and check a story plays.
 - [ ] Javanese games (M11, [RUN.md §10](RUN.md)): play the Unggah-Ungguh scenes and a d/dh · t/th round. Ask a Javanese speaker (or check yourself) whether the lines in `content/games/unggah-ungguh.toml` and the pairs in `content/games/minimal-pairs.toml` sound right; tell me what to fix and I'll set `reviewed = true`.
@@ -72,6 +73,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] `just devices`, then `just install <serial>` for the S24 Ultra and again for the Tab S11. For wireless, use `just pair` / `just connect` (RUN.md §3).
 - [ ] Open every screen once on the release APK (R8 shrinks it; a missing keep rule would crash on that screen) and tell me if anything closes the app.
 - [ ] Check the launcher icon (round and adaptive), the notification-bar icon and the splash screen on both devices.
+- [ ] Reminders: on the S24 Ultra, pick a reminder style and allow notifications. If the hint about sleeping apps shows, tap "Open battery settings" → Battery → Unrestricted. Set a study time two minutes ahead and lock the phone: Kak Nur's notification arrives. The Tab S11 stays quiet unless you tick "Remind me on this device" there.
 - [ ] Mid-lesson, switch dark mode from quick settings, and on the Tab S11 open Kabar in split screen and pop-up view: the lesson stays exactly where it was.
 - [ ] Play a Radio episode, then take a call (or play a WhatsApp voice note): the episode pauses and carries on afterwards. Starting music in another app pauses it for good. The notification shows Kabar's icon.
 - [ ] In Gallery, select two screenshots and share them: Kabar is in the share sheet, reads the first and says so.
