@@ -28,9 +28,13 @@ on:
       - scripts/android-release-apk.sh
   workflow_dispatch:
 
+# A pull request's newer push cancels its older run. On main, runs queue
+# instead: cancelling one mid-publish used to leave the preview release (and
+# the app's update feed) missing until the next merge (#222). Only one run
+# waits at a time, so a burst of merges still builds just the newest.
 concurrency:
   group: android-preview-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
@@ -188,9 +192,34 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          gh release delete preview --cleanup-tag -y || true
+          # Publish whenever this commit is newer than the one the release
+          # carries, so a run that finishes after a newer one never rolls the
+          # release back, and a busy stretch of merges still publishes.
+          published="$(gh api "repos/$GH_REPO/git/refs/tags/preview" --jq .object.sha 2>/dev/null || true)"
+          if [ -n "$published" ]; then
+            status="$(gh api "repos/$GH_REPO/compare/$published...$GITHUB_SHA" --jq .status)"
+            if [ "$status" != "ahead" ]; then
+              echo "The release already carries ${published::7} ($status); nothing to publish."
+              exit 0
+            fi
+          fi
+          NOTES="Preview build of ${GITHUB_SHA::7}, signed with a CI preview key (not the release key). Install: download kabar-preview.apk on the phone and allow installs from your browser."
+          # The release stays in place and only its tag and files change, so
+          # the download link and the update feed never 404 (#222).
+          if gh release view preview >/dev/null 2>&1; then
+            gh api -X PATCH "repos/$GH_REPO/git/refs/tags/preview" -f sha="$GITHUB_SHA" -F force=true >/dev/null
+            gh release edit preview --notes "$NOTES"
+          else
+            gh release create preview --prerelease --target "$GITHUB_SHA" \
+              --title "Kabar preview (Android)" --notes "$NOTES"
+          fi
           # The APK under its usual name for people, plus the signed update
-          # feed (update.json, its signature, the same APK) for the app.
-          gh release create preview dist/android/kabar-preview.apk dist/update/* \
-            --prerelease --target "$GITHUB_SHA" --title "Kabar preview (Android)" \
-            --notes "Preview build of ${GITHUB_SHA::7}, signed with a CI preview key (not the release key). Install: download kabar-preview.apk on the phone and allow installs from your browser."
+          # feed (update.json, its signature, the same APK) for the app. The
+          # builds go up before update.json and its signature, so the feed
+          # never names a file that isn't there yet.
+          builds=()
+          for f in dist/update/*; do
+            case "$(basename "$f")" in update.json|update.json.sig) ;; *) builds+=("$f") ;; esac
+          done
+          gh release upload preview dist/android/kabar-preview.apk "${builds[@]}" --clobber
+          gh release upload preview dist/update/update.json.sig dist/update/update.json --clobber

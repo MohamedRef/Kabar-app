@@ -10,9 +10,12 @@
 
 pub mod cast;
 pub mod core_words;
+pub mod coverage;
 pub mod lessons;
 pub mod model;
 pub mod retrieval;
+pub mod semantic_sets;
+pub mod unit_shape;
 
 use std::collections::{BTreeMap, BTreeSet};
 use std::fs;
@@ -181,6 +184,8 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
     check_forward_words(&report.curricula, &lesson_values, &mut problems);
     check_retaught_words(&report.curricula, &lesson_values, &mut problems);
     core_words::check(root, &report.curricula, &lesson_values, &mut problems);
+    unit_shape::check(&report.curricula, &lesson_values, &mut problems);
+    semantic_sets::check(root, &report.curricula, &lesson_values, &mut problems);
     for level in LESSON_LEVELS {
         for id in index.lessons_of(level) {
             if !report.lessons.iter().any(|l| l == id) {

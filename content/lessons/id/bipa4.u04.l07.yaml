@@ -1,185 +1,231 @@
 schema: kabar.lesson/v1
 id: bipa4.u04.l07
 language: id
-title: Komentar pembaca
+title: Investigasi wartawan
 can_do:
-  ar_eg: تقرا تعليقات القرّاء على خبر وتعرف مين مؤيد ومين معارض وليه.
-  ar: أن تقرأ تعليقات القرّاء على خبر وتميّز المؤيد من المعارض وحججهما.
-  en: Read readers' comments on a news story and tell who is for, who is against, and why.
+  ar_eg: تحكي إزاي صحفي حقق في حادثة وكشف فساد ونشر القصة.
+  ar: أن تروي كيف حقّق صحفي في حادثة وكشف فسادًا ونشر القصة.
+  en: Tell how a journalist investigated an incident, uncovered corruption and published the story.
 slides:
-  - title: Komentar di bawah berita
+  - title: Dari insiden ke skandal
     body:
       ar_eg: |
-        تحت خبر «مدارس باريباري بتمنع الموبايل» كتب ٣ قرّاء تعليقات.
-        كل واحد رأيه إيه؟ مؤيد (mendukung) ولا معارض (menolak) ولا شايف الناحيتين؟
+        investigasi = تحقيق صحفي، menyelidiki = يحقق في حاجة، terungkap = اتكشف (kebenaran terungkap).
+        korupsi = فساد، insiden = حادثة، tragedi = مأساة.
+        website = موقع إنترنت، blog = مدوّنة.
       ar: |
-        كتب ثلاثة قرّاء تعليقات تحت خبر «مدارس باريباري تمنع الهواتف».
-        ما رأي كلٍّ منهم؟ مؤيد (mendukung) أم معارض (menolak) أم يرى الجانبين؟
+        investigasi = تحقيق صحفي، menyelidiki = يحقّق في أمر، terungkap = انكشف (kebenaran terungkap).
+        korupsi = فساد، insiden = حادثة، tragedi = مأساة.
+        website = موقع إلكتروني، blog = مدوّنة.
       en: |
-        Under the story "Parepare schools ban phones", three readers left comments.
-        What does each think? For (mendukung), against (menolak), or seeing both sides?
+        investigasi = investigation, menyelidiki = to investigate, terungkap = revealed, uncovered (kebenaran terungkap).
+        korupsi = corruption, insiden = incident, tragedi = tragedy.
+        website = website, blog = blog.
     examples:
-      - text: "Rahma: Saya mendukung kebijakan ini. Sejak HP dilarang, anak saya lebih fokus belajar."
-        ar_eg: "رحمة: أنا مؤيدة القرار ده. من ساعة ما منعوا الموبايل، ابني بقى مركّز أكتر في المذاكرة."
-        ar: "رحمة: أؤيد هذه السياسة. منذ مُنع الهاتف صار ابني أكثر تركيزًا في الدراسة."
-        en: "Rahma: I support this policy. Since phones were banned, my child focuses more on studying."
-      - text: "Ilham: Saya menolak. Gara-gara tidak membawa HP, anak saya tidak bisa menghubungi saya waktu pulang terlambat."
-        ar_eg: "إلهام: أنا معترض. بسبب إن ابني مش معاه موبايل، ماقدرش يكلمني لما اتأخر في الرجوع."
-        ar: "إلهام: أنا أرفض. لأن ابني لا يحمل هاتفًا، لم يستطع الاتصال بي حين تأخّر في العودة."
-        en: "Ilham: I'm against it. Because he had no phone, my son couldn't contact me when he came home late."
-      - text: "Pak Yusuf: Di satu sisi, siswa lebih fokus. Di sisi lain, sekolah harus membantu orang tua menghubungi anaknya."
-        ar_eg: "الأستاذ يوسف: من ناحية، الطلبة بقوا مركّزين أكتر. ومن ناحية تانية، المدرسة لازم تساعد الأهالي يكلّموا ولادهم."
-        ar: "الأستاذ يوسف: من جهة، صار الطلاب أكثر تركيزًا. ومن جهة أخرى، على المدرسة أن تساعد الأهل على الاتصال بأبنائهم."
-        en: "Pak Yusuf: On the one hand, students focus more. On the other hand, the school must help parents contact their children."
+      - text: Wartawan itu menyelidiki insiden di pelabuhan.
+        ar_eg: الصحفي ده بيحقق في الحادثة اللي في الميناء.
+        ar: يحقّق ذلك الصحفي في حادثة الميناء.
+        en: That journalist is investigating the incident at the port.
+      - text: Akhirnya kasus korupsi itu terungkap.
+        ar_eg: في الآخر قضية الفساد دي اتكشفت.
+        ar: انكشفت قضية الفساد تلك أخيرًا.
+        en: In the end, the corruption case came to light.
+      - text: Investigasinya dimuat di website koran.
+        ar_eg: التحقيق بتاعه اتنشر على موقع الجرنان.
+        ar: نُشر تحقيقه على موقع الصحيفة.
+        en: His investigation was published on the paper's website.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: مين اللي مؤيد القرار؟
-      ar: من يؤيد السياسة؟
-      en: Who supports the policy?
-    options: [Rahma, Ilham, Pak Yusuf]
-    answer: 0
-    explain:
-      ar_eg: Rahma كتبت «Saya mendukung». Pak Yusuf شايف الناحيتين، وIlham معترض.
-      ar: كتبت Rahma «Saya mendukung»، أما Pak Yusuf فيرى الجانبين، وIlham يرفض.
-      en: Rahma wrote "Saya mendukung"; Pak Yusuf sees both sides, and Ilham is against.
-    words: [mendukung]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: Ilham معترض ليه؟
-      ar: لماذا يرفض Ilham؟
-      en: Why is Ilham against it?
-    options:
-      - Anaknya tidak fokus belajar.
-      - HP anaknya hilang di sekolah.
-      - Anaknya tidak bisa menghubunginya.
-    answer: 2
-    words: [menolak]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الأستاذ يوسف بيقترح إيه؟
-      ar: ماذا يقترح الأستاذ يوسف؟
-      en: What does Pak Yusuf suggest?
-    options:
-      - Siswa boleh membawa HP ke kelas.
-      - Sekolah harus membantu orang tua menghubungi anaknya.
-      - Kebijakan itu harus dibatalkan.
-    answer: 1
-    words: [kekurangan]
-  - id: e04
     type: match_pairs
     pairs:
-      - text: mendukung
-        ar_eg: يؤيّد
-        ar: يؤيّد
-        en: support
-      - text: menolak
-        ar_eg: يعترض / يرفض
-        ar: يرفض
-        en: reject, oppose
-      - text: kelebihan
-        ar_eg: ميزة
-        ar: ميزة
-        en: advantage
-      - text: kekurangan
-        ar_eg: عيب
-        ar: عيب
-        en: drawback
-      - text: dampak
-        ar_eg: تأثير
-        ar: أثر
-        en: impact
-    words: [mendukung, menolak, kelebihan, kekurangan, dampak]
-  - id: e05
+      - text: investigasi
+        ar_eg: تحقيق صحفي
+        ar: تحقيق صحفي
+        en: investigation
+      - text: menyelidiki
+        ar_eg: يحقق في
+        ar: يحقّق في
+        en: to investigate
+      - text: terungkap
+        ar_eg: اتكشف
+        ar: انكشف
+        en: revealed
+      - text: korupsi
+        ar_eg: فساد
+        ar: فساد
+        en: corruption
+    words: [investigasi, menyelidiki, terungkap, korupsi]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: insiden
+        ar_eg: حادثة
+        ar: حادثة
+        en: incident
+      - text: tragedi
+        ar_eg: مأساة
+        ar: مأساة
+        en: tragedy
+      - text: website
+        ar_eg: موقع إنترنت
+        ar: موقع إلكتروني
+        en: website
+      - text: blog
+        ar_eg: مدوّنة
+        ar: مدوّنة
+        en: blog
+    words: [insiden, tragedi, website, blog]
+  - id: e03
     type: listen
-    text: Di satu sisi, siswa lebih fokus.
-    options:
-      - Di sisi lain, siswa lebih fokus.
-      - Di satu sisi, siswa lebih fokus.
-      - Di satu sisi, siswa kurang fokus.
-    answer: 1
+    text: Tragedi kapal itu terjadi tahun lalu.
+    question:
+      ar_eg: إيه اللي حصل السنة اللي فاتت؟
+      ar: ماذا حدث العام الماضي؟
+      en: What happened last year?
+    options: [مأساة, حفلة, إعلان]
+    answer: 0
     meaning:
-      ar_eg: من ناحية، الطلبة بقوا مركّزين أكتر.
-      ar: من جهة، صار الطلاب أكثر تركيزًا.
-      en: On the one hand, students focus more.
+      ar_eg: مأساة المركب دي حصلت السنة اللي فاتت.
+      ar: وقعت مأساة تلك السفينة العام الماضي.
+      en: That ship tragedy happened last year.
+    words: [tragedi]
+  - id: e04
+    type: fill_blank
+    sentence: Polisi masih ___ kecelakaan itu.
+    meaning:
+      ar_eg: البوليس لسه ___ الحادثة دي.
+      ar: ما زالت الشرطة ___ ذلك الحادث.
+      en: The police are still ___ the accident.
+    options: [menyelidiki, terungkap, blog]
+    answers: [menyelidiki]
+    words: [menyelidiki, terungkap, blog]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: صحفية بتكتب يومياتها على الإنترنت. ده إيه؟
+      ar: صحفية تكتب يومياتها على الإنترنت. ما هذا؟
+      en: A journalist writes her diary online. What is it?
+    options: [blog, korupsi, insiden]
+    answer: 0
+    explain:
+      ar_eg: blog = مدوّنة على الإنترنت.
+      ar: blog = مدوّنة إلكترونية.
+      en: blog = an online diary.
+    words: [blog, korupsi, insiden]
   - id: e06
     type: fill_blank
-    sentence: ___ tidak membawa HP, anak saya tidak bisa menghubungi saya.
+    sentence: Setelah lima tahun, rahasia itu akhirnya ___.
     meaning:
-      ar_eg: بسبب إن ابني مش معاه موبايل، ماقدرش يكلمني.
-      ar: لأن ابني لا يحمل هاتفًا، لم يستطع الاتصال بي.
-      en: Because he had no phone, my son couldn't contact me.
-    options: [Berkat, Gara-gara, Akibatnya]
-    answers: [Gara-gara]
-    explain:
-      ar_eg: السبب هنا وحش، فـ gara-gara (عامية) مناسبة. berkat للسبب الحلو بس.
-      ar: السبب هنا سلبي فتناسبه gara-gara (عامية)، أما berkat فللسبب الإيجابي.
-      en: The cause is a bad one, so gara-gara (casual) fits; berkat is only for good causes.
-    words: [gara-gara]
+      ar_eg: بعد خمس سنين، السر ده أخيرًا ___.
+      ar: بعد خمس سنوات ___ ذلك السرّ أخيرًا.
+      en: After five years, the secret was finally ___.
+    options: [terungkap, menyelidiki, website]
+    answers: [terungkap]
+    words: [terungkap, menyelidiki, website]
   - id: e07
+    type: multiple_choice
+    question: Pejabat itu mengambil uang rakyat. Itu namanya ___.
+    options: [tragedi, investigasi, korupsi]
+    answer: 2
+    explain:
+      ar_eg: korupsi = فساد.
+      ar: korupsi = فساد.
+      en: korupsi = corruption.
+    words: [tragedi, investigasi, korupsi]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: ومن ناحية تانية، الأهالي صعب عليهم يكلّموا ولادهم.
-      ar: ومن جهة أخرى، يصعب على الأهل الاتصال بأبنائهم.
-      en: On the other hand, parents find it hard to contact their children.
-    answer: Di sisi lain, orang tua sulit menghubungi anaknya.
-    distractors: [satu, mendukung]
-    words: [kekurangan]
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا مؤيد السياسة دي عشان الطلبة بيركّزوا أكتر.
-      ar: أؤيد هذه السياسة لأن الطلاب يركّزون أكثر.
-      en: I support this policy because students focus more.
-    answers:
-      - Saya mendukung kebijakan ini karena siswa lebih fokus.
-      - Saya mendukung kebijakan ini karena siswa jadi lebih fokus.
-      - Saya mendukung kebijakan ini karena para siswa lebih fokus.
-      - Saya mendukung kebijakan ini sebab siswa lebih fokus.
-      - Saya mendukung kebijakan ini karena siswa menjadi lebih fokus.
-      - Aku mendukung kebijakan ini karena siswa lebih fokus.
-    words: [mendukung]
+      ar_eg: التحقيق بتاعها كشف قضية فساد كبيرة.
+      ar: كشف تحقيقها قضية فساد كبيرة.
+      en: Her investigation uncovered a big corruption case.
+    answer: Investigasinya membongkar kasus korupsi besar.
+    distractors: [insiden, tragedi]
+    words: [investigasi, korupsi, insiden, tragedi]
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Berita insiden itu dimuat di website dan blog.
+    answers_meaning:
+      ar_eg: [خبر الحادثة دي اتنشر على الموقع والمدوّنة, خبر الحادثة نزل على المواقع والبلوجات]
+      ar: [نُشر خبر تلك الحادثة على الموقع والمدوّنة, ظهر خبر الحادثة على موقع إلكتروني ومدوّنة]
+      en: [News of the incident was published on the website and the blog, The incident story appeared on a website and a blog]
+    words: [insiden, website, blog]
+  - id: e10
     type: speaking
-    text: Menurut saya, kebijakan ini punya kelebihan dan kekurangan.
+    text: Investigasi ini menyelidiki korupsi di kantor pelabuhan.
     meaning:
-      ar_eg: في رأيي، السياسة دي ليها مميزات وعيوب.
-      ar: في رأيي، لهذه السياسة مزايا وعيوب.
-      en: In my opinion, this policy has advantages and drawbacks.
-    words: [kelebihan, kekurangan]
+      ar_eg: التحقيق ده بيدوّر في الفساد في مكتب الميناء.
+      ar: يبحث هذا التحقيق في الفساد بمكتب الميناء.
+      en: This investigation looks into corruption at the port office.
+    words: [investigasi, menyelidiki, korupsi, terungkap, website]
 dialogue:
-  title: Membaca komentar
   lines:
     - speaker: Kak Nirmala
-      text: Berita tentang HP di sekolah dapat banyak komentar pembaca.
-      ar_eg: خبر الموبايلات في المدارس جاله تعليقات كتير من القرّاء.
-      ar: تلقّى خبر الهواتف في المدارس تعليقات كثيرة من القرّاء.
-      en: The story about phones at school got lots of reader comments.
+      text: Mohamed, artikel investigasi saya sudah ada di website!
+      ar_eg: يا محمد، مقال التحقيق بتاعي نزل على الموقع!
+      ar: يا محمد، نُشر مقال تحقيقي على الموقع!
+      en: Mohamed, my investigative article is up on the website!
     - speaker: Mohamed
-      text: Iya, Kak. Ada yang mendukung, ada yang menolak.
-      ar_eg: أيوه. فيه ناس مؤيدة وناس معترضة.
-      ar: نعم. منهم المؤيد ومنهم الرافض.
-      en: Yes. Some support it, some are against it.
+      text: Selamat! Tentang insiden di pelabuhan itu?
+      ar_eg: مبروك! عن الحادثة اللي في الميناء؟
+      ar: مبارك! عن حادثة الميناء تلك؟
+      en: Congratulations! About that incident at the port?
     - speaker: Kak Nirmala
-      text: Menurutmu, komentar mana yang paling bagus?
-      ar_eg: في رأيك، أنهي تعليق أحسن واحد؟
-      ar: في رأيك، أيّ تعليق هو الأفضل؟
-      en: Which comment do you think is the best?
+      text: Ya. Saya menyelidiki selama tiga bulan. Ternyata ada korupsi.
+      ar_eg: أيوه. حققت تلات شهور. وطلع فيه فساد.
+      ar: نعم. حقّقت ثلاثة أشهر، فتبيّن أن هناك فسادًا.
+      en: Yes. I investigated for three months. It turned out there was corruption.
     - speaker: Mohamed
-      text: Komentar Pak Yusuf. Dia melihat kelebihan dan kekurangannya.
-      ar_eg: تعليق الأستاذ يوسف. هو شايف المميزات والعيوب.
-      ar: تعليق الأستاذ يوسف، فهو ينظر إلى المزايا والعيوب.
-      en: Pak Yusuf's. He looks at the advantages and the drawbacks.
+      text: Wah, akhirnya semuanya terungkap. Kasihan keluarga mereka yang kena tragedi itu.
+      ar_eg: يا خبر، كل حاجة اتكشفت أخيرًا. صعبانين عليّ أهالي اللي حصلتلهم المأساة دي.
+      ar: يا للعجب! انكشف كل شيء أخيرًا. مساكين أهالي من أصابتهم تلك المأساة.
+      en: Wow, it's all come out at last. I feel for the families of the tragedy's victims.
     - speaker: Kak Nirmala
-      text: Setuju. Pembaca yang baik melihat dua sisi.
-      ar_eg: موافقة. القارئ الشاطر بيشوف الناحيتين.
-      ar: أوافق. القارئ الجيد ينظر إلى الجانبين.
-      en: Agreed. A good reader looks at both sides.
-new_words: []
+      text: Betul. Saya juga menulis cerita mereka di blog saya.
+      ar_eg: صح. وأنا كمان كتبت حكايتهم على المدوّنة بتاعتي.
+      ar: صحيح. وكتبت قصتهم أيضًا في مدوّنتي.
+      en: True. I also wrote their story on my blog.
+new_words:
+  - word: investigasi
+    pos: noun
+    ar_eg: تحقيق صحفي
+    ar: تحقيق
+    en: investigation
+  - word: menyelidiki
+    pos: verb
+    ar_eg: يحقق في
+    ar: يحقّق في
+    en: to investigate
+  - word: terungkap
+    pos: verb
+    ar_eg: اتكشف
+    ar: انكشف
+    en: to be revealed, come to light
+  - word: korupsi
+    pos: noun
+    ar_eg: فساد
+    ar: فساد
+    en: corruption
+  - word: insiden
+    pos: noun
+    ar_eg: حادثة
+    ar: حادثة
+    en: incident
+  - word: tragedi
+    pos: noun
+    ar_eg: مأساة
+    ar: مأساة
+    en: tragedy
+  - word: website
+    pos: noun
+    ar_eg: موقع إنترنت
+    ar: موقع إلكتروني
+    en: website
+  - word: blog
+    pos: noun
+    ar_eg: مدوّنة
+    ar: مدوّنة
+    en: blog
 review:
   status: draft
   verified: false

@@ -1,0 +1,185 @@
+schema: kabar.lesson/v1
+id: j5.u01.l10
+language: jv
+title: Lumpia Semarang
+can_do:
+  ar_eg: تقرا مقالة قصيرة عن أكلة مشهورة وتعرف أصلها وحشوها.
+  ar: أن تقرأ مقالة قصيرة عن طعام مشهور وتعرف أصله وحشوه.
+  en: Read a short article about a famous food and find its origin and filling.
+slides:
+  - title: Artikel panganan
+    body:
+      ar_eg: |
+        سيمارانج اسمها «مدينة اللومبيا»، ودي مقالة صغيرة عن اللومبيا. نفس الهيكل: iku وkang وsawijining.
+        كلمات جديدة: Tionghoa = صيني (زي الإندونيسي)، isi = حشو، وisine = حشوها، rebung = براعم البامبو (rebung). وudang = جمبري، زي الإندونيسي بالظبط.
+      ar: |
+        تُلقّب سيمارانج بـ«مدينة اللومبيا»، وهذه مقالة صغيرة عنها. الهيكل نفسه: iku وkang وsawijining.
+        كلمات جديدة: Tionghoa = صيني (كالإندونيسية)، وisi = حشوة، وisine = حشوتها، وrebung = براعم الخيزران (rebung). وudang = روبيان، كالإندونيسية تمامًا.
+      en: |
+        Semarang is called the City of Lumpia, and here is a small article about lumpia. Same skeleton: iku, kang, sawijining.
+        New words: Tionghoa = Chinese (as in Indonesian), isi = filling, isine = its filling, rebung = bamboo shoots (rebung). And udang = shrimp, exactly as in Indonesian.
+    grammar: jv.reading.written-style
+    examples:
+      - text: Lumpia iku panganan kang misuwur saka Semarang.
+        ar_eg: اللومبيا أكلة مشهورة من سيمارانج.
+        ar: اللومبيا طعام مشهور من سيمارانج.
+        en: Lumpia is a famous food from Semarang.
+      - text: Lumpia iku sawijining panganan Tionghoa kang wis dadi panganan Jawa.
+        ar_eg: اللومبيا أكلة صيني بقت أكلة جاوية.
+        ar: اللومبيا طعام صيني صار طعامًا جاويًا.
+        en: Lumpia is a Chinese food that has become a Javanese food.
+      - text: Isine rebung, endhog lan udang.
+        ar_eg: حشوها براعم بامبو وبيض وجمبري.
+        ar: حشوتها براعم الخيزران والبيض والروبيان.
+        en: Its filling is bamboo shoots, egg and shrimp.
+exercises:
+  - id: e01
+    type: listen
+    text: Lumpia iku panganan kang misuwur saka Semarang.
+    options:
+      - Lumpia iku panganan kang murah saka Semarang.
+      - Lumpia iku panganan kang misuwur saka Kudus.
+      - Lumpia iku panganan kang misuwur saka Semarang.
+    answer: 2
+    meaning:
+      ar_eg: اللومبيا أكلة مشهورة من سيمارانج.
+      ar: اللومبيا طعام مشهور من سيمارانج.
+      en: Lumpia is a famous food from Semarang.
+    words: [misuwur]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حسب المقالة، اللومبيا أصلها أكلة إيه؟
+      ar: بحسب المقالة، أصل اللومبيا طعامُ أيّ قوم؟
+      en: According to the article, lumpia was originally whose food?
+    options: [Walanda, Tionghoa, Arab]
+    answer: 1
+    explain:
+      ar_eg: «sawijining panganan Tionghoa kang wis dadi panganan Jawa» = أكلة صيني بقت جاوية.
+      ar: «sawijining panganan Tionghoa kang wis dadi panganan Jawa» = طعام صيني صار جاويًا.
+      en: '"sawijining panganan Tionghoa kang wis dadi panganan Jawa" = a Chinese food that became Javanese.'
+    words: [Tionghoa]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي حاجة من دول في حشو اللومبيا؟
+      ar: أيّ هذه في حشوة اللومبيا؟
+      en: Which of these is in the lumpia filling?
+    options: [rebung, kenthang, tempe]
+    answer: 0
+    words: [isi, rebung]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: isi
+        ar_eg: حشو
+        ar: حشوة
+        en: filling
+      - text: rebung
+        ar_eg: براعم البامبو
+        ar: براعم الخيزران
+        en: bamboo shoots
+      - text: Tionghoa
+        ar_eg: صيني
+        ar: صيني
+        en: Chinese
+      - text: panganan
+        ar_eg: أكل
+        ar: طعام
+        en: food
+      - text: endhog
+        ar_eg: بيض
+        ar: بيض
+        en: egg
+    words: [isi, rebung, Tionghoa, panganan, endhog]
+  - id: e05
+    type: fill_blank
+    sentence: ___ rebung, endhog lan udang.
+    meaning:
+      ar_eg: حشوها براعم بامبو وبيض وجمبري.
+      ar: حشوتها براعم الخيزران والبيض والروبيان.
+      en: Its filling is bamboo shoots, egg and shrimp.
+    options: [Regane, Isine, Jenenge]
+    answers: [Isine]
+    words: [isi]
+  - id: e06
+    type: dictation
+    text: Lumpia iku panganan kang misuwur saka Semarang.
+    meaning:
+      ar_eg: اللومبيا أكلة مشهورة من سيمارانج.
+      ar: اللومبيا طعام مشهور من سيمارانج.
+      en: Lumpia is a famous food from Semarang.
+    words: [misuwur, panganan]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: (بأسلوب المقالة) اللومبيا أكلة صيني بقت أكلة جاوية.
+      ar: (بأسلوب المقالة) اللومبيا طعام صيني صار طعامًا جاويًا.
+      en: (article style) Lumpia is a Chinese food that has become a Javanese food.
+    answer: Lumpia iku sawijining panganan Tionghoa kang wis dadi panganan Jawa.
+    distractors: [Walanda, saka]
+    words: [Tionghoa, sawijining, kang]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: حشو اللومبيا براعم بامبو وبيض وجمبري.
+      ar: حشوة اللومبيا براعم الخيزران والبيض والروبيان.
+      en: The lumpia filling is bamboo shoots, egg and shrimp.
+    answers:
+      - Isine lumpia rebung, endhog lan udang.
+      - Isine lumpia iku rebung, endhog lan udang.
+      - Isi lumpia iku rebung, endhog lan udang.
+      - Isi lumpia rebung, endhog lan udang.
+      - Lumpia isine rebung, endhog lan udang.
+      - Isine rebung, endhog lan udang.
+      - Isine lumpia yaiku rebung, endhog lan udang.
+      - Isi lumpia yaiku rebung, endhog lan udang.
+    words: [isi, rebung]
+dialogue:
+  title: Ing warung lumpia
+  lines:
+    - speaker: Mohamed
+      text: Mbak, lumpia iki isine apa?
+      ar_eg: يا آيو، اللومبيا دي حشوها إيه؟
+      ar: يا آيو، ما حشوة هذه اللومبيا؟
+      en: Ayu, what's the filling of this lumpia?
+    - speaker: Mbak Ayu
+      text: Rebung, endhog lan udang, kaya ing artikel.
+      ar_eg: براعم بامبو وبيض وجمبري، زي ما في المقالة.
+      ar: براعم الخيزران والبيض والروبيان، كما في المقالة.
+      en: Bamboo shoots, egg and shrimp, like in the article.
+    - speaker: Mohamed
+      text: Rebung? Ing basa Indonesia uga rebung, ta?
+      ar_eg: rebung؟ في الإندونيسي برضه rebung، مش كده؟
+      ar: rebung؟ وفي الإندونيسية أيضًا rebung، أليس كذلك؟
+      en: Rebung? It's rebung in Indonesian too, isn't it?
+    - speaker: Mbak Ayu
+      text: Iya, padha. Ayo mangan!
+      ar_eg: آه، زي بعض. يلا ناكل!
+      ar: نعم، هي نفسها. هيا نأكل!
+      en: Yes, the same. Let's eat!
+    - speaker: Mohamed
+      text: Enak banget! Aku seneng panganan Tionghoa-Jawa iki.
+      ar_eg: حلوة أوي! أنا بحب الأكلة الصيني الجاوي دي.
+      ar: لذيذة جدًا! أحب هذا الطعام الصيني الجاوي.
+      en: Really tasty! I love this Chinese-Javanese food.
+new_words:
+  - word: Tionghoa
+    pos: adjective
+    ar_eg: صيني
+    ar: صيني
+    en: Chinese = Tionghoa
+  - word: isi
+    pos: noun
+    ar_eg: حشو (isine = حشوه)
+    ar: حشوة (isine = حشوته)
+    en: filling, contents (isine = its filling) = isi
+  - word: rebung
+    pos: noun
+    ar_eg: براعم البامبو
+    ar: براعم الخيزران
+    en: bamboo shoots = rebung
+review:
+  status: draft
+  verified: false

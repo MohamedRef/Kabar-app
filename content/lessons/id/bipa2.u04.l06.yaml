@@ -1,225 +1,239 @@
 schema: kabar.lesson/v1
 id: bipa2.u04.l06
 language: id
-title: Pasar! (tawar-menawar)
+title: Es jeruk di warung
 can_do:
-  ar_eg: تفاصل في السوق من غير ما تعدّي الميزانية بتاعتك (لعبة Pasar!).
-  ar: أن تساوم في السوق ضمن ميزانيتك (لعبة Pasar!).
-  en: Haggle within a budget (Pasar! mini-game).
+  ar_eg: 'تطلب في وارونج: عصير برتقان وإزازة لتر، ومانجة صفرا وخيار وجزر طازة.'
+  ar: 'أن تطلب في وارونج: عصير برتقال وزجاجة لتر، ومانجو صفراء وخيارًا وجزرًا طازجًا.'
+  en: 'Order at a warung: iced orange and a litre bottle, a yellow mango, fresh cucumber and carrot.'
 slides:
-  - title: Boleh kurang?
+  - title: Di warung
     body:
       ar_eg: |
-        جمل الفصال:
-        - Boleh kurang? = ممكن تنزل شوية؟
-        - Jangan mahal-mahal, Bu! = ماتغليهاش علينا!
-        - Harga pas = آخر سعر (مفيش فصال تاني).
-        - Ya sudah, boleh. = خلاص ماشي.
-        البياع ممكن يقول Saya rugi! = كده هخسر! — ده جزء من اللعبة، ابتسم وكمّل.
-        الخطة: ابدأ بنص السعر، واتقابلوا في النص. وقول العدد صح: dua lembar kain، tiga buah patung.
-        ولو هتشتري أكتر من حاجة، اطلب سعر أحسن: Saya beli dua lembar, boleh kurang?
+        jeruk = برتقان (وكل الموالح): es jeruk = عصير برتقان بتلج، أشهر مشروب في الوارونج.
+        mangga = مانجة. timun = خيار، wortel = جزر (من الهولندي).
+        kuning = أصفر، oranye = برتقاني. segar = طازة ومنعش: Es jeruknya segar!
+        liter = لتر: sebotol air satu liter.
       ar: |
-        عبارات المساومة:
-        - Boleh kurang؟ = هل يمكن تخفيض السعر؟
-        - Jangan mahal-mahal, Bu! = لا تبالغي في السعر!
-        - Harga pas = السعر النهائي.
-        - Ya sudah, boleh. = حسنًا، موافق.
-        وقد يقول البائع Saya rugi! = سأخسر! وهذا جزء من اللعبة، فابتسم وتابع.
-        الخطة: ابدأ بنصف السعر والتقيا في المنتصف، واستعمل لفظ العدّ الصحيح: dua lembar kain، tiga buah patung.
-        وإن اشتريت أكثر من قطعة فاطلب سعرًا أفضل: Saya beli dua lembar, boleh kurang؟
+        jeruk = برتقال (وسائر الحمضيات): es jeruk = عصير برتقال مثلّج، أشهر مشروب في الوارونج.
+        mangga = مانجو. timun = خيار، wortel = جزر (من الهولندية).
+        kuning = أصفر، oranye = برتقالي. segar = طازج ومنعش: Es jeruknya segar!
+        liter = لتر: sebotol air satu liter.
       en: |
-        Haggling phrases:
-        - Boleh kurang? = Can you go lower?
-        - Jangan mahal-mahal, Bu! = Don't make it so expensive!
-        - Harga pas = fixed, final price.
-        - Ya sudah, boleh. = OK then, fine.
-        The seller may say Saya rugi! = I'll lose money! — it's part of the game; smile and carry on.
-        The plan: start at half the price and meet in the middle. Count properly: dua lembar kain, tiga buah patung.
-        Buying more than one? Ask for a better price: Saya beli dua lembar, boleh kurang?
-    grammar: id.prohibition.jangan
+        jeruk = orange (any citrus): es jeruk, iced orange, is the classic warung drink.
+        mangga = mango. timun = cucumber, wortel = carrot (from Dutch).
+        kuning = yellow, oranye = orange (colour). segar = fresh, refreshing: Es jeruknya segar!
+        liter = litre: sebotol air satu liter.
     examples:
-      - text: Jangan mahal-mahal, Bu! Boleh kurang?
-        ar_eg: ماتغليهاش علينا يا حاجة! ممكن تنزلي شوية؟
-        ar: لا تبالغي في السعر يا سيدتي! هل يمكن التخفيض؟
-        en: Don't make it so expensive, ma'am! Can you go lower?
-      - text: Saya beli dua lembar, boleh kurang?
-        ar_eg: هاخد اتنين، ممكن تنزل شوية؟
-        ar: سأشتري قطعتين، هل يمكن التخفيض؟
-        en: I'll take two, can you go lower?
+      - text: Es jeruk ini segar sekali!
+        ar_eg: عصير البرتقان ده منعش أوي!
+        ar: عصير البرتقال هذا منعش جدًا!
+        en: This iced orange is so refreshing!
+      - text: Mangganya kuning dan manis.
+        ar_eg: المانجة صفرا ومسكّرة.
+        ar: المانجو صفراء وحلوة.
+        en: The mango is yellow and sweet.
+      - text: Saya minta sebotol air satu liter.
+        ar_eg: عايز إزازة مية لتر لو سمحت.
+        ar: أريد زجاجة ماء لترًا من فضلك.
+        en: A one-litre bottle of water, please.
 exercises:
   - id: e01
-    type: listen
-    text: Boleh kurang, Bu?
-    options: ['Boleh kurang, Bu?', 'Boleh pegang, Bu?', 'Boleh pulang, Bu?']
-    answer: 0
-    words: [boleh kurang]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: البياعة قالت «Dua ratus ribu». ميزانيتك ١٢٠ ألف. تبدأ الفصال بإيه؟
-      ar: قالت البائعة «Dua ratus ribu»، وميزانيتك ١٢٠ ألفًا. بمَ تبدأ المساومة؟
-      en: The seller says "Dua ratus ribu". Your budget is 120,000. How do you open?
-    options: ['Seratus ribu, boleh?', 'Dua ratus ribu, ya!', 'Tiga ratus ribu, ya?']
-    answer: 0
-    explain:
-      ar_eg: ابدأ بنص السعر عشان يبقى فيه مسافة تتقابلوا فيها تحت ميزانيتك.
-      ar: ابدأ بنصف السعر ليبقى مجال للالتقاء دون تجاوز ميزانيتك.
-      en: Start at half so you can meet in the middle without passing your budget.
-    words: [boleh]
-  - id: e03
-    type: fill_blank
-    sentence: Aduh, saya ___, Pak!
-    meaning:
-      ar_eg: يا لهوي، كده أنا خسران يا أستاذ!
-      ar: آه، سأخسر يا سيدي!
-      en: Oh no, I'll make a loss, sir!
-    options: [rugi, aduh, pas]
-    answers: [rugi]
-    words: [aduh, rugi]
-  - id: e04
     type: match_pairs
     pairs:
-      - text: tawar-menawar
-        ar_eg: فصال
-        ar: مساومة
-        en: haggling
-      - text: boleh kurang?
-        ar_eg: ممكن تنزّل؟
-        ar: هل يمكن التخفيض؟
-        en: can you go lower?
-      - text: harga pas
-        ar_eg: آخر سعر
-        ar: السعر النهائي
-        en: fixed price
-      - text: rugi
-        ar_eg: خسران
-        ar: خاسر
-        en: at a loss
-      - text: ya sudah
-        ar_eg: خلاص ماشي
-        ar: حسنًا إذن
-        en: OK then
-      - text: aduh
-        ar_eg: يا لهوي، آه
-        ar: آه، أوه
-        en: oh no, ouch
-    words: [tawar-menawar, boleh kurang, harga pas, rugi, ya sudah, aduh]
+      - text: jeruk
+        ar_eg: برتقان
+        ar: برتقال
+        en: orange
+      - text: mangga
+        ar_eg: مانجة
+        ar: مانجو
+        en: mango
+      - text: timun
+        ar_eg: خيار
+        ar: خيار
+        en: cucumber
+      - text: wortel
+        ar_eg: جزر
+        ar: جزر
+        en: carrot
+    words: [jeruk, mangga, timun, wortel]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: kuning
+        ar_eg: أصفر
+        ar: أصفر
+        en: yellow
+      - text: oranye
+        ar_eg: برتقاني
+        ar: برتقالي
+        en: orange (colour)
+      - text: segar
+        ar_eg: طازة، منعش
+        ar: طازج، منعش
+        en: fresh
+      - text: liter
+        ar_eg: لتر
+        ar: لتر
+        en: litre
+    words: [kuning, oranye, segar, liter]
+  - id: e03
+    type: listen
+    text: Satu es jeruk dan sebotol air satu liter.
+    question:
+      ar_eg: طلب إيه؟
+      ar: ماذا طلب؟
+      en: What did he order?
+    options: [عصير برتقان وإزازة مية لتر, مانجة وخيار, جزر وبرتقان]
+    answer: 0
+    meaning:
+      ar_eg: واحد عصير برتقان بتلج وإزازة مية لتر.
+      ar: عصير برتقال مثلّج وزجاجة ماء لتر.
+      en: One iced orange and a one-litre bottle of water.
+    words: [jeruk, liter]
+  - id: e04
+    type: fill_blank
+    sentence: Mangga ini warnanya ___ dan manis.
+    meaning:
+      ar_eg: المانجة دي لونها ___ وطعمها مسكّر.
+      ar: لون هذه المانجو ___ وطعمها حلو.
+      en: This mango is ___ and tastes sweet.
+    options: [kuning, oranye, segar]
+    answers: [kuning]
+    words: [kuning, oranye, segar]
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حاجة برتقاني وطويلة والأرانب بتحبها.
+      ar: شيء برتقالي طويل تحبّه الأرانب.
+      en: Something long and orange that rabbits love.
+    options: [wortel, timun, mangga]
+    answer: 0
+    explain:
+      ar_eg: wortel = جزر. timun خيار، وmangga مانجة.
+      ar: wortel جزر، أما timun فخيار وmangga مانجو.
+      en: wortel = carrot; timun is a cucumber and mangga a mango.
+    words: [wortel, timun, mangga]
+  - id: e06
+    type: fill_blank
+    sentence: Timun ini masih ___. Baru datang pagi ini.
+    meaning:
+      ar_eg: الخيار ده لسه ___. لسه واصل الصبح.
+      ar: هذا الخيار ما زال ___، وصل هذا الصباح.
+      en: This cucumber is still ___. It came in this morning.
+    options: [segar, kuning, liter]
+    answers: [segar]
+    words: [segar, timun, liter]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: عايز إزازة مية لتر ونص.
+      ar: أريد زجاجة ماء لترًا ونصفًا.
+      en: I'd like a one-and-a-half-litre bottle of water.
+    answer: Saya minta sebotol air satu setengah liter.
+    distractors: [wortel, oranye]
+    words: [liter]
+  - id: e08
     type: translate
     direction: from_target
-    source_text: Ini sudah harga pas, Pak.
+    source_text: Jeruk ini oranye dan segar.
     answers_meaning:
-      ar_eg: [ده آخر سعر يا أستاذ, ده السعر النهائي يا أستاذ, ده آخر كلام يا أستاذ]
-      ar: [هذا هو السعر النهائي يا سيدي, هذا آخر سعر يا سيدي]
-      en: ['This is already the final price, sir.', 'That''s the fixed price, sir.', 'This is my last price, sir.']
-    words: [harga pas]
-  - id: e06
-    type: build_sentence
-    source:
-      ar_eg: يا لهوي، أنا خسران! ده آخر سعر.
-      ar: آه، سأخسر! هذا هو السعر النهائي.
-      en: Oh no, I'm losing money! This is the final price.
-    answer: Aduh, saya rugi! Ini harga pas.
-    distractors: [boleh, kurang]
-    words: [aduh, rugi, harga pas]
-  - id: e07
-    type: fill_blank
-    sentence: Di Sukawati kain ini tidak ___ di Kuta.
-    meaning:
-      ar_eg: (اكتب كلمة واحدة) القماشة دي في سوكاواتي مش غالية قد كوتا.
-      ar: (اكتب كلمة واحدة) هذا القماش في سوكاواتي ليس غاليًا كما في كوتا.
-      en: (Type one word.) In Sukawati this cloth isn't as expensive as in Kuta.
-    answers: [semahal]
-    words: [semahal]
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: الفصال في السوق ممتع!
-      ar: المساومة في السوق ممتعة!
-      en: Haggling at the market is fun!
-    answer: Tawar-menawar di pasar seru!
-    distractors: [rugi, jangan]
-    words: [tawar-menawar, seru]
+      ar_eg: [البرتقان ده برتقاني وطازة, البرتقانة دي لونها برتقاني وطازة]
+      ar: [هذا البرتقال برتقالي وطازج, هذه البرتقالة برتقالية اللون وطازجة]
+      en: [This orange is orange and fresh, These oranges are orange and fresh]
+    words: [jeruk, oranye, segar]
   - id: e09
-    type: dictation
-    text: Tawar-menawar? Ya sudah, boleh.
-    meaning:
-      ar_eg: فصال؟ خلاص ماشي، ينفع.
-      ar: مساومة؟ حسنًا إذن، لا بأس.
-      en: Haggling? OK then, sure.
-    words: [tawar-menawar, ya sudah, boleh]
-  - id: e10
     type: speaking
-    text: Aduh, terlalu mahal! Boleh kurang, Bu? — Ya sudah, boleh.
+    text: Saya mau sekilo mangga dan setengah kilo wortel.
     meaning:
-      ar_eg: يا لهوي، غالي زيادة! ممكن تنزلي يا حاجة؟ — خلاص ماشي، ينفع.
-      ar: آه، غالٍ جدًا! هل يمكن التخفيض يا سيدتي؟ — حسنًا إذن، لا بأس.
-      en: Oh no, too expensive! Can you go lower, ma'am? — OK then, sure.
-    words: [aduh, terlalu, boleh kurang, ya sudah]
+      ar_eg: عايز كيلو مانجة ونص كيلو جزر.
+      ar: أريد كيلو مانجو ونصف كيلو جزر.
+      en: I'd like a kilo of mangoes and half a kilo of carrots.
+    words: [mangga, wortel]
+  - id: e10
+    type: multiple_choice
+    question: Wortel warnanya ___.
+    options: [oranye, kuning, segar]
+    answer: 0
+    explain:
+      ar_eg: 'الجزر برتقاني: oranye.'
+      ar: 'الجزر برتقالي: oranye.'
+      en: 'Carrots are orange: oranye.'
+    words: [oranye, kuning, wortel]
 dialogue:
-  title: Tawar-menawar di Pasar Seni Sukawati
   lines:
+    - speaker: Penjual
+      text: Mau minum apa, Mas?
+      ar_eg: تشرب إيه يا أستاذ؟
+      ar: ماذا تشرب يا سيدي؟
+      en: What would you like to drink?
     - speaker: Mohamed
-      text: Berapa harga kain ini, Bu?
-      ar_eg: القماشة دي بكام يا مدام؟
-      ar: كم ثمن هذا القماش يا سيدتي؟
-      en: How much is this cloth, ma'am?
-    - speaker: Bu Nyoman
-      text: Dua ratus ribu, Pak.
-      ar_eg: بميتين ألف يا أستاذ.
-      ar: بمئتي ألف يا سيدي.
-      en: Two hundred thousand, sir.
+      text: Es jeruk satu, Bu. Segar, ya?
+      ar_eg: واحد عصير برتقان يا ست. منعش، صح؟
+      ar: عصير برتقال واحد يا سيدتي. منعش، أليس كذلك؟
+      en: One iced orange, please. Refreshing, right?
+    - speaker: Penjual
+      text: Segar sekali! Mau air juga? Ada botol satu liter.
+      ar_eg: منعش جدًا! عايز مية كمان؟ فيه إزازة لتر.
+      ar: منعش جدًا! أتريد ماءً أيضًا؟ لدينا زجاجة لتر.
+      en: Very! Want water too? There's a one-litre bottle.
     - speaker: Mohamed
-      text: Wah, terlalu mahal. Seratus ribu, boleh?
-      ar_eg: يا خبر، غالي زيادة. بمية ألف، ينفع؟
-      ar: آه، إنه غالٍ جدًا. بمئة ألف، هل يمكن؟
-      en: Oh, too expensive. A hundred thousand, OK?
-    - speaker: Bu Nyoman
-      text: Seratus lima puluh. Itu harga pas.
-      ar_eg: مية وخمسين. ده آخر سعر.
-      ar: مئة وخمسون. هذا السعر النهائي.
-      en: A hundred and fifty. That's my final price.
+      text: Ya. Dan mangga kuning itu berapa?
+      ar_eg: أيوه. والمانجة الصفرا دي بكام؟
+      ar: نعم. وبكم تلك المانجو الصفراء؟
+      en: Yes. And how much is that yellow mango?
+    - speaker: Penjual
+      text: Sepuluh ribu. Timun dan wortel ini gratis!
+      ar_eg: بعشر تلاف. والخيار والجزر دول ببلاش!
+      ar: بعشرة آلاف، والخيار والجزر مجانًا!
+      en: Ten thousand. The cucumber and carrots are free!
     - speaker: Mohamed
-      text: Seratus tiga puluh ribu, dan saya beli dua lembar.
-      ar_eg: مية وتلاتين ألف، وهاخد حتتين.
-      ar: مئة وثلاثون ألفًا، وسأشتري قطعتين.
-      en: A hundred and thirty thousand, and I'll take two pieces.
-    - speaker: Bu Nyoman
-      text: Aduh, saya rugi! Ya sudah, boleh. Jangan lupa datang lagi, ya!
-      ar_eg: يا لهوي، كده أنا خسرانة! خلاص ماشي. ماتنساش تيجي تاني!
-      ar: آه، سأخسر! حسنًا، موافقة. لا تنسَ أن تعود مرة أخرى!
-      en: Oh dear, I'm losing money! OK then, fine. Don't forget to come again!
+      text: Terima kasih banyak, Bu!
+      ar_eg: شكرًا جزيلًا يا ست!
+      ar: شكرًا جزيلًا يا سيدتي!
+      en: Thank you so much!
 new_words:
-  - word: tawar-menawar
+  - word: jeruk
     pos: noun
-    ar_eg: فصال
-    ar: مساومة
-    en: haggling
-  - word: boleh kurang
-    pos: phrase
-    ar_eg: ممكن تنزل في السعر؟
-    ar: هل يمكن التخفيض؟
-    en: can you go lower?
-  - word: harga pas
-    pos: phrase
-    ar_eg: آخر سعر
-    ar: السعر النهائي
-    en: fixed / final price
-  - word: rugi
+    ar_eg: برتقان، موالح
+    ar: برتقال، حمضيات
+    en: orange, citrus
+  - word: mangga
+    pos: noun
+    ar_eg: مانجة
+    ar: مانجو
+    en: mango
+  - word: timun
+    pos: noun
+    ar_eg: خيار
+    ar: خيار
+    en: cucumber
+  - word: wortel
+    pos: noun
+    ar_eg: جزر
+    ar: جزر
+    en: carrot
+  - word: kuning
     pos: adjective
-    ar_eg: خسران
-    ar: خاسر
-    en: at a loss
-  - word: ya sudah
-    pos: phrase
-    ar_eg: خلاص ماشي
-    ar: حسنًا إذن
-    en: OK then, fine
-  - word: aduh
-    pos: interjection
-    ar_eg: يا لهوي / آه
-    ar: آه، أوه
-    en: oh no, ouch
+    ar_eg: أصفر
+    ar: أصفر
+    en: yellow
+  - word: oranye
+    pos: adjective
+    ar_eg: برتقاني
+    ar: برتقالي
+    en: orange (colour)
+  - word: segar
+    pos: adjective
+    ar_eg: طازة، منعش
+    ar: طازج، منعش
+    en: fresh
+  - word: liter
+    pos: noun
+    ar_eg: لتر
+    ar: لتر
+    en: litre
 review:
   status: draft
   verified: false

@@ -4,88 +4,92 @@ language: jv
 level: j1
 unit: j1.u01
 title:
-  target: Piye kabare, rek?
-  ar_eg: أخبارك إيه يا جدع؟
-  ar: كيف حالك يا صاحبي؟
-  en: How are you, mate?
+  target: Piye kabare, Mas?
+  ar_eg: أخبارك إيه يا ماس؟
+  ar: كيف حالك يا ماس؟
+  en: How are you, Mas?
 hosts:
 - name: Mbak Sekar
   voice: jv-ID-SitiNeural
-- name: Mas Galih
+- name: Mas Danang
   voice: jv-ID-DimasNeural
 minutes: 5
 segments:
 - kind: intro
-  title: Pasar Turi
+  title: Malioboro
   lines:
   - speaker: Mbak Sekar
-    text: Sugeng enjing saka Pasar Turi, Suroboyo! Iki Kabar Radio basa Jawa. Aku Sekar.
-    ar_eg: صباح الخير من سوق توري في سورابايا! ده كبار راديو بالجاوي. أنا سيكار.
-    ar: صباح الخير من سوق توري في سورابايا! هذا كبار راديو بالجاوية. أنا سيكار.
-    en: Good morning from Pasar Turi, Surabaya! This is Kabar Radio in Javanese. I'm Sekar.
+    text: Sugeng enjing saka Malioboro, Jogja! Iki Kabar Radio basa Jawa. Aku Sekar, wong Jogja asli.
+    ar_eg: صباح الخير من ماليوبورو في جوجا! ده كبار راديو بالجاوي. أنا سيكار، بنت جوجا أصلي.
+    ar: صباح الخير من ماليوبورو في جوغجا! هذا كبار راديو بالجاوية. أنا سيكار، ابنة جوغجا الأصيلة.
+    en: Good morning from Malioboro, Jogja! This is Kabar Radio in Javanese. I'm Sekar, Jogja born and bred.
     note:
-      ar_eg: سيكار من سولو، وجاليه من سورابايا. هتسمع منهم لهجتين مختلفتين من أول يوم.
-      ar: سيكار من سولو، وغاليه من سورابايا، فستسمع منهما لهجتين مختلفتين منذ اليوم الأوّل.
-      en: Sekar is from Solo and Galih from Surabaya, so you hear two kinds of Javanese from day one.
-  - speaker: Mas Galih
-    text: Aku Galih, arek Suroboyo asli. Piye kabare, rek?
-    ar_eg: أنا جاليه، ابن سورابايا أصلي. أخبارك إيه يا جدع؟
-    ar: أنا غاليه، ابن سورابايا الأصيل. كيف حالك يا صاحبي؟
-    en: I'm Galih, a true Surabaya kid. How are you, mate?
+      ar_eg: سيكار من جوجا، ودانانج من ماديون. الاتنين بيتكلّموا جاوي «ماتارامان»، جاوي الشارع اللي هتتعلّمه.
+      ar: سيكار من جوغجا، ودانانغ من ماديون، وكلاهما يتكلّم جاوية «ماتارامان»، جاوية الشارع التي ستتعلّمها.
+      en: Sekar is from Jogja and Danang from Madiun. Both speak Mataraman Javanese, the street Javanese you'll learn.
+  - speaker: Mas Danang
+    text: Aku Danang, saka Madiun. Piye kabare, Mas?
+    ar_eg: أنا دانانج، من ماديون. أخبارك إيه يا ماس؟
+    ar: أنا دانانغ، من ماديون. كيف حالك يا ماس؟
+    en: I'm Danang, from Madiun. How are you, Mas?
   - speaker: Mbak Sekar
-    text: Mas Mohamed, sugeng rawuh ing Jawa Timur. Dina iki kita sinau nyapa kanca.
-    ar_eg: يا ماس محمد، أهلًا بيك في جاوة الشرقية. النهارده هنتعلّم نسلّم على الصحاب.
-    ar: يا ماس محمد، مرحبًا بك في جاوة الشرقية. اليوم نتعلّم تحيّة الأصدقاء.
-    en: Mas Mohamed, welcome to East Java. Today we learn to greet friends.
-  - speaker: Mas Galih
-    text: Pasar Turi rame banget esuk iki. Akeh wong adol klambi lan kain.
-    ar_eg: سوق توري زحمة أوي الصبح ده. ناس كتير بتبيع هدوم وقماش.
-    ar: سوق توري مزدحم جدًّا هذا الصباح. كثيرون يبيعون الملابس والأقمشة.
-    en: Pasar Turi is really busy this morning. Lots of people selling clothes and cloth.
+    text: Mas Mohamed, sugeng rawuh ing Jogja. Dina iki kita sinau nyapa kanca, kaya wong ing dalan.
+    ar_eg: يا ماس محمد، أهلًا بيك في جوجا. النهارده هنتعلّم نسلّم على الصحاب، زي الناس في الشارع.
+    ar: يا ماس محمد، مرحبًا بك في جوغجا. اليوم نتعلّم تحيّة الأصدقاء كما يفعل الناس في الشارع.
+    en: Mas Mohamed, welcome to Jogja. Today we learn to greet friends, the way people do on the street.
+  - speaker: Mas Danang
+    text: Malioboro wis rame esuk iki. Ana andong, becak, lan bakul jajan neng pinggir dalan.
+    ar_eg: ماليوبورو زحمة من الصبح. فيه حناطير وبيچاك وبيّاعين أكل على جنب الشارع.
+    ar: ماليوبورو مزدحم منذ الصباح. عربات خيل وعربات بيتشاك وباعة طعام على جانب الطريق.
+    en: Malioboro's already busy this morning. Horse carts, becaks and snack sellers along the road.
 - kind: dialogue
-  title: Ketemu kanca ing bis
+  title: Ketemu kanca neng angkringan
   lines:
   - speaker: Mbak Sekar
-    text: Galih, ayo dolanan. Aku dadi bocah anyar, kowe dadi kanca ing Suroboyo Bus.
-    ar_eg: يا جاليه، يلّا نمثّل. أنا أبقى واحدة جديدة، وانت صاحبي في أتوبيس سورابايا.
-    ar: يا غاليه، هيّا نمثّل. أنا وافدة جديدة، وأنت صديق في حافلة سورابايا.
-    en: Galih, let's role-play. I'm the new kid, you're a friend on the Suroboyo Bus.
+    text: Danang, ayo dolanan. Aku bocah anyar, kowe kancaku neng angkringane Mas Heru.
+    ar_eg: يا دانانج، يلّا نمثّل. أنا واحدة جديدة، وانت صاحبي في أنجكرينجان ماس هيرو.
+    ar: يا دانانغ، هيّا نمثّل. أنا وافدة جديدة، وأنت صديقي عند عربة ماس هيرو.
+    en: Danang, let's role-play. I'm new in town, you're my friend at Mas Heru's angkringan.
     note:
-      ar_eg: Suroboyo Bus أتوبيس المدينة الأحمر. لمّا اشتغل كان ممكن تدفع بزجاجات بلاستيك فاضية!
-      ar: حافلة Suroboyo Bus الحمراء هي حافلة المدينة، وعند إطلاقها كان يمكن الدفع بقوارير بلاستيكية فارغة!
-      en: The red Suroboyo Bus is the city bus; at launch you could pay with empty plastic bottles!
-  - speaker: Mas Galih
-    text: Lho, Mbak! Piye kabare? Suwe ora ketemu!
-    ar_eg: إيه ده يا مباك! أخبارك إيه؟ من زمان ما شفناكيش!
+      ar_eg: 'angkringan = عربية أكل في الشارع: أكل رخيص وشاي سخن وقعدة على دكك خشب. أشهر قعدة في جوجا.'
+      ar: 'angkringan = عربة طعام في الشارع: أكل رخيص وشاي ساخن وجلسة على مقاعد خشبية. أشهر جلسة في جوغجا.'
+      en: An angkringan is a street cart with cheap food, hot tea and wooden benches. Jogja's favourite hangout.
+  - speaker: Mas Danang
+    text: Lho, Mbak! Piye kabare? Suwe ra ketemu!
+    ar_eg: إيه ده يا مباك! أخبارك إيه؟ من زمان ما اتقابلناش!
     ar: يا مباك! كيف حالك؟ منذ زمن لم نلتقِ!
     en: Hey, Mbak! How are you? Long time no see!
+    note:
+      ar_eg: ra = ora (مش) مختصرة، وكده بيقولوها في الشارع.
+      ar: ra = ora (لا) مختصرة، وهكذا تُقال في الشارع.
+      en: Ra = ora (not), shortened, the way it's said on the street.
   - speaker: Mbak Sekar
-    text: Apik, Cak. Suwun. Kowe piye?
-    ar_eg: كويسة يا تشاك. تسلم. وانت عامل إيه؟
-    ar: بخير يا تشاك. شكرًا. وأنت كيف حالك؟
-    en: Good, Cak. Thanks. How about you?
-  - speaker: Mas Galih
-    text: Apik, rek. Aku arep nang Tunjungan. Kowe arep nang endi?
-    ar_eg: تمام يا جدعان. أنا رايح تونجونجان. وانتي رايحة فين؟
-    ar: بخير. أنا ذاهب إلى تونجونغان. وأنتِ إلى أين؟
-    en: Good. I'm off to Tunjungan. Where are you heading?
+    text: Apik, Mas. Suwun. Kowe piye?
+    ar_eg: كويسة يا ماس. تسلم. وانت عامل إيه؟
+    ar: بخير يا ماس. شكرًا. وأنت كيف حالك؟
+    en: Good, Mas. Thanks. How about you?
+  - speaker: Mas Danang
+    text: Apik wae. Aku lagi ngenteni wedang jahe. Kowe arep neng endi?
+    ar_eg: تمام. أنا مستنّي الشاي بالجنزبيل. انتي رايحة فين؟
+    ar: بخير. أنتظر مشروب الزنجبيل. وأنتِ إلى أين؟
+    en: All good. I'm waiting for my ginger drink. Where are you off to?
   - speaker: Mbak Sekar
-    text: Aku arep nang Pasar Turi, tuku kain kanggo ibuku.
-    ar_eg: أنا رايحة سوق توري، أشتري قماش لأمّي.
-    ar: أنا ذاهبة إلى سوق توري لأشتري قماشًا لأمّي.
-    en: I'm going to Pasar Turi to buy cloth for my mum.
-  - speaker: Mas Galih
+    text: Aku arep neng Pasar Beringharjo, tuku kain kanggo ibuku.
+    ar_eg: أنا رايحة سوق بيرينجهارجو، أشتري قماش لأمّي.
+    ar: أنا ذاهبة إلى سوق بيرينغهارجو لأشتري قماشًا لأمّي.
+    en: I'm going to Pasar Beringharjo to buy cloth for my mum.
+  - speaker: Mas Danang
     text: Wah, apik. Salam kanggo ibumu, ya!
     ar_eg: حلو. سلّميلي على مامتك!
     ar: جميل. سلّمي على أمّك!
     en: Nice. Say hi to your mum!
   - speaker: Mbak Sekar
-    text: Iya, Cak. Matur nuwun. Ati-ati, ya!
-    ar_eg: حاضر يا تشاك. متشكّرة. خلّي بالك من نفسك!
-    ar: حسنًا يا تشاك. شكرًا. اعتنِ بنفسك!
-    en: Sure, Cak. Thank you. Take care!
-  - speaker: Mas Galih
-    text: Mas Mohamed, krungu ta? Karo kanca, cukup "aku" lan "kowe".
+    text: Iya, Mas. Matur nuwun. Ati-ati, ya!
+    ar_eg: حاضر يا ماس. متشكّرة. خلّي بالك من نفسك!
+    ar: حسنًا يا ماس. شكرًا. اعتنِ بنفسك!
+    en: Sure, Mas. Thank you. Take care!
+  - speaker: Mas Danang
+    text: Mas Mohamed, krungu to? Karo kanca, cukup "aku" lan "kowe".
     ar_eg: يا ماس محمد، سمعت؟ مع الصحاب، كفاية «aku» و«kowe».
     ar: يا ماس محمد، أسمعت؟ مع الأصدقاء يكفي «aku» و«kowe».
     en: Mas Mohamed, did you hear? With friends, "aku" and "kowe" are enough.
@@ -94,27 +98,27 @@ segments:
       ar: aku = أنا، وkowe = أنت (للأصدقاء ومن هم أصغر). ومع الكبار ستتعلّم كلمات أخرى لاحقًا.
       en: aku = I, kowe = you (friends and younger people). With elders you'll learn other words later.
 - kind: word_spotlight
-  title: Mas, mbak, cak, rek
+  title: Mas, mbak, dhik, cah
   lines:
   - speaker: Mbak Sekar
     text: Mas kanggo wong lanang sing luwih tuwa sithik. Mbak kanggo wong wadon.
     ar_eg: «ماس» للراجل اللي أكبر منك شويّة. «مباك» للست.
     ar: «ماس» للرجل الأكبر قليلًا. «مباك» للمرأة.
     en: Mas is for a man a bit older than you. Mbak is for a woman.
-  - speaker: Mas Galih
-    text: Cak iku cara Suroboyo kanggo "mas". Cak Heru, Cak Mat.
-    ar_eg: «تشاك» دي طريقة سورابايا بدل «ماس». تشاك هيرو، تشاك مات.
-    ar: «تشاك» طريقة سورابايا بدل «ماس». تشاك هيرو، تشاك مات.
-    en: Cak is Surabaya's way of saying mas. Cak Heru, Cak Mat.
-  - speaker: Mas Galih
-    text: Lan rek, saka tembung arek, bocah. Ayo, rek! Piye, rek?
-    ar_eg: و«rek» جاية من «arek» يعني عيّل. يلّا يا جدعان! إيه يا جدع؟
-    ar: و«rek» من «arek» أي ولد. هيّا يا رفاق! ما الأمر يا صاحبي؟
-    en: And rek comes from arek, kid. Come on, guys! What's up, mate?
+  - speaker: Mas Danang
+    text: Dhik kanggo sing luwih enom, lanang utawa wadon. Dhik, arep tuku apa?
+    ar_eg: «dhik» للي أصغر منك، ولد أو بنت. يا dhik، عايز تشتري إيه؟
+    ar: «dhik» لمن هو أصغر منك، ذكرًا أو أنثى. يا dhik، ماذا تريد أن تشتري؟
+    en: Dhik is for someone younger, male or female. Dhik, what would you like to buy?
+  - speaker: Mas Danang
+    text: Lan cah, saka tembung bocah. Ayo, cah! Piye, cah?
+    ar_eg: و«cah» جاية من «bocah» يعني عيّل. يلّا يا جماعة! إيه يا شباب؟
+    ar: و«cah» من «bocah» أي ولد. هيّا يا جماعة! ما الأمر يا شباب؟
+    en: And cah comes from bocah, kid. Come on, guys! What's up, guys?
     note:
-      ar_eg: «rek» بتيجي في آخر نصّ الجمل في سورابايا، زي «يا جدع» عندنا. ودّية مش قلّة أدب.
-      ar: تأتي «rek» في آخر نصف الجمل في سورابايا، مثل «يا صاحبي». وهي ودّية لا وقحة.
-      en: Rek ends half the sentences in Surabaya, like "mate". It's friendly, not rude.
+      ar_eg: «cah» بيقولها الشباب لبعض في جوجا، زي «يا جماعة» أو «يا شباب» عندنا. ودّية، بس مش للكبار.
+      ar: يقولها الشباب بعضهم لبعض في جوغجا، مثل «يا جماعة» أو «يا شباب». ودّية، لكن لا تُقال للكبار.
+      en: Cah is what young people call each other in Jogja, like "guys". Friendly, but not for elders.
   - speaker: Mbak Sekar
     text: Lan wangsulane "Piye kabare?" gampang. Apik, apik-apik wae, utawa lumayan.
     ar_eg: والردّ على «أخبارك إيه؟» سهل. كويس، كويس الحمد لله، أو ماشي الحال.
@@ -128,7 +132,7 @@ segments:
     ar_eg: أخبارك إيه؟
     ar: كيف حالك؟
     en: How are you?
-  - speaker: Mas Galih
+  - speaker: Mas Danang
     text: Piye kabare?
     ar_eg: أخبارك إيه؟
     ar: كيف حالك؟
@@ -138,18 +142,18 @@ segments:
     ar_eg: كويس، متشكّر. وانت؟
     ar: بخير، شكرًا. وأنت؟
     en: Good, thanks. And you?
-  - speaker: Mas Galih
+  - speaker: Mas Danang
     text: Apik, suwun. Kowe piye?
     ar_eg: كويس، متشكّر. وانت؟
     ar: بخير، شكرًا. وأنت؟
     en: Good, thanks. And you?
   - speaker: Mbak Sekar
-    text: Suwe ora ketemu!
+    text: Suwe ra ketemu!
     ar_eg: من زمان ما اتقابلناش!
     ar: منذ زمن لم نلتقِ!
     en: Long time no see!
-  - speaker: Mas Galih
-    text: Suwe ora ketemu!
+  - speaker: Mas Danang
+    text: Suwe ra ketemu!
     ar_eg: من زمان ما اتقابلناش!
     ar: منذ زمن لم نلتقِ!
     en: Long time no see!
@@ -158,7 +162,7 @@ segments:
     ar_eg: خلّي بالك من نفسك!
     ar: اعتنِ بنفسك!
     en: Take care!
-  - speaker: Mas Galih
+  - speaker: Mas Danang
     text: Ati-ati, ya!
     ar_eg: خلّي بالك من نفسك!
     ar: اعتنِ بنفسك!
@@ -168,22 +172,22 @@ segments:
     ar_eg: صباح الخير يا مباك!
     ar: صباح الخير يا مباك!
     en: Good morning, Mbak!
-  - speaker: Mas Galih
+  - speaker: Mas Danang
     text: Sugeng enjing, Mbak!
     ar_eg: صباح الخير يا مباك!
     ar: صباح الخير يا مباك!
     en: Good morning, Mbak!
   - speaker: Mbak Sekar
-    text: Matur nuwun, Cak.
-    ar_eg: متشكّر يا تشاك.
-    ar: شكرًا يا تشاك.
-    en: Thank you, Cak.
-  - speaker: Mas Galih
-    text: Matur nuwun, Cak.
-    ar_eg: متشكّر يا تشاك.
-    ar: شكرًا يا تشاك.
-    en: Thank you, Cak.
-  - speaker: Mas Galih
+    text: Matur nuwun, Mas.
+    ar_eg: متشكّر يا ماس.
+    ar: شكرًا يا ماس.
+    en: Thank you, Mas.
+  - speaker: Mas Danang
+    text: Matur nuwun, Mas.
+    ar_eg: متشكّر يا ماس.
+    ar: شكرًا يا ماس.
+    en: Thank you, Mas.
+  - speaker: Mas Danang
     text: Lan eling, "suwun" iku cekakan saka "matur nuwun". Karo kanca, suwun cukup. Karo wong tuwa, matur nuwun.
     ar_eg: وافتكر، «suwun» اختصار «matur nuwun». مع الصحاب suwun كفاية، ومع الكبار matur nuwun.
     ar: وتذكّر أنّ «suwun» اختصار «matur nuwun». مع الأصدقاء تكفي suwun، ومع الكبار matur nuwun.
@@ -192,19 +196,19 @@ segments:
   title: Gilirane Mas Mohamed
   lines:
   - speaker: Mbak Sekar
-    text: Mas Mohamed, saiki gilirane sampeyan. Sapa kanca ing radio iki, nganggo "Piye kabare, rek?"
-    ar_eg: يا ماس محمد، دلوقتي دورك. سلّم على صحابك في الراديو بـ«Piye kabare, rek?»
-    ar: يا ماس محمد، الآن دورك. حيِّ أصدقاءك في الراديو بـ«Piye kabare, rek?»
-    en: Mas Mohamed, now it's your turn. Greet your friends on the radio with "Piye kabare, rek?"
+    text: Mas Mohamed, saiki gilirane sampeyan. Sapa kanca ing radio iki, nganggo "Piye kabare, cah?"
+    ar_eg: يا ماس محمد، دلوقتي دورك. سلّم على صحابك في الراديو بـ«Piye kabare, cah?»
+    ar: يا ماس محمد، الآن دورك. حيِّ أصدقاءك في الراديو بـ«Piye kabare, cah?»
+    en: Mas Mohamed, now it's your turn. Greet your friends on the radio with "Piye kabare, cah?"
     note:
       ar_eg: دورك! قول الجملة بصوت عالي، وبعدها ردّ على نفسك بـ«Apik, suwun».
       ar: دورك! قل الجملة بصوت عالٍ، ثمّ أجب نفسك بـ«Apik, suwun».
       en: Your turn! Say it out loud, then answer yourself with "Apik, suwun".
-  - speaker: Mas Galih
-    text: PR-mu, sesuk sapa wong telu nganggo basa Jawa. Mas, mbak, utawa cak!
-    ar_eg: واجبك، بكرة سلّم على تلات أشخاص بالجاوي. ماس أو مباك أو تشاك!
-    ar: 'واجبك: غدًا حيِّ ثلاثة أشخاص بالجاوية. ماس أو مباك أو تشاك!'
-    en: 'Your homework: tomorrow, greet three people in Javanese. Mas, mbak or cak!'
+  - speaker: Mas Danang
+    text: PR-mu, sesuk sapa wong telu nganggo basa Jawa. Mas, mbak, utawa dhik!
+    ar_eg: واجبك، بكرة سلّم على تلات أشخاص بالجاوي. ماس أو مباك أو dhik!
+    ar: 'واجبك: غدًا حيِّ ثلاثة أشخاص بالجاوية. ماس أو مباك أو dhik!'
+    en: 'Your homework: tomorrow, greet three people in Javanese. Mas, mbak or dhik!'
   - speaker: Mbak Sekar
     text: Matur nuwun wis ngrungokake Kabar Radio. Nganti ketemu maneh!
     ar_eg: متشكّرين إنك سمعت كبار راديو. نتقابل تاني!
@@ -215,13 +219,15 @@ segments:
     ar_eg: يا ماس محمد، انت كنت حلو أوي النهارده. بكرة هنتعرّف على ناس جديدة.
     ar: يا ماس محمد، كنت رائعًا اليوم. غدًا نتعرّف إلى أناس جدد.
     en: Mas Mohamed, you did really well today. Tomorrow we meet new people.
-  - speaker: Mas Galih
-    text: Suwun, rek! Sesuk kita nang stasiun Gubeng!
-    ar_eg: تسلموا يا جدعان! بكرة رايحين محطّة جوبينج!
-    ar: شكرًا يا رفاق! غدًا نذهب إلى محطّة غوبينغ!
-    en: Cheers, everyone! Tomorrow we're off to Gubeng station!
+  - speaker: Mas Danang
+    text: Suwun, cah! Sesuk kita neng warung kopi cedhak Tugu!
+    ar_eg: تسلموا يا جماعة! بكرة هنكون في قهوة جنب التوجو!
+    ar: شكرًا يا جماعة! غدًا نكون في مقهى قرب التوغو!
+    en: Cheers, guys! Tomorrow we're at a coffee stall near the Tugu!
 words:
 - sugeng enjing
+- piye
+- kabare
 - apik
 - suwun
 - matur nuwun
@@ -229,11 +235,9 @@ words:
 - kowe
 - mas
 - mbak
-- cak
-- rek
-- ati-ati
-- esuk
+- dhik
+- cah
 review:
   status: draft
   verified: false
-  notes: 'First Javanese episode: introduces the hosts (Sekar from Solo, Galih from Surabaya). Suroboyo Bus fact (pay with plastic bottles) was true at launch in 2018; check it is still current.'
+  notes: 'First Javanese episode, on Malioboro: introduces the hosts (Sekar from Yogyakarta, Danang from Madiun). Dialogue at Mas Heru''s angkringan (street cart with cheap food and hot drinks) - kept general. Street forms: ra (= ora), wae, to.'

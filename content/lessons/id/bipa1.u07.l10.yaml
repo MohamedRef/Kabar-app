@@ -155,13 +155,25 @@ exercises:
       en: Asking permission = boleh, not bisa.
     words: [boleh, duduk]
   - id: e11
-    type: dictation
-    text: Hobi saya bermain bulu tangkis.
-    meaning:
-      ar_eg: هوايتي لعب الريشة.
-      ar: هوايتي لعب الريشة الطائرة.
-      en: My hobby is playing badminton.
-    words: [hobi, bulu tangkis]
+    type: match_pairs
+    pairs:
+      - text: film
+        ar_eg: فيلم
+        ar: فيلم
+        en: film, movie
+      - text: gitar
+        ar_eg: جيتار
+        ar: غيتار
+        en: guitar
+      - text: memancing
+        ar_eg: يصطاد سمك
+        ar: يصطاد السمك
+        en: go fishing
+      - text: berkebun
+        ar_eg: يزرع الجنينة
+        ar: يزرع البستان
+        en: do gardening
+    words: [film, gitar, memancing, berkebun]
   - id: e12
     type: speaking
     text: Kopi di sini enak banget!

@@ -1,0 +1,218 @@
+schema: kabar.lesson/v1
+id: bipa6.u06.l11
+language: id
+title: Satire politik
+can_do:
+  ar_eg: تفهم السخرية السياسية وتعرف هي بتنتقد إيه.
+  ar: أن تفهم الهجاء السياسي وتعرف ما الذي ينتقده.
+  en: Understand political satire and what it criticises.
+slides:
+  - title: Tertawa sambil mengkritik
+    grammar: id.irony
+    body:
+      ar_eg: |
+        الـ satire بيستعمل التريقة والمقابلة علشان ينتقد من غير زعيق:
+        - Hukum tajam ke bawah, tumpul ke atas. = القانون حاد على الغلابة، وتلم على الكبار. جملة مشهورة جدًا.
+        - Janji manis saat kampanye, lupa setelah menang. = وعود حلوة في الحملة، ونسيان بعد الفوز.
+        - Pejabat kita rajin sekali, rapat sambil tidur. = المسؤولين بتوعنا نشيطين قوي، بيجتمعوا وهما نايمين.
+        اسأل نفسك: مين اللي بيتّنقد؟ وإيه العيب؟
+      ar: |
+        يستعمل الهجاء (satire) التهكّم والمقابلة لينتقد دون صراخ:
+        - Hukum tajam ke bawah, tumpul ke atas. = القانون حادّ على الضعفاء كليل عن الأقوياء، وهي عبارة شهيرة جدًّا.
+        - Janji manis saat kampanye, lupa setelah menang. = وعود حلوة في الحملة، ونسيان بعد الفوز.
+        - Pejabat kita rajin sekali, rapat sambil tidur. = ما أنشط مسؤولينا! يجتمعون وهم نيام.
+        واسأل نفسك: مَن المنتقَد؟ وما العيب؟
+      en: |
+        Satire uses irony and contrast to criticise without shouting:
+        - Hukum tajam ke bawah, tumpul ke atas. = The law is sharp downwards and blunt upwards. A very well-known line.
+        - Janji manis saat kampanye, lupa setelah menang. = Sweet promises in the campaign, forgotten after the win.
+        - Pejabat kita rajin sekali, rapat sambil tidur. = Our officials are so diligent, they hold meetings asleep.
+        Ask yourself: who is being criticised, and for what?
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pejabat
+        ar_eg: مسؤول حكومي
+        ar: مسؤول حكومي
+        en: official
+      - text: janji
+        ar_eg: وعد
+        ar: وعد
+        en: promise
+      - text: kampanye
+        ar_eg: حملة انتخابية
+        ar: حملة انتخابية
+        en: campaign
+      - text: tajam
+        ar_eg: حاد / سنين
+        ar: حادّ
+        en: sharp
+      - text: tumpul
+        ar_eg: تلم / مش سنين
+        ar: كليل
+        en: blunt
+    words: [pejabat, janji, kampanye, tajam, tumpul]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Hukum tajam ke bawah, tumpul ke atas» معناها إيه؟
+      ar: ما معنى «Hukum tajam ke bawah, tumpul ke atas»؟
+      en: What does "Hukum tajam ke bawah, tumpul ke atas" mean?
+    options:
+      - إن السكاكين لازم تتسنّ.
+      - إن القانون واحد على الكل.
+      - إن القانون شديد على الضعيف وهيّن على القوي.
+    answer: 2
+    words: [tajam, tumpul]
+  - id: e03
+    type: fill_blank
+    sentence: Saat ___, semua calon tiba-tiba datang ke pasar.
+    meaning:
+      ar_eg: وقت الحملة، كل المرشحين فجأة بييجوا السوق.
+      ar: في موسم الحملة يأتي كلّ المرشّحين فجأة إلى السوق.
+      en: During the campaign, every candidate suddenly shows up at the market.
+    options: [kampanye, tumpul, pejabat]
+    answers: [kampanye]
+    words: [kampanye]
+  - id: e04
+    type: listen
+    text: Pejabat itu berjanji memperbaiki jalan, tetapi jalannya masih rusak.
+    question:
+      ar_eg: إيه اللي حصل؟
+      ar: ماذا حدث؟
+      en: What happened?
+    options:
+      - الطريق اتصلّح.
+      - الوعد ماتنفّذش، والطريق لسه بايظ.
+      - المسؤول استقال.
+    answer: 1
+    words: [pejabat, janji]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: بيقولوا دولة قانون، بس القانون تلم على الكبار.
+      ar: يقولون دولة قانون، لكنّ القانون كليل عن الكبار.
+      en: They call it a state of law, but the law is blunt towards the powerful.
+    answer: Katanya negara hukum, tapi hukumnya tumpul ke atas.
+    distractors: [kampanye, janji]
+    words: [tumpul]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة فيها سخرية سياسية؟
+      ar: أيّ جملة فيها هجاء سياسي؟
+      en: Which line is political satire?
+    options:
+      - Pejabat itu rajin sekali, rapat sambil tidur.
+      - Pejabat itu datang jam sembilan.
+      - Pejabat itu tinggal di Medan.
+    answer: 0
+    words: [pejabat]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Janji kampanye itu manis, tetapi sering dilupakan.
+    answers_meaning:
+      ar_eg:
+        - وعود الحملة حلوة، بس كتير بتتنسي.
+        - وعود الانتخابات بتبقى حلوة، بس غالبًا بتتنسي.
+      ar:
+        - وعود الحملة حلوة، لكنّها كثيرًا ما تُنسى.
+        - وعود الحملة الانتخابية عذبة، غير أنّها تُنسى غالبًا.
+      en:
+        - Campaign promises are sweet, but often forgotten.
+        - Campaign promises sound sweet but are often forgotten.
+    words: [janji, kampanye]
+  - id: e08
+    type: speaking
+    text: Hukum tidak boleh tajam ke bawah dan tumpul ke atas.
+    meaning:
+      ar_eg: القانون مايصحّش يبقى حاد على الغلابة وتلم على الكبار.
+      ar: لا يجوز أن يكون القانون حادًّا على الضعفاء كليلًا عن الأقوياء.
+      en: The law must not be sharp downwards and blunt upwards.
+    words: [tajam, tumpul]
+  - id: e09
+    type: dictation
+    text: Pisau ini tajam, tetapi gunting itu tumpul.
+    meaning:
+      ar_eg: السكينة دي حادة، بس المقص ده تلم.
+      ar: هذه السكين حادّة، لكنّ ذلك المقصّ كليل.
+      en: This knife is sharp, but those scissors are blunt.
+    words: [tajam, tumpul]
+  - id: e10
+    type: match_pairs
+    pairs:
+      - text: korup
+        ar_eg: فاسد، مرتشي
+        ar: فاسد، مرتشٍ
+        en: corrupt
+      - text: parpol
+        ar_eg: حزب سياسي
+        ar: حزب سياسي
+        en: political party (partai politik)
+      - text: oposisi
+        ar_eg: معارضة
+        ar: معارضة
+        en: opposition
+      - text: aparat
+        ar_eg: أجهزة الدولة
+        ar: أجهزة الدولة
+        en: state apparatus, officials
+      - text: ironis
+        ar_eg: فيه مفارقة
+        ar: مفارِق، ساخر
+        en: ironic
+    words: [korup, parpol, oposisi, aparat, ironis]
+dialogue:
+  title: Video satire
+  lines:
+    - speaker: Bang Togar
+      text: Lihat video ini. "Pejabat kita rajin sekali, rapat sambil tidur."
+      ar_eg: بص الفيديو ده. «المسؤولين بتوعنا نشيطين قوي، بيجتمعوا وهما نايمين».
+      ar: انظر إلى هذا المقطع. «ما أنشط مسؤولينا! يجتمعون وهم نيام».
+      en: Look at this video. "Our officials are so diligent, they hold meetings asleep."
+    - speaker: Mohamed
+      text: Ha! Itu satire. Dia menyindir pejabat yang malas.
+      ar_eg: ها! دي سخرية سياسية. بيلقّح على المسؤولين الكسلانين.
+      ar: ها! هذا هجاء، يعرّض بالمسؤولين الكسالى.
+      en: Ha! That's satire. He's taking a dig at lazy officials.
+    - speaker: Bang Togar
+      text: Betul. Satire itu cara rakyat mengkritik tanpa marah-marah.
+      ar_eg: مظبوط. السخرية دي طريقة الناس إنهم ينتقدوا من غير زعيق.
+      ar: صحيح. الهجاء وسيلة الناس للنقد دون غضب.
+      en: Right. Satire is how people criticise without shouting.
+    - speaker: Mohamed
+      text: Di Mesir juga begitu. Kami tertawa supaya tidak menangis.
+      ar_eg: في مصر برضه كده. بنضحك علشان مانعيطش.
+      ar: وكذلك في مصر. نضحك كي لا نبكي.
+      en: Same in Egypt. We laugh so we don't cry.
+new_words:
+  - word: pejabat
+    pos: noun
+    ar_eg: مسؤول حكومي
+    ar: مسؤول حكومي
+    en: official
+  - word: janji
+    pos: noun
+    ar_eg: وعد
+    ar: وعد
+    en: promise
+  - word: kampanye
+    pos: noun
+    ar_eg: حملة انتخابية
+    ar: حملة انتخابية
+    en: campaign
+  - word: tajam
+    pos: adjective
+    ar_eg: حاد / سنين
+    ar: حادّ
+    en: sharp
+  - word: tumpul
+    pos: adjective
+    ar_eg: تلم / مش سنين
+    ar: كليل
+    en: blunt
+review:
+  status: draft
+  verified: false

@@ -1,234 +1,194 @@
 schema: kabar.lesson/v1
 id: j1.u05.l05
 language: jv
-title: Ulangan J1.5
+title: Nongkrong neng Parangtritis
 can_do:
-  ar_eg: تحوّل كلام سورابايا (Arek) للنغوكو العادي.
-  ar: أن تحوّل كلام سورابايا (Arek) إلى النغوكو القياسي.
-  en: Translate Arek to standard ngoko.
+  ar_eg: تتابع دردشة سريعة بكلام شارع يوجيا على الشط.
+  ar: أن تتابع دردشة سريعة بكلام شارع يوجيا على الشاطئ.
+  en: Follow a fast Jogja street chat on the beach.
 slides:
-  - title: Ora, gak, dudu
+  - title: Kowe ngerti ra?
     body:
       ar_eg: |
-        مراجعة سريعة للنفي:
-        - ora (وفي سورابايا gak) قبل الفعل والصفة = tidak: Aku ora ngerti / Aku gak ngerti.
-        - dudu قبل الاسم = bukan: Iki dudu kopiku.
-        - ora ana = gak onok = مفيش. rapopo = ولا يهمك. durung = لسه.
-        والجدول اللي بيحوّل سورابايا لسولو:
-        koen / awakmu ⇐ kowe · gak ⇐ ora · onok ⇐ ana · kate ⇐ arep · wes ⇐ wis · teko ⇐ saka · yok opo ⇐ piye · lapo ⇐ ngapa · ae ⇐ wae · ta ⇐ to.
-        ومع الكبار: sampeyan، مش koen.
+        قبل ما تقعد مع Mas Heru وMas Yudha على رملة باراندجتريتيس، افتكر الصيغ السريعة (الشارع ⇐ العادي):
+        - ra ⇐ ora · ki ⇐ iki · sik ⇐ dhisik
+        - to / ta = ولا إيه؟ · wae = بس · lho = على فكرة · je / og = والله / أصلًا ⚠️
+        - mau = من شوية · mengko = بعدين · nganti = لحد · yen = لو
+        الجاوي في الشارع بيتكلم بسرعة وبيبلع حروف، فاسمع الكلمة المهمة وسيب الباقي.
       ar: |
-        مراجعة سريعة للنفي:
-        - ora (وفي سورابايا gak) قبل الفعل والصفة = tidak: Aku ora ngerti / Aku gak ngerti.
-        - dudu قبل الاسم = bukan: Iki dudu kopiku.
-        - ora ana = gak onok = لا يوجد، rapopo = لا بأس، durung = ليس بعد.
-        وجدول التحويل من سورابايا إلى سولو:
-        koen / awakmu ⇐ kowe · gak ⇐ ora · onok ⇐ ana · kate ⇐ arep · wes ⇐ wis · teko ⇐ saka · yok opo ⇐ piye · lapo ⇐ ngapa · ae ⇐ wae · ta ⇐ to.
-        ومع الكبار: sampeyan لا koen.
+        قبل الجلوس مع Mas Heru وMas Yudha على رمل باراندجتريتيس، تذكّر الصيغ السريعة (الشارع ⇐ القياسي):
+        - ra ⇐ ora · ki ⇐ iki · sik ⇐ dhisik
+        - to / ta = أليس كذلك؟ · wae = فقط · lho = للتنبيه · je / og = للتوكيد ⚠️
+        - mau = قبل قليل · mengko = لاحقًا · nganti = حتى · yen = إذا
+        والجاوي في الشارع سريع يبتلع الحروف، فالتقط الكلمة المهمة ودع الباقي.
       en: |
-        Quick negation recap:
-        - ora (Surabaya gak) before verbs and adjectives = tidak: Aku ora ngerti / Aku gak ngerti.
-        - dudu before nouns = bukan: Iki dudu kopiku.
-        - ora ana = gak onok = there isn't. rapopo = no problem. durung = not yet.
-        The Surabaya → Solo table:
-        koen / awakmu ⇒ kowe · gak ⇒ ora · onok ⇒ ana · kate ⇒ arep · wes ⇒ wis · teko ⇒ saka · yok opo ⇒ piye · lapo ⇒ ngapa · ae ⇒ wae · ta ⇒ to.
-        With elders: sampeyan, not koen.
-    grammar: jv.negation.ora-dudu
+        Before you sit down with Mas Heru and Mas Yudha on the sand at Parangtritis, recall the quick forms (street ⇒ standard):
+        - ra ⇒ ora · ki ⇒ iki · sik ⇒ dhisik
+        - to / ta = right? · wae = just · lho = you know · je / og = honestly / really ⚠️
+        - mau = a moment ago · mengko = later · nganti = until · yen = if
+        Street Javanese is fast and swallows sounds, so catch the key word and let the rest go.
+    grammar: jv.particle.basic
+    examples:
+      - text: Kowe wis mangan to, cah?
+        ar_eg: إنت كلت ولا إيه يا صاحبي؟
+        ar: أكلتَ، أليس كذلك يا صاح؟
+        en: You've eaten, right, mate?
+      - text: Aku ra ngerti og.
+        ar_eg: ماعرفش أصلًا.
+        ar: لا أعرف حقًا.
+        en: I really don't know.
+      - text: Mengko nongkrong nganti bengi, ya.
+        ar_eg: بعدين نقعد نرغي لحد بالليل، ماشي؟
+        ar: لاحقًا نسهر حتى الليل، حسنًا؟
+        en: Later we'll hang out till night, OK?
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: koen
-        ar_eg: kowe (إنت)
-        ar: kowe (أنت)
-        en: kowe (you)
-      - text: onok
-        ar_eg: ana (فيه)
-        ar: ana (يوجد)
-        en: ana (there is)
-      - text: kate
-        ar_eg: arep (هـ)
-        ar: arep (سوف)
-        en: arep (going to)
-      - text: lapo
-        ar_eg: ngapa (ليه)
-        ar: ngapa (لماذا)
-        en: ngapa (why)
-      - text: teko
-        ar_eg: saka (من)
-        ar: saka (من)
-        en: saka (from)
-    words: [koen, onok, kate, lapo, teko]
-  - id: e02
-    type: multiple_choice
-    question: Aku ___ wong Suroboyo.
-    question_meaning:
-      ar_eg: أنا مش من سورابايا. أنهي كلمة تكمّل؟
-      ar: لستُ من سورابايا. أيّ كلمة تُكمل الجملة؟
-      en: I'm not from Surabaya. Which word fills the gap?
-    options: [gak, ora, dudu]
-    answer: 2
-    explain:
-      ar_eg: wong Suroboyo اسم، فبيتنفي بـ dudu.
-      ar: wong Suroboyo اسم فيُنفى بـ dudu.
-      en: wong Suroboyo is a noun, so dudu.
-    words: [dudu]
-  - id: e03
-    type: multiple_choice
-    question: Kowe saka ngendi?
-    question_meaning:
-      ar_eg: أنهي جملة Arek معناها نفس الجملة دي؟
-      ar: أيّ جملة Arek تؤدي معنى هذه الجملة؟
-      en: Which Arek sentence means the same?
-    options: ['Koen kate nang endi?', 'Koen teko endi?', 'Lapo koen?']
-    answer: 1
-    explain:
-      ar_eg: saka ⇐ teko (من)، وkowe ⇐ koen. Kate nang endi = رايح فين.
-      ar: saka ⇐ teko (من)، وkowe ⇐ koen، أما Kate nang endi فمعناها إلى أين.
-      en: saka ⇒ teko (from), kowe ⇒ koen. Kate nang endi = where are you going.
-    words: [teko, saka, koen]
-  - id: e04
     type: multiple_choice
     question_meaning:
-      ar_eg: بتسأل بيّاعة كبيرة في السن «حضرتك كلتي؟». تقول إيه؟
-      ar: تسأل بائعة مسنّة «هل أكلتِ؟». ماذا تقول؟
-      en: You ask an older woman selling at the market whether she has eaten. What do you say?
-    options: ['Sampeyan wis mangan, Bu?', 'Awakmu wis mangan?', 'Koen wis mangan ta, rek?']
+      ar_eg: (من الحوار) هما جم الشط إزاي؟
+      ar: (من الحوار) كيف جاؤوا إلى الشاطئ؟
+      en: (From the dialogue) How did they get to the beach?
+    options: [numpak motor, numpak sepur, mlaku]
     answer: 0
     explain:
-      ar_eg: koen وawakmu وrek للصحاب. مع الكبير sampeyan وBu.
-      ar: koen وawakmu وrek للأقران، ومع الكبير sampeyan وBu.
-      en: koen, awakmu and rek are for friends; an older person gets sampeyan and Bu.
-    words: [sampeyan]
-  - id: e05
+      ar_eg: Mas Yudha قال «Numpak motor mau» = جينا بالموتوسيكل من شوية.
+      ar: قال Mas Yudha «Numpak motor mau» أي جئنا بالدراجة قبل قليل.
+      en: 'Mas Yudha says "Numpak motor mau": they came by motorbike earlier.'
+    words: [motor, mau]
+  - id: e02
     type: listen
-    text: Gak onok, rek.
-    options: ['Dudu aku, rek.', 'Gak onok, rek.', 'Gak ngerti, rek.']
-    answer: 1
-    words: [gak, onok]
-  - id: e06
-    type: fill_blank
-    sentence: Regane ___ larang.
+    text: Ombake gedhe banget je!
+    question:
+      ar_eg: بيقول إيه عن البحر؟
+      ar: ماذا يقول عن البحر؟
+      en: What does he say about the sea?
+    options: [الموج عالي أوي, الرملة سخنة, الدرة غالية]
+    answer: 0
     meaning:
-      ar_eg: السعر مش غالي.
-      ar: السعر ليس غاليًا.
-      en: The price isn't expensive.
-    options: [ora, durung, dudu]
-    answers: [ora]
-    explain:
-      ar_eg: larang صفة، فبتاخد ora.
-      ar: larang صفة فتُنفى بـ ora.
-      en: larang is an adjective, so ora.
-    words: [ora, larang]
-  - id: e07
+      ar_eg: الموج عالي أوي والله!
+      ar: الموج عالٍ جدًا حقًا!
+      en: The waves are really big!
+    words: [ombak, banget, je]
+  - id: e03
     type: fill_blank
-    sentence: ___ kabare, Cak?
+    sentence: Aku ___ ngerti, Mas.
     meaning:
-      ar_eg: أخبارك إيه يا معلم؟ (Arek)
-      ar: كيف حالك يا أخي؟ (Arek)
-      en: How are you, Cak? (Arek)
-    answers: [Yok opo, Yaopo, yok opo, yaopo]
+      ar_eg: أنا مش فاهم يا كابتن.
+      ar: لا أفهم يا أخي.
+      en: I don't get it, Mas.
+    options: [ra, je, wae]
+    answers: [ra]
+    words: [ra, je, wae]
+  - id: e04
+    type: multiple_choice
+    question: Yen ombake gedhe, ora usah adus.
+    question_meaning:
+      ar_eg: Mas Heru قالك كده. يقصد إيه؟
+      ar: قالها Mas Heru. ماذا يقصد؟
+      en: Mas Heru says this. What does he mean?
+    options: [لو الموج عالي ماتستحماش, الموج عالي، يلا نستحمى, مفيش موج النهارده]
+    answer: 0
     explain:
-      ar_eg: yok opo (yaopo) = piye بتاعة سورابايا.
-      ar: yok opo (yaopo) = piye في سورابايا.
-      en: yok opo (yaopo) is Surabaya's piye.
-    words: [yok opo]
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: 'حوّلها للنغوكو العادي: «Gak onok, rek.»'
-      ar: 'حوّلها إلى النغوكو القياسي: «Gak onok, rek.»'
-      en: 'Turn it into standard ngoko: "Gak onok, rek."'
-    answers: [Ora ana., Ora ana, 'Ora ana, Mas.', 'Ora ana, Mas', Ora ana Mas., Ora ana Mas, 'Ora ana, rek.', 'Ora ana, rek', Ora ana rek., Ora ana rek]
-    explain:
-      ar_eg: gak ⇐ ora، onok ⇐ ana. وrek علامة سورابايا، فممكن تشيلها أو تقول Mas.
-      ar: gak ⇐ ora، وonok ⇐ ana، وrek علامة سورابايا فيمكن حذفها.
-      en: gak ⇒ ora, onok ⇒ ana; rek is a Surabaya marker, so you can drop it.
-    words: [ora ana, gak onok]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: 'حوّلها للنغوكو العادي: «Lapo koen gak mangan?» (مابتاكلش ليه؟)'
-      ar: 'حوّلها إلى النغوكو القياسي: «Lapo koen gak mangan?» (لماذا لا تأكل؟)'
-      en: 'Turn it into standard ngoko: "Lapo koen gak mangan?" (Why aren''t you eating?)'
-    answers: ["Ngapa kowe ora mangan?", Ngapa kowe ora mangan, "Kowe ngapa ora mangan?", Kowe ngapa ora mangan, "Ngapa kowe ra mangan?", Ngapa kowe ra mangan]
-    explain:
-      ar_eg: lapo ⇐ ngapa، koen ⇐ kowe، gak ⇐ ora.
-      ar: lapo ⇐ ngapa، وkoen ⇐ kowe، وgak ⇐ ora.
-      en: lapo ⇒ ngapa, koen ⇒ kowe, gak ⇒ ora.
-    words: [ngapa, kowe, ora, lapo, koen, gak]
-  - id: e10
+      ar_eg: yen = لو، وora usah = مالوش لزوم.
+      ar: yen = إذا، وora usah = لا داعي.
+      en: yen = if; ora usah = no need to.
+    words: [yen, ombak]
+  - id: e05
     type: build_sentence
     source:
-      ar_eg: دي مش قهوتي، دي قهوة Cak Heru.
-      ar: هذه ليست قهوتي، هذه قهوة Cak Heru.
-      en: This isn't my coffee, it's Cak Heru's coffee.
-    answer: Iki dudu kopiku, iki kopine Cak Heru.
-    distractors: [ora, onok]
+      ar_eg: يلا نقعد نرغي على الرملة لحد بالليل.
+      ar: هيا نسمر على الرمل حتى الليل.
+      en: Let's hang out on the sand till night.
+    answer: Ayo nongkrong neng pasir nganti bengi.
+    distractors: [mau, motor]
+    words: [nongkrong, pasir, nganti]
+  - id: e06
+    type: listen
+    text: Mengko jagung bakar wae, ya.
+    question:
+      ar_eg: هياكلوا إيه وإمتى؟
+      ar: ماذا سيأكلون ومتى؟
+      en: What will they eat, and when?
+    options: [درة مشوية بعدين, سمك مشوي دلوقتي, جوز هند من شوية]
+    answer: 0
+    meaning:
+      ar_eg: بعدين درة مشوية وخلاص، ماشي؟
+      ar: لاحقًا ذرة مشوية فقط، حسنًا؟
+      en: Later just grilled corn, OK?
+    words: [mengko, jagung bakar, wae]
+  - id: e07
+    type: fill_blank
+    sentence: Layangane mabur ___ dhuwur.
+    meaning:
+      ar_eg: الطيارة الورق طارت عالي أوي.
+      ar: طارت الطائرة الورقية عاليًا جدًا.
+      en: The kite is flying really high.
+    options: [banget, mung, mau]
+    answers: [banget]
+    words: [layangan, banget, mung]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Ngapura, Mas, aku ra ngerti og.
+    answers_meaning:
+      ar_eg: [معلش يا كابتن، أنا مش فاهم أصلًا, آسف يا أستاذ، والله ما فاهم]
+      ar: [عذرًا يا أخي، لا أفهم حقًا, آسف يا أخي، لم أفهم أصلًا]
+      en: ['Sorry, Mas, I really don''t understand', 'Sorry, I honestly don''t get it']
+    words: [ngapura, ra, og]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة معناها «كلت، مش كده؟»
+      ar: أيّ جملة تعني «أكلتَ، أليس كذلك؟»
+      en: Which sentence means "You've eaten, right?"
+    options: ['Kowe wis mangan to?', 'Kowe arep mangan?', Kowe durung mangan.]
+    answer: 0
     explain:
-      ar_eg: kopiku اسم، فالنفي dudu. وkopine Cak Heru = kopinya Cak Heru.
-      ar: kopiku اسم فيُنفى بـ dudu، وkopine Cak Heru = kopinya Cak Heru.
-      en: kopiku is a noun, so dudu; kopine Cak Heru = kopinya Cak Heru.
-    words: [dudu, kopi]
-  - id: e11
-    type: dictation
-    text: Iki dudu kopiku.
-    meaning:
-      ar_eg: دي مش قهوتي.
-      ar: هذه ليست قهوتي.
-      en: This isn't my coffee.
-    words: [dudu]
-  - id: e12
+      ar_eg: to في الآخر = «مش كده؟» (= kan). وdurung = لسه.
+      ar: to آخر الجملة = «أليس كذلك؟» (= kan)، وdurung = لم بعد.
+      en: to at the end = "right?" (= kan); durung = not yet.
+    words: [to, wis, durung]
+  - id: e10
     type: speaking
-    text: Rapopo, Cak. Aku durung mangan.
+    text: Sik, aku tuku degan mau. Mengko nongkrong, ya.
     meaning:
-      ar_eg: ولا يهمك يا معلم. أنا لسه ماكلتش.
-      ar: لا بأس يا أخي. لم آكل بعد.
-      en: No problem, Cak. I haven't eaten yet.
-    words: [rapopo, durung]
+      ar_eg: استنى، أنا اشتريت جوز هند من شوية. بعدين نقعد نرغي، ماشي؟
+      ar: انتظر، اشتريت جوز هند قبل قليل. لاحقًا نسمر، حسنًا؟
+      en: Hold on, I bought a coconut just now. We'll hang out later, OK?
+    words: [sik, degan, mau, mengko]
 dialogue:
-  title: Sore nang Kenjeran
+  title: Sore neng pasir
   lines:
-    - speaker: Ning Lia
-      text: Mohamed, koen teko endi?
-      ar_eg: محمد، إنت منين؟
-      ar: يا محمد، من أين أنت؟
-      en: Mohamed, where are you from?
+    - speaker: Mas Heru
+      text: Piye, cah? Wis tekan?
+      ar_eg: إيه الأخبار يا جماعة؟ وصلتوا؟
+      ar: ما الأخبار يا رفاق؟ هل وصلتم؟
+      en: How's it going, guys? You here?
+    - speaker: Mas Yudha
+      text: Wis. Numpak motor mau, panas je!
+      ar_eg: أيوه. جينا بالموتوسيكل من شوية، حر والله!
+      ar: نعم. جئنا بالدراجة قبل قليل، والجو حارّ!
+      en: Yep. Came by motorbike just now, so hot!
     - speaker: Mohamed
-      text: Aku saka Kairo, Ning. Aku dudu wong Jawa.
-      ar_eg: أنا من القاهرة يا آنسة. أنا مش جاوي.
-      ar: أنا من القاهرة يا آنسة، لستُ جاويًّا.
-      en: I'm from Cairo, Ning. I'm not Javanese.
-    - speaker: Ning Lia
-      text: Lho, koen ngerti basa Suroboyo ta?
-      ar_eg: إيه ده، إنت فاهم كلام سورابايا ولا إيه؟
-      ar: حقًّا؟ أتفهم لهجة سورابايا إذن؟
-      en: Oh! So you understand Surabaya talk?
+      text: Ombake gedhe banget, Mas!
+      ar_eg: الموج عالي أوي يا كابتن!
+      ar: الموج عالٍ جدًا يا أخي!
+      en: The waves are huge!
+    - speaker: Mas Heru
+      text: Yen ombake gedhe, ora usah adus. Nongkrong wae neng pasir.
+      ar_eg: لو الموج عالي ماتستحماش. اقعد ارغي على الرملة وبس.
+      ar: إن كان الموج عاليًا فلا تسبح، بل اجلس على الرمل.
+      en: If the waves are big, don't swim. Just hang out on the sand.
+    - speaker: Mas Yudha
+      text: Mengko jagung bakar wae, ya. Nganti bengi!
+      ar_eg: بعدين درة مشوية، ماشي؟ لحد بالليل!
+      ar: لاحقًا ذرة مشوية، حسنًا؟ حتى الليل!
+      en: Grilled corn later, OK? Till night!
     - speaker: Mohamed
-      text: Iya, Ning. Koen, gak, onok, kate… rek!
-      ar_eg: أيوه يا آنسة. koen، gak، onok، kate… rek!
-      ar: 'نعم يا آنسة: koen وgak وonok وkate… rek!'
-      en: Yes, Ning. Koen, gak, onok, kate… rek!
-    - speaker: Cak Heru
-      text: Wah, apik, rek! Koen arek Suroboyo!
-      ar_eg: الله، حلو يا صاحبي! إنت ابن سورابايا!
-      ar: رائع يا صاح! أنت من أبناء سورابايا!
-      en: Wow, nice one, mate! You're a Surabaya local!
-souvenir:
-  id: j1.u05.souvenir
-  title: Pantai Kenjeran
-  note:
-    ar_eg: |
-      كنجران هو شط سورابايا: صيادين، ريحة سمك متشوّي، وعيلات بتتمشى العصر جنب البحر. هنا كلام Arek بيبان على حقيقته: بيبان ناشف لسامع من وسط جاوة، بس بين الصحاب ده دفا وهزار مش قلة أدب.
-      دلوقتي إنت فاهم koen وgak وonok وrek. افتكر بس القاعدة الحلوة: مع الصحاب Arek براحتك، ومع الناس اللي متعرفهمش ابدأ بالنغوكو العادي أو sampeyan.
-    ar: |
-      كنجران شاطئ سورابايا: صيادون ورائحة سمك مشوي وعائلات تتنزه عصرًا قرب البحر. وهنا يظهر كلام Arek على حقيقته: يبدو جافًّا لأهل وسط جاوة، لكنه بين الأصدقاء ودٌّ ومزاح لا قلة أدب.
-      أنت الآن تفهم koen وgak وonok وrek. وتذكّر القاعدة: مع الأصدقاء تكلّم Arek كما تشاء، ومع الغرباء ابدأ بالنغوكو القياسي أو sampeyan.
-    en: |
-      Kenjeran is Surabaya's beach: fishing boats, the smell of grilled fish, families strolling by the sea in the late afternoon. It's where Arek speech shows its true colours: blunt to Central Javanese ears, but between friends it's warmth and banter, not rudeness.
-      You now understand koen, gak, onok and rek. Keep the one golden rule: Arek freely with friends, standard ngoko or sampeyan with people you don't know.
+      text: Ayo! Aku ra mulih nganti bengi.
+      ar_eg: يلا! أنا مش مروّح لحد بالليل.
+      ar: هيا! لن أعود إلى البيت حتى الليل.
+      en: Let's go! I'm not going home till night.
 review:
   status: draft
   verified: false

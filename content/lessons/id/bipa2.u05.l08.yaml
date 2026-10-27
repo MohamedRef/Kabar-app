@@ -69,15 +69,21 @@ exercises:
         en: fragrant
     words: [gurih, asam, pahit, lezat, harum]
   - id: e02
-    type: multiple_choice
-    question: Untuk orang Muslim, babi ___.
-    options: [haram, halal, manis]
-    answer: 0
-    explain:
-      ar_eg: babi = خنزير، وهو حرام على المسلمين = haram.
-      ar: babi = الخنزير، وهو محرّم على المسلم.
-      en: babi is pork, which is haram for Muslims.
-    words: [babi]
+    type: match_pairs
+    pairs:
+      - text: bersalaman
+        ar_eg: يسلّموا على بعض (بالإيد)
+        ar: يتصافحون
+        en: to shake hands, greet each other
+      - text: sup
+        ar_eg: شوربة
+        ar: حساء
+        en: soup
+      - text: kompor
+        ar_eg: بوتاجاز
+        ar: موقد
+        en: stove
+    words: [bersalaman, sup, kompor]
   - id: e03
     type: listen
     text: Saya mau pesan es teh, tidak pakai gula.

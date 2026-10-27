@@ -1,0 +1,198 @@
+schema: kabar.lesson/v1
+id: j4.u05.l10
+language: jv
+title: Mas Rudi telpon
+can_do:
+  ar_eg: تفهم مكالمة بالنغوكو وترد على صاحب أكبر منك بالنغوكو ألوس.
+  ar: أن تفهم مكالمة بالنغوكو وتردّ على صديق أكبر منك بالنغوكو ألوس.
+  en: Follow a ngoko phone call and answer an older friend in ngoko alus.
+slides:
+  - title: Halo, Mas Rudi
+    body:
+      ar_eg: |
+        Mas Rudi، زميلك الأكبر في كورس الجاوي، بيكلّمك في التليفون. اسمع الأول.
+        هو بيتكلم نغوكو لوغو (kowe، lunga). إنت بترد نغوكو ألوس: sampeyan أو Mas، وأفعاله krama inggil (tindak، dhahar)، وأفعالك عادية (aku، mangan).
+        - في الشارع: neng = menyang / ing (لـ، في).
+      ar: |
+        يتصل بك Mas Rudi، زميلك الأكبر في دورة الجاوية. استمع أولًا.
+        يتكلم هو بالنغوكو لوغو (kowe، lunga)، وتردّ أنت بالنغوكو ألوس: sampeyan أو Mas، وأفعاله krama inggil (tindak، dhahar)، وأفعالك عادية (aku، mangan).
+        - في كلام الشارع: neng = menyang / ing (إلى، في).
+      en: |
+        Mas Rudi, your older classmate on the Javanese course, phones you. Listen first.
+        He speaks ngoko lugu (kowe, lunga). You answer in ngoko alus: sampeyan or Mas, krama inggil for his actions (tindak, dhahar), plain words for yours (aku, mangan).
+        - On the street: neng = menyang / ing (to, at).
+    grammar: jv.speechlevel.mixed
+    examples:
+      - text: Mohamed, kowe saiki ana ngendi?
+        ar_eg: (Rudi) يا محمد، إنت فين دلوقتي؟
+        ar: (Rudi) يا محمد، أين أنت الآن؟
+        en: (Rudi) Mohamed, where are you now?
+      - text: Aku ing Kotabaru, Mas. Sampeyan wis tindak menyang kampus?
+        ar_eg: (محمد) أنا في Kotabaru يا Mas. إنت رحت الجامعة؟
+        ar: (محمد) أنا في Kotabaru يا Mas. هل ذهبتَ إلى الجامعة؟
+        en: (Mohamed) I'm in Kotabaru, Mas. Have you gone to campus yet?
+      - text: Durung. Aku arep lunga jam sanga.
+        ar_eg: (Rudi) لسه. هروح الساعة تسعة.
+        ar: (Rudi) ليس بعد. سأذهب في التاسعة.
+        en: (Rudi) Not yet. I'm going at nine.
+exercises:
+  - id: e01
+    type: listen
+    text: Aku ing Kotabaru, Mas. Sampeyan wis tindak menyang kampus?
+    question:
+      ar_eg: محمد فين؟
+      ar: أين محمد؟
+      en: Where is Mohamed?
+    options: [ing kampus, ing Kotabaru, ing Malioboro]
+    answer: 1
+    meaning:
+      ar_eg: أنا في Kotabaru يا Mas. إنت رحت الجامعة؟
+      ar: أنا في Kotabaru يا Mas. هل ذهبتَ إلى الجامعة؟
+      en: I'm in Kotabaru, Mas. Have you gone to campus yet?
+    words: [tindak]
+  - id: e02
+    type: listen
+    text: Durung. Aku arep lunga jam sanga.
+    question:
+      ar_eg: Rudi هيمشي الساعة كام؟
+      ar: في أي ساعة سيذهب Rudi؟
+      en: What time is Rudi leaving?
+    options: [jam sanga, jam pitu, jam lima]
+    answer: 0
+    meaning:
+      ar_eg: لسه. هروح الساعة تسعة.
+      ar: ليس بعد. سأذهب في التاسعة.
+      en: Not yet. I'm going at nine.
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: Rudi بيقول عن نفسه «aku arep lunga». محمد يقول نفس الكلام عن Rudi إزاي (نغوكو ألوس)؟
+      ar: يقول Rudi عن نفسه «aku arep lunga». كيف يقول محمد ذلك عن Rudi (بالنغوكو ألوس)؟
+      en: Rudi says "aku arep lunga" about himself. How does Mohamed say it about Rudi (ngoko alus)?
+    options: ['Mas Rudi arep lunga.', 'Mas Rudi arep tindak.', 'Mas Rudi badhe kesah.']
+    answer: 1
+    explain:
+      ar_eg: نغوكو ألوس = arep نغوكو + tindak تكريم. lunga عادي، وbadhe kesah كراما لوغو.
+      ar: النغوكو ألوس = arep من النغوكو + tindak للتكريم، وlunga عادية، وbadhe kesah كراما لوغو.
+      en: Ngoko alus = ngoko arep + honorific tindak. lunga is plain; badhe kesah is krama lugu.
+    words: [tindak, ngoko alus]
+  - id: e04
+    type: multiple_choice
+    question: Mohamed, kowe saiki ana ngendi?
+    question_meaning:
+      ar_eg: Rudi بيكلّم محمد بأنهي مستوى هنا؟
+      ar: بأي مستوى يخاطب Rudi محمدًا هنا؟
+      en: Which level is Rudi using here?
+    options: [krama lugu, ngoko alus, ngoko lugu]
+    answer: 2
+    explain:
+      ar_eg: kowe، saiki، ana، ngendi - كله نغوكو ومافيش تكريم. الأكبر بيكلّم الأصغر نغوكو لوغو.
+      ar: kowe وsaiki وana وngendi كلها نغوكو بلا تكريم، فالأكبر يخاطب الأصغر بالنغوكو لوغو.
+      en: kowe, saiki, ana, ngendi are all ngoko with no honorifics. The older one speaks ngoko lugu to the younger.
+    words: [ngoko lugu]
+  - id: e05
+    type: listen
+    text: Sampeyan wis tindak menyang kampus?
+    meaning:
+      ar_eg: إنت رحت الجامعة؟
+      ar: هل ذهبتَ إلى الجامعة؟
+      en: Have you gone to campus yet?
+    words: [tindak]
+  - id: e06
+    type: match_pairs
+    pairs:
+      - text: lunga
+        ar_eg: يروح (عادي)
+        ar: يذهب (عادي)
+        en: go (plain)
+      - text: tindak
+        ar_eg: يروح (تكريم)
+        ar: يذهب (تكريم)
+        en: go (honorific)
+      - text: mangan
+        ar_eg: ياكل (عادي)
+        ar: يأكل (عادي)
+        en: eat (plain)
+      - text: dhahar
+        ar_eg: ياكل (تكريم)
+        ar: يأكل (تكريم)
+        en: eat (honorific)
+      - text: mulih
+        ar_eg: يرجع البيت (عادي)
+        ar: يعود إلى البيت (عادي)
+        en: go home (plain)
+      - text: kondur
+        ar_eg: يرجع البيت (تكريم)
+        ar: يعود إلى البيت (تكريم)
+        en: go home (honorific)
+    words: [tindak, dhahar, kondur]
+  - id: e07
+    type: fill_blank
+    sentence: Mas, sampeyan arep ___ jam pira?
+    meaning:
+      ar_eg: يا Mas، هتروح الساعة كام؟
+      ar: يا Mas، في أي ساعة ستذهب؟
+      en: Mas, what time are you going?
+    options: [lunga, tindak]
+    answers: [tindak]
+    explain:
+      ar_eg: إنت بتسأل عن Rudi، الأكبر، يبقى tindak.
+      ar: تسأل عن Rudi الأكبر سنًّا فتقول tindak.
+      en: You're asking about Rudi, who's older, so tindak.
+    words: [tindak]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (لـ Mas Rudi، نغوكو ألوس) أنا في Kotabaru. إنت أكلت؟
+      ar: (إلى Mas Rudi، بالنغوكو ألوس) أنا في Kotabaru. هل أكلت؟
+      en: (to Mas Rudi, ngoko alus) I'm in Kotabaru. Have you eaten?
+    answers:
+      - Aku ing Kotabaru, Mas. Sampeyan wis dhahar?
+      - Aku ing Kotabaru. Sampeyan wis dhahar, Mas?
+      - Aku ing Kotabaru, Mas. Mas wis dhahar?
+      - Aku ana ing Kotabaru, Mas. Sampeyan wis dhahar?
+      - Aku neng Kotabaru, Mas. Sampeyan wis dhahar?
+      - Aku nang Kotabaru, Mas. Sampeyan wis dhahar?
+      - Aku ing Kotabaru, Mas. Sampeyan wis dhahar durung?
+    explain:
+      ar_eg: إنت عادي (aku)، وهو متكرّم (sampeyan / Mas + dhahar)، والإطار نغوكو (wis).
+      ar: أنت بالعادي (aku)، وهو مكرَّم (sampeyan / Mas + dhahar)، والإطار نغوكو (wis).
+      en: You're plain (aku), he's honoured (sampeyan / Mas + dhahar), and the frame is ngoko (wis).
+    words: [dhahar, ngoko alus]
+dialogue:
+  title: Ing telpon
+  lines:
+    - speaker: Mas Rudi
+      text: Kowe wis mangan?
+      ar_eg: إنت أكلت؟
+      ar: هل أكلت؟
+      en: Have you eaten?
+    - speaker: Mohamed
+      text: Wis, Mas. Sampeyan wis dhahar?
+      ar_eg: أيوه يا Mas. وإنت أكلت؟
+      ar: نعم يا Mas. وأنت، هل أكلت؟
+      en: Yes, Mas. Have you eaten?
+    - speaker: Mas Rudi
+      text: Durung. Ayo mangan neng Kotabaru!
+      ar_eg: لسه. يلا ناكل في Kotabaru!
+      ar: ليس بعد. هيا نأكل في Kotabaru!
+      en: Not yet. Let's eat in Kotabaru!
+    - speaker: Mohamed
+      text: Iya, Mas. Sampeyan tindak jam pira?
+      ar_eg: ماشي يا Mas. هتتحرك الساعة كام؟
+      ar: حسنًا يا Mas. في أي ساعة ستنطلق؟
+      en: OK, Mas. What time are you setting off?
+    - speaker: Mas Rudi
+      text: Jam sanga. Enteni aku, ya!
+      ar_eg: الساعة تسعة. استناني!
+      ar: في التاسعة. انتظرني!
+      en: At nine. Wait for me!
+    - speaker: Mohamed
+      text: Iya, Mas.
+      ar_eg: حاضر يا Mas.
+      ar: حسنًا يا Mas.
+      en: OK, Mas.
+review:
+  status: draft
+  verified: false

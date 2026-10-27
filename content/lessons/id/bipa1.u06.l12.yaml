@@ -1,216 +1,231 @@
 schema: kabar.lesson/v1
 id: bipa1.u06.l12
 language: id
-title: Pensil dan pulpen
+title: Satu hari di Jakarta
 can_do:
-  ar_eg: تتكلم عن أدوات الفصل والاختبار، وتسأل عن معنى حاجة.
-  ar: أن تتحدث عن أدوات الصفّ والاختبار، وتسأل عن معنى شيء.
-  en: Talk about classroom things and quizzes, and ask what something means.
+  ar_eg: تحكي يومك في ٦ جمل.
+  ar: أن تروي يومك في ست جمل.
+  en: Narrate your day in 6 sentences.
 slides:
-  - title: Di kelas
+  - title: Cerita satu hari
     body:
       ar_eg: |
-        pensil = قلم رصاص، pulpen = قلم جاف، papan tulis = سبورة (papan = لوح).
-        tes = اختبار قصير (أصغر من ujian).
-        arti = معنى. إنت عارف «Apa artinya?»: معناها إيه؟
-        dengar = اسمع. المدرس بيقول: «Dengar, ya!» = اسمعوا كويس! (وفي الكتابة mendengar، اللي اتعلمتها.)
+        عشان تحكي يومك محتاج ٣ حاجات بس:
+        - وقت: jam lima، tadi pagi، nanti malam.
+        - ترتيب: lalu (وبعدين)، sesudah itu / setelah itu (بعد كده)، sebelum (قبل).
+        - حالة الفعل: sudah، belum، sedang، akan.
+        والفعل نفسه مابيتغيرش أبدًا. سهلة!
+        كلمات التكرار بتخلي الحكاية حقيقية: Biasanya saya…، Kadang-kadang saya…، Setiap malam saya…
+        ركز إنها قبل الفعل (biasanya بس ممكن تيجي في الأول).
       ar: |
-        pensil = قلم رصاص، pulpen = قلم حبر جاف، papan tulis = سبّورة (papan = لوح).
-        tes = اختبار قصير (أصغر من ujian).
-        arti = معنى، وأنت تعرف «Apa artinya?»: ما معناه؟
-        dengar = اسمع. يقول المعلّم: «Dengar, ya!» = أنصتوا! (والفعل الكامل mendengar الذي تعلّمته.)
+        لتروي يومك تحتاج ثلاثة أشياء:
+        - الوقت: jam lima، tadi pagi، nanti malam.
+        - الترتيب: lalu (ثم)، sesudah itu / setelah itu (بعد ذلك)، sebelum (قبل).
+        - حال الفعل: sudah، belum، sedang، akan.
+        والفعل نفسه لا يتغير أبدًا.
+        ظروف التكرار تجعل الحكاية واقعية: Biasanya saya…، Kadang-kadang saya…، Setiap malam saya…
+        وموضعها قبل الفعل (ويجوز تصدير biasanya).
       en: |
-        pensil = pencil, pulpen = pen, papan tulis = whiteboard (papan = board).
-        tes = a quiz, smaller than ujian.
-        arti = meaning; you know "Apa artinya?": what does it mean?
-        dengar = listen. Teachers say "Dengar, ya!" = Listen up! (The full verb is mendengar, which you've learnt.)
+        To tell your day you need just three things:
+        - Time: jam lima, tadi pagi, nanti malam.
+        - Order: lalu (then), sesudah itu / setelah itu (after that), sebelum (before).
+        - Aspect: sudah, belum, sedang, akan.
+        The verb itself never changes. Easy!
+        Frequency words make your story real: Biasanya saya…, Kadang-kadang saya…, Setiap malam saya…
+        Keep them before the verb (biasanya may also come first).
+    grammar: id.time.sequence
     examples:
-      - text: Pak guru menulis di papan tulis.
-        ar_eg: الأستاذ بيكتب على السبورة.
-        ar: يكتب الأستاذ على السبّورة.
-        en: The teacher is writing on the whiteboard.
-      - text: Untuk tes, kita memakai pensil.
-        ar_eg: في الاختبار بنستخدم قلم رصاص.
-        ar: في الاختبار نستعمل قلم رصاص.
-        en: For the quiz, we use a pencil.
-      - text: Dengar, ya! Apa artinya?
-        ar_eg: اسمعوا! معناها إيه؟
-        ar: أنصتوا! ما معناه؟
-        en: Listen! What does it mean?
+      - text: Saya bangun jam lima, lalu salat subuh.
+        ar_eg: بصحى الساعة خمسة، وبعدين بصلي الفجر.
+        ar: أستيقظ في الخامسة ثم أصلي الفجر.
+        en: I wake up at five, then I pray the dawn prayer.
+      - text: Sesudah itu, saya sarapan.
+        ar_eg: بعد كده بفطر.
+        ar: بعد ذلك أتناول الفطور.
+        en: After that, I have breakfast.
+      - text: Setiap malam saya belajar bahasa Indonesia.
+        ar_eg: كل ليلة بذاكر إندونيسي.
+        ar: أدرس الإندونيسية كل ليلة.
+        en: Every night I study Indonesian.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: pensil
-        ar_eg: قلم رصاص
-        ar: قلم رصاص
-        en: pencil
-      - text: pulpen
-        ar_eg: قلم جاف
-        ar: قلم حبر جاف
-        en: pen
-      - text: papan tulis
-        ar_eg: سبورة
-        ar: سبّورة
-        en: whiteboard
-    words: [pensil, pulpen, papan tulis]
+    type: multiple_choice
+    question: Sesudah mandi, saya sarapan.
+    question_meaning:
+      ar_eg: إيه اللي حصل الأول؟
+      ar: ماذا حدث أولًا؟
+      en: What happened first?
+    options: [mandi, sarapan]
+    answer: 0
+    explain:
+      ar_eg: sesudah mandi = بعد الاستحمام، يعني الاستحمام الأول.
+      ar: sesudah mandi = بعد الاستحمام، فالاستحمام أولًا.
+      en: sesudah mandi = after showering, so the shower came first.
+    words: [sesudah, mandi, sarapan]
   - id: e02
-    type: match_pairs
-    pairs:
-      - text: tes
-        ar_eg: اختبار قصير
-        ar: اختبار قصير
-        en: quiz
-      - text: arti
-        ar_eg: معنى
-        ar: معنى
-        en: meaning
-      - text: dengar
-        ar_eg: اسمع
-        ar: اسمع
-        en: listen
-    words: [tes, arti, dengar]
-  - id: e03
     type: listen
-    text: Dengar, ya! Besok ada tes.
-    question:
-      ar_eg: بكرة فيه إيه؟
-      ar: ماذا هناك غدًا؟
-      en: What's on tomorrow?
-    options: [اختبار قصير, حفلة, إجازة]
+    text: Sesudah itu, saya makan nasi uduk.
+    options: ['Sesudah itu, saya makan nasi uduk.', 'Sesudah itu, saya makan siang.', 'Sebelum itu, saya makan nasi uduk.']
     answer: 0
     meaning:
-      ar_eg: اسمعوا! بكرة فيه اختبار.
-      ar: أنصتوا! غدًا اختبار.
-      en: Listen! There's a quiz tomorrow.
-    words: [dengar, tes]
+      ar_eg: بعد كده بكل نَسي أودوك.
+      ar: بعد ذلك آكل «نَسي أودوك».
+      en: After that, I eat nasi uduk.
+    words: [sesudah itu, nasi uduk, makan siang]
+  - id: e03
+    type: fill_blank
+    sentence: Saya rajin. Saya bekerja ___ jam lima sore.
+    meaning:
+      ar_eg: أنا مجتهد. بشتغل لحد الساعة خمسة العصر.
+      ar: أنا مجتهد. أعمل حتى الخامسة عصرًا.
+      en: I'm hard-working. I work until five p.m.
+    options: [sampai, rajin, sesudah]
+    answers: [sampai]
+    words: [rajin, sampai]
   - id: e04
     type: fill_blank
-    sentence: Pak guru menulis di ___.
+    sentence: Saya ___ makan siang.
     meaning:
-      ar_eg: الأستاذ بيكتب على ___.
-      ar: يكتب الأستاذ على ___.
-      en: The teacher writes on the ___.
-    options: [papan tulis, pensil, arti]
-    answers: [papan tulis]
-    words: [papan tulis, pensil, arti]
-  - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: عايز تكتب حاجة وتقدر تمسحها بالأستيكة. تستخدم…؟
-      ar: تريد أن تكتب شيئًا يمكن محوه بالممحاة. ماذا تستعمل؟
-      en: You want to write something you can rub out. What do you use?
-    options: [pensil, pulpen, papan tulis]
-    answer: 0
+      ar_eg: لسه ماتغديتش.
+      ar: لم أتناول الغداء بعد.
+      en: I haven't had lunch yet.
+    answers: [belum]
     explain:
-      ar_eg: pensil بيتمسح بالأستيكة، pulpen لأ.
-      ar: يُمحى الـ pensil بالممحاة، أما الـ pulpen فلا.
-      en: A pensil rubs out; a pulpen doesn't.
-    words: [pensil, pulpen, papan tulis]
-  - id: e06
-    type: fill_blank
-    sentence: Apa ___ «kamus»? — Kamus = قاموس.
-    meaning:
-      ar_eg: إيه ___ «kamus»؟ — kamus = قاموس.
-      ar: ما ___ «kamus»؟ — kamus = قاموس.
-      en: What's the ___ of "kamus"? — kamus = dictionary.
-    options: [arti, tes, pulpen]
-    answers: [arti]
-    words: [arti, tes, pulpen]
-  - id: e07
+      ar_eg: «لسه ماحصلش» = belum.
+      ar: «لم … بعد» = belum.
+      en: '"Not yet" = belum.'
+    words: [belum, makan siang]
+  - id: e05
     type: build_sentence
     source:
-      ar_eg: عندك قلم جاف؟
-      ar: هل عندك قلم حبر؟
-      en: Do you have a pen?
-    answer: Kamu punya pulpen?
-    distractors: [tes, arti]
-    words: [pulpen]
+      ar_eg: راكا بيشتغل بجد لحد العصر.
+      ar: يعمل راكا بجد حتى العصر.
+      en: Raka works hard until the afternoon.
+    answer: Raka rajin bekerja sampai sore.
+    distractors: [sebelum, nasi]
+    words: [rajin, sampai]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: وبعدين برُوح المكتب الساعة سبعة.
+      ar: ثم أذهب إلى المكتب في السابعة.
+      en: Then I go to the office at seven.
+    answer: Lalu saya pergi ke kantor jam tujuh.
+    alternatives: [Lalu jam tujuh saya pergi ke kantor.]
+    distractors: [sebelum, pulang]
+    words: [lalu, pergi, kantor]
+  - id: e07
+    type: match_pairs
+    pairs:
+      - text: sesudah itu
+        ar_eg: بعد كده
+        ar: بعد ذلك
+        en: after that
+      - text: rajin
+        ar_eg: مجتهد
+        ar: مجتهد
+        en: diligent, hard-working
+      - text: sampai
+        ar_eg: لحد
+        ar: حتى
+        en: until
+      - text: makan siang
+        ar_eg: غدا
+        ar: الغداء
+        en: lunch
+      - text: nasi uduk
+        ar_eg: رز بلبن جوز الهند
+        ar: أرز بحليب جوز الهند
+        en: coconut rice
+      - text: sarapan
+        ar_eg: فطار
+        ar: الفطور
+        en: breakfast
+    words: [sesudah itu, rajin, sampai, makan siang, nasi uduk, sarapan]
   - id: e08
     type: translate
-    direction: from_target
-    source_text: Untuk tes, kita memakai pensil.
-    answers_meaning:
-      ar_eg: [في الاختبار بنستخدم قلم رصاص, للاختبار بنكتب بالقلم الرصاص]
-      ar: [في الاختبار نستعمل قلم رصاص, نكتب الاختبار بقلم رصاص]
-      en: ['For the quiz, we use a pencil', We use a pencil for the test]
-    words: [tes, pensil]
+    direction: to_target
+    source_meaning:
+      ar_eg: بعد كده بفطر.
+      ar: بعد ذلك أتناول الفطور.
+      en: After that, I have breakfast.
+    answers: ['Sesudah itu, saya sarapan.', Sesudah itu saya sarapan., 'Setelah itu, saya sarapan.', Setelah itu saya sarapan., Lalu saya sarapan., 'Sesudah itu, aku sarapan.', 'Setelah itu, aku sarapan.']
+    words: [sesudah, sarapan]
   - id: e09
-    type: speaking
-    text: Dengar, ya! Apa artinya?
+    type: dictation
+    text: Saya bekerja sampai jam lima sore.
     meaning:
-      ar_eg: اسمعوا! معناها إيه؟
-      ar: أنصتوا! ما معناه؟
-      en: Listen! What does it mean?
-    words: [dengar, arti]
+      ar_eg: بشتغل لحد الساعة خمسة العصر.
+      ar: أعمل حتى الساعة الخامسة مساءً.
+      en: I work until five in the afternoon.
+    words: [bekerja, sampai]
   - id: e10
-    type: multiple_choice
-    question: 'Bu guru: «___, ya! Saya mau membaca.»'
-    options: [Dengar, Papan tulis, Pensil]
-    answer: 0
-    explain:
-      ar_eg: 'المدرسة عايزاهم يسمعوا: Dengar!'
-      ar: 'تريد المعلّمة أن ينصتوا: Dengar!'
-      en: 'The teacher wants them to listen: Dengar!'
-    words: [dengar, papan tulis]
+    type: speaking
+    text: Sesudah itu, kami makan siang. Saya makan nasi uduk.
+    meaning:
+      ar_eg: بعد كده اتغدينا. أنا كلت نَسي أودوك.
+      ar: بعد ذلك تغدّينا. أكلت «نَسي أودوك».
+      en: After that, we had lunch. I had nasi uduk.
+    words: [sesudah itu, makan siang, nasi uduk]
 dialogue:
+  title: Di kelas Pak Irwan
   lines:
     - speaker: Pak Irwan
-      text: Selamat pagi! Dengar, ya. Hari ini ada tes.
-      ar_eg: صباح الخير! اسمعوا. النهارده فيه اختبار.
-      ar: صباح الخير! أنصتوا، اليوم اختبار.
-      en: Good morning! Listen up. There's a quiz today.
+      text: Mohamed, biasanya kamu bangun jam berapa?
+      ar_eg: محمد، عادةً بتصحى الساعة كام؟
+      ar: يا محمد، في أيّ ساعة تستيقظ عادةً؟
+      en: Mohamed, what time do you usually wake up?
     - speaker: Mohamed
-      text: Tes, Pak? Boleh memakai kamus?
-      ar_eg: اختبار يا أستاذ؟ ينفع نستخدم القاموس؟
-      ar: اختبار يا أستاذ؟ هل نستعمل القاموس؟
-      en: A quiz? Can we use a dictionary?
+      text: Saya selalu bangun jam lima, Pak. Lalu saya salat subuh.
+      ar_eg: دايمًا بصحى الساعة خمسة يا أستاذ. وبعدين بصلي الفجر.
+      ar: أستيقظ دائمًا في الخامسة يا أستاذ، ثم أصلي الفجر.
+      en: I always wake up at five, sir. Then I pray the dawn prayer.
     - speaker: Pak Irwan
-      text: Tidak boleh. Kalian memakai pensil, ya.
-      ar_eg: لأ، ممنوع. واكتبوا بالقلم الرصاص.
-      ar: لا، ممنوع. واكتبوا بقلم الرصاص.
-      en: No. And use a pencil, please.
-    - speaker: Rina
-      text: Pak, apa artinya ini, di papan tulis?
-      ar_eg: يا أستاذ، معنى دي إيه، اللي على السبورة؟
-      ar: يا أستاذ، ما معنى هذا على السبّورة؟
-      en: Sir, what does this on the whiteboard mean?
+      text: Wah, rajin! Sesudah itu?
+      ar_eg: يا سلام، شاطر! وبعد كده؟
+      ar: ما شاء الله، مجتهد! وبعد ذلك؟
+      en: Wow, so diligent! And after that?
+    - speaker: Mohamed
+      text: Sesudah mandi, saya sarapan. Biasanya saya makan nasi uduk.
+      ar_eg: بعد ما أستحمى بفطر. عادةً باكل ناسي أودوك.
+      ar: بعد الاستحمام أتناول الفطور، وعادةً آكل ناسي أودوك.
+      en: After showering, I have breakfast. I usually eat nasi uduk.
     - speaker: Pak Irwan
-      text: Artinya «tes». Silakan, sekarang!
-      ar_eg: معناها «اختبار». يلّا، اتفضلوا دلوقتي!
-      ar: معناه «اختبار». تفضّلوا، ابدؤوا الآن!
-      en: It means "quiz". Go ahead, now!
+      text: Jam berapa kamu ke kantor?
+      ar_eg: بتروح المكتب الساعة كام؟
+      ar: متى تذهب إلى المكتب؟
+      en: What time do you go to the office?
+    - speaker: Mohamed
+      text: Jam tujuh. Saya bekerja sampai jam lima sore.
+      ar_eg: الساعة سبعة. بشتغل لحد خمسة العصر.
+      ar: في السابعة. أعمل حتى الخامسة مساءً.
+      en: At seven. I work until five in the afternoon.
 new_words:
-  - word: pensil
+  - word: sesudah itu
+    pos: phrase
+    ar_eg: بعد كده
+    ar: بعد ذلك
+    en: after that
+  - word: rajin
+    pos: adjective
+    ar_eg: شاطر / مجتهد
+    ar: مجتهد
+    en: diligent, hard-working
+  - word: sampai
+    pos: preposition
+    ar_eg: لحد
+    ar: حتى
+    en: until
+  - word: makan siang
+    pos: phrase
+    ar_eg: يتغدى / غدا
+    ar: يتغدى / الغداء
+    en: to have lunch; lunch
+  - word: nasi uduk
     pos: noun
-    ar_eg: قلم رصاص
-    ar: قلم رصاص
-    en: pencil
-  - word: pulpen
-    pos: noun
-    ar_eg: قلم جاف
-    ar: قلم حبر جاف
-    en: pen
-  - word: papan tulis
-    pos: noun
-    ar_eg: سبورة
-    ar: سبّورة
-    en: whiteboard, blackboard
-  - word: tes
-    pos: noun
-    ar_eg: اختبار قصير
-    ar: اختبار قصير
-    en: test, quiz
-  - word: arti
-    pos: noun
-    ar_eg: معنى
-    ar: معنى
-    en: meaning
-  - word: dengar
-    pos: verb
-    ar_eg: اسمع (أمر، أو عامية)
-    ar: اسمع (أمرًا أو بالعامية)
-    en: listen, hear (command, casual)
+    ar_eg: ناسي أودوك (رز بلبن جوز الهند، فطار جاكرتاوي)
+    ar: ناسي أودوك (أرز بحليب جوز الهند، فطور جاكرتا)
+    en: nasi uduk (coconut rice, a Jakarta breakfast)
 review:
   status: draft
   verified: false

@@ -1,173 +1,218 @@
 schema: kabar.lesson/v1
 id: bipa6.u02.l09
 language: id
-title: Lomba deklamasi
+title: Berbalas pantun
 can_do:
-  ar_eg: تشارك في مسابقة إلقاء، وتقدّم قصيدتك، وتفهم رأي لجنة التحكيم.
-  ar: أن تشارك في مسابقة إلقاء، وتقدّم قصيدتك، وتفهم رأي لجنة التحكيم.
-  en: Take part in a recital contest, introduce your poem and follow the judges' comments.
+  ar_eg: تردّ على بانتون ببانتون، زي ما بيعملوا في الأفراح الملايو.
+  ar: أن تردّ على بانتون ببانتون، كما في أعراس الملايو.
+  en: Answer a pantun with a pantun, as at Malay weddings.
 slides:
-  - title: Di depan juri
+  - title: Pantun dibalas pantun
+    grammar: id.pantun.structure
     body:
       ar_eg: |
-        في المسابقة، الـ juri (لجنة التحكيم) بيحكموا على حاجات معينة:
-        - penjiwaan: حاسس بالقصيدة؟
-        - suara: lantang وواضح؟
-        - ekspresi: الوش والإيدين مع المعنى؟
-        وفي الآخر بيعلنوا الـ juara (الفايز): juara pertama = المركز الأول.
-        قبل ما تبدأ قول: Saya akan membacakan sajak berjudul … karya … = هقرا قصيدة اسمها … للشاعر …
+        في الأفراح الملايو، rombongan (وفد) العريس ووفد العروسة بيتبادلوا بانتون على الباب. ده اسمه berbalas pantun. الرد بيمسك نفس الصورة أو نفس القافية.
+        بانتون نصيحة قديم ومشهور:
+        Pisang emas dibawa berlayar,
+        masak sebiji di atas peti.
+        Utang emas boleh dibayar,
+        utang budi dibawa mati.
+        = دين الدهب بيتسدّ، لكن دين الجميل بيفضل لحد الموت.
+        وفيه كمان بانتون jenaka (هزار) يضحّك الناس.
       ar: |
-        في المسابقة تحكم الـ juri (لجنة التحكيم) على أمور محدّدة:
-        - penjiwaan: هل تعيش القصيدة؟
-        - suara: هل الصوت lantang وواضح؟
-        - ekspresi: هل يوافق الوجه واليدان المعنى؟
-        ثم تُعلن الـ juara (الفائز): juara pertama = المركز الأول.
-        وقبل أن تبدأ قل: Saya akan membacakan sajak berjudul … karya … = سأقرأ قصيدة بعنوان … للشاعر …
+        في أعراس الملايو يتبادل rombongan (وفد) العريس ووفد العروس البانتون عند الباب، ويسمّى ذلك berbalas pantun. ويحافظ الردّ على الصورة نفسها أو القافية نفسها.
+        بانتون حكمة قديم شهير:
+        Pisang emas dibawa berlayar,
+        masak sebiji di atas peti.
+        Utang emas boleh dibayar,
+        utang budi dibawa mati.
+        = دَين الذهب يُقضى، أمّا دَين المعروف فيبقى حتى الموت.
+        ومنه أيضًا البانتون jenaka (الفكاهي).
       en: |
-        In a contest, the juri (judges) score you on set points:
-        - penjiwaan: do you feel the poem?
-        - suara: is your voice lantang and clear?
-        - ekspresi: do face and hands match the meaning?
-        Then they announce the juara (winner): juara pertama = first place.
-        Before you start, say: Saya akan membacakan sajak berjudul … karya … = I'll recite a poem titled … by …
+        At Malay weddings, the groom's rombongan (party) and the bride's trade pantun at the door. This is berbalas pantun. A reply keeps the same image or the same rhyme.
+        A famous old advice pantun:
+        Pisang emas dibawa berlayar,
+        masak sebiji di atas peti.
+        Utang emas boleh dibayar,
+        utang budi dibawa mati.
+        = A debt of gold can be repaid, but a debt of kindness you carry to the grave.
+        There are jenaka (joking) pantun too.
 exercises:
   - id: e01
-    type: listen
-    text: Juara pertama lomba deklamasi tahun ini adalah siswa dari Pekanbaru.
-    question:
-      ar_eg: مين كسب المركز الأول؟
-      ar: من فاز بالمركز الأول؟
-      en: Who won first place?
-    options:
-      - مدرّس من جاكرتا.
-      - طالب من بيكانبارو.
-      - شاعر من ميدان.
-    answer: 1
-    words: [juara, deklamasi]
+    type: match_pairs
+    pairs:
+      - text: berbalas
+        ar_eg: يتبادلوا / يردّوا على بعض
+        ar: يتبادلون
+        en: to exchange, to reply in turn
+      - text: rombongan
+        ar_eg: وفد / جماعة
+        ar: وفد
+        en: group, party
+      - text: jenaka
+        ar_eg: هزار / بيضحّك
+        ar: فكاهي
+        en: humorous
+      - text: utang budi
+        ar_eg: دين جميل
+        ar: دين المعروف
+        en: debt of gratitude
+    words: [berbalas, rombongan, jenaka, utang budi]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: «juri» هما مين؟
-      ar: من هم «juri»؟
-      en: Who are the "juri"?
+      ar_eg: «Utang budi dibawa mati» معناها إيه؟
+      ar: ما معنى «Utang budi dibawa mati»؟
+      en: What does "Utang budi dibawa mati" mean?
     options:
-      - الناس اللي بيقيّموا المتسابقين.
-      - الشعرا القدام.
-      - الجمهور اللي بيصقف.
+      - الجميل مابيتنسيش لحد الموت.
+      - الدين لازم يتسدّ بسرعة.
+      - الموز غالي.
     answer: 0
-    words: [juri]
+    words: [utang budi]
   - id: e03
-    type: build_sentence
-    source:
-      ar_eg: هقرا قصيدة اسمها «Aku» لتشايريل أنوار.
-      ar: سأقرأ قصيدة بعنوان «Aku» لتشايريل أنوار.
-      en: I'll recite a poem titled "Aku" by Chairil Anwar.
-    answer: Saya akan membacakan sajak berjudul "Aku" karya Chairil Anwar.
-    distractors: [juri, gurindam]
-    words: [sajak]
-  - id: e04
-    type: fill_blank
-    sentence: Menurut ___, penjiwaannya bagus, tetapi suaranya kurang lantang.
-    meaning:
-      ar_eg: حسب لجنة التحكيم، إحساسه حلو، بس صوته مش عالي كفاية.
-      ar: بحسب لجنة التحكيم، إحساسه جيّد لكنّ صوته غير عالٍ بما يكفي.
-      en: According to the judges, his feeling is good but his voice isn't loud enough.
-    options: [juri, juara, pelopor]
-    answers: [juri]
-    words: [juri, penjiwaan, lantang]
-  - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: كسبت المركز التاني في مسابقة الإلقاء.
-      ar: فزتُ بالمركز الثاني في مسابقة الإلقاء.
-      en: I came second in the recital contest.
-    answers:
-      - Saya juara kedua lomba deklamasi.
-      - Saya menjadi juara kedua lomba deklamasi.
-      - Saya juara kedua dalam lomba deklamasi.
-      - Saya menjadi juara kedua dalam lomba deklamasi.
-    words: [juara, deklamasi]
-  - id: e06
     type: multiple_choice
     question_meaning:
-      ar_eg: اللجنة قالت «Ekspresimu datar.» تحسّن إيه؟
-      ar: قالت اللجنة «Ekspresimu datar.» ماذا تحسّن؟
-      en: The judges said "Ekspresimu datar." What should you improve?
+      ar_eg: أنهي سطر يكمّل القافية بعد «Utang emas boleh dibayar»؟
+      ar: أيّ سطر يكمل القافية بعد «Utang emas boleh dibayar»؟
+      en: Which line completes the rhyme after "Utang emas boleh dibayar"?
     options:
-      - سرعة القراية.
-      - طول القصيدة.
-      - تعبير الوش والصوت.
+      - utang budi tidak penting.
+      - utang budi dibawa pulang.
+      - utang budi dibawa mati.
     answer: 2
-    words: [ekspresi]
-  - id: e07
-    type: speaking
-    text: Terima kasih, Bapak dan Ibu juri. Saya akan membacakan sebuah gurindam.
-    meaning:
-      ar_eg: شكرًا يا حضرات لجنة التحكيم. هقرا gurindam.
-      ar: شكرًا لكم أعضاء لجنة التحكيم. سأقرأ gurindam.
-      en: Thank you, members of the jury. I'll recite a gurindam.
-    words: [juri, gurindam]
-  - id: e08
-    type: dictation
-    text: Juara lomba itu menghayati setiap larik dengan sungguh-sungguh.
-    meaning:
-      ar_eg: الفايز في المسابقة عاش كل سطر بجد.
-      ar: تمثّل الفائز بالمسابقة كلّ سطر بصدق.
-      en: The winner truly felt every line.
-    words: [juara, menghayati, larik]
-  - id: e09
+    words: [utang budi]
+  - id: e04
     type: fill_blank
-    sentence: Dia membaca dengan semangat, dan akhirnya dia menjadi ___ pertama.
+    sentence: Di pesta pernikahan Melayu, dua ___ saling berbalas pantun.
     meaning:
-      ar_eg: قرا بحماس، وفي الآخر بقى الأول.
-      ar: قرأ بحماسة، وفي النهاية صار الأوّل.
-      en: He read with spirit, and in the end he took first place.
-    options: [juara, juri, syair]
-    answers: [juara]
-    words: [juara, semangat]
-  - id: e10
+      ar_eg: في الفرح الملايو، وفدين بيتبادلوا البانتون.
+      ar: في العرس الملايوي يتبادل وفدان البانتون.
+      en: At a Malay wedding, two parties exchange pantun.
+    options: [rombongan, jenaka, sampiran]
+    answers: [rombongan]
+    words: [rombongan, berbalas]
+  - id: e05
+    type: listen
+    text: Pantun jenaka itu membuat semua tamu tertawa.
+    question:
+      ar_eg: البانتون عمل إيه في الضيوف؟
+      ar: ماذا فعل البانتون بالضيوف؟
+      en: What did the pantun do to the guests?
+    options:
+      - خلّاهم يعيطوا.
+      - ضحّكهم كلهم.
+      - خلّاهم يمشوا.
+    answer: 1
+    words: [jenaka]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: وفد العريس ردّ ببانتون هزار.
+      ar: ردّ وفد العريس ببانتون فكاهي.
+      en: The groom's party replied with a joking pantun.
+    answer: Rombongan pengantin laki-laki membalas dengan pantun jenaka.
+    distractors: [utang, berbalas]
+    words: [rombongan, jenaka]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Kami berbalas pantun sampai pintu rumah dibuka.
+    answers_meaning:
+      ar_eg:
+        - فضلنا نتبادل بانتون لحد ما باب البيت اتفتح.
+        - قعدنا نردّ على بعض ببانتون لغاية ما فتحوا الباب.
+      ar:
+        - تبادلنا البانتون حتى فُتح باب البيت.
+        - ظللنا نتبادل البانتون إلى أن فُتح الباب.
+      en:
+        - We exchanged pantun until the door of the house was opened.
+        - We kept trading pantun until they opened the door.
+    words: [berbalas]
+  - id: e08
     type: speaking
-    text: Petuah gurindam ini sederhana, tetapi saya membacanya dengan penuh penjiwaan.
+    text: Mari kita berbalas pantun di depan pintu.
     meaning:
-      ar_eg: نصيحة الـ gurindam ده بسيطة، بس قريتها بإحساس كامل.
-      ar: نصيحة هذا الـ gurindam بسيطة، لكنّي قرأته بكامل الإحساس.
-      en: This gurindam's advice is simple, but I read it with all my feeling.
-    words: [petuah, penjiwaan]
+      ar_eg: يلا نتبادل بانتون قدام الباب.
+      ar: هيّا نتبادل البانتون أمام الباب.
+      en: Let's trade pantun at the door.
+    words: [berbalas]
+  - id: e09
+    type: dictation
+    text: Saya punya utang budi kepada guru saya.
+    meaning:
+      ar_eg: أنا عليّ جميل لمدرّسي.
+      ar: لمعلّمي عليّ فضلٌ لا يُنسى.
+      en: I owe my teacher a debt of gratitude.
+    words: [utang budi]
+  - id: e10
+    type: match_pairs
+    pairs:
+      - text: petang
+        ar_eg: العصرية، آخر النهار
+        ar: العصر، آخر النهار
+        en: late afternoon
+      - text: berkilau
+        ar_eg: يلمع
+        ar: يتلألأ
+        en: to glitter, sparkle
+      - text: lentera
+        ar_eg: فانوس
+        ar: فانوس
+        en: lantern
+      - text: keabadian
+        ar_eg: خلود
+        ar: خلود، أبدية
+        en: eternity
+      - text: jangkrik
+        ar_eg: صرصار الغيط
+        ar: صرصار الحقل
+        en: cricket
+    words: [petang, berkilau, lentera, keabadian, jangkrik]
 dialogue:
-  title: Pengumuman juara
+  title: Di depan pintu pengantin
   lines:
     - speaker: Encik Zul
-      text: Mohamed, juri sudah selesai menilai. Kamu gugup?
-      ar_eg: يا محمد، اللجنة خلصت تقييم. إنت متوتر؟
-      ar: يا محمد، أنهت اللجنة التقييم. أأنت متوتّر؟
-      en: Mohamed, the judges have finished scoring. Are you nervous?
-    - speaker: Mohamed
-      text: Sedikit. Saya membaca gurindam dengan lantang, tetapi saya lupa satu larik.
-      ar_eg: شوية. قريت الـ gurindam بصوت عالي، بس نسيت سطر.
-      ar: قليلًا. قرأت الـ gurindam بصوت عالٍ لكنّي نسيت سطرًا.
-      en: A little. I read the gurindam loud and clear, but I forgot one line.
+      text: Mohamed, kamu masuk rombongan pengantin pria. Siap berbalas pantun?
+      ar_eg: يا محمد، إنت مع وفد العريس. جاهز تردّ ببانتون؟
+      ar: يا محمد، أنت في وفد العريس. أمستعدّ لتبادل البانتون؟
+      en: Mohamed, you're in the groom's party. Ready to trade pantun?
     - speaker: Mak Cik Rohana
-      text: Dengar! Juara ketiga... Mohamed dari Mesir!
-      ar_eg: اسمع! المركز التالت... محمد من مصر!
-      ar: اسمع! المركز الثالث... محمد من مصر!
-      en: Listen! Third place... Mohamed from Egypt!
+      text: Burung dara terbang ke kota, hinggap sebentar di dahan jati. Siapa gerangan tamu kita, apa maksud datang kemari?
+      ar_eg: (من أهل العروسة) حمامة طارت للمدينة، وقفت شوية على فرع شجرة. مين يا ترى ضيوفنا، وجايين هنا ليه؟
+      ar: (من أهل العروس) طارت حمامة إلى المدينة، وحطّت قليلًا على غصن ساج. مَن يا تُرى ضيوفنا، وما غايتهم من المجيء؟
+      en: (from the bride's side) A dove flies to the town, resting a while on a teak branch. Who might our guests be, and why have they come here?
     - speaker: Mohamed
-      text: Alhamdulillah! Penjiwaan ternyata lebih penting daripada hafalan.
-      ar_eg: الحمد لله! طلع الإحساس أهم من الحفظ.
-      ar: الحمد لله! تبيّن أنّ الإحساس أهمّ من الحفظ.
-      en: Alhamdulillah! Feeling turned out to matter more than memorising.
+      text: Dari Kairo naik pesawat, singgah sebentar di kota Medan. Kami datang membawa hormat, mohon pintu dibuka, Puan.
+      ar_eg: من القاهرة ركبنا الطيارة، ووقفنا شوية في مدينة ميدان. جايين بكل احترام، ونرجوكم تفتحوا الباب يا ست.
+      ar: من القاهرة ركبنا الطائرة، وتوقّفنا قليلًا في ميدان. جئنا بالاحترام، فافتحي الباب يا سيّدتي.
+      en: From Cairo we took a plane, stopping a while in Medan town. We come bearing respect; please open the door, madam.
+    - speaker: Mak Cik Rohana
+      text: Wah, pantun dari Mesir! Silakan masuk.
+      ar_eg: يا سلام، بانتون من مصر! اتفضلوا ادخلوا.
+      ar: يا للروعة، بانتون من مصر! تفضّلوا بالدخول.
+      en: Oh, a pantun from Egypt! Please come in.
 new_words:
-  - word: juri
+  - word: berbalas
+    pos: verb
+    ar_eg: يتبادلوا / يردّوا على بعض
+    ar: يتبادلون
+    en: to exchange, to reply in turn
+  - word: rombongan
     pos: noun
-    ar_eg: لجنة التحكيم
-    ar: لجنة التحكيم
-    en: jury, judges
-  - word: juara
+    ar_eg: وفد / جماعة
+    ar: وفد
+    en: group, party
+  - word: jenaka
+    pos: adjective
+    ar_eg: هزار / بيضحّك
+    ar: فكاهي
+    en: humorous
+  - word: utang budi
     pos: noun
-    ar_eg: الفايز / البطل
-    ar: الفائز، البطل
-    en: winner, champion
+    ar_eg: دين جميل
+    ar: دين المعروف
+    en: debt of gratitude
 review:
   status: draft
   verified: false

@@ -1,236 +1,226 @@
 schema: kabar.lesson/v1
 id: bipa2.u05.l07
 language: id
-title: Kompor, panci, kulkas
+title: Resep nasi goreng
 can_do:
-  ar_eg: 'تتكلم في المطبخ: البوتاجاز والحلة والتلاجة، والأكل ني ولا مستوي ولا بايت.'
-  ar: 'أن تتحدث في المطبخ: الموقد والقدر والثلاجة، والطعام نيّء أو ناضج أو فاسد.'
-  en: 'Talk in the kitchen: stove, pot and fridge, and whether food is raw, cooked or off.'
+  ar_eg: تكتب وصفة من ٦ خطوات.
+  ar: أن تكتب وصفة من ست خطوات.
+  en: Write a 6-step recipe.
 slides:
-  - title: Di dapur
+  - title: Enam langkah
     body:
       ar_eg: |
-        kompor = بوتاجاز، panci = حلة، kulkas = تلاجة، mangkuk = سلطانية (semangkuk sup).
-        mentah = ني، matang = مستوي (والفاكهة matang = مستوية).
-        basi = بايت وريحته وحشة. rasa = طعم: Rasanya enak!
+        فكّر نفسك: الوصفة = أوامر ورا بعض. كل خطوة (langkah) بتبدأ بالجذر من غير meN-، وتربطها بـ lalu (وبعدين) وsampai (لحد ما).
+        دي وصفة الرز المقلي في ٦ خطوات، هتحتاجها في الدرس كله:
+        ١. Cuci dan potong bawang dan cabai.
+        ٢. Panaskan minyak di wajan.
+        ٣. Goreng bawang dan cabai sampai harum.
+        ٤. Masukkan telur, lalu aduk.
+        ٥. Masukkan nasi dan kecap manis, lalu aduk rata.
+        ٦. Tambahkan garam, lalu cicipi.
       ar: |
-        kompor = موقد، panci = قدر، kulkas = ثلاجة، mangkuk = وعاء عميق (semangkuk sup).
-        mentah = نيّء، matang = ناضج (مطهو، والفاكهة matang = ناضجة).
-        basi = فاسد (بائت). rasa = طعم: Rasanya enak!
+        تذكير: الوصفة أوامر متتالية، كل خطوة (langkah) تبدأ بالجذر بلا meN-، وتُربط بـ lalu (ثم) وsampai (حتى).
+        هذه وصفة الأرز المقلي في ست خطوات:
+        ١. Cuci dan potong bawang dan cabai.
+        ٢. Panaskan minyak di wajan.
+        ٣. Goreng bawang dan cabai sampai harum.
+        ٤. Masukkan telur, lalu aduk.
+        ٥. Masukkan nasi dan kecap manis, lalu aduk rata.
+        ٦. Tambahkan garam, lalu cicipi.
       en: |
-        kompor = stove, panci = pot, kulkas = fridge, mangkuk = bowl (semangkuk sup).
-        mentah = raw, matang = cooked, ripe.
-        basi = stale, gone off. rasa = taste: Rasanya enak!
+        Reminder: a recipe is a chain of commands. Each step (langkah) starts with the bare root, linked with lalu (then) and sampai (until).
+        Here is fried rice in six steps:
+        1. Cuci dan potong bawang dan cabai.
+        2. Panaskan minyak di wajan.
+        3. Goreng bawang dan cabai sampai harum.
+        4. Masukkan telur, lalu aduk.
+        5. Masukkan nasi dan kecap manis, lalu aduk rata.
+        6. Tambahkan garam, lalu cicipi.
+    grammar: id.imperative.basic
     examples:
-      - text: Panci di atas kompor masih panas.
-        ar_eg: الحلة اللي على البوتاجاز لسه سخنة.
-        ar: القدر فوق الموقد ما زال ساخنًا.
-        en: The pot on the stove is still hot.
-      - text: Dagingnya masih mentah, belum matang.
-        ar_eg: اللحمة لسه نية، لسه ما استوتش.
-        ar: اللحم ما زال نيئًا، لم ينضج بعد.
-        en: The meat is still raw, not cooked yet.
-      - text: Rasanya enak sekali!
-        ar_eg: طعمه حلو أوي!
-        ar: طعمه لذيذ جدًا!
-        en: It tastes great!
+      - text: Panaskan minyak di wajan.
+        ar_eg: سخّن الزيت في الطاسة.
+        ar: سخّن الزيت في المقلاة.
+        en: Heat the oil in the wok.
+      - text: Masukkan nasi dan kecap manis, lalu aduk rata.
+        ar_eg: حط الرز والصويا الحلوة، وبعدين قلّب كويس.
+        ar: أضف الأرز وصلصة الصويا الحلوة ثم قلّب جيدًا.
+        en: Add the rice and sweet soy sauce, then stir well.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: kompor
-        ar_eg: بوتاجاز
-        ar: موقد
-        en: stove
-      - text: panci
-        ar_eg: حلة
-        ar: قدر
-        en: pot
-      - text: kulkas
-        ar_eg: تلاجة
-        ar: ثلاجة
-        en: fridge
-      - text: mangkuk
-        ar_eg: سلطانية
-        ar: وعاء
-        en: bowl
-    words: [kompor, panci, kulkas, mangkuk]
-  - id: e02
-    type: match_pairs
-    pairs:
-      - text: mentah
-        ar_eg: ني
-        ar: نيّء
-        en: raw
-      - text: matang
-        ar_eg: مستوي
-        ar: ناضج
-        en: cooked, ripe
-      - text: basi
-        ar_eg: بايت
-        ar: فاسد
-        en: gone off
-      - text: rasa
-        ar_eg: طعم
-        ar: طعم
-        en: taste
-    words: [mentah, matang, basi, rasa]
-  - id: e03
-    type: listen
-    text: Nasinya sudah basi. Kenapa tidak di kulkas?
-    question:
-      ar_eg: الرز ماله؟
-      ar: ما حال الأرز؟
-      en: What's wrong with the rice?
-    options: [بايت, ني, مستوي]
-    answer: 0
-    meaning:
-      ar_eg: الرز باظ. ليه ما كانش في التلاجة؟
-      ar: فسد الأرز. لماذا لم يكن في الثلاجة؟
-      en: The rice has gone off. Why wasn't it in the fridge?
-    words: [basi, kulkas]
-  - id: e04
-    type: fill_blank
-    sentence: Ayamnya belum ___, masih merah di dalam.
-    meaning:
-      ar_eg: الفرخة لسه ما ___، لسه حمرا من جوه.
-      ar: الدجاج لم ___ بعد، ما زال أحمر من الداخل.
-      en: The chicken isn't ___ yet; it's still red inside.
-    options: [matang, basi, kulkas]
-    answers: [matang]
-    words: [matang, basi, kulkas]
-  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: فين بنحط اللبن عشان يفضل ساقع؟
-      ar: أين نضع الحليب ليبقى باردًا؟
-      en: Where do we keep milk cold?
-    options: [kulkas, kompor, panci]
+      ar_eg: في الوصفة، بتعمل إيه قبل ما تقلي البصل؟
+      ar: في الوصفة، ماذا تفعل قبل قلي البصل؟
+      en: In the recipe, what do you do before frying the onions?
+    options: [Panaskan minyak., Masukkan nasi., Tambahkan garam.]
     answer: 0
     explain:
-      ar_eg: kulkas = تلاجة.
-      ar: kulkas = ثلاجة.
-      en: kulkas = fridge.
-    words: [kulkas, kompor, panci]
-  - id: e06
-    type: fill_blank
-    sentence: Saya suka ___ manis.
-    meaning:
-      ar_eg: بحب الـ ___ المسكّر.
-      ar: أحبّ ___ الحلو.
-      en: I like a sweet ___.
-    options: [rasa, mangkuk, kompor]
-    answers: [rasa]
-    words: [rasa, mangkuk, kompor]
-  - id: e07
+      ar_eg: لازم الزيت يسخن الأول (خطوة ٢)، وبعدين تقلي البصل (خطوة ٣).
+      ar: يُسخَّن الزيت أولًا (الخطوة ٢) ثم يُقلى البصل (الخطوة ٣).
+      en: The oil is heated first (step 2), then the onions are fried (step 3).
+    words: [panaskan, minyak]
+  - id: e02
+    type: listen
+    text: Panaskan minyak di wajan.
+    options: [Panaskan minyak di wajan., Masukkan minyak di wajan., Panaskan nasi di wajan.]
+    answer: 0
+    words: [panaskan, wajan]
+  - id: e03
     type: build_sentence
     source:
-      ar_eg: حط الشوربة في السلطانية.
-      ar: ضع الحساء في الوعاء.
-      en: Put the soup in the bowl.
-    answer: Masukkan sup ke dalam mangkuk.
-    distractors: [panci, kompor]
-    words: [mangkuk, panci]
+      ar_eg: دي طريقة طبخ الرز المقلي.
+      ar: هذه طريقة طبخ الأرز المقلي.
+      en: This is how to cook fried rice.
+    answer: Ini cara memasak nasi goreng.
+    distractors: [siap, wajan]
+    words: [cara, memasak]
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: اقلي البصل والفلفل الحرّاق لحد ما ريحتهم تطلع.
+      ar: اقلِ البصل والفلفل الحار حتى تفوح رائحتهما.
+      en: Fry the onions and chillies until fragrant.
+    answer: Goreng bawang dan cabai sampai harum.
+    distractors: [menggoreng, manis]
+    words: [goreng, cabai, harum]
+  - id: e05
+    type: fill_blank
+    sentence: Nasi goreng ___! Ayo makan.
+    meaning:
+      ar_eg: الرز المقلي جاهز! يلا ناكل.
+      ar: الأرز المقلي جاهز! هيّا نأكل.
+      en: The fried rice is ready! Let's eat.
+    options: [siap, cara, cabai]
+    answers: [siap]
+    words: [siap]
+  - id: e06
+    type: fill_blank
+    sentence: Masukkan nasi dan ___ manis.
+    meaning:
+      ar_eg: حط الرز والصويا الحلوة.
+      ar: ضع الأرز وصلصة الصويا الحلوة.
+      en: Add the rice and sweet soy sauce.
+    options: [kecap, cabai, wajan]
+    answers: [kecap]
+    words: [masukkan, kecap manis]
+  - id: e07
+    type: match_pairs
+    pairs:
+      - text: cabai
+        ar_eg: فلفل حرّاق
+        ar: فلفل حار
+        en: chilli
+      - text: wajan
+        ar_eg: طاسة عميقة
+        ar: مقلاة عميقة
+        en: wok
+      - text: kecap manis
+        ar_eg: صويا حلوة
+        ar: صويا حلوة
+        en: sweet soy sauce
+      - text: siap
+        ar_eg: جاهز
+        ar: جاهز
+        en: ready
+      - text: cara
+        ar_eg: طريقة
+        ar: طريقة
+        en: way, method
+      - text: panaskan
+        ar_eg: سخّن
+        ar: سخِّن
+        en: heat
+    words: [cabai, wajan, kecap manis, siap, cara, panaskan]
   - id: e08
     type: translate
-    direction: from_target
-    source_text: Saya suka sayur mentah. Rasanya segar.
-    answers_meaning:
-      ar_eg: [بحب الخضار ني. طعمه فريش, بحب الخضار النية. طعمها منعش]
-      ar: [أحبّ الخضار نيئة. طعمها منعش]
-      en: [I like raw vegetables. They taste fresh, I like vegetables raw. They taste fresh]
-    words: [mentah, rasa]
+    direction: to_target
+    source_meaning:
+      ar_eg: حط الرز والصويا الحلوة، وبعدين قلّب كويس.
+      ar: أضف الأرز وصلصة الصويا الحلوة ثم قلّب جيدًا.
+      en: Add the rice and sweet soy sauce, then stir well.
+    answers: ['Masukkan nasi dan kecap manis, lalu aduk rata.', 'Masukkan nasi dan kecap manis, lalu aduk rata', Masukkan nasi dan kecap manis lalu aduk rata., 'Masukkan nasi dan kecap manis, kemudian aduk rata.', 'Masukkan nasi dan kecap manis, lalu aduk sampai rata.', 'Masukkan nasi dan kecap manis, lalu aduk sampai rata', 'Tambahkan nasi dan kecap manis, lalu aduk rata.']
+    words: [masukkan, kecap manis, aduk, rata]
   - id: e09
-    type: speaking
-    text: Panci di atas kompor masih panas.
+    type: dictation
+    text: Potong cabai, lalu masukkan ke wajan.
     meaning:
-      ar_eg: الحلة اللي على البوتاجاز لسه سخنة.
-      ar: القدر فوق الموقد ما زال ساخنًا.
-      en: The pot on the stove is still hot.
-    words: [panci, kompor]
+      ar_eg: قطّع الفلفل الحرّاق، وبعدين حطه في الطاسة.
+      ar: قطّع الفلفل الحار ثم ضعه في المقلاة.
+      en: Chop the chillies, then put them in the wok.
+    words: [potong, cabai, masukkan, wajan]
   - id: e10
-    type: multiple_choice
-    question: Mangga ini kuning dan manis. Sudah ___.
-    options: [matang, mentah, basi]
-    answer: 0
-    explain:
-      ar_eg: 'المانجة الصفرا المسكّرة مستوية: matang.'
-      ar: 'المانجو الصفراء الحلوة ناضجة: matang.'
-      en: 'A yellow, sweet mango is ripe: matang.'
-    words: [matang, mentah, basi]
+    type: speaking
+    text: "Ini caranya: tambahkan garam, lalu cicipi. Nasi goreng siap!"
+    meaning:
+      ar_eg: "دي الطريقة: زوّد ملح، وبعدين دوق. الرز المقلي جاهز!"
+      ar: "هذه هي الطريقة: أضف الملح ثم تذوّق. الأرز المقلي جاهز!"
+      en: "Here's how: add salt, then taste. The fried rice is ready!"
+    words: [cara, tambahkan, cicipi, siap]
 dialogue:
+  title: Resep dari Mohamed
   lines:
-    - speaker: Bu Yanti
-      text: Mohamed, tolong ambil telur di kulkas.
-      ar_eg: يا محمد، هات البيض من التلاجة لو سمحت.
-      ar: يا محمد، أحضر البيض من الثلاجة من فضلك.
-      en: Mohamed, could you get the eggs from the fridge?
+    - speaker: Rina
+      text: Mohamed, nasi gorengmu enak sekali! Bagaimana cara membuatnya?
+      ar_eg: يا محمد، الرز المقلي بتاعك حلو قوي! بتعمله إزاي؟
+      ar: يا محمد، أرزك المقلي لذيذ جدًّا! كيف تصنعه؟
+      en: Mohamed, your fried rice is so good! How do you make it?
     - speaker: Mohamed
-      text: Ini, Bu. Mau masak apa?
-      ar_eg: اتفضلي. هتطبخي إيه؟
-      ar: تفضّلي. ماذا ستطبخين؟
-      en: Here you go. What are you cooking?
-    - speaker: Bu Yanti
-      text: Nasi goreng. Pancinya di atas kompor.
-      ar_eg: رز مقلي. الحلة على البوتاجاز.
-      ar: أرز مقلي. القدر فوق الموقد.
-      en: Fried rice. The pot's on the stove.
+      text: Mudah! Pertama, cuci dan potong bawang dan cabai.
+      ar_eg: سهلة! الأول اغسلي وقطّعي البصل والفلفل الحرّاق.
+      ar: سهل! أولًا اغسلي البصل والفلفل الحار وقطّعيهما.
+      en: Easy! First, wash and cut the onions and chillies.
+    - speaker: Rina
+      text: Cabainya berapa?
+      ar_eg: كام فلفل حرّاق؟
+      ar: كم حبة فلفل حار؟
+      en: How many chillies?
     - speaker: Mohamed
-      text: Nasi kemarin tidak basi, Bu?
-      ar_eg: رز امبارح مش بايت؟
-      ar: أليس أرز الأمس فاسدًا؟
-      en: Hasn't yesterday's rice gone off?
-    - speaker: Bu Yanti
-      text: Tidak. Coba rasanya... enak!
-      ar_eg: لأ. دوق طعمه... حلو!
-      ar: لا. تذوّق طعمه... لذيذ!
-      en: No. Taste it... delicious!
+      text: Tiga saja. Jangan terlalu pedas! Lalu panaskan minyak di wajan.
+      ar_eg: تلاتة بس. ماتخليهوش حرّاق قوي! وبعدين سخّني الزيت في الطاسة.
+      ar: ثلاث فقط، لا تجعليه حارًّا جدًّا! ثم سخّني الزيت في المقلاة.
+      en: Just three. Not too spicy! Then heat the oil in the wok.
+    - speaker: Rina
+      text: Lalu goreng bawang dan cabainya?
+      ar_eg: وبعدين أقلي البصل والفلفل؟
+      ar: ثم أقلي البصل والفلفل؟
+      en: Then I fry the onions and chillies?
     - speaker: Mohamed
-      text: Saya ambil mangkuk, ya.
-      ar_eg: أنا هجيب السلطانيات.
-      ar: سأحضر الأوعية.
-      en: I'll get the bowls.
+      text: Ya, goreng sampai harum. Lalu masukkan telur dan aduk.
+      ar_eg: أيوه، اقليهم لحد ما ريحتهم تطلع. وبعدين حطي البيض وقلّبي.
+      ar: نعم، اقليهما حتى تفوح الرائحة، ثم أضيفي البيض وقلّبي.
+      en: Yes, fry until fragrant. Then add the egg and stir.
 new_words:
-  - word: kompor
+  - word: cabai
     pos: noun
-    ar_eg: بوتاجاز
-    ar: موقد
-    en: stove
-  - word: panci
+    ar_eg: فلفل حرّاق
+    ar: فلفل حار
+    en: chilli
+  - word: panaskan
+    pos: verb
+    ar_eg: سخّن
+    ar: سخِّن
+    en: heat (it)
+  - word: wajan
     pos: noun
-    ar_eg: حلة
-    ar: قدر
-    en: pot, pan
-  - word: kulkas
+    ar_eg: طاسة / مقلاية عميقة
+    ar: مقلاة عميقة
+    en: wok
+  - word: kecap manis
     pos: noun
-    ar_eg: تلاجة
-    ar: ثلاجة
-    en: fridge
-  - word: mangkuk
-    pos: noun
-    ar_eg: سلطانية
-    ar: وعاء (زبدية)
-    en: bowl
-  - word: mentah
+    ar_eg: صويا حلوة (صوص الصويا الإندونيسي)
+    ar: صلصة الصويا الحلوة
+    en: sweet soy sauce
+  - word: siap
     pos: adjective
-    ar_eg: ني
-    ar: نيّء
-    en: raw
-  - word: matang
-    pos: adjective
-    ar_eg: مستوي
-    ar: ناضج، مطهو
-    en: cooked, ripe
-  - word: basi
-    pos: adjective
-    ar_eg: بايت (باظ)
-    ar: فاسد، بائت
-    en: stale, gone off
-  - word: rasa
+    ar_eg: جاهز
+    ar: جاهز
+    en: ready
+  - word: cara
     pos: noun
-    ar_eg: طعم؛ إحساس
-    ar: طعم؛ شعور
-    en: taste; feeling
+    ar_eg: طريقة
+    ar: طريقة
+    en: way, method
 review:
   status: draft
   verified: false

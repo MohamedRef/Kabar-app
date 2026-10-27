@@ -1,212 +1,167 @@
 schema: kabar.lesson/v1
 id: j3.u06.l07
 language: jv
-title: Ulangan J3.6
+title: Papan ing griya saudagar
 can_do:
-  ar_eg: تحوّل فقرة نغوكو لكراما.
-  ar: أن تحوّل فقرة من النغوكو إلى الكراما.
-  en: Convert a ngoko paragraph to krama.
+  ar_eg: تقرا لافتة متحف قصيرة فيها dipun- و-ipun وتفهمها.
+  ar: أن تقرأ لافتة متحف قصيرة فيها dipun- و-ipun وتفهمها.
+  en: Read a short museum sign with dipun- and -ipun, and understand it.
 slides:
-  - title: Saking ngoko dhateng krama
+  - title: Papan ing Giriloyo
     body:
       ar_eg: |
-        عشان تحوّل فقرة نغوكو لكراما، امشي على ٣ خطوات:
-        ١. الكلمات: aku → kula، saka → saking، arep → badhe، tuku → tumbas، omah → griya، rega → regi، larang → awis، gawe → damel، suwe → dangu، merga → amargi.
-        ٢. اللواحق: -e / -ne → -ipun / -nipun، di- → dipun-، -ake → -aken، tak- → kula + الفعل.
-        ٣. راجع: مافيش ولا كلمة نغوكو فاضلة؟
-        Aku arep tuku batik. → Kula badhe tumbas batik.
-        Batike digawe nang Laweyan. → Batikipun dipundamel wonten Laweyan.
+        في Giriloyo، محمد دخل بيت قديم من بيوت تجار الباتيك، ولقى لافتة عند الباب. اقراها:
+        griyanipun = بيت (الـ…)، batikipun = الباتيك، dipundamel = اتعمل، dipuntumbas = يتشترى.
       ar: |
-        لتحويل فقرة من النغوكو إلى الكراما اتبع ثلاث خطوات:
-        ١. المفردات: aku → kula، saka → saking، arep → badhe، tuku → tumbas، omah → griya، rega → regi، larang → awis، gawe → damel، suwe → dangu، merga → amargi.
-        ٢. اللواحق: -e / -ne → -ipun / -nipun، وdi- → dipun-، و-ake → -aken، وtak- → kula + الفعل.
-        ٣. المراجعة: ألم تبقَ كلمة من النغوكو؟
-        Aku arep tuku batik. → Kula badhe tumbas batik.
-        Batike digawe nang Laweyan. → Batikipun dipundamel wonten Laweyan.
+        دخل محمد في Giriloyo بيتًا قديمًا من بيوت تجار الباتيك، فوجد لافتة عند الباب. اقرأها:
+        griyanipun = بيتُ (فلان)، وbatikipun = الباتيك، وdipundamel = صُنع، وdipuntumbas = يُشترى.
       en: |
-        To turn a ngoko paragraph into krama, go in three steps:
-        1. Words: aku → kula, saka → saking, arep → badhe, tuku → tumbas, omah → griya, rega → regi, larang → awis, gawe → damel, suwe → dangu, merga → amargi.
-        2. Affixes: -e / -ne → -ipun / -nipun, di- → dipun-, -ake → -aken, tak- → kula + verb.
-        3. Check: is any ngoko word left?
-        Aku arep tuku batik. → Kula badhe tumbas batik.
-        Batike digawe nang Laweyan. → Batikipun dipundamel wonten Laweyan.
+        In Giriloyo, Mohamed visits an old batik merchant's house and finds a sign by the door. Read it:
+        griyanipun = the house (of…), batikipun = the batik, dipundamel = was made, dipuntumbas = be bought.
+    examples:
+      - text: Griya menika griyanipun saudagar batik.
+        ar_eg: البيت ده بيت تاجر باتيك.
+        ar: هذا البيت بيت تاجر باتيك.
+        en: This house is a batik merchant's house.
+      - text: Batikipun dipundamel wonten griya menika.
+        ar_eg: الباتيك كان بيتعمل في البيت ده.
+        ar: كان الباتيك يُصنع في هذا البيت.
+        en: The batik was made in this house.
+      - text: Nyuwun sewu, batik mboten saged dipuntumbas wonten mriki.
+        ar_eg: لا مؤاخذة، الباتيك مش للبيع هنا.
+        ar: عفوًا، لا يُباع الباتيك هنا.
+        en: Sorry, batik can't be bought here.
     grammar: jv.krama.affixes
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: dipundamel
-        ar_eg: اتعمل (digawe)
-        ar: صُنع (digawe)
-        en: was made (digawe)
-      - text: dipunwaos
-        ar_eg: اتقرا (diwaca)
-        ar: قُرئ (diwaca)
-        en: was read (diwaca)
-      - text: tumbasaken
-        ar_eg: يشتري لحد (tukokake)
-        ar: يشتري لغيره (tukokake)
-        en: buy for someone (tukokake)
-      - text: reginipun
-        ar_eg: السعر (regane)
-        ar: السعر (regane)
-        en: the price (regane)
-    words: [damel, waos, tumbasaken, regi]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من اللافتة) البيت ده كان بيت مين؟
+      ar: (من اللافتة) بيت من كان هذا البيت؟
+      en: (from the sign) Whose house was this?
+    options: [saudagar batik, Pak Wiryo, Bu Siti]
+    answer: 0
+    words: [saudagar, griya]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: kabar + -e بالكراما = ؟
-      ar: kabar + -e بالكراما = ؟
-      en: kabar + krama "-e" = ?
-    options: [kabarnipun, kabare, kabaripun]
-    answer: 2
-    explain:
-      ar_eg: 'kabar بتخلص بساكن (r)، يبقى -ipun: kabaripun — زي Pripun kabaripun؟ وkabar أصلها العربي «خبر».'
-      ar: 'تنتهي kabar بساكن فتأخذ -ipun: kabaripun، كما في Pripun kabaripun؟ وkabar من العربية «خبر».'
-      en: 'kabar ends in a consonant, so -ipun: kabaripun — as in Pripun kabaripun? (kabar is Arabic «خبر».)'
-    words: [kabar]
+      ar_eg: (من اللافتة) الباتيك كان بيتعمل فين؟
+      ar: (من اللافتة) أين كان يُصنع الباتيك؟
+      en: (from the sign) Where was the batik made?
+    options: [wonten Kauman, wonten griya menika, wonten Pasar Beringharjo]
+    answer: 1
+    words: [damel]
   - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي تحويل صح لـ «Bukune wis tak waca»؟
-      ar: أي تحويل صحيح لـ «Bukune wis tak waca»؟
-      en: Which is the right krama version of "Bukune wis tak waca"?
-    options: [Bukunipun sampun kula waos., Bukune sampun kula waca., Bukunipun sampun tak waos.]
-    answer: 0
+      ar_eg: (من اللافتة) محمد يقدر يشتري باتيك هنا؟
+      ar: (من اللافتة) هل يستطيع محمد شراء الباتيك هنا؟
+      en: (from the sign) Can Mohamed buy batik here?
+    options: [Saged, Mboten saged]
+    answer: 1
     explain:
-      ar_eg: tak- مالهاش كراما → kula + waos، وbukune → bukunipun، وwis → sampun.
-      ar: لا نظير لـ tak- في الكراما، فيقال kula waos، وbukune → bukunipun، وwis → sampun.
-      en: tak- has no krama form → kula waos; bukune → bukunipun; wis → sampun.
-    words: [waos, sampun]
+      ar_eg: mboten saged dipuntumbas = مينفعش يتشترى.
+      ar: mboten saged dipuntumbas = لا يمكن أن يُشترى.
+      en: mboten saged dipuntumbas = can't be bought.
+    words: [tumbas, saged]
   - id: e04
     type: listen
-    text: Reginipun awis, amargi damelipun dangu.
-    options: ['Reginipun awis, amargi damelipun dangu.', 'Reginipun mirah, amargi damelipun dangu.', 'Reginipun awis, amargi damelipun alon.']
-    answer: 0
-    words: [regi, awis, amargi, dangu]
-  - id: e05
-    type: fill_blank
-    sentence: Batikipun ___ wonten Laweyan.
+    text: Batikipun dipundamel wonten griya menika.
+    options: ['Batikipun dipuntumbas wonten griya menika.', 'Batikipun dipundamel wonten Giriloyo.', 'Batikipun dipundamel wonten griya menika.']
+    answer: 2
     meaning:
-      ar_eg: الباتيك اتعمل في لاوييان.
-      ar: صُنع الباتيك في لاوييان.
-      en: The batik was made in Laweyan.
-    options: [digawe, dipungawe, dipundamel]
-    answers: [dipundamel]
-    explain:
-      ar_eg: 'gawe → damel، وdi- → dipun-: dipundamel. «dipungawe» خلطة كراما على نغوكو.'
-      ar: 'gawe → damel، وdi- → dipun-: dipundamel، و«dipungawe» خليط.'
-      en: 'gawe → damel and di- → dipun-: dipundamel. "dipungawe" mixes levels.'
-    words: [damel]
+      ar_eg: الباتيك كان بيتعمل في البيت ده.
+      ar: كان الباتيك يُصنع في هذا البيت.
+      en: The batik was made in this house.
+    words: [batik, damel, griya]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: griyanipun
+        ar_eg: بيت (فلان) / البيت
+        ar: بيتُ (فلان)
+        en: the house (of)
+      - text: batikipun
+        ar_eg: الباتيك (بتاعه)
+        ar: الباتيك
+        en: the batik
+      - text: dipundamel
+        ar_eg: اتعمل
+        ar: صُنع
+        en: was made
+      - text: dipuntumbas
+        ar_eg: يتشترى
+        ar: يُشترى
+        en: be bought
+    words: [griya, batik, damel, tumbas]
   - id: e06
     type: fill_blank
-    sentence: Kula ___ batik kangge ibu kula.
+    sentence: Griya menika griya___ saudagar batik.
     meaning:
-      ar_eg: بشتري باتيك لماما.
-      ar: أشتري باتيكًا لأمي.
-      en: I'm buying batik for my mother.
-    options: [tumbasaken, tumbasake, tukokake]
-    answers: [tumbasaken]
-    words: [tumbasaken]
+      ar_eg: البيت ده بيت تاجر باتيك.
+      ar: هذا البيت بيت تاجر باتيك.
+      en: This house is a batik merchant's house.
+    options: [ipun, ne, nipun]
+    answers: [nipun]
+    explain:
+      ar_eg: 'griya بتخلص بحرف متحرك (a)، يبقى -nipun. -ipun بعد الساكن (batikipun)، و-ne نغوكو.'
+      ar: 'تنتهي griya بحرف علة فتأخذ -nipun، و-ipun بعد الساكن (batikipun)، و-ne من الـ ngoko.'
+      en: griya ends in a vowel, so -nipun. -ipun follows a consonant (batikipun); -ne is ngoko.
+    words: [griya]
   - id: e07
-    type: build_sentence
-    source:
-      ar_eg: (حوّل للكراما) Aku arep tuku batik.
-      ar: (حوّل إلى الكراما) Aku arep tuku batik.
-      en: (turn into krama) Aku arep tuku batik.
-    answer: Kula badhe tumbas batik.
-    distractors: [aku, arep, tuku]
-    words: [kula, badhe, tumbas]
+    type: translate
+    direction: from_target
+    source_text: Batik menika mboten saged dipuntumbas.
+    answers_meaning:
+      ar_eg: ["الباتيك ده مينفعش يتشترى.", "الباتيك ده مش للبيع.", "مينفعش تشتري الباتيك ده."]
+      ar: ["لا يمكن شراء هذا الباتيك.", "هذا الباتيك ليس للبيع.", "هذا الباتيك لا يُشترى."]
+      en: ["This batik can't be bought.", "This batik is not for sale.", "You can't buy this batik."]
+    explain:
+      ar_eg: 'dipun- + tumbas = يتشترى (مبني للمجهول)، وmboten saged = مينفعش.'
+      ar: 'dipun- + tumbas = يُشترى (مبني للمجهول)، وmboten saged = لا يمكن.'
+      en: 'dipun- + tumbas = be bought (passive); mboten saged = can''t.'
+    words: [tumbas, saged]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: (حوّل للكراما) Omahe Pak Harjo gedhe banget.
-      ar: (حوّل إلى الكراما) Omahe Pak Harjo gedhe banget.
-      en: (turn into krama) Omahe Pak Harjo gedhe banget.
-    answer: Griyanipun Pak Harjo ageng sanget.
-    distractors: [omahe, gedhe, banget]
-    words: [griya, ageng, sanget]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (حوّل للكراما) Aku saka Kairo.
-      ar: (حوّل إلى الكراما) Aku saka Kairo.
-      en: (turn into krama) Aku saka Kairo.
-    answers: [Kula saking Kairo., Kula saking Kairo]
-    words: [kula, saking]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (حوّل للكراما) Batike digawe nang omahe Pak Harjo.
-      ar: (حوّل إلى الكراما) Batike digawe nang omahe Pak Harjo.
-      en: (turn into krama) Batike digawe nang omahe Pak Harjo.
-    answers: [Batikipun dipundamel wonten griyanipun Pak Harjo., Batikipun dipundamel wonten griyanipun Pak Harjo, Batikipun didamel wonten griyanipun Pak Harjo., Batikipun didamel wonten griyanipun Pak Harjo, Batikipun dipundamel wonten griya Pak Harjo., Batikipun dipundamel wonten griya Pak Harjo]
+      ar_eg: البيت ده كبير أوي يا حاج.
+      ar: هذا البيت كبير جدًا يا سيدي.
+      en: This house is very big, sir.
+    answer: Griya menika ageng sanget, Pak.
+    distractors: [gedhe, iki]
     explain:
-      ar_eg: batike → batikipun، digawe → dipundamel (أو didamel في الكلام)، nang → wonten، omahe → griyanipun.
-      ar: batike → batikipun، وdigawe → dipundamel (أو didamel في الكلام)، وnang → wonten، وomahe → griyanipun.
-      en: batike → batikipun, digawe → dipundamel (spoken didamel), nang → wonten, omahe → griyanipun.
-    words: [batik, damel, wonten, griya]
-  - id: e11
-    type: dictation
-    text: Batikipun dipundamel wonten Laweyan.
-    meaning:
-      ar_eg: الباتيك اتعمل في لاوييان.
-      ar: صُنع الباتيك في لاوييان.
-      en: The batik was made in Laweyan.
-    words: [batik, damel]
-  - id: e12
-    type: speaking
-    text: Kula saking Kairo. Kula badhe tumbas batik wonten Laweyan. Reginipun awis, amargi damelipun dangu.
-    meaning:
-      ar_eg: أنا من القاهرة. عايز أشتري باتيك في لاوييان. سعره غالي، عشان عمله بياخد وقت طويل.
-      ar: أنا من القاهرة. أريد أن أشتري باتيكًا في لاوييان. ثمنه غالٍ لأن صنعه يستغرق وقتًا طويلًا.
-      en: I'm from Cairo. I want to buy batik in Laweyan. It's expensive, because it takes a long time to make.
-    words: [saking, tumbas, regi, awis, amargi, dangu]
+      ar_eg: 'ageng = gedhe بالكراما، menika = iki.'
+      ar: 'ageng = gedhe بالكراما، وmenika = iki.'
+      en: 'ageng = gedhe in krama; menika = iki.'
+    words: [griya, ageng, sanget]
 dialogue:
-  title: Pamit saking Laweyan
+  title: Ing griya saudagar
   lines:
     - speaker: Mohamed
-      text: Pak Harjo, batikipun sampun kula tumbas.
-      ar_eg: يا حاج هارجو، اشتريت الباتيك خلاص.
-      ar: يا سيد هارجو، اشتريتُ الباتيك.
-      en: Pak Harjo, I've bought the batik.
+      text: Pak Harjo, griya menika griyanipun sinten?
+      ar_eg: يا Pak Harjo، البيت ده بيت مين؟
+      ar: يا Pak Harjo، بيت من هذا البيت؟
+      en: Pak Harjo, whose house is this?
     - speaker: Pak Harjo
-      text: Sae, Mas. Batik menika kangge sinten?
-      ar_eg: حلو يا ابني. الباتيك ده لمين؟
-      ar: حسنٌ يا بني. لمن هذا الباتيك؟
-      en: Good. Who is this batik for?
+      text: Griyanipun saudagar batik, Mas.
+      ar_eg: بيت تاجر باتيك يا أستاذ.
+      ar: بيت تاجر باتيك يا أخي.
+      en: A batik merchant's house.
     - speaker: Mohamed
-      text: Kangge ibu kula wonten Kairo.
-      ar_eg: لماما في القاهرة.
-      ar: لأمي في القاهرة.
-      en: For my mother in Cairo.
+      text: Batikipun dipundamel wonten mriki?
+      ar_eg: الباتيك كان بيتعمل هنا؟
+      ar: هل كان الباتيك يُصنع هنا؟
+      en: Was the batik made here?
     - speaker: Pak Harjo
-      text: Sae sanget. Batikipun dipundamel wonten Laweyan, kangge ibu saking Mesir!
-      ar_eg: حلو أوي. باتيك معمول في لاوييان، لأم من مصر!
-      ar: جميل جدًا. باتيك صُنع في لاوييان لأمٍّ من مصر!
-      en: Lovely. Batik made in Laweyan, for a mother from Egypt!
+      text: Inggih, leres. Nanging batik mboten saged dipuntumbas wonten mriki.
+      ar_eg: أيوه، صح. بس الباتيك مش للبيع هنا.
+      ar: نعم، صحيح. لكن الباتيك لا يُباع هنا.
+      en: Yes, that's right. But you can't buy batik here.
     - speaker: Mohamed
-      text: Inggih, Pak. Matur nuwun sanget.
-      ar_eg: أيوه يا حاج. شكرًا جزيلًا.
-      ar: نعم يا سيدي. شكرًا جزيلًا.
-      en: Yes, sir. Thank you very much.
-    - speaker: Pak Harjo
-      text: Sami-sami, Mas Mohamed.
-      ar_eg: العفو يا محمد.
-      ar: عفوًا يا محمد.
-      en: You're welcome, Mohamed.
-souvenir:
-  id: j3.u06.souvenir
-  title: Rumah saudagar Laweyan
-  note:
-    ar_eg: |
-      Laweyan حي تجار الباتيك القدام في سولو: بيوت كبيرة ورا أسوار عالية وحواري ضيقة. سنة ١٩٠٥ (وفيه مؤرخين بيقولوا ١٩١١) تجار الباتيك المسلمين هنا أسسوا Sarekat Dagang Islam، من أوائل حركات التجار المسلمين في إندونيسيا. وكلمة Islam نفسها من العربي «إسلام» — يعني حتى في قلب حي الباتيك، العربي مستخبي في الأسامي.
-    ar: |
-      Laweyan حي تجار الباتيك القديم في سولو: بيوت واسعة خلف أسوار عالية وأزقة ضيقة. وفي سنة ١٩٠٥ (ويقول بعض المؤرخين ١٩١١) أسس تجار الباتيك المسلمون هنا Sarekat Dagang Islam، وهي من أوائل حركات التجار المسلمين في إندونيسيا. وكلمة Islam نفسها من العربية «إسلام»، فالعربية حاضرة حتى في قلب حي الباتيك.
-    en: |
-      Laweyan is Solo's old batik merchants' quarter: big houses behind high walls and narrow lanes. In 1905 (some historians say 1911) the Muslim batik traders here founded Sarekat Dagang Islam, one of Indonesia's first Muslim traders' movements. Even its name carries Arabic: Islam is «إسلام» — Arabic hiding in the heart of batik country.
+      text: Oh, inggih. Matur nuwun, Pak.
+      ar_eg: آه، ماشي. شكرًا يا حاج.
+      ar: آه، حسنًا. شكرًا يا سيدي.
+      en: Oh, I see. Thank you, sir.
 review:
   status: draft
   verified: false

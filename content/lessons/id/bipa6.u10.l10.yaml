@@ -1,193 +1,209 @@
 schema: kabar.lesson/v1
 id: bipa6.u10.l10
 language: id
-title: Ulangan Unit 10
+title: Esai singkat
 can_do:
-  ar_eg: تكتب فقرة أكاديمية بمصادرها وتدافع عن مقالك.
-  ar: أن تكتب فقرة أكاديمية موثّقة المصادر وتدافع عن مقالتك.
-  en: Write a sourced academic paragraph and defend your essay.
+  ar_eg: تكتب مقال أكاديمي قصير بأطروحة وأدلة ومصادر.
+  ar: أن تكتب مقالة أكاديمية قصيرة فيها أطروحة وأدلّة ومصادر.
+  en: Write a short academic essay with a thesis, evidence and sources.
+slides:
+  - title: Kerangka esai lima paragraf
+    grammar: id.argument.connectors
+    body:
+      ar_eg: |
+        1. المقدمة: خلّصها بالـ tesis (الأطروحة)، جملة واحدة واضحة:
+           Relokasi warga Sinabung perlu dilanjutkan, tetapi harus melibatkan warga.
+        2–4. تلات فقرات، كل واحدة بجملة رئيسية ودليل: data (بيانات)، أمثلة، ومصادر.
+        5. الخاتمة: Dengan demikian، … ارجع للأطروحة بكلام جديد.
+        الكلام لازم يبقى orisinal (أصلي) بتاعك، ونقل كلام غيرك من غير ذكره اسمه plagiarisme (انتحال).
+      ar: |
+        1. المقدّمة: تُختم بالـ tesis (الأطروحة) في جملة واحدة واضحة:
+           Relokasi warga Sinabung perlu dilanjutkan, tetapi harus melibatkan warga.
+        2–4. ثلاث فقرات، لكلّ منها جملة رئيسية ودليل: data (بيانات)، وأمثلة، ومصادر.
+        5. الخاتمة: Dengan demikian، … ارجع إلى الأطروحة بألفاظ جديدة.
+        ويجب أن يكون النصّ orisinal (أصيلًا) من إنشائك، ونقل كلام الغير دون نسبته إليه يُسمّى plagiarisme (انتحالًا).
+      en: |
+        1. Introduction: end it with the tesis (thesis), one clear sentence:
+           Relokasi warga Sinabung perlu dilanjutkan, tetapi harus melibatkan warga.
+        2–4. Three paragraphs, each with a topic sentence and evidence: data, examples, sources.
+        5. Conclusion: Dengan demikian, … restate the thesis in new words.
+        The writing must be orisinal (original), your own; copying someone without credit is plagiarisme (plagiarism).
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: parafrasa
-        ar_eg: إعادة صياغة
-        ar: إعادة صياغة
-        en: paraphrase
-      - text: kalimat utama
-        ar_eg: الجملة الرئيسية
-        ar: الجملة الرئيسية
-        en: topic sentence
-      - text: daftar pustaka
-        ar_eg: قايمة المراجع
-        ar: قائمة المراجع
-        en: bibliography, reference list
       - text: tesis
-        ar_eg: أطروحة
+        ar_eg: أطروحة / الفكرة الأساسية
         ar: أطروحة
         en: thesis statement
-      - text: penguji
-        ar_eg: ممتحن
-        ar: ممتحِن
-        en: examiner
-    words: [parafrasa, kalimat utama, daftar pustaka, tesis, penguji]
+      - text: data
+        ar_eg: بيانات
+        ar: بيانات
+        en: data
+      - text: plagiarisme
+        ar_eg: انتحال / سرقة أدبية
+        ar: انتحال
+        en: plagiarism
+      - text: orisinal
+        ar_eg: أصلي / بتاعك إنت
+        ar: أصيل
+        en: original
+    words: [tesis, data, plagiarisme, orisinal]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي فعل أقوى عشان تنقل إن الكاتب أكّد على فكرته؟
-      ar: أيّ فعل أقوى لنقل أنّ الكاتب ألحّ على فكرته؟
-      en: Which verb best reports that the writer insisted on a point?
-    options: [menyatakan, menegaskan, mengutip]
-    answer: 1
-    words: [menegaskan, menyatakan, mengutip]
+      ar_eg: أنهي جملة تنفع tesis؟
+      ar: أيّ جملة تصلح أطروحة؟
+      en: Which sentence works as a thesis?
+    options:
+      - Pemerintah perlu membangun jalur evakuasi baru di sekitar Sinabung.
+      - Sinabung adalah gunung.
+      - Apakah gunung itu tinggi?
+    answer: 0
+    words: [tesis]
   - id: e03
     type: fill_blank
-    sentence: Tanah di Karo subur. ___, iklimnya sejuk sepanjang tahun.
+    sentence: Menyalin tulisan orang lain tanpa menyebut sumbernya disebut ___.
     meaning:
-      ar_eg: أرض كارو خصبة. وعلاوة على كده، الجو بارد طول السنة.
-      ar: تربة كارو خصبة، وفضلًا عن ذلك فمناخها معتدل طوال العام.
-      en: The soil in Karo is fertile. Besides, the climate is cool all year round.
-    options: [Di samping itu, Singkatnya, Kutipan langsung]
-    answers: [Di samping itu]
-    words: [di samping itu, singkatnya, kutipan langsung]
+      ar_eg: إنك تنقل كتابة حد تاني من غير ما تذكر المصدر اسمه انتحال.
+      ar: نسخ كتابة الآخرين دون ذكر مصدرها يُسمّى انتحالًا.
+      en: Copying someone else's writing without naming the source is called plagiarism.
+    options: [plagiarisme, tesis, data]
+    answers: [plagiarisme]
+    words: [plagiarisme]
   - id: e04
     type: listen
-    text: Penguji meminta Mohamed menanggapi kelemahan datanya.
+    text: Menurut data tahun lalu, lebih dari dua ribu keluarga sudah pindah.
     question:
-      ar_eg: الممتحن طلب إيه؟
-      ar: ماذا طلب الممتحن؟
-      en: What did the examiner ask for?
+      ar_eg: البيانات بتقول إيه؟
+      ar: ماذا تقول البيانات؟
+      en: What do the data say?
     options:
-      - إن محمد يرد على نقطة الضعف في بياناته.
-      - إن محمد يغيّر الموضوع.
-      - إن محمد يقرا المقال من الأول.
-    answer: 0
-    words: [penguji, menanggapi, kelemahan, data]
+      - إن ألفين عيلة رفضوا يمشوا.
+      - إن أكتر من ألفين عيلة اتنقلوا خلاص.
+      - إن العيلات هيتنقلوا السنة الجاية.
+    answer: 1
+    words: [data]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: الكتاب ده اتنشر سنة 2021، صفحة خمستاشر.
-      ar: صدر هذا الكتاب عام 2021، الصفحة الخامسة عشرة.
-      en: This book was published in 2021, page fifteen.
-    answer: Buku ini terbit tahun 2021, halaman lima belas.
-    distractors: [rujukan, tesis]
-    words: [terbit, halaman]
+      ar_eg: الأطروحة لازم تبقى واضحة ومحددة.
+      ar: يجب أن تكون الأطروحة واضحة ومحدّدة.
+      en: The thesis must be clear and specific.
+    answer: Tesis harus jelas dan spesifik.
+    distractors: [data, orisinal]
+    words: [tesis]
   - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: نسخت فقرة من مقال وحطيت اسمك عليها. ده اسمه إيه؟
-      ar: نسخت فقرة من مقالة ونسبتها إلى نفسك. ما اسم هذا؟
-      en: You copied a paragraph from an article and put your name on it. What is that called?
-    options: [parafrasa, rujukan, plagiarisme]
-    answer: 2
-    words: [plagiarisme, parafrasa, rujukan]
+    type: match_pairs
+    pairs:
+      - text: pembahasan
+        ar_eg: مناقشة
+        ar: مناقشة
+        en: discussion
+      - text: kriteria
+        ar_eg: معايير
+        ar: معايير
+        en: criteria
+      - text: menganalisis
+        ar_eg: يحلّل
+        ar: يحلّل
+        en: to analyse
+      - text: penulisan
+        ar_eg: الكتابة، التأليف
+        ar: الكتابة، التأليف
+        en: writing (the process, style)
+      - text: mendasar
+        ar_eg: جوهري، أساسي
+        ar: جوهري
+        en: fundamental
+    words: [pembahasan, kriteria, menganalisis, penulisan, mendasar]
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: وزيادة على كده، الجمل الشارحة لازم تبقى أصلية.
-      ar: وعلاوة على ذلك، يجب أن تكون الجمل الشارحة أصيلة.
-      en: Furthermore, the supporting sentences must be original.
+      ar_eg: البيانات دي بتدعم الأطروحة بتاعتي.
+      ar: تدعم هذه البيانات أطروحتي.
+      en: These data support my thesis.
     answers:
-      - Lebih lanjut, kalimat penjelas harus orisinal.
-      - Lebih lanjut, kalimat-kalimat penjelas harus orisinal.
-      - Lebih lanjut, kalimat penjelasnya harus orisinal.
-    words: [lebih lanjut, kalimat penjelas, orisinal]
+      - Data ini mendukung tesis saya.
+      - Data tersebut mendukung tesis saya.
+      - Data ini mendukung tesisku.
+    words: [data, tesis]
   - id: e08
     type: speaking
-    text: Penulis mengungkapkan harapannya, dan datanya cukup meyakinkan.
+    text: Esai ini orisinal, dan semua sumbernya ada di daftar pustaka.
     meaning:
-      ar_eg: الكاتب عبّر عن أمله، وبياناته مقنعة كفاية.
-      ar: عبّر الكاتب عن أمله، وبياناته مقنعة بما يكفي.
-      en: The writer expressed his hope, and his data are fairly convincing.
-    words: [mengungkapkan, meyakinkan, data]
+      ar_eg: المقال ده أصلي، وكل مصادره موجودة في قايمة المراجع.
+      ar: هذه المقالة أصيلة، وكلّ مصادرها في قائمة المراجع.
+      en: This essay is original, and all its sources are in the bibliography.
+    words: [orisinal]
   - id: e09
     type: dictation
-    text: Singkatnya, setiap rujukan harus ada di daftar pustaka.
+    text: Kampus memakai aplikasi untuk memeriksa plagiarisme.
     meaning:
-      ar_eg: باختصار، كل مرجع لازم يبقى في قايمة المراجع.
-      ar: خلاصة القول أنّ كلّ مرجع يجب أن يرد في قائمة المراجع.
-      en: In short, every reference must be in the bibliography.
-    words: [singkatnya, rujukan, daftar pustaka]
+      ar_eg: الجامعة بتستعمل برنامج يكشف الانتحال.
+      ar: تستعمل الجامعة تطبيقًا لكشف الانتحال.
+      en: The university uses an app to check for plagiarism.
+    words: [plagiarisme]
   - id: e10
     type: translate
     direction: from_target
-    source_text: Mohamed mengutip Sitepu untuk mendukung tesisnya.
+    source_text: Tanpa data, tesis yang orisinal pun sulit dipercaya.
     answers_meaning:
       ar_eg:
-        - محمد اقتبس من سيتيبو عشان يدعم أطروحته.
-        - محمد نقل عن سيتيبو علشان يقوّي أطروحته.
+        - من غير بيانات، حتى الأطروحة الأصلية صعب حد يصدّقها.
+        - الأطروحة حتى لو أصلية، من غير أرقام صعب تقنع حد.
       ar:
-        - اقتبس محمد من سيتيبو ليدعم أطروحته.
-        - استشهد محمد بسيتيبو تأييدًا لأطروحته.
+        - بلا بيانات يصعب تصديق حتّى الأطروحة الأصيلة.
+        - حتّى الأطروحة الأصيلة لا تُقنع دون بيانات.
       en:
-        - Mohamed quoted Sitepu to support his thesis.
-        - Mohamed cited Sitepu in support of his thesis.
-    words: [mengutip, tesis]
-  - id: e11
-    type: match_pairs
-    pairs:
-      - text: kerangka
-        ar_eg: هيكل
-        ar: هيكل
-        en: outline
-      - text: draf
-        ar_eg: مسودة
-        ar: مسوّدة
-        en: draft
-      - text: terpercaya
-        ar_eg: يتوثق فيه
-        ar: موثوق
-        en: trustworthy
-      - text: anonim
-        ar_eg: من غير اسم
-        ar: مجهول
-        en: anonymous
-      - text: umpan balik
-        ar_eg: فيدباك
-        ar: تغذية راجعة
-        en: feedback
-    words: [kerangka, draf, terpercaya, anonim, umpan balik]
-  - id: e12
-    type: fill_blank
-    sentence: Setelah membaca ulang, saya ___ esai itu dan memperbaiki tiga salah ketik.
-    meaning:
-      ar_eg: بعد ما قريته تاني، حرّرت المقال وصلّحت تلات غلطات كتابة.
-      ar: بعد إعادة القراءة حرّرت المقال وصحّحت ثلاثة أخطاء طباعية.
-      en: After rereading, I edited the essay and fixed three typos.
-    options: [menyunting, memeriksa, menyetujui]
-    answers: [menyunting]
-    words: [membaca ulang, menyunting, salah ketik]
+        - Without data, even an original thesis is hard to believe.
+        - Even an original thesis is hard to trust without data.
+    words: [data, tesis, orisinal]
 dialogue:
-  title: Pagi di Bukit Gundaling
+  title: Tesis yang terlalu luas
   lines:
-    - speaker: Rani
-      text: Lihat, Sinabung kelihatan jelas pagi ini. Selamat, esaimu lulus!
-      ar_eg: بص، سينابونج باين واضح النهارده الصبح. مبروك، مقالك نجح!
-      ar: انظر، سينابونغ واضح هذا الصباح. مبارك، نجحت مقالتك!
-      en: Look, Sinabung is clear this morning. Congratulations, your essay passed!
+    - speaker: Pak Ginting
+      text: Tesismu "Gunung berapi itu berbahaya." Terlalu luas, Mohamed.
+      ar_eg: أطروحتك «البراكين خطيرة». واسعة قوي يا محمد.
+      ar: أطروحتك «البراكين خطيرة». إنّها فضفاضة جدًّا يا محمد.
+      en: Your thesis is "Volcanoes are dangerous." Too broad, Mohamed.
     - speaker: Mohamed
-      text: Terima kasih. Penguji bilang jawaban saya meyakinkan.
-      ar_eg: شكرًا. الممتحنة قالت إن ردودي كانت مقنعة.
-      ar: شكرًا. قالت الممتحنة إنّ أجوبتي كانت مقنعة.
-      en: Thanks. The examiner said my answers were convincing.
-    - speaker: Rani
-      text: Jadi, BIPA 6 selesai. Ke mana sesudah ini?
-      ar_eg: يعني BIPA 6 خلص. رايح فين بعد كده؟
-      ar: إذن انتهى BIPA 6. إلى أين بعد هذا؟
-      en: So that's BIPA 6 done. Where to next?
+      text: Bagaimana kalau "Relokasi warga Sinabung perlu melibatkan warga sendiri"?
+      ar_eg: طب إيه رأيك في «نقل سكان سينابونج لازم يشارك فيه السكان نفسهم»؟
+      ar: وما رأيك في «يجب أن يشارك سكّان سينابونغ أنفسهم في نقلهم»؟
+      en: How about "The relocation of Sinabung's residents must involve the residents themselves"?
+    - speaker: Pak Ginting
+      text: Jauh lebih baik. Sekarang cari data untuk mendukungnya.
+      ar_eg: أحسن بكتير. دلوقتي دوّر على بيانات تدعمها.
+      ar: أفضل بكثير. ابحث الآن عن بيانات تدعمها.
+      en: Much better. Now find data to support it.
     - speaker: Mohamed
-      text: Ke timur, jauh sekali. Raja Ampat, Papua!
-      ar_eg: على الشرق، بعيد خالص. راجا أمبات، بابوا!
-      ar: شرقًا، بعيدًا جدًّا. راجا أمبات في بابوا!
-      en: East, a long way. Raja Ampat, Papua!
-souvenir:
-  id: bipa6.u10.souvenir
-  title: Pemandangan Gunung Sinabung
-  note:
-    ar_eg: جبل سينابونج في مقاطعة كارو بشمال سومطرة، وارتفاعه حوالي 2,460 متر. فضل ساكت حوالي 400 سنة لحد ما ثار سنة 2010، ورجع ثار تاني من 2013 ولسنين بعدها، وآلاف من الأهالي اضطروا يسيبوا قراهم ويتنقلوا. من تل جوندالينج (Bukit Gundaling) في برستاجي تقدر تشوف سينابونج وجبل سيباياك. وبالمناسبة، الكتابة الأكاديمية الإندونيسية بتمشي على قواعد الإملاء الرسمية EYD (آخر نسخة EYD V سنة 2022، وقبلها PUEBI)، وقاموس KBBI هو المرجع للكلمات الفصحى.
-    ar: جبل سينابونغ في مقاطعة كارو بشمال سومطرة، ويبلغ ارتفاعه نحو 2,460 مترًا. ظلّ خامدًا قرابة 400 عام حتّى ثار سنة 2010، ثمّ عاد إلى الثوران منذ 2013 لسنوات، فاضطُرّ آلاف السكّان إلى ترك قراهم والانتقال. ومن تلّ غونداليغ (Bukit Gundaling) في برستاغي يُرى سينابونغ وجبل سيباياك. وتتبع الكتابة الأكاديمية الإندونيسية قواعد الإملاء الرسمية EYD (أحدثها EYD V سنة 2022، وقبلها PUEBI)، ومعجم KBBI مرجع الألفاظ الفصيحة.
-    en: Mount Sinabung, in Karo Regency, North Sumatra, rises about 2,460 m. It lay quiet for roughly 400 years until it erupted in 2010, then erupted again from 2013 for years afterwards, and thousands of villagers had to leave their homes and be relocated. From Bukit Gundaling in Berastagi you can see both Sinabung and Mount Sibayak. Indonesian academic writing follows the official EYD spelling rules (the latest is EYD V, 2022; before it came PUEBI), and the KBBI dictionary is the reference for standard words.
+      text: Baik, Pak. Saya akan menulisnya sendiri supaya tetap orisinal.
+      ar_eg: حاضر يا أستاذ. هكتبه بنفسي علشان يفضل أصلي.
+      ar: حسنًا يا أستاذ، سأكتبه بنفسي ليبقى أصيلًا.
+      en: All right, sir. I'll write it myself so it stays original.
+new_words:
+  - word: tesis
+    pos: noun
+    ar_eg: أطروحة / الفكرة الأساسية
+    ar: أطروحة
+    en: thesis statement
+  - word: data
+    pos: noun
+    ar_eg: بيانات
+    ar: بيانات
+    en: data
+  - word: plagiarisme
+    pos: noun
+    ar_eg: انتحال / سرقة أدبية
+    ar: انتحال
+    en: plagiarism
+  - word: orisinal
+    pos: adjective
+    ar_eg: أصلي / بتاعك إنت
+    ar: أصيل
+    en: original
 review:
   status: draft
   verified: false

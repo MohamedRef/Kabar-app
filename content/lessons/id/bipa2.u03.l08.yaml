@@ -58,18 +58,25 @@ exercises:
     answer: 2
     words: [para, penumpang, mohon, perhatian]
   - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح؟
-      ar: أيّ جملة صحيحة؟
-      en: Which sentence is correct?
-    options: [Semua penumpang sudah naik., Semua penumpang-penumpang sudah naik., Penumpang semua-semua sudah naik.]
-    answer: 0
-    explain:
-      ar_eg: semua كفاية تقول إنهم كتير، متكررش الاسم.
-      ar: semua تغني عن تكرار الاسم.
-      en: semua already shows plural; don't reduplicate.
-    words: [semua, penumpang]
+    type: match_pairs
+    pairs:
+      - text: pengumuman
+        ar_eg: إعلان
+        ar: إعلان
+        en: announcement
+      - text: gerbang
+        ar_eg: بوابة
+        ar: بوابة
+        en: gate
+      - text: tanda
+        ar_eg: يافطة، علامة
+        ar: لافتة، علامة
+        en: sign, mark
+      - text: aturan
+        ar_eg: قاعدة، نظام
+        ar: قاعدة، نظام
+        en: rule
+    words: [pengumuman, gerbang, tanda, aturan]
   - id: e05
     type: multiple_choice
     question_meaning:

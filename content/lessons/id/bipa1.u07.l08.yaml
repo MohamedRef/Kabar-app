@@ -1,239 +1,224 @@
 schema: kabar.lesson/v1
 id: bipa1.u07.l08
 language: id
-title: Main bola
+title: Hobi di rumah
 can_do:
-  ar_eg: 'تتكلم عن الرياضة والماتشات: مين كسب ومين خسر.'
-  ar: 'أن تتحدث عن الرياضة والمباريات: من فاز ومن خسر.'
-  en: 'Talk about sport and matches: who won and who lost.'
+  ar_eg: 'تتكلم عن هوايات هادية: صيد السمك والزراعة والخياطة والرسم.'
+  ar: 'أن تتحدث عن هوايات هادئة: صيد السمك والزراعة والخياطة والرسم.'
+  en: 'Talk about quiet hobbies: fishing, gardening, sewing and pictures.'
 slides:
-  - title: Menang atau kalah?
+  - title: Memancing dan berkebun
     body:
       ar_eg: |
-        main = يلعب (عامية، والرسمي bermain): main bola = يلعب كورة.
-        olahraga = رياضة، permainan = لعبة، klub = نادي.
-        menang = يكسب، وkalah = يخسر.
-        lari = يجري (والرسمي berlari).
+        memancing = يصطاد سمك بالسنارة، وberkebun = يزرع في الجنينة (kebun = جنينة، هتيجي بعدين).
+        tanaman = نبات أو زرعة. menjahit = يخيّط.
+        gambar = صورة أو رسمة، ومنها menggambar (يرسم).
+        emas = دهب. وikan emas = سمكة زينة دهبي.
       ar: |
-        main = يلعب (بالعامية، والفصيح bermain): main bola = يلعب كرة القدم.
-        olahraga = رياضة، permainan = لعبة، klub = نادٍ.
-        menang = يفوز، وkalah = يخسر.
-        lari = يجري (والفصيح berlari).
+        memancing = يصطاد السمك بالصنّارة، وberkebun = يزرع في البستان (kebun = بستان، ستأتي لاحقًا).
+        tanaman = نبات. menjahit = يخيط.
+        gambar = صورة أو رسم، ومنها menggambar (يرسم).
+        emas = ذهب، وikan emas = السمكة الذهبية.
       en: |
-        main = play (casual; formal bermain): main bola = play football.
-        olahraga = sport, permainan = game, klub = club.
-        menang = win, kalah = lose.
-        lari = run (formal berlari).
+        memancing = go fishing; berkebun = do gardening (kebun = garden, coming later).
+        tanaman = plant. menjahit = sew.
+        gambar = picture, drawing, the root of menggambar (draw).
+        emas = gold, and ikan emas = goldfish.
     examples:
-      - text: Setiap Minggu kami main bola di taman.
-        ar_eg: كل حد بنلعب كورة في الجنينة.
-        ar: كل أحد نلعب الكرة في الحديقة.
-        en: Every Sunday we play football in the park.
-      - text: Klub saya menang!
-        ar_eg: النادي بتاعي كسب!
-        ar: فاز نادِيَّ!
-        en: My club won!
-      - text: Olahraga favorit saya lari.
-        ar_eg: رياضتي المفضلة الجري.
-        ar: رياضتي المفضّلة الجري.
-        en: My favourite sport is running.
+      - text: Kakek suka memancing di sungai.
+        ar_eg: جدو بيحب يصطاد سمك في النهر.
+        ar: يحبّ جدّي صيد السمك في النهر.
+        en: Grandpa likes fishing in the river.
+      - text: Nenek suka berkebun. Tanamannya banyak.
+        ar_eg: تيتا بتحب الزراعة. عندها زرع كتير.
+        ar: تحبّ جدّتي الزراعة، ونباتاتها كثيرة.
+        en: Grandma likes gardening. She has lots of plants.
+      - text: Ini gambar ikan emas.
+        ar_eg: دي رسمة سمكة دهبي.
+        ar: هذه صورة سمكة ذهبية.
+        en: This is a picture of a goldfish.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: main
-        ar_eg: يلعب
-        ar: يلعب
-        en: play
-      - text: bola
-        ar_eg: كورة
-        ar: كرة
-        en: ball
-      - text: olahraga
-        ar_eg: رياضة
-        ar: رياضة
-        en: sport
-      - text: permainan
-        ar_eg: لعبة
-        ar: لعبة
-        en: game
-    words: [main, bola, olahraga, permainan]
+      - text: memancing
+        ar_eg: يصطاد سمك
+        ar: يصطاد السمك
+        en: go fishing
+      - text: berkebun
+        ar_eg: يزرع الجنينة
+        ar: يزرع البستان
+        en: garden
+      - text: tanaman
+        ar_eg: زرعة، نبات
+        ar: نبات
+        en: plant
+    words: [memancing, berkebun, tanaman]
   - id: e02
     type: match_pairs
     pairs:
-      - text: klub
-        ar_eg: نادي
-        ar: نادٍ
-        en: club
-      - text: menang
-        ar_eg: يكسب
-        ar: يفوز
-        en: win
-      - text: kalah
-        ar_eg: يخسر
-        ar: يخسر
-        en: lose
-      - text: lari
-        ar_eg: يجري
-        ar: يجري
-        en: run
-    words: [klub, menang, kalah, lari]
+      - text: gambar
+        ar_eg: صورة، رسمة
+        ar: صورة، رسم
+        en: picture
+      - text: menjahit
+        ar_eg: يخيّط
+        ar: يخيط
+        en: sew
+      - text: emas
+        ar_eg: دهب
+        ar: ذهب
+        en: gold
+    words: [gambar, menjahit, emas]
   - id: e03
     type: listen
-    text: Kami main bola di taman setiap Sabtu.
+    text: Kakek suka memancing di sungai.
     question:
-      ar_eg: بيلعبوا إيه؟
-      ar: ماذا يلعبون؟
-      en: What do they play?
-    options: [كورة, بيانو, جري]
+      ar_eg: جدو بيحب يعمل إيه؟
+      ar: ماذا يحبّ الجدّ أن يفعل؟
+      en: What does Grandpa like doing?
+    options: [يصطاد سمك, يخيّط, يرسم]
     answer: 0
     meaning:
-      ar_eg: بنلعب كورة في الجنينة كل سبت.
-      ar: نلعب الكرة في الحديقة كل سبت.
-      en: We play football in the park every Saturday.
-    words: [main, bola]
+      ar_eg: جدو بيحب يصطاد سمك في النهر.
+      ar: يحبّ جدّي صيد السمك في النهر.
+      en: Grandpa likes fishing in the river.
+    words: [memancing]
   - id: e04
     type: fill_blank
-    sentence: Klub saya ___! Tiga — nol!
+    sentence: Nenek suka ___. Tanamannya banyak.
     meaning:
-      ar_eg: النادي بتاعي ___! تلاتة — صفر!
-      ar: نادِيَّ ___! ثلاثة مقابل لا شيء!
-      en: My club ___! Three — nil!
-    options: [menang, kalah, lari]
-    answers: [menang]
-    words: [klub, menang, kalah, lari]
+      ar_eg: تيتا بتحب ___. عندها زرع كتير.
+      ar: تحبّ جدّتي ___، ونباتاتها كثيرة.
+      en: Grandma likes ___. She has lots of plants.
+    options: [berkebun, menjahit, memancing]
+    answers: [berkebun]
+    words: [berkebun, tanaman, menjahit, memancing]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: 'سباحة، جري، كورة: دول كلهم إيه؟'
-      ar: 'السباحة والجري والكرة: ما هي كلّها؟'
-      en: 'Swimming, running, football: what are they all?'
-    options: [olahraga, permainan, klub]
+      ar_eg: بتحب تعمل هدومك بإيدك بالإبرة والخيط. هوايتك…؟
+      ar: تحبّ أن تصنع ملابسك بالإبرة والخيط. هوايتك…؟
+      en: You like making your own clothes with needle and thread. Your hobby is…?
+    options: [menjahit, memancing, berkebun]
     answer: 0
     explain:
-      ar_eg: olahraga = رياضة. permainan لعبة، وklub نادي.
-      ar: olahraga رياضة، أما permainan فلعبة وklub نادٍ.
-      en: olahraga = sport; permainan is a game, klub a club.
-    words: [olahraga, permainan, klub]
+      ar_eg: menjahit = يخيّط. memancing صيد، وberkebun زراعة.
+      ar: menjahit الخياطة، أما memancing فالصيد وberkebun الزراعة.
+      en: menjahit = sewing; memancing is fishing and berkebun gardening.
+    words: [menjahit, memancing, berkebun]
   - id: e06
     type: fill_blank
-    sentence: Mesir ___ satu — dua. Tidak apa-apa!
+    sentence: Ini ___ ikan emas. Adik saya menggambar.
     meaning:
-      ar_eg: مصر ___ واحد — اتنين. مش مشكلة!
-      ar: ___ مصر بهدف مقابل هدفين. لا بأس!
-      en: Egypt ___ one — two. Never mind!
-    options: [kalah, menang, main]
-    answers: [kalah]
-    words: [kalah]
+      ar_eg: دي ___ سمكة دهبي. أخويا الصغير رسمها.
+      ar: هذه ___ سمكة ذهبية، رسمها أخي الصغير.
+      en: This is a ___ of a goldfish. My little brother drew it.
+    options: [gambar, tanaman, emas]
+    answers: [gambar]
+    words: [gambar, emas, tanaman]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: بجري كل يوم الصبح.
-      ar: أجري كل صباح.
-      en: I run every morning.
-    answer: Saya lari setiap pagi.
-    distractors: [bola, klub]
-    words: [lari]
+      ar_eg: مامتي بتخيّط هدوم.
+      ar: أمّي تخيط ملابس.
+      en: My mother sews clothes.
+    answer: Ibu saya menjahit pakaian.
+    distractors: [emas, gambar]
+    words: [menjahit]
   - id: e08
     type: translate
     direction: from_target
-    source_text: Ini permainan favorit anak-anak.
+    source_text: Saya punya ikan emas di rumah.
     answers_meaning:
-      ar_eg: [دي اللعبة المفضلة عند العيال, دي لعبة العيال المفضلة]
-      ar: [هذه لعبة الأطفال المفضّلة, هذه اللعبة المفضّلة لدى الأطفال]
-      en: ['This is the kids'' favourite game', 'This is the children''s favourite game']
-    words: [permainan]
+      ar_eg: [عندي سمكة دهبي في البيت, عندي سمك زينة دهبي في البيت]
+      ar: [لديّ سمكة ذهبية في البيت, عندي سمكة ذهبية في المنزل]
+      en: [I have a goldfish at home, 'I''ve got a goldfish at home']
+    words: [emas]
   - id: e09
     type: speaking
-    text: Olahraga favorit saya main bola.
+    text: Hobi saya berkebun dan memancing.
     meaning:
-      ar_eg: رياضتي المفضلة الكورة.
-      ar: رياضتي المفضّلة لعب الكرة.
-      en: My favourite sport is playing football.
-    words: [olahraga, main, bola]
+      ar_eg: هوايتي الزراعة وصيد السمك.
+      ar: هوايتي الزراعة وصيد السمك.
+      en: My hobbies are gardening and fishing.
+    words: [berkebun, memancing]
   - id: e10
     type: multiple_choice
-    question: Klub Rina menang, klub Raka ___.
-    options: [kalah, lari, main]
+    question_meaning:
+      ar_eg: معدن غالي لونه أصفر. اسمه إيه؟
+      ar: معدن ثمين لونه أصفر. ما اسمه؟
+      en: A precious yellow metal. What is it?
+    options: [emas, tanaman, gambar]
     answer: 0
     explain:
-      ar_eg: 'لو حد كسب، التاني خسر: kalah.'
-      ar: 'إذا فاز أحدهما خسر الآخر: kalah.'
-      en: 'If one wins, the other loses: kalah.'
-    words: [klub, kalah, menang]
+      ar_eg: emas = دهب.
+      ar: emas = ذهب.
+      en: emas = gold.
+    words: [emas, tanaman, gambar]
 dialogue:
   lines:
-    - speaker: Raka
-      text: Mohamed, kamu suka olahraga?
-      ar_eg: يا محمد، بتحب الرياضة؟
-      ar: يا محمد، هل تحبّ الرياضة؟
-      en: Mohamed, do you like sport?
     - speaker: Mohamed
-      text: Suka! Saya suka main bola dan lari.
-      ar_eg: بحبها! بحب الكورة والجري.
-      ar: أحبّها! أحبّ الكرة والجري.
-      en: I do! I like football and running.
-    - speaker: Raka
-      text: 'Malam ini ada sepak bola di tv: Indonesia dan Mesir!'
-      ar_eg: 'الليلة فيه ماتش كورة في التلفزيون: إندونيسيا ومصر!'
-      ar: 'الليلة مباراة كرة على التلفاز: إندونيسيا ومصر!'
-      en: 'There''s football on TV tonight: Indonesia and Egypt!'
+      text: Ni Luh, kamu punya hobi?
+      ar_eg: يا ني لوه، عندك هواية؟
+      ar: يا ني لوه، هل لديك هواية؟
+      en: Ni Luh, do you have a hobby?
+    - speaker: Ni Luh
+      text: Ya. Saya suka menjahit dan menggambar.
+      ar_eg: أيوه. بحب الخياطة والرسم.
+      ar: نعم، أحبّ الخياطة والرسم.
+      en: Yes. I like sewing and drawing.
     - speaker: Mohamed
-      text: Seru! Siapa menang, ya?
-      ar_eg: تحفة! يا ترى مين هيكسب؟
-      ar: مثير! تُرى من سيفوز؟
-      en: Exciting! Who'll win, I wonder?
-    - speaker: Raka
-      text: Indonesia menang, dua — satu!
-      ar_eg: إندونيسيا كسبت، اتنين — واحد!
-      ar: فازت إندونيسيا بهدفين مقابل هدف!
-      en: Indonesia won, two — one!
+      text: Hebat! Teman saya Raka suka memancing.
+      ar_eg: جامد! وصاحبي رَكا بيحب صيد السمك.
+      ar: رائع! وصديقي راكا يحبّ صيد السمك.
+      en: Great! My friend Raka likes fishing.
+    - speaker: Ni Luh
+      text: Ayah saya suka berkebun. Di rumah kami ada banyak tanaman.
+      ar_eg: بابا بيحب الزراعة. عندنا زرع كتير في البيت.
+      ar: أبي يحبّ الزراعة، وفي بيتنا نباتات كثيرة.
+      en: My dad likes gardening. We have lots of plants at home.
     - speaker: Mohamed
-      text: Mesir kalah… Tidak apa-apa. Permainannya seru!
-      ar_eg: مصر خسرت… مش مشكلة. الماتش كان حلو!
-      ar: خسرت مصر… لا بأس، كانت مباراة مثيرة!
-      en: Egypt lost… Never mind. It was a great game!
+      text: Ada ikan emas juga?
+      ar_eg: وعندكم سمك دهبي كمان؟
+      ar: وهل عندكم سمك ذهبي أيضًا؟
+      en: Do you have goldfish too?
+    - speaker: Ni Luh
+      text: Ada! Lima ikan emas.
+      ar_eg: أيوه! خمس سمكات دهبي.
+      ar: نعم! خمس سمكات ذهبية.
+      en: Yes! Five goldfish.
 new_words:
-  - word: main
+  - word: memancing
     pos: verb
-    ar_eg: يلعب (عامية)
-    ar: يلعب (عامية)
-    en: play (casual)
-  - word: bola
-    pos: noun
-    ar_eg: كورة
-    ar: كرة
-    en: ball; football
-  - word: olahraga
-    pos: noun
-    ar_eg: رياضة
-    ar: رياضة
-    en: sport
-  - word: permainan
-    pos: noun
-    ar_eg: لعبة، ماتش
-    ar: لعبة، مباراة
-    en: game
-  - word: klub
-    pos: noun
-    ar_eg: نادي
-    ar: نادٍ
-    en: club
-  - word: menang
+    ar_eg: يصطاد سمك
+    ar: يصطاد السمك
+    en: go fishing
+  - word: berkebun
     pos: verb
-    ar_eg: يكسب
-    ar: يفوز
-    en: win
-  - word: kalah
+    ar_eg: يزرع الجنينة
+    ar: يزرع البستان
+    en: do gardening
+  - word: tanaman
+    pos: noun
+    ar_eg: زرعة، نبات
+    ar: نبات
+    en: plant
+  - word: gambar
+    pos: noun
+    ar_eg: صورة، رسمة
+    ar: صورة، رسم
+    en: picture, drawing
+  - word: menjahit
     pos: verb
-    ar_eg: يخسر
-    ar: يخسر
-    en: lose
-  - word: lari
-    pos: verb
-    ar_eg: يجري
-    ar: يجري
-    en: run
+    ar_eg: يخيّط
+    ar: يخيط
+    en: sew
+  - word: emas
+    pos: noun
+    ar_eg: دهب
+    ar: ذهب
+    en: gold
 review:
   status: draft
   verified: false

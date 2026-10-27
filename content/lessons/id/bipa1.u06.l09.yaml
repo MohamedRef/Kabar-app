@@ -1,71 +1,50 @@
 schema: kabar.lesson/v1
 id: bipa1.u06.l09
 language: id
-title: Roti, susu, sendok
+title: Tugas di kantor
 can_do:
-  ar_eg: تطلب الفطار وتسمّي الكوباية والطبق والمعلقة والشوكة والسكينة.
-  ar: أن تطلب الفطور وتسمّي الكوب والطبق والملعقة والشوكة والسكين.
-  en: Order breakfast and name the glass, plate, spoon, fork and knife.
+  ar_eg: 'تتكلم عن يوم شغل: المهام والتليفون والكمبيوتر والنت، والغدا على المكتب.'
+  ar: 'أن تتحدث عن يوم عمل: المهامّ والهاتف والحاسوب والإنترنت، والغداء على المكتب.'
+  en: 'Talk about a working day: tasks, phone, computer and internet, and lunch at your desk.'
 slides:
-  - title: Sarapan
+  - title: Hari kerja
     body:
       ar_eg: |
-        على الفطار: roti (عيش أو توست)، susu (لبن)، es (تلج: es teh = شاي بالتلج).
-        gelas = كوباية، piring = طبق، sendok = معلقة، garpu = شوكة، pisau = سكينة.
-        الإندونيسيين بياكلوا الرز بالمعلقة في اليمين والشوكة في الشمال، والسكينة قليل. وكتير بياكلوا بإيدهم اليمين.
+        tugas = مهمة أو واجب. telepon = تليفون أو مكالمة: Ada telepon untuk Anda.
+        komputer = كمبيوتر، internet = نت.
+        وفي الغدا: piring = طبق، garpu = شوكة، pisau = سكينة. الإندونيسيين بياكلوا بالمعلقة والشوكة، والسكينة قليلة على السفرة.
+        es = تلج: es teh = شاي بالتلج، مشروب كل يوم.
       ar: |
-        على الفطور: roti (خبز)، وsusu (حليب)، وes (ثلج: es teh = شاي مثلّج).
-        gelas = كوب، piring = طبق، sendok = ملعقة، garpu = شوكة، pisau = سكين.
-        يأكل الإندونيسيون الأرز بالملعقة في اليمنى والشوكة في اليسرى، ونادرًا ما يستعملون السكين، وكثيرون يأكلون باليد اليمنى.
+        tugas = مهمّة أو واجب. telepon = هاتف أو مكالمة: Ada telepon untuk Anda.
+        komputer = حاسوب، internet = إنترنت.
+        وعلى الغداء: piring = طبق، garpu = شوكة، pisau = سكين. يأكل الإندونيسيون بالملعقة والشوكة، ونادرًا ما يظهر السكين على المائدة.
+        es = ثلج: es teh = شاي مثلّج، مشروب يومي.
       en: |
-        At breakfast: roti (bread), susu (milk), es (ice: es teh = iced tea).
-        gelas = glass, piring = plate, sendok = spoon, garpu = fork, pisau = knife.
-        Indonesians eat rice with a spoon in the right hand and a fork in the left, rarely a knife, and many eat with the right hand.
+        tugas = task, assignment. telepon = phone, phone call: Ada telepon untuk Anda.
+        komputer = computer, internet = internet.
+        At lunch: piring = plate, garpu = fork, pisau = knife. Indonesians eat with spoon and fork; knives rarely come to the table.
+        es = ice: es teh = iced tea, an everyday drink.
     examples:
-      - text: Saya sarapan roti dan susu.
-        ar_eg: بفطر عيش ولبن.
-        ar: أفطر خبزًا وحليبًا.
-        en: I have bread and milk for breakfast.
-      - text: Orang Indonesia makan nasi memakai sendok dan garpu.
-        ar_eg: الإندونيسيين بياكلوا الرز بالمعلقة والشوكة.
-        ar: يأكل الإندونيسيون الأرز بالملعقة والشوكة.
-        en: Indonesians eat rice with a spoon and fork.
-      - text: Minta es teh satu gelas!
-        ar_eg: واحد شاي بالتلج لو سمحت!
-        ar: كوب شاي مثلّج من فضلك!
-        en: One glass of iced tea, please!
+      - text: Tugas saya banyak hari ini.
+        ar_eg: عندي شغل كتير النهارده.
+        ar: لديّ مهامّ كثيرة اليوم.
+        en: I've got lots of tasks today.
+      - text: Komputer ada, tapi internet tidak ada.
+        ar_eg: فيه كمبيوتر، بس مفيش نت.
+        ar: يوجد حاسوب، لكن لا إنترنت.
+        en: There's a computer, but no internet.
+      - text: Mau es teh?
+        ar_eg: تشرب شاي بالتلج؟
+        ar: أتريد شايًا مثلّجًا؟
+        en: Want some iced tea?
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: roti
-        ar_eg: عيش، توست
-        ar: خبز
-        en: bread
-      - text: susu
-        ar_eg: لبن
-        ar: حليب
-        en: milk
-      - text: es
-        ar_eg: تلج
-        ar: ثلج
-        en: ice
-      - text: gelas
-        ar_eg: كوباية
-        ar: كوب
-        en: glass
-    words: [roti, susu, es, gelas]
-  - id: e02
     type: match_pairs
     pairs:
       - text: piring
         ar_eg: طبق
         ar: طبق
         en: plate
-      - text: sendok
-        ar_eg: معلقة
-        ar: ملعقة
-        en: spoon
       - text: garpu
         ar_eg: شوكة
         ar: شوكة
@@ -74,153 +53,172 @@ exercises:
         ar_eg: سكينة
         ar: سكين
         en: knife
-    words: [piring, sendok, garpu, pisau]
+      - text: es
+        ar_eg: تلج
+        ar: ثلج
+        en: ice
+    words: [piring, garpu, pisau, es]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: tugas
+        ar_eg: مهمة، واجب
+        ar: مهمّة، واجب
+        en: task
+      - text: telepon
+        ar_eg: تليفون
+        ar: هاتف
+        en: phone
+      - text: komputer
+        ar_eg: كمبيوتر
+        ar: حاسوب
+        en: computer
+      - text: internet
+        ar_eg: نت
+        ar: إنترنت
+        en: internet
+    words: [tugas, telepon, komputer, internet]
   - id: e03
     type: listen
-    text: Setiap pagi saya minum susu dan makan roti.
+    text: Komputer ada, tapi internet tidak ada.
     question:
-      ar_eg: بيفطر إيه؟
-      ar: ماذا يفطر؟
-      en: What does he have for breakfast?
-    options: [عيش ولبن, رز وسمك, شاي وكيك]
+      ar_eg: إيه اللي مش موجود؟
+      ar: ما الذي لا يوجد؟
+      en: What's missing?
+    options: [مفيش نت, مفيش كمبيوتر, مفيش تليفون]
     answer: 0
     meaning:
-      ar_eg: كل يوم الصبح بشرب لبن وباكل عيش.
-      ar: كل صباح أشرب الحليب وآكل الخبز.
-      en: Every morning I drink milk and eat bread.
-    words: [susu, roti]
+      ar_eg: فيه كمبيوتر، بس مفيش نت.
+      ar: يوجد حاسوب لكن لا إنترنت.
+      en: There's a computer, but no internet.
+    words: [komputer, internet]
   - id: e04
     type: fill_blank
-    sentence: Minta es teh satu ___!
+    sentence: Sendok dan ___ untuk makan nasi.
     meaning:
-      ar_eg: واحد شاي بالتلج، ___ لو سمحت!
-      ar: ___ شاي مثلّج من فضلك!
-      en: One ___ of iced tea, please!
-    options: [gelas, piring, pisau]
-    answers: [gelas]
-    words: [es, gelas, piring, pisau]
+      ar_eg: المعلقة والـ ___ عشان أكل الرز.
+      ar: الملعقة و___ لأكل الأرز.
+      en: A spoon and a ___ for eating rice.
+    options: [garpu, pisau, piring]
+    answers: [garpu]
+    words: [garpu, pisau, piring]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: الإندونيسيين غالبًا بياكلوا الرز بإيه؟
-      ar: بمَ يأكل الإندونيسيون الأرز غالبًا؟
-      en: What do Indonesians usually eat rice with?
-    options: [sendok dan garpu, pisau dan garpu, gelas dan piring]
+      ar_eg: بتقطع اللحمة بإيه؟
+      ar: بمَ تقطع اللحم؟
+      en: What do you cut meat with?
+    options: [pisau, garpu, es]
     answer: 0
     explain:
-      ar_eg: معلقة في اليمين وشوكة في الشمال. السكينة قليل.
-      ar: ملعقة في اليمنى وشوكة في اليسرى، والسكين نادر.
-      en: A spoon in the right hand and a fork in the left; knives are rare.
-    words: [sendok, garpu, pisau, gelas, piring]
+      ar_eg: pisau = سكينة.
+      ar: pisau = سكين.
+      en: pisau = knife.
+    words: [pisau, garpu, es]
   - id: e06
     type: fill_blank
-    sentence: Nasi uduk di ___ itu enak.
+    sentence: Saya membaca email di ___.
     meaning:
-      ar_eg: الناسي أودوك اللي في ___ ده حلو.
-      ar: الناسي أودوك في ذلك ___ لذيذ.
-      en: The nasi uduk on that ___ is good.
-    options: [piring, gelas, susu]
-    answers: [piring]
-    words: [piring]
+      ar_eg: بقرا الإيميل على الـ ___.
+      ar: أقرأ البريد على ___.
+      en: I read email on the ___.
+    options: [komputer, piring, es]
+    answers: [komputer]
+    words: [komputer, piring, es]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: عايز سكينة وشوكة لو سمحت.
-      ar: أريد سكينًا وشوكة من فضلك.
-      en: I'd like a knife and fork, please.
-    answer: Saya minta pisau dan garpu.
-    distractors: [roti, es]
-    words: [pisau, garpu]
+      ar_eg: عايز شاي بالتلج لو سمحت.
+      ar: أريد شايًا مثلّجًا من فضلك.
+      en: An iced tea, please.
+    answer: Saya mau es teh, ya.
+    distractors: [piring, garpu]
+    words: [es]
   - id: e08
     type: translate
     direction: from_target
-    source_text: Kopi susunya enak, esnya banyak.
+    source_text: Ada telepon untuk Anda, Pak.
     answers_meaning:
-      ar_eg: [القهوة باللبن حلوة، والتلج كتير, القهوة باللبن طعمها حلو وفيها تلج كتير]
-      ar: [القهوة بالحليب لذيذة، والثلج كثير, قهوة الحليب لذيذة وفيها ثلج كثير]
-      en: ['The milk coffee is good, and there''s lots of ice', 'The coffee with milk is tasty, with lots of ice']
-    words: [susu, es]
+      ar_eg: [فيه تليفون لحضرتك يا أستاذ, فيه مكالمة لحضرتك يا أستاذ]
+      ar: [هناك مكالمة لك يا سيدي, لديك مكالمة يا سيدي]
+      en: ['There''s a phone call for you, sir', 'There''s a call for you, sir']
+    words: [telepon]
   - id: e09
     type: speaking
-    text: Roti ini enak. Minta satu piring lagi!
+    text: Tugas saya sudah selesai. Saya mau telepon ibu saya.
     meaning:
-      ar_eg: العيش ده حلو. عايز طبق كمان لو سمحت!
-      ar: هذا الخبز لذيذ. طبقًا آخر من فضلك!
-      en: This bread is good. One more plate, please!
-    words: [roti, piring]
+      ar_eg: خلصت شغلي. عايز أكلّم ماما.
+      ar: أنهيت مهامّي، وأريد أن أتصل بأمي.
+      en: My tasks are done. I want to call my mum.
+    words: [tugas, telepon]
   - id: e10
     type: multiple_choice
-    question: Saya makan nasi memakai ___.
-    options: [sendok, gelas, susu]
+    question: Nasi dan ayam ada di ___.
+    options: [piring, internet, tugas]
     answer: 0
     explain:
-      ar_eg: 'الرز بيتاكل بالمعلقة: sendok. gelas كوباية وsusu لبن.'
-      ar: 'يؤكل الأرز بالملعقة: sendok، أما gelas فكوب وsusu حليب.'
-      en: 'Rice is eaten with a spoon: sendok. gelas is a glass and susu milk.'
-    words: [sendok, gelas, susu]
+      ar_eg: 'الرز والفراخ في الطبق: piring.'
+      ar: 'الأرز والدجاج في الطبق: piring.'
+      en: 'Rice and chicken go on a plate: piring.'
+    words: [piring, internet, tugas]
 dialogue:
   lines:
-    - speaker: Pelayan
-      text: Selamat pagi, Pak. Mau sarapan apa?
-      ar_eg: صباح الخير يا أستاذ. تحب تفطر إيه؟
-      ar: صباح الخير يا سيدي. ماذا تريد للفطور؟
-      en: Good morning, sir. What would you like for breakfast?
+    - speaker: Rina
+      text: Mohamed, kamu makan di mana?
+      ar_eg: يا محمد، هتاكل فين؟
+      ar: يا محمد، أين ستأكل؟
+      en: Mohamed, where are you eating?
     - speaker: Mohamed
-      text: Saya mau roti dan susu.
-      ar_eg: عايز عيش ولبن.
-      ar: أريد خبزًا وحليبًا.
-      en: I'd like bread and milk.
-    - speaker: Pelayan
-      text: Mau es, Pak?
-      ar_eg: تحب تلج يا أستاذ؟
-      ar: هل تريد ثلجًا يا سيدي؟
-      en: Would you like ice, sir?
+      text: Di sini saja. Tugas saya banyak.
+      ar_eg: هنا وخلاص. عندي شغل كتير.
+      ar: هنا. لديّ مهامّ كثيرة.
+      en: Right here. I've got lots to do.
+    - speaker: Rina
+      text: Ini nasi untuk kamu. Ada piring dan garpu?
+      ar_eg: ده رز ليك. معاك طبق وشوكة؟
+      ar: هذا أرز لك. هل معك طبق وشوكة؟
+      en: Here's some rice for you. Got a plate and fork?
     - speaker: Mohamed
-      text: Tidak, terima kasih. Minta satu gelas air putih juga.
-      ar_eg: لأ، شكرًا. وكوباية مية كمان لو سمحت.
-      ar: لا، شكرًا. وكوب ماء أيضًا من فضلك.
-      en: No, thanks. And a glass of water too, please.
-    - speaker: Pelayan
-      text: Baik. Ini piring, sendok, dan garpu.
-      ar_eg: حاضر. دا الطبق والمعلقة والشوكة.
-      ar: حسنًا. هذا الطبق والملعقة والشوكة.
-      en: Sure. Here's a plate, a spoon and a fork.
+      text: Ada. Terima kasih! Mau es teh juga?
+      ar_eg: معايا. شكرًا! تشربي شاي بالتلج كمان؟
+      ar: نعم، شكرًا! أتريدين شايًا مثلّجًا أيضًا؟
+      en: Yes. Thanks! Want an iced tea too?
+    - speaker: Rina
+      text: Mau! Eh, internetnya tidak ada?
+      ar_eg: آه! إيه ده، النت مش شغال؟
+      ar: نعم! هل الإنترنت مقطوع؟
+      en: Yes please! Hey, is the internet down?
     - speaker: Mohamed
-      text: Terima kasih. Pisaunya di mana?
-      ar_eg: شكرًا. والسكينة فين؟
-      ar: شكرًا. وأين السكين؟
-      en: Thanks. Where's the knife?
+      text: Tidak ada. Tugas saya tidak bisa selesai!
+      ar_eg: مفيش. شغلي مش هيخلص!
+      ar: مقطوع. لن أنهي مهامّي!
+      en: It's down. I can't finish my work!
 new_words:
-  - word: roti
+  - word: tugas
     pos: noun
-    ar_eg: عيش، توست
-    ar: خبز
-    en: bread
-  - word: susu
+    ar_eg: مهمة، واجب
+    ar: مهمّة، واجب
+    en: task, assignment
+  - word: telepon
     pos: noun
-    ar_eg: لبن
-    ar: حليب
-    en: milk
-  - word: es
+    ar_eg: تليفون، مكالمة
+    ar: هاتف، مكالمة
+    en: telephone, phone call
+  - word: komputer
     pos: noun
-    ar_eg: تلج
-    ar: ثلج
-    en: ice
-  - word: gelas
+    ar_eg: كمبيوتر
+    ar: حاسوب
+    en: computer
+  - word: internet
     pos: noun
-    ar_eg: كوباية
-    ar: كوب
-    en: glass
+    ar_eg: نت
+    ar: إنترنت
+    en: internet
   - word: piring
     pos: noun
     ar_eg: طبق
     ar: طبق
     en: plate
-  - word: sendok
-    pos: noun
-    ar_eg: معلقة
-    ar: ملعقة
-    en: spoon
   - word: garpu
     pos: noun
     ar_eg: شوكة
@@ -231,6 +229,11 @@ new_words:
     ar_eg: سكينة
     ar: سكين
     en: knife
+  - word: es
+    pos: noun
+    ar_eg: تلج
+    ar: ثلج
+    en: ice
 review:
   status: draft
   verified: false

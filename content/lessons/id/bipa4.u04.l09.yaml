@@ -1,0 +1,216 @@
+schema: kabar.lesson/v1
+id: bipa4.u04.l09
+language: id
+title: Berita banjir
+can_do:
+  ar_eg: تقرا خبر أونلاين قصير وتفهم إيه اللي حصل وليه وإيه النتيجة.
+  ar: أن تقرأ خبرًا إلكترونيًا قصيرًا وتفهم ما حدث ولماذا وما نتيجته.
+  en: Read a short online news item and say what happened, why, and with what result.
+slides:
+  - title: Berita daring hari ini
+    body:
+      ar_eg: |
+        خبر من موقع جرنال في باريباري. الأول العنوان، وبعدين الخبر.
+        دوّر على السبب والنتيجة: Akibatnya و Oleh karena itu.
+      ar: |
+        خبر من موقع صحيفة في باريباري: العنوان أولًا، ثم الخبر.
+        ابحث عن السبب والنتيجة: Akibatnya و Oleh karena itu.
+      en: |
+        A news item from a Parepare news site: first the headline, then the story.
+        Look for cause and effect: Akibatnya and Oleh karena itu.
+    examples:
+      - text: Hujan Deras, Pasar Lakessi Terendam
+        ar_eg: (عنوان) مطر غزير، وسوق لاكيسي غرقان
+        ar: (عنوان) أمطار غزيرة تُغرق سوق لاكيسي
+        en: (Headline) Heavy rain floods Lakessi Market
+      - text: Hujan deras turun sejak Selasa malam. Akibatnya, Pasar Lakessi terendam air setinggi lima puluh sentimeter.
+        ar_eg: المطر الغزير نازل من يوم التلات بالليل. والنتيجة إن سوق لاكيسي غرق في مية ارتفاعها خمسين سنتي.
+        ar: هطلت أمطار غزيرة منذ مساء الثلاثاء، فغمرت سوقَ لاكيسي مياهٌ بارتفاع خمسين سنتيمترًا.
+        en: Heavy rain has fallen since Tuesday night. As a result, Lakessi Market is under fifty centimetres of water.
+      - text: Menurut seorang pedagang, saluran air di sekitar pasar tersumbat sampah. Oleh karena itu, para pedagang tidak bisa berjualan pada hari Rabu.
+        ar_eg: على حسب كلام تاجر، مجاري المية اللي حوالين السوق مسدودة بالزبالة. وعشان كده التجار ماقدروش يبيعوا يوم الأربع.
+        ar: بحسب أحد التجار، فإن قنوات الصرف حول السوق مسدودة بالقمامة، ولذلك لم يتمكّن التجار من البيع يوم الأربعاء.
+        en: According to a trader, the drains around the market are clogged with rubbish. Therefore, traders could not sell on Wednesday.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: المطر الغزير بدأ إمتى؟
+      ar: متى بدأت الأمطار الغزيرة؟
+      en: When did the heavy rain start?
+    options: [Sejak Senin sore, Sejak Selasa malam, Sejak Rabu pagi]
+    answer: 1
+    words: [deras]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: السوق غرق ليه، على حسب كلام التاجر؟
+      ar: لماذا غرق السوق بحسب التاجر؟
+      en: According to the trader, why did the market flood?
+    options:
+      - Tanggul sungai rusak.
+      - Air laut naik.
+      - Saluran air tersumbat sampah.
+    answer: 2
+    explain:
+      ar_eg: الخبر ماقالش حاجة عن tanggul ولا البحر. التاجر قال إن المجاري مسدودة.
+      ar: لم يذكر الخبر السدّ ولا البحر، بل قال التاجر إن قنوات الصرف مسدودة.
+      en: The story says nothing about a levee or the sea; the trader blames clogged drains.
+    words: [narasumber]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه النتيجة بالنسبة للتجار؟
+      ar: ما النتيجة بالنسبة إلى التجار؟
+      en: What was the result for the traders?
+    options:
+      - Mereka tidak bisa berjualan pada hari Rabu.
+      - Mereka mengungsi ke masjid.
+      - Mereka membersihkan pasar pada hari Selasa.
+    answer: 0
+    words: [oleh karena itu]
+  - id: e04
+    type: listen
+    text: Akibatnya, Pasar Lakessi terendam air.
+    options:
+      - Oleh karena itu, Pasar Lakessi terendam air.
+      - Akibatnya, Pasar Lakessi terendam air.
+      - Akibatnya, Pasar Lakessi tertutup air.
+    answer: 1
+    meaning:
+      ar_eg: والنتيجة إن سوق لاكيسي غرق في المية.
+      ar: ونتيجة لذلك غمرت المياه سوق لاكيسي.
+      en: As a result, Lakessi Market is under water.
+    words: [akibatnya, terendam]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: judul
+        ar_eg: عنوان
+        ar: عنوان
+        en: headline
+      - text: narasumber
+        ar_eg: مصدر الخبر
+        ar: مصدر الخبر
+        en: news source
+      - text: terendam
+        ar_eg: غرقان في المية
+        ar: مغمور بالماء
+        en: submerged, flooded
+      - text: akibatnya
+        ar_eg: والنتيجة
+        ar: ونتيجةً لذلك
+        en: as a result
+      - text: oleh karena itu
+        ar_eg: وعشان كده
+        ar: ولذلك
+        en: therefore
+    words: [judul, narasumber, terendam, akibatnya, oleh karena itu]
+  - id: e06
+    type: fill_blank
+    sentence: Hujan deras turun semalaman. ___, pasar terendam air.
+    meaning:
+      ar_eg: المطر الغزير نزل طول الليل. والنتيجة إن السوق غرق.
+      ar: هطلت أمطار غزيرة طوال الليل، فغمرت المياه السوق.
+      en: Heavy rain fell all night. As a result, the market was flooded.
+    options: [Berkat, Akibatnya, Gara-gara]
+    answers: [Akibatnya]
+    explain:
+      ar_eg: Akibatnya بتيجي في أول الجملة التانية وبعدها فاصلة. berkat وgara-gara لازم بعدهم سبب (اسم).
+      ar: تأتي Akibatnya في أول الجملة الثانية وتليها فاصلة، أما berkat وgara-gara فيليهما السبب.
+      en: Akibatnya opens the second sentence, followed by a comma; berkat and gara-gara must be followed by the cause.
+    words: [akibatnya]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: والنتيجة إن التجار ماقدروش يبيعوا يوم الأربع.
+      ar: ونتيجة لذلك لم يتمكّن التجار من البيع يوم الأربعاء.
+      en: As a result, the traders could not sell on Wednesday.
+    answer: Akibatnya, para pedagang tidak bisa berjualan pada hari Rabu.
+    distractors: [berkat, mengungsi]
+    words: [akibatnya]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: على حسب كلام تاجر، مجاري المية مسدودة بالزبالة.
+      ar: بحسب أحد التجار، قنوات الصرف مسدودة بالقمامة.
+      en: According to a trader, the drains are clogged with rubbish.
+    answers:
+      - Menurut seorang pedagang, saluran air tersumbat sampah.
+      - Menurut seorang pedagang, saluran air tersumbat oleh sampah.
+      - Menurut pedagang, saluran air tersumbat sampah.
+      - Menurut pedagang, saluran air tersumbat oleh sampah.
+      - Menurut seorang pedagang, saluran airnya tersumbat sampah.
+      - Menurut salah satu pedagang, saluran air tersumbat sampah.
+    words: [narasumber]
+  - id: e09
+    type: match_pairs
+    pairs:
+      - text: harian
+        ar_eg: يومي
+        ar: يومي
+        en: daily
+      - text: gosip
+        ar_eg: نميمة
+        ar: نميمة
+        en: gossip
+      - text: tuduhan
+        ar_eg: اتهام
+        ar: اتّهام
+        en: accusation
+      - text: komite
+        ar_eg: لجنة
+        ar: لجنة
+        en: committee
+      - text: politisi
+        ar_eg: سياسي
+        ar: سياسي
+        en: politician
+      - text: tragedi
+        ar_eg: مأساة
+        ar: مأساة
+        en: tragedy
+    words: [harian, gosip, tuduhan, komite, politisi, tragedi]
+  - id: e10
+    type: fill_blank
+    sentence: Pemerintah akan ___ keputusan itu besok pagi.
+    meaning:
+      ar_eg: الحكومة هـ___ القرار ده بكرة الصبح.
+      ar: ستُ___ الحكومة ذلك القرار صباح الغد.
+      en: The government will ___ that decision tomorrow morning.
+    options: [mengumumkan, terungkap, dirilis]
+    answers: [mengumumkan]
+    words: [mengumumkan, terungkap, dirilis]
+dialogue:
+  title: Di ruang redaksi
+  lines:
+    - speaker: Kak Nirmala
+      text: Mohamed, sudah baca berita Pasar Lakessi?
+      ar_eg: يا Mohamed، قريت خبر سوق لاكيسي؟
+      ar: يا Mohamed، هل قرأت خبر سوق لاكيسي؟
+      en: Mohamed, have you read the Lakessi Market story?
+    - speaker: Mohamed
+      text: Sudah, Kak. Hujan deras sejak Selasa malam. Akibatnya, pasar terendam.
+      ar_eg: قريته. المطر نازل من التلات بالليل، والنتيجة إن السوق غرق.
+      ar: نعم. أمطار غزيرة منذ مساء الثلاثاء، فغرق السوق.
+      en: Yes. Heavy rain since Tuesday night; as a result, the market flooded.
+    - speaker: Kak Nirmala
+      text: Siapa narasumbernya?
+      ar_eg: مين مصدر الخبر؟
+      ar: من مصدر الخبر؟
+      en: Who's the source?
+    - speaker: Mohamed
+      text: Seorang pedagang. Katanya saluran air tersumbat sampah.
+      ar_eg: تاجر. بيقول إن المجاري مسدودة بالزبالة.
+      ar: أحد التجار. يقول إن قنوات الصرف مسدودة بالقمامة.
+      en: A trader. He says the drains are clogged with rubbish.
+    - speaker: Kak Nirmala
+      text: Bagus. Sekarang tulis ringkasannya dalam tiga kalimat.
+      ar_eg: تمام. دلوقتي اكتب ملخصه في تلات جمل.
+      ar: أحسنت. والآن اكتب ملخصه في ثلاث جمل.
+      en: Good. Now write a summary in three sentences.
+new_words: []
+review:
+  status: draft
+  verified: false

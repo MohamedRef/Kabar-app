@@ -25,7 +25,7 @@ use crate::retrieval::{forms, target_text};
 /// Frequency ranks that count as core vocabulary.
 pub const CORE_RANK: usize = 300;
 
-fn suffixes(lang: &str) -> &'static [&'static str] {
+pub(crate) fn suffixes(lang: &str) -> &'static [&'static str] {
     match lang {
         "id" => &["nya", "ku", "mu", "lah", "kah", "pun"],
         "jv" => &["nipun", "ipun", "ne", "e", "ku", "mu"],
@@ -34,7 +34,7 @@ fn suffixes(lang: &str) -> &'static [&'static str] {
 }
 
 /// The first column of a `word<TAB>reason` list, skipping comments.
-fn word_list(path: &Path) -> BTreeSet<String> {
+pub(crate) fn word_list(path: &Path) -> BTreeSet<String> {
     let text = std::fs::read_to_string(path).unwrap_or_default();
     text.lines()
         .filter(|l| !l.trim().is_empty() && !l.starts_with('#'))
@@ -58,7 +58,7 @@ fn is_word_char(c: char) -> bool {
 }
 
 /// Words in `text`, keeping hyphenated compounds (`kupu-kupu`) whole.
-fn tokens(text: &str) -> Vec<String> {
+pub(crate) fn tokens(text: &str) -> Vec<String> {
     let chars: Vec<char> = text.chars().collect();
     let mut out = Vec::new();
     let mut cur = String::new();
@@ -77,7 +77,7 @@ fn tokens(text: &str) -> Vec<String> {
 }
 
 /// `text` with every whole-word occurrence of `phrase` blanked out.
-fn mask(text: &str, phrase: &str) -> String {
+pub(crate) fn mask(text: &str, phrase: &str) -> String {
     let mut out = String::with_capacity(text.len());
     let mut rest = text;
     while let Some(at) = rest.find(phrase) {

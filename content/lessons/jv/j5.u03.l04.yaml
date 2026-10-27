@@ -1,185 +1,237 @@
 schema: kabar.lesson/v1
 id: j5.u03.l04
 language: jv
-title: Minimal Pairs
+title: Teges lan huruf
 can_do:
-  ar_eg: تعدّي جولة سماع.
-  ar: أن تجتاز جولة استماع.
-  en: Pass a listening round.
+  ar_eg: تسأل عن معنى كلمة ونطقها، وتطلب حد يعيد، وتقول «مش عارف».
+  ar: أن تسأل عن معنى كلمة ونطقها، وتطلب الإعادة، وتقول «لا أعرف».
+  en: Ask what a word means and how to say it, ask someone to repeat, and say 'dunno'.
 slides:
-  - title: Rungokna!
+  - title: Takon tegese
     body:
       ar_eg: |
-        جولة سماع قبل اللعبة. افتكر: d وt زي د وت بتوعنا، وdh وth اللسان راجع لورا.
-        وكلمة من العربي: hawa = الجو (هواء)، hawane adhem = الجو ساقع. adhem بـ dh، والإندونيسي بيكتبها adem.
+        teges = معنى: Apa tegese …? = يعني إيه …؟ huruf = حرف (زي العربي).
+        pitakonan = سؤال، mbaleni = يعيد (Tulung dibaleni = عيدها لو سمحت)، pener = صح، مظبوط.
+        nyebut = ينطق أو يذكر، niru = يقلّد. embuh = «مش عارف»، بس دي نغوكو ناشفة: مع الكبار قول «mboten ngertos».
       ar: |
-        جولة استماع قبل اللعبة. تذكّر: d وt كالدال والتاء، وفي dh وth يرتدّ اللسان إلى الخلف.
-        وكلمة عربية الأصل: hawa = الجو (هواء)، وhawane adhem = الجو بارد. adhem بـ dh، وتكتبها الإندونيسية adem.
+        teges = معنى: Apa tegese …? = ما معنى …؟ huruf = حرف (من العربية).
+        pitakonan = سؤال، mbaleni = يعيد (Tulung dibaleni = أعدها من فضلك)، pener = صحيح، مضبوط.
+        nyebut = ينطق أو يذكر، niru = يقلّد. embuh = «لا أدري»، لكنها نغوكو جافة؛ مع الكبار قل «mboten ngertos».
       en: |
-        A listening round before the game. Remember: d and t are Arabic د and ت; for dh and th the tongue pulls back.
-        And a word from Arabic: hawa = weather, air («هواء»); hawane adhem = the weather is cold. adhem has dh; Indonesian writes adem.
-    grammar: jv.orthography
+        teges = meaning: Apa tegese …? = What does … mean? huruf = letter (from Arabic).
+        pitakonan = question, mbaleni = repeat (Tulung dibaleni = please say it again), pener = correct, right.
+        nyebut = say, pronounce, mention; niru = imitate. embuh = "dunno", blunt ngoko: with elders say "mboten ngertos".
     examples:
-      - text: Hawane adhem banget.
-        ar_eg: الجو ساقع أوي.
-        ar: الجو بارد جدًا.
-        en: The weather is really cold.
-      - text: Wedi lan wedhi iku bedha.
-        ar_eg: wedi وwedhi مختلفين.
-        ar: wedi وwedhi مختلفتان.
-        en: Wedi and wedhi are different.
-      - text: Sesuk aku mesthi teka.
-        ar_eg: بكرة أكيد هاجي.
-        ar: سآتي غدًا بالتأكيد.
-        en: I'll definitely come tomorrow.
+      - text: Apa tegese 'kliru'?
+        ar_eg: يعني إيه kliru؟
+        ar: ما معنى kliru؟
+        en: What does 'kliru' mean?
+      - text: Huruf dh lan d iku beda.
+        ar_eg: حرف dh وحرف d مختلفين.
+        ar: الحرفان dh وd مختلفان.
+        en: The letters dh and d are different.
+      - text: Tulung dibaleni, alon-alon.
+        ar_eg: عيدها لو سمحت، بالراحة.
+        ar: أعدها من فضلك، ببطء.
+        en: Please say it again, slowly.
 exercises:
   - id: e01
-    type: listen
-    text: Hawane adhem banget.
-    options: ['Hawane adem banget.', 'Hawane adhem banget.']
-    answer: 1
-    meaning:
-      ar_eg: الجو ساقع أوي.
-      ar: الجو بارد جدًا.
-      en: The weather is really cold.
-    words: [hawa, adhem]
+    type: match_pairs
+    pairs:
+      - text: teges
+        ar_eg: معنى
+        ar: معنى
+        en: meaning
+      - text: huruf
+        ar_eg: حرف
+        ar: حرف
+        en: letter
+      - text: pener
+        ar_eg: صح
+        ar: صحيح
+        en: correct
+      - text: mbaleni
+        ar_eg: يعيد
+        ar: يعيد
+        en: repeat
+    words: [teges, huruf, pener, mbaleni]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: niru
+        ar_eg: يقلّد
+        ar: يقلّد
+        en: imitate
+      - text: nyebut
+        ar_eg: ينطق
+        ar: ينطق، يذكر
+        en: say, pronounce
+      - text: embuh
+        ar_eg: مش عارف
+        ar: لا أدري
+        en: dunno
+      - text: pitakonan
+        ar_eg: سؤال
+        ar: سؤال
+        en: question
+    words: [niru, nyebut, embuh, pitakonan]
+  - id: e03
     type: listen
-    text: Wedi lan wedhi iku bedha.
-    options: ['Wedi lan wedhi iku bedha.', 'Wedi lan wedi iku beda.']
+    text: 'Aku duwe pitakonan: apa tegese ''embuh''?'
+    question:
+      ar_eg: بيعمل إيه؟
+      ar: ماذا يفعل؟
+      en: What is he doing?
+    options: [بيسأل عن معنى كلمة, بيقول إنه فاهم, بيطلب يكتب حرف]
     answer: 0
     meaning:
-      ar_eg: wedi وwedhi مختلفين.
-      ar: wedi وwedhi مختلفتان.
-      en: Wedi and wedhi are different.
-    words: [bedha]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إزاي بتتكتب «مختلف» بالجاوي؟
-      ar: كيف تُكتب «مختلف» بالجاوية؟
-      en: How is "different" spelled in Javanese?
-    options: [beda, bedha]
-    answer: 1
-    explain:
-      ar_eg: beda إندونيسي. الجاوي bedha بـ dh.
-      ar: beda إندونيسية، والجاوية bedha بـ dh.
-      en: beda is Indonesian; Javanese bedha has dh.
-    words: [bedha]
+      ar_eg: 'عندي سؤال: يعني إيه embuh؟'
+      ar: 'عندي سؤال: ما معنى embuh؟'
+      en: 'I have a question: what does ''embuh'' mean?'
+    words: [pitakonan, teges, embuh]
   - id: e04
     type: fill_blank
-    sentence: Sesuk aku ___ teka.
+    sentence: Tulisanmu wis ___, ora ana sing kliru.
     meaning:
-      ar_eg: بكرة أكيد هاجي.
-      ar: سآتي غدًا بالتأكيد.
-      en: I'll definitely come tomorrow.
-    options: [mesti, mesthi]
-    answers: [mesthi]
-    explain:
-      ar_eg: الإملا الجاوي mesthi بـ th. الشات ساعات بيكتب mesti.
-      ar: الإملاء الجاوي mesthi بـ th، وقد تكتبها الدردشة mesti.
-      en: Javanese spelling is mesthi, with th; chats sometimes write mesti.
-    words: [mesthi]
+      ar_eg: كتابتك ___، مفيش غلط.
+      ar: كتابتك ___، لا خطأ فيها.
+      en: Your writing is ___; nothing is wrong.
+    options: [pener, embuh, huruf]
+    answers: [pener]
+    words: [pener, embuh, huruf]
   - id: e05
-    type: fill_blank
-    sentence: Hawane ___ banget.
-    meaning:
-      ar_eg: الجو ساقع أوي.
-      ar: الجو بارد جدًا.
-      en: The weather is really cold.
-    answers: [adhem]
-    words: [adhem, hawa]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حد سألك حاجة مش عارفها، بين الصحاب. تقول إيه؟
+      ar: سألك صديق عن شيء لا تعرفه. ماذا تقول؟
+      en: 'A friend asks you something you don''t know. You say:'
+    options: [Pener., Embuh., Baleni.]
+    answer: 1
+    explain:
+      ar_eg: Embuh = مش عارف. مع الكبار قول mboten ngertos.
+      ar: Embuh = لا أدري، ومع الكبار قل mboten ngertos.
+      en: Embuh = dunno; with elders say mboten ngertos.
+    words: [pener, embuh, mbaleni]
   - id: e06
-    type: dictation
-    text: Sesuk aku mesthi teka.
+    type: fill_blank
+    sentence: Bocah iku ___ cara mlakune bapake.
     meaning:
-      ar_eg: بكرة أكيد هاجي.
-      ar: سآتي غدًا بالتأكيد.
-      en: I'll definitely come tomorrow.
-    words: [mesthi]
+      ar_eg: الواد ده ___ مشية أبوه.
+      ar: ذلك الطفل ___ مشية أبيه.
+      en: That child ___ the way his father walks.
+    options: [niru, nyebut, huruf]
+    answers: [niru]
+    words: [niru, nyebut, huruf]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (بالجاوي) الجو في سيمارانج مش ساقع.
-      ar: (بالجاوية) الجو في سيمارانج ليس باردًا.
-      en: (in Javanese) The weather in Semarang isn't cold.
-    answers:
-      - Hawane ing Semarang ora adhem.
-      - Hawa ing Semarang ora adhem.
-      - Hawane neng Semarang ora adhem.
-      - Ing Semarang hawane ora adhem.
-      - Neng Semarang hawane ora adhem.
-      - Hawane Semarang ora adhem.
-    words: [hawa, adhem]
+    type: multiple_choice
+    question: Aku durung bisa ___ 'dhuwit'.
+    options: [nyebut, pener, huruf]
+    answer: 0
+    explain:
+      ar_eg: 'nyebut = ينطق: لسه مش عارف أنطق dhuwit.'
+      ar: 'nyebut = ينطق: لا أستطيع نطق dhuwit بعد.'
+      en: 'nyebut = pronounce: I can''t say dhuwit yet.'
+    words: [nyebut, pener, huruf]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: wedi وwedhi مختلفين.
-      ar: wedi وwedhi مختلفتان.
-      en: Wedi and wedhi are different.
-    answer: Wedi lan wedhi iku bedha.
-    distractors: [beda, wedhine]
-    words: [bedha, wedhi]
+      ar_eg: عندي سؤال يا ميباك.
+      ar: عندي سؤال يا أختي.
+      en: I have a question, Mbak.
+    answer: Aku duwe pitakonan, Mbak.
+    distractors: [teges, huruf]
+    words: [pitakonan]
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Tulung dibaleni, aku durung ngerti tegese.
+    answers_meaning:
+      ar_eg: [عيدها لو سمحت، لسه مش فاهم معناها, ممكن تعيد؟ لسه مافهمتش المعنى]
+      ar: [أعدها من فضلك، لم أفهم معناها بعد, من فضلك أعد، لم أفهم المعنى بعد]
+      en: ['Please repeat it, I don''t understand the meaning yet', 'Say it again please, I don''t get what it means yet']
+    words: [mbaleni, teges]
+  - id: e10
     type: speaking
-    text: Hawane adhem, nanging aku mesthi teka.
+    text: Aku niru Mbak Ayu nyebut 'dhuwit'.
     meaning:
-      ar_eg: الجو ساقع، بس أكيد هاجي.
-      ar: الجو بارد، لكني سآتي بالتأكيد.
-      en: It's cold, but I'll definitely come.
-    words: [hawa, adhem, mesthi]
+      ar_eg: أنا بقلّد ميباك أيو وهي بتنطق dhuwit.
+      ar: أقلّد مباك أيو في نطق dhuwit.
+      en: I copy Mbak Ayu saying 'dhuwit'.
+    words: [niru, nyebut]
 dialogue:
-  title: Dolanan Minimal Pairs
   lines:
-    - speaker: Mbak Ayu
-      text: Ayo dolanan Minimal Pairs! Rungokna, wedhi.
-      ar_eg: يلا نلعب Minimal Pairs! اسمع، wedhi.
-      ar: هيا نلعب Minimal Pairs! استمع، wedhi.
-      en: Let's play Minimal Pairs! Listen, wedhi.
     - speaker: Mohamed
-      text: Wedhi, pasir!
-      ar_eg: wedhi، يعني رملة!
-      ar: wedhi، أي رمل!
-      en: Wedhi, sand!
+      text: Mbak Ayu, aku duwe pitakonan.
+      ar_eg: ميباك أيو، عندي سؤال.
+      ar: يا مباك أيو، عندي سؤال.
+      en: Mbak Ayu, I have a question.
     - speaker: Mbak Ayu
-      text: Bener. Saiki, adhem.
-      ar_eg: صح. دلوقتي، adhem.
-      ar: صحيح. والآن، adhem.
-      en: Right. Now, adhem.
+      text: Iya, apa?
+      ar_eg: أيوه، إيه؟
+      ar: نعم، ما هو؟
+      en: Sure, what?
     - speaker: Mohamed
-      text: Adhem, karo dh. Hawane adhem!
-      ar_eg: adhem، بـ dh. الجو ساقع!
-      ar: adhem، بـ dh. الجو بارد!
-      en: Adhem, with dh. The weather's cold!
+      text: Apa tegese 'embuh'? Kancaku kerep ngomong ngono.
+      ar_eg: يعني إيه embuh؟ صاحبي بيقولها كتير.
+      ar: ما معنى embuh؟ صديقي يقولها كثيرًا.
+      en: What does 'embuh' mean? My friend says it a lot.
     - speaker: Mbak Ayu
-      text: Pinter! Kowe mesthi menang.
-      ar_eg: شاطر! إنت أكيد هتكسب.
-      ar: أحسنت! ستفوز بالتأكيد.
-      en: Clever! You'll definitely win.
+      text: Tegese 'ora ngerti'. Nanging aja niru karo wong tuwa, ora sopan.
+      ar_eg: معناها «مش عارف». بس ماتقلدهاش مع الكبار، مش مؤدبة.
+      ar: معناها «لا أعرف»، لكن لا تقلّدها مع الكبار، فليست مهذبة.
+      en: It means 'don't know'. But don't copy it with older people; it's not polite.
+    - speaker: Mohamed
+      text: Dadi karo Mbah aku matur 'mboten ngertos'?
+      ar_eg: يعني مع الجدة أقول mboten ngertos؟
+      ar: إذن أقول للجدة mboten ngertos؟
+      en: So with Grandma I say 'mboten ngertos'?
+    - speaker: Mbak Ayu
+      text: Pener! Coba baleni sepisan maneh.
+      ar_eg: صح! جرّب تعيدها مرة كمان.
+      ar: صحيح! جرّب أن تعيدها مرة أخرى.
+      en: Correct! Try saying it once more.
 new_words:
-  - word: hawa
+  - word: teges
     pos: noun
-    ar_eg: الجو (من «هواء»)
-    ar: الجو (من «هواء»)
-    en: weather, air = hawa, udara
-    arabic: هواء
-  - word: adhem
+    ar_eg: معنى
+    ar: معنى
+    en: meaning
+  - word: huruf
+    pos: noun
+    arabic: حروف
+    ar_eg: حرف
+    ar: حرف
+    en: letter (of the alphabet)
+  - word: pener
     pos: adjective
-    ar_eg: ساقع / بارد
-    ar: بارد
-    en: cold, cool = dingin, adem
-  - word: bedha
-    pos: adjective
-    ar_eg: مختلف
-    ar: مختلف
-    en: different = beda
-  - word: mesthi
-    pos: adverb
-    ar_eg: أكيد / لازم
-    ar: بالتأكيد / لا بدّ
-    en: surely, definitely = pasti
-game: mp.adem-adhem
+    ar_eg: صح، مظبوط
+    ar: صحيح، مضبوط
+    en: correct, right
+  - word: mbaleni
+    pos: verb
+    ar_eg: يعيد
+    ar: يعيد، يكرّر
+    en: repeat
+  - word: niru
+    pos: verb
+    ar_eg: يقلّد
+    ar: يقلّد
+    en: imitate, copy
+  - word: nyebut
+    pos: verb
+    ar_eg: ينطق، يذكر
+    ar: ينطق، يذكر
+    en: say, pronounce, mention
+  - word: embuh
+    pos: interjection
+    ar_eg: مش عارف (نغوكو ناشفة)
+    ar: لا أدري (عامية جافة)
+    en: dunno (blunt ngoko)
+  - word: pitakonan
+    pos: noun
+    ar_eg: سؤال
+    ar: سؤال
+    en: question
 review:
   status: draft
   verified: false

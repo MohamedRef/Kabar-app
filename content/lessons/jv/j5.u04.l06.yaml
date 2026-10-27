@@ -1,172 +1,191 @@
 schema: kabar.lesson/v1
 id: j5.u04.l06
 language: jv
-title: Voice note Mas Yudha
+title: Screenshot Decoder
 can_do:
-  ar_eg: تسمع فويس نوت مخلوط اللغات وتفهم الشخص فين وهيتأخر قد إيه.
-  ar: أن تستمع إلى رسالة صوتية مختلطة اللغات وتفهم أين المتحدث وكم سيتأخر.
-  en: Follow a code-mixed voice note and catch where your friend is and how late he'll be.
+  ar_eg: تقرا سكرين شوت من جروب شات بمساعدة الـ Reader.
+  ar: أن تقرأ لقطة شاشة من محادثة جماعية بمساعدة القارئ (Reader).
+  en: Read a group-chat screenshot with the Reader.
+slides:
+  - title: Grup "Dolan Ambarawa"
+    body:
+      ar_eg: |
+        سكرين شوت من جروب صحاب بيخططوا لفسحة. لو فتحته في الـ Reader بتاع Kabar، هيلوّن كل كلمة حسب لغتها. بس جرّب الأول لوحدك:
+        blm = belum (لسه)، iso = isa (يقدر) بإملا الشات، gpp = gak papa (مفيش مشكلة)، kuliah = محاضرة / جامعة.
+      ar: |
+        لقطة شاشة من مجموعة أصدقاء يخططون لنزهة. لو فتحتها في القارئ (Reader) في Kabar للوّن كل كلمة بحسب لغتها، لكن جرّب وحدك أولًا:
+        blm = belum (لم بعد)، وiso = isa (يستطيع) بإملاء الدردشة، وgpp = gak papa (لا بأس)، وkuliah = محاضرة / دراسة جامعية.
+      en: |
+        A screenshot from a friends' group planning an outing. Open it in Kabar's Reader and every word gets coloured by language. But try it yourself first:
+        blm = belum (not yet), iso = isa (can) in chat spelling, gpp = gak papa (no problem), kuliah = lectures, university.
+    grammar: jv.codemix
+    examples:
+      - text: Guys, sesuk jadi dolan neng Ambarawa ora?
+        ar_eg: يا جماعة، الفسحة بتاعة بكرة في أمباراوا لسه قايمة؟
+        ar: يا جماعة، هل ما زالت نزهة الغد إلى أمباراوا قائمة؟
+        en: Guys, is tomorrow's trip to Ambarawa still on?
+      - text: Aku blm iso, ana kuliah. Sorry yo.
+        ar_eg: أنا لسه مش هقدر، عندي محاضرة. سوري.
+        ar: لا أستطيع بعد، عندي محاضرة. آسف.
+        en: I can't yet, I have class. Sorry.
+      - text: Gpp, mengko fotone tak kirim neng grup.
+        ar_eg: مفيش مشكلة، هبعت الصور على الجروب بعدين.
+        ar: لا بأس، سأرسل الصور إلى المجموعة لاحقًا.
+        en: No problem, I'll send the photos to the group later.
 exercises:
   - id: e01
-    type: listen
-    text: Bro, aku wis OTW neng stasiun, tapi macet banget.
-    question:
-      ar_eg: يودا بعتلك فويس. هو فين دلوقتي؟
-      ar: أرسل لك يودا رسالة صوتية. أين هو الآن؟
-      en: Yudha sent you a voice note. Where is he now?
-    options: [isih ing omah, OTW neng stasiun, wis ing museum]
+    type: multiple_choice
+    question: Aku blm iso, ana kuliah. Sorry yo.
+    question_meaning:
+      ar_eg: الشخص ده هييجي؟
+      ar: هل سيأتي هذا الشخص؟
+      en: Is this person coming?
+    options: ['Bisa datang.', 'Belum bisa datang.', 'Sudah datang.']
     answer: 1
-    meaning:
-      ar_eg: يا صاحبي، أنا في السكة للمحطة، بس الزحمة فظيعة.
-      ar: يا صديقي، أنا في الطريق إلى المحطة، لكن الزحام شديد جدًا.
-      en: Bro, I'm on my way to the station, but the traffic is terrible.
     explain:
-      ar_eg: macet = زحمة مرور (زي الإندونيسي). وtapi إندونيسي، الجاوي nanging.
-      ar: macet = زحام مروري (كالإندونيسية)، وtapi إندونيسية ومقابلها الجاوي nanging.
-      en: macet = traffic jam (as in Indonesian); tapi is Indonesian, the Javanese is nanging.
-    words: [macet, OTW]
+      ar_eg: blm = belum، وiso = isa (يقدر). يعني «لسه مش قادر».
+      ar: blm = belum وiso = isa، أي «لا يستطيع بعد».
+      en: "blm = belum and iso = isa (can): \"can't yet\"."
+    words: [blm, iso]
   - id: e02
-    type: listen
-    text: Sabar ya, aku telat sepuluh menit.
-    question:
-      ar_eg: هيتأخر قد إيه؟
-      ar: كم سيتأخر؟
-      en: How late will he be?
-    options: [sepuluh menit, sejam, limang menit]
+    type: multiple_choice
+    question: gpp
+    question_meaning:
+      ar_eg: gpp معناها إيه؟
+      ar: ما معنى gpp؟
+      en: What does gpp mean?
+    options: [ora apa-apa, ora pakai, piye]
     answer: 0
-    meaning:
-      ar_eg: اصبر شوية، أنا متأخر عشر دقايق.
-      ar: اصبر قليلًا، سأتأخر عشر دقائق.
-      en: Hang on, I'm ten minutes late.
-    explain:
-      ar_eg: telat = متأخر (terlambat). كلمة إندونيسية عامية، والجاوي كمان بيستخدمها.
-      ar: telat = متأخر (terlambat)، كلمة إندونيسية عامية يستعملها الجاويون أيضًا.
-      en: telat = late (terlambat), colloquial Indonesian that Javanese speakers use too.
-    words: [telat, sabar]
+    words: [gpp]
   - id: e03
     type: listen
-    text: Tikete wis tak tuku, mengko tak share neng grup.
-    question:
-      ar_eg: هيعمل share لإيه في الجروب؟
-      ar: ماذا سيشارك في المجموعة؟
-      en: What will he share in the group?
-    options: [videone, fotone, tikete]
+    text: Mengko fotone tak kirim neng grup.
+    options: ['Mengko fotone dishare neng grup.', 'Sesuk fotone tak kirim neng grup.', 'Mengko fotone tak kirim neng grup.']
     answer: 2
     meaning:
-      ar_eg: التذاكر أنا اشتريتها، وبعدين هبعتها على الجروب.
-      ar: اشتريت التذاكر، وسأشاركها في المجموعة لاحقًا.
-      en: I've bought the tickets; I'll share them in the group later.
+      ar_eg: هبعت الصور على الجروب بعدين.
+      ar: سأرسل الصور إلى المجموعة لاحقًا.
+      en: I'll send the photos to the group later.
     words: [grup]
   - id: e04
-    type: match_pairs
-    pairs:
-      - text: macet
-        ar_eg: زحمة مرور
-        ar: زحام مروري
-        en: traffic jam
-      - text: telat
-        ar_eg: متأخر
-        ar: متأخر
-        en: late
-      - text: OTW
-        ar_eg: في السكة
-        ar: في الطريق
-        en: on the way
-      - text: sabar
-        ar_eg: صبور / اصبر
-        ar: صابر / اصبر
-        en: patient, hang on
-      - text: tak share
-        ar_eg: هعمل شير
-        ar: سأشارك
-        en: I'll share
-    words: [macet, telat, OTW, sabar]
-  - id: e05
-    type: multiple_choice
-    question: Bro, aku wis OTW neng stasiun, tapi macet banget.
-    question_meaning:
-      ar_eg: أنهي كلمتين هنا هم الهيكل الجاوي؟
-      ar: أيّ كلمتين هنا من الهيكل الجاوي؟
-      en: Which two words here are the Javanese frame?
-    options: ["wis, neng", "bro, OTW", "tapi, macet"]
-    answer: 0
-    explain:
-      ar_eg: wis وneng (وbanget) جاوي. bro وOTW إنجليزي، tapi وmacet إندونيسي.
-      ar: wis وneng (وbanget) جاوية، وbro وOTW إنجليزية، وtapi وmacet إندونيسية.
-      en: wis and neng (and banget) are Javanese; bro and OTW are English; tapi and macet are Indonesian.
-  - id: e06
     type: fill_blank
-    sentence: Sabar ya, aku ___ sepuluh menit.
+    sentence: Aku ___ iso, ana kuliah.
     meaning:
-      ar_eg: اصبر شوية، أنا متأخر عشر دقايق.
-      ar: اصبر قليلًا، سأتأخر عشر دقائق.
-      en: Hang on, I'm ten minutes late.
-    options: [macet, sabar, telat]
-    answers: [telat]
-    words: [telat]
+      ar_eg: أنا لسه مش هقدر، عندي محاضرة.
+      ar: لا أستطيع بعد، عندي محاضرة.
+      en: I can't yet, I have class.
+    options: [udh, blm, bgt]
+    answers: [blm]
+    words: [blm, iso, kuliah]
+  - id: e05
+    type: fill_blank
+    sentence: Sorry, aku ana ___.
+    meaning:
+      ar_eg: سوري، عندي محاضرة.
+      ar: آسف، عندي محاضرة.
+      en: Sorry, I have class.
+    options: [akun, kuliah, grup]
+    answers: [kuliah]
+    words: [kuliah]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: "رجّع الشات ده لجاوي رسمي: «Aku blm iso, ana kuliah.»"
+      ar: "ردّ هذه الدردشة إلى جاوية قياسية: «Aku blm iso, ana kuliah.»"
+      en: "Turn this chat into standard Javanese: «Aku blm iso, ana kuliah.»"
+    answer: Aku durung isa, ana kuliah.
+    distractors: [blm, iso]
+    words: [blm, iso]
   - id: e07
-    type: dictation
-    text: Tikete wis tak tuku, mengko tak share neng grup.
-    meaning:
-      ar_eg: التذاكر أنا اشتريتها، وبعدين هبعتها على الجروب.
-      ar: اشتريت التذاكر، وسأشاركها في المجموعة لاحقًا.
-      en: I've bought the tickets; I'll share them in the group later.
-    words: [grup]
+    type: translate
+    direction: from_target
+    source_text: Gpp, mengko fotone tak kirim neng grup.
+    answers_meaning:
+      ar_eg:
+        - مفيش مشكلة، هبعت الصور على الجروب بعدين.
+        - ولا يهمك، هبعت الصور على الجروب بعدين.
+        - مفيش مشكلة، بعدين هبعت الصور على الجروب.
+        - مش مشكلة، هبعت الصور على الجروب بعدين.
+        - عادي، هبعت الصور على الجروب بعدين.
+      ar:
+        - لا بأس، سأرسل الصور إلى المجموعة لاحقًا.
+        - لا مشكلة، سأرسل الصور إلى المجموعة لاحقًا.
+        - لا بأس، سأرسل الصور في المجموعة لاحقًا.
+      en:
+        - No problem, I'll send the photos to the group later.
+        - No problem, I'll send the photos in the group later.
+        - It's fine, I'll send the photos to the group later.
+        - No worries, I'll send the photos to the group later.
+        - No problem, later I'll send the photos to the group.
+        - No problem, I'll send the photo to the group later.
+    words: [gpp]
   - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: (شات) اصبر شوية، أنا متأخر، الزحمة جامدة.
-      ar: (دردشة) اصبر قليلًا، أنا متأخر، الزحام شديد.
-      en: (chat) Hang on, I'm late, the traffic's really bad.
+      ar_eg: (شات) مفيش مشكلة، هبعتها بعدين.
+      ar: (دردشة) لا بأس، سأرسلها لاحقًا.
+      en: (chat) No problem, I'll send it later.
     answers:
-      - Sabar ya, aku telat, macet banget.
-      - Sabar ya, aku telat, macet bgt.
-      - Sabar, aku telat, macet banget.
-      - Sabar ya, aku telat merga macet banget.
-      - Sabar ya, aku telat amarga macet banget.
-      - Sabar ya, aku telat, dalane macet banget.
-      - Sabar ya, aku telat, macet.
-    words: [sabar, telat, macet]
+      - Gpp, mengko tak kirim.
+      - Gpp, mengko tak kirim ya.
+      - Gpp, tak kirim mengko.
+      - Ora apa-apa, mengko tak kirim.
+      - Gak papa, mengko tak kirim.
+      - Gpp, mengko takkirim.
+    words: [gpp]
+  - id: e09
+    type: speaking
+    text: Aku durung isa teka, ana kuliah.
+    meaning:
+      ar_eg: لسه مش هقدر آجي، عندي محاضرة.
+      ar: لا أستطيع المجيء بعد، عندي محاضرة.
+      en: I can't come yet, I have class.
+    words: [kuliah]
 dialogue:
-  title: Ing stasiun
+  title: Maca screenshot
   lines:
-    - speaker: Mohamed
-      text: Mas, kowe neng ngendi? Wis jam pitu!
-      ar_eg: يا يودا، إنت فين؟ الساعة بقت سبعة!
-      ar: يا يودا، أين أنت؟ صارت الساعة السابعة!
-      en: Yudha, where are you? It's already seven!
     - speaker: Mas Yudha
-      text: Sorry, bro, isih macet. Aku telat sithik.
-      ar_eg: سوري يا صاحبي، لسه زحمة. هتأخر شوية.
-      ar: آسف يا صديقي، ما زال الزحام. سأتأخر قليلًا.
-      en: Sorry, bro, still stuck in traffic. I'll be a bit late.
+      text: Mohamed, wis maca grup?
+      ar_eg: يا محمد، قريت الجروب؟
+      ar: يا محمد، هل قرأت المجموعة؟
+      en: Mohamed, have you read the group?
     - speaker: Mohamed
-      text: Gpp. Tikete wis ana?
-      ar_eg: مفيش مشكلة. التذاكر معاك؟
-      ar: لا بأس. هل التذاكر معك؟
-      en: No problem. Do you have the tickets?
+      text: Wis. "Gpp" iku apa, Mas?
+      ar_eg: آه. يعني إيه «gpp» يا يودا؟
+      ar: نعم. ما «gpp» يا يودا؟
+      en: Yes. What's "gpp", Yudha?
     - speaker: Mas Yudha
-      text: Wis tak tuku. Wis tak share neng grup.
-      ar_eg: اشتريتها. وبعتها على الجروب خلاص.
-      ar: اشتريتها، وشاركتها في المجموعة.
-      en: I bought them. I've shared them in the group.
+      text: Gak papa, padha karo ora apa-apa.
+      ar_eg: gak papa، يعني زي ora apa-apa، مفيش مشكلة.
+      ar: gak papa، مثل ora apa-apa، أي لا بأس.
+      en: Gak papa, same as ora apa-apa, no problem.
     - speaker: Mohamed
-      text: Oke, aku nunggu neng kene.
-      ar_eg: ماشي، أنا مستنّيك هنا.
-      ar: حسنًا، سأنتظرك هنا.
-      en: OK, I'll wait here.
+      text: Lan "iso" iku "isa", ta?
+      ar_eg: وiso هي isa، صح؟
+      ar: وiso هي isa، أليس كذلك؟
+      en: And "iso" is "isa", right?
+    - speaker: Mas Yudha
+      text: Bener! Kowe wis dadi Screenshot Decoder.
+      ar_eg: صح! إنت بقيت «فكّاك سكرين شوتات».
+      ar: صحيح! صرت «مفكّك لقطات الشاشة».
+      en: Right! You've become a Screenshot Decoder.
 new_words:
-  - word: macet
-    pos: adjective
-    ar_eg: زحمة مرور
-    ar: زحام مروري
-    en: jammed, traffic jam = macet
-  - word: telat
-    pos: adjective
-    ar_eg: متأخر
-    ar: متأخر
-    en: late = terlambat, telat
+  - word: blm
+    pos: adverb
+    ar_eg: لسه / لم بعد (اختصار belum)
+    ar: لم بعد (اختصار belum)
+    en: not yet (short for belum)
+  - word: gpp
+    pos: phrase
+    ar_eg: مفيش مشكلة (اختصار gak papa)
+    ar: لا بأس (اختصار gak papa)
+    en: no problem (short for gak papa)
+  - word: kuliah
+    pos: noun
+    ar_eg: محاضرة / دراسة في الجامعة
+    ar: محاضرة / دراسة جامعية
+    en: lectures, university classes = kuliah
 review:
   status: draft
   verified: false

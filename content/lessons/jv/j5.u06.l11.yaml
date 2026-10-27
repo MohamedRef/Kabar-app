@@ -1,0 +1,217 @@
+schema: kabar.lesson/v1
+id: j5.u06.l11
+language: jv
+title: Ulangan J5.6
+can_do:
+  ar_eg: تشرح معنى أغنية.
+  ar: أن تشرح معنى أغنية.
+  en: Explain a song's meaning.
+slides:
+  - title: Tembang lawas, tembang anyar
+    body:
+      ar_eg: |
+        الأغاني القديمة (Lir-ilir، macapat) لغتها كتابة قديمة: wus = wis، iku بتعرّف، kanthi = بـ، وكلمات زي ngelmu (علم).
+        الأغاني الجديدة (campursari) نغوكو عادي، بس بتحكي حكاية بأدوات الـ cerkak: biyen، nalika، sawise، pungkasane.
+        ولما تشرح: critane، tegese، piwulange.
+      ar: |
+        لغة الأغاني القديمة (Lir-ilir والـ macapat) كتابية عتيقة: wus = wis، وiku للتعريف، وkanthi = بـ، وألفاظ مثل ngelmu (علم).
+        أما الأغاني الحديثة (campursari) فبنغوكو عادية، لكنها تحكي حكاية بأدوات الـ cerkak: biyen، وnalika، وsawise، وpungkasane.
+        وحين تشرح: critane، وtegese، وpiwulange.
+      en: |
+        Old songs (Lir-ilir, macapat) use old written language: wus = wis, iku defines, kanthi = by means of, and words like ngelmu (from «علم»).
+        New songs (campursari) use plain ngoko, but tell a story with cerkak connectors: biyen, nalika, sawise, pungkasane.
+        And to explain one: critane, tegese, piwulange.
+    grammar: jv.narrative.connectors
+    examples:
+      - text: Lir-ilir, lir-ilir, tandure wus sumilir.
+        ar_eg: اصحى، اصحى، الزرع ابتدا يتمايل.
+        ar: انهض، انهض، فقد أخذ الزرع يتمايل.
+        en: Wake up, wake up, the young plants are already stirring.
+      - text: Nalika kowe lunga, atiku ambyar.
+        ar_eg: لما مشيت، قلبي اتكسر حتت.
+        ar: حين رحلتَ تحطّم قلبي.
+        en: When you left, my heart was shattered.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tembang
+        ar_eg: أغنية / شعر بيتغنّى
+        ar: قصيدة مغنّاة
+        en: sung verse, song
+      - text: macapat
+        ar_eg: الشعر الجاوي الكلاسيكي
+        ar: الشعر الجاوي الكلاسيكي
+        en: classical Javanese verse
+      - text: wus
+        ar_eg: خلاص (= wis، قديم)
+        ar: قد (= wis، قديمة)
+        en: already (old wis)
+      - text: ngelmu
+        ar_eg: علم
+        ar: علم
+        en: knowledge
+      - text: tresna
+        ar_eg: حب
+        ar: حب
+        en: love
+      - text: kangen
+        ar_eg: مشتاق
+        ar: مشتاق
+        en: to miss someone
+    words: [tembang, macapat, wus, ngelmu, tresna, kangen]
+  - id: e02
+    type: multiple_choice
+    question: Udane ___, aku nggawa payung.
+    options: [deres, tulus, lila]
+    answer: 0
+    explain:
+      ar_eg: udan deres = مطر جامد.
+      ar: udan deres = مطر غزير.
+      en: udan deres = heavy rain.
+    words: [deres, tulus, lila]
+  - id: e03
+    type: multiple_choice
+    question: Nalika kowe lunga, atiku lara.
+    question_meaning:
+      ar_eg: nalika هنا معناها إيه بالإندونيسي؟
+      ar: ما معنى nalika هنا بالإندونيسية؟
+      en: What is nalika here in Indonesian?
+    options: [ketika, kalau, sesudah]
+    answer: 0
+    words: [nalika, ati]
+  - id: e04
+    type: listen
+    text: Cah angon, cah angon, penekna blimbing kuwi.
+    options: ['Cah angon, cah angon, jupuken blimbing kuwi.', 'Cah cilik, cah cilik, penekna blimbing kuwi.', 'Cah angon, cah angon, penekna blimbing kuwi.']
+    answer: 2
+    meaning:
+      ar_eg: يا راعي، يا راعي، اطلع شجرة الـ blimbing دي.
+      ar: أيها الراعي، أيها الراعي، تسلّق شجرة الـ blimbing تلك.
+      en: Shepherd boy, shepherd boy, climb that starfruit tree.
+    words: [cah angon, blimbing]
+  - id: e05
+    type: listen
+    text: Biyen kowe janji ora bakal lunga, nanging pungkasane kowe lunga.
+    question:
+      ar_eg: الشخص ده وفى بوعده؟
+      ar: هل وفى هذا الشخص بوعده؟
+      en: Did the person keep the promise?
+    options: [iya, ora]
+    answer: 1
+    meaning:
+      ar_eg: زمان إنت وعدت إنك مش هتمشي، بس في الآخر مشيت.
+      ar: وعدتَ قديمًا بألّا ترحل، لكنك رحلت في النهاية.
+      en: Back then you promised you'd never leave, but in the end you left.
+    words: [janji, pungkasane]
+  - id: e06
+    type: fill_blank
+    sentence: Ngelmu iku kalakone ___ laku.
+    meaning:
+      ar_eg: العلم بيتنال بالعمل.
+      ar: العلم يُنال بالعمل.
+      en: Knowledge is attained through practice.
+    options: [wus, kanthi, kang]
+    answers: [kanthi]
+    words: [kanthi, ngelmu, laku]
+  - id: e07
+    type: fill_blank
+    sentence: Aku ___ kowe.
+    meaning:
+      ar_eg: وحشتني.
+      ar: اشتقت إليك.
+      en: I miss you.
+    options: [tandur, ambyar, kangen]
+    answers: [kangen]
+    words: [kangen]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: الحكمة إن العلم لازم يتعمل بيه.
+      ar: والعبرة أن العلم يجب أن يُعمل به.
+      en: The lesson is that knowledge must be practised.
+    answer: Piwulange, ngelmu kudu dilakoni.
+    distractors: [kang, tresna]
+    words: [piwulang, ngelmu]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (زي أغنية campursari) لما مشيت، قلبي اتكسر حتت.
+      ar: (على طريقة الـ campursari) حين رحلتَ تحطّم قلبي.
+      en: (campursari style) When you left, my heart was shattered.
+    answers:
+      - Nalika kowe lunga, atiku ambyar.
+      - Atiku ambyar nalika kowe lunga.
+      - Nalika kowe lunga, atiku ambyar banget.
+      - Nalika kowe lunga atiku ambyar.
+    words: [nalika, ati, ambyar]
+  - id: e10
+    type: match_pairs
+    pairs:
+      - text: katresnan
+        ar_eg: حب
+        ar: حب
+        en: love
+      - text: sanadyan
+        ar_eg: مع إن
+        ar: مع أنّ
+        en: although
+      - text: penari
+        ar_eg: راقص
+        ar: راقص
+        en: dancer
+      - text: undangan
+        ar_eg: دعوة
+        ar: دعوة
+        en: invitation
+    words: [katresnan, sanadyan, penari, undangan]
+  - id: e11
+    type: speaking
+    text: Piwulange, ngelmu kudu dilakoni.
+    meaning:
+      ar_eg: الحكمة إن العلم لازم يتعمل بيه.
+      ar: والعبرة أن العلم يجب أن يُعمل به.
+      en: The lesson is that knowledge must be practised.
+    words: [piwulang, ngelmu]
+dialogue:
+  title: Pamit saka Demak
+  lines:
+    - speaker: Pak Ahmad
+      text: Mas, Wali Sanga mulang Islam nganggo tembang.
+      ar_eg: يا ابني، الأولياء التسعة علّموا الإسلام بالأغاني.
+      ar: يا بني، علّم الأولياء التسعة الإسلام بالأغاني.
+      en: Young man, the Wali Sanga taught Islam through songs.
+    - speaker: Mohamed
+      text: Kados Lir-ilir, nggih, Pak?
+      ar_eg: زي Lir-ilir، صح يا عمّو؟
+      ar: مثل Lir-ilir، أليس كذلك يا سيدي؟
+      en: Like Lir-ilir, right, sir?
+    - speaker: Pak Ahmad
+      text: Iya. Nganti saiki tembang iku isih ditembangake.
+      ar_eg: آه. ولحد النهارده الأغنية دي لسه بتتغنّى.
+      ar: نعم. وما تزال هذه الأغنية تُغنّى حتى اليوم.
+      en: Yes. To this day that song is still sung.
+    - speaker: Mohamed
+      text: Sakmenika kula saged maos tembang, cerkak, lan warta basa Jawi.
+      ar_eg: دلوقتي أنا بعرف أقرا أغاني وقصص وأخبار بالجاوي.
+      ar: صرت الآن أقرأ الأغاني والقصص والأخبار بالجاوية.
+      en: Now I can read songs, stories and news in Javanese.
+    - speaker: Pak Ahmad
+      text: Alhamdulillah. Sugeng tindak, Mas!
+      ar_eg: الحمد لله. مع السلامة يا ابني!
+      ar: الحمد لله. في أمان الله يا بني!
+      en: Alhamdulillah. Safe travels, young man!
+souvenir:
+  id: j5.u06.souvenir
+  title: Masjid Agung Demak
+  note:
+    ar_eg: |
+      جامع دماك الكبير من أقدم جوامع جاوة، من القرن الخمستاشر، وسقفه طبقات فوق بعض على الطريقة الجاوية مش قبة. والحكاية بتقول إن الأولياء التسعة بنوه مع بعض، وإن سونان كاليجاغا عمل واحد من أعمدته من نشارة خشب متجمّعة (saka tatal). والأولياء دول علّموا الإسلام بالـ tembang، و«Lir-ilir» لسه بيتغنّى لحد النهارده، وإنت دلوقتي تقدر تقراه.
+    ar: |
+      مسجد دماك الكبير من أقدم مساجد جاوة، يعود إلى القرن الخامس عشر، وسقفه طبقات متراكبة على الطراز الجاوي لا قبة. وتروي الحكاية أن الأولياء التسعة بنوه معًا، وأن سونان كاليجاغا صنع أحد أعمدته من رقائق خشب مجمّعة (saka tatal). وقد علّم هؤلاء الأولياء الإسلام بالـ tembang، وما تزال «Lir-ilir» تُغنّى إلى اليوم، وصرت قادرًا على قراءتها.
+    en: |
+      Demak's Great Mosque is one of Java's oldest, from the 15th century, with a tiered Javanese roof instead of a dome. Legend says the Wali Sanga built it together, and that Sunan Kalijaga made one of its pillars from bound wood shavings (saka tatal). These saints taught Islam through tembang, and "Lir-ilir" is still sung today; now you can read it.
+review:
+  status: draft
+  verified: false

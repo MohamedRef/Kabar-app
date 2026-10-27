@@ -111,23 +111,36 @@ fn first_sense(gloss: &str) -> String {
     if out.is_empty() { sense.to_string() } else { out.to_string() }
 }
 
-/// A segment's words in the voice, one by one, from local data. Words with
-/// no gloss (names, unknown spellings) stay as written.
+/// A segment's words in the voice, one by one, from local data. A fixed
+/// expression ("Selamat pagi") counts as one; names and words with no gloss
+/// (unknown spellings) stay as written.
 pub fn word_by_word(doc: &ReadDoc, seg: usize, voice: UiLanguage) -> String {
     let Some(s) = doc.segments.get(seg) else { return String::new() };
-    s.tokens
-        .clone()
-        .filter_map(|i| {
-            let t = &doc.tokens[i];
-            let w = t.word.as_ref()?;
-            let surface = doc.text(t.start, t.end);
-            Some(match w.shown() {
-                Some(info) if !w.is_english_aside() => first_sense(info.gloss.get(voice)),
-                _ => surface.to_string(),
-            })
-        })
-        .collect::<Vec<_>>()
-        .join(" ")
+    let lang = if text_lang(doc) == Lang::Javanese { "jv" } else { "id" };
+    let mut out = Vec::new();
+    let mut i = s.tokens.start;
+    while i < s.tokens.end {
+        let t = &doc.tokens[i];
+        let Some(w) = t.word.as_ref() else {
+            i += 1;
+            continue;
+        };
+        if let Some((last, p)) =
+            crate::annotated::phrases::at(doc, i, lang).filter(|(l, _)| *l < s.tokens.end)
+        {
+            out.push(first_sense(p.gloss.get(voice)));
+            i = last + 1;
+            continue;
+        }
+        let surface = doc.text(t.start, t.end);
+        let name = surface.starts_with(char::is_uppercase) && crate::portraits::is_cast_name(surface);
+        out.push(match w.shown() {
+            Some(info) if !w.is_english_aside() && !name => first_sense(info.gloss.get(voice)),
+            _ => surface.to_string(),
+        });
+        i += 1;
+    }
+    out.join(" ")
 }
 
 fn failure(r: FriendlyReason) -> Msg {
@@ -305,6 +318,8 @@ pub fn LineUnder(seg: usize) -> Element {
                 lang,
                 dir: "auto",
                 title: "{ui.t(Msg::TranslationWordByWord)}",
+                // Says what it is, so it doesn't read as a translation.
+                span { class: "tr-wbw-label", "{ui.t(Msg::TranslationWordByWordShort)} " }
                 "{words}"
             }
         },
@@ -334,6 +349,14 @@ mod tests {
         assert_eq!(en, "want to let go how much");
         let first = word_by_word(&d, 0, UiLanguage::ArEg);
         assert!(first.chars().any(|c| ('\u{0600}'..='\u{06FF}').contains(&c)), "{first}");
+    }
+
+    #[test]
+    fn greetings_read_as_one_and_names_stay_names() {
+        let d = doc("Selamat pagi. Nama saya Gadis.");
+        let en = word_by_word(&d, 0, UiLanguage::En);
+        assert!(en.starts_with("good morning "), "{en}");
+        assert!(en.ends_with(" Gadis"), "{en}");
     }
 
     #[test]

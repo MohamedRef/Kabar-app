@@ -1,0 +1,204 @@
+schema: kabar.lesson/v1
+id: bipa5.u03.l12
+language: id
+title: Mesin dan manusia
+can_do:
+  ar_eg: تشارك في نقاش جماعي عن الذكاء الاصطناعي والشغل، وتقول مين بيكسب ومين بيخسر.
+  ar: أن تشارك في نقاش جماعي عن الذكاء الاصطناعي والعمل، وتبيّن من يربح ومن يخسر.
+  en: Take part in a group discussion on AI and jobs, saying who gains and who loses.
+slides:
+  - title: Untung atau rugi?
+    grammar: id.nominalization
+    body:
+      ar_eg: |
+        في النقاش الرسمي هتحتاج فعلين متعاكسين:
+        - menguntungkan = يفيد / يكسّب: Otomatisasi menguntungkan perusahaan.
+        - merugikan = يضر / يخسّر: Penipuan merugikan pembeli.
+        وحوّل الأفعال لأسماء عشان كلامك يبان رسمي: menggunakan → penggunaan، mudah → kemudahan، bocor → kebocoran.
+      ar: |
+        في النقاش الرسمي تحتاج فعلين متقابلين:
+        - menguntungkan = يفيد، يعود بالربح: Otomatisasi menguntungkan perusahaan.
+        - merugikan = يضرّ، يُلحق خسارة: Penipuan merugikan pembeli.
+        وحوّل الأفعال إلى أسماء ليبدو كلامك رسميًا: menggunakan ← penggunaan، وmudah ← kemudahan، وbocor ← kebocoran.
+      en: |
+        Formal discussion needs two opposite verbs:
+        - menguntungkan = to benefit: Otomatisasi menguntungkan perusahaan.
+        - merugikan = to harm, to cost: Penipuan merugikan pembeli.
+        And turn verbs into nouns to sound formal: menggunakan → penggunaan, mudah → kemudahan, bocor → kebocoran.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Otomatisasi menguntungkan perusahaan.» معناها إيه؟
+      ar: ما معنى «Otomatisasi menguntungkan perusahaan.»؟
+      en: What does "Otomatisasi menguntungkan perusahaan." mean?
+    options:
+      - الأتمتة بتخسّر الشركة.
+      - الأتمتة بتفيد الشركة.
+      - الأتمتة بتقفل الشركة.
+    answer: 1
+    explain:
+      ar_eg: من untung (مكسب) + meN-…-kan = يجيب مكسب. وعكسها merugikan من rugi (خسارة).
+      ar: من untung (ربح) مع meN-…-kan أي يجلب الربح، وعكسها merugikan من rugi (خسارة).
+      en: From untung (profit) with meN-…-kan, to bring gain; the opposite, merugikan, is from rugi (loss).
+    words: [menguntungkan, otomatisasi]
+  - id: e02
+    type: listen
+    text: Penggunaan kecerdasan buatan merugikan pekerja yang tidak mau belajar.
+    question:
+      ar_eg: مين اللي بيخسر من الذكاء الاصطناعي؟
+      ar: من الخاسر من الذكاء الاصطناعي؟
+      en: Who loses out from AI?
+    options:
+      - الشركات الكبيرة.
+      - المبرمجين.
+      - العمال اللي مش عايزين يتعلموا.
+    answer: 2
+    words: [merugikan, penggunaan, kecerdasan buatan]
+  - id: e03
+    type: fill_blank
+    sentence: Perusahaan harus ___ kebocoran data pelanggan.
+    meaning:
+      ar_eg: الشركة لازم تمنع تسريب بيانات العملا.
+      ar: يجب على الشركة أن تمنع تسرّب بيانات العملاء.
+      en: The company must prevent customer data leaks.
+    options: [mencegah, menguntungkan, menggantikan]
+    answers: [mencegah]
+    words: [mencegah, bocor]
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: الأتمتة بتفيد الشركات، بس بتضر العمال.
+      ar: تفيد الأتمتة الشركات، لكنها تضرّ العمّال.
+      en: Automation benefits companies but harms workers.
+    answer: Otomatisasi menguntungkan perusahaan, tetapi merugikan pekerja.
+    distractors: [menggantikan, keamanan]
+    words: [menguntungkan, merugikan, otomatisasi]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: keterampilan
+        ar_eg: مهارة
+        ar: مهارة
+        en: skill
+      - text: ojek daring
+        ar_eg: موتوسيكل أجرة من أبلكيشن
+        ar: درّاجة أجرة عبر تطبيق
+        en: app motorbike taxi
+      - text: penipuan
+        ar_eg: نصب
+        ar: احتيال
+        en: fraud
+      - text: risiko
+        ar_eg: خطر / مخاطرة
+        ar: خطر، مخاطرة
+        en: risk
+      - text: kemudahan
+        ar_eg: سهولة
+        ar: سهولة
+        en: ease, convenience
+    words: [keterampilan, ojek daring, penipuan, risiko, kemudahan]
+  - id: e06
+    type: translate
+    direction: from_target
+    source_text: Kemudahan belanja daring menguntungkan penjual kecil.
+    answers_meaning:
+      ar_eg:
+        - سهولة الشرا أونلاين بتفيد البياعين الصغيرين.
+        - إن الشرا أونلاين سهل ده بيكسّب التجار الصغيرين.
+      ar:
+        - تفيد سهولةُ التسوّق عبر الإنترنت صغارَ الباعة.
+        - سهولة الشراء عبر الإنترنت تعود بالربح على التجّار الصغار.
+      en:
+        - The ease of online shopping benefits small sellers.
+        - Easy online shopping is good for small traders.
+    words: [kemudahan, menguntungkan, daring]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Banyak orang menggunakan AI.» عايز تكتبها بأسلوب رسمي «___ AI meningkat». تحط إيه؟
+      ar: تريد كتابة «Banyak orang menggunakan AI.» بأسلوب رسمي «___ AI meningkat»، فماذا تضع؟
+      en: To make "Banyak orang menggunakan AI." formal as "___ AI meningkat", which word fits?
+    options: [Penggunaan, Pengguna, Digunakan]
+    answer: 0
+    explain:
+      ar_eg: penggunaan = الاستخدام (الفعل نفسه). pengguna = المستخدم (الشخص).
+      ar: penggunaan = الاستخدام نفسه، وpengguna = المستخدم (الشخص).
+      en: penggunaan is the use itself; pengguna is the user.
+    words: [penggunaan]
+  - id: e08
+    type: speaking
+    text: Menurut saya, kecerdasan buatan lebih banyak menguntungkan daripada merugikan.
+    meaning:
+      ar_eg: في رأيي، الذكاء الاصطناعي فايدته أكتر من ضرره.
+      ar: في رأيي، نفع الذكاء الاصطناعي أكثر من ضرره.
+      en: In my view, AI does more good than harm.
+    words: [menguntungkan, merugikan]
+  - id: e09
+    type: dictation
+    text: Penipuan daring merugikan banyak orang tua.
+    meaning:
+      ar_eg: النصب أونلاين بيضر ناس كبيرة في السن كتير.
+      ar: يضرّ الاحتيال الإلكتروني كثيرًا من كبار السنّ.
+      en: Online fraud harms many older people.
+    words: [penipuan, merugikan]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: لازم نناقش مخاطر الذكاء الاصطناعي.
+      ar: يجب أن نناقش مخاطر الذكاء الاصطناعي.
+      en: We need to discuss the risks of AI.
+    answers:
+      - Kita harus membahas risiko kecerdasan buatan.
+      - Kita perlu membahas risiko kecerdasan buatan.
+      - Kita harus membahas risiko-risiko kecerdasan buatan.
+      - Kita harus membahas risiko AI.
+    words: [membahas, risiko, kecerdasan buatan]
+dialogue:
+  title: Diskusi di kantor
+  lines:
+    - speaker: Bu Lestari
+      text: Hari ini kita membahas penggunaan AI di kantor. Siapa yang mau mulai?
+      ar_eg: النهارده هنناقش استخدام الذكاء الاصطناعي في المكتب. مين يحب يبدأ؟
+      ar: نناقش اليوم استخدام الذكاء الاصطناعي في المكتب. من يودّ البدء؟
+      en: Today we're discussing the use of AI at the office. Who'd like to start?
+    - speaker: Rina
+      text: Menurut saya, AI menguntungkan kita. Laporan selesai lebih cepat.
+      ar_eg: في رأيي، الـ AI بيفيدنا. التقارير بتخلص أسرع.
+      ar: في رأيي، يفيدنا الذكاء الاصطناعي، فالتقارير تُنجز أسرع.
+      en: In my view, AI benefits us. Reports get done faster.
+    - speaker: Mohamed
+      text: Saya setuju sebagian. Namun, ada risiko kebocoran data klien.
+      ar_eg: أنا موافق جزئيًا. بس فيه خطر إن بيانات العملا تتسرب.
+      ar: أوافق جزئيًا، لكنّ هناك خطر تسرّب بيانات العملاء.
+      en: I partly agree. However, there's a risk of client data leaking.
+    - speaker: Bu Lestari
+      text: Betul. Kebocoran data bisa merugikan perusahaan.
+      ar_eg: مظبوط. تسريب البيانات ممكن يضر الشركة.
+      ar: صحيح، فتسرّب البيانات قد يضرّ الشركة.
+      en: True. A data leak could harm the company.
+    - speaker: Rina
+      text: Kalau begitu, kita perlu aturan dan keterampilan baru.
+      ar_eg: يبقى محتاجين قواعد ومهارات جديدة.
+      ar: إذن نحتاج إلى قواعد ومهارات جديدة.
+      en: Then we need rules and new skills.
+    - speaker: Mohamed
+      text: Setuju. Mesin membantu, tetapi manusia tetap bertanggung jawab.
+      ar_eg: موافق. المكنة بتساعد، بس الإنسان هو اللي فاضل مسؤول.
+      ar: موافق. الآلة تساعد، لكنّ الإنسان يبقى المسؤول.
+      en: Agreed. Machines help, but people stay responsible.
+new_words:
+  - word: menguntungkan
+    pos: verb
+    ar_eg: يفيد / يكسّب
+    ar: يفيد، يعود بالربح
+    en: to benefit, to be profitable for
+  - word: merugikan
+    pos: verb
+    ar_eg: يضر / يخسّر
+    ar: يضرّ، يُلحق خسارة
+    en: to harm, to cause loss to
+review:
+  status: draft
+  verified: false

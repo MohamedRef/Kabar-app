@@ -1,205 +1,243 @@
 schema: kabar.lesson/v1
 id: bipa7.u10.l10
 language: id
-title: Ulangan Unit 10
+title: Menerbitkan artikel
 can_do:
-  ar_eg: تدافع عن حاجة كتبتها، بأسلوب علمي وبأمانة.
-  ar: أن تدافع عن نصّ كتبته، بأسلوب علمي وأمانة.
-  en: Defend a piece you wrote, in academic register and honestly.
+  ar_eg: تشرح رحلة مقالة علمية من التقديم للنشر، وعلاقتها برسالة الدكتوراه.
+  ar: أن تشرح مسار مقالة علمية من التقديم إلى النشر وصلتها بأطروحة الدكتوراه.
+  en: Explain a paper's path from submission to publication, and its link to a PhD.
+slides:
+  - title: Dari naskah ke terbitan
+    body:
+      ar_eg: |
+        طلبة دكتوراه كتير في إندونيسيا لازم ينشروا في jurnal bereputasi (مجلّة مصنّفة) قبل مناقشة disertasi (رسالة الدكتوراه).
+        promotor = المشرف الرئيسي، وبيساعد في المقالة.
+        خطوات النشر:
+        1. ممكن تنزّل pracetak (نسخة قبل النشر) على موقع مفتوح.
+        2. المجلّة تبعتها لـ tinjauan sejawat (تحكيم الأقران): 2 أو 3 penelaah (محكّمين) بيقروها.
+        3. بعد التعديلات تتنشر، ولو akses terbuka (وصول مفتوح) أي حد يقراها ببلاش.
+        4. كل ما بحوث تانية تستشهد بيها، عدد sitasi (الاستشهادات) بيزيد.
+      ar: |
+        يُطلب من كثير من طلّاب الدكتوراه في إندونيسيا النشر في jurnal bereputasi (مجلّة رصينة) قبل مناقشة disertasi (الأطروحة).
+        promotor = المشرف الرئيس، ويعين في كتابة المقالة.
+        مراحل النشر:
+        1. قد ترفع pracetak (نسخة ما قبل النشر) على موقع مفتوح.
+        2. ترسلها المجلّة إلى tinjauan sejawat (تحكيم الأقران)، فيقرؤها 2 أو 3 penelaah (محكّمين).
+        3. بعد التعديلات تُنشر، وإن كانت akses terbuka (وصولًا مفتوحًا) قرأها أيّ أحد مجّانًا.
+        4. وكلّما استشهدت بها بحوث أخرى زاد عدد sitasi (الاستشهادات).
+      en: |
+        Many Indonesian PhD students must publish in a jurnal bereputasi (reputable journal) before defending their disertasi.
+        promotor = the main supervisor, who helps with the paper.
+        The steps:
+        1. You may post a pracetak (preprint) on an open server.
+        2. The journal sends it for tinjauan sejawat (peer review): 2 or 3 penelaah (reviewers) read it.
+        3. After revisions it's published; if akses terbuka (open access), anyone can read it free.
+        4. As other studies cite it, its sitasi (citation) count grows.
+    examples:
+      - text: Artikel saya sedang dalam tinjauan sejawat.
+        ar_eg: مقالتي دلوقتي في مرحلة تحكيم الأقران.
+        ar: مقالتي قيد تحكيم الأقران.
+        en: My article is under peer review.
+      - text: Penelaah kedua meminta data tambahan.
+        ar_eg: المحكّم التاني طلب بيانات زيادة.
+        ar: طلب المحكّم الثاني بيانات إضافية.
+        en: The second reviewer asked for more data.
+      - text: Promotor saya membaca setiap bab disertasi.
+        ar_eg: المشرف بتاعي بيقرا كل فصل في الرسالة.
+        ar: يقرأ مشرفي كلّ فصل من الأطروحة.
+        en: My supervisor reads every chapter of the dissertation.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: hipotesis
-        ar_eg: فرضية
-        ar: فرضية
-        en: hypothesis
-      - text: makalah
-        ar_eg: ورقة بحثية
-        ar: ورقة بحثية
-        en: paper
-      - text: kualitatif
-        ar_eg: كيفي
-        ar: نوعي
-        en: qualitative
-      - text: jargon
-        ar_eg: مصطلحات تقيلة
-        ar: رطانة اصطلاحية
-        en: jargon
-      - text: keterbatasan
-        ar_eg: حدود / قصور
-        ar: حدود البحث
-        en: limitation
-    words: [hipotesis, makalah, kualitatif, jargon, keterbatasan]
+      - text: tinjauan sejawat
+        ar_eg: تحكيم الأقران
+        ar: تحكيم الأقران
+        en: peer review
+      - text: penelaah
+        ar_eg: مُحكّم / مراجع
+        ar: المحكّم
+        en: reviewer, referee
+      - text: jurnal bereputasi
+        ar_eg: مجلّة علمية محترمة / مصنّفة
+        ar: مجلّة علمية رصينة
+        en: reputable (indexed) journal
+      - text: akses terbuka
+        ar_eg: وصول مفتوح (ببلاش للكل)
+        ar: الوصول المفتوح
+        en: open access
+    words: [tinjauan sejawat, penelaah, jurnal bereputasi, akses terbuka]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة مكتوبة بأسلوب علمي محكم؟
-      ar: أيّ جملة مكتوبة بأسلوب علمي محكم؟
-      en: Which sentence is in tight academic register?
-    options:
-      - Saya kira datanya lumayan banyak banget.
-      - Data dikumpulkan dari 120 partisipan di tiga distrik.
-      - Wah, partisipannya seru-seru!
-    answer: 1
-    words: [ragam ilmiah, kalimat efektif, partisipan]
-  - id: e03
-    type: fill_blank
-    sentence: Moderator membuka ___ setelah semua pemakalah selesai.
-    meaning:
-      ar_eg: مدير الجلسة فتح جلسة الأسئلة بعد ما كل أصحاب الأوراق خلّصوا.
-      ar: افتتح مدير الجلسة الأسئلة بعد أن أنهى أصحاب الأوراق.
-      en: The moderator opened the Q&A after all presenters had finished.
-    options: [sesi tanya jawab, abstrak, kuesioner]
-    answers: [sesi tanya jawab]
-    words: [sesi tanya jawab, moderator, pemakalah, abstrak, kuesioner]
-  - id: e04
-    type: listen
-    text: Untuk pembaca awam, peneliti memakai analogi, bukan istilah teknis.
-    question:
-      ar_eg: الباحث بيستعمل إيه للقارئ العادي؟
-      ar: ماذا يستعمل الباحث للقارئ غير المتخصّص؟
-      en: What does the researcher use for lay readers?
-    options:
-      - مصطلحات فنية أكتر.
-      - جداول بس.
-      - تشبيهات.
-    answer: 2
-    words: [pembaca awam, analogi, istilah]
-  - id: e05
-    type: build_sentence
-    source:
-      ar_eg: نتيجة البحث بتأكّد الفرضية.
-      ar: تؤكّد نتيجة البحث الفرضية.
-      en: The finding confirms the hypothesis.
-    answer: Temuan penelitian menguatkan hipotesis.
-    distractors: [jargon, relevan]
-    words: [temuan, hipotesis]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: سائل سألك سؤال مالوش علاقة بالورقة. تقول إيه؟
-      ar: سألك أحدهم سؤالًا لا صلة له بالورقة، فماذا تقول؟
-      en: Someone asks a question unrelated to your paper. What do you say?
-    options:
-      - Pertanyaan yang menarik, tetapi kurang relevan dengan makalah ini.
-      - Itu pertanyaan bodoh.
-      - Saya pulang saja.
-    answer: 0
-    words: [relevan, penanya]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: البحث ده بيستعمل منهج كمّي وكيفي.
-      ar: يستعمل هذا البحث منهجًا كمّيًّا ونوعيًّا.
-      en: This study uses quantitative and qualitative methods.
-    answers:
-      - Penelitian ini memakai metode kuantitatif dan kualitatif.
-      - Penelitian ini menggunakan metode kuantitatif dan kualitatif.
-      - Penelitian ini menggunakan pendekatan kuantitatif dan kualitatif.
-    words: [kuantitatif, kualitatif, metode penelitian]
-  - id: e08
-    type: speaking
-    text: Terima kasih atas pertanyaannya. Mohon klarifikasi, distrik mana yang Ibu maksud?
-    meaning:
-      ar_eg: شكرًا على السؤال. ممكن توضّحي، تقصدي أنهي منطقة؟
-      ar: شكرًا على السؤال. هلّا وضّحتِ أيّ منطقة تقصدين؟
-      en: Thank you for the question. Could you clarify which district you mean?
-    words: [klarifikasi]
-  - id: e09
-    type: dictation
-    text: Artikel ilmiah populer itu ditulis tanpa jargon.
-    meaning:
-      ar_eg: المقالة العلمية المبسّطة دي متكتبة من غير مصطلحات تقيلة.
-      ar: كُتبت تلك المقالة العلمية المبسّطة دون رطانة.
-      en: That popular-science article was written without jargon.
-    words: [artikel ilmiah populer, jargon]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Peneliti yang jujur menyebutkan keterbatasan penelitiannya di akhir makalah.
-    answers_meaning:
-      ar_eg:
-        - الباحث الأمين بيذكر حدود بحثه في آخر الورقة.
-        - الباحث الصادق بيقول قصور بحثه في آخر الورقة.
-      ar:
-        - يذكر الباحث الأمين حدود بحثه في آخر الورقة.
-        - يُثبت الباحث الصادق قصور بحثه في خاتمة الورقة.
-      en:
-        - An honest researcher states the study's limitations at the end of the paper.
-        - Honest researchers name their study's limits at the end of the paper.
-    words: [keterbatasan, makalah]
-  - id: e11
     type: match_pairs
     pairs:
-      - text: persetujuan
-        ar_eg: موافقة
-        ar: موافقة
-        en: consent
-      - text: sumbu
-        ar_eg: محور
-        ar: محور
-        en: axis
-      - text: dosen pembimbing
-        ar_eg: الدكتور المشرف
-        ar: الأستاذ المشرف
-        en: supervisor
-      - text: tata letak
-        ar_eg: تنسيق
-        ar: تنسيق
-        en: layout
-      - text: kerahasiaan
-        ar_eg: سرّية
-        ar: سرّية
-        en: confidentiality
-    words: [persetujuan, sumbu, dosen pembimbing, tata letak, kerahasiaan]
-  - id: e12
+      - text: pracetak
+        ar_eg: نسخة قبل النشر (preprint)
+        ar: نسخة ما قبل النشر
+        en: preprint
+      - text: sitasi
+        ar_eg: استشهاد / اقتباس من بحث (citation)
+        ar: الإحالة، الاستشهاد
+        en: citation
+      - text: disertasi
+        ar_eg: رسالة دكتوراه
+        ar: أطروحة الدكتوراه
+        en: doctoral dissertation
+      - text: promotor
+        ar_eg: المشرف الرئيسي على الدكتوراه
+        ar: المشرف الرئيس على الدكتوراه
+        en: doctoral supervisor (promotor)
+    words: [pracetak, sitasi, disertasi, promotor]
+  - id: e03
+    type: listen
+    text: Artikel itu sudah mendapat seratus sitasi dalam dua tahun.
+    question:
+      ar_eg: المقالة خدت مية إيه؟
+      ar: مئة ماذا نالت المقالة؟
+      en: A hundred what did the article get?
+    options: [استشهاد, محكّم, نسخة قبل النشر]
+    answer: 0
+    meaning:
+      ar_eg: المقالة دي خدت مية استشهاد في سنتين.
+      ar: نالت تلك المقالة مئة استشهاد في عامين.
+      en: That article has been cited a hundred times in two years.
+    words: [sitasi]
+  - id: e04
+    type: fill_blank
+    sentence: Saya mengunggah ___ supaya peneliti lain bisa membaca lebih awal.
+    meaning:
+      ar_eg: رفعت ___ علشان باحثين تانيين يقدروا يقروا بدري.
+      ar: رفعتُ ___ ليتمكّن باحثون آخرون من القراءة مبكّرًا.
+      en: I uploaded a ___ so other researchers can read it early.
+    options: [pracetak, promotor, penelaah]
+    answers: [pracetak]
+    words: [pracetak, promotor, penelaah]
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: 'في مناقشة الـ skripsi، اللجنة سألت: «الفرق ده signifikan؟» وإنت ماعملتش اختبار. تقول إيه؟'
-      ar: في مناقشة الـ skripsi سألت اللجنة «أهذا الفرق signifikan؟» ولم تُجرِ اختبارًا. بمَ تجيب؟
-      en: At your skripsi defence the panel asks, "Is that difference signifikan?" and you didn't test it. What do you say?
-    options:
-      - Ya, pasti signifikan.
-      - Pertanyaan itu tidak relevan.
-      - Belum saya uji. Itu keterbatasan penelitian saya.
+      ar_eg: ميزة «akses terbuka» إيه؟
+      ar: ما ميزة «akses terbuka»؟
+      en: What's the advantage of 'akses terbuka'?
+    options: [Hanya profesor yang boleh membaca., Artikel tidak perlu tinjauan sejawat., Siapa pun bisa membaca artikel tanpa membayar.]
     answer: 2
     explain:
-      ar_eg: 'الصراحة أحسن: اعترف بالـ keterbatasan واقترح بحث جاي.'
-      ar: 'الصدق أولى: اعترف بالـ keterbatasan واقترح بحثًا لاحقًا.'
-      en: 'Honesty wins: admit the keterbatasan and suggest further research.'
-    words: [sidang skripsi, signifikan, keterbatasan, relevan]
+      ar_eg: الوصول المفتوح = أي حد يقرا ببلاش.
+      ar: الوصول المفتوح = القراءة مجّانًا للجميع.
+      en: Open access = anyone reads free.
+    words: [akses terbuka, tinjauan sejawat]
+  - id: e06
+    type: fill_blank
+    sentence: Sebelum ujian, mahasiswa doktor harus terbit di ___.
+    meaning:
+      ar_eg: قبل المناقشة، طالب الدكتوراه لازم ينشر في ___.
+      ar: قبل المناقشة يجب أن ينشر طالب الدكتوراه في ___.
+      en: Before the defence, a PhD student must publish in a ___.
+    options: [jurnal bereputasi, akses terbuka, sitasi]
+    answers: [jurnal bereputasi]
+    words: [jurnal bereputasi, akses terbuka, sitasi]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: رسالة الدكتوراه بتاعته عن اللغات في بابوا.
+      ar: أطروحته عن اللغات في بابوا.
+      en: His dissertation is about languages in Papua.
+    answer: Disertasinya tentang bahasa-bahasa di Papua.
+    distractors: [promotor, pracetak]
+    words: [disertasi]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Penelaah pertama menerima artikel itu dengan revisi kecil.
+    answers_meaning:
+      ar_eg: [المحكّم الأول قبل المقالة بتعديلات بسيطة, أول محكّم وافق على المقالة بشوية تعديلات صغيّرة]
+      ar: [قبل المحكّم الأوّل المقالة بتعديلات طفيفة, وافق المحكّم الأول على المقالة مع تعديلات صغيرة]
+      en: [The first reviewer accepted the article with minor revisions, Reviewer one accepted the paper with small revisions]
+    words: [penelaah]
+  - id: e09
+    type: speaking
+    text: Promotor saya ingin disertasi saya selesai tahun ini.
+    meaning:
+      ar_eg: المشرف بتاعي عايز رسالتي تخلص السنة دي.
+      ar: يريد مشرفي أن أنهي أطروحتي هذا العام.
+      en: My supervisor wants my dissertation finished this year.
+    words: [promotor, disertasi]
+  - id: e10
+    type: multiple_choice
+    question: Siapa yang membaca artikel dalam tinjauan sejawat?
+    options: [Para penelaah yang ahli di bidang itu., Wartawan televisi., Semua pembaca akses terbuka.]
+    answer: 0
+    explain:
+      ar_eg: المحكّمين خبرا في نفس المجال.
+      ar: المحكّمون خبراء في المجال نفسه.
+      en: Reviewers are experts in the same field.
+    words: [penelaah, tinjauan sejawat, akses terbuka, jurnal bereputasi, sitasi, pracetak]
 dialogue:
-  title: Festival di Lembah Baliem
   lines:
+    - speaker: Penanya
+      text: Pak, apakah artikel ini sudah melewati tinjauan sejawat?
+      ar_eg: يا دكتور، المقالة دي عدّت على تحكيم الأقران؟
+      ar: يا دكتور، هل مرّت هذه المقالة بتحكيم الأقران؟
+      en: Sir, has this article been through peer review?
     - speaker: Pak Elias
-      text: Makalahmu sudah dipertahankan, dan sekarang kita menonton festival bersama.
-      ar_eg: دافعت عن ورقتك خلاص، ودلوقتي هنتفرّج على المهرجان سوا.
-      ar: دافعتَ عن ورقتك، والآن نشاهد المهرجان معًا.
-      en: You've defended your paper, and now we watch the festival together.
+      text: Belum. Ini masih pracetak, jadi hasilnya harus dibaca dengan hati-hati.
+      ar_eg: لسه. دي لسه نسخة قبل النشر، فالنتايج لازم تتقرا بحذر.
+      ar: ليس بعد، فهي نسخة ما قبل النشر، فاقرؤوا نتائجها بحذر.
+      en: Not yet. It's still a preprint, so read its results with care.
     - speaker: Mohamed
-      text: Suku Dani, Lani, dan Yali datang dengan pakaian adat. Luar biasa.
-      ar_eg: الداني واللاني واليالي جايين بلبسهم التقليدي. حاجة تحفة.
-      ar: جاءت جماعات الداني واللاني واليالي بأزيائها التقليدية. أمر مذهل.
-      en: The Dani, Lani and Yali have come in traditional dress. Amazing.
+      text: Kapan akan terbit, Pak?
+      ar_eg: هتتنشر إمتى يا دكتور؟
+      ar: متى تُنشر يا دكتور؟
+      en: When will it be published, sir?
     - speaker: Pak Elias
-      text: Dari Sorong sampai Wamena, kamu sudah belajar bahasa berita, sejarah, dan ilmu.
-      ar_eg: من سورونج لوامينا، اتعلّمت لغة الأخبار والتاريخ والعلم.
-      ar: من سورونغ إلى وامينا تعلّمتَ لغة الأخبار والتاريخ والعلم.
-      en: From Sorong to Wamena, you've learnt the language of news, history and science.
+      text: Dua penelaah sudah setuju. Jurnalnya bereputasi dan akses terbuka.
+      ar_eg: اتنين محكّمين وافقوا. والمجلّة محترمة ووصولها مفتوح.
+      ar: وافق محكّمان، والمجلّة رصينة ومفتوحة الوصول.
+      en: Two reviewers have agreed. The journal is reputable and open access.
     - speaker: Mohamed
-      text: Perjalanan ini selesai, tetapi belajar bahasa Indonesia tidak pernah selesai.
-      ar_eg: الرحلة دي خلصت، بس تعلّم الإندونيسي عمره ما بيخلص.
-      ar: انتهت هذه الرحلة، لكنّ تعلّم الإندونيسية لا ينتهي أبدًا.
-      en: This journey is over, but learning Indonesian never ends.
-souvenir:
-  id: bipa7.u10.souvenir
-  title: Festival Lembah Baliem
-  note:
-    ar_eg: وادي باليم في جبال بابوا العالية، ووامينا هي بلده الأساسية. العالم برّه ماكانش يعرف الوادي ده لحدّ سنة 1938، لما طيّارة بعثة علمية شافته من فوق. وكل سنة، عادةً في أغسطس، مهرجان الوادي بيجمّع جماعات الداني واللاني واليالي، بمعارك تمثيلية ورقص وأغاني. ومبروك، دي آخر محطة في رحلة BIPA 7.
-    ar: يقع وادي باليم في مرتفعات بابوا، ووامينا بلدته الرئيسة. ولم يعرفه العالم الخارجي حتّى عام 1938، حين رأته طائرة بعثة علمية من الجوّ. ويجمع مهرجانه السنوي، في أغسطس عادةً، جماعات الداني واللاني واليالي بمعارك تمثيلية ورقص وغناء. وتهانينا، فهذه آخر محطّة في رحلة BIPA 7.
-    en: The Baliem valley lies in Papua's highlands, with Wamena as its main town. Outsiders did not know of it until 1938, when a scientific expedition's plane spotted it from the air. Each year, usually in August, its festival brings the Dani, Lani and Yali together with mock battles, dance and song. Congratulations, this is the last stop of the BIPA 7 journey.
+      text: Artikel ini akan jadi bab penting dalam disertasi saya.
+      ar_eg: المقالة دي هتبقى فصل مهم في رسالة الدكتوراه بتاعتي.
+      ar: ستكون هذه المقالة فصلًا مهمًّا في أطروحتي.
+      en: This article will be an important chapter of my dissertation.
+new_words:
+  - word: tinjauan sejawat
+    pos: noun
+    ar_eg: تحكيم الأقران
+    ar: تحكيم الأقران
+    en: peer review
+  - word: penelaah
+    pos: noun
+    ar_eg: مُحكّم / مراجع
+    ar: المحكّم
+    en: reviewer, referee
+  - word: jurnal bereputasi
+    pos: noun
+    ar_eg: مجلّة علمية محترمة / مصنّفة
+    ar: مجلّة علمية رصينة
+    en: reputable (indexed) journal
+  - word: akses terbuka
+    pos: noun
+    ar_eg: وصول مفتوح (ببلاش للكل)
+    ar: الوصول المفتوح
+    en: open access
+  - word: pracetak
+    pos: noun
+    ar_eg: نسخة قبل النشر (preprint)
+    ar: نسخة ما قبل النشر
+    en: preprint
+  - word: sitasi
+    pos: noun
+    ar_eg: استشهاد / اقتباس من بحث (citation)
+    ar: الإحالة، الاستشهاد
+    en: citation
+  - word: disertasi
+    pos: noun
+    ar_eg: رسالة دكتوراه
+    ar: أطروحة الدكتوراه
+    en: doctoral dissertation
+  - word: promotor
+    pos: noun
+    ar_eg: المشرف الرئيسي على الدكتوراه
+    ar: المشرف الرئيس على الدكتوراه
+    en: doctoral supervisor (promotor)
 review:
   status: draft
   verified: false

@@ -1,0 +1,224 @@
+schema: kabar.lesson/v1
+id: j1.u03.l07
+language: jv
+title: Ulangan J1.3
+can_do:
+  ar_eg: تقرا شات جروب.
+  ar: أن تقرأ دردشة جماعية.
+  en: Read a group chat.
+slides:
+  - title: Maca chat
+    body:
+      ar_eg: |
+        عشان تقرا أي شات جاوي، اعمل تلات خطوات:
+        1. رجّع الكتابة: arp → arep، ws / wes → wis، ng → neng، gk → ora (ra)، opo → apa، piro → pira، sik = استنى / الأول.
+        2. دوّر على كلمات الزمن: wis (خلاص)، durung (لسه)، lagi (دلوقتي)، arep (هـ)، isih (لسه مستمر).
+        3. حدد اللغة بالعلامات: ora، karo، sing، ana، neng = جاوي؛ tidak، sama، yang، ada، di = إندونيسي.
+      ar: |
+        لقراءة أي دردشة جاوية اتبع ثلاث خطوات:
+        1. ردّ الإملاء: arp → arep، وws / wes → wis، وng → neng، وgk → ora (ra)، وopo → apa، وpiro → pira، وsik = انتظر / أولًا.
+        2. ابحث عن ألفاظ الزمن: wis، durung، lagi، arep، isih.
+        3. حدد اللغة بالعلامات: ora وkaro وsing وana وnang جاوية؛ وtidak وsama وyang وada وdi إندونيسية.
+      en: |
+        To read any Javanese chat, take three steps:
+        1. Restore the spelling: arp → arep, ws / wes → wis, ng → neng, gk → ora (ra), opo → apa, piro → pira, sik = hold on / first.
+        2. Find the time words: wis (already), durung (not yet), lagi (now, -ing), arep (going to), isih (still).
+        3. Tag the language by its markers: ora, karo, sing, ana, neng = Javanese; tidak, sama, yang, ada, di = Indonesian.
+    grammar: jv.chat.normalize
+    examples:
+      - text: ws tekan durung? → Wis tekan durung?
+        ar_eg: وصلت ولا لسه؟
+        ar: هل وصلت أم ليس بعد؟
+        en: Arrived yet?
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: arp
+        ar_eg: arep (هـ)
+        ar: arep (سوف)
+        en: arep
+      - text: ws
+        ar_eg: wis (خلاص)
+        ar: wis (قد)
+        en: wis
+      - text: rapopo
+        ar_eg: ora apa-apa (عادي)
+        ar: ora apa-apa (لا بأس)
+        en: ora apa-apa
+      - text: soale
+        ar_eg: عشان
+        ar: لأنّ
+        en: because
+      - text: jare
+        ar_eg: بيقولوا
+        ar: يقولون
+        en: they say
+      - text: golek
+        ar_eg: يدوّر على
+        ar: يبحث عن
+        en: look for
+    words: [arep, wis, ora apa-apa, soale, jare, golek]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: wis
+        ar_eg: sudah (خلاص)
+        ar: sudah (قد)
+        en: sudah (already)
+      - text: durung
+        ar_eg: belum (لسه)
+        ar: belum (ليس بعد)
+        en: belum (not yet)
+      - text: lagi
+        ar_eg: sedang (دلوقتي)
+        ar: sedang (الآن)
+        en: sedang (-ing)
+      - text: isih
+        ar_eg: masih (لسه مستمر)
+        ar: masih (ما زال)
+        en: masih (still)
+      - text: ndelok
+        ar_eg: يبص، يشوف
+        ar: يرى
+        en: look, see
+      - text: njaluk
+        ar_eg: يطلب
+        ar: يطلب
+        en: ask for
+    words: [wis, durung, lagi, isih, ndelok, njaluk]
+  - id: e03
+    type: dictation
+    text: Sik, aku kesusu, durung mbales.
+    meaning:
+      ar_eg: استنى، أنا مستعجل، لسه ما رديتش.
+      ar: لحظة، أنا مستعجل، لم أردّ بعد.
+      en: Hold on, I'm in a hurry, haven't replied yet.
+    words: [kesusu, mbales]
+  - id: e04
+    type: multiple_choice
+    question: Jebul dheweke dokter!
+    question_meaning:
+      ar_eg: معناها إيه؟
+      ar: ما معناها؟
+      en: What does it mean?
+    options: [هو مش دكتور., طلع دكتور!, بيقولوا إنه دكتور.]
+    answer: 1
+    explain:
+      ar_eg: jebul = طلع، اتضح إن. «بيقولوا» = jare.
+      ar: jebul = تبيّن أنّ. أمّا «يقولون» فـjare.
+      en: jebul = it turns out. "They say" is jare.
+    words: [jebul, jare]
+  - id: e05
+    type: listen
+    text: Aku isih neng Alkid.
+    options: [Aku isih neng Alkid., Aku wis neng Alkid., Aku arep neng Alkid.]
+    answer: 0
+    words: [isih, neng]
+  - id: e06
+    type: fill_blank
+    sentence: wes mangan? → ___ mangan?
+    meaning:
+      ar_eg: كلت؟
+      ar: هل أكلت؟
+      en: Have you eaten?
+    answers: [wis, Wis]
+    words: [wis]
+  - id: e07
+    type: fill_blank
+    sentence: Aku ___ mangan. Ayo mangan!
+    meaning:
+      ar_eg: لسه ماكلتش. يلا ناكل!
+      ar: لم آكل بعد. هيا نأكل!
+      en: I haven't eaten yet. Let's eat!
+    options: [durung, isih, wis]
+    answers: [durung]
+    words: [durung]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: هنام. خلاص، سلام!
+      ar: سأنام. إلى اللقاء!
+      en: I'm going to sleep. Bye!
+    answer: Aku arep turu. Wis ya!
+    distractors: [tidur, durung]
+    words: [arep, turu, wis]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: sik, aku lagi moco
+    answers_meaning:
+      ar_eg: [استنى، أنا بقرا., استنى، بقرا, لحظة، أنا بقرا, استنى، أنا بقرا دلوقتي]
+      ar: [انتظر، أنا أقرأ., لحظة، أنا أقرأ الآن, انتظر، أقرأ الآن]
+      en: ['Hold on, I''m reading.', 'Hold on, I''m reading', 'Wait, I''m reading', 'Just a sec, I''m reading']
+    explain:
+      ar_eg: sik = استنى، lagi = دلوقتي، moco = maca (يقرا).
+      ar: sik = انتظر، وlagi = الآن، وmoco = maca.
+      en: sik = hold on, lagi = -ing, moco = maca (read).
+    words: [sik, lagi, maca]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: cah, aku gk ngerti opo2
+    answers_meaning:
+      ar_eg: [يا جدعان، أنا مش فاهم أي حاجة., يا جماعة، مش فاهم حاجة, يا جدعان، مش فاهم أي حاجة]
+      ar: [يا جماعة، لا أفهم شيئًا., يا جماعة، لا أفهم أي شيء]
+      en: ['Guys, I don''t understand anything.', 'Guys, I don''t get anything', 'Mate, I don''t understand anything']
+    words: [ora, ngerti, apa-apa]
+  - id: e11
+    type: match_pairs
+    pairs:
+      - text: karo
+        ar_eg: مع (= dengan / sama)
+        ar: مع (= dengan / sama)
+        en: with (= dengan / sama)
+      - text: sing
+        ar_eg: اللي (= yang)
+        ar: الذي (= yang)
+        en: that, which, the one (= yang)
+      - text: ana
+        ar_eg: فيه / موجود (= ada)
+        ar: يوجد (= ada)
+        en: there is, to exist (= ada)
+    words: [karo, sing, ana]
+dialogue:
+  title: Grup "Bocah Alkid"
+  lines:
+    - speaker: Mbak Rara
+      text: cah, ws tekan durung?
+      ar_eg: يا جدعان، وصلتوا ولا لسه؟
+      ar: يا جماعة، هل وصلتم أم ليس بعد؟
+      en: Guys, are you there yet?
+    - speaker: Mas Heru
+      text: ws, aku lagi ng Alkid
+      ar_eg: أيوه، أنا في ألكيد دلوقتي.
+      ar: نعم، أنا في ألكيد الآن.
+      en: Yes, I'm at Alkid now.
+    - speaker: Mohamed
+      text: durung, aku isih ng sepur. sik ya
+      ar_eg: لسه، أنا لسه في القطر. استنوا شوية.
+      ar: ليس بعد، ما زلت في القطار. انتظروا قليلًا.
+      en: Not yet, I'm still on the train. Hang on.
+    - speaker: Mbak Rara
+      text: rapopo. aku arp mangan sate karo Mas Heru
+      ar_eg: عادي. أنا هاكل ساتيه مع هيرو.
+      ar: لا بأس. سآكل الساتيه مع هيرو.
+      en: No problem. I'm going to have satay with Heru.
+    - speaker: Mohamed
+      text: oke, ati2 cah!
+      ar_eg: ماشي، خلوا بالكم يا جدعان!
+      ar: حسنًا، انتبهوا لأنفسكم يا جماعة!
+      en: OK, take care, guys!
+souvenir:
+  id: j1.u03.souvenir
+  title: Alun-alun Kidul di malam hari
+  note:
+    ar_eg: |
+      Alun-alun Kidul (والناس بتقول عليه Alkid) هو الميدان اللي ورا الكراتون من ناحية الجنوب. بالليل بيتملي: عربيات بدّال منورة بالألوان، وأكل وشاي سخن، وفي النص شجرتين بانيان كبار. وفيه لعبة مشهورة اسمها masangin: تغمّض عينيك وتحاول تمشي بين الشجرتين. والشباب اللي قاعدين هناك بيبعتوا رسايل خليط إندونيسي وجاوي ومختصرة جدًا. الـ Reader في Kabar بيفكّها، بس دلوقتي إنت كمان بتعرف تفكّها لوحدك. برافو!
+    ar: |
+      Alun-alun Kidul (ويختصره الناس Alkid) هو الميدان الواقع جنوب الكراتون. يمتلئ ليلًا بعربات الدوّاسات المضاءة بالألوان وباعة الطعام والشاي الساخن، وفي وسطه شجرتا بانيان كبيرتان، ومن تقاليده لعبة masangin: أن تعصب عينيك وتحاول المشي بين الشجرتين. والشباب هناك يكتبون رسائل تمزج الإندونيسية بالجاوية باختصار شديد؛ يفكّها Reader في Kabar، وصرت الآن قادرًا على فكّها بنفسك. أحسنت!
+    en: |
+      Alun-alun Kidul (everyone says Alkid) is the square south of the Kraton. At night it fills up: pedal cars covered in coloured lights, food and hot tea, and two great banyan trees in the middle. The famous game there is masangin: close your eyes and try to walk between the two trees. The young people hanging out there text in a heavily abbreviated mix of Indonesian and Javanese. Kabar's Reader normalises it, and now you can do it yourself. Well done!
+review:
+  status: draft
+  verified: false

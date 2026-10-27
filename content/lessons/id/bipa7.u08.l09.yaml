@@ -1,163 +1,240 @@
 schema: kabar.lesson/v1
 id: bipa7.u08.l09
 language: id
-title: Anggaran usaha
+title: Kesenjangan
 can_do:
-  ar_eg: تعمل ميزانية بسيطة لمشروع صغير وتحسب المكسب.
-  ar: أن تُعدّ ميزانية بسيطة لمشروع صغير وتحسب الربح.
-  en: Draw up a simple budget for a small business and work out the profit.
+  ar_eg: تقرا أرقام عن الفقر والأجور وتتكلّم عن الفجوة بين الناس.
+  ar: أن تقرأ أرقامًا عن الفقر والأجور وتتحدّث عن الفجوة بين الناس.
+  en: Read figures on poverty and wages and discuss inequality.
 slides:
-  - title: Masuk, keluar, sisa
+  - title: Kaya dan miskin
     body:
       ar_eg: |
-        أي ميزانية فيها حاجتين:
-        - pemasukan = الفلوس اللي داخلة (البيع)
-        - pengeluaran = الفلوس اللي خارجة (الخامات، الإيجار، المواصلات)
-        laba = pemasukan − pengeluaran
-        مثال: Pemasukan bulan ini Rp6.000.000. Pengeluarannya Rp4.500.000. Jadi labanya Rp1.500.000.
-        خلّي بالك: الـ omzet هو كل البيع، مش المكسب!
+        kesenjangan = الفجوة: بين الغني والفقير، أو بين جاوة وبابوا.
+        garis kemiskinan = خط الفقر: اللي دخله أقل منه يتحسب فقير. kemiskinan ekstrem = فقر مدقع.
+        bantuan sosial (bansos) = مساعدات الحكومة: فلوس أو رز.
+        upah minimum = الحد الأدنى للأجور، كل محافظة ليها رقم.
+        angkatan kerja = القوى العاملة. ناس كتير منها في sektor informal (القطاع غير الرسمي): بيّاعين الشارع وسوّاقين الأوجيك.
+        pekerja lepas = شغّال حر، من غير عقد ثابت.
       ar: |
-        في كلّ ميزانية أمران:
-        - pemasukan = المال الداخل (المبيعات)
-        - pengeluaran = المال الخارج (الخامات والإيجار والنقل)
-        laba = pemasukan − pengeluaran
-        مثال: Pemasukan bulan ini Rp6.000.000. Pengeluarannya Rp4.500.000. Jadi labanya Rp1.500.000.
-        وانتبه: الـ omzet هو مجموع المبيعات لا الربح!
+        kesenjangan = الفجوة: بين الغنيّ والفقير، أو بين جاوة وبابوا.
+        garis kemiskinan = خطّ الفقر، ومن دخله دونه يُعدّ فقيرًا. kemiskinan ekstrem = الفقر المدقع.
+        bantuan sosial (bansos) = مساعدات الحكومة نقدًا أو أرزًّا.
+        upah minimum = الحدّ الأدنى للأجور، ولكلّ مقاطعة رقمها.
+        angkatan kerja = القوى العاملة، وكثير منها في sektor informal: باعة الرصيف وسائقو الأوجيك.
+        pekerja lepas = عامل حرّ بلا عقد ثابت.
       en: |
-        Every budget has two sides:
-        - pemasukan = money coming in (sales)
-        - pengeluaran = money going out (materials, rent, transport)
-        laba = pemasukan − pengeluaran
-        Example: Pemasukan bulan ini Rp6.000.000. Pengeluarannya Rp4.500.000. Jadi labanya Rp1.500.000.
-        Careful: omzet is total sales, not profit!
+        kesenjangan = the gap: between rich and poor, or between Java and Papua.
+        garis kemiskinan = the poverty line: earn less and you count as poor. kemiskinan ekstrem = extreme poverty.
+        bantuan sosial (bansos) = government aid: cash or rice.
+        upah minimum = the minimum wage; each province sets its own.
+        angkatan kerja = the labour force. Many work in the sektor informal: street vendors, ojek drivers.
+        pekerja lepas = a freelancer with no fixed contract.
+    examples:
+      - text: Kesenjangan antara kota dan desa masih lebar.
+        ar_eg: الفجوة بين المدينة والقرية لسه واسعة.
+        ar: ما زالت الفجوة بين المدينة والريف واسعة.
+        en: The gap between town and village is still wide.
+      - text: Upah minimum di provinsi ini naik tahun depan.
+        ar_eg: الحد الأدنى للأجور في المحافظة دي هيزيد السنة الجاية.
+        ar: سيرتفع الحدّ الأدنى للأجور في هذه المقاطعة العام المقبل.
+        en: The minimum wage in this province rises next year.
+      - text: Banyak anak muda menjadi pekerja lepas.
+        ar_eg: شباب كتير بقوا شغّالين فري لانس.
+        ar: صار كثير من الشباب عمّالًا أحرارًا.
+        en: Many young people become freelancers.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إيجار الكشك يتحسب فين؟
-      ar: أين يُحسب إيجار الكشك؟
-      en: Where does the kiosk rent go?
-    options:
-      - في الـ pemasukan.
-      - في الـ laba.
-      - في الـ pengeluaran.
-    answer: 2
-    words: [pengeluaran]
+    type: match_pairs
+    pairs:
+      - text: kesenjangan
+        ar_eg: فجوة / تفاوت
+        ar: فجوة، تفاوت
+        en: gap, inequality
+      - text: garis kemiskinan
+        ar_eg: خط الفقر
+        ar: خطّ الفقر
+        en: poverty line
+      - text: kemiskinan ekstrem
+        ar_eg: فقر مدقع
+        ar: الفقر المدقع
+        en: extreme poverty
+      - text: bantuan sosial
+        ar_eg: مساعدات اجتماعية
+        ar: مساعدات اجتماعية
+        en: social assistance
+    words: [kesenjangan, garis kemiskinan, kemiskinan ekstrem, bantuan sosial]
   - id: e02
-    type: listen
-    text: Pemasukan kami bulan ini enam juta rupiah dari penjualan noken.
-    question:
-      ar_eg: الفلوس اللي دخلت الشهر ده كام؟
-      ar: كم بلغ الدخل هذا الشهر؟
-      en: How much came in this month?
-    options:
-      - ستة مليون روبية.
-      - ست آلاف روبية.
-      - ستين مليون روبية.
-    answer: 0
-    words: [pemasukan]
+    type: match_pairs
+    pairs:
+      - text: upah minimum
+        ar_eg: الحد الأدنى للأجور
+        ar: الحدّ الأدنى للأجور
+        en: minimum wage
+      - text: angkatan kerja
+        ar_eg: القوى العاملة
+        ar: القوى العاملة
+        en: labour force
+      - text: sektor informal
+        ar_eg: القطاع غير الرسمي
+        ar: القطاع غير الرسمي
+        en: informal sector
+      - text: pekerja lepas
+        ar_eg: شغّال فري لانس / باليومية
+        ar: عامل حرّ
+        en: freelancer
+    words: [upah minimum, angkatan kerja, sektor informal, pekerja lepas]
   - id: e03
-    type: fill_blank
-    sentence: Kalau ___ lebih besar dari pemasukan, usaha kita rugi.
+    type: listen
+    text: Pedagang kaki lima dan tukang ojek bekerja di sektor informal.
+    question:
+      ar_eg: بيشتغلوا فين؟
+      ar: أين يعملون؟
+      en: Where do they work?
+    options: [القطاع غير الرسمي, الحد الأدنى للأجور, خط الفقر]
+    answer: 0
     meaning:
-      ar_eg: لو المصاريف أكبر من الدخل، مشروعنا بيخسر.
-      ar: إن زادت النفقات على الدخل خسر مشروعنا.
-      en: If spending is bigger than income, our business makes a loss.
-    options: [pengeluaran, omzet, saldo]
-    answers: [pengeluaran]
-    words: [pengeluaran, pemasukan]
+      ar_eg: بيّاعين الرصيف وسوّاقين الأوجيك بيشتغلوا في القطاع غير الرسمي.
+      ar: يعمل باعة الأرصفة وسائقو الأوجيك في القطاع غير الرسمي.
+      en: Street vendors and ojek drivers work in the informal sector.
+    words: [sektor informal]
   - id: e04
-    type: build_sentence
-    source:
-      ar_eg: المكسب هو الدخل ناقص المصاريف.
-      ar: الربح هو الدخل مطروحًا منه النفقات.
-      en: Profit is income minus spending.
-    answer: Laba adalah pemasukan dikurangi pengeluaran.
-    distractors: [omzet, modal]
-    words: [laba, pemasukan, pengeluaran]
+    type: fill_blank
+    sentence: Keluarga itu hidup di bawah ___.
+    meaning:
+      ar_eg: العيلة دي عايشة تحت ___.
+      ar: تعيش تلك الأسرة تحت ___.
+      en: That family lives below the ___.
+    options: [garis kemiskinan, angkatan kerja, pekerja lepas]
+    answers: [garis kemiskinan]
+    words: [garis kemiskinan, angkatan kerja, pekerja lepas]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: الدخل ٦ مليون والمصاريف ٤٫٥ مليون. المكسب كام؟
-      ar: الدخل ستّة ملايين والنفقات أربعة ملايين ونصف. كم الربح؟
-      en: Income is 6 million and spending 4.5 million. What's the profit?
-    options:
-      - ١٠٫٥ مليون.
-      - ١٫٥ مليون.
-      - ٦ مليون.
+      ar_eg: مين اللي بياخد «bantuan sosial»؟
+      ar: مَن يتلقّى «bantuan sosial»؟
+      en: Who receives 'bantuan sosial'?
+    options: [Pemilik smelter., Keluarga miskin yang terdaftar., Semua turis.]
     answer: 1
-    words: [laba]
+    explain:
+      ar_eg: المساعدات بتروح للعيلات الفقيرة المسجّلة.
+      ar: تذهب المساعدات إلى الأسر الفقيرة المسجّلة.
+      en: Aid goes to registered poor families.
+    words: [bantuan sosial, kemiskinan ekstrem]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أكبر مصروف عندنا المواصلات.
-      ar: أكبر نفقاتنا النقل.
-      en: Our biggest expense is transport.
-    answers:
-      - Pengeluaran terbesar kami adalah transportasi.
-      - Pengeluaran kami yang paling besar adalah transportasi.
-      - Pengeluaran terbesar kami transportasi.
-      - Pengeluaran paling besar kami adalah ongkos transportasi.
-    words: [pengeluaran]
+    type: fill_blank
+    sentence: Pemerintah ingin menghapus ___ sebelum tahun 2030.
+    meaning:
+      ar_eg: الحكومة عايزة تقضي على ___ قبل 2030.
+      ar: تريد الحكومة القضاء على ___ قبل عام 2030.
+      en: The government wants to end ___ before 2030.
+    options: [kemiskinan ekstrem, upah minimum, kesenjangan]
+    answers: [kemiskinan ekstrem]
+    words: [kemiskinan ekstrem, upah minimum, kesenjangan]
   - id: e07
-    type: speaking
-    text: Omzet kami naik, tetapi pengeluaran juga naik. Jadi laba kami tetap.
-    meaning:
-      ar_eg: مبيعاتنا زادت، بس المصاريف زادت كمان. فمكسبنا زي ما هو.
-      ar: ارتفعت مبيعاتنا، لكنّ النفقات ارتفعت أيضًا، فبقي ربحنا كما هو.
-      en: Our turnover rose, but so did spending. So our profit stayed the same.
-    words: [omzet, pengeluaran, laba]
+    type: build_sentence
+    source:
+      ar_eg: القوى العاملة بتزيد كل سنة.
+      ar: تزداد القوى العاملة كلّ عام.
+      en: The labour force grows every year.
+    answer: Angkatan kerja bertambah setiap tahun.
+    distractors: [sektor informal, pekerja lepas]
+    words: [angkatan kerja]
   - id: e08
-    type: dictation
-    text: Catat semua pemasukan dan pengeluaran setiap hari.
-    meaning:
-      ar_eg: سجّل كل الدخل والمصاريف كل يوم.
-      ar: دوّن كلّ الدخل والنفقات يوميًّا.
-      en: Write down all income and spending every day.
-    words: [pemasukan, pengeluaran]
+    type: translate
+    direction: from_target
+    source_text: Pekerja lepas tidak mendapat upah minimum atau asuransi.
+    answers_meaning:
+      ar_eg: [الشغّال الحر ما بياخدش الحد الأدنى للأجور ولا تأمين, الفري لانسر مالوش حد أدنى للأجر ولا تأمين]
+      ar: [لا يحصل العامل الحرّ على الحدّ الأدنى للأجور ولا على تأمين, العامل الحرّ محروم من الحدّ الأدنى للأجور والتأمين]
+      en: ['Freelancers don''t get the minimum wage or insurance', A freelance worker has no minimum wage or insurance]
+    words: [pekerja lepas, upah minimum]
   - id: e09
     type: speaking
-    text: Pemasukan dari QRIS langsung masuk ke saldo koperasi.
+    text: Kesenjangan bisa dikurangi dengan pendidikan dan bantuan sosial.
     meaning:
-      ar_eg: الدخل اللي بييجي من QRIS بيدخل على طول في رصيد الجمعية.
-      ar: يدخل الدخل الآتي عبر QRIS مباشرةً في رصيد الجمعية.
-      en: Income via QRIS goes straight into the co-op's balance.
-    words: [pemasukan, saldo, QRIS]
+      ar_eg: الفجوة ممكن تقلّ بالتعليم والمساعدات الاجتماعية.
+      ar: يمكن تقليص الفجوة بالتعليم والمساعدات الاجتماعية.
+      en: Inequality can be reduced with education and social aid.
+    words: [kesenjangan, bantuan sosial]
+  - id: e10
+    type: multiple_choice
+    question: Seorang penjual bakso keliling tanpa kontrak bekerja di ...
+    options: [sektor informal, garis kemiskinan, upah minimum]
+    answer: 0
+    explain:
+      ar_eg: البيّاع اللي بيلفّ من غير عقد = قطاع غير رسمي.
+      ar: البائع الجوّال بلا عقد = قطاع غير رسمي.
+      en: A roaming vendor with no contract = informal sector.
+    words: [sektor informal, garis kemiskinan, upah minimum, angkatan kerja, kesenjangan, bantuan sosial]
 dialogue:
-  title: Buku kas Kaka Benny
   lines:
-    - speaker: Mohamed
-      text: Kaka Benny, omzet bulan ini enam juta. Itu laba Kaka?
-      ar_eg: يا كاكا بيني، المبيعات الشهر ده ستة مليون. ده مكسبك؟
-      ar: يا كاكا بيني، بلغت المبيعات هذا الشهر ستّة ملايين. أهذا ربحك؟
-      en: Kaka Benny, turnover this month is six million. Is that your profit?
     - speaker: Kaka Benny
-      text: Bukan. Itu pemasukan. Pengeluarannya belum dihitung, benang dan ongkos kapal.
-      ar_eg: لأ. ده الدخل. المصاريف لسه ماتحسبتش، الخيط ومصاريف المركب.
-      ar: لا، هذا الدخل، ولم تُحسب النفقات بعد، الخيوط وأجرة السفينة.
-      en: No. That's income. Spending isn't counted yet, thread and shipping costs.
+      text: Mohamed, saya ojek daring. Tiap hari dapat beda-beda.
+      ar_eg: يا محمد، أنا سوّاق أوجيك أونلاين. كل يوم باخد مبلغ شكل.
+      ar: يا محمد، أنا سائق أوجيك عبر التطبيق، ويختلف دخلي كلّ يوم.
+      en: Mohamed, I drive an app ojek. Every day I earn something different.
     - speaker: Mohamed
-      text: Pengeluarannya empat setengah juta. Jadi labanya satu setengah juta.
-      ar_eg: المصاريف أربعة ونص مليون. يبقى المكسب مليون ونص.
-      ar: النفقات أربعة ملايين ونصف، فالربح مليون ونصف.
-      en: Spending is four and a half million. So profit is one and a half million.
+      text: Jadi Kaka termasuk pekerja lepas, ya?
+      ar_eg: يبقى إنت شغّال حر يا كاكا؟
+      ar: إذن أنت عامل حرّ يا كاكا؟
+      en: So you're a freelancer, Kaka?
     - speaker: Kaka Benny
-      text: Betul! Kamu bisa jadi bendahara koperasi kami.
-      ar_eg: صح! إنت ممكن تبقى أمين صندوق الجمعية بتاعتنا.
-      ar: صحيح! يمكنك أن تصير أمين صندوق جمعيّتنا.
-      en: Right! You could be our cooperative's treasurer.
+      text: Ya. Tidak ada upah minimum untuk kami.
+      ar_eg: أيوه. مفيش حد أدنى للأجر لينا.
+      ar: نعم، لا حدّ أدنى للأجور لنا.
+      en: Yes. There's no minimum wage for us.
+    - speaker: Mohamed
+      text: Banyak angkatan kerja di Sorong bekerja di sektor informal, kan?
+      ar_eg: كتير من القوى العاملة في سورونج شغّالين في القطاع غير الرسمي، صح؟
+      ar: كثير من القوى العاملة في سورونغ في القطاع غير الرسمي، أليس كذلك؟
+      en: Much of Sorong's labour force is in the informal sector, isn't it?
+    - speaker: Kaka Benny
+      text: Betul. Kalau sakit, kami tidak dapat apa-apa. Itu kesenjangan yang nyata.
+      ar_eg: مظبوط. لو عيّينا، ما بناخدش حاجة. دي فجوة حقيقية.
+      ar: صحيح، فإن مرضنا لا نحصل على شيء، وهذه فجوة حقيقية.
+      en: Right. If we get sick, we get nothing. That's real inequality.
 new_words:
-  - word: pemasukan
+  - word: kesenjangan
     pos: noun
-    ar_eg: الدخل (الفلوس الداخلة)
-    ar: الدخل، الإيرادات
-    en: income, revenue
-  - word: pengeluaran
+    ar_eg: فجوة / تفاوت
+    ar: فجوة، تفاوت
+    en: gap, inequality
+  - word: garis kemiskinan
     pos: noun
-    ar_eg: المصاريف
-    ar: النفقات
-    en: spending, expenses
+    ar_eg: خط الفقر
+    ar: خطّ الفقر
+    en: poverty line
+  - word: kemiskinan ekstrem
+    pos: noun
+    ar_eg: فقر مدقع
+    ar: الفقر المدقع
+    en: extreme poverty
+  - word: bantuan sosial
+    pos: noun
+    ar_eg: مساعدات اجتماعية
+    ar: مساعدات اجتماعية
+    en: social assistance
+  - word: upah minimum
+    pos: noun
+    ar_eg: الحد الأدنى للأجور
+    ar: الحدّ الأدنى للأجور
+    en: minimum wage
+  - word: angkatan kerja
+    pos: noun
+    ar_eg: القوى العاملة
+    ar: القوى العاملة
+    en: labour force
+  - word: sektor informal
+    pos: noun
+    ar_eg: القطاع غير الرسمي
+    ar: القطاع غير الرسمي
+    en: informal sector
+  - word: pekerja lepas
+    pos: noun
+    ar_eg: شغّال فري لانس / باليومية
+    ar: عامل حرّ
+    en: freelancer
 review:
   status: draft
   verified: false

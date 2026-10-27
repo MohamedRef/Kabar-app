@@ -1,0 +1,199 @@
+schema: kabar.lesson/v1
+id: bipa7.u01.l12
+language: id
+title: Siaran berita
+can_do:
+  ar_eg: تقرا نشرة أخبار قصيرة بصوت عالي بطلاقة وبنبرة المذيع.
+  ar: أن تقرأ نشرة أخبار قصيرة بصوت مسموع وبطلاقة المذيع.
+  en: Read a short news bulletin aloud fluently, in a newsreader's voice.
+slides:
+  - title: Selamat malam, Pendengar
+    grammar: id.news.expressions
+    body:
+      ar_eg: |
+        النشرة في الراديو ليها شكل ثابت:
+        - الافتتاح: Selamat malam, Pendengar. Inilah kabar terkini dari Sorong.
+        - تسليم الكلام للمراسل: Kita sambung dengan reporter kami, Yohana, di Pelabuhan Sorong.
+        - الختام: Sekian siaran berita malam ini. Terima kasih atas perhatian Anda.
+        الـ pendengar = المستمع، siaran = إذاعة / بثّ، kabar terkini = آخر الأخبار.
+        اقرا ببطء شوية، ووقّف عند كل فاصلة، وخلّي الأرقام واضحة.
+      ar: |
+        للنشرة الإذاعية قالب ثابت:
+        - الافتتاح: Selamat malam, Pendengar. Inilah kabar terkini dari Sorong.
+        - إحالة الكلام إلى المراسل: Kita sambung dengan reporter kami, Yohana, di Pelabuhan Sorong.
+        - الختام: Sekian siaran berita malam ini. Terima kasih atas perhatian Anda.
+        والـ pendengar = المستمع، وsiaran = البثّ، وkabar terkini = آخر الأخبار.
+        اقرأ متمهّلًا، وقف عند كلّ فاصلة، وانطق الأرقام بوضوح.
+      en: |
+        A radio bulletin has a fixed shape:
+        - Opening: Selamat malam, Pendengar. Inilah kabar terkini dari Sorong.
+        - Handing over: Kita sambung dengan reporter kami, Yohana, di Pelabuhan Sorong.
+        - Closing: Sekian siaran berita malam ini. Terima kasih atas perhatian Anda.
+        pendengar = listener, siaran = broadcast, kabar terkini = the latest news.
+        Read a little slowly, pause at each comma, and make numbers clear.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pendengar
+        ar_eg: مستمع
+        ar: مستمع
+        en: listener
+      - text: siaran
+        ar_eg: إذاعة / بثّ
+        ar: بثّ
+        en: broadcast
+      - text: reporter
+        ar_eg: مراسل
+        ar: مراسل
+        en: reporter
+      - text: kabar terkini
+        ar_eg: آخر الأخبار
+        ar: آخر الأخبار
+        en: the latest news
+    words: [pendengar, siaran, reporter, kabar terkini]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة تقفل بيها النشرة؟
+      ar: بأيّ جملة تُختم النشرة؟
+      en: Which sentence closes the bulletin?
+    options:
+      - Sekian siaran berita malam ini. Terima kasih atas perhatian Anda.
+      - Inilah kabar terkini dari Sorong.
+      - Kita sambung dengan reporter kami.
+    answer: 0
+    words: [siaran]
+  - id: e03
+    type: fill_blank
+    sentence: Kita sambung dengan ___ kami di Pelabuhan Sorong.
+    meaning:
+      ar_eg: نكمّل مع مراسلنا في ميناء سورونج.
+      ar: نواصل مع مراسلنا في ميناء سورونغ.
+      en: We go over to our reporter at Sorong harbour.
+    options: [reporter, pendengar, siaran]
+    answers: [reporter]
+    words: [reporter]
+  - id: e04
+    type: listen
+    text: Selamat malam, Pendengar. Inilah kabar terkini dari Sorong dan sekitarnya.
+    question:
+      ar_eg: المذيع بيقدّم إيه؟
+      ar: ماذا يقدّم المذيع؟
+      en: What is the presenter introducing?
+    options:
+      - برنامج أغاني.
+      - إعلان تجاري.
+      - آخر الأخبار من سورونج وحواليها.
+    answer: 2
+    words: [pendengar, kabar terkini]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: البثّ ده بيوصل لكل مستمعينا في بابوا.
+      ar: يصل هذا البثّ إلى كلّ مستمعينا في بابوا.
+      en: This broadcast reaches all our listeners in Papua.
+    answer: Siaran ini menjangkau semua pendengar kami di Papua.
+    distractors: [reporter, terkini]
+    words: [siaran, pendengar]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه أهم نصيحة وإنت بتقرا نشرة؟
+      ar: ما أهمّ نصيحة عند قراءة النشرة؟
+      en: What's the key tip when reading a bulletin?
+    options:
+      - اقرا بأسرع ما يمكن.
+      - اقرا بهدوء، ووقّف عند الفواصل، ووضّح الأرقام.
+      - زوّد رأيك الشخصي.
+    answer: 1
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: ده آخر الأخبار عن الطقس.
+      ar: هذه آخر الأخبار عن الطقس.
+      en: Here is the latest news on the weather.
+    answers:
+      - Inilah kabar terkini tentang cuaca.
+      - Ini kabar terkini tentang cuaca.
+      - Inilah kabar terkini mengenai cuaca.
+    words: [kabar terkini]
+  - id: e08
+    type: speaking
+    text: Selamat malam, Pendengar. Sekian siaran berita dari Sorong.
+    meaning:
+      ar_eg: مساء الخير يا مستمعينا. وده كان كل النشرة من سورونج.
+      ar: مساء الخير أيّها المستمعون. إلى هنا تنتهي النشرة من سورونغ.
+      en: Good evening, listeners. That's all from the Sorong newsroom.
+    words: [pendengar, siaran]
+  - id: e09
+    type: dictation
+    text: Reporter kami melaporkan langsung dari pelabuhan.
+    meaning:
+      ar_eg: مراسلنا بينقل على الهوا من الميناء.
+      ar: يوافينا مراسلنا مباشرةً من الميناء.
+      en: Our reporter is live from the harbour.
+    words: [reporter]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Kabar terkini dari reporter kami, kapal cepat ke Waisai sudah berangkat.
+    answers_meaning:
+      ar_eg:
+        - آخر الأخبار من مراسلنا، المركب السريع لوايساي اتحرّك خلاص.
+        - مراسلنا بيقول إن المركب السريع لوايساي طلع.
+      ar:
+        - آخر الأخبار من مراسلنا أنّ القارب السريع إلى وايساي قد أبحر.
+        - يفيد مراسلنا بأنّ القارب السريع المتّجه إلى وايساي غادر.
+      en:
+        - The latest from our reporter is that the fast boat to Waisai has left.
+        - Our reporter says the fast boat to Waisai has already set off.
+    words: [kabar terkini, reporter]
+dialogue:
+  title: Lampu merah menyala
+  lines:
+    - speaker: Kaka Yohana
+      text: Lampu merah sudah menyala. Kamu siap membaca siaran?
+      ar_eg: اللمبة الحمرا نوّرت. جاهز تقرا النشرة؟
+      ar: أضاء المصباح الأحمر. أأنت مستعدّ لقراءة النشرة؟
+      en: The red light is on. Ready to read the bulletin?
+    - speaker: Mohamed
+      text: Siap. "Selamat malam, Pendengar. Inilah kabar terkini dari Sorong."
+      ar_eg: جاهز. «مساء الخير يا مستمعين. ودي آخر الأخبار من سورونج».
+      ar: مستعدّ. «مساء الخير أيّها المستمعون. إليكم آخر الأخبار من سورونغ».
+      en: Ready. "Good evening, listeners. Here is the latest news from Sorong."
+    - speaker: Kaka Yohana
+      text: Bagus, tetapi pelan sedikit. Pendengar kita banyak yang mendengar sambil menyetir.
+      ar_eg: حلو، بس براحة شوية. مستمعين كتير بيسمعونا وهما سايقين.
+      ar: جميل، لكن تمهّل قليلًا، فكثير من مستمعينا يسمعوننا وهم يقودون.
+      en: Good, but a bit slower. Lots of our listeners are driving while they listen.
+    - speaker: Mohamed
+      text: Baik. Lalu saya serahkan ke reporter di pelabuhan, ya?
+      ar_eg: ماشي. وبعدين أسلّم للمراسل في الميناء؟
+      ar: حسنًا. ثمّ أُحيل الكلام إلى المراسل في الميناء؟
+      en: All right. Then I hand over to the reporter at the harbour?
+new_words:
+  - word: pendengar
+    pos: noun
+    ar_eg: مستمع
+    ar: مستمع
+    en: listener
+  - word: siaran
+    pos: noun
+    ar_eg: إذاعة / بثّ
+    ar: بثّ
+    en: broadcast
+  - word: reporter
+    pos: noun
+    ar_eg: مراسل
+    ar: مراسل
+    en: reporter
+  - word: kabar terkini
+    pos: noun
+    ar_eg: آخر الأخبار
+    ar: آخر الأخبار
+    en: the latest news
+review:
+  status: draft
+  verified: false

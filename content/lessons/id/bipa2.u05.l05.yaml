@@ -1,226 +1,242 @@
 schema: kabar.lesson/v1
 id: bipa2.u05.l05
 language: id
-title: Resep nasi goreng
+title: Semangkuk mi ayam
 can_do:
-  ar_eg: تكتب وصفة من ٦ خطوات.
-  ar: أن تكتب وصفة من ست خطوات.
-  en: Write a 6-step recipe.
+  ar_eg: 'تطلب في وارونج: سلطانية نودلز أو شوربة من الحلة، وتسأل مستوية ولا لأ، وتقول طعمها.'
+  ar: 'أن تطلب في مطعم شعبي: وعاء نودلز أو حساء من القدر، وتسأل هل نضج، وتصف طعمه.'
+  en: 'Order at a warung: a bowl of noodles or soup from the pot, ask if it''s cooked, and say how it tastes.'
 slides:
-  - title: Enam langkah
+  - title: Di warung mi
     body:
       ar_eg: |
-        فكّر نفسك: الوصفة = أوامر ورا بعض. كل خطوة (langkah) بتبدأ بالجذر من غير meN-، وتربطها بـ lalu (وبعدين) وsampai (لحد ما).
-        دي وصفة الرز المقلي في ٦ خطوات، هتحتاجها في الدرس كله:
-        ١. Cuci dan potong bawang dan cabai.
-        ٢. Panaskan minyak di wajan.
-        ٣. Goreng bawang dan cabai sampai harum.
-        ٤. Masukkan telur, lalu aduk.
-        ٥. Masukkan nasi dan kecap manis, lalu aduk rata.
-        ٦. Tambahkan garam, lalu cicipi.
+        mi = نودلز (mi ayam، mi goreng)، sup = شوربة. mangkuk = سلطانية: semangkuk mi.
+        panci = حلة: الشوربة بتستوي في حلة كبيرة.
+        matang = مستوي (والفاكهة matang = مستوية). rasa = طعم: Rasanya enak!
+        jus = عصير: jus jeruk. es krim = آيس كريم.
       ar: |
-        تذكير: الوصفة أوامر متتالية، كل خطوة (langkah) تبدأ بالجذر بلا meN-، وتُربط بـ lalu (ثم) وsampai (حتى).
-        هذه وصفة الأرز المقلي في ست خطوات:
-        ١. Cuci dan potong bawang dan cabai.
-        ٢. Panaskan minyak di wajan.
-        ٣. Goreng bawang dan cabai sampai harum.
-        ٤. Masukkan telur, lalu aduk.
-        ٥. Masukkan nasi dan kecap manis, lalu aduk rata.
-        ٦. Tambahkan garam, lalu cicipi.
+        mi = نودلز (mi ayam، mi goreng)، sup = حساء. mangkuk = وعاء عميق: semangkuk mi.
+        panci = قدر: ينضج الحساء في قدر كبير.
+        matang = ناضج، مطهو (والفاكهة matang = ناضجة). rasa = طعم: Rasanya enak!
+        jus = عصير: jus jeruk. es krim = بوظة (آيس كريم).
       en: |
-        Reminder: a recipe is a chain of commands. Each step (langkah) starts with the bare root, linked with lalu (then) and sampai (until).
-        Here is fried rice in six steps:
-        1. Cuci dan potong bawang dan cabai.
-        2. Panaskan minyak di wajan.
-        3. Goreng bawang dan cabai sampai harum.
-        4. Masukkan telur, lalu aduk.
-        5. Masukkan nasi dan kecap manis, lalu aduk rata.
-        6. Tambahkan garam, lalu cicipi.
-    grammar: id.imperative.basic
+        mi = noodles (mi ayam, mi goreng), sup = soup. mangkuk = bowl: semangkuk mi.
+        panci = pot: the soup cooks in a big pot.
+        matang = cooked, ripe. rasa = taste: Rasanya enak!
+        jus = juice: jus jeruk. es krim = ice cream.
     examples:
-      - text: Panaskan minyak di wajan.
-        ar_eg: سخّن الزيت في الطاسة.
-        ar: سخّن الزيت في المقلاة.
-        en: Heat the oil in the wok.
-      - text: Masukkan nasi dan kecap manis, lalu aduk rata.
-        ar_eg: حط الرز والصويا الحلوة، وبعدين قلّب كويس.
-        ar: أضف الأرز وصلصة الصويا الحلوة ثم قلّب جيدًا.
-        en: Add the rice and sweet soy sauce, then stir well.
+      - text: Saya pesan semangkuk mi ayam dan jus jeruk.
+        ar_eg: أنا طالب سلطانية نودلز بالفراخ وعصير برتقان.
+        ar: طلبت وعاء نودلز بالدجاج وعصير برتقال.
+        en: I'll have a bowl of chicken noodles and an orange juice.
+      - text: Supnya di panci besar, sudah matang.
+        ar_eg: الشوربة في الحلة الكبيرة، استوت خلاص.
+        ar: الحساء في القدر الكبير، وقد نضج.
+        en: The soup is in the big pot; it's ready.
+      - text: Rasanya enak sekali!
+        ar_eg: طعمه حلو أوي!
+        ar: طعمه لذيذ جدًا!
+        en: It tastes great!
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: في الوصفة، بتعمل إيه قبل ما تقلي البصل؟
-      ar: في الوصفة، ماذا تفعل قبل قلي البصل؟
-      en: In the recipe, what do you do before frying the onions?
-    options: [Panaskan minyak., Masukkan nasi., Tambahkan garam.]
-    answer: 0
-    explain:
-      ar_eg: لازم الزيت يسخن الأول (خطوة ٢)، وبعدين تقلي البصل (خطوة ٣).
-      ar: يُسخَّن الزيت أولًا (الخطوة ٢) ثم يُقلى البصل (الخطوة ٣).
-      en: The oil is heated first (step 2), then the onions are fried (step 3).
-    words: [panaskan, minyak]
-  - id: e02
-    type: listen
-    text: Panaskan minyak di wajan.
-    options: [Panaskan minyak di wajan., Masukkan minyak di wajan., Panaskan nasi di wajan.]
-    answer: 0
-    words: [panaskan, wajan]
-  - id: e03
-    type: build_sentence
-    source:
-      ar_eg: دي طريقة طبخ الرز المقلي.
-      ar: هذه طريقة طبخ الأرز المقلي.
-      en: This is how to cook fried rice.
-    answer: Ini cara memasak nasi goreng.
-    distractors: [siap, wajan]
-    words: [cara, memasak]
-  - id: e04
-    type: build_sentence
-    source:
-      ar_eg: اقلي البصل والفلفل الحرّاق لحد ما ريحتهم تطلع.
-      ar: اقلِ البصل والفلفل الحار حتى تفوح رائحتهما.
-      en: Fry the onions and chillies until fragrant.
-    answer: Goreng bawang dan cabai sampai harum.
-    distractors: [menggoreng, manis]
-    words: [goreng, cabai, harum]
-  - id: e05
-    type: fill_blank
-    sentence: Nasi goreng ___! Ayo makan.
-    meaning:
-      ar_eg: الرز المقلي جاهز! يلا ناكل.
-      ar: الأرز المقلي جاهز! هيّا نأكل.
-      en: The fried rice is ready! Let's eat.
-    options: [siap, cara, cabai]
-    answers: [siap]
-    words: [siap]
-  - id: e06
-    type: fill_blank
-    sentence: Masukkan nasi dan ___ manis.
-    meaning:
-      ar_eg: حط الرز والصويا الحلوة.
-      ar: ضع الأرز وصلصة الصويا الحلوة.
-      en: Add the rice and sweet soy sauce.
-    options: [kecap, cabai, wajan]
-    answers: [kecap]
-    words: [masukkan, kecap manis]
-  - id: e07
     type: match_pairs
     pairs:
-      - text: cabai
-        ar_eg: فلفل حرّاق
-        ar: فلفل حار
-        en: chilli
-      - text: wajan
-        ar_eg: طاسة عميقة
-        ar: مقلاة عميقة
-        en: wok
-      - text: kecap manis
-        ar_eg: صويا حلوة
-        ar: صويا حلوة
-        en: sweet soy sauce
-      - text: siap
-        ar_eg: جاهز
-        ar: جاهز
-        en: ready
-      - text: cara
-        ar_eg: طريقة
-        ar: طريقة
-        en: way, method
-      - text: panaskan
-        ar_eg: سخّن
-        ar: سخِّن
-        en: heat
-    words: [cabai, wajan, kecap manis, siap, cara, panaskan]
+      - text: sup
+        ar_eg: شوربة
+        ar: حساء
+        en: soup
+      - text: mi
+        ar_eg: نودلز
+        ar: نودلز
+        en: noodles
+      - text: mangkuk
+        ar_eg: سلطانية
+        ar: وعاء
+        en: bowl
+      - text: panci
+        ar_eg: حلة
+        ar: قدر
+        en: pot
+    words: [sup, mi, mangkuk, panci]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: jus
+        ar_eg: عصير
+        ar: عصير
+        en: juice
+      - text: es krim
+        ar_eg: آيس كريم
+        ar: بوظة
+        en: ice cream
+      - text: matang
+        ar_eg: مستوي
+        ar: ناضج
+        en: cooked, ripe
+      - text: rasa
+        ar_eg: طعم
+        ar: طعم
+        en: taste
+    words: [jus, es krim, matang, rasa]
+  - id: e03
+    type: listen
+    text: Saya mau semangkuk sup dan jus jeruk.
+    question:
+      ar_eg: طالب إيه؟
+      ar: ماذا يطلب؟
+      en: What is he ordering?
+    options: [شوربة وعصير برتقان, آيس كريم, نودلز]
+    answer: 0
+    meaning:
+      ar_eg: عايز سلطانية شوربة وعصير برتقان.
+      ar: أريد وعاء حساء وعصير برتقال.
+      en: A bowl of soup and an orange juice, please.
+    words: [mangkuk, sup, jus]
+  - id: e04
+    type: fill_blank
+    sentence: Hari ini panas sekali. Ayo makan ___!
+    meaning:
+      ar_eg: النهارده حر أوي. يلا ناكل ___!
+      ar: اليوم حارّ جدًا. هيّا نأكل ___!
+      en: It's so hot today. Let's have ___!
+    options: [es krim, sup, mi]
+    answers: [es krim]
+    words: [es krim, sup, mi]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الشوربة بتستوي في إيه؟
+      ar: في أيّ شيء ينضج الحساء؟
+      en: What does the soup cook in?
+    options: [panci, mangkuk, jus]
+    answer: 0
+    explain:
+      ar_eg: 'في الحلة: panci. وmangkuk السلطانية اللي بناكل فيها.'
+      ar: 'في القدر: panci، أما mangkuk فالوعاء الذي نأكل فيه.'
+      en: 'In the pot: panci. A mangkuk is the bowl you eat from.'
+    words: [panci, mangkuk]
+  - id: e06
+    type: fill_blank
+    sentence: Ayamnya belum ___, masih merah di dalam.
+    meaning:
+      ar_eg: الفرخة لسه ما ___، لسه حمرا من جوه.
+      ar: الدجاج لم ___ بعد، ما زال أحمر من الداخل.
+      en: The chicken isn't ___ yet; it's still red inside.
+    options: [matang, rasa, panci]
+    answers: [matang]
+    words: [matang, rasa, panci]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: عايز عصير مانجة من غير سكر.
+      ar: أريد عصير مانجو بلا سكّر.
+      en: I'd like mango juice without sugar.
+    answer: Saya mau jus mangga, tidak pakai gula.
+    distractors: [mi, es krim]
+    words: [jus]
   - id: e08
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: حط الرز والصويا الحلوة، وبعدين قلّب كويس.
-      ar: أضف الأرز وصلصة الصويا الحلوة ثم قلّب جيدًا.
-      en: Add the rice and sweet soy sauce, then stir well.
-    answers: ['Masukkan nasi dan kecap manis, lalu aduk rata.', 'Masukkan nasi dan kecap manis, lalu aduk rata', Masukkan nasi dan kecap manis lalu aduk rata., 'Masukkan nasi dan kecap manis, kemudian aduk rata.', 'Masukkan nasi dan kecap manis, lalu aduk sampai rata.', 'Masukkan nasi dan kecap manis, lalu aduk sampai rata', 'Tambahkan nasi dan kecap manis, lalu aduk rata.']
-    words: [masukkan, kecap manis, aduk, rata]
+    direction: from_target
+    source_text: Rasanya enak! Supnya sudah matang.
+    answers_meaning:
+      ar_eg: [طعمها حلو! الشوربة استوت, طعمها حلو! الشوربة استوت خلاص]
+      ar: [طعمه لذيذ! نضج الحساء, إنه لذيذ! لقد نضج الحساء]
+      en: [It tastes good! The soup is cooked, 'Delicious! The soup''s ready']
+    words: [rasa, matang, sup]
   - id: e09
-    type: dictation
-    text: Potong cabai, lalu masukkan ke wajan.
-    meaning:
-      ar_eg: قطّع الفلفل الحرّاق، وبعدين حطه في الطاسة.
-      ar: قطّع الفلفل الحار ثم ضعه في المقلاة.
-      en: Chop the chillies, then put them in the wok.
-    words: [potong, cabai, masukkan, wajan]
-  - id: e10
     type: speaking
-    text: "Ini caranya: tambahkan garam, lalu cicipi. Nasi goreng siap!"
+    text: Semangkuk mi ayam dan es krim cokelat, ya.
     meaning:
-      ar_eg: "دي الطريقة: زوّد ملح، وبعدين دوق. الرز المقلي جاهز!"
-      ar: "هذه هي الطريقة: أضف الملح ثم تذوّق. الأرز المقلي جاهز!"
-      en: "Here's how: add salt, then taste. The fried rice is ready!"
-    words: [cara, tambahkan, cicipi, siap]
+      ar_eg: سلطانية نودلز بالفراخ وآيس كريم شوكولاتة لو سمحت.
+      ar: وعاء نودلز بالدجاج وبوظة بالشوكولاتة من فضلك.
+      en: A bowl of chicken noodles and a chocolate ice cream, please.
+    words: [mangkuk, mi, es krim]
+  - id: e10
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «طعم» بالإندونيسي؟
+      ar: ما كلمة «طعم» بالإندونيسية؟
+      en: What's the word for taste?
+    options: [rasa, matang, mi]
+    answer: 0
+    explain:
+      ar_eg: 'rasa = طعم: Rasanya enak!'
+      ar: 'rasa = طعم: Rasanya enak!'
+      en: 'rasa = taste: Rasanya enak!'
+    words: [rasa, matang]
 dialogue:
-  title: Resep dari Mohamed
   lines:
-    - speaker: Rina
-      text: Mohamed, nasi gorengmu enak sekali! Bagaimana cara membuatnya?
-      ar_eg: يا محمد، الرز المقلي بتاعك حلو قوي! بتعمله إزاي؟
-      ar: يا محمد، أرزك المقلي لذيذ جدًّا! كيف تصنعه؟
-      en: Mohamed, your fried rice is so good! How do you make it?
+    - speaker: Ni Luh
+      text: Mohamed, mau makan apa? Di warung ini ada mi dan sup.
+      ar_eg: يا محمد، تاكل إيه؟ الوارونج ده فيه نودلز وشوربة.
+      ar: ماذا تريد أن تأكل يا محمد؟ في هذا المطعم نودلز وحساء.
+      en: Mohamed, what do you want? This warung has noodles and soup.
     - speaker: Mohamed
-      text: Mudah! Pertama, cuci dan potong bawang dan cabai.
-      ar_eg: سهلة! الأول اغسلي وقطّعي البصل والفلفل الحرّاق.
-      ar: سهل! أولًا اغسلي البصل والفلفل الحار وقطّعيهما.
-      en: Easy! First, wash and cut the onions and chillies.
-    - speaker: Rina
-      text: Cabainya berapa?
-      ar_eg: كام فلفل حرّاق؟
-      ar: كم حبة فلفل حار؟
-      en: How many chillies?
+      text: Saya mau semangkuk mi ayam.
+      ar_eg: عايز سلطانية نودلز بالفراخ.
+      ar: أريد وعاء نودلز بالدجاج.
+      en: A bowl of chicken noodles for me.
+    - speaker: Ni Luh
+      text: Supnya juga enak. Ada di panci besar itu.
+      ar_eg: الشوربة حلوة كمان. في الحلة الكبيرة دي.
+      ar: الحساء لذيذ أيضًا، في ذلك القدر الكبير.
+      en: The soup's good too. It's in that big pot.
     - speaker: Mohamed
-      text: Tiga saja. Jangan terlalu pedas! Lalu panaskan minyak di wajan.
-      ar_eg: تلاتة بس. ماتخليهوش حرّاق قوي! وبعدين سخّني الزيت في الطاسة.
-      ar: ثلاث فقط، لا تجعليه حارًّا جدًّا! ثم سخّني الزيت في المقلاة.
-      en: Just three. Not too spicy! Then heat the oil in the wok.
-    - speaker: Rina
-      text: Lalu goreng bawang dan cabainya?
-      ar_eg: وبعدين أقلي البصل والفلفل؟
-      ar: ثم أقلي البصل والفلفل؟
-      en: Then I fry the onions and chillies?
+      text: Sudah matang?
+      ar_eg: استوت؟
+      ar: هل نضج؟
+      en: Is it ready?
+    - speaker: Ni Luh
+      text: Sudah. Rasanya enak sekali! Minumnya jus atau teh?
+      ar_eg: أيوه. طعمها حلو أوي! تشرب عصير ولا شاي؟
+      ar: نعم، طعمه لذيذ جدًا! وتشرب عصيرًا أم شايًا؟
+      en: Yes. It tastes great! Juice or tea to drink?
     - speaker: Mohamed
-      text: Ya, goreng sampai harum. Lalu masukkan telur dan aduk.
-      ar_eg: أيوه، اقليهم لحد ما ريحتهم تطلع. وبعدين حطي البيض وقلّبي.
-      ar: نعم، اقليهما حتى تفوح الرائحة، ثم أضيفي البيض وقلّبي.
-      en: Yes, fry until fragrant. Then add the egg and stir.
+      text: Jus jeruk. Nanti kita makan es krim, ya!
+      ar_eg: عصير برتقان. وبعدين ناكل آيس كريم!
+      ar: عصير برتقال، وبعدها نأكل البوظة!
+      en: Orange juice. Then let's have ice cream!
 new_words:
-  - word: cabai
+  - word: sup
     pos: noun
-    ar_eg: فلفل حرّاق
-    ar: فلفل حار
-    en: chilli
-  - word: panaskan
-    pos: verb
-    ar_eg: سخّن
-    ar: سخِّن
-    en: heat (it)
-  - word: wajan
+    ar_eg: شوربة
+    ar: حساء
+    en: soup
+  - word: mi
     pos: noun
-    ar_eg: طاسة / مقلاية عميقة
-    ar: مقلاة عميقة
-    en: wok
-  - word: kecap manis
+    ar_eg: نودلز
+    ar: معكرونة النودلز
+    en: noodles
+  - word: mangkuk
     pos: noun
-    ar_eg: صويا حلوة (صوص الصويا الإندونيسي)
-    ar: صلصة الصويا الحلوة
-    en: sweet soy sauce
-  - word: siap
+    ar_eg: سلطانية
+    ar: وعاء (زبدية)
+    en: bowl
+  - word: panci
+    pos: noun
+    ar_eg: حلة
+    ar: قدر
+    en: pot, pan
+  - word: jus
+    pos: noun
+    ar_eg: عصير
+    ar: عصير
+    en: juice
+  - word: es krim
+    pos: noun
+    ar_eg: آيس كريم
+    ar: بوظة، آيس كريم
+    en: ice cream
+  - word: matang
     pos: adjective
-    ar_eg: جاهز
-    ar: جاهز
-    en: ready
-  - word: cara
+    ar_eg: مستوي
+    ar: ناضج، مطهو
+    en: cooked, ripe
+  - word: rasa
     pos: noun
-    ar_eg: طريقة
-    ar: طريقة
-    en: way, method
+    ar_eg: طعم؛ إحساس
+    ar: طعم؛ شعور
+    en: taste; feeling
 review:
   status: draft
   verified: false

@@ -1,218 +1,239 @@
 schema: kabar.lesson/v1
 id: bipa1.u03.l06
 language: id
-title: Foto keluarga
+title: Foto di rumah Nenek
 can_do:
-  ar_eg: توصف صورة العيلة.
-  ar: أن تصف صورة عائلية.
-  en: Describe a family photo.
+  ar_eg: 'توصف صورة عيلة: الجد والجدة والأحفاد، ومين الراجل ومين الست في الصورة.'
+  ar: 'أن تصف صورة عائلية: الجدّين والأحفاد، ومَن الرجل ومَن المرأة في الصورة.'
+  en: 'Describe a family photo: grandparents, grandchildren, and who''s who in it.'
 slides:
-  - title: Ini foto keluarga saya
+  - title: Foto keluarga
     body:
       ar_eg: |
-        عشان توصف صورة، اجمع كل اللي اتعلمته:
-        - ini / itu: Ini ayah saya. — Itu kakak saya.
-        - الملكية: orang tua saya = أهلي (أبويا وأمي)، anak-anaknya = عياله.
-        - الاسم قبل الوصف: adik saya yang kecil.
-        - والسؤال: Yang tinggi itu siapa?
-        في إندونيسيا هتتسأل كتير «Sudah menikah?» (اتجوزت؟) — ده ودّ مش فضول.
-        - sudah menikah = متجوز
-        - belum menikah = لسه ماتجوزش (belum = لسه مش)
-        الرد المؤدب لو مش متجوز: «Belum.» — يعني «لسه»، مش «لأ».
+        nenek = جدة، kakek = جد، وولاد ولادهم cucu (حفيد أو حفيدة).
+        bayi = بيبي، gadis = بنت أو صبية، siswa = تلميذ في المدرسة (mahasiswa = طالب جامعة).
+        pria = راجل، wanita = ست: كلمتين رسميين، هتلاقيهم تحت الصور وعلى باب التواليت وفي الاستمارات. في الكلام العادي laki-laki وperempuan.
       ar: |
-        لوصف صورة اجمع كل ما تعلّمته:
-        - ini / itu: Ini ayah saya. — Itu kakak saya.
-        - الملكية: orang tua saya = والداي، anak-anaknya = أطفاله.
-        - الاسم قبل الصفة: adik saya yang kecil.
-        - والسؤال: Yang tinggi itu siapa?
-        ستُسأل كثيرًا في إندونيسيا «Sudah menikah?» (هل تزوجت؟)، وهو من الودّ لا الفضول.
-        - sudah menikah = متزوج
-        - belum menikah = لم يتزوج بعد (belum = لم … بعد)
-        والجواب المهذب لغير المتزوج: «Belum.» أي «ليس بعد».
+        nenek = جدّة، kakek = جدّ، وأولاد أولادهما cucu (حفيد أو حفيدة).
+        bayi = رضيع، gadis = فتاة، siswa = تلميذ المدرسة (mahasiswa = طالب الجامعة).
+        pria = رجل، wanita = امرأة: كلمتان رسميتان تجدهما تحت الصور وعلى أبواب دورات المياه وفي الاستمارات، أما في الكلام العادي فـ laki-laki وperempuan.
       en: |
-        To describe a photo, combine everything so far:
-        - ini / itu: Ini ayah saya. — Itu kakak saya.
-        - possession: orang tua saya = my parents, anak-anaknya = his/her children.
-        - noun before describer: adik saya yang kecil.
-        - and ask: Yang tinggi itu siapa?
-        In Indonesia you'll often be asked "Sudah menikah?" (Are you married?) — it's friendliness, not nosiness.
-        - sudah menikah = married
-        - belum menikah = not married yet (belum = not yet)
-        The polite answer if you're single: "Belum." — "not yet", rather than a flat "no".
-    grammar: id.noun-phrase.order
+        nenek = grandmother, kakek = grandfather, and their grandchildren are cucu.
+        bayi = baby, gadis = girl, siswa = school pupil (mahasiswa = university student).
+        pria = man and wanita = woman: formal words you'll see under photos, on toilet doors and on forms. Everyday speech uses laki-laki and perempuan.
     examples:
-      - text: Ini foto keluarga saya di Kairo.
-        ar_eg: دي صورة عيلتي في القاهرة.
-        ar: هذه صورة عائلتي في القاهرة.
-        en: This is a photo of my family in Cairo.
-      - text: Kakak saya sudah menikah. Dia punya tiga anak.
-        ar_eg: أخويا الكبير متجوز. عنده تلات عيال.
-        ar: أخي الأكبر متزوج، ولديه ثلاثة أطفال.
-        en: My older brother is married. He has three children.
-      - text: Adik saya belum menikah.
-        ar_eg: أختي الصغيرة لسه ماتجوزتش.
-        ar: أختي الصغرى لم تتزوج بعد.
-        en: My younger sister isn't married yet.
+      - text: Ini nenek dan kakek saya.
+        ar_eg: دي جدتي ودا جدي.
+        ar: هذه جدّتي وهذا جدّي.
+        en: These are my grandmother and grandfather.
+      - text: Pria di foto ini kakek saya.
+        ar_eg: الراجل اللي في الصورة دي جدي.
+        ar: الرجل في هذه الصورة جدّي.
+        en: The man in this photo is my grandfather.
+      - text: Gadis ini cucu Nenek. Dia siswa.
+        ar_eg: البنت دي حفيدة تيتا. هي تلميذة.
+        ar: هذه الفتاة حفيدة الجدّة، وهي تلميذة.
+        en: This girl is Grandma's granddaughter. She's a pupil.
 exercises:
   - id: e01
+    type: match_pairs
+    pairs:
+      - text: nenek
+        ar_eg: جدة
+        ar: جدّة
+        en: grandmother
+      - text: kakek
+        ar_eg: جد
+        ar: جدّ
+        en: grandfather
+      - text: cucu
+        ar_eg: حفيد
+        ar: حفيد
+        en: grandchild
+      - text: bayi
+        ar_eg: بيبي
+        ar: رضيع
+        en: baby
+    words: [nenek, kakek, cucu, bayi]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: gadis
+        ar_eg: بنت، صبية
+        ar: فتاة
+        en: girl
+      - text: siswa
+        ar_eg: تلميذ
+        ar: تلميذ
+        en: pupil
+      - text: pria
+        ar_eg: راجل
+        ar: رجل
+        en: man
+      - text: wanita
+        ar_eg: ست
+        ar: امرأة
+        en: woman
+    words: [gadis, siswa, pria, wanita]
+  - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: أخوك الكبير متجوز. تقول إيه؟
-      ar: أخوك الأكبر متزوج. ماذا تقول؟
-      en: Your older brother is married. What do you say?
-    options: [Kakak saya belum menikah., Kakak saya sudah menikah., Adik saya sudah menikah.]
-    answer: 1
+      ar_eg: أبو مامتك تقوله إيه بالإندونيسي؟
+      ar: بماذا تسمّي أبا أمك بالإندونيسية؟
+      en: What do you call your mother's father in Indonesian?
+    options: [kakek, cucu, gadis]
+    answer: 0
     explain:
-      ar_eg: sudah = خلاص حصل، belum = لسه. وkakak = الأكبر.
-      ar: sudah = قد حصل، وbelum = لم يحصل بعد، وkakak = الأكبر.
-      en: sudah = already, belum = not yet; kakak = older sibling.
-    words: [sudah, menikah, kakak]
-  - id: e02
-    type: listen
-    text: Ini foto keluarga saya.
-    options: ['Itu foto keluarga saya.', 'Ini foto keluarga saya.', 'Ini foto orang tua saya.']
-    answer: 1
-    words: [foto, keluarga]
-  - id: e03
-    type: fill_blank
-    sentence: Kakak saya ___ menikah.
-    meaning:
-      ar_eg: أخويا الكبير اتجوز خلاص.
-      ar: أخي الأكبر متزوج بالفعل.
-      en: My older brother is already married.
-    options: [sudah, belum, banyak]
-    answers: [sudah]
-    words: [sudah, menikah]
+      ar_eg: kakek = الجد من أي ناحية. cucu = حفيد، وgadis = بنت.
+      ar: kakek هو الجدّ من أي جهة، وcucu حفيد، وgadis فتاة.
+      en: kakek is a grandfather on either side; cucu is a grandchild and gadis a girl.
+    words: [kakek, cucu, gadis]
   - id: e04
-    type: fill_blank
-    sentence: Adik saya ___ menikah.
+    type: listen
+    text: Nenek saya punya tiga cucu.
+    question:
+      ar_eg: الجدة عندها إيه؟
+      ar: ماذا لدى الجدّة؟
+      en: What does Grandma have?
+    options: [٣ أحفاد, ٣ عيال صغيرين, ٣ تلاميذ]
+    answer: 0
     meaning:
-      ar_eg: أختي الصغيرة لسه ماتجوزتش.
-      ar: أختي الصغرى لم تتزوج بعد.
-      en: My younger sister isn't married yet.
-    answers: [belum]
-    words: [belum, menikah]
+      ar_eg: جدتي عندها ٣ أحفاد.
+      ar: لجدّتي ثلاثة أحفاد.
+      en: My grandmother has three grandchildren.
+    words: [nenek, cucu]
   - id: e05
     type: fill_blank
-    sentence: Kakak saya punya tiga ___.
+    sentence: Adik saya ___. Kakak saya mahasiswa.
     meaning:
-      ar_eg: أخويا الكبير عنده تلات عيال.
-      ar: لدى أخي الأكبر ثلاثة أطفال.
-      en: My older brother has three children.
-    answers: [anak]
-    explain:
-      ar_eg: بعد العدد مافيش تكرار، يبقى tiga anak مش tiga anak-anak.
-      ar: لا تكرار بعد العدد، فالصواب tiga anak.
-      en: No repetition after a number, so it's tiga anak.
-    words: [anak, tiga]
+      ar_eg: أخويا الصغير ___، وأخويا الكبير طالب جامعة.
+      ar: أخي الأصغر ___، وأخي الأكبر طالب جامعي.
+      en: My younger brother is a ___. My older brother is a university student.
+    options: [siswa, bayi, kakek]
+    answers: [siswa]
+    words: [siswa, bayi, kakek]
   - id: e06
-    type: build_sentence
-    source:
-      ar_eg: أهلي (أبويا وأمي) ساكنين في القاهرة.
-      ar: والداي يسكنان في القاهرة.
-      en: My parents live in Cairo.
-    answer: Orang tua saya tinggal di Kairo.
-    distractors: [dari, anak]
-    words: [orang tua, tinggal]
+    type: fill_blank
+    sentence: ___ itu kecil dan lucu.
+    meaning:
+      ar_eg: الـ ___ ده صغير وعسول.
+      ar: ذلك ___ صغير ولطيف.
+      en: That ___ is small and cute.
+    options: [Bayi, Wanita, Pria]
+    answers: [Bayi]
+    words: [bayi, wanita, pria]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: أخويا الكبير اتجوز، بس أخويا الصغير لسه.
-      ar: أخي الأكبر متزوج، لكن أخي الأصغر لم يتزوج بعد.
-      en: My older brother is married, but my younger brother isn't yet.
-    answer: Kakak saya sudah menikah, tapi adik saya belum.
-    distractors: [lucu, foto]
-    words: [sudah, menikah, belum]
+      ar_eg: الراجل اللي في الصورة دي جدي.
+      ar: الرجل في هذه الصورة جدّي.
+      en: The man in this photo is my grandfather.
+    answer: Pria di foto ini kakek saya.
+    distractors: [nenek, cucu]
+    words: [pria, kakek]
   - id: e08
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الصورة دي تضحّك!
-      ar: هذه الصورة طريفة!
-      en: This photo is funny!
-    answers: ['Foto ini lucu!', 'Foto ini lucu', 'Foto ini lucu sekali!', 'Foto ini lucu banget!', 'Fotonya lucu!']
-    words: [foto, lucu]
+    direction: from_target
+    source_text: Wanita itu nenek saya.
+    answers_meaning:
+      ar_eg: [الست دي جدتي, الست ديه تيتا]
+      ar: [تلك المرأة جدّتي]
+      en: [That woman is my grandmother, That lady is my grandma]
+    words: [wanita, nenek]
   - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: العيال دول دمهم خفيف / لُطاف.
-      ar: أولئك الأطفال لطفاء.
-      en: Those children are cute.
-    answers: [Anak-anak itu lucu., Anak-anak itu lucu, Anak-anak itu lucu sekali., Anak-anak itu lucu banget.]
-    words: [anak, lucu]
-  - id: e10
     type: speaking
-    text: Ini foto keluarga saya. Ini orang tua saya, dan adik saya lucu!
+    text: Gadis ini cucu Bu Yanti. Dia siswa.
     meaning:
-      ar_eg: دي صورة عيلتي. دول أهلي، وأخويا الصغير دمه خفيف!
-      ar: هذه صورة عائلتي. هذان والداي، وأخي الأصغر لطيف!
-      en: This is my family photo. These are my parents, and my little sibling is cute!
-    words: [foto, orang tua, adik, lucu]
+      ar_eg: البنت دي حفيدة مدام يانتي. هي تلميذة.
+      ar: هذه الفتاة حفيدة السيدة يانتي، وهي تلميذة.
+      en: This girl is Mrs Yanti's granddaughter. She's a pupil.
+    words: [gadis, cucu, siswa]
+  - id: e10
+    type: multiple_choice
+    question_meaning:
+      ar_eg: 'على باب التواليت مكتوب كلمتين. إنتي ست: تدخلي أنهي باب؟'
+      ar: 'على بابَي دورة المياه كلمتان، وأنتِ امرأة: أيّ باب تدخلين؟'
+      en: 'Two words on the toilet doors. You''re a woman: which door is yours?'
+    options: [Wanita, Pria, Bayi]
+    answer: 0
+    explain:
+      ar_eg: Wanita للستات وPria للرجالة.
+      ar: Wanita للنساء وPria للرجال.
+      en: Wanita is for women, Pria for men.
+    words: [wanita, pria, bayi]
 dialogue:
-  title: Foto dari Kairo
   lines:
-    - speaker: Raka
-      text: Mohamed, itu foto apa?
-      ar_eg: يا محمد، دي صورة إيه؟
-      ar: يا محمد، ما تلك الصورة؟
-      en: Mohamed, what photo is that?
+    - speaker: Rina
+      text: Mohamed, ini foto di rumah nenek saya.
+      ar_eg: يا محمد، دي صورة في بيت جدتي.
+      ar: يا محمد، هذه صورة في بيت جدّتي.
+      en: Mohamed, this is a photo at my grandmother's house.
     - speaker: Mohamed
-      text: Ini foto keluargaku di Kairo.
-      ar_eg: دي صورة عيلتي في القاهرة.
-      ar: هذه صورة عائلتي في القاهرة.
-      en: This is a photo of my family in Cairo.
-    - speaker: Raka
-      text: Yang tinggi itu siapa?
-      ar_eg: والطويل ده مين؟
-      ar: ومَن ذلك الطويل؟
-      en: Who's the tall one?
+      text: Pria ini siapa? Kakek kamu?
+      ar_eg: مين الراجل ده؟ جدك؟
+      ar: من هذا الرجل؟ جدّك؟
+      en: Who's this man? Your grandfather?
+    - speaker: Rina
+      text: Ya. Dan wanita ini nenek saya.
+      ar_eg: أيوه. والست دي جدتي.
+      ar: نعم، وهذه المرأة جدّتي.
+      en: Yes. And this woman is my grandmother.
     - speaker: Mohamed
-      text: Itu kakakku, Ahmed. Dia dokter.
-      ar_eg: ده أخويا الكبير أحمد. هو دكتور.
-      ar: ذاك أخي الأكبر أحمد، وهو طبيب.
-      en: That's my older brother, Ahmed. He's a doctor.
-    - speaker: Raka
-      text: Kakakmu sudah menikah?
-      ar_eg: أخوك متجوز؟
-      ar: هل أخوك متزوج؟
-      en: Is your brother married?
+      text: Bayi kecil ini siapa?
+      ar_eg: والبيبي الصغير ده مين؟
+      ar: ومن هذا الرضيع الصغير؟
+      en: Who's this little baby?
+    - speaker: Rina
+      text: Itu saya! Saya bayi di foto ini.
+      ar_eg: دي أنا! أنا البيبي اللي في الصورة.
+      ar: هذه أنا! أنا الرضيعة في هذه الصورة.
+      en: That's me! I'm the baby in this photo.
     - speaker: Mohamed
-      text: Sudah. Dia punya tiga anak. Anak-anaknya lucu!
-      ar_eg: أيوه. عنده تلات عيال. عياله دمهم خفيف!
-      ar: نعم. لديه ثلاثة أطفال، وأطفاله لطفاء!
-      en: Yes. He has three children. His kids are cute!
+      text: Lucu! Nenek kamu punya banyak cucu?
+      ar_eg: عسولة! جدتك عندها أحفاد كتير؟
+      ar: ما ألطفك! هل لجدّتك أحفاد كثيرون؟
+      en: Cute! Does your grandmother have lots of grandchildren?
 new_words:
-  - word: foto
+  - word: nenek
     pos: noun
-    ar_eg: صورة
-    ar: صورة
-    en: photo
-  - word: orang tua
+    ar_eg: جدة (تيتا)
+    ar: جدّة
+    en: grandmother
+  - word: kakek
     pos: noun
-    ar_eg: الأهل (الأب والأم)
-    ar: الوالدان
-    en: parents
-  - word: menikah
-    pos: verb
-    ar_eg: يتجوز
-    ar: يتزوج
-    en: to marry, be married
-  - word: sudah
-    pos: adverb
-    ar_eg: خلاص، بالفعل
-    ar: قد، بالفعل
-    en: already
-  - word: belum
-    pos: adverb
-    ar_eg: لسه مش
-    ar: لم … بعد
-    en: not yet
-  - word: lucu
-    pos: adjective
-    ar_eg: دمه خفيف، لطيف
-    ar: لطيف، ظريف
-    en: cute, funny
+    ar_eg: جد (جدو)
+    ar: جدّ
+    en: grandfather
+  - word: cucu
+    pos: noun
+    ar_eg: حفيد أو حفيدة
+    ar: حفيد أو حفيدة
+    en: grandchild
+  - word: bayi
+    pos: noun
+    ar_eg: بيبي
+    ar: رضيع
+    en: baby
+  - word: gadis
+    pos: noun
+    ar_eg: بنت، صبية
+    ar: فتاة
+    en: girl, young woman
+  - word: siswa
+    pos: noun
+    ar_eg: تلميذ
+    ar: تلميذ
+    en: school pupil
+  - word: pria
+    pos: noun
+    ar_eg: راجل (كلمة رسمية)
+    ar: رجل، ذكر (رسمي)
+    en: man, male (formal)
+  - word: wanita
+    pos: noun
+    ar_eg: ست (كلمة رسمية)
+    ar: امرأة، أنثى (رسمي)
+    en: woman (formal)
 review:
   status: draft
   verified: false

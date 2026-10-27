@@ -1,236 +1,197 @@
 schema: kabar.lesson/v1
 id: bipa2.u06.l06
 language: id
-title: Sofa, karpet, bantal
+title: Mencari kos
 can_do:
-  ar_eg: 'توصف شقتك وأوضها وعفشها: الكنبة والسجادة والمخدة والبطانية.'
-  ar: 'أن تصف شقتك وغرفها وأثاثها: الأريكة والسجادة والوسادة والبطانية.'
-  en: 'Describe your flat, its rooms and furnishings: sofa, carpet, pillow and blanket.'
+  ar_eg: تسأل عن أوضة للإيجار.
+  ar: أن تسأل عن غرفة للإيجار.
+  en: Ask about a room for rent.
 slides:
-  - title: Di apartemen
+  - title: Ada kamar kosong?
     body:
       ar_eg: |
-        apartemen = شقة في عمارة، garasi = جراج، ruangan = أوضة أو قاعة، tembok = حيطة.
-        sofa = كنبة، karpet = سجادة.
-        bantal = مخدة، selimut = بطانية (أو لحاف).
+        «kos» = أوضة مأجّرة بالشهر، غالبًا في بيت فيه صاحبة البيت (ibu kos). الأسئلة اللي هتحتاجها:
+        - Ada kamar kosong? = فيه أوضة فاضية؟
+        - Berapa sewanya sebulan? = الإيجار كام في الشهر؟
+        - Sudah termasuk listrik? = شامل الكهربا؟
+        - Kamar mandinya di dalam atau di luar? = الحمّام جوّه ولا بره؟
+        - Boleh saya lihat kamarnya? = ممكن أشوف الأوضة؟
+        وصاحبة البيت هترد بـ silakan (اتفضل). إنت بتطلب بـ tolong / boleh، وهي بتعزم بـ silakan.
       ar: |
-        apartemen = شقة في بناية، garasi = مرآب، ruangan = غرفة أو قاعة، tembok = جدار.
-        sofa = أريكة، karpet = سجادة.
-        bantal = وسادة، selimut = بطانية (لحاف).
+        «kos» = غرفة تُستأجر شهريًا، غالبًا في بيت تقيم فيه المالكة (ibu kos). الأسئلة التي تحتاجها:
+        - Ada kamar kosong? = هل توجد غرفة شاغرة؟
+        - Berapa sewanya sebulan? = كم الإيجار في الشهر؟
+        - Sudah termasuk listrik? = هل يشمل الكهرباء؟
+        - Kamar mandinya di dalam atau di luar? = هل الحمّام داخل الغرفة أم خارجها؟
+        - Boleh saya lihat kamarnya? = هل يمكنني رؤية الغرفة؟
+        وستجيبك المالكة بـ silakan؛ فأنت تطلب بـ tolong / boleh، وهي تدعوك بـ silakan.
       en: |
-        apartemen = flat, apartment, garasi = garage, ruangan = room, hall, tembok = wall.
-        sofa = sofa, karpet = carpet, rug.
-        bantal = pillow, selimut = blanket.
+        A "kos" is a room rented by the month, usually in a house where the landlady (ibu kos) lives. The questions you need:
+        - Ada kamar kosong? = Is there a free room?
+        - Berapa sewanya sebulan? = How much is the rent a month?
+        - Sudah termasuk listrik? = Is electricity included?
+        - Kamar mandinya di dalam atau di luar? = Is the bathroom inside or outside?
+        - Boleh saya lihat kamarnya? = May I see the room?
+        The landlady will answer with silakan: you ask with tolong / boleh, she offers with silakan.
+    grammar: id.request.tolong-silakan
     examples:
-      - text: Apartemen saya kecil, tapi ada garasi.
-        ar_eg: شقتي صغيرة، بس فيها جراج.
-        ar: شقتي صغيرة لكن فيها مرآب.
-        en: My flat is small, but it has a garage.
-      - text: Ada foto keluarga di tembok.
-        ar_eg: فيه صورة العيلة على الحيطة.
-        ar: على الجدار صورة العائلة.
-        en: There's a family photo on the wall.
-      - text: Malam ini dingin. Mana selimut saya?
-        ar_eg: الليلة برد. فين البطانية بتاعتي؟
-        ar: الليلة باردة. أين بطانيتي؟
-        en: It's cold tonight. Where's my blanket?
+      - text: Silakan lihat kamarnya, Pak.
+        ar_eg: اتفضل شوف الأوضة يا أستاذ.
+        ar: تفضّل انظر إلى الغرفة يا سيدي.
+        en: Please have a look at the room, sir.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: apartemen
-        ar_eg: شقة
-        ar: شقة
-        en: flat
-      - text: garasi
-        ar_eg: جراج
-        ar: مرآب
-        en: garage
-      - text: tembok
-        ar_eg: حيطة
-        ar: جدار
-        en: wall
-      - text: ruangan
-        ar_eg: أوضة، قاعة
-        ar: غرفة، قاعة
-        en: room
-    words: [apartemen, garasi, tembok, ruangan]
-  - id: e02
-    type: match_pairs
-    pairs:
-      - text: sofa
-        ar_eg: كنبة
-        ar: أريكة
-        en: sofa
-      - text: karpet
-        ar_eg: سجادة
-        ar: سجادة
-        en: carpet
-      - text: bantal
-        ar_eg: مخدة
-        ar: وسادة
-        en: pillow
-      - text: selimut
-        ar_eg: بطانية
-        ar: بطانية
-        en: blanket
-    words: [sofa, karpet, bantal, selimut]
-  - id: e03
-    type: listen
-    text: Apartemen saya punya garasi.
-    question:
-      ar_eg: الشقة فيها إيه؟
-      ar: ماذا في الشقة؟
-      en: What does the flat have?
-    options: [جراج, جنينة, حمام سباحة]
-    answer: 0
-    meaning:
-      ar_eg: شقتي فيها جراج.
-      ar: في شقتي مرآب.
-      en: My flat has a garage.
-    words: [apartemen, garasi]
-  - id: e04
-    type: fill_blank
-    sentence: Saya tidur pakai dua ___.
-    meaning:
-      ar_eg: 'أنا بنام على مخدتين: ___.'
-      ar: أنام على ___ اثنتين.
-      en: I sleep with two ___.
-    options: [bantal, karpet, garasi]
-    answers: [bantal]
-    words: [bantal, karpet, garasi]
-  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: إيه اللي بنفرشه على الأرض؟
-      ar: ماذا نفرش على الأرض؟
-      en: What do we lay on the floor?
-    options: [karpet, selimut, tembok]
+      ar_eg: عايز تعرف الإيجار كام في الشهر. تسأل إيه؟
+      ar: تريد أن تعرف الإيجار الشهري. ماذا تسأل؟
+      en: You want to know the monthly rent. What do you ask?
+    options: ['Berapa sewanya sebulan?', 'Kamar mandinya di mana?', 'Ada kamar kosong?']
     answer: 0
-    explain:
-      ar_eg: karpet = سجادة.
-      ar: karpet = سجادة.
-      en: karpet = carpet.
-    words: [karpet, selimut, tembok]
-  - id: e06
+    words: [sewa]
+  - id: e02
+    type: listen
+    text: Sudah termasuk listrik dan air.
+    options: [Belum termasuk listrik dan air., 'Sudah termasuk listrik, tetapi air belum.', Sudah termasuk listrik dan air.]
+    answer: 2
+    words: [termasuk, listrik]
+  - id: e03
     type: fill_blank
-    sentence: Malam ini dingin. Pakai ___, ya.
+    sentence: Permisi, Bu. Ada kamar ___?
     meaning:
-      ar_eg: الليلة برد. اتغطى بـ ___.
-      ar: الليلة باردة. استخدم ___.
-      en: It's cold tonight. Use a ___.
-    options: [selimut, sofa, ruangan]
-    answers: [selimut]
-    words: [selimut, sofa, ruangan]
-  - id: e07
+      ar_eg: لو سمحتي يا مدام. فيه أوضة فاضية؟
+      ar: عفوًا يا سيدتي، هل توجد غرفة شاغرة؟
+      en: Excuse me, ma'am. Is there a free room?
+    options: [termasuk, sewa, kosong]
+    answers: [kosong]
+    words: [kosong]
+  - id: e04
+    type: fill_blank
+    sentence: Sewanya sejuta ___.
+    meaning:
+      ar_eg: الإيجار مليون في الشهر.
+      ar: الإيجار مليون في الشهر.
+      en: The rent is a million a month.
+    options: [sebulan, listrik, lemari]
+    answers: [sebulan]
+    words: [sewa, sebulan]
+  - id: e05
     type: build_sentence
     source:
-      ar_eg: الشقة دي فيها أوضتين وجراج.
-      ar: في هذه الشقة غرفتان ومرآب.
-      en: This flat has two rooms and a garage.
-    answer: Apartemen ini punya dua ruangan dan garasi.
-    distractors: [sofa, tembok]
-    words: [apartemen, ruangan, garasi]
+      ar_eg: فيه دولاب في الأوضة دي؟
+      ar: هل في تلك الغرفة خزانة؟
+      en: Is there a wardrobe in that room?
+    answer: Ada lemari di kamar itu?
+    distractors: [listrik, kosong]
+    words: [lemari]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: الإيجار شامل الكهربا.
+      ar: الإيجار يشمل الكهرباء.
+      en: The rent already includes electricity.
+    answer: Sewanya sudah termasuk listrik.
+    distractors: [kosong, belum]
+    words: [sewa, termasuk, listrik]
+  - id: e07
+    type: listen
+    text: Ada lemari, tapi listriknya belum termasuk.
+    options: ['Ada lemari, tapi listriknya belum termasuk.', 'Ada lemari, dan listriknya sudah termasuk.', 'Tidak ada lemari, tapi listriknya sudah termasuk.']
+    answer: 0
+    meaning:
+      ar_eg: فيه دولاب، بس الكهربا مش شاملة.
+      ar: توجد خزانة، لكن الكهرباء غير مشمولة.
+      en: There's a wardrobe, but electricity isn't included.
+    words: [lemari, listrik, termasuk]
   - id: e08
     type: translate
-    direction: from_target
-    source_text: Ada foto keluarga di tembok.
-    answers_meaning:
-      ar_eg: [فيه صورة العيلة على الحيطة, على الحيطة فيه صورة العيلة]
-      ar: [على الجدار صورة العائلة, هناك صورة عائلية على الجدار]
-      en: ['There''s a family photo on the wall', There is a family picture on the wall]
-    words: [tembok]
+    direction: to_target
+    source_meaning:
+      ar_eg: الإيجار كام في الشهر؟
+      ar: كم الإيجار في الشهر؟
+      en: How much is the rent per month?
+    answers: ['Berapa sewanya sebulan?', 'Berapa sewanya per bulan?', 'Sewanya berapa sebulan?', 'Sewanya berapa per bulan?', Berapa sewanya sebulan, Berapa sewanya per bulan, Sewanya berapa sebulan, 'Berapa harga sewanya sebulan?', 'Berapa harga sewanya per bulan?', 'Berapa sewa kamarnya sebulan?']
+    words: [sewa]
   - id: e09
-    type: speaking
-    text: Kucing Bu Yanti tidur di sofa, di atas bantal.
+    type: dictation
+    text: Ada sebuah kamar kosong di lantai dua.
     meaning:
-      ar_eg: قطة طنط يانتي نايمة على الكنبة فوق المخدة.
-      ar: قطة السيدة يانتي نائمة على الأريكة فوق الوسادة.
-      en: Bu Yanti's cat sleeps on the sofa, on a cushion.
-    words: [sofa, bantal]
+      ar_eg: فيه أوضة فاضية في الدور التاني.
+      ar: توجد غرفة شاغرة في الطابق الثاني.
+      en: There's a free room on the second floor.
+    words: [kosong, lantai]
   - id: e10
-    type: multiple_choice
-    question: Tamu duduk di ___.
-    options: [sofa, selimut, tembok]
-    answer: 0
-    explain:
-      ar_eg: الضيوف بيقعدوا على الكنبة.
-      ar: يجلس الضيوف على الأريكة.
-      en: Guests sit on the sofa.
-    words: [sofa, selimut, tembok]
+    type: speaking
+    text: Berapa sewanya sebulan? Ada lemari?
+    meaning:
+      ar_eg: الإيجار كام في الشهر؟ فيه دولاب؟
+      ar: كم الإيجار في الشهر؟ هل توجد خزانة؟
+      en: How much is the rent a month? Is there a wardrobe?
+    words: [sewa, sebulan, lemari]
 dialogue:
+  title: Kos Bu Yanti
   lines:
-    - speaker: Raka
-      text: Wah, apartemenmu bagus! Ruangannya besar.
-      ar_eg: الله، شقتك حلوة! الأوضة واسعة.
-      ar: شقتك جميلة! الغرفة كبيرة.
-      en: Wow, your flat is nice! The room's big.
     - speaker: Mohamed
-      text: Terima kasih. Duduk di sofa, Raka.
-      ar_eg: شكرًا. اقعد على الكنبة يا راكا.
-      ar: شكرًا. اجلس على الأريكة يا راكا.
-      en: Thanks. Have a seat on the sofa, Raka.
-    - speaker: Raka
-      text: Karpetnya dari mana? Bagus sekali.
-      ar_eg: السجادة دي منين؟ حلوة أوي.
-      ar: من أين السجادة؟ جميلة جدًا.
-      en: Where's the carpet from? It's lovely.
+      text: Permisi, Bu. Di sini ada kamar kosong?
+      ar_eg: لو سمحتي يا مدام. فيه هنا أوضة فاضية؟
+      ar: عفوًا يا سيدتي، هل توجد غرفة شاغرة هنا؟
+      en: Excuse me, ma'am. Is there a free room here?
+    - speaker: Bu Yanti
+      text: Ada, Pak. Ada sebuah kamar di lantai dua.
+      ar_eg: أيوه يا أستاذ. فيه أوضة في الدور التاني.
+      ar: نعم يا سيدي، توجد غرفة في الطابق الثاني.
+      en: Yes, sir. There's a room on the second floor.
     - speaker: Mohamed
-      text: Dari pasar di Ubud. Murah!
-      ar_eg: من سوق في أوبود. رخيصة!
-      ar: من سوق في أوبود. رخيصة!
-      en: From a market in Ubud. Cheap!
-    - speaker: Raka
-      text: Di tembok itu ada foto siapa?
-      ar_eg: مين اللي في الصورة اللي على الحيطة؟
-      ar: صورة من على ذلك الجدار؟
-      en: Whose photo is on that wall?
+      text: Berapa sewanya sebulan?
+      ar_eg: الإيجار كام في الشهر؟
+      ar: كم الإيجار في الشهر؟
+      en: How much is the rent a month?
+    - speaker: Bu Yanti
+      text: Satu juta lima ratus ribu rupiah, sudah termasuk listrik dan air.
+      ar_eg: مليون وخمسمية ألف روبية، شامل الكهربا والمية.
+      ar: مليون وخمسمئة ألف روبية، شاملة الكهرباء والماء.
+      en: One and a half million rupiah, electricity and water included.
     - speaker: Mohamed
-      text: Keluarga saya di Kairo.
-      ar_eg: عيلتي في القاهرة.
-      ar: عائلتي في القاهرة.
-      en: My family in Cairo.
+      text: Boleh saya lihat kamarnya?
+      ar_eg: ممكن أشوف الأوضة؟
+      ar: هل يمكنني رؤية الغرفة؟
+      en: May I see the room?
+    - speaker: Bu Yanti
+      text: Silakan, Pak. Mari ke atas. Di kamar ada lemari dan meja.
+      ar_eg: اتفضل يا أستاذ. تعالى نطلع فوق. في الأوضة فيه دولاب وترابيزة.
+      ar: تفضّل يا سيدي، هيّا إلى الأعلى. في الغرفة خزانة وطاولة.
+      en: Please do, sir. Let's go upstairs. The room has a wardrobe and a table.
 new_words:
-  - word: apartemen
+  - word: kosong
+    pos: adjective
+    ar_eg: فاضي
+    ar: فارغ، شاغر
+    en: empty, vacant
+  - word: sewa
     pos: noun
-    ar_eg: شقة
-    ar: شقة
-    en: flat, apartment
-  - word: garasi
+    ar_eg: إيجار
+    ar: إيجار
+    en: rent
+  - word: termasuk
+    pos: verb
+    ar_eg: شامل
+    ar: يشمل، شامل
+    en: including, included
+  - word: listrik
     pos: noun
-    ar_eg: جراج
-    ar: مرآب
-    en: garage
-  - word: tembok
+    ar_eg: كهربا
+    ar: كهرباء
+    en: electricity
+  - word: sebulan
+    pos: adverb
+    ar_eg: في الشهر، شهر واحد
+    ar: في الشهر، شهرًا واحدًا
+    en: a month, per month
+  - word: lemari
     pos: noun
-    ar_eg: حيطة
-    ar: جدار
-    en: wall
-  - word: ruangan
-    pos: noun
-    ar_eg: أوضة، قاعة
-    ar: غرفة، قاعة
-    en: room, hall
-  - word: sofa
-    pos: noun
-    ar_eg: كنبة
-    ar: أريكة
-    en: sofa
-  - word: karpet
-    pos: noun
-    ar_eg: سجادة
-    ar: سجادة
-    en: carpet, rug
-  - word: bantal
-    pos: noun
-    ar_eg: مخدة
-    ar: وسادة
-    en: pillow, cushion
-  - word: selimut
-    pos: noun
-    ar_eg: بطانية
-    ar: بطانية
-    en: blanket
+    ar_eg: دولاب
+    ar: خزانة
+    en: wardrobe, cupboard
 review:
   status: draft
   verified: false

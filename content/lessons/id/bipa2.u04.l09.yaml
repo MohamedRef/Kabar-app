@@ -1,234 +1,240 @@
 schema: kabar.lesson/v1
 id: bipa2.u04.l09
 language: id
-title: Belanja dan bayar
+title: Hujan di Kebun Raya
 can_do:
-  ar_eg: 'تتسوق في سوبر ماركت: السلة والكيس والكاشير والخصم والدفع والباقي.'
-  ar: 'أن تتسوّق في متجر كبير: السلة والكيس والمحاسب والخصم والدفع والباقي.'
-  en: 'Shop at a supermarket: basket, bag, cashier, discount, paying and change.'
+  ar_eg: 'تخطط لفسحة: المسافة بالكيلومتر، الأكل اللي هتاخده (بطيخ وتفاح وعنب ودستة)، والسما الرمادي الغامق.'
+  ar: 'أن تخطّط لنزهة: المسافة بالكيلومتر، والطعام الذي تأخذه (بطّيخ وتفّاح وعنب ودزينة)، والسماء الرمادية الداكنة.'
+  en: 'Plan a day out: the distance in kilometres, the food you take (watermelon, apples, grapes, a dozen), and a dark grey sky.'
 slides:
-  - title: Di kasir
+  - title: Ke Bogor
     body:
       ar_eg: |
-        belanja = يتسوق (والرسمي berbelanja). keranjang = سلة، kantong = كيس (kantong plastik).
-        timbangan = ميزان (timbang = يوزن).
-        bayar = يدفع: Bayar di kasir. وkasir = الكاشير.
-        kembalian = الباقي (من kembali = يرجع). وdiskon = خصم.
+        semangka = بطيخ، apel = تفاح، anggur = عنب (ومرات معناها نبيذ). kacang = فول سوداني أو أي بقول.
+        lusin = دستة: selusin = ١٢. kilometer = كيلومتر.
+        abu-abu = رمادي (abu = رماد). gelap = غامق أو ضلمة: Langitnya gelap, nanti hujan.
       ar: |
-        belanja = يتسوّق (والفصيح berbelanja). keranjang = سلّة، kantong = كيس (kantong plastik).
-        timbangan = ميزان (timbang = يزن).
-        bayar = يدفع: Bayar di kasir، وkasir = المحاسب.
-        kembalian = الباقي (من kembali = يعود). وdiskon = خصم.
+        semangka = بطّيخ، apel = تفّاح، anggur = عنب (وقد تعني النبيذ). kacang = فول سوداني أو أي بقول.
+        lusin = دزينة: selusin = ١٢. kilometer = كيلومتر.
+        abu-abu = رمادي (abu = رماد). gelap = داكن أو مظلم: Langitnya gelap, nanti hujan.
       en: |
-        belanja = shop (formal berbelanja). keranjang = basket, kantong = bag (kantong plastik).
-        timbangan = scales (timbang = weigh).
-        bayar = pay: Bayar di kasir; kasir = cashier.
-        kembalian = change (from kembali, return). diskon = discount.
+        semangka = watermelon, apel = apple, anggur = grapes (sometimes wine). kacang = peanut or any bean.
+        lusin = dozen: selusin = 12. kilometer = kilometre.
+        abu-abu = grey (abu = ash). gelap = dark: Langitnya gelap, nanti hujan.
     examples:
-      - text: Ibu belanja di pasar setiap pagi.
-        ar_eg: ماما بتتسوق في السوق كل يوم الصبح.
-        ar: تتسوّق أمي في السوق كل صباح.
-        en: Mum shops at the market every morning.
-      - text: Bayar di kasir, ya.
-        ar_eg: ادفع عند الكاشير.
-        ar: ادفع عند المحاسب.
-        en: Pay at the till, please.
-      - text: Ini kembaliannya, Pak. Terima kasih!
-        ar_eg: اتفضل الباقي يا أستاذ. شكرًا!
-        ar: تفضّل الباقي يا سيدي. شكرًا!
-        en: Here's your change, sir. Thank you!
+      - text: Bogor enam puluh kilometer dari Jakarta.
+        ar_eg: بوجور على بعد ستين كيلو من جاكرتا.
+        ar: تبعد بوجور ستين كيلومترًا عن جاكرتا.
+        en: Bogor is sixty kilometres from Jakarta.
+      - text: Kami bawa semangka, apel, dan anggur.
+        ar_eg: إحنا واخدين بطيخ وتفاح وعنب.
+        ar: أخذنا معنا بطّيخًا وتفّاحًا وعنبًا.
+        en: We've brought watermelon, apples and grapes.
+      - text: Langitnya abu-abu dan gelap. Nanti hujan.
+        ar_eg: السما رمادي وغامقة. هتمطر بعدين.
+        ar: السماء رمادية داكنة، وستمطر لاحقًا.
+        en: The sky is grey and dark. It'll rain later.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: belanja
-        ar_eg: يتسوق
-        ar: يتسوّق
-        en: shop
-      - text: kasir
-        ar_eg: كاشير
-        ar: محاسب
-        en: cashier
-      - text: kembalian
-        ar_eg: الباقي
-        ar: الباقي
-        en: change
-      - text: keranjang
-        ar_eg: سلة
-        ar: سلّة
-        en: basket
-    words: [belanja, kasir, kembalian, keranjang]
+      - text: semangka
+        ar_eg: بطيخ
+        ar: بطّيخ
+        en: watermelon
+      - text: anggur
+        ar_eg: عنب
+        ar: عنب
+        en: grapes
+      - text: apel
+        ar_eg: تفاح
+        ar: تفّاح
+        en: apple
+      - text: kacang
+        ar_eg: فول سوداني
+        ar: فول سوداني
+        en: peanut, bean
+    words: [semangka, anggur, apel, kacang]
   - id: e02
     type: match_pairs
     pairs:
-      - text: kantong
-        ar_eg: كيس
-        ar: كيس
-        en: bag
-      - text: timbangan
-        ar_eg: ميزان
-        ar: ميزان
-        en: scales
-      - text: diskon
-        ar_eg: خصم
-        ar: خصم
-        en: discount
-      - text: bayar
-        ar_eg: يدفع
-        ar: يدفع
-        en: pay
-    words: [kantong, timbangan, diskon, bayar]
+      - text: lusin
+        ar_eg: دستة
+        ar: دزينة
+        en: dozen
+      - text: kilometer
+        ar_eg: كيلومتر
+        ar: كيلومتر
+        en: kilometre
+      - text: abu-abu
+        ar_eg: رمادي
+        ar: رمادي
+        en: grey
+      - text: gelap
+        ar_eg: غامق، ضلمة
+        ar: داكن، مظلم
+        en: dark
+    words: [lusin, kilometer, abu-abu, gelap]
   - id: e03
     type: listen
-    text: Ini kembaliannya, lima ribu. Terima kasih!
+    text: Bogor enam puluh kilometer dari Jakarta.
     question:
-      ar_eg: الكاشير بيدّيه إيه؟
-      ar: ماذا يعطيه المحاسب؟
-      en: What is the cashier giving him?
-    options: [الباقي, كيس, سلة]
+      ar_eg: بوجور بعيدة قد إيه؟
+      ar: كم تبعد بوجور؟
+      en: How far is Bogor?
+    options: [٦٠ كيلو, ١٦ كيلو, ٦ كيلو]
     answer: 0
     meaning:
-      ar_eg: اتفضل الباقي، خمس تلاف. شكرًا!
-      ar: تفضّل الباقي، خمسة آلاف. شكرًا!
-      en: Here's your change, five thousand. Thank you!
-    words: [kembalian]
+      ar_eg: بوجور على بعد ستين كيلو من جاكرتا.
+      ar: تبعد بوجور ستين كيلومترًا عن جاكرتا.
+      en: Bogor is sixty kilometres from Jakarta.
+    words: [kilometer]
   - id: e04
     type: fill_blank
-    sentence: Silakan ke ___ di depan.
+    sentence: Buah ini besar dan berat, tapi merah dan manis di dalam. Ini ___.
     meaning:
-      ar_eg: اتفضل على ___ اللي قدام.
-      ar: تفضّل إلى ___ في الأمام.
-      en: Please go to the ___ at the front.
-    options: [kasir, timbangan, diskon]
-    answers: [kasir]
-    words: [kasir, timbangan, diskon]
+      ar_eg: الفاكهة دي كبيرة وتقيلة، بس جوّاها أحمر ومسكّر. دي ___.
+      ar: هذه الفاكهة كبيرة وثقيلة، لكنها حمراء حلوة من الداخل. إنها ___.
+      en: This fruit is big and heavy, but red and sweet inside. It's a ___.
+    options: [semangka, apel, anggur]
+    answers: [semangka]
+    words: [semangka, apel, anggur]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: البياع بيوزن الفاكهة بإيه؟
-      ar: بمَ يزن البائع الفاكهة؟
-      en: What does the seller weigh fruit on?
-    options: [timbangan, keranjang, kantong]
+      ar_eg: ١٢ حاجة من نفس النوع؟
+      ar: اثنا عشر شيئًا من النوع نفسه؟
+      en: Twelve of the same thing?
+    options: [selusin, sekilo, seons]
     answer: 0
     explain:
-      ar_eg: timbangan = ميزان.
-      ar: timbangan = ميزان.
-      en: timbangan = scales.
-    words: [timbangan, keranjang, kantong]
+      ar_eg: selusin = دستة = ١٢.
+      ar: selusin = دزينة = ١٢.
+      en: selusin = a dozen = 12.
+    words: [lusin]
   - id: e06
     type: fill_blank
-    sentence: 'Hari ini ada ___: semua baju lebih murah!'
+    sentence: Langitnya ___. Nanti hujan.
     meaning:
-      ar_eg: 'النهارده فيه ___: كل الهدوم أرخص!'
-      ar: 'اليوم ___: كل الملابس أرخص!'
-      en: 'Today there''s a ___: all clothes are cheaper!'
-    options: [diskon, kembalian, belanja]
-    answers: [diskon]
-    words: [diskon, kembalian, belanja]
+      ar_eg: السما ___. هتمطر بعدين.
+      ar: السماء ___، وستمطر لاحقًا.
+      en: The sky is ___. It'll rain later.
+    options: [gelap, kilometer, semangka]
+    answers: [gelap]
+    words: [gelap, kilometer]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: مش محتاج كيس بلاستيك، معايا سلة.
-      ar: لا أحتاج كيسًا بلاستيكيًا، معي سلّة.
-      en: No plastic bag, thanks; I've brought a basket.
-    answer: Tidak usah kantong plastik, saya bawa keranjang.
-    distractors: [kasir, bayar]
-    words: [kantong, keranjang, kasir, bayar]
+      ar_eg: السما رمادي. هتمطر بعدين.
+      ar: السماء رمادية، وستمطر لاحقًا.
+      en: The sky is grey. It'll rain later.
+    answer: Langitnya abu-abu. Nanti hujan.
+    distractors: [gelap, anggur]
+    words: [abu-abu, gelap]
   - id: e08
     type: translate
     direction: from_target
-    source_text: Ada diskon hari ini. Bayar di kasir, ya!
+    source_text: Saya beli selusin apel dan sebungkus kacang.
     answers_meaning:
-      ar_eg: [فيه خصم النهارده. ادفع عند الكاشير!, النهارده فيه خصم. الدفع عند الكاشير!]
-      ar: [هناك خصم اليوم. ادفع عند المحاسب!]
-      en: ['There''s a discount today. Pay at the till!', Discount today. Please pay at the cashier!]
-    words: [diskon, bayar, kasir]
+      ar_eg: [اشتريت دستة تفاح وكيس فول سوداني, أنا اشتريت دستة تفاح وكيس سوداني]
+      ar: [اشتريت دزينة تفّاح وكيس فول سوداني]
+      en: [I bought a dozen apples and a packet of peanuts, I bought twelve apples and a bag of peanuts]
+    words: [lusin, apel, kacang]
   - id: e09
     type: speaking
-    text: Saya mau belanja di pasar.
+    text: Langitnya abu-abu dan gelap. Kami makan semangka dan kacang.
     meaning:
-      ar_eg: عايز أتسوق في السوق.
-      ar: أريد التسوّق في السوق.
-      en: I want to go shopping at the market.
-    words: [belanja]
+      ar_eg: السما رمادي وغامقة. إحنا بناكل بطيخ وفول سوداني.
+      ar: السماء رمادية داكنة. نأكل بطّيخًا وفولًا سودانيًا.
+      en: The sky is dark grey. We're eating watermelon and peanuts.
+    words: [abu-abu, gelap, semangka, kacang]
   - id: e10
     type: multiple_choice
-    question: Harganya delapan ribu, uang saya sepuluh ribu. Kembaliannya ___.
-    options: [dua ribu, delapan ribu, sepuluh ribu]
+    question: anggur
+    question_meaning:
+      ar_eg: anggur بالإندونيسي معناها إيه؟
+      ar: ما معنى anggur بالإندونيسية؟
+      en: What does anggur mean?
+    options: [عنب, تفاح, بطيخ]
     answer: 0
     explain:
-      ar_eg: '١٠ - ٨ = ٢: dua ribu.'
-      ar: 'عشرة ناقص ثمانية يساوي اثنين: dua ribu.'
-      en: '10 − 8 = 2: dua ribu.'
-    words: [kembalian, bayar]
+      ar_eg: anggur = عنب (ومرات نبيذ).
+      ar: anggur = عنب (وقد تعني النبيذ).
+      en: anggur = grapes (sometimes wine).
+    words: [anggur]
 dialogue:
   lines:
     - speaker: Rina
-      text: Mohamed, ayo belanja! Ada diskon di toko itu.
-      ar_eg: يلّا يا محمد نتسوق! فيه خصم في المحل ده.
-      ar: هيّا يا محمد نتسوّق! هناك خصم في ذلك المتجر.
-      en: Mohamed, let's go shopping! That shop has a sale.
+      text: Mohamed, kita ke Kebun Raya Bogor, yuk!
+      ar_eg: يا محمد، يلا نروح حديقة بوجور النباتية!
+      ar: هيّا يا محمد إلى حديقة بوجور النباتية!
+      en: Mohamed, let's go to the Bogor Botanical Gardens!
     - speaker: Mohamed
-      text: Ayo! Ini keranjangnya.
-      ar_eg: يلّا! دي السلة.
-      ar: هيّا! هذه السلّة.
-      en: Let's go! Here's a basket.
-    - speaker: Kasir
-      text: Semuanya delapan puluh ribu. Pakai kantong plastik?
-      ar_eg: الحساب تمانين ألف. عايز كيس بلاستيك؟
-      ar: المجموع ثمانون ألفًا. أتريد كيسًا بلاستيكيًا؟
-      en: That's eighty thousand altogether. Plastic bag?
+      text: Jauh? Berapa kilometer?
+      ar_eg: بعيدة؟ كام كيلو؟
+      ar: هل هي بعيدة؟ كم كيلومترًا؟
+      en: Is it far? How many kilometres?
+    - speaker: Rina
+      text: Enam puluh kilometer. Saya bawa semangka, apel, dan anggur.
+      ar_eg: ستين كيلو. أنا واخدة بطيخ وتفاح وعنب.
+      ar: ستون كيلومترًا. أحضرت بطّيخًا وتفّاحًا وعنبًا.
+      en: Sixty kilometres. I've brought watermelon, apples and grapes.
     - speaker: Mohamed
-      text: Tidak usah, terima kasih. Saya bayar seratus ribu.
-      ar_eg: لأ، شكرًا. هدفع مية ألف.
-      ar: لا داعي، شكرًا. أدفع مئة ألف.
-      en: No need, thanks. I'll pay with a hundred thousand.
-    - speaker: Kasir
-      text: Ini kembaliannya, dua puluh ribu.
-      ar_eg: اتفضل الباقي، عشرين ألف.
-      ar: تفضّل الباقي، عشرون ألفًا.
-      en: Here's your change, twenty thousand.
+      text: Saya beli selusin roti dan kacang.
+      ar_eg: وأنا اشتريت دستة عيش وفول سوداني.
+      ar: وأنا اشتريت دزينة خبز وفولًا سودانيًا.
+      en: I bought a dozen bread rolls and some peanuts.
+    - speaker: Rina
+      text: Mohamed, langitnya abu-abu!
+      ar_eg: يا محمد، السما رمادي!
+      ar: يا محمد، السماء رمادية!
+      en: Mohamed, the sky's grey!
+    - speaker: Mohamed
+      text: Ya, gelap sekali. Nanti hujan!
+      ar_eg: أيوه، غامقة أوي. هتمطر!
+      ar: نعم، داكنة جدًا. ستمطر!
+      en: Yes, it's really dark. It's going to rain!
 new_words:
-  - word: belanja
-    pos: verb
-    ar_eg: يتسوق
-    ar: يتسوّق
-    en: shop, go shopping
-  - word: kasir
+  - word: semangka
     pos: noun
-    ar_eg: كاشير
-    ar: محاسب (أمين صندوق)
-    en: cashier
-  - word: kembalian
+    ar_eg: بطيخ
+    ar: بطّيخ
+    en: watermelon
+  - word: anggur
     pos: noun
-    ar_eg: الباقي (فلوس)
-    ar: الباقي (من النقود)
-    en: change (money)
-  - word: keranjang
+    ar_eg: عنب (ومرات نبيذ)
+    ar: عنب (وقد تعني النبيذ)
+    en: grapes (also wine)
+  - word: apel
     pos: noun
-    ar_eg: سلة
-    ar: سلّة
-    en: basket
-  - word: kantong
+    ar_eg: تفاح
+    ar: تفّاح
+    en: apple
+  - word: kacang
     pos: noun
-    ar_eg: كيس، جيب
-    ar: كيس، جيب
-    en: bag, pocket
-  - word: timbangan
+    ar_eg: فول سوداني، بقول
+    ar: فول سوداني، بقول
+    en: peanut, bean
+  - word: lusin
     pos: noun
-    ar_eg: ميزان
-    ar: ميزان
-    en: scales
-  - word: diskon
+    ar_eg: دستة
+    ar: دزينة
+    en: dozen
+  - word: kilometer
     pos: noun
-    ar_eg: خصم
-    ar: خصم
-    en: discount
-  - word: bayar
-    pos: verb
-    ar_eg: يدفع
-    ar: يدفع
-    en: pay
+    ar_eg: كيلومتر
+    ar: كيلومتر
+    en: kilometre
+  - word: abu-abu
+    pos: adjective
+    ar_eg: رمادي
+    ar: رمادي
+    en: grey
+  - word: gelap
+    pos: adjective
+    ar_eg: غامق، ضلمة
+    ar: داكن، مظلم
+    en: dark
 review:
   status: draft
   verified: false

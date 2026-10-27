@@ -314,8 +314,9 @@ pub fn downloading(id: &str) -> bool {
 }
 
 /// Just in time (SPEC §20): when a lesson opens, fetch its unit's pack and
-/// the next unit's in the background, if auto-download is on. Failures are
-/// quiet: the lesson plays with the device's own voice meanwhile.
+/// the next unit's in the background, if auto-download is on and the
+/// connection isn't metered (like app updates). Failures are quiet: the
+/// lesson plays with the device's own voice meanwhile.
 pub fn prefetch_for(lesson_id: &str) {
     let Some(store) = store() else { return };
     if base_url().is_none() || !store.auto() {
@@ -323,6 +324,9 @@ pub fn prefetch_for(lesson_id: &str) {
     }
     let lesson_id = lesson_id.to_owned();
     let _ = std::thread::Builder::new().name("kabar-packs".into()).spawn(move || {
+        if crate::platform::metered_network() {
+            return;
+        }
         let index = refresh_index(store).unwrap_or_else(|_| store.index());
         for id in packs::prefetch(&index, &lesson_id, &store.installed_versions()) {
             if let Err(e) = download(store, &id) {
@@ -334,10 +338,11 @@ pub fn prefetch_for(lesson_id: &str) {
 
 /// Over the air with the app update check: refreshes the index and
 /// re-downloads every installed pack that has a newer version, if
-/// auto-download is on. Blocking; called from the updater's thread.
+/// auto-download is on and the connection isn't metered. Blocking; called
+/// from the updater's thread.
 pub fn update_installed() {
     let Some(store) = store() else { return };
-    if base_url().is_none() || !store.auto() {
+    if base_url().is_none() || !store.auto() || crate::platform::metered_network() {
         return;
     }
     let Ok(index) = refresh_index(store) else { return };

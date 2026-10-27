@@ -1,61 +1,44 @@
 schema: kabar.lesson/v1
 id: bipa2.u07.l07
 language: id
-title: Gol! Skornya berapa?
+title: Voli di pantai Kuta
 can_do:
-  ar_eg: تتفرج على ماتش وتتكلم عن الجول والحكم والنتيجة والكاس، وعن الباسكت والفولي.
-  ar: أن تشاهد مباراة وتتحدث عن الهدف والحكم والنتيجة والكأس، وعن السلة والطائرة.
-  en: Watch a match and talk about goals, the referee, the score and the cup, plus basketball and volleyball.
+  ar_eg: 'تلعب فولي على الشط: الشورت والشراب، الدراع والصوابع والوسط، والجلد اللي احمر من الشمس، وتقارن بالباسكت.'
+  ar: 'أن تلعب الطائرة على الشاطئ: السروال القصير والجوارب، والذراع والأصابع والخصر، والجلد المحمرّ من الشمس، وتقارن بالسلة.'
+  en: 'Play beach volleyball: shorts and socks, arms, fingers and waist, sunburnt skin, and compare it with basketball.'
 slides:
-  - title: Nonton bola
+  - title: Voli pantai
     body:
       ar_eg: |
-        gol = جول، wasit = حكم، skor = النتيجة: Skornya dua-satu. piala = كاس (البطولة).
-        basket = باسكت، voli = فولي (voli pantai = فولي شاطئ).
-        kaos kaki = شراب (حرفيًا «تيشيرت رجل»!)، celana pendek = شورت.
+        voli = فولي (voli pantai = فولي شاطئ)، basket = باسكت.
+        celana pendek = شورت، kaos kaki = شراب (حرفيًا «تيشيرت رجل»!).
+        lengan = دراع، jari = صباع (jari kaki = صباع رجل)، pinggang = وسط.
+        kulit = جلد: Kulit saya merah karena matahari.
       ar: |
-        gol = هدف، wasit = حكم، skor = النتيجة: Skornya dua-satu. piala = كأس البطولة.
-        basket = كرة السلة، voli = الكرة الطائرة (voli pantai = الطائرة الشاطئية).
-        kaos kaki = جوارب (حرفيًا «قميص القدم»!)، celana pendek = سروال قصير.
+        voli = الكرة الطائرة (voli pantai = الطائرة الشاطئية)، basket = كرة السلة.
+        celana pendek = سروال قصير، kaos kaki = جوارب (حرفيًا «قميص القدم»!).
+        lengan = ذراع، jari = إصبع (jari kaki = إصبع القدم)، pinggang = خصر.
+        kulit = جلد: Kulit saya merah karena matahari.
       en: |
-        gol = goal, wasit = referee, skor = score: Skornya dua-satu. piala = cup, trophy.
-        basket = basketball, voli = volleyball (voli pantai = beach volleyball).
-        kaos kaki = socks (literally "foot T-shirt"!), celana pendek = shorts.
+        voli = volleyball (voli pantai = beach volleyball), basket = basketball.
+        celana pendek = shorts, kaos kaki = socks (literally "foot T-shirt"!).
+        lengan = arm, jari = finger (jari kaki = toe), pinggang = waist.
+        kulit = skin: Kulit saya merah karena matahari.
     examples:
-      - text: Gol! Skornya dua-satu!
-        ar_eg: جوووول! النتيجة ٢–١!
-        ar: هدف! النتيجة ٢–١!
-        en: Goal! It's two-one!
-      - text: Wasit itu tidak adil!
-        ar_eg: الحكم ده ظالم!
-        ar: ذلك الحكم غير عادل!
-        en: That referee isn't fair!
       - text: Kami main voli pantai di Kuta.
         ar_eg: بنلعب فولي شاطئ في كوتا.
         ar: نلعب الكرة الطائرة الشاطئية في كوتا.
         en: We play beach volleyball in Kuta.
+      - text: Pakai celana pendek, tidak usah kaos kaki.
+        ar_eg: البس شورت، مش لازم شراب.
+        ar: البس سروالًا قصيرًا، لا داعي للجوارب.
+        en: Wear shorts; no need for socks.
+      - text: Kulit saya merah karena matahari.
+        ar_eg: جلدي احمر من الشمس.
+        ar: احمرّ جلدي من الشمس.
+        en: My skin is red from the sun.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: gol
-        ar_eg: جول
-        ar: هدف
-        en: goal
-      - text: wasit
-        ar_eg: حكم
-        ar: حكم
-        en: referee
-      - text: piala
-        ar_eg: كاس
-        ar: كأس
-        en: cup, trophy
-      - text: skor
-        ar_eg: النتيجة
-        ar: النتيجة
-        en: score
-    words: [gol, wasit, piala, skor]
-  - id: e02
     type: match_pairs
     pairs:
       - text: basket
@@ -75,62 +58,79 @@ exercises:
         ar: سروال قصير
         en: shorts
     words: [basket, voli, kaos kaki, celana pendek]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: lengan
+        ar_eg: دراع
+        ar: ذراع
+        en: arm
+      - text: jari
+        ar_eg: صباع
+        ar: إصبع
+        en: finger
+      - text: pinggang
+        ar_eg: وسط
+        ar: خصر
+        en: waist
+      - text: kulit
+        ar_eg: جلد
+        ar: جلد
+        en: skin
+    words: [lengan, jari, pinggang, kulit]
   - id: e03
     type: listen
-    text: Gol! Skornya sekarang dua-dua!
+    text: Angkat kedua lengan, lalu lompat!
     question:
-      ar_eg: النتيجة كام؟
-      ar: كم النتيجة؟
-      en: What's the score?
-    options: [٢–٢, ٢–١, ١–١]
+      ar_eg: المدرب بيقول إيه؟
+      ar: ماذا يقول المدرّب؟
+      en: What does the coach say?
+    options: [ارفع دراعاتك واتنطط, اقعد على الأرض, اجري بسرعة]
     answer: 0
     meaning:
-      ar_eg: جول! النتيجة دلوقتي ٢–٢!
-      ar: هدف! النتيجة الآن ٢–٢!
-      en: Goal! It's two-two now!
-    words: [gol, skor]
+      ar_eg: ارفع دراعاتك الاتنين، وبعدين اتنطط!
+      ar: ارفع ذراعيك ثم اقفز!
+      en: Raise both arms, then jump!
+    words: [lengan]
   - id: e04
-    type: fill_blank
-    sentence: Indonesia menang! Mereka angkat ___.
-    meaning:
-      ar_eg: إندونيسيا كسبت! رفعوا الـ ___.
-      ar: فازت إندونيسيا! رفعوا ___.
-      en: Indonesia won! They lift the ___.
-    options: [piala, wasit, kaos kaki]
-    answers: [piala]
-    words: [piala, wasit, kaos kaki]
-  - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: مين اللي بيصفّر في الماتش؟
-      ar: من يصفّر في المباراة؟
-      en: Who blows the whistle in a match?
-    options: [wasit, piala, skor]
-    answer: 0
-    explain:
-      ar_eg: wasit = حكم.
-      ar: wasit = حكم.
-      en: wasit = referee.
-    words: [wasit, piala, skor]
-  - id: e06
     type: fill_blank
     sentence: Untuk main bola, pakai ___ dan sepatu.
     meaning:
       ar_eg: عشان تلعب كورة، البس ___ وجزمة.
       ar: لتلعب الكرة، البس ___ وحذاءً.
       en: To play football, wear ___ and shoes.
-    options: [kaos kaki, piala, gol]
+    options: [kaos kaki, kulit, voli]
     answers: [kaos kaki]
-    words: [kaos kaki, piala, gol]
+    words: [kaos kaki, kulit, voli]
+  - id: e05
+    type: multiple_choice
+    question: Di pantai Kuta, orang main ___ pantai.
+    options: [voli, basket, jari]
+    answer: 0
+    explain:
+      ar_eg: voli pantai = فولي شاطئ.
+      ar: voli pantai = الطائرة الشاطئية.
+      en: voli pantai = beach volleyball.
+    words: [voli, basket]
+  - id: e06
+    type: fill_blank
+    sentence: Jangan lama di bawah matahari, nanti ___ kamu merah.
+    meaning:
+      ar_eg: 'ما تقعدش كتير في الشمس، جلدك هيحمر: ___.'
+      ar: لا تبقَ طويلًا تحت الشمس وإلا احمرّ ___ك.
+      en: Don't stay long in the sun, or your ___ will go red.
+    options: [kulit, jari, pinggang]
+    answers: [kulit]
+    words: [kulit, jari, pinggang]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: بنلعب فولي على الشاطئ.
-      ar: نلعب الكرة الطائرة على الشاطئ.
-      en: We play volleyball on the beach.
-    answer: Kami main voli di pantai.
-    distractors: [basket, skor]
-    words: [voli, basket]
+      ar_eg: إيدك على وسطك، وبعدين خد نفس.
+      ar: يداك على خصرك، ثم خذ نفَسًا.
+      en: Hands on your waist, then breathe in.
+    answer: Tangan di pinggang, lalu tarik napas.
+    distractors: [lengan, basket]
+    words: [pinggang]
   - id: e08
     type: translate
     direction: from_target
@@ -150,67 +150,47 @@ exercises:
     words: [basket, celana pendek]
   - id: e10
     type: multiple_choice
-    question: Di pantai Kuta, orang main ___ pantai.
-    options: [voli, basket, piala]
+    question: Tangan saya punya lima ___.
+    options: [jari, lengan, kaos kaki]
     answer: 0
     explain:
-      ar_eg: voli pantai = فولي شاطئ.
-      ar: voli pantai = الطائرة الشاطئية.
-      en: voli pantai = beach volleyball.
-    words: [voli, basket, piala]
+      ar_eg: 'الإيد فيها خمس صوابع: jari.'
+      ar: 'في اليد خمسة أصابع: jari.'
+      en: 'A hand has five fingers: jari.'
+    words: [jari, lengan, kaos kaki]
 dialogue:
   lines:
-    - speaker: Raka
-      text: Ayo nonton bola! Indonesia lawan Vietnam.
-      ar_eg: يلا نتفرج على الكورة! إندونيسيا ضد فيتنام.
-      ar: هيّا نشاهد الكرة! إندونيسيا ضد فيتنام.
-      en: Let's watch the football! Indonesia against Vietnam.
+    - speaker: Ni Luh
+      text: Mohamed, ayo main voli pantai!
+      ar_eg: يا محمد، يلا نلعب فولي شاطئ!
+      ar: يا محمد، هيّا نلعب الطائرة الشاطئية!
+      en: Mohamed, let's play beach volleyball!
     - speaker: Mohamed
-      text: Skornya berapa?
-      ar_eg: النتيجة كام؟
-      ar: كم النتيجة؟
-      en: What's the score?
-    - speaker: Raka
-      text: Masih nol-nol... Gol! Satu-nol!
-      ar_eg: لسه صفر صفر... جول! واحد صفر!
-      ar: ما زالت صفر–صفر... هدف! واحد–صفر!
-      en: Still nil-nil... Goal! One-nil!
+      text: Ayo! Saya pakai celana pendek. Kaos kaki juga?
+      ar_eg: يلا! أنا لابس شورت. والشراب كمان؟
+      ar: هيّا! ألبس سروالًا قصيرًا. والجوارب أيضًا؟
+      en: Let's go! I'm in shorts. Socks too?
+    - speaker: Ni Luh
+      text: Tidak usah kaos kaki di pantai!
+      ar_eg: مش لازم شراب على الشط!
+      ar: لا داعي للجوارب على الشاطئ!
+      en: No socks on the beach!
     - speaker: Mohamed
-      text: Wah! Tapi wasit bilang apa?
-      ar_eg: الله! بس الحكم قال إيه؟
-      ar: رائع! لكن ماذا قال الحكم؟
-      en: Wow! But what did the referee say?
-    - speaker: Raka
-      text: Golnya bagus! Indonesia menang!
-      ar_eg: الجول صح! إندونيسيا كسبت!
-      ar: الهدف صحيح! إندونيسيا فازت!
-      en: It's a good goal! Indonesia wins!
+      text: Bolanya keras! Jari saya merah.
+      ar_eg: الكورة ناشفة! صوابعي احمرّت.
+      ar: الكرة قاسية! احمرّت أصابعي.
+      en: The ball's hard! My fingers are red.
+    - speaker: Ni Luh
+      text: Pakai lengan, jangan pakai jari.
+      ar_eg: استعمل دراعك، ما تستعملش صوابعك.
+      ar: استعمل ذراعك، لا أصابعك.
+      en: Use your arms, not your fingers.
     - speaker: Mohamed
-      text: Ayo, Indonesia! Ambil pialanya!
-      ar_eg: يلا يا إندونيسيا! هاتوا الكاس!
-      ar: هيّا إندونيسيا! خذوا الكأس!
-      en: Come on, Indonesia! Win the cup!
+      text: Kulit saya juga merah. Saya lebih suka basket!
+      ar_eg: وجلدي احمر كمان. أنا بحب الباسكت أكتر!
+      ar: وجلدي احمرّ أيضًا. أفضّل كرة السلة!
+      en: My skin's red too. I prefer basketball!
 new_words:
-  - word: gol
-    pos: noun
-    ar_eg: جول
-    ar: هدف
-    en: goal
-  - word: wasit
-    pos: noun
-    ar_eg: حكم
-    ar: حكم
-    en: referee
-  - word: piala
-    pos: noun
-    ar_eg: كاس (بطولة)
-    ar: كأس
-    en: cup, trophy
-  - word: skor
-    pos: noun
-    ar_eg: النتيجة
-    ar: النتيجة
-    en: score
   - word: basket
     pos: noun
     ar_eg: باسكت
@@ -231,6 +211,26 @@ new_words:
     ar_eg: شورت
     ar: سروال قصير
     en: shorts
+  - word: lengan
+    pos: noun
+    ar_eg: دراع
+    ar: ذراع
+    en: arm
+  - word: jari
+    pos: noun
+    ar_eg: صباع
+    ar: إصبع
+    en: finger
+  - word: pinggang
+    pos: noun
+    ar_eg: وسط
+    ar: خصر
+    en: waist
+  - word: kulit
+    pos: noun
+    ar_eg: جلد
+    ar: جلد
+    en: skin
 review:
   status: draft
   verified: false

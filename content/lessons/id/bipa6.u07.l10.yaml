@@ -1,204 +1,207 @@
 schema: kabar.lesson/v1
 id: bipa6.u07.l10
 language: id
-title: Ulangan Unit 7
+title: Ringkasan kebijakan
 can_do:
-  ar_eg: تقرا قاعدة قانونية وتشرحها بكلام بسيط.
-  ar: أن تقرأ قاعدة قانونية وتشرحها بكلام بسيط.
-  en: Read a legal rule and explain it in plain words.
+  ar_eg: تكتب ملخّص سياسة في صفحة واحدة.
+  ar: أن تكتب ملخّص سياسة في صفحة واحدة.
+  en: Write a one-page policy brief.
+slides:
+  - title: Satu halaman saja
+    grammar: id.register.legal
+    body:
+      ar_eg: |
+        ملخّص السياسة (ringkasan kebijakan) بيمشي بالترتيب ده:
+        1. Latar belakang: المشكلة في جملتين.
+        2. Ketentuan utama: البند الأساسي في القرار.
+        3. Sasaran: مين اللي القرار بيمسّه.
+        4. Dampak: الأثر المتوقع.
+        5. Rekomendasi: اقتراحك، غالبًا بـ Sebaiknya … (الأفضل …).
+        مثال (مكتوب للدرس): Mulai semester depan, kantin kampus dilarang memakai plastik sekali pakai.
+      ar: |
+        يسير ملخّص السياسة (ringkasan kebijakan) بهذا الترتيب:
+        1. Latar belakang: المشكلة في جملتين.
+        2. Ketentuan utama: البند الأساسي في القرار.
+        3. Sasaran: الفئة التي يمسّها القرار.
+        4. Dampak: الأثر المتوقّع.
+        5. Rekomendasi: اقتراحك، وغالبًا بـ Sebaiknya … (الأَولى …).
+        مثال (مكتوب للدرس): Mulai semester depan, kantin kampus dilarang memakai plastik sekali pakai.
+      en: |
+        A policy brief (ringkasan kebijakan) runs in this order:
+        1. Latar belakang: the problem in two sentences.
+        2. Ketentuan utama: the key provision.
+        3. Sasaran: who the policy targets.
+        4. Dampak: the expected impact.
+        5. Rekomendasi: your recommendation, often with Sebaiknya … (It would be best to …).
+        Example (written for the lesson): Mulai semester depan, kantin kampus dilarang memakai plastik sekali pakai.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: pasal
-        ar_eg: مادة (في قانون)
-        ar: مادّة قانونية
-        en: article (of a law)
-      - text: hak
-        ar_eg: حق
-        ar: حقّ
-        en: right
-      - text: kewajiban
-        ar_eg: واجب
-        ar: واجب
-        en: duty, obligation
-      - text: denda
-        ar_eg: غرامة
-        ar: غرامة
-        en: fine (penalty)
       - text: dampak
         ar_eg: أثر
         ar: أثر
         en: impact
-    words: [pasal, hak, kewajiban, denda, dampak]
+      - text: rekomendasi
+        ar_eg: توصية
+        ar: توصية
+        en: recommendation
+      - text: sasaran
+        ar_eg: الفئة المستهدفة / هدف
+        ar: الفئة المستهدفة
+        en: target (group)
+      - text: ketentuan
+        ar_eg: بند / شرط
+        ar: حكم / بند
+        en: provision
+    words: [dampak, rekomendasi, sasaran, ketentuan]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: «Peserta dapat membawa kamus» معناها إيه؟
-      ar: ما معنى «Peserta dapat membawa kamus»؟
-      en: What does "Peserta dapat membawa kamus" mean?
-    options:
-      - يجوز للمشارك يجيب قاموس.
-      - لازم المشارك يجيب قاموس.
-      - ممنوع المشارك يجيب قاموس.
+      ar_eg: أنهي جزء في الملخّص بيقول القرار بيمسّ مين؟
+      ar: أيّ جزء من الملخّص يذكر مَن يمسّه القرار؟
+      en: Which part of a brief says who the policy affects?
+    options: [Sasaran, Rekomendasi, Dampak]
     answer: 0
+    words: [sasaran]
   - id: e03
     type: fill_blank
-    sentence: Setiap warga negara wajib ___ hukum.
+    sentence: ___ kebijakan ini, sampah plastik di kantin berkurang.
     meaning:
-      ar_eg: كل مواطن لازم يلتزم بالقانون.
-      ar: على كلّ مواطن أن يمتثل للقانون.
-      en: Every citizen must obey the law.
-    options: [mematuhi, melindungi, mengatur]
-    answers: [mematuhi]
-    words: [mematuhi, warga negara]
+      ar_eg: أثر السياسة دي إن زبالة البلاستيك في الكانتين قلّت.
+      ar: من أثر هذه السياسة أنّ نفايات البلاستيك في المقصف قلّت.
+      en: As an impact of this policy, plastic waste in the canteen fell.
+    options: [Dampak, Sasaran, Ketentuan]
+    answers: [Dampak]
+    words: [dampak]
   - id: e04
     type: listen
-    text: Peraturan ini mengatur persyaratan izin tinggal bagi orang asing.
+    text: Sasaran kebijakan ini adalah semua pedagang di kantin kampus.
     question:
-      ar_eg: اللايحة دي بتنظّم إيه؟
-      ar: ماذا تنظّم هذه اللائحة؟
-      en: What does this regulation govern?
+      ar_eg: السياسة دي بتستهدف مين؟
+      ar: مَن تستهدف هذه السياسة؟
+      en: Who does this policy target?
     options:
-      - نسبة الضرايب.
-      - شروط إقامة الأجانب.
-      - مواعيد المدارس.
+      - الطلبة بس.
+      - كل البيّاعين في كانتين الجامعة.
+      - المدرّسين.
     answer: 1
-    words: [peraturan, mengatur, persyaratan]
+    words: [sasaran]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: في حالة حصول مخالفة، يجوز إن المؤسسة تتغرّم.
-      ar: في حال وقوع مخالفة، يجوز تغريم المؤسّسة.
-      en: In the event of an offence, the institution may be fined.
-    answer: Dalam hal terjadi pelanggaran, lembaga dapat dikenai denda.
-    distractors: [hak, sasaran]
-    words: [dalam hal, pelanggaran, lembaga, denda]
+      ar_eg: البند ده بيسري من الترم الجاي.
+      ar: يسري هذا البند ابتداءً من الفصل القادم.
+      en: This provision applies from next semester.
+    answer: Ketentuan ini berlaku mulai semester depan.
+    distractors: [dampak, sasaran]
+    words: [ketentuan]
   - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة بتبسّط «Setiap orang berhak atas perlindungan hukum»؟
-      ar: أيّ جملة تبسّط «Setiap orang berhak atas perlindungan hukum»؟
-      en: Which sentence simplifies "Setiap orang berhak atas perlindungan hukum"?
-    options:
-      - Hanya warga negara dilindungi hukum.
-      - Tidak ada orang yang dilindungi.
-      - Semua orang dilindungi oleh hukum.
-    answer: 2
-    words: [berhak]
+    type: match_pairs
+    pairs:
+      - text: pedoman
+        ar_eg: دليل إرشادات
+        ar: دليل إرشادي
+        en: guidelines, manual
+      - text: perpanjangan
+        ar_eg: تجديد، مدّ
+        ar: تمديد، تجديد
+        en: extension, renewal
+      - text: pembatalan
+        ar_eg: إلغاء
+        ar: إلغاء
+        en: cancellation
+      - text: pengembalian
+        ar_eg: استرجاع، رد
+        ar: إرجاع، استرداد
+        en: return, refund
+      - text: penegakan
+        ar_eg: تطبيق، إنفاذ
+        ar: إنفاذ
+        en: enforcement (penegakan hukum)
+    words: [pedoman, perpanjangan, pembatalan, pengembalian, penegakan]
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: أثر البند ده بيحسّه كل الخرّيجين.
-      ar: يشعر كلّ الخرّيجين بأثر هذا البند.
-      en: All graduates feel the impact of this provision.
+      ar_eg: أثر السياسة دي لسه صغير.
+      ar: ما زال أثر هذه السياسة صغيرًا.
+      en: The impact of this policy is still small.
     answers:
-      - Dampak ketentuan ini dirasakan oleh semua lulusan.
-      - Dampak ketentuan ini dirasakan semua lulusan.
-      - Semua lulusan merasakan dampak ketentuan ini.
-      - Seluruh lulusan merasakan dampak ketentuan ini.
-    words: [dampak, ketentuan, lulusan]
+      - Dampak kebijakan ini masih kecil.
+      - Dampak dari kebijakan ini masih kecil.
+      - Dampak kebijakan ini masih sedikit.
+    words: [dampak]
   - id: e08
-    type: translate
-    direction: from_target
-    source_text: Rekomendasi kami, standar ini berlaku mulai tahun depan.
-    answers_meaning:
-      ar_eg:
-        - توصيتنا إن المعيار ده يسري من السنة الجاية.
-        - إحنا بنوصي إن المعيار ده يتطبّق من السنة الجاية.
-      ar:
-        - توصيتنا أن يسري هذا المعيار ابتداءً من العام القادم.
-        - نوصي بأن يُعمل بهذا المعيار من العام المقبل.
-      en:
-        - Our recommendation is that this standard applies from next year.
-        - We recommend this standard take effect next year.
-    words: [rekomendasi, standar, berlaku]
+    type: speaking
+    text: Rekomendasi kami, ketentuan ini dijelaskan dengan bahasa sederhana.
+    meaning:
+      ar_eg: توصيتنا إن البند ده يتشرح بكلام بسيط.
+      ar: توصيتنا أن يُشرح هذا البند بلغة بسيطة.
+      en: Our recommendation is that this provision be explained in plain language.
+    words: [rekomendasi, ketentuan]
   - id: e09
     type: dictation
-    text: Pasal 4 ayat (2) melindungi hak peserta.
+    text: Sasaran utama program ini adalah mahasiswa baru.
     meaning:
-      ar_eg: المادة 4 الفقرة 2 بتحمي حق المشارك.
-      ar: تحمي المادة 4، الفقرة 2، حقّ المشارك.
-      en: Article 4(2) protects the participant's rights.
-    words: [pasal, ayat, melindungi, hak]
+      ar_eg: الفئة الأساسية اللي البرنامج ده بيستهدفها هي الطلبة الجداد.
+      ar: الفئة المستهدفة أساسًا في هذا البرنامج هي الطلّاب الجدد.
+      en: The main target of this programme is new students.
+    words: [sasaran]
   - id: e10
-    type: speaking
-    text: Artinya, sasaran peraturan ini adalah semua lembaga kursus.
-    meaning:
-      ar_eg: يعني اللايحة دي بتستهدف كل مؤسسات الكورسات.
-      ar: أي إنّ هذه اللائحة تستهدف كلّ مؤسّسات الدورات.
-      en: In plain terms, this regulation targets every course institution.
-    words: [sasaran, lembaga, peraturan]
-  - id: e11
-    type: match_pairs
-    pairs:
-      - text: amandemen
-        ar_eg: تعديل
-        ar: تعديل
-        en: amendment
-      - text: konsumen
-        ar_eg: مستهلك
-        ar: مستهلك
-        en: consumer
-      - text: garansi
-        ar_eg: ضمان
-        ar: ضمان
-        en: warranty
-      - text: surat kuasa
-        ar_eg: توكيل
-        ar: توكيل
-        en: letter of authorisation
-      - text: menyetujui
-        ar_eg: يوافق على
-        ar: يوافق على
-        en: to agree to
-    words: [amandemen, konsumen, garansi, surat kuasa, menyetujui]
-  - id: e12
     type: translate
     direction: from_target
-    source_text: Surat kuasa ini sah karena sudah ada meterai dan tanda tangan pemberi kuasa.
+    source_text: Laporan itu berisi tiga rekomendasi untuk pemerintah daerah.
     answers_meaning:
       ar_eg:
-        - التوكيل ده رسمي عشان عليه طابع وإمضا الموكِّل.
-        - التوكيل ده قانوني لإن فيه الطابع وإمضة الموكِّل.
+        - التقرير ده فيه تلات توصيات للحكومة المحلية.
+        - التقرير فيه تلات توصيات لحكومة المحافظة.
       ar:
-        - هذا التوكيل نافذ لأنّ عليه الطابع وتوقيع الموكِّل.
-        - يُعدّ هذا التوكيل صحيحًا لوجود الطابع وتوقيع الموكِّل.
+        - يتضمّن ذلك التقرير ثلاث توصيات للحكومة المحلّية.
+        - في التقرير ثلاث توصيات لحكومة الإقليم.
       en:
-        - This letter of authorisation is valid because it has the stamp and the grantor's signature.
-        - The authorisation is legal, since it bears the duty stamp and the grantor's signature.
-    words: [surat kuasa, sah, meterai, pemberi kuasa]
+        - The report contains three recommendations for the local government.
+        - That report makes three recommendations to the regional government.
+    words: [rekomendasi]
 dialogue:
-  title: Di Candi Muaro Jambi
+  title: Satu halaman
   lines:
     - speaker: Kak Intan
-      text: Ini Candi Muaro Jambi. Kompleksnya luas sekali, ribuan hektare.
-      ar_eg: دي معابد مواروجامبي. المجمّع واسع قوي، آلاف الهكتارات.
-      ar: هذه معابد موارو جامبي. المجمّع واسع جدًّا، آلاف الهكتارات.
-      en: This is Muaro Jambi. The complex is huge, thousands of hectares.
+      text: Ringkasan kebijakanmu harus satu halaman saja, ya.
+      ar_eg: ملخّص السياسة بتاعك لازم يبقى صفحة واحدة بس.
+      ar: يجب أن يكون ملخّص سياستك صفحة واحدة فقط.
+      en: Your policy brief has to be one page only, okay?
     - speaker: Mohamed
-      text: Ada peraturan untuk pengunjung juga. "Pengunjung dilarang memanjat candi."
-      ar_eg: فيه لايحة للزوار كمان. «ممنوع على الزوار يتسلقوا المعبد».
-      ar: ثمّة لائحة للزوّار أيضًا. «يُحظر على الزوّار تسلّق المعبد».
-      en: There are rules for visitors too. "Visitors are prohibited from climbing the temple."
+      text: Baik. Ketentuannya, kantin dilarang memakai plastik sekali pakai.
+      ar_eg: ماشي. البند إن الكانتين ممنوع يستعمل بلاستيك بيتستعمل مرة واحدة.
+      ar: حسنًا. البند هو منع المقصف من استعمال البلاستيك الأحادي الاستعمال.
+      en: Fine. The provision is that the canteen may not use single-use plastic.
     - speaker: Kak Intan
-      text: Betul. Artinya, kita boleh melihat dan memotret, tetapi jangan naik.
-      ar_eg: مظبوط. يعني نقدر نتفرج ونصوّر، بس مانطلعش.
-      ar: صحيح. أي يجوز لنا أن نرى ونصوّر، لكن لا نصعد.
-      en: Right. It means we can look and take photos, but we don't climb.
+      text: Lalu sasarannya siapa, dan apa dampaknya?
+      ar_eg: طب بيستهدف مين، وأثره إيه؟
+      ar: ومَن المستهدف، وما الأثر؟
+      en: Then who's the target, and what's the impact?
     - speaker: Mohamed
-      text: Hak saya memotret, kewajiban saya menjaga. Adil!
-      ar_eg: حقي أصوّر، وواجبي أحافظ. عدل!
-      ar: حقّي أن أصوّر، وواجبي أن أحافظ. عدل!
-      en: My right is to take photos, my duty is to take care. Fair!
-souvenir:
-  id: bipa6.u07.souvenir
-  title: Candi Muaro Jambi
-  note:
-    ar_eg: مجمّع معابد مواروجامبي على نهر باتانج هاري من أكبر مجمّعات المعابد البوذية القديمة في جنوب شرق آسيا، ومساحته حوالي أربع آلاف هكتار. المعابد مبنية بالطوب الأحمر، وأغلبها من القرن السابع لحد التلتاشر، أيام مملكة ملايو وسريويجايا. مؤرخين كتير شايفين إنه كان مركز كبير لتعليم البوذية، وإن الراهب الهندي أتيشا جه يتعلّم فيه. ومن 2009 هو على القائمة المبدئية لتراث اليونسكو.
-    ar: مجمّع معابد موارو جامبي على نهر باتانغ هاري من أكبر مجمّعات المعابد البوذية القديمة في جنوب شرق آسيا، وتقارب مساحته أربعة آلاف هكتار. شُيّدت معابده بالآجرّ الأحمر، ويعود معظمها إلى ما بين القرنين السابع والثالث عشر، أيّام مملكة ملايو وسريويجايا. ويرى كثير من المؤرّخين أنّه كان مركزًا كبيرًا لتعليم البوذية، وأنّ الراهب الهندي أتيشا قصده للتعلّم. وهو منذ 2009 على القائمة المبدئية لتراث اليونسكو.
-    en: The Muaro Jambi temple complex on the Batang Hari River is one of the largest ancient Buddhist temple sites in Southeast Asia, covering about 4,000 hectares. Its temples are built of red brick, and most date from the 7th to the 13th century, the era of the Malayu kingdom and Srivijaya. Many historians believe it was a major centre of Buddhist learning where the Indian monk Atisha came to study. It has been on UNESCO's World Heritage tentative list since 2009.
+      text: Sasarannya pedagang kantin. Rekomendasi saya, kampus membantu mereka membeli wadah baru.
+      ar_eg: بيستهدف بيّاعين الكانتين. وتوصيتي إن الجامعة تساعدهم يشتروا علب جديدة.
+      ar: المستهدف باعة المقصف، وتوصيتي أن تعينهم الجامعة على شراء أوعية جديدة.
+      en: The target is the canteen vendors. My recommendation is that the campus helps them buy new containers.
+new_words:
+  - word: rekomendasi
+    pos: noun
+    ar_eg: توصية
+    ar: توصية
+    en: recommendation
+  - word: sasaran
+    pos: noun
+    ar_eg: الفئة المستهدفة / هدف
+    ar: الفئة المستهدفة
+    en: target (group)
+  - word: ketentuan
+    pos: noun
+    ar_eg: بند / شرط
+    ar: حكم / بند
+    en: provision
 review:
   status: draft
   verified: false

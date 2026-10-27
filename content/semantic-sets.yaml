@@ -1,0 +1,50 @@
+# Tight semantic sets (#224, docs/PEDAGOGY.md §4.4: group words by situation,
+# not by tight semantic sets). The content validator fails a learn lesson that
+# teaches more than `max_per_lesson` new words from one set. Aim for three or
+# fewer; spread the rest of a set over other situations.
+#
+# Closed sequences (numbers, days, months) are not listed: they are learnt as
+# a series. Add words here when a new lesson introduces more members of a set.
+max_per_lesson: 4
+# Lessons that may go over, with the reason.
+allow:
+  bipa2.u07.l04: Exercise-class commands; the body parts are the objects of the commands (angkat tangan, angkat kaki kanan).
+  j2.u01.l01: Grammar point jv.kinship.terms. The speech-level and age split (mbakyu, mas, adhi) is taught by contrast, so the terms must sit together.
+  j2.u01.l02: Grammar point jv.kinship.terms. The age-based split (pakdhe or paklik = older or younger than your parent) is taught by contrast.
+sets:
+  colours:
+    id: [merah, putih, hitam, biru, hijau, kuning, cokelat, ungu, oranye, abu-abu, merah muda, jingga, emas, perak]
+    jv: [abang, putih, ireng, biru, ijo, kuning, coklat, wungu, oranye, abu-abu, jambon, ungu]
+  fruit:
+    id: [apel, jeruk, pisang, mangga, semangka, anggur, pepaya, nanas, durian, rambutan, salak, kelapa, nangka, jambu, melon, stroberi, alpukat, manggis, belimbing, sirsak, kurma, lemon]
+    jv: [gedhang, pelem, jeruk, semangka, salak, nanas, apel, anggur, kates, rambutan, duren, nangka, jambu, klapa, manggis, sawo, kweni]
+  vegetables:
+    id: [tomat, kentang, wortel, kacang, kubis, timun, terong, bayam, kangkung, bawang, bawang merah, bawang putih, cabai, cabe, jagung, buncis, labu, kol, brokoli, jamur, singkong, ubi, tauge, kacang panjang, seledri]
+    jv: [tomat, kenthang, wortel, kacang, kobis, timun, terong, bayem, kangkung, brambang, bawang, lombok, jagung, buncis, labu, telo, jamur, kecambah]
+  body:
+    id: [kepala, rambut, wajah, muka, mata, hidung, telinga, mulut, gigi, lidah, leher, bahu, dada, perut, punggung, pinggang, lengan, tangan, jari, kaki, lutut, kulit, darah, jantung, tulang, paha, siku, bibir, dagu, pipi, alis, kuku]
+    jv: [sirah, endhas, rambut, rai, pasuryan, mripat, mata, irung, kuping, cangkem, tutuk, untu, ilat, gulu, pundhak, dhadha, weteng, geger, bangkekan, lengen, tangan, driji, sikil, dhengkul, kulit, getih, balung, lambe, pipi]
+  kinship:
+    id: [ayah, ibu, bapak, kakak, adik, nenek, kakek, paman, bibi, om, tante, sepupu, cucu, keponakan, saudara, suami, istri, mertua, menantu, ipar, anak]
+    jv: [bapak, ibu, simbah, mbah, kakang, mas, mbakyu, mbak, adhi, pakdhe, budhe, paklik, bulik, ponakan, putu, sedulur, bojo, maratuwa, mantu, ipe, anak, eyang, sedherek]
+  jobs:
+    id: [guru, dokter, perawat, polisi, sopir, petani, nelayan, pedagang, penjual, penulis, pelukis, penari, penyanyi, pengacara, hakim, tentara, pilot, koki, artis, aktor, profesor, manajer, sekretaris, asisten, pekerja, tukang, montir, insinyur, arsitek, wartawan, pegawai, karyawan, mahasiswa, pelajar, dosen, apoteker, kasir, satpam, pelayan, pramugari, wasit, pelatih, pemandu wisata]
+    jv: [guru, dhokter, mantri, polisi, sopir, tani, petani, nelayan, bakul, dodolan, juru masak, tukang, pegawai, karyawan, mahasiswa, dhalang, sindhen, pengrawit, abdi dalem, juru kunci, juragan, pegawe]
+  clothes:
+    id: [baju, kemeja, kaos, celana, celana pendek, rok, gaun, jas, dasi, jaket, topi, sepatu, sandal, kaos kaki, sarung, kerudung, jilbab, peci, kebaya, sabuk, ikat pinggang, piyama, mantel, syal, sarung tangan]
+    jv: [klambi, kathok, rok, jarik, sarung, blangkon, beskap, kebaya, sepatu, sandhal, kaos, iket, kudhung, slop, setagen, rasukan, nyamping]
+  animals:
+    id: [binatang, hewan, kucing, anjing, ayam, sapi, kambing, kuda, monyet, ular, burung, ikan, tikus, gajah, harimau, buaya, kerbau, bebek, babi, kelinci, kupu-kupu, nyamuk, semut, lebah, katak, cicak, komodo, orangutan, kura-kura, penyu]
+    jv: [kewan, kucing, asu, pitik, sapi, wedhus, jaran, kethek, ula, manuk, iwak, tikus, gajah, macan, baya, kebo, bebek, celeng, kupu, lemut, semut, tawon, kodhok, cecak]
+  measures:
+    id: [gram, ons, kilo, kilogram, liter, meter, kilometer, sentimeter, milimeter, lusin, persen, ton, inci, hektar, mililiter]
+    jv: [gram, ons, kilo, liter, meter, kilometer, sentimeter, kodhi, persen]
+  vehicles:
+    id: [mobil, bus, kereta, kereta api, sepeda, motor, sepeda motor, taksi, truk, pesawat, kapal, perahu, becak, angkot, ojek, bajaj, delman, ambulans]
+    jv: [montor, mobil, bis, sepur, pit, sepedha, motor, taksi, truk, montor mabur, prau, kapal, becak, andhong, dhokar, angkot, ojek]
+  tableware:
+    id: [piring, gelas, cangkir, sendok, garpu, pisau, mangkuk, panci, wajan, kompor, kulkas, teko, botol, termos, nampan, sumpit]
+    jv: [piring, gelas, cangkir, sendhok, garpu, lading, peso, mangkok, panci, wajan, kompor, kendhi, cething, irus, susuk]
+  emotions:
+    id: [senang, sedih, marah, bosan, takut, kesal, kecewa, bahagia, gembira, cemas, khawatir, malu, bangga, gugup, terkejut, kaget, rindu, iri, sebal]
+    jv: [seneng, susah, sedhih, nesu, muring, bosen, wedi, gela, bungah, kuwatir, isin, kangen, kaget, mangkel, gumun, ajrih, getun, kuciwa]

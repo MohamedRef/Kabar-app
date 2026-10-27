@@ -445,12 +445,15 @@ watermarks, signatures or brands. Do not imitate any named artist.
    - sumatra.png: a Minangkabau rumah gadang with horn roofs and a volcano behind
    - raja-ampat.png: green karst islets in turquoise water
    Javanese train line (cities):
-   - surabaya.png: a long suspension bridge over a strait at dusk
+   - surabaya.png: a long suspension bridge over a strait at dusk (replaced by
+     malioboro.png, prompt 5b)
    - madiun.png: an old train station platform with a locomotive and a small pecel
      food stall
    - solo.png: a royal palace pavilion (pendopo) with batik cloth hanging nearby
+     (replaced by beringharjo.png, prompt 5b)
    - yogyakarta.png: Prambanan temple spires at dawn
    - semarang.png: a colonial building with many doors and arched windows
+     (replaced by madiun-pendekar.png, prompt 5b)
    - kotagede.png: an old Javanese mosque gate with a banyan tree
 
 SAVE: masters to assets/src/map/. With a small reproducible script in scripts/assets/ (Pillow or
@@ -465,13 +468,88 @@ Do not commit. List the files when done.
 
 ---
 
+## Prompt 5b — Jogja and Madiun (done)
+
+Mohamed narrowed the Javanese route to Yogyakarta and Madiun (2026-10-27). The J1 (Surabaya), J3 (Solo) and J5 (Semarang) vignettes of prompt 5 were replaced by `malioboro`, `beringharjo` and `madiun-pendekar`, and the two Javanese Radio hosts got their faces in the same session. The originals Codex sent are in the project files (`map/codex-5b-originals/`). The masters were resized to 1024 px, exported by `scripts/assets/export_map.py` and `export_personas.py --import`.
+
+```text
+Create new artwork for "Kabar", an Indonesian + Javanese learning app. Its Javanese
+route now runs only through Yogyakarta (Jogja) and Madiun, so three Journey Map
+vignettes and two Radio-host portraits are needed. Two parts, one session.
+
+HOW TO GENERATE (strict, both parts):
+- Use your image generation tool. Do NOT draw with code (no SVG, Pillow, Cairo or
+  canvas drawing).
+- Generate EACH image as its own separate request, directly at 1024x1024. Never make a
+  sheet, grid or collage and split it. Never upscale; only crop. No recolour or filter.
+HARD RULES (both parts): no text, letters, numbers, labels, signage, logos, name tags,
+watermarks or signatures anywhere. Do not imitate any named artist. Respectful,
+recognisable but simplified depictions; no stereotypes.
+PALETTE (both parts): Merapi charcoal #22201E, sawah green #4F8A3C, Bromo orange
+#EE8A5A, Bromo pink #E9A3A0, batik indigo #2B3A70, warm paper #F5EFE3 (plus natural
+skin and hair tones in part B).
+
+PART A: JOURNEY MAP VIGNETTES (1024x1024 PNG, transparent background)
+Match the existing set in assets/src/map/ (open jakarta.png, madiun.png and
+yogyakarta.png first, and contact-sheet.png): each a tiny self-contained scene inside a
+soft circle, like a sticker on a travel map. Calm, warm, grown-up travel-journal
+illustration; flat vector-like shapes, soft layered depth, gentle paper grain, minimal
+gradients; a low Bromo-orange sun (or moon) disc and soft pink clouds in the sky; dark
+green foliage framing the lower edge of the circle. Simple shapes, readable at 128px.
+Never childish or noisy, no glossy 3D, no photorealism.
+- malioboro.png (J1, Jogja): early evening on Malioboro street. In front, an
+  angkringan: a small wooden food cart under a canvas tarp, a kettle steaming on a
+  charcoal brazier, a warm oil lamp, a low bench. Behind, the white colonial facade of
+  Tugu railway station with its arched windows. Sky in blue hour, the orange disc as a
+  rising moon, a few lanterns glowing. No signs or writing on the cart or station.
+- beringharjo.png (J3, Jogja): the old Beringharjo market hall: a long colonial-era
+  market front with tall arched entrances, and in front of it stalls with folded
+  batik cloth in indigo and brown, and woven baskets. Morning light, the orange sun
+  low, a frangipani or banyan branch at one side.
+- madiun-pendekar.png (J5, Madiun "Kota Pendekar"): two pencak silat practitioners in
+  black pangsi outfits with sashes, mid-stance in a calm, graceful pose (not fighting
+  aggressively), on a grassy square. Behind them, the long saw-tooth roofs of Madiun's
+  old railway workshop and a teak tree. Dusk, orange sun. (The existing madiun.png
+  already shows the station platform and a pecel stall, so do NOT repeat those.)
+Check all three on contact-sheet.png next to the existing vignettes and regenerate any
+that don't match the set.
+
+PART B: PORTRAITS (1024x1024 PNG, opaque)
+Match the approved portraits in assets/src/personas/ (open kak-tiara.webp,
+kak-reza.webp and mas-dimas.webp first) exactly in hand, light and framing.
+Calm, warm, grown-up illustration; flat vector-like shapes, soft layered depth, gentle
+paper grain, warm soft light. Not photorealistic, not anime, not cartoonish. Head and
+shoulders, three-quarter view, friendly natural expression, eyes toward the viewer;
+face centred with room around it so a circle crop never cuts the head. Realistic
+proportions, no caricature. Original fictional characters: must not resemble any
+real person. Background: a soft, blurred hint of the setting.
+- mbak-sekar.png (Mbak Sekar, Yogyakarta): Kabar Radio's Javanese host, a calm Jogja
+  schoolteacher in her late 20s, hair in a neat low bun, a soft brown batik blouse,
+  studio headphones around her neck. Background: a cosy radio booth with a microphone
+  on an arm and a small gamelan gong on the shelf.
+- mas-danang.png (Mas Danang, Madiun): Kabar Radio's Javanese co-host, a cheerful
+  Madiun man in his late 20s who jokes a lot, short neat hair, a wide grin, a green
+  batik shirt with sleeves rolled up, studio headphones around his neck. Background: a
+  cosy radio booth with a microphone on an arm.
+
+SAVE: vignettes to assets/src/map/ and portraits to assets/src/personas/, with exactly
+these file names (malioboro.png, beringharjo.png, madiun-pendekar.png, mbak-sekar.png,
+mas-danang.png). Don't run any export script and don't touch other files: Kabar's own
+scripts make the web sizes.
+
+Do not commit. List the 5 files when done, and confirm each was generated natively at
+1024x1024 with the image tool.
+```
+
+---
+
 ## Prompt 6 — Portraits of the cast (6a–6e)
 
 Every recurring character in `content/cast.yaml` (except the learner) gets one portrait, named by its cast `id`: `assets/src/personas/<id>.webp`. How each one looks, and which batch draws it, is in `assets/portraits.yaml`. The prompts themselves are generated into [`assets/portrait-prompts.md`](../assets/portrait-prompts.md) by `scripts/assets/portrait_prompts.py`, so they always match the cast. Each batch is self-contained; send them one at a time:
 
 | batch | who | images |
 |---|---|---|
-| 6a | coach, chat partners, Radio hosts (with 4 expressions for the five you talk to) | 27 · **done**, in the app |
+| 6a | coach, chat partners, Radio hosts (with 4 expressions for the five you talk to) | 29 · **done**, in the app (Mbak Sekar and Mas Danang came with prompt 5b) |
 | 6b | the Sinetron cast | 11 · **done**, in the app |
 | 6c | Indonesian lessons | 11 · **done**, in the app |
 | 6d | Javanese lessons and the Unggah-Ungguh game | 11 · **done**, in the app |
@@ -517,7 +595,7 @@ Not sent to Codex. This is what Kabar has now. The original prompt is kept below
 | Icons | Kabar draws its own stroke icons on the Lucide 24 px grid (`crates/app/src/icons.rs`, `assets/icons/custom/`). No Lucide files are copied. |
 | Fonts | Plus Jakarta Sans, IBM Plex Sans Arabic and Amiri are bundled from Fontsource 5.3.0 (OFL 1.1, licenses checked). Noto Naskh Arabic and Noto Sans Javanese were already in `content/fonts/`. Noto Emoji is not added: the app uses no emoji glyphs that need it. |
 | Geodata | Already done: Natural Earth (public domain) via `kabar-tools --bin journey-map`. |
-| Gong and kendang | Synthesized by `scripts/assets/synth_sounds.py`, three variations each. Variation 1 ships; switch by changing `sounds.rs`. |
+| Gong, ding and kendang | Synthesized by `scripts/assets/synth_sounds.py`, three variations each. Mohamed picked gong 3 (lesson end) and ding 1 (right answer) by ear; those are the defaults, and Settings › Learning lets him pick any of the nine (tap to preview). |
 | Kenney UI clicks | Not added. kenney.nl is blocked from the build container, and the app has no button clicks wired yet. Download *Interface Sounds* (CC0) on the Mac if we want clicks. |
 | Freesound gamelan | Skipped, as the prompt allows. |
 

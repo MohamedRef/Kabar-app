@@ -1,67 +1,74 @@
 schema: kabar.lesson/v1
 id: bipa1.u08.l06
 language: id
-title: Wajahnya ramah
+title: Sepupu yang nakal
 can_do:
-  ar_eg: 'توصف وش حد: العينين والمناخير والودان، وتقول وسيم أو مش حلو.'
-  ar: 'أن تصف وجه شخص: العينين والأنف والأذنين، وتقول وسيم أو قبيح.'
-  en: 'Describe a face: eyes, nose, ears, and say handsome or not so nice.'
+  ar_eg: 'توصف عيل شقي: زهقان وعطشان، رسم على ودنه ورقبته، وتقول وسيم أو وحش، وحنين.'
+  ar: 'أن تصف طفلًا مشاغبًا: ضجِر وعطشان، رسم على أذنه ورقبته، وتقول وسيم أو قبيح، ورقيق.'
+  en: 'Describe a naughty child: bored and thirsty, drawing on his ears and neck; say handsome or ugly, and gentle.'
 slides:
-  - title: Wajah
+  - title: Anak nakal
     body:
       ar_eg: |
-        wajah = وش (وفيه كمان muka). mata = عين (افتكر matahari: عين النهار!)، hidung = مناخير، telinga = ودن، leher = رقبة.
+        nakal = شقي، للعيال غالبًا. bosan = زهقان، والعيل الزهقان بيبقى nakal!
+        haus = عطشان (زي lapar للجوع). telinga = ودن، leher = رقبة.
         tampan = وسيم، أرسمي من ganteng. jelek = وحش (في الشكل أو الجودة).
-        gemuk = تخين أو مليان. للبيبي بتبقى مدح: Bayinya gemuk! بس مع الكبار قولها بلطف.
+        lembut = ناعم أو حنين: Rina orangnya lembut.
       ar: |
-        wajah = وجه (ويقال أيضًا muka). mata = عين (تذكّر matahari: عين النهار!)، hidung = أنف، telinga = أذن، leher = رقبة.
+        nakal = مشاغب، للأطفال غالبًا. bosan = ضجِر، والطفل الضجِر يصير nakal!
+        haus = عطشان (مثل lapar للجوع). telinga = أذن، leher = رقبة.
         tampan = وسيم، أرسم من ganteng. jelek = قبيح أو رديء.
-        gemuk = سمين أو ممتلئ، وهي مديح للرضيع: Bayinya gemuk! أما مع الكبار فقلها بلطف.
+        lembut = ناعم أو رقيق: Rina orangnya lembut.
       en: |
-        wajah = face (muka also works). mata = eye (remember matahari, the eye of the day!), hidung = nose, telinga = ear, leher = neck.
+        nakal = naughty, mostly of kids. bosan = bored, and a bored kid turns nakal!
+        haus = thirsty (like lapar for hunger). telinga = ear, leher = neck.
         tampan = handsome, more formal than ganteng. jelek = ugly, bad.
-        gemuk = plump, fat. For a baby it's praise (Bayinya gemuk!); with adults, use it gently.
+        lembut = soft, gentle: Rina orangnya lembut.
     examples:
-      - text: Matanya besar dan rambutnya panjang.
-        ar_eg: عينيها كبيرة وشعرها طويل.
-        ar: عيناها واسعتان وشعرها طويل.
-        en: Her eyes are big and her hair is long.
-      - text: Bayinya gemuk dan lucu.
-        ar_eg: البيبي مليان وعسول.
-        ar: الرضيع ممتلئ ولطيف.
-        en: The baby is chubby and cute.
-      - text: Gadis Bali itu pakai bunga di telinga.
-        ar_eg: البنت البالية دي حاطّة وردة على ودنها.
-        ar: تلك الفتاة البالية تضع زهرة على أذنها.
-        en: That Balinese girl wears a flower on her ear.
+      - text: Sepupu saya bosan, jadi dia nakal.
+        ar_eg: ابن خالتي زهقان، عشان كده بقى شقي.
+        ar: ابن خالتي ضجِر، لذلك صار مشاغبًا.
+        en: My cousin is bored, so he's being naughty.
+      - text: Ada gambar di leher dan telinganya!
+        ar_eg: فيه رسمة على رقبته وودنه!
+        ar: هناك رسمة على رقبته وأذنه!
+        en: There's a drawing on his neck and ear!
+      - text: Saya haus. Minta air, ya!
+        ar_eg: أنا عطشان. مية لو سمحت!
+        ar: أنا عطشان. ماءً من فضلك!
+        en: I'm thirsty. Water, please!
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: wajah
-        ar_eg: وش
-        ar: وجه
-        en: face
-      - text: mata
-        ar_eg: عين
-        ar: عين
-        en: eye
-      - text: hidung
-        ar_eg: مناخير
-        ar: أنف
-        en: nose
       - text: telinga
         ar_eg: ودن
         ar: أذن
         en: ear
-    words: [wajah, mata, hidung, telinga]
-  - id: e02
-    type: match_pairs
-    pairs:
       - text: leher
         ar_eg: رقبة
         ar: رقبة
         en: neck
+      - text: haus
+        ar_eg: عطشان
+        ar: عطشان
+        en: thirsty
+      - text: bosan
+        ar_eg: زهقان
+        ar: ضجِر
+        en: bored
+    words: [telinga, leher, haus, bosan]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: nakal
+        ar_eg: شقي
+        ar: مشاغب
+        en: naughty
+      - text: lembut
+        ar_eg: حنين، ناعم
+        ar: رقيق
+        en: gentle
       - text: tampan
         ar_eg: وسيم
         ar: وسيم
@@ -70,35 +77,31 @@ exercises:
         ar_eg: وحش
         ar: قبيح
         en: ugly
-      - text: gemuk
-        ar_eg: تخين، مليان
-        ar: سمين
-        en: fat, plump
-    words: [leher, tampan, jelek, gemuk]
+    words: [nakal, lembut, tampan, jelek]
   - id: e03
     type: listen
-    text: 'Wajahnya cantik: matanya besar dan hidungnya kecil.'
+    text: Saya haus. Minta air putih, ya!
     question:
-      ar_eg: عينيها شكلها إيه؟
-      ar: كيف عيناها؟
-      en: What are her eyes like?
-    options: [كبيرة, صغيرة, مقفولة]
+      ar_eg: هو عايز إيه؟
+      ar: ماذا يريد؟
+      en: What does he want?
+    options: [مية, أكل, ينام]
     answer: 0
     meaning:
-      ar_eg: 'وشها حلو: عينيها كبيرة ومناخيرها صغيرة.'
-      ar: 'وجهها جميل: عيناها واسعتان وأنفها صغير.'
-      en: 'Her face is pretty: big eyes and a small nose.'
-    words: [wajah, mata, hidung]
+      ar_eg: أنا عطشان. مية لو سمحت!
+      ar: أنا عطشان. ماءً من فضلك!
+      en: I'm thirsty. Water, please!
+    words: [haus]
   - id: e04
     type: fill_blank
-    sentence: Bayi itu ___ dan lucu.
+    sentence: Anak itu ___! Dia menggambar di baju saya.
     meaning:
-      ar_eg: البيبي ده ___ وعسول.
-      ar: ذلك الرضيع ___ ولطيف.
-      en: That baby is ___ and cute.
-    options: [gemuk, jelek, leher]
-    answers: [gemuk]
-    words: [gemuk, jelek, leher]
+      ar_eg: العيل ده ___! بيرسم على هدومي.
+      ar: ذلك الطفل ___! يرسم على ثيابي.
+      en: That child is ___! He's drawing on my clothes.
+    options: [nakal, bosan, lembut]
+    answers: [nakal]
+    words: [nakal, bosan, lembut]
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -121,94 +124,79 @@ exercises:
       en: The Balinese girl wears a flower on her ___.
     options: [telinga, leher, mata]
     answers: [telinga]
-    words: [telinga, leher, mata]
+    words: [telinga, leher]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: وشها حلو وشعرها طويل.
-      ar: وجهها جميل وشعرها طويل.
-      en: Her face is pretty and her hair is long.
-    answer: Wajahnya cantik dan rambutnya panjang.
-    distractors: [leher, gemuk]
-    words: [wajah]
+      ar_eg: الولد ده زهقان وعطشان.
+      ar: ذلك الولد ضجِر وعطشان.
+      en: That boy is bored and thirsty.
+    answer: Anak itu bosan dan haus.
+    distractors: [leher, jelek]
+    words: [bosan, haus]
   - id: e08
     type: translate
     direction: from_target
-    source_text: Fotonya tidak jelek!
+    source_text: Rina orangnya lembut.
     answers_meaning:
-      ar_eg: [الصورة مش وحشة!, الصورة مش وحشة خالص!]
-      ar: [الصورة ليست سيئة!, ليست الصورة قبيحة!]
-      en: ['The photo isn''t bad!', 'The photo''s not ugly!']
-    words: [jelek]
+      ar_eg: [رينا إنسانة حنينة, رينا حنينة]
+      ar: [رينا شخص رقيق, رينا رقيقة]
+      en: [Rina is a gentle person, Rina is gentle]
+    words: [lembut]
   - id: e09
     type: speaking
-    text: Pria itu tampan dan agak gemuk.
+    text: Saya tidak nakal dan tidak jelek. Saya tampan!
     meaning:
-      ar_eg: الراجل ده وسيم ومليان شوية.
-      ar: ذلك الرجل وسيم وممتلئ قليلًا.
-      en: That man is handsome and a bit plump.
-    words: [tampan, gemuk]
+      ar_eg: أنا مش شقي ومش وحش. أنا وسيم!
+      ar: لست مشاغبًا ولا قبيحًا. أنا وسيم!
+      en: I'm not naughty and I'm not ugly. I'm handsome!
+    words: [nakal, jelek, tampan]
   - id: e10
     type: multiple_choice
     question_meaning:
       ar_eg: الكوفية بتتلبس فين؟
       ar: أين يُلبس الوشاح؟
       en: Where do you wear a scarf?
-    options: [leher, telinga, hidung]
+    options: [leher, telinga, mata]
     answer: 0
     explain:
-      ar_eg: 'على الرقبة: leher. telinga ودن وhidung مناخير.'
-      ar: 'على الرقبة: leher، أما telinga فأذن وhidung أنف.'
-      en: 'On your neck: leher. telinga is an ear and hidung a nose.'
-    words: [leher, telinga, hidung]
+      ar_eg: 'على الرقبة: leher. telinga ودن وmata عين.'
+      ar: 'على الرقبة: leher، أما telinga فأذن وmata عين.'
+      en: 'On your neck: leher. telinga is an ear and mata an eye.'
+    words: [leher, telinga]
 dialogue:
   lines:
-    - speaker: Rina
-      text: Mohamed, ini foto teman baru saya, Bima.
-      ar_eg: يا محمد، دي صورة صاحبي الجديد بيما.
-      ar: يا محمد، هذه صورة صديقي الجديد بيما.
-      en: Mohamed, this is a photo of my new friend, Bima.
     - speaker: Mohamed
-      text: Wajahnya ramah! Dia tampan.
-      ar_eg: وشه بشوش! ووسيم.
-      ar: وجهه بشوش! وهو وسيم.
-      en: He has a friendly face! He's handsome.
+      text: Rina, siapa anak kecil itu?
+      ar_eg: يا رينا، مين العيل الصغير ده؟
+      ar: يا رينا، من ذلك الطفل الصغير؟
+      en: Rina, who's that little kid?
     - speaker: Rina
-      text: Ya! Matanya besar, rambutnya pendek.
-      ar_eg: أيوه! عينيه كبيرة وشعره قصير.
-      ar: نعم! عيناه واسعتان وشعره قصير.
-      en: Yes! Big eyes, short hair.
+      text: Itu sepupu saya, Dodi. Dia bosan, jadi dia nakal.
+      ar_eg: دا ابن خالتي، دودي. زهقان، فبقى شقي.
+      ar: ذاك ابن خالتي دودي. إنه ضجِر، لذلك صار مشاغبًا.
+      en: That's my cousin Dodi. He's bored, so he's being naughty.
     - speaker: Mohamed
-      text: Dan ini bayi siapa? Gemuk dan lucu!
-      ar_eg: والبيبي ده مين؟ مليان وعسول!
-      ar: ورضيع مَن هذا؟ ممتلئ ولطيف!
-      en: And whose baby is this? Chubby and cute!
+      text: Ada gambar di leher dan telinganya!
+      ar_eg: فيه رسمة على رقبته وودنه!
+      ar: هناك رسمة على رقبته وأذنه!
+      en: There's a drawing on his neck and ear!
     - speaker: Rina
-      text: Itu adik Bima. Telinganya kecil sekali!
-      ar_eg: دي أخت بيما الصغيرة. ودانها صغننين!
-      ar: تلك أخت بيما الصغرى. أذناها صغيرتان جدًا!
-      en: That's Bima's little sister. Her ears are so tiny!
+      text: Dodi, wajahmu jelek sekarang!
+      ar_eg: يا دودي، وشك بقى وحش دلوقتي!
+      ar: يا دودي، صار وجهك قبيحًا الآن!
+      en: Dodi, your face looks awful now!
     - speaker: Mohamed
-      text: Lucu banget!
-      ar_eg: عسولة أوي!
-      ar: لطيفة جدًا!
-      en: So cute!
+      text: Tapi dia tersenyum. Kamu lembut sekali, Rina.
+      ar_eg: بس هو مبتسم. إنتي حنينة أوي يا رينا.
+      ar: لكنه يبتسم. أنتِ رقيقة جدًا يا رينا.
+      en: But he's smiling. You're so gentle, Rina.
+    - speaker: Rina
+      text: Sekarang dia haus. Ini air, Dodi!
+      ar_eg: دلوقتي هو عطشان. خد المية يا دودي!
+      ar: الآن هو عطشان. هذا ماء يا دودي!
+      en: Now he's thirsty. Here's some water, Dodi!
 new_words:
-  - word: wajah
-    pos: noun
-    ar_eg: وش
-    ar: وجه
-    en: face
-  - word: mata
-    pos: noun
-    ar_eg: عين
-    ar: عين
-    en: eye
-  - word: hidung
-    pos: noun
-    ar_eg: مناخير
-    ar: أنف
-    en: nose
   - word: telinga
     pos: noun
     ar_eg: ودن
@@ -219,6 +207,26 @@ new_words:
     ar_eg: رقبة
     ar: رقبة، عنق
     en: neck
+  - word: haus
+    pos: adjective
+    ar_eg: عطشان
+    ar: عطشان
+    en: thirsty
+  - word: bosan
+    pos: adjective
+    ar_eg: زهقان
+    ar: ضجِر، ملول
+    en: bored
+  - word: nakal
+    pos: adjective
+    ar_eg: شقي
+    ar: مشاغب
+    en: naughty
+  - word: lembut
+    pos: adjective
+    ar_eg: حنين، ناعم
+    ar: رقيق، ناعم
+    en: gentle, soft
   - word: tampan
     pos: adjective
     ar_eg: وسيم
@@ -229,11 +237,6 @@ new_words:
     ar_eg: وحش
     ar: قبيح، رديء
     en: ugly, bad
-  - word: gemuk
-    pos: adjective
-    ar_eg: تخين، مليان
-    ar: سمين، ممتلئ
-    en: fat, plump
 review:
   status: draft
   verified: false

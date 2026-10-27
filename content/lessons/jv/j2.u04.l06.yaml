@@ -1,208 +1,232 @@
 schema: kabar.lesson/v1
 id: j2.u04.l06
 language: jv
-title: Ulangan J2.4
+title: Janjian
 can_do:
-  ar_eg: ترتب أسبوعك بالجاوي.
-  ar: أن تخطط لأسبوعك بالجاوية.
-  en: Plan a week.
+  ar_eg: تحدد ميعاد مع صاحبك.
+  ar: أن تحدد موعدًا مع صديق.
+  en: Make an appointment.
 slides:
-  - title: Ringkesan J2.4
+  - title: Kapan? Jam pira? Neng ngendi?
     body:
       ar_eg: |
-        - Saiki jam pira? → Jam telu. · setengah + الساعة الجاية: setengah wolu = 7:30.
-        - luwih seprapat = وربع، kurang seprapat = إلا ربع: jam lima kurang seprapat = 4:45.
-        - esuk، awan، sore، bengi بعد الساعة: jam pitu bengi.
-        - wingi، saiki، sesuk، mengko، dina iki — وmau = «من شوية» (tadi)، مش «عايز»!
-        - الأيام (عربي): Senen، Selasa، Rebo، Kemis، Jemuwah، Setu، Minggu / Ahad.
-        - pasaran: Legi → Pahing → Pon → Wage → Kliwon، وweton = يومك بالاسمين.
-        - الميعاد: Ketemu kapan? · Jam pira? · Neng ngendi? · isa / ora isa.
+        عشان تحدد ميعاد بالجاوي محتاج اليوم والساعة والمكان:
+        - Ayo ketemu! = يلا نتقابل! · janjian = نتفق على ميعاد
+        - Kapan? = إمتى؟ · Jam pira? = الساعة كام؟ · Ketemu neng ngendi? = نتقابل فين؟
+        - Sesuk Jemuwah jam papat sore, isa? = بكرة الجمعة الساعة أربعة العصر، ينفع؟ (isa = bisa، وفي الشات iso)
+        - Aku ora isa. = مش هقدر. · Jam lima piye? = طب الساعة خمسة إيه رأيك؟
+        - Jumatan = صلاة الجمعة (من «الجمعة»)
+        وفي الشات هتلاقي: sesuk jemuwah jam 4 sore iso? — نفس الجملة بس من غير علامات وبالأرقام.
       ar: |
-        - Saiki jam pira? ← Jam telu. · setengah + الساعة التالية: setengah wolu = 7:30.
-        - luwih seprapat = والربع، kurang seprapat = إلا ربعًا: jam lima kurang seprapat = 4:45.
-        - esuk وawan وsore وbengi بعد الساعة: jam pitu bengi.
-        - wingi، saiki، sesuk، mengko، dina iki، وmau = «قبل قليل» (tadi) لا «يريد»!
-        - الأيام (عربية): Senen، Selasa، Rebo، Kemis، Jemuwah، Setu، Minggu / Ahad.
-        - pasaran: Legi → Pahing → Pon → Wage → Kliwon، وweton = يومك باسميه.
-        - الموعد: Ketemu kapan? · Jam pira? · Neng ngendi? · isa / ora isa.
+        لتحديد موعد بالجاوية تحتاج اليوم والساعة والمكان:
+        - Ayo ketemu! = هيا نلتقي! · janjian = نتفق على موعد
+        - Kapan? = متى؟ · Jam pira? = في أي ساعة؟ · Ketemu neng ngendi? = أين نلتقي؟
+        - Sesuk Jemuwah jam papat sore, isa? = غدًا الجمعة في الرابعة عصرًا، أيناسبك؟ (isa = bisa، وفي الدردشة iso)
+        - Aku ora isa. = لا أستطيع. · Jam lima piye? = وما رأيك في الخامسة؟
+        - Jumatan = صلاة الجمعة (من «الجمعة»)
+        وفي الدردشة: sesuk jemuwah jam 4 sore iso? — الجملة نفسها بلا علامات وبالأرقام.
       en: |
-        - Saiki jam pira? → Jam telu. · setengah + next hour: setengah wolu = 7:30.
-        - luwih seprapat = quarter past, kurang seprapat = quarter to: jam lima kurang seprapat = 4:45.
-        - esuk, awan, sore, bengi after the hour: jam pitu bengi.
-        - wingi, saiki, sesuk, mengko, dina iki — and mau = "earlier" (tadi), not "want"!
-        - Days (Arabic): Senen, Selasa, Rebo, Kemis, Jemuwah, Setu, Minggu / Ahad.
-        - pasaran: Legi → Pahing → Pon → Wage → Kliwon; weton = your day with both names.
-        - Meeting: Ketemu kapan? · Jam pira? · Neng ngendi? · isa / ora isa.
+        To fix a meeting in Javanese you need the day, the time and the place:
+        - Ayo ketemu! = Let's meet! · janjian = make an appointment
+        - Kapan? = When? · Jam pira? = What time? · Ketemu neng ngendi? = Where shall we meet?
+        - Sesuk Jemuwah jam papat sore, isa? = Tomorrow, Friday, 4 p.m. — can you? (isa = bisa; chat iso)
+        - Aku ora isa. = I can't. · Jam lima piye? = How about five?
+        - Jumatan = Friday prayers (from Arabic «الجمعة»)
+        In chats: sesuk jemuwah jam 4 sore iso? — the same sentence, no accents, digits for numbers.
     grammar: jv.time.expressions
+    examples:
+      - text: Jam papat sore piye?
+        ar_eg: طب الساعة أربعة العصر إيه رأيك؟
+        ar: ما رأيك في الرابعة عصرًا؟
+        en: How about four in the afternoon?
+      - text: Ketemu neng ngarep alun-alun, ya.
+        ar_eg: نتقابل قدام الميدان، ماشي؟
+        ar: نلتقي أمام الساحة، اتفقنا؟
+        en: Let's meet in front of the town square, OK?
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: Selasa
-        ar_eg: التلات
-        ar: الثلاثاء
-        en: Tuesday
-      - text: Minggu
-        ar_eg: الحد
-        ar: الأحد
-        en: Sunday
-      - text: mengko
-        ar_eg: بعدين
-        ar: لاحقًا
-        en: later
-      - text: setengah
-        ar_eg: نص
-        ar: نصف
-        en: half
-      - text: Wage
-        ar_eg: يوم واجيه (من أيام السوق)
-        ar: يوم واغيه (من أيام السوق)
-        en: Wage (a pasaran day)
-    words: [Selasa, Minggu, mengko, setengah, Wage]
+    type: multiple_choice
+    question: Sesuk jam papat sore, isa?
+    question_meaning:
+      ar_eg: ديماس بيسألك الجملة دي، وإنت مش فاضي. ترد بإيه؟
+      ar: يسألك ديماس هذا السؤال وأنت مشغول. بماذا تجيب؟
+      en: Dimas asks you this, and you're busy. What do you answer?
+    options: [Aku ora isa., Isa!, Jam papat.]
+    answer: 0
+    words: [isa, ora]
   - id: e02
     type: multiple_choice
-    question: 8:45 = ?
+    question: sesuk jemuwah jam 4 sore iso?
     question_meaning:
-      ar_eg: إزاي تقول تسعة إلا ربع؟
-      ar: كيف تقول التاسعة إلا ربعًا؟
-      en: How do you say 8:45?
-    options: [setengah sanga, jam sanga kurang seprapat, jam wolu luwih seprapat]
-    answer: 1
-    explain:
-      ar_eg: jam wolu luwih seprapat = 8:15، وsetengah sanga = 8:30.
-      ar: jam wolu luwih seprapat = 8:15، وsetengah sanga = 8:30.
-      en: jam wolu luwih seprapat = 8:15; setengah sanga = 8:30.
-    words: [kurang, seprapat, sanga]
-  - id: e03
-    type: multiple_choice
-    question: Selasa Pahing → ?
-    question_meaning:
-      ar_eg: النهارده تلات باهينج. بكرة إيه؟
-      ar: اليوم ثلاثاء باهينغ. فما الغد؟
-      en: Today is Tuesday Pahing. What's tomorrow?
-    options: [Rebo Pon, Senen Pon, Rebo Legi]
-    answer: 0
-    explain:
-      ar_eg: 'الأسبوعين بيتحركوا مع بعض: Selasa → Rebo، وPahing → Pon.'
-      ar: 'يتقدم الأسبوعان معًا: Selasa → Rebo، وPahing → Pon.'
-      en: 'Both weeks move on together: Selasa → Rebo, Pahing → Pon.'
-    words: [Rebo, Pon]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي كلمة معناها «من شوية» (tadi)؟
-      ar: أي كلمة تعني «قبل قليل» (tadi)؟
-      en: Which word means "earlier, just now" (tadi)?
-    options: [mau, mengko, sesuk]
-    answer: 0
-    words: [mau]
-  - id: e05
-    type: listen
-    text: Sesuk Setu jam sanga esuk.
-    options: [Wingi Setu jam sanga esuk., Sesuk Setu jam sanga bengi., Sesuk Setu jam sanga esuk.]
+      ar_eg: رسالة شات من ديماس. أنهي اختيار هو نفس الجملة بالإملا الرسمي؟
+      ar: رسالة دردشة من ديماس. أي خيار هو الجملة نفسها بالإملاء الرسمي؟
+      en: A chat message from Dimas. Which option is the same sentence in standard spelling?
+    options: ['Wingi Jemuwah jam papat sore, isa?', 'Sesuk Jemuwah jam papat esuk, isa?', 'Sesuk Jemuwah jam papat sore, isa?']
     answer: 2
-    words: [sesuk, Setu, esuk]
-  - id: e06
-    type: fill_blank
-    sentence: Jam setengah ___.
-    meaning:
-      ar_eg: اتنين ونص.
-      ar: الثانية والنصف.
-      en: Half past two.
-    answers: [telu]
     explain:
-      ar_eg: 'setengah بتتحسب للساعة الجاية: «نص تلاتة» = اتنين ونص.'
-      ar: يُضاف setengah إلى الساعة التالية.
-      en: 'setengah counts toward the next hour: "half three" = 2:30.'
-    words: [setengah, telu]
-  - id: e07
+      ar_eg: sesuk = sesuk (بكرة)، 4 = papat، sore = sore، iso = isa.
+      ar: sesuk = sesuk (غدًا)، و4 = papat، وsore = sore، وiso = isa.
+      en: sesuk = sesuk (tomorrow), 4 = papat, sore = sore, iso = isa.
+    words: [sesuk, sore, isa]
+  - id: e03
     type: fill_blank
-    sentence: ___ Jemuwah, dina iki Setu.
+    sentence: Janjian neng ___?
     meaning:
-      ar_eg: امبارح كان الجمعة، والنهارده السبت.
-      ar: أمس كان الجمعة، واليوم السبت.
-      en: Yesterday was Friday; today is Saturday.
-    options: [Mengko, Wingi, Sesuk]
-    answers: [Wingi]
-    words: [wingi, dina iki]
-  - id: e08
+      ar_eg: نتقابل فين؟
+      ar: أين نلتقي؟
+      en: Where shall we meet?
+    options: [ngendi, pira, kapan]
+    answers: [ngendi]
+    words: [janjian, ngendi]
+  - id: e04
+    type: fill_blank
+    sentence: Jemuwah ___ aku Jumatan.
+    meaning:
+      ar_eg: يوم الجمعة الضهر بصلي الجمعة.
+      ar: يوم الجمعة ظهرًا أصلي الجمعة.
+      en: On Friday at midday I go to Friday prayers.
+    options: [awan, esuk, bengi]
+    answers: [awan]
+    explain:
+      ar_eg: صلاة الجمعة وقت الضهر، يعني awan.
+      ar: صلاة الجمعة وقت الظهيرة، أي awan.
+      en: Friday prayers are at midday — awan.
+    words: [awan, Jumatan]
+  - id: e05
     type: build_sentence
     source:
-      ar_eg: نتقابل بكرة الساعة أربعة العصر.
-      ar: نلتقي غدًا في الرابعة عصرًا.
-      en: Let's meet tomorrow at four in the afternoon.
-    answer: Janjian sesuk jam papat sore.
-    distractors: [esuk, wingi]
-    words: [janjian, sesuk, sore]
+      ar_eg: طب الساعة أربعة العصر إيه رأيك؟
+      ar: ما رأيك في الرابعة عصرًا؟
+      en: How about four in the afternoon?
+    answer: Jam papat sore piye?
+    distractors: [esuk, pira]
+    words: [jam, papat, sore, piye]
+  - id: e06
+    type: match_pairs
+    pairs:
+      - text: janjian
+        ar_eg: يحدد ميعاد
+        ar: يتواعد
+        en: make a date
+      - text: isa
+        ar_eg: يقدر / ينفع
+        ar: يستطيع
+        en: can
+      - text: nonton
+        ar_eg: يتفرج
+        ar: يشاهد
+        en: watch
+      - text: Jumatan
+        ar_eg: صلاة الجمعة
+        ar: صلاة الجمعة
+        en: Friday prayer
+      - text: alun-alun
+        ar_eg: الميدان الكبير
+        ar: الساحة الكبرى
+        en: town square
+      - text: sip
+        ar_eg: تمام!
+        ar: ممتاز!
+        en: great!
+    words: [janjian, isa, nonton, Jumatan, alun-alun, sip]
+  - id: e07
+    type: listen
+    text: Sip! Janjian neng alun-alun, ya.
+    options: ['Sip! Janjian neng alun-alun, ya.', 'Sip! Nonton neng alun-alun, ya.', 'Sip! Janjian neng omah, ya.']
+    answer: 0
+    meaning:
+      ar_eg: تمام! نتقابل في الميدان، ماشي؟
+      ar: ممتاز! نلتقي في الساحة، اتفقنا؟
+      en: Great! Let's meet at the town square, OK?
+    words: [sip, janjian, alun-alun, nonton]
+  - id: e08
+    type: listen
+    text: Aku ora isa, aku Jumatan.
+    options: ['Aku ora isa, aku sinau.', 'Aku ora isa, aku Jumatan.', 'Aku isa, aku Jumatan.']
+    answer: 1
+    words: [isa, Jumatan]
   - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الساعة كام دلوقتي؟
-      ar: كم الساعة الآن؟
-      en: What time is it now?
-    answers: ['Saiki jam pira?', Saiki jam pira, 'Saiki jam piro?', Saiki jam piro, 'Jam pira saiki?', Jam pira saiki, 'Jam pira?', Jam pira]
-    words: [saiki, jam, pira]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: النهارده اتنين ليجي.
-      ar: اليوم الاثنين ليغي.
-      en: Today is Monday Legi.
-    answers: [Dina iki Senen Legi., Dina iki Senen Legi, Dina iki dina Senen Legi., Dina iki dina Senen Legi, Saiki Senen Legi., Saiki Senen Legi]
-    words: [dina iki, Senen, Legi]
-  - id: e11
     type: dictation
-    text: Senen, Selasa, Rebo, Kemis
+    text: Janjian neng ngarep alun-alun.
     meaning:
-      ar_eg: الاتنين، التلات، الأربع، الخميس
-      ar: الاثنين، الثلاثاء، الأربعاء، الخميس
-      en: Monday, Tuesday, Wednesday, Thursday
-    words: [Senen, Selasa, Rebo, Kemis]
-  - id: e12
+      ar_eg: نتقابل قدام الميدان.
+      ar: نلتقي أمام الساحة.
+      en: Let's meet in front of the town square.
+    words: [janjian, ngarep, alun-alun]
+  - id: e10
     type: speaking
-    text: Jam pira? — Jam setengah wolu.
+    text: Sip! Sesuk nonton reog, janjian jam papat sore.
     meaning:
-      ar_eg: الساعة كام؟ — سبعة ونص.
-      ar: كم الساعة؟ — السابعة والنصف.
-      en: What time is it? — Half past seven.
-    words: [jam, pira, setengah]
+      ar_eg: تمام! بكرة نتفرج على الريوج، ونتقابل الساعة أربعة العصر.
+      ar: ممتاز! غدًا نشاهد الريوغ، ونلتقي الساعة الرابعة عصرًا.
+      en: Great! Tomorrow we watch reog, meeting at four in the afternoon.
+    words: [sip, sesuk, nonton, janjian, sore]
 dialogue:
-  title: Reog dina Setu
+  title: Chat karo Dimas
   lines:
+    - speaker: Dimas
+      text: Mohamed, ayo nonton Reog!
+      ar_eg: محمد، يلا نتفرج على الريوج!
+      ar: يا محمد، هيا نشاهد الريوغ!
+      en: Mohamed, let's go and watch Reog!
     - speaker: Mohamed
-      text: Sari, Setu ana Reog?
-      ar_eg: ساري، فيه ريوج يوم السبت؟
-      ar: يا ساري، هل هناك عرض ريوغ يوم السبت؟
-      en: Sari, is there Reog on Saturday?
-    - speaker: Sari
-      text: Ana! Setu Pon, jam wolu bengi, neng alun-alun.
-      ar_eg: فيه! سبت بون، الساعة تمانية بالليل، في الميدان.
-      ar: نعم! السبت بون، في الثامنة ليلًا، في الساحة.
-      en: Yes! Saturday Pon, eight p.m., at the town square.
+      text: Ayo! Kapan?
+      ar_eg: يلا! إمتى؟
+      ar: هيا! متى؟
+      en: Sure! When?
+    - speaker: Dimas
+      text: Sesuk Jemuwah, jam setengah siji awan. Isa?
+      ar_eg: بكرة الجمعة، الساعة اتناشر ونص الضهر. ينفع؟
+      ar: غدًا الجمعة، في الثانية عشرة والنصف ظهرًا. أيناسبك؟
+      en: Tomorrow, Friday, at half past twelve. Can you?
     - speaker: Mohamed
-      text: Jemuwah aku ora isa, Setu isa. Ketemu jam pira?
-      ar_eg: الجمعة مقدرش، السبت ينفع. نتقابل الساعة كام؟
-      ar: لا أستطيع الجمعة، والسبت يناسبني. في أي ساعة نلتقي؟
-      en: I can't on Friday, Saturday works. What time shall we meet?
-    - speaker: Sari
-      text: Jam setengah wolu, neng ngarep alun-alun.
-      ar_eg: سبعة ونص، قدام الميدان.
-      ar: في السابعة والنصف، أمام الساحة.
-      en: Half past seven, in front of the town square.
+      text: Jam setengah siji aku Jumatan. Jam papat sore piye?
+      ar_eg: الساعة اتناشر ونص بصلي الجمعة. طب أربعة العصر إيه رأيك؟
+      ar: في الثانية عشرة والنصف أصلي الجمعة. ما رأيك في الرابعة عصرًا؟
+      en: At half past twelve I'm at Friday prayers. How about four in the afternoon?
+    - speaker: Dimas
+      text: Isa! Ketemu neng ngendi?
+      ar_eg: ينفع! نتقابل فين؟
+      ar: يناسبني! أين نلتقي؟
+      en: Works for me! Where shall we meet?
     - speaker: Mohamed
-      text: Sip! Setu ya.
-      ar_eg: تمام! أشوفك السبت.
-      ar: ممتاز! إلى السبت.
-      en: Great! See you Saturday.
-souvenir:
-  id: j2.u04.souvenir
-  title: Reog Ponorogo
-  note:
-    ar_eg: 'الريوج فخر بونوروجو: راقص واحد شايل قناع راس نمر عليه ريش طاووس ضخم، ممكن يوزن حوالي خمسين كيلو، وشايله بسنانه! وحوالين العرض ده التقويم الجاوي عايش لحد النهارده، الأسبوع العادي ماشي جنب أسبوع السوق، و«Jemuwah Kliwon» ليلة الكل عارفها. دلوقتي تقدر تسأل عن الساعة واليوم وتحدد ميعادك بالجاوي، فمتتأخرش على العرض!'
-    ar: 'الريوغ فخر بونوروغو: راقص واحد يحمل قناع رأس نمر يعلوه ريش طاووس هائل قد يقارب وزنه خمسين كيلوغرامًا، ويحمله بأسنانه! وحول هذا العرض يعيش التقويم الجاوي إلى اليوم، فيسير الأسبوع العادي إلى جانب أسبوع السوق، وليلة «Jemuwah Kliwon» يعرفها الجميع. صرت تسأل عن الساعة واليوم وتحدد موعدك بالجاوية، فلا تتأخر عن العرض!'
-    en: Reog is Ponorogo's pride — a single dancer carries a tiger-head mask crowned with huge peacock feathers, which can weigh around fifty kilos, and holds it with his teeth! Around it the Javanese calendar is still alive, the seven-day week running beside the market week, and everyone knows "Jemuwah Kliwon". You can now ask the time and day and fix a meeting in Javanese — so don't be late for the show!
+      text: Neng ngarep alun-alun, ya.
+      ar_eg: قدام الميدان، ماشي؟
+      ar: أمام الساحة، اتفقنا؟
+      en: In front of the town square, OK?
+new_words:
+  - word: janjian
+    pos: verb
+    ar_eg: يحدد ميعاد
+    ar: يتّفق على موعد
+    en: to make an appointment (janjian)
+  - word: isa / iso
+    pos: verb
+    ar_eg: يقدر / ينفع
+    ar: يستطيع
+    en: can, be able (bisa); chat iso
+  - word: nonton
+    pos: verb
+    ar_eg: يتفرج
+    ar: يشاهد
+    en: to watch (a show) (nonton)
+  - word: Jumatan
+    pos: noun
+    ar_eg: صلاة الجمعة
+    ar: صلاة الجمعة
+    en: Friday prayers
+    arabic: الجمعة
+    bridge: jumat
+  - word: alun-alun
+    pos: noun
+    ar_eg: الميدان الكبير في البلد
+    ar: الساحة الكبرى في المدينة
+    en: town square
+  - word: sip
+    pos: interjection
+    ar_eg: تمام!
+    ar: ممتاز!
+    en: great!, OK!
 review:
   status: draft
   verified: false

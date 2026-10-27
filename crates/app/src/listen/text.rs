@@ -58,13 +58,13 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
             "A short drama with an episode for every unit you finish, and a radio show that goes over the unit's words."
         }
         (RadioIntro, ArEg) => {
-            "حلقة لكل وحدة: Kak Tiara وKak Reza بيراجعوا كلمات الإندونيسي معاك، وMbak Sekar وMas Galih كلمات الجاوي. نزّلها واسمعها في الطريق."
+            "حلقة لكل وحدة: Kak Tiara وKak Reza بيراجعوا كلمات الإندونيسي معاك، وMbak Sekar وMas Danang كلمات الجاوي. نزّلها واسمعها في الطريق."
         }
         (RadioIntro, Ar) => {
-            "حلقة لكل وحدة: Kak Tiara وKak Reza يراجعان معك كلمات الإندونيسية، وMbak Sekar وMas Galih كلمات الجاوية. نزّلها واستمع إليها في الطريق."
+            "حلقة لكل وحدة: Kak Tiara وKak Reza يراجعان معك كلمات الإندونيسية، وMbak Sekar وMas Danang كلمات الجاوية. نزّلها واستمع إليها في الطريق."
         }
         (RadioIntro, En) => {
-            "One episode per unit: Kak Tiara and Kak Reza go over the Indonesian words with you, Mbak Sekar and Mas Galih the Javanese ones. Download one for the road."
+            "One episode per unit: Kak Tiara and Kak Reza go over the Indonesian words with you, Mbak Sekar and Mas Danang the Javanese ones. Download one for the road."
         }
         (Episode, ArEg | Ar) => "الحلقة",
         (Episode, En) => "Episode",
@@ -134,8 +134,8 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
         (ServerTrouble, ArEg) => "Kabar Cloud مش بيرد دلوقتي. جرّب كمان شوية.",
         (ServerTrouble, Ar) => "لا يستجيب Kabar Cloud الآن. حاول بعد قليل.",
         (ServerTrouble, En) => "Kabar Cloud isn't answering right now. Try again in a little while.",
-        (SystemVoice, ArEg) => "بنقرا بصوت الجهاز لحد ما أصوات كبر ترجع.",
-        (SystemVoice, Ar) => "نقرأ بصوت الجهاز إلى أن تعود أصوات كبر.",
+        (SystemVoice, ArEg) => "بنقرا بصوت الجهاز لحد ما أصوات \u{2068}Kabar\u{2069} ترجع.",
+        (SystemVoice, Ar) => "نقرأ بصوت الجهاز إلى أن تعود أصوات \u{2068}Kabar\u{2069}.",
         (SystemVoice, En) => "Reading with the device's voice until Kabar's voices are back.",
         (JavaneseLater, ArEg) => "الصوت الجاوي جاي بعدين؛ اقرا مع النص دلوقتي.",
         (JavaneseLater, Ar) => "الصوت الجاوي لاحقًا؛ اقرأ النص الآن.",

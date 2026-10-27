@@ -1,0 +1,163 @@
+schema: kabar.lesson/v1
+id: j3.u03.l08
+language: jv
+title: Telpon saka Pak Harjo
+can_do:
+  ar_eg: تفهم رسالة صوتية بالكراما من راجل كبير وترد عليه.
+  ar: أن تفهم رسالة صوتية بالكراما من رجل كبير وتردّ عليه.
+  en: Understand a krama voice message from an older man and answer it.
+slides:
+  - title: Pesen swara
+    body:
+      ar_eg: |
+        Pak Harjo بعت لمحمد رسالة صوتية على الموبايل. اسمعها جملة جملة، وخد بالك من الكلمات الصغيرة:
+        badhe (= arep، هـ / ناوي)، taksih (= isih، لسه)، kaliyan (= karo، مع)، mboten (= ora).
+      ar: |
+        أرسل Pak Harjo إلى محمد رسالة صوتية على الهاتف. استمع إليها جملةً جملة، وانتبه للكلمات الصغيرة:
+        badhe (= arep، سوف)، وtaksih (= isih، ما زال)، وkaliyan (= karo، مع)، وmboten (= ora).
+      en: |
+        Pak Harjo has sent Mohamed a voice message. Listen to it line by line and catch the small words:
+        badhe (= arep, going to), taksih (= isih, still), kaliyan (= karo, with), mboten (= ora, not).
+    grammar: jv.krama.function-words
+exercises:
+  - id: e01
+    type: listen
+    text: Mas Mohamed, kula badhe dhateng peken kaliyan Bu Harjo.
+    question:
+      ar_eg: Pak Harjo رايح فين؟
+      ar: إلى أين سيذهب Pak Harjo؟
+      en: Where is Pak Harjo going?
+    options: [dhateng masjid, dhateng peken, dhateng Kauman]
+    answer: 1
+    meaning:
+      ar_eg: يا أستاذ محمد، أنا رايح السوق مع Bu Harjo.
+      ar: يا أخي محمد، سأذهب إلى السوق مع Bu Harjo.
+      en: Mohamed, I'm going to the market with Bu Harjo.
+    words: [badhe, dhateng, peken]
+  - id: e02
+    type: listen
+    text: Mas Mohamed, kula badhe dhateng peken kaliyan Bu Harjo.
+    question:
+      ar_eg: رايح مع مين؟
+      ar: مع من سيذهب؟
+      en: Who is he going with?
+    options: [Bu Harjo, Mas Dimas, Bu Siti]
+    answer: 0
+    meaning:
+      ar_eg: يا أستاذ محمد، أنا رايح السوق مع Bu Harjo.
+      ar: يا أخي محمد، سأذهب إلى السوق مع Bu Harjo.
+      en: Mohamed, I'm going to the market with Bu Harjo.
+    words: [kaliyan]
+  - id: e03
+    type: listen
+    text: Sampeyan badhe dhateng Kauman, Mas?
+    question:
+      ar_eg: Pak Harjo بيسأل محمد هيروح فين؟
+      ar: عن أيّ مكان يسأل Pak Harjo محمدًا؟
+      en: Where does Pak Harjo ask if Mohamed is going?
+    options: [Pasar Kranggan, masjid, Kauman]
+    answer: 2
+    meaning:
+      ar_eg: حضرتك رايح Kauman يا أستاذ؟
+      ar: هل ستذهب إلى Kauman يا أخي؟
+      en: Are you going to Kauman?
+    words: [sampeyan, badhe, dhateng]
+  - id: e04
+    type: listen
+    text: Nyuwun sewu, Mas, batik taksih wonten, nanging teh mboten wonten.
+    question:
+      ar_eg: إيه اللي مش موجود؟
+      ar: ما غير الموجود؟
+      en: What isn't there?
+    options: [batik, teh]
+    answer: 1
+    meaning:
+      ar_eg: لا مؤاخذة يا أستاذ، الباتيك لسه موجود، بس الشاي مش موجود.
+      ar: عفوًا يا أخي، الباتيك ما زال موجودًا، لكن الشاي غير موجود.
+      en: Sorry, the batik is still there, but there's no tea.
+    words: [taksih, wonten, mboten, teh]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: badhe
+        ar_eg: هـ / ناوي (= arep)
+        ar: سوف / ينوي (= arep)
+        en: going to (= arep)
+      - text: taksih
+        ar_eg: لسه (= isih)
+        ar: ما زال (= isih)
+        en: still (= isih)
+      - text: kaliyan
+        ar_eg: مع (= karo)
+        ar: مع (= karo)
+        en: with (= karo)
+      - text: nanging
+        ar_eg: بس / لكن
+        ar: لكن
+        en: but
+    words: [badhe, taksih, kaliyan, nanging]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: Pak Harjo قال «Kula badhe dhateng peken». هو وصل السوق خلاص؟
+      ar: قال Pak Harjo «Kula badhe dhateng peken». هل وصل إلى السوق؟
+      en: Pak Harjo said "Kula badhe dhateng peken". Is he at the market already?
+    options: ['Sampun.', 'Dereng, badhe.']
+    answer: 1
+    explain:
+      ar_eg: badhe = هـ (لسه هيروح). لو كان راح كان هيقول sampun.
+      ar: badhe للمستقبل، أي لم يذهب بعد؛ ولو ذهب لقال sampun.
+      en: badhe = going to (not there yet). If he'd gone, he'd say sampun.
+    words: [badhe, dereng, sampun]
+  - id: e07
+    type: dictation
+    text: Sampeyan badhe dhateng Kauman?
+    meaning:
+      ar_eg: حضرتك رايح Kauman؟
+      ar: هل ستذهب إلى Kauman؟
+      en: Are you going to Kauman?
+    words: [sampeyan, badhe, dhateng]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: 'رد على Pak Harjo: أيوه يا حاج. أنا رايح Kauman مع Dimas.'
+      ar: 'ردّ على Pak Harjo: نعم يا سيدي. سأذهب إلى Kauman مع Dimas.'
+      en: "Answer Pak Harjo: Yes, sir. I'm going to Kauman with Dimas."
+    answers: ["Inggih, Pak. Kula badhe dhateng Kauman kaliyan Mas Dimas.", "Inggih, Pak. Kulo badhe dhateng Kauman kaliyan Mas Dimas.", "Inggih, Pak. Kula badhe dhateng Kauman kaliyan Dimas.", "Inggih, Pak. Kula kaliyan Mas Dimas badhe dhateng Kauman.", "Inggih, Pak. Kula kaliyan Dimas badhe dhateng Kauman.", "Inggih, Pak, kula badhe dhateng Kauman kaliyan Mas Dimas.", "Inggih, Pak. Kula badhe teng Kauman kaliyan Mas Dimas."]
+    explain:
+      ar_eg: 'كل الكلمات الصغيرة krama: badhe، dhateng (في الكلام teng)، kaliyan.'
+      ar: 'كل الكلمات الصغيرة krama: badhe وdhateng (وفي الكلام teng) وkaliyan.'
+      en: 'Every small word goes krama: badhe, dhateng (spoken teng), kaliyan.'
+    words: [inggih, badhe, dhateng, kaliyan]
+dialogue:
+  title: Mohamed nelpon Pak Harjo
+  lines:
+    - speaker: Mohamed
+      text: Sugeng sonten, Pak Harjo. Kula Mohamed.
+      ar_eg: مساء الخير يا Pak Harjo. أنا محمد.
+      ar: مساء الخير يا Pak Harjo. أنا محمد.
+      en: Good afternoon, Pak Harjo. It's Mohamed.
+    - speaker: Pak Harjo
+      text: Oh, Mas Mohamed! Sampeyan badhe dhateng Kauman?
+      ar_eg: أهلًا يا أستاذ محمد! حضرتك جاي Kauman؟
+      ar: أهلًا يا أخي محمد! هل ستأتي إلى Kauman؟
+      en: Oh, Mohamed! Are you coming to Kauman?
+    - speaker: Mohamed
+      text: Inggih, Pak, kaliyan Mas Dimas.
+      ar_eg: أيوه يا حاج، مع Dimas.
+      ar: نعم يا سيدي، مع Dimas.
+      en: Yes, sir, with Dimas.
+    - speaker: Pak Harjo
+      text: Sae. Kula taksih ing peken, Mas.
+      ar_eg: كويس. أنا لسه في السوق يا أستاذ.
+      ar: جميل. ما زلتُ في السوق يا أخي.
+      en: Good. I'm still at the market.
+    - speaker: Mohamed
+      text: Inggih, Pak. Matur nuwun.
+      ar_eg: ماشي يا حاج. شكرًا.
+      ar: حسنًا يا سيدي. شكرًا.
+      en: All right, sir. Thank you.
+review:
+  status: draft
+  verified: false

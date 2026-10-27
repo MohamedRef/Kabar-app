@@ -4,7 +4,7 @@
 use dioxus::prelude::*;
 use kabar_core::coach::onboarding::{self, ProfileError, Step};
 use kabar_core::coach::voice::Line;
-use kabar_protocol::coach::{CoachProfile, LocalDate, Target};
+use kabar_protocol::coach::{CoachProfile, LanguageFocus, LocalDate, Target};
 
 use super::widgets::{Nur, QuietHoursEditor, SizePicker, StylePicker, TimesEditor};
 use super::{Coach, labels, say};
@@ -238,12 +238,18 @@ fn FocusStep(draft: Signal<CoachProfile>) -> Element {
 fn TargetStep(draft: Signal<CoachProfile>, touched: Signal<bool>, today: LocalDate) -> Element {
     let ui = use_context::<Ui>();
     let target = draft.read().target.clone();
+    // Both languages: the goal is an Indonesian (or Javanese) level, and
+    // Javanese opens after BIPA 1, as the Journey says.
+    let both = draft.read().focus == LanguageFocus::Both;
     let set = move |t: Option<Target>| {
         let (mut touched, mut draft) = (touched, draft);
         touched.set(true);
         draft.write().target = t;
     };
     rsx! {
+        if both {
+            p { class: "note", "{ui.t(Msg::OnbBothOrder)}" }
+        }
         match target.clone() {
             Some(t) => rsx! {
                 div { class: "row field",
@@ -348,6 +354,9 @@ fn Summary(profile: CoachProfile, today: LocalDate) -> Element {
             if let Some(target) = target {
                 dt { "{ui.t(Msg::OnbTarget)}" }
                 dd { "{target}" }
+            }
+            if profile.focus == LanguageFocus::Both {
+                dd { class: "muted", "{ui.t(Msg::OnbBothOrder)}" }
             }
             dt { "{ui.t(Msg::StudyTimes)}" }
             dd { "{times}" }
