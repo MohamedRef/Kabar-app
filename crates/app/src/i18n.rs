@@ -92,6 +92,8 @@ pub mod order {
     pub fn should_be(position: usize) -> String {
         format!("مكانها {position}")
     }
+}
+
 pub mod case {
     pub const TAB_CASES: &str = "حالات إكلينيكية";
     pub const TAB_CALC_ITEMS: &str = "تمارين بالأرقام";
