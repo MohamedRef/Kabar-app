@@ -107,7 +107,7 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 | bipa7.u09 | Danau Sentani | Festival Danau Sentani (Lake Sentani festival) | `bipa7.u09.png` |
 | bipa7.u10 | Lembah Baliem (Wamena) | Festival Lembah Baliem (Baliem valley festival) | `bipa7.u10.png` |
 
-## J1 · Yogyakarta
+## J1 · Malioboro, Yogyakarta
 
 | unit | stop | souvenir | art |
 |---|---|---|---|
@@ -141,7 +141,7 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 | j3.u05 | Pasar Beringharjo | Batik Beringharjo (Batik from Beringharjo) | `j3.u05.png` |
 | j3.u06 | Giriloyo | Batik tulis Giriloyo (Giriloyo batik tulis) | `j3.u06.png` |
 
-## J4 · Yogyakarta
+## J4 · Malioboro, Yogyakarta
 
 | unit | stop | souvenir | art |
 |---|---|---|---|
