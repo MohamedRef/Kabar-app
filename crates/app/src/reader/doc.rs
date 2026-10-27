@@ -203,6 +203,20 @@ impl ReadDoc {
         self.tokens.iter().enumerate().filter(move |(_, t)| t.start >= start && t.end <= end).map(|(i, _)| i)
     }
 
+    /// The language of a run of tokens: Javanese when more of its words are
+    /// Javanese than Indonesian.
+    pub fn lang_of(&self, tokens: impl IntoIterator<Item = usize>) -> Lang {
+        let (mut jv, mut id) = (0, 0);
+        for t in tokens {
+            match self.tokens.get(t).and_then(|t| t.word.as_ref()).map(|w| w.tag) {
+                Some(Tag::Javanese) => jv += 1,
+                Some(Tag::Indonesian) => id += 1,
+                _ => {}
+            }
+        }
+        if jv > id { Lang::Javanese } else { Lang::Indonesian }
+    }
+
     /// Distinct status keys, for one batch status query.
     pub fn keys(&self) -> impl Iterator<Item = &str> {
         self.tokens.iter().filter_map(|t| t.word.as_ref()?.key.as_deref())

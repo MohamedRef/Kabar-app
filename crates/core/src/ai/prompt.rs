@@ -141,11 +141,23 @@ impl Default for LearnerProfile {
     }
 }
 
+/// Known-word counts are rounded down to these steps, in the prompt and in
+/// the cache key, so a cached answer survives the next few words learned.
+const KNOWN_WORD_BANDS: [u32; 14] = [0, 25, 50, 100, 200, 300, 500, 750, 1000, 1500, 2000, 3000, 5000, 8000];
+
+fn known_word_band(n: u32) -> u32 {
+    KNOWN_WORD_BANDS.iter().copied().take_while(|&b| b <= n).last().unwrap_or(0)
+}
+
 impl LearnerProfile {
     pub fn render(&self, engine: EngineId) -> String {
         let mut out = format!(
             "- Native language: {}. Reads explanations in {}.\n- Indonesian level: {}. Javanese level: {}.\n- Known words: about {}.",
-            self.native_language, self.reads, self.indonesian_level, self.javanese_level, self.known_words
+            self.native_language,
+            self.reads,
+            self.indonesian_level,
+            self.javanese_level,
+            known_word_band(self.known_words)
         );
         if !engine.trains_on_inputs() {
             if !self.goals.is_empty() {
@@ -156,6 +168,21 @@ impl LearnerProfile {
             }
         }
         out
+    }
+
+    /// The cache key's profile part: a short hash of what the answer is
+    /// pitched at (languages, levels, known-word band). Goals and recent
+    /// struggles only colour an answer, so they don't split the cache.
+    pub fn cache_tag(&self) -> String {
+        let key = format!(
+            "{}|{}|{}|{}|{}",
+            self.native_language,
+            self.reads,
+            self.indonesian_level,
+            self.javanese_level,
+            known_word_band(self.known_words)
+        );
+        super::json::input_hash(&Value::String(key))[..12].to_string()
     }
 }
 
@@ -212,5 +239,20 @@ mod tests {
         let (sys, _) = t.render(&p, &input, EngineId::GeminiFree);
         assert!(sys.contains("Egyptian Arabic"));
         assert!(!sys.contains("Surabaya") && !sys.contains("krama vs ngoko"));
+    }
+
+    #[test]
+    fn the_cache_tag_follows_the_level_not_every_new_word() {
+        let bipa1 = LearnerProfile { known_words: 120, ..LearnerProfile::default() };
+        let more_words = LearnerProfile { known_words: 180, ..bipa1.clone() };
+        let bipa4 = LearnerProfile { indonesian_level: "BIPA 4".into(), ..bipa1.clone() };
+        let struggling = LearnerProfile { recent_struggles: vec!["meN- verbs".into()], ..bipa1.clone() };
+        assert_eq!(bipa1.cache_tag().len(), 12);
+        assert_eq!(bipa1.cache_tag(), more_words.cache_tag(), "120 and 180 are both 'about 100'");
+        assert_eq!(bipa1.cache_tag(), struggling.cache_tag());
+        assert_ne!(bipa1.cache_tag(), bipa4.cache_tag());
+        let past_band = LearnerProfile { known_words: 200, ..bipa1.clone() };
+        assert_ne!(bipa1.cache_tag(), past_band.cache_tag());
+        assert!(bipa1.render(EngineId::WorkersAi).contains("Known words: about 100."));
     }
 }

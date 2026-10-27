@@ -6,7 +6,7 @@ mod do_sql;
 
 use std::cell::RefCell;
 
-use kabar_protocol::ai::{EngineCall, EngineError, EngineReply};
+use kabar_protocol::ai::{AiReject, EngineCall, EngineError, EngineReply};
 use kabar_protocol::cloud::{
     ApiError, ErrorCode, GoogleSignIn, PushTokenRequest, RefreshRequest, Session, TtsRequest,
 };
@@ -36,9 +36,10 @@ pub(crate) fn now_ms() -> u64 {
     Date::now().as_millis()
 }
 
-pub(crate) fn random_hex(n: usize) -> String {
-    let bytes = tokens::random_bytes().unwrap_or([0; 32]);
-    bytes[..n.min(32)].iter().map(|b| format!("{b:02x}")).collect()
+/// `n` (≤ 32) random bytes as hex. Never falls back to a fixed value.
+pub(crate) fn random_hex(n: usize) -> std::result::Result<String, getrandom::Error> {
+    let bytes = tokens::random_bytes()?;
+    Ok(bytes[..n.min(32)].iter().map(|b| format!("{b:02x}")).collect())
 }
 
 pub(crate) fn api_error(code: ErrorCode, message: impl Into<String>) -> Result<Response> {
@@ -363,6 +364,10 @@ async fn ai_proxy(mut req: Request, env: &Env, cfg: &Config, claims: &AccessClai
         Ok(r) => r,
         Err(e) => return engine_error(&e),
     };
+    // A revoked device reads nothing, cached answers included.
+    if let Some(revoked) = ensure_active(env, claims).await? {
+        return Ok(revoked);
+    }
     let reply = |text: String| EngineReply { engine: route.engine(), text, model: route.model().to_owned() };
     let id = ai::cache_id(&call, route.model());
     let db = env.d1("DB")?;
@@ -373,9 +378,6 @@ async fn ai_proxy(mut req: Request, env: &Env, cfg: &Config, claims: &AccessClai
             headers.set("x-kabar-cache", "hit")?;
             return Ok(Response::from_json(&reply(text))?.with_headers(headers));
         }
-    }
-    if let Some(revoked) = ensure_active(env, claims).await? {
-        return Ok(revoked);
     }
     let now = now_ms();
     let service = route.service();
@@ -408,6 +410,26 @@ async fn ai_proxy(mut req: Request, env: &Env, cfg: &Config, claims: &AccessClai
         .await?;
     }
     Response::from_json(&reply(text))
+}
+
+/// `POST /v1/ai/reject`: the learner gave 👎, so every model's copy of that
+/// answer leaves the shared cache and the regenerate runs fresh.
+async fn ai_reject(mut req: Request, env: &Env, claims: &AccessClaims) -> Result<Response> {
+    let reject: AiReject = match body(&mut req).await {
+        Ok(b) => b,
+        Err(r) => return r,
+    };
+    if let Some(revoked) = ensure_active(env, claims).await? {
+        return Ok(revoked);
+    }
+    let prefix = ai::cache_prefix(&reject.cache_key);
+    // `substr` rather than LIKE: task names hold `_`, a LIKE wildcard.
+    env.d1("DB")?
+        .prepare("DELETE FROM ai_cache WHERE substr(key, 1, length(?1)) = ?1")
+        .bind(&[JsValue::from_str(&prefix)])?
+        .run()
+        .await?;
+    Ok(Response::empty()?.with_status(204))
 }
 
 /// `PUT /v1/blobs/{sha256}`: an image for the next vision calls.
@@ -556,6 +578,7 @@ async fn route(mut req: Request, env: &Env, cfg: &Config, method: Method, path: 
                 (Method::Get, "/v1/vault") => Response::from_json(&cfg.vault_status()),
                 (Method::Get, "/v1/usage") => usage_report(env, cfg).await,
                 (Method::Post, "/v1/ai") => ai_proxy(req, env, cfg, &claims).await,
+                (Method::Post, "/v1/ai/reject") => ai_reject(req, env, &claims).await,
                 (Method::Post, "/v1/tts") => tts_proxy(req, env, cfg, &claims).await,
                 (Method::Put, p) if p.starts_with("/v1/blobs/") => {
                     let sha = p["/v1/blobs/".len()..].to_owned();

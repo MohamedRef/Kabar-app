@@ -111,59 +111,94 @@ slides:
 exercises:
   - id: e01
     type: multiple_choice
-    question: Sudah menikah?
+    question: Kamu sudah makan?
     question_meaning:
-      ar_eg: إنت مش متجوز. أنهي رد طبيعي ومؤدب؟
-      ar: لست متزوجًا. ما الجواب الطبيعي المهذب؟
-      en: You're not married. What's the natural, polite reply?
-    options: [Belum., Tidak., Bukan.]
+      ar_eg: «أكلت؟» — الرد الصح إيه؟
+      ar: «هل أكلت؟» — ما الجواب الصحيح؟
+      en: '"Have you eaten?" — which answer is right?'
+    options: ['Belum. Saya lapar.', 'Lagi. Saya lapar.', 'Sedang. Saya lapar.']
     answer: 0
     explain:
-      ar_eg: belum = لسه، وده الرد اللي الكل بيقوله. tidak بتبان زي «لأ ومش ناوي».
-      ar: belum = ليس بعد، وهو الجواب المعتاد؛ أما tidak فتوحي بالنفي القاطع.
-      en: belum (not yet) is what everyone says; tidak sounds like "never".
-    words: [belum, menikah]
+      ar_eg: الرد على sudah؟ بيكون Sudah أو Belum. lagi وsedang بييجوا قبل فعل.
+      ar: جواب sudah؟ هو Sudah أو Belum، أما lagi وsedang فيسبقان فعلًا.
+      en: Answer a sudah? question with Sudah or Belum; lagi and sedang go before a verb.
+    words: [lapar, lagi, sedang]
   - id: e02
     type: listen
-    text: Dia masih tidur.
-    options: [Dia sudah tidur., Dia akan tidur., Dia masih tidur.]
-    answer: 2
-    words: [masih, tidur]
+    text: Dia masih di kantor.
+    options: ['Dia masih di kantor.', 'Dia sudah pergi ke kantor.', 'Dia akan pergi ke kantor.']
+    answer: 0
+    meaning:
+      ar_eg: هو لسه في المكتب.
+      ar: ما زال في المكتب.
+      en: He's still at the office.
+    words: [masih, kantor, pergi, akan]
   - id: e03
     type: fill_blank
-    sentence: Saya ___ makan. Saya lapar.
+    sentence: Saya lapar. Saya ___ makan sate.
     meaning:
-      ar_eg: لسه ماكلتش. أنا جعان.
-      ar: لم آكل بعد. أنا جائع.
-      en: I haven't eaten yet. I'm hungry.
-    options: [belum, sedang, sudah]
-    answers: [belum]
-    words: [belum, lapar]
+      ar_eg: أنا جعان. هاكل سَتيه.
+      ar: أنا جائع. سآكل الساتيه.
+      en: I'm hungry. I'm going to eat satay.
+    options: [akan, kantor, pergi]
+    answers: [akan]
+    words: [lapar, akan, sate]
   - id: e04
-    type: translate
-    direction: from_target
-    source_text: Dia masih di kantor.
-    answers_meaning:
-      ar_eg: [لسه في المكتب., هو لسه في المكتب, هي لسه في المكتب]
-      ar: [ما زال في المكتب., ما زالت في المكتب, لا يزال في المكتب]
-      en: [He's still at the office., She's still at the office, He is still in the office]
-    words: [masih, kantor]
+    type: match_pairs
+    pairs:
+      - text: sedang
+        ar_eg: بيـ (دلوقتي)
+        ar: يفعل الآن
+        en: in the middle of (-ing)
+      - text: lagi
+        ar_eg: بيـ (عامية)
+        ar: يفعل الآن (عامية)
+        en: -ing (casual)
+      - text: masih
+        ar_eg: لسه (مستمر)
+        ar: ما زال
+        en: still
+      - text: pergi
+        ar_eg: يروح
+        ar: يذهب
+        en: go
+      - text: lapar
+        ar_eg: جعان
+        ar: جائع
+        en: hungry
+      - text: kantor
+        ar_eg: مكتب، شغل
+        ar: مكتب
+        en: office
+    words: [sedang, lagi, masih, pergi, lapar, kantor]
   - id: e05
-    type: dictation
-    text: Rina sudah pergi.
+    type: listen
+    text: Saya lagi makan sate.
+    options: ['Saya lagi makan sate.', 'Saya akan makan sate.', 'Saya sudah makan sate.']
+    answer: 0
     meaning:
-      ar_eg: رينا مشيت خلاص.
-      ar: رينا قد ذهبت.
-      en: Rina has already left.
-    words: [sudah, pergi]
+      ar_eg: أنا باكل سَتيه دلوقتي.
+      ar: آكل الساتيه الآن.
+      en: I'm eating satay right now.
+    words: [lagi, sate, akan]
   - id: e06
     type: speaking
-    text: Saya sedang membaca buku.
+    text: Saya lapar. Saya mau pergi makan sate.
     meaning:
-      ar_eg: أنا بقرا كتاب دلوقتي.
-      ar: أنا أقرأ كتابًا الآن.
-      en: I'm reading a book.
-    words: [sedang, membaca]
+      ar_eg: أنا جعان. عايز أروح آكل سَتيه.
+      ar: أنا جائع. أريد أن أذهب لآكل الساتيه.
+      en: I'm hungry. I want to go and eat satay.
+    words: [lapar, pergi, sate]
+  - id: e07
+    type: fill_blank
+    sentence: Ayah masih di kantor. Dia ___ bekerja.
+    meaning:
+      ar_eg: بابا لسه في المكتب. هو بيشتغل دلوقتي.
+      ar: ما زال أبي في المكتب. إنه يعمل الآن.
+      en: Dad is still at the office. He's working.
+    options: [sedang, lapar, sate]
+    answers: [sedang]
+    words: [masih, kantor, sedang]
 dialogue:
   title: Sudah makan?
   lines:

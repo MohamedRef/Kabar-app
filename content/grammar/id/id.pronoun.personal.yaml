@@ -89,6 +89,42 @@ arabic_bridge:
   en: Arabic marks gender in pronouns; Indonesian marks politeness instead, and splits "we" into inclusive kita and exclusive kami — a distinction Arabic lacks.
 tags: [pronoun, politeness]
 see_also: [id.address.terms, id.possessive]
+cues:
+  - match: "saya|aku"
+    note:
+      ar_eg: "أنا: saya محترمة، aku مع القريبين."
+      ar: "أنا: saya للرسمي، aku للمقرّبين."
+      en: "I: saya polite, aku with people close to you."
+  - match: "kamu|anda|engkau|kau"
+    note:
+      ar_eg: "إنت: Anda رسمي، kamu للقريبين."
+      ar: "أنت: Anda للرسمي، kamu للمقرّبين."
+      en: "you: Anda formal, kamu familiar."
+  - match: "dia|ia|beliau"
+    note:
+      ar_eg: "هو / هي (من غير فرق)؛ beliau للاحترام."
+      ar: "هو / هي بلا تمييز، وbeliau للتوقير."
+      en: "he / she (no gender); beliau is respectful."
+  - match: "kami"
+    note:
+      ar_eg: "kami = إحنا من غير اللي بكلمه."
+      ar: "kami = نحن دون المخاطَب."
+      en: "kami = we, not including you."
+  - match: "kita"
+    note:
+      ar_eg: "kita = إحنا وإنت معانا."
+      ar: "kita = نحن ومعنا المخاطَب."
+      en: "kita = we, including you."
+  - match: "kalian"
+    note:
+      ar_eg: "kalian = إنتوا."
+      ar: "kalian = أنتم."
+      en: "kalian = you all."
+  - match: "mereka"
+    note:
+      ar_eg: "mereka = هم."
+      ar: "mereka = هم."
+      en: "mereka = they."
 review:
   status: draft
   verified: false

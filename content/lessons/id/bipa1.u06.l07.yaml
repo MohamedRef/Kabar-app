@@ -113,7 +113,15 @@ exercises:
         ar_eg: السوق
         ar: السوق
         en: market
-    words: [sini, situ, sana, pasar]
+      - text: pedas
+        ar_eg: حرّاق
+        ar: حار (لاذع)
+        en: spicy
+      - text: kali
+        ar_eg: مرة
+        ar: مرة
+        en: time(s)
+    words: [sini, situ, sana, pasar, pedas, kali]
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -135,6 +143,43 @@ exercises:
       ar: المسجد هنالك.
       en: The mosque is over there.
     words: [sana]
+  - id: e07
+    type: listen
+    text: Sate di pasar itu pedas.
+    options: ['Sate di pasar itu pedas.', 'Sate di pasar itu enak.', 'Sate di sana pedas.']
+    answer: 0
+    meaning:
+      ar_eg: السَتيه اللي في السوق ده حرّاق.
+      ar: الساتيه في ذلك السوق حار.
+      en: The satay at that market is spicy.
+    words: [pasar, pedas]
+  - id: e08
+    type: fill_blank
+    sentence: Satenya ___ sekali!
+    meaning:
+      ar_eg: السَتيه حرّاق أوي!
+      ar: الساتيه حار جدًا!
+      en: The satay is really spicy!
+    options: [pedas, pasar, kali]
+    answers: [pedas]
+    words: [pedas]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «بصلي خمس مرات في اليوم»؟
+      ar: كيف تقول «أصلي خمس مرات في اليوم»؟
+      en: How do you say "I pray five times a day"?
+    options: ['Saya salat lima kali sehari.', 'Saya salat lima hari sekali.', 'Saya lima kali salat hari.']
+    answer: 0
+    words: [salat, kali]
+  - id: e10
+    type: speaking
+    text: Saya salat di masjid, lalu ke pasar.
+    meaning:
+      ar_eg: بصلي في الجامع، وبعدين بروح السوق.
+      ar: أصلي في المسجد ثم أذهب إلى السوق.
+      en: I pray at the mosque, then go to the market.
+    words: [salat, pasar]
 dialogue:
   title: Makan di Blok M
   lines:
