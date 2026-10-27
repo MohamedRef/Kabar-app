@@ -111,72 +111,88 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: makanan
-        ar_eg: أكل
-        ar: طعام
-        en: food
-      - text: minuman
-        ar_eg: مشروب
-        ar: شراب
-        en: drink
       - text: tulisan
-        ar_eg: كتابة / خط
-        ar: كتابة / خط
-        en: writing, handwriting
+        ar_eg: كتابة، يافطة
+        ar: كتابة، لافتة
+        en: writing, sign
       - text: mainan
         ar_eg: لعبة
         ar: لعبة
         en: toy
       - text: pakaian
-        ar_eg: لبس / هدوم
+        ar_eg: هدوم
         ar: ملابس
         en: clothes
-    words: [makanan, minuman, tulisan, mainan, pakaian]
+      - text: pelayan
+        ar_eg: جرسون
+        ar: نادل
+        en: waiter
+      - text: mobil
+        ar_eg: عربية
+        ar: سيارة
+        en: car
+      - text: favorit
+        ar_eg: المفضّل
+        ar: المفضّل
+        en: favourite
+    words: [tulisan, mainan, pakaian, pelayan, mobil, favorit]
   - id: e02
     type: multiple_choice
+    question: Mainan favorit anak saya ___.
     question_meaning:
-      ar_eg: أنهي كلمة معناها «أكل» (الاسم)؟
-      ar: أيّ كلمة تعني «طعام» (الاسم)؟
-      en: Which word means "food" (the noun)?
-    options: [makanan, memakan, makan]
+      ar_eg: «لعبة ابني المفضّلة هي العربية.» — إيه الكلمة الناقصة؟
+      ar: «لعبة ابني المفضّلة السيارة.» — ما الكلمة الناقصة؟
+      en: '"My child''s favourite toy is the car." — which word is missing?'
+    options: [mobil, pakaian, tulisan]
     answer: 0
-    explain:
-      ar_eg: makan فعل (ياكل)، وmakanan هي الأكل نفسه.
-      ar: makan فعل، وmakanan هو الاسم.
-      en: makan is the verb; makanan is the food.
-    words: [makanan]
+    words: [mainan, favorit, mobil, pakaian, tulisan]
   - id: e03
     type: listen
-    text: Mau minuman apa?
-    options: ['Mau makanan apa?', 'Mau mainan apa?', 'Mau minuman apa?']
-    answer: 2
-    words: [minuman]
+    text: Minuman favorit saya kopi.
+    options: ['Minuman favorit saya kopi.', 'Makanan favorit saya kopi.', 'Mainan favorit saya mobil.']
+    answer: 0
+    meaning:
+      ar_eg: مشروبي المفضّل القهوة.
+      ar: مشروبي المفضّل القهوة.
+      en: My favourite drink is coffee.
+    words: [minuman, favorit, makanan, mainan, mobil]
   - id: e04
     type: fill_blank
-    sentence: Anak saya suka ___ mobil.
+    sentence: "Pelayan: Mau ___ apa? — Teh manis."
     meaning:
-      ar_eg: ابني بيحب العربيات اللعب.
-      ar: ابني يحب السيارات اللعبة.
-      en: My child likes toy cars.
-    options: [mainan, main, bermain]
-    answers: [mainan]
-    words: [mainan]
+      ar_eg: "الجرسون: تحب تشرب إيه؟ — شاي بسكر."
+      ar: "النادل: ماذا تريد أن تشرب؟ — شاي محلّى."
+      en: "Waiter: What would you like to drink? — Sweet tea."
+    options: [minuman, makanan, mainan]
+    answers: [minuman]
+    words: [pelayan, minuman]
   - id: e05
-    type: dictation
-    text: Minuman favorit saya kopi.
+    type: fill_blank
+    sentence: Pakaian ___ saya batik.
     meaning:
-      ar_eg: مشروبي المفضل القهوة.
-      ar: شرابي المفضل القهوة.
-      en: My favourite drink is coffee.
-    words: [minuman, favorit]
+      ar_eg: هدومي المفضّلة الباتيك.
+      ar: ملابسي المفضّلة الباتيك.
+      en: My favourite clothes are batik.
+    options: [favorit, pelayan, tulisan]
+    answers: [favorit]
+    words: [pakaian, favorit]
   - id: e06
     type: speaking
-    text: Saya suka makanan Indonesia.
+    text: Pelayan, tulisan ini makanan apa?
     meaning:
-      ar_eg: بحب الأكل الإندونيسي.
-      ar: أحب الطعام الإندونيسي.
-      en: I like Indonesian food.
-    words: [makanan]
+      ar_eg: لو سمحت يا جرسون، المكتوب ده أكل إيه؟
+      ar: أيها النادل، ما هذا الطعام المكتوب هنا؟
+      en: Waiter, what food does this say?
+    words: [pelayan, tulisan, makanan]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «أنا بحب الأكل الإندونيسي»؟
+      ar: كيف تقول «أحب الطعام الإندونيسي»؟
+      en: How do you say "I like Indonesian food"?
+    options: ['Saya suka makanan Indonesia.', 'Saya suka minuman Indonesia.', 'Saya suka pakaian Indonesia.']
+    answer: 0
+    words: [makanan, minuman, pakaian]
 dialogue:
   title: Di kafe Kemang
   lines:

@@ -73,14 +73,14 @@ exercises:
     words: [tadi]
   - id: e02
     type: fill_blank
-    sentence: ___ tidur, saya membaca buku.
+    sentence: ___ makan, saya tidur.
     meaning:
-      ar_eg: قبل ما أنام بقرا كتاب.
-      ar: أقرأ كتابًا قبل النوم.
-      en: Before sleeping, I read a book.
-    options: [Sebelum, Sesudah, Sekarang]
-    answers: [Sebelum]
-    words: [sebelum]
+      ar_eg: بعد الأكل بنام.
+      ar: بعد الأكل أنام.
+      en: After eating, I sleep.
+    options: [Sesudah, Kemarin, Tadi]
+    answers: [Sesudah]
+    words: [sesudah]
   - id: e03
     type: translate
     direction: from_target
@@ -92,20 +92,20 @@ exercises:
     words: [setelah, jalan-jalan]
   - id: e04
     type: dictation
-    text: Kemarin saya ke pasar.
+    text: Kemarin saya makan, lalu tidur.
     meaning:
-      ar_eg: امبارح رحت السوق.
-      ar: ذهبت أمس إلى السوق.
-      en: Yesterday I went to the market.
-    words: [kemarin]
+      ar_eg: امبارح كلت وبعدين نمت.
+      ar: أمس أكلت ثم نمت.
+      en: Yesterday I ate, then slept.
+    words: [kemarin, lalu]
   - id: e05
     type: speaking
-    text: Sebelum tidur, saya membaca buku.
+    text: Kemarin saya bangun sebelum subuh.
     meaning:
-      ar_eg: قبل ما أنام بقرا كتاب.
-      ar: أقرأ كتابًا قبل النوم.
-      en: Before sleeping, I read a book.
-    words: [sebelum]
+      ar_eg: امبارح صحيت قبل الفجر.
+      ar: أمس استيقظت قبل الفجر.
+      en: Yesterday I got up before dawn.
+    words: [kemarin, sebelum, subuh]
   - id: e06
     type: match_pairs
     pairs:
@@ -140,6 +140,40 @@ exercises:
     alternatives: [Saya bangun lalu salat subuh.]
     distractors: [sebelum, nanti]
     words: [lalu, subuh]
+  - id: e08
+    type: listen
+    text: Tadi pagi saya bangun jam lima, lalu sarapan.
+    options: ['Tadi pagi saya bangun jam lima, lalu sarapan.', 'Nanti pagi saya bangun jam lima, lalu sarapan.', 'Kemarin pagi saya bangun jam lima, lalu sarapan.']
+    answer: 0
+    meaning:
+      ar_eg: النهارده الصبح صحيت الساعة خمسة، وبعدين فطرت.
+      ar: صباح اليوم استيقظت في الخامسة ثم أفطرت.
+      en: This morning I got up at five, then had breakfast.
+    words: [tadi, nanti, kemarin, lalu]
+  - id: e09
+    type: fill_blank
+    sentence: ___ subuh, saya minum kopi.
+    meaning:
+      ar_eg: بعد الفجر بشرب قهوة.
+      ar: بعد الفجر أشرب القهوة.
+      en: After dawn prayer, I drink coffee.
+    options: [Setelah, Kemarin, Nanti]
+    answers: [Setelah]
+    words: [setelah, subuh]
+  - id: e10
+    type: multiple_choice
+    question: Sesudah sarapan
+    question_meaning:
+      ar_eg: «بعد الفطار» — نفس المعنى بكلمة تانية؟
+      ar: «بعد الفطور» — ما الذي يحمل المعنى نفسه؟
+      en: '"After breakfast" — which means the same?'
+    options: ['Setelah sarapan', 'Sebelum sarapan', 'Nanti sarapan']
+    answer: 0
+    explain:
+      ar_eg: sesudah وsetelah الاتنين «بعد». sebelum = قبل.
+      ar: sesudah وsetelah كلاهما «بعد»، وsebelum = قبل.
+      en: sesudah and setelah both mean "after"; sebelum = before.
+    words: [sesudah, setelah, sebelum, nanti]
 dialogue:
   lines:
     - speaker: Pak Irwan

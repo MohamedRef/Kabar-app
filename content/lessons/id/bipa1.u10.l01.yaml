@@ -30,41 +30,27 @@ slides:
         ar_eg: امبارح ركبت مركب لجزر الألف.
         ar: أمس ركبت قاربًا إلى جزر الألف.
         en: Yesterday I took a boat to the Thousand Islands.
-  - title: Kemarin, tadi, sekarang
+  - title: Kemarin dulu, minggu lalu
     body:
       ar_eg: |
-        الخط الزمني:
-        kemarin dulu (أول امبارح) — kemarin (امبارح) — tadi (من شوية، النهارده) — sekarang (دلوقتي) — nanti (بعدين، النهارده) — besok (بكرة)
-        tadi pagi = النهارده الصبح (اللي فات). وخلي بالك: tadi للنهارده بس، مش لامبارح.
-      ar: |
-        التسلسل الزمني:
-        kemarin dulu (أول أمس) — kemarin (أمس) — tadi (قبل قليل من اليوم) — sekarang (الآن) — nanti (لاحقًا اليوم) — besok (غدًا)
-        tadi pagi = هذا الصباح (الذي مضى). وtadi لليوم نفسه فقط، لا لأمس.
-      en: |
-        The timeline:
-        kemarin dulu (day before yesterday) — kemarin (yesterday) — tadi (earlier today) — sekarang (now) — nanti (later today) — besok (tomorrow)
-        tadi pagi = this morning (already past). tadi only covers today, never yesterday.
-    grammar: id.time.sequence
-    examples:
-      - text: Tadi pagi saya makan nasi goreng.
-        ar_eg: النهارده الصبح كلت رز مقلي.
-        ar: هذا الصباح أكلت أرزًا مقليًا.
-        en: This morning I ate fried rice.
-  - title: Minggu lalu, tahun lalu
-    body:
-      ar_eg: |
+        انت عارف من الوحدة 6: kemarin وtadi وsekarang وnanti، وsebelum وsesudah. الجديد هنا:
+        - kemarin dulu = أول امبارح
         lalu بعد كلمة الوقت = «اللي فات»:
         - minggu lalu = الأسبوع اللي فات
         - bulan lalu = الشهر اللي فات
         - tahun lalu = السنة اللي فاتت
         (افتكر إن lalu بين جملتين معناها «وبعدين»: مكانها بيفرق.)
       ar: |
+        تعرف من الوحدة 6: kemarin وtadi وsekarang وnanti، وsebelum وsesudah. والجديد هنا:
+        - kemarin dulu = أول أمس
         lalu بعد كلمة الزمن = «الماضي»:
         - minggu lalu = الأسبوع الماضي
         - bulan lalu = الشهر الماضي
         - tahun lalu = العام الماضي
         (وتذكّر أن lalu بين جملتين تعني «ثم»؛ فموضعها يحدد معناها.)
       en: |
+        You know kemarin, tadi, sekarang, nanti, sebelum and sesudah from Unit 6. New here:
+        - kemarin dulu = the day before yesterday
         lalu after a time word = "last":
         - minggu lalu = last week
         - bulan lalu = last month
@@ -76,71 +62,68 @@ slides:
         ar_eg: السنة اللي فاتت كنت في القاهرة. دلوقتي أنا في جاكرتا.
         ar: العام الماضي كنت في القاهرة، والآن أنا في جاكرتا.
         en: Last year I was in Cairo. Now I'm in Jakarta.
-  - title: Sebelum, sesudah
-    body:
-      ar_eg: |
-        عشان ترتب الحكاية:
-        - sebelum = قبل: Sebelum naik kapal, kami makan = قبل ما نركب المركب كلنا.
-        - sesudah / setelah = بعد: Setelah makan, kami berenang = بعد الأكل عُمنا.
-      ar: |
-        ولترتيب الأحداث:
-        - sebelum = قبل: Sebelum naik kapal, kami makan = أكلنا قبل ركوب القارب.
-        - sesudah / setelah = بعد: Setelah makan, kami berenang = بعد الأكل سبحنا.
-      en: |
-        To order your story:
-        - sebelum = before: Sebelum naik kapal, kami makan = Before boarding the boat, we ate.
-        - sesudah / setelah = after: Setelah makan, kami berenang = After eating, we swam.
-    grammar: id.time.sequence
-    examples:
-      - text: Setelah salat Jumat, kami makan siang.
-        ar_eg: بعد صلاة الجمعة اتغدينا.
-        ar: بعد صلاة الجمعة تناولنا الغداء.
-        en: After Friday prayers, we had lunch.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: kemarin
-        ar_eg: امبارح
-        ar: أمس
-        en: yesterday
       - text: kemarin dulu
         ar_eg: أول امبارح
         ar: أول أمس
         en: the day before yesterday
-      - text: tadi
-        ar_eg: من شوية (النهارده)
-        ar: قبل قليل
-        en: earlier today
       - text: minggu lalu
         ar_eg: الأسبوع اللي فات
         ar: الأسبوع الماضي
         en: last week
+      - text: bulan lalu
+        ar_eg: الشهر اللي فات
+        ar: الشهر الماضي
+        en: last month
       - text: tahun lalu
         ar_eg: السنة اللي فاتت
         ar: العام الماضي
         en: last year
-    words: [kemarin, kemarin dulu, tadi, minggu lalu, tahun lalu]
+      - text: kepulauan
+        ar_eg: جزر (أرخبيل)
+        ar: أرخبيل
+        en: islands, archipelago
+      - text: laut
+        ar_eg: بحر
+        ar: بحر
+        en: sea
+    words: [kemarin dulu, minggu lalu, bulan lalu, tahun lalu, kepulauan, laut]
   - id: e02
     type: multiple_choice
     question_meaning:
       ar_eg: النهارده السبت. الحاجة حصلت يوم الجمعة. تقول إيه؟
       ar: اليوم السبت، والحدث كان يوم الجمعة. ماذا تقول؟
       en: Today is Saturday. It happened on Friday. Which word?
-    options: [tadi, besok, kemarin]
+    options: [tadi, kemarin dulu, kemarin]
     answer: 2
     explain:
       ar_eg: الجمعة امبارح، يعني kemarin. tadi للنهارده بس.
       ar: الجمعة هي أمس، أي kemarin، وtadi لليوم نفسه.
       en: Friday is yesterday → kemarin; tadi is only for today.
-    words: [kemarin, tadi]
+    words: [kemarin, tadi, kemarin dulu]
   - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (افتكر من الوحدة 6) «النهارده الصبح، بدري» تبقى إيه؟
+      ar: (تذكّر من الوحدة 6) كيف تقول «هذا الصباح، قبل قليل»؟
+      en: (Recall from Unit 6) How do you say "this morning, earlier"?
+    options: [kemarin pagi, tadi pagi, nanti pagi]
+    answer: 1
+    explain:
+      ar_eg: tadi = من شوية، النهارده بس. nanti للي جاي، وkemarin لامبارح.
+      ar: tadi = قبل قليل من اليوم نفسه؛ nanti للآتي، وkemarin لأمس.
+      en: tadi = earlier today only; nanti is still to come, kemarin is yesterday.
+    words: [tadi, nanti, kemarin]
+  - id: e04
     type: listen
     text: Minggu lalu saya ke Bandung.
     options: [Minggu lalu saya ke Bandung., Minggu depan saya ke Bandung., Kemarin saya ke Bandung.]
     answer: 0
     words: [minggu lalu]
-  - id: e04
+  - id: e05
     type: fill_blank
     sentence: ___ saya di Kairo. Sekarang saya di Jakarta.
     meaning:
@@ -150,32 +133,56 @@ exercises:
     options: [Besok, Nanti, Tahun lalu]
     answers: [Tahun lalu]
     words: [tahun lalu, sekarang]
-  - id: e05
+  - id: e06
+    type: fill_blank
+    sentence: ___ naik kapal ke Kepulauan Seribu, kami makan.
+    meaning:
+      ar_eg: قبل ما نركب المركب لجزر سريبو، كلنا.
+      ar: قبل أن نركب القارب إلى جزر سريبو، أكلنا.
+      en: Before boarding the boat to the Thousand Islands, we ate.
+    options: [Sesudah, Sebelum, Lalu]
+    answers: [Sebelum]
+    explain:
+      ar_eg: '(من الوحدة 6) sebelum = قبل، sesudah / setelah = بعد.'
+      ar: '(من الوحدة 6) sebelum = قبل، وsesudah / setelah = بعد.'
+      en: '(From Unit 6) sebelum = before, sesudah / setelah = after.'
+    words: [sebelum, sesudah, kapal, kepulauan]
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: امبارح رحت السوق.
-      ar: أمس ذهبت إلى السوق.
-      en: Yesterday I went to the market.
-    answer: Kemarin saya ke pasar.
-    alternatives: [Saya ke pasar kemarin.]
+      ar_eg: الشهر اللي فات رحت جزر سريبو.
+      ar: ذهبت الشهر الماضي إلى جزر سريبو.
+      en: Last month I went to the Thousand Islands.
+    answer: Bulan lalu saya ke Kepulauan Seribu.
+    alternatives: [Saya ke Kepulauan Seribu bulan lalu.]
     distractors: [tadi, di]
-    words: [kemarin, pasar]
-  - id: e06
+    words: [bulan lalu, kepulauan]
+  - id: e08
     type: dictation
-    text: Kemarin saya ke pulau.
+    text: Kemarin dulu saya ke pulau.
     meaning:
-      ar_eg: امبارح رحت الجزيرة.
-      ar: أمس ذهبت إلى الجزيرة.
-      en: Yesterday I went to the island.
-    words: [kemarin, pulau]
-  - id: e07
+      ar_eg: أول امبارح رحت الجزيرة.
+      ar: ذهبت أول أمس إلى الجزيرة.
+      en: The day before yesterday I went to the island.
+    words: [kemarin dulu, pulau]
+  - id: e09
     type: speaking
-    text: Kemarin saya naik kapal. Setelah itu, saya berenang di laut.
+    text: Kemarin saya naik kapal ke pulau. Setelah itu, saya berenang di laut.
     meaning:
-      ar_eg: امبارح ركبت مركب. بعد كده، عُمت في البحر.
-      ar: أمس ركبت قاربًا، وبعد ذلك سبحت في البحر.
-      en: Yesterday I took a boat. After that, I swam in the sea.
-    words: [kemarin, kapal, setelah, laut]
+      ar_eg: امبارح ركبت مركب للجزيرة. بعد كده، عُمت في البحر.
+      ar: أمس ركبت قاربًا إلى الجزيرة، وبعد ذلك سبحت في البحر.
+      en: Yesterday I took a boat to the island. After that, I swam in the sea.
+    words: [kemarin, kapal, pulau, setelah, laut]
+  - id: e10
+    type: listen
+    text: Bulan lalu kami naik kapal ke pulau.
+    options: ['Bulan lalu kami naik kapal ke pulau.', 'Minggu lalu kami naik kapal ke pulau.', 'Tahun lalu kami naik kapal ke pulau.', 'Bulan lalu kami berenang di laut.']
+    answer: 0
+    meaning:
+      ar_eg: الشهر اللي فات ركبنا مركب للجزيرة.
+      ar: الشهر الماضي ركبنا السفينة إلى الجزيرة.
+      en: Last month we took a boat to the island.
+    words: [bulan lalu, minggu lalu, tahun lalu, kapal, pulau, laut]
 dialogue:
   title: Hari Senin pagi
   lines:

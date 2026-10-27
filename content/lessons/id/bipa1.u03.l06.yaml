@@ -70,18 +70,19 @@ exercises:
   - id: e02
     type: listen
     text: Ini foto keluarga saya.
-    options: [Itu foto keluarga saya., Ini foto keluarga saya., Ini foto rumah saya.]
+    options: ['Itu foto keluarga saya.', 'Ini foto keluarga saya.', 'Ini foto orang tua saya.']
     answer: 1
     words: [foto, keluarga]
   - id: e03
     type: fill_blank
-    sentence: Ini ___ keluarga saya di Kairo.
+    sentence: Kakak saya ___ menikah.
     meaning:
-      ar_eg: دي صورة عيلتي في القاهرة.
-      ar: هذه صورة عائلتي في القاهرة.
-      en: This is a photo of my family in Cairo.
-    answers: [foto]
-    words: [foto]
+      ar_eg: أخويا الكبير اتجوز خلاص.
+      ar: أخي الأكبر متزوج بالفعل.
+      en: My older brother is already married.
+    options: [sudah, belum, banyak]
+    answers: [sudah]
+    words: [sudah, menikah]
   - id: e04
     type: fill_blank
     sentence: Adik saya ___ menikah.
@@ -116,22 +117,21 @@ exercises:
   - id: e07
     type: build_sentence
     source:
-      ar_eg: العيل الصغيّر ده مين؟
-      ar: مَن ذلك الطفل الصغير؟
-      en: Who is that little child?
-    answer: Anak kecil itu siapa?
-    alternatives: ['Siapa anak kecil itu?']
-    distractors: [besar, apa]
-    words: [anak, kecil, siapa]
+      ar_eg: أخويا الكبير اتجوز، بس أخويا الصغير لسه.
+      ar: أخي الأكبر متزوج، لكن أخي الأصغر لم يتزوج بعد.
+      en: My older brother is married, but my younger brother isn't yet.
+    answer: Kakak saya sudah menikah, tapi adik saya belum.
+    distractors: [lucu, foto]
+    words: [sudah, menikah, belum]
   - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: دي صورة عيلتي.
-      ar: هذه صورة عائلتي.
-      en: This is my family photo.
-    answers: [Ini foto keluarga saya., Ini foto keluarga saya, Ini foto keluargaku., Ini foto keluargaku]
-    words: [foto, keluarga]
+      ar_eg: الصورة دي تضحّك!
+      ar: هذه الصورة طريفة!
+      en: This photo is funny!
+    answers: ['Foto ini lucu!', 'Foto ini lucu', 'Foto ini lucu sekali!', 'Foto ini lucu banget!', 'Fotonya lucu!']
+    words: [foto, lucu]
   - id: e09
     type: translate
     direction: to_target
@@ -143,12 +143,12 @@ exercises:
     words: [anak, lucu]
   - id: e10
     type: speaking
-    text: Ini foto keluarga saya. Ini orang tua saya, dan ini adik saya.
+    text: Ini foto keluarga saya. Ini orang tua saya, dan adik saya lucu sekali!
     meaning:
-      ar_eg: دي صورة عيلتي. دول أهلي، وده أخويا الصغير.
-      ar: هذه صورة عائلتي. هذان والداي، وهذا أخي الأصغر.
-      en: This is my family photo. These are my parents, and this is my younger sibling.
-    words: [foto, orang tua, adik]
+      ar_eg: دي صورة عيلتي. دول أهلي، وأخويا الصغير دمه خفيف أوي!
+      ar: هذه صورة عائلتي. هذان والداي، وأخي الأصغر لطيف جدًا!
+      en: This is my family photo. These are my parents, and my little sibling is so cute!
+    words: [foto, orang tua, adik, lucu]
 dialogue:
   title: Foto dari Kairo
   lines:

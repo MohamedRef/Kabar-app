@@ -32,6 +32,7 @@ fn block_on<F: Future>(f: F) -> F::Output {
 struct Script {
     replies: RefCell<VecDeque<Result<EngineReply, EngineError>>>,
     calls: RefCell<Vec<EngineCall>>,
+    forgotten: RefCell<Vec<CacheKey>>,
 }
 
 #[derive(Clone)]
@@ -62,6 +63,10 @@ impl Engine for Scripted {
         self.script.calls.borrow_mut().push(call.clone());
         let next = self.script.replies.borrow_mut().pop_front();
         Box::pin(async move { next.unwrap_or_else(|| panic!("{:?} called more than scripted", self.id)) })
+    }
+    fn forget<'a>(&'a self, key: &'a CacheKey) -> ForgetFuture<'a> {
+        self.script.forgotten.borrow_mut().push(key.clone());
+        Box::pin(std::future::ready(()))
     }
 }
 
@@ -227,6 +232,9 @@ fn thumbs_down_replaces_the_cached_answer_with_the_next_engine() {
     let first = block_on(r.run::<AnalyzeText>(&req)).unwrap();
     let second = block_on(r.regenerate(&req, &first)).unwrap();
     assert_eq!(second.engine, EngineId::GeminiFree);
+    // Kabar Cloud is told too, so its shared cache stops serving it.
+    assert_eq!(*wai.script.forgotten.borrow(), std::slice::from_ref(&first.cache_key));
+    assert!(gem.script.forgotten.borrow().is_empty());
     assert_eq!(second.value.tokens[0].gloss_en, "wait");
 
     // From now on the replacement is what's served.
@@ -237,6 +245,41 @@ fn thumbs_down_replaces_the_cached_answer_with_the_next_engine() {
 
     // Nothing after the last engine: say so, don't loop.
     assert!(matches!(block_on(r.regenerate(&req, &third)), Err(AiError::AllFailed { .. })));
+}
+
+#[test]
+fn prompts_carry_the_profile_and_a_new_level_misses_the_old_answer() {
+    let wai = Scripted::new(
+        EngineId::WorkersAi,
+        vec![
+            Ok(fixture!("analyze_text.sek_tak_lapor_pusat.workers_ai.json")),
+            Ok(fixture!("analyze_text.sek_tak_lapor_pusat.workers_ai.json")),
+        ],
+    );
+    let r = router(&[&wai]);
+    let req = sek_request();
+    r.set_profile(LearnerProfile {
+        indonesian_level: "BIPA 3".into(),
+        javanese_level: "J1".into(),
+        known_words: 640,
+        ..LearnerProfile::default()
+    });
+    let a = block_on(r.run::<AnalyzeText>(&req)).unwrap();
+    let sys = &wai.calls()[0].system;
+    assert!(sys.contains("Indonesian level: BIPA 3. Javanese level: J1."), "{sys}");
+    assert!(sys.contains("Known words: about 500."), "{sys}");
+
+    // A few more words: same band, same key, served from the cache.
+    r.set_profile(LearnerProfile { known_words: 700, ..r.profile() });
+    assert!(block_on(r.run::<AnalyzeText>(&req)).unwrap().from_cache);
+
+    // A new level: a new key, so the answer is written again for it.
+    r.set_profile(LearnerProfile { indonesian_level: "BIPA 4".into(), ..r.profile() });
+    let b = block_on(r.run::<AnalyzeText>(&req)).unwrap();
+    assert!(!b.from_cache);
+    assert_ne!(a.cache_key, b.cache_key);
+    assert_ne!(a.cache_key.id(), b.cache_key.id());
+    assert_eq!(wai.calls().len(), 2);
 }
 
 #[test]

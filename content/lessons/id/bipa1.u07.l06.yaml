@@ -80,13 +80,14 @@ exercises:
     words: [bisa, menari]
   - id: e04
     type: fill_blank
-    sentence: Kamu ___ coba!
+    sentence: Saya tidak bisa menari. — Tidak ___!
     meaning:
-      ar_eg: لازم تجرب!
-      ar: يجب أن تجرّب!
-      en: You must try (it)!
-    answers: [harus]
-    words: [harus, coba]
+      ar_eg: أنا مبعرفش أرقص. — ولا يهمك!
+      ar: لا أستطيع الرقص. — لا بأس!
+      en: I can't dance. — That's OK!
+    options: [apa-apa, hebat, tari]
+    answers: [apa-apa]
+    words: [menari, tidak apa-apa]
   - id: e05
     type: build_sentence
     source:
@@ -106,14 +107,15 @@ exercises:
     distractors: [berapa, sana]
     words: [bagaimana kalau, nongkrong]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: هوايتي العوم.
-      ar: هوايتي السباحة.
-      en: My hobby is swimming.
-    answers: [Hobi saya berenang., Hobi saya berenang, Hobiku berenang., Hobi aku berenang., Hobi saya adalah berenang., Saya suka berenang.]
-    words: [hobi, berenang]
+    type: listen
+    text: Hebat! Kamu bisa menari tari Bali?
+    options: ['Hebat! Kamu bisa menari tari Bali?', 'Hebat! Kamu suka tari Bali?', 'Tidak apa-apa. Kamu bisa menari?']
+    answer: 0
+    meaning:
+      ar_eg: جامد! إنت بتعرف ترقص رقص بالي؟
+      ar: رائع! هل تجيد رقص بالي؟
+      en: Great! Can you do Balinese dance?
+    words: [hebat, menari, tari, tidak apa-apa]
   - id: e08
     type: translate
     direction: to_target
@@ -124,21 +126,23 @@ exercises:
     answers: [Saya ingin melihat tari Bali., Saya ingin menonton tari Bali., Saya mau melihat tari Bali., Saya mau menonton tari Bali., Aku ingin melihat tari Bali., Aku ingin menonton tari Bali., Aku mau lihat tari Bali., Saya ingin lihat tari Bali.]
     words: [ingin, tari]
   - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: إنت بتلعب كورة كتير؟
-      ar: هل تلعب كرة القدم كثيرًا؟
-      en: Do you often play football?
-    answers: ['Kamu sering bermain sepak bola?', 'Kamu sering main sepak bola?', 'Anda sering bermain sepak bola?', 'Apakah kamu sering bermain sepak bola?', 'Apakah Anda sering bermain sepak bola?', Kamu sering bermain sepak bola]
-    words: [sering, sepak bola]
+    type: multiple_choice
+    question: Saya bisa menari tari Bali!
+    question_meaning:
+      ar_eg: صاحبك قالك «أنا بعرف أرقص رقص بالي!» — ترد بإيه؟
+      ar: قال صديقك «أجيد رقص بالي!» — بماذا ترد؟
+      en: Your friend says "I can do Balinese dance!" — what do you say?
+    options: ['Hebat!', 'Tidak apa-apa.', 'Nongkrong!']
+    answer: 0
+    words: [hebat, tidak apa-apa, nongkrong, menari, tari]
   - id: e10
     type: speaking
-    text: Boleh! Sampai jumpa hari Sabtu!
+    text: Hebat! Bagaimana kalau kita nongkrong hari Sabtu?
     meaning:
-      ar_eg: ماشي! أشوفك يوم السبت!
-      ar: موافق! إلى اللقاء يوم السبت!
-      en: Sure! See you on Saturday!
+      ar_eg: جامد! إيه رأيك نقعد سوا يوم السبت؟
+      ar: رائع! ما رأيك أن نلتقي يوم السبت؟
+      en: Great! How about hanging out on Saturday?
+    words: [hebat, nongkrong]
 dialogue:
   title: Teman baru di Kemang
   lines:
