@@ -211,6 +211,26 @@ pub fn next_at(ctx: &ReminderContext) -> Option<u64> {
         .find(|&m| matches!(decide_with(&ReminderContext { now_ms: m, ..*ctx }, &times), Decision::Send(_)))
 }
 
+/// The next `max` reminders if nothing changes, each with what it says, for
+/// a device that schedules them itself (local notifications). Each one is
+/// counted as sent before looking for the next, so the daily limits hold.
+/// The device schedules again whenever the learner studies or changes a
+/// setting, which drops the ones that no longer apply.
+pub fn upcoming(ctx: &ReminderContext, max: usize) -> Vec<(u64, Reminder)> {
+    let mut out = Vec::new();
+    let mut state = ctx.state.clone();
+    let mut now = ctx.now_ms;
+    while out.len() < max {
+        let at_ctx = ReminderContext { state: &state, now_ms: now, ..*ctx };
+        let Some(at) = next_at(&at_ctx) else { break };
+        let Decision::Send(reminder) = decide(&ReminderContext { now_ms: at, ..at_ctx }) else { break };
+        out.push((at, reminder));
+        state = mark_sent(&state, at, ctx.profile.utc_offset_min);
+        now = at + MIN_MS;
+    }
+    out
+}
+
 /// The learner's chosen times, nudged toward when they actually study.
 ///
 /// Each study session in the last [`LEARN_DAYS`] days (start = `at_ms` minus
@@ -598,6 +618,27 @@ mod tests {
         let p = CoachProfile { study_times: vec![LocalTime::hm(7, 30), LocalTime::hm(12, 0)], ..p };
         let snoozed = snooze(&s, at(today, 7, 30), 60);
         assert_eq!(next_at(&ctx(&p, &snoozed, &[], at(today, 7, 31))), Some(at(today, 8, 30)));
+    }
+
+    #[test]
+    fn upcoming_reminders_keep_the_daily_limits() {
+        let today = d(2026, 10, 26);
+        let s = ReminderState::default();
+        let steady = profile(ReminderStyle::Steady, &[(9, 0), (19, 0)]);
+        let next = upcoming(&ctx(&steady, &s, &[], at(today, 8, 0)), 3);
+        let times: Vec<u64> = next.iter().map(|(t, _)| *t).collect();
+        assert_eq!(times, [at(today, 9, 0), at(today, 19, 0), at(today.add_days(1), 9, 0)]);
+        assert!(next.iter().all(|(_, r)| r.line == Line::RemindStudy));
+
+        let gentle = profile(ReminderStyle::Gentle, &[(9, 0), (19, 0)]);
+        let next = upcoming(&ctx(&gentle, &s, &[], at(today, 8, 0)), 2);
+        assert_eq!(
+            next.iter().map(|(t, _)| *t).collect::<Vec<_>>(),
+            [at(today, 9, 0), at(today.add_days(1), 9, 0)]
+        );
+
+        let off = profile(ReminderStyle::Off, &[(9, 0)]);
+        assert!(upcoming(&ctx(&off, &s, &[], at(today, 8, 0)), 3).is_empty());
     }
 
     #[test]
