@@ -1,185 +1,236 @@
 schema: kabar.lesson/v1
 id: j5.u03.l06
 language: jv
-title: Minimal Pairs
+title: Nyathet pocapan
 can_do:
-  ar_eg: تعدّي جولة سماع.
-  ar: أن تجتاز جولة استماع.
-  en: Pass a listening round.
+  ar_eg: 'تتكلم عن الكتابة والنطق: تقسم كلمة لمقاطع، وتدّي مثال، وتصلّح غلطة.'
+  ar: 'أن تتحدث عن الكتابة والنطق: تقسيم الكلمة إلى مقاطع، وإعطاء مثال، وتصحيح خطأ.'
+  en: 'Talk about spelling and sound: split a word into syllables, give an example and fix a mistake.'
 slides:
-  - title: Rungokna!
+  - title: Tulisan lan pocapan
     body:
       ar_eg: |
-        جولة سماع قبل اللعبة. افتكر: d وt زي د وت بتوعنا، وdh وth اللسان راجع لورا.
-        وكلمة من العربي: hawa = الجو (هواء)، hawane adhem = الجو ساقع. adhem بـ dh، والإندونيسي بيكتبها adem.
+        pocapan = النطق، wanda = مقطع (sega فيها wanda اتنين: se-ga). tuladha = مثال.
+        nyathet = يكتب نوت، يدوّن. tandha = علامة. mbenerake = يصحّح.
+        luput = غلط، مش مظبوط. pacelathon = حوار، كلام بين اتنين.
       ar: |
-        جولة استماع قبل اللعبة. تذكّر: d وt كالدال والتاء، وفي dh وth يرتدّ اللسان إلى الخلف.
-        وكلمة عربية الأصل: hawa = الجو (هواء)، وhawane adhem = الجو بارد. adhem بـ dh، وتكتبها الإندونيسية adem.
+        pocapan = النطق، wanda = مقطع صوتي (في sega مقطعان: se-ga). tuladha = مثال.
+        nyathet = يدوّن. tandha = علامة. mbenerake = يصحّح.
+        luput = خاطئ. pacelathon = حوار.
       en: |
-        A listening round before the game. Remember: d and t are Arabic د and ت; for dh and th the tongue pulls back.
-        And a word from Arabic: hawa = weather, air («هواء»); hawane adhem = the weather is cold. adhem has dh; Indonesian writes adem.
-    grammar: jv.orthography
+        pocapan = pronunciation, wanda = syllable (sega has two: se-ga). tuladha = example.
+        nyathet = note down. tandha = mark, sign. mbenerake = correct.
+        luput = wrong, mistaken. pacelathon = dialogue, conversation.
     examples:
-      - text: Hawane adhem banget.
-        ar_eg: الجو ساقع أوي.
-        ar: الجو بارد جدًا.
-        en: The weather is really cold.
-      - text: Wedi lan wedhi iku bedha.
-        ar_eg: wedi وwedhi مختلفين.
-        ar: wedi وwedhi مختلفتان.
-        en: Wedi and wedhi are different.
-      - text: Sesuk aku mesthi teka.
-        ar_eg: بكرة أكيد هاجي.
-        ar: سآتي غدًا بالتأكيد.
-        en: I'll definitely come tomorrow.
+      - text: Tembung 'sega' ditulis a, nanging pocapane 'sego'.
+        ar_eg: كلمة sega بتتكتب بـ a، بس نطقها sego.
+        ar: تُكتب كلمة sega بالألف a، لكن نطقها sego.
+        en: The word 'sega' is written with a, but pronounced 'sego'.
+      - text: 'Tembung ''sega'' duwe wanda loro: se lan ga.'
+        ar_eg: 'كلمة sega فيها مقطعين: se وga.'
+        ar: 'في كلمة sega مقطعان: se وga.'
+        en: 'The word ''sega'' has two syllables: se and ga.'
+      - text: Mbak Ayu mbenerake tulisane Mohamed sing luput.
+        ar_eg: مبك أيو صحّحت كتابة محمد اللي فيها غلط.
+        ar: صحّحت مبك أيو كتابة محمد الخاطئة.
+        en: Mbak Ayu corrects Mohamed's mistaken spelling.
 exercises:
   - id: e01
-    type: listen
-    text: Hawane adhem banget.
-    options: ['Hawane adem banget.', 'Hawane adhem banget.']
-    answer: 1
-    meaning:
-      ar_eg: الجو ساقع أوي.
-      ar: الجو بارد جدًا.
-      en: The weather is really cold.
-    words: [hawa, adhem]
+    type: match_pairs
+    pairs:
+      - text: nyathet
+        ar_eg: يدوّن
+        ar: يدوّن
+        en: note down
+      - text: pocapan
+        ar_eg: نطق
+        ar: نطق
+        en: pronunciation
+      - text: wanda
+        ar_eg: مقطع
+        ar: مقطع صوتي
+        en: syllable
+      - text: pacelathon
+        ar_eg: حوار
+        ar: حوار
+        en: dialogue
+    words: [nyathet, pocapan, wanda, pacelathon]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: mbenerake
+        ar_eg: يصحّح
+        ar: يصحّح
+        en: correct
+      - text: tandha
+        ar_eg: علامة
+        ar: علامة
+        en: mark, sign
+      - text: luput
+        ar_eg: غلط
+        ar: خاطئ
+        en: wrong
+      - text: tuladha
+        ar_eg: مثال
+        ar: مثال
+        en: example
+    words: [mbenerake, tandha, luput, tuladha]
+  - id: e03
     type: listen
-    text: Wedi lan wedhi iku bedha.
-    options: ['Wedi lan wedhi iku bedha.', 'Wedi lan wedi iku beda.']
+    text: 'Pocapane ''sego'', wandane loro: se lan go.'
+    question:
+      ar_eg: الكلمة بتتنطق إزاي؟
+      ar: كيف تُنطق الكلمة؟
+      en: How is the word pronounced?
+    options: [النطق sego وفيها مقطعين, النطق sega وفيها تلات مقاطع, الكلمة مش بتتنطق]
     answer: 0
     meaning:
-      ar_eg: wedi وwedhi مختلفين.
-      ar: wedi وwedhi مختلفتان.
-      en: Wedi and wedhi are different.
-    words: [bedha]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إزاي بتتكتب «مختلف» بالجاوي؟
-      ar: كيف تُكتب «مختلف» بالجاوية؟
-      en: How is "different" spelled in Javanese?
-    options: [beda, bedha]
-    answer: 1
-    explain:
-      ar_eg: beda إندونيسي. الجاوي bedha بـ dh.
-      ar: beda إندونيسية، والجاوية bedha بـ dh.
-      en: beda is Indonesian; Javanese bedha has dh.
-    words: [bedha]
+      ar_eg: 'النطق sego، وفيها مقطعين: se وgo.'
+      ar: 'النطق sego، وفيها مقطعان: se وgo.'
+      en: 'It''s pronounced ''sego'', with two syllables: se and go.'
+    words: [pocapan, wanda]
   - id: e04
     type: fill_blank
-    sentence: Sesuk aku ___ teka.
+    sentence: Aku ___ tembung-tembung anyar ing buku.
     meaning:
-      ar_eg: بكرة أكيد هاجي.
-      ar: سآتي غدًا بالتأكيد.
-      en: I'll definitely come tomorrow.
-    options: [mesti, mesthi]
-    answers: [mesthi]
-    explain:
-      ar_eg: الإملا الجاوي mesthi بـ th. الشات ساعات بيكتب mesti.
-      ar: الإملاء الجاوي mesthi بـ th، وقد تكتبها الدردشة mesti.
-      en: Javanese spelling is mesthi, with th; chats sometimes write mesti.
-    words: [mesthi]
+      ar_eg: أنا ___ الكلمات الجديدة في الكشكول.
+      ar: أنا ___ الكلمات الجديدة في الدفتر.
+      en: I ___ the new words in my notebook.
+    options: [nyathet, mbenerake, luput]
+    answers: [nyathet]
+    words: [nyathet, mbenerake, luput]
   - id: e05
-    type: fill_blank
-    sentence: Hawane ___ banget.
-    meaning:
-      ar_eg: الجو ساقع أوي.
-      ar: الجو بارد جدًا.
-      en: The weather is really cold.
-    answers: [adhem]
-    words: [adhem, hawa]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «مقطع صوتي» زي se في sega؟
+      ar: أي كلمة تعني «مقطعًا صوتيًا» مثل se في sega؟
+      en: Which word means 'syllable', like se in sega?
+    options: [wanda, tandha, tuladha]
+    answer: 0
+    explain:
+      ar_eg: wanda = مقطع. tandha = علامة، وtuladha = مثال.
+      ar: wanda = مقطع صوتي؛ tandha = علامة، وtuladha = مثال.
+      en: wanda = syllable; tandha = mark, tuladha = example.
+    words: [wanda, tandha, tuladha]
   - id: e06
-    type: dictation
-    text: Sesuk aku mesthi teka.
+    type: fill_blank
+    sentence: Gurune ___ tulisan sing luput.
     meaning:
-      ar_eg: بكرة أكيد هاجي.
-      ar: سآتي غدًا بالتأكيد.
-      en: I'll definitely come tomorrow.
-    words: [mesthi]
+      ar_eg: المدرّس ___ الكتابة اللي فيها غلط.
+      ar: المعلّم ___ الكتابة الخاطئة.
+      en: The teacher ___ the wrong spelling.
+    options: [mbenerake, nyathet, pocapan]
+    answers: [mbenerake]
+    words: [mbenerake, nyathet, pocapan]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (بالجاوي) الجو في ماديون مش ساقع.
-      ar: (بالجاوية) الجو في ماديون ليس باردًا.
-      en: (in Javanese) The weather in Madiun isn't cold.
-    answers:
-      - Hawane ing Madiun ora adhem.
-      - Hawa ing Madiun ora adhem.
-      - Hawane neng Madiun ora adhem.
-      - Ing Madiun hawane ora adhem.
-      - Neng Madiun hawane ora adhem.
-      - Hawane Madiun ora adhem.
-    words: [hawa, adhem]
+    type: multiple_choice
+    question: '''Pira'' iku ___ tembung sing ditulis a, diwaca o.'
+    options: [tuladha, pacelathon, luput]
+    answer: 0
+    explain:
+      ar_eg: 'pira بتتكتب a وتتقري o، فهي مثال: tuladha.'
+      ar: 'تُكتب pira بالألف وتُقرأ o، فهي مثال: tuladha.'
+      en: 'pira is written a and read o, so it''s an example: tuladha.'
+    words: [tuladha, pacelathon, luput]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: wedi وwedhi مختلفين.
-      ar: wedi وwedhi مختلفتان.
-      en: Wedi and wedhi are different.
-    answer: Wedi lan wedhi iku bedha.
-    distractors: [beda, wedhine]
-    words: [bedha, wedhi]
+      ar_eg: الحوار ده مش طويل.
+      ar: هذا الحوار ليس طويلًا.
+      en: This dialogue isn't long.
+    answer: Pacelathon iki ora dawa.
+    distractors: [wanda, tandha]
+    words: [pacelathon]
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Tulisanmu luput, aku menehi tandha abang.
+    answers_meaning:
+      ar_eg: [كتابتك فيها غلط، حطيتلك علامة حمرا, كتابتك غلط، فعلّمت عليها بالأحمر]
+      ar: [كتابتك خاطئة، فوضعت علامة حمراء, في كتابتك خطأ، فوضعت عليه علامة حمراء]
+      en: ['Your spelling is wrong, I put a red mark', 'Your writing is wrong, so I gave it a red mark']
+    words: [luput, tandha]
+  - id: e10
     type: speaking
-    text: Hawane adhem, nanging aku mesthi teka.
+    text: Aku nyathet pocapan lan tuladhane.
     meaning:
-      ar_eg: الجو ساقع، بس أكيد هاجي.
-      ar: الجو بارد، لكني سآتي بالتأكيد.
-      en: It's cold, but I'll definitely come.
-    words: [hawa, adhem, mesthi]
+      ar_eg: أنا بدوّن النطق والأمثلة.
+      ar: أدوّن النطق والأمثلة.
+      en: I note down the pronunciation and the examples.
+    words: [nyathet, pocapan, tuladha]
 dialogue:
-  title: Dolanan Minimal Pairs
   lines:
-    - speaker: Mbak Ayu
-      text: Ayo dolanan Minimal Pairs! Rungokna, wedhi.
-      ar_eg: يلا نلعب Minimal Pairs! اسمع، wedhi.
-      ar: هيا نلعب Minimal Pairs! استمع، wedhi.
-      en: Let's play Minimal Pairs! Listen, wedhi.
     - speaker: Mohamed
-      text: Wedhi, pasir!
-      ar_eg: wedhi، يعني رملة!
-      ar: wedhi، أي رمل!
-      en: Wedhi, sand!
+      text: Mbak, aku nulis 'sego' ing chat. Luput, ya?
+      ar_eg: يا مبك، أنا كتبت sego في الشات. غلط؟
+      ar: يا مبك، كتبتُ sego في المحادثة. هل هذا خطأ؟
+      en: Mbak, I wrote 'sego' in the chat. Is that wrong?
     - speaker: Mbak Ayu
-      text: Bener. Saiki, adhem.
-      ar_eg: صح. دلوقتي، adhem.
-      ar: صحيح. والآن، adhem.
-      en: Right. Now, adhem.
+      text: Ora luput kok. Nanging tulisan bakune 'sega', pocapane wae sing 'sego'.
+      ar_eg: مش غلط خالص. بس الكتابة الرسمية sega، النطق بس هو اللي sego.
+      ar: ليس خطأ. لكن الكتابة المعيارية sega، والنطق وحده sego.
+      en: It's not wrong. But the standard spelling is 'sega'; only the pronunciation is 'sego'.
     - speaker: Mohamed
-      text: Adhem, karo dh. Hawane adhem!
-      ar_eg: adhem، بـ dh. الجو ساقع!
-      ar: adhem، بـ dh. الجو بارد!
-      en: Adhem, with dh. The weather's cold!
+      text: Oh. Sik, tak cathet dhisik.
+      ar_eg: آه. استني، أكتبها الأول.
+      ar: آه. لحظة، أدوّنها أولًا.
+      en: Oh. Hang on, let me note that down.
     - speaker: Mbak Ayu
-      text: Pinter! Kowe mesthi menang, lho.
-      ar_eg: شاطر! إنت أكيد هتكسب.
-      ar: أحسنت! ستفوز بالتأكيد.
-      en: Clever! You'll definitely win.
+      text: 'Iki tuladha maneh: ''pira'', diwaca ''piro''.'
+      ar_eg: 'ده مثال تاني: pira، بتتقري piro.'
+      ar: 'هذا مثال آخر: pira، وتُقرأ piro.'
+      en: 'Here''s another example: ''pira'', read ''piro''.'
+    - speaker: Mohamed
+      text: Wah, mbenerake tulisanku ki abot, ya Mbak.
+      ar_eg: يا ساتر، تصليح كتابتي ده شغل تقيل يا مبك.
+      ar: تصحيح كتابتي مهمة ثقيلة يا مبك.
+      en: Wow, correcting my writing is hard work, Mbak.
+    - speaker: Mbak Ayu
+      text: Ora apa-apa, aku seneng. Tak wenehi tandha abang wae, ya.
+      ar_eg: ولا يهمك، أنا مبسوطة. هحطلك علامة حمرا وخلاص.
+      ar: لا بأس، يسعدني ذلك. سأضع علامة حمراء فقط.
+      en: No problem, I enjoy it. I'll just give it a red mark.
 new_words:
-  - word: hawa
+  - word: nyathet
+    pos: verb
+    ar_eg: يدوّن، ياخد نوت
+    ar: يدوّن
+    en: note down
+  - word: pocapan
     pos: noun
-    ar_eg: الجو (من «هواء»)
-    ar: الجو (من «هواء»)
-    en: weather, air = hawa, udara
-    arabic: هواء
-  - word: adhem
+    ar_eg: نطق
+    ar: نطق
+    en: pronunciation
+  - word: wanda
+    pos: noun
+    ar_eg: مقطع (صوتي)
+    ar: مقطع صوتي
+    en: syllable
+  - word: pacelathon
+    pos: noun
+    ar_eg: حوار
+    ar: حوار
+    en: dialogue, conversation
+  - word: mbenerake
+    pos: verb
+    ar_eg: يصحّح
+    ar: يصحّح
+    en: correct, fix
+  - word: tandha
+    pos: noun
+    ar_eg: علامة
+    ar: علامة
+    en: mark, sign
+  - word: luput
     pos: adjective
-    ar_eg: ساقع / بارد
-    ar: بارد
-    en: cold, cool = dingin, adem
-  - word: bedha
-    pos: adjective
-    ar_eg: مختلف
-    ar: مختلف
-    en: different = beda
-  - word: mesthi
-    pos: adverb
-    ar_eg: أكيد / لازم
-    ar: بالتأكيد / لا بدّ
-    en: surely, definitely = pasti
-game: mp.adem-adhem
+    ar_eg: غلط
+    ar: خاطئ
+    en: wrong, mistaken
+  - word: tuladha
+    pos: noun
+    ar_eg: مثال
+    ar: مثال
+    en: example
 review:
   status: draft
   verified: false

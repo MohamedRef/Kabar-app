@@ -145,6 +145,38 @@ exercises:
       ar: عندي التهاب في الحلق.
       en: I have a sore throat.
     words: [tenggorokan]
+  - id: e08
+    type: fill_blank
+    sentence: Saya ___ sakit kepala, Dok. Perut saya tidak sakit.
+    meaning:
+      ar_eg: عندي صداع بس يا دكتور. بطني مش بتوجعني.
+      ar: عندي صداع فقط يا دكتور. بطني لا يؤلمني.
+      en: I just have a headache, doctor. My stomach doesn't hurt.
+    options: [cuma, juga, sejak]
+    answers: [cuma]
+    explain:
+      ar_eg: cuma = بس. juga = كمان، وده عكس المعنى هنا.
+      ar: cuma = فقط، أما juga فـ«أيضًا»، وهي عكس المعنى هنا.
+      en: cuma = just, only; juga = also, the opposite of what's meant here.
+    words: [cuma, kepala, perut, sakit]
+  - id: e09
+    type: listen
+    text: Saya cuma sakit tenggorokan.
+    options: [Saya cuma sakit tenggorokan., Saya juga sakit tenggorokan., Saya sakit tenggorokan sejak kemarin.]
+    answer: 0
+    meaning:
+      ar_eg: عندي التهاب زور بس.
+      ar: عندي التهاب في الحلق فقط.
+      en: I just have a sore throat.
+    words: [cuma, tenggorokan]
+  - id: e10
+    type: speaking
+    text: Cuma sakit gigi, Dok.
+    meaning:
+      ar_eg: وجع سنان بس يا دكتور.
+      ar: ألم أسنان فقط يا دكتور.
+      en: Just a toothache, doctor.
+    words: [cuma, gigi, sakit]
 dialogue:
   lines:
     - speaker: Dokter
@@ -188,6 +220,11 @@ new_words:
     ar_eg: عيان / بيوجع
     ar: مريض / يؤلم
     en: sick; sore, hurting
+  - word: cuma
+    pos: adverb
+    ar_eg: بس، فقط (في الكلام؛ الرسمي hanya)
+    ar: فقط (في الكلام؛ والفصيح hanya)
+    en: just, only (spoken; formal hanya)
 review:
   status: draft
   verified: false

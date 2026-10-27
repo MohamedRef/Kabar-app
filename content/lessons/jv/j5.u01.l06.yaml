@@ -1,175 +1,236 @@
 schema: kabar.lesson/v1
 id: j5.u01.l06
 language: jv
-title: Artikel Madiun
+title: Tlatah Madiun
 can_do:
-  ar_eg: تقرا مقالة عن ماديون.
-  ar: أن تقرأ مقالة عن ماديون.
-  en: Read an article about Madiun.
+  ar_eg: 'توصف ماديون زي ما مقالة ويكيبيديا بتوصفها: بتقع فين، سكانها كام، ومشهورة بإيه.'
+  ar: 'أن تصف ماديون كما يصفها مقال ويكيبيديا: موقعها وعدد سكانها وبمَ تشتهر.'
+  en: 'Describe Madiun the way a Wikipedia article does: where it lies, how many live there and what it is famous for.'
 slides:
-  - title: Artikel cekak
+  - title: Kutha Madiun
     body:
       ar_eg: |
-        دي بداية مقالة قصيرة عن ماديون، زي اللي في ويكيبيديا الجاوية. اقراها ودوّر على الهيكل: iku (تعريف)، ana ing (فين)، kang (وصف)، yaiku (تفصيل).
-        كلمتين جداد: pulo = جزيرة (pulau)، وsegara = بحر (laut)، وبتتنطق «سِغورو».
+        مقالات الويكيبيديا الجاوي بتبدأ دايمًا بالمكان: tlatah = منطقة، أرض تبع حد، وwewengkon = نطاق، حتة إدارية.
+        dumunung = بيقع (في مكان)، pedunung = السكان، cacah = عدد (cacahe pedunung = عدد السكان).
+        kondhang = مشهور، kulon = الغرب، pedhut = ضباب، زي اللي بيغطي جبل ويليس الصبح.
       ar: |
-        هذه بداية مقالة قصيرة عن ماديون كما في ويكيبيديا الجاوية. اقرأها وابحث عن هيكلها: iku (التعريف)، وana ing (المكان)، وkang (الوصف)، وyaiku (التفصيل).
-        وكلمتان جديدتان: pulo = جزيرة (pulau)، وsegara = بحر (laut) وتُنطق «سِغورو».
+        تبدأ مقالات ويكيبيديا الجاوية عادةً بالمكان: tlatah = إقليم، أرض، وwewengkon = نطاق، منطقة إدارية.
+        dumunung = يقع، pedunung = السكان، cacah = عدد (cacahe pedunung = عدد السكان).
+        kondhang = مشهور، kulon = الغرب، pedhut = ضباب، كالذي يغطي جبل ويليس صباحًا.
       en: |
-        Here's the start of a short article about Madiun, the way Javanese Wikipedia writes it. Read it and find the skeleton: iku (definition), ana ing (where), kang (description), yaiku (details).
-        Two new words: pulo = island (pulau), and segara = sea (laut), said "segoro".
-    grammar: jv.reading.written-style
+        Javanese Wikipedia articles usually open with the place: tlatah = territory, land; wewengkon = area, district.
+        dumunung = be located, pedunung = inhabitants, cacah = number, count (cacahe pedunung = the population).
+        kondhang = famous, kulon = west, pedhut = fog, like the fog over Mount Wilis in the morning.
     examples:
-      - text: Madiun iku kutha ing Provinsi Jawa Timur.
-        ar_eg: ماديون مدينة في محافظة جاوة الشرقية.
-        ar: ماديون مدينة في إقليم جاوة الشرقية.
-        en: Madiun is a city in East Java Province.
-      - text: Kutha iki ana ing tengah pulo Jawa, adoh saka segara.
-        ar_eg: المدينة دي في نص جزيرة جاوة، بعيد عن البحر.
-        ar: تقع هذه المدينة في وسط جزيرة جاوة، بعيدًا عن البحر.
-        en: The city lies in the middle of the island of Java, far from the sea.
-      - text: Ing Madiun ana papan-papan kang misuwur, yaiku Jalan Pahlawan, Alun-alun lan Stasiun Madiun.
-        ar_eg: في ماديون أماكن مشهورة، هي شارع باهلاوان والألون ألون ومحطة ماديون.
-        ar: في ماديون أماكن مشهورة، هي شارع باهلاوان والألون ألون ومحطة ماديون.
-        en: Madiun has famous places, namely Jalan Pahlawan, the Alun-alun and Madiun Station.
+      - text: Madiun dumunung ing sisih kulon Jawa Timur.
+        ar_eg: ماديون بتقع في الحتة الغربية من جاوة الشرقية.
+        ar: تقع ماديون في الجزء الغربي من جاوة الشرقية.
+        en: Madiun lies in the western part of East Java.
+      - text: Cacahe pedunung Kutha Madiun kurang luwih 200.000.
+        ar_eg: عدد سكان مدينة ماديون حوالي ٢٠٠ ألف.
+        ar: يبلغ عدد سكان مدينة ماديون نحو ٢٠٠ ألف.
+        en: Madiun city has about 200,000 inhabitants.
+      - text: Madiun kondhang amarga pecel lan brem.
+        ar_eg: ماديون مشهورة بالبيتشل والبريم.
+        ar: تشتهر ماديون بالبيتشل والبريم.
+        en: Madiun is famous for pecel and brem.
 exercises:
   - id: e01
-    type: listen
-    text: Kutha iki ana ing tengah pulo Jawa, adoh saka segara.
-    question:
-      ar_eg: ماديون فين؟
-      ar: أين تقع ماديون؟
-      en: Where is Madiun?
-    options: [ing pesisir kidul, ing pesisir lor, ing tengah pulo Jawa]
-    answer: 2
-    meaning:
-      ar_eg: المدينة دي في نص جزيرة جاوة، بعيد عن البحر.
-      ar: تقع هذه المدينة في وسط جزيرة جاوة، بعيدًا عن البحر.
-      en: The city lies in the middle of the island of Java, far from the sea.
-    words: [pulo, segara]
+    type: match_pairs
+    pairs:
+      - text: tlatah
+        ar_eg: منطقة، أرض
+        ar: إقليم، أرض
+        en: territory, land
+      - text: wewengkon
+        ar_eg: نطاق، حتة
+        ar: نطاق، منطقة
+        en: area, district
+      - text: dumunung
+        ar_eg: بيقع
+        ar: يقع
+        en: be located
+      - text: pedunung
+        ar_eg: السكان
+        ar: السكان
+        en: inhabitants
+    words: [tlatah, wewengkon, dumunung, pedunung]
   - id: e02
-    type: multiple_choice
-    question: Ing Madiun ana papan-papan kang misuwur, yaiku Jalan Pahlawan, Alun-alun lan Stasiun Madiun.
-    question_meaning:
-      ar_eg: الجملة دي بتعدّ كام مكان مشهور؟
-      ar: كم مكانًا مشهورًا تعدّ هذه الجملة؟
-      en: How many famous places does this sentence list?
-    options: [loro, papat, telu]
-    answer: 2
-    explain:
-      ar_eg: بعد yaiku فيه تلاتة، Jalan Pahlawan وAlun-alun وStasiun Madiun.
-      ar: بعد yaiku ثلاثة، Jalan Pahlawan وAlun-alun وStasiun Madiun.
-      en: After yaiku come three, Jalan Pahlawan, the Alun-alun and Stasiun Madiun.
-    words: [papan, misuwur, yaiku]
+    type: match_pairs
+    pairs:
+      - text: cacah
+        ar_eg: عدد
+        ar: عدد
+        en: number, count
+      - text: kondhang
+        ar_eg: مشهور
+        ar: مشهور
+        en: famous
+      - text: kulon
+        ar_eg: غرب
+        ar: غرب
+        en: west
+      - text: pedhut
+        ar_eg: ضباب
+        ar: ضباب
+        en: fog
+    words: [cacah, kondhang, kulon, pedhut]
   - id: e03
-    type: fill_blank
-    sentence: Madiun adoh saka ___.
+    type: listen
+    text: Gunung Wilis dumunung cedhak Madiun, esuk-esuk ketutup pedhut.
+    question:
+      ar_eg: الجبل عامل إزاي الصبح؟
+      ar: كيف يكون الجبل صباحًا؟
+      en: What is the mountain like in the morning?
+    options: [الجبل جنب ماديون ومغطّي بالضباب الصبح, الجبل بعيد ومفيهوش ضباب, فيه مطر على الجبل بالليل]
+    answer: 0
     meaning:
-      ar_eg: ماديون بعيدة عن البحر.
-      ar: ماديون بعيدة عن البحر.
-      en: Madiun is far from the sea.
-    options: [pulo, segara, kutha]
-    answers: [segara]
-    words: [segara]
+      ar_eg: جبل ويليس بيقع جنب ماديون، والصبح بيبقى مغطّي بالضباب.
+      ar: يقع جبل ويليس قرب ماديون، ويغطيه الضباب صباحًا.
+      en: Mount Wilis lies near Madiun and is covered in fog in the morning.
+    words: [dumunung, pedhut]
   - id: e04
+    type: fill_blank
+    sentence: Kutha Madiun ___ ing sisih kulon Jawa Timur.
+    meaning:
+      ar_eg: مدينة ماديون ___ في الحتة الغربية من جاوة الشرقية.
+      ar: مدينة ماديون ___ في غرب جاوة الشرقية.
+      en: Madiun city ___ in the west of East Java.
+    options: [dumunung, kondhang, pedhut]
+    answers: [dumunung]
+    words: [dumunung, kondhang, pedhut]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «الناس اللي ساكنين في مكان»؟
+      ar: أي كلمة تعني «الناس الذين يسكنون مكانًا»؟
+      en: Which word means 'the people who live in a place'?
+    options: [pedunung, tlatah, cacah]
+    answer: 0
+    explain:
+      ar_eg: pedunung = السكان. tlatah هي الأرض نفسها، وcacah هو العدد.
+      ar: pedunung = السكان؛ tlatah هي الأرض، وcacah هو العدد.
+      en: pedunung = inhabitants; tlatah is the land itself and cacah is the number.
+    words: [pedunung, tlatah, cacah]
+  - id: e06
+    type: fill_blank
+    sentence: ___ pedunung Kutha Madiun kurang luwih 200.000.
+    meaning:
+      ar_eg: ___ سكان مدينة ماديون حوالي ٢٠٠ ألف.
+      ar: ___ سكان مدينة ماديون نحو ٢٠٠ ألف.
+      en: The ___ of Madiun city's inhabitants is about 200,000.
+    options: [Cacahe, Tlatahe, Pedhute]
+    answers: [Cacahe]
+    words: [cacah, tlatah, pedhut]
+  - id: e07
+    type: multiple_choice
+    question: Gunung Lawu ana ing sisih ___ Madiun.
+    options: [kulon, pedhut, wewengkon]
+    answer: 0
+    explain:
+      ar_eg: 'جبل لاوو غرب ماديون، على حدود جاوة الوسطى: kulon = غرب.'
+      ar: 'يقع جبل لاوو غرب ماديون على حدود جاوة الوسطى: kulon = الغرب.'
+      en: 'Mount Lawu lies west of Madiun, on the Central Java border: kulon = west.'
+    words: [kulon, pedhut, wewengkon]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: (بأسلوب المقالة) باتشيتان على الساحل الجنوبي لجزيرة جاوة.
-      ar: (بأسلوب المقالة) تقع باتشيتان على الساحل الجنوبي لجزيرة جاوة.
-      en: (article style) Pacitan lies on the south coast of the island of Java.
-    answer: Pacitan ana ing pesisir kidul pulo Jawa.
-    distractors: [lor, neng]
-    words: [pulo, pesisir, kidul]
-  - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (بأسلوب المقالة) جاوة جزيرة من جزر إندونيسيا.
-      ar: (بأسلوب المقالة) جاوة إحدى جزر إندونيسيا.
-      en: (article style) Java is one of the islands of Indonesia.
-    answers:
-      - Jawa iku sawijining pulo ing Indonesia.
-      - Pulo Jawa iku sawijining pulo ing Indonesia.
-      - Jawa kalebu pulo ing Indonesia.
-      - Jawa iku pulo ing Indonesia.
-      - Jawa iku sawijining pulo ana ing Indonesia.
-    words: [pulo, sawijining]
-  - id: e06
+      ar_eg: سكان ماديون بيحبوا البيتشل.
+      ar: يحب سكان ماديون البيتشل.
+      en: Madiun's inhabitants love pecel.
+    answer: Pedunung Madiun seneng pecel.
+    distractors: [kulon, pedhut]
+    words: [pedunung]
+  - id: e09
     type: translate
     direction: from_target
-    source_text: Ing Madiun ana papan-papan kang misuwur, yaiku Jalan Pahlawan, Alun-alun lan Stasiun Madiun.
+    source_text: Tlatah Madiun kalebu wewengkon Mataraman.
     answers_meaning:
-      ar_eg:
-        - في ماديون أماكن مشهورة، هي شارع باهلاوان والألون ألون ومحطة ماديون.
-        - في ماديون أماكن مشهورة، شارع باهلاوان والألون ألون ومحطة ماديون.
-        - في ماديون فيه أماكن مشهورة، يعني شارع باهلاوان والميدان ومحطة ماديون.
-        - في ماديون أماكن مشهورة، هي Jalan Pahlawan وAlun-alun وStasiun Madiun.
-      ar:
-        - في ماديون أماكن مشهورة، هي شارع باهلاوان والألون ألون ومحطة ماديون.
-        - في ماديون أماكن مشهورة، أي شارع باهلاوان والميدان ومحطة ماديون.
-        - في ماديون أماكن مشهورة، هي Jalan Pahlawan وAlun-alun وStasiun Madiun.
-      en:
-        - Madiun has famous places, namely Jalan Pahlawan, the Alun-alun and Madiun Station.
-        - In Madiun there are famous places, namely Jalan Pahlawan, the Alun-alun and Madiun Station.
-        - Madiun has famous places, namely Jalan Pahlawan, the town square and Madiun Station.
-        - Madiun has famous places, Jalan Pahlawan, the Alun-alun and Madiun Station.
-        - Madiun has some famous places, namely Jalan Pahlawan, the Alun-alun and Stasiun Madiun.
-    words: [papan, misuwur, yaiku]
-  - id: e07
-    type: dictation
-    text: Madiun misuwur minangka Kutha Pendekar.
-    meaning:
-      ar_eg: ماديون مشهورة بإنها «مدينة المقاتلين» (أبطال السيلات).
-      ar: تشتهر ماديون بوصفها «مدينة المقاتلين» (أبطال السيلات).
-      en: Madiun is famous as the Kutha Pendekar, the city of silat fighters.
-    words: [minangka, misuwur]
-  - id: e08
+      ar_eg: [منطقة ماديون تبع نطاق ماتارامان, أرض ماديون من حتة ماتارامان]
+      ar: [تدخل منطقة ماديون ضمن نطاق ماتارامان, إقليم ماديون جزء من منطقة ماتارامان]
+      en: [The Madiun territory is part of the Mataraman area, The land of Madiun belongs to the Mataraman region]
+    words: [tlatah, wewengkon]
+  - id: e10
     type: speaking
-    text: Madiun iku kutha ing Jawa Timur, adoh saka segara.
+    text: Wewengkon sisih kulon kondhang banget.
     meaning:
-      ar_eg: ماديون مدينة في جاوة الشرقية، بعيدة عن البحر.
-      ar: ماديون مدينة في جاوة الشرقية، بعيدة عن البحر.
-      en: Madiun is a city in East Java, far from the sea.
-    words: [segara]
+      ar_eg: الحتة الغربية مشهورة أوي.
+      ar: المنطقة الغربية مشهورة جدًا.
+      en: The western area is very famous.
+    words: [wewengkon, kulon, kondhang]
 dialogue:
-  title: Sawise maca artikel
   lines:
     - speaker: Mohamed
-      text: Mbak, artikel iki ngomong ana papan misuwur telu ing Madiun.
-      ar_eg: يا آيو، المقالة دي بتقول فيه تلات أماكن مشهورة في ماديون.
-      ar: يا آيو، تقول هذه المقالة إن في ماديون ثلاثة أماكن مشهورة.
-      en: Ayu, this article says there are three famous places in Madiun.
+      text: Mbak, Madiun iki dumunung ing ngendi ta?
+      ar_eg: يا مبك، ماديون دي بتقع فين؟
+      ar: يا مبك، أين تقع ماديون؟
+      en: Mbak, where exactly is Madiun?
     - speaker: Mbak Ayu
-      text: Iya, Jalan Pahlawan, Alun-alun lan Stasiun Madiun.
-      ar_eg: آه، شارع باهلاوان والألون ألون ومحطة ماديون.
-      ar: نعم، شارع باهلاوان والألون ألون ومحطة ماديون.
-      en: Yes, Jalan Pahlawan, the Alun-alun and Madiun Station.
+      text: Ing sisih kulon Jawa Timur, cedhak tapel wates Jawa Tengah, lho.
+      ar_eg: في الحتة الغربية من جاوة الشرقية، جنب حدود جاوة الوسطى.
+      ar: في غرب جاوة الشرقية، قرب حدود جاوة الوسطى.
+      en: In the west of East Java, near the Central Java border.
     - speaker: Mohamed
-      text: Segara adoh saka kene?
-      ar_eg: البحر بعيد عن هنا؟
-      ar: هل البحر بعيد من هنا؟
-      en: Is the sea far from here?
+      text: Pedununge akeh, to?
+      ar_eg: سكانها كتير، صح؟
+      ar: سكانها كثيرون، أليس كذلك؟
+      en: Lots of people live here, right?
     - speaker: Mbak Ayu
-      text: Adoh, lho. Madiun ora duwe pesisir. Sing cedhak segara iku Pacitan.
-      ar_eg: بعيد أوي. ماديون مالهاش ساحل. اللي قريبة من البحر هي باتشيتان.
-      ar: بعيد جدًا. ليس لماديون ساحل، والقريبة من البحر هي باتشيتان.
-      en: It's far! Madiun has no coast. The town near the sea is Pacitan.
+      text: Cacahe kurang luwih rong atus ewu. Ora akeh, nanging rame.
+      ar_eg: عددهم حوالي ميتين ألف. مش كتير، بس الدنيا زحمة.
+      ar: عددهم نحو مئتي ألف. ليسوا كثيرين، لكنها مدينة حيّة.
+      en: About two hundred thousand. Not many, but it's lively.
     - speaker: Mohamed
-      text: Yo wis, ayo menyang Alun-alun, banjur mangan pecel!
-      ar_eg: خلاص، يلا نروح الألون ألون، وبعدين ناكل بيتشيل!
-      ar: حسنًا، هيا إلى الألون ألون، ثم نأكل البيتشيل!
-      en: OK then, let's go to the Alun-alun, then eat pecel!
+      text: Lha kok kondhang banget?
+      ar_eg: أمال مشهورة أوي كده ليه؟
+      ar: فلماذا هي مشهورة جدًا إذن؟
+      en: So why is it so famous?
+    - speaker: Mbak Ayu
+      text: Pecel lan brem, ya ta! Lan esuk-esuk Wilis ketutup pedhut, apik tenan.
+      ar_eg: البيتشل والبريم طبعًا! والصبح جبل ويليس بيتغطّى بالضباب، حاجة حلوة أوي.
+      ar: البيتشل والبريم طبعًا! وصباحًا يغطي الضباب جبل ويليس، منظر رائع.
+      en: Pecel and brem, of course! And in the morning Wilis is wrapped in fog. Gorgeous.
 new_words:
-  - word: pulo
+  - word: tlatah
     pos: noun
-    ar_eg: جزيرة
-    ar: جزيرة
-    en: island = pulau
-  - word: segara
+    ar_eg: منطقة، أرض
+    ar: إقليم، أرض
+    en: territory, land
+  - word: wewengkon
     pos: noun
-    ar_eg: بحر (بتتنطق «سِغورو»)
-    ar: بحر (تُنطق «سِغورو»)
-    en: sea = laut (said "segoro")
+    ar_eg: نطاق، حتة (إدارية)
+    ar: نطاق، منطقة
+    en: area, district
+  - word: dumunung
+    pos: verb
+    ar_eg: بيقع (في مكان)
+    ar: يقع
+    en: be located
+  - word: pedunung
+    pos: noun
+    ar_eg: السكان
+    ar: السكان
+    en: inhabitants
+  - word: cacah
+    pos: noun
+    ar_eg: عدد
+    ar: عدد
+    en: number, count
+  - word: kondhang
+    pos: adjective
+    ar_eg: مشهور
+    ar: مشهور
+    en: famous
+  - word: kulon
+    pos: noun
+    ar_eg: غرب
+    ar: غرب
+    en: west
+  - word: pedhut
+    pos: noun
+    ar_eg: ضباب
+    ar: ضباب
+    en: fog, mist
 review:
   status: draft
   verified: false

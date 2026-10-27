@@ -135,35 +135,36 @@ exercises:
     words: [putar, bahu]
   - id: e07
     type: speaking
-    text: Lihat ke depan, lalu lompat di tempat. Jangan takut!
+    text: Lihat ke depan, lalu lompat di tempat kayak gini. Jangan takut!
     meaning:
-      ar_eg: بُص قدامك، وبعدين نُط في مكانك. ماتخافش!
-      ar: انظر إلى الأمام، ثم اقفز في مكانك. لا تخف!
-      en: Look ahead, then jump on the spot. Don't be afraid!
-    words: [lihat, lompat, tempat, takut]
+      ar_eg: بُص قدامك، وبعدين نُط في مكانك كده. ماتخافش!
+      ar: انظر إلى الأمام، ثم اقفز في مكانك هكذا. لا تخف!
+      en: Look ahead, then jump on the spot like this. Don't be afraid!
+    words: [lihat, lompat, tempat, kayak, takut]
   - id: e08
     type: listen
-    text: Putar kepala, lalu lompat.
-    options: ['Putar kepala, lalu lompat.', 'Lihat kepala, lalu lompat.', 'Putar kepala, lalu berdiri.']
+    text: Putar kepala kayak gini, lalu lompat.
+    options: ['Putar kepala kayak gini, lalu lompat.', 'Lihat kepala kayak gini, lalu lompat.', 'Putar kepala kayak gini, lalu berdiri.']
     answer: 0
     meaning:
-      ar_eg: لِف راسك، وبعدين نُط.
-      ar: أدِر رأسك، ثم اقفز.
-      en: Turn your head, then jump.
-    words: [putar, lompat, lihat, berdiri]
+      ar_eg: لِف راسك كده، وبعدين نُط.
+      ar: أدِر رأسك هكذا، ثم اقفز.
+      en: Turn your head like this, then jump.
+    words: [putar, kayak, lompat, lihat, berdiri]
   - id: e09
     type: multiple_choice
+    question: ___ gini, Mas?
     question_meaning:
-      ar_eg: أنهي كلمة معناها «نُط»؟
-      ar: أيّ كلمة تعني «اقفز»؟
-      en: Which word means "jump"?
-    options: [putar, turunkan, lompat]
-    answer: 2
-    words: [lompat, putar, turunkan]
+      ar_eg: "محمد بيعمل الحركة ويسأل المدرّب: «كده يا كابتن؟»"
+      ar: "يؤدي محمد الحركة ويسأل المدرّب: «هكذا يا أستاذ؟»"
+      en: Mohamed does the move and asks the coach, "Like this, Mas?"
+    options: [Kayak, Putar, Turunkan]
+    answer: 0
+    words: [kayak, putar, turunkan]
     explain:
-      ar_eg: lompat = نُط. putar = لفّ، وturunkan = نزّل.
-      ar: lompat = اقفز. أما putar فـ«لُفّ» وturunkan «أنزِل».
-      en: lompat = jump. putar is turn, turunkan lower.
+      ar_eg: kayak gini = seperti ini (كده، زي كده). putar = لفّ، وturunkan = نزّل.
+      ar: kayak gini = seperti ini (هكذا). أما putar فـ«لُفّ» وturunkan «أنزِل».
+      en: kayak gini = seperti ini (like this). putar is turn, turunkan is lower.
   - id: e10
     type: fill_blank
     sentence: Jangan ___! Kamu bisa!
@@ -247,6 +248,11 @@ new_words:
     ar_eg: خايف (jangan takut = ماتخافش)
     ar: خائف (jangan takut = لا تخف)
     en: afraid (jangan takut = don't be afraid)
+  - word: kayak
+    pos: preposition
+    ar_eg: زي (في الكلام؛ الرسمي seperti)؛ kayak gini = كده
+    ar: مثل (في الكلام؛ والفصيح seperti)؛ kayak gini = هكذا
+    en: like (spoken; formal seperti); kayak gini = like this
 review:
   status: draft
   verified: false

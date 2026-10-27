@@ -1,192 +1,201 @@
 schema: kabar.lesson/v1
 id: j5.u02.l08
 language: jv
-title: Warta radio
+title: Pameran ing stasiun
 can_do:
-  ar_eg: تسمع نشرة أخبار قصيرة بالجاوي وتفهم إيه اللي حصل ومين عمل إيه.
-  ar: أن تستمع إلى نشرة أخبار جاوية قصيرة وتفهم ما حدث ومن فعل ماذا.
-  en: Follow a short Javanese radio news bulletin by ear.
+  ar_eg: تقرا خبر عن معرض وتعرف مين عمل إيه وإمتى.
+  ar: أن تقرأ خبرًا عن معرض وتعرف من فعل ماذا ومتى.
+  en: Read a news item about an exhibition and find who did what, and when.
+slides:
+  - title: Warta pameran
+    body:
+      ar_eg: |
+        خبر قصير من جرنان ماديون، كله مبني للمجهول زي الأخبار الإندونيسي. اسأل كل جملة: إيه اللي حصل؟ ومين عمله (dening)؟
+        كلمات جديدة: pameran = معرض (pameran)، dianakake = اتعمل / اتنظّم (diadakan، من ana + -ake)، dibukak = اتفتح (dibuka). وWalikota = عمدة المدينة (wali kota)، وdijupuk من jupuk = اتاخدت (diambil).
+      ar: |
+        خبر قصير من صحيفة ماديون، كله بالمبني للمجهول كالأخبار الإندونيسية. اسأل عن كل جملة: ماذا حدث؟ ومن فعله (dening)؟
+        كلمات جديدة: pameran = معرض (pameran)، وdianakake = أُقيم (diadakan، من ana + -ake)، وdibukak = افتُتح (dibuka). وWalikota = عمدة المدينة (wali kota)، وdijupuk من jupuk = التُقطت (diambil).
+      en: |
+        A short item from a Madiun paper, all in the passive like Indonesian news. Ask of each sentence: what happened, and who did it (dening)?
+        New words: pameran = exhibition (pameran), dianakake = was held (diadakan, from ana + -ake), dibukak = was opened (dibuka). Walikota = mayor (wali kota), and dijupuk, from jupuk, = was taken (diambil).
+    grammar: jv.passive.written
+    examples:
+      - text: Pameran foto sepur lawas dianakake ing Stasiun Madiun.
+        ar_eg: اتعمل معرض صور للقطرات القديمة في محطة ماديون.
+        ar: أُقيم معرض صور للقطارات القديمة في محطة ماديون.
+        en: An exhibition of photos of old trains is being held at Madiun Station.
+      - text: Pameran kasebut dibukak dening Walikota Madiun wingi esuk.
+        ar_eg: المعرض ده افتتحه عمدة ماديون امبارح الصبح.
+        ar: افتتح عمدة ماديون المعرض المذكور صباح أمس.
+        en: The exhibition was opened by the Mayor of Madiun yesterday morning.
+      - text: Foto-foto kasebut dijupuk ing jaman Walanda.
+        ar_eg: الصور دي اتصوّرت أيام الهولنديين.
+        ar: التُقطت هذه الصور في العهد الهولندي.
+        en: The photos were taken in the Dutch era.
 exercises:
   - id: e01
-    type: listen
-    text: Warta saka Madiun. Esuk iki, dalan ing Manguharjo kebanjiran maneh.
-    question:
-      ar_eg: دي نشرة الراديو الصبح. إيه اللي حصل؟
-      ar: هذه نشرة الإذاعة صباحًا. ماذا حدث؟
-      en: This is the morning radio news. What happened?
-    options:
-      - Dalan ing Manguharjo kebanjiran.
-      - Ana pameran ing Stasiun Madiun.
-      - Sepur saka Jakarta wis teka.
-    answer: 0
-    meaning:
-      ar_eg: أخبار من ماديون. النهارده الصبح، الشارع في مانجوهارجو غرق مية تاني.
-      ar: أخبار من ماديون. صباح اليوم غمرت المياهُ طريقَ مانغوهارجو مرة أخرى.
-      en: News from Madiun. This morning the road in Manguharjo was flooded again.
-    explain:
-      ar_eg: maneh = تاني (lagi). يعني ده بيحصل كتير هناك، فاكر kerep؟
-      ar: maneh = مرة أخرى (lagi)، أي أن ذلك يتكرر هناك، كما في kerep.
-      en: maneh = again (lagi), so it happens often there; remember kerep?
-    words: [kebanjiran, maneh]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: المعرض عن إيه؟
+      ar: عمَّ هذا المعرض؟
+      en: What is the exhibition about?
+    options: [buku lawas, foto sepur lawas, pecel Madiun]
+    answer: 1
+    words: [pameran]
   - id: e02
     type: listen
-    text: Dalan kasebut ditutup dening polisi nganti sore.
+    text: Pameran kasebut dibukak dening Walikota Madiun wingi esuk.
     question:
-      ar_eg: مين اللي قفل الشارع؟
-      ar: من أغلق الطريق؟
-      en: Who closed the road?
-    options: [warga, polisi, lurah]
-    answer: 1
-    meaning:
-      ar_eg: الشرطة قفلت الشارع ده لحد العصر.
-      ar: أغلقت الشرطة هذا الطريق حتى المساء.
-      en: The road was closed by the police until the afternoon.
-    explain:
-      ar_eg: ditutup = اتقفل (ditutup). اللي بعد dening = الفاعل.
-      ar: ditutup = أُغلق (ditutup)، ومن يأتي بعد dening هو الفاعل.
-      en: ditutup = was closed (ditutup); whoever follows dening did it.
-    words: [ditutup, dening]
-  - id: e03
-    type: listen
-    text: Sesuk esuk, dalan kasebut bakal diresiki dening warga.
-    question:
-      ar_eg: الشارع هيتنضّف إمتى؟
-      ar: متى سيُنظَّف الطريق؟
-      en: When will the road be cleaned?
-    options: [esuk iki, nganti sore, sesuk esuk]
+      ar_eg: مين اللي افتتح المعرض؟
+      ar: من افتتح المعرض؟
+      en: Who opened the exhibition?
+    options: [warga, perusahaan sepur, Walikota Madiun]
     answer: 2
     meaning:
-      ar_eg: بكرة الصبح، السكان هينضّفوا الشارع ده.
-      ar: صباح الغد سينظّف السكانُ هذا الطريق.
-      en: Tomorrow morning the road will be cleaned by the residents.
-    words: [diresiki, warga, bakal]
+      ar_eg: المعرض ده افتتحه عمدة ماديون امبارح الصبح.
+      ar: افتتح عمدة ماديون المعرض المذكور صباح أمس.
+      en: The exhibition was opened by the Mayor of Madiun yesterday morning.
+    explain:
+      ar_eg: اللي بعد dening هو اللي عمل الفعل.
+      ar: من يأتي بعد dening هو الفاعل.
+      en: Whoever comes after dening did the action.
+    words: [dibukak, dening]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الصور اتصوّرت إمتى؟
+      ar: متى التُقطت الصور؟
+      en: When were the photos taken?
+    options: [ing jaman Walanda, wingi esuk, saiki]
+    answer: 0
+    explain:
+      ar_eg: wingi esuk ده وقت افتتاح المعرض، مش وقت الصور.
+      ar: wingi esuk وقت افتتاح المعرض، لا وقت التقاط الصور.
+      en: wingi esuk is when the exhibition opened, not when the photos were taken.
+    words: [dijupuk]
   - id: e04
     type: match_pairs
     pairs:
-      - text: ditutup
-        ar_eg: اتقفل
-        ar: أُغلق
-        en: was closed
-      - text: diresiki
-        ar_eg: اتنضّف
-        ar: نُظّف
-        en: was cleaned
-      - text: kebanjiran
-        ar_eg: غرق / اتغمر بالمية
-        ar: غمرته المياه
-        en: got flooded
-      - text: luber
-        ar_eg: فاض / طفح
-        ar: فاض
-        en: overflowed
-      - text: kerep
-        ar_eg: كتير / غالبًا
-        ar: كثيرًا
-        en: often
-    words: [ditutup, diresiki, kebanjiran, luber, kerep]
+      - text: pameran
+        ar_eg: معرض
+        ar: معرض
+        en: exhibition
+      - text: dianakake
+        ar_eg: اتعمل / اتنظّم
+        ar: أُقيم
+        en: was held
+      - text: dibukak
+        ar_eg: اتفتح
+        ar: افتُتح
+        en: was opened
+      - text: dijupuk
+        ar_eg: اتاخد
+        ar: أُخذ / التُقط
+        en: was taken
+      - text: kasebut
+        ar_eg: المذكور / ده
+        ar: المذكور
+        en: the said, that
+    words: [pameran, dianakake, dibukak, kasebut]
   - id: e05
     type: fill_blank
-    sentence: Dalan kasebut ___ dening polisi nganti sore.
+    sentence: Pameran foto sepur lawas ___ ing Stasiun Madiun.
     meaning:
-      ar_eg: الشرطة قفلت الشارع ده لحد العصر.
-      ar: أغلقت الشرطة هذا الطريق حتى المساء.
-      en: The road was closed by the police until the afternoon.
-    options: [diresiki, dibangun, ditutup]
-    answers: [ditutup]
-    words: [ditutup]
+      ar_eg: اتعمل معرض صور للقطرات القديمة في محطة ماديون.
+      ar: أُقيم معرض صور للقطارات القديمة في محطة ماديون.
+      en: An exhibition of photos of old trains is being held at Madiun Station.
+    options: [dijupuk, dianakake, didandani]
+    answers: [dianakake]
+    explain:
+      ar_eg: المعرض «بيتعمل» = dianakake. الصور هي اللي dijupuk.
+      ar: المعرض «يُقام» = dianakake، أما الصور فهي التي dijupuk.
+      en: An exhibition is held = dianakake; it's the photos that were dijupuk.
+    words: [dianakake, pameran]
   - id: e06
     type: dictation
-    text: Sesuk esuk, dalan kasebut bakal diresiki dening warga.
+    text: Pameran foto sepur lawas dianakake ing Stasiun Madiun.
     meaning:
-      ar_eg: بكرة الصبح، السكان هينضّفوا الشارع ده.
-      ar: صباح الغد سينظّف السكانُ هذا الطريق.
-      en: Tomorrow morning the road will be cleaned by the residents.
-    words: [diresiki, warga, dening, bakal]
+      ar_eg: اتعمل معرض صور للقطرات القديمة في محطة ماديون.
+      ar: أُقيم معرض صور للقطارات القديمة في محطة ماديون.
+      en: An exhibition of photos of old trains is being held at Madiun Station.
+    words: [pameran, dianakake]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (بأسلوب الأخبار) الشرطة قفلت الشارع.
-      ar: (بأسلوب الأخبار) أغلقت الشرطة الطريق.
-      en: (news style) The road was closed by the police.
-    answers:
-      - Dalan kasebut ditutup dening polisi.
-      - Dalan iku ditutup dening polisi.
-      - Dalane ditutup dening polisi.
-      - Dalan ditutup dening polisi.
-      - Dalan iki ditutup dening polisi.
-    words: [ditutup, dening]
+    type: build_sentence
+    source:
+      ar_eg: (بأسلوب الأخبار) المعرض ده افتتحه عمدة ماديون.
+      ar: (بأسلوب الأخبار) افتتح عمدة ماديون المعرض المذكور.
+      en: (news style) The exhibition was opened by the Mayor of Madiun.
+    answer: Pameran kasebut dibukak dening Walikota Madiun.
+    distractors: [dianakake, saka]
+    words: [pameran, dibukak, dening, kasebut]
   - id: e08
-    type: speaking
-    text: Warta saka Madiun. Dalan ing Manguharjo kebanjiran maneh.
-    meaning:
-      ar_eg: أخبار من ماديون. الشارع في مانجوهارجو غرق مية تاني.
-      ar: أخبار من ماديون. غمرت المياهُ طريقَ مانغوهارجو مرة أخرى.
-      en: News from Madiun. The road in Manguharjo was flooded again.
-    words: [kebanjiran, maneh]
-  - id: e09
-    type: fill_blank
-    sentence: Sesuk dalan iki ___ diresiki.
-    meaning:
-      ar_eg: بكرة الشارع ده هيتنضّف.
-      ar: سيُنظَّف هذا الشارع غدًا.
-      en: Tomorrow this road will be cleaned.
-    options: [bakal, wis, lagi]
-    answers: [bakal]
-    words: [bakal]
-  - id: e10
-    type: multiple_choice
-    question: Dalan ing Manguharjo kebanjiran maneh.
-    question_meaning:
-      ar_eg: معنى الجملة دي إيه؟
-      ar: ما معنى هذه الجملة؟
-      en: What does this sentence mean?
-    options: ['الشارع في مانجوهارجو غرق مية تاني.', 'الشارع في مانجوهارجو لسه ماغرقش.', 'الشارع في مانجوهارجو عمره ما غرق.']
-    answer: 0
-    explain:
-      ar_eg: maneh = تاني (lagi). بتيجي بعد الفعل.
-      ar: maneh = مرة أخرى (lagi)، وتأتي بعد الفعل.
-      en: maneh = again (lagi); it comes after the verb.
-    words: [maneh, kebanjiran]
+    type: translate
+    direction: from_target
+    source_text: Foto-foto kasebut dijupuk ing jaman Walanda.
+    answers_meaning:
+      ar_eg:
+        - الصور دي اتصوّرت أيام الهولنديين.
+        - الصور دي اتاخدت أيام الهولنديين.
+        - الصور دي اتصوّرت في عهد الهولنديين.
+        - الصور المذكورة اتصوّرت أيام هولندا.
+        - الصور دي اتصورت في العصر الهولندي.
+      ar:
+        - التُقطت هذه الصور في العهد الهولندي.
+        - التُقطت الصور المذكورة في العهد الهولندي.
+        - التُقطت هذه الصور في زمن الهولنديين.
+        - أُخذت هذه الصور في العهد الهولندي.
+      en:
+        - The photos were taken in the Dutch era.
+        - These photos were taken in the Dutch era.
+        - The said photos were taken in the Dutch era.
+        - The photos were taken in the Dutch colonial era.
+        - The photos were taken during the Dutch era.
+        - Those photos were taken in Dutch times.
+    words: [dijupuk, kasebut]
 dialogue:
-  title: Krungu warta radio
+  title: Ayo menyang pameran
   lines:
-    - speaker: Mbak Ayu
-      text: Mohamed, krungu warta radio esuk iki?
-      ar_eg: يا محمد، سمعت نشرة الراديو النهارده الصبح؟
-      ar: يا محمد، هل سمعت نشرة الإذاعة صباح اليوم؟
-      en: Mohamed, did you hear the radio news this morning?
+    - speaker: Pak Harjo
+      text: Mas, wis maca warta? Ana pameran foto ing Stasiun Madiun.
+      ar_eg: يا محمد، قريت الخبر؟ فيه معرض صور في محطة ماديون.
+      ar: يا محمد، هل قرأت الخبر؟ هناك معرض صور في محطة ماديون.
+      en: Mohamed, have you read the news? There's a photo exhibition at Madiun Station.
     - speaker: Mohamed
-      text: Krungu. Dalan ing Manguharjo kebanjiran maneh.
-      ar_eg: سمعت. الشارع في مانجوهارجو غرق مية تاني.
-      ar: سمعت. غمرت المياهُ طريقَ مانغوهارجو مرة أخرى.
-      en: I did. The road in Manguharjo flooded again.
-    - speaker: Mbak Ayu
-      text: Waduh, aku arep menyang Manguharjo.
-      ar_eg: يا خبر، ده أنا رايحة مانجوهارجو.
-      ar: يا للأسف، كنت أنوي الذهاب إلى مانغوهارجو.
-      en: Oh no, I'm about to go to Manguharjo.
+      text: Sampun, Pak. Fotonipun saking jaman Walanda, nggih?
+      ar_eg: قريته يا عمّو. الصور من أيام الهولنديين، صح؟
+      ar: قرأته يا سيدي. الصور من العهد الهولندي، أليس كذلك؟
+      en: I have, sir. The photos are from the Dutch era, aren't they?
+    - speaker: Pak Harjo
+      text: Iya. Foto-foto iku dijupuk ing jaman Walanda.
+      ar_eg: آه. الصور دي اتصوّرت أيام الهولنديين.
+      ar: نعم. التُقطت تلك الصور في العهد الهولندي.
+      en: Yes. Those photos were taken in the Dutch era.
     - speaker: Mohamed
-      text: Aja saiki! Dalane ditutup dening polisi nganti sore.
-      ar_eg: بلاش دلوقتي! الشرطة قافلة الشارع لحد العصر.
-      ar: لا تذهبي الآن! أغلقت الشرطة الطريق حتى المساء.
-      en: Not now! The road's been closed by the police until the afternoon.
-    - speaker: Mbak Ayu
-      text: Ya wis, sesuk wae.
-      ar_eg: خلاص، بكرة بقى.
-      ar: حسنًا، غدًا إذن.
-      en: All right, tomorrow then.
+      text: Kula badhe ningali, Pak.
+      ar_eg: أنا عايز أتفرّج عليها يا عمّو.
+      ar: أريد أن أراها يا سيدي.
+      en: I'd like to see them, sir.
+    - speaker: Pak Harjo
+      text: Ayo, saiki wae. Pamerane dibukak nganti sore.
+      ar_eg: يلا، دلوقتي حالًا. المعرض مفتوح لحد العصر.
+      ar: هيا، الآن. المعرض مفتوح حتى المساء.
+      en: Come on, right now. The exhibition is open until the afternoon.
 new_words:
-  - word: ditutup
+  - word: pameran
+    pos: noun
+    ar_eg: معرض
+    ar: معرض
+    en: exhibition = pameran
+  - word: dianakake
     pos: verb
-    ar_eg: اتقفل (من tutup = يقفل)
-    ar: أُغلق (من tutup = أغلق)
-    en: was closed (from tutup) = ditutup
-  - word: bakal
-    pos: particle
-    ar_eg: هـ (مستقبل)، حـ
-    ar: سوف، سـ
-    en: will (future) = akan
+    ar_eg: اتعمل / اتنظّم (من ana + -ake)
+    ar: أُقيم (من ana + -ake)
+    en: was held (from ana + -ake) = diadakan
+  - word: dibukak
+    pos: verb
+    ar_eg: اتفتح (من bukak = يفتح)
+    ar: افتُتح (من bukak = فتح)
+    en: was opened (from bukak, open) = dibuka
 review:
   status: draft
   verified: false

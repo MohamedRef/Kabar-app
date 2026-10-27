@@ -110,8 +110,12 @@ impl Track {
         if at(w) || self.exclude.contains(w) {
             return true;
         }
-        // A street form ("nggak", "makasih") is known once its formal twin is,
-        // and a street -in verb ("bacain", "dengerin") once its root is.
+        // A street form ("nggak", "makasih", Javanese "nggih") is known once
+        // its formal twin is, and a street -in verb ("bacain", "dengerin")
+        // once its root is.
+        if self.lang == "jv" && street::formal(Lang::Javanese, w).is_some_and(at) {
+            return true;
+        }
         if self.lang == "id" {
             let street = |w: &str| at(w) || street::formal(Lang::Indonesian, w).is_some_and(at);
             if street(w) {
