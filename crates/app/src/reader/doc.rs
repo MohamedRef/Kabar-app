@@ -4,6 +4,7 @@
 
 use std::sync::OnceLock;
 
+use kabar_core::grammar::word::{self, WordClass};
 use kabar_core::lang::Lang;
 use kabar_core::lang::analyze::{AnalyzedToken, Engine, Morph};
 use kabar_core::lang::langid::Source;
@@ -72,6 +73,9 @@ pub struct Word {
     pub info: Option<WordInfo>,
     /// What the learner taught Kabar about this word: approved, or a draft.
     pub taught: Option<TaughtEntry>,
+    /// Verb, noun, adjective or function word, for its colour; worked out
+    /// once here so rendering only reads it. None for names and English.
+    pub class: Option<WordClass>,
 }
 
 impl Word {
@@ -331,7 +335,13 @@ fn word_of(mut analyzed: AnalyzedToken, lex: Lexicon) -> Word {
             .unwrap_or(lookup);
         format!("{prefix}:{lemma}")
     });
-    Word { analyzed, tag, slang, key, info, taught }
+    let class = match tag {
+        Tag::Indonesian => Some(Lang::Indonesian),
+        Tag::Javanese => Some(Lang::Javanese),
+        _ => None,
+    }
+    .and_then(|lang| word::class_in(&analyzed, lang, info.as_ref().and_then(|i| i.pos.as_deref())));
+    Word { analyzed, tag, slang, key, info, taught, class }
 }
 
 /// The engine's Javanese analysis, checked against the dictionary instead of
