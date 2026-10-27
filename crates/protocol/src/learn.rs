@@ -5,6 +5,11 @@
 //! An entry is a content-pack [`GlossEntry`] plus what only a taught entry
 //! has: the sources it came from and the sentence it was met in. Popovers,
 //! lessons and the next content batch read one gloss shape.
+//!
+//! These rows sync between devices that may run different builds, so unlike
+//! the content files they never reject unknown fields: an older build keeps
+//! a newer build's extra fields (in [`TaughtEntry::extra`]) and writes them
+//! back untouched, instead of failing the whole dictionary.
 
 use serde::{Deserialize, Serialize};
 
@@ -35,7 +40,6 @@ pub enum SourceKind {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
 pub struct TeachSource {
     pub kind: SourceKind,
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -49,7 +53,6 @@ pub struct TeachSource {
 /// The Arabic Bridge part of a taught entry (§12). The full card shape lives
 /// in `content::BridgeEntry`; this keeps what a single word needs.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
 pub struct TaughtBridge {
     /// The Arabic source word, vocalized where it helps.
     pub arabic: String,
@@ -63,7 +66,6 @@ pub struct TaughtBridge {
 
 /// Javanese speech level of the word and its counterparts (§13).
 #[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
 pub struct SpeechLevels {
     /// Level of this word: `ngoko`, `krama`, `krama_inggil` or `neutral`.
     pub level: String,
@@ -77,11 +79,14 @@ pub struct SpeechLevels {
 
 /// One word or phrase the learner taught Kabar.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
 pub struct TaughtEntry {
     pub schema: u32,
     /// The gloss itself. `status` is the review state (`unverified` = draft),
     /// `provenance.generator` is [`TAUGHT_GENERATOR`], `rank` is 0.
+    /// [`GlossEntry`] is strict for content files, so a synced one is read
+    /// leniently: top-level fields this build doesn't know yet are dropped
+    /// from it (see [`lenient_gloss`]).
+    #[serde(deserialize_with = "lenient_gloss")]
     pub entry: GlossEntry,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub bridge: Option<TaughtBridge>,
@@ -100,6 +105,35 @@ pub struct TaughtEntry {
     /// The learner changed fields by hand after the draft.
     #[serde(default)]
     pub edited: bool,
+    /// Fields from a newer build, kept so re-saving here doesn't lose them.
+    #[serde(flatten, default, skip_serializing_if = "serde_json::Map::is_empty")]
+    pub extra: serde_json::Map<String, serde_json::Value>,
+}
+
+/// Reads a [`GlossEntry`] from a synced row, dropping the top-level fields
+/// this build doesn't know (they come from a newer build). Anything else
+/// wrong is still an error, and the store skips that one row.
+fn lenient_gloss<'de, D: serde::Deserializer<'de>>(d: D) -> Result<GlossEntry, D::Error> {
+    use serde::de::Error;
+    let mut value = serde_json::Value::deserialize(d)?;
+    loop {
+        match serde_json::from_value::<GlossEntry>(value.clone()) {
+            Ok(entry) => return Ok(entry),
+            Err(e) => {
+                let unknown = unknown_field(&e.to_string());
+                let removed = unknown.and_then(|f| value.as_object_mut()?.remove(&f));
+                if removed.is_none() {
+                    return Err(D::Error::custom(e));
+                }
+            }
+        }
+    }
+}
+
+/// The field named by serde's "unknown field `x`, expected …" message.
+fn unknown_field(message: &str) -> Option<String> {
+    let rest = message.strip_prefix("unknown field `")?;
+    Some(rest[..rest.find('`')?].to_owned())
 }
 
 impl TaughtEntry {
@@ -168,6 +202,7 @@ mod tests {
             doubts: vec![],
             engine: "workers_ai".into(),
             edited: false,
+            extra: Default::default(),
         };
         assert_eq!(t.row_id(), "jv:dicul");
         assert!(t.is_draft() && !t.is_approved());

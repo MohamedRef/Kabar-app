@@ -19,12 +19,29 @@ impl Store {
         self.write_synced("taught_entries", row_id, OpKind::Delete, None).map(drop)
     }
 
-    /// Every live taught entry, in word order.
+    /// Every live taught entry, in word order. A row this build can't read
+    /// (written by a much newer one, say) is reported and skipped, so one
+    /// word never hides the rest of the dictionary.
     pub fn taught_entries(&self) -> Result<Vec<TaughtEntry>> {
-        let mut stmt = self.conn.prepare("SELECT entry FROM taught_entries WHERE deleted = 0 ORDER BY id")?;
-        let rows = stmt.query_map([], |r| r.get::<_, String>(0))?;
-        rows.map(|json| Ok(serde_json::from_str(&json?)?)).collect()
+        let mut stmt =
+            self.conn.prepare("SELECT id, entry FROM taught_entries WHERE deleted = 0 ORDER BY id")?;
+        let rows = stmt.query_map([], |r| Ok((r.get::<_, String>(0)?, r.get::<_, String>(1)?)))?;
+        let mut entries = Vec::new();
+        for row in rows {
+            let (id, json) = row?;
+            if let Some(entry) = read_taught(&id, &json) {
+                entries.push(entry);
+            }
+        }
+        Ok(entries)
     }
+}
+
+/// Decodes one stored row, reporting it when it can't be read.
+pub(super) fn read_taught(id: &str, json: &str) -> Option<TaughtEntry> {
+    serde_json::from_str(json)
+        .map_err(|e| crate::diag::report!("skipping unreadable taught word {id}: {e}"))
+        .ok()
 }
 
 #[cfg(test)]
@@ -47,6 +64,40 @@ mod tests {
         store.delete_taught(&entry.row_id()).unwrap();
         assert!(store.taught_entries().unwrap().is_empty());
         store.save_taught(&entry).unwrap();
+        assert_eq!(store.taught_entries().unwrap(), [entry]);
+    }
+
+    #[test]
+    fn a_row_from_a_newer_build_still_loads_and_keeps_its_fields() {
+        let mut store = Store::open_in_memory().unwrap();
+        let mut json: serde_json::Value =
+            serde_json::from_str(include_str!("../../../../fixtures/learn/taught.kalimat.json")).unwrap();
+        json["mnemonic"] = "kali + mat".into();
+        json["entry"]["audio_hint"] = "ka-LI-mat".into();
+        let entry: TaughtEntry = serde_json::from_value(json).unwrap();
+        assert_eq!(entry.extra["mnemonic"], "kali + mat");
+        store.save_taught(&entry).unwrap();
+        let loaded = store.taught_entries().unwrap();
+        assert_eq!(loaded, [entry]);
+        // Saving it again (say, after an edit here) writes the newer field back.
+        let saved = serde_json::to_value(&loaded[0]).unwrap();
+        assert_eq!(saved["mnemonic"], "kali + mat");
+    }
+
+    #[test]
+    fn one_unreadable_row_is_skipped_not_the_whole_dictionary() {
+        let mut store = Store::open_in_memory().unwrap();
+        let entry: TaughtEntry =
+            serde_json::from_str(include_str!("../../../../fixtures/learn/taught.kalimat.json")).unwrap();
+        store.save_taught(&entry).unwrap();
+        store
+            .conn
+            .execute(
+                "INSERT INTO taught_entries (id, entry, device_id, hlc_wall, hlc_counter) \
+                 VALUES ('id:zzz', '{\"entry\": 7}', 'dev', 1, 0)",
+                [],
+            )
+            .unwrap();
         assert_eq!(store.taught_entries().unwrap(), [entry]);
     }
 }
