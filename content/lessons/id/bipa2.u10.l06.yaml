@@ -1,216 +1,236 @@
 schema: kabar.lesson/v1
 id: bipa2.u10.l06
 language: id
-title: Ulangan Unit 10
+title: Alergi dan gatal
 can_do:
-  ar_eg: تتصرف في موقف صحي، من الأعراض للصيدلية للدعاء بالشفا.
-  ar: أن تتعامل مع موقف صحي من وصف الأعراض إلى الصيدلية والدعاء بالشفاء.
-  en: Handle a health situation.
+  ar_eg: 'تقول للدكتور عندك إيه: جرح، كسر، حساسية، هرش أو برد، وتفهم الحقنة والفيتامين.'
+  ar: 'أن تخبر الطبيب بما لديك: جرح أو كسر أو حساسية أو حكّة أو زكام، وتفهم الحقنة والفيتامين.'
+  en: 'Tell the doctor what''s wrong: a cut, a break, an allergy, an itch or flu, and follow talk of injections and vitamins.'
 slides:
-  - title: Saya sakit kepala, kepala saya sakit
+  - title: Di klinik
     body:
       ar_eg: |
-        - Saya sakit + جزء = عندي وجع: sakit kepala، sakit perut، sakit gigi، sakit tenggorokan. (من غير punya!)
-        - أو: Kepala saya sakit = راسي بتوجعني.
-        - Saya merasa pusing / mual / lemas، وSaya demam / batuk / pilek / masuk angin.
-        - على الدوا: tiga kali sehari، sebelum / sesudah makan، kocok dahulu.
-        - semoga / mudah-mudahan في أول الجملة: Semoga cepat sembuh! والرد: Amin.
-        - insya Allah، alhamdulillah زي عندنا.
-        - ayo / yuk = يلا، mari = هيا بنا (رسمية): Ayo, istirahat dulu!
+        pasien = المريض اللي عند الدكتور. luka = جرح، patah = مكسور: Kaki saya patah.
+        suntik = حقنة. vitamin = فيتامين.
+        alergi = حساسية: Saya alergi kacang. gatal = بيهرش (بياكلني). flu = برد، إنفلونزا.
       ar: |
-        - Saya sakit + عضو: sakit kepala، sakit perut، sakit gigi، sakit tenggorokan (بلا punya).
-        - أو: Kepala saya sakit = رأسي يؤلمني.
-        - Saya merasa pusing / mual / lemas، وSaya demam / batuk / pilek / masuk angin.
-        - وعلى الدواء: tiga kali sehari، sebelum / sesudah makan، kocok dahulu.
-        - semoga / mudah-mudahan تتصدر الجملة: Semoga cepat sembuh! والجواب: Amin.
-        - insya Allah وalhamdulillah كما في العربية.
-        - ayo / yuk = هيّا، mari = هلمّ (رسمية): Ayo, istirahat dulu!
+        pasien = المريض عند الطبيب. luka = جرح، patah = مكسور: Kaki saya patah.
+        suntik = حقنة. vitamin = فيتامين.
+        alergi = حساسية: Saya alergi kacang. gatal = يسبّب حكّة. flu = زكام، إنفلونزا.
       en: |
-        - Saya sakit + body part: sakit kepala, sakit perut, sakit gigi, sakit tenggorokan (no punya!).
-        - Or: Kepala saya sakit = my head hurts.
-        - Saya merasa pusing / mual / lemas; Saya demam / batuk / pilek / masuk angin.
-        - On medicine: tiga kali sehari, sebelum / sesudah makan, kocok dahulu.
-        - semoga / mudah-mudahan open the sentence: Semoga cepat sembuh! Reply: Amin.
-        - insya Allah, alhamdulillah — just as in Arabic.
-        - ayo / yuk = let's / come on, mari = let us (formal): Ayo, istirahat dulu!
-    grammar: id.pattern.sakit
+        pasien = patient. luka = wound, cut, patah = broken: Kaki saya patah.
+        suntik = injection. vitamin = vitamin.
+        alergi = allergy: Saya alergi kacang. gatal = itchy. flu = flu, a cold.
+    examples:
+      - text: Kaki saya patah waktu main bola.
+        ar_eg: رجلي اتكسرت وأنا بلعب كورة.
+        ar: انكسرت ساقي وأنا ألعب الكرة.
+        en: I broke my leg playing football.
+      - text: Saya alergi kacang. Kulit saya gatal.
+        ar_eg: عندي حساسية من الفول السوداني. جلدي بيهرشني.
+        ar: لديّ حساسية من الفول السوداني. جلدي يحكّني.
+        en: I'm allergic to peanuts. My skin itches.
+      - text: Pasien itu perlu suntik.
+        ar_eg: المريض ده محتاج حقنة.
+        ar: يحتاج ذلك المريض إلى حقنة.
+        en: That patient needs an injection.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: kepala
-        ar_eg: راس
-        ar: رأس
-        en: head
-      - text: perut
-        ar_eg: بطن
-        ar: بطن
-        en: stomach
-      - text: gigi
-        ar_eg: سنان
-        ar: أسنان
-        en: tooth
-      - text: tenggorokan
-        ar_eg: زور
-        ar: حلق
-        en: throat
-    words: [kepala, perut, gigi, tenggorokan]
+      - text: pasien
+        ar_eg: مريض
+        ar: مريض
+        en: patient
+      - text: luka
+        ar_eg: جرح
+        ar: جرح
+        en: wound
+      - text: patah
+        ar_eg: مكسور
+        ar: مكسور
+        en: broken
+      - text: suntik
+        ar_eg: حقنة
+        ar: حقنة
+        en: injection
+    words: [pasien, luka, patah, suntik]
   - id: e02
     type: match_pairs
     pairs:
-      - text: demam
-        ar_eg: سخونية
-        ar: حمّى
-        en: fever
-      - text: batuk
-        ar_eg: كحة
-        ar: سعال
-        en: cough
-      - text: pilek
-        ar_eg: رشح
+      - text: vitamin
+        ar_eg: فيتامين
+        ar: فيتامين
+        en: vitamin
+      - text: alergi
+        ar_eg: حساسية
+        ar: حساسية
+        en: allergy
+      - text: gatal
+        ar_eg: بيهرش
+        ar: يحكّ
+        en: itchy
+      - text: flu
+        ar_eg: برد
         ar: زكام
-        en: runny nose
-      - text: mual
-        ar_eg: نفسه غامّة
-        ar: غثيان
-        en: nauseous
-    words: [demam, batuk, pilek, mual]
+        en: flu
+    words: [vitamin, alergi, gatal, flu]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح؟
-      ar: أيّ الجملتين صحيحة؟
-      en: Which sentence is correct?
-    options: [Saya sakit perut., Saya punya sakit perut.]
-    answer: 0
-    explain:
-      ar_eg: مش محتاج punya. Saya sakit perut = عندي مغص.
-      ar: لا حاجة إلى punya.
-      en: No punya needed.
-    words: [sakit, perut]
-  - id: e04
     type: listen
-    text: Diminum tiga kali sehari sesudah makan.
-    options: [Diminum tiga kali sehari sesudah makan., Diminum tiga kali sehari sebelum makan., Diminum dua kali sehari sesudah makan.]
+    text: Saya alergi kacang. Kulit saya gatal sekali.
+    question:
+      ar_eg: عنده إيه؟
+      ar: ماذا لديه؟
+      en: What's his problem?
+    options: [حساسية من الفول السوداني, برد, رجل مكسورة]
     answer: 0
-    words: [diminum, sehari, sesudah]
+    meaning:
+      ar_eg: عندي حساسية من الفول السوداني. جلدي بيهرشني أوي.
+      ar: لديّ حساسية من الفول السوداني، وجلدي يحكّني كثيرًا.
+      en: I'm allergic to peanuts. My skin is really itchy.
+    words: [alergi, gatal]
+  - id: e04
+    type: fill_blank
+    sentence: Tangan saya ___ karena jatuh dari sepeda.
+    meaning:
+      ar_eg: إيدي ___ عشان وقعت من العجلة.
+      ar: يدي ___ لأنني سقطت عن الدراجة.
+      en: My arm is ___ because I fell off my bike.
+    options: [patah, gatal, flu]
+    answers: [patah]
+    words: [patah, gatal, flu]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: رينا عيانة ومش هتيجي الدرس. تبعتلها إيه؟
-      ar: رينا مريضة ولن تحضر الدرس. ماذا ترسل إليها؟
-      en: Rina is ill and missing class. What do you text her?
-    options: ['Semoga betah, ya!', Selamat ulang tahun!, 'Semoga cepat sembuh, ya!']
-    answer: 2
-    words: [semoga, sembuh]
+      ar_eg: اللي بيتعالج عند الدكتور اسمه إيه؟
+      ar: ماذا نسمّي من يعالجه الطبيب؟
+      en: What do you call someone a doctor treats?
+    options: [pasien, vitamin, luka]
+    answer: 0
+    explain:
+      ar_eg: pasien = مريض.
+      ar: pasien = مريض.
+      en: pasien = patient.
+    words: [pasien, vitamin, luka]
   - id: e06
     type: fill_blank
-    sentence: ___ besok kamu sudah sehat.
+    sentence: Saya batuk, pilek, dan pusing. Saya ___.
     meaning:
-      ar_eg: يا رب بكرة تبقى كويس.
-      ar: عسى أن تكون معافى غدًا.
-      en: Hopefully you'll be well by tomorrow.
-    options: [Kok, Mudah-mudahan, Ayo]
-    answers: [Mudah-mudahan]
-    words: [mudah-mudahan, sehat]
+      ar_eg: بكح ومزكّم ودايخ. عندي ___.
+      ar: أسعل وأنا مزكوم وأشعر بالدوار. لديّ ___.
+      en: I'm coughing, sniffly and dizzy. I've got ___.
+    options: [flu, luka, suntik]
+    answers: [flu]
+    words: [flu, luka, suntik]
   - id: e07
-    type: fill_blank
-    sentence: Sirup ini diminum dua ___ sehari.
-    meaning:
-      ar_eg: الشراب ده يتاخد مرتين في اليوم.
-      ar: يؤخذ هذا الشراب مرتين يوميًا.
-      en: This syrup is taken twice a day.
-    options: [kali, jam, sendok]
-    answers: [kali]
-    words: [kali, sehari]
+    type: build_sentence
+    source:
+      ar_eg: كل يوم الصبح باخد فيتامين.
+      ar: آخذ فيتامينًا كل صباح.
+      en: I take a vitamin every morning.
+    answer: Setiap pagi saya minum vitamin.
+    distractors: [suntik, luka]
+    words: [vitamin]
   - id: e08
-    type: build_sentence
-    source:
-      ar_eg: راسي بتوجعني وحاسس إن نفسي غامّة.
-      ar: رأسي يؤلمني وأشعر بالغثيان.
-      en: My head hurts and I feel nauseous.
-    answer: Kepala saya sakit dan saya merasa mual.
-    alternatives: [Saya sakit kepala dan saya merasa mual.]
-    distractors: [punya, semoga]
-    words: [kepala, sakit, merasa, mual]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: يلا نشرب جامو!
-      ar: هيّا نشرب الجامو!
-      en: Come on, let's drink some jamu!
-    answer: Ayo, kita minum jamu!
-    distractors: [kami, semoga]
-    explain:
-      ar_eg: الدعوة فيها اللي قدامك، يبقى kita مش kami.
-      ar: الدعوة تشمل المخاطَب فيلزم kita لا kami.
-      en: An invitation includes the listener, so kita, not kami.
-    words: [ayo, jamu]
-  - id: e10
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: عندي وجع سنان.
-      ar: عندي ألم في الأسنان.
-      en: I have a toothache.
-    answers: [Saya sakit gigi., Saya sakit gigi, Aku sakit gigi., Aku sakit gigi, Gigi saya sakit., Gigi saya sakit, Gigiku sakit.]
-    words: [sakit, gigi]
-  - id: e11
-    type: dictation
-    text: Kepala saya pusing dan badan saya lemas.
-    meaning:
-      ar_eg: راسي دايخة وجسمي هبطان.
-      ar: أشعر بالدوار والوهن.
-      en: I feel dizzy and weak.
-    words: [pusing, lemas]
-  - id: e12
+    direction: from_target
+    source_text: Ada luka kecil di jari saya.
+    answers_meaning:
+      ar_eg: [فيه جرح صغير في صباعي, صباعي فيه جرح صغير]
+      ar: [في إصبعي جرح صغير]
+      en: ['There''s a small cut on my finger', I have a little cut on my finger]
+    words: [luka]
+  - id: e09
     type: speaking
-    text: Dok, saya sakit perut sejak tadi malam.
+    text: Dokter, saya takut suntik!
     meaning:
-      ar_eg: يا دكتور، عندي مغص من امبارح بالليل.
-      ar: يا دكتور، أشعر بألم في بطني منذ الليلة الماضية.
-      en: Doctor, I've had a stomach ache since last night.
-    words: [sakit perut, sejak]
+      ar_eg: يا دكتور، أنا بخاف من الحقن!
+      ar: يا دكتور، أخاف من الحقن!
+      en: Doctor, I'm scared of injections!
+    words: [suntik]
+  - id: e10
+    type: multiple_choice
+    question: Dokter punya banyak ___ hari ini.
+    options: [pasien, alergi, patah]
+    answer: 0
+    explain:
+      ar_eg: 'الدكتور عنده عيانين كتير: pasien.'
+      ar: 'لدى الطبيب مرضى كثيرون: pasien.'
+      en: 'The doctor has many patients: pasien.'
+    words: [pasien, alergi, patah]
 dialogue:
-  title: Telepon untuk Rina
   lines:
-    - speaker: Rina
-      text: Halo, Mohamed! Kok kemarin tidak ikut kelas online?
-      ar_eg: ألو يا محمد! إزاي ماحضرتش الكلاس الأونلاين امبارح؟
-      ar: مرحبًا يا محمد! لماذا لم تحضر الدرس عبر الإنترنت أمس؟
-      en: Hi Mohamed! How come you missed the online class yesterday?
+    - speaker: Dokter
+      text: Selamat pagi. Sakit apa?
+      ar_eg: صباح الخير. عندك إيه؟
+      ar: صباح الخير. ممّ تشكو؟
+      en: Good morning. What's wrong?
     - speaker: Mohamed
-      text: Maaf, Rina. Saya sakit. Demam dan sakit tenggorokan.
-      ar_eg: آسف يا رينا. كنت عيان. سخونية والتهاب زور.
-      ar: آسف يا رينا. كنت مريضًا، عندي حمّى والتهاب في الحلق.
-      en: Sorry, Rina. I was ill. A fever and a sore throat.
-    - speaker: Rina
-      text: Aduh! Sudah ke dokter?
-      ar_eg: يا خبر! رحت للدكتور؟
-      ar: يا للأسف! هل ذهبت إلى الطبيب؟
-      en: Oh no! Have you seen a doctor?
+      text: Kulit saya gatal, Dok. Merah semua.
+      ar_eg: جلدي بيهرشني يا دكتور. كله أحمر.
+      ar: جلدي يحكّني يا دكتور، وكله أحمر.
+      en: My skin itches, doctor. It's all red.
+    - speaker: Dokter
+      text: Kemarin makan apa? Ada alergi?
+      ar_eg: امبارح كلت إيه؟ عندك حساسية؟
+      ar: ماذا أكلت أمس؟ هل لديك حساسية؟
+      en: What did you eat yesterday? Any allergies?
     - speaker: Mohamed
-      text: Sudah. Obatnya diminum tiga kali sehari. Sekarang sudah lebih baik, alhamdulillah.
-      ar_eg: أيوه. الدوا ٣ مرات في اليوم. ودلوقتي بقيت أحسن، الحمد لله.
-      ar: نعم. الدواء ثلاث مرات يوميًا، وأنا الآن أفضل، الحمد لله.
-      en: Yes. The medicine is three times a day. I'm better now, alhamdulillah.
-    - speaker: Rina
-      text: Alhamdulillah! Ayo, istirahat dulu. Semoga cepat sembuh, ya!
-      ar_eg: الحمد لله! يلا ارتاح شوية. ألف سلامة!
-      ar: الحمد لله! هيّا استرح قليلًا. شفاك الله سريعًا!
-      en: Thank goodness! Come on, get some rest. Get well soon!
+      text: Saya makan sate kacang. Apa saya alergi kacang?
+      ar_eg: كلت ساتيه بالفول السوداني. هو أنا عندي حساسية منه؟
+      ar: أكلت ساتيه بالفول السوداني. هل لديّ حساسية منه؟
+      en: I had satay with peanut sauce. Am I allergic to peanuts?
+    - speaker: Dokter
+      text: Ya, ini alergi. Minum obat ini, tidak perlu suntik.
+      ar_eg: أيوه، دي حساسية. خد الدوا ده، مش محتاج حقنة.
+      ar: نعم، هذه حساسية. تناول هذا الدواء، لا حاجة إلى حقنة.
+      en: Yes, it's an allergy. Take this medicine; no injection needed.
     - speaker: Mohamed
-      text: Amin. Terima kasih, Rina. Insya Allah minggu depan saya ikut kelas.
-      ar_eg: آمين. شكرًا يا رينا. إن شاء الله الأسبوع الجاي هحضر الكلاس.
-      ar: آمين. شكرًا يا رينا. إن شاء الله سأحضر الدرس الأسبوع القادم.
-      en: Amen. Thanks, Rina. God willing, I'll join class next week.
-souvenir:
-  id: bipa2.u10.souvenir
-  title: Jamu
-  note:
-    ar_eg: أول ما تعطس قدام حد إندونيسي، هيقولك «اشرب جامو!» — مشروب أعشاب زي الكركم والجنزبيل، بتبيعه ستات بيلفّوا بيه على البيوت من زمان. ولو قلت إنك «masuk angin»، ممكن حد يعرض عليك «kerokan»، وهي إنهم يحكّوا ضهرك بعملة معدنية. دلوقتي بقيت تعرف تقول إيه اللي بيوجعك، وتقرا روشتتك، وترد على «Semoga cepat sembuh» بـ «Amin».
-    ar: ما إن تعطس أمام إندونيسي حتى يقول لك «اشرب الجامو!»، وهو شراب أعشاب كالكركم والزنجبيل تبيعه نساء يطفن به على البيوت منذ زمن بعيد. وإن قلت إنك مصاب بـ«masuk angin» فقد يعرض عليك أحدهم «kerokan»، أي حكّ الظهر بقطعة نقدية. وأنت الآن تستطيع وصف ما يؤلمك، وقراءة وصفتك، والرد على «Semoga cepat sembuh» بـ«Amin».
-    en: Sneeze near an Indonesian and you'll hear "minum jamu!" — herbal drinks of turmeric, ginger and more, long sold by women who carry them door to door. Say you have "masuk angin" and someone may offer kerokan, scraping your back with a coin. Now you can say what hurts, read your prescription, and answer "Semoga cepat sembuh" with "Amin".
+      text: Bagus! Saya takut suntik.
+      ar_eg: الحمد لله! أنا بخاف من الحقن.
+      ar: الحمد لله! أخاف من الحقن.
+      en: Phew! I'm scared of injections.
+new_words:
+  - word: pasien
+    pos: noun
+    ar_eg: مريض (عند الدكتور)
+    ar: مريض
+    en: patient
+  - word: luka
+    pos: noun
+    ar_eg: جرح
+    ar: جرح
+    en: wound, cut
+  - word: patah
+    pos: adjective
+    ar_eg: مكسور
+    ar: مكسور
+    en: broken (bone, stick)
+  - word: suntik
+    pos: noun
+    ar_eg: حقنة
+    ar: حقنة
+    en: injection
+  - word: vitamin
+    pos: noun
+    ar_eg: فيتامين
+    ar: فيتامين
+    en: vitamin
+  - word: alergi
+    pos: noun
+    ar_eg: حساسية
+    ar: حساسية
+    en: allergy
+  - word: gatal
+    pos: adjective
+    ar_eg: بيهرش
+    ar: مسبّب للحكّة
+    en: itchy
+  - word: flu
+    pos: noun
+    ar_eg: برد، إنفلونزا
+    ar: زكام، إنفلونزا
+    en: flu, cold
 review:
   status: draft
   verified: false

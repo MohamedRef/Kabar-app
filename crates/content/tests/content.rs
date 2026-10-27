@@ -58,7 +58,7 @@ fn grammar_examples_use_spec_test_texts() {
 fn bipa_1_and_2_lessons_and_tests_exist() {
     let report = check_repo(root()).expect("content files load");
     assert_eq!(report.lessons.iter().filter(|l| l.starts_with("bipa1.")).count(), 98);
-    assert_eq!(report.lessons.iter().filter(|l| l.starts_with("bipa2.")).count(), 62);
+    assert_eq!(report.lessons.iter().filter(|l| l.starts_with("bipa2.")).count(), 85);
     for test in ["bipa1.test", "bipa2.test", "placement"] {
         assert!(report.tests.iter().any(|t| t == test), "missing content/tests/id/{test}.yaml");
     }

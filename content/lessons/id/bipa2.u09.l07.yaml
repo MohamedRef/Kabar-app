@@ -1,0 +1,236 @@
+schema: kabar.lesson/v1
+id: bipa2.u09.l07
+language: id
+title: Kemeja, dasi, perak
+can_do:
+  ar_eg: تختار لبس لفرح أو حفلة، وتتكلم عن الحرير والفضة والإزاز.
+  ar: أن تختار ملابس لحفل أو عرس، وتتحدث عن الحرير والفضة والزجاج.
+  en: Choose clothes for a party or wedding and talk about silk, silver and glass.
+slides:
+  - title: Ke pesta
+    body:
+      ar_eg: |
+        gaun = فستان سهرة، jas = جاكت بدلة، kemeja = قميص بزراير، dasi = كرافتة، sandal = صندل.
+        sutra = حرير، perak = فضة (Celuk في بالي = قرية الفضة).
+        kaca = إزاز، وفاكر kacamata؟ = نضارة («إزاز العين»).
+      ar: |
+        gaun = فستان سهرة، jas = سترة البدلة، kemeja = قميص بأزرار، dasi = ربطة عنق، sandal = صندل.
+        sutra = حرير، perak = فضّة (قرية Celuk في بالي مشهورة بالفضّة).
+        kaca = زجاج، وتذكّر kacamata = نظارة («زجاج العين»).
+      en: |
+        gaun = gown, dress, jas = suit jacket, kemeja = shirt (with buttons), dasi = tie, sandal = sandals.
+        sutra = silk, perak = silver (Celuk in Bali is the silver village).
+        kaca = glass; remember kacamata = glasses ("eye glass").
+    examples:
+      - text: Ke pesta, saya pakai kemeja putih dan dasi.
+        ar_eg: في الحفلة هلبس قميص أبيض وكرافتة.
+        ar: ألبس في الحفل قميصًا أبيض وربطة عنق.
+        en: For the party I'll wear a white shirt and tie.
+      - text: Gaun Rina dari sutra.
+        ar_eg: فستان رينا حرير.
+        ar: فستان رينا من الحرير.
+        en: Rina's dress is silk.
+      - text: Di Celuk ada banyak toko perak.
+        ar_eg: في تشيلوك فيه محلات فضة كتير.
+        ar: في تشيلوك متاجر فضة كثيرة.
+        en: Celuk has lots of silver shops.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: gaun
+        ar_eg: فستان سهرة
+        ar: فستان سهرة
+        en: gown
+      - text: jas
+        ar_eg: جاكت بدلة
+        ar: سترة بدلة
+        en: suit jacket
+      - text: kemeja
+        ar_eg: قميص
+        ar: قميص
+        en: shirt
+      - text: dasi
+        ar_eg: كرافتة
+        ar: ربطة عنق
+        en: tie
+    words: [gaun, jas, kemeja, dasi]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: sandal
+        ar_eg: صندل
+        ar: صندل
+        en: sandals
+      - text: sutra
+        ar_eg: حرير
+        ar: حرير
+        en: silk
+      - text: kaca
+        ar_eg: إزاز
+        ar: زجاج
+        en: glass
+      - text: perak
+        ar_eg: فضة
+        ar: فضّة
+        en: silver
+    words: [sandal, sutra, kaca, perak]
+  - id: e03
+    type: listen
+    text: Di Celuk ada banyak toko perak.
+    question:
+      ar_eg: المحلات بتبيع إيه؟
+      ar: ماذا تبيع المتاجر؟
+      en: What do the shops sell?
+    options: [فضة, دهب, حرير]
+    answer: 0
+    meaning:
+      ar_eg: في تشيلوك فيه محلات فضة كتير.
+      ar: في تشيلوك متاجر فضة كثيرة.
+      en: Celuk has lots of silver shops.
+    words: [perak]
+  - id: e04
+    type: fill_blank
+    sentence: Ke pantai, pakai ___ saja.
+    meaning:
+      ar_eg: على البحر، البس ___ وخلاص.
+      ar: إلى الشاطئ، البس ___ فقط.
+      en: For the beach, just wear ___.
+    options: [sandal, jas, dasi]
+    answers: [sandal]
+    words: [sandal, jas, dasi]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الراجل بيلبس إيه حوالين رقبته مع القميص؟
+      ar: ماذا يلبس الرجل حول عنقه مع القميص؟
+      en: What does a man wear round his neck with a shirt?
+    options: [dasi, gaun, sutra]
+    answer: 0
+    explain:
+      ar_eg: dasi = كرافتة.
+      ar: dasi = ربطة عنق.
+      en: dasi = tie.
+    words: [dasi, gaun, sutra]
+  - id: e06
+    type: fill_blank
+    sentence: Jendela ini dari ___.
+    meaning:
+      ar_eg: الشباك ده من ___.
+      ar: هذه النافذة من ___.
+      en: This window is made of ___.
+    options: [kaca, sutra, perak]
+    answers: [kaca]
+    words: [kaca, sutra, perak]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: هلبس قميص أبيض وجاكت أسود.
+      ar: سألبس قميصًا أبيض وسترة سوداء.
+      en: I'll wear a white shirt and a black jacket.
+    answer: Saya pakai kemeja putih dan jas hitam.
+    distractors: [gaun, sandal]
+    words: [kemeja, jas]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Gaun Rina dari sutra.
+    answers_meaning:
+      ar_eg: [فستان رينا حرير, فستان رينا معمول من الحرير]
+      ar: [فستان رينا من الحرير]
+      en: ['Rina''s dress is silk', 'Rina''s gown is made of silk']
+    words: [gaun, sutra]
+  - id: e09
+    type: speaking
+    text: Ke pesta, saya pakai kemeja dan dasi.
+    meaning:
+      ar_eg: في الحفلة هلبس قميص وكرافتة.
+      ar: ألبس في الحفل قميصًا وربطة عنق.
+      en: For the party I'll wear a shirt and tie.
+    words: [kemeja, dasi]
+  - id: e10
+    type: multiple_choice
+    question: Kain ini dari ___, jadi mahal.
+    options: [sutra, kaca, sandal]
+    answer: 0
+    explain:
+      ar_eg: القماش الحرير غالي.
+      ar: قماش الحرير غالٍ.
+      en: Silk cloth is expensive.
+    words: [sutra, kaca, sandal]
+dialogue:
+  lines:
+    - speaker: Rina
+      text: Mohamed, Sabtu ini ada pesta teman saya di Ubud.
+      ar_eg: يا محمد، السبت ده فيه حفلة لصاحبتي في أوبود.
+      ar: يا محمد، يوم السبت حفل لصديقتي في أوبود.
+      en: Mohamed, my friend's having a party in Ubud this Saturday.
+    - speaker: Mohamed
+      text: Saya pakai apa? Jas dan dasi?
+      ar_eg: ألبس إيه؟ بدلة وكرافتة؟
+      ar: ماذا ألبس؟ سترة وربطة عنق؟
+      en: What should I wear? Jacket and tie?
+    - speaker: Rina
+      text: Kemeja batik saja. Di Bali tidak perlu jas.
+      ar_eg: قميص باتيك وخلاص. في بالي مش محتاج جاكت.
+      ar: قميص باتيك يكفي. لا حاجة للسترة في بالي.
+      en: Just a batik shirt. You don't need a jacket in Bali.
+    - speaker: Mohamed
+      text: Kamu pakai gaun?
+      ar_eg: وإنتي هتلبسي فستان؟
+      ar: وأنتِ، ستلبسين فستانًا؟
+      en: Are you wearing a dress?
+    - speaker: Rina
+      text: Ya, gaun sutra dari ibu saya.
+      ar_eg: أيوه، فستان حرير من ماما.
+      ar: نعم، فستان حرير من أمي.
+      en: Yes, a silk dress from my mum.
+    - speaker: Mohamed
+      text: Bagus! Saya mau beli perak di Celuk untuk mereka.
+      ar_eg: حلو! أنا عايز أشتري لهم فضة من تشيلوك.
+      ar: جميل! أريد شراء فضّة لهم من تشيلوك.
+      en: Lovely! I want to buy them some silver in Celuk.
+new_words:
+  - word: gaun
+    pos: noun
+    ar_eg: فستان سهرة
+    ar: فستان سهرة
+    en: gown, dress
+  - word: jas
+    pos: noun
+    ar_eg: جاكت بدلة
+    ar: سترة البدلة
+    en: suit jacket
+  - word: kemeja
+    pos: noun
+    ar_eg: قميص بزراير
+    ar: قميص بأزرار
+    en: shirt
+  - word: dasi
+    pos: noun
+    ar_eg: كرافتة
+    ar: ربطة عنق
+    en: tie
+  - word: sandal
+    pos: noun
+    ar_eg: صندل
+    ar: صندل
+    en: sandals
+  - word: sutra
+    pos: noun
+    ar_eg: حرير
+    ar: حرير
+    en: silk
+  - word: kaca
+    pos: noun
+    ar_eg: إزاز
+    ar: زجاج
+    en: glass
+  - word: perak
+    pos: noun
+    ar_eg: فضة
+    ar: فضّة
+    en: silver
+review:
+  status: draft
+  verified: false
