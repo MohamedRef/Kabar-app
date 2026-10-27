@@ -20,6 +20,7 @@ use super::{
     Draft, ExerciseView, MAX_STEP_MS, Notice, Rich, TextAnswer, autoplay_text, back_label, draft_answer,
     instruction, needs_audio, now_ms, option_count, speak, target_tag,
 };
+use crate::annotated::Annotated;
 use crate::coach::Coach;
 use crate::{Db, Screen, Ui};
 
@@ -405,6 +406,7 @@ fn TestView(test: TestContent) -> Element {
             div { class: "lp-top",
                 button {
                     class: "lp-close",
+                    "data-back": "true",
                     aria_label: lt(lang, L::CloseTest),
                     title: lt(lang, L::CloseTest),
                     onclick: move |_| if midway { confirm_close.set(true) } else { ui.close_lesson() },
@@ -431,6 +433,7 @@ fn TestView(test: TestContent) -> Element {
                         div { class: "row lt-confirm-buttons",
                             button {
                                 class: "primary",
+                                "data-back": "true",
                                 autofocus: true,
                                 onclick: move |_| confirm_close.set(false),
                                 "{lt(lang, L::StayInTest)}"
@@ -674,7 +677,7 @@ fn SelfCheck(runner: Signal<TestRunner>) -> Element {
                                 }
                             }
                             p { class: "muted lp-small", "{lt(lang, L::Sample)}" }
-                            p { class: "lt-sample pre", bdi { lang: target, dir: "ltr", class: "latin", "{task.sample.trim()}" } }
+                            p { class: "lt-sample pre", Annotated { text: task.sample.trim().to_string(), tag: target } }
                         },
                         None => rsx! {
                             p { class: "muted lp-small", "{lt(lang, L::Accepted)}" }

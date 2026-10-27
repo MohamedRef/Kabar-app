@@ -6,6 +6,8 @@ mod content;
 pub mod doc;
 pub mod explain;
 pub mod glossary;
+pub mod grammar;
+pub mod morph;
 pub mod translate;
 mod web;
 
@@ -28,7 +30,7 @@ use self::doc::{Lexicon, ReadDoc, SegKind};
 use self::glossary::{Glossary, Shift};
 use crate::account::Cloud;
 use crate::i18n::Msg;
-use crate::store::{Highlight, SavedText, TextKind};
+use crate::store::{Highlight, SavedText, Store, StoreError, TextKind};
 use crate::teach::Ai;
 use crate::{Db, Ui, platform};
 
@@ -101,6 +103,8 @@ pub struct ReaderState {
     /// On phones the word card floats next to the word it was opened from.
     pub anchor: Signal<Option<Peek>>,
     pub toast: Signal<Option<Msg>>,
+    /// The open text's grammar, worked out once when it opens.
+    pub grammar: Signal<Option<Rc<grammar::DocGrammar>>>,
     /// The translation under each line of the open text.
     pub translated: Signal<translate::Translated>,
     /// Bumped by "try again" to translate the text afresh.
@@ -114,31 +118,31 @@ impl ReaderState {
 
     pub fn set_status(mut self, db: &Db, key: &str, status: WordStatus) {
         if let Err(e) = db.0.borrow_mut().set_word_status(key, status) {
-            crate::diag::report!("saving word status failed: {e}");
+            self.write_failed("saving word status", &e);
             return;
         }
         self.statuses.write().insert(key.to_string(), status);
+    }
+
+    /// A store write didn't happen: say so kindly, and leave the screen as
+    /// it was so it never shows something saved that isn't.
+    pub fn write_failed(mut self, what: &str, e: &dyn std::fmt::Display) {
+        crate::diag::report!("{what} failed: {e}");
+        self.toast.set(Some(Msg::ReaderWriteFailed));
     }
 
     pub fn save_phrase(mut self, db: &Db, tokens: &[usize]) {
         let Some(open) = self.open.read().clone() else { return };
         let Some((start, end)) = open.doc.span_of(tokens) else { return };
         let phrase = open.doc.text(start, end).to_string();
-        let mut store = db.0.borrow_mut();
-        match store.add_highlight(&open.text.id, start, end, &phrase) {
+        let sentence = open.doc.sentence_of(tokens[0]).to_string();
+        let saved = save_phrase(&mut db.0.borrow_mut(), &open.text.id, start, end, &phrase, &sentence);
+        match saved {
             Ok(h) => {
-                // A saved phrase is also a review item, met in its sentence.
-                let sentence = open.doc.sentence_of(tokens[0]).to_string();
-                let _ = store.save_word(
-                    &format!("phrase:{}", phrase.to_lowercase()),
-                    &phrase,
-                    &sentence,
-                    Some(&open.text.id),
-                );
                 self.highlights.write().push(h);
                 self.toast.set(Some(Msg::PhraseSaved));
             }
-            Err(e) => crate::diag::report!("saving highlight failed: {e}"),
+            Err(e) => self.write_failed("saving a phrase", &e),
         }
     }
 
@@ -160,6 +164,7 @@ impl ReaderState {
             panel: Signal::new(None),
             anchor: Signal::new(None),
             toast: Signal::new(None),
+            grammar: Signal::new(None),
             translated: Signal::new(translate::Translated::default()),
             retry: Signal::new(0),
         }
@@ -176,6 +181,7 @@ impl ReaderState {
         self.statuses.set(store.word_statuses(doc.keys()).unwrap_or_default());
         self.highlights.set(store.highlights(&text.id).unwrap_or_default());
         drop(store);
+        self.grammar.set(Some(Rc::new(grammar::DocGrammar::new(&doc, &grammar::syllabus(db)))));
         self.peek.set(None);
         self.panel.set(None);
         self.open.set(Some(Open { text, doc: Rc::new(doc) }));
@@ -200,9 +206,46 @@ impl ReaderState {
 
     fn close(mut self) {
         self.open.set(None);
+        self.grammar.set(None);
         self.peek.set(None);
         self.panel.set(None);
     }
+}
+
+/// A highlighted phrase is also a review item, met in its sentence. Both
+/// rows or neither: when the review item can't be saved, the highlight goes too.
+fn save_phrase(
+    store: &mut Store,
+    text_id: &str,
+    start: usize,
+    end: usize,
+    phrase: &str,
+    sentence: &str,
+) -> Result<Highlight, StoreError> {
+    let h = store.add_highlight(text_id, start, end, phrase)?;
+    let key = format!("phrase:{}", phrase.to_lowercase());
+    if let Err(e) = store.save_word(&key, phrase, sentence, Some(text_id)) {
+        store.remove_highlight(&h.id).ok();
+        return Err(e);
+    }
+    Ok(h)
+}
+
+/// "Add to review": the word goes into the review deck first, and only once
+/// it's there does a new word count as learning.
+pub(crate) fn add_to_review(
+    store: &mut Store,
+    key: &str,
+    surface: &str,
+    sentence: &str,
+    text_id: &str,
+) -> Result<bool, StoreError> {
+    store.save_word(key, surface, sentence, Some(text_id))?;
+    let promote = store.word_statuses([key])?.get(key).copied().unwrap_or_default() == WordStatus::New;
+    if promote {
+        store.set_word_status(key, WordStatus::Learning)?;
+    }
+    Ok(promote)
 }
 
 /// Input that arrived from outside (Android share sheet), waiting for the Reader.
@@ -734,8 +777,11 @@ fn InputCard(busy: Signal<Option<Msg>>, recent: Signal<Vec<SavedText>>) -> Eleme
                                         let db = db.clone();
                                         let id = text.id.clone();
                                         move |_| {
-                                            let _ = db.0.borrow_mut().delete_text(&id);
-                                            recent.set(db.0.borrow().recent_texts(12).unwrap_or_default());
+                                            let deleted = db.0.borrow_mut().delete_text(&id);
+                                            match deleted {
+                                                Ok(_) => recent.set(db.0.borrow().recent_texts(12).unwrap_or_default()),
+                                                Err(e) => st.write_failed("deleting a text", &e),
+                                            }
                                         }
                                     },
                                     "×"
@@ -787,6 +833,10 @@ fn ReadView(open: Open) -> Element {
                 c.push_str(statuses.get(k).copied().unwrap_or_default().as_str());
             }
             None => c.push_str(" name"),
+        }
+        if let Some(class) = w.class {
+            c.push_str(" wc-ink ");
+            c.push_str(class.css());
         }
         if w.is_bridge() {
             c.push_str(" from-arabic");
@@ -889,6 +939,7 @@ fn ReadView(open: Open) -> Element {
                             }
                         }
                         translate::LineUnder { seg: si }
+                        grammar::LineGrammar { seg: si }
                     }
                 }
             }
@@ -910,7 +961,8 @@ fn ReadView(open: Open) -> Element {
                     span { "{ui.t(Msg::Explanation)}" }
                 }
                 div { id: "reader-doc", class: "doc split", {rows} }
-                p { class: "muted small pen-hint", "{ui.t(Msg::PenHint)}" }
+                p { class: "muted small pen-hint", "{input_hint(ui.lang(), *ui.tablet.read())}" }
+                grammar::TextGrammar {}
             }
             if panel_open {
                 card::PanelView {}
@@ -919,5 +971,75 @@ fn ReadView(open: Open) -> Element {
         if let Some(p) = *st.peek.read() {
             card::PeekView { peek: p }
         }
+    }
+}
+
+/// How to use the words below the text, for this device's input: the pen
+/// sentence on the tablet (S Pen), touch on a phone, the mouse on the Mac.
+fn input_hint(lang: kabar_core::locale::UiLanguage, tablet: bool) -> &'static str {
+    use kabar_core::locale::UiLanguage::*;
+    if tablet {
+        return crate::i18n::t(lang, Msg::PenHint);
+    }
+    match (cfg!(target_os = "android"), lang) {
+        (true, ArEg) => {
+            "دوس على أي كلمة تشوف معناها، ودوس مطوّل تفتح الكارت أو تحفظها. اسحب على عبارة تشرحها."
+        }
+        (true, Ar) => "المس أي كلمة لترى معناها، والمس مطوّلًا لفتح البطاقة أو حفظها. اسحب على عبارة لشرحها.",
+        (true, En) => {
+            "Tap any word to see its meaning; long-press to open its card or save it. Drag across a phrase to explain it."
+        }
+        (false, ArEg) => {
+            "وقّف الماوس على أي كلمة تشوف معناها، واضغط عليها تفتح الكارت. ظلّل عبارة تشرحها، وكليك يمين تحفظ."
+        }
+        (false, Ar) => {
+            "قف بالفأرة على أي كلمة لترى معناها، وانقرها لفتح البطاقة. ظلّل عبارة لشرحها، وانقر يمينًا للحفظ."
+        }
+        (false, En) => {
+            "Rest the mouse on any word to see its meaning; click it for its card. Select a phrase to explain it; right-click to save."
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn store_with_text() -> (Store, SavedText) {
+        let mut store = Store::open_in_memory().unwrap();
+        let text = store.save_text("Saya sedang membaca buku.", TextKind::Pasted, None, None).unwrap();
+        (store, text)
+    }
+
+    #[test]
+    fn adding_to_review_promotes_a_new_word_once() {
+        let (mut store, text) = store_with_text();
+        let s = "Saya sedang membaca buku.";
+        assert!(add_to_review(&mut store, "id:baca", "membaca", s, &text.id).unwrap());
+        assert!(!add_to_review(&mut store, "id:baca", "membaca", s, &text.id).unwrap());
+        assert_eq!(store.word_statuses(["id:baca"]).unwrap()["id:baca"], WordStatus::Learning);
+        assert_eq!(store.saved_word_count("id:baca").unwrap(), 2);
+    }
+
+    #[test]
+    fn a_failed_write_changes_nothing() {
+        let (mut store, text) = store_with_text();
+        store.refuse_writes();
+        let s = "Saya sedang membaca buku.";
+        assert!(add_to_review(&mut store, "id:baca", "membaca", s, &text.id).is_err());
+        assert_eq!(
+            store.word_statuses(["id:baca"]).unwrap().get("id:baca").copied().unwrap_or_default(),
+            WordStatus::New
+        );
+        assert!(save_phrase(&mut store, &text.id, 0, 4, "Saya", s).is_err());
+        assert!(store.highlights(&text.id).unwrap().is_empty());
+    }
+
+    #[test]
+    fn a_saved_phrase_is_a_highlight_and_a_review_item() {
+        let (mut store, text) = store_with_text();
+        let h = save_phrase(&mut store, &text.id, 5, 11, "sedang", "Saya sedang membaca buku.").unwrap();
+        assert_eq!(store.highlights(&text.id).unwrap(), vec![h]);
+        assert_eq!(store.saved_word_count("phrase:sedang").unwrap(), 1);
     }
 }

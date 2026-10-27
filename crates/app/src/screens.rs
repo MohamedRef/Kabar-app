@@ -1,12 +1,8 @@
 use dioxus::prelude::*;
-use kabar_core::locale::{UiLanguage, format_number};
-use kabar_core::settings::{PronMode, Theme};
-use kabar_core::theme as palette;
+use kabar_core::locale::UiLanguage;
 
 use crate::i18n::Msg;
-use kabar_core::layout::WidthClass;
-
-use crate::{Db, Screen, Ui};
+use crate::{Db, Ui};
 
 /// First launch: "Apa kabar?" and the reveal that kabar comes from خبر.
 #[component]
@@ -64,7 +60,7 @@ pub fn ComingSoon(title: Msg, milestone: &'static str) -> Element {
 }
 
 #[component]
-fn LanguagePicker() -> Element {
+pub fn LanguagePicker() -> Element {
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let current = ui.settings.read().ui_language;
@@ -83,176 +79,5 @@ fn LanguagePicker() -> Element {
                 }
             }
         }
-    }
-}
-
-#[component]
-pub fn SettingsScreen() -> Element {
-    let ui = use_context::<Ui>();
-    let db = use_context::<Db>();
-    let settings = ui.settings.read().clone();
-    let device = db.0.borrow().device_id().to_string();
-    let width_class = *ui.width.read();
-    let sample = format_number(2026, settings.ui_language, settings.eastern_digits);
-
-    let theme_label = |th: Theme| match th {
-        Theme::System => Msg::ThemeSystem,
-        Theme::Light => Msg::ThemeLight,
-        Theme::Dark => Msg::ThemeDark,
-        Theme::Night => Msg::ThemeNight,
-        Theme::Batik => Msg::ThemeBatik,
-        Theme::Sawah => Msg::ThemeSawah,
-    };
-    // A swatch previews the theme itself, not the current one: its surface,
-    // accent and Bridge gold. System shows Paper and Merapi side by side.
-    let swatch = |th: Theme| match th.palette() {
-        Some(p) => format!(
-            "background: linear-gradient(135deg, {} 50%, {} 50%); border-color: {}",
-            p.surface, p.indigo, p.gold
-        ),
-        None => format!(
-            "background: linear-gradient(135deg, {} 50%, {} 50%)",
-            palette::LIGHT.surface,
-            palette::DARK.surface
-        ),
-    };
-
-    rsx! {
-        div { class: "card",
-            h2 { "{ui.t(Msg::NavSettings)}" }
-
-            div { class: "field",
-                span { class: "label", "{ui.t(Msg::SettingsLanguage)}" }
-                LanguagePicker {}
-            }
-
-            div { class: "field",
-                span { class: "label", "{ui.t(Msg::SettingsTheme)}" }
-                div { class: "row", role: "group",
-                    for th in Theme::ALL {
-                        button {
-                            key: "{th.as_str()}",
-                            aria_pressed: if th == settings.theme { "true" } else { "false" },
-                            onclick: {
-                                let db = db.clone();
-                                move |_| ui.update_settings(&db, |s| s.theme = th)
-                            },
-                            span { class: "theme-swatch", aria_hidden: "true", style: "{swatch(th)}" }
-                            "{ui.t(theme_label(th))}"
-                        }
-                    }
-                }
-            }
-
-            div { class: "field",
-                label {
-                    input {
-                        r#type: "checkbox",
-                        checked: settings.eastern_digits,
-                        onchange: {
-                            let db = db.clone();
-                            move |e: FormEvent| {
-                                let on = e.checked();
-                                ui.update_settings(&db, |s| s.eastern_digits = on)
-                            }
-                        },
-                    }
-                    " {ui.t(Msg::SettingsDigits)} · {sample}"
-                }
-            }
-
-            div { class: "field",
-                label {
-                    input {
-                        r#type: "checkbox",
-                        checked: !settings.sounds_off,
-                        onchange: {
-                            let db = db.clone();
-                            move |e: FormEvent| {
-                                let on = e.checked();
-                                ui.update_settings(&db, |s| s.sounds_off = !on)
-                            }
-                        },
-                    }
-                    " {ui.t(Msg::SettingsSounds)}"
-                }
-            }
-
-            div { class: "field",
-                span { class: "label", "{ui.t(Msg::SettingsPron)}" }
-                div { class: "row", role: "group",
-                    for mode in PronMode::ALL {
-                        button {
-                            key: "{mode:?}",
-                            aria_pressed: if mode == settings.pronunciation { "true" } else { "false" },
-                            onclick: {
-                                let db = db.clone();
-                                move |_| ui.update_settings(&db, |s| s.pronunciation = mode)
-                            },
-                            "{ui.t(pron_mode_label(mode))}"
-                        }
-                    }
-                }
-                details { class: "pron-details",
-                    summary { "{ui.t(Msg::PronHowToRead)}" }
-                    crate::pron::PronGuide {}
-                }
-            }
-
-            div { class: "field",
-                span { class: "label", "{ui.t(Msg::Width)}" }
-                span { class: "pill", "{ui.t(width_label(width_class))}" }
-            }
-
-            div { class: "field",
-                span { class: "label", "{ui.t(Msg::SettingsDevice)}" }
-                code { bdi { "{device}" } }
-            }
-
-            div { class: "row",
-                button {
-                    onclick: {
-                        let db = db.clone();
-                        move |_| ui.update_settings(&db, |s| s.welcomed = false)
-                    },
-                    "{ui.t(Msg::SettingsShowWelcome)}"
-                }
-                for screen in [Screen::Devices, Screen::Cost, Screen::Teach, Screen::Studio, Screen::PenLab]
-                    .into_iter()
-                    .filter(|s| *ui.tablet.read() || !s.pen_only())
-                {
-                    button {
-                        key: "{screen:?}",
-                        onclick: move |_| {
-                            let mut s = ui.screen;
-                            s.set(screen);
-                        },
-                        "{ui.t(screen.label())}"
-                    }
-                }
-            }
-        }
-        crate::coach::settings::CoachSettings {}
-        crate::packs::settings::OfflinePacks {}
-        crate::data_export::ExportCard {}
-        crate::diag::DiagnosticsCard {}
-    }
-}
-
-fn width_label(w: WidthClass) -> Msg {
-    match w {
-        WidthClass::Compact => Msg::WidthCompact,
-        WidthClass::Medium => Msg::WidthMedium,
-        WidthClass::Expanded => Msg::WidthExpanded,
-        WidthClass::Large => Msg::WidthLarge,
-        WidthClass::ExtraLarge => Msg::WidthExtraLarge,
-    }
-}
-
-fn pron_mode_label(mode: PronMode) -> Msg {
-    match mode {
-        PronMode::On => Msg::PronModeOn,
-        PronMode::Tap => Msg::PronModeTap,
-        PronMode::Off => Msg::PronModeOff,
     }
 }

@@ -802,6 +802,27 @@ pub fn start_level(db: &Db, profile: Option<&CoachProfile>) -> Option<String> {
     })
 }
 
+/// The level of `id`'s unit (`bipa2.u03` → `bipa2`).
+pub fn level_of(unit: &str) -> String {
+    unit.split_once('.').map_or(unit, |(l, _)| l).to_string()
+}
+
+/// (Indonesian level, Javanese level once that journey has started).
+pub fn learner_levels(db: &Db, profile: Option<&CoachProfile>) -> (String, Option<String>) {
+    let completed = db.0.borrow().completed_lessons().unwrap_or_default();
+    let start = start_level(db, profile);
+    let id = current_unit(&completed, start.as_deref(), false)
+        .map(|u| level_of(&u))
+        .or(start)
+        .unwrap_or_else(|| "bipa1".into());
+    let jv = completed
+        .iter()
+        .any(|l| l.starts_with('j'))
+        .then(|| current_unit(&completed, None, true).map(|u| level_of(&u)))
+        .flatten();
+    (id, jv)
+}
+
 /// The unit the learner is on: the one holding the Journey's next lesson
 /// (Javanese when that is the learner's only focus).
 pub fn current_unit(completed: &BTreeSet<String>, start: Option<&str>, javanese: bool) -> Option<String> {

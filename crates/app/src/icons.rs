@@ -37,11 +37,49 @@ pub fn nav(screen: Screen) -> Element {
         Screen::Listen => "M4 15v-3a8 8 0 0 1 16 0v3M4 15h3v5H4zM17 15h3v5h-3z",
         // two speech bubbles
         Screen::Chat => "M4 5h11v8H9l-3 3v-3H4zM15 9h5v8h-2v3l-3-3h-4v-2",
-        // sliders
-        Screen::Settings => "M4 7h10M18 7h2M4 17h4M12 17h8M14 5v4M8 15v4",
+        Screen::Settings => GEAR,
         // a game controller
         Screen::Play => PLAY,
         Screen::Coach => return custom(COACH),
+    };
+    stroke(d)
+}
+
+/// Settings: a cog with eight teeth.
+const GEAR: &str = "M12 9a3 3 0 1 0 0 6 3 3 0 1 0 0-6zM10.6 3h2.8l.5 2.3 1.7.9 2.2-.8 1.4 2.4-1.7 1.6v1.9l1.7 1.6-1.4 2.4-2.2-.8-1.7.9-.5 2.3h-2.8l-.5-2.3-1.7-.9-2.2.8-1.4-2.4 1.7-1.6v-1.9L4.8 7.8l1.4-2.4 2.2.8 1.7-.9z";
+
+/// More: four tiles.
+pub fn more() -> Element {
+    stroke("M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z")
+}
+
+/// The gear that opens Settings.
+pub fn gear() -> Element {
+    stroke(GEAR)
+}
+
+/// Each Settings section's icon.
+pub fn settings_section(section: crate::settings::Section) -> Element {
+    use crate::settings::Section;
+    let d = match section {
+        // a speech bubble with a check
+        Section::Learning => "M4 5h16v11H9l-5 4zM8.5 10.5l2.5 2.5 4.5-5",
+        // a palette
+        Section::Look => {
+            "M12 3a9 9 0 1 0 0 18c1.5 0 2-1 2-2s-1-2 0-3 3 0 4-1 3-2 3-4a9 9 0 0 0-9-8zM7.5 11h.01M10 7.5h.01M14.5 7.5h.01"
+        }
+        Section::Coach => return custom(COACH),
+        // a phone
+        Section::Android => "M8 3h8a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM11 18h2",
+        // a tablet held landscape
+        Section::Tablet => "M3 6h18v12H3zM19 11v2",
+        // a laptop
+        Section::Mac => "M5 5h14v10H5zM2 18h20",
+        // a download arrow into a tray
+        Section::Storage => "M12 4v10M8 10l4 4 4-4M4 16v3h16v-3",
+        Section::Account => return nav(Screen::Devices),
+        // an i in a circle
+        Section::About => "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 11v5M12 8h.01",
     };
     stroke(d)
 }

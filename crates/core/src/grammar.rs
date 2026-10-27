@@ -10,7 +10,7 @@
 
 use std::collections::{BTreeMap, BTreeSet};
 
-use kabar_protocol::grammar::GrammarPoint;
+use kabar_protocol::grammar::{GrammarExample, GrammarPoint, Three, Title};
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
 
@@ -20,6 +20,9 @@ use crate::lang::analyze::{AnalyzedToken, Morph};
 /// Most candidates offered to the model (the golden set offers 4–6; a few
 /// more cost little and catch what the cues rank lower).
 pub const MAX_CANDIDATES: usize = 8;
+
+/// Extra score for an entry its cues found in the sentence (`detect`).
+const SPOTTED: u32 = 8;
 
 /// What makes an entry relevant to a sentence.
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
@@ -89,6 +92,8 @@ pub struct Library {
     /// How many entries share each cue: a cue on one entry says much more
     /// than `di` or `-nya`, which half the library mentions.
     df: BTreeMap<String, u32>,
+    /// Each entry's `cues`, compiled (None for one that doesn't compile).
+    patterns: BTreeMap<String, Vec<Option<detect::Pattern>>>,
 }
 
 /// Weight of a cue shared by `df` entries.
@@ -381,7 +386,14 @@ impl Library {
         let mut problems = Vec::new();
         for (path, text) in files {
             match serde_yaml_ng::from_str::<GrammarPoint>(text) {
-                Ok(p) => lib.insert(p),
+                Ok(p) => {
+                    for c in &p.cues {
+                        if let Err(e) = detect::compile(c) {
+                            problems.push(format!("{path}: cue {e}"));
+                        }
+                    }
+                    lib.insert(p)
+                }
                 Err(e) => problems.push(format!("{path}: {e}")),
             }
         }
@@ -398,6 +410,7 @@ impl Library {
         for k in cues.keys() {
             *self.df.entry(k).or_default() += 1;
         }
+        self.patterns.insert(p.id.clone(), p.cues.iter().map(|c| detect::compile(c).ok()).collect());
         self.points.insert(p.id.clone(), p);
     }
 
@@ -434,12 +447,24 @@ impl Library {
             tokens.iter().filter(|t| t.normalized.is_some()).map(|t| t.token.lower()).collect();
         let forms: Vec<&str> = words.iter().map(|(_, n, _)| n.as_str()).collect();
         let want = if lang == Lang::Javanese { "jv" } else { "id" };
+        // What the entries' own cues spotted is the strongest evidence.
+        let wordlike: Vec<(usize, &AnalyzedToken)> =
+            tokens.iter().enumerate().filter(|(_, t)| t.token.is_wordlike()).collect();
+        let mut spotted: BTreeMap<String, Vec<String>> = BTreeMap::new();
+        for h in self.spot(&wordlike, lang) {
+            let label = h.label(|i| tokens[i].token.lower());
+            spotted.entry(h.grammar).or_default().push(label);
+        }
 
         let mut out: Vec<Candidate> = Vec::new();
         for (id, cues) in &self.cues {
             let point = &self.points[id];
             let mut score = 0;
             let mut matched: Vec<String> = Vec::new();
+            if let Some(labels) = spotted.get(id) {
+                score += SPOTTED;
+                matched.extend(labels.iter().cloned());
+            }
             for phrase in &cues.phrases {
                 if forms.windows(phrase.len()).any(|w| w.iter().zip(phrase).all(|(a, b)| *a == b)) {
                     let key = phrase.join(" ");
@@ -503,6 +528,35 @@ pub enum Voice {
     En,
 }
 
+impl Voice {
+    /// This voice's text of a library field.
+    pub fn of(self, t: &Three) -> &str {
+        match self {
+            Voice::Arz => &t.ar_eg,
+            Voice::Ar => &t.ar,
+            Voice::En => &t.en,
+        }
+    }
+
+    /// This voice's name of a library entry.
+    pub fn title(self, t: &Title) -> &str {
+        match self {
+            Voice::Arz => &t.ar_eg,
+            Voice::Ar => &t.ar,
+            Voice::En => &t.en,
+        }
+    }
+
+    /// This voice's translation of a library example.
+    pub fn example(self, e: &GrammarExample) -> &str {
+        match self {
+            Voice::Arz => &e.ar_eg,
+            Voice::Ar => &e.ar,
+            Voice::En => &e.en,
+        }
+    }
+}
+
 /// The `explain_sentence` input, exactly as the golden set shapes it.
 pub fn explain_input(text: &str, lang: Lang, voice: Voice, candidates: &[Candidate]) -> Value {
     json!({
@@ -512,6 +566,8 @@ pub fn explain_input(text: &str, lang: Lang, voice: Voice, candidates: &[Candida
         "grammar_candidates": candidates.iter().map(|c| c.id.as_str()).collect::<Vec<_>>(),
     })
 }
+
+pub mod detect;
 
 #[cfg(test)]
 mod tests;

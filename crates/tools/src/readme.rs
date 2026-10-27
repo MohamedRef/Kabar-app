@@ -1,6 +1,7 @@
-//! The numbers in `README.md`, counted from the repository so they can't go
-//! stale. `kabar-tools readme` rewrites the block between the two markers;
-//! `--check` (CI) fails when the block differs from what the files say.
+//! The numbers in `README.md`, counted from the repository. `kabar-tools
+//! readme` rewrites the block between the two markers; `--check` reports when
+//! the block differs from what the files say (advisory in CI: the daily README
+//! refresh commits it, so parallel PRs never race on it).
 //!
 //! Everything here is derived from committed files only (no clock, no git),
 //! so the same tree always renders the same block.
