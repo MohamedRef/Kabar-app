@@ -159,6 +159,7 @@ pub fn PanelView() -> Element {
             div { class: "panel-close",
                 button {
                     class: "ghost",
+                    "data-back": "true",
                     aria_label: "{ui.t(Msg::Close)}",
                     onclick: move |_| {
                         let mut p = st.panel;
