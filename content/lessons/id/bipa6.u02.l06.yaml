@@ -1,160 +1,215 @@
 schema: kabar.lesson/v1
 id: bipa6.u02.l06
 language: id
-title: Ulangan Unit 2
+title: Deklamasi
 can_do:
-  ar_eg: تفهم البانتون والشعر الحديث، وتألّف بانتون بنفسك.
-  ar: أن تفهم البانتون والشعر الحديث، وتنظم بانتونًا بنفسك.
-  en: Understand pantun and modern poetry, and compose a pantun yourself.
+  ar_eg: تلقي قصيدة قدام الناس بإحساس وصوت واضح وتتكلم عن الإلقاء.
+  ar: أن تُلقي قصيدة أمام الناس بإحساس وصوت واضح، وتتحدّث عن الإلقاء.
+  en: Recite a poem to an audience with feeling and a clear voice, and talk about reciting.
+slides:
+  - title: Membaca dengan jiwa
+    body:
+      ar_eg: |
+        في إندونيسيا، الأطفال والكبار بيشاركوا في مسابقات إلقاء الشعر. الكلمات المهمة:
+        - deklamasi = إلقاء الشعر قدام جمهور
+        - menghayati = يحس بالمعنى من جوه ويعيشه
+        - penjiwaan = الإحساس اللي بتحطه في الإلقاء (من jiwa = روح)
+        - lantang = بصوت عالي وواضح
+        - ekspresi = تعبير الوش والصوت
+        القاعدة: Hayati dulu, baru bacakan. = حس بالقصيدة الأول، وبعدين اقراها.
+      ar: |
+        يشارك الصغار والكبار في إندونيسيا في مسابقات إلقاء الشعر. أهمّ الكلمات:
+        - deklamasi = إلقاء الشعر أمام جمهور
+        - menghayati = يتمثّل المعنى ويعيشه من الداخل
+        - penjiwaan = الإحساس الذي تضعه في الإلقاء (من jiwa = روح)
+        - lantang = بصوت عالٍ واضح
+        - ekspresi = تعبير الوجه والصوت
+        والقاعدة: Hayati dulu, baru bacakan. = عِش القصيدة أوّلًا ثم اقرأها.
+      en: |
+        Children and adults across Indonesia enter poetry-recital contests. Key words:
+        - deklamasi = reciting a poem to an audience
+        - menghayati = to feel a meaning from the inside, to live it
+        - penjiwaan = the feeling you put into a recital (from jiwa = soul)
+        - lantang = loud and clear
+        - ekspresi = expression, of face and voice
+        The rule: Hayati dulu, baru bacakan. = Feel the poem first, then read it out.
+    examples:
+      - text: Penjiwaannya bagus sekali, sehingga penonton ikut menangis.
+        ar_eg: إحساسه في الإلقاء كان حلو جدًا لدرجة إن الجمهور عيّط معاه.
+        ar: كان إحساسه في الإلقاء رائعًا حتى بكى الجمهور معه.
+        en: His feeling was so good that the audience cried along.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: sampiran
-        ar_eg: أول سطرين (الصورة)
-        ar: السطران الأوّلان
-        en: the opening image lines
-      - text: majas
-        ar_eg: مجاز / صورة بلاغية
-        ar: مجاز
-        en: figure of speech
-      - text: penyair
-        ar_eg: شاعر
-        ar: شاعر
-        en: poet
-      - text: rombongan
-        ar_eg: وفد / جماعة
-        ar: وفد
-        en: group, party
-      - text: suku kata
-        ar_eg: مقطع صوتي
-        ar: مقطع صوتي
-        en: syllable
-    words: [sampiran, majas, penyair, rombongan, suku kata]
+      - text: deklamasi
+        ar_eg: إلقاء الشعر
+        ar: إلقاء الشعر
+        en: poetry recital
+      - text: menghayati
+        ar_eg: يعيش المعنى
+        ar: يتمثّل المعنى
+        en: to feel deeply
+      - text: penjiwaan
+        ar_eg: الإحساس في الأداء
+        ar: الإحساس في الأداء
+        en: feeling, soul in a performance
+      - text: lantang
+        ar_eg: عالي وواضح
+        ar: عالٍ واضح
+        en: loud and clear
+      - text: ekspresi
+        ar_eg: تعبير
+        ar: تعبير
+        en: expression
+    words: [deklamasi, menghayati, penjiwaan, lantang, ekspresi]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: «Kakeknya sudah berpulang» ده أنهي مجاز؟
-      ar: أيّ مجاز في «Kakeknya sudah berpulang»؟
-      en: Which figure is "Kakeknya sudah berpulang"?
-    options: [paradoks, eufemisme, personifikasi]
-    answer: 1
-    words: [eufemisme, berpulang]
-  - id: e03
-    type: fill_blank
-    sentence: Isi pantun ada di dua ___ terakhir.
-    meaning:
-      ar_eg: رسالة البانتون في آخر سطرين.
-      ar: مضمون البانتون في السطرين الأخيرين.
-      en: A pantun's message is in the last two lines.
-    options: [baris, bait, rima]
-    answers: [baris]
-    words: [isi, baris]
-  - id: e04
-    type: listen
-    text: Pantun jenaka dari rombongan pengantin pria membuat tamu tertawa.
-    question:
-      ar_eg: مين اللي ضحّك الضيوف؟
-      ar: مَن أضحك الضيوف؟
-      en: Who made the guests laugh?
+      ar_eg: «Hayati dulu, baru bacakan.» يعني إيه؟
+      ar: ما معنى «Hayati dulu, baru bacakan.»؟
+      en: What does "Hayati dulu, baru bacakan." mean?
     options:
-      - وفد العروسة.
-      - الشاعر.
-      - وفد العريس ببانتون هزار.
+      - اقرا بسرعة وخلّص.
+      - حس بالقصيدة الأول، وبعدين اقراها.
+      - احفظ القصيدة من غير ما تفهمها.
+    answer: 1
+    words: [menghayati]
+  - id: e03
+    type: listen
+    text: Suaranya lantang, tetapi ekspresi wajahnya datar.
+    question:
+      ar_eg: إيه المشكلة في إلقائه؟
+      ar: ما مشكلة إلقائه؟
+      en: What's wrong with his recital?
+    options:
+      - صوته واطي أوي.
+      - نسي القصيدة.
+      - وشه مافيهوش تعبير.
     answer: 2
-    words: [jenaka, rombongan]
+    words: [lantang, ekspresi]
+  - id: e04
+    type: fill_blank
+    sentence: Sebelum ___, dia membaca puisi itu sepuluh kali di kamarnya.
+    meaning:
+      ar_eg: قبل الإلقاء، قرا القصيدة عشر مرات في أوضته.
+      ar: قبل الإلقاء قرأ القصيدة عشر مرّات في غرفته.
+      en: Before the recital, he read the poem ten times in his room.
+    options: [deklamasi, penjiwaan, lantang]
+    answers: [deklamasi]
+    words: [deklamasi]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: المقطع ده ساكت وحزين.
-      ar: هذا المقطع صامت وحزين.
-      en: This stanza is silent and sad.
-    answer: Bait ini sunyi dan sedih.
-    distractors: [rima, gubuk]
-    words: [bait, sunyi]
-  - id: e06
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي كلمة بتقفّي مع «hati»؟
-      ar: أيّ كلمة تُقافي «hati»؟
-      en: Which word rhymes with "hati"?
-    options: [mati, hujan, kota]
+      ar_eg: «penjiwaan» جاية من أنهي كلمة؟
+      ar: من أيّ كلمة اشتُقّت «penjiwaan»؟
+      en: Which word does "penjiwaan" come from?
+    options: [jiwa, jauh, jawab]
     answer: 0
-    words: [berima, rima]
+    explain:
+      ar_eg: peN- + jiwa + -an = إنك تحط روحك في الحاجة.
+      ar: peN- + jiwa + -an = أن تضع روحك في الشيء.
+      en: peN- + jiwa + -an = putting your soul into something.
+    words: [penjiwaan]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: لازم تعيش معنى كل سطر.
+      ar: عليك أن تتمثّل معنى كلّ سطر.
+      en: You have to feel the meaning of every line.
+    answer: Kamu harus menghayati makna setiap larik.
+    distractors: [lantang, deklamasi]
+    words: [menghayati, larik]
   - id: e07
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: عليّ دين جميل لعيلتي في رياو.
-      ar: لعائلتي في رياو عليّ فضل لا يُنسى.
-      en: I owe a debt of gratitude to my family in Riau.
-    answers:
-      - Saya punya utang budi kepada keluarga saya di Riau.
-      - Saya berutang budi kepada keluarga saya di Riau.
-      - Saya punya utang budi pada keluarga di Riau.
-      - Aku punya utang budi kepada keluargaku di Riau.
-    words: [utang budi]
-  - id: e08
-    type: translate
     direction: from_target
-    source_text: Penyair itu menyusun puisi tentang angin yang berbisik.
+    source_text: Penonton memuji penjiwaan dan ekspresinya.
     answers_meaning:
       ar_eg:
-        - الشاعر ده ألّف قصيدة عن الهوا اللي بيوشوش.
-        - الشاعر كتب قصيدة عن ريح بتهمس.
+        - الجمهور شكر في إحساسه وتعبيره.
+        - الناس اللي بيتفرجوا مدحوا الإحساس والتعبير بتاعه.
       ar:
-        - نظم ذلك الشاعر قصيدة عن ريح تهمس.
-        - كتب الشاعر قصيدة عن الريح الهامسة.
+        - أثنى الجمهور على إحساسه وتعبيره.
+        - امتدح المشاهدون إحساسه وتعبيره.
       en:
-        - That poet composed a poem about a whispering wind.
-        - The poet wrote a poem about the wind that whispers.
-    words: [penyair, menyusun, puisi, personifikasi]
+        - The audience praised his feeling and expression.
+        - The spectators admired the soul and expression he put in.
+    words: [penjiwaan, ekspresi]
+  - id: e08
+    type: speaking
+    text: Bacalah dengan lantang dan hayati setiap kata.
+    meaning:
+      ar_eg: اقرا بصوت عالي وواضح وحس بكل كلمة.
+      ar: اقرأ بصوت عالٍ واضح وتمثّل كلّ كلمة.
+      en: Read loud and clear and feel every word.
+    words: [lantang, menghayati]
   - id: e09
     type: dictation
-    text: Silakan mampir ke gubuk kami, Encik.
+    text: Deklamasi puisi Chairil Anwar membutuhkan penjiwaan yang kuat.
     meaning:
-      ar_eg: اتفضل شرّفنا في عشّتنا يا إنشيك.
-      ar: تفضّل بزيارة كوخنا يا سيّدي.
-      en: Please drop by our hut, sir.
-    words: [gubuk]
+      ar_eg: إلقاء شعر تشايريل أنوار محتاج إحساس قوي.
+      ar: يحتاج إلقاء شعر تشايريل أنوار إلى إحساس قويّ.
+      en: Reciting Chairil Anwar's poetry needs strong feeling.
+    words: [deklamasi, penjiwaan]
   - id: e10
-    type: speaking
-    text: Mari berbalas pantun, karmina pun boleh.
+    type: fill_blank
+    sentence: Wajahnya sedih, ___ itu cocok dengan sajak tentang kehilangan.
     meaning:
-      ar_eg: يلا نتبادل بانتون، وحتى karmina ينفع.
-      ar: هيّا نتبادل البانتون، ولا بأس بالـ karmina.
-      en: Let's trade pantun; even a karmina will do.
-    words: [berbalas, karmina]
+      ar_eg: وشه كان حزين، والتعبير ده مناسب لقصيدة عن الفقد.
+      ar: كان وجهه حزينًا، وهذا التعبير يلائم قصيدة عن الفقد.
+      en: His face was sad, an expression that fit a poem about loss.
+    options: [ekspresi, lantang, angkatan]
+    answers: [ekspresi]
+    words: [ekspresi, sajak]
 dialogue:
-  title: Pantun perpisahan
+  title: Latihan di balai desa
   lines:
-    - speaker: Encik Zul
-      text: Besok kamu ke Bukittinggi, Mohamed. Tutuplah dengan pantun.
-      ar_eg: بكرة رايح بوكيتينجي يا محمد. اختم ببانتون.
-      ar: غدًا تسافر إلى بوكيتينغي يا محمد، فاختم ببانتون.
-      en: Tomorrow you're off to Bukittinggi, Mohamed. Close with a pantun.
+    - speaker: Mak Cik Rohana
+      text: Mohamed, cobalah baca sajak ini. Minggu depan ada lomba deklamasi.
+      ar_eg: يا محمد، جرّب تقرا القصيدة دي. الأسبوع الجاي فيه مسابقة إلقاء.
+      ar: يا محمد، جرّب أن تقرأ هذه القصيدة، ففي الأسبوع المقبل مسابقة إلقاء.
+      en: Mohamed, try reading this poem. There's a recital contest next week.
     - speaker: Mohamed
-      text: Perahu kecil di Sungai Siak, membawa ikan ke kota baru.
-      ar_eg: مركب صغير في نهر سياك، شايل سمك للمدينة الجديدة.
-      ar: قارب صغير في نهر سياك، يحمل السمك إلى المدينة الجديدة.
-      en: A small boat on the Siak River, carrying fish to the new town.
+      text: Suara saya sudah lantang, tetapi saya belum menghayatinya.
+      ar_eg: صوتي عالي وواضح، بس لسه مش حاسس بيها.
+      ar: صوتي عالٍ واضح، لكنّي لم أتمثّلها بعد.
+      en: My voice is loud enough, but I don't feel it yet.
+    - speaker: Mak Cik Rohana
+      text: Pikirkan kampungmu di Mesir. Penjiwaan datang dari kenangan sendiri.
+      ar_eg: فكّر في بلدك في مصر. الإحساس بييجي من ذكرياتك إنت.
+      ar: فكّر في بلدتك في مصر، فالإحساس ينبع من ذكرياتك أنت.
+      en: Think of your home town in Egypt. Feeling comes from your own memories.
     - speaker: Mohamed
-      text: Terima kasih, Encik dan Mak Cik, budi baik kalian kuingat selalu.
-      ar_eg: شكرًا يا إنشيك ويا ماك تشيك، والجميل ده عمري ما هنساه.
-      ar: شكرًا لكما، ولن أنسى معروفكما أبدًا.
-      en: Thank you, Encik and Mak Cik; your kindness I'll never forget.
-    - speaker: Encik Zul
-      text: Rimanya agak bebas, tetapi isinya sampai ke hati. Selamat jalan!
-      ar_eg: القافية متساهلة شوية، بس الرسالة وصلت للقلب. مع السلامة!
-      ar: القافية متحرّرة قليلًا، لكنّ المضمون بلغ القلب. في أمان الله!
-      en: The rhyme is a bit loose, but the message reaches the heart. Safe travels!
-souvenir:
-  id: bipa6.u02.souvenir
-  title: Pantun di pesta pernikahan Melayu
-  note:
-    ar_eg: في رياو والملايو عمومًا، البانتون بيفتح الخطب والأفراح، ووفد العريس ووفد العروسة بيتبادلوه على الباب قبل ما يدخلوا. أربع سطور بقافية a-b-a-b، أول سطرين صورة وآخر سطرين الرسالة. وفي 2020 اليونسكو سجّلت البانتون تراث ثقافي غير مادي، بترشيح مشترك من إندونيسيا وماليزيا.
-    ar: في رياو وبلاد الملايو عامّةً يفتتح البانتون الخطب والأعراس، ويتبادله وفدا العريس والعروس عند الباب قبل الدخول. أربعة أسطر بقافية a-b-a-b، السطران الأوّلان صورة والأخيران رسالة. وفي 2020 أدرجت اليونسكو البانتون في قائمة التراث الثقافي غير المادّي بترشيح مشترك من إندونيسيا وماليزيا.
-    en: In Riau and across the Malay world, pantun open speeches and weddings, and the groom's and bride's parties trade them at the door before entering. Four lines rhyming a-b-a-b, the first two an image and the last two the message. In 2020 UNESCO inscribed pantun as Intangible Cultural Heritage, on a joint nomination by Indonesia and Malaysia.
+      text: Baik, Mak Cik. Saya coba lagi dengan ekspresi yang lebih jujur.
+      ar_eg: حاضر يا خالتي. هجرّب تاني بتعبير أصدق.
+      ar: حسنًا يا خالة، سأجرّب مجدّدًا بتعبير أصدق.
+      en: All right, Mak Cik. I'll try again with a more honest expression.
+new_words:
+  - word: deklamasi
+    pos: noun
+    ar_eg: إلقاء الشعر
+    ar: إلقاء الشعر
+    en: poetry recital
+  - word: menghayati
+    pos: verb
+    ar_eg: يحس بالمعنى من جوه
+    ar: يتمثّل، يعيش المعنى
+    en: to feel deeply, to internalise
+  - word: penjiwaan
+    pos: noun
+    ar_eg: الإحساس في الأداء
+    ar: الإحساس، المعايشة في الأداء
+    en: feeling, soul (in a performance)
+  - word: lantang
+    pos: adjective
+    ar_eg: عالي وواضح
+    ar: عالٍ واضح
+    en: loud and clear
+  - word: ekspresi
+    pos: noun
+    ar_eg: تعبير
+    ar: تعبير
+    en: expression
 review:
   status: draft
   verified: false

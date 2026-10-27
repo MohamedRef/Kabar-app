@@ -1,198 +1,181 @@
 schema: kabar.lesson/v1
 id: bipa4.u02.l06
 language: id
-title: Ulangan Unit 2
+title: Surat dari warga Maros
 can_do:
-  ar_eg: تدافع عن رأيك في مشكلة عامة بأدب ووضوح.
-  ar: أن تدافع عن رأيك في مشكلة عامة بأدب ووضوح.
-  en: Defend your view.
+  ar_eg: تقرا رسالة قارئ منشورة في الجرنال وتفهم المشكلة والطلب.
+  ar: أن تقرأ رسالة قارئ منشورة في صحيفة وتفهم المشكلة والطلب.
+  en: Read a published reader's letter and pick out the problem and the request.
 slides:
-  - title: Empat macam kata ulang
+  - title: Surat pembaca di koran
     body:
       ar_eg: |
-        مراجعة سريعة للتكرار في الوحدة دي:
-        بتغيير الصوت = حركة / تنوع: bolak-balik، lalu-lalang
-        متبادل = لبعض: tolong-menolong
-        جزئي = كتير ومتنوع: pepohonan، dedaunan
-        se-…-nya = على قد ما يمكن: secepat-cepatnya، sebaik-baiknya
+        دي رسالة Bu Hasnah اللي اتنشرت في جرنال Kabar Sulawesi.
+        دوّر على ٣ حاجات: المشكلة، الناس عملوا إيه، وبيطلبوا إيه.
       ar: |
-        مراجعة سريعة للتكرار في هذه الوحدة:
-        مع تغيّر الصوت = حركة أو تنوع: bolak-balik، lalu-lalang
-        التبادل: tolong-menolong
-        الجزئي = كثرة وتنوع: pepohonan، dedaunan
-        se-…-nya = أقصى ما يمكن: secepat-cepatnya، sebaik-baiknya
+        هذه رسالة Bu Hasnah التي نُشرت في صحيفة Kabar Sulawesi.
+        ابحث عن ثلاثة أمور: المشكلة، وما فعله السكان، وما يطلبونه.
       en: |
-        Quick review of this unit's doubling:
-        sound change = movement / variety: bolak-balik, lalu-lalang
-        mutual = each other: tolong-menolong
-        partial = many and varied: pepohonan, dedaunan
-        se-…-nya = as … as possible: secepat-cepatnya, sebaik-baiknya
-    grammar: id.reduplication.advanced
+        This is Bu Hasnah's letter, printed in the Kabar Sulawesi newspaper.
+        Look for three things: the problem, what residents did, and what they ask for.
     examples:
-      - text: Truk tambang bolak-balik di depan pepohonan.
-        ar_eg: عربيات المحجر رايحة جاية قدام الأشجار.
-        ar: تذهب شاحنات المحجر وتجيء أمام الأشجار.
-        en: Quarry trucks go back and forth past the trees.
-      - text: Mohon saluran air ini diperbaiki secepat-cepatnya.
-        ar_eg: نرجو إن مجرى المية ده يتصلح بأسرع ما يمكن.
-        ar: نرجو إصلاح مجرى الماء هذا بأسرع ما يمكن.
-        en: Please have this drain repaired as quickly as possible.
+      - text: Yth. Redaksi Kabar Sulawesi, saya warga Desa Salenrang, Maros. Saluran air di depan sekolah kami tersumbat oleh sampah dan dedaunan.
+        ar_eg: حضرات هيئة تحرير Kabar Sulawesi، أنا من سكان قرية سالنرانج في ماروس. مجرى المية اللي قدام مدرستنا مسدود بالزبالة وورق الشجر.
+        ar: السادة هيئة تحرير Kabar Sulawesi المحترمون، أنا من سكان قرية سالنرانج في ماروس. قناة الصرف أمام مدرستنا مسدودة بالقمامة وأوراق الشجر.
+        en: Dear Editors of Kabar Sulawesi, I am a resident of Salenrang village, Maros. The drain in front of our school is blocked by rubbish and leaves.
+      - text: Setiap hujan, jalan di depan sekolah banjir. Warga sudah kerja bakti, tetapi saluran itu cepat tersumbat lagi.
+        ar_eg: كل ما تمطر، الشارع اللي قدام المدرسة بيغرق. الأهالي عملوا يوم شغل جماعي، بس المجرى بيتسد تاني بسرعة.
+        ar: كلما أمطرت غمرت المياه الطريق أمام المدرسة. وقد قام السكان بعمل تطوعي جماعي، لكن القناة تُسدّ مجددًا بسرعة.
+        en: Every time it rains, the road in front of the school floods. Residents have done a community clean-up, but the drain soon gets blocked again.
+      - text: Kami mohon pemerintah daerah segera memperbaiki saluran air ini sebaik-baiknya.
+        ar_eg: بنرجو من الحكومة المحلية تصلّح مجرى المية ده فورًا وعلى أحسن وجه.
+        ar: نرجو من الحكومة المحلية إصلاح قناة الصرف هذه فورًا وعلى أفضل وجه.
+        en: We ask the local government to repair this drain right away, and as well as possible.
 exercises:
   - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه المشكلة اللي في الرسالة؟
+      ar: ما المشكلة المذكورة في الرسالة؟
+      en: What problem is the letter about?
+    options:
+      - Jalan desa berlubang.
+      - Saluran air di depan sekolah tersumbat.
+      - Truk tambang terlalu bising.
+    answer: 1
+    words: [tersumbat]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الأهالي عملوا إيه قبل كده؟
+      ar: ماذا فعل السكان من قبل؟
+      en: What have the residents already done?
+    options:
+      - Melapor ke polisi.
+      - Pindah ke kota.
+      - Kerja bakti.
+    answer: 2
+    explain:
+      ar_eg: «Warga sudah kerja bakti» = الأهالي نضّفوا مع بعض، بس المشكلة رجعت.
+      ar: «Warga sudah kerja bakti» أي نظّف السكان معًا، لكن المشكلة عادت.
+      en: "“Warga sudah kerja bakti”: residents cleaned up together, but the problem came back."
+    words: [kerja bakti]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الرسالة مبعوتة لمين؟
+      ar: إلى من وُجّهت الرسالة؟
+      en: Who is the letter addressed to?
+    options:
+      - Redaksi Kabar Sulawesi
+      - Kepala sekolah
+      - Warga Desa Salenrang
+    answer: 0
+    explain:
+      ar_eg: «Yth. Redaksi …» في الأول = الرسالة لهيئة تحرير الجرنال.
+      ar: «Yth. Redaksi …» في البداية يعني أن الرسالة موجّهة إلى هيئة التحرير.
+      en: “Yth. Redaksi …” at the top means it's addressed to the editors.
+    words: [redaksi]
+  - id: e04
     type: match_pairs
     pairs:
-      - text: bolak-balik
-        ar_eg: رايح جاي
-        ar: ذهابًا وإيابًا
-        en: back and forth
-      - text: tolong-menolong
-        ar_eg: يساعدوا بعض
-        ar: يتعاونون
-        en: help one another
-      - text: pepohonan
-        ar_eg: أشجار
-        ar: أشجار
-        en: trees
-      - text: tanggapan
-        ar_eg: رد
-        ar: ردّ
-        en: response
+      - text: tersumbat
+        ar_eg: مسدود
+        ar: مسدود
+        en: blocked, clogged
+      - text: dedaunan
+        ar_eg: ورق الشجر
+        ar: أوراق الشجر
+        en: leaves, foliage
+      - text: kerja bakti
+        ar_eg: يوم شغل جماعي تطوعي
+        ar: عمل تطوعي جماعي
+        en: community work day
       - text: redaksi
         ar_eg: هيئة التحرير
         ar: هيئة التحرير
         en: the editors
-      - text: kecelakaan
-        ar_eg: حادثة
-        ar: حادث
-        en: accident
-    words: [bolak-balik, tolong-menolong, pepohonan, tanggapan, redaksi, kecelakaan]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح؟
-      ar: أيّ جملة صحيحة؟
-      en: Which sentence is correct?
-    options: ["Ada banyak truk-truk di jalan.", "Kerjakan sebaik-baik mungkin.", "Warga desa hidup tolong-menolong."]
-    answer: 2
-    explain:
-      ar_eg: بعد banyak ما تكررش، وما تخلطش sebaik-baiknya مع sebaik mungkin.
-      ar: لا تكرار بعد banyak، ولا خلط بين sebaik-baiknya وsebaik mungkin.
-      en: No doubling after banyak, and don't mix sebaik-baiknya with sebaik mungkin.
-    words: [tolong-menolong]
-  - id: e03
-    type: multiple_choice
-    question: Mohon jalan ini diperbaiki ___ karena sudah ada kecelakaan.
-    question_meaning:
-      ar_eg: نرجو إن الطريق ده يتصلح … عشان حصلت حوادث خلاص.
-      ar: نرجو إصلاح هذا الطريق … فقد وقعت حوادث.
-      en: Please repair this road … because there have already been accidents.
-    options: ["secepat-cepatnya", "lalu-lalang", "pepohonan"]
-    answer: 0
-    words: [secepat-cepatnya, kecelakaan]
-  - id: e04
-    type: listen
-    text: Kendaraan lalu-lalang dan suaranya bising sekali.
-    options: ["Kendaraan bolak-balik dan suaranya bising sekali.", "Kendaraan lalu-lalang dan suaranya bising sekali.", "Kendaraan lalu-lalang dan jalannya berdebu sekali."]
-    answer: 1
-    meaning:
-      ar_eg: العربيات رايحة جاية وصوتها مزعج جدًا.
-      ar: تغدو السيارات وتروح وصوتها صاخب جدًا.
-      en: Vehicles come and go and they're very noisy.
-    words: [lalu-lalang, bising]
+      - text: sebaik-baiknya
+        ar_eg: على أحسن وجه
+        ar: على أفضل وجه
+        en: as well as possible
+    words: [tersumbat, dedaunan, kerja bakti, redaksi, sebaik-baiknya]
   - id: e05
-    type: fill_blank
-    sentence: Saluran air ___ oleh dedaunan.
+    type: listen
+    text: Warga sudah kerja bakti, tetapi saluran itu cepat tersumbat lagi.
+    options:
+      - Warga sudah kerja bakti, tetapi saluran itu cepat diperbaiki lagi.
+      - Warga sudah bolak-balik, tetapi saluran itu cepat tersumbat lagi.
+      - Warga sudah kerja bakti, tetapi saluran itu cepat tersumbat lagi.
+    answer: 2
     meaning:
-      ar_eg: مجرى المية مسدود بورق الشجر.
-      ar: مجرى الماء مسدود بأوراق الشجر.
-      en: The drain is blocked by leaves.
-    options: [tersumbat, berlubang, terletak]
-    answers: [tersumbat]
-    words: [tersumbat, dedaunan, saluran air]
+      ar_eg: الأهالي عملوا يوم شغل جماعي، بس المجرى بيتسد تاني بسرعة.
+      ar: قام السكان بعمل تطوعي جماعي، لكن القناة تُسدّ مجددًا بسرعة.
+      en: Residents have done a community clean-up, but the drain soon gets blocked again.
+    words: [kerja bakti, tersumbat]
   - id: e06
     type: fill_blank
-    sentence: Kami menunggu ___ dari pemerintah daerah.
+    sentence: Kami mohon pemerintah daerah ___ memperbaiki saluran air ini.
     meaning:
-      ar_eg: (اكتب الكلمة) إحنا مستنيين رد من الحكومة المحلية.
-      ar: (اكتب الكلمة) ننتظر ردًّا من الحكومة المحلية.
-      en: (Type the word.) We are waiting for a response from the local government.
-    answers: [tanggapan]
-    words: [tanggapan, pemerintah daerah]
+      ar_eg: بنرجو من الحكومة المحلية تصلّح مجرى المية ده فورًا.
+      ar: نرجو من الحكومة المحلية إصلاح قناة الصرف هذه فورًا.
+      en: We ask the local government to repair this drain right away.
+    options: [bolak-balik, segera, tolong-menolong]
+    answers: [segera]
+    words: [segera]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: السكان بيساعدوا بعض في تصليح الطريق.
-      ar: يتعاون السكان على إصلاح الطريق.
-      en: The residents help one another repair the road.
-    answer: Warga tolong-menolong memperbaiki jalan.
-    distractors: [menolong, bolak]
-    words: [warga, tolong-menolong, memperbaiki]
+      ar_eg: مجرى المية اللي قدام المدرسة مسدود بالزبالة.
+      ar: قناة الصرف أمام المدرسة مسدودة بالقمامة.
+      en: The drain in front of the school is blocked by rubbish.
+    answer: Saluran air di depan sekolah tersumbat oleh sampah.
+    distractors: [pepohonan, bolak-balik]
+    words: [tersumbat]
   - id: e08
-    type: dictation
-    text: Lubang di jalan itu membahayakan pengendara.
-    meaning:
-      ar_eg: الحفرة اللي في الطريق ده بتعرّض السواقين للخطر.
-      ar: الحفرة في ذلك الطريق تعرّض السائقين للخطر.
-      en: The hole in that road endangers drivers.
-    words: [membahayakan, pengendara]
-  - id: e09
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: في رأيي، الطريق ده لازم يتصلح حالًا.
-      ar: في رأيي، يجب أن يُصلَح هذا الطريق فورًا.
-      en: In my opinion, this road must be repaired immediately.
+      ar_eg: كل ما تمطر، الشارع اللي قدام المدرسة بيغرق.
+      ar: كلما أمطرت غمرت المياه الطريق أمام المدرسة.
+      en: Every time it rains, the road in front of the school floods.
     answers:
-      - Menurut saya, jalan ini harus segera diperbaiki.
-      - Menurut saya, jalan ini harus segera diperbaiki
-      - Menurut saya jalan ini harus segera diperbaiki.
-      - Menurut saya, jalan ini harus diperbaiki segera.
-      - Saya berpendapat bahwa jalan ini harus segera diperbaiki.
-      - Menurut saya, jalan ini harus segera dibetulkan.
-    words: [segera]
-  - id: e10
-    type: speaking
-    text: Melalui surat pembaca ini, saya mohon pemerintah daerah segera memperbaiki saluran air.
-    meaning:
-      ar_eg: من خلال رسالة القرّاء دي، بطلب من الحكومة المحلية تصلح مجرى المية حالًا.
-      ar: أرجو، عبر رسالة القرّاء هذه، أن تُصلح الحكومة المحلية مجرى الماء فورًا.
-      en: Through this letter to the editor, I ask the local government to repair the drain immediately.
-    words: [surat pembaca, pemerintah daerah, segera, saluran air]
+      - Setiap hujan, jalan di depan sekolah banjir.
+      - Setiap kali hujan, jalan di depan sekolah banjir.
+      - Setiap turun hujan, jalan di depan sekolah banjir.
+      - Setiap hujan, jalan di depan sekolah kebanjiran.
+      - Kalau hujan, jalan di depan sekolah selalu banjir.
+      - Jalan di depan sekolah banjir setiap hujan.
+      - Jalan di depan sekolah banjir setiap kali hujan.
 dialogue:
-  title: Dua pendapat
+  title: Surat Bu Hasnah di koran
   lines:
-    - speaker: Daeng Rahman
-      text: Kenapa kalian menulis surat pembaca? Truk kami hanya bekerja.
-      ar_eg: إنتو كتبتوا رسالة قرّاء ليه؟ عربياتنا بتشتغل وبس.
-      ar: لماذا كتبتم رسالة إلى الصحيفة؟ شاحناتنا تعمل فقط.
-      en: Why did you write to the paper? Our trucks are just doing their job.
+    - speaker: Pak Amir
+      text: Mohamed, lihat! Surat Bu Hasnah ada di koran Kabar Sulawesi hari ini.
+      ar_eg: يا Mohamed، بص! رسالة Bu Hasnah في جرنال Kabar Sulawesi النهارده.
+      ar: يا Mohamed، انظر! رسالة Bu Hasnah منشورة في صحيفة Kabar Sulawesi اليوم.
+      en: Mohamed, look! Bu Hasnah's letter is in Kabar Sulawesi today.
     - speaker: Mohamed
-      text: Kami tidak melarang truk, Daeng. Tapi jalan desa jadi berlubang dan membahayakan anak-anak.
-      ar_eg: إحنا مش بنمنع العربيات يا داينج. بس طريق القرية بقى مليان حفر وبيعرّض العيال للخطر.
-      ar: لسنا نمنع الشاحنات يا داينغ، لكن طريق القرية امتلأ بالحفر وصار خطرًا على الأطفال.
-      en: We're not banning the trucks, Daeng. But the village road is full of potholes and it endangers the children.
-    - speaker: Daeng Rahman
-      text: Lalu, apa maunya warga?
-      ar_eg: طب، السكان عايزين إيه؟
-      ar: وماذا يريد السكان إذن؟
-      en: So what do the residents want?
+      text: Wah, cepat sekali! Isinya tentang saluran air di depan sekolah, kan?
+      ar_eg: ياه، بسرعة كده! هي عن مجرى المية اللي قدام المدرسة، صح؟
+      ar: يا للسرعة! موضوعها قناة الصرف أمام المدرسة، أليس كذلك؟
+      en: Wow, that was quick! It's about the drain in front of the school, right?
+    - speaker: Pak Amir
+      text: Betul. Semoga pemerintah daerah segera memberi tanggapan.
+      ar_eg: مظبوط. يا رب الحكومة المحلية ترد بسرعة.
+      ar: صحيح. نرجو أن تردّ الحكومة المحلية قريبًا.
+      en: Right. Let's hope the local government responds soon.
     - speaker: Mohamed
-      text: Menurut kami, jalan ini harus diperbaiki sebaik-baiknya, dan truk harus pelan-pelan.
-      ar_eg: في رأينا، الطريق لازم يتصلح على أحسن وجه، والعربيات لازم تمشي بالراحة.
-      ar: نرى أن يُصلَح الطريق على أحسن وجه، وأن تسير الشاحنات ببطء.
-      en: In our view, this road must be repaired properly, and the trucks must slow down.
-    - speaker: Daeng Rahman
-      text: Baiklah, itu masuk akal. Kita memang harus tolong-menolong.
-      ar_eg: ماشي، كلامك معقول. لازم فعلًا نساعد بعض.
-      ar: حسنًا، هذا معقول. ينبغي فعلًا أن نتعاون.
-      en: All right, that makes sense. We really should help one another.
-souvenir:
-  id: bipa4.u02.souvenir
-  title: Menara Karst Rammang-Rammang
-  note:
-    ar_eg: في ماروس، أبراج حجر جيري سودا طالعة من وسط غيطان الرز والنهر، ومن أكبر مناطق الكارست في الدنيا. أهل رامانج رامانج وقفوا قدام مشاريع المحاجر عشان يحافظوا عليها، ودلوقتي بيستقبلوا الزوار بالقوارب الصغيرة. وفي إندونيسيا، رسالة القرّاء في الجرنال من زمان صوت الناس العاديين لما يحبوا يشتكوا بأدب ويطالبوا بحقهم.
-    ar: في ماروس تنتصب أبراج كلسية داكنة وسط حقول الأرز والنهر، وهي من أوسع مناطق الكارست في العالم. وقد وقف أهل رامّانغ رامّانغ في وجه مشاريع المحاجر حفاظًا عليها، وصاروا اليوم يستقبلون الزوار بالقوارب الصغيرة. وفي إندونيسيا ظلت رسائل القرّاء في الصحف منبرًا قديمًا يرفع فيه الناس شكواهم بأدب ويطالبون بحقوقهم.
-    en: In Maros, dark limestone towers rise from the rice fields and the river — one of the largest karst areas in the world. Rammang-Rammang villagers stood up to quarry plans to protect them, and now welcome visitors by small boat. In Indonesia, the newspaper reader's letter has long been where ordinary people complain politely and ask for their rights.
+      text: Kalau belum ada tanggapan, kita kerja bakti lagi saja, Pak.
+      ar_eg: ولو مفيش رد، نعمل يوم شغل جماعي تاني وخلاص يا أستاذ.
+      ar: وإن لم يأتِ ردّ، فلنقم بعمل تطوعي جماعي مرة أخرى يا سيدي.
+      en: If there's no response yet, we'll just do another clean-up day, sir.
+    - speaker: Pak Amir
+      text: Ha-ha, iya. Di sini kita memang hidup tolong-menolong.
+      ar_eg: هههه، أيوه. إحنا هنا فعلًا عايشين بنساعد بعض.
+      ar: نعم. فنحن هنا نعيش متعاونين حقًّا.
+      en: Ha ha, yes. Here we really do live helping one another.
+new_words: []
 review:
   status: draft
   verified: false

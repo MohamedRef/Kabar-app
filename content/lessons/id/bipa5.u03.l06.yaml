@@ -1,172 +1,191 @@
 schema: kabar.lesson/v1
 id: bipa5.u03.l06
 language: id
-title: Ulangan Unit 3
+title: Presentasi teknologi
 can_do:
-  ar_eg: تشرح تكنولوجيا وأثرها بأسلوب رسمي، وتلخّص مقال عنها.
-  ar: أن تشرح تقنيةً وأثرها بأسلوب رسمي وتلخّص مقالة عنها.
-  en: Explain a technology and its effects formally, and summarise an article on it.
+  ar_eg: تقدّم شرح قصير عن تكنولوجيا وأثرها قدام ناس.
+  ar: أن تقدّم عرضًا قصيرًا عن تقنية وأثرها.
+  en: Give a short presentation explaining a technology and its effects.
+slides:
+  - title: Membuka dan menutup presentasi
+    grammar: id.nominalization
+    body:
+      ar_eg: |
+        العرض الرسمي بيبدأ وبيخلص بجمل ثابتة، وبيستخدم أسماء (nominalisasi) كتير:
+        - Pada kesempatan ini, saya akan membahas … = في الفرصة دي، هتكلم عن …
+        - Pertama-tama, … = في الأول خالص …
+        - Sebagai penutup, … = وفي الختام …
+        - Terima kasih atas perhatian Anda. = شكرًا على اهتمامكم.
+        مثلًا: saya akan membahas penggunaan dompet digital (مش bagaimana orang menggunakan …).
+      ar: |
+        يبدأ العرض الرسمي وينتهي بعبارات ثابتة، ويكثر فيه الاسم (nominalisasi):
+        - Pada kesempatan ini, saya akan membahas … = في هذه المناسبة سأتناول …
+        - Pertama-tama, … = بادئ ذي بدء …
+        - Sebagai penutup, … = وختامًا …
+        - Terima kasih atas perhatian Anda. = شكرًا على حسن إصغائكم.
+        مثلًا: saya akan membahas penggunaan dompet digital.
+      en: |
+        A formal talk opens and closes with set phrases, and uses plenty of nouns (nominalisasi):
+        - Pada kesempatan ini, saya akan membahas … = Today I will discuss …
+        - Pertama-tama, … = First of all, …
+        - Sebagai penutup, … = To close, …
+        - Terima kasih atas perhatian Anda. = Thank you for your attention.
+        For example: saya akan membahas penggunaan dompet digital.
+    examples:
+      - text: Pada kesempatan ini, saya akan membahas perkembangan ojek daring.
+        ar_eg: في الفرصة دي، هتكلم عن تطوّر الأوجيك الأونلاين.
+        ar: في هذه المناسبة سأتناول تطوّر الدراجات الأجرة عبر التطبيقات.
+        en: Today I will discuss the development of app-based motorbike taxis.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: penggunaan
-        ar_eg: استخدام
-        ar: استخدام
-        en: use
-      - text: pertumbuhan
-        ar_eg: نمو
-        ar: نموّ
-        en: growth
-      - text: bocor
-        ar_eg: يتسرّب
-        ar: يتسرّب
-        en: to leak
-      - text: ringkasan
-        ar_eg: ملخص
-        ar: ملخّص
-        en: summary
-      - text: jaminan
-        ar_eg: ضمان
-        ar: ضمان
-        en: guarantee
-    words: [penggunaan, pertumbuhan, bocor, ringkasan, jaminan]
+      - text: membahas
+        ar_eg: يناقش / يتكلم عن
+        ar: يتناول، يناقش
+        en: to discuss
+      - text: perkembangan
+        ar_eg: تطوّر
+        ar: تطوّر
+        en: development
+      - text: sebagai penutup
+        ar_eg: وفي الختام
+        ar: وختامًا
+        en: to close
+      - text: perhatian
+        ar_eg: اهتمام / انتباه
+        ar: انتباه، اهتمام
+        en: attention
+    words: [membahas, perkembangan, sebagai penutup, perhatian]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: إيه الاسم اللي معناه «الأمان» من aman؟
-      ar: ما الاسم المجرّد من aman؟
-      en: What is the abstract noun from aman?
-    options: [pengamanan, keamanan, amanan]
-    answer: 1
-    explain:
-      ar_eg: الصفة + ke-…-an = الفكرة المجردة (الأمان).
-      ar: الصفة مع ke-…-an تعطي المعنى المجرد.
-      en: Adjective + ke-…-an gives the abstract idea.
-    words: [keamanan]
+      ar_eg: أنهي جملة تفتح بيها العرض؟
+      ar: بأيّ جملة تفتتح العرض؟
+      en: Which sentence opens the presentation?
+    options:
+      - Terima kasih atas perhatian Anda.
+      - Sebagai penutup, teknologi itu penting.
+      - Pada kesempatan ini, saya akan membahas ekonomi digital.
+    answer: 2
+    words: [membahas]
   - id: e03
     type: fill_blank
-    sentence: ___ jalan tol di Samarinda selesai tahun lalu.
+    sentence: ___, saya ingin mengatakan bahwa teknologi harus aman.
     meaning:
-      ar_eg: بناء الطريق السريع في ساماريندا خلص السنة اللي فاتت.
-      ar: اكتمل بناء الطريق السريع في ساماريندا العام الماضي.
-      en: Construction of the toll road in Samarinda finished last year.
-    options: [Pembangunan, Membangun, Dibangun]
-    answers: [Pembangunan]
-    words: [pembangunan]
+      ar_eg: وفي الختام، حابب أقول إن التكنولوجيا لازم تكون آمنة.
+      ar: وختامًا، أودّ القول إنّ التقنية يجب أن تكون آمنة.
+      en: To close, I'd like to say that technology must be safe.
+    options: [Sebagai penutup, Pertama-tama, Pada kesempatan ini]
+    answers: [Sebagai penutup]
+    words: [sebagai penutup]
   - id: e04
     type: listen
-    text: Pertumbuhan ekonomi digital sangat pesat, tetapi pekerjanya butuh jaminan.
-    question:
-      ar_eg: المتكلم بيقول إيه؟
-      ar: ماذا يقول المتكلّم؟
-      en: What does the speaker say?
+    text: Terima kasih atas perhatian Bapak dan Ibu sekalian.
     options:
-      - الاقتصاد الرقمي بينمو بسرعة، بس العمال محتاجين ضمان.
-      - الاقتصاد الرقمي بيقل.
-      - العمال عندهم ضمان كويس.
+      - Terima kasih atas perhatian Bapak dan Ibu sekalian.
+      - Terima kasih atas perkembangan Bapak dan Ibu sekalian.
+      - Terima kasih, Bapak dan Ibu, sampai jumpa.
     answer: 0
-    words: [pertumbuhan, pesat, jaminan]
+    words: [perhatian]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: والنتيجة، بيانات المستخدمين اتسرّبت.
-      ar: ونتيجةً لذلك تسرّبت بيانات المستخدمين.
-      en: As a result, users' data leaked.
-    answer: Akibatnya, data pengguna bocor.
-    distractors: [mencegah, penggunaan]
-    words: [akibatnya, bocor]
+      ar_eg: هتكلم عن تطوّر الدفع الرقمي.
+      ar: سأتناول تطوّر الدفع الرقمي.
+      en: I will discuss the development of digital payment.
+    answer: Saya akan membahas perkembangan pembayaran digital.
+    distractors: [penutup, dari]
+    words: [membahas, perkembangan]
   - id: e06
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: عشان نمنع الخطر ده، غيّر الباسورد بتاعك.
-      ar: لمنع هذا الخطر، غيّر كلمة مرورك.
-      en: To prevent this risk, change your password.
+      ar_eg: تطوّر التكنولوجيا في إندونيسيا سريع قوي.
+      ar: تطوّر التقنية في إندونيسيا سريع جدًّا.
+      en: The development of technology in Indonesia is very fast.
     answers:
-      - Untuk mencegah risiko ini, ganti kata sandi Anda.
-      - Untuk mencegah risiko ini, ganti kata sandimu.
-      - Untuk mencegah risiko itu, ganti kata sandi Anda.
-      - Untuk mencegah risiko ini, gantilah kata sandi Anda.
-    words: [mencegah, risiko, kata sandi]
+      - Perkembangan teknologi di Indonesia sangat cepat.
+      - Perkembangan teknologi di Indonesia sangat pesat.
+      - Perkembangan teknologi di Indonesia cepat sekali.
+      - Perkembangan teknologi di Indonesia pesat sekali.
+    words: [perkembangan]
   - id: e07
-    type: translate
-    direction: from_target
-    source_text: Artikel ini membahas perkembangan dompet digital.
-    answers_meaning:
-      ar_eg:
-        - المقال ده بيتكلم عن تطوّر المحافظ الإلكترونية.
-        - المقال ده بيناقش تطوّر المحفظة الإلكترونية.
-      ar:
-        - تتناول هذه المقالة تطوّر المحافظ الرقمية.
-        - تناقش هذه المقالة تطوّر المحفظة الرقمية.
-      en:
-        - This article discusses the development of e-wallets.
-        - This article discusses how digital wallets have developed.
-    words: [membahas, perkembangan, dompet digital]
+    type: dictation
+    text: Sebagai penutup, terima kasih atas perhatian Anda.
+    meaning:
+      ar_eg: وفي الختام، شكرًا على اهتمامكم.
+      ar: وختامًا، شكرًا على حسن إصغائكم.
+      en: To close, thank you for your attention.
+    words: [sebagai penutup, perhatian]
   - id: e08
+    type: speaking
+    text: Pada kesempatan ini, saya akan membahas keamanan data.
+    meaning:
+      ar_eg: في الفرصة دي، هتكلم عن أمان البيانات.
+      ar: في هذه المناسبة سأتناول أمن البيانات.
+      en: Today I will discuss data security.
+    words: [membahas]
+  - id: e09
     type: multiple_choice
     question_meaning:
-      ar_eg: إنت خلّصت عرضك. تقول إيه؟
-      ar: انتهيت من عرضك. ماذا تقول؟
-      en: You've finished your talk. What do you say?
+      ar_eg: في العرض الرسمي، أنهي أحسن؟
+      ar: أيّها أفضل في عرض رسمي؟
+      en: Which is better in a formal talk?
     options:
-      - Pertama-tama, saya akan membahas …
-      - Pada kesempatan ini, …
-      - Terima kasih atas perhatian Anda.
-    answer: 2
-    words: [perhatian]
-  - id: e09
-    type: dictation
-    text: Secara singkat, perubahan teknologi membawa kemudahan dan risiko.
-    meaning:
-      ar_eg: باختصار، تغيّر التكنولوجيا بيجيب سهولة ومخاطر.
-      ar: باختصار، يحمل تغيّر التقنية سهولةً ومخاطر.
-      en: In short, technological change brings convenience and risks.
-    words: [secara singkat, perubahan, kemudahan, risiko]
-  - id: e10
-    type: speaking
-    text: Gagasan utama artikel ini adalah keamanan data pribadi.
-    meaning:
-      ar_eg: الفكرة الأساسية في المقال ده هي أمان البيانات الشخصية.
-      ar: الفكرة الرئيسة في هذه المقالة أمن البيانات الشخصية.
-      en: The main idea of this article is personal data security.
-    words: [gagasan utama, keamanan]
+      - Saya mau ngomongin aplikasi.
+      - Saya akan membahas penggunaan aplikasi.
+      - Gue mau cerita soal aplikasi.
+    answer: 1
+    words: [membahas]
 dialogue:
-  title: Kapal di Sungai Mahakam
+  title: Latihan presentasi
   lines:
-    - speaker: Mas Rizal
-      text: Lihat, Mohamed, kapal-kapal di Mahakam sekarang dipesan lewat aplikasi.
-      ar_eg: بص يا محمد، المراكب في ماهاكام بقت بتتحجز بالتطبيق.
-      ar: انظر يا محمد، صارت مراكب ماهاكام تُحجز عبر التطبيق.
-      en: Look, Mohamed, the boats on the Mahakam are booked through an app now.
     - speaker: Mohamed
-      text: Wah, perubahan yang besar. Kemudahannya luar biasa.
-      ar_eg: يا سلام، تغيير كبير. السهولة مش طبيعية.
-      ar: يا للعجب، تغيّر كبير وسهولة مدهشة.
-      en: Wow, a big change. Amazingly convenient.
-    - speaker: Mas Rizal
-      text: Betul, tetapi penggunaan aplikasi juga punya risiko.
-      ar_eg: مظبوط، بس استخدام التطبيقات برضه له مخاطر.
-      ar: صحيح، لكنّ استخدام التطبيقات له مخاطره أيضًا.
-      en: True, but using apps carries risks too.
+      text: Selamat pagi. Pada kesempatan ini, saya akan membahas perkembangan dompet digital.
+      ar_eg: صباح الخير. في الفرصة دي، هتكلم عن تطوّر المحافظ الإلكترونية.
+      ar: صباح الخير. في هذه المناسبة سأتناول تطوّر المحافظ الرقمية.
+      en: Good morning. Today I will discuss the development of e-wallets.
+    - speaker: Bu Lestari
+      text: Bagus. Pembukaannya jelas. Lanjutkan.
+      ar_eg: حلو. الافتتاحية واضحة. كمّل.
+      ar: جيّد، الافتتاحية واضحة. تابع.
+      en: Good. A clear opening. Go on.
     - speaker: Mohamed
-      text: Ya, data bisa bocor. Untuk mencegahnya, saya pakai kata sandi yang kuat.
-      ar_eg: أيوه، البيانات ممكن تتسرّب. وعشان أمنع ده، بستخدم باسورد قوي.
-      ar: نعم، قد تتسرّب البيانات، ولمنع ذلك أستعمل كلمة مرور قويّة.
-      en: Yes, data can leak. To prevent it, I use a strong password.
-    - speaker: Mas Rizal
-      text: Secara singkat, kamu sudah ahli teknologi!
-      ar_eg: باختصار، إنت بقيت خبير تكنولوجيا!
-      ar: باختصار، صرت خبيرًا في التقنية!
-      en: In short, you're a tech expert now!
-souvenir:
-  id: bipa5.u03.souvenir
-  title: Sungai Mahakam
-  note:
-    ar_eg: نهر ماهاكام هو شريان شرق كاليمانتان، وعليه مدينة ساماريندا. زمان الناس كانوا بيتنقلوا ويتاجروا بالمراكب بس، ودلوقتي الأوجيك الأونلاين والمحافظ الإلكترونية وصلت لكل حتة. إندونيسيا من أكبر أسواق التطبيقات في العالم، ومن الطبيعي تلاقي بياعة في السوق بتقبل الدفع بالـ QR.
-    ar: نهر ماهاكام شريان شرق كاليمانتان، وعلى ضفافه مدينة ساماريندا. كان الناس قديمًا يتنقّلون ويتاجرون بالمراكب وحدها، أمّا اليوم فقد بلغت الدراجات الأجرة عبر التطبيقات والمحافظ الرقمية كلّ مكان. وإندونيسيا من أكبر أسواق التطبيقات في العالم، فلا عجب أن تقبل بائعة في السوق الدفع برمز QR.
-    en: The Mahakam is East Kalimantan's lifeline, with Samarinda on its banks. People once travelled and traded only by boat; now app-based ride-hailing and e-wallets reach everywhere. Indonesia is one of the world's biggest app economies, so don't be surprised when a market seller takes payment by QR code.
+      text: Pertama-tama, penggunaan dompet digital naik pesat sejak 2020.
+      ar_eg: في الأول خالص، استخدام المحافظ الإلكترونية زاد بسرعة من 2020.
+      ar: بادئ ذي بدء، ارتفع استخدام المحافظ الرقمية بسرعة منذ 2020.
+      en: First of all, e-wallet use has risen rapidly since 2020.
+    - speaker: Mohamed
+      text: Sebagai penutup, teknologi ini mudah, tetapi keamanannya harus dijaga. Terima kasih atas perhatian Anda.
+      ar_eg: وفي الختام، التكنولوجيا دي سهلة، بس لازم نحافظ على أمانها. شكرًا على اهتمامكم.
+      ar: وختامًا، هذه التقنية سهلة لكن يجب صون أمنها. شكرًا على حسن إصغائكم.
+      en: To close, this technology is easy, but its security must be protected. Thank you for your attention.
+    - speaker: Bu Lestari
+      text: Rapi sekali, Mohamed. Penutupnya juga sopan.
+      ar_eg: منظم جدًا يا محمد. والختام كمان مؤدب.
+      ar: منظّم جدًّا يا محمد، والخاتمة مهذّبة أيضًا.
+      en: Very neat, Mohamed. A polite close too.
+new_words:
+  - word: membahas
+    pos: verb
+    ar_eg: يناقش / يتكلم عن
+    ar: يتناول، يناقش
+    en: to discuss
+  - word: perkembangan
+    pos: noun
+    ar_eg: تطوّر
+    ar: تطوّر
+    en: development
+  - word: sebagai penutup
+    ar_eg: وفي الختام
+    ar: وختامًا
+    en: to close, in conclusion
+  - word: perhatian
+    pos: noun
+    ar_eg: اهتمام / انتباه
+    ar: انتباه، اهتمام
+    en: attention
 review:
   status: draft
   verified: false

@@ -1,166 +1,210 @@
 schema: kabar.lesson/v1
 id: bipa7.u05.l06
 language: id
-title: Ulangan Unit 5
+title: Pahlawan perempuan
 can_do:
-  ar_eg: تكتب تاريخ متماسك من غير تكرار وتربط المحطات ببعض.
-  ar: أن تكتب تاريخًا متماسكًا بلا تكرار وتربط محطّاته.
-  en: Write a cohesive history without repetition, linking each milestone.
+  ar_eg: تحكي قصة بطلة قومية زي مارثا كريستينا تياهاهو.
+  ar: أن تروي قصّة بطلة وطنية مثل مارثا كريستينا تياهاهو.
+  en: Tell the story of a national heroine such as Martha Christina Tiahahu.
+slides:
+  - title: Gadis tujuh belas tahun dari Nusa Laut
+    body:
+      ar_eg: |
+        مارثا كريستينا تياهاهو بنت من جزيرة نوسا لاوت في مالوكو.
+        - سنة ١٨١٧، وهي عندها ١٧ سنة بس، berperang (حاربت) جنب أبوها وجنب البطل باتيمورا ضد الهولنديين.
+        - الكل افتكر keberanian (شجاعتها): كانت بتشجّع الستات يحاربوا كمان.
+        - اتمسكت واتحطّت على مركب رايحة جاوة. رفضت الأكل والدوا، وgugur (ماتت شهيدة) في ٢ يناير ١٨١٨، ورموا جثمانها في بحر باندا.
+        - سنة ١٩٦٩ بقت pahlawan nasional (بطلة قومية).
+        هي واحدة من tokoh perempuan (الشخصيات النسائية) زي تشوت نياك ديين من آتشيه وكارتيني من جاوة.
+      ar: |
+        مارثا كريستينا تياهاهو فتاة من جزيرة نوسا لاوت في مالوكو.
+        - في سنة ١٨١٧، وهي في السابعة عشرة، berperang (قاتلت) إلى جانب أبيها والبطل باتيمورا ضدّ الهولنديين.
+        - واشتهرت بـ keberanian (شجاعتها)، فقد كانت تحثّ النساء على القتال أيضًا.
+        - ثمّ أُسرت وحُملت على سفينة إلى جاوة، فرفضت الطعام والدواء حتى gugur (استُشهدت) في ٢ يناير ١٨١٨، وأُلقي جثمانها في بحر باندا.
+        - وفي ١٩٦٩ صارت pahlawan nasional (بطلة وطنية).
+        وهي من tokoh perempuan (الأعلام النسائية) مثل تشوت نياك ديين من آتشيه وكارتيني من جاوة.
+      en: |
+        Martha Christina Tiahahu was a girl from Nusa Laut island in Maluku.
+        - In 1817, aged only 17, she berperang (fought) beside her father and the hero Pattimura against the Dutch.
+        - Everyone remembered her keberanian (courage): she urged women to fight too.
+        - She was captured and put on a ship to Java. She refused food and medicine, and gugur (fell) on 2 January 1818; her body was committed to the Banda Sea.
+        - In 1969 she became a pahlawan nasional (national hero).
+        She stands among the tokoh perempuan (women figures) such as Cut Nyak Dhien of Aceh and Kartini of Java.
+    examples:
+      - text: Martha Christina Tiahahu gugur pada usia tujuh belas tahun.
+        ar_eg: مارثا كريستينا تياهاهو استشهدت وهي عندها سبعتاشر سنة.
+        ar: استُشهدت مارثا كريستينا تياهاهو في السابعة عشرة.
+        en: Martha Christina Tiahahu fell at the age of seventeen.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: kohesi
-        ar_eg: تماسك النص
-        ar: التماسك
-        en: cohesion
-      - text: pengakuan
-        ar_eg: اعتراف
-        ar: اعتراف
-        en: recognition
-      - text: reformasi
-        ar_eg: إصلاح
-        ar: إصلاح
-        en: reform
-      - text: penjajahan
-        ar_eg: استعمار
-        ar: استعمار
-        en: colonial rule
-      - text: linimasa
-        ar_eg: خط زمني
-        ar: خطّ زمني
-        en: timeline
-    words: [kohesi, pengakuan, reformasi, penjajahan, linimasa]
+      - text: pahlawan nasional
+        ar_eg: بطل قومي
+        ar: بطل وطنيّ
+        en: national hero
+      - text: gugur
+        ar_eg: مات شهيد
+        ar: استُشهد
+        en: to fall (die for one's country)
+      - text: keberanian
+        ar_eg: شجاعة
+        ar: شجاعة
+        en: courage
+      - text: tokoh perempuan
+        ar_eg: شخصية نسائية
+        ar: علَم نسائيّ
+        en: woman figure
+      - text: berperang
+        ar_eg: يحارب
+        ar: يقاتل
+        en: to fight a war
+    words: [pahlawan nasional, gugur, keberanian, tokoh perempuan, berperang]
   - id: e02
+    type: listen
+    text: Pada usia tujuh belas tahun, Martha ikut berperang bersama ayahnya.
+    question:
+      ar_eg: مارثا عملت إيه وهي عندها ١٧ سنة؟
+      ar: ماذا فعلت مارثا في السابعة عشرة؟
+      en: What did Martha do at seventeen?
+    options:
+      - سافرت هولندا تدرس.
+      - اتجوّزت.
+      - حاربت جنب أبوها.
+    answer: 2
+    words: [berperang]
+  - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: مين اللي راح القاهرة سنة 1947 ومضى معاهدة الصداقة؟
-      ar: من ذهب إلى القاهرة عام 1947 ووقّع معاهدة الصداقة؟
-      en: Who went to Cairo in 1947 and signed the friendship treaty?
+      ar_eg: «gugur» بتتقال على مين؟
+      ar: على من تُقال «gugur»؟
+      en: Who is "gugur" said of?
     options:
-      - مبعوث الجامعة العربية.
-      - وفد بقيادة الحاج أجوس سالم.
-      - طلبة جامعة تريساكتي.
-    answer: 1
-    words: [delegasi, utusan, Liga Arab]
-  - id: e03
-    type: fill_blank
-    sentence: Sukarno menjadi presiden, Hatta wakil presiden. Kata "menjadi" dihilangkan karena ___.
-    meaning:
-      ar_eg: سوكارنو بقى رئيس، وهاتا نائب رئيس. كلمة «menjadi» اتشالت بسبب الحذف.
-      ar: صار سوكارنو رئيسًا، وهاتا نائبًا له، وحُذفت «menjadi» بالحذف.
-      en: Sukarno became president, Hatta vice-president. "Menjadi" is dropped because of ellipsis.
-    options: [pelesapan, substitusi, tuntutan]
-    answers: [pelesapan]
-    words: [pelesapan, substitusi, tuntutan]
-  - id: e04
-    type: listen
-    text: Mesir termasuk negara pertama yang mengakui kemerdekaan Indonesia.
-    question:
-      ar_eg: الجملة دي بتقول إيه عن مصر؟
-      ar: ماذا تقول الجملة عن مصر؟
-      en: What does the sentence say about Egypt?
-    options:
-      - إنها من أوائل الدول اللي اعترفت باستقلال إندونيسيا.
-      - إنها استعمرت إندونيسيا.
-      - إنها رفضت تعترف.
+      - اللي مات وهو بيدافع عن بلده.
+      - اللي نجح في الامتحان.
+      - اللي سافر بعيد.
     answer: 0
-    words: [mengakui]
+    explain:
+      ar_eg: gugur أصلها «ورق الشجر يقع»، وبتتقال باحترام على اللي مات في سبيل الوطن.
+      ar: أصل gugur سقوط الورق، وتُقال إجلالًا لمن مات في سبيل الوطن.
+      en: gugur literally means leaves falling; it's said with respect of those who die for their country.
+    words: [gugur]
+  - id: e04
+    type: fill_blank
+    sentence: Semua orang Maluku mengingat ___ gadis muda itu.
+    meaning:
+      ar_eg: كل أهل مالوكو فاكرين شجاعة البنت الصغيرة دي.
+      ar: يذكر أهل مالوكو جميعًا شجاعة تلك الفتاة الشابّة.
+      en: All of Maluku remembers that young girl's courage.
+    options: [keberanian, perlawanan, julukan]
+    answers: [keberanian]
+    words: [keberanian]
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مارثا بقت بطلة قومية سنة كام؟
+      ar: في أيّ سنة صارت مارثا بطلة وطنية؟
+      en: In which year did Martha become a national hero?
+    options: ['1817', '1969', '1945']
+    answer: 1
+    words: [pahlawan nasional]
+  - id: e06
     type: build_sentence
     source:
-      ar_eg: كل فترة ليها حكومتها.
-      ar: لكلّ فترة حكومتها.
-      en: Each period has its own government.
-    answer: Masing-masing periode punya pemerintahannya sendiri.
-    distractors: [era, tersebut]
-    words: [masing-masing, periode, pemerintahan]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إيه اللي خلّى الطلبة يتظاهروا سنة 1998؟
-      ar: ما الذي دفع الطلّاب إلى التظاهر عام 1998؟
-      en: What drove the students to protest in 1998?
-    options:
-      - إعلان الاستقلال.
-      - الاحتلال الياباني.
-      - الأزمة المالية ومطلب الإصلاح.
-    answer: 2
-    words: [krisis moneter, demonstrasi]
+      ar_eg: كارتيني شخصية نسائية مهمّة.
+      ar: كارتيني علَم نسائيّ مهمّ.
+      en: Kartini is an important woman figure.
+    answer: Kartini adalah tokoh perempuan yang penting.
+    distractors: [gugur, berperang]
+    words: [tokoh perempuan]
   - id: e07
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الرئيس تنحّى بعد مظاهرات كبيرة.
-      ar: تنحّى الرئيس بعد مظاهرات كبرى.
-      en: The president stepped down after mass demonstrations.
-    answers:
-      - Presiden mundur setelah demonstrasi besar.
-      - Presiden itu mundur setelah demonstrasi besar.
-      - Presiden mundur setelah demonstrasi besar-besaran.
-      - Setelah demonstrasi besar, presiden mundur.
-    words: [mundur, demonstrasi]
-  - id: e08
-    type: speaking
-    text: Proklamasi 1945 dan Reformasi 1998 adalah dua tonggak sejarah.
-    meaning:
-      ar_eg: إعلان 1945 وإصلاح 1998 علامتين فارقتين في التاريخ.
-      ar: إعلان 1945 وإصلاح 1998 معلمان تاريخيان فارقان.
-      en: The 1945 proclamation and the 1998 Reformasi are two historic milestones.
-    words: [proklamasi, tonggak sejarah]
-  - id: e09
-    type: dictation
-    text: Era Orde Baru tersebut berlangsung lebih dari tiga puluh tahun.
-    meaning:
-      ar_eg: عصر النظام الجديد ده استمر أكتر من تلاتين سنة.
-      ar: دام عهد النظام الجديد المذكور أكثر من ثلاثين عامًا.
-      en: That New Order era lasted more than thirty years.
-    words: [era, Orde Baru, tersebut]
-  - id: e10
-    type: translate
     direction: from_target
-    source_text: Pengakuan Mesir dan Liga Arab membuka jalan bagi diplomasi Indonesia.
+    source_text: Banyak tokoh perempuan Indonesia menjadi pahlawan nasional karena keberanian mereka.
     answers_meaning:
       ar_eg:
-        - اعتراف مصر والجامعة العربية فتح الطريق للدبلوماسية الإندونيسية.
-        - اعتراف مصر والجامعة العربية مهّد للدبلوماسية الإندونيسية.
+        - شخصيات نسائية إندونيسية كتير بقوا أبطال قوميين بسبب شجاعتهم.
+        - ستات كتير من إندونيسيا بقوا أبطال قوميين علشان شجاعتهم.
       ar:
-        - فتح اعتراف مصر والجامعة العربية الطريق أمام الدبلوماسية الإندونيسية.
-        - مهّد اعتراف مصر والجامعة العربية لانطلاق الدبلوماسية الإندونيسية.
+        - صارت أعلام نسائية إندونيسية كثيرة بطلات وطنيات بفضل شجاعتهنّ.
+        - نالت نساء إندونيسيات كثيرات لقب البطولة الوطنية لشجاعتهنّ.
       en:
-        - Recognition from Egypt and the Arab League opened the way for Indonesian diplomacy.
-        - Egypt's and the Arab League's recognition paved the way for Indonesia's diplomacy.
-    words: [pengakuan, Liga Arab]
+        - Many Indonesian women figures became national heroes because of their courage.
+        - Many Indonesian women were named national heroes for their bravery.
+    words: [tokoh perempuan, pahlawan nasional, keberanian]
+  - id: e08
+    type: speaking
+    text: Dia gugur di atas kapal dan dimakamkan di Laut Banda.
+    meaning:
+      ar_eg: استشهدت على المركب واندفنت في بحر باندا.
+      ar: استُشهدت على متن السفينة ووُوريت في بحر باندا.
+      en: She fell aboard the ship and was laid to rest in the Banda Sea.
+    words: [gugur]
+  - id: e09
+    type: dictation
+    text: Cut Nyak Dhien juga berperang melawan Belanda di Aceh.
+    meaning:
+      ar_eg: تشوت نياك ديين كمان حاربت الهولنديين في آتشيه.
+      ar: قاتلت تشوت نياك ديين الهولنديين في آتشيه أيضًا.
+      en: Cut Nyak Dhien also fought the Dutch in Aceh.
+    words: [berperang, tokoh perempuan]
+  - id: e10
+    type: speaking
+    text: Setiap tanggal dua Januari, orang Maluku mengenang pahlawan nasional ini.
+    meaning:
+      ar_eg: كل ٢ يناير، أهل مالوكو بيفتكروا البطلة القومية دي.
+      ar: في الثاني من يناير من كلّ عام يُحيي أهل مالوكو ذكرى هذه البطلة.
+      en: Every 2 January, the people of Maluku remember this national hero.
+    words: [pahlawan nasional, keberanian]
 dialogue:
-  title: Di puncak Wayag
+  title: Gambar di buku sejarah
   lines:
     - speaker: Pak Hasan
-      text: Dari sini kita melihat ratusan pulau karst. Indah, bukan?
-      ar_eg: من هنا بنشوف مئات الجزر الجيرية. حلوة، مش كده؟
-      ar: من هنا نرى مئات الجزر الكلسية. جميلة، أليس كذلك؟
-      en: From here we see hundreds of karst islands. Beautiful, isn't it?
+      text: Coba lihat gambar di buku sejarah ini. Siapa perempuan berikat kepala merah itu?
+      ar_eg: بص على الصورة دي في كتاب التاريخ. مين الست اللي لابسة رباط أحمر على راسها دي؟
+      ar: انظر إلى هذه الصورة في كتاب التاريخ. من تلك المرأة ذات العصابة الحمراء؟
+      en: Have a look at this picture in the history book. Who's the woman with the red headband?
     - speaker: Mohamed
-      text: Indah sekali. Seperti linimasa, setiap pulau punya ceritanya sendiri.
-      ar_eg: حلوة قوي. زي الخط الزمني، كل جزيرة ليها حكايتها.
-      ar: جميلة جدًّا. وكالخطّ الزمني، لكلّ جزيرة حكايتها.
-      en: Very. Like a timeline, every island has its own story.
+      text: Saya tidak tahu, Pak. Apakah dia tokoh perempuan dari Jawa?
+      ar_eg: مش عارف يا أستاذ. هي شخصية نسائية من جاوة؟
+      ar: لا أعرف يا أستاذ. أهي علَم نسائيّ من جاوة؟
+      en: I don't know, sir. Is she a woman figure from Java?
     - speaker: Pak Hasan
-      text: Kamu sudah jadi sejarawan kecil. Ke mana kamu sesudah ini?
-      ar_eg: إنت بقيت مؤرّخ صغير. رايح فين بعد كده؟
-      ar: صرتَ مؤرّخًا صغيرًا. إلى أين بعد هذا؟
-      en: You've become a little historian. Where to after this?
+      text: Bukan. Itu pahlawan nasional dari Maluku, Martha Christina Tiahahu. Dia berperang waktu masih remaja.
+      ar_eg: لأ. دي بطلة قومية من مالوكو، مارثا كريستينا تياهاهو. حاربت وهي لسه مراهقة.
+      ar: لا، تلك بطلة وطنية من مالوكو، مارثا كريستينا تياهاهو، قاتلت وهي ما تزال مراهقة.
+      en: No. That's a national hero from Maluku, Martha Christina Tiahahu. She fought while still a teenager.
     - speaker: Mohamed
-      text: Ke Misool. Saya mau belajar tentang media sosial dan hoaks.
-      ar_eg: على ميسول. عايز أتعلّم عن السوشيال ميديا والأخبار الكدب.
-      ar: إلى ميسول، أريد أن أتعلّم عن وسائل التواصل والأخبار الكاذبة.
-      en: To Misool. I want to learn about social media and hoaxes.
-souvenir:
-  id: bipa7.u05.souvenir
-  title: Pulau-pulau karst Wayag
-  note:
-    ar_eg: وايّاج مجموعة جزر جيرية (karst) في شمال راجا أمبات، شكلها زي قِباب خضرا طالعة من مية فيروزي، وغالبًا مفيهاش سكان. ومن فوق التل بتتشاف واحدة من أشهر المناظر في إندونيسيا. وبمناسبة الوحدة دي، تاريخ إندونيسيا بيمشي من محطات تجارة الشركة الهولندية (VOC) لاستقلال 1945 لإصلاح 1998. ومصر من أوائل الدول اللي اعترفت بإندونيسيا، بحكم الأمر الواقع سنة 1946 على حسب مصادر إندونيسية كتير، وبمعاهدة صداقة اتمضت في القاهرة سنة 1947.
-    ar: وايّاغ مجموعة جزر كلسية (karst) في شمال راجا أمبات، تبدو كقِباب خضراء تنبثق من ماء فيروزي، وهي غير مأهولة في الغالب، ومن أعلى تلّها يُرى أحد أشهر المشاهد في إندونيسيا. ويمتدّ تاريخ إندونيسيا من مراكز تجارة الشركة الهولندية (VOC) إلى استقلال 1945 فإصلاح 1998. وكانت مصر من أوائل الدول المعترفة بإندونيسيا، اعترافًا واقعيًّا عام 1946 بحسب مصادر إندونيسية كثيرة، ثمّ بمعاهدة صداقة وُقّعت في القاهرة عام 1947.
-    en: Wayag is a cluster of karst islands in northern Raja Ampat, green domes rising from turquoise water, mostly uninhabited; the view from its summit is one of Indonesia's most famous. Indonesia's history runs from the VOC trading posts to independence in 1945 and Reformasi in 1998. Egypt was among the first countries to recognise Indonesia, de facto in 1946 according to many Indonesian sources, then through a friendship treaty signed in Cairo in 1947.
+      text: Masih remaja! Keberaniannya luar biasa.
+      ar_eg: لسه مراهقة! شجاعتها مش طبيعية.
+      ar: ما تزال مراهقة! شجاعتها مذهلة.
+      en: Still a teenager! Her courage is extraordinary.
+new_words:
+  - word: pahlawan nasional
+    pos: noun
+    ar_eg: بطل قومي
+    ar: بطل وطنيّ
+    en: national hero
+  - word: gugur
+    pos: verb
+    ar_eg: يموت شهيد (في سبيل الوطن)
+    ar: يُستشهد
+    en: to fall (die for one's country)
+  - word: keberanian
+    pos: noun
+    ar_eg: شجاعة
+    ar: شجاعة
+    en: courage
+  - word: tokoh perempuan
+    pos: noun
+    ar_eg: شخصية نسائية
+    ar: علَم نسائيّ
+    en: woman figure, female figure
+  - word: berperang
+    pos: verb
+    ar_eg: يحارب
+    ar: يقاتل، يحارب
+    en: to fight (a war)
 review:
   status: draft
   verified: false

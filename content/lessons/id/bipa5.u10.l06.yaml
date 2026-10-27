@@ -1,160 +1,186 @@
 schema: kabar.lesson/v1
 id: bipa5.u10.l06
 language: id
-title: Ulangan Unit 10
+title: Presentasi 5 menit
 can_do:
-  ar_eg: تقدّم تقرير بالبيانات وبوجهة نظرك، في كلام مرتّب ورسمي.
-  ar: أن تقدّم تقريرًا بالبيانات ووجهة نظرك، بكلام مرتّب ورسمي.
-  en: Present a report with data and your point of view, clearly and formally.
+  ar_eg: تقدّم عرض قصير بالأرقام، وترد على أسئلة الجمهور.
+  ar: أن تقدّم عرضًا قصيرًا بالأرقام، وتجيب عن أسئلة الجمهور.
+  en: Give a short talk with numbers, and take questions from the audience.
+slides:
+  - title: Lima menit, lima langkah
+    grammar: id.nominalization
+    body:
+      ar_eg: |
+        عرض 5 دقايق = 5 خطوات، وكل خطوة جملة أو اتنين:
+        1. Hadirin yang saya hormati, … (التحية)
+        2. Pertama-tama, … (الموضوع)
+        3. Grafik ini menunjukkan kenaikan / penurunan … (البيانات، بالأسماء: kenaikan = الزيادة، penurunan = النقص)
+        4. Oleh karena itu, saya menyimpulkan bahwa … (الخلاصة)
+        5. Apakah ada pertanyaan? (الأسئلة)
+      ar: |
+        عرض خمس دقائق = خمس خطوات، لكلّ منها جملة أو اثنتان:
+        1. Hadirin yang saya hormati, … (التحية)
+        2. Pertama-tama, … (الموضوع)
+        3. Grafik ini menunjukkan kenaikan / penurunan … (البيانات بصيغة الاسم: kenaikan = الزيادة، penurunan = الانخفاض)
+        4. Oleh karena itu, saya menyimpulkan bahwa … (الخلاصة)
+        5. Apakah ada pertanyaan? (الأسئلة)
+      en: |
+        A five-minute talk = five steps, a sentence or two each:
+        1. Hadirin yang saya hormati, … (greeting)
+        2. Pertama-tama, … (topic)
+        3. Grafik ini menunjukkan kenaikan / penurunan … (data, as nouns: kenaikan = rise, penurunan = fall)
+        4. Oleh karena itu, saya menyimpulkan bahwa … (conclusion)
+        5. Apakah ada pertanyaan? (questions)
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: laporan
-        ar_eg: تقرير
-        ar: تقرير
-        en: report
-      - text: kesimpulan
-        ar_eg: خلاصة / استنتاج
-        ar: خلاصة
-        en: conclusion
-      - text: grafik
-        ar_eg: رسم بياني
-        ar: رسم بياني
-        en: chart, graph
-      - text: hadirin
-        ar_eg: الحاضرين
-        ar: الحضور
-        en: audience
-      - text: toleransi
-        ar_eg: تسامح
-        ar: تسامح
-        en: tolerance
-    words: [laporan, kesimpulan, grafik, hadirin, toleransi]
+      - text: kenaikan
+        ar_eg: زيادة
+        ar: ارتفاع
+        en: rise, increase
+      - text: penurunan
+        ar_eg: نقص / هبوط
+        ar: انخفاض
+        en: fall, decrease
+      - text: menyimpulkan
+        ar_eg: يستنتج
+        ar: يستنتج
+        en: to conclude
+      - text: pertanyaan
+        ar_eg: سؤال
+        ar: سؤال
+        en: question
+    words: [kenaikan, penurunan, menyimpulkan, pertanyaan]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: إيه الاسم من turun؟
-      ar: ما الاسم من turun؟
-      en: What is the noun from turun?
-    options: [diturunkan, menurunkan, penurunan]
-    answer: 2
-    words: [penurunan]
+      ar_eg: إيه الاسم من naik؟
+      ar: ما الاسم من naik؟
+      en: What is the noun from naik?
+    options: [kenaikan, menaikkan, dinaikkan]
+    answer: 0
+    words: [kenaikan]
   - id: e03
     type: fill_blank
-    sentence: ___ data, jumlah wisatawan meningkat setiap tahun.
+    sentence: Grafik ini menunjukkan ___ jumlah wisatawan setelah festival.
     meaning:
-      ar_eg: بناءً على البيانات، عدد السياح بيزيد كل سنة.
-      ar: بناءً على البيانات، يزداد عدد السيّاح كلّ عام.
-      en: Based on the data, tourist numbers rise every year.
-    options: [Berdasarkan, Sebagai penutup, Pertama-tama]
-    answers: [Berdasarkan]
-    words: [berdasarkan, meningkat]
+      ar_eg: الرسم ده بيوضّح نقص عدد السياح بعد المهرجان.
+      ar: يُظهر هذا الرسم انخفاض عدد السيّاح بعد المهرجان.
+      en: This chart shows a fall in tourist numbers after the festival.
+    options: [penurunan, pertanyaan, menyimpulkan]
+    answers: [penurunan]
+    words: [penurunan]
   - id: e04
     type: listen
-    text: Sebagai penutup, saya menyarankan festival kecil setiap bulan.
+    text: Terima kasih. Apakah ada pertanyaan dari hadirin?
     question:
-      ar_eg: المتكلم بيقترح إيه؟
-      ar: ماذا يقترح المتكلّم؟
-      en: What does the speaker suggest?
+      ar_eg: المتكلم بيعمل إيه؟
+      ar: ماذا يفعل المتكلّم؟
+      en: What is the speaker doing?
     options:
-      - مهرجان صغير كل شهر.
-      - يلغوا المهرجان.
-      - فندق جديد.
-    answer: 0
-    words: [sebagai penutup]
+      - بيبدأ العرض.
+      - بيوصف رسم بياني.
+      - بيطلب أسئلة من الجمهور.
+    answer: 2
+    words: [pertanyaan, hadirin]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: البحث ده بيعرض بيانات عن زيارات السياح.
-      ar: يعرض هذا البحث بيانات عن زيارات السيّاح.
-      en: This study presents data on tourist visits.
-    answer: Penelitian ini menyajikan data tentang kunjungan wisatawan.
-    distractors: [hadirin, rukun]
-    words: [penelitian, menyajikan, kunjungan]
+      ar_eg: وعلشان كده، أنا بستنتج إن المهرجان مهم للتجار.
+      ar: ولذلك أستنتج أنّ المهرجان مهمّ للتجّار.
+      en: Therefore, I conclude that the festival matters to traders.
+    answer: Oleh karena itu, saya menyimpulkan bahwa festival penting bagi pedagang.
+    distractors: [kenaikan, pertanyaan]
+    words: [menyimpulkan, oleh karena itu]
   - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي رابط بيقدّم نتيجة؟
-      ar: أيّ رابط يقدّم نتيجة؟
-      en: Which connector introduces a result?
-    options: [Pertama-tama, Oleh karena itu, Hadirin]
-    answer: 1
-    words: [oleh karena itu, pertama-tama]
-  - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: في المتوسط، عدد الزوار قلّ بعد المهرجان.
-      ar: في المتوسّط، انخفض عدد الزوّار بعد المهرجان.
-      en: On average, visitor numbers fell after the festival.
+      ar_eg: الرسم بيوضّح زيادة حادة في ديسمبر.
+      ar: يُظهر الرسم ارتفاعًا حادًّا في ديسمبر.
+      en: The chart shows a sharp rise in December.
     answers:
-      - Rata-rata, jumlah pengunjung menurun setelah festival.
-      - Rata-rata jumlah pengunjung menurun setelah festival.
-      - Rata-rata, jumlah pengunjung turun setelah festival.
-      - Setelah festival, rata-rata jumlah pengunjung menurun.
-    words: [rata-rata, jumlah, menurun]
+      - Grafik ini menunjukkan kenaikan tajam pada bulan Desember.
+      - Grafik menunjukkan kenaikan yang tajam pada bulan Desember.
+      - Grafiknya menunjukkan kenaikan tajam di bulan Desember.
+      - Grafik ini menunjukkan kenaikan tajam di bulan Desember.
+    words: [kenaikan, grafik]
+  - id: e07
+    type: speaking
+    text: Hadirin yang saya hormati, pertama-tama saya akan menunjukkan sebuah grafik.
+    meaning:
+      ar_eg: حضراتكم المحترمين، في الأول هوريكم رسم بياني.
+      ar: أيّها الحضور الكرام، سأعرض عليكم أوّلًا رسمًا بيانيًّا.
+      en: Distinguished audience, first of all I'll show you a chart.
+    words: [hadirin, pertama-tama, grafik]
   - id: e08
+    type: dictation
+    text: Saya menyimpulkan bahwa penurunan harga terjadi setelah musim hujan.
+    meaning:
+      ar_eg: أنا بستنتج إن نزول الأسعار حصل بعد موسم المطر.
+      ar: أستنتج أنّ انخفاض الأسعار حدث بعد موسم الأمطار.
+      en: I conclude that the fall in prices came after the rainy season.
+    words: [menyimpulkan, penurunan]
+  - id: e09
     type: translate
     direction: from_target
-    source_text: Keberagaman di Singkawang membuat warganya hidup rukun.
+    source_text: Pertanyaan Ibu sangat bagus. Saya akan menjawabnya dengan data.
     answers_meaning:
       ar_eg:
-        - التنوّع في سينجكاوانج مخلّي أهلها عايشين في وفاق.
-        - تنوّع سينجكاوانج بيخلّي الناس هناك عايشين مع بعض في سلام.
+        - سؤال حضرتك حلو قوي. هجاوب عليه بالبيانات.
+        - سؤالك ممتاز يا مدام، وهرد عليه بالأرقام.
       ar:
-        - يجعل التنوّع في سينغكاوانغ أهلها يعيشون في وئام.
-        - التنوّع في سينغكاوانغ يجعل سكّانها متآلفين.
+        - سؤالك ممتاز يا سيّدتي، وسأجيب عنه بالبيانات.
+        - سؤال حضرتك جيّد جدًّا، وسأجيبه بالأرقام.
       en:
-        - Diversity in Singkawang lets its people live in harmony.
-        - Singkawang's diversity keeps its residents living in harmony.
-    words: [keberagaman, rukun]
-  - id: e09
-    type: dictation
-    text: Apakah ada pertanyaan tentang kenaikan harga ini?
-    meaning:
-      ar_eg: فيه أسئلة عن زيادة الأسعار دي؟
-      ar: هل من أسئلة عن ارتفاع الأسعار هذا؟
-      en: Are there any questions about this price rise?
-    words: [pertanyaan, kenaikan]
-  - id: e10
-    type: speaking
-    text: Hadirin yang saya hormati, saya menyimpulkan bahwa toleransi adalah kekuatan Singkawang.
-    meaning:
-      ar_eg: حضراتكم المحترمين، أنا بستنتج إن التسامح هو قوة سينجكاوانج.
-      ar: أيّها الحضور الكرام، أستنتج أنّ التسامح هو قوّة سينغكاوانغ.
-      en: Distinguished audience, I conclude that tolerance is Singkawang's strength.
-    words: [hadirin, menyimpulkan, toleransi]
+        - That's a very good question, ma'am. I'll answer it with data.
+        - Your question is excellent. I'll answer it with numbers.
+    words: [pertanyaan]
 dialogue:
-  title: Malam Cap Go Meh
+  title: Sesi tanya jawab
   lines:
-    - speaker: Rina
-      text: Mohamed, lihat lampion dan naganya! Semua orang ikut merayakan.
-      ar_eg: يا محمد، بص على الفوانيس والتنين! الكل بيحتفل.
-      ar: يا محمد، انظر إلى الفوانيس والتنّين! الجميع يحتفلون.
-      en: Mohamed, look at the lanterns and the dragon! Everyone's celebrating.
     - speaker: Mohamed
-      text: Ada tatung Tionghoa dan juga tatung Dayak. Ini data terbaik untuk laporan saya.
-      ar_eg: فيه tatung صينيين وكمان tatung داياك. دي أحسن بيانات لتقريري.
-      ar: هناك tatung صينيون وtatung من الداياك أيضًا. هذه أفضل بيانات لتقريري.
-      en: There are Chinese tatung and Dayak tatung too. This is the best data for my report.
-    - speaker: Rina
-      text: Jadi apa kesimpulanmu?
-      ar_eg: يعني إيه خلاصتك؟
-      ar: إذن ما خلاصتك؟
-      en: So what's your conclusion?
+      text: Oleh karena itu, saya menyimpulkan bahwa Cap Go Meh membantu ekonomi Singkawang. Apakah ada pertanyaan?
+      ar_eg: وعلشان كده، بستنتج إن كاب جو مِه بيساعد اقتصاد سينجكاوانج. فيه أسئلة؟
+      ar: ولذلك أستنتج أنّ كاب غو مه يدعم اقتصاد سينغكاوانغ. هل من أسئلة؟
+      en: Therefore, I conclude that Cap Go Meh helps Singkawang's economy. Are there any questions?
+    - speaker: Bu Meilin
+      text: Bagaimana dengan penurunan setelah festival?
+      ar_eg: طب والنقص اللي بعد المهرجان؟
+      ar: وماذا عن الانخفاض بعد المهرجان؟
+      en: What about the fall after the festival?
     - speaker: Mohamed
-      text: Keberagaman bukan masalah. Di sini, keberagaman adalah perayaan.
-      ar_eg: التنوّع مش مشكلة. هنا التنوّع احتفال.
-      ar: التنوّع ليس مشكلة، بل هو هنا احتفال.
-      en: Diversity isn't a problem. Here, diversity is a celebration.
-souvenir:
-  id: bipa5.u10.souvenir
-  title: Cap Go Meh di Singkawang
-  note:
-    ar_eg: Cap Go Meh معناها «الليلة الخمستاشر» بلهجة هوكيين، وهي آخر يوم في احتفالات رأس السنة الصيني. في سينجكاوانج، اللي بيسموها «مدينة الألف معبد»، الموكب فيه فوانيس وتنانين، وفيه tatung، ناس في حالة غيبوبة طقسية، منهم صينيين ومنهم داياك. والملايو والداياك والصينيين بيتفرجوا ويحتفلوا مع بعض، وعشان كده الموكب بقى رمز للتسامح.
-    ar: Cap Go Meh تعني «الليلة الخامسة عشرة» بلهجة هوكيين، وهي ختام احتفالات رأس السنة الصينية. وفي سينغكاوانغ، الملقّبة «مدينة الألف معبد»، يضمّ الموكب فوانيس وتنانين ومؤدّين يسمّون tatung في حالة نشوة طقسية، بعضهم صينيون وبعضهم من الداياك. ويحتفل الملايو والداياك والصينيون معًا، فصار الموكب رمزًا للتسامح.
-    en: Cap Go Meh means "fifteenth night" in Hokkien, the last day of Chinese New Year celebrations. In Singkawang, nicknamed the "city of a thousand temples", the parade has lanterns, dragons and tatung, performers in a ritual trance, some Chinese and some Dayak. Malays, Dayaks and Chinese celebrate together, which has made the parade a symbol of tolerance.
+      text: Pertanyaan yang bagus, Bu. Tampaknya pedagang perlu acara lain di luar musim festival.
+      ar_eg: سؤال حلو يا مدام. يبان إن التجار محتاجين فعاليات تانية برا موسم المهرجان.
+      ar: سؤال وجيه يا سيّدتي. يبدو أنّ التجّار يحتاجون إلى فعاليات أخرى خارج موسم المهرجان.
+      en: Good question, ma'am. It seems traders need other events outside the festival season.
+    - speaker: Bu Meilin
+      text: Kesimpulan yang berimbang. Terima kasih, Mohamed.
+      ar_eg: خلاصة متوازنة. شكرًا يا محمد.
+      ar: خلاصة متوازنة. شكرًا يا محمد.
+      en: A balanced conclusion. Thank you, Mohamed.
+new_words:
+  - word: kenaikan
+    pos: noun
+    ar_eg: زيادة
+    ar: ارتفاع
+    en: rise, increase
+  - word: penurunan
+    pos: noun
+    ar_eg: نقص / هبوط
+    ar: انخفاض
+    en: fall, decrease
+  - word: menyimpulkan
+    pos: verb
+    ar_eg: يستنتج
+    ar: يستنتج
+    en: to conclude
+  - word: pertanyaan
+    pos: noun
+    ar_eg: سؤال
+    ar: سؤال
+    en: question
 review:
   status: draft
   verified: false

@@ -1,0 +1,200 @@
+schema: kabar.lesson/v1
+id: bipa6.u03.l10
+language: id
+title: Ulangan Unit 3
+can_do:
+  ar_eg: تشرح عادة من عادات المينانج، وتستخدم مثل في مكانه.
+  ar: أن تشرح عرفًا من أعراف المينانغ وتوظّف مثلًا في موضعه.
+  en: Explain a Minang custom and use a proverb in its place.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: peribahasa
+        ar_eg: أمثال
+        ar: أمثال
+        en: proverb
+      - text: pusaka
+        ar_eg: إرث عيلة
+        ar: إرث عائلي
+        en: family heritage
+      - text: syarak
+        ar_eg: شرع
+        ar: شرع
+        en: Islamic law
+      - text: kerabat
+        ar_eg: قرايب
+        ar: أقارب
+        en: relatives
+      - text: teguh
+        ar_eg: ثابت / متين
+        ar: راسخ
+        en: firm, steadfast
+    words: [peribahasa, pusaka, syarak, kerabat, teguh]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مين بيرشد ولاد الأخت عند المينانج؟
+      ar: مَن يرشد أبناء الأخت عند المينانغ؟
+      en: Who guides a sister's children among the Minang?
+    options: [kakek, mamak, tetangga]
+    answer: 1
+    words: [mamak]
+  - id: e03
+    type: fill_blank
+    sentence: Adat bersendi ___, syarak bersendi Kitabullah.
+    meaning:
+      ar_eg: العادة قايمة على الشرع، والشرع قايم على كتاب الله.
+      ar: العرف قائم على الشرع، والشرع قائم على كتاب الله.
+      en: Custom rests on sharia; sharia rests on the Book of God.
+    options: [syarak, surau, suku]
+    answers: [syarak]
+    words: [syarak, bersendi]
+  - id: e04
+    type: listen
+    text: Rumah gadang itu pusaka yang turun ke anak perempuan.
+    question:
+      ar_eg: البيت بيتورث لمين؟
+      ar: لمن يُورَّث البيت؟
+      en: Who inherits the house?
+    options:
+      - للولاد.
+      - للخال.
+      - للبنات.
+    answer: 2
+    words: [pusaka]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: القرار اتاخد بالتوافق في الزاوية.
+      ar: اتُّخذ القرار بالتوافق في الزاوية.
+      en: The decision was made by consensus at the surau.
+    answer: Keputusan diambil secara mufakat di surau.
+    distractors: [warisan, gading]
+    words: [mufakat, surau]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي مثل بيقول «محدش كامل»؟
+      ar: أيّ مثل يعني «لا أحد كامل»؟
+      en: Which proverb means "nobody's perfect"?
+    options:
+      - Tak ada gading yang tak retak.
+      - Nasi sudah menjadi bubur.
+      - Lain lubuk lain ikannya.
+    answer: 0
+    words: [gading, retak]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: بالعكس، النسب في مصر من الأب.
+      ar: على العكس، النسب في مصر من جهة الأب.
+      en: Conversely, descent in Egypt is through the father.
+    answers:
+      - Sebaliknya, garis keturunan di Mesir dari ayah.
+      - Sebaliknya, di Mesir garis keturunan mengikuti ayah.
+      - Sebaliknya, garis keturunan di Mesir bersifat patrilineal.
+      - Sebaliknya, di Mesir garis keturunannya dari pihak ayah.
+    words: [sebaliknya, garis keturunan]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Seperti kata pepatah, di mana bumi dipijak, di situ langit dijunjung.
+    answers_meaning:
+      ar_eg:
+        - زي ما بيقول المثل، يا غريب كن أديب.
+        - زي المثل ما بيقول، احترم عادات البلد اللي إنت فيها.
+      ar:
+        - كما يقول المثل، يا غريب كن أديبًا.
+        - وكما يقول المثل، احترم أعراف البلد الذي تنزل فيه.
+      en:
+        - As the saying goes, when in Rome, do as the Romans do.
+        - As the proverb says, honour the ways of the land you stand on.
+    words: [pepatah, menjunjung]
+  - id: e09
+    type: dictation
+    text: Warisan pribadi dibagi menurut syarak, tetapi pusaka menurut adat.
+    meaning:
+      ar_eg: الميراث الشخصي بيتقسم بالشرع، وإرث العيلة بالعادة.
+      ar: يُقسم الميراث الشخصي وفق الشرع، والإرث العائلي وفق العرف.
+      en: Personal inheritance is divided by sharia, but family heritage by custom.
+    words: [warisan, adat]
+  - id: e10
+    type: speaking
+    text: Kedua budaya serupa, sedikit demi sedikit saya memahaminya.
+    meaning:
+      ar_eg: الثقافتين شبه بعض، وأنا بفهمها شوية بشوية.
+      ar: الثقافتان متشابهتان، وأنا أفهمهما شيئًا فشيئًا.
+      en: The two cultures are alike, and little by little I understand them.
+    words: [serupa, sedikit demi sedikit]
+  - id: e11
+    type: match_pairs
+    pairs:
+      - text: rumah gadang
+        ar_eg: البيت الكبير بتاع المينانج
+        ar: البيت الكبير لدى المينانغ
+        en: Minang great house
+      - text: penghulu
+        ar_eg: زعيم العشيرة
+        ar: زعيم العشيرة
+        en: clan chief
+      - text: kemenakan
+        ar_eg: ابن الأخت
+        ar: ابن الأخت
+        en: sister's child
+      - text: randai
+        ar_eg: مسرح شعبي مينانجي
+        ar: مسرح شعبي مينانغي
+        en: Minang folk theatre
+      - text: pewaris
+        ar_eg: الوريث
+        ar: الوارث
+        en: heir
+    words: [rumah gadang, penghulu, kemenakan, randai, pewaris]
+  - id: e12
+    type: listen
+    text: Setelah penghulu baru dilantik, seluruh kaum makan bersama di kenduri.
+    question:
+      ar_eg: العشيرة عملت إيه بعد تعيين الزعيم؟
+      ar: ماذا فعلت العشيرة بعد تنصيب الزعيم؟
+      en: What did the clan do after the chief was installed?
+    options:
+      - سافرت لجاكرتا.
+      - كلت مع بعض في وليمة.
+      - بنت بيت جديد.
+    answer: 1
+    words: [dilantik, kaum, kenduri]
+dialogue:
+  title: Perpisahan di Bukittinggi
+  lines:
+    - speaker: Uda Rafi
+      text: Besok kamu ke Palembang. Apa yang paling kamu ingat dari ranah Minang?
+      ar_eg: بكرة رايح باليمبانج. إيه أكتر حاجة هتفتكرها من أرض المينانج؟
+      ar: غدًا تسافر إلى باليمبانغ. ما أكثر ما ستذكره من أرض المينانغ؟
+      en: Tomorrow you go to Palembang. What will you remember most from the Minang lands?
+    - speaker: Mohamed
+      text: Atap rumah gadang yang seperti tanduk kerbau, dan adat yang bersendi syarak.
+      ar_eg: سقف البيت الكبير اللي زي قرون الجاموسة، والعادات اللي قايمة على الشرع.
+      ar: سقوف الرومة غادانغ التي تشبه قرون الجاموس، والعرف القائم على الشرع.
+      en: The rumah gadang roofs shaped like buffalo horns, and custom resting on sharia.
+    - speaker: Uda Rafi
+      text: Dan peribahasanya, kan? Ingat, di mana bumi dipijak …
+      ar_eg: والأمثال كمان، صح؟ افتكر، يا غريب …
+      ar: والأمثال أيضًا، أليس كذلك؟ تذكّر، يا غريب …
+      en: And the proverbs, right? Remember, di mana bumi dipijak …
+    - speaker: Mohamed
+      text: … di situ langit dijunjung. Terima kasih, Uda. Utang budi saya besar.
+      ar_eg: … كن أديب. شكرًا يا أودا. جميلك عليّ كبير.
+      ar: … كن أديبًا. شكرًا يا أودا، فضلك عليّ كبير.
+      en: … di situ langit dijunjung. Thank you, Uda. I owe you a great debt.
+souvenir:
+  id: bipa6.u03.souvenir
+  title: Rumah Gadang
+  note:
+    ar_eg: الرومة غادانج بيت المينانجكاباو الكبير، وسقفه طالع لفوق زي قرون الجاموسة. البيت ملك الستات، وبيتورث من الأم لبنتها، والولاد زمان كانوا بيناموا في الزاوية. ومع إن المجتمع نسبه من ناحية الأم، هو مسلم ومتدين جدًا، وبيلخّصوا ده في «العادة قايمة على الشرع، والشرع قايم على كتاب الله».
+    ar: الرومة غادانغ بيت المينانغكاباو الكبير، وتنتصب سقوفه كقرون الجاموس. والبيت ملك للنساء يُورَّث من الأمّ إلى ابنتها، وكان الصبيان قديمًا يبيتون في الزاوية. ومع أنّ النسب في هذا المجتمع أمومي فهو مسلم شديد التديّن، ويلخّصون ذلك في «العرف قائم على الشرع، والشرع قائم على كتاب الله».
+    en: The rumah gadang is the Minangkabau great house, its roof sweeping up like buffalo horns. The house belongs to the women and passes from mother to daughter, while boys once slept at the surau. Though descent is matrilineal, the society is devoutly Muslim, summed up as "custom rests on sharia, and sharia rests on the Book of God".
+review:
+  status: draft
+  verified: false

@@ -1,165 +1,208 @@
 schema: kabar.lesson/v1
 id: bipa7.u10.l06
 language: id
-title: Ulangan Unit 10
+title: Sidang skripsi
 can_do:
-  ar_eg: تدافع عن حاجة كتبتها، بأسلوب علمي وبأمانة.
-  ar: أن تدافع عن نصّ كتبته، بأسلوب علمي وأمانة.
-  en: Defend a piece you wrote, in academic register and honestly.
+  ar_eg: 'تعدّي مناقشة رسالة التخرّج: تعرض، وتردّ على اللجنة، وتشكر مشرفك.'
+  ar: 'أن تجتاز مناقشة بحث التخرّج: تعرض وتجيب اللجنة وتشكر مشرفك.'
+  en: 'Get through a thesis defence: present, answer the panel, and thank your supervisor.'
+slides:
+  - title: Tiga puluh menit yang menegangkan
+    body:
+      ar_eg: |
+        علشان تاخد gelar sarjana (درجة البكالوريوس) في إندونيسيا لازم تكتب skripsi (بحث تخرّج).
+        - الماجستير اسمه tesis، والدكتوراه disertasi.
+        - dosen pembimbing = الدكتور المشرف: بيساعدك من أول الفكرة لآخر صفحة.
+        - sidang skripsi = مناقشة البحث: بتعرض حوالي ١٥ دقيقة، وبعدين اللجنة (dosen penguji) بتسأل.
+        عبارات:
+        - Terima kasih atas pertanyaannya. (شكرًا على السؤال.)
+        - Itu keterbatasan penelitian saya. (دي من حدود بحثي.)
+        - Terima kasih kepada dosen pembimbing saya… (شكر للمشرف…)
+      ar: |
+        لنيل الـ gelar sarjana (درجة البكالوريوس) في إندونيسيا لا بدّ من كتابة skripsi (بحث التخرّج).
+        - ويُسمّى بحث الماجستير tesis، والدكتوراه disertasi.
+        - dosen pembimbing = الأستاذ المشرف، يرافقك من الفكرة إلى آخر صفحة.
+        - sidang skripsi = مناقشة البحث: تعرض نحو ١٥ دقيقة، ثمّ تسأل اللجنة (dosen penguji).
+        عبارات:
+        - Terima kasih atas pertanyaannya. (شكرًا على السؤال.)
+        - Itu keterbatasan penelitian saya. (ذلك من حدود بحثي.)
+        - Terima kasih kepada dosen pembimbing saya… (الشكر لمشرفي…)
+      en: |
+        To earn a gelar sarjana (bachelor's degree) in Indonesia you write a skripsi (undergraduate thesis).
+        - A master's thesis is a tesis, a doctorate a disertasi.
+        - dosen pembimbing = supervisor, who guides you from the idea to the last page.
+        - sidang skripsi = thesis defence: you present for about 15 minutes, then the panel (dosen penguji) asks questions.
+        Phrases:
+        - Terima kasih atas pertanyaannya. (Thank you for the question.)
+        - Itu keterbatasan penelitian saya. (That's a limitation of my study.)
+        - Terima kasih kepada dosen pembimbing saya… (Thanks to my supervisor…)
+    examples:
+      - text: Setelah sidang skripsi, Rani resmi mendapat gelar sarjana.
+        ar_eg: بعد مناقشة البحث، راني خدت درجة البكالوريوس رسميًا.
+        ar: بعد مناقشة البحث نالت راني درجة البكالوريوس رسميًّا.
+        en: After her thesis defence, Rani officially earned her bachelor's degree.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: hipotesis
-        ar_eg: فرضية
-        ar: فرضية
-        en: hypothesis
-      - text: makalah
-        ar_eg: ورقة بحثية
-        ar: ورقة بحثية
-        en: paper
-      - text: kualitatif
-        ar_eg: كيفي
-        ar: نوعي
-        en: qualitative
-      - text: jargon
-        ar_eg: مصطلحات تقيلة
-        ar: رطانة اصطلاحية
-        en: jargon
-      - text: keterbatasan
-        ar_eg: حدود / قصور
-        ar: حدود البحث
-        en: limitation
-    words: [hipotesis, makalah, kualitatif, jargon, keterbatasan]
+      - text: skripsi
+        ar_eg: بحث التخرّج
+        ar: بحث التخرّج
+        en: undergraduate thesis
+      - text: sidang skripsi
+        ar_eg: مناقشة البحث
+        ar: مناقشة البحث
+        en: thesis defence
+      - text: dosen pembimbing
+        ar_eg: الدكتور المشرف
+        ar: الأستاذ المشرف
+        en: supervisor
+      - text: gelar sarjana
+        ar_eg: درجة البكالوريوس
+        ar: درجة البكالوريوس
+        en: bachelor's degree
+      - text: partisipan
+        ar_eg: مشارك
+        ar: مشارك
+        en: participant
+    words: [skripsi, sidang skripsi, dosen pembimbing, gelar sarjana, partisipan]
   - id: e02
+    type: listen
+    text: Sidang skripsi Mohamed dimulai pukul sembilan di ruang seminar.
+    question:
+      ar_eg: إيه اللي هيبدأ الساعة تسعة؟
+      ar: ما الذي يبدأ في التاسعة؟
+      en: What starts at nine?
+    options:
+      - محاضرة عادية.
+      - مناقشة بحث تخرّج محمد.
+      - حفلة تخرّج.
+    answer: 1
+    words: [sidang skripsi]
+  - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة مكتوبة بأسلوب علمي محكم؟
-      ar: أيّ جملة مكتوبة بأسلوب علمي محكم؟
-      en: Which sentence is in tight academic register?
+      ar_eg: بحث الماجستير اسمه إيه بالإندونيسي؟
+      ar: ما اسم بحث الماجستير بالإندونيسية؟
+      en: What is a master's thesis called in Indonesian?
     options:
-      - Saya rasa datanya lumayan banyak banget.
-      - Data dikumpulkan dari 120 partisipan di tiga distrik.
-      - Wah, partisipannya seru-seru!
-    answer: 1
-    words: [ragam ilmiah, kalimat efektif, partisipan]
-  - id: e03
-    type: fill_blank
-    sentence: Moderator membuka ___ setelah semua pemakalah selesai.
-    meaning:
-      ar_eg: مدير الجلسة فتح جلسة الأسئلة بعد ما كل أصحاب الأوراق خلّصوا.
-      ar: افتتح مدير الجلسة الأسئلة بعد أن أنهى أصحاب الأوراق.
-      en: The moderator opened the Q&A after all presenters had finished.
-    options: [sesi tanya jawab, abstrak, kuesioner]
-    answers: [sesi tanya jawab]
-    words: [sesi tanya jawab, moderator, pemakalah, abstrak, kuesioner]
-  - id: e04
-    type: listen
-    text: Untuk pembaca awam, peneliti memakai analogi, bukan istilah teknis.
-    question:
-      ar_eg: الباحث بيستعمل إيه للقارئ العادي؟
-      ar: ماذا يستعمل الباحث للقارئ غير المتخصّص؟
-      en: What does the researcher use for lay readers?
-    options:
-      - مصطلحات فنية أكتر.
-      - جداول بس.
-      - تشبيهات.
+      - skripsi
+      - disertasi
+      - tesis
     answer: 2
-    words: [pembaca awam, analogi, istilah]
+    words: [skripsi]
+  - id: e04
+    type: fill_blank
+    sentence: Pak Elias adalah ___ saya. Beliau membaca setiap bab skripsi saya.
+    meaning:
+      ar_eg: الأستاذ إلياس هو المشرف بتاعي. بيقرا كل فصل في بحثي.
+      ar: الأستاذ إلياس مشرفي، يقرأ كلّ فصل من بحثي.
+      en: Pak Elias is my supervisor. He reads every chapter of my thesis.
+    options: [dosen pembimbing, pemakalah, partisipan]
+    answers: [dosen pembimbing]
+    words: [dosen pembimbing, skripsi]
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: اللجنة سألت عن حاجة بحثك ماغطّاهاش. تقول إيه؟
+      ar: سألت اللجنة عن أمر لم يتناوله بحثك. ماذا تقول؟
+      en: The panel asks about something your study didn't cover. What do you say?
+    options:
+      - Itu keterbatasan penelitian saya. Terima kasih atas pertanyaannya.
+      - Pertanyaan itu salah.
+      - Saya tidak mau menjawab.
+    answer: 0
+    words: [sidang skripsi]
+  - id: e06
     type: build_sentence
     source:
-      ar_eg: نتيجة البحث بتأكّد الفرضية.
-      ar: تؤكّد نتيجة البحث الفرضية.
-      en: The finding confirms the hypothesis.
-    answer: Temuan penelitian menguatkan hipotesis.
-    distractors: [jargon, relevan]
-    words: [temuan, hipotesis]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: سائل سألك سؤال مالوش علاقة بالورقة. تقول إيه؟
-      ar: سألك أحدهم سؤالًا لا صلة له بالورقة، فماذا تقول؟
-      en: Someone asks a question unrelated to your paper. What do you say?
-    options:
-      - Pertanyaan yang menarik, tetapi kurang relevan dengan makalah ini.
-      - Itu pertanyaan bodoh.
-      - Saya pulang saja.
-    answer: 0
-    words: [relevan, penanya]
+      ar_eg: هاخد درجة البكالوريوس السنة الجاية.
+      ar: سأنال درجة البكالوريوس العام القادم.
+      en: I'll get my bachelor's degree next year.
+    answer: Saya akan mendapat gelar sarjana tahun depan.
+    distractors: [skripsi, sidang]
+    words: [gelar sarjana]
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: البحث ده بيستعمل منهج كمّي وكيفي.
-      ar: يستعمل هذا البحث منهجًا كمّيًّا ونوعيًّا.
-      en: This study uses quantitative and qualitative methods.
+      ar_eg: بشكر مشرفي على صبره.
+      ar: أشكر مشرفي على صبره.
+      en: I thank my supervisor for his patience.
     answers:
-      - Penelitian ini menggunakan metode kuantitatif dan kualitatif.
-      - Penelitian ini memakai metode kuantitatif dan kualitatif.
-      - Penelitian ini menggunakan pendekatan kuantitatif dan kualitatif.
-    words: [kuantitatif, kualitatif, metode penelitian]
+      - Terima kasih kepada dosen pembimbing saya atas kesabarannya.
+      - Saya berterima kasih kepada dosen pembimbing saya atas kesabarannya.
+      - Saya mengucapkan terima kasih kepada dosen pembimbing atas kesabaran beliau.
+      - Terima kasih kepada dosen pembimbing saya atas kesabaran beliau.
+    words: [dosen pembimbing]
   - id: e08
     type: speaking
-    text: Terima kasih atas pertanyaannya. Mohon klarifikasi, distrik mana yang Ibu maksud?
+    text: Skripsi saya membahas pertanian ubi jalar di Lembah Baliem.
     meaning:
-      ar_eg: شكرًا على السؤال. ممكن توضّحي، تقصدي أنهي منطقة؟
-      ar: شكرًا على السؤال. هلّا وضّحتِ أيّ منطقة تقصدين؟
-      en: Thank you for the question. Could you clarify which district you mean?
-    words: [klarifikasi]
+      ar_eg: بحثي بيتكلّم عن زراعة البطاطا الحلوة في وادي باليم.
+      ar: يتناول بحثي زراعة البطاطا الحلوة في وادي باليم.
+      en: My thesis is about sweet-potato farming in the Baliem Valley.
+    words: [skripsi]
   - id: e09
     type: dictation
-    text: Artikel ilmiah populer itu ditulis tanpa jargon.
+    text: Sidang skripsi biasanya berlangsung sekitar satu jam.
     meaning:
-      ar_eg: المقالة العلمية المبسّطة دي متكتبة من غير مصطلحات تقيلة.
-      ar: كُتبت تلك المقالة العلمية المبسّطة دون رطانة.
-      en: That popular-science article was written without jargon.
-    words: [artikel ilmiah populer, jargon]
+      ar_eg: مناقشة البحث عادةً بتاخد حوالي ساعة.
+      ar: تستغرق مناقشة البحث عادةً نحو ساعة.
+      en: A thesis defence usually lasts about an hour.
+    words: [sidang skripsi]
   - id: e10
-    type: translate
-    direction: from_target
-    source_text: Peneliti yang jujur menyebutkan keterbatasan penelitiannya di akhir makalah.
-    answers_meaning:
-      ar_eg:
-        - الباحث الأمين بيذكر حدود بحثه في آخر الورقة.
-        - الباحث الصادق بيقول قصور بحثه في آخر الورقة.
-      ar:
-        - يذكر الباحث الأمين حدود بحثه في آخر الورقة.
-        - يُثبت الباحث الصادق قصور بحثه في خاتمة الورقة.
-      en:
-        - An honest researcher states the study's limitations at the end of the paper.
-        - Honest researchers name their study's limits at the end of the paper.
-    words: [keterbatasan, makalah]
+    type: speaking
+    text: Selamat! Sidang skripsimu lulus, dan gelar sarjanamu sudah di depan mata.
+    meaning:
+      ar_eg: مبروك! عدّيت المناقشة، ودرجة البكالوريوس قدّام عينك خلاص.
+      ar: مبارك! اجتزت المناقشة، ودرجة البكالوريوس صارت على مرمى البصر.
+      en: Congratulations! You passed your defence, and your degree is within reach.
+    words: [sidang skripsi, gelar sarjana]
 dialogue:
-  title: Festival di Lembah Baliem
+  title: Di depan pintu ruang sidang
   lines:
-    - speaker: Pak Elias
-      text: Makalahmu sudah dipertahankan, dan sekarang kita menonton festival bersama.
-      ar_eg: دافعت عن ورقتك خلاص، ودلوقتي هنتفرّج على المهرجان سوا.
-      ar: دافعتَ عن ورقتك، والآن نشاهد المهرجان معًا.
-      en: You've defended your paper, and now we watch the festival together.
     - speaker: Mohamed
-      text: Suku Dani, Lani, dan Yali datang dengan pakaian adat. Luar biasa.
-      ar_eg: الداني واللاني واليالي جايين بلبسهم التقليدي. حاجة تحفة.
-      ar: جاءت جماعات الداني واللاني واليالي بأزيائها التقليدية. أمر مذهل.
-      en: The Dani, Lani and Yali have come in traditional dress. Amazing.
+      text: Pak Elias, tangan saya dingin. Bagaimana kalau penguji bertanya tentang hal yang tidak saya teliti?
+      ar_eg: يا أستاذ إلياس، إيديّا متلّجة. ولو اللجنة سألت عن حاجة ماعملتش فيها بحث؟
+      ar: يا أستاذ إلياس، يداي باردتان. ماذا لو سأل الممتحنون عمّا لم أبحثه؟
+      en: Pak Elias, my hands are cold. What if the examiners ask about something I didn't study?
     - speaker: Pak Elias
-      text: Dari Sorong sampai Wamena, kamu sudah belajar bahasa berita, sejarah, dan ilmu.
-      ar_eg: من سورونج لوامينا، اتعلّمت لغة الأخبار والتاريخ والعلم.
-      ar: من سورونغ إلى وامينا تعلّمتَ لغة الأخبار والتاريخ والعلم.
-      en: From Sorong to Wamena, you've learnt the language of news, history and science.
+      text: Jujur saja. Katakan, "Itu keterbatasan penelitian saya," lalu usulkan penelitian berikutnya.
+      ar_eg: 'خلّيك صريح. قول: «دي من حدود بحثي»، وبعدين اقترح بحث جاي.'
+      ar: 'كن صادقًا، وقل: «ذلك من حدود بحثي»، ثمّ اقترح بحثًا لاحقًا.'
+      en: Just be honest. Say, "That's a limitation of my study," then suggest the next piece of research.
     - speaker: Mohamed
-      text: Perjalanan ini selesai, tetapi belajar bahasa Indonesia tidak pernah selesai.
-      ar_eg: الرحلة دي خلصت، بس تعلّم الإندونيسي عمره ما بيخلص.
-      ar: انتهت هذه الرحلة، لكنّ تعلّم الإندونيسية لا ينتهي أبدًا.
-      en: This journey is over, but learning Indonesian never ends.
-souvenir:
-  id: bipa7.u10.souvenir
-  title: Festival Lembah Baliem
-  note:
-    ar_eg: وادي باليم في جبال بابوا العالية، ووامينا هي بلده الأساسية. العالم برّه ماكانش يعرف الوادي ده لحدّ سنة 1938، لما طيّارة بعثة علمية شافته من فوق. وكل سنة، عادةً في أغسطس، مهرجان الوادي بيجمّع جماعات الداني واللاني واليالي، بمعارك تمثيلية ورقص وأغاني. ومبروك، دي آخر محطة في رحلة BIPA 7.
-    ar: يقع وادي باليم في مرتفعات بابوا، ووامينا بلدته الرئيسة. ولم يعرفه العالم الخارجي حتّى عام 1938، حين رأته طائرة بعثة علمية من الجوّ. ويجمع مهرجانه السنوي، في أغسطس عادةً، جماعات الداني واللاني واليالي بمعارك تمثيلية ورقص وغناء. وتهانينا، فهذه آخر محطّة في رحلة BIPA 7.
-    en: The Baliem valley lies in Papua's highlands, with Wamena as its main town. Outsiders did not know of it until 1938, when a scientific expedition's plane spotted it from the air. Each year, usually in August, its festival brings the Dani, Lani and Yali together with mock battles, dance and song. Congratulations, this is the last stop of the BIPA 7 journey.
+      text: Baik. Terima kasih, Pak. Bapak dosen pembimbing terbaik.
+      ar_eg: تمام. شكرًا يا أستاذ. حضرتك أحسن مشرف.
+      ar: حسنًا، شكرًا يا أستاذ، أنت خير مشرف.
+      en: Okay. Thank you, sir. You're the best supervisor.
+    - speaker: Pak Elias
+      text: Simpan terima kasihmu untuk setelah sidang skripsi. Ayo masuk!
+      ar_eg: خلّي الشكر لبعد المناقشة. يلا ادخل!
+      ar: ادّخر شكرك لما بعد المناقشة، هيّا ادخل!
+      en: Save your thanks for after the defence. In you go!
+new_words:
+  - word: skripsi
+    pos: noun
+    ar_eg: بحث التخرّج
+    ar: بحث التخرّج
+    en: undergraduate thesis
+  - word: sidang skripsi
+    pos: noun
+    ar_eg: مناقشة بحث التخرّج
+    ar: مناقشة بحث التخرّج
+    en: thesis defence
+  - word: dosen pembimbing
+    pos: noun
+    ar_eg: الدكتور المشرف
+    ar: الأستاذ المشرف
+    en: (thesis) supervisor
+  - word: gelar sarjana
+    pos: noun
+    ar_eg: درجة البكالوريوس
+    ar: درجة البكالوريوس
+    en: bachelor's degree
 review:
   status: draft
   verified: false

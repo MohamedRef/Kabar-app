@@ -1,0 +1,198 @@
+schema: kabar.lesson/v1
+id: bipa7.u03.l08
+language: id
+title: Pesan tersirat
+can_do:
+  ar_eg: تفسّر الرسالة المستخبية في حكاية شعبية وتشرح رموزها.
+  ar: أن تفسّر الرسالة الضمنية في حكاية شعبية وتشرح رموزها.
+  en: Interpret the hidden message of a folk tale and explain its symbols.
+slides:
+  - title: Penyu sebagai lambang
+    grammar: id.figurative.majas
+    body:
+      ar_eg: |
+        حدّوتة مامبري والسلحفاة مش بس حكاية، دي alegori (قصة رمزية):
+        - السلحفاة menyimbolkan (بترمز لـ) كرم البحر.
+        - إن الأهالي بطّلوا يصطادوا السلاحف = kiasan (كناية / تعبير مجازي) عن احترام الطبيعة.
+        - الـ pesan moral (العبرة): خد من البحر على قد حاجتك بس.
+        العبرة دي عايشة في الحقيقة: في راجا أمبات فيه عادة اسمها sasi، بيقفلوا فيها الصيد في حتة معيّنة لفترة عشان السمك يرجع.
+      ar: |
+        حكاية مامبري والسلحفاة ليست حكاية فحسب، بل alegori (قصّة رمزية):
+        - السلحفاة menyimbolkan (ترمز إلى) كرم البحر.
+        - كفّ الأهالي عن صيد السلاحف kiasan (تعبير مجازي) عن احترام الطبيعة.
+        - الـ pesan moral (العبرة): خذ من البحر قدر حاجتك فقط.
+        وللعبرة صدى في الواقع: في راجا أمبات عادة تسمّى sasi، يُغلق فيها الصيد في موضع ما مدّةً لتتجدّد الأسماك.
+      en: |
+        The tale of Mambri and the turtle isn't just a story; it's an alegori (allegory):
+        - The turtle menyimbolkan (symbolises) the sea's generosity.
+        - The villagers giving up turtle hunting is a kiasan (figure of speech) for respecting nature.
+        - The pesan moral (moral): take from the sea only what you need.
+        The moral lives on in real life: Raja Ampat has a custom called sasi, which closes fishing in an area for a while so the fish can come back.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: alegori
+        ar_eg: قصة رمزية
+        ar: قصّة رمزية
+        en: allegory
+      - text: pesan moral
+        ar_eg: العبرة / المغزى
+        ar: العبرة
+        en: moral of the story
+      - text: kiasan
+        ar_eg: تعبير مجازي
+        ar: تعبير مجازي
+        en: figure of speech, figurative expression
+      - text: menyimbolkan
+        ar_eg: يرمز لـ
+        ar: يرمز إلى
+        en: to symbolise
+    words: [alegori, pesan moral, kiasan, menyimbolkan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه العبرة من حدّوتة مامبري؟
+      ar: ما عبرة حكاية مامبري؟
+      en: What is the moral of Mambri's tale?
+    options:
+      - خد من البحر على قد حاجتك.
+      - السلاحف خطيرة.
+      - ماتطلعش البحر بالليل أبدًا.
+    answer: 0
+    words: [pesan moral]
+  - id: e03
+    type: fill_blank
+    sentence: Dalam dongeng ini, penyu raksasa ___ kemurahan laut.
+    meaning:
+      ar_eg: في الحدّوتة دي، السلحفاة العملاقة بترمز لكرم البحر.
+      ar: ترمز السلحفاة العملاقة في هذه الحكاية إلى كرم البحر.
+      en: In this tale, the giant turtle symbolises the sea's generosity.
+    options: [menyimbolkan, alegori, kiasan]
+    answers: [menyimbolkan]
+    words: [menyimbolkan]
+  - id: e04
+    type: listen
+    text: Cerita ini sebenarnya alegori tentang hubungan manusia dan alam.
+    question:
+      ar_eg: الحكاية دي في الحقيقة عن إيه؟
+      ar: عمَّ تتحدّث هذه الحكاية في الحقيقة؟
+      en: What is this story really about?
+    options:
+      - عن صيّاد غني.
+      - عن العلاقة بين الإنسان والطبيعة.
+      - عن سباق مراكب.
+    answer: 1
+    words: [alegori]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: «الأرض الأم» تعبير مجازي.
+      ar: «الأرض الأمّ» تعبير مجازي.
+      en: '"Mother earth" is a figure of speech.'
+    answer: Ibu pertiwi adalah sebuah kiasan.
+    distractors: [alegori, moral]
+    words: [kiasan]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي واحدة alegori؟
+      ar: أيّها قصّة رمزية؟
+      en: Which one is an allegory?
+    options:
+      - خبر عن ارتفاع الأسعار.
+      - إيميل شغل.
+      - حكاية عن حيوانات معناها نقد للحكّام.
+    answer: 2
+    words: [alegori, kiasan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: كل حدّوتة ليها عبرة.
+      ar: لكلّ حكاية عبرة.
+      en: Every tale has a moral.
+    answers:
+      - Setiap dongeng punya pesan moral.
+      - Setiap dongeng memiliki pesan moral.
+      - Tiap dongeng punya pesan moral.
+      - Setiap dongeng mempunyai pesan moral.
+    words: [pesan moral]
+  - id: e08
+    type: speaking
+    text: Warna putih dalam cerita ini menyimbolkan kejujuran.
+    meaning:
+      ar_eg: اللون الأبيض في الحكاية دي بيرمز للأمانة.
+      ar: يرمز اللون الأبيض في هذه القصّة إلى الصدق.
+      en: The colour white in this story symbolises honesty.
+    words: [menyimbolkan]
+  - id: e09
+    type: dictation
+    text: Pesan moral cerita itu disampaikan lewat kiasan.
+    meaning:
+      ar_eg: عبرة الحكاية دي اتقالت من خلال تعبير مجازي.
+      ar: نُقلت عبرة تلك القصّة عبر تعبير مجازي.
+      en: The story's moral is conveyed through a figure of speech.
+    words: [pesan moral, kiasan]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Alegori ini menyimbolkan perjuangan rakyat kecil.
+    answers_meaning:
+      ar_eg:
+        - القصة الرمزية دي بترمز لكفاح الناس البسيطة.
+        - الحكاية الرمزية دي عن نضال الغلابة.
+      ar:
+        - ترمز هذه القصّة الرمزية إلى كفاح عامّة الناس.
+        - تجسّد هذه القصّة الرمزية نضال البسطاء.
+      en:
+        - This allegory symbolises the struggle of ordinary people.
+        - This allegory stands for the little people's struggle.
+    words: [alegori, menyimbolkan]
+dialogue:
+  title: Apa artinya?
+  lines:
+    - speaker: Mohamed
+      text: Mama, mengapa dongeng penyu itu diceritakan berulang-ulang?
+      ar_eg: يا ماما، ليه حدّوتة السلحفاة دي بتتحكي كل شوية؟
+      ar: يا ماما، لماذا تُروى حكاية السلحفاة مرّة بعد مرّة؟
+      en: Mama, why is the turtle tale told again and again?
+    - speaker: Mama Ruth
+      text: Karena pesan moralnya penting. Penyu itu menyimbolkan laut yang memberi kita hidup.
+      ar_eg: علشان العبرة بتاعتها مهمة. السلحفاة بترمز للبحر اللي بيدّينا عيشتنا.
+      ar: لأنّ عبرتها مهمّة، فالسلحفاة ترمز إلى البحر الذي يمنحنا الحياة.
+      en: Because its moral matters. The turtle stands for the sea that gives us life.
+    - speaker: Mohamed
+      text: Jadi ini alegori, dan sasi adalah cara menjalankan pesannya.
+      ar_eg: يعني دي قصة رمزية، والـ sasi هي طريقة تطبيق رسالتها.
+      ar: إذن هي قصّة رمزية، والـ sasi طريقة لتطبيق رسالتها.
+      en: So it's an allegory, and sasi is how its message is put into practice.
+    - speaker: Mama Ruth
+      text: Pintar! Dongeng dan adat saling menjaga.
+      ar_eg: شاطر! الحواديت والعادات بيحموا بعض.
+      ar: أحسنت! الحكايات والأعراف تحرس بعضها بعضًا.
+      en: Clever! Tales and customs protect each other.
+new_words:
+  - word: alegori
+    pos: noun
+    ar_eg: قصة رمزية
+    ar: قصّة رمزية
+    en: allegory
+  - word: pesan moral
+    pos: noun
+    ar_eg: العبرة / المغزى
+    ar: العبرة
+    en: moral of the story
+  - word: kiasan
+    pos: noun
+    ar_eg: تعبير مجازي
+    ar: تعبير مجازي
+    en: figure of speech, figurative expression
+  - word: menyimbolkan
+    pos: verb
+    ar_eg: يرمز لـ
+    ar: يرمز إلى
+    en: to symbolise
+review:
+  status: draft
+  verified: false
