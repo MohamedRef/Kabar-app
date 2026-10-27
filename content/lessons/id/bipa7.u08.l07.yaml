@@ -1,0 +1,204 @@
+schema: kabar.lesson/v1
+id: bipa7.u08.l07
+language: id
+title: Penjelasan ekonomi
+can_do:
+  ar_eg: تشرح ليه الأسعار بتطلع في فقرة مترابطة.
+  ar: أن تشرح سبب ارتفاع الأسعار في فقرة مترابطة.
+  en: Explain why prices go up in a connected paragraph.
+slides:
+  - title: Mengapa harga naik?
+    grammar: id.conjunction.intersentential
+    body:
+      ar_eg: |
+        شرح متألّف للدرس، بسلسلة أسباب مربوطة:
+        Nilai tukar rupiah melemah. Oleh sebab itu, harga barang impor naik. Akibatnya, daya beli masyarakat turun. Sementara itu, bank sentral menaikkan suku bunga. Meskipun demikian, investasi asing tetap masuk.
+        - nilai tukar = سعر الصرف
+        - daya beli = القوة الشرائية
+        - suku bunga = سعر الفايدة
+        - investasi = استثمار
+        كل جملة بتبدأ بأداة ربط بتوضّح العلاقة، سبب ولا نتيجة ولا تعارض.
+      ar: |
+        شرح مؤلَّف للدرس بسلسلة أسباب مترابطة:
+        Nilai tukar rupiah melemah. Oleh sebab itu, harga barang impor naik. Akibatnya, daya beli masyarakat turun. Sementara itu, bank sentral menaikkan suku bunga. Meskipun demikian, investasi asing tetap masuk.
+        - nilai tukar = سعر الصرف
+        - daya beli = القدرة الشرائية
+        - suku bunga = سعر الفائدة
+        - investasi = استثمار
+        تبدأ كلّ جملة بأداة ربط تبيّن العلاقة، سببًا أو نتيجة أو استدراكًا.
+      en: |
+        An explanation invented for the lesson, a chain of linked causes:
+        Nilai tukar rupiah melemah. Oleh sebab itu, harga barang impor naik. Akibatnya, daya beli masyarakat turun. Sementara itu, bank sentral menaikkan suku bunga. Meskipun demikian, investasi asing tetap masuk.
+        - nilai tukar = exchange rate
+        - daya beli = purchasing power
+        - suku bunga = interest rate
+        - investasi = investment
+        Each sentence opens with a connector that shows the link, cause, result or contrast.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: nilai tukar
+        ar_eg: سعر الصرف
+        ar: سعر الصرف
+        en: exchange rate
+      - text: daya beli
+        ar_eg: القوة الشرائية
+        ar: القدرة الشرائية
+        en: purchasing power
+      - text: suku bunga
+        ar_eg: سعر الفايدة
+        ar: سعر الفائدة
+        en: interest rate
+      - text: investasi
+        ar_eg: استثمار
+        ar: استثمار
+        en: investment
+    words: [nilai tukar, daya beli, suku bunga, investasi]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: لو الروبية ضعفت قصاد الدولار، إيه اللي بيحصل للحاجات المستوردة؟
+      ar: إذا ضعفت الروبية أمام الدولار، فماذا يحدث للسلع المستوردة؟
+      en: If the rupiah weakens against the dollar, what happens to imported goods?
+    options:
+      - بترخص.
+      - بتغلى.
+      - مابتتغيّرش.
+    answer: 1
+    words: [nilai tukar]
+  - id: e03
+    type: fill_blank
+    sentence: Harga naik, tetapi gaji tetap. Akibatnya, ___ masyarakat turun.
+    meaning:
+      ar_eg: الأسعار طلعت والمرتبات زي ما هي. والنتيجة إن القوة الشرائية للناس نزلت.
+      ar: ارتفعت الأسعار وثبتت الرواتب، فانخفضت القدرة الشرائية للناس.
+      en: Prices rose but wages stayed put. As a result, people's purchasing power fell.
+    options: [daya beli, suku bunga, investasi]
+    answers: [daya beli]
+    words: [daya beli]
+  - id: e04
+    type: listen
+    text: Bank sentral menaikkan suku bunga untuk menahan inflasi.
+    question:
+      ar_eg: البنك المركزي رفع الفايدة ليه؟
+      ar: لماذا رفع المصرف المركزي سعر الفائدة؟
+      en: Why did the central bank raise interest rates?
+    options:
+      - علشان يوقّف التضخّم.
+      - علشان يزوّد الواردات.
+      - علشان يطبع فلوس.
+    answer: 0
+    words: [suku bunga]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الاستثمار الأجنبي بيخلق شغل.
+      ar: يخلق الاستثمار الأجنبي فرص عمل.
+      en: Foreign investment creates jobs.
+    answer: Investasi asing menciptakan lapangan kerja.
+    distractors: [daya, suku]
+    words: [investasi]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة بتربط السبب بالنتيجة صح؟
+      ar: أيّ جملة تربط السبب بالنتيجة ربطًا صحيحًا؟
+      en: Which sentence links cause and effect correctly?
+    options:
+      - Rupiah menguat. Bahkan, harga impor naik.
+      - Rupiah melemah. Meskipun demikian, harga impor naik.
+      - Rupiah melemah. Oleh sebab itu, harga impor naik.
+    answer: 2
+    words: [nilai tukar]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: سعر الفايدة العالي بيقلّل الاستثمار.
+      ar: يقلّل سعر الفائدة المرتفع الاستثمار.
+      en: High interest rates reduce investment.
+    answers:
+      - Suku bunga yang tinggi mengurangi investasi.
+      - Suku bunga tinggi mengurangi investasi.
+      - Suku bunga yang tinggi menurunkan investasi.
+      - Suku bunga yang tinggi membuat investasi berkurang.
+    words: [suku bunga, investasi]
+  - id: e08
+    type: speaking
+    text: Nilai tukar rupiah memengaruhi daya beli masyarakat.
+    meaning:
+      ar_eg: سعر صرف الروبية بيأثّر على القوة الشرائية للناس.
+      ar: يؤثّر سعر صرف الروبية في القدرة الشرائية للناس.
+      en: The rupiah exchange rate affects people's purchasing power.
+    words: [nilai tukar, daya beli]
+  - id: e09
+    type: dictation
+    text: Investasi di Papua terus bertambah.
+    meaning:
+      ar_eg: الاستثمار في بابوا لسّه بيزيد.
+      ar: يتزايد الاستثمار في بابوا باستمرار.
+      en: Investment in Papua keeps growing.
+    words: [investasi]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Ketika daya beli turun, toko-toko kecil kehilangan pembeli.
+    answers_meaning:
+      ar_eg:
+        - لما القوة الشرائية تنزل، المحلات الصغيرة بتخسر زباينها.
+        - لو الناس معاهاش فلوس تشتري، المحلات الصغيرة بتفضى.
+      ar:
+        - حين تنخفض القدرة الشرائية تفقد المتاجر الصغيرة زبائنها.
+        - إذا ضعفت القدرة الشرائية خسرت المحالّ الصغيرة مشتريها.
+      en:
+        - When purchasing power falls, small shops lose customers.
+        - Once people can buy less, small shops lose their buyers.
+    words: [daya beli]
+dialogue:
+  title: Harga beras di pasar Hamadi
+  lines:
+    - speaker: Mohamed
+      text: Bu Frida, mengapa harga beras di Hamadi naik bulan ini?
+      ar_eg: يا دكتورة فريدة، ليه سعر الرز في حمادي طلع الشهر ده؟
+      ar: يا دكتورة فريدا، لماذا ارتفع سعر الأرز في هامادي هذا الشهر؟
+      en: Bu Frida, why did rice prices in Hamadi go up this month?
+    - speaker: Bu Frida
+      text: Sebagian beras didatangkan dari luar Papua. Ongkos kirimnya naik.
+      ar_eg: جزء من الرز بييجي من برّه بابوا، ومصاريف الشحن زادت.
+      ar: يُجلب جزء من الأرز من خارج بابوا، وقد ارتفعت تكلفة شحنه.
+      en: Some rice is brought in from outside Papua. Shipping costs went up.
+    - speaker: Mohamed
+      text: Oleh sebab itu, daya beli warga turun, ya?
+      ar_eg: وعلشان كده القوة الشرائية للناس نزلت، صح؟
+      ar: ولذلك انخفضت القدرة الشرائية للأهالي، أليس كذلك؟
+      en: So that's why residents' purchasing power fell?
+    - speaker: Bu Frida
+      text: Betul. Meskipun demikian, investasi di pelabuhan bisa menurunkan ongkos itu nanti.
+      ar_eg: صح. ومع ذلك، الاستثمار في الميناء ممكن ينزّل المصاريف دي بعدين.
+      ar: صحيح. ومع ذلك قد يخفّض الاستثمار في الميناء تلك التكلفة لاحقًا.
+      en: Right. Even so, investment in the port could bring those costs down later.
+new_words:
+  - word: nilai tukar
+    pos: noun
+    ar_eg: سعر الصرف
+    ar: سعر الصرف
+    en: exchange rate
+  - word: daya beli
+    pos: noun
+    ar_eg: القوة الشرائية
+    ar: القدرة الشرائية
+    en: purchasing power
+  - word: suku bunga
+    pos: noun
+    ar_eg: سعر الفايدة
+    ar: سعر الفائدة
+    en: interest rate
+  - word: investasi
+    pos: noun
+    ar_eg: استثمار
+    ar: استثمار
+    en: investment
+review:
+  status: draft
+  verified: false
