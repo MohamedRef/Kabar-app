@@ -1,0 +1,218 @@
+schema: kabar.lesson/v1
+id: j1.u03.l05
+language: jv
+title: Ulangan J1.3
+can_do:
+  ar_eg: تقرا شات جروب.
+  ar: أن تقرأ دردشة جماعية.
+  en: Read a group chat.
+slides:
+  - title: Maca chat
+    body:
+      ar_eg: |
+        عشان تقرا أي شات جاوي، اعمل تلات خطوات:
+        1. رجّع الكتابة: arp → arep، ws / wes → wis، ng → nang، gk → gak / ora، opo → apa، piro → pira، sek = استنى / الأول.
+        2. دوّر على كلمات الزمن: wis (خلاص)، durung (لسه)، lagi (دلوقتي)، arep (هـ)، isih (لسه مستمر).
+        3. حدد اللغة بالعلامات: ora، karo، sing، ana، nang = جاوي؛ tidak، sama، yang، ada، di = إندونيسي.
+      ar: |
+        لقراءة أي دردشة جاوية اتبع ثلاث خطوات:
+        1. ردّ الإملاء: arp → arep، وws / wes → wis، وng → nang، وgk → gak / ora، وopo → apa، وpiro → pira، وsek = انتظر / أولًا.
+        2. ابحث عن ألفاظ الزمن: wis، durung، lagi، arep، isih.
+        3. حدد اللغة بالعلامات: ora وkaro وsing وana وnang جاوية؛ وtidak وsama وyang وada وdi إندونيسية.
+      en: |
+        To read any Javanese chat, take three steps:
+        1. Restore the spelling: arp → arep, ws / wes → wis, ng → nang, gk → gak / ora, opo → apa, piro → pira, sek = hold on / first.
+        2. Find the time words: wis (already), durung (not yet), lagi (now, -ing), arep (going to), isih (still).
+        3. Tag the language by its markers: ora, karo, sing, ana, nang = Javanese; tidak, sama, yang, ada, di = Indonesian.
+    grammar: jv.chat.normalize
+    examples:
+      - text: ws tekan durung? → Wis tekan durung?
+        ar_eg: وصلت ولا لسه؟
+        ar: هل وصلت أم ليس بعد؟
+        en: Arrived yet?
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: arp
+        ar_eg: arep (هـ)
+        ar: arep (سوف)
+        en: arep
+      - text: ws
+        ar_eg: wis (خلاص)
+        ar: wis (قد)
+        en: wis
+      - text: opo
+        ar_eg: apa (إيه)
+        ar: apa (ماذا)
+        en: apa
+      - text: piro
+        ar_eg: pira (بكام)
+        ar: pira (بكم)
+        en: pira
+      - text: rapopo
+        ar_eg: ora apa-apa (عادي)
+        ar: ora apa-apa (لا بأس)
+        en: ora apa-apa
+    words: [arep, wis, apa, pira, ora apa-apa]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: wis
+        ar_eg: sudah (خلاص)
+        ar: sudah (قد)
+        en: sudah (already)
+      - text: durung
+        ar_eg: belum (لسه)
+        ar: belum (ليس بعد)
+        en: belum (not yet)
+      - text: lagi
+        ar_eg: sedang (دلوقتي)
+        ar: sedang (الآن)
+        en: sedang (-ing)
+      - text: isih
+        ar_eg: masih (لسه مستمر)
+        ar: masih (ما زال)
+        en: masih (still)
+    words: [wis, durung, lagi, isih]
+  - id: e03
+    type: multiple_choice
+    question: Kowe wis tekan?
+    question_meaning:
+      ar_eg: إنت لسه في القطر. ترد إزاي؟
+      ar: ما زلت في القطار. بمَ تجيب؟
+      en: You're still on the train. How do you answer?
+    options: ['Durung, isih nang sepur.', Arep turu., Wis.]
+    answer: 0
+    explain:
+      ar_eg: durung = لسه ماوصلتش، وisih nang sepur = لسه في القطر.
+      ar: durung = لم أصل بعد، وisih nang sepur = ما زلت في القطار.
+      en: durung = not yet; isih nang sepur = still on the train.
+    words: [durung, isih]
+  - id: e04
+    type: multiple_choice
+    question: ng prabowo?
+    question_meaning:
+      ar_eg: إيه الكتابة الرسمية للرسالة دي؟
+      ar: ما الإملاء القياسي لهذه الرسالة؟
+      en: What's the standard spelling of this message?
+    options: ['Nang Prabowo?', 'Ngapa Prabowo?', 'Yang Prabowo?']
+    answer: 0
+    explain:
+      ar_eg: ng = nang / neng (لـ / في).
+      ar: ng = nang / neng (إلى / في).
+      en: ng = nang / neng (to / at).
+    words: [nang]
+  - id: e05
+    type: listen
+    text: Aku isih nang Tunjungan.
+    options: [Aku isih nang Tunjungan., Aku wis nang Tunjungan., Aku arep nang Tunjungan.]
+    answer: 0
+    words: [isih, nang]
+  - id: e06
+    type: fill_blank
+    sentence: wes mangan? → ___ mangan?
+    meaning:
+      ar_eg: كلت؟
+      ar: هل أكلت؟
+      en: Have you eaten?
+    answers: [wis, Wis]
+    words: [wis]
+  - id: e07
+    type: fill_blank
+    sentence: Aku ___ mangan. Ayo mangan!
+    meaning:
+      ar_eg: لسه ماكلتش. يلا ناكل!
+      ar: لم آكل بعد. هيا نأكل!
+      en: I haven't eaten yet. Let's eat!
+    options: [durung, isih, wis]
+    answers: [durung]
+    words: [durung]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: هنام. خلاص، سلام!
+      ar: سأنام. إلى اللقاء!
+      en: I'm going to sleep. Bye!
+    answer: Aku arep turu. Wis ya!
+    distractors: [tidur, durung]
+    words: [arep, turu, wis]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: sek, aku lagi moco
+    answers_meaning:
+      ar_eg: [استنى، أنا بقرا., استنى، بقرا, لحظة، أنا بقرا, استنى، أنا بقرا دلوقتي]
+      ar: [انتظر، أنا أقرأ., لحظة، أنا أقرأ الآن, انتظر، أقرأ الآن]
+      en: ['Hold on, I''m reading.', 'Hold on, I''m reading', 'Wait, I''m reading', 'Just a sec, I''m reading']
+    explain:
+      ar_eg: sek = استنى، lagi = دلوقتي، moco = maca (يقرا).
+      ar: sek = انتظر، وlagi = الآن، وmoco = maca.
+      en: sek = hold on, lagi = -ing, moco = maca (read).
+    words: [sek, lagi, maca]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: rek, aku gk ngerti opo2
+    answers_meaning:
+      ar_eg: [يا جدعان، أنا مش فاهم أي حاجة., يا جماعة، مش فاهم حاجة, يا جدعان، مش فاهم أي حاجة]
+      ar: [يا جماعة، لا أفهم شيئًا., يا جماعة، لا أفهم أي شيء]
+      en: ['Guys, I don''t understand anything.', 'Guys, I don''t get anything', 'Mate, I don''t understand anything']
+    words: [gak, ngerti, apa-apa]
+  - id: e11
+    type: dictation
+    text: Wis tekan durung?
+    meaning:
+      ar_eg: وصلت ولا لسه؟
+      ar: هل وصلت أم ليس بعد؟
+      en: Arrived yet?
+    words: [wis, durung]
+  - id: e12
+    type: speaking
+    text: Durung, aku isih nang sepur.
+    meaning:
+      ar_eg: لسه، أنا لسه في القطر.
+      ar: ليس بعد، ما زلت في القطار.
+      en: Not yet, I'm still on the train.
+    words: [durung, isih]
+dialogue:
+  title: Grup "Arek Tunjungan"
+  lines:
+    - speaker: Mbak Rara
+      text: rek, ws tekan durung?
+      ar_eg: يا جدعان، وصلتوا ولا لسه؟
+      ar: يا جماعة، هل وصلتم أم ليس بعد؟
+      en: Guys, are you there yet?
+    - speaker: Cak Heru
+      text: ws, aku lagi ng Tunjungan
+      ar_eg: أيوه، أنا في تونجونجان دلوقتي.
+      ar: نعم، أنا في تونجونغان الآن.
+      en: Yes, I'm at Tunjungan now.
+    - speaker: Mohamed
+      text: durung, aku isih ng sepur. sek ya
+      ar_eg: لسه، أنا لسه في القطر. استنوا شوية.
+      ar: ليس بعد، ما زلت في القطار. انتظروا قليلًا.
+      en: Not yet, I'm still on the train. Hang on.
+    - speaker: Mbak Rara
+      text: rapopo. aku arp mangan sate karo Cak Heru
+      ar_eg: عادي. أنا هاكل ساتيه مع هيرو.
+      ar: لا بأس. سآكل الساتيه مع هيرو.
+      en: No problem. I'm going to have satay with Heru.
+    - speaker: Mohamed
+      text: oke, ati2 rek!
+      ar_eg: ماشي، خلوا بالكم يا جدعان!
+      ar: حسنًا، انتبهوا لأنفسكم يا جماعة!
+      en: OK, take care, guys!
+souvenir:
+  id: j1.u03.souvenir
+  title: Jalan Tunjungan di malam hari
+  note:
+    ar_eg: |
+      شارع Tunjungan بالليل هو قلب سورابايا القديم: مباني من أيام الهولنديين، ونور، وناس بتتمشى وتاكل. حتى الأغنية المشهورة «Rek Ayo Rek» بتقول «mlaku-mlaku nang Tunjungan» — يلا نتمشى في تونجونجان! والشباب اللي قاعدين هناك بيبعتوا رسايل خليط إندونيسي وجاوي ومختصرة جدًا. الـ Reader في Kabar بيفكّها، بس دلوقتي إنت كمان بتعرف تفكّها لوحدك. برافو!
+    ar: |
+      شارع Tunjungan ليلًا قلب سورابايا القديم: مبانٍ من العهد الهولندي وأضواء ومتنزهون وباعة طعام. وحتى الأغنية الشهيرة «Rek Ayo Rek» تقول «mlaku-mlaku nang Tunjungan» أي «هيا نتمشى في تونجونغان». والشباب هناك يكتبون رسائل تمزج الإندونيسية بالجاوية باختصار شديد؛ يفكّها Reader في Kabar، وصرت الآن قادرًا على فكّها بنفسك. أحسنت!
+    en: |
+      Jalan Tunjungan at night is old Surabaya's heart: Dutch-era buildings, lights, people strolling and snacking. The famous song "Rek Ayo Rek" even sings "mlaku-mlaku nang Tunjungan" — let's go for a walk on Tunjungan! The young people there text in a heavily abbreviated mix of Indonesian and Javanese. Kabar's Reader normalises it — and now you can do it yourself. Well done!
+review:
+  status: draft
+  verified: false
