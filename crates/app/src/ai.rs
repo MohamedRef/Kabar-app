@@ -109,7 +109,7 @@ impl Engine for CloudEngine {
         key.engine = self.id;
         Box::pin(async move {
             if let Err(e) = self.link.ai_reject(key).await {
-                eprintln!("kabar: AI reject: {e}");
+                crate::diag::report!("AI reject: {e}");
             }
         })
     }
@@ -128,7 +128,7 @@ impl Cache for StoreCache {
         if let Ok(store) = self.0.0.try_borrow()
             && let Err(e) = store.ai_cache_put(&key.id(), json)
         {
-            eprintln!("kabar: AI cache: {e}");
+            crate::diag::report!("AI cache: {e}");
         }
     }
 

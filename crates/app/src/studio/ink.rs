@@ -174,7 +174,7 @@ pub fn InkCanvas(
                             stroke.doc = doc.clone();
                             match db.0.borrow_mut().add_stroke(&stroke) {
                                 Ok(_) => revision += 1,
-                                Err(e) => eprintln!("kabar: saving a stroke failed: {e}"),
+                                Err(e) => crate::diag::report!("saving a stroke failed: {e}"),
                             }
                             if let Some(h) = on_stroke {
                                 h.call(stroke);
@@ -183,7 +183,7 @@ pub fn InkCanvas(
                         FromInk::Erase { ids } => {
                             for id in &ids {
                                 if let Err(e) = db.0.borrow_mut().erase_stroke(id) {
-                                    eprintln!("kabar: erasing failed: {e}");
+                                    crate::diag::report!("erasing failed: {e}");
                                 }
                             }
                             revision += 1;
