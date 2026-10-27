@@ -1,205 +1,237 @@
 schema: kabar.lesson/v1
 id: bipa7.u01.l10
 language: id
-title: Ulangan Unit 1
+title: Atlet paralimpiade
 can_do:
-  ar_eg: تكتب خبر عن إنجاز وتقراه بصوت عالي زي المذيع.
-  ar: أن تكتب خبرًا عن إنجاز وتلقيه كما يفعل المذيع.
-  en: Write a news story about an achievement and read it out like a newsreader.
+  ar_eg: تتكلّم باحترام عن رياضيين من ذوي الإعاقة وعن تسليم الراية للجيل الجاي.
+  ar: أن تتحدّث باحترام عن الرياضيين ذوي الإعاقة وعن إعداد الجيل القادم.
+  en: Talk respectfully about athletes with disabilities and about raising the next generation.
+slides:
+  - title: Bahasa yang menghormati
+    body:
+      ar_eg: |
+        الأخبار بتقول penyandang disabilitas أو difabel، مش كلمات قديمة جارحة.
+        disabilitas = الإعاقة. Paralimpiade = البارالمبياد.
+        perintis = الرائد اللي فتح الطريق. regenerasi = تجهيز جيل جديد ياخد مكان الكبار.
+        almamater = الجامعة أو المدرسة اللي اتخرّجت منها.
+        berdaya saing = قادر ينافس. mancanegara = بلاد برّه (atlet mancanegara = رياضيين أجانب).
+      ar: |
+        تستعمل الأخبار penyandang disabilitas أو difabel بدل الألفاظ القديمة الجارحة.
+        disabilitas = الإعاقة. Paralimpiade = الألعاب البارالمبية.
+        perintis = الرائد الذي فتح الطريق. regenerasi = إعداد جيل جديد يخلف الكبار.
+        almamater = الجامعة أو المدرسة التي تخرّج فيها المرء.
+        berdaya saing = ذو قدرة تنافسية. mancanegara = البلدان الأجنبية (atlet mancanegara = رياضيّون أجانب).
+      en: |
+        News language says penyandang disabilitas or difabel, not the old hurtful words.
+        disabilitas = disability. Paralimpiade = the Paralympics.
+        perintis = the pioneer who opened the way. regenerasi = raising a new generation to take over.
+        almamater = the school or university you graduated from.
+        berdaya saing = competitive. mancanegara = foreign countries (atlet mancanegara = foreign athletes).
+    examples:
+      - text: Atlet difabel itu bertanding di Paralimpiade.
+        ar_eg: الرياضي ده من ذوي الهمم ونافس في البارالمبياد.
+        ar: نافس ذلك الرياضي من ذوي الإعاقة في الألعاب البارالمبية.
+        en: That athlete with a disability competed at the Paralympics.
+      - text: Dia perintis klub renang untuk penyandang disabilitas.
+        ar_eg: هي اللي أسّست أول نادي سباحة لذوي الإعاقة.
+        ar: هي رائدة نادي السباحة للأشخاص ذوي الإعاقة.
+        en: She pioneered a swimming club for people with disabilities.
+      - text: Regenerasi atlet penting supaya kita tetap berdaya saing.
+        ar_eg: تجديد الأجيال مهم علشان نفضل قادرين ننافس.
+        ar: تجديد أجيال الرياضيين مهمّ لنبقى قادرين على المنافسة.
+        en: Bringing up new athletes matters so we stay competitive.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: meraih
-        ar_eg: يحقّق / يكسب
-        ar: يحرز
-        en: to win, to achieve
-      - text: persatuan
-        ar_eg: وحدة
-        ar: وحدة
-        en: unity
-      - text: prestasi
-        ar_eg: إنجاز
-        ar: إنجاز
-        en: achievement
-      - text: lomba
-        ar_eg: مسابقة
-        ar: مسابقة
-        en: competition, contest
-      - text: pendengar
-        ar_eg: مستمع
-        ar: مستمع
-        en: listener
-    words: [meraih, persatuan, prestasi, lomba, pendengar]
+      - text: paralimpiade
+        ar_eg: البارالمبياد
+        ar: الألعاب البارالمبية
+        en: the Paralympics
+      - text: difabel
+        ar_eg: من ذوي الهمم
+        ar: من ذوي القدرات المختلفة
+        en: person with a disability (differently abled)
+      - text: disabilitas
+        ar_eg: إعاقة
+        ar: إعاقة
+        en: disability
+      - text: regenerasi
+        ar_eg: تجديد الأجيال / تسليم الراية
+        ar: تجديد الأجيال
+        en: regeneration, bringing up the next generation
+    words: [paralimpiade, difabel, disabilitas, regenerasi]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة فيها تحفّظ صحفي سليم؟
-      ar: أيّ جملة فيها تحفّظ صحفي سليم؟
-      en: Which sentence shows proper journalistic caution?
-    options:
-      - Laki-laki itu pasti pencurinya.
-      - Laki-laki itu diduga mencuri dua sepeda motor.
-      - Semua orang tahu dia pencuri.
-    answer: 1
-    words: [diduga]
-  - id: e03
-    type: fill_blank
-    sentence: Pada tahun 1928, para pemuda membacakan ___ di Batavia.
-    meaning:
-      ar_eg: سنة 1928، الشباب قروا اليمين في باتافيا.
-      ar: في عام 1928 تلا الشباب القسم في باتافيا.
-      en: In 1928, the young people read out the pledge in Batavia.
-    options: [sumpah, siaran, liputan]
-    answers: [sumpah]
-    words: [sumpah, siaran, liputan]
-  - id: e04
-    type: listen
-    text: Wirausaha muda itu menerima penghargaan karena inovasinya yang menginspirasi.
-    question:
-      ar_eg: رائدة الأعمال خدت الجايزة ليه؟
-      ar: لماذا نالت رائدة الأعمال الجائزة؟
-      en: Why did the young entrepreneur get the award?
-    options:
-      - علشان ابتكارها اللي بيلهم الناس.
-      - علشان عندها فلوس كتير.
-      - علشان كسبت مسابقة رقص.
-    answer: 0
-    words: [wirausaha, penghargaan, inovasi, menginspirasi]
-  - id: e05
-    type: build_sentence
-    source:
-      ar_eg: مراسلنا بيدّينا آخر الأخبار من المؤتمر.
-      ar: ينقل إلينا مراسلنا آخر أخبار المؤتمر.
-      en: Our reporter brings us the latest from the congress.
-    answer: Reporter kami membawa kabar terkini dari kongres.
-    distractors: [pendengar, medali]
-    words: [reporter, kabar terkini, kongres]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: في خبر عن إنجاز، أنهي عبارة معناها «رفع اسم البلد»؟
-      ar: في خبر عن إنجاز، أيّ عبارة تعني «أعلى اسم الوطن»؟
-      en: In an achievement story, which phrase means "brought honour to the nation"?
-    options:
-      - dilaporkan hilang
-      - tanah air yang satu
-      - mengharumkan nama bangsa
-    answer: 2
-    words: [mengharumkan, dilaporkan, tanah air]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: «الميدالية دي للوطن»، قالت.
-      ar: «هذه الميدالية للوطن»، قالت.
-      en: '"This medal is for the homeland," she said.'
-    answers:
-      - '"Medali ini untuk tanah air," ujarnya.'
-      - '"Medali ini untuk tanah air," katanya.'
-      - '"Medali ini untuk tanah air," tuturnya.'
-    words: [medali, ujarnya, tanah air]
-  - id: e08
-    type: speaking
-    text: Kita berbangsa satu dan bangga tampil di kancah internasional.
-    meaning:
-      ar_eg: إحنا أمّة واحدة وفخورين إننا بنظهر على الساحة الدولية.
-      ar: نحن أمّة واحدة، ونفخر بالحضور على الساحة الدولية.
-      en: We are one nation and proud to appear on the international stage.
-    words: [berbangsa, kancah]
-  - id: e09
-    type: dictation
-    text: Prestasi pelajar Sorong itu dilaporkan oleh banyak media.
-    meaning:
-      ar_eg: إنجاز طالبة سورونج اتنشر في وسائل إعلام كتير.
-      ar: نقلت وسائل إعلام كثيرة إنجاز طالبة سورونغ.
-      en: The Sorong student's achievement was reported by many outlets.
-    words: [prestasi, dilaporkan]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Sanggar itu meraih juara pertama dalam lomba tari dan mengharumkan nama Papua.
-    answers_meaning:
-      ar_eg:
-        - الفرقة دي خدت المركز الأول في مسابقة الرقص ورفعت اسم بابوا.
-        - الفرقة كسبت المركز الأول في مسابقة الرقص وشرّفت بابوا.
-      ar:
-        - أحرزت الفرقة المركز الأوّل في مسابقة الرقص وأعلت اسم بابوا.
-        - فازت الفرقة بالمركز الأوّل في مسابقة الرقص وشرّفت بابوا.
-      en:
-        - The group took first place in the dance contest and brought honour to Papua.
-        - The dance group won first prize and made Papua proud.
-    words: [meraih, lomba, mengharumkan]
-  - id: e11
     type: match_pairs
     pairs:
-      - text: tuan rumah
-        ar_eg: المضيف
-        ar: المضيف
-        en: host
-      - text: judul berita
-        ar_eg: عنوان الخبر
-        ar: عنوان الخبر
-        en: headline
-      - text: noken
-        ar_eg: شنطة بابوا
-        ar: حقيبة بابوا
-        en: Papuan bag
-      - text: pembawa acara
-        ar_eg: مذيع
-        ar: مقدّم برنامج
-        en: presenter
-      - text: anyaman
-        ar_eg: شغل مضفّر
-        ar: مشغول مضفور
-        en: woven work
-    words: [tuan rumah, judul berita, noken, pembawa acara, anyaman]
-  - id: e12
+      - text: perintis
+        ar_eg: رائد / أول واحد فتح الطريق
+        ar: رائد، مؤسّس
+        en: pioneer, trailblazer
+      - text: almamater
+        ar_eg: الجامعة أو المدرسة اللي اتخرّجت منها
+        ar: الجامعة الأمّ (التي تخرّج فيها المرء)
+        en: alma mater
+      - text: berdaya saing
+        ar_eg: قادر ينافس
+        ar: ذو قدرة تنافسية
+        en: competitive
+      - text: mancanegara
+        ar_eg: بلاد برّه / دول أجنبية
+        ar: البلدان الأجنبية
+        en: foreign countries, abroad
+    words: [perintis, almamater, berdaya saing, mancanegara]
+  - id: e03
+    type: listen
+    text: Setelah juara, dia kembali ke almamaternya untuk melatih adik kelas.
+    question:
+      ar_eg: رجع فين؟
+      ar: إلى أين عاد؟
+      en: Where did he go back to?
+    options: [الجامعة اللي اتخرّج منها, بلاد برّه, البارالمبياد]
+    answer: 0
+    meaning:
+      ar_eg: بعد ما كسب، رجع لجامعته اللي اتخرّج منها يدرّب الطلبة الأصغر.
+      ar: بعد فوزه عاد إلى جامعته الأمّ ليدرّب الطلّاب الأصغر.
+      en: After winning, he went back to his alma mater to coach younger students.
+    words: [almamater]
+  - id: e04
+    type: fill_blank
+    sentence: Banyak pelatih dari ___ datang ke Solo.
+    meaning:
+      ar_eg: مدرّبين كتير من ___ جم سولو.
+      ar: جاء مدرّبون كثيرون من ___ إلى سولو.
+      en: Many coaches from ___ came to Solo.
+    options: [mancanegara, disabilitas, regenerasi]
+    answers: [mancanegara]
+    words: [mancanegara, disabilitas, regenerasi]
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي judul berita مكتوب صح عن الـ PON؟
-      ar: أيّ judul berita مكتوب صحيحًا عن PON؟
-      en: Which judul berita about PON is written correctly?
-    options:
-      - Papua jadi tuan rumah PON untuk pertama kalinya.
-      - Papua sudah menjadi tuan rumah PON.
-      - Papua Jadi Tuan Rumah PON
-    answer: 2
+      ar_eg: مين «perintis»؟
+      ar: مَن «perintis»؟
+      en: Who is a 'perintis'?
+    options: [Orang yang datang paling akhir., Orang yang membuka jalan pertama kali., Atlet dari mancanegara.]
+    answer: 1
     explain:
-      ar_eg: مختصر، حرف كبير في أول كل كلمة، ومن غير نقطة.
-      ar: موجز، وحرف كبير في أوّل كلّ كلمة، وبلا نقطة.
-      en: Concise, a capital on every word, no full stop.
-    words: [judul berita, huruf kapital, tuan rumah, PON]
+      ar_eg: perintis = الرائد، أول واحد بدأ.
+      ar: perintis = الرائد الذي بدأ أوّلًا.
+      en: perintis = the pioneer, the first to start.
+    words: [perintis, mancanegara]
+  - id: e06
+    type: fill_blank
+    sentence: Tanpa ___, tim kita akan kehabisan atlet muda.
+    meaning:
+      ar_eg: من غير ___، فريقنا هيخلص منه الرياضيين الصغيرين.
+      ar: بدون ___ سينفد الرياضيون الشباب من فريقنا.
+      en: Without ___, our team will run out of young athletes.
+    options: [regenerasi, almamater, paralimpiade]
+    answers: [regenerasi]
+    words: [regenerasi, almamater, paralimpiade]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: البلد محتاجة رياضيين قادرين ينافسوا.
+      ar: يحتاج البلد إلى رياضيين قادرين على المنافسة.
+      en: The country needs competitive athletes.
+    answer: Negara membutuhkan atlet yang berdaya saing.
+    distractors: [difabel, perintis]
+    words: [berdaya saing]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Penyandang disabilitas berhak berolahraga seperti orang lain.
+    answers_meaning:
+      ar_eg: [ذوي الإعاقة ليهم حق يلعبوا رياضة زي أي حد, الناس اللي عندهم إعاقة من حقهم يمارسوا الرياضة زي غيرهم]
+      ar: [يحقّ للأشخاص ذوي الإعاقة ممارسة الرياضة كغيرهم, لذوي الإعاقة الحقّ في الرياضة مثل الآخرين]
+      en: [People with disabilities have the right to do sport like anyone else, Disabled people are entitled to play sport like others]
+    words: [disabilitas]
+  - id: e09
+    type: speaking
+    text: Atlet difabel kita berdaya saing di Paralimpiade.
+    meaning:
+      ar_eg: رياضيينا من ذوي الهمم بينافسوا بقوة في البارالمبياد.
+      ar: رياضيّونا من ذوي الإعاقة قادرون على المنافسة في البارالمبياد.
+      en: Our athletes with disabilities are competitive at the Paralympics.
+    words: [difabel, berdaya saing, paralimpiade]
+  - id: e10
+    type: multiple_choice
+    question: Kata mana yang sopan di berita?
+    options: [difabel, perintis, almamater]
+    answer: 0
+    explain:
+      ar_eg: difabel كلمة محترمة بتقولها الأخبار.
+      ar: difabel لفظ لائق تستعمله الأخبار.
+      en: difabel is a respectful word used in the news.
+    words: [difabel, perintis, almamater, paralimpiade, disabilitas]
 dialogue:
-  title: Siaran pertama Mohamed
   lines:
     - speaker: Kaka Yohana
-      text: Siaranmu tadi bagus sekali. Banyak pendengar mengirim pesan.
-      ar_eg: نشرتك من شوية كانت حلوة قوي. مستمعين كتير بعتوا رسايل.
-      ar: كانت نشرتك قبل قليل رائعة، وأرسل كثير من المستمعين رسائل.
-      en: Your broadcast just now was great. Lots of listeners sent messages.
+      text: Mohamed, besok kita liput Om Markus. Dia perintis klub para-renang di Sorong.
+      ar_eg: يا محمد، بكرة هنغطّي عمّو ماركوس. هو اللي أسّس أول نادي سباحة لذوي الهمم في سورونج.
+      ar: يا محمد، سنغطّي غدًا العمّ ماركوس، رائد نادي السباحة البارالمبية في سورونغ.
+      en: Mohamed, tomorrow we cover Om Markus. He started the para-swimming club in Sorong.
     - speaker: Mohamed
-      text: Terima kasih, Kaka. Saya hampir lupa bilang "ujarnya" setelah kutipan.
-      ar_eg: شكرًا يا كاكا. كنت هنسى أقول «ujarnya» بعد الاقتباس.
-      ar: شكرًا يا كاكا. كدت أنسى «ujarnya» بعد الاقتباس.
-      en: Thanks, Kaka. I nearly forgot to say "ujarnya" after the quote.
+      text: Muridnya pernah ikut Paralimpiade, kan?
+      ar_eg: واحد من تلامذته شارك في البارالمبياد قبل كده، صح؟
+      ar: شارك أحد تلاميذه في البارالمبياد، أليس كذلك؟
+      en: One of his swimmers was at the Paralympics, wasn't she?
     - speaker: Kaka Yohana
-      text: Besok kamu naik kapal cepat ke Waisai, kan? Dua jam saja.
-      ar_eg: بكرة هتركب المركب السريع لوايساي، صح؟ ساعتين بس.
-      ar: ستركب غدًا القارب السريع إلى وايساي، أليس كذلك؟ ساعتان فقط.
-      en: Tomorrow you're taking the fast boat to Waisai, right? Only two hours.
+      text: Betul. Sekarang dia melatih atlet difabel muda di almamaternya.
+      ar_eg: مظبوط. ودلوقتي بتدرّب رياضيين صغيّرين من ذوي الهمم في مدرستها القديمة.
+      ar: صحيح، وهي تدرّب الآن رياضيين شبابًا من ذوي الإعاقة في مدرستها الأمّ.
+      en: Right. Now she coaches young athletes with disabilities at her old school.
     - speaker: Mohamed
-      text: Betul. Saya mau melihat terumbu karang Raja Ampat.
-      ar_eg: صح. عايز أشوف الشعاب المرجانية في راجا أمبات.
-      ar: صحيح. أريد أن أرى الشعاب المرجانية في راجا أمبات.
-      en: That's right. I want to see the coral reefs of Raja Ampat.
-souvenir:
-  id: bipa7.u01.souvenir
-  title: Pelabuhan Sorong
-  note:
-    ar_eg: سورونج هي بوّابة راجا أمبات، ومن مينائها المراكب السريعة بتوصل وايساي في حوالي ساعتين. اسمها «مدينة البترول» (Kota Minyak) علشان الهولنديين بدأوا يدوّروا على البترول هناك في التلاتينات، ومن 2022 بقت عاصمة مقاطعة بابوا الجنوبية الغربية. وبمناسبة الوحدة دي، يوم 28 أكتوبر هو Hari Sumpah Pemuda، اليوم اللي شباب من مناطق كتير حلفوا فيه سنة 1928 على وطن واحد وأمّة واحدة ولغة وحدة واحدة.
-    ar: سورونغ بوّابة راجا أمبات، ومن مينائها تبلغ القوارب السريعة وايساي في نحو ساعتين. تُلقَّب «مدينة النفط» (Kota Minyak) لأنّ الهولنديّين بدأوا التنقيب عن النفط فيها في ثلاثينيات القرن العشرين، وصارت منذ 2022 عاصمة مقاطعة بابوا الجنوبية الغربية. ويوم 28 أكتوبر هو Hari Sumpah Pemuda، ذكرى قسم شباب من مناطق شتّى عام 1928 على وطن واحد وأمّة واحدة ولغة وحدة.
-    en: Sorong is the gateway to Raja Ampat; fast boats from its harbour reach Waisai in about two hours. It is nicknamed Kota Minyak (Oil City) because the Dutch began drilling for oil there in the 1930s, and since 2022 it has been the capital of Southwest Papua province. And 28 October is Hari Sumpah Pemuda, marking the day in 1928 when young people from many regions pledged one homeland, one nation and one language of unity.
+      text: Jadi beritanya tentang regenerasi.
+      ar_eg: يبقى الخبر عن تسليم الراية للجيل الجديد.
+      ar: إذن الخبر عن تجديد الأجيال.
+      en: So the story is about the next generation.
+    - speaker: Kaka Yohana
+      text: Ya. Dan tentang bagaimana atlet kita tetap berdaya saing melawan atlet mancanegara.
+      ar_eg: أيوه. وعن إزاي رياضيينا يفضلوا قادرين ينافسوا الأجانب.
+      ar: نعم، وعن كيف يبقى رياضيّونا قادرين على منافسة الرياضيين الأجانب.
+      en: Yes. And how our athletes stay competitive against foreign ones.
+new_words:
+  - word: paralimpiade
+    pos: noun
+    ar_eg: البارالمبياد
+    ar: الألعاب البارالمبية
+    en: the Paralympics
+  - word: difabel
+    pos: noun
+    ar_eg: من ذوي الهمم
+    ar: من ذوي القدرات المختلفة
+    en: person with a disability (differently abled)
+  - word: disabilitas
+    pos: noun
+    ar_eg: إعاقة
+    ar: إعاقة
+    en: disability
+  - word: regenerasi
+    pos: noun
+    ar_eg: تجديد الأجيال / تسليم الراية
+    ar: تجديد الأجيال
+    en: regeneration, bringing up the next generation
+  - word: perintis
+    pos: noun
+    ar_eg: رائد / أول واحد فتح الطريق
+    ar: رائد، مؤسّس
+    en: pioneer, trailblazer
+  - word: almamater
+    pos: noun
+    ar_eg: الجامعة أو المدرسة اللي اتخرّجت منها
+    ar: الجامعة الأمّ (التي تخرّج فيها المرء)
+    en: alma mater
+  - word: berdaya saing
+    pos: adjective
+    ar_eg: قادر ينافس
+    ar: ذو قدرة تنافسية
+    en: competitive
+  - word: mancanegara
+    pos: noun
+    ar_eg: بلاد برّه / دول أجنبية
+    ar: البلدان الأجنبية
+    en: foreign countries, abroad
 review:
   status: draft
   verified: false

@@ -1,0 +1,169 @@
+schema: kabar.lesson/v1
+id: bipa6.u04.l11
+language: id
+title: Pemandu museum
+can_do:
+  ar_eg: تلعب دور مرشد في متحف وتشرح للزوار حاجات تاريخية من سومطرة.
+  ar: أن تؤدّي دور مرشد متحف وتشرح للزوّار قطعًا تاريخية من سومطرة.
+  en: Play a museum guide and explain historical objects from Sumatra to visitors.
+slides:
+  - title: Mari, Bapak dan Ibu
+    body:
+      ar_eg: |
+        الـ pemandu (المرشد) بيمشّي الزوار من حاجة للتانية. عبارات مفيدة:
+        - Di sebelah kiri Anda, ada … = على شمالكم فيه …
+        - Benda bersejarah ini berasal dari abad … = القطعة التاريخية دي من القرن …
+        - Konon, … = بيقولوا إن … (للحكايات اللي مش مؤكدة)
+        - Mari kita lanjut ke … = يلا نكمل على …
+        benda bersejarah = قطعة / حاجة تاريخية. وخلّي بالك: فرّق بين الحقيقة والحكاية بـ konon.
+      ar: |
+        يقود الـ pemandu (المرشد) الزوّار من قطعة إلى أخرى. عبارات مفيدة:
+        - Di sebelah kiri Anda, ada … = إلى يساركم …
+        - Benda bersejarah ini berasal dari abad … = تعود هذه القطعة التاريخية إلى القرن …
+        - Konon, … = يُروى أنّ … (للحكايات غير المؤكّدة)
+        - Mari kita lanjut ke … = لننتقل إلى …
+        benda bersejarah = قطعة تاريخية؛ وانتبه أن تفصل الحقيقة عن الحكاية بـ konon.
+      en: |
+        A pemandu (guide) leads visitors from one piece to the next. Useful lines:
+        - Di sebelah kiri Anda, ada … = On your left there is …
+        - Benda bersejarah ini berasal dari abad … = This historical object dates from the … century
+        - Konon, … = Legend has it … (for stories that aren't certain)
+        - Mari kita lanjut ke … = Let's move on to …
+        benda bersejarah = historical object. Keep fact and legend apart with konon.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: المرشد عايز يقول حكاية مش مؤكدة. يبدأ بإيه؟
+      ar: يريد المرشد رواية حكاية غير مؤكّدة. بمَ يبدأ؟
+      en: The guide wants to tell an unconfirmed story. How does he start?
+    options: [Pertama-tama, Konon, Sebagai penutup]
+    answer: 1
+    words: [konon]
+  - id: e02
+    type: listen
+    text: Di sebelah kiri Anda, ada replika prasasti dari abad ketujuh.
+    question:
+      ar_eg: النسخة اللي على الشمال من أنهي قرن؟
+      ar: من أيّ قرن النسخة التي على اليسار؟
+      en: Which century is the replica on the left from?
+    options:
+      - القرن التالت عشر.
+      - القرن العشرين.
+      - القرن السابع.
+    answer: 2
+    words: [prasasti]
+  - id: e03
+    type: fill_blank
+    sentence: ___ itu menjelaskan sejarah Sriwijaya kepada para pengunjung.
+    meaning:
+      ar_eg: المرشد شرح تاريخ سريويجايا للزوار.
+      ar: شرح المرشد تاريخ سريويجايا للزوّار.
+      en: The guide explained Srivijaya's history to the visitors.
+    options: [Pemandu, Nakhoda, Bajak laut]
+    answers: [Pemandu]
+    words: [pemandu]
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: القطعة التاريخية دي من القرن الخمستاشر.
+      ar: تعود هذه القطعة التاريخية إلى القرن الخامس عشر.
+      en: This historical object dates from the fifteenth century.
+    answer: Benda bersejarah ini berasal dari abad kelima belas.
+    distractors: [konon, armada]
+    words: [benda bersejarah, abad]
+  - id: e05
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: يلا نكمل على أوضة الأسطول.
+      ar: لننتقل إلى قاعة الأسطول.
+      en: Let's move on to the fleet room.
+    answers:
+      - Mari kita lanjut ke ruang armada.
+      - Mari kita lanjutkan ke ruang armada.
+      - Ayo kita lanjut ke ruang armada.
+    words: [armada]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة حقيقة مش حكاية؟
+      ar: أيّ جملة حقيقة لا أسطورة؟
+      en: Which sentence is a fact, not a legend?
+    options:
+      - Batu nisan ini bertuliskan tahun 696 Hijriah.
+      - Konon, kapal ini dibuat dalam satu malam.
+      - Konon, Cheng Ho bisa berbicara dengan ikan.
+    answer: 0
+    words: [batu nisan]
+  - id: e07
+    type: speaking
+    text: Selamat datang, Bapak dan Ibu. Saya pemandu Anda hari ini.
+    meaning:
+      ar_eg: أهلًا بحضراتكم. أنا المرشد بتاعكم النهارده.
+      ar: مرحبًا بكم سيّداتي سادتي، أنا مرشدكم اليوم.
+      en: Welcome, ladies and gentlemen. I'm your guide today.
+    words: [pemandu]
+  - id: e08
+    type: dictation
+    text: Benda bersejarah ini dibawa oleh saudagar dari India.
+    meaning:
+      ar_eg: القطعة التاريخية دي جابها تاجر من الهند.
+      ar: جلب هذه القطعة التاريخية تاجرٌ من الهند.
+      en: This historical object was brought by a merchant from India.
+    words: [benda bersejarah, saudagar]
+  - id: e09
+    type: fill_blank
+    sentence: Jangan menyentuh ___ di dalam lemari kaca, ya.
+    meaning:
+      ar_eg: ماتلمسوش الحاجات التاريخية اللي في الدولاب الإزاز.
+      ar: لا تلمسوا القطع التاريخية داخل الخزانة الزجاجية.
+      en: Please don't touch the historical objects in the glass case.
+    options: [benda bersejarah, angin muson, pemandu]
+    answers: [benda bersejarah]
+    words: [benda bersejarah]
+  - id: e10
+    type: speaking
+    text: Kata pemandu, ini muatan kapal dagang kuno dari Tiongkok.
+    meaning:
+      ar_eg: المرشد بيقول إن دي حمولة مركب تجارة قديم من الصين.
+      ar: يقول المرشد إنّ هذه حمولة سفينة تجارية قديمة من الصين.
+      en: The guide says this is an old trading ship's cargo from China.
+    words: [pemandu, muatan, kuno]
+dialogue:
+  title: Mohamed menjadi pemandu
+  lines:
+    - speaker: Kak Dewi
+      text: Hari ini kamu jadi pemandu, Mohamed. Saya pengunjungnya.
+      ar_eg: النهارده إنت المرشد يا محمد. وأنا الزايرة.
+      ar: اليوم أنت المرشد يا محمد، وأنا الزائرة.
+      en: Today you're the guide, Mohamed. I'm the visitor.
+    - speaker: Mohamed
+      text: Selamat datang, Ibu. Di sebelah kiri Anda, ada replika kapal Borobudur.
+      ar_eg: أهلًا يا مدام. على شمالك فيه نسخة من مركب بوروبودور.
+      ar: مرحبًا سيّدتي. إلى يسارك نسخة من سفينة بوروبودور.
+      en: Welcome, madam. On your left is a replica of the Borobudur ship.
+    - speaker: Kak Dewi
+      text: Wah. Benda bersejarah di lemari itu apa?
+      ar_eg: واو. والحاجة التاريخية اللي في الدولاب دي إيه؟
+      ar: رائع. وما القطعة التاريخية في تلك الخزانة؟
+      en: Wow. What's the historical object in that case?
+    - speaker: Mohamed
+      text: Itu batu nisan dari Pasai. Konon, pemahatnya datang dari Gujarat.
+      ar_eg: ده شاهد قبر من باساي. بيقولوا إن اللي نحته جه من جوجارات.
+      ar: ذلك شاهد قبر من باساي، ويُروى أنّ ناحته جاء من غوجارات.
+      en: That's a gravestone from Pasai. Legend has it the carver came from Gujarat.
+new_words:
+  - word: pemandu
+    pos: noun
+    ar_eg: مرشد
+    ar: مرشد، دليل
+    en: guide
+  - word: benda bersejarah
+    pos: noun
+    ar_eg: قطعة تاريخية
+    ar: قطعة أثرية
+    en: historical object, artefact
+review:
+  status: draft
+  verified: false

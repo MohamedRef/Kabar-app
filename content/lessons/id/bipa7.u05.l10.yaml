@@ -1,206 +1,243 @@
 schema: kabar.lesson/v1
 id: bipa7.u05.l10
 language: id
-title: Ulangan Unit 5
+title: Jejak purbakala
 can_do:
-  ar_eg: تكتب تاريخ متماسك من غير تكرار وتربط المحطات ببعض.
-  ar: أن تكتب تاريخًا متماسكًا بلا تكرار وتربط محطّاته.
-  en: Write a cohesive history without repetition, linking each milestone.
+  ar_eg: توصف آثار وموقع حفريات وتسأل الأسئلة الصح عن مصدر قديم.
+  ar: أن تصف آثارًا وموقع تنقيب وتطرح الأسئلة الصحيحة عن مصدر قديم.
+  en: Describe ancient remains and a dig site, and ask the right questions about an old source.
+slides:
+  - title: Sumber sejarah tertua
+    body:
+      ar_eg: |
+        قبل الكتابة كان فيه zaman prasejarah (ما قبل التاريخ).
+        في ترينيل وسانجيران في جاوة لقوا عضم manusia purba (الإنسان البدائي): Homo erectus.
+        رسومات الكهوف في ماروس بسولاويسي من أقدم الرسومات في العالم.
+        وكلمة purbakala = العصور القديمة وآثارها.
+        في بوروبودور آلاف الـ relief (نقوش بارزة) وتماثيل arca لبوذا.
+        naskah kuno = مخطوطة قديمة على ورق نخل (lontar). epigrafi = علم قراءة النقوش.
+        قبل ما تستخدم مصدر، اسأل: هل هو otentik (أصلي)؟
+      ar: |
+        قبل الكتابة كان zaman prasejarah (عصر ما قبل التاريخ).
+        في ترينيل وسانغيران بجاوة عُثر على عظام manusia purba: الإنسان المنتصب.
+        ورسوم الكهوف في ماروس بسولاويسي من أقدم الرسوم في العالم.
+        وكلمة purbakala تعني العصور القديمة وآثارها.
+        في بوروبودور آلاف الـ relief (النقوش البارزة) وتماثيل arca لبوذا.
+        naskah kuno = مخطوط قديم على سعف النخيل (lontar). epigrafi = علم النقوش.
+        وقبل الاعتماد على مصدر اسأل: أهو otentik (أصيل)؟
+      en: |
+        Before writing came the zaman prasejarah (prehistory).
+        At Trinil and Sangiran in Java, bones of manusia purba (early humans) were found: Homo erectus.
+        The cave paintings of Maros in Sulawesi are among the oldest in the world.
+        purbakala means antiquity and its remains.
+        Borobudur has thousands of relief panels and arca (statues) of the Buddha.
+        naskah kuno = an ancient manuscript, often on palm leaf (lontar). epigrafi = the study of inscriptions.
+        Before using a source, ask: is it otentik (authentic)?
+    examples:
+      - text: Fosil manusia purba ditemukan di Sangiran.
+        ar_eg: اتلقت حفريات إنسان بدائي في سانجيران.
+        ar: عُثر على أحافير الإنسان القديم في سانغيران.
+        en: Fossils of early humans were found at Sangiran.
+      - text: Relief di dinding candi menceritakan kehidupan Buddha.
+        ar_eg: النقوش اللي على حيطة المعبد بتحكي حياة بوذا.
+        ar: تروي النقوش على جدران المعبد حياة بوذا.
+        en: The reliefs on the temple walls tell the life of the Buddha.
+      - text: Ahli epigrafi membaca prasasti itu huruf demi huruf.
+        ar_eg: عالم النقوش قرا النقش حرف حرف.
+        ar: قرأ عالم النقوش الكتابة حرفًا حرفًا.
+        en: The epigraphist read the inscription letter by letter.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: kohesi
-        ar_eg: تماسك النص
-        ar: التماسك
-        en: cohesion
-      - text: pengakuan
-        ar_eg: اعتراف
-        ar: اعتراف
-        en: recognition
-      - text: reformasi
-        ar_eg: إصلاح
-        ar: إصلاح
-        en: reform
-      - text: penjajahan
-        ar_eg: استعمار
-        ar: استعمار
-        en: colonial rule
-      - text: linimasa
-        ar_eg: خط زمني
-        ar: خطّ زمني
-        en: timeline
-    words: [kohesi, pengakuan, reformasi, penjajahan, linimasa]
+      - text: purbakala
+        ar_eg: العصور القديمة / الآثار
+        ar: العصور القديمة، الآثار
+        en: antiquity
+      - text: prasejarah
+        ar_eg: ما قبل التاريخ
+        ar: ما قبل التاريخ
+        en: prehistory
+      - text: manusia purba
+        ar_eg: الإنسان البدائي
+        ar: الإنسان القديم
+        en: early human, hominin
+      - text: arca
+        ar_eg: تمثال (حجر قديم)
+        ar: تمثال
+        en: statue (ancient)
+    words: [purbakala, prasejarah, manusia purba, arca]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: مين اللي راح القاهرة سنة 1947 ومضى معاهدة الصداقة؟
-      ar: من ذهب إلى القاهرة عام 1947 ووقّع معاهدة الصداقة؟
-      en: Who went to Cairo in 1947 and signed the friendship treaty?
-    options:
-      - مبعوث الجامعة العربية.
-      - وفد بقيادة الحاج أجوس سالم.
-      - طلبة جامعة تريساكتي.
-    answer: 1
-    words: [delegasi, utusan, Liga Arab]
-  - id: e03
-    type: fill_blank
-    sentence: Sukarno menjadi presiden, Hatta wakil presiden. Kata "menjadi" dihilangkan karena ___.
-    meaning:
-      ar_eg: سوكارنو بقى رئيس، وهاتا نائب رئيس. كلمة «menjadi» اتشالت بسبب الحذف.
-      ar: صار سوكارنو رئيسًا، وهاتا نائبًا له، وحُذفت «menjadi» بالحذف.
-      en: Sukarno became president, Hatta vice-president. "Menjadi" is dropped because of ellipsis.
-    options: [pelesapan, substitusi, tuntutan]
-    answers: [pelesapan]
-    words: [pelesapan, substitusi, tuntutan]
-  - id: e04
-    type: listen
-    text: Mesir termasuk negara pertama yang mengakui kemerdekaan Indonesia.
-    question:
-      ar_eg: الجملة دي بتقول إيه عن مصر؟
-      ar: ماذا تقول الجملة عن مصر؟
-      en: What does the sentence say about Egypt?
-    options:
-      - إنها من أوائل الدول اللي اعترفت باستقلال إندونيسيا.
-      - إنها استعمرت إندونيسيا.
-      - إنها رفضت تعترف.
-    answer: 0
-    words: [mengakui]
-  - id: e05
-    type: build_sentence
-    source:
-      ar_eg: كل فترة ليها حكومتها.
-      ar: لكلّ فترة حكومتها.
-      en: Each period has its own government.
-    answer: Masing-masing periode punya pemerintahannya sendiri.
-    distractors: [era, tersebut]
-    words: [masing-masing, periode, pemerintahan]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إيه اللي خلّى الطلبة يتظاهروا سنة 1998؟
-      ar: ما الذي دفع الطلّاب إلى التظاهر عام 1998؟
-      en: What drove the students to protest in 1998?
-    options:
-      - إعلان الاستقلال.
-      - الاحتلال الياباني.
-      - الأزمة المالية ومطلب الإصلاح.
-    answer: 2
-    words: [krisis moneter, demonstrasi]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الرئيس تنحّى بعد مظاهرات كبيرة.
-      ar: تنحّى الرئيس بعد مظاهرات كبرى.
-      en: The president stepped down after mass demonstrations.
-    answers:
-      - Presiden mundur setelah demonstrasi besar.
-      - Presiden itu mundur setelah demonstrasi besar.
-      - Presiden mundur setelah demonstrasi besar-besaran.
-      - Setelah demonstrasi besar, presiden mundur.
-    words: [mundur, demonstrasi]
-  - id: e08
-    type: speaking
-    text: Proklamasi 1945 dan Reformasi 1998 adalah dua tonggak sejarah.
-    meaning:
-      ar_eg: إعلان 1945 وإصلاح 1998 علامتين فارقتين في التاريخ.
-      ar: إعلان 1945 وإصلاح 1998 معلمان تاريخيان فارقان.
-      en: The 1945 proclamation and the 1998 Reformasi are two historic milestones.
-    words: [proklamasi, tonggak sejarah]
-  - id: e09
-    type: dictation
-    text: Era Orde Baru tersebut berlangsung lebih dari tiga puluh tahun.
-    meaning:
-      ar_eg: عصر النظام الجديد ده استمر أكتر من تلاتين سنة.
-      ar: دام عهد النظام الجديد المذكور أكثر من ثلاثين عامًا.
-      en: That New Order era lasted more than thirty years.
-    words: [era, Orde Baru, tersebut]
-  - id: e10
-    type: translate
-    direction: from_target
-    source_text: Pengakuan Mesir dan Liga Arab membuka jalan bagi diplomasi Indonesia.
-    answers_meaning:
-      ar_eg:
-        - اعتراف مصر والجامعة العربية فتح الطريق للدبلوماسية الإندونيسية.
-        - اعتراف مصر والجامعة العربية مهّد للدبلوماسية الإندونيسية.
-      ar:
-        - فتح اعتراف مصر والجامعة العربية الطريق أمام الدبلوماسية الإندونيسية.
-        - مهّد اعتراف مصر والجامعة العربية لانطلاق الدبلوماسية الإندونيسية.
-      en:
-        - Recognition from Egypt and the Arab League opened the way for Indonesian diplomacy.
-        - Egypt's and the Arab League's recognition paved the way for Indonesia's diplomacy.
-    words: [pengakuan, Liga Arab]
-  - id: e11
     type: match_pairs
     pairs:
-      - text: solidaritas
-        ar_eg: تضامن
-        ar: تضامن
-        en: solidarity
-      - text: perlawanan
-        ar_eg: مقاومة
-        ar: مقاومة
-        en: resistance
-      - text: gugur
-        ar_eg: مات شهيد
-        ar: استُشهد
-        en: to fall (for one's country)
-      - text: sejarawan
-        ar_eg: مؤرّخ
-        ar: مؤرّخ
-        en: historian
-      - text: julukan
-        ar_eg: لقب
-        ar: لقب
-        en: nickname
-    words: [solidaritas, perlawanan, gugur, sejarawan, julukan]
-  - id: e12
+      - text: relief
+        ar_eg: نقش بارز على الحجر
+        ar: نقش بارز
+        en: relief carving
+      - text: naskah kuno
+        ar_eg: مخطوطة قديمة
+        ar: مخطوط قديم
+        en: ancient manuscript
+      - text: epigrafi
+        ar_eg: علم قراءة النقوش
+        ar: علم النقوش
+        en: epigraphy
+      - text: otentik
+        ar_eg: أصلي مش مزوّر
+        ar: أصيل، غير مزوّر
+        en: authentic
+    words: [relief, naskah kuno, epigrafi, otentik]
+  - id: e03
+    type: listen
+    text: Naskah kuno ini ditulis di atas daun lontar.
+    question:
+      ar_eg: إيه اللي مكتوب على ورق النخل؟
+      ar: ما المكتوب على سعف النخيل؟
+      en: What's written on palm leaves?
+    options: [مخطوطة قديمة, تمثال, نقش بارز]
+    answer: 0
+    meaning:
+      ar_eg: المخطوطة القديمة دي مكتوبة على ورق نخل.
+      ar: كُتب هذا المخطوط القديم على سعف النخيل.
+      en: This ancient manuscript was written on palm leaves.
+    words: [naskah kuno]
+  - id: e04
+    type: fill_blank
+    sentence: Lukisan gua di Maros berasal dari zaman ___.
+    meaning:
+      ar_eg: رسومات كهف ماروس من عصر ___.
+      ar: تعود رسوم كهف ماروس إلى عصر ___.
+      en: The Maros cave paintings date from ___.
+    options: [prasejarah, otentik, epigrafi]
+    answers: [prasejarah]
+    words: [prasejarah, otentik, epigrafi]
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: رتّب صح على الـ linimasa. أنهي حدث جه الأول؟
-      ar: رتّب على الـ linimasa. أيّ حدث جاء أوّلًا؟
-      en: On the linimasa, which event came first?
-    options:
-      - KAA di Bandung.
-      - Perlawanan Sultan Hasanuddin melawan VOC.
-      - Martha Christina Tiahahu berperang bersama Pattimura.
+      ar_eg: ليه لازم نسأل إذا المصدر «otentik»؟
+      ar: لماذا نسأل إن كان المصدر «otentik»؟
+      en: Why ask whether a source is 'otentik'?
+    options: [Karena sumber palsu bisa menyesatkan sejarah., Karena semua sumber baru., Karena arca tidak bisa dibaca.]
+    answer: 0
+    explain:
+      ar_eg: المصدر المزوّر ممكن يضلّل التاريخ.
+      ar: قد يضلّل المصدر المزوّر التاريخ.
+      en: A fake source can mislead history.
+    words: [otentik, arca]
+  - id: e06
+    type: fill_blank
+    sentence: Arca dan relief itu dijaga oleh dinas ___.
+    meaning:
+      ar_eg: التماثيل والنقوش دي بتحميها إدارة الـ ___.
+      ar: تحمي إدارة ___ تلك التماثيل والنقوش.
+      en: Those statues and reliefs are protected by the ___ office.
+    options: [purbakala, manusia purba, naskah kuno]
+    answers: [purbakala]
+    words: [purbakala, manusia purba, naskah kuno, arca, relief]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: عالم النقوش بيقرا الحروف القديمة.
+      ar: يقرأ عالم النقوش الحروف القديمة.
+      en: Epigraphy reads the old letters.
+    answer: Ahli epigrafi membaca huruf-huruf kuno.
+    distractors: [relief, purbakala]
+    words: [epigrafi]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Manusia purba hidup di Jawa jauh sebelum zaman sejarah.
+    answers_meaning:
+      ar_eg: [الإنسان البدائي عاش في جاوة قبل عصر التاريخ بكتير, الإنسان القديم كان عايش في جاوة قبل التاريخ المكتوب بكتير]
+      ar: [عاش الإنسان القديم في جاوة قبل العصر التاريخي بزمن طويل, سكن الإنسان القديم جاوة قبل عصور التاريخ بكثير]
+      en: [Early humans lived in Java long before recorded history, Hominins lived in Java long before the historical era]
+    words: [manusia purba]
+  - id: e09
+    type: speaking
+    text: Relief Borobudur adalah peninggalan purbakala yang otentik.
+    meaning:
+      ar_eg: نقوش بوروبودور أثر قديم أصلي.
+      ar: نقوش بوروبودور أثر قديم أصيل.
+      en: Borobudur's reliefs are an authentic ancient legacy.
+    words: [relief, otentik, purbakala]
+  - id: e10
+    type: multiple_choice
+    question: Apa yang ditemukan di Trinil dan Sangiran?
+    options: [Naskah kuno berbahasa Arab., Fosil manusia purba., Arca emas VOC.]
     answer: 1
     explain:
-      ar_eg: حسن الدين (١٦٦٠ـات)، بعدين مارثا (١٨١٧)، وبعدين باندونج (١٩٥٥).
-      ar: حسن الدين (ستّينيّات القرن السابع عشر)، ثمّ مارثا (١٨١٧)، ثمّ باندونغ (١٩٥٥).
-      en: Hasanuddin (1660s), then Martha (1817), then Bandung (1955).
-    words: [linimasa, VOC, berperang, konferensi]
+      ar_eg: في ترينيل وسانجيران لقوا عضم الإنسان البدائي.
+      ar: في ترينيل وسانغيران عُثر على أحافير الإنسان القديم.
+      en: Early human fossils were found there.
+    words: [manusia purba, naskah kuno, arca, prasejarah, epigrafi]
 dialogue:
-  title: Di puncak Wayag
   lines:
     - speaker: Pak Hasan
-      text: Dari sini kita melihat ratusan pulau karst. Indah, bukan?
-      ar_eg: من هنا بنشوف مئات الجزر الجيرية. حلوة، مش كده؟
-      ar: من هنا نرى مئات الجزر الكلسية. جميلة، أليس كذلك؟
-      en: From here we see hundreds of karst islands. Beautiful, isn't it?
+      text: Minggu depan kita ke Leang-Leang di Maros. Ada lukisan prasejarah di sana.
+      ar_eg: الأسبوع الجاي هنروح ليانج ليانج في ماروس. فيه رسومات ما قبل التاريخ هناك.
+      ar: سنذهب الأسبوع المقبل إلى ليانغ ليانغ في ماروس، ففيها رسوم من عصور ما قبل التاريخ.
+      en: Next week we're going to Leang-Leang in Maros. There are prehistoric paintings there.
     - speaker: Mohamed
-      text: Indah sekali. Seperti linimasa, setiap pulau punya ceritanya sendiri.
-      ar_eg: حلوة قوي. زي الخط الزمني، كل جزيرة ليها حكايتها.
-      ar: جميلة جدًّا. وكالخطّ الزمني، لكلّ جزيرة حكايتها.
-      en: Very. Like a timeline, every island has its own story.
+      text: Siapa yang membuatnya, Pak? Manusia purba?
+      ar_eg: مين اللي رسمها يا أستاذ؟ الإنسان البدائي؟
+      ar: من رسمها يا أستاذ؟ الإنسان القديم؟
+      en: Who made them, sir? Early humans?
     - speaker: Pak Hasan
-      text: Kamu sudah jadi sejarawan kecil. Ke mana kamu sesudah ini?
-      ar_eg: إنت بقيت مؤرّخ صغير. رايح فين بعد كده؟
-      ar: صرتَ مؤرّخًا صغيرًا. إلى أين بعد هذا؟
-      en: You've become a little historian. Where to after this?
+      text: Manusia modern awal, puluhan ribu tahun lalu. Ada gambar tangan dan babi.
+      ar_eg: الإنسان الحديث الأول، من عشرات آلاف السنين. فيه رسم إيدين وخنازير.
+      ar: الإنسان الحديث الأوّل قبل عشرات آلاف السنين، وفيها رسوم أيدٍ وخنازير.
+      en: Early modern humans, tens of thousands of years ago. There are hand stencils and pigs.
     - speaker: Mohamed
-      text: Ke Misool. Saya mau belajar tentang media sosial dan hoaks.
-      ar_eg: على ميسول. عايز أتعلّم عن السوشيال ميديا والأخبار الكدب.
-      ar: إلى ميسول، أريد أن أتعلّم عن وسائل التواصل والأخبار الكاذبة.
-      en: To Misool. I want to learn about social media and hoaxes.
-souvenir:
-  id: bipa7.u05.souvenir
-  title: Pulau-pulau karst Wayag
-  note:
-    ar_eg: وايّاج مجموعة جزر جيرية (karst) في شمال راجا أمبات، شكلها زي قِباب خضرا طالعة من مية فيروزي، وغالبًا مفيهاش سكان. ومن فوق التل بتتشاف واحدة من أشهر المناظر في إندونيسيا. وبمناسبة الوحدة دي، تاريخ إندونيسيا بيمشي من محطات تجارة الشركة الهولندية (VOC) لاستقلال 1945 لإصلاح 1998. ومصر من أوائل الدول اللي اعترفت بإندونيسيا، بحكم الأمر الواقع سنة 1946 على حسب مصادر إندونيسية كتير، وبمعاهدة صداقة اتمضت في القاهرة سنة 1947.
-    ar: وايّاغ مجموعة جزر كلسية (karst) في شمال راجا أمبات، تبدو كقِباب خضراء تنبثق من ماء فيروزي، وهي غير مأهولة في الغالب، ومن أعلى تلّها يُرى أحد أشهر المشاهد في إندونيسيا. ويمتدّ تاريخ إندونيسيا من مراكز تجارة الشركة الهولندية (VOC) إلى استقلال 1945 فإصلاح 1998. وكانت مصر من أوائل الدول المعترفة بإندونيسيا، اعترافًا واقعيًّا عام 1946 بحسب مصادر إندونيسية كثيرة، ثمّ بمعاهدة صداقة وُقّعت في القاهرة عام 1947.
-    en: Wayag is a cluster of karst islands in northern Raja Ampat, green domes rising from turquoise water, mostly uninhabited; the view from its summit is one of Indonesia's most famous. Indonesia's history runs from the VOC trading posts to independence in 1945 and Reformasi in 1998. Egypt was among the first countries to recognise Indonesia, de facto in 1946 according to many Indonesian sources, then through a friendship treaty signed in Cairo in 1947.
+      text: Bagaimana kita tahu lukisannya otentik?
+      ar_eg: نعرف منين إن الرسومات أصلية؟
+      ar: كيف نعرف أنّ الرسوم أصيلة؟
+      en: How do we know the paintings are authentic?
+    - speaker: Pak Hasan
+      text: Para ahli purbakala mengukur usia lapisan batu di atasnya.
+      ar_eg: علماء الآثار بيقيسوا عمر طبقة الحجر اللي فوقها.
+      ar: يقيس علماء الآثار عمر طبقة الصخر التي تعلوها.
+      en: Archaeologists date the layer of rock on top of them.
+new_words:
+  - word: purbakala
+    pos: noun
+    ar_eg: العصور القديمة / الآثار
+    ar: العصور القديمة، الآثار
+    en: antiquity
+  - word: prasejarah
+    pos: noun
+    ar_eg: ما قبل التاريخ
+    ar: ما قبل التاريخ
+    en: prehistory
+  - word: manusia purba
+    pos: noun
+    ar_eg: الإنسان البدائي
+    ar: الإنسان القديم
+    en: early human, hominin
+  - word: arca
+    pos: noun
+    ar_eg: تمثال (حجر قديم)
+    ar: تمثال
+    en: statue (ancient)
+  - word: relief
+    pos: noun
+    ar_eg: نقش بارز على الحجر
+    ar: نقش بارز
+    en: relief carving
+  - word: naskah kuno
+    pos: noun
+    ar_eg: مخطوطة قديمة
+    ar: مخطوط قديم
+    en: ancient manuscript
+  - word: epigrafi
+    pos: noun
+    ar_eg: علم قراءة النقوش
+    ar: علم النقوش
+    en: epigraphy
+  - word: otentik
+    pos: adjective
+    ar_eg: أصلي مش مزوّر
+    ar: أصيل، غير مزوّر
+    en: authentic
 review:
   status: draft
   verified: false

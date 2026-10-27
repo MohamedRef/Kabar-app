@@ -1,39 +1,39 @@
 schema: kabar.lesson/v1
 id: bipa2.u05.l06
 language: id
-title: Kompor, panci, kulkas
+title: Kulkas Bu Yanti
 can_do:
-  ar_eg: 'تتكلم في المطبخ: البوتاجاز والحلة والتلاجة، والأكل ني ولا مستوي ولا بايت.'
-  ar: 'أن تتحدث في المطبخ: الموقد والقدر والثلاجة، والطعام نيّء أو ناضج أو فاسد.'
-  en: 'Talk in the kitchen: stove, pot and fridge, and whether food is raw, cooked or off.'
+  ar_eg: 'تتكلم في المطبخ: إيه اللي في التلاجة (جبنة وعسل وخضار)، والبوتاجاز، والأكل ني ولا بايت.'
+  ar: 'أن تتحدث في المطبخ: ما في الثلاجة (جبن وعسل وخضار)، والموقد، والطعام نيّء أو فاسد.'
+  en: 'Talk in the kitchen: what''s in the fridge (cheese, honey, vegetables), the stove, and whether food is raw or off.'
 slides:
   - title: Di dapur
     body:
       ar_eg: |
-        kompor = بوتاجاز، panci = حلة، kulkas = تلاجة، mangkuk = سلطانية (semangkuk sup).
-        mentah = ني، matang = مستوي (والفاكهة matang = مستوية).
-        basi = بايت وريحته وحشة. rasa = طعم: Rasanya enak!
+        kompor = بوتاجاز، kulkas = تلاجة.
+        sayur = خضار. keju = جبنة، madu = عسل (teh madu)، permen = بونبوني.
+        mentah = ني (عكس matang). basi = بايت وريحته وحشة.
       ar: |
-        kompor = موقد، panci = قدر، kulkas = ثلاجة، mangkuk = وعاء عميق (semangkuk sup).
-        mentah = نيّء، matang = ناضج (مطهو، والفاكهة matang = ناضجة).
-        basi = فاسد (بائت). rasa = طعم: Rasanya enak!
+        kompor = موقد، kulkas = ثلاجة.
+        sayur = خضار. keju = جبن، madu = عسل (teh madu)، permen = حلوى (سكاكر).
+        mentah = نيّء (ضدّ matang). basi = فاسد (بائت).
       en: |
-        kompor = stove, panci = pot, kulkas = fridge, mangkuk = bowl (semangkuk sup).
-        mentah = raw, matang = cooked, ripe.
-        basi = stale, gone off. rasa = taste: Rasanya enak!
+        kompor = stove, kulkas = fridge.
+        sayur = vegetables. keju = cheese, madu = honey (teh madu), permen = sweets, candy.
+        mentah = raw (the opposite of matang). basi = stale, gone off.
     examples:
-      - text: Panci di atas kompor masih panas.
-        ar_eg: الحلة اللي على البوتاجاز لسه سخنة.
-        ar: القدر فوق الموقد ما زال ساخنًا.
-        en: The pot on the stove is still hot.
-      - text: Dagingnya masih mentah, belum matang.
-        ar_eg: اللحمة لسه نية، لسه ما استوتش.
-        ar: اللحم ما زال نيئًا، لم ينضج بعد.
-        en: The meat is still raw, not cooked yet.
-      - text: Rasanya enak sekali!
-        ar_eg: طعمه حلو أوي!
-        ar: طعمه لذيذ جدًا!
-        en: It tastes great!
+      - text: Keju dan sayur ada di kulkas.
+        ar_eg: الجبنة والخضار في التلاجة.
+        ar: الجبن والخضار في الثلاجة.
+        en: The cheese and vegetables are in the fridge.
+      - text: Dagingnya masih mentah.
+        ar_eg: اللحمة لسه نية.
+        ar: اللحم ما زال نيئًا.
+        en: The meat is still raw.
+      - text: Nasinya sudah basi.
+        ar_eg: الرز باظ.
+        ar: فسد الأرز.
+        en: The rice has gone off.
 exercises:
   - id: e01
     type: match_pairs
@@ -42,39 +42,39 @@ exercises:
         ar_eg: بوتاجاز
         ar: موقد
         en: stove
-      - text: panci
-        ar_eg: حلة
-        ar: قدر
-        en: pot
       - text: kulkas
         ar_eg: تلاجة
         ar: ثلاجة
         en: fridge
-      - text: mangkuk
-        ar_eg: سلطانية
-        ar: وعاء
-        en: bowl
-    words: [kompor, panci, kulkas, mangkuk]
+      - text: sayur
+        ar_eg: خضار
+        ar: خضار
+        en: vegetables
+      - text: keju
+        ar_eg: جبنة
+        ar: جبن
+        en: cheese
+    words: [kompor, kulkas, sayur, keju]
   - id: e02
     type: match_pairs
     pairs:
+      - text: madu
+        ar_eg: عسل
+        ar: عسل
+        en: honey
+      - text: permen
+        ar_eg: بونبوني
+        ar: حلوى
+        en: sweets
       - text: mentah
         ar_eg: ني
         ar: نيّء
         en: raw
-      - text: matang
-        ar_eg: مستوي
-        ar: ناضج
-        en: cooked, ripe
       - text: basi
         ar_eg: بايت
         ar: فاسد
         en: gone off
-      - text: rasa
-        ar_eg: طعم
-        ar: طعم
-        en: taste
-    words: [mentah, matang, basi, rasa]
+    words: [madu, permen, mentah, basi]
   - id: e03
     type: listen
     text: Nasinya sudah basi. Kenapa tidak di kulkas?
@@ -91,46 +91,46 @@ exercises:
     words: [basi, kulkas]
   - id: e04
     type: fill_blank
-    sentence: Ayamnya belum ___, masih merah di dalam.
+    sentence: Roti ini pakai ___ dan tomat.
     meaning:
-      ar_eg: الفرخة لسه ما ___، لسه حمرا من جوه.
-      ar: الدجاج لم ___ بعد، ما زال أحمر من الداخل.
-      en: The chicken isn't ___ yet; it's still red inside.
-    options: [matang, basi, kulkas]
-    answers: [matang]
-    words: [matang, basi, kulkas]
+      ar_eg: العيش ده بـ ___ وطماطم.
+      ar: هذا الخبز مع ___ وطماطم.
+      en: This bread comes with ___ and tomato.
+    options: [keju, permen, madu]
+    answers: [keju]
+    words: [keju, permen, madu]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: فين بنحط اللبن عشان يفضل ساقع؟
-      ar: أين نضع الحليب ليبقى باردًا؟
-      en: Where do we keep milk cold?
-    options: [kulkas, kompor, panci]
+      ar_eg: النحل بيعمل إيه؟
+      ar: ماذا يصنع النحل؟
+      en: What do bees make?
+    options: [madu, keju, sayur]
     answer: 0
     explain:
-      ar_eg: kulkas = تلاجة.
-      ar: kulkas = ثلاجة.
-      en: kulkas = fridge.
-    words: [kulkas, kompor, panci]
+      ar_eg: madu = عسل.
+      ar: madu = عسل.
+      en: madu = honey.
+    words: [madu, keju, sayur]
   - id: e06
     type: fill_blank
-    sentence: Saya suka ___ manis.
+    sentence: Dagingnya masih ___, belum matang.
     meaning:
-      ar_eg: بحب الـ ___ المسكّر.
-      ar: أحبّ ___ الحلو.
-      en: I like a sweet ___.
-    options: [rasa, mangkuk, kompor]
-    answers: [rasa]
-    words: [rasa, mangkuk, kompor]
+      ar_eg: اللحمة لسه ___، لسه ما استوتش.
+      ar: اللحم ما زال ___، لم ينضج بعد.
+      en: The meat is still ___, not cooked yet.
+    options: [mentah, basi, kompor]
+    answers: [mentah]
+    words: [mentah, basi, kompor]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: حط الشوربة في السلطانية.
-      ar: ضع الحساء في الوعاء.
-      en: Put the soup in the bowl.
-    answer: Masukkan sup ke dalam mangkuk.
-    distractors: [panci, kompor]
-    words: [mangkuk, panci]
+      ar_eg: الحلة اللي على البوتاجاز لسه سخنة.
+      ar: القدر فوق الموقد ما زال ساخنًا.
+      en: The pot on the stove is still hot.
+    answer: Panci di atas kompor masih panas.
+    distractors: [kulkas, sayur]
+    words: [kompor]
   - id: e08
     type: translate
     direction: from_target
@@ -139,98 +139,101 @@ exercises:
       ar_eg: [بحب الخضار ني. طعمه فريش, بحب الخضار النية. طعمها منعش]
       ar: [أحبّ الخضار نيئة. طعمها منعش]
       en: [I like raw vegetables. They taste fresh, I like vegetables raw. They taste fresh]
-    words: [mentah, rasa]
+    words: [sayur, mentah]
   - id: e09
     type: speaking
-    text: Panci di atas kompor masih panas.
+    text: Adik saya suka permen dan teh madu.
     meaning:
-      ar_eg: الحلة اللي على البوتاجاز لسه سخنة.
-      ar: القدر فوق الموقد ما زال ساخنًا.
-      en: The pot on the stove is still hot.
-    words: [panci, kompor]
+      ar_eg: أخويا الصغير بيحب البونبوني والشاي بالعسل.
+      ar: يحبّ أخي الصغير الحلوى والشاي بالعسل.
+      en: My little brother likes sweets and tea with honey.
+    words: [permen, madu]
   - id: e10
     type: multiple_choice
-    question: Mangga ini kuning dan manis. Sudah ___.
-    options: [matang, mentah, basi]
+    question_meaning:
+      ar_eg: فين بنحط اللبن عشان يفضل ساقع؟
+      ar: أين نضع الحليب ليبقى باردًا؟
+      en: Where do we keep milk cold?
+    options: [kulkas, kompor, keju]
     answer: 0
     explain:
-      ar_eg: 'المانجة الصفرا المسكّرة مستوية: matang.'
-      ar: 'المانجو الصفراء الحلوة ناضجة: matang.'
-      en: 'A yellow, sweet mango is ripe: matang.'
-    words: [matang, mentah, basi]
+      ar_eg: kulkas = تلاجة.
+      ar: kulkas = ثلاجة.
+      en: kulkas = fridge.
+    words: [kulkas, kompor]
 dialogue:
   lines:
     - speaker: Bu Yanti
-      text: Mohamed, tolong ambil telur di kulkas.
-      ar_eg: يا محمد، هات البيض من التلاجة لو سمحت.
-      ar: يا محمد، أحضر البيض من الثلاجة من فضلك.
-      en: Mohamed, could you get the eggs from the fridge?
+      text: Mohamed, ada keju di kulkas?
+      ar_eg: يا محمد، فيه جبنة في التلاجة؟
+      ar: يا محمد، هل في الثلاجة جبن؟
+      en: Mohamed, is there cheese in the fridge?
     - speaker: Mohamed
-      text: Ini, Bu. Mau masak apa?
-      ar_eg: اتفضلي. هتطبخي إيه؟
-      ar: تفضّلي. ماذا ستطبخين؟
-      en: Here you go. What are you cooking?
+      text: Ada, Bu. Ada sayur dan madu juga.
+      ar_eg: أيوه يا طنط. وفيه خضار وعسل كمان.
+      ar: نعم يا سيدتي، وفيها خضار وعسل أيضًا.
+      en: Yes. There are vegetables and honey too.
     - speaker: Bu Yanti
-      text: Nasi goreng. Pancinya di atas kompor.
-      ar_eg: رز مقلي. الحلة على البوتاجاز.
-      ar: أرز مقلي. القدر فوق الموقد.
-      en: Fried rice. The pot's on the stove.
+      text: Dan nasi kemarin? Sudah basi?
+      ar_eg: ورز امبارح؟ باظ؟
+      ar: وأرز الأمس؟ هل فسد؟
+      en: And yesterday's rice? Has it gone off?
     - speaker: Mohamed
-      text: Nasi kemarin tidak basi, Bu?
-      ar_eg: رز امبارح مش بايت؟
-      ar: أليس أرز الأمس فاسدًا؟
-      en: Hasn't yesterday's rice gone off?
+      text: Ya, sudah basi, Bu.
+      ar_eg: أيوه، باظ يا طنط.
+      ar: نعم، فسد يا سيدتي.
+      en: Yes, it's gone off.
     - speaker: Bu Yanti
-      text: Tidak. Coba rasanya... enak!
-      ar_eg: لأ. دوق طعمه... حلو!
-      ar: لا. تذوّق طعمه... لذيذ!
-      en: No. Taste it... delicious!
+      text: Tidak apa-apa. Dagingnya masih mentah. Saya memasak di kompor.
+      ar_eg: مش مشكلة. اللحمة لسه نية. هطبخها على البوتاجاز.
+      ar: لا بأس. اللحم ما زال نيئًا، سأطبخه على الموقد.
+      en: Never mind. The meat's still raw. I'll cook it on the stove.
     - speaker: Mohamed
-      text: Saya ambil mangkuk, ya.
-      ar_eg: أنا هجيب السلطانيات.
-      ar: سأحضر الأوعية.
-      en: I'll get the bowls.
+      text: Boleh saya makan permen dulu?
+      ar_eg: ينفع آكل بونبوناية الأول؟
+      ar: هل يمكنني أن آكل حلوى أولًا؟
+      en: Can I have a sweet first?
 new_words:
   - word: kompor
     pos: noun
     ar_eg: بوتاجاز
     ar: موقد
     en: stove
-  - word: panci
-    pos: noun
-    ar_eg: حلة
-    ar: قدر
-    en: pot, pan
   - word: kulkas
     pos: noun
     ar_eg: تلاجة
     ar: ثلاجة
     en: fridge
-  - word: mangkuk
+  - word: sayur
     pos: noun
-    ar_eg: سلطانية
-    ar: وعاء (زبدية)
-    en: bowl
+    ar_eg: خضار
+    ar: خضار
+    en: vegetables
+  - word: keju
+    pos: noun
+    ar_eg: جبنة
+    ar: جبن
+    en: cheese
+  - word: madu
+    pos: noun
+    ar_eg: عسل
+    ar: عسل
+    en: honey
+  - word: permen
+    pos: noun
+    ar_eg: بونبوني
+    ar: حلوى، سكاكر
+    en: sweets, candy
   - word: mentah
     pos: adjective
     ar_eg: ني
     ar: نيّء
     en: raw
-  - word: matang
-    pos: adjective
-    ar_eg: مستوي
-    ar: ناضج، مطهو
-    en: cooked, ripe
   - word: basi
     pos: adjective
     ar_eg: بايت (باظ)
     ar: فاسد، بائت
     en: stale, gone off
-  - word: rasa
-    pos: noun
-    ar_eg: طعم؛ إحساس
-    ar: طعم؛ شعور
-    en: taste; feeling
 review:
   status: draft
   verified: false
