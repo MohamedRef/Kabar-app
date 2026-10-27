@@ -12,14 +12,17 @@ slides:
       ar_eg: |
         - dia: «هو» و«هي» الاتنين! مافيش مذكر ومؤنث.
         - و«إحنا» ليها نوعين: kita = إحنا وإنت معانا، kami = إحنا من غيرك.
+        - mereka = هما، وkalian = إنتو (لأكتر من واحد).
         لو بتكلم صاحبك وإنتو الاتنين في كوتا توا، تقول «Kita di Kota Tua!».
       ar: |
         - dia: «هو» و«هي» معًا، فلا تمييز بين المذكر والمؤنث.
         - و«نحن» نوعان: kita = نحن ومعنا المخاطَب، kami = نحن من دون المخاطَب.
+        - mereka = هم، وkalian = أنتم (لأكثر من واحد).
         فإذا كنت مع صديقك في كوتا توا قلت له: «Kita di Kota Tua!».
       en: |
         - dia: both "he" and "she" — no gender at all.
         - "We" comes in two kinds: kita = we, including you; kami = we, not including you.
+        - mereka = they; kalian = you (more than one).
         Standing in Kota Tua with your friend, you tell him "Kita di Kota Tua!".
     grammar: id.pronoun.personal
     examples:
@@ -65,9 +68,9 @@ exercises:
       ar_eg: أنهي كلمة معناها «هو» و«هي» في نفس الوقت؟
       ar: أيّ كلمة تعني «هو» و«هي» معًا؟
       en: Which word means both "he" and "she"?
-    options: [dia, kamu, kami]
+    options: [dia, kamu, mereka]
     answer: 0
-    words: [dia]
+    words: [dia, mereka]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -129,6 +132,67 @@ exercises:
       ar: بعد إذنك يا سيدي.
       en: Excuse me, sir.
     words: [permisi]
+  - id: e07
+    type: match_pairs
+    pairs:
+      - text: dia
+        ar_eg: هو / هي
+        ar: هو / هي
+        en: he / she
+      - text: kami
+        ar_eg: إحنا (من غيرك)
+        ar: نحن (دونك)
+        en: we (not you)
+      - text: kita
+        ar_eg: إحنا (وإنت معانا)
+        ar: نحن (ومعنا أنت)
+        en: we (with you)
+      - text: mereka
+        ar_eg: هما
+        ar: هم
+        en: they
+      - text: kalian
+        ar_eg: إنتو
+        ar: أنتم
+        en: you (plural)
+      - text: permisi
+        ar_eg: بعد إذنك
+        ar: بعد إذنك
+        en: excuse me
+    words: [dia, kami, kita, mereka, kalian, permisi]
+  - id: e08
+    type: fill_blank
+    sentence: Hai, Rina dan Raka! Apa kabar ___?
+    meaning:
+      ar_eg: أهلًا يا رينا وراكا! عاملين إيه؟
+      ar: مرحبًا يا رينا وراكا! كيف حالكما؟
+      en: Hi, Rina and Raka! How are you (both)?
+    options: [kalian, mereka, kami]
+    answers: [kalian]
+    explain:
+      ar_eg: بتكلّم اتنين، يبقى kalian (إنتو). mereka معناها «هما» وانت بتتكلم عنهم مش معاهم.
+      ar: تخاطب اثنين، فتلزم kalian (أنتم)؛ أما mereka فتعني «هم» حين تتحدث عنهم.
+      en: You're talking to two people, so kalian ("you all"); mereka means "they", for people you talk about.
+    words: [kalian]
+  - id: e09
+    type: speaking
+    text: Hai! Kami di Kota Tua. Kalian juga?
+    meaning:
+      ar_eg: أهلًا! إحنا في كوتا توا. وإنتو كمان؟
+      ar: مرحبًا! نحن في كوتا توا. وأنتم أيضًا؟
+      en: Hi! We're in Kota Tua. You too?
+    words: [kami, kalian]
+  - id: e10
+    type: listen
+    text: Maaf, mereka di Kota Tua.
+    options: ['Maaf, mereka di Kota Tua.', 'Maaf, kami di Kota Tua.', 'Maaf, kita di Kota Tua.']
+    answer: 0
+    meaning:
+      ar_eg: لا مؤاخذة، هما في كوتا توا.
+      ar: عفوًا، هم في كوتا توا.
+      en: Sorry, they're in Kota Tua.
+    words: [maaf, mereka]
+
 dialogue:
   title: Di depan museum
   lines:
@@ -189,6 +253,16 @@ new_words:
     ar_eg: بعد إذنك
     ar: بعد إذنك
     en: excuse me (to pass or get attention)
+  - word: mereka
+    pos: pronoun
+    ar_eg: هما
+    ar: هم
+    en: they
+  - word: kalian
+    pos: pronoun
+    ar_eg: إنتو
+    ar: أنتم
+    en: you (plural)
 review:
   status: draft
   verified: false

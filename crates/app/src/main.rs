@@ -2,6 +2,7 @@
 
 mod account;
 mod ai;
+mod annotated;
 mod audio;
 mod back;
 mod chat;
@@ -304,6 +305,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     use_context_provider(|| audio::AudioCache::new(audio_dir, link.clone()));
     let coach = use_context_provider(|| Coach::load(&db));
     use_hook(reader::warm_up);
+    annotated::use_words(&db);
     use_width_tracking(ui.width, ui.tablet);
     use_cloud(&db, path, ui, link);
     coach::use_clock(coach, db.clone());
@@ -340,6 +342,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         style { {MAIN_CSS} }
         style { {theme_css} }
         style { {pron_font} }
+        style { {annotated::CSS} }
         style { {ui_fonts} }
         style { {misc_art::paper_css()} }
         div {
@@ -378,6 +381,7 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
     });
     let db = db.clone();
     let coach = try_use_context::<Coach>();
+    let words = use_context::<annotated::Words>();
     use_hook(move || {
         let Some(config) = cloud::CloudConfig::from_env() else { return };
         let device = kabar_protocol::cloud::DeviceInfo {
@@ -434,6 +438,10 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
                             coach.events.set(store.activity(None).unwrap_or_default());
                             coach.reminders.set(store.reminder_state().unwrap_or_default());
                             coach.plan_rev += 1;
+                        }
+                        if tables.contains("taught_entries") {
+                            drop(store);
+                            words.refresh(&db);
                         }
                         revision += 1;
                     }

@@ -6,6 +6,7 @@ mod content;
 pub mod doc;
 pub mod explain;
 pub mod glossary;
+pub mod grammar;
 pub mod translate;
 mod web;
 
@@ -101,6 +102,8 @@ pub struct ReaderState {
     /// On phones the word card floats next to the word it was opened from.
     pub anchor: Signal<Option<Peek>>,
     pub toast: Signal<Option<Msg>>,
+    /// The open text's grammar, worked out once when it opens.
+    pub grammar: Signal<Option<Rc<grammar::DocGrammar>>>,
     /// The translation under each line of the open text.
     pub translated: Signal<translate::Translated>,
     /// Bumped by "try again" to translate the text afresh.
@@ -160,6 +163,7 @@ impl ReaderState {
             panel: Signal::new(None),
             anchor: Signal::new(None),
             toast: Signal::new(None),
+            grammar: Signal::new(None),
             translated: Signal::new(translate::Translated::default()),
             retry: Signal::new(0),
         }
@@ -176,6 +180,7 @@ impl ReaderState {
         self.statuses.set(store.word_statuses(doc.keys()).unwrap_or_default());
         self.highlights.set(store.highlights(&text.id).unwrap_or_default());
         drop(store);
+        self.grammar.set(Some(Rc::new(grammar::DocGrammar::new(&doc, &grammar::syllabus(db)))));
         self.peek.set(None);
         self.panel.set(None);
         self.open.set(Some(Open { text, doc: Rc::new(doc) }));
@@ -200,6 +205,7 @@ impl ReaderState {
 
     fn close(mut self) {
         self.open.set(None);
+        self.grammar.set(None);
         self.peek.set(None);
         self.panel.set(None);
     }
@@ -360,6 +366,7 @@ pub fn Reader() -> Element {
     let voice = *st.voice.read();
 
     rsx! {
+        style { {grammar::CSS} }
         div { class: "reader",
             div { class: "card reader-bar",
                 div { class: "row",
@@ -928,6 +935,7 @@ fn ReadView(open: Open) -> Element {
                             }
                         }
                         translate::LineUnder { seg: si }
+                        grammar::LineGrammar { seg: si }
                     }
                 }
             }
@@ -950,6 +958,7 @@ fn ReadView(open: Open) -> Element {
                 }
                 div { id: "reader-doc", class: "doc split", {rows} }
                 p { class: "muted small pen-hint", "{input_hint(ui.lang(), *ui.tablet.read())}" }
+                grammar::TextGrammar {}
             }
             if panel_open {
                 card::PanelView {}

@@ -57,14 +57,15 @@ impl PronMode {
     pub const ALL: [Self; 3] = [Self::On, Self::Tap, Self::Off];
 }
 
-/// How the translation shows under Indonesian and Javanese sentences.
+/// How the translation shows under Indonesian and Javanese text outside an
+/// exercise (slides, dialogue, feedback, review backs, transcripts, chats).
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum TranslationMode {
     /// Always under the sentence.
     #[default]
     On,
-    /// Behind a tap, so the learner tries to read it first.
+    /// Behind a tap, to try reading first.
     Tap,
     Off,
 }
@@ -85,9 +86,9 @@ pub struct Settings {
     pub sounds_off: bool,
     /// Arabic-script pronunciation next to target-language text.
     pub pronunciation: PronMode,
-    /// The translation under target-language sentences.
+    /// Translation under target-language text.
     pub translation: TranslationMode,
-    /// Word colours (verb, noun, affixes) are off; on by default.
+    /// Word-class and word-part colours are off (on by default).
     pub word_colours_off: bool,
 }
 

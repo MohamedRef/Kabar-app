@@ -182,11 +182,11 @@ CHARACTERS. Each file is named by the character's id; never rename a file.
 - andi.png (Andi, Makassar): a Makassar man in his late 20s, short hair, a smart shirt, a confident debating expression, one hand mid-gesture. Background: Losari beach in Makassar at sunset.
   Who they are: A Makassar friend who argues about careers, tourism and the news with you in BIPA 4.
 - bu-lestari.png (Bu Lestari, Balikpapan): an HR head in Balikpapan, mid 40s, an elegant headscarf, a Sasirangan-patterned blouse, a warm professional smile. Background: a modern office lobby with a Dayak carving on the wall.
-  Who they are: The Balikpapan company's HR head who hires you as a translator; she knows Kalimantan's arts and food.
+  Who they are: The Balikpapan company's HR head who hires you as a translator; she knows Kalimantan's arts and food. BIPA 5 chat partner.
 - bang-togar.png (Bang Togar, Medan (family in Samosir)): a Batak man in Medan, late 30s, a broad laugh, a short beard, an ulos cloth over one shoulder of a plain shirt. Background: a Medan coffee shop.
-  Who they are: A Batak perantau in Medan who loves short stories, satire and a good joke.
+  Who they are: A Batak perantau in Medan who loves short stories, satire and a good joke. BIPA 6 chat partner.
 - kaka-yohana.png (Kaka Yohana, Sorong): a Papuan radio reporter in her 30s from Sorong, natural curly hair, a bright floral blouse, a small microphone in hand. Background: a small radio studio with a window on the sea.
-  Who they are: A reporter at the local radio in Sorong who has you help write stories and explains Papuan Malay.
+  Who they are: A reporter at the local radio in Sorong who has you help write stories and explains Papuan Malay. BIPA 7 chat partner.
 
 SAVE: all 11 masters to assets/src/personas/ with exactly the file names above.
 Nothing else: Kabar's own script (scripts/assets/export_personas.py) makes the
@@ -242,7 +242,7 @@ CHARACTERS. Each file is named by the character's id; never rename a file.
 - bu-harjo.png (Bu Harjo, Solo): Pak Harjo's wife, mid 60s, hair in a neat sanggul bun, a kebaya with a batik kain, a gentle smile. Background: a Javanese house interior with a batik cloth on a stand.
   Who they are: Pak Harjo's wife.
 - mbah-putri.png (Mbah Putri, a village near Yogyakarta): Mas Dimas's grandmother, late 70s, silver hair in a bun, a kebaya and a selendang over her shoulder, deep laugh lines. Background: a village house porch near Yogyakarta with rice fields beyond.
-  Who they are: Mas Dimas's grandmother. You speak krama inggil to her; she answers in warm ngoko.
+  Who they are: Mas Dimas's grandmother. You use krama inggil for her; she answers a guest in simple polite krama. J4 chat partner.
 - pak-karto.png (Pak Karto, Solo): an elderly neighbour from Solo, about 75, a black peci, a white beard, a sarong and a plain shirt. Background: a quiet Solo lane with a low fence.
   Who they are: Your elderly neighbour in the Unggah-Ungguh game; krama with a little krama inggil.
 - pak-harsono.png (Pak Harsono, Yogyakarta): the Yogyakarta host father, early 60s, a blangkon, a surjan striped jacket, a calm, formal kindness. Background: a Yogyakarta joglo house with a garden.
@@ -250,9 +250,9 @@ CHARACTERS. Each file is named by the character's id; never rename a file.
 - bu-harsono.png (Bu Harsono, Yogyakarta): the Yogyakarta host mother, late 50s, a headscarf, a kebaya, a tray of tea glasses in her hands. Background: a Yogyakarta joglo house with a garden.
   Who they are: Your host mother in Yogyakarta.
 - mbak-ayu.png (Mbak Ayu, Semarang): a Semarang woman in her late 20s, a headscarf, glasses, a laptop held under her arm, an attentive look. Background: a library reading room in Semarang.
-  Who they are: Checks your Javanese writing in Semarang and reads the news and Wikipedia with you in J5.
+  Who they are: A Javanese literature student in Semarang who checks your writing and reads news, posts, stories and songs with you. J5 chat partner.
 - pak-slamet.png (Pak Slamet, Kotagede): an aksara Jawa teacher in Kotagede, mid 50s, a blangkon, a batik shirt, a brush pen in hand. Background: a Kotagede lane with old walls.
-  Who they are: An aksara Jawa teacher in Kotagede who checks your letters and pasangan.
+  Who they are: A Kotagede silversmith who engraves names in aksara Jawa and teaches you the script and Pegon. J6 chat partner.
 
 SAVE: all 11 masters to assets/src/personas/ with exactly the file names above.
 Nothing else: Kabar's own script (scripts/assets/export_personas.py) makes the

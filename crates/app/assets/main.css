@@ -938,6 +938,10 @@ button.journal-delete { color: var(--dawn); border-color: var(--dawn); }
   text-align: start;
 }
 .pron.inline { display: inline; font-size: 1.15em; margin-inline: 0.3em; opacity: 0.85; }
+/* A block pronunciation is only as wide as its text, so in an English (LTR)
+   page it sits at the start under its sentence instead of floating. */
+.pron:not(.inline) { inline-size: fit-content; max-inline-size: 100%; justify-self: start; align-self: start; }
+.pron-unit.nowrap { white-space: nowrap; }
 .pron-reveal {
   font-family: var(--font-arabic);
   font-size: 0.8rem;

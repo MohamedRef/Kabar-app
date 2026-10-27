@@ -62,27 +62,31 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: besar
-        ar_eg: كبير
-        ar: كبير
-        en: big
-      - text: kecil
-        ar_eg: صغيّر
-        ar: صغير
-        en: small
-      - text: tinggi
-        ar_eg: طويل
-        ar: طويل، عالٍ
-        en: tall, high
-      - text: baru
-        ar_eg: جديد
-        ar: جديد
-        en: new
       - text: banyak
         ar_eg: كتير
         ar: كثير
         en: many, a lot
-    words: [besar, kecil, tinggi, baru, banyak]
+      - text: semua
+        ar_eg: كل (الكل)
+        ar: كلّ، جميع
+        en: all
+      - text: dua
+        ar_eg: اتنين
+        ar: اثنان
+        en: two
+      - text: tiga
+        ar_eg: تلاتة
+        ar: ثلاثة
+        en: three
+      - text: bermain
+        ar_eg: يلعب
+        ar: يلعب
+        en: to play
+      - text: taman
+        ar_eg: جنينة
+        ar: حديقة
+        en: park, garden
+    words: [banyak, semua, dua, tiga, bermain, taman]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -135,22 +139,47 @@ exercises:
     answers: [Saya punya dua adik., Saya punya dua adik, Aku punya dua adik., Aku punya dua adik, Saya punya dua orang adik.]
     words: [punya, dua, adik]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: العيال في البيت.
-      ar: الأطفال في البيت.
-      en: The children are at home.
-    answers: [Anak-anak di rumah., Anak-anak di rumah, Anak-anak ada di rumah., Anak-anak ada di rumah]
-    words: [anak, rumah]
+    type: fill_blank
+    sentence: ___ anak bermain di taman.
+    meaning:
+      ar_eg: كل العيال بيلعبوا في الجنينة.
+      ar: كل الأطفال يلعبون في الحديقة.
+      en: All the children are playing in the park.
+    options: [Semua, Buku, Yang]
+    answers: [Semua]
+    explain:
+      ar_eg: "semua = كل، وبعدها الاسم من غير تكرار: semua anak."
+      ar: "semua = كلّ، ويليها الاسم بلا تكرار: semua anak."
+      en: "semua = all, followed by the noun without repetition: semua anak."
+    words: [semua, anak, bermain, taman]
   - id: e08
     type: speaking
+    text: Tiga anak bermain di taman.
+    meaning:
+      ar_eg: تلات عيال بيلعبوا في الجنينة.
+      ar: ثلاثة أطفال يلعبون في الحديقة.
+      en: Three children are playing in the park.
+    words: [tiga, anak, bermain, taman]
+  - id: e09
+    type: listen
+    text: Semua anak di rumah.
+    options: ['Semua anak di rumah.', 'Tiga anak di rumah.', 'Banyak anak di rumah.']
+    answer: 0
+    meaning:
+      ar_eg: كل العيال في البيت.
+      ar: كل الأطفال في البيت.
+      en: All the children are at home.
+    words: [semua, tiga, banyak]
+  - id: e10
+    type: listen
     text: Anak-anak bermain di taman.
+    options: ['Dua anak bermain di taman.', 'Anak-anak bermain di taman.', 'Anak-anak di rumah.']
+    answer: 1
     meaning:
       ar_eg: العيال بيلعبوا في الجنينة.
       ar: الأطفال يلعبون في الحديقة.
       en: The children are playing in the park.
-    words: [anak, bermain, taman]
+    words: [anak-anak, bermain, taman]
 dialogue:
   title: Keluarga besar Rina
   lines:

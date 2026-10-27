@@ -53,6 +53,19 @@
     "tags": { "type": "array", "items": { "type": "string", "pattern": "^[a-z0-9-]+$" } },
     "prerequisites": { "type": "array", "items": { "type": "string", "pattern": "^(id|jv)\\.[a-z0-9-]+(\\.[a-z0-9-]+)*$" } },
     "see_also": { "type": "array", "items": { "type": "string", "pattern": "^(id|jv)\\.[a-z0-9-]+(\\.[a-z0-9-]+)*$" } },
+    "cues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["match"],
+        "properties": {
+          "match": { "type": "string", "minLength": 1 },
+          "class": { "enum": ["function", "verb", "noun", "adjective", "phrase"] },
+          "note": { "$ref": "#/$defs/three" }
+        }
+      }
+    },
     "review": {
       "type": "object",
       "additionalProperties": false,
