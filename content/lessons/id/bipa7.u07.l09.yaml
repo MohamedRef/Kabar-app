@@ -1,0 +1,163 @@
+schema: kabar.lesson/v1
+id: bipa7.u07.l09
+language: id
+title: Debat kandidat
+can_do:
+  ar_eg: تتابع مناظرة مرشّحين وتقارن رؤيتهم وتسألهم سؤال واضح.
+  ar: أن تتابع مناظرة بين مرشّحين وتقارن رؤاهم وتطرح سؤالًا واضحًا.
+  en: Follow a candidates' debate, compare their plans and ask a clear question.
+slides:
+  - title: Visi, misi, dan pertanyaan
+    body:
+      ar_eg: |
+        قبل الـ pemilu كل kandidat (مرشّح) بيعرض visi misi بتاعه: الـ visi هي الحلم الكبير، والـ misi هي الخطوات.
+        عبارات للمناظرة:
+        - Apa visi misi Bapak untuk kabupaten ini? (إيه رؤيتك ورسالتك للمركز ده؟)
+        - Bagaimana caranya, dan dari mana dananya? (إزاي، والفلوس منين؟)
+        - Kandidat nomor satu menjanjikan…, sedangkan kandidat nomor dua… (المرشّح رقم واحد وعد…، أما رقم اتنين…)
+        كمذيع: اسأل سؤال قصيّر، وادّي الاتنين نفس الوقت.
+      ar: |
+        قبل الـ pemilu يعرض كلّ kandidat (مرشّح) الـ visi misi: الـ visi هي الحلم الكبير، والـ misi هي الخطوات.
+        عبارات للمناظرة:
+        - Apa visi misi Bapak untuk kabupaten ini? (ما رؤيتك ورسالتك لهذا الإقليم؟)
+        - Bagaimana caranya, dan dari mana dananya? (كيف، ومن أين التمويل؟)
+        - Kandidat nomor satu menjanjikan…, sedangkan kandidat nomor dua… (وعد المرشّح الأوّل…، أمّا الثاني…)
+        وبصفتك مديرًا للمناظرة: اطرح سؤالًا قصيرًا، وامنح كليهما الوقت نفسه.
+      en: |
+        Before the pemilu each kandidat (candidate) presents a visi misi: the visi is the big dream, the misi the steps.
+        Debate phrases:
+        - Apa visi misi Bapak untuk kabupaten ini? (What is your vision and mission for this regency?)
+        - Bagaimana caranya, dan dari mana dananya? (How, and where's the money from?)
+        - Kandidat nomor satu menjanjikan…, sedangkan kandidat nomor dua… (Candidate one promised…, whereas candidate two…)
+        As moderator: ask short questions and give both the same time.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الـ «visi» إيه الفرق بينها وبين الـ «misi»؟
+      ar: ما الفرق بين الـ «visi» والـ «misi»؟
+      en: How does a "visi" differ from a "misi"?
+    options:
+      - الاتنين نفس الحاجة.
+      - الـ visi الحلم الكبير، والـ misi الخطوات.
+      - الـ visi للفقرا والـ misi للأغنيا.
+    answer: 1
+    words: [visi misi]
+  - id: e02
+    type: listen
+    text: Kandidat nomor dua berjanji membangun puskesmas di setiap distrik.
+    question:
+      ar_eg: المرشّح رقم اتنين وعد بإيه؟
+      ar: بمَ وعد المرشّح الثاني؟
+      en: What did candidate two promise?
+    options:
+      - مركز صحّي في كل حيّ.
+      - مطار جديد.
+      - تخفيض الضرايب.
+    answer: 0
+    words: [kandidat]
+  - id: e03
+    type: fill_blank
+    sentence: Ada tiga ___ bupati dalam pemilu tahun ini.
+    meaning:
+      ar_eg: فيه تلات مرشّحين لرئاسة المركز في انتخابات السنة دي.
+      ar: يتنافس ثلاثة مرشّحين على رئاسة الإقليم في انتخابات هذا العام.
+      en: There are three candidates for regent in this year's election.
+    options: [kandidat, pemilih, sejarawan]
+    answers: [kandidat]
+    words: [kandidat, pemilu]
+  - id: e04
+    type: build_sentence
+    source:
+      ar_eg: إيه رؤية ورسالة حضرتك للمركز ده؟
+      ar: ما رؤيتك ورسالتك لهذا الإقليم؟
+      en: What is your vision and mission for this regency?
+    answer: Apa visi misi Bapak untuk kabupaten ini?
+    distractors: [kandidat, prioritas]
+    words: [visi misi, kabupaten]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مذيع المناظرة الكويس يعمل إيه؟
+      ar: ماذا يفعل مدير المناظرة الجيّد؟
+      en: What does a good debate moderator do?
+    options:
+      - يدّي المرشّح اللي بيحبّه وقت أكتر.
+      - يتكلّم أكتر من المرشّحين.
+      - يدّي كل kandidat نفس الوقت.
+    answer: 2
+    words: [kandidat]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: المرشّح رقم واحد وعد بمية نضيفة، أما رقم اتنين وعد بطرق.
+      ar: وعد المرشّح الأوّل بالماء النظيف، أمّا الثاني فوعد بالطرق.
+      en: Candidate one promised clean water, whereas candidate two promised roads.
+    answers:
+      - Kandidat nomor satu menjanjikan air bersih, sedangkan kandidat nomor dua menjanjikan jalan.
+      - Kandidat pertama menjanjikan air bersih, sedangkan kandidat kedua menjanjikan jalan.
+      - Kandidat nomor satu berjanji memberi air bersih, sedangkan kandidat nomor dua berjanji membangun jalan.
+      - Kandidat nomor satu menjanjikan air bersih, sementara kandidat nomor dua menjanjikan jalan.
+    words: [kandidat]
+  - id: e07
+    type: speaking
+    text: Visi misi Ibu bagus. Tetapi dari mana dananya?
+    meaning:
+      ar_eg: رؤية ورسالة حضرتك حلوين. بس الفلوس منين؟
+      ar: رؤيتك ورسالتك جيّدتان يا سيّدتي، لكن من أين التمويل؟
+      en: Your vision and mission are good, ma'am. But where's the money coming from?
+    words: [visi misi]
+  - id: e08
+    type: dictation
+    text: Para pemilih ingin mendengar visi misi setiap kandidat.
+    meaning:
+      ar_eg: الناخبين عايزين يسمعوا رؤية ورسالة كل مرشّح.
+      ar: يريد الناخبون سماع رؤية كلّ مرشّح ورسالته.
+      en: Voters want to hear every candidate's vision and mission.
+    words: [pemilih, visi misi, kandidat]
+  - id: e09
+    type: speaking
+    text: Terima kasih kepada kedua kandidat. Waktu Bapak dua menit.
+    meaning:
+      ar_eg: شكرًا للمرشّحين الاتنين. قدّام حضرتك دقيقتين.
+      ar: شكرًا للمرشّحين، ولك دقيقتان يا سيّدي.
+      en: Thank you to both candidates. You have two minutes, sir.
+    words: [kandidat]
+dialogue:
+  title: Mohamed jadi moderator
+  lines:
+    - speaker: Bu Debora
+      text: Malam ini kamu moderator debat di radio. Ada dua kandidat bupati.
+      ar_eg: الليلة إنت مدير المناظرة في الراديو. فيه مرشّحين اتنين لرئاسة المركز.
+      ar: ستدير الليلة المناظرة في الإذاعة بين مرشّحَين لرئاسة الإقليم.
+      en: Tonight you moderate the radio debate. There are two candidates for regent.
+    - speaker: Mohamed
+      text: Pertanyaan pertama saya, "Apa visi misi Bapak dan Ibu untuk kabupaten ini?"
+      ar_eg: 'أول سؤال: «إيه رؤية ورسالة حضراتكم للمركز ده؟»'
+      ar: 'سؤالي الأوّل: «ما رؤيتكما ورسالتكما لهذا الإقليم؟»'
+      en: My first question, "What are your vision and mission for this regency?"
+    - speaker: Bu Debora
+      text: Bagus. Lalu tanya dari mana dananya. Pemilih suka jawaban yang jelas.
+      ar_eg: حلو. وبعدين اسأل الفلوس منين. الناخبين بيحبّوا الإجابات الواضحة.
+      ar: جيّد، ثمّ اسأل عن مصدر التمويل، فالناخبون يحبّون الأجوبة الواضحة.
+      en: Good. Then ask where the money's from. Voters like clear answers.
+    - speaker: Mohamed
+      text: Dan setiap kandidat dapat waktu yang sama. Saya bawa jam tangan!
+      ar_eg: وكل مرشّح ياخد نفس الوقت. أنا جايب ساعة!
+      ar: ولكلّ مرشّح الوقت نفسه، وقد أحضرت ساعة!
+      en: And each candidate gets the same time. I've brought a watch!
+new_words:
+  - word: kandidat
+    pos: noun
+    ar_eg: مرشّح
+    ar: مرشّح
+    en: candidate
+  - word: visi misi
+    pos: noun
+    ar_eg: الرؤية والرسالة
+    ar: الرؤية والرسالة
+    en: vision and mission
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,205 @@
+schema: kabar.lesson/v1
+id: bipa7.u10.l10
+language: id
+title: Ulangan Unit 10
+can_do:
+  ar_eg: تدافع عن حاجة كتبتها، بأسلوب علمي وبأمانة.
+  ar: أن تدافع عن نصّ كتبته، بأسلوب علمي وأمانة.
+  en: Defend a piece you wrote, in academic register and honestly.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: hipotesis
+        ar_eg: فرضية
+        ar: فرضية
+        en: hypothesis
+      - text: makalah
+        ar_eg: ورقة بحثية
+        ar: ورقة بحثية
+        en: paper
+      - text: kualitatif
+        ar_eg: كيفي
+        ar: نوعي
+        en: qualitative
+      - text: jargon
+        ar_eg: مصطلحات تقيلة
+        ar: رطانة اصطلاحية
+        en: jargon
+      - text: keterbatasan
+        ar_eg: حدود / قصور
+        ar: حدود البحث
+        en: limitation
+    words: [hipotesis, makalah, kualitatif, jargon, keterbatasan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة مكتوبة بأسلوب علمي محكم؟
+      ar: أيّ جملة مكتوبة بأسلوب علمي محكم؟
+      en: Which sentence is in tight academic register?
+    options:
+      - Saya rasa datanya lumayan banyak banget.
+      - Data dikumpulkan dari 120 partisipan di tiga distrik.
+      - Wah, partisipannya seru-seru!
+    answer: 1
+    words: [ragam ilmiah, kalimat efektif, partisipan]
+  - id: e03
+    type: fill_blank
+    sentence: Moderator membuka ___ setelah semua pemakalah selesai.
+    meaning:
+      ar_eg: مدير الجلسة فتح جلسة الأسئلة بعد ما كل أصحاب الأوراق خلّصوا.
+      ar: افتتح مدير الجلسة الأسئلة بعد أن أنهى أصحاب الأوراق.
+      en: The moderator opened the Q&A after all presenters had finished.
+    options: [sesi tanya jawab, abstrak, kuesioner]
+    answers: [sesi tanya jawab]
+    words: [sesi tanya jawab, moderator, pemakalah, abstrak, kuesioner]
+  - id: e04
+    type: listen
+    text: Untuk pembaca awam, peneliti memakai analogi, bukan istilah teknis.
+    question:
+      ar_eg: الباحث بيستعمل إيه للقارئ العادي؟
+      ar: ماذا يستعمل الباحث للقارئ غير المتخصّص؟
+      en: What does the researcher use for lay readers?
+    options:
+      - مصطلحات فنية أكتر.
+      - جداول بس.
+      - تشبيهات.
+    answer: 2
+    words: [pembaca awam, analogi, istilah]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: نتيجة البحث بتأكّد الفرضية.
+      ar: تؤكّد نتيجة البحث الفرضية.
+      en: The finding confirms the hypothesis.
+    answer: Temuan penelitian menguatkan hipotesis.
+    distractors: [jargon, relevan]
+    words: [temuan, hipotesis]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: سائل سألك سؤال مالوش علاقة بالورقة. تقول إيه؟
+      ar: سألك أحدهم سؤالًا لا صلة له بالورقة، فماذا تقول؟
+      en: Someone asks a question unrelated to your paper. What do you say?
+    options:
+      - Pertanyaan yang menarik, tetapi kurang relevan dengan makalah ini.
+      - Itu pertanyaan bodoh.
+      - Saya pulang saja.
+    answer: 0
+    words: [relevan, penanya]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: البحث ده بيستعمل منهج كمّي وكيفي.
+      ar: يستعمل هذا البحث منهجًا كمّيًّا ونوعيًّا.
+      en: This study uses quantitative and qualitative methods.
+    answers:
+      - Penelitian ini menggunakan metode kuantitatif dan kualitatif.
+      - Penelitian ini memakai metode kuantitatif dan kualitatif.
+      - Penelitian ini menggunakan pendekatan kuantitatif dan kualitatif.
+    words: [kuantitatif, kualitatif, metode penelitian]
+  - id: e08
+    type: speaking
+    text: Terima kasih atas pertanyaannya. Mohon klarifikasi, distrik mana yang Ibu maksud?
+    meaning:
+      ar_eg: شكرًا على السؤال. ممكن توضّحي، تقصدي أنهي منطقة؟
+      ar: شكرًا على السؤال. هلّا وضّحتِ أيّ منطقة تقصدين؟
+      en: Thank you for the question. Could you clarify which district you mean?
+    words: [klarifikasi]
+  - id: e09
+    type: dictation
+    text: Artikel ilmiah populer itu ditulis tanpa jargon.
+    meaning:
+      ar_eg: المقالة العلمية المبسّطة دي متكتبة من غير مصطلحات تقيلة.
+      ar: كُتبت تلك المقالة العلمية المبسّطة دون رطانة.
+      en: That popular-science article was written without jargon.
+    words: [artikel ilmiah populer, jargon]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Peneliti yang jujur menyebutkan keterbatasan penelitiannya di akhir makalah.
+    answers_meaning:
+      ar_eg:
+        - الباحث الأمين بيذكر حدود بحثه في آخر الورقة.
+        - الباحث الصادق بيقول قصور بحثه في آخر الورقة.
+      ar:
+        - يذكر الباحث الأمين حدود بحثه في آخر الورقة.
+        - يُثبت الباحث الصادق قصور بحثه في خاتمة الورقة.
+      en:
+        - An honest researcher states the study's limitations at the end of the paper.
+        - Honest researchers name their study's limits at the end of the paper.
+    words: [keterbatasan, makalah]
+  - id: e11
+    type: match_pairs
+    pairs:
+      - text: persetujuan
+        ar_eg: موافقة
+        ar: موافقة
+        en: consent
+      - text: sumbu
+        ar_eg: محور
+        ar: محور
+        en: axis
+      - text: dosen pembimbing
+        ar_eg: الدكتور المشرف
+        ar: الأستاذ المشرف
+        en: supervisor
+      - text: tata letak
+        ar_eg: تنسيق
+        ar: تنسيق
+        en: layout
+      - text: kerahasiaan
+        ar_eg: سرّية
+        ar: سرّية
+        en: confidentiality
+    words: [persetujuan, sumbu, dosen pembimbing, tata letak, kerahasiaan]
+  - id: e12
+    type: multiple_choice
+    question_meaning:
+      ar_eg: 'في مناقشة الـ skripsi، اللجنة سألت: «الفرق ده signifikan؟» وإنت ماعملتش اختبار. تقول إيه؟'
+      ar: في مناقشة الـ skripsi سألت اللجنة «أهذا الفرق signifikan؟» ولم تُجرِ اختبارًا. بمَ تجيب؟
+      en: At your skripsi defence the panel asks, "Is that difference signifikan?" and you didn't test it. What do you say?
+    options:
+      - Ya, pasti signifikan.
+      - Pertanyaan itu tidak relevan.
+      - Belum saya uji. Itu keterbatasan penelitian saya.
+    answer: 2
+    explain:
+      ar_eg: 'الصراحة أحسن: اعترف بالـ keterbatasan واقترح بحث جاي.'
+      ar: 'الصدق أولى: اعترف بالـ keterbatasan واقترح بحثًا لاحقًا.'
+      en: 'Honesty wins: admit the keterbatasan and suggest further research.'
+    words: [sidang skripsi, signifikan, keterbatasan, relevan]
+dialogue:
+  title: Festival di Lembah Baliem
+  lines:
+    - speaker: Pak Elias
+      text: Makalahmu sudah dipertahankan, dan sekarang kita menonton festival bersama.
+      ar_eg: دافعت عن ورقتك خلاص، ودلوقتي هنتفرّج على المهرجان سوا.
+      ar: دافعتَ عن ورقتك، والآن نشاهد المهرجان معًا.
+      en: You've defended your paper, and now we watch the festival together.
+    - speaker: Mohamed
+      text: Suku Dani, Lani, dan Yali datang dengan pakaian adat. Luar biasa.
+      ar_eg: الداني واللاني واليالي جايين بلبسهم التقليدي. حاجة تحفة.
+      ar: جاءت جماعات الداني واللاني واليالي بأزيائها التقليدية. أمر مذهل.
+      en: The Dani, Lani and Yali have come in traditional dress. Amazing.
+    - speaker: Pak Elias
+      text: Dari Sorong sampai Wamena, kamu sudah belajar bahasa berita, sejarah, dan ilmu.
+      ar_eg: من سورونج لوامينا، اتعلّمت لغة الأخبار والتاريخ والعلم.
+      ar: من سورونغ إلى وامينا تعلّمتَ لغة الأخبار والتاريخ والعلم.
+      en: From Sorong to Wamena, you've learnt the language of news, history and science.
+    - speaker: Mohamed
+      text: Perjalanan ini selesai, tetapi belajar bahasa Indonesia tidak pernah selesai.
+      ar_eg: الرحلة دي خلصت، بس تعلّم الإندونيسي عمره ما بيخلص.
+      ar: انتهت هذه الرحلة، لكنّ تعلّم الإندونيسية لا ينتهي أبدًا.
+      en: This journey is over, but learning Indonesian never ends.
+souvenir:
+  id: bipa7.u10.souvenir
+  title: Festival Lembah Baliem
+  note:
+    ar_eg: وادي باليم في جبال بابوا العالية، ووامينا هي بلده الأساسية. العالم برّه ماكانش يعرف الوادي ده لحدّ سنة 1938، لما طيّارة بعثة علمية شافته من فوق. وكل سنة، عادةً في أغسطس، مهرجان الوادي بيجمّع جماعات الداني واللاني واليالي، بمعارك تمثيلية ورقص وأغاني. ومبروك، دي آخر محطة في رحلة BIPA 7.
+    ar: يقع وادي باليم في مرتفعات بابوا، ووامينا بلدته الرئيسة. ولم يعرفه العالم الخارجي حتّى عام 1938، حين رأته طائرة بعثة علمية من الجوّ. ويجمع مهرجانه السنوي، في أغسطس عادةً، جماعات الداني واللاني واليالي بمعارك تمثيلية ورقص وغناء. وتهانينا، فهذه آخر محطّة في رحلة BIPA 7.
+    en: The Baliem valley lies in Papua's highlands, with Wamena as its main town. Outsiders did not know of it until 1938, when a scientific expedition's plane spotted it from the air. Each year, usually in August, its festival brings the Dani, Lani and Yali together with mock battles, dance and song. Congratulations, this is the last stop of the BIPA 7 journey.
+review:
+  status: draft
+  verified: false
