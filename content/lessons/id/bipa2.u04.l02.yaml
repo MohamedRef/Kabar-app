@@ -71,12 +71,12 @@ exercises:
   - id: e03
     type: build_sentence
     source:
-      ar_eg: كوباية شاي بسكر لو سمحتي.
-      ar: كوب شاي محلّى من فضلكِ.
-      en: A glass of sweet tea, please.
-    answer: Minta segelas teh manis, Mbak.
-    distractors: [sepiring, sebotol]
-    words: [gelas, teh]
+      ar_eg: اشتريت تلات جوز هند.
+      ar: اشتريت ثلاث حبات من جوز الهند.
+      en: I bought three coconuts.
+    answer: Saya beli tiga biji kelapa.
+    distractors: [ikat, botol]
+    words: [biji, kelapa]
   - id: e04
     type: translate
     direction: to_target
@@ -115,6 +115,25 @@ exercises:
       ar: البرتقال كيلوان، والخضار ثلاث حزم يا سيدتي.
       en: Two kilos of oranges and three bunches of vegetables, ma'am.
     words: [kilo, ikat]
+  - id: e08
+    type: listen
+    text: Minta dua bungkus nasi, Bu.
+    options: ['Minta dua bungkus nasi, Bu.', 'Minta dua botol nasi, Bu.', 'Minta dua ikat nasi, Bu.']
+    answer: 0
+    meaning:
+      ar_eg: لو سمحتي، لفّتين رز.
+      ar: لفافتا أرز من فضلك.
+      en: Two packs of rice, please.
+    words: [bungkus, botol, ikat]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «جوزين هند»؟
+      ar: كيف تقول «حبتان من جوز الهند»؟
+      en: How do you say "two coconuts"?
+    options: ['dua biji kelapa', 'dua lembar kelapa', 'dua bungkus kelapa']
+    answer: 0
+    words: [biji, kelapa, bungkus]
 dialogue:
   title: Belanja pagi di Sukawati
   lines:

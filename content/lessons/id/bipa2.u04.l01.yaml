@@ -127,13 +127,14 @@ exercises:
     words: [ekor]
   - id: e05
     type: fill_blank
-    sentence: Di kelas ada sepuluh ___ mahasiswa.
+    sentence: Saya beli dua ___ kertas.
     meaning:
-      ar_eg: (اكتب كلمة العدّ) فيه عشرة طلبة في الفصل.
-      ar: (اكتب لفظ العدّ) في الصف عشرة طلاب.
-      en: (Type the classifier.) There are ten students in the class.
-    answers: [orang]
-    words: [orang]
+      ar_eg: (اختار كلمة العدّ) اشتريت ورقتين.
+      ar: (اختر لفظ العدّ) اشتريت ورقتين.
+      en: (Pick the classifier.) I bought two sheets of paper.
+    options: [lembar, ekor, buah]
+    answers: [lembar]
+    words: [lembar, kertas]
   - id: e06
     type: build_sentence
     source:
@@ -143,6 +144,37 @@ exercises:
     answer: Saya beli sebuah patung kayu.
     distractors: [seekor, seorang]
     words: [buah, patung, kayu]
+  - id: e07
+    type: listen
+    text: Saya beli sebuah patung dan sepotong kue.
+    options: ['Saya beli sebuah patung dan sepotong kue.', 'Saya beli seekor patung dan sepotong kue.', 'Saya beli sebuah patung dan selembar kertas.']
+    answer: 0
+    meaning:
+      ar_eg: اشتريت تمثال وحتة كيكة.
+      ar: اشتريت تمثالًا وقطعة كعك.
+      en: I bought a statue and a slice of cake.
+    words: [buah, patung, potong, kertas, lembar]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «تمثالين»؟
+      ar: كيف تقول «تمثالان»؟
+      en: How do you say "two statues"?
+    options: ['dua buah patung', 'dua ekor patung', 'dua lembar patung']
+    answer: 0
+    explain:
+      ar_eg: buah لمعظم الحاجات، ekor للحيوانات، lembar للورق والقماش.
+      ar: buah لأكثر الأشياء، وekor للحيوان، وlembar للورق والقماش.
+      en: buah is for most things, ekor for animals, lembar for paper and cloth.
+    words: [buah, patung, ekor, lembar]
+  - id: e09
+    type: speaking
+    text: Minta selembar kertas dan sepotong kue, ya.
+    meaning:
+      ar_eg: ممكن ورقة وحتة كيكة؟
+      ar: أريد ورقة وقطعة كعك من فضلك.
+      en: A sheet of paper and a slice of cake, please.
+    words: [lembar, kertas, potong]
 dialogue:
   lines:
     - speaker: Ni Luh

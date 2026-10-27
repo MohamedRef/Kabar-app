@@ -36,20 +36,24 @@ slides:
 exercises:
   - id: e01
     type: multiple_choice
-    question: Selamat pagi. Sakit apa, Pak?
+    question: Selamat pagi, selamat datang di klinik. Sakit apa, Pak?
     question_meaning:
       ar_eg: الدكتور بيسألك. أنهي رد أحسن؟
       ar: يسألك الطبيب. أيّ ردّ أنسب؟
       en: The doctor asks. Which is the best answer?
     options: [Saya dari Mesir., Tiga kali sehari., Saya demam dan sakit tenggorokan.]
     answer: 2
-    words: [demam, tenggorokan]
+    words: [klinik, demam, tenggorokan]
   - id: e02
     type: listen
-    text: Sudah berapa lama?
-    options: ['Sudah berapa kali?', 'Sudah berapa lama?', 'Sudah berapa hari?']
-    answer: 1
-    words: [berapa lama]
+    text: Coba buka mulutnya.
+    options: [Coba buka mulutnya., Coba buka bukunya., Coba buka pintunya.]
+    answer: 0
+    meaning:
+      ar_eg: افتح بقك.
+      ar: افتح فمك.
+      en: Open your mouth, please.
+    words: [mulut, buka]
   - id: e03
     type: fill_blank
     sentence: Saya sakit tenggorokan ___ dua hari yang lalu.
@@ -65,14 +69,18 @@ exercises:
       en: sejak = since, with a starting point like "dua hari yang lalu"; selama = for (a length).
     words: [sejak]
   - id: e04
-    type: fill_blank
-    sentence: Pusing sedikit, ___ tidak mual.
-    meaning:
-      ar_eg: دايخ شوية، بس نفسي مش غامّة.
-      ar: أشعر بدوار خفيف، لكن لا غثيان.
-      en: A little dizzy, but not nauseous.
-    answers: [tapi, tetapi]
-    words: [pusing, mual]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة جاية من العربي «طبيب»؟
+      ar: أيّ كلمة أصلها العربية «طبيب»؟
+      en: Which word comes from Arabic «طبيب»?
+    options: [dokter, tabib, klinik]
+    answer: 1
+    explain:
+      ar_eg: tabib ← طبيب، بس النهارده معناها المعالج الشعبي. الدكتور اسمه dokter (من الهولندي).
+      ar: tabib من «طبيب»، لكنها اليوم للمعالج الشعبي، أما الطبيب فـdokter (من الهولندية).
+      en: tabib comes from طبيب but now means a traditional healer; a doctor is dokter (from Dutch).
+    words: [tabib, klinik]
   - id: e05
     type: build_sentence
     source:
@@ -93,31 +101,51 @@ exercises:
     distractors: [semoga, sakit]
     words: [air putih, istirahat]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: زوري بيوجعني.
-      ar: حلقي يؤلمني.
-      en: My throat hurts.
-    answers: [Tenggorokan saya sakit., Tenggorokan saya sakit, Saya sakit tenggorokan., Saya sakit tenggorokan, Tenggorokanku sakit., Aku sakit tenggorokan., Tenggorokan aku sakit.]
-    words: [tenggorokan, sakit]
+    type: match_pairs
+    pairs:
+      - text: klinik
+        ar_eg: عيادة
+        ar: عيادة
+        en: clinic
+      - text: mulut
+        ar_eg: بُق
+        ar: فم
+        en: mouth
+      - text: tabib
+        ar_eg: معالج شعبي
+        ar: معالج شعبي
+        en: traditional healer
+      - text: tenggorokan
+        ar_eg: زور
+        ar: حلق
+        en: throat
+      - text: batuk
+        ar_eg: كحة
+        ar: سعال
+        en: cough
+      - text: demam
+        ar_eg: سخونية
+        ar: حُمّى
+        en: fever
+    words: [klinik, mulut, tabib, tenggorokan, batuk, demam]
   - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: وكمان عندي كحة.
-      ar: وعندي سعال أيضًا.
-      en: I also have a cough.
-    answers: [Saya juga batuk., Saya juga batuk, Aku juga batuk., Aku juga batuk, Saya juga sakit batuk.]
-    words: [batuk, juga]
+    type: listen
+    text: Ini klinik, bukan rumah tabib.
+    options: ['Ini klinik, bukan rumah tabib.', 'Ini rumah tabib, bukan klinik.', 'Ini apotek, bukan klinik.']
+    answer: 0
+    meaning:
+      ar_eg: دي عيادة، مش بيت معالج شعبي.
+      ar: هذه عيادة، لا بيت معالج شعبي.
+      en: This is a clinic, not a healer's house.
+    words: [klinik, tabib, apotek]
   - id: e09
     type: dictation
-    text: Semoga cepat sembuh, Pak.
+    text: Coba buka mulutnya, Pak.
     meaning:
-      ar_eg: ألف سلامة يا أستاذ.
-      ar: شفاك الله سريعًا يا سيدي.
-      en: Get well soon, sir.
-    words: [semoga, sembuh]
+      ar_eg: افتح بقك يا أستاذ.
+      ar: افتح فمك يا سيدي.
+      en: Open your mouth, sir.
+    words: [mulut, buka]
   - id: e10
     type: speaking
     text: Selamat pagi, Dok. Saya demam dan sakit tenggorokan sejak dua hari yang lalu.
