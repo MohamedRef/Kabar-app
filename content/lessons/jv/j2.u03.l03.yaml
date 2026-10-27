@@ -104,27 +104,31 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: selawe ewu
-        ar_eg: ٢٥ ألف
-        ar: ٢٥ ألفًا
-        en: 25,000
-      - text: seket ewu
-        ar_eg: ٥٠ ألف
-        ar: ٥٠ ألفًا
-        en: 50,000
-      - text: satus seket ewu
-        ar_eg: ١٥٠ ألف
-        ar: ١٥٠ ألفًا
-        en: 150,000
-      - text: rong atus ewu
-        ar_eg: ٢٠٠ ألف
-        ar: ٢٠٠ ألف
-        en: 200,000
-      - text: sejuta
+      - text: yuta
         ar_eg: مليون
         ar: مليون
-        en: 1,000,000
-    words: [selawe, seket, satus, atus, sejuta]
+        en: million
+      - text: sekilo
+        ar_eg: كيلو واحد
+        ar: كيلو واحد
+        en: one kilo
+      - text: setengah
+        ar_eg: نص
+        ar: نصف
+        en: half
+      - text: bawang abang
+        ar_eg: بصل أحمر صغير
+        ar: بصل أحمر صغير
+        en: shallot
+      - text: bawang putih
+        ar_eg: توم
+        ar: ثوم
+        en: garlic
+      - text: susuk
+        ar_eg: الباقي (فلوس)
+        ar: الباقي من المال
+        en: change (money)
+    words: [yuta / juta, sekilo, setengah, bawang abang, bawang putih, susuk]
   - id: e02
     type: multiple_choice
     question: 15.000 = ?
@@ -132,15 +136,15 @@ exercises:
       ar_eg: إزاي تقول ١٥ ألف؟
       ar: كيف تقول ١٥ ألفًا؟
       en: How do you say 15,000?
-    options: [limalas ewu, seket ewu, limang ewu]
+    options: [limalas ewu, limalas yuta, limang ewu]
     answer: 0
-    words: [limalas, ewu]
+    words: [limalas, ewu, yuta / juta]
   - id: e03
     type: listen
     text: Regane seket ewu.
-    options: [Regane sewidak ewu., Regane selawe ewu., Regane seket ewu.]
+    options: [Regane seket yuta., Regane selawe ewu., Regane seket ewu.]
     answer: 2
-    words: [rega, seket, ewu]
+    words: [rega, seket, ewu, yuta / juta]
   - id: e04
     type: fill_blank
     sentence: Bawang abang sekilo ___ ewu.
@@ -153,28 +157,44 @@ exercises:
   - id: e05
     type: build_sentence
     source:
-      ar_eg: سعره مية وخمسين ألف.
-      ar: ثمنه مئة وخمسون ألفًا.
-      en: It costs 150,000.
-    answer: Regane satus seket ewu.
+      ar_eg: الكل طلع مية وخمسين ألف.
+      ar: المجموع مئة وخمسون ألفًا.
+      en: It all comes to 150,000.
+    answer: Kabeh dadi satus seket ewu.
     distractors: [selawe, rong]
-    words: [rega, satus, seket, ewu]
+    words: [kabeh, dadi, satus, seket, ewu]
   - id: e06
-    type: dictation
-    text: Seket ewu wae, ya?
+    type: listen
+    text: Bawang putih setengah kilo, Bu.
+    options: ['Bawang putih setengah kilo, Bu.', 'Bawang abang setengah kilo, Bu.', 'Bawang putih sekilo, Bu.', 'Iki susuke, Bu.']
+    answer: 0
     meaning:
-      ar_eg: خمسين ألف بس، ماشي؟
-      ar: خمسون ألفًا فقط، اتفقنا؟
-      en: Just 50,000, OK?
-    words: [seket, ewu, wae]
+      ar_eg: نص كيلو توم يا طنط.
+      ar: نصف كيلو ثوم يا خالة.
+      en: Half a kilo of garlic, please.
+    words: [bawang putih, setengah, bawang abang, sekilo, susuk]
   - id: e07
     type: speaking
-    text: Kabeh dadi satus seket ewu.
+    text: Kabeh dadi seket ewu. Susuke pira, Bu?
     meaning:
-      ar_eg: الكل مية وخمسين ألف.
-      ar: المجموع مئة وخمسون ألفًا.
-      en: That's 150,000 altogether.
-    words: [dadi, satus, seket, ewu]
+      ar_eg: الكل طلع خمسين ألف. الباقي كام يا طنط؟
+      ar: المجموع خمسون ألفًا. كم الباقي يا خالة؟
+      en: That comes to fifty thousand. How much change, ma'am?
+    words: [dadi, seket, ewu, susuk, pira]
+  - id: e08
+    type: multiple_choice
+    question: Bawang putih setengah kilo, kabeh dadi pira?
+    question_meaning:
+      ar_eg: معناها إيه بالإندونيسي؟
+      ar: ما معناها بالإندونيسية؟
+      en: What does it mean in Indonesian?
+    options: ['Bawang putih setengah kilo, semuanya jadi berapa?', 'Bawang merah setengah kilo, semuanya jadi berapa?', 'Bawang putih sekilo, kembaliannya berapa?']
+    answer: 0
+    explain:
+      ar_eg: dadi = jadi (يطلع)، setengah = نص، bawang putih = توم.
+      ar: dadi = jadi، وsetengah = نصف، وbawang putih = ثوم.
+      en: dadi = jadi, setengah = half, bawang putih = garlic.
+    words: [bawang putih, setengah, dadi, sekilo]
 dialogue:
   title: Tuku bawang neng Bu Karti
   lines:

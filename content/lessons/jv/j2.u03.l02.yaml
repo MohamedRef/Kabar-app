@@ -44,27 +44,31 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: sewelas
-        ar_eg: حداشر (11)
-        ar: أحد عشر (11)
-        en: eleven (11)
-      - text: rolas
-        ar_eg: اتناشر (12)
-        ar: اثنا عشر (12)
-        en: twelve (12)
-      - text: selikur
-        ar_eg: واحد وعشرين (21)
-        ar: واحد وعشرون (21)
-        en: twenty-one (21)
-      - text: selawe
-        ar_eg: خمسة وعشرين (25)
-        ar: خمسة وعشرون (25)
-        en: twenty-five (25)
       - text: seket
         ar_eg: خمسين (50)
         ar: خمسون (50)
         en: fifty (50)
-    words: [sewelas, rolas, selikur, selawe, seket]
+      - text: sewidak
+        ar_eg: ستين (60)
+        ar: ستون (60)
+        en: sixty (60)
+      - text: nganti
+        ar_eg: لحد
+        ar: حتى
+        en: until, up to
+      - text: akeh
+        ar_eg: كتير
+        ar: كثير
+        en: many, a lot
+      - text: karung
+        ar_eg: شوال
+        ar: كيس كبير
+        en: sack
+      - text: kutha
+        ar_eg: مدينة
+        ar: مدينة
+        en: city
+    words: [seket, sewidak, nganti, akeh, karung, kutha]
   - id: e02
     type: multiple_choice
     question: 60 = ?
@@ -105,12 +109,45 @@ exercises:
     words: [umur, seket, taun]
   - id: e06
     type: speaking
-    text: Seket, sewidak, pitung puluh.
+    text: Wonge akeh tenan, nganti sewidak!
     meaning:
-      ar_eg: خمسين، ستين، سبعين.
-      ar: خمسون، ستون، سبعون.
-      en: Fifty, sixty, seventy.
-    words: [seket, sewidak, pitung puluh]
+      ar_eg: الناس كتير بجد، لحد ستين!
+      ar: الناس كثيرون حقًّا، حتى ستين!
+      en: So many people, up to sixty!
+    words: [akeh, nganti, sewidak]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «كتير»؟
+      ar: أيّ كلمة تعني «كثير»؟
+      en: Which word means "many, a lot"?
+    options: [akeh, karung, kutha]
+    answer: 0
+    explain:
+      ar_eg: akeh = banyak. karung = شوال، kutha = مدينة.
+      ar: akeh = banyak، وkarung = كيس كبير، وkutha = مدينة.
+      en: akeh = banyak; karung = sack, kutha = city.
+    words: [akeh, karung, kutha]
+  - id: e08
+    type: listen
+    text: Bapak tuku seket karung.
+    options: [Bapak tuku seket karung., Bapak tuku sewidak karung., Bapak tuku selawe karung.]
+    answer: 0
+    meaning:
+      ar_eg: بابا اشترى خمسين شوال.
+      ar: اشترى أبي خمسين كيسًا.
+      en: Dad bought fifty sacks.
+    words: [tuku, seket, karung, sewidak, selawe]
+  - id: e09
+    type: fill_blank
+    sentence: Saka kene ___ kutha adoh.
+    meaning:
+      ar_eg: من هنا لحد المدينة بعيد.
+      ar: من هنا حتى المدينة بعيد.
+      en: It's far from here to the city.
+    options: [nganti, akeh, karung]
+    answers: [nganti]
+    words: [nganti, kutha, adoh]
 dialogue:
   title: Karung bawang neng Nganjuk
   lines:
