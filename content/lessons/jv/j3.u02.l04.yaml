@@ -1,220 +1,171 @@
 schema: kabar.lesson/v1
 id: j3.u02.l04
 language: jv
-title: Ulangan J3.2
+title: Sugeng rawuh, Mas Mohamed
 can_do:
-  ar_eg: تبدّل الضماير حسب الموقف.
-  ar: أن تبدّل الضمائر بحسب الموقف.
-  en: Swap pronouns by situation.
+  ar_eg: تقرا ورقة ترحيب بالكراما من صاحبة البيت وترد عليها بأدب.
+  ar: أن تقرأ ورقة ترحيب بالكراما من صاحبة البيت وتردّ عليها بأدب.
+  en: Read a host's krama welcome note and answer it politely.
 slides:
-  - title: Tabel tembung ganti
+  - title: Layang ing meja
     body:
       ar_eg: |
-        كل الضماير في جدول واحد (ngoko ← krama ← krama inggil):
-        - أنا: aku ← kula (chat kulo)، وdalem للتواضع الشديد و«أفندم؟»
-        - إنت: kowe ← sampeyan ← panjenengan
-        - هو / هي: dheweke ← piyambakipun ← panjenenganipun
-        - بتاعي: -ku ← اسم + kula (nami kula، griya kula)
-        وعمرك ما تستخدم panjenengan أو dhahar أو asma عن نفسك.
+        محمد نزل في بيت قريب من Pasar Gede. على الترابيزة لقى ورقة صغيرة من صاحبة البيت. اقراها:
+        خد بالك إزاي بتقول «بيتي» بالكراما: griya kula (مش omahku).
       ar: |
-        الضمائر كلها في جدول واحد (ngoko ← krama ← krama inggil):
-        - أنا: aku ← kula (وفي الدردشة kulo)، وdalem للتواضع الشديد ولجواب النداء
-        - أنت: kowe ← sampeyan ← panjenengan
-        - هو / هي: dheweke ← piyambakipun ← panjenenganipun
-        - الملكية: -ku ← الاسم + kula (nami kula، griya kula)
-        ولا تستعمل panjenengan ولا dhahar ولا asma عن نفسك.
+        نزل محمد في بيت قريب من Pasar Gede، فوجد على الطاولة ورقة صغيرة من صاحبة البيت. اقرأها:
+        لاحظ كيف تقول «بيتي» بالكراما: griya kula لا omahku.
       en: |
-        All the pronouns in one table (ngoko → krama → krama inggil):
-        - I: aku → kula (chat kulo); dalem for deep humility and "yes?" when called
-        - you: kowe → sampeyan → panjenengan
-        - he / she: dheweke → piyambakipun → panjenenganipun
-        - my: -ku → noun + kula (nami kula, griya kula)
-        Never use panjenengan, dhahar or asma about yourself.
+        Mohamed is staying in a house near Pasar Gede. On the table he finds a little note from his host. Read it:
+        notice how she says "my house" in krama: griya kula (not omahku).
+    examples:
+      - text: Sugeng rawuh, Mas Mohamed!
+        ar_eg: أهلًا وسهلًا يا أستاذ محمد!
+        ar: أهلًا وسهلًا يا أخي محمد!
+        en: Welcome, Mohamed!
+      - text: Nami kula Bu Siti. Menika griya kula.
+        ar_eg: اسمي Bu Siti. ده بيتي.
+        ar: اسمي Bu Siti. هذا بيتي.
+        en: My name is Bu Siti. This is my house.
+      - text: Kula ing Pasar Gede, Mas. Mangga!
+        ar_eg: أنا في Pasar Gede يا أستاذ. اتفضل (البيت بيتك)!
+        ar: أنا في Pasar Gede يا أخي. تفضّل (البيت بيتك)!
+        en: I'm at Pasar Gede. Make yourself at home!
     grammar: jv.pronoun.krama
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: aku
-        ar_eg: بالكراما kula
-        ar: بالكراما kula
-        en: in krama → kula
-      - text: kowe
-        ar_eg: بالكراما sampeyan
-        ar: بالكراما sampeyan
-        en: in krama → sampeyan
-      - text: dheweke
-        ar_eg: بالكراما piyambakipun
-        ar: بالكراما piyambakipun
-        en: in krama → piyambakipun
-      - text: jenengku
-        ar_eg: بالكراما nami kula
-        ar: بالكراما nami kula
-        en: in krama → nami kula
-      - text: omahku
-        ar_eg: بالكراما griya kula
-        ar: بالكراما griya kula
-        en: in krama → griya kula
-    words: [kula, sampeyan, piyambakipun, nami, griya]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من الورقة) البيت ده بيت مين؟
+      ar: (من الورقة) بيت من هذا؟
+      en: (from the note) Whose house is it?
+    options: [griya Bu Siti, griya Mas Dimas, griya Mbah Putri]
+    answer: 0
+    words: [griya]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: صاحبك Dimas. «إنت» = ؟
-      ar: صديقك Dimas. «أنت» = ؟
-      en: Your friend Dimas. "You" = ?
-    options: [panjenengan, kowe, sampeyan]
-    answer: 1
-    explain:
-      ar_eg: 'صاحبك: kowe.'
-      ar: 'الصديق: kowe.'
-      en: A friend — kowe.
-    words: [kowe]
+      ar_eg: (من الورقة) Bu Siti فين دلوقتي؟
+      ar: (من الورقة) أين Bu Siti الآن؟
+      en: (from the note) Where is Bu Siti now?
+    options: [ing griya, ing stasiun, ing Pasar Gede]
+    answer: 2
+    words: [ing]
   - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: Bu Siti البياعة في Pasar Gede. «إنتي» = ؟
-      ar: Bu Siti البائعة في Pasar Gede. «أنتِ» = ؟
-      en: Bu Siti, the seller at Pasar Gede. "You" = ?
-    options: [sampeyan, dheweke, kowe]
-    answer: 0
+      ar_eg: في «Menika griya kula»، أنهي كلمة معناها «بتاعي / ـي»؟
+      ar: في «Menika griya kula»، أيّ كلمة تعني «ـي» (الملكية)؟
+      en: In "Menika griya kula", which word means "my"?
+    options: [menika, griya, kula]
+    answer: 2
     explain:
-      ar_eg: 'البياعة: sampeyan (مؤدبة ويومية).'
-      ar: 'البائعة: sampeyan (مهذبة يومية).'
-      en: A seller — sampeyan (polite, everyday).
-    words: [sampeyan]
+      ar_eg: 'بالكراما مفيش -ku: بتحط kula بعد الاسم. griya kula = بيتي، nami kula = اسمي.'
+      ar: 'لا -ku في الكراما، بل kula بعد الاسم: griya kula = بيتي، nami kula = اسمي.'
+      en: 'Krama has no -ku: put kula after the noun. griya kula = my house, nami kula = my name.'
+    words: [kula, menika]
   - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: جدة Dimas. «حضرتك» = ؟
-      ar: جدة Dimas. «حضرتكِ» = ؟
-      en: Dimas's grandmother. "You" = ?
-    options: [panjenengan, piyambakipun, sampeyan]
-    answer: 0
-    explain:
-      ar_eg: 'الجدة: panjenengan. piyambakipun = «هي» مش «إنتي».'
-      ar: 'الجدة: panjenengan، أما piyambakipun فمعناها «هي».'
-      en: Grandma — panjenengan. Piyambakipun means "she", not "you".
-    words: [panjenengan]
+    type: match_pairs
+    pairs:
+      - text: Sugeng rawuh
+        ar_eg: أهلًا وسهلًا
+        ar: أهلًا وسهلًا
+        en: Welcome
+      - text: Nami kula
+        ar_eg: اسمي
+        ar: اسمي
+        en: My name is
+      - text: Menika griya kula
+        ar_eg: ده بيتي
+        ar: هذا بيتي
+        en: This is my house
+      - text: Mangga
+        ar_eg: اتفضل
+        ar: تفضّل
+        en: Please, go ahead
+    words: [sugeng rawuh, nami, griya, mangga]
   - id: e05
     type: listen
-    text: Dalem, Mbah?
-    options: ['Dalem, Mbah?', 'Dereng, Mbah.', 'Inggih, Mbak.']
-    answer: 0
-    words: [dalem]
+    text: Sugeng rawuh, Mas Mohamed!
+    options: ['Sugeng enjing, Mas Mohamed!', 'Sugeng rawuh, Mas Mohamed!', 'Sugeng dalu, Mas Mohamed!']
+    answer: 1
+    meaning:
+      ar_eg: أهلًا وسهلًا يا أستاذ محمد!
+      ar: أهلًا وسهلًا يا أخي محمد!
+      en: Welcome, Mohamed!
+    words: [sugeng rawuh]
   - id: e06
     type: fill_blank
-    sentence: Nami ___ Mohamed, Bu.
+    sentence: Menika griya ___, Bu?
     meaning:
-      ar_eg: اسمي محمد يا مدام.
-      ar: اسمي محمد يا سيدتي.
-      en: My name is Mohamed, ma'am.
-    answers: [kula, kulo]
+      ar_eg: ده بيت حضرتك يا مدام؟ (لـ Bu Siti)
+      ar: هل هذا بيتك يا سيدتي؟ (لـ Bu Siti)
+      en: Is this your house, ma'am? (to Bu Siti)
+    answers: [sampeyan, panjenengan]
     explain:
-      ar_eg: '«اسمي» بالكراما: nami kula.'
-      ar: '«اسمي» بالكراما: nami kula.'
-      en: '"My name" in krama: nami kula.'
-    words: [nami, kula]
+      ar_eg: '«بيتك» بالكراما = griya + sampeyan (أو panjenengan لو عايز أدب أكتر). مش omahmu.'
+      ar: '«بيتك» بالكراما griya sampeyan، أو griya panjenengan للأدب الأكثر، لا omahmu.'
+      en: '"Your house" in krama is griya sampeyan (or griya panjenengan, more polite) — not omahmu.'
+    words: [griya, sampeyan]
   - id: e07
-    type: fill_blank
-    sentence: Menika griya ___, Mbah?
-    meaning:
-      ar_eg: ده بيت حضرتك يا تيتة؟
-      ar: أهذا بيتك يا جدتي؟
-      en: Is this your house, Grandma?
-    options: [kula, kowe, panjenengan]
-    answers: [panjenengan]
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: 'اكتب رد لـ Bu Siti: شكرًا يا مدام. اسمي محمد، من مصر.'
+      ar: 'اكتب ردًا لـ Bu Siti: شكرًا يا سيدتي. اسمي محمد، من مصر.'
+      en: "Write back to Bu Siti: Thank you, ma'am. My name is Mohamed, from Egypt."
+    answers: ["Matur nuwun, Bu. Nami kula Mohamed, saking Mesir.", "Matur nuwun, Bu. Nami kulo Mohamed, saking Mesir.", "Matur nuwun, Bu. Nami kula Mohamed. Kula saking Mesir.", "Matur nuwun, Bu. Nami kulo Mohamed. Kulo saking Mesir.", "Matur nuwun, Bu. Kula Mohamed, saking Mesir.", "Matur nuwun, Bu Siti. Nami kula Mohamed, saking Mesir.", "Matur nuwun, Bu Siti. Nami kula Mohamed. Kula saking Mesir."]
     explain:
-      ar_eg: '«بيتك» للجدة: griya panjenengan. griya kula = بيتي.'
-      ar: '«بيتكِ» للجدة: griya panjenengan، أما griya kula فـ«بيتي».'
-      en: '"Your house" to Grandma: griya panjenengan. Griya kula = my house.'
-    words: [griya, panjenengan]
+      ar_eg: 'كله krama: nami kula (اسمي)، saking (من).'
+      ar: 'كلها krama: nami kula (اسمي) وsaking (من).'
+      en: 'All krama: nami kula (my name), saking (from).'
+    words: [nami, kula, saking]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: حضرتك كلت يا أستاذ؟ (لراجل غريب في سنك)
-      ar: هل أكلتَ يا أخي؟ (لرجل غريب في مثل سنك)
-      en: Have you eaten? (to a stranger your age, Mas)
-    answer: Sampeyan sampun nedha, Mas?
-    distractors: [kowe, wis]
-    words: [sampeyan, sampun, nedha]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: اسمي محمد، من مصر. (بالكراما)
-      ar: اسمي محمد، من مصر. (بالكراما)
-      en: My name is Mohamed, from Egypt. (krama)
-    answers: ['Nami kula Mohamed, saking Mesir.', 'Nami kulo Mohamed, saking Mesir.', 'Nami kula Mohamed, saking Mesir', 'Nami kulo Mohamed, saking Mesir', Nami kula Mohamed. Kula saking Mesir., Nami kulo Mohamed. Kulo saking Mesir., Nami kula Mohamed. Kula saking Mesir, Nami kulo Mohamed. Kulo saking Mesir, 'Nami kula Mohamed, kula saking Mesir.', 'Nami kulo Mohamed, kulo saking Mesir.', 'Nami kula Mohamed, kula saking Mesir', 'Nami kulo Mohamed, kulo saking Mesir']
-    words: [nami, kula, saking]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: هي كلت خلاص. (بتتكلم بأدب عن Bu Siti)
-      ar: قد أكلَتْ. (تتحدث بأدب عن Bu Siti)
-      en: She has eaten. (speaking politely about Bu Siti)
-    answers: [Piyambakipun sampun nedha., Piyambakipun sampun nedha, Bu Siti sampun nedha., Bu Siti sampun nedha]
+      ar_eg: أهلًا بيك في بيتي.
+      ar: مرحبًا بك في بيتي.
+      en: Welcome to my house.
+    answer: Sugeng rawuh ing griya kula.
+    distractors: [omah, aku]
     explain:
-      ar_eg: هي بالكراما piyambakipun، والفعل nedha (krama عادية).
-      ar: «هي» بالكراما piyambakipun، والفعل nedha.
-      en: '"She" in krama is piyambakipun, with nedha.'
-    words: [piyambakipun, sampun, nedha]
-  - id: e11
-    type: dictation
-    text: Piyambakipun saking Yogya.
-    meaning:
-      ar_eg: هو من يوجيا.
-      ar: هو من يوغياكرتا.
-      en: He's from Yogya.
-    words: [piyambakipun, saking]
-  - id: e12
-    type: speaking
-    text: Dalem, Mbah? Inggih, kula sampun nedha.
-    meaning:
-      ar_eg: أفندم يا تيتة؟ أيوه، أنا كلت.
-      ar: نعم يا جدتي؟ نعم، قد أكلتُ.
-      en: Yes, Grandma? Yes, I've eaten.
-    words: [dalem, inggih, kula]
+      ar_eg: 'griya kula = بيتي بالكراما؛ omah وaku نغوكو.'
+      ar: 'griya kula = بيتي بالكراما، وomah وaku من الـ ngoko.'
+      en: griya kula = my house in krama; omah and aku are ngoko.
+    words: [sugeng rawuh, griya, kula]
 dialogue:
-  title: Pamit saka Pasar Gede
+  title: Bu Siti mulih
   lines:
     - speaker: Bu Siti
-      text: Mas Mohamed, Mas Dimas saking Yogya?
-      ar_eg: يا أستاذ محمد، Dimas من يوجيا؟
-      ar: يا محمد، هل Dimas من يوغياكرتا؟
-      en: Mohamed, is Dimas from Yogya?
+      text: Mas Mohamed! Sugeng rawuh.
+      ar_eg: أستاذ محمد! أهلًا وسهلًا.
+      ar: أخي محمد! أهلًا وسهلًا.
+      en: Mohamed! Welcome.
     - speaker: Mohamed
-      text: Inggih, Bu. Piyambakipun saking Yogya.
-      ar_eg: أيوه يا مدام. هو من يوجيا.
-      ar: نعم يا سيدتي، هو من يوغياكرتا.
-      en: Yes, ma'am. He's from Yogya.
+      text: Matur nuwun, Bu. Menika griya sampeyan?
+      ar_eg: شكرًا يا مدام. ده بيت حضرتك؟
+      ar: شكرًا يا سيدتي. أهذا بيتك؟
+      en: Thank you, ma'am. Is this your house?
     - speaker: Bu Siti
-      text: Oh, inggih. Sampeyan sampun nedha?
-      ar_eg: آه، ماشي. وحضرتك كلت؟
-      ar: آه، حسنًا. وهل أكلتَ أنت؟
-      en: Oh, I see. Have you eaten?
+      text: Inggih, Mas. Menika griya kula.
+      ar_eg: أيوه يا أستاذ. ده بيتي.
+      ar: نعم يا أخي. هذا بيتي.
+      en: Yes. This is my house.
+    - speaker: Bu Siti
+      text: Mas sampun nedha?
+      ar_eg: كلت يا أستاذ؟
+      ar: هل أكلتَ يا أخي؟
+      en: Have you eaten?
     - speaker: Mohamed
-      text: Sampun, Bu. Matur nuwun.
-      ar_eg: آه يا مدام. شكرًا.
-      ar: نعم يا سيدتي. شكرًا.
-      en: Yes, ma'am. Thank you.
-    - speaker: Mas Dimas
-      text: Mohamed, ayo mulih!
-      ar_eg: يلا يا محمد نروّح!
-      ar: هيا يا محمد نعود إلى البيت!
-      en: Mohamed, let's go home!
-    - speaker: Mohamed
-      text: Ayo, Mas!
-      ar_eg: يلا يا دِيماس!
-      ar: هيا يا ديماس!
-      en: Let's go, Dimas!
-souvenir:
-  id: j3.u02.souvenir
-  title: Pasar Gede
-  note:
-    ar_eg: 'Pasar Gede من أكبر وأقدم الأسواق في سولو، ببوابته الكبيرة ودوشة البياعين من الفجر. هنا هتسمع «sampeyan» في كل حتة: مؤدبة بس دافية، زي «حضرتك» بتاعة السوق. ولما تقابل حد كبير، panjenengan بتفتحلك القلوب.'
-    ar: Pasar Gede من أكبر أسواق سولو وأعرقها، ببوابته الكبيرة وصخب الباعة منذ الفجر. وفيه تسمع «sampeyan» في كل مكان، مهذبة دافئة كـ«حضرتك» في الأسواق. أما مع الكبار فتفتح لك panjenengan القلوب.
-    en: Pasar Gede is Solo's great old market, with its grand gateway and sellers busy from dawn. Here you'll hear "sampeyan" everywhere — polite but warm, the market's «حضرتك». And with elders, panjenengan opens every heart.
+      text: Dereng, Bu.
+      ar_eg: لسه يا مدام.
+      ar: ليس بعد يا سيدتي.
+      en: Not yet, ma'am.
+    - speaker: Bu Siti
+      text: Mangga, Mas, mangga!
+      ar_eg: اتفضل يا أستاذ، اتفضل!
+      ar: تفضّل يا أخي، تفضّل!
+      en: Please, go ahead!
 review:
   status: draft
   verified: false
