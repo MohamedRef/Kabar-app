@@ -510,8 +510,9 @@ items:
   stem: A 55-year-old with HCV cirrhosis has new grade 2 ascites. Serum albumin 2.9 g/dL, ascitic albumin 1.1 g/dL,
     ascitic total protein 1.2 g/dL, PMN 60/mm³.
   inputs:
-    serum_albumin: 2.9
-    ascites_albumin: 1.1
+    serum_albumin_g_dl: 2.9
+    ascitic_albumin_g_dl: 1.1
+    ascitic_protein_g_dl: 1.2
   expect: SAAG = 1.8 g/dL (high)
   interpret: 'High SAAG with low protein (<1.5 g/dL): portal-hypertensive ascites of cirrhosis. PMN <250, so no
     SBP.'
@@ -525,8 +526,9 @@ items:
   stem: A 40-year-old woman with weight loss and night sweats has ascites. Serum albumin 3.6 g/dL, ascitic albumin
     3.0 g/dL, ascitic protein 4.2 g/dL, mostly lymphocytes.
   inputs:
-    serum_albumin: 3.6
-    ascites_albumin: 3.0
+    serum_albumin_g_dl: 3.6
+    ascitic_albumin_g_dl: 3.0
+    ascitic_protein_g_dl: 4.2
   expect: SAAG = 0.6 g/dL (low)
   interpret: 'Low SAAG: not portal hypertension. Lymphocyte-rich, high-protein fluid suggests TB peritonitis; send
     PCR for TB.'
@@ -540,8 +542,9 @@ items:
   stem: A 68-year-old with ischemic cardiomyopathy and raised JVP has ascites. Serum albumin 3.4 g/dL, ascitic albumin
     1.9 g/dL, ascitic protein 3.1 g/dL.
   inputs:
-    serum_albumin: 3.4
-    ascites_albumin: 1.9
+    serum_albumin_g_dl: 3.4
+    ascitic_albumin_g_dl: 1.9
+    ascitic_protein_g_dl: 3.1
   expect: SAAG = 1.5 g/dL (high)
   interpret: 'High SAAG with HIGH protein (>2.5 g/dL): post-sinusoidal portal hypertension from heart failure, not
     cirrhosis.'
@@ -555,8 +558,8 @@ items:
   stem: A 60-year-old with known cirrhosis has growing ascites and weight loss. Serum albumin 2.6 g/dL, ascitic
     albumin 1.3 g/dL, ascitic LDH high, CEA high.
   inputs:
-    serum_albumin: 2.6
-    ascites_albumin: 1.3
+    serum_albumin_g_dl: 2.6
+    ascitic_albumin_g_dl: 1.3
   expect: SAAG = 1.3 g/dL (high)
   interpret: 'Still high, because portal hypertension plus a second cause keeps SAAG ≥1.1 g/dL. High LDH and CEA
     point to malignancy (metastasis): send cytology.'
@@ -570,8 +573,8 @@ items:
   stem: A 30-year-old with heavy proteinuria and generalized edema has ascites. Serum albumin 1.6 g/dL, ascitic
     albumin 0.8 g/dL.
   inputs:
-    serum_albumin: 1.6
-    ascites_albumin: 0.8
+    serum_albumin_g_dl: 1.6
+    ascitic_albumin_g_dl: 0.8
   expect: SAAG = 0.8 g/dL (low)
   interpret: 'Low SAAG: non-portal-hypertensive ascites, here from hypoproteinemia (nephrotic syndrome).'
   src:

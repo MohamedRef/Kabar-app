@@ -1615,13 +1615,14 @@ items:
     mg/dL, HE grade 3.'
   question: Does she meet King's College criteria?
   inputs:
-    acetaminophen: false
+    cause: indeterminate_or_drug
     inr: 3.9
     bilirubin_mg_dl: 19
     jaundice_to_he_days: 10
-    age: 34
-    etiology: indeterminate
-  expect: 'Meets non-acetaminophen King''s criteria (4 of 5 minor: INR >3.5, bilirubin >17.5, interval >7 d, indeterminate)'
+    age_years: 34
+    he_stage: 3
+  expect: 'Criteria met: non-acetaminophen King''s criteria (4 of 5 minor: INR >3.5, bilirubin >17.5, interval >7
+    d, indeterminate)'
   interpret: 'Poor prognosis without LT: list for emergent transplantation.'
   src:
     page: 187
@@ -1634,13 +1635,14 @@ items:
     3.8 mg/dL, HE grade 3.'
   question: Does he meet King's College criteria?
   inputs:
-    acetaminophen: true
-    ph: 7.34
-    lactate: 2.1
+    cause: acetaminophen
     inr: 7.2
+    ph: 7.34
+    lactate_mmol_l: 2.1
     creatinine_mg_dl: 3.8
-    he_grade: 3
-  expect: 'Meets acetaminophen King''s criteria (all 3: INR >6.5, creatinine >3.4 mg/dL, HE 3–4)'
+    he_stage: 3
+    over_24h: true
+  expect: 'Criteria met: acetaminophen King''s criteria (all 3: INR >6.5, creatinine >3.4 mg/dL, HE 3–4)'
   interpret: 'Poor prognosis without LT: emergent listing.'
   src:
     page: 187
