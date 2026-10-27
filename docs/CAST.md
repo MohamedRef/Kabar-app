@@ -32,7 +32,7 @@ The source of truth is [`content/cast.yaml`](../content/cast.yaml)
    (level) is listed in `pending.yaml`. Listing a unit that already has its
    episode fails too, so the pending list only ever shrinks.
 
-Portraits (`assets/src/personas/<id>.png`) use the registry `id`. Never
+Portraits (`assets/src/personas/<id>.webp`) use the registry `id`. Never
 rename an `id`: persona ids are stored in synced chats. Rename `name`
 instead and keep the old name as an alias only if it is the same person.
 

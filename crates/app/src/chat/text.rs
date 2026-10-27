@@ -45,13 +45,13 @@ pub fn tt(lang: UiLanguage, msg: T) -> &'static str {
     use UiLanguage::*;
     match (msg, lang) {
         (Intro, ArEg) => {
-            "اتكلم مع أربع صحاب من إندونيسيا. بيردّوا عليك، ولو فيه حاجة تتقال أحسن بيقولولك بالراحة."
+            "اتكلم مع صحابك من إندونيسيا، كل واحد لمستوى. بيردّوا عليك، ولو فيه حاجة تتقال أحسن بيقولولك بالراحة."
         }
         (Intro, Ar) => {
-            "تحدّث مع أربعة أصدقاء من إندونيسيا. يردّون عليك، وإن كان في كلامك ما يُقال أفضل نبّهوك بلطف."
+            "تحدّث مع أصدقائك من إندونيسيا، لكلٍّ منهم مستواه. يردّون عليك، وإن كان في كلامك ما يُقال أفضل نبّهوك بلطف."
         }
         (Intro, En) => {
-            "Talk with four friends from Indonesia. They answer, and gently show you a more natural way to say things."
+            "Talk with friends from Indonesia, each written for a level. They answer, and gently show you a more natural way to say things."
         }
         (YourChats, ArEg) => "دردشاتك",
         (YourChats, Ar) => "محادثاتك",
