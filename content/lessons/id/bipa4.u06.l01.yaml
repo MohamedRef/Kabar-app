@@ -98,7 +98,7 @@ exercises:
       ar_eg: السياحة بتزوّد دخل السكان.
       ar: السياحة تزيد دخل السكان.
       en: Tourism increases residents' income.
-    words: [meningkatkan, pendapatan, warga]
+    words: [meningkatkan, pendapatan, warga, pariwisata, negara]
   - id: e04
     type: fill_blank
     sentence: Hotel baru itu ___ lapangan kerja bagi warga desa.
@@ -134,7 +134,7 @@ exercises:
       en: Tourism creates jobs and increases residents' income.
     answer: Pariwisata membuka lapangan kerja dan meningkatkan pendapatan warga.
     distractors: [menarik, memberi]
-    words: [lapangan kerja, meningkatkan, pendapatan, warga]
+    words: [lapangan kerja, meningkatkan, pendapatan, warga, pariwisata]
   - id: e07
     type: translate
     direction: to_target
@@ -158,6 +158,30 @@ exercises:
       ar: يجذب المهرجان الثقافي السياح وينفع السكان.
       en: The cultural festival attracts tourists and benefits residents.
     words: [menarik, wisatawan, manfaat, warga]
+  - id: e09
+    type: multiple_choice
+    question: Pariwisata meningkatkan pendapatan negara.
+    question_meaning:
+      ar_eg: السياحة بتزوّد إيه؟
+      ar: ماذا تزيد السياحة؟
+      en: What does tourism increase?
+    options: ['Pendapatan negara.', 'Harga tiket.', 'Jumlah sampah.']
+    answer: 0
+    explain:
+      ar_eg: pariwisata = السياحة، وnegara = الدولة.
+      ar: pariwisata = السياحة، وnegara = الدولة.
+      en: pariwisata = tourism; negara = the state, country.
+    words: [pariwisata, negara, pendapatan]
+  - id: e10
+    type: fill_blank
+    sentence: Indonesia adalah ___ kepulauan.
+    meaning:
+      ar_eg: إندونيسيا دولة جزر.
+      ar: إندونيسيا دولة أرخبيلية.
+      en: Indonesia is an island nation.
+    options: [negara, pendapatan, warga]
+    answers: [negara]
+    words: [negara]
 dialogue:
   title: Hotel baru di Palu
   lines:
@@ -197,6 +221,16 @@ new_words:
     ar_eg: فرص شغل
     ar: فرص العمل
     en: jobs, employment
+  - word: pariwisata
+    pos: noun
+    ar_eg: السياحة
+    ar: السياحة
+    en: tourism
+  - word: negara
+    pos: noun
+    ar_eg: دولة / بلد
+    ar: دولة
+    en: country, state
 review:
   status: draft
   verified: false

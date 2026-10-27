@@ -73,7 +73,7 @@ exercises:
       ar_eg: Saya berpendapat bahwa … = رأيك في الأول. Dengan demikian للآخر، وKedua للحجج.
       ar: Saya berpendapat bahwa … للرأي في البداية، وDengan demikian للخاتمة، وKedua للحجج.
       en: Saya berpendapat bahwa … states the thesis first; Dengan demikian is for the end, Kedua for arguments.
-    words: [berpendapat, dengan demikian]
+    words: [berpendapat, dengan demikian, bahwa]
   - id: e03
     type: listen
     text: Argumen kedua, perawat bekerja siang dan malam.
@@ -93,7 +93,7 @@ exercises:
       en: Teachers need patience and expertise. Thus, teaching is a hard but noble profession.
     options: [Dengan demikian, Sebaliknya, Tertutup]
     answers: [Dengan demikian]
-    words: [dengan demikian]
+    words: [dengan demikian, sulit]
   - id: e05
     type: fill_blank
     sentence: Paragraf terakhir teks eksposisi berisi ___.
@@ -116,7 +116,7 @@ exercises:
       ar_eg: terpenting = paling penting. ما تقولش «paling terpenting».
       ar: terpenting = paling penting، فلا يُجمع بينهما.
       en: terpenting = paling penting; never "paling terpenting".
-    words: [berpendapat]
+    words: [berpendapat, bahwa]
   - id: e07
     type: translate
     direction: to_target
@@ -131,23 +131,37 @@ exercises:
       - Argumen saya yang pertama adalah pekerjaan ini membutuhkan kesabaran.
       - Argumen pertama saya adalah pekerjaan ini memerlukan kesabaran.
       - Argumen pertama saya, pekerjaan ini membutuhkan kesabaran.
-    words: [argumen]
+    words: [argumen, bahwa]
   - id: e08
     type: dictation
-    text: Dengan demikian, profesi nelayan sangat penting bagi Makassar.
+    text: Dengan demikian, profesi nelayan sulit tetapi sangat penting bagi Makassar.
     meaning:
-      ar_eg: وبكده، مهنة الصيد مهمة جدًا لماكاسار.
-      ar: وبذلك فمهنة الصيد مهمة جدًا لماكاسار.
-      en: Thus, fishing is a very important profession for Makassar.
-    words: [dengan demikian]
+      ar_eg: وبكده، مهنة الصيد صعبة بس مهمة جدًا لماكاسار.
+      ar: وبذلك فمهنة الصيد صعبة لكنها مهمة جدًا لماكاسار.
+      en: Thus, fishing is a hard but very important profession for Makassar.
+    words: [dengan demikian, sulit]
   - id: e09
     type: speaking
-    text: Kesimpulannya, keselamatan pelaut adalah tanggung jawab kita bersama.
+    text: Kesimpulannya, keselamatan pelaut adalah tanggung jawab kita semua.
     meaning:
       ar_eg: الخلاصة، سلامة البحّارة مسؤوليتنا كلنا.
       ar: خلاصة القول أن سلامة البحّارة مسؤوليتنا جميعًا.
       en: In conclusion, sailors' safety is our shared responsibility.
     words: [kesimpulan, keselamatan, tanggung jawab]
+  - id: e10
+    type: multiple_choice
+    question: Pekerjaan perawat sulit, tetapi penting.
+    question_meaning:
+      ar_eg: الكاتب بيوصف شغل التمريض إزاي؟
+      ar: كيف يصف الكاتب عمل التمريض؟
+      en: How does the writer describe nursing?
+    options: ['Sulit tetapi penting.', 'Tidak sulit.', 'Tidak penting.']
+    answer: 0
+    explain:
+      ar_eg: sulit = صعب، وtetapi = بس.
+      ar: sulit = صعب، وtetapi = لكن.
+      en: sulit = difficult; tetapi = but.
+    words: [sulit, penting]
 dialogue:
   title: Tugas presentasi
   lines:
@@ -202,6 +216,16 @@ new_words:
     ar_eg: وبكده / وبالتالي
     ar: وبذلك / وعليه
     en: thus, therefore
+  - word: bahwa
+    pos: conjunction
+    ar_eg: إن (saya berpendapat bahwa … = رأيي إن …)
+    ar: أنّ
+    en: that (introducing a clause)
+  - word: sulit
+    pos: adjective
+    ar_eg: صعب
+    ar: صعب
+    en: difficult
 review:
   status: draft
   verified: false

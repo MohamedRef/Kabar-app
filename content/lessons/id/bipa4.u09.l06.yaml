@@ -45,7 +45,7 @@ exercises:
       ar_eg: الباحثين بيقولوا إن حرارة البحر حوالين بوناكين أعلى من العادي.
       ar: أفاد الباحثون بأن حرارة البحر حول بوناكين أعلى من المعتاد.
       en: Researchers report that the sea temperature around Bunaken is higher than usual.
-    words: [peneliti, suhu]
+    words: [peneliti, suhu, sekitar]
   - id: e02
     type: listen
     text: Akibatnya, sebagian terumbu karang memutih.
@@ -148,6 +148,30 @@ exercises:
       - Terumbu karang terancam akibat perubahan iklim.
       - Terumbu karang terancam karena perubahan iklim.
     words: [terancam, iklim]
+  - id: e09
+    type: multiple_choice
+    question: Ada sekitar seratus peneliti di Bunaken.
+    question_meaning:
+      ar_eg: عدد الباحثين كام؟
+      ar: كم عدد الباحثين؟
+      en: How many researchers are there?
+    options: ['Kira-kira seratus.', 'Seratus, tidak kurang.', 'Seribu.']
+    answer: 0
+    explain:
+      ar_eg: sekitar + رقم = حوالي.
+      ar: sekitar + عدد = حوالي.
+      en: sekitar + number = about.
+    words: [sekitar, peneliti]
+  - id: e10
+    type: fill_blank
+    sentence: Suhu laut di ___ Bunaken naik.
+    meaning:
+      ar_eg: حرارة البحر حوالين بوناكن عليت.
+      ar: ارتفعت حرارة البحر حول بوناكن.
+      en: The sea temperature around Bunaken has risen.
+    options: [sekitar, peneliti, terancam]
+    answers: [sekitar]
+    words: [sekitar, suhu]
 dialogue:
   title: Berita dari Bunaken
   lines:
@@ -187,6 +211,11 @@ new_words:
     ar_eg: مهدّد
     ar: مهدَّد
     en: threatened
+  - word: sekitar
+    pos: preposition
+    ar_eg: حوالين / حوالي (sekitar seratus = حوالي مية)
+    ar: حول / حوالي
+    en: around; about
 review:
   status: draft
   verified: false

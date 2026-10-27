@@ -85,11 +85,11 @@ exercises:
     words: [untung-rugi, iklim, suhu, kenaikan, mata pencaharian]
   - id: e02
     type: multiple_choice
-    question: ___ kerja keras warga, pantai itu bersih kembali.
+    question: ___ warga, pantai itu bersih kembali.
     question_meaning:
-      ar_eg: بفضل شغل الناس الجامد، الشط رجع نضيف. أنهي كلمة؟
-      ar: بفضل عمل السكان الجاد عاد الشاطئ نظيفًا. أيّ كلمة تناسب؟
-      en: Thanks to residents' hard work, the beach is clean again. Which word fits?
+      ar_eg: بفضل الأهالي، الشط رجع نضيف. أنهي كلمة؟
+      ar: بفضل السكان عاد الشاطئ نظيفًا. أيّ كلمة تناسب؟
+      en: Thanks to the residents, the beach is clean again. Which word fits?
     options: [Akibat, Berkat, Gara-gara]
     answer: 1
     explain:
@@ -132,7 +132,7 @@ exercises:
       ar_eg: في أول جملة جديدة بنقول Akibatnya, … . sehingga بتربط جوه نفس الجملة.
       ar: في أول جملة جديدة نقول Akibatnya, … ، أما sehingga فتربط داخل الجملة نفسها.
       en: At the start of a new sentence use Akibatnya, … ; sehingga links inside one sentence.
-    words: [mata pencaharian]
+    words: [mata pencaharian, kehilangan]
   - id: e06
     type: build_sentence
     source:
@@ -164,7 +164,21 @@ exercises:
       ar_eg: لازم نوزن المكسب والخسارة، عشان صيادين كتير ممكن يخسروا رزقهم.
       ar: يجب أن نزن المكاسب والخسائر، لأن كثيرًا من الصيادين قد يفقدون مصدر رزقهم.
       en: We must weigh the pros and cons, because many fishermen could lose their livelihood.
-    words: [untung-rugi, mata pencaharian]
+    words: [untung-rugi, mata pencaharian, kehilangan]
+  - id: e09
+    type: multiple_choice
+    question: Banyak warga kehilangan pekerjaan karena banjir.
+    question_meaning:
+      ar_eg: حصل إيه لناس كتير؟
+      ar: ماذا حدث لكثير من السكان؟
+      en: What happened to many residents?
+    options: ['Mereka tidak punya pekerjaan lagi.', 'Mereka mendapat pekerjaan baru.', 'Mereka pindah ke kota.']
+    answer: 0
+    explain:
+      ar_eg: kehilangan = يخسر / يفقد.
+      ar: kehilangan = يفقد.
+      en: kehilangan = lose.
+    words: [kehilangan]
 dialogue:
   title: Karang yang memutih
   lines:
@@ -215,6 +229,11 @@ new_words:
     ar_eg: مصدر الرزق / أكل العيش
     ar: مصدر الرزق
     en: livelihood
+  - word: kehilangan
+    pos: verb
+    ar_eg: يخسر / يفقد
+    ar: يفقد
+    en: to lose
 review:
   status: draft
   verified: false

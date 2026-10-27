@@ -95,7 +95,7 @@ exercises:
       ar_eg: إما sebaik-baiknya وإما sebaik mungkin، من غير خلط.
       ar: إما sebaik-baiknya وإما sebaik mungkin، دون خلط.
       en: Either sebaik-baiknya or sebaik mungkin — don't mix them.
-    words: [sebaik-baiknya]
+    words: [sebaik-baiknya, mungkin]
   - id: e03
     type: listen
     text: Kami menunggu tanggapan dari pemerintah daerah.
@@ -115,7 +115,7 @@ exercises:
       en: The road is dangerous. Please repair it …!
     options: ["sebaik-baik", "secepat-cepatnya mungkin", "secepat-cepatnya"]
     answer: 2
-    words: [secepat-cepatnya]
+    words: [secepat-cepatnya, mungkin]
   - id: e05
     type: fill_blank
     sentence: Mohon jalan ini ___ diperbaiki.
@@ -158,6 +158,30 @@ exercises:
       ar: لا ردّ حتى الآن. نرجو إصلاح هذا الطريق بأسرع ما يمكن.
       en: There's still no response. Please have this road repaired as quickly as possible.
     words: [tanggapan, secepat-cepatnya]
+  - id: e09
+    type: multiple_choice
+    question: Saya ___ datang terlambat, jalannya rusak.
+    question_meaning:
+      ar_eg: «يمكن أتأخر، الطريق بايظ.» أنهي كلمة؟
+      ar: «ربما أتأخر، فالطريق معطّل.» أيّ كلمة؟
+      en: '"Maybe I will be late, the road is damaged." Which word?'
+    options: ['mungkin', 'sebaik-baiknya', 'secepat-cepatnya']
+    answer: 0
+    explain:
+      ar_eg: mungkin = يمكن / ممكن.
+      ar: mungkin = ربما.
+      en: mungkin = maybe.
+    words: [mungkin]
+  - id: e10
+    type: fill_blank
+    sentence: Tolong perbaiki jalan ini secepat ___.
+    meaning:
+      ar_eg: لو سمحت صلّح الطريق ده بأسرع ما يمكن.
+      ar: رجاءً أصلح هذا الطريق بأسرع ما يمكن.
+      en: Please repair this road as fast as possible.
+    options: [mungkin, sebaik-baiknya, segera]
+    answers: [mungkin]
+    words: [mungkin, secepat-cepatnya]
 dialogue:
   title: Rapat warga
   lines:
@@ -207,6 +231,11 @@ new_words:
     ar_eg: الحكومة المحلية
     ar: الحكومة المحلية
     en: local government
+  - word: mungkin
+    pos: adverb
+    ar_eg: يمكن / ممكن (secepat mungkin = بأسرع ما يمكن)
+    ar: ربما / ممكن (secepat mungkin = بأسرع ما يمكن)
+    en: maybe, possible (secepat mungkin = as fast as possible)
 review:
   status: draft
   verified: false

@@ -75,7 +75,7 @@ exercises:
       ar_eg: بنرجو من الأهالي يساعدوا يحافظوا على النضافة.
       ar: نرجو من السكان المساعدة في الحفاظ على النظافة.
       en: We ask residents to help keep things clean.
-    words: [warga]
+    words: [warga, membantu]
   - id: e04
     type: multiple_choice
     question_meaning:
@@ -147,6 +147,30 @@ exercises:
       - Jalan ini akan kami perbaiki sebaik-baiknya.
       - Kita akan memperbaiki jalan ini sebaik-baiknya.
     words: [sebaik-baiknya]
+  - id: e09
+    type: multiple_choice
+    question: Warga membantu memperbaiki jalan desa.
+    question_meaning:
+      ar_eg: الأهالي بيعملوا إيه؟
+      ar: ماذا يفعل السكان؟
+      en: What are the residents doing?
+    options: ['Mereka ikut memperbaiki jalan.', 'Mereka menulis surat pembaca.', 'Mereka menunggu truk tambang.']
+    answer: 0
+    explain:
+      ar_eg: membantu = يساعد. bantu اتعلمناها قبل كده.
+      ar: membantu = يساعد، من bantu.
+      en: membantu = help (from bantu).
+    words: [membantu]
+  - id: e10
+    type: fill_blank
+    sentence: Terima kasih sudah ___ kami, Pak.
+    meaning:
+      ar_eg: شكرًا إنك ساعدتنا يا أستاذ.
+      ar: شكرًا لمساعدتنا يا سيدي.
+      en: Thank you for helping us, sir.
+    options: [membantu, tanggapan, berlubang]
+    answers: [membantu]
+    words: [membantu]
 dialogue:
   title: Kabar baik
   lines:
@@ -175,7 +199,12 @@ dialogue:
       ar_eg: حلو. العيال يقدروا يذاكروا من غير تراب ودوشة.
       ar: جميل. يستطيع الأطفال الدراسة بلا غبار ولا ضجيج.
       en: Good. The children can study without dust and noise.
-new_words: []
+new_words:
+  - word: membantu
+    pos: verb
+    ar_eg: يساعد
+    ar: يساعد
+    en: to help
 review:
   status: draft
   verified: false

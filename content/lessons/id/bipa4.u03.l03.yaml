@@ -98,7 +98,7 @@ exercises:
       ar_eg: أداة تشبيه واحدة بس، ومن غير adalah قبل seperti.
       ar: أداة تشبيه واحدة، ولا تأتي adalah قبل seperti.
       en: One simile marker only, and no adalah before seperti.
-    words: [atap, melengkung, perahu]
+    words: [atap, melengkung, perahu, seperti]
   - id: e03
     type: listen
     text: Di depan tongkonan ada banyak tanduk kerbau.
@@ -122,6 +122,7 @@ exercises:
       ar_eg: التشبيه الثابت بـ pinang (فوفل)، وما بنغيرش كلماته.
       ar: التشبيه الثابت بـ pinang، ولا تُغيَّر ألفاظه.
       en: The fixed simile uses pinang (areca nut); its words never change.
+    words: [seperti]
   - id: e05
     type: fill_blank
     sentence: Rumah itu indah ___ istana.
@@ -140,7 +141,7 @@ exercises:
       en: The tongkonan's roof curves like a boat.
     answer: Atap tongkonan melengkung seperti perahu.
     distractors: [adalah, tanduk]
-    words: [atap, melengkung, perahu]
+    words: [atap, melengkung, perahu, seperti]
   - id: e07
     type: translate
     direction: to_target
@@ -162,7 +163,31 @@ exercises:
       ar_eg: من بعيد، القرية دي باينة كأنها لوحة.
       ar: تبدو تلك القرية من بعيد كأنها لوحة.
       en: From afar, that village looks like a painting.
-    words: [bagaikan]
+    words: [bagaikan, terlihat]
+  - id: e09
+    type: multiple_choice
+    question: Dari jauh, tongkonan terlihat seperti perahu.
+    question_meaning:
+      ar_eg: التونجكونان شكله إيه من بعيد؟
+      ar: كيف يبدو التونجكونان من بعيد؟
+      en: What does the tongkonan look like from far away?
+    options: ['Seperti perahu.', 'Seperti kerbau.', 'Seperti istana.']
+    answer: 0
+    explain:
+      ar_eg: terlihat seperti = شكله زي.
+      ar: terlihat seperti = يبدو مثل.
+      en: terlihat seperti = looks like.
+    words: [terlihat, seperti]
+  - id: e10
+    type: fill_blank
+    sentence: Dari pesawat, sawah-sawah ___ kecil sekali.
+    meaning:
+      ar_eg: من الطيارة، الغيطان باينة صغيرة أوي.
+      ar: من الطائرة تبدو الحقول صغيرة جدًا.
+      en: From the plane, the rice fields look very small.
+    options: [terlihat, melengkung, bagaikan]
+    answers: [terlihat]
+    words: [terlihat]
 dialogue:
   title: Atap seperti perahu
   lines:
@@ -217,6 +242,16 @@ new_words:
     ar_eg: كأنه / زي (أدبي)
     ar: كأنّ / كـ (أدبية)
     en: like, as (literary)
+  - word: seperti
+    pos: preposition
+    ar_eg: زي / شبه (تشبيه)
+    ar: مثل / كـ (للتشبيه)
+    en: like, as (simile)
+  - word: terlihat
+    pos: verb
+    ar_eg: باين / يبان (terlihat seperti = شكله زي)
+    ar: يبدو / يُرى
+    en: to look, appear, be visible
 review:
   status: draft
   verified: false
