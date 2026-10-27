@@ -1,0 +1,239 @@
+schema: kabar.lesson/v1
+id: bipa2.u02.l08
+language: id
+title: Tukang dan insinyur
+can_do:
+  ar_eg: تتكلم عن الصنايعية والميكانيكي والمهندس، والعدّة والمكن، وتطلب كشف على حاجة.
+  ar: أن تتحدث عن الحِرفيين والميكانيكي والمهندس، والأدوات والآلات، وتطلب فحص شيء.
+  en: Talk about tradespeople, mechanics and engineers, tools and machines, and ask for a check.
+slides:
+  - title: Tukang
+    body:
+      ar_eg: |
+        tukang = صنايعي: tukang kayu (نجار)، tukang cukur (حلاق)، tukang ojek (سواق أوجيك).
+        montir = ميكانيكي. insinyur = مهندس، وarsitek = مهندس معماري.
+        mesin = ماكينة أو موتور، وalat = عدّة أو أداة. gudang = مخزن.
+        periksa = يكشف على، يفحص (والرسمي memeriksa).
+      ar: |
+        tukang = الحِرفي: tukang kayu (نجّار)، tukang cukur (حلّاق)، tukang ojek (سائق أوجيك).
+        montir = ميكانيكي. insinyur = مهندس، وarsitek = مهندس معماري.
+        mesin = آلة أو محرّك، وalat = أداة. gudang = مخزن.
+        periksa = يفحص (والفصيح memeriksa).
+      en: |
+        tukang = tradesperson: tukang kayu (carpenter), tukang cukur (barber), tukang ojek (ojek driver).
+        montir = mechanic. insinyur = engineer, arsitek = architect.
+        mesin = machine, engine; alat = tool. gudang = storeroom, warehouse.
+        periksa = check, examine (formal memeriksa).
+    examples:
+      - text: Ayah Raka tukang kayu.
+        ar_eg: أبو رَكا نجار.
+        ar: أبو راكا نجّار.
+        en: Raka's father is a carpenter.
+      - text: Montir itu periksa mesin mobil.
+        ar_eg: الميكانيكي بيكشف على موتور العربية.
+        ar: يفحص الميكانيكي محرّك السيارة.
+        en: The mechanic is checking the car's engine.
+      - text: Arsitek itu orang Bali.
+        ar_eg: المهندس المعماري ده من بالي.
+        ar: ذلك المهندس المعماري من بالي.
+        en: That architect is Balinese.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tukang
+        ar_eg: صنايعي
+        ar: حِرفي
+        en: tradesperson
+      - text: montir
+        ar_eg: ميكانيكي
+        ar: ميكانيكي
+        en: mechanic
+      - text: insinyur
+        ar_eg: مهندس
+        ar: مهندس
+        en: engineer
+      - text: arsitek
+        ar_eg: مهندس معماري
+        ar: مهندس معماري
+        en: architect
+    words: [tukang, montir, insinyur, arsitek]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: gudang
+        ar_eg: مخزن
+        ar: مخزن
+        en: storeroom
+      - text: periksa
+        ar_eg: يكشف على
+        ar: يفحص
+        en: check
+      - text: mesin
+        ar_eg: ماكينة، موتور
+        ar: آلة، محرّك
+        en: machine
+      - text: alat
+        ar_eg: عدّة
+        ar: أداة
+        en: tool
+    words: [gudang, periksa, mesin, alat]
+  - id: e03
+    type: listen
+    text: Mobil saya tidak bisa jalan. Saya perlu montir.
+    question:
+      ar_eg: محتاج مين؟
+      ar: مَن يحتاج؟
+      en: Who does he need?
+    options: [ميكانيكي, مهندس معماري, نجار]
+    answer: 0
+    meaning:
+      ar_eg: عربيتي مش راضية تمشي. محتاج ميكانيكي.
+      ar: سيارتي لا تسير، وأحتاج إلى ميكانيكي.
+      en: My car won't go. I need a mechanic.
+    words: [montir]
+  - id: e04
+    type: fill_blank
+    sentence: Kursi ini dari ayah Raka. Dia ___ kayu.
+    meaning:
+      ar_eg: الكرسي ده من أبو رَكا. هو ___ خشب (نجار).
+      ar: هذا الكرسي من أبي راكا، فهو ___ خشب (نجّار).
+      en: This chair is from Raka's dad. He's a ___ (carpenter).
+    options: [tukang, insinyur, gudang]
+    answers: [tukang]
+    words: [tukang, insinyur, gudang]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: بيرسم البيوت والعمارات قبل ما تتبني. شغلانته؟
+      ar: يرسم البيوت والمباني قبل بنائها. ما عمله؟
+      en: He draws houses and buildings before they're built. His job?
+    options: [arsitek, montir, tukang]
+    answer: 0
+    explain:
+      ar_eg: arsitek = مهندس معماري.
+      ar: arsitek = مهندس معماري.
+      en: arsitek = architect.
+    words: [arsitek, montir, tukang]
+  - id: e06
+    type: fill_blank
+    sentence: Kotak-kotak itu di ___ belakang toko.
+    meaning:
+      ar_eg: العلب دي في ___ ورا المحل.
+      ar: تلك الصناديق في ___ خلف المتجر.
+      en: Those boxes are in the ___ behind the shop.
+    options: [gudang, mesin, alat]
+    answers: [gudang]
+    words: [gudang, mesin, alat]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: الميكانيكي بيكشف على عربيتي.
+      ar: الميكانيكي يفحص سيارتي.
+      en: The mechanic is checking my car.
+    answer: Montir itu periksa mobil saya.
+    distractors: [alat, arsitek]
+    words: [montir, periksa, arsitek]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Kakak saya insinyur mesin.
+    answers_meaning:
+      ar_eg: [أخويا الكبير مهندس ميكانيكا, أختي الكبيرة مهندسة ميكانيكا]
+      ar: [أخي الأكبر مهندس ميكانيكي, أختي الكبرى مهندسة ميكانيكية]
+      en: [My older brother is a mechanical engineer, My older sister is a mechanical engineer]
+    words: [insinyur, mesin]
+  - id: e09
+    type: speaking
+    text: Saya periksa alat-alat di gudang.
+    meaning:
+      ar_eg: بكشف على العدّة في المخزن.
+      ar: أفحص الأدوات في المخزن.
+      en: I'm checking the tools in the storeroom.
+    words: [periksa, alat, gudang]
+  - id: e10
+    type: multiple_choice
+    question: Montir bekerja dengan mesin dan ___.
+    options: [alat, arsitek, gudang]
+    answer: 0
+    explain:
+      ar_eg: 'الميكانيكي بيشتغل بالعدّة: alat.'
+      ar: 'يعمل الميكانيكي بالأدوات: alat.'
+      en: 'Mechanics work with tools: alat.'
+    words: [alat, mesin]
+dialogue:
+  lines:
+    - speaker: Mohamed
+      text: Pak, motor saya tidak bisa jalan.
+      ar_eg: يا أسطى، الموتوسيكل بتاعي مش راضي يمشي.
+      ar: يا سيدي، درّاجتي النارية لا تسير.
+      en: My motorbike won't go.
+    - speaker: Montir
+      text: Saya periksa, ya.
+      ar_eg: هكشف عليه.
+      ar: سأفحصها.
+      en: I'll check it.
+    - speaker: Montir
+      text: Mesinnya panas sekali.
+      ar_eg: الموتور سخن أوي.
+      ar: المحرّك ساخن جدًا.
+      en: The engine is very hot.
+    - speaker: Mohamed
+      text: Bisa hari ini, Pak?
+      ar_eg: ينفع النهارده يا أسطى؟
+      ar: هل يمكن إصلاحها اليوم؟
+      en: Can you do it today?
+    - speaker: Montir
+      text: Bisa. Alat saya ada di gudang.
+      ar_eg: ينفع. العدّة بتاعتي في المخزن.
+      ar: نعم، أدواتي في المخزن.
+      en: Yes. My tools are in the storeroom.
+    - speaker: Mohamed
+      text: Terima kasih, Pak. Saya datang lagi jam lima.
+      ar_eg: شكرًا يا أسطى. هرجع الساعة خمسة.
+      ar: شكرًا، سأعود في الخامسة.
+      en: Thank you. I'll come back at five.
+new_words:
+  - word: tukang
+    pos: noun
+    ar_eg: صنايعي (tukang kayu = نجار)
+    ar: حِرفي (tukang kayu = نجّار)
+    en: tradesperson (tukang kayu = carpenter)
+  - word: montir
+    pos: noun
+    ar_eg: ميكانيكي
+    ar: ميكانيكي
+    en: mechanic
+  - word: insinyur
+    pos: noun
+    ar_eg: مهندس
+    ar: مهندس
+    en: engineer
+  - word: arsitek
+    pos: noun
+    ar_eg: مهندس معماري
+    ar: مهندس معماري
+    en: architect
+  - word: gudang
+    pos: noun
+    ar_eg: مخزن
+    ar: مخزن
+    en: storeroom, warehouse
+  - word: periksa
+    pos: verb
+    ar_eg: يكشف على، يفحص
+    ar: يفحص
+    en: check, examine
+  - word: mesin
+    pos: noun
+    ar_eg: ماكينة، موتور
+    ar: آلة، محرّك
+    en: machine, engine
+  - word: alat
+    pos: noun
+    ar_eg: عدّة، أداة
+    ar: أداة
+    en: tool
+review:
+  status: draft
+  verified: false

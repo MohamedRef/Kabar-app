@@ -1,0 +1,241 @@
+schema: kabar.lesson/v1
+id: bipa2.u01.l07
+language: id
+title: Modern atau tradisional?
+can_do:
+  ar_eg: 'توصف الحاجات: حديثة ولا تقليدية، فخمة، فريدة، مميزة، أصلية ولا أنتيكة.'
+  ar: 'أن تصف الأشياء: حديثة أو تقليدية، فاخرة، فريدة، مميّزة، أصلية أو أثرية.'
+  en: Describe things as modern or traditional, luxurious, unique, special, genuine or antique.
+slides:
+  - title: Asli dan istimewa
+    body:
+      ar_eg: |
+        modern ↔ tradisional: Gamelan musik tradisional.
+        mewah = فخم، غالي. unik = فريد ومختلف. sempurna = كامل، مثالي.
+        كلمتين أصلهم عربي: asli = أصلي (من «أصل») وistimewa = مميز (من «امتياز»).
+        antik = أنتيكة، قديم وليه قيمة.
+      ar: |
+        modern ↔ tradisional: Gamelan musik tradisional.
+        mewah = فاخر. unik = فريد. sempurna = كامل، مثالي.
+        وكلمتان أصلهما عربي: asli = أصلي (من «أصل») وistimewa = مميّز (من «امتياز»).
+        antik = أثري، قديم ذو قيمة.
+      en: |
+        modern ↔ tradisional: Gamelan musik tradisional.
+        mewah = luxurious. unik = unique. sempurna = perfect.
+        Two Arabic loans: asli = genuine, original (أصل) and istimewa = special (امتياز).
+        antik = antique.
+    examples:
+      - text: Gamelan adalah musik tradisional dari Jawa dan Bali.
+        ar_eg: الجاميلان مزيكا تقليدية من جاوة وبالي.
+        ar: الجاميلان موسيقى تقليدية من جاوة وبالي.
+        en: Gamelan is traditional music from Java and Bali.
+      - text: Biola ini antik dan asli dari Italia.
+        ar_eg: الكمنجة دي أنتيكة وأصلية من إيطاليا.
+        ar: هذا الكمان أثري وأصلي من إيطاليا.
+        en: This violin is antique and genuinely Italian.
+      - text: Hotel itu mewah dan modern.
+        ar_eg: الأوتيل ده فخم وحديث.
+        ar: ذلك الفندق فاخر وحديث.
+        en: That hotel is luxurious and modern.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: modern
+        ar_eg: حديث
+        ar: حديث
+        en: modern
+      - text: tradisional
+        ar_eg: تقليدي
+        ar: تقليدي
+        en: traditional
+      - text: mewah
+        ar_eg: فخم
+        ar: فاخر
+        en: luxurious
+      - text: unik
+        ar_eg: فريد
+        ar: فريد
+        en: unique
+    words: [modern, tradisional, mewah, unik]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: istimewa
+        ar_eg: مميز
+        ar: مميّز
+        en: special
+      - text: sempurna
+        ar_eg: مثالي
+        ar: كامل، مثالي
+        en: perfect
+      - text: asli
+        ar_eg: أصلي
+        ar: أصلي
+        en: genuine
+      - text: antik
+        ar_eg: أنتيكة
+        ar: أثري
+        en: antique
+    words: [istimewa, sempurna, asli, antik]
+  - id: e03
+    type: listen
+    text: Gamelan adalah musik tradisional dari Bali.
+    question:
+      ar_eg: المزيكا دي شكلها إيه؟
+      ar: ما نوع هذه الموسيقى؟
+      en: What kind of music is it?
+    options: [تقليدية, حديثة, غالية]
+    answer: 0
+    meaning:
+      ar_eg: الجاميلان مزيكا تقليدية من بالي.
+      ar: الجاميلان موسيقى تقليدية من بالي.
+      en: Gamelan is traditional music from Bali.
+    words: [tradisional]
+  - id: e04
+    type: fill_blank
+    sentence: 'Hotel itu ___ sekali: ada kolam renang dan restoran mahal.'
+    meaning:
+      ar_eg: 'الأوتيل ده ___ أوي: فيه حمام سباحة ومطعم غالي.'
+      ar: 'ذلك الفندق ___ جدًا: فيه مسبح ومطعم غالٍ.'
+      en: 'That hotel is so ___: it has a pool and an expensive restaurant.'
+    options: [mewah, antik, asli]
+    answers: [mewah]
+    words: [mewah, antik, asli]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه عكس tradisional؟
+      ar: ما ضدّ tradisional؟
+      en: What's the opposite of tradisional?
+    options: [modern, unik, sempurna]
+    answer: 0
+    explain:
+      ar_eg: tradisional = تقليدي، وعكسها modern = حديث.
+      ar: tradisional تقليدي، وضدّها modern حديث.
+      en: tradisional ↔ modern.
+    words: [modern, tradisional, unik, sempurna]
+  - id: e06
+    type: fill_blank
+    sentence: Ini batik ___ dari Solo. Harganya mahal.
+    meaning:
+      ar_eg: ده باتيك ___ من سولو. سعره غالي.
+      ar: هذا باتيك ___ من سولو، وسعره غالٍ.
+      en: This is ___ batik from Solo. It's expensive.
+    options: [asli, modern, sempurna]
+    answers: [asli]
+    words: [asli, modern, sempurna]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: الجيتار ده فريد أوي.
+      ar: هذا الغيتار فريد جدًا.
+      en: This guitar is really unique.
+    answer: Gitar ini unik sekali.
+    distractors: [mewah, antik]
+    words: [unik]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Kue ini istimewa. Sempurna!
+    answers_meaning:
+      ar_eg: [الكيكة دي مميزة. ممتازة!, الكيكة دي مميزة. مظبوطة!]
+      ar: [هذه الكعكة مميّزة. مثالية!, هذه الكعكة مميّزة. رائعة!]
+      en: [This cake is special. Perfect!, 'This cake is special. It''s perfect!']
+    words: [istimewa, sempurna]
+  - id: e09
+    type: speaking
+    text: Hari ini hari yang istimewa untuk saya.
+    meaning:
+      ar_eg: النهارده يوم مميز بالنسبة لي.
+      ar: اليوم يوم مميّز بالنسبة لي.
+      en: Today is a special day for me.
+    words: [istimewa]
+  - id: e10
+    type: multiple_choice
+    question: Kursi kakek dari tahun 1900. Kursi itu ___.
+    options: [antik, modern, mewah]
+    answer: 0
+    explain:
+      ar_eg: 'قديم وليه قيمة: antik.'
+      ar: 'قديم ذو قيمة: antik.'
+      en: 'Old and valuable: antik.'
+    words: [antik, modern, mewah]
+dialogue:
+  lines:
+    - speaker: Ni Luh
+      text: Ini gamelan Bali. Musiknya tradisional.
+      ar_eg: دا جاميلان بالي. مزيكته تقليدية.
+      ar: هذا جاميلان بالي، وموسيقاه تقليدية.
+      en: This is Balinese gamelan. Its music is traditional.
+    - speaker: Mohamed
+      text: Gong ini antik?
+      ar_eg: الجونج ده أنتيكة؟
+      ar: هل هذا الصنج أثري؟
+      en: Is this gong antique?
+    - speaker: Ni Luh
+      text: Ya, asli dari tahun 1920. Unik sekali!
+      ar_eg: أيوه، أصلي من سنة ١٩٢٠. فريد جدًا!
+      ar: نعم، أصلي من عام ١٩٢٠. فريد جدًا!
+      en: Yes, the real thing, from 1920. Very unique!
+    - speaker: Mohamed
+      text: Suaranya sempurna. Di Mesir ada musik tradisional juga.
+      ar_eg: صوته مظبوط. وفي مصر فيه مزيكا تقليدية كمان.
+      ar: صوته مثالي، وفي مصر موسيقى تقليدية أيضًا.
+      en: It sounds perfect. Egypt has traditional music too.
+    - speaker: Ni Luh
+      text: Malam ini ada tari Bali yang istimewa di pura.
+      ar_eg: الليلة فيه رقصة بالية مميزة في المعبد.
+      ar: الليلة رقصة بالية مميّزة في المعبد.
+      en: Tonight there's a special Balinese dance at the temple.
+    - speaker: Mohamed
+      text: Bagus! Saya mau menonton.
+      ar_eg: حلو! عايز أتفرج.
+      ar: رائع! أريد أن أشاهد.
+      en: Great! I want to watch.
+new_words:
+  - word: modern
+    pos: adjective
+    ar_eg: حديث
+    ar: حديث
+    en: modern
+  - word: tradisional
+    pos: adjective
+    ar_eg: تقليدي
+    ar: تقليدي
+    en: traditional
+  - word: mewah
+    pos: adjective
+    ar_eg: فخم
+    ar: فاخر
+    en: luxurious
+  - word: unik
+    pos: adjective
+    ar_eg: فريد، مختلف
+    ar: فريد
+    en: unique
+  - word: istimewa
+    pos: adjective
+    arabic: امتياز
+    ar_eg: مميز
+    ar: مميّز، استثنائي
+    en: special
+  - word: sempurna
+    pos: adjective
+    ar_eg: مثالي، ممتاز
+    ar: كامل، مثالي
+    en: perfect
+  - word: asli
+    pos: adjective
+    arabic: أصلي
+    ar_eg: أصلي
+    ar: أصلي
+    en: genuine, original
+  - word: antik
+    pos: adjective
+    ar_eg: أنتيكة
+    ar: أثري، عتيق
+    en: antique
+review:
+  status: draft
+  verified: false

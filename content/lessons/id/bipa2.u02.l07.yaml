@@ -1,0 +1,241 @@
+schema: kabar.lesson/v1
+id: bipa2.u02.l07
+language: id
+title: Pengacara dan hakim
+can_do:
+  ar_eg: 'تسمّي مهن أكتر: المحامي والقاضي والجندي والطيار والطباخ والممثل والأستاذ الجامعي.'
+  ar: 'أن تسمّي مهنًا أخرى: المحامي والقاضي والجندي والطيّار والطاهي والممثّل والأستاذ الجامعي.'
+  en: 'Name more jobs: lawyer, judge, soldier, pilot, chef, actor and professor.'
+slides:
+  - title: Pekerjaan lain
+    body:
+      ar_eg: |
+        pengacara = محامي، hakim = قاضي (من العربي «حاكم»)، tentara = جندي أو الجيش.
+        pilot = طيار، koki = طباخ أو شيف، profesor = أستاذ جامعة.
+        خلي بالك: artis في إندونيسيا = نجم مشهور (ممثل أو مطرب في التلفزيون)، مش «رسام». الرسام pelukis.
+        aktor = ممثل.
+      ar: |
+        pengacara = محامٍ، hakim = قاضٍ (من العربية «حاكم»)، tentara = جندي أو الجيش.
+        pilot = طيّار، koki = طاهٍ، profesor = أستاذ جامعي.
+        انتبه: artis في إندونيسيا = النجم المشهور (ممثّل أو مغنٍّ على التلفاز)، لا «الرسّام»؛ فالرسّام pelukis.
+        aktor = ممثّل.
+      en: |
+        pengacara = lawyer, hakim = judge (Arabic حاكم), tentara = soldier, army.
+        pilot = pilot, koki = cook, chef, profesor = professor.
+        Careful: artis in Indonesia means a celebrity (a TV actor or singer), not a painter; a painter is pelukis.
+        aktor = actor.
+    examples:
+      - text: Paman saya pilot. Dia sering terbang ke Kairo.
+        ar_eg: خالي طيار. بيطير لمصر كتير.
+        ar: خالي طيّار، يطير إلى القاهرة كثيرًا.
+        en: My uncle is a pilot. He often flies to Cairo.
+      - text: Koki di restoran itu orang Padang.
+        ar_eg: الشيف في المطعم ده من بادانج.
+        ar: طاهي ذلك المطعم من بادانج.
+        en: The chef at that restaurant is from Padang.
+      - text: Artis itu terkenal di Indonesia.
+        ar_eg: النجم ده مشهور في إندونيسيا.
+        ar: ذلك النجم مشهور في إندونيسيا.
+        en: That celebrity is famous in Indonesia.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pengacara
+        ar_eg: محامي
+        ar: محامٍ
+        en: lawyer
+      - text: hakim
+        ar_eg: قاضي
+        ar: قاضٍ
+        en: judge
+      - text: tentara
+        ar_eg: جندي
+        ar: جندي
+        en: soldier
+      - text: pilot
+        ar_eg: طيار
+        ar: طيّار
+        en: pilot
+    words: [pengacara, hakim, tentara, pilot]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: koki
+        ar_eg: طباخ، شيف
+        ar: طاهٍ
+        en: chef
+      - text: artis
+        ar_eg: نجم مشهور
+        ar: نجم مشهور
+        en: celebrity
+      - text: aktor
+        ar_eg: ممثل
+        ar: ممثّل
+        en: actor
+      - text: profesor
+        ar_eg: أستاذ جامعة
+        ar: أستاذ جامعي
+        en: professor
+    words: [koki, artis, aktor, profesor]
+  - id: e03
+    type: listen
+    text: Kakak saya koki di hotel.
+    question:
+      ar_eg: أخوه بيشتغل إيه؟
+      ar: ما عمل أخيه؟
+      en: What does his brother do?
+    options: [طباخ, طيار, محامي]
+    answer: 0
+    meaning:
+      ar_eg: أخويا الكبير شيف في أوتيل.
+      ar: أخي الأكبر طاهٍ في فندق.
+      en: My older brother is a chef at a hotel.
+    words: [koki]
+  - id: e04
+    type: fill_blank
+    sentence: Dia terbang setiap hari. Dia ___.
+    meaning:
+      ar_eg: بيطير كل يوم. هو ___.
+      ar: يطير كل يوم، فهو ___.
+      en: He flies every day. He's a ___.
+    options: [pilot, hakim, aktor]
+    answers: [pilot]
+    words: [pilot, hakim, aktor]
+  - id: e05
+    type: multiple_choice
+    question: artis
+    question_meaning:
+      ar_eg: artis في إندونيسيا معناها إيه غالبًا؟
+      ar: ما معنى artis في إندونيسيا غالبًا؟
+      en: What does artis usually mean in Indonesia?
+    options: [نجم مشهور (تلفزيون أو غنا), رسام, طباخ]
+    answer: 0
+    explain:
+      ar_eg: artis = نجم. والرسام pelukis.
+      ar: artis نجم مشهور، والرسّام pelukis.
+      en: artis = celebrity; a painter is pelukis.
+    words: [artis]
+  - id: e06
+    type: fill_blank
+    sentence: ___ itu mengajar di universitas.
+    meaning:
+      ar_eg: ___ ده بيدرّس في الجامعة.
+      ar: ذلك ___ يدرّس في الجامعة.
+      en: That ___ teaches at the university.
+    options: [Profesor, Tentara, Koki]
+    answers: [Profesor]
+    words: [profesor, tentara, koki]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: المحامي بيتكلم مع القاضي.
+      ar: المحامي يتحدّث مع القاضي.
+      en: The lawyer is talking to the judge.
+    answer: Pengacara berbicara dengan hakim.
+    distractors: [pilot, koki]
+    words: [pengacara, hakim]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Aktor itu juga artis terkenal.
+    answers_meaning:
+      ar_eg: [الممثل ده كمان نجم مشهور, الممثل ده نجم مشهور كمان]
+      ar: [ذلك الممثّل نجم مشهور أيضًا]
+      en: [That actor is also a famous celebrity, That actor is a famous star too]
+    words: [aktor, artis]
+  - id: e09
+    type: speaking
+    text: Kakek saya tentara, dan paman saya pilot.
+    meaning:
+      ar_eg: جدي كان جندي، وخالي طيار.
+      ar: جدّي جندي، وخالي طيّار.
+      en: My grandfather is a soldier, and my uncle is a pilot.
+    words: [tentara, pilot]
+  - id: e10
+    type: multiple_choice
+    question: Dia bermain di film. Dia ___.
+    options: [aktor, pengacara, profesor]
+    answer: 0
+    explain:
+      ar_eg: اللي بيمثل في الأفلام aktor.
+      ar: من يمثّل في الأفلام aktor.
+      en: Someone who acts in films is an aktor.
+    words: [aktor, pengacara, profesor]
+dialogue:
+  lines:
+    - speaker: Raka
+      text: Rina, ini foto keluargamu? Siapa ini?
+      ar_eg: يا رينا، دي صورة عيلتك؟ مين ده؟
+      ar: يا رينا، أهذه صورة عائلتك؟ من هذا؟
+      en: Rina, is this your family photo? Who's this?
+    - speaker: Rina
+      text: Itu paman saya. Dia pilot.
+      ar_eg: ده خالي. طيار.
+      ar: هذا خالي، إنه طيّار.
+      en: That's my uncle. He's a pilot.
+    - speaker: Raka
+      text: Hebat! Dan wanita ini?
+      ar_eg: جامد! والست دي؟
+      ar: رائع! وهذه السيدة؟
+      en: Great! And this woman?
+    - speaker: Rina
+      text: Itu bibi saya. Dia hakim, dan suaminya pengacara.
+      ar_eg: دي خالتي. قاضية، وجوزها محامي.
+      ar: هذه خالتي، قاضية، وزوجها محامٍ.
+      en: That's my aunt. She's a judge, and her husband is a lawyer.
+    - speaker: Raka
+      text: Keluarga yang pintar!
+      ar_eg: عيلة شاطرة!
+      ar: يا لها من عائلة ذكية!
+      en: What a clever family!
+    - speaker: Rina
+      text: Dan sepupu saya aktor. Dia artis terkenal!
+      ar_eg: وابن خالي ممثل. نجم مشهور!
+      ar: وابن خالي ممثّل، نجم مشهور!
+      en: And my cousin is an actor. He's a famous star!
+new_words:
+  - word: pengacara
+    pos: noun
+    ar_eg: محامي
+    ar: محامٍ
+    en: lawyer
+  - word: hakim
+    pos: noun
+    arabic: حاكم
+    ar_eg: قاضي
+    ar: قاضٍ
+    en: judge
+  - word: tentara
+    pos: noun
+    ar_eg: جندي، الجيش
+    ar: جندي، الجيش
+    en: soldier, army
+  - word: pilot
+    pos: noun
+    ar_eg: طيار
+    ar: طيّار
+    en: pilot
+  - word: koki
+    pos: noun
+    ar_eg: طباخ، شيف
+    ar: طاهٍ
+    en: cook, chef
+  - word: artis
+    pos: noun
+    ar_eg: نجم مشهور (ممثل أو مطرب)
+    ar: نجم مشهور
+    en: celebrity, performer
+  - word: aktor
+    pos: noun
+    ar_eg: ممثل
+    ar: ممثّل
+    en: actor
+  - word: profesor
+    pos: noun
+    ar_eg: أستاذ جامعة
+    ar: أستاذ جامعي
+    en: professor
+review:
+  status: draft
+  verified: false

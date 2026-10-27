@@ -1,0 +1,186 @@
+schema: kabar.lesson/v1
+id: bipa2.u02.l09
+language: id
+title: Ulangan Unit 2
+can_do:
+  ar_eg: توصف شغلانة وتقول ليه اخترتها.
+  ar: أن تصف عملًا وتشرح سبب اختيارك له.
+  en: Describe a job and why you chose it.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: penari
+        ar_eg: راقص
+        ar: راقص
+        en: dancer
+      - text: penjual
+        ar_eg: بيّاع
+        ar: بائع
+        en: seller
+      - text: penerjemah
+        ar_eg: مترجم
+        ar: مترجم
+        en: translator
+      - text: pemandu wisata
+        ar_eg: مرشد سياحي
+        ar: مرشد سياحي
+        en: tour guide
+      - text: petani
+        ar_eg: فلاح
+        ar: مزارع
+        en: farmer
+    words: [penari, penjual, penerjemah, pemandu wisata, petani]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: kantor
+        ar_eg: مكتب
+        ar: مكتب
+        en: office
+      - text: rapat
+        ar_eg: اجتماع
+        ar: اجتماع
+        en: meeting
+      - text: lembur
+        ar_eg: أوفر تايم
+        ar: عمل إضافي
+        en: overtime
+      - text: rekan kerja
+        ar_eg: زميل في الشغل
+        ar: زميل عمل
+        en: colleague
+    words: [kantor, rapat, lembur, rekan kerja]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: menulis = بيكتب. الكاتب اسمه إيه؟
+      ar: menulis = يكتب. ما اسم الكاتب؟
+      en: menulis = to write. What's a writer?
+    options: [penulis, pemulis, petulis]
+    answer: 0
+    explain:
+      ar_eg: 'زي menulis: t بتقع، وتبقى pen-.'
+      ar: 'كما في menulis: تسقط t وتصير pen-.'
+      en: As in menulis, t drops → pen-.
+    words: [penulis]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: berdagang = يتاجر. التاجر اسمه إيه؟
+      ar: berdagang = يتاجر. ما اسم التاجر؟
+      en: berdagang = to trade. What's a trader?
+    options: [pendagang, perdagang, pedagang]
+    answer: 2
+    explain:
+      ar_eg: مع أفعال ber- غالبًا pe- بس.
+      ar: مع أفعال ber- تأتي pe- غالبًا.
+      en: ber- verbs usually take plain pe-.
+    words: [pedagang]
+  - id: e05
+    type: listen
+    text: Kenapa kamu memilih pekerjaan ini?
+    options: ['Kenapa kamu suka pekerjaan itu?', 'Kenapa kamu memilih pekerjaan ini?', 'Kapan kamu memilih pekerjaan ini?']
+    answer: 1
+    words: [kenapa, memilih, pekerjaan]
+  - id: e06
+    type: fill_blank
+    sentence: ___ hujan, kami tidak pergi ke pasar.
+    meaning:
+      ar_eg: عشان كانت بتمطر، مرحناش السوق.
+      ar: بسبب المطر لم نذهب إلى السوق.
+      en: Because it rained, we didn't go to the market.
+    options: [Karena, Mengapa, Tetapi]
+    answers: [Karena]
+    words: [karena]
+  - id: e07
+    type: fill_blank
+    sentence: Jam dua belas saya ___ makan siang dengan rekan kerja.
+    meaning:
+      ar_eg: الساعة ١٢ باخد بريك الغدا مع زمايلي.
+      ar: في الثانية عشرة آخذ استراحة الغداء مع زملائي.
+      en: At twelve I have my lunch break with colleagues.
+    answers: [istirahat]
+    words: [istirahat, rekan kerja]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: والدة وايان تاجرة في سوق بادونج.
+      ar: والدة وايان تاجرة في سوق بادونغ.
+      en: Wayan's mother is a trader at Badung Market.
+    answer: Ibu Wayan pedagang di Pasar Badung.
+    distractors: [petani, penari]
+    words: [pedagang]
+  - id: e09
+    type: build_sentence
+    source:
+      ar_eg: النهارده قعدت أوفر تايم، فأنا تعبان.
+      ar: عملت ساعات إضافية اليوم، لذا أنا متعب.
+      en: I worked overtime today, so I'm tired.
+    answer: Hari ini saya lembur, jadi saya lelah.
+    alternatives: ['Saya lembur hari ini, jadi saya lelah.']
+    distractors: [mengapa, libur]
+    words: [lembur, lelah]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (رسمي) حضرتك اخترت الشغلانة دي ليه؟
+      ar: (رسمي) لماذا اخترت هذا العمل؟
+      en: (formal) Why did you choose this job?
+    answers: ['Mengapa Anda memilih pekerjaan ini?', Mengapa Anda memilih pekerjaan ini, 'Kenapa Anda memilih pekerjaan ini?']
+    words: [mengapa, memilih, pekerjaan]
+  - id: e11
+    type: dictation
+    text: Penulis itu bekerja di rumah.
+    meaning:
+      ar_eg: الكاتب ده بيشتغل من البيت.
+      ar: ذلك الكاتب يعمل في البيت.
+      en: That writer works at home.
+    words: [penulis, bekerja]
+  - id: e12
+    type: speaking
+    text: Saya memilih pekerjaan ini karena saya suka bahasa.
+    meaning:
+      ar_eg: اخترت الشغلانة دي عشان بحب اللغات.
+      ar: اخترت هذا العمل لأنني أحب اللغات.
+      en: I chose this job because I love languages.
+    words: [memilih, pekerjaan, karena]
+dialogue:
+  title: Pelukis di Denpasar
+  lines:
+    - speaker: Mohamed
+      text: Wayan, kenapa kamu memilih menjadi pelukis?
+      ar_eg: يا وايان، إنت اخترت تبقى رسام ليه؟
+      ar: يا وايان، لماذا اخترت أن تصبح رسّامًا؟
+      en: Wayan, why did you choose to become a painter?
+    - speaker: Wayan
+      text: Karena ayah saya juga pelukis. Saya belajar dari dia.
+      ar_eg: عشان أبويا كمان رسام. اتعلمت منه.
+      ar: لأن أبي رسّام أيضًا، وقد تعلمت منه.
+      en: Because my father is a painter too. I learned from him.
+    - speaker: Mohamed
+      text: Kamu bekerja setiap hari?
+      ar_eg: بتشتغل كل يوم؟
+      ar: هل تعمل كل يوم؟
+      en: Do you work every day?
+    - speaker: Wayan
+      text: Ya. Pagi saya melukis, sore saya menjual lukisan di pasar.
+      ar_eg: أيوه. الصبح برسم، والعصر ببيع اللوحات في السوق.
+      ar: نعم. في الصباح أرسم، وبعد العصر أبيع اللوحات في السوق.
+      en: Yes. In the morning I paint, in the afternoon I sell paintings at the market.
+    - speaker: Mohamed
+      text: Wah, kamu pelukis dan penjual!
+      ar_eg: الله، إنت رسام وبيّاع كمان!
+      ar: رائع، أنت رسّام وبائع معًا!
+      en: Wow, you're a painter and a seller!
+souvenir:
+  id: bipa2.u02.souvenir
+  title: Pasar Badung
+  note:
+    ar_eg: سوق بادونج هو أكبر سوق تقليدي في دنباسار، مليان ورد وتوابل وقماش من بدري الصبح. ناس كتير في بالي بيشتغلوا في السياحة، وفي نفس الوقت ليهم دور في الـ banjar (جمعية أهل الحي) وفي احتفالات المعبد. يعني الشغلانة عندهم مش بس شغل، دي كمان خدمة للجماعة.
+    ar: سوق بادونغ أكبر سوق تقليدي في دنباسار، يزدحم منذ الفجر بالزهور والتوابل والأقمشة. ويعمل كثير من أهل بالي في السياحة، ولهم في الوقت نفسه دور في الـ banjar (جمعية أهل الحي) وفي احتفالات المعبد؛ فالعمل عندهم خدمة للجماعة أيضًا.
+    en: Pasar Badung is Denpasar's biggest traditional market, busy with flowers, spices and cloth from early morning. Many Balinese work in tourism and also keep a second role in their banjar (neighbourhood council) and temple ceremonies, so work there is also service to the community.
+review:
+  status: draft
+  verified: false
