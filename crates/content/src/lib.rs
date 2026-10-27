@@ -11,6 +11,7 @@
 pub mod cast;
 pub mod lessons;
 pub mod model;
+pub mod retrieval;
 
 use std::collections::{BTreeMap, BTreeSet};
 use std::fs;
@@ -171,6 +172,7 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
         }
         let lang = file.parent().and_then(Path::file_name).and_then(|s| s.to_str()).unwrap_or("");
         lessons::check_lesson(&file.display().to_string(), stem(file), lang, &value, &index, &mut problems);
+        retrieval::check(stem(file), &value, &mut problems);
         seen.lesson(&file.display().to_string(), stem(file), &value);
         report.lessons.push(stem(file).to_owned());
         lesson_values.insert(stem(file).to_owned(), value);
