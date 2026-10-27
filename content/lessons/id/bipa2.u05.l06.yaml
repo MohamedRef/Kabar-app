@@ -1,236 +1,236 @@
 schema: kabar.lesson/v1
 id: bipa2.u05.l06
 language: id
-title: Sup, keju, madu
+title: Kompor, panci, kulkas
 can_do:
-  ar_eg: تطلب شوربة ونودلز وعصير وحلويات في الوارونج.
-  ar: أن تطلب الحساء والمعكرونة والعصير والحلويات في المطعم الشعبي.
-  en: Order soup, noodles, juice and sweets at a warung.
+  ar_eg: 'تتكلم في المطبخ: البوتاجاز والحلة والتلاجة، والأكل ني ولا مستوي ولا بايت.'
+  ar: 'أن تتحدث في المطبخ: الموقد والقدر والثلاجة، والطعام نيّء أو ناضج أو فاسد.'
+  en: 'Talk in the kitchen: stove, pot and fridge, and whether food is raw, cooked or off.'
 slides:
-  - title: Di warung
+  - title: Di dapur
     body:
       ar_eg: |
-        sup = شوربة، mi = نودلز (mi ayam، mi goreng)، sayur = خضار (sup sayur).
-        keju = جبنة، madu = عسل (teh madu).
-        jus = عصير: jus jeruk. es krim = آيس كريم، permen = بونبوني.
+        kompor = بوتاجاز، panci = حلة، kulkas = تلاجة، mangkuk = سلطانية (semangkuk sup).
+        mentah = ني، matang = مستوي (والفاكهة matang = مستوية).
+        basi = بايت وريحته وحشة. rasa = طعم: Rasanya enak!
       ar: |
-        sup = حساء، mi = معكرونة النودلز (mi ayam، mi goreng)، sayur = خضار (sup sayur).
-        keju = جبن، madu = عسل (teh madu).
-        jus = عصير: jus jeruk. es krim = بوظة (آيس كريم)، permen = حلوى (سكاكر).
+        kompor = موقد، panci = قدر، kulkas = ثلاجة، mangkuk = وعاء عميق (semangkuk sup).
+        mentah = نيّء، matang = ناضج (مطهو، والفاكهة matang = ناضجة).
+        basi = فاسد (بائت). rasa = طعم: Rasanya enak!
       en: |
-        sup = soup, mi = noodles (mi ayam, mi goreng), sayur = vegetables (sup sayur).
-        keju = cheese, madu = honey (teh madu).
-        jus = juice: jus jeruk. es krim = ice cream, permen = sweets, candy.
+        kompor = stove, panci = pot, kulkas = fridge, mangkuk = bowl (semangkuk sup).
+        mentah = raw, matang = cooked, ripe.
+        basi = stale, gone off. rasa = taste: Rasanya enak!
     examples:
-      - text: Saya pesan mi ayam dan jus jeruk.
-        ar_eg: أنا طالب نودلز بالفراخ وعصير برتقان.
-        ar: طلبت نودلز بالدجاج وعصير برتقال.
-        en: I'll have chicken noodles and orange juice.
-      - text: Anak-anak suka es krim dan permen.
-        ar_eg: العيال بيحبوا الآيس كريم والبونبوني.
-        ar: يحبّ الأطفال البوظة والحلوى.
-        en: Children love ice cream and sweets.
-      - text: Teh dengan madu enak sekali.
-        ar_eg: الشاي بالعسل حلو أوي.
-        ar: الشاي بالعسل لذيذ جدًا.
-        en: Tea with honey is delicious.
+      - text: Panci di atas kompor masih panas.
+        ar_eg: الحلة اللي على البوتاجاز لسه سخنة.
+        ar: القدر فوق الموقد ما زال ساخنًا.
+        en: The pot on the stove is still hot.
+      - text: Dagingnya masih mentah, belum matang.
+        ar_eg: اللحمة لسه نية، لسه ما استوتش.
+        ar: اللحم ما زال نيئًا، لم ينضج بعد.
+        en: The meat is still raw, not cooked yet.
+      - text: Rasanya enak sekali!
+        ar_eg: طعمه حلو أوي!
+        ar: طعمه لذيذ جدًا!
+        en: It tastes great!
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: sup
-        ar_eg: شوربة
-        ar: حساء
-        en: soup
-      - text: mi
-        ar_eg: نودلز
-        ar: نودلز
-        en: noodles
-      - text: keju
-        ar_eg: جبنة
-        ar: جبن
-        en: cheese
-      - text: madu
-        ar_eg: عسل
-        ar: عسل
-        en: honey
-    words: [sup, mi, keju, madu]
+      - text: kompor
+        ar_eg: بوتاجاز
+        ar: موقد
+        en: stove
+      - text: panci
+        ar_eg: حلة
+        ar: قدر
+        en: pot
+      - text: kulkas
+        ar_eg: تلاجة
+        ar: ثلاجة
+        en: fridge
+      - text: mangkuk
+        ar_eg: سلطانية
+        ar: وعاء
+        en: bowl
+    words: [kompor, panci, kulkas, mangkuk]
   - id: e02
     type: match_pairs
     pairs:
-      - text: permen
-        ar_eg: بونبوني
-        ar: حلوى
-        en: sweets
-      - text: jus
-        ar_eg: عصير
-        ar: عصير
-        en: juice
-      - text: es krim
-        ar_eg: آيس كريم
-        ar: بوظة
-        en: ice cream
-      - text: sayur
-        ar_eg: خضار
-        ar: خضار
-        en: vegetables
-    words: [permen, jus, es krim, sayur]
+      - text: mentah
+        ar_eg: ني
+        ar: نيّء
+        en: raw
+      - text: matang
+        ar_eg: مستوي
+        ar: ناضج
+        en: cooked, ripe
+      - text: basi
+        ar_eg: بايت
+        ar: فاسد
+        en: gone off
+      - text: rasa
+        ar_eg: طعم
+        ar: طعم
+        en: taste
+    words: [mentah, matang, basi, rasa]
   - id: e03
     type: listen
-    text: Saya mau sup sayur dan nasi, ya.
+    text: Nasinya sudah basi. Kenapa tidak di kulkas?
     question:
-      ar_eg: طالب إيه؟
-      ar: ماذا يطلب؟
-      en: What is he ordering?
-    options: [شوربة خضار, آيس كريم, عصير]
+      ar_eg: الرز ماله؟
+      ar: ما حال الأرز؟
+      en: What's wrong with the rice?
+    options: [بايت, ني, مستوي]
     answer: 0
     meaning:
-      ar_eg: عايز شوربة خضار ورز لو سمحت.
-      ar: أريد حساء خضار وأرزًا من فضلك.
-      en: Vegetable soup and rice, please.
-    words: [sup, sayur]
+      ar_eg: الرز باظ. ليه ما كانش في التلاجة؟
+      ar: فسد الأرز. لماذا لم يكن في الثلاجة؟
+      en: The rice has gone off. Why wasn't it in the fridge?
+    words: [basi, kulkas]
   - id: e04
     type: fill_blank
-    sentence: Roti ini pakai ___ dan tomat.
+    sentence: Ayamnya belum ___, masih merah di dalam.
     meaning:
-      ar_eg: العيش ده بـ ___ وطماطم.
-      ar: هذا الخبز مع ___ وطماطم.
-      en: This bread comes with ___ and tomato.
-    options: [keju, jus, permen]
-    answers: [keju]
-    words: [keju, jus, permen]
+      ar_eg: الفرخة لسه ما ___، لسه حمرا من جوه.
+      ar: الدجاج لم ___ بعد، ما زال أحمر من الداخل.
+      en: The chicken isn't ___ yet; it's still red inside.
+    options: [matang, basi, kulkas]
+    answers: [matang]
+    words: [matang, basi, kulkas]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: النحل بيعمل إيه؟
-      ar: ماذا يصنع النحل؟
-      en: What do bees make?
-    options: [madu, keju, sup]
+      ar_eg: فين بنحط اللبن عشان يفضل ساقع؟
+      ar: أين نضع الحليب ليبقى باردًا؟
+      en: Where do we keep milk cold?
+    options: [kulkas, kompor, panci]
     answer: 0
     explain:
-      ar_eg: madu = عسل.
-      ar: madu = عسل.
-      en: madu = honey.
-    words: [madu, keju, sup]
+      ar_eg: kulkas = تلاجة.
+      ar: kulkas = ثلاجة.
+      en: kulkas = fridge.
+    words: [kulkas, kompor, panci]
   - id: e06
     type: fill_blank
-    sentence: Hari ini panas sekali. Ayo makan ___!
+    sentence: Saya suka ___ manis.
     meaning:
-      ar_eg: النهارده حر أوي. يلا ناكل ___!
-      ar: اليوم حارّ جدًا. هيّا نأكل ___!
-      en: It's so hot today. Let's have ___!
-    options: [es krim, sup, mi]
-    answers: [es krim]
-    words: [es krim, sup, mi]
+      ar_eg: بحب الـ ___ المسكّر.
+      ar: أحبّ ___ الحلو.
+      en: I like a sweet ___.
+    options: [rasa, mangkuk, kompor]
+    answers: [rasa]
+    words: [rasa, mangkuk, kompor]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: عايز عصير مانجة من غير سكر.
-      ar: أريد عصير مانجو بلا سكّر.
-      en: I'd like mango juice without sugar.
-    answer: Saya mau jus mangga, tidak pakai gula.
-    distractors: [madu, permen]
-    words: [jus]
+      ar_eg: حط الشوربة في السلطانية.
+      ar: ضع الحساء في الوعاء.
+      en: Put the soup in the bowl.
+    answer: Masukkan sup ke dalam mangkuk.
+    distractors: [panci, kompor]
+    words: [mangkuk, panci]
   - id: e08
     type: translate
     direction: from_target
-    source_text: Anak-anak suka es krim dan permen.
+    source_text: Saya suka sayur mentah. Rasanya segar.
     answers_meaning:
-      ar_eg: [العيال بيحبوا الآيس كريم والبونبوني, الأطفال بيحبوا الآيس كريم والحلويات]
-      ar: [يحبّ الأطفال البوظة والحلوى, الأطفال يحبون الآيس كريم والسكاكر]
-      en: [Children like ice cream and sweets, Kids love ice cream and candy]
-    words: [es krim, permen]
+      ar_eg: [بحب الخضار ني. طعمه فريش, بحب الخضار النية. طعمها منعش]
+      ar: [أحبّ الخضار نيئة. طعمها منعش]
+      en: [I like raw vegetables. They taste fresh, I like vegetables raw. They taste fresh]
+    words: [mentah, rasa]
   - id: e09
     type: speaking
-    text: Mi ayam dan sup sayur, ya.
+    text: Panci di atas kompor masih panas.
     meaning:
-      ar_eg: نودلز بالفراخ وشوربة خضار لو سمحت.
-      ar: نودلز بالدجاج وحساء خضار من فضلك.
-      en: Chicken noodles and vegetable soup, please.
-    words: [mi, sup, sayur]
+      ar_eg: الحلة اللي على البوتاجاز لسه سخنة.
+      ar: القدر فوق الموقد ما زال ساخنًا.
+      en: The pot on the stove is still hot.
+    words: [panci, kompor]
   - id: e10
     type: multiple_choice
-    question: Teh ini manis karena ada ___.
-    options: [madu, keju, sayur]
+    question: Mangga ini kuning dan manis. Sudah ___.
+    options: [matang, mentah, basi]
     answer: 0
     explain:
-      ar_eg: العسل بيحلّي الشاي.
-      ar: العسل يحلّي الشاي.
-      en: Honey makes tea sweet.
-    words: [madu, keju, sayur]
+      ar_eg: 'المانجة الصفرا المسكّرة مستوية: matang.'
+      ar: 'المانجو الصفراء الحلوة ناضجة: matang.'
+      en: 'A yellow, sweet mango is ripe: matang.'
+    words: [matang, mentah, basi]
 dialogue:
   lines:
-    - speaker: Ni Luh
-      text: Mohamed, mau makan apa? Di warung ini ada mi dan sup.
-      ar_eg: يا محمد، تاكل إيه؟ الوارونج ده فيه نودلز وشوربة.
-      ar: ماذا تريد أن تأكل يا محمد؟ في هذا المطعم نودلز وحساء.
-      en: Mohamed, what do you want? This warung has noodles and soup.
+    - speaker: Bu Yanti
+      text: Mohamed, tolong ambil telur di kulkas.
+      ar_eg: يا محمد، هات البيض من التلاجة لو سمحت.
+      ar: يا محمد، أحضر البيض من الثلاجة من فضلك.
+      en: Mohamed, could you get the eggs from the fridge?
     - speaker: Mohamed
-      text: Saya mau mi ayam. Ada sayurnya?
-      ar_eg: عايز نودلز بالفراخ. فيها خضار؟
-      ar: أريد نودلز بالدجاج. هل فيها خضار؟
-      en: Chicken noodles for me. Do they come with vegetables?
-    - speaker: Ni Luh
-      text: Ada. Minumnya apa? Jus atau teh?
-      ar_eg: أيوه. تشرب إيه؟ عصير ولا شاي؟
-      ar: نعم. وماذا تشرب؟ عصيرًا أم شايًا؟
-      en: Yes. What to drink? Juice or tea?
+      text: Ini, Bu. Mau masak apa?
+      ar_eg: اتفضلي. هتطبخي إيه؟
+      ar: تفضّلي. ماذا ستطبخين؟
+      en: Here you go. What are you cooking?
+    - speaker: Bu Yanti
+      text: Nasi goreng. Pancinya di atas kompor.
+      ar_eg: رز مقلي. الحلة على البوتاجاز.
+      ar: أرز مقلي. القدر فوق الموقد.
+      en: Fried rice. The pot's on the stove.
     - speaker: Mohamed
-      text: Jus jeruk, tidak pakai gula. Kamu?
-      ar_eg: عصير برتقان من غير سكر. وإنتي؟
-      ar: عصير برتقال بلا سكّر. وأنتِ؟
-      en: Orange juice, no sugar. You?
-    - speaker: Ni Luh
-      text: Teh panas dengan madu. Nanti kita beli es krim, ya!
-      ar_eg: شاي سخن بالعسل. وبعدين نشتري آيس كريم!
-      ar: شاي ساخن بالعسل. وبعدها نشتري البوظة!
-      en: Hot tea with honey. Then we'll get ice cream!
+      text: Nasi kemarin tidak basi, Bu?
+      ar_eg: رز امبارح مش بايت؟
+      ar: أليس أرز الأمس فاسدًا؟
+      en: Hasn't yesterday's rice gone off?
+    - speaker: Bu Yanti
+      text: Tidak. Coba rasanya... enak!
+      ar_eg: لأ. دوق طعمه... حلو!
+      ar: لا. تذوّق طعمه... لذيذ!
+      en: No. Taste it... delicious!
     - speaker: Mohamed
-      text: Wah, ide bagus!
-      ar_eg: الله، فكرة حلوة!
-      ar: رائع، فكرة جميلة!
-      en: Ooh, good idea!
+      text: Saya ambil mangkuk, ya.
+      ar_eg: أنا هجيب السلطانيات.
+      ar: سأحضر الأوعية.
+      en: I'll get the bowls.
 new_words:
-  - word: sup
+  - word: kompor
     pos: noun
-    ar_eg: شوربة
-    ar: حساء
-    en: soup
-  - word: mi
+    ar_eg: بوتاجاز
+    ar: موقد
+    en: stove
+  - word: panci
     pos: noun
-    ar_eg: نودلز
-    ar: معكرونة النودلز
-    en: noodles
-  - word: keju
+    ar_eg: حلة
+    ar: قدر
+    en: pot, pan
+  - word: kulkas
     pos: noun
-    ar_eg: جبنة
-    ar: جبن
-    en: cheese
-  - word: madu
+    ar_eg: تلاجة
+    ar: ثلاجة
+    en: fridge
+  - word: mangkuk
     pos: noun
-    ar_eg: عسل
-    ar: عسل
-    en: honey
-  - word: permen
+    ar_eg: سلطانية
+    ar: وعاء (زبدية)
+    en: bowl
+  - word: mentah
+    pos: adjective
+    ar_eg: ني
+    ar: نيّء
+    en: raw
+  - word: matang
+    pos: adjective
+    ar_eg: مستوي
+    ar: ناضج، مطهو
+    en: cooked, ripe
+  - word: basi
+    pos: adjective
+    ar_eg: بايت (باظ)
+    ar: فاسد، بائت
+    en: stale, gone off
+  - word: rasa
     pos: noun
-    ar_eg: بونبوني
-    ar: حلوى، سكاكر
-    en: sweets, candy
-  - word: jus
-    pos: noun
-    ar_eg: عصير
-    ar: عصير
-    en: juice
-  - word: es krim
-    pos: noun
-    ar_eg: آيس كريم
-    ar: بوظة، آيس كريم
-    en: ice cream
-  - word: sayur
-    pos: noun
-    ar_eg: خضار
-    ar: خضار
-    en: vegetables
+    ar_eg: طعم؛ إحساس
+    ar: طعم؛ شعور
+    en: taste; feeling
 review:
   status: draft
   verified: false

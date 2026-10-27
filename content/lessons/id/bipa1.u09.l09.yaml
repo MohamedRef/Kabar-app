@@ -1,240 +1,237 @@
 schema: kabar.lesson/v1
 id: bipa1.u09.l09
 language: id
-title: Naik motor atau taksi?
+title: Di kamar saya
 can_do:
-  ar_eg: تختار مواصلة وتقول إنها آمنة أو بطيئة، وتقول إنك قربت توصل.
-  ar: أن تختار وسيلة نقل وتقول إنها آمنة أو بطيئة، وأنك أوشكت على الوصول.
-  en: Choose transport, say whether it's safe or slow, and say you're almost there.
+  ar_eg: 'توصف أوضتك والحمام: السرير واللمبة والمراية والصابون والفوطة.'
+  ar: 'أن تصف غرفتك والحمّام: السرير والمصباح والمرآة والصابون والمنشفة.'
+  en: 'Describe your room and bathroom: bed, lamp, mirror, soap and towel.'
 slides:
-  - title: Naik apa?
+  - title: Kamar dan kamar mandi
     body:
       ar_eg: |
-        naik + المواصلة: naik sepeda (عجلة)، naik motor (موتوسيكل)، naik taksi. وtruk = عربية نقل.
-        في إندونيسيا الموتوسيكلات في كل حتة، وفيه «أوجيك»: موتوسيكل أجرة.
-        cari = يدوّر على (عامية، والرسمي mencari). aman = آمن. lambat = بطيء.
-        hampir = تقريبًا، قرّب: «Hampir sampai!» = قربنا نوصل!
+        tempat tidur = سرير (حرفيًا «مكان النوم»). lampu = لمبة أو نور. cermin = مراية. dinding = حيطة. kotak = علبة أو صندوق.
+        في الحمام: sabun = صابون (من العربي!) وhanduk = فوطة (من الهولندي).
+        rapi = متروّق ومترتّب.
       ar: |
-        naik + وسيلة النقل: naik sepeda (درّاجة)، naik motor (درّاجة نارية)، naik taksi. وtruk = شاحنة.
-        تملأ الدرّاجات النارية إندونيسيا، ومنها «أوجيك»: درّاجة نارية للأجرة.
-        cari = يبحث عن (بالعامية، والفصيح mencari). aman = آمن. lambat = بطيء.
-        hampir = تقريبًا، كاد: «Hampir sampai!» = أوشكنا على الوصول!
+        tempat tidur = سرير (حرفيًا «مكان النوم»). lampu = مصباح. cermin = مرآة. dinding = جدار. kotak = علبة، صندوق.
+        في الحمّام: sabun = صابون (من العربية!) وhanduk = منشفة (من الهولندية).
+        rapi = مرتّب.
       en: |
-        naik + vehicle: naik sepeda (bicycle), naik motor (motorbike), naik taksi. truk = lorry, truck.
-        Motorbikes are everywhere in Indonesia, including ojek, motorbike taxis.
-        cari = look for (casual; formal mencari). aman = safe. lambat = slow.
-        hampir = almost: "Hampir sampai!" = Nearly there!
+        tempat tidur = bed (literally "place to sleep"). lampu = lamp, light. cermin = mirror. dinding = wall. kotak = box.
+        In the bathroom: sabun = soap (from Arabic!) and handuk = towel (from Dutch).
+        rapi = tidy.
     examples:
-      - text: Saya naik motor ke kantor.
-        ar_eg: بروح الشغل بالموتوسيكل.
-        ar: أذهب إلى المكتب بالدرّاجة النارية.
-        en: I ride a motorbike to the office.
-      - text: Taksi itu lambat, jalannya ramai.
-        ar_eg: التاكسي بطيء، الشارع زحمة.
-        ar: سيارة الأجرة بطيئة، فالشارع مزدحم.
-        en: The taxi is slow; the road is busy.
-      - text: Kita hampir sampai!
-        ar_eg: قربنا نوصل!
-        ar: أوشكنا على الوصول!
-        en: We're nearly there!
+      - text: Di kamar mandi ada sabun dan handuk.
+        ar_eg: في الحمام فيه صابون وفوطة.
+        ar: في الحمّام صابون ومنشفة.
+        en: There's soap and a towel in the bathroom.
+      - text: Cermin itu di dinding, di atas meja.
+        ar_eg: المراية على الحيطة، فوق الترابيزة.
+        ar: المرآة على الجدار فوق الطاولة.
+        en: The mirror is on the wall, above the table.
+      - text: Kamar saya kecil, tapi rapi.
+        ar_eg: أوضتي صغيرة بس مترتبة.
+        ar: غرفتي صغيرة لكنها مرتّبة.
+        en: My room is small but tidy.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: sepeda
-        ar_eg: عجلة
-        ar: درّاجة
-        en: bicycle
-      - text: taksi
-        ar_eg: تاكسي
-        ar: سيارة أجرة
-        en: taxi
-      - text: motor
-        ar_eg: موتوسيكل
-        ar: درّاجة نارية
-        en: motorbike
-      - text: truk
-        ar_eg: عربية نقل
-        ar: شاحنة
-        en: truck
-    words: [sepeda, taksi, motor, truk]
+      - text: sabun
+        ar_eg: صابون
+        ar: صابون
+        en: soap
+      - text: handuk
+        ar_eg: فوطة
+        ar: منشفة
+        en: towel
+      - text: cermin
+        ar_eg: مراية
+        ar: مرآة
+        en: mirror
+      - text: lampu
+        ar_eg: لمبة
+        ar: مصباح
+        en: lamp
+    words: [sabun, handuk, cermin, lampu]
   - id: e02
     type: match_pairs
     pairs:
-      - text: cari
-        ar_eg: يدوّر على
-        ar: يبحث عن
-        en: look for
-      - text: aman
-        ar_eg: آمن
-        ar: آمن
-        en: safe
-      - text: lambat
-        ar_eg: بطيء
-        ar: بطيء
-        en: slow
-      - text: hampir
-        ar_eg: تقريبًا
-        ar: تقريبًا
-        en: almost
-    words: [cari, aman, lambat, hampir]
+      - text: kotak
+        ar_eg: علبة
+        ar: صندوق
+        en: box
+      - text: dinding
+        ar_eg: حيطة
+        ar: جدار
+        en: wall
+      - text: tempat tidur
+        ar_eg: سرير
+        ar: سرير
+        en: bed
+      - text: rapi
+        ar_eg: مترتب
+        ar: مرتّب
+        en: tidy
+    words: [kotak, dinding, tempat tidur, rapi]
   - id: e03
     type: listen
-    text: Saya cari taksi ke stasiun.
+    text: Di kamar mandi ada sabun dan handuk.
     question:
-      ar_eg: بيدوّر على إيه؟
-      ar: عمَّ يبحث؟
-      en: What's he looking for?
-    options: [تاكسي, موتوسيكل, عجلة]
+      ar_eg: إيه اللي في الحمام؟
+      ar: ماذا في الحمّام؟
+      en: What's in the bathroom?
+    options: [صابون وفوطة, سرير ولمبة, مراية وعلبة]
     answer: 0
     meaning:
-      ar_eg: بدوّر على تاكسي للمحطة.
-      ar: أبحث عن سيارة أجرة إلى المحطة.
-      en: I'm looking for a taxi to the station.
-    words: [cari, taksi]
+      ar_eg: في الحمام فيه صابون وفوطة.
+      ar: في الحمّام صابون ومنشفة.
+      en: There's soap and a towel in the bathroom.
+    words: [sabun, handuk]
   - id: e04
     type: fill_blank
-    sentence: Naik motor, kita ___ sampai!
+    sentence: Kucing saya tidur di dalam ___.
     meaning:
-      ar_eg: بالموتوسيكل، ___ نوصل!
-      ar: بالدرّاجة النارية ___ نصل!
-      en: By motorbike, we're ___ there!
-    options: [hampir, aman, lambat]
-    answers: [hampir]
-    words: [motor, hampir, aman, lambat]
+      ar_eg: القطة بتاعتي نايمة جوه ___.
+      ar: قطّتي نائمة داخل ___.
+      en: My cat is sleeping inside a ___.
+    options: [kotak, cermin, lampu]
+    answers: [kotak]
+    words: [kotak, cermin, lampu]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: عربية كبيرة جدًا بتشيل بضاعة. اسمها؟
-      ar: سيارة كبيرة جدًا تنقل البضائع. ما اسمها؟
-      en: A very big vehicle that carries goods. What is it?
-    options: [truk, sepeda, taksi]
+      ar_eg: أوضتك متروّقة وكل حاجة في مكانها. هي…؟
+      ar: غرفتك مرتّبة وكل شيء في مكانه. هي…؟
+      en: Your room is neat, everything in its place. It's…?
+    options: [rapi, dinding, kotak]
     answer: 0
     explain:
-      ar_eg: truk = عربية نقل.
-      ar: truk = شاحنة.
-      en: truk = truck.
-    words: [truk, sepeda, taksi]
+      ar_eg: rapi = مترتّب.
+      ar: rapi = مرتّب.
+      en: rapi = tidy.
+    words: [rapi, dinding, kotak]
   - id: e06
     type: fill_blank
-    sentence: Jalan ini ramai. Busnya ___, kita hampir terlambat.
+    sentence: Ada foto keluarga di ___.
     meaning:
-      ar_eg: الشارع ده زحمة. الأتوبيس ___، وهنتأخر.
-      ar: هذا الشارع مزدحم، والحافلة ___، فكدنا نتأخر.
-      en: This road is busy. The bus is ___; we're nearly late.
-    options: [lambat, aman, hampir]
-    answers: [lambat]
-    words: [lambat, hampir]
+      ar_eg: فيه صورة العيلة على ___.
+      ar: هناك صورة العائلة على ___.
+      en: There's a family photo on the ___.
+    options: [dinding, sabun, handuk]
+    answers: [dinding]
+    words: [dinding, sabun, handuk]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: ركوب العجلة هنا آمن.
-      ar: ركوب الدرّاجة هنا آمن.
-      en: Cycling here is safe.
-    answer: Naik sepeda di sini aman.
-    distractors: [truk, cari]
-    words: [sepeda, aman]
+      ar_eg: السرير جنب الباب.
+      ar: السرير بجانب الباب.
+      en: The bed is next to the door.
+    answer: Tempat tidur di samping pintu.
+    distractors: [lampu, rapi]
+    words: [tempat tidur]
   - id: e08
     type: translate
     direction: from_target
-    source_text: Saya naik motor ke kampus.
+    source_text: Ada lampu kecil di samping tempat tidur.
     answers_meaning:
-      ar_eg: [بروح الجامعة بالموتوسيكل, بركب موتوسيكل للجامعة]
-      ar: [أذهب إلى الجامعة بالدرّاجة النارية, أركب الدرّاجة النارية إلى الجامعة]
-      en: [I ride a motorbike to campus, I go to campus by motorbike]
-    words: [motor]
+      ar_eg: [فيه لمبة صغيرة جنب السرير, فيه أباجورة صغيرة جنب السرير]
+      ar: [بجانب السرير مصباح صغير, هناك مصباح صغير بجوار السرير]
+      en: ['There''s a small lamp next to the bed', There is a little lamp beside the bed]
+    words: [lampu, tempat tidur]
   - id: e09
     type: speaking
-    text: Truk itu besar dan lambat.
+    text: Kamar saya kecil, tapi rapi.
     meaning:
-      ar_eg: عربية النقل دي كبيرة وبطيئة.
-      ar: تلك الشاحنة كبيرة وبطيئة.
-      en: That truck is big and slow.
-    words: [truk, lambat]
+      ar_eg: أوضتي صغيرة بس مترتبة.
+      ar: غرفتي صغيرة لكنها مرتّبة.
+      en: My room is small but tidy.
+    words: [rapi]
   - id: e10
     type: multiple_choice
-    question: Dompet saya hilang! Saya ___ dompet saya.
-    options: [cari, naik, turun]
+    question: Saya melihat wajah saya di ___.
+    options: [cermin, kotak, handuk]
     answer: 0
     explain:
-      ar_eg: 'لما حاجة تضيع، بتدوّر عليها: cari.'
-      ar: 'إذا ضاع شيء بحثت عنه: cari.'
-      en: 'When something''s lost, you look for it: cari.'
-    words: [cari]
+      ar_eg: 'بتشوف وشك في المراية: cermin.'
+      ar: 'ترى وجهك في المرآة: cermin.'
+      en: 'You see your face in a mirror: cermin.'
+    words: [cermin, kotak, handuk]
 dialogue:
   lines:
-    - speaker: Raka
-      text: Mohamed, kamu cari apa?
-      ar_eg: يا محمد، بتدوّر على إيه؟
-      ar: يا محمد، عمَّ تبحث؟
-      en: Mohamed, what are you looking for?
+    - speaker: Bu Yanti
+      text: Mohamed, ini kamar kamu.
+      ar_eg: يا محمد، دي أوضتك.
+      ar: يا محمد، هذه غرفتك.
+      en: Mohamed, this is your room.
     - speaker: Mohamed
-      text: Saya cari taksi ke museum.
-      ar_eg: بدوّر على تاكسي للمتحف.
-      ar: أبحث عن سيارة أجرة إلى المتحف.
-      en: I'm looking for a taxi to the museum.
-    - speaker: Raka
-      text: Taksi lambat, jalannya ramai. Kita naik motor saya!
-      ar_eg: التاكسي بطيء والشارع زحمة. تعالى نركب الموتوسيكل بتاعي!
-      ar: سيارة الأجرة بطيئة والشارع مزدحم. لنركب درّاجتي النارية!
-      en: Taxis are slow; the roads are busy. Let's take my motorbike!
+      text: Terima kasih, Bu! Kamarnya rapi.
+      ar_eg: شكرًا يا طنط! الأوضة مترتبة.
+      ar: شكرًا يا سيدتي! الغرفة مرتّبة.
+      en: Thank you! The room is tidy.
+    - speaker: Bu Yanti
+      text: Ada tempat tidur, meja, dan lampu.
+      ar_eg: فيه سرير وترابيزة ولمبة.
+      ar: فيها سرير وطاولة ومصباح.
+      en: There's a bed, a table and a lamp.
     - speaker: Mohamed
-      text: Motor? Aman?
-      ar_eg: موتوسيكل؟ أمان؟
-      ar: درّاجة نارية؟ هل هي آمنة؟
-      en: A motorbike? Is it safe?
-    - speaker: Raka
-      text: Aman! Saya jalan pelan-pelan.
-      ar_eg: أمان! هسوق براحة.
-      ar: آمنة! سأسير ببطء.
-      en: Safe! I'll go slowly.
+      text: Cerminnya di mana, Bu?
+      ar_eg: والمراية فين يا طنط؟
+      ar: وأين المرآة يا سيدتي؟
+      en: Where's the mirror?
+    - speaker: Bu Yanti
+      text: Di kamar mandi, di dinding. Ada sabun dan handuk juga.
+      ar_eg: في الحمام، على الحيطة. وفيه صابون وفوطة كمان.
+      ar: في الحمّام على الجدار، وهناك صابون ومنشفة أيضًا.
+      en: In the bathroom, on the wall. There's soap and a towel too.
     - speaker: Mohamed
-      text: Kita hampir sampai!
-      ar_eg: قربنا نوصل!
-      ar: أوشكنا على الوصول!
-      en: We're nearly there!
+      text: Bu, ada kucing di dalam kotak ini!
+      ar_eg: يا طنط، فيه قطة جوه العلبة دي!
+      ar: يا سيدتي، في هذا الصندوق قطّة!
+      en: There's a cat inside this box!
 new_words:
-  - word: sepeda
+  - word: sabun
     pos: noun
-    ar_eg: عجلة
-    ar: درّاجة
-    en: bicycle
-  - word: taksi
+    arabic: صابون
+    ar_eg: صابون
+    ar: صابون
+    en: soap
+  - word: handuk
     pos: noun
-    ar_eg: تاكسي
-    ar: سيارة أجرة
-    en: taxi
-  - word: motor
+    ar_eg: فوطة
+    ar: منشفة
+    en: towel
+  - word: cermin
     pos: noun
-    ar_eg: موتوسيكل
-    ar: درّاجة نارية
-    en: motorbike
-  - word: truk
+    ar_eg: مراية
+    ar: مرآة
+    en: mirror
+  - word: lampu
     pos: noun
-    ar_eg: عربية نقل
-    ar: شاحنة
-    en: truck, lorry
-  - word: cari
-    pos: verb
-    ar_eg: يدوّر على (عامية)
-    ar: يبحث عن (عامية)
-    en: look for (casual)
-  - word: aman
+    ar_eg: لمبة، نور
+    ar: مصباح، ضوء
+    en: lamp, light
+  - word: kotak
+    pos: noun
+    ar_eg: علبة، صندوق
+    ar: صندوق، علبة
+    en: box
+  - word: dinding
+    pos: noun
+    ar_eg: حيطة
+    ar: جدار
+    en: wall
+  - word: tempat tidur
+    pos: noun
+    ar_eg: سرير
+    ar: سرير
+    en: bed
+  - word: rapi
     pos: adjective
-    arabic: أمان
-    ar_eg: آمن، أمان
-    ar: آمن
-    en: safe
-  - word: lambat
-    pos: adjective
-    ar_eg: بطيء
-    ar: بطيء
-    en: slow
-  - word: hampir
-    pos: adverb
-    ar_eg: تقريبًا، قرّب
-    ar: تقريبًا، كاد
-    en: almost, nearly
+    ar_eg: مترتب، متروّق
+    ar: مرتّب
+    en: tidy, neat
 review:
   status: draft
   verified: false

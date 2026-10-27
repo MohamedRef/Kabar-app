@@ -1,234 +1,225 @@
 schema: kabar.lesson/v1
 id: bipa2.u04.l09
 language: id
-title: Belanja dan bayar
+title: Seons, seliter, selusin
 can_do:
-  ar_eg: 'تتسوق في سوبر ماركت: السلة والكيس والكاشير والخصم والدفع والباقي.'
-  ar: 'أن تتسوّق في متجر كبير: السلة والكيس والمحاسب والخصم والدفع والباقي.'
-  en: 'Shop at a supermarket: basket, bag, cashier, discount, paying and change.'
+  ar_eg: تشتري بالجرام والأوقية واللتر والدستة، وتقيس بالسنتي والكيلومتر والنسبة.
+  ar: أن تشتري بالغرام والأوقية واللتر والدزينة، وتقيس بالسنتيمتر والكيلومتر والنسبة المئوية.
+  en: Buy by the gram, ons, litre and dozen, and measure in centimetres, kilometres and percent.
 slides:
-  - title: Di kasir
+  - title: Ukuran
     body:
       ar_eg: |
-        belanja = يتسوق (والرسمي berbelanja). keranjang = سلة، kantong = كيس (kantong plastik).
-        timbangan = ميزان (timbang = يوزن).
-        bayar = يدفع: Bayar di kasir. وkasir = الكاشير.
-        kembalian = الباقي (من kembali = يرجع). وdiskon = خصم.
+        الوزن: gram، وons، وkilo. خلي بالك: في إندونيسيا 1 ons = 100 gram!
+        السوايل: liter (sebotol air satu liter).
+        الطول: sentimeter، meter، kilometer.
+        lusin = دستة: selusin = ١٢. وpersen = في المية: diskon 50 persen.
       ar: |
-        belanja = يتسوّق (والفصيح berbelanja). keranjang = سلّة، kantong = كيس (kantong plastik).
-        timbangan = ميزان (timbang = يزن).
-        bayar = يدفع: Bayar di kasir، وkasir = المحاسب.
-        kembalian = الباقي (من kembali = يعود). وdiskon = خصم.
+        الوزن: gram وons وkilo. وانتبه: في إندونيسيا 1 ons = 100 gram!
+        السوائل: liter (sebotol air satu liter).
+        الطول: sentimeter وmeter وkilometer.
+        lusin = دزينة: selusin = ١٢. وpersen = بالمئة: diskon 50 persen.
       en: |
-        belanja = shop (formal berbelanja). keranjang = basket, kantong = bag (kantong plastik).
-        timbangan = scales (timbang = weigh).
-        bayar = pay: Bayar di kasir; kasir = cashier.
-        kembalian = change (from kembali, return). diskon = discount.
+        Weight: gram, ons, kilo. Careful: in Indonesia 1 ons = 100 grams!
+        Liquids: liter (sebotol air satu liter).
+        Length: sentimeter, meter, kilometer.
+        lusin = dozen: selusin = 12. persen = percent: diskon 50 persen.
     examples:
-      - text: Ibu belanja di pasar setiap pagi.
-        ar_eg: ماما بتتسوق في السوق كل يوم الصبح.
-        ar: تتسوّق أمي في السوق كل صباح.
-        en: Mum shops at the market every morning.
-      - text: Bayar di kasir, ya.
-        ar_eg: ادفع عند الكاشير.
-        ar: ادفع عند المحاسب.
-        en: Pay at the till, please.
-      - text: Ini kembaliannya, Pak. Terima kasih!
-        ar_eg: اتفضل الباقي يا أستاذ. شكرًا!
-        ar: تفضّل الباقي يا سيدي. شكرًا!
-        en: Here's your change, sir. Thank you!
+      - text: Satu ons sama dengan seratus gram.
+        ar_eg: الأوقية = ١٠٠ جرام.
+        ar: الأوقية تساوي مئة غرام.
+        en: One ons equals a hundred grams.
+      - text: Saya beli selusin pensil.
+        ar_eg: اشتريت دستة أقلام رصاص.
+        ar: اشتريت دزينة أقلام رصاص.
+        en: I bought a dozen pencils.
+      - text: Diskon lima puluh persen!
+        ar_eg: خصم خمسين في المية!
+        ar: خصم خمسين بالمئة!
+        en: Fifty percent off!
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: belanja
-        ar_eg: يتسوق
-        ar: يتسوّق
-        en: shop
-      - text: kasir
-        ar_eg: كاشير
-        ar: محاسب
-        en: cashier
-      - text: kembalian
-        ar_eg: الباقي
-        ar: الباقي
-        en: change
-      - text: keranjang
-        ar_eg: سلة
-        ar: سلّة
-        en: basket
-    words: [belanja, kasir, kembalian, keranjang]
+      - text: gram
+        ar_eg: جرام
+        ar: غرام
+        en: gram
+      - text: ons
+        ar_eg: ١٠٠ جرام
+        ar: ١٠٠ غرام
+        en: 100 grams
+      - text: liter
+        ar_eg: لتر
+        ar: لتر
+        en: litre
+      - text: kilometer
+        ar_eg: كيلومتر
+        ar: كيلومتر
+        en: kilometre
+    words: [gram, ons, liter, kilometer]
   - id: e02
     type: match_pairs
     pairs:
-      - text: kantong
-        ar_eg: كيس
-        ar: كيس
-        en: bag
-      - text: timbangan
-        ar_eg: ميزان
-        ar: ميزان
-        en: scales
-      - text: diskon
-        ar_eg: خصم
-        ar: خصم
-        en: discount
-      - text: bayar
-        ar_eg: يدفع
-        ar: يدفع
-        en: pay
-    words: [kantong, timbangan, diskon, bayar]
+      - text: sentimeter
+        ar_eg: سنتيمتر
+        ar: سنتيمتر
+        en: centimetre
+      - text: lusin
+        ar_eg: دستة
+        ar: دزينة
+        en: dozen
+      - text: persen
+        ar_eg: في المية
+        ar: بالمئة
+        en: percent
+    words: [sentimeter, lusin, persen]
   - id: e03
     type: listen
-    text: Ini kembaliannya, lima ribu. Terima kasih!
+    text: Saya minta dua ons daging, ya.
     question:
-      ar_eg: الكاشير بيدّيه إيه؟
-      ar: ماذا يعطيه المحاسب؟
-      en: What is the cashier giving him?
-    options: [الباقي, كيس, سلة]
+      ar_eg: عايز قد إيه لحمة؟
+      ar: كم يريد من اللحم؟
+      en: How much meat does he want?
+    options: [٢٠٠ جرام, ٢ كيلو, ٢٠ جرام]
     answer: 0
     meaning:
-      ar_eg: اتفضل الباقي، خمس تلاف. شكرًا!
-      ar: تفضّل الباقي، خمسة آلاف. شكرًا!
-      en: Here's your change, five thousand. Thank you!
-    words: [kembalian]
+      ar_eg: عايز ٢ أوقية لحمة لو سمحت.
+      ar: أريد أوقيتين من اللحم من فضلك.
+      en: Two ons of meat, please.
+    words: [ons]
   - id: e04
     type: fill_blank
-    sentence: Silakan ke ___ di depan.
+    sentence: Satu ons sama dengan seratus ___.
     meaning:
-      ar_eg: اتفضل على ___ اللي قدام.
-      ar: تفضّل إلى ___ في الأمام.
-      en: Please go to the ___ at the front.
-    options: [kasir, timbangan, diskon]
-    answers: [kasir]
-    words: [kasir, timbangan, diskon]
+      ar_eg: الأوقية = ١٠٠ ___.
+      ar: الأوقية تساوي مئة ___.
+      en: One ons equals a hundred ___.
+    options: [gram, liter, persen]
+    answers: [gram]
+    words: [ons, gram, liter, persen]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: البياع بيوزن الفاكهة بإيه؟
-      ar: بمَ يزن البائع الفاكهة؟
-      en: What does the seller weigh fruit on?
-    options: [timbangan, keranjang, kantong]
+      ar_eg: ١٢ حاجة من نفس النوع؟
+      ar: اثنا عشر شيئًا من النوع نفسه؟
+      en: Twelve of the same thing?
+    options: [selusin, seons, seliter]
     answer: 0
     explain:
-      ar_eg: timbangan = ميزان.
-      ar: timbangan = ميزان.
-      en: timbangan = scales.
-    words: [timbangan, keranjang, kantong]
+      ar_eg: selusin = دستة = ١٢.
+      ar: selusin = دزينة = ١٢.
+      en: selusin = a dozen = 12.
+    words: [lusin, ons, liter]
   - id: e06
     type: fill_blank
-    sentence: 'Hari ini ada ___: semua baju lebih murah!'
+    sentence: Jarak dari rumah ke kantor lima ___.
     meaning:
-      ar_eg: 'النهارده فيه ___: كل الهدوم أرخص!'
-      ar: 'اليوم ___: كل الملابس أرخص!'
-      en: 'Today there''s a ___: all clothes are cheaper!'
-    options: [diskon, kembalian, belanja]
-    answers: [diskon]
-    words: [diskon, kembalian, belanja]
+      ar_eg: المسافة من البيت للمكتب خمسة ___.
+      ar: المسافة من البيت إلى المكتب خمسة ___.
+      en: It's five ___ from home to the office.
+    options: [kilometer, sentimeter, gram]
+    answers: [kilometer]
+    words: [kilometer, sentimeter, gram]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: مش محتاج كيس بلاستيك، معايا سلة.
-      ar: لا أحتاج كيسًا بلاستيكيًا، معي سلّة.
-      en: No plastic bag, thanks; I've brought a basket.
-    answer: Tidak usah kantong plastik, saya bawa keranjang.
-    distractors: [kasir, bayar]
-    words: [kantong, keranjang, kasir, bayar]
+      ar_eg: عايز إزازة مية لتر ونص.
+      ar: أريد زجاجة ماء لتر ونصف.
+      en: I'd like a one-and-a-half-litre bottle of water.
+    answer: Saya minta sebotol air satu setengah liter.
+    distractors: [gram, persen]
+    words: [liter, gram, persen]
   - id: e08
     type: translate
     direction: from_target
-    source_text: Ada diskon hari ini. Bayar di kasir, ya!
+    source_text: Diskon lima puluh persen!
     answers_meaning:
-      ar_eg: [فيه خصم النهارده. ادفع عند الكاشير!, النهارده فيه خصم. الدفع عند الكاشير!]
-      ar: [هناك خصم اليوم. ادفع عند المحاسب!]
-      en: ['There''s a discount today. Pay at the till!', Discount today. Please pay at the cashier!]
-    words: [diskon, bayar, kasir]
+      ar_eg: [خصم خمسين في المية!, خصم ٥٠٪!]
+      ar: [خصم خمسين بالمئة!, خصم ٥٠٪!]
+      en: [Fifty percent off!, A 50% discount!]
+    words: [persen, diskon]
   - id: e09
     type: speaking
-    text: Saya mau belanja di pasar.
+    text: Saya beli selusin pulpen.
     meaning:
-      ar_eg: عايز أتسوق في السوق.
-      ar: أريد التسوّق في السوق.
-      en: I want to go shopping at the market.
-    words: [belanja]
+      ar_eg: اشتريت دستة أقلام.
+      ar: اشتريت دزينة أقلام.
+      en: I bought a dozen pens.
+    words: [lusin]
   - id: e10
     type: multiple_choice
-    question: Harganya delapan ribu, uang saya sepuluh ribu. Kembaliannya ___.
-    options: [dua ribu, delapan ribu, sepuluh ribu]
+    question: Seratus sentimeter = satu ___.
+    options: [meter, kilometer, gram]
     answer: 0
     explain:
-      ar_eg: '١٠ - ٨ = ٢: dua ribu.'
-      ar: 'عشرة ناقص ثمانية يساوي اثنين: dua ribu.'
-      en: '10 − 8 = 2: dua ribu.'
-    words: [kembalian, bayar]
+      ar_eg: ١٠٠ سم = متر.
+      ar: مئة سنتيمتر = متر.
+      en: 100 cm = 1 metre.
+    words: [sentimeter, kilometer, gram]
 dialogue:
   lines:
-    - speaker: Rina
-      text: Mohamed, ayo belanja! Ada diskon di toko itu.
-      ar_eg: يلّا يا محمد نتسوق! فيه خصم في المحل ده.
-      ar: هيّا يا محمد نتسوّق! هناك خصم في ذلك المتجر.
-      en: Mohamed, let's go shopping! That shop has a sale.
-    - speaker: Mohamed
-      text: Ayo! Ini keranjangnya.
-      ar_eg: يلّا! دي السلة.
-      ar: هيّا! هذه السلّة.
-      en: Let's go! Here's a basket.
-    - speaker: Kasir
-      text: Semuanya delapan puluh ribu. Pakai kantong plastik?
-      ar_eg: الحساب تمانين ألف. عايز كيس بلاستيك؟
-      ar: المجموع ثمانون ألفًا. أتريد كيسًا بلاستيكيًا؟
-      en: That's eighty thousand altogether. Plastic bag?
-    - speaker: Mohamed
-      text: Tidak usah, terima kasih. Saya bayar seratus ribu.
-      ar_eg: لأ، شكرًا. هدفع مية ألف.
-      ar: لا داعي، شكرًا. أدفع مئة ألف.
-      en: No need, thanks. I'll pay with a hundred thousand.
-    - speaker: Kasir
-      text: Ini kembaliannya, dua puluh ribu.
-      ar_eg: اتفضل الباقي، عشرين ألف.
-      ar: تفضّل الباقي، عشرون ألفًا.
-      en: Here's your change, twenty thousand.
+    - speaker: Bu Yanti
+      text: Bu, minta setengah kilo daging dan dua ons kacang.
+      ar_eg: يا ست، عايزة نص كيلو لحمة و٢ أوقية فول سوداني.
+      ar: يا سيدتي، نصف كيلو لحم وأوقيتين من الفول السوداني.
+      en: Half a kilo of meat and two ons of peanuts, please.
+    - speaker: Penjual
+      text: Baik, Bu. Ada lagi?
+      ar_eg: حاضر. حاجة تانية؟
+      ar: حسنًا. شيء آخر؟
+      en: Sure. Anything else?
+    - speaker: Bu Yanti
+      text: Selusin pensil untuk cucu saya.
+      ar_eg: دستة أقلام رصاص لحفيدي.
+      ar: دزينة أقلام رصاص لحفيدي.
+      en: A dozen pencils for my grandchild.
+    - speaker: Penjual
+      text: Hari ini ada diskon sepuluh persen untuk pensil!
+      ar_eg: النهارده فيه خصم عشرة في المية على الأقلام!
+      ar: اليوم خصم عشرة بالمئة على الأقلام!
+      en: Pencils are ten percent off today!
+    - speaker: Bu Yanti
+      text: Bagus! Terima kasih.
+      ar_eg: حلو! شكرًا.
+      ar: رائع! شكرًا.
+      en: Great! Thank you.
 new_words:
-  - word: belanja
-    pos: verb
-    ar_eg: يتسوق
-    ar: يتسوّق
-    en: shop, go shopping
-  - word: kasir
+  - word: gram
     pos: noun
-    ar_eg: كاشير
-    ar: محاسب (أمين صندوق)
-    en: cashier
-  - word: kembalian
+    ar_eg: جرام
+    ar: غرام
+    en: gram
+  - word: ons
     pos: noun
-    ar_eg: الباقي (فلوس)
-    ar: الباقي (من النقود)
-    en: change (money)
-  - word: keranjang
+    ar_eg: أوقية (١٠٠ جرام)
+    ar: أوقية (١٠٠ غرام)
+    en: ons (100 grams)
+  - word: liter
     pos: noun
-    ar_eg: سلة
-    ar: سلّة
-    en: basket
-  - word: kantong
+    ar_eg: لتر
+    ar: لتر
+    en: litre
+  - word: kilometer
     pos: noun
-    ar_eg: كيس، جيب
-    ar: كيس، جيب
-    en: bag, pocket
-  - word: timbangan
+    ar_eg: كيلومتر
+    ar: كيلومتر
+    en: kilometre
+  - word: sentimeter
     pos: noun
-    ar_eg: ميزان
-    ar: ميزان
-    en: scales
-  - word: diskon
+    ar_eg: سنتيمتر
+    ar: سنتيمتر
+    en: centimetre
+  - word: lusin
     pos: noun
-    ar_eg: خصم
-    ar: خصم
-    en: discount
-  - word: bayar
-    pos: verb
-    ar_eg: يدفع
-    ar: يدفع
-    en: pay
+    ar_eg: دستة
+    ar: دزينة
+    en: dozen
+  - word: persen
+    pos: noun
+    ar_eg: في المية
+    ar: بالمئة
+    en: percent
 review:
   status: draft
   verified: false

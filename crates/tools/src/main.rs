@@ -12,6 +12,7 @@ use clap::{Parser, Subcommand};
 
 mod bakeoff;
 mod bridge;
+mod coverage;
 mod freq;
 mod gloss;
 mod golden;
@@ -67,6 +68,8 @@ enum Command {
     /// App update feeds: the signing key, `update.json` and its signature.
     #[command(subcommand)]
     Update(update::Cmd),
+    /// Unknown-word share of Sinetron, Radio and lesson dialogues against the curriculum.
+    Coverage(coverage::Args),
     /// Regenerate `schemas/*.schema.json` from the Rust content types.
     Schemas {
         /// Fail instead of writing when a schema is out of date.
@@ -97,6 +100,7 @@ fn main() -> Result<()> {
         Command::Bakeoff(cmd) => bakeoff::run(&root, cmd),
         Command::Packs(cmd) => packs::run(&root, cmd),
         Command::Update(cmd) => update::run(&root, cmd),
+        Command::Coverage(args) => coverage::run(&root, args),
         Command::Schemas { check } => schemas::run(&root, check),
         Command::Readme { check } => readme::run(&root, check),
         Command::Validate => {
