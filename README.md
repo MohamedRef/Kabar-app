@@ -53,14 +53,14 @@ table below doesn't match the content.
 
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|
-| BIPA 1 | Jakarta | A1 | 10 | 74 | 600 | 410 | ~8 h | 35 |
+| BIPA 1 | Jakarta | A1 | 10 | 74 | 602 | 410 | ~8 h | 35 |
 | BIPA 2 | Bali | A2 | 10 | 62 | 502 | 298 | ~7 h | 35 |
 | BIPA 3 | Lombok | B1 | 10 | 70 | 647 | 269 | ~8 h | 39 |
 | BIPA 4 | Sulawesi | B2 | 10 | 80 | 679 | 205 | ~8 h | 37 |
 | BIPA 5 | Kalimantan | C1 | 10 | 90 | 854 | 298 | ~9 h | 38 |
 | BIPA 6 | Sumatra | C2 | 10 | 100 | 986 | 380 | ~10 h | 38 |
 | BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 100 | 1,009 | 385 | ~10 h | 38 |
-| **Total** |  | — | 70 | 576 | 5,277 | 2,245 | ~60 h | 260 |
+| **Total** |  | — | 70 | 576 | 5,279 | 2,245 | ~60 h | 260 |
 
 **Javanese (J1–J6)**
 
