@@ -4,6 +4,7 @@
 //! later level teaches are marked "not taught yet" instead of hidden.
 
 use std::collections::BTreeSet;
+use std::rc::Rc;
 
 use dioxus::prelude::*;
 use kabar_core::grammar::Voice;
@@ -210,11 +211,21 @@ pub fn TextGrammar() -> Element {
 /// The rules word `i` takes part in, for its word card.
 #[component]
 pub fn WordGrammar(i: usize) -> Element {
-    let ui = use_context::<Ui>();
     let st = use_context::<ReaderState>();
     let voice = voice_of(*st.voice.read());
     let Some(grammar) = st.grammar.read().clone() else { return rsx! {} };
     let Some(doc) = st.open.read().as_ref().map(|o| o.doc.clone()) else { return rsx! {} };
+    rsx! {
+        GrammarAt { doc, grammar, i, voice }
+    }
+}
+
+/// The rules token `i` of `doc` takes part in, each once: the words that
+/// carry it, its title, where it's taught and the full entry on demand.
+/// Shared by the Reader's word card and every annotated text's.
+#[component]
+pub fn GrammarAt(doc: Rc<ReadDoc>, grammar: Rc<DocGrammar>, i: usize, voice: Voice) -> Element {
+    let ui = use_context::<Ui>();
     let mut seen = BTreeSet::new();
     let here: Vec<(Found, Hit)> =
         grammar.at(i).into_iter().filter(|(f, _)| seen.insert(f.grammar.clone())).collect();
