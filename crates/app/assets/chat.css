@@ -1,0 +1,72 @@
+/* Persona chats (PLAN §16 C). Logical properties only. */
+.chat { display: grid; gap: 0.75rem; max-inline-size: 46rem; margin-inline: auto; }
+.chat h2, .chat h3 { margin: 0; }
+.ch-personas, .ch-history, .ch-scenes, .ch-messages, .ch-fixes { list-style: none; padding: 0; margin: 0; }
+.ch-personas { display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
+.ch-personas .card, .ch-scenes .card { margin: 0; }
+.ch-persona, .ch-scene, .ch-open {
+  inline-size: 100%; display: flex; gap: 0.75rem; align-items: flex-start; text-align: start;
+  font: inherit; color: var(--text); cursor: pointer;
+}
+.ch-scene { display: grid; gap: 0.3rem; justify-items: start; }
+.ch-scenes { display: grid; gap: 0.6rem; }
+.ch-who { display: grid; gap: 0.2rem; justify-items: start; min-inline-size: 0; }
+.ch-avatar {
+  flex: none; display: inline-grid; place-items: center; inline-size: 2.5rem; block-size: 2.5rem;
+  border-radius: 50%; background: var(--indigo); color: var(--surface); font-weight: 700; font-size: 1.1rem;
+}
+.ch-avatar.jv { background: var(--sawah); }
+.ch-history { display: grid; gap: 0.5rem; }
+.ch-past { display: flex; align-items: center; gap: 0.5rem; margin: 0; }
+.ch-open { all: unset; flex: 1; display: flex; gap: 0.75rem; align-items: center; cursor: pointer; min-inline-size: 0; }
+.ch-open:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 0.3rem; }
+.ch-preview { display: block; max-inline-size: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.ch-chat { display: grid; gap: 0.5rem; }
+.ch-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.ch-head h2 { font-size: 1.3rem; }
+.ch-replay { margin-inline-start: auto; }
+.ch-scene-line { margin: 0; }
+.ch-register { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+.ch-register button { min-block-size: 2.25rem; border-radius: 999px; }
+.ch-register button[aria-pressed="true"] { background: var(--indigo); color: var(--surface); }
+
+.ch-messages { display: grid; gap: 0.6rem; padding-block: 0.5rem; }
+.ch-msg { display: grid; gap: 0.25rem; max-inline-size: 85%; }
+.ch-msg.them { justify-self: start; justify-items: start; }
+.ch-msg.me { justify-self: end; justify-items: end; }
+.ch-bubble { padding: 0.5rem 0.75rem; border-radius: 1rem; background: var(--surface-2); box-shadow: var(--shadow); }
+.ch-msg.them .ch-bubble { border-end-start-radius: 0.25rem; }
+.ch-msg.me .ch-bubble { border-end-end-radius: 0.25rem; background: var(--indigo); color: var(--surface); }
+.ch-text { margin: 0; font-size: 1.1rem; line-height: 1.6; text-align: start; }
+.ch-word { cursor: pointer; border-radius: 0.25rem; }
+.ch-word:hover, .ch-word.on { background: var(--gold-soft); }
+.ch-word:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+.ch-tools { display: flex; align-items: center; gap: 0.35rem; margin-block-start: 0.25rem; }
+.ch-listen { min-inline-size: 2.5rem; min-block-size: 2.25rem; }
+.ch-unverified { background: var(--dawn-soft); color: var(--text); }
+.ch-typing { color: var(--muted); }
+.ch-card { margin-block-start: 0.4rem; padding: 0.6rem 0.75rem; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--surface-2); box-shadow: var(--shadow); }
+.ch-card-head { justify-content: space-between; }
+.ch-card .gloss.big { font-size: 1.05rem; margin-block: 0.25rem; }
+
+.ch-fixes { display: grid; gap: 0.35rem; padding: 0.5rem 0.75rem; border-radius: var(--radius); background: var(--gold-soft); text-align: start; }
+.ch-fixes p { margin: 0.15rem 0 0; }
+.ch-was { color: var(--muted); }
+.ch-fix { font-weight: 600; }
+.ch-ok { color: var(--sawah); }
+.ch-problem { background: var(--dawn-soft); border-radius: var(--radius); padding: 0.5rem 0.75rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.ch-problem p { margin: 0; flex: 1; }
+
+.ch-compose {
+  position: sticky; inset-block-end: 0; display: flex; align-items: flex-end; gap: 0.4rem; padding-block: 0.5rem;
+  background: var(--bg);
+}
+.ch-compose textarea { flex: 1; min-inline-size: 0; box-sizing: border-box; font-size: 1.05rem; resize: vertical; min-block-size: 2.75rem; }
+
+.ch-send { flex: none; flex-wrap: nowrap; gap: 0.35rem; }
+.ch-messages > li { scroll-margin-block-end: 9rem; }
+.ch-privacy { margin: 0; }
+/* Above the phone's bottom bar. */
+.app[data-width="compact"] .ch-compose { inset-block-end: calc(4rem + env(safe-area-inset-bottom)); z-index: 11; }
+.ch-compose.ink { flex-direction: column; align-items: stretch; position: static; }

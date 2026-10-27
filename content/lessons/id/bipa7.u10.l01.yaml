@@ -1,0 +1,219 @@
+schema: kabar.lesson/v1
+id: bipa7.u10.l01
+language: id
+title: Ragam ilmiah
+can_do:
+  ar_eg: تكتب بأسلوب علمي، دقيق ومحايد ومن غير كلام عامّي.
+  ar: أن تكتب بالأسلوب العلمي، دقيقًا محايدًا خاليًا من العامّية.
+  en: Write in academic register, precise, neutral and free of slang.
+slides:
+  - title: Dari obrolan ke jurnal
+    grammar: id.register.academic
+    body:
+      ar_eg: |
+        نفس الفكرة بأسلوبين (مثال متألّف للدرس):
+        - عادي: Saya rasa orang Wamena makan ubi terus, soalnya ubinya banyak banget.
+        - ragam ilmiah (أسلوب علمي): Ubi jalar merupakan makanan pokok masyarakat Lembah Baliem. Hipotesis penelitian ini adalah bahwa pola makan tersebut dipengaruhi oleh ketinggian wilayah.
+        قواعد الأسلوب العلمي:
+        - istilah (مصطلح) دقيق: ubi jalar مش «ubi» بس.
+        - kalimat efektif (جملة محكمة): قصيرة، كاملة، من غير حشو.
+        - hipotesis (فرضية) قبل البحث، و temuan (نتيجة/اكتشاف) بعده.
+        - من غير «saya rasa» ولا «banget»، وكتير بالمبني للمجهول: Data dikumpulkan selama tiga bulan.
+      ar: |
+        الفكرة نفسها بأسلوبين (مثال مؤلَّف للدرس):
+        - عاديّ: Saya rasa orang Wamena makan ubi terus, soalnya ubinya banyak banget.
+        - ragam ilmiah (الأسلوب العلمي): Ubi jalar merupakan makanan pokok masyarakat Lembah Baliem. Hipotesis penelitian ini adalah bahwa pola makan tersebut dipengaruhi oleh ketinggian wilayah.
+        قواعد الأسلوب العلمي:
+        - istilah (المصطلح) الدقيق: ubi jalar لا «ubi» وحدها.
+        - kalimat efektif (الجملة المحكمة): قصيرة تامّة بلا حشو.
+        - hipotesis (الفرضية) قبل البحث، و temuan (النتيجة) بعده.
+        - لا «saya rasa» ولا «banget»، ويكثر المبنيّ للمجهول: Data dikumpulkan selama tiga bulan.
+      en: |
+        One idea in two registers (example invented for the lesson):
+        - Casual: Saya rasa orang Wamena makan ubi terus, soalnya ubinya banyak banget.
+        - Ragam ilmiah (academic register): Ubi jalar merupakan makanan pokok masyarakat Lembah Baliem. Hipotesis penelitian ini adalah bahwa pola makan tersebut dipengaruhi oleh ketinggian wilayah.
+        Rules of academic register:
+        - A precise istilah (term): ubi jalar, not just "ubi".
+        - Kalimat efektif (tight sentences): short, complete, no padding.
+        - A hipotesis (hypothesis) before the research, temuan (findings) after.
+        - No "saya rasa" or "banget", and plenty of passives: Data dikumpulkan selama tiga bulan.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ragam ilmiah
+        ar_eg: أسلوب علمي
+        ar: الأسلوب العلمي
+        en: academic register
+      - text: istilah
+        ar_eg: مصطلح
+        ar: مصطلح
+        en: term
+      - text: kalimat efektif
+        ar_eg: جملة محكمة
+        ar: جملة محكمة
+        en: tight, effective sentence
+      - text: hipotesis
+        ar_eg: فرضية
+        ar: فرضية
+        en: hypothesis
+      - text: temuan
+        ar_eg: نتيجة / اكتشاف
+        ar: نتيجة البحث
+        en: finding
+    words: [ragam ilmiah, istilah, kalimat efektif, hipotesis, temuan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة مكتوبة بالأسلوب العلمي؟
+      ar: أيّ جملة مكتوبة بالأسلوب العلمي؟
+      en: Which sentence is in academic register?
+    options:
+      - Ubinya enak banget, saya rasa semua orang suka.
+      - Ubi jalar merupakan makanan pokok masyarakat Lembah Baliem.
+      - Eh, ubi di Wamena murah, lho!
+    answer: 1
+    words: [ragam ilmiah]
+  - id: e03
+    type: fill_blank
+    sentence: Sebelum penelitian dimulai, peneliti merumuskan sebuah ___.
+    meaning:
+      ar_eg: قبل ما البحث يبدأ، الباحث بيصيغ فرضية.
+      ar: قبل بدء البحث يصوغ الباحث فرضية.
+      en: Before the research begins, the researcher formulates a hypothesis.
+    options: [hipotesis, temuan, istilah]
+    answers: [hipotesis]
+    words: [hipotesis]
+  - id: e04
+    type: listen
+    text: Temuan utama penelitian ini berbeda dari hipotesis awal.
+    question:
+      ar_eg: النتيجة الأساسية كانت إزاي مقارنة بالفرضية؟
+      ar: كيف جاءت النتيجة الرئيسة مقارنةً بالفرضية؟
+      en: How did the main finding compare with the hypothesis?
+    options:
+      - كانت مختلفة عن الفرضية الأولى.
+      - كانت هي نفسها بالظبط.
+      - مافيش نتيجة.
+    answer: 0
+    words: [temuan, hipotesis]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: استعمل مصطلح دقيق.
+      ar: استعمل مصطلحًا دقيقًا.
+      en: Use a precise term.
+    answer: Gunakan istilah yang tepat.
+    distractors: [temuan, efektif]
+    words: [istilah]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي واحدة «kalimat efektif»؟
+      ar: أيّها «kalimat efektif»؟
+      en: Which one is a "kalimat efektif"?
+    options:
+      - Bahwa data yang mana telah dikumpulkan oleh kami itu adalah banyak sekali.
+      - Data banyak, kami, dikumpulkan.
+      - Data dikumpulkan selama tiga bulan.
+    answer: 2
+    words: [kalimat efektif]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الكتابة العلمية لازم تكون بالأسلوب العلمي.
+      ar: يجب أن تُكتب الأوراق العلمية بالأسلوب العلمي.
+      en: Scholarly papers must use academic register.
+    answers:
+      - Karya ilmiah harus ditulis dengan ragam ilmiah.
+      - Karya ilmiah harus menggunakan ragam ilmiah.
+      - Karya ilmiah harus memakai ragam ilmiah.
+      - Tulisan ilmiah harus menggunakan ragam ilmiah.
+    words: [ragam ilmiah]
+  - id: e08
+    type: speaking
+    text: Kalimat efektif membuat temuan penelitian mudah dipahami.
+    meaning:
+      ar_eg: الجمل المحكمة بتخلّي نتايج البحث سهلة الفهم.
+      ar: تجعل الجمل المحكمة نتائج البحث سهلة الفهم.
+      en: Tight sentences make research findings easy to understand.
+    words: [kalimat efektif, temuan]
+  - id: e09
+    type: dictation
+    text: Istilah ubi jalar lebih tepat daripada ubi.
+    meaning:
+      ar_eg: مصطلح «ubi jalar» أدقّ من «ubi».
+      ar: مصطلح «ubi jalar» أدقّ من «ubi».
+      en: The term "ubi jalar" is more precise than "ubi".
+    words: [istilah]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Dalam ragam ilmiah, hipotesis diuji dengan data, bukan dengan perasaan.
+    answers_meaning:
+      ar_eg:
+        - في الأسلوب العلمي، الفرضية بتتختبر بالبيانات، مش بالإحساس.
+        - في الكتابة العلمية، بنختبر الفرضية بالأرقام مش بالمشاعر.
+      ar:
+        - في الأسلوب العلمي تُختبر الفرضية بالبيانات لا بالمشاعر.
+        - تُمتحَن الفرضية في الكتابة العلمية بالبيانات، لا بالانطباع.
+      en:
+        - In academic register, a hypothesis is tested with data, not feelings.
+        - Academic writing tests hypotheses against data, not gut feeling.
+    words: [ragam ilmiah, hipotesis]
+dialogue:
+  title: Draf pertama di Wamena
+  lines:
+    - speaker: Pak Elias
+      text: Drafmu menarik, tetapi ragamnya masih seperti obrolan.
+      ar_eg: المسوّدة بتاعتك حلوة، بس الأسلوب لسّه زي الدردشة.
+      ar: مسوّدتك مثيرة، لكنّ أسلوبها ما زال كالحديث العابر.
+      en: Your draft is interesting, but the register is still chatty.
+    - speaker: Mohamed
+      text: Bagian mana, Pak? Yang "saya rasa" itu?
+      ar_eg: أنهي جزء يا أستاذ؟ بتاع «saya rasa»؟
+      ar: أيّ جزء يا أستاذ؟ عبارة «saya rasa»؟
+      en: Which part, Pak? The "saya rasa" bit?
+    - speaker: Pak Elias
+      text: Betul. Ganti dengan hipotesis yang jelas, lalu tunjukkan temuanmu.
+      ar_eg: صح. بدّلها بفرضية واضحة، وبعدين اعرض نتايجك.
+      ar: صحيح. استبدلها بفرضية واضحة، ثمّ اعرض نتائجك.
+      en: Right. Replace it with a clear hypothesis, then show your findings.
+    - speaker: Mohamed
+      text: Baik. Saya juga pakai istilah "ubi jalar", bukan "ubi" saja.
+      ar_eg: حاضر. وهستعمل مصطلح «ubi jalar» كمان، مش «ubi» بس.
+      ar: حسنًا، وسأستعمل مصطلح «ubi jalar» لا «ubi» وحدها.
+      en: Right. And I'll use the term "ubi jalar", not just "ubi".
+new_words:
+  - word: ragam ilmiah
+    pos: noun
+    arabic: علم
+    ar_eg: أسلوب علمي
+    ar: الأسلوب العلمي
+    en: academic register
+  - word: istilah
+    pos: noun
+    arabic: اصطلاح
+    ar_eg: مصطلح
+    ar: مصطلح
+    en: term
+  - word: kalimat efektif
+    pos: noun
+    arabic: كلمة
+    ar_eg: جملة محكمة
+    ar: جملة محكمة
+    en: tight, effective sentence
+  - word: hipotesis
+    pos: noun
+    ar_eg: فرضية
+    ar: فرضية
+    en: hypothesis
+  - word: temuan
+    pos: noun
+    ar_eg: نتيجة / اكتشاف
+    ar: نتيجة البحث
+    en: finding
+review:
+  status: draft
+  verified: false

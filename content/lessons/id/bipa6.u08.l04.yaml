@@ -1,0 +1,208 @@
+schema: kabar.lesson/v1
+id: bipa6.u08.l04
+language: id
+title: Gempa dan lempeng
+can_do:
+  ar_eg: تشرح ليه إندونيسيا فيها زلازل كتير وتفهم خبر زلزال.
+  ar: أن تشرح سبب كثرة الزلازل في إندونيسيا وتفهم خبرًا عن زلزال.
+  en: Explain why Indonesia has so many earthquakes and understand an earthquake report.
+slides:
+  - title: Negeri di atas tiga lempeng
+    body:
+      ar_eg: |
+        إندونيسيا قاعدة في نقطة بتتقابل فيها تلات lempeng tektonik (صفايح الأرض): الهندية-الأسترالية، والأوراسية، والباسيفيكية.
+        - Cincin Api = حزام النار: سلسلة براكين وزلازل حوالين المحيط الهادي
+        - episentrum = مركز الزلزال على سطح الأرض
+        - magnitudo = قوة الزلزال. زلزال آتشيه ٢٠٠٤ كان حوالي ٩٫١.
+        - gempa susulan = هزة ارتدادية بعد الزلزال الكبير
+        هيئة الأرصاد BMKG بتنشر خبر فيه الـ magnitudo والـ episentrum بعد كل زلزال بدقايق.
+      ar: |
+        تقع إندونيسيا حيث تلتقي ثلاث lempeng tektonik (صفائح تكتونية): الهندية الأسترالية والأوراسية والهادئة.
+        - Cincin Api = حزام النار: سلسلة براكين وزلازل حول المحيط الهادئ
+        - episentrum = مركز الزلزال السطحي
+        - magnitudo = قوّة الزلزال؛ وكان زلزال آتشيه ٢٠٠٤ نحو ٩٫١.
+        - gempa susulan = هزّة ارتدادية بعد الزلزال الكبير
+        وتنشر هيئة الأرصاد BMKG خبرًا فيه الـ magnitudo والـ episentrum بعد دقائق من كلّ زلزال.
+      en: |
+        Indonesia sits where three lempeng tektonik (tectonic plates) meet: the Indo-Australian, Eurasian and Pacific.
+        - Cincin Api = the Ring of Fire, a chain of volcanoes and quakes around the Pacific
+        - episentrum = epicentre
+        - magnitudo = magnitude. The 2004 Aceh quake was about 9.1.
+        - gempa susulan = aftershock
+        The weather agency BMKG posts the magnitudo and episentrum minutes after every quake.
+    examples:
+      - text: Gempa bermagnitudo 5,6 terjadi dengan episentrum di laut, tidak berpotensi tsunami.
+        ar_eg: حصل زلزال قوته ٥٫٦ ومركزه في البحر، ومافيش احتمال تسونامي.
+        ar: وقع زلزال بقوّة ٥٫٦ مركزه في البحر، ولا يُحتمل أن يسبّب تسونامي.
+        en: A magnitude 5.6 quake struck with its epicentre at sea, with no tsunami potential.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: lempeng tektonik
+        ar_eg: صفيحة الأرض
+        ar: صفيحة تكتونية
+        en: tectonic plate
+      - text: Cincin Api
+        ar_eg: حزام النار
+        ar: حزام النار
+        en: Ring of Fire
+      - text: episentrum
+        ar_eg: مركز الزلزال
+        ar: مركز الزلزال
+        en: epicentre
+      - text: magnitudo
+        ar_eg: قوة الزلزال
+        ar: قوّة الزلزال
+        en: magnitude
+      - text: gempa susulan
+        ar_eg: هزة ارتدادية
+        ar: هزّة ارتدادية
+        en: aftershock
+    words: [lempeng tektonik, Cincin Api, episentrum, magnitudo, gempa susulan]
+  - id: e02
+    type: listen
+    text: Indonesia berada di pertemuan tiga lempeng tektonik.
+    question:
+      ar_eg: إندونيسيا قاعدة فوق كام صفيحة؟
+      ar: عند التقاء كم صفيحة تقع إندونيسيا؟
+      en: How many plates meet beneath Indonesia?
+    options:
+      - صفيحة واحدة.
+      - تلاتة.
+      - عشرة.
+    answer: 1
+    words: [lempeng tektonik]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: بعد الزلزال الكبير، حصلت هزات صغيرة. اسمها إيه؟
+      ar: وقعت هزّات صغيرة بعد الزلزال الكبير. ما اسمها؟
+      en: Small tremors followed the big quake. What are they called?
+    options: [episentrum, Cincin Api, gempa susulan]
+    answer: 2
+    words: [gempa susulan]
+  - id: e04
+    type: fill_blank
+    sentence: ___ gempa itu berada sepuluh kilometer dari pantai.
+    meaning:
+      ar_eg: مركز الزلزال ده كان على بعد عشرة كيلو من الشط.
+      ar: كان مركز ذلك الزلزال على بُعد عشرة كيلومترات من الساحل.
+      en: The quake's epicentre was ten kilometres off the coast.
+    options: [Episentrum, Magnitudo, Lempeng]
+    answers: [Episentrum]
+    words: [episentrum]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ليه إندونيسيا فيها براكين كتير؟
+      ar: لماذا تكثر البراكين في إندونيسيا؟
+      en: Why does Indonesia have so many volcanoes?
+    options:
+      - عشان هي على حزام النار.
+      - عشان الجو حر.
+      - عشان فيها جزر كتير.
+    answer: 0
+    words: [Cincin Api]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: قوة الزلزال كانت أكتر من ستة.
+      ar: تجاوزت قوّة الزلزال ستّة.
+      en: The quake's magnitude was more than six.
+    answer: Magnitudo gempa itu lebih dari enam.
+    distractors: [susulan, episentrum]
+    words: [magnitudo]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Warga diminta waspada terhadap gempa susulan.
+    answers_meaning:
+      ar_eg:
+        - الناس اتطلب منهم ياخدوا بالهم من الهزات الارتدادية.
+        - السكان لازم يبقوا منتبهين للهزات اللي بعد الزلزال.
+      ar:
+        - طُلب من السكّان الحذر من الهزّات الارتدادية.
+        - دُعي الأهالي إلى التيقّظ للهزّات الارتدادية.
+      en:
+        - Residents were asked to stay alert for aftershocks.
+        - People were told to watch out for aftershocks.
+    words: [gempa susulan]
+  - id: e08
+    type: speaking
+    text: Indonesia terletak di Cincin Api Pasifik.
+    meaning:
+      ar_eg: إندونيسيا موجودة على حزام النار بتاع المحيط الهادي.
+      ar: تقع إندونيسيا على حزام النار في المحيط الهادئ.
+      en: Indonesia lies on the Pacific Ring of Fire.
+    words: [Cincin Api]
+  - id: e09
+    type: dictation
+    text: Gempa terjadi karena lempeng tektonik saling bergerak.
+    meaning:
+      ar_eg: الزلازل بتحصل عشان صفايح الأرض بتتحرك ناحية بعض.
+      ar: تقع الزلازل لأنّ الصفائح التكتونية تتحرّك بعضها نحو بعض.
+      en: Earthquakes happen because tectonic plates move against each other.
+    words: [lempeng tektonik]
+  - id: e10
+    type: fill_blank
+    sentence: BMKG melaporkan gempa dengan ___ 6,2.
+    meaning:
+      ar_eg: BMKG بلّغت عن زلزال قوته ٦٫٢.
+      ar: أفادت BMKG بزلزال قوّته ٦٫٢.
+      en: BMKG reported a quake of magnitude 6.2.
+    options: [magnitudo, episentrum, Cincin Api]
+    answers: [magnitudo]
+    words: [magnitudo, episentrum]
+dialogue:
+  title: Getaran di malam hari
+  lines:
+    - speaker: Aisyah
+      text: Om Mohamed, tadi malam lampu bergoyang. Itu gempa, ya?
+      ar_eg: يا عمو محمد، امبارح بالليل اللمبة كانت بتتهز. ده كان زلزال؟
+      ar: يا عمّو محمد، اهتزّ المصباح البارحة ليلًا. أكان زلزالًا؟
+      en: Uncle Mohamed, last night the lamp was swinging. Was that an earthquake?
+    - speaker: Mohamed
+      text: Ya. Kata BMKG magnitudonya 5,1. Episentrumnya di laut, jauh dari sini.
+      ar_eg: أيوه. BMKG بتقول قوته ٥٫١. ومركزه في البحر، بعيد عن هنا.
+      ar: نعم، تقول BMKG إنّ قوّته ٥٫١ ومركزه في البحر بعيدًا عن هنا.
+      en: Yes. BMKG says it was magnitude 5.1. The epicentre was at sea, far from here.
+    - speaker: Bu Laila
+      text: Indonesia ada di Cincin Api, Aisyah. Lempeng di bawah kita selalu bergerak.
+      ar_eg: إندونيسيا على حزام النار يا عايشة. الصفايح اللي تحتنا دايمًا بتتحرك.
+      ar: إندونيسيا على حزام النار يا عائشة، والصفائح تحتنا تتحرّك دائمًا.
+      en: Indonesia is on the Ring of Fire, Aisyah. The plates under us are always moving.
+    - speaker: Aisyah
+      text: Kalau ada gempa susulan, aku lari ke luar seperti di latihan sekolah!
+      ar_eg: لو جت هزة تانية، هجري برّه زي ما اتعلمنا في تدريب المدرسة!
+      ar: إن جاءت هزّة ارتدادية فسأركض إلى الخارج كما في تدريب المدرسة!
+      en: If there's an aftershock, I'll run outside like in the school drill!
+new_words:
+  - word: lempeng tektonik
+    pos: noun
+    ar_eg: صفيحة الأرض
+    ar: صفيحة تكتونية
+    en: tectonic plate
+  - word: Cincin Api
+    pos: noun
+    ar_eg: حزام النار
+    ar: حزام النار
+    en: Ring of Fire
+  - word: episentrum
+    pos: noun
+    ar_eg: مركز الزلزال
+    ar: مركز الزلزال السطحي
+    en: epicentre
+  - word: magnitudo
+    pos: noun
+    ar_eg: قوة الزلزال
+    ar: قوّة الزلزال
+    en: magnitude
+  - word: gempa susulan
+    pos: noun
+    ar_eg: هزة ارتدادية
+    ar: هزّة ارتدادية
+    en: aftershock
+review:
+  status: draft
+  verified: false

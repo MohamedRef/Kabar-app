@@ -1,0 +1,232 @@
+schema: kabar.lesson/v1
+id: j3.u05.l07
+language: jv
+title: Ulangan J3.5
+can_do:
+  ar_eg: تكمّل عملية شرا كاملة بالكراما.
+  ar: أن تُتمّ عملية شراء كاملة بالكراما.
+  en: Complete a krama purchase.
+slides:
+  - title: Pasar Klewer, ringkesan
+    body:
+      ar_eg: |
+        مراجعة الوحدة:
+        - ١–١٠: setunggal، kalih، tiga، sekawan، gangsal، enem، pitu، wolu، sanga، sedasa.
+        - kalih dasa (٢٠)، selangkung (٢٥)، tigang dasa (٣٠)، sekawan dasa (٤٠)، seket (٥٠)، satus (١٠٠).
+        - tiga → tigang قبل dasa / atus / ewu: tigang ewu، tigang atus ewu.
+        - السوق: regi، tumbas، awis، mirah، kirang، angsal، saged، kemawon، ingkang، arta.
+        - الشرا: Reginipun pinten? → Awis… Saged kirang? → Kalih atus ewu angsal? → Inggih، matur nuwun.
+      ar: |
+        مراجعة الوحدة:
+        - ١–١٠: setunggal، kalih، tiga، sekawan، gangsal، enem، pitu، wolu، sanga، sedasa.
+        - kalih dasa (٢٠)، selangkung (٢٥)، tigang dasa (٣٠)، sekawan dasa (٤٠)، seket (٥٠)، satus (١٠٠).
+        - تصير tiga قبل dasa / atus / ewu tigang: tigang ewu، tigang atus ewu.
+        - السوق: regi، tumbas، awis، mirah، kirang، angsal، saged، kemawon، ingkang، arta.
+        - الشراء: Reginipun pinten? → Awis… Saged kirang? → Kalih atus ewu angsal? → Inggih، matur nuwun.
+      en: |
+        The unit at a glance:
+        - 1–10: setunggal, kalih, tiga, sekawan, gangsal, enem, pitu, wolu, sanga, sedasa.
+        - kalih dasa (20), selangkung (25), tigang dasa (30), sekawan dasa (40), seket (50), satus (100).
+        - tiga → tigang before dasa / atus / ewu: tigang ewu, tigang atus ewu.
+        - Market: regi, tumbas, awis, mirah, kirang, angsal, saged, kemawon, ingkang, arta.
+        - The purchase: Reginipun pinten? → Awis… Saged kirang? → Kalih atus ewu angsal? → Inggih, matur nuwun.
+    grammar: jv.krama.numbers
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: setunggal
+        ar_eg: ١
+        ar: ١
+        en: '1'
+      - text: kalih
+        ar_eg: ٢
+        ar: ٢
+        en: '2'
+      - text: sekawan
+        ar_eg: ٤
+        ar: ٤
+        en: '4'
+      - text: gangsal
+        ar_eg: ٥
+        ar: ٥
+        en: '5'
+      - text: sedasa
+        ar_eg: ١٠
+        ar: ١٠
+        en: '10'
+    words: [setunggal, kalih, sekawan, gangsal, sedasa]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: awis
+        ar_eg: غالي (larang)
+        ar: غالٍ (larang)
+        en: expensive (larang)
+      - text: mirah
+        ar_eg: رخيص (murah)
+        ar: رخيص (murah)
+        en: cheap (murah)
+      - text: tumbas
+        ar_eg: يشتري (tuku)
+        ar: يشتري (tuku)
+        en: to buy (tuku)
+      - text: arta
+        ar_eg: فلوس (duit)
+        ar: مال (duit)
+        en: money (duit)
+    words: [awis, mirah, tumbas, arta]
+  - id: e03
+    type: multiple_choice
+    question: Tigang atus ewu
+    question_meaning:
+      ar_eg: ده كام روبية؟
+      ar: كم روبية هذا؟
+      en: How many rupiah is this?
+    options: ['3.000', '30.000', '300.000']
+    answer: 2
+    explain:
+      ar_eg: tigang (٣) + atus (مية) + ewu (ألف) = ٣٠٠٠٠٠.
+      ar: tigang (٣) + atus (مئة) + ewu (ألف) = ٣٠٠٠٠٠.
+      en: tigang (3) + atus (hundred) + ewu (thousand) = 300,000.
+    words: [tiga, atus, ewu]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة كراما كلها من غير خلط؟
+      ar: أي جملة كراما خالصة بلا خلط؟
+      en: Which sentence is fully krama, with no mixing?
+    options: ['Kula tumbas loro, Bu.', 'Kula tumbas kalih, Bu.', 'Aku tumbas kalih, Bu.']
+    answer: 1
+    explain:
+      ar_eg: 'kula + tumbas + kalih: كله كراما. loro وaku نغوكو.'
+      ar: kula + tumbas + kalih كلها كراما، أما loro وaku فنغوكو.
+      en: kula + tumbas + kalih are all krama; loro and aku are ngoko.
+    words: [kula, tumbas, kalih]
+  - id: e05
+    type: listen
+    text: Selangkung ewu angsal, Bu?
+    options: ['Selangkung ewu angsal, Bu?', 'Sekawan dasa ewu angsal, Bu?', 'Sedasa ewu angsal, Bu?']
+    answer: 0
+    words: [selangkung, ewu, angsal]
+  - id: e06
+    type: fill_blank
+    sentence: ___ ewu, Mas. (٣٠٠٠)
+    meaning:
+      ar_eg: تلات آلاف يا أستاذ.
+      ar: ثلاثة آلاف يا أستاذ.
+      en: Three thousand.
+    options: [Tiga, Telung, Tigang]
+    answers: [Tigang]
+    explain:
+      ar_eg: قبل ewu، tiga بتبقى tigang. telung نغوكو.
+      ar: تصير tiga قبل ewu tigang، وtelung نغوكو.
+      en: Before ewu, tiga becomes tigang; telung is ngoko.
+    words: [tiga, ewu]
+  - id: e07
+    type: fill_blank
+    sentence: Awis sanget, Bu. Saged ___?
+    meaning:
+      ar_eg: غالي أوي يا حاجة. ممكن تنزّلي؟
+      ar: غالٍ جدًا يا سيدتي. هل يمكن التخفيض؟
+      en: Very expensive, ma'am. Could you lower it?
+    answers: [kirang]
+    explain:
+      ar_eg: kirang = kurang (أقل) بالكراما.
+      ar: kirang = kurang (أقل) بالكراما.
+      en: kirang is krama kurang (less).
+    words: [kirang]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: (بالكراما) لا مؤاخذة يا حاجة، بكام؟
+      ar: (بالكراما) عفوًا يا سيدتي، بكم ثمنه؟
+      en: (in krama) Excuse me, ma'am, how much is it?
+    answer: Nyuwun sewu, Bu, reginipun pinten?
+    distractors: [regane, pira]
+    words: [nyuwun sewu, regi, pinten]
+  - id: e09
+    type: build_sentence
+    source:
+      ar_eg: هاخد اتنين بقى يا حاجة.
+      ar: سأشتري اثنين إذن يا سيدتي.
+      en: I'll take two then, ma'am.
+    answer: Kula tumbas kalih, nggih, Bu.
+    distractors: [loro, tuku]
+    words: [tumbas, kalih]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بالكراما) ميتين ألف ينفع يا حاجة؟
+      ar: (بالكراما) هل يجوز بمئتي ألف يا سيدتي؟
+      en: (in krama) Is two hundred thousand OK, ma'am?
+    answers: ['Kalih atus ewu angsal, Bu?', 'Kalih atus ewu angsal, Bu', 'Kalih atus ewu angsal Bu?', Kalih atus ewu angsal Bu, 'Kalih atus ewu, angsal, Bu?', 'Kalih atus ewu, angsal, Bu']
+    words: [kalih, atus, ewu, angsal]
+  - id: e11
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بالكراما) عايز أشتري باتيك لماما.
+      ar: (بالكراما) أريد أن أشتري باتيكًا لأمي.
+      en: (in krama) I'd like to buy batik for my mother.
+    answers: ["Kula badhe tumbas batik kangge ibu kula.", Kula badhe tumbas batik kangge ibu kula, "Kula badhe tumbas batik kangge ibu.", Kula badhe tumbas batik kangge ibu]
+    explain:
+      ar_eg: kula + badhe + tumbas + batik + kangge (لـ) + ibu kula.
+      ar: kula + badhe + tumbas + batik + kangge (لِـ) + ibu kula.
+      en: kula + badhe + tumbas + batik + kangge (for) + ibu kula.
+    words: [tumbas, kangge]
+  - id: e12
+    type: speaking
+    text: Matur nuwun sanget, Bu. Menika artanipun.
+    meaning:
+      ar_eg: شكرًا جزيلًا يا حاجة. اتفضلي الفلوس.
+      ar: شكرًا جزيلًا يا سيدتي. تفضّلي المال.
+      en: Thank you very much, ma'am. Here's the money.
+    words: [arta]
+dialogue:
+  title: Wangsul saking Klewer
+  lines:
+    - speaker: Bu Siti
+      text: Mas Mohamed! Pripun kabaripun?
+      ar_eg: محمد! أخبارك إيه؟
+      ar: محمد! كيف حالك؟
+      en: Mohamed! How are you?
+    - speaker: Mohamed
+      text: Sae, Bu, matur nuwun. Batik cap menika reginipun pinten?
+      ar_eg: كويس يا حاجة، شكرًا. الباتيك المطبوع ده بكام؟
+      ar: بخير يا سيدتي، شكرًا. بكم هذا الباتيك المطبوع؟
+      en: Fine, thank you, ma'am. How much is this stamped batik?
+    - speaker: Bu Siti
+      text: Seket ewu, Mas.
+      ar_eg: خمسين ألف يا أستاذ.
+      ar: خمسون ألفًا يا أستاذ.
+      en: Fifty thousand.
+    - speaker: Mohamed
+      text: Kula tumbas kalih. Satus ewu angsal?
+      ar_eg: هاخد اتنين. مية ألف ينفع؟
+      ar: سآخذ اثنين. هل يجوز بمئة ألف؟
+      en: I'll take two. Is a hundred thousand OK?
+    - speaker: Bu Siti
+      text: Kalih, satus ewu. Inggih, angsal!
+      ar_eg: اتنين بمية ألف. أيوه، ماشي!
+      ar: اثنان بمئة ألف. نعم، موافقة!
+      en: Two for a hundred thousand. Yes, deal!
+    - speaker: Mohamed
+      text: Matur nuwun sanget, Bu Siti.
+      ar_eg: شكرًا جزيلًا يا حاجة سيتي.
+      ar: شكرًا جزيلًا يا سيدة سيتي.
+      en: Thank you very much, Bu Siti.
+souvenir:
+  id: j3.u05.souvenir
+  title: Batik Klewer
+  note:
+    ar_eg: |
+      Pasar Klewer في قلب سولو، جنب الكراتون، هو سوق الباتيك الكبير في جاوة: محلات ورا محلات من الـ batik tulis والـ batik cap. البياعين الكبار هناك بيقدّروا الكراما حتى لو كلمتين — «Reginipun pinten, Bu?» ممكن تجيبلك ابتسامة وسعر أحلى. والباتيك اللي اشتريته هنا بقى أول حاجة في شنطتك من سولو.
+    ar: |
+      Pasar Klewer في قلب سولو قرب الكراتون، وهو سوق الباتيك الكبير في جاوة: متاجر متتابعة من الـ batik tulis والـ batik cap. ويقدّر البائعون الكبار الكراما ولو بكلمتين، فقد تجلب لك «Reginipun pinten, Bu?» ابتسامة وسعرًا أفضل. وهذا الباتيك أول ما تحمله في حقيبتك من سولو.
+    en: |
+      Pasar Klewer, in the heart of Solo next to the Kraton, is Java's great batik market: stall after stall of batik tulis and batik cap. Older sellers appreciate krama, even a few words — "Reginipun pinten, Bu?" can earn you a smile and a better price. The batik you bought here is the first thing from Solo in your suitcase.
+review:
+  status: draft
+  verified: false

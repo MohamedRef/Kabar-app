@@ -100,7 +100,9 @@ pub fn Today() -> Element {
 
     rsx! {
         RewardsBar { today, welcome }
-        div { class: "coach-grid",
+        // Wide screens: the plan, with the side cards (recap, placement,
+        // Kabar Pagi) in a second column when there are any.
+        div { class: "coach-grid today-grid",
             div {
                 if welcome {
                     WelcomeBack { profile: profile.clone(), plan: plan.clone(), today }
@@ -145,28 +147,28 @@ pub fn Today() -> Element {
                     Snooze { profile: profile.clone(), goal_met: progress.goal_met }
                 }
                 }
+            }
+            div { class: "today-side",
+                if recap_ready {
+                    Recap { profile: profile.clone(), plan: plan.clone(), today }
+                }
                 crate::lesson::PlacementInvite {}
                 crate::play::PagiTodayCard {}
                 crate::stats::TodayCards {}
-                // On the phone, Kak Nur, the journal, Watch & listen and
-                // Settings live here instead of the bottom bar (it keeps five items).
-                nav { class: "row compact-only more-links",
-                    for screen in [Screen::Coach, Screen::Journal, Screen::Listen, Screen::Settings] {
-                        button {
-                            key: "{screen:?}",
-                            onclick: move |_| {
-                                let mut s = ui.screen;
-                                s.set(screen);
-                            },
-                            span { class: "nav-icon", aria_hidden: "true", {icons::nav(screen)} }
-                            " {ui.t(screen.label())}"
-                        }
-                    }
-                }
             }
-            if recap_ready {
-                div {
-                    Recap { profile: profile.clone(), plan: plan.clone(), today }
+        }
+        // On the phone, Kak Nur, the journal, Watch & listen and
+        // Settings live here instead of the bottom bar (it keeps five items).
+        nav { class: "row compact-only more-links",
+            for screen in [Screen::Coach, Screen::Journal, Screen::Listen, Screen::Chat, Screen::Settings] {
+                button {
+                    key: "{screen:?}",
+                    onclick: move |_| {
+                        let mut s = ui.screen;
+                        s.set(screen);
+                    },
+                    span { class: "nav-icon", aria_hidden: "true", {icons::nav(screen)} }
+                    " {ui.t(screen.label())}"
                 }
             }
         }

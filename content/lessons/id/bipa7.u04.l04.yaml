@@ -1,0 +1,221 @@
+schema: kabar.lesson/v1
+id: bipa7.u04.l04
+language: id
+title: Melayu Ambon
+can_do:
+  ar_eg: تفهم جمل بسيطة بملايو أمبون وتعرف ضماير الكلام بتاعها.
+  ar: أن تفهم جملًا بسيطة بملايوية أمبون وتعرف ضمائرها.
+  en: Understand simple Ambonese Malay and recognise its pronouns.
+slides:
+  - title: Beta orang Ambon
+    body:
+      ar_eg: |
+        في أمبون (جزر مالوكو) الناس بيتكلّموا Melayu Ambon. شوية كلمات:
+        - beta = أنا (saya)
+        - ale = إنت (kamu)
+        - katong = إحنا (kita), من «kita orang»
+        - seng = مش (tidak)
+        - basudara = إخوات / أهل (bersaudara)
+        - pung = بتاع (punya): beta pung rumah = بيتي
+        أمبون اسمها «مدينة الموسيقى»، واليونسكو سمّتها City of Music سنة ٢٠١٩. وأهلها بيقولوا «Katong samua basudara» = كلنا إخوات.
+      ar: |
+        يتكلّم أهل أمبون (جزر مالوكو) Melayu Ambon، ومن ألفاظها:
+        - beta = أنا (saya)
+        - ale = أنت (kamu)
+        - katong = نحن (kita)، من «kita orang»
+        - seng = لا، ليس (tidak)
+        - basudara = إخوة، أهل (bersaudara)
+        - pung = لـ، مِلك (punya): beta pung rumah = بيتي
+        وتُلقّب أمبون بـ«مدينة الموسيقى»، وقد سمّتها اليونسكو مدينة موسيقى سنة ٢٠١٩. ويقول أهلها «Katong samua basudara» أي كلّنا إخوة.
+      en: |
+        In Ambon (Maluku) people speak Melayu Ambon. A few words:
+        - beta = I (saya)
+        - ale = you (kamu)
+        - katong = we (kita), from "kita orang"
+        - seng = not (tidak)
+        - basudara = brothers and sisters, kin (bersaudara)
+        - pung = 's, of (punya): beta pung rumah = my house
+        Ambon is called the "City of Music", and UNESCO named it a City of Music in 2019. People say "Katong samua basudara": we are all kin.
+    examples:
+      - text: Beta seng tahu ale pung nama.
+        ar_eg: أنا مش عارف اسمك.
+        ar: لا أعرف اسمك.
+        en: I don't know your name.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: beta
+        ar_eg: أنا
+        ar: أنا
+        en: I
+      - text: ale
+        ar_eg: إنت
+        ar: أنت
+        en: you
+      - text: katong
+        ar_eg: إحنا
+        ar: نحن
+        en: we
+      - text: seng
+        ar_eg: مش
+        ar: لا، ليس
+        en: not
+      - text: basudara
+        ar_eg: إخوات / أهل
+        ar: إخوة
+        en: kin, brothers and sisters
+    words: [beta, ale, katong, seng, basudara]
+  - id: e02
+    type: listen
+    text: Ale dari mana? Beta dari Ambon.
+    question:
+      ar_eg: التاني جاي منين؟
+      ar: من أين المتكلّم الثاني؟
+      en: Where is the second speaker from?
+    options:
+      - من سورونج.
+      - من أمبون.
+      - من مانادو.
+    answer: 1
+    words: [ale, beta]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Beta seng lapar» معناها إيه؟
+      ar: ما معنى «Beta seng lapar»؟
+      en: What does "Beta seng lapar" mean?
+    options:
+      - أنا جعان أوي.
+      - إنت جعان؟
+      - أنا مش جعان.
+    answer: 2
+    words: [beta, seng]
+  - id: e04
+    type: fill_blank
+    sentence: Katong samua ___. Jang bakalai!
+    meaning:
+      ar_eg: كلنا إخوات. ماتتخانقوش!
+      ar: كلّنا إخوة، فلا تتشاجروا!
+      en: We're all kin. Don't fight!
+    options: [basudara, beta, seng]
+    answers: [basudara]
+    words: [basudara, katong]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «katong» جاية من أنهي كلمتين؟
+      ar: من أيّ كلمتين جاءت «katong»؟
+      en: Which two words does "katong" come from?
+    options:
+      - kita orang
+      - kata orang
+      - kakak tong
+    answer: 0
+    explain:
+      ar_eg: kita + orang ← katong، زي ما dia + orang ← dong (هم).
+      ar: kita + orang ← katong، كما أنّ dia + orang ← dong (هم).
+      en: kita + orang → katong, just as dia + orang → dong (they).
+    words: [katong]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: إحنا مش رايحين النهارده.
+      ar: لن نذهب اليوم.
+      en: We're not going today.
+    answer: Katong seng pi hari ini.
+    distractors: [beta, ale]
+    words: [katong, seng]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Beta pung rumah dekat pantai. Ale mau datang?
+    answers_meaning:
+      ar_eg:
+        - بيتي جنب البحر. عايز تيجي؟
+        - بيتي قريّب من الشط. تحب تيجي؟
+      ar:
+        - بيتي قرب الشاطئ، أتريد أن تأتي؟
+        - بيتي قريب من البحر، هل تودّ المجيء؟
+      en:
+        - My house is near the beach. Do you want to come?
+        - My place is close to the shore. Want to come over?
+    words: [beta, ale]
+  - id: e08
+    type: speaking
+    text: Katong samua basudara.
+    meaning:
+      ar_eg: كلنا إخوات.
+      ar: كلّنا إخوة.
+      en: We are all kin.
+    words: [katong, basudara]
+  - id: e09
+    type: dictation
+    text: Ale seng usah takut, beta di sini.
+    meaning:
+      ar_eg: ماتخافش، أنا هنا.
+      ar: لا داعي لأن تخاف، أنا هنا.
+      en: No need to be scared, I'm here.
+    words: [ale, seng, beta]
+  - id: e10
+    type: fill_blank
+    sentence: ___ suka musik? Di Ambon, semua orang menyanyi.
+    meaning:
+      ar_eg: إنت بتحب المزيكا؟ في أمبون، كل الناس بتغنّي.
+      ar: أتحبّ الموسيقى؟ في أمبون يغنّي الجميع.
+      en: Do you like music? In Ambon, everyone sings.
+    options: [Ale, Beta, Basudara]
+    answers: [Ale]
+    words: [ale]
+dialogue:
+  title: Telepon dari Ambon
+  lines:
+    - speaker: Om Nus
+      text: Dengar, Mohamed. Ini sepupu saya dari Ambon. Dia bilang, "Beta seng bisa datang minggu ini."
+      ar_eg: 'اسمع يا محمد. ده ابن عمي من أمبون. بيقول: «Beta seng bisa datang minggu ini.»'
+      ar: 'اسمع يا محمد، هذا ابن عمّي من أمبون، يقول: «Beta seng bisa datang minggu ini.»'
+      en: Listen, Mohamed. This is my cousin from Ambon. He says, "Beta seng bisa datang minggu ini."
+    - speaker: Mohamed
+      text: Beta itu saya, seng itu tidak. Jadi dia tidak bisa datang minggu ini?
+      ar_eg: beta يعني أنا، وseng يعني مش. يبقى مش هيقدر ييجي الأسبوع ده؟
+      ar: beta أي أنا، وseng أي لا. إذن لا يستطيع المجيء هذا الأسبوع؟
+      en: Beta is "I", seng is "not". So he can't come this week?
+    - speaker: Om Nus
+      text: Betul! Dia juga bilang, "Ale pung murid pintar." Murid itu ko.
+      ar_eg: 'صح! وقال كمان: «Ale pung murid pintar.» والتلميذ ده إنت.'
+      ar: 'صحيح! وقال أيضًا: «Ale pung murid pintar.» والتلميذ هو أنت.'
+      en: Right! He also said, "Ale pung murid pintar." The pupil is you.
+    - speaker: Mohamed
+      text: Bilang terima kasih, Om. Katong samua basudara!
+      ar_eg: قوله شكرًا يا عمّو. كلنا إخوات!
+      ar: قل له شكرًا يا عمّ، كلّنا إخوة!
+      en: Tell him thanks, Om. We're all kin!
+new_words:
+  - word: beta
+    pos: pronoun
+    ar_eg: أنا (أمبون)
+    ar: أنا (أمبون)
+    en: I (Ambon)
+  - word: ale
+    pos: pronoun
+    ar_eg: إنت (أمبون)
+    ar: أنت (أمبون)
+    en: you (Ambon)
+  - word: katong
+    pos: pronoun
+    ar_eg: إحنا (أمبون)
+    ar: نحن (أمبون)
+    en: we (Ambon)
+  - word: seng
+    pos: particle
+    ar_eg: مش (أمبون)
+    ar: لا، ليس (أمبون)
+    en: not (Ambon)
+  - word: basudara
+    pos: noun
+    ar_eg: إخوات / أهل (أمبون)
+    ar: إخوة (أمبون)
+    en: kin, brothers and sisters (Ambon)
+review:
+  status: draft
+  verified: false

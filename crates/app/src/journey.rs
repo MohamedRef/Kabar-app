@@ -18,6 +18,7 @@ use kabar_core::layout::WidthClass;
 use kabar_core::locale::{UiLanguage, format_number};
 
 use crate::i18n::Msg;
+use crate::map_art::{self, Size as ArtSize};
 use crate::{Db, Ui};
 use kabar_protocol::coach::CoachProfile;
 
@@ -89,6 +90,8 @@ fn land_path(svg: &'static str, class: &str) -> &'static str {
 struct Journey {
     route: Route,
     completed: Rc<BTreeSet<String>>,
+    /// Lessons passed with a reasonable score: their Javanese counts as approved.
+    approved: Rc<BTreeSet<String>>,
     /// Where the placement test started the journey (e.g. `bipa2`).
     start: Option<String>,
 }
@@ -107,7 +110,7 @@ impl Journey {
     }
 
     fn progress(&self) -> Progress {
-        let p = Progress::new(self.curriculum(), &self.completed);
+        let p = Progress::new(self.curriculum(), &self.completed).with_approved(&self.approved);
         match &self.start {
             Some(level) => p.start_at(self.curriculum(), level),
             None => p,
@@ -172,6 +175,12 @@ pub fn JourneyScreen() -> Element {
             BTreeSet::new()
         }))
     });
+    let approved = use_hook(|| {
+        Rc::new(db.0.borrow().approved_lessons().unwrap_or_else(|e| {
+            eprintln!("kabar: reading approved lessons failed: {e}");
+            BTreeSet::new()
+        }))
+    });
     let coach = use_context::<crate::coach::Coach>();
     let start = use_hook(|| start_level(&db, coach.profile.peek().as_ref()));
     let mut route = use_signal(|| Route::Indonesian);
@@ -190,7 +199,12 @@ pub fn JourneyScreen() -> Element {
             };
         }
     };
-    let j = Journey { route: route(), completed: completed.clone(), start: start.clone() };
+    let j = Journey {
+        route: route(),
+        completed: completed.clone(),
+        approved: approved.clone(),
+        start: start.clone(),
+    };
     let suitcase_count = [&routes.id, &routes.jv]
         .into_iter()
         .map(|c| souvenirs(c, &Progress::new(c, &completed)).len())
@@ -199,6 +213,7 @@ pub fn JourneyScreen() -> Element {
 
     rsx! {
         style { {JOURNEY_CSS} }
+        style { {crate::map_art::paper_css()} }
         div { class: "journey",
             header { class: "journey-bar",
                 div { class: "seg", role: "group", aria_label: "{ui.t(Msg::NavJourney)}",
@@ -227,7 +242,7 @@ pub fn JourneyScreen() -> Element {
                 }
             }
             if pane() == Pane::Suitcase {
-                Suitcase { completed: completed.clone() }
+                Suitcase { completed: completed.clone(), approved: approved.clone() }
             } else if compact {
                 RouteList { key: "{j.route:?}", j: j.clone() }
             } else {
@@ -316,18 +331,24 @@ fn level_head(
     };
     let test = level.level_test.as_ref().map(|t| t.id.clone());
     let pct = (done * 100).checked_div(total).unwrap_or(0);
+    let size = if *ui.width.read() == WidthClass::Compact { ArtSize::Small } else { ArtSize::Large };
+    let art = map_art::vignette(&level.id, size);
     rsx! {
         header { class: "level-head", "data-done": if finished { "true" } else { "false" },
             div { class: "level-title",
-                span { class: "level-icon", aria_hidden: "true",
-                    if j.route == Route::Indonesian { {icon_island()} } else { {icon_train()} }
+                if let Some(src) = art {
+                    img { class: "level-art", src: "{src}", alt: "", aria_hidden: "true", draggable: "false" }
+                } else {
+                    span { class: "level-icon", aria_hidden: "true",
+                        if j.route == Route::Indonesian { {icon_island()} } else { {icon_train()} }
+                    }
                 }
                 div {
                     h2 {
                         bdi { lang: j.route.target_lang(), dir: "ltr", "{level.place()}" }
                         " "
                         span { class: "pill latin", bdi { "{level.code}" } }
-                        if cur.unverified() {
+                        if cur.unverified() && !progress.level_approved(level) {
                             " "
                             span { class: "badge-unverified", "{ui.t(Msg::JourneyUnverified)}" }
                         }
@@ -430,11 +451,10 @@ fn lessons(ui: &Ui, tl: &'static str, unit: &Unit, progress: &Progress, mark_cur
                     };
                     let id = lesson.id.clone();
                     let kind = ui.t(kind_label(lesson.kind));
-                    let minutes = num(&ui, lesson.minutes as usize);
+                    let minutes = crate::coach::labels::minutes(&ui, lesson.minutes);
                     let label = format!(
-                        "{}, {kind}, {minutes} {}{}",
+                        "{}, {kind}, {minutes}{}",
                         lesson.title,
-                        ui.t(Msg::JourneyMinutes),
                         state_msg.map(|m| format!(", {}", ui.t(m))).unwrap_or_default()
                     );
                     rsx! {
@@ -453,7 +473,7 @@ fn lessons(ui: &Ui, tl: &'static str, unit: &Unit, progress: &Progress, mark_cur
                                 span { class: "lesson-text",
                                     bdi { class: "lesson-title", lang: tl, dir: "ltr", "{lesson.title}" }
                                     span { class: "lesson-meta muted",
-                                        "{kind} · {minutes} {ui.t(Msg::JourneyMinutes)}"
+                                        "{kind} · {minutes}"
                                         if let Some(m) = state_msg {
                                             " · "
                                             span { class: "lesson-state", "{ui.t(m)}" }
@@ -521,6 +541,7 @@ fn MapView(j: Journey) -> Element {
     let panel_level = current_level.as_deref().and_then(|id| cur.level(id));
     let spots = map_label_spots(cur, map);
     let rail = map.style == RouteStyle::Rail;
+    let stickers = sticker_spots(&design_pins(cur, map), map_bounds(map));
 
     rsx! {
         div { class: "jm", "data-panel": if panel_level.is_some() { "open" } else { "closed" },
@@ -563,6 +584,55 @@ fn MapView(j: Journey) -> Element {
                                         },
                                         d: "{seg.path_d()}",
                                     }
+                                    }
+                                }
+                            }
+                            g { class: "jm-stickers",
+                                for ((level, pin), spot) in cur.levels.iter().zip(map.pins.iter()).zip(stickers.iter().copied()) {
+                                    if let (Some((sx, sy)), Some(src)) = (spot, map_art::vignette(&level.id, ArtSize::Small)) {
+                                        {
+                                            let id = level.id.clone();
+                                            let is_sel = current_level.as_deref() == Some(level.id.as_str());
+                                            rsx! {
+                                                // Moves with its pin when Bali and Lombok are spread apart.
+                                                g { key: "{level.id}", class: "jm-nudge", style: nudge_style(pin),
+                                                    g {
+                                                        class: "jm-sticker-at",
+                                                        transform: "translate({pin.x} {pin.y}) scale({k})",
+                                                        g {
+                                                            class: "jm-sticker",
+                                                            "aria-hidden": "true",
+                                                            "data-selected": if is_sel { "true" } else { "false" },
+                                                            onclick: move |_| selected.set(Some(id.clone())),
+                                                            {
+                                                                // A short leader from the pin's edge to the sticker's,
+                                                                // so a sticker never reads as its neighbour's.
+                                                                let len = sx.hypot(sy);
+                                                                let (ux, uy) = (sx / len, sy / len);
+                                                                let (a, b) = (PIN + 0.5, len - STICKER / 2.0 - 0.8);
+                                                                rsx! {
+                                                                    line {
+                                                                        class: "sticker-leader",
+                                                                        x1: "{ux * a}",
+                                                                        y1: "{uy * a}",
+                                                                        x2: "{ux * b}",
+                                                                        y2: "{uy * b}",
+                                                                    }
+                                                                }
+                                                            }
+                                                            circle { class: "sticker-edge", cx: "{sx}", cy: "{sy}", r: "{STICKER / 2.0 + 0.8}" }
+                                                            image {
+                                                                href: "{src}",
+                                                                x: "{sx - STICKER / 2.0}",
+                                                                y: "{sy - STICKER / 2.0}",
+                                                                width: "{STICKER}",
+                                                                height: "{STICKER}",
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -765,13 +835,17 @@ fn local_souvenir(unit_id: &str, lang: UiLanguage) -> Option<(String, String)> {
 }
 
 #[component]
-fn Suitcase(completed: Rc<BTreeSet<String>>) -> Element {
+fn Suitcase(completed: Rc<BTreeSet<String>>, approved: Rc<BTreeSet<String>>) -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.lang();
     let routes = ROUTES.as_ref().expect("checked by JourneyScreen");
     let cards: Vec<_> = [(&routes.id, "id"), (&routes.jv, "jv")]
         .into_iter()
-        .flat_map(|(c, tl)| souvenirs(c, &Progress::new(c, &completed)).into_iter().map(move |s| (s, tl)))
+        .flat_map(|(c, tl)| {
+            souvenirs(c, &Progress::new(c, &completed).with_approved(&approved))
+                .into_iter()
+                .map(move |s| (s, tl))
+        })
         .collect();
     rsx! {
         section { class: "suitcase", aria_label: "{ui.t(Msg::JourneySuitcase)}",
@@ -784,6 +858,7 @@ fn Suitcase(completed: Rc<BTreeSet<String>>) -> Element {
             ul { class: "souvenirs",
                 for (s, tl) in cards {
                     li { key: "{s.unit_id}", class: "souvenir card",
+                        crate::souvenir_art::SouvenirArt { unit_id: s.unit_id.clone(), size: crate::souvenir_art::Size::Thumb }
                         div { class: "souvenir-stamp", aria_hidden: "true", bdi { "{s.level_code}" } }
                         h3 { bdi { lang: tl, dir: "ltr", "{local_souvenir(&s.unit_id, lang).map(|(t, _)| t).unwrap_or(s.name.clone())}" } }
                         p { class: "muted souvenir-where",
@@ -873,18 +948,7 @@ fn nudge_style(pin: &LevelPin) -> String {
 /// Label spots for a whole map, from where the pins are drawn at the
 /// default zoom, kept inside the map's edges.
 fn map_label_spots(cur: &Curriculum, map: &MapLayout) -> Vec<LabelSpot> {
-    let k = pin_scale(map);
-    let pins: Vec<_> = cur
-        .levels
-        .iter()
-        .zip(map.pins.iter())
-        .map(|(level, pin)| {
-            let (x, y) = pin.drawn_at(1.0);
-            (x / k, y / k, short_place(level.place()).chars().count())
-        })
-        .collect();
-    let v = map.view;
-    label_spots(&pins, (v.x / k, v.y / k, (v.x + v.w) / k, (v.y + v.h) / k))
+    label_spots(&design_pins(cur, map), map_bounds(map))
 }
 
 /// "Bali (Ubud)" → "Bali": the name drawn next to a map pin.
@@ -940,6 +1004,74 @@ impl LabelSpot {
 
 fn overlaps(a: (f64, f64, f64, f64), b: (f64, f64, f64, f64)) -> bool {
     a.0 < b.2 && b.0 < a.2 && a.1 < b.3 && b.1 < a.3
+}
+
+/// Every pin as (x, y, label length) in pin design units.
+fn design_pins(cur: &Curriculum, map: &MapLayout) -> Vec<(f64, f64, usize)> {
+    let k = map.view.w / 200.0;
+    cur.levels
+        .iter()
+        .zip(map.pins.iter())
+        .map(|(level, pin)| {
+            // Where the pin is drawn at default zoom (Bali and Lombok spread apart).
+            let (x, y) = pin.drawn_at(1.0);
+            (x / k, y / k, short_place(level.place()).chars().count())
+        })
+        .collect()
+}
+
+/// The map's view box (x0, y0, x1, y1) in pin design units.
+fn map_bounds(map: &MapLayout) -> (f64, f64, f64, f64) {
+    let k = map.view.w / 200.0;
+    let v = &map.view;
+    (v.x / k, v.y / k, (v.x + v.w) / k, (v.y + v.h) / k)
+}
+
+/// Diameter of a landmark sticker, in pin design units.
+const STICKER: f64 = 14.0;
+
+/// Where each pin's landmark sticker goes, as the sticker's centre relative
+/// to the pin: the first diagonal or side spot that stays clear of every
+/// pin's halo, every name, the stickers already placed and the map's edge.
+/// `None` when nothing fits; the art still shows in the level's header.
+fn sticker_spots(pins: &[(f64, f64, usize)], bounds: (f64, f64, f64, f64)) -> Vec<Option<(f64, f64)>> {
+    let labels: Vec<_> =
+        pins.iter().zip(label_spots(pins, bounds)).map(|(&(x, y, n), s)| s.rect(x, y, n)).collect();
+    let r = STICKER / 2.0;
+    // Up-right first, then round the pin in eighths and sixteenths, a bit
+    // farther out each time the closer rings are taken (Bali and Lombok
+    // nearly share one spot).
+    let spots: Vec<(f64, f64)> = (0..5)
+        .map(|ring| HALO + r + 1.0 + f64::from(ring) * 5.0)
+        .flat_map(|d| {
+            [
+                -45.0_f64, -135.0, 45.0, 135.0, 0.0, 180.0, 90.0, -90.0, -22.5, -157.5, 22.5, 157.5, -67.5,
+                -112.5, 67.5, 112.5,
+            ]
+            .map(|a: f64| (d * a.to_radians().cos(), d * a.to_radians().sin()))
+        })
+        .collect();
+    let mut placed: Vec<(f64, f64)> = Vec::new();
+    pins.iter()
+        .map(|&(x, y, _)| {
+            let free = |&(dx, dy): &(f64, f64)| {
+                let (cx, cy) = (x + dx, y + dy);
+                let bx = (cx - r, cy - r, cx + r, cy + r);
+                bx.0 >= bounds.0 + 1.0
+                    && bx.1 >= bounds.1 + 1.0
+                    && bx.2 <= bounds.2 - 1.0
+                    && bx.3 <= bounds.3 - 1.0
+                    && pins.iter().all(|&(px, py, _)| (cx - px).hypot(cy - py) >= HALO + r + 0.5)
+                    && !labels.iter().any(|l| overlaps(bx, *l))
+                    && placed.iter().all(|&(qx, qy)| (cx - qx).hypot(cy - qy) >= STICKER + 1.0)
+            };
+            let spot = spots.iter().copied().find(free);
+            if let Some((dx, dy)) = spot {
+                placed.push((x + dx, y + dy));
+            }
+            spot
+        })
+        .collect()
 }
 
 /// A label spot, its box, and its cost on its own (see `label_spots`).
@@ -1146,6 +1278,40 @@ mod tests {
         assert_eq!(bali.drawn_at(3.0), (bali.x, bali.y));
         assert!(nudge_style(bali).contains("--fade"));
         assert_eq!(nudge_style(r.id_map.pin("bipa1").unwrap()), "");
+    }
+
+    #[test]
+    fn landmark_stickers_stay_clear_of_pins_names_and_each_other() {
+        let r = ROUTES.as_ref().unwrap();
+        for (cur, map) in [(&r.id, &r.id_map), (&r.jv, &r.jv_map)] {
+            let pins = design_pins(cur, map);
+            let stickers = sticker_spots(&pins, map_bounds(map));
+            let labels: Vec<_> = pins
+                .iter()
+                .zip(label_spots(&pins, map_bounds(map)))
+                .map(|(&(x, y, n), s)| s.rect(x, y, n))
+                .collect();
+            let placed: Vec<_> = pins
+                .iter()
+                .zip(&stickers)
+                .filter_map(|(&(x, y, _), s)| s.map(|(dx, dy)| (x + dx, y + dy)))
+                .collect();
+            let missing: Vec<_> =
+                cur.levels.iter().zip(&stickers).filter(|(_, s)| s.is_none()).map(|(l, _)| &l.id).collect();
+            assert!(missing.is_empty(), "no room for the stickers of {missing:?}");
+            let h = STICKER / 2.0;
+            for (i, &(cx, cy)) in placed.iter().enumerate() {
+                for &(px, py, _) in &pins {
+                    assert!((cx - px).hypot(cy - py) >= HALO + h, "sticker {i} covers a pin");
+                }
+                for l in &labels {
+                    assert!(!overlaps((cx - h, cy - h, cx + h, cy + h), *l), "sticker {i} covers a name");
+                }
+                for &(qx, qy) in &placed[i + 1..] {
+                    assert!((cx - qx).hypot(cy - qy) >= STICKER, "sticker {i} overlaps another");
+                }
+            }
+        }
     }
 
     #[test]

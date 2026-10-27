@@ -1,0 +1,210 @@
+schema: kabar.lesson/v1
+id: bipa7.u01.l05
+language: id
+title: Bahasa judul berita
+can_do:
+  ar_eg: تفهم عناوين الأخبار المختصرة وتكتب عنوان بالقواعد بتاعته.
+  ar: أن تفهم عناوين الأخبار المختصرة وتكتب عنوانًا وفق قواعده.
+  en: Understand clipped news headlines and write one by the rules.
+slides:
+  - title: Presiden Resmikan Jembatan
+    body:
+      ar_eg: |
+        الـ judul berita (عنوان الخبر) لازم يبقى ringkas (مختصر). القواعد:
+        1. شيل me- من الفعل: meresmikan ← Resmikan. (meresmikan = يفتتح رسميًا)
+        2. مافيش نقطة في الآخر.
+        3. huruf kapital (حرف كبير) في أول كل كلمة، إلا الكلمات الصغيرة زي di وke وdan وyang لما ماتبقاش في الأول.
+        مثال: Presiden Resmikan Jembatan di Sorong
+        في الخبر نفسه بنرجع للجملة الكاملة: Presiden meresmikan jembatan baru di Sorong.
+      ar: |
+        يجب أن يكون الـ judul berita (عنوان الخبر) ringkas (موجزًا). والقواعد:
+        ١. احذف me- من الفعل: meresmikan ← Resmikan (meresmikan = يفتتح رسميًّا).
+        ٢. لا نقطة في آخره.
+        ٣. huruf kapital (حرف كبير) في أوّل كلّ كلمة، إلا الكلمات الصغيرة مثل di وke وdan وyang إن لم تكن في البداية.
+        مثال: Presiden Resmikan Jembatan di Sorong
+        وفي متن الخبر نعود إلى الجملة التامّة: Presiden meresmikan jembatan baru di Sorong.
+      en: |
+        A judul berita (headline) must be ringkas (concise). The rules:
+        1. Drop me- from the verb: meresmikan → Resmikan. (meresmikan = to inaugurate)
+        2. No full stop at the end.
+        3. A huruf kapital (capital letter) starts every word, except small words like di, ke, dan, yang when they aren't first.
+        Example: Presiden Resmikan Jembatan di Sorong
+        In the story itself we go back to the full sentence: Presiden meresmikan jembatan baru di Sorong.
+    examples:
+      - text: Gubernur Resmikan Pasar Ikan di Biak
+        ar_eg: المحافظ يفتتح سوق سمك في بياك
+        ar: المحافظ يفتتح سوقًا للسمك في بياك
+        en: Governor Opens Fish Market in Biak
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: judul berita
+        ar_eg: عنوان الخبر
+        ar: عنوان الخبر
+        en: headline
+      - text: meresmikan
+        ar_eg: يفتتح رسميًا
+        ar: يفتتح رسميًّا
+        en: to inaugurate
+      - text: ringkas
+        ar_eg: مختصر
+        ar: موجز
+        en: concise
+      - text: huruf kapital
+        ar_eg: حرف كبير
+        ar: حرف كبير
+        en: capital letter
+      - text: dilaporkan
+        ar_eg: اتبلّغ عنه
+        ar: أُفيد
+        en: reportedly
+    words: [judul berita, meresmikan, ringkas, huruf kapital, dilaporkan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي عنوان مكتوب صح؟
+      ar: أيّ عنوان مكتوب صحيحًا؟
+      en: Which headline is written correctly?
+    options:
+      - Presiden meresmikan jembatan di Sorong.
+      - Presiden Resmikan Jembatan di Sorong
+      - Presiden Sudah Meresmikan Jembatan di Sorong
+    answer: 1
+    explain:
+      ar_eg: من غير me-، huruf kapital في أول كل كلمة، di صغيرة، ومن غير نقطة.
+      ar: بلا me-، وhuruf kapital في أوّل كلّ كلمة، وdi صغيرة، وبلا نقطة.
+      en: No me-, a huruf kapital on each word, small di, no full stop.
+    words: [judul berita, huruf kapital]
+  - id: e03
+    type: listen
+    text: Wali kota meresmikan rumah sakit baru di Jayapura pagi ini.
+    question:
+      ar_eg: العمدة عمل إيه؟
+      ar: ماذا فعل رئيس البلدية؟
+      en: What did the mayor do?
+    options:
+      - قفل مستشفى قديم.
+      - زار مدرسة.
+      - افتتح مستشفى جديد.
+    answer: 2
+    words: [meresmikan]
+  - id: e04
+    type: fill_blank
+    sentence: Judul berita harus ___, jadi kata "me-" sering dihilangkan.
+    meaning:
+      ar_eg: عنوان الخبر لازم يبقى مختصر، فـ «me-» كتير بتتشال.
+      ar: يجب أن يكون العنوان موجزًا، فكثيرًا ما تُحذف «me-».
+      en: A headline must be concise, so "me-" is often dropped.
+    options: [ringkas, kapital, panjang]
+    answers: [ringkas]
+    words: [ringkas, judul berita]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Menteri Kunjungi Wamena» في الخبر نفسه تبقى إيه؟
+      ar: ماذا تصبح «Menteri Kunjungi Wamena» في متن الخبر؟
+      en: How does "Menteri Kunjungi Wamena" read in the story itself?
+    options:
+      - Menteri mengunjungi Wamena.
+      - Menteri dikunjungi Wamena.
+      - Menteri kunjungan Wamena.
+    answer: 0
+    words: [judul berita]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: المحافظ افتتح المطار الجديد امبارح.
+      ar: افتتح المحافظ المطار الجديد أمس.
+      en: The governor opened the new airport yesterday.
+    answer: Gubernur meresmikan bandara baru kemarin.
+    distractors: [resmikan, kapital]
+    words: [meresmikan]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Atlet Sorong Raih Emas di PON
+    answers_meaning:
+      ar_eg:
+        - رياضي من سورونج يكسب الدهب في الـ PON
+        - رياضي سورونج يحصد ذهبية الـ PON
+      ar:
+        - رياضيّ من سورونغ يحصد الذهب في PON
+        - رياضيّ سورونغ ينال ذهبية PON
+      en:
+        - Sorong Athlete Takes Gold at PON
+        - Sorong athlete wins gold at the national games
+    words: [judul berita, atlet]
+  - id: e08
+    type: speaking
+    text: Judul yang ringkas lebih mudah diingat pembaca.
+    meaning:
+      ar_eg: العنوان المختصر أسهل إن القارئ يفتكره.
+      ar: العنوان الموجز أسهل على القارئ في التذكّر.
+      en: A concise headline is easier for readers to remember.
+    words: [ringkas]
+  - id: e09
+    type: dictation
+    text: Dalam judul berita, setiap kata diawali huruf kapital.
+    meaning:
+      ar_eg: في عنوان الخبر، كل كلمة بتبدأ بحرف كبير.
+      ar: تبدأ كلّ كلمة في عنوان الخبر بحرف كبير.
+      en: In a headline, every word starts with a capital letter.
+    words: [judul berita, huruf kapital]
+  - id: e10
+    type: fill_blank
+    sentence: Besok Presiden akan ___ pelabuhan baru di Merauke.
+    meaning:
+      ar_eg: بكرة الرئيس هيفتتح الميناء الجديد في ميراوكي.
+      ar: سيفتتح الرئيس غدًا الميناء الجديد في ميراوكي.
+      en: Tomorrow the President will open the new port in Merauke.
+    options: [meresmikan, ringkas, meliput]
+    answers: [meresmikan]
+    words: [meresmikan]
+dialogue:
+  title: Judul yang terlalu panjang
+  lines:
+    - speaker: Mohamed
+      text: Kaka, judul saya "Presiden sudah meresmikan jembatan baru yang panjang di Sorong."
+      ar_eg: يا كاكا، عنواني «الرئيس افتتح الكوبري الجديد الطويل في سورونج.»
+      ar: 'يا كاكا، عنواني: «افتتح الرئيس الجسر الجديد الطويل في سورونغ.»'
+      en: Kaka, my headline is "The President has inaugurated the new long bridge in Sorong."
+    - speaker: Kaka Yohana
+      text: Terlalu panjang. Judul berita harus ringkas. Hapus "sudah" dan "me-".
+      ar_eg: طويل أوي. العنوان لازم يبقى مختصر. شيل «sudah» و«me-».
+      ar: طويل جدًّا؛ يجب أن يكون العنوان موجزًا، فاحذف «sudah» و«me-».
+      en: Too long. A headline must be concise. Drop "sudah" and "me-".
+    - speaker: Mohamed
+      text: '"Presiden Resmikan Jembatan di Sorong." Lalu titiknya juga dihapus?'
+      ar_eg: «Presiden Resmikan Jembatan di Sorong». والنقطة كمان تتشال؟
+      ar: «Presiden Resmikan Jembatan di Sorong». وهل تُحذف النقطة أيضًا؟
+      en: '"Presiden Resmikan Jembatan di Sorong." And the full stop goes too?'
+    - speaker: Kaka Yohana
+      text: Ya, tanpa titik. Dan jangan lupa huruf kapital di setiap kata, kecuali "di".
+      ar_eg: أيوه، من غير نقطة. وماتنساش الحرف الكبير في كل كلمة، إلا «di».
+      ar: نعم، بلا نقطة، ولا تنسَ الحرف الكبير في كلّ كلمة إلا «di».
+      en: Yes, no full stop. And don't forget a capital on every word except "di".
+new_words:
+  - word: judul berita
+    pos: noun
+    ar_eg: عنوان الخبر
+    ar: عنوان الخبر
+    en: headline
+  - word: meresmikan
+    pos: verb
+    ar_eg: يفتتح رسميًا
+    ar: يفتتح رسميًّا
+    en: to inaugurate, officially open
+  - word: ringkas
+    pos: adjective
+    ar_eg: مختصر
+    ar: موجز
+    en: concise
+  - word: huruf kapital
+    pos: noun
+    ar_eg: حرف كبير
+    ar: حرف كبير
+    en: capital letter
+review:
+  status: draft
+  verified: false

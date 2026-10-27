@@ -1,0 +1,216 @@
+schema: kabar.lesson/v1
+id: bipa6.u09.l06
+language: id
+title: Rapat bisnis
+can_do:
+  ar_eg: 'تشارك في اجتماع شغل: تقدّم اقتراح، وتتابع الأجندة، وتفهم المحضر.'
+  ar: 'أن تشارك في اجتماع عمل: تقدّم اقتراحًا، وتتابع جدول الأعمال، وتفهم المحضر.'
+  en: Take part in a business meeting, make a proposal, follow the agenda and read the minutes.
+slides:
+  - title: Rapat dimulai
+    body:
+      ar_eg: |
+        الاجتماع الرسمي ليه نظام:
+        - agenda = جدول الأعمال: Agenda pertama adalah …
+        - usulan = اقتراح: Saya punya usulan. = عندي اقتراح.
+        - pemungutan suara = تصويت، لو مافيش mufakat
+        - notulen = محضر الاجتماع، اللي بيتكتب فيه كل اللي اتقال
+        - ditunda = اتأجّل: Pembahasan ini ditunda sampai minggu depan.
+        في إندونيسيا، الناس بتحب توصل لـ mufakat الأول، والتصويت آخر حل.
+      ar: |
+        للاجتماع الرسمي نظام:
+        - agenda = جدول الأعمال: Agenda pertama adalah …
+        - usulan = اقتراح: Saya punya usulan. = لديّ اقتراح.
+        - pemungutan suara = تصويت، إن لم يتحقّق mufakat
+        - notulen = محضر الاجتماع، يُدوَّن فيه كلّ ما قيل
+        - ditunda = أُجّل: Pembahasan ini ditunda sampai minggu depan.
+        ويفضّل الإندونيسيون بلوغ mufakat أوّلًا، والتصويت آخر الحلول.
+      en: |
+        A formal meeting follows an order:
+        - agenda = agenda: Agenda pertama adalah …
+        - usulan = proposal: Saya punya usulan. = I have a proposal.
+        - pemungutan suara = a vote, if there's no mufakat
+        - notulen = minutes, where everything said is recorded
+        - ditunda = postponed: Pembahasan ini ditunda sampai minggu depan.
+        In Indonesia people prefer to reach mufakat first; a vote is the last resort.
+    examples:
+      - text: Usulan Mohamed diterima tanpa pemungutan suara.
+        ar_eg: اقتراح محمد اتقبل من غير تصويت.
+        ar: قُبل اقتراح محمد دون تصويت.
+        en: Mohamed's proposal was accepted without a vote.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: agenda
+        ar_eg: جدول الأعمال
+        ar: جدول الأعمال
+        en: agenda
+      - text: usulan
+        ar_eg: اقتراح
+        ar: اقتراح
+        en: proposal
+      - text: pemungutan suara
+        ar_eg: تصويت
+        ar: تصويت
+        en: vote
+      - text: notulen
+        ar_eg: محضر اجتماع
+        ar: محضر
+        en: minutes
+      - text: ditunda
+        ar_eg: اتأجّل
+        ar: أُجّل
+        en: postponed
+    words: [agenda, usulan, pemungutan suara, notulen, ditunda]
+  - id: e02
+    type: listen
+    text: Agenda pertama rapat hari ini adalah promosi Ramadan.
+    question:
+      ar_eg: أول بند في الاجتماع إيه؟
+      ar: ما البند الأوّل في الاجتماع؟
+      en: What is the first item on the agenda?
+    options:
+      - المرتبات.
+      - عرض رمضان.
+      - فرع جديد.
+    answer: 1
+    words: [agenda]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مين بيكتب الـ notulen؟
+      ar: من يكتب الـ notulen؟
+      en: Who writes the notulen?
+    options:
+      - الزبون.
+      - المورّد.
+      - السكرتير اللي بيكتب كل اللي اتقال.
+    answer: 2
+    words: [notulen]
+  - id: e04
+    type: fill_blank
+    sentence: Karena waktunya habis, pembahasan tentang cabang baru ___ sampai Senin.
+    meaning:
+      ar_eg: عشان الوقت خلص، الكلام عن الفرع الجديد اتأجّل ليوم الاتنين.
+      ar: لنفاد الوقت، أُجّل النقاش حول الفرع الجديد إلى الاثنين.
+      en: Since time ran out, the discussion of the new branch was postponed to Monday.
+    options: [ditunda, disahkan, diterbitkan]
+    answers: [ditunda]
+    words: [ditunda, cabang]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الناس مش متفقين. الإندونيسيين بيعملوا إيه الأول عادةً؟
+      ar: لم يتّفق الحاضرون. ماذا يفعل الإندونيسيون أوّلًا عادةً؟
+      en: People disagree. What do Indonesians usually try first?
+    options:
+      - يتناقشوا لحد ما يتفقوا (mufakat).
+      - تصويت على طول.
+      - يلغوا الاجتماع.
+    answer: 0
+    explain:
+      ar_eg: pemungutan suara آخر حل بعد ما الـ mufakat مايحصلش.
+      ar: يأتي pemungutan suara آخرًا إن تعذّر الـ mufakat.
+      en: pemungutan suara comes last, when mufakat can't be reached.
+    words: [pemungutan suara, mufakat]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: عندي اقتراح عن الشحن المجاني.
+      ar: لديّ اقتراح بشأن الشحن المجّاني.
+      en: I have a proposal about free shipping.
+    answer: Saya punya usulan tentang gratis ongkir.
+    distractors: [notulen, agenda]
+    words: [usulan, gratis ongkir]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: ممكن تبعتلي محضر الاجتماع؟
+      ar: هل يمكنك إرسال محضر الاجتماع إليّ؟
+      en: Could you send me the meeting minutes?
+    answers:
+      - Bisa kirimkan notulen rapat kepada saya?
+      - Boleh saya minta notulen rapatnya?
+      - Bisa kirim notulen rapat ke saya?
+      - Tolong kirimkan notulen rapat kepada saya.
+    words: [notulen]
+  - id: e08
+    type: speaking
+    text: Kalau tidak ada mufakat, kita adakan pemungutan suara.
+    meaning:
+      ar_eg: لو ماتفقناش، نعمل تصويت.
+      ar: إن لم نتّفق نُجري تصويتًا.
+      en: If there's no consensus, we'll hold a vote.
+    words: [pemungutan suara, mufakat]
+  - id: e09
+    type: dictation
+    text: Usulan itu ditunda karena biayanya terlalu tinggi.
+    meaning:
+      ar_eg: الاقتراح ده اتأجّل عشان تكلفته عالية أوي.
+      ar: أُجّل ذلك الاقتراح لارتفاع تكلفته.
+      en: That proposal was postponed because its cost was too high.
+    words: [usulan, ditunda]
+  - id: e10
+    type: fill_blank
+    sentence: Mari kita lanjut ke ___ berikutnya.
+    meaning:
+      ar_eg: يلا نكمل على البند اللي بعده.
+      ar: لننتقل إلى البند التالي.
+      en: Let's move on to the next agenda item.
+    options: [agenda, notulen, usulan]
+    answers: [agenda]
+    words: [agenda]
+dialogue:
+  title: Rapat hari Senin
+  lines:
+    - speaker: Uda Fadli
+      text: Baik, kita mulai. Agenda pertama, kurma untuk Ramadan.
+      ar_eg: تمام، نبدأ. أول بند، تمر رمضان.
+      ar: 'حسنًا، لنبدأ. البند الأوّل: تمر رمضان.'
+      en: 'Right, let''s begin. First item: dates for Ramadan.'
+    - speaker: Mohamed
+      text: Saya punya usulan. Kita pesan dua ton dari Mesir sebelum harga naik.
+      ar_eg: عندي اقتراح. نطلب طنّين من مصر قبل ما الأسعار تعلى.
+      ar: 'لديّ اقتراح: نطلب طنّين من مصر قبل ارتفاع الأسعار.'
+      en: I have a proposal. We order two tonnes from Egypt before prices rise.
+    - speaker: Uni Rina
+      text: Setuju. Saya catat di notulen. Bagaimana dengan cabang Kairo?
+      ar_eg: موافقة. هكتبها في المحضر. وإيه أخبار فرع القاهرة؟
+      ar: موافقة، وسأدوّنه في المحضر. وماذا عن فرع القاهرة؟
+      en: Agreed. I'll put it in the minutes. What about the Cairo branch?
+    - speaker: Uda Fadli
+      text: Itu kita tunda sampai minggu depan. Kita perlu data dulu.
+      ar_eg: ده هنأجّله للأسبوع الجاي. محتاجين أرقام الأول.
+      ar: سنؤجّل ذلك إلى الأسبوع المقبل، فنحتاج إلى البيانات أوّلًا.
+      en: We'll postpone that to next week. We need data first.
+new_words:
+  - word: agenda
+    pos: noun
+    ar_eg: جدول الأعمال
+    ar: جدول الأعمال
+    en: agenda
+  - word: usulan
+    pos: noun
+    ar_eg: اقتراح
+    ar: اقتراح
+    en: proposal, suggestion
+  - word: pemungutan suara
+    pos: noun
+    ar_eg: تصويت
+    ar: تصويت، اقتراع
+    en: vote, ballot
+  - word: notulen
+    pos: noun
+    ar_eg: محضر اجتماع
+    ar: محضر الاجتماع
+    en: meeting minutes
+  - word: ditunda
+    pos: verb
+    ar_eg: اتأجّل
+    ar: أُجّل
+    en: to be postponed
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,199 @@
+schema: kabar.lesson/v1
+id: bipa7.u07.l05
+language: id
+title: Musrenbang
+can_do:
+  ar_eg: تتابع اجتماع تخطيط في قرية وتفهم الناس بيصوّتوا على إيه.
+  ar: أن تتابع اجتماع تخطيط في قرية وتفهم ما يصوّت عليه الأهالي.
+  en: Follow a village planning meeting and understand what residents are voting on.
+slides:
+  - title: Uang desa untuk apa?
+    body:
+      ar_eg: |
+        كل سنة الـ warga desa (أهل القرية) بيعملوا musrenbang = Musyawarah Perencanaan Pembangunan (اجتماع تخطيط التنمية).
+        - من ٢٠١٥ كل قرية بتاخد dana desa (فلوس القرية) من ميزانية الدولة.
+        - في الـ musrenbang بيقرّروا الـ prioritas (الأولوية): طريق؟ مية نضيفة؟ مركز صحّي؟
+        - الاقتراحات بتطلع من القرية للمركز وبعدين للمحافظة.
+        في بابوا القرية اسمها غالبًا kampung.
+      ar: |
+        يعقد الـ warga desa (أهل القرية) كلّ عام musrenbang = Musyawarah Perencanaan Pembangunan (اجتماع تخطيط التنمية).
+        - ومنذ ٢٠١٥ تتلقّى كلّ قرية dana desa (أموال القرية) من ميزانية الدولة.
+        - وفي الـ musrenbang يحدّدون الـ prioritas (الأولوية): طريق؟ ماء نظيف؟ مركز صحّيّ؟
+        - وتصعد المقترحات من القرية إلى الإقليم ثمّ إلى المحافظة.
+        وتُسمّى القرية في بابوا غالبًا kampung.
+      en: |
+        Every year the warga desa (villagers) hold a musrenbang = Musyawarah Perencanaan Pembangunan (development planning meeting).
+        - Since 2015 every village gets dana desa (village funds) from the state budget.
+        - At the musrenbang they set the prioritas (priority): a road? clean water? a health post?
+        - Proposals go up from the village to the regency, then the province.
+        In Papua a village is usually called a kampung.
+    examples:
+      - text: Tahun ini, warga desa memilih air bersih sebagai prioritas pertama.
+        ar_eg: السنة دي، أهل القرية اختاروا المية النضيفة أول أولوية.
+        ar: اختار أهل القرية هذا العام الماء النظيف أولويةً أولى.
+        en: This year the villagers chose clean water as the top priority.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: musrenbang
+        ar_eg: اجتماع تخطيط التنمية
+        ar: اجتماع تخطيط التنمية
+        en: development planning meeting
+      - text: dana desa
+        ar_eg: فلوس القرية
+        ar: أموال القرية
+        en: village funds
+      - text: prioritas
+        ar_eg: أولوية
+        ar: أولوية
+        en: priority
+      - text: warga desa
+        ar_eg: أهل القرية
+        ar: أهل القرية
+        en: villagers
+      - text: kabupaten
+        ar_eg: مركز ريفي
+        ar: إقليم
+        en: regency
+    words: [musrenbang, dana desa, prioritas, warga desa, kabupaten]
+  - id: e02
+    type: listen
+    text: Dana desa tahun ini akan dipakai untuk membangun sumur.
+    question:
+      ar_eg: فلوس القرية هتتصرف على إيه؟
+      ar: على أيّ شيء ستُنفق أموال القرية؟
+      en: What will the village funds be used for?
+    options:
+      - على مهرجان.
+      - على عربيات جديدة.
+      - على بناء بير مية.
+    answer: 2
+    words: [dana desa]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الـ musrenbang بيحصل كل قد إيه؟
+      ar: كم مرّة يُعقد الـ musrenbang؟
+      en: How often is a musrenbang held?
+    options:
+      - كل سنة.
+      - كل عشر سنين.
+      - مرة واحدة بس.
+    answer: 0
+    words: [musrenbang]
+  - id: e04
+    type: fill_blank
+    sentence: Jalan ke sekolah rusak, jadi itu ___ utama kami.
+    meaning:
+      ar_eg: الطريق للمدرسة بايظ، فده أولويتنا الأولى.
+      ar: الطريق إلى المدرسة متضرّر، فهو أولويتنا الأولى.
+      en: The road to school is broken, so that's our main priority.
+    options: [prioritas, dana desa, provinsi]
+    answers: [prioritas]
+    words: [prioritas]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: أهل القرية اتجمّعوا في البلدية.
+      ar: اجتمع أهل القرية في مبنى البلدية.
+      en: The villagers gathered at the village hall.
+    answer: Warga desa berkumpul di balai desa.
+    distractors: [dana, prioritas]
+    words: [warga desa]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: فلوس القرية (dana desa) جاية منين؟
+      ar: من أين تأتي أموال القرية (dana desa)؟
+      en: Where does dana desa come from?
+    options:
+      - من السيّاح.
+      - من ميزانية الدولة.
+      - من بنك أجنبي.
+    answer: 1
+    words: [dana desa]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: أهل القرية لازم يحضروا اجتماع التخطيط.
+      ar: على أهل القرية حضور اجتماع التخطيط.
+      en: Villagers should attend the planning meeting.
+    answers:
+      - Warga desa harus datang ke musrenbang.
+      - Warga desa sebaiknya hadir di musrenbang.
+      - Warga desa harus menghadiri musrenbang.
+      - Warga desa perlu datang ke musrenbang.
+    words: [warga desa, musrenbang]
+  - id: e08
+    type: speaking
+    text: Dalam musrenbang, setiap warga desa boleh menyampaikan usul.
+    meaning:
+      ar_eg: في الـ musrenbang، أي حد من أهل القرية يقدر يقدّم اقتراح.
+      ar: في الـ musrenbang يحقّ لكلّ أهل القرية تقديم اقتراح.
+      en: At the musrenbang, every villager may put forward a proposal.
+    words: [musrenbang, warga desa]
+  - id: e09
+    type: dictation
+    text: Air bersih menjadi prioritas dana desa tahun ini.
+    meaning:
+      ar_eg: المية النضيفة بقت أولوية فلوس القرية السنة دي.
+      ar: صار الماء النظيف أولوية أموال القرية هذا العام.
+      en: Clean water is this year's priority for village funds.
+    words: [prioritas, dana desa]
+  - id: e10
+    type: speaking
+    text: Usul kami dibawa ke musrenbang kabupaten bulan depan.
+    meaning:
+      ar_eg: اقتراحنا هيتاخد لاجتماع تخطيط المركز الشهر الجاي.
+      ar: سيُرفع اقتراحنا إلى اجتماع تخطيط الإقليم الشهر القادم.
+      en: Our proposal goes to the regency musrenbang next month.
+    words: [musrenbang, prioritas]
+dialogue:
+  title: Suara dari belakang ruangan
+  lines:
+    - speaker: Bu Debora
+      text: Kita liput musrenbang di Kampung Arfai. Catat apa saja usul warga desa.
+      ar_eg: هنغطّي الـ musrenbang في قرية أرفاي. اكتب كل اقتراحات أهل القرية.
+      ar: سنغطّي الـ musrenbang في قرية أرفاي، فدوّن كلّ اقتراحات أهلها.
+      en: We're covering the musrenbang in Kampung Arfai. Note down every proposal from the villagers.
+    - speaker: Mohamed
+      text: Bapak kepala kampung bilang jalan harus jadi prioritas. Tapi mama-mama di belakang minta air bersih.
+      ar_eg: رئيس القرية قال إن الطريق لازم يبقى الأولوية. بس الستات اللي ورا طالبين مية نضيفة.
+      ar: قال رئيس القرية إنّ الطريق أولى، لكنّ النساء في الخلف يطلبن الماء النظيف.
+      en: The village head said the road must be the priority. But the women at the back want clean water.
+    - speaker: Bu Debora
+      text: Tulis kedua usul itu. Dana desa terbatas, jadi mereka harus memilih.
+      ar_eg: اكتب الاقتراحين. فلوس القرية محدودة، فلازم يختاروا.
+      ar: دوّن الاقتراحين، فأموال القرية محدودة ولا بدّ أن يختاروا.
+      en: Write down both. Village funds are limited, so they have to choose.
+    - speaker: Mohamed
+      text: Hasil pemungutan suara, air bersih menang! Suara mama-mama terdengar.
+      ar_eg: نتيجة التصويت، المية النضيفة كسبت! صوت الستات اتسمع.
+      ar: فاز الماء النظيف في التصويت! لقد سُمع صوت النساء.
+      en: The vote is in, clean water wins! The women's voices were heard.
+new_words:
+  - word: musrenbang
+    pos: noun
+    ar_eg: اجتماع تخطيط التنمية
+    ar: اجتماع تخطيط التنمية
+    en: development planning meeting
+  - word: dana desa
+    pos: noun
+    ar_eg: فلوس القرية
+    ar: أموال القرية
+    en: village funds
+  - word: prioritas
+    pos: noun
+    ar_eg: أولوية
+    ar: أولوية
+    en: priority
+  - word: warga desa
+    pos: noun
+    ar_eg: أهل القرية
+    ar: أهل القرية
+    en: villagers
+review:
+  status: draft
+  verified: false

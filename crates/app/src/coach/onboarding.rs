@@ -261,23 +261,13 @@ fn TargetStep(draft: Signal<CoachProfile>, touched: Signal<bool>, today: LocalDa
                             }
                         }
                     }
-                    label {
-                        span { class: "label", "{ui.t(Msg::OnbTargetDate)}" }
-                        input {
-                            r#type: "date",
-                            dir: "ltr",
-                            class: "time-input",
-                            min: "{today}",
-                            value: "{t.by}",
-                            onchange: {
-                                let t = t.clone();
-                                move |e: FormEvent| {
-                                    if let Ok(by) = e.value().parse::<LocalDate>() {
-                                        set(Some(Target { by, ..t.clone() }));
-                                    }
-                                }
-                            },
-                        }
+                    TargetMonth {
+                        value: t.by,
+                        today,
+                        onchange: {
+                            let t = t.clone();
+                            move |by| set(Some(Target { by, ..t.clone() }))
+                        },
                     }
                 }
                 button { class: "quiet", onclick: move |_| set(None), "{ui.t(Msg::OnbNoTarget)}" }
@@ -365,6 +355,58 @@ fn Summary(profile: CoachProfile, today: LocalDate) -> Element {
             dd { "{ui.t(labels::reminder_style(profile.reminder_style).0)}" }
             dt { "{ui.t(Msg::OnbStart)}" }
             dd { "{ui.t(labels::starting_point(profile.start).0)}" }
+        }
+    }
+}
+
+/// The target's month and year as two selects (targets fall on the 1st):
+/// month names instead of a native date field, which shows the device
+/// locale's "04/01/2028" and reads as January in some places.
+#[component]
+fn TargetMonth(value: LocalDate, today: LocalDate, onchange: EventHandler<LocalDate>) -> Element {
+    let ui = use_context::<Ui>();
+    let (year, month, _) = value.ymd();
+    let (this_year, this_month, _) = today.ymd();
+    // Targets run up to ten years out; keep an older pick selectable.
+    let years: Vec<i32> = (this_year.min(year)..=this_year.max(year).max(this_year + 10)).collect();
+    // Never earlier than next month's 1st (a target can't be in the past).
+    let pick = move |y: i32, m: u32| {
+        let (y, m) = if (y, m) <= (this_year, this_month) {
+            if this_month == 12 { (this_year + 1, 1) } else { (this_year, this_month + 1) }
+        } else {
+            (y, m)
+        };
+        if let Some(d) = LocalDate::from_ymd(y, m, 1) {
+            onchange.call(d);
+        }
+    };
+    rsx! {
+        label {
+            span { class: "label", "{ui.t(Msg::OnbTargetDate)}" }
+            span { class: "row target-month",
+                select {
+                    aria_label: "{ui.t(Msg::OnbTargetDate)}",
+                    onchange: move |e: FormEvent| {
+                        if let Ok(m) = e.value().parse() {
+                            pick(year, m);
+                        }
+                    },
+                    for m in 1..=12u32 {
+                        option { key: "{m}", value: "{m}", selected: m == month, "{labels::month(&ui, m)}" }
+                    }
+                }
+                select {
+                    aria_label: "{ui.t(Msg::OnbTargetDate)}",
+                    onchange: move |e: FormEvent| {
+                        if let Ok(y) = e.value().parse() {
+                            pick(y, month);
+                        }
+                    },
+                    for y in years {
+                        option { key: "{y}", value: "{y}", selected: y == year, {ui.num(y as u32)} }
+                    }
+                }
+            }
         }
     }
 }

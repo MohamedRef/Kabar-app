@@ -1,0 +1,212 @@
+schema: kabar.lesson/v1
+id: bipa7.u05.l01
+language: id
+title: Kohesi gramatikal
+can_do:
+  ar_eg: تربط جمل النص ببعض بالإحالة والاستبدال والحذف.
+  ar: أن تربط جمل النصّ بالإحالة والاستبدال والحذف.
+  en: Tie a text's sentences together with reference, substitution and ellipsis.
+slides:
+  - title: Benang yang mengikat kalimat
+    grammar: id.cohesion.grammatical
+    body:
+      ar_eg: |
+        الـ kohesi (التماسك) هي الخيط اللي بيربط الجمل. من غيرها النص بيكرّر نفسه:
+        ✗ Sukarno membacakan proklamasi. Sukarno didampingi Hatta. Sukarno dan Hatta kemudian menjadi pemimpin.
+        ✓ Sukarno membacakan proklamasi. Ia didampingi Hatta. Keduanya kemudian menjadi pemimpin.
+        1. الإحالة: ia، -nya، tersebut (المذكور، رسمي): Naskah tersebut kini disimpan di Arsip Nasional.
+        2. الـ substitusi (الاستبدال): demikian / begitu بدل جملة كاملة: Hatta pun berpendapat demikian.
+        3. الـ pelesapan (الحذف): Sukarno menjadi presiden, Hatta [menjadi] wakil presiden.
+        و masing-masing = كل واحد فيهم: Masing-masing punya peran.
+      ar: |
+        الـ kohesi (التماسك) خيط يشدّ الجمل، ومن دونه يكرّر النصّ نفسه:
+        ✗ Sukarno membacakan proklamasi. Sukarno didampingi Hatta. Sukarno dan Hatta kemudian menjadi pemimpin.
+        ✓ Sukarno membacakan proklamasi. Ia didampingi Hatta. Keduanya kemudian menjadi pemimpin.
+        1. الإحالة: ia، -nya، tersebut (المذكور، رسمية): Naskah tersebut kini disimpan di Arsip Nasional.
+        2. الـ substitusi (الاستبدال): demikian / begitu بدل جملة كاملة: Hatta pun berpendapat demikian.
+        3. الـ pelesapan (الحذف): Sukarno menjadi presiden, Hatta [menjadi] wakil presiden.
+        وmasing-masing = كلٌّ منهم: Masing-masing punya peran.
+      en: |
+        Kohesi (cohesion) is the thread that ties sentences together. Without it a text repeats itself:
+        ✗ Sukarno membacakan proklamasi. Sukarno didampingi Hatta. Sukarno dan Hatta kemudian menjadi pemimpin.
+        ✓ Sukarno membacakan proklamasi. Ia didampingi Hatta. Keduanya kemudian menjadi pemimpin.
+        1. Reference: ia, -nya, tersebut (the said, formal): Naskah tersebut kini disimpan di Arsip Nasional.
+        2. Substitusi (substitution): demikian / begitu for a whole clause: Hatta pun berpendapat demikian.
+        3. Pelesapan (ellipsis): Sukarno menjadi presiden, Hatta [menjadi] wakil presiden.
+        masing-masing = each of them: Masing-masing punya peran.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kohesi
+        ar_eg: تماسك النص
+        ar: التماسك
+        en: cohesion
+      - text: tersebut
+        ar_eg: المذكور / ده (رسمي)
+        ar: المذكور
+        en: the said, that (formal)
+      - text: substitusi
+        ar_eg: استبدال
+        ar: استبدال
+        en: substitution
+      - text: pelesapan
+        ar_eg: حذف
+        ar: حذف
+        en: ellipsis
+      - text: masing-masing
+        ar_eg: كل واحد فيهم
+        ar: كلٌّ منهم
+        en: each, respectively
+    words: [kohesi, tersebut, substitusi, pelesapan, masing-masing]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي نص فيه تماسك أحسن؟
+      ar: أيّ النصّين أكثر تماسكًا؟
+      en: Which text is more cohesive?
+    options:
+      - Hatta lahir di Bukittinggi. Hatta belajar di Belanda. Hatta pulang tahun 1932.
+      - Hatta lahir di Bukittinggi. Ia belajar di Belanda dan pulang tahun 1932.
+      - Lahir. Belajar. Pulang.
+    answer: 1
+    words: [kohesi]
+  - id: e03
+    type: fill_blank
+    sentence: Naskah proklamasi ditulis tangan. Naskah ___ kini disimpan di Arsip Nasional.
+    meaning:
+      ar_eg: نص الإعلان اتكتب بخط الإيد. النص ده محفوظ دلوقتي في الأرشيف الوطني.
+      ar: كُتب نصّ الإعلان بخطّ اليد، والنصّ المذكور محفوظ اليوم في الأرشيف الوطني.
+      en: The proclamation text was handwritten. That text is now kept in the National Archives.
+    options: [tersebut, masing-masing, pelesapan]
+    answers: [tersebut]
+    words: [tersebut]
+  - id: e04
+    type: listen
+    text: Sukarno menjadi presiden, Hatta wakil presiden.
+    question:
+      ar_eg: إيه الكلمة اللي اتحذفت بعد Hatta؟
+      ar: ما الكلمة المحذوفة بعد Hatta؟
+      en: Which word is left out after Hatta?
+    options:
+      - menjadi
+      - tidak
+      - ia
+    answer: 0
+    words: [pelesapan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: كل واحد فيهم كان ليه دور مهم.
+      ar: كان لكلٍّ منهم دور مهمّ.
+      en: Each of them had an important role.
+    answer: Masing-masing mempunyai peran penting.
+    distractors: [tersebut, kohesi]
+    words: [masing-masing]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في «Hatta pun berpendapat demikian»، كلمة demikian عاملة إيه؟
+      ar: ما عمل كلمة demikian في «Hatta pun berpendapat demikian»؟
+      en: In "Hatta pun berpendapat demikian", what is demikian doing?
+    options:
+      - بتربط سبب بنتيجة.
+      - بتسأل سؤال.
+      - بتستبدل الرأي اللي اتقال قبلها.
+    answer: 2
+    words: [substitusi]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الحذف بيخلّي الجملة أقصر.
+      ar: يجعل الحذفُ الجملة أقصر.
+      en: Ellipsis makes the sentence shorter.
+    answers:
+      - Pelesapan membuat kalimat lebih pendek.
+      - Pelesapan membuat kalimatnya lebih pendek.
+      - Pelesapan menjadikan kalimat lebih pendek.
+    words: [pelesapan]
+  - id: e08
+    type: speaking
+    text: Kohesi membuat sebuah teks sejarah enak dibaca.
+    meaning:
+      ar_eg: التماسك بيخلّي النص التاريخي سهل وحلو في القراية.
+      ar: يجعل التماسك النصّ التاريخي سلس القراءة.
+      en: Cohesion makes a history text pleasant to read.
+    words: [kohesi]
+  - id: e09
+    type: dictation
+    text: Kedua tokoh tersebut masing-masing menulis memoar.
+    meaning:
+      ar_eg: الشخصيتين دول كل واحد فيهم كتب مذكّراته.
+      ar: كتب كلٌّ من الشخصيّتين المذكورتين مذكّراته.
+      en: Each of those two figures wrote a memoir.
+    words: [tersebut, masing-masing]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Dengan substitusi dan pelesapan, kita tidak perlu mengulang kata yang sama.
+    answers_meaning:
+      ar_eg:
+        - بالاستبدال والحذف، مش محتاجين نكرّر نفس الكلمة.
+        - لما نستبدل ونحذف، مانبقاش مضطرين نعيد نفس الكلمة.
+      ar:
+        - بالاستبدال والحذف لا نحتاج إلى تكرار الكلمة نفسها.
+        - يغنينا الاستبدال والحذف عن تكرار اللفظ ذاته.
+      en:
+        - With substitution and ellipsis, we needn't repeat the same word.
+        - Substitution and ellipsis spare us from repeating the same word.
+    words: [substitusi, pelesapan]
+dialogue:
+  title: Di perahu menuju Wayag
+  lines:
+    - speaker: Pak Hasan
+      text: Coba baca paragrafmu tentang Sukarno.
+      ar_eg: اقرا الفقرة اللي كتبتها عن سوكارنو.
+      ar: اقرأ فقرتك عن سوكارنو.
+      en: Read me your paragraph about Sukarno.
+    - speaker: Mohamed
+      text: "Sukarno lahir di Surabaya. Sukarno belajar di Bandung. Sukarno menjadi presiden."
+      ar_eg: «سوكارنو اتولد في سورابايا. سوكارنو درس في باندونج. سوكارنو بقى رئيس».
+      ar: «وُلد سوكارنو في سورابايا. درس سوكارنو في باندونغ. صار سوكارنو رئيسًا».
+      en: '"Sukarno was born in Surabaya. Sukarno studied in Bandung. Sukarno became president."'
+    - speaker: Pak Hasan
+      text: Terlalu banyak "Sukarno". Pakai "ia" atau "beliau". Itulah kohesi.
+      ar_eg: «سوكارنو» كتير قوي. استعمل «ia» أو «beliau». ده هو التماسك.
+      ar: كثُر «سوكارنو». استعمل «ia» أو «beliau»، فهذا هو التماسك.
+      en: Too many "Sukarno"s. Use "ia" or "beliau". That's cohesion.
+    - speaker: Mohamed
+      text: "Sukarno lahir di Surabaya. Beliau belajar di Bandung, kemudian menjadi presiden."
+      ar_eg: «سوكارنو اتولد في سورابايا. درس في باندونج، وبعدين بقى رئيس».
+      ar: «وُلد سوكارنو في سورابايا، ودرس في باندونغ، ثمّ صار رئيسًا».
+      en: '"Sukarno was born in Surabaya. He studied in Bandung, then became president."'
+new_words:
+  - word: kohesi
+    pos: noun
+    ar_eg: تماسك النص
+    ar: التماسك
+    en: cohesion
+  - word: tersebut
+    pos: adjective
+    ar_eg: المذكور / ده (رسمي)
+    ar: المذكور
+    en: the said, that (formal)
+  - word: substitusi
+    pos: noun
+    ar_eg: استبدال
+    ar: استبدال
+    en: substitution
+  - word: pelesapan
+    pos: noun
+    ar_eg: حذف
+    ar: حذف
+    en: ellipsis
+  - word: masing-masing
+    pos: pronoun
+    ar_eg: كل واحد فيهم
+    ar: كلٌّ منهم
+    en: each, respectively
+review:
+  status: draft
+  verified: false

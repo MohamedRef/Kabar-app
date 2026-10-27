@@ -13,6 +13,7 @@ Every dataset, corpus, font and sound used by Kabar, with its license.
 | [Javanese Wikipedia](https://jv.wikipedia.org) articles dump | Javanese frequency list (built on the Mac) | CC BY-SA 4.0 | `content/freq/jv.tsv` |
 | [Wiktionary](https://en.wiktionary.org) via [kaikki.org](https://kaikki.org) (wiktextract, Tatu Ylonen) | dictionary import, Arabic etymologies for the Arabic Bridge cross-check | CC BY-SA 4.0 and GFDL | `build/dict/`, `content/bridge/wiktionary-*.jsonl` |
 | [Wiktionary](https://en.wiktionary.org) definition API (`/api/rest_v1/page/definition/<word>`) | Teach Kabar's free in-app lookup (spec §26): the excerpt is kept with the learner's taught entry, with a link back to the page | CC BY-SA 4.0 and GFDL | `taught_entries` sources (on the learner's devices only) |
+| [g2p_id](https://github.com/bookbot-kids/g2p_id) `g2p_id/resources/lexicon_id.tsv` (Bookbot; built on [ipa-dict](https://github.com/open-dict-data/ipa-dict) `ma.txt`, MIT) | Indonesian pronunciations (e vs é, glottal k) for the Arabic-script pronunciation, cut by `kabar-tools pron import` | Apache-2.0 (`content/pron/g2p_id-LICENSE.txt`) | `content/pron/id.tsv` (derived: 18k of its 27.6k words, recoded) |
 | [Natural Earth](https://www.naturalearthdata.com/) 1:10m Admin 0 countries (`ne_10m_admin_0_countries`, via [nvkelso/natural-earth-vector](https://github.com/nvkelso/natural-earth-vector)) | Journey Map base maps: clipped, simplified and restyled by `cargo run -p kabar-tools --bin journey-map` ("Made with Natural Earth") | public domain | `crates/app/assets/journey/*.svg` |
 
 Glosses, examples, Arabic Bridge cards, the Javanese speech-level table and the golden sets under `content/glosses/`, `content/bridge/`, `content/javanese/` and `content/golden/` are original, written for Kabar with Claude Code (`prompts/gloss@v1.md`, `prompts/gloss-jv@v1.md`, `prompts/bridge@v1.md`, `prompts/speech-levels@v1.md`) and reviewed by the learner; Javanese stays unverified until a native speaker checks it. The golden screenshots in `fixtures/golden/` are synthetic, rendered for Kabar with fictional people. The About screen must credit Wiktionary (CC BY-SA) and the frequency sources above.
@@ -29,6 +30,7 @@ exercises are copied. Kabar's lessons and grammar explanations are original.
 ## Fonts
 The UI uses system fonts and falls back through IBM Plex Sans Arabic / Noto (OFL) if installed.
 
+- **Noto Naskh Arabic** Regular (notofonts.github.io, hinted) — © 2022 The Noto Project Authors, SIL Open Font License 1.1 (`content/fonts/NotoNaskhArabic-OFL.txt`). Subset to the Arabic block as `content/fonts/NotoNaskhArabic-Kabar.ttf` (`pyftsubset --unicodes=U+0020,U+0021,U+002D,U+002E,U+0600-06FF,U+200C-200F,U+25CC --layout-features='*'`) and bundled for the Arabic-script pronunciation, which needs ڠ ێ ۆ پ چ and full vowel marks on every device.
 - **Noto Sans Javanese** Regular v2.005 — © 2022 The Noto Project Authors, SIL Open Font License 1.1 (`content/fonts/NotoSansJavanese-OFL.txt`). Bundled in the app for the Aksara Jawa practice sheets, and the source that `scripts/aksara/strokes.py` traces the draft stroke data in `content/aksara/strokes.json` from (a derived dataset, same license terms apply to the font itself).
 
 ## Sounds
@@ -41,4 +43,6 @@ The UI uses system fonts and falls back through IBM Plex Sans Arabic / Noto (OFL
 ## Artwork
 - Custom UI icons (`assets/icons/custom/`): original SVGs drawn for Kabar on the Lucide 24 px grid (`docs/VISUAL-ASSETS.md`, prompt 3). The preview page loads Lucide 0.456.0 (ISC) from unpkg for comparison only.
 - App icon ("Dawn over sawah"): original artwork created for Kabar with Codex (`docs/VISUAL-ASSETS.md`, prompts 1–2). Masters in `assets/src/icon/`; every platform size is exported by `scripts/assets/export_icons.py`.
+- Souvenir cards: original artwork created for Kabar. Six cards were drawn with Codex (`docs/VISUAL-ASSETS.md`, prompts 4b–4c); the other 101 are drawn in code by `scripts/assets/draw_souvenirs.py`. Masters are in `assets/src/souvenirs/`, and `scripts/assets/export_souvenirs.py` exports the web sizes.
+- Journey Map art (paper backdrops and 13 landmark vignettes): original artwork created for Kabar with Codex (`docs/VISUAL-ASSETS.md`, prompt 5). Masters in `assets/src/map/`; WebP sizes exported by `scripts/assets/export_map.py` and embedded by `crates/app/src/map_art.rs`. The map geometry itself is Natural Earth (see above).
 - Background pattern: original kawung-inspired geometry generated in code (`crates/app/src/theme.rs`).

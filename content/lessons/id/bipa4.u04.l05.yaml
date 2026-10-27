@@ -1,197 +1,178 @@
 schema: kabar.lesson/v1
 id: bipa4.u04.l05
 language: id
-title: Ulangan Unit 4
+title: Berita banjir
 can_do:
-  ar_eg: "تتناقش في خبر: تلخصه، تقول أسبابه ونتايجه، وتدي رأيك."
-  ar: "أن تناقش قضية إخبارية: تلخصها وتذكر أسبابها ونتائجها وتبدي رأيك."
-  en: Discuss a news issue.
+  ar_eg: تقرا خبر أونلاين قصير وتفهم إيه اللي حصل وليه وإيه النتيجة.
+  ar: أن تقرأ خبرًا إلكترونيًا قصيرًا وتفهم ما حدث ولماذا وما نتيجته.
+  en: Read a short online news item and say what happened, why, and with what result.
 slides:
-  - title: Sebab dan akibat
+  - title: Berita daring hari ini
     body:
       ar_eg: |
-        مراجعة سريعة:
-        السبب: karena، berkat (حلو)، gara-gara (وحش، عامي)، akibat + اسم (وحش، رسمي).
-        النتيجة: sehingga (جوه الجملة)، Akibatnya, / Oleh karena itu, (في أول جملة جديدة).
-        ما تجمعش karena مع maka.
+        خبر من موقع جرنال في باريباري. الأول العنوان، وبعدين الخبر.
+        دوّر على السبب والنتيجة: Akibatnya و Oleh karena itu.
       ar: |
-        مراجعة سريعة:
-        السبب: karena، berkat (للمحمود)، gara-gara (للسلبي، عامية)، akibat + اسم (للسلبي، رسمية).
-        النتيجة: sehingga داخل الجملة، وAkibatnya, / Oleh karena itu, في أول جملة جديدة.
-        ولا تجمع بين karena وmaka.
+        خبر من موقع صحيفة في باريباري: العنوان أولًا، ثم الخبر.
+        ابحث عن السبب والنتيجة: Akibatnya و Oleh karena itu.
       en: |
-        Quick review:
-        Cause: karena, berkat (good), gara-gara (bad, casual), akibat + noun (bad, formal).
-        Effect: sehingga (inside the sentence), Akibatnya, / Oleh karena itu, (starting a new one).
-        Don't pair karena with maka.
-    grammar: id.conjunction.cause-effect
+        A news item from a Parepare news site: first the headline, then the story.
+        Look for cause and effect: Akibatnya and Oleh karena itu.
     examples:
-      - text: Karena hujan deras, acara itu dibatalkan.
-        ar_eg: عشان المطر الجامد، الحفلة اتلغت.
-        ar: أُلغيت الفعالية بسبب الأمطار الغزيرة.
-        en: Because of the heavy rain, the event was cancelled.
-      - text: Tanggul rusak. Akibatnya, pasar terendam.
-        ar_eg: السد باظ. ونتيجة لكده، السوق غرق.
-        ar: تضرر السد، ونتيجةً لذلك غُمر السوق.
-        en: The levee broke. As a result, the market flooded.
+      - text: Hujan Deras, Pasar Lakessi Terendam
+        ar_eg: (عنوان) مطر غزير، وسوق لاكيسي غرقان
+        ar: (عنوان) أمطار غزيرة تُغرق سوق لاكيسي
+        en: (Headline) Heavy rain floods Lakessi Market
+      - text: Hujan deras turun sejak Selasa malam. Akibatnya, Pasar Lakessi terendam air setinggi lima puluh sentimeter.
+        ar_eg: المطر الغزير نازل من يوم التلات بالليل. والنتيجة إن سوق لاكيسي غرق في مية ارتفاعها خمسين سنتي.
+        ar: هطلت أمطار غزيرة منذ مساء الثلاثاء، فغمرت سوقَ لاكيسي مياهٌ بارتفاع خمسين سنتيمترًا.
+        en: Heavy rain has fallen since Tuesday night. As a result, Lakessi Market is under fifty centimetres of water.
+      - text: Menurut seorang pedagang, saluran air di sekitar pasar tersumbat sampah. Oleh karena itu, para pedagang tidak bisa berjualan pada hari Rabu.
+        ar_eg: على حسب كلام تاجر، مجاري المية اللي حوالين السوق مسدودة بالزبالة. وعشان كده التجار ماقدروش يبيعوا يوم الأربع.
+        ar: بحسب أحد التجار، فإن قنوات الصرف حول السوق مسدودة بالقمامة، ولذلك لم يتمكّن التجار من البيع يوم الأربعاء.
+        en: According to a trader, the drains around the market are clogged with rubbish. Therefore, traders could not sell on Wednesday.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: akibatnya
-        ar_eg: ونتيجة لكده
-        ar: ونتيجةً لذلك
-        en: as a result
-      - text: berkat
-        ar_eg: بفضل
-        ar: بفضل
-        en: thanks to
-      - text: wartawan
-        ar_eg: صحفي
-        ar: صحفي
-        en: journalist
-      - text: narasumber
-        ar_eg: مصدر
-        ar: مصدر
-        en: source
-      - text: kebijakan
-        ar_eg: سياسة / قرار حكومي
-        ar: سياسة
-        en: policy
-      - text: dampak
-        ar_eg: أثر
-        ar: أثر
-        en: impact
-    words: [akibatnya, berkat, wartawan, narasumber, kebijakan, dampak]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: المطر الغزير بدأ إمتى؟
+      ar: متى بدأت الأمطار الغزيرة؟
+      en: When did the heavy rain start?
+    options: [Sejak Senin sore, Sejak Selasa malam, Sejak Rabu pagi]
+    answer: 1
+    words: [deras]
   - id: e02
     type: multiple_choice
-    question: ___ banjir, sekolah ditutup.
     question_meaning:
-      ar_eg: … الفيضان، المدرسة اتقفلت.
-      ar: … الفيضان أُغلقت المدرسة.
-      en: … the flood, the school was closed.
-    options: ["Berkat", "Akibat", "Sehingga"]
-    answer: 1
+      ar_eg: السوق غرق ليه، على حسب كلام التاجر؟
+      ar: لماذا غرق السوق بحسب التاجر؟
+      en: According to the trader, why did the market flood?
+    options:
+      - Tanggul sungai rusak.
+      - Air laut naik.
+      - Saluran air tersumbat sampah.
+    answer: 2
     explain:
-      ar_eg: الفيضان مش «بركة»، فـ berkat غلط. akibat + اسم = نتيجةً لـ.
-      ar: الفيضان ليس «بركة» فلا تصح berkat، وakibat + اسم = نتيجةً لـ.
-      en: A flood is no blessing, so not berkat; akibat + noun = as a result of.
-    words: [berkat]
+      ar_eg: الخبر ماقالش حاجة عن tanggul ولا البحر. التاجر قال إن المجاري مسدودة.
+      ar: لم يذكر الخبر السدّ ولا البحر، بل قال التاجر إن قنوات الصرف مسدودة.
+      en: The story says nothing about a levee or the sea; the trader blames clogged drains.
+    words: [narasumber]
   - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة صح في الإندونيسي الفصيح؟
-      ar: أيّ جملة صحيحة في الإندونيسية الفصيحة؟
-      en: Which sentence is correct in standard Indonesian?
-    options: ["Karena hujan deras, maka acara dibatalkan.", "Hujan deras. Sehingga acara dibatalkan.", "Karena hujan deras, acara dibatalkan."]
-    answer: 2
-    explain:
-      ar_eg: karena مع maka زيادة، وsehingga ما تبدأش جملة.
-      ar: الجمع بين karena وmaka حشو، ولا يُبتدأ بـsehingga.
-      en: karena + maka is redundant, and sehingga can't start a sentence.
+      ar_eg: إيه النتيجة بالنسبة للتجار؟
+      ar: ما النتيجة بالنسبة إلى التجار؟
+      en: What was the result for the traders?
+    options:
+      - Mereka tidak bisa berjualan pada hari Rabu.
+      - Mereka mengungsi ke masjid.
+      - Mereka membersihkan pasar pada hari Selasa.
+    answer: 0
+    words: [oleh karena itu]
   - id: e04
     type: listen
-    text: Menurut narasumber, ratusan warga mengungsi.
-    options: ["Menurut narasumber, ratusan warga mengungsi.", "Menurut wartawan, ratusan warga mengungsi.", "Menurut narasumber, puluhan warga mengungsi."]
-    answer: 0
+    text: Akibatnya, Pasar Lakessi terendam air.
+    options:
+      - Oleh karena itu, Pasar Lakessi terendam air.
+      - Akibatnya, Pasar Lakessi terendam air.
+      - Akibatnya, Pasar Lakessi tertutup air.
+    answer: 1
     meaning:
-      ar_eg: حسب كلام المصدر، مئات السكان نزحوا.
-      ar: بحسب المصدر نزح مئات السكان.
-      en: According to the source, hundreds of residents evacuated.
-    words: [narasumber, mengungsi]
-  - id: e05
-    type: fill_blank
-    sentence: Tanggul rusak. ___, pasar terendam.
-    meaning:
-      ar_eg: السد باظ. ونتيجة لكده، السوق غرق.
-      ar: تضرر السد، ونتيجةً لذلك غُمر السوق.
-      en: The levee broke. As a result, the market flooded.
-    options: [Akibatnya, Berkat, Sehingga]
-    answers: [Akibatnya]
+      ar_eg: والنتيجة إن سوق لاكيسي غرق في المية.
+      ar: ونتيجة لذلك غمرت المياه سوق لاكيسي.
+      en: As a result, Lakessi Market is under water.
     words: [akibatnya, terendam]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: judul
+        ar_eg: عنوان
+        ar: عنوان
+        en: headline
+      - text: narasumber
+        ar_eg: مصدر الخبر
+        ar: مصدر الخبر
+        en: news source
+      - text: terendam
+        ar_eg: غرقان في المية
+        ar: مغمور بالماء
+        en: submerged, flooded
+      - text: akibatnya
+        ar_eg: والنتيجة
+        ar: ونتيجةً لذلك
+        en: as a result
+      - text: oleh karena itu
+        ar_eg: وعشان كده
+        ar: ولذلك
+        en: therefore
+    words: [judul, narasumber, terendam, akibatnya, oleh karena itu]
   - id: e06
     type: fill_blank
-    sentence: Berita itu dibaca secara ___ oleh ribuan orang.
+    sentence: Hujan deras turun semalaman. ___, pasar terendam air.
     meaning:
-      ar_eg: (اكتب الكلمة) الخبر ده اتقرا أونلاين من آلاف الناس.
-      ar: (اكتب الكلمة) قرأ آلاف الناس ذلك الخبر عبر الإنترنت.
-      en: (Type the word.) That story was read online by thousands of people.
-    answers: [daring]
-    words: [daring]
+      ar_eg: المطر الغزير نزل طول الليل. والنتيجة إن السوق غرق.
+      ar: هطلت أمطار غزيرة طوال الليل، فغمرت المياه السوق.
+      en: Heavy rain fell all night. As a result, the market was flooded.
+    options: [Berkat, Akibatnya, Gara-gara]
+    answers: [Akibatnya]
+    explain:
+      ar_eg: Akibatnya بتيجي في أول الجملة التانية وبعدها فاصلة. berkat وgara-gara لازم بعدهم سبب (اسم).
+      ar: تأتي Akibatnya في أول الجملة الثانية وتليها فاصلة، أما berkat وgara-gara فيليهما السبب.
+      en: Akibatnya opens the second sentence, followed by a comma; berkat and gara-gara must be followed by the cause.
+    words: [akibatnya]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: بفضل المنحة دي، بقت صحفية.
-      ar: بفضل تلك المنحة أصبحت صحفية.
-      en: Thanks to that scholarship, she became a journalist.
-    answer: Berkat beasiswa itu, dia menjadi wartawan.
-    distractors: [gara-gara, akibat]
-    words: [berkat, beasiswa, wartawan]
+      ar_eg: والنتيجة إن التجار ماقدروش يبيعوا يوم الأربع.
+      ar: ونتيجة لذلك لم يتمكّن التجار من البيع يوم الأربعاء.
+      en: As a result, the traders could not sell on Wednesday.
+    answer: Akibatnya, para pedagang tidak bisa berjualan pada hari Rabu.
+    distractors: [berkat, mengungsi]
+    words: [akibatnya]
   - id: e08
-    type: dictation
-    text: Kebijakan baru itu punya kelebihan dan kekurangan.
-    meaning:
-      ar_eg: القرار الجديد ده ليه مميزات وعيوب.
-      ar: لتلك السياسة الجديدة مزايا وعيوب.
-      en: That new policy has advantages and drawbacks.
-    words: [kebijakan, kelebihan, kekurangan]
-  - id: e09
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: زبالة البلاستيك بتسبب فيضانات.
-      ar: تسبب النفايات البلاستيكية الفيضانات.
-      en: Plastic waste causes floods.
+      ar_eg: على حسب كلام تاجر، مجاري المية مسدودة بالزبالة.
+      ar: بحسب أحد التجار، قنوات الصرف مسدودة بالقمامة.
+      en: According to a trader, the drains are clogged with rubbish.
     answers:
-      - Sampah plastik menyebabkan banjir.
-      - Sampah plastik menyebabkan banjir
-      - Sampah plastik dapat menyebabkan banjir.
-      - Sampah plastik bisa menyebabkan banjir.
-      - Sampah plastik mengakibatkan banjir.
-    words: [menyebabkan]
-  - id: e10
-    type: speaking
-    text: Di satu sisi, saya mendukung kebijakan ini. Di sisi lain, dampaknya harus dipikirkan.
-    meaning:
-      ar_eg: من ناحية، أنا مؤيد القرار ده. ومن ناحية تانية، لازم نفكر في أثره.
-      ar: من جهة أؤيد هذه السياسة، ومن جهة أخرى ينبغي التفكير في أثرها.
-      en: On the one hand, I support this policy. On the other, its impact must be considered.
-    words: [mendukung, dampak]
+      - Menurut seorang pedagang, saluran air tersumbat sampah.
+      - Menurut seorang pedagang, saluran air tersumbat oleh sampah.
+      - Menurut pedagang, saluran air tersumbat sampah.
+      - Menurut pedagang, saluran air tersumbat oleh sampah.
+      - Menurut seorang pedagang, saluran airnya tersumbat sampah.
+      - Menurut salah satu pedagang, saluran air tersumbat sampah.
+    words: [narasumber]
 dialogue:
-  title: Membahas berita
+  title: Di ruang redaksi
   lines:
     - speaker: Kak Ayu
-      text: Mohamed, sudah baca berita banjir hari ini?
-      ar_eg: يا محمد، قريت خبر الفيضان النهارده؟
-      ar: يا محمد، هل قرأت خبر الفيضان اليوم؟
-      en: Mohamed, have you read today's flood story?
+      text: Mohamed, sudah baca berita Pasar Lakessi?
+      ar_eg: يا Mohamed، قريت خبر سوق لاكيسي؟
+      ar: يا Mohamed، هل قرأت خبر سوق لاكيسي؟
+      en: Mohamed, have you read the Lakessi Market story?
     - speaker: Mohamed
-      text: Sudah. Menurut wartawan, saluran air tersumbat sampah plastik. Akibatnya, jalan terendam.
-      ar_eg: أيوه. حسب الصحفي، مجاري المية اتسدت بزبالة البلاستيك. ونتيجة لكده، الشوارع غرقت.
-      ar: نعم. بحسب الصحفي انسدت المجاري بالنفايات البلاستيكية، ونتيجةً لذلك غُمرت الشوارع.
-      en: Yes. According to the journalist, the drains were blocked by plastic waste. As a result, the streets flooded.
+      text: Sudah, Kak. Hujan deras sejak Selasa malam. Akibatnya, pasar terendam.
+      ar_eg: قريته. المطر نازل من التلات بالليل، والنتيجة إن السوق غرق.
+      ar: نعم. أمطار غزيرة منذ مساء الثلاثاء، فغرق السوق.
+      en: Yes. Heavy rain since Tuesday night; as a result, the market flooded.
     - speaker: Kak Ayu
-      text: Oleh karena itu, pemerintah membuat kebijakan baru. Kantong plastik dilarang di pasar.
-      ar_eg: عشان كده، الحكومة عملت قرار جديد. الأكياس البلاستيك ممنوعة في السوق.
-      ar: "لذلك وضعت الحكومة سياسة جديدة: يُمنع استعمال الأكياس البلاستيكية في السوق."
-      en: So the government made a new policy. Plastic bags are banned at the market.
+      text: Siapa narasumbernya?
+      ar_eg: مين مصدر الخبر؟
+      ar: من مصدر الخبر؟
+      en: Who's the source?
     - speaker: Mohamed
-      text: Saya mendukung. Tapi pedagang kecil mungkin menolak.
-      ar_eg: أنا مؤيد. بس التجار الصغيرين ممكن يرفضوا.
-      ar: أنا أؤيدها، لكن صغار التجار قد يرفضونها.
-      en: I support it. But small traders might oppose it.
+      text: Seorang pedagang. Katanya saluran air tersumbat sampah.
+      ar_eg: تاجر. بيقول إن المجاري مسدودة بالزبالة.
+      ar: أحد التجار. يقول إن قنوات الصرف مسدودة بالقمامة.
+      en: A trader. He says the drains are clogged with rubbish.
     - speaker: Kak Ayu
-      text: Itu dampak yang harus dipikirkan. Berita yang baik selalu melihat dua sisi.
-      ar_eg: ده أثر لازم نفكر فيه. الخبر الكويس دايمًا بيشوف الناحيتين.
-      ar: هذا أثر ينبغي التفكير فيه، فالخبر الجيد يرى الجانبين دائمًا.
-      en: That's an impact to think about. Good news reporting always looks at both sides.
-souvenir:
-  id: bipa4.u04.souvenir
-  title: Kota kelahiran B. J. Habibie
-  note:
-    ar_eg: باريباريه هي البلد اللي اتولد فيها الرئيس حبيبي، المهندس اللي اشتغل في الطيارات في ألمانيا قبل ما يرجع يخدم بلده. لما بقى رئيس سنة ١٩٩٨، فتح الباب لحرية الصحافة، والجرايد والإذاعات زادت بشكل كبير. وفي باريباريه لسه فيه تمثال لحبيبي ومراته عينون، والناس بتزوره كرمز للحب الصادق.
-    ar: باريباري مسقط رأس الرئيس حبيبي، المهندس الذي عمل في صناعة الطائرات بألمانيا قبل أن يعود لخدمة بلاده. ولما تولى الرئاسة عام ١٩٩٨ فتح الباب لحرية الصحافة، فتكاثرت الصحف والإذاعات. وفي باريباري نصب تذكاري لحبيبي وزوجته عينون، يزوره الناس رمزًا للحب الوفي.
-    en: Parepare is the birthplace of President Habibie, the aircraft engineer who worked in Germany before coming home to serve his country. As president from 1998 he opened the door to press freedom, and newspapers and radio stations multiplied. A monument to Habibie and his wife Ainun stands in Parepare, visited as a symbol of true love.
+      text: Bagus. Sekarang tulis ringkasannya dalam tiga kalimat.
+      ar_eg: تمام. دلوقتي اكتب ملخصه في تلات جمل.
+      ar: أحسنت. والآن اكتب ملخصه في ثلاث جمل.
+      en: Good. Now write a summary in three sentences.
+new_words: []
 review:
   status: draft
   verified: false

@@ -1,0 +1,210 @@
+schema: kabar.lesson/v1
+id: bipa7.u04.l05
+language: id
+title: Melayu Manado
+can_do:
+  ar_eg: تفهم جمل بسيطة بملايو مانادو وماتتلخبطش في «kita».
+  ar: أن تفهم جملًا بسيطة بملايوية مانادو ولا تخلط في معنى «kita».
+  en: Understand simple Manado Malay without tripping over "kita".
+slides:
+  - title: Kita itu saya!
+    body:
+      ar_eg: |
+        في مانادو (شمال سولاويسي) بيتكلّموا Melayu Manado:
+        - ngana = إنت (kamu)
+        - torang = إحنا (kita), من «kita orang»
+        - dorang = هم (mereka), من «dia orang»
+        - nyanda = مش (tidak)
+        خلّي بالك: في مانادو «kita» معناها أنا (saya)، مش إحنا!
+        وفيه شعار مشهور هناك: «Torang samua basudara» = كلنا إخوات. وأكلتهم المشهورة tinutuan (شوربة رز وخضار).
+      ar: |
+        يتكلّم أهل مانادو (سولاويسي الشمالية) Melayu Manado:
+        - ngana = أنت (kamu)
+        - torang = نحن (kita)، من «kita orang»
+        - dorang = هم (mereka)، من «dia orang»
+        - nyanda = لا، ليس (tidak)
+        وانتبه: «kita» في مانادو تعني أنا (saya) لا نحن!
+        ولهم شعار مشهور: «Torang samua basudara» أي كلّنا إخوة، وطبقهم الشهير tinutuan (عصيدة أرزّ بالخضار).
+      en: |
+        In Manado (North Sulawesi) people speak Melayu Manado:
+        - ngana = you (kamu)
+        - torang = we (kita), from "kita orang"
+        - dorang = they (mereka), from "dia orang"
+        - nyanda = not (tidak)
+        Careful: in Manado "kita" means I (saya), not we!
+        A famous local motto is "Torang samua basudara", we are all kin. The famous dish is tinutuan (rice and vegetable porridge).
+    examples:
+      - text: Ngana so makan? Kita nyanda lapar.
+        ar_eg: إنت أكلت؟ أنا مش جعان.
+        ar: هل أكلت؟ أنا لست جائعًا.
+        en: Have you eaten? I'm not hungry.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ngana
+        ar_eg: إنت
+        ar: أنت
+        en: you
+      - text: torang
+        ar_eg: إحنا
+        ar: نحن
+        en: we
+      - text: dorang
+        ar_eg: هم
+        ar: هم
+        en: they
+      - text: nyanda
+        ar_eg: مش
+        ar: لا، ليس
+        en: not
+      - text: katong
+        ar_eg: إحنا (أمبون)
+        ar: نحن (أمبون)
+        en: we (Ambon)
+    words: [ngana, torang, dorang, nyanda, katong]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: واحد من مانادو قال «Kita mau pulang». قصده مين؟
+      ar: قال شخص من مانادو «Kita mau pulang». من يقصد؟
+      en: A Manado speaker says "Kita mau pulang". Who is going home?
+    options:
+      - هو نفسه بس.
+      - كلنا.
+      - هم.
+    answer: 0
+    explain:
+      ar_eg: في مانادو kita = أنا. علشان «إحنا» بيقولوا torang.
+      ar: kita في مانادو = أنا، أمّا «نحن» فهي torang.
+      en: In Manado kita = I. For "we" they say torang.
+    words: [torang]
+  - id: e03
+    type: listen
+    text: Dorang nyanda datang, jadi torang makan tinutuan berdua saja.
+    question:
+      ar_eg: إيه اللي حصل؟
+      ar: ماذا حدث؟
+      en: What happened?
+    options:
+      - كلهم جم وأكلوا.
+      - التانيين ماجوش، فاتنين بس أكلوا.
+      - المطعم كان مقفول.
+    answer: 1
+    words: [dorang, nyanda, torang]
+  - id: e04
+    type: fill_blank
+    sentence: ___ dari mana? Kita dari Manado.
+    meaning:
+      ar_eg: إنت منين؟ أنا من مانادو.
+      ar: من أين أنت؟ أنا من مانادو.
+      en: Where are you from? I'm from Manado.
+    options: [Ngana, Dorang, Nyanda]
+    answers: [Ngana]
+    words: [ngana]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: هم مش عارفين.
+      ar: هم لا يعرفون.
+      en: They don't know.
+    answer: Dorang nyanda tahu.
+    distractors: [torang, ngana]
+    words: [dorang, nyanda]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Torang samua basudara» معناها إيه؟
+      ar: ما معنى «Torang samua basudara»؟
+      en: What does "Torang samua basudara" mean?
+    options:
+      - إحنا كلنا جعانين.
+      - هم كلهم مسافرين.
+      - كلنا إخوات.
+    answer: 2
+    words: [torang, basudara]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: إنت مش جعان؟ (بمانادو)
+      ar: ألست جائعًا؟ (بملايوية مانادو)
+      en: Aren't you hungry? (in Manado Malay)
+    answers:
+      - Ngana nyanda lapar?
+      - Ngana nyanda lapar kah?
+      - Nyanda lapar, ngana?
+    words: [ngana, nyanda]
+  - id: e08
+    type: speaking
+    text: Torang samua basudara.
+    meaning:
+      ar_eg: كلنا إخوات.
+      ar: كلّنا إخوة.
+      en: We are all kin.
+    words: [torang]
+  - id: e09
+    type: dictation
+    text: Dorang so pulang ke Manado.
+    meaning:
+      ar_eg: هم رجعوا مانادو خلاص.
+      ar: لقد عادوا إلى مانادو.
+      en: They've already gone back to Manado.
+    words: [dorang]
+  - id: e10
+    type: fill_blank
+    sentence: Ngana mau ikut? ___, kita capek.
+    meaning:
+      ar_eg: عايز تيجي؟ لأ، أنا تعبان.
+      ar: أتريد المجيء؟ لا، أنا متعب.
+      en: Want to come along? No, I'm tired.
+    options: [Nyanda, Torang, Beta]
+    answers: [Nyanda]
+    words: [nyanda, ngana]
+dialogue:
+  title: Tamu dari Manado
+  lines:
+    - speaker: Om Nus
+      text: Mohamed, ini Tante Grace dari Manado. Dia mau tanya.
+      ar_eg: يا محمد، دي طنط جريس من مانادو. عايزة تسألك.
+      ar: يا محمد، هذه الخالة غريس من مانادو، تريد أن تسألك.
+      en: Mohamed, this is Tante Grace from Manado. She wants to ask you something.
+    - speaker: Tante Grace
+      text: Ngana dari Mesir? Kita pernah lihat piramida di TV.
+      ar_eg: إنت من مصر؟ أنا شفت الأهرامات في التليفزيون.
+      ar: أأنت من مصر؟ رأيت الأهرام في التلفاز.
+      en: You're from Egypt? I've seen the pyramids on TV.
+    - speaker: Mohamed
+      text: '"Kita" itu Tante sendiri, kan? Bukan kita berdua?'
+      ar_eg: «kita» دي حضرتك، صح؟ مش إحنا الاتنين؟
+      ar: «kita» تعنين نفسك، أليس كذلك؟ لا كلينا؟
+      en: '"Kita" means you yourself, right? Not the two of us?'
+    - speaker: Tante Grace
+      text: Betul! Kalau kita berdua, torang. Ngana pintar, nyanda salah!
+      ar_eg: صح! لو إحنا الاتنين، يبقى torang. إنت شاطر، ماغلطتش!
+      ar: صحيح! وإن كنّا اثنين فهي torang. أنت ذكيّ، لم تخطئ!
+      en: Right! If it's the two of us, torang. You're clever, not wrong at all!
+new_words:
+  - word: ngana
+    pos: pronoun
+    ar_eg: إنت (مانادو)
+    ar: أنت (مانادو)
+    en: you (Manado)
+  - word: torang
+    pos: pronoun
+    ar_eg: إحنا (مانادو)
+    ar: نحن (مانادو)
+    en: we (Manado)
+  - word: dorang
+    pos: pronoun
+    ar_eg: هم (مانادو)
+    ar: هم (مانادو)
+    en: they (Manado)
+  - word: nyanda
+    pos: particle
+    ar_eg: مش (مانادو)
+    ar: لا، ليس (مانادو)
+    en: not (Manado)
+review:
+  status: draft
+  verified: false

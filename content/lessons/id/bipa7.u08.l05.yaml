@@ -1,0 +1,210 @@
+schema: kabar.lesson/v1
+id: bipa7.u08.l05
+language: id
+title: QRIS
+can_do:
+  ar_eg: تدفع وتستلم فلوس بكود QR في المحلّات الإندونيسية.
+  ar: أن تدفع وتتسلّم المال برمز QR في المتاجر الإندونيسية.
+  en: Pay and get paid with a QR code at Indonesian shops.
+slides:
+  - title: Satu kode untuk semua
+    body:
+      ar_eg: |
+        الـ QRIS (بينطقوها «كيو-ريس») كود QR واحد عملاه بنك إندونيسيا سنة ٢٠١٩. أي تطبيق بنك أو محفظة إلكترونية يقدر يدفع بيه.
+        - nontunai = من غير كاش
+        - memindai = يعمل سكان (scan) للكود
+        - saldo = الرصيد اللي في حسابك
+        - transaksi = عملية دفع / معاملة
+        الخطوات: افتح التطبيق ← memindai الكود ← اكتب المبلغ ← PIN ← «Transaksi berhasil».
+        حتى بياع العصير على العربية عنده QRIS.
+      ar: |
+        الـ QRIS (تُنطق «كيو-ريس») رمز QR موحّد أطلقه بنك إندونيسيا سنة ٢٠١٩، يدفع به أيّ تطبيق مصرفيّ أو محفظة إلكترونية.
+        - nontunai = غير نقديّ
+        - memindai = يمسح الرمز ضوئيًّا
+        - saldo = الرصيد في حسابك
+        - transaksi = معاملة، عملية دفع
+        الخطوات: افتح التطبيق ← memindai الرمز ← اكتب المبلغ ← الرقم السرّيّ ← «Transaksi berhasil».
+        حتى بائع العصير على عربته لديه QRIS.
+      en: |
+        QRIS (said "kyoo-ris") is a single QR code launched by Bank Indonesia in 2019. Any bank app or e-wallet can pay with it.
+        - nontunai = cashless
+        - memindai = to scan
+        - saldo = the balance in your account
+        - transaksi = transaction
+        Steps: open the app → memindai the code → enter the amount → PIN → "Transaksi berhasil".
+        Even the juice seller with a cart has QRIS.
+    examples:
+      - text: Saldo saya tidak cukup, jadi transaksinya gagal.
+        ar_eg: رصيدي مش كفاية، فالعملية فشلت.
+        ar: رصيدي غير كافٍ، فأخفقت المعاملة.
+        en: My balance wasn't enough, so the transaction failed.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: QRIS
+        ar_eg: كود QR الموحّد
+        ar: رمز QR الموحّد
+        en: national QR code
+      - text: nontunai
+        ar_eg: من غير كاش
+        ar: غير نقديّ
+        en: cashless
+      - text: saldo
+        ar_eg: رصيد
+        ar: رصيد
+        en: balance
+      - text: transaksi
+        ar_eg: عملية دفع
+        ar: معاملة
+        en: transaction
+      - text: memindai
+        ar_eg: يعمل سكان
+        ar: يمسح ضوئيًّا
+        en: to scan
+    words: [QRIS, nontunai, saldo, transaksi, memindai]
+  - id: e02
+    type: listen
+    text: Silakan pindai kode QRIS di meja kasir.
+    question:
+      ar_eg: الكاشير بيطلب إيه؟
+      ar: ماذا يطلب أمين الصندوق؟
+      en: What is the cashier asking?
+    options:
+      - تدفع كاش.
+      - تعمل سكان لكود QRIS اللي على الترابيزة.
+      - تستنّى برّه.
+    answer: 1
+    words: [memindai, QRIS]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مين اللي عمل الـ QRIS؟
+      ar: من أطلق الـ QRIS؟
+      en: Who created QRIS?
+    options:
+      - بنك إندونيسيا.
+      - شركة تليفونات.
+      - مدينة سورونج.
+    answer: 0
+    words: [QRIS]
+  - id: e04
+    type: fill_blank
+    sentence: Sebelum membayar, cek dulu ___ di aplikasimu.
+    meaning:
+      ar_eg: قبل ما تدفع، بص على الرصيد في التطبيق الأول.
+      ar: قبل الدفع، تحقّق من رصيدك في التطبيق.
+      en: Before paying, check your balance in the app first.
+    options: [saldo, tengkulak, QRIS]
+    answers: [saldo]
+    words: [saldo]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Transaksi berhasil» معناها إيه؟
+      ar: ما معنى «Transaksi berhasil»؟
+      en: What does "Transaksi berhasil" mean?
+    options:
+      - العملية فشلت.
+      - الرصيد خلص.
+      - العملية تمّت بنجاح.
+    answer: 2
+    words: [transaksi]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: المحلّ ده بيقبل الدفع من غير كاش.
+      ar: يقبل هذا المتجر الدفع غير النقديّ.
+      en: This shop accepts cashless payment.
+    answer: Toko ini menerima pembayaran nontunai.
+    distractors: [saldo, pindai]
+    words: [nontunai]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: ممكن أدفع بالـ QRIS؟
+      ar: هل يمكنني الدفع بـ QRIS؟
+      en: Can I pay with QRIS?
+    answers:
+      - Bisa bayar pakai QRIS?
+      - Boleh saya bayar dengan QRIS?
+      - Apakah saya bisa membayar dengan QRIS?
+      - Bisa saya bayar pakai QRIS?
+    words: [QRIS]
+  - id: e08
+    type: speaking
+    text: Saya sudah memindai kodenya, tetapi transaksinya belum masuk.
+    meaning:
+      ar_eg: أنا عملت سكان للكود، بس العملية لسه ماوصلتش.
+      ar: مسحت الرمز، لكنّ المعاملة لم تصل بعد.
+      en: I've scanned the code, but the transaction hasn't gone through yet.
+    words: [memindai, transaksi]
+  - id: e09
+    type: dictation
+    text: Pembayaran nontunai membuat saldo mudah dipantau.
+    meaning:
+      ar_eg: الدفع من غير كاش بيخلّي الرصيد سهل تتابعه.
+      ar: يُسهّل الدفع غير النقديّ مراقبة الرصيد.
+      en: Cashless payment makes your balance easy to track.
+    words: [nontunai, saldo]
+  - id: e10
+    type: speaking
+    text: Setiap transaksi QRIS tercatat di aplikasi, jadi Mama tidak perlu menghitung uang kembalian.
+    meaning:
+      ar_eg: كل عملية QRIS بتتسجّل في التطبيق، فماما مش محتاجة تعدّ الفكّة.
+      ar: تُسجَّل كلّ معاملة QRIS في التطبيق، فلا تحتاج ماما إلى عدّ الباقي.
+      en: Every QRIS transaction is logged in the app, so Mama doesn't need to count change.
+    words: [transaksi, QRIS]
+dialogue:
+  title: Pinang dan QR
+  lines:
+    - speaker: Mohamed
+      text: Mama Ester, saya tidak bawa uang tunai. Bisa bayar pakai QRIS?
+      ar_eg: يا ماما إستر، أنا مش معايا كاش. ينفع أدفع بالـ QRIS؟
+      ar: يا ماما إستر، ليس معي نقود. هل أدفع بـ QRIS؟
+      en: Mama Ester, I didn't bring cash. Can I pay with QRIS?
+    - speaker: Mama Ester
+      text: Bisa! Kodenya di sana, di samping keranjang pinang. Silakan pindai.
+      ar_eg: ينفع! الكود هناك جنب سلّة البينانج. اعمل سكان.
+      ar: نعم! الرمز هناك بجانب سلّة البينانغ، امسحه.
+      en: Sure! The code's over there, next to the betel-nut basket. Go ahead and scan.
+    - speaker: Mohamed
+      text: Sudah, Mama. Dua puluh ribu. Transaksinya berhasil?
+      ar_eg: خلاص يا ماما. عشرين ألف. العملية نجحت؟
+      ar: تمّ يا ماما، عشرون ألفًا. هل نجحت المعاملة؟
+      en: Done, Mama. Twenty thousand. Did the transaction go through?
+    - speaker: Mama Ester
+      text: Masuk. Sekarang saya jarang pegang uang tunai. Semua nontunai.
+      ar_eg: وصلت. دلوقتي نادرًا لما بمسك كاش. كله من غير كاش.
+      ar: وصلت. صرت نادرًا ما أمسك النقود، فكلّ شيء غير نقديّ.
+      en: It's in. These days I rarely handle cash. It's all cashless.
+new_words:
+  - word: QRIS
+    pos: noun
+    ar_eg: كود QR الموحّد للدفع
+    ar: رمز QR الموحّد للدفع
+    en: QRIS (national QR payment code)
+  - word: nontunai
+    pos: adjective
+    ar_eg: من غير كاش
+    ar: غير نقديّ
+    en: cashless
+  - word: saldo
+    pos: noun
+    ar_eg: رصيد
+    ar: رصيد
+    en: balance (of an account)
+  - word: transaksi
+    pos: noun
+    ar_eg: عملية دفع / معاملة
+    ar: معاملة
+    en: transaction
+  - word: memindai
+    pos: verb
+    ar_eg: يعمل سكان
+    ar: يمسح ضوئيًّا
+    en: to scan
+review:
+  status: draft
+  verified: false

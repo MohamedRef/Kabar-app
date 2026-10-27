@@ -1,0 +1,185 @@
+schema: kabar.lesson/v1
+id: j5.u06.l08
+language: jv
+title: Sluku-sluku bathok
+can_do:
+  ar_eg: تسمع أغنية أطفال قديمة وتفهم الحكمة اللي في آخرها.
+  ar: أن تستمع إلى أغنية أطفال قديمة وتفهم الحكمة في آخرها.
+  en: Follow an old children's song by ear and catch the advice at its end.
+exercises:
+  - id: e01
+    type: listen
+    text: Sluku-sluku bathok, bathoke ela-elo.
+    options:
+      - Sluku-sluku bathok, bathoke ela-elo.
+      - Sluku-sluku bathok, bathoke ilang.
+      - Sluku-sluku bocah, bocahe ela-elo.
+    answer: 0
+    meaning:
+      ar_eg: سلوكو سلوكو يا قشرة جوز الهند، القشرة بتتهزّ يمين وشمال.
+      ar: سلوكو سلوكو يا قشرة جوز الهند، والقشرة تتمايل يمينًا ويسارًا.
+      en: Sluku-sluku, coconut shell, the shell sways left and right.
+    explain:
+      ar_eg: أغنية بيغنّيها الكبار للأطفال وهم بيلعبوا، وبينسبوها لسونان كاليجاغا. bathok = قشرة جوز الهند، وهنا كناية عن الراس. ela-elo = بيتهزّ يمين وشمال.
+      ar: أغنية يغنّيها الكبار للأطفال في اللعب، ويُنسبونها إلى سونان كاليجاغا. bathok = قشرة جوز الهند، وهي هنا كناية عن الرأس، وela-elo = يتمايل يمينًا ويسارًا.
+      en: Grown-ups sing this to children at play; it's credited to Sunan Kalijaga. bathok = coconut shell, here a picture of the head; ela-elo = swaying left and right.
+    words: [bathok]
+  - id: e02
+    type: listen
+    text: Wong mati ora obah, yen obah medeni bocah.
+    question:
+      ar_eg: لو الميت اتحرّك، يحصل إيه؟
+      ar: إن تحرّك الميت، فماذا يحدث؟
+      en: If the dead moved, what would happen?
+    options: [bocah bungah, medeni bocah, bocah turu]
+    answer: 1
+    meaning:
+      ar_eg: الميت ما بيتحرّكش، ولو اتحرّك يخضّ العيال.
+      ar: الميت لا يتحرك، ولو تحرّك لأفزع الأطفال.
+      en: The dead don't move; if they moved, they'd frighten the children.
+    explain:
+      ar_eg: obah = يتحرّك، medeni = يخوّف. وmati = ميت، زي الإندونيسي.
+      ar: obah = يتحرك، وmedeni = يُفزع، وmati = ميت كالإندونيسية.
+      en: obah = move, medeni = frightening; mati = dead, as in Indonesian.
+    words: [obah, medeni]
+  - id: e03
+    type: listen
+    text: Yen urip goleka dhuwit.
+    question:
+      ar_eg: الأغنية بتنصح الحي يعمل إيه؟
+      ar: بمَ تنصح الأغنيةُ الحيَّ؟
+      en: What does the song tell the living to do?
+    options: [turu wae, dolanan wae, goleka dhuwit]
+    answer: 2
+    meaning:
+      ar_eg: وطول ما إنت عايش، اسعى على رزقك.
+      ar: وما دمت حيًّا، فاسعَ في طلب الرزق.
+      en: While you're alive, go and earn a living.
+    explain:
+      ar_eg: 'urip = عايش (hidup). goleka = أمر من golek (يدوّر): «دوّر على».'
+      ar: 'urip = حيّ (hidup)، وgoleka أمر من golek (يبحث): «ابحث عن».'
+      en: urip = alive (hidup); goleka is the command form of golek (look for).
+    words: [urip]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: bathok
+        ar_eg: قشرة جوز الهند
+        ar: قشرة جوز الهند
+        en: coconut shell
+      - text: obah
+        ar_eg: يتحرّك
+        ar: يتحرك
+        en: move
+      - text: medeni
+        ar_eg: يخوّف
+        ar: مُفزع
+        en: frightening
+      - text: urip
+        ar_eg: عايش
+        ar: حيّ
+        en: alive
+      - text: goleka
+        ar_eg: دوّر على (أمر)
+        ar: ابحث عن (أمر)
+        en: go and look for
+    words: [bathok, obah, medeni, urip]
+  - id: e05
+    type: fill_blank
+    sentence: Wong mati ora ___.
+    meaning:
+      ar_eg: الميت ما بيتحرّكش.
+      ar: الميت لا يتحرك.
+      en: The dead don't move.
+    options: [urip, obah, medeni]
+    answers: [obah]
+    words: [obah]
+  - id: e06
+    type: dictation
+    text: Yen urip goleka dhuwit.
+    meaning:
+      ar_eg: طول ما إنت عايش، اسعى على رزقك.
+      ar: ما دمت حيًّا، فاسعَ في طلب الرزق.
+      en: While you're alive, go and earn a living.
+    words: [urip]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Wong mati ora obah, yen obah medeni bocah.
+    answers_meaning:
+      ar_eg:
+        - الميت ما بيتحرّكش، ولو اتحرّك يخضّ العيال.
+        - الميت مش بيتحرك، ولو اتحرك يخوّف الأطفال.
+        - اللي مات ما بيتحركش، ولو اتحرك هيرعب العيال.
+        - الميت ما بيتحركش، لو اتحرك يخوّف العيال.
+      ar:
+        - الميت لا يتحرك، ولو تحرّك لأفزع الأطفال.
+        - الميت لا يتحرك، وإن تحرك أخاف الأطفال.
+        - الموتى لا يتحركون، ولو تحركوا لأخافوا الأطفال.
+      en:
+        - The dead don't move; if they moved, they'd frighten the children.
+        - A dead person doesn't move; if he moved, he'd scare the children.
+        - The dead don't move, and if they did, they would scare children.
+        - Dead people don't move; if they move, they frighten children.
+        - The dead don't move; if they moved it would scare the kids.
+    words: [obah, medeni]
+  - id: e08
+    type: speaking
+    text: Sluku-sluku bathok, bathoke ela-elo.
+    meaning:
+      ar_eg: سلوكو سلوكو يا قشرة جوز الهند، القشرة بتتهزّ يمين وشمال.
+      ar: سلوكو سلوكو يا قشرة جوز الهند، والقشرة تتمايل يمينًا ويسارًا.
+      en: Sluku-sluku, coconut shell, the shell sways left and right.
+    words: [bathok]
+dialogue:
+  title: Ela-elo
+  lines:
+    - speaker: Mohamed
+      text: Pak, "ela-elo" menika menapa?
+      ar_eg: يا حاج، «ela-elo» يعني إيه؟
+      ar: يا سيدي، ما «ela-elo»؟
+      en: Sir, what does "ela-elo" mean?
+    - speaker: Pak Ahmad
+      text: Sirahe obah ngiwa nengen.
+      ar_eg: الراس بتتهزّ يمين وشمال.
+      ar: الرأس يتمايل يمينًا ويسارًا.
+      en: The head sways left and right.
+    - speaker: Pak Ahmad
+      text: Miturut tafsiran, ela-elo saka "la ilaha illallah".
+      ar_eg: وحسب تفسير ناس، ela-elo جاية من «لا إله إلا الله».
+      ar: وبحسب أحد التفاسير، ela-elo من «لا إله إلا الله».
+      en: One reading says ela-elo comes from "la ilaha illallah".
+    - speaker: Mohamed
+      text: Masya Allah. Lan "yen urip goleka dhuwit"?
+      ar_eg: ما شاء الله. و«yen urip goleka dhuwit»؟
+      ar: ما شاء الله. و«yen urip goleka dhuwit»؟
+      en: Masha'Allah. And "yen urip goleka dhuwit"?
+    - speaker: Pak Ahmad
+      text: Tegese, yen isih urip, kudu nyambut gawe.
+      ar_eg: معناها، طول ما إنت عايش، لازم تشتغل.
+      ar: 'معناها: ما دمت حيًّا، فعليك أن تعمل.'
+      en: It means while you're alive, you have to work.
+new_words:
+  - word: bathok
+    pos: noun
+    ar_eg: قشرة جوز الهند
+    ar: قشرة جوز الهند
+    en: coconut shell = tempurung
+  - word: obah
+    pos: verb
+    ar_eg: يتحرّك
+    ar: يتحرك
+    en: move = bergerak
+  - word: medeni
+    pos: adjective
+    ar_eg: يخوّف
+    ar: مُفزع
+    en: frightening = menakutkan
+  - word: urip
+    pos: adjective
+    ar_eg: عايش / حياة
+    ar: حيّ / حياة
+    en: alive, life = hidup
+review:
+  status: draft
+  verified: false

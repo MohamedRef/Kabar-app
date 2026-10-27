@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: bipa7.u02.l05
+language: id
+title: Hutan bakau
+can_do:
+  ar_eg: تشرح غابات المانجروف بتحمي الشط إزاي، وتقول إزاي بنزرعها.
+  ar: أن تشرح كيف تحمي غابات المانغروف الساحل، وكيف تُزرع.
+  en: Explain how mangrove forests protect the coast, and how they are planted.
+slides:
+  - title: Akar yang menahan laut
+    body:
+      ar_eg: |
+        الـ bakau (المانجروف) شجر بيعيش في المية المالحة على الـ pesisir (الساحل).
+        - جدوره بتمسك الطين، فبتقلّل الـ abrasi (تآكل الشط من الموج).
+        - بين جدوره بيتربّى سمك صغير وجمبري وكابوريا.
+        - بيخزّن كربون أكتر من غابات كتير على البر.
+        إندونيسيا عندها أكبر مساحة مانجروف في العالم: أكتر من ٣ مليون هكتار.
+        الناس بتزرعه إزاي؟ بياخدوا bibit (شتلة) وبيـ menanam (يزرع) في الطين وقت الجزر.
+      ar: |
+        الـ bakau (المانغروف) شجر يعيش في الماء المالح على الـ pesisir (الساحل).
+        - تمسك جذوره الطين، فتحدّ من الـ abrasi (تآكل الشاطئ بفعل الموج).
+        - وبين جذوره تنشأ صغار الأسماك والروبيان والسرطانات.
+        - ويخزّن من الكربون أكثر ممّا تخزّنه غابات كثيرة على اليابسة.
+        ولإندونيسيا أكبر مساحة من المانغروف في العالم، تزيد على ثلاثة ملايين هكتار.
+        وكيف يُزرع؟ يؤخذ bibit (شتلة) ثم يُـ menanam (يُغرس) في الطين وقت الجَزر.
+      en: |
+        Bakau (mangroves) are trees that live in salt water along the pesisir (coast).
+        - Their roots hold the mud, which reduces abrasi (coastal erosion by waves).
+        - Young fish, shrimp and crabs grow up among the roots.
+        - They store more carbon than many forests on land.
+        Indonesia has the largest mangrove area in the world: over 3 million hectares.
+        How are they planted? People take a bibit (seedling) and menanam (plant) it in the mud at low tide.
+    examples:
+      - text: Tanpa hutan bakau, abrasi bisa menelan rumah di pesisir.
+        ar_eg: من غير غابات المانجروف، التآكل ممكن يبلع البيوت اللي على الشط.
+        ar: من دون غابات المانغروف قد يبتلع التآكل البيوت على الساحل.
+        en: Without mangrove forests, erosion can swallow homes on the coast.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: bakau
+        ar_eg: مانجروف
+        ar: مانغروف
+        en: mangrove
+      - text: abrasi
+        ar_eg: تآكل الشط
+        ar: تآكل الساحل
+        en: coastal erosion
+      - text: pesisir
+        ar_eg: الساحل
+        ar: الساحل
+        en: coast
+      - text: bibit
+        ar_eg: شتلة
+        ar: شتلة
+        en: seedling
+      - text: menanam
+        ar_eg: يزرع
+        ar: يغرس
+        en: to plant
+    words: [bakau, abrasi, pesisir, bibit, menanam]
+  - id: e02
+    type: listen
+    text: Akar bakau menahan lumpur, sehingga abrasi berkurang.
+    question:
+      ar_eg: جدور المانجروف بتعمل إيه؟
+      ar: ماذا تفعل جذور المانغروف؟
+      en: What do mangrove roots do?
+    options:
+      - بتمسك الطين فالتآكل يقلّ.
+      - بتشرب المية الحلوة كلها.
+      - بتخلّي الموج أعلى.
+    answer: 0
+    words: [bakau, abrasi]
+  - id: e03
+    type: fill_blank
+    sentence: Ombak besar membuat ___ di pantai desa itu semakin parah.
+    meaning:
+      ar_eg: الموج العالي خلّى تآكل الشط في القرية دي يزيد.
+      ar: جعل الموج العالي تآكل الشاطئ في تلك القرية يشتدّ.
+      en: Big waves made the erosion on that village's beach worse.
+    options: [abrasi, bibit, pesona]
+    answers: [abrasi]
+    words: [abrasi]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أحسن وقت تزرع فيه شتلة مانجروف إمتى؟
+      ar: متى يُفضَّل غرس شتلة المانغروف؟
+      en: When is the best time to plant a mangrove seedling?
+    options:
+      - وقت المدّ العالي.
+      - وقت عاصفة.
+      - وقت الجزر، لما الطين يبان.
+    answer: 2
+    words: [menanam, bibit]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الطلبة زرعوا ألف شتلة على الساحل.
+      ar: غرس الطلّاب ألف شتلة على الساحل.
+      en: The students planted a thousand seedlings on the coast.
+    answer: Para siswa menanam seribu bibit di pesisir.
+    distractors: [bakau, abrasi]
+    words: [menanam, bibit, pesisir]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي دولة عندها أكبر مساحة مانجروف في العالم؟
+      ar: أيّ دولة لديها أكبر مساحة من المانغروف في العالم؟
+      en: Which country has the largest mangrove area in the world?
+    options:
+      - مصر.
+      - إندونيسيا.
+      - اليابان.
+    answer: 1
+    words: [bakau]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: السمك الصغير بيعيش بين جدور المانجروف.
+      ar: تعيش الأسماك الصغيرة بين جذور المانغروف.
+      en: Small fish live among the mangrove roots.
+    answers:
+      - Ikan kecil hidup di antara akar bakau.
+      - Ikan-ikan kecil hidup di antara akar bakau.
+      - Ikan kecil tinggal di antara akar bakau.
+      - Ikan-ikan kecil tinggal di antara akar pohon bakau.
+    words: [bakau]
+  - id: e08
+    type: speaking
+    text: Warga pesisir menanam bakau untuk melindungi kampung mereka.
+    meaning:
+      ar_eg: أهل الساحل بيزرعوا مانجروف علشان يحموا قريتهم.
+      ar: يغرس أهل الساحل المانغروف ليحموا قريتهم.
+      en: Coastal residents plant mangroves to protect their village.
+    words: [pesisir, menanam, bakau]
+  - id: e09
+    type: dictation
+    text: Bibit bakau ditanam di lumpur saat air laut surut.
+    meaning:
+      ar_eg: شتلة المانجروف بتتزرع في الطين وقت الجزر.
+      ar: تُغرس شتلة المانغروف في الطين وقت الجزر.
+      en: Mangrove seedlings are planted in the mud at low tide.
+    words: [bibit, bakau]
+  - id: e10
+    type: fill_blank
+    sentence: Kota Sorong berada di ___ barat Pulau Papua.
+    meaning:
+      ar_eg: مدينة سورونج على الساحل الغربي لجزيرة بابوا.
+      ar: تقع مدينة سورونغ على الساحل الغربيّ لجزيرة بابوا.
+      en: Sorong lies on the western coast of the island of Papua.
+    options: [pesisir, abrasi, bibit]
+    answers: [pesisir]
+    words: [pesisir, abrasi]
+dialogue:
+  title: Sepatu penuh lumpur
+  lines:
+    - speaker: Pak Yance
+      text: Mohamed, ambil bibit itu. Kita menanam di sini sebelum air pasang.
+      ar_eg: يا محمد، خد الشتلة دي. هنزرع هنا قبل ما المية تعلى.
+      ar: يا محمد، خذ تلك الشتلة. سنغرس هنا قبل أن يرتفع الماء.
+      en: Mohamed, grab that seedling. We'll plant here before the tide comes in.
+    - speaker: Mohamed
+      text: Kakiku tenggelam di lumpur, Pak! Kenapa harus di tempat seperti ini?
+      ar_eg: رجلي غرزت في الطين يا أستاذ! ليه لازم في مكان زي ده؟
+      ar: غاصت قدمي في الطين يا أستاذ! لماذا في مكان كهذا؟
+      en: My feet are sinking in the mud, sir! Why does it have to be a place like this?
+    - speaker: Pak Yance
+      text: Bakau suka lumpur. Lima tahun lagi, akarnya akan menahan abrasi di pesisir ini.
+      ar_eg: المانجروف بيحب الطين. بعد خمس سنين، جدوره هتوقّف تآكل الشط ده.
+      ar: يحبّ المانغروف الطين، وبعد خمس سنوات ستصدّ جذوره التآكل عن هذا الساحل.
+      en: Mangroves love mud. In five years, their roots will hold back erosion on this coast.
+    - speaker: Mohamed
+      text: Kalau begitu, saya menanam sepuluh lagi!
+      ar_eg: لو كده، هزرع عشرة كمان!
+      ar: إذن سأغرس عشرًا أخرى!
+      en: In that case, I'm planting ten more!
+new_words:
+  - word: bakau
+    pos: noun
+    ar_eg: مانجروف
+    ar: مانغروف
+    en: mangrove
+  - word: abrasi
+    pos: noun
+    ar_eg: تآكل الشط
+    ar: تآكل الساحل
+    en: coastal erosion
+  - word: pesisir
+    pos: noun
+    ar_eg: الساحل
+    ar: الساحل
+    en: coast, coastal area
+  - word: bibit
+    pos: noun
+    ar_eg: شتلة
+    ar: شتلة
+    en: seedling
+  - word: menanam
+    pos: verb
+    ar_eg: يزرع
+    ar: يغرس، يزرع
+    en: to plant
+review:
+  status: draft
+  verified: false

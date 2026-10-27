@@ -52,10 +52,54 @@ impl AiOutput for RoleplayTurn {
         Ok(())
     }
 
+    /// Each correction quotes the learner's newest line, and the reply's
+    /// register fits the persona: the Indonesian personas never answer in a
+    /// Javanese speech level, and the Javanese ones answer in one once the
+    /// learner is on the Javanese journey (`j*`).
+    fn check(&self, input: &Value) -> Result<(), String> {
+        use Register::*;
+        let learner = input_str(input, "learner").map(fold).unwrap_or_default();
+        for (i, c) in self.corrections.iter().enumerate() {
+            if !learner.contains(&fold(&c.text)) {
+                return Err(format!("corrections[{i}].text must be copied from the learner's line"));
+            }
+        }
+        let javanese_reply = matches!(self.register, Ngoko | Madya | Krama | KramaInggil);
+        let persona = input_str(input, "persona").unwrap_or_default();
+        let level = input_str(input, "level").unwrap_or_default();
+        if matches!(persona, "mbak_gadis" | "mas_ardi" | "mbak-gadis" | "mas-ardi") && javanese_reply {
+            return Err(format!("{persona} speaks Indonesian; register must be casual or standard"));
+        }
+        if matches!(persona, "mas_dimas" | "bu_siti" | "mas-dimas" | "bu-siti")
+            && level.starts_with('j')
+            && !javanese_reply
+        {
+            return Err(format!(
+                "{persona} speaks Javanese at {level}; register must be ngoko, madya, krama or krama_inggil"
+            ));
+        }
+        Ok(())
+    }
+
     fn input_needs_review(input: &Value) -> bool {
-        matches!(input_str(input, "persona"), Some("mas_dimas" | "bu_siti"))
+        matches!(input_str(input, "persona"), Some("mas_dimas" | "bu_siti" | "mas-dimas" | "bu-siti"))
             || input_str(input, "level").is_some_and(|l| l.starts_with('j'))
     }
+}
+
+/// Lowercase with runs of whitespace and punctuation as one space, so a
+/// quote matches whatever spacing or capitals the model copied it with.
+fn fold(s: &str) -> String {
+    let mut out = String::with_capacity(s.len());
+    for word in s.split(|c: char| c.is_whitespace() || (c.is_ascii_punctuation() && c != '-' && c != '\'')) {
+        if !word.is_empty() {
+            if !out.is_empty() {
+                out.push(' ');
+            }
+            out.extend(word.chars().flat_map(char::to_lowercase));
+        }
+    }
+    out
 }
 
 /// What is written on the canvas, exactly; empty for a blank or scribble.

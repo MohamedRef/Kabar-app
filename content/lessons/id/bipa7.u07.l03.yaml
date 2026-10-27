@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: bipa7.u07.l03
+language: id
+title: Pemilu
+can_do:
+  ar_eg: تقرا عن الانتخابات في إندونيسيا وتفهم الناس بتصوّت إزاي.
+  ar: أن تقرأ عن الانتخابات في إندونيسيا وتفهم طريقة التصويت.
+  en: Read about Indonesian elections and how people vote.
+slides:
+  - title: Pesta demokrasi
+    body:
+      ar_eg: |
+        الـ pemilu (الانتخابات العامة) في إندونيسيا بيسمّوها «pesta demokrasi» (عيد الديمقراطية).
+        - pemilih (الناخب) لازم يكون عنده 17 سنة على الأقل أو متجوّز، وده بيدّيله hak pilih (حق التصويت).
+        - في اللجنة بياخد surat suara (ورقة التصويت) كبيرة.
+        - بدل ما يعلّم بقلم، بـ mencoblos (يخرّم) الصورة أو الاسم بمسمار.
+        - بعدها بيغطّس صباعه في حبر، علشان مايصوّتش مرتين.
+        في انتخابات 2024، كان فيه أكتر من 200 مليون ناخب، وانتخبوا الرئيس والبرلمان في نفس اليوم.
+      ar: |
+        تُسمّى الـ pemilu (الانتخابات العامة) في إندونيسيا «pesta demokrasi» (عرس الديمقراطية).
+        - يجب أن يكون الـ pemilih (الناخب) في السابعة عشرة على الأقلّ أو متزوّجًا، فيحقّ له hak pilih (حقّ الاقتراع).
+        - يتسلّم في مركز الاقتراع surat suara (ورقة اقتراع) كبيرة.
+        - وبدل التأشير بالقلم، يقوم بـ mencoblos (ثقب) الصورة أو الاسم بمسمار.
+        - ثمّ يغمس إصبعه في الحبر كي لا يصوّت مرّتين.
+        وفي انتخابات 2024 كان هناك أكثر من 200 مليون ناخب، واختاروا الرئيس والبرلمان في يوم واحد.
+      en: |
+        Indonesians call pemilu (the general election) a "pesta demokrasi" (festival of democracy).
+        - A pemilih (voter) must be at least 17 or married, which gives them hak pilih (the right to vote).
+        - At the polling station they get a large surat suara (ballot paper).
+        - Instead of ticking with a pen, they mencoblos (punch) the photo or name with a nail.
+        - Then they dip a finger in ink so they can't vote twice.
+        The 2024 election had more than 200 million voters, choosing the president and parliament on the same day.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pemilu
+        ar_eg: الانتخابات
+        ar: الانتخابات العامة
+        en: general election
+      - text: pemilih
+        ar_eg: ناخب
+        ar: ناخب
+        en: voter
+      - text: hak pilih
+        ar_eg: حق التصويت
+        ar: حقّ الاقتراع
+        en: right to vote
+      - text: mencoblos
+        ar_eg: يخرّم (ورقة التصويت)
+        ar: يثقب (ورقة الاقتراع)
+        en: to punch (a ballot)
+      - text: surat suara
+        ar_eg: ورقة التصويت
+        ar: ورقة الاقتراع
+        en: ballot paper
+    words: [pemilu, pemilih, hak pilih, mencoblos, surat suara]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الناخب الإندونيسي بيعلّم على ورقة التصويت إزاي؟
+      ar: كيف يؤشّر الناخب الإندونيسي على ورقة الاقتراع؟
+      en: How does an Indonesian voter mark the ballot?
+    options:
+      - بيكتب الاسم بالقلم.
+      - بيخرّم الصورة بمسمار.
+      - بيدوس على زرار في الموبايل.
+    answer: 1
+    words: [mencoblos, surat suara]
+  - id: e03
+    type: fill_blank
+    sentence: Setiap warga yang berumur 17 tahun punya ___.
+    meaning:
+      ar_eg: كل مواطن عنده 17 سنة ليه حق التصويت.
+      ar: لكلّ مواطن بلغ السابعة عشرة حقّ الاقتراع.
+      en: Every citizen aged 17 has the right to vote.
+    options: [hak pilih, surat suara, pemilu]
+    answers: [hak pilih]
+    words: [hak pilih]
+  - id: e04
+    type: listen
+    text: Pada Pemilu 2024, jumlah pemilih lebih dari dua ratus juta orang.
+    question:
+      ar_eg: كان فيه كام ناخب في انتخابات 2024؟
+      ar: كم كان عدد الناخبين في انتخابات 2024؟
+      en: How many voters were there in the 2024 election?
+    options:
+      - أقل من مليون.
+      - عشرين مليون.
+      - أكتر من 200 مليون.
+    answer: 2
+    words: [pemilu, pemilih]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الناخب خرّم ورقة التصويت.
+      ar: ثقب الناخب ورقة الاقتراع.
+      en: The voter punched the ballot.
+    answer: Pemilih itu mencoblos surat suara.
+    distractors: [pemilu, hak]
+    words: [pemilih, mencoblos, surat suara]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ليه الناخبين بيغطّسوا صباعهم في الحبر؟
+      ar: لماذا يغمس الناخبون أصابعهم في الحبر؟
+      en: Why do voters dip a finger in ink?
+    options:
+      - علشان مايصوّتوش مرتين.
+      - علشان يتصوّروا.
+      - علشان يكتبوا اسمهم.
+    answer: 0
+    words: [pemilih]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الانتخابات هي عيد الديمقراطية.
+      ar: الانتخابات عرس الديمقراطية.
+      en: The election is a festival of democracy.
+    answers:
+      - Pemilu adalah pesta demokrasi.
+      - Pemilu merupakan pesta demokrasi.
+      - Pemilu itu pesta demokrasi.
+    words: [pemilu]
+  - id: e08
+    type: speaking
+    text: Gunakan hak pilih Anda pada hari pemilu.
+    meaning:
+      ar_eg: استعمل حقك في التصويت يوم الانتخابات.
+      ar: استعمل حقّك في الاقتراع يوم الانتخابات.
+      en: Use your right to vote on election day.
+    words: [hak pilih, pemilu]
+  - id: e09
+    type: dictation
+    text: Surat suara itu sangat besar dan berisi banyak nama.
+    meaning:
+      ar_eg: ورقة التصويت دي كبيرة قوي وفيها أسامي كتير.
+      ar: ورقة الاقتراع تلك كبيرة جدًّا وفيها أسماء كثيرة.
+      en: That ballot is very big and full of names.
+    words: [surat suara]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Setelah mencoblos, pemilih mencelupkan jarinya ke dalam tinta.
+    answers_meaning:
+      ar_eg:
+        - بعد ما الناخب يخرّم الورقة، بيغطّس صباعه في الحبر.
+        - الناخب بيحطّ صباعه في الحبر بعد ما يصوّت.
+      ar:
+        - بعد الثقب يغمس الناخب إصبعه في الحبر.
+        - يغمس الناخب إصبعه في الحبر بعد أن يصوّت.
+      en:
+        - After punching the ballot, the voter dips a finger in ink.
+        - Voters dip their finger in ink once they've voted.
+    words: [mencoblos, pemilih]
+dialogue:
+  title: Hari pemungutan suara
+  lines:
+    - speaker: Bu Debora
+      text: Kita liputan di TPS dekat pasar. Pemilihnya sudah antre sejak pagi.
+      ar_eg: هنغطّي من لجنة جنب السوق. الناخبين واقفين في طابور من الصبح.
+      ar: سنغطّي من مركز اقتراع قرب السوق، والناخبون يصطفّون منذ الصباح.
+      en: We're covering the polling station near the market. Voters have queued since morning.
+    - speaker: Mohamed
+      text: Mama itu baru keluar. Jarinya ungu. Boleh saya wawancara?
+      ar_eg: الست دي لسّه خارجة، وصباعها بنفسجي. ممكن أعمل معاها مقابلة؟
+      ar: تلك السيّدة خرجت للتوّ وإصبعها بنفسجي. أيمكنني محاورتها؟
+      en: That lady's just come out, her finger's purple. May I interview her?
+    - speaker: Bu Debora
+      text: Boleh, tapi jangan tanya pilihannya. Itu rahasia.
+      ar_eg: ماشي، بس ماتسألهاش اختارت مين. ده سرّ.
+      ar: نعم، لكن لا تسألها عن اختيارها، فهو سرّ.
+      en: Yes, but don't ask who she chose. That's secret.
+    - speaker: Mohamed
+      text: Siap. Saya tanya saja kenapa hak pilih itu penting baginya.
+      ar_eg: تمام. هسألها بس ليه حقّ التصويت مهمّ بالنسبالها.
+      ar: حسنًا، سأسألها فقط لماذا يهمّها حقّ الاقتراع.
+      en: Got it. I'll just ask why the right to vote matters to her.
+new_words:
+  - word: pemilu
+    pos: noun
+    ar_eg: الانتخابات
+    ar: الانتخابات العامة
+    en: general election
+  - word: pemilih
+    pos: noun
+    ar_eg: ناخب
+    ar: ناخب
+    en: voter
+  - word: hak pilih
+    pos: noun
+    arabic: حقّ
+    ar_eg: حق التصويت
+    ar: حقّ الاقتراع
+    en: right to vote
+  - word: mencoblos
+    pos: verb
+    ar_eg: يخرّم (ورقة التصويت)
+    ar: يثقب (ورقة الاقتراع)
+    en: to punch (a ballot)
+  - word: surat suara
+    pos: noun
+    ar_eg: ورقة التصويت
+    ar: ورقة الاقتراع
+    en: ballot paper
+review:
+  status: draft
+  verified: false

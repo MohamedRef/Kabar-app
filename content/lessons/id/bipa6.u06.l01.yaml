@@ -1,0 +1,210 @@
+schema: kabar.lesson/v1
+id: bipa6.u06.l01
+language: id
+title: Ironi
+can_do:
+  ar_eg: تكتشف التريقة والكلام اللي معناه عكس ظاهره.
+  ar: أن تكتشف التهكّم والكلام الذي يقصد عكس ظاهره.
+  en: Spot irony and words that mean the opposite of what they say.
+slides:
+  - title: Pujian yang bukan pujian
+    grammar: id.irony
+    body:
+      ar_eg: |
+        الـ ironi = تقول عكس اللي تقصده، وغالبًا بابتسامة. العلامة: مدح كبير في موقف وحش.
+        - Rajin sekali kamu, baru datang jam sebelas. = ما شاء الله على النشاط، جاي الساعة حداشر!
+        - Jalannya mulus sekali, ya. (عن طريق كله حفر) = الطريق ناعم قوي!
+        الـ sindiran (التلقيح بالكلام) بتبقى هادية، والـ sarkasme جارح وصريح:
+        - Otakmu ditaruh di mana? = مخك سايبه فين؟
+        وفي الكتابة بيحطّوا الكلمة بين علامتين: jalan "mulus" itu.
+      ar: |
+        الـ ironi أن تقول ضدّ ما تقصد، وغالبًا مع ابتسامة. وعلامتها مدح كبير في موقف سيّئ.
+        - Rajin sekali kamu, baru datang jam sebelas. = ما أنشطك! لم تحضر إلّا في الحادية عشرة.
+        - Jalannya mulus sekali, ya. (عن طريق مليء بالحفر) = ما أنعم هذا الطريق!
+        والـ sindiran (التعريض) هادئة، أمّا الـ sarkasme فجارح صريح:
+        - Otakmu ditaruh di mana? = أين تركت عقلك؟
+        وفي الكتابة توضع الكلمة بين علامتي تنصيص: jalan "mulus" itu.
+      en: |
+        ironi = saying the opposite of what you mean, often with a smile. The signal: big praise in a bad situation.
+        - Rajin sekali kamu, baru datang jam sebelas. = So hard-working, turning up at eleven!
+        - Jalannya mulus sekali, ya. (about a road full of potholes) = Lovely smooth road!
+        A sindiran (jab, dig) is quiet; sarkasme is open and cutting:
+        - Otakmu ditaruh di mana? = Where did you leave your brain?
+        In writing, the word goes in scare quotes: jalan "mulus" itu.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ironi
+        ar_eg: تريقة / سخرية خفيفة
+        ar: تهكّم
+        en: irony
+      - text: mengejek
+        ar_eg: يتريق على
+        ar: يسخر من
+        en: to mock, to tease
+      - text: sindiran
+        ar_eg: تلقيح / غمزة بالكلام
+        ar: تعريض
+        en: a dig, a jibe
+      - text: sarkasme
+        ar_eg: تريقة جارحة
+        ar: تهكّم لاذع
+        en: sarcasm
+      - text: mulus
+        ar_eg: ناعم / من غير عيوب
+        ar: أملس
+        en: smooth, flawless
+    words: [ironi, mengejek, sindiran, sarkasme, mulus]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: توغار قال لصاحبه المتأخر «Rajin sekali kamu». قصده إيه؟
+      ar: قال توغار لصديقه المتأخّر «Rajin sekali kamu». ماذا يقصد؟
+      en: Togar tells his late friend "Rajin sekali kamu". What does he mean?
+    options:
+      - بيمدحه بجد.
+      - بيسأله الساعة كام.
+      - بيتريق على تأخيره.
+    answer: 2
+    words: [ironi]
+  - id: e03
+    type: fill_blank
+    sentence: Wah, jalannya ___ sekali, lubangnya cuma seratus.
+    meaning:
+      ar_eg: يا سلام، الطريق ناعم قوي، فيه مية حفرة بس.
+      ar: يا للطريق الأملس! ليس فيه إلّا مئة حفرة.
+      en: Wow, what a smooth road, only a hundred potholes.
+    options: [mulus, sarkasme, sindiran]
+    answers: [mulus]
+    words: [mulus]
+  - id: e04
+    type: listen
+    text: Dia tidak marah, dia cuma mengejek sedikit.
+    question:
+      ar_eg: هو عمل إيه؟
+      ar: ماذا فعل؟
+      en: What did he do?
+    options:
+      - اتخانق بصوت عالي.
+      - اتريق شوية بهزار.
+      - مشي وساب المكان.
+    answer: 1
+    words: [mengejek]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: ده مش مدح، ده تلقيح.
+      ar: ليس هذا مدحًا، بل تعريض.
+      en: That's not praise, it's a dig.
+    answer: Itu bukan pujian, itu sindiran.
+    distractors: [mulus, sarkasme]
+    words: [sindiran]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة sarkasme، يعني أقسى نوع؟
+      ar: أيّ جملة sarkasme، أي أقسى الأنواع؟
+      en: Which line is sarkasme, the harshest kind?
+    options:
+      - Otakmu ditaruh di mana?
+      - Rajin sekali kamu.
+      - Terima kasih, lho.
+    answer: 0
+    words: [sarkasme]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Sarkasme bisa menyakiti perasaan orang.
+    answers_meaning:
+      ar_eg:
+        - التريقة الجارحة ممكن تجرح مشاعر الناس.
+        - السخرية الجارحة ممكن تزعّل الناس.
+      ar:
+        - قد يجرح التهكّم اللاذع مشاعر الناس.
+        - التهكّم اللاذع قد يؤذي مشاعر الآخرين.
+      en:
+        - Sarcasm can hurt people's feelings.
+        - Sarcasm can wound people.
+    words: [sarkasme]
+  - id: e08
+    type: speaking
+    text: Dia mengejek saya dengan ironi, bukan dengan marah.
+    meaning:
+      ar_eg: هو اتريق عليّ بالسخرية، مش بالزعيق.
+      ar: سخر منّي بالتهكّم لا بالغضب.
+      en: He teased me with irony, not with anger.
+    words: [mengejek, ironi]
+  - id: e09
+    type: dictation
+    text: Sindiran itu halus, tetapi semua orang paham.
+    meaning:
+      ar_eg: التلقيح ده كان هادي، بس كل الناس فهمت.
+      ar: كان التعريض لطيفًا، لكنّ الجميع فهموه.
+      en: The dig was subtle, but everyone got it.
+    words: [sindiran]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الطريق مش ناعم، دي كانت تريقة.
+      ar: الطريق ليس أملس، كان ذلك تهكّمًا.
+      en: The road isn't smooth; that was irony.
+    answers:
+      - Jalannya tidak mulus, itu ironi.
+      - Jalan itu tidak mulus, itu ironi.
+      - Jalannya tidak mulus; itu tadi ironi.
+      - Jalannya tidak mulus, itu cuma ironi.
+    words: [mulus, ironi]
+dialogue:
+  title: Kapal ke Samosir
+  lines:
+    - speaker: Bang Togar
+      text: Wah, rajin sekali, Lae. Kapalnya sudah berangkat dua kali.
+      ar_eg: يا سلام على النشاط يا لاي. المركب طلع مرتين خلاص.
+      ar: ما أنشطك يا لاي! أبحر المركب مرّتين.
+      en: Wow, so punctual, Lae. The ferry's already left twice.
+    - speaker: Mohamed
+      text: Maaf, Bang! Itu ironi, kan? Saya terlambat satu jam.
+      ar_eg: آسف يا بانج! دي تريقة، صح؟ أنا متأخر ساعة.
+      ar: آسف! هذا تهكّم، أليس كذلك؟ تأخّرت ساعة.
+      en: Sorry, Bang! That's irony, right? I'm an hour late.
+    - speaker: Bang Togar
+      text: Itu sindiran kecil saja. Kalau sarkasme, saya tanya jam tanganmu dari museum mana.
+      ar_eg: دي غمزة صغيرة بس. لو تريقة جارحة، كنت سألتك ساعتك جاية من أنهي متحف.
+      ar: إنّه تعريض صغير فقط. ولو كان تهكّمًا لاذعًا لسألتك من أيّ متحف ساعتك.
+      en: That was just a small dig. Sarcasm would be asking which museum your watch came from.
+    - speaker: Mohamed
+      text: Ha! Di Mesir kami juga suka mengejek begitu.
+      ar_eg: ها! إحنا كمان في مصر بنحب نتريق كده.
+      ar: ها! نحن أيضًا في مصر نحبّ السخرية هكذا.
+      en: Ha! In Egypt we love teasing like that too.
+new_words:
+  - word: ironi
+    pos: noun
+    ar_eg: تريقة / سخرية خفيفة
+    ar: تهكّم
+    en: irony
+  - word: mengejek
+    pos: verb
+    ar_eg: يتريق على
+    ar: يسخر من
+    en: to mock, to tease
+  - word: sindiran
+    pos: noun
+    ar_eg: تلقيح / غمزة بالكلام
+    ar: تعريض
+    en: a dig, a jibe
+  - word: sarkasme
+    pos: noun
+    ar_eg: تريقة جارحة
+    ar: تهكّم لاذع
+    en: sarcasm
+  - word: mulus
+    pos: adjective
+    ar_eg: ناعم / من غير عيوب
+    ar: أملس
+    en: smooth, flawless
+review:
+  status: draft
+  verified: false

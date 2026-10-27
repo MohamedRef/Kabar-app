@@ -1,0 +1,206 @@
+schema: kabar.lesson/v1
+id: bipa7.u03.l01
+language: id
+title: Majas lanjutan
+can_do:
+  ar_eg: تتعرّف على صور بلاغية متقدمة وتستعملها عشان تأثّر في السامع.
+  ar: أن تتعرّف صورًا بلاغية متقدّمة وتستعملها للتأثير.
+  en: Recognise advanced figures of speech and use them for effect.
+slides:
+  - title: Lima majas lanjutan
+    grammar: id.figurative.majas
+    body:
+      ar_eg: |
+        في BIPA 6 عرفت الـ personifikasi والـ eufemisme والـ litotes والـ paradoks. دول خمسة مع بعض، منهم تلاتة جداد:
+        - litotes (التواضع): Silakan mampir ke gubuk kami. (بيتنا = «عشّتنا»)
+        - metonimia (اسم مكان الشيء): Ia suka membaca Pramoedya. (يعني كتبه)
+        - sinekdoke (الجزء بدل الكل): Batang hidungnya tidak kelihatan. (هو نفسه مش باين)
+        - paradoks (تناقض ظاهري): Ia merasa sepi di tengah keramaian.
+        - antitesis (طباق): Tua muda, kaya miskin, semua datang ke pesta.
+        «majas» نفسها من العربي «مجاز».
+      ar: |
+        عرفت في BIPA 6 التشخيص والتلطيف والـ litotes والـ paradoks، وهذه خمسة معًا، منها ثلاثة جديدة:
+        - litotes (التهوين تواضعًا): Silakan mampir ke gubuk kami. (البيت = «الكوخ»)
+        - metonimia (الكناية بالاسم): Ia suka membaca Pramoedya. (أي كتبه)
+        - sinekdoke (المجاز المرسل، الجزء للكلّ): Batang hidungnya tidak kelihatan. (لم يظهر هو)
+        - paradoks (المفارقة): Ia merasa sepi di tengah keramaian.
+        - antitesis (الطباق): Tua muda, kaya miskin, semua datang ke pesta.
+        وكلمة «majas» نفسها من العربية «مجاز».
+      en: |
+        In BIPA 6 you met personifikasi, eufemisme, litotes and paradoks. Here are five together, three of them new:
+        - litotes (modest understatement): Silakan mampir ke gubuk kami. (our house = "our hut")
+        - metonimia (metonymy): Ia suka membaca Pramoedya. (meaning his books)
+        - sinekdoke (synecdoche, part for whole): Batang hidungnya tidak kelihatan. (he himself didn't show up)
+        - paradoks (paradox): Ia merasa sepi di tengah keramaian.
+        - antitesis (antithesis): Tua muda, kaya miskin, semua datang ke pesta.
+        The word "majas" itself comes from Arabic «مجاز».
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: litotes
+        ar_eg: تواضع في الوصف
+        ar: التهوين تواضعًا
+        en: litotes, modest understatement
+      - text: metonimia
+        ar_eg: كناية بالاسم
+        ar: الكناية
+        en: metonymy
+      - text: sinekdoke
+        ar_eg: الجزء بدل الكل
+        ar: المجاز المرسل
+        en: synecdoche
+      - text: paradoks
+        ar_eg: تناقض ظاهري
+        ar: مفارقة
+        en: paradox
+      - text: antitesis
+        ar_eg: طباق
+        ar: طباق
+        en: antithesis
+    words: [litotes, metonimia, sinekdoke, paradoks, antitesis]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Mampirlah ke gubuk kami» وبيتهم فيلا كبيرة. ده أنهي مجاز؟
+      ar: «Mampirlah ke gubuk kami» وبيتهم فيلا كبيرة. أيّ مجاز هذا؟
+      en: '"Mampirlah ke gubuk kami", and their house is a big villa. Which figure is this?'
+    options: [paradoks, litotes, antitesis]
+    answer: 1
+    words: [litotes, paradoks, antitesis]
+  - id: e03
+    type: fill_blank
+    sentence: '"Merasa sepi di tengah keramaian" adalah contoh ___.'
+    meaning:
+      ar_eg: «يحسّ بالوحدة وسط الزحمة» مثال على التناقض الظاهري.
+      ar: «الشعور بالوحدة وسط الزحام» مثال على المفارقة.
+      en: '"Feeling lonely in the middle of a crowd" is an example of paradox.'
+    options: [paradoks, metonimia, sinekdoke]
+    answers: [paradoks]
+    words: [paradoks]
+  - id: e04
+    type: listen
+    text: Sudah tiga hari batang hidungnya tidak kelihatan.
+    question:
+      ar_eg: الجملة دي معناها إيه؟
+      ar: ماذا تعني هذه الجملة؟
+      en: What does this sentence mean?
+    options:
+      - الشخص ده مابانش خالص من تلات أيام.
+      - مناخيره وجعاه من تلات أيام.
+      - مابيشوفش كويس.
+    answer: 0
+    words: [sinekdoke]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الكبير والصغير والغني والفقير، كلهم جم.
+      ar: الكبير والصغير والغنيّ والفقير، جاؤوا جميعًا.
+      en: Old and young, rich and poor, they all came.
+    answer: Tua muda, kaya miskin, semua datang.
+    distractors: [paradoks, litotes]
+    words: [antitesis]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Ia suka membaca Pramoedya». ده مثال على إيه؟
+      ar: «Ia suka membaca Pramoedya». مثالٌ على ماذا؟
+      en: '"Ia suka membaca Pramoedya". What is this an example of?'
+    options: [litotes, sinekdoke, metonimia]
+    answer: 2
+    words: [metonimia, sinekdoke, litotes]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الطباق بيجمع بين حاجتين عكس بعض.
+      ar: يجمع الطباق بين ضدّين.
+      en: Antithesis puts two opposites together.
+    answers:
+      - Antitesis menggabungkan dua hal yang berlawanan.
+      - Antitesis memadukan dua hal yang berlawanan.
+      - Antitesis menyandingkan dua hal yang berlawanan.
+    words: [antitesis]
+  - id: e08
+    type: speaking
+    text: Litotes membuat pembicara terdengar rendah hati.
+    meaning:
+      ar_eg: التواضع في الوصف بيخلّي المتكلم يبان متواضع.
+      ar: يجعل التهوينُ المتكلّمَ يبدو متواضعًا.
+      en: Litotes makes the speaker sound humble.
+    words: [litotes]
+  - id: e09
+    type: dictation
+    text: Metonimia memakai nama penulis untuk menyebut bukunya.
+    meaning:
+      ar_eg: الكناية بتستعمل اسم الكاتب عشان تقصد كتابه.
+      ar: تستعمل الكناية اسم الكاتب للدلالة على كتابه.
+      en: Metonymy uses an author's name to refer to their book.
+    words: [metonimia]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Paradoks dan sinekdoke sering muncul dalam cerita rakyat.
+    answers_meaning:
+      ar_eg:
+        - التناقض الظاهري والجزء بدل الكل بيظهروا كتير في الحواديت الشعبية.
+        - المفارقة والمجاز المرسل كتير في الحكايات الشعبية.
+      ar:
+        - كثيرًا ما تظهر المفارقة والمجاز المرسل في الحكايات الشعبية.
+        - تكثر المفارقة والمجاز المرسل في القصص الشعبي.
+      en:
+        - Paradox and synecdoche often appear in folk tales.
+        - Folk stories often use paradox and synecdoche.
+    words: [paradoks, sinekdoke]
+dialogue:
+  title: Gubuk Mama Ruth
+  lines:
+    - speaker: Mama Ruth
+      text: Selamat datang di Arborek. Silakan masuk ke gubuk kami yang kecil ini.
+      ar_eg: أهلًا بيك في أربوريك. اتفضل ادخل عشّتنا الصغيرة دي.
+      ar: مرحبًا بك في أربوريك. تفضّل إلى كوخنا الصغير هذا.
+      en: Welcome to Arborek. Please come into our little hut.
+    - speaker: Mohamed
+      text: Gubuk? Rumah Mama besar dan indah sekali.
+      ar_eg: عشّة؟ بيتك كبير وحلو قوي يا ماما.
+      ar: كوخ؟ بيتك كبير وجميل جدًّا يا ماما.
+      en: A hut? Your house is big and very beautiful, Mama.
+    - speaker: Mama Ruth
+      text: Itu namanya litotes, Nak. Orang Indonesia suka merendah.
+      ar_eg: ده اسمه litotes يا ابني. الإندونيسيين بيحبوا يتواضعوا.
+      ar: هذا يسمّى litotes يا بنيّ، فالإندونيسيون يحبّون التواضع.
+      en: That's called litotes, son. Indonesians like to play things down.
+    - speaker: Mohamed
+      text: Seperti orang Mesir yang bilang "Ini tidak ada apa-apanya" untuk hidangan yang mewah!
+      ar_eg: زي المصريين لما يقولوا «دي حاجة بسيطة» على عزومة كبيرة!
+      ar: كالمصريين حين يقولون «ليست شيئًا» عن مائدة فاخرة!
+      en: Like Egyptians saying "It's nothing" about a lavish meal!
+new_words:
+  - word: litotes
+    pos: noun
+    ar_eg: تواضع في الوصف
+    ar: التهوين تواضعًا
+    en: litotes, modest understatement
+  - word: metonimia
+    pos: noun
+    ar_eg: كناية بالاسم
+    ar: الكناية
+    en: metonymy
+  - word: sinekdoke
+    pos: noun
+    ar_eg: الجزء بدل الكل
+    ar: المجاز المرسل
+    en: synecdoche
+  - word: paradoks
+    pos: noun
+    ar_eg: تناقض ظاهري
+    ar: مفارقة
+    en: paradox
+  - word: antitesis
+    pos: noun
+    ar_eg: طباق
+    ar: طباق
+    en: antithesis
+review:
+  status: draft
+  verified: false

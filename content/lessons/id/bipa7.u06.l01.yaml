@@ -1,0 +1,204 @@
+schema: kabar.lesson/v1
+id: bipa7.u06.l01
+language: id
+title: Kohesi leksikal
+can_do:
+  ar_eg: تربط النص بالكلمات نفسها، بالمرادف والضد والتكرار والكلمات اللي بتيجي مع بعض.
+  ar: أن تربط النصّ بالمفردات، بالترادف والتضادّ والتكرار والتلازم اللفظي.
+  en: Tie a text together through vocabulary, with synonyms, antonyms, repetition and collocations.
+slides:
+  - title: Kata yang saling menjawab
+    grammar: id.cohesion.lexical
+    body:
+      ar_eg: |
+        في الوحدة اللي فاتت ربطنا بالضماير. هنا بنربط بالكلمات نفسها:
+        - sinonim (مرادف): hoaks → berita bohong → kabar palsu
+        - antonim (ضد): fakta ↔ hoaks، manfaat ↔ dampak buruk
+        - repetisi (تكرار مقصود): Literasi digital penting. Literasi digital melindungi kita.
+        - hiponim (كلمة أخصّ): media sosial ⊃ TikTok, Instagram, WhatsApp → ketiga platform itu
+        - kolokasi (كلمات بتيجي مع بعض): menyebarkan hoaks، mengunggah foto، menjadi viral
+      ar: |
+        ربطنا في الوحدة السابقة بالضمائر، وهنا نربط بالمفردات:
+        - sinonim (المرادف): hoaks → berita bohong → kabar palsu
+        - antonim (الضدّ): fakta ↔ hoaks، manfaat ↔ dampak buruk
+        - repetisi (التكرار المقصود): Literasi digital penting. Literasi digital melindungi kita.
+        - hiponim (اللفظ الأخصّ): media sosial ⊃ TikTok, Instagram, WhatsApp → ketiga platform itu
+        - kolokasi (التلازم اللفظي): menyebarkan hoaks، mengunggah foto، menjadi viral
+      en: |
+        Last unit we linked with pronouns. Here we link with the words themselves:
+        - sinonim (synonym): hoaks → berita bohong → kabar palsu
+        - antonim (antonym): fakta ↔ hoaks, manfaat ↔ dampak buruk
+        - repetisi (deliberate repetition): Literasi digital penting. Literasi digital melindungi kita.
+        - hiponim (hyponym): media sosial ⊃ TikTok, Instagram, WhatsApp → ketiga platform itu
+        - kolokasi (collocation): menyebarkan hoaks, mengunggah foto, menjadi viral
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: sinonim
+        ar_eg: مرادف
+        ar: مرادف
+        en: synonym
+      - text: antonim
+        ar_eg: ضد
+        ar: ضدّ
+        en: antonym
+      - text: repetisi
+        ar_eg: تكرار
+        ar: تكرار
+        en: repetition
+      - text: kolokasi
+        ar_eg: كلمات بتيجي مع بعض
+        ar: تلازم لفظي
+        en: collocation
+      - text: hiponim
+        ar_eg: كلمة أخصّ
+        ar: لفظ أخصّ
+        en: hyponym
+    words: [sinonim, antonim, repetisi, kolokasi, hiponim]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة مرادف لـ «hoaks»؟
+      ar: أيّ كلمة مرادفة لـ «hoaks»؟
+      en: Which word is a synonym of "hoaks"?
+    options: [fakta, berita bohong, sumber]
+    answer: 1
+    words: [sinonim]
+  - id: e03
+    type: fill_blank
+    sentence: '"Fakta" adalah ___ dari "hoaks".'
+    meaning:
+      ar_eg: «الحقيقة» عكس «الخبر الكدب».
+      ar: «الحقيقة» ضدّ «الخبر الكاذب».
+      en: '"Fact" is the antonym of "hoax".'
+    options: [antonim, sinonim, kolokasi]
+    answers: [antonim]
+    words: [antonim]
+  - id: e04
+    type: listen
+    text: Kata "menyebarkan" sering berkolokasi dengan kata "hoaks".
+    question:
+      ar_eg: الجملة بتقول إيه عن «menyebarkan»؟
+      ar: ماذا تقول الجملة عن «menyebarkan»؟
+      en: What does the sentence say about "menyebarkan"?
+    options:
+      - إنها كتير بتيجي مع كلمة «hoaks».
+      - إنها عكس «hoaks».
+      - إنها كلمة قديمة.
+    answer: 0
+    words: [kolokasi]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: التكرار بيأكّد على الفكرة الأساسية.
+      ar: يؤكّد التكرار الفكرة الأساسية.
+      en: Repetition reinforces the main idea.
+    answer: Repetisi menegaskan gagasan utama.
+    distractors: [antonim, hiponim]
+    words: [repetisi]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «TikTok» بالنسبة لـ «media sosial» تبقى إيه؟
+      ar: ما علاقة «TikTok» بـ «media sosial»؟
+      en: What is "TikTok" in relation to "media sosial"?
+    options: [antonim, sinonim, hiponim]
+    answer: 2
+    words: [hiponim]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: استعمل مرادف بدل ما تكرّر نفس الكلمة.
+      ar: استعمل مرادفًا بدل تكرار الكلمة نفسها.
+      en: Use a synonym instead of repeating the same word.
+    answers:
+      - Pakai sinonim daripada mengulang kata yang sama.
+      - Gunakan sinonim daripada mengulang kata yang sama.
+      - Gunakan sinonim alih-alih mengulang kata yang sama.
+      - Pakailah sinonim daripada mengulang kata yang sama.
+    words: [sinonim]
+  - id: e08
+    type: speaking
+    text: Kolokasi seperti "mengunggah foto" terdengar alami bagi penutur asli.
+    meaning:
+      ar_eg: الكلمات اللي بتيجي مع بعض زي «mengunggah foto» بتبان طبيعية لأهل اللغة.
+      ar: يبدو التلازم اللفظي مثل «mengunggah foto» طبيعيًّا لأهل اللغة.
+      en: Collocations like "mengunggah foto" sound natural to native speakers.
+    words: [kolokasi]
+  - id: e09
+    type: dictation
+    text: Repetisi dan antonim membuat pidato lebih kuat.
+    meaning:
+      ar_eg: التكرار والطباق بيخلّوا الخطبة أقوى.
+      ar: يجعل التكرار والتضادّ الخطبة أقوى.
+      en: Repetition and antonyms make a speech stronger.
+    words: [repetisi, antonim]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Hiponim dan sinonim membantu kita menghindari pengulangan.
+    answers_meaning:
+      ar_eg:
+        - الكلمات الأخصّ والمرادفات بتساعدنا نبعد عن التكرار.
+        - المرادف والكلمة الأخصّ بيخلّونا مانكرّرش.
+      ar:
+        - يساعدنا اللفظ الأخصّ والمرادف على تجنّب التكرار.
+        - يعيننا الترادف والألفاظ الأخصّ على اجتناب التكرار.
+      en:
+        - Hyponyms and synonyms help us avoid repetition.
+        - Synonyms and hyponyms help us keep from repeating ourselves.
+    words: [hiponim, sinonim]
+dialogue:
+  title: Kelas literasi di Misool
+  lines:
+    - speaker: Kak Selvi
+      text: Tulisanmu memakai kata "hoaks" tujuh kali. Coba ganti dengan sinonim.
+      ar_eg: كتابتك فيها كلمة «hoaks» سبع مرات. جرّب تبدّلها بمرادف.
+      ar: استعملت كلمة «hoaks» سبع مرّات، فجرّب مرادفًا.
+      en: Your writing uses "hoaks" seven times. Try a synonym.
+    - speaker: Mohamed
+      text: Berita bohong, kabar palsu… Tapi di judul saya ulang "hoaks" dengan sengaja.
+      ar_eg: خبر كدب، خبر مزيّف… بس في العنوان بكرّر «hoaks» قاصد.
+      ar: خبر كاذب، نبأ زائف… لكنّني أكرّر «hoaks» في العنوان عمدًا.
+      en: Berita bohong, kabar palsu… But in the headline I repeat "hoaks" on purpose.
+    - speaker: Kak Selvi
+      text: Itu boleh. Repetisi yang disengaja justru menegaskan pesanmu.
+      ar_eg: ده ينفع. التكرار المقصود بالعكس بيأكّد رسالتك.
+      ar: هذا جائز، فالتكرار المقصود يؤكّد رسالتك.
+      en: That's fine. Deliberate repetition actually drives your message home.
+    - speaker: Mohamed
+      text: Dan antonimnya, "fakta", saya taruh di kalimat terakhir.
+      ar_eg: وعكسها، «fakta»، حاططها في آخر جملة.
+      ar: وضدّها «fakta» وضعته في الجملة الأخيرة.
+      en: And its antonym, "fakta", I've put in the last sentence.
+new_words:
+  - word: sinonim
+    pos: noun
+    ar_eg: مرادف
+    ar: مرادف
+    en: synonym
+  - word: antonim
+    pos: noun
+    ar_eg: ضد
+    ar: ضدّ
+    en: antonym
+  - word: repetisi
+    pos: noun
+    ar_eg: تكرار
+    ar: تكرار
+    en: repetition
+  - word: kolokasi
+    pos: noun
+    ar_eg: كلمات بتيجي مع بعض
+    ar: تلازم لفظي
+    en: collocation
+  - word: hiponim
+    pos: noun
+    ar_eg: كلمة أخصّ
+    ar: لفظ أخصّ
+    en: hyponym
+review:
+  status: draft
+  verified: false

@@ -3,6 +3,7 @@
 mod account;
 mod ai;
 mod audio;
+mod chat;
 mod cloud;
 mod coach;
 mod cost;
@@ -12,13 +13,16 @@ mod icons;
 mod journey;
 mod lesson;
 mod listen;
+mod map_art;
 mod packs;
 mod penlab;
 mod platform;
 mod play;
+mod pron;
 mod reader;
 mod review;
 mod screens;
+mod souvenir_art;
 mod stats;
 mod store;
 mod studio;
@@ -67,6 +71,8 @@ pub enum Screen {
     LevelCheck,
     /// Sinetron and Kabar Radio.
     Listen,
+    /// Persona chats (spec §15).
+    Chat,
 }
 
 impl Screen {
@@ -89,13 +95,19 @@ impl Screen {
             Self::Stats => Msg::NavReview,
             Self::LevelCheck => Msg::NavCoach,
             Self::Listen => Msg::NavListen,
+            Self::Chat => Msg::NavChat,
         }
     }
 
     /// Hidden from the phone's bottom bar, which keeps five items within
-    /// thumb reach. Kak Nur, the journal, Watch & listen and Settings are
+    /// thumb reach. Kak Nur, the journal, Watch & listen, Chat and Settings are
     /// linked from Today there (the journal from Kak Nur too); Studio and Pen
     /// Lab from Settings.
+    /// Pen tools: shown on a tablet only (`Ui::tablet`).
+    pub fn pen_only(self) -> bool {
+        matches!(self, Self::Studio | Self::PenLab)
+    }
+
     fn secondary(self) -> bool {
         matches!(
             self,
@@ -108,6 +120,7 @@ impl Screen {
                 | Self::Teach
                 | Self::Cost
                 | Self::Listen
+                | Self::Chat
         )
     }
 }
@@ -117,6 +130,10 @@ impl Screen {
 pub struct Ui {
     pub settings: Signal<Settings>,
     pub width: Signal<WidthClass>,
+    /// An Android tablet (smallest screen side ≥ 600 dp): the only place
+    /// the pen tools (Studio, Pen Lab) apply while phone and Mac pen work
+    /// is deferred (SPEC §23). Fixed per device, unlike `width`.
+    pub tablet: Signal<bool>,
     pub screen: Signal<Screen>,
     /// The lesson the player shows (curriculum lesson id).
     pub lesson: Signal<Option<String>>,
@@ -245,11 +262,13 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let open_screen = use_hook(|| match std::env::var("KABAR_OPEN_SCREEN").as_deref() {
         Ok("stats") => Some(Screen::Stats),
         Ok("level_check") => Some(Screen::LevelCheck),
+        Ok("journey") => Some(Screen::Journey),
         _ => None,
     });
     let ui = use_context_provider(|| Ui {
         settings: Signal::new(initial),
         width: Signal::new(WidthClass::Expanded),
+        tablet: Signal::new(false),
         screen: Signal::new(match (&open_lesson, open_screen) {
             (Some(_), _) => Screen::Lesson,
             (None, Some(s)) => s,
@@ -267,7 +286,8 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let audio_dir = path.parent().map(|d| d.join("audio")).unwrap_or_else(|| "audio".into());
     use_context_provider(|| audio::AudioCache::new(audio_dir, link.clone()));
     let coach = use_context_provider(|| Coach::load(&db));
-    use_width_tracking(ui.width);
+    use_hook(reader::warm_up);
+    use_width_tracking(ui.width, ui.tablet);
     use_cloud(&db, path, ui, link);
     coach::use_clock(coach, db.clone());
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
@@ -279,6 +299,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let theme = settings.theme.as_str();
     let width = ui.width.read().as_str();
     let theme_css = use_hook(theme::stylesheet);
+    let pron_font = use_hook(pron::font_css);
     // The theme draws the kawung background in its own colour; a batik from
     // the Warung overrides it on this device.
     let batik = use_memo(move || {
@@ -295,6 +316,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         document::Title { "Kabar" }
         style { {MAIN_CSS} }
         style { {theme_css} }
+        style { {pron_font} }
         div {
             class: "app",
             lang: lang.tag(),
@@ -399,20 +421,24 @@ fn use_cloud(db: &Db, path: std::path::PathBuf, mut ui: Ui, link: cloud::link::C
 
 /// Mirrors the window width into `width`, so layout follows the window,
 /// not the device (split screen, DeX and Mac windows all just work).
-fn use_width_tracking(mut width: Signal<WidthClass>) {
+fn use_width_tracking(mut width: Signal<WidthClass>, mut tablet: Signal<bool>) {
     use_future(move || async move {
         let mut eval = document::eval(
             r#"
-            const send = () => dioxus.send(window.innerWidth);
+            const send = () => dioxus.send([window.innerWidth, Math.min(screen.width, screen.height)]);
             window.addEventListener("resize", send);
             send();
             await new Promise(() => {});
             "#,
         );
-        while let Ok(w) = eval.recv::<f64>().await {
+        while let Ok((w, smallest)) = eval.recv::<(f64, f64)>().await {
             let class = WidthClass::from_width(w);
             if *width.peek() != class {
                 width.set(class);
+            }
+            let is_tablet = cfg!(target_os = "android") && smallest >= 600.0;
+            if *tablet.peek() != is_tablet {
+                tablet.set(is_tablet);
             }
         }
     });
@@ -445,6 +471,14 @@ fn use_share_inbox(ui: Ui, inbox: reader::Inbox) {
 fn Shell() -> Element {
     let ui = use_context::<Ui>();
     let current = *ui.screen.read();
+    // A new screen starts at its top, not at the last screen's scroll
+    // position. Sent during render, so it lands before a screen's own
+    // scroll (the Journey Map centres the current lesson in an effect).
+    let last = use_hook(|| std::rc::Rc::new(std::cell::Cell::new(current)));
+    if last.replace(current) != current {
+        document::eval(r#"window.scrollTo({ top: 0, left: 0, behavior: "instant" });"#);
+    }
+    let tablet = *ui.tablet.read();
     let items = [
         Screen::Today,
         Screen::Journey,
@@ -452,6 +486,7 @@ fn Shell() -> Element {
         Screen::Review,
         Screen::Play,
         Screen::Listen,
+        Screen::Chat,
         Screen::Coach,
         Screen::Journal,
         Screen::Studio,
@@ -465,7 +500,7 @@ fn Shell() -> Element {
         div { class: "shell",
             nav { class: "nav", aria_label: "Kabar",
                 div { class: "brand latin", "Kabar" }
-                for item in items {
+                for item in items.into_iter().filter(|s| tablet || !s.pen_only()) {
                     button {
                         key: "{item:?}",
                         class: if item.secondary() { "nav-item secondary" } else { "nav-item" },
@@ -495,6 +530,7 @@ fn Shell() -> Element {
                     Screen::Teach => rsx! { teach::TeachScreen {} },
                     Screen::Cost => rsx! { cost::CostScreen {} },
                     Screen::Listen => rsx! { listen::ListenScreen {} },
+                    Screen::Chat => rsx! { chat::ChatScreen {} },
                     Screen::Lesson => rsx! { lesson::LessonScreen {} },
                     Screen::Stats => rsx! { stats::StatsScreen {} },
                     Screen::LevelCheck => rsx! { stats::check::LevelCheckScreen {} },

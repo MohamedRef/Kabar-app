@@ -206,6 +206,10 @@ h3 { font-size: 1rem; margin-block: 1rem 0.4rem; }
 
 .coach-grid { display: grid; gap: 0 1rem; align-items: start; }
 .app:not([data-width="compact"]) .coach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* Today: one centred column unless there are side cards to fill the second. */
+.app:not([data-width="compact"]) .today-grid { grid-template-columns: minmax(0, 1fr); max-inline-size: 46rem; margin-inline: auto; }
+.app:not([data-width="compact"]) .today-grid:has(> .today-side .card) { grid-template-columns: repeat(2, minmax(0, 1fr)); max-inline-size: none; }
+.app:not([data-width="compact"]) .today-grid:has(> .today-side .card) .today-side > :first-child { margin-block-start: 0 !important; }
 
 .nur { display: flex; gap: 0.75rem; align-items: flex-start; margin-block: 0.75rem; }
 .nur-avatar {
@@ -327,6 +331,10 @@ button.choice {
   min-block-size: 44px;
 }
 .text-input { inline-size: 100%; }
+/* 24-hour picker: two selects inside one bordered field. */
+span.time-input { display: inline-flex; align-items: center; gap: 0.15rem; padding-block: 0; padding-inline: 0.35rem; }
+span.time-input select { border: 0; background: transparent; min-block-size: 40px; padding-inline: 0.35rem; }
+.target-month { display: inline-flex; gap: 0.4rem; vertical-align: middle; }
 .times { list-style: none; padding: 0; margin: 0 0 0.5rem; display: grid; gap: 0.4rem; }
 
 /* achievements */
@@ -575,7 +583,7 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 .doc.split .seg { display: grid; gap: 0.25rem 1.25rem; padding-block: 0.4rem; border-block-end: 1px solid var(--line); }
 .explain { display: flex; flex-wrap: wrap; gap: 0.35rem; font-size: 0.95rem; line-height: 1.6; font-family: inherit; }
 .app:lang(ar) .explain { font-family: var(--font-arabic); }
-.chip { display: inline-flex; gap: 0.25rem; padding-block: 0.1rem; padding-inline: 0.5rem; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; }
+.chip { display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; gap: 0.25rem; padding-block: 0.1rem; padding-inline: 0.5rem; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; }
 .chip.from-arabic { border-color: var(--gold); text-decoration: none; }
 .chip .latin { font-weight: 600; }
 .app:not([data-width="compact"]) .doc.split .seg { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
@@ -771,3 +779,47 @@ button.journal-delete { color: var(--dawn); border-color: var(--dawn); }
 @media (prefers-reduced-motion: no-preference) {
   .cost-fill { transition: inline-size 500ms ease; }
 }
+
+/* Arabic-script pronunciation (crates/app/src/pron.rs). Its own font so the
+   extra letters (ڠ ێ ۆ پ چ) and full vowel marks render everywhere. */
+.pron {
+  display: block;
+  font-family: "Kabar Naskh", var(--font-arabic);
+  font-size: 1.3em;
+  font-weight: 400;
+  line-height: 2.1;
+  color: var(--indigo);
+  direction: rtl;
+  unicode-bidi: isolate;
+  text-align: start;
+}
+.pron.inline { display: inline; font-size: 1.15em; margin-inline: 0.3em; opacity: 0.85; }
+.pron-reveal {
+  font-family: var(--font-arabic);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--muted);
+  text-decoration: underline dotted;
+  cursor: pointer;
+  inline-size: fit-content;
+}
+.pron-details summary { cursor: pointer; color: var(--muted); padding-block: 0.4rem; }
+.pron-guide table { border-collapse: collapse; inline-size: 100%; font-size: 0.92rem; }
+.pron-guide td { padding: 0.35rem 0.4rem; border-block-end: 1px solid var(--line); vertical-align: top; text-align: start; }
+.pron-guide .pron-sign { font-family: "Kabar Naskh", var(--font-arabic); font-size: 1.3rem; white-space: nowrap; color: var(--indigo); }
+.pron-guide .pron-example { white-space: nowrap; }
+.pron-guide .pron-example .pron { display: inline; }
+
+/* Souvenir art (souvenir_art.rs): a card's picture panel, cropped out of the
+   1024x1536 card (panel at x 120–910, y 110–980), or the level's landmark. */
+.souvenir-art { overflow: hidden; border-radius: 12px; margin-block-end: 0.75rem; }
+/* The crop is a picture, not text: pin it LTR so the offsets mean the same in RTL. */
+.souvenir-art.card-art { position: relative; aspect-ratio: 790 / 870; direction: ltr; }
+.souvenir-art.card-art img {
+  position: absolute; inset-inline-start: -15.19%; inset-block-start: -12.64%; inline-size: 129.62%; max-inline-size: none;
+}
+.souvenir-art.place-art {
+  display: grid; place-items: center; padding-block: 0.75rem; background: var(--map-paper, none) repeat center / 256px, var(--surface-2);
+}
+.souvenir-art.place-art img { inline-size: min(9rem, 60%); aspect-ratio: 1; border-radius: 50%; }
+.lp-souvenir .souvenir-art { max-inline-size: 22rem; margin-inline: auto; }

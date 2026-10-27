@@ -375,24 +375,31 @@ Refine in PLAN.md. Every synced table carries `account_id`, `device_id`, a hybri
 
 The core is lessons, reviews, the Reader, the coach and content: finish that
 first. Everything below is a later phase, after M13, and **not** a dropped
-feature. All stylus work is paused, on the phone and on the tablet.
+feature. Pen **writing** is paused on every device. Pen **pointing** stays in
+the core (the learner's call, 2026-10-26): in the Reader, hover to peek, tap to
+open, a lasso loop for a phrase and a stroke to highlight, with palm
+rejection. The same Reader code serves the S Pen on the phone.
 
 | Deferred | Was in | Comes back when |
 |---|---|---|
-| The S Pen on the phone (§5): Quick Capture, hover popovers, lasso lookup, handwritten answers on the S24 Ultra | M5, M6 | the core app is finished |
-| Pen in the Reader on the tablet: hover peek, lasso lookup, stroke-to-highlight, dragging words with the pen (§4, §11) | M5 | the same |
+| The S Pen on the phone beyond the Reader (§5): Quick Capture, handwritten answers on the S24 Ultra | M5, M6 | the core app is finished |
+| Dragging words with the pen in the Reader (§4, §11) | M5 | the same |
 | Handwritten review answers and **Card Wall** pen flicks (§4, §16) | M6 | the same |
 | **Kabar Notebook** ink and handwriting search, **Gambar!**, **Listening Companion** scribbles, **write-mode lessons**, extending mind maps with the pen (§4) | M9 | the same |
 | **Aksara Jawa calligraphy** (§4) | M13 | the same |
 | The pen AI tasks' golden captures (`read_handwriting`, `guess_sketch`, `check_strokes`) | M4 | the pen features above come back |
+| Android home-screen widgets (§6): Pelita, due count, word of the day | M13 | the core app is finished |
 | Mac Quick Lookup, the global clipboard hotkey (§11) | M13 | desk study on the Mac asks for it |
 | Mac-only polish beyond running and bundling the app | M13 | the same |
 
 What stays in the core: M5 is the Reader, Screenshot Decoder, Share-to-Kabar
-and tap popovers on every device; M6 is FSRS review with classic cards and
+and tap popovers on every device, plus pen hover, tap, lasso and highlight
+where there is a pen; M6 is FSRS review with classic cards and
 1-minute bursts, typed answers, and stats; M9 keeps the AI mind-map generator
-(read and edit by touch) and the Study Desk panes. The pen-ready code that
-exists (Pen Lab, ink, the pen AI prompts and types) stays in the repo, so
+(read and edit by touch) and the Study Desk panes, and Studio shows only the
+mind map while the writing tools are paused. The pen-ready code that
+exists (Pen Lab, ink, the Studio writing tools, the pen AI prompts and
+types) stays in the repo, so
 resuming is a matter of building the screens.
 
 ## 24. Test texts

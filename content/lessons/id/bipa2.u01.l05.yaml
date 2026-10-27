@@ -1,181 +1,201 @@
 schema: kabar.lesson/v1
 id: bipa2.u01.l05
 language: id
-title: Ulangan Unit 1
+title: Mengenal gamelan Bali
 can_do:
-  ar_eg: توصف الآلات الموسيقية وتقارن بينها.
-  ar: أن تصف الآلات الموسيقية وتقارن بينها.
-  en: Describe and compare instruments.
+  ar_eg: تقرا نص قصير عن الجاميلان وتفهم مين أكبر ومين أخف ومعمول من إيه.
+  ar: أن تقرأ نصًا قصيرًا عن الغاميلان وتفهم المقارنات بين آلاته ومادة صنعها.
+  en: Read a short text about gamelan and follow its comparisons.
+slides:
+  - title: Mengenal gamelan Bali
+    body:
+      ar_eg: |
+        ده نص قصير من ورقة مدرسة الموسيقى في أوبود. اقراه بالراحة، وركّز على المقارنات: lebih … daripada و paling.
+        فيه كلمتين جداد للخامات: logam (معدن) و kayu (خشب). «Gendang dari kayu» يعني الطبلة معمولة من خشب.
+      ar: |
+        هذا نص قصير من نشرة مدرسة الموسيقى في أوبود. اقرأه بهدوء، وانتبه إلى المقارنات: lebih … daripada و paling.
+        فيه كلمتان جديدتان للمواد: logam (معدن) و kayu (خشب). «Gendang dari kayu» أي أن الطبل مصنوع من الخشب.
+      en: |
+        A short text from an Ubud music school leaflet. Read it slowly and watch the comparisons: lebih … daripada and paling.
+        Two new material words: logam (metal) and kayu (wood). "Gendang dari kayu" = the drum is made of wood.
+    examples:
+      - text: Gamelan Bali lebih cepat dan lebih keras daripada gamelan Jawa.
+        ar_eg: الجاميلان البالي أسرع وصوته أعلى من الجاميلان الجاوي.
+        ar: الغاميلان البالي أسرع وأعلى صوتًا من الغاميلان الجاوي.
+        en: Balinese gamelan is faster and louder than Javanese gamelan.
+      - text: Banyak alat musik gamelan dari logam, tapi gendang dari kayu.
+        ar_eg: آلات كتير في الجاميلان معمولة من معدن، بس الطبلة من خشب.
+        ar: كثير من آلات الغاميلان مصنوعة من المعدن، لكن الطبل من الخشب.
+        en: Many gamelan instruments are made of metal, but the drum is made of wood.
+      - text: Gong paling besar dan paling berat. Suling dari bambu dan paling ringan.
+        ar_eg: الجونج أكبر وأتقل واحد. الناي من البامبو وهو أخف واحد.
+        ar: الغونغ هو الأكبر والأثقل. الناي من الخيزران وهو الأخف.
+        en: The gong is the biggest and the heaviest. The flute is made of bamboo and is the lightest.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: gendang
-        ar_eg: طبلة
-        ar: طبل
-        en: drum
-      - text: suling
-        ar_eg: ناي
-        ar: ناي
-        en: bamboo flute
-      - text: biola
-        ar_eg: كمنجة
-        ar: كمان
-        en: violin
-      - text: suara
-        ar_eg: صوت
-        ar: صوت
-        en: sound
-      - text: dunia
-        ar_eg: العالم / الدنيا
-        ar: العالم
-        en: world
-    words: [gendang, suling, biola, suara, dunia]
-  - id: e02
-    type: match_pairs
-    pairs:
-      - text: lebih besar
-        ar_eg: أكبر
-        ar: أكبر
-        en: bigger
-      - text: terbesar
-        ar_eg: الأكبر
-        ar: الأكبر
-        en: biggest
-      - text: agak besar
-        ar_eg: كبير شوية
-        ar: كبير قليلًا
-        en: a bit big
-      - text: terlalu besar
-        ar_eg: كبير زيادة
-        ar: كبير أكثر من اللازم
-        en: too big
-    words: [lebih, paling, agak, terlalu]
-  - id: e03
     type: listen
-    text: Mana yang paling ringan?
-    options: ['Mana yang paling ringan?', 'Mana yang lebih ringan?', 'Mana yang paling berat?']
+    text: Banyak alat musik gamelan dari logam.
+    options:
+      - Banyak alat musik gamelan dari logam.
+      - Banyak alat musik gamelan dari kayu.
+      - Semua alat musik gamelan dari logam.
     answer: 0
-    words: [paling, ringan]
-  - id: e04
+    meaning:
+      ar_eg: آلات كتير في الجاميلان معمولة من معدن.
+      ar: كثير من آلات الغاميلان مصنوعة من المعدن.
+      en: Many gamelan instruments are made of metal.
+    words: [logam]
+  - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة معناها «الجونج أعلى صوتًا من الطبلة»؟
-      ar: أيّ جملة تعني «صوت الغونغ أعلى من صوت الطبل»؟
-      en: Which sentence means "The gong is louder than the drum"?
-    options: [Gong lebih keras daripada gendang., Gong lebih keras dengan gendang., Gong paling keras daripada gendang.]
-    answer: 0
-    explain:
-      ar_eg: بين حاجتين lebih … daripada. paling للأكتر في المجموعة كلها.
-      ar: بين شيئين lebih … daripada، وpaling للأكثر في المجموعة كلها.
-      en: Between two things it's lebih … daripada; paling is for the most of a group.
-    words: [lebih, daripada, keras]
-  - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: صاحبك عزف على الجيتار وكان مش بطال. تقوله إيه؟
-      ar: عزف صديقك على القيثارة وكان عزفه لا بأس به. ماذا تقول له؟
-      en: Your friend played the guitar and it was not bad. What do you say?
-    options: [Kurang!, Lumayan!, Terlalu bagus!]
+      ar_eg: حسب النص، أنهي جاميلان أسرع؟
+      ar: بحسب النص، أيّ غاميلان أسرع؟
+      en: According to the text, which gamelan is faster?
+    options: [gamelan Jawa, gamelan Bali]
     answer: 1
-    words: [lumayan]
+    words: [lebih]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: حسب النص، الـ gendang معمول من إيه؟
+      ar: بحسب النص، مِمَّ يُصنع الـ gendang؟
+      en: According to the text, what is the gendang made of?
+    options: [logam, bambu, kayu]
+    answer: 2
+    words: [kayu, gendang]
+  - id: e04
+    type: listen
+    text: Gong paling besar dan paling berat. Suling dari bambu dan paling ringan.
+    question:
+      ar_eg: أنهي آلة أخف واحدة؟
+      ar: أيّ آلة هي الأخف؟
+      en: Which instrument is the lightest?
+    options: [suling, gong, gendang]
+    answer: 0
+    meaning:
+      ar_eg: الجونج أكبر وأتقل واحد. الناي من البامبو وهو أخف واحد.
+      ar: الغونغ هو الأكبر والأثقل. الناي من الخيزران وهو الأخف.
+      en: The gong is the biggest and the heaviest. The flute is made of bamboo and is the lightest.
+    words: [paling, ringan, suling]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: logam
+        ar_eg: معدن
+        ar: معدن
+        en: metal
+      - text: kayu
+        ar_eg: خشب
+        ar: خشب
+        en: wood
+      - text: bambu
+        ar_eg: بامبو، خيزران
+        ar: خيزران
+        en: bamboo
+      - text: berat
+        ar_eg: تقيل
+        ar: ثقيل
+        en: heavy
+      - text: ringan
+        ar_eg: خفيف
+        ar: خفيف
+        en: light (not heavy)
+    words: [logam, kayu, bambu, berat, ringan]
   - id: e06
     type: fill_blank
-    sentence: Kopinya ___ manis. Saya mau gula lagi.
+    sentence: Gendang ini dari ___, bukan dari logam.
     meaning:
-      ar_eg: القهوة سكرها قليل. عايز سكر تاني.
-      ar: القهوة قليلة الحلاوة. أريد مزيدًا من السكر.
-      en: The coffee isn't sweet enough. I want more sugar.
-    options: [lebih, terlalu, kurang]
-    answers: [kurang]
-    words: [kurang]
+      ar_eg: الطبلة دي معمولة من خشب، مش من معدن.
+      ar: هذا الطبل مصنوع من الخشب، لا من المعدن.
+      en: This drum is made of wood, not metal.
+    options: [kayu, bambu, gong]
+    answers: [kayu]
+    explain:
+      ar_eg: النص قال إن الـ gendang من kayu.
+      ar: ذكر النص أن الـ gendang من kayu.
+      en: The text says the gendang is made of kayu (wood).
+    words: [kayu]
   - id: e07
-    type: fill_blank
-    sentence: Ini warung ___ di Ubud. Makanannya enak dan murah!
-    meaning:
-      ar_eg: (اكتب صيغة ter- من baik) ده أحسن مطعم صغير في أوبود. أكله حلو ورخيص!
-      ar: (اكتب صيغة ter- من baik) هذا أفضل مطعم شعبي في أوبود. طعامه لذيذ ورخيص!
-      en: (Write the ter- form of baik.) This is the best food stall in Ubud. The food is tasty and cheap!
-    answers: [terbaik]
-    words: [terbaik]
-  - id: e08
     type: build_sentence
     source:
-      ar_eg: الكمنجة أخف من الجيتار.
-      ar: الكمان أخف من القيثارة.
-      en: The violin is lighter than the guitar.
-    answer: Biola lebih ringan daripada gitar.
+      ar_eg: الجاميلان البالي أسرع من الجاميلان الجاوي.
+      ar: الغاميلان البالي أسرع من الغاميلان الجاوي.
+      en: Balinese gamelan is faster than Javanese gamelan.
+    answer: Gamelan Bali lebih cepat daripada gamelan Jawa.
     distractors: [paling, dengan]
-    words: [biola, lebih, ringan, daripada]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: الجاميلان البالي مشهور في العالم.
-      ar: الغاميلان البالي مشهور في العالم.
-      en: Balinese gamelan is famous around the world.
-    answer: Gamelan Bali terkenal di dunia.
-    distractors: [paling, lebih]
-    words: [terkenal, dunia]
-  - id: e10
+    words: [lebih, daripada]
+  - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: الصوت عالي زيادة.
-      ar: الصوت عالٍ أكثر من اللازم.
-      en: The sound is too loud.
-    answers: [Suaranya terlalu keras., Suaranya terlalu keras, Suara ini terlalu keras., Suaranya terlalu kencang.]
-    words: [suara, terlalu, keras]
-  - id: e11
+      ar_eg: الجونج معمول من معدن وتقيل جدًا.
+      ar: الغونغ مصنوع من المعدن وثقيل جدًا.
+      en: The gong is made of metal and is very heavy.
+    answers:
+      - Gong dari logam dan sangat berat.
+      - Gong dari logam dan sangat berat
+      - Gong dari logam dan berat sekali.
+      - Gong dari logam dan berat sekali
+      - Gong itu dari logam dan sangat berat.
+      - Gong itu dari logam dan berat sekali.
+      - Gongnya dari logam dan sangat berat.
+      - Gongnya dari logam dan berat sekali.
+      - Gong terbuat dari logam dan sangat berat.
+      - Gong terbuat dari logam dan berat sekali.
+      - Gong dari logam dan berat banget.
+    words: [logam, berat]
+  - id: e09
     type: dictation
-    text: Pura ini paling indah di Ubud.
+    text: Suling ini dari bambu dan ringan sekali.
     meaning:
-      ar_eg: المعبد ده أجمل معبد في أوبود.
-      ar: هذا المعبد أجمل معبد في أوبود.
-      en: This temple is the most beautiful in Ubud.
-    words: [paling, indah, pura]
-  - id: e12
-    type: speaking
-    text: Suling ini agak kecil, tapi lebih murah daripada biola.
-    meaning:
-      ar_eg: الناي ده صغير شوية، بس أرخص من الكمنجة.
-      ar: هذا الناي صغير قليلًا، لكنه أرخص من الكمان.
-      en: This flute is a bit small, but cheaper than the violin.
-    words: [agak, lebih, daripada]
+      ar_eg: الناي ده من البامبو وخفيف جدًا.
+      ar: هذا الناي من الخيزران وخفيف جدًا.
+      en: This flute is made of bamboo and is very light.
+    words: [suling, bambu, ringan]
 dialogue:
-  title: Malam gamelan
+  title: Di sekolah musik, Ubud
   lines:
-    - speaker: Ni Luh
-      text: Bagaimana gamelannya, Mohamed?
-      ar_eg: إيه رأيك في الجاميلان يا محمد؟
-      ar: ما رأيك في الغاميلان يا محمد؟
-      en: How was the gamelan, Mohamed?
     - speaker: Mohamed
-      text: Indah sekali! Tapi gongnya agak keras.
-      ar_eg: جميل أوي! بس الجونج صوته عالي شوية.
-      ar: جميل جدًا! لكن الغونغ عالٍ قليلًا.
-      en: Beautiful! But the gong was a bit loud.
+      text: Ni Luh, gendang ini dari logam?
+      ar_eg: يا ني لوه، الطبلة دي من معدن؟
+      ar: يا ني لوه، هل هذا الطبل من المعدن؟
+      en: Ni Luh, is this drum made of metal?
     - speaker: Ni Luh
-      text: Ya, gong paling besar dan paling keras.
-      ar_eg: أيوه، الجونج أكبر واحد وأعلاهم صوتًا.
-      ar: نعم، الغونغ هو الأكبر والأعلى صوتًا.
-      en: Yes, the gong is the biggest and the loudest.
+      text: Bukan, gendang dari kayu. Gong dari logam.
+      ar_eg: لأ، الطبلة من خشب. الجونج هو اللي من معدن.
+      ar: لا، الطبل من الخشب. أما الغونغ فمن المعدن.
+      en: No, the drum is made of wood. The gong is made of metal.
     - speaker: Mohamed
-      text: Gamelan Bali lebih cepat daripada musik Mesir, ya?
-      ar_eg: الجاميلان البالي أسرع من المزيكا المصرية، صح؟
-      ar: الغاميلان البالي أسرع من الموسيقى المصرية، أليس كذلك؟
-      en: Balinese gamelan is faster than Egyptian music, isn't it?
+      text: Wah, gongnya besar sekali! Berat, ya?
+      ar_eg: ياه، الجونج كبير أوي! تقيل، صح؟
+      ar: يا له من غونغ كبير! إنه ثقيل، أليس كذلك؟
+      en: Wow, the gong is so big! It's heavy, isn't it?
     - speaker: Ni Luh
-      text: Mungkin! Tapi musik Mesir juga terkenal di dunia.
-      ar_eg: يمكن! بس المزيكا المصرية كمان مشهورة في العالم.
-      ar: ربما! لكن الموسيقى المصرية مشهورة في العالم أيضًا.
-      en: Maybe! But Egyptian music is famous around the world too.
-souvenir:
-  id: bipa2.u01.souvenir
-  title: Gamelan Bali
-  note:
-    ar_eg: الجاميلان فرقة كاملة من آلات برونز بتتخبط ومعاها جونجات كبيرة. في بالي بيبقى سريع ولامع كأنه بيلمع في ودنك، وفي جاوة هادي وبطيء زي التأمل. لو سمعته في أوبود بالليل هتفهم ليه بالي مشهورة بالفن.
-    ar: الغاميلان فرقة كاملة من آلات برونزية تُقرع ومعها صنوج كبيرة. في بالي يكون سريعًا متلألئًا، وفي جاوة هادئًا بطيئًا كالتأمل. ومن يسمعه ليلًا في أوبود يدرك لماذا اشتهرت بالي بالفن.
-    en: Gamelan is a whole ensemble of bronze metallophones and gongs. In Bali it's fast and shimmering; in Java it's slow and meditative. Hear it on an Ubud evening and you'll see why Bali is famous for its art.
+      text: Ya, gong paling berat. Suling paling ringan.
+      ar_eg: أيوه، الجونج أتقل واحد. والناي أخف واحد.
+      ar: نعم، الغونغ هو الأثقل. والناي هو الأخف.
+      en: Yes, the gong is the heaviest. The flute is the lightest.
+    - speaker: Mohamed
+      text: Gamelan Bali lebih cepat daripada gamelan Jawa, ya?
+      ar_eg: الجاميلان البالي أسرع من الجاوي، صح؟
+      ar: الغاميلان البالي أسرع من الجاوي، أليس كذلك؟
+      en: Balinese gamelan is faster than Javanese gamelan, right?
+    - speaker: Ni Luh
+      text: Betul! Malam ini ada gamelan di pura. Mau menonton?
+      ar_eg: مظبوط! النهارده بالليل فيه جاميلان في المعبد. تيجي تتفرج؟
+      ar: صحيح! الليلة يوجد عزف غاميلان في المعبد. أتريد أن تشاهد؟
+      en: Right! There's gamelan at the temple tonight. Do you want to watch?
+new_words:
+  - word: logam
+    pos: noun
+    ar_eg: معدن
+    ar: معدن
+    en: metal
+  - word: kayu
+    pos: noun
+    ar_eg: خشب
+    ar: خشب
+    en: wood
 review:
   status: draft
   verified: false

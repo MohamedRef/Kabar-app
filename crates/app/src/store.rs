@@ -683,6 +683,25 @@ impl Store {
         Ok(ids)
     }
 
+    /// Ids of lessons the learner approved by passing them with a reasonable
+    /// score on any device (`kabar_core::lesson::approves`). Their "not
+    /// reviewed yet" flag comes off, Javanese included.
+    pub fn approved_lessons(&self) -> Result<BTreeSet<String>> {
+        let mut stmt = self.conn.prepare(
+            "SELECT lesson_id, payload FROM lesson_events WHERE kind = 'completed' AND deleted = 0",
+        )?;
+        let rows: Vec<(String, String)> =
+            stmt.query_map([], |r| Ok((r.get(0)?, r.get(1)?)))?.collect::<rusqlite::Result<_>>()?;
+        Ok(rows
+            .into_iter()
+            .filter(|(_, payload)| {
+                serde_json::from_str::<kabar_protocol::lesson::LessonCompleted>(payload)
+                    .is_ok_and(|done| kabar_core::lesson::approves(&done))
+            })
+            .map(|(id, _)| id)
+            .collect())
+    }
+
     /// Appends a lesson event (`completed`, ...). Append-only: never updated.
     pub fn record_lesson_event(
         &mut self,
@@ -788,6 +807,8 @@ pub use reader::{Highlight, SavedText, TextKind};
 mod ink;
 // Teach Kabar's personal dictionary (spec §26).
 mod taught;
+// Persona chats (M12): conversations and their messages.
+mod chat;
 // The learning journal: reflections and the timeline's extra sources.
 mod journal;
 pub use journal::{LessonDone, TaughtAt};
@@ -1273,6 +1294,32 @@ mod tests {
         }
         let done = store.completed_lessons().unwrap();
         assert_eq!(done.into_iter().collect::<Vec<_>>(), ["bipa1.test", "bipa1.u01.l01"]);
+    }
+
+    #[test]
+    fn passing_a_lesson_approves_it() {
+        use kabar_protocol::lesson::{ExerciseResult, LessonCompleted, Outcome};
+        let mut store = Store::open_in_memory().unwrap();
+        let done = |score, missed: usize| LessonCompleted {
+            score,
+            xp: 0,
+            duration_ms: 0,
+            mistakes: vec![],
+            results: (0..5)
+                .map(|i| ExerciseResult {
+                    id: format!("e{i}"),
+                    first: if i < missed { Outcome::Missed } else { Outcome::Correct },
+                    retry: None,
+                    mistakes: vec![],
+                })
+                .collect(),
+        };
+        store.record_lesson_event("j1.u01.l01", "completed", &done(100, 0)).unwrap();
+        store.record_lesson_event("j1.u01.l02", "completed", &done(40, 3)).unwrap();
+        assert_eq!(store.approved_lessons().unwrap().into_iter().collect::<Vec<_>>(), ["j1.u01.l01"]);
+        // A later, better try approves it too.
+        store.record_lesson_event("j1.u01.l02", "completed", &done(80, 1)).unwrap();
+        assert_eq!(store.approved_lessons().unwrap().len(), 2);
     }
 
     #[test]
