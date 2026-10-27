@@ -1,163 +1,185 @@
 schema: kabar.lesson/v1
 id: j6.u05.l10
 language: jv
-title: Ulangan J6.5
+title: Absen murid
 can_do:
-  ar_eg: تقرا تاريخ واسم وكلمة عربية الأصل.
-  ar: أن تقرأ تاريخًا واسمًا ولفظًا عربي الأصل.
-  en: Read a date, a name and an Arabic loanword.
+  ar_eg: تسمع أسامي عربية وتلاقيها مكتوبة بحروف rekan.
+  ar: أن تسمع أسماء عربية فتجدها مكتوبة بحروف rekan.
+  en: Hear Arabic names and find them written with rekan letters.
+slides:
+  - title: Jeneng Arab
+    body:
+      ar_eg: |
+        في مدرسة قرآن صغيرة جنب Imogiri، المدرّسة بتنده أسامي العيال من كشف مكتوب بالخط الجاوي. اسمع الأول.
+        أسامي كتير جاية من العربي، فبتتكتب بحروف rekan: ꦥ꦳ = ف، ꦗ꦳ = ز، ꦏ꦳ = خ.
+        أسامي الناس العاديين مابتاخدش murda؛ الـ murda للتكريم بس.
+      ar: |
+        في مدرسة قرآن صغيرة قرب Imogiri تنادي المعلّمة أسماء الأطفال من كشف بالخط الجاوي. استمع أولًا.
+        أسماء كثيرة أصلها عربي، فتُكتب بحروف rekan: ꦥ꦳ = ف، ꦗ꦳ = ز، ꦏ꦳ = خ.
+        ولا تأخذ أسماء عامة الناس murda، فالـ murda للتكريم فقط.
+      en: |
+        At a small Qur'an school near Imogiri, the teacher calls the roll from a list in aksara Jawa. Listen first.
+        Many names come from Arabic, so they're written with rekan letters: ꦥ꦳ = f, ꦗ꦳ = z, ꦏ꦳ = kh.
+        Ordinary people's names don't take murda; murda is only for honour.
+    grammar: jv.aksara.murda-rekan
+    examples:
+      - text: ꦥ꦳ꦗꦂ · ꦗ꦳ꦏꦶ (Fajar · Zaki)
+        ar_eg: فجر · زكي
+        ar: فجر · زكي
+        en: Fajar · Zaki
+      - text: ꦗ꦳ꦃꦫ · ꦥ꦳ꦠꦶꦩꦃ (Zahra · Fatimah)
+        ar_eg: زهرة · فاطمة
+        ar: زهرة · فاطمة
+        en: Zahra · Fatimah
+      - text: ꦏ꦳ꦢꦶꦗꦃ (Khadijah)
+        ar_eg: خديجة
+        ar: خديجة
+        en: Khadijah
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: aksara murda
-        ar_eg: حروف للتكريم
-        ar: حروف التعظيم
-        en: honorific capitals
-      - text: aksara rekan
-        ar_eg: حروف الأصوات العربية (تلات نقط)
-        ar: حروف الأصوات العربية (ثلاث نقاط)
-        en: Arabic-sound letters (three dots)
-      - text: angka Jawa
-        ar_eg: الأرقام الجاوية
-        ar: الأرقام الجاوية
-        en: Javanese numerals
-      - text: pada pangkat
-        ar_eg: ꧇ — حوالين الرقم
-        ar: ꧇ — حول العدد
-        en: ꧇ — around a number
-    words: [aksara murda, aksara rekan, angka, pada pangkat]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: "اقرا: ꦓꦸꦱ꧀ꦠꦶ"
-      ar: "اقرأ: ꦓꦸꦱ꧀ꦠꦶ"
-      en: "Read: ꦓꦸꦱ꧀ꦠꦶ"
-    options: [Gusti, Kusti, Gasti]
-    answer: 0
-    words: [aksara murda]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إزاي تكتب zakat؟
-      ar: كيف تكتب zakat؟
-      en: How do you write zakat?
-    options: ["ꦗꦏꦠ꧀", "ꦱꦏꦠ꧀", "ꦗ꦳ꦏꦠ꧀"]
-    answer: 2
-    words: [zakat, aksara rekan]
-  - id: e04
     type: listen
-    text: fajar
+    text: Fajar
     question:
-      ar_eg: سمعت fajar (الفجر). بتتكتب إزاي؟
-      ar: سمعت fajar (الفجر). كيف تُكتب؟
-      en: You heard fajar (dawn). How is it written?
-    options: ["ꦥꦗꦂ", "ꦥ꦳ꦗꦂ", "ꦥꦗꦁ"]
+      ar_eg: المدرّسة ندهت اسم. أنهي واحد في الكشف؟
+      ar: نادت المعلّمة اسمًا. أيّه في الكشف؟
+      en: The teacher called a name. Which one on the list?
+    options: ["ꦥꦗꦂ", "ꦥ꦳ꦗꦂ", "ꦗ꦳ꦃꦫ"]
     answer: 1
     meaning:
-      ar_eg: الفجر
-      ar: الفجر
-      en: dawn
-    words: [fajar]
+      ar_eg: فجر
+      ar: فجر
+      en: Fajar
+    words: [aksara rekan]
+  - id: e02
+    type: listen
+    text: Khadijah
+    question:
+      ar_eg: المدرّسة ندهت اسم. أنهي واحد في الكشف؟
+      ar: نادت المعلّمة اسمًا. أيّه في الكشف؟
+      en: The teacher called a name. Which one on the list?
+    options: ["ꦏꦢꦶꦗꦃ", "ꦥ꦳ꦠꦶꦩꦃ", "ꦏ꦳ꦢꦶꦗꦃ"]
+    answer: 2
+    explain:
+      ar_eg: خ = ꦏ + تلات نقط. من غير النقط تبقى kadijah.
+      ar: خ = ꦏ + ثلاث نقاط، وبدون النقاط تصير kadijah.
+      en: kh = ꦏ + three dots. Without the dots it reads kadijah.
+    meaning:
+      ar_eg: خديجة
+      ar: خديجة
+      en: Khadijah
+    words: [aksara rekan]
+  - id: e03
+    type: listen
+    text: Zaki
+    question:
+      ar_eg: المدرّسة ندهت اسم. أنهي واحد في الكشف؟
+      ar: نادت المعلّمة اسمًا. أيّه في الكشف؟
+      en: The teacher called a name. Which one on the list?
+    options: ["ꦗ꦳ꦏꦶ", "ꦗꦏꦶ", "ꦱꦏꦶ"]
+    answer: 0
+    meaning:
+      ar_eg: زكي
+      ar: زكي
+      en: Zaki
+    words: [aksara rekan]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: ꦥ꦳ꦗꦂ
+        ar_eg: فجر
+        ar: فجر
+        en: Fajar (فجر)
+      - text: ꦗ꦳ꦃꦫ
+        ar_eg: زهرة
+        ar: زهرة
+        en: Zahra (زهرة)
+      - text: ꦏ꦳ꦢꦶꦗꦃ
+        ar_eg: خديجة
+        ar: خديجة
+        en: Khadijah (خديجة)
+      - text: ꦥ꦳ꦠꦶꦩꦃ
+        ar_eg: فاطمة
+        ar: فاطمة
+        en: Fatimah (فاطمة)
+    words: [aksara rekan]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: "اقرا: ꧇꧑꧖꧔꧕꧇"
-      ar: "اقرأ: ꧇꧑꧖꧔꧕꧇"
-      en: "Read: ꧇꧑꧖꧔꧕꧇"
-    options: ["1654", "1645", "1465"]
-    answer: 1
-    words: [angka]
+      ar_eg: "في ꦗ꦳ꦃꦫ، الـ h مكتوبة بإيه؟"
+      ar: "في ꦗ꦳ꦃꦫ، بماذا كُتبت الـ h؟"
+      en: "In ꦗ꦳ꦃꦫ, how is the h written?"
+    options: [wignyan, pasangan ha, layar]
+    answer: 0
+    explain:
+      ar_eg: "h بتقفل المقطع zah، فبتتكتب wignyan، ومفيش pasangan بعدها: ra بتتكتب عادي."
+      ar: الـ h تُغلق المقطع zah فتُكتب wignyan، ولا pasangan بعدها، فتُكتب ra عادية.
+      en: "The h closes the syllable zah, so it's wignyan, and no pasangan follows: ra is written normally."
+    words: [aksara rekan]
   - id: e06
-    type: listen
-    text: rong ewu rong puluh enem
-    question:
-      ar_eg: سمعت أنهي سنة؟
-      ar: أي سنة سمعت؟
-      en: Which year did you hear?
-    options: ["꧇꧒꧐꧐꧖꧇", "꧇꧒꧐꧖꧒꧇", "꧇꧒꧐꧒꧖꧇"]
-    answer: 2
-    meaning:
-      ar_eg: سنة 2026
-      ar: عام 2026
-      en: the year 2026
-    words: [angka]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ليه الأسامي دي من غير murda؟
+      ar: لماذا لا murda في هذه الأسماء؟
+      en: Why do these names have no murda letters?
+    options: ["Iku jeneng bocah, dudu sesebutan kanggo ngurmati.", "Iku basa Arab.", "Iku angka."]
+    answer: 0
+    explain:
+      ar_eg: الـ murda للألقاب والأسامي اللي بنكرّمها (Gusti، Sultan). أسامي العيال بتتكتب بحروف عادية (مع rekan للأصوات العربية).
+      ar: الـ murda للألقاب والأسماء المكرَّمة (Gusti، Sultan)، أما أسماء الأطفال فبحروف عادية (مع rekan للأصوات العربية).
+      en: Murda is for honoured titles and names (Gusti, Sultan). Children's names use ordinary letters (with rekan for Arabic sounds).
+    words: [aksara murda]
   - id: e07
     type: fill_blank
-    sentence: ꦏ꦳ꦸꦱꦸꦱ꧀ = ___
+    sentence: ꦥ꦳ꦠꦶꦩꦃ = ___
     meaning:
-      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: خاص)"
-      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: خاص)"
-      en: Type the reading in Latin letters. (It means "special".)
-    answers: [khusus]
-    words: [khusus]
+      ar_eg: اكتب الاسم بالحروف اللاتينية.
+      ar: اكتب الاسم بالحروف اللاتينية.
+      en: Type the name in Latin letters.
+    answers: [Fatimah]
+    words: [aksara rekan]
   - id: e08
-    type: fill_blank
-    sentence: ꦦꦔꦺꦫꦤ꧀ = ___
+    type: dictation
+    text: Fajar karo Zaki teka.
     meaning:
-      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: أمير)"
-      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: أمير)"
-      en: Type the reading in Latin letters. (It means "prince".)
-    answers: [Pangeran]
-    words: [aksara murda]
+      ar_eg: فجر وزكي جم.
+      ar: جاء فجر وزكي.
+      en: Fajar and Zaki are here.
   - id: e09
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: "اكتب بالحروف والأرقام اللاتينية: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇꧈ꦠꦲꦸꦤ꧀꧇꧒꧐꧒꧖꧇꧉"
-      ar: "اكتب بالحروف والأرقام اللاتينية: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇꧈ꦠꦲꦸꦤ꧀꧇꧒꧐꧒꧖꧇꧉"
-      en: "Write in Latin letters and digits: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇꧈ꦠꦲꦸꦤ꧀꧇꧒꧐꧒꧖꧇꧉"
-    answers: ["Tanggal 17, taun 2026.", tanggal 17 taun 2026]
-    words: [tanggal, angka, pada pangkat]
-  - id: e10
-    type: build_sentence
-    source:
-      ar_eg: الصبح بعد الفجر بنقول الذكر.
-      ar: نذكر الله صباحًا بعد الفجر.
-      en: In the morning, after dawn, we do dhikr.
-    answer: Sawise fajar awake dhewe dzikir.
-    distractors: [zakat]
-    words: [fajar, dzikir]
-  - id: e11
-    type: speaking
-    text: Gusti, fajar, zakat, tanggal pitulas.
-    meaning:
-      ar_eg: Gusti، الفجر، الزكاة، يوم 17.
-      ar: Gusti، الفجر، الزكاة، اليوم السابع عشر.
-      en: Gusti, dawn, zakat, the 17th.
+      ar_eg: "اكتب بالحروف اللاتينية: ꦥ꦳ꦗꦂꦏꦫꦺꦴꦗ꦳ꦏꦶ"
+      ar: "اكتب بالحروف اللاتينية: ꦥ꦳ꦗꦂꦏꦫꦺꦴꦗ꦳ꦏꦶ"
+      en: "Write in Latin letters: ꦥ꦳ꦗꦂꦏꦫꦺꦴꦗ꦳ꦏꦶ"
+    answers: [Fajar karo Zaki, fajarkarozaki]
+    explain:
+      ar_eg: Fajar بتخلص بـ layar، فـ ka بتتكتب عادي. karo = مع / و.
+      ar: تنتهي Fajar بـ layar فتُكتب ka عادية. karo = مع / و.
+      en: Fajar ends with layar, so ka is written normally. karo = with, and.
+    words: [aksara rekan]
 dialogue:
-  title: Ing pucuk undhak-undhakan
+  title: Absen
   lines:
+    - speaker: Bu Guru
+      text: Fajar? Zahra? Khadijah?
+      ar_eg: فجر؟ زهرة؟ خديجة؟
+      ar: فجر؟ زهرة؟ خديجة؟
+      en: Fajar? Zahra? Khadijah?
+    - speaker: Bocah-bocah
+      text: Wonten, Bu!
+      ar_eg: موجودين يا أبلة!
+      ar: حاضرون يا معلّمة!
+      en: Here, miss!
     - speaker: Mohamed
-      text: Pak, kula sampun dumugi ing nginggil!
-      ar_eg: يا عمّو، أنا وصلت فوق!
-      ar: يا سيدي، وصلتُ إلى الأعلى!
-      en: Sir, I've made it to the top!
-    - speaker: Pak Harjo
-      text: Sae, Mas. Menika makam Sultan Agung.
-      ar_eg: برافو يا ابني. ده قبر السلطان أغونغ.
-      ar: أحسنت يا بني. هذا قبر السلطان أغونغ.
-      en: Well done. This is Sultan Agung's tomb.
-    - speaker: Mohamed
-      text: Asmanipun ngangge sa murda, nggih?
-      ar_eg: اسمه بيتكتب بـ sa murda، صح؟
-      ar: يُكتب اسمه بـ sa murda، أليس كذلك؟
-      en: His name is written with sa murda, isn't it?
-    - speaker: Pak Harjo
-      text: Leres. Panjenengan sampun saged maos aksara Jawa!
-      ar_eg: صح. حضرتك بقيت تعرف تقرا الخط الجاوي!
-      ar: صحيح. صرتَ تقرأ الخط الجاوي!
-      en: Right. You can read aksara Jawa now!
-souvenir:
-  id: j6.u05.souvenir
-  title: Pasarean Imogiri
-  note:
-    ar_eg: |
-      في إيموغيري، جنوب يوجياكرتا، فيه مقابر السلطان أغونغ — أعظم ملوك ماتارام — والملوك اللي جم بعده، فوق تل. وعشان توصل لازم تطلع حوالي 409 سلمة. وعلى البوابات والألواح هتلاقي الأسامي بحروف murda، والكلمات العربية بحروف rekan، والسنين بالأرقام الجاوية — كل اللي اتعلمته في الوحدة دي في مكان واحد.
-    ar: |
-      في إيموغيري جنوب يوجياكرتا مقابر السلطان أغونغ، أعظم ملوك ماتارام، ومن جاء بعده من الملوك، على تلّة يُصعد إليها بنحو 409 درجات. وعلى البوابات والألواح أسماء بحروف murda، وألفاظ عربية بحروف rekan، وسنوات بالأرقام الجاوية: كل ما تعلمته في هذه الوحدة في مكان واحد.
-    en: |
-      At Imogiri, south of Yogyakarta, the tombs of Sultan Agung — Mataram's greatest king — and the kings after him sit on a hilltop, reached by about 409 steps. On the gates and plaques you'll find names in murda letters, Arabic words in rekan and years in Javanese numerals — everything from this unit in one place.
+      text: Bu, jeneng-jenenge kaya ing Mesir!
+      ar_eg: يا أبلة، الأسامي زي اللي عندنا في مصر!
+      ar: يا معلّمة، الأسماء مثل أسمائنا في مصر!
+      en: Miss, the names are just like in Egypt!
+    - speaker: Bu Guru
+      text: Inggih, Mas. Mula ditulis nganggo aksara rekan.
+      ar_eg: أيوه. عشان كده بتتكتب بحروف rekan.
+      ar: نعم، ولهذا تُكتب بحروف rekan.
+      en: Yes. That's why they're written with aksara rekan.
 review:
   status: draft
   verified: false
