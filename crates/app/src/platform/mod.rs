@@ -141,7 +141,7 @@ pub fn take_shared_input() -> Option<SharedInput> {
         match android::take_shared_input() {
             Ok(input) => input,
             Err(e) => {
-                eprintln!("kabar: reading the shared item failed: {e}");
+                crate::diag::report!("reading the shared item failed: {e}");
                 None
             }
         }
@@ -187,7 +187,7 @@ pub fn pick_state() -> PickState {
     #[cfg(target_os = "android")]
     {
         android::pick_state().unwrap_or_else(|e| {
-            eprintln!("kabar: image picker state: {e}");
+            crate::diag::report!("image picker state: {e}");
             PickState::Failed
         })
     }

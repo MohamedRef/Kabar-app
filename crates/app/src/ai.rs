@@ -58,7 +58,7 @@ impl Cache for StoreCache {
         if let Ok(store) = self.0.0.try_borrow()
             && let Err(e) = store.ai_cache_put(&key.id(), json)
         {
-            eprintln!("kabar: AI cache: {e}");
+            crate::diag::report!("AI cache: {e}");
         }
     }
 

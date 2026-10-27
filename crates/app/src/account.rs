@@ -277,7 +277,7 @@ fn TrySyncCard() -> Element {
                     rev += 1;
                     cloud.send(Command::Kick);
                 }
-                Err(e) => eprintln!("kabar: saving the word failed: {e}"),
+                Err(e) => crate::diag::report!("saving the word failed: {e}"),
             }
         }
     };

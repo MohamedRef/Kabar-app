@@ -486,6 +486,7 @@ mod tests {
 /// S24 Ultra). Not a gate: run it with
 /// `cargo test --release -p kabar-app popover_timing -- --ignored --nocapture`.
 #[cfg(test)]
+#[allow(clippy::disallowed_macros)] // timings printed for whoever runs the probe
 mod perf {
     use super::*;
     use crate::reader::content::LocalGlossary;

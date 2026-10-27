@@ -204,7 +204,7 @@ pub fn use_translation(st: ReaderState) {
                         }
                     }
                     Err(e) => {
-                        eprintln!("kabar: translate_text failed: {e:?}");
+                        crate::diag::report!("translate_text failed: {e:?}");
                         translated.write().progress = Progress::Failed(failure(e.friendly()));
                         return;
                     }

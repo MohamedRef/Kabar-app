@@ -31,7 +31,7 @@ pub fn library() -> &'static Library {
     LIBRARY.get_or_init(|| {
         let (library, problems) = Library::from_yaml(GRAMMAR.iter().copied());
         for p in problems {
-            eprintln!("kabar: grammar entry skipped: {p}");
+            crate::diag::report!("grammar entry skipped: {p}");
         }
         library
     })

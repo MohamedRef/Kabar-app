@@ -52,7 +52,7 @@ fn pick_size(db: &Db, coach: Coach, profile: &CoachProfile, today: LocalDate, si
     let due = crate::review::due_words(db, coach.now()).len() as u32;
     let fresh = build_plan(db, due, profile, &events, today, size, true);
     if let Err(e) = db.0.borrow_mut().save_plan(&fresh) {
-        eprintln!("kabar: saving today's plan failed: {e}");
+        crate::diag::report!("saving today's plan failed: {e}");
     }
     let mut rev = coach.plan_rev;
     rev += 1;

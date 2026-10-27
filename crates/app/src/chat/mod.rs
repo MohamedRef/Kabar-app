@@ -116,7 +116,7 @@ fn learner_levels(db: &Db, coach: &Coach) -> (String, Option<String>) {
 
 fn save(db: &Db, row: ChatRow) {
     if let Err(e) = db.0.borrow_mut().save_chat_row(&row) {
-        eprintln!("kabar: saving the chat failed: {e}");
+        crate::diag::report!("saving the chat failed: {e}");
     }
 }
 
@@ -255,7 +255,7 @@ fn Home(on_persona: EventHandler<String>, on_chat: EventHandler<String>) -> Elem
     let mut revision = use_signal(|| 0u32);
     let _ = revision();
     let chats = db.0.borrow().conversations().unwrap_or_else(|e| {
-        eprintln!("kabar: reading chats failed: {e}");
+        crate::diag::report!("reading chats failed: {e}");
         Vec::new()
     });
 
@@ -322,7 +322,7 @@ fn Home(on_persona: EventHandler<String>, on_chat: EventHandler<String>) -> Elem
                                         aria_label: "{tt(lang, T::Delete)}",
                                         onclick: move |_| {
                                             if let Err(e) = db.0.borrow_mut().delete_conversation(&delete_id) {
-                                                eprintln!("kabar: deleting the chat failed: {e}");
+                                                crate::diag::report!("deleting the chat failed: {e}");
                                             }
                                             revision += 1;
                                         },
