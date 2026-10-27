@@ -180,7 +180,7 @@ impl Deck {
                 };
                 match ok {
                     Ok(()) => return self.native.set(true),
-                    Err(e) => eprintln!("kabar: background playback failed, playing in the app: {e}"),
+                    Err(e) => crate::diag::report!("background playback failed, playing in the app: {e}"),
                 }
             }
             if *self.track_loaded.peek() {
@@ -192,7 +192,7 @@ impl Deck {
                         self.send(serde_json::json!({ "op": "load", "src": src, "at": at, "rate": rate, "seq": seq }));
                     }
                     Err(e) => {
-                        eprintln!("kabar: reading the downloaded episode failed: {e}");
+                        crate::diag::report!("reading the downloaded episode failed: {e}");
                         self.track.set(None);
                         self.play(i);
                     }
@@ -227,7 +227,7 @@ impl Deck {
                     }
                 }
                 Ok(Err(e)) => {
-                    eprintln!("kabar: reading cached audio failed: {e}");
+                    crate::diag::report!("reading cached audio failed: {e}");
                     self.fallback(i, seq, Some(T::ServerTrouble));
                 }
                 Err(e) => self.fallback(i, seq, Some(notice_for(&e))),
@@ -264,7 +264,7 @@ impl Deck {
             let mut playing = self.playing;
             playing.set(true);
             if let Err(e) = platform::track::resume() {
-                eprintln!("kabar: resuming the background player failed: {e}");
+                crate::diag::report!("resuming the background player failed: {e}");
             }
         } else if self.track.peek().is_some() && *self.track_loaded.peek() {
             let mut playing = self.playing;
@@ -333,7 +333,7 @@ impl Deck {
             }
             ("error", Some(_)) => {
                 // A broken download: drop it and stream instead.
-                eprintln!("kabar: the downloaded episode didn't play");
+                crate::diag::report!("the downloaded episode didn't play");
                 self.track.set(None);
                 self.track_loaded.set(false);
                 let i = *self.current.peek();
@@ -420,7 +420,7 @@ pub fn ProgramPlayer(
             if *deck.native.peek() {
                 match platform::track::state() {
                     Ok((t, playing, ended)) => deck.native_tick(t, playing, ended),
-                    Err(e) => eprintln!("kabar: reading the background player failed: {e}"),
+                    Err(e) => crate::diag::report!("reading the background player failed: {e}"),
                 }
             }
         }

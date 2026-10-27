@@ -136,7 +136,7 @@ fn conclude(db: &Db, coach: Coach, s: &Setup, runner: Option<&TestRunner>) -> Le
         duration_ms: res.as_ref().map_or(0, |r| r.duration_ms),
     };
     if let Err(e) = db.0.borrow_mut().record_lesson_event(LEVEL_CHECK_LESSON_ID, LEVEL_CHECK_KIND, &result) {
-        eprintln!("kabar: saving the level check failed: {e}");
+        crate::diag::report!("saving the level check failed: {e}");
     }
     // Kak Nur's log: one practice entry per skill (reports, weak spots).
     if let Some(r) = runner {

@@ -101,7 +101,7 @@ pub fn ExportCard() -> Element {
         outcome.set(Some(match result {
             Ok((path, rows)) => Outcome::Saved { path: path.display().to_string(), rows },
             Err(e) => {
-                eprintln!("kabar: export failed: {e}");
+                crate::diag::report!("export failed: {e}");
                 Outcome::Failed(e)
             }
         }));

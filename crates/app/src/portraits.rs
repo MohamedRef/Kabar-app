@@ -58,7 +58,7 @@ static URLS: LazyLock<HashMap<&'static str, String>> = LazyLock::new(|| {
 
 static REGISTRY: LazyLock<Cast> = LazyLock::new(|| {
     Cast::parse(&unpack(CAST)).unwrap_or_else(|e| {
-        eprintln!("kabar: reading content/cast.yaml failed: {e}");
+        crate::diag::report!("reading content/cast.yaml failed: {e}");
         Cast::default()
     })
 });
