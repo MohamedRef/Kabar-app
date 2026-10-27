@@ -76,13 +76,33 @@ exercises:
       en: sebuah → perahu → kayu (noun modifier) → tua (adjective) → milik nelayan → itu.
     words: [perahu, milik, nelayan]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح في الكتابة؟
-      ar: أيّ جملة صحيحة في الكتابة؟
-      en: Which sentence is correct in writing?
-    options: ["Putri itu sangat cantik sekali.", "Putri itu cantik sekali.", "Putri itu sekali cantik."]
-    answer: 1
+    type: match_pairs
+    pairs:
+      - text: janda
+        ar_eg: أرملة
+        ar: أرملة
+        en: widow
+      - text: kalung
+        ar_eg: عقد
+        ar: قلادة
+        en: necklace
+      - text: kelinci
+        ar_eg: أرنب
+        ar: أرنب
+        en: rabbit
+      - text: menipu
+        ar_eg: ينصب
+        ar: يخدع
+        en: to trick
+      - text: ksatria
+        ar_eg: فارس
+        ar: فارس
+        en: knight
+      - text: topeng
+        ar_eg: قناع
+        ar: قناع
+        en: mask
+    words: [janda, kalung, kelinci, menipu, ksatria, topeng]
   - id: e04
     type: listen
     text: Kancil yang licik itu menertawakan buaya-buaya yang sombong.
@@ -105,16 +125,14 @@ exercises:
     words: [durhaka]
   - id: e06
     type: fill_blank
-    sentence: Kamu ___ boleh masuk. Tunggu sebentar, ya.
+    sentence: Raja itu ___ menjadi orang miskin supaya tidak dikenal.
     meaning:
-      ar_eg: (اكتب الكلمة) لسه مش مسموح لك تدخل. استنى شوية.
-      ar: (اكتب الكلمة) لا يُسمح لك بالدخول بعد. انتظر قليلًا.
-      en: (Type the word.) You may not come in yet. Wait a moment.
-    answers: [belum]
-    explain:
-      ar_eg: belum (لسه) بييجي قبل الفعل المساعد boleh.
-      ar: belum (بعدُ) تأتي قبل الفعل المساعد boleh.
-      en: belum (not yet) comes before the modal boleh.
+      ar_eg: الملك ده ___ في شكل واحد فقير عشان محدش يعرفه.
+      ar: ___ الملك في هيئة فقير كي لا يُعرف.
+      en: The king ___ as a poor man so no one would know him.
+    options: [menyamar, menipu, ditakdirkan]
+    answers: [menyamar]
+    words: [menyamar, menipu, ditakdirkan]
   - id: e07
     type: build_sentence
     source:

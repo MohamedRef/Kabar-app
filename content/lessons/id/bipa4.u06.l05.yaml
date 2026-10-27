@@ -10,15 +10,15 @@ slides:
   - title: Di agen perjalanan
     body:
       ar_eg: |
-        tur = جولة سياحية، رحلة منظمة، diskon = خصم، seharga = بسعر (tiket seharga 500 ribu).
+        tur = جولة سياحية، رحلة منظمة، bonus = حاجة زيادة ببلاش، بونص، seharga = بسعر (tiket seharga 500 ribu).
         bepergian = يسافر ويتنقّل، berkunjung = يزور (berkunjung ke)، berkeliling = يلف في المكان.
         perlengkapan = الحاجات والمعدّات (perlengkapan mendaki)، kenyamanan = الراحة.
       ar: |
-        tur = جولة سياحية، diskon = خصم، seharga = بسعر (tiket seharga 500 ribu).
+        tur = جولة سياحية، bonus = إضافة مجانية، مكافأة، seharga = بسعر (tiket seharga 500 ribu).
         bepergian = يسافر ويتنقّل، berkunjung = يزور (berkunjung ke)، berkeliling = يتجوّل.
         perlengkapan = المعدّات واللوازم (perlengkapan mendaki)، kenyamanan = الراحة.
       en: |
-        tur = tour, diskon = discount, seharga = priced at (tiket seharga 500 ribu).
+        tur = tour, bonus = bonus, free extra, seharga = priced at (tiket seharga 500 ribu).
         bepergian = to travel, go places; berkunjung = to visit (berkunjung ke); berkeliling = to go around, tour.
         perlengkapan = equipment, gear (perlengkapan mendaki); kenyamanan = comfort.
     examples:
@@ -42,10 +42,10 @@ exercises:
         ar_eg: رحلة سياحية
         ar: جولة سياحية
         en: tour
-      - text: diskon
-        ar_eg: خصم
-        ar: خصم
-        en: discount
+      - text: bonus
+        ar_eg: حاجة زيادة ببلاش
+        ar: إضافة مجانية
+        en: bonus
       - text: seharga
         ar_eg: بسعر
         ar: بسعر
@@ -54,7 +54,7 @@ exercises:
         ar_eg: يسافر
         ar: يسافر
         en: to travel
-    words: [tur, diskon, seharga, bepergian]
+    words: [tur, bonus, seharga, bepergian]
   - id: e02
     type: match_pairs
     pairs:
@@ -91,14 +91,14 @@ exercises:
     words: [tur]
   - id: e04
     type: fill_blank
-    sentence: Kalau beli dua tiket, Anda dapat ___ dua puluh persen.
+    sentence: Kalau ikut tur ini, Anda dapat ___ makan malam gratis.
     meaning:
-      ar_eg: لو اشتريت تذكرتين، تاخد ___ عشرين في المية.
-      ar: إذا اشتريت تذكرتين تحصل على ___ عشرين بالمئة.
-      en: If you buy two tickets, you get a twenty per cent ___.
-    options: [diskon, kenyamanan, tur]
-    answers: [diskon]
-    words: [diskon, kenyamanan, tur]
+      ar_eg: لو طلعت الرحلة دي، تاخد ___ عشا ببلاش.
+      ar: إن شاركت في هذه الجولة تحصل على ___ عشاء مجاني.
+      en: If you join this tour, you get a free dinner as a ___.
+    options: [bonus, kenyamanan, tur]
+    answers: [bonus]
+    words: [bonus, kenyamanan, tur]
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -125,13 +125,13 @@ exercises:
   - id: e07
     type: multiple_choice
     question: Busnya mahal, tapi ___ penumpang nomor satu.
-    options: [diskon, tur, kenyamanan]
+    options: [bonus, tur, kenyamanan]
     answer: 2
     explain:
       ar_eg: kenyamanan = الراحة.
       ar: kenyamanan = الراحة.
       en: kenyamanan = comfort.
-    words: [diskon, tur, kenyamanan]
+    words: [bonus, tur, kenyamanan]
   - id: e08
     type: build_sentence
     source:
@@ -157,7 +157,7 @@ exercises:
       ar_eg: الرحلة دي بمليون، شاملة المعدّات.
       ar: هذه الجولة بمليون، وتشمل المعدّات.
       en: This tour costs one million, gear included.
-    words: [tur, seharga, perlengkapan, diskon, berkeliling]
+    words: [tur, seharga, perlengkapan, bonus, berkeliling]
 dialogue:
   lines:
     - speaker: Penjual
@@ -191,11 +191,11 @@ new_words:
     ar_eg: رحلة سياحية منظمة
     ar: جولة سياحية
     en: tour
-  - word: diskon
+  - word: bonus
     pos: noun
-    ar_eg: خصم
-    ar: خصم
-    en: discount
+    ar_eg: بونص، حاجة زيادة ببلاش
+    ar: مكافأة، إضافة مجانية
+    en: bonus, free extra
   - word: seharga
     pos: prep
     ar_eg: بسعر

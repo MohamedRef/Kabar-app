@@ -78,18 +78,15 @@ exercises:
       en: terbawa ke = carried somewhere by mistake; tertinggal di = left somewhere.
     words: [terbawa]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح؟
-      ar: أيّ جملة صحيحة؟
-      en: Which sentence is correct?
-    options: ["Kapal ini terbuat oleh kayu.", "Setiap malam saya tertidur jam sepuluh.", "Benteng itu terletak di pusat kota."]
-    answer: 2
-    explain:
-      ar_eg: «معمول من» = terbuat dari مش oleh. والنوم المتعمد كل يوم = tidur مش tertidur.
-      ar: «مصنوع من» = terbuat dari لا oleh، والنوم المعتاد المقصود tidur لا tertidur.
-      en: '"Made of" is terbuat dari, not oleh; a planned nightly sleep is tidur, not tertidur.'
-    words: [terbuat dari, tertidur, terletak]
+    type: fill_blank
+    sentence: AC di kelas rusak. Kampus memanggil seorang ___.
+    meaning:
+      ar_eg: التكييف في الفصل بايظ. الجامعة نادت ___.
+      ar: المكيّف في الصف معطّل. استدعت الجامعة ___.
+      en: The classroom AC is broken. The campus called a ___.
+    options: [teknisi, dosen, kru]
+    answers: [teknisi]
+    words: [teknisi, dosen, kru]
   - id: e04
     type: listen
     text: Saya bangun kesiangan, jadi ketinggalan pesawat.
@@ -129,13 +126,33 @@ exercises:
     distractors: [tertinggal, kesiangan]
     words: [perawat, tertidur, lembur]
   - id: e08
-    type: dictation
-    text: Keselamatan pelaut adalah tanggung jawab kita.
-    meaning:
-      ar_eg: سلامة البحّارة مسؤوليتنا.
-      ar: سلامة البحّارة مسؤوليتنا.
-      en: Sailors' safety is our responsibility.
-    words: [keselamatan, tanggung jawab, pelaut]
+    type: match_pairs
+    pairs:
+      - text: bayaran
+        ar_eg: الأجر
+        ar: الأجر
+        en: pay
+      - text: jabatan
+        ar_eg: منصب
+        ar: منصب
+        en: position
+      - text: kinerja
+        ar_eg: الأداء
+        ar: الأداء
+        en: performance
+      - text: syuting
+        ar_eg: تصوير
+        ar: تصوير
+        en: filming
+      - text: mahir
+        ar_eg: شاطر
+        ar: ماهر
+        en: skilled
+      - text: dipecat
+        ar_eg: اترفد
+        ar: فُصل
+        en: fired
+    words: [bayaran, jabatan, kinerja, syuting, mahir, dipecat]
   - id: e09
     type: translate
     direction: to_target

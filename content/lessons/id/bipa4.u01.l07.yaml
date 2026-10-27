@@ -11,15 +11,15 @@ slides:
     body:
       ar_eg: |
         syuting = تصوير فيلم أو مسلسل، audisi = تجربة أداء (أوديشن)، kru = طاقم (kru film، kru kapal).
-        aktor / aktris = ممثل / ممثلة، koki / chef = طبّاخ، شيف.
+        skenario = سيناريو (النص اللي الممثلين بيحفظوه)، studio = ستوديو.
         pemula = مبتدئ، mahir = شاطر ومتمكّن، melatih = يدرّب.
       ar: |
         syuting = تصوير فيلم أو مسلسل، audisi = اختبار أداء، kru = طاقم (kru film، kru kapal).
-        aktor / aktris = ممثل / ممثلة، koki / chef = طاهٍ، رئيس طهاة.
+        skenario = سيناريو، نصّ الفيلم، studio = استوديو.
         pemula = مبتدئ، mahir = ماهر متمكّن، melatih = يدرّب.
       en: |
         syuting = filming, a shoot; audisi = audition; kru = crew (kru film, kru kapal).
-        aktor / aktris = actor / actress; koki / chef = cook, chef.
+        skenario = script, screenplay; studio = studio.
         pemula = beginner, mahir = skilled, fluent; melatih = to train, coach.
     examples:
       - text: Aktrisnya masih pemula, tapi belajar cepat.
@@ -50,18 +50,18 @@ exercises:
         ar_eg: طاقم
         ar: طاقم
         en: crew
-      - text: aktris
-        ar_eg: ممثلة
-        ar: ممثلة
-        en: actress
-    words: [syuting, audisi, kru, aktris]
+      - text: skenario
+        ar_eg: سيناريو
+        ar: سيناريو
+        en: script
+    words: [syuting, audisi, kru, skenario]
   - id: e02
     type: match_pairs
     pairs:
-      - text: chef
-        ar_eg: شيف
-        ar: رئيس طهاة
-        en: chef
+      - text: studio
+        ar_eg: ستوديو
+        ar: استوديو
+        en: studio
       - text: pemula
         ar_eg: مبتدئ
         ar: مبتدئ
@@ -74,7 +74,7 @@ exercises:
         ar_eg: يدرّب
         ar: يدرّب
         en: to train
-    words: [koki, pemula, mahir, melatih]
+    words: [studio, pemula, mahir, melatih]
   - id: e03
     type: listen
     text: Nurul ikut audisi untuk film baru.
@@ -111,27 +111,27 @@ exercises:
     words: [melatih, syuting, audisi]
   - id: e06
     type: fill_blank
-    sentence: Restoran itu terkenal karena ___ dari Italia.
+    sentence: Syuting hari ini di dalam ___, bukan di pantai.
     meaning:
-      ar_eg: المطعم ده مشهور بسبب ___ الإيطالي.
-      ar: ذلك المطعم مشهور بسبب ___ الإيطالي.
-      en: That restaurant is famous for its ___ from Italy.
-    options: [chefnya, krunya, audisinya]
-    answers: [chefnya]
-    words: [koki, kru, audisi]
+      ar_eg: تصوير النهارده جوه ___، مش على البحر.
+      ar: تصوير اليوم داخل ___، لا على الشاطئ.
+      en: Today's shoot is inside the ___, not on the beach.
+    options: [studio, skenario, audisi]
+    answers: [studio]
+    words: [studio, skenario, audisi]
   - id: e07
     type: multiple_choice
     question_meaning:
-      ar_eg: مين اللي بيمثّل في الفيلم؟
-      ar: من يمثّل في الفيلم؟
-      en: Who acts in the film?
-    options: [kru kapal, aktor dan aktris, koki dan chef]
+      ar_eg: الكلام المكتوب اللي الممثلين بيحفظوه. ده إيه؟
+      ar: النص المكتوب الذي يحفظه الممثلون. ما هو؟
+      en: The written lines the actors learn. What is it?
+    options: [studio, skenario, kru]
     answer: 1
     explain:
-      ar_eg: aktor / aktris = ممثل / ممثلة.
-      ar: aktor / aktris = ممثل / ممثلة.
-      en: aktor / aktris = actor / actress.
-    words: [kru, aktris, koki]
+      ar_eg: skenario = سيناريو.
+      ar: skenario = سيناريو، نصّ الفيلم.
+      en: skenario = script.
+    words: [studio, skenario, kru]
   - id: e08
     type: build_sentence
     source:
@@ -201,16 +201,16 @@ new_words:
     ar_eg: طاقم
     ar: طاقم
     en: crew
-  - word: aktor / aktris
+  - word: skenario
     pos: noun
-    ar_eg: ممثل / ممثلة
-    ar: ممثل / ممثلة
-    en: actor / actress
-  - word: koki / chef
+    ar_eg: سيناريو
+    ar: سيناريو، نصّ الفيلم
+    en: script, screenplay
+  - word: studio
     pos: noun
-    ar_eg: طباخ، شيف
-    ar: طاهٍ، رئيس طهاة
-    en: cook, chef
+    ar_eg: ستوديو
+    ar: استوديو
+    en: studio
   - word: pemula
     pos: noun
     ar_eg: مبتدئ

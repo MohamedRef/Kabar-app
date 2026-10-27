@@ -80,15 +80,15 @@ exercises:
       en: No doubling after banyak, and don't mix sebaik-baiknya with sebaik mungkin.
     words: [tolong-menolong]
   - id: e03
-    type: multiple_choice
-    question: Mohon jalan ini diperbaiki ___ karena sudah ada kecelakaan.
-    question_meaning:
-      ar_eg: نرجو إن الطريق ده يتصلح … عشان حصلت حوادث خلاص.
-      ar: نرجو إصلاح هذا الطريق … فقد وقعت حوادث.
-      en: Please repair this road … because there have already been accidents.
-    options: ["secepat-cepatnya", "lalu-lalang", "pepohonan"]
-    answer: 0
-    words: [secepat-cepatnya, kecelakaan]
+    type: fill_blank
+    sentence: Pelayanan hotel itu sangat ___. Kamarnya kotor dan AC-nya rusak.
+    meaning:
+      ar_eg: خدمة الفندق ده ___ خالص. الأوضة وسخة والتكييف بايظ.
+      ar: خدمة ذلك الفندق ___ جدًا. الغرفة متّسخة والمكيّف معطّل.
+      en: That hotel's service is very ___. The room is dirty and the AC is broken.
+    options: [mengecewakan, memuaskan, tegas]
+    answers: [mengecewakan]
+    words: [mengecewakan, memuaskan, tegas]
   - id: e04
     type: listen
     text: Kendaraan lalu-lalang dan suaranya bising sekali.
@@ -128,13 +128,33 @@ exercises:
     distractors: [menolong, bolak]
     words: [warga, tolong-menolong, memperbaiki]
   - id: e08
-    type: dictation
-    text: Lubang di jalan itu membahayakan pengendara.
-    meaning:
-      ar_eg: الحفرة اللي في الطريق ده بتعرّض السواقين للخطر.
-      ar: الحفرة في ذلك الطريق تعرّض السائقين للخطر.
-      en: The hole in that road endangers drivers.
-    words: [membahayakan, pengendara]
+    type: match_pairs
+    pairs:
+      - text: kerugian
+        ar_eg: خسارة
+        ar: خسارة
+        en: loss
+      - text: dibatalkan
+        ar_eg: اتلغى
+        ar: أُلغي
+        en: cancelled
+      - text: protes
+        ar_eg: احتجاج
+        ar: احتجاج
+        en: protest
+      - text: ditolak
+        ar_eg: اترفض
+        ar: رُفض
+        en: rejected
+      - text: komentar
+        ar_eg: تعليق
+        ar: تعليق
+        en: comment
+      - text: perbaikan
+        ar_eg: تصليح
+        ar: إصلاح
+        en: repair
+    words: [kerugian, dibatalkan, protes, ditolak, komentar, perbaikan]
   - id: e09
     type: translate
     direction: to_target

@@ -80,14 +80,15 @@ exercises:
       en: The committee is holding a performance to preserve Kaili culture.
     words: [panitia, mengadakan, pertunjukan, melestarikan]
   - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: في المناظرة عايز تقول إن للسياحة كمان آثار سلبية. تقول إيه؟
-      ar: تريد في المناظرة أن تقول إن للسياحة آثارًا سلبية أيضًا. ماذا تقول؟
-      en: In the debate you want to say tourism has negative effects too. What do you say?
-    options: ["Pariwisata juga berdampak negatif bagi lingkungan.", "Pariwisata juga memecahkan negatif bagi lingkungan.", "Pariwisata juga menghadapi negatif bagi lingkungan."]
-    answer: 0
-    words: [dampak]
+    type: fill_blank
+    sentence: Minggu lalu kami ___ ke desa adat di Toraja.
+    meaning:
+      ar_eg: الأسبوع اللي فات ___ قرية تقليدية في توراجا.
+      ar: في الأسبوع الماضي ___ قرية تقليدية في توراجا.
+      en: Last week we ___ a traditional village in Toraja.
+    options: [berkunjung, menu, kenyamanan]
+    answers: [berkunjung]
+    words: [berkunjung, menu, kenyamanan]
   - id: e05
     type: fill_blank
     sentence: Desa wisata ___ tantangan baru.
@@ -138,13 +139,33 @@ exercises:
       - Saya berpendapat bahwa pariwisata berdampak positif bagi penduduk.
     words: [berpendapat, dampak, warga]
   - id: e09
-    type: dictation
-    text: Anginnya kencang dan ombaknya tinggi, jadi kapal tidak berangkat.
-    meaning:
-      ar_eg: الريح شديدة والموج عالي، فالمركب مامشيش.
-      ar: الريح شديدة والموج عالٍ، فلم يُبحر القارب.
-      en: The wind is strong and the waves are high, so the boat isn't leaving.
-    words: [kencang, ombak]
+    type: match_pairs
+    pairs:
+      - text: tur
+        ar_eg: رحلة سياحية
+        ar: جولة سياحية
+        en: tour
+      - text: rem
+        ar_eg: فرامل
+        ar: مكابح
+        en: brakes
+      - text: tersesat
+        ar_eg: تاه
+        ar: ضلّ الطريق
+        en: lost
+      - text: aroma
+        ar_eg: ريحة
+        ar: رائحة
+        en: aroma
+      - text: pondok
+        ar_eg: كوخ
+        ar: كوخ
+        en: cabin
+      - text: lembah
+        ar_eg: وادي
+        ar: وادٍ
+        en: valley
+    words: [tur, rem, tersesat, aroma, pondok, lembah]
   - id: e10
     type: speaking
     text: Dengan demikian, pariwisata harus memberi manfaat bagi warga dan alam.

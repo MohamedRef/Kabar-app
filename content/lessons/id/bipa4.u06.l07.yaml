@@ -12,15 +12,15 @@ slides:
       ar_eg: |
         masakan = أكل مطبوخ، طبخ (masakan Makassar)، hidangan = طبق، أكلة بتتقدّم.
         menu = منيو، selera = ذوق (sesuai selera = على ذوقك)، aroma = ريحة حلوة.
-        matang = مستوي، panggang = مشوي في الفرن أو على النار، saus = صوص.
+        busuk = بايظ، معفّن، panggang = مشوي في الفرن أو على النار، saus = صوص.
       ar: |
         masakan = طعام مطبوخ، مطبخ (masakan Makassar)، hidangan = طبق يُقدَّم.
         menu = قائمة الطعام، selera = ذوق (sesuai selera = حسب الذوق)، aroma = رائحة طيبة.
-        matang = ناضج (مطهو)، panggang = مشويّ أو مخبوز، saus = صلصة.
+        busuk = فاسد، متعفّن، panggang = مشويّ أو مخبوز، saus = صلصة.
       en: |
         masakan = cooking, cuisine (masakan Makassar); hidangan = dish (served).
         menu = menu, selera = taste, appetite (sesuai selera = to taste); aroma = aroma.
-        matang = cooked, done; ripe; panggang = grilled, roasted, baked; saus = sauce.
+        busuk = rotten, off; panggang = grilled, roasted, baked; saus = sauce.
     examples:
       - text: Coto Makassar adalah masakan khas kota ini.
         ar_eg: كوتو ماكاسار أكلة مشهورة في المدينة دي.
@@ -62,10 +62,10 @@ exercises:
         ar_eg: ريحة
         ar: رائحة
         en: aroma
-      - text: matang
-        ar_eg: مستوي
-        ar: ناضج
-        en: cooked, done
+      - text: busuk
+        ar_eg: بايظ، معفّن
+        ar: فاسد
+        en: rotten
       - text: panggang
         ar_eg: مشوي
         ar: مشويّ
@@ -74,7 +74,7 @@ exercises:
         ar_eg: صوص
         ar: صلصة
         en: sauce
-    words: [aroma, matang, panggang, saus]
+    words: [aroma, busuk, panggang, saus]
   - id: e03
     type: listen
     text: Boleh saya lihat menunya? Saya mau hidangan khas Makassar.
@@ -91,14 +91,14 @@ exercises:
     words: [menu, hidangan]
   - id: e04
     type: fill_blank
-    sentence: Ayamnya belum ___. Masak sepuluh menit lagi.
+    sentence: Jangan makan ikan ini. Ikannya sudah ___.
     meaning:
-      ar_eg: الفراخ لسه ما ___. اطبخها عشر دقايق كمان.
-      ar: الدجاج لم ___ بعد. اطبخه عشر دقائق أخرى.
-      en: The chicken isn't ___ yet. Cook it ten more minutes.
-    options: [matang, aroma, menu]
-    answers: [matang]
-    words: [matang, aroma, menu]
+      ar_eg: ما تاكلش السمك ده. السمك ___.
+      ar: لا تأكل هذا السمك، فقد صار ___.
+      en: Don't eat this fish. It's gone ___.
+    options: [busuk, aroma, menu]
+    answers: [busuk]
+    words: [busuk, aroma, menu]
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -119,9 +119,9 @@ exercises:
       ar_eg: السمك ___ ده اتطبخ على النار.
       ar: طُهي هذا السمك ___ على النار.
       en: This ___ fish was cooked over a fire.
-    options: [panggang, matang, hidangan]
+    options: [panggang, busuk, hidangan]
     answers: [panggang]
-    words: [panggang, matang, hidangan]
+    words: [panggang, busuk, hidangan]
   - id: e07
     type: multiple_choice
     question: Pedas atau tidak? Sesuai ___ Anda saja.
@@ -157,7 +157,7 @@ exercises:
       ar_eg: الكونرو المشوي ده استوى وريحته حلوة.
       ar: نضج هذا الكونرو المشوي ورائحته طيبة.
       en: This grilled konro is done and smells great.
-    words: [panggang, matang, aroma, hidangan, selera]
+    words: [panggang, aroma, hidangan, selera]
 dialogue:
   lines:
     - speaker: Pelayan
@@ -211,11 +211,11 @@ new_words:
     ar_eg: ريحة حلوة
     ar: رائحة
     en: aroma, smell
-  - word: matang
+  - word: busuk
     pos: adj
-    ar_eg: مستوي؛ مِستوي (فاكهة)
-    ar: ناضج
-    en: cooked, done; ripe
+    ar_eg: بايظ، معفّن
+    ar: فاسد، متعفّن
+    en: rotten, spoiled
   - word: panggang
     pos: adj
     ar_eg: مشوي

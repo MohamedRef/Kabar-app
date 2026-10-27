@@ -10,22 +10,22 @@ slides:
   - title: Pabrik semen mencari pekerja
     body:
       ar_eg: |
-        insinyur = مهندس، teknisi = فنّي (بيصلّح المكن)، operator = اللي بيشغّل الماكينة، pengemudi = سوّاق (أرسم من sopir).
+        konstruksi = بناء، إنشاءات (perusahaan konstruksi)، teknisi = فنّي (بيصلّح المكن)، operator = اللي بيشغّل الماكينة، pengemudi = سوّاق (أرسم من sopir).
         mendaftar = يقدّم أو يسجّل اسمه، mempekerjakan = يشغّل حد عنده (يعيّنه).
         berpengalaman = عنده خبرة، bayaran = الأجر (الفلوس اللي بتاخدها على الشغل).
       ar: |
-        insinyur = مهندس، teknisi = فنّي (يصلح الآلات)، operator = مشغّل الآلة، pengemudi = سائق (أكثر رسمية من sopir).
+        konstruksi = البناء والإنشاءات (perusahaan konstruksi)، teknisi = فنّي (يصلح الآلات)، operator = مشغّل الآلة، pengemudi = سائق (أكثر رسمية من sopir).
         mendaftar = يتقدّم أو يسجّل، mempekerjakan = يوظّف شخصًا.
         berpengalaman = ذو خبرة، bayaran = الأجر.
       en: |
-        insinyur = engineer, teknisi = technician (fixes machines), operator = machine operator, pengemudi = driver (more formal than sopir).
+        konstruksi = construction (perusahaan konstruksi), teknisi = technician (fixes machines), operator = machine operator, pengemudi = driver (more formal than sopir).
         mendaftar = to apply, register; mempekerjakan = to employ, hire.
         berpengalaman = experienced, bayaran = pay, fee.
     examples:
-      - text: Pabrik itu mau mempekerjakan dua insinyur.
-        ar_eg: المصنع ده عايز يشغّل اتنين مهندسين.
-        ar: يريد ذلك المصنع توظيف مهندسَين.
-        en: That factory wants to hire two engineers.
+      - text: Perusahaan konstruksi itu mau mempekerjakan dua insinyur.
+        ar_eg: شركة المقاولات دي عايزة تشغّل اتنين مهندسين.
+        ar: تريد شركة الإنشاءات تلك توظيف مهندسَين.
+        en: That construction company wants to hire two engineers.
       - text: Kami mencari teknisi yang berpengalaman.
         ar_eg: بندوّر على فني عنده خبرة.
         ar: نبحث عن فنّي ذي خبرة.
@@ -38,10 +38,10 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: insinyur
-        ar_eg: مهندس
-        ar: مهندس
-        en: engineer
+      - text: konstruksi
+        ar_eg: إنشاءات، مقاولات
+        ar: إنشاءات
+        en: construction
       - text: teknisi
         ar_eg: فني
         ar: فنّي
@@ -54,7 +54,7 @@ exercises:
         ar_eg: سواق
         ar: سائق
         en: driver
-    words: [insinyur, teknisi, operator, pengemudi]
+    words: [konstruksi, teknisi, operator, pengemudi]
   - id: e02
     type: match_pairs
     pairs:
@@ -119,9 +119,9 @@ exercises:
       ar_eg: بندوّر على سواق ___، خمس سنين على الأقل.
       ar: نبحث عن سائق ___، خمس سنوات على الأقل.
       en: We're looking for an ___ driver, at least five years.
-    options: [berpengalaman, insinyur, operator]
+    options: [berpengalaman, konstruksi, operator]
     answers: [berpengalaman]
-    words: [berpengalaman, insinyur, operator, pengemudi]
+    words: [berpengalaman, konstruksi, operator, pengemudi]
   - id: e07
     type: multiple_choice
     question: ___ untuk teknisi baru empat juta rupiah sebulan.
@@ -135,12 +135,12 @@ exercises:
   - id: e08
     type: build_sentence
     source:
-      ar_eg: عايز أقدّم كمهندس في المصنع ده.
-      ar: أريد أن أتقدّم مهندسًا في هذا المصنع.
-      en: I want to apply as an engineer at this factory.
-    answer: Saya mau mendaftar jadi insinyur di pabrik ini.
+      ar_eg: عايز أقدّم في شركة المقاولات دي.
+      ar: أريد أن أتقدّم إلى شركة الإنشاءات هذه.
+      en: I want to apply to this construction company.
+    answer: Saya mau mendaftar di perusahaan konstruksi ini.
     distractors: [operator, bayaran]
-    words: [mendaftar, insinyur, operator, bayaran]
+    words: [mendaftar, konstruksi, operator, bayaran]
   - id: e09
     type: translate
     direction: from_target
@@ -186,11 +186,11 @@ dialogue:
       ar: سنتان على الأقل، والأجر لا بأس به. سأتقدّم غدًا!
       en: At least two years. The pay's decent. I'm going to apply tomorrow!
 new_words:
-  - word: insinyur
+  - word: konstruksi
     pos: noun
-    ar_eg: مهندس
-    ar: مهندس
-    en: engineer
+    ar_eg: بناء، مقاولات
+    ar: البناء، الإنشاءات
+    en: construction
   - word: teknisi
     pos: noun
     ar_eg: فني

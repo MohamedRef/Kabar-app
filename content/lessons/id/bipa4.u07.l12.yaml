@@ -60,18 +60,15 @@ exercises:
         en: registration
     words: [pemeriksaan, pengobatan, pelayanan, perawatan, pendaftaran]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إيه اسم peN-…-an من menggunakan؟
-      ar: ما اسم peN-…-an من menggunakan؟
-      en: What is the peN-…-an noun of menggunakan?
-    options: [pengunaan, penggunaan, pemgunaan]
-    answer: 1
-    explain:
-      ar_eg: menggunakan فيها meng-، يبقى peng-…-an، والـ g بتاعة guna بتفضل = penggunaan.
-      ar: في menggunakan البادئة meng-، فتصير peng-…-an مع بقاء g في guna، أي penggunaan.
-      en: menggunakan has meng-, so the noun has peng-…-an and keeps the g of guna = penggunaan.
-    words: [penggunaan]
+    type: fill_blank
+    sentence: Setelah operasi, keadaannya makin ___.
+    meaning:
+      ar_eg: بعد العملية، حالته بقت ___.
+      ar: بعد العملية صارت حالته ___.
+      en: After the operation, his condition is getting ___.
+    options: [membaik, nyenyak, bakteri]
+    answers: [membaik]
+    words: [membaik, nyenyak, bakteri]
   - id: e03
     type: listen
     text: Penyakit ini menular, jadi anak-anak perlu imunisasi.
@@ -131,20 +128,33 @@ exercises:
     distractors: [pemeriksa, gejala]
     words: [pemeriksaan, kesehatan, rutin]
   - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الأحسن تقلّل السكر والملح.
-      ar: يُستحسن أن تقلّل السكر والملح.
-      en: You should cut down on sugar and salt.
-    answers:
-      - Sebaiknya Anda mengurangi gula dan garam.
-      - Sebaiknya Anda mengurangi gula dan garam
-      - Sebaiknya kamu mengurangi gula dan garam.
-      - Anda sebaiknya mengurangi gula dan garam.
-      - Sebaiknya Anda mengurangi penggunaan gula dan garam.
-      - Sebaiknya kurangi gula dan garam.
-      - Sebaiknya Anda kurangi gula dan garam.
+    type: match_pairs
+    pairs:
+      - text: cedera
+        ar_eg: إصابة
+        ar: إصابة
+        en: injury
+      - text: pulih
+        ar_eg: خف
+        ar: تعافى
+        en: to recover
+      - text: masker
+        ar_eg: كمامة
+        ar: كمامة
+        en: face mask
+      - text: beracun
+        ar_eg: سام
+        ar: سامّ
+        en: poisonous
+      - text: gelisah
+        ar_eg: قلقان
+        ar: قلِق
+        en: restless
+      - text: terapi
+        ar_eg: علاج
+        ar: علاج
+        en: therapy
+    words: [cedera, pulih, masker, beracun, gelisah, terapi]
   - id: e10
     type: speaking
     text: Kalau gejalanya parah, segera periksa ke puskesmas.

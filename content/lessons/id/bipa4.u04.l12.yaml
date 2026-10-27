@@ -78,17 +78,15 @@ exercises:
       en: A flood is no blessing, so not berkat; akibat + noun = as a result of.
     words: [berkat]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة صح في الإندونيسي الفصيح؟
-      ar: أيّ جملة صحيحة في الإندونيسية الفصيحة؟
-      en: Which sentence is correct in standard Indonesian?
-    options: ["Karena hujan deras, maka acara dibatalkan.", "Hujan deras. Sehingga acara dibatalkan.", "Karena hujan deras, acara dibatalkan."]
-    answer: 2
-    explain:
-      ar_eg: karena مع maka زيادة، وsehingga ما تبدأش جملة.
-      ar: الجمع بين karena وmaka حشو، ولا يُبتدأ بـsehingga.
-      en: karena + maka is redundant, and sehingga can't start a sentence.
+    type: fill_blank
+    sentence: Polisi sedang ___ kasus korupsi itu.
+    meaning:
+      ar_eg: البوليس ___ في قضية الفساد دي.
+      ar: الشرطة ___ في قضية الفساد تلك.
+      en: The police are ___ that corruption case.
+    options: [menyelidiki, beredar, akurat]
+    answers: [menyelidiki]
+    words: [menyelidiki, beredar, akurat, korupsi]
   - id: e04
     type: listen
     text: Menurut narasumber, ratusan warga mengungsi.
@@ -128,13 +126,33 @@ exercises:
     distractors: [gara-gara, akibat]
     words: [berkat, beasiswa, wartawan]
   - id: e08
-    type: dictation
-    text: Kebijakan baru itu punya kelebihan dan kekurangan.
-    meaning:
-      ar_eg: القرار الجديد ده ليه مميزات وعيوب.
-      ar: لتلك السياسة الجديدة مزايا وعيوب.
-      en: That new policy has advantages and drawbacks.
-    words: [kebijakan, kelebihan, kekurangan]
+    type: match_pairs
+    pairs:
+      - text: edisi
+        ar_eg: عدد، طبعة
+        ar: عدد، طبعة
+        en: edition
+      - text: rumor
+        ar_eg: إشاعة
+        ar: إشاعة
+        en: rumour
+      - text: dikonfirmasi
+        ar_eg: اتأكد
+        ar: تأكّد
+        en: confirmed
+      - text: kementerian
+        ar_eg: وزارة
+        ar: وزارة
+        en: ministry
+      - text: insiden
+        ar_eg: حادثة
+        ar: حادثة
+        en: incident
+      - text: korupsi
+        ar_eg: فساد
+        ar: فساد
+        en: corruption
+    words: [edisi, rumor, dikonfirmasi, kementerian, insiden, korupsi]
   - id: e09
     type: translate
     direction: to_target

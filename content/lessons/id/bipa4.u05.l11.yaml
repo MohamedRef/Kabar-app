@@ -74,18 +74,15 @@ exercises:
       en: No ke after menghadiri, and don't combine adalah with seperti.
     words: [menghormati, jasa]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة فيها استعارة؟
-      ar: أيّ جملة فيها استعارة؟
-      en: Which sentence contains a metaphor?
-    options: ["Lapangan itu ada di jantung kota.", "Lapangan itu luas seperti laut.", "Lapangan itu sangat luas."]
-    answer: 0
-    explain:
-      ar_eg: jantung kota استعارة (المدينة ملهاش قلب بجد). seperti laut تشبيه.
-      ar: jantung kota استعارة، أما seperti laut فتشبيه.
-      en: jantung kota is a metaphor (a city has no real heart); seperti laut is a simile.
-    words: [jantung kota]
+    type: fill_blank
+    sentence: Festival ___ ini selalu diadakan pada bulan Agustus.
+    meaning:
+      ar_eg: المهرجان ___ ده دايمًا بيتعمل في أغسطس.
+      ar: يُقام هذا المهرجان ___ دائمًا في أغسطس.
+      en: This ___ festival is always held in August.
+    options: [tahunan, kostum, kedamaian]
+    answers: [tahunan]
+    words: [tahunan, kostum, kedamaian, festival, diadakan]
   - id: e04
     type: listen
     text: Anak-anak mengikuti lomba balap karung.
@@ -125,13 +122,33 @@ exercises:
     distractors: [menghadiri, ke]
     words: [memperingati]
   - id: e08
-    type: dictation
-    text: Upacara bendera di Palopo sangat meriah.
-    meaning:
-      ar_eg: تحية العلم في بالوبو مبهجة جدًا.
-      ar: مراسم رفع العلم في بالوبو بهيجة جدًا.
-      en: The flag ceremony in Palopo is very festive.
-    words: [upacara bendera, meriah]
+    type: match_pairs
+    pairs:
+      - text: menjelang
+        ar_eg: قبل ما ييجي
+        ar: قُبيل
+        en: just before
+      - text: bendera
+        ar_eg: علم
+        ar: علم
+        en: flag
+      - text: tarian
+        ar_eg: رقصة
+        ar: رقصة
+        en: dance
+      - text: purnama
+        ar_eg: البدر
+        ar: البدر
+        en: full moon
+      - text: imam
+        ar_eg: إمام
+        ar: إمام
+        en: imam
+      - text: amal
+        ar_eg: عمل خير
+        ar: عمل خيري
+        en: charity
+    words: [menjelang, bendera, tarian, purnama, imam, amal]
   - id: e09
     type: translate
     direction: to_target

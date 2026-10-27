@@ -10,17 +10,17 @@ slides:
   - title: Kuliah dokter Fitri
     body:
       ar_eg: |
-        flu = إنفلونزا، wabah = وباء (wabah flu)، masker = كمامة.
+        vaksin = لقاح، تطعيم، wabah = وباء (wabah flu)، masker = كمامة.
         infeksi = عدوى، التهاب (infeksi telinga)، terinfeksi = اتعدى، bakteri = بكتيريا.
-        alergi = حساسية (alergi debu)، kedokteran = الطب (fakultas kedokteran = كلية الطب).
+        jarum = إبرة (jarum suntik)، kedokteran = الطب (fakultas kedokteran = كلية الطب).
       ar: |
-        flu = إنفلونزا، wabah = وباء (wabah flu)، masker = كمامة.
+        vaksin = لقاح، تطعيم، wabah = وباء (wabah flu)، masker = كمامة.
         infeksi = عدوى، التهاب (infeksi telinga)، terinfeksi = أُصيب بالعدوى، bakteri = بكتيريا.
-        alergi = حساسية (alergi debu)، kedokteran = الطب (fakultas kedokteran = كلية الطب).
+        jarum = إبرة (jarum suntik)، kedokteran = الطب (fakultas kedokteran = كلية الطب).
       en: |
-        flu = flu, wabah = epidemic, outbreak (wabah flu), masker = face mask.
+        vaksin = vaccine, wabah = epidemic, outbreak (wabah flu), masker = face mask.
         infeksi = infection (infeksi telinga), terinfeksi = infected, bakteri = bacteria.
-        alergi = allergy (alergi debu), kedokteran = medicine (fakultas kedokteran = medical school).
+        jarum = needle (jarum suntik), kedokteran = medicine (fakultas kedokteran = medical school).
     examples:
       - text: Banyak mahasiswa kena flu minggu ini.
         ar_eg: طلبة كتير جالهم إنفلونزا الأسبوع ده.
@@ -38,10 +38,10 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: flu
-        ar_eg: إنفلونزا
-        ar: إنفلونزا
-        en: flu
+      - text: vaksin
+        ar_eg: تطعيم
+        ar: لقاح
+        en: vaccine
       - text: wabah
         ar_eg: وباء
         ar: وباء
@@ -50,11 +50,11 @@ exercises:
         ar_eg: كمامة
         ar: كمامة
         en: face mask
-      - text: alergi
-        ar_eg: حساسية
-        ar: حساسية
-        en: allergy
-    words: [flu, wabah, masker, alergi]
+      - text: jarum
+        ar_eg: إبرة
+        ar: إبرة
+        en: needle
+    words: [vaksin, wabah, masker, jarum]
   - id: e02
     type: match_pairs
     pairs:
@@ -91,14 +91,14 @@ exercises:
     words: [kedokteran]
   - id: e04
     type: fill_blank
-    sentence: Saya bersin terus kalau ada kucing. Saya ___ kucing.
+    sentence: Anak-anak mendapat ___ di puskesmas supaya tidak sakit.
     meaning:
-      ar_eg: بعطس على طول لو فيه قطة. عندي ___ من القطط.
-      ar: أعطس باستمرار عند وجود قطة. لديّ ___ من القطط.
-      en: I keep sneezing around cats. I have an ___ to cats.
-    options: [alergi, wabah, masker]
-    answers: [alergi]
-    words: [alergi, wabah, masker]
+      ar_eg: العيال بياخدوا ___ في الوحدة الصحية عشان ما يعيوش.
+      ar: يتلقّى الأطفال ___ في المركز الصحي كي لا يمرضوا.
+      en: The children get a ___ at the health centre so they don't get ill.
+    options: [vaksin, jarum, masker]
+    answers: [vaksin]
+    words: [vaksin, jarum, masker]
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -125,13 +125,13 @@ exercises:
   - id: e07
     type: multiple_choice
     question: Tahun itu ada ___ kolera di banyak kota.
-    options: [masker, alergi, wabah]
+    options: [masker, jarum, wabah]
     answer: 2
     explain:
       ar_eg: wabah = وباء.
       ar: wabah = وباء.
       en: wabah = epidemic.
-    words: [masker, alergi, wabah]
+    words: [masker, jarum, wabah]
   - id: e08
     type: build_sentence
     source:
@@ -157,7 +157,7 @@ exercises:
       ar_eg: لو جالك إنفلونزا، البس كمامة وارتاح.
       ar: إذا أُصبت بالإنفلونزا فارتدِ كمامة واسترح.
       en: If you catch the flu, wear a mask and rest.
-    words: [terinfeksi, flu, masker, infeksi, alergi]
+    words: [terinfeksi, masker, infeksi, vaksin, jarum]
 dialogue:
   lines:
     - speaker: Dokter Fitri
@@ -186,11 +186,11 @@ dialogue:
       ar: لا. المضاد الحيوي للبكتيريا فقط. ارتدِ كمامة كي لا تُصاب بالإنفلونزا.
       en: No. Antibiotics are only for bacteria. Just wear a mask so you don't catch the flu.
 new_words:
-  - word: flu
+  - word: vaksin
     pos: noun
-    ar_eg: إنفلونزا، دور برد
-    ar: إنفلونزا
-    en: flu
+    ar_eg: تطعيم، لقاح
+    ar: لقاح
+    en: vaccine
   - word: wabah
     pos: noun
     arabic: وباء
@@ -202,11 +202,11 @@ new_words:
     ar_eg: كمامة
     ar: كمامة
     en: face mask
-  - word: alergi
+  - word: jarum
     pos: noun
-    ar_eg: حساسية
-    ar: حساسية
-    en: allergy
+    ar_eg: إبرة
+    ar: إبرة
+    en: needle
   - word: infeksi
     pos: noun
     ar_eg: عدوى، التهاب

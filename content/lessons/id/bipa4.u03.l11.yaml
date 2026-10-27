@@ -77,14 +77,15 @@ exercises:
       en: membicarakan takes no tentang, and with membelikan the person comes first (membelikan adik saya buku).
     words: [menceritakan, membicarakan, membelikan]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة فيها تشبيه (مش مبالغة)؟
-      ar: أيّ جملة فيها تشبيه لا مبالغة؟
-      en: Which sentence is a simile (not hyperbole)?
-    options: ["Atapnya melengkung seperti perahu.", "Harganya selangit.", "Sudah seribu kali saya minta."]
-    answer: 0
-    words: [melengkung, perahu, selangit]
+    type: fill_blank
+    sentence: Situs ini ___ oleh pemerintah, jadi orang tidak boleh merusaknya.
+    meaning:
+      ar_eg: الموقع ده ___ من الحكومة، فمحدش يقدر يبوّظه.
+      ar: هذا الموقع ___ من الحكومة، فلا يجوز لأحد تخريبه.
+      en: This site is ___ by the government, so no one may damage it.
+    options: [dilindungi, didirikan, dibakar]
+    answers: [dilindungi]
+    words: [dilindungi, didirikan, dibakar]
   - id: e04
     type: listen
     text: Tolong sampaikan salam saya kepada Pak Yohanis.
@@ -124,13 +125,33 @@ exercises:
     distractors: [adalah, selangit]
     words: [patung, tebing]
   - id: e08
-    type: dictation
-    text: Kami membicarakan adat dan sejarah Toraja.
-    meaning:
-      ar_eg: اتناقشنا في عادات وتاريخ توراجا.
-      ar: ناقشنا عادات توراجا وتاريخها.
-      en: We discussed Toraja's customs and history.
-    words: [membicarakan, adat]
+    type: match_pairs
+    pairs:
+      - text: benteng
+        ar_eg: قلعة
+        ar: قلعة
+        en: fort
+      - text: sultan
+        ar_eg: سلطان
+        ar: سلطان
+        en: sultan
+      - text: lorong
+        ar_eg: ممر
+        ar: ممرّ
+        en: passage
+      - text: pameran
+        ar_eg: معرض
+        ar: معرض
+        en: exhibition
+      - text: peradaban
+        ar_eg: حضارة
+        ar: حضارة
+        en: civilisation
+      - text: dermaga
+        ar_eg: رصيف المينا
+        ar: رصيف الميناء
+        en: pier
+    words: [benteng, sultan, lorong, pameran, peradaban, dermaga]
   - id: e09
     type: translate
     direction: to_target

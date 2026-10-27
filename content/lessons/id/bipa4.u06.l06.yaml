@@ -11,16 +11,16 @@ slides:
     body:
       ar_eg: |
         mengemudi = يسوق (أرسم من menyetir)، berkendara = يسافر بعربية أو موتوسيكل.
-        bensin = بنزين، tol = طريق سريع بفلوس (jalan tol)، rem = فرامل.
-        kilometer = كيلومتر، ketinggian = ارتفاع، tersesat = تاه، ضاع الطريق.
+        mengendarai = يسوق، يركب (mengendarai motor)، tol = طريق سريع بفلوس (jalan tol)، rem = فرامل.
+        menabrak = يخبط في (menabrak pohon)، ketinggian = ارتفاع، tersesat = تاه، ضاع الطريق.
       ar: |
         mengemudi = يقود (أكثر رسمية من menyetir)، berkendara = يسافر بسيارة أو دراجة نارية.
-        bensin = بنزين، tol = طريق سريع برسوم (jalan tol)، rem = مكابح.
-        kilometer = كيلومتر، ketinggian = ارتفاع، tersesat = ضلّ الطريق.
+        mengendarai = يقود، يركب (mengendarai motor)، tol = طريق سريع برسوم (jalan tol)، rem = مكابح.
+        menabrak = يصطدم بـ (menabrak pohon)، ketinggian = ارتفاع، tersesat = ضلّ الطريق.
       en: |
         mengemudi = to drive (more formal than menyetir), berkendara = to ride, drive (as a trip).
-        bensin = petrol, tol = toll road (jalan tol), rem = brakes.
-        kilometer = kilometre, ketinggian = altitude, height; tersesat = lost (on the way).
+        mengendarai = to ride, drive (mengendarai motor); tol = toll road (jalan tol); rem = brakes.
+        menabrak = to crash into (menabrak pohon), ketinggian = altitude, height; tersesat = lost (on the way).
     examples:
       - text: Toraja hampir tiga ratus kilometer dari Makassar.
         ar_eg: توراجا تقريبًا تلتمية كيلو من ماكاسار.
@@ -46,15 +46,15 @@ exercises:
         ar_eg: يسافر بعربية
         ar: يسافر بسيارة
         en: to ride, drive
-      - text: bensin
-        ar_eg: بنزين
-        ar: بنزين
-        en: petrol
+      - text: mengendarai
+        ar_eg: يسوق، يركب
+        ar: يقود، يركب
+        en: to ride, drive
       - text: tol
         ar_eg: طريق سريع بفلوس
         ar: طريق برسوم
         en: toll road
-    words: [mengemudi, berkendara, bensin, tol]
+    words: [mengemudi, berkendara, mengendarai, tol]
   - id: e02
     type: match_pairs
     pairs:
@@ -62,10 +62,10 @@ exercises:
         ar_eg: فرامل
         ar: مكابح
         en: brakes
-      - text: kilometer
-        ar_eg: كيلو
-        ar: كيلومتر
-        en: kilometre
+      - text: menabrak
+        ar_eg: يخبط في
+        ar: يصطدم بـ
+        en: to crash into
       - text: ketinggian
         ar_eg: ارتفاع
         ar: ارتفاع
@@ -74,7 +74,7 @@ exercises:
         ar_eg: تاه
         ar: ضلّ الطريق
         en: lost
-    words: [rem, kilometer, ketinggian, tersesat]
+    words: [rem, menabrak, ketinggian, tersesat]
   - id: e03
     type: listen
     text: Bensin hampir habis. Kita berhenti di pom bensin dulu.
@@ -119,9 +119,9 @@ exercises:
       ar_eg: المدينة دي على ___ ألف متر. الجو فيها برد.
       ar: تقع هذه المدينة على ___ ألف متر. جوّها بارد.
       en: This town is at an ___ of a thousand metres. The air is cold.
-    options: [ketinggian, kilometer, bensin]
+    options: [ketinggian, menabrak, mengendarai]
     answers: [ketinggian]
-    words: [ketinggian, kilometer, bensin]
+    words: [ketinggian, menabrak, mengendarai]
   - id: e07
     type: multiple_choice
     question: Dia belum bisa ___ mobil. Dia masih belajar.
@@ -135,29 +135,29 @@ exercises:
   - id: e08
     type: build_sentence
     source:
-      ar_eg: سافرنا بالعربية تمن ساعات للجبل.
-      ar: سافرنا بالسيارة ثماني ساعات إلى الجبل.
-      en: We drove for eight hours to the mountains.
-    answer: Kami berkendara delapan jam ke gunung.
-    distractors: [rem, kilometer]
-    words: [berkendara, rem, kilometer]
+      ar_eg: العربية خبطت في شجرة عشان الفرامل بايظة.
+      ar: اصطدمت السيارة بشجرة لأن مكابحها معطّلة.
+      en: The car crashed into a tree because its brakes were broken.
+    answer: Mobil itu menabrak pohon karena remnya rusak.
+    distractors: [mengendarai, tol]
+    words: [menabrak, rem, mengendarai, tol]
   - id: e09
     type: translate
     direction: from_target
-    source_text: Jalan tol itu panjangnya dua puluh kilometer.
+    source_text: Ayah saya mengendarai motor ke kantor setiap hari.
     answers_meaning:
-      ar_eg: [الطريق السريع ده طوله عشرين كيلو, طول الطريق السريع ده عشرين كيلومتر]
-      ar: [طول ذلك الطريق السريع عشرون كيلومترًا, يبلغ طول الطريق السريع عشرين كيلومترًا]
-      en: [That toll road is twenty kilometres long, The toll road is 20 km long]
-    words: [tol, kilometer]
+      ar_eg: [أبويا بيروح الشغل بالموتوسيكل كل يوم, أبويا كل يوم بيسوق الموتوسيكل للمكتب]
+      ar: [يقود أبي الدراجة النارية إلى المكتب كل يوم, يذهب أبي إلى المكتب بدراجته النارية يوميًا]
+      en: [My father rides a motorbike to the office every day, Every day my dad rides his motorbike to work]
+    words: [mengendarai]
   - id: e10
     type: speaking
-    text: Kalau mengemudi jauh, beli bensin dan periksa rem.
+    text: Kalau berkendara jauh, periksa rem dan jangan menabrak!
     meaning:
-      ar_eg: لو هتسوق مسافة طويلة، فوّل بنزين واكشف على الفرامل.
-      ar: إذا قدت مسافة طويلة فاملأ الوقود وافحص المكابح.
-      en: If you're driving far, fill up and check the brakes.
-    words: [mengemudi, bensin, rem, ketinggian, tersesat]
+      ar_eg: لو مسافر بالعربية مسافة طويلة، اكشف على الفرامل وما تخبطش!
+      ar: إذا سافرت بالسيارة مسافة طويلة فافحص المكابح ولا تصطدم!
+      en: If you're driving far, check the brakes and don't crash!
+    words: [berkendara, rem, menabrak, ketinggian, tersesat]
 dialogue:
   lines:
     - speaker: Andi
@@ -196,11 +196,11 @@ new_words:
     ar_eg: يسافر بعربية أو موتوسيكل
     ar: يسافر بسيارة أو دراجة
     en: to drive, ride (a vehicle)
-  - word: bensin
-    pos: noun
-    ar_eg: بنزين
-    ar: بنزين
-    en: petrol, gasoline
+  - word: mengendarai
+    pos: verb
+    ar_eg: يسوق، يركب (عربية، موتوسيكل)
+    ar: يقود، يركب
+    en: to ride, drive (a vehicle)
   - word: tol
     pos: noun
     ar_eg: طريق سريع بفلوس (jalan tol)
@@ -211,11 +211,11 @@ new_words:
     ar_eg: فرامل
     ar: مكابح
     en: brakes
-  - word: kilometer
-    pos: noun
-    ar_eg: كيلومتر
-    ar: كيلومتر
-    en: kilometre
+  - word: menabrak
+    pos: verb
+    ar_eg: يخبط في
+    ar: يصطدم بـ
+    en: to crash into, hit
   - word: ketinggian
     pos: noun
     ar_eg: ارتفاع
