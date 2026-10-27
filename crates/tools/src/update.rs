@@ -220,7 +220,13 @@ pub fn write_manifest(
             UpdatePlatform::AndroidArm64 => "apk",
             UpdatePlatform::MacosArm64 | UpdatePlatform::MacosX86_64 => "app.zip",
         };
-        let file = format!("kabar-{version}-{}.{ext}", platform.as_str());
+        // Preview builds all share one version, so the build number keeps
+        // each file name unique: replacing a live file mid-upload would hand
+        // devices still holding the old feed a 404 or a hash mismatch (#295).
+        let file = match channel {
+            Channel::Preview => format!("kabar-{version}-b{build}-{}.{ext}", platform.as_str()),
+            _ => format!("kabar-{version}-{}.{ext}", platform.as_str()),
+        };
         fs::write(out.join(&file), &bytes)?;
         assets.push(UpdateAsset {
             platform: *platform,
@@ -356,8 +362,12 @@ mod tests {
         assert!(
             write_manifest(&out, Channel::Beta, "1.0.0", 0, None, &assets, UpdateNotes::default()).is_ok()
         );
-        assert!(
-            write_manifest(&out, Channel::Preview, "0.1.0", 7, None, &assets, UpdateNotes::default()).is_ok()
+        let preview =
+            write_manifest(&out, Channel::Preview, "0.1.0", 7, None, &assets, UpdateNotes::default());
+        assert_eq!(
+            preview.unwrap().assets[0].file,
+            "kabar-0.1.0-b7-macos-arm64.app.zip",
+            "preview names carry the build"
         );
     }
 

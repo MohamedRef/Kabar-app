@@ -17,6 +17,7 @@ use super::ReaderState;
 use super::doc::ReadDoc;
 use super::explain::{GrammarEntry, library, voice_of};
 use crate::i18n::Msg;
+use crate::lesson::Rich;
 use crate::{Db, Ui};
 
 pub const CSS: &str = include_str!("../../assets/reader-grammar.css");
@@ -94,6 +95,17 @@ pub fn syllabus(db: &Db) -> Syllabus {
 
 fn title(id: &str, v: Voice) -> String {
     library().get(id).map_or_else(|| id.to_string(), |p| v.title(&p.title).to_string())
+}
+
+/// A rule's title, with its Latin words isolated (`<bdi>`) so a title like
+/// «الزمن من غير تصريف (sudah، belum، sedang، akan)» keeps its order and
+/// its brackets in an Arabic line.
+#[component]
+fn Title(id: String, voice: Voice) -> Element {
+    let target = if id.starts_with("jv.") { "jv" } else { "id" };
+    rsx! {
+        span { class: "gr-title", Rich { text: title(&id, voice), target } }
+    }
 }
 
 fn standing_msg(s: Standing) -> Option<Msg> {
@@ -177,7 +189,7 @@ pub fn TextGrammar() -> Element {
                 for f in found.iter() {
                     li { key: "{f.grammar}", class: "gr-item {standing_class(f.standing)}",
                         div { class: "gr-head",
-                            span { class: "gr-title", "{title(&f.grammar, voice)}" }
+                            Title { id: f.grammar.clone(), voice }
                             span { class: "chip level", "{f.level}" }
                             if let Some(m) = standing_msg(f.standing) {
                                 span { class: "chip gr-standing", "{ui.t(m)}" }
@@ -242,7 +254,7 @@ pub fn GrammarAt(doc: Rc<ReadDoc>, grammar: Rc<DocGrammar>, i: usize, voice: Voi
                 div { key: "{f.grammar}", class: "gr-item {standing_class(f.standing)}",
                     div { class: "gr-head",
                         bdi { class: "latin chip gr-hit {h.role.css()}", dir: "ltr", "{hit_label(&doc, &h)}" }
-                        span { class: "gr-title", "{title(&f.grammar, voice)}" }
+                        Title { id: f.grammar.clone(), voice }
                         if let Some(m) = standing_msg(f.standing) {
                             span { class: "chip gr-standing", "{ui.t(m)}" }
                         }
@@ -300,7 +312,7 @@ pub fn LineGrammar(seg: usize) -> Element {
                         let mut p = st.panel;
                         p.set(Some(super::Panel::Explain(token)));
                     },
-                    "{title(&f.grammar, voice)}"
+                    Title { id: f.grammar.clone(), voice }
                 }
             }
         }
@@ -323,6 +335,17 @@ mod tests {
 
     fn at(d: &ReadDoc, w: &str) -> usize {
         d.tokens.iter().position(|t| d.text(t.start, t.end) == w).unwrap()
+    }
+
+    #[test]
+    fn mixed_titles_isolate_each_latin_word() {
+        // #304: the Egyptian title of the aspect markers, Latin words between
+        // Arabic commas inside brackets.
+        let t = title("id.aspect.markers", Voice::Arz);
+        assert!(t.contains("(sudah، belum، sedang، akan)"), "{t}");
+        let latin: Vec<String> =
+            crate::lesson::latin_runs(&t).into_iter().filter(|(l, _)| *l).map(|(_, r)| r).collect();
+        assert_eq!(latin, ["sudah", "belum", "sedang", "akan"]);
     }
 
     #[test]

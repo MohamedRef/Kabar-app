@@ -1,172 +1,193 @@
 schema: kabar.lesson/v1
 id: j5.u04.l08
 language: jv
-title: Voice note Mas Yudha
+title: Caption Instagram
 can_do:
-  ar_eg: تسمع فويس نوت مخلوط اللغات وتفهم الشخص فين وهيتأخر قد إيه.
-  ar: أن تستمع إلى رسالة صوتية مختلطة اللغات وتفهم أين المتحدث وكم سيتأخر.
-  en: Follow a code-mixed voice note and catch where your friend is and how late he'll be.
+  ar_eg: تقرا كابشن بوست مخلوط جاوي وإندونيسي وإنجليزي وتفهم هو بيقول إيه.
+  ar: أن تقرأ تعليق منشور يمزج الجاوية والإندونيسية والإنجليزية وتفهم مضمونه.
+  en: Read a post caption that mixes Javanese, Indonesian and English.
+slides:
+  - title: Postingane Mas Yudha
+    body:
+      ar_eg: |
+        يودا نزّل صورة من متحف أمباراوا، والكابشن ده تحتها. اعمل التلات خطوات: لاقي الهيكل الجاوي، علّم الباقي، ورجّع الإملا.
+        كلمات جديدة: akhire = أخيرًا (akhirnya: جذر إندونيسي من «آخِر» العربي + ـe الجاوية)، keren = جامد / روعة (سلانج إندونيسي)، wajib = لازم، من «واجب». وsepur uap = قطر بخاري (uap زي الإندونيسي).
+      ar: |
+        نشر يودا صورة من متحف أمباراوا، وهذا التعليق تحتها. طبّق الخطوات الثلاث: جد الهيكل الجاوي، وصنّف البقية، وردّ الإملاء.
+        كلمات جديدة: akhire = أخيرًا (akhirnya: جذر إندونيسي من «آخِر» العربية + ـe الجاوية)، وkeren = رائع (عامية إندونيسية)، وwajib = يجب، من «واجب». وsepur uap = قطار بخاري (uap كالإندونيسية).
+      en: |
+        Yudha posted a photo from the Ambarawa museum with this caption. Do the three steps: find the Javanese frame, tag the rest, restore the spelling.
+        New words: akhire = finally (akhirnya: an Indonesian root from Arabic «آخِر» + Javanese -e), keren = cool (Indonesian slang), wajib = a must, from «واجب». sepur uap = steam train (uap as in Indonesian).
+    grammar: jv.codemix
+    examples:
+      - text: Akhire sempet dolan neng Ambarawa, guys!
+        ar_eg: أخيرًا لحقت أروح أمباراوا يا جماعة!
+        ar: أخيرًا سنحت لي فرصة زيارة أمباراوا يا جماعة!
+        en: Finally got the chance to visit Ambarawa, guys!
+      - text: Sepur uap lawas iki isih mlaku, keren bgt.
+        ar_eg: القطر البخاري القديم ده لسه شغّال، جامد أوي.
+        ar: هذا القطار البخاري القديم ما زال يعمل، رائع جدًا.
+        en: This old steam train still runs, so cool.
+      - text: Sing durung tau neng kene, wajib mampir!
+        ar_eg: اللي لسه ما جاش هنا، لازم يعدّي!
+        ar: من لم يأتِ إلى هنا بعد، فعليه أن يزوره!
+        en: If you've never been here, you have to drop by!
 exercises:
   - id: e01
-    type: listen
-    text: Bro, aku wis OTW neng stasiun, tapi macet banget.
-    question:
-      ar_eg: يودا بعتلك فويس. هو فين دلوقتي؟
-      ar: أرسل لك يودا رسالة صوتية. أين هو الآن؟
-      en: Yudha sent you a voice note. Where is he now?
-    options: [isih ing omah, OTW neng stasiun, wis ing museum]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: البوست بيقول إيه عن القطر البخاري القديم؟
+      ar: ماذا يقول المنشور عن القطار البخاري القديم؟
+      en: What does the post say about the old steam train?
+    options: [wis rusak, isih mlaku, ana ing Madiun]
     answer: 1
-    meaning:
-      ar_eg: يا صاحبي، أنا في السكة للمحطة، بس الزحمة فظيعة.
-      ar: يا صديقي، أنا في الطريق إلى المحطة، لكن الزحام شديد جدًا.
-      en: Bro, I'm on my way to the station, but the traffic is terrible.
-    explain:
-      ar_eg: macet = زحمة مرور (زي الإندونيسي). وtapi إندونيسي، الجاوي nanging.
-      ar: macet = زحام مروري (كالإندونيسية)، وtapi إندونيسية ومقابلها الجاوي nanging.
-      en: macet = traffic jam (as in Indonesian); tapi is Indonesian, the Javanese is nanging.
-    words: [macet, OTW]
+    words: [keren]
   - id: e02
-    type: listen
-    text: Sabar ya, aku telat sepuluh menit.
-    question:
-      ar_eg: هيتأخر قد إيه؟
-      ar: كم سيتأخر؟
-      en: How late will he be?
-    options: [sepuluh menit, sejam, limang menit]
+    type: multiple_choice
+    question: Akhire sempet dolan neng Ambarawa, guys!
+    question_meaning:
+      ar_eg: akhire معناها إيه بالإندونيسي؟
+      ar: ما معنى akhire بالإندونيسية؟
+      en: What is akhire in Indonesian?
+    options: [akhirnya, akhir pekan, akhiran]
     answer: 0
-    meaning:
-      ar_eg: اصبر شوية، أنا متأخر عشر دقايق.
-      ar: اصبر قليلًا، سأتأخر عشر دقائق.
-      en: Hang on, I'm ten minutes late.
     explain:
-      ar_eg: telat = متأخر (terlambat). كلمة إندونيسية عامية، والجاوي كمان بيستخدمها.
-      ar: telat = متأخر (terlambat)، كلمة إندونيسية عامية يستعملها الجاويون أيضًا.
-      en: telat = late (terlambat), colloquial Indonesian that Javanese speakers use too.
-    words: [telat, sabar]
+      ar_eg: akhir (من «آخِر») + ـe الجاوية = akhirnya. جذر إندونيسي بلاحقة جاوية، ده الـ codemix بعينه.
+      ar: 'akhir (من «آخِر») + ـe الجاوية = akhirnya: جذر إندونيسي بلاحقة جاوية، وهذا جوهر المزج.'
+      en: akhir (from «آخِر») + Javanese -e = akhirnya. An Indonesian root with a Javanese ending, code-mixing in one word.
+    words: [akhire]
   - id: e03
     type: listen
-    text: Tikete wis tak tuku, mengko tak share neng grup.
+    text: Sing durung tau neng kene, wajib mampir!
     question:
-      ar_eg: هيعمل share لإيه في الجروب؟
-      ar: ماذا سيشارك في المجموعة؟
-      en: What will he share in the group?
-    options: [videone, fotone, tikete]
+      ar_eg: يودا بيقول إيه للي لسه ما راحش؟
+      ar: ماذا يقول يودا لمن لم يزر المكان بعد؟
+      en: What does Yudha tell people who haven't been?
+    options: [aja teka, mulih wae, wajib mampir]
     answer: 2
     meaning:
-      ar_eg: التذاكر أنا اشتريتها، وبعدين هبعتها على الجروب.
-      ar: اشتريت التذاكر، وسأشاركها في المجموعة لاحقًا.
-      en: I've bought the tickets; I'll share them in the group later.
-    words: [grup]
+      ar_eg: اللي لسه ما جاش هنا، لازم يعدّي!
+      ar: من لم يأتِ إلى هنا بعد، فعليه أن يزوره!
+      en: If you've never been here, you have to drop by!
+    words: [wajib, mampir]
   - id: e04
     type: match_pairs
     pairs:
-      - text: macet
-        ar_eg: زحمة مرور
-        ar: زحام مروري
-        en: traffic jam
-      - text: telat
-        ar_eg: متأخر
-        ar: متأخر
-        en: late
-      - text: OTW
-        ar_eg: في السكة
-        ar: في الطريق
-        en: on the way
-      - text: sabar
-        ar_eg: صبور / اصبر
-        ar: صابر / اصبر
-        en: patient, hang on
-      - text: tak share
-        ar_eg: هعمل شير
-        ar: سأشارك
-        en: I'll share
-    words: [macet, telat, OTW, sabar]
+      - text: akhire
+        ar_eg: أخيرًا
+        ar: أخيرًا
+        en: finally
+      - text: wajib
+        ar_eg: لازم
+        ar: يجب
+        en: a must
+      - text: keren
+        ar_eg: جامد / روعة
+        ar: رائع
+        en: cool
+      - text: sempet
+        ar_eg: يلحق / تيجي له فرصة
+        ar: تسنح له الفرصة
+        en: get the chance
+      - text: mampir
+        ar_eg: يعدّي على
+        ar: يمرّ بـ
+        en: drop by
+    words: [akhire, wajib, keren, sempet, mampir]
   - id: e05
-    type: multiple_choice
-    question: Bro, aku wis OTW neng stasiun, tapi macet banget.
-    question_meaning:
-      ar_eg: أنهي كلمتين هنا هم الهيكل الجاوي؟
-      ar: أيّ كلمتين هنا من الهيكل الجاوي؟
-      en: Which two words here are the Javanese frame?
-    options: ["wis, neng", "bro, OTW", "tapi, macet"]
-    answer: 0
-    explain:
-      ar_eg: wis وneng (وbanget) جاوي. bro وOTW إنجليزي، tapi وmacet إندونيسي.
-      ar: wis وneng (وbanget) جاوية، وbro وOTW إنجليزية، وtapi وmacet إندونيسية.
-      en: wis and neng (and banget) are Javanese; bro and OTW are English; tapi and macet are Indonesian.
-  - id: e06
     type: fill_blank
-    sentence: Sabar ya, aku ___ sepuluh menit.
+    sentence: Sepur uap lawas iki isih mlaku, ___ bgt.
     meaning:
-      ar_eg: اصبر شوية، أنا متأخر عشر دقايق.
-      ar: اصبر قليلًا، سأتأخر عشر دقائق.
-      en: Hang on, I'm ten minutes late.
-    options: [macet, sabar, telat]
-    answers: [telat]
-    words: [telat]
-  - id: e07
+      ar_eg: القطر البخاري القديم ده لسه شغّال، جامد أوي.
+      ar: هذا القطار البخاري القديم ما زال يعمل، رائع جدًا.
+      en: This old steam train still runs, so cool.
+    options: [wajib, keren, akhire]
+    answers: [keren]
+    words: [keren]
+  - id: e06
     type: dictation
-    text: Tikete wis tak tuku, mengko tak share neng grup.
+    text: Akhire sempet dolan neng Ambarawa, guys!
     meaning:
-      ar_eg: التذاكر أنا اشتريتها، وبعدين هبعتها على الجروب.
-      ar: اشتريت التذاكر، وسأشاركها في المجموعة لاحقًا.
-      en: I've bought the tickets; I'll share them in the group later.
-    words: [grup]
-  - id: e08
+      ar_eg: أخيرًا لحقت أروح أمباراوا يا جماعة!
+      ar: أخيرًا سنحت لي فرصة زيارة أمباراوا يا جماعة!
+      en: Finally got the chance to visit Ambarawa, guys!
+    words: [akhire, sempet]
+  - id: e07
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (شات) اصبر شوية، أنا متأخر، الزحمة جامدة.
-      ar: (دردشة) اصبر قليلًا، أنا متأخر، الزحام شديد.
-      en: (chat) Hang on, I'm late, the traffic's really bad.
-    answers:
-      - Sabar ya, aku telat, macet banget.
-      - Sabar ya, aku telat, macet bgt.
-      - Sabar, aku telat, macet banget.
-      - Sabar ya, aku telat merga macet banget.
-      - Sabar ya, aku telat amarga macet banget.
-      - Sabar ya, aku telat, dalane macet banget.
-      - Sabar ya, aku telat, macet.
-    words: [sabar, telat, macet]
+    direction: from_target
+    source_text: Sing durung tau neng kene, wajib mampir!
+    answers_meaning:
+      ar_eg:
+        - اللي لسه ما جاش هنا، لازم يعدّي!
+        - اللي عمره ما جه هنا، لازم ييجي!
+        - اللي لسه ما زارش المكان ده، لازم يعدّي عليه!
+        - اللي ما جاش هنا قبل كده، لازم ييجي!
+      ar:
+        - من لم يأتِ إلى هنا بعد، فعليه أن يزوره!
+        - من لم يزر هذا المكان من قبل، فلا بد أن يمرّ به!
+        - من لم يأتِ إلى هنا قط، يجب أن يزوره!
+      en:
+        - If you've never been here, you have to drop by!
+        - Anyone who hasn't been here yet must drop by!
+        - If you haven't been here yet, you must drop by!
+        - Those who have never been here must visit!
+        - If you've never been here, you must stop by!
+    words: [wajib, mampir]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: (كابشن) لازم تعدّي على المتحف ده، جامد أوي!
+      ar: (تعليق منشور) يجب أن تمرّ بهذا المتحف، رائع جدًا!
+      en: (caption) You must drop by this museum, it's so cool!
+    answer: Wajib mampir neng museum iki, keren bgt!
+    distractors: [akhire, ora]
+    words: [wajib, keren]
 dialogue:
-  title: Ing stasiun
+  title: Telung basa
   lines:
-    - speaker: Mohamed
-      text: Mas, kowe neng ngendi? Wis jam pitu!
-      ar_eg: يا يودا، إنت فين؟ الساعة بقت سبعة!
-      ar: يا يودا، أين أنت؟ صارت الساعة السابعة!
-      en: Yudha, where are you? It's already seven!
     - speaker: Mas Yudha
-      text: Sorry, bro, isih macet. Aku telat sithik.
-      ar_eg: سوري يا صاحبي، لسه زحمة. هتأخر شوية.
-      ar: آسف يا صديقي، ما زال الزحام. سأتأخر قليلًا.
-      en: Sorry, bro, still stuck in traffic. I'll be a bit late.
+      text: Mohamed, wis maca captionku?
+      ar_eg: يا محمد، قريت الكابشن بتاعي؟
+      ar: يا محمد، هل قرأت تعليقي؟
+      en: Mohamed, have you read my caption?
     - speaker: Mohamed
-      text: Gpp. Tikete wis ana?
-      ar_eg: مفيش مشكلة. التذاكر معاك؟
-      ar: لا بأس. هل التذاكر معك؟
-      en: No problem. Do you have the tickets?
+      text: Wis. "Wajib" iku saka basa Arab, Mas. Wajib, kudu.
+      ar_eg: قريته. «wajib» دي من العربي يا يودا. واجب، يعني لازم.
+      ar: 'قرأته. «wajib» من العربية يا يودا: واجب، أي يجب.'
+      en: Yes. "Wajib" is from Arabic, Yudha. Obligatory, a must.
     - speaker: Mas Yudha
-      text: Wis tak tuku. Wis tak share neng grup.
-      ar_eg: اشتريتها. وبعتها على الجروب خلاص.
-      ar: اشتريتها، وشاركتها في المجموعة.
-      en: I bought them. I've shared them in the group.
+      text: Tenan? Lan "akhire"?
+      ar_eg: بجد؟ و«akhire»؟
+      ar: حقًا؟ و«akhire»؟
+      en: Really? And "akhire"?
     - speaker: Mohamed
-      text: Oke, aku nunggu neng kene wae.
-      ar_eg: ماشي، أنا مستنّيك هنا.
-      ar: حسنًا، سأنتظرك هنا.
-      en: OK, I'll wait here.
+      text: Akhir uga saka basa Arab. Lan "-e" iku Jawa!
+      ar_eg: akhir برضه من العربي. والـ «-e» دي جاوي!
+      ar: akhir أيضًا من العربية، و«-e» جاوية!
+      en: Akhir is from Arabic too. And the "-e" is Javanese!
+    - speaker: Mas Yudha
+      text: Lho, keren bgt! Telung basa ing siji caption.
+      ar_eg: جامد أوي! تلات لغات في كابشن واحد.
+      ar: رائع جدًا! ثلاث لغات في تعليق واحد.
+      en: So cool! Three languages in one caption.
 new_words:
-  - word: macet
+  - word: akhire
+    pos: adverb
+    ar_eg: أخيرًا (akhir + ـe)
+    ar: أخيرًا (akhir + ـe)
+    en: finally (akhir + -e) = akhirnya
+    arabic: آخِر
+  - word: wajib
     pos: adjective
-    ar_eg: زحمة مرور
-    ar: زحام مروري
-    en: jammed, traffic jam = macet
-  - word: telat
+    ar_eg: لازم / واجب
+    ar: واجب / لا بد منه
+    en: a must, obligatory = wajib
+    arabic: واجب
+  - word: keren
     pos: adjective
-    ar_eg: متأخر
-    ar: متأخر
-    en: late = terlambat, telat
+    ar_eg: جامد / روعة (سلانج)
+    ar: رائع (عامية)
+    en: cool (slang) = keren
 review:
   status: draft
   verified: false

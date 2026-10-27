@@ -1,179 +1,197 @@
 schema: kabar.lesson/v1
 id: j5.u02.l09
 language: jv
-title: Pengumuman kerja bakti
+title: Warta radio
 can_do:
-  ar_eg: تقرا إعلان الحي وتعرف إيه اللي هيتعمل وإمتى ومين هيعمله.
-  ar: أن تقرأ إعلان الحي وتعرف ما سيُعمل ومتى ومن سيقوم به.
-  en: Read a neighbourhood notice and find what will be done, when and by whom.
-slides:
-  - title: Pengumuman saka Pak RT
-    body:
-      ar_eg: |
-        ده إعلان متعلّق في حي جنب الميدان (Alun-alun) في ماديون، كاتبه Pak RT (رئيس الحتة). الإعلانات بتحب المبني للمجهول زي الأخبار.
-        كلمات جديدة: kerja bakti = يوم شغل تطوّعي لأهل الحي (تنضيف وتصليح، زي الإندونيسي)، disiapake = اتجهّز (disiapkan، من siap + -ake). وbareng-bareng = مع بعض. وbakal = هـ (المستقبل، akan).
-      ar: |
-        هذا إعلان معلّق في حيّ قرب الميدان (Alun-alun) في ماديون، كتبه Pak RT (رئيس الحي). والإعلانات تحب المبني للمجهول كالأخبار.
-        كلمات جديدة: kerja bakti = يوم عمل تطوعي لأهل الحي (تنظيف وإصلاح، كالإندونيسية)، وdisiapake = جُهّز (disiapkan، من siap + -ake). وbareng-bareng = معًا، وbakal = سوف (akan).
-      en: |
-        A notice on a board near the Alun-alun in Madiun, from Pak RT (the neighbourhood head). Notices love the passive, just like news.
-        New words: kerja bakti = a community work day (cleaning and repairs, as in Indonesian), disiapake = was prepared (disiapkan, from siap + -ake). bareng-bareng = together, and bakal = will (akan).
-    grammar: jv.passive.written
-    examples:
-      - text: Kerja bakti bakal dianakake ing dina Minggu esuk, jam pitu.
-        ar_eg: يوم الشغل التطوعي هيتعمل يوم الحد الصبح، الساعة سبعة.
-        ar: سيُقام يوم العمل التطوعي صباح الأحد في الساعة السابعة.
-        en: The community work day will be held on Sunday morning at seven.
-      - text: Kali lan dalan ing kampung bakal diresiki bareng-bareng.
-        ar_eg: النهر والشوارع في الحي هيتنضّفوا مع بعض.
-        ar: سيُنظَّف النهر والطرق في الحي معًا.
-        en: The river and the roads in the neighbourhood will be cleaned together.
-      - text: Panganan disiapake dening ibu-ibu.
-        ar_eg: الأكل هتجهّزه الستات.
-        ar: تُعِدّ السيداتُ الطعام.
-        en: The food is prepared by the women.
+  ar_eg: تسمع نشرة أخبار قصيرة بالجاوي وتفهم إيه اللي حصل ومين عمل إيه.
+  ar: أن تستمع إلى نشرة أخبار جاوية قصيرة وتفهم ما حدث ومن فعل ماذا.
+  en: Follow a short Javanese radio news bulletin by ear.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: يوم الشغل التطوعي إمتى؟
-      ar: متى يوم العمل التطوعي؟
-      en: When is the community work day?
-    options: [Setu sore, Minggu esuk, Minggu sore]
-    answer: 1
-    words: [kerja bakti]
+    type: listen
+    text: Warta saka Madiun. Esuk iki, dalan ing Manguharjo kebanjiran maneh.
+    question:
+      ar_eg: دي نشرة الراديو الصبح. إيه اللي حصل؟
+      ar: هذه نشرة الإذاعة صباحًا. ماذا حدث؟
+      en: This is the morning radio news. What happened?
+    options:
+      - Dalan ing Manguharjo kebanjiran.
+      - Ana pameran ing Stasiun Madiun.
+      - Sepur saka Jakarta wis teka.
+    answer: 0
+    meaning:
+      ar_eg: أخبار من ماديون. النهارده الصبح، الشارع في مانجوهارجو غرق مية تاني.
+      ar: أخبار من ماديون. صباح اليوم غمرت المياهُ طريقَ مانغوهارجو مرة أخرى.
+      en: News from Madiun. This morning the road in Manguharjo was flooded again.
+    explain:
+      ar_eg: maneh = تاني (lagi). يعني ده بيحصل كتير هناك، فاكر kerep؟
+      ar: maneh = مرة أخرى (lagi)، أي أن ذلك يتكرر هناك، كما في kerep.
+      en: maneh = again (lagi), so it happens often there; remember kerep?
+    words: [kebanjiran, maneh]
   - id: e02
     type: listen
-    text: Kali lan dalan ing kampung bakal diresiki bareng-bareng.
+    text: Dalan kasebut ditutup dening polisi nganti sore.
     question:
-      ar_eg: إيه اللي هيتنضّف؟
-      ar: ما الذي سيُنظَّف؟
-      en: What will be cleaned?
-    options: [masjid lan pasar, stasiun, kali lan dalan]
+      ar_eg: مين اللي قفل الشارع؟
+      ar: من أغلق الطريق؟
+      en: Who closed the road?
+    options: [warga, polisi, lurah]
+    answer: 1
+    meaning:
+      ar_eg: الشرطة قفلت الشارع ده لحد العصر.
+      ar: أغلقت الشرطة هذا الطريق حتى المساء.
+      en: The road was closed by the police until the afternoon.
+    explain:
+      ar_eg: ditutup = اتقفل (ditutup). اللي بعد dening = الفاعل.
+      ar: ditutup = أُغلق (ditutup)، ومن يأتي بعد dening هو الفاعل.
+      en: ditutup = was closed (ditutup); whoever follows dening did it.
+    words: [ditutup, dening]
+  - id: e03
+    type: listen
+    text: Sesuk esuk, dalan kasebut bakal diresiki dening warga.
+    question:
+      ar_eg: الشارع هيتنضّف إمتى؟
+      ar: متى سيُنظَّف الطريق؟
+      en: When will the road be cleaned?
+    options: [esuk iki, nganti sore, sesuk esuk]
     answer: 2
     meaning:
-      ar_eg: النهر والشوارع في الحي هيتنضّفوا مع بعض.
-      ar: سيُنظَّف النهر والطرق في الحي معًا.
-      en: The river and the roads in the neighbourhood will be cleaned together.
-    words: [diresiki, kali]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: مين اللي هيجهّز الأكل؟
-      ar: من سيُعِدّ الطعام؟
-      en: Who prepares the food?
-    options: [ibu-ibu, Pak RT, bocah-bocah]
-    answer: 0
-    explain:
-      ar_eg: '«disiapake dening ibu-ibu»: اللي بعد dening هم اللي بيجهّزوا.'
-      ar: '«disiapake dening ibu-ibu»: من يأتي بعد dening هو من يُعِدّ.'
-      en: '"disiapake dening ibu-ibu": the ones after dening do the preparing.'
-    words: [disiapake, dening]
+      ar_eg: بكرة الصبح، السكان هينضّفوا الشارع ده.
+      ar: صباح الغد سينظّف السكانُ هذا الطريق.
+      en: Tomorrow morning the road will be cleaned by the residents.
+    words: [diresiki, warga, bakal]
   - id: e04
     type: match_pairs
     pairs:
-      - text: kerja bakti
-        ar_eg: يوم شغل تطوعي للحي
-        ar: يوم عمل تطوعي للحي
-        en: community work day
-      - text: disiapake
-        ar_eg: اتجهّز
-        ar: جُهّز
-        en: was prepared
-      - text: dianakake
-        ar_eg: اتعمل / اتنظّم
-        ar: أُقيم
-        en: was held
+      - text: ditutup
+        ar_eg: اتقفل
+        ar: أُغلق
+        en: was closed
       - text: diresiki
         ar_eg: اتنضّف
         ar: نُظّف
         en: was cleaned
-      - text: bareng-bareng
-        ar_eg: مع بعض
-        ar: معًا
-        en: together
-    words: [kerja bakti, disiapake, dianakake, diresiki]
+      - text: kebanjiran
+        ar_eg: غرق / اتغمر بالمية
+        ar: غمرته المياه
+        en: got flooded
+      - text: luber
+        ar_eg: فاض / طفح
+        ar: فاض
+        en: overflowed
+      - text: kerep
+        ar_eg: كتير / غالبًا
+        ar: كثيرًا
+        en: often
+    words: [ditutup, diresiki, kebanjiran, luber, kerep]
   - id: e05
     type: fill_blank
-    sentence: Panganan disiapake ___ ibu-ibu.
+    sentence: Dalan kasebut ___ dening polisi nganti sore.
     meaning:
-      ar_eg: الأكل هتجهّزه الستات.
-      ar: تُعِدّ السيداتُ الطعام.
-      en: The food is prepared by the women.
-    options: [saka, dening, ing]
-    answers: [dening]
-    words: [disiapake, dening]
+      ar_eg: الشرطة قفلت الشارع ده لحد العصر.
+      ar: أغلقت الشرطة هذا الطريق حتى المساء.
+      en: The road was closed by the police until the afternoon.
+    options: [diresiki, dibangun, ditutup]
+    answers: [ditutup]
+    words: [ditutup]
   - id: e06
     type: dictation
-    text: Kerja bakti bakal dianakake ing dina Minggu esuk.
+    text: Sesuk esuk, dalan kasebut bakal diresiki dening warga.
     meaning:
-      ar_eg: يوم الشغل التطوعي هيتعمل يوم الحد الصبح.
-      ar: سيُقام يوم العمل التطوعي صباح الأحد.
-      en: The community work day will be held on Sunday morning.
-    words: [kerja bakti, dianakake]
+      ar_eg: بكرة الصبح، السكان هينضّفوا الشارع ده.
+      ar: صباح الغد سينظّف السكانُ هذا الطريق.
+      en: Tomorrow morning the road will be cleaned by the residents.
+    words: [diresiki, warga, dening, bakal]
   - id: e07
-    type: build_sentence
-    source:
-      ar_eg: (بأسلوب الإعلان) الأكل هتجهّزه الستات.
-      ar: (بأسلوب الإعلان) تُعِدّ السيدات الطعام.
-      en: (notice style) The food is prepared by the women.
-    answer: Panganan disiapake dening ibu-ibu.
-    distractors: [dianakake, saka]
-    words: [disiapake]
-  - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: (بأسلوب الإعلان) النهر هيتنضّف مع بعض.
-      ar: (بأسلوب الإعلان) سيُنظَّف النهر معًا.
-      en: (notice style) The river will be cleaned together.
+      ar_eg: (بأسلوب الأخبار) الشرطة قفلت الشارع.
+      ar: (بأسلوب الأخبار) أغلقت الشرطة الطريق.
+      en: (news style) The road was closed by the police.
     answers:
-      - Kali bakal diresiki bareng-bareng.
-      - Kaline bakal diresiki bareng-bareng.
-      - Kali kasebut bakal diresiki bareng-bareng.
-      - Kali iku bakal diresiki bareng-bareng.
-      - Kali bakal diresiki bebarengan.
-      - Kaline bakal diresiki bebarengan.
-    words: [diresiki, kali]
+      - Dalan kasebut ditutup dening polisi.
+      - Dalan iku ditutup dening polisi.
+      - Dalane ditutup dening polisi.
+      - Dalan ditutup dening polisi.
+      - Dalan iki ditutup dening polisi.
+    words: [ditutup, dening]
+  - id: e08
+    type: speaking
+    text: Warta saka Madiun. Dalan ing Manguharjo kebanjiran maneh.
+    meaning:
+      ar_eg: أخبار من ماديون. الشارع في مانجوهارجو غرق مية تاني.
+      ar: أخبار من ماديون. غمرت المياهُ طريقَ مانغوهارجو مرة أخرى.
+      en: News from Madiun. The road in Manguharjo was flooded again.
+    words: [kebanjiran, maneh]
+  - id: e09
+    type: fill_blank
+    sentence: Sesuk dalan iki ___ diresiki.
+    meaning:
+      ar_eg: بكرة الشارع ده هيتنضّف.
+      ar: سيُنظَّف هذا الشارع غدًا.
+      en: Tomorrow this road will be cleaned.
+    options: [bakal, wis, lagi]
+    answers: [bakal]
+    words: [bakal]
+  - id: e10
+    type: multiple_choice
+    question: Dalan ing Manguharjo kebanjiran maneh.
+    question_meaning:
+      ar_eg: معنى الجملة دي إيه؟
+      ar: ما معنى هذه الجملة؟
+      en: What does this sentence mean?
+    options: ['الشارع في مانجوهارجو غرق مية تاني.', 'الشارع في مانجوهارجو لسه ماغرقش.', 'الشارع في مانجوهارجو عمره ما غرق.']
+    answer: 0
+    explain:
+      ar_eg: maneh = تاني (lagi). بتيجي بعد الفعل.
+      ar: maneh = مرة أخرى (lagi)، وتأتي بعد الفعل.
+      en: maneh = again (lagi); it comes after the verb.
+    words: [maneh, kebanjiran]
 dialogue:
-  title: Minggu esuk
+  title: Krungu warta radio
   lines:
-    - speaker: Pak Harjo
-      text: Mas, wis maca pengumuman? Minggu esuk ana kerja bakti.
-      ar_eg: يا محمد، قريت الإعلان؟ يوم الحد الصبح فيه يوم شغل تطوعي.
-      ar: يا محمد، هل قرأت الإعلان؟ صباح الأحد يوم عمل تطوعي.
-      en: Mohamed, have you read the notice? There's a community work day on Sunday morning.
+    - speaker: Mbak Ayu
+      text: Mohamed, krungu warta radio esuk iki?
+      ar_eg: يا محمد، سمعت نشرة الراديو النهارده الصبح؟
+      ar: يا محمد، هل سمعت نشرة الإذاعة صباح اليوم؟
+      en: Mohamed, did you hear the radio news this morning?
     - speaker: Mohamed
-      text: Sampun, Pak. Kula badhe dhateng.
-      ar_eg: قريته يا عمّو. أنا هاجي.
-      ar: قرأته يا سيدي. سآتي.
-      en: I have, sir. I'll come.
-    - speaker: Pak Harjo
-      text: Apik! Kali lan dalan ing kampung iki bakal diresiki bareng-bareng, lho.
-      ar_eg: حلو! النهر والشوارع في الحي ده هيتنضّفوا مع بعض.
-      ar: جميل! سيُنظَّف النهر والطرق في هذا الحي معًا.
-      en: Great! The river and the roads in this neighbourhood will be cleaned together.
+      text: Krungu. Dalan ing Manguharjo kebanjiran maneh.
+      ar_eg: سمعت. الشارع في مانجوهارجو غرق مية تاني.
+      ar: سمعت. غمرت المياهُ طريقَ مانغوهارجو مرة أخرى.
+      en: I did. The road in Manguharjo flooded again.
+    - speaker: Mbak Ayu
+      text: Waduh, aku arep menyang Manguharjo.
+      ar_eg: يا خبر، ده أنا رايحة مانجوهارجو.
+      ar: يا للأسف، كنت أنوي الذهاب إلى مانغوهارجو.
+      en: Oh no, I'm about to go to Manguharjo.
     - speaker: Mohamed
-      text: Jam pinten, Pak?
-      ar_eg: الساعة كام يا عمّو؟
-      ar: في أي ساعة يا سيدي؟
-      en: What time, sir?
-    - speaker: Pak Harjo
-      text: Jam pitu. Sarapan disiapake dening ibu-ibu.
-      ar_eg: الساعة سبعة. والفطار الستات هيجهّزوه.
-      ar: في السابعة. والفطور تُعِدّه السيدات.
-      en: At seven. Breakfast is prepared by the women.
+      text: Aja saiki! Dalane ditutup dening polisi nganti sore.
+      ar_eg: بلاش دلوقتي! الشرطة قافلة الشارع لحد العصر.
+      ar: لا تذهبي الآن! أغلقت الشرطة الطريق حتى المساء.
+      en: Not now! The road's been closed by the police until the afternoon.
+    - speaker: Mbak Ayu
+      text: Ya wis, sesuk wae.
+      ar_eg: خلاص، بكرة بقى.
+      ar: حسنًا، غدًا إذن.
+      en: All right, tomorrow then.
 new_words:
-  - word: kerja bakti
-    pos: noun
-    ar_eg: يوم شغل تطوعي لأهل الحي
-    ar: يوم عمل تطوعي لأهل الحي
-    en: community work day = kerja bakti
-  - word: disiapake
+  - word: ditutup
     pos: verb
-    ar_eg: اتجهّز (من siap + -ake)
-    ar: جُهّز (من siap + -ake)
-    en: was prepared (from siap + -ake) = disiapkan
+    ar_eg: اتقفل (من tutup = يقفل)
+    ar: أُغلق (من tutup = أغلق)
+    en: was closed (from tutup) = ditutup
+  - word: bakal
+    pos: particle
+    ar_eg: هـ (مستقبل)، حـ
+    ar: سوف، سـ
+    en: will (future) = akan
+  - word: maneh
+    pos: adverb
+    ar_eg: تاني / كمان مرة
+    ar: مرة أخرى
+    en: again = lagi
 review:
   status: draft
   verified: false
