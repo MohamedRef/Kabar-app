@@ -250,6 +250,7 @@ impl<'a> Runner<'a> {
                     input_hash: input_hash.clone(),
                     engine: engine.id,
                     prompt_version: version,
+                    profile_hash: String::new(),
                 },
                 system,
                 user,

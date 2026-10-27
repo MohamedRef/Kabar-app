@@ -1,0 +1,42 @@
+/* Annotated text (crates/app/src/annotated): one look for every
+   Indonesian and Javanese sentence outside the Reader. */
+.annot { display: block; text-align: start; }
+.annot.inline { display: inline; }
+.annot-text { font-family: var(--font-latin); line-height: 1.7; }
+.annot-w { cursor: pointer; border-radius: 0.25rem; padding-inline: 0.05em; }
+.annot-w:hover, .annot-w.on { background: var(--gold-soft); }
+.annot-w:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+.annot-tr { display: block; color: var(--muted); font-size: 0.95em; line-height: 1.5; margin-block-start: 0.1rem; }
+.annot-reveal {
+  display: inline-block; margin-block-start: 0.2rem; padding: 0.1rem 0.6rem; border-radius: 999px;
+  font-size: 0.8rem; color: var(--muted); background: var(--surface-2); cursor: pointer;
+}
+.annot-reveal:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+/* The card often opens inside a button (examples, dialogue lines): undo
+   the button's look so it reads as a card. */
+.annot-card {
+  display: grid; gap: 0.5rem; margin-block: 0.4rem; padding: 0.6rem 0.75rem;
+  border-radius: var(--radius); background: var(--surface); border: 1px solid var(--surface-2); box-shadow: var(--shadow);
+  color: var(--text); font-weight: normal; font-size: 1rem; text-align: start; cursor: auto; white-space: normal;
+}
+.annot-card-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
+.annot-card-head strong { flex: 1; }
+.annot-card .field { display: grid; gap: 0.15rem; }
+.annot-card .gloss.big { font-size: 1.05rem; margin-block: 0.15rem; }
+.annot-card p { margin: 0; }
+/* A story's target words (Kabar Pagi), as `mark.target` in main.css. */
+.annot-w.target { text-decoration: underline 2px var(--indigo); text-underline-offset: 4px; font-weight: 600; }
+.annot-w.target.bridge-word { text-decoration-color: var(--gold); color: var(--gold); }
+/* Side by side (translation "always"): each word's meaning under it. The
+   word keeps one tap target; its runs carry the prefix / root / suffix
+   colours (.wp-* in main.css) and the underline the word class (.wc-line). */
+.annot-w.glossed { display: inline-flex; flex-direction: column; align-items: center; vertical-align: top; margin-block-end: 0.15rem; }
+.annot-word { white-space: nowrap; }
+.annot-g {
+  font-family: var(--font-arabic); font-size: 0.72rem; font-weight: normal; line-height: 1.3; color: var(--muted);
+  max-inline-size: 7.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-block-size: 1em;
+}
+.annot-g:lang(en) { font-family: var(--font-latin); }
+.annot-note { display: block; font-size: 0.92rem; line-height: 1.5; }
+.annot-note bdi { font-weight: 600; margin-inline-end: 0.35rem; }
+.annot-legend summary { cursor: pointer; color: var(--muted); font-size: 0.85rem; }

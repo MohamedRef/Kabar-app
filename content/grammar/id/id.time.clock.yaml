@@ -80,6 +80,22 @@ arabic_bridge:
   en: kurang is Arabic «إلا», lewat is «و» — but setengah runs the other way.
 tags: [time, numbers]
 see_also: [id.number.cardinal, id.time.calendar, id.greeting.selamat]
+cues:
+  - match: "pukul|jam setengah"
+    note:
+      ar_eg: "setengah + رقم = نص الساعة اللي قبلها: setengah tujuh = ستة ونص."
+      ar: "setengah + عدد = نصف الساعة السابقة: setengah tujuh = السادسة والنصف."
+      en: "setengah + hour = half before it: setengah tujuh = 6:30."
+  - match: "pukul"
+    note:
+      ar_eg: "pukul = الساعة (رسمي، زي jam)."
+      ar: "pukul = الساعة (رسمية)."
+      en: "pukul = o'clock (formal jam)."
+  - match: "jam|pukul satu|dua|tiga|empat|lima|enam|tujuh|delapan|sembilan|sepuluh|sebelas"
+    note:
+      ar_eg: "jam / pukul + رقم = الساعة كذا."
+      ar: "jam / pukul + عدد = الساعة كذا."
+      en: "jam / pukul + number = … o'clock."
 review:
   status: draft
   verified: false
