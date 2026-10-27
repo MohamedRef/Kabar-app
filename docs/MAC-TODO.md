@@ -72,6 +72,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] `just devices`, then `just install <serial>` for the S24 Ultra and again for the Tab S11. For wireless, use `just pair` / `just connect` (RUN.md §3).
 - [ ] Open every screen once on the release APK (R8 shrinks it; a missing keep rule would crash on that screen) and tell me if anything closes the app.
 - [ ] Check the launcher icon (round and adaptive), the notification-bar icon and the splash screen on both devices.
+- [ ] On the S24 Ultra, open a typed-answer exercise and tap the answer box: the keyboard opens and the **Check** button stays visible above it. Do the same in Chat's compose box.
 - [ ] Mid-lesson, switch dark mode from quick settings, and on the Tab S11 open Kabar in split screen and pop-up view: the lesson stays exactly where it was.
 - [ ] Play a Radio episode, then take a call (or play a WhatsApp voice note): the episode pauses and carries on afterwards. Starting music in another app pauses it for good. The notification shows Kabar's icon.
 - [ ] In Gallery, select two screenshots and share them: Kabar is in the share sheet, reads the first and says so.
