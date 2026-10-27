@@ -155,20 +155,23 @@ pub fn allowed_keys(kind: &str) -> Option<&'static [&'static str]> {
 
 pub const SHARED_KEYS: &[&str] = &["id", "kind", "topic", "src", "status", "update", "tags"];
 
-/// The calculators the app knows (chunk 5 implements them in `calc`).
+/// The calculators the app knows, as written in `calculator:`. Implemented in
+/// [`crate::calc`] (chunk 5); a test there keeps the two lists equal.
 pub const CALCULATORS: &[&str] = &[
     "child_pugh",
     "meld",
     "meld_na",
-    "saag",
-    "maddrey",
-    "r_ratio",
-    "bclc",
-    "glasgow_ah",
     "albi",
     "fib4",
     "apri",
+    "r_ratio",
+    "maddrey",
+    "glasgow_ah",
+    "saag",
+    "ascitic_pmn",
+    "bclc",
     "kings_college",
+    "clichy",
     "ranson",
     "bisap",
 ];
