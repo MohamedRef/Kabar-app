@@ -116,7 +116,17 @@ mod tests {
                 continue;
             }
             let css = std::fs::read_to_string(&path).expect("readable css");
-            for (n, line) in css.lines().enumerate() {
+            // Comments may cite issues ("#152"); blank them, keeping line numbers.
+            let mut code = String::with_capacity(css.len());
+            let mut rest = css.as_str();
+            while let Some(start) = rest.find("/*") {
+                code.push_str(&rest[..start]);
+                let end = rest[start..].find("*/").map_or(rest.len(), |e| start + e + 2);
+                code.extend(rest[start..end].chars().filter(|c| *c == '\n'));
+                rest = &rest[end..];
+            }
+            code.push_str(rest);
+            for (n, line) in code.lines().enumerate() {
                 // The declarations after the last `{` (or the whole line).
                 let is_token = line.rsplit('{').next().is_some_and(|d| d.trim_start().starts_with("--"));
                 assert!(
