@@ -247,7 +247,10 @@ pub fn read_batch(path: &Path) -> Result<Vec<GlossEntry>> {
     text.lines()
         .enumerate()
         .filter(|(_, l)| !l.trim().is_empty())
-        .map(|(i, l)| serde_json::from_str(l).with_context(|| format!("{}:{}", path.display(), i + 1)))
+        .map(|(i, l)| {
+            kabar_protocol::content::from_json_strict(l)
+                .with_context(|| format!("{}:{}", path.display(), i + 1))
+        })
         .collect()
 }
 
