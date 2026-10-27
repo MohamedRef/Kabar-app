@@ -1,162 +1,174 @@
 schema: kabar.lesson/v1
 id: j6.u01.l09
 language: jv
-title: Buku bocah
+title: Jeneng ing papan
 can_do:
-  ar_eg: تقرا أول صفحة من كتاب أطفال بالخط الجاوي.
-  ar: أن تقرأ الصفحة الأولى من كتاب أطفال بالخط الجاوي.
-  en: Read the first page of a children's book in aksara Jawa.
+  ar_eg: تقرا أسامي مكتوبة بالخط الجاوي على سبورة.
+  ar: أن تقرأ أسماء مكتوبة بالخط الجاوي على لوح.
+  en: Read names written in aksara Jawa on a board.
 slides:
-  - title: Buku kanggo bocah
+  - title: Kursus perak
     body:
       ar_eg: |
-        محمد اشترى من السوق كتاب صغير للعيال اللي بيتعلموا الخط الجاوي. أول صفحة فيها تلات جمل قصيرة بحروف بس، من غير أي علامات.
-        كل جملة اسم وفعل: مين بيعمل إيه؟ اقسم الحروف لكلمتين.
+        في ورشة فضة جنب Pasar Kotagedhe، المدرّب كتب أسامي الطلبة على السبورة بالخط الجاوي.
+        كل الأسامي دي حروف بس، كل حرف فيه a، ومفيش مسافات. اقرا حرف حرف: ꦩ ma + ꦪ ya = Maya.
       ar: |
-        اشترى محمد من السوق كتابًا صغيرًا للأطفال الذين يتعلمون الخط الجاوي. في الصفحة الأولى ثلاث جمل قصيرة بحروف مجرّدة بلا علامات.
-        كل جملة اسم وفعل: من يفعل ماذا؟ قسّم الحروف إلى كلمتين.
+        في ورشة فضة قرب Pasar Kotagedhe كتب المدرّب أسماء المتدرّبين على اللوح بالخط الجاوي.
+        كل هذه الأسماء حروف مجرّدة، في كل حرف a، بلا مسافات. اقرأ حرفًا حرفًا: ꦩ ma + ꦪ ya = Maya.
       en: |
-        Mohamed bought a little book at the market for children learning aksara Jawa. The first page has three short sentences in bare letters, with no marks at all.
-        Each sentence is a name and a verb: who does what? Split the letters into two words.
+        At a silver workshop next to Pasar Kotagedhe, the trainer has written the students' names on the board in aksara Jawa.
+        Every name here is bare letters, each with its a, and no spaces. Read letter by letter: ꦩ ma + ꦪ ya = Maya.
     grammar: jv.aksara.nglegena
     examples:
-      - text: ꦗꦏꦗꦒ (Jaka jaga.)
-        ar_eg: جاكا بيحرس.
-        ar: جاكا يحرس.
-        en: Jaka keeps watch.
-      - text: ꦩꦪꦩꦕ (Maya maca.)
-        ar_eg: مايا بتقرا.
-        ar: مايا تقرأ.
-        en: Maya is reading.
-      - text: ꦫꦏꦭꦫ (Raka lara.)
-        ar_eg: راكا عيان.
-        ar: راكا مريض.
-        en: Raka is ill.
+      - text: ꦩꦪ · ꦗꦏ
+        ar_eg: Maya · Jaka (أسامي)
+        ar: Maya · Jaka (أسماء)
+        en: Maya · Jaka (names)
+      - text: ꦫꦏ · ꦫꦩ
+        ar_eg: Raka · Rama (أسامي)
+        ar: Raka · Rama (أسماء)
+        en: Raka · Rama (names)
+      - text: ꦢꦤ
+        ar_eg: Dana (اسم)
+        ar: Dana (اسم)
+        en: Dana (a name)
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: في الصفحة، مين بيقرا؟
-      ar: في الصفحة، من يقرأ؟
-      en: On the page, who is reading?
-    options: [Maya, Jaka, Raka]
-    answer: 0
-    explain:
-      ar_eg: ꦩꦪꦩꦕ = Maya maca (مايا بتقرا).
-      ar: ꦩꦪꦩꦕ = Maya maca (مايا تقرأ).
-      en: ꦩꦪꦩꦕ = Maya maca.
-    words: [ꦩ, ꦕ]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: مين العيان؟
-      ar: من المريض؟
-      en: Who is ill?
-    options: [Jaka, Raka, Maya]
-    answer: 1
-    explain:
-      ar_eg: ꦫꦏꦭꦫ = Raka lara، وlara = عيان (بتتنطق loro).
-      ar: ꦫꦏꦭꦫ = Raka lara، وlara = مريض (تُنطق loro).
-      en: ꦫꦏꦭꦫ = Raka lara; lara = ill (said loro).
-    words: [ꦭ, ꦫ]
-  - id: e03
-    type: listen
-    text: Jaka jaga.
-    question:
-      ar_eg: جاكا بيعمل إيه؟
-      ar: ماذا يفعل جاكا؟
-      en: What is Jaka doing?
-    options: ["ꦗꦒ", "ꦩꦕ", "ꦭꦫ"]
-    answer: 0
-    meaning:
-      ar_eg: جاكا بيحرس.
-      ar: جاكا يحرس.
-      en: Jaka keeps watch.
-    words: [ꦗ, ꦒ]
-  - id: e04
     type: match_pairs
     pairs:
-      - text: ꦗꦒ
-        ar_eg: jaga — يحرس
-        ar: jaga — يحرس
-        en: jaga — keep watch
-      - text: ꦩꦕ
-        ar_eg: maca — يقرا
-        ar: maca — يقرأ
-        en: maca — read
-      - text: ꦭꦫ
-        ar_eg: lara — عيان
-        ar: lara — مريض
-        en: lara — ill
-      - text: ꦲꦤ
-        ar_eg: ana — فيه / موجود
-        ar: ana — يوجد
-        en: ana — there is
-    words: [ꦗ, ꦩ, ꦭ, ꦲ]
+      - text: ꦩꦪ
+        ar_eg: Maya (مايا)
+        ar: Maya (مايا)
+        en: Maya
+      - text: ꦗꦏ
+        ar_eg: Jaka (جاكا)
+        ar: Jaka (جاكا)
+        en: Jaka
+      - text: ꦫꦏ
+        ar_eg: Raka (راكا)
+        ar: Raka (راكا)
+        en: Raka
+      - text: ꦢꦤ
+        ar_eg: Dana (دانا)
+        ar: Dana (دانا)
+        en: Dana
+    words: [ꦩ, ꦪ, ꦗ, ꦏ, ꦫ, ꦢ, ꦤ]
+  - id: e02
+    type: listen
+    text: Jaka
+    question:
+      ar_eg: المدرّب نادى اسم. أنهي اسم على السبورة؟
+      ar: نادى المدرّب اسمًا. أي اسم على اللوح؟
+      en: The trainer called a name. Which name on the board is it?
+    options: ["ꦗꦏ", "ꦒꦏ", "ꦗꦒ"]
+    answer: 0
+    explain:
+      ar_eg: ꦗ ja (الجيم الفصحى) + ꦏ ka = Jaka. ꦒ هي ga.
+      ar: ꦗ ja (الجيم الفصيحة) + ꦏ ka = Jaka، أما ꦒ فهي ga.
+      en: ꦗ ja + ꦏ ka = Jaka. ꦒ is ga.
+    words: [ꦗ, ꦏ]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "على السبورة: ꦫꦩ. ده مين؟"
+      ar: "على اللوح: ꦫꦩ. من هذا؟"
+      en: "On the board: ꦫꦩ. Who is it?"
+    options: [Raka, Mara, Rama]
+    answer: 2
+    explain:
+      ar_eg: ꦫ ra الأول، وبعدين ꦩ ma = Rama.
+      ar: ꦫ ra أولًا ثم ꦩ ma = Rama.
+      en: ꦫ ra first, then ꦩ ma = Rama.
+    words: [ꦫ, ꦩ]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "السبورة فيها: ꦩꦪ · ꦗꦏ · ꦫꦏ · ꦫꦩ · ꦢꦤ. كام اسم بيبدأ بـ ra؟"
+      ar: "على اللوح: ꦩꦪ · ꦗꦏ · ꦫꦏ · ꦫꦩ · ꦢꦤ. كم اسمًا يبدأ بـ ra؟"
+      en: "The board says: ꦩꦪ · ꦗꦏ · ꦫꦏ · ꦫꦩ · ꦢꦤ. How many names start with ra?"
+    options: ["1", "2", "3"]
+    answer: 1
+    explain:
+      ar_eg: ꦫꦏ Raka وꦫꦩ Rama، الاتنين بيبدأوا بـ ꦫ.
+      ar: ꦫꦏ Raka وꦫꦩ Rama، كلاهما يبدأ بـ ꦫ.
+      en: ꦫꦏ Raka and ꦫꦩ Rama both start with ꦫ.
+    words: [ꦫ]
   - id: e05
-    type: fill_blank
-    sentence: Maya ___.
-    meaning:
-      ar_eg: مايا بتقرا.
-      ar: مايا تقرأ.
-      en: Maya is reading.
-    options: [jaga, maca, lara]
-    answers: [maca]
+    type: listen
+    text: Dana
+    question:
+      ar_eg: سمعت أنهي اسم؟
+      ar: أي اسم سمعت؟
+      en: Which name did you hear?
+    options: ["ꦝꦤ", "ꦢꦤ", "ꦢꦏ"]
+    answer: 1
+    explain:
+      ar_eg: "Dana فيها d الخفيفة: ꦢ. الـ ꦝ دي dha التقيلة."
+      ar: في Dana الدال الخفيفة ꦢ، أما ꦝ فهي dha الثقيلة.
+      en: Dana has the light d, ꦢ. ꦝ is the heavy dha.
+    words: [ꦢ, ꦤ]
   - id: e06
-    type: dictation
-    text: Jaka jaga, Maya maca.
+    type: fill_blank
+    sentence: ꦩꦪ = ___
     meaning:
-      ar_eg: جاكا بيحرس، ومايا بتقرا.
-      ar: جاكا يحرس، ومايا تقرأ.
-      en: Jaka keeps watch, Maya reads.
+      ar_eg: اكتب الاسم بالحروف اللاتينية.
+      ar: اكتب الاسم بالحروف اللاتينية.
+      en: Type the name in Latin letters.
+    answers: [Maya]
+    words: [ꦩ, ꦪ]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: "اكتب «Raka lara» (راكا عيان) حرف حرف."
-      ar: "اكتب «Raka lara» (راكا مريض) حرفًا حرفًا."
-      en: "Write «Raka lara» (Raka is ill) letter by letter."
-    answer: ꦫ ꦏ ꦭ ꦫ
-    distractors: ["ꦩ"]
-    words: [ꦫ, ꦏ, ꦭ]
+      ar_eg: "اكتب الاسمين Maya وJaka بالترتيب، حرف حرف."
+      ar: "اكتب الاسمين Maya وJaka بالترتيب، حرفًا حرفًا."
+      en: "Write the names Maya and Jaka in order, letter by letter."
+    answer: ꦩ ꦪ ꦗ ꦏ
+    distractors: ["ꦒ"]
+    words: [ꦩ, ꦪ, ꦗ, ꦏ]
   - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: ꦩꦪꦩꦕ"
-      ar: "اكتب بالحروف اللاتينية: ꦩꦪꦩꦕ"
-      en: "Write in Latin letters: ꦩꦪꦩꦕ"
-    answers: ["Maya maca.", maya maca, mayamaca]
-    words: [ꦩ, ꦪ, ꦕ]
+      ar_eg: "اكتب الاسمين بالحروف اللاتينية: ꦫꦏ · ꦢꦤ"
+      ar: "اكتب الاسمين بالحروف اللاتينية: ꦫꦏ · ꦢꦤ"
+      en: "Write the two names in Latin letters: ꦫꦏ · ꦢꦤ"
+    answers: ["Raka, Dana", Raka Dana, RakaDana]
+    words: [ꦫ, ꦏ, ꦢ, ꦤ]
   - id: e09
     type: speaking
-    text: Jaka jaga. Maya maca. Raka lara.
+    text: Maya, Jaka, Raka, Rama, Dana.
     meaning:
-      ar_eg: جاكا بيحرس. مايا بتقرا. راكا عيان.
-      ar: جاكا يحرس. مايا تقرأ. راكا مريض.
-      en: Jaka keeps watch. Maya is reading. Raka is ill.
+      ar_eg: الخمس أسامي اللي على السبورة.
+      ar: الأسماء الخمسة التي على اللوح.
+      en: The five names on the board.
 dialogue:
-  title: Tuku buku
+  title: Ing papan tulis
   lines:
+    - speaker: Dimas
+      text: Med, ing papan tulis ana jeneng-jeneng. Coba wacanen.
+      ar_eg: يا محمد، فيه أسامي على السبورة. جرّب تقراها.
+      ar: يا محمد، على السبورة أسماء. جرّب أن تقرأها.
+      en: Med, there are names on the board. Try reading them.
     - speaker: Mohamed
-      text: Bu, buku menika pinten?
-      ar_eg: يا مدام، الكتاب ده بكام؟
-      ar: يا سيدتي، بكم هذا الكتاب؟
-      en: Ma'am, how much is this book?
-    - speaker: Bakul
-      text: Sedasa ewu, Mas. Kangge lare ingkang sinau aksara Jawa.
-      ar_eg: بعشرة آلاف. ده للعيال اللي بيتعلموا الخط الجاوي.
-      ar: بعشرة آلاف. إنه للأطفال الذين يتعلمون الخط الجاوي.
-      en: Ten thousand. It's for children learning aksara Jawa.
+      text: Ma, ya... Maya! Lan iki Jaka.
+      ar_eg: ما، يا... Maya! ودي Jaka.
+      ar: ما، يا... Maya! وهذا Jaka.
+      en: Ma, ya... Maya! And this is Jaka.
+    - speaker: Dimas
+      text: Bener. Sing iki?
+      ar_eg: صح. واللي هنا؟
+      ar: صحيح. وهذا؟
+      en: Right. And this one?
     - speaker: Mohamed
-      text: Kula tumbas setunggal. Kula nggih saweg sinau.
-      ar_eg: هاخد واحد. أنا كمان لسه بتعلّم.
-      ar: سأشتري واحدًا. أنا أيضًا ما زلت أتعلّم.
-      en: I'll buy one. I'm learning too.
-    - speaker: Bakul
-      text: Wah, sae! Mangga, Mas.
-      ar_eg: يا سلام، حلو! اتفضل.
-      ar: رائع! تفضّل.
-      en: Oh, lovely! Here you are.
+      text: Ra, ka... Raka. Kabeh aksarane diwaca a!
+      ar_eg: را، كا... Raka. كل الحروف بتتقري بـ a!
+      ar: را، كا... Raka. كل الحروف تُقرأ بـ a!
+      en: Ra, ka... Raka. Every letter is read with a!
+    - speaker: Dimas
+      text: Iya. Kowe wis isa maca jeneng!
+      ar_eg: أيوه. إنت بقيت تعرف تقرا أسامي!
+      ar: نعم. صرت تستطيع قراءة الأسماء!
+      en: Yes. You can read names now!
 review:
   status: draft
   verified: false

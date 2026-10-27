@@ -1,135 +1,237 @@
 schema: kabar.lesson/v1
 id: j6.u02.l04
 language: jv
-title: Maca tembung
+title: Ing langgar
 can_do:
-  ar_eg: تقرا كلمات قصيرة بكل الحركات.
-  ar: أن تقرأ كلمات قصيرة بكل الصوائت.
-  en: Read short words with every vowel.
+  ar_eg: 'تتكلم عن درس القرآن في مصلى الحتة: الطبلة، والحفظ والمراجعة، والطاقية.'
+  ar: 'أن تتحدث عن درس القرآن في المصلّى: الطبل والحفظ والمراجعة والطاقية.'
+  en: 'Talk about Qur''an class at the neighbourhood prayer house: the drum, memorising, revising and the cap.'
 slides:
-  - title: Ka, ki, ku, ke, ke, ko
+  - title: Sore ing langgar
     body:
       ar_eg: |
-        كل الحركات على حرف واحد:
-        ꦏ ka · ꦏꦶ ki (wulu) · ꦏꦸ ku (suku) · ꦏꦺ ke (taling) · ꦏꦼ ke بالـ pepet · ꦏꦺꦴ ko (taling tarung).
-        النهارده ديماس هيختبرك: هو يكتب، وإنت تقرا.
+        langgar = مصلى صغير في الحتة. قبل الأذان بيضربوا bedhug (طبلة كبيرة)، وkenthongan = طبلة خشب مجوّفة للتنبيه.
+        ngaos = ngaji بالكراما (يقرا قرآن أو يدرس). ngapalake = يحفظ، nderes = يراجع ويقرا القرآن بانتظام.
+        ustadz = أستاذ الدين، kopyah = طاقية (زي اللي بنلبسها في الصلاة).
       ar: |
-        الصوائت كلها على حرف واحد:
-        ꦏ ka · ꦏꦶ ki (wulu) · ꦏꦸ ku (suku) · ꦏꦺ ke (taling) · ꦏꦼ ke بالـ pepet · ꦏꦺꦴ ko (taling tarung).
-        واليوم يختبرك ديماس: يكتب وأنت تقرأ.
+        langgar = مصلّى صغير في الحيّ. قبل الأذان يُضرب bedhug (طبل كبير)، وkenthongan = طبل خشبي مجوّف للتنبيه.
+        ngaos = ngaji بالكراما (يقرأ القرآن أو يتعلّم). ngapalake = يحفظ، nderes = يراجع القرآن ويواظب على قراءته.
+        ustadz = معلّم الدين، kopyah = طاقية الصلاة.
       en: |
-        Every vowel on one letter:
-        ꦏ ka · ꦏꦶ ki (wulu) · ꦏꦸ ku (suku) · ꦏꦺ ke (taling) · ꦏꦼ ke with pepet · ꦏꦺꦴ ko (taling tarung).
-        Today Dimas tests you: he writes, you read.
-    grammar: jv.aksara.sandhangan-swara
+        langgar = small neighbourhood prayer house. Before the call to prayer they beat the bedhug (big drum); a kenthongan is a hollow wooden alarm drum.
+        ngaos = krama for ngaji (recite or study the Qur'an). ngapalake = memorise, nderes = revise, recite regularly.
+        ustadz = religious teacher, kopyah = prayer cap.
     examples:
-      - text: ꦱꦺꦴꦫꦺꦏꦺꦤꦺ (sore kene)
-        ar_eg: العصر هنا
-        ar: العصر هنا
-        en: this afternoon, here
+      - text: Sadurunge adzan, bedhug ditabuh.
+        ar_eg: قبل الأدان بيضربوا الطبلة.
+        ar: قبل الأذان يُضرب الطبل.
+        en: Before the call to prayer, the bedhug is beaten.
+      - text: Lare-lare ngaos wonten langgar saben sonten.
+        ar_eg: العيال بيقروا قرآن في المصلى كل عصرية.
+        ar: يتعلّم الأطفال القرآن في المصلّى كل مساء.
+        en: The children study the Qur'an at the langgar every afternoon.
+      - text: Aku ngapalake surat Al-Fatihah.
+        ar_eg: أنا بحفظ سورة الفاتحة.
+        ar: أحفظ سورة الفاتحة.
+        en: I'm memorising Al-Fatihah.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: "اقرا: ꦱꦥꦶ"
-      ar: "اقرأ: ꦱꦥꦶ"
-      en: "Read: ꦱꦥꦶ"
-    options: [sapu, sapi, supi]
-    answer: 1
+    type: match_pairs
+    pairs:
+      - text: langgar
+        ar_eg: مصلى صغير
+        ar: مصلّى صغير
+        en: prayer house
+      - text: bedhug
+        ar_eg: طبلة المسجد
+        ar: طبل المسجد
+        en: mosque drum
+      - text: kenthongan
+        ar_eg: طبلة خشب
+        ar: طبل خشبي
+        en: wooden slit drum
+      - text: ngaos
+        ar_eg: يقرا قرآن (كراما)
+        ar: يتعلّم القرآن (كراما)
+        en: recite the Qur'an (krama)
+    words: [langgar, bedhug, kenthongan, ngaos]
   - id: e02
-    type: listen
-    text: kowe
-    question:
-      ar_eg: سمعت أنهي كلمة؟
-      ar: أي كلمة سمعت؟
-      en: Which word did you hear?
-    options: ["ꦏꦮꦺ", "ꦏꦺꦮꦺꦴ", "ꦏꦺꦴꦮꦺ"]
-    answer: 2
-    meaning:
-      ar_eg: إنت (نغوكو)
-      ar: أنت (نغوكو)
-      en: you (ngoko)
+    type: match_pairs
+    pairs:
+      - text: nderes
+        ar_eg: يراجع القرآن
+        ar: يراجع القرآن
+        en: revise, recite regularly
+      - text: ngapalake
+        ar_eg: يحفظ
+        ar: يحفظ
+        en: memorise
+      - text: ustadz
+        ar_eg: أستاذ دين
+        ar: معلّم الدين
+        en: religious teacher
+      - text: kopyah
+        ar_eg: طاقية
+        ar: طاقية
+        en: prayer cap
+    words: [nderes, ngapalake, ustadz, kopyah]
   - id: e03
-    type: fill_blank
-    sentence: ꦱꦶꦗꦶ = ___
+    type: listen
+    text: Ustadz nabuh bedhug ing langgar.
+    question:
+      ar_eg: بيعمل إيه؟
+      ar: ماذا يفعل؟
+      en: What is he doing?
+    options: [الأستاذ بيضرب الطبلة في المصلى, الأستاذ بيقرا قرآن, العيال لابسين طواقي]
+    answer: 0
     meaning:
-      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: واحد)"
-      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: واحد)"
-      en: Type the reading in Latin letters. (It means "one".)
-    answers: [siji]
+      ar_eg: الأستاذ بيضرب الطبلة في المصلى.
+      ar: يضرب الأستاذ الطبل في المصلّى.
+      en: The ustadz beats the drum at the langgar.
+    words: [ustadz, bedhug, langgar]
   - id: e04
     type: fill_blank
-    sentence: ꦠꦼꦭꦸ = ___
+    sentence: Sadurunge ngaji, aku nganggo ___.
     meaning:
-      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: تلاتة)"
-      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: ثلاثة)"
-      en: Type the reading in Latin letters. (It means "three".)
-    answers: [telu]
+      ar_eg: قبل ما أقرا قرآن، بلبس ___.
+      ar: قبل درس القرآن ألبس ___.
+      en: Before Qur'an class, I put on my ___.
+    options: [kopyah, kenthongan, langgar]
+    answers: [kopyah]
+    words: [kopyah, kenthongan, langgar]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: ꦧꦸꦏꦸꦭꦺꦴꦫꦺꦴ"
-      ar: "اكتب بالحروف اللاتينية: ꦧꦸꦏꦸꦭꦺꦴꦫꦺꦴ"
-      en: "Write in Latin letters: ꦧꦸꦏꦸꦭꦺꦴꦫꦺꦴ"
-    answers: [buku loro, bukuloro]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة هي الكراما بتاعة ngaji؟
+      ar: أي كلمة هي صيغة الكراما لـ ngaji؟
+      en: Which is the krama word for ngaji?
+    options: [nderes, ngaos, ngapalake]
+    answer: 1
     explain:
-      ar_eg: bu-ku (suku) + lo-ro (taling tarung) = buku loro، يعني كتابين.
-      ar: bu-ku (suku) + lo-ro (taling tarung) = buku loro، أي كتابان.
-      en: bu-ku (suku) + lo-ro (taling tarung) = buku loro, two books.
+      ar_eg: ngaos = ngaji بالكراما.
+      ar: ngaos = ngaji بالكراما.
+      en: ngaos = ngaji in krama.
+    words: [nderes, ngaos, ngapalake]
   - id: e06
+    type: fill_blank
+    sentence: Saben bengi aku ___ Quran.
+    meaning:
+      ar_eg: كل ليلة بـ___ القرآن.
+      ar: كل ليلة ___ القرآن.
+      en: Every night I ___ the Qur'an.
+    options: [nderes, kopyah, bedhug]
+    answers: [nderes]
+    words: [nderes, kopyah, bedhug]
+  - id: e07
+    type: multiple_choice
+    question: Wong-wong nabuh ___ yen ana maling.
+    options: [ustadz, ngapalake, kenthongan]
+    answer: 2
+    explain:
+      ar_eg: kenthongan = الطبلة الخشب اللي بينبهوا بيها الحتة.
+      ar: kenthongan = الطبل الخشبي لتنبيه الحيّ.
+      en: kenthongan = the wooden drum that alerts the neighbourhood.
+    words: [ustadz, ngapalake, kenthongan]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: ابني «sega telu» (تلات أطباق رز) مقطع مقطع.
-      ar: ركّب «sega telu» (ثلاثة أطباق أرز) مقطعًا مقطعًا.
-      en: Build "sega telu" (three plates of rice), syllable by syllable.
-    answer: ꦱꦼ ꦒ ꦠꦼ ꦭꦸ
-    distractors: ["ꦱꦺ", "ꦠꦺ"]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: ꦏꦺꦴꦮꦺꦠꦼꦏ"
-      ar: "اكتب بالحروف اللاتينية: ꦏꦺꦴꦮꦺꦠꦼꦏ"
-      en: "Write in Latin letters: ꦏꦺꦴꦮꦺꦠꦼꦏ"
-    answers: [kowe teka, koweteka, "Kowe teka?"]
-  - id: e08
-    type: dictation
-    text: Sega telu, Mas.
-    meaning:
-      ar_eg: تلات أطباق رز يا أستاذ.
-      ar: ثلاثة أطباق أرز يا أخي.
-      en: Three plates of rice, please.
+      ar_eg: أنا بحفظ سورة قصيرة.
+      ar: أحفظ سورة قصيرة.
+      en: I'm memorising a short surah.
+    answer: Aku ngapalake surat cekak.
+    distractors: [kopyah, langgar]
+    words: [ngapalake]
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Ustadz ngajari bocah-bocah ing langgar.
+    answers_meaning:
+      ar_eg: [الأستاذ بيعلّم العيال في المصلى, الأستاذ بيدرّس للأطفال في المصلى]
+      ar: [يعلّم الأستاذ الأطفال في المصلّى, الأستاذ يدرّس الأطفال في المصلّى]
+      en: [The ustadz teaches the children at the langgar, The religious teacher teaches kids at the prayer house]
+    words: [ustadz, langgar]
+  - id: e10
     type: speaking
-    text: Siji, loro, telu.
+    text: Kula ngaos kaliyan Pak Ustadz.
     meaning:
-      ar_eg: واحد، اتنين، تلاتة.
-      ar: واحد، اثنان، ثلاثة.
-      en: One, two, three.
+      ar_eg: أنا بقرا قرآن مع الأستاذ.
+      ar: أتعلّم القرآن مع الأستاذ.
+      en: I study the Qur'an with the ustadz.
+    words: [ngaos, ustadz]
 dialogue:
-  title: Dolanan maca
   lines:
-    - speaker: Dimas
-      text: Med, ayo dolanan. Aku nulis, kowe maca.
-      ar_eg: يا محمد، يلا نلعب. أنا أكتب وإنت تقرا.
-      ar: "يا محمد، هيا نلعب: أكتب وأنت تقرأ."
-      en: Med, let's play. I write, you read.
+    - speaker: Mas Dimas
+      text: Mohamed, sore iki melu menyang langgar?
+      ar_eg: يا محمد، هتيجي المصلى العصرية دي؟
+      ar: يا محمد، أتأتي إلى المصلّى هذا المساء؟
+      en: Mohamed, coming to the langgar this afternoon?
     - speaker: Mohamed
-      text: Oke. Iki sore, lan iki kowe.
-      ar_eg: ماشي. دي sore، ودي kowe.
-      ar: حسنًا. هذه sore، وهذه kowe.
-      en: OK. This is sore, and this is kowe.
-    - speaker: Dimas
-      text: Bener kabeh! Saiki iki?
-      ar_eg: كله صح! طب ودي؟
-      ar: كلها صحيحة! وهذه؟
-      en: All correct! Now this one?
+      text: Melu. Aku nggawa kopyah.
+      ar_eg: جاي. واخد الطاقية معايا.
+      ar: سآتي. أحضرت طاقيتي.
+      en: Yes. I've brought my cap.
+    - speaker: Mas Dimas
+      text: Krungu bedhug? Wis wayahe salat.
+      ar_eg: سامع الطبلة؟ جه وقت الصلاة.
+      ar: أتسمع الطبل؟ حان وقت الصلاة.
+      en: Hear the drum? It's prayer time.
     - speaker: Mohamed
-      text: Sega telu! Ayo mangan, Mas.
-      ar_eg: sega telu (تلات أطباق رز)! يلا ناكل يا ديماس.
-      ar: sega telu (ثلاثة أطباق أرز)! هيا نأكل يا ديماس.
-      en: Sega telu! Let's eat, Mas.
+      text: Sawise salat, bocah-bocah ngaji karo ustadz, ta?
+      ar_eg: بعد الصلاة العيال بيقروا مع الأستاذ، صح؟
+      ar: بعد الصلاة يتعلّم الأطفال مع الأستاذ، أليس كذلك؟
+      en: After prayers the kids study with the ustadz, right?
+    - speaker: Mas Dimas
+      text: Iya. Adhiku lagi ngapalake surat cekak.
+      ar_eg: أيوه. أخويا الصغير بيحفظ سورة قصيرة.
+      ar: نعم. أخي الصغير يحفظ سورة قصيرة.
+      en: Yes. My little brother is memorising a short surah.
+    - speaker: Mohamed
+      text: Aku uga kudu nderes maneh, akeh sing wis lali.
+      ar_eg: وأنا كمان لازم أراجع، نسيت حاجات كتير.
+      ar: وأنا أيضًا عليّ أن أراجع، فقد نسيت الكثير.
+      en: I need to revise again too; I've forgotten a lot.
+new_words:
+  - word: langgar
+    pos: noun
+    ar_eg: مصلى صغير
+    ar: مصلّى صغير
+    en: small prayer house
+  - word: bedhug
+    pos: noun
+    ar_eg: طبلة المسجد
+    ar: طبل المسجد
+    en: mosque drum
+  - word: kenthongan
+    pos: noun
+    ar_eg: طبلة خشب للتنبيه
+    ar: طبل خشبي للتنبيه
+    en: wooden slit drum
+  - word: ngaos
+    pos: verb
+    ar_eg: يقرا قرآن، يدرس (كراما)
+    ar: يتعلّم القرآن (كراما)
+    en: recite, study the Qur'an (krama)
+  - word: nderes
+    pos: verb
+    ar_eg: يراجع القرآن
+    ar: يراجع القرآن ويواظب عليه
+    en: revise, recite the Qur'an regularly
+  - word: ngapalake
+    pos: verb
+    ar_eg: يحفظ
+    ar: يحفظ
+    en: memorise
+  - word: ustadz
+    pos: noun
+    arabic: أستاذ
+    ar_eg: أستاذ دين
+    ar: معلّم الدين
+    en: religious teacher
+  - word: kopyah
+    pos: noun
+    ar_eg: طاقية
+    ar: طاقية
+    en: prayer cap
 review:
   status: draft
   verified: false

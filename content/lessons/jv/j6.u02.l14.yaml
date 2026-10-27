@@ -1,0 +1,228 @@
+schema: kabar.lesson/v1
+id: j6.u02.l14
+language: jv
+title: Ulangan J6.2
+can_do:
+  ar_eg: تقرا وتهجّي كلمات بكل علامات الحركات.
+  ar: أن تقرأ وتتهجى كلمات بكل علامات الصوائت.
+  en: Read and spell words with all the vowel marks.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: wulu
+        ar_eg: i — فوق الحرف
+        ar: i — فوق الحرف
+        en: i — above the letter
+      - text: suku
+        ar_eg: u — تحت الحرف
+        ar: u — تحت الحرف
+        en: u — below the letter
+      - text: taling
+        ar_eg: é / è — قبل الحرف
+        ar: é / è — قبل الحرف
+        en: é / è — before the letter
+      - text: pepet
+        ar_eg: ê (ə) — فوق الحرف
+        ar: ê (ə) — فوق الحرف
+        en: ê (schwa) — above the letter
+      - text: taling tarung
+        ar_eg: o — قبل الحرف وبعده
+        ar: o — قبل الحرف وبعده
+        en: o — before and after the letter
+    words: [wulu, suku, taling, pepet, taling tarung]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: langgar
+        ar_eg: زاوية صلاة
+        ar: مصلّى صغير
+        en: small prayer house
+      - text: bedhug
+        ar_eg: طبلة الجامع
+        ar: طبل المسجد
+        en: mosque drum
+      - text: kopyah
+        ar_eg: طاقية
+        ar: طاقية
+        en: prayer cap
+      - text: khutbah
+        ar_eg: خطبة
+        ar: خطبة
+        en: sermon
+      - text: wudhu
+        ar_eg: وضوء
+        ar: وضوء
+        en: ablution
+      - text: tobat
+        ar_eg: توبة
+        ar: توبة
+        en: repentance
+    words: [langgar, bedhug, kopyah, khutbah, wudhu, tobat]
+  - id: e03
+    type: match_pairs
+    pairs:
+      - text: kintun
+        ar_eg: يبعت
+        ar: يرسل
+        en: send (krama)
+      - text: piyambak
+        ar_eg: لوحده
+        ar: وحده
+        en: alone (krama)
+      - text: wekdal
+        ar_eg: وقت
+        ar: وقت
+        en: time (krama)
+      - text: lontar
+        ar_eg: ورق نخل للكتابة
+        ar: سعف الكتابة
+        en: palm-leaf manuscript
+      - text: pujangga
+        ar_eg: شاعر البلاط
+        ar: شاعر البلاط
+        en: court poet
+      - text: kawruh
+        ar_eg: معرفة
+        ar: معرفة
+        en: knowledge
+    words: [kintun, piyambak, wekdal, lontar, pujangga, kawruh]
+  - id: e04
+    type: listen
+    text: sega
+    question:
+      ar_eg: سمعت sega (رز). بتتكتب إزاي؟
+      ar: سمعت sega (أرز). كيف تُكتب؟
+      en: You heard sega (rice). How is it written?
+    options: ["ꦱꦺꦒ", "ꦱꦺꦴꦒ", "ꦱꦼꦒ"]
+    answer: 2
+    meaning:
+      ar_eg: رز
+      ar: أرز
+      en: rice
+    words: [pepet]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: rega (سعر) بتتكتب بأنهي حرف؟
+      ar: بأي حرف تُكتب rega (سعر)؟
+      en: Which letter starts rega (price)?
+    options: [pa cerek, nga lelet, ra]
+    answer: 0
+    explain:
+      ar_eg: "rê ليها حرف مخصوص: pa cerek."
+      ar: "لـ rê حرف خاص: pa cerek."
+      en: rê has its own letter, pa cerek.
+    words: [pa cerek]
+  - id: e06
+    type: listen
+    text: iki
+    question:
+      ar_eg: سمعت أنهي كلمة؟
+      ar: أي كلمة سمعت؟
+      en: Which word did you hear?
+    options: ["ꦲꦶꦏꦸ", "ꦲꦶꦏꦶ", "ꦲꦏꦸ"]
+    answer: 1
+    meaning:
+      ar_eg: ده / دي
+      ar: هذا
+      en: this
+    words: [wulu]
+  - id: e07
+    type: fill_blank
+    sentence: ꦒꦼꦝꦺ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: كبير)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: كبير)"
+      en: Type the reading in Latin letters. (It means "big".)
+    answers: [gedhe]
+    words: [pepet, taling]
+  - id: e08
+    type: fill_blank
+    sentence: ꦔꦗꦶ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: يقرا قرآن)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: يقرأ القرآن)"
+      en: Type the reading in Latin letters. (It means "recite the Qur'an".)
+    answers: [ngaji]
+    words: [ngaji]
+  - id: e09
+    type: build_sentence
+    source:
+      ar_eg: ابني «kowe teka sore» (إنت جاي العصر) مقطع مقطع.
+      ar: ركّب «kowe teka sore» (أنت آتٍ عصرًا) مقطعًا مقطعًا.
+      en: Build "kowe teka sore" (you come in the afternoon), syllable by syllable.
+    answer: ꦏꦺꦴ ꦮꦺ ꦠꦼ ꦏ ꦱꦺꦴ ꦫꦺ
+    distractors: ["ꦏꦸ"]
+    words: [taling tarung, pepet]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦲꦏꦸꦮꦶꦱ꧀ꦔꦗꦶ"
+      ar: "اكتب بالحروف اللاتينية: ꦲꦏꦸꦮꦶꦱ꧀ꦔꦗꦶ"
+      en: "Write in Latin letters: ꦲꦏꦸꦮꦶꦱ꧀ꦔꦗꦶ"
+    answers: [aku wis ngaji, akuwisngaji]
+    explain:
+      ar_eg: aku · wis · ngaji = أنا قريت قرآن خلاص. الـ s في wis فيها pangkon، العلامة دي هنتعلمها الوحدة الجاية.
+      ar: aku · wis · ngaji = قرأتُ القرآن. وعلى s في wis علامة pangkon التي نتعلمها في الوحدة القادمة.
+      en: aku · wis · ngaji = I've done my Qur'an recitation. The s of wis carries pangkon, which you'll learn next unit.
+    words: [wulu, suku]
+  - id: e11
+    type: speaking
+    text: Ka, ki, ku, ke, ke, ko.
+    meaning:
+      ar_eg: كل الحركات على حرف ka.
+      ar: الصوائت كلها على الحرف ka.
+      en: Every vowel on the letter ka.
+  - id: e12
+    type: fill_blank
+    sentence: Akeh ___ salat Jumat ing masjid.
+    meaning:
+      ar_eg: فيه ___ كتير بيصلوا الجمعة في الجامع.
+      ar: يصلّي ___ كثير الجمعة في المسجد.
+      en: Many ___ pray the Friday prayer at the mosque.
+    options: [jamaah, sumur, mangsi]
+    answers: [jamaah]
+    words: [jamaah, sumur, mangsi]
+dialogue:
+  title: Sawise ngaji
+  lines:
+    - speaker: Dimas
+      text: Med, kowe wis ngaji?
+      ar_eg: يا محمد، قريت قرآن خلاص؟
+      ar: يا محمد، هل قرأت القرآن؟
+      en: Med, have you done your recitation?
+    - speaker: Mohamed
+      text: Wis, Mas. Lan aku maca papan ing masjid.
+      ar_eg: أيوه يا ديماس. وقريت اللوحة اللي في المسجد كمان.
+      ar: نعم يا ديماس. وقرأت لوحة المسجد أيضًا.
+      en: Yes, Mas. And I read the sign at the mosque.
+    - speaker: Dimas
+      text: Tenan? Ana tembung apa?
+      ar_eg: بجد؟ كان فيها كلام إيه؟
+      ar: حقًا؟ ماذا كان مكتوبًا؟
+      en: Really? What did it say?
+    - speaker: Mohamed
+      text: Ana siji sing aku ngerti, ngaji. Liyane durung.
+      ar_eg: "فيه كلمة واحدة فهمتها: ngaji. والباقي لسه."
+      ar: "فهمت كلمة واحدة: ngaji، والباقي ليس بعد."
+      en: There was one I understood, ngaji. The rest, not yet.
+    - speaker: Dimas
+      text: Ora apa-apa. Sesuk mesthi isa!
+      ar_eg: مفيش مشكلة. بكرة أكيد هتعرف!
+      ar: لا بأس. ستستطيع غدًا بالتأكيد!
+      en: No problem. Tomorrow you'll surely manage!
+souvenir:
+  id: j6.u02.souvenir
+  title: Masjid Gedhe Mataram
+  note:
+    ar_eg: |
+      المسجد الكبير في كوتاغيدي اتبنى بين سنة 1587 و1589، وهو أقدم مسجد في مملكة ماتارام. بوابته مبنية على الطراز الهندوسي الجاوي، بالطوب الأحمر، زي المعابد القديمة — صورة حلوة لإزاي الإسلام دخل جاوة من غير ما يمسح اللي قبله. وجوه المسجد لسه العيال بيـ ngaji لحد النهارده.
+    ar: |
+      بُني المسجد الكبير في كوتاغيدي بين عامَي 1587 و1589، وهو أقدم مساجد مملكة ماتارام. وبوابته على الطراز الهندوسي الجاوي بالآجر الأحمر كالمعابد القديمة، صورةً لدخول الإسلام جاوة دون أن يمحو ما قبله. وما زال الأطفال يقرؤون القرآن فيه حتى اليوم.
+    en: |
+      Kotagede's Great Mosque was built in 1587–1589 and is the oldest mosque of the Mataram kingdom. Its red-brick gate is in Hindu-Javanese style, like the old temples — a lovely picture of how Islam came to Java without erasing what came before. Children still come here to ngaji today.
+review:
+  status: draft
+  verified: false

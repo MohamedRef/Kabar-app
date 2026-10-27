@@ -1,181 +1,192 @@
 schema: kabar.lesson/v1
 id: j6.u06.l06
 language: jv
-title: Utawi ... iku
+title: Makna gandul
 can_do:
-  ar_eg: تتابع المعنى المعلّق (makna gandul) لجملتين اسميتين عربيتين.
-  ar: أن تتابع المعنى المعلّق (makna gandul) لجملتين اسميتين عربيتين.
-  en: Follow the makna gandul of two Arabic nominal sentences.
+  ar_eg: تفهم الشرح الجاوي كلمة بكلمة تحت النص العربي.
+  ar: أن تفهم الشرح الجاوي الحرفي تحت النص العربي.
+  en: Follow a word-by-word Javanese gloss under Arabic text.
 slides:
-  - title: Mubtada lan khabar
+  - title: Makna gandul
     body:
       ar_eg: |
-        Gus Hanif كتب على السبورة جملتين اسميتين، وتحت كل كلمة المعنى بالجاوي.
-        القاعدة اللي إنت عارفها: تحت المبتدأ بيكتبوا اوتاوي (utawi)، وقبل الخبر ايكو (iku).
-        كلمتين جداد: cahya = نور، وnasehat = نصيحة (من العربي).
+        في الـ pesantren الطلبة بيقروا كتب عربي، وبيكتبوا تحت كل كلمة معناها بالجاوي، بالبيجون وبخط مايل كأنه «متعلّق». ده اسمه makna gandul.
+        مثلًا «الحمد لله» بتتشرح: utawi sakabehe puji iku kagungane Allah = «أما كل الحمد فهو ملك لله».
+        - utawi بتعلّم المبتدأ، ورمزها م.
+        - iku بتعلّم الخبر، ورمزها خ.
+        يعني النحو اللي اتعلمته في مصر، بس بالجاوي!
       ar: |
-        كتب Gus Hanif على السبورة جملتين اسميتين، وتحت كل كلمة معناها بالجاوية.
-        والقاعدة التي تعرفها: يُكتب تحت المبتدأ اوتاوي (utawi)، وقبل الخبر ايكو (iku).
-        كلمتان جديدتان: cahya = نور، وnasehat = نصيحة (من العربية).
+        يقرأ طلاب الـ pesantren الكتب العربية، ويكتبون تحت كل كلمة معناها بالجاوية، بالبيجون وبخط مائل كأنه معلَّق، ويسمّى ذلك makna gandul.
+        فيُشرح «الحمد لله»: utawi sakabehe puji iku kagungane Allah = «أما كل الحمد فهو ملك لله».
+        - utawi علامة المبتدأ، ورمزها م.
+        - iku علامة الخبر، ورمزها خ.
+        فهو النحو الذي تعرفه، لكن بالجاوية!
       en: |
-        Gus Hanif wrote two Arabic nominal sentences on the board, with the Javanese meaning under each word.
-        The rule you know: under the mubtada they write اوتاوي (utawi), and before the khabar ايكو (iku).
-        Two new words: cahya = light, nasehat = advice (from Arabic نصيحة).
+        At a pesantren, students read Arabic books and write the Javanese meaning under each word, in Pegon, slanting as if it "hangs". This is makna gandul.
+        «الحمد لله» is glossed: utawi sakabehe puji iku kagungane Allah = "as for all praise, it belongs to God".
+        - utawi marks the mubtada (subject), abbreviated م.
+        - iku marks the khabar (predicate), abbreviated خ.
+        It's the Arabic grammar you learned at school, in Javanese!
     grammar: jv.pegon.basics
     examples:
-      - text: العلم نور — اوتاوي ilmu ايكو cahya
-        ar_eg: "«العلم نور»: أمّا العلم فهو نور."
-        ar: "«العلم نور»: أمّا العلم فهو نور."
-        en: "«العلم نور»: as for knowledge, it is light."
-      - text: الدين النصيحة — اوتاوي agama ايكو nasehat
-        ar_eg: "«الدين النصيحة»: أمّا الدين فهو النصيحة."
-        ar: "«الدين النصيحة»: أمّا الدين فهو النصيحة."
-        en: "«الدين النصيحة»: as for religion, it is sincere advice."
+      - text: اوتاوي (utawi)
+        ar_eg: علامة المبتدأ — م
+        ar: علامة المبتدأ — م
+        en: marks the mubtada — م
+      - text: ايكو (iku)
+        ar_eg: علامة الخبر — خ
+        ar: علامة الخبر — خ
+        en: marks the khabar — خ
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: في «العلم نور»، أنهي كلمة تحتها utawi؟
-      ar: في «العلم نور»، تحت أي كلمة تُكتب utawi؟
-      en: In «العلم نور», which word gets utawi under it?
-    options: [نور, العلم]
-    answer: 1
-    explain:
-      ar_eg: العلم هو المبتدأ، والمبتدأ بياخد utawi. نور الخبر، فقبله iku.
-      ar: العلم هو المبتدأ فيأخذ utawi، ونور هو الخبر فيسبقه iku.
-      en: العلم is the mubtada, so it takes utawi. نور is the khabar, so iku comes before it.
-    words: [utawi, makna gandul]
-  - id: e02
-    type: listen
-    text: Utawi ilmu iku cahya.
-    question:
-      ar_eg: ده المعنى المعلّق لأنهي جملة عربي؟
-      ar: هذا المعنى المعلّق لأي جملة عربية؟
-      en: This is the makna gandul of which Arabic sentence?
-    options: [الدين النصيحة, الحمد لله, العلم نور]
-    answer: 2
-    meaning:
-      ar_eg: أمّا العلم فهو نور.
-      ar: أمّا العلم فهو نور.
-      en: As for knowledge, it is light.
-    words: [cahya, utawi]
-  - id: e03
     type: match_pairs
     pairs:
-      - text: العلم
-        ar_eg: ilmu (بالجاوي)
-        ar: ilmu (بالجاوية)
-        en: ilmu (knowledge)
-      - text: نور
-        ar_eg: cahya (بالجاوي)
-        ar: cahya (بالجاوية)
-        en: cahya (light)
-      - text: الدين
-        ar_eg: agama (بالجاوي)
-        ar: agama (بالجاوية)
-        en: agama (religion)
-      - text: النصيحة
-        ar_eg: nasehat (بالجاوي)
-        ar: nasehat (بالجاوية)
-        en: nasehat (advice)
-    words: [cahya, nasehat]
-  - id: e04
+      - text: makna gandul
+        ar_eg: الشرح الجاوي «المتعلّق» تحت النص العربي
+        ar: الشرح الجاوي المعلَّق تحت النص العربي
+        en: the "hanging" Javanese gloss under Arabic text
+      - text: utawi
+        ar_eg: علامة المبتدأ (م)
+        ar: علامة المبتدأ (م)
+        en: marks the mubtada (م)
+      - text: iku
+        ar_eg: علامة الخبر (خ)
+        ar: علامة الخبر (خ)
+        en: marks the khabar (خ)
+      - text: kitab
+        ar_eg: كتاب (ديني)
+        ar: كتاب (ديني)
+        en: (religious) book
+    words: [makna gandul, utawi, kitab]
+  - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: "اقرا: ايكو"
-      ar: "اقرأ: ايكو"
-      en: "Read: ايكو"
-    options: [iku, ika, aku]
-    answer: 0
+      ar_eg: utawi رمزها إيه في الـ makna gandul؟
+      ar: ما رمز utawi في الـ makna gandul؟
+      en: Which symbol stands for utawi in makna gandul?
+    options: [خ, م, ف]
+    answer: 1
     explain:
-      ar_eg: ا شايلة الـ i في الأول، وبعدين ي (i)، ك، و (u) = iku.
-      ar: تحمل ا الصائت في البداية، ثم ي (i)، ك، و (u) = iku.
-      en: ا carries the opening vowel, then ي (i), ك, و (u) = iku.
-  - id: e05
+      ar_eg: utawi بتعلّم المبتدأ، فرمزها م. وiku للخبر، رمزها خ.
+      ar: utawi علامة المبتدأ فرمزها م، وiku علامة الخبر فرمزها خ.
+      en: utawi marks the mubtada, so م; iku marks the khabar, so خ.
+    words: [utawi, makna gandul]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "اقرا: اوتاوي"
+      ar: "اقرأ: اوتاوي"
+      en: "Read: اوتاوي"
+    options: [utawi, utami, otawa]
+    answer: 0
+    words: [utawi]
+  - id: e04
     type: fill_blank
-    sentence: Utawi agama ___ nasehat.
+    sentence: Utawi sakabehe puji ___ kagungane Allah.
     meaning:
-      ar_eg: أمّا الدين فهو النصيحة. (علامة الخبر ناقصة)
-      ar: أمّا الدين فهو النصيحة. (علامة الخبر ناقصة)
-      en: As for religion, it is sincere advice. (The khabar marker is missing.)
+      ar_eg: أما كل الحمد فهو ملك لله. (كلمة الخبر ناقصة)
+      ar: أما كل الحمد فهو ملك لله. (علامة الخبر ناقصة)
+      en: As for all praise, it belongs to God. (The khabar marker is missing.)
     options: [utawi, iku, ing]
     answers: [iku]
-    words: [nasehat, makna gandul, agama]
+    words: [makna gandul]
+  - id: e05
+    type: listen
+    text: Utawi sakabehe puji iku kagungane Allah.
+    question:
+      ar_eg: ده makna gandul لأنهي عبارة عربية؟
+      ar: هذا makna gandul لأي عبارة عربية؟
+      en: This is the makna gandul of which Arabic phrase?
+    options: [بسم الله, سبحان الله, الحمد لله]
+    answer: 2
+    meaning:
+      ar_eg: أما كل الحمد فهو ملك لله.
+      ar: أما كل الحمد فهو ملك لله.
+      en: As for all praise, it belongs to God.
+    words: [makna gandul, utawi]
   - id: e06
     type: multiple_choice
     question_meaning:
-      ar_eg: cahya معناها إيه؟
-      ar: ما معنى cahya؟
-      en: What does cahya mean?
-    options: [نور, علم, نصيحة]
-    answer: 0
-    words: [cahya]
+      ar_eg: الكلمات العربية الأصل في البيجون غالبًا بتتكتب إزاي؟ اختار kitab.
+      ar: كيف تُكتب الألفاظ العربية الأصل في البيجون غالبًا؟ اختر kitab.
+      en: Arabic loanwords usually keep their Arabic spelling in Pegon. Pick kitab.
+    options: [كيتاب, كيتب, كتاب]
+    answer: 2
+    explain:
+      ar_eg: "الكلمات العربية الأصل غالبًا بتفضل بإملاها العربي: كتاب."
+      ar: "يبقى الدخيل العربي غالبًا بإملائه الأصلي: كتاب."
+      en: "Arabic loanwords usually keep their Arabic spelling: كتاب."
+    words: [kitab]
   - id: e07
-    type: build_sentence
-    source:
-      ar_eg: "اكتب المعنى المعلّق لـ «العلم نور»."
-      ar: "اكتب المعنى المعلّق لـ «العلم نور»."
-      en: "Build the makna gandul of «العلم نور»."
-    answer: Utawi ilmu iku cahya.
-    distractors: [ing]
-    words: [cahya, utawi]
-  - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: "اكتب المعنى المعلّق بالحروف اللاتينية: «الدين النصيحة»"
-      ar: "اكتب المعنى المعلّق بالحروف اللاتينية: «الدين النصيحة»"
-      en: "Write the makna gandul in Latin letters: «الدين النصيحة»"
-    answers: ["Utawi agama iku nasehat.", utawi agama iku nasehat]
-    words: [nasehat, utawi, agama]
+      ar_eg: "اكتب بالحروف اللاتينية: اكو ماچا كتاب"
+      ar: "اكتب بالحروف اللاتينية: اكو ماچا كتاب"
+      en: "Write in Latin letters: اكو ماچا كتاب"
+    answers: ["Aku maca kitab.", aku maca kitab]
+    explain:
+      ar_eg: اكو = aku، ماچا = maca (چ = c)، وكتاب = kitab بإملاها العربي. يعني «أنا بقرا كتاب».
+      ar: "اكو = aku، وماچا = maca، وكتاب = kitab بإملائها العربي: «أقرأ كتابًا»."
+      en: "اكو = aku, ماچا = maca (چ = c), and كتاب = kitab in its Arabic spelling: \"I'm reading a book.\""
+    words: [kitab]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: أما كل الحمد فهو ملك لله. (makna gandul لـ «الحمد لله»)
+      ar: أما كل الحمد فهو ملك لله. (makna gandul لـ «الحمد لله»)
+      en: As for all praise, it belongs to God. (makna gandul of «الحمد لله»)
+    answer: Utawi sakabehe puji iku kagungane Allah.
+    distractors: [ing]
+    words: [utawi, makna gandul]
   - id: e09
     type: speaking
-    text: Utawi ilmu iku cahya. Utawi agama iku nasehat.
+    text: Utawi sakabehe puji iku kagungane Allah.
     meaning:
-      ar_eg: أمّا العلم فهو نور. أمّا الدين فهو النصيحة.
-      ar: أمّا العلم فهو نور، وأمّا الدين فهو النصيحة.
-      en: As for knowledge, it is light. As for religion, it is sincere advice.
-    words: [cahya, nasehat, agama]
+      ar_eg: أما كل الحمد فهو ملك لله.
+      ar: أما كل الحمد فهو ملك لله.
+      en: As for all praise, it belongs to God.
+    words: [utawi]
 dialogue:
-  title: Ing kelas Gus Hanif
+  title: Ngaji kitab
   lines:
     - speaker: Gus Hanif
-      text: Mas Mohamed, «al-ilmu nur», maknanipun menapa?
-      ar_eg: يا محمد، «العلم نور» معناها إيه؟
-      ar: يا محمد، ما معنى «العلم نور»؟
-      en: Mohamed, what's the meaning of «al-ilmu nur»?
+      text: Mas, menika makna gandul. Tegesipun dipun serat ing ngandhap.
+      ar_eg: يا محمد، ده الـ makna gandul. المعنى بيتكتب تحت.
+      ar: يا محمد، هذا الـ makna gandul. يُكتب المعنى تحت.
+      en: This is makna gandul. The meaning is written underneath.
     - speaker: Mohamed
-      text: Utawi ilmu, iku cahya.
-      ar_eg: أمّا العلم فهو نور.
-      ar: أمّا العلم فهو نور.
-      en: As for knowledge, it is light.
+      text: Utawi menika tandha mubtada, nggih?
+      ar_eg: utawi دي علامة المبتدأ، صح؟
+      ar: utawi علامة المبتدأ، أليس كذلك؟
+      en: Utawi marks the mubtada, right?
     - speaker: Gus Hanif
-      text: Leres! Utawi kangge mubtada, iku kangge khabar.
-      ar_eg: صح! utawi للمبتدأ وiku للخبر.
-      ar: صحيح! utawi للمبتدأ وiku للخبر.
-      en: Right! Utawi for the mubtada, iku for the khabar.
+      text: Leres! Lan iku tandha khabar.
+      ar_eg: صح! وiku علامة الخبر.
+      ar: صحيح! وiku علامة الخبر.
+      en: Right! And iku marks the khabar.
     - speaker: Mohamed
-      text: Nahwu ing Mesir, makna ing Jawa. Kula remen!
-      ar_eg: النحو من مصر والمعنى بالجاوي. عاجبني قوي!
-      ar: النحو من مصر والمعنى بالجاوية. يعجبني ذلك!
-      en: The grammar from Egypt, the meaning in Javanese. I love it!
+      text: Kados nahwu ing Mesir, nanging basa Jawa!
+      ar_eg: زي النحو في مصر، بس بالجاوي!
+      ar: كالنحو في مصر، لكن بالجاوية!
+      en: Like Arabic grammar back in Egypt, but in Javanese!
 new_words:
-  - word: cahya
+  - word: makna gandul
     pos: noun
-    ar_eg: نور
-    ar: نور
-    en: light = cahaya
-  - word: nasehat
+    ar_eg: الشرح الجاوي كلمة بكلمة «المتعلّق» تحت النص العربي
+    ar: الشرح الجاوي الحرفي المعلَّق تحت النص العربي
+    en: word-by-word Javanese gloss hanging under Arabic text
+  - word: utawi
+    pos: particle
+    ar_eg: علامة المبتدأ في الـ makna gandul (م)
+    ar: علامة المبتدأ في الـ makna gandul (م)
+    en: marks the mubtada in makna gandul (م)
+  - word: kitab
     pos: noun
-    arabic: نصيحة
-    ar_eg: نصيحة
-    ar: نصيحة
-    en: advice = nasihat
-  - word: agama
-    pos: noun
-    ar_eg: دين
-    ar: دين
-    en: religion = agama
+    arabic: كتاب
+    ar_eg: كتاب (ديني غالبًا)
+    ar: كتاب (ديني غالبًا)
+    en: (religious) book = kitab
 review:
   status: draft
   verified: false

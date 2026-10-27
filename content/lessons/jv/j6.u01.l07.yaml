@@ -1,174 +1,236 @@
 schema: kabar.lesson/v1
 id: j6.u01.l07
 language: jv
-title: Ditulis a, diwaca o
+title: Pesen kalung
 can_do:
-  ar_eg: تسمع كلمة بتتنطق بـ o وتلاقيها مكتوبة بالخط الجاوي بـ a.
-  ar: أن تسمع كلمة تُنطق بـ o فتجدها مكتوبة بالخط الجاوي بـ a.
-  en: Hear a word said with o and find it written with a in aksara Jawa.
+  ar_eg: 'تطلب سلسلة عليها اسمك بالحروف الجاوية: التمن، والعربون، وإن الكتابة مظبوطة.'
+  ar: 'أن تطلب قلادة باسمك بالحروف الجاوية: الكلفة والعربون ومطابقة الكتابة.'
+  en: 'Order a name necklace in Javanese script: the cost, the deposit and checking the spelling matches.'
 slides:
-  - title: Ditulis a, diwaca o
+  - title: Pesenan
     body:
       ar_eg: |
-        النهارده اسمع الأول. الجاويين بيقولوا «moco» و«Jowo» و«opo»، بس الخط الجاوي بيكتبهم بحروف عادية فيها a: ꦩꦕ ꦗꦮ ꦲꦥ.
-        القاعدة زي الإملا اللاتيني: الـ a في آخر الكلمة (واللي قبلها لو المقطع مفتوح) بتتنطق o. يعني الحرف ميتغيرش، النطق بس.
-        وفي الشات هتلاقي opo وmoco، بس الكتابة الصح maca وapa.
+        kalung = سلسلة (قلادة)، gelang = غويشة (أسورة). lunas = خالص (اتدفع كله).
+        ragad = التكلفة (كلمة رسمية)، panjer = عربون، separo = نص.
+        jumbuh = مطابق ومظبوط على، sampurna = كامل من غير غلطة.
       ar: |
-        اليوم نبدأ بالاستماع. يقول الجاويون «moco» و«Jowo» و«opo»، لكن الخط الجاوي يكتبها بحروف مجرّدة فيها a: ꦩꦕ ꦗꦮ ꦲꦥ.
-        والقاعدة كما في الإملاء اللاتيني: تُنطق a في آخر الكلمة (وفي المقطع المفتوح قبله) o؛ فالحرف لا يتغيّر بل النطق.
-        وفي الدردشة تجد opo وmoco، أما الكتابة الصحيحة فـ maca وapa.
+        kalung = قلادة، gelang = سوار. lunas = مسدَّد بالكامل.
+        ragad = الكلفة (لفظ رسمي)، panjer = عربون، separo = نصف.
+        jumbuh = مطابق، sampurna = كامل بلا عيب.
       en: |
-        Today you listen first. Javanese speakers say "moco", "Jowo", "opo", but aksara Jawa writes them with ordinary letters that carry a: ꦩꦕ ꦗꦮ ꦲꦥ.
-        The rule is the same as in Latin spelling: a word-final a (and an open a just before it) is said o. The letter doesn't change, only the sound.
-        Chats write opo and moco; the standard spelling is maca and apa.
-    grammar: jv.aksara.nglegena
+        kalung = necklace, gelang = bracelet. lunas = paid in full.
+        ragad = cost (formal), panjer = deposit, separo = half.
+        jumbuh = match, fit; sampurna = perfect.
     examples:
-      - text: ꦩꦕ (maca)
-        ar_eg: يقرا — بتتنطق moco
-        ar: يقرأ — تُنطق moco
-        en: read — said "moco"
-      - text: ꦗꦮ (Jawa)
-        ar_eg: جاوة / جاوي — بتتنطق Jowo
-        ar: جاوة / جاوي — تُنطق Jowo
-        en: Java, Javanese — said "Jowo"
-      - text: ꦲꦥ (apa)
-        ar_eg: إيه؟ — بتتنطق opo
-        ar: ماذا؟ — تُنطق opo
-        en: what? — said "opo"
+      - text: Kalung jeneng nganggo aksara Jawa saiki laris.
+        ar_eg: السلاسل اللي عليها أسامي بالجاوي عليها طلب دلوقتي.
+        ar: قلادات الأسماء بالحروف الجاوية رائجة الآن.
+        en: Name necklaces in Javanese script are selling well now.
+      - text: Ragade 200 ewu, panjere separo.
+        ar_eg: التكلفة ٢٠٠ ألف، والعربون النص.
+        ar: الكلفة ٢٠٠ ألف، والعربون نصفها.
+        en: It costs 200,000; the deposit is half.
+      - text: Tulisane wis jumbuh karo jenengmu. Sampurna!
+        ar_eg: الكتابة مطابقة لاسمك. تمام!
+        ar: الكتابة مطابقة لاسمك. كاملة!
+        en: The writing matches your name. Perfect!
 exercises:
   - id: e01
-    type: listen
-    text: maca
-    question:
-      ar_eg: سمعت أنهي كلمة؟
-      ar: أي كلمة سمعت؟
-      en: Which word did you hear?
-    options: ["ꦩꦠ", "ꦩꦕ", "ꦏꦕ"]
-    answer: 1
-    meaning:
-      ar_eg: يقرا (بتتنطق moco)
-      ar: يقرأ (تُنطق moco)
-      en: read (said "moco")
-    words: [ꦩ, ꦕ]
-  - id: e02
-    type: listen
-    text: Jawa
-    question:
-      ar_eg: سمعت أنهي كلمة؟
-      ar: أي كلمة سمعت؟
-      en: Which word did you hear?
-    options: ["ꦗꦪ", "ꦝꦮ", "ꦗꦮ"]
-    answer: 2
-    meaning:
-      ar_eg: جاوة / جاوي (بتتنطق Jowo)
-      ar: جاوة / جاوي (تُنطق Jowo)
-      en: Java, Javanese (said "Jowo")
-    words: [ꦗ, ꦮ]
-  - id: e03
     type: match_pairs
     pairs:
-      - text: ꦲꦥ
-        ar_eg: apa — بتتنطق opo (إيه؟)
-        ar: apa — تُنطق opo (ماذا؟)
-        en: apa — said opo (what?)
-      - text: ꦭꦫ
-        ar_eg: lara — بتتنطق loro (عيان)
-        ar: lara — تُنطق loro (مريض)
-        en: lara — said loro (sick)
-      - text: ꦏꦪ
-        ar_eg: kaya — بتتنطق koyo (زي)
-        ar: kaya — تُنطق koyo (مثل)
-        en: kaya — said koyo (like)
-      - text: ꦢꦮ
-        ar_eg: dawa — بتتنطق dowo (طويل)
-        ar: dawa — تُنطق dowo (طويل)
-        en: dawa — said dowo (long)
-    words: [ꦲ, ꦭ, ꦏ, ꦢ]
+      - text: kalung
+        ar_eg: سلسلة
+        ar: قلادة
+        en: necklace
+      - text: gelang
+        ar_eg: غويشة
+        ar: سوار
+        en: bracelet
+      - text: jumbuh
+        ar_eg: مطابق
+        ar: مطابق
+        en: match, fit
+      - text: lunas
+        ar_eg: خالص
+        ar: مسدَّد
+        en: paid in full
+    words: [kalung, gelang, jumbuh, lunas]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: sampurna
+        ar_eg: كامل
+        ar: كامل بلا عيب
+        en: perfect
+      - text: separo
+        ar_eg: نص
+        ar: نصف
+        en: half
+      - text: panjer
+        ar_eg: عربون
+        ar: عربون
+        en: deposit
+      - text: ragad
+        ar_eg: تكلفة
+        ar: كلفة
+        en: cost
+    words: [sampurna, separo, panjer, ragad]
+  - id: e03
+    type: listen
+    text: Panjere separo, sisane mengko yen wis rampung.
+    question:
+      ar_eg: هيدفع إزاي؟
+      ar: كيف سيدفع؟
+      en: How will he pay?
+    options: [يدفع نص عربون والباقي بعدين, يدفع كله دلوقتي, مش هيدفع حاجة]
+    answer: 0
+    meaning:
+      ar_eg: العربون النص، والباقي لما يخلص.
+      ar: العربون النصف، والباقي عند الانتهاء.
+      en: Half as a deposit, the rest when it's done.
+    words: [panjer, separo]
   - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: "صاحبك كتب في الشات «opo». بتتكتب إزاي بالخط الجاوي؟"
-      ar: "كتب صديقك في الدردشة «opo». كيف تُكتب بالخط الجاوي؟"
-      en: "A friend texted «opo». How is it written in aksara Jawa?"
-    options: ["ꦲꦤ", "ꦲꦥ", "ꦱꦥ"]
-    answer: 1
-    explain:
-      ar_eg: "opo هي apa: ꦲ + ꦥ. الخط مفيهوش o هنا، فيه a بتتنطق o."
-      ar: "opo هي apa: ꦲ + ꦥ؛ لا o في الكتابة هنا، بل a تُنطق o."
-      en: "opo is apa: ꦲ + ꦥ. There's no o in the writing, just an a said o."
-    words: [ꦲ, ꦥ]
+    type: fill_blank
+    sentence: Gelang iki ___ banget, saben dina akeh sing tuku.
+    meaning:
+      ar_eg: الغويشة دي ___ أوي، كل يوم ناس كتير بتشتريها.
+      ar: هذا السوار ___ جدًا، يشتريه كثيرون كل يوم.
+      en: This bracelet is ___; lots of people buy it every day.
+    options: [laris, jumbuh, panjer]
+    answers: [laris]
+    words: [jumbuh, panjer, gelang]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: "في الشات «moco». إيه الكتابة الصح بالحروف اللاتينية؟"
-      ar: "في الدردشة «moco». ما الكتابة الصحيحة بالحروف اللاتينية؟"
-      en: "A chat says «moco». What's the standard Latin spelling?"
-    options: [moca, maco, maca]
-    answer: 2
+      ar_eg: أنهي حاجة بتتلبس حوالين الرقبة؟
+      ar: ماذا يُلبس حول العنق؟
+      en: What do you wear around your neck?
+    options: [gelang, kalung, ragad]
+    answer: 1
     explain:
-      ar_eg: maca، زي الخط الجاوي ꦩꦕ بالظبط.
-      ar: maca، تمامًا كالخط الجاوي ꦩꦕ.
-      en: maca, exactly like aksara Jawa ꦩꦕ.
-    words: [ꦩ, ꦕ]
+      ar_eg: kalung = سلسلة للرقبة. gelang = للإيد.
+      ar: kalung = قلادة للعنق، وgelang = سوار لليد.
+      en: kalung goes round the neck; gelang goes on the wrist.
+    words: [gelang, kalung, ragad]
   - id: e06
     type: fill_blank
-    sentence: ꦏꦪ = ___
+    sentence: Ukuran ali-aline wis ___ karo drijiku.
     meaning:
-      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: زي)"
-      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: مثل)"
-      en: Type the reading in Latin letters. (It means "like".)
-    answers: [kaya, koyo]
-    words: [ꦏ, ꦪ]
+      ar_eg: مقاس الخاتم ___ على صباعي.
+      ar: مقاس الخاتم ___ لإصبعي.
+      en: The ring size ___ my finger.
+    options: [jumbuh, lunas, separo]
+    answers: [jumbuh]
+    words: [jumbuh, lunas, separo]
   - id: e07
-    type: dictation
-    text: Aku isa maca aksara Jawa.
-    meaning:
-      ar_eg: أنا بعرف أقرا الخط الجاوي.
-      ar: أستطيع قراءة الخط الجاوي.
-      en: I can read aksara Jawa.
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية (الكتابة الصح): ꦭꦫꦲꦥ"
-      ar: "اكتب بالحروف اللاتينية (بالإملاء الصحيح): ꦭꦫꦲꦥ"
-      en: "Write in Latin letters (standard spelling): ꦭꦫꦲꦥ"
-    answers: ["Lara apa?", lara apa, laraapa]
+    type: multiple_choice
+    question: Ora ana kluputane, tulisane ___.
+    options: [lunas, gelang, sampurna]
+    answer: 2
     explain:
-      ar_eg: ꦭꦫ lara + ꦲꦥ apa = Lara apa? يعني «عيان بإيه؟»، وبتتنطق «loro opo».
-      ar: ꦭꦫ lara + ꦲꦥ apa = Lara apa? أي «ما مرضك؟»، وتُنطق «loro opo».
-      en: ꦭꦫ lara + ꦲꦥ apa = Lara apa? "What's wrong with you?", said "loro opo".
-    words: [ꦭ, ꦫ]
+      ar_eg: مفيش غلطة = sampurna، كاملة.
+      ar: لا خطأ = sampurna، كاملة.
+      en: 'No mistakes: sampurna, perfect.'
+    words: [lunas, gelang, sampurna]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: السلسلة دي تكلفتها كام؟
+      ar: كم كلفة هذه القلادة؟
+      en: How much does this necklace cost?
+    answer: Pira ragade kalung iki?
+    distractors: [gelang, panjer]
+    words: [ragad, kalung]
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Aku mbayar panjer separo dhisik.
+    answers_meaning:
+      ar_eg: [أنا هدفع نص المبلغ عربون الأول, هدفع النص عربون الأول]
+      ar: [سأدفع نصف المبلغ عربونًا أولًا, أدفع العربون نصف المبلغ أولًا]
+      en: ['I''ll pay half as a deposit first', I pay a half deposit first]
+    words: [panjer, separo]
+  - id: e10
     type: speaking
-    text: Maca, Jawa, apa, lara.
+    text: Gelang lan kalung iki sampurna.
     meaning:
-      ar_eg: "قول الكلمات بالنطق الجاوي: moco، Jowo، opo، loro."
-      ar: "انطق الكلمات بالنطق الجاوي: moco، Jowo، opo، loro."
-      en: Say them the Javanese way — moco, Jowo, opo, loro.
+      ar_eg: الغويشة والسلسلة دول تمام التمام.
+      ar: هذا السوار وهذه القلادة كاملان.
+      en: This bracelet and necklace are perfect.
+    words: [gelang, kalung, sampurna]
 dialogue:
-  title: Ditulis a
   lines:
     - speaker: Mohamed
-      text: Mas, ing kertu ditulis maca, nanging kowe ngomong moco.
-      ar_eg: يا ديماس، على الكارت مكتوب maca، بس إنت بتقول moco.
-      ar: يا ديماس، على البطاقة مكتوب maca لكنك تقول moco.
-      en: Mas, the card says maca, but you say moco.
-    - speaker: Dimas
-      text: Iya. Ditulis a, diwaca o.
-      ar_eg: أيوه. بتتكتب a وبتتقري o.
-      ar: نعم. تُكتب a وتُقرأ o.
-      en: Yes. Written a, read o.
+      text: Pak, kula badhe pesen kalung mawi jeneng kula ing aksara Jawa.
+      ar_eg: يا عم، عايز أطلب سلسلة عليها اسمي بالحروف الجاوية.
+      ar: يا سيدي، أريد أن أطلب قلادة عليها اسمي بالحروف الجاوية.
+      en: Sir, I'd like to order a necklace with my name in Javanese script.
+    - speaker: Pak Slamet
+      text: Sae, Mas. Kalung jeneng menika saweg laris.
+      ar_eg: حلو يا محمد. سلاسل الأسامي دي عليها طلب اليومين دول.
+      ar: جميل. قلادات الأسماء رائجة هذه الأيام.
+      en: Good choice. Name necklaces are selling well these days.
     - speaker: Mohamed
-      text: Kaya apa lan opo ing chat, ya?
-      ar_eg: زي apa وopo في الشات، صح؟
-      ar: مثل apa وopo في الدردشة، أليس كذلك؟
-      en: Like apa and opo in chats, right?
-    - speaker: Dimas
-      text: Bener! Nanging aksara Jawa mung nulis apa.
-      ar_eg: مظبوط! بس الخط الجاوي بيكتب apa بس.
-      ar: صحيح! لكن الخط الجاوي لا يكتب إلا apa.
-      en: Exactly! But aksara Jawa only writes apa.
+      text: Pinten ragadipun?
+      ar_eg: التكلفة كام؟
+      ar: كم الكلفة؟
+      en: How much does it cost?
+    - speaker: Pak Slamet
+      text: Kalih atus ewu. Panjeripun separo rumiyin.
+      ar_eg: ميتين ألف. والعربون النص الأول.
+      ar: مئتا ألف. والعربون نصفها أولًا.
+      en: Two hundred thousand. Half as a deposit first.
+    - speaker: Mohamed
+      text: Menika, Pak. Tulisanipun kedah jumbuh kaliyan jeneng kula, nggih.
+      ar_eg: اتفضل يا عم. والكتابة لازم تطابق اسمي، ماشي؟
+      ar: تفضّل. ويجب أن تطابق الكتابة اسمي.
+      en: Here you are. The writing must match my name, please.
+    - speaker: Pak Slamet
+      text: Mesthi. Mangke dados sampurna!
+      ar_eg: أكيد. هتطلع تمام التمام!
+      ar: بالتأكيد. ستكون كاملة!
+      en: Of course. It'll be perfect!
+new_words:
+  - word: kalung
+    pos: noun
+    ar_eg: سلسلة (قلادة)
+    ar: قلادة
+    en: necklace
+  - word: gelang
+    pos: noun
+    ar_eg: غويشة، أسورة
+    ar: سوار
+    en: bracelet
+  - word: jumbuh
+    pos: verb
+    ar_eg: مطابق، مظبوط على
+    ar: يطابق
+    en: match, fit
+  - word: lunas
+    pos: adjective
+    ar_eg: خالص (اتدفع كله)
+    ar: مسدَّد بالكامل
+    en: paid in full
+  - word: sampurna
+    pos: adjective
+    ar_eg: كامل من غير غلطة
+    ar: كامل بلا عيب
+    en: perfect
+  - word: separo
+    pos: numeral
+    ar_eg: نص
+    ar: نصف
+    en: half
+  - word: panjer
+    pos: noun
+    ar_eg: عربون
+    ar: عربون
+    en: deposit, down payment
+  - word: ragad
+    pos: noun
+    ar_eg: تكلفة
+    ar: كلفة
+    en: cost (formal)
 review:
   status: draft
   verified: false

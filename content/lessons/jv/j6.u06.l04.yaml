@@ -1,151 +1,239 @@
 schema: kabar.lesson/v1
 id: j6.u06.l04
 language: jv
-title: Telung aksara
+title: Kranjang blanja
 can_do:
-  ar_eg: تقرا نفس الكلمة بالخطوط التلاتة.
-  ar: أن تقرأ الكلمة نفسها بالخطوط الثلاثة.
-  en: Read the same word in all three scripts.
+  ar_eg: 'تشتري توابل الراوون من السوق: الكلواك والكميري والتراسي، بالميزان والقفة.'
+  ar: 'أن تشتري توابل الراوون من السوق: الكلواك والكميري والتراسي، بالميزان والسلة.'
+  en: 'Buy rawon spices at the market: kluwak, candlenuts and shrimp paste, with scales and baskets.'
 slides:
-  - title: Siji tembung, telung aksara
+  - title: Bumbu rawon
     body:
       ar_eg: |
-        دلوقتي بقيت تقرا الجاوي بتلات خطوط: اللاتيني، والـ aksara Jawa، والبيجون. نفس الكلمة، تلات أشكال:
-        - في الـ aksara Jawa الحرف شايل a، والحركات علامات حواليه.
-        - في البيجون كل حركة بتتكتب حرف (ا ي و).
+        الراوون شوربة لحمة سودا من جاوة الشرقية، ولونها الأسود جاي من kluwak (بذرة سودا).
+        kemiri = جوز الشمع (بندق بيتطحن في التوابل)، trasi = معجون الجمبري.
+        kranjang = سلة، tenggok = قفة من البامبو بتشيلها البيّاعة على ضهرها.
+        timbangan = ميزان، dagangan = البضاعة، nyicil = يقسّط (يدفع على أقساط).
       ar: |
-        صرت تقرأ الجاوية بثلاثة خطوط: اللاتيني والـ aksara Jawa والبيجون؛ كلمة واحدة بثلاث صور:
-        - في الـ aksara Jawa يحمل الحرف a، والصوائت علامات حوله.
-        - وفي البيجون يُكتب كل صائت حرفًا (ا ي و).
+        الراوون حساء لحم أسود من جاوة الشرقية، ولونه الأسود من kluwak (بذرة سوداء).
+        kemiri = جوز الشمع (يُطحن مع التوابل)، trasi = معجون الروبيان.
+        kranjang = سلة، tenggok = قفة من الخيزران تحملها البائعة على ظهرها.
+        timbangan = ميزان، dagangan = البضاعة، nyicil = يقسّط.
       en: |
-        You can now read Javanese in three scripts: Latin, aksara Jawa and Pegon. One word, three shapes:
-        - In aksara Jawa each letter carries a, and vowels are signs around it.
-        - In Pegon every vowel is written as a letter (ا ي و).
-    grammar: jv.pegon.basics
+        Rawon is a black beef soup from East Java; its black colour comes from kluwak (a black nut).
+        kemiri = candlenut (ground into spice pastes), trasi = shrimp paste.
+        kranjang = basket, tenggok = bamboo basket a market woman carries on her back.
+        timbangan = scales, dagangan = goods for sale, nyicil = pay in instalments.
     examples:
-      - text: sapa · ꦱꦥ · ساڤا
-        ar_eg: مين؟
-        ar: من؟
-        en: who?
-      - text: gula · ꦒꦸꦭ · ڮولا
-        ar_eg: سكر
-        ar: سكر
-        en: sugar
-      - text: omah · ꦲꦺꦴꦩꦃ · اوماه
-        ar_eg: بيت
-        ar: بيت
-        en: house
+      - text: Rawon ireng iku saka kluwak.
+        ar_eg: سواد الراوون من الكلواك.
+        ar: سواد الراوون من الكلواك.
+        en: Rawon's black colour comes from kluwak.
+      - text: Mbok bakul nggendhong tenggok.
+        ar_eg: البيّاعة شايلة القفة على ضهرها.
+        ar: تحمل البائعة القفة على ظهرها.
+        en: The market woman carries a bamboo basket on her back.
+      - text: Bakul nimbang trasi nganggo timbangan.
+        ar_eg: البيّاع بيوزن التراسي بالميزان.
+        ar: يزن البائع معجون الروبيان بالميزان.
+        en: The vendor weighs the shrimp paste on the scales.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: ꦱꦥ
-        ar_eg: sapa — مين؟
-        ar: sapa — من؟
-        en: sapa — who?
-      - text: ڮولا
-        ar_eg: gula — سكر
-        ar: gula — سكر
-        en: gula — sugar
-      - text: ꦲꦏꦸ
-        ar_eg: aku — أنا
-        ar: aku — أنا
-        en: aku — I
-      - text: چارا
-        ar_eg: cara — طريقة
-        ar: cara — طريقة
-        en: cara — way
-      - text: ꦲꦺꦴꦩꦃ
-        ar_eg: omah — بيت
-        ar: omah — بيت
-        en: omah — house
+      - text: kranjang
+        ar_eg: سلة
+        ar: سلة
+        en: basket
+      - text: tenggok
+        ar_eg: قفة بامبو
+        ar: قفة خيزران
+        en: bamboo back-basket
+      - text: trasi
+        ar_eg: معجون جمبري
+        ar: معجون روبيان
+        en: shrimp paste
+      - text: kemiri
+        ar_eg: جوز الشمع
+        ar: جوز الشمع
+        en: candlenut
+    words: [kranjang, tenggok, trasi, kemiri]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: "ꦱꦥ بالبيجون تبقى إيه؟"
-      ar: "ما ꦱꦥ بالبيجون؟"
-      en: "What is ꦱꦥ in Pegon?"
-    options: ["كاڤا", "ساڤا", "ساما"]
-    answer: 1
+    type: match_pairs
+    pairs:
+      - text: kluwak
+        ar_eg: كلواك (بذرة سودا)
+        ar: كلواك (بذرة سوداء)
+        en: kluwak nut
+      - text: timbangan
+        ar_eg: ميزان
+        ar: ميزان
+        en: scales
+      - text: nyicil
+        ar_eg: يقسّط
+        ar: يقسّط
+        en: pay in instalments
+      - text: dagangan
+        ar_eg: بضاعة
+        ar: بضاعة
+        en: goods for sale
+    words: [kluwak, timbangan, nyicil, dagangan]
   - id: e03
+    type: listen
+    text: Rawon ireng iku saka kluwak.
+    question:
+      ar_eg: الراوون لونه منين؟
+      ar: من أين لون الراوون؟
+      en: Where does rawon's colour come from?
+    options: [الراوون أسود من الكلواك, الراوون أحمر من الشطة, الراوون أبيض من جوز الهند]
+    answer: 0
+    meaning:
+      ar_eg: سواد الراوون جاي من الكلواك.
+      ar: سواد الراوون من الكلواك.
+      en: Rawon's black colour comes from kluwak.
+    words: [kluwak]
+  - id: e04
+    type: fill_blank
+    sentence: Bakul nimbang trasi nganggo ___.
+    meaning:
+      ar_eg: البيّاع بيوزن التراسي بالـ___.
+      ar: يزن البائع التراسي بـ___.
+      en: The vendor weighs the shrimp paste on the ___.
+    options: [timbangan, tenggok, dagangan]
+    answers: [timbangan]
+    words: [timbangan, tenggok, dagangan]
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: "ڠاجي بالـ aksara Jawa تبقى إيه؟"
-      ar: "ما ڠاجي بالـ aksara Jawa؟"
-      en: "What is ڠاجي in aksara Jawa?"
-    options: ["ꦔꦗꦶ", "ꦤꦗꦶ", "ꦔꦗ"]
+      ar_eg: أنهي واحدة هي «جوز الشمع»؟
+      ar: أيّها «جوز الشمع»؟
+      en: Which one is the candlenut?
+    options: [kemiri, kluwak, trasi]
     answer: 0
-  - id: e04
-    type: listen
-    text: dhadha
-    question:
-      ar_eg: سمعت dhadha (صدر). بتتكتب إزاي بالـ aksara Jawa؟
-      ar: سمعت dhadha (صدر). كيف تُكتب بالـ aksara Jawa؟
-      en: You heard dhadha (chest). How is it written in aksara Jawa?
-    options: ["ꦢꦢ", "ꦝꦢ", "ꦝꦝ"]
-    answer: 2
-    meaning:
-      ar_eg: صدر
-      ar: صدر
-      en: chest
-  - id: e05
-    type: fill_blank
-    sentence: ꦲꦺꦴꦩꦃ = اوماه = ___
-    meaning:
-      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: بيت)"
-      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: بيت)"
-      en: Type the reading in Latin letters. (It means "house".)
-    answers: [omah]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: اكو اورا ڠاجي"
-      ar: "اكتب بالحروف اللاتينية: اكو اورا ڠاجي"
-      en: "Write in Latin letters: اكو اورا ڠاجي"
-    answers: ["Aku ora ngaji.", aku ora ngaji]
     explain:
-      ar_eg: اكو = aku، اورا = ora (الألف شايلة الـ o)، ڠاجي = ngaji. يعني «أنا مش بقرا».
-      ar: "اكو = aku، واورا = ora (الألف تحمل o)، وڠاجي = ngaji: «لا أقرأ»."
-      en: "اكو = aku, اورا = ora (alif carries the o), ڠاجي = ngaji: \"I'm not reciting.\""
+      ar_eg: kemiri = جوز الشمع؛ kluwak = البذرة السودا.
+      ar: kemiri = جوز الشمع؛ kluwak = البذرة السوداء.
+      en: kemiri = candlenut; kluwak = the black nut.
+    words: [kemiri, kluwak, trasi]
+  - id: e06
+    type: fill_blank
+    sentence: Mbok bakul nggendhong ___ isi sayur.
+    meaning:
+      ar_eg: البيّاعة شايلة ___ مليانة خضار.
+      ar: تحمل البائعة ___ مملوءة خضارًا.
+      en: The market woman carries a ___ full of vegetables.
+    options: [tenggok, nyicil, kemiri]
+    answers: [tenggok]
+    words: [tenggok, nyicil, kemiri]
   - id: e07
+    type: multiple_choice
+    question: Dhuwite durung ana, mula Mas Dimas tuku motor karo ___.
+    options: [dagangan, timbangan, nyicil]
+    answer: 2
+    explain:
+      ar_eg: nyicil = يقسّط.
+      ar: nyicil = يقسّط.
+      en: nyicil = pay in instalments.
+    words: [dagangan, timbangan, nyicil]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: "ابني بالبيجون: aku ora ngaji (أنا مش بقرا)"
-      ar: "ركّب بالبيجون: aku ora ngaji (لا أقرأ)"
-      en: "Build in Pegon: aku ora ngaji (I'm not reciting)"
-    answer: اكو اورا ڠاجي
-    distractors: ["ايكي"]
-  - id: e08
-    type: dictation
-    text: Aku ora ngaji.
+      ar_eg: بضاعتها في السلة.
+      ar: بضاعتها في السلة.
+      en: Her goods are in the basket.
+    answer: Dagangane ana ing kranjang.
+    distractors: [trasi, tenggok]
+    words: [dagangan, kranjang]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Aku tuku trasi lan kemiri.
+    answers_meaning:
+      ar_eg: [أنا بشتري تراسي وجوز شمع, اشتريت معجون جمبري وجوز شمع]
+      ar: [أشتري معجون الروبيان وجوز الشمع, اشتريت معجون روبيان وجوز شمع]
+      en: ['I''m buying shrimp paste and candlenuts', I bought shrimp paste and candlenuts]
+    words: [trasi, kemiri]
+  - id: e10
+    type: speaking
+    text: Kranjangku isi kluwak lan trasi.
     meaning:
-      ar_eg: أنا مش بقرا.
-      ar: لا أقرأ.
-      en: I'm not reciting.
+      ar_eg: سلتي فيها كلواك وتراسي.
+      ar: في سلتي كلواك ومعجون روبيان.
+      en: My basket has kluwak and shrimp paste.
+    words: [kranjang, kluwak, trasi]
 dialogue:
-  title: Jeneng ing telung aksara
   lines:
-    - speaker: Dimas
-      text: Med, jenengmu tulisen nganggo aksara Jawa.
-      ar_eg: يا محمد، اكتب اسمك بالـ aksara Jawa.
-      ar: يا محمد، اكتب اسمك بالـ aksara Jawa.
-      en: Med, write your name in aksara Jawa.
     - speaker: Mohamed
-      text: Wis. Saiki nganggo Pegon uga!
-      ar_eg: خلصت. ودلوقتي بالبيجون كمان!
-      ar: انتهيت. والآن بالبيجون أيضًا!
-      en: Done. And now in Pegon too!
-    - speaker: Dimas
-      text: Wah, telung aksara! Latin, Jawa, Pegon.
-      ar_eg: يا سلام، تلات خطوط! لاتيني، جاوي، بيجون.
-      ar: رائع، ثلاثة خطوط! لاتيني وجاوي وبيجون.
-      en: Wow, three scripts! Latin, Javanese, Pegon.
+      text: Bu, kula badhe tumbas bumbu rawon.
+      ar_eg: يا حاجة، عايز أشتري توابل راوون.
+      ar: يا سيدتي، أريد شراء توابل الراوون.
+      en: Ma'am, I'd like to buy rawon spices.
+    - speaker: Bakul
+      text: Nggih, Mas. Kluwak, kemiri, trasi?
+      ar_eg: حاضر يا أستاذ. كلواك وكميري وتراسي؟
+      ar: حسنًا. كلواك وكميري وتراسي؟
+      en: Sure. Kluwak, candlenuts, shrimp paste?
     - speaker: Mohamed
-      text: Lan aksara Arab, aksaraku dhewe!
-      ar_eg: والحروف العربية، حروفي أنا!
-      ar: والحرف العربي، حرفي أنا!
-      en: And Arabic script, my very own!
+      text: Leres. Menika cathetanipun, kula serat mawi Pegon.
+      ar_eg: مظبوط. دي الورقة، كاتبها بالبيغون.
+      ar: صحيح. هذه القائمة، كتبتها بالبيغون.
+      en: Right. Here's my list; I wrote it in Pegon.
+    - speaker: Bakul
+      text: Wah, pinter! Sekedhap, kula timbang rumiyin.
+      ar_eg: ما شاء الله، شاطر! ثانية أوزنهم.
+      ar: ما شاء الله! لحظة، أزنها أولًا.
+      en: Oh, clever! One moment, let me weigh them.
+    - speaker: Mohamed
+      text: Kluwakipun seprapat kilo, nggih.
+      ar_eg: ربع كيلو كلواك لو سمحتي.
+      ar: ربع كيلو من الكلواك من فضلك.
+      en: A quarter kilo of kluwak, please.
+    - speaker: Bakul
+      text: Nggih. Kula lebetaken kranjang panjenengan, Mas.
+      ar_eg: حاضر. هحطهم في سلتك.
+      ar: حسنًا. أضعها في سلّتك.
+      en: Sure. I'll put them in your basket.
+new_words:
+  - word: kranjang
+    pos: noun
+    ar_eg: سلة
+    ar: سلة
+    en: basket
+  - word: tenggok
+    pos: noun
+    ar_eg: قفة بامبو بتتشال على الضهر
+    ar: قفة خيزران تُحمل على الظهر
+    en: bamboo basket carried on the back
+  - word: trasi
+    pos: noun
+    ar_eg: معجون جمبري
+    ar: معجون روبيان
+    en: shrimp paste
+  - word: kemiri
+    pos: noun
+    ar_eg: جوز الشمع
+    ar: جوز الشمع
+    en: candlenut
+  - word: kluwak
+    pos: noun
+    ar_eg: كلواك (بذرة سودا للراوون)
+    ar: كلواك (بذرة سوداء للراوون)
+    en: kluwak nut (makes rawon black)
+  - word: timbangan
+    pos: noun
+    ar_eg: ميزان
+    ar: ميزان
+    en: scales
+  - word: nyicil
+    pos: verb
+    ar_eg: يقسّط
+    ar: يقسّط
+    en: pay in instalments
+  - word: dagangan
+    pos: noun
+    ar_eg: بضاعة
+    ar: بضاعة
+    en: goods for sale
 review:
   status: draft
   verified: false

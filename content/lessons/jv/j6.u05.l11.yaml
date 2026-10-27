@@ -1,0 +1,178 @@
+schema: kabar.lesson/v1
+id: j6.u05.l11
+language: jv
+title: Layang saka Pak Harjo
+can_do:
+  ar_eg: تقرا جواب شكر بالكراما فيه تاريخ وحرف murda.
+  ar: أن تقرأ رسالة شكر بالكراما فيها تاريخ وحرف murda.
+  en: Read a krama thank-you letter with a date and a murda letter.
+slides:
+  - title: Serat saking Imogiri
+    body:
+      ar_eg: |
+        بعد الزيارة، Pak Harjo (حارس المقابر) بعت لمحمد جواب قصير بالخط الجاوي وبالكراما.
+        فيه التاريخ بالأرقام الجاوية، وGusti بحرف murda ꦓ لأنها لله.
+        كلمتين جداد: paring = يدّي / يمنح (كراما إنغيل، للي أعلى منك)، وrahayu = السلامة والعافية.
+      ar: |
+        بعد الزيارة أرسل Pak Harjo (حارس المقابر) إلى محمد رسالة قصيرة بالخط الجاوي وبالكراما.
+        فيها التاريخ بالأرقام الجاوية، وGusti بحرف murda ꦓ لأنها لله.
+        كلمتان جديدتان: paring = يمنح (كراما إنغيل، لمن هو أعلى)، وrahayu = السلامة والعافية.
+      en: |
+        After the visit, Pak Harjo (the tomb keeper) sent Mohamed a short letter in aksara Jawa, in krama.
+        It has the date in Javanese numerals, and Gusti with the murda letter ꦓ, because it means God.
+        Two new words: paring = give, grant (krama inggil, for someone above you), and rahayu = safety, well-being.
+    grammar: jv.aksara.murda-rekan
+    examples:
+      - text: ꦲꦶꦩꦺꦴꦒꦶꦫꦶ꧈ꦠꦁꦒꦭ꧀꧇꧑꧗꧇꧉ (Imogiri, tanggal 17.)
+        ar_eg: إيموغيري، يوم 17.
+        ar: إيموغيري، السابع عشر.
+        en: Imogiri, the 17th.
+      - text: ꦩꦱ꧀ꦩꦺꦴꦲꦩꦺꦢ꧀꧈ꦩꦠꦸꦂꦤꦸꦮꦸꦤ꧀ꦱꦩ꧀ꦥꦸꦤ꧀ꦫꦮꦸꦃ꧉ (Mas Mohamed, matur nuwun sampun rawuh.)
+        ar_eg: يا محمد، شكرًا إنك شرّفتنا.
+        ar: يا محمد، شكرًا على زيارتك.
+        en: Mohamed, thank you for coming.
+      - text: ꦩꦸꦒꦶꦓꦸꦱ꧀ꦠꦶꦥꦫꦶꦁꦫꦲꦪꦸ꧉ (Mugi Gusti paring rahayu.)
+        ar_eg: ربنا يديك السلامة.
+        ar: أسأل الله أن يمنحك السلامة.
+        en: May God grant you well-being.
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: Pak Harjo بيشكر محمد على إيه؟
+      ar: على أي شيء يشكر Pak Harjo محمدًا؟
+      en: What is Pak Harjo thanking Mohamed for?
+    options: [sampun rawuh, sampun maos, sampun dhahar]
+    answer: 0
+    explain:
+      ar_eg: matur nuwun sampun rawuh = شكرًا إنك جيت (rawuh = ييجي، كراما إنغيل).
+      ar: matur nuwun sampun rawuh = شكرًا على مجيئك (rawuh = يأتي، كراما إنغيل).
+      en: matur nuwun sampun rawuh = thank you for coming (rawuh = come, krama inggil).
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الجواب اتكتب إمتى؟
+      ar: متى كُتبت الرسالة؟
+      en: When was the letter written?
+    options: ["tanggal 7", "tanggal 17", "tanggal 71"]
+    answer: 1
+    words: [angka, tanggal]
+  - id: e03
+    type: listen
+    text: Mugi Gusti paring rahayu.
+    question:
+      ar_eg: Pak Harjo بيدعي لمحمد بإيه؟
+      ar: بماذا يدعو Pak Harjo لمحمد؟
+      en: What does Pak Harjo wish Mohamed?
+    options: [rahayu, rezeki, zakat]
+    answer: 0
+    meaning:
+      ar_eg: ربنا يديك السلامة.
+      ar: أسأل الله أن يمنحك السلامة.
+      en: May God grant you well-being.
+    words: [rahayu, paring]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: paring
+        ar_eg: يدّي / يمنح (كراما إنغيل)
+        ar: يمنح (كراما إنغيل)
+        en: give, grant (krama inggil)
+      - text: rahayu
+        ar_eg: السلامة والعافية
+        ar: السلامة والعافية
+        en: safety, well-being
+      - text: rawuh
+        ar_eg: ييجي (كراما إنغيل)
+        ar: يأتي (كراما إنغيل)
+        en: come (krama inggil)
+      - text: mugi
+        ar_eg: ياريت / إن شاء الله (في الدعا)
+        ar: عسى / ليتَ (في الدعاء)
+        en: may (in a wish or prayer)
+    words: [paring, rahayu]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "ليه Gusti مكتوبة ꦓꦸꦱ꧀ꦠꦶ بحرف murda؟"
+      ar: "لماذا كُتبت Gusti ꦓꦸꦱ꧀ꦠꦶ بحرف murda؟"
+      en: "Why is Gusti written ꦓꦸꦱ꧀ꦠꦶ with a murda letter?"
+    options: ["Kanggo ngurmati, Gusti iku Allah.", "Iku tembung Arab.", "Iku ing wiwitan ukara."]
+    answer: 0
+    explain:
+      ar_eg: Gusti هنا معناها ربنا، فبتتكتب بـ ꦓ murda للتكريم، مش عشان أول الجملة.
+      ar: Gusti هنا تعني الله، فتُكتب بـ ꦓ murda تكريمًا، لا لأنها في أول الجملة.
+      en: Gusti here means God, so it takes murda ꦓ out of respect, not because it starts a sentence.
+    words: [aksara murda]
+  - id: e06
+    type: fill_blank
+    sentence: Mugi Gusti ___ rahayu.
+    meaning:
+      ar_eg: ربنا يديك السلامة.
+      ar: أسأل الله أن يمنحك السلامة.
+      en: May God grant you well-being.
+    options: [paring, rawuh, maos]
+    answers: [paring]
+    words: [paring, rahayu]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦩꦸꦒꦶꦓꦸꦱ꧀ꦠꦶꦥꦫꦶꦁꦫꦲꦪꦸ꧉"
+      ar: "اكتب بالحروف اللاتينية: ꦩꦸꦒꦶꦓꦸꦱ꧀ꦠꦶꦥꦫꦶꦁꦫꦲꦪꦸ꧉"
+      en: "Write in Latin letters: ꦩꦸꦒꦶꦓꦸꦱ꧀ꦠꦶꦥꦫꦶꦁꦫꦲꦪꦸ꧉"
+    answers: ["Mugi Gusti paring rahayu.", mugi gusti paring rahayu]
+    words: [paring, rahayu]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: يا محمد، شكرًا إنك شرّفتنا.
+      ar: يا محمد، شكرًا على زيارتك.
+      en: Mohamed, thank you for coming.
+    answer: Mas Mohamed, matur nuwun sampun rawuh.
+    distractors: [paring]
+  - id: e09
+    type: speaking
+    text: Matur nuwun, Pak. Mugi Gusti paring rahayu.
+    meaning:
+      ar_eg: متشكر يا حاج. ربنا يديك السلامة.
+      ar: شكرًا يا سيدي. أسأل الله أن يمنحك السلامة.
+      en: Thank you, sir. May God grant you well-being.
+    words: [paring, rahayu]
+dialogue:
+  title: Telpon Pak Harjo
+  lines:
+    - speaker: Pak Harjo
+      text: Mas Mohamed, serat kula sampun dumugi?
+      ar_eg: يا محمد، جوابي وصل؟
+      ar: يا محمد، هل وصلت رسالتي؟
+      en: Mohamed, has my letter arrived?
+    - speaker: Mohamed
+      text: Sampun, Pak. Kula saged maos sedaya.
+      ar_eg: وصل يا حاج. وقريته كله.
+      ar: نعم يا سيدي. واستطعت قراءتها كلها.
+      en: Yes, sir. I could read all of it.
+    - speaker: Pak Harjo
+      text: Gusti ngangge murda, nggih?
+      ar_eg: وGusti بحرف murda، صح؟
+      ar: وGusti بحرف murda، أليس كذلك؟
+      en: Gusti with a murda letter, right?
+    - speaker: Mohamed
+      text: Leres. Mugi Gusti ugi paring rahayu dhateng panjenengan.
+      ar_eg: صح. ربنا يديك السلامة إنت كمان.
+      ar: صحيح. وأسأل الله أن يمنحك السلامة أنت أيضًا.
+      en: Yes. May God grant you well-being too.
+new_words:
+  - word: paring
+    pos: verb
+    ar_eg: يدّي / يمنح (كراما إنغيل، للي أعلى منك)
+    ar: يمنح (كراما إنغيل، لمن هو أعلى)
+    en: give, grant (krama inggil) = memberi
+  - word: rahayu
+    pos: noun
+    ar_eg: السلامة والعافية
+    ar: السلامة والعافية
+    en: safety, well-being = selamat, sejahtera
+review:
+  status: draft
+  verified: false
