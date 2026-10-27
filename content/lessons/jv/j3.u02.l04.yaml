@@ -1,201 +1,239 @@
 schema: kabar.lesson/v1
 id: j3.u02.l04
 language: jv
-title: Sugeng rawuh, Mas Mohamed
+title: Ing kamar tamu
 can_do:
-  ar_eg: تقرا ورقة ترحيب بالكراما من صاحبة البيت وترد عليها بأدب.
-  ar: أن تقرأ ورقة ترحيب بالكراما من صاحبة البيت وتردّ عليها بأدب.
-  en: Read a host's krama welcome note and answer it politely.
+  ar_eg: 'تتفرّج على أوضة الضيوف: الفوطة والدولاب، وتقول إنها مريحة، وتشيل هدايا السفر.'
+  ar: 'أن تتعرّف إلى غرفة الضيوف: المنشفة والخزانة، وتقول إنها مريحة، وتحفظ هدايا السفر.'
+  en: 'Settle into the guest room: towel and wardrobe, say it''s comfortable, and put away your souvenirs.'
 slides:
-  - title: Layang ing meja
+  - title: Kepenak sanget
     body:
       ar_eg: |
-        محمد نزل في بيت قريب من Pasar Gede. على الترابيزة لقى ورقة صغيرة من صاحبة البيت. اقراها:
-        خد بالك إزاي بتقول «بيتي» بالكراما: griya kula (مش omahku).
+        andhuk = فوطة، lemari = دولاب، lantai = أرضية.
+        nyimpen (simpen) = يشيل، يحفظ الحاجة في مكانها.
+        kepenak = مريح، لذيذ (بالكراما sekeca). peteng = ضلمة (عكسها padhang = منوّر).
+        kebak = مليان. oleh-oleh = الهدايا اللي بتجيبها من السفر، وهي عادة مهمة جدًا في جاوة.
       ar: |
-        نزل محمد في بيت قريب من Pasar Gede، فوجد على الطاولة ورقة صغيرة من صاحبة البيت. اقرأها:
-        لاحظ كيف تقول «بيتي» بالكراما: griya kula لا omahku.
+        andhuk = منشفة، lemari = خزانة، lantai = أرضية.
+        nyimpen (simpen) = يحفظ الشيء في مكانه.
+        kepenak = مريح (بالكراما sekeca). peteng = مظلم (وضدّها padhang = مضيء).
+        kebak = ممتلئ. oleh-oleh = الهدايا التي تُحضَر من السفر، وهي عادة مهمة جدًا في جاوة.
       en: |
-        Mohamed is staying in a house near Pasar Gede. On the table he finds a little note from his host. Read it:
-        notice how she says "my house" in krama: griya kula (not omahku).
+        andhuk = towel, lemari = wardrobe, lantai = floor.
+        nyimpen (simpen) = keep, put away.
+        kepenak = comfortable, pleasant (krama sekeca). peteng = dark (opposite padhang = bright).
+        kebak = full. oleh-oleh = gifts you bring back from a trip, a big custom in Java.
     examples:
-      - text: Sugeng rawuh, Mas Mohamed!
-        ar_eg: أهلًا وسهلًا يا أستاذ محمد!
-        ar: أهلًا وسهلًا يا أخي محمد!
-        en: Welcome, Mohamed!
-      - text: Nami kula Bu Siti. Menika griya kula.
-        ar_eg: اسمي Bu Siti. ده بيتي.
-        ar: اسمي Bu Siti. هذا بيتي.
-        en: My name is Bu Siti. This is my house.
-      - text: Kula ing Pasar Gede, Mas. Mangga!
-        ar_eg: أنا في Pasar Gede يا أستاذ. اتفضل (البيت بيتك)!
-        ar: أنا في Pasar Gede يا أخي. تفضّل (البيت بيتك)!
-        en: I'm at Pasar Gede. Make yourself at home!
-    grammar: jv.pronoun.krama
+      - text: Andhukipun ing lemari, Nak.
+        ar_eg: الفوطة في الدولاب يا ابني.
+        ar: المنشفة في الخزانة يا بنيّ.
+        en: The towel's in the wardrobe, dear.
+      - text: Lemari kula sampun kebak oleh-oleh!
+        ar_eg: دولابي اتملى هدايا!
+        ar: امتلأت خزانتي بالهدايا!
+        en: My wardrobe's already full of souvenirs!
+      - text: Rada peteng, nanging kepenak sanget.
+        ar_eg: ضلمة شوية، بس مريحة أوي.
+        ar: مظلمة قليلًا لكنها مريحة جدًا.
+        en: A bit dark, but very comfortable.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من الورقة) البيت ده بيت مين؟
-      ar: (من الورقة) بيت من هذا؟
-      en: (from the note) Whose house is it?
-    options: [griya Bu Siti, griya Mas Dimas, griya Mbah Putri]
-    answer: 0
-    words: [griya]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من الورقة) Bu Siti فين دلوقتي؟
-      ar: (من الورقة) أين Bu Siti الآن؟
-      en: (from the note) Where is Bu Siti now?
-    options: [ing griya, ing stasiun, ing Pasar Gede]
-    answer: 2
-    words: [ing, Pasar Gede]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: في «Menika griya kula»، أنهي كلمة معناها «بتاعي / ـي»؟
-      ar: في «Menika griya kula»، أيّ كلمة تعني «ـي» (الملكية)؟
-      en: In "Menika griya kula", which word means "my"?
-    options: [menika, griya, kula]
-    answer: 2
-    explain:
-      ar_eg: 'بالكراما مفيش -ku: بتحط kula بعد الاسم. griya kula = بيتي، nami kula = اسمي.'
-      ar: 'لا -ku في الكراما، بل kula بعد الاسم: griya kula = بيتي، nami kula = اسمي.'
-      en: 'Krama has no -ku: put kula after the noun. griya kula = my house, nami kula = my name.'
-    words: [kula, menika]
-  - id: e04
     type: match_pairs
     pairs:
-      - text: Sugeng rawuh
-        ar_eg: أهلًا وسهلًا
-        ar: أهلًا وسهلًا
-        en: Welcome
-      - text: Nami kula
-        ar_eg: اسمي
-        ar: اسمي
-        en: My name is
-      - text: Menika griya kula
-        ar_eg: ده بيتي
-        ar: هذا بيتي
-        en: This is my house
-      - text: Mangga
-        ar_eg: اتفضل
-        ar: تفضّل
-        en: Please, go ahead
-    words: [sugeng rawuh, nami, griya, mangga]
-  - id: e05
+      - text: andhuk
+        ar_eg: فوطة
+        ar: منشفة
+        en: towel
+      - text: lemari
+        ar_eg: دولاب
+        ar: خزانة
+        en: wardrobe
+      - text: lantai
+        ar_eg: أرضية
+        ar: أرضية
+        en: floor
+      - text: oleh-oleh
+        ar_eg: هدايا السفر
+        ar: هدايا السفر
+        en: souvenirs, gifts from a trip
+    words: [andhuk, lemari, lantai, oleh-oleh]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: nyimpen
+        ar_eg: يشيل، يحفظ
+        ar: يحفظ
+        en: keep, put away
+      - text: kepenak
+        ar_eg: مريح
+        ar: مريح
+        en: comfortable
+      - text: peteng
+        ar_eg: ضلمة
+        ar: مظلم
+        en: dark
+      - text: kebak
+        ar_eg: مليان
+        ar: ممتلئ
+        en: full
+    words: [nyimpen, kepenak, peteng, kebak]
+  - id: e03
     type: listen
-    text: Sugeng rawuh, Mas Mohamed!
-    options: ['Sugeng enjing, Mas Mohamed!', 'Sugeng rawuh, Mas Mohamed!', 'Sugeng dalu, Mas Mohamed!']
+    text: Andhukipun ing lemari, Nak.
+    question:
+      ar_eg: الفوطة فين؟
+      ar: أين المنشفة؟
+      en: Where is the towel?
+    options: [الفوطة على الأرض, الفوطة في الدولاب, الفوطة على الكرسي]
     answer: 1
     meaning:
-      ar_eg: أهلًا وسهلًا يا أستاذ محمد!
-      ar: أهلًا وسهلًا يا أخي محمد!
-      en: Welcome, Mohamed!
-    words: [sugeng rawuh]
+      ar_eg: الفوطة في الدولاب يا ابني.
+      ar: المنشفة في الخزانة يا بنيّ.
+      en: The towel's in the wardrobe, dear.
+    words: [andhuk, lemari]
+  - id: e04
+    type: fill_blank
+    sentence: Tas kula ___ oleh-oleh.
+    meaning:
+      ar_eg: شنطتي ___ هدايا.
+      ar: حقيبتي ___ بالهدايا.
+      en: My bag is ___ of souvenirs.
+    options: [kebak, peteng, kepenak]
+    answers: [kebak]
+    words: [kebak, peteng, kepenak, oleh-oleh]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: بتجيب إيه لأهلك من السفر؟
+      ar: ماذا تحضر لأهلك من السفر؟
+      en: What do you bring your family from a trip?
+    options: [lantai, oleh-oleh, andhuk]
+    answer: 1
+    explain:
+      ar_eg: oleh-oleh = هدايا السفر.
+      ar: oleh-oleh = هدايا السفر.
+      en: oleh-oleh = gifts from a trip.
+    words: [lantai, oleh-oleh, andhuk]
   - id: e06
     type: fill_blank
-    sentence: Menika griya ___, Bu?
+    sentence: Sampun dalu, ___ sanget.
     meaning:
-      ar_eg: ده بيت حضرتك يا مدام؟ (لـ Bu Siti)
-      ar: هل هذا بيتك يا سيدتي؟ (لـ Bu Siti)
-      en: Is this your house, ma'am? (to Bu Siti)
-    answers: [sampeyan, panjenengan]
-    explain:
-      ar_eg: '«بيتك» بالكراما = griya + sampeyan (أو panjenengan لو عايز أدب أكتر). مش omahmu.'
-      ar: '«بيتك» بالكراما griya sampeyan، أو griya panjenengan للأدب الأكثر، لا omahmu.'
-      en: '"Your house" in krama is griya sampeyan (or griya panjenengan, more polite) — not omahmu.'
-    words: [griya, sampeyan]
+      ar_eg: الوقت اتأخر، الدنيا ___ أوي.
+      ar: تأخّر الليل، والمكان ___ جدًا.
+      en: It's late at night; it's very ___.
+    options: [peteng, kebak, lantai]
+    answers: [peteng]
+    words: [peteng, kebak, lantai]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: 'اكتب رد لـ Bu Siti: شكرًا يا مدام. اسمي محمد، من مصر.'
-      ar: 'اكتب ردًا لـ Bu Siti: شكرًا يا سيدتي. اسمي محمد، من مصر.'
-      en: "Write back to Bu Siti: Thank you, ma'am. My name is Mohamed, from Egypt."
-    answers: ["Matur nuwun, Bu. Nami kula Mohamed, saking Mesir.", "Matur nuwun, Bu. Nami kulo Mohamed, saking Mesir.", "Matur nuwun, Bu. Nami kula Mohamed. Kula saking Mesir.", "Matur nuwun, Bu. Nami kulo Mohamed. Kulo saking Mesir.", "Matur nuwun, Bu. Kula Mohamed, saking Mesir.", "Matur nuwun, Bu Siti. Nami kula Mohamed, saking Mesir.", "Matur nuwun, Bu Siti. Nami kula Mohamed. Kula saking Mesir."]
-    explain:
-      ar_eg: 'كله krama: nami kula (اسمي)، saking (من).'
-      ar: 'كلها krama: nami kula (اسمي) وsaking (من).'
-      en: 'All krama: nami kula (my name), saking (from).'
-    words: [nami, kula, saking]
-  - id: e08
     type: build_sentence
     source:
-      ar_eg: أهلًا بيك في بيتي.
-      ar: مرحبًا بك في بيتي.
-      en: Welcome to my house.
-    answer: Sugeng rawuh ing griya kula.
-    distractors: [omah, aku]
-    explain:
-      ar_eg: 'griya kula = بيتي بالكراما؛ omah وaku نغوكو.'
-      ar: 'griya kula = بيتي بالكراما، وomah وaku من الـ ngoko.'
-      en: griya kula = my house in krama; omah and aku are ngoko.
-    words: [sugeng rawuh, griya, kula]
+      ar_eg: شيل هداياك في الدولاب.
+      ar: احفظ هداياك في الخزانة.
+      en: Put your souvenirs away in the wardrobe.
+    answer: Simpen oleh-olehmu ing lemari.
+    distractors: [andhuk, lantai]
+    words: [nyimpen, oleh-oleh, lemari]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Kursi menika kepenak sanget.
+    answers_meaning:
+      ar_eg: [الكرسي ده مريح أوي, الكرسي ده مريح جدًا]
+      ar: [هذا الكرسي مريح جدًا]
+      en: [This chair is very comfortable, This chair is really comfortable]
+    words: [kepenak]
   - id: e09
+    type: speaking
+    text: Kula nyimpen andhuk ing lemari.
+    meaning:
+      ar_eg: أنا بشيل الفوطة في الدولاب.
+      ar: أضع المنشفة في الخزانة.
+      en: I'm putting the towel away in the wardrobe.
+    words: [nyimpen, andhuk, lemari]
+  - id: e10
     type: multiple_choice
-    question: Kula badhe dhateng Pasar Gede.
-    question_meaning:
-      ar_eg: Mas Mohamed رايح فين؟
-      ar: إلى أين يذهب Mas Mohamed؟
-      en: Where is Mas Mohamed going?
-    options: [Ke pasar besar di Solo., Ke stasiun., Ke rumah Bu Siti.]
+    question: Kowe ___ dhuwit ing ngendi?
+    options: [nyimpen, peteng, kebak]
     answer: 0
     explain:
-      ar_eg: Pasar Gede = السوق الكبير في سولو. gede = gedhe (كبير) بالعامية.
-      ar: Pasar Gede = السوق الكبير في سولو، وgede = gedhe (كبير) في الكلام الدارج.
-      en: Pasar Gede = Solo's big market. gede is the spoken form of gedhe (big).
-    words: [Pasar Gede]
-  - id: e10
-    type: listen
-    text: Kula lan Mas Dimas ing Pasar Gede.
-    options: ['Kula lan Mas Dimas ing Pasar Gede.', 'Kula lan Mas Dimas ing stasiun.', 'Kula lan Mas Dimas ing griya.']
-    answer: 0
-    meaning:
-      ar_eg: أنا وMas Dimas في Pasar Gede.
-      ar: أنا وMas Dimas في Pasar Gede.
-      en: Mas Dimas and I are at Pasar Gede.
-    words: [kula, Pasar Gede]
+      ar_eg: nyimpen = يشيل، يحفظ (الفلوس مثلًا).
+      ar: nyimpen = يحفظ (المال مثلًا).
+      en: nyimpen = keep (money, for example).
+    words: [nyimpen, peteng, kebak]
 dialogue:
-  title: Bu Siti mulih
   lines:
-    - speaker: Bu Siti
-      text: Mas Mohamed! Sugeng rawuh.
-      ar_eg: أستاذ محمد! أهلًا وسهلًا.
-      ar: أخي محمد! أهلًا وسهلًا.
-      en: Mohamed! Welcome.
+    - speaker: Mbah Putri
+      text: Nak, menika kamaripun. Rada peteng.
+      ar_eg: يا ابني، دي الأوضة. ضلمة شوية.
+      ar: يا بنيّ، هذه الغرفة. مظلمة قليلًا.
+      en: Here's the room, dear. It's a bit dark.
     - speaker: Mohamed
-      text: Matur nuwun, Bu. Menika griya sampeyan?
-      ar_eg: شكرًا يا مدام. ده بيت حضرتك؟
-      ar: شكرًا يا سيدتي. أهذا بيتك؟
-      en: Thank you, ma'am. Is this your house?
-    - speaker: Bu Siti
-      text: Inggih, Mas. Menika griya kula.
-      ar_eg: أيوه يا أستاذ. ده بيتي.
-      ar: نعم يا أخي. هذا بيتي.
-      en: Yes. This is my house.
-    - speaker: Bu Siti
-      text: Mas sampun nedha?
-      ar_eg: كلت يا أستاذ؟
-      ar: هل أكلتَ يا أخي؟
-      en: Have you eaten?
+      text: Mboten menapa-menapa, Mbah. Kepenak sanget.
+      ar_eg: ولا يهمك يا تيتة. مريحة أوي.
+      ar: لا بأس يا جدة. إنها مريحة جدًا.
+      en: That's fine, Mbah. It's very comfortable.
+    - speaker: Mbah Putri
+      text: Andhukipun ing lemari.
+      ar_eg: الفوطة في الدولاب.
+      ar: المنشفة في الخزانة.
+      en: The towel's in the wardrobe.
     - speaker: Mohamed
-      text: Dereng, Bu.
-      ar_eg: لسه يا مدام.
-      ar: ليس بعد يا سيدتي.
-      en: Not yet, ma'am.
-    - speaker: Bu Siti
-      text: Mangga, Mas, mangga!
-      ar_eg: اتفضل يا أستاذ، اتفضل!
-      ar: تفضّل يا أخي، تفضّل!
-      en: Please, go ahead!
+      text: Matur nuwun. Kula nyimpen oleh-oleh ing lemari ugi.
+      ar_eg: متشكر. وهشيل الهدايا في الدولاب كمان.
+      ar: شكرًا. وسأضع الهدايا في الخزانة أيضًا.
+      en: Thank you. I'll put the souvenirs in the wardrobe too.
+    - speaker: Mbah Putri
+      text: Oleh-oleh saking Mesir? Wah, kebak!
+      ar_eg: هدايا من مصر؟ ياه، مليانة!
+      ar: هدايا من مصر؟ يا لها من كثيرة!
+      en: Souvenirs from Egypt? Wow, it's full!
+    - speaker: Mohamed
+      text: Inggih, Mbah. Menika kangge Mbah lan Mas Dimas.
+      ar_eg: أيوه يا تيتة. دي لحضرتك ولديماس.
+      ar: نعم يا جدة. هذه لكِ ولديماس.
+      en: Yes, Mbah. These are for you and Dimas.
 new_words:
-  - word: Pasar Gede
+  - word: andhuk
     pos: noun
-    ar_eg: «السوق الكبير» في سولو (gede = gedhe)
-    ar: «السوق الكبير» في سولو (gede = gedhe)
-    en: Solo's big market (gede = gedhe, big)
+    ar_eg: فوطة
+    ar: منشفة
+    en: towel (= handuk)
+  - word: lemari
+    pos: noun
+    ar_eg: دولاب
+    ar: خزانة
+    en: wardrobe, cupboard (= lemari)
+  - word: lantai
+    pos: noun
+    ar_eg: أرضية
+    ar: أرضية
+    en: floor (= lantai)
+  - word: oleh-oleh
+    pos: noun
+    ar_eg: هدايا السفر
+    ar: هدايا السفر
+    en: souvenirs, gifts brought back from a trip (= oleh-oleh)
+  - word: nyimpen
+    pos: verb
+    ar_eg: يشيل، يحفظ (من simpen)
+    ar: يحفظ (من simpen)
+    en: keep, put away (from simpen) = menyimpan
+  - word: kepenak
+    pos: adjective
+    ar_eg: مريح (بالكراما sekeca)
+    ar: مريح (بالكراما sekeca)
+    en: comfortable, pleasant (krama sekeca) = enak, nyaman
+  - word: peteng
+    pos: adjective
+    ar_eg: ضلمة
+    ar: مظلم
+    en: dark (= gelap)
+  - word: kebak
+    pos: adjective
+    ar_eg: مليان
+    ar: ممتلئ
+    en: full (= penuh)
 review:
   status: draft
   verified: false

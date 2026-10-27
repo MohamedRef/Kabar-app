@@ -70,11 +70,11 @@ every morning. CI warns when the table below is behind the content.
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
 | J1 | Surabaya | — | 7 | 36 | 312 | 146 | 146 / 250 | ~4 h | 34 |
 | J2 | Madiun | — | 6 | 36 | 341 | 149 | 295 / 500 | ~4 h | 35 |
-| J3 | Solo (Surakarta) | — | 6 | 42 | 364 | 98 | 393 / 750 | ~4 h | 35 |
-| J4 | Yogyakarta | — | 6 | 48 | 435 | 90 | 482 / 1,000 | ~5 h | 38 |
-| J5 | Semarang | — | 6 | 54 | 501 | 159 | 641 / 1,250 | ~6 h | 39 |
-| J6 | Kotagede, old Mataram capital | — | 6 | 60 | 542 | 95 | 735 / 1,500 | ~6 h | 37 |
-| **Total** |  | — | 37 | 276 | 2,495 | 737 | 735 / 1,500 | ~29 h | 218 |
+| J3 | Solo (Surakarta) | — | 6 | 61 | 554 | 250 | 545 / 750 | ~6 h | 35 |
+| J4 | Yogyakarta | — | 6 | 48 | 435 | 90 | 634 / 1,000 | ~5 h | 38 |
+| J5 | Semarang | — | 6 | 54 | 501 | 159 | 793 / 1,250 | ~6 h | 39 |
+| J6 | Kotagede, old Mataram capital | — | 6 | 60 | 542 | 95 | 887 / 1,500 | ~6 h | 37 |
+| **Total** |  | — | 37 | 295 | 2,685 | 889 | 887 / 1,500 | ~31 h | 218 |
 
 **Reference content and stories**
 

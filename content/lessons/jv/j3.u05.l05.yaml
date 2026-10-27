@@ -1,175 +1,242 @@
 schema: kabar.lesson/v1
 id: j3.u05.l05
 language: jv
-title: Daftar regi
+title: Sate ing peken
 can_do:
-  ar_eg: تقرا لافتة أسعار بالكراما في Pasar Klewer، تحسب، وتشتري بأدب.
-  ar: أن تقرأ لافتة أسعار بالكراما في Pasar Klewer وتحسب وتشتري بأدب.
-  en: Read a krama price sign at Pasar Klewer, do the sums, and buy politely.
+  ar_eg: 'تطلب أكلة في السوق بالكراما: رز وساتيه وتمبيه، وتقول مين بيبيع، والطبق خلص.'
+  ar: 'أن تطلب وجبة في السوق بالكراما: أرز وساتيه وتمبيه، وتقول من يبيع، وأن الطبق فرغ.'
+  en: 'Order a meal at the market in krama: rice, satay and tempe, say who sells what, and that your plate is empty.'
 slides:
-  - title: Papan ing lapak Bu Siti
+  - title: Sekul, sate, tempe
     body:
       ar_eg: |
-        على فرشة Bu Siti في Pasar Klewer فيه لافتة صغيرة. اقراها كويس، وخد بالك من آخر سطر:
-        regi pas = السعر ثابت (زي wis pas في النغوكو)، يعني من غير فصال.
+        في السوق:
+        - sega ← sekul = رز مطبوخ
+        - dodol (أو adol) ← sade = يبيع
+        sate = ساتيه (أسياخ لحمة أو فراخ). tempe = تمبيه، أكلة جاوة الشهيرة من فول الصويا.
+        gurih = مسبّك وطعمه حلو (مالح ودسم، زي حاجة بلبن جوز الهند).
+        piring = طبق. kosong = فاضي: «Piringipun sampun kosong!» = الطبق خلص!
       ar: |
-        على بسطة Bu Siti في Pasar Klewer لافتة صغيرة. اقرأها جيدًا وانتبه إلى السطر الأخير:
-        regi pas = السعر ثابت (مثل wis pas في الـ ngoko)، أي بلا مساومة.
+        في السوق:
+        - sega ← sekul = أرز مطبوخ
+        - dodol (أو adol) ← sade = يبيع
+        sate = ساتيه (أسياخ لحم أو دجاج). tempe = التمبيه، طعام جاوة الشهير من فول الصويا.
+        gurih = شهيّ مالح ودسم (كالمطبوخ بحليب جوز الهند).
+        piring = طبق. kosong = فارغ: «Piringipun sampun kosong!» = فرغ الطبق!
       en: |
-        Bu Siti's stall at Pasar Klewer has a little sign. Read it carefully, especially the last line:
-        regi pas = fixed price (like wis pas in ngoko) — no bargaining.
+        At the market:
+        - sega → sekul = cooked rice
+        - dodol (or adol) → sade = sell
+        sate = satay (meat or chicken skewers). tempe = tempe, Java's famous soybean cake.
+        gurih = savoury and rich (salty, often with coconut milk).
+        piring = plate. kosong = empty: "Piringipun sampun kosong!" = my plate's empty!
     examples:
-      - text: "Batik cap: seket ewu"
-        ar_eg: "باتيك بالختم: خمسين ألف"
-        ar: "باتيك مختوم: خمسون ألفًا"
-        en: "Stamped batik: 50,000"
-      - text: "Batik tulis: tigang atus ewu"
-        ar_eg: "باتيك مرسوم باليد: تلتمية ألف"
-        ar: "باتيك مرسوم باليد: ثلاثمئة ألف"
-        en: "Hand-drawn batik: 300,000"
-      - text: Nyuwun sewu, regi pas.
-        ar_eg: لا مؤاخذة، السعر ثابت.
-        ar: عفوًا، السعر ثابت.
-        en: Sorry, fixed prices.
-    grammar: jv.krama.numbers
+      - text: Sekul kaliyan sate, setunggal piring.
+        ar_eg: رز وساتيه، طبق واحد.
+        ar: أرز مع ساتيه، طبق واحد.
+        en: Rice with satay, one plate.
+      - text: Bu Siti sade tempe wonten peken.
+        ar_eg: طنط سيتي بتبيع تمبيه في السوق.
+        ar: تبيع السيدة سيتي التمبيه في السوق.
+        en: Bu Siti sells tempe at the market.
+      - text: Piringipun sampun kosong. Enak sanget!
+        ar_eg: الطبق خلص. حلو أوي!
+        ar: فرغ الطبق. لذيذ جدًا!
+        en: The plate's empty. Delicious!
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من اللافتة) الباتيك اللي بالختم بكام؟
-      ar: (من اللافتة) بكم الباتيك المختوم؟
-      en: (from the sign) How much is a stamped batik?
-    options: [seket ewu, tigang atus ewu, selangkung ewu]
-    answer: 0
-    words: [batik cap, ewu]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من اللافتة) محمد عايز اتنين batik cap. هيدفع كام؟
-      ar: (من اللافتة) يريد محمد قطعتي batik cap. كم سيدفع؟
-      en: (from the sign) Mohamed wants two batik cap. How much will he pay?
-    options: [seket ewu, kalih atus ewu, satus ewu]
-    answer: 2
-    explain:
-      ar_eg: '2 × 50,000 = 100,000، يعني satus ewu.'
-      ar: '2 × 50,000 = 100,000، أي satus ewu.'
-      en: 2 × 50,000 = 100,000 = satus ewu.
-    words: [kalih, atus, ewu]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من اللافتة) محمد يقدر يفاصل هنا؟
-      ar: (من اللافتة) هل يستطيع محمد المساومة هنا؟
-      en: (from the sign) Can Mohamed bargain here?
-    options: ['Saged, regi saged kirang.', 'Mboten, regi pas.']
-    answer: 1
-    explain:
-      ar_eg: regi pas = السعر ثابت، فمش هتقول «Saged kirang?» هنا.
-      ar: regi pas تعني أن السعر ثابت، فلا تقل هنا «Saged kirang?».
-      en: regi pas means the price is fixed, so no "Saged kirang?" here.
-    words: [regi, kirang]
-  - id: e04
-    type: listen
-    text: Batik cap kalih, satus ewu, Mas.
-    question:
-      ar_eg: Bu Siti طالبة كام في المجموع؟
-      ar: كم تطلب Bu Siti في المجموع؟
-      en: How much does Bu Siti ask in total?
-    options: [satus ewu, seket ewu, kalih atus ewu]
-    answer: 0
-    meaning:
-      ar_eg: اتنين باتيك بالختم، بمية ألف يا أستاذ.
-      ar: قطعتا باتيك مختوم، بمئة ألف يا أخي.
-      en: Two stamped batiks, a hundred thousand.
-    words: [kalih, ewu]
-  - id: e05
     type: match_pairs
     pairs:
-      - text: seket ewu
-        ar_eg: ٥٠٬٠٠٠
-        ar: ٥٠٬٠٠٠
-        en: 50,000
-      - text: tigang atus ewu
-        ar_eg: ٣٠٠٬٠٠٠
-        ar: ٣٠٠٬٠٠٠
-        en: 300,000
-      - text: satus ewu
-        ar_eg: ١٠٠٬٠٠٠
-        ar: ١٠٠٬٠٠٠
-        en: 100,000
-      - text: selangkung ewu
-        ar_eg: ٢٥٬٠٠٠
-        ar: ٢٥٬٠٠٠
-        en: 25,000
-    words: [ewu, atus, selangkung]
+      - text: sekul
+        ar_eg: رز مطبوخ (كراما)
+        ar: أرز مطبوخ (كراما)
+        en: cooked rice (krama)
+      - text: tempe
+        ar_eg: تمبيه
+        ar: تمبيه
+        en: tempe
+      - text: sate
+        ar_eg: ساتيه
+        ar: ساتيه
+        en: satay
+      - text: gurih
+        ar_eg: مسبّك، طعمه حلو
+        ar: شهيّ مالح
+        en: savoury
+    words: [sekul, tempe, sate, gurih]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: piring
+        ar_eg: طبق
+        ar: طبق
+        en: plate
+      - text: dodol
+        ar_eg: يبيع (ngoko)
+        ar: يبيع (ngoko)
+        en: sell (ngoko)
+      - text: sade
+        ar_eg: يبيع (كراما)
+        ar: يبيع (كراما)
+        en: sell (krama)
+      - text: kosong
+        ar_eg: فاضي
+        ar: فارغ
+        en: empty
+    words: [piring, dodol, sade, kosong]
+  - id: e03
+    type: listen
+    text: Sekul kaliyan sate, setunggal piring.
+    question:
+      ar_eg: طالب إيه؟
+      ar: ماذا يطلب؟
+      en: What is he ordering?
+    options: [طبقين تمبيه, رز بس, طبق رز وساتيه]
+    answer: 2
+    meaning:
+      ar_eg: رز وساتيه، طبق واحد.
+      ar: أرز مع ساتيه، طبق واحد.
+      en: Rice with satay, one plate.
+    words: [sekul, sate, piring]
+  - id: e04
+    type: fill_blank
+    sentence: Bu Siti ___ tempe wonten peken.
+    meaning:
+      ar_eg: طنط سيتي ___ تمبيه في السوق.
+      ar: السيدة سيتي ___ التمبيه في السوق.
+      en: Bu Siti ___ tempe at the market.
+    options: [sade, kosong, gurih]
+    answers: [sade]
+    words: [sade, kosong, gurih, tempe]
+  - id: e05
+    type: multiple_choice
+    question: Sega (ngoko) → ___ (krama)
+    options: [sekul, sate, piring]
+    answer: 0
+    explain:
+      ar_eg: sega ← sekul = رز مطبوخ.
+      ar: sega ← sekul = أرز مطبوخ.
+      en: sega → sekul = cooked rice.
+    words: [sekul, sate, piring]
   - id: e06
     type: fill_blank
-    sentence: "Batik tulis: ___ atus ewu."
+    sentence: Piringipun sampun ___. Enak sanget!
     meaning:
-      ar_eg: 'باتيك مرسوم باليد: تلتمية ألف.'
-      ar: 'باتيك مرسوم باليد: ثلاثمئة ألف.'
-      en: 'Hand-drawn batik: 300,000.'
-    options: [tiga, tigang, telung]
-    answers: [tigang]
-    explain:
-      ar_eg: 'قبل atus وewu وdasa، tiga بتبقى tigang. telung نغوكو.'
-      ar: 'قبل atus وewu وdasa تصير tiga tigang، وtelung من الـ ngoko.'
-      en: Before atus, ewu and dasa, tiga becomes tigang. telung is ngoko.
-    words: [tiga, atus]
+      ar_eg: الطبق ___. حلو أوي!
+      ar: الطبق ___. لذيذ جدًا!
+      en: The plate is ___. Delicious!
+    options: [kosong, dodol, tempe]
+    answers: [kosong]
+    words: [kosong, dodol, tempe, piring]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: 'لا مؤاخذة يا حاجة، عايز أشتري باتيك مرسوم باليد واحد.'
-      ar: 'عفوًا يا سيدتي، أريد أن أشتري قطعة باتيك مرسوم باليد.'
-      en: "Excuse me, ma'am, I'd like to buy one hand-drawn batik."
-    answers: ["Nyuwun sewu, Bu, kula badhe tumbas batik tulis setunggal.", "Nyuwun sewu, Bu, kulo badhe tumbas batik tulis setunggal.", "Nyuwun sewu, Bu, kula badhe tumbas setunggal batik tulis.", "Nyuwun sewu, Bu, kula tumbas batik tulis setunggal.", "Nyuwun sewu, Bu, kula badhe tumbas batik tulis setunggal kemawon.", "Nyuwun sewu, Bu, kula badhe tumbas batik tulis setunggal mawon."]
-    explain:
-      ar_eg: 'tumbas = tuku (يشتري)، setunggal = siji، batik tulis = الباتيك المرسوم باليد.'
-      ar: 'tumbas = tuku (يشتري)، وsetunggal = siji، وbatik tulis = الباتيك المرسوم باليد.'
-      en: 'tumbas = tuku (buy), setunggal = siji, batik tulis = hand-drawn batik.'
-    words: [nyuwun sewu, badhe, tumbas, batik tulis, setunggal]
-  - id: e08
     type: build_sentence
     source:
-      ar_eg: لا مؤاخذة، السعر ثابت.
-      ar: عفوًا، السعر ثابت.
-      en: Sorry, the price is fixed.
-    answer: Nyuwun sewu, regi pas.
-    distractors: [rega, kirang]
+      ar_eg: التمبيه ده مسبّك أوي.
+      ar: هذا التمبيه شهيّ جدًا.
+      en: This tempe is really savoury.
+    answer: Tempe menika gurih sanget.
+    distractors: [kosong, sade]
+    words: [tempe, gurih]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Pak, panjenengan sade sate?
+    answers_meaning:
+      ar_eg: [يا عم، حضرتك بتبيع ساتيه؟, بتبيع ساتيه يا عم؟]
+      ar: [هل تبيع الساتيه يا سيدي؟]
+      en: ['Do you sell satay, sir?', 'Sir, do you sell satay?']
+    words: [sade, sate]
+  - id: e09
+    type: speaking
+    text: Aku dodol tempe ing pasar.
+    meaning:
+      ar_eg: أنا ببيع تمبيه في السوق.
+      ar: أبيع التمبيه في السوق.
+      en: I sell tempe at the market.
+    words: [dodol, tempe]
+  - id: e10
+    type: multiple_choice
+    question: Aku dodol sate. → Kula ___ sate.
+    options: [gurih, sade, kosong]
+    answer: 1
     explain:
-      ar_eg: regi = rega بالكراما.
-      ar: regi = rega بالكراما.
-      en: regi = rega in krama.
-    words: [nyuwun sewu, regi]
+      ar_eg: dodol (adol) ← sade = يبيع.
+      ar: dodol (adol) ← sade = يبيع.
+      en: dodol (adol) → sade = sell.
+    words: [dodol, sade, gurih, kosong]
 dialogue:
-  title: Ing lapak Bu Siti
   lines:
+    - speaker: Penjual
+      text: Mangga, Mas! Sate, tempe, sekul!
+      ar_eg: اتفضل يا أستاذ! ساتيه، تمبيه، رز!
+      ar: تفضّل! ساتيه، تمبيه، أرز!
+      en: Come on in! Satay, tempe, rice!
     - speaker: Mohamed
-      text: Nyuwun sewu, Bu. Batik cap menika seket ewu?
-      ar_eg: لا مؤاخذة يا حاجة. الباتيك بالختم ده بخمسين ألف؟
-      ar: عفوًا يا سيدتي. هل هذا الباتيك المختوم بخمسين ألفًا؟
-      en: Excuse me, ma'am. Is this stamped batik fifty thousand?
-    - speaker: Bu Siti
-      text: Inggih, Mas. Regi pas.
-      ar_eg: أيوه يا أستاذ. السعر ثابت.
-      ar: نعم يا أخي. السعر ثابت.
-      en: Yes. Fixed price.
+      text: Bu, sekul kaliyan sate setunggal piring.
+      ar_eg: يا طنط، طبق رز وساتيه.
+      ar: يا سيدتي، طبق أرز مع ساتيه.
+      en: Ma'am, one plate of rice with satay.
+    - speaker: Penjual
+      text: Tempenipun ugi? Gurih sanget, lho.
+      ar_eg: والتمبيه كمان؟ مسبّك أوي على فكرة.
+      ar: والتمبيه أيضًا؟ إنه شهيّ جدًا.
+      en: Tempe too? It's really savoury.
     - speaker: Mohamed
-      text: Kula tumbas kalih, nggih.
-      ar_eg: هاخد اتنين بقى.
-      ar: سأشتري اثنين إذن.
-      en: I'll take two, then.
-    - speaker: Bu Siti
-      text: Kalih, satus ewu, Mas.
-      ar_eg: اتنين، بمية ألف يا أستاذ.
-      ar: اثنان، بمئة ألف يا أخي.
-      en: Two — a hundred thousand.
+      text: Inggih, kalih.
+      ar_eg: ماشي، اتنين.
+      ar: نعم، اثنتان.
+      en: Yes, two.
+    - speaker: Penjual
+      text: Piringipun sampun kosong! Enak, Mas?
+      ar_eg: الطبق خلص! عجبك؟
+      ar: فرغ الطبق! هل أعجبك؟
+      en: Your plate's empty! Was it good?
     - speaker: Mohamed
-      text: Menika artanipun, Bu. Matur nuwun.
-      ar_eg: اتفضلي الفلوس يا حاجة. شكرًا.
-      ar: تفضّلي المال يا سيدتي. شكرًا.
-      en: Here's the money, ma'am. Thank you.
+      text: Enak sanget, Bu. Benjing kula tumbas malih.
+      ar_eg: حلو أوي يا طنط. بكرة هشتري تاني.
+      ar: لذيذ جدًا يا سيدتي. سأشتري مرة أخرى غدًا.
+      en: Delicious, ma'am. I'll buy again tomorrow.
+new_words:
+  - word: sekul
+    pos: noun
+    ar_eg: رز مطبوخ (sega ← sekul)، كراما
+    ar: أرز مطبوخ (sega ← sekul)، كراما
+    en: cooked rice (ngoko sega, Indonesian nasi), krama
+  - word: tempe
+    pos: noun
+    ar_eg: تمبيه (أكلة من فول الصويا)
+    ar: تمبيه (من فول الصويا)
+    en: tempe, fermented soybean cake
+  - word: sate
+    pos: noun
+    ar_eg: ساتيه (أسياخ لحمة أو فراخ)
+    ar: ساتيه (أسياخ لحم أو دجاج)
+    en: satay, grilled skewers
+  - word: gurih
+    pos: adjective
+    ar_eg: مسبّك، مالح ودسم
+    ar: شهيّ مالح ودسم
+    en: savoury, rich (= gurih)
+  - word: piring
+    pos: noun
+    ar_eg: طبق
+    ar: طبق
+    en: plate (= piring)
+  - word: dodol
+    pos: verb
+    ar_eg: يبيع (ngoko، وكمان adol)
+    ar: يبيع (ngoko، وأيضًا adol)
+    en: sell (also adol) = menjual, ngoko
+  - word: sade
+    pos: verb
+    ar_eg: يبيع (dodol ← sade)، كراما
+    ar: يبيع (dodol ← sade)، كراما
+    en: sell (ngoko dodol, adol; Indonesian menjual), krama
+  - word: kosong
+    pos: adjective
+    ar_eg: فاضي
+    ar: فارغ
+    en: empty (= kosong)
 review:
   status: draft
   verified: false

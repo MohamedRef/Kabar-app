@@ -1,172 +1,242 @@
 schema: kabar.lesson/v1
 id: j3.u02.l03
 language: jv
-title: Ngobrol karo simbah
+title: Mangga mlebet
 can_do:
-  ar_eg: تدردش مع جدة صاحبك.
-  ar: أن تتحدث مع جدة صديقك.
-  en: Talk to a friend's grandmother.
+  ar_eg: 'تدخل بيت كبير بأدب: «اتفضل ادخل»، والمية والسكر بالكراما، وتستأذن تخرج لحظة.'
+  ar: 'أن تدخل بيت شخص كبير بأدب: «تفضّل ادخل»، والماء والسكر بالكراما، وتستأذن للخروج لحظة.'
+  en: 'Enter an elder''s home politely: "please come in", water and sugar in krama, and step out for a moment.'
 slides:
-  - title: Sowan Mbah Putri
+  - title: Mlebet lan medal
     body:
       ar_eg: |
-        Mas Dimas واخدك تزور جدته في بيتها جنب Pasar Gede. افتكر:
-        - إنت عن نفسك: kula، nami kula، kula sampun nedha.
-        - هي: panjenengan، panjenengan sampun dhahar?
-        - لو نادتك: «Dalem, Mbah?»
-        - وأحلى كلمة: «Inggih» (أيوه) و«Matur nuwun».
-        وهي ممكن تكلمك بالكراما (إنت ضيف) وتكلم حفيدها Dimas بالـ ngoko. عادي جدًا!
+        الضيف بيسمع: «Mangga mlebet!» = اتفضل ادخل.
+        - mlebu ← mlebet = يدخل، metu ← medal = يخرج
+        - lawang ← kori = باب
+        - banyu ← toya = مية، gula ← gendhis = سكر، endhog ← tigan = بيضة
+        meja = ترابيزة. sedhela = لحظة، ثانية (ngoko، وبتتقال كتير): «Sedhela, Mbah.»
       ar: |
-        يصطحبك Mas Dimas لزيارة جدته في بيتها قرب Pasar Gede. تذكّر:
-        - عن نفسك: kula، nami kula، kula sampun nedha.
-        - عنها: panjenengan، panjenengan sampun dhahar?
-        - إذا نادتك: «Dalem, Mbah?»
-        - وأجمل الكلمات: «Inggih» (نعم) و«Matur nuwun».
-        وقد تكلمك بالكراما لأنك ضيف، وتكلم حفيدها Dimas بالـ ngoko، وهذا طبيعي.
+        يسمع الضيف: «Mangga mlebet!» = تفضّل ادخل.
+        - mlebu ← mlebet = يدخل، metu ← medal = يخرج
+        - lawang ← kori = باب
+        - banyu ← toya = ماء، gula ← gendhis = سكّر، endhog ← tigan = بيضة
+        meja = طاولة. sedhela = لحظة (ngoko، وشائعة جدًا): «Sedhela, Mbah.»
       en: |
-        Mas Dimas takes you to visit his grandmother at her house near Pasar Gede. Remember:
-        - About yourself: kula, nami kula, kula sampun nedha.
-        - About her: panjenengan, panjenengan sampun dhahar?
-        - If she calls you: "Dalem, Mbah?"
-        - Best words of all: "Inggih" (yes) and "Matur nuwun".
-        She may speak krama to you (you're a guest) and ngoko to her grandson Dimas. That's perfectly normal!
-    grammar: jv.pronoun.krama
+        A guest hears "Mangga mlebet!" = please come in.
+        - mlebu → mlebet = enter, metu → medal = go out
+        - lawang → kori = door
+        - banyu → toya = water, gula → gendhis = sugar, endhog → tigan = egg
+        meja = table. sedhela = a moment (ngoko, very common): "Sedhela, Mbah." 
+    examples:
+      - text: Mangga mlebet, Mas. Sugeng rawuh.
+        ar_eg: اتفضل ادخل. أهلًا وسهلًا.
+        ar: تفضّل ادخل. أهلًا وسهلًا.
+        en: Please come in. Welcome.
+      - text: Toya ing meja, Nak.
+        ar_eg: المية على الترابيزة يا ابني.
+        ar: الماء على الطاولة يا بنيّ.
+        en: The water's on the table, dear.
+      - text: Sedhela, Mbah. Kula medal.
+        ar_eg: لحظة يا تيتة. هخرج.
+        ar: لحظة يا جدة. سأخرج.
+        en: Just a moment, Mbah. I'm stepping out.
 exercises:
   - id: e01
-    type: listen
-    text: Sugeng rawuh, Mas.
-    options: ['Sugeng rawuh, Mas.', 'Matur nuwun, Mas.', 'Sugeng enjing, Mas.']
-    answer: 0
-    words: [sugeng rawuh]
+    type: match_pairs
+    pairs:
+      - text: mlebet
+        ar_eg: يدخل (كراما)
+        ar: يدخل (كراما)
+        en: enter (krama)
+      - text: medal
+        ar_eg: يخرج (كراما)
+        ar: يخرج (كراما)
+        en: go out (krama)
+      - text: kori
+        ar_eg: باب (كراما)
+        ar: باب (كراما)
+        en: door (krama)
+      - text: meja
+        ar_eg: ترابيزة
+        ar: طاولة
+        en: table
+    words: [mlebet, medal, kori, meja]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: toya
+        ar_eg: مية (كراما)
+        ar: ماء (كراما)
+        en: water (krama)
+      - text: tigan
+        ar_eg: بيضة (كراما)
+        ar: بيضة (كراما)
+        en: egg (krama)
+      - text: gendhis
+        ar_eg: سكر (كراما)
+        ar: سكّر (كراما)
+        en: sugar (krama)
+      - text: sedhela
+        ar_eg: لحظة
+        ar: لحظة
+        en: a moment
+    words: [toya, tigan, gendhis, sedhela]
+  - id: e03
+    type: listen
+    text: Mangga mlebet, Mas.
+    question:
+      ar_eg: بيقولّه يعمل إيه؟
+      ar: إلامَ يدعوه؟
+      en: What is he invited to do?
+    options: [اتفضل اخرج, اتفضل ادخل, اتفضل اقعد]
+    answer: 1
+    meaning:
+      ar_eg: اتفضل ادخل.
+      ar: تفضّل ادخل.
+      en: Please come in.
+    words: [mlebet]
+  - id: e04
+    type: fill_blank
+    sentence: Teh kaliyan ___, Mbah?
+    meaning:
+      ar_eg: شاي بـ___ يا تيتة؟
+      ar: شاي مع ___ يا جدة؟
+      en: Tea with ___, Mbah?
+    options: [gendhis, kori, meja]
+    answers: [gendhis]
+    words: [gendhis, kori, meja]
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: Mbah Putri بتناديك من المطبخ «Mas Mohamed!». ترد تقول إيه؟
-      ar: نادتك Mbah Putri من المطبخ «Mas Mohamed!». بمَ تجيب؟
-      en: Mbah Putri calls from the kitchen, "Mas Mohamed!". What do you answer?
-    options: ['Dalem, Mbah?', 'Kowe, Mbah?', 'Apa, Mbah?']
+      ar_eg: «مية» بالكراما إيه؟
+      ar: ما «الماء» بالكراما؟
+      en: Which is "water" in krama?
+    options: [toya, tigan, meja]
     answer: 0
     explain:
-      ar_eg: «Dalem?» = «أفندم؟». ده الرد المؤدب لما حد كبير يناديك.
-      ar: «Dalem?» = «أفندم؟»، وهو الجواب المهذب لنداء الكبير.
-      en: '"Dalem?" = «أفندم؟» — the polite reply when an elder calls you.'
-    words: [dalem]
-  - id: e03
-    type: build_sentence
-    source:
-      ar_eg: اسمي محمد يا تيتة.
-      ar: اسمي محمد يا جدتي.
-      en: My name is Mohamed, Grandma.
-    answer: Nami kula Mohamed, Mbah.
-    alternatives: ['Mbah, nami kula Mohamed.']
-    distractors: [asma, aku]
-    words: [nami, kula]
-  - id: e04
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا من مصر يا تيتة.
-      ar: أنا من مصر يا جدتي.
-      en: I'm from Egypt, Grandma.
-    answers: ['Kula saking Mesir, Mbah.', 'Kulo saking Mesir, Mbah.', 'Kula saking Mesir, Mbah', 'Kulo saking Mesir, Mbah', 'Mbah, kula saking Mesir.', 'Mbah, kulo saking Mesir.', 'Mbah, kula saking Mesir', 'Mbah, kulo saking Mesir']
-    words: [kula, saking]
-  - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: حضرتك أكلتي يا تيتة؟
-      ar: هل تفضلتِ بالأكل يا جدتي؟
-      en: Have you eaten, Grandma?
-    answers: ['Panjenengan sampun dhahar, Mbah?', 'Panjenengan sampun dhahar, Mbah', 'Mbah, panjenengan sampun dhahar?', 'Mbah, panjenengan sampun dhahar', 'Sampun dhahar, Mbah?', 'Sampun dhahar, Mbah']
-    explain:
-      ar_eg: 'للجدة: panjenengan + dhahar. ولو شلت panjenengan ونديتها Mbah برضه مؤدب.'
-      ar: للجدة panjenengan مع dhahar، ويصح حذف panjenengan مع النداء بـ Mbah.
-      en: For Grandma, panjenengan + dhahar; dropping panjenengan and just saying Mbah is polite too.
-    words: [panjenengan, sampun, dhahar]
+      ar_eg: banyu ← toya = مية.
+      ar: banyu ← toya = ماء.
+      en: banyu → toya = water.
+    words: [toya, tigan, meja]
   - id: e06
     type: fill_blank
-    sentence: Matur nuwun, Mbah. Panjenengan sampun ___?
+    sentence: Sedhela, Mbah, kula ___ dhateng warung.
     meaning:
-      ar_eg: شكرًا يا تيتة. حضرتك أكلتي؟
-      ar: شكرًا يا جدتي. هل تفضلتِ بالأكل؟
-      en: Thank you, Grandma. Have you eaten?
-    answers: [dhahar]
-    explain:
-      ar_eg: 'عن الجدة: dhahar (krama inggil).'
-      ar: 'عن الجدة: dhahar (krama inggil).'
-      en: About Grandma — dhahar (krama inggil).
-    words: [dhahar]
+      ar_eg: لحظة يا تيتة، ___ للدكان.
+      ar: لحظة يا جدة، ___ إلى الدكان.
+      en: Just a moment, Mbah, I'm ___ to the shop.
+    options: [medal, mlebet, toya]
+    answers: [medal]
+    words: [medal, mlebet, sedhela]
   - id: e07
-    type: fill_blank
-    sentence: ___ sinau krama, Mbah.
-    meaning:
-      ar_eg: أنا بتعلم كراما يا تيتة.
-      ar: أنا أتعلم الكراما يا جدتي.
-      en: I'm learning krama, Grandma.
-    options: [Panjenengan, Kula, Aku]
-    answers: [Kula]
-    explain:
-      ar_eg: قدام الجدة «أنا» = kula. aku ngoko.
-      ar: أمام الجدة تكون «أنا» kula، وaku من الـ ngoko.
-      en: In front of Grandma "I" is kula; aku is ngoko.
-    words: [kula, sinau]
+    type: build_sentence
+    source:
+      ar_eg: المية على الترابيزة.
+      ar: الماء على الطاولة.
+      en: The water is on the table.
+    answer: Toya ing meja.
+    distractors: [kori, tigan]
+    words: [toya, meja]
   - id: e08
-    type: dictation
-    text: Matur nuwun, Mbah.
-    meaning:
-      ar_eg: شكرًا يا تيتة.
-      ar: شكرًا يا جدتي.
-      en: Thank you, Grandma.
-    words: [matur nuwun]
+    type: translate
+    direction: from_target
+    source_text: Kori griya Mbah abang.
+    answers_meaning:
+      ar_eg: [باب بيت تيتة أحمر, باب بيت الجدة لونه أحمر]
+      ar: [باب بيت الجدة أحمر]
+      en: ['Grandma''s front door is red', 'The door of Mbah''s house is red']
+    words: [kori]
   - id: e09
     type: speaking
-    text: Inggih, Mbah. Kula sampun nedha.
+    text: Sedhela, Mbah, kula medal tumbas gendhis.
     meaning:
-      ar_eg: أيوه يا تيتة. أنا كلت.
-      ar: نعم يا جدتي. قد أكلتُ.
-      en: Yes, Grandma. I've eaten.
-    words: [inggih, kula, nedha]
+      ar_eg: لحظة يا تيتة، هخرج أشتري سكر.
+      ar: لحظة يا جدة، سأخرج لشراء السكّر.
+      en: Just a moment, Mbah, I'm going out to buy sugar.
+    words: [sedhela, medal, gendhis]
   - id: e10
-    type: speaking
-    text: Nami kula Mohamed, saking Kairo.
-    meaning:
-      ar_eg: اسمي محمد، من القاهرة.
-      ar: اسمي محمد، من القاهرة.
-      en: My name is Mohamed, from Cairo.
-    words: [nami, kula, saking]
+    type: multiple_choice
+    question: Endhog (ngoko) → ___ (krama)
+    options: [kori, tigan, mlebet]
+    answer: 1
+    explain:
+      ar_eg: endhog ← tigan = بيضة.
+      ar: endhog ← tigan = بيضة.
+      en: endhog → tigan = egg.
+    words: [tigan, kori, mlebet]
 dialogue:
-  title: Sowan Mbah Putri
   lines:
-    - speaker: Mas Dimas
-      text: Mbah, menika Mohamed, saking Mesir.
-      ar_eg: يا تيتة، ده محمد، من مصر.
-      ar: يا جدتي، هذا محمد، من مصر.
-      en: Grandma, this is Mohamed, from Egypt.
-    - speaker: Mbah Putri
-      text: Oh, Mas Mohamed. Sugeng rawuh.
-      ar_eg: أهلًا يا ابني محمد. نوّرت.
-      ar: أهلًا يا محمد. مرحبًا بك.
-      en: Oh, Mohamed. Welcome.
     - speaker: Mohamed
-      text: Matur nuwun, Mbah. Nami kula Mohamed.
-      ar_eg: شكرًا يا تيتة. اسمي محمد.
-      ar: شكرًا يا جدتي. اسمي محمد.
-      en: Thank you, Grandma. My name is Mohamed.
+      text: Nyuwun sewu, Mbah.
+      ar_eg: لا مؤاخذة يا تيتة.
+      ar: عفوًا يا جدة.
+      en: Excuse me, Mbah.
     - speaker: Mbah Putri
-      text: Mas Mohamed sampun nedha?
-      ar_eg: كلت يا محمد؟
-      ar: هل أكلت يا محمد؟
-      en: Have you eaten, Mohamed?
+      text: Mangga mlebet, Nak! Sugeng rawuh.
+      ar_eg: اتفضل ادخل يا ابني! أهلًا وسهلًا.
+      ar: تفضّل ادخل يا بنيّ! أهلًا وسهلًا.
+      en: Come in, dear! Welcome.
     - speaker: Mohamed
-      text: Dereng, Mbah.
-      ar_eg: لسه يا تيتة.
-      ar: ليس بعد يا جدتي.
-      en: Not yet, Grandma.
+      text: Matur nuwun, Mbah.
+      ar_eg: متشكر يا تيتة.
+      ar: شكرًا يا جدة.
+      en: Thank you, Mbah.
     - speaker: Mbah Putri
-      text: Mangga, Mas, mangga.
-      ar_eg: اتفضل يا ابني، اتفضل.
-      ar: تفضّل يا بني، تفضّل.
-      en: Please, go ahead, help yourself.
+      text: Linggih, Nak. Toya utawa teh?
+      ar_eg: اقعد يا ابني. مية ولا شاي؟
+      ar: اجلس يا بنيّ. ماء أم شاي؟
+      en: Sit down, dear. Water or tea?
+    - speaker: Mohamed
+      text: Teh kemawon, Mbah, mboten ngangge gendhis.
+      ar_eg: شاي بس يا تيتة، من غير سكر.
+      ar: شاي فقط يا جدة، بلا سكّر.
+      en: Just tea, Mbah, no sugar.
+    - speaker: Mbah Putri
+      text: Sedhela, Nak. Gendhis ing meja.
+      ar_eg: لحظة يا ابني. السكر على الترابيزة.
+      ar: لحظة يا بنيّ. السكّر على الطاولة.
+      en: Just a moment, dear. The sugar's on the table.
+new_words:
+  - word: mlebet
+    pos: verb
+    ar_eg: يدخل (mlebu ← mlebet)، كراما
+    ar: يدخل (mlebu ← mlebet)، كراما
+    en: enter, come in (ngoko mlebu, Indonesian masuk), krama
+  - word: medal
+    pos: verb
+    ar_eg: يخرج (metu ← medal)، كراما
+    ar: يخرج (metu ← medal)، كراما
+    en: go out (ngoko metu, Indonesian keluar), krama
+  - word: kori
+    pos: noun
+    ar_eg: باب (lawang ← kori)، كراما
+    ar: باب (lawang ← kori)، كراما
+    en: door (ngoko lawang, Indonesian pintu), krama
+  - word: meja
+    pos: noun
+    ar_eg: ترابيزة
+    ar: طاولة
+    en: table (= meja)
+  - word: toya
+    pos: noun
+    ar_eg: مية (banyu ← toya)، كراما
+    ar: ماء (banyu ← toya)، كراما
+    en: water (ngoko banyu, Indonesian air), krama
+  - word: tigan
+    pos: noun
+    ar_eg: بيضة (endhog ← tigan)، كراما
+    ar: بيضة (endhog ← tigan)، كراما
+    en: egg (ngoko endhog, Indonesian telur), krama
+  - word: gendhis
+    pos: noun
+    ar_eg: سكر (gula ← gendhis)، كراما
+    ar: سكّر (gula ← gendhis)، كراما
+    en: sugar (ngoko gula, Indonesian gula), krama
+  - word: sedhela
+    pos: adverb
+    ar_eg: لحظة، ثانية
+    ar: لحظة
+    en: a moment, for a bit (= sebentar)
 review:
   status: draft
   verified: false

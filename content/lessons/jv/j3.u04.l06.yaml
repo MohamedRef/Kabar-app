@@ -1,163 +1,239 @@
 schema: kabar.lesson/v1
 id: j3.u04.l06
 language: jv
-title: Chat karo Pak Wiryo
+title: Takon dalan kanthi alus
 can_do:
-  ar_eg: تقرا شات قصير بالكراما مع راجل كبير وتطلع منه الميعاد والطريق.
-  ar: أن تقرأ محادثة قصيرة بالكراما مع رجل كبير وتستخرج منها الموعد والطريق.
-  en: Read a short krama chat with an older man and pick out the time and the way.
+  ar_eg: تسأل حد كبير في السن عن الطريق بأدب.
+  ar: أن تسأل شخصًا مسنًّا عن الطريق بأدب.
+  en: Ask an elder for directions.
 slides:
-  - title: Chat ing HP
+  - title: Dalan ing basa krama
     body:
       ar_eg: |
-        محمد عايز يقابل Pak Wiryo في الـ pendhapa، فبعت له رسالة. اقرا الشات:
-        jam pinten = الساعة كام، saking pundi = منين، tebih = بعيد، saged mlampah = ينفع تمشي.
+        عشان تسأل على الطريق بالكراما محتاج الأسئلة (ing pundi، pripun) وشوية كلمات اتجاهات (نغوكو → كراما = إندونيسي):
+        - kene → **mriki** = sini (هنا)، kana → **mrika** = sana (هناك)
+        - adoh → **tebih** = jauh (بعيد)، cedhak → **celak** = dekat (قريب)
+        - terus → **lajeng** = lalu (وبعدين)، mlaku → **mlampah** = jalan kaki (يمشي)
+        - bisa → **saged** = bisa، wae → **kemawon** = saja (بس)
+        - lurus، ngiwa، nengen بيفضلوا زي ما هم في الكلام اليومي.
+        وماتنساش: لو الحاجة عايزة تشاورلك، هتشاور بالإبهام — وإنت كمان.
       ar: |
-        يريد محمد أن يلقى Pak Wiryo في الـ pendhapa، فأرسل إليه رسالة. اقرأ المحادثة:
-        jam pinten = في أيّ ساعة، وsaking pundi = من أين، وtebih = بعيد، وsaged mlampah = يمكن المشي.
+        لتسأل عن الطريق بالكراما تحتاج أدوات السؤال (ing pundi، pripun) وبعض ألفاظ الاتجاه (نغوكو → كراما = إندونيسي):
+        - kene → **mriki** = sini (هنا)، kana → **mrika** = sana (هناك)
+        - adoh → **tebih** = jauh (بعيد)، cedhak → **celak** = dekat (قريب)
+        - terus → **lajeng** = lalu (ثم)، mlaku → **mlampah** = jalan kaki (يمشي)
+        - bisa → **saged** = bisa، wae → **kemawon** = saja (فقط)
+        - وتبقى lurus وngiwa وnengen كما هي في الكلام اليومي.
+        وتذكّر: الإشارة بالإبهام لا بالسبابة.
       en: |
-        Mohamed wants to meet Pak Wiryo at the pendhapa, so he sends him a message. Read the chat:
-        jam pinten = what time, saking pundi = from where, tebih = far, saged mlampah = you can walk.
-    examples:
-      - text: "Mohamed: Sugeng enjing, Pak. Panjenengan wonten ing pendhapa jam pinten?"
-        ar_eg: "محمد: صباح الخير يا حاج. حضرتك هتبقى في الـ pendhapa الساعة كام؟"
-        ar: "محمد: صباح الخير يا سيدي. في أيّ ساعة تكون في الـ pendhapa؟"
-        en: "Mohamed: Good morning, sir. What time will you be at the pendhapa?"
-      - text: "Pak Wiryo: Jam sanga, Mas. Sampeyan saking pundi?"
-        ar_eg: "Pak Wiryo: الساعة تسعة يا أستاذ. إنت جاي منين؟"
-        ar: "Pak Wiryo: في التاسعة يا أخي. من أين ستأتي؟"
-        en: "Pak Wiryo: Nine o'clock. Where are you coming from?"
-      - text: "Mohamed: Saking Pasar Gede, Pak. Tebih? — Pak Wiryo: Mboten tebih, Mas. Saged mlampah kemawon."
-        ar_eg: "محمد: من Pasar Gede يا حاج. بعيد؟ — Pak Wiryo: مش بعيد. تقدر تمشي عادي."
-        ar: "محمد: من Pasar Gede يا سيدي. هل هو بعيد؟ — Pak Wiryo: ليس بعيدًا. يمكنك المشي فقط."
-        en: "Mohamed: From Pasar Gede, sir. Is it far? — Pak Wiryo: Not far. You can just walk."
+        To ask the way in krama you need the question words (ing pundi, pripun) plus a few direction words (ngoko → krama = Indonesian):
+        - kene → **mriki** = sini (here), kana → **mrika** = sana (over there)
+        - adoh → **tebih** = jauh (far), cedhak → **celak** = dekat (near)
+        - terus → **lajeng** = lalu (then), mlaku → **mlampah** = jalan kaki (walk)
+        - bisa → **saged** = bisa (can), wae → **kemawon** = saja (just)
+        - lurus, ngiwa, nengen stay the same in everyday speech.
+        And remember: point with your thumb.
     grammar: jv.krama.questions
+    examples:
+      - text: Saking mriki lurus kemawon, lajeng ngiwa.
+        ar_eg: من هنا على طول، وبعدين شمال.
+        ar: من هنا إلى الأمام مباشرة، ثم يسارًا.
+        en: From here go straight on, then left.
+      - text: Tebih, Mbah? — Mboten, celak kemawon.
+        ar_eg: بعيد يا تيتة؟ — لأ، قريب خالص.
+        ar: هل هو بعيد يا جدتي؟ — لا، قريب فقط.
+        en: Is it far, Grandma? — No, it's quite close.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من الشات) Pak Wiryo هيبقى في الـ pendhapa الساعة كام؟
-      ar: (من المحادثة) في أيّ ساعة يكون Pak Wiryo في الـ pendhapa؟
-      en: (from the chat) What time will Pak Wiryo be at the pendhapa?
-    options: [jam pitu, jam sewelas, jam sanga]
-    answer: 2
-    words: [pinten, jam]
+    type: match_pairs
+    pairs:
+      - text: mriki
+        ar_eg: هنا (kene ← sini)
+        ar: هنا (kene ← sini)
+        en: here (kene, sini)
+      - text: tebih
+        ar_eg: بعيد (adoh ← jauh)
+        ar: بعيد (adoh ← jauh)
+        en: far (adoh, jauh)
+      - text: celak
+        ar_eg: قريب (cedhak ← dekat)
+        ar: قريب (cedhak ← dekat)
+        en: near (cedhak, dekat)
+      - text: lajeng
+        ar_eg: وبعدين (terus ← lalu)
+        ar: ثم (terus ← lalu)
+        en: then (terus, lalu)
+      - text: mlampah
+        ar_eg: يمشي (mlaku ← jalan kaki)
+        ar: يمشي (mlaku ← jalan kaki)
+        en: to walk (mlaku, jalan kaki)
+    words: [mriki, tebih, celak, lajeng, mlampah]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: (من الشات) محمد جاي منين؟
-      ar: (من المحادثة) من أين سيأتي محمد؟
-      en: (from the chat) Where is Mohamed coming from?
-    options: [Pasar Gede, stasiun Balapan, Kauman]
-    answer: 0
-    words: [saking, pundi]
+      ar_eg: محمد عايز يسأل ستّ كبيرة على سوق تريويندو. يبدأ إزاي؟
+      ar: يريد محمد أن يسأل امرأة مسنّة عن سوق تريويندو. كيف يبدأ؟
+      en: Mohamed wants to ask an old lady the way to Pasar Triwindu. How does he start?
+    options: ['Heh, Pasar Triwindu nang endi?', 'Mbah, Pasar Triwindu ngendi?', 'Nyuwun sewu, Mbah. Pasar Triwindu ing pundi, nggih?']
+    answer: 2
+    explain:
+      ar_eg: Nyuwun sewu في الأول، وpundi الكراما، وnggih في الآخر بتليّن السؤال زي «لو سمحتي».
+      ar: Nyuwun sewu أولًا، ثم pundi، وnggih في الآخر تلطّف السؤال كـ «من فضلكِ».
+      en: Nyuwun sewu first, krama pundi, and nggih at the end softens the question like "please".
+    words: [nyuwun sewu, pundi, nggih]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من الشات) محمد هيروح إزاي؟
-      ar: (من المحادثة) كيف سيذهب محمد؟
-      en: (from the chat) How will Mohamed get there?
-    options: ['Tebih, mboten saged mlampah.', 'Mlampah kemawon.']
-    answer: 1
-    explain:
-      ar_eg: Pak Wiryo قال «Mboten tebih … saged mlampah kemawon» = مش بعيد، تقدر تمشي.
-      ar: قال Pak Wiryo «Mboten tebih … saged mlampah kemawon»، أي ليس بعيدًا ويمكن المشي.
-      en: Pak Wiryo said "Mboten tebih … saged mlampah kemawon" — not far, you can walk.
-    words: [tebih, mlampah]
-  - id: e04
-    type: match_pairs
-    pairs:
-      - text: jam pinten
-        ar_eg: الساعة كام
-        ar: في أيّ ساعة
-        en: what time
-      - text: saking pundi
-        ar_eg: منين
-        ar: من أين
-        en: where from
-      - text: tebih
-        ar_eg: بعيد
-        ar: بعيد
-        en: far
-      - text: saged mlampah
-        ar_eg: ينفع تمشي
-        ar: يمكن المشي
-        en: can walk
-    words: [pinten, pundi, tebih, saged, mlampah]
-  - id: e05
     type: listen
-    text: Mboten tebih, Mas. Saged mlampah kemawon.
-    options: ['Tebih sanget, Mas. Mboten saged mlampah.', 'Mboten tebih, Mas. Saged mlampah kemawon.', 'Mboten tebih, Mas. Lurus kemawon.']
-    answer: 1
-    meaning:
-      ar_eg: مش بعيد يا أستاذ. تقدر تمشي عادي.
-      ar: ليس بعيدًا يا أخي. يمكنك المشي فقط.
-      en: It's not far. You can just walk.
-    words: [tebih, saged, mlampah, kemawon]
-  - id: e06
-    type: fill_blank
-    sentence: Panjenengan wonten ing pendhapa jam ___?
-    meaning:
-      ar_eg: حضرتك هتبقى في الـ pendhapa الساعة كام؟
-      ar: في أيّ ساعة تكون في الـ pendhapa؟
-      en: What time will you be at the pendhapa?
-    options: [pira, sinten, pinten]
-    answers: [pinten]
+    text: Saking mriki lurus kemawon, lajeng nengen.
+    options: ['Saking mriki lurus kemawon, lajeng nengen.', 'Saking mrika lurus kemawon, lajeng nengen.', 'Saking mriki lurus kemawon, lajeng ngiwa.']
+    answer: 0
     explain:
-      ar_eg: 'كام = pinten بالكراما. pira نغوكو، وsinten = مين.'
-      ar: 'كم = pinten بالكراما؛ pira من الـ ngoko، وsinten = من.'
-      en: 'How many / what time = pinten in krama. pira is ngoko; sinten = who.'
-    words: [pinten]
+      ar_eg: mriki = هنا، nengen = يمين. ngiwa = شمال، mrika = هناك.
+      ar: mriki = هنا، وnengen = يمينًا، وngiwa = يسارًا، وmrika = هناك.
+      en: mriki = here, nengen = right; ngiwa = left, mrika = over there.
+    words: [mriki, lajeng, nengen]
+  - id: e04
+    type: fill_blank
+    sentence: Tebih, Mbah? — Mboten, ___ kemawon.
+    meaning:
+      ar_eg: بعيد يا تيتة؟ — لأ، قريب خالص.
+      ar: هل هو بعيد يا جدتي؟ — لا، قريب فقط.
+      en: Is it far, Grandma? — No, it's quite close.
+    options: [cedhak, tebih, celak]
+    answers: [celak]
+    explain:
+      ar_eg: celak = قريب بالكراما (cedhak بالنغوكو). والتيتة بتتكلم كراما، فخليك كراما.
+      ar: celak = قريب بالكراما، وcedhak بالنغوكو.
+      en: celak is krama for near (ngoko cedhak).
+    words: [celak, tebih]
+  - id: e05
+    type: fill_blank
+    sentence: Saged mlampah, Mbah? — Saged. Lurus kemawon, ___ ngiwa.
+    meaning:
+      ar_eg: ينفع أروح مشي يا تيتة؟ — ينفع. على طول، وبعدين شمال.
+      ar: هل يمكن الذهاب مشيًا يا جدتي؟ — يمكن. إلى الأمام، ثم يسارًا.
+      en: Can I walk there, Grandma? — You can. Straight on, then left.
+    answers: [lajeng, Lajeng]
+    explain:
+      ar_eg: lajeng = terus (وبعدين) بالكراما.
+      ar: lajeng = terus (ثم) بالكراما.
+      en: lajeng is krama terus (then).
+    words: [lajeng, saged, mlampah]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: ينفع أروح مشي يا تيتة؟ (بالكراما)
+      ar: هل يمكنني الذهاب مشيًا يا جدتي؟ (بالكراما)
+      en: (in krama) Can I walk there, Grandma?
+    answer: Saged mlampah, Mbah?
+    distractors: [bisa, mlaku]
+    explain:
+      ar_eg: saged = bisa، mlampah = mlaku. الاتنين كراما.
+      ar: saged = bisa، وmlampah = mlaku، وكلتاهما كراما.
+      en: saged = bisa, mlampah = mlaku — both krama.
+    words: [saged, mlampah]
   - id: e07
+    type: build_sentence
+    source:
+      ar_eg: لا مؤاخذة يا حاج، سوق كليوير فين؟
+      ar: عفوًا يا سيدي، أين سوق كليوير؟
+      en: Excuse me, sir, where is Pasar Klewer?
+    answer: Nyuwun sewu, Pak, Pasar Klewer ing pundi?
+    distractors: [ngendi, nang]
+    words: [nyuwun sewu, pundi]
+  - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: 'رد على Pak Wiryo: شكرًا جدًا يا حاج. هاجي ماشي.'
-      ar: 'ردّ على Pak Wiryo: شكرًا جزيلًا يا سيدي. سأمشي.'
-      en: "Reply to Pak Wiryo: Thank you very much, sir. I'll walk."
-    answers: ["Matur nuwun sanget, Pak. Kula badhe mlampah.", "Matur nuwun sanget, Pak. Kulo badhe mlampah.", "Matur nuwun sanget, Pak. Kula mlampah kemawon.", "Matur nuwun sanget, Pak. Kula badhe mlampah kemawon.", "Matur nuwun sanget, Pak. Kula mlampah.", "Matur nuwun sanget, Pak. Kula mlampah mawon.", "Matur nuwun sanget, Pak. Kula badhe mlampah mawon."]
+      ar_eg: (بالكراما) بعيد يا حاج؟
+      ar: (بالكراما) هل هو بعيد يا سيدي؟
+      en: (in krama) Is it far, sir?
+    answers: ['Tebih, Pak?', 'Tebih, Pak', 'Tebih Pak?', Tebih Pak, 'Menapa tebih, Pak?', 'Menapa tebih, Pak', 'Menapa tebih Pak?', Menapa tebih Pak, 'Napa tebih, Pak?', 'Napa tebih, Pak', 'Napa tebih Pak?', Napa tebih Pak]
     explain:
-      ar_eg: 'mlampah = mlaku (يمشي) بالكراما، وbadhe = arep.'
-      ar: 'mlampah = mlaku (يمشي) بالكراما، وbadhe = arep.'
-      en: 'mlampah = mlaku (walk) in krama; badhe = arep.'
-    words: [sanget, badhe, mlampah]
-  - id: e08
-    type: build_sentence
-    source:
-      ar_eg: أنا جاي من Pasar Gede يا حاج.
-      ar: أنا قادم من Pasar Gede يا سيدي.
-      en: I'm coming from Pasar Gede, sir.
-    answer: Kula saking Pasar Gede, Pak.
-    distractors: [saka, ngendi]
-    words: [kula, saking]
+      ar_eg: tebih = adoh (بعيد). ممكن تبدأ بـ menapa / napa كسؤال نعم أو لأ (زي Apa jauh?).
+      ar: tebih = adoh (بعيد)، ويجوز أن تبدأ بـ menapa أو napa لسؤال نعم/لا.
+      en: tebih = adoh (far). You can open with menapa / napa as a yes–no marker (like Apa jauh?).
+    words: [tebih]
+  - id: e09
+    type: speaking
+    text: Nyuwun sewu, Mbah. Saking mriki saged mlampah dhateng Pasar Triwindu?
+    meaning:
+      ar_eg: لا مؤاخذة يا تيتة. من هنا ينفع أروح سوق تريويندو مشي؟
+      ar: عفوًا يا جدتي. هل يمكن من هنا الذهاب إلى سوق تريويندو مشيًا؟
+      en: Excuse me, Grandma. Can I walk from here to Pasar Triwindu?
+    words: [nyuwun sewu, mriki, saged, mlampah, dhateng]
+  - id: e10
+    type: dictation
+    text: Matur nuwun sanget, Mbah.
+    meaning:
+      ar_eg: شكرًا جزيلًا يا تيتة.
+      ar: شكرًا جزيلًا يا جدتي.
+      en: Thank you very much, Grandma.
+    words: [matur nuwun, sanget]
 dialogue:
-  title: Ing pendhapa, jam sanga
+  title: Dhateng Pasar Triwindu
   lines:
     - speaker: Mohamed
-      text: Sugeng enjing, Pak Wiryo!
-      ar_eg: صباح الخير يا Pak Wiryo!
-      ar: صباح الخير يا Pak Wiryo!
-      en: Good morning, Pak Wiryo!
-    - speaker: Pak Wiryo
-      text: Sugeng enjing, Mas Mohamed. Tebih?
-      ar_eg: صباح النور يا أستاذ محمد. كانت بعيدة؟
-      ar: صباح النور يا أخي محمد. هل كانت المسافة بعيدة؟
-      en: Good morning, Mohamed. Was it far?
+      text: Nyuwun sewu, Mbah. Kula badhe dhateng Pasar Triwindu. Ing pundi, nggih?
+      ar_eg: لا مؤاخذة يا تيتة. أنا رايح سوق تريويندو. فين لو سمحتي؟
+      ar: عفوًا يا جدتي. أنا ذاهب إلى سوق تريويندو. أين هو من فضلكِ؟
+      en: Excuse me, Grandma. I'm going to Pasar Triwindu. Where is it, please?
     - speaker: Mohamed
-      text: Mboten, Pak. Kula mlampah kemawon saking Pasar Gede.
-      ar_eg: لأ يا حاج. أنا جيت ماشي من Pasar Gede.
-      ar: لا يا سيدي. جئتُ ماشيًا من Pasar Gede.
-      en: No, sir. I just walked from Pasar Gede.
-    - speaker: Pak Wiryo
-      text: Sae sanget! Mangga, Mas.
-      ar_eg: برافو! اتفضل يا أستاذ.
-      ar: أحسنت! تفضّل يا أخي.
-      en: Very good! Please, come in.
+      text: Saking mriki pripun, Mbah?
+      ar_eg: من هنا أروح إزاي يا تيتة؟
+      ar: كيف أذهب من هنا يا جدتي؟
+      en: How do I get there from here, Grandma?
+    - speaker: Mbah Karsih
+      text: Saking mriki lurus kemawon, lajeng nengen.
+      ar_eg: من هنا على طول، وبعدين يمين.
+      ar: من هنا إلى الأمام مباشرة، ثم يمينًا.
+      en: From here go straight on, then right.
     - speaker: Mohamed
-      text: Matur nuwun, Pak.
-      ar_eg: شكرًا يا حاج.
-      ar: شكرًا يا سيدي.
-      en: Thank you, sir.
+      text: Saged mlampah, Mbah?
+      ar_eg: ينفع أروح مشي يا تيتة؟
+      ar: هل يمكنني الذهاب مشيًا يا جدتي؟
+      en: Can I walk, Grandma?
+    - speaker: Mbah Karsih
+      text: Saged, Mas. Mboten tebih.
+      ar_eg: أيوه تقدر. مش بعيد.
+      ar: نعم تستطيع. ليس بعيدًا.
+      en: Yes, you can. It's not far.
+    - speaker: Mohamed
+      text: Matur nuwun sanget, Mbah.
+      ar_eg: متشكر قوي يا تيتة.
+      ar: شكرًا جزيلًا يا جدّة.
+      en: Thank you very much, Grandma.
+new_words:
+  - word: mriki
+    pos: adverb
+    ar_eg: هنا (kene ← sini)، كراما
+    ar: هنا (kene ← sini)، كراما
+    en: here (ngoko kene, Indonesian sini), krama
+  - word: tebih
+    pos: adjective
+    ar_eg: بعيد (adoh ← jauh)، كراما
+    ar: بعيد (adoh ← jauh)، كراما
+    en: far (ngoko adoh, Indonesian jauh), krama
+  - word: lajeng
+    pos: conjunction
+    ar_eg: وبعدين (terus ← lalu)، كراما
+    ar: ثم (terus ← lalu)، كراما
+    en: then (ngoko terus, Indonesian lalu), krama
+  - word: mlampah
+    pos: verb
+    ar_eg: يمشي (mlaku ← jalan kaki)، كراما
+    ar: يمشي (mlaku ← jalan kaki)، كراما
+    en: to walk (ngoko mlaku), krama
+  - word: saged
+    pos: verb
+    ar_eg: يقدر / ينفع (bisa)، كراما
+    ar: يستطيع (bisa)، كراما
+    en: can, be able (ngoko / Indonesian bisa), krama
+  - word: kemawon
+    pos: particle
+    ar_eg: بس (wae ← saja)، كراما؛ في الكلام mawon
+    ar: فقط (wae ← saja)، كراما؛ وفي الكلام mawon
+    en: just, only (ngoko wae, Indonesian saja), krama; spoken mawon
 review:
   status: draft
   verified: false
+game: uu.elder

@@ -1,166 +1,245 @@
 schema: kabar.lesson/v1
 id: j3.u02.l05
 language: jv
-title: Kenalan ing Pasar Gede
+title: Telpon saking Kairo
 can_do:
-  ar_eg: تسمع حد بيعرّف ناس بالكراما وتفهم مين مين، وإمتى piyambakipun وإمتى panjenenganipun.
-  ar: أن تسمع تعريفًا بأشخاص بالكراما وتفهم من هو كل منهم، ومتى يقال piyambakipun ومتى panjenenganipun.
-  en: Follow a krama introduction by ear, and hear when it's piyambakipun and when panjenenganipun.
+  ar_eg: تقول دلوقتي وبعدين ومن شوية بالكراما، وتتكلم عن مكالمة من البيت والشبكة الوحشة.
+  ar: أن تقول الآن ولاحقًا وقبل قليل بالكراما، وتتحدث عن مكالمة من البيت وضعف الإشارة.
+  en: Say now, later and earlier in krama, and talk about a call from home and a bad signal.
 slides:
-  - title: Rungokna Mas Dimas
+  - title: Samenika, mangke, wau
     body:
       ar_eg: |
-        في Pasar Gede، Mas Dimas بيعرّف Bu Siti على محمد وعلى جدته. اسمع الأول من غير ما تقرا.
-        عن صاحبه بيقول piyambakipun (هو، بأدب)، وعن جدته panjenenganipun (هي، بتعظيم) زي «سيادتها».
+        كلمات الوقت بتلبس كراما كمان:
+        - saiki ← samenika = دلوقتي (وكمان sapunika)
+        - mengko ← mangke = بعدين
+        - mau ← wau = من شوية
+        telpon = مكالمة، ويتصل. nomor = رقم. sinyal = شبكة الموبايل.
+        kuciwa = زعلان من خيبة أمل. ngandani = يقول لحد، يبلّغه (من kandha).
       ar: |
-        في Pasar Gede يعرّف Mas Dimas السيدة Bu Siti بمحمد وبجدته. استمع أولًا دون قراءة.
-        عن صديقه يقول piyambakipun (هو، بأدب)، وعن جدته panjenenganipun (هي، بتعظيم) مثل «سيادتها».
+        كلمات الزمن لها كراما أيضًا:
+        - saiki ← samenika = الآن (وأيضًا sapunika)
+        - mengko ← mangke = لاحقًا
+        - mau ← wau = قبل قليل
+        telpon = مكالمة، ويتصل. nomor = رقم. sinyal = إشارة الهاتف.
+        kuciwa = خائب الأمل. ngandani = يُخبر شخصًا (من kandha).
       en: |
-        At Pasar Gede, Mas Dimas introduces Mohamed and his grandmother to Bu Siti. Listen first, without reading.
-        For his friend he says piyambakipun (he, politely); for his grandmother panjenenganipun (she, honoured), like «سيادتها».
-    grammar: jv.pronoun.krama
+        Time words put on krama too:
+        - saiki → samenika = now (also sapunika)
+        - mengko → mangke = later
+        - mau → wau = earlier, just now
+        telpon = a call, to call. nomor = number. sinyal = phone signal.
+        kuciwa = disappointed. ngandani = tell someone, let them know (from kandha).
+    examples:
+      - text: Wau Ibu kula telpon saking Kairo.
+        ar_eg: ماما اتصلت من القاهرة من شوية.
+        ar: اتصلت أمي من القاهرة قبل قليل.
+        en: My mum called from Cairo earlier.
+      - text: Samenika sinyalipun dereng sae.
+        ar_eg: دلوقتي الشبكة لسه مش كويسة.
+        ar: الإشارة الآن ليست جيدة بعد.
+        en: The signal isn't good yet right now.
+      - text: Mangke kula telpon panjenengan.
+        ar_eg: هكلّم حضرتك بعدين.
+        ar: سأتصل بك لاحقًا.
+        en: I'll call you later.
 exercises:
   - id: e01
-    type: listen
-    text: Bu, menika kanca kula, Mohamed.
-    question:
-      ar_eg: محمد يبقى إيه بالنسبة لـ Dimas؟
-      ar: ما صلة محمد بـ Dimas؟
-      en: Who is Mohamed to Dimas?
-    options: [kanca, simbah, bapak]
-    answer: 0
-    meaning:
-      ar_eg: يا مدام، ده صاحبي محمد.
-      ar: يا سيدتي، هذا صديقي محمد.
-      en: Ma'am, this is my friend Mohamed.
-    words: [menika, kanca, kula]
-  - id: e02
-    type: listen
-    text: Piyambakipun saking Mesir.
-    question:
-      ar_eg: محمد منين؟
-      ar: من أين محمد؟
-      en: Where is Mohamed from?
-    options: [Solo, Mesir, Yogya]
-    answer: 1
-    meaning:
-      ar_eg: هو من مصر.
-      ar: هو من مصر.
-      en: He's from Egypt.
-    words: [piyambakipun, saking]
-  - id: e03
-    type: listen
-    text: Menika simbah kula. Panjenenganipun sampun sepuh.
-    question:
-      ar_eg: Dimas بيقول panjenenganipun. بيتكلم عن مين؟
-      ar: يقول Dimas panjenenganipun. عمّن يتكلم؟
-      en: Dimas says panjenenganipun. Who is he talking about?
-    options: [Mohamed, Bu Siti, simbah]
-    answer: 2
-    meaning:
-      ar_eg: دي جدتي. هي كبيرة في السن.
-      ar: هذه جدتي. هي متقدمة في السن.
-      en: This is my grandmother. She's elderly.
-    explain:
-      ar_eg: panjenenganipun = «هي» بتعظيم، للكبار اللي بتحترمهم زي جدتك.
-      ar: panjenenganipun ضمير غائب للتعظيم، يقال للكبار المحترمين كالجدة.
-      en: panjenenganipun is an honoured "he / she", for elders you respect, like your grandmother.
-    words: [panjenenganipun, simbah, sepuh]
-  - id: e04
     type: match_pairs
     pairs:
-      - text: kanca kula
-        ar_eg: صاحبي
-        ar: صديقي
-        en: my friend
-      - text: simbah kula
-        ar_eg: جدتي / جدي
-        ar: جدتي / جدي
-        en: my grandmother / grandfather
-      - text: nami kula
-        ar_eg: اسمي
-        ar: اسمي
-        en: my name
-      - text: griya kula
-        ar_eg: بيتي
-        ar: بيتي
-        en: my house
-    words: [kula, nami, griya]
+      - text: samenika
+        ar_eg: دلوقتي (كراما)
+        ar: الآن (كراما)
+        en: now (krama)
+      - text: mangke
+        ar_eg: بعدين (كراما)
+        ar: لاحقًا (كراما)
+        en: later (krama)
+      - text: wau
+        ar_eg: من شوية (كراما)
+        ar: قبل قليل (كراما)
+        en: earlier (krama)
+      - text: telpon
+        ar_eg: مكالمة، يتصل
+        ar: مكالمة، يتصل
+        en: call
+    words: [samenika, mangke, wau, telpon]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: nomor
+        ar_eg: رقم
+        ar: رقم
+        en: number
+      - text: sinyal
+        ar_eg: شبكة
+        ar: إشارة
+        en: signal
+      - text: kuciwa
+        ar_eg: زعلان، خاب أمله
+        ar: خائب الأمل
+        en: disappointed
+      - text: ngandani
+        ar_eg: يقول لحد
+        ar: يُخبر
+        en: tell, let know
+    words: [nomor, sinyal, kuciwa, ngandani]
+  - id: e03
+    type: listen
+    text: Mangke kula telpon panjenengan.
+    question:
+      ar_eg: هيتصل إمتى؟
+      ar: متى سيتصل؟
+      en: When will he call?
+    options: [هتصل دلوقتي, هتصل بعدين, اتصلت من شوية]
+    answer: 1
+    meaning:
+      ar_eg: هكلّم حضرتك بعدين.
+      ar: سأتصل بك لاحقًا.
+      en: I'll call you later.
+    words: [mangke, telpon]
+  - id: e04
+    type: fill_blank
+    sentence: ___ sinyalipun dereng sae.
+    meaning:
+      ar_eg: ___ الشبكة لسه مش كويسة.
+      ar: ___ الإشارة ليست جيدة بعد.
+      en: ___ the signal isn't good yet.
+    options: [Samenika, Nomor, Kuciwa]
+    answers: [Samenika]
+    words: [samenika, nomor, kuciwa, sinyal]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: Bu Siti قالت لمحمد «Sugeng rawuh, Mas!». يرد يقول إيه؟
-      ar: قالت Bu Siti لمحمد «Sugeng rawuh, Mas!». بماذا يردّ؟
-      en: Bu Siti says to Mohamed, "Sugeng rawuh, Mas!". What does he answer?
-    options: ['Sami-sami, Bu.', 'Dalem, Bu?', 'Matur nuwun, Bu.']
+      ar_eg: «دلوقتي» بالكراما إيه؟
+      ar: ما «الآن» بالكراما؟
+      en: Which is "now" in krama?
+    options: [wau, mangke, samenika]
     answer: 2
     explain:
-      ar_eg: Sugeng rawuh = أهلًا وسهلًا، والرد شكرًا = Matur nuwun. Dalem للرد لما حد ينادي عليك، وSami-sami رد على الشكر.
-      ar: Sugeng rawuh ترحيب، والرد Matur nuwun؛ أما Dalem فجواب النداء، وSami-sami جواب الشكر.
-      en: Sugeng rawuh is a welcome; you answer Matur nuwun. Dalem answers a call, Sami-sami answers a thank-you.
-    words: [sugeng rawuh, matur nuwun]
+      ar_eg: saiki ← samenika = دلوقتي. wau = من شوية، mangke = بعدين.
+      ar: saiki ← samenika = الآن. wau = قبل قليل، mangke = لاحقًا.
+      en: saiki → samenika = now. wau = earlier, mangke = later.
+    words: [wau, mangke, samenika]
   - id: e06
-    type: dictation
-    text: Panjenenganipun sampun sepuh.
+    type: fill_blank
+    sentence: Aku wis ___ Mas Dimas.
     meaning:
-      ar_eg: هي (سيادتها) كبيرة في السن.
-      ar: هي متقدمة في السن.
-      en: She is elderly (honoured "she").
-    words: [panjenenganipun, sepuh]
+      ar_eg: أنا خلاص ___ ديماس.
+      ar: لقد ___ ديماس.
+      en: I've already ___ Dimas.
+    options: [ngandani, kuciwa, sinyal]
+    answers: [ngandani]
+    words: [ngandani, kuciwa, sinyal]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: 'عرّف Dimas لـ Bu Siti بالكراما: ده صاحبي Dimas. هو من يوجيا.'
-      ar: 'عرّف Dimas لـ Bu Siti بالكراما: هذا صديقي Dimas. هو من يوجيا.'
-      en: "Introduce Dimas to Bu Siti in krama: This is my friend Dimas. He's from Yogya."
-    answers: ["Menika kanca kula, Dimas. Piyambakipun saking Yogya.", "Menika kanca kula, Mas Dimas. Piyambakipun saking Yogya.", "Bu, menika kanca kula, Dimas. Piyambakipun saking Yogya.", "Bu, menika kanca kula, Mas Dimas. Piyambakipun saking Yogya.", "Menika kanca kulo, Dimas. Piyambakipun saking Yogya.", "Menika kanca kulo, Mas Dimas. Piyambakipun saking Yogya.", "Niki kanca kula, Mas Dimas. Piyambakipun saking Yogya.", "Niki kanca kula, Dimas. Piyambakipun saking Yogya."]
-    explain:
-      ar_eg: 'Dimas في سنك وصاحبك: piyambakipun كفاية (panjenenganipun للكبار).'
-      ar: 'Dimas في مثل سنك وصديقك، فتكفي piyambakipun، وpanjenenganipun للكبار.'
-      en: Dimas is your age and your friend, so piyambakipun is right (panjenenganipun is for elders).
-    words: [menika, kanca, piyambakipun, saking]
-  - id: e08
     type: build_sentence
     source:
-      ar_eg: دي جدتي يا مدام.
-      ar: هذه جدتي يا سيدتي.
-      en: This is my grandmother, ma'am.
-    answer: Menika simbah kula, Bu.
-    distractors: [iki, aku]
+      ar_eg: ماما زعلانة، لسه ما اتصلتش.
+      ar: أمي خائبة الأمل، لم أتصل بعد.
+      en: Mum is disappointed; I haven't called yet.
+    answer: Ibu kuciwa, kula dereng telpon.
+    distractors: [samenika, nomor]
+    words: [kuciwa, telpon]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Menika nomor HP kula.
+    answers_meaning:
+      ar_eg: [ده رقم موبايلي, دي نمرة موبايلي]
+      ar: [هذا رقم هاتفي, هذا رقم جوالي]
+      en: [This is my mobile number, 'Here''s my phone number']
+    words: [nomor]
+  - id: e09
+    type: speaking
+    text: Wau Ibu telpon, ngandani kabar saking Kairo.
+    meaning:
+      ar_eg: ماما اتصلت من شوية تقولّي أخبار القاهرة.
+      ar: اتصلت أمي قبل قليل تخبرني بأخبار القاهرة.
+      en: Mum called earlier with news from Cairo.
+    words: [wau, telpon, ngandani]
+  - id: e10
+    type: multiple_choice
+    question: HP-ku ora ana ___.
+    options: [nomor, mangke, sinyal]
+    answer: 2
     explain:
-      ar_eg: 'menika (= iki) وkula بعد الاسم: simbah kula.'
-      ar: 'menika بدل iki، وkula بعد الاسم: simbah kula.'
-      en: 'menika (= iki), and kula after the noun: simbah kula.'
-    words: [menika, simbah, kula]
+      ar_eg: sinyal = شبكة الموبايل.
+      ar: sinyal = إشارة الهاتف.
+      en: sinyal = phone signal.
+    words: [sinyal, nomor, mangke]
 dialogue:
-  title: Bu Siti lan simbah
   lines:
-    - speaker: Mas Dimas
-      text: Bu Siti, menika kanca kula, Mohamed.
-      ar_eg: يا Bu Siti، ده صاحبي محمد.
-      ar: يا Bu Siti، هذا صديقي محمد.
-      en: Bu Siti, this is my friend Mohamed.
-    - speaker: Bu Siti
-      text: Sugeng rawuh, Mas Mohamed. Mas saking Jakarta?
-      ar_eg: أهلًا يا أستاذ محمد. حضرتك من جاكرتا؟
-      ar: أهلًا يا أخي محمد. هل أنت من جاكرتا؟
-      en: Welcome, Mohamed. Are you from Jakarta?
+    - speaker: Mbah Putri
+      text: Nak, kok kuciwa?
+      ar_eg: مالك يا ابني، زعلان ليه؟
+      ar: ما بالك يا بنيّ، لماذا أنت مستاء؟
+      en: Why so disappointed, dear?
     - speaker: Mohamed
-      text: Kula saking Mesir, Bu. Saking Kairo.
-      ar_eg: أنا من مصر يا مدام. من القاهرة.
-      ar: أنا من مصر يا سيدتي، من القاهرة.
-      en: I'm from Egypt, ma'am. From Cairo.
-    - speaker: Bu Siti
-      text: Wah, saking Mesir! Mas Dimas, simbah sampun dhahar?
-      ar_eg: الله، من مصر! يا Dimas، جدتك أكلت؟
-      ar: ما شاء الله، من مصر! يا Dimas، هل تفضّلت جدتك بالأكل؟
-      en: Wow, from Egypt! Dimas, has your grandmother eaten?
-    - speaker: Mas Dimas
-      text: Sampun, Bu. Matur nuwun.
-      ar_eg: أيوه يا مدام. شكرًا.
-      ar: نعم يا سيدتي. شكرًا.
-      en: Yes, ma'am. Thank you.
+      text: Wau Ibu kula telpon saking Kairo, nanging sinyalipun mboten wonten.
+      ar_eg: ماما اتصلت من القاهرة من شوية، بس مفيش شبكة.
+      ar: اتصلت أمي من القاهرة قبل قليل، لكن لا توجد إشارة.
+      en: My mum called from Cairo earlier, but there was no signal.
+    - speaker: Mbah Putri
+      text: Samenika telpon saking mriki. Sinyalipun sae.
+      ar_eg: اتصل دلوقتي من هنا. الشبكة كويسة.
+      ar: اتصل الآن من هنا. الإشارة جيدة.
+      en: Call now from here. The signal's good.
+    - speaker: Mohamed
+      text: Inggih, Mbah. Mangke kula ngandani Ibu kabar kula.
+      ar_eg: حاضر يا تيتة. بعدين هقول لماما أخباري.
+      ar: حسنًا يا جدة. سأخبر أمي بأخباري لاحقًا.
+      en: OK, Mbah. Later I'll tell Mum my news.
+    - speaker: Mbah Putri
+      text: Salam kangge Ibu saking Mbah.
+      ar_eg: سلّملي على ماما.
+      ar: بلّغ أمك سلامي.
+      en: Give your mum my regards.
+    - speaker: Mohamed
+      text: Matur nuwun, Mbah.
+      ar_eg: متشكر يا تيتة.
+      ar: شكرًا يا جدة.
+      en: Thank you, Mbah.
+new_words:
+  - word: samenika
+    pos: adverb
+    ar_eg: دلوقتي (saiki ← samenika)، كراما
+    ar: الآن (saiki ← samenika)، كراما
+    en: now (ngoko saiki, Indonesian sekarang), krama
+  - word: mangke
+    pos: adverb
+    ar_eg: بعدين (mengko ← mangke)، كراما
+    ar: لاحقًا (mengko ← mangke)، كراما
+    en: later (ngoko mengko, Indonesian nanti), krama
+  - word: wau
+    pos: adverb
+    ar_eg: من شوية (mau ← wau)، كراما
+    ar: قبل قليل (mau ← wau)، كراما
+    en: earlier, just now (ngoko mau, Indonesian tadi), krama
+  - word: telpon
+    pos: verb
+    ar_eg: مكالمة، يتصل
+    ar: مكالمة، يتصل
+    en: a call, to phone (= telepon)
+  - word: nomor
+    pos: noun
+    ar_eg: رقم
+    ar: رقم
+    en: number (= nomor)
+  - word: sinyal
+    pos: noun
+    ar_eg: شبكة الموبايل
+    ar: إشارة الهاتف
+    en: phone signal (= sinyal)
+  - word: kuciwa
+    pos: adjective
+    ar_eg: زعلان، خاب أمله
+    ar: خائب الأمل
+    en: disappointed (= kecewa)
+  - word: ngandani
+    pos: verb
+    ar_eg: يقول لحد، يبلّغ (من kandha)
+    ar: يُخبر (من kandha)
+    en: tell, let someone know (from kandha) = memberi tahu
 review:
   status: draft
   verified: false
