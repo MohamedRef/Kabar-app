@@ -3,27 +3,27 @@ id: bipa5.u07.l09
 language: id
 title: Piknik sehat di tepi sungai
 can_do:
-  ar_eg: 'تتكلم عن رحلة أكل صحي: الأعشاب والفيتامينات والليمون والسلطة والسعرات، ووسط ده كله البكسو، والأمن الغذائي.'
-  ar: 'أن تتحدث عن نزهة بطعام صحي: الأعشاب والفيتامينات والليمون والسلطة والسعرات، والباكسو أيضًا، والأمن الغذائي.'
-  en: 'Talk on a healthy picnic: herbs, vitamins, lemon, salad and calories, bakso anyway, and food security.'
+  ar_eg: 'تتكلم عن رحلة أكل صحي: الأعشاب والكبسولات والليمون والسلطة والسعرات، ووسط ده كله البكسو، والأمن الغذائي.'
+  ar: 'أن تتحدث عن نزهة بطعام صحي: الأعشاب والكبسولات والليمون والسلطة والسعرات، والباكسو أيضًا، والأمن الغذائي.'
+  en: 'Talk on a healthy picnic: herbs, capsules, lemon, salad and calories, bakso anyway, and food security.'
 slides:
   - title: Makan sehat
     body:
       ar_eg: |
         piknik = رحلة، نزهة بأكل في الهوا الطلق.
-        herbal = بالأعشاب (jamu herbal = مشروب أعشاب تقليدي)، vitamin = فيتامين، kalori = سعرات.
+        herbal = بالأعشاب (jamu herbal = مشروب أعشاب تقليدي)، kapsul = كبسولة (kapsul vitamin = كبسولة فيتامين)، kalori = سعرات.
         lemon = ليمون أصفر (jeruk nipis = ليمون أخضر صغير)، salad = سلطة.
         bakso = كور لحمة في شوربة (أكلة شعبية جدًا).
         pangan = الغذا كموضوع رسمي: ketahanan pangan = الأمن الغذائي.
       ar: |
         piknik = نزهة مع طعام في الهواء الطلق.
-        herbal = عشبي (jamu herbal = مشروب أعشاب تقليدي)، vitamin = فيتامين، kalori = سعرات حرارية.
+        herbal = عشبي (jamu herbal = مشروب أعشاب تقليدي)، kapsul = كبسولة (kapsul vitamin = كبسولة فيتامينات)، kalori = سعرات حرارية.
         lemon = ليمون أصفر (jeruk nipis = ليمون أخضر صغير)، salad = سلطة.
         bakso = كرات لحم في حساء (طبق شعبي جدًا).
         pangan = الغذاء (مصطلح رسمي): ketahanan pangan = الأمن الغذائي.
       en: |
         piknik = picnic.
-        herbal = herbal (jamu herbal = traditional herbal drink), vitamin = vitamin, kalori = calories.
+        herbal = herbal (jamu herbal = traditional herbal drink), kapsul = capsule (kapsul vitamin = vitamin capsule), kalori = calories.
         lemon = lemon (jeruk nipis = lime), salad = salad.
         bakso = meatballs in broth (a hugely popular dish).
         pangan = food (formal, policy word): ketahanan pangan = food security.
@@ -52,15 +52,15 @@ exercises:
         ar_eg: بالأعشاب
         ar: عشبي
         en: herbal
-      - text: vitamin
-        ar_eg: فيتامين
-        ar: فيتامين
-        en: vitamin
+      - text: kapsul
+        ar_eg: كبسولة
+        ar: كبسولة
+        en: capsule
       - text: kalori
         ar_eg: سعرات
         ar: سعرات حرارية
         en: calories
-    words: [piknik, herbal, vitamin, kalori]
+    words: [piknik, herbal, kapsul, kalori]
   - id: e02
     type: match_pairs
     pairs:
@@ -83,18 +83,18 @@ exercises:
     words: [lemon, salad, bakso, pangan]
   - id: e03
     type: listen
-    text: Minum teh herbal ini sebelum tidur.
+    text: Minum kapsul herbal ini sebelum tidur.
     question:
-      ar_eg: يشرب إيه قبل النوم؟
-      ar: ماذا يشرب قبل النوم؟
-      en: What should he drink before bed?
-    options: [شاي أعشاب, قهوة, عصير ليمون]
+      ar_eg: ياخد إيه قبل النوم؟
+      ar: ماذا يتناول قبل النوم؟
+      en: What should he take before bed?
+    options: [كبسولة أعشاب, قهوة, عصير ليمون]
     answer: 0
     meaning:
-      ar_eg: اشرب شاي الأعشاب ده قبل النوم.
-      ar: اشرب شاي الأعشاب هذا قبل النوم.
-      en: Drink this herbal tea before bed.
-    words: [herbal]
+      ar_eg: خد كبسولة الأعشاب دي قبل النوم.
+      ar: تناول كبسولة الأعشاب هذه قبل النوم.
+      en: Take this herbal capsule before bed.
+    words: [kapsul, herbal]
   - id: e04
     type: fill_blank
     sentence: Jeruk dan ___ banyak mengandung vitamin C.
@@ -131,13 +131,13 @@ exercises:
   - id: e07
     type: multiple_choice
     question: Harga ___ naik, jadi rakyat kecil makin susah.
-    options: [vitamin, pangan, lemon]
+    options: [kapsul, pangan, lemon]
     answer: 1
     explain:
       ar_eg: pangan = الغذا (كلمة رسمية).
       ar: pangan = الغذاء (مصطلح رسمي).
       en: pangan = food (formal).
-    words: [vitamin, pangan, lemon]
+    words: [kapsul, pangan, lemon]
   - id: e08
     type: build_sentence
     source:
@@ -145,7 +145,7 @@ exercises:
       ar: سنعدّ سلطة بالليمون للنزهة.
       en: We'll make a lemon salad for the picnic.
     answer: Kita buat salad lemon untuk piknik.
-    distractors: [bakso, vitamin]
+    distractors: [bakso, kapsul]
     words: [salad, lemon, piknik]
   - id: e09
     type: translate
@@ -202,11 +202,11 @@ new_words:
     ar_eg: بالأعشاب
     ar: عشبي
     en: herbal
-  - word: vitamin
+  - word: kapsul
     pos: noun
-    ar_eg: فيتامين
-    ar: فيتامين
-    en: vitamin
+    ar_eg: كبسولة
+    ar: كبسولة
+    en: capsule
   - word: kalori
     pos: noun
     ar_eg: سعرات

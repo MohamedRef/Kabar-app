@@ -12,17 +12,17 @@ slides:
       ar_eg: |
         pengungsi = لاجئ أو نازح (من حرب أو فيضان)، penampungan = ملجأ أو مكان إيوا.
         kerumunan = زحمة ناس متجمعين في حتة (تجمّع)، keramaian = دوشة وزحمة وحركة (جو حيوي).
-        penginapan = مكان مبيت (لوكاندة صغيرة، نُزُل)، pengamat = مراقب أو محلل (pengamat politik).
+        motel = موتيل، لوكاندة صغيرة رخيصة (والفنادق الصغيرة penginapan)، pengamat = مراقب أو محلل (pengamat politik).
         rintangan = عقبة في الطريق، mendominasi = يسيطر أو يغلب على.
       ar: |
         pengungsi = لاجئ، نازح (من حرب أو فيضان)، penampungan = ملجأ، مأوى.
         kerumunan = حشد متجمّع في مكان، keramaian = صخب وزحام، حيوية.
-        penginapan = نُزُل، مكان للمبيت، pengamat = مراقب، محلّل (pengamat politik).
+        motel = نُزُل صغير رخيص (والنُّزُل عمومًا penginapan)، pengamat = مراقب، محلّل (pengamat politik).
         rintangan = عقبة، عائق، mendominasi = يهيمن على.
       en: |
         pengungsi = refugee, displaced person, penampungan = shelter.
         kerumunan = crowd (gathered in one spot), keramaian = bustle, hustle and noise.
-        penginapan = lodging, guesthouse, pengamat = observer, commentator (pengamat politik).
+        motel = motel, cheap small hotel (lodgings in general: penginapan), pengamat = observer, commentator (pengamat politik).
         rintangan = obstacle, hurdle, mendominasi = to dominate.
     examples:
       - text: Pengungsi banjir tinggal di penampungan sementara.
@@ -61,10 +61,10 @@ exercises:
   - id: e02
     type: match_pairs
     pairs:
-      - text: penginapan
-        ar_eg: لوكاندة صغيرة
-        ar: نُزُل
-        en: guesthouse
+      - text: motel
+        ar_eg: موتيل
+        ar: نُزُل صغير
+        en: motel
       - text: pengamat
         ar_eg: مراقب
         ar: مراقب
@@ -77,21 +77,21 @@ exercises:
         ar_eg: يسيطر
         ar: يهيمن
         en: to dominate
-    words: [penginapan, pengamat, rintangan, mendominasi]
+    words: [motel, pengamat, rintangan, mendominasi]
   - id: e03
     type: listen
-    text: Penginapan di dekat pelabuhan sudah penuh.
+    text: Motel di dekat pelabuhan sudah penuh.
     question:
       ar_eg: إيه اللي اتملى؟
       ar: ما الذي امتلأ؟
       en: What is full?
-    options: [اللوكاندات, المطاعم, المدارس]
+    options: [الموتيلات, المطاعم, المدارس]
     answer: 0
     meaning:
-      ar_eg: اللوكاندات اللي جنب الميناء كلها اتملت.
-      ar: امتلأت النُّزُل القريبة من الميناء.
-      en: The guesthouses near the port are full.
-    words: [penginapan]
+      ar_eg: الموتيلات اللي جنب الميناء كلها اتملت.
+      ar: امتلأت النُّزُل الصغيرة القريبة من الميناء.
+      en: The motels near the port are full.
+    words: [motel]
   - id: e04
     type: fill_blank
     sentence: Ada ___ besar di depan kantor bupati. Ada apa?
@@ -99,9 +99,9 @@ exercises:
       ar_eg: فيه ___ كبير قدام مكتب البوباتي. فيه إيه؟
       ar: هناك ___ كبير أمام مكتب رئيس المقاطعة. ماذا يحدث؟
       en: There's a big ___ outside the regent's office. What's going on?
-    options: [kerumunan, penginapan, rintangan]
+    options: [kerumunan, motel, rintangan]
     answers: [kerumunan]
-    words: [kerumunan, penginapan, rintangan]
+    words: [kerumunan, motel, rintangan]
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -164,7 +164,7 @@ exercises:
 dialogue:
   lines:
     - speaker: Mohamed
-      text: Mas, kenapa penginapan di Balikpapan penuh semua?
+      text: Mas, kenapa hotel dan motel di Balikpapan penuh semua?
       ar_eg: يا ماس، ليه اللوكاندات في بالكبابان كلها مليانة؟
       ar: يا أخي، لماذا امتلأت كل النُّزُل في باليكبابان؟
       en: Why are all the guesthouses in Balikpapan full?
@@ -214,11 +214,11 @@ new_words:
     ar_eg: زحمة ودوشة، حركة
     ar: صخب، زحام
     en: bustle, busy crowds
-  - word: penginapan
+  - word: motel
     pos: noun
-    ar_eg: لوكاندة صغيرة، مكان مبيت
-    ar: نُزُل
-    en: lodging, guesthouse
+    ar_eg: موتيل، لوكاندة صغيرة
+    ar: نُزُل صغير، موتيل
+    en: motel
   - word: pengamat
     pos: noun
     ar_eg: مراقب، محلل

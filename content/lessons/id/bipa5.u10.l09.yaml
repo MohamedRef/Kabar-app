@@ -3,22 +3,22 @@ id: bipa5.u10.l09
 language: id
 title: Laporan dari perjalanan
 can_do:
-  ar_eg: 'تكتب تقرير رحلة: البوصلة والقارات والمحيطات، المدق والفيلا، الزينة والألعاب النارية، وتستكشف وتوصي.'
-  ar: 'أن تكتب تقرير رحلة: البوصلة والقارات والمحيطات، والممرّ الجبلي والفيلا، والزينة والألعاب النارية، والاستكشاف والتوصية.'
-  en: 'Write a travel report: compass, continents and oceans, the trek and the villa, decorations and fireworks, exploring and recommending.'
+  ar_eg: 'تكتب تقرير رحلة: الأقطاب والقارات والمحيطات، المدق والفيلا، الزينة والألعاب النارية، وتستكشف وتوصي.'
+  ar: 'أن تكتب تقرير رحلة: الأقطاب والقارات والمحيطات، والممرّ الجبلي والفيلا، والزينة والألعاب النارية، والاستكشاف والتوصية.'
+  en: 'Write a travel report: poles, continents and oceans, the trek and the villa, decorations and fireworks, exploring and recommending.'
 slides:
   - title: Dari Kalimantan ke seluruh dunia
     body:
       ar_eg: |
-        menjelajahi = يستكشف (menjelajahi hutan)، kompas = بوصلة، trek = مدق، طريق مشي في الجبل أو الغابة.
+        menjelajahi = يستكشف (menjelajahi hutan)، kutub = قطب (Kutub Utara = القطب الشمالي، وkompas = بوصلة)، trek = مدق، طريق مشي في الجبل أو الغابة.
         benua = قارة (Benua Asia)، samudera = محيط (Samudera Hindia = المحيط الهندي؛ والرسمي samudra).
         villa = فيلا، hiasan = زينة (hiasan lampion)، kembang api = ألعاب نارية.
       ar: |
-        menjelajahi = يستكشف (menjelajahi hutan)، kompas = بوصلة، trek = درب، مسار مشي في الجبل أو الغابة.
+        menjelajahi = يستكشف (menjelajahi hutan)، kutub = قطب (Kutub Utara = القطب الشمالي، وkompas = بوصلة)، trek = درب، مسار مشي في الجبل أو الغابة.
         benua = قارة (Benua Asia)، samudera = محيط (Samudera Hindia = المحيط الهندي؛ والمعيارية samudra).
         villa = فيلا، hiasan = زينة (hiasan lampion)، kembang api = ألعاب نارية.
       en: |
-        menjelajahi = to explore (menjelajahi hutan), kompas = compass, trek = trek, trail.
+        menjelajahi = to explore (menjelajahi hutan), kutub = pole (Kutub Utara = North Pole; kompas = compass), trek = trek, trail.
         benua = continent (Benua Asia), samudera = ocean (Samudera Hindia = Indian Ocean; standard spelling samudra).
         villa = villa, hiasan = decoration (hiasan lampion), kembang api = fireworks.
     examples:
@@ -42,10 +42,10 @@ exercises:
         ar_eg: يستكشف
         ar: يستكشف
         en: to explore
-      - text: kompas
-        ar_eg: بوصلة
-        ar: بوصلة
-        en: compass
+      - text: kutub
+        ar_eg: قطب
+        ar: قطب
+        en: pole
       - text: trek
         ar_eg: مدق، طريق مشي
         ar: درب
@@ -54,7 +54,7 @@ exercises:
         ar_eg: قارة
         ar: قارة
         en: continent
-    words: [menjelajahi, kompas, trek, benua]
+    words: [menjelajahi, kutub, trek, benua]
   - id: e02
     type: match_pairs
     pairs:
@@ -91,14 +91,14 @@ exercises:
     words: [kembang api]
   - id: e04
     type: fill_blank
-    sentence: Tanpa sinyal GPS, kami memakai ___ untuk mencari arah utara.
+    sentence: Jarum kompas selalu menunjuk ke arah ___ utara.
     meaning:
-      ar_eg: من غير GPS، استعملنا ___ عشان نعرف الشمال.
-      ar: دون إشارة GPS استخدمنا ___ لتحديد الشمال.
-      en: Without GPS, we used a ___ to find north.
-    options: [kompas, villa, hiasan]
-    answers: [kompas]
-    words: [kompas, villa, hiasan]
+      ar_eg: إبرة البوصلة دايمًا بتشاور ناحية ال___ الشمالي.
+      ar: تشير إبرة البوصلة دائمًا نحو ال___ الشمالي.
+      en: A compass needle always points towards the north ___.
+    options: [kutub, villa, hiasan]
+    answers: [kutub]
+    words: [kutub, villa, hiasan, kompas]
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -125,13 +125,13 @@ exercises:
   - id: e07
     type: multiple_choice
     question: Indonesia terletak di antara Samudera Hindia dan ___ Pasifik.
-    options: [Villa, Kompas, Samudera]
+    options: [Villa, Kutub, Samudera]
     answer: 2
     explain:
       ar_eg: Samudera Pasifik = المحيط الهادي.
       ar: Samudera Pasifik = المحيط الهادئ.
       en: Samudera Pasifik = the Pacific Ocean.
-    words: [villa, kompas, samudera]
+    words: [villa, kutub, samudera]
   - id: e08
     type: build_sentence
     source:
@@ -139,7 +139,7 @@ exercises:
       ar: هذا الدرب طويل لكنه يستحق.
       en: This trail is long but worth it.
     answer: Trek ini panjang, tetapi hasilnya sebanding.
-    distractors: [kompas, kembang api]
+    distractors: [kutub, kembang api]
     words: [trek, kembang api]
   - id: e09
     type: translate
@@ -196,11 +196,11 @@ new_words:
     ar_eg: يستكشف
     ar: يستكشف
     en: to explore
-  - word: kompas
+  - word: kutub
     pos: noun
-    ar_eg: بوصلة
-    ar: بوصلة
-    en: compass
+    ar_eg: قطب
+    ar: قطب
+    en: pole (geography)
   - word: trek
     pos: noun
     ar_eg: مدق، طريق مشي
