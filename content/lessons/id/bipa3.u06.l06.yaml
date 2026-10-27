@@ -11,17 +11,17 @@ slides:
     body:
       ar_eg: |
         berfungsi = شغال (بيأدي وظيفته): AC-nya tidak berfungsi = التكييف مش شغال.
-        mesin = ماكينة، موتور (mesin cuci = غسالة). perangkat = جهاز.
+        peralatan = عدّة، أدوات (peralatan dapur = أدوات المطبخ). perangkat = جهاز.
         tombol = زرار. kabel = سلك، كابل. sinyal = إشارة (شبكة الموبايل).
         otomatis = أوتوماتيك. mengganti = يغيّر، يبدّل.
       ar: |
         berfungsi = يعمل (يؤدي وظيفته): AC-nya tidak berfungsi = المكيّف لا يعمل.
-        mesin = آلة، محرّك (mesin cuci = غسالة). perangkat = جهاز.
+        peralatan = معدّات، أدوات (peralatan dapur = أدوات المطبخ). perangkat = جهاز.
         tombol = زر. kabel = سلك، كابل. sinyal = إشارة.
         otomatis = تلقائي، آلي. mengganti = يستبدل، يغيّر.
       en: |
         berfungsi = work, function: AC-nya tidak berfungsi = the air con isn't working.
-        mesin = machine, engine (mesin cuci = washing machine). perangkat = device.
+        peralatan = equipment, tools (peralatan dapur = kitchen utensils). perangkat = device.
         tombol = button. kabel = cable, wire. sinyal = signal.
         otomatis = automatic. mengganti = replace, change.
     examples:
@@ -45,10 +45,10 @@ exercises:
         ar_eg: شغال
         ar: يعمل
         en: work, function
-      - text: mesin
-        ar_eg: ماكينة
-        ar: آلة
-        en: machine
+      - text: peralatan
+        ar_eg: عدّة، أدوات
+        ar: معدّات
+        en: equipment
       - text: perangkat
         ar_eg: جهاز
         ar: جهاز
@@ -57,7 +57,7 @@ exercises:
         ar_eg: زرار
         ar: زر
         en: button
-    words: [berfungsi, mesin, perangkat, tombol]
+    words: [berfungsi, peralatan, perangkat, tombol]
   - id: e02
     type: match_pairs
     pairs:
@@ -108,23 +108,23 @@ exercises:
       ar_eg: الحاجة اللي بتدوس عليها عشان تشغّل جهاز؟
       ar: ما الشيء الذي تضغطه لتشغيل جهاز؟
       en: What do you press to switch a device on?
-    options: [tombol, sinyal, mesin]
+    options: [tombol, sinyal, peralatan]
     answer: 0
     explain:
       ar_eg: tombol = زرار.
       ar: tombol = زر.
       en: tombol = button.
-    words: [tombol, sinyal, mesin]
+    words: [tombol, sinyal, peralatan]
   - id: e06
     type: fill_blank
-    sentence: ___ cuci di hotel ini rusak lagi.
+    sentence: Teknisi membawa ___ untuk memperbaiki AC.
     meaning:
-      ar_eg: ___ الغسيل في الفندق ده باظت تاني.
-      ar: ___ الغسيل في هذا الفندق معطّلة مرة أخرى.
-      en: The washing ___ at this hotel is broken again.
-    options: [Perangkat, Mesin, Kabel]
-    answers: [Mesin]
-    words: [mesin, perangkat, kabel]
+      ar_eg: الفني جاب ___ عشان يصلّح التكييف.
+      ar: أحضر الفنيّ ___ لإصلاح المكيّف.
+      en: The technician brought ___ to fix the air con.
+    options: [perangkat, peralatan, kabel]
+    answers: [peralatan]
+    words: [peralatan, perangkat, kabel]
   - id: e07
     type: build_sentence
     source:
@@ -153,14 +153,14 @@ exercises:
     words: [berfungsi, kabel]
   - id: e10
     type: multiple_choice
-    question: Kunci kamar saya rusak. Bisa ___?
+    question: Petugas sudah mengganti lampu. Kunci kamar saya juga rusak. Bisa ___?
     options: [sinyal, otomatis, diganti]
     answer: 2
     explain:
       ar_eg: diganti = يتغيّر (من mengganti).
       ar: diganti = يُستبدل (من mengganti).
       en: diganti = be replaced (from mengganti).
-    words: [mengganti, sinyal, otomatis, perangkat]
+    words: [sinyal, otomatis, mengganti]
 dialogue:
   lines:
     - speaker: Mohamed
@@ -194,11 +194,11 @@ new_words:
     ar_eg: شغال، بيشتغل
     ar: يعمل، يؤدي وظيفته
     en: work, function
-  - word: mesin
+  - word: peralatan
     pos: noun
-    ar_eg: ماكينة، موتور
-    ar: آلة، محرّك
-    en: machine, engine
+    ar_eg: عدّة، أدوات
+    ar: معدّات، أدوات
+    en: equipment, tools
   - word: perangkat
     pos: noun
     ar_eg: جهاز

@@ -10,17 +10,17 @@ slides:
   - title: Setelah bencana
     body:
       ar_eg: |
-        waspada = خلّي بالك، صاحي (حذر). peringatan = تحذير، إنذار.
+        waspada = خلّي بالك، صاحي (حذر). menghindari = يبعد عن، يتجنّب (من hindar).
         langkah = خطوة: langkah pertama = أول خطوة. memastikan = يتأكد (وأمر: pastikan! = اتأكد!).
         terluka = اتعوّر، اتصاب. kerusakan = خراب، تلف. menghancurkan = يدمّر.
         akibat = نتيجة (وحشة) (من العربي «عاقبة»): akibat gempa = بسبب الزلزال.
       ar: |
-        waspada = يقظ، حذر. peringatan = تحذير، إنذار.
+        waspada = يقظ، حذر. menghindari = يتجنّب (من hindar).
         langkah = خطوة: langkah pertama = الخطوة الأولى. memastikan = يتأكّد (والأمر: pastikan!).
         terluka = أُصيب، جُرح. kerusakan = ضرر، تلف. menghancurkan = يدمّر.
         akibat = عاقبة، نتيجة (من العربية «عاقبة»): akibat gempa = بسبب الزلزال.
       en: |
-        waspada = alert, on guard. peringatan = warning.
+        waspada = alert, on guard. menghindari = avoid (from hindar).
         langkah = step: langkah pertama = the first step. memastikan = make sure (command: pastikan!).
         terluka = injured, hurt. kerusakan = damage. menghancurkan = destroy.
         akibat = consequence, result (from Arabic ʿāqiba): akibat gempa = as a result of the quake.
@@ -45,10 +45,10 @@ exercises:
         ar_eg: خلّي بالك
         ar: حذر، يقظ
         en: alert
-      - text: peringatan
-        ar_eg: تحذير
-        ar: إنذار
-        en: warning
+      - text: menghindari
+        ar_eg: يبعد عن
+        ar: يتجنّب
+        en: avoid
       - text: langkah
         ar_eg: خطوة
         ar: خطوة
@@ -57,7 +57,7 @@ exercises:
         ar_eg: يتأكد
         ar: يتأكّد
         en: make sure
-    words: [waspada, peringatan, langkah, memastikan / pastikan]
+    words: [waspada, menghindari, langkah, memastikan / pastikan]
   - id: e02
     type: match_pairs
     pairs:
@@ -80,18 +80,18 @@ exercises:
     words: [terluka, kerusakan, menghancurkan, akibat]
   - id: e03
     type: listen
-    text: Perhatian! Ada peringatan banjir untuk malam ini.
+    text: Kami menghindari jalan dekat sungai karena banjir.
     question:
-      ar_eg: التحذير من إيه؟
-      ar: من أي شيء الإنذار؟
-      en: What is the warning about?
-    options: [زلزال, فيضان, عاصفة]
+      ar_eg: بيبعدوا عن إيه؟
+      ar: ماذا يتجنّبون؟
+      en: What are they avoiding?
+    options: [السوق, الطريق اللي جنب النهر, البحر]
     answer: 1
     meaning:
-      ar_eg: انتباه! فيه تحذير من فيضان الليلة.
-      ar: انتباه! هناك إنذار فيضان لهذه الليلة.
-      en: Attention! There's a flood warning for tonight.
-    words: [peringatan]
+      ar_eg: بنبعد عن الطريق اللي جنب النهر عشان الفيضان.
+      ar: نتجنّب الطريق القريب من النهر بسبب الفيضان.
+      en: We're avoiding the road by the river because of the flood.
+    words: [menghindari]
   - id: e04
     type: fill_blank
     sentence: Dua orang ___ dan dibawa ke rumah sakit.
@@ -108,13 +108,13 @@ exercises:
       ar_eg: كلمة جاية من العربي «عاقبة»، معناها نتيجة؟
       ar: أي كلمة مأخوذة من العربية «عاقبة» وتعني نتيجة؟
       en: Which word comes from Arabic ʿāqiba and means consequence?
-    options: [kerusakan, akibat, peringatan]
+    options: [kerusakan, akibat, menghindari]
     answer: 1
     explain:
       ar_eg: akibat ← عاقبة.
       ar: akibat ← عاقبة.
       en: akibat ← Arabic ʿāqiba.
-    words: [akibat, kerusakan, peringatan]
+    words: [akibat, kerusakan, menghindari]
   - id: e06
     type: fill_blank
     sentence: Air banjir ___ rumah-rumah di pinggir sungai.
@@ -153,14 +153,14 @@ exercises:
     words: [memastikan / pastikan, waspada]
   - id: e10
     type: multiple_choice
-    question: Petugas ___ jembatan itu masih kuat.
+    question: Badai menghancurkan banyak rumah. Petugas ___ jembatan itu masih kuat.
     options: [memastikan, terluka, kerusakan]
     answer: 0
     explain:
       ar_eg: memastikan = يتأكد.
       ar: memastikan = يتأكّد.
       en: memastikan = make sure.
-    words: [memastikan / pastikan, terluka, kerusakan, menghancurkan, langkah]
+    words: [memastikan / pastikan, terluka, kerusakan, menghancurkan]
 dialogue:
   lines:
     - speaker: Petugas
@@ -194,11 +194,11 @@ new_words:
     ar_eg: حذر، خلّي بالك
     ar: يقظ، حذر
     en: alert, on guard
-  - word: peringatan
-    pos: noun
-    ar_eg: تحذير، إنذار
-    ar: تحذير، إنذار
-    en: warning
+  - word: menghindari
+    pos: verb
+    ar_eg: يبعد عن، يتجنّب
+    ar: يتجنّب
+    en: avoid
   - word: langkah
     pos: noun
     ar_eg: خطوة

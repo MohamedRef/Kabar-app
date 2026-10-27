@@ -10,15 +10,15 @@ slides:
   - title: Cuaca buruk
     body:
       ar_eg: |
-        badai = عاصفة. gelap = ضلمة، مضلّم. darurat = طوارئ (من العربي «ضرورة»): keadaan darurat = حالة طوارئ.
+        badai = عاصفة. kegelapan = الضلمة (من gelap). bangunan = مبنى (من bangun = يبني).
         ancaman = تهديد، خطر جاي. hancur = اتكسر حتت، اتدمّر. ledakan = انفجار.
         terjebak = اتحبس، اتزنق (مش قادر يطلع). bertahan = يصمد، يستحمل.
       ar: |
-        badai = عاصفة. gelap = مظلم. darurat = طوارئ (من العربية «ضرورة»): keadaan darurat = حالة طوارئ.
+        badai = عاصفة. kegelapan = الظلام (من gelap). bangunan = مبنى (من bangun = يبني).
         ancaman = تهديد. hancur = تحطّم، دُمّر. ledakan = انفجار.
         terjebak = عالق، محاصَر. bertahan = يصمد.
       en: |
-        badai = storm. gelap = dark. darurat = emergency (from Arabic ḍarūra): keadaan darurat = state of emergency.
+        badai = storm. kegelapan = darkness (from gelap). bangunan = building (from bangun = build).
         ancaman = threat. hancur = destroyed, smashed. ledakan = explosion.
         terjebak = trapped, stuck. bertahan = hold out, survive.
     examples:
@@ -42,19 +42,19 @@ exercises:
         ar_eg: عاصفة
         ar: عاصفة
         en: storm
-      - text: gelap
-        ar_eg: ضلمة
-        ar: مظلم
-        en: dark
-      - text: darurat
-        ar_eg: طوارئ
-        ar: طوارئ
-        en: emergency
+      - text: kegelapan
+        ar_eg: الضلمة
+        ar: الظلام
+        en: darkness
+      - text: bangunan
+        ar_eg: مبنى
+        ar: مبنى
+        en: building
       - text: ancaman
         ar_eg: تهديد
         ar: تهديد
         en: threat
-    words: [badai, gelap, darurat, ancaman]
+    words: [badai, kegelapan, bangunan, ancaman]
   - id: e02
     type: match_pairs
     pairs:
@@ -96,22 +96,22 @@ exercises:
       ar_eg: البيت ده ___ بسبب الزلزال.
       ar: ___ ذلك البيت بسبب الزلزال.
       en: That house was ___ by the earthquake.
-    options: [hancur, gelap, ancaman]
+    options: [hancur, kegelapan, ancaman]
     answers: [hancur]
-    words: [hancur, gelap, ancaman]
+    words: [hancur, kegelapan, ancaman]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: بنتصل بالرقم ده في حالة إيه؟ «Telepon 112 jika ada keadaan ___»
-      ar: متى نتصل بهذا الرقم؟ «Telepon 112 jika ada keadaan ___»
-      en: When do we call this number? 'Telepon 112 jika ada keadaan ___'
-    options: [badai, darurat, terjebak]
+      ar_eg: حاجة كبيرة زي مدرسة أو مستشفى أو جامع، اسمها إيه؟
+      ar: ما اسم الشيء الكبير مثل المدرسة أو المستشفى أو المسجد؟
+      en: What do you call something like a school, a hospital or a mosque?
+    options: [badai, bangunan, terjebak]
     answer: 1
     explain:
-      ar_eg: keadaan darurat = حالة طوارئ (من «ضرورة»).
-      ar: keadaan darurat = حالة طوارئ (من «ضرورة»).
-      en: keadaan darurat = emergency (from Arabic ḍarūra).
-    words: [darurat, badai, terjebak]
+      ar_eg: bangunan = مبنى (من bangun = يبني).
+      ar: bangunan = مبنى (من bangun = يبني).
+      en: bangunan = building (from bangun = build).
+    words: [bangunan, badai, terjebak]
   - id: e06
     type: fill_blank
     sentence: Tiga orang ___ di dalam rumah yang roboh.
@@ -129,7 +129,7 @@ exercises:
       ar: هذه العاصفة تهديد كبير.
       en: This storm is a big threat.
     answer: Badai ini adalah ancaman besar.
-    distractors: [gelap, hancur]
+    distractors: [kegelapan, hancur]
     words: [badai, ancaman]
   - id: e08
     type: translate
@@ -142,22 +142,22 @@ exercises:
     words: [bertahan]
   - id: e09
     type: speaking
-    text: Di luar gelap sekali. Jangan keluar!
+    text: Kami duduk dalam kegelapan sampai pagi.
     meaning:
-      ar_eg: برّه ضلمة أوي. ما تخرجش!
-      ar: الخارج مظلم جدًا. لا تخرج!
-      en: It's very dark outside. Don't go out!
-    words: [gelap]
+      ar_eg: قعدنا في الضلمة لحد الصبح.
+      ar: جلسنا في الظلام حتى الصباح.
+      en: We sat in the dark until morning.
+    words: [kegelapan]
   - id: e10
     type: multiple_choice
-    question: 'Petugas: "Ini keadaan ___. Semua orang ke lapangan!"'
-    options: [ledakan, bertahan, darurat]
+    question: Banyak ___ hancur karena badai itu.
+    options: [ledakan, bertahan, bangunan]
     answer: 2
     explain:
-      ar_eg: keadaan darurat = حالة طوارئ.
-      ar: keadaan darurat = حالة طوارئ.
-      en: keadaan darurat = emergency.
-    words: [darurat, ledakan, bertahan, hancur, badai, terjebak]
+      ar_eg: bangunan = مبنى.
+      ar: bangunan = مبنى.
+      en: bangunan = building.
+    words: [bangunan, ledakan, bertahan, hancur, badai]
 dialogue:
   lines:
     - speaker: Bu Yanti
@@ -191,17 +191,16 @@ new_words:
     ar_eg: عاصفة
     ar: عاصفة
     en: storm
-  - word: gelap
-    pos: adjective
-    ar_eg: ضلمة، مضلّم
-    ar: مظلم
-    en: dark
-  - word: darurat
+  - word: kegelapan
     pos: noun
-    arabic: ضرورة
-    ar_eg: طوارئ
-    ar: طوارئ
-    en: emergency
+    ar_eg: الضلمة
+    ar: الظلام
+    en: darkness
+  - word: bangunan
+    pos: noun
+    ar_eg: مبنى
+    ar: مبنى
+    en: building
   - word: ancaman
     pos: noun
     ar_eg: تهديد، خطر

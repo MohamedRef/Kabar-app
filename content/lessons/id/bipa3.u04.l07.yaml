@@ -11,16 +11,16 @@ slides:
     body:
       ar_eg: |
         pertanian = زراعة (من tani). tumbuh = يطلع، يكبر (النبات). menghasilkan = ينتج، يطلّع.
-        pabrik = مصنع. industri = صناعة. produksi = إنتاج.
-        keuntungan = مكسب (من untung). persen = في المية: 20 persen = ٢٠٪.
+        teknologi = تكنولوجيا. industri = صناعة. produksi = إنتاج.
+        keuntungan = مكسب (من untung). penjualan = مبيعات، البيع (من jual).
       ar: |
         pertanian = زراعة (من tani). tumbuh = ينمو. menghasilkan = يُنتج، يُثمر.
-        pabrik = مصنع. industri = صناعة. produksi = إنتاج.
-        keuntungan = ربح (من untung). persen = بالمئة: 20 persen = ٢٠٪.
+        teknologi = تقنية، تكنولوجيا. industri = صناعة. produksi = إنتاج.
+        keuntungan = ربح (من untung). penjualan = مبيعات (من jual).
       en: |
         pertanian = farming, agriculture (from tani). tumbuh = grow. menghasilkan = produce, yield.
-        pabrik = factory. industri = industry. produksi = production.
-        keuntungan = profit (from untung). persen = per cent: 20 persen = 20%.
+        teknologi = technology. industri = industry. produksi = production.
+        keuntungan = profit (from untung). penjualan = sales (from jual).
     examples:
       - text: Stroberi tumbuh dengan baik di Sembalun.
         ar_eg: الفراولة بتطلع كويس في سمبالون.
@@ -50,11 +50,11 @@ exercises:
         ar_eg: ينتج
         ar: يُنتج
         en: produce
-      - text: pabrik
-        ar_eg: مصنع
-        ar: مصنع
-        en: factory
-    words: [pertanian, tumbuh, menghasilkan, pabrik]
+      - text: teknologi
+        ar_eg: تكنولوجيا
+        ar: تقنية
+        en: technology
+    words: [pertanian, tumbuh, menghasilkan, teknologi]
   - id: e02
     type: match_pairs
     pairs:
@@ -70,11 +70,11 @@ exercises:
         ar_eg: مكسب
         ar: ربح
         en: profit
-      - text: persen
-        ar_eg: في المية
-        ar: بالمئة
-        en: per cent
-    words: [industri, produksi, keuntungan, persen]
+      - text: penjualan
+        ar_eg: مبيعات
+        ar: مبيعات
+        en: sales
+    words: [industri, produksi, keuntungan, penjualan]
   - id: e03
     type: listen
     text: Tahun ini produksi stroberi naik dua puluh persen.
@@ -91,14 +91,14 @@ exercises:
     words: [produksi, persen]
   - id: e04
     type: fill_blank
-    sentence: Banyak orang di desa ini bekerja di ___ teh.
+    sentence: Petani di sini memakai ___ modern untuk menanam sayur.
     meaning:
-      ar_eg: ناس كتير في القرية دي بيشتغلوا في ___ الشاي.
-      ar: يعمل كثير من أهل هذه القرية في ___ الشاي.
-      en: Many people in this village work at the tea ___.
-    options: [pabrik, persen, tumbuh]
-    answers: [pabrik]
-    words: [pabrik, persen, tumbuh]
+      ar_eg: الفلاحين هنا بيستخدموا ___ حديثة عشان يزرعوا الخضار.
+      ar: يستخدم المزارعون هنا ___ حديثة لزراعة الخضار.
+      en: Farmers here use modern ___ to grow vegetables.
+    options: [teknologi, penjualan, tumbuh]
+    answers: [teknologi]
+    words: [teknologi, penjualan, tumbuh]
   - id: e05
     type: multiple_choice
     question_meaning:
@@ -150,14 +150,14 @@ exercises:
     words: [menghasilkan]
   - id: e10
     type: multiple_choice
-    question: Lima puluh ___ petani di sini menanam stroberi.
-    options: [persen, pabrik, pertanian]
+    question: ___ stroberi naik dua puluh persen tahun ini.
+    options: [Penjualan, Teknologi, Pertanian]
     answer: 0
     explain:
-      ar_eg: 'persen = في المية: ٥٠٪.'
-      ar: 'persen = بالمئة: ٥٠٪.'
-      en: 'persen = per cent: 50%.'
-    words: [persen, pabrik, pertanian, produksi, industri]
+      ar_eg: penjualan = مبيعات (من jual).
+      ar: penjualan = مبيعات (من jual).
+      en: penjualan = sales (from jual).
+    words: [penjualan, teknologi, pertanian]
 dialogue:
   lines:
     - speaker: Mas Rizal
@@ -201,11 +201,11 @@ new_words:
     ar_eg: ينتج، يطلّع
     ar: يُنتج، يُدرّ
     en: produce, yield
-  - word: pabrik
+  - word: teknologi
     pos: noun
-    ar_eg: مصنع
-    ar: مصنع
-    en: factory
+    ar_eg: تكنولوجيا
+    ar: تقنية، تكنولوجيا
+    en: technology
   - word: industri
     pos: noun
     ar_eg: صناعة
@@ -221,11 +221,11 @@ new_words:
     ar_eg: مكسب
     ar: ربح
     en: profit
-  - word: persen
+  - word: penjualan
     pos: noun
-    ar_eg: في المية (٪)
-    ar: بالمئة (٪)
-    en: per cent
+    ar_eg: مبيعات، بيع
+    ar: مبيعات
+    en: sales
 review:
   status: draft
   verified: false

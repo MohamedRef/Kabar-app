@@ -3,58 +3,58 @@ id: bipa3.u10.l04
 language: id
 title: Mendarat di Lombok
 can_do:
-  ar_eg: 'تخطط لرحلة: تحجز، تأجر عربية، تختار الطريق، وتتكلم عن الوصول والسياحة.'
-  ar: 'أن تخطط لرحلة: تحجز وتستأجر سيارة وتختار الطريق وتتحدث عن الوصول والسياحة.'
-  en: 'Plan a trip: book, rent a car, choose a route, and talk about arrivals and tourism.'
+  ar_eg: 'تخطط لرحلة: تحجز، تأجر عربية، تختار الطريق والمكان، وتستمتع بالأماكن السياحية.'
+  ar: 'أن تخطط لرحلة: تحجز وتستأجر سيارة وتختار الطريق والموقع، وتستمتع بالأماكن السياحية.'
+  en: 'Plan a trip: book, rent a car, pick a route and a location, and enjoy the sights.'
 slides:
   - title: Di bandara
     body:
       ar_eg: |
-        pilot = طيار. mendarat = تنزل (الطيارة على الأرض). kedatangan = وصول (من datang).
+        internasional = دولي (bandara internasional = مطار دولي). lokasi = مكان، موقع.
         rute = طريق، خط سير. memesan = يحجز، يطلب. menyewa = يأجّر (ياخد بالإيجار).
-        wisata = سياحة (tempat wisata = مكان سياحي). mewah = فخم، لوكس.
+        wisata = سياحة (tempat wisata = مكان سياحي). menikmati = يستمتع بـ. khusus = مخصوص، خاص.
       ar: |
-        pilot = طيّار. mendarat = تهبط (الطائرة). kedatangan = وصول (من datang).
+        internasional = دولي (bandara internasional = مطار دولي). lokasi = موقع، مكان.
         rute = طريق، مسار. memesan = يحجز، يطلب. menyewa = يستأجر.
-        wisata = سياحة (tempat wisata = مكان سياحي). mewah = فاخر.
+        wisata = سياحة (tempat wisata = مكان سياحي). menikmati = يستمتع بـ. khusus = خاص، مخصّص.
       en: |
-        pilot = pilot. mendarat = land (of a plane). kedatangan = arrival (from datang).
+        internasional = international (bandara internasional = international airport). lokasi = location.
         rute = route. memesan = book, order. menyewa = rent, hire.
-        wisata = tourism, sightseeing (tempat wisata = tourist spot). mewah = luxurious.
+        wisata = tourism, sightseeing (tempat wisata = tourist spot). menikmati = enjoy. khusus = special, specific.
     examples:
-      - text: Pesawat kami mendarat di Lombok jam sepuluh.
-        ar_eg: طيارتنا نزلت في لومبوك الساعة عشرة.
-        ar: هبطت طائرتنا في لومبوك في العاشرة.
-        en: Our plane landed in Lombok at ten.
+      - text: Pesawat kami mendarat di Bandara Internasional Lombok.
+        ar_eg: طيارتنا نزلت في مطار لومبوك الدولي.
+        ar: هبطت طائرتنا في مطار لومبوك الدولي.
+        en: Our plane landed at Lombok International Airport.
       - text: Saya sudah memesan kamar dan menyewa motor.
         ar_eg: أنا حجزت أوضة وأجّرت موتوسيكل.
         ar: حجزت غرفة واستأجرت دراجة نارية.
         en: I've booked a room and rented a motorbike.
-      - text: Hotel itu mewah, tapi mahal sekali.
-        ar_eg: الفندق ده فخم، بس غالي أوي.
-        ar: ذلك الفندق فاخر لكنه غالٍ جدًا.
-        en: That hotel is luxurious, but very expensive.
+      - text: Kami menikmati matahari terbenam di pantai.
+        ar_eg: استمتعنا بالغروب على الشط.
+        ar: استمتعنا بغروب الشمس على الشاطئ.
+        en: We enjoyed the sunset on the beach.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: pilot
-        ar_eg: طيار
-        ar: طيّار
-        en: pilot
-      - text: mendarat
-        ar_eg: تنزل (طيارة)
-        ar: تهبط
-        en: land
-      - text: kedatangan
-        ar_eg: وصول
-        ar: وصول
-        en: arrival
+      - text: internasional
+        ar_eg: دولي
+        ar: دولي
+        en: international
+      - text: lokasi
+        ar_eg: مكان، موقع
+        ar: موقع
+        en: location
       - text: rute
         ar_eg: طريق، خط سير
         ar: مسار
         en: route
-    words: [pilot, mendarat, kedatangan, rute]
+      - text: khusus
+        ar_eg: مخصوص
+        ar: خاص
+        en: special
+    words: [internasional, lokasi, rute, khusus]
   - id: e02
     type: match_pairs
     pairs:
@@ -70,25 +70,25 @@ exercises:
         ar_eg: سياحة
         ar: سياحة
         en: tourism
-      - text: mewah
-        ar_eg: فخم
-        ar: فاخر
-        en: luxurious
-    words: [memesan, menyewa, wisata, mewah]
+      - text: menikmati
+        ar_eg: يستمتع بـ
+        ar: يستمتع بـ
+        en: enjoy
+    words: [memesan, menyewa, wisata, menikmati]
   - id: e03
     type: listen
-    text: Pesawat dari Jakarta akan mendarat dalam sepuluh menit.
+    text: Lokasi hotelnya bagus, dekat pantai dan pasar.
     question:
-      ar_eg: الطيارة هتعمل إيه؟
-      ar: ماذا ستفعل الطائرة؟
-      en: What will the plane do?
-    options: [هتقوم, هتنزل, اتأخرت]
+      ar_eg: الفندق فين؟
+      ar: أين الفندق؟
+      en: Where is the hotel?
+    options: [بعيد عن كل حاجة, قريب من البحر والسوق, جنب المطار]
     answer: 1
     meaning:
-      ar_eg: الطيارة اللي جاية من جاكرتا هتنزل كمان عشر دقايق.
-      ar: ستهبط الطائرة القادمة من جاكرتا بعد عشر دقائق.
-      en: The plane from Jakarta will land in ten minutes.
-    words: [mendarat]
+      ar_eg: مكان الفندق حلو، قريب من البحر والسوق.
+      ar: موقع الفندق جيد، قريب من الشاطئ والسوق.
+      en: The hotel's location is good, near the beach and the market.
+    words: [lokasi]
   - id: e04
     type: fill_blank
     sentence: Kami mau ___ mobil untuk tiga hari.
@@ -96,22 +96,22 @@ exercises:
       ar_eg: عايزين ___ عربية تلات أيام.
       ar: نريد أن ___ سيارة لثلاثة أيام.
       en: We want to ___ a car for three days.
-    options: [menyewa, pilot, kedatangan]
+    options: [menyewa, internasional, khusus]
     answers: [menyewa]
-    words: [menyewa, pilot, kedatangan]
+    words: [menyewa, internasional, khusus]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: مين اللي بيسوق الطيارة؟
-      ar: من يقود الطائرة؟
-      en: Who flies the plane?
-    options: [pilot, rute, wisata]
+      ar_eg: الطيارات اللي جاية من بلاد تانية بتنزل في مطار …؟
+      ar: الطائرات القادمة من دول أخرى تهبط في مطار …؟
+      en: Planes from other countries land at an … airport?
+    options: [internasional, rute, wisata]
     answer: 0
     explain:
-      ar_eg: pilot = طيار.
-      ar: pilot = طيّار.
-      en: pilot = pilot.
-    words: [pilot, rute, wisata]
+      ar_eg: bandara internasional = مطار دولي.
+      ar: bandara internasional = مطار دولي.
+      en: bandara internasional = international airport.
+    words: [internasional, rute, wisata]
   - id: e06
     type: fill_blank
     sentence: 'Lombok punya banyak tempat ___: pantai, gunung, dan air terjun.'
@@ -119,9 +119,9 @@ exercises:
       ar_eg: 'لومبوك فيها أماكن ___ كتير: شطوط وجبال وشلالات.'
       ar: 'في لومبوك أماكن ___ كثيرة: شواطئ وجبال وشلالات.'
       en: 'Lombok has lots of ___ spots: beaches, mountains and waterfalls.'
-    options: [mewah, wisata, memesan]
+    options: [lokasi, wisata, memesan]
     answers: [wisata]
-    words: [wisata, mewah, memesan]
+    words: [wisata, lokasi, memesan]
   - id: e07
     type: build_sentence
     source:
@@ -142,22 +142,22 @@ exercises:
     words: [rute]
   - id: e09
     type: speaking
-    text: Selamat datang! Ruang kedatangan ada di sebelah kiri.
+    text: 'Saya menikmati makanan khusus Lombok: ayam taliwang!'
     meaning:
-      ar_eg: أهلًا بيك! صالة الوصول على الشمال.
-      ar: أهلًا بك! صالة الوصول على اليسار.
-      en: Welcome! The arrivals hall is on the left.
-    words: [kedatangan]
+      ar_eg: 'استمتعت بأكلة لومبوك المخصوصة: فراخ تاليوانج!'
+      ar: 'استمتعت بطبق لومبوك الخاص: دجاج تاليوانغ!'
+      en: 'I enjoyed Lombok''s special dish: ayam taliwang!'
+    words: [menikmati, khusus]
   - id: e10
     type: multiple_choice
-    question: Vila itu ada kolam renang pribadi. Sangat ___!
-    options: [kedatangan, pilot, mewah]
+    question: Kami menyewa kamar di hotel ini. Hotel ini punya kolam renang ___ untuk anak-anak.
+    options: [lokasi, menikmati, khusus]
     answer: 2
     explain:
-      ar_eg: mewah = فخم، لوكس.
-      ar: mewah = فاخر.
-      en: mewah = luxurious.
-    words: [mewah, kedatangan, pilot, mendarat, menyewa, memesan]
+      ar_eg: khusus = مخصوص، خاص.
+      ar: khusus = خاص، مخصّص.
+      en: khusus = special, just for.
+    words: [khusus, lokasi, menikmati, menyewa]
 dialogue:
   lines:
     - speaker: Rina
@@ -166,46 +166,46 @@ dialogue:
       ar: يا محمد، هل وصلت إلى لومبوك؟
       en: Mohamed, are you in Lombok yet?
     - speaker: Mohamed
-      text: Ya! Pesawatnya baru mendarat. Pilotnya hebat, tidak ada guncangan.
-      ar_eg: أيوه! الطيارة لسه نازلة. الطيار شاطر، مافيش ولا هزّة.
-      ar: نعم! هبطت الطائرة للتو. الطيّار ماهر، ولا أيّ اهتزاز.
-      en: Yes! The plane just landed. Great pilot, not a single bump.
+      text: Ya! Pesawatnya baru mendarat di bandara internasional.
+      ar_eg: أيوه! الطيارة لسه نازلة في المطار الدولي.
+      ar: نعم! هبطت الطائرة للتو في المطار الدولي.
+      en: Yes! The plane's just landed at the international airport.
     - speaker: Rina
       text: Bagus. Kamu mau menyewa mobil di bandara?
       ar_eg: حلو. هتأجّر عربية من المطار؟
       ar: جميل. هل ستستأجر سيارة في المطار؟
       en: Great. Are you renting a car at the airport?
     - speaker: Mohamed
-      text: Tidak, saya sudah memesan taksi. Hotelnya tidak mewah, tapi dekat pantai.
-      ar_eg: لأ، أنا حاجز تاكسي. الفندق مش فخم، بس قريب من البحر.
-      ar: لا، حجزت سيارة أجرة. الفندق ليس فاخرًا لكنه قريب من الشاطئ.
-      en: No, I've booked a taxi. The hotel isn't fancy, but it's near the beach.
+      text: Tidak, saya sudah memesan taksi. Lokasi hotelnya dekat pantai.
+      ar_eg: لأ، أنا حاجز تاكسي. الفندق مكانه قريب من البحر.
+      ar: لا، حجزت سيارة أجرة. موقع الفندق قريب من الشاطئ.
+      en: No, I've booked a taxi. The hotel's right by the beach.
     - speaker: Rina
-      text: Besok kita jalan-jalan. Saya punya rute wisata yang bagus!
-      ar_eg: بكرة نتفسّح. عندي خط سير سياحي حلو!
-      ar: غدًا نتجوّل. لديّ مسار سياحي رائع!
-      en: Tomorrow we'll go sightseeing. I've got a great tourist route!
+      text: Besok kita jalan-jalan. Saya punya rute wisata khusus untuk kamu!
+      ar_eg: بكرة نتفسّح. عندي خط سير سياحي مخصوص ليك!
+      ar: غدًا نتجوّل. لديّ مسار سياحي خاص لك!
+      en: Tomorrow we'll go sightseeing. I've got a special tourist route for you!
 new_words:
-  - word: pilot
+  - word: internasional
+    pos: adjective
+    ar_eg: دولي
+    ar: دولي
+    en: international
+  - word: lokasi
     pos: noun
-    ar_eg: طيار
-    ar: طيّار
-    en: pilot
-  - word: mendarat
-    pos: verb
-    ar_eg: تنزل (الطيارة)
-    ar: تهبط (الطائرة)
-    en: land (of a plane)
-  - word: kedatangan
-    pos: noun
-    ar_eg: وصول
-    ar: وصول
-    en: arrival
+    ar_eg: مكان، موقع
+    ar: موقع
+    en: location
   - word: rute
     pos: noun
     ar_eg: طريق، خط سير
     ar: طريق، مسار
     en: route
+  - word: khusus
+    pos: adjective
+    ar_eg: مخصوص، خاص
+    ar: خاص، مخصّص
+    en: special, specific
   - word: memesan
     pos: verb
     ar_eg: يحجز، يطلب
@@ -221,11 +221,11 @@ new_words:
     ar_eg: سياحة
     ar: سياحة
     en: tourism, sightseeing
-  - word: mewah
-    pos: adjective
-    ar_eg: فخم، لوكس
-    ar: فاخر
-    en: luxurious
+  - word: menikmati
+    pos: verb
+    ar_eg: يستمتع بـ
+    ar: يستمتع بـ
+    en: enjoy
 review:
   status: draft
   verified: false
