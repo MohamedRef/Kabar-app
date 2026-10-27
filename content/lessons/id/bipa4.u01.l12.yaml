@@ -1,0 +1,200 @@
+schema: kabar.lesson/v1
+id: bipa4.u01.l12
+language: id
+title: Ulangan Unit 1
+can_do:
+  ar_eg: "تتكلم عن مهنة: صفاتها، مشاكلها، وليه تختارها."
+  ar: "أن تعرض مهنة: صفاتها ومتاعبها وسبب اختيارها."
+  en: Present a career.
+slides:
+  - title: ter- atau ke-…-an?
+    body:
+      ar_eg: |
+        فكّرة سريعة قبل المراجعة:
+        ter- = حصل من غير قصد (tertidur، terbawa) أو حالة (terletak، terbuat dari، tertutup).
+        ke-…-an بعد الشخص = حاجة وحشة حصلتله (kehujanan، kesiangan، kecopetan).
+        ke-…-an كاسم = معنى مجرد (kesabaran، keahlian، keselamatan).
+      ar: |
+        تذكير سريع قبل المراجعة:
+        ter- = حدث دون قصد (tertidur، terbawa) أو حالة (terletak، terbuat dari، tertutup).
+        ke-…-an بعد الشخص = أصابه أمر مكروه (kehujanan، kesiangan، kecopetan).
+        ke-…-an اسمًا = معنى مجرد (kesabaran، keahlian، keselamatan).
+      en: |
+        Quick reminder before the review:
+        ter- = happened by accident (tertidur, terbawa) or a state (terletak, terbuat dari, tertutup).
+        ke-…-an after a person = something unpleasant happened (kehujanan, kesiangan, kecopetan).
+        ke-…-an as a noun = an abstract idea (kesabaran, keahlian, keselamatan).
+    grammar: id.prefix.ter
+    examples:
+      - text: Saya tertidur, lalu ketinggalan bus.
+        ar_eg: النوم غلبني، والأتوبيس فاتني.
+        ar: غلبني النوم ففاتتني الحافلة.
+        en: I dozed off and then missed the bus.
+      - text: Profesi perawat membutuhkan kesabaran.
+        ar_eg: مهنة التمريض محتاجة صبر.
+        ar: تحتاج مهنة التمريض إلى الصبر.
+        en: Nursing requires patience.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tertidur
+        ar_eg: غلبه النوم
+        ar: غلبه النوم
+        en: dozed off
+      - text: terletak
+        ar_eg: موجود في
+        ar: يقع في
+        en: is located
+      - text: kehujanan
+        ar_eg: المطر نزل عليه
+        ar: أصابه المطر
+        en: caught in the rain
+      - text: keahlian
+        ar_eg: الخبرة / المهارة
+        ar: الخبرة والمهارة
+        en: expertise
+      - text: lembur
+        ar_eg: يشتغل وقت زيادة
+        ar: يعمل ساعات إضافية
+        en: work overtime
+      - text: atasan
+        ar_eg: المدير في الشغل
+        ar: الرئيس في العمل
+        en: boss
+    words: [tertidur, terletak, kehujanan, keahlian, lembur, atasan]
+  - id: e02
+    type: multiple_choice
+    question: Maaf, tasmu ___ ke rumah saya.
+    question_meaning:
+      ar_eg: "شنطة زميلك اتشالت معاك البيت بالغلط. تقوله: «آسف، شنطتك … لبيتي.»"
+      ar: "حملتَ حقيبة زميلك إلى بيتك خطأً. تقول: «آسف، حقيبتك … إلى بيتي.»"
+      en: Your colleague's bag went home with you by mistake. You say, "Sorry, your bag … to my house."
+    options: ["tertinggal", "terbawa", "kesiangan"]
+    answer: 1
+    explain:
+      ar_eg: terbawa ke = اتشالت لمكان بالغلط. tertinggal di = فضلت في مكان.
+      ar: terbawa ke = حُملت إلى مكان خطأً، وtertinggal di = بقيت في مكان.
+      en: terbawa ke = carried somewhere by mistake; tertinggal di = left somewhere.
+    words: [terbawa]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة صح؟
+      ar: أيّ جملة صحيحة؟
+      en: Which sentence is correct?
+    options: ["Kapal ini terbuat oleh kayu.", "Setiap malam saya tertidur jam sepuluh.", "Benteng itu terletak di pusat kota."]
+    answer: 2
+    explain:
+      ar_eg: «معمول من» = terbuat dari مش oleh. والنوم المتعمد كل يوم = tidur مش tertidur.
+      ar: «مصنوع من» = terbuat dari لا oleh، والنوم المعتاد المقصود tidur لا tertidur.
+      en: '"Made of" is terbuat dari, not oleh; a planned nightly sleep is tidur, not tertidur.'
+    words: [terbuat dari, tertidur, terletak]
+  - id: e04
+    type: listen
+    text: Saya bangun kesiangan, jadi ketinggalan pesawat.
+    options: ["Saya bangun kesiangan, jadi kehujanan di pesawat.", "Saya bangun kesiangan, jadi ketinggalan pesawat.", "Saya tertidur di kantor, jadi ketinggalan pesawat."]
+    answer: 1
+    meaning:
+      ar_eg: صحيت متأخر، فالطيارة فاتتني.
+      ar: تأخرت في النوم ففاتتني الطائرة.
+      en: I overslept, so I missed the plane.
+    words: [kesiangan, ketinggalan]
+  - id: e05
+    type: fill_blank
+    sentence: Kemarin teman saya ___ di Pasar Sentral.
+    meaning:
+      ar_eg: امبارح صاحبي اتنشل في السوق المركزي.
+      ar: نُشل صديقي أمس في السوق المركزي.
+      en: Yesterday my friend got pickpocketed at the Central Market.
+    options: [kecopetan, terletak, keahlian]
+    answers: [kecopetan]
+    words: [kecopetan]
+  - id: e06
+    type: fill_blank
+    sentence: Profesi guru membutuhkan ___.
+    meaning:
+      ar_eg: (اكتب الاسم من sabar) مهنة التدريس محتاجة صبر.
+      ar: (اكتب الاسم المعنوي من sabar) تحتاج مهنة التدريس إلى الصبر.
+      en: (Write the noun from sabar.) Teaching requires patience.
+    answers: [kesabaran]
+    words: [kesabaran, membutuhkan]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: الممرضة نامت من غير قصد عشان اشتغلت وقت زيادة.
+      ar: غلب النومُ الممرضةَ لأنها عملت ساعات إضافية.
+      en: The nurse dozed off because she worked overtime.
+    answer: Perawat itu tertidur karena lembur.
+    distractors: [tertinggal, kesiangan]
+    words: [perawat, tertidur, lembur]
+  - id: e08
+    type: dictation
+    text: Keselamatan pelaut adalah tanggung jawab kita.
+    meaning:
+      ar_eg: سلامة البحّارة مسؤوليتنا.
+      ar: سلامة البحّارة مسؤوليتنا.
+      en: Sailors' safety is our responsibility.
+    words: [keselamatan, tanggung jawab, pelaut]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الشغلانة دي محتاجة خبرة وأمانة.
+      ar: يتطلب هذا العمل خبرة وأمانة.
+      en: This job requires expertise and honesty.
+    answers:
+      - Pekerjaan ini membutuhkan keahlian dan kejujuran.
+      - Pekerjaan ini membutuhkan keahlian dan kejujuran
+      - Pekerjaan ini memerlukan keahlian dan kejujuran.
+      - Profesi ini membutuhkan keahlian dan kejujuran.
+      - Profesi ini memerlukan keahlian dan kejujuran.
+      - Pekerjaan ini membutuhkan kejujuran dan keahlian.
+      - Pekerjaan ini butuh keahlian dan kejujuran.
+    words: [membutuhkan, keahlian, kejujuran]
+  - id: e10
+    type: speaking
+    text: Saya berpendapat bahwa perawat adalah profesi terpenting. Dengan demikian, kita harus menghargai mereka.
+    meaning:
+      ar_eg: أنا شايف إن التمريض أهم مهنة. وبكده، لازم نقدّرهم.
+      ar: أرى أن التمريض أهم مهنة، وبذلك يجب أن نقدّر الممرضين.
+      en: I believe nursing is the most important profession. Thus, we must value nurses.
+    words: [berpendapat, dengan demikian, perawat]
+dialogue:
+  title: Perjalanan ke Bulukumba
+  lines:
+    - speaker: Mas Rizal
+      text: Mohamed, kalau tinggal di Makassar, kamu mau bekerja sebagai apa?
+      ar_eg: يا محمد، لو عشت في ماكاسار، تحب تشتغل إيه؟
+      ar: يا محمد، لو عشتَ في ماكاسار، فبأيّ عمل تحب أن تعمل؟
+      en: Mohamed, if you lived in Makassar, what would you like to work as?
+    - speaker: Mohamed
+      text: Saya mau jadi guru bahasa Arab. Saya berpendapat bahwa profesi itu sangat penting.
+      ar_eg: نفسي أبقى مدرس عربي. أنا شايف إن المهنة دي مهمة جدًا.
+      ar: أريد أن أصبح معلمًا للغة العربية، فأنا أرى أنها مهنة مهمة جدًا.
+      en: I'd like to be an Arabic teacher. I believe it's a very important profession.
+    - speaker: Mas Rizal
+      text: Bukankah pekerjaannya sulit?
+      ar_eg: مش الشغلانة دي صعبة؟
+      ar: أليس عملًا صعبًا؟
+      en: Isn't that hard work?
+    - speaker: Mohamed
+      text: Memang. Profesi itu membutuhkan keahlian dan kesabaran. Kadang-kadang guru juga harus lembur.
+      ar_eg: فعلًا. المهنة دي محتاجة خبرة وصبر. وساعات المدرس بيشتغل وقت زيادة.
+      ar: صحيح، فهي تحتاج إلى الخبرة والصبر، وأحيانًا يعمل المعلم ساعات إضافية.
+      en: True. It requires skill and patience, and teachers sometimes work overtime too.
+    - speaker: Mas Rizal
+      text: Kalau begitu, kamu pasti cocok. Kesabaranmu luar biasa!
+      ar_eg: يبقى إنت أكيد مناسب ليها. صبرك خرافي!
+      ar: إذن فأنت مناسب لها حتمًا، فصبرك مدهش!
+      en: Then you'd be perfect for it. Your patience is amazing!
+souvenir:
+  id: bipa4.u01.souvenir
+  title: Kapal Pinisi
+  note:
+    ar_eg: البينيسي مراكب خشب عملاقة بشراعين، وبحّارة البوجيس والماكاسار لفّوا بيها جزر الأرخبيل كله. لحد النهارده النجارين في بولوكومبا بيبنوها بإيديهم من غير رسم على ورق، والصنعة دي بتتورث من الأب للابن. اليونسكو سجّلت فن بناء البينيسي تراث ثقافي غير مادي للإنسانية، وهي فعلًا خبرة (keahlian) تستاهل الاحترام.
+    ar: البينيسي سفن خشبية ضخمة ذات صاريين، جاب بها بحّارة البوغيس والماكاسار جزر الأرخبيل. وما زال نجارو بولوكومبا يبنونها بأيديهم دون مخططات ورقية، ويتوارثون الصنعة جيلًا بعد جيل. وقد أدرجت اليونسكو فن بنائها في قائمة التراث الثقافي غير المادي للإنسانية، فهي خبرة (keahlian) جديرة بالاحترام.
+    en: The pinisi is a great two-masted wooden schooner; Bugis and Makassar sailors sailed them all across the archipelago. In Bulukumba, carpenters still build them by hand without paper plans, passing the craft from father to son. UNESCO lists the art of pinisi boatbuilding as Intangible Cultural Heritage — keahlian worth honouring.
+review:
+  status: draft
+  verified: false

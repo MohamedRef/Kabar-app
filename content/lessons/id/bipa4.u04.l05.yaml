@@ -1,178 +1,231 @@
 schema: kabar.lesson/v1
 id: bipa4.u04.l05
 language: id
-title: Berita banjir
+title: Rumor di grup WhatsApp
 can_do:
-  ar_eg: تقرا خبر أونلاين قصير وتفهم إيه اللي حصل وليه وإيه النتيجة.
-  ar: أن تقرأ خبرًا إلكترونيًا قصيرًا وتفهم ما حدث ولماذا وما نتيجته.
-  en: Read a short online news item and say what happened, why, and with what result.
+  ar_eg: تفرّق بين الإشاعة والحقيقة وتسأل الخبر ده اتأكد ولا لأ.
+  ar: أن تميّز الإشاعة من الحقيقة وتسأل هل تأكّد الخبر.
+  en: Tell rumour from fact and ask whether a story has been confirmed.
 slides:
-  - title: Berita daring hari ini
+  - title: Benar atau hoaks?
     body:
       ar_eg: |
-        خبر من موقع جرنال في باريباري. الأول العنوان، وبعدين الخبر.
-        دوّر على السبب والنتيجة: Akibatnya و Oleh karena itu.
+        rumor = إشاعة، gosip = نميمة، كلام عن الناس، dugaan = شك أو اشتباه (dugaan korupsi = اشتباه في فساد).
+        tuduhan = اتهام، beredar = منتشر، رايح جاي بين الناس، tersebar = اتنشر في كل حتة.
+        dikonfirmasi = اتأكد رسميًا، faktanya = الحقيقة إن...
       ar: |
-        خبر من موقع صحيفة في باريباري: العنوان أولًا، ثم الخبر.
-        ابحث عن السبب والنتيجة: Akibatnya و Oleh karena itu.
+        rumor = إشاعة، gosip = نميمة، dugaan = شبهة، اشتباه (dugaan korupsi = شبهة فساد).
+        tuduhan = اتهام، beredar = متداول بين الناس، tersebar = انتشر في كل مكان.
+        dikonfirmasi = تأكّد رسميًا، faktanya = في الحقيقة...
       en: |
-        A news item from a Parepare news site: first the headline, then the story.
-        Look for cause and effect: Akibatnya and Oleh karena itu.
+        rumor = rumour, gosip = gossip, dugaan = suspicion, alleged (dugaan korupsi = alleged corruption).
+        tuduhan = accusation, beredar = circulating, tersebar = spread everywhere.
+        dikonfirmasi = confirmed, faktanya = in fact, the fact is...
     examples:
-      - text: Hujan Deras, Pasar Lakessi Terendam
-        ar_eg: (عنوان) مطر غزير، وسوق لاكيسي غرقان
-        ar: (عنوان) أمطار غزيرة تُغرق سوق لاكيسي
-        en: (Headline) Heavy rain floods Lakessi Market
-      - text: Hujan deras turun sejak Selasa malam. Akibatnya, Pasar Lakessi terendam air setinggi lima puluh sentimeter.
-        ar_eg: المطر الغزير نازل من يوم التلات بالليل. والنتيجة إن سوق لاكيسي غرق في مية ارتفاعها خمسين سنتي.
-        ar: هطلت أمطار غزيرة منذ مساء الثلاثاء، فغمرت سوقَ لاكيسي مياهٌ بارتفاع خمسين سنتيمترًا.
-        en: Heavy rain has fallen since Tuesday night. As a result, Lakessi Market is under fifty centimetres of water.
-      - text: Menurut seorang pedagang, saluran air di sekitar pasar tersumbat sampah. Oleh karena itu, para pedagang tidak bisa berjualan pada hari Rabu.
-        ar_eg: على حسب كلام تاجر، مجاري المية اللي حوالين السوق مسدودة بالزبالة. وعشان كده التجار ماقدروش يبيعوا يوم الأربع.
-        ar: بحسب أحد التجار، فإن قنوات الصرف حول السوق مسدودة بالقمامة، ولذلك لم يتمكّن التجار من البيع يوم الأربعاء.
-        en: According to a trader, the drains around the market are clogged with rubbish. Therefore, traders could not sell on Wednesday.
+      - text: Rumor itu beredar di grup WhatsApp keluarga.
+        ar_eg: الإشاعة دي رايحة جاية في جروب العيلة على الواتساب.
+        ar: تتداول تلك الإشاعة في مجموعة العائلة على واتساب.
+        en: That rumour is going round the family WhatsApp group.
+      - text: Berita itu belum dikonfirmasi oleh polisi.
+        ar_eg: الخبر ده لسه ما اتأكدش من البوليس.
+        ar: لم تؤكد الشرطة ذلك الخبر بعد.
+        en: The police haven't confirmed that story yet.
+      - text: Faktanya, tidak ada gempa kemarin.
+        ar_eg: الحقيقة إن مفيش زلزال حصل امبارح.
+        ar: في الحقيقة، لم يقع زلزال أمس.
+        en: In fact, there was no earthquake yesterday.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: المطر الغزير بدأ إمتى؟
-      ar: متى بدأت الأمطار الغزيرة؟
-      en: When did the heavy rain start?
-    options: [Sejak Senin sore, Sejak Selasa malam, Sejak Rabu pagi]
-    answer: 1
-    words: [deras]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: السوق غرق ليه، على حسب كلام التاجر؟
-      ar: لماذا غرق السوق بحسب التاجر؟
-      en: According to the trader, why did the market flood?
-    options:
-      - Tanggul sungai rusak.
-      - Air laut naik.
-      - Saluran air tersumbat sampah.
-    answer: 2
-    explain:
-      ar_eg: الخبر ماقالش حاجة عن tanggul ولا البحر. التاجر قال إن المجاري مسدودة.
-      ar: لم يذكر الخبر السدّ ولا البحر، بل قال التاجر إن قنوات الصرف مسدودة.
-      en: The story says nothing about a levee or the sea; the trader blames clogged drains.
-    words: [narasumber]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إيه النتيجة بالنسبة للتجار؟
-      ar: ما النتيجة بالنسبة إلى التجار؟
-      en: What was the result for the traders?
-    options:
-      - Mereka tidak bisa berjualan pada hari Rabu.
-      - Mereka mengungsi ke masjid.
-      - Mereka membersihkan pasar pada hari Selasa.
-    answer: 0
-    words: [oleh karena itu]
-  - id: e04
-    type: listen
-    text: Akibatnya, Pasar Lakessi terendam air.
-    options:
-      - Oleh karena itu, Pasar Lakessi terendam air.
-      - Akibatnya, Pasar Lakessi terendam air.
-      - Akibatnya, Pasar Lakessi tertutup air.
-    answer: 1
-    meaning:
-      ar_eg: والنتيجة إن سوق لاكيسي غرق في المية.
-      ar: ونتيجة لذلك غمرت المياه سوق لاكيسي.
-      en: As a result, Lakessi Market is under water.
-    words: [akibatnya, terendam]
-  - id: e05
     type: match_pairs
     pairs:
-      - text: judul
-        ar_eg: عنوان
-        ar: عنوان
-        en: headline
-      - text: narasumber
-        ar_eg: مصدر الخبر
-        ar: مصدر الخبر
-        en: news source
-      - text: terendam
-        ar_eg: غرقان في المية
-        ar: مغمور بالماء
-        en: submerged, flooded
-      - text: akibatnya
-        ar_eg: والنتيجة
-        ar: ونتيجةً لذلك
-        en: as a result
-      - text: oleh karena itu
-        ar_eg: وعشان كده
-        ar: ولذلك
-        en: therefore
-    words: [judul, narasumber, terendam, akibatnya, oleh karena itu]
+      - text: rumor
+        ar_eg: إشاعة
+        ar: إشاعة
+        en: rumour
+      - text: gosip
+        ar_eg: نميمة
+        ar: نميمة
+        en: gossip
+      - text: dugaan
+        ar_eg: اشتباه
+        ar: شبهة
+        en: suspicion
+      - text: tuduhan
+        ar_eg: اتهام
+        ar: اتهام
+        en: accusation
+    words: [rumor, gosip, dugaan, tuduhan]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: beredar
+        ar_eg: منتشر بين الناس
+        ar: متداول
+        en: circulating
+      - text: tersebar
+        ar_eg: اتنشر
+        ar: انتشر
+        en: spread
+      - text: dikonfirmasi
+        ar_eg: اتأكد
+        ar: تأكّد
+        en: confirmed
+      - text: faktanya
+        ar_eg: الحقيقة إن
+        ar: في الحقيقة
+        en: in fact
+    words: [beredar, tersebar, dikonfirmasi, faktanya]
+  - id: e03
+    type: listen
+    text: Kabar itu sudah dikonfirmasi oleh sekolah.
+    question:
+      ar_eg: حصل إيه للخبر؟
+      ar: ماذا حدث للخبر؟
+      en: What happened to the news?
+    options: [اتأكد, إشاعة, اتهام]
+    answer: 0
+    meaning:
+      ar_eg: الخبر ده المدرسة أكدته خلاص.
+      ar: أكّدت المدرسة ذلك الخبر.
+      en: The school has confirmed that news.
+    words: [dikonfirmasi]
+  - id: e04
+    type: fill_blank
+    sentence: Videonya ___ ke seluruh Indonesia dalam satu jam.
+    meaning:
+      ar_eg: الفيديو ___ في إندونيسيا كلها في ساعة.
+      ar: ___ الفيديو في كل إندونيسيا خلال ساعة.
+      en: The video ___ all over Indonesia in an hour.
+    options: [tersebar, faktanya, dugaan]
+    answers: [tersebar]
+    words: [tersebar, faktanya, dugaan]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: كلام الجيران عن جواز بنت الجيران. ده إيه؟
+      ar: حديث الجيران عن زواج ابنة الجيران. ما هذا؟
+      en: Neighbours chatting about the neighbour's daughter's wedding. What's that?
+    options: [tuduhan, gosip, dikonfirmasi]
+    answer: 1
+    explain:
+      ar_eg: gosip = نميمة، كلام عن حياة الناس.
+      ar: gosip = نميمة وحديث عن حياة الناس.
+      en: gosip = gossip.
+    words: [tuduhan, gosip, dikonfirmasi]
   - id: e06
     type: fill_blank
-    sentence: Hujan deras turun semalaman. ___, pasar terendam air.
+    sentence: Orang itu dibawa polisi karena ___ mencuri motor.
     meaning:
-      ar_eg: المطر الغزير نزل طول الليل. والنتيجة إن السوق غرق.
-      ar: هطلت أمطار غزيرة طوال الليل، فغمرت المياه السوق.
-      en: Heavy rain fell all night. As a result, the market was flooded.
-    options: [Berkat, Akibatnya, Gara-gara]
-    answers: [Akibatnya]
-    explain:
-      ar_eg: Akibatnya بتيجي في أول الجملة التانية وبعدها فاصلة. berkat وgara-gara لازم بعدهم سبب (اسم).
-      ar: تأتي Akibatnya في أول الجملة الثانية وتليها فاصلة، أما berkat وgara-gara فيليهما السبب.
-      en: Akibatnya opens the second sentence, followed by a comma; berkat and gara-gara must be followed by the cause.
-    words: [akibatnya]
+      ar_eg: البوليس خد الراجل ده بسبب ___ إنه سرق موتوسيكل.
+      ar: اقتادت الشرطة ذلك الرجل بسبب ___ بسرقة دراجة نارية.
+      en: Police took that man away on ___ of stealing a motorbike.
+    options: [dugaan, gosip, beredar]
+    answers: [dugaan]
+    words: [dugaan, gosip, beredar]
   - id: e07
+    type: multiple_choice
+    question: Dia menolak ___ itu. Katanya dia tidak mencuri.
+    options: [rumor, faktanya, tuduhan]
+    answer: 2
+    explain:
+      ar_eg: tuduhan = اتهام.
+      ar: tuduhan = اتهام.
+      en: tuduhan = accusation.
+    words: [rumor, faktanya, tuduhan]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: والنتيجة إن التجار ماقدروش يبيعوا يوم الأربع.
-      ar: ونتيجة لذلك لم يتمكّن التجار من البيع يوم الأربعاء.
-      en: As a result, the traders could not sell on Wednesday.
-    answer: Akibatnya, para pedagang tidak bisa berjualan pada hari Rabu.
-    distractors: [berkat, mengungsi]
-    words: [akibatnya]
-  - id: e08
+      ar_eg: الإشاعة دي متداولة على السوشيال ميديا.
+      ar: هذه الإشاعة متداولة على وسائل التواصل.
+      en: This rumour is circulating on social media.
+    answer: Rumor ini beredar di media sosial.
+    distractors: [tersebar, gosip]
+    words: [rumor, beredar, tersebar, gosip]
+  - id: e09
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: على حسب كلام تاجر، مجاري المية مسدودة بالزبالة.
-      ar: بحسب أحد التجار، قنوات الصرف مسدودة بالقمامة.
-      en: According to a trader, the drains are clogged with rubbish.
-    answers:
-      - Menurut seorang pedagang, saluran air tersumbat sampah.
-      - Menurut seorang pedagang, saluran air tersumbat oleh sampah.
-      - Menurut pedagang, saluran air tersumbat sampah.
-      - Menurut pedagang, saluran air tersumbat oleh sampah.
-      - Menurut seorang pedagang, saluran airnya tersumbat sampah.
-      - Menurut salah satu pedagang, saluran air tersumbat sampah.
-    words: [narasumber]
+    direction: from_target
+    source_text: Faktanya, berita itu belum dikonfirmasi.
+    answers_meaning:
+      ar_eg: [الحقيقة إن الخبر ده لسه ما اتأكدش, في الحقيقة الخبر ده لسه مش مؤكد]
+      ar: [في الحقيقة، لم يُؤكَّد ذلك الخبر بعد, الحقيقة أن ذلك الخبر لم يتأكّد بعد]
+      en: ['In fact, that news hasn''t been confirmed yet', 'The fact is the story isn''t confirmed yet']
+    words: [faktanya, dikonfirmasi]
+  - id: e10
+    type: speaking
+    text: Jangan cepat percaya rumor dan tuduhan di internet.
+    meaning:
+      ar_eg: ما تصدّقش بسرعة الإشاعات والاتهامات اللي على النت.
+      ar: لا تصدّق سريعًا الإشاعات والاتهامات على الإنترنت.
+      en: Don't be quick to believe rumours and accusations online.
+    words: [rumor, tuduhan, dugaan, beredar]
 dialogue:
-  title: Di ruang redaksi
   lines:
-    - speaker: Kak Nirmala
-      text: Mohamed, sudah baca berita Pasar Lakessi?
-      ar_eg: يا Mohamed، قريت خبر سوق لاكيسي؟
-      ar: يا Mohamed، هل قرأت خبر سوق لاكيسي؟
-      en: Mohamed, have you read the Lakessi Market story?
+    - speaker: Andi
+      text: Mohamed, katanya sekolah di Makassar libur seminggu. Rumornya beredar di grup.
+      ar_eg: يا محمد، بيقولوا المدارس في ماكاسار أجازة أسبوع. الإشاعة منتشرة في الجروب.
+      ar: يا محمد، يُقال إن مدارس ماكاسار في عطلة أسبوعًا. الإشاعة متداولة في المجموعة.
+      en: Mohamed, they say Makassar schools are off for a week. The rumour's going round the group.
     - speaker: Mohamed
-      text: Sudah, Kak. Hujan deras sejak Selasa malam. Akibatnya, pasar terendam.
-      ar_eg: قريته. المطر نازل من التلات بالليل، والنتيجة إن السوق غرق.
-      ar: نعم. أمطار غزيرة منذ مساء الثلاثاء، فغرق السوق.
-      en: Yes. Heavy rain since Tuesday night; as a result, the market flooded.
+      text: Sudah dikonfirmasi oleh dinas pendidikan?
+      ar_eg: اتأكد من مديرية التعليم؟
+      ar: هل أكّدت ذلك مديرية التعليم؟
+      en: Has the education office confirmed it?
+    - speaker: Andi
+      text: Belum. Tapi pesannya sudah tersebar ke mana-mana.
+      ar_eg: لسه. بس الرسالة اتنشرت في كل حتة.
+      ar: ليس بعد. لكن الرسالة انتشرت في كل مكان.
+      en: Not yet. But the message has spread everywhere.
     - speaker: Kak Nirmala
-      text: Siapa narasumbernya?
-      ar_eg: مين مصدر الخبر؟
-      ar: من مصدر الخبر؟
-      en: Who's the source?
+      text: Saya wartawan. Faktanya, sekolah masih buka. Itu hanya gosip.
+      ar_eg: أنا صحفية. الحقيقة إن المدارس شغالة عادي. ده كلام وبس.
+      ar: أنا صحفية. في الحقيقة المدارس مفتوحة، وهذه مجرد نميمة.
+      en: I'm a journalist. In fact, schools are open. It's just gossip.
     - speaker: Mohamed
-      text: Seorang pedagang. Katanya saluran air tersumbat sampah.
-      ar_eg: تاجر. بيقول إن المجاري مسدودة بالزبالة.
-      ar: أحد التجار. يقول إن قنوات الصرف مسدودة بالقمامة.
-      en: A trader. He says the drains are clogged with rubbish.
-    - speaker: Kak Nirmala
-      text: Bagus. Sekarang tulis ringkasannya dalam tiga kalimat.
-      ar_eg: تمام. دلوقتي اكتب ملخصه في تلات جمل.
-      ar: أحسنت. والآن اكتب ملخصه في ثلاث جمل.
-      en: Good. Now write a summary in three sentences.
-new_words: []
+      text: Nah, jangan cepat percaya dugaan seperti itu!
+      ar_eg: أهو، ما تصدّقش كلام زي ده بسرعة!
+      ar: أرأيت؟ لا تتسرّع في تصديق ظنون كهذه!
+      en: See, don't be quick to believe guesses like that!
+new_words:
+  - word: rumor
+    pos: noun
+    ar_eg: إشاعة
+    ar: إشاعة
+    en: rumour
+  - word: gosip
+    pos: noun
+    ar_eg: نميمة، كلام عن الناس
+    ar: نميمة
+    en: gossip
+  - word: dugaan
+    pos: noun
+    ar_eg: اشتباه، شك
+    ar: شبهة، ظنّ
+    en: suspicion, allegation
+  - word: tuduhan
+    pos: noun
+    ar_eg: اتهام
+    ar: اتهام
+    en: accusation
+  - word: beredar
+    pos: verb
+    ar_eg: منتشر، متداول
+    ar: متداول
+    en: to circulate
+  - word: tersebar
+    pos: verb
+    ar_eg: اتنشر
+    ar: انتشر
+    en: to be spread
+  - word: dikonfirmasi
+    pos: verb
+    ar_eg: اتأكد (رسميًا)
+    ar: تأكّد رسميًا
+    en: to be confirmed
+  - word: faktanya
+    pos: adv
+    ar_eg: الحقيقة إن...
+    ar: في الحقيقة
+    en: in fact, the fact is
 review:
   status: draft
   verified: false
