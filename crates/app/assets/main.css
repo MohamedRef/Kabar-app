@@ -185,6 +185,16 @@ button {
 button.primary { background: var(--sawah); color: var(--surface); border-color: transparent; }
 button[aria-pressed="true"] { background: var(--indigo); color: var(--surface); border-color: transparent; }
 button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+/* Mouse and trackpad: a quiet hover on everything clickable. The selectors
+   stay at the specificity of `button`, so any screen's own colours (right,
+   wrong, selected) win over the hover. Touch screens never see it. */
+@media (hover: hover) and (pointer: fine) {
+  button:where(:not(:disabled):not(.primary):not([aria-pressed="true"]):not([aria-current="page"]):hover) {
+    background: color-mix(in srgb, var(--surface-2) 75%, var(--surface));
+  }
+  button.primary:where(:not(:disabled):hover) { background: color-mix(in srgb, var(--sawah) 88%, var(--text)); }
+  .nav-item:where(:not([aria-current="page"]):hover) { color: var(--text); }
+}
 
 @media (prefers-reduced-motion: no-preference) {
   button, .card, .nav-item { transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), transform var(--dur-fast) var(--ease); }
@@ -344,6 +354,10 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .app[data-width="medium"] .nav-label,
 .app[data-nav="slim"] .nav-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-inline-size: 100%; }
 .app[data-width="medium"] .nav-item { min-inline-size: 0; }
+/* The rail is narrow: spend its width on the label, not on button padding,
+   so "Kak Nur" fits instead of becoming "…k Nur". */
+.app[data-width="medium"] .nav-item,
+.app[data-nav="slim"] .nav-item { padding-inline: var(--sp-1); }
 
 /* Settings › Tablet / Mac: the slim rail on wide windows too */
 .app[data-nav="slim"]:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .shell { grid-template-columns: 5.5rem 1fr; }
