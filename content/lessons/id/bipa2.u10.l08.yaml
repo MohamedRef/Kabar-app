@@ -1,0 +1,216 @@
+schema: kabar.lesson/v1
+id: bipa2.u10.l08
+language: id
+title: Ulangan Unit 10
+can_do:
+  ar_eg: تتصرف في موقف صحي، من الأعراض للصيدلية للدعاء بالشفا.
+  ar: أن تتعامل مع موقف صحي من وصف الأعراض إلى الصيدلية والدعاء بالشفاء.
+  en: Handle a health situation.
+slides:
+  - title: Saya sakit kepala, kepala saya sakit
+    body:
+      ar_eg: |
+        - Saya sakit + جزء = عندي وجع: sakit kepala، sakit perut، sakit gigi، sakit tenggorokan. (من غير punya!)
+        - أو: Kepala saya sakit = راسي بتوجعني.
+        - Saya merasa pusing / mual / lemas، وSaya demam / batuk / pilek / masuk angin.
+        - على الدوا: tiga kali sehari، sebelum / sesudah makan، kocok dahulu.
+        - semoga / mudah-mudahan في أول الجملة: Semoga cepat sembuh! والرد: Amin.
+        - insya Allah، alhamdulillah زي عندنا.
+        - ayo / yuk = يلا، mari = هيا بنا (رسمية): Ayo, istirahat dulu!
+      ar: |
+        - Saya sakit + عضو: sakit kepala، sakit perut، sakit gigi، sakit tenggorokan (بلا punya).
+        - أو: Kepala saya sakit = رأسي يؤلمني.
+        - Saya merasa pusing / mual / lemas، وSaya demam / batuk / pilek / masuk angin.
+        - وعلى الدواء: tiga kali sehari، sebelum / sesudah makan، kocok dahulu.
+        - semoga / mudah-mudahan تتصدر الجملة: Semoga cepat sembuh! والجواب: Amin.
+        - insya Allah وalhamdulillah كما في العربية.
+        - ayo / yuk = هيّا، mari = هلمّ (رسمية): Ayo, istirahat dulu!
+      en: |
+        - Saya sakit + body part: sakit kepala, sakit perut, sakit gigi, sakit tenggorokan (no punya!).
+        - Or: Kepala saya sakit = my head hurts.
+        - Saya merasa pusing / mual / lemas; Saya demam / batuk / pilek / masuk angin.
+        - On medicine: tiga kali sehari, sebelum / sesudah makan, kocok dahulu.
+        - semoga / mudah-mudahan open the sentence: Semoga cepat sembuh! Reply: Amin.
+        - insya Allah, alhamdulillah — just as in Arabic.
+        - ayo / yuk = let's / come on, mari = let us (formal): Ayo, istirahat dulu!
+    grammar: id.pattern.sakit
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kepala
+        ar_eg: راس
+        ar: رأس
+        en: head
+      - text: perut
+        ar_eg: بطن
+        ar: بطن
+        en: stomach
+      - text: gigi
+        ar_eg: سنان
+        ar: أسنان
+        en: tooth
+      - text: tenggorokan
+        ar_eg: زور
+        ar: حلق
+        en: throat
+    words: [kepala, perut, gigi, tenggorokan]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: demam
+        ar_eg: سخونية
+        ar: حمّى
+        en: fever
+      - text: batuk
+        ar_eg: كحة
+        ar: سعال
+        en: cough
+      - text: pilek
+        ar_eg: رشح
+        ar: زكام
+        en: runny nose
+      - text: mual
+        ar_eg: نفسه غامّة
+        ar: غثيان
+        en: nauseous
+    words: [demam, batuk, pilek, mual]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة صح؟
+      ar: أيّ الجملتين صحيحة؟
+      en: Which sentence is correct?
+    options: [Saya sakit perut., Saya punya sakit perut.]
+    answer: 0
+    explain:
+      ar_eg: مش محتاج punya. Saya sakit perut = عندي مغص.
+      ar: لا حاجة إلى punya.
+      en: No punya needed.
+    words: [sakit, perut]
+  - id: e04
+    type: listen
+    text: Diminum tiga kali sehari sesudah makan.
+    options: [Diminum tiga kali sehari sesudah makan., Diminum tiga kali sehari sebelum makan., Diminum dua kali sehari sesudah makan.]
+    answer: 0
+    words: [diminum, sehari, sesudah]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: رينا عيانة ومش هتيجي الدرس. تبعتلها إيه؟
+      ar: رينا مريضة ولن تحضر الدرس. ماذا ترسل إليها؟
+      en: Rina is ill and missing class. What do you text her?
+    options: ['Semoga betah, ya!', Selamat ulang tahun!, 'Semoga cepat sembuh, ya!']
+    answer: 2
+    words: [semoga, sembuh]
+  - id: e06
+    type: fill_blank
+    sentence: ___ besok kamu sudah sehat.
+    meaning:
+      ar_eg: يا رب بكرة تبقى كويس.
+      ar: عسى أن تكون معافى غدًا.
+      en: Hopefully you'll be well by tomorrow.
+    options: [Kok, Mudah-mudahan, Ayo]
+    answers: [Mudah-mudahan]
+    words: [mudah-mudahan, sehat]
+  - id: e07
+    type: fill_blank
+    sentence: Sirup ini diminum dua ___ sehari.
+    meaning:
+      ar_eg: الشراب ده يتاخد مرتين في اليوم.
+      ar: يؤخذ هذا الشراب مرتين يوميًا.
+      en: This syrup is taken twice a day.
+    options: [kali, jam, sendok]
+    answers: [kali]
+    words: [kali, sehari]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: راسي بتوجعني وحاسس إن نفسي غامّة.
+      ar: رأسي يؤلمني وأشعر بالغثيان.
+      en: My head hurts and I feel nauseous.
+    answer: Kepala saya sakit dan saya merasa mual.
+    alternatives: [Saya sakit kepala dan saya merasa mual.]
+    distractors: [punya, semoga]
+    words: [kepala, sakit, merasa, mual]
+  - id: e09
+    type: build_sentence
+    source:
+      ar_eg: يلا نشرب جامو!
+      ar: هيّا نشرب الجامو!
+      en: Come on, let's drink some jamu!
+    answer: Ayo, kita minum jamu!
+    distractors: [kami, semoga]
+    explain:
+      ar_eg: الدعوة فيها اللي قدامك، يبقى kita مش kami.
+      ar: الدعوة تشمل المخاطَب فيلزم kita لا kami.
+      en: An invitation includes the listener, so kita, not kami.
+    words: [ayo, jamu]
+  - id: e10
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: عندي وجع سنان.
+      ar: عندي ألم في الأسنان.
+      en: I have a toothache.
+    answers: [Saya sakit gigi., Saya sakit gigi, Aku sakit gigi., Aku sakit gigi, Gigi saya sakit., Gigi saya sakit, Gigiku sakit.]
+    words: [sakit, gigi]
+  - id: e11
+    type: dictation
+    text: Kepala saya pusing dan badan saya lemas.
+    meaning:
+      ar_eg: راسي دايخة وجسمي هبطان.
+      ar: أشعر بالدوار والوهن.
+      en: I feel dizzy and weak.
+    words: [pusing, lemas]
+  - id: e12
+    type: speaking
+    text: Dok, saya sakit perut sejak tadi malam.
+    meaning:
+      ar_eg: يا دكتور، عندي مغص من امبارح بالليل.
+      ar: يا دكتور، أشعر بألم في بطني منذ الليلة الماضية.
+      en: Doctor, I've had a stomach ache since last night.
+    words: [sakit perut, sejak]
+dialogue:
+  title: Telepon untuk Rina
+  lines:
+    - speaker: Rina
+      text: Halo, Mohamed! Kok kemarin tidak ikut kelas online?
+      ar_eg: ألو يا محمد! إزاي ماحضرتش الكلاس الأونلاين امبارح؟
+      ar: مرحبًا يا محمد! لماذا لم تحضر الدرس عبر الإنترنت أمس؟
+      en: Hi Mohamed! How come you missed the online class yesterday?
+    - speaker: Mohamed
+      text: Maaf, Rina. Saya sakit. Demam dan sakit tenggorokan.
+      ar_eg: آسف يا رينا. كنت عيان. سخونية والتهاب زور.
+      ar: آسف يا رينا. كنت مريضًا، عندي حمّى والتهاب في الحلق.
+      en: Sorry, Rina. I was ill. A fever and a sore throat.
+    - speaker: Rina
+      text: Aduh! Sudah ke dokter?
+      ar_eg: يا خبر! رحت للدكتور؟
+      ar: يا للأسف! هل ذهبت إلى الطبيب؟
+      en: Oh no! Have you seen a doctor?
+    - speaker: Mohamed
+      text: Sudah. Obatnya diminum tiga kali sehari. Sekarang sudah lebih baik, alhamdulillah.
+      ar_eg: أيوه. الدوا ٣ مرات في اليوم. ودلوقتي بقيت أحسن، الحمد لله.
+      ar: نعم. الدواء ثلاث مرات يوميًا، وأنا الآن أفضل، الحمد لله.
+      en: Yes. The medicine is three times a day. I'm better now, alhamdulillah.
+    - speaker: Rina
+      text: Alhamdulillah! Ayo, istirahat dulu. Semoga cepat sembuh, ya!
+      ar_eg: الحمد لله! يلا ارتاح شوية. ألف سلامة!
+      ar: الحمد لله! هيّا استرح قليلًا. شفاك الله سريعًا!
+      en: Thank goodness! Come on, get some rest. Get well soon!
+    - speaker: Mohamed
+      text: Amin. Terima kasih, Rina. Insya Allah minggu depan saya ikut kelas.
+      ar_eg: آمين. شكرًا يا رينا. إن شاء الله الأسبوع الجاي هحضر الكلاس.
+      ar: آمين. شكرًا يا رينا. إن شاء الله سأحضر الدرس الأسبوع القادم.
+      en: Amen. Thanks, Rina. God willing, I'll join class next week.
+souvenir:
+  id: bipa2.u10.souvenir
+  title: Jamu
+  note:
+    ar_eg: أول ما تعطس قدام حد إندونيسي، هيقولك «اشرب جامو!» — مشروب أعشاب زي الكركم والجنزبيل، بتبيعه ستات بيلفّوا بيه على البيوت من زمان. ولو قلت إنك «masuk angin»، ممكن حد يعرض عليك «kerokan»، وهي إنهم يحكّوا ضهرك بعملة معدنية. دلوقتي بقيت تعرف تقول إيه اللي بيوجعك، وتقرا روشتتك، وترد على «Semoga cepat sembuh» بـ «Amin».
+    ar: ما إن تعطس أمام إندونيسي حتى يقول لك «اشرب الجامو!»، وهو شراب أعشاب كالكركم والزنجبيل تبيعه نساء يطفن به على البيوت منذ زمن بعيد. وإن قلت إنك مصاب بـ«masuk angin» فقد يعرض عليك أحدهم «kerokan»، أي حكّ الظهر بقطعة نقدية. وأنت الآن تستطيع وصف ما يؤلمك، وقراءة وصفتك، والرد على «Semoga cepat sembuh» بـ«Amin».
+    en: Sneeze near an Indonesian and you'll hear "minum jamu!" — herbal drinks of turmeric, ginger and more, long sold by women who carry them door to door. Say you have "masuk angin" and someone may offer kerokan, scraping your back with a coin. Now you can say what hurts, read your prescription, and answer "Semoga cepat sembuh" with "Amin".
+review:
+  status: draft
+  verified: false

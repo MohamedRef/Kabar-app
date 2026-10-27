@@ -1,0 +1,239 @@
+schema: kabar.lesson/v1
+id: bipa2.u06.l07
+language: id
+title: Kampung yang damai
+can_do:
+  ar_eg: 'توصف قريتك أو حتتك: هادية ولا زحمة، والبوسطة والطريق الرئيسي، والمطافي والحراسة بالليل.'
+  ar: 'أن تصف قريتك أو حيّك: هادئ أم مزدحم، والبريد والطريق الرئيسي، والإطفاء والحراسة الليلية.'
+  en: 'Describe your village or neighbourhood: quiet or busy, the post office and main road, the fire brigade and the night watch.'
+slides:
+  - title: Kampung saya
+    body:
+      ar_eg: |
+        kampung = قرية أو حتة شعبية. jalan raya = الطريق الرئيسي. kantor pos = البوسطة.
+        sepi = هادي ومفيهوش ناس (عكس ramai)، damai = في سلام وأمان.
+        kebakaran = حريقة (bakar = يحرق)، وpemadam kebakaran = المطافي.
+        ronda = الحراسة بالليل: رجالة الحتة بيلفوا على البيوت.
+      ar: |
+        kampung = قرية أو حيّ شعبي. jalan raya = الطريق الرئيسي. kantor pos = مكتب البريد.
+        sepi = هادئ خالٍ من الناس (عكس ramai)، damai = في سلام.
+        kebakaran = حريق (bakar = يحرق)، وpemadam kebakaran = الإطفاء.
+        ronda = الحراسة الليلية: يطوف رجال الحيّ على البيوت ليلًا.
+      en: |
+        kampung = village, neighbourhood. jalan raya = main road. kantor pos = post office.
+        sepi = quiet, empty (opposite of ramai), damai = peaceful.
+        kebakaran = a fire (bakar = burn); pemadam kebakaran = fire brigade.
+        ronda = night watch: the men of the neighbourhood walk round the houses at night.
+    examples:
+      - text: Kampung saya sepi dan damai.
+        ar_eg: قريتي هادية ومسالمة.
+        ar: قريتي هادئة وآمنة.
+        en: My village is quiet and peaceful.
+      - text: Kantor pos ada di jalan raya.
+        ar_eg: البوسطة على الطريق الرئيسي.
+        ar: مكتب البريد على الطريق الرئيسي.
+        en: The post office is on the main road.
+      - text: Ada kebakaran! Telepon pemadam kebakaran!
+        ar_eg: فيه حريقة! كلّم المطافي!
+        ar: هناك حريق! اتصل بالإطفاء!
+        en: Fire! Call the fire brigade!
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kampung
+        ar_eg: قرية، حتة
+        ar: قرية، حيّ
+        en: village
+      - text: jalan raya
+        ar_eg: طريق رئيسي
+        ar: طريق رئيسي
+        en: main road
+      - text: kantor pos
+        ar_eg: بوسطة
+        ar: مكتب البريد
+        en: post office
+      - text: sepi
+        ar_eg: هادي، فاضي
+        ar: هادئ، خالٍ
+        en: quiet
+    words: [kampung, jalan raya, kantor pos, sepi]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: damai
+        ar_eg: في سلام
+        ar: مسالم
+        en: peaceful
+      - text: kebakaran
+        ar_eg: حريقة
+        ar: حريق
+        en: fire
+      - text: pemadam kebakaran
+        ar_eg: المطافي
+        ar: الإطفاء
+        en: fire brigade
+      - text: ronda
+        ar_eg: حراسة بالليل
+        ar: حراسة ليلية
+        en: night watch
+    words: [damai, kebakaran, pemadam kebakaran, ronda]
+  - id: e03
+    type: listen
+    text: Ada kebakaran di pasar! Panggil pemadam kebakaran!
+    question:
+      ar_eg: إيه اللي حصل؟
+      ar: ماذا حدث؟
+      en: What happened?
+    options: [حريقة, حادثة, مطر]
+    answer: 0
+    meaning:
+      ar_eg: فيه حريقة في السوق! نادوا المطافي!
+      ar: حريق في السوق! استدعوا الإطفاء!
+      en: There's a fire at the market! Call the fire brigade!
+    words: [kebakaran, pemadam kebakaran]
+  - id: e04
+    type: fill_blank
+    sentence: Saya kirim surat dari ___.
+    meaning:
+      ar_eg: ببعت جواب من ___.
+      ar: أرسل رسالة من ___.
+      en: I send a letter from the ___.
+    options: [kantor pos, jalan raya, kampung]
+    answers: [kantor pos]
+    words: [kantor pos, jalan raya, kampung]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عكس ramai؟
+      ar: ما عكس ramai؟
+      en: The opposite of ramai?
+    options: [sepi, damai, ronda]
+    answer: 0
+    explain:
+      ar_eg: ramai = زحمة، sepi = هادي.
+      ar: ramai = مزدحم، sepi = هادئ.
+      en: ramai = busy, sepi = quiet.
+    words: [sepi, damai, ronda]
+  - id: e06
+    type: fill_blank
+    sentence: Setiap malam ada ___ di kampung kami.
+    meaning:
+      ar_eg: كل ليلة فيه ___ في حتتنا.
+      ar: كل ليلة هناك ___ في حيّنا.
+      en: Every night there's a ___ in our village.
+    options: [ronda, kebakaran, kantor pos]
+    answers: [ronda]
+    words: [ronda, kebakaran, kampung]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: قريتي هادية ومسالمة.
+      ar: قريتي هادئة ومسالمة.
+      en: My village is quiet and peaceful.
+    answer: Kampung saya sepi dan damai.
+    distractors: [ramai, besar]
+    words: [kampung, sepi, damai]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Kantor pos ada di jalan raya.
+    answers_meaning:
+      ar_eg: [البوسطة على الطريق الرئيسي, مكتب البريد في الشارع الرئيسي]
+      ar: [مكتب البريد على الطريق الرئيسي]
+      en: [The post office is on the main road, The post office is on the high street]
+    words: [kantor pos, jalan raya]
+  - id: e09
+    type: speaking
+    text: Pemadam kebakaran datang cepat sekali.
+    meaning:
+      ar_eg: المطافي جت بسرعة أوي.
+      ar: جاء الإطفاء بسرعة كبيرة.
+      en: The fire brigade came really fast.
+    words: [pemadam kebakaran]
+  - id: e10
+    type: multiple_choice
+    question: Ada api besar di rumah itu. Ini ___.
+    options: [kebakaran, ronda, kampung]
+    answer: 0
+    explain:
+      ar_eg: نار كبيرة في بيت = حريقة.
+      ar: نار كبيرة في بيت = حريق.
+      en: A big fire in a house = kebakaran.
+    words: [kebakaran, ronda, kampung]
+dialogue:
+  lines:
+    - speaker: Ni Luh
+      text: Ini kampung saya. Sepi, ya?
+      ar_eg: دي قريتي. هادية، صح؟
+      ar: هذه قريتي. هادئة، أليس كذلك؟
+      en: This is my village. Quiet, isn't it?
+    - speaker: Mohamed
+      text: Iya, damai sekali. Beda dengan Jakarta!
+      ar_eg: أيوه، هادية خالص. غير جاكرتا خالص!
+      ar: نعم، هادئة جدًا. تختلف عن جاكرتا!
+      en: Yes, so peaceful. Not like Jakarta!
+    - speaker: Ni Luh
+      text: Kantor pos dan pasar ada di jalan raya.
+      ar_eg: البوسطة والسوق على الطريق الرئيسي.
+      ar: مكتب البريد والسوق على الطريق الرئيسي.
+      en: The post office and market are on the main road.
+    - speaker: Mohamed
+      text: Kalau malam, aman?
+      ar_eg: وبالليل، أمان؟
+      ar: وفي الليل، هل هي آمنة؟
+      en: Is it safe at night?
+    - speaker: Ni Luh
+      text: Aman. Ada ronda setiap malam.
+      ar_eg: أمان. الرجالة بيعملوا حراسة كل ليلة.
+      ar: آمنة. يحرسها الرجال كل ليلة.
+      en: Safe. The men do the night watch every night.
+    - speaker: Mohamed
+      text: Wah, bagus sekali!
+      ar_eg: الله، حلو أوي!
+      ar: رائع جدًا!
+      en: Oh, that's great!
+new_words:
+  - word: kampung
+    pos: noun
+    ar_eg: قرية، حتة شعبية
+    ar: قرية، حيّ شعبي
+    en: village, neighbourhood
+  - word: jalan raya
+    pos: noun
+    ar_eg: الطريق الرئيسي
+    ar: الطريق الرئيسي
+    en: main road
+  - word: kantor pos
+    pos: noun
+    ar_eg: البوسطة
+    ar: مكتب البريد
+    en: post office
+  - word: sepi
+    pos: adjective
+    ar_eg: هادي، فاضي
+    ar: هادئ، خالٍ
+    en: quiet, deserted
+  - word: damai
+    pos: adjective
+    ar_eg: في سلام، هادي
+    ar: مسالم، في سلام
+    en: peaceful
+  - word: kebakaran
+    pos: noun
+    ar_eg: حريقة
+    ar: حريق
+    en: fire (a blaze)
+  - word: pemadam kebakaran
+    pos: noun
+    ar_eg: المطافي
+    ar: الإطفاء
+    en: fire brigade
+  - word: ronda
+    pos: noun
+    ar_eg: حراسة الحتة بالليل
+    ar: حراسة الحيّ الليلية
+    en: night watch
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,236 @@
+schema: kabar.lesson/v1
+id: bipa2.u10.l07
+language: id
+title: Ambulans dan operasi
+can_do:
+  ar_eg: 'تتصرف في طوارئ: حد أغمى عليه أو بيرجّع، تطلب الإسعاف، وتسأل عن حالة مريض بعد عملية.'
+  ar: 'أن تتصرّف في الطوارئ: شخص أُغمي عليه أو يتقيّأ، تطلب الإسعاف، وتسأل عن حال مريض بعد عملية.'
+  en: 'Handle an emergency: someone faints or is sick, call an ambulance, and ask how a patient is after an operation.'
+slides:
+  - title: Di rumah sakit
+    body:
+      ar_eg: |
+        muntah = يرجّع (يتقيأ)، pingsan = يغمى عليه. ambulans = عربية إسعاف.
+        operasi = عملية جراحية. infus = محلول في الوريد، perban = شاش ورباط. termometer = ترمومتر.
+        kondisi = الحالة: Bagaimana kondisinya?
+      ar: |
+        muntah = يتقيّأ، pingsan = يُغمى عليه. ambulans = سيارة إسعاف.
+        operasi = عملية جراحية. infus = محلول وريدي، perban = ضمادة. termometer = ميزان حرارة.
+        kondisi = الحالة: Bagaimana kondisinya?
+      en: |
+        muntah = vomit, pingsan = faint. ambulans = ambulance.
+        operasi = operation, surgery. infus = drip, perban = bandage. termometer = thermometer.
+        kondisi = condition: Bagaimana kondisinya?
+    examples:
+      - text: Ada orang pingsan! Telepon ambulans!
+        ar_eg: فيه حد أغمى عليه! اتصل بالإسعاف!
+        ar: هناك شخص مغمى عليه! اتصل بالإسعاف!
+        en: Someone's fainted! Call an ambulance!
+      - text: Sesudah operasi, kondisinya baik.
+        ar_eg: بعد العملية، حالته كويسة.
+        ar: بعد العملية حاله جيّدة.
+        en: After the operation, his condition is good.
+      - text: Pasien itu pakai infus.
+        ar_eg: المريض ده متعلق له محلول.
+        ar: ذلك المريض على محلول وريدي.
+        en: That patient is on a drip.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: muntah
+        ar_eg: يرجّع
+        ar: يتقيّأ
+        en: vomit
+      - text: operasi
+        ar_eg: عملية
+        ar: عملية جراحية
+        en: operation
+      - text: ambulans
+        ar_eg: إسعاف
+        ar: إسعاف
+        en: ambulance
+      - text: kondisi
+        ar_eg: حالة
+        ar: حالة
+        en: condition
+    words: [muntah, operasi, ambulans, kondisi]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: pingsan
+        ar_eg: يغمى عليه
+        ar: يُغمى عليه
+        en: faint
+      - text: infus
+        ar_eg: محلول
+        ar: محلول وريدي
+        en: drip
+      - text: perban
+        ar_eg: شاش
+        ar: ضمادة
+        en: bandage
+      - text: termometer
+        ar_eg: ترمومتر
+        ar: ميزان حرارة
+        en: thermometer
+    words: [pingsan, infus, perban, termometer]
+  - id: e03
+    type: listen
+    text: Tolong! Ada orang pingsan! Telepon ambulans!
+    question:
+      ar_eg: إيه اللي حصل؟
+      ar: ماذا حدث؟
+      en: What happened?
+    options: [حد أغمى عليه, حد اتخانق, حريقة]
+    answer: 0
+    meaning:
+      ar_eg: الحقوني! فيه حد أغمى عليه! اتصلوا بالإسعاف!
+      ar: النجدة! شخص مغمى عليه! اتصلوا بالإسعاف!
+      en: Help! Someone's fainted! Call an ambulance!
+    words: [pingsan, ambulans]
+  - id: e04
+    type: fill_blank
+    sentence: Badannya panas? Coba pakai ___.
+    meaning:
+      ar_eg: جسمه سخن؟ جرّب الـ ___.
+      ar: هل حرارته مرتفعة؟ جرّب ___.
+      en: Is he hot? Try the ___.
+    options: [termometer, perban, infus]
+    answers: [termometer]
+    words: [termometer, perban, infus]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عربية المستشفى اللي ليها سرينة اسمها إيه؟
+      ar: ما اسم سيارة المستشفى ذات الصفّارة؟
+      en: What's the hospital vehicle with a siren?
+    options: [ambulans, operasi, kondisi]
+    answer: 0
+    explain:
+      ar_eg: ambulans = إسعاف.
+      ar: ambulans = إسعاف.
+      en: ambulans = ambulance.
+    words: [ambulans, operasi, kondisi]
+  - id: e06
+    type: fill_blank
+    sentence: Sesudah ___, pasien harus istirahat seminggu.
+    meaning:
+      ar_eg: بعد الـ ___، المريض لازم يرتاح أسبوع.
+      ar: بعد ___ يجب أن يرتاح المريض أسبوعًا.
+      en: After the ___, the patient must rest for a week.
+    options: [operasi, muntah, perban]
+    answers: [operasi]
+    words: [operasi, muntah, perban]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: حالته كويسة النهارده.
+      ar: حاله جيّدة اليوم.
+      en: His condition is good today.
+    answer: Kondisinya baik hari ini.
+    distractors: [pingsan, sakit]
+    words: [kondisi]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Anak itu muntah lalu pingsan.
+    answers_meaning:
+      ar_eg: [الولد ده رجّع وبعدين أغمى عليه, العيل رجّع وبعدها أغمى عليه]
+      ar: [تقيّأ ذلك الطفل ثم أُغمي عليه]
+      en: [That child was sick and then fainted, 'The child vomited, then fainted']
+    words: [muntah, pingsan]
+  - id: e09
+    type: speaking
+    text: Pasien itu pakai infus dan perban.
+    meaning:
+      ar_eg: المريض ده متعلق له محلول وعليه شاش.
+      ar: ذلك المريض على محلول وعليه ضمادة.
+      en: That patient has a drip and a bandage.
+    words: [infus, perban]
+  - id: e10
+    type: multiple_choice
+    question: Ada luka di tangan. Pakai ___.
+    options: [perban, termometer, ambulans]
+    answer: 0
+    explain:
+      ar_eg: 'الجرح محتاج شاش: perban.'
+      ar: 'الجرح يحتاج ضمادة: perban.'
+      en: 'A cut needs a bandage: perban.'
+    words: [perban, termometer, ambulans]
+dialogue:
+  lines:
+    - speaker: Mohamed
+      text: Bu, bagaimana kondisi teman saya?
+      ar_eg: يا مدام، حالة صاحبي عاملة إيه؟
+      ar: يا سيدتي، كيف حال صديقي؟
+      en: Excuse me, how is my friend doing?
+    - speaker: Perawat
+      text: Sudah lebih baik. Kemarin dia muntah dan pingsan.
+      ar_eg: أحسن دلوقتي. امبارح كان بيرجّع وأغمى عليه.
+      ar: صار أفضل. أمس تقيّأ وأُغمي عليه.
+      en: Better now. Yesterday he vomited and fainted.
+    - speaker: Mohamed
+      text: Perlu operasi?
+      ar_eg: محتاج عملية؟
+      ar: هل يحتاج إلى عملية؟
+      en: Does he need an operation?
+    - speaker: Perawat
+      text: Tidak perlu. Sekarang dia pakai infus saja.
+      ar_eg: لأ. دلوقتي عليه محلول بس.
+      ar: لا. الآن عليه محلول وريدي فقط.
+      en: No. He's just on a drip now.
+    - speaker: Mohamed
+      text: Baik. Boleh saya masuk?
+      ar_eg: تمام. ممكن أدخل؟
+      ar: حسنًا. هل يمكنني الدخول؟
+      en: OK. May I go in?
+    - speaker: Perawat
+      text: Boleh, tapi jangan lama, ya.
+      ar_eg: ممكن، بس ما تطوّلش.
+      ar: نعم، لكن لا تُطل.
+      en: Yes, but don't stay long.
+new_words:
+  - word: muntah
+    pos: verb
+    ar_eg: يرجّع
+    ar: يتقيّأ
+    en: vomit, be sick
+  - word: operasi
+    pos: noun
+    ar_eg: عملية جراحية
+    ar: عملية جراحية
+    en: operation, surgery
+  - word: ambulans
+    pos: noun
+    ar_eg: عربية إسعاف
+    ar: سيارة إسعاف
+    en: ambulance
+  - word: kondisi
+    pos: noun
+    ar_eg: حالة
+    ar: حالة
+    en: condition
+  - word: pingsan
+    pos: verb
+    ar_eg: يغمى عليه
+    ar: يُغمى عليه
+    en: faint
+  - word: infus
+    pos: noun
+    ar_eg: محلول في الوريد
+    ar: محلول وريدي
+    en: drip, IV
+  - word: perban
+    pos: noun
+    ar_eg: شاش، رباط
+    ar: ضمادة
+    en: bandage
+  - word: termometer
+    pos: noun
+    ar_eg: ترمومتر
+    ar: ميزان حرارة
+    en: thermometer
+review:
+  status: draft
+  verified: false

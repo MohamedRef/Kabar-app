@@ -1,0 +1,225 @@
+schema: kabar.lesson/v1
+id: bipa2.u04.l10
+language: id
+title: Seons, seliter, selusin
+can_do:
+  ar_eg: تشتري بالجرام والأوقية واللتر والدستة، وتقيس بالسنتي والكيلومتر والنسبة.
+  ar: أن تشتري بالغرام والأوقية واللتر والدزينة، وتقيس بالسنتيمتر والكيلومتر والنسبة المئوية.
+  en: Buy by the gram, ons, litre and dozen, and measure in centimetres, kilometres and percent.
+slides:
+  - title: Ukuran
+    body:
+      ar_eg: |
+        الوزن: gram، وons، وkilo. خلي بالك: في إندونيسيا 1 ons = 100 gram!
+        السوايل: liter (sebotol air satu liter).
+        الطول: sentimeter، meter، kilometer.
+        lusin = دستة: selusin = ١٢. وpersen = في المية: diskon 50 persen.
+      ar: |
+        الوزن: gram وons وkilo. وانتبه: في إندونيسيا 1 ons = 100 gram!
+        السوائل: liter (sebotol air satu liter).
+        الطول: sentimeter وmeter وkilometer.
+        lusin = دزينة: selusin = ١٢. وpersen = بالمئة: diskon 50 persen.
+      en: |
+        Weight: gram, ons, kilo. Careful: in Indonesia 1 ons = 100 grams!
+        Liquids: liter (sebotol air satu liter).
+        Length: sentimeter, meter, kilometer.
+        lusin = dozen: selusin = 12. persen = percent: diskon 50 persen.
+    examples:
+      - text: Satu ons sama dengan seratus gram.
+        ar_eg: الأوقية = ١٠٠ جرام.
+        ar: الأوقية تساوي مئة غرام.
+        en: One ons equals a hundred grams.
+      - text: Saya beli selusin pensil.
+        ar_eg: اشتريت دستة أقلام رصاص.
+        ar: اشتريت دزينة أقلام رصاص.
+        en: I bought a dozen pencils.
+      - text: Diskon lima puluh persen!
+        ar_eg: خصم خمسين في المية!
+        ar: خصم خمسين بالمئة!
+        en: Fifty percent off!
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: gram
+        ar_eg: جرام
+        ar: غرام
+        en: gram
+      - text: ons
+        ar_eg: ١٠٠ جرام
+        ar: ١٠٠ غرام
+        en: 100 grams
+      - text: liter
+        ar_eg: لتر
+        ar: لتر
+        en: litre
+      - text: kilometer
+        ar_eg: كيلومتر
+        ar: كيلومتر
+        en: kilometre
+    words: [gram, ons, liter, kilometer]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: sentimeter
+        ar_eg: سنتيمتر
+        ar: سنتيمتر
+        en: centimetre
+      - text: lusin
+        ar_eg: دستة
+        ar: دزينة
+        en: dozen
+      - text: persen
+        ar_eg: في المية
+        ar: بالمئة
+        en: percent
+    words: [sentimeter, lusin, persen]
+  - id: e03
+    type: listen
+    text: Saya minta dua ons daging, ya.
+    question:
+      ar_eg: عايز قد إيه لحمة؟
+      ar: كم يريد من اللحم؟
+      en: How much meat does he want?
+    options: [٢٠٠ جرام, ٢ كيلو, ٢٠ جرام]
+    answer: 0
+    meaning:
+      ar_eg: عايز ٢ أوقية لحمة لو سمحت.
+      ar: أريد أوقيتين من اللحم من فضلك.
+      en: Two ons of meat, please.
+    words: [ons]
+  - id: e04
+    type: fill_blank
+    sentence: Satu ons sama dengan seratus ___.
+    meaning:
+      ar_eg: الأوقية = ١٠٠ ___.
+      ar: الأوقية تساوي مئة ___.
+      en: One ons equals a hundred ___.
+    options: [gram, liter, persen]
+    answers: [gram]
+    words: [ons, gram, liter, persen]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ١٢ حاجة من نفس النوع؟
+      ar: اثنا عشر شيئًا من النوع نفسه؟
+      en: Twelve of the same thing?
+    options: [selusin, seons, seliter]
+    answer: 0
+    explain:
+      ar_eg: selusin = دستة = ١٢.
+      ar: selusin = دزينة = ١٢.
+      en: selusin = a dozen = 12.
+    words: [lusin, ons, liter]
+  - id: e06
+    type: fill_blank
+    sentence: Jarak dari rumah ke kantor lima ___.
+    meaning:
+      ar_eg: المسافة من البيت للمكتب خمسة ___.
+      ar: المسافة من البيت إلى المكتب خمسة ___.
+      en: It's five ___ from home to the office.
+    options: [kilometer, sentimeter, gram]
+    answers: [kilometer]
+    words: [kilometer, sentimeter, gram]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: عايز إزازة مية لتر ونص.
+      ar: أريد زجاجة ماء لتر ونصف.
+      en: I'd like a one-and-a-half-litre bottle of water.
+    answer: Saya minta sebotol air satu setengah liter.
+    distractors: [gram, persen]
+    words: [liter, gram, persen]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Diskon lima puluh persen!
+    answers_meaning:
+      ar_eg: [خصم خمسين في المية!, خصم ٥٠٪!]
+      ar: [خصم خمسين بالمئة!, خصم ٥٠٪!]
+      en: [Fifty percent off!, A 50% discount!]
+    words: [persen, diskon]
+  - id: e09
+    type: speaking
+    text: Saya beli selusin pulpen.
+    meaning:
+      ar_eg: اشتريت دستة أقلام.
+      ar: اشتريت دزينة أقلام.
+      en: I bought a dozen pens.
+    words: [lusin]
+  - id: e10
+    type: multiple_choice
+    question: Seratus sentimeter = satu ___.
+    options: [meter, kilometer, gram]
+    answer: 0
+    explain:
+      ar_eg: ١٠٠ سم = متر.
+      ar: مئة سنتيمتر = متر.
+      en: 100 cm = 1 metre.
+    words: [sentimeter, kilometer, gram]
+dialogue:
+  lines:
+    - speaker: Bu Yanti
+      text: Bu, minta setengah kilo daging dan dua ons kacang.
+      ar_eg: يا ست، عايزة نص كيلو لحمة و٢ أوقية فول سوداني.
+      ar: يا سيدتي، نصف كيلو لحم وأوقيتين من الفول السوداني.
+      en: Half a kilo of meat and two ons of peanuts, please.
+    - speaker: Penjual
+      text: Baik, Bu. Ada lagi?
+      ar_eg: حاضر. حاجة تانية؟
+      ar: حسنًا. شيء آخر؟
+      en: Sure. Anything else?
+    - speaker: Bu Yanti
+      text: Selusin pensil untuk cucu saya.
+      ar_eg: دستة أقلام رصاص لحفيدي.
+      ar: دزينة أقلام رصاص لحفيدي.
+      en: A dozen pencils for my grandchild.
+    - speaker: Penjual
+      text: Hari ini ada diskon sepuluh persen untuk pensil!
+      ar_eg: النهارده فيه خصم عشرة في المية على الأقلام!
+      ar: اليوم خصم عشرة بالمئة على الأقلام!
+      en: Pencils are ten percent off today!
+    - speaker: Bu Yanti
+      text: Bagus! Terima kasih.
+      ar_eg: حلو! شكرًا.
+      ar: رائع! شكرًا.
+      en: Great! Thank you.
+new_words:
+  - word: gram
+    pos: noun
+    ar_eg: جرام
+    ar: غرام
+    en: gram
+  - word: ons
+    pos: noun
+    ar_eg: أوقية (١٠٠ جرام)
+    ar: أوقية (١٠٠ غرام)
+    en: ons (100 grams)
+  - word: liter
+    pos: noun
+    ar_eg: لتر
+    ar: لتر
+    en: litre
+  - word: kilometer
+    pos: noun
+    ar_eg: كيلومتر
+    ar: كيلومتر
+    en: kilometre
+  - word: sentimeter
+    pos: noun
+    ar_eg: سنتيمتر
+    ar: سنتيمتر
+    en: centimetre
+  - word: lusin
+    pos: noun
+    ar_eg: دستة
+    ar: دزينة
+    en: dozen
+  - word: persen
+    pos: noun
+    ar_eg: في المية
+    ar: بالمئة
+    en: percent
+review:
+  status: draft
+  verified: false

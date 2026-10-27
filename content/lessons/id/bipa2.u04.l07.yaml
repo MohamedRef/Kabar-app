@@ -1,191 +1,243 @@
 schema: kabar.lesson/v1
 id: bipa2.u04.l07
 language: id
-title: Ulangan Unit 4
+title: Apel, jeruk, mangga
 can_do:
-  ar_eg: تشتري تلات حاجات بسعر معقول.
-  ar: أن تشتري ثلاثة أشياء بسعر مناسب.
-  en: Buy three things at a fair price.
+  ar_eg: تسمّي الفاكهة وتشتريها بالكيلو والحبّة في السوق.
+  ar: أن تسمّي الفواكه وتشتريها بالكيلو والحبّة في السوق.
+  en: Name fruit and buy it by the kilo or piece at the market.
+slides:
+  - title: Buah
+    body:
+      ar_eg: |
+        apel = تفاح، jeruk = برتقال (وكل الموالح)، pisang = موز (pisang goreng = موز مقلي، أكلة مشهورة)، mangga = مانجة.
+        semangka = بطيخ، pepaya = بابايا، nanas = أناناس.
+        خلي بالك: anggur = عنب. وفي إندونيسيا anggur كمان اسم للنبيذ، فلو عايز العصير قول jus anggur.
+        الحساب: sekilo mangga، sebuah semangka، dua ikat pisang.
+      ar: |
+        apel = تفّاح، jeruk = برتقال (وسائر الحمضيات)، pisang = موز (pisang goreng = موز مقلي، طعام شهير)، mangga = مانجو.
+        semangka = بطّيخ، pepaya = بابايا، nanas = أناناس.
+        انتبه: anggur = عنب، وقد تعني النبيذ أيضًا، فإن أردت العصير فقل jus anggur.
+        وللعدّ: sekilo mangga، sebuah semangka، dua ikat pisang.
+      en: |
+        apel = apple, jeruk = orange (any citrus), pisang = banana (pisang goreng, fried banana, is a classic), mangga = mango.
+        semangka = watermelon, pepaya = papaya, nanas = pineapple.
+        Careful: anggur = grapes, but it can also mean wine; for juice say jus anggur.
+        Counting: sekilo mangga, sebuah semangka, dua ikat pisang.
+    examples:
+      - text: Satu kilo mangga berapa, Bu?
+        ar_eg: كيلو المانجة بكام يا ست؟
+        ar: بكم كيلو المانجو يا سيدتي؟
+        en: How much is a kilo of mangoes?
+      - text: Pisang ini enak sekali!
+        ar_eg: الموز ده حلو أوي!
+        ar: هذا الموز لذيذ جدًا!
+        en: This banana is so good!
+      - text: Anggur di Indonesia mahal.
+        ar_eg: العنب في إندونيسيا غالي.
+        ar: العنب غالٍ في إندونيسيا.
+        en: Grapes are expensive in Indonesia.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: seekor ayam
-        ar_eg: فرخة
-        ar: دجاجة
-        en: a chicken
-      - text: selembar kain
-        ar_eg: حتة قماش
-        ar: قطعة قماش
-        en: a piece of cloth
-      - text: sebuah patung
-        ar_eg: تمثال
-        ar: تمثال
-        en: a statue
-      - text: seikat sayur
-        ar_eg: حزمة خضار
-        ar: حزمة خضار
-        en: a bunch of vegetables
-      - text: sebotol air
-        ar_eg: إزازة مية
-        ar: زجاجة ماء
-        en: a bottle of water
-    words: [ekor, lembar, buah, ikat, botol]
+      - text: apel
+        ar_eg: تفاح
+        ar: تفّاح
+        en: apple
+      - text: jeruk
+        ar_eg: برتقال
+        ar: برتقال
+        en: orange
+      - text: pisang
+        ar_eg: موز
+        ar: موز
+        en: banana
+      - text: mangga
+        ar_eg: مانجة
+        ar: مانجو
+        en: mango
+    words: [apel, jeruk, pisang, mangga]
   - id: e02
     type: match_pairs
     pairs:
-      - text: Boleh kurang?
-        ar_eg: ممكن تنزل شوية؟
-        ar: هل يمكن التخفيض؟
-        en: Can you go lower?
-      - text: harga pas
-        ar_eg: آخر سعر
-        ar: السعر النهائي
-        en: final price
-      - text: sama saja
-        ar_eg: كله واحد
-        ar: سيّان
-        en: it's all the same
-      - text: Jangan khawatir.
-        ar_eg: ماتقلقش.
-        ar: لا تقلق.
-        en: Don't worry.
-    words: [boleh kurang, harga pas, sama saja, khawatir]
+      - text: semangka
+        ar_eg: بطيخ
+        ar: بطّيخ
+        en: watermelon
+      - text: anggur
+        ar_eg: عنب
+        ar: عنب
+        en: grapes
+      - text: pepaya
+        ar_eg: بابايا
+        ar: بابايا
+        en: papaya
+      - text: nanas
+        ar_eg: أناناس
+        ar: أناناس
+        en: pineapple
+    words: [semangka, anggur, pepaya, nanas]
   - id: e03
     type: listen
-    text: Saya beli tiga buah patung.
-    options: [Saya beli dua buah patung., Saya beli tiga ekor patung., Saya beli tiga buah patung.]
-    answer: 2
-    words: [buah, patung]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «طالبين» إزاي؟
-      ar: كيف تقول «طالبان»؟
-      en: How do you say "two students"?
-    options: [dua orang mahasiswa, dua buah mahasiswa, dua ekor mahasiswa]
+    text: Satu kilo mangga dua puluh ribu.
+    question:
+      ar_eg: كيلو المانجة بكام؟
+      ar: بكم كيلو المانجو؟
+      en: How much is a kilo of mangoes?
+    options: [٢٠ ألف, ١٢ ألف, ٢ ألف]
     answer: 0
-    explain:
-      ar_eg: الناس بـ orang.
-      ar: البشر يُعدّون بـ orang.
-      en: People take orang.
-    words: [orang]
+    meaning:
+      ar_eg: كيلو المانجة بعشرين ألف.
+      ar: كيلو المانجو بعشرين ألفًا.
+      en: A kilo of mangoes is twenty thousand.
+    words: [mangga]
+  - id: e04
+    type: fill_blank
+    sentence: Buah ini besar dan berat, tapi merah dan manis di dalam. Ini ___.
+    meaning:
+      ar_eg: الفاكهة دي كبيرة وتقيلة، بس جوّاها أحمر ومسكّر. دي ___.
+      ar: هذه الفاكهة كبيرة وثقيلة، لكنها حمراء حلوة من الداخل. إنها ___.
+      en: This fruit is big and heavy, but red and sweet inside. It's a ___.
+    options: [semangka, apel, anggur]
+    answers: [semangka]
+    words: [semangka, apel, anggur]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: صاحبك هيدفع السعر الأولاني علطول. تقوله إيه؟
-      ar: صديقك سيدفع السعر الأول مباشرةً. ماذا تقول له؟
-      en: Your friend is about to pay the first price straight away. What do you tell him?
-    options: [Ayo langsung bayar!, 'Jangan langsung bayar, tawar dulu!', 'Tidak langsung bayar, tawar dulu!']
-    answer: 1
+      ar_eg: فاكهة صفرا وطويلة، والقرود بتحبها.
+      ar: فاكهة صفراء طويلة تحبّها القرود.
+      en: A long yellow fruit that monkeys love.
+    options: [pisang, pepaya, jeruk]
+    answer: 0
     explain:
-      ar_eg: النهي بـ jangan، مش tidak.
-      ar: النهي يكون بـ jangan لا tidak.
-      en: Telling someone "don't" needs jangan, not tidak.
-    words: [jangan, langsung]
+      ar_eg: pisang = موز.
+      ar: pisang = موز.
+      en: pisang = banana.
+    words: [pisang, pepaya, jeruk]
   - id: e06
     type: fill_blank
-    sentence: ___ kita ke Pasar Seni Sukawati!
+    sentence: 'Ini tiga ___: apel, jeruk, dan mangga.'
     meaning:
-      ar_eg: يلا نروح سوق الفن في سوكاواتي!
-      ar: هيّا نذهب إلى سوق الفن في سوكاواتي!
-      en: Let's go to Sukawati Art Market!
-    options: [Ayo, Jangan, Sama]
-    answers: [Ayo]
-    words: [ayo]
+      ar_eg: 'دي تلات ___: تفاح وبرتقال ومانجة.'
+      ar: 'هذه ثلاث ___: تفّاح وبرتقال ومانجو.'
+      en: 'These are three ___: apples, oranges and mangoes.'
+    options: [buah, kilo, ikat]
+    answers: [buah]
+    words: [apel, jeruk, mangga]
   - id: e07
-    type: fill_blank
-    sentence: Minta dua ___ teh manis, Mbak.
-    meaning:
-      ar_eg: كوبايتين شاي بسكر لو سمحتي.
-      ar: كوبان من الشاي المحلّى من فضلكِ.
-      en: Two glasses of sweet tea, please.
-    options: [lembar, ekor, gelas]
-    answers: [gelas]
-    words: [gelas]
+    type: build_sentence
+    source:
+      ar_eg: عايز كيلو عنب لو سمحت.
+      ar: أريد كيلو عنب من فضلك.
+      en: A kilo of grapes, please.
+    answer: Saya minta sekilo anggur.
+    distractors: [nanas, pepaya]
+    words: [anggur]
   - id: e08
-    type: build_sentence
-    source:
-      ar_eg: ماتغليهاش علينا يا حاجة! ممكن تنزلي شوية؟
-      ar: لا تبالغي في السعر يا سيدتي! هل يمكن التخفيض؟
-      en: Don't make it so expensive, ma'am! Can you go lower?
-    answer: Jangan mahal-mahal, Bu! Boleh kurang?
-    distractors: [tidak, lebih]
-    words: [jangan, boleh kurang]
-  - id: e09
-    type: build_sentence
-    source:
-      ar_eg: الأسعار هنا مش غالية قد كوتا.
-      ar: الأسعار هنا ليست مرتفعة كما في كوتا.
-      en: Prices here aren't as high as in Kuta.
-    answer: Harga di sini tidak semahal di Kuta.
-    distractors: [lebih, daripada]
-    words: [semahal, harga]
-  - id: e10
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: عايز كيلو برتقال وحزمتين خضار.
-      ar: أريد كيلو برتقال وحزمتين من الخضار.
-      en: I'd like a kilo of oranges and two bunches of vegetables.
-    answers: [Saya mau sekilo jeruk dan dua ikat sayur., Saya mau sekilo jeruk dan dua ikat sayur, Saya mau satu kilo jeruk dan dua ikat sayur., Saya minta sekilo jeruk dan dua ikat sayur., Saya ingin sekilo jeruk dan dua ikat sayur., Saya mau beli sekilo jeruk dan dua ikat sayur., Aku mau sekilo jeruk dan dua ikat sayur.]
-    words: [kilo, ikat]
-  - id: e11
-    type: dictation
-    text: Ya sudah, saya beli dua lembar.
-    meaning:
-      ar_eg: خلاص ماشي، هشتري حتتين.
-      ar: حسنًا إذن، سأشتري قطعتين.
-      en: OK then, I'll buy two pieces.
-    words: [ya sudah, lembar]
-  - id: e12
+    direction: from_target
+    source_text: Pepaya, nanas, dan pisang dari Bali murah.
+    answers_meaning:
+      ar_eg: [البابايا والأناناس والموز من بالي رخاص, البابايا والأناناس والموز اللي من بالي رخيصين]
+      ar: [البابايا والأناناس والموز من بالي رخيصة]
+      en: ['Papaya, pineapple and bananas from Bali are cheap', 'The papayas, pineapples and bananas from Bali are cheap']
+    words: [pepaya, nanas, pisang]
+  - id: e09
     type: speaking
-    text: Saya beli sebuah patung, dua lembar kain, dan sekilo kopi. Boleh kurang, Bu?
+    text: Satu kilo jeruk, dua buah nanas, dan sebuah semangka.
     meaning:
-      ar_eg: هشتري تمثال، وحتتين قماش، وكيلو بن. ممكن تنزلي شوية يا مدام؟
-      ar: سأشتري تمثالًا وقطعتي قماش وكيلو قهوة. هل يمكن التخفيض يا سيدتي؟
-      en: I'll buy a statue, two pieces of cloth and a kilo of coffee. Can you go lower, ma'am?
-    words: [buah, lembar, kilo, boleh kurang]
+      ar_eg: كيلو برتقال، واتنين أناناس، وبطيخة.
+      ar: كيلو برتقال، وحبّتا أناناس، وبطّيخة.
+      en: A kilo of oranges, two pineapples and a watermelon.
+    words: [jeruk, nanas, semangka]
+  - id: e10
+    type: multiple_choice
+    question: anggur
+    question_meaning:
+      ar_eg: anggur بالإندونيسي معناها إيه؟
+      ar: ما معنى anggur بالإندونيسية؟
+      en: What does anggur mean?
+    options: [عنب, تفاح, موز]
+    answer: 0
+    explain:
+      ar_eg: anggur = عنب (ومرات نبيذ).
+      ar: anggur = عنب (وقد تعني النبيذ).
+      en: anggur = grapes (sometimes wine).
+    words: [anggur]
 dialogue:
-  title: Tiga oleh-oleh
   lines:
+    - speaker: Penjual
+      text: Mari, Mas! Buahnya manis-manis!
+      ar_eg: اتفضل يا أستاذ! الفاكهة مسكّرة!
+      ar: تفضّل يا سيدي! الفاكهة حلوة!
+      en: Come on in! The fruit is sweet!
     - speaker: Mohamed
-      text: Bu, saya mau sebuah patung, dua lembar kain, dan sekilo kopi Bali.
-      ar_eg: يا مدام، عايز تمثال، وحتتين قماش، وكيلو بن بالي.
-      ar: يا سيدتي، أريد تمثالًا وقطعتي قماش وكيلو من قهوة بالي.
-      en: Ma'am, I'd like a statue, two pieces of cloth and a kilo of Balinese coffee.
-    - speaker: Bu Nyoman
-      text: Semuanya empat ratus ribu, Pak.
-      ar_eg: الكل بأربعمية ألف يا أستاذ.
-      ar: المجموع أربعمئة ألف يا سيدي.
-      en: Altogether four hundred thousand, sir.
+      text: Mangganya berapa sekilo, Bu?
+      ar_eg: المانجة بكام الكيلو يا ست؟
+      ar: بكم كيلو المانجو يا سيدتي؟
+      en: How much a kilo are the mangoes?
+    - speaker: Penjual
+      text: Dua puluh ribu. Jeruknya lima belas ribu.
+      ar_eg: بعشرين ألف. والبرتقال بخمستاشر ألف.
+      ar: بعشرين ألفًا، والبرتقال بخمسة عشر ألفًا.
+      en: Twenty thousand. The oranges are fifteen thousand.
     - speaker: Mohamed
-      text: Jangan mahal-mahal, Bu! Dua ratus lima puluh, boleh?
-      ar_eg: ماتغليهاش علينا يا حاجة! ميتين وخمسين، ينفع؟
-      ar: لا تبالغي في السعر يا سيدتي! مئتان وخمسون، هل يمكن؟
-      en: Don't make it so expensive, ma'am! Two hundred and fifty, OK?
-    - speaker: Bu Nyoman
-      text: Aduh, saya rugi. Tiga ratus, harga pas.
-      ar_eg: يا لهوي، كده هخسر. تلتمية، آخر سعر.
-      ar: آه، سأخسر. ثلاثمئة، وهذا السعر النهائي.
-      en: Oh no, I'll lose money. Three hundred, final price.
+      text: Boleh kurang? Saya beli dua kilo mangga.
+      ar_eg: ممكن تنزلي؟ هاخد كيلوين مانجة.
+      ar: هل تخفّضين؟ سأشتري كيلوين من المانجو.
+      en: Can you go lower? I'll take two kilos of mangoes.
+    - speaker: Penjual
+      text: Boleh, tiga puluh lima ribu. Mau pisang juga?
+      ar_eg: ماشي، بخمسة وتلاتين ألف. عايز موز كمان؟
+      ar: حسنًا، بخمسة وثلاثين ألفًا. أتريد موزًا أيضًا؟
+      en: OK, thirty-five thousand. Want bananas too?
     - speaker: Mohamed
-      text: Ya sudah, boleh. Terima kasih, Bu!
-      ar_eg: خلاص ماشي. شكرًا يا مدام!
-      ar: حسنًا، موافق. شكرًا يا سيدتي!
-      en: OK then, fine. Thank you, ma'am!
-    - speaker: Bu Nyoman
-      text: Sama-sama. Mari, Pak!
-      ar_eg: العفو. مع السلامة يا أستاذ!
-      ar: عفوًا. مع السلامة يا سيدي!
-      en: You're welcome. Goodbye, sir!
-souvenir:
-  id: bipa2.u04.souvenir
-  title: Pasar Seni Sukawati
-  note:
-    ar_eg: سوق الفن في سوكاواتي مليان قماش وتماثيل خشب ولوحات بالي، والفصال هناك متوقع، بس بابتسامة. الناس عادةً بتبدأ بنص السعر وتتقابل في النص، وده طبيعي خالص. بس في السوبر ماركت الأسعار ثابتة، فمتفاصلش هناك!
-    ar: سوق الفن في سوكاواتي عامر بالأقمشة والتماثيل الخشبية واللوحات البالية، والمساومة فيه متوقعة لكن بابتسامة. يبدأ الناس عادةً بنصف السعر ويلتقون في المنتصف، وهذا أمر طبيعي تمامًا. أما في المتاجر الكبرى فالأسعار ثابتة فلا مساومة.
-    en: Sukawati Art Market is full of cloth, wooden carvings and Balinese paintings, and bargaining is expected — with a smile. Starting at half the price and meeting in the middle is completely normal. Supermarkets have fixed prices, though, so save your haggling for the market!
+      text: Ya, dan sebuah semangka!
+      ar_eg: أيوه، وبطيخة!
+      ar: نعم، وبطّيخة!
+      en: Yes, and a watermelon!
+new_words:
+  - word: apel
+    pos: noun
+    ar_eg: تفاح
+    ar: تفّاح
+    en: apple
+  - word: jeruk
+    pos: noun
+    ar_eg: برتقال، موالح
+    ar: برتقال، حمضيات
+    en: orange, citrus
+  - word: pisang
+    pos: noun
+    ar_eg: موز
+    ar: موز
+    en: banana
+  - word: mangga
+    pos: noun
+    ar_eg: مانجة
+    ar: مانجو
+    en: mango
+  - word: semangka
+    pos: noun
+    ar_eg: بطيخ
+    ar: بطّيخ
+    en: watermelon
+  - word: anggur
+    pos: noun
+    ar_eg: عنب (ومرات نبيذ)
+    ar: عنب (وقد تعني النبيذ)
+    en: grapes (also wine)
+  - word: pepaya
+    pos: noun
+    ar_eg: بابايا
+    ar: بابايا
+    en: papaya
+  - word: nanas
+    pos: noun
+    ar_eg: أناناس
+    ar: أناناس
+    en: pineapple
 review:
   status: draft
   verified: false

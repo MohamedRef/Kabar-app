@@ -1,0 +1,236 @@
+schema: kabar.lesson/v1
+id: bipa2.u07.l08
+language: id
+title: Dada, lengan, jari
+can_do:
+  ar_eg: 'تقول أجزاء جسم أكتر في التمرين: الصدر والدراع والصوابع والوسط، والنفَس والعرق.'
+  ar: 'أن تسمّي أجزاء جسم أكثر في التمرين: الصدر والذراع والأصابع والخصر، والنفَس والعرق.'
+  en: 'Name more body parts during exercise: chest, arm, fingers, waist, plus breath and sweat.'
+slides:
+  - title: Badan kita
+    body:
+      ar_eg: |
+        dada = صدر، lengan = دراع، jari = صباع (jari kaki = صباع رجل)، pinggang = وسط.
+        kulit = جلد، darah = دم.
+        napas = نفَس: Tarik napas! = خد نفس! وkeringat = عرق.
+      ar: |
+        dada = صدر، lengan = ذراع، jari = إصبع (jari kaki = إصبع القدم)، pinggang = خصر.
+        kulit = جلد، darah = دم.
+        napas = نفَس: Tarik napas! = خذ نفَسًا! وkeringat = عرق.
+      en: |
+        dada = chest, lengan = arm, jari = finger (jari kaki = toe), pinggang = waist.
+        kulit = skin, darah = blood.
+        napas = breath: Tarik napas! = breathe in! keringat = sweat.
+    examples:
+      - text: Tarik napas, angkat lengan!
+        ar_eg: خد نفس، وارفع دراعاتك!
+        ar: خذ نفَسًا وارفع ذراعيك!
+        en: Breathe in, raise your arms!
+      - text: Sesudah lari, badan saya penuh keringat.
+        ar_eg: بعد الجري، جسمي كله عرق.
+        ar: بعد الجري امتلأ جسمي بالعرق.
+        en: After running I'm covered in sweat.
+      - text: Jari saya kecil, lengan saya panjang.
+        ar_eg: صوابعي صغيرة ودراعاتي طويلة.
+        ar: أصابعي صغيرة وذراعاي طويلتان.
+        en: My fingers are small, my arms are long.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: dada
+        ar_eg: صدر
+        ar: صدر
+        en: chest
+      - text: lengan
+        ar_eg: دراع
+        ar: ذراع
+        en: arm
+      - text: jari
+        ar_eg: صباع
+        ar: إصبع
+        en: finger
+      - text: pinggang
+        ar_eg: وسط
+        ar: خصر
+        en: waist
+    words: [dada, lengan, jari, pinggang]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: kulit
+        ar_eg: جلد
+        ar: جلد
+        en: skin
+      - text: darah
+        ar_eg: دم
+        ar: دم
+        en: blood
+      - text: napas
+        ar_eg: نفَس
+        ar: نفَس
+        en: breath
+      - text: keringat
+        ar_eg: عرق
+        ar: عرق
+        en: sweat
+    words: [kulit, darah, napas, keringat]
+  - id: e03
+    type: listen
+    text: Tarik napas, lalu angkat kedua lengan.
+    question:
+      ar_eg: المدرب بيقول إيه؟
+      ar: ماذا يقول المدرّب؟
+      en: What does the coach say?
+    options: [خد نفس وارفع دراعاتك, اقعد على الأرض, اجري بسرعة]
+    answer: 0
+    meaning:
+      ar_eg: خد نفس وبعدين ارفع دراعاتك الاتنين.
+      ar: خذ نفَسًا ثم ارفع ذراعيك.
+      en: Breathe in, then raise both arms.
+    words: [napas, lengan]
+  - id: e04
+    type: fill_blank
+    sentence: Tangan saya punya lima ___.
+    meaning:
+      ar_eg: إيدي فيها خمس ___.
+      ar: في يدي خمسة ___.
+      en: My hand has five ___.
+    options: [jari, dada, darah]
+    answers: [jari]
+    words: [jari, dada, darah]
+  - id: e05
+    type: multiple_choice
+    question: Warna ___ merah.
+    options: [darah, kulit, keringat]
+    answer: 0
+    explain:
+      ar_eg: 'الدم لونه أحمر: darah.'
+      ar: 'الدم أحمر: darah.'
+      en: 'Blood is red: darah.'
+    words: [darah, kulit, keringat]
+  - id: e06
+    type: fill_blank
+    sentence: Jangan lama di bawah matahari, nanti ___ kamu merah.
+    meaning:
+      ar_eg: 'ما تقعدش كتير في الشمس، جلدك هيحمر: ___.'
+      ar: لا تبقَ طويلًا تحت الشمس وإلا احمرّ ___ك.
+      en: Don't stay long in the sun, or your ___ will go red.
+    options: [kulit, napas, pinggang]
+    answers: [kulit]
+    words: [kulit, napas, pinggang]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: إيدك على وسطك، وبعدين خد نفس.
+      ar: يداك على خصرك، ثم خذ نفَسًا.
+      en: Hands on your waist, then breathe in.
+    answer: Tangan di pinggang, lalu tarik napas.
+    distractors: [dada, jari]
+    words: [pinggang, napas]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Sesudah lari, badan saya penuh keringat.
+    answers_meaning:
+      ar_eg: [بعد الجري جسمي كله عرق, بعد ما جريت جسمي غرقان عرق]
+      ar: [بعد الجري امتلأ جسمي بالعرق]
+      en: ['After running, my body is covered in sweat', 'After running I''m all sweaty']
+    words: [keringat]
+  - id: e09
+    type: speaking
+    text: Tarik napas, lalu buang pelan-pelan.
+    meaning:
+      ar_eg: خد نفس، وبعدين طلّعه بالراحة.
+      ar: خذ نفَسًا ثم أخرجه ببطء.
+      en: Breathe in, then breathe out slowly.
+    words: [napas]
+  - id: e10
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه اللي بين الكتف والإيد؟
+      ar: ما الذي بين الكتف واليد؟
+      en: What's between the shoulder and the hand?
+    options: [lengan, jari, dada]
+    answer: 0
+    explain:
+      ar_eg: lengan = دراع.
+      ar: lengan = ذراع.
+      en: lengan = arm.
+    words: [lengan, jari, dada]
+dialogue:
+  lines:
+    - speaker: Pelatih
+      text: Angkat kedua lengan. Tarik napas!
+      ar_eg: ارفع دراعاتك الاتنين. خد نفس!
+      ar: ارفع ذراعيك. خذ نفَسًا!
+      en: Raise both arms. Breathe in!
+    - speaker: Mohamed
+      text: Berat sekali untuk pinggang saya!
+      ar_eg: ده تقيل أوي على وسطي!
+      ar: هذا ثقيل جدًا على خصري!
+      en: That's hard on my waist!
+    - speaker: Pelatih
+      text: Pelan-pelan saja. Tangan di pinggang.
+      ar_eg: بالراحة. حط إيدك على وسطك.
+      ar: على مهلك. ضع يديك على خصرك.
+      en: Take it slowly. Hands on your waist.
+    - speaker: Mohamed
+      text: Badan saya penuh keringat!
+      ar_eg: جسمي كله عرق!
+      ar: جسمي مليء بالعرق!
+      en: I'm dripping with sweat!
+    - speaker: Pelatih
+      text: Bagus! Minum air, ya.
+      ar_eg: برافو! اشرب مية.
+      ar: أحسنت! اشرب ماءً.
+      en: Good! Drink some water.
+    - speaker: Mohamed
+      text: Terima kasih, Pak.
+      ar_eg: شكرًا يا كابتن.
+      ar: شكرًا يا سيدي.
+      en: Thanks, coach.
+new_words:
+  - word: dada
+    pos: noun
+    ar_eg: صدر
+    ar: صدر
+    en: chest
+  - word: lengan
+    pos: noun
+    ar_eg: دراع
+    ar: ذراع
+    en: arm
+  - word: jari
+    pos: noun
+    ar_eg: صباع
+    ar: إصبع
+    en: finger
+  - word: pinggang
+    pos: noun
+    ar_eg: وسط
+    ar: خصر
+    en: waist
+  - word: kulit
+    pos: noun
+    ar_eg: جلد
+    ar: جلد
+    en: skin
+  - word: darah
+    pos: noun
+    ar_eg: دم
+    ar: دم
+    en: blood
+  - word: napas
+    pos: noun
+    ar_eg: نفَس
+    ar: نفَس
+    en: breath
+  - word: keringat
+    pos: noun
+    ar_eg: عرق
+    ar: عرق
+    en: sweat
+review:
+  status: draft
+  verified: false
