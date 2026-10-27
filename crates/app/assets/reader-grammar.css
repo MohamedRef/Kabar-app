@@ -1,0 +1,27 @@
+/* Reader grammar spotting (reader/grammar.rs). Colours are theme tokens only:
+   the word-class tokens (--wc-*, theme.rs) and the base palette. */
+.text-grammar { margin-block-start: 0.75rem; }
+.text-grammar > summary { cursor: pointer; font-weight: 600; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+.gr-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.gr-item { border-inline-start: 3px solid var(--line); padding-inline-start: 0.6rem; padding-block: 0.25rem; }
+.gr-item.gr-learned { border-inline-start-color: var(--sawah); }
+.gr-item.gr-level { border-inline-start-color: var(--indigo); }
+.gr-item.gr-ahead { border-inline-start-style: dashed; border-inline-start-color: var(--muted); }
+.gr-item.gr-ahead .gr-title { color: var(--muted); }
+.gr-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+.gr-title { font-weight: 600; }
+.gr-learned .gr-standing { border-color: var(--sawah); }
+.gr-level .gr-standing { border-color: var(--indigo); }
+.chip.gr-ahead, .gr-ahead .gr-standing { border-style: dashed; color: var(--muted); }
+.gr-hits { margin-block: 0.25rem; }
+/* A hit: its word-class colour (the .wc-* classes set --wc) plus a dotted
+   underline, so colour is never the only cue. A phrase gets a double line. */
+.gr-hit { color: var(--wc, var(--indigo)); text-decoration: underline dotted; text-underline-offset: 0.2em; }
+.gr-hit.wc-phrase { --wc: var(--wc-func); text-decoration-style: double; }
+.gr-note { margin-block: 0.25rem; }
+.gr-place { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin-block: 0.25rem; }
+.gr-more > summary { cursor: pointer; color: var(--indigo); font-size: 0.9em; }
+.word-grammar .gr-item + .gr-item { margin-block-start: 0.5rem; }
+.line-grammar { margin-block: 0.15rem; display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.gr-chip { font-size: 0.8em; cursor: pointer; border-color: var(--wc, var(--line)); }
+.gr-chip.gr-ahead { border-style: dashed; color: var(--muted); }

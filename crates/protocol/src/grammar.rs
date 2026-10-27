@@ -72,4 +72,24 @@ pub struct GrammarPoint {
     #[serde(default)]
     pub see_also: Vec<String>,
     pub review: GrammarReview,
+    /// How the Reader spots this point in any text, offline.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub cues: Vec<GrammarCue>,
+}
+
+/// One way a grammar point shows up in running text, with a note on what it
+/// does there. `pattern` is a small language (see `kabar_core::grammar::detect`):
+/// words separated by spaces, `a|b` for alternatives, `…` for a gap inside the
+/// sentence, `{di-}` for a word carrying that affix.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct GrammarCue {
+    #[serde(rename = "match")]
+    pub pattern: String,
+    /// Word class the matched words are coloured with: `function` (default for
+    /// one word), `verb`, `noun`, `adjective` or `phrase` (default for several).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub class: Option<String>,
+    /// What the matched words do here, short.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub note: Option<Three>,
 }
