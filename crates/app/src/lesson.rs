@@ -1444,6 +1444,12 @@ fn SummaryView(
                             li { key: "{w.word}", class: if w.arabic.is_some() { "bridge-row" } else { "" },
                                 Annotated { text: w.word.clone(), tag: target, class: if w.arabic.is_some() { "bridge-word" } else { "" } }
                                 span { class: "muted", Rich { text: pick(&w.meaning, lang).to_string(), target } }
+                                if let Some(ff) = &w.false_friend {
+                                    span { class: "lp-false-friend", title: lt(lang, L::FalseFriend),
+                                        span { "≠ {lt(lang, L::FalseFriend)}" }
+                                        bdi { lang: "id", dir: "ltr", class: "latin", "{ff}" }
+                                    }
+                                }
                                 if let Some(ar) = &w.arabic {
                                     span { class: "lp-bridge", title: lt(lang, L::FromArabic),
                                         span { class: "lp-bridge-label", "{lt(lang, L::FromArabic)}" }
