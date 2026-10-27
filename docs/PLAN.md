@@ -274,6 +274,32 @@ Done when (spec §23): a 5-minute Kabar Radio episode plays offline on the phone
   - E-mail addresses and phone numbers are scrubbed before sending.
   - The chat shows one line saying that messages go to a free AI engine.
   - A persona never asks for real personal details.
+- **As built:**
+  - `prompts/roleplay_turn@v2.md`. Its input adds `guide` (the persona's style sheet for the level band: who, register, do, dont, corrections, level guide, vocabulary, topics), `example` (the scene's example dialogue, else the one nearest the level) and `register_hint`. Persona ids go to the model with underscores (`mas_dimas`), as in the golden set. The golden items carry no `guide` yet; the bake-off judges v2 on them as they are.
+  - `kabar_core::chat`:
+    - `scenarios`: every example dialogue, plus a free chat per opener level, easiest first.
+    - `level_band`: the highest band at or below the learner's level in the same journey.
+    - `chat_level`: Javanese personas use the Javanese level once a `j*` lesson is done, else the Indonesian one.
+    - `request`: scrubbed with `learn::text::scrub`, last 12 turns, `personal: false`.
+    - `replay` makes a `Program`: the learner's lines are corrected and spoken in the language's other voice.
+  - `RoleplayTurn::check`:
+    - Every correction's `text` must appear in the learner's line (case and punctuation folded).
+    - Mbak Gadis and Mas Ardi never answer in a Javanese speech level.
+    - Mas Dimas and Bu Siti answer in one at `j*` levels.
+    - A failed check gets the router's one repair call.
+  - Sync: `kabar_protocol::chat::ChatRow` (`row: conversation | message`) in `conversations`. It lives only in `sync_rows`, found by `payload.doc` (the `sync_rows_doc` index), so there is no migration. Deleting a chat tombstones every row.
+  - App `crates/app/src/chat/` (`Screen::Chat`):
+    - Reply words use the Reader's `ReadDoc` and `InfoView` card, with the personal dictionary on top.
+    - 🔊 plays through `audio::neural_in` in the persona's voice.
+    - Handwriting goes through the Studio's `InkPad`.
+    - Leaving a chat logs `Practice { Writing }` for Kak Nur.
+  - The opener is persona content, unverified for the Javanese personas until their files are approved.
+
+**Background playback (as built).**
+- `android/…/PlaybackService.kt`: a foreground service (`mediaPlayback`) with one framework `MediaPlayer` and a `MediaSession`, so it shows lock-screen and notification controls. It needs no AndroidX and no new Gradle dependency. Audio focus loss pauses it.
+- Rust calls the static `PlaybackBridge` methods (`platform::track::*`) only for downloaded tracks. The player polls the position every 400 ms to keep the transcript in step and to follow a pause from the lock screen.
+- Leaving the player stops the service. Streamed lines stay in the WebView `<audio>`.
+- Desktop has no native player: the WebView keeps playing there anyway.
 
 **Cost:** $0.
 - Workers AI's free daily allowance and Azure F0 (0.5M characters a month) cover it. One Radio episode is about 4–5k characters.

@@ -1,0 +1,213 @@
+schema: kabar.lesson/v1
+id: bipa7.u09.l01
+language: id
+title: Ungkapan idiomatis
+can_do:
+  ar_eg: تستعمل تعبيرات اصطلاحية إندونيسية بشكل طبيعي في الكلام.
+  ar: أن تستعمل تعابير اصطلاحية إندونيسية استعمالًا طبيعيًّا.
+  en: Use Indonesian idioms naturally in conversation.
+slides:
+  - title: Kepala, muka, tangan
+    grammar: id.idiom.advanced
+    body:
+      ar_eg: |
+        تعبيرات معناها مش في كلماتها، وأغلبها بأعضاء الجسم:
+        - naik daun (يطلع على الورقة) = يشتهر، «مكسّر الدنيا»: Penyanyi Papua itu sedang naik daun.
+        - besar kepala (راسه كبيرة) = «شايف نفسه»: Jangan besar kepala setelah menang.
+        - kepala batu (راس حجر) = «دماغه ناشفة»: Adikku kepala batu, tidak mau mendengar.
+        - bermuka dua (بوشّين) = «بوشّين» زي ما بنقول بالظبط: Orang bermuka dua sulit dipercaya.
+        - angkat tangan (يرفع إيده) = يستسلم أو «يغسل إيده» من الموضوع: Semua sudah angkat tangan.
+        خد بالك: angkat tangan ممكن كمان تبقى حرفية، زي في الفصل لما تحب تسأل.
+      ar: |
+        تعابير لا يُفهم معناها من ألفاظها، وأكثرها بأعضاء الجسد:
+        - naik daun (يصعد على الورقة) = يشتهر: Penyanyi Papua itu sedang naik daun.
+        - besar kepala (كبير الرأس) = مغرور: Jangan besar kepala setelah menang.
+        - kepala batu (رأس حجر) = عنيد: Adikku kepala batu, tidak mau mendengar.
+        - bermuka dua (ذو وجهين) = منافق، كما نقول تمامًا: Orang bermuka dua sulit dipercaya.
+        - angkat tangan (يرفع يده) = يستسلم أو ينفض يده من الأمر: Semua sudah angkat tangan.
+        تنبيه: قد تأتي angkat tangan بمعناها الحرفي أيضًا، كرفع اليد في الصفّ للسؤال.
+      en: |
+        Expressions whose meaning isn't in the words, mostly built on body parts:
+        - naik daun (climb onto the leaf) = become popular: Penyanyi Papua itu sedang naik daun.
+        - besar kepala (big head) = conceited: Jangan besar kepala setelah menang.
+        - kepala batu (stone head) = stubborn: Adikku kepala batu, tidak mau mendengar.
+        - bermuka dua (two-faced) = two-faced, just as in English and Arabic: Orang bermuka dua sulit dipercaya.
+        - angkat tangan (raise the hands) = give up, wash one's hands of it: Semua sudah angkat tangan.
+        Careful: angkat tangan can also be literal, like raising your hand in class to ask.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: naik daun
+        ar_eg: يشتهر
+        ar: يشتهر
+        en: become popular
+      - text: besar kepala
+        ar_eg: شايف نفسه
+        ar: مغرور
+        en: conceited
+      - text: kepala batu
+        ar_eg: دماغه ناشفة
+        ar: عنيد
+        en: stubborn
+      - text: bermuka dua
+        ar_eg: بوشّين
+        ar: ذو وجهين
+        en: two-faced
+      - text: angkat tangan
+        ar_eg: يستسلم
+        ar: يستسلم
+        en: give up
+    words: [naik daun, besar kepala, kepala batu, bermuka dua, angkat tangan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Grup musik itu sedang naik daun.» يعني إيه؟
+      ar: ما معنى «Grup musik itu sedang naik daun.»؟
+      en: What does "Grup musik itu sedang naik daun." mean?
+    options:
+      - الفرقة طالعة على شجرة.
+      - الفرقة بقت مشهورة جدًّا.
+      - الفرقة بطّلت تغنّي.
+    answer: 1
+    words: [naik daun]
+  - id: e03
+    type: fill_blank
+    sentence: Sudah dinasihati berkali-kali, dia tetap tidak mau berubah. Dasar ___!
+    meaning:
+      ar_eg: اتنصح مرات كتير ولسّه مش عايز يتغيّر. دماغه ناشفة!
+      ar: نُصح مرّات كثيرة وما زال يأبى التغيير. يا له من عنيد!
+      en: He's been advised again and again and still won't change. Such a mule!
+    options: [kepala batu, naik daun, angkat tangan]
+    answers: [kepala batu]
+    words: [kepala batu]
+  - id: e04
+    type: listen
+    text: Setelah juara, dia jadi besar kepala dan tidak menyapa teman lamanya.
+    question:
+      ar_eg: حصل إيه بعد ما كسب البطولة؟
+      ar: ماذا حدث بعد أن فاز بالبطولة؟
+      en: What happened after he won the title?
+    options:
+      - بقى شايف نفسه ومابقاش يسلّم على صحابه القدام.
+      - بقى متواضع أكتر.
+      - اعتزل.
+    answer: 0
+    words: [besar kepala]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: ماتثقش في الواحد اللي بوشّين.
+      ar: لا تثق بذي الوجهين.
+      en: Don't trust a two-faced person.
+    answer: Jangan percaya pada orang bermuka dua.
+    distractors: [daun, batu]
+    words: [bermuka dua]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Dokter pun sudah angkat tangan.» يعني إيه؟
+      ar: ما معنى «Dokter pun sudah angkat tangan.»؟
+      en: What does "Dokter pun sudah angkat tangan." mean?
+    options:
+      - الدكتور عايز يسأل سؤال.
+      - الدكتور بيسلّم على حد.
+      - حتى الدكتور مابقاش عنده حاجة يعملها.
+    answer: 2
+    words: [angkat tangan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الممثّل ده بقى مشهور جدًّا السنة دي.
+      ar: ذاع صيت هذا الممثّل كثيرًا هذا العام.
+      en: That actor has become really popular this year.
+    answers:
+      - Aktor itu sedang naik daun tahun ini.
+      - Aktor itu naik daun tahun ini.
+      - Tahun ini aktor itu sedang naik daun.
+      - Pemain film itu sedang naik daun tahun ini.
+    words: [naik daun]
+  - id: e08
+    type: speaking
+    text: Jangan besar kepala, dan jangan juga bermuka dua.
+    meaning:
+      ar_eg: ماتبقاش شايف نفسك، ولا بوشّين كمان.
+      ar: لا تكن مغرورًا، ولا ذا وجهين.
+      en: Don't be conceited, and don't be two-faced either.
+    words: [besar kepala, bermuka dua]
+  - id: e09
+    type: dictation
+    text: Kakakku kepala batu, tetapi hatinya baik.
+    meaning:
+      ar_eg: أخويا الكبير دماغه ناشفة، بس قلبه طيّب.
+      ar: أخي الأكبر عنيد، لكنّ قلبه طيّب.
+      en: My older brother is stubborn, but he has a good heart.
+    words: [kepala batu]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Panitia hampir angkat tangan, tetapi warga datang membantu.
+    answers_meaning:
+      ar_eg:
+        - المنظّمين كانوا هيستسلموا، بس الأهالي جم يساعدوا.
+        - اللجنة كانت قرّبت ترفع الراية البيضا، لكن الناس جت ساعدت.
+      ar:
+        - كادت اللجنة المنظّمة تستسلم، لكنّ الأهالي جاؤوا للمساعدة.
+        - أوشك المنظّمون على اليأس، غير أنّ الأهالي هبّوا للعون.
+      en:
+        - The organisers almost gave up, but the residents came to help.
+        - The committee was close to throwing in the towel, but locals came to help.
+    words: [angkat tangan]
+dialogue:
+  title: Persiapan festival
+  lines:
+    - speaker: Kak Yosua
+      text: Penari perahu dari Kampung Asei sedang naik daun. Semua orang mau menonton.
+      ar_eg: راقصين المراكب من كامبونج أساي مكسّرين الدنيا. الكل عايز يتفرّج.
+      ar: راقصو القوارب من قرية أساي ذاع صيتهم، والجميع يريد المشاهدة.
+      en: The boat dancers from Kampung Asei are all the rage. Everyone wants to watch.
+    - speaker: Mohamed
+      text: Tapi kata panitia, ketua kelompoknya agak kepala batu, ya?
+      ar_eg: بس المنظّمين بيقولوا إن رئيس الفرقة دماغه ناشفة شوية، صح؟
+      ar: لكنّ المنظّمين يقولون إنّ رئيس الفرقة عنيد قليلًا، أليس كذلك؟
+      en: But the organisers say their leader is a bit stubborn, right?
+    - speaker: Kak Yosua
+      text: Dia tegas, bukan besar kepala. Dia hanya mau tarian adat dijaga.
+      ar_eg: هو حازم، مش شايف نفسه. هو بس عايز الرقص التقليدي يتحافظ عليه.
+      ar: هو حازم لا مغرور، يريد فقط أن يُصان الرقص التقليدي.
+      en: He's firm, not conceited. He just wants the traditional dance protected.
+    - speaker: Mohamed
+      text: Kalau begitu, saya salah paham. Maaf, saya tidak mau bermuka dua.
+      ar_eg: يبقى أنا فهمت غلط. آسف، مش عايز أكون بوشّين.
+      ar: إذن أسأت الفهم. عذرًا، لا أريد أن أكون ذا وجهين.
+      en: Then I misunderstood. Sorry, I don't want to be two-faced.
+new_words:
+  - word: naik daun
+    pos: phrase
+    ar_eg: يشتهر
+    ar: يشتهر
+    en: become popular
+  - word: besar kepala
+    pos: phrase
+    ar_eg: شايف نفسه
+    ar: مغرور
+    en: conceited
+  - word: kepala batu
+    pos: phrase
+    ar_eg: دماغه ناشفة
+    ar: عنيد
+    en: stubborn
+  - word: bermuka dua
+    pos: phrase
+    ar_eg: بوشّين
+    ar: ذو وجهين
+    en: two-faced
+  - word: angkat tangan
+    pos: phrase
+    ar_eg: يستسلم
+    ar: يستسلم
+    en: give up
+review:
+  status: draft
+  verified: false

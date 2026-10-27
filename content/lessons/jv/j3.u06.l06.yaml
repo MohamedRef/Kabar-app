@@ -1,0 +1,157 @@
+schema: kabar.lesson/v1
+id: j3.u06.l06
+language: jv
+title: Pesen swara saka Laweyan
+can_do:
+  ar_eg: تفهم رسالة صوتية بالكراما فيها dipun- و-ipun و-aken وترد عليها.
+  ar: أن تفهم رسالة صوتية بالكراما فيها dipun- و-ipun و-aken وتردّ عليها.
+  en: Understand a krama voice message with dipun-, -ipun and -aken, and reply to it.
+slides:
+  - title: Rungokna Pak Harjo
+    body:
+      ar_eg: |
+        بعد الورشة، Pak Harjo بعت لمحمد رسالة صوتية عن الباتيك اللي محمد عمله. اسمعها من غير ما تقرا.
+        dipuncelup = اتصبغ (اتغطس في الصبغة)، damelaken = يعمل لحد (زي «أعملّك»).
+      ar: |
+        بعد الورشة أرسل Pak Harjo إلى محمد رسالة صوتية عن الباتيك الذي صنعه محمد. استمع إليها دون قراءة.
+        dipuncelup = صُبغ (غُمس في الصبغة)، وdamelaken = يصنع لأجل أحد.
+      en: |
+        After the class, Pak Harjo sends Mohamed a voice message about the batik Mohamed made. Listen without reading.
+        dipuncelup = has been dyed (dipped), damelaken = make for someone.
+    grammar: jv.krama.affixes
+exercises:
+  - id: e01
+    type: listen
+    text: Mas Mohamed, batik sampeyan sampun dipuncelup.
+    question:
+      ar_eg: إيه اللي حصل لباتيك محمد؟
+      ar: ماذا حدث لباتيك محمد؟
+      en: What has happened to Mohamed's batik?
+    options: [sampun dipuncelup, dereng dipundamel, sampun dipuntumbas]
+    answer: 0
+    meaning:
+      ar_eg: يا أستاذ محمد، الباتيك بتاعك اتصبغ خلاص.
+      ar: يا أخي محمد، قد صُبغ الباتيك الخاص بك.
+      en: Mohamed, your batik has been dyed.
+    words: [sampun, celup]
+  - id: e02
+    type: listen
+    text: Batikipun sae sanget, Mas.
+    question:
+      ar_eg: Pak Harjo شايف الباتيك إزاي؟
+      ar: ما رأي Pak Harjo في الباتيك؟
+      en: What does Pak Harjo think of the batik?
+    options: [awis sanget, sae sanget, ageng sanget]
+    answer: 1
+    meaning:
+      ar_eg: الباتيك حلو أوي يا أستاذ.
+      ar: الباتيك جميل جدًا يا أخي.
+      en: The batik is very nice.
+    words: [batik, sae, sanget]
+  - id: e03
+    type: listen
+    text: Mangga dhateng griya kula. Kula damelaken teh.
+    question:
+      ar_eg: Pak Harjo هيعمل إيه لمحمد؟
+      ar: ماذا سيصنع Pak Harjo لمحمد؟
+      en: What will Pak Harjo make for Mohamed?
+    options: [batik, canthing, teh]
+    answer: 2
+    meaning:
+      ar_eg: اتفضل تعالى بيتي. هعملّك شاي.
+      ar: تفضّل إلى بيتي. سأصنع لك شايًا.
+      en: Please come to my house. I'll make you some tea.
+    words: [damelaken, teh]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة معناها «الباتيك بتاعك اتصبغ»؟
+      ar: أيّ جملة تعني «قد صُبغ الباتيك الخاص بك»؟
+      en: Which sentence means "Your batik has been dyed"?
+    options: ['Batik sampeyan dereng dipuncelup.', 'Batik sampeyan badhe dipuncelup.', 'Batik sampeyan sampun dipuncelup.']
+    answer: 2
+    explain:
+      ar_eg: 'sampun = خلاص، dereng = لسه، badhe = هيحصل.'
+      ar: 'sampun = قد تمّ، وdereng = ليس بعد، وbadhe = سوف.'
+      en: 'sampun = already, dereng = not yet, badhe = going to.'
+    words: [sampun, celup]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: dipuncelup
+        ar_eg: اتصبغ (اتغطس في الصبغة)
+        ar: صُبغ (غُمس في الصبغة)
+        en: was dyed (dipped)
+      - text: dipundamel
+        ar_eg: اتعمل
+        ar: صُنع
+        en: was made
+      - text: dipunwaos
+        ar_eg: اتقرا
+        ar: قُرئ
+        en: was read
+      - text: damelaken
+        ar_eg: يعمل لحد
+        ar: يصنع لأجل أحد
+        en: make for someone
+    words: [celup, damel, waos, damelaken]
+  - id: e06
+    type: dictation
+    text: Batikipun sae sanget.
+    meaning:
+      ar_eg: الباتيك حلو أوي.
+      ar: الباتيك جميل جدًا.
+      en: The batik is very nice.
+    words: [batik, sae, sanget]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: 'رد على Pak Harjo: شكرًا جدًا يا حاج. أنا جاي Laweyan.'
+      ar: 'ردّ على Pak Harjo: شكرًا جزيلًا يا سيدي. سآتي إلى Laweyan.'
+      en: "Reply to Pak Harjo: Thank you very much, sir. I'm coming to Laweyan."
+    answers: ["Matur nuwun sanget, Pak. Kula badhe dhateng Laweyan.", "Matur nuwun sanget, Pak. Kulo badhe dhateng Laweyan.", "Matur nuwun sanget, Pak Harjo. Kula badhe dhateng Laweyan.", "Matur nuwun sanget, Pak. Kula badhe teng Laweyan.", "Matur nuwun sanget, Pak. Kula dhateng Laweyan."]
+    explain:
+      ar_eg: 'badhe = arep، dhateng = nang (في الكلام teng).'
+      ar: 'badhe = arep، وdhateng = nang (وفي الكلام teng).'
+      en: 'badhe = arep, dhateng = nang (spoken teng).'
+    words: [sanget, badhe, dhateng]
+  - id: e08
+    type: speaking
+    text: Batikipun sae sanget! Matur nuwun, Pak.
+    meaning:
+      ar_eg: الباتيك حلو أوي! شكرًا يا حاج.
+      ar: الباتيك جميل جدًا! شكرًا يا سيدي.
+      en: The batik is lovely! Thank you, sir.
+    words: [batik, sae, sanget]
+dialogue:
+  title: Ing griya Pak Harjo
+  lines:
+    - speaker: Pak Harjo
+      text: Mas Mohamed, mangga! Menika batik sampeyan.
+      ar_eg: اتفضل يا أستاذ محمد! ده الباتيك بتاعك.
+      ar: تفضّل يا أخي محمد! هذا الباتيك الخاص بك.
+      en: Come in, Mohamed! Here's your batik.
+    - speaker: Mohamed
+      text: Wah, sampun dipuncelup! Sae sanget, Pak.
+      ar_eg: الله، اتصبغ خلاص! حلو أوي يا حاج.
+      ar: ما شاء الله، قد صُبغ! جميل جدًا يا سيدي.
+      en: Wow, it's been dyed! It's lovely, sir.
+    - speaker: Pak Harjo
+      text: Inggih. Kula damelaken teh, nggih?
+      ar_eg: أيوه. أعملّك شاي، ماشي؟
+      ar: نعم. أصنع لك شايًا، حسنًا؟
+      en: Yes. Shall I make you some tea?
+    - speaker: Mohamed
+      text: Inggih, matur nuwun, Pak.
+      ar_eg: ياريت، شكرًا يا حاج.
+      ar: نعم، شكرًا يا سيدي.
+      en: Yes please, thank you, sir.
+    - speaker: Pak Harjo
+      text: Mangga, Mas, mangga.
+      ar_eg: اتفضل يا أستاذ، اتفضل.
+      ar: تفضّل يا أخي، تفضّل.
+      en: Please, sit down.
+review:
+  status: draft
+  verified: false

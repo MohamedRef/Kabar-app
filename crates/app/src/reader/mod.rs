@@ -1,7 +1,7 @@
 //! Reader & Screenshot Decoder (SPEC §11): paste, share, drop or open a
 //! screenshot; every word is colored by status and explained from local data.
 
-mod card;
+pub(crate) mod card;
 mod content;
 pub mod doc;
 pub mod explain;
@@ -33,10 +33,19 @@ use crate::{Db, Ui, platform};
 
 const READER_JS: &str = include_str!("../../assets/reader.js");
 
-/// The content pack merged over the seed; parsed once (~2.5k entries).
+/// The content pack merged over the seed; parsed once (~13k entries,
+/// ~100 ms on a desktop). `warm_up` does it at start-up, off the UI thread,
+/// so the first popover doesn't wait for it.
 pub fn glossary() -> &'static dyn Glossary {
     static LOCAL: OnceLock<LocalGlossary> = OnceLock::new();
     LOCAL.get_or_init(LocalGlossary::load)
+}
+
+/// Parses the glossary in the background (SPEC §25: popover under 100 ms).
+pub fn warm_up() {
+    std::thread::spawn(|| {
+        glossary();
+    });
 }
 
 /// Every word of the content pack with its frequency rank, for spelling

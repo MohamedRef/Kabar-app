@@ -1,0 +1,209 @@
+schema: kabar.lesson/v1
+id: bipa6.u07.l05
+language: id
+title: Hak konsumen
+can_do:
+  ar_eg: تعرف حقوقك كمستهلك في إندونيسيا وتطلب حقك في محل بأدب.
+  ar: أن تعرف حقوقك مستهلكًا في إندونيسيا وتطالب بحقّك في متجر بأدب.
+  en: Know your consumer rights in Indonesia and claim them politely in a shop.
+slides:
+  - title: Pembeli juga punya hak
+    body:
+      ar_eg: |
+        إندونيسيا عندها قانون لحماية المستهلك من سنة ١٩٩٩ (UU No. 8 Tahun 1999).
+        - konsumen = المستهلك
+        - label = البطاقة / الملصق اللي على المنتج: المكونات والسعر والتاريخ
+        - kedaluwarsa = منتهي الصلاحية (Tanggal kedaluwarsa = تاريخ الانتهاء)
+        - garansi = ضمان: Garansi satu tahun = ضمان سنة
+        - struk = الإيصال / الفاتورة الصغيرة. احتفظ بيه لو عايز ترجّع حاجة.
+      ar: |
+        لدى إندونيسيا قانون لحماية المستهلك منذ ١٩٩٩ (UU No. 8 Tahun 1999).
+        - konsumen = المستهلك
+        - label = الملصق على المنتج: المكوّنات والسعر والتاريخ
+        - kedaluwarsa = منتهي الصلاحية (Tanggal kedaluwarsa = تاريخ انتهاء الصلاحية)
+        - garansi = ضمان: Garansi satu tahun = ضمان لسنة
+        - struk = الإيصال، فاحتفظ به إن أردت إرجاع شيء.
+      en: |
+        Indonesia has had a consumer protection law since 1999 (UU No. 8 Tahun 1999).
+        - konsumen = consumer
+        - label = the label on a product: ingredients, price, date
+        - kedaluwarsa = expired (Tanggal kedaluwarsa = expiry date)
+        - garansi = warranty: Garansi satu tahun = a one-year warranty
+        - struk = receipt. Keep it if you want to return something.
+    examples:
+      - text: Konsumen berhak mendapat informasi yang jelas di label produk.
+        ar_eg: المستهلك من حقه يلاقي معلومات واضحة على ملصق المنتج.
+        ar: يحقّ للمستهلك الحصول على معلومات واضحة على ملصق المنتج.
+        en: Consumers have the right to clear information on a product label.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: konsumen
+        ar_eg: مستهلك
+        ar: مستهلك
+        en: consumer
+      - text: label
+        ar_eg: ملصق المنتج
+        ar: ملصق
+        en: label
+      - text: kedaluwarsa
+        ar_eg: منتهي الصلاحية
+        ar: منتهي الصلاحية
+        en: expired
+      - text: garansi
+        ar_eg: ضمان
+        ar: ضمان
+        en: warranty
+      - text: struk
+        ar_eg: إيصال
+        ar: إيصال
+        en: receipt
+    words: [konsumen, label, kedaluwarsa, garansi, struk]
+  - id: e02
+    type: listen
+    text: Susu ini sudah kedaluwarsa sejak minggu lalu.
+    question:
+      ar_eg: مشكلة اللبن إيه؟
+      ar: ما مشكلة الحليب؟
+      en: What's wrong with the milk?
+    options:
+      - غالي أوي.
+      - صلاحيته خلصت من الأسبوع اللي فات.
+      - مافيهوش ملصق.
+    answer: 1
+    words: [kedaluwarsa]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز ترجّع تليفون بايظ. محتاج إيه؟
+      ar: تريد إرجاع هاتف معطوب. ماذا تحتاج؟
+      en: You want to return a faulty phone. What do you need?
+    options:
+      - كارت فيزيت.
+      - صورة شخصية.
+      - الإيصال والضمان.
+    answer: 2
+    words: [struk, garansi]
+  - id: e04
+    type: fill_blank
+    sentence: Laptop ini masih dalam masa ___, jadi perbaikannya gratis.
+    meaning:
+      ar_eg: اللابتوب ده لسه في فترة الضمان، فالتصليح ببلاش.
+      ar: هذا الحاسوب ما زال ضمن فترة الضمان، فإصلاحه مجّاني.
+      en: This laptop is still under warranty, so the repair is free.
+    options: [garansi, struk, label]
+    answers: [garansi]
+    words: [garansi]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: فين تلاقي تاريخ الانتهاء؟
+      ar: أين تجد تاريخ انتهاء الصلاحية؟
+      en: Where do you find the expiry date?
+    options:
+      - على ملصق المنتج.
+      - على باب المحل.
+      - في الجرنال.
+    answer: 0
+    words: [label, kedaluwarsa]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: المستهلك من حقه يرجّع الحاجة البايظة.
+      ar: يحقّ للمستهلك إرجاع السلعة المعطوبة.
+      en: The consumer has the right to return a faulty item.
+    answer: Konsumen berhak mengembalikan barang yang rusak.
+    distractors: [struk, garansi]
+    words: [konsumen, berhak]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: ممكن آخد الإيصال لو سمحت؟
+      ar: هل يمكنني الحصول على الإيصال من فضلك؟
+      en: Could I have the receipt, please?
+    answers:
+      - Boleh saya minta struknya?
+      - Boleh minta struknya?
+      - Bisa saya minta struknya?
+      - Boleh saya minta struk?
+    words: [struk]
+  - id: e08
+    type: speaking
+    text: Maaf, Mbak, roti ini sudah kedaluwarsa. Bisa ditukar?
+    meaning:
+      ar_eg: لو سمحتي، العيش ده صلاحيته خلصت. ممكن أبدّله؟
+      ar: عذرًا يا آنسة، هذا الخبز منتهي الصلاحية. هل يمكن تبديله؟
+      en: Excuse me, this bread has expired. Can it be exchanged?
+    words: [kedaluwarsa]
+  - id: e09
+    type: dictation
+    text: Konsumen harus membaca label sebelum membeli makanan.
+    meaning:
+      ar_eg: المستهلك لازم يقرا الملصق قبل ما يشتري الأكل.
+      ar: على المستهلك أن يقرأ الملصق قبل شراء الطعام.
+      en: Consumers should read the label before buying food.
+    words: [konsumen, label]
+  - id: e10
+    type: fill_blank
+    sentence: Undang-undang ini melindungi hak ___.
+    meaning:
+      ar_eg: القانون ده بيحمي حقوق المستهلك.
+      ar: يحمي هذا القانون حقوق المستهلك.
+      en: This law protects consumers' rights.
+    options: [konsumen, garansi, label]
+    answers: [konsumen]
+    words: [konsumen]
+dialogue:
+  title: Ponsel yang rusak
+  lines:
+    - speaker: Mohamed
+      text: Selamat siang, Mas. Ponsel ini mati setelah dua hari. Ini struknya.
+      ar_eg: مساء الخير. الموبايل ده فصل بعد يومين. ده الإيصال.
+      ar: مساء الخير. تعطّل هذا الهاتف بعد يومين، وهذا الإيصال.
+      en: Good afternoon. This phone died after two days. Here's the receipt.
+    - speaker: Dimas
+      text: Baik. Ponselnya masih ada garansi satu tahun. Kami bisa perbaiki gratis.
+      ar_eg: تمام. الموبايل لسه عليه ضمان سنة. نقدر نصلّحه ببلاش.
+      ar: حسنًا، ما زال الهاتف مشمولًا بضمان لسنة، ويمكننا إصلاحه مجّانًا.
+      en: All right. The phone still has a one-year warranty. We can fix it for free.
+    - speaker: Mohamed
+      text: Maaf, tetapi barangnya baru. Sebagai konsumen, bukankah saya berhak menukar?
+      ar_eg: معلش، بس الحاجة جديدة. مش من حقي كمستهلك أبدّلها؟
+      ar: عذرًا، لكنّ السلعة جديدة؛ أليس من حقّي مستهلكًا أن أستبدلها؟
+      en: Sorry, but it's brand new. As a consumer, don't I have the right to exchange it?
+    - speaker: Dimas
+      text: Benar juga. Karena baru dua hari, kami tukar dengan yang baru.
+      ar_eg: عندك حق. عشان لسه يومين، هنبدّله بواحد جديد.
+      ar: معك حقّ؛ ولأنّه لم يمضِ إلا يومان سنستبدله بجديد.
+      en: Fair enough. Since it's only been two days, we'll swap it for a new one.
+new_words:
+  - word: konsumen
+    pos: noun
+    ar_eg: مستهلك
+    ar: مستهلك
+    en: consumer
+  - word: label
+    pos: noun
+    ar_eg: ملصق
+    ar: ملصق، بطاقة المنتج
+    en: label
+  - word: kedaluwarsa
+    pos: adjective
+    ar_eg: منتهي الصلاحية
+    ar: منتهي الصلاحية
+    en: expired
+  - word: garansi
+    pos: noun
+    ar_eg: ضمان
+    ar: ضمان
+    en: warranty, guarantee
+  - word: struk
+    pos: noun
+    ar_eg: إيصال
+    ar: إيصال
+    en: receipt
+review:
+  status: draft
+  verified: false

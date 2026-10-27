@@ -1,0 +1,208 @@
+schema: kabar.lesson/v1
+id: bipa7.u02.l02
+language: id
+title: Segitiga Terumbu Karang
+can_do:
+  ar_eg: تقرا شرح علمي عن ظاهرة طبيعية وتفهم السبب والنتيجة.
+  ar: أن تقرأ شرحًا علميًّا لظاهرة طبيعية وتفهم السبب والنتيجة.
+  en: Read a scientific explanation of a natural phenomenon and follow cause and effect.
+slides:
+  - title: Jantung laut dunia
+    body:
+      ar_eg: |
+        اقرا (مكتوب للدرس، والأرقام تقريبية):
+        Raja Ampat terletak di jantung Segitiga Terumbu Karang, kawasan laut yang meliputi enam negara: Indonesia, Malaysia, Filipina, Papua Nugini, Timor-Leste, dan Kepulauan Solomon. Keanekaragaman hayati lautnya tercatat paling tinggi di dunia. Mengapa? Arus laut yang kuat membawa larva karang dan nutrisi dari Samudra Pasifik ke Samudra Hindia. Akibatnya, ekosistem terumbu karang di sini sangat kaya. Lebih dari dua juta hektare perairannya kini menjadi kawasan konservasi.
+        - keanekaragaman hayati = التنوّع البيولوجي، ekosistem = نظام بيئي، arus = تيار
+        - segitiga = مثلث، kawasan konservasi = محمية
+      ar: |
+        اقرأ (نصّ مكتوب للدرس، والأرقام تقريبية):
+        Raja Ampat terletak di jantung Segitiga Terumbu Karang, kawasan laut yang meliputi enam negara: Indonesia, Malaysia, Filipina, Papua Nugini, Timor-Leste, dan Kepulauan Solomon. Keanekaragaman hayati lautnya tercatat paling tinggi di dunia. Mengapa? Arus laut yang kuat membawa larva karang dan nutrisi dari Samudra Pasifik ke Samudra Hindia. Akibatnya, ekosistem terumbu karang di sini sangat kaya. Lebih dari dua juta hektare perairannya kini menjadi kawasan konservasi.
+        - keanekaragaman hayati = التنوّع الحيوي، ekosistem = نظام بيئي، arus = تيّار
+        - segitiga = مثلّث، kawasan konservasi = محمية طبيعية
+      en: |
+        Read (written for the lesson; figures are approximate):
+        Raja Ampat terletak di jantung Segitiga Terumbu Karang, kawasan laut yang meliputi enam negara: Indonesia, Malaysia, Filipina, Papua Nugini, Timor-Leste, dan Kepulauan Solomon. Keanekaragaman hayati lautnya tercatat paling tinggi di dunia. Mengapa? Arus laut yang kuat membawa larva karang dan nutrisi dari Samudra Pasifik ke Samudra Hindia. Akibatnya, ekosistem terumbu karang di sini sangat kaya. Lebih dari dua juta hektare perairannya kini menjadi kawasan konservasi.
+        - keanekaragaman hayati = biodiversity, ekosistem = ecosystem, arus = current
+        - segitiga = triangle, kawasan konservasi = conservation area
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: keanekaragaman hayati
+        ar_eg: التنوّع البيولوجي
+        ar: التنوّع الحيوي
+        en: biodiversity
+      - text: segitiga
+        ar_eg: مثلث
+        ar: مثلّث
+        en: triangle
+      - text: ekosistem
+        ar_eg: نظام بيئي
+        ar: نظام بيئي
+        en: ecosystem
+      - text: arus
+        ar_eg: تيار (مَيّة)
+        ar: تيّار
+        en: current
+      - text: kawasan konservasi
+        ar_eg: محمية
+        ar: محمية طبيعية
+        en: conservation area
+    words: [keanekaragaman hayati, segitiga, ekosistem, arus, kawasan konservasi]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: على حسب النص، ليه الحياة البحرية في راجا أمبات غنية قوي؟
+      ar: لماذا الحياة البحرية في راجا أمبات غنيّة إلى هذا الحدّ بحسب النصّ؟
+      en: According to the text, why is marine life in Raja Ampat so rich?
+    options:
+      - علشان المية سخنة طول السنة بس.
+      - علشان التيارات القوية بتجيب يرقات المرجان والغذا.
+      - علشان مفيش سمك كبير.
+    answer: 1
+    words: [arus]
+  - id: e03
+    type: fill_blank
+    sentence: Raja Ampat terletak di jantung ___ Terumbu Karang.
+    meaning:
+      ar_eg: راجا أمبات في قلب مثلث الشعاب المرجانية.
+      ar: تقع راجا أمبات في قلب مثلّث الشعاب المرجانية.
+      en: Raja Ampat lies at the heart of the Coral Triangle.
+    options: [Segitiga, Arus, Ekosistem]
+    answers: [Segitiga]
+    words: [segitiga]
+  - id: e04
+    type: listen
+    text: Keanekaragaman hayati laut di Raja Ampat tercatat paling tinggi di dunia.
+    question:
+      ar_eg: إيه اللي اتسجّل إنه الأعلى في العالم؟
+      ar: ما الذي سُجّل أنّه الأعلى في العالم؟
+      en: What has been recorded as the highest in the world?
+    options:
+      - التنوّع البيولوجي البحري.
+      - عدد السيّاح.
+      - درجة حرارة المية.
+    answer: 0
+    words: [keanekaragaman hayati]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الصيد ممنوع في المحمية دي.
+      ar: الصيد ممنوع في هذه المحمية.
+      en: Fishing is banned in this conservation area.
+    answer: Menangkap ikan dilarang di kawasan konservasi ini.
+    distractors: [arus, segitiga]
+    words: [kawasan konservasi]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Akibatnya» في النص بتربط إيه بإيه؟
+      ar: ماذا تربط «Akibatnya» في النصّ؟
+      en: In the text, what does "Akibatnya" link?
+    options:
+      - مثال بمثال.
+      - رأي برأي عكسه.
+      - سبب (التيارات) بنتيجته (نظام بيئي غني).
+    answer: 2
+    words: [ekosistem, arus]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: النظام البيئي ده محتاج حماية.
+      ar: يحتاج هذا النظام البيئي إلى الحماية.
+      en: This ecosystem needs protection.
+    answers:
+      - Ekosistem ini perlu dilindungi.
+      - Ekosistem ini membutuhkan perlindungan.
+      - Ekosistem ini memerlukan perlindungan.
+      - Ekosistem ini perlu perlindungan.
+    words: [ekosistem]
+  - id: e08
+    type: speaking
+    text: Segitiga Terumbu Karang meliputi enam negara.
+    meaning:
+      ar_eg: مثلث الشعاب المرجانية بيشمل ست دول.
+      ar: يشمل مثلّث الشعاب المرجانية ستّ دول.
+      en: The Coral Triangle covers six countries.
+    words: [segitiga]
+  - id: e09
+    type: dictation
+    text: Kawasan konservasi melindungi keanekaragaman hayati laut.
+    meaning:
+      ar_eg: المحمية بتحمي التنوّع البيولوجي في البحر.
+      ar: تحمي المحمية التنوّع الحيوي البحري.
+      en: The conservation area protects marine biodiversity.
+    words: [kawasan konservasi, keanekaragaman hayati]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Arus yang kuat menjaga ekosistem karang tetap sehat.
+    answers_meaning:
+      ar_eg:
+        - التيارات القوية بتخلّي النظام البيئي للمرجان صحّي.
+        - التيار القوي بيحافظ على صحة الشعاب المرجانية.
+      ar:
+        - تحافظ التيّارات القويّة على سلامة النظام البيئي المرجاني.
+        - يُبقي التيّار القويّ منظومة المرجان سليمة.
+      en:
+        - Strong currents keep the coral ecosystem healthy.
+        - The strong current keeps the reef ecosystem in good health.
+    words: [arus, ekosistem]
+dialogue:
+  title: Sebelum menyelam
+  lines:
+    - speaker: Pak Yance
+      text: Hati-hati, arus di selat ini kuat sekali hari ini.
+      ar_eg: خلّي بالك، التيار في المضيق ده قوي جدًا النهارده.
+      ar: احترس، فالتيّار في هذا المضيق قويّ جدًّا اليوم.
+      en: Careful, the current in this strait is very strong today.
+    - speaker: Mohamed
+      text: Arus kuat itu berbahaya, tetapi juga membawa makanan untuk karang, kan?
+      ar_eg: التيار القوي ده خطر، بس كمان بيجيب أكل للمرجان، صح؟
+      ar: التيّار القويّ خطر، لكنّه يحمل الغذاء للمرجان أيضًا، أليس كذلك؟
+      en: A strong current is dangerous, but it also brings food for the coral, right?
+    - speaker: Pak Yance
+      text: Betul. Karena itu keanekaragaman hayati di sini luar biasa.
+      ar_eg: صح. علشان كده التنوّع البيولوجي هنا مش طبيعي.
+      ar: صحيح، ولهذا فالتنوّع الحيوي هنا مذهل.
+      en: Right. That's why the biodiversity here is extraordinary.
+    - speaker: Mohamed
+      text: Dan semua ini kawasan konservasi?
+      ar_eg: وكل ده محمية؟
+      ar: وهل كلّ هذا محمية؟
+      en: And all of this is a conservation area?
+    - speaker: Pak Yance
+      text: Sebagian besar. Penyelam membayar tiket untuk ikut menjaganya.
+      ar_eg: أغلبه. الغطّاسين بيدفعوا تذكرة عشان يساهموا في حمايته.
+      ar: معظمه، ويدفع الغوّاصون رسمًا ليسهموا في حمايته.
+      en: Most of it. Divers pay a fee to help protect it.
+new_words:
+  - word: keanekaragaman hayati
+    pos: noun
+    ar_eg: التنوّع البيولوجي
+    ar: التنوّع الحيوي
+    en: biodiversity
+  - word: segitiga
+    pos: noun
+    ar_eg: مثلث
+    ar: مثلّث
+    en: triangle
+  - word: ekosistem
+    pos: noun
+    ar_eg: نظام بيئي
+    ar: نظام بيئي
+    en: ecosystem
+  - word: arus
+    pos: noun
+    ar_eg: تيار (مَيّة)
+    ar: تيّار
+    en: current
+  - word: kawasan konservasi
+    pos: noun
+    ar_eg: محمية
+    ar: محمية طبيعية
+    en: conservation area
+review:
+  status: draft
+  verified: false

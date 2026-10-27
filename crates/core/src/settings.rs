@@ -40,6 +40,23 @@ impl Theme {
     }
 }
 
+/// How the Arabic-script pronunciation (تعريب النطق) shows next to
+/// Indonesian and Javanese text.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub enum PronMode {
+    /// Always under the word.
+    #[default]
+    On,
+    /// Behind a tap, so reading the Latin spelling comes first.
+    Tap,
+    Off,
+}
+
+impl PronMode {
+    pub const ALL: [Self; 3] = [Self::On, Self::Tap, Self::Off];
+}
+
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct Settings {
     pub ui_language: UiLanguage,
@@ -50,6 +67,8 @@ pub struct Settings {
     pub welcomed: bool,
     /// Lesson and review sounds are off (SPEC §9: toggleable, on by default).
     pub sounds_off: bool,
+    /// Arabic-script pronunciation next to target-language text.
+    pub pronunciation: PronMode,
 }
 
 /// Keys as stored in the `settings` table.
@@ -59,6 +78,7 @@ pub mod keys {
     pub const EASTERN_DIGITS: &str = "eastern_digits";
     pub const WELCOMED: &str = "welcomed";
     pub const SOUNDS_OFF: &str = "sounds_off";
+    pub const PRONUNCIATION: &str = "pronunciation";
 }
 
 impl Settings {
@@ -73,6 +93,7 @@ impl Settings {
                 keys::EASTERN_DIGITS => s.eastern_digits = serde_json::from_str(value).unwrap_or_default(),
                 keys::WELCOMED => s.welcomed = serde_json::from_str(value).unwrap_or_default(),
                 keys::SOUNDS_OFF => s.sounds_off = serde_json::from_str(value).unwrap_or_default(),
+                keys::PRONUNCIATION => s.pronunciation = serde_json::from_str(value).unwrap_or_default(),
                 _ => {}
             }
         }
@@ -92,6 +113,7 @@ impl Settings {
         push(self.eastern_digits != other.eastern_digits, keys::EASTERN_DIGITS, json(&other.eastern_digits));
         push(self.welcomed != other.welcomed, keys::WELCOMED, json(&other.welcomed));
         push(self.sounds_off != other.sounds_off, keys::SOUNDS_OFF, json(&other.sounds_off));
+        push(self.pronunciation != other.pronunciation, keys::PRONUNCIATION, json(&other.pronunciation));
         out
     }
 }
@@ -135,5 +157,14 @@ mod tests {
             let s = Settings::from_pairs([("theme", format!("\"{}\"", theme.as_str()).as_str())]);
             assert_eq!(s.theme, theme);
         }
+    }
+
+    #[test]
+    fn pronunciation_defaults_on_and_round_trips() {
+        assert_eq!(Settings::default().pronunciation, PronMode::On);
+        let new = Settings { pronunciation: PronMode::Tap, ..Settings::default() };
+        let pairs = Settings::default().changed_pairs(&new);
+        assert_eq!(pairs, vec![("pronunciation", "\"tap\"".to_string())]);
+        assert_eq!(Settings::from_pairs(pairs.iter().map(|(k, v)| (*k, v.as_str()))), new);
     }
 }

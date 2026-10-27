@@ -1,0 +1,206 @@
+schema: kabar.lesson/v1
+id: bipa7.u02.l06
+language: id
+title: Sasi laut
+can_do:
+  ar_eg: تشرح قاعدة «ساسي» العُرفية اللي بتقفل البحر فترة علشان الخير يرجع.
+  ar: أن تشرح قاعدة «ساسي» العرفية التي تُغلق البحر مدّةً ليتجدّد خيره.
+  en: Explain the customary sasi rule that closes the sea for a while so it can recover.
+slides:
+  - title: Laut juga perlu istirahat
+    body:
+      ar_eg: |
+        الـ sasi قاعدة عُرفية قديمة في مالوكو وبابوا: أهل القرية بيتفقوا يقفلوا حتة من البحر فترة، مايصطادوش منها.
+        - tutup sasi = قفل الساسي: من النهارده ممنوع تاخد teripang (خيار البحر) أو جمبري بحر أو صدف
+        - buka sasi = فتح الساسي: بعد شهور، كل القرية بتطلع تجمع مع بعض
+        - hasil laut = خير البحر (سمك، خيار البحر، صدف...)
+        - lestari = مستدام: بيفضل موجود للأجيال الجاية
+        في راجا أمبات ساعات الكنيسة هي اللي بتعلن الساسي، وفيه قرى الستات فيها هم اللي بيديروه.
+      ar: |
+        الـ sasi قاعدة عرفية قديمة في مالوكو وبابوا: يتّفق أهل القرية على إغلاق جزء من البحر مدّةً لا يُصطاد فيه.
+        - tutup sasi = إغلاق الساسي، فيُمنع من اليوم أخذ teripang (خيار البحر) والكركند والأصداف
+        - buka sasi = فتح الساسي، فبعد أشهر تخرج القرية كلّها للجمع معًا
+        - hasil laut = خيرات البحر (السمك وخيار البحر والأصداف...)
+        - lestari = مستدام، يبقى للأجيال القادمة
+        وفي راجا أمبات قد تعلن الكنيسة الساسي، وفي بعض القرى تديره النساء.
+      en: |
+        Sasi is an old customary rule in Maluku and Papua: a village agrees to close part of the sea for a while, with no harvesting.
+        - tutup sasi = closing the sasi: from today, no taking teripang (sea cucumber), lobster or shells
+        - buka sasi = opening the sasi: months later, the whole village harvests together
+        - hasil laut = sea produce (fish, sea cucumber, shells...)
+        - lestari = sustainable, lasting for future generations
+        In Raja Ampat the church sometimes declares sasi, and in some villages women run it.
+    examples:
+      - text: Setelah enam bulan tutup sasi, teripang di karang itu bertambah banyak.
+        ar_eg: بعد ست شهور من قفل الساسي، خيار البحر في الشعاب دي زاد كتير.
+        ar: بعد ستّة أشهر من إغلاق الساسي، كثر خيار البحر في ذلك المرجان.
+        en: After six months of closed sasi, the sea cucumbers on that reef multiplied.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: sasi
+        ar_eg: قاعدة قفل البحر العُرفية
+        ar: حظر عرفيّ مؤقّت
+        en: customary harvest ban
+      - text: hasil laut
+        ar_eg: خير البحر
+        ar: خيرات البحر
+        en: sea produce
+      - text: lestari
+        ar_eg: مستدام
+        ar: مستدام
+        en: sustainable
+      - text: tutup sasi
+        ar_eg: قفل الساسي
+        ar: إغلاق الساسي
+        en: closing the sasi
+      - text: buka sasi
+        ar_eg: فتح الساسي
+        ar: فتح الساسي
+        en: opening the sasi
+    words: [sasi, hasil laut, lestari, tutup sasi, buka sasi]
+  - id: e02
+    type: listen
+    text: Mulai hari ini tutup sasi. Tidak ada yang boleh mengambil teripang sampai bulan Desember.
+    question:
+      ar_eg: إيه اللي اتعلن؟
+      ar: ما الذي أُعلن؟
+      en: What was announced?
+    options:
+      - مسابقة صيد في ديسمبر.
+      - سوق جديد لخيار البحر.
+      - ممنوع حد ياخد خيار البحر لحد ديسمبر.
+    answer: 2
+    words: [tutup sasi]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ليه القرية بتعمل sasi؟
+      ar: لماذا تفرض القرية الـ sasi؟
+      en: Why does a village hold a sasi?
+    options:
+      - علشان البحر يرتاح وخيره يرجع يكتر.
+      - علشان يبيعوا تذاكر للسيّاح.
+      - علشان الصيادين ياخدوا إجازة بس.
+    answer: 0
+    words: [sasi, hasil laut]
+  - id: e04
+    type: fill_blank
+    sentence: Pada hari ___, seluruh kampung turun ke laut bersama-sama.
+    meaning:
+      ar_eg: يوم فتح الساسي، القرية كلها بتنزل البحر مع بعض.
+      ar: في يوم فتح الساسي تنزل القرية كلّها إلى البحر معًا.
+      en: On the day the sasi opens, the whole village goes down to the sea together.
+    options: [buka sasi, tutup sasi, hasil laut]
+    answers: [buka sasi]
+    words: [buka sasi]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الساسي بيخلّي خير البحر مستدام.
+      ar: يجعل الساسي خيرات البحر مستدامة.
+      en: Sasi keeps sea produce sustainable.
+    answer: Sasi membuat hasil laut tetap lestari.
+    distractors: [tutup, buka]
+    words: [sasi, hasil laut, lestari]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة معناها «مستدام»؟
+      ar: أيّ كلمة تعني «مستدام»؟
+      en: Which word means "sustainable"?
+    options: [endemik, lestari, ringkas]
+    answer: 1
+    words: [lestari]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Kalau laut kita lestari, anak cucu kita juga bisa menikmati hasil laut.
+    answers_meaning:
+      ar_eg:
+        - لو بحرنا فضل مستدام، ولادنا وأحفادنا كمان هيستمتعوا بخيره.
+        - لو حافظنا على البحر، ولاد ولادنا كمان هياكلوا من خيره.
+      ar:
+        - إن بقي بحرنا مستدامًا فسينعم أبناؤنا وأحفادنا أيضًا بخيراته.
+        - إذا حافظنا على بحرنا، تمتّع أحفادنا كذلك بخيراته.
+      en:
+        - If our sea stays sustainable, our children and grandchildren can enjoy its produce too.
+        - If we keep our sea healthy, our descendants can enjoy what it gives too.
+    words: [lestari, hasil laut]
+  - id: e08
+    type: speaking
+    text: Di kampung ini, kelompok mama-mama yang mengatur tutup sasi dan buka sasi.
+    meaning:
+      ar_eg: في القرية دي، مجموعة الستات هي اللي بتنظّم قفل الساسي وفتحه.
+      ar: في هذه القرية تنظّم مجموعة النساء إغلاق الساسي وفتحه.
+      en: In this village, the women's group runs the closing and opening of sasi.
+    words: [tutup sasi, buka sasi]
+  - id: e09
+    type: dictation
+    text: Sasi adalah aturan adat untuk menjaga hasil laut.
+    meaning:
+      ar_eg: الساسي قاعدة عُرفية علشان تحافظ على خير البحر.
+      ar: الساسي قاعدة عرفية لحفظ خيرات البحر.
+      en: Sasi is a customary rule to protect sea produce.
+    words: [sasi, hasil laut]
+  - id: e10
+    type: speaking
+    text: Saat buka sasi, kami hanya mengambil teripang yang sudah besar supaya tetap lestari.
+    meaning:
+      ar_eg: وقت فتح الساسي، بناخد بس خيار البحر الكبير علشان يفضل مستدام.
+      ar: عند فتح الساسي لا نأخذ إلا خيار البحر الكبير ليبقى مستدامًا.
+      en: When the sasi opens, we only take big sea cucumbers so it stays sustainable.
+    words: [buka sasi, lestari]
+dialogue:
+  title: Daun kelapa di tiang
+  lines:
+    - speaker: Mohamed
+      text: Pak Yance, kenapa ada daun kelapa diikat di tiang itu?
+      ar_eg: يا أستاذ يانسي، ليه فيه سعف نخل متربوط في العمود ده؟
+      ar: يا أستاذ يانسي، لماذا رُبط سعف النخل على ذلك العمود؟
+      en: Pak Yance, why is there a palm leaf tied to that post?
+    - speaker: Pak Yance
+      text: Itu tanda tutup sasi. Karang di depan kampung sedang istirahat.
+      ar_eg: دي علامة قفل الساسي. الشعاب اللي قدّام القرية بترتاح دلوقتي.
+      ar: تلك علامة إغلاق الساسي، فمرجان ما أمام القرية في استراحة الآن.
+      en: That's the sign of a closed sasi. The reef in front of the village is resting.
+    - speaker: Mohamed
+      text: Jadi kapan buka sasi?
+      ar_eg: طب الساسي هيتفتح إمتى؟
+      ar: فمتى يُفتح الساسي؟
+      en: So when does the sasi open?
+    - speaker: Pak Yance
+      text: Bulan depan. Hasil lautnya akan dibagi untuk seluruh kampung dan gereja.
+      ar_eg: الشهر الجاي. وخير البحر هيتقسم على القرية كلها والكنيسة.
+      ar: الشهر القادم، وستُقسم خيرات البحر على القرية كلّها والكنيسة.
+      en: Next month. The harvest will be shared by the whole village and the church.
+new_words:
+  - word: sasi
+    pos: noun
+    ar_eg: قاعدة قفل البحر العُرفية
+    ar: حظر عرفيّ مؤقّت للصيد
+    en: sasi (customary temporary harvest ban)
+  - word: hasil laut
+    pos: noun
+    ar_eg: خير البحر
+    ar: خيرات البحر
+    en: sea produce, seafood
+  - word: lestari
+    pos: adjective
+    ar_eg: مستدام
+    ar: مستدام، باقٍ
+    en: sustainable, lasting
+  - word: tutup sasi
+    pos: phrase
+    ar_eg: قفل الساسي
+    ar: إغلاق الساسي
+    en: closing the sasi
+  - word: buka sasi
+    pos: phrase
+    ar_eg: فتح الساسي
+    ar: فتح الساسي
+    en: opening the sasi
+review:
+  status: draft
+  verified: false

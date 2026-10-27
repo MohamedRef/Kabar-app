@@ -1,0 +1,199 @@
+schema: kabar.lesson/v1
+id: bipa7.u03.l02
+language: id
+title: Bahasa sesuai konteks
+can_do:
+  ar_eg: تختار نوع اللغة اللي يناسب الموقف، حكاية ولا خبر ولا شات.
+  ar: أن تختار من اللغة ما يناسب المقام، حكايةً أو خبرًا أو محادثة.
+  en: Choose the kind of language that fits the situation, whether tale, news or chat.
+slides:
+  - title: Satu peristiwa, tiga gaya
+    grammar: id.register.context
+    body:
+      ar_eg: |
+        نفس الحدث (مكتوب للدرس) بتلات أشكال، على حسب الـ konteks (السياق):
+        - حكاية: Alkisah, pada zaman dahulu kala, hiduplah seorang nelayan di Pulau Arborek.
+        - خبر: Seorang nelayan Arborek dilaporkan menemukan penyu raksasa, Selasa (27/10).
+        - شات: Eh, tadi ada nelayan nemu penyu gede banget, lho!
+        الـ pendongeng (الحكّاء) بيبدأ بـ Alkisah (يُحكى إنّ) وPada zaman dahulu kala (زمان قوي / في قديم الزمان).
+        ماتقولش Alkisah في إيميل شغل، ولا lho في خبر!
+      ar: |
+        الحدث نفسه (مكتوب للدرس) بثلاثة أساليب بحسب الـ konteks (السياق):
+        - حكاية: Alkisah, pada zaman dahulu kala, hiduplah seorang nelayan di Pulau Arborek.
+        - خبر: Seorang nelayan Arborek dilaporkan menemukan penyu raksasa, Selasa (27/10).
+        - محادثة: Eh, tadi ada nelayan nemu penyu gede banget, lho!
+        يفتتح الـ pendongeng (الحكّاء) بـ Alkisah (يُحكى أنّ) وPada zaman dahulu kala (في قديم الزمان).
+        فلا تكتب Alkisah في رسالة عمل، ولا lho في خبر!
+      en: |
+        The same event (written for the lesson) in three styles, depending on the konteks (context):
+        - Tale: Alkisah, pada zaman dahulu kala, hiduplah seorang nelayan di Pulau Arborek.
+        - News: Seorang nelayan Arborek dilaporkan menemukan penyu raksasa, Selasa (27/10).
+        - Chat: Eh, tadi ada nelayan nemu penyu gede banget, lho!
+        A pendongeng (storyteller) opens with Alkisah (the story goes) and Pada zaman dahulu kala (once upon a time).
+        Don't write Alkisah in a work email, or lho in a news story!
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: alkisah
+        ar_eg: يُحكى إنّ
+        ar: يُحكى أنّ
+        en: the story goes, once
+      - text: zaman dahulu kala
+        ar_eg: في قديم الزمان
+        ar: في قديم الزمان
+        en: long, long ago
+      - text: konteks
+        ar_eg: سياق
+        ar: سياق
+        en: context
+      - text: pendongeng
+        ar_eg: حكّاء / راوي حواديت
+        ar: حكّاء
+        en: storyteller
+    words: [alkisah, zaman dahulu kala, konteks, pendongeng]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة مكانها حكاية شعبية؟
+      ar: أيّ جملة موضعها حكاية شعبية؟
+      en: Which sentence belongs in a folk tale?
+    options:
+      - Nelayan itu dilaporkan menemukan penyu, Selasa (27/10).
+      - Alkisah, pada zaman dahulu kala, hiduplah seorang nelayan.
+      - Eh, ada nelayan nemu penyu, lho!
+    answer: 1
+    words: [alkisah, zaman dahulu kala]
+  - id: e03
+    type: fill_blank
+    sentence: Bahasa yang baik adalah bahasa yang sesuai dengan ___.
+    meaning:
+      ar_eg: اللغة الكويسة هي اللي تناسب السياق.
+      ar: اللغة الجيّدة هي ما يناسب السياق.
+      en: Good language is language that fits the context.
+    options: [konteks, alkisah, pendongeng]
+    answers: [konteks]
+    words: [konteks]
+  - id: e04
+    type: listen
+    text: Pendongeng tua itu selalu memulai ceritanya dengan kata alkisah.
+    question:
+      ar_eg: الحكّاء العجوز بيبدأ حكايته إزاي؟
+      ar: بمَ يبدأ الحكّاء العجوز حكايته؟
+      en: How does the old storyteller start his tales?
+    options:
+      - بكلمة alkisah.
+      - بالأخبار.
+      - بسؤال للجمهور.
+    answer: 0
+    words: [pendongeng, alkisah]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: في قديم الزمان، كان فيه ملك طيّب.
+      ar: في قديم الزمان، كان هناك ملك طيّب.
+      en: Long, long ago, there lived a kind king.
+    answer: Pada zaman dahulu kala, hiduplah seorang raja yang baik.
+    distractors: [konteks, alkisah]
+    words: [zaman dahulu kala]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إنت بتكتب إيميل لمدير. أنهي كلمة ماتنفعش؟
+      ar: تكتب رسالة إلى مدير. أيّ كلمة لا تصلح؟
+      en: You're emailing a manager. Which word doesn't fit?
+    options: [Dengan hormat, Terima kasih, lho]
+    answer: 2
+    words: [konteks]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: جدّتي كانت حكّاءة مشهورة في القرية.
+      ar: كانت جدّتي حكّاءة مشهورة في القرية.
+      en: My grandmother was a well-known storyteller in the village.
+    answers:
+      - Nenek saya adalah pendongeng terkenal di desa.
+      - Nenek saya pendongeng yang terkenal di desa.
+      - Nenekku adalah pendongeng terkenal di desa.
+      - Nenek saya dulu pendongeng terkenal di desa.
+    words: [pendongeng]
+  - id: e08
+    type: speaking
+    text: Alkisah, di sebuah pulau kecil, hiduplah seorang nelayan yang jujur.
+    meaning:
+      ar_eg: يُحكى إنّ في جزيرة صغيرة كان عايش صيّاد أمين.
+      ar: يُحكى أنّه في جزيرة صغيرة عاش صيّاد أمين.
+      en: Once, on a small island, there lived an honest fisherman.
+    words: [alkisah]
+  - id: e09
+    type: dictation
+    text: Cerita itu terjadi pada zaman dahulu kala.
+    meaning:
+      ar_eg: الحكاية دي حصلت في قديم الزمان.
+      ar: وقعت تلك الحكاية في قديم الزمان.
+      en: That story took place long, long ago.
+    words: [zaman dahulu kala]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Pendongeng yang hebat mengubah gaya bahasanya sesuai konteks.
+    answers_meaning:
+      ar_eg:
+        - الحكّاء الشاطر بيغيّر أسلوب كلامه حسب السياق.
+        - الراوي الماهر بيظبط لغته على حسب الموقف.
+      ar:
+        - يغيّر الحكّاء البارع أسلوبه بحسب السياق.
+        - يكيّف الراوي الماهر لغته وفق المقام.
+      en:
+        - A great storyteller changes his style to suit the context.
+        - A skilled storyteller adapts their language to the context.
+    words: [pendongeng, konteks]
+dialogue:
+  title: Tiga cara bercerita
+  lines:
+    - speaker: Mama Ruth
+      text: Malam ini anak-anak minta dongeng. Saya mulai, "Alkisah, pada zaman dahulu kala…"
+      ar_eg: الليلة العيال طالبين حدّوتة. هبدأ «يُحكى إنّ في قديم الزمان…»
+      ar: يطلب الأطفال الليلة حكاية، فأبدأ «يُحكى أنّه في قديم الزمان…»
+      en: Tonight the children want a story. I begin, "Long, long ago…"
+    - speaker: Mohamed
+      text: Kalau Kaka Yohana di radio, pasti beda lagi.
+      ar_eg: لو كاكا يوهانا في الراديو، أكيد هتبقى حاجة تانية.
+      ar: ولو كانت كاكا يوهانا في الإذاعة لاختلف الأمر حتمًا.
+      en: If Kaka Yohana told it on the radio, it'd be different again.
+    - speaker: Mama Ruth
+      text: Betul. Konteksnya lain, bahasanya lain. Pendongeng harus tahu siapa yang mendengar.
+      ar_eg: صح. السياق مختلف، فاللغة مختلفة. الحكّاء لازم يعرف مين اللي سامعه.
+      ar: صحيح. اختلف السياق فاختلفت اللغة، وعلى الحكّاء أن يعرف من يسمعه.
+      en: Right. Different context, different language. A storyteller must know who's listening.
+    - speaker: Mohamed
+      text: Dan kalau di grup WhatsApp, "Eh, dengar cerita seru, nggak?"
+      ar_eg: ولو في جروب واتساب، «إيه، سمعتوا الحكاية الجامدة دي؟»
+      ar: وفي مجموعة واتساب «هل سمعتم القصّة المثيرة؟»
+      en: And in a WhatsApp group, "Hey, heard this great story?"
+new_words:
+  - word: alkisah
+    pos: adverb
+    arabic: القصّة
+    ar_eg: يُحكى إنّ
+    ar: يُحكى أنّ
+    en: the story goes, once
+  - word: zaman dahulu kala
+    pos: phrase
+    ar_eg: في قديم الزمان
+    ar: في قديم الزمان
+    en: long, long ago
+  - word: konteks
+    pos: noun
+    ar_eg: سياق
+    ar: سياق
+    en: context
+  - word: pendongeng
+    pos: noun
+    ar_eg: حكّاء / راوي حواديت
+    ar: حكّاء
+    en: storyteller
+review:
+  status: draft
+  verified: false

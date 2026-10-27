@@ -1,0 +1,220 @@
+schema: kabar.lesson/v1
+id: bipa6.u10.l04
+language: id
+title: Kerangka esai
+can_do:
+  ar_eg: تعمل هيكل لمقال أكاديمي قبل ما تكتب وتحط الأفكار بترتيب منطقي.
+  ar: أن تضع هيكلًا لمقال أكاديمي قبل الكتابة وترتّب الأفكار ترتيبًا منطقيًّا.
+  en: Build an outline for an academic essay before writing and put ideas in a logical order.
+slides:
+  - title: Rumah sebelum dinding
+    body:
+      ar_eg: |
+        قبل ما تكتب، اعمل kerangka (هيكل) للمقال، زي هيكل البيت قبل الحيطان.
+        - kerangka = هيكل / مخطط
+        - subjudul = عنوان فرعي لكل جزء
+        - butir = نقطة / بند في القايمة
+        - urutan = ترتيب: الأفكار لازم يبقى ليها urutan منطقي
+        مثال لمقال عن Sinabung:
+        1. Pendahuluan: tesis
+        2. Subjudul: Dampak letusan (٣ butir)
+        3. Subjudul: Kehidupan sesudahnya
+        4. Kesimpulan
+      ar: |
+        قبل الكتابة ضع kerangka (هيكلًا) للمقال، كهيكل البيت قبل الجدران.
+        - kerangka = هيكل، مخطّط
+        - subjudul = عنوان فرعي لكلّ جزء
+        - butir = نقطة، بند في قائمة
+        - urutan = ترتيب، فللأفكار urutan منطقي
+        مثال لمقال عن Sinabung:
+        ١. Pendahuluan: tesis
+        ٢. Subjudul: Dampak letusan (٣ butir)
+        ٣. Subjudul: Kehidupan sesudahnya
+        ٤. Kesimpulan
+      en: |
+        Before you write, make a kerangka (outline), like a house's frame before its walls.
+        - kerangka = outline, framework
+        - subjudul = subheading for each part
+        - butir = point, item in a list
+        - urutan = order; ideas need a logical urutan
+        A sample for an essay on Sinabung:
+        1. Pendahuluan: tesis
+        2. Subjudul: Dampak letusan (3 butir)
+        3. Subjudul: Kehidupan sesudahnya
+        4. Kesimpulan
+    examples:
+      - text: Kerangka esai saya punya tiga subjudul dan sembilan butir.
+        ar_eg: هيكل مقالي فيه تلات عناوين فرعية وتسع نقط.
+        ar: في هيكل مقالي ثلاثة عناوين فرعية وتسع نقاط.
+        en: My essay outline has three subheadings and nine points.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kerangka
+        ar_eg: هيكل
+        ar: هيكل
+        en: outline
+      - text: subjudul
+        ar_eg: عنوان فرعي
+        ar: عنوان فرعي
+        en: subheading
+      - text: butir
+        ar_eg: نقطة في قايمة
+        ar: بند
+        en: point, item
+      - text: urutan
+        ar_eg: ترتيب
+        ar: ترتيب
+        en: order
+      - text: pendahuluan
+        ar_eg: مقدمة
+        ar: مقدّمة
+        en: introduction
+    words: [kerangka, subjudul, butir, urutan, pendahuluan]
+  - id: e02
+    type: listen
+    text: Pak Ginting meminta kami membuat kerangka sebelum menulis esai.
+    question:
+      ar_eg: الأستاذ جينتينج طلب إيه؟
+      ar: ماذا طلب الأستاذ غينتينغ؟
+      en: What did Pak Ginting ask for?
+    options:
+      - مقال كامل النهارده.
+      - هيكل قبل كتابة المقال.
+      - قايمة مراجع بس.
+    answer: 1
+    words: [kerangka]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي urutan صح لمقال؟
+      ar: أيّ urutan صحيح لمقال؟
+      en: Which urutan is right for an essay?
+    options:
+      - Kesimpulan, isi, pendahuluan
+      - Isi, kesimpulan, pendahuluan
+      - Pendahuluan, isi, kesimpulan
+    answer: 2
+    words: [urutan]
+  - id: e04
+    type: fill_blank
+    sentence: Setiap bagian isi diberi ___ supaya pembaca mudah mengikuti.
+    meaning:
+      ar_eg: كل جزء في المقال ليه عنوان فرعي عشان القارئ يتابع بسهولة.
+      ar: يُمنح كلّ جزء عنوانًا فرعيًّا ليتابع القارئ بسهولة.
+      en: Each body section gets a subheading so readers can follow easily.
+    options: [subjudul, butir, urutan]
+    answers: [subjudul]
+    words: [subjudul]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «butir» في الـ kerangka يعني إيه؟
+      ar: ما «butir» في الـ kerangka؟
+      en: What is a "butir" in a kerangka?
+    options:
+      - نقطة واحدة في القايمة.
+      - المقال كله.
+      - صفحة المراجع.
+    answer: 0
+    explain:
+      ar_eg: butir حرفيًا = حبّاية، زي butir beras (حبّاية رز). في القايمة = بند.
+      ar: butir حرفيًّا = حبّة، كـ butir beras (حبّة أرزّ)، وفي القائمة = بند.
+      en: butir literally means a grain, as in butir beras (a grain of rice); in a list, an item.
+    words: [butir]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: ترتيب الأفكار في الهيكل ده مش منطقي.
+      ar: ترتيب الأفكار في هذا الهيكل غير منطقي.
+      en: The order of ideas in this outline isn't logical.
+    answer: Urutan ide dalam kerangka ini tidak logis.
+    distractors: [subjudul, butir]
+    words: [urutan, kerangka]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الجزء التاني فيه تلات نقط.
+      ar: في الجزء الثاني ثلاث نقاط.
+      en: The second section has three points.
+    answers:
+      - Bagian kedua punya tiga butir.
+      - Bagian kedua mempunyai tiga butir.
+      - Ada tiga butir di bagian kedua.
+      - Bagian kedua terdiri atas tiga butir.
+    words: [butir]
+  - id: e08
+    type: speaking
+    text: Subjudul pertama saya adalah "Dampak letusan Sinabung".
+    meaning:
+      ar_eg: أول عنوان فرعي عندي «أثر ثوران سينابونج».
+      ar: عنواني الفرعي الأوّل «آثار ثوران سينابونغ».
+      en: My first subheading is "The impact of Sinabung's eruption".
+    words: [subjudul]
+  - id: e09
+    type: dictation
+    text: Kerangka yang baik membuat urutan tulisan lebih jelas.
+    meaning:
+      ar_eg: الهيكل الكويس بيخلّي ترتيب الكتابة أوضح.
+      ar: يجعل الهيكل الجيّد ترتيب الكتابة أوضح.
+      en: A good outline makes the order of the writing clearer.
+    words: [kerangka, urutan]
+  - id: e10
+    type: fill_blank
+    sentence: Tulis tesis di bagian pendahuluan, lalu buat tiga ___ untuk mendukungnya.
+    meaning:
+      ar_eg: اكتب الفكرة الأساسية في المقدمة، وبعدين اعمل تلات نقط تدعمها.
+      ar: اكتب الأطروحة في المقدّمة، ثم ضع ثلاث نقاط تدعمها.
+      en: Put the thesis in the introduction, then make three points to support it.
+    options: [butir, kerangka, subjudul]
+    answers: [butir]
+    words: [butir, pendahuluan]
+dialogue:
+  title: Sebelum menulis
+  lines:
+    - speaker: Rani
+      text: Mohamed, esaimu dikumpulkan Jumat. Kamu sudah mulai?
+      ar_eg: يا محمد، مقالك هيتسلّم الجمعة. بدأت؟
+      ar: يا محمد، موعد تسليم مقالك الجمعة. هل بدأت؟
+      en: Mohamed, your essay is due Friday. Have you started?
+    - speaker: Mohamed
+      text: Belum menulis, tetapi kerangkanya sudah ada. Tiga subjudul.
+      ar_eg: لسه ماكتبتش، بس الهيكل جاهز. تلات عناوين فرعية.
+      ar: 'لم أكتب بعد، لكنّ الهيكل جاهز: ثلاثة عناوين فرعية.'
+      en: Not writing yet, but the outline's done. Three subheadings.
+    - speaker: Rani
+      text: Coba lihat. Hmm, butir kedua dan ketiga sebaiknya ditukar.
+      ar_eg: وريني. همم، النقطة التانية والتالتة الأحسن يتبدّلوا.
+      ar: أرني. همم، الأفضل أن تُبدَّل النقطتان الثانية والثالثة.
+      en: Let me see. Hmm, points two and three should swap.
+    - speaker: Mohamed
+      text: Betul juga. Urutannya jadi lebih logis.
+      ar_eg: عندك حق. الترتيب كده بقى منطقي أكتر.
+      ar: معك حقّ، فالترتيب صار أكثر منطقية.
+      en: Good point. The order is more logical that way.
+new_words:
+  - word: kerangka
+    pos: noun
+    ar_eg: هيكل
+    ar: هيكل، مخطّط
+    en: outline, framework
+  - word: subjudul
+    pos: noun
+    ar_eg: عنوان فرعي
+    ar: عنوان فرعي
+    en: subheading
+  - word: butir
+    pos: noun
+    ar_eg: نقطة / بند
+    ar: بند، حبّة
+    en: point, item; grain
+  - word: urutan
+    pos: noun
+    ar_eg: ترتيب
+    ar: ترتيب
+    en: order, sequence
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,215 @@
+schema: kabar.lesson/v1
+id: bipa7.u10.l05
+language: id
+title: Membaca tabel
+can_do:
+  ar_eg: تقرا جدول ورسم بياني من بحثك وتوصف النتايج بلغة علمية.
+  ar: أن تقرأ جدولًا ورسمًا بيانيًّا من بحثك وتصف النتائج بلغة علمية.
+  en: Read a table and a chart from your study and describe the results in academic language.
+slides:
+  - title: Angka berbicara
+    body:
+      ar_eg: |
+        في البحث بتعرض النتايج في tabel (جدول) أو diagram batang (رسم بالأعمدة).
+        - sumbu = محور: sumbu X (أفقي) وsumbu Y (رأسي)
+        - nilai tertinggi = أعلى قيمة، وnilai terendah = أقل قيمة
+        - signifikan = فرق مهمّ إحصائيًا، مش صدفة
+        عبارات:
+        - Tabel 1 menunjukkan bahwa… (جدول ١ بيوضّح إن…)
+        - Nilai tertinggi terdapat pada… (أعلى قيمة في…)
+        - Perbedaannya tidak signifikan. (الفرق مش مهمّ إحصائيًا.)
+      ar: |
+        تُعرض نتائج البحث في tabel (جدول) أو diagram batang (مخطّط أعمدة).
+        - sumbu = محور: sumbu X (أفقيّ) وsumbu Y (رأسيّ)
+        - nilai tertinggi = أعلى قيمة، وnilai terendah = أدنى قيمة
+        - signifikan = دالّ إحصائيًّا، ليس مصادفة
+        عبارات:
+        - Tabel 1 menunjukkan bahwa… (يبيّن الجدول ١ أنّ…)
+        - Nilai tertinggi terdapat pada… (أعلى قيمة في…)
+        - Perbedaannya tidak signifikan. (الفرق غير دالّ إحصائيًّا.)
+      en: |
+        Research results are shown in a tabel (table) or a diagram batang (bar chart).
+        - sumbu = axis: sumbu X (horizontal) and sumbu Y (vertical)
+        - nilai tertinggi = the highest value; nilai terendah = the lowest
+        - signifikan = statistically significant, not chance
+        Phrases:
+        - Tabel 1 menunjukkan bahwa… (Table 1 shows that…)
+        - Nilai tertinggi terdapat pada… (The highest value is in…)
+        - Perbedaannya tidak signifikan. (The difference is not significant.)
+    examples:
+      - text: Sumbu Y menunjukkan jumlah partisipan, sedangkan sumbu X menunjukkan usia.
+        ar_eg: المحور الرأسي بيبيّن عدد المشاركين، والأفقي بيبيّن السنّ.
+        ar: يبيّن المحور الرأسيّ عدد المشاركين، والأفقيّ الأعمار.
+        en: The Y axis shows the number of participants, the X axis their age.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: tabel
+        ar_eg: جدول
+        ar: جدول
+        en: table
+      - text: sumbu
+        ar_eg: محور
+        ar: محور
+        en: axis
+      - text: signifikan
+        ar_eg: مهمّ إحصائيًا
+        ar: دالّ إحصائيًّا
+        en: significant
+      - text: diagram batang
+        ar_eg: رسم بالأعمدة
+        ar: مخطّط أعمدة
+        en: bar chart
+      - text: nilai tertinggi
+        ar_eg: أعلى قيمة
+        ar: أعلى قيمة
+        en: highest value
+    words: [tabel, sumbu, signifikan, diagram batang, nilai tertinggi]
+  - id: e02
+    type: listen
+    text: Tabel satu menunjukkan bahwa nilai tertinggi terdapat di Distrik Kurulu.
+    question:
+      ar_eg: أعلى قيمة فين؟
+      ar: أين أعلى قيمة؟
+      en: Where is the highest value?
+    options:
+      - في حيّ كورولو.
+      - في جاكرتا.
+      - مافيش أعلى قيمة.
+    answer: 0
+    words: [tabel, nilai tertinggi]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: لو الفرق «tidak signifikan»، ده معناه إيه؟
+      ar: إن كان الفرق «tidak signifikan» فما معنى ذلك؟
+      en: If a difference is "tidak signifikan", what does that mean?
+    options:
+      - الفرق كبير جدًا.
+      - الجدول غلط.
+      - الفرق ممكن يبقى صدفة.
+    answer: 2
+    words: [signifikan]
+  - id: e04
+    type: fill_blank
+    sentence: Pada ___ X, kita melihat tahun dari 2015 sampai 2025.
+    meaning:
+      ar_eg: على المحور X، بنشوف السنين من ٢٠١٥ لـ ٢٠٢٥.
+      ar: على المحور X نرى السنوات من ٢٠١٥ إلى ٢٠٢٥.
+      en: On the X axis, we see the years from 2015 to 2025.
+    options: [sumbu, tabel, signifikan]
+    answers: [sumbu]
+    words: [sumbu]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي رسم أحسن تقارن بيه خمس مناطق؟
+      ar: أيّ مخطّط أنسب لمقارنة خمس مناطق؟
+      en: Which chart is best for comparing five districts?
+    options:
+      - صورة سيلفي.
+      - diagram batang.
+      - خريطة الطقس.
+    answer: 1
+    words: [diagram batang]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: الجدول ده بيبيّن نتيجة الاستبيان.
+      ar: يبيّن هذا الجدول نتيجة الاستبيان.
+      en: This table shows the questionnaire results.
+    answer: Tabel ini menunjukkan hasil kuesioner.
+    distractors: [sumbu, batang]
+    words: [tabel, kuesioner]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الفرق بين المجموعتين مهمّ إحصائيًا.
+      ar: الفرق بين المجموعتين دالّ إحصائيًّا.
+      en: The difference between the two groups is significant.
+    answers:
+      - Perbedaan antara kedua kelompok itu signifikan.
+      - Perbedaan antara kedua kelompok signifikan.
+      - Perbedaan kedua kelompok itu signifikan.
+      - Perbedaan di antara kedua kelompok itu signifikan.
+    words: [signifikan]
+  - id: e08
+    type: speaking
+    text: Diagram batang ini memperlihatkan bahwa nilai tertinggi terjadi pada tahun 2023.
+    meaning:
+      ar_eg: الرسم بالأعمدة ده بيورّي إن أعلى قيمة كانت سنة ٢٠٢٣.
+      ar: يُظهر مخطّط الأعمدة هذا أنّ أعلى قيمة كانت سنة ٢٠٢٣.
+      en: This bar chart shows the highest value came in 2023.
+    words: [diagram batang, nilai tertinggi]
+  - id: e09
+    type: dictation
+    text: Sumbu Y menunjukkan hasil panen dalam ton.
+    meaning:
+      ar_eg: المحور Y بيبيّن المحصول بالطن.
+      ar: يبيّن المحور Y المحصول بالأطنان.
+      en: The Y axis shows the harvest in tonnes.
+    words: [sumbu]
+  - id: e10
+    type: fill_blank
+    sentence: Di antara lima kampung, ___ ada di Kampung Jiwika.
+    meaning:
+      ar_eg: من بين الخمس قرى، أعلى قيمة في قرية جيويكا.
+      ar: من بين القرى الخمس، أعلى قيمة في قرية جيويكا.
+      en: Among the five villages, the highest value is in Jiwika.
+    options: [nilai tertinggi, diagram batang, sumbu]
+    answers: [nilai tertinggi]
+    words: [nilai tertinggi, tabel]
+dialogue:
+  title: Data ubi jalar
+  lines:
+    - speaker: Pak Elias
+      text: Mohamed, coba jelaskan tabel hasil kuesionermu.
+      ar_eg: يا محمد، اشرح جدول نتايج الاستبيان بتاعك.
+      ar: يا محمد، اشرح جدول نتائج استبيانك.
+      en: Mohamed, explain your questionnaire results table.
+    - speaker: Mohamed
+      text: Tabel satu menunjukkan jumlah keluarga yang menanam ubi jalar. Nilai tertinggi di Kurulu.
+      ar_eg: جدول ١ بيبيّن عدد العيلات اللي بتزرع بطاطا حلوة. أعلى قيمة في كورولو.
+      ar: يبيّن الجدول ١ عدد الأسر التي تزرع البطاطا الحلوة، وأعلى قيمة في كورولو.
+      en: Table 1 shows the number of families growing sweet potato. The highest value is in Kurulu.
+    - speaker: Pak Elias
+      text: Apakah perbedaannya dengan distrik lain signifikan?
+      ar_eg: الفرق بينها وبين الأحياء التانية مهمّ إحصائيًا؟
+      ar: أهو فرق دالّ إحصائيًّا عن المناطق الأخرى؟
+      en: Is the difference from the other districts significant?
+    - speaker: Mohamed
+      text: Belum saya uji, Pak. Saya buat diagram batang dulu, lalu saya uji.
+      ar_eg: لسه ماختبرتوش يا أستاذ. هعمل رسم بالأعمدة الأول، وبعدين أختبره.
+      ar: لم أختبره بعد يا أستاذ؛ سأرسم مخطّط الأعمدة أوّلًا ثمّ أختبره.
+      en: I haven't tested it yet, sir. I'll make a bar chart first, then test it.
+new_words:
+  - word: tabel
+    pos: noun
+    ar_eg: جدول
+    ar: جدول
+    en: table
+  - word: sumbu
+    pos: noun
+    ar_eg: محور
+    ar: محور
+    en: axis
+  - word: signifikan
+    pos: adjective
+    ar_eg: مهمّ إحصائيًا
+    ar: دالّ إحصائيًّا
+    en: significant
+  - word: diagram batang
+    pos: noun
+    ar_eg: رسم بالأعمدة
+    ar: مخطّط أعمدة
+    en: bar chart
+  - word: nilai tertinggi
+    pos: noun
+    ar_eg: أعلى قيمة
+    ar: أعلى قيمة
+    en: highest value
+review:
+  status: draft
+  verified: false

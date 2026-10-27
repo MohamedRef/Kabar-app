@@ -1,0 +1,168 @@
+schema: kabar.lesson/v1
+id: j6.u02.l06
+language: jv
+title: Warung soto
+can_do:
+  ar_eg: تقرا منيو مكتوب بالخط الجاوي وتطلب منه.
+  ar: أن تقرأ قائمة طعام بالخط الجاوي وتطلب منها.
+  en: Read a menu in aksara Jawa and order from it.
+slides:
+  - title: Menu ing warung
+    body:
+      ar_eg: |
+        جنب الجامع فيه مطعم صغير (warung)، والمنيو على الحيطة مكتوب بالخط الجاوي.
+        ركّز على الحركات: soto فيها taling tarung مرتين، وsega فيها pepet، وsate فيها taling.
+      ar: |
+        قرب المسجد مطعم صغير (warung)، وقائمته على الجدار بالخط الجاوي.
+        انتبه إلى الحركات: في soto علامة taling tarung مرتين، وفي sega علامة pepet، وفي sate علامة taling.
+      en: |
+        Next to the mosque there's a little warung, and its menu on the wall is in aksara Jawa.
+        Watch the vowel marks: soto has taling tarung twice, sega has pepet, sate has taling.
+    grammar: jv.aksara.sandhangan-swara
+    examples:
+      - text: ꦱꦺꦴꦠꦺꦴ · ꦱꦠꦺꦱꦥꦶ (soto · sate sapi)
+        ar_eg: شوربة سوتو · ساتيه لحمة
+        ar: حساء سوتو · ساتيه لحم بقر
+        en: soto soup · beef satay
+      - text: ꦱꦼꦒ · ꦠꦲꦸ (sega · tahu)
+        ar_eg: رز · توفو
+        ar: أرز · توفو
+        en: rice · tofu
+      - text: ꦏꦺꦴꦥꦶ · ꦱꦸꦱꦸ · ꦗꦩꦸ (kopi · susu · jamu)
+        ar_eg: قهوة · لبن · جامو (مشروب أعشاب)
+        ar: قهوة · حليب · جامو (شراب أعشاب)
+        en: coffee · milk · jamu (herbal drink)
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي مشروب موجود في المنيو؟
+      ar: أي مشروب في القائمة؟
+      en: Which drink is on the menu?
+    options: [es teh, kopi, jus]
+    answer: 1
+    words: [taling tarung, wulu]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ديماس عايز أكلة فيها لحمة بقري. يطلب إيه؟
+      ar: يريد ديماس طبقًا فيه لحم بقر. ماذا يطلب؟
+      en: Dimas wants a dish with beef. What should he order?
+    options: [tahu, sega, sate sapi]
+    answer: 2
+    explain:
+      ar_eg: ꦱꦠꦺꦱꦥꦶ = sate sapi، وsapi = بقرة.
+      ar: ꦱꦠꦺꦱꦥꦶ = sate sapi، وsapi = بقرة.
+      en: ꦱꦠꦺꦱꦥꦶ = sate sapi; sapi = cow, beef.
+    words: [taling, wulu]
+  - id: e03
+    type: listen
+    text: Soto siji, kopi loro.
+    question:
+      ar_eg: ديماس طلب إيه؟
+      ar: ماذا طلب ديماس؟
+      en: What did Dimas order?
+    options: ["ꦱꦺꦴꦠꦺꦴꦭꦺꦴꦫꦺꦴꦏꦺꦴꦥꦶꦱꦶꦗꦶ", "ꦱꦺꦴꦠꦺꦴꦱꦶꦗꦶꦏꦺꦴꦥꦶꦭꦺꦴꦫꦺꦴ", "ꦱꦠꦺꦱꦶꦗꦶꦏꦺꦴꦥꦶꦭꦺꦴꦫꦺꦴ"]
+    answer: 1
+    meaning:
+      ar_eg: واحد سوتو، واتنين قهوة.
+      ar: سوتو واحد وقهوتان.
+      en: One soto, two coffees.
+    words: [taling tarung, wulu]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: ꦱꦺꦴꦠꦺꦴ
+        ar_eg: soto — شوربة سوتو
+        ar: soto — حساء سوتو
+        en: soto — soto soup
+      - text: ꦱꦸꦱꦸ
+        ar_eg: susu — لبن
+        ar: susu — حليب
+        en: susu — milk
+      - text: ꦗꦩꦸ
+        ar_eg: jamu — مشروب أعشاب
+        ar: jamu — شراب أعشاب
+        en: jamu — herbal drink
+      - text: ꦠꦲꦸ
+        ar_eg: tahu — توفو
+        ar: tahu — توفو
+        en: tahu — tofu
+    words: [taling tarung, suku]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: sega (رز) مكتوبة إزاي في المنيو؟
+      ar: كيف كُتبت sega (أرز) في القائمة؟
+      en: How is sega (rice) written on the menu?
+    options: ["ꦱꦺꦒ", "ꦱꦒ", "ꦱꦼꦒ"]
+    answer: 2
+    explain:
+      ar_eg: الـ e في sega خفيفة مختلسة، فبتتكتب pepet فوق ꦱ، مش taling.
+      ar: الـ e في sega مختلسة، فتُكتب pepet فوق ꦱ لا taling.
+      en: The e in sega is the light schwa, so it's pepet above ꦱ, not taling.
+    words: [pepet]
+  - id: e06
+    type: fill_blank
+    sentence: ꦱꦠꦺꦱꦥꦶ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: ساتيه لحمة)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: ساتيه لحم بقر)"
+      en: Type the reading in Latin letters. (It means "beef satay".)
+    answers: [sate sapi, satesapi]
+    words: [taling, wulu]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: "اطلب: «Sate sapi siji.» (واحد ساتيه لحمة)، مقطع مقطع."
+      ar: "اطلب: «Sate sapi siji.» (ساتيه لحم واحد)، مقطعًا مقطعًا."
+      en: "Order «Sate sapi siji.» (one beef satay), syllable by syllable."
+    answer: ꦱ ꦠꦺ ꦱ ꦥꦶ ꦱꦶ ꦗꦶ
+    distractors: ["ꦱꦸ"]
+    words: [taling, wulu]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب الطلب ده بالحروف اللاتينية: ꦱꦼꦒꦭꦺꦴꦫꦺꦴꦱꦸꦱꦸꦱꦶꦗꦶ"
+      ar: "اكتب هذا الطلب بالحروف اللاتينية: ꦱꦼꦒꦭꦺꦴꦫꦺꦴꦱꦸꦱꦸꦱꦶꦗꦶ"
+      en: "Write this order in Latin letters: ꦱꦼꦒꦭꦺꦴꦫꦺꦴꦱꦸꦱꦸꦱꦶꦗꦶ"
+    answers: ["sega loro, susu siji", sega loro susu siji]
+    explain:
+      ar_eg: se-ga lo-ro su-su si-ji = اتنين رز، وواحد لبن.
+      ar: se-ga lo-ro su-su si-ji = أرز لاثنين وحليب واحد.
+      en: se-ga lo-ro su-su si-ji = two rice, one milk.
+    words: [pepet, taling tarung, suku]
+  - id: e09
+    type: speaking
+    text: Soto siji, kopi loro, Bu.
+    meaning:
+      ar_eg: واحد سوتو واتنين قهوة يا مدام.
+      ar: سوتو واحد وقهوتان يا سيدتي.
+      en: One soto and two coffees, please.
+dialogue:
+  title: Ing warung soto
+  lines:
+    - speaker: Bu Warung
+      text: Badhe dhahar menapa, Mas?
+      ar_eg: حضرتك تحب تاكل إيه؟
+      ar: ماذا تحبّ أن تأكل يا سيدي؟
+      en: What would you like to eat?
+    - speaker: Mohamed
+      text: Soto setunggal lan kopi kalih, Bu.
+      ar_eg: واحد سوتو واتنين قهوة يا مدام.
+      ar: سوتو واحد وقهوتان يا سيدتي.
+      en: One soto and two coffees, please.
+    - speaker: Bu Warung
+      text: Sate sapi nggih wonten, Mas.
+      ar_eg: فيه كمان ساتيه لحمة.
+      ar: لدينا أيضًا ساتيه لحم بقر.
+      en: There's beef satay too.
+    - speaker: Mohamed
+      text: Mboten, Bu, matur nuwun. Soto kemawon.
+      ar_eg: لا يا مدام، شكرًا. سوتو بس.
+      ar: لا يا سيدتي، شكرًا. سوتو فقط.
+      en: No thanks, ma'am. Just the soto.
+review:
+  status: draft
+  verified: false

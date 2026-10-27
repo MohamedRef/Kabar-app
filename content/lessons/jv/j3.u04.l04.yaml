@@ -1,231 +1,164 @@
 schema: kabar.lesson/v1
 id: j3.u04.l04
 language: jv
-title: Ulangan J3.4
+title: Papan ing Pura
 can_do:
-  ar_eg: تدير سؤال وجواب مؤدب بالكراما.
-  ar: أن تُجري حوارًا مهذبًا من سؤال وجواب بالكراما.
-  en: Run a polite Q&A.
+  ar_eg: تقرا لافتة بالكراما في القصر وتسأل الحارس عن الطريق بأدب.
+  ar: أن تقرأ لافتة بالكراما في القصر وتسأل الحارس عن الطريق بأدب.
+  en: Read a krama sign at the palace and ask the guard the way politely.
 slides:
-  - title: Pitakon krama, ringkesan
+  - title: Papan ing lawang Pura
     body:
       ar_eg: |
-        مراجعة الوحدة كلها:
-        - ابدأ بـ Nyuwun sewu، وطّي راسك، وشاور بالإبهام.
-        - menapa (apa)، sinten (siapa)، pundi (mana): ing / dhateng / saking pundi.
-        - pinten (berapa)، kados pundi / pripun (bagaimana)، kenging menapa (kenapa)، kapan زي ما هي.
-        - الطريق: mriki، mrika، tebih، celak، lajeng، mlampah، saged، kemawon.
-        - الرد: Inggih / Mboten، وفي الآخر Matur nuwun ← Sami-sami.
-        والقاعدة الذهبية: ماتخلطش. جملة كراما = كل كلماتها الصغيرة كراما.
+        على باب Pura Mangkunegaran فيه لافتة للزوار. اقراها:
+        lurus kemawon = امشي على طول، lajeng = بعد كده، mboten kepareng = ممنوع (مش مسموح).
       ar: |
-        مراجعة الوحدة كلها:
-        - ابدأ بـ Nyuwun sewu، واخفض رأسك قليلًا، وأشِر بالإبهام.
-        - menapa (apa)، وsinten (siapa)، وpundi (mana): ing / dhateng / saking pundi.
-        - pinten (berapa)، وkados pundi / pripun (bagaimana)، وkenging menapa (kenapa)، وkapan كما هي.
-        - الطريق: mriki، mrika، tebih، celak، lajeng، mlampah، saged، kemawon.
-        - الجواب: Inggih / Mboten، ثم Matur nuwun ← Sami-sami.
-        والقاعدة الذهبية: لا تخلط المستويات في الجملة الواحدة.
+        على باب Pura Mangkunegaran لافتة للزوار. اقرأها:
+        lurus kemawon = امشِ مستقيمًا، وlajeng = ثم، وmboten kepareng = ممنوع (غير مسموح).
       en: |
-        The whole unit at a glance:
-        - Open with Nyuwun sewu, bow slightly, point with your thumb.
-        - menapa (apa), sinten (siapa), pundi (mana): ing / dhateng / saking pundi.
-        - pinten (berapa), kados pundi / pripun (bagaimana), kenging menapa (kenapa); kapan stays kapan.
-        - Directions: mriki, mrika, tebih, celak, lajeng, mlampah, saged, kemawon.
-        - Answers: Inggih / Mboten; Matur nuwun ← Sami-sami.
-        Golden rule: don't mix. A krama sentence keeps all its small words krama.
+        At the gate of Pura Mangkunegaran there is a sign for visitors. Read it:
+        lurus kemawon = just go straight, lajeng = then, mboten kepareng = not allowed.
+    examples:
+      - text: Sugeng rawuh ing Pura Mangkunegaran.
+        ar_eg: أهلًا وسهلًا في قصر Mangkunegaran.
+        ar: مرحبًا بكم في قصر Mangkunegaran.
+        en: Welcome to Pura Mangkunegaran.
+      - text: "Pendhapa: saking mriki lurus kemawon, lajeng nengen."
+        ar_eg: "الـ Pendhapa: من هنا على طول، وبعدين يمين."
+        ar: "الـ Pendhapa: من هنا مستقيمًا، ثم يمينًا."
+        en: "Pendhapa: from here just go straight, then turn right."
+      - text: Nyuwun sewu, mboten kepareng nedha ing pendhapa.
+        ar_eg: لا مؤاخذة، ممنوع الأكل في الـ pendhapa.
+        ar: عفوًا، لا يُسمح بالأكل في الـ pendhapa.
+        en: Sorry, no eating in the pendhapa.
     grammar: jv.krama.questions
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: menapa
-        ar_eg: إيه (apa)
-        ar: ما (apa)
-        en: what (apa)
-      - text: sinten
-        ar_eg: مين (siapa)
-        ar: مَن (siapa)
-        en: who (siapa)
-      - text: pundi
-        ar_eg: فين (mana)
-        ar: أين (mana)
-        en: where (mana)
-      - text: pinten
-        ar_eg: كام (berapa)
-        ar: كم (berapa)
-        en: how much (berapa)
-      - text: kenging menapa
-        ar_eg: ليه (kenapa)
-        ar: لماذا (kenapa)
-        en: why (kenapa)
-    words: [menapa, sinten, pundi, pinten, kenging menapa]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من اللافتة) إزاي توصل للـ pendhapa؟
+      ar: (من اللافتة) كيف تصل إلى الـ pendhapa؟
+      en: (from the sign) How do you get to the pendhapa?
+    options: ["lurus, lajeng ngiwa", "nengen, lajeng lurus", "lurus, lajeng nengen"]
+    answer: 2
+    words: [lajeng, mriki]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي سؤال فيه غلطة (خلط نغوكو وكراما)؟
-      ar: أي سؤال فيه خطأ (خلط بين النغوكو والكراما)؟
-      en: Which question mixes ngoko and krama?
-    options: ['Reginipun pinten, Bu?', 'Panjenengan saking pundi?', 'Panjenengan badhe tindak ngendi?']
-    answer: 2
-    explain:
-      ar_eg: ngendi نغوكو في نص جملة كراما. الصح Panjenengan badhe tindak pundi?
-      ar: ngendi من النغوكو وسط جملة كراما، والصواب Panjenengan badhe tindak pundi?
-      en: ngendi is ngoko inside a krama sentence; it should be Panjenengan badhe tindak pundi?
-    words: [pundi]
+      ar_eg: (من اللافتة) إيه الممنوع في الـ pendhapa؟
+      ar: (من اللافتة) ما الممنوع في الـ pendhapa؟
+      en: (from the sign) What can't you do in the pendhapa?
+    options: [mlampah, nedha, taken]
+    answer: 1
+    words: [kepareng, nedha, pendhapa]
   - id: e03
-    type: multiple_choice
-    question: Kenging menapa panjenengan sinau basa Jawi?
-    question_meaning:
-      ar_eg: أنهي رد مناسب؟
-      ar: أي جواب يناسب؟
-      en: Which answer fits?
-    options: [Kula remen basa Jawi., Kula saking Mesir., Jam wolu.]
-    answer: 0
-    explain:
-      ar_eg: 'kenging menapa = ليه، فالرد سبب: Kula remen basa Jawi = عشان بحب الجاوي.'
-      ar: 'kenging menapa = لماذا، فالجواب سبب: Kula remen basa Jawi.'
-      en: 'kenging menapa = why, so the answer gives a reason: Kula remen basa Jawi.'
-    words: [kenging menapa, remen]
-  - id: e04
     type: listen
-    text: Panjenengan badhe tindak pundi?
-    options: ['Panjenengan saking pundi?', 'Pasaripun ing pundi?', 'Panjenengan badhe tindak pundi?']
-    answer: 2
-    words: [tindak, pundi]
+    text: Nyuwun sewu, Mas, mboten kepareng nedha ing pendhapa.
+    question:
+      ar_eg: الحارس قال لمحمد إيه؟ محمد يقدر ياكل في الـ pendhapa؟
+      ar: ماذا قال الحارس لمحمد؟ هل يستطيع الأكل في الـ pendhapa؟
+      en: What did the guard tell Mohamed? Can he eat in the pendhapa?
+    options: [Kepareng, Mboten kepareng]
+    answer: 1
+    meaning:
+      ar_eg: لا مؤاخذة يا أستاذ، ممنوع الأكل في الـ pendhapa.
+      ar: عفوًا يا أخي، لا يُسمح بالأكل في الـ pendhapa.
+      en: Sorry, you can't eat in the pendhapa.
+    words: [mboten, kepareng]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: Sugeng rawuh
+        ar_eg: أهلًا وسهلًا
+        ar: مرحبًا بكم
+        en: Welcome
+      - text: lurus kemawon
+        ar_eg: على طول بس
+        ar: مستقيمًا فقط
+        en: just straight on
+      - text: lajeng nengen
+        ar_eg: وبعدين يمين
+        ar: ثم يمينًا
+        en: then turn right
+      - text: mboten kepareng
+        ar_eg: ممنوع / مش مسموح
+        ar: غير مسموح
+        en: not allowed
+    words: [kemawon, lajeng, kepareng]
   - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: حد كبير سألك «Tebih menapa celak?». إنت عايز تقول «قريب، ممكن أمشي». تقول إيه؟
-      ar: سألك شخص كبير «Tebih menapa celak?» وتريد أن تقول «قريب، يمكنني المشي». ماذا تقول؟
-      en: An elder asks you "Tebih menapa celak?" You want to say "Close, I can walk." What do you say?
-    options: ['Tebih, kula mlampah.', 'Cedhak, aku isa mlaku.', 'Celak, kula saged mlampah.']
-    answer: 2
+    type: fill_blank
+    sentence: Saking mriki lurus ___, lajeng nengen.
+    meaning:
+      ar_eg: من هنا على طول، وبعدين يمين.
+      ar: من هنا مستقيمًا، ثم يمينًا.
+      en: From here just go straight, then turn right.
+    options: [wae, sanget, kemawon]
+    answers: [kemawon]
     explain:
-      ar_eg: celak = قريب، saged = يقدر، mlampah = يمشي، كله كراما. أما «Cedhak, aku isa mlaku» فنغوكو.
-      ar: celak = قريب، وsaged = يستطيع، وmlampah = يمشي، وكلها كراما، أما «Cedhak, aku isa mlaku» فنغوكو.
-      en: celak = near, saged = can, mlampah = walk — all krama. "Cedhak, aku isa mlaku" is ngoko.
-    words: [celak, saged, mlampah]
+      ar_eg: '«بس / وخلاص» بالكراما kemawon (في الكلام mawon). wae نغوكو، وsanget معناها «جدًا».'
+      ar: '«فقط» بالكراما kemawon (وفي الكلام mawon)؛ wae من الـ ngoko، وsanget تعني «جدًا».'
+      en: '"Just" in krama is kemawon (spoken mawon). wae is ngoko; sanget means "very".'
+    words: [kemawon]
   - id: e06
-    type: fill_blank
-    sentence: Nyuwun sewu, Bu, stasiun Balapan ___ pundi?
-    meaning:
-      ar_eg: لا مؤاخذة يا حاجة، محطة بالابان فين؟
-      ar: عفوًا يا سيدتي، أين محطة بالابان؟
-      en: Excuse me, ma'am, where is Balapan station?
-    options: [dhateng, saking, ing]
-    answers: [ing]
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: 'اسأل الحارس: لا مؤاخذة يا حاج، الـ pendhapa فين؟'
+      ar: 'اسأل الحارس: عفوًا يا سيدي، أين الـ pendhapa؟'
+      en: "Ask the guard: Excuse me, sir, where is the pendhapa?"
+    answers: ["Nyuwun sewu, Pak, pendhapa ing pundi?", "Nyuwun sewu, Pak, pendhapanipun ing pundi?", "Nyuwun sewu, pendhapa ing pundi, Pak?", "Nyuwun sewu, Pak, pendhapa wonten pundi?", "Nyuwun sewu, Pak, pendhapa wonten ing pundi?"]
     explain:
-      ar_eg: ing pundi = فين (di mana). saking pundi = منين، dhateng pundi = على فين.
-      ar: ing pundi = أين (di mana)، وsaking pundi = من أين، وdhateng pundi = إلى أين.
-      en: ing pundi = where (di mana); saking pundi = where from, dhateng pundi = where to.
-    words: [ing, pundi]
+      ar_eg: 'فين = ing pundi (ngendi بالنغوكو). وابدأ دايمًا بـ Nyuwun sewu.'
+      ar: 'أين = ing pundi (وبالنغوكو ngendi)، وابدأ دائمًا بـ Nyuwun sewu.'
+      en: 'Where = ing pundi (ngoko ngendi). Always open with Nyuwun sewu.'
+    words: [nyuwun sewu, pundi, pendhapa]
   - id: e07
-    type: fill_blank
-    sentence: ___ kabaripun, Pak? — Sae, matur nuwun.
-    meaning:
-      ar_eg: أخبار حضرتك إيه يا حاج؟ — كويس، شكرًا.
-      ar: كيف حالكم يا سيدي؟ — بخير، شكرًا.
-      en: How are you, sir? — Fine, thank you.
-    answers: [Pripun, pripun, Kados pundi, kados pundi]
-    explain:
-      ar_eg: pripun (أو kados pundi) = إزاي (piye).
-      ar: pripun (أو kados pundi) = كيف (piye).
-      en: pripun (or kados pundi) = how (piye).
-    words: [pripun, kabar]
-  - id: e08
     type: build_sentence
     source:
-      ar_eg: لا مؤاخذة، اسم حضرتك إيه؟
-      ar: عفوًا، ما اسمكم الكريم؟
-      en: Excuse me, what is your name?
-    answer: Nyuwun sewu, asmanipun sinten?
-    distractors: [menapa, jenenge]
+      ar_eg: أقدر أمشي لحد الـ pendhapa.
+      ar: أستطيع المشي إلى الـ pendhapa.
+      en: I can walk to the pendhapa.
+    answer: Kula saged mlampah dhateng pendhapa.
+    distractors: [isa, nang]
     explain:
-      ar_eg: الاسم بيتسأل عنه بـ sinten (مين)، زي Siapa namanya؟
-      ar: يُسأل عن الاسم بـ sinten (مَن)، كما في Siapa namanya؟
-      en: Names are asked with sinten (who), as in Siapa namanya?
-    words: [nyuwun sewu, asma, sinten]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (بالكراما) لا مؤاخذة يا حاج، الساعة كام؟
-      ar: (بالكراما) عفوًا يا سيدي، كم الساعة؟
-      en: (in krama) Excuse me, sir, what time is it?
-    answers: ['Nyuwun sewu, Pak, jam pinten?', 'Nyuwun sewu, Pak, jam pinten', 'Nyuwun sewu Pak jam pinten?', Nyuwun sewu Pak jam pinten, 'Nyuwun sewu, jam pinten, Pak?', 'Nyuwun sewu, jam pinten, Pak', 'Nyuwun sewu jam pinten Pak?', Nyuwun sewu jam pinten Pak]
-    words: [nyuwun sewu, pinten]
-  - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (لحد كبير) حضرتك منين؟
-      ar: (لشخص كبير) من أين حضرتك؟
-      en: (to an elder) Where are you from?
-    answers: ['Panjenengan saking pundi?', Panjenengan saking pundi]
-    explain:
-      ar_eg: مع الكبار panjenengan أأمن، وsaking pundi = منين.
-      ar: مع الكبار panjenengan أسلم، وsaking pundi = من أين.
-      en: With elders panjenengan is safest; saking pundi = where from.
-    words: [panjenengan, saking, pundi]
-  - id: e11
-    type: dictation
-    text: Nyuwun sewu, Pak, Pura Mangkunegaran ing pundi?
-    meaning:
-      ar_eg: لا مؤاخذة يا حاج، بورا مانجكونيجاران فين؟
-      ar: عفوًا يا سيدي، أين بورا مانجكونيغاران؟
-      en: Excuse me, sir, where is Pura Mangkunegaran?
-    words: [nyuwun sewu, pundi]
-  - id: e12
-    type: speaking
-    text: Panjenengan badhe tindak pundi, Pak?
-    meaning:
-      ar_eg: حضرتك رايح فين يا حاج؟
-      ar: إلى أين تتوجهون يا سيدي؟
-      en: Where are you going, sir?
-    words: [panjenengan, tindak, pundi]
+      ar_eg: 'saged = isa (يقدر)، mlampah = mlaku (يمشي)، dhateng = nang.'
+      ar: 'saged = isa (يستطيع)، وmlampah = mlaku (يمشي)، وdhateng = nang.'
+      en: 'saged = isa (can), mlampah = mlaku (walk), dhateng = nang.'
+    words: [saged, mlampah, dhateng]
 dialogue:
-  title: Pitakon kanthi alus
+  title: Ing lawang Pura
   lines:
     - speaker: Mohamed
-      text: Nyuwun sewu, Pak Wiryo. Menika menapa?
-      ar_eg: لا مؤاخذة يا عم ويريو. ده إيه؟
-      ar: عفوًا يا سيد ويريو. ما هذا؟
-      en: Excuse me, Pak Wiryo. What is this?
+      text: Nyuwun sewu, Pak Wiryo. Pendhapa ing pundi?
+      ar_eg: لا مؤاخذة يا Pak Wiryo. الـ pendhapa فين؟
+      ar: عفوًا يا Pak Wiryo. أين الـ pendhapa؟
+      en: Excuse me, Pak Wiryo. Where is the pendhapa?
     - speaker: Pak Wiryo
-      text: Menika pendhapa, Mas. Sae sanget, nggih?
-      ar_eg: دي الـ pendhapa يا ابني. حلوة جدًا، مش كده؟
-      ar: هذه الـ pendhapa يا بني. جميلة جدًا، أليس كذلك؟
-      en: This is the pendhapa. Very beautiful, isn't it?
+      text: Saking mriki lurus kemawon, lajeng nengen, Mas.
+      ar_eg: من هنا على طول، وبعدين يمين يا أستاذ.
+      ar: من هنا مستقيمًا، ثم يمينًا يا أخي.
+      en: From here just go straight, then turn right.
     - speaker: Mohamed
-      text: Inggih, Pak. Pasar Triwindu ing pundi?
-      ar_eg: أيوه يا حاج. وسوق تريويندو فين؟
-      ar: نعم يا سيدي. وأين سوق تريويندو؟
-      en: Yes, sir. Where is Pasar Triwindu?
+      text: Tebih, Pak?
+      ar_eg: بعيد يا حاج؟
+      ar: هل هو بعيد يا سيدي؟
+      en: Is it far, sir?
     - speaker: Pak Wiryo
-      text: Celak kemawon. Saking mriki lurus, lajeng nengen.
-      ar_eg: قريب خالص. من هنا على طول، وبعدين يمين.
-      ar: قريب جدًا. من هنا مستقيمًا، ثم يمينًا.
-      en: Quite close. Straight on from here, then right.
+      text: Mboten, celak kemawon. Nanging mboten kepareng nedha ing pendhapa, nggih.
+      ar_eg: لأ، قريب. بس ممنوع الأكل في الـ pendhapa، ماشي؟
+      ar: لا، قريب. لكن لا يُسمح بالأكل في الـ pendhapa، حسنًا؟
+      en: No, it's close. But no eating in the pendhapa, all right?
     - speaker: Mohamed
-      text: Matur nuwun sanget, Pak.
-      ar_eg: شكرًا جزيلًا يا حاج.
-      ar: شكرًا جزيلًا يا سيدي.
-      en: Thank you very much, sir.
-    - speaker: Pak Wiryo
-      text: Sami-sami, Mas Mohamed.
-      ar_eg: العفو يا محمد.
-      ar: عفوًا يا محمد.
-      en: You're welcome, Mohamed.
-souvenir:
-  id: j3.u04.souvenir
-  title: Pura Mangkunegaran
-  note:
-    ar_eg: |
-      Pura Mangkunegaran هو القصر الملكي التاني في سولو، وفيه واحد من أكبر الـ pendhapa في جاوة، بعواميد خشب وسقف مزوّق. هنا الأدب في السؤال جزء من القواعد: Nyuwun sewu في الأول، راس موطّية شوية، وإبهام بيشاور بدل السبابة. شيل الإبهام ده معاك في شنطتك — هيفتحلك قلوب الكبار في كل جاوة.
-    ar: |
-      Pura Mangkunegaran هو القصر الملكي الثاني في سولو، وفيه من أكبر قاعات الـ pendhapa في جاوة بأعمدتها الخشبية وسقفها المزخرف. وأدب السؤال هنا جزء من القواعد: Nyuwun sewu أولًا، ورأس منخفض قليلًا، وإشارة بالإبهام لا بالسبابة. احمل هذه العادة معك، فستفتح لك قلوب الكبار في جاوة كلها.
-    en: |
-      Pura Mangkunegaran is Solo's second royal palace, with one of the largest pendhapa in Java — wooden pillars under a painted ceiling. Here, asking politely is part of the grammar: Nyuwun sewu first, head slightly bowed, thumb pointing instead of the index finger. Pack that thumb in your suitcase — it opens elders' hearts all over Java.
+      text: Inggih, Pak. Matur nuwun sanget.
+      ar_eg: حاضر يا حاج. شكرًا جدًا.
+      ar: حاضر يا سيدي. شكرًا جزيلًا.
+      en: Of course, sir. Thank you very much.
+new_words:
+  - word: kepareng
+    pos: verb
+    ar_eg: 'مسموح (oleh ← boleh)، كراما إنغيل. على اللافتات: mboten kepareng = ممنوع'
+    ar: 'مسموح (oleh ← boleh)، كراما إنغيل. على اللافتات: mboten kepareng = ممنوع'
+    en: 'allowed, may (ngoko oleh, Indonesian boleh), krama inggil. On signs, mboten kepareng = not allowed'
 review:
   status: draft
   verified: false

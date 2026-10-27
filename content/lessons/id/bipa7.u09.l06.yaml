@@ -1,0 +1,205 @@
+schema: kabar.lesson/v1
+id: bipa7.u09.l06
+language: id
+title: Guru di pedalaman
+can_do:
+  ar_eg: تقرا وتتكلّم عن المدرّسين اللي بيشتغلوا في القرى البعيدة.
+  ar: أن تقرأ وتتحدّث عن المعلّمين العاملين في القرى النائية.
+  en: Read and talk about teachers who work in remote villages.
+slides:
+  - title: Sekolah di ujung jalan setapak
+    body:
+      ar_eg: |
+        في بابوا فيه قرى في الـ pedalaman (المناطق الداخلية البعيدة)، terpencil (معزولة): مافيش طريق، وبتوصلها بطيارة صغيرة أو مشي أيام.
+        - akses = وصول / إمكانية: مافيش akses للكهربا أو النت أو المستشفى.
+        - mengabdi = يخدم بإخلاص: مدرّسين شباب بيمشوا لهناك علشان mengabdi سنة أو أكتر.
+        برنامج مشهور اسمه Indonesia Mengajar بيبعت خرّيجين جامعة يدرّسوا سنة في قرى بعيدة.
+        المدرّس هناك ساعات بيبقى مدرّس ودكتور وصاحب في نفس الوقت.
+      ar: |
+        في بابوا قرى في الـ pedalaman (الداخل البعيد)، terpencil (معزولة): لا طريق إليها، ويُبلغ بعضها بطائرة صغيرة أو بسير أيّام.
+        - akses = إمكانية الوصول: لا akses للكهرباء ولا للإنترنت ولا للمستشفى.
+        - mengabdi = يخدم بإخلاص: يقصدها معلّمون شبّان لـ mengabdi سنة أو أكثر.
+        ومن البرامج المعروفة Indonesia Mengajar، يرسل خرّيجي الجامعات ليدرّسوا عامًا في القرى النائية.
+        وقد يكون المعلّم هناك معلّمًا وطبيبًا وصديقًا في آن.
+      en: |
+        Papua has villages in the pedalaman (remote interior), terpencil (isolated): no road, reached by small plane or days of walking.
+        - akses = access: no akses to electricity, internet or hospitals.
+        - mengabdi = to serve devotedly: young teachers go there to mengabdi for a year or more.
+        A well-known programme, Indonesia Mengajar, sends university graduates to teach for a year in remote villages.
+        A teacher there is sometimes teacher, nurse and friend at once.
+    examples:
+      - text: Bu Guru Rina mengabdi dua tahun di sebuah kampung terpencil di pedalaman Papua.
+        ar_eg: الأستاذة رينا خدمت سنتين في قرية معزولة جوّه بابوا.
+        ar: خدمت المعلّمة رينا عامين في قرية معزولة في داخل بابوا.
+        en: Bu Rina served two years in an isolated village in Papua's interior.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: pedalaman
+        ar_eg: المناطق الداخلية البعيدة
+        ar: الداخل النائي
+        en: remote interior
+      - text: terpencil
+        ar_eg: معزول
+        ar: معزول
+        en: isolated, remote
+      - text: mengabdi
+        ar_eg: يخدم بإخلاص
+        ar: يخدم بإخلاص
+        en: to serve devotedly
+      - text: akses
+        ar_eg: وصول
+        ar: إمكانية الوصول
+        en: access
+      - text: pela gandong
+        ar_eg: أخوّة القرى
+        ar: حلف القرى
+        en: village brotherhood
+    words: [pedalaman, terpencil, mengabdi, akses, pela gandong]
+  - id: e02
+    type: listen
+    text: Kampung itu terpencil. Hanya pesawat kecil yang bisa mendarat di sana.
+    question:
+      ar_eg: بيوصلوا القرية دي إزاي؟
+      ar: كيف تُبلغ تلك القرية؟
+      en: How do you reach that village?
+    options:
+      - بالأتوبيس.
+      - بالقطر.
+      - بطيارة صغيرة بس.
+    answer: 2
+    words: [terpencil]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: برنامج Indonesia Mengajar بيعمل إيه؟
+      ar: ماذا يفعل برنامج Indonesia Mengajar؟
+      en: What does Indonesia Mengajar do?
+    options:
+      - بيبعت خرّيجين يدرّسوا سنة في قرى بعيدة.
+      - بيبني مطارات.
+      - بيبيع كتب أونلاين.
+    answer: 0
+    words: [mengabdi, pedalaman]
+  - id: e04
+    type: fill_blank
+    sentence: Di kampung ini belum ada ___ listrik dan internet.
+    meaning:
+      ar_eg: في القرية دي لسه مافيش وصول للكهربا والنت.
+      ar: لا تتوفّر في هذه القرية بعدُ إمكانية الوصول إلى الكهرباء والإنترنت.
+      en: This village still has no access to electricity or internet.
+    options: [akses, pedalaman, saldo]
+    answers: [akses]
+    words: [akses]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «mengabdi» أقرب لأنهي معنى؟
+      ar: أيّ معنى أقرب إلى «mengabdi»؟
+      en: Which meaning is closest to "mengabdi"?
+    options:
+      - يسافر للسياحة.
+      - يخدم الناس بإخلاص.
+      - يشتغل علشان الفلوس بس.
+    answer: 1
+    explain:
+      ar_eg: من «abdi» (خادم)، وهي من العربي «عبد».
+      ar: من «abdi» (خادم)، وهي من العربية «عبد».
+      en: From "abdi" (servant), itself from Arabic «عبد».
+    words: [mengabdi]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: هو عايز يخدم كمدرّس في الداخل.
+      ar: يريد أن يخدم معلّمًا في الداخل.
+      en: He wants to serve as a teacher in the interior.
+    answer: Dia ingin mengabdi sebagai guru di pedalaman.
+    distractors: [akses, terpencil]
+    words: [mengabdi, pedalaman]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Anak-anak di daerah terpencil berhak mendapat akses pendidikan yang sama.
+    answers_meaning:
+      ar_eg:
+        - العيال في المناطق المعزولة من حقّهم يتعلّموا زي غيرهم.
+        - الأطفال في الأماكن البعيدة ليهم حق في نفس فرصة التعليم.
+      ar:
+        - يحقّ لأطفال المناطق النائية أن ينالوا فرص التعليم نفسها.
+        - لأطفال المناطق المعزولة الحقّ في الوصول إلى التعليم ذاته.
+      en:
+        - Children in remote areas have the right to the same access to education.
+        - Kids in isolated places deserve equal access to schooling.
+    words: [terpencil, akses]
+  - id: e08
+    type: speaking
+    text: Saya berjalan kaki dua hari untuk sampai ke sekolah di pedalaman.
+    meaning:
+      ar_eg: مشيت يومين علشان أوصل المدرسة اللي في الداخل.
+      ar: مشيت يومين لأبلغ المدرسة في الداخل.
+      en: I walked two days to reach the school in the interior.
+    words: [pedalaman]
+  - id: e09
+    type: dictation
+    text: Guru itu mengabdi di kampung terpencil selama lima tahun.
+    meaning:
+      ar_eg: المدرّس ده خدم في قرية معزولة خمس سنين.
+      ar: خدم ذلك المعلّم في قرية معزولة خمس سنوات.
+      en: That teacher served in an isolated village for five years.
+    words: [mengabdi, terpencil]
+  - id: e10
+    type: speaking
+    text: Tanpa akses jalan, buku pelajaran datang dengan pesawat kecil.
+    meaning:
+      ar_eg: من غير طريق، الكتب المدرسية بتيجي بطيارة صغيرة.
+      ar: في غياب الطريق تصل الكتب المدرسية بطائرة صغيرة.
+      en: With no road access, textbooks arrive by small plane.
+    words: [akses, terpencil]
+dialogue:
+  title: Surat dari Kak Yosua
+  lines:
+    - speaker: Kak Yosua
+      text: Mohamed, tahun depan saya mau mengabdi sebagai guru di pedalaman Pegunungan Bintang.
+      ar_eg: يا محمد، السنة الجاية عايز أخدم مدرّس في الداخل في بيجونونجان بينتانج.
+      ar: يا محمد، أريد العام القادم أن أخدم معلّمًا في داخل بيغونونغان بينتانغ.
+      en: Mohamed, next year I want to serve as a teacher in the interior of Pegunungan Bintang.
+    - speaker: Mohamed
+      text: Bukankah tempat itu sangat terpencil? Bagaimana dengan listrik?
+      ar_eg: مش المكان ده معزول جدًا؟ والكهربا؟
+      ar: أليس ذلك المكان معزولًا جدًّا؟ وماذا عن الكهرباء؟
+      en: Isn't that place very isolated? What about electricity?
+    - speaker: Kak Yosua
+      text: Akses listrik hanya dari panel surya, beberapa jam sehari. Tapi anak-anak di sana menunggu guru.
+      ar_eg: الكهربا من ألواح شمسية بس، كام ساعة في اليوم. بس العيال هناك مستنّيين مدرّس.
+      ar: لا كهرباء إلا من ألواح شمسية بضع ساعات يوميًّا، لكنّ الأطفال هناك ينتظرون معلّمًا.
+      en: Power only comes from solar panels, a few hours a day. But the kids there are waiting for a teacher.
+    - speaker: Mohamed
+      text: Kakak hebat. Saya kirim buku cerita untuk murid-murid Kakak, ya.
+      ar_eg: إنت جامد. هبعتلك كتب حكايات لتلاميذك.
+      ar: أنت رائع. سأرسل كتب قصص لتلاميذك.
+      en: You're amazing. I'll send storybooks for your pupils.
+new_words:
+  - word: pedalaman
+    pos: noun
+    ar_eg: المناطق الداخلية البعيدة
+    ar: الداخل النائي
+    en: remote interior, hinterland
+  - word: terpencil
+    pos: adjective
+    ar_eg: معزول
+    ar: معزول، ناءٍ
+    en: isolated, remote
+  - word: mengabdi
+    pos: verb
+    ar_eg: يخدم بإخلاص
+    ar: يخدم بإخلاص
+    en: to serve (devotedly)
+  - word: akses
+    pos: noun
+    ar_eg: وصول / إمكانية
+    ar: إمكانية الوصول
+    en: access
+review:
+  status: draft
+  verified: false

@@ -199,6 +199,17 @@ fn javanese_is_unverified_and_waits_gently_for_bipa1() {
 }
 
 #[test]
+fn passing_a_units_lessons_approves_its_javanese() {
+    let c = parse_curriculum(JAVANESE).unwrap();
+    let done = set(&["j1.u01.l01"]);
+    let p = Progress::new(&c, &done).with_approved(&done);
+    assert!(p.unit_approved(&c.levels[0].units[0]));
+    assert!(!souvenirs(&c, &p)[0].unverified);
+    assert!(p.level_approved(c.level("j1").unwrap()));
+    assert!(!p.level_approved(c.level("j2").unwrap()));
+}
+
+#[test]
 fn islands_fly_and_java_rides_the_train() {
     let c = parse_curriculum(BIPA).unwrap();
     let m = MapLayout::new(&c);

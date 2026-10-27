@@ -22,6 +22,7 @@ pub enum Msg {
     NavPenLab,
     NavTeach,
     NavListen,
+    NavChat,
     TodayTitle,
     ComingIn,
     SettingsLanguage,
@@ -86,6 +87,11 @@ pub enum Msg {
     PenLabEvents,
     PenLabSavedRuns,
     Width,
+    WidthCompact,
+    WidthMedium,
+    WidthExpanded,
+    WidthLarge,
+    WidthExtraLarge,
     NavDevices,
     CloudIntro,
     CloudNotConfigured,
@@ -136,7 +142,6 @@ pub enum Msg {
     JourneyDone,
     JourneyUpNext,
     JourneyAllDone,
-    JourneyMinutes,
     JourneyZoomIn,
     JourneyZoomOut,
     JourneyZoomReset,
@@ -562,6 +567,15 @@ pub enum Msg {
     PairsIndonesian,
     PairsTipTitle,
     PairsTheTwoWords,
+    SettingsPron,
+    PronModeOn,
+    PronModeTap,
+    PronModeOff,
+    PronTitle,
+    PronShow,
+    PronHowToRead,
+    PronGuideIntro,
+    PronGuideNote,
 }
 
 pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
@@ -601,6 +615,9 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (NavListen, ArEg) => "اتفرج واسمع",
         (NavListen, Ar) => "شاهد واستمع",
         (NavListen, En) => "Watch & listen",
+        (NavChat, ArEg) => "دردش",
+        (NavChat, Ar) => "محادثة",
+        (NavChat, En) => "Chat",
         (TodayTitle, _) => "Rencana Hari Ini",
         (ComingIn, ArEg) => "جاي في",
         (ComingIn, Ar) => "قادم في",
@@ -849,6 +866,17 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PenLabSavedRuns, En) => "Saved reports",
         (Width, ArEg | Ar) => "عرض الشاشة",
         (Width, En) => "Window width",
+        (WidthCompact, ArEg | Ar) => "ضيّق",
+        (WidthCompact, En) => "Compact",
+        (WidthMedium, ArEg | Ar) => "متوسط",
+        (WidthMedium, En) => "Medium",
+        (WidthExpanded, ArEg | Ar) => "عريض",
+        (WidthExpanded, En) => "Expanded",
+        (WidthLarge, ArEg | Ar) => "واسع",
+        (WidthLarge, En) => "Large",
+        (WidthExtraLarge, ArEg) => "واسع جدًا",
+        (WidthExtraLarge, Ar) => "واسع جدًّا",
+        (WidthExtraLarge, En) => "Extra large",
         (NavDevices, ArEg | Ar) => "الحساب والأجهزة",
         (NavDevices, En) => "Account & devices",
         (CloudIntro, ArEg) => "سجّل دخول بجوجل عشان تقدّمك يتزامن بين الموبايل والتابلت والماك.",
@@ -1002,8 +1030,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (JourneyAllDone, ArEg) => "خلصت المسار كله. \u{2068}Selamat!\u{2069}",
         (JourneyAllDone, Ar) => "أنهيت المسار كله. \u{2068}Selamat!\u{2069}",
         (JourneyAllDone, En) => "You've finished the whole route. Selamat!",
-        (JourneyMinutes, ArEg | Ar) => "دقيقة",
-        (JourneyMinutes, En) => "min",
         (JourneyZoomIn, ArEg) => "قرّب",
         (JourneyZoomIn, Ar) => "تكبير",
         (JourneyZoomIn, En) => "Zoom in",
@@ -2293,6 +2319,45 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PairsTheTwoWords, ArEg) => "الكلمتين",
         (PairsTheTwoWords, Ar) => "الكلمتان",
         (PairsTheTwoWords, En) => "The two words",
+        (SettingsPron, ArEg) => "تعريب النطق (النطق بالحروف العربي)",
+        (SettingsPron, Ar) => "النطق بالحروف العربية",
+        (SettingsPron, En) => "Pronunciation in Arabic script",
+        (PronModeOn, ArEg) => "ظاهر على طول",
+        (PronModeOn, Ar) => "ظاهر دائمًا",
+        (PronModeOn, En) => "Always shown",
+        (PronModeTap, ArEg) => "لما أدوس",
+        (PronModeTap, Ar) => "عند النقر",
+        (PronModeTap, En) => "On tap",
+        (PronModeOff, ArEg) => "مقفول",
+        (PronModeOff, Ar) => "مُطفأ",
+        (PronModeOff, En) => "Off",
+        (PronTitle, ArEg) => "النطق بالحروف العربي",
+        (PronTitle, Ar) => "النطق بالحروف العربية",
+        (PronTitle, En) => "Pronunciation in Arabic script",
+        (PronShow, ArEg) => "اتنطق إزاي؟",
+        (PronShow, Ar) => "كيف تُنطق؟",
+        (PronShow, En) => "How to say it?",
+        (PronHowToRead, ArEg) => "إزاي أقرا التعريب؟",
+        (PronHowToRead, Ar) => "كيف أقرأ النطق العربي؟",
+        (PronHowToRead, En) => "How to read the Arabic pronunciation",
+        (PronGuideIntro, ArEg) => {
+            "تحت كل كلمة إندونيسي أو جاوي هتلاقي نطقها بالحروف العربي بالتشكيل. أغلب الحروف زي العربي بالظبط؛ دي العلامات اللي محتاجة تاخد بالك منها:"
+        }
+        (PronGuideIntro, Ar) => {
+            "تحت كل كلمة إندونيسية أو جاوية نطقها بالحروف العربية مشكولة. معظم الحروف كالعربية تمامًا، وهذه العلامات الخاصة:"
+        }
+        (PronGuideIntro, En) => {
+            "Under each Indonesian or Javanese word you'll see how to say it, in fully vowelled Arabic script. Most letters are plain Arabic; these are the special signs:"
+        }
+        (PronGuideNote, ArEg) => {
+            "الراء ملفوفة زي العربي، والهاء في آخر الكلمة بتتقال خفيفة. التعريب تقريب يساعدك تبدأ: اسمع الصوت، ولو اختلفوا صدّق ودنك. نطق الجاوي لسه محتاج مراجعة."
+        }
+        (PronGuideNote, Ar) => {
+            "الراء مكررة كالعربية، والهاء في آخر الكلمة خفيفة. النطق المكتوب تقريب للبداية: استمع إلى الصوت، وإن اختلفا فالعبرة بالسمع. نطق الجاوية لم يُراجع بعد."
+        }
+        (PronGuideNote, En) => {
+            "r is rolled as in Arabic, and a final h is light. The script is an approximation to get you started: listen to the audio and trust your ear when they differ. Javanese pronunciations aren't reviewed yet."
+        }
     }
 }
 

@@ -1,4 +1,7 @@
 //! Small stroke icons, drawn inline so they follow `currentColor`.
+//!
+//! Most are single paths written here; the ones from Kabar's own icon set
+//! (assets/icons/custom, reviewed 2026-10) are embedded from their SVG files.
 
 use dioxus::prelude::*;
 
@@ -9,10 +12,7 @@ pub fn nav(screen: Screen) -> Element {
     let d = match screen {
         // sun over a horizon
         Screen::Today => "M4 18h16M7 18a5 5 0 0 1 10 0M12 6V4M5.6 9.6 4.2 8.2M18.4 9.6l1.4-1.4",
-        // route between two islands
-        Screen::Journey | Screen::Lesson => {
-            "M5 19c3-1 3-5 7-6s4-5 7-6M5 19a2 2 0 1 0 0-.01M19 7a2 2 0 1 0 0-.01"
-        }
+        Screen::Journey | Screen::Lesson => return custom(JOURNEY_ISLAND),
         // open book
         Screen::Reader => "M3 6c3-1 6-1 9 1 3-2 6-2 9-1v12c-3-1-6-1-9 1-3-2-6-2-9-1zM12 7v12",
         // stacked cards
@@ -35,11 +35,13 @@ pub fn nav(screen: Screen) -> Element {
         Screen::Cost => "M4 16a8 8 0 0 1 16 0M12 16l4-5M3 20h18",
         // headphones: Sinetron and Kabar Radio
         Screen::Listen => "M4 15v-3a8 8 0 0 1 16 0v3M4 15h3v5H4zM17 15h3v5h-3z",
+        // two speech bubbles
+        Screen::Chat => "M4 5h11v8H9l-3 3v-3H4zM15 9h5v8h-2v3l-3-3h-4v-2",
         // sliders
         Screen::Settings => "M4 7h10M18 7h2M4 17h4M12 17h8M14 5v4M8 15v4",
         // a game controller
         Screen::Play => PLAY,
-        Screen::Coach => COACH,
+        Screen::Coach => return custom(COACH),
     };
     stroke(d)
 }
@@ -50,22 +52,14 @@ const PLAY: &str = "M7 8h10a4 4 0 0 1 4 4v1a4 4 0 0 1-7 2.6h-4A4 4 0 0 1 3 13v-1
 /// Each Play game's card icon.
 pub fn game(route: Route) -> Element {
     let d = match route {
-        // sun rising, with a speech line
-        Route::Pagi => "M3 17h18M7 17a5 5 0 0 1 10 0M12 7V5M6 10.5 4.8 9.3M18 10.5l1.2-1.2M8 21h8",
-        // an arch bridge
-        Route::Deck => "M3 17h18M5 17v-3a7 7 0 0 1 14 0v3M9 17v-2M15 17v-2M12 17v-3",
+        Route::Pagi => return custom(KABAR_PAGI),
+        Route::Deck => return custom(BRIDGE_WORD),
         // magnifying glass
         Route::Detective => "M10.5 4a6.5 6.5 0 1 0 0 13 6.5 6.5 0 1 0 0-13zM15.5 15.5 20 20",
-        // a bell
-        Route::Alarm => "M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20a2 2 0 0 0 4 0M12 3v2",
-        // a banknote
-        Route::Rupiah => "M3 7h18v10H3zM12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 1 0 0-5zM6 10v4M18 10v4",
-        // a market stall awning
-        Route::Pasar => {
-            "M4 9l2-5h12l2 5M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0M5 10v10h14V10M10 20v-5h4v5"
-        }
-        // two speech bubbles, one bowing lower
-        Route::Unggah => "M4 5h9v6H8l-3 3v-3H4zM11 13h9v5h-1v3l-3-3h-5z",
+        Route::Alarm => return custom(FALSE_FRIEND),
+        Route::Rupiah => return custom(RUPIAH),
+        Route::Pasar => return custom(PASAR),
+        Route::Unggah => return custom(RESPECT_METER),
         // two waves side by side
         Route::Pairs => "M3 12c2-4 4-4 6 0s4 4 6 0M13 12c2-4 4-4 6 0M3 18h7M14 18h7",
         Route::Hub => PLAY,
@@ -73,12 +67,9 @@ pub fn game(route: Route) -> Element {
     stroke(d)
 }
 
-/// Kak Nur (نور, light)): a speech bubble with a small spark.
-const COACH: &str =
-    "M5 5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-7l-4 3v-3H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zM12 7.5v5M9.5 10h5";
-
+/// Kak Nur: a speech bubble holding a heart.
 pub fn coach() -> Element {
-    stroke(COACH)
+    custom(COACH)
 }
 
 /// Pelita: an oil lamp with its flame.
@@ -96,6 +87,43 @@ pub fn star() -> Element {
     stroke("M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6-4.5-4.2 6.1-.7z")
 }
 
+// Kabar's own icons (assets/icons/custom/README.md has what each one means).
+const JOURNEY_ISLAND: &str = include_str!("../../../assets/icons/custom/journey-island.svg");
+const COACH: &str = include_str!("../../../assets/icons/custom/coach.svg");
+const KABAR_PAGI: &str = include_str!("../../../assets/icons/custom/kabar-pagi.svg");
+const BRIDGE_WORD: &str = include_str!("../../../assets/icons/custom/bridge-word.svg");
+const FALSE_FRIEND: &str = include_str!("../../../assets/icons/custom/false-friend.svg");
+const RUPIAH: &str = include_str!("../../../assets/icons/custom/rupiah.svg");
+const PASAR: &str = include_str!("../../../assets/icons/custom/pasar.svg");
+const RESPECT_METER: &str = include_str!("../../../assets/icons/custom/respect-meter.svg");
+
+/// The drawing inside one of the custom SVG files, without its `<svg>` wrapper.
+fn svg_body(file: &'static str) -> &'static str {
+    let open = file.find("<svg").and_then(|i| file[i..].find('>').map(|j| i + j + 1));
+    let close = file.rfind("</svg>");
+    match (open, close) {
+        (Some(start), Some(end)) if start <= end => file[start..end].trim(),
+        _ => "",
+    }
+}
+
+/// A custom icon at the same size and stroke as the rest, so it sits in line with them.
+fn custom(file: &'static str) -> Element {
+    rsx! {
+        svg {
+            width: "22",
+            height: "22",
+            view_box: "0 0 24 24",
+            fill: "none",
+            stroke: "currentColor",
+            stroke_width: "1.8",
+            stroke_linecap: "round",
+            stroke_linejoin: "round",
+            dangerous_inner_html: svg_body(file),
+        }
+    }
+}
+
 fn stroke(d: &'static str) -> Element {
     rsx! {
         svg {
@@ -109,5 +137,42 @@ fn stroke(d: &'static str) -> Element {
             stroke_linejoin: "round",
             path { d }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    const ALL: [(&str, &str); 8] = [
+        ("journey-island", JOURNEY_ISLAND),
+        ("coach", COACH),
+        ("kabar-pagi", KABAR_PAGI),
+        ("bridge-word", BRIDGE_WORD),
+        ("false-friend", FALSE_FRIEND),
+        ("rupiah", RUPIAH),
+        ("pasar", PASAR),
+        ("respect-meter", RESPECT_METER),
+    ];
+
+    #[test]
+    fn custom_icons_are_24px_strokes_in_current_colour() {
+        for (name, file) in ALL {
+            assert!(file.contains(r#"viewBox="0 0 24 24""#), "{name}: not on the 24 grid");
+            assert!(file.contains(r#"stroke="currentColor""#), "{name}: stroke is not currentColor");
+            assert!(!file.contains('#'), "{name}: hard-coded colour");
+            let body = svg_body(file);
+            assert!(!body.is_empty(), "{name}: empty drawing");
+            assert!(!body.contains("<svg") && !body.contains("</svg>"), "{name}: wrapper left in");
+            assert!(!body.to_lowercase().contains("<script"), "{name}: script in an icon");
+        }
+    }
+
+    #[test]
+    fn svg_body_strips_only_the_wrapper() {
+        let file =
+            "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\">\n<path d=\"M1 1\"/>\n</svg>\n";
+        assert_eq!(svg_body(file), "<path d=\"M1 1\"/>");
+        assert_eq!(svg_body("not an svg"), "");
     }
 }

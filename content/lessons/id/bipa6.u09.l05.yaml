@@ -1,0 +1,211 @@
+schema: kabar.lesson/v1
+id: bipa6.u09.l05
+language: id
+title: Promosi Ramadan
+can_do:
+  ar_eg: تخطط عرض ترويجي لرمضان وتكتب إعلان قصير للزباين.
+  ar: أن تخطّط عرضًا ترويجيًّا لرمضان وتكتب إعلانًا قصيرًا للزبائن.
+  en: Plan a Ramadan promotion and write a short ad for customers.
+slides:
+  - title: Paket buka puasa
+    body:
+      ar_eg: |
+        رمضان أهم موسم لبيع التمر في إندونيسيا. كلمات الـ promosi:
+        - promosi = عرض ترويجي، دعاية
+        - pelanggan setia = الزبون الدايم، اللي بيرجع على طول
+        - kupon = كوبون خصم
+        - paket hemat = باكدج موفّر، كذا حاجة بسعر أقل
+        - gratis ongkir = شحن ببلاش (ongkir = ongkos kirim = مصاريف الشحن)
+        مثال: Promosi Ramadan! Paket hemat kurma + teh, gratis ongkir untuk pelanggan setia.
+      ar: |
+        رمضان أهمّ مواسم بيع التمر في إندونيسيا. كلمات الـ promosi:
+        - promosi = عرض ترويجي، دعاية
+        - pelanggan setia = الزبون الوفيّ الدائم
+        - kupon = قسيمة خصم
+        - paket hemat = عرض موفّر، عدّة أشياء بسعر أقلّ
+        - gratis ongkir = شحن مجّاني (ongkir = ongkos kirim = تكلفة الشحن)
+        مثال: Promosi Ramadan! Paket hemat kurma + teh, gratis ongkir untuk pelanggan setia.
+      en: |
+        Ramadan is the biggest season for selling dates in Indonesia. Promotion words:
+        - promosi = promotion
+        - pelanggan setia = loyal customer
+        - kupon = coupon
+        - paket hemat = value bundle, several items for less
+        - gratis ongkir = free shipping (ongkir = ongkos kirim = shipping cost)
+        Example: Promosi Ramadan! Paket hemat kurma + teh, gratis ongkir untuk pelanggan setia.
+    examples:
+      - text: Pelanggan setia mendapat kupon diskon sepuluh persen selama Ramadan.
+        ar_eg: الزباين الدايمين بياخدوا كوبون خصم عشرة في المية طول رمضان.
+        ar: يحصل الزبائن الأوفياء على قسيمة خصم عشرة بالمئة طوال رمضان.
+        en: Loyal customers get a ten-percent coupon throughout Ramadan.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: promosi
+        ar_eg: عرض ترويجي
+        ar: عرض ترويجي
+        en: promotion
+      - text: pelanggan setia
+        ar_eg: زبون دايم
+        ar: زبون وفيّ
+        en: loyal customer
+      - text: kupon
+        ar_eg: كوبون
+        ar: قسيمة
+        en: coupon
+      - text: paket hemat
+        ar_eg: باكدج موفّر
+        ar: عرض موفّر
+        en: value bundle
+      - text: gratis ongkir
+        ar_eg: شحن ببلاش
+        ar: شحن مجّاني
+        en: free shipping
+    words: [promosi, pelanggan setia, kupon, paket hemat, gratis ongkir]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «ongkir» اختصار لإيه؟
+      ar: ما الذي تختصره «ongkir»؟
+      en: What is "ongkir" short for?
+    options: [ongkos parkir, ongkos kirim, orang kaya]
+    answer: 1
+    words: [gratis ongkir]
+  - id: e03
+    type: listen
+    text: Selama Ramadan, ada paket hemat kurma dan susu dengan harga lebih murah.
+    question:
+      ar_eg: إيه اللي في الباكدج الموفّر؟
+      ar: ماذا في العرض الموفّر؟
+      en: What's in the value bundle?
+    options:
+      - رز وفراخ.
+      - قهوة وسكر.
+      - تمر ولبن.
+    answer: 2
+    words: [paket hemat]
+  - id: e04
+    type: fill_blank
+    sentence: Tunjukkan ___ ini di kasir untuk mendapat potongan harga.
+    meaning:
+      ar_eg: ورّي الكوبون ده للكاشير عشان تاخد خصم.
+      ar: أظهر هذه القسيمة عند الصندوق لتحصل على الخصم.
+      en: Show this coupon at the till to get the discount.
+    options: [kupon, promosi, ongkir]
+    answers: [kupon]
+    words: [kupon]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مين الـ pelanggan setia؟
+      ar: من الـ pelanggan setia؟
+      en: Who is a pelanggan setia?
+    options:
+      - زبون بيشتري منك من سنين.
+      - زبون جديد النهارده.
+      - مورّد بيبيعلك.
+    answer: 0
+    words: [pelanggan setia]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: العرض الترويجي ده لحد آخر رمضان.
+      ar: يستمرّ هذا العرض الترويجي حتى آخر رمضان.
+      en: This promotion runs until the end of Ramadan.
+    answer: Promosi ini berlaku sampai akhir Ramadan.
+    distractors: [kupon, hemat]
+    words: [promosi, berlaku]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Untuk pelanggan setia, ongkos kirim ke seluruh Indonesia gratis.
+    answers_meaning:
+      ar_eg:
+        - للزباين الدايمين، الشحن لكل إندونيسيا ببلاش.
+        - الزبون الدايم مابيدفعش شحن لأي حتة في إندونيسيا.
+      ar:
+        - الشحن مجّاني إلى أنحاء إندونيسيا للزبائن الأوفياء.
+        - لا يدفع الزبون الوفيّ تكلفة الشحن إلى أيّ مكان في إندونيسيا.
+      en:
+        - For loyal customers, shipping anywhere in Indonesia is free.
+        - Loyal customers pay no shipping across Indonesia.
+    words: [pelanggan setia, gratis ongkir]
+  - id: e08
+    type: speaking
+    text: Promosi Ramadan! Beli paket hemat, gratis ongkir!
+    meaning:
+      ar_eg: عرض رمضان! اشتري الباكدج الموفّر، والشحن ببلاش!
+      ar: عرض رمضان! اشترِ العرض الموفّر واحصل على شحن مجّاني!
+      en: Ramadan promotion! Buy the value bundle, free shipping!
+    words: [promosi, paket hemat, gratis ongkir]
+  - id: e09
+    type: dictation
+    text: Setiap pembelian di atas seratus ribu mendapat satu kupon.
+    meaning:
+      ar_eg: كل شراء فوق مية ألف ياخد كوبون.
+      ar: كلّ عملية شراء تتجاوز مئة ألف تُمنح قسيمة.
+      en: Every purchase over a hundred thousand earns one coupon.
+    words: [kupon]
+  - id: e10
+    type: fill_blank
+    sentence: Kami ingin berterima kasih kepada ___ yang sudah membeli dari kami sejak 2019.
+    meaning:
+      ar_eg: عايزين نشكر الزباين الدايمين اللي بيشتروا مننا من ٢٠١٩.
+      ar: نودّ أن نشكر الزبائن الأوفياء الذين يشترون منّا منذ ٢٠١٩.
+      en: We'd like to thank the loyal customers who've bought from us since 2019.
+    options: [pelanggan setia, pemasok, paket hemat]
+    answers: [pelanggan setia]
+    words: [pelanggan setia]
+dialogue:
+  title: Kurma untuk bulan puasa
+  lines:
+    - speaker: Uni Rina
+      text: Mohamed, dua bulan lagi Ramadan. Apa promosi kita tahun ini?
+      ar_eg: يا محمد، فاضل شهرين على رمضان. إيه العرض بتاعنا السنة دي؟
+      ar: يا محمد، بقي شهران على رمضان. ما عرضنا الترويجي هذا العام؟
+      en: Mohamed, Ramadan's in two months. What's our promotion this year?
+    - speaker: Mohamed
+      text: Paket hemat kurma Mesir dan teh, khusus untuk buka puasa.
+      ar_eg: باكدج موفّر تمر مصري وشاي، مخصوص للفطار.
+      ar: عرض موفّر من التمر المصري والشاي، مخصّص للإفطار.
+      en: A value bundle of Egyptian dates and tea, just for iftar.
+    - speaker: Uni Rina
+      text: Bagus. Bagaimana kalau pelanggan setia mendapat gratis ongkir?
+      ar_eg: حلو. إيه رأيك الزباين الدايمين ياخدوا شحن ببلاش؟
+      ar: جيّد. ما رأيك أن يحصل الزبائن الأوفياء على شحن مجّاني؟
+      en: Good. How about free shipping for loyal customers?
+    - speaker: Mohamed
+      text: Setuju. Dan pelanggan baru mendapat kupon untuk pembelian kedua.
+      ar_eg: موافق. والزباين الجداد ياخدوا كوبون لتاني مرة يشتروا.
+      ar: موافق، ويحصل الزبائن الجدد على قسيمة لشرائهم الثاني.
+      en: Agreed. And new customers get a coupon for their second purchase.
+new_words:
+  - word: promosi
+    pos: noun
+    ar_eg: عرض ترويجي
+    ar: عرض ترويجي، دعاية
+    en: promotion
+  - word: pelanggan setia
+    pos: noun
+    ar_eg: زبون دايم
+    ar: زبون وفيّ
+    en: loyal customer
+  - word: kupon
+    pos: noun
+    ar_eg: كوبون
+    ar: قسيمة
+    en: coupon
+  - word: paket hemat
+    pos: noun
+    ar_eg: باكدج موفّر
+    ar: عرض موفّر
+    en: value bundle
+  - word: gratis ongkir
+    pos: phrase
+    ar_eg: شحن ببلاش
+    ar: شحن مجّاني
+    en: free shipping
+review:
+  status: draft
+  verified: false

@@ -1,0 +1,203 @@
+schema: kabar.lesson/v1
+id: bipa7.u01.l03
+language: id
+title: Profil anak muda
+can_do:
+  ar_eg: تقرا بروفايل صحفي عن شاب ناجح وتفهم إنجازه وأسبابه.
+  ar: أن تقرأ مقالة تعريفية بشابّة ناجحة وتفهم إنجازها ودوافعه.
+  en: Read a journalistic profile of a young achiever and follow what she did and why.
+slides:
+  - title: Plastik jadi berkah
+    body:
+      ar_eg: |
+        بروفايل (مكتوب للدرس، والشخصية متألّفة):
+        Maria, 24 tahun, adalah wirausaha muda dari Sorong. Tiga tahun lalu ia melihat pantai kotanya penuh sampah plastik. Ia lalu membuat inovasi sederhana: plastik bekas dilelehkan dan dicetak menjadi paving block. Kini usahanya mempekerjakan dua puluh warga. Atas prestasi itu, Maria menerima penghargaan pemuda pelopor tingkat nasional. "Saya ingin menginspirasi anak muda Papua untuk berani mulai," katanya.
+        - wirausaha = رائد أعمال، inovasi = ابتكار، prestasi = إنجاز
+        - penghargaan = جايزة / تكريم، menginspirasi = يلهم
+      ar: |
+        مقالة تعريفية (مكتوبة للدرس، والشخصية متخيَّلة):
+        Maria, 24 tahun, adalah wirausaha muda dari Sorong. Tiga tahun lalu ia melihat pantai kotanya penuh sampah plastik. Ia lalu membuat inovasi sederhana: plastik bekas dilelehkan dan dicetak menjadi paving block. Kini usahanya mempekerjakan dua puluh warga. Atas prestasi itu, Maria menerima penghargaan pemuda pelopor tingkat nasional. "Saya ingin menginspirasi anak muda Papua untuk berani mulai," katanya.
+        - wirausaha = رائد أعمال، inovasi = ابتكار، prestasi = إنجاز
+        - penghargaan = جائزة / تكريم، menginspirasi = يُلهم
+      en: |
+        A profile (written for the lesson; the person is invented):
+        Maria, 24 tahun, adalah wirausaha muda dari Sorong. Tiga tahun lalu ia melihat pantai kotanya penuh sampah plastik. Ia lalu membuat inovasi sederhana: plastik bekas dilelehkan dan dicetak menjadi paving block. Kini usahanya mempekerjakan dua puluh warga. Atas prestasi itu, Maria menerima penghargaan pemuda pelopor tingkat nasional. "Saya ingin menginspirasi anak muda Papua untuk berani mulai," katanya.
+        - wirausaha = entrepreneur, inovasi = innovation, prestasi = achievement
+        - penghargaan = award, menginspirasi = to inspire
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: prestasi
+        ar_eg: إنجاز
+        ar: إنجاز
+        en: achievement
+      - text: inovasi
+        ar_eg: ابتكار
+        ar: ابتكار
+        en: innovation
+      - text: menginspirasi
+        ar_eg: يلهم
+        ar: يُلهم
+        en: to inspire
+      - text: wirausaha
+        ar_eg: رائد أعمال / صاحب مشروع
+        ar: رائد أعمال
+        en: entrepreneur
+      - text: penghargaan
+        ar_eg: جايزة / تكريم
+        ar: جائزة / تكريم
+        en: award, recognition
+    words: [prestasi, inovasi, menginspirasi, wirausaha, penghargaan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إيه الابتكار اللي عملته ماريا؟
+      ar: ما الابتكار الذي قدّمته ماريا؟
+      en: What was Maria's innovation?
+    options:
+      - بلاط رصف من بلاستيك قديم.
+      - أبلكيشن لبيع السمك.
+      - مركب سريع لراجا أمبات.
+    answer: 0
+    words: [inovasi]
+  - id: e03
+    type: fill_blank
+    sentence: Atas ___ itu, Maria menerima penghargaan tingkat nasional.
+    meaning:
+      ar_eg: على الإنجاز ده، ماريا خدت جايزة على مستوى البلد.
+      ar: نالت ماريا جائزة وطنية على ذلك الإنجاز.
+      en: For that achievement, Maria received a national award.
+    options: [prestasi, wirausaha, inovasi]
+    answers: [prestasi]
+    words: [prestasi, penghargaan]
+  - id: e04
+    type: listen
+    text: Saya ingin menginspirasi anak muda Papua untuk berani mulai.
+    question:
+      ar_eg: ماريا عايزة إيه؟
+      ar: ماذا تريد ماريا؟
+      en: What does Maria want?
+    options:
+      - إنها تسيب سورونج.
+      - إنها تلهم شباب بابوا يتجرّأوا ويبدأوا.
+      - إنها تكسب جايزة تانية.
+    answer: 1
+    words: [menginspirasi]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: هي رائدة أعمال شابة من سورونج.
+      ar: إنّها رائدة أعمال شابّة من سورونغ.
+      en: She is a young entrepreneur from Sorong.
+    answer: Ia adalah wirausaha muda dari Sorong.
+    distractors: [inovasi, prestasi]
+    words: [wirausaha]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ليه البروفايل بيبدأ بالشط المليان زبالة؟
+      ar: لماذا تبدأ المقالة بالشاطئ المليء بالقمامة؟
+      en: Why does the profile open with the beach full of rubbish?
+    options:
+      - علشان يوصف الطقس.
+      - علشان يشتكي من البلدية.
+      - علشان يبيّن المشكلة اللي ولّدت الفكرة.
+    answer: 2
+    words: [inovasi]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: قصتها بتلهم شباب كتير.
+      ar: تُلهم قصّتها شبابًا كثيرين.
+      en: Her story inspires many young people.
+    answers:
+      - Kisahnya menginspirasi banyak anak muda.
+      - Ceritanya menginspirasi banyak anak muda.
+      - Kisahnya menginspirasi banyak pemuda.
+      - Ceritanya menginspirasi banyak pemuda.
+    words: [menginspirasi]
+  - id: e08
+    type: speaking
+    text: Penghargaan ini untuk dua puluh warga yang bekerja bersama saya.
+    meaning:
+      ar_eg: الجايزة دي للعشرين واحد من الأهالي اللي شغّالين معايا.
+      ar: هذه الجائزة للعشرين من الأهالي الذين يعملون معي.
+      en: This award is for the twenty residents who work with me.
+    words: [penghargaan]
+  - id: e09
+    type: dictation
+    text: Wirausaha muda itu terkenal karena inovasinya.
+    meaning:
+      ar_eg: رائدة الأعمال الشابة دي مشهورة بابتكارها.
+      ar: تشتهر رائدة الأعمال الشابّة بابتكارها.
+      en: That young entrepreneur is known for her innovation.
+    words: [wirausaha, inovasi]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Prestasi terbesarnya bukan penghargaan, melainkan lapangan kerja bagi warga.
+    answers_meaning:
+      ar_eg:
+        - أكبر إنجاز ليها مش الجايزة، لكن فرص الشغل للأهالي.
+        - إنجازها الأكبر هو الشغل اللي وفّرته للناس، مش الجايزة.
+      ar:
+        - ليس أعظم إنجازاتها الجائزة، بل فرص العمل للأهالي.
+        - إنجازها الأكبر فرص العمل التي وفّرتها للسكّان لا الجائزة.
+      en:
+        - Her greatest achievement isn't the award but the jobs for local people.
+        - Her biggest success is the work she created for residents, not the prize.
+    words: [prestasi, penghargaan]
+dialogue:
+  title: Wawancara singkat
+  lines:
+    - speaker: Mohamed
+      text: Maria, apa yang membuat Anda memulai usaha ini?
+      ar_eg: يا ماريا، إيه اللي خلّاكي تبدئي المشروع ده؟
+      ar: يا ماريا، ما الذي دفعكِ إلى بدء هذا المشروع؟
+      en: Maria, what made you start this business?
+    - speaker: Maria
+      text: Pantai kami penuh plastik. Saya pikir, sampah ini bisa jadi bahan bangunan.
+      ar_eg: الشط عندنا كان مليان بلاستيك. قلت، الزبالة دي ممكن تبقى مواد بنا.
+      ar: كان شاطئنا مليئًا بالبلاستيك، ففكّرت أنّ هذه النفايات تصلح مادّة بناء.
+      en: Our beach was full of plastic. I thought this rubbish could become building material.
+    - speaker: Mohamed
+      text: Bagaimana rasanya menerima penghargaan nasional?
+      ar_eg: كان إحساسك إيه وإنتي بتاخدي جايزة على مستوى البلد؟
+      ar: كيف كان شعوركِ وأنتِ تتسلّمين جائزة وطنية؟
+      en: How did it feel to receive a national award?
+    - speaker: Maria
+      text: Senang, tentu. Tetapi lebih senang lagi kalau ada wirausaha muda lain yang ikut mulai.
+      ar_eg: مبسوطة طبعًا. بس هبقى مبسوطة أكتر لو فيه رواد أعمال شباب تانيين بدأوا هم كمان.
+      ar: سعيدة بالطبع، لكنّني سأسعد أكثر إن بدأ روّاد أعمال شباب آخرون أيضًا.
+      en: Happy, of course. But I'll be happier still if other young entrepreneurs start too.
+new_words:
+  - word: prestasi
+    pos: noun
+    ar_eg: إنجاز
+    ar: إنجاز
+    en: achievement
+  - word: inovasi
+    pos: noun
+    ar_eg: ابتكار
+    ar: ابتكار
+    en: innovation
+  - word: menginspirasi
+    pos: verb
+    ar_eg: يلهم
+    ar: يُلهم
+    en: to inspire
+  - word: wirausaha
+    pos: noun
+    ar_eg: رائد أعمال / صاحب مشروع
+    ar: رائد أعمال
+    en: entrepreneur
+  - word: penghargaan
+    pos: noun
+    ar_eg: جايزة / تكريم
+    ar: جائزة / تكريم
+    en: award, recognition
+review:
+  status: draft
+  verified: false

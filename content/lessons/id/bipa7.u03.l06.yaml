@@ -1,0 +1,206 @@
+schema: kabar.lesson/v1
+id: bipa7.u03.l06
+language: id
+title: Hikayat
+can_do:
+  ar_eg: تتعرّف على الحكاية الملايوية القديمة (hikayat) وتلاقي جدورها العربية.
+  ar: أن تتعرّف على الحكاية الملايوية القديمة (hikayat) وتتبيّن جذورها العربية.
+  en: Recognise the classic Malay hikayat and find its Arabic roots.
+slides:
+  - title: Dari "حكاية" ke "hikayat"
+    body:
+      ar_eg: |
+        الـ hikayat نثر ملايوي قديم، والكلمة نفسها جاية من العربي «حكاية».
+        - الأبطال ملوك وأمرا، وفيها petualangan (مغامرات) وسحر وجنّ.
+        - البطل ساعات pengembara (رحّالة / بيلفّ البلاد).
+        - حكايات كتير جات عن طريق الـ terjemahan (الترجمة) من العربي والفارسي، زي Hikayat Amir Hamzah.
+        - فيه كمان حكايات ملايوية أصلية، زي Hikayat Hang Tuah.
+        الحكاية بتبدأ بكلمات قديمة زي Sebermula (في البداية) وHatta (وبعدين).
+      ar: |
+        الـ hikayat نثر ملايويّ قديم، والكلمة نفسها من العربية «حكاية».
+        - أبطالها ملوك وأمراء، وفيها petualangan (مغامرات) وسحر وجنّ.
+        - وقد يكون البطل pengembara (رحّالة يجوب البلاد).
+        - ووصل كثير منها عبر الـ terjemahan (الترجمة) من العربية والفارسية، مثل Hikayat Amir Hamzah.
+        - ومنها حكايات ملايوية أصيلة، مثل Hikayat Hang Tuah.
+        وتبدأ بألفاظ قديمة مثل Sebermula (بادئ ذي بدء) وHatta (ثمّ).
+      en: |
+        A hikayat is classic Malay prose, and the word itself comes from Arabic «حكاية» (story).
+        - Its heroes are kings and princes, with petualangan (adventures), magic and jinn.
+        - The hero is sometimes a pengembara (wanderer).
+        - Many came by terjemahan (translation) from Arabic and Persian, like Hikayat Amir Hamzah.
+        - Others are home-grown Malay, like Hikayat Hang Tuah.
+        They open with old words like Sebermula (in the beginning) and Hatta (then).
+    examples:
+      - text: Hatta, pengembara itu tiba di sebuah negeri yang jauh.
+        ar_eg: وبعدين الرحّالة ده وصل لبلد بعيدة.
+        ar: ثمّ بلغ ذلك الرحّالة بلدًا بعيدًا.
+        en: Then the wanderer arrived in a faraway land.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: hikayat
+        ar_eg: حكاية ملايوية قديمة
+        ar: حكاية ملايوية قديمة
+        en: classic Malay tale
+      - text: petualangan
+        ar_eg: مغامرة
+        ar: مغامرة
+        en: adventure
+      - text: pengembara
+        ar_eg: رحّالة
+        ar: رحّالة
+        en: wanderer, traveller
+      - text: terjemahan
+        ar_eg: ترجمة
+        ar: ترجمة
+        en: translation
+      - text: tipu daya
+        ar_eg: خدعة
+        ar: خديعة
+        en: trick
+    words: [hikayat, petualangan, pengembara, terjemahan, tipu daya]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: كلمة «hikayat» جاية منين؟
+      ar: من أين جاءت كلمة «hikayat»؟
+      en: Where does the word "hikayat" come from?
+    options:
+      - من الهولندي.
+      - من السنسكريتي.
+      - من العربي «حكاية».
+    answer: 2
+    words: [hikayat]
+  - id: e03
+    type: listen
+    text: Hikayat Amir Hamzah adalah terjemahan dari cerita Persia dan Arab.
+    question:
+      ar_eg: حكاية أمير حمزة أصلها إيه؟
+      ar: ما أصل حكاية أمير حمزة؟
+      en: What is the origin of Hikayat Amir Hamzah?
+    options:
+      - ترجمة من حكايات فارسية وعربية.
+      - حكاية من بابوا.
+      - فيلم إندونيسي.
+    answer: 0
+    words: [terjemahan, hikayat]
+  - id: e04
+    type: fill_blank
+    sentence: Sindbad adalah ___ yang tujuh kali berlayar ke negeri-negeri ajaib.
+    meaning:
+      ar_eg: السندباد رحّالة سافر بالمركب سبع مرات لبلاد عجيبة.
+      ar: السندباد رحّالة أبحر سبع مرّات إلى بلاد عجيبة.
+      en: Sindbad is a wanderer who sailed seven times to wondrous lands.
+    options: [pengembara, terjemahan, hikayat]
+    answers: [pengembara]
+    words: [pengembara]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الحكاية دي مليانة مغامرات وسحر.
+      ar: هذه الحكاية مليئة بالمغامرات والسحر.
+      en: This tale is full of adventure and magic.
+    answer: Hikayat ini penuh petualangan dan sihir.
+    distractors: [pengembara, terjemahan]
+    words: [hikayat, petualangan]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «Hatta» في الحكاية القديمة معناها إيه؟
+      ar: ما معنى «Hatta» في الحكاية القديمة؟
+      en: What does "Hatta" mean in an old tale?
+    options:
+      - النهاية.
+      - وبعدين.
+      - يا سلام.
+    answer: 1
+    explain:
+      ar_eg: من العربي «حتّى»، بس في الـ hikayat بقت «وبعدين».
+      ar: من العربية «حتّى»، لكنّها في الـ hikayat بمعنى «ثمّ».
+      en: From Arabic «حتّى», but in a hikayat it means "then".
+    words: [hikayat]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: قريت ترجمة «ألف ليلة وليلة» بالإندونيسي.
+      ar: قرأت ترجمة «ألف ليلة وليلة» بالإندونيسية.
+      en: I read the Indonesian translation of "One Thousand and One Nights".
+    answers:
+      - Saya membaca terjemahan "Seribu Satu Malam" dalam bahasa Indonesia.
+      - Saya sudah membaca terjemahan "Seribu Satu Malam" dalam bahasa Indonesia.
+      - Saya membaca terjemahan Seribu Satu Malam dalam bahasa Indonesia.
+      - Aku membaca terjemahan "Seribu Satu Malam" dalam bahasa Indonesia.
+    words: [terjemahan]
+  - id: e08
+    type: speaking
+    text: Sebermula, ada seorang pengembara yang mencari petualangan di negeri jauh.
+    meaning:
+      ar_eg: في البداية، كان فيه رحّالة بيدوّر على مغامرات في بلاد بعيدة.
+      ar: بادئ ذي بدء، كان رحّالة يطلب المغامرة في بلاد بعيدة.
+      en: In the beginning, there was a wanderer seeking adventure in a faraway land.
+    words: [pengembara, petualangan]
+  - id: e09
+    type: dictation
+    text: Banyak hikayat Melayu adalah terjemahan dari bahasa Arab.
+    meaning:
+      ar_eg: حكايات ملايوية كتير مترجمة من العربي.
+      ar: كثير من الحكايات الملايوية مترجم عن العربية.
+      en: Many Malay hikayat are translations from Arabic.
+    words: [hikayat, terjemahan]
+  - id: e10
+    type: speaking
+    text: Petualangan pengembara itu berakhir di istana raja.
+    meaning:
+      ar_eg: مغامرة الرحّالة خلصت في قصر الملك.
+      ar: انتهت مغامرة الرحّالة في قصر الملك.
+      en: The wanderer's adventure ended at the king's palace.
+    words: [petualangan, pengembara]
+dialogue:
+  title: Buku tua di rak Mama
+  lines:
+    - speaker: Mohamed
+      text: Mama, buku tua ini judulnya "Hikayat Seribu Satu Malam". Ini dari Arab, kan?
+      ar_eg: يا ماما، الكتاب القديم ده اسمه «حكاية ألف ليلة وليلة». ده من العرب، صح؟
+      ar: يا ماما، عنوان هذا الكتاب القديم «حكاية ألف ليلة وليلة». إنّه من العرب، أليس كذلك؟
+      en: Mama, this old book is called "Hikayat Seribu Satu Malam". It's from the Arabs, right?
+    - speaker: Mama Ruth
+      text: Betul. Itu terjemahan. Kakek saya suka membacakan petualangan Sindbad.
+      ar_eg: صح. دي ترجمة. جدّي كان بيحب يقرالنا مغامرات السندباد.
+      ar: صحيح، هذه ترجمة. كان جدّي يحبّ أن يقرأ علينا مغامرات السندباد.
+      en: Right. It's a translation. My grandfather loved reading Sindbad's adventures aloud.
+    - speaker: Mohamed
+      text: Di Mesir, Sindbad juga terkenal. Pengembara laut yang tidak pernah takut.
+      ar_eg: في مصر كمان السندباد مشهور. الرحّالة البحري اللي عمره ما خاف.
+      ar: والسندباد مشهور في مصر أيضًا، الرحّالة البحريّ الذي لا يخاف.
+      en: Sindbad's famous in Egypt too. The sea wanderer who was never afraid.
+    - speaker: Mama Ruth
+      text: Jadi hikayat ini sudah berlayar dari Bagdad sampai Raja Ampat!
+      ar_eg: يبقى الحكاية دي سافرت بالمركب من بغداد لحد راجا أمبات!
+      ar: إذن أبحرت هذه الحكاية من بغداد حتى راجا أمبات!
+      en: So this hikayat has sailed all the way from Baghdad to Raja Ampat!
+new_words:
+  - word: hikayat
+    pos: noun
+    ar_eg: حكاية ملايوية قديمة
+    ar: حكاية ملايوية قديمة
+    en: hikayat (classic Malay prose tale)
+  - word: petualangan
+    pos: noun
+    ar_eg: مغامرة
+    ar: مغامرة
+    en: adventure
+  - word: pengembara
+    pos: noun
+    ar_eg: رحّالة
+    ar: رحّالة
+    en: wanderer, traveller
+  - word: terjemahan
+    pos: noun
+    ar_eg: ترجمة
+    ar: ترجمة
+    en: translation
+review:
+  status: draft
+  verified: false

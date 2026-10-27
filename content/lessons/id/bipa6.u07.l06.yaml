@@ -1,0 +1,212 @@
+schema: kabar.lesson/v1
+id: bipa6.u07.l06
+language: id
+title: Surat kuasa
+can_do:
+  ar_eg: تقرا وتكتب توكيل بسيط عشان حد يخلّص لك ورقة.
+  ar: أن تقرأ وتكتب توكيلًا بسيطًا ليُنجز عنك أحدٌ معاملة.
+  en: Read and write a simple letter of authorisation so someone can handle a document for you.
+slides:
+  - title: Saya memberi kuasa kepada …
+    body:
+      ar_eg: |
+        لو مش هتقدر تروح تستلم ورقة، تكتب surat kuasa (توكيل).
+        - pemberi kuasa = الموكِّل، اللي بيدي التوكيل (إنت)
+        - penerima kuasa = الوكيل، اللي هيروح بدالك
+        - meterai = طابع رسمي بـ ١٠٠٠٠ روبية بيتلزق على الورقة وتمضي عليه
+        - sah = رسمي وقانوني، معمول بيه
+        الصيغة: Yang bertanda tangan di bawah ini … memberi kuasa kepada … untuk …
+      ar: |
+        إن لم تستطع الذهاب لاستلام وثيقة، فاكتب surat kuasa (توكيلًا).
+        - pemberi kuasa = الموكِّل، مانح التوكيل (أنت)
+        - penerima kuasa = الوكيل، من سيذهب نيابةً عنك
+        - meterai = طابع رسمي بعشرة آلاف روبية يُلصق على الورقة وتوقّع عليه
+        - sah = نافذ قانونًا، معتمد
+        والصيغة: Yang bertanda tangan di bawah ini … memberi kuasa kepada … untuk …
+      en: |
+        If you can't go and collect a document yourself, you write a surat kuasa (letter of authorisation).
+        - pemberi kuasa = the person granting authority (you)
+        - penerima kuasa = the person authorised to go for you
+        - meterai = a Rp10,000 duty stamp stuck on the paper and signed across
+        - sah = legally valid
+        The formula: Yang bertanda tangan di bawah ini … memberi kuasa kepada … untuk …
+    examples:
+      - text: Saya memberi kuasa kepada Dimas untuk mengambil ijazah saya.
+        ar_eg: أنا بوكّل ديماس يستلم شهادتي.
+        ar: أوكّل ديماس باستلام شهادتي.
+        en: I authorise Dimas to collect my diploma.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: surat kuasa
+        ar_eg: توكيل
+        ar: توكيل
+        en: letter of authorisation
+      - text: pemberi kuasa
+        ar_eg: الموكِّل
+        ar: الموكِّل
+        en: grantor
+      - text: penerima kuasa
+        ar_eg: الوكيل
+        ar: الوكيل
+        en: authorised person
+      - text: meterai
+        ar_eg: طابع رسمي
+        ar: طابع رسمي
+        en: duty stamp
+      - text: sah
+        ar_eg: رسمي وقانوني
+        ar: نافذ قانونًا
+        en: legally valid
+    words: [surat kuasa, pemberi kuasa, penerima kuasa, meterai, sah]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إنت مسافر ومحتاج صاحبك يستلم الباسبور. تكتب إيه؟
+      ar: أنت مسافر وتحتاج صديقك ليستلم جوازك. ماذا تكتب؟
+      en: You're travelling and need a friend to collect your passport. What do you write?
+    options: [surat lamaran, surat kuasa, surat pembaca]
+    answer: 1
+    words: [surat kuasa]
+  - id: e03
+    type: listen
+    text: Surat ini belum sah karena tidak ada meterai dan tanda tangan.
+    question:
+      ar_eg: الجواب مش رسمي ليه؟
+      ar: لماذا الرسالة غير نافذة؟
+      en: Why isn't the letter valid?
+    options:
+      - عشان مكتوب بالإنجليزي.
+      - عشان قديم.
+      - عشان مافيهوش طابع ولا إمضا.
+    answer: 2
+    words: [sah, meterai]
+  - id: e04
+    type: fill_blank
+    sentence: Dimas adalah ___, jadi dia yang datang ke kantor imigrasi.
+    meaning:
+      ar_eg: ديماس هو الوكيل، فهو اللي هيروح مكتب الهجرة.
+      ar: ديماس هو الوكيل، فهو من سيأتي إلى مكتب الهجرة.
+      en: Dimas is the authorised person, so he's the one going to the immigration office.
+    options: [penerima kuasa, pemberi kuasa, meterai]
+    answers: [penerima kuasa]
+    words: [penerima kuasa]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مين الـ pemberi kuasa؟
+      ar: من الـ pemberi kuasa؟
+      en: Who is the pemberi kuasa?
+    options:
+      - اللي بيكتب التوكيل وبيدي الإذن.
+      - الموظف في المكتب.
+      - اللي بيروح يستلم الورقة.
+    answer: 0
+    explain:
+      ar_eg: pemberi = اللي بيدّي، penerima = اللي بياخد.
+      ar: pemberi = المانح، وpenerima = المتلقّي.
+      en: pemberi = the giver; penerima = the receiver.
+    words: [pemberi kuasa, penerima kuasa]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: الطابع لازم يتلزق تحت الإمضا.
+      ar: يجب إلصاق الطابع تحت التوقيع.
+      en: The duty stamp must be stuck under the signature.
+    answer: Meterai harus ditempel di bawah tanda tangan.
+    distractors: [sah, kuasa]
+    words: [meterai]
+  - id: e07
+    type: translate
+    direction: from_target
+    source_text: Yang bertanda tangan di bawah ini memberi kuasa kepada Dimas untuk mengambil paspor saya.
+    answers_meaning:
+      ar_eg:
+        - أنا الموقّع أدناه بوكّل ديماس يستلم الباسبور بتاعي.
+        - أنا اللي ماضي تحت بدّي ديماس توكيل يستلم جوازي.
+      ar:
+        - أنا الموقّع أدناه أوكّل ديماس باستلام جواز سفري.
+        - يفوّض الموقّع أدناه ديماس في استلام جواز سفره.
+      en:
+        - I, the undersigned, authorise Dimas to collect my passport.
+        - The undersigned grants Dimas authority to collect my passport.
+    words: [pemberi kuasa]
+  - id: e08
+    type: speaking
+    text: Apakah surat kuasa ini sudah sah, Pak?
+    meaning:
+      ar_eg: التوكيل ده كده رسمي يا أستاذ؟
+      ar: هل هذا التوكيل نافذ الآن يا سيّدي؟
+      en: Is this letter of authorisation valid now, sir?
+    words: [surat kuasa, sah]
+  - id: e09
+    type: dictation
+    text: Pemberi kuasa harus menandatangani surat di atas meterai.
+    meaning:
+      ar_eg: الموكِّل لازم يمضي على الورقة فوق الطابع.
+      ar: على الموكِّل أن يوقّع الرسالة فوق الطابع.
+      en: The grantor must sign the letter across the duty stamp.
+    words: [pemberi kuasa, meterai]
+  - id: e10
+    type: fill_blank
+    sentence: Tanpa ___, petugas tidak boleh memberikan ijazahmu kepada orang lain.
+    meaning:
+      ar_eg: من غير توكيل، الموظف مايقدرش يدّي شهادتك لحد تاني.
+      ar: دون توكيل لا يجوز للموظّف تسليم شهادتك لغيرك.
+      en: Without a letter of authorisation, the officer can't give your diploma to anyone else.
+    options: [surat kuasa, meterai, penerima kuasa]
+    answers: [surat kuasa]
+    words: [surat kuasa]
+dialogue:
+  title: Ijazah di kampus
+  lines:
+    - speaker: Mohamed
+      text: Kak Nadia, ijazah saya sudah jadi, tetapi saya harus pulang ke Kairo besok.
+      ar_eg: يا كاك ناديا، شهادتي خلصت، بس لازم أرجع القاهرة بكرة.
+      ar: يا ناديا، شهادتي جاهزة، لكن عليّ العودة إلى القاهرة غدًا.
+      en: Kak Nadia, my diploma is ready, but I have to fly back to Cairo tomorrow.
+    - speaker: Kak Nadia
+      text: Tulis surat kuasa saja. Kamu pemberi kuasa, dan Dimas penerima kuasa.
+      ar_eg: اكتب توكيل وخلاص. إنت الموكِّل، وديماس الوكيل.
+      ar: اكتب توكيلًا فحسب؛ أنت الموكِّل وديماس الوكيل.
+      en: Just write a letter of authorisation. You grant it, and Dimas receives it.
+    - speaker: Mohamed
+      text: Perlu meterai?
+      ar_eg: محتاج طابع؟
+      ar: أيحتاج إلى طابع؟
+      en: Does it need a duty stamp?
+    - speaker: Kak Nadia
+      text: Ya, meterai sepuluh ribu. Tanda tangani di atasnya supaya sah.
+      ar_eg: أيوه، طابع بعشرة آلاف. امضي فوقه عشان يبقى رسمي.
+      ar: نعم، طابع بعشرة آلاف، ووقّع فوقه ليكون نافذًا.
+      en: Yes, a ten-thousand stamp. Sign across it so it's valid.
+new_words:
+  - word: surat kuasa
+    pos: noun
+    ar_eg: توكيل
+    ar: توكيل، تفويض
+    en: letter of authorisation, power of attorney
+  - word: pemberi kuasa
+    pos: noun
+    ar_eg: الموكِّل
+    ar: الموكِّل
+    en: grantor (of authority)
+  - word: penerima kuasa
+    pos: noun
+    ar_eg: الوكيل
+    ar: الوكيل
+    en: authorised person, proxy
+  - word: meterai
+    pos: noun
+    ar_eg: طابع رسمي
+    ar: طابع رسمي (دمغة)
+    en: duty stamp
+  - word: sah
+    pos: adjective
+    ar_eg: رسمي وقانوني
+    ar: نافذ قانونًا، صحيح
+    en: legally valid
+review:
+  status: draft
+  verified: false

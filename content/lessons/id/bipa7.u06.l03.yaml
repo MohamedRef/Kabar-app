@@ -1,0 +1,210 @@
+schema: kabar.lesson/v1
+id: bipa7.u06.l03
+language: id
+title: Cek fakta
+can_do:
+  ar_eg: تتأكّد من ادّعاء على الإنترنت بالرجوع لمصادر موثوقة.
+  ar: أن تتحقّق من ادّعاء على الإنترنت بالرجوع إلى مصادر موثوقة.
+  en: Check a claim online against trustworthy sources.
+slides:
+  - title: Empat langkah cek fakta
+    body:
+      ar_eg: |
+        الـ cek fakta (التحقق من الحقيقة) في أربع خطوات:
+        1. اقرا أكتر من العنوان. خد بالك من tangkapan layar (سكرين شوت)، ممكن يتعدّل بسهولة.
+        2. دوّر على sumber resmi (مصدر رسمي): موقع الإدارة، أو بيان رسمي.
+        3. اعمل verifikasi (تحقّق): قارن بين وسيلتين إعلام kredibel (موثوقتين) على الأقل.
+        4. لو ملقيتش تأكيد، ماتنشرش.
+        مثال: Dinas Kelautan membantah kabar air laut beracun. Hasilnya: hoaks.
+      ar: |
+        الـ cek fakta (تقصّي الحقيقة) في أربع خطوات:
+        1. اقرأ ما بعد العنوان، واحذر الـ tangkapan layar (لقطة الشاشة) فتعديلها سهل.
+        2. ابحث عن sumber resmi (مصدر رسمي): موقع الإدارة أو بيان رسمي.
+        3. أجرِ verifikasi (تحقّقًا): قارن وسيلتين إعلاميّتين kredibel (موثوقتين) على الأقلّ.
+        4. إن لم تجد تأكيدًا فلا تنشر.
+        مثال: Dinas Kelautan membantah kabar air laut beracun. Hasilnya: hoaks.
+      en: |
+        Cek fakta (fact-checking) in four steps:
+        1. Read past the headline. Beware of a tangkapan layar (screenshot); it's easy to edit.
+        2. Look for a sumber resmi (official source): the agency's website or an official statement.
+        3. Do some verifikasi (verification): compare at least two kredibel (credible) outlets.
+        4. If you find no confirmation, don't share it.
+        Example: Dinas Kelautan membantah kabar air laut beracun. Hasilnya: hoaks.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: cek fakta
+        ar_eg: التأكّد من الحقيقة
+        ar: تقصّي الحقيقة
+        en: fact-check
+      - text: verifikasi
+        ar_eg: تحقّق
+        ar: تحقّق
+        en: verification
+      - text: sumber resmi
+        ar_eg: مصدر رسمي
+        ar: مصدر رسمي
+        en: official source
+      - text: tangkapan layar
+        ar_eg: سكرين شوت
+        ar: لقطة شاشة
+        en: screenshot
+      - text: kredibel
+        ar_eg: موثوق
+        ar: موثوق
+        en: credible
+    words: [cek fakta, verifikasi, sumber resmi, tangkapan layar, kredibel]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي واحد أوثق مصدر؟
+      ar: أيّها المصدر الأوثق؟
+      en: Which is the most reliable source?
+    options:
+      - Tangkapan layar dari grup keluarga.
+      - Siaran pers resmi di situs dinas.
+      - Komentar anonim di TikTok.
+    answer: 1
+    words: [sumber resmi, tangkapan layar]
+  - id: e03
+    type: fill_blank
+    sentence: Sebelum membagikan berita, lakukan ___ terlebih dahulu.
+    meaning:
+      ar_eg: قبل ما تشيّر خبر، اتحقّق منه الأول.
+      ar: قبل مشاركة الخبر، تحقّق منه أوّلًا.
+      en: Before sharing news, verify it first.
+    options: [verifikasi, tangkapan layar, kredibel]
+    answers: [verifikasi]
+    words: [verifikasi]
+  - id: e04
+    type: listen
+    text: Media yang kredibel selalu menyebutkan sumbernya dengan jelas.
+    question:
+      ar_eg: إيه اللي بيميّز وسيلة الإعلام الموثوقة؟
+      ar: ما الذي يميّز الوسيلة الإعلامية الموثوقة؟
+      en: What marks out a credible outlet?
+    options:
+      - بتذكر مصادرها بوضوح.
+      - بتنشر بسرعة.
+      - عناوينها بالحروف الكبيرة.
+    answer: 0
+    words: [kredibel]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: السكرين شوت ده ممكن يكون متعدّل.
+      ar: قد تكون لقطة الشاشة هذه معدّلة.
+      en: This screenshot may have been edited.
+    answer: Tangkapan layar ini mungkin sudah diedit.
+    distractors: [kredibel, resmi]
+    words: [tangkapan layar]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ملقيتش أي مصدر بيأكّد الخبر. تعمل إيه؟
+      ar: لم تجد مصدرًا يؤكّد الخبر. ماذا تفعل؟
+      en: You found no source confirming the story. What do you do?
+    options:
+      - تنشره بسرعة.
+      - تعدّل فيه وتنشره.
+      - ماتنشروش.
+    answer: 2
+    words: [cek fakta]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الإدارة نشرت تأكيد من مصدر رسمي.
+      ar: نشرت الإدارة تأكيدًا من مصدر رسمي.
+      en: The agency published a confirmation from an official source.
+    answers:
+      - Dinas menerbitkan konfirmasi dari sumber resmi.
+      - Dinas itu menerbitkan konfirmasi dari sumber resmi.
+      - Dinas mengeluarkan konfirmasi dari sumber resmi.
+      - Dinas merilis konfirmasi dari sumber resmi.
+    words: [sumber resmi]
+  - id: e08
+    type: speaking
+    text: Tim cek fakta menemukan bahwa kabar itu hoaks.
+    meaning:
+      ar_eg: فريق التحقّق لقى إن الخبر ده كدب.
+      ar: وجد فريق تقصّي الحقائق أنّ ذلك الخبر كاذب.
+      en: The fact-check team found that the story was a hoax.
+    words: [cek fakta]
+  - id: e09
+    type: dictation
+    text: Verifikasi membutuhkan dua sumber yang kredibel.
+    meaning:
+      ar_eg: التحقّق محتاج مصدرين موثوقين.
+      ar: يحتاج التحقّق إلى مصدرين موثوقين.
+      en: Verification needs two credible sources.
+    words: [verifikasi, kredibel]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Hasil cek fakta menunjukkan bahwa tangkapan layar itu palsu.
+    answers_meaning:
+      ar_eg:
+        - نتيجة التحقّق بيّنت إن السكرين شوت ده مزيّف.
+        - التحقّق طلّع السكرين شوت مزوّر.
+      ar:
+        - أظهرت نتيجة التحقّق أنّ لقطة الشاشة تلك مزيّفة.
+        - بيّن تقصّي الحقيقة أنّ لقطة الشاشة مزوّرة.
+      en:
+        - The fact-check showed that the screenshot was fake.
+        - Fact-checking revealed the screenshot was forged.
+    words: [cek fakta, tangkapan layar]
+dialogue:
+  title: Membantah dengan data
+  lines:
+    - speaker: Kak Selvi
+      text: Ayo kita cek fakta. Mulai dari sumber resmi, situs Dinas Kelautan.
+      ar_eg: يلا نتأكّد من الحقيقة. نبدأ بالمصدر الرسمي، موقع إدارة الثروة البحرية.
+      ar: هيّا نتقصّى الحقيقة، بدءًا بالمصدر الرسمي، موقع إدارة الشؤون البحرية.
+      en: Let's fact-check. Start with the official source, the marine agency's website.
+    - speaker: Mohamed
+      text: Ada siaran pers pagi ini. Mereka bilang airnya aman.
+      ar_eg: فيه بيان صحفي النهارده الصبح. بيقولوا إن المية أمان.
+      ar: هناك بيان صحفي هذا الصباح، يقولون إنّ المياه آمنة.
+      en: There's a press release this morning. They say the water is safe.
+    - speaker: Kak Selvi
+      text: Bagus. Sekarang verifikasi dengan satu media lain yang kredibel.
+      ar_eg: حلو. دلوقتي اتحقّق من وسيلة إعلام تانية موثوقة.
+      ar: جيّد. تحقّق الآن من وسيلة إعلامية موثوقة أخرى.
+      en: Good. Now verify it with one other credible outlet.
+    - speaker: Mohamed
+      text: Radio Kaka Yohana di Sorong juga memberitakan hal yang sama. Jadi, itu hoaks.
+      ar_eg: راديو كاكا يوهانا في سورونج قال نفس الكلام. يبقى ده خبر كدب.
+      ar: أذاعت إذاعة كاكا يوهانا في سورونغ الأمر نفسه، فهو إذن خبر كاذب.
+      en: Kaka Yohana's radio in Sorong reported the same thing. So it's a hoax.
+new_words:
+  - word: cek fakta
+    pos: noun
+    ar_eg: التأكّد من الحقيقة
+    ar: تقصّي الحقيقة
+    en: fact-check
+  - word: verifikasi
+    pos: noun
+    ar_eg: تحقّق
+    ar: تحقّق
+    en: verification
+  - word: sumber resmi
+    pos: noun
+    arabic: رسمي
+    ar_eg: مصدر رسمي
+    ar: مصدر رسمي
+    en: official source
+  - word: tangkapan layar
+    pos: noun
+    ar_eg: سكرين شوت
+    ar: لقطة شاشة
+    en: screenshot
+  - word: kredibel
+    pos: adjective
+    ar_eg: موثوق
+    ar: موثوق
+    en: credible
+review:
+  status: draft
+  verified: false

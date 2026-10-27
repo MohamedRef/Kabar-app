@@ -510,3 +510,33 @@ fn listening_comprehension_answers_a_question_about_the_text() {
     }
     assert!(validate(&l).iter().any(|i| i.message.contains("needs options")));
 }
+
+fn finished(score: u32, firsts: &[Outcome]) -> LessonCompleted {
+    LessonCompleted {
+        score,
+        xp: 0,
+        duration_ms: 0,
+        mistakes: Vec::new(),
+        results: firsts
+            .iter()
+            .enumerate()
+            .map(|(i, o)| ExerciseResult {
+                id: format!("e{i}"),
+                first: *o,
+                retry: None,
+                mistakes: Vec::new(),
+            })
+            .collect(),
+    }
+}
+
+#[test]
+fn a_reasonable_score_approves_the_lesson() {
+    use Outcome::*;
+    assert!(approves(&finished(80, &[Correct, Correct, Correct, Almost, Missed])));
+    assert!(approves(&finished(100, &[Correct, Correct, Skipped, Practiced])));
+    assert!(!approves(&finished(60, &[Correct, Correct, Correct, Missed, Missed])), "too low");
+    assert!(!approves(&finished(100, &[Correct, Skipped, Skipped, Practiced])), "mostly skipped");
+    assert!(!approves(&finished(100, &[Practiced, Skipped])), "nothing graded");
+    assert!(!approves(&finished(100, &[])), "old event without results");
+}

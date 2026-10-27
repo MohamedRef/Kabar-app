@@ -1,0 +1,181 @@
+schema: kabar.lesson/v1
+id: bipa6.u03.l07
+language: id
+title: Perbandingan budaya
+can_do:
+  ar_eg: تقارن عادات المينانج بعادات مصر، في الشبه والاختلاف.
+  ar: أن تقارن أعراف المينانغ بأعراف مصر، شبهًا واختلافًا.
+  en: Compare Minang customs with Egyptian ones, in likeness and difference.
+slides:
+  - title: Serupa tetapi tidak sama
+    grammar: id.proverb
+    body:
+      ar_eg: |
+        علشان تقارن بالإندونيسي:
+        - Di Mesir, garis keturunan bersifat patrilineal. Sebaliknya, orang Minang … = في مصر النسب من الأب. وبالعكس، المينانج …
+        - Kedua budaya serupa dalam hal … = الثقافتين شبه بعض في …
+        - Kerabat ibu sangat penting di Minang. = قرايب الأم مهمين جدًا عند المينانج.
+        واختم بمثل: Lain lubuk lain ikannya. = كل نهر وليه سمكه، يعني لكل بلد عاداتها.
+      ar: |
+        لتقارن بالإندونيسية:
+        - Di Mesir, garis keturunan bersifat patrilineal. Sebaliknya, orang Minang … = النسب في مصر أبوي. وعلى العكس، المينانغ …
+        - Kedua budaya serupa dalam hal … = تتشابه الثقافتان في …
+        - Kerabat ibu sangat penting di Minang. = أقارب الأم مهمّون جدًّا عند المينانغ.
+        واختم بمثل: Lain lubuk lain ikannya. = لكلّ نهر سمكه، أي لكلّ بلد عاداته.
+      en: |
+        To compare in Indonesian:
+        - Di Mesir, garis keturunan bersifat patrilineal. Sebaliknya, orang Minang … = In Egypt descent is through the father. Conversely, the Minang …
+        - Kedua budaya serupa dalam hal … = Both cultures are similar in …
+        - Kerabat ibu sangat penting di Minang. = The mother's relatives matter greatly among the Minang.
+        Close with a proverb: Lain lubuk lain ikannya. = Each pool has its own fish: every place has its ways.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: sebaliknya
+        ar_eg: بالعكس
+        ar: على العكس
+        en: conversely
+      - text: serupa
+        ar_eg: شبه
+        ar: مشابه
+        en: similar
+      - text: patrilineal
+        ar_eg: النسب من الأب
+        ar: أبوي النسب
+        en: patrilineal
+      - text: kerabat
+        ar_eg: قرايب
+        ar: أقارب
+        en: relatives
+    words: [sebaliknya, serupa, patrilineal, kerabat]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة بتقارن صح؟
+      ar: أيّ جملة تقارن على نحو صحيح؟
+      en: Which sentence makes a correct comparison?
+    options:
+      - Di Mesir patrilineal, sebaliknya di Minang matrilineal.
+      - Di Mesir matrilineal, sebaliknya di Minang matrilineal.
+      - Di Mesir dan Minang sama-sama matrilineal.
+    answer: 0
+    words: [patrilineal, sebaliknya]
+  - id: e03
+    type: fill_blank
+    sentence: Kedua budaya ___ dalam hal menghormati orang tua.
+    meaning:
+      ar_eg: الثقافتين شبه بعض في احترام الكبار.
+      ar: تتشابه الثقافتان في احترام الوالدين.
+      en: Both cultures are similar in respecting parents.
+    options: [serupa, sebaliknya, kerabat]
+    answers: [serupa]
+    words: [serupa]
+  - id: e04
+    type: listen
+    text: Saat Lebaran, semua kerabat berkumpul di rumah nenek.
+    question:
+      ar_eg: في العيد، الكل بيتجمّع فين؟
+      ar: أين يجتمع الجميع في العيد؟
+      en: At Eid, where does everyone gather?
+    options:
+      - في الجامع بس.
+      - في بيت الجدة.
+      - في المطعم.
+    answer: 1
+    words: [kerabat]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: بالعكس، في مصر الأب هو اللي بيورّث اسم العيلة.
+      ar: على العكس، في مصر يورّث الأب اسم العائلة.
+      en: Conversely, in Egypt the father passes on the family name.
+    answer: Sebaliknya, di Mesir ayah mewariskan nama keluarga.
+    distractors: [serupa, kerabat]
+    words: [sebaliknya]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: قرايبي في مصر كتير قوي.
+      ar: أقاربي في مصر كثيرون جدًّا.
+      en: I have a great many relatives in Egypt.
+    answers:
+      - Kerabat saya di Mesir banyak sekali.
+      - Saya punya banyak sekali kerabat di Mesir.
+      - Kerabatku di Mesir sangat banyak.
+      - Kerabat saya di Mesir sangat banyak.
+    words: [kerabat]
+  - id: e07
+    type: speaking
+    text: Seperti kata pepatah, lain lubuk lain ikannya.
+    meaning:
+      ar_eg: زي ما بيقول المثل، لكل بلد عاداتها.
+      ar: كما يقول المثل، لكلّ بلد عاداته.
+      en: As the saying goes, every place has its own ways.
+    words: [pepatah]
+  - id: e08
+    type: dictation
+    text: Masyarakat Mesir bersifat patrilineal, tetapi peran ibu tetap besar.
+    meaning:
+      ar_eg: المجتمع المصري نسبه من الأب، بس دور الأم برضه كبير.
+      ar: المجتمع المصري أبويّ النسب، لكنّ دور الأمّ يظلّ كبيرًا.
+      en: Egyptian society is patrilineal, but the mother's role is still big.
+    words: [patrilineal]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «serupa» عكسها إيه؟
+      ar: ما عكس «serupa»؟
+      en: What is the opposite of "serupa"?
+    options: [mirip, sama, berbeda]
+    answer: 2
+    words: [serupa, sebaliknya]
+dialogue:
+  title: Dua budaya, satu meja
+  lines:
+    - speaker: Uda Rafi
+      text: Mohamed, di Mesir, siapa yang paling dihormati dalam keluarga besar?
+      ar_eg: يا محمد، في مصر، مين أكتر واحد ليه احترام في العيلة الكبيرة؟
+      ar: يا محمد، مَن الأكثر احترامًا في العائلة الكبيرة في مصر؟
+      en: Mohamed, in Egypt, who is most respected in the extended family?
+    - speaker: Mohamed
+      text: Biasanya kakek dari pihak ayah. Sebaliknya, di sini mamak yang penting.
+      ar_eg: عادةً الجد من ناحية الأب. وبالعكس، هنا الخال هو المهم.
+      ar: عادة الجدّ من جهة الأب. وعلى العكس، الخال هنا هو المهمّ.
+      en: Usually the paternal grandfather. Here, conversely, the mamak matters.
+    - speaker: Uda Rafi
+      text: Tetapi kita serupa dalam satu hal. Kerabat selalu datang saat ada masalah.
+      ar_eg: بس إحنا شبه بعض في حاجة. القرايب دايمًا بييجوا وقت المشاكل.
+      ar: لكنّنا نتشابه في أمر واحد، فالأقارب يحضرون دائمًا عند المشكلات.
+      en: But we're similar in one thing. Relatives always come when there's trouble.
+    - speaker: Mohamed
+      text: Betul. Lain lubuk lain ikannya, tetapi airnya sama-sama sungai.
+      ar_eg: مظبوط. كل نهر وليه سمكه، بس المية في الآخر مية نهر.
+      ar: صحيح. لكلّ نهر سمكه، لكنّ الماء ماء نهر في الحالين.
+      en: True. Each pool has its fish, but it's all river water.
+new_words:
+  - word: sebaliknya
+    pos: adverb
+    ar_eg: بالعكس
+    ar: على العكس
+    en: conversely, on the contrary
+  - word: serupa
+    pos: adjective
+    ar_eg: شبه
+    ar: مشابه
+    en: similar
+  - word: patrilineal
+    pos: adjective
+    ar_eg: النسب من الأب
+    ar: أبوي النسب
+    en: patrilineal
+  - word: kerabat
+    pos: noun
+    arabic: قرابة
+    ar_eg: قرايب
+    ar: أقارب
+    en: relatives
+review:
+  status: draft
+  verified: false

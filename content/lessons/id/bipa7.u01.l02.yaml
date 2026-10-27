@@ -1,0 +1,207 @@
+schema: kabar.lesson/v1
+id: bipa7.u01.l02
+language: id
+title: Sumpah Pemuda
+can_do:
+  ar_eg: تقرا نص تاريخي قصير وتفهم كلماته الدقيقة.
+  ar: أن تقرأ نصًّا تاريخيًّا قصيرًا وتفهم دقائق ألفاظه.
+  en: Read a short historic text and grasp its exact wording.
+slides:
+  - title: 28 Oktober 1928
+    body:
+      ar_eg: |
+        في Kongres Pemuda II (المؤتمر التاني للشباب) في باتافيا (جاكرتا النهارده)، الشباب حلفوا الـ sumpah (اليمين) ده، زي ما بيتقال النهارده:
+        Kami putra dan putri Indonesia mengaku bertumpah darah yang satu, tanah air Indonesia.
+        Kami putra dan putri Indonesia mengaku berbangsa yang satu, bangsa Indonesia.
+        Kami putra dan putri Indonesia menjunjung bahasa persatuan, bahasa Indonesia.
+        خد بالك من البند التالت: مش «لغة واحدة بس»، لكن «لغة الـ persatuan (الوحدة)». اللغات المحلية فضلت عايشة جنبها.
+        وفي الأصل اتكتب بالإملا القديم: poetera = putra، satoe = satu. ونص 1928 الأصلي بيقول «tanah Indonesia»؛ كلمة «air» اتزادت في النسخة اللي الناس بتقولها النهارده.
+      ar: |
+        في Kongres Pemuda II (مؤتمر الشباب الثاني) في باتافيا (جاكرتا اليوم)، أقسم الشباب هذا الـ sumpah (القسم)، كما يُتلى اليوم:
+        Kami putra dan putri Indonesia mengaku bertumpah darah yang satu, tanah air Indonesia.
+        Kami putra dan putri Indonesia mengaku berbangsa yang satu, bangsa Indonesia.
+        Kami putra dan putri Indonesia menjunjung bahasa persatuan, bahasa Indonesia.
+        انتبه إلى البند الثالث: ليس «لغة واحدة فحسب» بل «لغة الـ persatuan (الوحدة)»، وقد بقيت اللغات المحلّية حيّة إلى جانبها.
+        وكُتب الأصل بالإملاء القديم: poetera = putra، satoe = satu. ونصّ 1928 الأصلي يقول «tanah Indonesia»؛ وأُضيفت «air» في الصيغة المتداولة اليوم.
+      en: |
+        At the Kongres Pemuda II (Second Youth Congress) in Batavia (today's Jakarta), young people swore this sumpah (oath), here as it is recited today:
+        Kami putra dan putri Indonesia mengaku bertumpah darah yang satu, tanah air Indonesia.
+        Kami putra dan putri Indonesia mengaku berbangsa yang satu, bangsa Indonesia.
+        Kami putra dan putri Indonesia menjunjung bahasa persatuan, bahasa Indonesia.
+        Note the third line: not "only one language" but "the language of persatuan (unity)". Regional languages lived on beside it.
+        The original used the old spelling: poetera = putra, satoe = satu. The 1928 original says "tanah Indonesia"; "tanah air" is how it is usually recited today.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: sumpah
+        ar_eg: يمين / قَسَم
+        ar: قَسَم
+        en: oath, pledge
+      - text: persatuan
+        ar_eg: وحدة / اتحاد
+        ar: وحدة
+        en: unity
+      - text: tanah air
+        ar_eg: الوطن
+        ar: الوطن
+        en: homeland
+      - text: kongres
+        ar_eg: مؤتمر
+        ar: مؤتمر
+        en: congress
+      - text: berbangsa
+        ar_eg: منتمي لأمّة
+        ar: ينتمي إلى أمّة
+        en: to belong to a nation
+    words: [sumpah, persatuan, tanah air, kongres, berbangsa]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: البند التالت من السومباه بيقول إيه عن اللغة؟
+      ar: ماذا يقول البند الثالث من القسم عن اللغة؟
+      en: What does the oath's third line say about language?
+    options:
+      - إن الإندونيسي هي اللغة الوحيدة المسموحة.
+      - إن الإندونيسي لغة الوحدة اللي بيرفعوها.
+      - إن كل واحد يتكلم لغته المحلية بس.
+    answer: 1
+    words: [sumpah, persatuan]
+  - id: e03
+    type: fill_blank
+    sentence: Sumpah Pemuda dibacakan pada ___ Pemuda II tahun 1928.
+    meaning:
+      ar_eg: سومباه بيمودا اتقرا في مؤتمر الشباب التاني سنة 1928.
+      ar: تُلي قسم الشباب في مؤتمر الشباب الثاني عام 1928.
+      en: The Youth Pledge was read at the Second Youth Congress in 1928.
+    options: [Kongres, Tanah air, Persatuan]
+    answers: [Kongres]
+    words: [kongres, sumpah]
+  - id: e04
+    type: listen
+    text: Kami mengaku berbangsa yang satu, bangsa Indonesia.
+    question:
+      ar_eg: الجملة دي بتعلن إيه؟
+      ar: ماذا تعلن هذه الجملة؟
+      en: What does this line declare?
+    options:
+      - الانتماء لأمّة واحدة، الأمّة الإندونيسية.
+      - حب البحر.
+      - احترام القرى.
+    answer: 0
+    words: [berbangsa]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: الشباب حلفوا يمين عشان الوطن.
+      ar: أقسم الشباب قسمًا من أجل الوطن.
+      en: The young people swore an oath for the homeland.
+    answer: Para pemuda bersumpah demi tanah air.
+    distractors: [kongres, persatuan]
+    words: [tanah air, sumpah]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: في الإملا القديم، «poetera» و«satoe» بقوا إيه النهارده؟
+      ar: إلامَ صارت «poetera» و«satoe» في الإملاء الحديث؟
+      en: In modern spelling, what did "poetera" and "satoe" become?
+    options:
+      - petra و sate
+      - pueter و satoo
+      - putra و satu
+    answer: 2
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الوحدة أهم من الاختلاف.
+      ar: الوحدة أهمّ من الاختلاف.
+      en: Unity matters more than difference.
+    answers:
+      - Persatuan lebih penting daripada perbedaan.
+      - Persatuan lebih penting dari perbedaan.
+      - Persatuan lebih penting ketimbang perbedaan.
+    words: [persatuan]
+  - id: e08
+    type: speaking
+    text: Kami putra dan putri Indonesia mengaku bertumpah darah yang satu, tanah air Indonesia.
+    meaning:
+      ar_eg: إحنا ولاد وبنات إندونيسيا بنعلن إن لينا وطن واحد، أرض إندونيسيا.
+      ar: نحن أبناء إندونيسيا وبناتها نُقرّ بأنّ لنا وطنًا واحدًا، أرض إندونيسيا.
+      en: We, the sons and daughters of Indonesia, declare one homeland, Indonesia.
+    words: [tanah air]
+  - id: e09
+    type: dictation
+    text: Kongres itu dihadiri pemuda dari berbagai daerah.
+    meaning:
+      ar_eg: المؤتمر ده حضره شباب من مناطق كتير.
+      ar: حضر ذلك المؤتمرَ شبابٌ من مناطق شتّى.
+      en: The congress was attended by young people from many regions.
+    words: [kongres]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Kita berbangsa satu, tetapi berbahasa daerah yang berbeda-beda.
+    answers_meaning:
+      ar_eg:
+        - إحنا أمّة واحدة، بس لغاتنا المحلية مختلفة.
+        - كلنا من أمّة واحدة، لكن كل منطقة ليها لغتها.
+      ar:
+        - نحن أمّة واحدة، لكنّ لغاتنا المحلّية متعدّدة.
+        - ننتمي إلى أمّة واحدة ونتكلّم لغات محلّية مختلفة.
+      en:
+        - We are one nation, but we speak many different regional languages.
+        - We belong to one nation yet speak different local languages.
+    words: [berbangsa]
+dialogue:
+  title: Dua hari lagi
+  lines:
+    - speaker: Kaka Yohana
+      text: Dua hari lagi tanggal 28 Oktober, Hari Sumpah Pemuda. Radio kami akan siaran khusus.
+      ar_eg: كمان يومين 28 أكتوبر، يوم سومباه بيمودا. الراديو بتاعنا هيعمل إذاعة خاصة.
+      ar: بعد يومين يحلّ 28 أكتوبر، يوم قسم الشباب، وستبثّ إذاعتنا برنامجًا خاصًّا.
+      en: In two days it's 28 October, Youth Pledge Day. Our radio will do a special broadcast.
+    - speaker: Mohamed
+      text: Apakah sumpah itu berarti semua orang harus berhenti memakai bahasa daerah?
+      ar_eg: هو اليمين ده معناه إن الكل لازم يبطّل يتكلم لغته المحلية؟
+      ar: هل يعني ذلك القسم أنّ على الجميع ترك لغاتهم المحلّية؟
+      en: Does the pledge mean everyone had to stop using regional languages?
+    - speaker: Kaka Yohana
+      text: Tidak. Bahasa Indonesia itu bahasa persatuan. Di Papua saja ada lebih dari dua ratus lima puluh bahasa daerah.
+      ar_eg: لأ. الإندونيسي لغة الوحدة. في بابوا لوحدها فيه أكتر من ميتين وخمسين لغة محلية.
+      ar: لا. الإندونيسية لغة الوحدة، وفي بابوا وحدها أكثر من مئتين وخمسين لغة محلّية.
+      en: No. Indonesian is the language of unity. Papua alone has more than two hundred and fifty regional languages.
+    - speaker: Mohamed
+      text: Jadi satu tanah air, satu bangsa, dan banyak bahasa yang bersatu.
+      ar_eg: يعني وطن واحد، وأمّة واحدة، ولغات كتير متّحدة.
+      ar: إذن وطن واحد وأمّة واحدة ولغات كثيرة متّحدة.
+      en: So one homeland, one nation, and many languages united.
+new_words:
+  - word: sumpah
+    pos: noun
+    ar_eg: يمين / قَسَم
+    ar: قَسَم
+    en: oath, pledge
+  - word: persatuan
+    pos: noun
+    ar_eg: وحدة / اتحاد
+    ar: وحدة
+    en: unity
+  - word: tanah air
+    pos: noun
+    ar_eg: الوطن
+    ar: الوطن
+    en: homeland
+  - word: kongres
+    pos: noun
+    ar_eg: مؤتمر
+    ar: مؤتمر
+    en: congress
+  - word: berbangsa
+    pos: verb
+    ar_eg: منتمي لأمّة
+    ar: ينتمي إلى أمّة
+    en: to belong to a nation
+review:
+  status: draft
+  verified: false
