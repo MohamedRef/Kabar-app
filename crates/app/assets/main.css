@@ -643,7 +643,8 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 .tr-line.pending { color: var(--muted); border-inline-start-style: dashed; }
 .tr-line.word-by-word { color: var(--muted); font-size: 0.98rem; border-inline-start-style: dotted; }
 @media (prefers-reduced-motion: no-preference) {
-  .tr-line.pending { animation: tr-pulse 1.2s ease-in-out infinite alternate; }
+  /* A few pulses, not forever: a hung request shouldn't keep every line moving. */
+  .tr-line.pending { animation: tr-pulse 1.2s ease-in-out 8 alternate; }
 }
 @keyframes tr-pulse { from { opacity: 0.35; } to { opacity: 1; } }
 .seg.bubble .under { max-inline-size: 85%; }

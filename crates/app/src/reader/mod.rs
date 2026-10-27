@@ -872,7 +872,8 @@ fn ReadView(open: Open) -> Element {
                     }
                 }
                 if !chrome {
-                    div { class: "under",
+                    // English glosses read left to right even in the Arabic UI.
+                    div { class: "under", dir: if voice == UiLanguage::En { "ltr" } else { "rtl" },
                         if !gloss_chips.is_empty() {
                             div { class: "explain",
                                 for (i , surface , gloss) in gloss_chips {

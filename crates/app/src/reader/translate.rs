@@ -4,6 +4,8 @@
 //! no Kabar Cloud, quota used up) each line shows its words' meanings one by
 //! one from the local dictionary instead, and says why.
 
+use std::rc::Rc;
+
 use dioxus::prelude::*;
 use kabar_core::ai::FriendlyReason;
 use kabar_core::ai::tasks::{LineTranslation, TranslateText};
@@ -38,12 +40,30 @@ pub struct Translated {
     pub progress: Progress,
     /// Javanese, or a route that hasn't passed the bake-off.
     pub unverified: bool,
+    /// Each segment word by word in every voice, made once per text.
+    pub fallback: Rc<[[String; 3]]>,
 }
 
 impl Translated {
     pub fn line(&self, seg: usize) -> Option<&LineTranslation> {
         self.lines.get(seg).and_then(Option::as_ref)
     }
+}
+
+fn voice_index(voice: UiLanguage) -> usize {
+    match voice {
+        UiLanguage::ArEg => 0,
+        UiLanguage::Ar => 1,
+        UiLanguage::En => 2,
+    }
+}
+
+/// What the line under one segment shows.
+#[derive(Clone, Debug, PartialEq)]
+enum Under {
+    Line(String),
+    Pending,
+    WordByWord(String),
 }
 
 /// One line's text in the voice the learner picked.
@@ -130,7 +150,7 @@ pub fn use_translation(st: ReaderState) {
     // Only a different text (or a retry) starts over, not a re-read of this one.
     let key = use_memo(move || {
         let open = st.open.read();
-        open.as_ref().map(|o| (o.text.id.clone(), o.doc.body.clone(), *retry.read()))
+        open.as_ref().map(|o| (o.text.id.clone(), o.doc.body.len(), *retry.read()))
     });
     use_resource(move || {
         let ai = ai.clone();
@@ -140,11 +160,16 @@ pub fn use_translation(st: ReaderState) {
             let Some(doc) = st.open.peek().as_ref().map(|o| o.doc.clone()) else { return };
             let segs = lines(&doc);
             let lang = text_lang(&doc);
+            let fallback = (0..doc.segments.len())
+                .map(|seg| UiLanguage::ALL.map(|v| word_by_word(&doc, seg, v)))
+                .collect::<Vec<_>>()
+                .into();
             translated.set(Translated {
                 text_id: text_id.clone(),
                 lines: vec![None; doc.segments.len()],
                 progress: Progress::Working,
                 unverified: lang == Lang::Javanese,
+                fallback,
             });
             let Some(ai) = ai else {
                 translated.write().progress = Progress::Failed(Msg::TranslationNeedsCloud);
@@ -195,17 +220,20 @@ pub fn use_translation(st: ReaderState) {
 pub fn TranslationStatus() -> Element {
     let ui = use_context::<Ui>();
     let st = use_context::<ReaderState>();
-    let t = st.translated.read().clone();
-    let (msg, busy, failed) = match &t.progress {
-        Progress::Working => (Msg::TranslationWorking, true, false),
-        Progress::Done => (Msg::TranslationByAi, false, false),
-        Progress::Failed(m) => (*m, false, true),
+    let (msg, busy, failed, unverified) = {
+        let t = st.translated.read();
+        let (msg, busy, failed) = match &t.progress {
+            Progress::Working => (Msg::TranslationWorking, true, false),
+            Progress::Done => (Msg::TranslationByAi, false, false),
+            Progress::Failed(m) => (*m, false, true),
+        };
+        (msg, busy, failed, t.unverified)
     };
     rsx! {
         div { class: "tr-status", role: "status", aria_busy: if busy { "true" } else { "false" },
             span { class: "tr-badge", "{ui.t(Msg::TranslationTitle)}" }
             span { class: "muted small", "{ui.t(msg)}" }
-            if t.unverified && !failed {
+            if unverified && !failed {
                 span { class: "tag unverified", "{ui.t(Msg::Unverified)}" }
             }
             if failed && msg != Msg::TranslationNeedsCloud {
@@ -228,32 +256,36 @@ pub fn TranslationStatus() -> Element {
 pub fn LineUnder(seg: usize) -> Element {
     let ui = use_context::<Ui>();
     let st = use_context::<ReaderState>();
-    let voice = *st.voice.read();
-    let t = st.translated.read();
-    let lang = if voice == UiLanguage::En { "en" } else { "ar" };
-    if let Some(l) = t.line(seg) {
-        return rsx! {
-            p { class: "tr-line", lang, dir: "auto", "{in_voice(l, voice)}" }
-        };
-    }
-    match &t.progress {
-        Progress::Working => rsx! {
+    // Each line re-renders only when what it shows changes, not on every
+    // chunk that lands elsewhere in the text.
+    let under = use_memo(move || {
+        let voice = *st.voice.read();
+        let t = st.translated.read();
+        match (t.line(seg), &t.progress) {
+            (Some(l), _) => Under::Line(in_voice(l, voice).to_string()),
+            (None, Progress::Working) => Under::Pending,
+            (None, _) => Under::WordByWord(
+                t.fallback.get(seg).map(|f| f[voice_index(voice)].clone()).unwrap_or_default(),
+            ),
+        }
+    });
+    let lang = st.voice.read().tag();
+    match under() {
+        Under::Line(text) => rsx! {
+            p { class: "tr-line", lang, dir: "auto", "{text}" }
+        },
+        Under::Pending => rsx! {
             p { class: "tr-line pending", aria_hidden: "true", "…" }
         },
-        _ => {
-            let open = st.open.read();
-            let Some(open) = open.as_ref() else { return rsx! {} };
-            let words = word_by_word(&open.doc, seg, voice);
-            rsx! {
-                p {
-                    class: "tr-line word-by-word",
-                    lang,
-                    dir: "auto",
-                    title: "{ui.t(Msg::TranslationWordByWord)}",
-                    "{words}"
-                }
+        Under::WordByWord(words) => rsx! {
+            p {
+                class: "tr-line word-by-word",
+                lang,
+                dir: "auto",
+                title: "{ui.t(Msg::TranslationWordByWord)}",
+                "{words}"
             }
-        }
+        },
     }
 }
 
