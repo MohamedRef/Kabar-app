@@ -69,6 +69,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] `just android-keystore` (once). Back up `~/.kabar/kabar-release.jks` somewhere safe, such as an encrypted USB stick or a password manager attachment. Losing it means reinstalling the app from scratch.
 - [ ] `just apk` → `dist/android/kabar.apk`.
 - [ ] `just devices`, then `just install <serial>` for the S24 Ultra and again for the Tab S11. For wireless, use `just pair` / `just connect` (RUN.md §3).
+- [ ] Open every screen once on the release APK (R8 shrinks it; a missing keep rule would crash on that screen) and tell me if anything closes the app.
 - [ ] Check the launcher icon (round and adaptive), the notification-bar icon and the splash screen on both devices.
 - [x] **Pen Lab** on the S24 Ultra: two reports sent 2026-10-26, findings in [PENLAB.md](PENLAB.md). The ink feels attached to the pen tip, so the web ink stays and no native Kotlin ink is needed.
 

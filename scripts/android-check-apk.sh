@@ -32,5 +32,14 @@ if command -v aapt2 >/dev/null; then
     echo "The manifest lost its text-to-speech <queries> block."
     exit 1
   fi
-  echo "Launcher icon: Kabar's; TTS queries present"
+  # A debuggable APK runs slower and lets anyone with USB read Kabar's data.
+  if grep -q "^application-debuggable" <<<"$badging"; then
+    echo "The APK is debuggable: build it with scripts/android-release-apk.sh."
+    exit 1
+  fi
+  if grep -q "versionCode='1'" <<<"$badging"; then
+    echo "The APK's versionCode is still dx's 1."
+    exit 1
+  fi
+  echo "Launcher icon: Kabar's; TTS queries present; release build ($(grep -o "versionCode='[0-9]*'" <<<"$badging"))"
 fi
