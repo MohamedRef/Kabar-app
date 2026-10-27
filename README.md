@@ -56,13 +56,13 @@ every morning. CI warns when the table below is behind the content.
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Known / target | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
 | BIPA 1 | Jakarta | A1 | 10 | 98 | 934 | 606 | 605 / 600 | ~11 h | 35 |
-| BIPA 2 | Bali | A2 | 10 | 62 | 561 | 314 | 919 / 1,100 | ~7 h | 35 |
-| BIPA 3 | Lombok | B1 | 10 | 70 | 660 | 289 | 1,208 / 1,600 | ~8 h | 39 |
-| BIPA 4 | Sulawesi | B2 | 10 | 80 | 709 | 230 | 1,438 / 2,100 | ~8 h | 37 |
-| BIPA 5 | Kalimantan | C1 | 10 | 90 | 865 | 306 | 1,743 / 2,700 | ~9 h | 38 |
-| BIPA 6 | Sumatra | C2 | 10 | 100 | 990 | 391 | 2,134 / 3,300 | ~10 h | 38 |
-| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 100 | 1,009 | 385 | 2,519 / 4,000 | ~10 h | 38 |
-| **Total** |  | — | 70 | 600 | 5,728 | 2,521 | 2,519 / 4,000 | ~63 h | 260 |
+| BIPA 2 | Bali | A2 | 10 | 74 | 681 | 409 | 1,014 / 1,100 | ~8 h | 35 |
+| BIPA 3 | Lombok | B1 | 10 | 70 | 660 | 289 | 1,303 / 1,600 | ~8 h | 39 |
+| BIPA 4 | Sulawesi | B2 | 10 | 80 | 709 | 230 | 1,533 / 2,100 | ~8 h | 37 |
+| BIPA 5 | Kalimantan | C1 | 10 | 90 | 865 | 306 | 1,838 / 2,700 | ~9 h | 38 |
+| BIPA 6 | Sumatra | C2 | 10 | 100 | 990 | 391 | 2,229 / 3,300 | ~10 h | 38 |
+| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 100 | 1,009 | 385 | 2,614 / 4,000 | ~10 h | 38 |
+| **Total** |  | — | 70 | 612 | 5,848 | 2,616 | 2,614 / 4,000 | ~65 h | 260 |
 
 **Javanese (J1–J6)**
 

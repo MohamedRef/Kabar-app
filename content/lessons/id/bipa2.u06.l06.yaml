@@ -1,199 +1,236 @@
 schema: kabar.lesson/v1
 id: bipa2.u06.l06
 language: id
-title: Ulangan Unit 6
+title: Sofa, karpet, bantal
 can_do:
-  ar_eg: توصف الشارع اللي ساكن فيه.
-  ar: أن تصف شارعك.
-  en: Describe your street.
+  ar_eg: 'توصف شقتك وأوضها وعفشها: الكنبة والسجادة والمخدة والبطانية.'
+  ar: 'أن تصف شقتك وغرفها وأثاثها: الأريكة والسجادة والوسادة والبطانية.'
+  en: 'Describe your flat, its rooms and furnishings: sofa, carpet, pillow and blanket.'
 slides:
-  - title: Kamar mandi saya, silakan masuk
+  - title: Di apartemen
     body:
       ar_eg: |
-        فكّر نفسك:
-        - المركّب كلمة واحدة، وصاحبه في الآخر: kamar tidur saya، rumah sakit itu، kamar mandinya.
-        - tolong = اعملّي خدمة، silakan = اتفضل (عزومة)، minta = عايز آخد حاجة، mohon = برجاء (رسمي).
-        - كلمات المكان قبل الحاجة: di seberang warung، di ujung gang، di antara masjid dan apotek.
-        - ومع ada استعمل كلمات العدّ: sebuah (حاجات ومباني)، seorang (ناس)، seekor (حيوانات).
+        apartemen = شقة في عمارة، garasi = جراج، ruangan = أوضة أو قاعة، tembok = حيطة.
+        sofa = كنبة، karpet = سجادة.
+        bantal = مخدة، selimut = بطانية (أو لحاف).
       ar: |
-        تذكير:
-        - المركّب كلمة واحدة والمالك في آخره: kamar tidur saya، rumah sakit itu، kamar mandinya.
-        - tolong لطلب خدمة، وsilakan للدعوة، وminta لطلب شيء، وmohon للرجاء الرسمي.
-        - ظرف المكان قبل الاسم: di seberang warung، di ujung gang، di antara masjid dan apotek.
-        - ومع ada استعمل ألفاظ العدّ: sebuah للأشياء والمباني، وseorang للبشر، وseekor للحيوان.
+        apartemen = شقة في بناية، garasi = مرآب، ruangan = غرفة أو قاعة، tembok = جدار.
+        sofa = أريكة، karpet = سجادة.
+        bantal = وسادة، selimut = بطانية (لحاف).
       en: |
-        Recap:
-        - A compound is one word; the owner goes last: kamar tidur saya, rumah sakit itu, kamar mandinya.
-        - tolong = do me a favour, silakan = go ahead (offer), minta = may I have, mohon = kindly (formal).
-        - Position word before the noun: di seberang warung, di ujung gang, di antara masjid dan apotek.
-        - With ada, use counters: sebuah (things, buildings), seorang (people), seekor (animals).
-    grammar: id.request.tolong-silakan
+        apartemen = flat, apartment, garasi = garage, ruangan = room, hall, tembok = wall.
+        sofa = sofa, karpet = carpet, rug.
+        bantal = pillow, selimut = blanket.
     examples:
-      - text: Silakan masuk. Kamar mandinya di sebelah dapur.
-        ar_eg: اتفضل ادخل. الحمّام جنب المطبخ.
-        ar: تفضّل بالدخول. الحمّام بجانب المطبخ.
-        en: Please come in. The bathroom is next to the kitchen.
-      - text: Di ujung gang ada sebuah pura.
-        ar_eg: في آخر الحارة فيه معبد.
-        ar: في آخر الزقاق معبد.
-        en: At the end of the alley there's a temple.
+      - text: Apartemen saya kecil, tapi ada garasi.
+        ar_eg: شقتي صغيرة، بس فيها جراج.
+        ar: شقتي صغيرة لكن فيها مرآب.
+        en: My flat is small, but it has a garage.
+      - text: Ada foto keluarga di tembok.
+        ar_eg: فيه صورة العيلة على الحيطة.
+        ar: على الجدار صورة العائلة.
+        en: There's a family photo on the wall.
+      - text: Malam ini dingin. Mana selimut saya?
+        ar_eg: الليلة برد. فين البطانية بتاعتي؟
+        ar: الليلة باردة. أين بطانيتي؟
+        en: It's cold tonight. Where's my blanket?
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: ruang tamu
-        ar_eg: صالون
-        ar: غرفة الضيوف
-        en: living room
-      - text: rumah makan
-        ar_eg: مطعم
-        ar: مطعم
-        en: restaurant
-      - text: tetangga
-        ar_eg: جار
-        ar: جار
-        en: neighbour
-      - text: seberang
-        ar_eg: الناحية التانية
-        ar: الجهة المقابلة
-        en: the other side
-      - text: sewa
-        ar_eg: إيجار
-        ar: إيجار
-        en: rent
-    words: [ruang tamu, rumah makan, tetangga, seberang, sewa]
+      - text: apartemen
+        ar_eg: شقة
+        ar: شقة
+        en: flat
+      - text: garasi
+        ar_eg: جراج
+        ar: مرآب
+        en: garage
+      - text: tembok
+        ar_eg: حيطة
+        ar: جدار
+        en: wall
+      - text: ruangan
+        ar_eg: أوضة، قاعة
+        ar: غرفة، قاعة
+        en: room
+    words: [apartemen, garasi, tembok, ruangan]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: sofa
+        ar_eg: كنبة
+        ar: أريكة
+        en: sofa
+      - text: karpet
+        ar_eg: سجادة
+        ar: سجادة
+        en: carpet
+      - text: bantal
+        ar_eg: مخدة
+        ar: وسادة
+        en: pillow
+      - text: selimut
+        ar_eg: بطانية
+        ar: بطانية
+        en: blanket
+    words: [sofa, karpet, bantal, selimut]
+  - id: e03
+    type: listen
+    text: Apartemen saya punya garasi.
+    question:
+      ar_eg: الشقة فيها إيه؟
+      ar: ماذا في الشقة؟
+      en: What does the flat have?
+    options: [جراج, جنينة, حمام سباحة]
+    answer: 0
+    meaning:
+      ar_eg: شقتي فيها جراج.
+      ar: في شقتي مرآب.
+      en: My flat has a garage.
+    words: [apartemen, garasi]
+  - id: e04
+    type: fill_blank
+    sentence: Saya tidur pakai dua ___.
+    meaning:
+      ar_eg: 'أنا بنام على مخدتين: ___.'
+      ar: أنام على ___ اثنتين.
+      en: I sleep with two ___.
+    options: [bantal, karpet, garasi]
+    answers: [bantal]
+    words: [bantal, karpet, garasi]
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: مدام يانتي عاملة أكل وعايزة تعزم عليك. تقول إيه؟
-      ar: أعدّت السيدة يانتي طعامًا وتريد أن تدعوك إليه. ماذا تقول؟
-      en: Bu Yanti has made food and wants to offer you some. What does she say?
-    options: ['Tolong makan, Pak.', 'Minta makan, Pak.', 'Silakan makan, Pak.']
-    answer: 2
-    explain:
-      ar_eg: عزومة = silakan.
-      ar: الدعوة بـ silakan.
-      en: An offer = silakan.
-    words: [silakan]
-  - id: e03
-    type: multiple_choice
-    question: Pak Wayan punya tiga ___ ayam.
-    options: [ekor, orang, buah]
+      ar_eg: إيه اللي بنفرشه على الأرض؟
+      ar: ماذا نفرش على الأرض؟
+      en: What do we lay on the floor?
+    options: [karpet, selimut, tembok]
     answer: 0
     explain:
-      ar_eg: الفراخ حيوانات، يبقى ekor.
-      ar: الدجاج حيوان فيُعدّ بـ ekor.
-      en: Chickens are animals, so ekor.
-    words: [ekor]
-  - id: e04
-    type: listen
-    text: Rumah sakitnya di seberang rumah makan.
-    options: [Rumah sakitnya di seberang rumah makan., Rumah sakitnya di sebelah rumah makan., Rumah makannya di seberang rumah sakit.]
-    answer: 0
-    words: [rumah sakit, rumah makan, seberang]
-  - id: e05
-    type: fill_blank
-    sentence: ___ bantu saya, Mbak. Saya tidak tahu jalan ke pantai.
-    meaning:
-      ar_eg: لو سمحتي ساعديني. أنا مش عارف الطريق للبحر.
-      ar: ساعديني من فضلكِ، فأنا لا أعرف الطريق إلى الشاطئ.
-      en: Please help me, miss. I don't know the way to the beach.
-    options: [Silakan, Minta, Tolong]
-    answers: [Tolong]
-    words: [tolong, bantu]
+      ar_eg: karpet = سجادة.
+      ar: karpet = سجادة.
+      en: karpet = carpet.
+    words: [karpet, selimut, tembok]
   - id: e06
     type: fill_blank
-    sentence: Di jalan saya ada ___ masjid dan dua buah warung.
+    sentence: Malam ini dingin. Pakai ___, ya.
     meaning:
-      ar_eg: في شارعي فيه جامع ووارونجين.
-      ar: في شارعي مسجد ومطعمان صغيران.
-      en: On my street there's a mosque and two warungs.
-    options: [seekor, seorang, sebuah]
-    answers: [sebuah]
-    words: [buah]
+      ar_eg: الليلة برد. اتغطى بـ ___.
+      ar: الليلة باردة. استخدم ___.
+      en: It's cold tonight. Use a ___.
+    options: [selimut, sofa, ruangan]
+    answers: [selimut]
+    words: [selimut, sofa, ruangan]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: فيه أوضة فاضية قريبة من المستشفى؟
-      ar: هل توجد غرفة شاغرة قرب المستشفى؟
-      en: Is there a free room near the hospital?
-    answer: Ada kamar kosong dekat rumah sakit?
-    distractors: [makan, seorang]
-    words: [kosong, rumah sakit]
+      ar_eg: الشقة دي فيها أوضتين وجراج.
+      ar: في هذه الشقة غرفتان ومرآب.
+      en: This flat has two rooms and a garage.
+    answer: Apartemen ini punya dua ruangan dan garasi.
+    distractors: [sofa, tembok]
+    words: [apartemen, ruangan, garasi]
   - id: e08
-    type: build_sentence
-    source:
-      ar_eg: ممكن شوية مية يا مدام؟
-      ar: هل لي بقليل من الماء يا سيدتي؟
-      en: Could I have some water, ma'am?
-    answer: Boleh minta air putih, Bu?
-    distractors: [tolong, silakan]
-    words: [minta, air putih]
-  - id: e09
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: السكن بتاعي في آخر الحارة.
-      ar: سكني في آخر الزقاق.
-      en: My boarding house is at the end of the alley.
-    answers: [Kos saya di ujung gang., Kos saya di ujung gang, Kosku di ujung gang., Kosku di ujung gang, Kos saya ada di ujung gang.]
-    words: [kos, ujung, gang]
-  - id: e10
-    type: dictation
-    text: Tetangga saya punya seekor anjing.
-    meaning:
-      ar_eg: جاري عنده كلب.
-      ar: لدى جاري كلب.
-      en: My neighbour has a dog.
-    words: [tetangga, seekor]
-  - id: e11
+    direction: from_target
+    source_text: Ada foto keluarga di tembok.
+    answers_meaning:
+      ar_eg: [فيه صورة العيلة على الحيطة, على الحيطة فيه صورة العيلة]
+      ar: [على الجدار صورة العائلة, هناك صورة عائلية على الجدار]
+      en: ['There''s a family photo on the wall', There is a family picture on the wall]
+    words: [tembok]
+  - id: e09
     type: speaking
-    text: Di jalan saya ada sebuah pura, sebuah warung, dan sebuah apotek.
+    text: Kucing Bu Yanti tidur di sofa, di atas bantal.
     meaning:
-      ar_eg: في شارعي فيه معبد ووارونج وصيدلية.
-      ar: في شارعي معبد ومطعم صغير وصيدلية.
-      en: On my street there's a temple, a warung and a pharmacy.
-    words: [buah, pura]
+      ar_eg: قطة طنط يانتي نايمة على الكنبة فوق المخدة.
+      ar: قطة السيدة يانتي نائمة على الأريكة فوق الوسادة.
+      en: Bu Yanti's cat sleeps on the sofa, on a cushion.
+    words: [sofa, bantal]
+  - id: e10
+    type: multiple_choice
+    question: Tamu duduk di ___.
+    options: [sofa, selimut, tembok]
+    answer: 0
+    explain:
+      ar_eg: الضيوف بيقعدوا على الكنبة.
+      ar: يجلس الضيوف على الأريكة.
+      en: Guests sit on the sofa.
+    words: [sofa, selimut, tembok]
 dialogue:
-  title: Kos baru Mohamed
   lines:
-    - speaker: Rina
-      text: Mohamed, bagaimana kos barumu di Sanur?
-      ar_eg: يا محمد، إيه أخبار السكن الجديد بتاعك في سانور؟
-      ar: يا محمد، كيف سكنك الجديد في سانور؟
-      en: Mohamed, how's your new place in Sanur?
+    - speaker: Raka
+      text: Wah, apartemenmu bagus! Ruangannya besar.
+      ar_eg: الله، شقتك حلوة! الأوضة واسعة.
+      ar: شقتك جميلة! الغرفة كبيرة.
+      en: Wow, your flat is nice! The room's big.
     - speaker: Mohamed
-      text: Bagus! Kamar tidur saya besar, dan kamar mandinya di dalam.
-      ar_eg: حلو! أوضة نومي كبيرة، والحمّام جوّه.
-      ar: جميل! غرفة نومي كبيرة، والحمّام في الداخل.
-      en: Great! My bedroom is big, and the bathroom is inside.
-    - speaker: Rina
-      text: Jalannya bagaimana? Ramai?
-      ar_eg: والشارع عامل إزاي؟ زحمة؟
-      ar: وكيف الشارع؟ هل هو مزدحم؟
-      en: What's the street like? Busy?
+      text: Terima kasih. Duduk di sofa, Raka.
+      ar_eg: شكرًا. اقعد على الكنبة يا راكا.
+      ar: شكرًا. اجلس على الأريكة يا راكا.
+      en: Thanks. Have a seat on the sofa, Raka.
+    - speaker: Raka
+      text: Karpetnya dari mana? Bagus sekali.
+      ar_eg: السجادة دي منين؟ حلوة أوي.
+      ar: من أين السجادة؟ جميلة جدًا.
+      en: Where's the carpet from? It's lovely.
     - speaker: Mohamed
-      text: Tidak terlalu ramai. Di ujung gang ada sebuah pura, dan di seberang pura ada warung.
-      ar_eg: مش زحمة قوي. في آخر الحارة فيه معبد، وقصاد المعبد فيه وارونج.
-      ar: ليس مزدحمًا جدًّا. في آخر الزقاق معبد، ومقابل المعبد مطعم صغير.
-      en: Not too busy. At the end of the alley there's a temple, and across from the temple there's a warung.
-    - speaker: Rina
-      text: Tetanggamu ramah?
-      ar_eg: جيرانك لطاف؟
-      ar: هل جيرانك لطفاء؟
-      en: Are your neighbours friendly?
+      text: Dari pasar di Ubud. Murah!
+      ar_eg: من سوق في أوبود. رخيصة!
+      ar: من سوق في أوبود. رخيصة!
+      en: From a market in Ubud. Cheap!
+    - speaker: Raka
+      text: Di tembok itu ada foto siapa?
+      ar_eg: مين اللي في الصورة اللي على الحيطة؟
+      ar: صورة من على ذلك الجدار؟
+      en: Whose photo is on that wall?
     - speaker: Mohamed
-      text: Ramah sekali! Setiap sore Bu Yanti bilang, "Silakan makan, Pak!"
-      ar_eg: لطاف جدًّا! كل يوم العصر مدام يانتي تقولّي «اتفضل كُل يا أستاذ!»
-      ar: لطفاء جدًّا! كل مساء تقول لي السيدة يانتي «تفضّل كُل يا سيدي!»
-      en: Very friendly! Every afternoon Bu Yanti says, "Please eat, sir!"
-souvenir:
-  id: bipa2.u06.souvenir
-  title: Rumah keluarga Bali
-  note:
-    ar_eg: البيت البالي مش مبنى واحد، ده سور كبير جوّاه كذا «bale» (جناح صغير)، واحد للنوم، وواحد للمطبخ، وواحد للمناسبات. وفي الركن الأقدس، ناحية الجبل، بيبنوا معبد العيلة. زي «بيت العيلة» عندنا في مصر بالظبط، أجيال كتير عايشين مع بعض حوالين حوش واحد.
-    ar: البيت البالي ليس بناءً واحدًا، بل سور يضمّ أجنحة صغيرة تُسمّى «bale»، للنوم والطبخ والمناسبات. وفي الركن الأقدس، المواجه للجبل، يقوم معبد العائلة. وهو يشبه «بيت العائلة» في مصر، حيث تعيش أجيال عدة حول فناء واحد.
-    en: A Balinese home isn't one building but a walled compound of small pavilions (bale) for sleeping, cooking and ceremonies. In the holiest corner, facing the mountain, stands the family temple. Much like an Egyptian «بيت العيلة», several generations live together around one courtyard.
+      text: Keluarga saya di Kairo.
+      ar_eg: عيلتي في القاهرة.
+      ar: عائلتي في القاهرة.
+      en: My family in Cairo.
+new_words:
+  - word: apartemen
+    pos: noun
+    ar_eg: شقة
+    ar: شقة
+    en: flat, apartment
+  - word: garasi
+    pos: noun
+    ar_eg: جراج
+    ar: مرآب
+    en: garage
+  - word: tembok
+    pos: noun
+    ar_eg: حيطة
+    ar: جدار
+    en: wall
+  - word: ruangan
+    pos: noun
+    ar_eg: أوضة، قاعة
+    ar: غرفة، قاعة
+    en: room, hall
+  - word: sofa
+    pos: noun
+    ar_eg: كنبة
+    ar: أريكة
+    en: sofa
+  - word: karpet
+    pos: noun
+    ar_eg: سجادة
+    ar: سجادة
+    en: carpet, rug
+  - word: bantal
+    pos: noun
+    ar_eg: مخدة
+    ar: وسادة
+    en: pillow, cushion
+  - word: selimut
+    pos: noun
+    ar_eg: بطانية
+    ar: بطانية
+    en: blanket
 review:
   status: draft
   verified: false

@@ -1,0 +1,236 @@
+schema: kabar.lesson/v1
+id: bipa2.u05.l07
+language: id
+title: Kompor, panci, kulkas
+can_do:
+  ar_eg: 'تتكلم في المطبخ: البوتاجاز والحلة والتلاجة، والأكل ني ولا مستوي ولا بايت.'
+  ar: 'أن تتحدث في المطبخ: الموقد والقدر والثلاجة، والطعام نيّء أو ناضج أو فاسد.'
+  en: 'Talk in the kitchen: stove, pot and fridge, and whether food is raw, cooked or off.'
+slides:
+  - title: Di dapur
+    body:
+      ar_eg: |
+        kompor = بوتاجاز، panci = حلة، kulkas = تلاجة، mangkuk = سلطانية (semangkuk sup).
+        mentah = ني، matang = مستوي (والفاكهة matang = مستوية).
+        basi = بايت وريحته وحشة. rasa = طعم: Rasanya enak!
+      ar: |
+        kompor = موقد، panci = قدر، kulkas = ثلاجة، mangkuk = وعاء عميق (semangkuk sup).
+        mentah = نيّء، matang = ناضج (مطهو، والفاكهة matang = ناضجة).
+        basi = فاسد (بائت). rasa = طعم: Rasanya enak!
+      en: |
+        kompor = stove, panci = pot, kulkas = fridge, mangkuk = bowl (semangkuk sup).
+        mentah = raw, matang = cooked, ripe.
+        basi = stale, gone off. rasa = taste: Rasanya enak!
+    examples:
+      - text: Panci di atas kompor masih panas.
+        ar_eg: الحلة اللي على البوتاجاز لسه سخنة.
+        ar: القدر فوق الموقد ما زال ساخنًا.
+        en: The pot on the stove is still hot.
+      - text: Dagingnya masih mentah, belum matang.
+        ar_eg: اللحمة لسه نية، لسه ما استوتش.
+        ar: اللحم ما زال نيئًا، لم ينضج بعد.
+        en: The meat is still raw, not cooked yet.
+      - text: Rasanya enak sekali!
+        ar_eg: طعمه حلو أوي!
+        ar: طعمه لذيذ جدًا!
+        en: It tastes great!
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: kompor
+        ar_eg: بوتاجاز
+        ar: موقد
+        en: stove
+      - text: panci
+        ar_eg: حلة
+        ar: قدر
+        en: pot
+      - text: kulkas
+        ar_eg: تلاجة
+        ar: ثلاجة
+        en: fridge
+      - text: mangkuk
+        ar_eg: سلطانية
+        ar: وعاء
+        en: bowl
+    words: [kompor, panci, kulkas, mangkuk]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: mentah
+        ar_eg: ني
+        ar: نيّء
+        en: raw
+      - text: matang
+        ar_eg: مستوي
+        ar: ناضج
+        en: cooked, ripe
+      - text: basi
+        ar_eg: بايت
+        ar: فاسد
+        en: gone off
+      - text: rasa
+        ar_eg: طعم
+        ar: طعم
+        en: taste
+    words: [mentah, matang, basi, rasa]
+  - id: e03
+    type: listen
+    text: Nasinya sudah basi. Kenapa tidak di kulkas?
+    question:
+      ar_eg: الرز ماله؟
+      ar: ما حال الأرز؟
+      en: What's wrong with the rice?
+    options: [بايت, ني, مستوي]
+    answer: 0
+    meaning:
+      ar_eg: الرز باظ. ليه ما كانش في التلاجة؟
+      ar: فسد الأرز. لماذا لم يكن في الثلاجة؟
+      en: The rice has gone off. Why wasn't it in the fridge?
+    words: [basi, kulkas]
+  - id: e04
+    type: fill_blank
+    sentence: Ayamnya belum ___, masih merah di dalam.
+    meaning:
+      ar_eg: الفرخة لسه ما ___، لسه حمرا من جوه.
+      ar: الدجاج لم ___ بعد، ما زال أحمر من الداخل.
+      en: The chicken isn't ___ yet; it's still red inside.
+    options: [matang, basi, kulkas]
+    answers: [matang]
+    words: [matang, basi, kulkas]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: فين بنحط اللبن عشان يفضل ساقع؟
+      ar: أين نضع الحليب ليبقى باردًا؟
+      en: Where do we keep milk cold?
+    options: [kulkas, kompor, panci]
+    answer: 0
+    explain:
+      ar_eg: kulkas = تلاجة.
+      ar: kulkas = ثلاجة.
+      en: kulkas = fridge.
+    words: [kulkas, kompor, panci]
+  - id: e06
+    type: fill_blank
+    sentence: Saya suka ___ manis.
+    meaning:
+      ar_eg: بحب الـ ___ المسكّر.
+      ar: أحبّ ___ الحلو.
+      en: I like a sweet ___.
+    options: [rasa, mangkuk, kompor]
+    answers: [rasa]
+    words: [rasa, mangkuk, kompor]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: حط الشوربة في السلطانية.
+      ar: ضع الحساء في الوعاء.
+      en: Put the soup in the bowl.
+    answer: Masukkan sup ke dalam mangkuk.
+    distractors: [panci, kompor]
+    words: [mangkuk, panci]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Saya suka sayur mentah. Rasanya segar.
+    answers_meaning:
+      ar_eg: [بحب الخضار ني. طعمه فريش, بحب الخضار النية. طعمها منعش]
+      ar: [أحبّ الخضار نيئة. طعمها منعش]
+      en: [I like raw vegetables. They taste fresh, I like vegetables raw. They taste fresh]
+    words: [mentah, rasa]
+  - id: e09
+    type: speaking
+    text: Panci di atas kompor masih panas.
+    meaning:
+      ar_eg: الحلة اللي على البوتاجاز لسه سخنة.
+      ar: القدر فوق الموقد ما زال ساخنًا.
+      en: The pot on the stove is still hot.
+    words: [panci, kompor]
+  - id: e10
+    type: multiple_choice
+    question: Mangga ini kuning dan manis. Sudah ___.
+    options: [matang, mentah, basi]
+    answer: 0
+    explain:
+      ar_eg: 'المانجة الصفرا المسكّرة مستوية: matang.'
+      ar: 'المانجو الصفراء الحلوة ناضجة: matang.'
+      en: 'A yellow, sweet mango is ripe: matang.'
+    words: [matang, mentah, basi]
+dialogue:
+  lines:
+    - speaker: Bu Yanti
+      text: Mohamed, tolong ambil telur di kulkas.
+      ar_eg: يا محمد، هات البيض من التلاجة لو سمحت.
+      ar: يا محمد، أحضر البيض من الثلاجة من فضلك.
+      en: Mohamed, could you get the eggs from the fridge?
+    - speaker: Mohamed
+      text: Ini, Bu. Mau masak apa?
+      ar_eg: اتفضلي. هتطبخي إيه؟
+      ar: تفضّلي. ماذا ستطبخين؟
+      en: Here you go. What are you cooking?
+    - speaker: Bu Yanti
+      text: Nasi goreng. Pancinya di atas kompor.
+      ar_eg: رز مقلي. الحلة على البوتاجاز.
+      ar: أرز مقلي. القدر فوق الموقد.
+      en: Fried rice. The pot's on the stove.
+    - speaker: Mohamed
+      text: Nasi kemarin tidak basi, Bu?
+      ar_eg: رز امبارح مش بايت؟
+      ar: أليس أرز الأمس فاسدًا؟
+      en: Hasn't yesterday's rice gone off?
+    - speaker: Bu Yanti
+      text: Tidak. Coba rasanya... enak!
+      ar_eg: لأ. دوق طعمه... حلو!
+      ar: لا. تذوّق طعمه... لذيذ!
+      en: No. Taste it... delicious!
+    - speaker: Mohamed
+      text: Saya ambil mangkuk, ya.
+      ar_eg: أنا هجيب السلطانيات.
+      ar: سأحضر الأوعية.
+      en: I'll get the bowls.
+new_words:
+  - word: kompor
+    pos: noun
+    ar_eg: بوتاجاز
+    ar: موقد
+    en: stove
+  - word: panci
+    pos: noun
+    ar_eg: حلة
+    ar: قدر
+    en: pot, pan
+  - word: kulkas
+    pos: noun
+    ar_eg: تلاجة
+    ar: ثلاجة
+    en: fridge
+  - word: mangkuk
+    pos: noun
+    ar_eg: سلطانية
+    ar: وعاء (زبدية)
+    en: bowl
+  - word: mentah
+    pos: adjective
+    ar_eg: ني
+    ar: نيّء
+    en: raw
+  - word: matang
+    pos: adjective
+    ar_eg: مستوي
+    ar: ناضج، مطهو
+    en: cooked, ripe
+  - word: basi
+    pos: adjective
+    ar_eg: بايت (باظ)
+    ar: فاسد، بائت
+    en: stale, gone off
+  - word: rasa
+    pos: noun
+    ar_eg: طعم؛ إحساس
+    ar: طعم؛ شعور
+    en: taste; feeling
+review:
+  status: draft
+  verified: false
