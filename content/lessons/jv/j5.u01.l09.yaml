@@ -1,225 +1,165 @@
 schema: kabar.lesson/v1
 id: j5.u01.l09
 language: jv
-title: Ulangan J5.1
+title: Kairo ing Wikipedia
 can_do:
-  ar_eg: تقرا مقالة جديدة.
-  ar: أن تقرأ مقالة جديدة.
-  en: Read a new article.
-slides:
-  - title: Artikel anyar, Kudus
-    body:
-      ar_eg: |
-        مقالة جديدة عن مدينة تانية. استخدم الهيكل اللي اتعلمته: iku / yaiku (تعريف وتفصيل)، ana ing / ing (فين)، kang (وصف)، minangka (بصفته)، kalebu (من ضمن)، sawijining (واحد من).
-        ولو قريتها بصوت عالي لصاحبك، رجّع ing لـ neng وkang لـ sing.
-      ar: |
-        مقالة جديدة عن مدينة أخرى. استعمل الهيكل الذي تعلمته: iku / yaiku (التعريف والتفصيل)، وana ing / ing (المكان)، وkang (الوصف)، وminangka (بوصفه)، وkalebu (من ضمن)، وsawijining (أحد).
-        وإن حكيتها لصديقك فردّ ing إلى neng وkang إلى sing.
-      en: |
-        A new article about another city. Use the skeleton you've learned: iku / yaiku (definition and details), ana ing / ing (where), kang (description), minangka (as), kalebu (among), sawijining (one of).
-        If you retell it to a friend, turn ing back into neng and kang into sing.
-    grammar: jv.reading.written-style
-    examples:
-      - text: Kudus iku sawijining kutha ing Provinsi Jawa Tengah, ora adoh saka Semarang.
-        ar_eg: كودوس مدينة من مدن محافظة جاوة الوسطى، مش بعيدة عن سيمارانج.
-        ar: كودوس إحدى مدن إقليم جاوة الوسطى، غير بعيدة عن سيمارانج.
-        en: Kudus is a city in Central Java Province, not far from Semarang.
-      - text: Ing Kudus ana menara lawas kang misuwur, yaiku Menara Kudus.
-        ar_eg: في كودوس منارة قديمة مشهورة، هي منارة كودوس.
-        ar: في كودوس منارة قديمة مشهورة، هي منارة كودوس.
-        en: In Kudus there is a famous old minaret, the Menara Kudus.
-      - text: Menara Kudus kalebu papan kang misuwur ing Jawa Tengah.
-        ar_eg: منارة كودوس من الأماكن المشهورة في جاوة الوسطى.
-        ar: منارة كودوس من الأماكن المشهورة في جاوة الوسطى.
-        en: The Menara Kudus is among the famous places of Central Java.
+  ar_eg: تسمع مقالة ويكيبيديا جاوية عن القاهرة وتفهمها من غير ما تشوفها.
+  ar: أن تستمع إلى مقالة ويكيبيديا جاوية عن القاهرة وتفهمها دون أن تراها.
+  en: Follow a Javanese Wikipedia article about Cairo by ear.
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: iku
-        ar_eg: هو / هي (= adalah، في الكتابة)
-        ar: هو / هي (= adalah، في الكتابة)
-        en: is (= adalah, in writing)
-      - text: yaiku
-        ar_eg: ألا وهو (= yaitu)
-        ar: أي (= yaitu)
-        en: namely (= yaitu)
-      - text: ana ing
-        ar_eg: موجود في (= terletak di)
-        ar: يقع في (= terletak di)
-        en: is located in (= terletak di)
-      - text: kang
-        ar_eg: اللي (= yang)
-        ar: الذي (= yang)
-        en: which, who (= yang)
-      - text: minangka
-        ar_eg: بصفته (= sebagai)
-        ar: بوصفه (= sebagai)
-        en: as (= sebagai)
-      - text: kalebu
-        ar_eg: من ضمن (= termasuk)
-        ar: من ضمن (= termasuk)
-        en: is among (= termasuk)
-    words: [yaiku, ana ing, kang, minangka, kalebu]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة بأسلوب المقالة؟
-      ar: أي جملة بأسلوب المقالة؟
-      en: Which sentence is in article style?
-    options: ['Menara Kudus iku papan sing misuwur neng Jawa Tengah.', 'Menara Kudus iku papan sing misuwur nang Jawa Tengah.', 'Menara Kudus iku papan kang misuwur ing Jawa Tengah.']
-    answer: 2
-    explain:
-      ar_eg: kang وing للكتابة، sing وneng وnang للكلام.
-      ar: kang وing للكتابة، وsing وneng وnang للكلام.
-      en: kang and ing are written; sing, neng and nang are spoken.
-    words: [kang, misuwur]
-  - id: e03
     type: listen
-    text: Kudus iku sawijining kutha ing Provinsi Jawa Tengah, ora adoh saka Semarang.
+    text: Kairo iku ibukutha Mesir lan kutha kang paling gedhe ing Mesir.
     question:
-      ar_eg: كودوس في أنهي محافظة؟
-      ar: في أي إقليم تقع كودوس؟
-      en: Which province is Kudus in?
-    options: [Jawa Timur, Jawa Tengah, Jawa Barat]
+      ar_eg: دي مقالة عن مدينتك! المقالة بتقول إن القاهرة إيه؟
+      ar: هذه مقالة عن مدينتك! ماذا تقول المقالة عن القاهرة؟
+      en: This article is about your city! What does it say Cairo is?
+    options: [ibukutha Mesir, pulo ing Mesir, provinsi ing Mesir]
+    answer: 0
+    meaning:
+      ar_eg: القاهرة هي عاصمة مصر وأكبر مدينة في مصر.
+      ar: القاهرة عاصمة مصر وأكبر مدنها.
+      en: Cairo is the capital of Egypt and the biggest city in Egypt.
+    explain:
+      ar_eg: kang paling gedhe = اللي هي الأكبر (yang paling besar).
+      ar: kang paling gedhe = الأكبر (yang paling besar).
+      en: kang paling gedhe = the biggest (yang paling besar).
+    words: [ibukutha]
+  - id: e02
+    type: listen
+    text: Kutha iki ana ing pinggir kali Nil.
+    question:
+      ar_eg: القاهرة فين؟
+      ar: أين تقع القاهرة؟
+      en: Where is Cairo?
+    options: [ing pinggir segara, ing pinggir kali Nil, ing pesisir kidul]
     answer: 1
     meaning:
-      ar_eg: كودوس مدينة من مدن محافظة جاوة الوسطى، مش بعيدة عن سيمارانج.
-      ar: كودوس إحدى مدن إقليم جاوة الوسطى، غير بعيدة عن سيمارانج.
-      en: Kudus is a city in Central Java Province, not far from Semarang.
-    words: [sawijining, provinsi]
+      ar_eg: المدينة دي على ضفة نهر النيل.
+      ar: تقع هذه المدينة على ضفة نهر النيل.
+      en: This city lies on the bank of the Nile.
+    explain:
+      ar_eg: kali = نهر، زي kali في الإندونيسي (sungai). pinggir = جنب / ضفة.
+      ar: kali = نهر، كـ kali في الإندونيسية (sungai)، وpinggir = حافة / ضفة.
+      en: kali = river, as in Indonesian kali (sungai); pinggir = edge, bank.
+    words: [kali]
+  - id: e03
+    type: listen
+    text: Ing Kairo ana masjid kang lawas banget, yaiku Masjid Al-Azhar.
+    question:
+      ar_eg: المقالة ذكرت أنهي مكان؟
+      ar: أي مكان تذكره المقالة؟
+      en: Which place does the article name?
+    options: [Lawang Sewu, Menara Kudus, Masjid Al-Azhar]
+    answer: 2
+    meaning:
+      ar_eg: في القاهرة جامع قديم جدًا، هو الجامع الأزهر.
+      ar: في القاهرة مسجد قديم جدًا، هو الجامع الأزهر.
+      en: In Cairo there is a very old mosque, namely Al-Azhar Mosque.
+    words: [yaiku, lawas]
   - id: e04
-    type: multiple_choice
-    question: Ing Kudus ana menara lawas kang misuwur, yaiku Menara Kudus.
-    question_meaning:
-      ar_eg: إيه المشهور في كودوس حسب الجملة دي؟
-      ar: ما المشهور في كودوس بحسب هذه الجملة؟
-      en: According to this sentence, what is Kudus famous for?
-    options: [menara lawas, sepur lawas, pesisir kidul]
-    answer: 0
-    words: [lawas, yaiku]
+    type: match_pairs
+    pairs:
+      - text: kali
+        ar_eg: نهر
+        ar: نهر
+        en: river
+      - text: segara
+        ar_eg: بحر
+        ar: بحر
+        en: sea
+      - text: pulo
+        ar_eg: جزيرة
+        ar: جزيرة
+        en: island
+      - text: ibukutha
+        ar_eg: عاصمة
+        ar: عاصمة
+        en: capital city
+      - text: paling gedhe
+        ar_eg: الأكبر
+        ar: الأكبر
+        en: the biggest
+    words: [kali, segara, pulo, ibukutha]
   - id: e05
     type: fill_blank
-    sentence: Kudus ___ sawijining kutha ing Jawa Tengah.
+    sentence: Ing Kairo ana masjid kang lawas banget, ___ Masjid Al-Azhar.
     meaning:
-      ar_eg: كودوس مدينة من مدن جاوة الوسطى.
-      ar: كودوس إحدى مدن جاوة الوسطى.
-      en: Kudus is a city in Central Java.
-    options: [kang, iku, saka]
-    answers: [iku]
+      ar_eg: في القاهرة جامع قديم جدًا، هو الجامع الأزهر.
+      ar: في القاهرة مسجد قديم جدًا، هو الجامع الأزهر.
+      en: In Cairo there is a very old mosque, namely Al-Azhar Mosque.
+    options: [minangka, yaiku, kalebu]
+    answers: [yaiku]
     explain:
-      ar_eg: iku هنا بتعرّف كودوس، زي adalah.
-      ar: iku هنا تعرّف كودوس كـ adalah.
-      en: iku defines Kudus here, like adalah.
-    words: [sawijining]
+      ar_eg: yaiku بتسمّي الحاجة اللي اتكلمنا عنها بشكل عام («جامع قديم» ← الأزهر).
+      ar: yaiku تسمّي ما ذُكر بشكل عام («مسجد قديم» ← الأزهر).
+      en: yaiku names the thing just mentioned in general terms ("an old mosque" → Al-Azhar).
+    words: [yaiku]
   - id: e06
-    type: fill_blank
-    sentence: Semarang misuwur ___ Kutha Lumpia.
+    type: dictation
+    text: Kutha iki ana ing pinggir kali Nil.
     meaning:
-      ar_eg: سيمارانج مشهورة بإنها «مدينة اللومبيا».
-      ar: تشتهر سيمارانج بوصفها «مدينة اللومبيا».
-      en: Semarang is famous as the City of Lumpia.
-    options: [minangka, kalebu, yaiku]
-    answers: [minangka]
-    words: [minangka, misuwur]
+      ar_eg: المدينة دي على ضفة نهر النيل.
+      ar: تقع هذه المدينة على ضفة نهر النيل.
+      en: This city lies on the bank of the Nile.
+    words: [kali]
   - id: e07
-    type: build_sentence
-    source:
-      ar_eg: (بأسلوب المقالة) منارة كودوس من الأماكن المشهورة في جاوة الوسطى.
-      ar: (بأسلوب المقالة) منارة كودوس من الأماكن المشهورة في جاوة الوسطى.
-      en: (article style) The Menara Kudus is among the famous places of Central Java.
-    answer: Menara Kudus kalebu papan kang misuwur ing Jawa Tengah.
-    distractors: [neng, minangka]
-    words: [kalebu, papan, kang]
-  - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: (بأسلوب المقالة) القاهرة هي عاصمة مصر.
-      ar: (بأسلوب المقالة) القاهرة عاصمة مصر.
-      en: (article style) Cairo is the capital of Egypt.
+      ar_eg: (بأسلوب المقالة) القاهرة هي عاصمة مصر، وهي على ضفة نهر النيل.
+      ar: (بأسلوب المقالة) القاهرة عاصمة مصر، وتقع على ضفة نهر النيل.
+      en: (article style) Cairo is the capital of Egypt and lies on the bank of the Nile.
     answers:
-      - Kairo iku ibukutha Mesir.
-      - Kairo ibukutha Mesir.
-      - Ibukutha Mesir yaiku Kairo.
-      - Ibukutha Mesir iku Kairo.
-      - Kairo iku ibukutha negara Mesir.
-    words: [ibukutha]
-  - id: e09
-    type: translate
-    direction: from_target
-    source_text: Kudus iku sawijining kutha ing Provinsi Jawa Tengah, ora adoh saka Semarang.
-    answers_meaning:
-      ar_eg:
-        - كودوس مدينة من مدن محافظة جاوة الوسطى، مش بعيدة عن سيمارانج.
-        - كودوس واحدة من مدن محافظة جاوة الوسطى، مش بعيدة عن سيمارانج.
-        - كودوس مدينة في محافظة جاوة الوسطى، مش بعيدة عن سيمارانج.
-        - كودوس مدينة في جاوة الوسطى، مش بعيدة عن سيمارانج.
-      ar:
-        - كودوس إحدى مدن إقليم جاوة الوسطى، غير بعيدة عن سيمارانج.
-        - كودوس مدينة في إقليم جاوة الوسطى، غير بعيدة عن سيمارانج.
-        - كودوس إحدى مدن إقليم جاوة الوسطى، ليست بعيدة عن سيمارانج.
-        - كودوس مدينة في جاوة الوسطى، ليست بعيدة عن سيمارانج.
-      en:
-        - Kudus is a city in Central Java Province, not far from Semarang.
-        - Kudus is one of the cities of Central Java Province, not far from Semarang.
-        - Kudus is a city in Central Java, not far from Semarang.
-        - Kudus is one of the cities in Central Java Province, not far from Semarang.
-    words: [sawijining, provinsi]
-  - id: e10
-    type: dictation
-    text: Kutha iki ana ing pesisir lor pulo Jawa.
-    meaning:
-      ar_eg: المدينة دي على الساحل الشمالي لجزيرة جاوة.
-      ar: تقع هذه المدينة على الساحل الشمالي لجزيرة جاوة.
-      en: This city lies on the north coast of the island of Java.
-    words: [ana ing, pesisir, lor, pulo]
-  - id: e11
+      - Kairo iku ibukutha Mesir lan ana ing pinggir kali Nil.
+      - Kairo iku ibukutha Mesir, ana ing pinggir kali Nil.
+      - Kairo iku ibukutha Mesir lan kutha iki ana ing pinggir kali Nil.
+      - Kairo iku ibukutha Mesir. Kutha iki ana ing pinggir kali Nil.
+      - Kairo ibukutha Mesir lan ana ing pinggir kali Nil.
+      - Kairo iku ibukutha Mesir lan ana ing pinggire kali Nil.
+    words: [kali, ibukutha]
+  - id: e08
     type: speaking
-    text: Ing Kudus ana menara lawas kang misuwur, yaiku Menara Kudus.
+    text: Aku saka Kairo, ibukutha Mesir, ing pinggir kali Nil.
     meaning:
-      ar_eg: في كودوس منارة قديمة مشهورة، هي منارة كودوس.
-      ar: في كودوس منارة قديمة مشهورة، هي منارة كودوس.
-      en: In Kudus there is a famous old minaret, the Menara Kudus.
-    words: [yaiku, lawas, misuwur]
+      ar_eg: أنا من القاهرة، عاصمة مصر، على ضفة النيل.
+      ar: أنا من القاهرة، عاصمة مصر، على ضفة النيل.
+      en: I'm from Cairo, the capital of Egypt, on the bank of the Nile.
+    words: [kali, ibukutha]
 dialogue:
-  title: Artikel kanggo ing sepur
+  title: Artikel Kairo
   lines:
     - speaker: Mbak Ayu
-      text: Mohamed, wacanen artikel iki ing sepur. Iki artikel Kudus.
-      ar_eg: يا محمد، اقرا المقالة دي في القطر. دي مقالة عن كودوس.
-      ar: يا محمد، اقرأ هذه المقالة في القطار. إنها مقالة عن كودوس.
-      en: Mohamed, read this article on the train. It's an article about Kudus.
+      text: Mohamed, aku maca artikel Kairo ing Wikipedia basa Jawa.
+      ar_eg: يا محمد، أنا قريت مقالة القاهرة في ويكيبيديا الجاوية.
+      ar: يا محمد، قرأت مقالة القاهرة في ويكيبيديا الجاوية.
+      en: Mohamed, I read the Cairo article on Javanese Wikipedia.
     - speaker: Mohamed
-      text: Kudus iku sawijining kutha ing Jawa Tengah. Gampang!
-      ar_eg: كودوس مدينة من مدن جاوة الوسطى. سهلة!
-      ar: كودوس إحدى مدن جاوة الوسطى. سهل!
-      en: Kudus is a city in Central Java. Easy!
+      text: Tenan? Artikele ngomong apa?
+      ar_eg: بجد؟ المقالة بتقول إيه؟
+      ar: حقًا؟ ماذا تقول المقالة؟
+      en: Really? What does the article say?
     - speaker: Mbak Ayu
-      text: Kudus misuwur minangka apa?
-      ar_eg: كودوس مشهورة بإيه؟
-      ar: بمَ تشتهر كودوس؟
-      en: What is Kudus famous as?
+      text: Kairo iku kutha kang paling gedhe ing Mesir, ing pinggir kali Nil.
+      ar_eg: القاهرة أكبر مدينة في مصر، على النيل.
+      ar: القاهرة أكبر مدينة في مصر، على ضفة النيل.
+      en: Cairo is the biggest city in Egypt, on the Nile.
     - speaker: Mohamed
-      text: Ana menara lawas kang misuwur, yaiku Menara Kudus.
-      ar_eg: فيها منارة قديمة مشهورة، هي منارة كودوس.
-      ar: فيها منارة قديمة مشهورة، هي منارة كودوس.
-      en: It has a famous old minaret, the Menara Kudus.
+      text: Bener. Omahku ora adoh saka kali Nil.
+      ar_eg: صح. بيتي مش بعيد عن النيل.
+      ar: صحيح. بيتي ليس بعيدًا عن النيل.
+      en: Right. My home isn't far from the Nile.
     - speaker: Mbak Ayu
-      text: Pinter! Saiki kowe bisa maca Wikipedia basa Jawa.
-      ar_eg: شاطر! دلوقتي تقدر تقرا ويكيبيديا الجاوية.
-      ar: أحسنت! صار بإمكانك الآن قراءة ويكيبيديا الجاوية.
-      en: Clever! Now you can read Javanese Wikipedia.
-souvenir:
-  id: j5.u01.souvenir
-  title: Kutha Lama Semarang
-  note:
-    ar_eg: |
-      كوتا لاما في سيمارانج حي هولندي قديم بيسموه «هولندا الصغيرة»: شوارع ضيقة، ومخازن قديمة، وكنيسة بلندوك (Gereja Blenduk) بقبّتها من القرن التمنتاشر. ومحطة تاوانج جنبه على طول. وعلى فكرة، ويكيبيديا الجاوية مكتوبة أغلبها بالنغوكو بكلمات ربط رسمية، ومجانية، يعني كنز قراية حقيقي ليك كل يوم.
-    ar: |
-      كوتا لاما في سيمارانج حيّ هولندي قديم يُسمّى «هولندا الصغيرة»: شوارع ضيقة ومخازن قديمة وكنيسة بلندوك (Gereja Blenduk) بقبّتها من القرن الثامن عشر، ومحطة تاوانغ بجواره. وويكيبيديا الجاوية مكتوبة في معظمها بالنغوكو مع أدوات ربط رسمية، وهي مجانية، فهي كنز قراءة حقيقي لك كل يوم.
-    en: |
-      Semarang's Kota Lama is an old Dutch quarter nicknamed "Little Netherlands": narrow streets, old warehouses and the domed Blenduk Church from the 18th century, with Tawang Station right next door. And Javanese Wikipedia, written mostly in ngoko with formal connectors, is free: a real reading treasure for you, every day.
+      text: Wah, aku uga arep dolan menyang Kairo!
+      ar_eg: الله، أنا كمان عايزة أزور القاهرة!
+      ar: رائع، أنا أيضًا أريد زيارة القاهرة!
+      en: Wow, I want to visit Cairo too!
+new_words:
+  - word: kali
+    pos: noun
+    ar_eg: نهر
+    ar: نهر
+    en: river = sungai, kali
 review:
   status: draft
   verified: false

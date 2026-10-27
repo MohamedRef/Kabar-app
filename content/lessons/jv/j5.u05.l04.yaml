@@ -1,186 +1,236 @@
 schema: kabar.lesson/v1
 id: j5.u05.l04
 language: jv
-title: Cerkak
+title: Lakon lan adegan
 can_do:
-  ar_eg: تقرا قصة قصيرة.
-  ar: أن تقرأ قصة قصيرة.
-  en: Read a short story.
+  ar_eg: 'تحكي عن قصة قريتها: البطل والمشهد والعدو والسر والنهاية.'
+  ar: 'أن تتحدث عن قصة قرأتها: البطل والمشهد والعدو والسر والنهاية.'
+  en: 'Talk about a story you read: the hero, a scene, the enemy, the secret and the ending.'
 slides:
-  - title: Bima ing Menara Kudus
+  - title: Ngrembug cerkak
     body:
       ar_eg: |
-        قصة بو ريتنو القصيرة. قبل ما تقرا بالتفصيل، علّم على أدوات الحكي: ing sawijining dina (البداية)، sawise وdumadakan (المفاجأة)، pungkasane (النهاية).
-        كلمات جديدة: menara = منارة / مئذنة (من العربي)، nemokake = لقى (menemukan)، jenang = حلاوة كودوس المشهورة من دقيق الرز وجوز الهند والسكر.
+        lakon = البطل أو حكاية المسرحية (lakone = بطل القصة)، adegan = مشهد.
+        kendel = شجاع، musuh = عدو، rahasia = سر، tentrem = هادي ومطمّن.
+        nyangka = يتوقع أو يفتكر: ora nyangka = ماكنتش متوقع. sedina = يوم واحد أو طول اليوم: sedina iku = في اليوم ده.
       ar: |
-        قصة السيدة ريتنو القصيرة. قبل القراءة المفصّلة ظلّل أدوات السرد: ing sawijining dina (البداية)، وsawise وdumadakan (المفاجأة)، وpungkasane (الخاتمة).
-        كلمات جديدة: menara = منارة / مئذنة (من العربية)، وnemokake = وجد (menemukan)، وjenang = حلوى كودوس الشهيرة من دقيق الأرز وجوز الهند والسكر.
+        lakon = البطل أو حكاية المسرحية (lakone = بطل القصة)، adegan = مشهد.
+        kendel = شجاع، musuh = عدو، rahasia = سرّ، tentrem = هادئ آمن.
+        nyangka = يتوقّع أو يظن: ora nyangka = لم أتوقّع. sedina = يوم واحد أو طوال اليوم: sedina iku = في ذلك اليوم.
       en: |
-        Bu Retno's short story. Before reading closely, mark the story connectors: ing sawijining dina (opening), sawise and dumadakan (the twist), pungkasane (ending).
-        New words: menara = minaret, tower (from Arabic «منارة»), nemokake = found (menemukan), jenang = Kudus's famous sweet of rice flour, coconut milk and palm sugar.
-    grammar: jv.narrative.connectors
+        lakon = the hero, or the story of a play (lakone = the story's hero), adegan = scene.
+        kendel = brave, musuh = enemy, rahasia = secret, tentrem = peaceful.
+        nyangka = expect, suppose: ora nyangka = didn't see it coming. sedina = one day, all day: sedina iku = that day.
     examples:
-      - text: Ing sawijining dina, Bima lan simbahe lunga menyang Menara Kudus.
-        ar_eg: في يوم من الأيام، بيما وجدّه راحوا منارة كودوس.
-        ar: في يوم من الأيام ذهب بيما وجدّه إلى منارة كودوس.
-        en: One day, Bima and his grandfather went to the Menara Kudus.
-      - text: Sawise salat, dumadakan Bima ora ana.
-        ar_eg: بعد الصلاة، فجأة بيما مكانش موجود.
-        ar: بعد الصلاة لم يكن بيما موجودًا فجأة.
-        en: After the prayer, suddenly Bima was gone.
-      - text: Pungkasane, simbah nemokake Bima ing ngarep menara, lagi mangan jenang.
-        ar_eg: وفي الآخر، الجدّ لقى بيما قدّام المنارة بياكل jenang.
-        ar: وفي النهاية وجد الجدّ بيما أمام المنارة يأكل jenang.
-        en: In the end, grandpa found Bima in front of the minaret, eating jenang.
+      - text: Lakone cerkak iki bocah wadon sing kendel.
+        ar_eg: بطلة القصة دي بنت شجاعة.
+        ar: بطلة هذه القصة فتاة شجاعة.
+        en: The hero of this story is a brave girl.
+      - text: Ing adegan pungkasan, desa dadi tentrem maneh.
+        ar_eg: في المشهد الأخير، القرية رجعت هادية.
+        ar: في المشهد الأخير عادت القرية آمنة.
+        en: In the last scene, the village is peaceful again.
+      - text: Aku ora nyangka musuhe kancane dhewe!
+        ar_eg: ماكنتش متوقع إن عدوه يطلع صاحبه!
+        ar: لم أتوقّع أن يكون عدوّه صديقه نفسه!
+        en: I didn't expect his enemy to be his own friend!
 exercises:
   - id: e01
+    type: match_pairs
+    pairs:
+      - text: lakon
+        ar_eg: البطل
+        ar: البطل
+        en: hero, main character
+      - text: adegan
+        ar_eg: مشهد
+        ar: مشهد
+        en: scene
+      - text: kendel
+        ar_eg: شجاع
+        ar: شجاع
+        en: brave
+      - text: nyangka
+        ar_eg: يتوقع
+        ar: يتوقّع
+        en: expect
+    words: [lakon, adegan, kendel, nyangka]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: tentrem
+        ar_eg: هادي ومطمّن
+        ar: آمن هادئ
+        en: peaceful
+      - text: sedina
+        ar_eg: يوم واحد
+        ar: يوم واحد
+        en: one day, all day
+      - text: musuh
+        ar_eg: عدو
+        ar: عدو
+        en: enemy
+      - text: rahasia
+        ar_eg: سر
+        ar: سرّ
+        en: secret
+    words: [tentrem, sedina, musuh, rahasia]
+  - id: e03
     type: listen
-    text: Ing sawijining dina, Bima lan simbahe lunga menyang Menara Kudus.
+    text: Lakone kendel banget, ora wedi karo musuh.
     question:
-      ar_eg: مين راح منارة كودوس؟
-      ar: من ذهب إلى منارة كودوس؟
-      en: Who went to the Menara Kudus?
-    options: [Bima lan simbahe, Bima lan Bu Retno, Mohamed lan Bima]
+      ar_eg: البطل عامل إزاي؟
+      ar: كيف البطل؟
+      en: What is the hero like?
+    options: [البطل شجاع ومش خايف من العدو, البطل خايف ومستخبي, البطل نايم طول اليوم]
     answer: 0
     meaning:
-      ar_eg: في يوم من الأيام، بيما وجدّه راحوا منارة كودوس.
-      ar: في يوم من الأيام ذهب بيما وجدّه إلى منارة كودوس.
-      en: One day, Bima and his grandfather went to the Menara Kudus.
-    words: [menara]
-  - id: e02
-    type: multiple_choice
-    question: Pungkasane, simbah nemokake Bima ing ngarep menara, lagi mangan jenang.
-    question_meaning:
-      ar_eg: الجدّ لقى بيما فين؟
-      ar: أين وجد الجدُّ بيما؟
-      en: Where did grandpa find Bima?
-    options: [ing omah, ing ngarep menara, ing pasar]
-    answer: 1
-    words: [nemokake, menara]
-  - id: e03
-    type: fill_blank
-    sentence: Simbah ___ Bima ing ngarep menara.
-    meaning:
-      ar_eg: الجدّ لقى بيما قدّام المنارة.
-      ar: وجد الجدّ بيما أمام المنارة.
-      en: Grandpa found Bima in front of the minaret.
-    options: [nyulik, nemokake, tekan]
-    answers: [nemokake]
-    words: [nemokake]
+      ar_eg: البطل شجاع جدًا، مش خايف من العدو.
+      ar: البطل شجاع جدًا ولا يخاف العدو.
+      en: The hero is very brave, not afraid of the enemy.
+    words: [lakon, kendel, musuh]
   - id: e04
     type: fill_blank
-    sentence: Bima lagi mangan ___.
+    sentence: Iki ___ sing paling apik ing crita iku.
     meaning:
-      ar_eg: بيما كان بياكل حلاوة كودوس.
-      ar: كان بيما يأكل حلوى كودوس.
-      en: Bima was eating the Kudus sweet.
-    options: [payung, menara, jenang]
-    answers: [jenang]
-    words: [jenang]
+      ar_eg: ده أحلى ___ في القصة.
+      ar: هذا أجمل ___ في تلك القصة.
+      en: This is the best ___ in that story.
+    options: [adegan, musuh, sedina]
+    answers: [adegan]
+    words: [adegan, musuh, sedina]
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الشخصية الأساسية في القصة اسمها …
+      ar: الشخصية الرئيسية في القصة تسمّى …
+      en: A story's main character is its …
+    options: [rahasia, lakon, nyangka]
+    answer: 1
+    explain:
+      ar_eg: lakon = البطل. rahasia = سر.
+      ar: lakon = البطل، وrahasia = سرّ.
+      en: lakon = the hero; rahasia = a secret.
+    words: [rahasia, lakon, nyangka]
+  - id: e06
+    type: fill_blank
+    sentence: Aku ora ___ crita iki pungkasane seneng.
+    meaning:
+      ar_eg: ماكنتش ___ إن القصة دي تخلص نهاية سعيدة.
+      ar: لم أ___ أن تنتهي هذه القصة نهاية سعيدة.
+      en: I didn't ___ this story to end happily.
+    options: [nyangka, kendel, rahasia]
+    answers: [nyangka]
+    words: [nyangka, kendel, rahasia]
+  - id: e07
+    type: multiple_choice
+    question: Desa iku ora ana perang, ___ banget.
+    options: [kendel, sedina, tentrem]
+    answer: 2
+    explain:
+      ar_eg: 'مفيش حرب = القرية هادية ومطمّنة: tentrem.'
+      ar: 'لا حرب = القرية آمنة: tentrem.'
+      en: 'No war: the village is peaceful, tentrem.'
+    words: [kendel, sedina, tentrem]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: وفي الآخر، الجدّ لقى بيما قدّام المنارة.
-      ar: وفي النهاية وجد الجدّ بيما أمام المنارة.
-      en: In the end, grandpa found Bima in front of the minaret.
-    answer: Pungkasane, simbah nemokake Bima ing ngarep menara.
-    distractors: [dumadakan, bareng]
-    words: [nemokake, menara]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (بأسلوب الحكاية) فجأة بيما مكانش موجود.
-      ar: (بأسلوب الحكاية) فجأة لم يكن بيما موجودًا.
-      en: (story style) Suddenly Bima was gone.
-    answers:
-      - Dumadakan Bima ora ana.
-      - Dumadakan Bima ilang.
-      - Bima dumadakan ora ana.
-      - Bima dumadakan ilang.
-    words: [dumadakan]
-  - id: e07
+      ar_eg: ده سرّنا، ماشي؟
+      ar: هذا سرّنا، اتفقنا؟
+      en: This is our secret, okay?
+    answer: Iki rahasia kita, ya?
+    distractors: [musuh, lakon]
+    words: [rahasia]
+  - id: e09
     type: translate
     direction: from_target
-    source_text: Ing sawijining dina, Bima lan simbahe lunga menyang Menara Kudus.
+    source_text: Sedina iku, desa sing tentrem dumadakan rame.
     answers_meaning:
-      ar_eg:
-        - في يوم من الأيام، بيما وجدّه راحوا منارة كودوس.
-        - في يوم من الأيام، بيما وجدّه راحوا لمنارة كودوس.
-        - في يوم من الأيام، بيما وجدته راحوا منارة كودوس.
-        - في يوم من الأيام بيما راح مع جدّه منارة كودوس.
-      ar:
-        - في يوم من الأيام ذهب بيما وجدّه إلى منارة كودوس.
-        - في يوم من الأيام ذهب بيما مع جدّه إلى منارة كودوس.
-        - في يوم من الأيام ذهب بيما وجدّته إلى منارة كودوس.
-      en:
-        - One day, Bima and his grandfather went to the Menara Kudus.
-        - One day, Bima and his grandpa went to the Menara Kudus.
-        - One day, Bima and his grandmother went to the Menara Kudus.
-        - One day Bima and his grandfather went to the Kudus minaret.
-        - One day, Bima went to the Menara Kudus with his grandfather.
-    words: [menara]
-  - id: e08
-    type: dictation
-    text: Bima lagi mangan jenang ing ngarep menara.
-    meaning:
-      ar_eg: بيما بياكل jenang قدّام المنارة.
-      ar: بيما يأكل jenang أمام المنارة.
-      en: Bima is eating jenang in front of the minaret.
-    words: [jenang, menara]
-  - id: e09
+      ar_eg: [في اليوم ده، القرية الهادية فجأة بقت دوشة, اليوم ده القرية الهادية اتقلبت فجأة]
+      ar: [في ذلك اليوم صارت القرية الهادئة فجأة صاخبة, ذات يوم ضجّت القرية الهادئة فجأة]
+      en: ['That day, the peaceful village suddenly got noisy', One day the quiet village suddenly became busy]
+    words: [sedina, tentrem]
+  - id: e10
     type: speaking
-    text: Aku seneng jenang Kudus.
+    text: Ing adegan iki, lakone weruh musuhe.
     meaning:
-      ar_eg: أنا بحب حلاوة jenang بتاعة كودوس.
-      ar: أحب حلوى jenang من كودوس.
-      en: I love Kudus jenang.
-    words: [jenang]
+      ar_eg: في المشهد ده، البطل بيشوف عدوه.
+      ar: في هذا المشهد يرى البطل عدوّه.
+      en: In this scene, the hero sees his enemy.
+    words: [adegan, lakon, musuh]
 dialogue:
-  title: Ing ngarep Menara Kudus
   lines:
-    - speaker: Bu Retno
-      text: Mas, iki Menara Kudus, kaya ing cerkakku.
-      ar_eg: يا محمد، دي منارة كودوس، زي اللي في قصتي.
-      ar: يا محمد، هذه منارة كودوس، كما في قصتي.
-      en: Mohamed, this is the Menara Kudus, like in my story.
+    - speaker: Mbak Ayu
+      text: Wis rampung maca cerkak sing tak wenehi?
+      ar_eg: خلصت القصة اللي اديتهالك؟
+      ar: هل أنهيت قراءة القصة التي أعطيتك إياها؟
+      en: Have you finished the story I gave you?
     - speaker: Mohamed
-      text: Menara! Ing basa Arab "manara". Sami, nggih, Bu?
-      ar_eg: menara! بالعربي «منارة». نفس الكلمة، صح يا أبلة؟
-      ar: menara! وبالعربية «منارة». الكلمة نفسها، أليس كذلك يا سيدتي؟
-      en: Menara! In Arabic it's «منارة». The same word, isn't it, ma'am?
-    - speaker: Bu Retno
-      text: Iya. Lan jeneng Kudus uga saka basa Arab, Al-Quds.
-      ar_eg: آه. واسم كودوس كمان من العربي، «القدس».
-      ar: نعم. واسم كودوس أيضًا من العربية، «القدس».
-      en: Yes. And the name Kudus comes from Arabic too, al-Quds.
+      text: Wis. Lakone bocah wadon sing kendel banget.
+      ar_eg: أيوه. البطلة بنت شجاعة جدًا.
+      ar: نعم. بطلتها فتاة شجاعة جدًا.
+      en: Yes. The hero is a really brave girl.
+    - speaker: Mbak Ayu
+      text: Adegan endi sing paling kok senengi?
+      ar_eg: أنهي مشهد عجبك أكتر؟
+      ar: أي مشهد أعجبك أكثر؟
+      en: Which scene did you like best?
     - speaker: Mohamed
-      text: Leres, Bu. Al-Quds menika Yerusalem.
-      ar_eg: مظبوط يا أبلة. القدس هي أورشليم.
-      ar: صحيح يا سيدتي. القدس هي أورشليم.
-      en: That's right, ma'am. Al-Quds is Jerusalem.
-    - speaker: Bu Retno
-      text: Ayo, saiki mangan jenang kaya Bima!
-      ar_eg: يلا، دلوقتي ناكل jenang زي بيما!
-      ar: هيا، لنأكل الآن jenang مثل بيما!
-      en: Come on, now let's eat jenang like Bima!
+      text: Nalika dheweke ngerti rahasia musuhe. Aku ora nyangka!
+      ar_eg: لما عرفت سر عدوها. ماكنتش متوقع!
+      ar: حين عرفت سرّ عدوّها. لم أتوقّع ذلك!
+      en: When she finds out her enemy's secret. I didn't see it coming!
+    - speaker: Mbak Ayu
+      text: Lan pungkasane?
+      ar_eg: والنهاية؟
+      ar: والنهاية؟
+      en: And the ending?
+    - speaker: Mohamed
+      text: Desane tentrem maneh. Crita sing apik!
+      ar_eg: القرية رجعت في أمان. قصة حلوة!
+      ar: عادت القرية آمنة. قصة جميلة!
+      en: The village is at peace again. A great story!
 new_words:
-  - word: menara
+  - word: lakon
     pos: noun
-    ar_eg: منارة / مئذنة
-    ar: منارة / مئذنة
-    en: minaret, tower = menara
-    arabic: منارة
-  - word: nemokake
+    ar_eg: البطل؛ حكاية المسرحية
+    ar: البطل؛ قصة المسرحية
+    en: hero, main character; story of a play
+  - word: adegan
+    pos: noun
+    ar_eg: مشهد
+    ar: مشهد
+    en: scene
+  - word: kendel
+    pos: adjective
+    ar_eg: شجاع
+    ar: شجاع
+    en: brave
+  - word: nyangka
     pos: verb
-    ar_eg: لقى
-    ar: وجد
-    en: find, found = menemukan
-  - word: jenang
+    ar_eg: يتوقع، يفتكر
+    ar: يتوقّع، يظن
+    en: expect, suppose
+  - word: tentrem
+    pos: adjective
+    ar_eg: هادي ومطمّن
+    ar: آمن، هادئ
+    en: peaceful
+  - word: sedina
     pos: noun
-    ar_eg: حلاوة كودوس من دقيق الرز وجوز الهند والسكر
-    ar: حلوى من دقيق الأرز وجوز الهند والسكر، تشتهر بها كودوس
-    en: a sweet of rice flour, coconut milk and palm sugar, famous in Kudus = dodol
+    ar_eg: يوم واحد؛ طول اليوم
+    ar: يوم واحد؛ طوال اليوم
+    en: one day; all day
+  - word: musuh
+    pos: noun
+    ar_eg: عدو
+    ar: عدو
+    en: enemy
+  - word: rahasia
+    pos: noun
+    ar_eg: سر
+    ar: سرّ
+    en: secret
 review:
   status: draft
   verified: false

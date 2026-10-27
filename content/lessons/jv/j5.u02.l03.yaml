@@ -1,195 +1,234 @@
 schema: kabar.lesson/v1
 id: j5.u02.l03
 language: jv
-title: Warta cekak
+title: Musibah ing dalan
 can_do:
-  ar_eg: تقرا خبر قصير.
-  ar: أن تقرأ خبرًا قصيرًا.
-  en: Read a short news item.
+  ar_eg: 'تفهم خبر حادثة: إيه اللي حصل، مين ساعد، والشرطة قالت إيه.'
+  ar: 'أن تفهم خبر حادث: ماذا حدث ومن ساعد وماذا قالت الشرطة.'
+  en: 'Follow a news item about an accident: what happened, who helped and what the police said.'
 slides:
-  - title: Rob ing Semarang
+  - title: Warta kacilakaan
     body:
       ar_eg: |
-        خبر قصير من جرنال سيمارانج. اسأل نفسك تلات أسئلة: حصل إيه؟ مين عمل؟ إمتى؟
-        rob = لما مية البحر تطلع على الشوارع وقت المد العالي، وده بيحصل كتير في سيمارانج. kebanjiran = غرقت مية (ke-…-an = حاجة حصلتلها). diresiki = اتنضّفت (resik = نضيف).
+        musibah = مصيبة أو كارثة (زي العربي)، kacilakaan = حادثة، pitulungan = مساعدة أو نجدة، semaput = أُغمي عليه.
+        keterangan = إفادة أو معلومة: miturut keterangan polisi = بحسب إفادة الشرطة.
+        mudik = السفر للبلد في العيد، rombongan = مجموعة أو فوج، ngati-ati = يخلّي باله.
       ar: |
-        خبر قصير من جريدة في سيمارانج. اسأل نفسك ثلاثة أسئلة: ماذا حدث؟ من فعل؟ متى؟
-        rob = طغيان ماء البحر على الشوارع عند المدّ العالي، وهو كثير في سيمارانج. وkebanjiran = غمرته المياه (ke-…-an لما أصاب الشيء)، وdiresiki = نُظِّف (resik = نظيف).
+        musibah = مصيبة أو كارثة (من العربية)، kacilakaan = حادث، pitulungan = مساعدة أو نجدة، semaput = يُغمى عليه.
+        keterangan = إفادة أو معلومة: miturut keterangan polisi = بحسب إفادة الشرطة.
+        mudik = السفر إلى البلدة في العيد، rombongan = جماعة أو فوج، ngati-ati = يحترس.
       en: |
-        A short news item from a Semarang paper. Ask three questions: what happened? who did it? when?
-        rob = seawater spilling onto the streets at high tide, common in Semarang. kebanjiran = got flooded (ke-…-an = something happened to it). diresiki = was cleaned (resik = clean).
-    grammar: jv.passive.written
+        musibah = disaster (from Arabic), kacilakaan = accident, pitulungan = help, aid, semaput = faint, pass out.
+        keterangan = statement, information: miturut keterangan polisi = according to the police.
+        mudik = travel home for Lebaran, rombongan = group, party, ngati-ati = be careful.
     examples:
-      - text: Dalan ing Kutha Lama kebanjiran rob wingi sore.
-        ar_eg: الشارع في كوتا لاما غرق من مية البحر امبارح العصر.
-        ar: غمر ماءُ المدّ الشارعَ في كوتا لاما عصر أمس.
-        en: The road in Kota Lama was flooded by the tide yesterday afternoon.
-      - text: Esuk iki, dalan kasebut wis diresiki dening warga.
-        ar_eg: الصبح ده، الأهالي نضّفوا الشارع المذكور خلاص.
-        ar: وفي صباح اليوم نظّف الأهالي الشارع المذكور.
-        en: This morning, the said road was cleaned up by the residents.
-      - text: Rob kerep teka ing pesisir lor.
-        ar_eg: المد العالي بييجي كتير على الساحل الشمالي.
-        ar: يأتي المدّ العالي كثيرًا على الساحل الشمالي.
-        en: Tidal floods often come to the north coast.
+      - text: Ana kacilakaan ing dalan tol Semarang.
+        ar_eg: حصلت حادثة على الطريق السريع في سيمارانج.
+        ar: وقع حادث على الطريق السريع في سيمارانغ.
+        en: There was an accident on the Semarang toll road.
+      - text: Sopir bis semaput, banjur oleh pitulungan saka warga.
+        ar_eg: سواق الأتوبيس أغمى عليه، والأهالي ساعدوه.
+        ar: أُغمي على سائق الحافلة، فأغاثه السكان.
+        en: The bus driver passed out, then got help from residents.
+      - text: Miturut keterangan polisi, kabeh penumpang slamet.
+        ar_eg: بحسب كلام الشرطة، كل الركاب سليمين.
+        ar: بحسب إفادة الشرطة، نجا جميع الركاب.
+        en: According to the police, all passengers are safe.
 exercises:
   - id: e01
-    type: listen
-    text: Dalan ing Kutha Lama kebanjiran rob wingi sore.
-    question:
-      ar_eg: إيه اللي حصل للشارع؟
-      ar: ماذا حدث للشارع؟
-      en: What happened to the road?
-    options: [didandani dening warga, kebanjiran rob, ditutup dening polisi]
-    answer: 1
-    meaning:
-      ar_eg: الشارع في كوتا لاما غرق من مية البحر امبارح العصر.
-      ar: غمر ماءُ المدّ الشارعَ في كوتا لاما عصر أمس.
-      en: The road in Kota Lama was flooded by the tide yesterday afternoon.
-    words: [kebanjiran, rob]
+    type: match_pairs
+    pairs:
+      - text: musibah
+        ar_eg: مصيبة
+        ar: كارثة، مصيبة
+        en: disaster
+      - text: kacilakaan
+        ar_eg: حادثة
+        ar: حادث
+        en: accident
+      - text: pitulungan
+        ar_eg: مساعدة
+        ar: نجدة، مساعدة
+        en: help, aid
+      - text: semaput
+        ar_eg: أغمى عليه
+        ar: أُغمي عليه
+        en: pass out
+    words: [musibah, kacilakaan, pitulungan, semaput]
   - id: e02
-    type: multiple_choice
-    question: Esuk iki, dalan kasebut wis diresiki dening warga.
-    question_meaning:
-      ar_eg: مين اللي نضّف الشارع؟
-      ar: من نظّف الشارع؟
-      en: Who cleaned the road?
-    options: [warga, lurah, Pak Harjo]
-    answer: 0
-    words: [diresiki, dening]
+    type: match_pairs
+    pairs:
+      - text: ngati-ati
+        ar_eg: يخلي باله
+        ar: يحترس
+        en: be careful
+      - text: keterangan
+        ar_eg: إفادة
+        ar: إفادة، معلومة
+        en: statement
+      - text: mudik
+        ar_eg: يسافر البلد في العيد
+        ar: يعود إلى بلدته في العيد
+        en: go home for Lebaran
+      - text: rombongan
+        ar_eg: مجموعة
+        ar: فوج
+        en: group
+    words: [ngati-ati, keterangan, mudik, rombongan]
   - id: e03
-    type: fill_blank
-    sentence: Dalan kasebut wis ___ dening warga.
+    type: listen
+    text: Rombongan saka Jakarta mudik menyang Semarang.
+    question:
+      ar_eg: مين اللي جاي؟
+      ar: من القادم؟
+      en: Who is coming?
+    options: [مجموعة مسافرة بلدها في العيد, عيلة رايحة الشغل, سياح أجانب]
+    answer: 0
     meaning:
-      ar_eg: الأهالي نضّفوا الشارع المذكور خلاص.
-      ar: نظّف الأهالي الشارع المذكور.
-      en: The said road has been cleaned up by the residents.
-    options: [kebanjiran, kapilih, diresiki]
-    answers: [diresiki]
-    words: [diresiki]
+      ar_eg: مجموعة من جاكرتا مسافرة بلدها سيمارانج في العيد.
+      ar: فوج من جاكرتا يعود إلى سيمارانغ في العيد.
+      en: A group from Jakarta is going home to Semarang for Lebaran.
+    words: [rombongan, mudik]
   - id: e04
     type: fill_blank
-    sentence: Rob ___ teka ing pesisir lor.
+    sentence: Ana ___ ing dalan tol esuk iki.
     meaning:
-      ar_eg: المد العالي بييجي كتير على الساحل الشمالي.
-      ar: يأتي المدّ العالي كثيرًا على الساحل الشمالي.
-      en: Tidal floods often come to the north coast.
-    options: [lawas, kerep, misuwur]
-    answers: [kerep]
-    words: [kerep, rob]
+      ar_eg: حصلت ___ على الطريق السريع الصبح ده.
+      ar: وقع ___ على الطريق السريع هذا الصباح.
+      en: There was an ___ on the toll road this morning.
+    options: [kacilakaan, keterangan, rombongan]
+    answers: [kacilakaan]
+    words: [kacilakaan, keterangan, rombongan]
   - id: e05
+    type: multiple_choice
+    question: Wong iku tiba lan meneng wae, ora tangi. Dheweke ___.
+    options: [mudik, semaput, musibah]
+    answer: 1
+    explain:
+      ar_eg: 'وقع ومش بيصحى = أغمى عليه: semaput.'
+      ar: 'سقط ولم يستفق = أُغمي عليه: semaput.'
+      en: 'He fell and doesn''t wake: he passed out, semaput.'
+    words: [mudik, semaput, musibah]
+  - id: e06
+    type: fill_blank
+    sentence: Dalane lunyu, ___ ya!
+    meaning:
+      ar_eg: الطريق بيزحلق، ___!
+      ar: الطريق زلق، ___!
+      en: 'The road is slippery: ___!'
+    options: [ngati-ati, semaput, mudik]
+    answers: [ngati-ati]
+    words: [ngati-ati, semaput, mudik]
+  - id: e07
+    type: multiple_choice
+    question: Banjir gedhe ing desa iku sawijining ___.
+    options: [rombongan, pitulungan, musibah]
+    answer: 2
+    explain:
+      ar_eg: 'الفيضان الكبير مصيبة: musibah.'
+      ar: 'الفيضان الكبير كارثة: musibah.'
+      en: 'A big flood is a disaster: musibah.'
+    words: [rombongan, pitulungan, musibah]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: الساحل الشمالي كتير بيغرق من المد العالي.
-      ar: كثيرًا ما يغمر المدُّ الساحلَ الشمالي.
-      en: The north coast often gets flooded by the tide.
-    answer: Pesisir lor kerep kebanjiran rob.
-    distractors: [kidul, dening]
-    words: [kerep, kebanjiran, rob]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (بأسلوب الخبر) الشارع غرق من مية البحر امبارح.
-      ar: (بأسلوب الخبر) غمر ماءُ المدّ الشارعَ أمس.
-      en: (news style) The road was flooded by the tide yesterday.
-    answers:
-      - Dalan iku kebanjiran rob wingi.
-      - Wingi dalan iku kebanjiran rob.
-      - Dalan kasebut kebanjiran rob wingi.
-      - Wingi dalan kasebut kebanjiran rob.
-      - Dalane kebanjiran rob wingi.
-      - Wingi dalane kebanjiran rob.
-      - Dalan iki kebanjiran rob wingi.
-    words: [kebanjiran, rob]
-  - id: e07
+      ar_eg: الأهالي ساعدوا السواق.
+      ar: قدّم السكان المساعدة للسائق.
+      en: Residents gave help to the driver.
+    answer: Warga menehi pitulungan marang sopir.
+    distractors: [musibah, mudik]
+    words: [pitulungan]
+  - id: e09
     type: translate
     direction: from_target
-    source_text: Rob kerep teka ing pesisir lor.
+    source_text: Miturut keterangan polisi, kacilakaan iku ora gedhe.
     answers_meaning:
-      ar_eg:
-        - المد العالي بييجي كتير على الساحل الشمالي.
-        - مية البحر بتطلع كتير على الساحل الشمالي.
-        - الـ rob بييجي كتير على الساحل الشمالي.
-        - المد بييجي كتير في الساحل الشمالي.
-      ar:
-        - يأتي المدّ العالي كثيرًا على الساحل الشمالي.
-        - كثيرًا ما يأتي المدّ على الساحل الشمالي.
-        - يكثر طغيان ماء البحر على الساحل الشمالي.
-        - يأتي الـ rob كثيرًا على الساحل الشمالي.
-      en:
-        - Tidal floods often come to the north coast.
-        - Tidal flooding often comes to the north coast.
-        - The tide often floods the north coast.
-        - Rob often comes to the north coast.
-        - Tidal floods often hit the north coast.
-        - Tidal flooding often hits the north coast.
-    words: [kerep, rob]
-  - id: e08
-    type: dictation
-    text: Esuk iki, dalan kasebut wis diresiki dening warga.
-    meaning:
-      ar_eg: الصبح ده، الأهالي نضّفوا الشارع المذكور خلاص.
-      ar: وفي صباح اليوم نظّف الأهالي الشارع المذكور.
-      en: This morning, the said road was cleaned up by the residents.
-    words: [diresiki, kasebut]
-  - id: e09
+      ar_eg: [بحسب كلام الشرطة، الحادثة مكانتش كبيرة, الشرطة قالت إن الحادثة مش كبيرة]
+      ar: [بحسب إفادة الشرطة، لم يكن الحادث كبيرًا, قالت الشرطة إن الحادث لم يكن كبيرًا]
+      en: ['According to the police, the accident wasn''t serious', The police said the accident was not big]
+    words: [keterangan, kacilakaan]
+  - id: e10
     type: speaking
-    text: Dalan ing Kutha Lama kebanjiran rob.
+    text: Yen mudik, ngati-ati ing dalan.
     meaning:
-      ar_eg: الشارع في كوتا لاما غرق من مية البحر.
-      ar: غمر ماءُ المدّ الشارعَ في كوتا لاما.
-      en: The road in Kota Lama got flooded by the tide.
-    words: [kebanjiran, rob]
+      ar_eg: لما تسافر البلد في العيد، خلي بالك على الطريق.
+      ar: إذا سافرت إلى بلدتك في العيد فاحترس في الطريق.
+      en: When you go home for Lebaran, take care on the road.
+    words: [mudik, ngati-ati]
 dialogue:
-  title: Warta ing warung
   lines:
+    - speaker: Mbak Ayu
+      text: 'Mohamed, ana warta: kacilakaan ing dalan tol Semarang.'
+      ar_eg: 'يا محمد، فيه خبر: حادثة على الطريق السريع في سيمارانج.'
+      ar: 'يا محمد، هناك خبر: حادث على الطريق السريع في سيمارانغ.'
+      en: 'Mohamed, there''s news: an accident on the Semarang toll road.'
     - speaker: Mohamed
-      text: Pak, wonten warta menapa ing koran?
-      ar_eg: يا عمّو، فيه أخبار إيه في الجرنال؟
-      ar: يا سيدي، ما الأخبار في الجريدة؟
-      en: Sir, what news is in the paper?
-    - speaker: Pak Harjo
-      text: Dalan ing Kutha Lama kebanjiran rob wingi sore.
-      ar_eg: الشارع في كوتا لاما غرق من مية البحر امبارح العصر.
-      ar: غمر المدُّ الشارعَ في كوتا لاما عصر أمس.
-      en: The road in Kota Lama was flooded by the tide yesterday afternoon.
+      text: Waduh! Kabeh slamet?
+      ar_eg: يا ساتر! الكل سليم؟
+      ar: يا للهول! هل نجا الجميع؟
+      en: Oh no! Is everyone safe?
+    - speaker: Mbak Ayu
+      text: Miturut keterangan polisi, slamet. Sopire mung semaput sedhela.
+      ar_eg: بحسب كلام الشرطة، أيوه. السواق بس أغمى عليه شوية.
+      ar: بحسب إفادة الشرطة نعم. أُغمي على السائق قليلًا فقط.
+      en: According to the police, yes. The driver only passed out for a moment.
     - speaker: Mohamed
-      text: Rob menika menapa, Pak?
-      ar_eg: يعني إيه rob يا عمّو؟
-      ar: ما الـ rob يا سيدي؟
-      en: What's rob, sir?
-    - speaker: Pak Harjo
-      text: Banyu segara sing munggah menyang dalan. Ing Semarang kerep.
-      ar_eg: مية البحر اللي بتطلع على الشوارع. بتحصل كتير في سيمارانج.
-      ar: ماء البحر حين يصعد إلى الشوارع، ويكثر في سيمارانج.
-      en: Seawater that comes up onto the streets. It happens a lot in Semarang.
+      text: Sapa sing menehi pitulungan?
+      ar_eg: مين اللي ساعد؟
+      ar: من قدّم المساعدة؟
+      en: Who helped?
+    - speaker: Mbak Ayu
+      text: Rombongan mudik sing liwat ing kono.
+      ar_eg: مجموعة مسافرين للعيد كانوا معديين هناك.
+      ar: فوج من المسافرين للعيد كانوا يمرّون هناك.
+      en: A group going home for Lebaran who were passing by.
     - speaker: Mohamed
-      text: Oh, kula ngertos. Matur nuwun, Pak.
-      ar_eg: آه، فهمت. متشكر يا عمّو.
-      ar: آه، فهمت. شكرًا يا سيدي.
-      en: Oh, I see. Thank you, sir.
+      text: Alhamdulillah. Musibah bisa teka kapan wae, kudu ngati-ati.
+      ar_eg: الحمد لله. المصايب ممكن تيجي في أي وقت، لازم ناخد بالنا.
+      ar: الحمد لله. المصائب قد تأتي في أي وقت، فلنحترس.
+      en: Thank God. Disaster can come any time; we must be careful.
 new_words:
-  - word: rob
+  - word: musibah
     pos: noun
-    ar_eg: طغيان مية البحر على الشوارع وقت المد العالي
-    ar: طغيان ماء البحر على اليابسة عند المدّ العالي
-    en: tidal flood = banjir rob
-  - word: kebanjiran
+    arabic: مصيبة
+    ar_eg: مصيبة
+    ar: مصيبة، كارثة
+    en: disaster, calamity
+  - word: kacilakaan
+    pos: noun
+    ar_eg: حادثة
+    ar: حادث
+    en: accident
+  - word: pitulungan
+    pos: noun
+    ar_eg: مساعدة، نجدة
+    ar: مساعدة، نجدة
+    en: help, aid
+  - word: semaput
     pos: verb
-    ar_eg: غرق مية (اتعرّض لفيضان)
-    ar: غمرته المياه
-    en: got flooded = kebanjiran
-  - word: diresiki
+    ar_eg: أغمى عليه
+    ar: أُغمي عليه
+    en: faint, pass out
+  - word: ngati-ati
     pos: verb
-    ar_eg: اتنضّف (من resik = نضيف)
-    ar: نُظِّف (من resik = نظيف)
-    en: was cleaned (from resik, clean) = dibersihkan
-  - word: kerep
-    pos: adverb
-    ar_eg: كتير / غالبًا
-    ar: كثيرًا / غالبًا
-    en: often = sering
+    ar_eg: يخلي باله
+    ar: يحترس
+    en: be careful
+  - word: keterangan
+    pos: noun
+    ar_eg: إفادة، معلومة
+    ar: إفادة، معلومة
+    en: statement, information
+  - word: mudik
+    pos: verb
+    ar_eg: يسافر بلده في العيد
+    ar: يعود إلى بلدته في العيد
+    en: go home for Lebaran
+  - word: rombongan
+    pos: noun
+    ar_eg: مجموعة، فوج
+    ar: فوج، جماعة
+    en: group, party
 review:
   status: draft
   verified: false
