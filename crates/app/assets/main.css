@@ -740,6 +740,9 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 .parts-line { display: inline-flex; flex-wrap: wrap; align-items: flex-start; gap: 0.15rem 0.35rem; }
 .parts-line .piece { display: inline-grid; justify-items: center; font-weight: 600; }
 .parts-line .plus { color: var(--muted); }
+.parts-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.75rem; }
+.say-word { display: inline-flex; align-items: center; gap: 0.35rem; }
+.say-word button.icon { min-block-size: 44px; min-inline-size: 44px; padding: 0; border-radius: 50%; }
 .piece-kind { font-size: 0.7rem; font-weight: 400; color: var(--muted); }
 .class-chip {
   display: inline-block;

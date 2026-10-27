@@ -12,7 +12,7 @@ use super::content::taught_info;
 use super::doc::{Tag, Word};
 use super::explain::ExplainCard;
 use super::glossary::{Shift, SpeechLevel, WordInfo, WordLang};
-use super::morph::{MorphDetail, PartsLine};
+use super::morph::{MorphDetail, PartsLine, SayWord};
 use super::{Panel, Peek, ReaderState};
 use crate::i18n::Msg;
 use crate::platform::{self, SpeakError};
@@ -222,6 +222,8 @@ fn WordCard(i: usize) -> Element {
         context: Some(sentence.clone()),
     });
 
+    let word_tag = if w.tag == Tag::Javanese { "jv" } else { "id" }.to_string();
+
     rsx! {
         div { class: "word-card",
             Headline { w: w.clone(), surface: surface.clone() }
@@ -229,7 +231,10 @@ fn WordCard(i: usize) -> Element {
             if let Some((parts, class)) = breakdown {
                 div { class: "field",
                     span { class: "label", "{ui.t(Msg::Breakdown)}" }
-                    PartsLine { parts, class, labels: false, voice }
+                    div { class: "parts-row",
+                        PartsLine { parts, class, labels: false, voice }
+                        SayWord { text: speak_text.clone(), tag: word_tag, letters: false }
+                    }
                 }
             }
             MorphDetail { i }

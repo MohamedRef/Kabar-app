@@ -17,6 +17,7 @@ use super::glossary::WordLang;
 use crate::Ui;
 use crate::i18n::Msg;
 use crate::lesson::Rich;
+use crate::pron::Pron;
 
 /// The language Kabar treats the word as: its tag, else its dictionary entry.
 fn lang_of(w: &Word) -> Option<Lang> {
@@ -66,6 +67,32 @@ pub fn PartsLine(parts: Vec<Part>, class: Option<WordClass>, labels: bool, voice
     }
 }
 
+/// The whole word aloud (🔊) and in Arabic letters, beside its pieces.
+/// `tag` is "id" or "jv"; `letters: false` where a headline shows them already.
+#[component]
+pub fn SayWord(text: String, tag: String, #[props(default = true)] letters: bool) -> Element {
+    let ui = use_context::<Ui>();
+    let voice_tag = if tag == "jv" { "jv-ID" } else { "id-ID" };
+    let spoken = text.clone();
+    rsx! {
+        span { class: "say-word",
+            button {
+                class: "ghost icon",
+                title: "{ui.t(Msg::Listen)}",
+                aria_label: "{ui.t(Msg::Listen)}",
+                onclick: move |e| {
+                    e.stop_propagation();
+                    super::speak(&spoken, voice_tag);
+                },
+                "🔊"
+            }
+            if letters {
+                Pron { text, tag, inline: true }
+            }
+        }
+    }
+}
+
 /// A coloured chip naming the word's class.
 #[component]
 pub fn ClassChip(class: WordClass, voice: UiLanguage) -> Element {
@@ -86,6 +113,9 @@ struct Shown {
     redup: Option<(&'static str, String)>,
     /// Grammar entries: title and summary in the voice.
     entries: Vec<(String, String)>,
+    /// The whole word as it is said (the full form of a chat spelling).
+    say: String,
+    tag: &'static str,
 }
 
 fn shown(st: &ReaderState, i: usize, ui_voice: UiLanguage) -> Option<Shown> {
@@ -129,7 +159,13 @@ fn shown(st: &ReaderState, i: usize, ui_voice: UiLanguage) -> Option<Shown> {
         .filter_map(|c| lib.get(&c.id))
         .map(|e| (voice.title(&e.title).to_string(), voice.of(&e.summary).to_string()))
         .collect();
-    Some(Shown { detail, root_gloss, notes, redup, entries })
+    let say = w
+        .analyzed
+        .normalized
+        .as_ref()
+        .map_or_else(|| doc.text(doc.tokens[i].start, doc.tokens[i].end).to_string(), |n| n.full.clone());
+    let tag = if lang == Lang::Javanese { "jv" } else { "id" };
+    Some(Shown { detail, root_gloss, notes, redup, entries, say, tag })
 }
 
 /// Core notes mark Latin with U+2068…U+2069 (and U+2060 after a hyphen);
@@ -184,8 +220,11 @@ pub fn MorphDetail(i: usize) -> Element {
             }
             if let Some(s) = body {
                 div { class: "morph-body",
-                    if s.detail.parts.len() > 1 {
-                        PartsLine { parts: s.detail.parts.clone(), class, labels: true, voice: ui_voice }
+                    div { class: "parts-row",
+                        if s.detail.parts.len() > 1 {
+                            PartsLine { parts: s.detail.parts.clone(), class, labels: true, voice: ui_voice }
+                        }
+                        SayWord { text: s.say.clone(), tag: s.tag.to_string() }
                     }
                     if let Some(change) = &s.detail.sound_change {
                         p { class: "muted small",
