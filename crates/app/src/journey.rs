@@ -771,6 +771,17 @@ fn find_unit(unit_id: &str) -> Option<&'static Unit> {
     routes.id.levels.iter().chain(&routes.jv.levels).flat_map(|l| &l.units).find(|u| u.id == unit_id)
 }
 
+/// The lesson that goes back over a unit: its review lesson, else its
+/// first. `None` for an unknown unit.
+pub fn unit_refresher(unit_id: &str) -> Option<String> {
+    let unit = find_unit(unit_id)?;
+    unit.lessons
+        .iter()
+        .find(|l| l.kind == kabar_core::journey::LessonKind::Review)
+        .or(unit.lessons.first())
+        .map(|l| l.id.clone())
+}
+
 /// A unit's name for the daily plan: "التحية · Salam" (the UI language's
 /// title, then the target-language one, isolated so it reads right inside
 /// Arabic). `None` for an unknown id.
@@ -789,14 +800,16 @@ pub fn next_lesson_in(unit_id: &str, completed: &BTreeSet<String>) -> Option<Str
     find_unit(unit_id)?.lessons.iter().find(|l| !completed.contains(&l.id)).map(|l| l.id.clone())
 }
 
-/// Where the Indonesian journey starts: the placement result, else the level
-/// the onboarding answer points at (`None`: from the very beginning).
+/// Where the Indonesian journey starts: the placement result (its unit when
+/// the test could tell, else its level), else the level the onboarding answer
+/// points at (`None`: from the very beginning). Feed it to
+/// [`Progress::start_at`]; it is not always a level id.
 pub fn start_level(db: &Db, profile: Option<&CoachProfile>) -> Option<String> {
     let placed = db.0.borrow().placement().unwrap_or_else(|e| {
         eprintln!("kabar: reading the placement result failed: {e}");
         None
     });
-    placed.map(|p| p.start_level).or_else(|| {
+    placed.map(|p| p.start_unit.unwrap_or(p.start_level)).or_else(|| {
         let unit = kabar_core::coach::onboarding::starting_unit(profile?.start);
         unit.split_once('.').map(|(level, _)| level.to_string())
     })

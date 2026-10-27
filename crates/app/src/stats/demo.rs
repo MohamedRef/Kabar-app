@@ -88,7 +88,11 @@ fn seed_stats_demo() {
     // KABAR_DEMO_PLACED=bipa3: placed above the levels that have test items,
     // so the check goes straight to its outcome (history only).
     if let Ok(level) = std::env::var("KABAR_DEMO_PLACED") {
-        let placed = kabar_protocol::test::PlacementResult { start_level: level, sections: Vec::new() };
+        let placed = kabar_protocol::test::PlacementResult {
+            start_level: level,
+            start_unit: None,
+            sections: Vec::new(),
+        };
         store.record_lesson_event("placement", "placed", &placed).unwrap();
     }
 
