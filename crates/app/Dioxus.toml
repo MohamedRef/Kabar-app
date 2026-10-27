@@ -1,5 +1,8 @@
 [application]
 name = "Batna"
+# Our own manifest: dx then ignores [android.raw] and permissions here, so
+# queries, permissions and intent filters go in that file.
+android_manifest = "AndroidManifest.xml"
 
 [bundle]
 identifier = "app.batna"

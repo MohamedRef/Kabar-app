@@ -94,6 +94,53 @@ pub mod order {
     }
 }
 
+pub mod oral {
+    pub const TITLE: &str = "امتحان شفوي";
+    pub const INTRO: &str = "التطبيق يسألك بصوت عالي، وانت تجاوب بصوتك. بعد وقت التفكير يقولك الإجابة، وانت تقيّم نفسك. ينفع وانت ماشي.";
+    pub const LECTURE: &str = "المحاضرة";
+    pub const ALL_LECTURES: &str = "كل المحاضرات الجاهزة";
+    pub const SIZE: &str = "عدد الأسئلة";
+    pub const THINK: &str = "وقت التفكير";
+    pub const SECONDS: &str = "ثانية";
+    pub const VOICE: &str = "اقرا الأسئلة بصوت عالي";
+    pub const RATE: &str = "سرعة الصوت";
+    pub const RATES: [&str; 3] = ["أبطأ", "عادي", "أسرع"];
+    pub const AUTO: &str = "كمّل لوحدك بعد الإجابة";
+    pub const AUTO_HINT: &str =
+        "لو ما ضغطتش على تقييم في ٨ ثواني، يعدّي للسؤال اللي بعده من غير ما يسجّل حاجة.";
+    pub const AVAILABLE: &str = "سؤال ينفع يتسأل شفوي";
+    pub const START: &str = "ابدأ";
+    pub const EMPTY: &str = "لسه مفيش محاضرات جاهزة فيها أسئلة شفوي. أول ما محاضرة تخلص هتلاقيها هنا.";
+    pub const NO_VOICE: &str = "مفيش صوت إنجليزي شغّال على الجهاز ده، فالأسئلة هتظهر مكتوبة بس. على أندرويد: الإعدادات ← تحويل النص إلى كلام ← نزّل صوت English.";
+
+    pub const LISTEN: &str = "اسمع السؤال";
+    pub const THINKING: &str = "فكّر وجاوب بصوتك";
+    pub const WHAT_ELSE: &str = "وإيه كمان؟";
+    pub const ANSWER: &str = "الإجابة";
+    pub const FOLLOW_UP: &str = "سؤال الممتحن بعد الكارت";
+    pub const AGAIN_BADGE: &str = "تاني مرة";
+    pub const PASS: &str = "كفاية تذكر";
+    pub const OF: &str = "من";
+    pub const PAGE: &str = "صفحة";
+    pub const LEFT: &str = "فاضل";
+    pub const SHOW: &str = "اعرض الإجابة";
+    pub const REPEAT: &str = "عيد السؤال";
+    pub const AGAIN: &str = "تاني";
+    pub const AGAIN_HINT: &str = "هيرجعلك بعد ٣ أسئلة";
+    pub const GOOD: &str = "تمام";
+    pub const GOOD_HINT: &str = "جاوبت صح";
+    pub const END: &str = "إنهاء";
+
+    pub const DONE: &str = "خلصت الجلسة";
+    pub const DONE_GOOD: &str = "تمام";
+    pub const DONE_AGAIN: &str = "تاني";
+    pub const DONE_HEARD: &str = "سمعتها بس";
+    pub const MISSED: &str = "الأسئلة اللي محتاجة مراجعة";
+    pub const NONE_MISSED: &str = "ولا سؤال وقع منك. شغل حلو!";
+    pub const ANOTHER: &str = "جلسة كمان";
+    pub const BACK: &str = "رجوع للإعدادات";
+}
+
 pub mod case {
     pub const TAB_CASES: &str = "حالات إكلينيكية";
     pub const TAB_CALC_ITEMS: &str = "تمارين بالأرقام";

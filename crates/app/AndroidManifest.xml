@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Batna's Android manifest, used by dx instead of its built-in template
+  (Dioxus.toml: [application] android_manifest). It is that template from
+  dx 0.7.10, rendered for Batna, with these changes (adapted from kabar-app
+  main: crates/app/AndroidManifest.xml):
+
+  - A text-to-speech <queries> block, so oral mode can bind to the installed
+    TTS engine (Samsung or Google) on Android 11+.
+  - MainActivity handles every configuration change itself. Recreating it
+    would drop the WebView that holds the running app (and an oral session
+    in the middle of a question): rotation, dark mode, split screen and
+    pop-up view on the Tab S11, font size and language reach the page as CSS
+    media queries and resize events instead.
+  - adjustResize: the on-screen keyboard shrinks the window instead of
+    covering it.
+
+  dx does not add permissions, features or deep links from Dioxus.toml to
+  this file: add them here. Re-check it against dx's template when dx is
+  upgraded.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Android 11+ package visibility: the app must be allowed to see installed
+         text-to-speech engines (Samsung, Google) or TextToSpeech can't bind to one. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
+
+    <application android:hasCode="true"
+        android:icon="@mipmap/ic_launcher"
+        android:extractNativeLibs="false"
+        android:allowNativeHeapPointerTagging="false"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:networkSecurityConfig="@xml/network_security_config">
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize|keyboardHidden|keyboard|navigation|uiMode|density|fontScale|locale|layoutDirection|colorMode"
+            android:windowSoftInputMode="adjustResize" android:exported="true"
+            android:label="@string/app_name" android:name="dev.dioxus.main.MainActivity">
+            <meta-data android:name="android.app.lib_name" android:value="main" />
+            <meta-data android:name="android.app.func_name" android:value="ANativeActivity_onCreate" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
