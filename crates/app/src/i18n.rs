@@ -177,6 +177,8 @@ pub enum Msg {
     RevWall,
     RevWallHint,
     RevWallPhone,
+    RevWallHintTouch,
+    RevWallHintMouse,
     RevBurst,
     RevBurstHint,
     RevStart,
@@ -271,6 +273,7 @@ pub enum Msg {
     OnbFocus,
     FocusBoth,
     OnbTarget,
+    OnbBothOrder,
     OnbTargetLevel,
     OnbTargetDate,
     OnbNoTarget,
@@ -703,7 +706,7 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (NavGroupMe, ArEg | Ar) => "أنا",
         (NavGroupMe, En) => "Me",
         (NavPenLab, _) => "Pen Lab",
-        (NavTeach, ArEg | Ar) => "علّم كبر",
+        (NavTeach, ArEg | Ar) => "علّم \u{2068}Kabar\u{2069}",
         (NavTeach, En) => "Teach Kabar",
         (NavListen, ArEg) => "اتفرج واسمع",
         (NavListen, Ar) => "شاهد واستمع",
@@ -1225,6 +1228,20 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (RevWallHint, En) => {
             "Flick cards with the pen or your finger into tahu (I know it) or belum (not yet)."
         }
+        (RevWallHintTouch, ArEg) => {
+            "زقّ الكروت بصباعك لكومة \u{2068}tahu\u{2069} (عارفها) أو \u{2068}belum\u{2069} (لسه)."
+        }
+        (RevWallHintTouch, Ar) => {
+            "ادفع البطاقات بإصبعك إلى كومة \u{2068}tahu\u{2069} (أعرفها) أو \u{2068}belum\u{2069} (ليس بعد)."
+        }
+        (RevWallHintTouch, En) => "Flick cards with your finger into tahu (I know it) or belum (not yet).",
+        (RevWallHintMouse, ArEg) => {
+            "اسحب الكروت بالماوس لكومة \u{2068}tahu\u{2069} (عارفها) أو \u{2068}belum\u{2069} (لسه)."
+        }
+        (RevWallHintMouse, Ar) => {
+            "اسحب البطاقات بالفأرة إلى كومة \u{2068}tahu\u{2069} (أعرفها) أو \u{2068}belum\u{2069} (ليس بعد)."
+        }
+        (RevWallHintMouse, En) => "Drag cards with the mouse onto tahu (I know it) or belum (not yet).",
         (RevWallPhone, ArEg) => "على الموبايل كارت كارت؛ الطاولة الكاملة على التابلت.",
         (RevWallPhone, Ar) => "على الهاتف بطاقة واحدة في كل مرة؛ والطاولة الكاملة على الجهاز اللوحي.",
         (RevWallPhone, En) => "One card at a time on the phone; the full table is on the tablet.",
@@ -1484,6 +1501,9 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (FocusBoth, En) => "Both",
         (OnbTarget, ArEg | Ar) => "الهدف",
         (OnbTarget, En) => "Target",
+        (OnbBothOrder, ArEg) => "هنبدأ بالإندونيسي، والجاوي بيفتح بعد \u{2068}BIPA 1\u{2069}.",
+        (OnbBothOrder, Ar) => "نبدأ بالإندونيسية، وتُفتح الجاوية بعد \u{2068}BIPA 1\u{2069}.",
+        (OnbBothOrder, En) => "We start with Indonesian; Javanese opens after BIPA 1.",
         (OnbTargetLevel, ArEg | Ar) => "المستوى",
         (OnbTargetLevel, En) => "Level",
         (OnbTargetDate, ArEg) => "لحد إمتى",
@@ -1828,7 +1848,7 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (JournalSouvenir, ArEg) => "تذكار جديد في الشنطة",
         (JournalSouvenir, Ar) => "تذكار جديد في الحقيبة",
         (JournalSouvenir, En) => "New souvenir in your suitcase",
-        (JournalTaught, ArEg | Ar) => "علّمت كبر كلمة",
+        (JournalTaught, ArEg | Ar) => "علّمت \u{2068}Kabar\u{2069} كلمة",
         (JournalTaught, En) => "Taught Kabar a word",
         (JournalDraft, ArEg) => "لسه مسودة",
         (JournalDraft, Ar) => "مسودة",
@@ -2463,9 +2483,11 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (GrammarInText, Ar) => "القواعد في هذا النص",
         (GrammarInText, En) => "Grammar in this text",
         (GrammarInTextHint, ArEg) => {
-            "كبر لقاها في النص من غير نت. اللي اتعلمته الأول، واللي لسه جاي متعلّم عليه."
+            "\u{2068}Kabar\u{2069} لقاها في النص من غير نت. اللي اتعلمته الأول، واللي لسه جاي متعلّم عليه."
         }
-        (GrammarInTextHint, Ar) => "وجدها كبر في النص دون اتصال. ما تعلّمتَه أولًا، وما لم يأتِ بعد عليه علامة.",
+        (GrammarInTextHint, Ar) => {
+            "وجدها \u{2068}Kabar\u{2069} في النص دون اتصال. ما تعلّمتَه أولًا، وما لم يأتِ بعد عليه علامة."
+        }
         (GrammarInTextHint, En) => {
             "Spotted offline. What you've learned comes first; what's still ahead is marked."
         }
@@ -2514,8 +2536,12 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (OcrUnavailable, ArEg) => "قراءة الصور لسه مش شغالة على الجهاز ده. الصق الكلام بدلها.",
         (OcrUnavailable, Ar) => "قراءة الصور غير متاحة على هذا الجهاز بعد. الصق النص بدلًا منها.",
         (OcrUnavailable, En) => "Reading images isn't available on this device yet. Paste the text instead.",
-        (PickFailed, ArEg) => "معرفتش أفتح الصورة دي. جرّب تختار سكرين شوت تاني، أو شيّرها لكبر من المعرض.",
-        (PickFailed, Ar) => "تعذّر فتح هذه الصورة. جرّب لقطة شاشة أخرى، أو شاركها مع كبر من المعرض.",
+        (PickFailed, ArEg) => {
+            "معرفتش أفتح الصورة دي. جرّب تختار سكرين شوت تاني، أو شيّرها لـ \u{2068}Kabar\u{2069} من المعرض."
+        }
+        (PickFailed, Ar) => {
+            "تعذّر فتح هذه الصورة. جرّب لقطة شاشة أخرى، أو شاركها مع \u{2068}Kabar\u{2069} من المعرض."
+        }
         (PickFailed, En) => {
             "Couldn't open that image. Try another screenshot, or share it to Kabar from your gallery."
         }

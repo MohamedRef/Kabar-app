@@ -14,7 +14,7 @@ slides:
         - beras ← uwos = رز ني (والرز المطبوخ sega، بالكراما sekul)
         - uyah ← sarem = ملح
         - kerep ← asring = كتير، على طول
-        plastik = كيس بلاستيك. timbangan = ميزان. mbayar = يدفع.
+        plastik = كيس بلاستيك. timbangan = ميزان. mbayar = يدفع. antri = يقف في الطابور.
         langganan = زبون دايم (أو دكان بتشتري منه على طول).
         laris = بيتباع كويس. «Laris, Bu!» = دعوة حلوة للبياعة: ربنا يكتّر زباينك.
       ar: |
@@ -22,7 +22,7 @@ slides:
         - beras ← uwos = أرز غير مطبوخ (والمطبوخ sega، وبالكراما sekul)
         - uyah ← sarem = ملح
         - kerep ← asring = كثيرًا، غالبًا
-        plastik = كيس بلاستيك. timbangan = ميزان. mbayar = يدفع.
+        plastik = كيس بلاستيك. timbangan = ميزان. mbayar = يدفع. antri = يقف في الطابور.
         langganan = زبون دائم (أو دكان تشتري منه دائمًا).
         laris = رائج البيع. «Laris, Bu!» = دعاء جميل للبائعة: كثّر الله زبائنك.
       en: |
@@ -30,7 +30,7 @@ slides:
         - beras → uwos = raw rice (cooked rice is sega, krama sekul)
         - uyah → sarem = salt
         - kerep → asring = often
-        plastik = plastic bag. timbangan = scales. mbayar = pay.
+        plastik = plastic bag. timbangan = scales. mbayar = pay. antri = queue, wait in line.
         langganan = a regular (customer, or the shop you always use).
         laris = selling well. "Laris, Bu!" = a kind wish to a seller: may business boom.
     examples:
@@ -74,10 +74,10 @@ exercises:
         ar_eg: يدفع
         ar: يدفع
         en: pay
-      - text: langganan
-        ar_eg: زبون دايم
-        ar: زبون دائم
-        en: regular customer
+      - text: antri
+        ar_eg: يقف في الطابور
+        ar: يقف في الطابور
+        en: queue
       - text: timbangan
         ar_eg: ميزان
         ar: ميزان
@@ -86,7 +86,7 @@ exercises:
         ar_eg: كتير، على طول (كراما)
         ar: كثيرًا (كراما)
         en: often (krama)
-    words: [mbayar, langganan, timbangan, asring]
+    words: [mbayar, antri, timbangan, asring]
   - id: e03
     type: listen
     text: Bu, uwos sekilo pinten?
@@ -134,12 +134,12 @@ exercises:
   - id: e07
     type: build_sentence
     source:
-      ar_eg: أدفع هنا يا طنط؟
-      ar: هل أدفع هنا يا سيدتي؟
-      en: Do I pay here, ma'am?
-    answer: Kula mbayar wonten mriki, Bu?
+      ar_eg: هقف في الطابور، وبعدين أدفع.
+      ar: أقف في الطابور ثم أدفع.
+      en: I'll queue, then pay.
+    answer: Kula antri, lajeng mbayar.
     distractors: [laris, sarem]
-    words: [mbayar]
+    words: [antri, mbayar]
   - id: e08
     type: translate
     direction: from_target
@@ -160,13 +160,13 @@ exercises:
   - id: e10
     type: multiple_choice
     question: Uyah (ngoko) → ___ (krama)
-    options: [langganan, beras, sarem]
+    options: [antri, beras, sarem]
     answer: 2
     explain:
       ar_eg: uyah ← sarem = ملح.
       ar: uyah ← sarem = ملح.
       en: uyah → sarem = salt.
-    words: [sarem, langganan, beras]
+    words: [sarem, antri, beras]
 dialogue:
   lines:
     - speaker: Bu Siti
@@ -225,11 +225,11 @@ new_words:
     ar_eg: يدفع
     ar: يدفع
     en: pay (= membayar)
-  - word: langganan
-    pos: noun
-    ar_eg: زبون دايم
-    ar: زبون دائم
-    en: regular customer; the shop you always use (= langganan)
+  - word: antri
+    pos: verb
+    ar_eg: يقف في الطابور
+    ar: يقف في الطابور
+    en: queue, wait in line (= antre)
   - word: timbangan
     pos: noun
     ar_eg: ميزان

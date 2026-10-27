@@ -14,19 +14,19 @@ slides:
         - dalan ← margi = طريق، kutha ← kitha = مدينة
         - kono ← ngriku = هناك (جنب اللي بتكلمه)، kana ← ngrika = هناك (بعيد عنكم انتو الاتنين)
         - dhuwur ← inggil = عالي
-        pinggir = جنب، طرف: ing pinggir margi = على جنب الطريق. jarak = مسافة. dawa = طويل.
+        pinggir = جنب، طرف: ing pinggir margi = على جنب الطريق. jarak = مسافة. dawa = طويل. arah = اتجاه.
       ar: |
         حين تسأل عن الطريق:
         - dalan ← margi = طريق، kutha ← kitha = مدينة
         - kono ← ngriku = هناك (قرب من تخاطبه)، kana ← ngrika = هناك (بعيدًا عنكما)
         - dhuwur ← inggil = عالٍ
-        pinggir = جانب، طرف: ing pinggir margi = على جانب الطريق. jarak = مسافة. dawa = طويل.
+        pinggir = جانب، طرف: ing pinggir margi = على جانب الطريق. jarak = مسافة. dawa = طويل. arah = اتجاه.
       en: |
         Asking the way:
         - dalan → margi = road, kutha → kitha = town, city
         - kono → ngriku = there (near the person you're talking to), kana → ngrika = over there (far from you both)
         - dhuwur → inggil = high, tall
-        pinggir = edge, side: ing pinggir margi = by the roadside. jarak = distance. dawa = long.
+        pinggir = edge, side: ing pinggir margi = by the roadside. jarak = distance. dawa = long. arah = direction.
     examples:
       - text: Nyuwun sewu, margi dhateng kitha pundi?
         ar_eg: لا مؤاخذة، الطريق للمدينة منين؟
@@ -52,15 +52,15 @@ exercises:
         ar_eg: مدينة (كراما)
         ar: مدينة (كراما)
         en: town (krama)
-      - text: pinggir
-        ar_eg: جنب، طرف
-        ar: جانب، طرف
-        en: edge, side
+      - text: arah
+        ar_eg: اتجاه
+        ar: اتجاه
+        en: direction
       - text: jarak
         ar_eg: مسافة
         ar: مسافة
         en: distance
-    words: [margi, kitha, pinggir, jarak]
+    words: [margi, kitha, arah, jarak]
   - id: e02
     type: match_pairs
     pairs:
@@ -111,13 +111,13 @@ exercises:
       ar_eg: «هناك» (بعيد عنكم انتو الاتنين) بالكراما؟
       ar: «هناك» (بعيدًا عنكما) بالكراما؟
       en: '"Over there" (far from you both) in krama?'
-    options: [ngriku, pinggir, ngrika]
+    options: [ngriku, arah, ngrika]
     answer: 2
     explain:
       ar_eg: kana ← ngrika (بعيد عن الاتنين)، kono ← ngriku (جنب اللي بتكلمه).
       ar: kana ← ngrika (بعيد عن الطرفين)، kono ← ngriku (قرب المخاطَب).
       en: kana → ngrika (far from both), kono → ngriku (near the listener).
-    words: [ngriku, pinggir, ngrika]
+    words: [ngriku, arah, ngrika]
   - id: e06
     type: fill_blank
     sentence: Menara masjid menika ___ sanget.
@@ -125,9 +125,9 @@ exercises:
       ar_eg: مدنة الجامع ده ___ أوي.
       ar: مئذنة هذا المسجد ___ جدًا.
       en: This mosque's minaret is very ___.
-    options: [inggil, dawa, kitha]
+    options: [inggil, dawa, arah]
     answers: [inggil]
-    words: [inggil, dawa, kitha]
+    words: [inggil, dawa, arah]
   - id: e07
     type: build_sentence
     source:
@@ -207,11 +207,11 @@ new_words:
     ar_eg: مدينة (kutha ← kitha)، كراما
     ar: مدينة (kutha ← kitha)، كراما
     en: town, city (ngoko kutha, Indonesian kota), krama
-  - word: pinggir
+  - word: arah
     pos: noun
-    ar_eg: جنب، طرف
-    ar: جانب، طرف
-    en: edge, side (ing pinggir margi = by the roadside) = pinggir
+    ar_eg: اتجاه
+    ar: اتجاه
+    en: direction (= arah)
   - word: jarak
     pos: noun
     ar_eg: مسافة

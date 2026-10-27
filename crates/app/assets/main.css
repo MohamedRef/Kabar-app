@@ -368,6 +368,9 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .top-title { display: flex; align-items: center; gap: 0.25rem; min-inline-size: 0; }
 .top-title h1 { margin: 0; font-size: 1.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /* Rail labels stay on one line (long ones are shortened or ellipsed). */
+.nav-label-short { display: none; }
+.app:is([data-width="medium"], [data-nav="slim"]:not([data-width="compact"])) .nav-label-full { display: none; }
+.app:is([data-width="medium"], [data-nav="slim"]:not([data-width="compact"])) .nav-label-short { display: inline; }
 .app[data-width="medium"] .nav-label,
 .app[data-nav="slim"] .nav-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-inline-size: 100%; }
 .app[data-width="medium"] .nav-item { min-inline-size: 0; }

@@ -10,17 +10,17 @@ slides:
   - title: Linggih, mesem, ngguyu
     body:
       ar_eg: |
-        lungguh = يقعد في الـ ngoko، وفي الكراما linggih: «Mangga linggih» = اتفضل اقعد. kursi = كرسي.
+        lungguh = يقعد في الـ ngoko، وفي الكراما linggih: «Mangga linggih» = اتفضل اقعد. kursi = كرسي. tamu = ضيف.
         kesel ← sayah = تعبان (كراما).
         mesem = يبتسم، ngguyu = يضحك (من guyu = ضحكة).
         eman = يا خسارة! (حاجة حلوة راحت على الفاضي). becik = طيب، كويس (أعمق من apik: Mbah tiyang becik = تيتة ست طيبة).
       ar: |
-        lungguh = يجلس في الـ ngoko، وفي الكراما linggih: «Mangga linggih» = تفضّل اجلس. kursi = كرسي.
+        lungguh = يجلس في الـ ngoko، وفي الكراما linggih: «Mangga linggih» = تفضّل اجلس. kursi = كرسي. tamu = ضيف.
         kesel ← sayah = متعب (كراما).
         mesem = يبتسم، ngguyu = يضحك (من guyu = ضحكة).
         eman = يا للأسف! (شيء جميل ضاع سدى). becik = طيّب، حسن (أعمق من apik: Mbah tiyang becik = الجدة امرأة طيبة).
       en: |
-        lungguh = sit in ngoko; krama linggih: "Mangga linggih" = please sit down. kursi = chair.
+        lungguh = sit in ngoko; krama linggih: "Mangga linggih" = please sit down. kursi = chair. tamu = guest.
         kesel → sayah = tired (krama).
         mesem = smile, ngguyu = laugh (from guyu = a laugh).
         eman = what a pity! (something good gone to waste). becik = good, kind (deeper than apik: Mbah tiyang becik = Grandma is a kind person).
@@ -41,10 +41,10 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: lungguh
-        ar_eg: يقعد (ngoko)
-        ar: يجلس (ngoko)
-        en: sit (ngoko)
+      - text: tamu
+        ar_eg: ضيف
+        ar: ضيف
+        en: guest
       - text: linggih
         ar_eg: يقعد (كراما)
         ar: يجلس (كراما)
@@ -57,7 +57,7 @@ exercises:
         ar_eg: تعبان (كراما)
         ar: متعب (كراما)
         en: tired (krama)
-    words: [lungguh, linggih, kursi, sayah]
+    words: [tamu, linggih, kursi, sayah]
   - id: e02
     type: match_pairs
     pairs:
@@ -119,9 +119,9 @@ exercises:
       ar_eg: تيتة بوتري ست ___ أوي.
       ar: الجدة بوتري امرأة ___ جدًا.
       en: Mbah Putri is a very ___ person.
-    options: [becik, sayah, kursi]
+    options: [becik, sayah, tamu]
     answers: [becik]
-    words: [becik, sayah, kursi]
+    words: [becik, sayah, tamu]
   - id: e07
     type: build_sentence
     source:
@@ -142,12 +142,12 @@ exercises:
     words: [linggih, kursi]
   - id: e09
     type: speaking
-    text: Aku lungguh kene wae.
+    text: Mas Mohamed tamu kula.
     meaning:
-      ar_eg: أنا هقعد هنا وخلاص.
-      ar: سأجلس هنا فقط.
-      en: I'll just sit here.
-    words: [lungguh]
+      ar_eg: محمد ضيفي.
+      ar: محمد ضيفي.
+      en: Mohamed is my guest.
+    words: [tamu]
   - id: e10
     type: multiple_choice
     question_meaning:
@@ -224,11 +224,11 @@ new_words:
     ar_eg: يقعد (lungguh ← linggih)، كراما
     ar: يجلس (lungguh ← linggih)، كراما
     en: sit (ngoko lungguh, Indonesian duduk), krama
-  - word: lungguh
-    pos: verb
-    ar_eg: يقعد (ngoko)
-    ar: يجلس (ngoko)
-    en: sit (= duduk), ngoko
+  - word: tamu
+    pos: noun
+    ar_eg: ضيف
+    ar: ضيف
+    en: guest (= tamu)
   - word: kursi
     pos: noun
     ar_eg: كرسي

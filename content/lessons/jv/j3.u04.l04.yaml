@@ -14,19 +14,19 @@ slides:
         - munggah ← minggah = يطلع (العربية أو السلم): «Mangga minggah» = اتفضل اركب
         - mudhun ← mandhap = ينزل: «Kula mandhap ing mriki» = هنزل هنا
         budhal = يطلع على سفر، يبدأ المشوار. mangkat = يتحرك، يمشي (الأتوبيس أو الطيارة).
-        bandara = مطار، parkir = يركن، باركينج. koper = شنطة سفر، karcis = تذكرة. kesusu = مستعجل.
+        bandara = مطار، parkir = يركن، باركينج. koper = شنطة سفر، karcis = تذكرة. kesusu = مستعجل. penumpang = راكب.
       ar: |
         في المواصلات:
         - munggah ← minggah = يصعد (السيارة أو الدرج): «Mangga minggah» = تفضّل اركب
         - mudhun ← mandhap = ينزل: «Kula mandhap ing mriki» = سأنزل هنا
         budhal = ينطلق في رحلة. mangkat = يغادر، ينطلق (الحافلة أو الطائرة).
-        bandara = مطار، parkir = يركن، موقف. koper = حقيبة سفر، karcis = تذكرة. kesusu = مستعجل.
+        bandara = مطار، parkir = يركن، موقف. koper = حقيبة سفر، karcis = تذكرة. kesusu = مستعجل. penumpang = راكب.
       en: |
         Getting around:
         - munggah → minggah = go up, get in: "Mangga minggah" = please get in
         - mudhun → mandhap = go down, get off: "Kula mandhap ing mriki" = I'll get off here
         budhal = set off on a trip. mangkat = leave, depart (a bus or a plane).
-        bandara = airport, parkir = park, parking. koper = suitcase, karcis = ticket. kesusu = in a hurry.
+        bandara = airport, parkir = park, parking. koper = suitcase, karcis = ticket. kesusu = in a hurry. penumpang = passenger.
     examples:
       - text: Mangga minggah, Mas.
         ar_eg: اتفضل اركب يا أستاذ.
@@ -48,10 +48,10 @@ exercises:
         ar_eg: يطلع على سفر
         ar: ينطلق في رحلة
         en: set off
-      - text: mangkat
-        ar_eg: يتحرك، يقوم
-        ar: يغادر، ينطلق
-        en: leave, depart
+      - text: penumpang
+        ar_eg: راكب
+        ar: راكب
+        en: passenger
       - text: bandara
         ar_eg: مطار
         ar: مطار
@@ -60,7 +60,7 @@ exercises:
         ar_eg: يركن
         ar: يركن
         en: park
-    words: [budhal, mangkat, bandara, parkir]
+    words: [budhal, penumpang, bandara, parkir]
   - id: e02
     type: match_pairs
     pairs:
@@ -102,9 +102,9 @@ exercises:
       ar_eg: الساعة بقت سبعة! يلا ___!
       ar: صارت الساعة السابعة! هيّا ___!
       en: It's seven already! Let's ___!
-    options: [budhal, karcis, mandhap]
+    options: [budhal, penumpang, mandhap]
     answers: [budhal]
-    words: [budhal, karcis, mandhap]
+    words: [budhal, penumpang, mandhap]
   - id: e05
     type: multiple_choice
     question: Munggah (ngoko) → ___ (krama)
@@ -128,12 +128,12 @@ exercises:
   - id: e07
     type: build_sentence
     source:
-      ar_eg: الأتوبيس ده بيتحرك الساعة كام؟
-      ar: متى تنطلق هذه الحافلة؟
-      en: What time does this bus leave?
-    answer: Bis menika mangkat jam pinten?
+      ar_eg: التذكرة معانا. يلا نطلع!
+      ar: التذكرة معنا. هيا ننطلق!
+      en: We've got the ticket. Let's set off!
+    answer: Karcisipun sampun wonten. Mangga budhal!
     distractors: [mandhap, kesusu]
-    words: [mangkat]
+    words: [karcis, budhal]
   - id: e08
     type: translate
     direction: from_target
@@ -145,12 +145,12 @@ exercises:
     words: [karcis, koper, mangkat]
   - id: e09
     type: speaking
-    text: Aku mudhun kene, banjur budhal nang bandara.
+    text: Penumpang mandhap ing bandara.
     meaning:
-      ar_eg: هنزل هنا، وبعدين أطلع على المطار.
-      ar: سأنزل هنا، ثم أنطلق إلى المطار.
-      en: I'll get off here, then head to the airport.
-    words: [mudhun, budhal, bandara]
+      ar_eg: الركاب بينزلوا في المطار.
+      ar: ينزل الركاب في المطار.
+      en: The passengers get off at the airport.
+    words: [penumpang, mandhap, bandara]
   - id: e10
     type: multiple_choice
     question_meaning:
@@ -202,11 +202,11 @@ new_words:
     ar_eg: يطلع على سفر، يبدأ المشوار
     ar: ينطلق في رحلة
     en: set off, start a trip (= berangkat)
-  - word: mangkat
-    pos: verb
-    ar_eg: يتحرك، يقوم (أتوبيس، طيارة)
-    ar: يغادر، ينطلق (حافلة، طائرة)
-    en: leave, depart (= berangkat)
+  - word: penumpang
+    pos: noun
+    ar_eg: راكب
+    ar: راكب
+    en: passenger (= penumpang)
   - word: bandara
     pos: noun
     ar_eg: مطار

@@ -10,18 +10,18 @@ slides:
   - title: Angsal nawar?
     body:
       ar_eg: |
-        هدايا أكل من السوق: kripik = شيبسي (kripik tempe مشهور)، kacang = فول سوداني، lombok = شطة، فلفل حار.
-        kotak = علبة، kertas = ورق.
+        هدايا أكل من السوق: kripik = شيبسي (kripik tempe مشهور)، bakpia = فطيرة صغيرة محشية فول (هدية مشهورة)، lombok = شطة، فلفل حار.
+        kotak = علبة، kertas = ورق، dompet = محفظة.
         nawar = يفاصل (من tawar): «Angsal nawar, Bu?» = ينفع أفاصل؟
         diskon = خصم. kartu = كارت: «Mbayar ngangge kartu angsal?» = ينفع أدفع بالكارت؟
       ar: |
-        هدايا طعام من السوق: kripik = رقائق مقرمشة (kripik tempe مشهورة)، kacang = فول سوداني، lombok = فلفل حار.
-        kotak = علبة، kertas = ورق.
+        هدايا طعام من السوق: kripik = رقائق مقرمشة (kripik tempe مشهورة)، bakpia = فطيرة صغيرة محشوة بالفول (هدية مشهورة)، lombok = فلفل حار.
+        kotak = علبة، kertas = ورق، dompet = محفظة.
         nawar = يساوم (من tawar): «Angsal nawar, Bu?» = هل يمكنني المساومة؟
         diskon = خصم. kartu = بطاقة: «Mbayar ngangge kartu angsal?» = هل يمكنني الدفع بالبطاقة؟
       en: |
-        Food souvenirs from the market: kripik = crisps (kripik tempe is famous), kacang = peanuts, lombok = chilli.
-        kotak = box, kertas = paper.
+        Food souvenirs from the market: kripik = crisps (kripik tempe is famous), bakpia = small bean-filled pastries (a classic souvenir), lombok = chilli.
+        kotak = box, kertas = paper, dompet = wallet.
         nawar = bargain (from tawar): "Angsal nawar, Bu?" = can I bargain?
         diskon = discount. kartu = card: "Mbayar ngangge kartu angsal?" = can I pay by card?
     examples:
@@ -45,19 +45,19 @@ exercises:
         ar_eg: شيبسي
         ar: رقائق مقرمشة
         en: crisps
-      - text: kacang
-        ar_eg: فول سوداني
-        ar: فول سوداني
-        en: peanuts
-      - text: lombok
-        ar_eg: شطة
-        ar: فلفل حار
-        en: chilli
+      - text: bakpia
+        ar_eg: فطيرة بقبيا
+        ar: فطيرة بقبيا
+        en: bakpia pastries
+      - text: dompet
+        ar_eg: محفظة
+        ar: محفظة
+        en: wallet
       - text: kotak
         ar_eg: علبة
         ar: علبة
         en: box
-    words: [kripik, kacang, lombok, kotak]
+    words: [kripik, bakpia, dompet, kotak]
   - id: e02
     type: match_pairs
     pairs:
@@ -108,13 +108,13 @@ exercises:
       ar_eg: إيه اللي بيخلّي الأكل حرّاق؟
       ar: ما الذي يجعل الطعام حارًّا؟
       en: What makes food spicy?
-    options: [kacang, kertas, lombok]
+    options: [bakpia, kertas, lombok]
     answer: 2
     explain:
       ar_eg: lombok = شطة، فلفل حار.
       ar: lombok = فلفل حار.
       en: lombok = chilli.
-    words: [kacang, kertas, lombok]
+    words: [bakpia, kertas, lombok]
   - id: e06
     type: fill_blank
     sentence: Dinten menika wonten ___ sedasa persen.
@@ -122,9 +122,9 @@ exercises:
       ar_eg: النهارده فيه ___ عشرة في المية.
       ar: اليوم يوجد ___ عشرة في المئة.
       en: Today there's a ten per cent ___.
-    options: [diskon, kartu, kacang]
+    options: [diskon, kartu, dompet]
     answers: [diskon]
-    words: [diskon, kartu, kacang]
+    words: [diskon, kartu, dompet]
   - id: e07
     type: build_sentence
     source:
@@ -137,12 +137,12 @@ exercises:
   - id: e08
     type: translate
     direction: from_target
-    source_text: Kacang lan kripik ing kotak kertas.
+    source_text: Bakpia lan kripik ing kotak kertas.
     answers_meaning:
-      ar_eg: [الفول السوداني والشيبسي في علبة ورق, السوداني والشيبسي جوه علبة كرتون]
-      ar: [الفول السوداني والرقائق في علبة ورقية]
-      en: [The peanuts and crisps are in a paper box, Peanuts and crisps in a cardboard box]
-    words: [kacang, kripik, kotak, kertas]
+      ar_eg: [البقبيا والشيبسي في علبة ورق, البقبيا والشيبسي جوه علبة كرتون]
+      ar: [البقبيا والرقائق في علبة ورقية]
+      en: [The bakpia and crisps are in a paper box, Bakpia and crisps in a cardboard box]
+    words: [bakpia, kripik, kotak, kertas]
   - id: e09
     type: speaking
     text: Bu, angsal nawar? Wonten diskon?
@@ -154,13 +154,13 @@ exercises:
   - id: e10
     type: multiple_choice
     question: Kripik menika pedhes, wonten ___.
-    options: [kartu, lombok, diskon]
+    options: [dompet, lombok, diskon]
     answer: 1
     explain:
       ar_eg: lombok = شطة، عشان كده حرّاق.
       ar: lombok = فلفل حار، ولذلك هي حارّة.
       en: lombok = chilli, so they're spicy.
-    words: [lombok, kartu, kripik]
+    words: [lombok, dompet, kripik]
 dialogue:
   lines:
     - speaker: Mohamed
@@ -184,10 +184,10 @@ dialogue:
       ar: إن اشتريت ثلاثًا فهناك خصم.
       en: If you buy three, there's a discount.
     - speaker: Mohamed
-      text: Inggih, tiga, kaliyan kacang setunggal. Mbayar ngangge kartu angsal?
-      ar_eg: ماشي، تلاتة وعلبة سوداني. ينفع بالكارت؟
-      ar: حسنًا، ثلاث وعلبة فول سوداني. هل يمكن الدفع بالبطاقة؟
-      en: OK, three, and one peanuts. Can I pay by card?
+      text: Inggih, tiga, kaliyan bakpia setunggal kotak. Mbayar ngangge kartu angsal?
+      ar_eg: ماشي، تلاتة وعلبة بقبيا. ينفع بالكارت؟
+      ar: حسنًا، ثلاث وعلبة بقبيا. هل يمكن الدفع بالبطاقة؟
+      en: OK, three, and a box of bakpia. Can I pay by card?
     - speaker: Bakul
       text: Angsal, Mas. Kula bungkus ngangge kertas.
       ar_eg: ينفع يا أستاذ. هلفّهم في ورق.
@@ -199,16 +199,16 @@ new_words:
     ar_eg: شيبسي، مقرمشات
     ar: رقائق مقرمشة
     en: crisps, chips (kripik tempe) = keripik
-  - word: kacang
+  - word: bakpia
     pos: noun
-    ar_eg: فول سوداني، بقوليات
-    ar: فول سوداني، بقوليات
-    en: peanuts, beans (= kacang)
-  - word: lombok
+    ar_eg: 'بقبيا: فطيرة صغيرة محشية فول'
+    ar: 'بقبيا: فطيرة صغيرة محشوة بالفول'
+    en: bakpia, small bean-filled pastries (a Yogya/Solo souvenir)
+  - word: dompet
     pos: noun
-    ar_eg: شطة، فلفل حار
-    ar: فلفل حار
-    en: chilli (= cabai)
+    ar_eg: محفظة
+    ar: محفظة
+    en: wallet (= dompet)
   - word: kotak
     pos: noun
     ar_eg: علبة

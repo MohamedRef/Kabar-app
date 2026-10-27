@@ -14,21 +14,21 @@ slides:
         - sega ← sekul = رز مطبوخ
         - dodol (أو adol) ← sade = يبيع
         sate = ساتيه (أسياخ لحمة أو فراخ). tempe = تمبيه، أكلة جاوة الشهيرة من فول الصويا.
-        gurih = مسبّك وطعمه حلو (مالح ودسم، زي حاجة بلبن جوز الهند).
+        kecap = صوص الصويا الحلو، بيتحط على الساتيه.
         piring = طبق. kosong = فاضي: «Piringipun sampun kosong!» = الطبق خلص!
       ar: |
         في السوق:
         - sega ← sekul = أرز مطبوخ
         - dodol (أو adol) ← sade = يبيع
         sate = ساتيه (أسياخ لحم أو دجاج). tempe = التمبيه، طعام جاوة الشهير من فول الصويا.
-        gurih = شهيّ مالح ودسم (كالمطبوخ بحليب جوز الهند).
+        kecap = صلصة الصويا الحلوة، تُصبّ على الساتيه.
         piring = طبق. kosong = فارغ: «Piringipun sampun kosong!» = فرغ الطبق!
       en: |
         At the market:
         - sega → sekul = cooked rice
         - dodol (or adol) → sade = sell
         sate = satay (meat or chicken skewers). tempe = tempe, Java's famous soybean cake.
-        gurih = savoury and rich (salty, often with coconut milk).
+        kecap = sweet soy sauce, poured over satay.
         piring = plate. kosong = empty: "Piringipun sampun kosong!" = my plate's empty!
     examples:
       - text: Sekul kaliyan sate, setunggal piring.
@@ -59,11 +59,11 @@ exercises:
         ar_eg: ساتيه
         ar: ساتيه
         en: satay
-      - text: gurih
-        ar_eg: مسبّك، طعمه حلو
-        ar: شهيّ مالح
-        en: savoury
-    words: [sekul, tempe, sate, gurih]
+      - text: kecap
+        ar_eg: صوص صويا حلو
+        ar: صلصة صويا حلوة
+        en: sweet soy sauce
+    words: [sekul, tempe, sate, kecap]
   - id: e02
     type: match_pairs
     pairs:
@@ -105,9 +105,9 @@ exercises:
       ar_eg: طنط سيتي ___ تمبيه في السوق.
       ar: السيدة سيتي ___ التمبيه في السوق.
       en: Bu Siti ___ tempe at the market.
-    options: [sade, kosong, gurih]
+    options: [sade, kosong, kecap]
     answers: [sade]
-    words: [sade, kosong, gurih, tempe]
+    words: [sade, kosong, kecap, tempe]
   - id: e05
     type: multiple_choice
     question: Sega (ngoko) → ___ (krama)
@@ -131,12 +131,12 @@ exercises:
   - id: e07
     type: build_sentence
     source:
-      ar_eg: التمبيه ده مسبّك أوي.
-      ar: هذا التمبيه شهيّ جدًا.
-      en: This tempe is really savoury.
-    answer: Tempe menika gurih sanget.
+      ar_eg: ساتيه بصوص الصويا يا طنط.
+      ar: ساتيه مع صلصة الصويا يا سيدتي.
+      en: Satay with soy sauce, ma'am.
+    answer: Sate kaliyan kecap, Bu.
     distractors: [kosong, sade]
-    words: [tempe, gurih]
+    words: [sate, kecap]
   - id: e08
     type: translate
     direction: from_target
@@ -157,13 +157,13 @@ exercises:
   - id: e10
     type: multiple_choice
     question: Aku dodol sate. → Kula ___ sate.
-    options: [gurih, sade, kosong]
+    options: [kecap, sade, kosong]
     answer: 1
     explain:
       ar_eg: dodol (adol) ← sade = يبيع.
       ar: dodol (adol) ← sade = يبيع.
       en: dodol (adol) → sade = sell.
-    words: [dodol, sade, gurih, kosong]
+    words: [dodol, sade, kecap, kosong]
 dialogue:
   lines:
     - speaker: Penjual
@@ -212,11 +212,11 @@ new_words:
     ar_eg: ساتيه (أسياخ لحمة أو فراخ)
     ar: ساتيه (أسياخ لحم أو دجاج)
     en: satay, grilled skewers
-  - word: gurih
-    pos: adjective
-    ar_eg: مسبّك، مالح ودسم
-    ar: شهيّ مالح ودسم
-    en: savoury, rich (= gurih)
+  - word: kecap
+    pos: noun
+    ar_eg: صوص صويا حلو
+    ar: صلصة صويا حلوة
+    en: sweet soy sauce (= kecap)
   - word: piring
     pos: noun
     ar_eg: طبق

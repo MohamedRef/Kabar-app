@@ -13,19 +13,19 @@ slides:
         في القرية:
         - sawah ← sabin = غيط رز، kali ← lepen = نهر، ترعة
         - godhong ← ron = ورقة شجر، udan ← jawah = مطر
-        petani = فلاح. alon-alon = على مهلك، بالراحة.
+        petani = فلاح، nandur = يزرع، watu = حجر. alon-alon = على مهلك، بالراحة.
         مثل جاوي مشهور: «Alon-alon waton kelakon» = على مهلك، المهم الحاجة تخلص.
       ar: |
         في القرية:
         - sawah ← sabin = حقل الأرز، kali ← lepen = نهر
         - godhong ← ron = ورقة شجر، udan ← jawah = مطر
-        petani = فلاح. alon-alon = ببطء، على مهل.
+        petani = فلاح، nandur = يزرع، watu = حجر. alon-alon = ببطء، على مهل.
         مثل جاوي مشهور: «Alon-alon waton kelakon» = ببطء، المهمّ أن يتمّ الأمر.
       en: |
         In the village:
         - sawah → sabin = rice field, kali → lepen = river
         - godhong → ron = leaf, udan → jawah = rain
-        petani = farmer. alon-alon = slowly, carefully.
+        petani = farmer, nandur = plant, watu = stone. alon-alon = slowly, carefully.
         A famous Javanese saying: "Alon-alon waton kelakon" = slowly, as long as it gets done.
     examples:
       - text: Petani wonten sabin.
@@ -44,10 +44,10 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: sawah
-        ar_eg: غيط رز (ngoko)
-        ar: حقل أرز (ngoko)
-        en: rice field (ngoko)
+      - text: nandur
+        ar_eg: يزرع
+        ar: يزرع
+        en: plant
       - text: sabin
         ar_eg: غيط رز (كراما)
         ar: حقل أرز (كراما)
@@ -60,14 +60,14 @@ exercises:
         ar_eg: فلاح
         ar: فلاح
         en: farmer
-    words: [sawah, sabin, lepen, petani]
+    words: [nandur, sabin, lepen, petani]
   - id: e02
     type: match_pairs
     pairs:
-      - text: godhong
-        ar_eg: ورقة شجر (ngoko)
-        ar: ورقة شجر (ngoko)
-        en: leaf (ngoko)
+      - text: watu
+        ar_eg: حجر
+        ar: حجر
+        en: stone
       - text: ron
         ar_eg: ورقة شجر (كراما)
         ar: ورقة شجر (كراما)
@@ -80,7 +80,7 @@ exercises:
         ar_eg: على مهلك
         ar: ببطء
         en: slowly
-    words: [godhong, ron, jawah, alon-alon]
+    words: [watu, ron, jawah, alon-alon]
   - id: e03
     type: listen
     text: Jawah, mangga mlampah alon-alon.
@@ -97,24 +97,24 @@ exercises:
     words: [jawah, alon-alon]
   - id: e04
     type: fill_blank
-    sentence: Petani wonten ___.
+    sentence: Saben enjing Pak Wiryo ___ ing sabin.
     meaning:
-      ar_eg: الفلاح في الـ___.
-      ar: الفلاح في ___.
-      en: The farmer is in the ___.
-    options: [sabin, ron, jawah]
-    answers: [sabin]
-    words: [sabin, ron, jawah, petani]
+      ar_eg: كل يوم الصبح عم ويريو ___ في الغيط.
+      ar: كل صباح ___ العم ويريو في الحقل.
+      en: Every morning Pak Wiryo ___ in the rice field.
+    options: [nandur, ron, jawah]
+    answers: [nandur]
+    words: [nandur, ron, jawah, sabin]
   - id: e05
     type: multiple_choice
     question: Udan (ngoko) → ___ (krama)
-    options: [lepen, jawah, sabin]
+    options: [watu, jawah, sabin]
     answer: 1
     explain:
       ar_eg: udan ← jawah = مطر.
       ar: udan ← jawah = مطر.
       en: udan → jawah = rain.
-    words: [jawah, lepen, sabin]
+    words: [jawah, watu, sabin]
   - id: e06
     type: fill_blank
     sentence: Ing krama, godhong dados ___.
@@ -122,18 +122,18 @@ exercises:
       ar_eg: بالكراما godhong بتبقى ___.
       ar: في الكراما تصبح godhong ___.
       en: In krama, godhong becomes ___.
-    options: [ron, lepen, sawah]
+    options: [ron, lepen, watu]
     answers: [ron]
-    words: [ron, godhong, lepen, sawah]
+    words: [ron, godhong, lepen, watu]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: الفلاح بيشتغل في الغيط.
-      ar: يعمل الفلاح في الحقل.
-      en: The farmer works in the rice field.
-    answer: Petani nyambut gawe ing sawah.
+      ar_eg: الفلاح بيزرع في الغيط.
+      ar: يزرع الفلاح في الحقل.
+      en: The farmer is planting in the rice field.
+    answer: Petani nandur ing sabin.
     distractors: [lepen, ron]
-    words: [petani, sawah]
+    words: [petani, nandur, sabin]
   - id: e08
     type: translate
     direction: from_target
@@ -194,11 +194,11 @@ dialogue:
       ar: ببطء، المهمّ أن نصل يا سيدي!
       en: Slowly, as long as we get there, sir!
 new_words:
-  - word: sawah
-    pos: noun
-    ar_eg: غيط رز (ngoko)
-    ar: حقل أرز (ngoko)
-    en: rice field (= sawah), ngoko
+  - word: nandur
+    pos: verb
+    ar_eg: يزرع
+    ar: يزرع
+    en: plant (= menanam)
   - word: sabin
     pos: noun
     ar_eg: غيط رز (sawah ← sabin)، كراما
@@ -214,11 +214,11 @@ new_words:
     ar_eg: فلاح
     ar: فلاح
     en: farmer (= petani)
-  - word: godhong
+  - word: watu
     pos: noun
-    ar_eg: ورقة شجر (ngoko)
-    ar: ورقة شجر (ngoko)
-    en: leaf (= daun), ngoko
+    ar_eg: حجر
+    ar: حجر
+    en: stone (= batu)
   - word: ron
     pos: noun
     ar_eg: ورقة شجر (godhong ← ron)، كراما
