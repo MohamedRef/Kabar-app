@@ -17,7 +17,12 @@ use crate::retrieval::forms;
 
 pub const FILE: &str = "content/semantic-sets.yaml";
 
-pub fn check(root: &Path, curricula: &[Curriculum], lessons: &BTreeMap<String, Value>, problems: &mut Vec<String>) {
+pub fn check(
+    root: &Path,
+    curricula: &[Curriculum],
+    lessons: &BTreeMap<String, Value>,
+    problems: &mut Vec<String>,
+) {
     let path = root.join(FILE);
     if !path.exists() {
         return;
@@ -44,7 +49,8 @@ pub fn check(root: &Path, curricula: &[Curriculum], lessons: &BTreeMap<String, V
                 (name, words.filter_map(Value::as_str).map(str::to_lowercase).collect())
             })
             .collect();
-        let learn = c.levels.iter().flat_map(|l| &l.units).flat_map(|u| &u.lessons).filter(|l| l.kind == "learn");
+        let learn =
+            c.levels.iter().flat_map(|l| &l.units).flat_map(|u| &u.lessons).filter(|l| l.kind == "learn");
         for meta in learn {
             let Some(lesson) = lessons.get(&meta.id) else { continue };
             let words: Vec<Vec<String>> = lesson
