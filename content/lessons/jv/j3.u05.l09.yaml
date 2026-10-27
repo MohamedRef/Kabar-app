@@ -1,0 +1,175 @@
+schema: kabar.lesson/v1
+id: j3.u05.l09
+language: jv
+title: Daftar regi
+can_do:
+  ar_eg: تقرا لافتة أسعار بالكراما في Pasar Klewer، تحسب، وتشتري بأدب.
+  ar: أن تقرأ لافتة أسعار بالكراما في Pasar Klewer وتحسب وتشتري بأدب.
+  en: Read a krama price sign at Pasar Klewer, do the sums, and buy politely.
+slides:
+  - title: Papan ing lapak Bu Siti
+    body:
+      ar_eg: |
+        على فرشة Bu Siti في Pasar Klewer فيه لافتة صغيرة. اقراها كويس، وخد بالك من آخر سطر:
+        regi pas = السعر ثابت (زي wis pas في النغوكو)، يعني من غير فصال.
+      ar: |
+        على بسطة Bu Siti في Pasar Klewer لافتة صغيرة. اقرأها جيدًا وانتبه إلى السطر الأخير:
+        regi pas = السعر ثابت (مثل wis pas في الـ ngoko)، أي بلا مساومة.
+      en: |
+        Bu Siti's stall at Pasar Klewer has a little sign. Read it carefully, especially the last line:
+        regi pas = fixed price (like wis pas in ngoko) — no bargaining.
+    examples:
+      - text: "Batik cap: seket ewu"
+        ar_eg: "باتيك بالختم: خمسين ألف"
+        ar: "باتيك مختوم: خمسون ألفًا"
+        en: "Stamped batik: 50,000"
+      - text: "Batik tulis: tigang atus ewu"
+        ar_eg: "باتيك مرسوم باليد: تلتمية ألف"
+        ar: "باتيك مرسوم باليد: ثلاثمئة ألف"
+        en: "Hand-drawn batik: 300,000"
+      - text: Nyuwun sewu, regi pas.
+        ar_eg: لا مؤاخذة، السعر ثابت.
+        ar: عفوًا، السعر ثابت.
+        en: Sorry, fixed prices.
+    grammar: jv.krama.numbers
+exercises:
+  - id: e01
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من اللافتة) الباتيك اللي بالختم بكام؟
+      ar: (من اللافتة) بكم الباتيك المختوم؟
+      en: (from the sign) How much is a stamped batik?
+    options: [seket ewu, tigang atus ewu, selangkung ewu]
+    answer: 0
+    words: [batik cap, ewu]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من اللافتة) محمد عايز اتنين batik cap. هيدفع كام؟
+      ar: (من اللافتة) يريد محمد قطعتي batik cap. كم سيدفع؟
+      en: (from the sign) Mohamed wants two batik cap. How much will he pay?
+    options: [seket ewu, kalih atus ewu, satus ewu]
+    answer: 2
+    explain:
+      ar_eg: '2 × 50,000 = 100,000، يعني satus ewu.'
+      ar: '2 × 50,000 = 100,000، أي satus ewu.'
+      en: 2 × 50,000 = 100,000 = satus ewu.
+    words: [kalih, atus, ewu]
+  - id: e03
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من اللافتة) محمد يقدر يفاصل هنا؟
+      ar: (من اللافتة) هل يستطيع محمد المساومة هنا؟
+      en: (from the sign) Can Mohamed bargain here?
+    options: ['Saged, regi saged kirang.', 'Mboten, regi pas.']
+    answer: 1
+    explain:
+      ar_eg: regi pas = السعر ثابت، فمش هتقول «Saged kirang?» هنا.
+      ar: regi pas تعني أن السعر ثابت، فلا تقل هنا «Saged kirang?».
+      en: regi pas means the price is fixed, so no "Saged kirang?" here.
+    words: [regi, kirang]
+  - id: e04
+    type: listen
+    text: Batik cap kalih, satus ewu, Mas.
+    question:
+      ar_eg: Bu Siti طالبة كام في المجموع؟
+      ar: كم تطلب Bu Siti في المجموع؟
+      en: How much does Bu Siti ask in total?
+    options: [satus ewu, seket ewu, kalih atus ewu]
+    answer: 0
+    meaning:
+      ar_eg: اتنين باتيك بالختم، بمية ألف يا أستاذ.
+      ar: قطعتا باتيك مختوم، بمئة ألف يا أخي.
+      en: Two stamped batiks, a hundred thousand.
+    words: [kalih, ewu]
+  - id: e05
+    type: match_pairs
+    pairs:
+      - text: seket ewu
+        ar_eg: ٥٠٬٠٠٠
+        ar: ٥٠٬٠٠٠
+        en: 50,000
+      - text: tigang atus ewu
+        ar_eg: ٣٠٠٬٠٠٠
+        ar: ٣٠٠٬٠٠٠
+        en: 300,000
+      - text: satus ewu
+        ar_eg: ١٠٠٬٠٠٠
+        ar: ١٠٠٬٠٠٠
+        en: 100,000
+      - text: selangkung ewu
+        ar_eg: ٢٥٬٠٠٠
+        ar: ٢٥٬٠٠٠
+        en: 25,000
+    words: [ewu, atus, selangkung]
+  - id: e06
+    type: fill_blank
+    sentence: "Batik tulis: ___ atus ewu."
+    meaning:
+      ar_eg: 'باتيك مرسوم باليد: تلتمية ألف.'
+      ar: 'باتيك مرسوم باليد: ثلاثمئة ألف.'
+      en: 'Hand-drawn batik: 300,000.'
+    options: [tiga, tigang, telung]
+    answers: [tigang]
+    explain:
+      ar_eg: 'قبل atus وewu وdasa، tiga بتبقى tigang. telung نغوكو.'
+      ar: 'قبل atus وewu وdasa تصير tiga tigang، وtelung من الـ ngoko.'
+      en: Before atus, ewu and dasa, tiga becomes tigang. telung is ngoko.
+    words: [tiga, atus]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: 'لا مؤاخذة يا حاجة، عايز أشتري باتيك مرسوم باليد واحد.'
+      ar: 'عفوًا يا سيدتي، أريد أن أشتري قطعة باتيك مرسوم باليد.'
+      en: "Excuse me, ma'am, I'd like to buy one hand-drawn batik."
+    answers: ["Nyuwun sewu, Bu, kula badhe tumbas batik tulis setunggal.", "Nyuwun sewu, Bu, kulo badhe tumbas batik tulis setunggal.", "Nyuwun sewu, Bu, kula badhe tumbas setunggal batik tulis.", "Nyuwun sewu, Bu, kula tumbas batik tulis setunggal.", "Nyuwun sewu, Bu, kula badhe tumbas batik tulis setunggal kemawon.", "Nyuwun sewu, Bu, kula badhe tumbas batik tulis setunggal mawon."]
+    explain:
+      ar_eg: 'tumbas = tuku (يشتري)، setunggal = siji، batik tulis = الباتيك المرسوم باليد.'
+      ar: 'tumbas = tuku (يشتري)، وsetunggal = siji، وbatik tulis = الباتيك المرسوم باليد.'
+      en: 'tumbas = tuku (buy), setunggal = siji, batik tulis = hand-drawn batik.'
+    words: [nyuwun sewu, badhe, tumbas, batik tulis, setunggal]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: لا مؤاخذة، السعر ثابت.
+      ar: عفوًا، السعر ثابت.
+      en: Sorry, the price is fixed.
+    answer: Nyuwun sewu, regi pas.
+    distractors: [rega, kirang]
+    explain:
+      ar_eg: regi = rega بالكراما.
+      ar: regi = rega بالكراما.
+      en: regi = rega in krama.
+    words: [nyuwun sewu, regi]
+dialogue:
+  title: Ing lapak Bu Siti
+  lines:
+    - speaker: Mohamed
+      text: Nyuwun sewu, Bu. Batik cap menika seket ewu?
+      ar_eg: لا مؤاخذة يا حاجة. الباتيك بالختم ده بخمسين ألف؟
+      ar: عفوًا يا سيدتي. هل هذا الباتيك المختوم بخمسين ألفًا؟
+      en: Excuse me, ma'am. Is this stamped batik fifty thousand?
+    - speaker: Bu Siti
+      text: Inggih, Mas. Regi pas.
+      ar_eg: أيوه يا أستاذ. السعر ثابت.
+      ar: نعم يا أخي. السعر ثابت.
+      en: Yes. Fixed price.
+    - speaker: Mohamed
+      text: Kula tumbas kalih, nggih.
+      ar_eg: هاخد اتنين بقى.
+      ar: سأشتري اثنين إذن.
+      en: I'll take two, then.
+    - speaker: Bu Siti
+      text: Kalih, satus ewu, Mas.
+      ar_eg: اتنين، بمية ألف يا أستاذ.
+      ar: اثنان، بمئة ألف يا أخي.
+      en: Two — a hundred thousand.
+    - speaker: Mohamed
+      text: Menika artanipun, Bu. Matur nuwun.
+      ar_eg: اتفضلي الفلوس يا حاجة. شكرًا.
+      ar: تفضّلي المال يا سيدتي. شكرًا.
+      en: Here's the money, ma'am. Thank you.
+review:
+  status: draft
+  verified: false

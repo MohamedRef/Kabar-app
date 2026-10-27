@@ -47,17 +47,29 @@ exercises:
         en: violation, offence
     words: [denda, berlaku, persyaratan, pelanggaran]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: «dikenai denda paling banyak Rp500.000» معناها إيه بالبسيط؟
-      ar: ما المعنى المبسّط لـ «dikenai denda paling banyak Rp500.000»؟
-      en: What does "dikenai denda paling banyak Rp500.000" mean in plain terms?
-    options:
-      - الغرامة 500 ألف بالظبط.
-      - الغرامة توصل لـ 500 ألف بالكتير.
-      - الغرامة 500 ألف على الأقل.
-    answer: 1
-    words: [denda]
+    type: match_pairs
+    pairs:
+      - text: diadili
+        ar_eg: اتحاكم
+        ar: حوكم
+        en: to be tried (in court)
+      - text: memalsukan
+        ar_eg: يزوّر
+        ar: يزوّر
+        en: to forge, falsify
+      - text: mahkamah
+        ar_eg: محكمة عليا
+        ar: محكمة
+        en: (high) court
+      - text: menggugat
+        ar_eg: يرفع قضية
+        ar: يقاضي، يرفع دعوى
+        en: to sue
+      - text: asasi
+        ar_eg: أساسي (hak asasi)
+        ar: أساسي
+        en: basic (hak asasi manusia = human rights)
+    words: [diadili, memalsukan, mahkamah, menggugat, asasi]
   - id: e03
     type: fill_blank
     sentence: Kartu mahasiswa ini ___ sampai tahun 2027.

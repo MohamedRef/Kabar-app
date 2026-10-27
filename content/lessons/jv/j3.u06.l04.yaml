@@ -1,167 +1,245 @@
 schema: kabar.lesson/v1
 id: j3.u06.l04
 language: jv
-title: Papan ing griya saudagar
+title: Sinau ngantos sonten
 can_do:
-  ar_eg: تقرا لافتة متحف قصيرة فيها dipun- و-ipun وتفهمها.
-  ar: أن تقرأ لافتة متحف قصيرة فيها dipun- و-ipun وتفهمها.
-  en: Read a short museum sign with dipun- and -ipun, and understand it.
+  ar_eg: تقول إنك ذاكرت لحد العصر ودماغك لفّت، وتاخد استراحة، وتسمع صوت الجاملان.
+  ar: أن تقول إنك درست حتى العصر وأصابك الدوار، وتأخذ استراحة، وتسمع صوت الغاملان.
+  en: Say you studied until the afternoon and your head is spinning, take a break, and listen to the gamelan.
 slides:
-  - title: Papan ing Laweyan
+  - title: Ngaso sekedhap
     body:
       ar_eg: |
-        في Laweyan، محمد دخل بيت قديم من بيوت تجار الباتيك، ولقى لافتة عند الباب. اقراها:
-        griyanipun = بيت (الـ…)، batikipun = الباتيك، dipundamel = اتعمل، dipuntumbas = يتشترى.
+        كراما للوقت والسمع:
+        - nganti ← ngantos = لحد
+        - wektu ← wekdal = وقت
+        - sedhela ← sekedhap = لحظة
+        - krungu ← mireng = يسمع، swara ← swanten = صوت
+        mumet = دماغه لفّت، دايخ (من كتر المذاكرة مثلًا). ngaso = يرتاح، ياخد بريك.
+        lumrah = عادي، طبيعي: «Lumrah!» = دي حاجة عادية!
       ar: |
-        دخل محمد في Laweyan بيتًا قديمًا من بيوت تجار الباتيك، فوجد لافتة عند الباب. اقرأها:
-        griyanipun = بيتُ (فلان)، وbatikipun = الباتيك، وdipundamel = صُنع، وdipuntumbas = يُشترى.
+        كراما للوقت والسمع:
+        - nganti ← ngantos = حتى
+        - wektu ← wekdal = وقت
+        - sedhela ← sekedhap = لحظة
+        - krungu ← mireng = يسمع، swara ← swanten = صوت
+        mumet = يدور رأسه، مصاب بالدوار (من كثرة الدراسة مثلًا). ngaso = يستريح.
+        lumrah = عاديّ، طبيعي: «Lumrah!» = هذا أمر طبيعي!
       en: |
-        In Laweyan, Mohamed visits an old batik merchant's house and finds a sign by the door. Read it:
-        griyanipun = the house (of…), batikipun = the batik, dipundamel = was made, dipuntumbas = be bought.
+        Krama for time and hearing:
+        - nganti → ngantos = until
+        - wektu → wekdal = time
+        - sedhela → sekedhap = a moment
+        - krungu → mireng = hear, swara → swanten = voice, sound
+        mumet = head spinning, dizzy (from too much study, say). ngaso = rest, take a break.
+        lumrah = normal, usual: "Lumrah!" = that's normal!
     examples:
-      - text: Griya menika griyanipun saudagar batik.
-        ar_eg: البيت ده بيت تاجر باتيك.
-        ar: هذا البيت بيت تاجر باتيك.
-        en: This house is a batik merchant's house.
-      - text: Batikipun dipundamel wonten griya menika.
-        ar_eg: الباتيك كان بيتعمل في البيت ده.
-        ar: كان الباتيك يُصنع في هذا البيت.
-        en: The batik was made in this house.
-      - text: Nyuwun sewu, batik mboten saged dipuntumbas wonten mriki.
-        ar_eg: لا مؤاخذة، الباتيك مش للبيع هنا.
-        ar: عفوًا، لا يُباع الباتيك هنا.
-        en: Sorry, batik can't be bought here.
-    grammar: jv.krama.affixes
+      - text: Kula sinau ngantos sonten, lajeng mumet.
+        ar_eg: ذاكرت لحد العصر، ودماغي لفّت.
+        ar: درست حتى العصر، ثم دار رأسي.
+        en: I studied until the afternoon, and my head is spinning.
+      - text: Mangga ngaso sekedhap, Mas.
+        ar_eg: ارتاح شوية يا أستاذ.
+        ar: استرح قليلًا.
+        en: Take a little break.
+      - text: Kula mireng swanten gamelan.
+        ar_eg: سامع صوت جاملان.
+        ar: أسمع صوت الغاملان.
+        en: I can hear the sound of gamelan.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من اللافتة) البيت ده كان بيت مين؟
-      ar: (من اللافتة) بيت من كان هذا البيت؟
-      en: (from the sign) Whose house was this?
-    options: [saudagar batik, Pak Wiryo, Bu Siti]
-    answer: 0
-    words: [saudagar, griya]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من اللافتة) الباتيك كان بيتعمل فين؟
-      ar: (من اللافتة) أين كان يُصنع الباتيك؟
-      en: (from the sign) Where was the batik made?
-    options: [wonten Kauman, wonten griya menika, wonten Pasar Klewer]
-    answer: 1
-    words: [damel]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من اللافتة) محمد يقدر يشتري باتيك هنا؟
-      ar: (من اللافتة) هل يستطيع محمد شراء الباتيك هنا؟
-      en: (from the sign) Can Mohamed buy batik here?
-    options: [Saged, Mboten saged]
-    answer: 1
-    explain:
-      ar_eg: mboten saged dipuntumbas = مينفعش يتشترى.
-      ar: mboten saged dipuntumbas = لا يمكن أن يُشترى.
-      en: mboten saged dipuntumbas = can't be bought.
-    words: [tumbas, saged]
-  - id: e04
-    type: listen
-    text: Batikipun dipundamel wonten griya menika.
-    options: ['Batikipun dipuntumbas wonten griya menika.', 'Batikipun dipundamel wonten Laweyan.', 'Batikipun dipundamel wonten griya menika.']
-    answer: 2
-    meaning:
-      ar_eg: الباتيك كان بيتعمل في البيت ده.
-      ar: كان الباتيك يُصنع في هذا البيت.
-      en: The batik was made in this house.
-    words: [batik, damel, griya]
-  - id: e05
     type: match_pairs
     pairs:
-      - text: griyanipun
-        ar_eg: بيت (فلان) / البيت
-        ar: بيتُ (فلان)
-        en: the house (of)
-      - text: batikipun
-        ar_eg: الباتيك (بتاعه)
-        ar: الباتيك
-        en: the batik
-      - text: dipundamel
-        ar_eg: اتعمل
-        ar: صُنع
-        en: was made
-      - text: dipuntumbas
-        ar_eg: يتشترى
-        ar: يُشترى
-        en: be bought
-    words: [griya, batik, damel, tumbas]
+      - text: mumet
+        ar_eg: دايخ، دماغه لفّت
+        ar: مصاب بالدوار
+        en: dizzy, head spinning
+      - text: ngaso
+        ar_eg: يرتاح
+        ar: يستريح
+        en: rest
+      - text: sekedhap
+        ar_eg: لحظة (كراما)
+        ar: لحظة (كراما)
+        en: a moment (krama)
+      - text: ngantos
+        ar_eg: لحد (كراما)
+        ar: حتى (كراما)
+        en: until (krama)
+    words: [mumet, ngaso, sekedhap, ngantos]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: mireng
+        ar_eg: يسمع (كراما)
+        ar: يسمع (كراما)
+        en: hear (krama)
+      - text: swanten
+        ar_eg: صوت (كراما)
+        ar: صوت (كراما)
+        en: voice, sound (krama)
+      - text: lumrah
+        ar_eg: عادي، طبيعي
+        ar: عاديّ، طبيعي
+        en: normal, usual
+      - text: wekdal
+        ar_eg: وقت (كراما)
+        ar: وقت (كراما)
+        en: time (krama)
+    words: [mireng, swanten, lumrah, wekdal]
+  - id: e03
+    type: listen
+    text: Mangga ngaso sekedhap, Mas.
+    question:
+      ar_eg: بيقولّه إيه؟
+      ar: ماذا يقول له؟
+      en: What does he tell him?
+    options: [كمّل شغلك, ارتاح شوية, يلا نمشي]
+    answer: 1
+    meaning:
+      ar_eg: ارتاح شوية يا أستاذ.
+      ar: استرح قليلًا.
+      en: Take a little break.
+    words: [ngaso, sekedhap]
+  - id: e04
+    type: fill_blank
+    sentence: Kula sinau ___ sonten.
+    meaning:
+      ar_eg: ذاكرت ___ العصر.
+      ar: درست ___ العصر.
+      en: I studied ___ the afternoon.
+    options: [ngantos, swanten, lumrah]
+    answers: [ngantos]
+    words: [ngantos, swanten, lumrah]
+  - id: e05
+    type: multiple_choice
+    question: Krungu (ngoko) → ___ (krama)
+    options: [mumet, wekdal, mireng]
+    answer: 2
+    explain:
+      ar_eg: krungu ← mireng = يسمع.
+      ar: krungu ← mireng = يسمع.
+      en: krungu → mireng = hear.
+    words: [mireng, mumet, wekdal]
   - id: e06
     type: fill_blank
-    sentence: Griya menika griya___ saudagar batik.
+    sentence: Kula sinau dangu sanget, dados ___.
     meaning:
-      ar_eg: البيت ده بيت تاجر باتيك.
-      ar: هذا البيت بيت تاجر باتيك.
-      en: This house is a batik merchant's house.
-    options: [ipun, ne, nipun]
-    answers: [nipun]
-    explain:
-      ar_eg: 'griya بتخلص بحرف متحرك (a)، يبقى -nipun. -ipun بعد الساكن (batikipun)، و-ne نغوكو.'
-      ar: 'تنتهي griya بحرف علة فتأخذ -nipun، و-ipun بعد الساكن (batikipun)، و-ne من الـ ngoko.'
-      en: griya ends in a vowel, so -nipun. -ipun follows a consonant (batikipun); -ne is ngoko.
-    words: [griya]
+      ar_eg: ذاكرت كتير أوي، فدماغي ___.
+      ar: درست طويلًا جدًا، فأصبحت ___.
+      en: I studied for so long that I'm ___.
+    options: [mumet, sekedhap, mireng]
+    answers: [mumet]
+    words: [mumet, sekedhap, mireng]
   - id: e07
-    type: translate
-    direction: from_target
-    source_text: Batik menika mboten saged dipuntumbas.
-    answers_meaning:
-      ar_eg: ["الباتيك ده مينفعش يتشترى.", "الباتيك ده مش للبيع.", "مينفعش تشتري الباتيك ده."]
-      ar: ["لا يمكن شراء هذا الباتيك.", "هذا الباتيك ليس للبيع.", "هذا الباتيك لا يُشترى."]
-      en: ["This batik can't be bought.", "This batik is not for sale.", "You can't buy this batik."]
-    explain:
-      ar_eg: 'dipun- + tumbas = يتشترى (مبني للمجهول)، وmboten saged = مينفعش.'
-      ar: 'dipun- + tumbas = يُشترى (مبني للمجهول)، وmboten saged = لا يمكن.'
-      en: 'dipun- + tumbas = be bought (passive); mboten saged = can''t.'
-    words: [tumbas, saged]
-  - id: e08
     type: build_sentence
     source:
-      ar_eg: البيت ده كبير أوي يا حاج.
-      ar: هذا البيت كبير جدًا يا سيدي.
-      en: This house is very big, sir.
-    answer: Griya menika ageng sanget, Pak.
-    distractors: [gedhe, iki]
+      ar_eg: مفيش وقت، أنا مستعجل.
+      ar: لا وقت لديّ، أنا مستعجل.
+      en: There's no time; I'm in a hurry.
+    answer: Mboten wonten wekdal, kula kesusu.
+    distractors: [swanten, ngaso]
+    words: [wekdal]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Kula mireng swanten gamelan saking griya Pak Harjo.
+    answers_meaning:
+      ar_eg: [سامع صوت جاملان من بيت الأستاذ هارجو, بسمع صوت الجاملان جاي من بيت عم هارجو]
+      ar: [أسمع صوت الغاملان من بيت السيد هارجو]
+      en: ['I can hear gamelan from Pak Harjo''s house', 'I hear the sound of gamelan coming from Pak Harjo''s house']
+    words: [mireng, swanten]
+  - id: e09
+    type: speaking
+    text: Mumet? Lumrah, Mas! Ngaso rumiyin.
+    meaning:
+      ar_eg: دماغك لفّت؟ عادي يا أستاذ! ارتاح الأول.
+      ar: يدور رأسك؟ هذا طبيعي! استرح أولًا.
+      en: Head spinning? That's normal! Rest first.
+    words: [mumet, lumrah, ngaso]
+  - id: e10
+    type: multiple_choice
+    question: Swara (ngoko) → ___ (krama)
+    options: [swanten, ngantos, lumrah]
+    answer: 0
     explain:
-      ar_eg: 'ageng = gedhe بالكراما، menika = iki.'
-      ar: 'ageng = gedhe بالكراما، وmenika = iki.'
-      en: 'ageng = gedhe in krama; menika = iki.'
-    words: [griya, ageng, sanget]
+      ar_eg: swara ← swanten = صوت.
+      ar: swara ← swanten = صوت.
+      en: swara → swanten = voice, sound.
+    words: [swanten, ngantos, lumrah]
 dialogue:
-  title: Ing griya saudagar
   lines:
     - speaker: Mohamed
-      text: Pak Harjo, griya menika griyanipun sinten?
-      ar_eg: يا Pak Harjo، البيت ده بيت مين؟
-      ar: يا Pak Harjo، بيت من هذا البيت؟
-      en: Pak Harjo, whose house is this?
+      text: Pak, kula mumet. Kula sinau ngantos sonten.
+      ar_eg: يا أستاذ، دماغي لفّت. ذاكرت لحد العصر.
+      ar: يا أستاذ، رأسي يدور. درست حتى العصر.
+      en: Sir, my head is spinning. I studied until the afternoon.
     - speaker: Pak Harjo
-      text: Griyanipun saudagar batik, Mas.
-      ar_eg: بيت تاجر باتيك يا أستاذ.
-      ar: بيت تاجر باتيك يا أخي.
-      en: A batik merchant's house.
+      text: Lumrah, Mas. Mangga ngaso sekedhap.
+      ar_eg: عادي يا أستاذ. ارتاح شوية.
+      ar: هذا طبيعي. استرح قليلًا.
+      en: That's normal. Take a little break.
     - speaker: Mohamed
-      text: Batikipun dipundamel wonten mriki?
-      ar_eg: الباتيك كان بيتعمل هنا؟
-      ar: هل كان الباتيك يُصنع هنا؟
-      en: Was the batik made here?
+      text: Wekdalipun taksih wonten, Pak?
+      ar_eg: لسه فيه وقت يا أستاذ؟
+      ar: هل ما زال هناك وقت يا أستاذ؟
+      en: Is there still time, sir?
     - speaker: Pak Harjo
-      text: Inggih, leres. Nanging batik mboten saged dipuntumbas wonten mriki.
-      ar_eg: أيوه، صح. بس الباتيك مش للبيع هنا.
-      ar: نعم، صحيح. لكن الباتيك لا يُباع هنا.
-      en: Yes, that's right. But you can't buy batik here.
+      text: Wonten. Panjenengan mireng swanten menika?
+      ar_eg: فيه. سامع الصوت ده؟
+      ar: نعم. هل تسمع هذا الصوت؟
+      en: There is. Can you hear that sound?
     - speaker: Mohamed
-      text: Oh, inggih. Matur nuwun, Pak.
-      ar_eg: آه، ماشي. شكرًا يا حاج.
-      ar: آه، حسنًا. شكرًا يا سيدي.
-      en: Oh, I see. Thank you, sir.
+      text: Inggih, swanten gamelan! Endah sanget.
+      ar_eg: أيوه، صوت جاملان! حلو أوي.
+      ar: نعم، صوت الغاملان! جميل جدًا.
+      en: Yes, gamelan! It's beautiful.
+    - speaker: Pak Harjo
+      text: Mangga, kita mireng gamelan rumiyin.
+      ar_eg: تعالى نسمع الجاملان الأول.
+      ar: تعال نستمع إلى الغاملان أولًا.
+      en: Come, let's listen to the gamelan first.
+new_words:
+  - word: mumet
+    pos: adjective
+    ar_eg: دايخ، دماغه لفّت
+    ar: مصاب بالدوار
+    en: dizzy, head spinning (= pusing)
+  - word: ngaso
+    pos: verb
+    ar_eg: يرتاح، ياخد بريك
+    ar: يستريح
+    en: rest, take a break (= istirahat)
+  - word: sekedhap
+    pos: adverb
+    ar_eg: لحظة (sedhela ← sekedhap)، كراما
+    ar: لحظة (sedhela ← sekedhap)، كراما
+    en: a moment (ngoko sedhela, Indonesian sebentar), krama
+  - word: ngantos
+    pos: preposition
+    ar_eg: لحد (nganti ← ngantos)، كراما
+    ar: حتى (nganti ← ngantos)، كراما
+    en: until (ngoko nganti, Indonesian sampai), krama
+  - word: mireng
+    pos: verb
+    ar_eg: يسمع (krungu ← mireng)، كراما
+    ar: يسمع (krungu ← mireng)، كراما
+    en: hear (ngoko krungu, Indonesian mendengar), krama
+  - word: swanten
+    pos: noun
+    ar_eg: صوت (swara ← swanten)، كراما
+    ar: صوت (swara ← swanten)، كراما
+    en: voice, sound (ngoko swara, Indonesian suara), krama
+  - word: lumrah
+    pos: adjective
+    ar_eg: عادي، طبيعي
+    ar: عاديّ، طبيعي
+    en: normal, usual (= lumrah, biasa)
+  - word: wekdal
+    pos: noun
+    ar_eg: وقت (wektu ← wekdal)، كراما
+    ar: وقت (wektu ← wekdal)، كراما
+    en: time (ngoko wektu, Indonesian waktu), krama
 review:
   status: draft
   verified: false
