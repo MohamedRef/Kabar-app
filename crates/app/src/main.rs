@@ -22,6 +22,7 @@ mod pron;
 mod reader;
 mod review;
 mod screens;
+mod settings;
 mod souvenir_art;
 mod stats;
 mod store;
@@ -100,9 +101,9 @@ impl Screen {
     }
 
     /// Hidden from the phone's bottom bar, which keeps five items within
-    /// thumb reach. Kak Nur, the journal, Watch & listen, Chat and Settings are
-    /// linked from Today there (the journal from Kak Nur too); Studio and Pen
-    /// Lab from Settings.
+    /// thumb reach. Kak Nur, the journal, Watch & listen, Chat and Teach
+    /// Kabar are linked from Today there (the journal from Kak Nur too); Settings is the gear
+    /// in the phone's top bar.
     /// Pen tools: shown on a tablet only (`Ui::tablet`).
     pub fn pen_only(self) -> bool {
         matches!(self, Self::Studio | Self::PenLab)
@@ -211,8 +212,14 @@ fn main() {
             .with_title("Kabar")
             .with_inner_size(LogicalSize::new(w, h))
             .with_min_inner_size(LogicalSize::new(360.0, 560.0));
+        // The Mac gets its menu bar (Kabar › Settings… ⌘,); the Linux dev
+        // window stays bare so previews match the Mac's content area.
+        #[cfg(target_os = "macos")]
+        let menu = Some(settings::menu::menu_bar());
+        #[cfg(not(target_os = "macos"))]
+        let menu = None;
         dioxus::LaunchBuilder::desktop()
-            .with_cfg(Config::new().with_window(window).with_menu(None).with_disable_context_menu(true))
+            .with_cfg(Config::new().with_window(window).with_menu(menu).with_disable_context_menu(true))
             .launch(App);
     }
     #[cfg(not(all(feature = "desktop", not(target_os = "android"))))]
@@ -278,6 +285,8 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         lesson_from: Signal::new(Screen::Journey),
     });
     use_context_provider(|| db.clone());
+    let prefs = use_context_provider(|| settings::device::DevicePrefs::load(&db));
+    use_context_provider(settings::SettingsNav::new);
     use_context_provider(play::PlayNav::new);
     use_context_provider(|| teach::TeachInbox(Signal::new(None)));
     let link = use_hook(cloud::link::CloudLink::default);
@@ -311,6 +320,11 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         }
     });
     let onboarded = coach.profile.read().is_some();
+    let text_size = prefs.text_size.read().as_str();
+    let nav_style = prefs.nav_style.read().as_str();
+    let on_off = |on: bool| if on { "on" } else { "off" };
+    let pen_hover = on_off(*prefs.pen_hover.read());
+    let mouse_hover = on_off(*prefs.mouse_hover.read());
 
     rsx! {
         document::Title { "Kabar" }
@@ -323,6 +337,10 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
             dir: lang.dir().as_str(),
             "data-theme": theme,
             "data-width": width,
+            "data-text-size": text_size,
+            "data-nav": nav_style,
+            "data-pen-hover": pen_hover,
+            "data-mouse-hover": mouse_hover,
             style: "{batik}",
             if !settings.welcomed {
                 screens::Welcome {}
@@ -479,6 +497,14 @@ fn Shell() -> Element {
         document::eval(r#"window.scrollTo({ top: 0, left: 0, behavior: "instant" });"#);
     }
     let tablet = *ui.tablet.read();
+    let settings_nav = use_context::<settings::SettingsNav>();
+    #[cfg(all(feature = "desktop", not(target_os = "android")))]
+    settings::menu::use_menu_events(ui, settings_nav);
+    let settings_open = *settings_nav.open.read();
+    // Full-screen players keep the whole screen; everywhere else on the
+    // phone a slim top bar carries the gear.
+    let top_bar =
+        *ui.width.read() == WidthClass::Compact && !matches!(current, Screen::Lesson | Screen::LevelCheck);
     let items = [
         Screen::Today,
         Screen::Journey,
@@ -493,7 +519,6 @@ fn Shell() -> Element {
         Screen::Teach,
         Screen::PenLab,
         Screen::Devices,
-        Screen::Settings,
     ];
 
     rsx! {
@@ -513,6 +538,22 @@ fn Shell() -> Element {
                         span { "{ui.t(item.label())}" }
                     }
                 }
+                // Pinned to the foot of the rail and sidebar (hidden in the
+                // phone's bottom bar, which has the gear up top instead).
+                button {
+                    class: "nav-item secondary nav-settings",
+                    aria_current: if settings_open { "page" } else { "false" },
+                    aria_haspopup: "dialog",
+                    onclick: move |_| settings_nav.show(None),
+                    span { class: "nav-icon", aria_hidden: "true", {icons::gear()} }
+                    span { "{ui.t(Msg::NavSettings)}" }
+                }
+            }
+            if top_bar {
+                header { class: "top-bar",
+                    span { class: "brand-small latin", "Kabar" }
+                    settings::GearButton {}
+                }
             }
             main { class: "content",
                 match current {
@@ -524,7 +565,8 @@ fn Shell() -> Element {
                     Screen::Reader => rsx! { reader::Reader {} },
                     Screen::Review => rsx! { review::ReviewScreen {} },
                     Screen::Studio => rsx! { studio::StudioScreen {} },
-                    Screen::Settings => rsx! { screens::SettingsScreen {} },
+                    // Settings is a sheet over the current screen, not a screen.
+                    Screen::Settings => rsx! { coach::today::Today {} },
                     Screen::PenLab => rsx! { penlab::PenLab {} },
                     Screen::Devices => rsx! { account::AccountScreen {} },
                     Screen::Teach => rsx! { teach::TeachScreen {} },
@@ -536,6 +578,7 @@ fn Shell() -> Element {
                     Screen::LevelCheck => rsx! { stats::check::LevelCheckScreen {} },
                 }
             }
+            settings::SettingsSheet {}
         }
     }
 }

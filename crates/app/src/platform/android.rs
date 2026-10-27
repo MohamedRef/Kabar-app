@@ -262,6 +262,82 @@ pub fn open_url(url: &str) -> Result<(), String> {
     })
 }
 
+/// `NotificationManager.areNotificationsEnabled()` for Kabar.
+pub fn notifications_enabled() -> Result<bool, String> {
+    with_activity(|env, activity| {
+        let name = env.new_string("notification")?;
+        let manager = env
+            .call_method(
+                activity,
+                jni_str!("getSystemService"),
+                jni_sig!("(Ljava/lang/String;)Ljava/lang/Object;"),
+                &[(&name).into()],
+            )?
+            .l()?;
+        env.call_method(&manager, jni_str!("areNotificationsEnabled"), jni_sig!("()Z"), &[])?.z()
+    })
+}
+
+/// Opens Kabar's own page in Android Settings: its notification settings, or
+/// App info (storage, battery, permissions).
+pub fn open_app_page(page: super::AppPage) -> Result<(), String> {
+    with_activity(|env, activity| {
+        let package = env
+            .call_method(activity, jni_str!("getPackageName"), jni_sig!("()Ljava/lang/String;"), &[])?
+            .l()?;
+        let intent = match page {
+            super::AppPage::Notifications => {
+                let action = env.new_string("android.settings.APP_NOTIFICATION_SETTINGS")?;
+                let intent = env.new_object(
+                    jni_str!("android/content/Intent"),
+                    jni_sig!("(Ljava/lang/String;)V"),
+                    &[(&action).into()],
+                )?;
+                let extra = env.new_string("android.provider.extra.APP_PACKAGE")?;
+                env.call_method(
+                    &intent,
+                    jni_str!("putExtra"),
+                    jni_sig!("(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;"),
+                    &[(&extra).into(), (&package).into()],
+                )?;
+                intent
+            }
+            super::AppPage::Details => {
+                let action = env.new_string("android.settings.APPLICATION_DETAILS_SETTINGS")?;
+                let package = to_string(env, package)?.unwrap_or_default();
+                let uri = env.new_string(format!("package:{package}"))?;
+                let uri = env
+                    .call_static_method(
+                        jni_str!("android/net/Uri"),
+                        jni_str!("parse"),
+                        jni_sig!("(Ljava/lang/String;)Landroid/net/Uri;"),
+                        &[(&uri).into()],
+                    )?
+                    .l()?;
+                env.new_object(
+                    jni_str!("android/content/Intent"),
+                    jni_sig!("(Ljava/lang/String;Landroid/net/Uri;)V"),
+                    &[(&action).into(), (&uri).into()],
+                )?
+            }
+        };
+        // FLAG_ACTIVITY_NEW_TASK
+        env.call_method(
+            &intent,
+            jni_str!("addFlags"),
+            jni_sig!("(I)Landroid/content/Intent;"),
+            &[0x1000_0000.into()],
+        )?;
+        env.call_method(
+            activity,
+            jni_str!("startActivity"),
+            jni_sig!("(Landroid/content/Intent;)V"),
+            &[(&intent).into()],
+        )?;
+        Ok(())
+    })
+}
+
 // ----------------------------------------------------------- background audio
 //
 // Downloaded episodes play in `PlaybackService` (android/…/PlaybackService.kt):

@@ -1,0 +1,299 @@
+//! Settings' own strings, kept next to the sections that use them.
+
+use kabar_core::locale::UiLanguage;
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum S {
+    Close,
+    Back,
+    Sections,
+    Synced,
+    ThisDevice,
+    // section titles and one-line summaries
+    Learning,
+    LearningSub,
+    Look,
+    LookSub,
+    Coach,
+    CoachSub,
+    Android,
+    AndroidSub,
+    Tablet,
+    TabletSub,
+    Mac,
+    MacSub,
+    Storage,
+    StorageSub,
+    Account,
+    AccountSub,
+    About,
+    AboutSub,
+    // learning
+    Translation,
+    TranslationOn,
+    TranslationTap,
+    TranslationOff,
+    // look
+    TextSize,
+    TextSmall,
+    TextNormal,
+    TextLarge,
+    TextLarger,
+    TextSample,
+    // android
+    Notifications,
+    NotificationsBody,
+    NotificationsOn,
+    NotificationsOff,
+    NotificationsAllow,
+    NotificationsOpen,
+    BackgroundAudio,
+    BackgroundAudioBody,
+    AppInfo,
+    AppInfoBody,
+    AppInfoOpen,
+    PenHover,
+    PenHoverBody,
+    OpenFailed,
+    // tablet and Mac
+    NavStyle,
+    NavLabels,
+    NavIcons,
+    LayoutNow,
+    LayoutBody,
+    Shortcuts,
+    ShortcutSettings,
+    ShortcutScreens,
+    ShortcutPick,
+    ShortcutCheck,
+    ShortcutClose,
+    MouseHover,
+    MouseHoverBody,
+    QuickLookup,
+    QuickLookupBody,
+    Later,
+    MenuTip,
+    // storage and about
+    DataFolder,
+    Version,
+    PersonalBuild,
+}
+
+pub fn st(lang: UiLanguage, s: S) -> &'static str {
+    use S::*;
+    use UiLanguage::*;
+    match (s, lang) {
+        (Close, ArEg) => "اقفل",
+        (Close, Ar) => "إغلاق",
+        (Close, En) => "Close",
+        (Back, ArEg | Ar) => "رجوع",
+        (Back, En) => "Back",
+        (Sections, ArEg) => "أقسام الإعدادات",
+        (Sections, Ar) => "أقسام الإعدادات",
+        (Sections, En) => "Settings sections",
+        (Synced, ArEg) => "بيتزامن مع أجهزتك",
+        (Synced, Ar) => "يُزامَن مع أجهزتك",
+        (Synced, En) => "Syncs to your devices",
+        (ThisDevice, ArEg) => "للجهاز ده بس",
+        (ThisDevice, Ar) => "لهذا الجهاز فقط",
+        (ThisDevice, En) => "This device only",
+
+        (Learning, ArEg | Ar) => "التعلّم",
+        (Learning, En) => "Learning",
+        (LearningSub, ArEg) => "النطق والترجمة والأصوات",
+        (LearningSub, Ar) => "النطق والترجمة والأصوات",
+        (LearningSub, En) => "Pronunciation, translation, sounds",
+        (Look, ArEg) => "الشكل واللغة",
+        (Look, Ar) => "المظهر واللغة",
+        (Look, En) => "Look & language",
+        (LookSub, ArEg) => "اللغة والثيم وحجم الخط والأرقام",
+        (LookSub, Ar) => "اللغة والسمة وحجم الخط والأرقام",
+        (LookSub, En) => "Language, theme, text size, digits",
+        (Coach, ArEg | Ar) => "Kak Nur والتذكيرات",
+        (Coach, En) => "Kak Nur & reminders",
+        (CoachSub, ArEg) => "حجم اليوم ومواعيد المذاكرة وساعات الهدوء",
+        (CoachSub, Ar) => "حجم اليوم ومواعيد الدراسة وساعات الهدوء",
+        (CoachSub, En) => "Daily size, study times, quiet hours",
+        (Android, ArEg | Ar) => "أندرويد",
+        (Android, En) => "Android",
+        (AndroidSub, ArEg) => "الإشعارات والصوت في الخلفية وقلم S Pen",
+        (AndroidSub, Ar) => "الإشعارات والصوت في الخلفية وقلم S Pen",
+        (AndroidSub, En) => "Notifications, background audio, S Pen",
+        (Tablet, ArEg | Ar) => "التابلت",
+        (Tablet, En) => "Tablet",
+        (TabletSub, ArEg) => "شكل القائمة والشاشة العريضة",
+        (TabletSub, Ar) => "شكل القائمة والشاشة العريضة",
+        (TabletSub, En) => "Navigation and wide layouts",
+        (Mac, ArEg | Ar) => "الماك",
+        (Mac, En) => "Mac",
+        (MacSub, ArEg) => "الاختصارات والماوس والقائمة",
+        (MacSub, Ar) => "الاختصارات والفأرة والقائمة",
+        (MacSub, En) => "Shortcuts, mouse, menu bar",
+        (Storage, ArEg) => "من غير نت والتخزين",
+        (Storage, Ar) => "دون اتصال والتخزين",
+        (Storage, En) => "Offline & storage",
+        (StorageSub, ArEg) => "باكات الصوت والمساحة وتصدير بياناتك",
+        (StorageSub, Ar) => "حزم الصوت والمساحة وتصدير بياناتك",
+        (StorageSub, En) => "Audio packs, space, export your data",
+        (Account, ArEg | Ar) => "الحساب والمزامنة",
+        (Account, En) => "Account & sync",
+        (AccountSub, ArEg) => "Kabar Cloud والأجهزة والتكلفة",
+        (AccountSub, Ar) => "Kabar Cloud والأجهزة والتكلفة",
+        (AccountSub, En) => "Kabar Cloud, devices, cost & limits",
+        (About, ArEg | Ar) => "عن Kabar",
+        (About, En) => "About Kabar",
+        (AboutSub, ArEg) => "النسخة والجهاز وشاشة الترحيب",
+        (AboutSub, Ar) => "الإصدار والجهاز وشاشة الترحيب",
+        (AboutSub, En) => "Version, device, welcome screen",
+
+        (Translation, ArEg) => "الترجمة تحت الجملة",
+        (Translation, Ar) => "الترجمة تحت الجملة",
+        (Translation, En) => "Translation under sentences",
+        (TranslationOn, ArEg) => "ظاهرة دايمًا",
+        (TranslationOn, Ar) => "ظاهرة دائمًا",
+        (TranslationOn, En) => "Always shown",
+        (TranslationTap, ArEg) => "بدوسة",
+        (TranslationTap, Ar) => "بلمسة",
+        (TranslationTap, En) => "On tap",
+        (TranslationOff, ArEg) => "مقفولة",
+        (TranslationOff, Ar) => "مخفية",
+        (TranslationOff, En) => "Hidden",
+
+        (TextSize, ArEg | Ar) => "حجم الخط",
+        (TextSize, En) => "Text size",
+        (TextSmall, ArEg | Ar) => "صغير",
+        (TextSmall, En) => "Small",
+        (TextNormal, ArEg | Ar) => "عادي",
+        (TextNormal, En) => "Normal",
+        (TextLarge, ArEg | Ar) => "كبير",
+        (TextLarge, En) => "Large",
+        (TextLarger, ArEg | Ar) => "أكبر",
+        (TextLarger, En) => "Larger",
+        (TextSample, ArEg) => "كده هيبان الكلام في الدروس والقارئ.",
+        (TextSample, Ar) => "هكذا سيظهر النص في الدروس والقارئ.",
+        (TextSample, En) => "This is how text looks in lessons and the Reader.",
+
+        (Notifications, ArEg | Ar) => "الإشعارات",
+        (Notifications, En) => "Notifications",
+        (NotificationsBody, ArEg) => {
+            "Kabar بيستخدم الإشعار عشان أزرار تشغيل المسلسل والراديو تبان على شاشة القفل."
+        }
+        (NotificationsBody, Ar) => "يستخدم Kabar الإشعار لتظهر أزرار تشغيل المسلسل والراديو على شاشة القفل.",
+        (NotificationsBody, En) => {
+            "Kabar uses a notification to put Sinetron and Radio controls on the lock screen."
+        }
+        (NotificationsOn, ArEg) => "مسموح بيها",
+        (NotificationsOn, Ar) => "مسموح بها",
+        (NotificationsOn, En) => "Allowed",
+        (NotificationsOff, ArEg) => "مش مسموح بيها لسه",
+        (NotificationsOff, Ar) => "غير مسموح بها بعد",
+        (NotificationsOff, En) => "Not allowed yet",
+        (NotificationsAllow, ArEg) => "اسمح بالإشعارات",
+        (NotificationsAllow, Ar) => "اسمح بالإشعارات",
+        (NotificationsAllow, En) => "Allow notifications",
+        (NotificationsOpen, ArEg) => "افتح إعدادات الإشعارات",
+        (NotificationsOpen, Ar) => "افتح إعدادات الإشعارات",
+        (NotificationsOpen, En) => "Open notification settings",
+        (BackgroundAudio, ArEg) => "الصوت في الخلفية",
+        (BackgroundAudio, Ar) => "الصوت في الخلفية",
+        (BackgroundAudio, En) => "Background audio",
+        (BackgroundAudioBody, ArEg) => {
+            "الحلقات اللي نزّلتها بتفضل شغالة والشاشة مقفولة، وتقدر توقّفها من شاشة القفل أو السماعة."
+        }
+        (BackgroundAudioBody, Ar) => {
+            "تستمر الحلقات المنزّلة في العمل والشاشة مقفلة، ويمكنك إيقافها من شاشة القفل أو السماعة."
+        }
+        (BackgroundAudioBody, En) => {
+            "Downloaded episodes keep playing with the screen off; pause them from the lock screen or your headphones."
+        }
+        (AppInfo, ArEg) => "Kabar في إعدادات أندرويد",
+        (AppInfo, Ar) => "Kabar في إعدادات أندرويد",
+        (AppInfo, En) => "Kabar in Android settings",
+        (AppInfoBody, ArEg) => {
+            "المساحة والبطارية والأذونات. لو الصوت بيقف في الخلفية، خلّي البطارية «من غير قيود»."
+        }
+        (AppInfoBody, Ar) => "المساحة والبطارية والأذونات. إن توقّف الصوت في الخلفية، اجعل البطارية «بلا قيود».",
+        (AppInfoBody, En) => {
+            "Storage, battery and permissions. If audio stops in the background, set battery to “Unrestricted”."
+        }
+        (AppInfoOpen, ArEg) => "افتح معلومات التطبيق",
+        (AppInfoOpen, Ar) => "افتح معلومات التطبيق",
+        (AppInfoOpen, En) => "Open app info",
+        (PenHover, ArEg) => "معنى الكلمة لمّا تقرّب القلم",
+        (PenHover, Ar) => "معنى الكلمة عند تقريب القلم",
+        (PenHover, En) => "Peek at a word when the S Pen hovers",
+        (PenHoverBody, ArEg) => "قرّب سن S Pen من أي كلمة من غير ما تلمس الشاشة، يظهر معناها على طول.",
+        (PenHoverBody, Ar) => "قرّب سنّ S Pen من أي كلمة دون لمس الشاشة ليظهر معناها فورًا.",
+        (PenHoverBody, En) => "Hold the S Pen tip just above any word, without touching, to see its meaning.",
+        (OpenFailed, ArEg) => "معرفتش أفتح الصفحة دي. افتح إعدادات أندرويد ‹ التطبيقات ‹ Kabar.",
+        (OpenFailed, Ar) => "تعذّر فتح هذه الصفحة. افتح إعدادات أندرويد ‹ التطبيقات ‹ Kabar.",
+        (OpenFailed, En) => "Couldn't open that page. Go to Android Settings › Apps › Kabar.",
+
+        (NavStyle, ArEg) => "القائمة الجانبية",
+        (NavStyle, Ar) => "القائمة الجانبية",
+        (NavStyle, En) => "Side navigation",
+        (NavLabels, ArEg) => "بالأسماء",
+        (NavLabels, Ar) => "بالأسماء",
+        (NavLabels, En) => "With labels",
+        (NavIcons, ArEg) => "رفيعة، مساحة أكبر للمحتوى",
+        (NavIcons, Ar) => "نحيفة، مساحة أكبر للمحتوى",
+        (NavIcons, En) => "Slim, more room for content",
+        (LayoutNow, ArEg) => "شكل الشاشة دلوقتي",
+        (LayoutNow, Ar) => "تخطيط الشاشة الآن",
+        (LayoutNow, En) => "Layout right now",
+        (LayoutBody, ArEg) => {
+            "Kabar بيمشي على عرض الشباك مش نوع الجهاز، فتقسيم الشاشة وDeX والشباك الصغير شغالين لوحدهم."
+        }
+        (LayoutBody, Ar) => {
+            "يتبع Kabar عرض النافذة لا نوع الجهاز، فيعمل تقسيم الشاشة وDeX والنافذة الصغيرة تلقائيًا."
+        }
+        (LayoutBody, En) => {
+            "Kabar follows the window width, not the device, so split screen, DeX and small windows just work."
+        }
+        (Shortcuts, ArEg) => "اختصارات الكيبورد",
+        (Shortcuts, Ar) => "اختصارات لوحة المفاتيح",
+        (Shortcuts, En) => "Keyboard shortcuts",
+        (ShortcutSettings, ArEg | Ar) => "الإعدادات",
+        (ShortcutSettings, En) => "Settings",
+        (ShortcutScreens, ArEg) => "اليوم، الرحلة، القارئ، المراجعة، ألعاب، اسمع، دردشة",
+        (ShortcutScreens, Ar) => "اليوم، الرحلة، القارئ، المراجعة، ألعاب، استمع، دردشة",
+        (ShortcutScreens, En) => "Today, Journey, Reader, Review, Play, Listen, Chat",
+        (ShortcutPick, ArEg) => "في الدرس: اختار إجابة",
+        (ShortcutPick, Ar) => "في الدرس: اختر إجابة",
+        (ShortcutPick, En) => "In a lesson: pick an answer",
+        (ShortcutCheck, ArEg) => "في الدرس: اتأكد وكمّل",
+        (ShortcutCheck, Ar) => "في الدرس: تحقّق وتابع",
+        (ShortcutCheck, En) => "In a lesson: check and continue",
+        (ShortcutClose, ArEg) => "اقفل الإعدادات",
+        (ShortcutClose, Ar) => "أغلق الإعدادات",
+        (ShortcutClose, En) => "Close Settings",
+        (MouseHover, ArEg) => "معنى الكلمة لمّا الماوس يقف عليها",
+        (MouseHover, Ar) => "معنى الكلمة عند وقوف الفأرة عليها",
+        (MouseHover, En) => "Peek at a word when the mouse rests on it",
+        (MouseHoverBody, ArEg) => "لو قفلتها، الضغطة على الكلمة لسه بتفتح الكارت بتاعها.",
+        (MouseHoverBody, Ar) => "إن أوقفتها، يظل النقر على الكلمة يفتح بطاقتها.",
+        (MouseHoverBody, En) => "With this off, clicking a word still opens its card.",
+        (QuickLookup, ArEg | Ar) => "Quick Lookup",
+        (QuickLookup, En) => "Quick Lookup",
+        (QuickLookupBody, ArEg) => "اختصار من أي برنامج يحلّل الكلام اللي نسخته. جاي في مرحلة جاية.",
+        (QuickLookupBody, Ar) => "اختصار من أي برنامج يحلّل النص المنسوخ. قادم في مرحلة لاحقة.",
+        (QuickLookupBody, En) => {
+            "A hotkey from any app that explains what you copied. Coming in a later milestone."
+        }
+        (Later, ArEg) => "بعدين",
+        (Later, Ar) => "لاحقًا",
+        (Later, En) => "Later",
+        (MenuTip, ArEg) => "الإعدادات موجودة دايمًا في قائمة Kabar فوق، أو بـ \u{2066}⌘,\u{2069}",
+        (MenuTip, Ar) => "الإعدادات موجودة دائمًا في قائمة Kabar بالأعلى، أو عبر \u{2066}⌘,\u{2069}",
+        (MenuTip, En) => "Settings are always in the Kabar menu at the top, or press ⌘,",
+
+        (DataFolder, ArEg) => "مكان بياناتك على الجهاز",
+        (DataFolder, Ar) => "مكان بياناتك على الجهاز",
+        (DataFolder, En) => "Where your data lives on this device",
+        (Version, ArEg | Ar) => "النسخة",
+        (Version, En) => "Version",
+        (PersonalBuild, ArEg) => "نسخة شخصية ليك انت بس، مش منشورة في أي متجر.",
+        (PersonalBuild, Ar) => "نسخة شخصية لك وحدك، غير منشورة في أي متجر.",
+        (PersonalBuild, En) => "A personal build just for you, not published in any store.",
+    }
+}

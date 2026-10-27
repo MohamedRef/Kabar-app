@@ -253,6 +253,39 @@ pub fn open_url(url: &str) -> Result<(), String> {
     }
 }
 
+/// A page of Kabar's own in the system settings (Android).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum AppPage {
+    Notifications,
+    /// App info: storage, battery, permissions.
+    Details,
+}
+
+/// Whether Kabar may show notifications (Android); `None` where the question
+/// doesn't apply.
+pub fn notifications_enabled() -> Option<bool> {
+    #[cfg(target_os = "android")]
+    {
+        android::notifications_enabled().map_err(|e| eprintln!("kabar: notification check: {e}")).ok()
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        None
+    }
+}
+
+/// Opens Kabar's page in the system settings (Android only).
+pub fn open_app_page(page: AppPage) -> Result<(), String> {
+    #[cfg(target_os = "android")]
+    {
+        android::open_app_page(page)
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        Err(format!("{page:?}: no system settings page on this platform"))
+    }
+}
+
 /// Downloaded episodes play in a native media service (Android), so they
 /// keep playing with the screen off. Elsewhere the WebView's `<audio>` does.
 pub const BACKGROUND_AUDIO: bool = cfg!(target_os = "android");

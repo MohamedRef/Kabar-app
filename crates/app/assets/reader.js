@@ -159,8 +159,11 @@ if (!window.__kabarReaderInit) {
       return;
     }
     if (!inDoc(e)) return;
-    // Hover: mouse, or a pen that is in range but not touching.
+    // Hover: mouse, or a pen that is in range but not touching. Settings can
+    // turn either off on this device (data-mouse-hover / data-pen-hover).
     if (e.pointerType === "mouse" || (e.pointerType === "pen" && e.buttons === 0)) {
+      const app = document.querySelector(".app")?.dataset ?? {};
+      if ((e.pointerType === "pen" ? app.penHover : app.mouseHover) === "off") return;
       const el = wordAt(e.clientX, e.clientY);
       clearTimeout(peekTimer);
       if (el) peekTimer = setTimeout(() => peek(el), e.pointerType === "pen" ? 60 : 140);
