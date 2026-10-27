@@ -55,6 +55,12 @@
 .wp-confix { color: var(--wp-confix); }
 .wp-clitic { color: var(--wp-clitic); }
 .wp-root { color: var(--wc, var(--wp-root)); font-weight: 600; }
+/* Settings → word colours off (settings.word_colours_off): plain text
+   everywhere; the parts keep their "+" and labels. */
+.app[data-word-colours="off"] :is(.wc-ink, .wp-prefix, .wp-suffix, .wp-confix, .wp-clitic, .wp-root) { color: inherit; }
+.app[data-word-colours="off"] .wc-line { text-decoration: none; }
+.app[data-word-colours="off"] .class-chip { color: inherit; background: var(--surface-2); border-color: var(--line); }
+.app[data-word-colours="off"] .colour-legend { display: none; }
 
 * { box-sizing: border-box; }
 
