@@ -1,191 +1,231 @@
 schema: kabar.lesson/v1
 id: bipa3.u03.l07
 language: id
-title: Ulangan Unit 3
+title: Keren atau payah?
 can_do:
-  ar_eg: تكتب ملخّص فيلم وتقول رأيك فيه.
-  ar: أن تكتب ملخّص فيلم وتعبّر عن رأيك فيه.
-  en: Write a synopsis.
+  ar_eg: 'تدي رأيك في فيلم بكلام قوي: جامد، وحش، مثالي، مبالغ فيه، مذهل.'
+  ar: 'أن تقيّم فيلمًا بكلمات قوية: رائع، سيئ، مثالي، مبالغ فيه، مذهل.'
+  en: 'Give a strong verdict on a film: cool, rubbish, perfect, over the top, amazing.'
+slides:
+  - title: Ulasan singkat
+    body:
+      ar_eg: |
+        keren = جامد، روعة (كلمة شبابية). payah = وحش، فاشل (برضه شبابية).
+        sempurna = مثالي، كامل. berlebihan = مبالغ فيه، أوفر. menakjubkan = مذهل.
+        romantis = رومانسي، klasik = كلاسيكي (film klasik = فيلم قديم مشهور). kejutan = مفاجأة.
+      ar: |
+        keren = رائع (عامية الشباب). payah = سيئ، فاشل (عامية أيضًا).
+        sempurna = مثالي، كامل. berlebihan = مبالغ فيه. menakjubkan = مذهل.
+        romantis = رومانسي، klasik = كلاسيكي (film klasik = فيلم قديم شهير). kejutan = مفاجأة.
+      en: |
+        keren = cool, awesome (casual). payah = rubbish, lame (casual).
+        sempurna = perfect. berlebihan = over the top, excessive. menakjubkan = amazing.
+        romantis = romantic, klasik = classic (film klasik = a well-known old film). kejutan = surprise.
+    examples:
+      - text: Film ini keren! Musiknya sempurna.
+        ar_eg: الفيلم ده جامد! المزيكا بتاعته مثالية.
+        ar: هذا الفيلم رائع! موسيقاه مثالية.
+        en: This film is awesome! The music is perfect.
+      - text: Akhirnya payah, dan aktingnya berlebihan.
+        ar_eg: النهاية وحشة، والتمثيل أوفر.
+        ar: نهايته سيئة، والتمثيل مبالغ فيه.
+        en: The ending is lame, and the acting is over the top.
+      - text: Pemandangan di film itu menakjubkan.
+        ar_eg: المناظر في الفيلم ده مذهلة.
+        ar: المناظر في ذلك الفيلم مذهلة.
+        en: The scenery in that film is amazing.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: mendatangi
-        ar_eg: يروح لـ (مكان)
-        ar: يقصد (مكانًا)
-        en: to come to (a place)
-      - text: menghadiri
-        ar_eg: يحضر
-        ar: يحضر
-        en: to attend
-      - text: menghormati
-        ar_eg: يحترم
-        ar: يحترم
-        en: to respect
-      - text: sutradara
-        ar_eg: مخرج
-        ar: مخرج
-        en: film director
-      - text: alur
-        ar_eg: الأحداث، الحبكة
-        ar: الحبكة
-        en: plot
-    words: [mendatangi, menghadiri, menghormati, sutradara, alur]
+      - text: keren
+        ar_eg: جامد
+        ar: رائع
+        en: cool
+      - text: payah
+        ar_eg: وحش، فاشل
+        ar: سيئ
+        en: lame
+      - text: sempurna
+        ar_eg: مثالي
+        ar: مثالي
+        en: perfect
+      - text: berlebihan
+        ar_eg: أوفر، مبالغ فيه
+        ar: مبالغ فيه
+        en: over the top
+    words: [keren, payah, sempurna, berlebihan]
   - id: e02
-    type: multiple_choice
-    question: Kami ___ pemutaran film itu.
-    options: [hadir, menghadiri ke, menghadiri]
-    answer: 2
-    explain:
-      ar_eg: menghadiri بياخد المفعول على طول. hadir محتاجة di.
-      ar: يأخذ menghadiri المفعول مباشرة، أما hadir فتحتاج إلى di.
-      en: menghadiri takes its object directly; hadir would need di.
-    words: [menghadiri, pemutaran film]
+    type: match_pairs
+    pairs:
+      - text: menakjubkan
+        ar_eg: مذهل
+        ar: مذهل
+        en: amazing
+      - text: romantis
+        ar_eg: رومانسي
+        ar: رومانسي
+        en: romantic
+      - text: klasik
+        ar_eg: كلاسيكي
+        ar: كلاسيكي
+        en: classic
+      - text: kejutan
+        ar_eg: مفاجأة
+        ar: مفاجأة
+        en: surprise
+    words: [menakjubkan, romantis, klasik, kejutan]
   - id: e03
-    type: multiple_choice
-    question: Banyak turis ___ Gili setiap tahun.
-    options: [mendatangkan, mendatangi, datang]
-    answer: 1
-    explain:
-      ar_eg: mendatangi = يروح لمكان. mendatangkan = يجيب حاجة، و datang محتاجة ke.
-      ar: mendatangi = يقصد المكان، وmendatangkan = يجلب، وdatang تحتاج إلى ke.
-      en: mendatangi = come to a place; mendatangkan = bring in; datang would need ke.
-    words: [mendatangi]
-  - id: e04
     type: listen
-    text: Film ini bercerita tentang seorang penari dari Lombok.
-    options: ["Film ini bercerita tentang seorang penari dari Lombok.", "Film ini bercerita tentang seorang pelukis dari Lombok.", "Film itu bercerita tentang seorang penari dari Bali."]
-    answer: 0
-    meaning:
-      ar_eg: الفيلم ده بيحكي عن راقصة من لومبوك.
-      ar: يحكي هذا الفيلم عن راقصة من لومبوك.
-      en: This film is about a dancer from Lombok.
-  - id: e05
-    type: listen
-    text: Saya menyukai film itu. Alurnya cepat dan akhir ceritanya mengharukan. Empat bintang!
+    text: Wah, filmnya payah! Ceritanya tidak menarik.
     question:
-      ar_eg: نهاية الفيلم كانت عاملة إزاي؟
-      ar: كيف كانت نهاية الفيلم؟
-      en: What was the film's ending like?
-    options: [seram, mengharukan, lucu]
+      ar_eg: رأيه في الفيلم إيه؟
+      ar: ما رأيه في الفيلم؟
+      en: What does he think of the film?
+    options: [عجبه جدًا, ما عجبوش, خاف منه]
     answer: 1
     meaning:
-      ar_eg: حبيت الفيلم ده. الأحداث سريعة ونهاية القصة مؤثّرة. أربع نجوم!
-      ar: أحببتُ ذلك الفيلم؛ حبكته سريعة ونهايته مؤثّرة. أربع نجوم!
-      en: I liked that film. The plot is fast and the ending is touching. Four stars!
-    words: [menyukai, alur, mengharukan, bintang]
+      ar_eg: ياه، الفيلم وحش! القصة مش حلوة.
+      ar: الفيلم سيئ! قصته غير ممتعة.
+      en: Ugh, the film's lame! The story's no good.
+    words: [payah]
+  - id: e04
+    type: fill_blank
+    sentence: Ini film ___ tentang dua orang yang saling mencintai.
+    meaning:
+      ar_eg: ده فيلم ___ عن اتنين بيحبوا بعض.
+      ar: هذا فيلم ___ عن شخصين يحبّ أحدهما الآخر.
+      en: This is a ___ film about two people in love.
+    options: [romantis, berlebihan, kejutan]
+    answers: [romantis]
+    words: [romantis, berlebihan, kejutan]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: فيلم قديم ومشهور الناس لسه بتحبه، يبقى film …؟
+      ar: فيلم قديم مشهور ما زال الناس يحبونه هو film …؟
+      en: An old, famous film people still love is a film …?
+    options: [klasik, keren, sempurna]
+    answer: 0
+    explain:
+      ar_eg: film klasik = فيلم كلاسيكي.
+      ar: film klasik = فيلم كلاسيكي.
+      en: film klasik = a classic film.
+    words: [klasik, keren, sempurna]
   - id: e06
     type: fill_blank
-    sentence: Hantu itu ___ anak-anak di desa.
+    sentence: 'Ada ___ di akhir film: dia tidak mati!'
     meaning:
-      ar_eg: العفريت ده بيخوّف العيال في القرية.
-      ar: يخيف ذلك الشبحُ الأطفالَ في القرية.
-      en: That ghost frightens the children in the village.
-    options: [mencintai, menghadiri, menakuti]
-    answers: [menakuti]
-    words: [menakuti, hantu]
+      ar_eg: 'فيه ___ في آخر الفيلم: هو ما ماتش!'
+      ar: 'في نهاية الفيلم ___: لم يمت!'
+      en: 'There''s a ___ at the end: he didn''t die!'
+    options: [payah, klasik, kejutan]
+    answers: [kejutan]
+    words: [kejutan, payah, klasik]
   - id: e07
-    type: fill_blank
-    sentence: Sutradara ___ filmnya dengan sebuah lagu.
-    meaning:
-      ar_eg: (اكتب فعل -i من akhir) المخرج خلّص فيلمه بأغنية.
-      ar: (اكتب فعل -i من akhir) أنهى المخرج فيلمه بأغنية.
-      en: (Write the -i verb from akhir.) The director ends his film with a song.
-    answers: [mengakhiri]
-    words: [mengakhiri, sutradara]
-  - id: e08
     type: build_sentence
     source:
-      ar_eg: وفي الآخر، بيروح يقابل أبوه في لومبوك.
-      ar: وفي النهاية يذهب لمقابلة أبيه في لومبوك.
-      en: In the end, he goes to meet his father in Lombok.
-    answer: Pada akhirnya, dia menemui ayahnya di Lombok.
-    distractors: [dengan, berakhir]
-    words: [menemui]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الفيلم ده بيحكي عن عيلة في لومبوك.
-      ar: يحكي هذا الفيلم عن عائلة في لومبوك.
-      en: This film is about a family in Lombok.
-    answers:
-      - Film ini bercerita tentang sebuah keluarga di Lombok.
-      - Film ini bercerita tentang sebuah keluarga di Lombok
-      - Film ini bercerita tentang keluarga di Lombok.
-      - Film ini bercerita tentang satu keluarga di Lombok.
-      - Film ini tentang sebuah keluarga di Lombok.
-      - Film ini tentang keluarga di Lombok.
-      - Film ini menceritakan sebuah keluarga di Lombok.
-    words: [tentang]
-  - id: e10
+      ar_eg: التمثيل في المشهد ده أوفر شوية.
+      ar: التمثيل في هذا المشهد مبالغ فيه قليلًا.
+      en: The acting in this scene is a bit over the top.
+    answer: Akting di adegan ini agak berlebihan.
+    distractors: [sempurna, romantis]
+    words: [berlebihan]
+  - id: e08
     type: translate
     direction: from_target
-    source_text: Saya sangat menyukai latar dan tokoh utamanya.
+    source_text: Pemandangan di film itu menakjubkan.
     answers_meaning:
-      ar_eg:
-        - أنا بحب المكان والبطل جدًا.
-        - عاجبني أوي المكان والبطل.
-        - بحب جدًا مكان الأحداث والشخصية الرئيسية.
-      ar:
-        - أحبّ كثيرًا المكان والشخصية الرئيسية.
-        - أعجبني كثيرًا مكان الأحداث وشخصيته الرئيسية.
-      en:
-        - I really like the setting and the main character.
-        - I really like its setting and its main character.
-        - I like the setting and the main character very much.
-    words: [menyukai, latar, tokoh utama]
-  - id: e11
-    type: dictation
-    text: Kami menghadiri pemutaran film di pantai.
-    meaning:
-      ar_eg: حضرنا عرض فيلم على الشط.
-      ar: حضرنا عرض فيلم على الشاطئ.
-      en: We attended a film screening on the beach.
-    words: [menghadiri, pemutaran film]
-  - id: e12
+      ar_eg: [المناظر في الفيلم ده مذهلة, المناظر في الفيلم تحفة]
+      ar: [المناظر في ذلك الفيلم مذهلة]
+      en: [The scenery in that film is amazing, The views in that film are stunning]
+    words: [menakjubkan]
+  - id: e09
     type: speaking
-    text: Kamu wajib menonton film ini. Kisahnya sangat menarik!
+    text: Film romantis ini keren! Akhirnya sempurna.
     meaning:
-      ar_eg: لازم تتفرج على الفيلم ده. القصة مشوّقة جدًا!
-      ar: يجب أن تشاهد هذا الفيلم؛ قصته مشوّقة جدًا!
-      en: You must watch this film. The story is really interesting!
-    words: [wajib, kisah, menarik]
+      ar_eg: الفيلم الرومانسي ده جامد! النهاية مثالية.
+      ar: هذا الفيلم الرومانسي رائع! نهايته مثالية.
+      en: This romance is awesome! The ending is perfect.
+    words: [romantis, keren, sempurna]
+  - id: e10
+    type: multiple_choice
+    question: Bintang lima! Filmnya ___!
+    options: [payah, berlebihan, menakjubkan]
+    answer: 2
+    explain:
+      ar_eg: 'خمس نجوم يعني مذهل: menakjubkan.'
+      ar: 'خمس نجوم تعني مذهلًا: menakjubkan.'
+      en: 'Five stars means amazing: menakjubkan.'
+    words: [menakjubkan, payah, berlebihan, keren]
 dialogue:
-  title: Malam terakhir di Gili
   lines:
-    - speaker: Ni Luh
-      text: Besok kamu pulang ke Mataram, ya? Mau menonton film lagi malam ini?
-      ar_eg: بكرة راجع ماتارام، صح؟ تحب نتفرج على فيلم تاني النهارده؟
-      ar: ستعود غدًا إلى ماتارام، أليس كذلك؟ أتريد مشاهدة فيلم آخر الليلة؟
-      en: You're going back to Mataram tomorrow, right? Want to watch another film tonight?
+    - speaker: Raka
+      text: Mohamed, bagaimana film kemarin? Keren?
+      ar_eg: يا محمد، فيلم امبارح كان عامل إيه؟ جامد؟
+      ar: يا محمد، كيف كان فيلم الأمس؟ رائع؟
+      en: Mohamed, how was yesterday's film? Cool?
     - speaker: Mohamed
-      text: Mau! Film apa?
-      ar_eg: أيوه! فيلم إيه؟
-      ar: نعم! أيّ فيلم؟
-      en: Yes! Which film?
-    - speaker: Ni Luh
-      text: Komedi keluarga. Katanya, alurnya lucu dan akhir ceritanya mengharukan.
-      ar_eg: كوميدي عائلي. بيقولوا إن الأحداث بتضحّك والنهاية مؤثّرة.
-      ar: كوميديا عائلية. يقولون إنّ حبكتها مضحكة ونهايتها مؤثّرة.
-      en: A family comedy. They say the plot is funny and the ending is touching.
+      text: Pemandangannya menakjubkan, tapi ceritanya agak payah.
+      ar_eg: المناظر مذهلة، بس القصة وحشة شوية.
+      ar: المناظر مذهلة لكن القصة سيئة قليلًا.
+      en: The scenery was amazing, but the story was a bit lame.
+    - speaker: Raka
+      text: Kenapa? Itu film romantis, kan?
+      ar_eg: ليه؟ مش ده فيلم رومانسي؟
+      ar: لماذا؟ إنه فيلم رومانسي، أليس كذلك؟
+      en: Why? It's a romance, isn't it?
     - speaker: Mohamed
-      text: Bagus. Di Mataram, Bu Yanti menonton sinetron setiap malam!
-      ar_eg: حلو. في ماتارام مدام يانتي بتتفرج على مسلسلات كل ليلة!
-      ar: جميل. في ماتارام تشاهد السيدة يانتي المسلسلات كل ليلة!
-      en: Great. In Mataram, Bu Yanti watches sinetron every night!
-    - speaker: Ni Luh
-      text: Banyak orang Indonesia mencintai sinetron. Ibu saya juga!
-      ar_eg: إندونيسيين كتير بيعشقوا المسلسلات. وأمي كمان!
-      ar: كثير من الإندونيسيين يعشقون المسلسلات، وأمي كذلك!
-      en: Lots of Indonesians love sinetron. My mum too!
-souvenir:
-  id: bipa3.u03.souvenir
-  title: Layar tancap di pantai
-  note:
-    ar_eg: «لاير تانچاپ» يعني سينما في الهوا الطلق، شاشة متشدّة والناس قاعدة على الأرض، وفي جيلي تراوانجان تقدر تتفرج على أفلام بالشكل ده على الشط تحت النجوم. السينما الإندونيسية دلوقتي شغّالة جامد، وأفلام الرعب وأفلام العيلة هي اللي بتكسّر شباك التذاكر. وبالليل في البيوت؟ الـ«سينيترون» (المسلسلات) عادة قومية، زي مسلسلات رمضان عندنا بالظبط!
-    ar: "«لايار تانتشاب» سينما في الهواء الطلق: شاشة مشدودة والناس جلوس على الأرض، وفي جيلي تراوانغان يمكنك أن تشاهد الأفلام هكذا على الشاطئ تحت النجوم. والسينما الإندونيسية مزدهرة اليوم، وأفلام الرعب والأفلام العائلية تتصدّر شباك التذاكر. أما في البيوت ليلًا فالـ«سينيترون» (المسلسلات) عادة وطنية، كمسلسلات رمضان عندنا تمامًا!"
-    en: Layar tancap means open-air cinema, a screen stretched up and everyone sitting on the ground; on Gili Trawangan you can watch films like this on the beach, under the stars. Indonesian cinema is booming, and horror films and family dramas top the box office. And at home in the evening? Sinetron (TV soaps) are a national habit, much like Ramadan series back in Egypt!
+      text: Ya, tapi aktingnya berlebihan. Tidak ada kejutan.
+      ar_eg: أيوه، بس التمثيل أوفر. ومافيش أي مفاجأة.
+      ar: نعم، لكن التمثيل مبالغ فيه. ولا مفاجآت.
+      en: Yes, but the acting was over the top. No surprises.
+    - speaker: Raka
+      text: Kalau begitu, menonton film klasik saja. Ceritanya sempurna!
+      ar_eg: لو كده، اتفرج على فيلم كلاسيكي. قصته مثالية!
+      ar: إذن شاهد فيلمًا كلاسيكيًا. قصته مثالية!
+      en: Then watch a classic. The story's perfect!
+new_words:
+  - word: keren
+    pos: adjective
+    ar_eg: جامد، روعة
+    ar: رائع (عامية)
+    en: cool, awesome
+  - word: payah
+    pos: adjective
+    ar_eg: وحش، فاشل
+    ar: سيئ، فاشل (عامية)
+    en: lame, rubbish
+  - word: sempurna
+    pos: adjective
+    ar_eg: مثالي، كامل
+    ar: مثالي، كامل
+    en: perfect
+  - word: berlebihan
+    pos: adjective
+    ar_eg: مبالغ فيه، أوفر
+    ar: مبالغ فيه
+    en: over the top, excessive
+  - word: menakjubkan
+    pos: adjective
+    ar_eg: مذهل
+    ar: مذهل
+    en: amazing
+  - word: romantis
+    pos: adjective
+    ar_eg: رومانسي
+    ar: رومانسي
+    en: romantic
+  - word: klasik
+    pos: adjective
+    ar_eg: كلاسيكي
+    ar: كلاسيكي
+    en: classic
+  - word: kejutan
+    pos: noun
+    ar_eg: مفاجأة
+    ar: مفاجأة
+    en: surprise
 review:
   status: draft
   verified: false
