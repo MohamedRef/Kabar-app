@@ -395,6 +395,97 @@ natively at its final size.
 
 ---
 
+## Prompt 4d — Souvenir cards, last four
+
+Review of the 4c batch (2026-10-27): rumah-gadang and kotagede-silver are approved and in the repo. Four still miss: becak (drawn as a full two-wheeled bicycle towing a cart, three wheels in a row), gamelan (kettles look like bells, a stray see-through frame over the sky, random cords), wayang (a walking cartoon figure with legs and dots on the head, not a wayang kulit profile, no banana-trunk base) and raja-ampat (islets read as lily pads with leaf veins, seen from the side, one cut by the frame). 4c was drawn with code (SVG), which matches the set's flat look; that is fine, but the shapes must be right.
+
+```text
+Redo FOUR souvenir card illustrations for "Kabar", an Indonesian + Javanese learning
+app. Nine cards of this set are approved; the four new ones must look like they
+belong to the same collection.
+
+BEFORE YOU START:
+- Pull the latest main. Open the approved masters in assets/src/souvenirs/ (batik,
+  rendang, angklung, kawung, kopi-tubruk, sate, tongkonan, rumah-gadang,
+  kotagede-silver .png) and assets/src/souvenirs/contact-sheet.png. Match them
+  exactly: the same flat shapes, the same thick dark outlines, the same pink sky with
+  a pale sun disc, the same rolling hills, the same card frame with a thin rounded
+  border and small indigo marks, the same plain warm paper bottom area, and the same
+  picture size and position on the card.
+
+HOW TO MAKE THEM:
+- Each card is its own image, made directly at 1024x1536 (portrait). Never make a
+  sheet and split it, never upscale, no recolour filters afterwards.
+- Drawing with code (SVG rendered at full size) is fine, since the approved cards
+  look that way, but every subject below must be recognisable and correct. Before
+  saving, look at each card at 256x384 and ask: would an Indonesian recognise this
+  object at a glance? If not, redraw it.
+
+STYLE (identical to the approved cards):
+- FLAT vector-like shapes with bold dark outlines, a few large colour areas, very
+  little texture. Not painterly, not realistic.
+- Palette led by: Merapi charcoal #22201E, sawah green #4F8A3C, Bromo orange #EE8A5A,
+  Bromo pink #E9A3A0, batik indigo #2B3A70, warm paper #F5EFE3. Plants stay green.
+  No gold or yellow-metallic highlights.
+- Respectful, accurate depiction of Indonesian culture; no stereotypes.
+
+HARD RULES: no text, letters, numbers or script anywhere. No logos, watermarks,
+signatures, brands or existing characters. Do not imitate any named artist. Nothing
+may be see-through or overlap the frame; every object sits fully inside the picture
+panel.
+
+CARDS (filename: subject, with exactly what must be right):
+- becak.png: an Indonesian becak, side view, parked under a green tree, facing right.
+  Exactly THREE wheels, and in side view you see only TWO of them: one front wheel
+  under the passenger seat (its twin is hidden behind it) and one rear wheel. At the
+  FRONT (right): a wide passenger bench seat for two with a folding hood (a curved
+  canopy) over it and a low footrest in front of it. BEHIND it (left): a single
+  bicycle saddle raised above the rear wheel, pedals and chain below the saddle,
+  joined to the seat's back by one sturdy frame. The rider's handlebar is a bar
+  behind the hood, NOT a separate bicycle with its own front wheel. No rider.
+- gamelan.png: a Javanese bonang seen from the front and slightly above. A long, low
+  wooden frame (rancak) with carved orange ends, standing on short legs on the
+  ground. On it, TWO straight rows of five bronze kettle gongs each, all the same
+  size, resting on cords stretched along the frame. Each kettle: a wide, low, round
+  pot (wider than tall, like an upturned bowl with a flat shoulder), in Bromo orange
+  with a dark outline, with a small round raised knob (pencu) in the CENTRE OF ITS
+  TOP, and the knob is a solid filled circle, never a ring or a dot pair. Two
+  padded beaters (sticks with indigo cord-wrapped heads) lie on the frame. Nothing
+  else above the frame: just the pink sky and the pale sun.
+- wayang.png: a wayang kulit puppet seen as a shadow on a glowing white screen
+  (kelir) with a dark wooden frame, lit by an oil lamp (blencong) hanging in front
+  near the top. The shadow is ONE solid dark silhouette in STRICT SIDE PROFILE,
+  facing right, standing still (no walking pose): a tall slender body with a long
+  flowing cloth (wiron) falling to the feet, both feet side by side pointing right,
+  a small head with a long pointed nose and a tall pointed headdress, and two very
+  long thin arms hanging down in front, each held by a thin rod (cempurit). Inside
+  the silhouette, a few small cut-out patterns (simple diamonds, circles and curls)
+  so it looks pierced like real leather puppets. No eyes, no face, no dots on the
+  head. One central rod (gapit) runs from the head down through the body into a
+  horizontal banana-trunk (gedebog) at the bottom of the screen, drawn as a pale
+  green log. Original design, not a known character.
+- raja-ampat.png: small karst islets in a turquoise sea, seen from directly ABOVE
+  (map view: no hills, no horizon, no sky, no sun; the whole picture panel is sea).
+  Water in two or three flat turquoise tones, darker in the middle, lighter near the
+  islets. Six or seven islets of different sizes, each a lumpy irregular rounded
+  shape (like a mushroom cap seen from above), filled with two greens (darker rim,
+  lighter top), a dark outline and a pale sand/shallow-water ring around it. No
+  leaf veins, no midribs, no pointed tips: they must not look like leaves or lily
+  pads. All islets fully inside the panel, one small boat (a white speck with a
+  short wake) for scale.
+
+SAVE: masters to assets/src/souvenirs/<name>.png (1024x1536), replacing nothing else.
+Then run: python3 scripts/assets/export_souvenirs.py
+It exports all 13 cards to assets/export/souvenirs/ and rebuilds
+assets/src/souvenirs/contact-sheet.png. Look at the contact sheet: if any of the four
+new cards stands out from the nine approved ones, or any subject is hard to
+recognise at thumbnail size, redo it.
+
+Do not commit. List the files when done.
+```
+
+---
+
 ## Prompt 5 — Journey Map decorations
 
 ```text
@@ -463,6 +554,13 @@ are ORIGINAL fictional adult characters: AI conversation partners and the cast o
 short serialized story. Draw all of them in this one session with the same hand so
 they look like one cast.
 
+HOW TO GENERATE (strict):
+- Use your image generation tool. Do NOT draw the portraits with code (no SVG,
+  Pillow, Cairo or canvas drawing).
+- Generate EACH image as its own separate request, directly at 1024x1024. Never
+  generate a sheet, grid or collage and split it. Never upscale a smaller image; only
+  crop, never enlarge. No post-processing recolour, hue shift or filter.
+
 STYLE (every portrait):
 - Calm, warm, grown-up illustration. Flat vector-like shapes, soft layered depth,
   gentle paper grain, warm soft light. Not photorealistic, not anime, not cartoonish,
@@ -512,7 +610,8 @@ CSS, so keep them square). Make assets/src/personas/cast-sheet.png showing all s
 neutral portraits side by side plus each one's expressions, so I can check
 consistency.
 
-Do not commit. List the files when done.
+Do not commit. List the files when done, and confirm each image was generated
+natively at 1024x1024 with the image tool.
 ```
 
 ---
