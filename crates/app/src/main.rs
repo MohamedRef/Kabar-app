@@ -14,6 +14,8 @@ mod journey;
 mod lesson;
 mod listen;
 mod map_art;
+#[cfg(all(feature = "desktop", not(target_os = "android")))]
+mod menu;
 mod packs;
 mod penlab;
 mod platform;
@@ -207,12 +209,14 @@ fn main() {
                 Some((w.parse().ok()?, h.parse().ok()?))
             })
             .unwrap_or((1100.0, 760.0));
+        // Only the Mac needs a menu bar (Cmd+V, Cmd+Q…); see `menu`.
+        let mac_menu = cfg!(target_os = "macos").then(menu::mac_menu);
         let window = WindowBuilder::new()
             .with_title("Kabar")
             .with_inner_size(LogicalSize::new(w, h))
             .with_min_inner_size(LogicalSize::new(360.0, 560.0));
         dioxus::LaunchBuilder::desktop()
-            .with_cfg(Config::new().with_window(window).with_menu(None).with_disable_context_menu(true))
+            .with_cfg(Config::new().with_window(window).with_menu(mac_menu).with_disable_context_menu(true))
             .launch(App);
     }
     #[cfg(not(all(feature = "desktop", not(target_os = "android"))))]
@@ -288,6 +292,8 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let coach = use_context_provider(|| Coach::load(&db));
     use_hook(reader::warm_up);
     use_width_tracking(ui.width, ui.tablet);
+    #[cfg(all(feature = "desktop", not(target_os = "android")))]
+    menu::use_menu_events(ui);
     use_cloud(&db, path, ui, link);
     coach::use_clock(coach, db.clone());
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
