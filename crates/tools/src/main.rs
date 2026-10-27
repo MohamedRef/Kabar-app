@@ -113,6 +113,11 @@ fn main() -> Result<()> {
                 println!("gloss↔bridge: {i}");
             }
             anyhow::ensure!(issues.is_empty(), "{} gloss↔bridge issue(s)", issues.len());
+            let issues = bridge::check_lessons(&root)?;
+            for i in &issues {
+                println!("lesson↔bridge: {i}");
+            }
+            anyhow::ensure!(issues.is_empty(), "{} lesson↔bridge issue(s)", issues.len());
             levels::run(&root, levels::Cmd::Validate)?;
             golden::run(&root, golden::Cmd::Validate)?;
             packs::run(&root, packs::Cmd::Build { check: true })?;
