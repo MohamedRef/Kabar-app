@@ -142,6 +142,36 @@ pub fn take_shared_input() -> Result<Option<SharedInput>, String> {
     json.map(|j| serde_json::from_str(&j).map_err(|e| format!("unexpected shared item {j}: {e}"))).transpose()
 }
 
+/// `ImagePick.open(activity)`: shows the system photo picker over Kabar.
+pub fn pick_image() -> Result<(), String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.ImagePick"))?;
+        env.call_static_method(
+            &class,
+            jni_str!("open"),
+            jni_sig!("(Landroid/app/Activity;)V"),
+            &[JValue::Object(activity)],
+        )?;
+        Ok(())
+    })
+}
+
+/// `ImagePick.state()`; a FAILED state is reset once read.
+pub fn pick_state() -> Result<super::PickState, String> {
+    with_activity(|env, activity| {
+        let class = app_class(env, activity, jni_str!("app.kabar.ImagePick"))?;
+        let state = env.call_static_method(&class, jni_str!("state"), jni_sig!("()I"), &[])?.i()?;
+        Ok(match state {
+            1 => super::PickState::Open,
+            2 => {
+                env.call_static_method(&class, jni_str!("reset"), jni_sig!("()V"), &[])?;
+                super::PickState::Failed
+            }
+            _ => super::PickState::Done,
+        })
+    })
+}
+
 /// `OcrBridge.recognize(path)`: ML Kit Text Recognition v2, blocking.
 pub fn ocr_image(path: &Path) -> Result<OcrResult, String> {
     let path = path.to_str().ok_or("image path is not valid UTF-8")?;
