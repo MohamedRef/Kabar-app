@@ -88,7 +88,7 @@ exercises:
         ar_eg: كيلو برتقال
         ar: كيلو برتقال
         en: a kilo of oranges
-    words: [ekor, orang, potong, gelas]
+    words: [ekor, orang, potong, gelas, seorang]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -143,7 +143,7 @@ exercises:
       en: I bought a wooden statue.
     answer: Saya beli sebuah patung kayu.
     distractors: [seekor, seorang]
-    words: [buah, patung, kayu]
+    words: [buah, patung, kayu, sebuah]
   - id: e07
     type: listen
     text: Saya beli sebuah patung dan sepotong kue.
@@ -153,7 +153,7 @@ exercises:
       ar_eg: اشتريت تمثال وحتة كيكة.
       ar: اشتريت تمثالًا وقطعة كعك.
       en: I bought a statue and a slice of cake.
-    words: [buah, patung, potong, kertas, lembar]
+    words: [buah, patung, potong, kertas, lembar, sebuah]
   - id: e08
     type: multiple_choice
     question_meaning:
@@ -169,12 +169,26 @@ exercises:
     words: [buah, patung, ekor, lembar]
   - id: e09
     type: speaking
-    text: Minta selembar kertas dan sepotong kue, ya.
+    text: Ada seorang guru. Dia minta selembar kertas dan sepotong kue.
     meaning:
-      ar_eg: ممكن ورقة وحتة كيكة؟
-      ar: أريد ورقة وقطعة كعك من فضلك.
-      en: A sheet of paper and a slice of cake, please.
-    words: [lembar, kertas, potong]
+      ar_eg: فيه مدرّس. طلب ورقة وحتة كيكة.
+      ar: هناك معلّم. طلب ورقة وقطعة كعك.
+      en: There's a teacher. He asks for a sheet of paper and a slice of cake.
+    words: [seorang, lembar, kertas, potong]
+  - id: e10
+    type: multiple_choice
+    question: Dia ___ guru.
+    question_meaning:
+      ar_eg: «هو مدرّس.» أنهي كلمة تكمّلها؟
+      ar: «هو معلّم.» أيّ كلمة تكملها؟
+      en: '"He is a teacher." Which word completes it?'
+    options: [seorang, sebuah, seekor]
+    answer: 0
+    explain:
+      ar_eg: seorang للناس، sebuah للحاجات، seekor للحيوانات.
+      ar: seorang للأشخاص، وsebuah للأشياء، وseekor للحيوانات.
+      en: seorang for people, sebuah for things, seekor for animals.
+    words: [seorang, sebuah]
 dialogue:
   lines:
     - speaker: Ni Luh
@@ -229,6 +243,16 @@ new_words:
     ar: ورق
     en: paper
     arabic: قرطاس
+  - word: seorang
+    pos: classifier
+    ar_eg: 'واحد (للناس): seorang guru = مدرّس واحد'
+    ar: 'واحد (للأشخاص): seorang guru = معلّم'
+    en: 'one (for people): seorang guru = a teacher'
+  - word: sebuah
+    pos: classifier
+    ar_eg: 'واحد (للحاجات): sebuah patung = تمثال'
+    ar: 'واحد (للأشياء): sebuah patung = تمثال'
+    en: 'one (for things): sebuah patung = a statue'
 review:
   status: draft
   verified: false

@@ -104,13 +104,13 @@ exercises:
       ar_eg: مع إن سكان كتير رافضين، الحكومة برضه بتنقل العاصمة.
       ar: على الرغم من رفض كثير من السكان، تمضي الحكومة في نقل العاصمة.
       en: Although many residents object, the government is still moving the capital.
-    options: [Walaupun, Sehingga, Padahal]
-    answers: [Walaupun]
+    options: [Meskipun, Sehingga, Padahal]
+    answers: [Meskipun]
     explain:
-      ar_eg: إعتراف في أول الجملة وبعده tetap، فدي walaupun.
-      ar: إقرار في مطلع الجملة يليه tetap، فالأداة walaupun.
-      en: A concession at the start followed by tetap calls for walaupun.
-    words: [menolak]
+      ar_eg: إعتراف في أول الجملة وبعده tetap، فدي meskipun (أو walaupun).
+      ar: إقرار في مطلع الجملة يليه tetap، فالأداة meskipun (أو walaupun).
+      en: A concession at the start followed by tetap calls for meskipun (or walaupun).
+    words: [menolak, meskipun]
   - id: e04
     type: listen
     text: Sebagian Jakarta tenggelam, padahal jutaan orang tinggal di sana.
@@ -130,9 +130,9 @@ exercises:
       ar_eg: السياسة دي غالية. ومع ذلك ناس كتير بتأيدها.
       ar: هذه السياسة مكلفة. ومع ذلك يؤيّدها كثيرون.
       en: This policy is expensive. Nevertheless, many people support it.
-    answer: Kebijakan ini mahal. Meskipun demikian, banyak orang mendukungnya.
+    answer: Kebijakan ini mahal. Namun, banyak orang mendukungnya.
     distractors: [tetapi, padahal]
-    words: [kebijakan, mendukung]
+    words: [kebijakan, mendukung, namun]
   - id: e06
     type: translate
     direction: to_target
@@ -163,7 +163,7 @@ exercises:
       ar_eg: بين جملتين منفصلتين بنقول Namun, أو Meskipun demikian, (مش Meskipun لوحدها).
       ar: بين جملتين منفصلتين نقول Namun, أو Meskipun demikian, لا Meskipun وحدها.
       en: Between two separate sentences use Namun, or Meskipun demikian, not a bare Meskipun.
-    words: [biaya]
+    words: [biaya, namun]
   - id: e08
     type: speaking
     text: Walaupun banyak orang menolak, saya tetap mendukung kebijakan itu.
@@ -182,6 +182,20 @@ exercises:
     options: [mendukung, menolak, tenggelam]
     answer: 2
     words: [tenggelam]
+  - id: e10
+    type: multiple_choice
+    question: Ibu kota baru itu modern. Namun, banyak warga menolak.
+    question_meaning:
+      ar_eg: إيه رأي الأهالي؟
+      ar: ما موقف السكان؟
+      en: What do the residents think?
+    options: ['Banyak warga tidak setuju.', 'Semua warga senang.', 'Warga tidak tahu.']
+    answer: 0
+    explain:
+      ar_eg: namun = بس / ومع ذلك، بتيجي أول جملة جديدة.
+      ar: namun = ومع ذلك، في أول جملة جديدة.
+      en: namun = however, at the start of a new sentence.
+    words: [namun, menolak]
 dialogue:
   title: Di perahu ke Penajam
   lines:
@@ -216,11 +230,16 @@ new_words:
     ar_eg: يغرق
     ar: يغرق
     en: to sink
-  - word: tetap
-    pos: adverb
-    ar_eg: 'برضه / مع ذلك (بعد meskipun)'
-    ar: 'مع ذلك، يظل (بعد meskipun)'
-    en: 'still, all the same (after meskipun)'
+  - word: meskipun
+    pos: conjunction
+    ar_eg: رغم إن (وبعدها tetap مش tetapi)
+    ar: رغم أنّ (وبعدها tetap لا tetapi)
+    en: although (followed by tetap, never tetapi)
+  - word: namun
+    pos: conjunction
+    ar_eg: بس / ومع ذلك (رسمي، أول الجملة)
+    ar: ولكن / ومع ذلك (رسمية، في أول الجملة)
+    en: however (formal, starts a sentence)
 review:
   status: draft
   verified: false

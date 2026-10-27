@@ -332,6 +332,22 @@ pub fn prefetch_for(lesson_id: &str) {
     });
 }
 
+/// Over the air with the app update check: refreshes the index and
+/// re-downloads every installed pack that has a newer version, if
+/// auto-download is on. Blocking; called from the updater's thread.
+pub fn update_installed() {
+    let Some(store) = store() else { return };
+    if base_url().is_none() || !store.auto() {
+        return;
+    }
+    let Ok(index) = refresh_index(store) else { return };
+    for id in packs::outdated(&index, &store.installed_versions()) {
+        if let Err(e) = download(store, &id) {
+            crate::diag::report!("updating pack {id} failed: {e}");
+        }
+    }
+}
+
 /// A `data:` URL of the pre-generated clip for a line, for the WebView's
 /// `<audio>` (works the same on the Mac and Android, no file server needed).
 /// `voice` is the dialogue speaker's; otherwise the language's narrator.

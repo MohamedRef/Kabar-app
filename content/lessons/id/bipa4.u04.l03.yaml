@@ -115,7 +115,7 @@ exercises:
       en: I read that news online on my phone.
     options: [daring, judul, ringkasan]
     answers: [daring]
-    words: [daring]
+    words: [daring, secara]
   - id: e06
     type: fill_blank
     sentence: Baca ___ beritanya dulu, lalu isinya.
@@ -148,7 +148,7 @@ exercises:
       - Koran itu melaporkan beritanya secara daring.
       - Koran itu melaporkan berita secara daring.
       - Surat kabar itu melaporkan berita itu secara daring.
-    words: [melaporkan, daring]
+    words: [melaporkan, daring, secara]
   - id: e09
     type: speaking
     text: Judul berita itu menarik, dan ringkasannya jelas.
@@ -157,6 +157,20 @@ exercises:
       ar: عنوان ذلك الخبر جذاب، وملخصه واضح.
       en: That story's headline is catchy, and its summary is clear.
     words: [judul, ringkasan]
+  - id: e10
+    type: multiple_choice
+    question: Saya membaca koran secara daring.
+    question_meaning:
+      ar_eg: هو بيقرا الجرنال إزاي؟
+      ar: كيف يقرأ الجريدة؟
+      en: How does he read the paper?
+    options: ['Di internet.', 'Di kertas.', 'Di radio.']
+    answer: 0
+    explain:
+      ar_eg: secara daring = أونلاين. secara + صفة = بشكل …
+      ar: secara daring = عبر الإنترنت، وsecara + صفة = بشكل …
+      en: secara daring = online; secara + adjective = in a … way.
+    words: [secara, daring]
 dialogue:
   title: Latihan meringkas
   lines:
@@ -211,6 +225,11 @@ new_words:
     ar_eg: أونلاين (dalam jaringan)
     ar: عبر الإنترنت (dalam jaringan)
     en: online (dalam jaringan)
+  - word: secara
+    pos: preposition
+    ar_eg: بشكل / بطريقة (secara daring = أونلاين)
+    ar: بشكل / بطريقة
+    en: in a … way (secara daring = online)
 review:
   status: draft
   verified: false

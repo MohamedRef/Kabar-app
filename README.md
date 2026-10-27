@@ -25,6 +25,7 @@ the Arabic words Indonesian already borrowed.
 | Stats: skill radar, pace and forecast | ✓ | ✓ | ✓ |
 | Kak Nur coach: onboarding, daily plan, recap, weekly report | ✓ + notifications (bundled app, opt-in) | ✓ + local reminders (FCM next) | ✓ + local reminders (opt-in) |
 | Reader with word popovers, Arabic Bridge, speech levels, Arabic-script pronunciation | ✓ | ✓ | ✓ |
+| Reader reading settings (size, spacing, line width) and focus mode | ✓ + focus | ✓ one-line bar | ✓ + focus |
 | Screenshot Decoder | ✓ Apple Vision OCR | ✓ ML Kit OCR | ✓ ML Kit OCR |
 | Share-to-Kabar (text, selection, screenshots) | — | ✓ | ✓ |
 | Pen pointing in the Reader: hover to peek, tap, lasso a phrase, highlight | — | ✓ S Pen | ✓ S Pen |
@@ -35,6 +36,7 @@ the Arabic words Indonesian already borrowed.
 | Studio: AI mind maps, Study Desk panes | ✓ | — | ✓ |
 | Offline packs (audio per unit) | ✓ | ✓ | ✓ |
 | Sync through Kabar Cloud, Google sign-in, Devices screen | ✓ | ✓ | ✓ |
+| Updates over the air: signed feed, automatic / tell me first / off, alpha·beta·stable (preview for CI builds) | ✓ swaps Kabar.app | ✓ PackageInstaller | ✓ PackageInstaller |
 | Pen **writing** (Notebook, Gambar!, handwritten answers, Card Wall, aksara calligraphy) | paused | paused | paused |
 | Home-screen widgets | — | parked | parked |
 
@@ -53,14 +55,14 @@ every morning. CI warns when the table below is behind the content.
 
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|
-| BIPA 1 | Jakarta | A1 | 10 | 74 | 693 | 413 | ~8 h | 35 |
-| BIPA 2 | Bali | A2 | 10 | 62 | 556 | 298 | ~7 h | 35 |
-| BIPA 3 | Lombok | B1 | 10 | 70 | 647 | 269 | ~8 h | 39 |
+| BIPA 1 | Jakarta | A1 | 10 | 74 | 694 | 419 | ~8 h | 35 |
+| BIPA 2 | Bali | A2 | 10 | 62 | 561 | 314 | ~7 h | 35 |
+| BIPA 3 | Lombok | B1 | 10 | 70 | 647 | 267 | ~8 h | 39 |
 | BIPA 4 | Sulawesi | B2 | 10 | 80 | 680 | 205 | ~8 h | 37 |
 | BIPA 5 | Kalimantan | C1 | 10 | 90 | 856 | 298 | ~9 h | 38 |
 | BIPA 6 | Sumatra | C2 | 10 | 100 | 987 | 380 | ~10 h | 38 |
 | BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 100 | 1,009 | 385 | ~10 h | 38 |
-| **Total** |  | — | 70 | 576 | 5,428 | 2,248 | ~60 h | 260 |
+| **Total** |  | — | 70 | 576 | 5,434 | 2,268 | ~60 h | 260 |
 
 **Javanese (J1–J6)**
 

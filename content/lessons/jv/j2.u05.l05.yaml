@@ -68,7 +68,7 @@ exercises:
       ar_eg: panganen = كُله. ماما عملته خلاص (wis tak gawe)، فمش محتاجة تشتريه.
       ar: panganen = كُلْه، فقد أعدّته الأم (wis tak gawe) ولا حاجة لشرائه.
       en: panganen = eat it. Mum has already made it (wis tak gawe), so no need to buy it.
-    words: [panganen]
+    words: [panganen, gawe]
   - id: e03
     type: multiple_choice
     question: Ibu mulih jam sewelas.
@@ -147,7 +147,7 @@ exercises:
       ar_eg: wis tak gawe = عملته خلاص (tak + gawe)، وpanganen = كُله.
       ar: wis tak gawe = قد أعددته (tak + gawe)، وpanganen = كُلْه.
       en: wis tak gawe = I've made it (tak + gawe), panganen = eat it.
-    words: [panganen]
+    words: [panganen, gawe]
   - id: e08
     type: build_sentence
     source:
@@ -169,6 +169,20 @@ exercises:
       ar: لا تنسَ إطفاء النور!
       en: Don't forget to turn off the light!
     words: [aja, lali, mateni]
+  - id: e10
+    type: multiple_choice
+    question: Sotone sapa sing gawe?
+    question_meaning:
+      ar_eg: مين اللي عمل السوتو؟
+      ar: من صنع السوتو؟
+      en: Who made the soto?
+    options: [Ibu., Sari., Bayu.]
+    answer: 0
+    explain:
+      ar_eg: Sotone wis tak gawe = السوتو أنا عملته، وده كلام ماما في الورقة. gawe = buat.
+      ar: Sotone wis tak gawe = السوتو صنعتُه، وهذا كلام الأم في الرسالة. gawe = buat.
+      en: Sotone wis tak gawe = I've made the soto, from Mum's note. gawe = buat.
+    words: [gawe]
 dialogue:
   title: Telpon karo Ibu
   lines:
@@ -202,6 +216,12 @@ dialogue:
       ar_eg: متشكرة يا حبيبتي. استنيني في البيت!
       ar: شكرًا يا ابنتي. انتظريني في البيت!
       en: Thank you, love. Wait for me at home, OK?
+new_words:
+  - word: gawe
+    pos: verb
+    ar_eg: يعمل / يحضّر (= buat)
+    ar: يصنع / يُعِدّ (= buat)
+    en: to make (= buat)
 review:
   status: draft
   verified: false

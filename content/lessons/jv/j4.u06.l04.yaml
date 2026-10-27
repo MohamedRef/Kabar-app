@@ -113,7 +113,7 @@ exercises:
       ar_eg: الحكاية حلوة قوي. هانومان عرض الخبر على راما.
       ar: الحكاية رائعة جدًا. عرض هانومان الخبر على راما.
       en: The story is really good. Hanoman reports to Rama.
-    words: [crita]
+    words: [crita, marang]
   - id: e08
     type: speaking
     text: Critane ngene. Rahwana nyulik Sinta, banjur Hanoman lunga menyang Alengka.
@@ -122,6 +122,30 @@ exercises:
       ar: "الحكاية هكذا: اختطف رهوانا سينتا، ثم ذهب هانومان إلى ألينغكا."
       en: "The story goes like this: Rahwana kidnaps Sinta, then Hanoman goes to Alengka."
     words: [crita, nyulik]
+  - id: e09
+    type: multiple_choice
+    question: Hanoman matur marang Rama.
+    question_meaning:
+      ar_eg: معنى الجملة دي إيه؟
+      ar: ما معنى هذه الجملة؟
+      en: What does this sentence mean?
+    options: ['هانومان قال لراما (بأدب).', 'هانومان سمع من راما.', 'هانومان راح مع راما.']
+    answer: 0
+    explain:
+      ar_eg: marang = لـ / إلى (kepada)، قبل الشخص اللي بتكلّمه أو بتديله حاجة.
+      ar: marang = إلى (kepada)، قبل الشخص الموجَّه إليه الكلام أو الشيء.
+      en: marang = to (kepada), before the person you speak or give to.
+    words: [marang]
+  - id: e10
+    type: fill_blank
+    sentence: Hanoman ngaturake ali-ali ___ Dewi Sinta.
+    meaning:
+      ar_eg: هانومان قدّم الخاتم لديوي سينتا.
+      ar: قدّم هانومان الخاتم إلى ديوي سينتا.
+      en: Hanoman presented the ring to Dewi Sinta.
+    options: [marang, saka, ing]
+    answers: [marang]
+    words: [marang]
 dialogue:
   title: Crita Ramayana
   lines:
@@ -166,6 +190,11 @@ new_words:
     ar_eg: يخطف
     ar: يختطف
     en: kidnap = menculik
+  - word: marang
+    pos: preposition
+    ar_eg: لـ، لحد (حد)
+    ar: إلى، لِـ (شخص)
+    en: to, towards (a person) = kepada
 review:
   status: draft
   verified: false

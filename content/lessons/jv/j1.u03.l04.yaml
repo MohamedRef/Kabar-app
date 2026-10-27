@@ -55,7 +55,7 @@ exercises:
       ar_eg: lagi mangan sate = بياكل سَتيه دلوقتي. lagi = sedang.
       ar: lagi mangan sate = يأكل الساتيه الآن، وlagi = sedang.
       en: lagi mangan sate = he's eating satay right now. lagi = sedang.
-    words: [lagi, mangan]
+    words: [lagi, mangan, tekan]
   - id: e02
     type: multiple_choice
     question: durung turu, isih moco buku
@@ -129,7 +129,7 @@ exercises:
       ar_eg: ws = wis، وkanca2 = kanca-kanca (صحاب). tekan = وصل.
       ar: ws = wis، وkanca2 = kanca-kanca (أصدقاء)، وtekan = وصل.
       en: ws = wis, kanca2 = kanca-kanca (friends). tekan = arrive.
-    words: [wis, lagi, mangan, kanca]
+    words: [wis, lagi, mangan, kanca, tekan]
   - id: e07
     type: build_sentence
     source:
@@ -174,6 +174,20 @@ exercises:
       ar: لم تنم Mbak Rara بعد، ما زالت تقرأ كتابًا.
       en: Mbak Rara isn't asleep yet; she's still reading a book.
     words: [durung, isih, maca]
+  - id: e10
+    type: multiple_choice
+    question: Rara wis tekan omah.
+    question_meaning:
+      ar_eg: رارا فين دلوقتي؟
+      ar: أين رارا الآن؟
+      en: Where is Rara now?
+    options: [Wis nang omah., Isih nang Tunjungan., Durung tekan.]
+    answer: 0
+    explain:
+      ar_eg: tekan = وصل (sampai). wis tekan omah = وصلت البيت.
+      ar: tekan = وصل (sampai)، وwis tekan omah = وصلت إلى البيت.
+      en: tekan = arrive (sampai). wis tekan omah = she's got home.
+    words: [tekan, wis, omah]
 dialogue:
   title: Bengi nang Tunjungan
   lines:
@@ -207,6 +221,12 @@ dialogue:
       ar_eg: مش مشكلة. يلا ناكل الأول يا جدع!
       ar: لا بأس. هيّا نأكل أولًا يا صاحبي!
       en: No problem. Let's eat first, mate!
+new_words:
+  - word: tekan
+    pos: verb
+    ar_eg: يوصل (ws tekan = وصلت)
+    ar: يصل (ws tekan = وصلتُ)
+    en: to arrive, reach (= sampai)
 review:
   status: draft
   verified: false

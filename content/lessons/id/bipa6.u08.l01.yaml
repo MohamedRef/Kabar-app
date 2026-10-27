@@ -72,14 +72,14 @@ exercises:
     words: [pengamatan]
   - id: e03
     type: fill_blank
-    sentence: Ada beberapa ___ Rafflesia di hutan Sumatra.
+    sentence: Ilmuwan menemukan beberapa ___ Rafflesia di hutan Sumatra.
     meaning:
-      ar_eg: فيه كذا نوع من الرافليزيا في غابات سومطرة.
-      ar: في غابات سومطرة عدّة أنواع من الرافليزيا.
-      en: There are several species of Rafflesia in Sumatra's forests.
+      ar_eg: العلما لقوا كذا نوع من الرافليزيا في غابات سومطرة.
+      ar: وجد العلماء عدّة أنواع من الرافليزيا في غابات سومطرة.
+      en: Scientists found several species of Rafflesia in Sumatra's forests.
     options: [spesies, percobaan, ilmuwan]
     answers: [spesies]
-    words: [spesies]
+    words: [spesies, menemukan]
   - id: e04
     type: listen
     text: Peneliti itu melakukan pengamatan setiap pagi di hutan.
@@ -122,7 +122,7 @@ exercises:
       - Ilmuwan menemukan spesies baru di Bengkulu.
       - Para ilmuwan menemukan spesies baru di Bengkulu.
       - Para ilmuwan menemukan sebuah spesies baru di Bengkulu.
-    words: [ilmuwan, spesies]
+    words: [ilmuwan, spesies, menemukan]
   - id: e08
     type: speaking
     text: Hasil pengamatan kami sama dengan hasil percobaan.
@@ -139,6 +139,20 @@ exercises:
       ar: يريد ذلك الباحث الشابّ أن يصبح عالِمًا مشهورًا.
       en: That young researcher wants to become a famous scientist.
     words: [peneliti, ilmuwan]
+  - id: e10
+    type: multiple_choice
+    question: Peneliti itu menemukan jamur baru di hutan.
+    question_meaning:
+      ar_eg: معنى الجملة دي إيه؟
+      ar: ما معنى هذه الجملة؟
+      en: What does this sentence mean?
+    options: ['الباحث اكتشف فطر جديد.', 'الباحث أكل فطر جديد.', 'الباحث دوّر على فطر ومالقاش.']
+    answer: 0
+    explain:
+      ar_eg: «menemukan» = يلاقي أو يكتشف، من «temu».
+      ar: «menemukan» تعني يجد أو يكتشف، من الجذر «temu».
+      en: «menemukan» means to find or discover, from the root «temu».
+    words: [menemukan, peneliti]
 dialogue:
   title: Peneliti hutan
   lines:
@@ -184,6 +198,11 @@ new_words:
     ar_eg: تجربة
     ar: تجربة
     en: experiment
+  - word: menemukan
+    pos: verb
+    ar_eg: يكتشف، يلاقي
+    ar: يكتشف، يجد
+    en: to find, to discover
 review:
   status: draft
   verified: false

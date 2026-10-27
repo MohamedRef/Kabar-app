@@ -151,17 +151,18 @@ exercises:
     words: [ora, dudu, ora ana, durung, ngerti, wong Jawa]
   - id: e02
     type: multiple_choice
+    question: Iki ___ omahku.
     question_meaning:
-      ar_eg: أنهي كلمة بتنفي الاسم (زي bukan)؟
-      ar: أيّ كلمة تنفي الاسم (مثل bukan)؟
-      en: Which word negates a noun (like bukan)?
+      ar_eg: «ده مش بيتي». أنهي كلمة بتنفي الاسم (زي bukan)؟
+      ar: «هذا ليس بيتي». أيّ كلمة تنفي الاسم (مثل bukan)؟
+      en: 'This isn''t my house. Which word negates a noun (like bukan)?'
     options: [dudu, ora, durung]
     answer: 0
     explain:
       ar_eg: dudu = bukan، للاسم. ora = tidak، للفعل والصفة.
       ar: dudu = bukan للاسم، وora = tidak للفعل والصفة.
       en: dudu = bukan, for nouns. ora = tidak, for verbs and adjectives.
-    words: [dudu]
+    words: [dudu, iki]
   - id: e03
     type: listen
     text: Aku ora ngerti.
@@ -181,7 +182,7 @@ exercises:
       ar_eg: kopiku اسم (قهوتي)، والاسم بيتنفي بـ dudu زي bukan. ora وgak للفعل والصفة.
       ar: kopiku اسم فيُنفى بـ dudu كما في bukan، أما ora وgak فللفعل والصفة.
       en: kopiku is a noun, so it takes dudu (like bukan). ora and gak are for verbs and adjectives.
-    words: [dudu, kopi]
+    words: [dudu, kopi, iki]
   - id: e05
     type: build_sentence
     source:
@@ -197,12 +198,12 @@ exercises:
     words: [dudu, wong]
   - id: e06
     type: speaking
-    text: Aku dudu wong Jawa, aku wong Mesir. Nang omahku ora ana kopi.
+    text: Aku dudu wong Jawa, aku wong Mesir. Iki omahku, ora ana kopi.
     meaning:
-      ar_eg: أنا مش جاوي، أنا مصري. في بيتي مفيش قهوة.
-      ar: لستُ جاويًّا، أنا مصري. لا توجد قهوة في بيتي.
-      en: I'm not Javanese, I'm Egyptian. There's no coffee at my house.
-    words: [dudu, wong Jawa, ora ana, kopi]
+      ar_eg: أنا مش جاوي، أنا مصري. ده بيتي، مفيش قهوة.
+      ar: لستُ جاويًّا، أنا مصري. هذا بيتي، ولا توجد قهوة.
+      en: I'm not Javanese, I'm Egyptian. This is my house; there's no coffee.
+    words: [dudu, wong Jawa, ora ana, kopi, iki]
   - id: e07
     type: multiple_choice
     question: Kopine ora ana.
@@ -261,6 +262,11 @@ new_words:
     ar_eg: واحد جاوي (= orang Jawa)
     ar: جاويّ (= orang Jawa)
     en: a Javanese person (= orang Jawa)
+  - word: iki
+    pos: pronoun
+    ar_eg: ده / دي (= ini)
+    ar: هذا / هذه (= ini)
+    en: this (= ini)
 review:
   status: draft
   verified: false

@@ -59,6 +59,7 @@ exercises:
       ar_eg: في ليلة من الليالي، حكى السر لجاره.
       ar: في إحدى الليالي أخبر جاره بالسر.
       en: One night he told the secret to his neighbour.
+    words: [suatu]
   - id: e03
     type: listen
     text: Keesokan harinya, semua emasnya hilang.
@@ -144,6 +145,30 @@ exercises:
       - Nelayan menceritakan rahasia itu kepada tetangganya.
       - Nelayan itu menceritakan rahasia kepada tetangganya.
     words: [nelayan]
+  - id: e09
+    type: multiple_choice
+    question: Suatu hari, nelayan itu menangkap ikan ajaib.
+    question_meaning:
+      ar_eg: ده حصل إمتى؟
+      ar: متى حدث ذلك؟
+      en: When did this happen?
+    options: ['Pada satu hari, dulu.', 'Setiap hari.', 'Kemarin pagi.']
+    answer: 0
+    explain:
+      ar_eg: suatu hari = في يوم من الأيام، أول الحواديت.
+      ar: suatu hari = ذات يوم، بداية الحكايات.
+      en: suatu hari = one day, the classic story opener.
+    words: [suatu, ajaib]
+  - id: e10
+    type: fill_blank
+    sentence: ___ malam, dia bercerita kepada tetangganya.
+    meaning:
+      ar_eg: في ليلة، حكى لجاره.
+      ar: ذات ليلة حكى لجاره.
+      en: One night, he told his neighbour.
+    options: [Suatu, Setiap, Semua]
+    answers: [Suatu]
+    words: [suatu]
 dialogue:
   title: Cerita yang sedih
   lines:
@@ -172,7 +197,12 @@ dialogue:
       ar_eg: "عندك حق. العبرة: ما تخلفش وعدك."
       ar: "معك حق. العبرة: لا تنقض وعدك."
       en: True enough. The moral is, don't break a promise.
-new_words: []
+new_words:
+  - word: suatu
+    pos: determiner
+    ar_eg: في يوم / في مرة (suatu hari = في يوم من الأيام)
+    ar: ذات (suatu hari = ذات يوم)
+    en: one, a certain (suatu hari = one day)
 review:
   status: draft
   verified: false

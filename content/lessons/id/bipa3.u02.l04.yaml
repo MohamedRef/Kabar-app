@@ -99,13 +99,13 @@ exercises:
       ar_eg: مع إنها كانت بتمطر، المتطوعين جم الشط.
       ar: مع أنها كانت تمطر، جاء المتطوعون إلى الشاطئ.
       en: Although it was raining, the volunteers came to the beach.
-    words: [walaupun, relawan]
+    words: [walaupun, relawan, kalau]
   - id: e04
     type: multiple_choice
     question: Ini kegiatan untuk semua orang. ___ boleh ikut.
-    options: [Walaupun, Apa pun, Siapa pun]
+    options: [Kalau, Apa pun, Siapa pun]
     answer: 2
-    words: [siapa pun, kegiatan]
+    words: [siapa pun, kegiatan, ikut]
   - id: e05
     type: fill_blank
     sentence: Kita harus ___ sampah plastik.
@@ -152,7 +152,7 @@ exercises:
       - Siapa pun bisa ikut dalam kegiatan ini.
       - Siapa pun boleh mengikuti kegiatan ini.
       - Siapa pun bisa mengikuti kegiatan ini.
-    words: [siapa pun, kegiatan]
+    words: [siapa pun, kegiatan, ikut]
   - id: e09
     type: speaking
     text: Apa pun pekerjaan kita, kita bisa mengurangi sampah.
@@ -161,6 +161,20 @@ exercises:
       ar: أيًّا كان عملنا، نستطيع أن نقلّل النفايات.
       en: Whatever our job is, we can reduce waste.
     words: [apa pun, mengurangi]
+  - id: e10
+    type: multiple_choice
+    question: ___ hujan, saya tidak ikut.
+    question_meaning:
+      ar_eg: «لو مطرت، مش هاجي معاكم.» أنهي كلمة؟
+      ar: «إذا أمطرت فلن أشارك.» أيّ كلمة؟
+      en: '"If it rains, I won''t come along." Which word?'
+    options: [Kalau, Walaupun, Siapa pun]
+    answer: 0
+    explain:
+      ar_eg: kalau = لو (شرط). walaupun = رغم إن. Walaupun hujan, saya ikut = رغم المطر هاجي.
+      ar: kalau = إذا (شرط)، وwalaupun = رغم أنّ. Walaupun hujan, saya ikut = سأشارك رغم المطر.
+      en: kalau = if; walaupun = although. Walaupun hujan, saya ikut = I'll come even though it rains.
+    words: [kalau, ikut, walaupun]
 dialogue:
   title: Bersih pantai
   lines:
@@ -220,6 +234,16 @@ new_words:
     ar_eg: يقلّل
     ar: يقلّل
     en: to reduce
+  - word: kalau
+    pos: conjunction
+    ar_eg: لو (kalau hujan = لو مطرت)
+    ar: إذا / لو
+    en: if, when
+  - word: ikut
+    pos: verb
+    ar_eg: ييجي معانا / يشارك
+    ar: يشارك / يرافق
+    en: to join, come along
 review:
   status: draft
   verified: false

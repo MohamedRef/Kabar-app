@@ -92,7 +92,7 @@ exercises:
       ar_eg: ده اقتراح، يعني «الأحسن»، فبنقول sebaiknya.
       ar: هذا اقتراح بمعنى «الأفضل»، فنقول sebaiknya.
       en: It's a suggestion ("you'd better"), so sebaiknya.
-    words: [sebaiknya]
+    words: [sebaiknya, lain]
   - id: e03
     type: listen
     text: Sebenarnya, AC-nya masih rusak.
@@ -143,14 +143,14 @@ exercises:
     words: [mengembalikan]
   - id: e07
     type: fill_blank
-    sentence: ___, saya sudah ke resepsionis kemarin, tapi AC-nya masih rusak.
+    sentence: ___, saya sudah ke resepsionis kemarin, tapi AC-nya masih rusak. Saya mau kamar lain.
     meaning:
-      ar_eg: الحقيقة إني رحت الاستقبال امبارح، بس التكييف لسه بايظ.
-      ar: في الحقيقة ذهبتُ إلى الاستقبال أمس، لكن المكيّف ما زال معطّلًا.
-      en: Actually, I already went to reception yesterday, but the AC is still broken.
+      ar_eg: الحقيقة إني رحت الاستقبال امبارح، بس التكييف لسه بايظ. عايز أوضة تانية.
+      ar: في الحقيقة ذهبتُ إلى الاستقبال أمس، لكن المكيّف ما زال معطّلًا. أريد غرفة أخرى.
+      en: Actually, I already went to reception yesterday, but the AC is still broken. I'd like another room.
     options: [Sebaiknya, Sebenarnya, Secepatnya]
     answers: [Sebenarnya]
-    words: [sebenarnya]
+    words: [sebenarnya, lain]
   - id: e08
     type: translate
     direction: to_target
@@ -178,6 +178,20 @@ exercises:
       ar: أعتذر مسبقًا، أطلب من الفندق أن يردّ مالي في أسرع وقت.
       en: Sorry in advance, but I'm asking the hotel to refund my money as soon as possible.
     words: [sebelumnya, mengembalikan, secepatnya]
+  - id: e10
+    type: multiple_choice
+    question: Kamar ini berisik. Boleh saya pindah ke kamar lain?
+    question_meaning:
+      ar_eg: الضيف عايز إيه؟
+      ar: ماذا يريد النزيل؟
+      en: What does the guest want?
+    options: ['Kamar yang lain.', 'Uangnya.', 'AC baru.']
+    answer: 0
+    explain:
+      ar_eg: kamar lain = أوضة تانية. lain = تاني / غير.
+      ar: kamar lain = غرفة أخرى، وlain = آخر.
+      en: kamar lain = another room. lain = other.
+    words: [lain]
 dialogue:
   title: Masih rusak
   lines:
@@ -227,6 +241,11 @@ new_words:
     ar_eg: يرجّع (حاجة لصاحبها)
     ar: يُعيد / يردّ
     en: to give back, to return (something)
+  - word: lain
+    pos: adjective
+    ar_eg: تاني / غير (kamar lain = أوضة تانية)
+    ar: آخر / غير
+    en: other, another
 review:
   status: draft
   verified: false

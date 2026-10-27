@@ -75,7 +75,7 @@ exercises:
       en: Having weighed both views, I chose a middle way.
     options: [menimbang, terancam, solusi]
     answers: [menimbang]
-    words: [menimbang]
+    words: [menimbang, jalan tengah]
   - id: e04
     type: listen
     text: Penulis berpendapat bahwa solusinya harus melibatkan masyarakat adat.
@@ -126,7 +126,31 @@ exercises:
       ar_eg: بعد ما وزنت الرأيين، أنا شايف إننا محتاجين حل وسط.
       ar: بعد الموازنة بين الرأيين، أرى أنّنا بحاجة إلى حلّ وسط.
       en: Having weighed both views, I believe we need a middle way.
-    words: [menimbang, berpendapat]
+    words: [menimbang, berpendapat, butuh, jalan tengah]
+  - id: e09
+    type: multiple_choice
+    question: Petani butuh penghasilan, dan hutan butuh perlindungan. Kita butuh jalan tengah.
+    question_meaning:
+      ar_eg: الكاتب بيقترح إيه؟
+      ar: ماذا يقترح الكاتب؟
+      en: What does the writer suggest?
+    options: ['Solusi yang adil bagi kedua pihak.', 'Menutup semua kebun sawit.', 'Menebang hutan untuk kebun.']
+    answer: 0
+    explain:
+      ar_eg: jalan tengah = حل وسط، وbutuh = محتاج.
+      ar: jalan tengah = حلّ وسط، وbutuh = يحتاج.
+      en: jalan tengah = a compromise; butuh = need.
+    words: [butuh, jalan tengah]
+  - id: e10
+    type: fill_blank
+    sentence: Kedua pihak ___ jalan tengah.
+    meaning:
+      ar_eg: الطرفين محتاجين حل وسط.
+      ar: يحتاج الطرفان إلى حلّ وسط.
+      en: Both sides need a compromise.
+    options: [butuh, menolak, membakar]
+    answers: [butuh]
+    words: [butuh, jalan tengah]
 dialogue:
   title: Draf esai Mohamed
   lines:
@@ -156,6 +180,16 @@ new_words:
     ar_eg: يوزن
     ar: يزن، يوازن
     en: to weigh up
+  - word: butuh
+    pos: verb
+    ar_eg: محتاج (= membutuhkan، أقل رسمية)
+    ar: يحتاج (= membutuhkan، أقل رسمية)
+    en: to need (less formal membutuhkan)
+  - word: jalan tengah
+    pos: noun
+    ar_eg: حل وسط
+    ar: حلّ وسط
+    en: middle way, compromise
 review:
   status: draft
   verified: false

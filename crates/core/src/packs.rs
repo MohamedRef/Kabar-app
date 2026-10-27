@@ -406,6 +406,16 @@ pub fn prefetch(index: &PackIndex, lesson_id: &str, installed: &BTreeMap<String,
         .collect()
 }
 
+/// Installed packs the index has a newer, downloadable version of.
+pub fn outdated(index: &PackIndex, installed: &BTreeMap<String, u32>) -> Vec<String> {
+    index
+        .packs
+        .iter()
+        .filter(|p| p.downloadable() && installed.get(&p.id).is_some_and(|v| *v < p.version))
+        .map(|p| p.id.clone())
+        .collect()
+}
+
 /// Clips no installed pack needs any more (after removing a pack): the
 /// cached keys minus every key of `keep`.
 pub fn orphans<'a>(cached: impl IntoIterator<Item = &'a str>, keep: &[PackManifest]) -> Vec<String> {
@@ -691,6 +701,9 @@ mod tests {
         // Installed u02 is outdated (v1 < v2).
         assert_eq!(prefetch(&index, "bipa1.u01.l01", &installed), ["id/bipa1.u02"]);
         assert!(prefetch(&index, "j9.u01.l01", &none).is_empty());
+        // Only installed packs with a newer version are refreshed.
+        assert_eq!(outdated(&index, &installed), ["id/bipa1.u02"]);
+        assert!(outdated(&index, &none).is_empty());
     }
 
     #[test]

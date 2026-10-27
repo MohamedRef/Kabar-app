@@ -128,7 +128,7 @@ exercises:
     words: [hormat saya]
   - id: e05
     type: fill_blank
-    sentence: Saya menulis ___ ini karena jalan di desa kami rusak.
+    sentence: Saya menulis ___ ini karena jalan di desa kami rusak dan pelayanannya buruk.
     meaning:
       ar_eg: أنا بكتب رسالة القرّاء دي عشان الطريق في قريتنا بايظ.
       ar: أكتب رسالة القرّاء هذه لأن الطريق في قريتنا متضرر.
@@ -169,7 +169,7 @@ exercises:
       - Saya menulis surat pembaca ini sebab pelayanannya buruk.
       - Saya menulis surat pembaca ini karena pelayanan buruk.
       - Saya menulis surat pembaca ini karena pelayanannya kurang baik.
-    words: [surat pembaca, pelayanan]
+    words: [surat pembaca, pelayanan, buruk]
   - id: e09
     type: speaking
     text: Atas perhatian Redaksi, saya ucapkan terima kasih. Hormat saya, Mohamed.
@@ -178,6 +178,20 @@ exercises:
       ar: أشكر هيئة التحرير على اهتمامها. مع خالص الاحترام، محمد.
       en: Thank you, Editors, for your attention. Yours faithfully, Mohamed.
     words: [redaksi, hormat saya]
+  - id: e10
+    type: multiple_choice
+    question: Pelayanan rumah sakit itu buruk. Pasien harus menunggu lima jam.
+    question_meaning:
+      ar_eg: الخدمة كانت عاملة إزاي؟
+      ar: كيف كانت الخدمة؟
+      en: How was the service?
+    options: ['Buruk.', 'Baik sekali.', 'Cepat.']
+    answer: 0
+    explain:
+      ar_eg: buruk = وحش / سيئ، عكس baik.
+      ar: buruk = سيئ، عكس baik.
+      en: buruk = bad, the opposite of baik.
+    words: [buruk, pelayanan]
 dialogue:
   title: Menulis surat bersama
   lines:
@@ -229,6 +243,11 @@ new_words:
     ar: مع خالص الاحترام
     en: yours faithfully
     arabic: حرمة
+  - word: buruk
+    pos: adjective
+    ar_eg: وحش / سيئ
+    ar: سيئ
+    en: bad, poor
 review:
   status: draft
   verified: false
