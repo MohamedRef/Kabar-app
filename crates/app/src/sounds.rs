@@ -1,5 +1,5 @@
 //! Lesson sounds (SPEC §9), synthesized by `scripts/assets/synth_sounds.py`:
-//! a gong when a lesson ends and a kendang tap for a right answer. WAV, so
+//! a gong (variant 3) when a lesson ends and a kendang tap for a right answer. WAV, so
 //! every web view plays them; silent when sounds are off in Settings.
 
 use std::sync::LazyLock;
@@ -16,7 +16,7 @@ pub enum Sound {
 }
 
 static GONG: LazyLock<String> =
-    LazyLock::new(|| data_url(include_bytes!("../../../assets/sounds/gong-1.wav")));
+    LazyLock::new(|| data_url(include_bytes!("../../../assets/sounds/gong-3.wav")));
 static KENDANG: LazyLock<String> =
     LazyLock::new(|| data_url(include_bytes!("../../../assets/sounds/kendang-1.wav")));
 
