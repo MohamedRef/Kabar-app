@@ -2,6 +2,7 @@
 .chat { display: grid; gap: 0.75rem; max-inline-size: 46rem; margin-inline: auto; }
 .chat h2, .chat h3 { margin: 0; }
 .ch-personas, .ch-history, .ch-scenes, .ch-messages, .ch-fixes { list-style: none; padding: 0; margin: 0; }
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .chat:has(.ch-personas) { max-inline-size: 72rem; }
 .ch-personas { display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
 .ch-personas .card, .ch-scenes .card { margin: 0; }
 .ch-persona, .ch-scene, .ch-open {

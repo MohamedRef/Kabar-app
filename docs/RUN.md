@@ -232,7 +232,7 @@ Ink syncs like every other row (`notebooks`, `ink_documents`, `ink_strokes`, `no
 
 - **Stats**: Review → "All stats" (under the forecast), or Today → "All stats". Study heatmap (20 weeks), time studied, known words per language, true retention (mature/young, 7 and 30 days) and the 30-day review forecast. Hover a cell or bar on the Mac for its numbers; every chart also has a sentence under it.
 - **Monthly level check**: offered on Today once a month (the first one about 4 weeks after you start); "Later" hides it for 3 days on that device. You can also take it any time from Stats. It's ~10 minutes of your current level's test items, then the skill radar vs last month, Kak Nur's decision and "BIPA N around <date>". Fully offline. Levels without test items yet (BIPA 3+, Javanese) get a history-only check.
-- Preview on the Mac: `KABAR_OPEN_SCREEN=stats just run-mac` or `KABAR_OPEN_SCREEN=level_check just run-mac`.
+- Preview on the Mac: `KABAR_OPEN_SCREEN=stats just run-mac` (also `level_check`, `journey`, `reader`, `review`, `play`, `listen`, `chat`, `coach`, `journal`). `KABAR_WINDOW_SIZE=412x900` previews the phone layout, `800x1280` tablet portrait, `1280x800` tablet landscape.
 - Demo data for screenshots (a throwaway database, never your real one): `KABAR_DEMO_DB=/tmp/kabar-demo.db cargo test -p kabar-app seed_stats_demo -- --ignored`, then run the app with its data dir pointing there (see `crates/app/src/stats/demo.rs`).
 
 ## 13. Offline packs (audio per unit)
