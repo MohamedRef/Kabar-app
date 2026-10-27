@@ -152,6 +152,51 @@ pub fn take_shared_input() -> Option<SharedInput> {
     }
 }
 
+/// Where the Android photo picker started by [`pick_image`] is.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[cfg_attr(not(target_os = "android"), allow(dead_code))]
+pub enum PickState {
+    /// Still showing.
+    Open,
+    /// Closed: the picked image (if any) waits in [`take_shared_input`].
+    Done,
+    /// The image couldn't be opened or copied.
+    Failed,
+}
+
+/// Whether the Reader opens screenshots through [`pick_image`] instead of a
+/// file input. Dioxus answers a file input with a native dialog that only
+/// exists on desktop, so on Android it never returns a file.
+pub const NATIVE_IMAGE_PICKER: bool = cfg!(target_os = "android");
+
+/// Shows the system photo picker (Android). The choice arrives like a share:
+/// poll [`pick_state`] and [`take_shared_input`].
+pub fn pick_image() -> Result<(), String> {
+    #[cfg(target_os = "android")]
+    {
+        android::pick_image()
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        Err("no native image picker on this platform".to_string())
+    }
+}
+
+/// See [`pick_image`].
+pub fn pick_state() -> PickState {
+    #[cfg(target_os = "android")]
+    {
+        android::pick_state().unwrap_or_else(|e| {
+            eprintln!("kabar: image picker state: {e}");
+            PickState::Failed
+        })
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        PickState::Done
+    }
+}
+
 /// Name for the Devices screen, e.g. "Galaxy S24 Ultra" or "Mohamed's MacBook Air".
 pub fn device_name() -> Option<String> {
     #[cfg(target_os = "android")]
