@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Merged into crates/app/AndroidManifest.xml's app by the manifest merger. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Oral mode with the screen off (OralService): a foreground media
+         service, and a partial wake lock so the think timer keeps running.
+         Media-session notifications don't need POST_NOTIFICATIONS. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <application>
+        <service
+            android:name="app.batna.OralService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
+    </application>
+</manifest>

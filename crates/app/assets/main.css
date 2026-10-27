@@ -4,19 +4,10 @@
    Layout by window width: bottom bar under 600px, side rail from 600px,
    a wider reading column from 840px. */
 
+/* Colour tokens (--bg, --surface, --text, --muted, --line, --accent[-soft],
+   --good[-soft], --bad[-soft]) come from batna_core::theme, per the theme
+   picked in Settings › Look. */
 :root {
-  --bg: #f6f7f4;
-  --surface: #ffffff;
-  --text: #1d2420;
-  --muted: #5b665f;
-  --line: #d9ded8;
-  --accent: #9a6a12;
-  --accent-soft: #f3e7cc;
-  --good: #2f6b4f;
-  --good-soft: #e1efe7;
-  --bad: #a13a2c;
-  --bad-soft: #f6e1dc;
-
   --font: "IBM Plex Sans Arabic", "Noto Sans Arabic", "Segoe UI", "Roboto", system-ui, sans-serif;
   --font-latin: "Inter", "Segoe UI", "Roboto", system-ui, sans-serif;
   --fs-sm: 0.875rem;
@@ -36,28 +27,14 @@
   --dur: 180ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #141917;
-    --surface: #1b211e;
-    --text: #e6ebe7;
-    --muted: #9aa69f;
-    --line: #2f3833;
-    --accent: #e0b25a;
-    --accent-soft: #3a2f18;
-    --good: #7cc7a0;
-    --good-soft: #1d3329;
-    --bad: #ee8f80;
-    --bad-soft: #3d2320;
-    color-scheme: dark;
-  }
-}
-
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; background: var(--bg); }
+/* Dioxus mounts the app in #main, which has no height of its own. */
+#main { min-height: 100%; }
 
 .app {
-  min-height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
@@ -107,6 +84,8 @@ button { font: inherit; color: inherit; }
   padding-block-end: env(safe-area-inset-bottom, 0px);
   position: sticky;
   bottom: 0;
+  /* Above sticky or positioned content inside screens (main comes later in the DOM). */
+  z-index: 10;
 }
 .nav-item {
   display: flex;

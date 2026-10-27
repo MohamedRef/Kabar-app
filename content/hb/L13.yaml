@@ -1,0 +1,2412 @@
+# Lecture 13: Immune Liver Disease. Paraphrased from the Alexandria PG book, chapter 1, pages 204-251.
+# Items tagged `figure` come from figures that are images in the PDF (pages 206, 214, 242).
+schema: batna.content/v1
+lecture: hb.L13
+title: Immune Liver Disease
+author: Prof. Dr. Amr Abdel Moety
+book:
+  chapter: 1
+  pages: [204, 251]
+topics:
+- {id: aih-diagnosis, title: 'AIH: definition, histology and diagnosis'}
+- {id: aih-types, title: 'AIH: pathogenesis, types and variant forms'}
+- {id: aih-treatment, title: 'AIH: prognosis, indications, regimens and end points'}
+- {id: pbc-disease, title: 'PBC: epidemiology, pathogenesis, histology and clinical features'}
+- {id: pbc-treatment, title: 'PBC: treatment and transplantation'}
+- {id: psc-disease, title: 'PSC: definition, causes, presentation and diagnosis'}
+- {id: psc-treatment, title: 'PSC: complications, transplantation and UDCA'}
+- {id: psc-emerging, title: 'PSC: emerging drug therapy'}
+- {id: igg4-diagnosis, title: 'IgG4-RD: features, serology and histology'}
+- {id: igg4-organs, title: 'IgG4-RD: pancreas, bile ducts and other organs'}
+- {id: igg4-treatment, title: 'IgG4-RD: treatment, relapse and prognosis'}
+- {id: comparison, title: 'AIH, PBC and PSC compared'}
+items:
+- id: hb.L13.001
+  kind: card
+  topic: aih-diagnosis
+  front: Define autoimmune hepatitis (AIH).
+  back: A self-perpetuating hepatocellular inflammation of unknown cause.
+  src: {page: 204, quote: self-perpetuating hepatocellular inflammation of unknown cause}
+  status: unverified
+- id: hb.L13.002
+  kind: enumerate
+  topic: aih-diagnosis
+  prompt: Mention the three features that characterise AIH.
+  points: [Interface hepatitis on histology, Hypergammaglobulinemia and autoantibodies in the serum, Diagnosis made
+      after exclusion of other chronic liver diseases]
+  pass: 3
+  src: {page: 204}
+  status: unverified
+- id: hb.L13.003
+  kind: card
+  topic: aih-diagnosis
+  front: What is interface hepatitis?
+  back: Disruption of the limiting plate of the portal tract by a lymphoplasmacytic infiltrate.
+  src: {page: 205}
+  status: unverified
+- id: hb.L13.004
+  kind: cloze
+  topic: aih-diagnosis
+  text: '{{c1::Interface hepatitis}} is the histologic hallmark of autoimmune hepatitis.'
+  src: {page: 205}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.005
+  kind: card
+  topic: aih-diagnosis
+  front: What is lobular hepatitis, and how does it relate to interface hepatitis in AIH?
+  back: Mononuclear inflammatory cells lining the sinusoidal spaces. It usually coexists with interface hepatitis
+    and may be pronounced in acute presentations.
+  src: {page: 205}
+  status: unverified
+- id: hb.L13.006
+  kind: enumerate
+  topic: aih-diagnosis
+  prompt: The book lists four diagnostic criteria (features) of AIH on page 205. Mention them.
+  points: ['Propensity for an acute and, rarely, fulminant hepatitis', Presence of lobular hepatitis, 'Cholestatic
+      histologic changes, including bile duct injury and ductopenia', 'Immunoserologic tests (ANA, SMA, anti-LKM1,
+      pANCA)']
+  pass: 3
+  src: {page: 205}
+  status: unverified
+- id: hb.L13.007
+  kind: enumerate
+  topic: aih-diagnosis
+  prompt: Mention the four immunoserologic tests used in AIH.
+  points: [Antinuclear antibodies (ANA), Smooth muscle antibodies (SMA), Liver/kidney microsome type 1 antibodies
+      (anti-LKM1), Perinuclear anti-neutrophil cytoplasmic antibodies (pANCA)]
+  pass: 4
+  src: {page: 205}
+  status: unverified
+- id: hb.L13.008
+  kind: cloze
+  topic: aih-diagnosis
+  text: pANCA is common in {{c1::type 1}} AIH.
+  src: {page: 205}
+  status: unverified
+- id: hb.L13.009
+  kind: enumerate
+  topic: aih-diagnosis
+  prompt: What does a definite diagnosis of AIH require?
+  points: [Exclusion of other similar diseases, Laboratory findings of substantial immunoreactivity, Histologic
+      features of interface hepatitis]
+  pass: 3
+  src: {page: 206}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.010
+  kind: card
+  topic: aih-diagnosis
+  front: When is a "probable" diagnosis of AIH justified?
+  back: When findings are compatible with AIH but insufficient for a definite diagnosis, for example a patient without
+    conventional autoantibodies who is positive for investigational markers.
+  src: {page: 206}
+  status: unverified
+- id: hb.L13.011
+  kind: enumerate
+  topic: aih-diagnosis
+  prompt: Mention the investigational autoantibodies that classify a patient without conventional autoantibodies
+    as probable AIH.
+  points: [Anti-asialoglycoprotein receptor (anti-ASGPR), Anti-soluble liver antigen/liver-pancreas (anti-SLA/LP),
+    Antiactin, Anti-liver cytosol type 1 (anti-LC1)]
+  pass: 3
+  src: {page: 206}
+  status: unverified
+- id: hb.L13.012
+  kind: enumerate
+  topic: aih-diagnosis
+  prompt: In the AIH diagnostic algorithm (Fig. 1), which conditions must be excluded before the biopsy step?
+  points: [AMA negative, Normal ceruloplasmin, Normal alpha-1 antitrypsin phenotype, Normal or nonspecific iron
+      level, 'HBsAg, anti-HCV and IgM anti-HAV negative']
+  pass: 4
+  src: {page: 206}
+  status: unverified
+  tags: [figure]
+- id: hb.L13.013
+  kind: cloze
+  topic: aih-diagnosis
+  text: 'AIH algorithm (Fig. 1): definite AIH needs gamma globulin ≥ {{c1::1.5}} × normal and ANA, SMA or anti-LKM1
+    titre ≥ {{c2::1:80}}; probable AIH accepts a titre ≥ {{c3::1:40}}.'
+  src: {page: 206}
+  status: unverified
+  tags: [figure, numbers, high-yield]
+- id: hb.L13.014
+  kind: card
+  topic: aih-diagnosis
+  front: 'AIH algorithm (Fig. 1): how do drug, blood product and alcohol history differ between definite and probable
+    AIH?'
+  back: 'Definite: no drugs or blood products, and alcohol < 25 g/day. Probable: previous drugs or blood products,
+    alcohol use, or other liver-related autoantibodies are allowed.'
+  src: {page: 206}
+  status: unverified
+  tags: [figure, numbers]
+- id: hb.L13.015
+  kind: card
+  topic: aih-diagnosis
+  front: 'AIH algorithm (Fig. 1): which antibodies define type 1 and type 2 AIH?'
+  back: 'Type 1: ANA and/or SMA. Type 2: anti-LKM1.'
+  src: {page: 206}
+  status: unverified
+  tags: [figure, high-yield]
+- id: hb.L13.016
+  kind: card
+  topic: aih-diagnosis
+  front: 'AIH algorithm (Fig. 1): what histology is required after the exclusion step?'
+  back: Interface hepatitis, with or without lobular hepatitis.
+  src: {page: 206}
+  status: unverified
+  tags: [figure]
+- id: hb.L13.017
+  kind: enumerate
+  topic: aih-diagnosis
+  prompt: Mention the symptoms of AIH (Table 4).
+  points: [Fatigue, Upper abdominal discomfort, Mild pruritus, Anorexia, Polymyalgias, Diarrhea, Cushingoid features,
+    Fever (≤ 40 °C)]
+  pass: 5
+  src: {page: 211}
+  status: unverified
+- id: hb.L13.018
+  kind: enumerate
+  topic: aih-diagnosis
+  prompt: Mention the physical findings of AIH (Table 4).
+  points: [Hepatomegaly, Jaundice, Splenomegaly, Spider angiomas, Ascites, Encephalopathy, Concurrent immune diseases]
+  pass: 5
+  src: {page: 211}
+  status: unverified
+- id: hb.L13.019
+  kind: card
+  topic: aih-diagnosis
+  front: Laboratory features of AIH listed in Table 4 (apart from autoantibodies)?
+  back: Aminotransferase (AST) elevation, hyperbilirubinemia, and alkaline phosphatase ≥ 2-fold normal.
+  src: {page: 211}
+  status: unverified
+- id: hb.L13.020
+  kind: enumerate
+  topic: aih-diagnosis
+  prompt: Mention the immunoserologic markers of AIH in Table 4.
+  points: ['SMA, ANA or anti-LKM1', Perinuclear antineutrophil cytoplasmic antibody (pANCA), Anti-asialoglycoprotein
+      receptor, Antiactin, Anti-liver cytosol 1, Anti-soluble liver antigen/liver-pancreas]
+  pass: 4
+  src: {page: 211}
+  status: unverified
+- id: hb.L13.021
+  kind: mcq
+  topic: aih-diagnosis
+  stem: A 35-year-old woman has fatigue and jaundice. AST is 8 times normal and gamma globulin 2 times normal. ANA
+    is 1:160. She takes no drugs, has had no blood products and does not drink. AMA, HBsAg, anti-HCV and IgM anti-HAV
+    are negative; ceruloplasmin, alpha-1 antitrypsin phenotype and iron are normal. Biopsy shows interface hepatitis.
+    How is she classified on the book's algorithm?
+  options: [Definite type 1 AIH, Probable type 1 AIH, Definite type 2 AIH, AIH + PBC variant, Cryptogenic chronic
+      hepatitis]
+  answer: 0
+  why: ['Correct: gamma globulin ≥ 1.5× normal, ANA ≥ 1:80, no drugs or blood products, alcohol < 25 g/day, and
+      interface hepatitis; ANA positivity makes it type 1.', 'Probable AIH is for weaker findings (titre 1:40, drug
+      or alcohol exposure, or only investigational antibodies).', 'Type 2 AIH is defined by anti-LKM1, not ANA.',
+    'The AIH + PBC variant needs AMA, which is negative here.', Cryptogenic chronic hepatitis has no autoantibodies;
+      she is ANA positive.]
+  src: {page: 206}
+  status: unverified
+  tags: [figure]
+- id: hb.L13.022
+  kind: mcq
+  topic: aih-diagnosis
+  stem: Which histologic finding is the hallmark of autoimmune hepatitis?
+  options: [Florid bile duct lesion, Onion-skin periductal fibrosis, Interface hepatitis with a lymphoplasmacytic
+      infiltrate, Storiform fibrosis with obliterative phlebitis, Noncaseating granuloma in a portal triad]
+  answer: 2
+  why: [The florid duct lesion is stage I of PBC., Onion-skin fibrosis around an obliterated duct is the lesion
+      of PSC., 'Correct: the limiting plate is disrupted by a lymphoplasmacytic infiltrate; this is the hallmark
+      of AIH.', Storiform fibrosis and obliterative phlebitis are features of IgG4-related disease., 'A noncaseating
+      granuloma appears in the book''s PBC stage IV image, not as the AIH hallmark.']
+  src: {page: 205}
+  status: unverified
+- id: hb.L13.023
+  kind: mcq
+  topic: aih-diagnosis
+  stem: A 40-year-old man has features of AIH. ANA, SMA and anti-LKM1 are negative, but anti-SLA/LP is positive.
+    Viral, metabolic and drug causes are excluded. How should he be classified?
+  options: [Definite AIH, Probable AIH, AIH excluded because conventional autoantibodies are negative, Primary biliary
+      cholangitis, Type 2 AIH]
+  answer: 1
+  why: [Definite AIH needs conventional autoantibodies at diagnostic titres., 'Correct: lacking conventional autoantibodies
+      but positive for investigational markers (anti-ASGPR, anti-SLA/LP, antiactin, anti-LC1) is probable AIH.',
+    Seronegativity for conventional antibodies does not exclude AIH., 'PBC is defined by AMA, which is not mentioned.',
+    'Type 2 AIH requires anti-LKM1, which is negative.']
+  src: {page: 206}
+  status: unverified
+- id: hb.L13.024
+  kind: enumerate
+  topic: aih-types
+  prompt: Mention the interacting factors proposed in the pathogenesis of AIH.
+  points: ['A triggering agent (infectious agents, drugs, toxins)', A genetic predisposition, 'Autoantigen display,
+      immunocyte activation and effector cell expansion']
+  pass: 3
+  src: {page: 207}
+  status: unverified
+- id: hb.L13.025
+  kind: cloze
+  topic: aih-types
+  text: AIH susceptibility alleles reside on the {{c1::DRB1}} gene; in white northern European and North American
+    patients they are {{c2::DRB1*0301}} and {{c3::DRB1*0401}}.
+  src: {page: 207}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.026
+  kind: card
+  topic: aih-types
+  front: What is the shared motif hypothesis of AIH?
+  back: Risk of disease relates to the amino acid sequence in the antigen-binding groove of the class II MHC molecule,
+    and several alleles encode the same or a similar sequence (the shared motif).
+  src: {page: 207}
+  status: unverified
+- id: hb.L13.027
+  kind: cloze
+  topic: aih-types
+  text: The critical AIH shared motif in white northern Europeans and North Americans is the six-amino-acid code
+    {{c1::LLEQKR}}, with lysine at position {{c2::71}} of the DRβ chain.
+  src: {page: 207}
+  status: unverified
+- id: hb.L13.028
+  kind: card
+  topic: aih-types
+  front: How do DRB1*0404 and DRB1*0405 (Mexican, Japanese and Argentine adults) differ from the northern European
+    AIH motif?
+  back: They encode a similar sequence, except arginine (R) instead of lysine (K) at DRβ71.
+  src: {page: 207}
+  status: unverified
+- id: hb.L13.029
+  kind: card
+  topic: aih-types
+  front: Which autoantigen is the only one recognised as a target in AIH?
+  back: Cytochrome P450 IID6 (CYP2D6).
+  src: {page: 207}
+  status: unverified
+- id: hb.L13.030
+  kind: card
+  topic: aih-types
+  front: By what mechanisms are liver cells destroyed in AIH?
+  back: Cell-mediated cytotoxicity, antibody-dependent cell-mediated cytotoxicity, or both.
+  src: {page: 208}
+  status: unverified
+- id: hb.L13.031
+  kind: table
+  topic: aih-types
+  title: Subclassification of AIH by autoantibodies (Table 1)
+  columns: [Feature, Type 1, Type 2, Type 3]
+  rows:
+  - [Conventional autoantibodies, 'Smooth muscle (SMA), nuclear (ANA)', Liver/kidney microsome type 1 (anti-LKM1),
+    None]
+  - [Novel autoantibodies, 'pANCA, actin, asialoglycoprotein receptor (possible)', CYP2D6, Transfer ribonucleoprotein
+      (tRNP) involved in selenocysteine metabolism]
+  - [Age (years), Bimodal (10–20 and 45–70), Pediatric (2–14), Adults (30–50)]
+  - [Women (%), '78', '89', '90']
+  - [Concurrent immune diseases (%), '41', '34', '58']
+  - [Organ-specific antibodies (%), '4', '30', Uncertain]
+  - [Gamma globulin elevation, Marked, Mild, Moderate]
+  - [Low IgA, 'No', Occasional, 'No']
+  - [HLA associations, 'B8, DR3, C4A', 'B14, DR3, C4A-Q0, DR7', Uncertain]
+  - [Allelic risk factors, 'DRB1*0301 and *0401 (white North Americans, northern Europeans)', DRB1*07 (Germans and
+      Brazilians), Uncertain]
+  - [Glucocorticoid responsive, +++, +++, +++]
+  blanks:
+  - [0, 1]
+  - [0, 2]
+  - [0, 3]
+  - [1, 2]
+  - [2, 1]
+  - [2, 2]
+  - [2, 3]
+  - [6, 1]
+  - [6, 2]
+  - [7, 2]
+  - [9, 2]
+  src: {page: 208}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.032
+  kind: mcq
+  topic: aih-types
+  stem: A 9-year-old girl presents with acute hepatitis. ANA and SMA are negative; anti-LKM1 is positive. Which
+    autoantigen is the target of her autoantibody?
+  options: [Asialoglycoprotein receptor, Transfer ribonucleoprotein (tRNP), Cytochrome P450 IID6 (CYP2D6), Pyruvate
+      dehydrogenase on mitochondria, Actin]
+  answer: 2
+  why: [Anti-ASGPR is a novel marker listed for type 1 AIH., tRNP is the novel antibody target in type 3 AIH., 'Correct:
+      anti-LKM1 defines type 2 AIH, and CYP2D6 is its target and the only recognised AIH autoantigen.', Mitochondrial
+      antigens are the target of AMA in PBC; the book does not name the protein., Antiactin is a novel marker listed
+      for type 1 AIH.]
+  src: {page: 208}
+  status: unverified
+- id: hb.L13.033
+  kind: mcq
+  topic: aih-types
+  stem: According to Table 1, which age pattern is typical of type 1 AIH?
+  options: ['Pediatric, 2–14 years', 'Adults, 30–50 years', 'Bimodal, 10–20 and 45–70 years', 'Elderly only, over
+      70 years']
+  answer: 2
+  why: [2–14 years is type 2 AIH., 30–50 years is type 3 AIH., 'Correct: type 1 AIH is bimodal, at 10–20 and 45–70
+      years.', No AIH type in Table 1 is limited to the elderly.]
+  src: {page: 208}
+  status: unverified
+- id: hb.L13.034
+  kind: mcq
+  topic: aih-types
+  stem: A child with AIH has occasional low IgA, mild gamma globulin elevation and organ-specific antibodies. Which
+    type of AIH best fits?
+  options: [Type 1, Type 2, Type 3, Cryptogenic chronic hepatitis]
+  answer: 1
+  why: ['Type 1 has marked gamma globulin elevation, no low IgA, and organ-specific antibodies in only 4%.', 'Correct:
+      type 2 is pediatric, with mild gamma globulin elevation, occasional low IgA and organ-specific antibodies
+      in 30%.', 'Type 3 affects adults, has moderate gamma globulin elevation and no low IgA.', 'Cryptogenic chronic
+      hepatitis is a variant without autoantibodies, not a Table 1 type.']
+  src: {page: 208}
+  status: unverified
+- id: hb.L13.035
+  kind: table
+  topic: aih-types
+  title: Variant forms of AIH (Table 2)
+  columns: [Feature, AIH + PBC, AIH + PSC, Autoimmune cholangitis, Cryptogenic chronic hepatitis]
+  rows:
+  - [Clinical, AIH features; AMA present, AIH features; chronic ulcerative colitis (CUC); AMA absent; abnormal cholangiogram,
+    ANA and/or SMA present; AMA absent; no CUC; normal cholangiogram, AIH features; no autoantibodies; HLA-B8 or
+      DR3]
+  - [Histology, Cholangitis, Cholangitis, Cholangitis, Interface hepatitis]
+  - [Treatment, Empirical prednisone if ALP ≤ 2× normal; prednisone and UDCA if ALP > 2× normal and/or florid duct
+      lesions, Empirical prednisone and UDCA if ALP > 2× normal and/or florid duct lesions, Empirical prednisone
+      and/or UDCA, Empirical conventional AIH regimens]
+  blanks:
+  - [0, 1]
+  - [0, 2]
+  - [0, 3]
+  - [0, 4]
+  - [1, 4]
+  - [2, 1]
+  - [2, 3]
+  - [2, 4]
+  src: {page: 209}
+  status: unverified
+- id: hb.L13.036
+  kind: card
+  topic: aih-types
+  front: In the AIH + PBC variant, when is UDCA added to prednisone?
+  back: When alkaline phosphatase is more than twice normal and/or there are florid duct lesions. If ALP is ≤ 2×
+    normal, prednisone alone.
+  src: {page: 209}
+  status: unverified
+- id: hb.L13.037
+  kind: card
+  topic: aih-types
+  front: Which AIH variant has AIH features, no autoantibodies and HLA-B8 or DR3, and how is it treated?
+  back: Cryptogenic chronic hepatitis. Histology shows interface hepatitis; treat with conventional AIH regimens.
+  src: {page: 209}
+  status: unverified
+- id: hb.L13.038
+  kind: card
+  topic: aih-types
+  front: Features of autoimmune cholangitis (Table 2)?
+  back: ANA and/or SMA present, AMA absent, no chronic ulcerative colitis, normal cholangiogram, cholangitis on
+    histology. Treated empirically with prednisone and/or UDCA.
+  src: {page: 209}
+  status: unverified
+- id: hb.L13.039
+  kind: mcq
+  topic: aih-types
+  stem: A 28-year-old man with chronic ulcerative colitis has clinical and laboratory features of AIH. AMA is negative
+    and the cholangiogram is abnormal. Biopsy shows cholangitis. Which variant is this?
+  options: [AIH + PBC, AIH + PSC, Autoimmune cholangitis, Cryptogenic chronic hepatitis]
+  answer: 1
+  why: ['AIH + PBC needs AMA, which is absent.', 'Correct: AIH features with CUC, absent AMA and an abnormal cholangiogram
+      define AIH + PSC.', Autoimmune cholangitis has no CUC and a normal cholangiogram., 'Cryptogenic chronic hepatitis
+      shows interface hepatitis, not cholangitis, and has no autoantibodies.']
+  src: {page: 209}
+  status: unverified
+- id: hb.L13.040
+  kind: mcq
+  topic: aih-types
+  stem: A woman has AIH features with positive AMA. ALP is 3 times normal and the biopsy shows florid duct lesions.
+    What is the book's empirical treatment?
+  options: [Prednisone alone, UDCA alone, Prednisone and ursodeoxycholic acid, Azathioprine alone, Liver transplantation]
+  answer: 2
+  why: [Prednisone alone is used only when ALP is ≤ 2× normal., UDCA alone is not the regimen for AIH + PBC; the
+      AIH component needs prednisone., 'Correct: AIH + PBC with ALP > 2× normal and/or florid duct lesions gets
+      prednisone and UDCA.', Azathioprine alone is not a regimen in the book., Nothing here suggests decompensation
+      needing transplantation.]
+  src: {page: 209}
+  status: unverified
+- id: hb.L13.041
+  kind: cloze
+  topic: aih-treatment
+  text: The book gives AIH frequency among white northern Europeans as {{c1::1.9}} cases per 100,000 persons per
+    year.
+  src: {page: 210}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.042
+  kind: table
+  topic: aih-treatment
+  title: Prognostic indices of AIH before treatment (Table 3)
+  columns: [Finding at presentation, Outcome]
+  rows:
+  - [Bridging or multilobular necrosis, 82% cirrhosis at 5 years; 45% 5-year mortality]
+  - [Cirrhosis, 58% 5-year mortality]
+  - [AST ≥ 10-fold normal, 50% 3-year mortality]
+  - [AST ≥ 5-fold normal + gamma globulin ≥ 2-fold normal, 90% 10-year mortality]
+  - [AST < 10-fold normal + gamma globulin < 2-fold normal, 49% cirrhosis at 15 years; 10% 10-year mortality]
+  - [Interface hepatitis, 17% cirrhosis at 5 years; normal 5-year survival]
+  blanks:
+  - [0, 1]
+  - [1, 1]
+  - [2, 1]
+  - [3, 1]
+  - [4, 1]
+  - [5, 1]
+  src: {page: 210}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.043
+  kind: card
+  topic: aih-treatment
+  front: Which prognostic indices after treatment carry a high mortality in AIH (Table 3)?
+  back: 1. Multilobular necrosis with failure to improve on treatment, or hyperbilirubinemia after 2 weeks. 2. Failure
+    to enter remission within 4 years, with the first sign of decompensation.
+  src: {page: 210}
+  status: unverified
+- id: hb.L13.044
+  kind: card
+  topic: aih-treatment
+  front: What course goes with HLA-B8, DR3 or DRB1*0301 in AIH?
+  back: Onset at a young age, severe inflammation at presentation, relapse propensity, frequent treatment failure,
+    and frequent liver transplantation.
+  src: {page: 210}
+  status: unverified
+- id: hb.L13.045
+  kind: card
+  topic: aih-treatment
+  front: What course goes with HLA-DR4 or DRB1*0401 in AIH?
+  back: Onset in older women, concurrent immunologic diseases, and response to glucocorticoids.
+  src: {page: 210}
+  status: unverified
+- id: hb.L13.046
+  kind: card
+  topic: aih-treatment
+  front: What is associated with C4A gene deletion in AIH?
+  back: Low serum complement level and early-onset disease.
+  src: {page: 210}
+  status: unverified
+- id: hb.L13.047
+  kind: mcq
+  topic: aih-treatment
+  stem: Which untreated AIH presentation carries the worst outcome in Table 3?
+  options: [Interface hepatitis alone, AST < 10-fold normal with gamma globulin < 2-fold normal, AST ≥ 5-fold normal
+      with gamma globulin ≥ 2-fold normal, Portal hepatitis]
+  answer: 2
+  why: [Interface hepatitis alone has normal 5-year survival., This milder pattern has 10% 10-year mortality., 'Correct:
+      90% 10-year mortality.', 'Portal hepatitis is listed as no indication for treatment (Table 5), not a high-risk
+      index.']
+  src: {page: 210}
+  status: unverified
+- id: hb.L13.048
+  kind: mcq
+  topic: aih-treatment
+  stem: A 68-year-old woman with AIH also has autoimmune thyroiditis. She carries HLA-DRB1*0401. What does the book
+    link to this allele?
+  options: [Onset at a young age and frequent treatment failure, 'Onset in older women, concurrent immune diseases
+      and response to glucocorticoids', Low serum complement and early-onset disease, Frequent need for liver transplantation]
+  answer: 1
+  why: ['Young onset and treatment failure go with HLA-B8, DR3, DRB1*0301.', 'Correct: HLA-DR4 / DRB1*0401 is linked
+      to older women, concurrent immunologic diseases and glucocorticoid response.', Low complement and early onset
+      go with C4A gene deletion., 'Frequent transplantation goes with HLA-B8, DR3, DRB1*0301.']
+  src: {page: 210}
+  status: unverified
+- id: hb.L13.049
+  kind: table
+  topic: aih-treatment
+  title: Indications for treating AIH (Table 5)
+  columns: [Finding, Absolute, Relative, None]
+  rows:
+  - [Clinical, Incapacitating symptoms; relentless clinical course, Mild or no symptoms, Asymptomatic with mild
+      laboratory changes; previous intolerance to prednisone and/or azathioprine]
+  - [Laboratory, AST ≥ 10-fold normal; or AST ≥ 5-fold normal with gamma globulin ≥ 2-fold normal, AST 3- to 9-fold
+      normal; or AST < 5-fold normal with gamma globulin < 2-fold normal, AST < 3-fold normal; severe cytopenia]
+  - [Histology, Bridging necrosis; multilobular necrosis, Interface hepatitis, Inactive cirrhosis; portal hepatitis;
+      decompensated cirrhosis with variceal bleeding]
+  blanks:
+  - [0, 1]
+  - [0, 3]
+  - [1, 1]
+  - [1, 2]
+  - [1, 3]
+  - [2, 1]
+  - [2, 2]
+  - [2, 3]
+  src: {page: 212}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.050
+  kind: mcq
+  topic: aih-treatment
+  stem: A 30-year-old woman with AIH has AST 12 times normal. What is her treatment indication according to Table
+    5?
+  options: [Absolute, Relative, None, Only if biopsy shows cirrhosis]
+  answer: 0
+  why: ['Correct: AST ≥ 10-fold normal is an absolute indication.', Relative indications are AST 3–9-fold normal
+      or AST < 5-fold with gamma globulin < 2-fold., No indication applies to AST < 3-fold normal., 'Inactive cirrhosis
+      is listed under no indication, so cirrhosis is not the trigger.']
+  src: {page: 212}
+  status: unverified
+- id: hb.L13.051
+  kind: mcq
+  topic: aih-treatment
+  stem: Which finding in a patient with AIH is listed in Table 5 as no indication for treatment?
+  options: [Bridging necrosis, Interface hepatitis, Decompensated inactive cirrhosis with variceal bleeding, AST
+      5-fold normal with gamma globulin 2-fold normal, Incapacitating symptoms]
+  answer: 2
+  why: [Bridging necrosis is an absolute indication., Interface hepatitis is a relative indication., 'Correct: inactive
+      cirrhosis, portal hepatitis and decompensated cirrhosis with variceal bleeding are listed under none.', AST
+      ≥ 5-fold with gamma globulin ≥ 2-fold is an absolute indication., Incapacitating symptoms are an absolute
+      indication.]
+  src: {page: 212}
+  status: unverified
+- id: hb.L13.052
+  kind: order
+  topic: aih-treatment
+  prompt: Prednisone monotherapy schedule for AIH (Table 6).
+  steps: [Prednisone 60 mg/day for 1 week, 40 mg/day for 1 week, 30 mg/day for 2 weeks, 20 mg/day until end point]
+  src: {page: 213}
+  status: unverified
+  tags: [numbers, high-yield]
+- id: hb.L13.053
+  kind: order
+  topic: aih-treatment
+  prompt: Prednisone schedule in combination therapy for AIH (Table 6), given with azathioprine 50 mg/day throughout.
+  steps: [Prednisone 30 mg/day for 1 week, 20 mg/day for 1 week, 15 mg/day for 2 weeks, 10 mg/day until end point]
+  src: {page: 213}
+  status: unverified
+  update: {text: AASLD 2019 also allows budesonide with azathioprine as first-line therapy in non-cirrhotic AIH.,
+    ref: AASLD AIH guidance 2019}
+  tags: [numbers, high-yield]
+- id: hb.L13.054
+  kind: cloze
+  topic: aih-treatment
+  text: In AIH combination therapy, azathioprine is given at {{c1::50 mg/day}} until the end point, and prednisone
+    starts at {{c2::30 mg/day}}.
+  src: {page: 213}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.055
+  kind: cloze
+  topic: aih-treatment
+  text: Cosmetic prednisone side effects (facial rounding, dorsal hump, obesity, acne, hirsutism) occur in {{c1::80%}}
+    of patients after {{c2::2 years}} of treatment, regardless of regimen.
+  src: {page: 213}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.056
+  kind: card
+  topic: aih-treatment
+  front: When do the severe prednisone side effects appear in AIH treatment, and what are they?
+  back: 'After protracted therapy (> 18 months) on the higher-dose schedule (20 mg/day): osteopenia with vertebral
+    compression, diabetes, cataracts, emotional lability, hypertension.'
+  src: {page: 213}
+  status: unverified
+- id: hb.L13.057
+  kind: cloze
+  topic: aih-treatment
+  text: Premature discontinuation of AIH treatment is justified in {{c1::13%}} of patients, mainly for intolerable
+    obesity, cosmetic changes or osteoporosis.
+  src: {page: 213}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.058
+  kind: enumerate
+  topic: aih-treatment
+  prompt: Mention the side effects of azathioprine in AIH treatment.
+  points: [Cholestatic hepatotoxicity, Nausea, Emesis, Rash, Cytopenia]
+  pass: 4
+  src: {page: 214}
+  status: unverified
+- id: hb.L13.059
+  kind: cloze
+  topic: aih-treatment
+  text: Azathioprine side effects occur in fewer than {{c1::10%}} of patients on 50 mg/day and reverse with dose
+    reduction or stopping.
+  src: {page: 214}
+  status: unverified
+- id: hb.L13.060
+  kind: card
+  topic: aih-treatment
+  front: Why is azathioprine plus prednisone preferred to prednisone alone in AIH?
+  back: The combination causes fewer glucocorticoid side effects over comparable periods (10% versus 44%).
+  src: {page: 214}
+  status: unverified
+  tags: [high-yield, numbers]
+- id: hb.L13.061
+  kind: card
+  topic: aih-treatment
+  front: When should a patient with AIH be evaluated for liver transplantation?
+  back: A decompensated patient with multilobular necrosis whose laboratory parameter fails to normalise, or whose
+    hyperbilirubinemia does not improve, during 2 weeks of treatment. Immediate mortality is high.
+  src: {page: 214}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.062
+  kind: table
+  topic: aih-treatment
+  title: AIH treatment end points (Fig. 2)
+  columns: [End point, Definition, Action]
+  rows:
+  - [Remission, No symptoms; AST ≤ 2× normal; normal gamma globulin; normal or minimal histologic activity, Stop
+      therapy; then sustained remission or relapse]
+  - [Treatment failure, Worsening AST and/or bilirubin ≥ 67%; worsening histologic activity, 'High-dose therapy;
+      chronic therapy if liver function is stable, liver transplantation if decompensation']
+  - [Incomplete response, Improvement in all aspects but failure to satisfy remission criteria, 'Continued therapy;
+      after protracted therapy (≥ 3 years), indefinite low-dose prednisone or azathioprine']
+  - [Drug toxicity, 'Intolerable symptoms, vertebral compression, cytopenia', Dose reduction or withdrawal]
+  blanks:
+  - [0, 1]
+  - [0, 2]
+  - [1, 1]
+  - [1, 2]
+  - [2, 1]
+  - [2, 2]
+  - [3, 1]
+  - [3, 2]
+  src: {page: 214}
+  status: unverified
+  tags: [figure, high-yield]
+- id: hb.L13.063
+  kind: order
+  topic: aih-treatment
+  prompt: Course after remission in AIH (Fig. 2), when the disease relapses twice.
+  steps: ['Remission, then stop therapy', First relapse, Repeat therapy, 'Second remission, then stop therapy',
+    Second relapse, Indefinite low-dose prednisone or indefinite azathioprine]
+  src: {page: 214}
+  status: unverified
+  tags: [figure]
+- id: hb.L13.064
+  kind: mcq
+  topic: aih-treatment
+  stem: Which is the starting prednisone dose in the book's AIH monotherapy regimen?
+  options: [20 mg/day, 30 mg/day, 40 mg/day, 60 mg/day]
+  answer: 3
+  why: [20 mg/day is the maintenance dose until end point., 30 mg/day is the starting dose in combination with azathioprine.,
+    40 mg/day is the second week of monotherapy., 'Correct: monotherapy starts at 60 mg/day for 1 week.']
+  src: {page: 213}
+  status: unverified
+- id: hb.L13.065
+  kind: mcq
+  topic: aih-treatment
+  stem: After 2 years of prednisone and azathioprine, a woman with AIH has no symptoms, AST 1.5 times normal, normal
+    gamma globulin and minimal histologic activity. What is the next step in Fig. 2?
+  options: [Stop therapy and watch for relapse, Indefinite low-dose prednisone, High-dose therapy, Evaluate for
+      liver transplantation, Add UDCA]
+  answer: 0
+  why: ['Correct: these are the remission criteria, and therapy is stopped.', Indefinite low-dose therapy is for
+      incomplete response after ≥ 3 years or a second relapse., High-dose therapy is for treatment failure., Transplantation
+      is for failure with decompensation., UDCA is not part of the AIH end-point algorithm.]
+  src: {page: 214}
+  status: unverified
+  tags: [figure]
+- id: hb.L13.066
+  kind: mcq
+  topic: aih-treatment
+  stem: On standard therapy, a man's AST and bilirubin rise by 70% and histologic activity worsens. Liver function
+    is still stable. What does Fig. 2 advise?
+  options: [Dose reduction, High-dose therapy, Stop therapy, Continued therapy at the same dose for 3 years]
+  answer: 1
+  why: [Dose reduction is for drug toxicity., 'Correct: worsening AST and/or bilirubin ≥ 67% is treatment failure,
+      which gets high-dose therapy (then chronic therapy if liver function stays stable).', Stopping is for remission.,
+    'Continued therapy is for incomplete response, not worsening.']
+  src: {page: 214}
+  status: unverified
+  tags: [figure]
+- id: hb.L13.067
+  kind: mcq
+  topic: aih-treatment
+  stem: A woman with AIH relapses for the second time after stopping therapy. What does Fig. 2 recommend?
+  options: [Repeat therapy and stop again at remission, Indefinite low-dose prednisone or indefinite azathioprine,
+    Liver transplantation, High-dose therapy]
+  answer: 1
+  why: [Repeat-and-stop is for the first relapse., 'Correct: after a second relapse, therapy is indefinite (low-dose
+      prednisone or azathioprine).', Transplantation is reserved for treatment failure with decompensation., High-dose
+      therapy is for treatment failure.]
+  src: {page: 214}
+  status: unverified
+  tags: [figure]
+- id: hb.L13.068
+  kind: mcq
+  topic: aih-treatment
+  stem: Why does the book prefer azathioprine with prednisone over prednisone alone?
+  options: [It induces remission faster, It causes fewer glucocorticoid side effects (10% versus 44%), It avoids
+      the need for maintenance therapy, Azathioprine side effects never occur at 50 mg/day]
+  answer: 1
+  why: [The book does not claim faster remission., 'Correct: the combination produces fewer glucocorticoid side
+      effects over comparable periods.', Maintenance may still be needed after relapse., 'Side effects occur in
+      fewer than 10% at 50 mg/day, not never.']
+  src: {page: 214}
+  status: unverified
+- id: hb.L13.069
+  kind: mcq
+  topic: aih-treatment
+  stem: A decompensated patient with AIH and multilobular necrosis on biopsy has a bilirubin that has not improved
+    after 2 weeks of treatment. What is warranted?
+  options: [Continue the same regimen for 3 months, Switch to UDCA, Evaluation for liver transplantation, Stop treatment
+      because of toxicity]
+  answer: 2
+  why: [Waiting is unsafe; immediate mortality is high., UDCA has no role here., 'Correct: failure to improve during
+      2 weeks of treatment warrants transplant evaluation.', Nothing suggests drug toxicity.]
+  src: {page: 214}
+  status: unverified
+- id: hb.L13.070
+  kind: cloze
+  topic: pbc-disease
+  text: PBC is found in all races; {{c1::90–95%}} of patients are female, and onset is typically between ages {{c2::30
+    and 70}}.
+  src: {page: 215}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.071
+  kind: cloze
+  topic: pbc-disease
+  text: Antimitochondrial antibody (AMA) is detected in {{c1::95%}} of patients with PBC.
+  src: {page: 215}
+  status: unverified
+  tags: [numbers, high-yield]
+- id: hb.L13.072
+  kind: card
+  topic: pbc-disease
+  front: Which serum immunoglobulin is characteristically raised in PBC?
+  back: IgM, which is immunoreactive and highly cryoprecipitable.
+  src: {page: 215}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.073
+  kind: enumerate
+  topic: pbc-disease
+  prompt: Mention the autoimmune diseases associated with PBC.
+  points: ['Thyroiditis, hypothyroidism', Rheumatoid arthritis, CREST syndrome, Sjögren's syndrome, Scleroderma]
+  pass: 4
+  src: {page: 215}
+  status: unverified
+- id: hb.L13.074
+  kind: card
+  topic: pbc-disease
+  front: What does CREST stand for?
+  back: Calcinosis, Raynaud's phenomenon, esophageal dysmotility, sclerodactyly, telangiectases.
+  src: {page: 215}
+  status: unverified
+- id: hb.L13.075
+  kind: card
+  topic: pbc-disease
+  front: What are the two related processes that damage the liver in PBC?
+  back: 1. Chronic destruction of small bile ducts, presumably by activated cytotoxic T lymphocytes. 2. Chemical
+    damage to hepatocytes where bile drainage is impeded by the duct destruction.
+  src: {page: 215}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.076
+  kind: card
+  topic: pbc-disease
+  front: How does bile duct destruction in PBC progress?
+  back: Portal inflammation and scarring, then cirrhosis and liver failure.
+  src: {page: 216}
+  status: unverified
+- id: hb.L13.077
+  kind: table
+  topic: pbc-disease
+  title: Histological stages of PBC
+  columns: [Stage, Histology]
+  rows:
+  - [Stage I, 'Florid bile duct lesion: damaged small ducts surrounded by a dense mononuclear (mostly lymphocytic)
+      infiltrate; duct epithelium infiltrated by lymphocytes']
+  - [Stage II, 'Lesion more widespread: fewer normal ducts, more atypical poorly formed ducts (atypical bile duct
+      hyperplasia), diffuse portal fibrosis, inflammation may spill into periportal areas']
+  - [Stage III, As stage II but fibrous septa extend beyond the triads to form portal-to-portal bridges]
+  - [Stage IV, Frank cirrhosis with regenerative nodules; a paucity of normal bile ducts in scarred areas suggests
+      PBC]
+  blanks:
+  - [0, 1]
+  - [1, 1]
+  - [2, 1]
+  - [3, 1]
+  src: {page: 216}
+  status: unverified
+  tags: [high-yield, book-question]
+- id: hb.L13.078
+  kind: card
+  topic: pbc-disease
+  front: What is the stage I lesion of PBC called?
+  back: The florid bile duct lesion.
+  src: {page: 216}
+  status: unverified
+- id: hb.L13.079
+  kind: card
+  topic: pbc-disease
+  front: Stage IV PBC can look like any cirrhosis. Which histologic clue suggests PBC?
+  back: A paucity of normal bile ducts in areas of scarring.
+  src: {page: 218}
+  status: unverified
+- id: hb.L13.080
+  kind: card
+  topic: pbc-disease
+  front: Which type of granuloma appears in the book's stage IV PBC image?
+  back: A noncaseating granuloma.
+  src: {page: 218}
+  status: unverified
+- id: hb.L13.081
+  kind: mcq
+  topic: pbc-disease
+  stem: A PBC biopsy shows fibrous septa extending beyond the portal triads to form portal-to-portal bridges, without
+    regenerative nodules. Which stage is this?
+  options: [Stage I, Stage II, Stage III, Stage IV]
+  answer: 2
+  why: [Stage I is the florid duct lesion without bridging., Stage II has diffuse portal fibrosis but septa do not
+      bridge triads., 'Correct: portal-to-portal fibrous bridges define stage III.', Stage IV is frank cirrhosis
+      with regenerative nodules.]
+  src: {page: 217}
+  status: unverified
+- id: hb.L13.082
+  kind: cloze
+  topic: pbc-disease
+  text: About {{c1::48–60%}} of patients with PBC are asymptomatic at diagnosis.
+  src: {page: 218}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.083
+  kind: cloze
+  topic: pbc-disease
+  text: The most common symptom of PBC is {{c1::fatigue}}; the earliest specific complaint is {{c2::pruritus}}.
+  src: {page: 218}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.084
+  kind: card
+  topic: pbc-disease
+  front: What causes the symptoms and signs of PBC?
+  back: Long-standing cholestasis.
+  src: {page: 218}
+  status: unverified
+- id: hb.L13.085
+  kind: card
+  topic: pbc-disease
+  front: What is malabsorbed in PBC, and why?
+  back: Fat-soluble vitamins A, D, E and K, and calcium, because bile secretion is impaired.
+  src: {page: 219}
+  status: unverified
+- id: hb.L13.086
+  kind: cloze
+  topic: pbc-disease
+  text: Osteopenic bone disease occurs in at least {{c1::25%}} of PBC patients; its pathogenesis is unclear.
+  src: {page: 219}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.087
+  kind: card
+  topic: pbc-disease
+  front: When does osteomalacia occur in PBC?
+  back: It is uncommon; only in home-bound patients with advanced PBC and little sunlight exposure.
+  src: {page: 219}
+  status: unverified
+- id: hb.L13.088
+  kind: cloze
+  topic: pbc-disease
+  text: In PBC, hepatomegaly is found in about {{c1::43–70%}} of patients and splenomegaly in {{c2::16–35%}}.
+  src: {page: 219}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.089
+  kind: card
+  topic: pbc-disease
+  front: What causes the tan-like hyperpigmentation of early PBC?
+  back: Melanin, not bilirubin.
+  src: {page: 219}
+  status: unverified
+- id: hb.L13.090
+  kind: card
+  topic: pbc-disease
+  front: Is jaundice an early sign of PBC?
+  back: No. Jaundice usually appears later in the course.
+  src: {page: 219}
+  status: unverified
+- id: hb.L13.091
+  kind: cloze
+  topic: pbc-disease
+  text: Xanthelasma and xanthomata in PBC correlate with {{c1::hypercholesterolemia}}; fewer than {{c2::5%}} of
+    patients eventually develop xanthomata.
+  src: {page: 219}
+  status: unverified
+- id: hb.L13.092
+  kind: enumerate
+  topic: pbc-disease
+  prompt: Where are xanthomata found in PBC?
+  points: [Palms of the hands, Soles of the feet, Extensor surfaces of the elbows and knees, Tendons of the ankles
+      and wrists, Buttocks]
+  pass: 4
+  src: {page: 220}
+  status: unverified
+- id: hb.L13.093
+  kind: card
+  topic: pbc-disease
+  front: Kayser-Fleischer rings in PBC?
+  back: Rare; they result from copper retention.
+  src: {page: 220}
+  status: unverified
+- id: hb.L13.094
+  kind: mcq
+  topic: pbc-disease
+  stem: A 52-year-old woman has generalised itching and tiredness. ALP is raised. Which serum antibody is found
+    in 95% of patients with her most likely disease?
+  options: [Antinuclear antibody, Antimitochondrial antibody, Anti-LKM1, pANCA, Anti-smooth muscle antibody]
+  answer: 1
+  why: [ANA is a conventional antibody of type 1 AIH and occurs in 35% of PSC., 'Correct: AMA is detected in 95%
+      of PBC.', Anti-LKM1 defines type 2 AIH., ANCA is the common antibody in PSC (80%)., SMA is a type 1 AIH antibody.]
+  src: {page: 215}
+  status: unverified
+- id: hb.L13.095
+  kind: mcq
+  topic: pbc-disease
+  stem: Which is the earliest specific complaint of PBC?
+  options: [Fatigue, Pruritus, Jaundice, Bone pain]
+  answer: 1
+  why: [Fatigue is the most common symptom but is not specific., 'Correct: pruritus is the earliest specific complaint.',
+    Jaundice usually appears later in the course., Osteopenic bone disease is common but not the earliest complaint.]
+  src: {page: 218}
+  status: unverified
+- id: hb.L13.096
+  kind: mcq
+  topic: pbc-disease
+  stem: A woman with early-stage PBC has skin that looks tanned although her bilirubin is normal. What pigment causes
+    this?
+  options: [Bilirubin, Melanin, Copper, Hemosiderin]
+  answer: 1
+  why: ['The book states the pigment is not bilirubin, and her bilirubin is normal.', 'Correct: the hyperpigmentation
+      of early PBC is due to melanin.', 'Copper retention causes the rare Kayser-Fleischer rings, not skin tanning.',
+    Hemosiderin is not mentioned for PBC.]
+  src: {page: 219}
+  status: unverified
+- id: hb.L13.097
+  kind: mcq
+  topic: pbc-disease
+  stem: Which patient with PBC is most at risk of osteomalacia?
+  options: [A newly diagnosed asymptomatic woman, A home-bound patient with advanced PBC and little sunlight, Any
+      patient on UDCA, A patient with xanthelasma]
+  answer: 1
+  why: [Early asymptomatic disease is not the setting the book gives., 'Correct: osteomalacia is uncommon and occurs
+      only in home-bound patients with advanced PBC and little sunlight.', UDCA is not linked to osteomalacia in
+      the book., 'Xanthelasma reflects hypercholesterolemia, not bone disease.']
+  src: {page: 219}
+  status: unverified
+- id: hb.L13.098
+  kind: enumerate
+  topic: pbc-treatment
+  prompt: Mention the general health advice for a patient with PBC.
+  points: [Stop smoking, Eat a balanced diet, 'Stop alcohol, or drink only a small amount depending on liver damage',
+    'Avoid certain medicines, such as NSAIDs (aspirin, ibuprofen)']
+  pass: 3
+  src: {page: 220}
+  status: unverified
+- id: hb.L13.099
+  kind: card
+  topic: pbc-treatment
+  front: Why does following general health advice matter in PBC?
+  back: It may help prevent PBC getting worse, and it keeps all treatments, such as liver transplantation, available.
+  src: {page: 220}
+  status: unverified
+- id: hb.L13.100
+  kind: card
+  topic: pbc-treatment
+  front: What is the main treatment of PBC, and what does it do?
+  back: Ursodeoxycholic acid (UDCA). It delays liver damage in most people, especially when started early, but does
+    not improve fatigue. It is taken for life.
+  src: {page: 221}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.101
+  kind: card
+  topic: pbc-treatment
+  front: Side effects of UDCA in PBC?
+  back: Diarrhoea, nausea and vomiting.
+  src: {page: 221}
+  status: unverified
+- id: hb.L13.102
+  kind: card
+  topic: pbc-treatment
+  front: How does obeticholic acid (OCA) work in PBC?
+  back: It improves bile flow and reduces inflammation.
+  src: {page: 221}
+  status: unverified
+- id: hb.L13.103
+  kind: card
+  topic: pbc-treatment
+  front: When may obeticholic acid or elafibranor be offered in PBC?
+  back: With UDCA if UDCA is not working well enough, or on its own for people who cannot take UDCA.
+  src: {page: 221}
+  status: unverified
+  update: {text: 'In 2024 the EMA revoked OCA''s conditional marketing authorisation for PBC, and the PPAR agonists
+      elafibranor and seladelpar gained accelerated approval as second-line therapy.', ref: EMA decision 2024; FDA
+      accelerated approvals 2024}
+  tags: [high-yield]
+- id: hb.L13.104
+  kind: card
+  topic: pbc-treatment
+  front: Main side effect of obeticholic acid, and how is it handled?
+  back: Itching. The dose may be lowered or a medicine for itching added. Use a lower dose in very advanced liver
+    disease.
+  src: {page: 221}
+  status: unverified
+- id: hb.L13.105
+  kind: card
+  topic: pbc-treatment
+  front: How does elafibranor work in PBC?
+  back: It reduces the amount of bile acid produced and makes the bile acid less damaging to the liver.
+  src: {page: 221}
+  status: unverified
+- id: hb.L13.106
+  kind: card
+  topic: pbc-treatment
+  front: Side effects of elafibranor?
+  back: Constipation, diarrhoea, headaches, nausea and vomiting.
+  src: {page: 222}
+  status: unverified
+- id: hb.L13.107
+  kind: cloze
+  topic: pbc-treatment
+  text: Take UDCA at least {{c1::1 hour}} before colestyramine or {{c2::4–6 hours}} after it, because colestyramine
+    affects UDCA absorption.
+  src: {page: 222}
+  status: unverified
+  tags: [numbers, high-yield]
+- id: hb.L13.108
+  kind: card
+  topic: pbc-treatment
+  front: Side effects of colestyramine used for itch in PBC?
+  back: Constipation (common, usually improves), bloating and headache. Long term it can reduce absorption of vitamins
+    A, D and K and folic acid, so supplements may help.
+  src: {page: 222}
+  status: unverified
+- id: hb.L13.109
+  kind: card
+  topic: pbc-treatment
+  front: How is fatigue managed in PBC?
+  back: No medicine treats it specifically. Rule out other causes (iron deficiency anaemia, sleep apnoea, depression),
+    exercise with pacing, adjust the daily routine (fatigue is often worse later in the day), and use sleep hygiene
+    for insomnia.
+  src: {page: 222}
+  status: unverified
+- id: hb.L13.110
+  kind: card
+  topic: pbc-treatment
+  front: How are dry mouth and eyes treated in PBC?
+  back: Artificial tears.
+  src: {page: 223}
+  status: unverified
+- id: hb.L13.111
+  kind: card
+  topic: pbc-treatment
+  front: Why should liver transplant planning in PBC start before significant liver damage?
+  back: Because the waiting time for adults may be longer than 3 months.
+  src: {page: 223}
+  status: unverified
+- id: hb.L13.112
+  kind: card
+  topic: pbc-treatment
+  front: What does liver transplantation do and not do in PBC?
+  back: It cures the itch and other symptoms, but fatigue may remain, and PBC can recur in the new liver (recurrent
+    PBC). Lifelong immunosuppression is needed against rejection.
+  src: {page: 223}
+  status: unverified
+- id: hb.L13.113
+  kind: cloze
+  topic: pbc-treatment
+  text: Most people live more than {{c1::10 years}} after a liver transplant.
+  src: {page: 223}
+  status: unverified
+- id: hb.L13.114
+  kind: mcq
+  topic: pbc-treatment
+  stem: A woman with PBC takes UDCA and is starting colestyramine for itching. How should she time the two drugs?
+  options: [Take them together with breakfast, 'UDCA at least 1 hour before, or 4–6 hours after, colestyramine',
+    UDCA 30 minutes after colestyramine, Stop UDCA while on colestyramine]
+  answer: 1
+  why: [Taking them together impairs UDCA absorption., 'Correct: UDCA at least 1 hour before or 4–6 hours after
+      colestyramine.', 30 minutes after is too soon; the book says 4–6 hours after., UDCA is lifelong and is not
+      stopped.]
+  src: {page: 222}
+  status: unverified
+- id: hb.L13.115
+  kind: mcq
+  topic: pbc-treatment
+  stem: A patient with PBC cannot tolerate UDCA. Which drug may be offered on its own, according to the book?
+  options: [Obeticholic acid, Colestyramine, Prednisone, Azathioprine]
+  answer: 0
+  why: ['Correct: OCA (or elafibranor) may be given alone to people who cannot take UDCA.', Colestyramine treats
+      itch only and does not treat the disease., 'Prednisone is the AIH treatment, not PBC.', 'Azathioprine is used
+      in AIH, not PBC.']
+  src: {page: 221}
+  status: unverified
+- id: hb.L13.116
+  kind: mcq
+  topic: pbc-treatment
+  stem: A woman with PBC complains of tiredness that is worse in the evening. What does the book advise?
+  options: ['Increase the UDCA dose, since UDCA improves fatigue', Start obeticholic acid, 'Rule out other causes
+      such as iron deficiency anaemia, sleep apnoea or depression, and pace activity', Refer for urgent liver transplantation]
+  answer: 2
+  why: [UDCA does not improve fatigue., OCA is not a fatigue treatment., 'Correct: no medicine treats PBC fatigue;
+      look for other causes and adjust activity and routine.', 'Transplantation is not indicated for fatigue, and
+      fatigue may persist after it.']
+  src: {page: 222}
+  status: unverified
+- id: hb.L13.117
+  kind: card
+  topic: psc-disease
+  front: Define primary sclerosing cholangitis (PSC).
+  back: A chronic cholestatic liver disease with fibrosing inflammation of both the intrahepatic and extrahepatic
+    biliary tree.
+  src: {page: 224, quote: chronic cholestatic liver disease characterized by fibrosing inflammation of both the
+      intrahepatic and extrahepatic biliary tree}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.118
+  kind: card
+  topic: psc-disease
+  front: What is the natural history of PSC without transplantation?
+  back: Irreversible bile duct damage leading to cholestasis, cirrhosis, liver failure and premature death from
+    liver failure.
+  src: {page: 224}
+  status: unverified
+- id: hb.L13.119
+  kind: card
+  topic: psc-disease
+  front: Which cancers are frequent on long-term follow-up of PSC, and why?
+  back: Colon cancer and bile duct cancer, probably from chronic inflammation of the colon and bile ducts.
+  src: {page: 224}
+  status: unverified
+- id: hb.L13.120
+  kind: card
+  topic: psc-disease
+  front: Is there a medical therapy that achieves complete remission in PSC?
+  back: No. No therapy achieves complete clinical, biochemical and histologic remission; transplantation is important
+    for end-stage disease.
+  src: {page: 224}
+  status: unverified
+- id: hb.L13.121
+  kind: table
+  topic: psc-disease
+  title: Primary versus secondary sclerosing cholangitis (Table 7)
+  columns: [Feature, Primary, Secondary]
+  rows:
+  - [Clinical setting, With or without inflammatory bowel disease; chronic cholestasis; anti-neutrophil cytoplasmic
+      antibodies (ANCA), 'Biliary surgery, choledocholithiasis, trauma, ischemia, chemical injury (e.g. chemotherapy),
+      infectious agents, congenital bile duct anomalies, HIV infection, malignancy, idiopathic adulthood ductopenia,
+      amyloidosis, Hodgkin''s disease']
+  - [Ducts involved, Intrahepatic and extrahepatic (classic or global), Perihilar and extrahepatic]
+  blanks:
+  - [0, 1]
+  - [0, 2]
+  - [1, 1]
+  - [1, 2]
+  src: {page: 224}
+  status: unverified
+  tags: [high-yield, book-question]
+- id: hb.L13.122
+  kind: enumerate
+  topic: psc-disease
+  prompt: Mention the causes of secondary sclerosing cholangitis (Table 7).
+  points: [Biliary surgery, Choledocholithiasis, Trauma, Ischemia, Chemical injury of the bile ducts (e.g. chemotherapy),
+    Infectious agents, Congenital anomalies of the bile ducts, HIV infection, Malignancy, Idiopathic adulthood ductopenia,
+    Amyloidosis, Hodgkin's disease]
+  pass: 8
+  src: {page: 224}
+  status: unverified
+  tags: [book-question]
+- id: hb.L13.123
+  kind: cloze
+  topic: psc-disease
+  text: PSC is mainly a disease of middle-aged men; about {{c1::67%}} are male, with a mean age of about {{c2::40}}
+    years at diagnosis. Prevalence is {{c3::8.5}} per 100,000.
+  src: {page: 225}
+  status: unverified
+  tags: [numbers, high-yield]
+- id: hb.L13.124
+  kind: enumerate
+  topic: psc-disease
+  prompt: Mention the ways PSC presents.
+  points: [Asymptomatic elevation of liver biochemical tests, 'Pruritus, fatigue, jaundice', Recurrent bacterial
+      cholangitis, Complications of cholestasis]
+  pass: 3
+  src: {page: 225}
+  status: unverified
+  tags: [book-question]
+- id: hb.L13.125
+  kind: card
+  topic: psc-disease
+  front: Main histologic features of PSC?
+  back: Periductal fibrosis, inflammation and bile duct proliferation, alternating with ductal obliteration and
+    ductopenia.
+  src: {page: 225}
+  status: unverified
+- id: hb.L13.126
+  kind: card
+  topic: psc-disease
+  front: What is the "onion skin" lesion of PSC?
+  back: An obliterated bile duct surrounded by fibrous tissue.
+  src: {page: 226}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.127
+  kind: enumerate
+  topic: psc-disease
+  prompt: Mention the symptoms of PSC at diagnosis (Table 8).
+  points: [Fatigue, Pruritus, Jaundice, Weight loss, Fever, Variceal bleed, Ascites]
+  pass: 5
+  src: {page: 225}
+  status: unverified
+- id: hb.L13.128
+  kind: enumerate
+  topic: psc-disease
+  prompt: Mention the signs of PSC at diagnosis (Table 8).
+  points: [Hepatomegaly, Jaundice, Splenomegaly, Hyperpigmentation, Xanthomas]
+  pass: 4
+  src: {page: 225}
+  status: unverified
+- id: hb.L13.129
+  kind: table
+  topic: psc-disease
+  title: Liver tests abnormal at diagnosis of PSC (Table 9)
+  columns: [Test, Patients abnormal (%)]
+  rows:
+  - [Serum alkaline phosphatase, '99']
+  - [Serum aminotransferases, '95']
+  - [ANCA, '80']
+  - [Serum bilirubin, '65']
+  - [Anti-smooth muscle antibody, '55']
+  - [Antinuclear antibody, '35']
+  - [Hypergammaglobulinemia, '30']
+  - [Serum albumin, '20']
+  - [Prothrombin time, '10']
+  blanks:
+  - [0, 1]
+  - [1, 1]
+  - [2, 1]
+  - [3, 1]
+  - [4, 1]
+  - [5, 1]
+  - [6, 1]
+  - [7, 1]
+  - [8, 1]
+  src: {page: 226}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.130
+  kind: enumerate
+  topic: psc-disease
+  prompt: Mention the radiologic (cholangiographic) features most commonly seen in PSC.
+  points: [Diffuse multifocal annular strictures with intervening normal or slightly ectatic duct segments, Short
+      band-like strictures, Diverticulum-like outpouchings]
+  pass: 3
+  src: {page: 227}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.131
+  kind: cloze
+  topic: psc-disease
+  text: PSC is associated with inflammatory bowel disease in over {{c1::75%}} of cases, most commonly {{c2::chronic
+    ulcerative colitis}}.
+  src: {page: 227}
+  status: unverified
+  tags: [numbers, high-yield]
+- id: hb.L13.132
+  kind: enumerate
+  topic: psc-disease
+  prompt: Mention the complications specific to PSC.
+  points: [Bacterial cholangitis, Biliary stone disease, Dominant stricture, Cholangiocarcinoma]
+  pass: 4
+  src: {page: 227}
+  status: unverified
+  tags: [high-yield, book-question]
+- id: hb.L13.133
+  kind: mcq
+  topic: psc-disease
+  stem: A 38-year-old man with ulcerative colitis has a raised ALP and positive ANCA. MRCP shows multifocal annular
+    strictures of the intra- and extrahepatic ducts with normal or slightly ectatic segments between them. What
+    is the most likely diagnosis?
+  options: [Primary biliary cholangitis, Primary sclerosing cholangitis, Autoimmune hepatitis type 2, Choledocholithiasis,
+    Autoimmune cholangitis]
+  answer: 1
+  why: ['PBC affects mainly women, is AMA positive, and is not described with multifocal strictures.', 'Correct:
+      a male with IBD, ANCA and multifocal annular strictures of intra- and extrahepatic ducts is classic PSC.',
+    Type 2 AIH is pediatric and anti-LKM1 positive., 'Stones cause secondary sclerosing cholangitis, and there is
+      no history of them here.', Autoimmune cholangitis has no CUC and a normal cholangiogram.]
+  src: {page: 227}
+  status: unverified
+- id: hb.L13.134
+  kind: mcq
+  topic: psc-disease
+  stem: Which of these is a cause of SECONDARY sclerosing cholangitis?
+  options: [Inflammatory bowel disease, HIV infection, Presence of ANCA, Chronic cholestasis]
+  answer: 1
+  why: [IBD (with or without) is the setting of primary sclerosing cholangitis., 'Correct: HIV infection is listed
+      among the secondary causes.', ANCA is a feature of primary sclerosing cholangitis., Chronic cholestasis is
+      listed in the primary column.]
+  src: {page: 224}
+  status: unverified
+- id: hb.L13.135
+  kind: mcq
+  topic: psc-disease
+  stem: Which laboratory test is abnormal most often at the diagnosis of PSC (Table 9)?
+  options: [Serum bilirubin, ANCA, Serum alkaline phosphatase, Prothrombin time, Antinuclear antibody]
+  answer: 2
+  why: [Bilirubin is abnormal in 65%., ANCA is positive in 80%., 'Correct: ALP is abnormal in 99%.', Prothrombin
+      time is abnormal in only 10%., ANA is positive in 35%.]
+  src: {page: 226}
+  status: unverified
+- id: hb.L13.136
+  kind: mcq
+  topic: psc-disease
+  stem: Which of these immune liver diseases has a male predominance in the book?
+  options: [Primary biliary cholangitis, Type 1 autoimmune hepatitis, Primary sclerosing cholangitis, Type 2 autoimmune
+      hepatitis]
+  answer: 2
+  why: [PBC is 90–95% female., Type 1 AIH is 78% women., 'Correct: about 67% of PSC patients are male.', Type 2
+      AIH is 89% women.]
+  src: {page: 225}
+  status: unverified
+- id: hb.L13.137
+  kind: enumerate
+  topic: psc-treatment
+  prompt: Mention the goals of PSC management.
+  points: [Relieve symptoms, Prevent or treat complications, Halt progression of disease, Optimise the timing of
+      liver transplantation]
+  pass: 3
+  src: {page: 227}
+  status: unverified
+  tags: [book-question]
+- id: hb.L13.138
+  kind: table
+  topic: psc-treatment
+  title: Management of complications specific to PSC
+  columns: [Complication, Management]
+  rows:
+  - [Bacterial cholangitis, Broad-spectrum IV antibiotic (ciprofloxacin)]
+  - [Dominant stricture, Endoscopic or radiologic balloon dilatation (stenting is controversial)]
+  - [Cholangiocarcinoma, Poor prognosis; responds poorly to chemotherapy or radiation; liver transplant contraindicated]
+  blanks:
+  - [0, 1]
+  - [1, 1]
+  - [2, 1]
+  src: {page: 228}
+  status: unverified
+  update: {text: 'AASLD 2022 PSC guidance: selected patients with early, unresectable perihilar cholangiocarcinoma
+      can be transplanted after neoadjuvant chemoradiation in specialised centres.', ref: AASLD practice guidance
+      on PSC and cholangiocarcinoma 2022}
+  tags: [high-yield, book-question]
+- id: hb.L13.139
+  kind: card
+  topic: psc-treatment
+  front: Most effective treatment for advanced PSC?
+  back: Liver transplantation.
+  src: {page: 228}
+  status: unverified
+- id: hb.L13.140
+  kind: cloze
+  topic: psc-treatment
+  text: In PSC, the time from diagnosis to liver transplantation typically ranges from {{c1::20–25 years}}, and
+    PSC recurs after transplantation in {{c2::30–50%}}.
+  src: {page: 228}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.141
+  kind: card
+  topic: psc-treatment
+  front: What risks follow liver transplantation for PSC?
+  back: Acute or chronic cellular rejection, and PSC recurrence (30–50%), which may need a second transplant.
+  src: {page: 228}
+  status: unverified
+- id: hb.L13.142
+  kind: card
+  topic: psc-treatment
+  front: Does HLA typing matter in PSC transplantation?
+  back: It generally does not significantly change outcome, but recent research suggests HLA-prescreened grafts
+    do better; certain recipient and graft HLA alleles carry higher failure risk.
+  src: {page: 228}
+  status: unverified
+- id: hb.L13.143
+  kind: cloze
+  topic: psc-treatment
+  text: Mean survival in PSC is {{c1::14}} years with dominant strictures, compared with {{c2::27}} years without
+    them.
+  src: {page: 229}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.144
+  kind: card
+  topic: psc-treatment
+  front: When should cholangiocarcinoma be considered in a PSC patient with dominant strictures?
+  back: When there is subacute worsening of right upper quadrant pain or of laboratory abnormalities. Dominant strictures
+    raise the CCA risk.
+  src: {page: 229}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.145
+  kind: card
+  topic: psc-treatment
+  front: Standard therapy for a dominant stricture in PSC?
+  back: Balloon dilatation. Stenting remains controversial.
+  src: {page: 229}
+  status: unverified
+- id: hb.L13.146
+  kind: card
+  topic: psc-treatment
+  front: How does UDCA act in cholestatic disease?
+  back: A hydrophilic bile acid (derivative of chenodeoxycholate) that protects cholangiocytes, stimulates hepatobiliary
+    secretion, and protects liver cells against bile acid-induced apoptosis.
+  src: {page: 229}
+  status: unverified
+- id: hb.L13.147
+  kind: cloze
+  topic: psc-treatment
+  text: The first RCT of UDCA in PSC (Beuers, 1992) used {{c1::13–15 mg/kg}} and reduced disease activity versus
+    placebo after 1 year.
+  src: {page: 229}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.148
+  kind: cloze
+  topic: psc-treatment
+  text: High-dose UDCA ({{c1::28–30 mg/kg/day}}) in PSC is associated with more cirrhosis progression, varices,
+    CCA, transplantation or death.
+  src: {page: 230}
+  status: unverified
+  tags: [numbers, high-yield]
+- id: hb.L13.149
+  kind: card
+  topic: psc-treatment
+  front: What did the 219-patient RCT of UDCA 17–23 mg/kg/day in PSC show?
+  back: No significant improvement in the combined end point of death or transplantation, despite 31% and 34% reductions
+    in each outcome.
+  src: {page: 230}
+  status: unverified
+- id: hb.L13.150
+  kind: card
+  topic: psc-treatment
+  front: What does the British Society of Gastroenterology recommend about UDCA in PSC?
+  back: Against long-term UDCA in newly diagnosed PSC. Three meta-analyses also showed no effect on mortality or
+    transplantation.
+  src: {page: 230}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.151
+  kind: card
+  topic: psc-treatment
+  front: What did adding metronidazole to UDCA achieve in PSC?
+  back: Lower ALP, a fall in the New Mayo Risk Score, no progression on ERCP, and better histologic stage than UDCA
+    alone.
+  src: {page: 230}
+  status: unverified
+- id: hb.L13.152
+  kind: mcq
+  topic: psc-treatment
+  stem: A 30-year-old man with PSC develops fever, rigors and jaundice. What is the book's treatment?
+  options: [Oral UDCA 28–30 mg/kg/day, Broad-spectrum IV antibiotic such as ciprofloxacin, High-dose prednisone,
+    Urgent liver transplantation]
+  answer: 1
+  why: [High-dose UDCA is harmful and does not treat infection., 'Correct: bacterial cholangitis is treated with
+      a broad-spectrum IV antibiotic (ciprofloxacin).', Immunosuppressants have not shown clear benefit in PSC.,
+    Cholangitis is not itself an indication for transplantation.]
+  src: {page: 228}
+  status: unverified
+- id: hb.L13.153
+  kind: mcq
+  topic: psc-treatment
+  stem: ERCP in a PSC patient with worsening jaundice shows a dominant stricture of the common hepatic duct. What
+    is the standard therapy of choice?
+  options: [Balloon dilatation, Long-term plastic stent, Surgical hepaticojejunostomy, High-dose UDCA]
+  answer: 0
+  why: ['Correct: balloon dilatation is the standard therapy for dominant strictures.', Stenting remains a matter
+      of controversy., Surgery is not the book's approach., High-dose UDCA (28–30 mg/kg/day) is associated with
+      harm.]
+  src: {page: 229}
+  status: unverified
+- id: hb.L13.154
+  kind: mcq
+  topic: psc-treatment
+  stem: According to the lecture, which statement about cholangiocarcinoma in PSC is correct?
+  options: [It responds well to chemotherapy, Liver transplantation is contraindicated, Dominant strictures lower
+      its risk, It is unrelated to chronic inflammation]
+  answer: 1
+  why: [It responds poorly to chemotherapy or radiation., 'Correct: the book says liver transplantation is contraindicated
+      (see the guideline update).', Dominant strictures increase the risk of CCA., The book links bile duct cancer
+      to chronic inflammation of the ducts.]
+  src: {page: 228}
+  status: unverified
+  update: {text: 'AASLD 2022 PSC guidance: selected early, unresectable perihilar cholangiocarcinoma can be transplanted
+      after neoadjuvant chemoradiation in specialised centres.', ref: AASLD practice guidance on PSC and cholangiocarcinoma
+      2022}
+- id: hb.L13.155
+  kind: mcq
+  topic: psc-treatment
+  stem: A newly diagnosed PSC patient asks about long-term UDCA. What does the most recent BSG guideline cited in
+    the book recommend?
+  options: [UDCA 13–15 mg/kg/day for life, UDCA 28–30 mg/kg/day to prevent cholangiocarcinoma, Against long-term
+      UDCA, UDCA only with metronidazole]
+  answer: 2
+  why: [Biochemical improvement has not been shown to improve hard end points., 'High doses are associated with
+      more cirrhosis, varices, CCA, transplantation or death.', 'Correct: the BSG recommends against long-term UDCA
+      in newly diagnosed PSC.', UDCA/metronidazole data are promising but not a guideline recommendation.]
+  src: {page: 230}
+  status: unverified
+- id: hb.L13.156
+  kind: mcq
+  topic: psc-treatment
+  stem: How often does PSC recur after orthotopic liver transplantation?
+  options: [Under 5%, 10%, 30–50%, Over 90%]
+  answer: 2
+  why: [Recurrence is far more common than 5%., 10% is too low., 'Correct: the book gives 30–50% recurrence.', Recurrence
+      is not almost universal.]
+  src: {page: 228}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.157
+  kind: table
+  topic: psc-emerging
+  title: Emerging drug therapy in PSC
+  columns: [Drug, Class or target, Key result in the book]
+  rows:
+  - [24-norUDCA, 'Side-chain-shortened UDCA (lacks a methylene group, resists conjugation)', 'Phase II, 161 patients:
+      dose-dependent ALP fall at 12 weeks, no significant adverse events']
+  - [Obeticholic acid, FXR agonist, 'AESOP phase II: 5–10 mg/day lowered ALP; dose-dependent pruritus']
+  - [Cilofexor, Non-steroidal FXR agonist, '100 mg/day in non-cirrhotic PSC lowered ALP, GGT and bile acids; well
+      tolerated']
+  - [NGM282, FGF19 analogue, 'No ALP change, but fibrosis markers (ELF, Pro-C3) improved']
+  - [All-trans retinoic acid, Inhibits bile acid synthesis via FXR/RXR, 'With UDCA: 30% ALP reduction']
+  - [Maralixibat, ASBT inhibitor, No clinically significant change in liver tests]
+  - [Fenofibrate / bezafibrate, PPAR agonists, 40% ALP fall and less pruritus; ALP rebound after stopping]
+  - [Simtuzumab, LOXL2 inhibitor (antifibrotic), 'Phase IIb, 234 patients: no effect on collagen content or Ishak
+      stage']
+  - [Cenicriviroc, CCR2/CCR5 antagonist, 'PERSEUS: modest ALP fall (median 18%) at 24 weeks']
+  - [Vedolizumab, Anti-α4β7 integrin (blocks MAdCAM-1 binding), Mixed results; ≥ 20% ALP fall in about 20%]
+  - [Vancomycin, Antibiotic with immunomodulatory effect (lowers T-cell cytokines), Lowered ALP and Mayo score]
+  - [Bexotegrast, Inhibitor of αvβ6 and αvβ1 integrins (TGF-β activators), Phase IIa results pending]
+  blanks:
+  - [0, 1]
+  - [1, 1]
+  - [2, 1]
+  - [3, 1]
+  - [5, 1]
+  - [6, 1]
+  - [7, 1]
+  - [8, 1]
+  - [9, 1]
+  - [11, 1]
+  src: {page: 231}
+  status: unverified
+- id: hb.L13.158
+  kind: card
+  topic: psc-emerging
+  front: How does 24-norUDCA differ from UDCA, and what does that allow?
+  back: It lacks a methylene group, so it resists conjugation, undergoes cholehepatic shunting and stimulates bicarbonate-rich
+    choleresis. It is antilipotoxic, antiproliferative, antifibrotic and anti-inflammatory.
+  src: {page: 231}
+  status: unverified
+- id: hb.L13.159
+  kind: card
+  topic: psc-emerging
+  front: What is the concern with norUDCA in PSC?
+  back: Possible disease progression from its choleretic effect, especially in patients with dominant strictures.
+  src: {page: 231}
+  status: unverified
+- id: hb.L13.160
+  kind: card
+  topic: psc-emerging
+  front: Which enzyme does FXR downregulate, and why does it matter?
+  back: CYP7A1, the rate-limiting enzyme of bile acid production.
+  src: {page: 231}
+  status: unverified
+- id: hb.L13.161
+  kind: card
+  topic: psc-emerging
+  front: How does FXR activation signal between gut and liver?
+  back: It reduces ASBT expression in enterocytes and increases FGF19 secretion; FGF19 reaches hepatocytes through
+    the portal blood and activates FGFR4.
+  src: {page: 232}
+  status: unverified
+- id: hb.L13.162
+  kind: card
+  topic: psc-emerging
+  front: Main side effect of obeticholic acid in the AESOP trial in PSC?
+  back: Dose-dependent pruritus (67% on 5–10 mg/day, 60% on 1.5–3 mg/day, 45% on placebo); discontinuation was rare.
+  src: {page: 232}
+  status: unverified
+- id: hb.L13.163
+  kind: card
+  topic: psc-emerging
+  front: How do PPAR agonists act against cholestasis?
+  back: They enhance biliary phospholipid secretion, promote mixed micelle formation by upregulating MDR3, inhibit
+    bile acid synthesis and upregulate bile acid detoxification.
+  src: {page: 234}
+  status: unverified
+- id: hb.L13.164
+  kind: card
+  topic: psc-emerging
+  front: What happened to liver stiffness in the fibrate study in PSC?
+  back: It increased significantly on transient elastography, even though ALP fell by 40%.
+  src: {page: 234}
+  status: unverified
+- id: hb.L13.165
+  kind: card
+  topic: psc-emerging
+  front: Have conventional immunosuppressants helped PSC?
+  back: No clear benefit. Azathioprine, mycophenolate and tacrolimus have only case reports; budesonide had minimal
+    efficacy and worsened osteoporosis; infliximab did not lower ALP or improve histology or symptoms.
+  src: {page: 237}
+  status: unverified
+- id: hb.L13.166
+  kind: card
+  topic: psc-emerging
+  front: Vidofludimus in PSC?
+  back: A dihydroorotate dehydrogenase inhibitor that blocks activated T- and B-cell replication; ALP normalised
+    in 27.7% at week 24 in a phase II open-label trial.
+  src: {page: 236}
+  status: unverified
+- id: hb.L13.167
+  kind: card
+  topic: psc-emerging
+  front: Rifaximin versus minocycline in PSC?
+  back: Rifaximin had no effect on cholestatic markers or Mayo score; minocycline significantly improved ALP and
+    Mayo score.
+  src: {page: 238}
+  status: unverified
+- id: hb.L13.168
+  kind: card
+  topic: psc-emerging
+  front: Faecal microbiota transplantation and probiotics in PSC?
+  back: FMT gave a ≥ 50% ALP fall in 3 participants of a small pilot. A probiotic mix in a small crossover RCT made
+    no significant difference.
+  src: {page: 239}
+  status: unverified
+- id: hb.L13.169
+  kind: card
+  topic: psc-emerging
+  front: Curcumin and docosahexaenoic acid in PSC?
+  back: Curcumin did not improve cholestasis or symptoms. Docosahexaenoic acid (enhances PPAR signalling) significantly
+    lowered ALP in a 12-month pilot (n = 23).
+  src: {page: 239}
+  status: unverified
+- id: hb.L13.170
+  kind: mcq
+  topic: psc-emerging
+  stem: Simtuzumab failed to improve hepatic collagen or Ishak stage in compensated PSC. What does it inhibit?
+  options: [Farnesoid X receptor, Lysyl oxidase-like 2 (LOXL2), Apical sodium-dependent bile acid transporter (ASBT),
+    CCR2/CCR5]
+  answer: 1
+  why: [FXR is the target of OCA and cilofexor (agonists)., 'Correct: simtuzumab inhibits LOXL2, which cross-links
+      collagen and elastin.', ASBT is inhibited by maralixibat., CCR2/CCR5 is antagonised by cenicriviroc.]
+  src: {page: 235}
+  status: unverified
+- id: hb.L13.171
+  kind: mcq
+  topic: psc-emerging
+  stem: An FXR agonist in PSC lowers bile acid synthesis mainly by downregulating which enzyme?
+  options: [CYP2D6, CYP7A1, HMG-CoA reductase, Dihydroorotate dehydrogenase]
+  answer: 1
+  why: [CYP2D6 is the AIH autoantigen., 'Correct: FXR downregulates CYP7A1, the rate-limiting enzyme of bile acid
+      production.', HMG-CoA reductase is in cholesterol synthesis and is not mentioned., Dihydroorotate dehydrogenase
+      is inhibited by vidofludimus.]
+  src: {page: 231}
+  status: unverified
+- id: hb.L13.172
+  kind: mcq
+  topic: psc-emerging
+  stem: Which gut-directed antibiotic lowered ALP and Mayo score in PSC in two randomised trials, and is thought
+    to act partly by reducing T-cell cytokine production?
+  options: [Rifaximin, Vancomycin, Ciprofloxacin, Metronidazole alone]
+  answer: 1
+  why: [Rifaximin had no effect on cholestatic markers or Mayo score., 'Correct: vancomycin lowered ALP and Mayo
+      score versus metronidazole and placebo.', Ciprofloxacin is used to treat acute bacterial cholangitis., Metronidazole
+      was the comparator; its benefit is described with UDCA.]
+  src: {page: 238}
+  status: unverified
+- id: hb.L13.173
+  kind: card
+  topic: igg4-diagnosis
+  front: Define IgG4-related disease (IgG4-RD).
+  back: A fibro-inflammatory process related to immunomodulation.
+  src: {page: 240}
+  status: unverified
+- id: hb.L13.174
+  kind: enumerate
+  topic: igg4-diagnosis
+  prompt: Mention the organs most commonly affected by IgG4-RD.
+  points: [Pancreas, Bile duct, Major salivary glands, Lacrimal glands, Retroperitoneum, Lymphatic ducts]
+  pass: 4
+  src: {page: 241}
+  status: unverified
+- id: hb.L13.175
+  kind: enumerate
+  topic: igg4-diagnosis
+  prompt: Mention the characteristics shared by the different entities of IgG4-RD.
+  points: [Tumour-like (neoplastic-looking) swelling of the affected organs, Lymphoplasmacytic infiltrate rich in
+      IgG4-positive plasma cells, Variable fibrosis with a storiform pattern, High serum IgG4 in 60–70% of patients,
+    Response to glucocorticoids in the vast majority]
+  pass: 4
+  src: {page: 241}
+  status: unverified
+  tags: [high-yield, book-question]
+- id: hb.L13.176
+  kind: cloze
+  topic: igg4-diagnosis
+  text: IgG4-RD is more common in males, with a male to female ratio of {{c1::2.8:1}}; no {{c2::familial}} cases
+    are known.
+  src: {page: 241}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.177
+  kind: card
+  topic: igg4-diagnosis
+  front: Why is IgG4-RD hard to recognise clinically?
+  back: It can affect many organs, so its picture depends on the organs involved, and it may present nonspecifically
+    or mimic much more common diseases, including neoplasms.
+  src: {page: 241}
+  status: unverified
+- id: hb.L13.178
+  kind: cloze
+  topic: igg4-diagnosis
+  text: In IgG4-RD, {{c1::84%}} of patients have serum IgG4 above {{c2::135 mg/dl}}.
+  src: {page: 242}
+  status: unverified
+  tags: [numbers, high-yield]
+- id: hb.L13.179
+  kind: card
+  topic: igg4-diagnosis
+  front: 'IgG4-RD algorithm (Fig. 3): which imaging findings support the diagnosis?'
+  back: 'CT: swelling of the affected organ or a pseudotumour. MRI: hypointensity in T2-enhanced sequences.'
+  src: {page: 242}
+  status: unverified
+  tags: [figure]
+- id: hb.L13.180
+  kind: enumerate
+  topic: igg4-diagnosis
+  prompt: 'IgG4-RD algorithm (Fig. 3): mention the supportive laboratory tests.'
+  points: [Serum IgG4 > 135 mg/dl, Hypergammaglobulinemia, Eosinophilia, Elevated IgE]
+  pass: 3
+  src: {page: 242}
+  status: unverified
+  tags: [figure]
+- id: hb.L13.181
+  kind: card
+  topic: igg4-diagnosis
+  front: 'IgG4-RD algorithm (Fig. 3): what is the role of 18F-FDG-PET/CT?'
+  back: Staging and locating a target lesion for biopsy.
+  src: {page: 242}
+  status: unverified
+  tags: [figure]
+- id: hb.L13.182
+  kind: cloze
+  topic: igg4-diagnosis
+  text: 'IgG4-RD algorithm (Fig. 3): {{c1::30–50%}} of patients may have normal serum IgG4 values.'
+  src: {page: 242}
+  status: unverified
+  tags: [figure, numbers]
+- id: hb.L13.183
+  kind: card
+  topic: igg4-diagnosis
+  front: 'IgG4-RD algorithm (Fig. 3): which alternative diagnoses must be considered?'
+  back: Neoplasms, other inflammatory diseases, and infection.
+  src: {page: 242}
+  status: unverified
+  tags: [figure]
+- id: hb.L13.184
+  kind: card
+  topic: igg4-diagnosis
+  front: 'IgG4-RD algorithm (Fig. 3): what if the first biopsy is not diagnostic?'
+  back: Repeat biopsies (same or another affected organ) or review material from previous biopsies.
+  src: {page: 242}
+  status: unverified
+  tags: [figure]
+- id: hb.L13.185
+  kind: card
+  topic: igg4-diagnosis
+  front: 'IgG4-RD algorithm (Fig. 3): which biopsy findings make the diagnosis?'
+  back: Fibrosis with a storiform pattern, obliterative phlebitis, lymphocytic and plasma cell infiltrate, eosinophilic
+    infiltrate; immunostaining IgG4+/IgG+ > 0.4.
+  src: {page: 242}
+  status: unverified
+  tags: [figure]
+- id: hb.L13.186
+  kind: card
+  topic: igg4-diagnosis
+  front: What is the distinctive tissue finding of IgG4-RD, even with normal serum IgG4?
+  back: High numbers of IgG4-positive plasma cells, present diffusely throughout the lesion.
+  src: {page: 242}
+  status: unverified
+- id: hb.L13.187
+  kind: cloze
+  topic: igg4-diagnosis
+  text: The IgG4+ plasma cell cut-off depends on the tissue; it is {{c1::50}} cells per high-power field in autoimmune
+    pancreatitis and {{c2::100}} in sialadenitis.
+  src: {page: 242}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.188
+  kind: cloze
+  topic: igg4-diagnosis
+  text: An IgG4+/IgG+ plasma cell ratio above {{c1::40%}} is a proposed cut-off in any organ, although the typical
+    value is {{c2::70%}} or higher.
+  src: {page: 243}
+  status: unverified
+  tags: [numbers, high-yield]
+- id: hb.L13.189
+  kind: card
+  topic: igg4-diagnosis
+  front: Why is the IgG4+/IgG+ ratio more specific than the IgG4+ cell count?
+  back: Many inflammatory conditions raise IgG4+ plasma cells by raising the whole plasma cell pool.
+  src: {page: 243}
+  status: unverified
+- id: hb.L13.190
+  kind: enumerate
+  topic: igg4-diagnosis
+  prompt: Mention the three pathological characteristics of IgG4-RD.
+  points: [Lymphoplasmacytic infiltration, Storiform fibrosis (a prerequisite for diagnosis; radially arranged collagen
+      fibres), Obliterative phlebitis (secondary to the infiltrate)]
+  pass: 3
+  src: {page: 244}
+  status: unverified
+  tags: [high-yield, book-question]
+- id: hb.L13.191
+  kind: enumerate
+  topic: igg4-diagnosis
+  prompt: Mention conditions NOT related to IgG4-RD that show increased IgG4-positive cells.
+  points: ['Inflammatory conditions (oral inflammatory diseases, primary sclerosing cholangitis, rheumatoid arthritis)',
+    Low-grade B-cell lymphoma, 'Malignant disease, especially pancreatobiliary cancers']
+  pass: 3
+  src: {page: 249}
+  status: unverified
+- id: hb.L13.192
+  kind: card
+  topic: igg4-diagnosis
+  front: How does IgG4 infiltration in cancer differ from IgG4-RD?
+  back: It is usually patchy and lacks the other features, such as the storiform pattern or phlebitis.
+  src: {page: 249}
+  status: unverified
+- id: hb.L13.193
+  kind: card
+  topic: igg4-diagnosis
+  front: When should low-grade B-cell lymphoma be excluded in suspected IgG4-RD?
+  back: When there are florid lymphoplasmacytic infiltrates.
+  src: {page: 249}
+  status: unverified
+- id: hb.L13.194
+  kind: card
+  topic: igg4-organs
+  front: Which entity is the prototype of IgG4-RD, and how common is it?
+  back: Type 1 autoimmune pancreatitis (AIP). It is estimated at 2% of cases of chronic pancreatitis.
+  src: {page: 244}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.195
+  kind: card
+  topic: igg4-organs
+  front: Describe the pathology of type 1 AIP over time.
+  back: A periductal IgG4 plasma cell infiltrate causes periductal fibrosis; later the acini atrophy, lobular architecture
+    is lost, and the gland becomes sclerotic.
+  src: {page: 244}
+  status: unverified
+- id: hb.L13.196
+  kind: enumerate
+  topic: igg4-organs
+  prompt: Mention the forms of presentation of type 1 AIP.
+  points: ['Obstructive jaundice from a pancreatic head mass or bile duct wall thickening (up to 55%), mimicking
+      tumour', Diffuse or focal pancreatic enlargement on imaging with irregular narrowing of the pancreatic duct
+      (sometimes the CBD), Single or recurrent acute pancreatitis, Evolution to chronic pancreatitis with calcifications
+      and exocrine and endocrine insufficiency]
+  pass: 3
+  src: {page: 244}
+  status: unverified
+  tags: [book-question]
+- id: hb.L13.197
+  kind: card
+  topic: igg4-organs
+  front: Which associated finding in a patient with suspected AIP supports IgG4-RD?
+  back: Other fibro-inflammatory lesions, for example low back pain from retroperitoneal fibrosis, or hydronephrosis.
+  src: {page: 244}
+  status: unverified
+- id: hb.L13.198
+  kind: cloze
+  topic: igg4-organs
+  text: Bile duct involvement is the second most frequent site in AIP, in up to {{c1::70%}} of patients; {{c2::60–80%}}
+    of type 1 AIP patients have hepatobiliary involvement.
+  src: {page: 245}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.199
+  kind: card
+  topic: igg4-organs
+  front: Which bile duct segment is most often affected in IgG4-related sclerosing cholangitis, and with what result?
+  back: The intrapancreatic portion of the bile duct; wall thickening causes upstream dilatation and obstructive
+    jaundice. Presentation is usually more acute with shorter symptoms.
+  src: {page: 245}
+  status: unverified
+- id: hb.L13.200
+  kind: card
+  topic: igg4-organs
+  front: How does IgG4-related gallbladder involvement look on MRI?
+  back: Diffuse wall thickening from transmural infiltrate, hypointense on T2, with marked contrast uptake that
+    persists into late phases.
+  src: {page: 246}
+  status: unverified
+- id: hb.L13.201
+  kind: enumerate
+  topic: igg4-organs
+  prompt: Mention the forms of retroperitoneal and mesenteric IgG4-RD.
+  points: [Retroperitoneal fibrosis (most common), Periaortitis, Sclerosing mesenteritis]
+  pass: 3
+  src: {page: 246}
+  status: unverified
+- id: hb.L13.202
+  kind: card
+  topic: igg4-organs
+  front: How does IgG4-related retroperitoneal fibrosis present?
+  back: Inflammatory tissue around the aorta and its branches that encases the ureters and causes hydronephrosis;
+    it may look like a malignant soft tissue mass. Many "primary" cases are now IgG4-RD and respond well to steroids.
+  src: {page: 246}
+  status: unverified
+- id: hb.L13.203
+  kind: card
+  topic: igg4-organs
+  front: Risk of untreated IgG4-related periaortitis?
+  back: Dissection or aneurysm formation.
+  src: {page: 246}
+  status: unverified
+- id: hb.L13.204
+  kind: card
+  topic: igg4-organs
+  front: How does IgG4-related sclerosing mesenteritis present?
+  back: A swollen mass that encases and narrows the mesenteric vessels, often next to AIP lesions; it can infiltrate
+    bowel loops and cause partial or total obstruction.
+  src: {page: 247}
+  status: unverified
+- id: hb.L13.205
+  kind: enumerate
+  topic: igg4-organs
+  prompt: Mention the gastric manifestations of IgG4-RD.
+  points: [Diffuse mucosal IgG4+ plasma cell infiltration that disappears after steroids, Focal polypoid lesions
+      or masses up to 3 cm, Gastric ulcer, Diffuse wall thickening, Local adenopathies]
+  pass: 3
+  src: {page: 248}
+  status: unverified
+- id: hb.L13.206
+  kind: card
+  topic: igg4-organs
+  front: Other gastrointestinal IgG4-RD lesions?
+  back: 'GI involvement is rare. Oesophagus: wall thickening with dysphagia and weight loss. Colon: polyposis that
+    shrinks after steroids, and nodular lesions in the caecum and sigmoid. IgG4 infiltration of the major papilla
+    in some AIP.'
+  src: {page: 248}
+  status: unverified
+- id: hb.L13.207
+  kind: mcq
+  topic: igg4-organs
+  stem: A 64-year-old man with type 1 AIP develops low back pain. CT shows dense soft tissue around both ureters
+    and the common iliac arteries. What complication should be expected?
+  options: [Bilateral hydronephrosis, Splenic vein thrombosis, Pancreatic pseudocyst, Hepatic abscess]
+  answer: 0
+  why: ['Correct: retroperitoneal fibrosis encases the ureters and causes hydronephrosis.', Splenic vein thrombosis
+      is not described in this lecture., Pseudocysts are not described for IgG4-RD., Abscess is not a feature of
+      IgG4-RD.]
+  src: {page: 246}
+  status: unverified
+- id: hb.L13.208
+  kind: card
+  topic: igg4-treatment
+  front: Why treat IgG4-RD early and keep treating after remission?
+  back: Early treatment prevents fibrosis; maintenance after remission prevents relapse.
+  src: {page: 249}
+  status: unverified
+- id: hb.L13.209
+  kind: cloze
+  topic: igg4-treatment
+  text: Steroids induce remission in up to {{c1::90%}} of type 1 AIP; if steroids are contraindicated, {{c2::rituximab}}
+    can induce remission alone.
+  src: {page: 249}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.210
+  kind: cloze
+  topic: igg4-treatment
+  text: Relapses of type 1 AIP occur in up to {{c1::30–50%}} of cases.
+  src: {page: 249}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.211
+  kind: card
+  topic: igg4-treatment
+  front: How are relapses of IgG4-RD treated (international consensus)?
+  back: Re-administer corticosteroids, increase their dose, or add immunosuppressive agents or rituximab.
+  src: {page: 250}
+  status: unverified
+- id: hb.L13.212
+  kind: enumerate
+  topic: igg4-treatment
+  prompt: Mention the options for maintenance treatment of IgG4-RD.
+  points: [Low-dose corticosteroids, Rituximab, Azathioprine, 6-mercaptopurine, Mycophenolate mofetil]
+  pass: 3
+  src: {page: 250}
+  status: unverified
+- id: hb.L13.213
+  kind: cloze
+  topic: igg4-treatment
+  text: About {{c1::10%}} of type 1 AIP progress to chronic pancreatitis with calcifications and exocrine insufficiency.
+  src: {page: 250}
+  status: unverified
+  tags: [numbers]
+- id: hb.L13.214
+  kind: enumerate
+  topic: igg4-treatment
+  prompt: Mention the risk factors for relapse of type 1 AIP.
+  points: [Obstructive jaundice, Extrapancreatic biliary involvement, Intra- or extrahepatic proximal ductal stenosis,
+    Incomplete radiological or serological remission during maintenance, Diffuse increase in baseline pancreatic
+      volume]
+  pass: 3
+  src: {page: 250}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.215
+  kind: card
+  topic: igg4-treatment
+  front: Why is it important to recognise IgG4-RD?
+  back: It can mimic other diseases such as neoplasms; recognising it avoids unnecessary surgery and irreversible
+    fibrosis with organ failure.
+  src: {page: 250}
+  status: unverified
+- id: hb.L13.216
+  kind: mcq
+  topic: igg4-diagnosis
+  stem: Which histologic feature is a prerequisite for the diagnosis of IgG4-RD?
+  options: [Interface hepatitis, Storiform fibrosis, Noncaseating granulomas, Florid duct lesion]
+  answer: 1
+  why: [Interface hepatitis is the hallmark of AIH., 'Correct: fibrosis, with radially arranged (storiform) collagen,
+      is a prerequisite.', Noncaseating granulomas appear in the PBC stage IV image., The florid duct lesion is
+      PBC stage I.]
+  src: {page: 244}
+  status: unverified
+- id: hb.L13.217
+  kind: mcq
+  topic: igg4-diagnosis
+  stem: A pancreatic biopsy shows many IgG4+ plasma cells. Which IgG4+/IgG+ plasma cell ratio is proposed as an
+    adequate cut-off in any organ?
+  options: ['> 10%', '> 20%', '> 40%', '> 90%']
+  answer: 2
+  why: [10% is too low; many inflammatory conditions exceed it., 20% is below the proposed cut-off., 'Correct: >
+      40% is proposed for any organ; the typical value is 70% or more.', 90% is not the proposed cut-off.]
+  src: {page: 243}
+  status: unverified
+- id: hb.L13.218
+  kind: mcq
+  topic: igg4-diagnosis
+  stem: In autoimmune pancreatitis, what is the tissue cut-off for IgG4+ plasma cells per high-power field?
+  options: ['10', '50', '100', '200']
+  answer: 1
+  why: [10 is too low., 'Correct: 50 cells per high-power field in AIP.', 100 is the cut-off for sialadenitis.,
+    200 is not a cut-off in the book.]
+  src: {page: 242}
+  status: unverified
+- id: hb.L13.219
+  kind: mcq
+  topic: igg4-diagnosis
+  stem: Which of these conditions may show increased IgG4-positive cells but is NOT IgG4-related disease?
+  options: [Type 1 autoimmune pancreatitis, Primary sclerosing cholangitis, IgG4-related sclerosing cholangitis,
+    Retroperitoneal fibrosis responsive to steroids]
+  answer: 1
+  why: [Type 1 AIP is the prototype of IgG4-RD., 'Correct: PSC is listed among inflammatory conditions with increased
+      IgG4+ cells that are not IgG4-RD.', IgG4-related sclerosing cholangitis is part of IgG4-RD., Many steroid-responsive
+      retroperitoneal fibrosis cases are now classed as IgG4-RD.]
+  src: {page: 249}
+  status: unverified
+- id: hb.L13.220
+  kind: mcq
+  topic: igg4-treatment
+  stem: A 60-year-old man with type 1 AIP has a contraindication to corticosteroids. Which drug can induce remission
+    on its own?
+  options: [Rituximab, Ursodeoxycholic acid, Azathioprine, Obeticholic acid]
+  answer: 0
+  why: ['Correct: rituximab can induce remission as sole treatment when steroids are contraindicated.', UDCA is
+      not an IgG4-RD treatment in the book., 'Azathioprine is a maintenance option, not described for induction
+      alone.', OCA is a PBC/PSC drug.]
+  src: {page: 249}
+  status: unverified
+- id: hb.L13.221
+  kind: mcq
+  topic: igg4-treatment
+  stem: Which feature at diagnosis of type 1 AIP is a risk factor for relapse?
+  options: [Female sex, Proximal intra- or extrahepatic ductal stenosis, Normal serum IgG4, Focal rather than diffuse
+      pancreatic swelling]
+  answer: 1
+  why: [Sex is not listed as a relapse risk factor., 'Correct: proximal ductal stenosis is a listed relapse risk
+      factor.', Normal IgG4 is not listed; incomplete serological remission during maintenance is., Diffuse (not
+      focal) increase in pancreatic volume is the listed risk factor.]
+  src: {page: 250}
+  status: unverified
+- id: hb.L13.222
+  kind: table
+  topic: comparison
+  title: AIH vs PBC vs PSC
+  columns: [Feature, AIH, PBC, PSC]
+  rows:
+  - [Sex, Mostly women (78–90% by type), 90–95% female, About 67% male]
+  - [Age, Type 1 bimodal 10–20 and 45–70; type 2 pediatric 2–14; type 3 adults 30–50, 30–70, Mean about 40]
+  - [Key antibody, ANA and/or SMA (type 1); anti-LKM1 (type 2); pANCA common in type 1, AMA (95%), 'ANCA (80%);
+      SMA 55%, ANA 35%']
+  - [Immunoglobulins, Hypergammaglobulinemia (gamma globulin ≥ 1.5× normal in the algorithm), 'Raised IgM (immunoreactive,
+      cryoprecipitable)', Hypergammaglobulinemia in 30%]
+  - [Histology hallmark, Interface hepatitis (lymphoplasmacytic infiltrate breaching the limiting plate) ± lobular
+      hepatitis, Florid bile duct lesion (stage I) through cirrhosis with duct paucity (stage IV), Onion-skin periductal
+      fibrosis around an obliterated duct; ductopenia]
+  - [Cholangiogram, Normal (an abnormal cholangiogram with AIH features points to the AIH + PSC variant), Small
+      intrahepatic duct disease; the book describes no cholangiographic sign, 'Multifocal annular strictures with
+      normal or ectatic segments, short band-like strictures, diverticulum-like outpouchings']
+  - [Associations, Concurrent immune diseases (34–58%), 'Thyroiditis, RA, CREST, Sjögren''s, scleroderma', 'IBD
+      in over 75%, mostly ulcerative colitis']
+  - [First-line treatment, Prednisone ± azathioprine (combination preferred), UDCA for life; add OCA or elafibranor
+      if response is not enough, No therapy achieves remission; treat complications; BSG advises against long-term
+      UDCA; transplantation for advanced disease]
+  - [Response or outcome, 'Remission = no symptoms, AST ≤ 2× normal, normal gamma globulin, minimal histologic activity',
+    UDCA delays liver damage but not fatigue; PBC can recur after transplant, Recurs after transplant in 30–50%;
+      dominant strictures cut mean survival to 14 years]
+  blanks:
+  - [0, 1]
+  - [0, 2]
+  - [0, 3]
+  - [2, 1]
+  - [2, 2]
+  - [2, 3]
+  - [3, 2]
+  - [4, 1]
+  - [4, 2]
+  - [4, 3]
+  - [5, 3]
+  - [6, 3]
+  - [7, 1]
+  - [7, 2]
+  - [8, 1]
+  src: {page: 204}
+  status: unverified
+  tags: [high-yield]
+- id: hb.L13.223
+  kind: case
+  topic: aih-treatment
+  stem: A 34-year-old woman has 3 weeks of fatigue and jaundice. AST is 12 times normal, gamma globulin 2.5 times
+    normal, ANA 1:320 and SMA positive. AMA, HBsAg, anti-HCV and IgM anti-HAV are negative; ceruloplasmin, alpha-1
+    antitrypsin phenotype and iron studies are normal. She drinks no alcohol and takes no drugs.
+  steps:
+  - question: What is the next step on the book's diagnostic algorithm?
+    options: [Liver biopsy, ERCP, Start UDCA, Repeat serology in 6 months]
+    answer: 0
+    why: After the exclusion step, the algorithm needs histology (interface hepatitis ± lobular hepatitis) before
+      classifying AIH.
+  - reveal: Biopsy shows interface hepatitis with a lymphoplasmacytic infiltrate and lobular hepatitis. No cholangitis.
+    question: How is she classified?
+    options: [Definite type 1 AIH, Probable type 1 AIH, Definite type 2 AIH, Autoimmune cholangitis]
+    answer: 0
+    why: Gamma globulin ≥ 1.5× normal, ANA/SMA ≥ 1:80, no drugs, no alcohol and interface hepatitis make it definite;
+      ANA/SMA make it type 1. Autoimmune cholangitis would show cholangitis.
+  - question: Which regimen does the book prefer?
+    options: [Prednisone 30 mg/day tapering to 10 mg/day plus azathioprine 50 mg/day, Prednisone 60 mg/day tapering
+        to 20 mg/day alone, Azathioprine 50 mg/day alone, UDCA]
+    answer: 0
+    why: AST ≥ 10× normal is an absolute indication, and the combination gives fewer glucocorticoid side effects
+      (10% vs 44%).
+  - reveal: After 2 years she has no symptoms, AST is 1.5 times normal, gamma globulin is normal and a biopsy shows
+      minimal activity.
+    question: What now?
+    options: [Stop therapy and watch for relapse, Indefinite low-dose prednisone, Increase to high-dose therapy,
+      Refer for transplantation]
+    answer: 0
+    why: She meets the remission criteria, so therapy is stopped.
+  - reveal: She relapses, gets a second remission with repeat therapy, stops again, and relapses a second time.
+    question: What is the long-term plan?
+    options: [Indefinite low-dose prednisone or indefinite azathioprine, Repeat the induction course and stop again,
+      Liver transplantation, No treatment]
+    answer: 0
+    why: After a second relapse, Fig. 2 recommends indefinite low-dose prednisone or azathioprine.
+  src: {page: 214}
+  status: unverified
+  tags: [figure]
+- id: hb.L13.224
+  kind: case
+  topic: pbc-treatment
+  stem: A 48-year-old woman has itching for 6 months and tiredness. She has dry eyes and dry mouth. ALP is raised,
+    AMA is positive and IgM is high. There are yellow plaques on her eyelids.
+  steps:
+  - question: What is the most likely diagnosis?
+    options: [Primary biliary cholangitis, Primary sclerosing cholangitis, Type 1 autoimmune hepatitis, IgG4-related
+        sclerosing cholangitis]
+    answer: 0
+    why: A middle-aged woman with pruritus, positive AMA (95% of PBC), raised IgM and an associated Sjögren's picture.
+      The eyelid plaques are xanthelasma from hypercholesterolemia.
+  - question: What is the main treatment?
+    options: [Lifelong ursodeoxycholic acid, Prednisone and azathioprine, Colestyramine alone, Balloon dilatation]
+    answer: 0
+    why: UDCA is the main treatment; it delays liver damage, especially if started early, and is taken for life.
+  - reveal: UDCA is not working well enough.
+    question: What may be added?
+    options: [Obeticholic acid or elafibranor, Prednisone, Metronidazole, Rituximab]
+    answer: 0
+    why: OCA or elafibranor may be combined with UDCA when UDCA alone is not enough.
+  - reveal: Her itching is severe and colestyramine is started.
+    question: How should UDCA be timed?
+    options: ['At least 1 hour before, or 4–6 hours after, colestyramine', Together with colestyramine, 30 minutes
+        after colestyramine, UDCA is stopped]
+    answer: 0
+    why: Colestyramine affects UDCA absorption.
+  - reveal: Years later her disease is advanced and transplantation is discussed.
+    question: What should she be told?
+    options: ['Transplant cures the itch, but fatigue may persist and PBC can recur in the new liver', Transplant
+        cures all symptoms and PBC never recurs, Planning should wait until she is decompensated, Immunosuppression
+        is needed only for the first year]
+    answer: 0
+    why: Recurrent PBC can occur, fatigue may persist, planning starts early (waits may exceed 3 months), and immunosuppression
+      is lifelong.
+  src: {page: 221}
+  status: unverified
+- id: hb.L13.225
+  kind: case
+  topic: psc-treatment
+  stem: A 35-year-old man with ulcerative colitis has a raised ALP (4 times normal) and positive ANCA. MRCP shows
+    multifocal annular strictures with intervening slightly ectatic segments in the intra- and extrahepatic ducts.
+  steps:
+  - question: What is the diagnosis?
+    options: [Primary sclerosing cholangitis, Primary biliary cholangitis, Secondary sclerosing cholangitis from
+        choledocholithiasis, IgG4-related sclerosing cholangitis]
+    answer: 0
+    why: Male, IBD, ANCA, and global intra- and extrahepatic strictures. Secondary disease is perihilar and extrahepatic
+      with a known cause.
+  - reveal: Months later he has fever, rigors and jaundice.
+    question: Immediate treatment?
+    options: [Broad-spectrum IV antibiotic (ciprofloxacin), High-dose UDCA, Prednisone, Liver transplantation]
+    answer: 0
+    why: Bacterial cholangitis is treated with a broad-spectrum IV antibiotic.
+  - reveal: ERCP shows a dominant stricture of the common hepatic duct.
+    question: Standard therapy?
+    options: [Balloon dilatation, Routine long-term stenting, Surgical resection, Observation only]
+    answer: 0
+    why: Balloon dilatation is standard; stenting is controversial.
+  - reveal: A year later he has subacute worsening right upper quadrant pain and rising liver tests.
+    question: Which complication must be considered first?
+    options: [Cholangiocarcinoma, Hepatic adenoma, Acute viral hepatitis, Gallbladder polyp]
+    answer: 0
+    why: Dominant strictures increase the risk of CCA, which presents with subacute worsening pain or labs.
+  - question: Which is true of liver transplantation for his PSC?
+    options: ['It is the most effective treatment for advanced PSC, but PSC recurs in 30–50%', It cures PSC permanently,
+      It is contraindicated in PSC, It is only for patients with IBD]
+    answer: 0
+    why: Transplantation is the most effective treatment for advanced PSC; recurrence is 30–50%.
+  src: {page: 228}
+  status: unverified
+- id: hb.L13.226
+  kind: case
+  topic: igg4-treatment
+  stem: A 62-year-old man has painless obstructive jaundice and new-onset diabetes. CT shows a diffusely enlarged
+    pancreas without peripancreatic inflammation and thickening of the intrapancreatic bile duct wall.
+  steps:
+  - question: Which serum test best supports IgG4-related disease?
+    options: [Serum IgG4 > 135 mg/dl, AMA, Anti-LKM1, Raised IgM]
+    answer: 0
+    why: 84% of patients have IgG4 > 135 mg/dl. AMA is PBC, anti-LKM1 is type 2 AIH, IgM is PBC.
+  - reveal: Serum IgG4 is raised. PET/CT finds a target lesion and a biopsy is taken.
+    question: Which histologic feature is a prerequisite for diagnosis?
+    options: [Storiform fibrosis, Interface hepatitis, Onion-skin fibrosis, Caseating granuloma]
+    answer: 0
+    why: The three features are lymphoplasmacytic infiltrate, storiform fibrosis (a prerequisite) and obliterative
+      phlebitis.
+  - question: First-line treatment?
+    options: [Systemic glucocorticoids, Pancreaticoduodenectomy, UDCA, Observation]
+    answer: 0
+    why: Steroids induce remission in up to 90% of type 1 AIP; recognising the disease avoids unnecessary surgery.
+  - reveal: He enters remission. His presentation included obstructive jaundice and diffuse pancreatic enlargement.
+    question: What follows induction?
+    options: [Maintenance with low-dose corticosteroids (or rituximab or an immunomodulator), Stop all treatment
+        at once, Lifelong high-dose steroids, Surgery to prevent relapse]
+    answer: 0
+    why: Obstructive jaundice and diffuse pancreatic enlargement are relapse risk factors; maintenance prevents
+      relapse (30–50%).
+  - reveal: He later develops low back pain and CT shows tissue encasing both ureters with hydronephrosis.
+    question: What is this?
+    options: [IgG4-related retroperitoneal fibrosis, Ureteric stones, Metastatic pancreatic cancer, Psoas abscess]
+    answer: 0
+    why: Retroperitoneal fibrosis is the most common retroperitoneal form, encases the ureters and usually responds
+      to steroids.
+  src: {page: 244}
+  status: unverified
+- id: hb.L13.227
+  kind: essay
+  topic: aih-diagnosis
+  prompt: Discuss the diagnosis and treatment of autoimmune hepatitis.
+  outline:
+  - Definition: [Self-perpetuating hepatocellular inflammation of unknown cause, 'Interface hepatitis, hypergammaglobulinemia,
+        autoantibodies; exclude other liver disease']
+  - Diagnosis: ['Definite: exclusion, immunoreactivity, interface hepatitis; GG ≥ 1.5× normal, ANA/SMA/LKM1 ≥ 1:80,
+        no drugs, alcohol < 25 g/d', 'Probable: titre ≥ 1:40, drug/alcohol exposure, or only anti-ASGPR, anti-SLA/LP,
+        antiactin, anti-LC1', 'Types: 1 (ANA/SMA), 2 (anti-LKM1, CYP2D6), 3 (none conventional, tRNP); variants
+        with PBC, PSC, cholangitis']
+  - Clinical picture: ['Fatigue, upper abdominal discomfort, jaundice, hepatomegaly, concurrent immune diseases']
+  - Indications: ['Absolute: incapacitating symptoms, AST ≥ 10×, AST ≥ 5× with GG ≥ 2×, bridging or multilobular
+        necrosis', 'None: inactive cirrhosis, portal hepatitis, decompensated cirrhosis with variceal bleeding']
+  - Regimens: ['Prednisone 60→40→30→20 mg alone, or 30→20→15→10 mg plus azathioprine 50 mg', 'Combination preferred:
+        steroid side effects 10% vs 44%']
+  - End points: ['Remission (stop), failure (high dose, transplant), incomplete response (indefinite low dose),
+        toxicity (reduce)', Transplant if multilobular necrosis does not improve in 2 weeks]
+  src: {page: 251}
+  status: unverified
+  tags: [book-question]
+- id: hb.L13.228
+  kind: essay
+  topic: pbc-disease
+  prompt: Discuss the clinical features, histological stages and treatment of primary biliary cholangitis.
+  outline:
+  - Epidemiology and immunology: ['90–95% female, age 30–70; AMA in 95%; raised IgM', 'Thyroiditis, RA, CREST, Sjögren''s,
+        scleroderma']
+  - Clinical features: [48–60% asymptomatic; fatigue most common; pruritus earliest specific, 'Malabsorption of
+        A, D, E, K and calcium; osteopenia ≥ 25%', 'Hepatomegaly, splenomegaly, melanin hyperpigmentation, late
+        jaundice, xanthelasma/xanthomata']
+  - Histological stages: [I florid duct lesion; II ductular proliferation and portal fibrosis, III portal-to-portal
+        septa; IV cirrhosis with duct paucity]
+  - Treatment: [General advice (avoid NSAIDs); lifelong UDCA; add or substitute OCA or elafibranor, 'Itch (colestyramine
+        timing), fatigue, dry eyes', Transplant (planning early; recurrence possible)]
+  src: {page: 251}
+  status: unverified
+  tags: [book-question]
+- id: hb.L13.229
+  kind: essay
+  topic: psc-treatment
+  prompt: Discuss the causes of sclerosing cholangitis, clinical presentations, treatment and management of complications.
+  outline:
+  - Causes: ['Primary: with or without IBD, ANCA; intra- and extrahepatic ducts', 'Secondary: surgery, stones, trauma,
+        ischemia, chemotherapy, infection, congenital, HIV, malignancy, amyloidosis, Hodgkin''s']
+  - Clinical presentation: ['67% male, mean age 40; asymptomatic labs, pruritus, fatigue, jaundice, recurrent cholangitis',
+      'ALP abnormal in 99%, ANCA 80%; IBD > 75% (UC)', Multifocal annular strictures; onion-skin fibrosis]
+  - Complications and management: [Cholangitis → IV ciprofloxacin; biliary stones, Dominant stricture → balloon
+        dilatation (survival 14 vs 27 years), Cholangiocarcinoma → poor prognosis; transplant contraindicated (book)]
+  - Treatment: [No therapy achieves remission; BSG against long-term UDCA; high-dose UDCA harmful, Transplant most
+        effective; recurrence 30–50%, 'Emerging drugs (norUDCA, FXR agonists, fibrates, vancomycin)']
+  src: {page: 251}
+  status: unverified
+  tags: [book-question]
+- id: hb.L13.230
+  kind: essay
+  topic: igg4-diagnosis
+  prompt: Give a review of IgG4-related disease, its different clinical presentations, diagnosis and management.
+  outline:
+  - Definition and epidemiology: ['Fibro-inflammatory disease; pancreas, bile duct, salivary and lacrimal glands,
+        retroperitoneum', 'Male:female 2.8:1; no familial cases']
+  - Presentations: ['Type 1 AIP (prototype): obstructive jaundice (up to 55%), enlarged pancreas, pancreatitis',
+      'IgG4 sclerosing cholangitis (up to 70%), gallbladder', 'Retroperitoneal fibrosis, periaortitis, sclerosing
+        mesenteritis; rare GI disease']
+  - Diagnosis: [Serum IgG4 > 135 mg/dl (84%); 30–50% normal, 'Imaging, PET/CT for biopsy target; histology: infiltrate,
+        storiform fibrosis, obliterative phlebitis', 'IgG4+ cells (AIP 50/HPF, sialadenitis 100); IgG4+/IgG+ > 40%;
+        exclude lymphoma, cancer, other inflammation']
+  - Management: [Steroids (remission up to 90%); rituximab if steroids contraindicated, 'Relapse 30–50%: steroids
+        again, higher dose, immunosuppressant or rituximab', 'Maintenance low-dose steroids, rituximab, azathioprine,
+        6-MP, MMF']
+  src: {page: 251}
+  status: unverified
+  tags: [book-question]

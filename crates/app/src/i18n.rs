@@ -32,6 +32,115 @@ pub mod soon {
     pub const BODY: &str = "هتظهر هنا أول ما تخلص. لحد ما ده يحصل، تقدر تذاكر نفس المحتوى من Anki.";
 }
 
+pub mod table {
+    pub const HINT_TAP: &str = "دوس على كل ؟ تشوف الإجابة، وبعدين علّم: عرفتها ✓ ولا لأ ✗.";
+    pub const HINT_TYPE: &str = "اكتب كل خانة فاضية، وبعدين دوس صحّح.";
+    pub const REVEAL_CELL: &str = "اكشف الخانة";
+    pub const TYPE_CELL: &str = "اكتب الخانة";
+    pub const REVEAL_ALL: &str = "اكشف الكل";
+    pub const CHECK_TYPED: &str = "صحّح";
+    pub const TYPING_ON: &str = "عايز أكتب";
+    pub const TYPING_OFF: &str = "من غير كتابة";
+    pub const KNEW_IT: &str = "عرفتها";
+    pub const MISSED_IT: &str = "ماعرفتهاش";
+    pub const MARK_RIGHT: &str = "اعتبرها صح";
+    pub const MARK_WRONG: &str = "اعتبرها غلط";
+    pub const RATE_YOURSELF: &str = "قيّم نفسك";
+    pub const SUGGESTED: &str = "اقتراحنا";
+    pub const AGAIN: &str = "تاني";
+    pub const HARD: &str = "صعبة";
+    pub const GOOD: &str = "تمام";
+    pub const EASY: &str = "سهلة";
+
+    pub fn mark_each(left: usize) -> String {
+        if left == 1 {
+            "فاضل خانة واحدة: عرفتها ولا لأ؟".to_string()
+        } else {
+            format!("فاضل {left} خانات: علّم على كل واحدة عرفتها ولا لأ.")
+        }
+    }
+
+    pub fn recalled(right: usize, total: usize) -> String {
+        if right == total {
+            format!("كل الخانات صح ({total} من {total}). حلو أوي!")
+        } else {
+            format!("افتكرت {right} من {total} خانات.")
+        }
+    }
+}
+
+pub mod order {
+    pub const HINT: &str =
+        "دوس على الخطوات بالترتيب. تقدر ترجّع خطوة بالدوس عليها، أو تحركها بالأسهم أو بالسحب.";
+    pub const PLACED: &str = "ترتيبك";
+    pub const YOUR_ORDER: &str = "ترتيبك";
+    pub const POOL: &str = "الخطوات";
+    pub const NEXT_SLOT: &str = "الخطوة الجاية هنا";
+    pub const CORRECT_ORDER: &str = "الترتيب في الكتاب";
+    pub const CHECK: &str = "صحّح";
+    pub const CLEAR: &str = "ابدأ من الأول";
+    pub const SEND_BACK: &str = "رجّعها للخطوات";
+    pub const MOVE_UP: &str = "حركها لفوق";
+    pub const MOVE_DOWN: &str = "حركها لتحت";
+    pub const IN_PLACE: &str = "في مكانها";
+    pub const ALL_IN_PLACE: &str = "كل الخطوات في مكانها. ترتيب ممتاز!";
+
+    pub fn in_place(right: usize, total: usize) -> String {
+        format!("{right} من {total} في مكانها. الخطوات المعلّمة بالأحمر محتاجة نظرة تانية.")
+    }
+
+    pub fn should_be(position: usize) -> String {
+        format!("مكانها {position}")
+    }
+}
+
+pub mod oral {
+    pub const TITLE: &str = "امتحان شفوي";
+    pub const INTRO: &str = "التطبيق يسألك بصوت عالي، وانت تجاوب بصوتك. بعد وقت التفكير يقولك الإجابة، وانت تقيّم نفسك. ينفع وانت ماشي.";
+    pub const LECTURE: &str = "المحاضرة";
+    pub const ALL_LECTURES: &str = "كل المحاضرات الجاهزة";
+    pub const SIZE: &str = "عدد الأسئلة";
+    pub const THINK: &str = "وقت التفكير";
+    pub const SECONDS: &str = "ثانية";
+    pub const VOICE: &str = "اقرا الأسئلة بصوت عالي";
+    pub const RATE: &str = "سرعة الصوت";
+    pub const RATES: [&str; 3] = ["أبطأ", "عادي", "أسرع"];
+    pub const AUTO: &str = "كمّل لوحدك بعد الإجابة";
+    pub const AUTO_HINT: &str =
+        "لو ما ضغطتش على تقييم في ٨ ثواني، يعدّي للسؤال اللي بعده من غير ما يسجّل حاجة.";
+    pub const AVAILABLE: &str = "سؤال ينفع يتسأل شفوي";
+    pub const START: &str = "ابدأ";
+    pub const EMPTY: &str = "لسه مفيش محاضرات جاهزة فيها أسئلة شفوي. أول ما محاضرة تخلص هتلاقيها هنا.";
+    pub const NO_VOICE: &str = "مفيش صوت إنجليزي شغّال على الجهاز ده، فالأسئلة هتظهر مكتوبة بس. على أندرويد: الإعدادات ← تحويل النص إلى كلام ← نزّل صوت English.";
+
+    pub const LISTEN: &str = "اسمع السؤال";
+    pub const THINKING: &str = "فكّر وجاوب بصوتك";
+    pub const WHAT_ELSE: &str = "وإيه كمان؟";
+    pub const ANSWER: &str = "الإجابة";
+    pub const FOLLOW_UP: &str = "سؤال الممتحن بعد الكارت";
+    pub const AGAIN_BADGE: &str = "تاني مرة";
+    pub const PASS: &str = "كفاية تذكر";
+    pub const OF: &str = "من";
+    pub const PAGE: &str = "صفحة";
+    pub const LEFT: &str = "فاضل";
+    pub const SHOW: &str = "اعرض الإجابة";
+    pub const REPEAT: &str = "عيد السؤال";
+    pub const AGAIN: &str = "تاني";
+    pub const AGAIN_HINT: &str = "هيرجعلك بعد ٣ أسئلة";
+    pub const GOOD: &str = "تمام";
+    pub const GOOD_HINT: &str = "جاوبت صح";
+    pub const END: &str = "إنهاء";
+
+    pub const DONE: &str = "خلصت الجلسة";
+    pub const DONE_GOOD: &str = "تمام";
+    pub const DONE_AGAIN: &str = "تاني";
+    pub const DONE_HEARD: &str = "سمعتها بس";
+    pub const MISSED: &str = "الأسئلة اللي محتاجة مراجعة";
+    pub const NONE_MISSED: &str = "ولا سؤال وقع منك. شغل حلو!";
+    pub const ANOTHER: &str = "جلسة كمان";
+    pub const BACK: &str = "رجوع للإعدادات";
+}
+
 pub mod case {
     pub const TAB_CASES: &str = "حالات إكلينيكية";
     pub const TAB_CALC_ITEMS: &str = "تمارين بالأرقام";
@@ -90,4 +199,50 @@ pub mod calc {
     pub const MEANING: &str = "يعني إيه النتيجة دي؟";
     pub const MEANING_HINT: &str = "قولها لنفسك الأول، وبعدين افتح التفسير.";
     pub const SHOW_MEANING: &str = "ورّيني التفسير";
+}
+
+pub mod settings {
+    pub const TITLE: &str = "الإعدادات";
+    pub const CLOSE: &str = "اقفل";
+    pub const BACK: &str = "رجوع";
+    pub const SECTIONS: &str = "أقسام الإعدادات";
+    pub const THIS_DEVICE: &str = "للجهاز ده بس";
+
+    pub const LOOK: &str = "الشكل";
+    pub const LOOK_SUB: &str = "الألوان وحجم الخط";
+    pub const DATA: &str = "بياناتك";
+    pub const DATA_SUB: &str = "فين بتتحفظ، والتصدير";
+    pub const ABOUT: &str = "عن باطنة";
+    pub const ABOUT_SUB: &str = "النسخة والمحتوى";
+
+    pub const THEME: &str = "الألوان";
+    pub const THEME_SYSTEM: &str = "زي الجهاز";
+    pub const THEME_SYSTEM_SUB: &str = "فاتح بالنهار، وغامق لما الجهاز يبقى غامق";
+    pub const THEME_PAPER: &str = "ورق";
+    pub const THEME_PAPER_SUB: &str = "فاتح وهادي";
+    pub const THEME_NIGHT: &str = "ليل";
+    pub const THEME_NIGHT_SUB: &str = "غامق";
+    pub const THEME_SHIFT: &str = "نبطشية";
+    pub const THEME_SHIFT_SUB: &str = "غامق ودافي من غير ضوء أزرق، للمذاكرة متأخر قبل النوم";
+
+    pub const TEXT_SIZE: &str = "حجم الخط";
+    pub const TEXT_SMALL: &str = "صغير";
+    pub const TEXT_NORMAL: &str = "عادي";
+    pub const TEXT_LARGE: &str = "كبير";
+    pub const TEXT_LARGER: &str = "أكبر";
+    pub const TEXT_SAMPLE_AR: &str = "إيه أول علاج لـ";
+    pub const TEXT_SAMPLE_TERM: &str = "variceal bleeding";
+
+    pub const DATA_FOLDER: &str = "فولدر البيانات";
+    pub const DATA_NOWHERE: &str = "مش معروف على الجهاز ده";
+    pub const DATA_LOCAL: &str = "كل اللي بتذاكره متسجل على الجهاز ده. النسخة الاحتياطية والمزامنة جايين.";
+
+    pub const VERSION: &str = "النسخة";
+    pub const CONTENT: &str = "المحتوى";
+    pub const LECTURES_WRITTEN: &str = "محاضرة مكتوبة من";
+    pub const ITEMS: &str = "سؤال وكارت";
+    pub const SOURCE: &str = "المصدر";
+    pub const BOOK: &str =
+        "Internal Medicine Postgraduate Lectures, Alexandria Faculty of Medicine (2025), part 1";
+    pub const PERSONAL: &str = "نسخة شخصية، مش منشورة.";
 }

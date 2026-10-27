@@ -1,0 +1,139 @@
+/* Oral mode. Big targets so it works while walking: the rating buttons fill
+   the bottom of a phone screen. Question and answer sit side by side from
+   840px (Tab S11, Mac). Logical properties only. */
+
+.oral-setup { gap: var(--sp-3); }
+.oral-field { display: flex; flex-direction: column; gap: var(--sp-1); }
+.oral-field select,
+.oral-field input[type="range"] { inline-size: 100%; min-block-size: 44px; font: inherit; }
+.oral-field select {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  padding-inline: var(--sp-3);
+}
+.oral-field input[type="range"] { accent-color: var(--accent); }
+.oral-check { display: flex; align-items: center; gap: var(--sp-2); min-block-size: 44px; cursor: pointer; }
+.oral-check input { inline-size: 1.25rem; block-size: 1.25rem; accent-color: var(--accent); }
+
+.segmented { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
+.segmented button {
+  min-block-size: 44px;
+  min-inline-size: 64px;
+  padding-inline: var(--sp-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  cursor: pointer;
+}
+.segmented button[aria-checked="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); font-weight: 700; }
+
+.oral-start {
+  min-block-size: 56px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--surface);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  cursor: pointer;
+}
+.oral-start:disabled { opacity: 0.5; cursor: default; }
+
+/* ---------- running ---------- */
+.oral-run { display: flex; flex-direction: column; gap: var(--sp-3); outline: none; min-block-size: 100%; }
+.oral-top { display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; }
+.oral-end {
+  margin-inline-start: auto;
+  min-block-size: 44px;
+  padding-inline: var(--sp-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  cursor: pointer;
+}
+.chip.accent { background: var(--accent-soft); border-color: transparent; color: var(--accent); font-weight: 600; }
+
+.oral-panes { display: grid; gap: var(--sp-3); align-items: start; }
+@media (min-width: 840px) {
+  .oral-panes { grid-template-columns: 1fr 1fr; }
+}
+.en { text-align: start; font-family: var(--font-latin); }
+.oral-question .en { display: flex; flex-direction: column; gap: var(--sp-2); }
+.oral-question .en p { color: var(--muted); }
+.oral-question .en p.oral-ask { color: var(--text); font-size: var(--fs-lg); font-weight: 600; }
+.oral-answer ul { margin: 0; padding-inline-start: 1.25rem; display: flex; flex-direction: column; gap: var(--sp-1); }
+.oral-answer { border-color: var(--good); }
+.oral-answer h2 { color: var(--good); }
+
+.oral-timer { display: flex; flex-direction: column; align-items: center; gap: var(--sp-2); padding-block: var(--sp-4); }
+.oral-status { color: var(--muted); font-size: var(--fs-lg); }
+.oral-ring {
+  --p: 100;
+  inline-size: 8rem;
+  block-size: 8rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(var(--accent) calc(var(--p) * 1%), var(--line) 0);
+  transition: background var(--dur) var(--ease);
+}
+.oral-ring span {
+  inline-size: 6.5rem;
+  block-size: 6.5rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-latin);
+}
+
+/* The rating buttons: half the width each, tall, at the bottom on phones. */
+.oral-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+  margin-block-start: auto;
+  position: sticky;
+  inset-block-end: calc(var(--nav-h) + var(--sp-2));
+}
+@media (min-width: 600px) {
+  .oral-actions { inset-block-end: var(--sp-2); }
+}
+.oral-big {
+  min-block-size: 96px;
+  border: 0;
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.08);
+}
+.oral-big .big-label { font-size: var(--fs-xl); font-weight: 700; }
+.oral-big .big-hint { font-size: var(--fs-sm); opacity: 0.85; }
+.oral-big.again { background: var(--bad-soft); color: var(--bad); }
+.oral-big.good { background: var(--good-soft); color: var(--good); }
+.oral-big.show { background: var(--accent); color: var(--surface); }
+.oral-small {
+  min-block-size: 96px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: var(--fs-lg);
+  cursor: pointer;
+}
+
+/* ---------- summary ---------- */
+.oral-tally { display: flex; gap: var(--sp-4); margin: 0; flex-wrap: wrap; }
+.oral-tally div { display: flex; flex-direction: column; align-items: center; min-inline-size: 5rem; }
+.oral-tally dt { color: var(--muted); font-size: var(--fs-sm); }
+.oral-tally dd { margin: 0; font-size: var(--fs-xl); font-weight: 700; font-variant-numeric: tabular-nums; }
+.oral-missed { margin: 0; padding-inline-start: 1.25rem; display: flex; flex-direction: column; gap: var(--sp-2); }
+.oral-question .chip { align-self: flex-start; }
