@@ -1,0 +1,172 @@
+schema: kabar.lesson/v1
+id: j5.u04.l06
+language: jv
+title: Voice note Mas Bayu
+can_do:
+  ar_eg: تسمع فويس نوت مخلوط اللغات وتفهم الشخص فين وهيتأخر قد إيه.
+  ar: أن تستمع إلى رسالة صوتية مختلطة اللغات وتفهم أين المتحدث وكم سيتأخر.
+  en: Follow a code-mixed voice note and catch where your friend is and how late he'll be.
+exercises:
+  - id: e01
+    type: listen
+    text: Bro, aku wis OTW neng stasiun, tapi macet banget.
+    question:
+      ar_eg: بايو بعتلك فويس. هو فين دلوقتي؟
+      ar: أرسل لك بايو رسالة صوتية. أين هو الآن؟
+      en: Bayu sent you a voice note. Where is he now?
+    options: [isih ing omah, OTW neng stasiun, wis ing museum]
+    answer: 1
+    meaning:
+      ar_eg: يا صاحبي، أنا في السكة للمحطة، بس الزحمة فظيعة.
+      ar: يا صديقي، أنا في الطريق إلى المحطة، لكن الزحام شديد جدًا.
+      en: Bro, I'm on my way to the station, but the traffic is terrible.
+    explain:
+      ar_eg: macet = زحمة مرور (زي الإندونيسي). وtapi إندونيسي، الجاوي nanging.
+      ar: macet = زحام مروري (كالإندونيسية)، وtapi إندونيسية ومقابلها الجاوي nanging.
+      en: macet = traffic jam (as in Indonesian); tapi is Indonesian, the Javanese is nanging.
+    words: [macet, OTW]
+  - id: e02
+    type: listen
+    text: Sabar ya, aku telat sepuluh menit.
+    question:
+      ar_eg: هيتأخر قد إيه؟
+      ar: كم سيتأخر؟
+      en: How late will he be?
+    options: [sepuluh menit, sejam, limang menit]
+    answer: 0
+    meaning:
+      ar_eg: اصبر شوية، أنا متأخر عشر دقايق.
+      ar: اصبر قليلًا، سأتأخر عشر دقائق.
+      en: Hang on, I'm ten minutes late.
+    explain:
+      ar_eg: telat = متأخر (terlambat). كلمة إندونيسية عامية، والجاوي كمان بيستخدمها.
+      ar: telat = متأخر (terlambat)، كلمة إندونيسية عامية يستعملها الجاويون أيضًا.
+      en: telat = late (terlambat), colloquial Indonesian that Javanese speakers use too.
+    words: [telat, sabar]
+  - id: e03
+    type: listen
+    text: Tikete wis tak tuku, mengko tak share neng grup.
+    question:
+      ar_eg: هيعمل share لإيه في الجروب؟
+      ar: ماذا سيشارك في المجموعة؟
+      en: What will he share in the group?
+    options: [videone, fotone, tikete]
+    answer: 2
+    meaning:
+      ar_eg: التذاكر أنا اشتريتها، وبعدين هبعتها على الجروب.
+      ar: اشتريت التذاكر، وسأشاركها في المجموعة لاحقًا.
+      en: I've bought the tickets; I'll share them in the group later.
+    words: [grup]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: macet
+        ar_eg: زحمة مرور
+        ar: زحام مروري
+        en: traffic jam
+      - text: telat
+        ar_eg: متأخر
+        ar: متأخر
+        en: late
+      - text: OTW
+        ar_eg: في السكة
+        ar: في الطريق
+        en: on the way
+      - text: sabar
+        ar_eg: صبور / اصبر
+        ar: صابر / اصبر
+        en: patient, hang on
+      - text: tak share
+        ar_eg: هعمل شير
+        ar: سأشارك
+        en: I'll share
+    words: [macet, telat, OTW, sabar]
+  - id: e05
+    type: multiple_choice
+    question: Bro, aku wis OTW neng stasiun, tapi macet banget.
+    question_meaning:
+      ar_eg: أنهي كلمتين هنا هم الهيكل الجاوي؟
+      ar: أيّ كلمتين هنا من الهيكل الجاوي؟
+      en: Which two words here are the Javanese frame?
+    options: ["wis, neng", "bro, OTW", "tapi, macet"]
+    answer: 0
+    explain:
+      ar_eg: wis وneng (وbanget) جاوي. bro وOTW إنجليزي، tapi وmacet إندونيسي.
+      ar: wis وneng (وbanget) جاوية، وbro وOTW إنجليزية، وtapi وmacet إندونيسية.
+      en: wis and neng (and banget) are Javanese; bro and OTW are English; tapi and macet are Indonesian.
+  - id: e06
+    type: fill_blank
+    sentence: Sabar ya, aku ___ sepuluh menit.
+    meaning:
+      ar_eg: اصبر شوية، أنا متأخر عشر دقايق.
+      ar: اصبر قليلًا، سأتأخر عشر دقائق.
+      en: Hang on, I'm ten minutes late.
+    options: [macet, sabar, telat]
+    answers: [telat]
+    words: [telat]
+  - id: e07
+    type: dictation
+    text: Tikete wis tak tuku, mengko tak share neng grup.
+    meaning:
+      ar_eg: التذاكر أنا اشتريتها، وبعدين هبعتها على الجروب.
+      ar: اشتريت التذاكر، وسأشاركها في المجموعة لاحقًا.
+      en: I've bought the tickets; I'll share them in the group later.
+    words: [grup]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (شات) اصبر شوية، أنا متأخر، الزحمة جامدة.
+      ar: (دردشة) اصبر قليلًا، أنا متأخر، الزحام شديد.
+      en: (chat) Hang on, I'm late, the traffic's really bad.
+    answers:
+      - Sabar ya, aku telat, macet banget.
+      - Sabar ya, aku telat, macet bgt.
+      - Sabar, aku telat, macet banget.
+      - Sabar ya, aku telat merga macet banget.
+      - Sabar ya, aku telat amarga macet banget.
+      - Sabar ya, aku telat, dalane macet banget.
+      - Sabar ya, aku telat, macet.
+    words: [sabar, telat, macet]
+dialogue:
+  title: Ing stasiun
+  lines:
+    - speaker: Mohamed
+      text: Mas, kowe neng ngendi? Wis jam pitu!
+      ar_eg: يا بايو، إنت فين؟ الساعة بقت سبعة!
+      ar: يا بايو، أين أنت؟ صارت الساعة السابعة!
+      en: Bayu, where are you? It's already seven!
+    - speaker: Mas Bayu
+      text: Sorry, bro, isih macet. Aku telat sithik.
+      ar_eg: سوري يا صاحبي، لسه زحمة. هتأخر شوية.
+      ar: آسف يا صديقي، ما زال الزحام. سأتأخر قليلًا.
+      en: Sorry, bro, still stuck in traffic. I'll be a bit late.
+    - speaker: Mohamed
+      text: Gpp. Tikete wis ana?
+      ar_eg: مفيش مشكلة. التذاكر معاك؟
+      ar: لا بأس. هل التذاكر معك؟
+      en: No problem. Do you have the tickets?
+    - speaker: Mas Bayu
+      text: Wis tak tuku. Wis tak share neng grup.
+      ar_eg: اشتريتها. وبعتها على الجروب خلاص.
+      ar: اشتريتها، وشاركتها في المجموعة.
+      en: I bought them. I've shared them in the group.
+    - speaker: Mohamed
+      text: Oke, aku nunggu neng kene.
+      ar_eg: ماشي، أنا مستنّيك هنا.
+      ar: حسنًا، سأنتظرك هنا.
+      en: OK, I'll wait here.
+new_words:
+  - word: macet
+    pos: adjective
+    ar_eg: زحمة مرور
+    ar: زحام مروري
+    en: jammed, traffic jam = macet
+  - word: telat
+    pos: adjective
+    ar_eg: متأخر
+    ar: متأخر
+    en: late = terlambat, telat
+review:
+  status: draft
+  verified: false

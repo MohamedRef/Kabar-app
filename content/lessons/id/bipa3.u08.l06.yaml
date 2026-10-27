@@ -1,197 +1,193 @@
 schema: kabar.lesson/v1
 id: bipa3.u08.l06
 language: id
-title: Ulangan Unit 8
+title: Pengumuman banjir
 can_do:
-  ar_eg: 'تشرح ظاهرة طبيعية: أسبابها ونتايجها وتعمل إيه وقتها.'
-  ar: 'أن تشرح ظاهرة طبيعية: أسبابها ونتائجها وما تفعله حين تقع.'
-  en: Explain a natural event, its causes, its effects and what to do.
+  ar_eg: تسمع إعلان طوارئ عن فيضان من ميكروفون الجامع وتفهم تعمل إيه.
+  ar: أن تستمع إلى إعلان طوارئ عن فيضان من مكبّر صوت المسجد وتفهم ما يجب فعله.
+  en: Follow a flood warning over the mosque loudspeaker and know what to do.
 slides:
-  - title: Kata penghubung Unit 8
+  - title: Dari pengeras suara masjid
+    grammar: id.conjunction.purpose-condition
     body:
       ar_eg: |
-        كل أدوات الوحدة في مكان واحد:
-        هدف: supaya / agar · نتيجة: sehingga · شرط: kalau / jika · خيال: seandainya
-        مزدوجة: tidak hanya … tetapi juga · bukan … melainkan · baik … maupun
-        ترتيب: pertama · kemudian · setelah itu · selanjutnya · akhirnya
+        في تيتيباتو، لما بيحصل خطر، الإعلان بيطلع من ميكروفون الجامع (pengeras suara). الدرس ده للسمع الأول.
+        دوّر على: النهر فاض ليه؟ الناس اللي جنب النهر يروحوا فين؟ يبعدوا عن إيه، وليه؟
+        وخد بالك من sehingga (النتيجة) وsupaya (الهدف).
       ar: |
-        أدوات الوحدة كلها:
-        الغاية: supaya / agar · النتيجة: sehingga · الشرط: kalau / jika · الافتراض: seandainya
-        المزدوجة: tidak hanya … tetapi juga · bukan … melainkan · baik … maupun
-        الترتيب: pertama · kemudian · setelah itu · selanjutnya · akhirnya
+        في تيتيباتو، عند الخطر يُذاع الإعلان من مكبّر صوت المسجد (pengeras suara). هذا الدرس للاستماع أولًا.
+        ابحث عن: لماذا فاض النهر؟ إلى أين يذهب سكّان ضفّته؟ عمَّ يبتعدون ولماذا؟
+        ولاحظ sehingga (النتيجة) وsupaya (الغاية).
       en: |
-        All the unit's linking words:
-        purpose: supaya / agar · result: sehingga · condition: kalau / jika · imagined: seandainya
-        pairs: tidak hanya … tetapi juga · bukan … melainkan · baik … maupun
-        order: pertama · kemudian · setelah itu · selanjutnya · akhirnya
-    grammar: id.conjunction.purpose-condition
+        In Tetebatu, when there's danger, the warning comes over the mosque loudspeaker (pengeras suara). This lesson is listening first.
+        Listen for: why did the river overflow? Where do people by the river go? What do they keep away from, and why?
+        Notice sehingga (result) and supaya (purpose).
     examples:
-      - text: Kalau terjadi gempa, jangan panik supaya kamu bisa berpikir.
-        ar_eg: لو حصل زلزال، ما تتخضّش عشان تعرف تفكر.
-        ar: إذا وقع زلزال فلا تفزع لكي تستطيع التفكير.
-        en: If there's an earthquake, don't panic so that you can think.
+      - text: Perhatian, perhatian! Hujan turun deras sejak tadi pagi sehingga sungai meluap.
+        ar_eg: انتباه، انتباه! المطر نازل جامد من الصبح بدري، فالنهر فاض.
+        ar: انتباه، انتباه! ينزل المطر بغزارة منذ الصباح، ممّا جعل النهر يفيض.
+        en: Attention, attention! Heavy rain has been falling since this morning, so the river has overflowed.
+      - text: Warga yang tinggal dekat sungai harus segera mengungsi ke masjid.
+        ar_eg: السكان اللي ساكنين جنب النهر لازم يروحوا الجامع حالًا.
+        ar: على السكّان القاطنين قرب النهر أن ينتقلوا فورًا إلى المسجد.
+        en: Residents who live near the river must evacuate to the mosque at once.
+      - text: Bawa tas siaga bencana, dan jauhi jembatan supaya selamat.
+        ar_eg: خدوا شنطة الطوارئ، وابعدوا عن الكوبري عشان تفضلوا سالمين.
+        ar: احملوا حقيبة الطوارئ، وابتعدوا عن الجسر كي تبقوا سالمين.
+        en: Bring your emergency bag, and keep away from the bridge so you stay safe.
 exercises:
   - id: e01
+    type: listen
+    text: Perhatian, perhatian! Hujan turun deras sejak tadi pagi sehingga sungai meluap.
+    question:
+      ar_eg: النهر فاض ليه؟
+      ar: لماذا فاض النهر؟
+      en: Why did the river overflow?
+    options: ["Karena ada gempa.", "Karena hujan deras sejak pagi.", "Karena gunung berapi meletus."]
+    answer: 1
+    meaning:
+      ar_eg: انتباه، انتباه! المطر نازل جامد من الصبح بدري، فالنهر فاض.
+      ar: انتباه، انتباه! ينزل المطر بغزارة منذ الصباح، ممّا جعل النهر يفيض.
+      en: Attention, attention! Heavy rain has been falling since this morning, so the river has overflowed.
+    words: [deras, meluap]
+  - id: e02
+    type: listen
+    text: Warga yang tinggal dekat sungai harus segera mengungsi ke masjid.
+    question:
+      ar_eg: السكان اللي جنب النهر يروحوا فين؟
+      ar: إلى أين يذهب السكّان القريبون من النهر؟
+      en: Where should people living by the river go?
+    options: ["Ke lapangan.", "Ke jembatan.", "Ke masjid."]
+    answer: 2
+    meaning:
+      ar_eg: السكان اللي ساكنين جنب النهر لازم يروحوا الجامع حالًا.
+      ar: على السكّان القاطنين قرب النهر أن ينتقلوا فورًا إلى المسجد.
+      en: Residents who live near the river must evacuate to the mosque at once.
+    words: [warga, mengungsi]
+  - id: e03
+    type: listen
+    text: Bawa tas siaga bencana, dan jauhi jembatan supaya selamat.
+    options:
+      - Bawa tas siaga bencana, dan jauhi jendela supaya selamat.
+      - Bawa jas hujan, dan jauhi jembatan supaya tidak basah.
+      - Bawa tas siaga bencana, dan jauhi jembatan supaya selamat.
+    answer: 2
+    meaning:
+      ar_eg: خدوا شنطة الطوارئ، وابعدوا عن الكوبري عشان تفضلوا سالمين.
+      ar: احملوا حقيبة الطوارئ، وابتعدوا عن الجسر كي تبقوا سالمين.
+      en: Bring your emergency bag, and keep away from the bridge so you stay safe.
+    words: [tas siaga, menjauhi, jembatan]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الإعلان قال للناس يبعدوا عن إيه؟
+      ar: عمَّ طلب الإعلان من الناس أن يبتعدوا؟
+      en: What did the announcement tell people to keep away from?
+    options: ["Jembatan.", "Masjid.", "Tas siaga."]
+    answer: 0
+    words: [jembatan, menjauhi]
+  - id: e05
     type: match_pairs
     pairs:
-      - text: gempa
-        ar_eg: زلزال
-        ar: زلزال
-        en: earthquake
-      - text: gunung berapi
-        ar_eg: بركان
-        ar: بركان
-        en: volcano
-      - text: meletus
-        ar_eg: يثور
-        ar: يثور
-        en: to erupt
-      - text: banjir
-        ar_eg: فيضان
-        ar: فيضان
-        en: flood
-      - text: jembatan
-        ar_eg: كوبري
-        ar: جسر
-        en: bridge
-      - text: bencana
-        ar_eg: كارثة
-        ar: كارثة
-        en: disaster
-    words: [gempa, gunung berapi, meletus, banjir, jembatan, bencana]
-  - id: e02
+      - text: meluap
+        ar_eg: يفيض
+        ar: يفيض
+        en: to overflow
+      - text: mengungsi
+        ar_eg: يسيب بيته لمكان آمن
+        ar: ينزح إلى مكان آمن
+        en: to evacuate
+      - text: jauhi
+        ar_eg: ابعد عن
+        ar: ابتعِد عن
+        en: keep away from
+      - text: warga
+        ar_eg: السكان، الأهالي
+        ar: السكّان
+        en: residents
+      - text: deras
+        ar_eg: جامد، غزير (المطر)
+        ar: غزير
+        en: heavy (rain)
+    words: [meluap, mengungsi, menjauhi, warga, deras]
+  - id: e06
     type: multiple_choice
-    question: Warga belajar tentang gempa ___ tidak panik.
-    options: [sehingga, supaya, maupun]
+    question: Hujan turun deras sejak tadi pagi ___ sungai meluap.
+    options: [supaya, sehingga, seandainya]
     answer: 1
     explain:
-      ar_eg: إنهم ما يتخضّوش ده هدف، فـ supaya.
-      ar: عدم الفزع غاية مقصودة، فالأداة supaya.
-      en: Not panicking is the goal, so supaya.
-    words: [panik]
-  - id: e03
-    type: multiple_choice
-    question: Baik turis ___ warga ikut membantu.
-    options: [melainkan, dan, maupun]
-    answer: 2
-    words: [maupun]
-  - id: e04
-    type: listen
-    text: Gempa itu tidak hanya merusak rumah, tetapi juga sekolah.
-    options:
-      - Gempa itu tidak hanya merusak rumah, tetapi juga jembatan.
-      - Gempa itu tidak hanya merusak rumah, tetapi juga sekolah.
-      - Banjir itu tidak hanya merusak rumah, tetapi juga sekolah.
-    answer: 1
-    meaning:
-      ar_eg: الزلزال ده مش بس بوّظ البيوت، لأ والمدارس كمان.
-      ar: لم يدمّر الزلزال البيوت فحسب، بل المدارس أيضًا.
-      en: The earthquake damaged not only houses but also schools.
-    words: [merusak]
-  - id: e05
-    type: multiple_choice
-    question: Itu bukan asap, ___ awan.
-    options: [tetapi juga, sehingga, melainkan]
-    answer: 2
-    words: [asap, awan]
-  - id: e06
-    type: fill_blank
-    sentence: ___ terjadi gempa, segera keluar dari rumah.
-    meaning:
-      ar_eg: لو حصل زلزال، اطلع من البيت فورًا.
-      ar: إذا وقع زلزال فاخرج من البيت فورًا.
-      en: If there's an earthquake, get out of the house immediately.
-    options: [Supaya, Kalau, Sehingga]
-    answers: [Kalau]
-    words: [terjadi]
+      ar_eg: فيضان النهر نتيجة المطر، مش هدف، فبنقول sehingga.
+      ar: فيضان النهر نتيجة للمطر لا غاية له، لذلك نقول sehingga.
+      en: The river overflowing is a result of the rain, not a goal, so it's sehingga.
+    words: [deras, meluap]
   - id: e07
     type: fill_blank
-    sentence: Pertama, berlindung di bawah meja. ___, jauhi jendela.
+    sentence: Jauhi jembatan ___ selamat.
     meaning:
-      ar_eg: (اكتب «بعدين») الأول، استخبى تحت الترابيزة. بعدين، ابعد عن الشباك.
-      ar: (اكتب «ثم») أولًا، احتمِ تحت الطاولة. ثم ابتعد عن النافذة.
-      en: (Write "then".) First, take shelter under a table. Then keep away from the window.
-    answers: [Kemudian, Lalu, Setelah itu, Selanjutnya, kemudian, lalu]
-    words: [berlindung, menjauhi]
+      ar_eg: ابعدوا عن الكوبري عشان تفضلوا سالمين.
+      ar: ابتعدوا عن الجسر كي تبقوا سالمين.
+      en: Keep away from the bridge so you stay safe.
+    answers: [supaya, agar]
+    explain:
+      ar_eg: ده هدف (عشان)، فـ supaya أو agar.
+      ar: هذه غاية، لذلك supaya أو agar.
+      en: This is a purpose ("so that"), so supaya or agar.
+    words: [menjauhi, jembatan]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: النهر فاض فالكوبري باظ.
-      ar: فاض النهر فتضرّر الجسر.
-      en: The river overflowed, so the bridge was damaged.
-    answer: Sungai meluap sehingga jembatan rusak.
-    distractors: [supaya, melainkan]
-    words: [meluap, jembatan]
+      ar_eg: السكان لازم يروحوا الجامع حالًا.
+      ar: على السكّان أن ينتقلوا فورًا إلى المسجد.
+      en: Residents must evacuate to the mosque at once.
+    answer: Warga harus segera mengungsi ke masjid.
+    distractors: [sehingga, jembatan]
+    words: [warga, mengungsi]
   - id: e09
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: لو البركان ثار، الأهالي لازم يخلوا المكان.
-      ar: إذا ثار البركان وجب على السكان الإخلاء.
-      en: If the volcano erupts, residents must evacuate.
+      ar_eg: لو النهر فاض، السكان لازم يروحوا مكان آمن.
+      ar: إذا فاض النهر، فعلى السكّان أن ينزحوا.
+      en: If the river overflows, residents must evacuate.
     answers:
-      - Jika gunung berapi meletus, warga harus mengungsi.
-      - Jika gunung berapi meletus, warga harus mengungsi
-      - Kalau gunung berapi meletus, warga harus mengungsi.
-      - Kalau gunung berapi meletus, warga harus mengungsi
-      - Apabila gunung berapi meletus, warga harus mengungsi.
-      - Jika gunung berapi meletus, maka warga harus mengungsi.
-      - Jika gunung itu meletus, warga harus mengungsi.
-      - Kalau gunung itu meletus, warga harus mengungsi.
-      - Jika gunung meletus, warga harus mengungsi.
-      - Kalau gunung meletus, warga harus mengungsi.
-    words: [gunung berapi, meletus, warga, mengungsi]
-  - id: e10
-    type: dictation
-    text: Seandainya saya tinggal di Tetebatu, saya akan melihat Rinjani setiap pagi.
-    meaning:
-      ar_eg: لو كنت ساكن في تيتيباتو، كنت هشوف رينجاني كل يوم الصبح.
-      ar: لو كنتُ أسكن في تيتيباتو لرأيتُ رينجاني كل صباح.
-      en: If I lived in Tetebatu, I'd see Rinjani every morning.
-    words: [seandainya]
-  - id: e11
-    type: speaking
-    text: Bawa tas siaga bencana supaya kamu siap.
-    meaning:
-      ar_eg: خد شنطة الطوارئ عشان تبقى مستعد.
-      ar: خذ حقيبة الطوارئ لكي تكون مستعدًّا.
-      en: Bring the emergency bag so you're ready.
-    words: [tas siaga, bencana]
+      - Kalau sungai meluap, warga harus mengungsi.
+      - Kalau sungai meluap, warga harus mengungsi
+      - Jika sungai meluap, warga harus mengungsi.
+      - Jika sungai meluap, warga harus mengungsi
+      - Apabila sungai meluap, warga harus mengungsi.
+      - Kalau sungainya meluap, warga harus mengungsi.
+      - Jika sungainya meluap, warga harus mengungsi.
+      - Kalau sungai meluap, warga harus segera mengungsi.
+      - Jika sungai meluap, warga harus segera mengungsi.
+    words: [meluap, warga, mengungsi]
 dialogue:
-  title: Danau di atas gunung
+  title: Di rumah Bu Nur
   lines:
     - speaker: Mohamed
-      text: Mas, apa itu Segara Anak?
-      ar_eg: يا ماس، يعني إيه سيجارا أناك؟
-      ar: يا ماس، ما سيغارا أناك؟
-      en: Mas, what is Segara Anak?
-    - speaker: Mas Rizal
-      text: Danau di atas Gunung Rinjani. Bukan hanya indah, tetapi juga sangat penting bagi orang Sasak.
-      ar_eg: بحيرة فوق جبل رينجاني. مش بس حلوة، دي كمان مهمة جدًا عند السّاساك.
-      ar: بحيرة فوق جبل رينجاني، ليست جميلة فحسب، بل مهمة جدًا لشعب الساساك أيضًا.
-      en: A lake up on Mount Rinjani. It's not only beautiful but also very important to the Sasak people.
+      text: Bu Nur, ada pengumuman dari masjid. Apa katanya?
+      ar_eg: يا طنط نور، فيه إعلان من الجامع. بيقولوا إيه؟
+      ar: يا سيدة نور، هناك إعلان من المسجد. ماذا يقولون؟
+      en: Bu Nur, there's an announcement from the mosque. What does it say?
+    - speaker: Bu Nur
+      text: Hujan deras sejak pagi sehingga sungai meluap. Warga dekat sungai harus mengungsi.
+      ar_eg: المطر جامد من الصبح، فالنهر فاض. واللي ساكنين جنب النهر لازم يمشوا.
+      ar: المطر غزير منذ الصباح ففاض النهر، وعلى سكّان ضفّته أن ينزحوا.
+      en: It's been raining hard since morning, so the river overflowed. People near the river must evacuate.
     - speaker: Mohamed
-      text: Apakah Rinjani masih gunung berapi?
-      ar_eg: هو رينجاني لسه بركان؟
-      ar: هل ما زال رينجاني بركانًا؟
-      en: Is Rinjani still a volcano?
-    - speaker: Mas Rizal
-      text: Ya. Gunung kecil di tengah danau itu kadang-kadang meletus.
-      ar_eg: أيوه. الجبل الصغير اللي في نص البحيرة بيثور ساعات.
-      ar: نعم. الجبل الصغير في وسط البحيرة يثور أحيانًا.
-      en: Yes. The little mountain in the middle of the lake erupts now and then.
+      text: Rumah kita dekat sungai, kan? Kita harus ke mana?
+      ar_eg: بيتنا جنب النهر، صح؟ نروح فين؟
+      ar: بيتنا قرب النهر، أليس كذلك؟ إلى أين نذهب؟
+      en: Our house is near the river, isn't it? Where do we go?
+    - speaker: Bu Nur
+      text: Ke masjid. Bawa tas siaga bencana, dan jangan lewat jembatan, ya.
+      ar_eg: على الجامع. خد شنطة الطوارئ، وما تعديش من على الكوبري.
+      ar: إلى المسجد. احمل حقيبة الطوارئ، ولا تمرّ على الجسر.
+      en: To the mosque. Bring the emergency bag, and don't cross the bridge.
     - speaker: Mohamed
-      text: Kalau begitu, baik turis maupun warga harus selalu mendengar petugas.
-      ar_eg: يبقى السياح والأهالي، الكل لازم يسمع كلام الموظفين المسؤولين دايمًا.
-      ar: إذن على السياح والسكان معًا أن يستمعوا دائمًا إلى المسؤولين.
-      en: In that case, both tourists and residents should always listen to the officials.
-souvenir:
-  id: bipa3.u08.souvenir
-  title: Danau Segara Anak
-  note:
-    ar_eg: سيجارا أناك بحيرة زرقا جوه فوهة رينجاني، وفي نصها بركان صغير لسه صاحي اسمه باروجاري. إندونيسيا قاعدة على «حلقة النار»، وزلازل لومبوك سنة 2018 علّمت الناس يبنوا بيوت أقوى تستحمل الزلازل. الأرض هنا بتتحرك، بس الناس اتعلمت تعيش معاها بهدوء وشجاعة.
-    ar: سيغارا أناك بحيرة زرقاء داخل فوهة رينجاني، يتوسطها بركان صغير ما زال نشطًا اسمه باروجاري. تقع إندونيسيا على «حزام النار»، وقد علّمت زلازلُ لومبوك عام 2018 الناسَ بناءَ بيوت أمتن تصمد أمام الهزات. الأرض هنا تتحرك، لكن أهلها تعلّموا العيش معها بهدوء وشجاعة.
-    en: Segara Anak is a blue lake inside Rinjani's caldera, with a small, still-active volcano, Barujari, rising from it. Indonesia sits on the Ring of Fire, and the 2018 Lombok earthquakes taught communities to build stronger, quake-resistant homes. The ground here moves, but people have learned to live with it calmly and bravely.
+      text: Baik, Bu. Saya bawa tasnya sekarang. Ayo, kita pergi!
+      ar_eg: حاضر يا طنط. هاخد الشنطة دلوقتي. يلا بينا!
+      ar: حسنًا يا سيدتي. سآخذ الحقيبة الآن. هيّا بنا!
+      en: All right, Bu. I'll take the bag now. Let's go!
 review:
   status: draft
   verified: false
