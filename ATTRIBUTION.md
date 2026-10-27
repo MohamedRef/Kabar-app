@@ -28,12 +28,16 @@ exercises are copied. Kabar's lessons and grammar explanations are original.
 - Full source list with URLs: `curriculum/indonesian.yaml` → `sources`.
 
 ## Fonts
-The UI uses system fonts and falls back through IBM Plex Sans Arabic / Noto (OFL) if installed.
+The UI fonts are bundled from the [Fontsource](https://fontsource.org) npm packages, version 5.3.0. I checked each package's LICENSE file on 27 Oct 2026, and the license is copied next to the files. `crates/app/src/fonts.rs` embeds them.
+- **Plus Jakarta Sans** (variable, Latin and Latin Extended; `@fontsource-variable/plus-jakarta-sans` 5.3.0): © 2020 The Plus Jakarta Sans Project Authors ([tokotype/PlusJakartaSans](https://github.com/tokotype/PlusJakartaSans)), SIL Open Font License 1.1. Used for the Latin UI and Indonesian and Javanese text. Files are in `assets/fonts/plus-jakarta-sans/` with `OFL.txt`.
+- **IBM Plex Sans Arabic** (400, 600 and 700, Arabic subset; `@fontsource/ibm-plex-sans-arabic` 5.3.0): © 2019 IBM Corp., SIL Open Font License 1.1. Used for the Arabic UI. Files are in `assets/fonts/ibm-plex-sans-arabic/` with `OFL.txt`.
+- **Amiri** (400, Arabic subset; `@fontsource/amiri` 5.3.0): © 2010–2022 The Amiri Project Authors ([aliftype/amiri](https://github.com/aliftype/amiri)), SIL Open Font License 1.1. Used for the خبر → kabar reveal on the Welcome card. Files are in `assets/fonts/amiri/` with `OFL.txt`.
 
 - **Noto Naskh Arabic** Regular (notofonts.github.io, hinted) — © 2022 The Noto Project Authors, SIL Open Font License 1.1 (`content/fonts/NotoNaskhArabic-OFL.txt`). Subset to the Arabic block as `content/fonts/NotoNaskhArabic-Kabar.ttf` (`pyftsubset --unicodes=U+0020,U+0021,U+002D,U+002E,U+0600-06FF,U+200C-200F,U+25CC --layout-features='*'`) and bundled for the Arabic-script pronunciation, which needs ڠ ێ ۆ پ چ and full vowel marks on every device.
 - **Noto Sans Javanese** Regular v2.005 — © 2022 The Noto Project Authors, SIL Open Font License 1.1 (`content/fonts/NotoSansJavanese-OFL.txt`). Bundled in the app for the Aksara Jawa practice sheets, and the source that `scripts/aksara/strokes.py` traces the draft stroke data in `content/aksara/strokes.json` from (a derived dataset, same license terms apply to the font itself).
 
 ## Sounds
+- **Gong and kendang tap** (`assets/sounds/`): synthesized for Kabar by `scripts/assets/synth_sounds.py`, which uses numpy and ffmpeg only. Nothing is sampled or downloaded. The gong plays when a lesson ends and the kendang plays on a right answer; `crates/app/src/sounds.rs` embeds them.
 - **Offline pack audio** (`packs` GitHub release, built by `kabar-tools packs`): Kabar's own lesson lines read by **Microsoft Azure AI Speech** neural voices id-ID-GadisNeural, id-ID-ArdiNeural, jv-ID-SitiNeural and jv-ID-DimasNeural, generated on the free F0 tier. Used under the [Microsoft Product Terms](https://www.microsoft.com/licensing/terms/) for Azure AI Speech and its [Code of Conduct for text to speech](https://learn.microsoft.com/legal/ai-code-of-conduct). The clips are synthetic voices reading Kabar's own text; they are not recordings of real people.
 
 ## On-device models and system frameworks
@@ -45,4 +49,5 @@ The UI uses system fonts and falls back through IBM Plex Sans Arabic / Noto (OFL
 - App icon ("Dawn over sawah"): original artwork created for Kabar with Codex (`docs/VISUAL-ASSETS.md`, prompts 1–2). Masters in `assets/src/icon/`; every platform size is exported by `scripts/assets/export_icons.py`.
 - Souvenir cards: original artwork created for Kabar. Six cards were drawn with Codex (`docs/VISUAL-ASSETS.md`, prompts 4b–4c); the other 101 are drawn in code by `scripts/assets/draw_souvenirs.py`. Masters are in `assets/src/souvenirs/`, and `scripts/assets/export_souvenirs.py` exports the web sizes.
 - Journey Map art (paper backdrops and 13 landmark vignettes): original artwork created for Kabar with Codex (`docs/VISUAL-ASSETS.md`, prompt 5). Masters in `assets/src/map/`; WebP sizes exported by `scripts/assets/export_map.py` and embedded by `crates/app/src/map_art.rs`. The map geometry itself is Natural Earth (see above).
+- Hero, empty states, lesson-end gong and notebook paper: original artwork drawn in code for Kabar by `scripts/assets/draw_misc.py` (`docs/VISUAL-ASSETS.md`, prompt 7). Masters are in `assets/src/misc/`, and `crates/app/src/misc_art.rs` embeds the WebP exports.
 - Background pattern: original kawung-inspired geometry generated in code (`crates/app/src/theme.rs`).

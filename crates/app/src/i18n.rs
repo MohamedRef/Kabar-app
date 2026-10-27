@@ -450,8 +450,6 @@ pub enum Msg {
     ReaderDrop,
     ReaderRecent,
     ReaderNew,
-    ModeInline,
-    ModeSplit,
     Voice,
     LangIndonesian,
     LangJavanese,
@@ -533,6 +531,16 @@ pub enum Msg {
     Me,
     PenHint,
     Example,
+    // Reader: the translation under each line
+    TranslationTitle,
+    TranslationWorking,
+    TranslationByAi,
+    TranslationWordByWord,
+    TranslationNeedsCloud,
+    TranslationResetsLater,
+    TranslationUnreachable,
+    TranslationTryAgain,
+    TranslationRetry,
     // Unggah-Ungguh Simulator (M11)
     UnggahTitle,
     UnggahBlurb,
@@ -1902,6 +1910,53 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (PasarSaved, En) => "You saved:",
         (Example, ArEg | Ar) => "مثال",
         (Example, En) => "Example",
+        (TranslationTitle, ArEg) => "الترجمة",
+        (TranslationTitle, Ar) => "الترجمة",
+        (TranslationTitle, En) => "Translation",
+        (TranslationWorking, ArEg) => "بترجملك الكلام كله…",
+        (TranslationWorking, Ar) => "جارٍ ترجمة النص كله…",
+        (TranslationWorking, En) => "Translating the whole text…",
+        (TranslationByAi, ArEg) => "ترجمة بالذكاء الاصطناعي حسب السياق. دوس على أي كلمة لمعناها لوحدها.",
+        (TranslationByAi, Ar) => "ترجمة بالذكاء الاصطناعي بحسب السياق. انقر أي كلمة لمعناها منفردة.",
+        (TranslationByAi, En) => "AI translation in context. Tap any word for its own meaning.",
+        (TranslationWordByWord, ArEg) => "كلمة بكلمة من قاموس \u{2068}Kabar\u{2069}",
+        (TranslationWordByWord, Ar) => "كلمة بكلمة من قاموس \u{2068}Kabar\u{2069}",
+        (TranslationWordByWord, En) => "Word by word, from Kabar's dictionary",
+        (TranslationNeedsCloud, ArEg) => {
+            "الترجمة الكاملة بتشتغل لما توصّل \u{2068}Kabar Cloud\u{2069}. لحد ده، تحت كل سطر معنى كلماته واحدة واحدة."
+        }
+        (TranslationNeedsCloud, Ar) => {
+            "تعمل الترجمة الكاملة عند ربط \u{2068}Kabar Cloud\u{2069}. إلى ذلك الحين، تحت كل سطر معاني كلماته واحدة واحدة."
+        }
+        (TranslationNeedsCloud, En) => {
+            "Full translation works once Kabar Cloud is connected. Until then, each line shows its words' meanings one by one."
+        }
+        (TranslationResetsLater, ArEg) => {
+            "رصيد الترجمة المجاني خلص النهارده وبيرجع بكرة. تحت كل سطر معنى كلماته واحدة واحدة."
+        }
+        (TranslationResetsLater, Ar) => {
+            "انتهى الرصيد المجاني للترجمة اليوم ويعود غدًا. تحت كل سطر معاني كلماته واحدة واحدة."
+        }
+        (TranslationResetsLater, En) => {
+            "Today's free translation allowance is used up; it's back tomorrow. Each line shows its words' meanings one by one."
+        }
+        (TranslationUnreachable, ArEg) => {
+            "مش قادر أوصل للترجمة دلوقتي (النت أو \u{2068}Kabar Home\u{2069}). معاني الكلمات اللي تحت شغالة من غير نت."
+        }
+        (TranslationUnreachable, Ar) => {
+            "تعذّر الوصول إلى الترجمة الآن (الإنترنت أو \u{2068}Kabar Home\u{2069}). معاني الكلمات أدناه تعمل دون اتصال."
+        }
+        (TranslationUnreachable, En) => {
+            "Can't reach the translation right now (offline, or Kabar Home is asleep). The word meanings below work offline."
+        }
+        (TranslationTryAgain, ArEg) => "الترجمة مطلعتش مظبوطة المرة دي. معاني الكلمات اللي تحت سليمة.",
+        (TranslationTryAgain, Ar) => "لم تخرج الترجمة سليمة هذه المرة. معاني الكلمات أدناه سليمة.",
+        (TranslationTryAgain, En) => {
+            "The translation didn't come out right this time. The word meanings below are solid."
+        }
+        (TranslationRetry, ArEg) => "جرّب تاني",
+        (TranslationRetry, Ar) => "أعد المحاولة",
+        (TranslationRetry, En) => "Try again",
         (ReaderIntro, ArEg) => "الصق أي كلام إندونيسي أو جاوي، أو افتح سكرين شوت، وكل كلمة هتبقى ليها شرح.",
         (ReaderIntro, Ar) => "الصق أي نص إندونيسي أو جاوي، أو افتح لقطة شاشة، وستجد شرحًا لكل كلمة.",
         (ReaderIntro, En) => {
@@ -1924,12 +1979,6 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (ReaderRecent, En) => "Recently read",
         (ReaderNew, ArEg | Ar) => "نص جديد",
         (ReaderNew, En) => "New text",
-        (ModeInline, ArEg) => "جوه النص",
-        (ModeInline, Ar) => "داخل النص",
-        (ModeInline, En) => "Inline",
-        (ModeSplit, ArEg) => "جنب بعض",
-        (ModeSplit, Ar) => "جنبًا إلى جنب",
-        (ModeSplit, En) => "Split",
         (Voice, ArEg) => "الشرح",
         (Voice, Ar) => "لغة الشرح",
         (Voice, En) => "Explain in",
