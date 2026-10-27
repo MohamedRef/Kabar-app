@@ -306,7 +306,12 @@ fn is_function_word(form: &str, lang: Lang) -> bool {
 /// root. ter-/se- on an adjective stay adjectives (terbesar, sebesar).
 /// Names, English asides, numbers and punctuation have none.
 pub fn class_of_token(t: &AnalyzedToken, pos: Option<&str>) -> Option<WordClass> {
-    let lang = t.lang.lang;
+    class_in(t, t.lang.lang, pos)
+}
+
+/// [`class_of_token`] when the caller knows the language better than the
+/// token's guess (the Reader tags a word by its dictionary entry).
+pub fn class_in(t: &AnalyzedToken, lang: Lang, pos: Option<&str>) -> Option<WordClass> {
     if !matches!(lang, Lang::Indonesian | Lang::Javanese) || !t.token.is_wordlike() {
         return None;
     }
