@@ -77,18 +77,22 @@ exercises:
         ar: رسّام
         en: painter
       - text: penari
-        ar_eg: راقص
+        ar_eg: راقص / راقصة
         ar: راقص
         en: dancer
-      - text: pedagang
-        ar_eg: تاجر
-        ar: تاجر
-        en: trader
-      - text: petani
-        ar_eg: فلاح
-        ar: مزارع
-        en: farmer
-    words: [penulis, pelukis, penari]
+      - text: pembaca
+        ar_eg: قارئ
+        ar: قارئ
+        en: reader
+      - text: penyanyi
+        ar_eg: مغني / مغنية
+        ar: مغنٍّ
+        en: singer
+      - text: lukisan
+        ar_eg: لوحة
+        ar: لوحة
+        en: painting
+    words: [penulis, pelukis, penari, pembaca, penyanyi, lukisan]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -146,6 +150,34 @@ exercises:
       ar: أختي الكبرى راقصة، وأخي الأصغر رسّام.
       en: My older sister is a dancer, and my younger brother is a painter.
     words: [penari, pelukis]
+  - id: e08
+    type: listen
+    text: Lukisan pelukis itu indah sekali.
+    options: ['Lukisan pelukis itu indah sekali.', 'Lukisan penari itu indah sekali.', 'Penulis itu pembaca yang rajin.']
+    answer: 0
+    meaning:
+      ar_eg: لوحة الرسّام ده جميلة أوي.
+      ar: لوحة ذلك الرسّام جميلة جدًا.
+      en: That painter's painting is beautiful.
+    words: [lukisan, pelukis, penari, penulis, pembaca]
+  - id: e09
+    type: fill_blank
+    sentence: Dia ___ terkenal. Suaranya indah sekali.
+    meaning:
+      ar_eg: هي مغنية مشهورة. صوتها حلو أوي.
+      ar: إنها مغنية مشهورة. صوتها جميل جدًا.
+      en: She's a famous singer. Her voice is beautiful.
+    options: [penyanyi, penari, pembaca]
+    answers: [penyanyi]
+    words: [penyanyi]
+  - id: e10
+    type: speaking
+    text: Saya suka lukisan itu. Pelukisnya teman saya.
+    meaning:
+      ar_eg: أنا بحب اللوحة دي. اللي رسمها صاحبي.
+      ar: أحب تلك اللوحة. رسّامها صديقي.
+      en: I like that painting. The painter is my friend.
+    words: [lukisan, pelukis]
 dialogue:
   lines:
     - speaker: Mohamed

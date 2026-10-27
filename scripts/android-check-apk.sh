@@ -47,6 +47,7 @@ if command -v aapt2 >/dev/null; then
       "Check [application] android_manifest in crates/app/Dioxus.toml."
   fi
   grep -q "TTS_SERVICE" <<<"$manifest" || fail "The manifest lost its text-to-speech <queries> block."
+  grep -q "windowSoftInputMode" <<<"$manifest" || fail "MainActivity lost windowSoftInputMode=adjustResize: the keyboard would cover the Check button."
   # A debuggable APK runs slower and lets anyone with USB read Kabar's data.
   if grep -q "^application-debuggable" <<<"$badging"; then
     fail "The APK is debuggable: build it with scripts/android-release-apk.sh."

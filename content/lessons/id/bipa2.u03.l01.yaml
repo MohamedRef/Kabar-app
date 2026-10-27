@@ -117,53 +117,79 @@ exercises:
       ar_eg: بعد banyak الاسم بيفضل مفرد من غير تكرار.
       ar: بعد banyak يبقى الاسم دون تكرار.
       en: After banyak the noun isn't reduplicated.
-    words: [banyak]
+    words: [banyak, bandara]
   - id: e02
     type: listen
     text: Beberapa pesawat berangkat pagi ini.
-    options: [Beberapa pesawat berangkat pagi ini., Semua pesawat berangkat pagi ini., Banyak pesawat berangkat pagi ini.]
+    options: [Beberapa pesawat berangkat pagi ini., Seluruh pesawat berangkat pagi ini., Banyak pesawat berangkat pagi ini.]
     answer: 0
-    words: [beberapa, pesawat]
+    words: [beberapa, pesawat, seluruh]
   - id: e03
     type: fill_blank
-    sentence: ___ penumpang harus membawa paspor.
+    sentence: ___ penumpang harus bawa paspor dan koper.
     meaning:
-      ar_eg: كل الركاب لازم يجيبوا الباسبور.
-      ar: يجب على جميع الركاب إحضار جوازات السفر.
-      en: All passengers must bring their passports.
+      ar_eg: كل الركاب لازم يجيبوا الباسبور والشنطة.
+      ar: على جميع الركاب إحضار جواز السفر والحقيبة.
+      en: All passengers must bring their passport and suitcase.
     options: [Setiap hari, Semua, Sedikit]
     answers: [Semua]
-    words: [semua, penumpang, paspor]
+    words: [semua, penumpang, paspor, koper]
   - id: e04
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: عندي كام شنطة.
-      ar: عندي بضع حقائب.
-      en: I have a few suitcases.
-    answers: [Saya punya beberapa koper., Saya punya beberapa koper, Saya bawa beberapa koper., Saya membawa beberapa koper., Aku punya beberapa koper.]
-    words: [beberapa, koper]
+    type: match_pairs
+    pairs:
+      - text: beberapa
+        ar_eg: كام، بعض
+        ar: بضعة
+        en: several
+      - text: seluruh
+        ar_eg: كل (كله على بعضه)
+        ar: كامل
+        en: whole, entire
+      - text: para
+        ar_eg: حضرات (قبل الناس)
+        ar: السادة
+        en: (plural for people)
+      - text: penumpang
+        ar_eg: راكب
+        ar: راكب
+        en: passenger
+      - text: bandara
+        ar_eg: مطار
+        ar: مطار
+        en: airport
+      - text: pesawat
+        ar_eg: طيارة
+        ar: طائرة
+        en: plane
+    words: [beberapa, seluruh, para, penumpang, bandara, pesawat]
   - id: e05
-    type: translate
-    direction: from_target
-    source_text: Seluruh Bali indah.
-    answers_meaning:
-      ar_eg: [بالي كلها جميلة, بالي كلها حلوة]
-      ar: [بالي كلها جميلة, جزيرة بالي بأكملها جميلة]
-      en: [All of Bali is beautiful., The whole of Bali is beautiful., Bali is beautiful everywhere.]
-    explain:
-      ar_eg: seluruh = الحاجة كلها على بعضها.
-      ar: seluruh = الشيء بأكمله.
-      en: seluruh = the whole thing.
-    words: [seluruh]
+    type: listen
+    text: Seluruh penumpang punya paspor dan koper.
+    options: ['Seluruh penumpang punya paspor dan koper.', 'Beberapa penumpang punya paspor dan koper.', 'Para penumpang punya pesawat dan koper.']
+    answer: 0
+    meaning:
+      ar_eg: كل الركاب معاهم باسبور وشنطة.
+      ar: جميع الركاب لديهم جواز سفر وحقيبة.
+      en: All the passengers have a passport and a suitcase.
+    words: [seluruh, penumpang, paspor, koper, beberapa, para, pesawat]
   - id: e06
     type: speaking
-    text: Para penumpang yang terhormat, selamat datang di Bali.
+    text: Para penumpang yang terhormat, selamat datang di Bandara Ngurah Rai, Bali.
     meaning:
-      ar_eg: حضرات الركاب الكرام، أهلًا بيكم في بالي.
-      ar: السادة الركاب الكرام، مرحبًا بكم في بالي.
-      en: Dear passengers, welcome to Bali.
-    words: [para, penumpang]
+      ar_eg: حضرات الركاب الكرام، أهلًا بيكم في مطار نجوراه راي، بالي.
+      ar: السادة الركاب الكرام، مرحبًا بكم في مطار نجوراه راي، بالي.
+      en: Dear passengers, welcome to Ngurah Rai Airport, Bali.
+    words: [para, penumpang, bandara]
+  - id: e07
+    type: fill_blank
+    sentence: Paspor saya di dalam ___.
+    meaning:
+      ar_eg: الباسبور بتاعي جوه الشنطة.
+      ar: جواز سفري داخل الحقيبة.
+      en: My passport is in the suitcase.
+    options: [koper, pesawat, bandara]
+    answers: [koper]
+    words: [paspor, koper]
 dialogue:
   title: Tiba di Ngurah Rai
   lines:
