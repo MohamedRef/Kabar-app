@@ -87,6 +87,7 @@ just check                # fmt + clippy + tests: all green
 - [ ] `just apk` while online (first build fetches ML Kit from Google Maven; it must print "Kotlin glue present"), then `just install <serial>` on the S24 Ultra and Tab S11.
 - [ ] On each device: share text from WhatsApp → **Kabar**; select text → ⋮ → **Kabar**; take a screenshot → Share → **Kabar**. `adb logcat -s KabarShare` if a share is ignored.
 - [ ] On both devices, tap a word in the Reader: the card opens with its meaning and audio.
+- [ ] Cold first popover on the S24 (SPEC §25, under 100 ms): with `just logs` running, force-stop Kabar, open it, go to **Reader**, open a saved text at once and tap a word. Send me the `kabar: glossary ready in … ms` line and say whether the first card felt slower than the next ones.
 - [ ] Tab S11 with the S Pen in the Reader: hover over a word (the meaning floats up), tap it with the pen (the card opens), draw a loop around two words (the phrase is looked up), draw a line along a few words (they're highlighted and saved). Your palm on the screen shouldn't do anything while the pen is near. Tell me if any of these misses or feels slow.
 - [ ] Send me one or two real WhatsApp screenshots you decoded (and how well the bubbles came out), so I can tune the screenshot structuring on real data.
 

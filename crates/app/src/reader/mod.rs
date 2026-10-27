@@ -48,7 +48,10 @@ pub fn warm_up() {
     static STARTED: std::sync::Once = std::sync::Once::new();
     STARTED.call_once(|| {
         std::thread::spawn(|| {
+            let t = std::time::Instant::now();
             glossary();
+            // `just logs` shows it: the cold first popover waits at most this long.
+            eprintln!("kabar: glossary ready in {} ms", t.elapsed().as_millis());
         });
     });
 }
