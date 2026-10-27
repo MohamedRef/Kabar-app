@@ -789,12 +789,25 @@ button.icon-button { inline-size: 44px; padding: 0; flex: none; }
 .reader .reader-bar.one-line { display: flex; align-items: center; gap: var(--sp-2); padding-block: var(--sp-2); }
 .reader-bar.one-line h2 { margin: 0; flex: 1; font-size: var(--fs-lg); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .read-aa .latin { font-family: var(--font-latin); font-weight: 600; }
-.read-settings { display: grid; gap: var(--sp-2); }
-/* label and choices on one line, wrapping on a phone */
-.read-settings .field { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-1) var(--sp-3); }
-.read-settings .field .label { min-inline-size: 8rem; }
-.read-settings .row { flex-wrap: wrap; }
-.read-settings .label { font-size: var(--fs-sm); color: var(--muted); font-weight: 600; }
+/* Reading settings: a popover under the bar, never pushing the text down.
+   Each label sits right above its buttons. */
+.reader-bar-wrap { position: relative; }
+.read-settings-scrim { position: fixed; inset: 0; z-index: 30; }
+/* the bar stays above the scrim: Aa, Focus and New text keep working */
+.reader-bar-wrap > .reader-bar { position: relative; z-index: 31; }
+.read-settings {
+  position: absolute; inset-block-start: calc(100% + var(--sp-2)); inset-inline-end: 0; z-index: 31;
+  inline-size: min(30rem, 100%); box-sizing: border-box; box-shadow: var(--shadow);
+  display: grid; gap: var(--sp-4); max-block-size: calc(100dvh - 8rem); overflow-y: auto;
+}
+.read-settings :is(.field, .voice-picker) { display: grid; justify-items: start; gap: var(--sp-2); margin: 0; }
+.read-settings .row { flex-wrap: wrap; gap: var(--sp-2); }
+.read-settings :is(.label, .voice-picker > .muted) { font-size: var(--fs-sm); color: var(--muted); font-weight: 600; margin: 0; }
+/* The preview follows the size and spacing as they change. */
+.read-preview {
+  margin: 0; padding: var(--sp-3); border-radius: var(--radius-sm); background: var(--surface-2);
+  font-family: var(--font-latin); font-size: calc(1.25rem * var(--read-scale, 1)); line-height: calc(2.1 * var(--read-space, 1));
+}
 .read-settings [class^="read-size-"] .latin { font-family: var(--font-latin); line-height: 1; }
 .read-size-s .latin { font-size: var(--fs-sm); }
 .read-size-m .latin { font-size: var(--fs-md); }
