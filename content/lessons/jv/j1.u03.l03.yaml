@@ -123,12 +123,12 @@ exercises:
         en: tidak (not)
       - text: karo
         ar_eg: sama / dengan (مع)
-        ar: sama / dengan (مع)
-        en: sama / dengan (with)
+        ar: dengan (مع)
+        en: dengan (with)
       - text: sing
         ar_eg: yang (اللي)
         ar: yang (الذي)
-        en: yang (that, which)
+        en: yang (which)
       - text: ana
         ar_eg: ada (فيه)
         ar: ada (يوجد)
@@ -137,7 +137,11 @@ exercises:
         ar_eg: makan (ياكل)
         ar: makan (يأكل)
         en: makan (eat)
-    words: [ora, karo, sing, ana, mangan]
+      - text: abang
+        ar_eg: merah (أحمر)
+        ar: merah (أحمر)
+        en: merah (red)
+    words: [ora, karo, sing, ana, mangan, abang]
   - id: e02
     type: multiple_choice
     question: Aku lagi makan, kok.
@@ -155,9 +159,9 @@ exercises:
   - id: e03
     type: listen
     text: Aku ora ngerti.
-    options: [Aku wis ngerti., Aku ora ngerti., Aku tidak mengerti.]
+    options: [Aku wis ngerti., Aku ora ngerti., 'Ana sing ngerti?']
     answer: 1
-    words: [ora, ngerti]
+    words: [ora, ngerti, ana, sing]
   - id: e04
     type: fill_blank
     sentence: Aku nang pasar ___ ibuku.
@@ -188,6 +192,20 @@ exercises:
       ar: أنا في السوق مع أمي.
       en: I'm at the market with my mum.
     words: [nang, karo]
+  - id: e07
+    type: multiple_choice
+    question: Ana sing abang?
+    question_meaning:
+      ar_eg: معناها إيه بالإندونيسي؟
+      ar: ما معناها بالإندونيسية؟
+      en: What does it mean in Indonesian?
+    options: ['Ada yang merah?', 'Ini yang merah?', 'Ada yang besar?']
+    answer: 0
+    explain:
+      ar_eg: ana = ada، sing = yang، abang = merah. يعني «فيه واحد أحمر؟».
+      ar: ana = ada، وsing = yang، وabang = merah، أي «هل يوجد واحد أحمر؟».
+      en: ana = ada, sing = yang, abang = merah, so "Is there a red one?"
+    words: [ana, sing, abang]
 dialogue:
   title: Jawa apa Indonesia, Cak?
   lines:
