@@ -72,7 +72,7 @@ every morning. CI warns when the table below is behind the content.
 | J2 | Madiun | — | 6 | 48 | 461 | 240 | 501 / 500 | ~5 h | 35 |
 | J3 | Pakualaman, Yogyakarta | — | 6 | 61 | 554 | 250 | 751 / 750 | ~6 h | 35 |
 | J4 | Malioboro, Yogyakarta | — | 6 | 69 | 648 | 248 | 998 / 1,000 | ~8 h | 38 |
-| J5 | Semarang | — | 6 | 66 | 621 | 253 | 1,251 / 1,250 | ~7 h | 39 |
+| J5 | Kutha Pendekar (Madiun) | — | 6 | 66 | 621 | 253 | 1,251 / 1,250 | ~7 h | 39 |
 | J6 | Kotagede, old Mataram capital | — | 6 | 80 | 748 | 246 | 1,496 / 1,500 | ~8 h | 37 |
 | **Total** |  | — | 37 | 374 | 3,491 | 1,498 | 1,496 / 1,500 | ~41 h | 218 |
 
