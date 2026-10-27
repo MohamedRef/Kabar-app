@@ -1,189 +1,231 @@
 schema: kabar.lesson/v1
 id: j6.u02.l07
 language: jv
-title: Siji nganti sanga
+title: Lontar lan mangsi
 can_do:
-  ar_eg: تسمع رقم بالجاوي وتلاقيه مكتوب بالخط الجاوي.
-  ar: أن تسمع عددًا بالجاوية فتجده مكتوبًا بالخط الجاوي.
-  en: Hear a Javanese number and find it written in aksara Jawa.
+  ar_eg: 'تتفرج على مخطوطات قديمة في المتحف: ورق النخل، والحبر، والشاعر، والأغاني، والعلم اللي فيها.'
+  ar: 'أن تشاهد مخطوطات قديمة في المتحف: سعف النخيل والحبر والشاعر والأناشيد والمعرفة.'
+  en: 'Look at old manuscripts in a museum: palm leaves, ink, the court poet, songs and the knowledge inside.'
 slides:
-  - title: Angka nganggo tembung
+  - title: Naskah lawas
     body:
       ar_eg: |
-        النهارده بتسمع الأول: ديماس هيقول أرقام وإنت تدوّر عليها مكتوبة.
-        الأرقام اللي بتخلص بحرف متحرك تقدر تكتبها دلوقتي: siji · loro · telu · lima · pitu · wolu · sanga.
-        papat وenem بيخلصوا بحرف ساكن، هتكتبهم الوحدة الجاية.
+        زمان كانوا بيكتبوا على lontar (ورق نخل اللونتار) أو على ورق بـ mangsi (حبر).
+        serat = كتاب أدبي قديم أو جواب رسمي، pujangga = شاعر القصر، kidung = أنشودة قديمة.
+        kawruh = علم ومعرفة، wacan = نص للقراية، cathetan = ملاحظة متكتبة.
       ar: |
-        اليوم تبدأ بالاستماع: يقول ديماس أعدادًا وتبحث عنها مكتوبة.
-        الأعداد المنتهية بصائت تستطيع كتابتها الآن: siji · loro · telu · lima · pitu · wolu · sanga.
-        أما papat وenem فتنتهيان بساكن، وستكتبهما في الوحدة القادمة.
+        قديمًا كانوا يكتبون على lontar (سعف نخيل اللونتار) أو على الورق بـ mangsi (حبر).
+        serat = كتاب أدبي قديم أو رسالة رسمية، pujangga = شاعر البلاط، kidung = نشيد قديم.
+        kawruh = علم ومعرفة، wacan = نص للقراءة، cathetan = ملاحظة مكتوبة.
       en: |
-        Today you listen first: Dimas says numbers and you find them written.
-        The numbers that end in a vowel you can already write: siji · loro · telu · lima · pitu · wolu · sanga.
-        papat and enem end in a consonant; you'll write them next unit.
-    grammar: jv.aksara.sandhangan-swara
+        People once wrote on lontar (palm leaves) or on paper with mangsi (ink).
+        serat = classic literary book or formal letter, pujangga = court poet, kidung = old hymn, song.
+        kawruh = knowledge, wacan = reading text, cathetan = note.
     examples:
-      - text: ꦱꦶꦗꦶ · ꦭꦺꦴꦫꦺꦴ · ꦠꦼꦭꦸ (siji · loro · telu)
-        ar_eg: واحد · اتنين · تلاتة
-        ar: واحد · اثنان · ثلاثة
-        en: one · two · three
-      - text: ꦭꦶꦩ · ꦥꦶꦠꦸ (lima · pitu)
-        ar_eg: خمسة · سبعة
-        ar: خمسة · سبعة
-        en: five · seven
-      - text: ꦮꦺꦴꦭꦸ · ꦱꦔ (wolu · sanga)
-        ar_eg: تمانية · تسعة
-        ar: ثمانية · تسعة
-        en: eight · nine
+      - text: Biyen wong nulis aksara Jawa ing lontar.
+        ar_eg: زمان الناس كانوا بيكتبوا الحروف الجاوية على ورق النخل.
+        ar: قديمًا كان الناس يكتبون الحروف الجاوية على سعف اللونتار.
+        en: People once wrote Javanese script on palm leaves.
+      - text: Ranggawarsita iku pujangga kesohor saka Surakarta.
+        ar_eg: رانجاوارسيتا شاعر قصر مشهور من سوراكارتا.
+        ar: رانغاوارسيتا شاعر بلاط مشهور من سوراكارتا.
+        en: Ranggawarsita is a famous court poet from Surakarta.
+      - text: Serat iki isine kidung lan kawruh.
+        ar_eg: الكتاب ده فيه أناشيد وعلم.
+        ar: يحوي هذا الكتاب أناشيد ومعرفة.
+        en: This book holds songs and knowledge.
 exercises:
   - id: e01
-    type: listen
-    text: pitu
-    question:
-      ar_eg: ديماس قال رقم. أنهي واحد؟
-      ar: قال ديماس عددًا. أيّها؟
-      en: Dimas said a number. Which one?
-    options: ["ꦥꦶꦠꦸ", "ꦥꦶꦠ", "ꦥꦸꦠꦸ"]
-    answer: 0
-    meaning:
-      ar_eg: سبعة
-      ar: سبعة
-      en: seven
-    words: [wulu, suku]
-  - id: e02
-    type: listen
-    text: wolu
-    question:
-      ar_eg: ديماس قال رقم. أنهي واحد؟
-      ar: قال ديماس عددًا. أيّها؟
-      en: Dimas said a number. Which one?
-    options: ["ꦮꦸꦭꦸ", "ꦮꦭꦸ", "ꦮꦺꦴꦭꦸ"]
-    answer: 2
-    explain:
-      ar_eg: wo = ꦮ بـ taling tarung (o)، وlu = ꦭ بـ suku.
-      ar: wo = ꦮ بـ taling tarung (o)، وlu = ꦭ بـ suku.
-      en: wo = ꦮ with taling tarung (o), lu = ꦭ with suku.
-    meaning:
-      ar_eg: تمانية
-      ar: ثمانية
-      en: eight
-    words: [taling tarung]
-  - id: e03
-    type: listen
-    text: telu
-    question:
-      ar_eg: ديماس قال رقم. أنهي واحد؟
-      ar: قال ديماس عددًا. أيّها؟
-      en: Dimas said a number. Which one?
-    options: ["ꦠꦺꦭꦸ", "ꦠꦼꦭꦸ", "ꦠꦭꦸ"]
-    answer: 1
-    explain:
-      ar_eg: الـ e في telu خفيفة (ə)، يعني pepet فوق ꦠ.
-      ar: الـ e في telu مختلسة (ə)، أي pepet فوق ꦠ.
-      en: The e in telu is the light schwa, so it's pepet above ꦠ.
-    meaning:
-      ar_eg: تلاتة
-      ar: ثلاثة
-      en: three
-    words: [pepet]
-  - id: e04
     type: match_pairs
     pairs:
-      - text: ꦱꦶꦗꦶ
-        ar_eg: "1 (واحد)"
-        ar: "1 (واحد)"
-        en: "1"
-      - text: ꦭꦶꦩ
-        ar_eg: "5 (خمسة)"
-        ar: "5 (خمسة)"
-        en: "5"
-      - text: ꦥꦶꦠꦸ
-        ar_eg: "7 (سبعة)"
-        ar: "7 (سبعة)"
-        en: "7"
-      - text: ꦱꦔ
-        ar_eg: "9 (تسعة)"
-        ar: "9 (تسعة)"
-        en: "9"
-    words: [wulu, suku]
+      - text: lontar
+        ar_eg: ورق نخل للكتابة
+        ar: سعف اللونتار
+        en: palm-leaf manuscript
+      - text: mangsi
+        ar_eg: حبر
+        ar: حبر
+        en: ink
+      - text: serat
+        ar_eg: كتاب أدبي قديم
+        ar: كتاب أدبي قديم
+        en: classic book, letter
+      - text: pujangga
+        ar_eg: شاعر القصر
+        ar: شاعر البلاط
+        en: court poet
+    words: [lontar, mangsi, serat, pujangga]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: kidung
+        ar_eg: أنشودة قديمة
+        ar: نشيد قديم
+        en: old song, hymn
+      - text: kawruh
+        ar_eg: علم ومعرفة
+        ar: معرفة
+        en: knowledge
+      - text: wacan
+        ar_eg: نص للقراية
+        ar: نص للقراءة
+        en: reading text
+      - text: cathetan
+        ar_eg: ملاحظة
+        ar: ملاحظة
+        en: note
+    words: [kidung, kawruh, wacan, cathetan]
+  - id: e03
+    type: listen
+    text: Serat lawas iki ditulis nganggo mangsi ireng.
+    question:
+      ar_eg: الكتاب ده عامل إزاي؟
+      ar: كيف هذا الكتاب؟
+      en: What is this book like?
+    options: [كتاب قديم مكتوب بحبر إسود, كتاب جديد مطبوع, ورقة نخل فاضية]
+    answer: 0
+    meaning:
+      ar_eg: الكتاب القديم ده مكتوب بحبر إسود.
+      ar: كُتب هذا الكتاب القديم بحبر أسود.
+      en: This old book is written in black ink.
+    words: [serat, mangsi]
+  - id: e04
+    type: fill_blank
+    sentence: Ranggawarsita iku ___ kesohor saka Surakarta.
+    meaning:
+      ar_eg: رانجاوارسيتا ___ مشهور من سوراكارتا.
+      ar: رانغاوارسيتا ___ مشهور من سوراكارتا.
+      en: Ranggawarsita is a famous ___ from Surakarta.
+    options: [pujangga, lontar, cathetan]
+    answers: [pujangga]
+    words: [pujangga, lontar, cathetan]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: "ديماس كتب: ꦱꦥꦶꦭꦶꦩ. كام بقرة؟"
-      ar: "كتب ديماس: ꦱꦥꦶꦭꦶꦩ. كم بقرة؟"
-      en: "Dimas wrote ꦱꦥꦶꦭꦶꦩ. How many cows?"
-    options: ["5", "7", "9"]
-    answer: 0
+      ar_eg: المخطوطات القديمة كانت بتتكتب على ورق نخل اسمه …
+      ar: كانت المخطوطات القديمة تُكتب على سعف يسمّى …
+      en: Old manuscripts were written on palm leaves called …
+    options: [kidung, lontar, wacan]
+    answer: 1
     explain:
-      ar_eg: ꦱꦥꦶ sapi (بقرة) + ꦭꦶꦩ lima (خمسة).
-      ar: ꦱꦥꦶ sapi (بقرة) + ꦭꦶꦩ lima (خمسة).
-      en: ꦱꦥꦶ sapi (cow) + ꦭꦶꦩ lima (five).
-    words: [wulu]
+      ar_eg: lontar = ورق نخل اللونتار.
+      ar: lontar = سعف نخيل اللونتار.
+      en: lontar = palm leaves used for writing.
+    words: [kidung, lontar, wacan]
   - id: e06
     type: fill_blank
-    sentence: ꦱꦔ = ___
+    sentence: Aku nulis ___ cilik ing bukuku.
     meaning:
-      ar_eg: اكتب الرقم بالحروف اللاتينية أو بالأرقام.
-      ar: اكتب العدد بالحروف اللاتينية أو بالأرقام.
-      en: Type the number in Latin letters or digits.
-    answers: [sanga, "9"]
+      ar_eg: كتبت ___ صغيرة في كشكولي.
+      ar: كتبتُ ___ صغيرة في دفتري.
+      en: I wrote a little ___ in my book.
+    options: [cathetan, kawruh, mangsi]
+    answers: [cathetan]
+    words: [cathetan, kawruh, mangsi]
   - id: e07
-    type: dictation
-    text: Siji, loro, telu, lima.
-    meaning:
-      ar_eg: واحد، اتنين، تلاتة، خمسة.
-      ar: واحد، اثنان، ثلاثة، خمسة.
-      en: One, two, three, five.
+    type: multiple_choice
+    question: Buku iki menehi ___ babagan aksara Jawa.
+    options: [lontar, mangsi, kawruh]
+    answer: 2
+    explain:
+      ar_eg: kawruh = علم ومعرفة.
+      ar: kawruh = معرفة.
+      en: kawruh = knowledge.
+    words: [lontar, mangsi, kawruh]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: "اكتب «pitu wolu sanga» (سبعة تمانية تسعة) مقطع مقطع."
-      ar: "اكتب «pitu wolu sanga» (سبعة ثمانية تسعة) مقطعًا مقطعًا."
-      en: Build "pitu wolu sanga" (seven eight nine), syllable by syllable.
-    answer: ꦥꦶ ꦠꦸ ꦮꦺꦴ ꦭꦸ ꦱ ꦔ
-    distractors: ["ꦮꦸ"]
-    words: [wulu, suku, taling tarung]
+      ar_eg: النص ده طويل أوي.
+      ar: هذا النص طويل جدًا.
+      en: This reading text is very long.
+    answer: Wacan iki dawa banget.
+    distractors: [kidung, serat]
+    words: [wacan]
   - id: e09
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: ꦧꦸꦏꦸꦠꦼꦭꦸ"
-      ar: "اكتب بالحروف اللاتينية: ꦧꦸꦏꦸꦠꦼꦭꦸ"
-      en: "Write in Latin letters: ꦧꦸꦏꦸꦠꦼꦭꦸ"
-    answers: [buku telu, bukutelu]
-    explain:
-      ar_eg: bu-ku (suku مرتين) + te-lu (pepet ثم suku) = تلات كتب.
-      ar: bu-ku (suku مرتين) + te-lu (pepet ثم suku) = ثلاثة كتب.
-      en: bu-ku (suku twice) + te-lu (pepet, then suku) = three books.
-    words: [suku, pepet]
+    direction: from_target
+    source_text: Ing serat iki ana kidung lawas.
+    answers_meaning:
+      ar_eg: [في الكتاب ده فيه أنشودة قديمة, الكتاب ده فيه أغنية قديمة]
+      ar: [في هذا الكتاب نشيد قديم, يحوي هذا الكتاب أنشودة قديمة]
+      en: ['There''s an old song in this book', This book contains an old hymn]
+    words: [serat, kidung]
+  - id: e10
+    type: speaking
+    text: Pujangga nulis kidung ing lontar.
+    meaning:
+      ar_eg: الشاعر كتب أنشودة على ورق النخل.
+      ar: كتب الشاعر نشيدًا على سعف اللونتار.
+      en: The poet wrote a song on palm leaves.
+    words: [pujangga, kidung, lontar]
 dialogue:
-  title: Dolanan angka
   lines:
-    - speaker: Dimas
-      text: Med, aku nyebut angka, kowe nuduhake tulisane.
-      ar_eg: يا محمد، أنا أقول رقم وإنت تشاور على كتابته.
-      ar: يا محمد، أقول عددًا وتشير أنت إلى كتابته.
-      en: Med, I say a number and you point to how it's written.
+    - speaker: Pak Slamet
+      text: Mas, menika lontar saking jaman rumiyin.
+      ar_eg: يا محمد، ده ورق نخل من زمان.
+      ar: هذا سعف لونتار من الزمن القديم.
+      en: Look, this is a palm-leaf manuscript from long ago.
     - speaker: Mohamed
-      text: Oke. Ayo!
-      ar_eg: ماشي. يلا!
-      ar: حسنًا. هيا!
-      en: OK. Go!
-    - speaker: Dimas
-      text: Pitu.
-      ar_eg: سبعة.
-      ar: سبعة.
-      en: Seven.
+      text: Aksaranipun alit sanget! Menapa ditulis mawi mangsi?
+      ar_eg: الحروف صغيرة أوي! مكتوبة بحبر؟
+      ar: الحروف صغيرة جدًا! أكُتبت بالحبر؟
+      en: The letters are tiny! Was it written in ink?
+    - speaker: Pak Slamet
+      text: Mboten. Dipunukir mawi peso alit, lajeng dipunolesi angus.
+      ar_eg: لأ. اتحفرت بسكينة صغيرة، وبعدين اتدهنت بالهباب.
+      ar: لا. حُفرت بسكين صغيرة ثم طُليت بالسخام.
+      en: No. It was scratched with a small knife, then rubbed with soot.
     - speaker: Mohamed
-      text: Pa nganggo wulu, ta nganggo suku. Iki!
-      ar_eg: pa عليها wulu، وta تحتها suku. أهي!
-      ar: pa بـ wulu، وta بـ suku. هذه!
-      en: Pa with wulu, ta with suku. This one!
-    - speaker: Dimas
-      text: Pinter! Saiki wolu.
-      ar_eg: شاطر! دلوقتي تمانية.
-      ar: أحسنت! والآن ثمانية.
-      en: Clever! Now eight.
+      text: Serat menika anggitanipun sinten?
+      ar_eg: الكتاب ده تأليف مين؟
+      ar: من مؤلف هذا الكتاب؟
+      en: Who wrote this book?
+    - speaker: Pak Slamet
+      text: Ranggawarsita, pujangga ingkang kesohor.
+      ar_eg: رانجاوارسيتا، الشاعر المشهور.
+      ar: رانغاوارسيتا، الشاعر المشهور.
+      en: Ranggawarsita, the famous court poet.
+    - speaker: Mohamed
+      text: Kula badhe nyerat cathetan. Kawruhipun kathah sanget.
+      ar_eg: هكتب ملاحظات. العلم اللي فيه كتير أوي.
+      ar: سأكتب ملاحظات، ففيه علم كثير.
+      en: I'll take notes. There's so much knowledge here.
+new_words:
+  - word: lontar
+    pos: noun
+    ar_eg: ورق نخل للكتابة
+    ar: سعف اللونتار للكتابة
+    en: palm-leaf manuscript
+  - word: mangsi
+    pos: noun
+    ar_eg: حبر
+    ar: حبر
+    en: ink
+  - word: pujangga
+    pos: noun
+    ar_eg: شاعر القصر
+    ar: شاعر البلاط
+    en: court poet
+  - word: kidung
+    pos: noun
+    ar_eg: أنشودة قديمة
+    ar: نشيد قديم
+    en: old song, hymn
+  - word: kawruh
+    pos: noun
+    ar_eg: علم ومعرفة
+    ar: علم، معرفة
+    en: knowledge
+  - word: wacan
+    pos: noun
+    ar_eg: نص للقراية
+    ar: نص للقراءة
+    en: reading text
+  - word: cathetan
+    pos: noun
+    ar_eg: ملاحظة متكتبة
+    ar: ملاحظة مكتوبة
+    en: note
 review:
   status: draft
   verified: false

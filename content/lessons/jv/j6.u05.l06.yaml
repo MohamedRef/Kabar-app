@@ -1,169 +1,244 @@
 schema: kabar.lesson/v1
 id: j6.u05.l06
 language: jv
-title: Umure masjid
+title: Rapat panitia zakat
 can_do:
-  ar_eg: تقرا سنة مكتوبة بالأرقام الجاوية على لوحة وتحسب منها.
-  ar: أن تقرأ سنة بالأرقام الجاوية على لوحة وتحسب بها.
-  en: Read a year in Javanese numerals on a plaque and work with it.
+  ar_eg: 'تشارك في اجتماع لجنة زكاة الفطر في الجامع: الثواب والذنب والشروط وأمين الصندوق.'
+  ar: 'أن تشارك في اجتماع لجنة زكاة الفطر في المسجد: الثواب والإثم والشروط وأمين الصندوق.'
+  en: 'Take part in a mosque zakat al-fitr committee meeting: reward, sin, requirements and the treasurer.'
 slides:
-  - title: Prasasti ing masjid
+  - title: Tembung saka Arab lan Sanskerta
     body:
       ar_eg: |
-        محمد صوّر لوحة على Masjid Gedhe في كوتاغيدي ووراها لـ Pak Harjo في Imogiri. فيها سنة البنا بالأرقام الجاوية.
-        كلمة جديدة: dibangun = اتبنى. والأرقام دايمًا بين علامتين ꧇، حتى لو جت بعد كلمة: ꦠꦲꦸꦤ꧀꧇꧑꧕꧘꧗꧇.
+        كلمات جاية من العربي: paedah = فايدة، fitrah = فطرة (zakat fitrah = زكاة الفطر)، sarat = شرط.
+        كلمات جاية من السنسكريتي: pahala = ثواب، dosa = ذنب، bendahara = أمين الصندوق.
+        rembug = نقاش وتشاور (ngrembug = يتناقش في حاجة)، panitia = لجنة.
+        لاحظ: «Wudhu iku sarat salat» = الوضوء شرط للصلاة.
       ar: |
-        صوّر محمد لوحة على Masjid Gedhe في كوتاغيدي وأراها لـ Pak Harjo في Imogiri، وفيها سنة البناء بالأرقام الجاوية.
-        كلمة جديدة: dibangun = بُني. والأعداد دائمًا بين علامتي ꧇، ولو جاءت بعد كلمة: ꦠꦲꦸꦤ꧀꧇꧑꧕꧘꧗꧇.
+        كلمات من العربية: paedah = فائدة، fitrah = فطرة (zakat fitrah = زكاة الفطر)، sarat = شرط.
+        كلمات من السنسكريتية: pahala = ثواب، dosa = إثم، bendahara = أمين الصندوق.
+        rembug = تشاور (ngrembug = يتشاور في أمر)، panitia = لجنة.
+        لاحظ: «Wudhu iku sarat salat» = الوضوء شرط الصلاة.
       en: |
-        Mohamed photographed a plaque on the Masjid Gedhe in Kotagede and showed it to Pak Harjo at Imogiri. It gives the year it was built, in Javanese numerals.
-        New word: dibangun = was built. Numbers always sit between two ꧇, even after a word: ꦠꦲꦸꦤ꧀꧇꧑꧕꧘꧗꧇.
-    grammar: jv.aksara.murda-rekan
+        From Arabic: paedah = benefit (فائدة), fitrah (فطرة; zakat fitrah = the Eid alms), sarat = requirement (شرط).
+        From Sanskrit: pahala = reward, dosa = sin, bendahara = treasurer.
+        rembug = discussion, deliberation (ngrembug = to discuss something), panitia = committee.
+        Note: "Wudhu iku sarat salat" = ablution is a requirement of prayer.
     examples:
-      - text: ꦩꦱ꧀ꦗꦶꦢ꧀ꦒꦼꦝꦺ (Masjid Gedhe)
-        ar_eg: الجامع الكبير
-        ar: المسجد الكبير
-        en: the Great Mosque
-      - text: ꦢꦶꦧꦔꦸꦤ꧀ꦠꦲꦸꦤ꧀꧇꧑꧕꧘꧗꧇꧉ (Dibangun taun 1587.)
-        ar_eg: اتبنى سنة 1587.
-        ar: بُني سنة 1587.
-        en: Built in 1587.
-      - text: ꦲꦸꦩꦸꦫꦺ꧇꧔꧓꧙꧇ꦠꦲꦸꦤ꧀꧉ (Umure 439 taun.)
-        ar_eg: عمره 439 سنة.
-        ar: عمره 439 سنة.
-        en: It's 439 years old.
+      - text: Panitia zakat rembugan ing masjid.
+        ar_eg: لجنة الزكاة بتتشاور في الجامع.
+        ar: تتشاور لجنة الزكاة في المسجد.
+        en: The zakat committee is meeting at the mosque.
+      - text: Bendahara nyathet zakat fitrah.
+        ar_eg: أمين الصندوق بيسجل زكاة الفطر.
+        ar: يسجّل أمين الصندوق زكاة الفطر.
+        en: The treasurer records the zakat al-fitr.
+      - text: Wudhu iku sarat salat.
+        ar_eg: الوضوء شرط للصلاة.
+        ar: الوضوء شرط الصلاة.
+        en: Ablution is a requirement of prayer.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: الجامع اتبنى سنة كام؟
-      ar: في أي سنة بُني المسجد؟
-      en: In what year was the mosque built?
-    options: ["1578", "1587", "1857"]
-    answer: 1
-    explain:
-      ar_eg: ꧑ ꧕ ꧘ ꧗ = 1 5 8 7، يعني سنة 1587.
-      ar: ꧑ ꧕ ꧘ ꧗ = 1 5 8 7، أي سنة 1587.
-      en: ꧑ ꧕ ꧘ ꧗ = 1 5 8 7.
-    words: [dibangun, angka]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: حسب اللوحة، الجامع عمره كام سنة؟
-      ar: بحسب اللوحة، كم عمر المسجد؟
-      en: According to the plaque, how old is the mosque?
-    options: ["439", "349", "493"]
-    answer: 0
-    explain:
-      ar_eg: ꧔꧓꧙ = 439، و2026 − 1587 = 439.
-      ar: ꧔꧓꧙ = 439، و2026 − 1587 = 439.
-      en: ꧔꧓꧙ = 439, and 2026 − 1587 = 439.
-    words: [angka]
-  - id: e03
-    type: listen
-    text: Masjid iki dibangun taun sewu limang atus wolung puluh pitu.
-    question:
-      ar_eg: سمعت أنهي سنة؟
-      ar: أي سنة سمعت؟
-      en: Which year did you hear?
-    options: ["꧇꧑꧕꧗꧘꧇", "꧇꧑꧕꧘꧗꧇", "꧇꧑꧘꧕꧗꧇"]
-    answer: 1
-    meaning:
-      ar_eg: الجامع ده اتبنى سنة 1587.
-      ar: بُني هذا المسجد سنة 1587.
-      en: This mosque was built in 1587.
-    words: [dibangun, angka]
-  - id: e04
     type: match_pairs
     pairs:
-      - text: ꧓
-        ar_eg: "3 (تلاتة)"
-        ar: "3 (ثلاثة)"
-        en: "3"
-      - text: ꧕
-        ar_eg: "5 (خمسة)"
-        ar: "5 (خمسة)"
-        en: "5"
-      - text: ꧘
-        ar_eg: "8 (تمانية)"
-        ar: "8 (ثمانية)"
-        en: "8"
-      - text: ꧙
-        ar_eg: "9 (تسعة)"
-        ar: "9 (تسعة)"
-        en: "9"
-    words: [angka]
+      - text: pahala
+        ar_eg: ثواب
+        ar: ثواب
+        en: reward
+      - text: dosa
+        ar_eg: ذنب
+        ar: إثم
+        en: sin
+      - text: paedah
+        ar_eg: فايدة
+        ar: فائدة
+        en: benefit
+      - text: fitrah
+        ar_eg: فطرة
+        ar: فطرة
+        en: fitrah
+    words: [pahala, dosa, paedah, fitrah]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: sarat
+        ar_eg: شرط
+        ar: شرط
+        en: requirement
+      - text: rembug
+        ar_eg: تشاور
+        ar: تشاور
+        en: discussion
+      - text: panitia
+        ar_eg: لجنة
+        ar: لجنة
+        en: committee
+      - text: bendahara
+        ar_eg: أمين الصندوق
+        ar: أمين الصندوق
+        en: treasurer
+    words: [sarat, rembug, panitia, bendahara]
+  - id: e03
+    type: listen
+    text: Bendahara panitia nyathet zakat fitrah.
+    question:
+      ar_eg: مين بيعمل إيه؟
+      ar: من يفعل ماذا؟
+      en: Who is doing what?
+    options: [أمين الصندوق بيسجل زكاة الفطر, رئيس اللجنة بيصلي, الإمام بيوزع الأكل]
+    answer: 0
+    meaning:
+      ar_eg: أمين صندوق اللجنة بيسجل زكاة الفطر.
+      ar: يسجّل أمين صندوق اللجنة زكاة الفطر.
+      en: The committee's treasurer records the zakat al-fitr.
+    words: [bendahara, panitia, fitrah]
+  - id: e04
+    type: fill_blank
+    sentence: Sing tetulung bakal oleh ___.
+    meaning:
+      ar_eg: اللي بيساعد هياخد ___.
+      ar: من يساعد سينال ___.
+      en: Whoever helps will receive ___.
+    options: [pahala, dosa, sarat]
+    answers: [pahala]
+    words: [pahala, dosa, sarat]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: "ليه ꧇꧑꧕꧘꧗꧇ بين علامتين ꧇؟"
-      ar: "لماذا ꧇꧑꧕꧘꧗꧇ بين علامتي ꧇؟"
-      en: "Why is ꧇꧑꧕꧘꧗꧇ between two ꧇ marks?"
-    options: ["Iku pada pangkat, kanggo angka.", "Iku jeneng.", "Iku aksara rekan."]
-    answer: 0
+      ar_eg: الغلط اللي ربنا نهى عنه اسمه …
+      ar: الفعل الخاطئ الذي نهى الله عنه يسمّى …
+      en: A wrong deed that God forbids is a …
+    options: [paedah, dosa, rembug]
+    answer: 1
     explain:
-      ar_eg: ꧇ اسمها pada pangkat، بتحاوط الرقم عشان مايتلخبطش مع الحروف.
-      ar: ꧇ اسمها pada pangkat، تحيط بالعدد كي لا يلتبس بالحروف.
-      en: ꧇ is pada pangkat; it encloses a number so it isn't confused with letters.
-    words: [pada pangkat]
+      ar_eg: dosa = ذنب؛ paedah = فايدة.
+      ar: dosa = إثم؛ paedah = فائدة.
+      en: dosa = sin; paedah = benefit.
+    words: [paedah, dosa, rembug]
   - id: e06
     type: fill_blank
-    sentence: ꧇꧑꧕꧘꧗꧇ = ___
+    sentence: Sesuk sore ana ___ panitia ing masjid.
     meaning:
-      ar_eg: اكتب السنة بالأرقام العادية.
-      ar: اكتب السنة بالأرقام العادية.
-      en: Write the year in ordinary digits.
-    answers: ["1587"]
-    words: [angka]
+      ar_eg: بكرة العصر فيه ___ للجنة في الجامع.
+      ar: غدًا عصرًا ___ للجنة في المسجد.
+      en: Tomorrow afternoon there's a committee ___ at the mosque.
+    options: [rembug, fitrah, bendahara]
+    answers: [rembug]
+    words: [rembug, fitrah, bendahara]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية والأرقام: ꦢꦶꦧꦔꦸꦤ꧀ꦠꦲꦸꦤ꧀꧇꧑꧕꧘꧗꧇꧉"
-      ar: "اكتب بالحروف اللاتينية والأرقام: ꦢꦶꦧꦔꦸꦤ꧀ꦠꦲꦸꦤ꧀꧇꧑꧕꧘꧗꧇꧉"
-      en: "Write in Latin letters and digits: ꦢꦶꦧꦔꦸꦤ꧀ꦠꦲꦸꦤ꧀꧇꧑꧕꧘꧗꧇꧉"
-    answers: ["Dibangun taun 1587.", dibangun taun 1587, dibangun tahun 1587]
-    words: [dibangun]
+    type: multiple_choice
+    question: Wudhu iku ___ salat.
+    options: [sarat, paedah, pahala]
+    answer: 0
+    explain:
+      ar_eg: sarat = شرط، زي العربي بالظبط.
+      ar: sarat = شرط، من العربية.
+      en: sarat = requirement, from Arabic شرط.
+    words: [sarat, paedah, pahala]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: الجامع ده اتبنى سنة 1587.
-      ar: بُني هذا المسجد سنة 1587.
-      en: This mosque was built in 1587.
-    answer: Masjid iki dibangun taun 1587.
-    distractors: [umure]
-    words: [dibangun]
+      ar_eg: النقاش ده ليه فايدة.
+      ar: لهذا التشاور فائدة.
+      en: This discussion is useful.
+    answer: Rembug iki ana paedahe.
+    distractors: [dosa, sarat]
+    words: [rembug, paedah]
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Bendahara nampa zakat fitrah.
+    answers_meaning:
+      ar_eg: [أمين الصندوق بيستلم زكاة الفطر, أمين الصندوق استلم زكاة الفطر]
+      ar: [يتسلّم أمين الصندوق زكاة الفطر, استلم أمين الصندوق زكاة الفطر]
+      en: [The treasurer receives the zakat al-fitr, The treasurer collects the Eid alms]
+    words: [bendahara, fitrah]
+  - id: e10
     type: speaking
-    text: Masjid Gedhe dibangun taun sewu limang atus wolung puluh pitu.
+    text: Panitia iki akeh paedahe.
     meaning:
-      ar_eg: الجامع الكبير اتبنى سنة 1587.
-      ar: بُني المسجد الكبير سنة 1587.
-      en: The Great Mosque was built in 1587.
-    words: [dibangun]
+      ar_eg: اللجنة دي فايدتها كبيرة.
+      ar: لهذه اللجنة فوائد كثيرة.
+      en: This committee is very useful.
+    words: [panitia, paedah]
 dialogue:
-  title: Foto prasasti
   lines:
+    - speaker: Ketua panitia
+      text: Sugeng rawuh ing rembug panitia zakat.
+      ar_eg: أهلًا بيكم في اجتماع لجنة الزكاة.
+      ar: مرحبًا بكم في اجتماع لجنة الزكاة.
+      en: Welcome to the zakat committee meeting.
     - speaker: Mohamed
-      text: Pak, menika foto saking Masjid Gedhe Kotagedhe.
-      ar_eg: يا حاج، دي صورة من الجامع الكبير في كوتاغيدي.
-      ar: يا سيدي، هذه صورة من المسجد الكبير في كوتاغيدي.
-      en: Sir, this is a photo from the Great Mosque in Kotagede.
-    - speaker: Pak Harjo
-      text: Wah, prasasti. Panjenengan saged maos angkanipun?
-      ar_eg: يا سلام، لوحة تاريخية. عرفت تقرا الأرقام؟
-      ar: رائع، نقش تذكاري. هل تستطيع قراءة الأعداد؟
-      en: Ah, a plaque. Can you read the numbers?
+      text: Matur nuwun. Kula saged mbiyantu menapa?
+      ar_eg: شكرًا. أقدر أساعد في إيه؟
+      ar: شكرًا. بمَ أستطيع المساعدة؟
+      en: Thank you. How can I help?
+    - speaker: Ketua panitia
+      text: Panjenengan saged dados bendahara? Kedah nyathet zakat fitrah.
+      ar_eg: تقدر تبقى أمين الصندوق؟ لازم تسجل زكاة الفطر.
+      ar: هل تكون أمين الصندوق؟ عليك تسجيل زكاة الفطر.
+      en: Could you be the treasurer? You'd record the zakat al-fitr.
     - speaker: Mohamed
-      text: Saged. Dibangun taun sewu limang atus wolung puluh pitu.
-      ar_eg: أيوه. اتبنى سنة 1587.
-      ar: نعم. بُني سنة 1587.
-      en: Yes. Built in fifteen eighty-seven.
-    - speaker: Pak Harjo
-      text: Leres. Sampun sepuh sanget, nggih?
-      ar_eg: مظبوط. قديم قوي، مش كده؟
-      ar: صحيح. قديم جدًّا، أليس كذلك؟
-      en: Right. Very old, isn't it?
+      text: Saged. Menapa saratipun?
+      ar_eg: أقدر. إيه الشروط؟
+      ar: نعم. ما الشروط؟
+      en: I can. What are the requirements?
+    - speaker: Ketua panitia
+      text: Jujur lan tlaten. Pahalanipun ageng, Mas.
+      ar_eg: الأمانة والصبر. والثواب كبير.
+      ar: الأمانة والمثابرة. وثوابها عظيم.
+      en: Honesty and diligence. The reward is great.
+    - speaker: Mohamed
+      text: Mugi-mugi wonten paedahipun kangge tiyang kathah.
+      ar_eg: يا رب تبقى فيها فايدة للناس.
+      ar: عسى أن ينتفع بها الناس.
+      en: May it benefit many people.
+new_words:
+  - word: pahala
+    pos: noun
+    ar_eg: ثواب
+    ar: ثواب
+    en: reward (for good deeds)
+  - word: dosa
+    pos: noun
+    ar_eg: ذنب
+    ar: إثم، ذنب
+    en: sin
+  - word: paedah
+    pos: noun
+    arabic: فائدة
+    bridge: faedah
+    ar_eg: فايدة
+    ar: فائدة
+    en: benefit, use
+  - word: fitrah
+    pos: noun
+    arabic: فطرة
+    ar_eg: فطرة (زكاة الفطر)
+    ar: فطرة (زكاة الفطر)
+    en: fitrah; zakat fitrah = Eid alms
+  - word: sarat
+    pos: noun
+    arabic: شرط
+    bridge: syarat
+    ar_eg: شرط
+    ar: شرط
+    en: requirement, condition
+  - word: rembug
+    pos: noun
+    ar_eg: تشاور، نقاش
+    ar: تشاور
+    en: discussion, deliberation
+  - word: panitia
+    pos: noun
+    ar_eg: لجنة
+    ar: لجنة
+    en: committee
+  - word: bendahara
+    pos: noun
+    ar_eg: أمين الصندوق
+    ar: أمين الصندوق
+    en: treasurer
 review:
   status: draft
   verified: false

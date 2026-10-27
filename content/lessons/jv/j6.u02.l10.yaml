@@ -1,180 +1,168 @@
 schema: kabar.lesson/v1
 id: j6.u02.l10
 language: jv
-title: Ulangan J6.2
+title: Warung soto
 can_do:
-  ar_eg: تقرا وتهجّي كلمات بكل علامات الحركات.
-  ar: أن تقرأ وتتهجى كلمات بكل علامات الصوائت.
-  en: Read and spell words with all the vowel marks.
+  ar_eg: تقرا منيو مكتوب بالخط الجاوي وتطلب منه.
+  ar: أن تقرأ قائمة طعام بالخط الجاوي وتطلب منها.
+  en: Read a menu in aksara Jawa and order from it.
+slides:
+  - title: Menu ing warung
+    body:
+      ar_eg: |
+        جنب الجامع فيه مطعم صغير (warung)، والمنيو على الحيطة مكتوب بالخط الجاوي.
+        ركّز على الحركات: soto فيها taling tarung مرتين، وsega فيها pepet، وsate فيها taling.
+      ar: |
+        قرب المسجد مطعم صغير (warung)، وقائمته على الجدار بالخط الجاوي.
+        انتبه إلى الحركات: في soto علامة taling tarung مرتين، وفي sega علامة pepet، وفي sate علامة taling.
+      en: |
+        Next to the mosque there's a little warung, and its menu on the wall is in aksara Jawa.
+        Watch the vowel marks: soto has taling tarung twice, sega has pepet, sate has taling.
+    grammar: jv.aksara.sandhangan-swara
+    examples:
+      - text: ꦱꦺꦴꦠꦺꦴ · ꦱꦠꦺꦱꦥꦶ (soto · sate sapi)
+        ar_eg: شوربة سوتو · ساتيه لحمة
+        ar: حساء سوتو · ساتيه لحم بقر
+        en: soto soup · beef satay
+      - text: ꦱꦼꦒ · ꦠꦲꦸ (sega · tahu)
+        ar_eg: رز · توفو
+        ar: أرز · توفو
+        en: rice · tofu
+      - text: ꦏꦺꦴꦥꦶ · ꦱꦸꦱꦸ · ꦗꦩꦸ (kopi · susu · jamu)
+        ar_eg: قهوة · لبن · جامو (مشروب أعشاب)
+        ar: قهوة · حليب · جامو (شراب أعشاب)
+        en: coffee · milk · jamu (herbal drink)
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: wulu
-        ar_eg: i — فوق الحرف
-        ar: i — فوق الحرف
-        en: i — above the letter
-      - text: suku
-        ar_eg: u — تحت الحرف
-        ar: u — تحت الحرف
-        en: u — below the letter
-      - text: taling
-        ar_eg: é / è — قبل الحرف
-        ar: é / è — قبل الحرف
-        en: é / è — before the letter
-      - text: pepet
-        ar_eg: ê (ə) — فوق الحرف
-        ar: ê (ə) — فوق الحرف
-        en: ê (schwa) — above the letter
-      - text: taling tarung
-        ar_eg: o — قبل الحرف وبعده
-        ar: o — قبل الحرف وبعده
-        en: o — before and after the letter
-    words: [wulu, suku, taling, pepet, taling tarung]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي مشروب موجود في المنيو؟
+      ar: أي مشروب في القائمة؟
+      en: Which drink is on the menu?
+    options: [es teh, kopi, jus]
+    answer: 1
+    words: [taling tarung, wulu]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: "اقرا: ꦧꦸꦏꦸ"
-      ar: "اقرأ: ꦧꦸꦏꦸ"
-      en: "Read: ꦧꦸꦏꦸ"
-    options: [buku, biki, baku]
-    answer: 0
-    words: [suku]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: إزاي تكتب kowe (إنت)؟
-      ar: كيف تكتب kowe (أنت)؟
-      en: How do you write kowe (you)?
-    options: ["ꦏꦮꦺ", "ꦏꦺꦴꦮꦺ", "ꦏꦸꦮꦺ"]
-    answer: 1
-    words: [taling tarung, taling]
-  - id: e04
-    type: listen
-    text: sega
-    question:
-      ar_eg: سمعت sega (رز). بتتكتب إزاي؟
-      ar: سمعت sega (أرز). كيف تُكتب؟
-      en: You heard sega (rice). How is it written?
-    options: ["ꦱꦺꦒ", "ꦱꦺꦴꦒ", "ꦱꦼꦒ"]
+      ar_eg: ديماس عايز أكلة فيها لحمة بقري. يطلب إيه؟
+      ar: يريد ديماس طبقًا فيه لحم بقر. ماذا يطلب؟
+      en: Dimas wants a dish with beef. What should he order?
+    options: [tahu, sega, sate sapi]
     answer: 2
+    explain:
+      ar_eg: ꦱꦠꦺꦱꦥꦶ = sate sapi، وsapi = بقرة.
+      ar: ꦱꦠꦺꦱꦥꦶ = sate sapi، وsapi = بقرة.
+      en: ꦱꦠꦺꦱꦥꦶ = sate sapi; sapi = cow, beef.
+    words: [taling, wulu]
+  - id: e03
+    type: listen
+    text: Soto siji, kopi loro.
+    question:
+      ar_eg: ديماس طلب إيه؟
+      ar: ماذا طلب ديماس؟
+      en: What did Dimas order?
+    options: ["ꦱꦺꦴꦠꦺꦴꦭꦺꦴꦫꦺꦴꦏꦺꦴꦥꦶꦱꦶꦗꦶ", "ꦱꦺꦴꦠꦺꦴꦱꦶꦗꦶꦏꦺꦴꦥꦶꦭꦺꦴꦫꦺꦴ", "ꦱꦠꦺꦱꦶꦗꦶꦏꦺꦴꦥꦶꦭꦺꦴꦫꦺꦴ"]
+    answer: 1
     meaning:
-      ar_eg: رز
-      ar: أرز
-      en: rice
-    words: [pepet]
+      ar_eg: واحد سوتو، واتنين قهوة.
+      ar: سوتو واحد وقهوتان.
+      en: One soto, two coffees.
+    words: [taling tarung, wulu]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: ꦱꦺꦴꦠꦺꦴ
+        ar_eg: soto — شوربة سوتو
+        ar: soto — حساء سوتو
+        en: soto — soto soup
+      - text: ꦱꦸꦱꦸ
+        ar_eg: susu — لبن
+        ar: susu — حليب
+        en: susu — milk
+      - text: ꦗꦩꦸ
+        ar_eg: jamu — مشروب أعشاب
+        ar: jamu — شراب أعشاب
+        en: jamu — herbal drink
+      - text: ꦠꦲꦸ
+        ar_eg: tahu — توفو
+        ar: tahu — توفو
+        en: tahu — tofu
+    words: [taling tarung, suku]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: rega (سعر) بتتكتب بأنهي حرف؟
-      ar: بأي حرف تُكتب rega (سعر)؟
-      en: Which letter starts rega (price)?
-    options: [pa cerek, nga lelet, ra]
-    answer: 0
+      ar_eg: sega (رز) مكتوبة إزاي في المنيو؟
+      ar: كيف كُتبت sega (أرز) في القائمة؟
+      en: How is sega (rice) written on the menu?
+    options: ["ꦱꦺꦒ", "ꦱꦒ", "ꦱꦼꦒ"]
+    answer: 2
     explain:
-      ar_eg: "rê ليها حرف مخصوص: pa cerek."
-      ar: "لـ rê حرف خاص: pa cerek."
-      en: rê has its own letter, pa cerek.
-    words: [pa cerek]
+      ar_eg: الـ e في sega خفيفة مختلسة، فبتتكتب pepet فوق ꦱ، مش taling.
+      ar: الـ e في sega مختلسة، فتُكتب pepet فوق ꦱ لا taling.
+      en: The e in sega is the light schwa, so it's pepet above ꦱ, not taling.
+    words: [pepet]
   - id: e06
-    type: listen
-    text: iki
-    question:
-      ar_eg: سمعت أنهي كلمة؟
-      ar: أي كلمة سمعت؟
-      en: Which word did you hear?
-    options: ["ꦲꦶꦏꦸ", "ꦲꦶꦏꦶ", "ꦲꦏꦸ"]
-    answer: 1
+    type: fill_blank
+    sentence: ꦱꦠꦺꦱꦥꦶ = ___
     meaning:
-      ar_eg: ده / دي
-      ar: هذا
-      en: this
-    words: [wulu]
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: ساتيه لحمة)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: ساتيه لحم بقر)"
+      en: Type the reading in Latin letters. (It means "beef satay".)
+    answers: [sate sapi, satesapi]
+    words: [taling, wulu]
   - id: e07
-    type: fill_blank
-    sentence: ꦒꦼꦝꦺ = ___
-    meaning:
-      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: كبير)"
-      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: كبير)"
-      en: Type the reading in Latin letters. (It means "big".)
-    answers: [gedhe]
-    words: [pepet, taling]
-  - id: e08
-    type: fill_blank
-    sentence: ꦔꦗꦶ = ___
-    meaning:
-      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: يقرا قرآن)"
-      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: يقرأ القرآن)"
-      en: Type the reading in Latin letters. (It means "recite the Qur'an".)
-    answers: [ngaji]
-    words: [ngaji]
-  - id: e09
     type: build_sentence
     source:
-      ar_eg: ابني «kowe teka sore» (إنت جاي العصر) مقطع مقطع.
-      ar: ركّب «kowe teka sore» (أنت آتٍ عصرًا) مقطعًا مقطعًا.
-      en: Build "kowe teka sore" (you come in the afternoon), syllable by syllable.
-    answer: ꦏꦺꦴ ꦮꦺ ꦠꦼ ꦏ ꦱꦺꦴ ꦫꦺ
-    distractors: ["ꦏꦸ"]
-    words: [taling tarung, pepet]
-  - id: e10
+      ar_eg: "اطلب: «Sate sapi siji.» (واحد ساتيه لحمة)، مقطع مقطع."
+      ar: "اطلب: «Sate sapi siji.» (ساتيه لحم واحد)، مقطعًا مقطعًا."
+      en: "Order «Sate sapi siji.» (one beef satay), syllable by syllable."
+    answer: ꦱ ꦠꦺ ꦱ ꦥꦶ ꦱꦶ ꦗꦶ
+    distractors: ["ꦱꦸ"]
+    words: [taling, wulu]
+  - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: ꦲꦏꦸꦮꦶꦱ꧀ꦔꦗꦶ"
-      ar: "اكتب بالحروف اللاتينية: ꦲꦏꦸꦮꦶꦱ꧀ꦔꦗꦶ"
-      en: "Write in Latin letters: ꦲꦏꦸꦮꦶꦱ꧀ꦔꦗꦶ"
-    answers: [aku wis ngaji, akuwisngaji]
+      ar_eg: "اكتب الطلب ده بالحروف اللاتينية: ꦱꦼꦒꦭꦺꦴꦫꦺꦴꦱꦸꦱꦸꦱꦶꦗꦶ"
+      ar: "اكتب هذا الطلب بالحروف اللاتينية: ꦱꦼꦒꦭꦺꦴꦫꦺꦴꦱꦸꦱꦸꦱꦶꦗꦶ"
+      en: "Write this order in Latin letters: ꦱꦼꦒꦭꦺꦴꦫꦺꦴꦱꦸꦱꦸꦱꦶꦗꦶ"
+    answers: ["sega loro, susu siji", sega loro susu siji]
     explain:
-      ar_eg: aku · wis · ngaji = أنا قريت قرآن خلاص. الـ s في wis فيها pangkon، العلامة دي هنتعلمها الوحدة الجاية.
-      ar: aku · wis · ngaji = قرأتُ القرآن. وعلى s في wis علامة pangkon التي نتعلمها في الوحدة القادمة.
-      en: aku · wis · ngaji = I've done my Qur'an recitation. The s of wis carries pangkon, which you'll learn next unit.
-    words: [wulu, suku]
-  - id: e11
+      ar_eg: se-ga lo-ro su-su si-ji = اتنين رز، وواحد لبن.
+      ar: se-ga lo-ro su-su si-ji = أرز لاثنين وحليب واحد.
+      en: se-ga lo-ro su-su si-ji = two rice, one milk.
+    words: [pepet, taling tarung, suku]
+  - id: e09
     type: speaking
-    text: Ka, ki, ku, ke, ke, ko.
+    text: Soto siji, kopi loro, Bu.
     meaning:
-      ar_eg: كل الحركات على حرف ka.
-      ar: الصوائت كلها على الحرف ka.
-      en: Every vowel on the letter ka.
+      ar_eg: واحد سوتو واتنين قهوة يا مدام.
+      ar: سوتو واحد وقهوتان يا سيدتي.
+      en: One soto and two coffees, please.
 dialogue:
-  title: Sawise ngaji
+  title: Ing warung soto
   lines:
-    - speaker: Dimas
-      text: Med, kowe wis ngaji?
-      ar_eg: يا محمد، قريت قرآن خلاص؟
-      ar: يا محمد، هل قرأت القرآن؟
-      en: Med, have you done your recitation?
+    - speaker: Bu Warung
+      text: Badhe dhahar menapa, Mas?
+      ar_eg: حضرتك تحب تاكل إيه؟
+      ar: ماذا تحبّ أن تأكل يا سيدي؟
+      en: What would you like to eat?
     - speaker: Mohamed
-      text: Wis, Mas. Lan aku maca papan ing masjid.
-      ar_eg: أيوه يا ديماس. وقريت اللوحة اللي في المسجد كمان.
-      ar: نعم يا ديماس. وقرأت لوحة المسجد أيضًا.
-      en: Yes, Mas. And I read the sign at the mosque.
-    - speaker: Dimas
-      text: Tenan? Ana tembung apa?
-      ar_eg: بجد؟ كان فيها كلام إيه؟
-      ar: حقًا؟ ماذا كان مكتوبًا؟
-      en: Really? What did it say?
+      text: Soto setunggal lan kopi kalih, Bu.
+      ar_eg: واحد سوتو واتنين قهوة يا مدام.
+      ar: سوتو واحد وقهوتان يا سيدتي.
+      en: One soto and two coffees, please.
+    - speaker: Bu Warung
+      text: Sate sapi nggih wonten, Mas.
+      ar_eg: فيه كمان ساتيه لحمة.
+      ar: لدينا أيضًا ساتيه لحم بقر.
+      en: There's beef satay too.
     - speaker: Mohamed
-      text: Ana siji sing aku ngerti, ngaji. Liyane durung.
-      ar_eg: "فيه كلمة واحدة فهمتها: ngaji. والباقي لسه."
-      ar: "فهمت كلمة واحدة: ngaji، والباقي ليس بعد."
-      en: There was one I understood, ngaji. The rest, not yet.
-    - speaker: Dimas
-      text: Ora apa-apa. Sesuk mesthi isa!
-      ar_eg: مفيش مشكلة. بكرة أكيد هتعرف!
-      ar: لا بأس. ستستطيع غدًا بالتأكيد!
-      en: No problem. Tomorrow you'll surely manage!
-souvenir:
-  id: j6.u02.souvenir
-  title: Masjid Gedhe Mataram
-  note:
-    ar_eg: |
-      المسجد الكبير في كوتاغيدي اتبنى بين سنة 1587 و1589، وهو أقدم مسجد في مملكة ماتارام. بوابته مبنية على الطراز الهندوسي الجاوي، بالطوب الأحمر، زي المعابد القديمة — صورة حلوة لإزاي الإسلام دخل جاوة من غير ما يمسح اللي قبله. وجوه المسجد لسه العيال بيـ ngaji لحد النهارده.
-    ar: |
-      بُني المسجد الكبير في كوتاغيدي بين عامَي 1587 و1589، وهو أقدم مساجد مملكة ماتارام. وبوابته على الطراز الهندوسي الجاوي بالآجر الأحمر كالمعابد القديمة، صورةً لدخول الإسلام جاوة دون أن يمحو ما قبله. وما زال الأطفال يقرؤون القرآن فيه حتى اليوم.
-    en: |
-      Kotagede's Great Mosque was built in 1587–1589 and is the oldest mosque of the Mataram kingdom. Its red-brick gate is in Hindu-Javanese style, like the old temples — a lovely picture of how Islam came to Java without erasing what came before. Children still come here to ngaji today.
+      text: Mboten, Bu, matur nuwun. Soto kemawon.
+      ar_eg: لا يا مدام، شكرًا. سوتو بس.
+      ar: لا يا سيدتي، شكرًا. سوتو فقط.
+      en: No thanks, ma'am. Just the soto.
 review:
   status: draft
   verified: false

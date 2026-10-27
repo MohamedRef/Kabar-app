@@ -1,0 +1,174 @@
+schema: kabar.lesson/v1
+id: j6.u01.l11
+language: jv
+title: Ditulis a, diwaca o
+can_do:
+  ar_eg: تسمع كلمة بتتنطق بـ o وتلاقيها مكتوبة بالخط الجاوي بـ a.
+  ar: أن تسمع كلمة تُنطق بـ o فتجدها مكتوبة بالخط الجاوي بـ a.
+  en: Hear a word said with o and find it written with a in aksara Jawa.
+slides:
+  - title: Ditulis a, diwaca o
+    body:
+      ar_eg: |
+        النهارده اسمع الأول. الجاويين بيقولوا «moco» و«Jowo» و«opo»، بس الخط الجاوي بيكتبهم بحروف عادية فيها a: ꦩꦕ ꦗꦮ ꦲꦥ.
+        القاعدة زي الإملا اللاتيني: الـ a في آخر الكلمة (واللي قبلها لو المقطع مفتوح) بتتنطق o. يعني الحرف ميتغيرش، النطق بس.
+        وفي الشات هتلاقي opo وmoco، بس الكتابة الصح maca وapa.
+      ar: |
+        اليوم نبدأ بالاستماع. يقول الجاويون «moco» و«Jowo» و«opo»، لكن الخط الجاوي يكتبها بحروف مجرّدة فيها a: ꦩꦕ ꦗꦮ ꦲꦥ.
+        والقاعدة كما في الإملاء اللاتيني: تُنطق a في آخر الكلمة (وفي المقطع المفتوح قبله) o؛ فالحرف لا يتغيّر بل النطق.
+        وفي الدردشة تجد opo وmoco، أما الكتابة الصحيحة فـ maca وapa.
+      en: |
+        Today you listen first. Javanese speakers say "moco", "Jowo", "opo", but aksara Jawa writes them with ordinary letters that carry a: ꦩꦕ ꦗꦮ ꦲꦥ.
+        The rule is the same as in Latin spelling: a word-final a (and an open a just before it) is said o. The letter doesn't change, only the sound.
+        Chats write opo and moco; the standard spelling is maca and apa.
+    grammar: jv.aksara.nglegena
+    examples:
+      - text: ꦩꦕ (maca)
+        ar_eg: يقرا — بتتنطق moco
+        ar: يقرأ — تُنطق moco
+        en: read — said "moco"
+      - text: ꦗꦮ (Jawa)
+        ar_eg: جاوة / جاوي — بتتنطق Jowo
+        ar: جاوة / جاوي — تُنطق Jowo
+        en: Java, Javanese — said "Jowo"
+      - text: ꦲꦥ (apa)
+        ar_eg: إيه؟ — بتتنطق opo
+        ar: ماذا؟ — تُنطق opo
+        en: what? — said "opo"
+exercises:
+  - id: e01
+    type: listen
+    text: maca
+    question:
+      ar_eg: سمعت أنهي كلمة؟
+      ar: أي كلمة سمعت؟
+      en: Which word did you hear?
+    options: ["ꦩꦠ", "ꦩꦕ", "ꦏꦕ"]
+    answer: 1
+    meaning:
+      ar_eg: يقرا (بتتنطق moco)
+      ar: يقرأ (تُنطق moco)
+      en: read (said "moco")
+    words: [ꦩ, ꦕ]
+  - id: e02
+    type: listen
+    text: Jawa
+    question:
+      ar_eg: سمعت أنهي كلمة؟
+      ar: أي كلمة سمعت؟
+      en: Which word did you hear?
+    options: ["ꦗꦪ", "ꦝꦮ", "ꦗꦮ"]
+    answer: 2
+    meaning:
+      ar_eg: جاوة / جاوي (بتتنطق Jowo)
+      ar: جاوة / جاوي (تُنطق Jowo)
+      en: Java, Javanese (said "Jowo")
+    words: [ꦗ, ꦮ]
+  - id: e03
+    type: match_pairs
+    pairs:
+      - text: ꦲꦥ
+        ar_eg: apa — بتتنطق opo (إيه؟)
+        ar: apa — تُنطق opo (ماذا؟)
+        en: apa — said opo (what?)
+      - text: ꦭꦫ
+        ar_eg: lara — بتتنطق loro (عيان)
+        ar: lara — تُنطق loro (مريض)
+        en: lara — said loro (sick)
+      - text: ꦏꦪ
+        ar_eg: kaya — بتتنطق koyo (زي)
+        ar: kaya — تُنطق koyo (مثل)
+        en: kaya — said koyo (like)
+      - text: ꦢꦮ
+        ar_eg: dawa — بتتنطق dowo (طويل)
+        ar: dawa — تُنطق dowo (طويل)
+        en: dawa — said dowo (long)
+    words: [ꦲ, ꦭ, ꦏ, ꦢ]
+  - id: e04
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "صاحبك كتب في الشات «opo». بتتكتب إزاي بالخط الجاوي؟"
+      ar: "كتب صديقك في الدردشة «opo». كيف تُكتب بالخط الجاوي؟"
+      en: "A friend texted «opo». How is it written in aksara Jawa?"
+    options: ["ꦲꦤ", "ꦲꦥ", "ꦱꦥ"]
+    answer: 1
+    explain:
+      ar_eg: "opo هي apa: ꦲ + ꦥ. الخط مفيهوش o هنا، فيه a بتتنطق o."
+      ar: "opo هي apa: ꦲ + ꦥ؛ لا o في الكتابة هنا، بل a تُنطق o."
+      en: "opo is apa: ꦲ + ꦥ. There's no o in the writing, just an a said o."
+    words: [ꦲ, ꦥ]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "في الشات «moco». إيه الكتابة الصح بالحروف اللاتينية؟"
+      ar: "في الدردشة «moco». ما الكتابة الصحيحة بالحروف اللاتينية؟"
+      en: "A chat says «moco». What's the standard Latin spelling?"
+    options: [moca, maco, maca]
+    answer: 2
+    explain:
+      ar_eg: maca، زي الخط الجاوي ꦩꦕ بالظبط.
+      ar: maca، تمامًا كالخط الجاوي ꦩꦕ.
+      en: maca, exactly like aksara Jawa ꦩꦕ.
+    words: [ꦩ, ꦕ]
+  - id: e06
+    type: fill_blank
+    sentence: ꦏꦪ = ___
+    meaning:
+      ar_eg: "اكتب القراية بالحروف اللاتينية. (معناها: زي)"
+      ar: "اكتب القراءة بالحروف اللاتينية. (معناها: مثل)"
+      en: Type the reading in Latin letters. (It means "like".)
+    answers: [kaya, koyo]
+    words: [ꦏ, ꦪ]
+  - id: e07
+    type: dictation
+    text: Aku isa maca aksara Jawa.
+    meaning:
+      ar_eg: أنا بعرف أقرا الخط الجاوي.
+      ar: أستطيع قراءة الخط الجاوي.
+      en: I can read aksara Jawa.
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية (الكتابة الصح): ꦭꦫꦲꦥ"
+      ar: "اكتب بالحروف اللاتينية (بالإملاء الصحيح): ꦭꦫꦲꦥ"
+      en: "Write in Latin letters (standard spelling): ꦭꦫꦲꦥ"
+    answers: ["Lara apa?", lara apa, laraapa]
+    explain:
+      ar_eg: ꦭꦫ lara + ꦲꦥ apa = Lara apa? يعني «عيان بإيه؟»، وبتتنطق «loro opo».
+      ar: ꦭꦫ lara + ꦲꦥ apa = Lara apa? أي «ما مرضك؟»، وتُنطق «loro opo».
+      en: ꦭꦫ lara + ꦲꦥ apa = Lara apa? "What's wrong with you?", said "loro opo".
+    words: [ꦭ, ꦫ]
+  - id: e09
+    type: speaking
+    text: Maca, Jawa, apa, lara.
+    meaning:
+      ar_eg: "قول الكلمات بالنطق الجاوي: moco، Jowo، opo، loro."
+      ar: "انطق الكلمات بالنطق الجاوي: moco، Jowo، opo، loro."
+      en: Say them the Javanese way — moco, Jowo, opo, loro.
+dialogue:
+  title: Ditulis a
+  lines:
+    - speaker: Mohamed
+      text: Mas, ing kertu ditulis maca, nanging kowe ngomong moco.
+      ar_eg: يا ديماس، على الكارت مكتوب maca، بس إنت بتقول moco.
+      ar: يا ديماس، على البطاقة مكتوب maca لكنك تقول moco.
+      en: Mas, the card says maca, but you say moco.
+    - speaker: Dimas
+      text: Iya. Ditulis a, diwaca o.
+      ar_eg: أيوه. بتتكتب a وبتتقري o.
+      ar: نعم. تُكتب a وتُقرأ o.
+      en: Yes. Written a, read o.
+    - speaker: Mohamed
+      text: Kaya apa lan opo ing chat, ya?
+      ar_eg: زي apa وopo في الشات، صح؟
+      ar: مثل apa وopo في الدردشة، أليس كذلك؟
+      en: Like apa and opo in chats, right?
+    - speaker: Dimas
+      text: Bener! Nanging aksara Jawa mung nulis apa.
+      ar_eg: مظبوط! بس الخط الجاوي بيكتب apa بس.
+      ar: صحيح! لكن الخط الجاوي لا يكتب إلا apa.
+      en: Exactly! But aksara Jawa only writes apa.
+review:
+  status: draft
+  verified: false

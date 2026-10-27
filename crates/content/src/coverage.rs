@@ -6,7 +6,8 @@
 //!
 //! A word counts as known when a `new_words` entry at or before the item's
 //! position teaches it (a taught phrase covers its words; a suffixed or
-//! reduplicated form is covered by its root), when the line's own `note`
+//! reduplicated form is covered by its root; a street form such as "nggak" by
+//! its formal twin in `content/freq/id.street.tsv`), when the line's own `note`
 //! explains it, or when it is not vocabulary at all: a name (capitalised and
 //! either a cast name or absent from the frequency list), a number, or an
 //! entry in `content/freq/<lang>.core-exclude.tsv`.
@@ -86,6 +87,12 @@ impl Track {
     fn known(&self, w: &str, pos: usize) -> bool {
         let at = |w: &str| self.taught.get(w).is_some_and(|&p| p <= pos);
         if at(w) || self.exclude.contains(w) {
+            return true;
+        }
+        // A street form ("nggak", "makasih") is known once its formal twin is.
+        if self.lang == "id"
+            && kabar_core::lang::street::formal(kabar_core::lang::Lang::Indonesian, w).is_some_and(at)
+        {
             return true;
         }
         if let Some((a, b)) = w.split_once('-')
@@ -329,10 +336,17 @@ mod tests {
         Track {
             lang: "id".into(),
             order: vec!["a".into(), "b".into()],
-            taught: [("saya", 0), ("makan", 0), ("rumah sakit", 0), ("nasi", 1)]
-                .into_iter()
-                .map(|(w, p)| (w.to_owned(), p))
-                .collect(),
+            taught: [
+                ("saya", 0),
+                ("makan", 0),
+                ("rumah sakit", 0),
+                ("nasi", 1),
+                ("tidak", 1),
+                ("terima kasih", 1),
+            ]
+            .into_iter()
+            .map(|(w, p)| (w.to_owned(), p))
+            .collect(),
             units: BTreeMap::new(),
             lesson_level: BTreeMap::new(),
             exclude: BTreeSet::new(),
@@ -355,5 +369,14 @@ mod tests {
         let (n, u) = measure(&track(), &names, 0, "Saya makan pecel 2 kali, Pak Joko.", "pecel = طبق خضار");
         assert_eq!(n, 4);
         assert_eq!(u, vec!["kali".to_owned()]);
+    }
+
+    #[test]
+    fn street_forms_count_once_their_formal_twin_is_taught() {
+        let names = BTreeSet::new();
+        let (_, u) = measure(&track(), &names, 0, "Saya nggak makan, makasih!", "");
+        assert_eq!(u, vec!["nggak".to_owned(), "makasih".to_owned()]);
+        let (_, u) = measure(&track(), &names, 1, "Saya nggak makan, makasih!", "");
+        assert!(u.is_empty());
     }
 }

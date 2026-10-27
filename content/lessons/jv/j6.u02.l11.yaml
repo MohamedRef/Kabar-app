@@ -1,0 +1,189 @@
+schema: kabar.lesson/v1
+id: j6.u02.l11
+language: jv
+title: Siji nganti sanga
+can_do:
+  ar_eg: تسمع رقم بالجاوي وتلاقيه مكتوب بالخط الجاوي.
+  ar: أن تسمع عددًا بالجاوية فتجده مكتوبًا بالخط الجاوي.
+  en: Hear a Javanese number and find it written in aksara Jawa.
+slides:
+  - title: Angka nganggo tembung
+    body:
+      ar_eg: |
+        النهارده بتسمع الأول: ديماس هيقول أرقام وإنت تدوّر عليها مكتوبة.
+        الأرقام اللي بتخلص بحرف متحرك تقدر تكتبها دلوقتي: siji · loro · telu · lima · pitu · wolu · sanga.
+        papat وenem بيخلصوا بحرف ساكن، هتكتبهم الوحدة الجاية.
+      ar: |
+        اليوم تبدأ بالاستماع: يقول ديماس أعدادًا وتبحث عنها مكتوبة.
+        الأعداد المنتهية بصائت تستطيع كتابتها الآن: siji · loro · telu · lima · pitu · wolu · sanga.
+        أما papat وenem فتنتهيان بساكن، وستكتبهما في الوحدة القادمة.
+      en: |
+        Today you listen first: Dimas says numbers and you find them written.
+        The numbers that end in a vowel you can already write: siji · loro · telu · lima · pitu · wolu · sanga.
+        papat and enem end in a consonant; you'll write them next unit.
+    grammar: jv.aksara.sandhangan-swara
+    examples:
+      - text: ꦱꦶꦗꦶ · ꦭꦺꦴꦫꦺꦴ · ꦠꦼꦭꦸ (siji · loro · telu)
+        ar_eg: واحد · اتنين · تلاتة
+        ar: واحد · اثنان · ثلاثة
+        en: one · two · three
+      - text: ꦭꦶꦩ · ꦥꦶꦠꦸ (lima · pitu)
+        ar_eg: خمسة · سبعة
+        ar: خمسة · سبعة
+        en: five · seven
+      - text: ꦮꦺꦴꦭꦸ · ꦱꦔ (wolu · sanga)
+        ar_eg: تمانية · تسعة
+        ar: ثمانية · تسعة
+        en: eight · nine
+exercises:
+  - id: e01
+    type: listen
+    text: pitu
+    question:
+      ar_eg: ديماس قال رقم. أنهي واحد؟
+      ar: قال ديماس عددًا. أيّها؟
+      en: Dimas said a number. Which one?
+    options: ["ꦥꦶꦠꦸ", "ꦥꦶꦠ", "ꦥꦸꦠꦸ"]
+    answer: 0
+    meaning:
+      ar_eg: سبعة
+      ar: سبعة
+      en: seven
+    words: [wulu, suku]
+  - id: e02
+    type: listen
+    text: wolu
+    question:
+      ar_eg: ديماس قال رقم. أنهي واحد؟
+      ar: قال ديماس عددًا. أيّها؟
+      en: Dimas said a number. Which one?
+    options: ["ꦮꦸꦭꦸ", "ꦮꦭꦸ", "ꦮꦺꦴꦭꦸ"]
+    answer: 2
+    explain:
+      ar_eg: wo = ꦮ بـ taling tarung (o)، وlu = ꦭ بـ suku.
+      ar: wo = ꦮ بـ taling tarung (o)، وlu = ꦭ بـ suku.
+      en: wo = ꦮ with taling tarung (o), lu = ꦭ with suku.
+    meaning:
+      ar_eg: تمانية
+      ar: ثمانية
+      en: eight
+    words: [taling tarung]
+  - id: e03
+    type: listen
+    text: telu
+    question:
+      ar_eg: ديماس قال رقم. أنهي واحد؟
+      ar: قال ديماس عددًا. أيّها؟
+      en: Dimas said a number. Which one?
+    options: ["ꦠꦺꦭꦸ", "ꦠꦼꦭꦸ", "ꦠꦭꦸ"]
+    answer: 1
+    explain:
+      ar_eg: الـ e في telu خفيفة (ə)، يعني pepet فوق ꦠ.
+      ar: الـ e في telu مختلسة (ə)، أي pepet فوق ꦠ.
+      en: The e in telu is the light schwa, so it's pepet above ꦠ.
+    meaning:
+      ar_eg: تلاتة
+      ar: ثلاثة
+      en: three
+    words: [pepet]
+  - id: e04
+    type: match_pairs
+    pairs:
+      - text: ꦱꦶꦗꦶ
+        ar_eg: "1 (واحد)"
+        ar: "1 (واحد)"
+        en: "1"
+      - text: ꦭꦶꦩ
+        ar_eg: "5 (خمسة)"
+        ar: "5 (خمسة)"
+        en: "5"
+      - text: ꦥꦶꦠꦸ
+        ar_eg: "7 (سبعة)"
+        ar: "7 (سبعة)"
+        en: "7"
+      - text: ꦱꦔ
+        ar_eg: "9 (تسعة)"
+        ar: "9 (تسعة)"
+        en: "9"
+    words: [wulu, suku]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: "ديماس كتب: ꦱꦥꦶꦭꦶꦩ. كام بقرة؟"
+      ar: "كتب ديماس: ꦱꦥꦶꦭꦶꦩ. كم بقرة؟"
+      en: "Dimas wrote ꦱꦥꦶꦭꦶꦩ. How many cows?"
+    options: ["5", "7", "9"]
+    answer: 0
+    explain:
+      ar_eg: ꦱꦥꦶ sapi (بقرة) + ꦭꦶꦩ lima (خمسة).
+      ar: ꦱꦥꦶ sapi (بقرة) + ꦭꦶꦩ lima (خمسة).
+      en: ꦱꦥꦶ sapi (cow) + ꦭꦶꦩ lima (five).
+    words: [wulu]
+  - id: e06
+    type: fill_blank
+    sentence: ꦱꦔ = ___
+    meaning:
+      ar_eg: اكتب الرقم بالحروف اللاتينية أو بالأرقام.
+      ar: اكتب العدد بالحروف اللاتينية أو بالأرقام.
+      en: Type the number in Latin letters or digits.
+    answers: [sanga, "9"]
+  - id: e07
+    type: dictation
+    text: Siji, loro, telu, lima.
+    meaning:
+      ar_eg: واحد، اتنين، تلاتة، خمسة.
+      ar: واحد، اثنان، ثلاثة، خمسة.
+      en: One, two, three, five.
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: "اكتب «pitu wolu sanga» (سبعة تمانية تسعة) مقطع مقطع."
+      ar: "اكتب «pitu wolu sanga» (سبعة ثمانية تسعة) مقطعًا مقطعًا."
+      en: Build "pitu wolu sanga" (seven eight nine), syllable by syllable.
+    answer: ꦥꦶ ꦠꦸ ꦮꦺꦴ ꦭꦸ ꦱ ꦔ
+    distractors: ["ꦮꦸ"]
+    words: [wulu, suku, taling tarung]
+  - id: e09
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: "اكتب بالحروف اللاتينية: ꦧꦸꦏꦸꦠꦼꦭꦸ"
+      ar: "اكتب بالحروف اللاتينية: ꦧꦸꦏꦸꦠꦼꦭꦸ"
+      en: "Write in Latin letters: ꦧꦸꦏꦸꦠꦼꦭꦸ"
+    answers: [buku telu, bukutelu]
+    explain:
+      ar_eg: bu-ku (suku مرتين) + te-lu (pepet ثم suku) = تلات كتب.
+      ar: bu-ku (suku مرتين) + te-lu (pepet ثم suku) = ثلاثة كتب.
+      en: bu-ku (suku twice) + te-lu (pepet, then suku) = three books.
+    words: [suku, pepet]
+dialogue:
+  title: Dolanan angka
+  lines:
+    - speaker: Dimas
+      text: Med, aku nyebut angka, kowe nuduhake tulisane.
+      ar_eg: يا محمد، أنا أقول رقم وإنت تشاور على كتابته.
+      ar: يا محمد، أقول عددًا وتشير أنت إلى كتابته.
+      en: Med, I say a number and you point to how it's written.
+    - speaker: Mohamed
+      text: Oke. Ayo!
+      ar_eg: ماشي. يلا!
+      ar: حسنًا. هيا!
+      en: OK. Go!
+    - speaker: Dimas
+      text: Pitu.
+      ar_eg: سبعة.
+      ar: سبعة.
+      en: Seven.
+    - speaker: Mohamed
+      text: Pa nganggo wulu, ta nganggo suku. Iki!
+      ar_eg: pa عليها wulu، وta تحتها suku. أهي!
+      ar: pa بـ wulu، وta بـ suku. هذه!
+      en: Pa with wulu, ta with suku. This one!
+    - speaker: Dimas
+      text: Pinter! Saiki wolu.
+      ar_eg: شاطر! دلوقتي تمانية.
+      ar: أحسنت! والآن ثمانية.
+      en: Clever! Now eight.
+review:
+  status: draft
+  verified: false
