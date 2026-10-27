@@ -102,23 +102,43 @@ exercises:
     distractors: [esuk, pira]
     words: [jam, papat, sore, piye]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: نتقابل إمتى؟
-      ar: متى نلتقي؟
-      en: When shall we meet?
-    answers: ['Ketemu kapan?', Ketemu kapan, 'Kapan ketemu?', Kapan ketemu, 'Ayo ketemu kapan?', Ayo ketemu kapan]
-    words: [ketemu, kapan]
+    type: match_pairs
+    pairs:
+      - text: janjian
+        ar_eg: يحدد ميعاد
+        ar: يتواعد
+        en: make a date
+      - text: isa
+        ar_eg: يقدر / ينفع
+        ar: يستطيع
+        en: can
+      - text: nonton
+        ar_eg: يتفرج
+        ar: يشاهد
+        en: watch
+      - text: Jumatan
+        ar_eg: صلاة الجمعة
+        ar: صلاة الجمعة
+        en: Friday prayer
+      - text: alun-alun
+        ar_eg: الميدان الكبير
+        ar: الساحة الكبرى
+        en: town square
+      - text: sip
+        ar_eg: تمام!
+        ar: ممتاز!
+        en: great!
+    words: [janjian, isa, nonton, Jumatan, alun-alun, sip]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: يوم السبت مش هقدر.
-      ar: لا أستطيع يوم السبت.
-      en: I can't on Saturday.
-    answers: [Setu aku ora isa., Setu aku ora isa, Setu aku ora iso., Setu aku ora iso, Aku ora isa dina Setu., Aku ora isa dina Setu, Aku Setu ora isa., Aku Setu ora isa, Dina Setu aku ora isa., Dina Setu aku ora isa]
-    words: [Setu, ora, isa]
+    type: listen
+    text: Sip! Janjian neng alun-alun, ya.
+    options: ['Sip! Janjian neng alun-alun, ya.', 'Sip! Nonton neng alun-alun, ya.', 'Sip! Janjian neng omah, ya.']
+    answer: 0
+    meaning:
+      ar_eg: تمام! نتقابل في الميدان، ماشي؟
+      ar: ممتاز! نلتقي في الساحة، اتفقنا؟
+      en: Great! Let's meet at the town square, OK?
+    words: [sip, janjian, alun-alun, nonton]
   - id: e08
     type: listen
     text: Aku ora isa, aku Jumatan.
@@ -135,12 +155,12 @@ exercises:
     words: [ketemu, ngarep, alun-alun]
   - id: e10
     type: speaking
-    text: Sesuk Jemuwah jam papat sore, isa?
+    text: Sip! Sesuk nonton reog, janjian jam papat sore.
     meaning:
-      ar_eg: بكرة الجمعة الساعة أربعة العصر، ينفع؟
-      ar: غدًا الجمعة في الرابعة عصرًا، أيناسبك؟
-      en: Tomorrow, Friday, at 4 p.m. — can you?
-    words: [sesuk, Jemuwah, sore, isa]
+      ar_eg: تمام! بكرة نتفرج على الريوج، ونتقابل الساعة أربعة العصر.
+      ar: ممتاز! غدًا نشاهد الريوغ، ونلتقي الساعة الرابعة عصرًا.
+      en: Great! Tomorrow we watch reog, meeting at four in the afternoon.
+    words: [sip, sesuk, nonton, janjian, sore]
 dialogue:
   title: Chat karo Dimas
   lines:
