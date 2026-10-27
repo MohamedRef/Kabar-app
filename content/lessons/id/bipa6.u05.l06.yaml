@@ -1,163 +1,212 @@
 schema: kabar.lesson/v1
 id: bipa6.u05.l06
 language: id
-title: Ulangan Unit 5
+title: Tari Saman
 can_do:
-  ar_eg: تكتب عن الإيمان والمجتمع بلغة محترمة ودقيقة.
-  ar: أن تكتب عن الإيمان والمجتمع بلغة محترمة ودقيقة.
-  en: Write about faith and community in respectful, precise language.
+  ar_eg: توصف رقصة السامان بتاعة الجايو وتشرح ليه اليونسكو حماها.
+  ar: أن تصف رقصة السامان لدى الغايو وتشرح لماذا تحميها اليونسكو.
+  en: Describe the Gayo people's Saman dance and explain why UNESCO protects it.
+slides:
+  - title: Seribu tangan, satu gerakan
+    body:
+      ar_eg: |
+        Tari Saman من بلاد الجايو في جبال آتشيه. الراقصين رجالة، قاعدين في صف واحد على ركبهم.
+        - berlutut = يقعد على ركبه
+        - barisan = صف
+        - tepukan = تصقيفة، ضربة بالإيد على الإيد أو الصدر
+        - kompak = متناسقين، بيتحركوا كأنهم واحد
+        - warisan budaya takbenda = تراث ثقافي غير مادي
+        الغنا فيه بلغة الجايو وكمان كلمات عربية، وفيه مدح ونصيحة. وفي ٢٠١١ اليونسكو حطّت الرقصة في قايمة التراث غير المادي اللي محتاج حماية عاجلة.
+      ar: |
+        Tari Saman من بلاد الغايو في جبال آتشيه. الراقصون رجال يجلسون جاثين على ركبهم في صفّ واحد.
+        - berlutut = يجثو على ركبتيه
+        - barisan = صفّ
+        - tepukan = تصفيقة، ضربة باليد على اليد أو الصدر
+        - kompak = متناسقون، يتحرّكون كأنهم شخص واحد
+        - warisan budaya takbenda = تراث ثقافي غير مادّي
+        ويُغنّى فيها بلغة الغايو وبكلمات عربية، وفيها مديح ونصح. وفي ٢٠١١ أدرجتها اليونسكو في قائمة التراث غير المادّي الذي يحتاج إلى صون عاجل.
+      en: |
+        Tari Saman comes from the Gayo highlands of Aceh. The dancers are men, kneeling in a single row.
+        - berlutut = to kneel
+        - barisan = row, line
+        - tepukan = a clap, a slap of hand on hand or chest
+        - kompak = in sync, moving as one
+        - warisan budaya takbenda = intangible cultural heritage
+        The songs are in Gayo with Arabic words too, offering praise and advice. In 2011 UNESCO listed the dance as intangible heritage in need of urgent safeguarding.
+    examples:
+      - text: Para penari berlutut dalam satu barisan dan bergerak sangat kompak.
+        ar_eg: الراقصين قاعدين على ركبهم في صف واحد وبيتحركوا متناسقين جدًا.
+        ar: يجثو الراقصون في صفّ واحد ويتحرّكون بتناسق شديد.
+        en: The dancers kneel in one row and move perfectly in sync.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: umat
-        ar_eg: أتباع / أمّة
-        ar: أتباع / أمّة
-        en: followers, community of faith
-      - text: korban
-        ar_eg: ضحية
-        ar: ضحيّة
-        en: victim
-      - text: ulama
-        ar_eg: عالم دين
-        ar: عالم دين
-        en: religious scholar
-      - text: keyakinan
-        ar_eg: عقيدة / إيمان
-        ar: عقيدة
-        en: belief, faith
-      - text: harapan
-        ar_eg: أمل
-        ar: أمل
-        en: hope
-    words: [umat, korban, ulama, keyakinan, harapan]
+      - text: berlutut
+        ar_eg: يقعد على ركبه
+        ar: يجثو
+        en: to kneel
+      - text: barisan
+        ar_eg: صف
+        ar: صفّ
+        en: row
+      - text: tepukan
+        ar_eg: تصقيفة
+        ar: تصفيقة
+        en: clap
+      - text: kompak
+        ar_eg: متناسقين
+        ar: متناسق
+        en: in sync
+      - text: warisan budaya takbenda
+        ar_eg: تراث غير مادي
+        ar: تراث غير مادّي
+        en: intangible heritage
+    words: [berlutut, barisan, tepukan, kompak, warisan budaya takbenda]
   - id: e02
+    type: listen
+    text: Para penari yang berlutut itu berasal dari dataran tinggi Gayo di Aceh.
+    question:
+      ar_eg: الراقصين دول منين؟
+      ar: من أين هؤلاء الراقصون؟
+      en: Where are the dancers from?
+    options:
+      - من بالي.
+      - من جبال الجايو في آتشيه.
+      - من جاكرتا.
+    answer: 1
+    words: [berlutut]
+  - id: e03
     type: multiple_choice
     question_meaning:
-      ar_eg: تكتب إيه قبل اسم ست مسلمة متوفية؟
-      ar: ماذا تكتب قبل اسم امرأة مسلمة متوفّاة؟
-      en: What goes before a deceased Muslim woman's name?
-    options: [mendiang, almarhum, almarhumah]
-    answer: 2
-    words: [almarhum, mendiang]
-  - id: e03
-    type: fill_blank
-    sentence: Setiap tahun, warga Aceh ___ para korban tsunami pada 26 Desember.
-    meaning:
-      ar_eg: كل سنة، أهل آتشيه بيحيوا ذكرى ضحايا التسونامي يوم 26 ديسمبر.
-      ar: يُحيي أهل آتشيه كلّ عام ذكرى ضحايا التسونامي في 26 ديسمبر.
-      en: Every year, the people of Aceh commemorate the tsunami's victims on 26 December.
-    options: [mengenang, menghormati, bangkit]
-    answers: [mengenang]
-    words: [mengenang, korban]
-  - id: e04
-    type: listen
-    text: Para relawan bergotong royong membangun kembali rumah ibadah itu.
-    question:
-      ar_eg: المتطوّعين عملوا إيه؟
-      ar: ماذا فعل المتطوّعون؟
-      en: What did the volunteers do?
+      ar_eg: «kompak» في الرقص يعني إيه؟
+      ar: ما معنى «kompak» في الرقص؟
+      en: What does "kompak" mean in dance?
     options:
-      - صلّوا في الجامع.
-      - بنوا دار العبادة من تاني مع بعض.
-      - جمعوا زكاة.
-    answer: 1
-    words: [relawan, gotong royong, rumah ibadah]
+      - كل واحد بيرقص لوحده.
+      - الرقص بطيء جدًا.
+      - كلهم بيتحركوا كأنهم واحد.
+    answer: 2
+    words: [kompak]
+  - id: e04
+    type: fill_blank
+    sentence: Pada tahun 2011, UNESCO menetapkan Saman sebagai ___.
+    meaning:
+      ar_eg: سنة ٢٠١١، اليونسكو اعتمدت السامان تراث ثقافي غير مادي.
+      ar: اعتمدت اليونسكو السامان تراثًا ثقافيًّا غير مادّي سنة ٢٠١١.
+      en: In 2011, UNESCO recognised Saman as intangible cultural heritage.
+    options: [warisan budaya takbenda, barisan, tepukan]
+    answers: [warisan budaya takbenda]
+    words: [warisan budaya takbenda]
   - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الراقصين في السامان بيقعدوا إزاي؟
+      ar: كيف يجلس راقصو السامان؟
+      en: How do Saman dancers sit?
+    options:
+      - على ركبهم في صف واحد.
+      - على كراسي في دايرة.
+      - واقفين في صفين.
+    answer: 0
+    words: [berlutut, barisan]
+  - id: e06
     type: build_sentence
     source:
-      ar_eg: الزكاة عبادة وكمان مساعدة للمحتاجين.
-      ar: الزكاة عبادة ومساعدة للمحتاجين أيضًا.
-      en: Zakat is an act of worship and also help for those in need.
-    answer: Zakat adalah ibadah dan juga bantuan bagi yang membutuhkan.
-    distractors: [hukum, syariah]
-    words: [zakat, ibadah, bantuan]
-  - id: e06
+      ar_eg: صوت التصقيف بيعلى وبيسرع.
+      ar: يعلو صوت التصفيق ويتسارع.
+      en: The sound of the claps grows louder and faster.
+    answer: Suara tepukan makin keras dan makin cepat.
+    distractors: [barisan, berlutut]
+    words: [tepukan]
+  - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: لازم نحترم عقيدة غيرنا.
-      ar: علينا أن نحترم عقائد الآخرين.
-      en: We must respect other people's beliefs.
+      ar_eg: الراقصين متناسقين جدًا.
+      ar: الراقصون متناسقون جدًا.
+      en: The dancers are very much in sync.
     answers:
-      - Kita harus menghormati keyakinan orang lain.
-      - Kita wajib menghormati keyakinan orang lain.
-      - Kita perlu menghormati keyakinan orang lain.
-      - Keyakinan orang lain harus kita hormati.
-    words: [menghormati, keyakinan]
-  - id: e07
-    type: translate
-    direction: from_target
-    source_text: Di Aceh, sebagian hukum daerah didasarkan pada syariah.
-    answers_meaning:
-      ar_eg:
-        - في آتشيه، جزء من القوانين المحلية مبني على الشريعة.
-        - آتشيه فيها قوانين محلية مبنية على الشريعة.
-      ar:
-        - في آتشيه، يقوم جزء من القوانين المحلّية على الشريعة.
-        - بعض القوانين المحلّية في آتشيه مستمدّ من الشريعة.
-      en:
-        - In Aceh, some local laws are based on sharia.
-        - Part of Aceh's regional law is based on sharia.
-    words: [hukum, syariah]
+      - Para penari sangat kompak.
+      - Penari-penari itu sangat kompak.
+      - Para penari itu kompak sekali.
+      - Penarinya sangat kompak.
+    words: [kompak]
   - id: e08
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي بداية أنسب لخطاب قدّام ناس من أديان مختلفة؟
-      ar: أيّ افتتاح أنسب لخطاب أمام جمهور من أديان مختلفة؟
-      en: Which opening best suits a speech to a mixed-faith audience?
-    options:
-      - Assalamualaikum, salam sejahtera bagi kita semua.
-      - Hai, semuanya!
-      - Assalamualaikum saja.
-    answer: 0
-    words: [salam sejahtera]
+    type: speaking
+    text: Saman adalah warisan budaya takbenda, dan tepukannya terdengar seperti satu suara.
+    meaning:
+      ar_eg: السامان تراث غير مادي، والتصقيف فيه بيبان كأنه صوت واحد.
+      ar: السامان تراث غير مادّي، وتُسمع تصفيقاته كأنها صوت واحد.
+      en: Saman is intangible heritage, and its claps sound like a single voice.
+    words: [warisan budaya takbenda, tepukan]
   - id: e09
     type: dictation
-    text: Gelombang itu menghancurkan kota, tetapi kota itu bangkit lagi.
+    text: Sepuluh penari berlutut dalam satu barisan yang rapat.
     meaning:
-      ar_eg: الموجة دمّرت المدينة، بس المدينة قامت تاني.
-      ar: دمّرت الموجة المدينة، لكنّ المدينة نهضت من جديد.
-      en: The wave destroyed the city, but the city rose again.
-    words: [gelombang, bangkit]
+      ar_eg: عشر راقصين قاعدين على ركبهم في صف لازق في بعضه.
+      ar: يجثو عشرة راقصين في صفّ متلاصق.
+      en: Ten dancers kneel in one tight row.
+    words: [berlutut, barisan]
   - id: e10
-    type: speaking
-    text: Semoga rahmat-Nya menyertai para korban bencana.
+    type: fill_blank
+    sentence: Kalau satu penari salah, ___ terlihat tidak rapi.
     meaning:
-      ar_eg: ربنا يرحم ضحايا الكارثة.
-      ar: لتشمل رحمته ضحايا الكارثة.
-      en: May His mercy be upon the victims of the disaster.
-    words: [rahmat, bencana]
+      ar_eg: لو راقص واحد غلط، الصف كله يبان مش منظم.
+      ar: إن أخطأ راقص واحد بدا الصفّ كلّه غير منتظم.
+      en: If one dancer slips, the whole row looks untidy.
+    options: [barisan, tepukan, kompak]
+    answers: [barisan]
+    words: [barisan]
 dialogue:
-  title: Azan di Masjid Raya
+  title: Saman di Gayo Lues
   lines:
     - speaker: Kak Rahmah
-      text: Waktu tsunami, banyak orang berlindung di masjid ini.
-      ar_eg: وقت التسونامي، ناس كتير استخبّوا في الجامع ده.
-      ar: احتمى كثيرون بهذا المسجد وقت التسونامي.
-      en: During the tsunami, many people took shelter in this mosque.
+      text: Mohamed, malam ini ada Saman. Penarinya dari Gayo Lues.
+      ar_eg: يا محمد، الليلة فيه سامان. الراقصين من جايو لويس.
+      ar: يا محمد، الليلة عرض سامان، وراقصوه من غايو لويس.
+      en: Mohamed, there's a Saman tonight. The dancers are from Gayo Lues.
     - speaker: Mohamed
-      text: Masjidnya tetap berdiri, ya. Pantas orang menyebut Aceh "Serambi Mekkah".
-      ar_eg: الجامع فضل واقف. مش غريبة إن الناس بيسمّوا آتشيه «شرفة مكة».
-      ar: بقي المسجد قائمًا. لا عجب أن يسمّي الناس آتشيه «شرفة مكّة».
-      en: The mosque stayed standing. No wonder people call Aceh "the Veranda of Mecca".
+      text: Mereka hanya berlutut, tetapi gerakannya cepat sekali!
+      ar_eg: هما قاعدين على ركبهم بس، بس حركاتهم سريعة جدًا!
+      ar: إنهم جاثون فحسب، لكنّ حركاتهم سريعة جدًّا!
+      en: They're only kneeling, but they move so fast!
     - speaker: Kak Rahmah
-      text: Dulu dari pelabuhan Aceh, jemaah haji berlayar ke Mekkah.
-      ar_eg: زمان، الحجّاج كانوا بيبحروا لمكة من ميناء آتشيه.
-      ar: كان الحجّاج قديمًا يبحرون إلى مكّة من ميناء آتشيه.
-      en: Long ago, pilgrims sailed to Mecca from Aceh's harbour.
+      text: Ya, dan sangat kompak. Dengar syairnya, ada kata "Allah" dan "salam".
+      ar_eg: أيوه، ومتناسقين جدًا. اسمع الغنا، فيه كلمة «الله» و«سلام».
+      ar: نعم، ومتناسقون جدًّا. استمع إلى الشعر، ففيه «الله» و«سلام».
+      en: Yes, and perfectly in sync. Listen to the verses, there's "Allah" and "salam".
     - speaker: Mohamed
-      text: Dan sekarang seorang pelajar dari Mesir salat di sini. Alhamdulillah.
-      ar_eg: ودلوقتي طالب من مصر بيصلّي هنا. الحمد لله.
-      ar: والآن يصلّي هنا طالب من مصر. الحمد لله.
-      en: And now a student from Egypt prays here. Alhamdulillah.
-souvenir:
-  id: bipa6.u05.souvenir
-  title: Masjid Raya Baiturrahman
-  note:
-    ar_eg: آتشيه اتسمّت «شرفة مكة» لأنها من أوائل الأماكن اللي الإسلام ثبت فيها في الأرخبيل، ولأن الحجاج كانوا بيبحروا منها. جامع بيت الرحمن الكبير في باندا آتشيه اتحرق في الحرب مع الهولنديين سنة 1873، والهولنديين بنوه من تاني. وفي تسونامي 2004 فضل واقف وسط الدمار، وبقى ملجأ للناس ورمز لقيام آتشيه من تاني.
-    ar: سُمّيت آتشيه «شرفة مكّة» لأنّها من أوائل البقاع التي رسخ فيها الإسلام في الأرخبيل، ولأنّ الحجّاج كانوا يبحرون منها. احترق مسجد بيت الرحمن الكبير في باندا آتشيه خلال الحرب مع الهولنديين عام 1873، ثمّ أعاد الهولنديون بناءه. وفي تسونامي 2004 بقي قائمًا وسط الخراب، فصار ملجأً للناس ورمزًا لنهوض آتشيه.
-    en: Aceh is called the "Veranda of Mecca" because it was one of the first places Islam took hold in the archipelago, and pilgrims sailed from there. Banda Aceh's Baiturrahman Grand Mosque burned in the war with the Dutch in 1873 and was rebuilt by the Dutch. In the 2004 tsunami it stayed standing amid the destruction, becoming a shelter and a symbol of Aceh rising again.
+      text: Pantas UNESCO menyebutnya warisan budaya takbenda.
+      ar_eg: مش غريبة إن اليونسكو سمّتها تراث غير مادي.
+      ar: لا عجب أن تسمّيها اليونسكو تراثًا غير مادّي.
+      en: No wonder UNESCO calls it intangible heritage.
+new_words:
+  - word: berlutut
+    pos: verb
+    ar_eg: يقعد على ركبه
+    ar: يجثو على ركبتيه
+    en: to kneel
+  - word: barisan
+    pos: noun
+    ar_eg: صف
+    ar: صفّ
+    en: row, line
+  - word: tepukan
+    pos: noun
+    ar_eg: تصقيفة
+    ar: تصفيقة، ضربة كفّ
+    en: clap, slap
+  - word: kompak
+    pos: adjective
+    ar_eg: متناسقين
+    ar: متناسق، منسجم
+    en: in sync, united
+  - word: warisan budaya takbenda
+    pos: noun
+    ar_eg: تراث ثقافي غير مادي
+    ar: تراث ثقافي غير مادّي
+    en: intangible cultural heritage
 review:
   status: draft
   verified: false

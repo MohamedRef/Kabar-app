@@ -1,0 +1,197 @@
+schema: kabar.lesson/v1
+id: bipa6.u08.l07
+language: id
+title: Jelaskan ke anak
+can_do:
+  ar_eg: تشرح فكرة علمية لطفل بكلام بسيط وتشبيه.
+  ar: أن تشرح فكرة علمية لطفل بكلام بسيط وتشبيه.
+  en: Explain a science idea to a child with simple words and an analogy.
+slides:
+  - title: Gampangnya …
+    grammar: id.nominalization
+    body:
+      ar_eg: |
+        مع الأطفال اعمل العكس بتاع لغة العلوم: رجّع الأسماء لأفعال.
+        - Penyerbukan terjadi. → Lalat membawa serbuk dari bunga ke bunga.
+        - استعمل perumpamaan (تشبيه): Magma itu seperti sup panas di dalam panci.
+        - ابدأ بـ Bayangkan … (تخيّل …) أو Gampangnya, … (ببساطة …) أو Pada dasarnya, … (في الأساس …).
+        وخلي الجمل قصيرة و sederhana (بسيطة).
+      ar: |
+        مع الأطفال اعكس لغة العلوم: أعِد الأسماء أفعالًا.
+        - Penyerbukan terjadi. → Lalat membawa serbuk dari bunga ke bunga.
+        - استعمل perumpamaan (تشبيهًا): Magma itu seperti sup panas di dalam panci.
+        - ابدأ بـ Bayangkan … (تخيّل …) أو Gampangnya, … (ببساطة …) أو Pada dasarnya, … (في الأساس …).
+        واجعل الجمل قصيرة وsederhana (بسيطة).
+      en: |
+        With children, reverse science language: turn nouns back into verbs.
+        - Penyerbukan terjadi. → Lalat membawa serbuk dari bunga ke bunga. (Flies carry pollen from flower to flower.)
+        - Use a perumpamaan (analogy): Magma itu seperti sup panas di dalam panci. (Magma is like hot soup in a pot.)
+        - Start with Bayangkan … (Imagine …), Gampangnya, … (Simply put, …) or Pada dasarnya, … (Basically, …).
+        Keep sentences short and sederhana (simple).
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: membayangkan
+        ar_eg: يتخيّل
+        ar: يتخيّل
+        en: to imagine
+      - text: perumpamaan
+        ar_eg: تشبيه
+        ar: تشبيه
+        en: analogy, comparison
+      - text: sederhana
+        ar_eg: بسيط
+        ar: بسيط
+        en: simple
+      - text: pada dasarnya
+        ar_eg: في الأساس
+        ar: في الأساس
+        en: basically
+    words: [membayangkan, perumpamaan, sederhana, pada dasarnya]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي شرح يناسب طفل عنده 7 سنين؟
+      ar: أيّ شرح يناسب طفلًا في السابعة؟
+      en: Which explanation suits a seven-year-old?
+    options:
+      - Penyerbukan terjadi melalui vektor serangga.
+      - Lalat membawa serbuk dari satu bunga ke bunga lain.
+      - Proses fertilisasi memerlukan polen.
+    answer: 1
+  - id: e03
+    type: fill_blank
+    sentence: Anak-anak suka ___ hal-hal yang ajaib.
+    meaning:
+      ar_eg: العيال بيحبوا يتخيّلوا حاجات عجيبة.
+      ar: يحبّ الأطفال تخيّل الأشياء العجيبة.
+      en: Children love imagining magical things.
+    options: [membayangkan, perumpamaan, sederhana]
+    answers: [membayangkan]
+    words: [membayangkan]
+  - id: e04
+    type: listen
+    text: Pada dasarnya, gunung api adalah gunung yang bisa mengeluarkan batu panas.
+    question:
+      ar_eg: البركان في الأساس إيه؟
+      ar: ما البركان في الأساس؟
+      en: What is a volcano, basically?
+    options:
+      - جبل عليه تلج.
+      - جبل جوّاه مية.
+      - جبل ممكن يطلّع صخر سخن.
+    answer: 2
+    words: [pada dasarnya]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: استعمل تشبيه علشان الطفل يفهم بسرعة.
+      ar: استعمل تشبيهًا كي يفهم الطفل بسرعة.
+      en: Use an analogy so the child understands quickly.
+    answer: Pakai perumpamaan supaya anak cepat paham.
+    distractors: [sederhana, membayangkan]
+    words: [perumpamaan]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة فيها تشبيه؟
+      ar: أيّ جملة فيها تشبيه؟
+      en: Which sentence uses an analogy?
+    options:
+      - Magma itu seperti sup panas di dalam panci.
+      - Magma bersuhu sangat tinggi.
+      - Magma ada di bawah tanah.
+    answer: 0
+    words: [perumpamaan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: اشرحها بكلام بسيط.
+      ar: اشرحها بكلمات بسيطة.
+      en: Explain it in simple words.
+    answers:
+      - Jelaskan dengan kata-kata yang sederhana.
+      - Jelaskan dengan bahasa yang sederhana.
+      - Jelaskan pakai kata-kata sederhana.
+      - Jelaskan dengan kata-kata sederhana.
+    words: [sederhana]
+  - id: e08
+    type: speaking
+    text: Pada dasarnya, ilmu itu sederhana kalau dijelaskan dengan baik.
+    meaning:
+      ar_eg: في الأساس، العلم بسيط لو اتشرح كويس.
+      ar: العلم في الأساس بسيط إذا شُرح جيّدًا.
+      en: Basically, science is simple if it's explained well.
+    words: [pada dasarnya, sederhana]
+  - id: e09
+    type: dictation
+    text: Anak itu membayangkan bunga sebesar payung.
+    meaning:
+      ar_eg: الطفل اتخيّل وردة قد الشمسية.
+      ar: تخيّل الطفل زهرة بحجم المظلّة.
+      en: The child imagined a flower as big as an umbrella.
+    words: [membayangkan]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Pada dasarnya, perumpamaan membantu kita membayangkan hal yang sulit.
+    answers_meaning:
+      ar_eg:
+        - في الأساس، التشبيه بيساعدنا نتخيّل الحاجات الصعبة.
+        - التشبيه أساسًا بيخلّينا نتصوّر الحاجة الصعبة.
+      ar:
+        - التشبيه في الأساس يعيننا على تخيّل الأمور الصعبة.
+        - يساعدنا التشبيه أساسًا على تصوّر ما يصعب.
+      en:
+        - Basically, analogies help us imagine difficult things.
+        - At heart, an analogy helps us picture something hard.
+    words: [pada dasarnya, perumpamaan, membayangkan]
+dialogue:
+  title: Pertanyaan Aisyah
+  lines:
+    - speaker: Aisyah
+      text: Om Mohamed, kenapa bunga itu bau?
+      ar_eg: يا عمو محمد، الوردة دي ريحتها وحشة ليه؟
+      ar: يا عمّو محمد، لماذا رائحة الزهرة كريهة؟
+      en: Uncle Mohamed, why does that flower stink?
+    - speaker: Mohamed
+      text: Bayangkan bunga itu sedang memanggil teman. Temannya lalat, dan lalat suka bau busuk.
+      ar_eg: تخيّلي إن الوردة بتنادي صاحبها. صاحبها الدبّان، والدبّان بيحب الريحة الوحشة.
+      ar: تخيّلي أنّ الزهرة تنادي صديقًا. صديقها الذباب، والذباب يحبّ الرائحة الكريهة.
+      en: Imagine the flower is calling a friend. Its friend is the fly, and flies love stinky smells.
+    - speaker: Aisyah
+      text: Lalu lalatnya ngapain?
+      ar_eg: وبعدين الدبّان بيعمل إيه؟
+      ar: ثمّ ماذا يفعل الذباب؟
+      en: Then what does the fly do?
+    - speaker: Mohamed
+      text: Pada dasarnya, lalat itu tukang pos. Dia membawa serbuk dari satu bunga ke bunga lain.
+      ar_eg: في الأساس، الدبّان ده ساعي بريد. بيشيل البودرة من وردة لوردة تانية.
+      ar: الذباب في الأساس ساعي بريد، يحمل اللقاح من زهرة إلى أخرى.
+      en: Basically, the fly is a postman. It carries pollen from one flower to another.
+new_words:
+  - word: membayangkan
+    pos: verb
+    ar_eg: يتخيّل
+    ar: يتخيّل
+    en: to imagine
+  - word: perumpamaan
+    pos: noun
+    ar_eg: تشبيه
+    ar: تشبيه
+    en: analogy, comparison
+  - word: sederhana
+    pos: adjective
+    ar_eg: بسيط
+    ar: بسيط
+    en: simple
+  - word: pada dasarnya
+    pos: phrase
+    ar_eg: في الأساس
+    ar: في الأساس
+    en: basically
+review:
+  status: draft
+  verified: false

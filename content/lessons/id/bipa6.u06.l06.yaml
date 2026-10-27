@@ -1,163 +1,215 @@
 schema: kabar.lesson/v1
 id: bipa6.u06.l06
 language: id
-title: Ulangan Unit 6
+title: Batas humor
 can_do:
-  ar_eg: تفهم السخرية والهزار وتشرح هما بيتريقوا على إيه.
-  ar: أن تفهم الهجاء والدعابة وتشرح ما الذي يسخران منه.
-  en: Interpret satire and humour and explain what they poke fun at.
+  ar_eg: تعرف المواضيع اللي الإندونيسيين بيتجنبوا الهزار فيها، وتهزر من غير ما تجرح حد.
+  ar: أن تعرف الموضوعات التي يتجنّب الإندونيسيون المزاح فيها، وتمزح دون أن تجرح أحدًا.
+  en: Know which topics Indonesians avoid joking about, and joke without hurting anyone.
+slides:
+  - title: Lucu tanpa melukai
+    body:
+      ar_eg: |
+        في إندونيسيا، فيه مواضيع حساسة اسمها SARA:
+        - SARA = Suku, Agama, Ras, Antargolongan = القبيلة والدين والعرق والجماعات
+        - sensitif = حساس
+        - menyinggung = يجرح / يضايق حد بكلامه (والشخص يبقى tersinggung)
+        - batas = حد. Humor juga punya batas. = الهزار كمان ليه حدود.
+        - menertawakan diri sendiri = تضحك على نفسك: أأمن نوع هزار
+        كوميديان كتير اتعرضوا لمشاكل قانونية بسبب نكت عن الدين، فالجمهور بقى حساس جدًا للموضوع ده.
+      ar: |
+        في إندونيسيا موضوعات حسّاسة تُسمّى SARA:
+        - SARA = Suku, Agama, Ras, Antargolongan = القبيلة والدين والعرق والفئات
+        - sensitif = حسّاس
+        - menyinggung = يجرح أحدًا أو يسيء إليه بكلامه (فيصبح tersinggung)
+        - batas = حدّ: Humor juga punya batas. = للمزاح أيضًا حدود.
+        - menertawakan diri sendiri = أن تضحك على نفسك، وهو أسلم أنواع المزاح
+        وقد واجه كوميديون كثيرون مشكلات قانونية بسبب نكات عن الدين، فصار الجمهور شديد الحساسية لهذا.
+      en: |
+        Indonesia has a set of sensitive topics called SARA:
+        - SARA = Suku, Agama, Ras, Antargolongan = ethnicity, religion, race and group
+        - sensitif = sensitive
+        - menyinggung = to offend someone (who then feels tersinggung)
+        - batas = limit. Humor juga punya batas. = Humour has limits too.
+        - menertawakan diri sendiri = laughing at yourself, the safest kind of joke
+        Several comedians have faced legal trouble over jokes about religion, so audiences are very alert to this.
+    examples:
+      - text: Komika itu memilih menertawakan diri sendiri supaya tidak menyinggung siapa pun.
+        ar_eg: الكوميديان ده اختار يضحك على نفسه عشان مايجرحش حد.
+        ar: اختار ذلك الكوميدي أن يضحك على نفسه كي لا يسيء إلى أحد.
+        en: That comic chose to laugh at himself so as not to offend anyone.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: ironi
-        ar_eg: تريقة / سخرية خفيفة
-        ar: تهكّم
-        en: irony
-      - text: sindiran
-        ar_eg: تلقيح / غمزة بالكلام
-        ar: تعريض
-        en: a dig, a jibe
-      - text: lelucon
-        ar_eg: نكتة
-        ar: نكتة
-        en: joke
-      - text: tersinggung
-        ar_eg: زعلان / متضايق من كلمة
-        ar: منزعج من كلام
-        en: offended
-      - text: tumpul
-        ar_eg: تلم / مش سنين
-        ar: كليل
-        en: blunt
-    words: [ironi, sindiran, lelucon, tersinggung, tumpul]
+      - text: SARA
+        ar_eg: القبيلة والدين والعرق والجماعات
+        ar: القبيلة والدين والعرق والفئات
+        en: ethnicity, religion, race, group
+      - text: sensitif
+        ar_eg: حساس
+        ar: حسّاس
+        en: sensitive
+      - text: menyinggung
+        ar_eg: يجرح بكلامه
+        ar: يسيء إلى
+        en: to offend
+      - text: batas
+        ar_eg: حد
+        ar: حدّ
+        en: limit
+      - text: menertawakan diri sendiri
+        ar_eg: يضحك على نفسه
+        ar: يضحك على نفسه
+        en: to laugh at oneself
+    words: [SARA, sensitif, menyinggung, batas, menertawakan diri sendiri]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: «Rajin sekali, baru datang jam sebelas» نوعها إيه؟
-      ar: ما نوع عبارة «Rajin sekali, baru datang jam sebelas»؟
-      en: What kind of line is "Rajin sekali, baru datang jam sebelas"?
-    options: [akronim, ironi, kampanye]
+      ar_eg: أنهي موضوع مش من SARA؟
+      ar: أيّ موضوع ليس من SARA؟
+      en: Which topic is not part of SARA?
+    options: [agama, cuaca, suku]
     answer: 1
-    words: [ironi, akronim]
+    words: [SARA]
   - id: e03
-    type: fill_blank
-    sentence: Video itu ___ setelah dibagikan oleh ribuan warganet.
-    meaning:
-      ar_eg: الفيديو ده انتشر بعد ما آلاف من ناس النت شيّروه.
-      ar: انتشر المقطع بعد أن شاركه آلاف من روّاد الإنترنت.
-      en: The video went viral after thousands of netizens shared it.
-    options: [viral, tumpul, premis]
-    answers: [viral]
-    words: [viral, warganet]
-  - id: e04
     type: listen
-    text: Komika itu mendapat tepuk tangan karena premisnya cerdas.
+    text: Lelucon tentang agama sangat sensitif, jadi komika itu tidak memakainya.
     question:
-      ar_eg: الكوميديان خد تسقيف ليه؟
-      ar: لماذا نال الكوميديان التصفيق؟
-      en: Why did the comedian get applause?
+      ar_eg: ليه الكوميديان مااستخدمش النكتة؟
+      ar: لماذا لم يستعمل الكوميدي النكتة؟
+      en: Why didn't the comic use the joke?
     options:
-      - علشان هو مشهور.
-      - علشان لبسه حلو.
-      - علشان فكرة النكتة ذكية.
+      - عشان قديمة.
+      - عشان طويلة أوي.
+      - عشان موضوع الدين حساس.
     answer: 2
-    words: [komika, tepuk tangan, premis]
+    words: [sensitif]
+  - id: e04
+    type: fill_blank
+    sentence: Maaf, saya tidak bermaksud ___ Anda.
+    meaning:
+      ar_eg: آسف، ماكنتش أقصد أضايقك.
+      ar: عذرًا، لم أقصد الإساءة إليك.
+      en: Sorry, I didn't mean to offend you.
+    options: [menyinggung, menghibur, menggelitik]
+    answers: [menyinggung]
+    words: [menyinggung]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: ماتزعلش، هو بيهزر بس.
-      ar: لا تنزعج، إنّه يمزح فقط.
-      en: Don't be offended, he's only joking.
-    answer: Jangan tersinggung, dia cuma bercanda.
-    distractors: [tajam, akronim]
-    words: [tersinggung, bercanda]
-  - id: e06
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي واحدة فيها لعب بالكلام؟
-      ar: أيّها فيه تلاعب لفظي؟
-      en: Which one is wordplay?
+      ar_eg: أنهي نكتة أأمن؟
+      ar: أيّ نكتة أسلم؟
+      en: Which joke is safest?
     options:
-      - mager = malas gerak
-      - Saya lapar sekali.
-      - Hukum itu penting.
+      - نكتة عن غلطة عملتها إنت.
+      - نكتة عن دين جارك.
+      - نكتة عن قبيلة صاحبك.
     answer: 0
-    words: [plesetan]
+    explain:
+      ar_eg: menertawakan diri sendiri ماتجرحش حد.
+      ar: menertawakan diri sendiri لا يجرح أحدًا.
+      en: menertawakan diri sendiri hurts no one.
+    words: [menertawakan diri sendiri]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: الهزار كمان ليه حدود.
+      ar: للمزاح أيضًا حدود.
+      en: Humour has limits too.
+    answer: Humor juga punya batas.
+    distractors: [sensitif, SARA]
+    words: [batas]
   - id: e07
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: وعود المسؤول ده حلوة وقت الحملة بس.
-      ar: وعود ذلك المسؤول حلوة في الحملة فقط.
-      en: That official's promises are sweet only during the campaign.
-    answers:
-      - Janji pejabat itu manis hanya saat kampanye.
-      - Janji pejabat itu hanya manis saat kampanye.
-      - Janji pejabat itu manis cuma waktu kampanye.
-      - Janji-janji pejabat itu manis hanya pada masa kampanye.
-    words: [janji, pejabat, kampanye]
-  - id: e08
-    type: translate
     direction: from_target
-    source_text: Terus terang, sarkasmenya terlalu tajam.
+    source_text: Orang Indonesia biasanya menghindari lelucon tentang SARA.
     answers_meaning:
       ar_eg:
-        - بصراحة، تريقته كانت جارحة زيادة.
-        - بصراحة، سخريته كانت حادة قوي.
+        - الإندونيسيين عادةً بيتجنبوا النكت عن القبيلة والدين والعرق والجماعات.
+        - الإندونيسيين غالبًا مابيهزروش في مواضيع SARA.
       ar:
-        - بصراحة، كان تهكّمه حادًّا أكثر من اللازم.
-        - صراحةً، تهكّمه لاذع جدًّا.
+        - يتجنّب الإندونيسيون عادةً النكات عن القبيلة والدين والعرق والفئات.
+        - لا يمزح الإندونيسيون غالبًا في موضوعات SARA.
       en:
-        - Frankly, his sarcasm was too sharp.
-        - To be honest, the sarcasm was too cutting.
-    words: [terus terang, sarkasme, tajam]
+        - Indonesians usually avoid jokes about ethnicity, religion, race and group.
+        - Indonesians generally steer clear of SARA jokes.
+    words: [SARA]
+  - id: e08
+    type: speaking
+    text: Saya lebih suka menertawakan diri sendiri supaya tidak menyinggung orang lain.
+    meaning:
+      ar_eg: أنا أحب أضحك على نفسي عشان ماجرحش غيري.
+      ar: أفضّل أن أضحك على نفسي كي لا أسيء إلى غيري.
+      en: I'd rather laugh at myself so I don't offend other people.
+    words: [menertawakan diri sendiri, menyinggung]
   - id: e09
     type: dictation
-    text: Warganet suka mengejek pejabat dengan plesetan.
+    text: Batas antara kritik dan hinaan kadang-kadang sangat tipis.
     meaning:
-      ar_eg: ناس النت بيحبوا يتريقوا على المسؤولين باللعب بالكلام.
-      ar: يحبّ روّاد الإنترنت السخرية من المسؤولين بالتلاعب اللفظي.
-      en: Netizens love mocking officials with wordplay.
-    words: [warganet, mengejek, plesetan]
+      ar_eg: الحد بين النقد والإهانة ساعات بيبقى رفيع جدًا.
+      ar: الحدّ بين النقد والإهانة رقيق جدًّا أحيانًا.
+      en: The line between criticism and insult is sometimes very thin.
+    words: [batas]
   - id: e10
-    type: speaking
-    text: Lucunya karena dia menyindir dengan halus, bukan dengan sarkasme.
+    type: fill_blank
+    sentence: Topik ini ___, jadi bicaralah dengan hati-hati.
     meaning:
-      ar_eg: الضحك جاي من إنه لقّح بشياكة، مش بتريقة جارحة.
-      ar: مصدر الضحك أنّه عرّض بلطف لا بتهكّم لاذع.
-      en: It's funny because he made his dig gently, not with sarcasm.
-    words: [sarkasme]
+      ar_eg: الموضوع ده حساس، فاتكلم بحذر.
+      ar: هذا الموضوع حسّاس، فتكلّم بحذر.
+      en: This topic is sensitive, so speak carefully.
+    options: [sensitif, konyol, lantang]
+    answers: [sensitif]
+    words: [sensitif]
 dialogue:
-  title: Kapal pulang dari Samosir
+  title: Lelucon yang salah
   lines:
-    - speaker: Bang Togar
-      text: Jadi, apa yang paling kau ingat dari Samosir, Lae?
-      ar_eg: إيه أكتر حاجة هتفتكرها من ساموسير يا لاي؟
-      ar: ما أكثر ما ستذكره من ساموسير يا لاي؟
-      en: So what will you remember most from Samosir, Lae?
     - speaker: Mohamed
-      text: Danau sebesar laut, dan orang yang bercanda tanpa takut.
-      ar_eg: بحيرة قد البحر، وناس بتهزر من غير خوف.
-      ar: بحيرة بحجم البحر، وناس يمزحون بلا خوف.
-      en: A lake as big as a sea, and people who joke without fear.
+      text: Bang, tadi saya bercanda tentang suku teman saya. Dia diam saja.
+      ar_eg: يا بانج، من شوية هزرت عن قبيلة صاحبي. سكت خالص.
+      ar: يا بانغ، مازحت قبل قليل في قبيلة صديقي، فسكت تمامًا.
+      en: Bang, earlier I joked about my friend's ethnic group. He just went quiet.
     - speaker: Bang Togar
-      text: Ah, kau sudah pintar menyindir. Besok kau ke Jambi, kan?
-      ar_eg: آه، إنت بقيت شاطر في التلقيح. بكرة رايح جامبي، صح؟
-      ar: آه، صرت بارعًا في التعريض. غدًا تذهب إلى جامبي، أليس كذلك؟
-      en: Ah, you've got good at digs. You're off to Jambi tomorrow, right?
+      text: Hati-hati, Mohamed. Suku itu bagian dari SARA. Banyak orang tersinggung.
+      ar_eg: خد بالك يا محمد. القبيلة من SARA. ناس كتير بتزعل.
+      ar: احذر يا محمد، فالقبيلة من SARA، وكثيرون يُستاؤون من ذلك.
+      en: Careful, Mohamed. Ethnicity is part of SARA. Lots of people take offence.
     - speaker: Mohamed
-      text: Betul. Terus terang, saya akan rindu nada keras Bang Togar.
-      ar_eg: مظبوط. بصراحة، هتوحشني نبرتك العالية يا بانج توغار.
-      ar: صحيح. بصراحة، ستوحشني نبرتك العالية يا توغار.
-      en: Right. Frankly, I'll miss your loud voice, Bang Togar.
-souvenir:
-  id: bipa6.u06.souvenir
-  title: Pulau Samosir
-  note:
-    ar_eg: بحيرة توبا مالية فوهة بركان ضخم ثار من حوالي 74 ألف سنة، في واحد من أكبر الانفجارات البركانية المعروفة. هي أكبر بحيرة في إندونيسيا وأكبر بحيرة بركانية في العالم، ومن 2020 بقت ضمن شبكة اليونسكو للجيوبارك. في نصها جزيرة ساموسير، قد سنغافورة تقريبًا، وهي قلب بلاد الباتاك توبا. في توموك فيه توابيت حجر قديمة لملوك سيدابوتار، وفي أمباريتا كراسي حجر كان الكبار بيقعدوا عليها يتشاوروا.
-    ar: تملأ بحيرة توبا فوهة بركان هائل ثار قبل نحو 74 ألف عام، في واحد من أعظم الانفجارات البركانية المعروفة. وهي أكبر بحيرة في إندونيسيا وأكبر بحيرة بركانية في العالم، وصارت منذ 2020 من الحدائق الجيولوجية العالمية لليونسكو. وفي وسطها جزيرة ساموسير، وهي بحجم سنغافورة تقريبًا، وقلب بلاد الباتاك توبا. ففي توموك توابيت حجرية قديمة لملوك سيدابوتار، وفي أمباريتا مقاعد حجرية كان الكبار يتشاورون عليها.
-    en: Lake Toba fills the caldera of a huge volcano that erupted about 74,000 years ago, one of the largest eruptions known. It is Indonesia's largest lake and the world's largest volcanic lake, and since 2020 it has been a UNESCO Global Geopark. In its middle lies Samosir, an island about the size of Singapore and the heartland of the Toba Batak. Tomok has old stone sarcophagi of the Sidabutar kings, and Ambarita has stone chairs where elders once sat in council.
+      text: Saya tidak bermaksud menyinggung. Sebaiknya saya minta maaf.
+      ar_eg: ماكنتش أقصد أجرحه. الأحسن أعتذر.
+      ar: لم أقصد الإساءة، والأفضل أن أعتذر.
+      en: I didn't mean to offend. I'd better apologise.
+    - speaker: Bang Togar
+      text: Ya. Lain kali, tertawakan dirimu sendiri saja. Itu paling aman.
+      ar_eg: أيوه. المرة الجاية اضحك على نفسك وبس. ده أأمن حاجة.
+      ar: نعم، وفي المرّة القادمة اضحك على نفسك، فذلك أسلم.
+      en: Yes. Next time, just laugh at yourself. That's safest.
+new_words:
+  - word: SARA
+    pos: noun
+    ar_eg: القبيلة والدين والعرق والجماعات
+    ar: القبيلة والدين والعرق والفئات
+    en: ethnicity, religion, race and group (sensitive topics)
+  - word: sensitif
+    pos: adjective
+    ar_eg: حساس
+    ar: حسّاس
+    en: sensitive
+  - word: menyinggung
+    pos: verb
+    ar_eg: يجرح بكلامه
+    ar: يسيء إلى، يجرح
+    en: to offend
+  - word: batas
+    pos: noun
+    ar_eg: حد
+    ar: حدّ
+    en: limit, boundary
+  - word: menertawakan diri sendiri
+    pos: phrase
+    ar_eg: يضحك على نفسه
+    ar: يضحك على نفسه
+    en: to laugh at oneself
 review:
   status: draft
   verified: false

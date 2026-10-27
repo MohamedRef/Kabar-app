@@ -1,0 +1,183 @@
+schema: kabar.lesson/v1
+id: bipa6.u04.l08
+language: id
+title: Ringkasan sejarah
+can_do:
+  ar_eg: تلخّص نص تاريخي في كام جملة مرتّبة بالزمن.
+  ar: أن تلخّص نصًّا تاريخيًّا في جمل قليلة مرتّبة زمنيًّا.
+  en: Summarise a historical text in a few sentences in time order.
+slides:
+  - title: Garis besarnya saja
+    grammar: id.sentence.inversion
+    body:
+      ar_eg: |
+        التلخيص التاريخي = garis besar (الخطوط العريضة) بس:
+        1. رتّب الـ peristiwa (الأحداث) بشكل kronologis (بالترتيب الزمني): Pada abad …, lalu …, akhirnya …
+        2. سيب التفاصيل الصغيرة.
+        3. اختم بالـ peninggalan (الآثار اللي فضلت): Peninggalannya masih dapat dilihat di …
+        وجملة مقلوبة واحدة بتدّي طعم التاريخ: Runtuhlah kerajaan itu pada abad ke-13.
+      ar: |
+        التلخيص التاريخي = garis besar (الخطوط العريضة) فقط:
+        1. رتّب الـ peristiwa (الأحداث) ترتيبًا kronologis (زمنيًّا): Pada abad …, lalu …, akhirnya …
+        2. اترك التفاصيل الصغيرة.
+        3. اختم بالـ peninggalan (الآثار الباقية): Peninggalannya masih dapat dilihat di …
+        وجملة مقلوبة واحدة تمنحه نكهة التاريخ: Runtuhlah kerajaan itu pada abad ke-13.
+      en: |
+        A history summary = just the garis besar (outline):
+        1. Put the peristiwa (events) in kronologis (chronological) order: Pada abad …, lalu …, akhirnya …
+        2. Drop the small details.
+        3. Close with the peninggalan (what remains): Peninggalannya masih dapat dilihat di …
+        One inverted sentence gives it a historical flavour: Runtuhlah kerajaan itu pada abad ke-13.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: garis besar
+        ar_eg: الخطوط العريضة
+        ar: الخطوط العريضة
+        en: outline, main points
+      - text: peristiwa
+        ar_eg: حدث
+        ar: حدث
+        en: event
+      - text: kronologis
+        ar_eg: بالترتيب الزمني
+        ar: زمني التسلسل
+        en: chronological
+      - text: peninggalan
+        ar_eg: آثار / اللي فضل
+        ar: آثار باقية
+        en: remains, legacy
+    words: [garis besar, peristiwa, kronologis, peninggalan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي ترتيب kronologis صح؟
+      ar: أيّ ترتيب kronologis صحيح؟
+      en: Which order is chronological?
+    options:
+      - Sriwijaya runtuh, lalu Sriwijaya berdiri.
+      - I-Tsing datang (671), lalu prasasti dibuat (683).
+      - Prasasti dibuat (683), lalu I-Tsing datang (671).
+    answer: 1
+    words: [kronologis, peristiwa]
+  - id: e03
+    type: fill_blank
+    sentence: ___ Sriwijaya masih dapat dilihat di museum Palembang.
+    meaning:
+      ar_eg: آثار سريويجايا لسه ممكن تتشاف في متحف باليمبانج.
+      ar: ما زالت آثار سريويجايا تُرى في متحف باليمبانغ.
+      en: Srivijaya's remains can still be seen in Palembang's museum.
+    options: [Peninggalan, Peristiwa, Garis besar]
+    answers: [Peninggalan]
+    words: [peninggalan]
+  - id: e04
+    type: listen
+    text: Ceritakan garis besarnya saja, tidak perlu semua detail.
+    question:
+      ar_eg: المطلوب إيه؟
+      ar: ما المطلوب؟
+      en: What is being asked for?
+    options:
+      - كل التفاصيل.
+      - الأسامي بس.
+      - الخطوط العريضة بس.
+    answer: 2
+    words: [garis besar]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: أهم حدث في القرن السابع هو قيام سريويجايا.
+      ar: أهمّ حدث في القرن السابع قيام سريويجايا.
+      en: The most important event of the seventh century is the rise of Srivijaya.
+    answer: Peristiwa terpenting pada abad ketujuh adalah berdirinya Sriwijaya.
+    distractors: [peninggalan, kronologis]
+    words: [peristiwa]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: اكتب الأحداث بالترتيب الزمني.
+      ar: اكتب الأحداث بترتيبها الزمني.
+      en: Write the events in chronological order.
+    answers:
+      - Tulislah peristiwa-peristiwa itu secara kronologis.
+      - Tulis peristiwanya secara kronologis.
+      - Tuliskan peristiwa-peristiwa itu secara kronologis.
+      - Tulis peristiwa-peristiwa itu sesuai urutan kronologis.
+    words: [peristiwa, kronologis]
+  - id: e07
+    type: speaking
+    text: Garis besarnya, Sriwijaya berdiri, berjaya, lalu runtuh.
+    meaning:
+      ar_eg: باختصار، سريويجايا قامت، وازدهرت، وبعدين انهارت.
+      ar: في الخطوط العريضة، قامت سريويجايا، فازدهرت، ثمّ انهارت.
+      en: In outline, Srivijaya rose, flourished, then fell.
+    words: [garis besar]
+  - id: e08
+    type: dictation
+    text: Peninggalan kerajaan itu tersimpan di Museum Nasional.
+    meaning:
+      ar_eg: آثار المملكة دي محفوظة في المتحف الوطني.
+      ar: آثار تلك المملكة محفوظة في المتحف الوطني.
+      en: That kingdom's remains are kept in the National Museum.
+    words: [peninggalan]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة أنسب كآخر جملة في تلخيص؟
+      ar: أيّ جملة أنسب خاتمةً للتلخيص؟
+      en: Which sentence works best as a summary's last line?
+    options:
+      - Peninggalannya masih dapat dilihat sampai sekarang.
+      - Saya suka makan pempek.
+      - Pada abad ketujuh, berdirilah Sriwijaya.
+    answer: 0
+    words: [peninggalan, garis besar]
+dialogue:
+  title: Ringkasan untuk blog
+  lines:
+    - speaker: Mohamed
+      text: Kak, ringkasan saya terlalu panjang. Tiga halaman tentang Sriwijaya!
+      ar_eg: يا كاك، التلخيص بتاعي طويل قوي. تلات صفحات عن سريويجايا!
+      ar: تلخيصي طويل جدًّا، ثلاث صفحات عن سريويجايا!
+      en: Kak, my summary is too long. Three pages about Srivijaya!
+    - speaker: Kak Dewi
+      text: Tulis garis besarnya saja. Tiga peristiwa, secara kronologis.
+      ar_eg: اكتب الخطوط العريضة بس. تلات أحداث، بالترتيب.
+      ar: اكتب الخطوط العريضة فقط، ثلاثة أحداث بترتيبها الزمني.
+      en: Write just the outline. Three events, in order.
+    - speaker: Mohamed
+      text: Berdiri pada abad ketujuh, menguasai selat, lalu runtuh pada abad ke-13.
+      ar_eg: قامت في القرن السابع، وسيطرت على المضيق، وبعدين انهارت في القرن التلتاشر.
+      ar: قامت في القرن السابع، وسيطرت على المضيق، ثمّ انهارت في القرن الثالث عشر.
+      en: Rose in the seventh century, controlled the strait, then fell in the 13th.
+    - speaker: Kak Dewi
+      text: Sempurna. Tambahkan satu kalimat tentang peninggalannya.
+      ar_eg: تمام. زوّد جملة واحدة عن آثارها.
+      ar: ممتاز. أضف جملة واحدة عن آثارها.
+      en: Perfect. Add one sentence about what remains.
+new_words:
+  - word: garis besar
+    pos: noun
+    ar_eg: الخطوط العريضة
+    ar: الخطوط العريضة
+    en: outline, main points
+  - word: peristiwa
+    pos: noun
+    ar_eg: حدث
+    ar: حدث
+    en: event
+  - word: kronologis
+    pos: adjective
+    ar_eg: بالترتيب الزمني
+    ar: زمني التسلسل
+    en: chronological
+  - word: peninggalan
+    pos: noun
+    ar_eg: آثار / اللي فضل
+    ar: آثار باقية
+    en: remains, legacy
+review:
+  status: draft
+  verified: false
