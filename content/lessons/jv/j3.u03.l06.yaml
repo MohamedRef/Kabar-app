@@ -1,181 +1,246 @@
 schema: kabar.lesson/v1
 id: j3.u03.l06
 language: jv
-title: Sampeyan sampun nedha?
+title: Bokmenawi ngaten
 can_do:
-  ar_eg: تسأل وترد بأدب.
-  ar: أن تسأل وتجيب بأدب.
-  en: Ask and answer politely.
+  ar_eg: 'تدّي رأيك بالكراما: عشان، بس، مش، يمكن، أظن، أصدّق، بجد، وكده.'
+  ar: 'أن تعبّر عن رأيك بالكراما: لأنّ، لكنّ، ليس، ربما، أظنّ، أصدّق، حقًا، وهكذا.'
+  en: 'Give your opinion in krama: because, but, not, maybe, I think, I believe, really, and like this.'
 slides:
-  - title: Ganti tembunge
+  - title: Kula kinten...
     body:
       ar_eg: |
-        النهارده الضهر في كاومان، جنب الجامع الكبير. هتسأل وترد بالكراما. السر: بدّل كل كلمة صغيرة:
-        - aku ← kula، kowe ← sampeyan
-        - wis ← sampun، durung ← dereng، arep ← badhe، isih ← taksih
-        - ora ← mboten، ana ← wonten، iya ← inggih
-        - neng ← dhateng، saka ← saking، karo ← kaliyan
-        Kowe wis mangan? ← Sampeyan sampun nedha?
+        كلمات ربط ورأي بالكراما (النغوكو بين قوسين):
+        amargi (merga) = عشان. ananging (nanging) = بس، لكن.
+        sanes (dudu) = مش (قبل اسم): «sanes tiyang Jawi» = مش جاوي.
+        bokmenawi (mbokmenawa) = يمكن. kinten (kira) = يظن: «Kula kinten...» = أظن...
+        pitados (percaya) = يصدّق. saestu (tenan) = بجد؟ / فعلًا.
+        ngaten (ngene) = كده، بالشكل ده.
       ar: |
-        اليوم ظهرًا في كاومان قرب المسجد الكبير، ستسأل وتجيب بالكراما. والسر أن تبدّل كل لفظ صغير:
-        - aku ← kula، وkowe ← sampeyan
-        - wis ← sampun، وdurung ← dereng، وarep ← badhe، وisih ← taksih
-        - ora ← mboten، وana ← wonten، وiya ← inggih
-        - neng ← dhateng، وsaka ← saking، وkaro ← kaliyan
-        Kowe wis mangan? ← Sampeyan sampun nedha?
+        كلمات ربط ورأي بالكراما (النغوكو بين قوسين):
+        amargi (merga) = لأنّ. ananging (nanging) = لكنّ.
+        sanes (dudu) = ليس (قبل الاسم): «sanes tiyang Jawi» = ليس جاويًّا.
+        bokmenawi (mbokmenawa) = ربما. kinten (kira) = يظنّ: «Kula kinten...» = أظنّ...
+        pitados (percaya) = يصدّق. saestu (tenan) = حقًا.
+        ngaten (ngene) = هكذا، بهذه الطريقة.
       en: |
-        Today at noon in Kauman, by the Grand Mosque, you'll ask and answer in krama. The secret: swap every small word:
-        - aku → kula, kowe → sampeyan
-        - wis → sampun, durung → dereng, arep → badhe, isih → taksih
-        - ora → mboten, ana → wonten, iya → inggih
-        - neng → dhateng, saka → saking, karo → kaliyan
-        Kowe wis mangan? → Sampeyan sampun nedha?
-    grammar: jv.krama.function-words
+        Krama link and opinion words (ngoko in brackets):
+        amargi (merga) = because. ananging (nanging) = but.
+        sanes (dudu) = not (before a noun): "sanes tiyang Jawi" = not Javanese.
+        bokmenawi (mbokmenawa) = maybe, perhaps. kinten (kira) = think, guess: "Kula kinten..." = I think...
+        pitados (percaya) = believe. saestu (tenan) = really, truly.
+        ngaten (ngene) = like this, this way.
+    examples:
+      - text: Kula kinten Pak Harjo taksih wonten peken.
+        ar_eg: أظن أستاذ هارجو لسه في السوق.
+        ar: أظنّ أن السيد هارجو ما زال في السوق.
+        en: I think Pak Harjo is still at the market.
+      - text: Kula sanes tiyang Jawi, ananging kula remen basa Jawi.
+        ar_eg: أنا مش جاوي، بس بحب اللغة الجاوية.
+        ar: لستُ جاويًّا، لكنّي أحبّ اللغة الجاوية.
+        en: I'm not Javanese, but I love the Javanese language.
+      - text: Saestu, Bu? Kula mboten pitados!
+        ar_eg: بجد يا مدام؟ مش مصدّق!
+        ar: حقًا يا سيدتي؟ لا أصدّق!
+        en: Really, ma'am? I don't believe it!
 exercises:
   - id: e01
-    type: multiple_choice
-    question: Kowe wis mangan?
-    question_meaning:
-      ar_eg: حوّلها لكراما (لـ Pak Harjo البياع).
-      ar: حوّلها إلى الكراما (للبائع Pak Harjo).
-      en: Turn it into krama (for Pak Harjo, the seller).
-    options: ['Sampeyan wis nedha?', 'Sampeyan sampun nedha?', 'Kowe sampun mangan?']
-    answer: 1
-    explain:
-      ar_eg: 'لازم كل الكلمات تتبدل: kowe ← sampeyan، wis ← sampun، mangan ← nedha.'
-      ar: 'تُبدّل الألفاظ كلها: kowe ← sampeyan، وwis ← sampun، وmangan ← nedha.'
-      en: Every word swaps — kowe → sampeyan, wis → sampun, mangan → nedha.
-    words: [sampeyan, sampun, nedha]
+    type: match_pairs
+    pairs:
+      - text: amargi
+        ar_eg: عشان (كراما)
+        ar: لأنّ (كراما)
+        en: because (krama)
+      - text: ananging
+        ar_eg: بس، لكن (كراما)
+        ar: لكنّ (كراما)
+        en: but (krama)
+      - text: sanes
+        ar_eg: مش (قبل اسم)
+        ar: ليس (قبل اسم)
+        en: not (before a noun)
+      - text: bokmenawi
+        ar_eg: يمكن
+        ar: ربما
+        en: maybe, perhaps
+    words: [amargi, ananging, sanes, bokmenawi]
   - id: e02
-    type: listen
-    text: Kula badhe dhateng masjid.
-    options: [Kula badhe dhateng masjid., Kula badhe dhateng peken., Aku arep neng masjid.]
-    answer: 0
-    words: [badhe, dhateng, masjid]
+    type: match_pairs
+    pairs:
+      - text: kinten
+        ar_eg: يظن
+        ar: يظنّ
+        en: think, guess
+      - text: pitados
+        ar_eg: يصدّق
+        ar: يصدّق
+        en: believe
+      - text: saestu
+        ar_eg: بجد، فعلًا
+        ar: حقًا
+        en: really, truly
+      - text: ngaten
+        ar_eg: كده
+        ar: هكذا
+        en: like this
+    words: [kinten, pitados, saestu, ngaten]
   - id: e03
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: حضرتك كلت يا عم؟ (لـ Pak Harjo)
-      ar: هل أكلتَ يا سيدي؟ (لـ Pak Harjo)
-      en: Have you eaten, sir? (to Pak Harjo)
-    answers: ["Sampeyan sampun nedha, Pak?", "Sampeyan sampun nedha, Pak", "Pak, sampeyan sampun nedha?", "Pak, sampeyan sampun nedha", "Sampeyan sampun nedha?", Sampeyan sampun nedha, "Panjenengan sampun dhahar, Pak?", "Panjenengan sampun dhahar, Pak", "Pak, panjenengan sampun dhahar?", "Pak, panjenengan sampun dhahar"]
-    explain:
-      ar_eg: 'للبياع: Sampeyan sampun nedha. ولو قلت panjenengan + dhahar لراجل كبير، ده أدب زيادة ومقبول.'
-      ar: للبائع Sampeyan sampun nedha، وpanjenengan مع dhahar للرجل المسنّ أدب زائد مقبول.
-      en: For a seller, Sampeyan sampun nedha; panjenengan + dhahar for an older man is extra polite and fine.
-    words: [sampeyan, sampun, nedha]
+    type: listen
+    text: Kula sanes tiyang Jawi, kula saking Mesir.
+    question:
+      ar_eg: محمد قال إيه عن نفسه؟
+      ar: ماذا قال محمد عن نفسه؟
+      en: What does Mohamed say about himself?
+    options: [أنا مش جاوي، أنا من مصر, أنا جاوي ومن مصر, أنا مش من مصر]
+    answer: 0
+    meaning:
+      ar_eg: أنا مش جاوي، أنا من مصر.
+      ar: لستُ جاويًّا، أنا من مصر.
+      en: I'm not Javanese, I'm from Egypt.
+    words: [sanes]
   - id: e04
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: لسه يا عم. (ماكلتش لسه)
-      ar: ليس بعد يا سيدي. (لم آكل بعد)
-      en: Not yet, sir. (you haven't eaten)
-    answers: ["Dereng, Pak.", "Dereng, Pak", "Dereng, Pak. Kula dereng nedha.", "Dereng, Pak. Kulo dereng nedha.", "Dereng, Pak. Kula dereng nedha", "Dereng, Pak. Kulo dereng nedha", "Kula dereng nedha, Pak.", "Kulo dereng nedha, Pak.", "Kula dereng nedha, Pak", "Kulo dereng nedha, Pak"]
-    words: [dereng]
+    type: fill_blank
+    sentence: Kula sinau saben dinten, ___ kula remen basa Jawi.
+    meaning:
+      ar_eg: بذاكر كل يوم، ___ بحب الجاوي.
+      ar: أدرس كل يوم ___ أحبّ اللغة الجاوية.
+      en: I study every day ___ I love Javanese.
+    options: [amargi, ananging, bokmenawi]
+    answers: [amargi]
+    words: [amargi, ananging, bokmenawi]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: أنا رايح الجامع مع دِيماس.
-      ar: سأذهب إلى المسجد مع ديماس.
-      en: I'm going to the mosque with Dimas.
-    answer: Kula badhe dhateng masjid kaliyan Mas Dimas.
-    distractors: [arep, karo]
-    words: [badhe, dhateng, kaliyan, masjid]
+    type: multiple_choice
+    question: Kula ___ Pak Harjo taksih wonten peken.
+    question_meaning:
+      ar_eg: ___ إن أستاذ هارجو لسه في السوق.
+      ar: ___ أن السيد هارجو ما زال في السوق.
+      en: I ___ Pak Harjo is still at the market.
+    options: [kinten, sanes, ngaten]
+    answer: 0
+    explain:
+      ar_eg: 'kinten = يظن: «Kula kinten...» = أظن إن... sanes = مش، ngaten = كده.'
+      ar: 'kinten = يظنّ: «Kula kinten...» = أظنّ أنّ... sanes = ليس، ngaten = هكذا.'
+      en: 'kinten = think: "Kula kinten..." = I think... sanes = not, ngaten = like this.'
+    words: [kinten, sanes, ngaten]
   - id: e06
     type: fill_blank
-    sentence: Inggih, kula ___ sinau krama.
+    sentence: Krama kula taksih kirang, ___ kula sinau terus.
     meaning:
-      ar_eg: أيوه، أنا لسه بتعلم كراما.
-      ar: نعم، ما زلتُ أتعلم الكراما.
-      en: Yes, I'm still learning krama.
-    answers: [taksih]
-    explain:
-      ar_eg: «لسه بـ» = isih ← taksih.
-      ar: «ما زال» = isih ← taksih.
-      en: '"Still" = isih → taksih.'
-    words: [taksih]
+      ar_eg: الكراما بتاعتي لسه ضعيفة، ___ بفضل أذاكر.
+      ar: ما زالت لغتي الكراما ضعيفة، ___ أواصل الدراسة.
+      en: My krama still isn't good, ___ I keep studying.
+    options: [ananging, amargi, saestu]
+    answers: [ananging]
+    words: [ananging, amargi, saestu]
   - id: e07
-    type: fill_blank
-    sentence: Nyuwun sewu, Pak, teh ___ wonten.
-    meaning:
-      ar_eg: لا مؤاخذة يا عم، مفيش شاي.
-      ar: عفوًا يا سيدي، لا يوجد شاي.
-      en: Sorry, sir, there's no tea.
-    answers: [mboten]
-    words: [mboten, teh]
+    type: build_sentence
+    source:
+      ar_eg: يمكن أستاذ هارجو لسه مش في البيت.
+      ar: ربما ليس السيد هارجو في البيت بعد.
+      en: Maybe Pak Harjo isn't home yet.
+    answer: Bokmenawi Pak Harjo dereng wonten griya
+    distractors: [sanes, pitados]
+    words: [bokmenawi, pitados, sanes]
   - id: e08
     type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: فيه شاي يا عم؟ (بالكراما — «شاي» = teh)
-      ar: هل يوجد شاي يا سيدي؟ (بالكراما — «شاي» = teh)
-      en: Is there tea, sir? (krama — "tea" = teh)
-    answers: ["Wonten teh, Pak?", "Wonten teh, Pak", "Pak, wonten teh?", "Pak, wonten teh", "Nyuwun sewu, wonten teh, Pak?", "Nyuwun sewu, wonten teh, Pak", "Nyuwun sewu, Pak, wonten teh?", "Nyuwun sewu, Pak, wonten teh"]
-    words: [wonten, teh]
+    direction: from_target
+    source_text: Saestu, Pak? Kula pitados.
+    answers_meaning:
+      ar_eg: [بجد يا أستاذ؟ أنا مصدّق, فعلًا يا أستاذ؟ مصدّقك]
+      ar: [حقًا يا سيدي؟ أنا أصدّق, حقًا يا أستاذ؟ أصدّقك]
+      en: ['Really, sir? I believe it', 'Really, sir? I believe you']
+    words: [saestu, pitados]
   - id: e09
-    type: dictation
-    text: Wonten teh, Pak?
-    meaning:
-      ar_eg: فيه شاي يا عم؟
-      ar: هل يوجد شاي يا سيدي؟
-      en: Is there any tea, sir?
-    words: [wonten, teh]
-  - id: e10
     type: speaking
-    text: Dereng, Pak. Kula badhe dhateng masjid kaliyan Mas Dimas.
+    text: 'Ngaten, Mas: sinau sekedhik, ananging saben dinten.'
     meaning:
-      ar_eg: لسه يا عم. أنا رايح الجامع مع دِيماس.
-      ar: ليس بعد يا سيدي. سأذهب إلى المسجد مع ديماس.
-      en: Not yet, sir. I'm going to the mosque with Dimas.
-    words: [dereng, badhe, dhateng, masjid, kaliyan]
+      ar_eg: 'كده يا أستاذ: ذاكر شوية، بس كل يوم.'
+      ar: 'هكذا يا أخي: ادرس قليلًا، لكن كل يوم.'
+      en: 'Like this: study a little, but every day.'
+    words: [ngaten, ananging]
+  - id: e10
+    type: multiple_choice
+    question: kira (ngoko) → ___ (krama)
+    options: [pitados, kinten, saestu]
+    answer: 1
+    explain:
+      ar_eg: 'kira بالنغوكو، kinten بالكراما: يظن. pitados = يصدّق، saestu = بجد.'
+      ar: 'kira بالنغوكو وkinten بالكراما: يظنّ. pitados = يصدّق، saestu = حقًا.'
+      en: 'kira is ngoko, kinten is krama: think. pitados = believe, saestu = really.'
+    words: [kinten, pitados, saestu, bokmenawi, ngaten]
 dialogue:
-  title: Awan ing Kauman
   lines:
-    - speaker: Pak Harjo
-      text: "Mas Mohamed! Sampun nedha?"
-      ar_eg: "يا أستاذ محمد! كلت؟"
-      ar: "يا محمد! هل أكلتَ؟"
-      en: "Mohamed! Eaten yet?"
+    - speaker: Bu Harjo
+      text: Krama sampeyan sae sanget. Saestu sanes tiyang Jawi?
+      ar_eg: الكراما بتاعتك حلوة أوي. بجد مش جاوي؟
+      ar: لغتك الكراما جيّدة جدًا. حقًا لست جاويًّا؟
+      en: Your krama is very good. Are you really not Javanese?
     - speaker: Mohamed
-      text: Dereng, Pak. Sampeyan?
-      ar_eg: لسه يا عم. وحضرتك؟
-      ar: ليس بعد يا سيدي. وأنت؟
-      en: Not yet, sir. And you?
+      text: Saestu, Bu. Kula saking Mesir, ananging kula sinau saben dinten.
+      ar_eg: بجد يا مدام. أنا من مصر، بس بذاكر كل يوم.
+      ar: حقًا يا سيدتي. أنا من مصر، لكنّي أدرس كل يوم.
+      en: Really, ma'am. I'm from Egypt, but I study every day.
     - speaker: Pak Harjo
-      text: "Sampun, Mas. Badhe nedha?"
-      ar_eg: "كلت يا أستاذ. ناوي تاكل؟"
-      ar: "أكلتُ. هل ستأكل؟"
-      en: "I have. Going to eat?"
+      text: Kula pitados. Amargi sinau saben dinten, krama sampeyan sae.
+      ar_eg: أنا مصدّق. عشان بتذاكر كل يوم، الكراما بتاعتك حلوة.
+      ar: أنا أصدّق. لأنك تدرس كل يوم، صارت لغتك الكراما جيّدة.
+      en: I believe it. Because you study every day, your krama is good.
+    - speaker: Bu Harjo
+      text: Bokmenawi benjing Mas Mohamed saged krama kados tiyang Jawi!
+      ar_eg: يمكن بكرة محمد يتكلم كراما زي الجاويين!
+      ar: ربما يتكلّم محمد يومًا الكراما مثل الجاويين!
+      en: Maybe one day Mohamed will speak krama like a Javanese!
     - speaker: Mohamed
-      text: Inggih, Pak. Kula badhe nedha kaliyan Mas Dimas.
-      ar_eg: أيوه يا عم. أنا هاكل مع دِيماس.
-      ar: نعم يا سيدي. سآكل مع ديماس.
-      en: Yes, sir. I'm going to eat with Dimas.
+      text: Kula kinten dereng, Bu. Kula taksih sinau.
+      ar_eg: أظن لسه يا مدام. أنا لسه بتعلّم.
+      ar: أظنّ ليس بعد يا سيدتي. ما زلت أتعلّم.
+      en: I don't think so yet, ma'am. I'm still learning.
     - speaker: Pak Harjo
-      text: "Oh, nggih. Monggo, Mas."
-      ar_eg: "آه، طيب. اتفضل يا أستاذ."
-      ar: "آه، حسنًا. تفضّل."
-      en: "Oh, right. Off you go, then."
-    - speaker: Mohamed
-      text: Matur nuwun, Pak.
-      ar_eg: شكرًا يا عم.
-      ar: شكرًا يا سيدي.
-      en: Thank you, sir.
+      text: 'Ngaten, Mas: sinau sekedhik, ananging saben dinten.'
+      ar_eg: 'كده يا أستاذ: ذاكر شوية، بس كل يوم.'
+      ar: 'هكذا يا أخي: ادرس قليلًا، لكن كل يوم.'
+      en: 'That''s the way: study a little, but every day.'
 new_words:
-  - word: masjid
-    pos: noun
-    ar_eg: جامع
-    ar: مسجد
-    en: mosque
-    arabic: مسجد
-  - word: teh
-    pos: noun
-    ar_eg: شاي
-    ar: شاي
-    en: tea
+  - word: amargi
+    pos: conjunction
+    ar_eg: عشان (كراما من merga)
+    ar: لأنّ (كراما من merga)
+    en: because, krama (ngoko merga, Indonesian karena)
+  - word: ananging
+    pos: conjunction
+    ar_eg: بس، لكن (كراما من nanging)
+    ar: لكنّ (كراما من nanging)
+    en: but, krama (ngoko nanging, Indonesian tetapi)
+  - word: sanes
+    pos: particle
+    ar_eg: 'مش، مش هو (كراما من dudu)؛ كمان: تاني'
+    ar: 'ليس (كراما من dudu)؛ وأيضًا: آخر'
+    en: not (before a noun), krama of dudu (Indonesian bukan); also 'other'
+  - word: bokmenawi
+    pos: adverb
+    ar_eg: يمكن (كراما من mbokmenawa)
+    ar: ربما (كراما من mbokmenawa)
+    en: maybe, perhaps, krama (ngoko mbokmenawa, Indonesian mungkin)
+  - word: kinten
+    pos: verb
+    ar_eg: يظن (كراما من kira)
+    ar: يظنّ (كراما من kira)
+    en: think, guess, krama (ngoko kira, Indonesian kira)
+  - word: pitados
+    pos: verb
+    ar_eg: يصدّق (كراما من percaya)
+    ar: يصدّق (كراما من percaya)
+    en: believe, krama (ngoko percaya, Indonesian percaya)
+  - word: saestu
+    pos: adverb
+    ar_eg: بجد، فعلًا (كراما من tenan)
+    ar: حقًا (كراما من tenan)
+    en: really, truly, krama (ngoko tenan, Indonesian sungguh)
+  - word: ngaten
+    pos: adverb
+    ar_eg: كده (كراما من ngene)
+    ar: هكذا (كراما من ngene)
+    en: like this, krama (ngoko ngene, Indonesian begini)
 review:
   status: draft
   verified: false
-game: uu.teacher

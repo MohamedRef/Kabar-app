@@ -56,13 +56,13 @@ every morning. CI warns when the table below is behind the content.
 | Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Known / target | Lesson time | Level test items |
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
 | BIPA 1 | Jakarta | A1 | 10 | 98 | 934 | 607 | 606 / 600 | ~11 h | 35 |
-| BIPA 2 | Bali | A2 | 10 | 85 | 791 | 497 | 1,103 / 1,100 | ~10 h | 35 |
-| BIPA 3 | Lombok | B1 | 10 | 97 | 936 | 505 | 1,608 / 1,600 | ~11 h | 39 |
-| BIPA 4 | Sulawesi | B2 | 10 | 114 | 1,062 | 502 | 2,110 / 2,100 | ~12 h | 37 |
-| BIPA 5 | Kalimantan | C1 | 10 | 127 | 1,235 | 602 | 2,711 / 2,700 | ~13 h | 38 |
-| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 607 | 3,318 / 3,300 | ~13 h | 38 |
-| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 140 | 1,418 | 705 | 4,023 / 4,000 | ~15 h | 38 |
-| **Total** |  | — | 70 | 788 | 7,645 | 4,025 | 4,023 / 4,000 | ~86 h | 260 |
+| BIPA 2 | Bali | A2 | 10 | 85 | 794 | 499 | 1,105 / 1,100 | ~10 h | 35 |
+| BIPA 3 | Lombok | B1 | 10 | 97 | 936 | 505 | 1,610 / 1,600 | ~11 h | 39 |
+| BIPA 4 | Sulawesi | B2 | 10 | 114 | 1,062 | 502 | 2,112 / 2,100 | ~12 h | 37 |
+| BIPA 5 | Kalimantan | C1 | 10 | 127 | 1,235 | 602 | 2,713 / 2,700 | ~13 h | 38 |
+| BIPA 6 | Sumatra | C2 | 10 | 127 | 1,269 | 607 | 3,320 / 3,300 | ~13 h | 38 |
+| BIPA 7 | Raja Ampat, Papua | C2+ | 10 | 140 | 1,418 | 705 | 4,025 / 4,000 | ~15 h | 38 |
+| **Total** |  | — | 70 | 788 | 7,648 | 4,027 | 4,025 / 4,000 | ~86 h | 260 |
 
 **Javanese (J1–J6)**
 
@@ -70,11 +70,11 @@ every morning. CI warns when the table below is behind the content.
 |---|---|---|--:|--:|--:|--:|--:|--:|--:|
 | J1 | Malioboro, Yogyakarta | — | 7 | 50 | 459 | 261 | 261 / 250 | ~6 h | 34 |
 | J2 | Madiun | — | 6 | 48 | 461 | 240 | 501 / 500 | ~5 h | 35 |
-| J3 | Pakualaman, Yogyakarta | — | 6 | 61 | 554 | 250 | 751 / 750 | ~6 h | 35 |
-| J4 | Malioboro, Yogyakarta | — | 6 | 69 | 648 | 248 | 998 / 1,000 | ~8 h | 38 |
-| J5 | Semarang | — | 6 | 66 | 621 | 253 | 1,251 / 1,250 | ~7 h | 39 |
-| J6 | Kotagede, old Mataram capital | — | 6 | 80 | 748 | 246 | 1,496 / 1,500 | ~8 h | 37 |
-| **Total** |  | — | 37 | 374 | 3,491 | 1,498 | 1,496 / 1,500 | ~41 h | 218 |
+| J3 | Pakualaman, Yogyakarta | — | 6 | 67 | 615 | 298 | 799 / 750 | ~7 h | 35 |
+| J4 | Malioboro, Yogyakarta | — | 6 | 69 | 648 | 248 | 1,046 / 1,000 | ~8 h | 38 |
+| J5 | Kutha Pendekar (Madiun) | — | 6 | 66 | 621 | 253 | 1,299 / 1,250 | ~7 h | 39 |
+| J6 | Kotagede, old Mataram capital | — | 6 | 80 | 748 | 246 | 1,544 / 1,500 | ~8 h | 37 |
+| **Total** |  | — | 37 | 380 | 3,552 | 1,546 | 1,544 / 1,500 | ~41 h | 218 |
 
 **Reference content and stories**
 

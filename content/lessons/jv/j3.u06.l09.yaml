@@ -1,157 +1,162 @@
 schema: kabar.lesson/v1
 id: j3.u06.l09
 language: jv
-title: Pesen swara saka Giriloyo
+title: Sinau damel batik
 can_do:
-  ar_eg: تفهم رسالة صوتية بالكراما فيها dipun- و-ipun و-aken وترد عليها.
-  ar: أن تفهم رسالة صوتية بالكراما فيها dipun- و-ipun و-aken وتردّ عليها.
-  en: Understand a krama voice message with dipun-, -ipun and -aken, and reply to it.
+  ar_eg: تقرا إعلان ورشة باتيك بالكراما وتسجّل فيها بأدب.
+  ar: أن تقرأ إعلان ورشة باتيك بالكراما وتسجّل فيها بأدب.
+  en: Read a krama poster for a batik class and sign up politely.
 slides:
-  - title: Rungokna Pak Harjo
+  - title: Pengumuman ing Giriloyo
     body:
       ar_eg: |
-        بعد الورشة، Pak Harjo بعت لمحمد رسالة صوتية عن الباتيك اللي محمد عمله. اسمعها من غير ما تقرا.
-        dipuncelup = اتصبغ (اتغطس في الصبغة)، damelaken = يعمل لحد (زي «أعملّك»).
+        على حيطة في Giriloyo فيه إعلان صغير عن ورشة باتيك. اقراه:
+        nerangaken = يشرح، caranipun = الطريقة، ngginakaken = باستعمال.
       ar: |
-        بعد الورشة أرسل Pak Harjo إلى محمد رسالة صوتية عن الباتيك الذي صنعه محمد. استمع إليها دون قراءة.
-        dipuncelup = صُبغ (غُمس في الصبغة)، وdamelaken = يصنع لأجل أحد.
+        على جدار في Giriloyo إعلان صغير عن ورشة باتيك. اقرأه:
+        nerangaken = يشرح، وcaranipun = الطريقة، وngginakaken = باستعمال.
       en: |
-        After the class, Pak Harjo sends Mohamed a voice message about the batik Mohamed made. Listen without reading.
-        dipuncelup = has been dyed (dipped), damelaken = make for someone.
+        On a wall in Giriloyo there's a small poster for a batik class. Read it:
+        nerangaken = explain, caranipun = the way (how to), ngginakaken = using.
+    examples:
+      - text: Sinau damel batik tulis wonten Giriloyo!
+        ar_eg: اتعلّم تعمل باتيك مرسوم باليد في Giriloyo!
+        ar: تعلّم صنع الباتيك المرسوم باليد في Giriloyo!
+        en: Learn to make hand-drawn batik in Giriloyo!
+      - text: Pak Harjo badhe nerangaken caranipun.
+        ar_eg: Pak Harjo هيشرح الطريقة.
+        ar: سيشرح Pak Harjo الطريقة.
+        en: Pak Harjo will explain how it's done.
+      - text: Reginipun satus ewu. Canthing lan malam saking Pak Harjo.
+        ar_eg: السعر مية ألف. القلم (canthing) والشمع من عند Pak Harjo.
+        ar: السعر مئة ألف. القلم (canthing) والشمع من Pak Harjo.
+        en: The price is 100,000. Canthing and wax come from Pak Harjo.
     grammar: jv.krama.affixes
 exercises:
   - id: e01
-    type: listen
-    text: Mas Mohamed, batik sampeyan sampun dipuncelup.
-    question:
-      ar_eg: إيه اللي حصل لباتيك محمد؟
-      ar: ماذا حدث لباتيك محمد؟
-      en: What has happened to Mohamed's batik?
-    options: [sampun dipuncelup, dereng dipundamel, sampun dipuntumbas]
-    answer: 0
-    meaning:
-      ar_eg: يا أستاذ محمد، الباتيك بتاعك اتصبغ خلاص.
-      ar: يا أخي محمد، قد صُبغ الباتيك الخاص بك.
-      en: Mohamed, your batik has been dyed.
-    words: [sampun, celup]
-  - id: e02
-    type: listen
-    text: Batikipun sae sanget, Mas.
-    question:
-      ar_eg: Pak Harjo شايف الباتيك إزاي؟
-      ar: ما رأي Pak Harjo في الباتيك؟
-      en: What does Pak Harjo think of the batik?
-    options: [awis sanget, sae sanget, ageng sanget]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من الإعلان) هتتعلم تعمل إيه؟
+      ar: (من الإعلان) ماذا ستتعلم أن تصنع؟
+      en: (from the poster) What will you learn to make?
+    options: [batik cap, batik tulis, canthing]
     answer: 1
-    meaning:
-      ar_eg: الباتيك حلو أوي يا أستاذ.
-      ar: الباتيك جميل جدًا يا أخي.
-      en: The batik is very nice.
-    words: [batik, sae, sanget]
+    words: [batik tulis, damel]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من الإعلان) مين اللي هيشرح؟
+      ar: (من الإعلان) من الذي سيشرح؟
+      en: (from the poster) Who will explain?
+    options: [Pak Harjo, Bu Siti, Mas Dimas]
+    answer: 0
+    words: [nerangaken]
   - id: e03
-    type: listen
-    text: Mangga dhateng griya kula. Kula damelaken teh.
-    question:
-      ar_eg: Pak Harjo هيعمل إيه لمحمد؟
-      ar: ماذا سيصنع Pak Harjo لمحمد؟
-      en: What will Pak Harjo make for Mohamed?
-    options: [batik, canthing, teh]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: (من الإعلان) الورشة بكام؟
+      ar: (من الإعلان) بكم الورشة؟
+      en: (from the poster) How much is the class?
+    options: [seket ewu, kalih atus ewu, satus ewu]
     answer: 2
-    meaning:
-      ar_eg: اتفضل تعالى بيتي. هعملّك شاي.
-      ar: تفضّل إلى بيتي. سأصنع لك شايًا.
-      en: Please come to my house. I'll make you some tea.
-    words: [damelaken, teh]
+    words: [regi, ewu]
   - id: e04
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة معناها «الباتيك بتاعك اتصبغ»؟
-      ar: أيّ جملة تعني «قد صُبغ الباتيك الخاص بك»؟
-      en: Which sentence means "Your batik has been dyed"?
-    options: ['Batik sampeyan dereng dipuncelup.', 'Batik sampeyan badhe dipuncelup.', 'Batik sampeyan sampun dipuncelup.']
-    answer: 2
+      ar_eg: (من الإعلان) لازم تجيب canthing معاك؟
+      ar: (من الإعلان) هل يجب أن تُحضر canthing معك؟
+      en: (from the poster) Do you need to bring your own canthing?
+    options: ['Inggih.', 'Mboten, saking Pak Harjo.']
+    answer: 1
     explain:
-      ar_eg: 'sampun = خلاص، dereng = لسه، badhe = هيحصل.'
-      ar: 'sampun = قد تمّ، وdereng = ليس بعد، وbadhe = سوف.'
-      en: 'sampun = already, dereng = not yet, badhe = going to.'
-    words: [sampun, celup]
+      ar_eg: الإعلان بيقول «Canthing lan malam saking Pak Harjo» = هو اللي بيوفرهم.
+      ar: يقول الإعلان «Canthing lan malam saking Pak Harjo»، أي أنه يوفّرهما.
+      en: The poster says "Canthing lan malam saking Pak Harjo" — he provides them.
+    words: [canthing, malam]
   - id: e05
+    type: listen
+    text: Pak Harjo badhe nerangaken caranipun.
+    options: ['Pak Harjo badhe nerangaken caranipun.', 'Pak Harjo badhe damelaken teh.', 'Pak Harjo sampun nerangaken caranipun.']
+    answer: 0
+    meaning:
+      ar_eg: Pak Harjo هيشرح الطريقة.
+      ar: سيشرح Pak Harjo الطريقة.
+      en: Pak Harjo will explain how it's done.
+    words: [nerangaken, caranipun]
+  - id: e06
     type: match_pairs
     pairs:
-      - text: dipuncelup
-        ar_eg: اتصبغ (اتغطس في الصبغة)
-        ar: صُبغ (غُمس في الصبغة)
-        en: was dyed (dipped)
-      - text: dipundamel
-        ar_eg: اتعمل
-        ar: صُنع
-        en: was made
-      - text: dipunwaos
-        ar_eg: اتقرا
-        ar: قُرئ
-        en: was read
-      - text: damelaken
-        ar_eg: يعمل لحد
-        ar: يصنع لأجل أحد
-        en: make for someone
-    words: [celup, damel, waos, damelaken]
-  - id: e06
-    type: dictation
-    text: Batikipun sae sanget.
-    meaning:
-      ar_eg: الباتيك حلو أوي.
-      ar: الباتيك جميل جدًا.
-      en: The batik is very nice.
-    words: [batik, sae, sanget]
+      - text: canthing
+        ar_eg: قلم نحاس صغير للشمع
+        ar: قلم نحاسي صغير للشمع
+        en: small copper wax pen
+      - text: malam
+        ar_eg: شمع الباتيك
+        ar: شمع الباتيك
+        en: batik wax
+      - text: kain
+        ar_eg: قماش
+        ar: قماش
+        en: cloth
+      - text: nerangaken
+        ar_eg: يشرح
+        ar: يشرح
+        en: to explain
+    words: [canthing, malam, kain, nerangaken]
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: 'رد على Pak Harjo: شكرًا جدًا يا حاج. أنا جاي Giriloyo.'
-      ar: 'ردّ على Pak Harjo: شكرًا جزيلًا يا سيدي. سآتي إلى Giriloyo.'
-      en: "Reply to Pak Harjo: Thank you very much, sir. I'm coming to Giriloyo."
-    answers: ["Matur nuwun sanget, Pak. Kula badhe dhateng Giriloyo.", "Matur nuwun sanget, Pak. Kulo badhe dhateng Giriloyo.", "Matur nuwun sanget, Pak Harjo. Kula badhe dhateng Giriloyo.", "Matur nuwun sanget, Pak. Kula badhe teng Giriloyo.", "Matur nuwun sanget, Pak. Kula dhateng Giriloyo."]
+      ar_eg: 'سجّل في الورشة: لا مؤاخذة يا حاج، عايز أتعلم أعمل باتيك مرسوم باليد.'
+      ar: 'سجّل في الورشة: عفوًا يا سيدي، أريد أن أتعلم صنع الباتيك المرسوم باليد.'
+      en: "Sign up for the class: Excuse me, sir, I'd like to learn to make hand-drawn batik."
+    answers: ["Nyuwun sewu, Pak, kula badhe sinau damel batik tulis.", "Nyuwun sewu, Pak, kulo badhe sinau damel batik tulis.", "Nyuwun sewu, Pak. Kula badhe sinau damel batik tulis.", "Nyuwun sewu, Pak Harjo, kula badhe sinau damel batik tulis."]
     explain:
-      ar_eg: 'badhe = arep، dhateng = neng (في الكلام teng).'
-      ar: 'badhe = arep، وdhateng = neng (وفي الكلام teng).'
-      en: 'badhe = arep, dhateng = neng (spoken teng).'
-    words: [sanget, badhe, dhateng]
+      ar_eg: 'damel = gawe (يعمل) بالكراما، وbadhe = arep.'
+      ar: 'damel = gawe (يصنع) بالكراما، وbadhe = arep.'
+      en: 'damel = gawe (make) in krama; badhe = arep.'
+    words: [nyuwun sewu, badhe, damel, batik tulis]
   - id: e08
-    type: speaking
-    text: Batikipun sae sanget! Matur nuwun, Pak.
-    meaning:
-      ar_eg: الباتيك حلو أوي! شكرًا يا حاج.
-      ar: الباتيك جميل جدًا! شكرًا يا سيدي.
-      en: The batik is lovely! Thank you, sir.
-    words: [batik, sae, sanget]
+    type: build_sentence
+    source:
+      ar_eg: أنا هستعمل canthing.
+      ar: سأستعمل الـ canthing.
+      en: I'm going to use a canthing.
+    answer: Kula badhe ngginakaken canthing.
+    distractors: [nganggo, arep]
+    explain:
+      ar_eg: 'ngginakaken = nganggo (يستعمل) بالكراما الرسمية.'
+      ar: 'ngginakaken = nganggo (يستعمل) بالكراما الرسمية.'
+      en: 'ngginakaken = nganggo (use), formal krama.'
+    words: [badhe, ngginakaken, canthing]
 dialogue:
-  title: Ing griya Pak Harjo
+  title: Ndaftar sinau batik
   lines:
-    - speaker: Pak Harjo
-      text: "Mas Mohamed, monggo! Niki batik sampeyan."
-      ar_eg: "اتفضل يا أستاذ محمد! ده الباتيك بتاعك."
-      ar: "تفضّل يا محمد! هذا باتيكك."
-      en: "Come in, Mohamed! Here's your batik."
     - speaker: Mohamed
-      text: Wah, sampun dipuncelup! Sae sanget, Pak.
-      ar_eg: الله، اتصبغ خلاص! حلو أوي يا حاج.
-      ar: ما شاء الله، قد صُبغ! جميل جدًا يا سيدي.
-      en: Wow, it's been dyed! It's lovely, sir.
+      text: Nyuwun sewu, Pak Harjo. Kula badhe sinau damel batik.
+      ar_eg: لا مؤاخذة يا Pak Harjo. عايز أتعلم أعمل باتيك.
+      ar: عفوًا يا Pak Harjo. أريد أن أتعلم صنع الباتيك.
+      en: Excuse me, Pak Harjo. I'd like to learn to make batik.
     - speaker: Pak Harjo
-      text: "Nggih. Kula damelaken teh, nggih?"
-      ar_eg: "أيوه. أعملك شاي؟"
-      ar: "نعم. أُعدّ لك شايًا؟"
-      en: "Yes. Shall I make you some tea?"
+      text: "Monggo, Mas! Regine satus ewu."
+      ar_eg: "اتفضل يا أستاذ! السعر مية ألف."
+      ar: "تفضّل! السعر مئة ألف."
+      en: "Sure! It's a hundred thousand."
     - speaker: Mohamed
-      text: Inggih, matur nuwun, Pak.
-      ar_eg: ياريت، شكرًا يا حاج.
-      ar: نعم، شكرًا يا سيدي.
-      en: Yes please, thank you, sir.
+      text: Kula ngginakaken canthing, Pak?
+      ar_eg: هستعمل canthing يا حاج؟
+      ar: هل سأستعمل الـ canthing يا سيدي؟
+      en: Will I use a canthing, sir?
     - speaker: Pak Harjo
-      text: "Monggo, Mas, monggo."
-      ar_eg: "اتفضل يا أستاذ، اتفضل."
-      ar: "تفضّل، تفضّل."
-      en: "Go on, sit down."
+      text: "Nggih. Canthing kaliyan malam saking kula."
+      ar_eg: "أيوه. الكانتينج والشمع عليّا."
+      ar: "نعم. التشانتينج والشمع منّي."
+      en: "Yes. The canthing and wax are on me."
+    - speaker: Mohamed
+      text: Matur nuwun sanget, Pak.
+      ar_eg: شكرًا جدًا يا حاج.
+      ar: شكرًا جزيلًا يا سيدي.
+      en: Thank you very much, sir.
 review:
   status: draft
   verified: false
