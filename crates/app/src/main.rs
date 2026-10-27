@@ -2,6 +2,7 @@
 
 mod account;
 mod ai;
+mod annotated;
 mod audio;
 mod chat;
 mod cloud;
@@ -317,6 +318,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         style { {MAIN_CSS} }
         style { {theme_css} }
         style { {pron_font} }
+        style { {annotated::CSS} }
         div {
             class: "app",
             lang: lang.tag(),
