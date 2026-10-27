@@ -279,6 +279,9 @@ pub enum Msg {
     StyleOff,
     StyleOffHint,
     QuietHours,
+    RemindersElsewhere,
+    RemindersBlocked,
+    RemindersAllow,
     QuietFrom,
     QuietTo,
     ReportWhen,
@@ -330,6 +333,8 @@ pub enum Msg {
     Use,
     InUse,
     NotEnoughKoin,
+    KoinToGo,
+    KoinEarnedFrom,
     JournalTitle,
     JournalEmpty,
     NavJournal,
@@ -475,6 +480,11 @@ pub enum Msg {
     EnglishInChat,
     InThisSentence,
     Breakdown,
+    MorphMore,
+    MorphSoundChange,
+    MorphTimeWords,
+    MorphGrammar,
+    MorphColours,
     Normalized,
     BridgeTitle,
     ShiftSame,
@@ -1020,12 +1030,10 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (JourneyRoute, En) => "Route",
         (JourneyMap, ArEg | Ar) => "الخريطة",
         (JourneyMap, En) => "Map",
-        (JourneyMapHint, ArEg) => {
-            "دوس على أي محطة عشان تشوف دروسها. اسحب الخريطة أو قرّبها بصباعين أو بالقلم."
-        }
-        (JourneyMapHint, Ar) => "اضغط على أي محطة لترى دروسها. اسحب الخريطة أو كبّرها بإصبعين أو بالقلم.",
+        (JourneyMapHint, ArEg) => "دوس على أي محطة عشان تشوف دروسها. اسحب الخريطة أو قرّبها بصباعين.",
+        (JourneyMapHint, Ar) => "اضغط على أي محطة لترى دروسها. اسحب الخريطة أو كبّرها بإصبعين.",
         (JourneyMapHint, En) => {
-            "Tap any stop to see its lessons. Drag the map, or zoom with two fingers, the pen or the trackpad."
+            "Tap any stop to see its lessons. Drag the map, or zoom with two fingers or the trackpad."
         }
         (JourneyMapOfIndonesia, ArEg | Ar) => "خريطة إندونيسيا",
         (JourneyMapOfIndonesia, En) => "Map of Indonesia",
@@ -1453,6 +1461,23 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (QuietHours, ArEg) => "ساعات الهدوء",
         (QuietHours, Ar) => "ساعات الهدوء",
         (QuietHours, En) => "Quiet hours",
+        (RemindersElsewhere, ArEg) => "التذكيرات بتوصلك على الموبايل والتابلت. على الماك لسه جاية قريب.",
+        (RemindersElsewhere, Ar) => "تصلك التذكيرات على الهاتف والجهاز اللوحي، وعلى الماك قريبًا.",
+        (RemindersElsewhere, En) => {
+            "Reminders reach you on your phone and tablet. On the Mac they're coming soon."
+        }
+        (RemindersBlocked, ArEg) => {
+            "الإشعارات مقفولة لـ\u{2068}Kabar\u{2069} على الجهاز ده، فمش هقدر أفكّرك هنا."
+        }
+        (RemindersBlocked, Ar) => {
+            "الإشعارات مغلقة لـ\u{2068}Kabar\u{2069} على هذا الجهاز، فلن أستطيع تذكيرك هنا."
+        }
+        (RemindersBlocked, En) => {
+            "Notifications are off for Kabar on this device, so I can't remind you here."
+        }
+        (RemindersAllow, ArEg) => "اسمح بالإشعارات",
+        (RemindersAllow, Ar) => "اسمح بالإشعارات",
+        (RemindersAllow, En) => "Allow notifications",
         (QuietFrom, ArEg | Ar) => "من",
         (QuietFrom, En) => "From",
         (QuietTo, ArEg) => "لحد",
@@ -1590,6 +1615,12 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (NotEnoughKoin, ArEg) => "محتاج كوين أكتر شوية",
         (NotEnoughKoin, Ar) => "تحتاج إلى مزيد من العملات",
         (NotEnoughKoin, En) => "A few more Koin needed",
+        (KoinToGo, ArEg) => "فاضلك {n}",
+        (KoinToGo, Ar) => "يتبقّى لك {n}",
+        (KoinToGo, En) => "{n} more",
+        (KoinEarnedFrom, ArEg) => "بتكسب الكوين من الدروس والمراجعة والألعاب.",
+        (KoinEarnedFrom, Ar) => "تكسب العملات من الدروس والمراجعة والألعاب.",
+        (KoinEarnedFrom, En) => "You earn Koin from lessons, reviews and games.",
         (JournalTitle, ArEg) => "يومياتك في التعلم",
         (JournalTitle, Ar) => "سجل التعلّم",
         (JournalTitle, En) => "Learning journal",
@@ -2087,6 +2118,21 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (InThisSentence, En) => "In this sentence",
         (Breakdown, ArEg | Ar) => "التركيب",
         (Breakdown, En) => "Built from",
+        (MorphMore, ArEg) => "تفصيل الكلمة",
+        (MorphMore, Ar) => "تفصيل الكلمة",
+        (MorphMore, En) => "Word breakdown",
+        (MorphSoundChange, ArEg) => "أول حرف في الأصل بيتغيّر لما السابقة تلزق فيه",
+        (MorphSoundChange, Ar) => "يتغيّر أول حرف في الجذر عند اتصال السابقة به",
+        (MorphSoundChange, En) => "the root's first sound changes when the prefix joins it",
+        (MorphTimeWords, ArEg) => "الزمن في الجملة",
+        (MorphTimeWords, Ar) => "الزمن في الجملة",
+        (MorphTimeWords, En) => "Time in this sentence",
+        (MorphGrammar, ArEg) => "القاعدة",
+        (MorphGrammar, Ar) => "القاعدة",
+        (MorphGrammar, En) => "Grammar",
+        (MorphColours, ArEg) => "معنى الألوان",
+        (MorphColours, Ar) => "دلالة الألوان",
+        (MorphColours, En) => "What the colours mean",
         (Normalized, ArEg) => "الكلمة كاملة",
         (Normalized, Ar) => "الصيغة الكاملة",
         (Normalized, En) => "Full form",

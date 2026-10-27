@@ -20,6 +20,7 @@ on:
       - crates/app/AndroidManifest.xml
       - crates/app/Dioxus.toml
       - scripts/android-check-apk.sh
+      - scripts/android-release-apk.sh
   workflow_dispatch:
 
 concurrency:
@@ -69,8 +70,13 @@ jobs:
             --target aarch64-linux-android --no-default-features --features mobile \
             --out-dir ../../dist/android/raw
 
-      - name: Check the APK (Kotlin glue, launcher icon, manifest)
-        run: scripts/android-check-apk.sh "$(find dist/android/raw -name '*.apk' | head -1)"
+      - name: Rebuild as a release APK (not debuggable, R8, versionCode)
+        run: |
+          APK="$(scripts/android-release-apk.sh)"
+          mkdir -p dist/android/release && cp "$APK" dist/android/release/kabar-unsigned.apk
+
+      - name: Check the APK (Kotlin glue, launcher icon, manifest, not debuggable)
+        run: scripts/android-check-apk.sh dist/android/release/kabar-unsigned.apk
 
       - name: Restore preview signing key
         if: env.KEEP_KEY == 'true'
@@ -96,8 +102,7 @@ jobs:
 
       - name: Sign
         run: |
-          IN="$(find dist/android/raw -name '*.apk' | head -1)"
-          [ -n "$IN" ] || { echo "dx produced no APK"; find dist -maxdepth 6; exit 1; }
+          IN=dist/android/release/kabar-unsigned.apk
           PASS="$(cat ~/.kabar-preview/pass)"
           zipalign -f -p 4 "$IN" /tmp/aligned.apk
           apksigner sign --ks ~/.kabar-preview/preview.jks --ks-key-alias preview \

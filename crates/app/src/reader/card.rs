@@ -2,6 +2,7 @@
 //! card (click, pen tap, long-press), both answered from local data.
 
 use dioxus::prelude::*;
+use kabar_core::grammar::word::parts_of_token;
 use kabar_core::locale::UiLanguage;
 use kabar_core::settings::PronMode;
 use kabar_protocol::content::Lang;
@@ -12,7 +13,9 @@ use super::content::taught_info;
 use super::doc::{Tag, Word};
 use super::explain::ExplainCard;
 use super::glossary::{Shift, SpeechLevel, WordInfo, WordLang};
+use super::morph::MorphDetail;
 use super::{Panel, Peek, ReaderState};
+use crate::annotated::parts::{PartsLine, SayWord};
 use crate::coach::Coach;
 use crate::i18n::Msg;
 use crate::platform::{self, SpeakError};
@@ -214,7 +217,7 @@ fn WordCard(i: usize) -> Element {
     let sentence = open.doc.sentence_of(i).to_string();
     let key = w.key.clone();
     let status = key.as_deref().map(|k| st.status(k));
-    let breakdown = w.breakdown();
+    let breakdown = w.breakdown().map(|_| (parts_of_token(&w.analyzed), w.class));
     let speak_text = w.analyzed.normalized.as_ref().map_or(surface.clone(), |n| n.full.clone());
     let taught = w.taught_approved().and_then(taught_info);
     let speech_tag = match w.tag {
@@ -244,6 +247,7 @@ fn WordCard(i: usize) -> Element {
             words.into_iter().flatten().collect::<Vec<_>>(),
         )
     });
+    let word_tag = if w.tag == Tag::Javanese { "jv" } else { "id" }.to_string();
 
     rsx! {
         div { class: "word-card",
@@ -252,12 +256,16 @@ fn WordCard(i: usize) -> Element {
                 NoteLookup { language, words }
             }
 
-            if let Some(b) = breakdown {
+            if let Some((parts, class)) = breakdown {
                 div { class: "field",
                     span { class: "label", "{ui.t(Msg::Breakdown)}" }
-                    bdi { class: "latin", lang: "id", "{b}" }
+                    div { class: "parts-row",
+                        PartsLine { parts, class, labels: false, voice }
+                        SayWord { text: speak_text.clone(), tag: word_tag, letters: false }
+                    }
                 }
             }
+            MorphDetail { i }
 
             if let Some(t) = taught {
                 div { class: "taught-block", aria_label: "{ui.t(Msg::TaughtByYou)}",

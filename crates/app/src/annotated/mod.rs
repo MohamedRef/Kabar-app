@@ -6,18 +6,20 @@
 //! Prompts and the production side of an exercise use `plain`: the Latin
 //! text alone, so nothing gives the answer away (same rule as `crate::pron`).
 
+pub mod parts;
 mod text;
 
 use std::rc::Rc;
 
 use dioxus::prelude::*;
-use kabar_core::grammar::word::{self, Mark, PartKind, WordClass};
+use kabar_core::grammar::word::{self, PartKind, WordClass};
 use kabar_core::lang::Lang as CoreLang;
 use kabar_core::lang::analyze::Morph;
 use kabar_core::learn::PersonalDictionary;
 use kabar_core::settings::TranslationMode;
 use kabar_protocol::content::Lang;
 
+use self::parts::{ClassChip, Legend, PartsLine, SayWord};
 use self::text::{T, tt};
 use crate::lesson::Rich;
 use crate::pron::Pron;
@@ -25,6 +27,7 @@ use crate::reader::card::InfoView;
 use crate::reader::doc::{Lexicon, ReadDoc, Tag, Word};
 use crate::reader::explain::voice_of;
 use crate::reader::glossary::Gloss;
+use crate::reader::grammar::{DocGrammar, GrammarAt, syllabus};
 use crate::teach::{TeachInbox, TeachSeed};
 use crate::{Db, Screen, Ui};
 
@@ -99,7 +102,7 @@ struct Piece {
 
 impl Piece {
     /// The word's classes: always `annot-w`, then each layer that is on.
-    fn classes(&self, open: bool, colours: bool, glosses: bool) -> String {
+    fn classes(&self, open: bool, glosses: bool) -> String {
         let mut c = String::from("annot-w");
         let mut add = |on: bool, name: &str| {
             if on {
@@ -111,7 +114,8 @@ impl Piece {
         add(self.bridge, "bridge-word");
         add(self.marked, "target");
         add(glosses, "glossed");
-        if let Some(class) = self.class.filter(|_| colours) {
+        // Colours always go on; the Settings switch turns them off in CSS.
+        if let Some(class) = self.class {
             add(true, "wc-line");
             add(true, class);
         }
@@ -261,7 +265,6 @@ pub fn Annotated(
         Some((doc, parts)) => (Some(doc), parts),
         None => (None, Rc::new(vec![Piece { text: text.clone(), ..Piece::default() }])),
     };
-    let colours = !ui.settings.read().word_colours_off;
     // Side by side: each word's meaning under it, as in the Reader.
     let glosses = !inline && translation == TranslationMode::On;
     let voice = ui.lang();
@@ -274,7 +277,7 @@ pub fn Annotated(
                         Some(i) => rsx! {
                             span {
                                 key: "{k}",
-                                class: p.classes(open() == Some(i), colours, glosses),
+                                class: p.classes(open() == Some(i), glosses),
                                 role: "button",
                                 tabindex: "0",
                                 // Annotated text often sits inside a button (examples, dialogue lines).
@@ -294,7 +297,7 @@ pub fn Annotated(
                                     }
                                 },
                                 span { class: "annot-word",
-                                    if colours && p.class.is_some() && !p.spans.is_empty() {
+                                    if p.class.is_some() && !p.spans.is_empty() {
                                         for (j , (run , css)) in p.spans.iter().enumerate() {
                                             span { key: "{j}", class: *css, "{run}" }
                                         }
@@ -351,7 +354,10 @@ pub fn Annotated(
 fn WordSheet(doc: Rc<ReadDoc>, i: usize, tag: &'static str, on_close: EventHandler) -> Element {
     let ui = use_context::<Ui>();
     let teach = use_context::<TeachInbox>();
+    let db = use_context::<Db>();
     let lang = ui.lang();
+    // Spotted once per text, offline, when a word of it is first opened.
+    let grammar = use_memo(use_reactive!(|doc| Rc::new(DocGrammar::new(&doc, &syllabus(&db)))));
     let Some(t) = doc.tokens.get(i) else { return rsx! {} };
     let Some(w) = t.word.clone() else { return rsx! {} };
     let surface = doc.text(t.start, t.end).to_string();
@@ -378,7 +384,7 @@ fn WordSheet(doc: Rc<ReadDoc>, i: usize, tag: &'static str, on_close: EventHandl
                         bdi { class: "latin", lang: word_tag, dir: "ltr", "{l}" }
                     }
                 }
-                Pron { text: surface.clone(), tag: word_tag }
+                SayWord { text: surface.clone(), tag: word_tag }
                 button { class: "quiet small", onclick: move |_| on_close.call(()), "{tt(lang, T::Close)}" }
             }
             Breakdown { word: w.clone(), tag }
@@ -402,18 +408,19 @@ fn WordSheet(doc: Rc<ReadDoc>, i: usize, tag: &'static str, on_close: EventHandl
                     }
                 },
             }
+            GrammarAt { doc: doc.clone(), grammar: grammar(), i, voice: voice_of(lang) }
         }
     }
 }
 
 /// What kind of word it is and how it is built, in the same colours as the
-/// sentence: `peng·alam·an`, with a line on what each affix does.
+/// sentence: `peng + alam + an`, with a line on what each affix does. The
+/// same pieces as the Reader's breakdown.
 #[component]
 fn Breakdown(word: Word, tag: &'static str) -> Element {
     let ui = use_context::<Ui>();
     let lang = ui.lang();
     let voice = voice_of(lang);
-    let colours = !ui.settings.read().word_colours_off;
     let core = word_lang(&word, text_lang(tag));
     let info = word.shown();
     let class = word::class_in(&word.analyzed, core, info.as_ref().and_then(|i| i.pos.as_deref()));
@@ -434,32 +441,21 @@ fn Breakdown(word: Word, tag: &'static str) -> Element {
     if class.is_none() && parts.len() < 2 && redup.is_none() {
         return rsx! {};
     }
-    let ink = |css: &'static str| if colours { css } else { "" };
     rsx! {
         span { class: "field annot-parts",
             span { class: "label",
                 "{tt(lang, T::Breakdown)}"
                 if let Some(c) = class {
-                    " · "
-                    span { class: "wc-ink {ink(c.css())}", "{Mark::Class(c).label().get(voice)}" }
+                    " "
+                    ClassChip { class: c, voice: lang }
                 }
             }
             if parts.len() > 1 {
-                // The class sets the root's colour (.wp-root reads --wc).
-                bdi { class: "latin annot-pieces {ink(class.map_or(\"\", WordClass::css))}", lang: word_tag, dir: "ltr",
-                    for (i , p) in parts.iter().enumerate() {
-                        span { key: "{i}",
-                            if i > 0 {
-                                span { class: "muted", " + " }
-                            }
-                            span { class: ink(p.kind.css()), "{p.form}" }
-                        }
-                    }
-                }
+                PartsLine { parts: parts.clone(), class, labels: true, voice: lang }
             }
             for (css , label , note) in notes {
                 span { key: "{label}", class: "annot-note",
-                    bdi { class: "latin {ink(css)}", lang: word_tag, dir: "ltr", "{label}" }
+                    bdi { class: "latin piece {css}", lang: word_tag, dir: "ltr", "{label}" }
                     // Core notes isolate their Latin with U+2068/2069, which
                     // WebKitGTK ignores; Rich isolates it with markup instead.
                     Rich { text: note.meaning.get(voice).replace(['\u{2060}', '\u{2068}', '\u{2069}'], ""), target: word_tag }
@@ -473,15 +469,9 @@ fn Breakdown(word: Word, tag: &'static str) -> Element {
                     Rich { text: r.replace(['\u{2060}', '\u{2068}', '\u{2069}'], ""), target: word_tag }
                 }
             }
-            if colours {
-                details { class: "annot-legend",
-                    summary { "{tt(lang, T::Legend)}" }
-                    span { class: "annot-legend-row",
-                        for m in word::LEGEND {
-                            span { key: "{m.css()}", class: "wc-ink {m.css()}", "{m.label().get(voice)}" }
-                        }
-                    }
-                }
+            details { class: "annot-legend",
+                summary { "{tt(lang, T::Legend)}" }
+                Legend { voice: lang }
             }
         }
     }
@@ -504,6 +494,18 @@ mod tests {
         let marked: Vec<&str> = parts.iter().filter(|p| p.marked).map(|p| p.text.as_str()).collect();
         assert_eq!(marked, ["membaca"]);
         assert!(parts.iter().filter(|p| p.word.is_some()).count() >= 4, "every word is tappable");
+    }
+
+    #[test]
+    fn the_word_card_finds_the_rules_a_word_takes_part_in() {
+        let d = doc("Saya sedang membaca buku.");
+        let grammar = DocGrammar::new(&d, &Default::default());
+        let at = |w: &str| {
+            let i = d.tokens.iter().position(|t| d.text(t.start, t.end) == w).unwrap();
+            grammar.at(i).into_iter().map(|(f, _)| f.grammar).collect::<Vec<_>>()
+        };
+        assert_eq!(at("sedang"), ["id.aspect.markers"]);
+        assert!(at("buku").is_empty());
     }
 
     #[test]
