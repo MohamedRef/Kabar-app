@@ -27,11 +27,13 @@ use crate::{Db, Screen, Ui};
 pub const CSS: &str = include_str!("../../assets/annotated.css");
 
 /// What every annotated sentence shares: whether the glossary is parsed yet
-/// (it is ~100 ms of work, done off the UI thread at start-up) and the words
-/// the learner taught Kabar (read once, refreshed when they change).
+/// (~100 ms of work, done off the UI thread the first time a sentence needs
+/// it) and the words the learner taught Kabar (read once, refreshed when
+/// they change).
 #[derive(Clone, Copy)]
 pub struct Words {
     ready: Signal<bool>,
+    started: CopyValue<bool>,
     taught: Signal<Rc<PersonalDictionary>>,
 }
 
@@ -40,32 +42,39 @@ impl Words {
     pub fn refresh(mut self, db: &Db) {
         self.taught.set(Rc::new(taught(db)));
     }
-}
 
-fn taught(db: &Db) -> PersonalDictionary {
-    PersonalDictionary::new(db.0.borrow().taught_entries().unwrap_or_default())
-}
-
-/// Provides [`Words`] to the app and parses the glossary in the background;
-/// sentences show plain text until it is ready.
-pub fn use_words(db: &Db) -> Words {
-    let words = use_context_provider(|| Words {
-        ready: Signal::new(false),
-        taught: Signal::new(Rc::new(taught(db))),
-    });
-    use_hook(move || {
+    /// Parses the glossary in the background on first need; screens without
+    /// target text never load it.
+    fn load(mut self) {
+        if *self.started.peek() {
+            return;
+        }
+        self.started.set(true);
         let (tx, rx) = futures_channel::oneshot::channel::<()>();
+        // The same OnceLock as `reader::warm_up`: whichever thread comes
+        // second waits for the first parse instead of doing its own.
         std::thread::spawn(move || {
             crate::reader::glossary();
             let _ = tx.send(());
         });
         spawn(async move {
             let _ = rx.await;
-            let mut ready = words.ready;
-            ready.set(true);
+            self.ready.set(true);
         });
-    });
-    words
+    }
+}
+
+fn taught(db: &Db) -> PersonalDictionary {
+    PersonalDictionary::new(db.0.borrow().taught_entries().unwrap_or_default())
+}
+
+/// Provides [`Words`] to the app. Nothing is parsed until a sentence shows.
+pub fn use_words(db: &Db) -> Words {
+    use_context_provider(|| Words {
+        ready: Signal::new(false),
+        started: CopyValue::new(false),
+        taught: Signal::new(Rc::new(taught(db))),
+    })
 }
 
 /// One run of the sentence: text between words, or a word (token index).
@@ -159,6 +168,11 @@ pub fn Annotated(
     let words = use_context::<Words>();
     let mut open = use_signal(|| None::<usize>);
     let mut revealed = use_signal(|| false);
+    use_hook(move || {
+        if !plain {
+            words.load();
+        }
+    });
     let analyzed = use_memo(use_reactive!(|text, marked| {
         let ready = !plain && *words.ready.read();
         ready.then(|| analyze(&text, &words.taught.read(), &marked))
