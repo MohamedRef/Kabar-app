@@ -9,6 +9,7 @@
 # project dx generated, so the Rust library and the Kotlin glue are the same:
 #
 # - versionCode comes from the workspace version (see version_code below);
+# - only arm64 native libraries, run straight from the APK;
 # - our R8 keep rules go next to dx's (android/consumer-rules.pro covers
 #   app.kabar.*; the ones here cover dx's own classes that wry calls by name);
 # - assembleRelease builds a non-debuggable, R8-shrunk APK, left unsigned
@@ -46,6 +47,30 @@ CODE="$(version_code "$VERSION")"
 sed -i.bak -E "s/versionCode = [0-9]+/versionCode = $CODE/" "$GRADLE_APP"
 rm -f "$GRADLE_APP.bak"
 grep -q "versionCode = $CODE" "$GRADLE_APP" || { echo "Could not set versionCode in $GRADLE_APP" >&2; exit 1; }
+
+# arm64 only (the S24 Ultra and Tab S11; ML Kit also ships x86, x86_64 and
+# armv7 copies of its OCR pipeline, ~30 MB unpacked), stored uncompressed and
+# page-aligned so Android maps them from the APK (extractNativeLibs="false"
+# in crates/app/AndroidManifest.xml) instead of copying them out at install.
+if ! grep -q "kabar: native libs" "$GRADLE_APP"; then
+  cat >>"$GRADLE_APP" <<'EOF'
+
+// kabar: native libs (scripts/android-release-apk.sh)
+android {
+    defaultConfig {
+        ndk {
+            abiFilters.clear()
+            abiFilters += "arm64-v8a"
+        }
+    }
+    packaging {
+        jniLibs {
+            useLegacyPackaging = false
+        }
+    }
+}
+EOF
+fi
 
 # dx's build.gradle.kts applies every *.pro file in the app module.
 cat >"$ROOT/app/kabar-keep.pro" <<'EOF'
