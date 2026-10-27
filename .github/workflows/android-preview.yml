@@ -192,12 +192,16 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          # A newer commit on main means a newer run will publish; don't roll
-          # the release back to this one.
-          head="$(gh api "repos/$GH_REPO/commits/${GITHUB_REF_NAME}" --jq .sha)"
-          if [ "$head" != "$GITHUB_SHA" ]; then
-            echo "main has moved on to ${head::7}; its own run publishes."
-            exit 0
+          # Publish whenever this commit is newer than the one the release
+          # carries, so a run that finishes after a newer one never rolls the
+          # release back, and a busy stretch of merges still publishes.
+          published="$(gh api "repos/$GH_REPO/git/refs/tags/preview" --jq .object.sha 2>/dev/null || true)"
+          if [ -n "$published" ]; then
+            status="$(gh api "repos/$GH_REPO/compare/$published...$GITHUB_SHA" --jq .status)"
+            if [ "$status" != "ahead" ]; then
+              echo "The release already carries ${published::7} ($status); nothing to publish."
+              exit 0
+            fi
           fi
           NOTES="Preview build of ${GITHUB_SHA::7}, signed with a CI preview key (not the release key). Install: download kabar-preview.apk on the phone and allow installs from your browser."
           # The release stays in place and only its tag and files change, so

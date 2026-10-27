@@ -1,184 +1,246 @@
 schema: kabar.lesson/v1
 id: j2.u03.l04
 language: jv
-title: Pasar! Jawa
+title: Bayar, utang, langganan
 can_do:
-  ar_eg: تفاصل في السعر بالجاوي.
-  ar: أن تساوم على السعر بالجاوية.
-  en: Haggle in Javanese.
+  ar_eg: تدفع وتسأل بكام الحبة، وتقول إن الحاجة خلصت، وتبقى زبون دايم في السوق.
+  ar: أن تدفع وتسأل عن سعر القطعة، وتقول إنّ البضاعة نفدت، وتصبح زبونًا دائمًا في السوق.
+  en: Pay, ask the price per piece, say something's sold out and become a regular at the market.
 slides:
-  - title: Oleh kurang, Bu?
+  - title: Langganan
     body:
       ar_eg: |
-        جمل الفصال اللي هتحتاجها:
-        - Larang! = غالي! · murah = رخيص
-        - Oleh kurang, Bu? = ينفع تنزلي شوية يا طنط؟ (oleh = boleh، kurang = أقل)
-        - Selawe ewu wae, ya? = خمسة وعشرين ألف بس، ماشي؟
-        - Ora oleh. Wis pas. = مينفعش، ده آخر سعر. (wis pas = sudah pas)
-        - Ya wis, oleh. = خلاص، ماشي. (ya wis = ya sudah)
-        الفصال في السوق الجاوي لعبة لطيفة، مش خناقة: ابتسم، قول Bu أو Pak، وحط ya في الآخر. ومع البياعين الكبار الكراما هتبقى أحلى — هتتعلمها في J3.
+        bayar = يدفع: Tak bayar saiki = هدفع دلوقتي.
+        utang = دين، يستلف: Aku isih utang = لسه عليّا فلوس.
+        rugi = خسران. entek = خلص (نفد): Endhoge entek.
+        didol = بيتباع (من adol). biji = حبة، حتة: telung biji = تلات حبات.
+        langganan = زبون دايم. lengkap = كامل، فيه كل حاجة.
       ar: |
-        عبارات المساومة التي ستحتاجها:
-        - Larang! = غالٍ! · murah = رخيص
-        - Oleh kurang, Bu? = هل يمكن أن تُنقصي السعر يا سيدتي؟ (oleh = boleh، kurang = أقل)
-        - Selawe ewu wae, ya? = خمسة وعشرون ألفًا فقط، اتفقنا؟
-        - Ora oleh. Wis pas. = لا يمكن، هذا آخر سعر. (wis pas = sudah pas)
-        - Ya wis, oleh. = حسنًا، موافقة. (ya wis = ya sudah)
-        والمساومة في السوق الجاوي لعبة ودودة لا شجار: ابتسم، وقل Bu أو Pak، واختم بـ ya. ومع الباعة الكبار تكون الكراما أجمل، وستتعلمها في J3.
+        bayar = يدفع: Tak bayar saiki = سأدفع الآن.
+        utang = دَين، يستدين: Aku isih utang = ما زال عليّ دين.
+        rugi = خاسر. entek = نفد: Endhoge entek.
+        didol = يُباع (من adol). biji = حبّة، قطعة: telung biji = ثلاث قطع.
+        langganan = زبون دائم. lengkap = كامل، فيه كلّ شيء.
       en: |
-        Haggling lines you'll need:
-        - Larang! = Expensive! · murah = cheap
-        - Oleh kurang, Bu? = Can you go lower, ma'am? (oleh = boleh, kurang = less)
-        - Selawe ewu wae, ya? = Just 25,000, OK?
-        - Ora oleh. Wis pas. = Can't. That's the final price. (wis pas = sudah pas)
-        - Ya wis, oleh. = All right, deal. (ya wis = ya sudah)
-        Haggling at a Javanese market is a friendly game, not a fight: smile, say Bu or Pak, end with ya. With older sellers krama is even nicer — that comes in J3.
-    grammar: jv.number.full
+        bayar = pay: Tak bayar saiki = I'll pay now.
+        utang = debt, owe: Aku isih utang = I still owe.
+        rugi = make a loss. entek = run out, sold out: Endhoge entek.
+        didol = be sold (from adol). biji = piece: telung biji = three pieces.
+        langganan = regular customer. lengkap = complete, has everything.
     examples:
-      - text: Wolulikur ewu wae, ya?
-        ar_eg: تمانية وعشرين ألف بس، ماشي؟
-        ar: ثمانية وعشرون ألفًا فقط، اتفقنا؟
-        en: Just 28,000, OK?
-      - text: Ya wis, selawe.
-        ar_eg: خلاص، خمسة وعشرين.
-        ar: حسنًا، خمسة وعشرون.
-        en: All right, twenty-five.
+      - text: Endhoge wis entek, Mas.
+        ar_eg: البيض خلص يا ماس.
+        ar: نفد البيض يا أخي.
+        en: The eggs are sold out, Mas.
+      - text: Telung biji pira, Bu?
+        ar_eg: التلات حبات بكام يا حاجة؟
+        ar: بكم القطع الثلاث يا خالة؟
+        en: How much for three, Bu?
+      - text: Warunge Bu Siti lengkap, aku langganan.
+        ar_eg: محل بو سيتي فيه كل حاجة، وأنا زبون دايم.
+        ar: دكّان بو سيتي فيه كلّ شيء، وأنا زبون دائم.
+        en: Bu Siti's stall has everything, I'm a regular.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: عايز تسأل البياعة بأدب لو ممكن تنزّل السعر. تقول إيه؟
-      ar: تريد أن تسأل البائعة بلطف إن كانت تُنقص السعر. ماذا تقول؟
-      en: You want to ask the seller politely if she can go lower. What do you say?
-    options: ['Oleh kurang, Bu?', 'Wis pas, Bu.', 'Ora oleh, Bu.']
-    answer: 0
-    words: [oleh, kurang]
+    type: match_pairs
+    pairs:
+      - text: bayar
+        ar_eg: يدفع
+        ar: يدفع
+        en: pay
+      - text: utang
+        ar_eg: دين، يستلف
+        ar: دَين
+        en: owe, debt
+      - text: rugi
+        ar_eg: خسران
+        ar: خاسر
+        en: make a loss
+      - text: entek
+        ar_eg: خلص
+        ar: نفد
+        en: sold out, run out
+    words: [bayar, utang, rugi, entek]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: البياعة وافقت على السعر بتاعك. قالت إيه؟
-      ar: وافقت البائعة على سعرك. ماذا قالت؟
-      en: The seller accepts your price. What did she say?
-    options: ['Wis pas, Mas.', 'Ya wis, oleh.', 'Ora oleh, Mas.']
-    answer: 1
-    words: [ya wis, oleh, wis pas]
+    type: match_pairs
+    pairs:
+      - text: didol
+        ar_eg: بيتباع
+        ar: يُباع
+        en: be sold
+      - text: biji
+        ar_eg: حبة، حتة
+        ar: قطعة
+        en: piece
+      - text: langganan
+        ar_eg: زبون دايم
+        ar: زبون دائم
+        en: regular customer
+      - text: lengkap
+        ar_eg: فيه كل حاجة
+        ar: كامل
+        en: complete
+    words: [didol, biji, langganan, lengkap]
   - id: e03
-    type: fill_blank
-    sentence: Telung puluh ewu? ___ banget, Bu!
+    type: listen
+    text: Endhoge wis entek, Mas.
+    question:
+      ar_eg: البيض ماله؟
+      ar: ما خبر البيض؟
+      en: What about the eggs?
+    options: [البيض خلص يا ماس, البيض غالي يا ماس, البيض بيتباع هنا يا ماس]
+    answer: 0
     meaning:
-      ar_eg: تلاتين ألف؟ غالي أوي يا طنط!
-      ar: ثلاثون ألفًا؟ غالٍ جدًا يا سيدتي!
-      en: Thirty thousand? That's really expensive, ma'am!
-    options: [Larang, Murah, Legi]
-    answers: [Larang]
-    words: [larang]
+      ar_eg: البيض خلص يا ماس.
+      ar: نفد البيض يا أخي.
+      en: The eggs are sold out, Mas.
+    words: [entek, didol]
   - id: e04
     type: fill_blank
-    sentence: Regane ___ ewu.
+    sentence: Pira kabeh? Tak ___ saiki.
     meaning:
-      ar_eg: سعره تمانية وعشرين ألف.
-      ar: ثمنه ثمانية وعشرون ألفًا.
-      en: It costs 28,000.
-    answers: [wolulikur]
-    explain:
-      ar_eg: 'من 21 لـ 29 بـ -likur: wolu + likur = wolulikur.'
-      ar: 'الأعداد 21–29 بـ -likur: wolu + likur = wolulikur.'
-      en: '21–29 use -likur: wolu + likur = wolulikur.'
-    words: [wolulikur]
+      ar_eg: الكل بكام؟ هـ___ دلوقتي.
+      ar: كم المجموع؟ سأ___ الآن.
+      en: How much altogether? I'll ___ now.
+    options: [bayar, entek, biji]
+    answers: [bayar]
+    words: [bayar, entek, biji]
   - id: e05
+    type: multiple_choice
+    question: Aku isih utang limang ewu.
+    question_meaning:
+      ar_eg: معناها إيه؟
+      ar: ما معناها؟
+      en: What does it mean?
+    options: [لسه عليّا خمسة آلاف, معايا خمسة آلاف, الباقي خمسة آلاف]
+    answer: 0
+    explain:
+      ar_eg: utang = دين. «الباقي» = susuk.
+      ar: utang = دَين. أمّا «الباقي» فـsusuk.
+      en: utang = owe. "Change" is susuk.
+    words: [utang]
+  - id: e06
+    type: fill_blank
+    sentence: Aku ___ warunge Bu Siti, saben minggu tuku ing kana.
+    meaning:
+      ar_eg: أنا ___ في محل بو سيتي، كل أسبوع بشتري من هناك.
+      ar: أنا ___ في دكّان بو سيتي، أشتري منه كلّ أسبوع.
+      en: I'm a ___ at Bu Siti's stall, I buy there every week.
+    options: [langganan, lengkap, rugi]
+    answers: [langganan]
+    words: [langganan, lengkap, rugi]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «التلات حبات بكام؟» بالجاوي؟
+      ar: كيف تقول «بكم القطع الثلاث؟» بالجاوية؟
+      en: '"How much for three pieces?" in Javanese?'
+    options: ['Telung biji pira?', 'Telung didol pira?', 'Telung rugi pira?']
+    answer: 0
+    explain:
+      ar_eg: biji = حبة، وقبلها telung مش telu.
+      ar: biji = قطعة، وقبلها telung لا telu.
+      en: biji = piece, with telung before it, not telu.
+    words: [biji, didol, rugi]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: خمسة وعشرين ألف بس، ماشي؟
-      ar: خمسة وعشرون ألفًا فقط، اتفقنا؟
-      en: Just 25,000, OK?
-    answer: Selawe ewu wae, ya?
-    distractors: [seket, ora]
-    words: [selawe, ewu, wae]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: ينفع تنزلي شوية يا طنط؟
-      ar: هل يمكن أن تُنقصي السعر يا سيدتي؟
-      en: Can you go lower, ma'am?
-    answers: ['Oleh kurang, Bu?', 'Oleh kurang, Bu', 'Oleh kurang?', Oleh kurang, 'Oleh kurang ora, Bu?', 'Oleh kurang ora, Bu']
-    words: [oleh, kurang]
-  - id: e07
-    type: listen
-    text: Wis pas, Mas. Ora oleh kurang.
-    options: ['Wis pas, Mas. Ora oleh kurang.', 'Ya wis, Mas. Oleh kurang.', 'Wis pas, Mas. Oleh kurang.']
-    answer: 0
-    meaning:
-      ar_eg: ده آخر سعر يا أستاذ. مينفعش أنزّل.
-      ar: هذا آخر سعر يا أخي. لا يمكن التخفيض.
-      en: That's the final price, Mas. I can't go lower.
-    words: [wis pas, oleh, kurang, ya wis]
-  - id: e08
-    type: listen
-    text: Wolulikur ewu wae.
-    options: [Wolulikur ewu wae., Wolulas ewu wae., Wolung puluh ewu wae.]
-    answer: 0
-    explain:
-      ar_eg: wolulas = 18، wolulikur = 28، wolung puluh = 80.
-      ar: wolulas = 18، وwolulikur = 28، وwolung puluh = 80.
-      en: wolulas = 18, wolulikur = 28, wolung puluh = 80.
-    words: [wolulikur]
+      ar_eg: رخيص أوي، أنا كده خسران!
+      ar: رخيص جدًّا، هكذا أخسر!
+      en: Too cheap, I'd make a loss!
+    answer: Murah banget, aku rugi!
+    distractors: [utang, lengkap]
+    words: [rugi, utang, lengkap]
   - id: e09
-    type: dictation
-    text: Oleh kurang, Bu?
-    meaning:
-      ar_eg: ينفع تنزلي شوية يا طنط؟
-      ar: هل يمكن أن تُنقصي السعر يا سيدتي؟
-      en: Can you go lower, ma'am?
-    words: [oleh, kurang]
+    type: translate
+    direction: from_target
+    source_text: Aku bayar saiki, ora utang.
+    answers_meaning:
+      ar_eg: [هدفع دلوقتي، مش هستلف, أنا بدفع دلوقتي، من غير دين]
+      ar: [سأدفع الآن، لن أستدين, أدفع الآن بلا دَين]
+      en: ['I''ll pay now, no credit', 'I''m paying now, I won''t owe']
+    words: [bayar, utang]
   - id: e10
     type: speaking
-    text: Wah, larang. Selawe ewu wae, ya?
+    text: Warunge Bu Siti lengkap, aku langganan.
     meaning:
-      ar_eg: ياه، غالي. خمسة وعشرين ألف بس، ماشي؟
-      ar: آه، غالٍ. خمسة وعشرون ألفًا فقط، اتفقنا؟
-      en: Oh, that's expensive. Just 25,000, OK?
-    words: [larang, selawe, wae]
+      ar_eg: محل بو سيتي فيه كل حاجة، وأنا زبون دايم.
+      ar: دكّان بو سيتي فيه كلّ شيء، وأنا زبون دائم.
+      en: Bu Siti's stall has everything, I'm a regular.
+    words: [lengkap, langganan]
 dialogue:
-  title: Neng pasar Nganjuk
   lines:
+    - speaker: Bu Siti
+      text: Mas Mohamed! Langgananku teka. Golek apa?
+      ar_eg: ماس محمد! الزبون الدايم بتاعي وصل. بتدوّر على إيه؟
+      ar: ماس محمد! زبوني الدائم جاء. عمّ تبحث؟
+      en: Mas Mohamed! My regular's here. What are you after?
     - speaker: Mohamed
-      text: Bu, bawang abang sekilo pira?
-      ar_eg: يا طنط، البصل الأحمر الكيلو بكام؟
-      ar: يا سيدتي، بكم كيلو البصل الأحمر؟
-      en: Ma'am, how much is a kilo of shallots?
-    - speaker: Bu Karti
-      text: Telung puluh ewu, Mas.
-      ar_eg: تلاتين ألف يا أستاذ.
-      ar: ثلاثون ألفًا يا أخي.
-      en: Thirty thousand, Mas.
+      text: Endhog sekilo, Bu. Lan tempe telung biji.
+      ar_eg: كيلو بيض يا حاجة. وتلات حبات تمبيه.
+      ar: كيلو بيض يا خالة، وثلاث قطع تمبيه.
+      en: A kilo of eggs, Bu. And three pieces of tempe.
+    - speaker: Bu Siti
+      text: Sepurane, endhoge wis entek. Laris tenan esuk iki.
+      ar_eg: معلش، البيض خلص. اتباع كله الصبح ده.
+      ar: عذرًا، نفد البيض. بِيع كلّه هذا الصباح.
+      en: Sorry, the eggs are sold out. They went fast this morning.
     - speaker: Mohamed
-      text: Wah, larang. Oleh kurang, Bu?
-      ar_eg: ياه، غالي. ينفع تنزلي شوية يا طنط؟
-      ar: آه، غالٍ. هل يمكن أن تُنقصي يا سيدتي؟
-      en: Oh, that's expensive. Can you go lower, ma'am?
-    - speaker: Bu Karti
-      text: Mas arep tuku pirang kilo?
-      ar_eg: عايز تشتري كام كيلو يا أستاذ؟
-      ar: كم كيلو تريد أن تشتري يا أخي؟
-      en: How many kilos do you want, Mas?
+      text: Ya wis, tempe wae. Wingi aku isih utang, ta?
+      ar_eg: خلاص، تمبيه بس. امبارح كان عليّا فلوس، صح؟
+      ar: حسنًا، التمبيه فقط. كان عليّ دَين من الأمس، أليس كذلك؟
+      en: OK, just the tempe. I still owed you from yesterday, right?
+    - speaker: Bu Siti
+      text: Iya, rong ewu. Ora apa-apa, aku ora rugi kok, hehe.
+      ar_eg: أيوه، ألفين. عادي، مش هخسر يعني، هههه.
+      ar: نعم، ألفان. لا بأس، لن أخسر، هههه.
+      en: Yes, two thousand. No worries, I won't go broke, hehe.
     - speaker: Mohamed
-      text: Telung kilo. Selawe ewu wae, ya?
-      ar_eg: تلاتة كيلو. خمسة وعشرين ألف بس، ماشي؟
-      ar: ثلاثة كيلو. خمسة وعشرون ألفًا فقط، اتفقنا؟
-      en: Three kilos. Just twenty-five thousand, OK?
-    - speaker: Bu Karti
-      text: Ya wis, selawe. Kabeh dadi pitung puluh lima ewu.
-      ar_eg: خلاص، خمسة وعشرين. الكل خمسة وسبعين ألف.
-      ar: حسنًا، خمسة وعشرون. المجموع خمسة وسبعون ألفًا.
-      en: All right, twenty-five. That's seventy-five thousand altogether.
+      text: Tak bayar kabeh saiki, Bu.
+      ar_eg: هدفع كله دلوقتي يا حاجة.
+      ar: سأدفع كلّ شيء الآن يا خالة.
+      en: I'll pay it all now, Bu.
 new_words:
-  - word: pas / wis pas
-    pos: phrase
-    ar_eg: آخر سعر
-    ar: السعر النهائي
-    en: that's the final price (sudah pas)
+  - word: bayar
+    pos: verb
+    ar_eg: يدفع
+    ar: يدفع
+    en: pay
+  - word: utang
+    pos: noun
+    ar_eg: دين، يستلف
+    ar: دَين، يستدين
+    en: debt, owe
+  - word: rugi
+    pos: adjective
+    ar_eg: خسران
+    ar: خاسر
+    en: make a loss
+  - word: entek
+    pos: adjective
+    ar_eg: خلص (نفد)
+    ar: نافد
+    en: used up, sold out
+  - word: didol
+    pos: verb
+    ar_eg: بيتباع
+    ar: يُباع
+    en: be sold
+  - word: biji
+    pos: noun
+    ar_eg: حبة، حتة
+    ar: حبّة، قطعة
+    en: piece (counter)
+  - word: langganan
+    pos: noun
+    ar_eg: زبون دايم
+    ar: زبون دائم
+    en: regular customer
+  - word: lengkap
+    pos: adjective
+    ar_eg: كامل، فيه كل حاجة
+    ar: كامل، متكامل
+    en: complete, well-stocked
 review:
   status: draft
   verified: false
-game: uu.market

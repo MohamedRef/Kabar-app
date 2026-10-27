@@ -7,6 +7,7 @@
 //! text alone, so nothing gives the answer away (same rule as `crate::pron`).
 
 pub mod parts;
+pub mod phrases;
 pub mod text;
 
 use std::rc::Rc;
@@ -62,6 +63,7 @@ impl Words {
         // second waits for the first parse instead of doing its own.
         std::thread::spawn(move || {
             crate::reader::glossary();
+            phrases::warm_up();
             let _ = tx.send(());
         });
         spawn(async move {
@@ -98,6 +100,11 @@ struct Piece {
     spans: Vec<(String, &'static str)>,
     /// What goes under the word in the side-by-side view.
     gloss: Option<Gloss>,
+    /// A cast member's name ("Gadis"): shown as a name, not glossed.
+    name: bool,
+    /// On the first word of a fixed expression: the index of the part that
+    /// ends it and what the whole means ("Selamat pagi" = صباح الخير).
+    phrase: Option<(usize, Gloss)>,
 }
 
 impl Piece {
@@ -151,14 +158,17 @@ fn word_lang(w: &Word, text_lang: CoreLang) -> CoreLang {
 /// to want" → "going to".
 fn short(gloss: &str) -> &str {
     let first =
-        gloss.split([';', '·', ',', '،', '؛', '(']).map(str::trim).find(|s| !s.is_empty()).unwrap_or("");
+        gloss.split([';', '·', ',', '،', '؛', '(', '/']).map(str::trim).find(|s| !s.is_empty()).unwrap_or("");
     if first.chars().count() > 22 { "" } else { first }
 }
 
 fn pieces(doc: &ReadDoc, marked: &[String], text_lang: CoreLang) -> Vec<Piece> {
     let plain = |text: &str| Piece { text: text.to_string(), ..Piece::default() };
+    let tag = if text_lang == CoreLang::Javanese { "jv" } else { "id" };
     let mut out = Vec::new();
     let mut at = 0;
+    // The token that ends the open phrase, and where its first word sits in `out`.
+    let mut phrase_end: Option<(usize, usize)> = None;
     for (i, t) in doc.tokens.iter().enumerate() {
         if t.start > at {
             out.push(plain(doc.text(at, t.start)));
@@ -166,6 +176,7 @@ fn pieces(doc: &ReadDoc, marked: &[String], text_lang: CoreLang) -> Vec<Piece> {
         let text = doc.text(t.start, t.end).to_string();
         let Some(w) = t.word.as_ref().filter(|w| w.key.is_some() || w.has_gloss()) else {
             out.push(plain(&text));
+            close_phrase(&mut out, &mut phrase_end, i);
             at = t.end;
             continue;
         };
@@ -179,19 +190,64 @@ fn pieces(doc: &ReadDoc, marked: &[String], text_lang: CoreLang) -> Vec<Piece> {
             .into_iter()
             .filter_map(|(r, kind)| Some((text.get(r)?.to_string(), kind.css())))
             .collect();
+        let name = text.starts_with(char::is_uppercase) && crate::portraits::is_cast_name(&text);
+        let phrase = match phrase_end {
+            Some((end, _)) if i <= end => None,
+            _ => phrases::at(doc, i, tag).map(|(end, p)| {
+                phrase_end = Some((end, out.len()));
+                (end, p.gloss.clone())
+            }),
+        };
         out.push(Piece {
             word: Some(i),
             bridge: w.is_bridge(),
             marked: !marked.is_empty() && is_marked(w, &text, marked),
             class: class.map(WordClass::css),
             spans,
-            gloss: info.map(|i| i.gloss),
+            gloss: if name { None } else { info.map(|i| i.gloss) },
+            name,
+            phrase,
             text,
         });
+        close_phrase(&mut out, &mut phrase_end, i);
         at = t.end;
     }
     if at < doc.body.len() {
         out.push(plain(doc.text(at, doc.body.len())));
+    }
+    out
+}
+
+/// At the phrase's last token, turn the token index its first word holds
+/// into the index of the last run, which is what [`groups`] reads.
+fn close_phrase(out: &mut [Piece], open: &mut Option<(usize, usize)>, token: usize) {
+    if let Some((end, first)) = *open
+        && token == end
+    {
+        let end = out.len() - 1;
+        if let Some((last, _)) = out[first].phrase.as_mut() {
+            *last = end;
+        }
+        *open = None;
+    }
+}
+
+/// The runs grouped for drawing: a fixed expression's parts together with
+/// its meaning, every other run on its own.
+fn groups(parts: &[Piece]) -> Vec<(Option<Gloss>, Vec<Piece>)> {
+    let mut out = Vec::new();
+    let mut k = 0;
+    while k < parts.len() {
+        match &parts[k].phrase {
+            Some((last, gloss)) if *last > k && *last < parts.len() => {
+                out.push((Some(gloss.clone()), parts[k..=*last].to_vec()));
+                k = last + 1;
+            }
+            _ => {
+                out.push((None, vec![parts[k].clone()]));
+                k += 1;
+            }
+        }
     }
     out
 }
@@ -213,6 +269,56 @@ fn analyze(
 /// The language a `tag` ("id", "jv") names.
 fn text_lang(tag: &str) -> CoreLang {
     if tag == "jv" { CoreLang::Javanese } else { CoreLang::Indonesian }
+}
+
+/// One tappable word: its colours, and its short meaning under it when
+/// `glosses` is on (a name says it's a name).
+#[component]
+fn WordRun(p: Piece, i: usize, open: Signal<Option<usize>>, glosses: bool) -> Element {
+    let ui = use_context::<Ui>();
+    let voice = ui.lang();
+    let under =
+        if p.name { tt(voice, T::Name) } else { p.gloss.as_ref().map(|g| short(g.get(voice))).unwrap_or("") };
+    rsx! {
+        span {
+            class: p.classes(open() == Some(i), glosses),
+            role: "button",
+            tabindex: "0",
+            // Annotated text often sits inside a button (examples, dialogue lines).
+            onclick: move |e| {
+                e.stop_propagation();
+                open.set(if open() == Some(i) { None } else { Some(i) });
+            },
+            onkeydown: move |e: KeyboardEvent| {
+                if e.key() == Key::Enter {
+                    e.stop_propagation();
+                    open.set(Some(i));
+                }
+            },
+            onpointerenter: move |e| {
+                if e.data().pointer_type() == "pen" {
+                    open.set(Some(i));
+                }
+            },
+            span { class: "annot-word",
+                if p.class.is_some() && !p.spans.is_empty() {
+                    for (j , (run , css)) in p.spans.iter().enumerate() {
+                        span { key: "{j}", class: *css, "{run}" }
+                    }
+                } else {
+                    "{p.text}"
+                }
+            }
+            if glosses {
+                span {
+                    class: if p.name { "annot-g annot-name" } else { "annot-g" },
+                    lang: voice.tag(),
+                    dir: voice.dir().as_str(),
+                    "{under}"
+                }
+            }
+        }
+    }
 }
 
 /// A target-language sentence (or word) with its layers.
@@ -272,47 +378,34 @@ pub fn Annotated(
     rsx! {
         span { class: "{kind} {lang_class}",
             bdi { class: "latin annot-text {class}", lang: tag, dir: "ltr",
-                for (k , p) in parts.iter().cloned().enumerate() {
-                    match p.word {
-                        Some(i) => rsx! {
-                            span {
-                                key: "{k}",
-                                class: p.classes(open() == Some(i), glosses),
-                                role: "button",
-                                tabindex: "0",
-                                // Annotated text often sits inside a button (examples, dialogue lines).
-                                onclick: move |e| {
-                                    e.stop_propagation();
-                                    open.set(if open() == Some(i) { None } else { Some(i) });
-                                },
-                                onkeydown: move |e: KeyboardEvent| {
-                                    if e.key() == Key::Enter {
-                                        e.stop_propagation();
-                                        open.set(Some(i));
-                                    }
-                                },
-                                onpointerenter: move |e| {
-                                    if e.data().pointer_type() == "pen" {
-                                        open.set(Some(i));
-                                    }
-                                },
-                                span { class: "annot-word",
-                                    if p.class.is_some() && !p.spans.is_empty() {
-                                        for (j , (run , css)) in p.spans.iter().enumerate() {
-                                            span { key: "{j}", class: *css, "{run}" }
-                                        }
-                                    } else {
-                                        "{p.text}"
-                                    }
-                                }
-                                if glosses {
-                                    span { class: "annot-g", lang: voice.tag(), dir: voice.dir().as_str(),
-                                        {p.gloss.as_ref().map(|g| short(g.get(voice))).unwrap_or("")}
+                for (k , (phrase , group)) in groups(&parts).into_iter().enumerate() {
+                    if let Some(g) = phrase {
+                        // A fixed expression: its words keep their own taps
+                        // and colours, and one meaning sits under all of them.
+                        span { key: "{k}", class: if glosses { "annot-phrase glossed" } else { "annot-phrase" },
+                            span { class: "annot-phrase-words",
+                                for (m , p) in group.into_iter().enumerate() {
+                                    match p.word {
+                                        Some(i) => rsx! {
+                                            WordRun { key: "{m}", p, i, open, glosses: false }
+                                        },
+                                        None => rsx! { span { key: "{m}", "{p.text}" } },
                                     }
                                 }
                             }
-                        },
-                        None => rsx! { span { key: "{k}", "{p.text}" } },
+                            if glosses {
+                                span { class: "annot-g", lang: voice.tag(), dir: voice.dir().as_str(), "{short(g.get(voice))}" }
+                            }
+                        }
+                    } else {
+                        for (m , p) in group.into_iter().enumerate() {
+                            match p.word {
+                                Some(i) => rsx! {
+                                    WordRun { key: "{k}.{m}", p, i, open, glosses }
+                                },
+                                None => rsx! { span { key: "{k}.{m}", "{p.text}" } },
+                            }
+                        }
                     }
                 }
             }
@@ -497,6 +590,28 @@ mod tests {
     }
 
     #[test]
+    fn greetings_names_and_titles_get_the_meaning_they_have_here() {
+        let d = doc("Halo! Selamat pagi, Bu. Nama saya Gadis.");
+        let parts = pieces(&d, &[], CoreLang::Indonesian);
+        let word = |w: &str| parts.iter().find(|p| p.text == w).unwrap();
+        // "Selamat pagi" is one greeting, not "congratulations" + "morning".
+        let (last, gloss) = word("Selamat").phrase.clone().expect("a phrase");
+        assert_eq!(parts[last].text, "pagi");
+        assert_eq!(gloss.en, "good morning");
+        let grouped = groups(&parts);
+        let phrase = grouped.iter().find(|(g, _)| g.is_some()).unwrap();
+        assert_eq!(phrase.1.iter().map(|p| p.text.as_str()).collect::<String>(), "Selamat pagi");
+        // A cast member's name is a name; the same word in lowercase is "girl".
+        assert!(word("Gadis").name && word("Gadis").gloss.is_none());
+        let girl = pieces(&doc("Gadis itu tinggal di sebelah."), &[], CoreLang::Indonesian);
+        assert!(girl[0].name, "capitalized at the start it still reads as the name");
+        let girl = pieces(&doc("Ada gadis di sana."), &[], CoreLang::Indonesian);
+        assert!(girl.iter().any(|p| p.text == "gadis" && !p.name && p.gloss.is_some()));
+        // "Bu" in an Indonesian line is the Indonesian title, not Javanese "Mum".
+        assert!(!word("Bu").gloss.as_ref().unwrap().arz.contains("ماما"));
+    }
+
+    #[test]
     fn the_word_card_finds_the_rules_a_word_takes_part_in() {
         let d = doc("Saya sedang membaca buku.");
         let grammar = DocGrammar::new(&d, &Default::default());
@@ -520,6 +635,7 @@ mod tests {
         assert!(word("Rumahnya").gloss.is_some());
         assert_eq!(short("going to, will · to want"), "going to");
         assert_eq!(short("ده، دي، دول"), "ده");
+        assert_eq!(short("مساء الخير بالليل / تصبح على خير"), "مساء الخير بالليل");
     }
 
     #[test]

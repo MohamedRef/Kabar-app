@@ -1,234 +1,204 @@
 schema: kabar.lesson/v1
 id: j1.u05.l05
 language: jv
-title: Ulangan J1.5
+title: Rek!
 can_do:
-  ar_eg: تحوّل كلام سورابايا (Arek) للنغوكو العادي.
-  ar: أن تحوّل كلام سورابايا (Arek) إلى النغوكو القياسي.
-  en: Translate Arek to standard ngoko.
+  ar_eg: تتابع حوار سريع بلهجة سورابايا (Arek).
+  ar: أن تتابع حوارًا سريعًا بلهجة سورابايا (Arek).
+  en: Follow a fast Arek dialogue.
 slides:
-  - title: Ora, gak, dudu
+  - title: Arek ↔ ngoko
     body:
       ar_eg: |
-        مراجعة سريعة للنفي:
-        - ora (وفي سورابايا gak) قبل الفعل والصفة = tidak: Aku ora ngerti / Aku gak ngerti.
-        - dudu قبل الاسم = bukan: Iki dudu kopiku.
-        - ora ana = gak onok = مفيش. rapopo = ولا يهمك. durung = لسه.
-        والجدول اللي بيحوّل سورابايا لسولو:
-        koen / awakmu ⇐ kowe · gak ⇐ ora · onok ⇐ ana · kate ⇐ arep · wes ⇐ wis · teko ⇐ saka · yok opo ⇐ piye · lapo ⇐ ngapa · ae ⇐ wae · ta ⇐ to.
-        ومع الكبار: sampeyan، مش koen.
+        قبل ما نروح كنجران مع Cak Heru وNing Lia، راجع الجدول ده بسرعة (Arek ⇐ النغوكو العادي):
+        - koen ⇐ kowe · gak ⇐ ora · onok ⇐ ana
+        - kate ⇐ arep · wes ⇐ wis · yok opo ⇐ piye · lapo ⇐ ngapa
+        - ae ⇐ wae · ta ⇐ to · rek = يا جماعة
+        وdudu (مش، قبل الاسم) هي هي في الاتنين.
+        Arek بيبان «ناشف» لسامع من سولو، بس بين الصحاب ده الدفا نفسه.
       ar: |
-        مراجعة سريعة للنفي:
-        - ora (وفي سورابايا gak) قبل الفعل والصفة = tidak: Aku ora ngerti / Aku gak ngerti.
-        - dudu قبل الاسم = bukan: Iki dudu kopiku.
-        - ora ana = gak onok = لا يوجد، rapopo = لا بأس، durung = ليس بعد.
-        وجدول التحويل من سورابايا إلى سولو:
-        koen / awakmu ⇐ kowe · gak ⇐ ora · onok ⇐ ana · kate ⇐ arep · wes ⇐ wis · teko ⇐ saka · yok opo ⇐ piye · lapo ⇐ ngapa · ae ⇐ wae · ta ⇐ to.
-        ومع الكبار: sampeyan لا koen.
+        قبل الذهاب إلى كنجران مع Cak Heru وNing Lia، راجع هذا الجدول (Arek ⇐ النغوكو القياسي):
+        - koen ⇐ kowe · gak ⇐ ora · onok ⇐ ana
+        - kate ⇐ arep · wes ⇐ wis · yok opo ⇐ piye · lapo ⇐ ngapa
+        - ae ⇐ wae · ta ⇐ to · rek = يا جماعة
+        وdudu (ليس، قبل الاسم) واحدة فيهما.
+        يبدو كلام Arek جافًّا لأهل سولو، لكنه بين الأصدقاء ودٌّ خالص.
       en: |
-        Quick negation recap:
-        - ora (Surabaya gak) before verbs and adjectives = tidak: Aku ora ngerti / Aku gak ngerti.
-        - dudu before nouns = bukan: Iki dudu kopiku.
-        - ora ana = gak onok = there isn't. rapopo = no problem. durung = not yet.
-        The Surabaya → Solo table:
-        koen / awakmu ⇒ kowe · gak ⇒ ora · onok ⇒ ana · kate ⇒ arep · wes ⇒ wis · teko ⇒ saka · yok opo ⇒ piye · lapo ⇒ ngapa · ae ⇒ wae · ta ⇒ to.
-        With elders: sampeyan, not koen.
-    grammar: jv.negation.ora-dudu
+        Before we head to Kenjeran with Cak Heru and Ning Lia, a quick table (Arek ⇒ standard ngoko):
+        - koen ⇒ kowe · gak ⇒ ora · onok ⇒ ana
+        - kate ⇒ arep · wes ⇒ wis · yok opo ⇒ piye · lapo ⇒ ngapa
+        - ae ⇒ wae · ta ⇒ to · rek = guys
+        dudu (not, before nouns) is the same in both.
+        Arek sounds blunt to Solo ears; between friends it's pure warmth.
+    grammar: jv.dialect.arek
+    examples:
+      - text: Kate lapo, Cak?
+        ar_eg: 'ناوي تعمل إيه يا معلم؟ (Arek) — العادي: Arep ngapa, Mas?'
+        ar: 'ماذا ستفعل يا أخي؟ (Arek) — القياسي: Arep ngapa, Mas?'
+        en: 'What are you going to do, brother? (Arek) — standard: Arep ngapa, Mas?'
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: koen
-        ar_eg: kowe (إنت)
-        ar: kowe (أنت)
-        en: kowe (you)
-      - text: onok
-        ar_eg: ana (فيه)
-        ar: ana (يوجد)
-        en: ana (there is)
-      - text: kate
-        ar_eg: arep (هـ)
-        ar: arep (سوف)
-        en: arep (going to)
-      - text: lapo
-        ar_eg: ngapa (ليه)
-        ar: ngapa (لماذا)
-        en: ngapa (why)
-      - text: teko
-        ar_eg: saka (من)
-        ar: saka (من)
-        en: saka (from)
-    words: [koen, onok, kate, lapo, teko]
-  - id: e02
     type: multiple_choice
-    question: Aku ___ wong Suroboyo.
     question_meaning:
-      ar_eg: أنا مش من سورابايا. أنهي كلمة تكمّل؟
-      ar: لستُ من سورابايا. أيّ كلمة تُكمل الجملة؟
-      en: I'm not from Surabaya. Which word fills the gap?
-    options: [gak, ora, dudu]
+      ar_eg: (من الحوار) Cak Heru عايز يروح كنجران ليه؟
+      ar: (من الحوار) لماذا يريد Cak Heru الذهاب إلى كنجران؟
+      en: (From the dialogue) Why does Cak Heru want to go to Kenjeran?
+    options: [Tuku kopi, Sinau basa Jawa, Mangan lontong kupang]
     answer: 2
     explain:
-      ar_eg: wong Suroboyo اسم، فبيتنفي بـ dudu.
-      ar: wong Suroboyo اسم فيُنفى بـ dudu.
-      en: wong Suroboyo is a noun, so dudu.
-    words: [dudu]
-  - id: e03
+      ar_eg: قال «Mangan lontong kupang» = ناكل لونتونج كوبانج.
+      ar: قال «Mangan lontong kupang» أي نأكل لونتونغ كوبانغ.
+      en: He said "Mangan lontong kupang" = to eat lontong kupang.
+    words: [mangan]
+  - id: e02
     type: multiple_choice
-    question: Kowe saka ngendi?
+    question: Kupange gak onok, rek.
     question_meaning:
-      ar_eg: أنهي جملة Arek معناها نفس الجملة دي؟
-      ar: أيّ جملة Arek تؤدي معنى هذه الجملة؟
-      en: Which Arek sentence means the same?
-    options: ['Koen kate nang endi?', 'Koen teko endi?', 'Lapo koen?']
-    answer: 1
-    explain:
-      ar_eg: saka ⇐ teko (من)، وkowe ⇐ koen. Kate nang endi = رايح فين.
-      ar: saka ⇐ teko (من)، وkowe ⇐ koen، أما Kate nang endi فمعناها إلى أين.
-      en: saka ⇒ teko (from), kowe ⇒ koen. Kate nang endi = where are you going.
-    words: [teko, saka, koen]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: بتسأل بيّاعة كبيرة في السن «حضرتك كلتي؟». تقول إيه؟
-      ar: تسأل بائعة مسنّة «هل أكلتِ؟». ماذا تقول؟
-      en: You ask an older woman selling at the market whether she has eaten. What do you say?
-    options: ['Sampeyan wis mangan, Bu?', 'Awakmu wis mangan?', 'Koen wis mangan ta, rek?']
+      ar_eg: البيّاع قال كده. أنهي جملة بالنغوكو العادي نفس المعنى؟
+      ar: هكذا قال البائع. أيّ جملة بالنغوكو القياسي تؤدي المعنى نفسه؟
+      en: The seller said this. Which standard ngoko sentence means the same?
+    options: [Kupange ora ana., Kupange wis ana., Kupange dudu kupang.]
     answer: 0
     explain:
-      ar_eg: koen وawakmu وrek للصحاب. مع الكبير sampeyan وBu.
-      ar: koen وawakmu وrek للأقران، ومع الكبير sampeyan وBu.
-      en: koen, awakmu and rek are for friends; an older person gets sampeyan and Bu.
-    words: [sampeyan]
-  - id: e05
+      ar_eg: gak onok = ora ana = مفيش.
+      ar: gak onok = ora ana = لا يوجد.
+      en: gak onok = ora ana = there isn't any.
+    words: [gak, onok, ora ana]
+  - id: e03
     type: listen
-    text: Gak onok, rek.
-    options: ['Dudu aku, rek.', 'Gak onok, rek.', 'Gak ngerti, rek.']
-    answer: 1
-    words: [gak, onok]
+    text: Kate lapo nang Kenjeran?
+    options: ['Kate nang endi, Cak?', 'Lapo koen nang Kenjeran?', 'Kate lapo nang Kenjeran?']
+    answer: 2
+    words: [kate, lapo, nang]
+  - id: e04
+    type: fill_blank
+    sentence: Koen wis mangan ___, Mohamed?
+    meaning:
+      ar_eg: إنت كلت، مش كده يا محمد؟ (Arek)
+      ar: لقد أكلت، أليس كذلك يا محمد؟ (Arek)
+      en: You've eaten, right, Mohamed? (Arek)
+    answers: [ta, to]
+    explain:
+      ar_eg: ta = kan? بتاعة سورابايا. في وسط جاوة to، وماشية برضه.
+      ar: ta = kan? في سورابايا، وفي وسط جاوة to، وكلتاهما مقبولة.
+      en: ta is Surabaya's "right?" (kan?); Central Java says to, also accepted.
+    words: [ta]
+  - id: e05
+    type: fill_blank
+    sentence: Lontong balap ___, Cak.
+    meaning:
+      ar_eg: لونتونج بالاب بس يا معلم.
+      ar: لونتونغ بالاب فقط يا أخي.
+      en: Just lontong balap, Cak.
+    options: [ta, lho, ae]
+    answers: [ae]
+    explain:
+      ar_eg: ae = wae = saja (بس).
+      ar: ae = wae = saja (فقط).
+      en: ae = wae = saja (just).
+    words: [ae]
   - id: e06
-    type: fill_blank
-    sentence: Regane ___ larang.
+    type: listen
+    text: Lontong balap ae, Cak.
+    options: ['Lontong balap ae, Cak.', 'Lontong kupang ae, Cak.', 'Lontong balap ta, Cak?']
+    answer: 0
     meaning:
-      ar_eg: السعر مش غالي.
-      ar: السعر ليس غاليًا.
-      en: The price isn't expensive.
-    options: [ora, durung, dudu]
-    answers: [ora]
-    explain:
-      ar_eg: larang صفة، فبتاخد ora.
-      ar: larang صفة فتُنفى بـ ora.
-      en: larang is an adjective, so ora.
-    words: [ora, larang]
+      ar_eg: لونتونج بالاب بس يا معلم.
+      ar: لونتونغ بالاب فقط يا أخي.
+      en: Just lontong balap, Cak.
+    words: [lontong balap, lontong kupang, ae, ta]
   - id: e07
-    type: fill_blank
-    sentence: ___ kabare, Cak?
-    meaning:
-      ar_eg: أخبارك إيه يا معلم؟ (Arek)
-      ar: كيف حالك يا أخي؟ (Arek)
-      en: How are you, Cak? (Arek)
-    answers: [Yok opo, Yaopo, yok opo, yaopo]
-    explain:
-      ar_eg: yok opo (yaopo) = piye بتاعة سورابايا.
-      ar: yok opo (yaopo) = piye في سورابايا.
-      en: yok opo (yaopo) is Surabaya's piye.
-    words: [yok opo]
+    type: match_pairs
+    pairs:
+      - text: lontong kupang
+        ar_eg: لونتونج بالكوبانج (بلح بحر صغير)
+        ar: لونتونغ بالكوبانغ (محار صغير)
+        en: lontong with tiny clams
+      - text: lontong balap
+        ar_eg: لونتونج بالفول النابت والتوفو
+        ar: لونتونغ بالبراعم والتوفو
+        en: lontong with sprouts and tofu
+      - text: kate
+        ar_eg: هـ / ناوي
+        ar: سوف
+        en: going to
+      - text: lapo
+        ar_eg: ليه / بتعمل إيه
+        ar: لماذا / ماذا تفعل
+        en: why / what for
+      - text: onok
+        ar_eg: فيه
+        ar: يوجد
+        en: there is
+      - text: gak
+        ar_eg: مش
+        ar: لا
+        en: not
+    words: [lontong kupang, lontong balap, kate, lapo, onok, gak]
   - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: 'حوّلها للنغوكو العادي: «Gak onok, rek.»'
-      ar: 'حوّلها إلى النغوكو القياسي: «Gak onok, rek.»'
-      en: 'Turn it into standard ngoko: "Gak onok, rek."'
-    answers: [Ora ana., Ora ana, 'Ora ana, Mas.', 'Ora ana, Mas', Ora ana Mas., Ora ana Mas, 'Ora ana, rek.', 'Ora ana, rek', Ora ana rek., Ora ana rek]
-    explain:
-      ar_eg: gak ⇐ ora، onok ⇐ ana. وrek علامة سورابايا، فممكن تشيلها أو تقول Mas.
-      ar: gak ⇐ ora، وonok ⇐ ana، وrek علامة سورابايا فيمكن حذفها.
-      en: gak ⇒ ora, onok ⇒ ana; rek is a Surabaya marker, so you can drop it.
-    words: [ora ana, gak onok]
-  - id: e09
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: 'حوّلها للنغوكو العادي: «Lapo koen gak mangan?» (مابتاكلش ليه؟)'
-      ar: 'حوّلها إلى النغوكو القياسي: «Lapo koen gak mangan?» (لماذا لا تأكل؟)'
-      en: 'Turn it into standard ngoko: "Lapo koen gak mangan?" (Why aren''t you eating?)'
-    answers: ["Ngapa kowe ora mangan?", Ngapa kowe ora mangan, "Kowe ngapa ora mangan?", Kowe ngapa ora mangan, "Ngapa kowe ra mangan?", Ngapa kowe ra mangan]
-    explain:
-      ar_eg: lapo ⇐ ngapa، koen ⇐ kowe، gak ⇐ ora.
-      ar: lapo ⇐ ngapa، وkoen ⇐ kowe، وgak ⇐ ora.
-      en: lapo ⇒ ngapa, koen ⇒ kowe, gak ⇒ ora.
-    words: [ngapa, kowe, ora, lapo, koen, gak]
-  - id: e10
     type: build_sentence
     source:
-      ar_eg: دي مش قهوتي، دي قهوة Cak Heru.
-      ar: هذه ليست قهوتي، هذه قهوة Cak Heru.
-      en: This isn't my coffee, it's Cak Heru's coffee.
-    answer: Iki dudu kopiku, iki kopine Cak Heru.
-    distractors: [ora, onok]
-    explain:
-      ar_eg: kopiku اسم، فالنفي dudu. وkopine Cak Heru = kopinya Cak Heru.
-      ar: kopiku اسم فيُنفى بـ dudu، وkopine Cak Heru = kopinya Cak Heru.
-      en: kopiku is a noun, so dudu; kopine Cak Heru = kopinya Cak Heru.
-    words: [dudu, kopi]
-  - id: e11
+      ar_eg: مفيش كوبانج يا جماعة. (Arek)
+      ar: لا يوجد كوبانغ يا جماعة. (Arek)
+      en: There's no kupang, guys. (Arek)
+    answer: Kupange gak onok, rek.
+    distractors: [kate, dudu]
+    words: [gak, onok, rek]
+  - id: e09
     type: dictation
-    text: Iki dudu kopiku.
+    text: Koen wis mangan ta, rek?
     meaning:
-      ar_eg: دي مش قهوتي.
-      ar: هذه ليست قهوتي.
-      en: This isn't my coffee.
-    words: [dudu]
-  - id: e12
+      ar_eg: كلت ولا إيه يا صاحبي؟
+      ar: هل أكلتَ يا صاح؟
+      en: You've eaten, right, mate?
+    words: [koen, ta, rek]
+  - id: e10
     type: speaking
-    text: Rapopo, Cak. Aku durung mangan.
+    text: Rek, ayo nang Kenjeran!
     meaning:
-      ar_eg: ولا يهمك يا معلم. أنا لسه ماكلتش.
-      ar: لا بأس يا أخي. لم آكل بعد.
-      en: No problem, Cak. I haven't eaten yet.
-    words: [rapopo, durung]
+      ar_eg: يلا يا جماعة على كنجران!
+      ar: هيا يا جماعة إلى كنجران!
+      en: Guys, let's go to Kenjeran!
+    words: [rek, ayo, nang]
 dialogue:
-  title: Sore nang Kenjeran
+  title: Ayo nang Kenjeran!
   lines:
-    - speaker: Ning Lia
-      text: Mohamed, koen teko endi?
-      ar_eg: محمد، إنت منين؟
-      ar: يا محمد، من أين أنت؟
-      en: Mohamed, where are you from?
-    - speaker: Mohamed
-      text: Aku saka Kairo, Ning. Aku dudu wong Jawa.
-      ar_eg: أنا من القاهرة يا آنسة. أنا مش جاوي.
-      ar: أنا من القاهرة يا آنسة، لستُ جاويًّا.
-      en: I'm from Cairo, Ning. I'm not Javanese.
-    - speaker: Ning Lia
-      text: Lho, koen ngerti basa Suroboyo ta?
-      ar_eg: إيه ده، إنت فاهم كلام سورابايا ولا إيه؟
-      ar: حقًّا؟ أتفهم لهجة سورابايا إذن؟
-      en: Oh! So you understand Surabaya talk?
-    - speaker: Mohamed
-      text: Iya, Ning. Koen, gak, onok, kate… rek!
-      ar_eg: أيوه يا آنسة. koen، gak، onok، kate… rek!
-      ar: 'نعم يا آنسة: koen وgak وonok وkate… rek!'
-      en: Yes, Ning. Koen, gak, onok, kate… rek!
     - speaker: Cak Heru
-      text: Wah, apik, rek! Koen arek Suroboyo!
-      ar_eg: الله، حلو يا صاحبي! إنت ابن سورابايا!
-      ar: رائع يا صاح! أنت من أبناء سورابايا!
-      en: Wow, nice one, mate! You're a Surabaya local!
-souvenir:
-  id: j1.u05.souvenir
-  title: Pantai Kenjeran
-  note:
-    ar_eg: |
-      كنجران هو شط سورابايا: صيادين، ريحة سمك متشوّي، وعيلات بتتمشى العصر جنب البحر. هنا كلام Arek بيبان على حقيقته: بيبان ناشف لسامع من وسط جاوة، بس بين الصحاب ده دفا وهزار مش قلة أدب.
-      دلوقتي إنت فاهم koen وgak وonok وrek. افتكر بس القاعدة الحلوة: مع الصحاب Arek براحتك، ومع الناس اللي متعرفهمش ابدأ بالنغوكو العادي أو sampeyan.
-    ar: |
-      كنجران شاطئ سورابايا: صيادون ورائحة سمك مشوي وعائلات تتنزه عصرًا قرب البحر. وهنا يظهر كلام Arek على حقيقته: يبدو جافًّا لأهل وسط جاوة، لكنه بين الأصدقاء ودٌّ ومزاح لا قلة أدب.
-      أنت الآن تفهم koen وgak وonok وrek. وتذكّر القاعدة: مع الأصدقاء تكلّم Arek كما تشاء، ومع الغرباء ابدأ بالنغوكو القياسي أو sampeyan.
-    en: |
-      Kenjeran is Surabaya's beach: fishing boats, the smell of grilled fish, families strolling by the sea in the late afternoon. It's where Arek speech shows its true colours: blunt to Central Javanese ears, but between friends it's warmth and banter, not rudeness.
-      You now understand koen, gak, onok and rek. Keep the one golden rule: Arek freely with friends, standard ngoko or sampeyan with people you don't know.
+      text: Rek, ayo nang Kenjeran!
+      ar_eg: يلا يا جماعة على كنجران!
+      ar: هيا يا جماعة إلى كنجران!
+      en: Guys, let's go to Kenjeran!
+    - speaker: Ning Lia
+      text: Kate lapo nang Kenjeran, Cak?
+      ar_eg: هنعمل إيه في كنجران يا معلم؟
+      ar: ماذا سنفعل في كنجران يا أخي؟
+      en: What are we going to do at Kenjeran, Cak?
+    - speaker: Cak Heru
+      text: Mangan lontong kupang. Koen wis mangan ta, Mohamed?
+      ar_eg: ناكل لونتونج كوبانج. إنت كلت ولا إيه يا محمد؟
+      ar: نأكل لونتونغ كوبانغ. هل أكلتَ يا محمد؟
+      en: Eat lontong kupang. You've eaten, right, Mohamed?
+    - speaker: Mohamed
+      text: Durung, Cak. Aku durung mangan.
+      ar_eg: لسه يا معلم. أنا لسه ماكلتش.
+      ar: ليس بعد يا أخي. لم آكل بعد.
+      en: Not yet, Cak. I haven't eaten yet.
+    - speaker: Ning Lia
+      text: Lho, durung mangan? Ayo, rek!
+      ar_eg: إيه ده، لسه ماكلتش؟ يلا يا جماعة!
+      ar: حقًّا؟ لم تأكل بعد؟ هيا يا جماعة!
+      en: What, you haven't eaten? Come on, guys!
+new_words:
+  - word: lontong kupang
+    pos: noun
+    ar_eg: رز مضغوط (lontong) مع بلح البحر الصغير (kupang) في صوص، أكلة ساحل سورابايا
+    ar: أرز مضغوط مع محار صغير في مرق، طبق ساحل سورابايا
+    en: rice cake with tiny shellfish in broth, a Surabaya coast dish
+  - word: lontong balap
+    pos: noun
+    ar_eg: lontong بالفول النابت والتوفو، أكلة سورابايا المشهورة
+    ar: أرز مضغوط مع براعم الفول والتوفو، طبق سورابايا الشهير
+    en: rice cake with bean sprouts and tofu, Surabaya's signature dish
 review:
   status: draft
   verified: false

@@ -3,32 +3,32 @@ id: bipa1.u05.l07
 language: id
 title: Monyet di Ubud
 can_do:
-  ar_eg: تسمّي الحيوانات اللي هتشوفها في الإجازة، وتفهم يافطة «خطر».
-  ar: أن تسمّي الحيوانات التي تراها في العطلة، وتفهم لافتة «خطر».
-  en: Name the animals you meet on holiday and understand a danger sign.
+  ar_eg: 'تحكي عن مشي في الغابة: القرود والطيور والتعابين، الشجر والنهر، وتفهم يافطة «خطر».'
+  ar: 'أن تحكي عن نزهة في الغابة: القرود والطيور والأفاعي، والأشجار والنهر، وتفهم لافتة «خطر».'
+  en: 'Tell about a forest walk: monkeys, birds and snakes, trees and the river, and understand a danger sign.'
 slides:
-  - title: Binatang
+  - title: Di hutan monyet
     body:
       ar_eg: |
-        binatang = حيوان. kuda = حصان (جزيرة سومبا مشهورة بالخيل)، sapi = بقرة، ayam = فرخة (sate ayam!)، monyet = قرد، ular = تعبان.
-        terbang = يطير: burung terbang (الطير بيطير).
+        binatang = حيوان. monyet = قرد، ular = تعبان، burung = عصفورة أو طير.
+        pohon = شجرة، sungai = نهر. terbang = يطير: burung terbang.
         bahaya = خطر. على اليافطات: «Bahaya!».
-        في أوبود في بالي فيه غابة قرود. القرود هناك عسل، بس بتخطف الشنط والنضارات!
+        في أوبود في بالي فيه غابة قرود جنب نهر صغير. القرود هناك عسل، بس بتخطف الشنط والنضارات!
       ar: |
-        binatang = حيوان. kuda = حصان (وجزيرة سومبا مشهورة بالخيل)، sapi = بقرة، ayam = دجاجة (sate ayam!)، monyet = قرد، ular = أفعى.
-        terbang = يطير: burung terbang (الطائر يطير).
+        binatang = حيوان. monyet = قرد، ular = أفعى، burung = طائر.
+        pohon = شجرة، sungai = نهر. terbang = يطير: burung terbang.
         bahaya = خطر، وعلى اللافتات: «Bahaya!».
-        في أوبود ببالي غابة قرود؛ قرودها لطيفة لكنها تخطف الحقائب والنظّارات!
+        في أوبود ببالي غابة قرود قرب نهر صغير؛ قرودها لطيفة لكنها تخطف الحقائب والنظّارات!
       en: |
-        binatang = animal. kuda = horse (Sumba island is famous for them), sapi = cow, ayam = chicken (sate ayam!), monyet = monkey, ular = snake.
-        terbang = fly: burung terbang (birds fly).
+        binatang = animal. monyet = monkey, ular = snake, burung = bird.
+        pohon = tree, sungai = river. terbang = fly: burung terbang.
         bahaya = danger; signs say "Bahaya!".
-        Ubud in Bali has a monkey forest. The monkeys are cute, but they grab bags and glasses!
+        Ubud in Bali has a monkey forest by a small river. The monkeys are cute, but they grab bags and glasses!
     examples:
-      - text: Di Ubud ada banyak monyet.
-        ar_eg: في أوبود فيه قرود كتير.
-        ar: في أوبود قرود كثيرة.
-        en: There are lots of monkeys in Ubud.
+      - text: Di Ubud ada banyak monyet di pohon.
+        ar_eg: في أوبود فيه قرود كتير على الشجر.
+        ar: في أوبود قرود كثيرة على الأشجار.
+        en: There are lots of monkeys in the trees in Ubud.
       - text: Burung terbang di langit.
         ar_eg: العصافير بتطير في السما.
         ar: الطيور تطير في السماء.
@@ -45,22 +45,6 @@ exercises:
         ar_eg: حيوان
         ar: حيوان
         en: animal
-      - text: kuda
-        ar_eg: حصان
-        ar: حصان
-        en: horse
-      - text: ayam
-        ar_eg: فرخة
-        ar: دجاجة
-        en: chicken
-      - text: sapi
-        ar_eg: بقرة
-        ar: بقرة
-        en: cow
-    words: [binatang, kuda, ayam, sapi]
-  - id: e02
-    type: match_pairs
-    pairs:
       - text: monyet
         ar_eg: قرد
         ar: قرد
@@ -69,6 +53,22 @@ exercises:
         ar_eg: تعبان
         ar: أفعى
         en: snake
+      - text: burung
+        ar_eg: عصفورة، طير
+        ar: طائر
+        en: bird
+    words: [binatang, monyet, ular, burung]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: pohon
+        ar_eg: شجرة
+        ar: شجرة
+        en: tree
+      - text: sungai
+        ar_eg: نهر
+        ar: نهر
+        en: river
       - text: terbang
         ar_eg: يطير
         ar: يطير
@@ -77,7 +77,7 @@ exercises:
         ar_eg: خطر
         ar: خطر
         en: danger
-    words: [monyet, ular, terbang, bahaya]
+    words: [pohon, sungai, terbang, bahaya]
   - id: e03
     type: listen
     text: Di Ubud ada banyak monyet. Monyet binatang yang lucu.
@@ -85,7 +85,7 @@ exercises:
       ar_eg: في أوبود فيه إيه كتير؟
       ar: ماذا يكثر في أوبود؟
       en: What is there a lot of in Ubud?
-    options: [قرود, تعابين, خيل]
+    options: [قرود, تعابين, عصافير]
     answer: 0
     meaning:
       ar_eg: في أوبود فيه قرود كتير. القرد حيوان عسول.
@@ -101,7 +101,7 @@ exercises:
       en: Birds ___ in the sky.
     options: [terbang, berenang, duduk]
     answers: [terbang]
-    words: [terbang]
+    words: [terbang, burung]
   - id: e05
     type: multiple_choice
     question: Bahaya! Ada ular.
@@ -118,23 +118,23 @@ exercises:
     words: [bahaya, ular]
   - id: e06
     type: fill_blank
-    sentence: Nenek punya banyak ___ di rumah. Mereka tidak bisa terbang tinggi.
+    sentence: Ada banyak ___ di pohon itu.
     meaning:
-      ar_eg: جدتي عندها ___ كتير في البيت. ما بيقدروش يطيروا عالي.
-      ar: لدى جدّتي ___ كثير في البيت، ولا تستطيع الطيران عاليًا.
-      en: Grandma has lots of ___ at home. They can't fly high.
-    options: [ayam, kuda, ular]
-    answers: [ayam]
-    words: [ayam, kuda, ular]
+      ar_eg: فيه ___ كتير على الشجرة دي.
+      ar: على تلك الشجرة ___ كثيرة.
+      en: There are lots of ___ in that tree.
+    options: [burung, sungai, bahaya]
+    answers: [burung]
+    words: [burung, pohon, sungai]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: في سومبا فيه خيل وبقر كتير.
-      ar: في سومبا خيل وأبقار كثيرة.
-      en: In Sumba there are lots of horses and cows.
-    answer: Di Sumba ada banyak kuda dan sapi.
-    distractors: [ayam, terbang]
-    words: [kuda, sapi]
+      ar_eg: بنعوم في النهر.
+      ar: نسبح في النهر.
+      en: We swim in the river.
+    answer: Kami berenang di sungai.
+    distractors: [pohon, ular]
+    words: [sungai]
   - id: e08
     type: translate
     direction: from_target
@@ -143,25 +143,25 @@ exercises:
       ar_eg: [فيه قرد وتعبان على الشجرة دي! خطر!, فيه قرد وتعبان في الشجرة دي! خطر!]
       ar: [على تلك الشجرة قرد وأفعى! خطر!, هناك قرد وأفعى على تلك الشجرة! خطر!]
       en: ['There''s a monkey and a snake in that tree! Danger!', There are monkeys and snakes in that tree! Danger!]
-    words: [monyet, ular, bahaya]
+    words: [monyet, ular, bahaya, pohon]
   - id: e09
     type: speaking
-    text: Ayam tidak bisa terbang tinggi.
+    text: Burung bisa terbang, monyet tidak bisa.
     meaning:
-      ar_eg: الفراخ ما تقدرش تطير عالي.
-      ar: لا يستطيع الدجاج أن يطير عاليًا.
-      en: Chickens can't fly high.
-    words: [ayam, terbang]
+      ar_eg: العصفورة بتطير، والقرد لأ.
+      ar: الطائر يستطيع الطيران، والقرد لا.
+      en: Birds can fly; monkeys can't.
+    words: [burung, terbang, monyet]
   - id: e10
     type: multiple_choice
-    question: Kuda, sapi, dan ayam adalah ___.
-    options: [binatang, bahaya, burung]
+    question: Monyet, ular, dan burung adalah ___.
+    options: [binatang, bahaya, pohon]
     answer: 0
     explain:
-      ar_eg: 'الحصان والبقرة والفرخة: حيوانات = binatang.'
-      ar: 'الحصان والبقرة والدجاجة حيوانات: binatang.'
-      en: 'Horses, cows and chickens are animals: binatang.'
-    words: [binatang, kuda, sapi, ayam]
+      ar_eg: 'القرد والتعبان والعصفورة: حيوانات = binatang.'
+      ar: 'القرد والأفعى والطائر حيوانات: binatang.'
+      en: 'Monkeys, snakes and birds are animals: binatang.'
+    words: [binatang, bahaya, pohon]
 dialogue:
   lines:
     - speaker: Ni Luh
@@ -200,21 +200,6 @@ new_words:
     ar_eg: حيوان
     ar: حيوان
     en: animal
-  - word: kuda
-    pos: noun
-    ar_eg: حصان
-    ar: حصان
-    en: horse
-  - word: ayam
-    pos: noun
-    ar_eg: فرخة
-    ar: دجاجة
-    en: chicken
-  - word: sapi
-    pos: noun
-    ar_eg: بقرة
-    ar: بقرة
-    en: cow
   - word: monyet
     pos: noun
     ar_eg: قرد
@@ -225,6 +210,21 @@ new_words:
     ar_eg: تعبان
     ar: أفعى، ثعبان
     en: snake
+  - word: burung
+    pos: noun
+    ar_eg: عصفورة، طير
+    ar: طائر
+    en: bird
+  - word: pohon
+    pos: noun
+    ar_eg: شجرة
+    ar: شجرة
+    en: tree
+  - word: sungai
+    pos: noun
+    ar_eg: نهر
+    ar: نهر
+    en: river
   - word: terbang
     pos: verb
     ar_eg: يطير

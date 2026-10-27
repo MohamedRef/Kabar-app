@@ -1,198 +1,245 @@
 schema: kabar.lesson/v1
 id: bipa7.u04.l08
 language: id
-title: Dari mana dia?
+title: Menyusun kamus dialek
 can_do:
-  ar_eg: تخمّن المتكلم منين من كلامه، وتشرح الدليل بأدب.
-  ar: أن تخمّن منشأ المتكلّم من كلامه وتعلّل تخمينك بأدب.
-  en: Guess where a speaker is from by how they talk, and explain your clues politely.
+  ar_eg: 'تشارك في عمل قاموس لهجة: تسجّل، تفرّغ، وتكتب المداخل.'
+  ar: 'أن تشارك في إعداد معجم لهجة: التسجيل والتفريغ وكتابة المداخل.'
+  en: 'Help build a dialect dictionary: record, transcribe and write entries.'
 slides:
-  - title: Detektif bahasa
-    grammar: id.register.context
+  - title: Dari rekaman ke kamus
     body:
       ar_eg: |
-        عشان تـ menebak (تخمّن) الـ daerah asal (المنطقة اللي جاي منها):
-        1. دوّر على petunjuk (دليل / قرينة): ضمير؟ أداة؟ لكنة؟
-        2. قول تخمينك بأدب: Dari logatnya, sepertinya Bapak dari Medan, ya?
-        3. لو مش متأكد، اسأل: Maaf, Ibu aslinya dari mana?
-        وإنت بتتكلم، خلّيك netral (محايد): saya / Anda / tidak. ماتقلّدش اللهجة قدّام صاحبها.
+        خطوات عمل قاموس لهجة:
+        1. ahli bahasa بيسجّل penutur asli (المتكلّمين الأصليين) وهم بيحكوا.
+        2. transkripsi = تفريغ التسجيل كتابة. كل النصوص مع بعض بتعمل korpus.
+        3. من الكوربس بنطلّع leksikon اللهجة (كل مفرداتها).
+        4. كل كلمة في القاموس lema، ومعاها معناها وأحيانًا etimologi (أصلها): kata «kitab» berasal dari bahasa Arab.
+        5. في آخر الكتاب glosarium للمصطلحات الصعبة.
       ar: |
-        لكي تـ menebak (تخمّن) الـ daerah asal (المنطقة الأصلية):
-        1. ابحث عن petunjuk (قرينة): ضمير؟ أداة؟ لكنة؟
-        2. قل تخمينك بأدب: Dari logatnya, sepertinya Bapak dari Medan, ya?
-        3. وإن لم تكن متأكّدًا فاسأل: Maaf, Ibu aslinya dari mana?
-        وفي كلامك أنت ابقَ netral (محايدًا): saya / Anda / tidak، ولا تقلّد اللهجة أمام أهلها.
+        خطوات إعداد معجم لهجة:
+        1. يسجّل ahli bahasa أحاديث penutur asli (المتحدّثين الأصليين).
+        2. transkripsi = تفريغ التسجيل كتابةً، ومجموع النصوص korpus.
+        3. من المدوّنة نستخرج leksikon اللهجة (رصيدها من المفردات).
+        4. كلّ كلمة في المعجم lema، يرافقها معناها وأحيانًا etimologi (أصلها): kata «kitab» berasal dari bahasa Arab.
+        5. وفي آخر الكتاب glosarium للمصطلحات الصعبة.
       en: |
-        To menebak (guess) someone's daerah asal (home region):
-        1. Look for a petunjuk (clue): a pronoun? a particle? an accent?
-        2. Say your guess politely: Dari logatnya, sepertinya Bapak dari Medan, ya?
-        3. If you're unsure, ask: Maaf, Ibu aslinya dari mana?
-        And in your own speech stay netral (neutral): saya / Anda / tidak. Don't imitate a dialect in front of its speakers.
+        Steps to build a dialect dictionary:
+        1. An ahli bahasa (linguist) records penutur asli (native speakers) telling stories.
+        2. transkripsi = writing the recording down; all the texts together make a korpus.
+        3. From the corpus we extract the dialect's leksikon (its whole vocabulary).
+        4. Each word in the dictionary is a lema, with its meaning and sometimes its etimologi: kata «kitab» berasal dari bahasa Arab.
+        5. At the back there's a glosarium of difficult terms.
+    examples:
+      - text: Ahli bahasa itu merekam tiga puluh penutur asli.
+        ar_eg: عالمة اللغة دي سجّلت تلاتين متكلّم أصلي.
+        ar: سجّلت تلك اللغوية ثلاثين متحدّثًا أصليًا.
+        en: That linguist recorded thirty native speakers.
+      - text: Transkripsi satu jam rekaman butuh satu hari.
+        ar_eg: تفريغ ساعة تسجيل بياخد يوم كامل.
+        ar: يحتاج تفريغ ساعة من التسجيل يومًا كاملًا.
+        en: Transcribing one hour of recording takes a day.
+      - text: Etimologi kata "kursi" berasal dari bahasa Arab.
+        ar_eg: أصل كلمة «كورسي» عربي.
+        ar: أصل كلمة «kursi» عربيّ.
+        en: The word 'kursi' comes from Arabic.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: menebak
-        ar_eg: يخمّن
-        ar: يخمّن
-        en: to guess
-      - text: petunjuk
-        ar_eg: دليل / قرينة
-        ar: قرينة
-        en: clue, hint
-      - text: daerah asal
-        ar_eg: البلد اللي جاي منها
-        ar: المنطقة الأصلية
-        en: home region
-      - text: netral
-        ar_eg: محايد
-        ar: محايد
-        en: neutral
-    words: [menebak, petunjuk, daerah asal, netral]
+      - text: leksikon
+        ar_eg: مجموع مفردات اللغة
+        ar: معجم المفردات (الرصيد اللفظي)
+        en: lexicon
+      - text: lema
+        ar_eg: مدخل في القاموس
+        ar: مدخل معجمي
+        en: headword, dictionary entry
+      - text: etimologi
+        ar_eg: أصل الكلمة
+        ar: علم أصول الكلمات
+        en: etymology
+      - text: glosarium
+        ar_eg: قايمة مصطلحات بمعانيها
+        ar: مسرد مصطلحات
+        en: glossary
+    words: [leksikon, lema, etimologi, glosarium]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: korpus
+        ar_eg: مدوّنة نصوص للبحث
+        ar: مدوّنة لغوية
+        en: corpus
+      - text: transkripsi
+        ar_eg: تفريغ / كتابة الكلام المسموع
+        ar: تفريغ نصّي، نسخ صوتي
+        en: transcription
+      - text: penutur asli
+        ar_eg: متكلّم أصلي (لغته الأم)
+        ar: متحدّث أصلي
+        en: native speaker
+      - text: ahli bahasa
+        ar_eg: عالم لغة
+        ar: عالم لغويات
+        en: linguist
+    words: [korpus, transkripsi, penutur asli, ahli bahasa]
+  - id: e03
+    type: listen
+    text: Korpus kami sudah berisi dua ratus cerita rakyat.
+    question:
+      ar_eg: إيه اللي فيه ميتين حكاية؟
+      ar: ما الذي يضمّ مئتي حكاية؟
+      en: What holds two hundred tales?
+    options: [مدوّنة النصوص, قايمة المصطلحات, مدخل القاموس]
+    answer: 0
+    meaning:
+      ar_eg: المدوّنة بتاعتنا فيها خلاص ميتين حكاية شعبية.
+      ar: تضمّ مدوّنتنا الآن مئتي حكاية شعبية.
+      en: Our corpus now holds two hundred folk tales.
+    words: [korpus]
+  - id: e04
+    type: fill_blank
+    sentence: Kamus ini punya lima ribu ___.
+    meaning:
+      ar_eg: القاموس ده فيه خمس آلاف ___.
+      ar: يضمّ هذا المعجم خمسة آلاف ___.
+      en: This dictionary has five thousand ___.
+    options: [lema, etimologi, transkripsi]
+    answers: [lema]
+    words: [lema, etimologi, transkripsi]
+  - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي طريقة مؤدّبة تخمّن بيها المتكلم منين؟
-      ar: أيّ طريقة مهذّبة لتخمين منشأ المتكلّم؟
-      en: Which is a polite way to guess where someone is from?
-    options:
-      - Kamu orang kampung, ya?
-      - Logatmu aneh sekali!
-      - Dari logatnya, sepertinya Bapak dari Medan, ya?
+      ar_eg: ليه بنسأل «penutur asli» مش الطلبة؟
+      ar: لماذا نسأل «penutur asli» لا الطلّاب؟
+      en: Why ask 'penutur asli' rather than students?
+    options: [Karena mereka lebih muda., Karena mereka tidak bisa menulis., Karena bahasa itu adalah bahasa ibu mereka.]
     answer: 2
-    words: [menebak]
-  - id: e03
+    explain:
+      ar_eg: المتكلّم الأصلي اتربّى على اللغة دي.
+      ar: المتحدّث الأصلي نشأ على تلك اللغة.
+      en: A native speaker grew up with the language.
+    words: [penutur asli, ahli bahasa]
+  - id: e06
     type: fill_blank
-    sentence: Kata "kitong" adalah ___ bahwa dia dari Papua.
+    sentence: Istilah sulit dijelaskan dalam ___ di halaman belakang.
     meaning:
-      ar_eg: كلمة «kitong» دليل إنه من بابوا.
-      ar: كلمة «kitong» قرينة على أنّه من بابوا.
-      en: The word "kitong" is a clue that he is from Papua.
-    options: [petunjuk, netral, daerah asal]
-    answers: [petunjuk]
-    words: [petunjuk]
-  - id: e04
-    type: listen
-    text: Maaf, Ibu daerah asalnya dari mana?
-    question:
-      ar_eg: المتكلم بيسأل عن إيه؟
-      ar: عمَّ يسأل المتحدّث؟
-      en: What is the speaker asking about?
-    options:
-      - الست جاية منين أصلًا.
-      - الست ساكنة فين دلوقتي.
-      - الست رايحة فين.
-    answer: 0
-    words: [daerah asal]
-  - id: e05
+      ar_eg: المصطلحات الصعبة متشرحة في ___ في الصفحات الأخيرة.
+      ar: تُشرح المصطلحات الصعبة في ___ في الصفحات الأخيرة.
+      en: Difficult terms are explained in the ___ at the back.
+    options: [glosarium, leksikon, korpus]
+    answers: [glosarium]
+    words: [glosarium, leksikon, korpus]
+  - id: e07
     type: build_sentence
     source:
-      ar_eg: لغته محايدة، فصعب أخمّن هو منين.
-      ar: لغته محايدة، فيصعب تخمين منشئه.
-      en: His language is neutral, so it's hard to guess where he's from.
-    answer: Bahasanya netral, jadi sulit menebak asalnya.
-    distractors: [petunjuk, logat]
-    words: [netral, menebak]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: ليه الأحسن ماتقلّدش اللهجة قدّام أهلها؟
-      ar: لماذا الأفضل ألّا تقلّد اللهجة أمام أهلها؟
-      en: Why is it better not to imitate a dialect in front of its speakers?
-    options:
-      - علشان اللهجات ممنوعة.
-      - علشان ممكن تتفهم سخرية.
-      - علشان مش هيفهموك خالص.
-    answer: 1
-    words: [netral]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: خمّنت إنها من جاوة.
-      ar: خمّنتُ أنّها من جاوة.
-      en: I guessed she was from Java.
-    answers:
-      - Saya menebak dia dari Jawa.
-      - Saya menebak bahwa dia dari Jawa.
-      - Aku menebak dia dari Jawa.
-      - Saya menebak dia berasal dari Jawa.
-    words: [menebak]
+      ar_eg: هي بتكتب تفريغ للمقابلة.
+      ar: إنها تكتب تفريغ المقابلة.
+      en: She's writing up the interview transcription.
+    answer: Dia sedang menulis transkripsi wawancara.
+    distractors: [lema, glosarium]
+    words: [transkripsi]
   - id: e08
-    type: speaking
-    text: Petunjuk pertama saya adalah kata "bah" di awal kalimat.
-    meaning:
-      ar_eg: أول دليل عندي هو كلمة «bah» في أول الجملة.
-      ar: قرينتي الأولى كلمة «bah» في مطلع الجملة.
-      en: My first clue is the word "bah" at the start of the sentence.
-    words: [petunjuk]
-  - id: e09
-    type: dictation
-    text: Daerah asal kakek saya adalah Sumatra Barat.
-    meaning:
-      ar_eg: جدّي أصله من سومطرة الغربية.
-      ar: موطن جدّي الأصلي سومطرة الغربية.
-      en: My grandfather's home region is West Sumatra.
-    words: [daerah asal]
-  - id: e10
     type: translate
     direction: from_target
-    source_text: Di kantor, ia berbicara netral, tetapi di rumah logat daerah asalnya kembali.
+    source_text: Leksikon bahasa Melayu Papua banyak menyerap kata dari bahasa daerah.
     answers_meaning:
-      ar_eg:
-        - في الشغل بيتكلم محايد، بس في البيت لهجة بلده بترجع.
-        - في المكتب كلامه محايد، وفي البيت بيرجع للهجة بلده.
-      ar:
-        - يتكلّم في المكتب بلغة محايدة، لكنّ لهجة موطنه تعود في البيت.
-        - لغته في العمل محايدة، وفي البيت تعود إليه لكنة بلده.
-      en:
-        - At the office he speaks neutrally, but at home his regional accent comes back.
-        - At work she sounds neutral, but at home her hometown accent returns.
-    words: [netral, daerah asal]
+      ar_eg: [مفردات الملايو البابوي خدت كلمات كتير من اللغات المحلية, الملايو البابوي استلف كلمات كتير من لغات المناطق]
+      ar: [استوعب الرصيد اللفظي للملايوية البابوية كلمات كثيرة من اللغات المحلية, أخذت مفردات الملايوية البابوية كثيرًا من اللغات المحلية]
+      en: ['Papuan Malay''s lexicon absorbs many words from local languages', The Papuan Malay lexicon has borrowed many words from regional languages]
+    words: [leksikon]
+  - id: e09
+    type: speaking
+    text: Ahli bahasa itu meneliti etimologi nama-nama pulau.
+    meaning:
+      ar_eg: عالم اللغة ده بيدرس أصل أسامي الجزر.
+      ar: يبحث ذلك اللغويّ في أصل أسماء الجزر.
+      en: That linguist studies the etymology of island names.
+    words: [ahli bahasa, etimologi]
+  - id: e10
+    type: multiple_choice
+    question: Apa langkah pertama setelah merekam penutur asli?
+    options: [Transkripsi rekaman., Mencetak glosarium., Menjual kamus.]
+    answer: 0
+    explain:
+      ar_eg: بعد التسجيل بنفرّغ الكلام كتابة.
+      ar: بعد التسجيل نفرّغ الكلام كتابةً.
+      en: After recording, we transcribe.
+    words: [transkripsi, penutur asli, glosarium, lema, korpus, leksikon, etimologi]
 dialogue:
-  title: Permainan tebak asal
   lines:
-    - speaker: Om Nus
-      text: Coba ko tebak. Ibu di perahu itu bilang "Enak, to?" Dari mana dia?
-      ar_eg: يلا خمّن. الست اللي في المركب قالت «Enak, to?». هي منين؟
-      ar: هيّا خمّن. قالت السيّدة في القارب «Enak, to?». من أين هي؟
-      en: Go on, guess. The lady on the boat said "Enak, to?" Where's she from?
+    - speaker: Tante Grace
+      text: Mohamed, bantu saya dengan kamus Melayu Papua ini, ya.
+      ar_eg: يا محمد، ساعدني في قاموس الملايو البابوي ده.
+      ar: يا محمد، ساعدني في معجم الملايوية البابوية هذا.
+      en: Mohamed, help me with this Papuan Malay dictionary.
     - speaker: Mohamed
-      text: Petunjuknya "to". Saya menebak dia dari Jawa Tengah.
-      ar_eg: الدليل هو «to». أخمّن إنها من وسط جاوة.
-      ar: القرينة «to»، وأخمّن أنّها من جاوة الوسطى.
-      en: The clue is "to". I'd guess she's from Central Java.
-    - speaker: Om Nus
-      text: Hebat! Dan saya, daerah asal saya dari mana?
-      ar_eg: برافو! وأنا بقى، أنا أصلي منين؟
-      ar: أحسنت! وأنا، ما موطني الأصلي؟
-      en: Brilliant! And me, where am I from?
+      text: Dengan senang hati, Tante. Rekamannya dari mana?
+      ar_eg: بكل سرور يا طنط. التسجيلات منين؟
+      ar: بكلّ سرور يا خالة. من أين التسجيلات؟
+      en: Happily, Tante. Where are the recordings from?
+    - speaker: Tante Grace
+      text: Dari penutur asli di Sorong dan Fakfak. Tolong buat transkripsinya.
+      ar_eg: من متكلّمين أصليين في سورونج وفاكفاك. اعمل لهم التفريغ لو سمحت.
+      ar: من متحدّثين أصليين في سورونغ وفاكفاك. فرّغها من فضلك.
+      en: From native speakers in Sorong and Fakfak. Please transcribe them.
     - speaker: Mohamed
-      text: Itu terlalu mudah, Om. Dari cara Om bilang "kitong"!
-      ar_eg: دي سهلة قوي يا عمّ. من طريقة ما بتقول «kitong»!
-      ar: هذا سهل جدًّا يا عمّ، من طريقة قولك «kitong»!
-      en: That's too easy, Om. From the way you say "kitong"!
+      text: Baik. Lalu kata "kitong" kita jadikan lema sendiri?
+      ar_eg: حاضر. وكلمة «كيتونج» نعملها مدخل لوحدها؟
+      ar: حسنًا. وهل نجعل كلمة «kitong» مدخلًا مستقلًّا؟
+      en: OK. And do we make 'kitong' its own headword?
+    - speaker: Tante Grace
+      text: 'Ya. Tulis juga etimologinya: dari "kita orang".'
+      ar_eg: 'أيوه. واكتب أصلها كمان: من «كيتا أورانج».'
+      ar: 'نعم، واكتب أصلها أيضًا: من «kita orang».'
+      en: 'Yes. Write its etymology too: from ''kita orang''.'
+    - speaker: Mohamed
+      text: Menarik sekali. Ini pekerjaan seorang ahli bahasa sungguhan!
+      ar_eg: حاجة ممتعة جدًا. ده شغل عالم لغة بجد!
+      ar: ممتع جدًا، هذا عمل لغويّ حقيقيّ!
+      en: Fascinating. This is real linguist's work!
 new_words:
-  - word: menebak
-    pos: verb
-    ar_eg: يخمّن
-    ar: يخمّن
-    en: to guess
-  - word: petunjuk
+  - word: leksikon
     pos: noun
-    ar_eg: دليل / قرينة
-    ar: قرينة
-    en: clue, hint
-  - word: daerah asal
+    ar_eg: مجموع مفردات اللغة
+    ar: معجم المفردات (الرصيد اللفظي)
+    en: lexicon
+  - word: lema
     pos: noun
-    ar_eg: البلد اللي جاي منها
-    ar: المنطقة الأصلية
-    en: home region
-  - word: netral
-    pos: adjective
-    ar_eg: محايد
-    ar: محايد
-    en: neutral
+    ar_eg: مدخل في القاموس
+    ar: مدخل معجمي
+    en: headword, dictionary entry
+  - word: etimologi
+    pos: noun
+    ar_eg: أصل الكلمة
+    ar: علم أصول الكلمات
+    en: etymology
+  - word: glosarium
+    pos: noun
+    ar_eg: قايمة مصطلحات بمعانيها
+    ar: مسرد مصطلحات
+    en: glossary
+  - word: korpus
+    pos: noun
+    ar_eg: مدوّنة نصوص للبحث
+    ar: مدوّنة لغوية
+    en: corpus
+  - word: transkripsi
+    pos: noun
+    ar_eg: تفريغ / كتابة الكلام المسموع
+    ar: تفريغ نصّي، نسخ صوتي
+    en: transcription
+  - word: penutur asli
+    pos: noun
+    ar_eg: متكلّم أصلي (لغته الأم)
+    ar: متحدّث أصلي
+    en: native speaker
+  - word: ahli bahasa
+    pos: noun
+    ar_eg: عالم لغة
+    ar: عالم لغويات
+    en: linguist
 review:
   status: draft
   verified: false
