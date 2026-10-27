@@ -120,7 +120,7 @@ exercises:
       en: The earthquake damaged not only houses but also bridges.
     options: [meletus, merusak, meluap]
     answers: [merusak]
-    words: [merusak, jembatan]
+    words: [merusak, jembatan, hanya]
   - id: e06
     type: build_sentence
     source:
@@ -157,6 +157,20 @@ exercises:
       ar: ليس ذلك دخانًا، بل سحابٌ على قمة رينجاني.
       en: That isn't smoke, it's cloud on Rinjani's summit.
     words: [asap, awan, puncak]
+  - id: e09
+    type: multiple_choice
+    question: Saya hanya minum air putih.
+    question_meaning:
+      ar_eg: هو بيشرب إيه؟
+      ar: ماذا يشرب؟
+      en: What does he drink?
+    options: ['Air putih saja.', 'Kopi dan air putih.', 'Teh manis.']
+    answer: 0
+    explain:
+      ar_eg: hanya = بس / فقط، زي saja بس قبل الفعل.
+      ar: hanya = فقط، مثل saja لكنها تأتي قبل الفعل.
+      en: hanya = only, like saja but placed before the verb.
+    words: [hanya]
 dialogue:
   title: Pagi di Tetebatu
   lines:
@@ -211,6 +225,11 @@ new_words:
     ar_eg: أو / و (baik … maupun = سواء… أو)
     ar: و / أو (baik … maupun = كلٌّ من … و…)
     en: and, or (baik … maupun = both … and)
+  - word: hanya
+    pos: adverb
+    ar_eg: بس / فقط (tidak hanya … tetapi juga = مش بس … كمان)
+    ar: فقط (tidak hanya … tetapi juga = ليس فقط … بل أيضًا)
+    en: only (tidak hanya … tetapi juga = not only … but also)
 review:
   status: draft
   verified: false

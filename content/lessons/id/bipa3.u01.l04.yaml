@@ -98,13 +98,13 @@ exercises:
   - id: e03
     type: listen
     text: Ayah Pak Hamdi meninggal dunia pada hari Jumat.
-    options: ["Ayah Pak Hamdi meninggal dunia pada hari Kamis.", "Ayah Pak Hamdi meninggal dunia sejak hari Jumat.", "Ayah Pak Hamdi meninggal dunia pada hari Jumat."]
+    options: ["Ayah Pak Hamdi mati pada hari Jumat.", "Ayah Pak Hamdi meninggal dunia sejak hari Jumat.", "Ayah Pak Hamdi meninggal dunia pada hari Jumat."]
     answer: 2
     meaning:
       ar_eg: والد الأستاذ حمدي توفّى يوم الجمعة.
       ar: تُوفّي والد السيد حمدي يوم الجمعة.
       en: Pak Hamdi's father passed away on Friday.
-    words: [meninggal dunia, pada]
+    words: [meninggal dunia, pada, mati]
   - id: e04
     type: multiple_choice
     question_meaning:
@@ -117,7 +117,7 @@ exercises:
       ar_eg: mati للحيوانات والحاجات (HP-nya mati = الموبايل فصل). للإنسان meninggal dunia.
       ar: mati للحيوان والأشياء (HP-nya mati = نفدت بطارية الهاتف)، وللإنسان meninggal dunia.
       en: mati is for animals and things (HP-nya mati = the phone died); for people say meninggal dunia.
-    words: [meninggal dunia]
+    words: [meninggal dunia, mati]
   - id: e05
     type: fill_blank
     sentence: ___ Pak Irwan, almarhum guru yang sangat rajin.
@@ -178,6 +178,20 @@ exercises:
       ar: بحسب السيدة يانتي، كان المرحوم إنسانًا طيبًا جدًا.
       en: According to Bu Yanti, the deceased was a very good person.
     words: [menurut, almarhum]
+  - id: e10
+    type: fill_blank
+    sentence: Kucing saya sudah ___. Kami sedih sekali.
+    meaning:
+      ar_eg: القطة بتاعتي ماتت. إحنا زعلانين أوي.
+      ar: ماتت قطتي. نحن حزينون جدًا.
+      en: My cat has died. We're very sad.
+    options: [mati, meninggal dunia, tabah]
+    answers: [mati]
+    explain:
+      ar_eg: للحيوان بنقول mati. meninggal dunia للإنسان بس.
+      ar: يقال للحيوان mati، أما meninggal dunia فللإنسان.
+      en: For an animal, say mati; meninggal dunia is for people.
+    words: [mati]
 dialogue:
   title: Kabar duka
   lines:
@@ -238,6 +252,11 @@ new_words:
     ar_eg: على حسب، في رأي
     ar: وفقًا لـ، بحسب
     en: according to
+  - word: mati
+    pos: verb
+    ar_eg: يموت / يفصل (للحيوان والحاجات)
+    ar: يموت / يتوقف (للحيوان والأشياء)
+    en: to die, go dead (animals, things)
 review:
   status: draft
   verified: false

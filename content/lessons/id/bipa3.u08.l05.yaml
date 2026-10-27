@@ -51,7 +51,11 @@ exercises:
         ar_eg: شنطة طوارئ
         ar: حقيبة طوارئ
         en: emergency bag
-    words: [guncangan, panik, retak, mengungsi, tas siaga]
+      - text: tsunami
+        ar_eg: تسونامي (موجة بحر عملاقة)
+        ar: تسونامي (موجة بحرية عاتية)
+        en: tsunami
+    words: [guncangan, panik, retak, mengungsi, tas siaga, tsunami]
   - id: e02
     type: listen
     text: Kalau ada guncangan, jangan panik.
@@ -87,13 +91,13 @@ exercises:
     words: [deras, meluap]
   - id: e05
     type: fill_blank
-    sentence: Siapkan tas siaga ___ kamu siap kalau terjadi bencana.
+    sentence: Siapkan tas siaga ___ kamu siap kalau terjadi gempa atau tsunami.
     meaning:
-      ar_eg: (اكتب أداة الهدف) جهّز شنطة طوارئ عشان تبقى مستعد لو حصلت كارثة.
-      ar: (اكتب أداة الغاية) جهّز حقيبة طوارئ لكي تكون مستعدًّا إذا وقعت كارثة.
-      en: (Write the purpose word.) Prepare an emergency bag so you're ready if a disaster happens.
+      ar_eg: (اكتب أداة الهدف) جهّز شنطة طوارئ عشان تبقى مستعد لو حصل زلزال أو تسونامي.
+      ar: (اكتب أداة الغاية) جهّز حقيبة طوارئ لكي تكون مستعدًّا إذا وقع زلزال أو تسونامي.
+      en: (Write the purpose word.) Prepare an emergency bag so you're ready if an earthquake or tsunami happens.
     answers: [supaya, agar]
-    words: [tas siaga, bencana]
+    words: [tas siaga, tsunami]
   - id: e06
     type: build_sentence
     source:
@@ -138,6 +142,20 @@ exercises:
       ar: أولًا، احتمِ تحت الطاولة. وبعد أن تتوقف الهزة، اخرج إلى الساحة.
       en: First, take shelter under a table. When the shaking stops, go out to the open field.
     words: [berlindung, guncangan, lapangan]
+  - id: e10
+    type: multiple_choice
+    question: Setelah gempa besar di laut, bisa terjadi tsunami. Warga pantai harus segera mengungsi.
+    question_meaning:
+      ar_eg: إيه اللي ممكن يحصل بعد زلزال كبير في البحر؟
+      ar: ماذا قد يحدث بعد زلزال كبير في البحر؟
+      en: What can happen after a big earthquake at sea?
+    options: ['Tsunami.', 'Sungai meluap.', 'Gunung berapi meletus.']
+    answer: 0
+    explain:
+      ar_eg: tsunami = موجة بحر عملاقة بعد زلزال. warga pantai = سكان الشط.
+      ar: tsunami = موجة بحرية عاتية بعد زلزال، وwarga pantai = سكان الساحل.
+      en: A tsunami is a giant sea wave after a quake. warga pantai = people living on the coast.
+    words: [tsunami, mengungsi]
 dialogue:
   title: Raka datang ke Tetebatu
   lines:
@@ -187,6 +205,11 @@ new_words:
     ar_eg: مشروخ
     ar: متصدّع
     en: cracked
+  - word: tsunami
+    pos: noun
+    ar_eg: تسونامي (موجة بحر عملاقة)
+    ar: تسونامي (موجة بحرية عاتية)
+    en: tsunami
 review:
   status: draft
   verified: false
