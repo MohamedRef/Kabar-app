@@ -1,4 +1,4 @@
-//! Settings → Your data: one click writes everything local to
+//! Settings → Offline & storage: one click writes everything local to
 //! `kabar-export-YYYY-MM-DD.json` (spec §7). The document comes from
 //! [`Store::export`]; this module names, writes and reports the file.
 
@@ -47,7 +47,17 @@ pub fn save(store: &Store, dir: &Path, now_ms: u64, utc_offset_min: i16) -> Resu
 
 #[derive(Clone, Debug, PartialEq)]
 enum Outcome {
-    Saved { path: String, rows: u64 },
+    Saved {
+        path: String,
+        rows: u64,
+    },
+    /// Android: written, and the system "Save to" dialog is showing.
+    Choosing,
+    /// Android: copied to where the learner chose, under this name.
+    Placed {
+        name: Option<String>,
+        rows: u64,
+    },
     Failed(String),
 }
 
@@ -62,6 +72,32 @@ pub fn ExportCard() -> Element {
     let run = move |_| {
         busy.set(true);
         let result = platform_dir().and_then(|dir| save(&db.0.borrow(), &dir, coach.now(), coach.offset()));
+        if crate::platform::SAVE_DIALOG
+            && let Ok((path, rows)) = &result
+        {
+            let (path, rows) = (path.clone(), *rows);
+            let name = path.file_name().map(|n| n.to_string_lossy().into_owned()).unwrap_or_default();
+            if crate::platform::save_document(&path, &name).is_ok() {
+                outcome.set(Some(Outcome::Choosing));
+                spawn(async move {
+                    use crate::platform::SaveState;
+                    let state = loop {
+                        tokio::time::sleep(std::time::Duration::from_millis(300)).await;
+                        match crate::platform::save_state() {
+                            SaveState::Open => {}
+                            other => break other,
+                        }
+                    };
+                    outcome.set(Some(match state {
+                        SaveState::Saved(name) => Outcome::Placed { name, rows },
+                        // Cancelled or failed: the copy in Kabar's folder is still there.
+                        _ => Outcome::Saved { path: path.display().to_string(), rows },
+                    }));
+                    busy.set(false);
+                });
+                return;
+            }
+        }
         outcome.set(Some(match result {
             Ok((path, rows)) => Outcome::Saved { path: path.display().to_string(), rows },
             Err(e) => {
@@ -92,6 +128,17 @@ pub fn ExportCard() -> Element {
                         }
                     }
                 },
+                Some(Outcome::Choosing) => rsx! {
+                    p { class: "muted", role: "status", aria_live: "polite", "{placed_text(ui.lang(), true)}" }
+                },
+                Some(Outcome::Placed { name, rows }) => rsx! {
+                    div { class: "export-result", role: "status", aria_live: "polite",
+                        p { {placed_text(ui.lang(), false).replace("{rows}", &ui.num(rows))} }
+                        if let Some(name) = name {
+                            code { class: "export-path", dir: "ltr", bdi { "{name}" } }
+                        }
+                    }
+                },
                 Some(Outcome::Failed(e)) => rsx! {
                     div { class: "notice", role: "status",
                         p { "{ui.t(Msg::ExportFailed)}" }
@@ -100,6 +147,19 @@ pub fn ExportCard() -> Element {
                 },
             }
         }
+    }
+}
+
+/// Android's "Save to" step: waiting on the dialog, or done.
+fn placed_text(lang: kabar_core::locale::UiLanguage, waiting: bool) -> &'static str {
+    use kabar_core::locale::UiLanguage::*;
+    match (waiting, lang) {
+        (true, ArEg) => "اختار تحفظه فين (التنزيلات أو Drive مثلًا)…",
+        (true, Ar) => "اختر مكان الحفظ (التنزيلات أو Drive مثلًا)…",
+        (true, En) => "Choose where to save it (Downloads or Drive, say)…",
+        (false, ArEg) => "اتحفظ {rows} صف في المكان اللي اخترته، وتقدر تفتحه من تطبيق الملفات:",
+        (false, Ar) => "حُفظ {rows} صفًّا في المكان الذي اخترته، ويمكنك فتحه من تطبيق الملفات:",
+        (false, En) => "Saved {rows} rows where you chose; open it from the Files app:",
     }
 }
 

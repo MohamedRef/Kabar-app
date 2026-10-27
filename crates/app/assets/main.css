@@ -68,6 +68,8 @@ html, body {
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
 }
+/* Follows the root, so Settings › Text size scales everything. */
+body { font-size: 1rem; }
 
 #main { block-size: 100%; }
 
@@ -206,6 +208,32 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .nav-item { justify-content: flex-start; }
 .brand { font-weight: 700; color: var(--indigo); font-size: 1.3rem; padding-block: 0.5rem 1rem; padding-inline: 0.75rem; }
 .app:is([data-width="compact"], [data-width="medium"]) .brand { display: none; }
+
+/* Settings: pinned to the foot of the rail and sidebar; the gear in the phone's top bar */
+.app:not([data-width="compact"]) .nav {
+  position: sticky; inset-block-start: 0; block-size: 100dvh; overflow-y: auto; box-sizing: border-box;
+}
+.app:not([data-width="compact"]) .nav-settings { margin-block-start: auto; }
+.top-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-block: max(0.35rem, env(safe-area-inset-top)) 0.35rem; padding-inline: 1rem 0.5rem;
+  background: var(--surface); border-block-end: 1px solid var(--line);
+}
+.brand-small { font-weight: 700; color: var(--indigo); font-size: 1.1rem; }
+.gear-button { border-color: transparent; background: transparent; display: inline-flex; align-items: center; justify-content: center; block-size: 44px; color: var(--muted); }
+
+/* Settings › Tablet / Mac: the slim rail on wide windows too */
+.app[data-nav="slim"]:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .shell { grid-template-columns: 5.5rem 1fr; }
+.app[data-nav="slim"]:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .nav { padding: 0.5rem; }
+.app[data-nav="slim"]:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]) .nav-item {
+  flex-direction: column; justify-content: center; gap: 0.1rem; font-size: 0.72rem;
+}
+.app[data-nav="slim"] .brand { display: none; }
+
+/* Settings › Look: text size, per device */
+html:has(.app[data-text-size="small"]) { font-size: 93.75%; }
+html:has(.app[data-text-size="large"]) { font-size: 112.5%; }
+html:has(.app[data-text-size="larger"]) { font-size: 125%; }
 
 /* ---------- Cards ---------- */
 .card {
