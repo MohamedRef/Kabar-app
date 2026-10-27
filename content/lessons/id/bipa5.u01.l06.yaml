@@ -104,7 +104,7 @@ exercises:
         ar_eg: إنت متوقع مرتب كام؟
         ar: ما الراتب الذي تتوقّعه؟
         en: What salary do you expect?
-    words: [kelebihan]
+    words: [kelebihan, diri]
   - id: e06
     type: translate
     direction: to_target
@@ -131,12 +131,12 @@ exercises:
     words: [kelebihan]
   - id: e08
     type: speaking
-    text: Saya bersedia ditempatkan di luar kota, karena saya suka tantangan baru.
+    text: Saya bersedia ditempatkan di luar kota, karena saya ingin mengembangkan diri.
     meaning:
-      ar_eg: أنا مستعد أتنقل لمدينة تانية، عشان بحب التحديات الجديدة.
-      ar: أنا مستعدّ للعمل في مدينة أخرى، لأنني أحبّ التحدّيات الجديدة.
-      en: I'm willing to be posted to another city, because I like new challenges.
-    words: [bersedia]
+      ar_eg: أنا مستعد أتنقل لمدينة تانية، عشان عايز أطوّر نفسي.
+      ar: أنا مستعدّ للعمل في مدينة أخرى، لأنني أريد أن أطوّر نفسي.
+      en: I'm willing to be posted to another city, because I want to develop myself.
+    words: [bersedia, diri]
   - id: e09
     type: multiple_choice
     question_meaning:
@@ -153,6 +153,20 @@ exercises:
       ar: إجابة رسمية صادقة، تبيّن كيف تعالج نقطة الضعف.
       en: Formal and honest, and it shows how you're working on the weakness.
     words: [kekurangan]
+  - id: e10
+    type: multiple_choice
+    question: Silakan ceritakan tentang diri Anda.
+    question_meaning:
+      ar_eg: المدير بيطلب منك إيه؟
+      ar: ماذا يطلب منك المدير؟
+      en: What is the interviewer asking you?
+    options: ['Tentang saya sendiri.', 'Tentang gaji.', 'Tentang kantor.']
+    answer: 0
+    explain:
+      ar_eg: diri = نفس. tentang diri Anda = عن نفسك.
+      ar: diri = النفس، وtentang diri Anda = عن نفسك.
+      en: diri = self; tentang diri Anda = about yourself.
+    words: [diri]
 dialogue:
   title: Wawancara dengan Pak Hendra
   lines:
@@ -187,6 +201,11 @@ new_words:
     ar_eg: مستعد / موافق
     ar: مستعدّ، راغب
     en: willing, prepared
+  - word: diri
+    pos: noun
+    ar_eg: نفس / ذات (tentang diri Anda = عن نفسك)
+    ar: النفس / الذات
+    en: self (tentang diri Anda = about yourself)
 review:
   status: draft
   verified: false
