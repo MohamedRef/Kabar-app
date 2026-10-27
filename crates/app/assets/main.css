@@ -288,6 +288,20 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 }
 .nav-item[aria-current="page"] { background: var(--surface-2); color: var(--indigo); font-weight: 600; }
 .nav-icon { inline-size: 1.4rem; text-align: center; }
+/* Sidebar groups (Learn · Practise · Me). The phone's bottom bar ignores
+   the wrappers; the rail shows them as small gaps; the sidebar names them. */
+.nav-group { display: contents; }
+.nav-heading { display: none; }
+.app:not([data-width="compact"]) .nav-group { display: flex; flex-direction: column; gap: 0.25rem; }
+.app:not([data-width="compact"]) .nav-group + .nav-group {
+  margin-block-start: var(--sp-2); padding-block-start: var(--sp-2); border-block-start: 1px solid var(--line-soft);
+}
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]):not([data-nav="slim"]) .nav-heading {
+  display: block; margin: 0; padding-inline: 0.75rem; padding-block: var(--sp-1) 0;
+  font-size: var(--fs-xs); font-weight: 600; color: var(--muted); letter-spacing: 0.02em;
+}
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]):not([data-nav="slim"]) .nav-group + .nav-group { border-block-start: 0; padding-block-start: 0; }
+.app:is([data-width="expanded"], [data-width="large"], [data-width="extra-large"]):not([data-nav="slim"]) .nav-item { min-block-size: 40px; }
 
 /* compact: bottom bar within thumb reach */
 .app[data-width="compact"] .nav {
