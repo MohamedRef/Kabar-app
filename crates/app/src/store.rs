@@ -1348,7 +1348,8 @@ mod tests {
         use kabar_protocol::test::PlacementResult;
         let mut store = Store::open_in_memory().unwrap();
         assert_eq!(store.placement().unwrap(), None);
-        let placed = |level: &str| PlacementResult { start_level: level.into(), sections: vec![] };
+        let placed =
+            |level: &str| PlacementResult { start_level: level.into(), start_unit: None, sections: vec![] };
         store.record_lesson_event("placement", "placed", &placed("bipa2")).unwrap();
         store.record_lesson_event("placement", "placed", &placed("bipa3")).unwrap();
         assert_eq!(store.placement().unwrap(), Some(placed("bipa3")));
