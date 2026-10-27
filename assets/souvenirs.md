@@ -115,7 +115,7 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 | j1.u02 | Tugu | Stasiun Tugu (Tugu station) | `j1.u02.png` |
 | j1.u03 | Alun-alun Kidul | Alun-alun Kidul di malam hari (Alun-alun Kidul at night) | `j1.u03.png` |
 | j1.u04 | Jalan Kaliurang | Jalan Kaliurang (Jalan Kaliurang) | `j1.u04.png` |
-| j1.u05 | Kenjeran | Pantai Kenjeran (Kenjeran beach) | `j1.u05.png` |
+| j1.u05 | Parangtritis | Pantai Parangtritis (Parangtritis beach) | `j1.u05.png` |
 | j1.u06 | Wonokromo | Kebun Binatang Surabaya (Surabaya zoo) | `j1.u06.png` |
 | j1.u07 | Pasar Atom | Pasar Atom (Pasar Atom) | `j1.u07.png` |
 
