@@ -120,6 +120,50 @@ exercises:
       ar: ١، ٢، ٣، ٤، ٥ (بالكراما)
       en: 1, 2, 3, 4, 5 (krama)
     words: [setunggal, kalih, tiga, sekawan, gangsal]
+  - id: e07
+    type: match_pairs
+    pairs:
+      - text: sedasa
+        ar_eg: ١٠ (sepuluh)
+        ar: ١٠ (sepuluh)
+        en: 10 (sepuluh)
+      - text: kalih dasa
+        ar_eg: ٢٠ (dua puluh)
+        ar: ٢٠ (dua puluh)
+        en: 20 (dua puluh)
+      - text: selangkung
+        ar_eg: ٢٥ (selawe)
+        ar: ٢٥ (selawe)
+        en: 25 (selawe)
+      - text: tigang dasa
+        ar_eg: ٣٠ (tiga puluh)
+        ar: ٣٠ (tiga puluh)
+        en: 30 (tiga puluh)
+      - text: sekawan dasa
+        ar_eg: ٤٠ (empat puluh)
+        ar: ٤٠ (empat puluh)
+        en: 40 (empat puluh)
+    words: [sedasa, dasa, selangkung, kalih, sekawan]
+  - id: e08
+    type: multiple_choice
+    question: selawe
+    question_meaning:
+      ar_eg: إيه الكراما من selawe (٢٥)؟
+      ar: ما نظير selawe (٢٥) في الكراما؟
+      en: What's the krama for selawe (25)?
+    options: [sedasa, selangkung, kalih dasa]
+    answer: 1
+    explain:
+      ar_eg: selawe ← selangkung (٢٥). sedasa = ١٠، kalih dasa = ٢٠.
+      ar: selawe ← selangkung (٢٥)، وsedasa = ١٠، وkalih dasa = ٢٠.
+      en: selawe → selangkung (25); sedasa = 10, kalih dasa = 20.
+    words: [selangkung, sedasa, dasa]
+  - id: e09
+    type: listen
+    text: Sedasa kemawon, Bu.
+    options: ['Sedasa kemawon, Bu.', 'Selangkung kemawon, Bu.', 'Kalih dasa kemawon, Bu.']
+    answer: 0
+    words: [sedasa, selangkung, dasa, kemawon]
 dialogue:
   lines:
     - speaker: Mohamed
