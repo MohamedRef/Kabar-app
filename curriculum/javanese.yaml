@@ -43,11 +43,11 @@ levels:
   - id: j1
     code: J1
     vocab_target: 250
-    title: { target: "Suroboyo", en: "Survival ngoko and chat Javanese", ar: "النغوكو للنجاة وجاوية الدردشة" }
+    title: { target: "Malioboro", en: "Survival ngoko and chat Javanese", ar: "النغوكو للنجاة وجاوية الدردشة" }
     requires: [bipa1]
-    journey: { place: Surabaya, kind: train_line, note: "Start of the line: Surabaya Pasar Turi / Gubeng." }
+    journey: { place: Yogyakarta, kind: train_line, note: "Start of the line: Yogyakarta, Malioboro and Tugu station." }
     capability:
-      en: Greet, ask simple questions and read short WhatsApp-style Javanese messages among friends, in ngoko, with a taste of Surabaya Arek.
+      en: Greet, ask simple questions and read short WhatsApp-style Javanese messages among friends, in the everyday ngoko of Jogja's streets.
     skills:
       listening:
         - Recognise everyday ngoko greetings and questions
@@ -62,31 +62,31 @@ levels:
         - Write short chat replies in ngoko
     units:
       - id: j1.u01
-        title: { target: "Piye kabare, rek?", en: "How are you?", ar: "كيف حالك؟" }
-        stop: Pasar Turi
+        title: { target: "Piye kabare, Mas?", en: "How are you?", ar: "كيف حالك؟" }
+        stop: Malioboro
         can_do:
           - Greet friends and answer "Piye kabare?"
-          - Use aku / kowe and address terms (mas, mbak, rek, cak, dhe)
+          - Use aku / kowe and address terms (mas, mbak, dhik, cah, dhe)
         grammar: [jv.pronoun.ngoko, jv.address.terms]
         vocabulary:
           - greetings (sugeng enjing, piye kabare, apik, matur nuwun / suwun)
           - address terms and kinship shortcuts
         arabic_bridge:
           - "kabar ← خبر works in Javanese too: piye kabare? = إزيك؟ / كيف حالك؟"
-        register: ngoko (with Arek flavour)
-        culture: { souvenir: Suroboyo Bus, note: "Surabaya, the City of Heroes, speaks Arek Javanese — direct, egalitarian, quick. 'Rek' (from arek, kid) ends half the sentences." }
+        register: ngoko (Jogja street speech)
+        culture: { souvenir: Angkringan Malioboro, note: "Jogja, the City of Students: Malioboro by day, angkringan carts on the pavement by night. Between friends, 'Piye, cah?' is how it starts." }
         lessons:
           - { id: j1.u01.l01, kind: learn, title: "Sugeng enjing", can_do: "Greet politely at any time of day.", minutes: 7 }
           - { id: j1.u01.l02, kind: learn, title: "Piye kabare?", can_do: "Ask how someone is, thank them and say take care.", minutes: 7 }
           - { id: j1.u01.l03, kind: learn, title: "Aku lan kowe", can_do: "Say I and you in ngoko.", grammar: [jv.pronoun.ngoko], minutes: 7 }
-          - { id: j1.u01.l04, kind: learn, title: "Mas, mbak, cak, rek", can_do: "Address people casually.", grammar: [jv.address.terms], minutes: 7 }
+          - { id: j1.u01.l04, kind: learn, title: "Mas, mbak, dhik, cah", can_do: "Address people casually, including someone younger.", grammar: [jv.address.terms], minutes: 7 }
           - { id: j1.u01.l05, kind: learn, title: "Luwe, ngantuk, lumayan", can_do: "Say you're hungry, thirsty or sleepy, and answer \"piye kabare?\" with more than \"apik\".", minutes: 7 }
           - { id: j1.u01.l06, kind: learn, title: "Ayo, pamit dhisik", can_do: "Greet someone, say you know them, and take your leave politely.", minutes: 7 }
           - { id: j1.u01.l07, kind: review, title: "Ulangan J1.1", can_do: "Greet three different people.", minutes: 7 }
 
       - id: j1.u02
         title: { target: "Sapa kowe?", en: "Who are you?", ar: "مين إنت؟" }
-        stop: Gubeng
+        stop: Tugu
         can_do:
           - Introduce yourself in ngoko
           - Ask apa / sapa / ngendi / kapan / piye / pira
@@ -94,14 +94,14 @@ levels:
         vocabulary:
           - question words with Indonesian equivalents (apa = apa, sapa = siapa, ngendi = di mana, piye = bagaimana, pira = berapa)
           - countries, jobs
-        culture: { souvenir: Gubeng station, note: "Javanese question words are the first thing to learn: piye (how) and pira (how much) are everywhere in chats." }
+        culture: { souvenir: Tugu station, note: "Javanese question words are the first thing to learn: piye (how) and pira (how much) are everywhere in chats." }
         lessons:
           - { id: j1.u02.l01, kind: learn, title: "Apa, sapa, ngendi", can_do: "Ask what, who, where and when.", grammar: [jv.question.words], minutes: 7 }
-          - { id: j1.u02.l02, kind: learn, title: "Pira? Ngapa?", can_do: "Ask how much, why and what someone is doing, also the Surabaya way.", grammar: [jv.question.words], minutes: 7 }
+          - { id: j1.u02.l02, kind: learn, title: "Pira? Ngapa?", can_do: "Ask how much, why and what someone is doing, and catch quick Jogja street questions.", grammar: [jv.question.words], minutes: 7 }
           - { id: j1.u02.l03, kind: learn, title: "Jenengku…", can_do: "Introduce yourself in ngoko.", grammar: [jv.sentence.basic], minutes: 7 }
           - { id: j1.u02.l04, kind: learn, title: "Guru, dokter, penerjemah", can_do: "Say what you do and describe people: old or young, clever, and where they're really from.", minutes: 7 }
           - { id: j1.u02.l05, kind: learn, title: "Tembung lan pitakon", can_do: "Use classroom Javanese: word, sentence, question, answer, example.", minutes: 7 }
-          - { id: j1.u02.l06, kind: practice, title: "Kenalan nang warung kopi", can_do: "Chat with a stranger at a coffee stall.", minutes: 6 }
+          - { id: j1.u02.l06, kind: practice, title: "Kenalan neng warung kopi", can_do: "Chat with a stranger at a coffee stall.", minutes: 6 }
           - { id: j1.u02.l07, kind: review, title: "Ulangan J1.2", can_do: "Introduce yourself and ask back.", minutes: 7 }
 
       - id: j1.u03

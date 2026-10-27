@@ -1895,28 +1895,50 @@ def rails(y):
     return path(f"M126 {y} L898 {y} M126 {y + 20} L898 {y + 20}", stroke=C, sw=5) + "".join(line(140 + k * 40, y - 6, 140 + k * 40, y + 26, D, 6, 0.8) for k in range(20))
 
 
-# ---------------------------------------------------------------- J1 · Surabaya
+# ---------------------------------------------------------------- J1 · Yogyakarta
+
+
+def ceret(x, y, s=1.0, fill="#9C9488"):
+    """An angkringan kettle: round belly, spout and handle."""
+    b = ellipse(0, -40, 46, 40, fill, C, 5) + rect(-22, -92, 44, 16, fill, 4, C, 4)
+    b += path("M40 -50 Q80 -70 92 -100", stroke=C, sw=9) + path("M-40 -70 Q-70 -50 -40 -16", stroke=C, sw=7)
+    return group(b, x, y, s)
 
 
 @scene("j1.u01")
-def suroboyo_bus():
-    """Suroboyo Bus: the red city bus you pay for with plastic bottles."""
-    z = [sky(sun=(760, 250), r=70), city_far(640, 0.3)]
-    z.append(rect(X0, 760, W, 212, "#7A7A80") + path("M126 870 L898 870", stroke=P, sw=8, dash="50 40"))
-    z.append(rect(180, 520, 620, 240, R, 30, C, 7))
-    z.append(windows(220, 560, 6, 1, 70, 80, 22, 0, "#9CC9D9"))
-    z.append(rect(180, 680, 620, 18, P, 0) + rect(700, 560, 70, 190, "#9CC9D9", 6, C, 5))
-    for x in (290, 680):
-        z.append(circle(x, 760, 46, C) + circle(x, 760, 18, "#9C9488"))
-    # a bag of plastic bottles: the fare
-    z.append(group(path("M-50 0 L-40 -110 L40 -110 L50 0Z", P, C, 5, 0.9) + "".join(rect(-34 + k * 24, -96, 18, 60, "#9CC9D9", 6, C, 3) for k in range(3)), 250, 950, 0.9))
-    z.append(person(340, 960, 0.8, O, scarf=I))
+def angkringan():
+    """An angkringan cart on the pavement at night: kettles over charcoal, an oil lamp, a mat."""
+    z = [rect(X0, Y0, W, H, I)]
+    z.append(circle(760, 230, 50, P, op=0.7))
+    z.append(city_far(640, 0.25))
+    z.append(rect(X0, 800, W, 172, "#3A3A48"))
+    # the cart: wooden box on two wheels under a striped tarp roof
+    z.append(rect(300, 600, 360, 200, D, 6, C, 7))
+    z.append(rect(300, 600, 360, 24, "#6E4A30", 0, C, 4))
+    z.append(path("M270 400 L690 400 L720 470 L240 470Z", O, C, 6))
+    for k in range(5):
+        z.append(path(f"M{290 + k * 84} 400 L{276 + k * 90} 470", stroke=P, sw=10, op=0.6))
+    z.append(line(310, 470, 310, 600, C, 8) + line(650, 470, 650, 600, C, 8))
+    z.append(circle(360, 820, 40, "none", C, 9) + circle(600, 820, 40, "none", C, 9))
+    # three kettles over the glowing charcoal on the right
+    z.append(rect(560, 586, 90, 14, R, 3, C, 3) + circle(605, 592, 40, O, op=0.25))
+    z.append(ceret(400, 600, 0.75) + ceret(490, 600, 0.75, "#B8B4C8") + ceret(600, 586, 0.7))
+    z.append(steam(640, 470, 3, 26))
+    # rice parcels (sega kucing) and skewers on the counter
+    for k in range(4):
+        z.append(path(f"M{330 + k * 30} 640 l20 0 l-4 22 l-12 0Z", G, C, 3))
+    z.append(line(470, 660, 520, 630, D, 5) + line(480, 664, 530, 634, D, 5))
+    # the oil lamp and a mat on the pavement with two friends sitting
+    z.append(lantern(340, 515, 0.9))
+    z.append(circle(340, 515, 90, "#F2C94C", op=0.15))
+    z.append(rect(700, 860, 190, 40, K, 4, C, 4))
+    z.append(person(750, 880, 0.6, P, scarf=G) + person(820, 884, 0.6, K))
     return "".join(z)
 
 
 @scene("j1.u02")
-def gubeng():
-    """Gubeng station: a long train hall and a train at the platform."""
+def stasiun_tugu():
+    """Stasiun Tugu: Jogja's long station hall and a train at the platform."""
     z = [sky(sun=(250, 260), r=70)]
     z.append(rect(160, 420, 704, 300, P, 4, C, 7))
     z.append(path("M140 420 Q512 300 884 420Z", "#6E7FA8", C, 7))
