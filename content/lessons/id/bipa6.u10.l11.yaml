@@ -97,17 +97,29 @@ exercises:
     distractors: [penguji, meyakinkan]
     words: [kelemahan]
   - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: ليه الاعتراف بنقطة ضعف بيخلّي ردّك أقوى؟
-      ar: لماذا يقوّي الاعترافُ بموطن ضعف ردَّك؟
-      en: Why does admitting a weakness make your answer stronger?
-    options:
-      - علشان الممتحن بيحب الاعتذار.
-      - علشان كده مش هتتسأل تاني.
-      - علشان بيبيّن إنك فاهم بحثك وأمين.
-    answer: 2
-    words: [meyakinkan, kelemahan]
+    type: match_pairs
+    pairs:
+      - text: spekulasi
+        ar_eg: تخمين
+        ar: تخمين
+        en: speculation
+      - text: persepsi
+        ar_eg: إدراك، طريقة الشوف
+        ar: إدراك، تصوّر
+        en: perception
+      - text: ideologi
+        ar_eg: أيديولوجيا
+        ar: أيديولوجيا
+        en: ideology
+      - text: konvensional
+        ar_eg: تقليدي
+        ar: تقليدي
+        en: conventional
+      - text: filsafat
+        ar_eg: فلسفة
+        ar: فلسفة
+        en: philosophy
+    words: [spekulasi, persepsi, ideologi, konvensional, filsafat]
   - id: e07
     type: translate
     direction: to_target
