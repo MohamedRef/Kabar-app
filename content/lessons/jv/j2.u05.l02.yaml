@@ -81,7 +81,11 @@ exercises:
         ar_eg: ماتنساش!
         ar: لا تنسَ!
         en: Don't forget!
-    words: [mangana, panganen, tukokna, enteni, aja]
+      - text: Rewangi aku!
+        ar_eg: ساعدني!
+        ar: ساعدني!
+        en: Help me!
+    words: [mangana, panganen, tukokna, enteni, aja, rewangi]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -121,14 +125,15 @@ exercises:
     distractors: [aja, mangana]
     words: [tulung, tukokna, gula]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: استناني!
-      ar: انتظرني!
-      en: Wait for me!
-    answers: [Enteni aku!, Enteni aku, 'Enteni aku, ya!', 'Enteni aku, ya', Enteni aku ya!, Enteni aku ya]
-    words: [enteni]
+    type: listen
+    text: Rewangi aku, ya!
+    options: ['Rewangi aku, ya!', 'Enteni aku, ya!', 'Jupukna, ya!']
+    answer: 0
+    meaning:
+      ar_eg: ساعدني، ماشي!
+      ar: ساعدني، اتفقنا!
+      en: Help me, OK?
+    words: [rewangi, enteni, jupukna]
   - id: e07
     type: translate
     direction: from_target

@@ -159,6 +159,53 @@ exercises:
       ar: [قد أكلتُ., أكلتُ, لقد أكلت]
       en: [I've eaten., I have eaten, I already ate]
     words: [kula, sampun, nedha]
+  - id: e07
+    type: match_pairs
+    pairs:
+      - text: unggah-ungguh
+        ar_eg: آداب الكلام
+        ar: آداب الكلام
+        en: speech etiquette
+      - text: ngoko
+        ar_eg: المستوى العادي (≈ إنت)
+        ar: المستوى العادي
+        en: plain level
+      - text: krama
+        ar_eg: المستوى المؤدب (≈ حضرتك)
+        ar: المستوى المهذّب
+        en: polite level
+      - text: kula
+        ar_eg: أنا (krama)
+        ar: أنا (krama)
+        en: I (krama)
+      - text: sampun
+        ar_eg: خلاص (krama)
+        ar: قد (krama)
+        en: already (krama)
+      - text: nedha
+        ar_eg: ياكل (krama)
+        ar: يأكل (krama)
+        en: eat (krama)
+    words: [unggah-ungguh, ngoko, krama, kula, sampun, nedha]
+  - id: e08
+    type: listen
+    text: Kula sinau unggah-ungguh.
+    options: [Kula sinau unggah-ungguh., Kula sinau basa Jawa., Aku sinau unggah-ungguh.]
+    answer: 0
+    meaning:
+      ar_eg: أنا بتعلم آداب الكلام.
+      ar: أتعلّم آداب الكلام.
+      en: I'm learning speech etiquette.
+    words: [kula, unggah-ungguh, sinau]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «آداب الكلام» (إنك تختار المستوى المناسب)؟
+      ar: أيّ كلمة تعني «آداب الكلام» (اختيار المستوى المناسب)؟
+      en: Which word means "speech etiquette" (choosing the right level)?
+    options: [unggah-ungguh, krama, kula]
+    answer: 0
+    words: [unggah-ungguh, krama, kula]
 dialogue:
   title: Tekan Solo Balapan
   lines:

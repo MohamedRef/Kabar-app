@@ -147,11 +147,19 @@ exercises:
         ar_eg: لا مؤاخذة (permisi)
         ar: عفوًا (permisi)
         en: excuse me (permisi)
-    words: [sinten, pundi, menapa, nyuwun sewu]
+      - text: taken
+        ar_eg: يسأل (takon) = bertanya
+        ar: يسأل (takon) = bertanya
+        en: to ask (takon) = bertanya
+      - text: pendhapa
+        ar_eg: قاعة مفتوحة بعواميد
+        ar: قاعة مفتوحة ذات أعمدة
+        en: open pillared hall
+    words: [sinten, pundi, menapa, nyuwun sewu, taken, pendhapa]
   - id: e02
     type: listen
     text: Panjenengan saking pundi?
-    options: ['Panjenengan sinten?', 'Panjenengan badhe tindak pundi?', 'Panjenengan saking pundi?']
+    options: ['Panjenengan sinten?', 'Menapa menika?', 'Panjenengan saking pundi?']
     answer: 2
     words: [saking, pundi]
   - id: e03
@@ -161,13 +169,13 @@ exercises:
       ar_eg: أنهي رد مناسب للسؤال ده؟
       ar: أي جواب يناسب هذا السؤال؟
       en: Which answer fits this question?
-    options: [Menika pendhapa., Kula saking Kairo., Nami kula Mohamed.]
+    options: [Menika pendhapa., Kula saking Kairo., 'Sinten nami panjenengan?']
     answer: 1
     explain:
       ar_eg: saking pundi = منين (dari mana)، فالرد Kula saking Kairo = أنا من القاهرة.
       ar: saking pundi = من أين، فالجواب Kula saking Kairo = أنا من القاهرة.
       en: saking pundi = where from (dari mana), so the answer is Kula saking Kairo = I'm from Cairo.
-    words: [saking, pundi]
+    words: [saking, pundi, pendhapa, sinten]
   - id: e04
     type: fill_blank
     sentence: Nyuwun sewu, Bu, Pasar Klewer ing ___?
@@ -185,24 +193,38 @@ exercises:
   - id: e05
     type: build_sentence
     source:
-      ar_eg: حضرتك رايح فين؟ (لحد كبير)
-      ar: إلى أين تتوجهون؟ (لشخص كبير)
-      en: Where are you going? (to an elder)
-    answer: Panjenengan badhe tindak pundi?
-    distractors: [ngendi, kowe]
+      ar_eg: لا مؤاخذة يا حاجة، عايز أسأل. (بالكراما)
+      ar: عفوًا يا سيدتي، أريد أن أسأل. (بالكراما)
+      en: Excuse me, ma'am, I'd like to ask. (krama)
+    answer: Nyuwun sewu, Bu, kula badhe taken.
+    distractors: [takon, aku]
     explain:
-      ar_eg: panjenengan + badhe (arep) + tindak (يروح، تعظيم) + pundi. ngendi وkowe نغوكو.
-      ar: panjenengan + badhe (arep) + tindak (يذهب، للتعظيم) + pundi، أما ngendi وkowe فمن النغوكو.
-      en: panjenengan + badhe (arep) + tindak (go, honorific) + pundi. ngendi and kowe are ngoko.
-    words: [panjenengan, badhe, pundi]
+      ar_eg: taken = takon (يسأل) بالكراما، وkula بدل aku.
+      ar: taken = takon (يسأل) بالكراما، وkula بدل aku.
+      en: taken is krama for takon (ask), and kula replaces aku.
+    words: [nyuwun sewu, kula, badhe, taken]
   - id: e06
     type: speaking
-    text: Nyuwun sewu, Pak, Pura Mangkunegaran ing pundi?
+    text: Nyuwun sewu, Pak, kula badhe taken. Pura Mangkunegaran ing pundi?
     meaning:
-      ar_eg: لا مؤاخذة يا حاج، بورا مانجكونيجاران فين؟
-      ar: عفوًا يا سيدي، أين بورا مانجكونيغاران؟
-      en: Excuse me, sir, where is Pura Mangkunegaran?
-    words: [nyuwun sewu, pundi]
+      ar_eg: لا مؤاخذة يا حاج، عايز أسأل. بورا مانجكونيجاران فين؟
+      ar: عفوًا يا سيدي، أريد أن أسأل. أين بورا مانجكونيغاران؟
+      en: Excuse me, sir, may I ask? Where is Pura Mangkunegaran?
+    words: [nyuwun sewu, taken, pundi]
+  - id: e07
+    type: multiple_choice
+    question: Menapa menika? — Menika pendhapa.
+    question_meaning:
+      ar_eg: الحوار ده معناه إيه بالإندونيسي؟
+      ar: ما معنى هذا الحوار بالإندونيسية؟
+      en: What does this exchange mean in Indonesian?
+    options: ['Apa ini? — Ini pendapa.', 'Siapa ini? — Ini pendapa.', 'Di mana pendapa? — Di sini.']
+    answer: 0
+    explain:
+      ar_eg: menapa = apa (إيه)، menika = ini (ده). sinten = siapa.
+      ar: menapa = apa، menika = ini، وsinten = siapa.
+      en: menapa = apa, menika = ini; sinten would be siapa.
+    words: [menapa, menika, pendhapa]
 dialogue:
   title: Wonten Pura Mangkunegaran
   lines:

@@ -173,14 +173,15 @@ exercises:
       en: Standard spelling is pedhes with dh; chats write pedes.
     words: [pedhes]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الشاي مسكّر شوية.
-      ar: الشاي حلو قليلًا.
-      en: The tea is a bit sweet.
-    answers: ["Tehe rada legi.", Tehe rada legi]
-    words: [rada, legi]
+    type: listen
+    text: Tehe rada anyep.
+    options: [Tehe rada anyep., Tehe anyep tenan., Tehe rada kecut., Tehe rada pait.]
+    answer: 0
+    meaning:
+      ar_eg: الشاي ماسخ شوية.
+      ar: الشاي بلا طعم قليلًا.
+      en: The tea is a bit bland.
+    words: [rada, anyep, tenan, kecut, pait]
   - id: e08
     type: dictation
     text: Sambel pecel rada pedhes.
@@ -197,6 +198,20 @@ exercises:
       ar: لذيذ حقًا يا سيدتي!
       en: Really tasty, ma'am!
     words: [enak, tenan]
+  - id: e10
+    type: multiple_choice
+    question: Kopine rada ___.
+    question_meaning:
+      ar_eg: القهوة مُرّة شوية.
+      ar: القهوة مُرّة قليلًا.
+      en: The coffee is a bit bitter.
+    options: [pait, kecut, anyep]
+    answer: 0
+    explain:
+      ar_eg: pait = مُرّ، kecut = حامض، anyep = ماسخ.
+      ar: pait = مُرّ، وkecut = حامض، وanyep = بلا طعم.
+      en: pait = bitter, kecut = sour, anyep = bland.
+    words: [rada, pait, kecut, anyep]
 dialogue:
   lines:
     - speaker: Sari

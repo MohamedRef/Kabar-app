@@ -73,14 +73,15 @@ exercises:
     answer: 0
     words: [pitung, atus, juta]
   - id: e04
-    type: fill_blank
-    sentence: HP-ne arep ___ pira, Mas?
+    type: listen
+    text: Ya wis, oleh.
+    options: ['Ya wis, oleh.', 'Durung oleh, Mas.', 'Oleh kurang?']
+    answer: 0
     meaning:
-      ar_eg: ناوي تبيع الموبايل بكام يا أستاذ؟
-      ar: بكم ستبيع الهاتف يا أخي؟
-      en: How much are you selling the phone for, Mas?
-    answers: [diculke, dicul]
-    words: [diculke]
+      ar_eg: خلاص، ماشي.
+      ar: حسنًا، موافق.
+      en: All right, deal.
+    words: [ya wis, durung oleh, oleh kurang]
   - id: e05
     type: fill_blank
     sentence: Rong juta? ___, Cak! Oleh kurang?
@@ -91,18 +92,33 @@ exercises:
     answers: [Larang, larang]
     words: [larang]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: 'اكتب الرسالة بالشكل الكامل: «arp dicul piro?»'
-      ar: 'اكتب الرسالة بصيغتها الكاملة: «arp dicul piro?»'
-      en: 'Write the message in full: "arp dicul piro?"'
-    answers: ["Arep diculke pira?", Arep diculke pira, "Arep diuculke pira?", Arep diuculke pira]
-    explain:
-      ar_eg: arp ⇐ arep، dicul ⇐ diculke، piro ⇐ pira.
-      ar: arp ⇐ arep، وdicul ⇐ diculke، وpiro ⇐ pira.
-      en: arp ⇒ arep, dicul ⇒ diculke, piro ⇒ pira.
-    words: [arep, diculke, pira]
+    type: match_pairs
+    pairs:
+      - text: durung oleh
+        ar_eg: لسه ماينفعش
+        ar: لا يجوز بعد
+        en: not yet (that's too low)
+      - text: ya wis
+        ar_eg: خلاص / ماشي
+        ar: حسنًا
+        en: all right then
+      - text: oleh kurang?
+        ar_eg: ينفع تنزّل؟
+        ar: هل تخفض السعر؟
+        en: can you go lower?
+      - text: juta
+        ar_eg: مليون
+        ar: مليون
+        en: million
+      - text: larang
+        ar_eg: غالي
+        ar: غالٍ
+        en: expensive
+      - text: diculke
+        ar_eg: يتباع
+        ar: يُباع
+        en: sold off
+    words: [durung oleh, ya wis, oleh kurang, juta, larang, diculke]
   - id: e07
     type: build_sentence
     source:

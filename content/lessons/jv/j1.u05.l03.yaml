@@ -98,27 +98,43 @@ exercises:
       en: ae = wae = saja (just).
     words: [ae]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: ناوي تعمل إيه في كنجران؟ (على طريقة سورابايا)
-      ar: ماذا ستفعل في كنجران؟ (بأسلوب سورابايا)
-      en: What are you going to do at Kenjeran? (Surabaya style)
-    answers: ['Kate lapo nang Kenjeran?', Kate lapo nang Kenjeran, 'Koen kate lapo nang Kenjeran?', Koen kate lapo nang Kenjeran, 'Kon kate lapo nang Kenjeran?', Kon kate lapo nang Kenjeran, 'Nang Kenjeran kate lapo?', Nang Kenjeran kate lapo]
-    words: [kate, lapo, nang]
+    type: listen
+    text: Lontong balap ae, Cak.
+    options: ['Lontong balap ae, Cak.', 'Lontong kupang ae, Cak.', 'Lontong balap ta, Cak?']
+    answer: 0
+    meaning:
+      ar_eg: لونتونج بالاب بس يا معلم.
+      ar: لونتونغ بالاب فقط يا أخي.
+      en: Just lontong balap, Cak.
+    words: [lontong balap, lontong kupang, ae, ta]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: قول «Koen wis mangan ta?» بالنغوكو العادي (بتاع سولو ويوجيا).
-      ar: قل «Koen wis mangan ta?» بالنغوكو القياسي (سولو ويوجيا).
-      en: Say "Koen wis mangan ta?" in standard ngoko (Solo / Yogya).
-    answers: ["Kowe wis mangan to?", Kowe wis mangan to, "Kowe wis mangan, to?", "Kowe wis mangan, to", "Kowe wis mangan?", Kowe wis mangan]
-    explain:
-      ar_eg: koen ⇐ kowe، وta ⇐ to.
-      ar: koen ⇐ kowe، وta ⇐ to.
-      en: koen ⇒ kowe, ta ⇒ to.
-    words: [kowe, koen, to, ta]
+    type: match_pairs
+    pairs:
+      - text: lontong kupang
+        ar_eg: لونتونج بالكوبانج (بلح بحر صغير)
+        ar: لونتونغ بالكوبانغ (محار صغير)
+        en: lontong with tiny clams
+      - text: lontong balap
+        ar_eg: لونتونج بالفول النابت والتوفو
+        ar: لونتونغ بالبراعم والتوفو
+        en: lontong with sprouts and tofu
+      - text: kate
+        ar_eg: هـ / ناوي
+        ar: سوف
+        en: going to
+      - text: lapo
+        ar_eg: ليه / بتعمل إيه
+        ar: لماذا / ماذا تفعل
+        en: why / what for
+      - text: onok
+        ar_eg: فيه
+        ar: يوجد
+        en: there is
+      - text: gak
+        ar_eg: مش
+        ar: لا
+        en: not
+    words: [lontong kupang, lontong balap, kate, lapo, onok, gak]
   - id: e08
     type: build_sentence
     source:
