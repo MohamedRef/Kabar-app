@@ -1,218 +1,238 @@
 schema: kabar.lesson/v1
 id: j1.u03.l05
 language: jv
-title: Ulangan J1.3
+title: Ndelok, golek, mbales
 can_do:
-  ar_eg: تقرا شات جروب.
-  ar: أن تقرأ دردشة جماعية.
-  en: Read a group chat.
+  ar_eg: 'تتكلم عن الشات: تشوف، تدوّر، ترد، تطلب، وتبلّغ حد بالخبر.'
+  ar: 'أن تتحدّث عن الدردشة: ترى وتبحث وتردّ وتطلب وتبلّغ أحدًا بالخبر.'
+  en: 'Talk about chatting: see, look for, reply, ask for and let someone know.'
 slides:
-  - title: Maca chat
+  - title: Nang WA
     body:
       ar_eg: |
-        عشان تقرا أي شات جاوي، اعمل تلات خطوات:
-        1. رجّع الكتابة: arp → arep، ws / wes → wis، ng → nang، gk → gak / ora، opo → apa، piro → pira، sek = استنى / الأول.
-        2. دوّر على كلمات الزمن: wis (خلاص)، durung (لسه)، lagi (دلوقتي)، arep (هـ)، isih (لسه مستمر).
-        3. حدد اللغة بالعلامات: ora، karo، sing، ana، nang = جاوي؛ tidak، sama، yang، ada، di = إندونيسي.
+        ndelok = يبص، يشوف (وبالجاوي الفصيح ndeleng): Wis ndelok status WA-ku?
+        golek = يدوّر على. njaluk = يطلب. entuk = ياخد، يجيله (وكمان «مسموح»).
+        mbales (bales) = يرد على رسالة. nyeluk = ينادي حد. ngabari = يبلّغ بالخبر.
+        kesusu = مستعجل: Sek, aku kesusu!
       ar: |
-        لقراءة أي دردشة جاوية اتبع ثلاث خطوات:
-        1. ردّ الإملاء: arp → arep، وws / wes → wis، وng → nang، وgk → gak / ora، وopo → apa، وpiro → pira، وsek = انتظر / أولًا.
-        2. ابحث عن ألفاظ الزمن: wis، durung، lagi، arep، isih.
-        3. حدد اللغة بالعلامات: ora وkaro وsing وana وnang جاوية؛ وtidak وsama وyang وada وdi إندونيسية.
+        ndelok = ينظر، يرى (وبالفصحى الجاوية ndeleng): Wis ndelok status WA-ku?
+        golek = يبحث عن. njaluk = يطلب. entuk = يحصل على (وأيضًا «مسموح»).
+        mbales (bales) = يردّ على رسالة. nyeluk = ينادي أحدًا. ngabari = يبلّغ بالخبر.
+        kesusu = مستعجل: Sek, aku kesusu!
       en: |
-        To read any Javanese chat, take three steps:
-        1. Restore the spelling: arp → arep, ws / wes → wis, ng → nang, gk → gak / ora, opo → apa, piro → pira, sek = hold on / first.
-        2. Find the time words: wis (already), durung (not yet), lagi (now, -ing), arep (going to), isih (still).
-        3. Tag the language by its markers: ora, karo, sing, ana, nang = Javanese; tidak, sama, yang, ada, di = Indonesian.
-    grammar: jv.chat.normalize
+        ndelok = look, see (standard ndeleng): Wis ndelok status WA-ku?
+        golek = look for. njaluk = ask for. entuk = get (also "be allowed").
+        mbales (bales) = reply. nyeluk = call someone over. ngabari = let someone know.
+        kesusu = in a hurry: Sek, aku kesusu!
     examples:
-      - text: ws tekan durung? → Wis tekan durung?
-        ar_eg: وصلت ولا لسه؟
-        ar: هل وصلت أم ليس بعد؟
-        en: Arrived yet?
+      - text: Kowe wis ndelok status WA-ku?
+        ar_eg: شفت الستوري بتاعتي على الواتس؟
+        ar: هل رأيت حالتي على واتساب؟
+        en: Have you seen my WhatsApp status?
+      - text: Aku durung entuk wangsulan.
+        ar_eg: لسه ما جاليش رد.
+        ar: لم يصلني جواب بعد.
+        en: I haven't had an answer yet.
+      - text: Sek, aku lagi kesusu.
+        ar_eg: استنى، أنا مستعجل دلوقتي.
+        ar: لحظة، أنا مستعجل الآن.
+        en: Hold on, I'm in a hurry.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: arp
-        ar_eg: arep (هـ)
-        ar: arep (سوف)
-        en: arep
-      - text: ws
-        ar_eg: wis (خلاص)
-        ar: wis (قد)
-        en: wis
-      - text: opo
-        ar_eg: apa (إيه)
-        ar: apa (ماذا)
-        en: apa
-      - text: piro
-        ar_eg: pira (بكام)
-        ar: pira (بكم)
-        en: pira
-      - text: rapopo
-        ar_eg: ora apa-apa (عادي)
-        ar: ora apa-apa (لا بأس)
-        en: ora apa-apa
-    words: [arep, wis, apa, pira, ora apa-apa]
+      - text: ndelok
+        ar_eg: يبص، يشوف
+        ar: يرى
+        en: look, see
+      - text: golek
+        ar_eg: يدوّر على
+        ar: يبحث عن
+        en: look for
+      - text: entuk
+        ar_eg: ياخد، يجيله
+        ar: يحصل على
+        en: get
+      - text: njaluk
+        ar_eg: يطلب
+        ar: يطلب
+        en: ask for
+    words: [ndelok, golek, entuk, njaluk]
   - id: e02
     type: match_pairs
     pairs:
-      - text: wis
-        ar_eg: sudah (خلاص)
-        ar: sudah (قد)
-        en: sudah (already)
-      - text: durung
-        ar_eg: belum (لسه)
-        ar: belum (ليس بعد)
-        en: belum (not yet)
-      - text: lagi
-        ar_eg: sedang (دلوقتي)
-        ar: sedang (الآن)
-        en: sedang (-ing)
-      - text: isih
-        ar_eg: masih (لسه مستمر)
-        ar: masih (ما زال)
-        en: masih (still)
-    words: [wis, durung, lagi, isih]
+      - text: mbales
+        ar_eg: يرد
+        ar: يردّ
+        en: reply
+      - text: kesusu
+        ar_eg: مستعجل
+        ar: مستعجل
+        en: in a hurry
+      - text: nyeluk
+        ar_eg: ينادي
+        ar: ينادي
+        en: call (someone)
+      - text: ngabari
+        ar_eg: يبلّغ بالخبر
+        ar: يبلّغ
+        en: let know
+    words: [mbales, kesusu, nyeluk, ngabari]
   - id: e03
-    type: multiple_choice
-    question: Kowe wis tekan?
-    question_meaning:
-      ar_eg: إنت لسه في القطر. ترد إزاي؟
-      ar: ما زلت في القطار. بمَ تجيب؟
-      en: You're still on the train. How do you answer?
-    options: ['Durung, isih nang sepur.', Arep turu., Wis.]
-    answer: 0
-    explain:
-      ar_eg: durung = لسه ماوصلتش، وisih nang sepur = لسه في القطر.
-      ar: durung = لم أصل بعد، وisih nang sepur = ما زلت في القطار.
-      en: durung = not yet; isih nang sepur = still on the train.
-    words: [durung, isih]
-  - id: e04
-    type: multiple_choice
-    question: ng prabowo?
-    question_meaning:
-      ar_eg: إيه الكتابة الرسمية للرسالة دي؟
-      ar: ما الإملاء القياسي لهذه الرسالة؟
-      en: What's the standard spelling of this message?
-    options: ['Nang Prabowo?', 'Ngapa Prabowo?', 'Yang Prabowo?']
-    answer: 0
-    explain:
-      ar_eg: ng = nang / neng (لـ / في).
-      ar: ng = nang / neng (إلى / في).
-      en: ng = nang / neng (to / at).
-    words: [nang]
-  - id: e05
     type: listen
-    text: Aku isih nang Tunjungan.
-    options: [Aku isih nang Tunjungan., Aku wis nang Tunjungan., Aku arep nang Tunjungan.]
+    text: Sek, aku lagi kesusu.
+    question:
+      ar_eg: ماله؟
+      ar: ما به؟
+      en: What's up with him?
+    options: [أنا مستعجل دلوقتي, أنا بدوّر على البيت, أنا بطلب قهوة]
     answer: 0
-    words: [isih, nang]
+    meaning:
+      ar_eg: استنى، أنا مستعجل دلوقتي.
+      ar: لحظة، أنا مستعجل الآن.
+      en: Hold on, I'm in a hurry.
+    words: [kesusu, golek, njaluk]
+  - id: e04
+    type: fill_blank
+    sentence: Aku isih ___ omahe Cak Heru.
+    meaning:
+      ar_eg: أنا لسه ___ بيت تشاك هيرو.
+      ar: ما زلت ___ بيت تشاك هيرو.
+      en: I'm still ___ Cak Heru's house.
+    options: [golek, mbales, nyeluk]
+    answers: [golek]
+    words: [golek, mbales, nyeluk]
+  - id: e05
+    type: multiple_choice
+    question: Aku durung entuk wangsulan.
+    question_meaning:
+      ar_eg: معناها إيه؟
+      ar: ما معناها؟
+      en: What does it mean?
+    options: [لسه ما جاليش رد., لسه ما رديتش., لسه ما سألتش.]
+    answer: 0
+    explain:
+      ar_eg: entuk = جالي، أخدت. «ما رديتش» = durung mbales.
+      ar: entuk = حصلت على. أمّا «لم أردّ» فـdurung mbales.
+      en: entuk = get. "I haven't replied" is durung mbales.
+    words: [entuk]
   - id: e06
     type: fill_blank
-    sentence: wes mangan? → ___ mangan?
+    sentence: Kowe wis ___ status WA-ku?
     meaning:
-      ar_eg: كلت؟
-      ar: هل أكلت؟
-      en: Have you eaten?
-    answers: [wis, Wis]
-    words: [wis]
+      ar_eg: إنت ___ الستوري بتاعتي على الواتس؟
+      ar: هل ___ حالتي على واتساب؟
+      en: Have you ___ my WhatsApp status?
+    options: [ndelok, njaluk, kesusu]
+    answers: [ndelok]
+    words: [ndelok, njaluk, kesusu]
   - id: e07
-    type: fill_blank
-    sentence: Aku ___ mangan. Ayo mangan!
-    meaning:
-      ar_eg: لسه ماكلتش. يلا ناكل!
-      ar: لم آكل بعد. هيا نأكل!
-      en: I haven't eaten yet. Let's eat!
-    options: [durung, isih, wis]
-    answers: [durung]
-    words: [durung]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: صاحبك بعتلك رسالة. هتعمل إيه؟
+      ar: أرسل إليك صديقك رسالة. ماذا تفعل؟
+      en: A friend sent you a message. What do you do?
+    options: [Aku mbales., Aku nyeluk., Aku golek.]
+    answer: 0
+    explain:
+      ar_eg: mbales = يرد. nyeluk = ينادي، golek = يدوّر.
+      ar: mbales = يردّ. أمّا nyeluk فينادي، وgolek فيبحث.
+      en: mbales = reply. nyeluk = call over, golek = look for.
+    words: [mbales, nyeluk, golek]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: هنام. خلاص، سلام!
-      ar: سأنام. إلى اللقاء!
-      en: I'm going to sleep. Bye!
-    answer: Aku arep turu. Wis ya!
-    distractors: [tidur, durung]
-    words: [arep, turu, wis]
+      ar_eg: عايز قهوة لو سمحتي يا أبلة.
+      ar: أطلب قهوة من فضلك يا أختي.
+      en: I'd like a coffee, Mbak.
+    answer: Aku njaluk kopi, Mbak.
+    distractors: [entuk, ndelok]
+    words: [njaluk, entuk, ndelok]
   - id: e09
     type: translate
     direction: from_target
-    source_text: sek, aku lagi moco
+    source_text: Aku wis ngabari Mas Dimas.
     answers_meaning:
-      ar_eg: [استنى، أنا بقرا., استنى، بقرا, لحظة، أنا بقرا, استنى، أنا بقرا دلوقتي]
-      ar: [انتظر، أنا أقرأ., لحظة، أنا أقرأ الآن, انتظر، أقرأ الآن]
-      en: ['Hold on, I''m reading.', 'Hold on, I''m reading', 'Wait, I''m reading', 'Just a sec, I''m reading']
-    explain:
-      ar_eg: sek = استنى، lagi = دلوقتي، moco = maca (يقرا).
-      ar: sek = انتظر، وlagi = الآن، وmoco = maca.
-      en: sek = hold on, lagi = -ing, moco = maca (read).
-    words: [sek, lagi, maca]
+      ar_eg: [أنا بلّغت ماس ديماس خلاص, قلت لماس ديماس الخبر]
+      ar: [لقد أبلغت ماس ديماس, أخبرت ماس ديماس بالخبر]
+      en: ['I''ve let Mas Dimas know', 'I''ve told Mas Dimas']
+    words: [ngabari]
   - id: e10
-    type: translate
-    direction: from_target
-    source_text: rek, aku gk ngerti opo2
-    answers_meaning:
-      ar_eg: [يا جدعان، أنا مش فاهم أي حاجة., يا جماعة، مش فاهم حاجة, يا جدعان، مش فاهم أي حاجة]
-      ar: [يا جماعة، لا أفهم شيئًا., يا جماعة، لا أفهم أي شيء]
-      en: ['Guys, I don''t understand anything.', 'Guys, I don''t get anything', 'Mate, I don''t understand anything']
-    words: [gak, ngerti, apa-apa]
-  - id: e11
-    type: dictation
-    text: Wis tekan durung?
-    meaning:
-      ar_eg: وصلت ولا لسه؟
-      ar: هل وصلت أم ليس بعد؟
-      en: Arrived yet?
-    words: [wis, durung]
-  - id: e12
     type: speaking
-    text: Durung, aku isih nang sepur.
+    text: Sek, aku kesusu. Ngabari aku, ya!
     meaning:
-      ar_eg: لسه، أنا لسه في القطر.
-      ar: ليس بعد، ما زلت في القطار.
-      en: Not yet, I'm still on the train.
-    words: [durung, isih]
+      ar_eg: استنى، أنا مستعجل. بلّغني بالخبر!
+      ar: لحظة، أنا مستعجل. أبلغني بالخبر!
+      en: Hold on, I'm in a hurry. Let me know!
+    words: [kesusu, ngabari]
 dialogue:
-  title: Grup "Arek Tunjungan"
   lines:
-    - speaker: Mbak Rara
-      text: rek, ws tekan durung?
-      ar_eg: يا جدعان، وصلتوا ولا لسه؟
-      ar: يا جماعة، هل وصلتم أم ليس بعد؟
-      en: Guys, are you there yet?
     - speaker: Cak Heru
-      text: ws, aku lagi ng Tunjungan
-      ar_eg: أيوه، أنا في تونجونجان دلوقتي.
-      ar: نعم، أنا في تونجونغان الآن.
-      en: Yes, I'm at Tunjungan now.
+      text: Rek, kowe wis ndelok chatku? Kok durung mbales?
+      ar_eg: يا جدع، شفت رسالتي؟ ليه لسه ما رديتش؟
+      ar: يا صاحبي، هل رأيت رسالتي؟ لماذا لم تردّ بعد؟
+      en: Mate, have you seen my message? Why haven't you replied?
     - speaker: Mohamed
-      text: durung, aku isih ng sepur. sek ya
-      ar_eg: لسه، أنا لسه في القطر. استنوا شوية.
-      ar: ليس بعد، ما زلت في القطار. انتظروا قليلًا.
-      en: Not yet, I'm still on the train. Hang on.
-    - speaker: Mbak Rara
-      text: rapopo. aku arp mangan sate karo Cak Heru
-      ar_eg: عادي. أنا هاكل ساتيه مع هيرو.
-      ar: لا بأس. سآكل الساتيه مع هيرو.
-      en: No problem. I'm going to have satay with Heru.
+      text: Sepurane, Cak, aku kesusu. Aku golek kantor pos.
+      ar_eg: معلش يا تشاك، كنت مستعجل. كنت بدوّر على البوستة.
+      ar: عذرًا يا تشاك، كنت مستعجلًا. كنت أبحث عن مكتب البريد.
+      en: Sorry, Cak, I was rushing. I was looking for the post office.
+    - speaker: Cak Heru
+      text: Wis entuk? Jare cedhak stasiun.
+      ar_eg: لقيته؟ بيقولوا قريب من المحطة.
+      ar: هل وجدته؟ يقولون إنه قرب المحطة.
+      en: Found it? They say it's near the station.
     - speaker: Mohamed
-      text: oke, ati2 rek!
-      ar_eg: ماشي، خلوا بالكم يا جدعان!
-      ar: حسنًا، انتبهوا لأنفسكم يا جماعة!
-      en: OK, take care, guys!
-souvenir:
-  id: j1.u03.souvenir
-  title: Jalan Tunjungan di malam hari
-  note:
-    ar_eg: |
-      شارع Tunjungan بالليل هو قلب سورابايا القديم: مباني من أيام الهولنديين، ونور، وناس بتتمشى وتاكل. حتى الأغنية المشهورة «Rek Ayo Rek» بتقول «mlaku-mlaku nang Tunjungan» — يلا نتمشى في تونجونجان! والشباب اللي قاعدين هناك بيبعتوا رسايل خليط إندونيسي وجاوي ومختصرة جدًا. الـ Reader في Kabar بيفكّها، بس دلوقتي إنت كمان بتعرف تفكّها لوحدك. برافو!
-    ar: |
-      شارع Tunjungan ليلًا قلب سورابايا القديم: مبانٍ من العهد الهولندي وأضواء ومتنزهون وباعة طعام. وحتى الأغنية الشهيرة «Rek Ayo Rek» تقول «mlaku-mlaku nang Tunjungan» أي «هيا نتمشى في تونجونغان». والشباب هناك يكتبون رسائل تمزج الإندونيسية بالجاوية باختصار شديد؛ يفكّها Reader في Kabar، وصرت الآن قادرًا على فكّها بنفسك. أحسنت!
-    en: |
-      Jalan Tunjungan at night is old Surabaya's heart: Dutch-era buildings, lights, people strolling and snacking. The famous song "Rek Ayo Rek" even sings "mlaku-mlaku nang Tunjungan" — let's go for a walk on Tunjungan! The young people there text in a heavily abbreviated mix of Indonesian and Javanese. Kabar's Reader normalises it — and now you can do it yourself. Well done!
+      text: Durung. Aku njaluk tulung, ya?
+      ar_eg: لسه. ممكن أطلب مساعدتك؟
+      ar: ليس بعد. هل أطلب مساعدتك؟
+      en: Not yet. Can I ask for your help?
+    - speaker: Cak Heru
+      text: Iya. Sek, tak nyeluk Mas Yudha. Engko tak kabari.
+      ar_eg: ماشي. استنى، هنادي ماس يودا. وهبلّغك بعدين.
+      ar: حسنًا. لحظة، سأنادي ماس يودا، وأبلغك لاحقًا.
+      en: Sure. Hold on, I'll call Mas Yudha. I'll let you know.
+new_words:
+  - word: ndelok / ndeleng
+    pos: verb
+    ar_eg: يبص، يشوف
+    ar: ينظر، يرى
+    en: look, see
+  - word: golek
+    pos: verb
+    ar_eg: يدوّر على
+    ar: يبحث عن
+    en: look for
+  - word: entuk
+    pos: verb
+    ar_eg: ياخد، يجيله؛ مسموح
+    ar: يحصل على؛ مسموح
+    en: get; be allowed
+  - word: njaluk
+    pos: verb
+    ar_eg: يطلب
+    ar: يطلب
+    en: ask for
+  - word: mbales (bales)
+    pos: verb
+    ar_eg: يرد
+    ar: يردّ
+    en: reply
+  - word: kesusu
+    pos: adjective
+    ar_eg: مستعجل
+    ar: مستعجل
+    en: in a hurry
+  - word: nyeluk
+    pos: verb
+    ar_eg: ينادي
+    ar: ينادي
+    en: call (someone over)
+  - word: ngabari
+    pos: verb
+    ar_eg: يبلّغ بالخبر
+    ar: يُخبر، يبلّغ
+    en: let someone know
 review:
   status: draft
   verified: false

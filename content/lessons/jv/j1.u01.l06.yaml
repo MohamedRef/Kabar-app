@@ -1,0 +1,245 @@
+schema: kabar.lesson/v1
+id: j1.u01.l06
+language: jv
+title: Ayo, pamit dhisik
+can_do:
+  ar_eg: تسلّم على حد، تقول إنك تعرفه، وتستأذن تمشي بأدب.
+  ar: أن تحيّي أحدًا، وتقول إنك تعرفه، وتستأذن في الانصراف بلطف.
+  en: Greet someone, say you know them, and take your leave politely.
+slides:
+  - title: Ketemu lan pamit
+    body:
+      ar_eg: |
+        ayo = يلا: Ayo ketemu! = يلا نتقابل!
+        ketemu = يقابل، kenal = يعرف (شخص): Kowe kenal Cak Heru?
+        nyapa = يسلّم على حد ويسأل عليه.
+        pamit = يستأذن ويمشي، وdhisik = الأول: Aku pamit dhisik = أستأذن أنا.
+        rame = زحمة ودوشة، sepi = هادي وفاضي.
+      ar: |
+        ayo = هيّا: Ayo ketemu! = هيّا نلتقِ!
+        ketemu = يلتقي، kenal = يعرف (شخصًا): Kowe kenal Cak Heru?
+        nyapa = يحيّي أحدًا ويسأل عنه.
+        pamit = يستأذن في الانصراف، وdhisik = أوّلًا: Aku pamit dhisik = أستأذن أنا.
+        rame = مزدحم وصاخب، sepi = هادئ وخالٍ.
+      en: |
+        ayo = come on, let's: Ayo ketemu! = Let's meet!
+        ketemu = meet, kenal = know (a person): Kowe kenal Cak Heru?
+        nyapa = greet someone, say hello.
+        pamit = take your leave, and dhisik = first: Aku pamit dhisik = I'll be off first.
+        rame = busy, lively, noisy; sepi = quiet, empty.
+    examples:
+      - text: Aku pamit dhisik, Mas.
+        ar_eg: أستأذن أنا يا ماس.
+        ar: أستأذن في الانصراف يا أخي.
+        en: I'll be off now, Mas.
+      - text: Kowe kenal Cak Heru?
+        ar_eg: إنت تعرف تشاك هيرو؟
+        ar: هل تعرف تشاك هيرو؟
+        en: Do you know Cak Heru?
+      - text: Esuk sepi, awan rame.
+        ar_eg: الصبح هادي، والضهر زحمة.
+        ar: الصباح هادئ، والظهيرة مزدحمة.
+        en: Quiet in the morning, busy at midday.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: ayo
+        ar_eg: يلا
+        ar: هيّا
+        en: come on, let's
+      - text: dhisik
+        ar_eg: الأول
+        ar: أوّلًا
+        en: first
+      - text: ketemu
+        ar_eg: يقابل
+        ar: يلتقي
+        en: meet
+      - text: kenal
+        ar_eg: يعرف (حد)
+        ar: يعرف (شخصًا)
+        en: know (a person)
+    words: [ayo, dhisik, ketemu, kenal]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: nyapa
+        ar_eg: يسلّم على
+        ar: يحيّي
+        en: greet
+      - text: pamit
+        ar_eg: يستأذن ويمشي
+        ar: يستأذن في الانصراف
+        en: take your leave
+      - text: rame
+        ar_eg: زحمة ودوشة
+        ar: مزدحم وصاخب
+        en: busy, lively
+      - text: sepi
+        ar_eg: هادي وفاضي
+        ar: هادئ وخالٍ
+        en: quiet, empty
+    words: [nyapa, pamit, rame, sepi]
+  - id: e03
+    type: listen
+    text: Aku pamit dhisik, Mas.
+    question:
+      ar_eg: بيقول إيه؟
+      ar: ماذا يقول؟
+      en: What is he saying?
+    options: [أستأذن أنا يا ماس, يلا نتقابل يا ماس, صباح الخير يا ماس]
+    answer: 0
+    meaning:
+      ar_eg: أستأذن أنا يا ماس.
+      ar: أستأذن في الانصراف يا أخي.
+      en: I'll be off now, Mas.
+    words: [pamit, dhisik, ayo]
+  - id: e04
+    type: fill_blank
+    sentence: Esuk sepi, awan ___.
+    meaning:
+      ar_eg: الصبح هادي، والضهر ___.
+      ar: الصباح هادئ، والظهيرة ___.
+      en: Quiet in the morning, ___ at midday.
+    options: [rame, kenal, pamit]
+    answers: [rame]
+    words: [rame, sepi, kenal, pamit]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «يلا!» بالجاوي؟
+      ar: كيف تقول «هيّا!» بالجاوية؟
+      en: How do you say "Come on!"?
+    options: [Ayo!, Pamit!, Sepi!]
+    answer: 0
+    explain:
+      ar_eg: ayo = يلا. pamit = يستأذن، sepi = هادي.
+      ar: ayo = هيّا. أمّا pamit فيستأذن، وsepi فهادئ.
+      en: ayo = come on. pamit = take leave, sepi = quiet.
+    words: [ayo, pamit, sepi]
+  - id: e06
+    type: fill_blank
+    sentence: 'Aku ___ Pakdhe: «Sugeng enjing, Pakdhe!»'
+    meaning:
+      ar_eg: 'أنا ___ عمّو: «صباح الخير يا عمّو!»'
+      ar: 'أنا ___ العمّ: «صباح الخير يا عمّ!»'
+      en: 'I ___ Pakdhe: "Good morning, Pakdhe!"'
+    options: [nyapa, pamit, ketemu]
+    answers: [nyapa]
+    words: [nyapa, pamit, ketemu]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: «المكان هادي وفاضي» — أنهي كلمة؟
+      ar: «المكان هادئ وخالٍ» — أيّ كلمة؟
+      en: '"The place is quiet and empty" — which word?'
+    options: [rame, sepi, nyapa]
+    answer: 1
+    explain:
+      ar_eg: sepi = هادي وفاضي، وعكسها rame.
+      ar: sepi = هادئ وخالٍ، وعكسها rame.
+      en: sepi = quiet, empty; the opposite is rame.
+    words: [sepi, rame, nyapa]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: يلا نتقابل الصبح يا أبلة.
+      ar: هيّا نلتقِ صباحًا يا أختي.
+      en: Let's meet in the morning, Mbak.
+    answer: Ayo ketemu esuk, Mbak.
+    distractors: [pamit, sepi]
+    words: [ayo, ketemu]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Kowe kenal Cak Heru?
+    answers_meaning:
+      ar_eg: [إنت تعرف تشاك هيرو؟, تعرف تشاك هيرو؟]
+      ar: [هل تعرف تشاك هيرو؟, أتعرف تشاك هيرو؟]
+      en: ['Do you know Cak Heru?', Do you know Cak Heru]
+    words: [kenal]
+  - id: e10
+    type: speaking
+    text: Aku pamit dhisik. Ayo ketemu bengi!
+    meaning:
+      ar_eg: أستأذن أنا. يلا نتقابل بالليل!
+      ar: أستأذن الآن. هيّا نلتقِ مساءً!
+      en: I'll be off. Let's meet tonight!
+    words: [pamit, dhisik, ayo, ketemu]
+dialogue:
+  lines:
+    - speaker: Mas Dimas
+      text: Mohamed! Sugeng sonten. Kowe kenal Cak Heru?
+      ar_eg: يا محمد! مساء الخير. إنت تعرف تشاك هيرو؟
+      ar: محمد! مساء الخير. هل تعرف تشاك هيرو؟
+      en: Mohamed! Good afternoon. Do you know Cak Heru?
+    - speaker: Mohamed
+      text: Kenal, Mas. Aku ketemu Cak Heru esuk.
+      ar_eg: أعرفه يا ماس. قابلت تشاك هيرو الصبح.
+      ar: أعرفه يا أخي. التقيت تشاك هيرو صباحًا.
+      en: Yes, Mas. I met Cak Heru this morning.
+    - speaker: Mas Dimas
+      text: Apik! Warunge rame banget, ya?
+      ar_eg: حلو! المحل زحمة أوي، صح؟
+      ar: جميل! المقهى مزدحم جدًّا، أليس كذلك؟
+      en: Great! The stall is really busy, right?
+    - speaker: Mohamed
+      text: Iya, rame. Omahku sepi.
+      ar_eg: أيوه، زحمة. بيتي هادي.
+      ar: نعم، مزدحم. أمّا بيتي فهادئ.
+      en: Yes, busy. My place is quiet.
+    - speaker: Mas Dimas
+      text: Aku pamit dhisik, ya. Ayo ketemu maneh!
+      ar_eg: أستأذن أنا بقى. يلا نتقابل تاني!
+      ar: أستأذن الآن. هيّا نلتقِ مرّة أخرى!
+      en: I'll be off now. Let's meet again!
+    - speaker: Mohamed
+      text: Iya, Mas. Ati-ati!
+      ar_eg: ماشي يا ماس. خلّي بالك!
+      ar: حسنًا يا أخي. انتبه لنفسك!
+      en: Sure, Mas. Take care!
+new_words:
+  - word: ayo
+    pos: particle
+    ar_eg: يلا
+    ar: هيّا
+    en: come on, let's
+  - word: dhisik
+    pos: adverb
+    ar_eg: الأول، قبل
+    ar: أوّلًا، قبلُ
+    en: first, beforehand
+  - word: ketemu
+    pos: verb
+    ar_eg: يقابل
+    ar: يلتقي
+    en: meet
+  - word: kenal
+    pos: verb
+    ar_eg: يعرف (شخص)
+    ar: يعرف (شخصًا)
+    en: know (a person)
+  - word: nyapa
+    pos: verb
+    ar_eg: يسلّم على
+    ar: يحيّي
+    en: greet, say hello to
+  - word: pamit
+    pos: verb
+    ar_eg: يستأذن ويمشي
+    ar: يستأذن في الانصراف
+    en: take your leave, say goodbye
+  - word: rame
+    pos: adjective
+    ar_eg: زحمة ودوشة
+    ar: مزدحم وصاخب
+    en: busy, lively, noisy
+  - word: sepi
+    pos: adjective
+    ar_eg: هادي وفاضي
+    ar: هادئ وخالٍ
+    en: quiet, empty
+review:
+  status: draft
+  verified: false
