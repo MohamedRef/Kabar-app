@@ -91,35 +91,51 @@ exercises:
     answers: [sambil]
     words: [sambil, pemandangan]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا قدام المعبد.
-      ar: أنا أمام المعبد.
-      en: I'm in front of the temple.
-    answers: [Saya di depan pura., Saya di depan pura, Saya ada di depan pura., Aku di depan pura., Aku di depan pura, Aku ada di depan pura.]
-    explain:
-      ar_eg: المعبد في بالي اسمه pura. ومش محتاج فعل «يكون»؛ Saya di depan pura كفاية.
-      ar: المعبد الهندوسي في بالي يسمّى pura، ولا حاجة إلى فعل كون.
-      en: A Balinese temple is a pura; no "to be" verb needed.
-    words: [di depan, pura]
+    type: listen
+    text: Saya bayar tunai, ya, Pak.
+    options: ['Saya bayar tunai, ya, Pak.', 'Saya bayar pakai aplikasi, ya, Pak.', 'Saya pakai helm, ya, Pak.']
+    answer: 0
+    meaning:
+      ar_eg: هدفع كاش يا أسطى.
+      ar: سأدفع نقدًا يا سيدي.
+      en: I'll pay cash, sir.
+    words: [tunai, aplikasi, helm]
   - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: استنى خمس دقايق، ماشي؟
-      ar: انتظر خمس دقائق، اتفقنا؟
-      en: Wait five minutes, OK?
-    answers: ['Tunggu lima menit, ya.', 'Tunggu lima menit, ya', Tunggu lima menit ya, 'Tunggu 5 menit, ya.', Tunggu 5 menit ya]
-    words: [tunggu, menit]
+    type: match_pairs
+    pairs:
+      - text: aplikasi
+        ar_eg: أبلكيشن
+        ar: تطبيق
+        en: app
+      - text: helm
+        ar_eg: خوذة
+        ar: خوذة
+        en: helmet
+      - text: tunai
+        ar_eg: كاش
+        ar: نقدًا
+        en: cash
+      - text: ojek
+        ar_eg: موتوسيكل أجرة
+        ar: درّاجة نارية أجرة
+        en: motorbike taxi
+      - text: sopir
+        ar_eg: سوّاق
+        ar: سائق
+        en: driver
+      - text: pelan-pelan
+        ar_eg: بالراحة
+        ar: ببطء
+        en: slowly
+    words: [aplikasi, helm, tunai, ojek, sopir, pelan-pelan]
   - id: e09
     type: dictation
-    text: Tolong pelan-pelan saja, Pak.
+    text: Ini helmnya, Mas. Tolong pakai, ya.
     meaning:
-      ar_eg: لو سمحت بالراحة يا أسطى.
-      ar: تمهّل من فضلك يا سيدي.
-      en: Please go slowly, sir.
-    words: [pelan-pelan]
+      ar_eg: اتفضل الخوذة يا باشا. البسها لو سمحت.
+      ar: هذه خوذتك يا أخي. ارتدها من فضلك.
+      en: Here's your helmet, Mas. Please put it on.
+    words: [helm, tolong, pakai]
   - id: e10
     type: speaking
     text: Selamat sore, Pak. Saya di depan pura, pakai baju biru.
