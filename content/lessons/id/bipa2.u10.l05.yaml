@@ -1,209 +1,236 @@
 schema: kabar.lesson/v1
 id: bipa2.u10.l05
 language: id
-title: Ke dokter
+title: Alergi dan gatal
 can_do:
-  ar_eg: تروح للدكتور وتشرح له مشكلتك.
-  ar: أن تزور الطبيب وتشرح له مشكلتك.
-  en: See a doctor and explain the problem.
+  ar_eg: 'تقول للدكتور عندك إيه: جرح، كسر، حساسية، هرش أو برد، وتفهم الحقنة والفيتامين.'
+  ar: 'أن تخبر الطبيب بما لديك: جرح أو كسر أو حساسية أو حكّة أو زكام، وتفهم الحقنة والفيتامين.'
+  en: 'Tell the doctor what''s wrong: a cut, a break, an allergy, an itch or flu, and follow talk of injections and vitamins.'
 slides:
   - title: Di klinik
     body:
       ar_eg: |
-        عند الدكتور (وبتناديه «Dok»):
-        - هيسألك: Sakit apa? (عندك إيه؟) — Sudah berapa lama? (بقالك قد إيه؟)
-        - ترد: Saya demam dan sakit tenggorokan. — Sejak dua hari yang lalu.
-        - هيقولك: Coba buka mulutnya (افتح بقك) — Ini resepnya (دي الروشتة) — Banyak minum air putih dan istirahat (اشرب مية كتير وارتاح).
-        كلمة dokter من الهولندي، بس فيه كلمة قديمة من العربي: tabib ← «طبيب»، بتسمعها للمعالج الشعبي.
+        pasien = المريض اللي عند الدكتور. luka = جرح، patah = مكسور: Kaki saya patah.
+        suntik = حقنة. vitamin = فيتامين.
+        alergi = حساسية: Saya alergi kacang. gatal = بيهرش (بياكلني). flu = برد، إنفلونزا.
       ar: |
-        عند الطبيب (وتناديه «Dok»):
-        - يسألك: Sakit apa؟ (ما بك؟) — Sudah berapa lama؟ (منذ متى؟)
-        - تجيب: Saya demam dan sakit tenggorokan. — Sejak dua hari yang lalu.
-        - يقول لك: Coba buka mulutnya (افتح فمك) — Ini resepnya (هذه الوصفة) — Banyak minum air putih dan istirahat (أكثر من شرب الماء واسترح).
-        وكلمة dokter هولندية، أما tabib فمن العربية «طبيب» وتُقال للمعالج الشعبي.
+        pasien = المريض عند الطبيب. luka = جرح، patah = مكسور: Kaki saya patah.
+        suntik = حقنة. vitamin = فيتامين.
+        alergi = حساسية: Saya alergi kacang. gatal = يسبّب حكّة. flu = زكام، إنفلونزا.
       en: |
-        At the doctor's (address him as "Dok"):
-        - He asks: Sakit apa? (What's wrong?) — Sudah berapa lama? (How long?)
-        - You answer: Saya demam dan sakit tenggorokan. — Sejak dua hari yang lalu.
-        - He says: Coba buka mulutnya (open your mouth) — Ini resepnya (here's the prescription) — Banyak minum air putih dan istirahat (drink plenty of water and rest).
-        dokter is from Dutch; the older tabib comes from Arabic «طبيب» and is used for traditional healers.
-    grammar: id.pattern.sakit
+        pasien = patient. luka = wound, cut, patah = broken: Kaki saya patah.
+        suntik = injection. vitamin = vitamin.
+        alergi = allergy: Saya alergi kacang. gatal = itchy. flu = flu, a cold.
     examples:
-      - text: Dok, saya demam sejak kemarin.
-        ar_eg: يا دكتور، عندي سخونية من امبارح.
-        ar: يا دكتور، عندي حمّى منذ أمس.
-        en: Doctor, I've had a fever since yesterday.
+      - text: Kaki saya patah waktu main bola.
+        ar_eg: رجلي اتكسرت وأنا بلعب كورة.
+        ar: انكسرت ساقي وأنا ألعب الكرة.
+        en: I broke my leg playing football.
+      - text: Saya alergi kacang. Kulit saya gatal.
+        ar_eg: عندي حساسية من الفول السوداني. جلدي بيهرشني.
+        ar: لديّ حساسية من الفول السوداني. جلدي يحكّني.
+        en: I'm allergic to peanuts. My skin itches.
+      - text: Pasien itu perlu suntik.
+        ar_eg: المريض ده محتاج حقنة.
+        ar: يحتاج ذلك المريض إلى حقنة.
+        en: That patient needs an injection.
 exercises:
   - id: e01
-    type: multiple_choice
-    question: Selamat pagi, selamat datang di klinik. Sakit apa, Pak?
-    question_meaning:
-      ar_eg: الدكتور بيسألك. أنهي رد أحسن؟
-      ar: يسألك الطبيب. أيّ ردّ أنسب؟
-      en: The doctor asks. Which is the best answer?
-    options: [Saya dari Mesir., Tiga kali sehari., Saya demam dan sakit tenggorokan.]
-    answer: 2
-    words: [klinik, demam, tenggorokan]
-  - id: e02
-    type: listen
-    text: Coba buka mulutnya.
-    options: [Coba buka mulutnya., Coba buka bukunya., Coba buka pintunya.]
-    answer: 0
-    meaning:
-      ar_eg: افتح بقك.
-      ar: افتح فمك.
-      en: Open your mouth, please.
-    words: [mulut, buka]
-  - id: e03
-    type: fill_blank
-    sentence: Saya sakit tenggorokan ___ dua hari yang lalu.
-    meaning:
-      ar_eg: عندي التهاب زور من يومين.
-      ar: عندي التهاب في الحلق منذ يومين.
-      en: I've had a sore throat since two days ago.
-    options: [sejak, sambil, selama]
-    answers: [sejak]
-    explain:
-      ar_eg: sejak = من (نقطة بداية)، ومعاها «dua hari yang lalu» (من يومين). selama = لمدة.
-      ar: sejak = منذ، مع نقطة بداية مثل «dua hari yang lalu»، أما selama فلمدة.
-      en: sejak = since, with a starting point like "dua hari yang lalu"; selama = for (a length).
-    words: [sejak]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي كلمة جاية من العربي «طبيب»؟
-      ar: أيّ كلمة أصلها العربية «طبيب»؟
-      en: Which word comes from Arabic «طبيب»?
-    options: [dokter, tabib, klinik]
-    answer: 1
-    explain:
-      ar_eg: tabib ← طبيب، بس النهارده معناها المعالج الشعبي. الدكتور اسمه dokter (من الهولندي).
-      ar: tabib من «طبيب»، لكنها اليوم للمعالج الشعبي، أما الطبيب فـdokter (من الهولندية).
-      en: tabib comes from طبيب but now means a traditional healer; a doctor is dokter (from Dutch).
-    words: [tabib, klinik]
-  - id: e05
-    type: build_sentence
-    source:
-      ar_eg: يا دكتور، عندي سخونية من امبارح.
-      ar: يا دكتور، عندي حمّى منذ أمس.
-      en: Doctor, I've had a fever since yesterday.
-    answer: Dok, saya demam sejak kemarin.
-    alternatives: ['Dok, sejak kemarin saya demam.']
-    distractors: [selama, punya]
-    words: [demam, sejak]
-  - id: e06
-    type: build_sentence
-    source:
-      ar_eg: اشرب مية كتير وارتاح.
-      ar: أكثِر من شرب الماء واسترح.
-      en: Drink plenty of water and rest.
-    answer: Banyak minum air putih dan istirahat.
-    distractors: [semoga, sakit]
-    words: [air putih, istirahat]
-  - id: e07
     type: match_pairs
     pairs:
-      - text: klinik
-        ar_eg: عيادة
-        ar: عيادة
-        en: clinic
-      - text: mulut
-        ar_eg: بُق
-        ar: فم
-        en: mouth
-      - text: tabib
-        ar_eg: معالج شعبي
-        ar: معالج شعبي
-        en: traditional healer
-      - text: tenggorokan
-        ar_eg: زور
-        ar: حلق
-        en: throat
-      - text: batuk
-        ar_eg: كحة
-        ar: سعال
-        en: cough
-      - text: demam
-        ar_eg: سخونية
-        ar: حُمّى
-        en: fever
-    words: [klinik, mulut, tabib, tenggorokan, batuk, demam]
-  - id: e08
+      - text: pasien
+        ar_eg: مريض
+        ar: مريض
+        en: patient
+      - text: luka
+        ar_eg: جرح
+        ar: جرح
+        en: wound
+      - text: patah
+        ar_eg: مكسور
+        ar: مكسور
+        en: broken
+      - text: suntik
+        ar_eg: حقنة
+        ar: حقنة
+        en: injection
+    words: [pasien, luka, patah, suntik]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: vitamin
+        ar_eg: فيتامين
+        ar: فيتامين
+        en: vitamin
+      - text: alergi
+        ar_eg: حساسية
+        ar: حساسية
+        en: allergy
+      - text: gatal
+        ar_eg: بيهرش
+        ar: يحكّ
+        en: itchy
+      - text: flu
+        ar_eg: برد
+        ar: زكام
+        en: flu
+    words: [vitamin, alergi, gatal, flu]
+  - id: e03
     type: listen
-    text: Ini klinik, bukan rumah tabib.
-    options: ['Ini klinik, bukan rumah tabib.', 'Ini rumah tabib, bukan klinik.', 'Ini apotek, bukan klinik.']
+    text: Saya alergi kacang. Kulit saya gatal sekali.
+    question:
+      ar_eg: عنده إيه؟
+      ar: ماذا لديه؟
+      en: What's his problem?
+    options: [حساسية من الفول السوداني, برد, رجل مكسورة]
     answer: 0
     meaning:
-      ar_eg: دي عيادة، مش بيت معالج شعبي.
-      ar: هذه عيادة، لا بيت معالج شعبي.
-      en: This is a clinic, not a healer's house.
-    words: [klinik, tabib, apotek]
+      ar_eg: عندي حساسية من الفول السوداني. جلدي بيهرشني أوي.
+      ar: لديّ حساسية من الفول السوداني، وجلدي يحكّني كثيرًا.
+      en: I'm allergic to peanuts. My skin is really itchy.
+    words: [alergi, gatal]
+  - id: e04
+    type: fill_blank
+    sentence: Tangan saya ___ karena jatuh dari sepeda.
+    meaning:
+      ar_eg: إيدي ___ عشان وقعت من العجلة.
+      ar: يدي ___ لأنني سقطت عن الدراجة.
+      en: My arm is ___ because I fell off my bike.
+    options: [patah, gatal, flu]
+    answers: [patah]
+    words: [patah, gatal, flu]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: اللي بيتعالج عند الدكتور اسمه إيه؟
+      ar: ماذا نسمّي من يعالجه الطبيب؟
+      en: What do you call someone a doctor treats?
+    options: [pasien, vitamin, luka]
+    answer: 0
+    explain:
+      ar_eg: pasien = مريض.
+      ar: pasien = مريض.
+      en: pasien = patient.
+    words: [pasien, vitamin, luka]
+  - id: e06
+    type: fill_blank
+    sentence: Saya batuk, pilek, dan pusing. Saya ___.
+    meaning:
+      ar_eg: بكح ومزكّم ودايخ. عندي ___.
+      ar: أسعل وأنا مزكوم وأشعر بالدوار. لديّ ___.
+      en: I'm coughing, sniffly and dizzy. I've got ___.
+    options: [flu, luka, suntik]
+    answers: [flu]
+    words: [flu, luka, suntik]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: كل يوم الصبح باخد فيتامين.
+      ar: آخذ فيتامينًا كل صباح.
+      en: I take a vitamin every morning.
+    answer: Setiap pagi saya minum vitamin.
+    distractors: [suntik, luka]
+    words: [vitamin]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Ada luka kecil di jari saya.
+    answers_meaning:
+      ar_eg: [فيه جرح صغير في صباعي, صباعي فيه جرح صغير]
+      ar: [في إصبعي جرح صغير]
+      en: ['There''s a small cut on my finger', I have a little cut on my finger]
+    words: [luka]
   - id: e09
-    type: dictation
-    text: Coba buka mulutnya, Pak.
-    meaning:
-      ar_eg: افتح بقك يا أستاذ.
-      ar: افتح فمك يا سيدي.
-      en: Open your mouth, sir.
-    words: [mulut, buka]
-  - id: e10
     type: speaking
-    text: Selamat pagi, Dok. Saya demam dan sakit tenggorokan sejak dua hari yang lalu.
+    text: Dokter, saya takut suntik!
     meaning:
-      ar_eg: صباح الخير يا دكتور. عندي سخونية والتهاب زور من يومين.
-      ar: صباح الخير يا دكتور. عندي حمّى والتهاب في الحلق منذ يومين.
-      en: Good morning, doctor. I've had a fever and a sore throat for two days.
-    words: [demam, tenggorokan, sejak]
+      ar_eg: يا دكتور، أنا بخاف من الحقن!
+      ar: يا دكتور، أخاف من الحقن!
+      en: Doctor, I'm scared of injections!
+    words: [suntik]
+  - id: e10
+    type: multiple_choice
+    question: Dokter punya banyak ___ hari ini.
+    options: [pasien, alergi, patah]
+    answer: 0
+    explain:
+      ar_eg: 'الدكتور عنده عيانين كتير: pasien.'
+      ar: 'لدى الطبيب مرضى كثيرون: pasien.'
+      en: 'The doctor has many patients: pasien.'
+    words: [pasien, alergi, patah]
 dialogue:
-  title: Di klinik Amed
   lines:
-    - speaker: Dokter Made
-      text: Selamat pagi. Silakan duduk. Sakit apa, Pak?
-      ar_eg: صباح الخير. اتفضل اقعد. عندك إيه؟
-      ar: صباح الخير. تفضّل بالجلوس. ما بك يا سيدي؟
-      en: Good morning. Please sit down. What's the matter?
+    - speaker: Dokter
+      text: Selamat pagi. Sakit apa?
+      ar_eg: صباح الخير. عندك إيه؟
+      ar: صباح الخير. ممّ تشكو؟
+      en: Good morning. What's wrong?
     - speaker: Mohamed
-      text: Pagi, Dok. Saya demam dan sakit tenggorokan.
-      ar_eg: صباح النور يا دكتور. عندي سخونية والتهاب زور.
-      ar: صباح النور يا دكتور. عندي حمّى والتهاب في الحلق.
-      en: Morning, doctor. I have a fever and a sore throat.
-    - speaker: Dokter Made
-      text: Sudah berapa lama?
-      ar_eg: بقالك قد إيه كده؟
-      ar: منذ متى؟
-      en: How long has it been?
+      text: Kulit saya gatal, Dok. Merah semua.
+      ar_eg: جلدي بيهرشني يا دكتور. كله أحمر.
+      ar: جلدي يحكّني يا دكتور، وكله أحمر.
+      en: My skin itches, doctor. It's all red.
+    - speaker: Dokter
+      text: Kemarin makan apa? Ada alergi?
+      ar_eg: امبارح كلت إيه؟ عندك حساسية؟
+      ar: ماذا أكلت أمس؟ هل لديك حساسية؟
+      en: What did you eat yesterday? Any allergies?
     - speaker: Mohamed
-      text: Sejak dua hari yang lalu. Kemarin saya juga batuk.
-      ar_eg: من يومين. وامبارح كمان بقيت أكح.
-      ar: منذ يومين، وأمس بدأت أسعل أيضًا.
-      en: Since two days ago. Yesterday I started coughing too.
-    - speaker: Dokter Made
-      text: Ini resepnya. Obatnya diminum tiga kali sehari sesudah makan. Banyak minum air putih dan istirahat, ya.
-      ar_eg: دي الروشتة. الدوا يتاخد ٣ مرات في اليوم بعد الأكل. واشرب مية كتير وارتاح.
-      ar: هذه الوصفة. يؤخذ الدواء ثلاث مرات يوميًا بعد الطعام. وأكثِر من شرب الماء واسترح.
-      en: Here's the prescription. Take the medicine three times a day after meals. Drink plenty of water and rest.
+      text: Saya makan sate kacang. Apa saya alergi kacang?
+      ar_eg: كلت ساتيه بالفول السوداني. هو أنا عندي حساسية منه؟
+      ar: أكلت ساتيه بالفول السوداني. هل لديّ حساسية منه؟
+      en: I had satay with peanut sauce. Am I allergic to peanuts?
+    - speaker: Dokter
+      text: Ya, ini alergi. Minum obat ini, tidak perlu suntik.
+      ar_eg: أيوه، دي حساسية. خد الدوا ده، مش محتاج حقنة.
+      ar: نعم، هذه حساسية. تناول هذا الدواء، لا حاجة إلى حقنة.
+      en: Yes, it's an allergy. Take this medicine; no injection needed.
     - speaker: Mohamed
-      text: Baik, Dok. Terima kasih.
-      ar_eg: حاضر يا دكتور. شكرًا.
-      ar: حسنًا يا دكتور. شكرًا.
-      en: All right, doctor. Thank you.
+      text: Bagus! Saya takut suntik.
+      ar_eg: الحمد لله! أنا بخاف من الحقن.
+      ar: الحمد لله! أخاف من الحقن.
+      en: Phew! I'm scared of injections.
 new_words:
-  - word: klinik
+  - word: pasien
     pos: noun
-    ar_eg: عيادة
-    ar: عيادة
-    en: clinic
-  - word: mulut
+    ar_eg: مريض (عند الدكتور)
+    ar: مريض
+    en: patient
+  - word: luka
     pos: noun
-    ar_eg: بُق
-    ar: فم
-    en: mouth
-  - word: tabib
+    ar_eg: جرح
+    ar: جرح
+    en: wound, cut
+  - word: patah
+    pos: adjective
+    ar_eg: مكسور
+    ar: مكسور
+    en: broken (bone, stick)
+  - word: suntik
     pos: noun
-    ar_eg: معالج شعبي (كلمة قديمة)
-    ar: طبيب شعبي (كلمة قديمة)
-    en: traditional healer (old word)
-    arabic: طبيب
+    ar_eg: حقنة
+    ar: حقنة
+    en: injection
+  - word: vitamin
+    pos: noun
+    ar_eg: فيتامين
+    ar: فيتامين
+    en: vitamin
+  - word: alergi
+    pos: noun
+    ar_eg: حساسية
+    ar: حساسية
+    en: allergy
+  - word: gatal
+    pos: adjective
+    ar_eg: بيهرش
+    ar: مسبّب للحكّة
+    en: itchy
+  - word: flu
+    pos: noun
+    ar_eg: برد، إنفلونزا
+    ar: زكام، إنفلونزا
+    en: flu, cold
 review:
   status: draft
   verified: false

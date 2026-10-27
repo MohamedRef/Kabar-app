@@ -51,9 +51,9 @@ fn pt(lang: UiLanguage, p: P) -> &'static str {
         (Intro, En) => {
             "Each unit has a pack of natural-voice audio. Download it once and it works with no network."
         }
-        (Auto, ArEg) => "نزّل الوحدة الحالية واللي بعدها لوحدهم",
-        (Auto, Ar) => "نزّل الوحدة الحالية والتالية تلقائيًا",
-        (Auto, En) => "Download the current and next unit automatically",
+        (Auto, ArEg) => "نزّل الوحدة الحالية واللي بعدها لوحدهم على الواي فاي",
+        (Auto, Ar) => "نزّل الوحدة الحالية والتالية تلقائيًا عبر الواي فاي",
+        (Auto, En) => "Download the current and next unit automatically on Wi-Fi",
         (Storage, ArEg) => "المساحة المستخدمة",
         (Storage, Ar) => "المساحة المستخدمة",
         (Storage, En) => "Storage used",

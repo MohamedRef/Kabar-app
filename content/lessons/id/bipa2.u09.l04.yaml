@@ -1,220 +1,236 @@
 schema: kabar.lesson/v1
 id: bipa2.u09.l04
 language: id
-title: Grup WhatsApp liburan
+title: Hutan dan air terjun
 can_do:
-  ar_eg: تقرا جروب شات بتاع رحلة وترد عليه زي أصحابك.
-  ar: أن تقرأ محادثة جماعية عن رحلة وتردّ عليها.
-  en: Read and reply to a holiday group chat.
+  ar_eg: 'تخطط رحلة طبيعة: غابة وشلال وشعاب مرجانية، وشنطة ضهر وبوصلة، وتختار مكان تبات فيه.'
+  ar: 'أن تخطط لرحلة في الطبيعة: غابة وشلال وشعاب مرجانية، وحقيبة ظهر وبوصلة، وتختار مكان المبيت.'
+  en: 'Plan a nature trip: forest, waterfall and coral reef, a backpack and compass, and somewhere to stay.'
 slides:
-  - title: Membaca grup chat
+  - title: Ke alam
     body:
       ar_eg: |
-        في جروب الرحلة هتلاقي الاختصارات وحروف الكلام مع بعض:
-        - brp = berapa، yg = yang، aja = saja، gk papa = مفيش مشكلة، hati2 = خلي بالك، wkwk = هههه.
-        - jadi؟ = لسه الخطة قايمة؟ والرد: Jadi dong! = أكيد قايمة!
-        - aduh، dong، deh بيدّوا الإحساس.
-        - nyetir = menyetir (عامية)، ngantuk = نعسان، gaes = يا جماعة (من guys).
+        hutan = غابة، air terjun = شلال (حرفيًا «مية واقعة»)، batu = حجر أو صخرة، karang = شعاب مرجانية.
+        kompas = بوصلة، ransel = شنطة ضهر.
+        penginapan = مكان تبات فيه (من inap = يبات)، vila = فيلا.
       ar: |
-        في محادثة الرحلة تجتمع الاختصارات وأدوات الكلام:
-        - brp = berapa، yg = yang، aja = saja، gk papa = لا بأس، hati2 = انتبهوا، wkwk = ضحك.
-        - jadi؟ = هل الخطة قائمة؟ والرد: Jadi dong! = طبعًا قائمة!
-        - aduh وdong وdeh تضيف الشعور.
-        - nyetir = menyetir (عامية)، ngantuk = نعسان، gaes = يا جماعة (من guys).
+        hutan = غابة، air terjun = شلال (حرفيًا «ماء ساقط»)، batu = حجر أو صخرة، karang = شعاب مرجانية.
+        kompas = بوصلة، ransel = حقيبة ظهر.
+        penginapan = مكان المبيت (من inap = يبيت)، vila = فيلا.
       en: |
-        A trip group chat mixes chat spelling and spoken particles:
-        - brp = berapa, yg = yang, aja = saja, gk papa = no problem, hati2 = take care, wkwk = haha.
-        - jadi? = is it still on? Reply: Jadi dong! = Of course it's on!
-        - aduh, dong, deh add feeling.
-        - nyetir = menyetir (casual), ngantuk = sleepy, gaes = guys.
-    grammar: id.chat.abbreviations
+        hutan = forest, air terjun = waterfall (literally "falling water"), batu = stone, rock, karang = coral reef.
+        kompas = compass, ransel = backpack.
+        penginapan = lodging, guesthouse (inap = stay overnight), vila = villa.
     examples:
-      - text: gaes, besok jadi ke Lovina?
-        ar_eg: يا جماعة، لسه رايحين لوفينا بكرة؟
-        ar: يا جماعة، هل ما زلنا ذاهبين إلى لوفينا غدًا؟
-        en: Guys, is Lovina still on for tomorrow?
+      - text: Di Bali ada air terjun yang indah.
+        ar_eg: في بالي فيه شلال جميل.
+        ar: في بالي شلال جميل.
+        en: Bali has a beautiful waterfall.
+      - text: Bawa ransel dan kompas ke hutan.
+        ar_eg: خد شنطة الضهر والبوصلة للغابة.
+        ar: خذ حقيبة الظهر والبوصلة إلى الغابة.
+        en: Take a backpack and compass to the forest.
+      - text: Kami tinggal di vila dekat pantai.
+        ar_eg: إحنا قاعدين في فيلا جنب البحر.
+        ar: نقيم في فيلا قرب الشاطئ.
+        en: We're staying in a villa near the beach.
 exercises:
   - id: e01
-    type: multiple_choice
-    question: berangkat jam brp?
-    question_meaning:
-      ar_eg: راكا كتب كده في الجروب. هو عايز يعرف إيه؟ اختار الكتابة الكاملة.
-      ar: كتب راكا هذا في المجموعة. ماذا يريد أن يعرف؟ اختر الصيغة الكاملة.
-      en: Raka wrote this in the group. What does he want to know? Pick the full form.
-    options: ['Berangkat dengan siapa?', 'Berangkat jam berapa?', 'Berangkat dari mana?']
-    answer: 1
-    words: [berapa]
-  - id: e02
-    type: multiple_choice
-    question: aku yg nyetir
-    question_meaning:
-      ar_eg: إيه معنى الرسالة دي بالإندونيسي الكامل؟
-      ar: ما صيغة هذه الرسالة الكاملة؟
-      en: What is this message in full Indonesian?
-    options: [Aku yang menyanyi., Aku yang menyetir., Aku tidak menyetir.]
-    answer: 1
-    explain:
-      ar_eg: yg = yang، وnyetir = menyetir (يسوق). يعني «أنا اللي هسوق».
-      ar: yg = yang، وnyetir = menyetir، أي «أنا من سيقود».
-      en: yg = yang, nyetir = menyetir — "I'll be the one driving".
-    words: [yang, menyetir]
-  - id: e03
-    type: fill_blank
-    sentence: ___ papa, nanti tidur di mobil aja
-    meaning:
-      ar_eg: (شات) ولا يهمك، ابقى نام في العربية.
-      ar: (محادثة) لا بأس، نَم في السيارة لاحقًا.
-      en: (chat) No problem, you can sleep in the car.
-    options: [bgt, udh, gk]
-    answers: [gk]
-    words: [nggak, saja]
-  - id: e04
-    type: fill_blank
-    sentence: Ayo ___, bangun! Sudah jam empat.
-    meaning:
-      ar_eg: يلا بقى، اصحى! الساعة بقت أربعة.
-      ar: هيّا، استيقظ! صارت الساعة الرابعة.
-      en: Come on, get up! It's already four.
-    options: [sih, dong, kan]
-    answers: [dong]
-    words: [dong]
-  - id: e05
-    type: build_sentence
-    source:
-      ar_eg: (شات) ماشي، أنا هجيب أكل.
-      ar: (محادثة) حسنًا، سأحضر طعامًا.
-      en: (chat) OK, I'll bring food.
-    answer: oke aku bawa makanan ya
-    distractors: [yg, gk]
-    words: [bawa, makanan, oke]
-  - id: e06
-    type: translate
-    direction: from_target
-    source_text: hah jam 4?? aduh, ngantuk bgt wkwk
-    answers_meaning:
-      ar_eg: [إيه؟ الساعة ٤؟؟ يا خبر، أنا نعسان أوي هههه, الساعة ٤؟! يا نهار، هموت من النوم هههه]
-      ar: [ماذا؟ الساعة الرابعة؟! يا للهول، أنا نعسان جدًا هههه, الرابعة؟! آه، أنا نعسان جدًا]
-      en: ['What, 4 o''clock?? Oh no, I''m so sleepy haha', '4 a.m.?! Ugh, I''m so sleepy lol']
-    words: [aduh, ngantuk, banget]
-  - id: e07
     type: match_pairs
     pairs:
-      - text: gaes
-        ar_eg: يا جماعة
-        ar: يا جماعة
-        en: guys
-      - text: ngantuk
-        ar_eg: نعسان
-        ar: نعسان
-        en: sleepy
-      - text: nyetir
-        ar_eg: يسوق (عامية)
-        ar: يقود (عامية)
-        en: drive (casual)
-      - text: setuju
-        ar_eg: موافق
-        ar: موافق
-        en: agree
-      - text: otw
-        ar_eg: في السكة
-        ar: في الطريق
-        en: on the way
-      - text: wkwk
-        ar_eg: هههه
-        ar: هههه
-        en: haha
-    words: [gaes, ngantuk, nyetir, setuju, otw, wkwk]
-  - id: e08
+      - text: hutan
+        ar_eg: غابة
+        ar: غابة
+        en: forest
+      - text: air terjun
+        ar_eg: شلال
+        ar: شلال
+        en: waterfall
+      - text: batu
+        ar_eg: حجر، صخرة
+        ar: حجر، صخرة
+        en: stone
+      - text: karang
+        ar_eg: شعاب مرجانية
+        ar: شعاب مرجانية
+        en: coral
+    words: [hutan, air terjun, batu, karang]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: kompas
+        ar_eg: بوصلة
+        ar: بوصلة
+        en: compass
+      - text: ransel
+        ar_eg: شنطة ضهر
+        ar: حقيبة ظهر
+        en: backpack
+      - text: penginapan
+        ar_eg: مكان تبات فيه
+        ar: مكان المبيت
+        en: lodging
+      - text: vila
+        ar_eg: فيلا
+        ar: فيلا
+        en: villa
+    words: [kompas, ransel, penginapan, vila]
+  - id: e03
     type: listen
-    text: Gaes, aku ngantuk banget. Kamu aja yang nyetir, oke?
-    options: ['Gaes, aku ngantuk banget. Kamu aja yang nyetir, oke?', 'Gaes, aku ngantuk banget. Aku aja yang nyetir, oke?', 'Gaes, aku setuju. Kamu aja yang nyetir, oke?']
+    text: Air terjunnya tinggi dan airnya dingin.
+    question:
+      ar_eg: بيتكلم عن إيه؟
+      ar: عمّ يتحدث؟
+      en: What is he talking about?
+    options: [شلال, غابة, شاطئ]
     answer: 0
     meaning:
-      ar_eg: يا جماعة، أنا نعسان أوي. إنت اللي سوق، ماشي؟
-      ar: يا جماعة، أنا نعسان جدًا. قُد أنت، اتفقنا؟
-      en: Guys, I'm so sleepy. You drive, OK?
-    words: [gaes, ngantuk, nyetir, setuju, oke]
-  - id: e09
-    type: speaking
-    text: Oke, aku bawa makanan, ya. Sampai besok!
+      ar_eg: الشلال عالي ومَيّته ساقعة.
+      ar: الشلال عالٍ وماؤه بارد.
+      en: The waterfall is tall and the water is cold.
+    words: [air terjun]
+  - id: e04
+    type: fill_blank
+    sentence: Di bawah laut ada ___ yang indah dan ikan warna-warni.
     meaning:
-      ar_eg: ماشي، أنا هجيب أكل. أشوفكم بكرة!
-      ar: حسنًا، سأحضر الطعام. إلى اللقاء غدًا!
-      en: OK, I'll bring food. See you tomorrow!
-    words: [bawa, sampai besok, oke]
-  - id: e10
+      ar_eg: تحت البحر فيه ___ جميلة وسمك ملوّن.
+      ar: تحت البحر ___ جميلة وأسماك ملوّنة.
+      en: Under the sea there's beautiful ___ and colourful fish.
+    options: [karang, kompas, ransel]
+    answers: [karang]
+    words: [karang, kompas, ransel]
+  - id: e05
     type: multiple_choice
-    question: gaes, setuju gk?
     question_meaning:
-      ar_eg: راكا بيسأل الجروب إيه؟ اختار الكتابة الكاملة.
-      ar: ماذا يسأل راكا المجموعة؟ اختر الصيغة الكاملة.
-      en: What is Raka asking the group? Pick the full form.
-    options: ['Teman-teman, kalian setuju?', 'Teman-teman, kalian ngantuk?', 'Teman-teman, kalian sudah sampai?']
+      ar_eg: بتعرف الشمال فين بإيه؟
+      ar: بمَ تعرف اتجاه الشمال؟
+      en: What shows you which way is north?
+    options: [kompas, batu, vila]
     answer: 0
     explain:
-      ar_eg: gaes = guys (يا جماعة)، وsetuju = موافق.
-      ar: gaes = يا جماعة، وsetuju = موافق.
-      en: gaes = guys, setuju = agree.
-    words: [gaes, setuju, ngantuk]
+      ar_eg: kompas = بوصلة.
+      ar: kompas = بوصلة.
+      en: kompas = compass.
+    words: [kompas, batu, vila]
+  - id: e06
+    type: fill_blank
+    sentence: Di ___ ada banyak pohon dan monyet.
+    meaning:
+      ar_eg: في الـ ___ فيه شجر وقرود كتير.
+      ar: في ___ أشجار وقرود كثيرة.
+      en: There are lots of trees and monkeys in the ___.
+    options: [hutan, penginapan, ransel]
+    answers: [hutan]
+    words: [hutan, penginapan, ransel]
+  - id: e07
+    type: build_sentence
+    source:
+      ar_eg: إحنا قاعدين في فيلا جنب البحر.
+      ar: نقيم في فيلا قرب الشاطئ.
+      en: We're staying in a villa near the beach.
+    answer: Kami tinggal di vila dekat pantai.
+    distractors: [hutan, batu]
+    words: [vila]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Penginapan ini murah dan bersih.
+    answers_meaning:
+      ar_eg: [المكان ده اللي هنبات فيه رخيص ونضيف, اللوكاندة دي رخيصة ونضيفة]
+      ar: [مكان المبيت هذا رخيص ونظيف, هذا النُّزُل رخيص ونظيف]
+      en: [This guesthouse is cheap and clean, This lodging is cheap and clean]
+    words: [penginapan]
+  - id: e09
+    type: speaking
+    text: Saya bawa ransel dan kompas ke hutan.
+    meaning:
+      ar_eg: واخد شنطة الضهر والبوصلة للغابة.
+      ar: آخذ حقيبة الظهر والبوصلة إلى الغابة.
+      en: I'm taking a backpack and compass to the forest.
+    words: [ransel, kompas, hutan]
+  - id: e10
+    type: multiple_choice
+    question: Rumah itu dari ___, bukan kayu.
+    options: [batu, karang, air terjun]
+    answer: 0
+    explain:
+      ar_eg: 'البيت من حجر: batu.'
+      ar: 'البيت من حجر: batu.'
+      en: 'The house is stone: batu.'
+    words: [batu, karang, air terjun]
 dialogue:
-  title: Grup "Liburan Lovina"
   lines:
     - speaker: Ni Luh
-      text: gaes, besok jadi ke Lovina?
-      ar_eg: يا جماعة، لسه رايحين لوفينا بكرة؟
-      ar: يا جماعة، هل ما زلنا ذاهبين إلى لوفينا غدًا؟
-      en: Guys, is Lovina still on for tomorrow?
-    - speaker: Raka
-      text: jadi dong! berangkat jam brp?
-      ar_eg: أكيد! هنمشي الساعة كام؟
-      ar: طبعًا! متى ننطلق؟
-      en: Of course! What time do we leave?
-    - speaker: Ni Luh
-      text: jam 4 pagi ya, supaya bisa lihat lumba2
-      ar_eg: الساعة ٤ الصبح، عشان نلحق نشوف الدلافين.
-      ar: في الرابعة صباحًا، لكي نرى الدلافين.
-      en: 4 a.m., so we can see the dolphins.
-    - speaker: Rina
-      text: hah jam 4?? aduh, ngantuk bgt wkwk
-      ar_eg: إيه؟ الساعة ٤؟؟ يا خبر، هموت من النوم هههه
-      ar: ماذا؟ الرابعة؟! آه، سأكون نعسانة جدًا هههه
-      en: What, 4?? Oh no, I'll be so sleepy haha
+      text: Besok kita ke air terjun Sekumpul, ya.
+      ar_eg: بكرة نروح شلال سِكومبول.
+      ar: غدًا نذهب إلى شلال سكومبول.
+      en: Tomorrow we're going to Sekumpul waterfall.
     - speaker: Mohamed
-      text: gk papa Rina, nanti tidur di mobil aja
-      ar_eg: ولا يهمك يا رينا، ابقي نامي في العربية.
-      ar: لا بأس يا رينا، نامي في السيارة.
-      en: No problem, Rina, just sleep in the car.
-    - speaker: Raka
-      text: setuju. aku yg nyetir
-      ar_eg: موافق. أنا اللي هسوق.
-      ar: موافق، أنا من سيقود.
-      en: Agreed. I'll drive.
+      text: Jauh dari sini?
+      ar_eg: بعيد من هنا؟
+      ar: هل هو بعيد من هنا؟
+      en: Is it far from here?
+    - speaker: Ni Luh
+      text: Lumayan. Kita jalan lewat hutan.
+      ar_eg: شوية. هنمشي في الغابة.
+      ar: قليلًا. سنمشي عبر الغابة.
+      en: Fairly. We walk through the forest.
+    - speaker: Mohamed
+      text: Saya bawa ransel dan air.
+      ar_eg: هاخد شنطة الضهر ومية.
+      ar: سآخذ حقيبة الظهر والماء.
+      en: I'll bring my backpack and water.
+    - speaker: Ni Luh
+      text: Bagus. Malamnya kita tidur di penginapan dekat sana.
+      ar_eg: حلو. بالليل ننام في مكان قريب من هناك.
+      ar: جيّد. وفي الليل ننام في نُزُل قريب.
+      en: Good. At night we'll sleep in a guesthouse nearby.
+    - speaker: Mohamed
+      text: Vila mahal, ya? Penginapan saja!
+      ar_eg: الفيلا غالية، صح؟ خلّينا في اللوكاندة!
+      ar: الفيلا غالية، أليس كذلك؟ النُّزُل يكفي!
+      en: Villas are pricey, right? A guesthouse is fine!
 new_words:
-  - word: gaes
-    pos: interjection
-    ar_eg: يا جماعة (من guys، عامية)
-    ar: يا جماعة (من guys، عامية)
-    en: guys (casual)
-  - word: ngantuk
-    pos: adjective
-    ar_eg: نعسان
-    ar: نعسان
-    en: sleepy
-  - word: nyetir
-    pos: verb
-    ar_eg: يسوق (عامية menyetir)
-    ar: يقود (عامية menyetir)
-    en: to drive (casual menyetir)
-  - word: setuju
-    pos: verb
-    ar_eg: موافق
-    ar: يوافق
-    en: to agree
-  - word: oke
-    pos: interjection
-    ar_eg: ماشي / أوكيه
-    ar: حسنًا
-    en: OK
+  - word: hutan
+    pos: noun
+    ar_eg: غابة
+    ar: غابة
+    en: forest
+  - word: air terjun
+    pos: noun
+    ar_eg: شلال
+    ar: شلال
+    en: waterfall
+  - word: batu
+    pos: noun
+    ar_eg: حجر، صخرة
+    ar: حجر، صخرة
+    en: stone, rock
+  - word: karang
+    pos: noun
+    ar_eg: شعاب مرجانية
+    ar: شعاب مرجانية
+    en: coral, reef
+  - word: kompas
+    pos: noun
+    ar_eg: بوصلة
+    ar: بوصلة
+    en: compass
+  - word: ransel
+    pos: noun
+    ar_eg: شنطة ضهر
+    ar: حقيبة ظهر
+    en: backpack
+  - word: penginapan
+    pos: noun
+    ar_eg: مكان تبات فيه، لوكاندة
+    ar: مكان المبيت، نُزُل
+    en: lodging, guesthouse
+  - word: vila
+    pos: noun
+    ar_eg: فيلا
+    ar: فيلا
+    en: villa
 review:
   status: draft
   verified: false

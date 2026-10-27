@@ -1,224 +1,234 @@
 schema: kabar.lesson/v1
 id: j5.u01.l05
 language: jv
-title: Ringkesan
+title: Abad lan riwayat
 can_do:
-  ar_eg: تلخّص مقالة بالإندونيسي أو بالعربي.
-  ar: أن تلخّص مقالة بالإندونيسية أو بالعربية.
-  en: Summarise an article in Indonesian or Arabic.
+  ar_eg: 'تقرا جزء التاريخ في مقالة: القرن، والأثر القديم، والنصب، والأرقام الكبيرة.'
+  ar: 'أن تقرأ قسم التاريخ في مقالة: القرن والأثر القديم والنصب والأعداد الكبيرة.'
+  en: 'Read the history part of an article: centuries, ancient sites, monuments and big numbers.'
 slides:
-  - title: Artikel Kutha Lama
+  - title: Bagean riwayat
     body:
       ar_eg: |
-        ringkesan = ملخّص (ringkasan). اقرا التلات جمل دول، وبعدين قول الفكرة في جملة واحدة.
-        الطريقة: لاقي iku (الموضوع إيه)، وبعدين saka (منين جه)، وdadi (بقى إيه).
-        وكلمة من العربي: jaman = زمن، من «زمان». jaman Walanda = أيام الهولنديين.
+        riwayat = تاريخ أو سيرة (عنوان قسم «التاريخ» في المقالة). abad = قرن: abad kaping 20 = القرن العشرين.
+        kuno = قديم أوي (أثري)، tugu = نصب، lambang = رمز أو شعار.
+        puluhan = عشرات، atusan = مئات. awujud = على شكل.
       ar: |
-        ringkesan = ملخّص (ringkasan). اقرأ هذه الجمل الثلاث ثم قل فكرتها في جملة واحدة.
-        والطريقة: ابحث عن iku (ما الموضوع)، ثم saka (من أين أتى)، ثم dadi (ماذا صار).
-        وكلمة عربية الأصل: jaman = زمن، من «زمان»، وjaman Walanda = عهد الهولنديين.
+        riwayat = تاريخ أو سيرة (عنوان قسم التاريخ في المقالة). abad = قرن: abad kaping 20 = القرن العشرون.
+        kuno = قديم أثري، tugu = نُصُب، lambang = رمز أو شعار.
+        puluhan = عشرات، atusan = مئات. awujud = على هيئة.
       en: |
-        ringkesan = summary (ringkasan). Read these three sentences, then give the idea in one.
-        The method: find iku (what it's about), then saka (where it comes from), then dadi (what it became).
-        A word from Arabic: jaman = era, from «زمان». jaman Walanda = the Dutch era.
-    grammar: jv.reading.written-style
+        riwayat = history, life story (the "History" heading of an article). abad = century: abad kaping 20 = the 20th century.
+        kuno = ancient, tugu = monument, lambang = symbol, emblem.
+        puluhan = tens, dozens; atusan = hundreds. awujud = in the form of.
     examples:
-      - text: Kutha Lama iku papan kang lawas ing Semarang.
-        ar_eg: كوتا لاما مكان قديم في سيمارانج.
-        ar: كوتا لاما مكان قديم في سيمارانج.
-        en: Kota Lama is an old place in Semarang.
-      - text: Ing kono ana gedhong-gedhong lawas saka jaman Walanda.
-        ar_eg: هناك فيه مباني قديمة من أيام الهولنديين.
-        ar: هناك مبانٍ قديمة من عهد الهولنديين.
-        en: There are old buildings there from the Dutch era.
-      - text: Saiki Kutha Lama dadi papan wisata kang misuwur.
-        ar_eg: دلوقتي كوتا لاما بقت مكان سياحي مشهور.
-        ar: صارت كوتا لاما اليوم مكانًا سياحيًا مشهورًا.
-        en: Today Kota Lama has become a famous tourist spot.
+      - text: Lawang Sewu dibangun ing abad kaping rong puluh.
+        ar_eg: لاوانج سيوو اتبنى في القرن العشرين.
+        ar: بُني لاوانغ سيوو في القرن العشرين.
+        en: Lawang Sewu was built in the 20th century.
+      - text: Lawang Sewu duwe atusan lawang.
+        ar_eg: لاوانج سيوو فيه مئات الأبواب.
+        ar: في لاوانغ سيوو مئات الأبواب.
+        en: Lawang Sewu has hundreds of doors.
+      - text: Candhi Gedong Songo iku candhi kuno.
+        ar_eg: جيدونج سونجو معبد قديم أثري.
+        ar: غيدونغ سونغو معبد أثري قديم.
+        en: Gedong Songo is an ancient temple.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: المقالة دي عن إيه أساسًا؟
-      ar: عمَّ تتحدث المقالة أساسًا؟
-      en: What is the article mainly about?
-    options: [Lumpia Semarang, Kutha Lama Semarang, Pesisir kidul]
-    answer: 1
-    words: [lawas]
+    type: match_pairs
+    pairs:
+      - text: abad
+        ar_eg: قرن
+        ar: قرن
+        en: century
+      - text: riwayat
+        ar_eg: تاريخ، سيرة
+        ar: تاريخ، سيرة
+        en: history, life story
+      - text: kuno
+        ar_eg: قديم أثري
+        ar: أثري قديم
+        en: ancient
+      - text: tugu
+        ar_eg: نصب
+        ar: نُصُب
+        en: monument
+    words: [abad, riwayat, kuno, tugu]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: lambang
+        ar_eg: رمز، شعار
+        ar: رمز، شعار
+        en: symbol
+      - text: atusan
+        ar_eg: مئات
+        ar: مئات
+        en: hundreds
+      - text: puluhan
+        ar_eg: عشرات
+        ar: عشرات
+        en: tens, dozens
+      - text: awujud
+        ar_eg: على شكل
+        ar: على هيئة
+        en: in the form of
+    words: [lambang, atusan, puluhan, awujud]
+  - id: e03
     type: listen
-    text: Ing kono ana gedhong-gedhong lawas saka jaman Walanda.
-    options:
-      - Ing kono ana gedhong-gedhong lawas saka jaman Walanda.
-      - Ing kono ana gedhong-gedhong anyar saka jaman saiki.
-      - Ing kene ana sepur lawas saka jaman Walanda.
+    text: Lawang Sewu duwe atusan lawang lan cendhela.
+    question:
+      ar_eg: المبنى فيه قد إيه باب؟
+      ar: كم بابًا في المبنى؟
+      en: How many doors does the building have?
+    options: [مئات الأبواب, عشرات الأبواب, ألف باب بالظبط]
     answer: 0
     meaning:
-      ar_eg: هناك فيه مباني قديمة من أيام الهولنديين.
-      ar: هناك مبانٍ قديمة من عهد الهولنديين.
-      en: There are old buildings there from the Dutch era.
-    words: [jaman, Walanda, anyar]
-  - id: e03
-    type: fill_blank
-    sentence: Gedhong-gedhong iki saka ___ Walanda.
-    meaning:
-      ar_eg: المباني دي من أيام الهولنديين.
-      ar: هذه المباني من عهد الهولنديين.
-      en: These buildings are from the Dutch era.
-    options: [papan, jaman, donya]
-    answers: [jaman]
-    words: [jaman, Walanda]
+      ar_eg: لاوانج سيوو فيه مئات الأبواب والشبابيك.
+      ar: في لاوانغ سيوو مئات الأبواب والنوافذ.
+      en: Lawang Sewu has hundreds of doors and windows.
+    words: [atusan]
   - id: e04
+    type: fill_blank
+    sentence: Candhi Gedong Songo iku candhi ___.
+    meaning:
+      ar_eg: جيدونج سونجو معبد ___.
+      ar: غيدونغ سونغو معبد ___.
+      en: Gedong Songo is an ___ temple.
+    options: [kuno, puluhan, awujud]
+    answers: [kuno]
+    words: [kuno, puluhan, awujud]
+  - id: e05
     type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة أحسن ringkesan (ملخّص) للمقالة؟
-      ar: أي جملة هي أفضل ringkesan (ملخّص) للمقالة؟
-      en: Which sentence is the best ringkesan (summary) of the article?
-    options:
-      - Semarang misuwur minangka Kutha Lumpia.
-      - Kutha Lama iku papan lawas saka jaman Walanda, saiki dadi papan wisata.
-      - Stasiun Tawang ana ing pesisir kidul.
+    question: Satus taun iku siji ___.
+    options: [tugu, abad, riwayat]
     answer: 1
     explain:
-      ar_eg: الملخّص فيه الموضوع (Kutha Lama)، وأصله (jaman Walanda)، وحاله دلوقتي (papan wisata).
-      ar: الملخّص فيه الموضوع (Kutha Lama) وأصله (jaman Walanda) وحاله اليوم (papan wisata).
-      en: The summary has the topic (Kutha Lama), its origin (jaman Walanda) and what it is now (papan wisata).
-    words: [ringkesan, jaman]
-  - id: e05
+      ar_eg: مية سنة = قرن = abad.
+      ar: مئة سنة = قرن = abad.
+      en: A hundred years = one century = abad.
+    words: [tugu, abad, riwayat]
+  - id: e06
+    type: fill_blank
+    sentence: Tugu Muda iku ___ kutha Semarang.
+    meaning:
+      ar_eg: توجو مودا ___ مدينة سيمارانج.
+      ar: توغو مودا ___ مدينة سيمارانغ.
+      en: Tugu Muda is a ___ of Semarang.
+    options: [lambang, abad, atusan]
+    answers: [lambang]
+    words: [lambang, abad, atusan, tugu]
+  - id: e07
+    type: multiple_choice
+    question: Ana telung puluh turis ing museum. Ana ___ turis.
+    options: [puluhan, atusan, lambang]
+    answer: 0
+    explain:
+      ar_eg: تلاتين = عشرات (puluhan)، مش مئات.
+      ar: ثلاثون = عشرات (puluhan) لا مئات.
+      en: Thirty is tens (puluhan), not hundreds.
+    words: [puluhan, atusan, lambang]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: كوتا لاما مكان قديم من أيام الهولنديين.
-      ar: كوتا لاما مكان قديم من عهد الهولنديين.
-      en: Kota Lama is an old place from the Dutch era.
-    answer: Kutha Lama iku papan lawas saka jaman Walanda.
-    distractors: [kang, segara]
-    words: [jaman, Walanda, papan]
-  - id: e06
+      ar_eg: تاريخ النصب ده طويل أوي.
+      ar: تاريخ هذا النصب طويل جدًا.
+      en: The history of this monument is very long.
+    answer: Riwayat tugu iki dawa banget.
+    distractors: [abad, kuno]
+    words: [riwayat, tugu]
+  - id: e09
     type: translate
     direction: from_target
-    source_text: Saiki Kutha Lama dadi papan wisata kang misuwur.
+    source_text: Buku riwayat iki awujud komik.
     answers_meaning:
-      ar_eg:
-        - دلوقتي كوتا لاما بقت مكان سياحي مشهور.
-        - كوتا لاما دلوقتي بقت مكان سياحي مشهور.
-        - دلوقتي كوتا لاما بقت مكان سياحة مشهور.
-        - دلوقتي المدينة القديمة بقت مكان سياحي مشهور.
-      ar:
-        - صارت كوتا لاما اليوم مكانًا سياحيًا مشهورًا.
-        - أصبحت كوتا لاما الآن مكانًا سياحيًا مشهورًا.
-        - صارت كوتا لاما الآن مكانًا سياحيًا مشهورًا.
-        - أصبحت المدينة القديمة الآن مكانًا سياحيًا مشهورًا.
-      en:
-        - Today Kota Lama has become a famous tourist spot.
-        - Kota Lama has now become a famous tourist spot.
-        - Now Kota Lama has become a famous tourist spot.
-        - Now Kota Lama is a famous tourist spot.
-        - Kota Lama is now a famous tourist spot.
-        - Now Kota Lama has become a famous tourist attraction.
-        - Kota Lama has now become a famous tourist attraction.
-        - Kota Lama is now a famous tourist attraction.
-    words: [papan, misuwur]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (بأسلوب المقالة) المباني القديمة دي من أيام الهولنديين.
-      ar: (بأسلوب المقالة) هذه المباني القديمة من عهد الهولنديين.
-      en: (article style) The old buildings are from the Dutch era.
-    answers:
-      - Gedhong-gedhong lawas iku saka jaman Walanda.
-      - Gedhong-gedhong kang lawas iku saka jaman Walanda.
-      - Gedhong-gedhong lawas saka jaman Walanda.
-      - Gedhong lawas iku saka jaman Walanda.
-      - Gedhong-gedhong lawas iki saka jaman Walanda.
-      - Gedhong-gedhong kang lawas saka jaman Walanda.
-    words: [jaman, Walanda]
-  - id: e08
-    type: fill_blank
-    sentence: Iki ___ artikel anyar.
-    meaning:
-      ar_eg: ده ملخّص المقالة الجديدة.
-      ar: هذا ملخّص المقالة الجديدة.
-      en: This is the summary of the new article.
-    options: [jamane, ringkesane, papane]
-    answers: [ringkesane]
-    explain:
-      ar_eg: ringkesan + -e = ringkesane، يعني «ملخّص الـ…».
-      ar: ringkesan + -e = ringkesane، أي «ملخّص …».
-      en: ringkesan + -e = ringkesane, "the summary of …".
-    words: [ringkesan, anyar]
-  - id: e09
-    type: speaking
-    text: Ringkesane, Kutha Lama iku papan lawas saka jaman Walanda.
-    meaning:
-      ar_eg: الملخّص إن كوتا لاما مكان قديم من أيام الهولنديين.
-      ar: الملخّص أن كوتا لاما مكان قديم من عهد الهولنديين.
-      en: In short, Kota Lama is an old place from the Dutch era.
-    words: [ringkesan, Walanda]
+      ar_eg: [كتاب التاريخ ده على شكل كوميكس, كتاب السيرة ده على شكل قصة مصورة]
+      ar: [كتاب التاريخ هذا على هيئة قصص مصوّرة, كتاب السيرة هذا على شكل قصة مصورة]
+      en: [This history book is in the form of a comic, This history book is a comic]
+    words: [riwayat, awujud]
   - id: e10
-    type: multiple_choice
-    question: Gedhong iki anyar, dudu lawas.
-    question_meaning:
-      ar_eg: معنى الجملة دي إيه؟
-      ar: ما معنى هذه الجملة؟
-      en: What does this sentence mean?
-    options: ['المبنى ده جديد، مش قديم.', 'المبنى ده قديم، مش جديد.', 'المبنى ده كبير، مش صغير.']
-    answer: 0
-    explain:
-      ar_eg: anyar = جديد (baru)، وعكسها lawas = قديم (lama).
-      ar: anyar = جديد (baru)، وضدّها lawas = قديم.
-      en: anyar = new (baru); its opposite is lawas = old.
-    words: [anyar, lawas]
+    type: speaking
+    text: Puluhan turis teka menyang candhi kuno iku.
+    meaning:
+      ar_eg: عشرات السياح جم المعبد الأثري ده.
+      ar: جاء عشرات السياح إلى ذلك المعبد الأثري.
+      en: Dozens of tourists came to that ancient temple.
+    words: [puluhan, kuno]
 dialogue:
-  title: Ringkesane apa?
   lines:
     - speaker: Mbak Ayu
-      text: Wis maca artikel Kutha Lama? Ringkesane apa?
-      ar_eg: قريت مقالة كوتا لاما؟ ملخّصها إيه؟
-      ar: هل قرأت مقالة كوتا لاما؟ ما ملخّصها؟
-      en: Have you read the Kota Lama article? What's the summary?
+      text: Mohamed, wis maca riwayat Lawang Sewu ing Wikipedia?
+      ar_eg: يا محمد، قريت تاريخ لاوانج سيوو في ويكيبيديا؟
+      ar: يا محمد، هل قرأت تاريخ لاوانغ سيوو في ويكيبيديا؟
+      en: Mohamed, have you read the history of Lawang Sewu on Wikipedia?
     - speaker: Mohamed
-      text: Kutha Lama iku papan lawas saka jaman Walanda.
-      ar_eg: كوتا لاما مكان قديم من أيام الهولنديين.
-      ar: كوتا لاما مكان قديم من عهد الهولنديين.
-      en: Kota Lama is an old place from the Dutch era.
+      text: Wis. Gedhung iku dibangun ing abad kaping rong puluh, ta?
+      ar_eg: أيوه. المبنى ده اتبنى في القرن العشرين، صح؟
+      ar: نعم. بُني ذلك المبنى في القرن العشرين، أليس كذلك؟
+      en: Yes. It was built in the 20th century, right?
     - speaker: Mbak Ayu
-      text: Bener. Lan saiki piye?
-      ar_eg: صح. وحالها إيه دلوقتي؟
-      ar: صحيح. وما حالها الآن؟
-      en: Right. And what about now?
+      text: Iya. Lawange ora sewu, nanging atusan.
+      ar_eg: أيوه. أبوابه مش ألف، بس مئات.
+      ar: نعم. أبوابه ليست ألفًا، بل مئات.
+      en: Yes. It doesn't have a thousand doors, but hundreds.
     - speaker: Mohamed
-      text: Saiki dadi papan wisata kang misuwur. Eh, papan wisata sing misuwur!
-      ar_eg: دلوقتي بقت مكان سياحي مشهور. قصدي بالكلام، papan wisata sing misuwur!
-      ar: صارت الآن مكانًا سياحيًا مشهورًا. أقصد بلغة الكلام، papan wisata sing misuwur!
-      en: Now it's a famous tourist spot. Oops, I mean, papan wisata sing misuwur!
+      text: Lha, tugu sing ana ing ngarepe iku apa?
+      ar_eg: طب والنصب اللي قدامه ده إيه؟
+      ar: وما ذلك النصب الذي أمامه؟
+      en: And what's the monument in front of it?
     - speaker: Mbak Ayu
-      text: Apik! Ringkesanmu cekak lan bener.
-      ar_eg: حلو! ملخّصك قصير وصح.
-      ar: أحسنت! ملخّصك قصير وصحيح.
-      en: Nice! Your summary is short and correct.
+      text: Tugu Muda, lambang perang limang dina ing Semarang.
+      ar_eg: توجو مودا، رمز معركة الخمس أيام في سيمارانج.
+      ar: توغو مودا، رمز معركة الأيام الخمسة في سيمارانغ.
+      en: Tugu Muda, the symbol of the Five-Day Battle in Semarang.
+    - speaker: Mohamed
+      text: Ayo mrana sesuk!
+      ar_eg: يلا نروح بكرة!
+      ar: هيا نذهب غدًا!
+      en: Let's go tomorrow!
 new_words:
-  - word: ringkesan
+  - word: abad
     pos: noun
-    ar_eg: ملخّص
-    ar: ملخّص
-    en: summary = ringkasan
-  - word: jaman
+    ar_eg: قرن
+    ar: قرن
+    en: century
+  - word: riwayat
     pos: noun
-    ar_eg: زمن / أيام (من «زمان»)
-    ar: زمن / عهد (من «زمان»)
-    en: era, time = zaman
-    arabic: زمان
-  - word: Walanda
-    pos: noun
-    ar_eg: هولندا / الهولنديين
-    ar: هولندا / الهولنديون
-    en: Holland, the Dutch = Belanda
-  - word: anyar
+    arabic: رواية
+    ar_eg: تاريخ، سيرة
+    ar: تاريخ، سيرة
+    en: history, life story
+  - word: kuno
     pos: adjective
-    ar_eg: جديد
-    ar: جديد
-    en: new = baru
+    ar_eg: قديم أثري
+    ar: قديم، أثري
+    en: ancient
+  - word: tugu
+    pos: noun
+    ar_eg: نصب
+    ar: نُصُب تذكاري
+    en: monument, pillar
+  - word: lambang
+    pos: noun
+    ar_eg: رمز، شعار
+    ar: رمز، شعار
+    en: symbol, emblem
+  - word: atusan
+    pos: numeral
+    ar_eg: مئات
+    ar: مئات
+    en: hundreds
+  - word: puluhan
+    pos: numeral
+    ar_eg: عشرات
+    ar: عشرات
+    en: tens, dozens
+  - word: awujud
+    pos: verb
+    ar_eg: على شكل
+    ar: على هيئة
+    en: in the form of
 review:
   status: draft
   verified: false
