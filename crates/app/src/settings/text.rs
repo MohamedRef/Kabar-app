@@ -210,9 +210,11 @@ pub fn st(lang: UiLanguage, s: S) -> &'static str {
         (GongDeep, En) => "Deep gong",
         (GongBright, ArEg | Ar) => "جونج صغير",
         (GongBright, En) => "Small gong",
-        (Vibration, ArEg) => "اهتزاز خفيف مع الإجابات وآخر الدرس",
-        (Vibration, Ar) => "اهتزاز خفيف مع الإجابات ونهاية الدرس",
-        (Vibration, En) => "A light vibration on answers and at a lesson's end",
+        (Vibration, ArEg) => "اهتزاز خفيف مع الإجابات وآخر الدرس، وبيمشي على إعداد اهتزاز اللمس في موبايلك",
+        (Vibration, Ar) => "اهتزاز خفيف مع الإجابات ونهاية الدرس، ويتبع إعداد اهتزاز اللمس في هاتفك",
+        (Vibration, En) => {
+            "A light vibration on answers and at a lesson's end; follows your phone's touch-vibration setting"
+        }
 
         (TextSize, ArEg | Ar) => "حجم الخط",
         (TextSize, En) => "Text size",

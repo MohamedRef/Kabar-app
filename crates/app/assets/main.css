@@ -475,6 +475,20 @@ h3 { font-size: var(--fs-md); margin-block: var(--sp-4) var(--sp-2); }
 }
 /* Portraits (portraits.rs): a cover-cropped photo-style face in the avatar's circle. */
 img.face { object-fit: cover; object-position: 50% 30%; display: block; }
+/* A speaker without a portrait yet: their initial or role sign in a tint
+   chosen by name (portraits::monogram, #312). Sized by the face class. */
+.face.monogram {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  background: color-mix(in srgb, var(--mono) 18%, var(--surface));
+  border: 1.5px solid var(--mono);
+  color: var(--mono);
+  font-family: var(--font-latin);
+  font-weight: 700;
+  font-size: 0.85rem;
+  line-height: 1;
+}
 img.face.nur-avatar { inline-size: 3.25rem; block-size: 3.25rem; box-shadow: 0 0 0 2px var(--gold-soft); }
 .nur-bubble {
   background: var(--surface-2);
