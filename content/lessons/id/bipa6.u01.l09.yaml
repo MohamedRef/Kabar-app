@@ -1,173 +1,234 @@
 schema: kabar.lesson/v1
 id: bipa6.u01.l09
 language: id
-title: Menulis cerpen mini
+title: Ayah dan anak
 can_do:
-  ar_eg: تكتب قصة قصيرة جدًا ليها بداية قوية وراوي واضح وحوار صغير.
-  ar: أن تكتب قصة قصيرة جدًا ذات بداية قوية وراوٍ واضح وحوار قصير.
-  en: Write a very short story with a strong opening, a clear narrator and a bit of dialogue.
+  ar_eg: 'تقرا مشهد بين أب وابنه وتفهم اللي ماتقالش: التعب والخذلان والدفا.'
+  ar: 'أن تقرأ مشهدًا بين أب وابنه وتفهم ما لم يُقل: التعب والخيبة والدفء.'
+  en: 'Read a father-and-son scene and catch what goes unsaid: weariness, disappointment, warmth.'
 slides:
-  - title: Cerita dalam seratus kata
+  - title: Ayah dan anak
     body:
       ar_eg: |
-        الـ cerita mini (القصة القصيرة جدًا) حوالي ١٠٠ كلمة بس، فكل جملة لازم تشتغل:
-        - kalimat pembuka = الجملة الأولى: لازم تشد القارئ من أول سطر
-        - اختار pencerita واحد: orang pertama ولا orang ketiga
-        - حوار صغير بين tanda petik، بفعل زي berbisik أو membentak
-        - akhir terbuka لو عايز القارئ يفكر بعد ما يخلص
+        مشهد: أب بيسهر في الشغل عشان لقمة العيش، وابنه الصغير مستنيه.
+        nafkah = لقمة العيش، المصروف اللي بيصرفه على البيت (mencari nafkah). begadang = يسهر لحد الصبح.
+        letih = هلكان. kekecewaan = خذلان، خيبة أمل (من kecewa). kehangatan = دفا (من hangat).
+        lugu = على نياته، ساذج. riang = فرحان ومبسوط. tersadar = فاق، خد باله فجأة.
       ar: |
-        الـ cerita mini (القصة القصيرة جدًا) نحو مئة كلمة فقط، فلكلّ جملة عملها:
-        - kalimat pembuka = الجملة الافتتاحية، وعليها أن تشدّ القارئ من السطر الأول
-        - اختر pencerita واحدًا: orang pertama أو orang ketiga
-        - حوار قصير بين tanda petik، بفعل مثل berbisik أو membentak
-        - akhir terbuka إن أردت أن يفكّر القارئ بعد الانتهاء
+        مشهد: أب يسهر في العمل طلبًا للرزق، وابنه الصغير ينتظره.
+        nafkah = الرزق، النفقة على البيت (mencari nafkah). begadang = يسهر حتى الصباح.
+        letih = مُنهَك. kekecewaan = خيبة أمل (من kecewa). kehangatan = دفء (من hangat).
+        lugu = ساذج، بريء. riang = مرِح، مبتهج. tersadar = أفاق، انتبه فجأة.
       en: |
-        A cerita mini (flash fiction) is about a hundred words, so every sentence has a job:
-        - kalimat pembuka = the opening line; it must hook the reader at once
-        - pick one pencerita: orang pertama or orang ketiga
-        - a little dialogue in tanda petik, with a verb like berbisik or membentak
-        - an akhir terbuka if you want the reader to keep thinking
+        Scene: a father works late nights to earn a living; his little son waits for him.
+        nafkah = livelihood, support for the family (mencari nafkah). begadang = to stay up all night.
+        letih = weary. kekecewaan = disappointment (from kecewa). kehangatan = warmth (from hangat).
+        lugu = naive, innocent. riang = cheerful. tersadar = to suddenly realise.
+    examples:
+      - text: Ayahnya begadang setiap malam untuk mencari nafkah.
+        ar_eg: أبوه بيسهر كل ليلة عشان لقمة العيش.
+        ar: يسهر أبوه كل ليلة طلبًا للرزق.
+        en: His father stays up every night to earn a living.
+      - text: Anak yang lugu itu menyambutnya dengan riang.
+        ar_eg: العيل اللي على نياته ده استقبله فرحان.
+        ar: استقبله الطفل البريء مرحًا.
+        en: The innocent child greeted him cheerfully.
+      - text: Dia tersadar bahwa anaknya sudah besar.
+        ar_eg: خد باله فجأة إن ابنه كبر.
+        ar: انتبه فجأة إلى أن ابنه قد كبر.
+        en: He suddenly realised his son had grown up.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي kalimat pembuka أقوى؟
-      ar: أيّ kalimat pembuka أقوى؟
-      en: Which kalimat pembuka is strongest?
-    options:
-      - Pada suatu hari, ada seorang bapak.
-      - Kursi itu sudah sepuluh tahun menunggu.
-      - Cerita ini tentang keluarga.
-    answer: 1
-    explain:
-      ar_eg: 'بتفتح سؤال في دماغ القارئ: الكرسي مستني مين؟'
-      ar: 'تفتح سؤالًا في ذهن القارئ: من ينتظر الكرسي؟'
-      en: It opens a question in the reader's mind. Who is the chair waiting for?
-    words: [kalimat pembuka]
+    type: match_pairs
+    pairs:
+      - text: nafkah
+        ar_eg: لقمة العيش
+        ar: الرزق، النفقة
+        en: livelihood
+      - text: begadang
+        ar_eg: يسهر للصبح
+        ar: يسهر
+        en: to stay up all night
+      - text: letih
+        ar_eg: هلكان
+        ar: منهك
+        en: weary
+      - text: kekecewaan
+        ar_eg: خذلان
+        ar: خيبة أمل
+        en: disappointment
+    words: [nafkah, begadang, letih, kekecewaan]
   - id: e02
-    type: listen
-    text: Cerita mini ini hanya seratus kata, tetapi ada kilas balik dan akhir terbuka.
-    question:
-      ar_eg: القصة دي طولها قد إيه؟
-      ar: كم طول هذه القصة؟
-      en: How long is this story?
-    options:
-      - ألف كلمة.
-      - عشر صفحات.
-      - مية كلمة بس.
-    answer: 2
-    words: [cerita mini, kilas balik, akhir terbuka]
+    type: match_pairs
+    pairs:
+      - text: kehangatan
+        ar_eg: دفا
+        ar: دفء
+        en: warmth
+      - text: lugu
+        ar_eg: على نياته
+        ar: ساذج، بريء
+        en: naive
+      - text: riang
+        ar_eg: فرحان
+        ar: مرِح
+        en: cheerful
+      - text: tersadar
+        ar_eg: خد باله فجأة
+        ar: انتبه فجأة
+        en: to suddenly realise
+    words: [kehangatan, lugu, riang, tersadar]
   - id: e03
-    type: fill_blank
-    sentence: '"Aku takut," ___ anak itu, sangat pelan.'
+    type: listen
+    text: Setelah bekerja enam belas jam, dia letih sekali.
+    question:
+      ar_eg: كان حاسس بإيه؟
+      ar: بماذا كان يشعر؟
+      en: How did he feel?
+    options: [هلكان, فرحان, على نياته]
+    answer: 0
     meaning:
-      ar_eg: «أنا خايف»، وشوش الولد، بصوت واطي جدًا.
-      ar: «أنا خائف»، همس الطفل بصوت خافت جدًا.
-      en: '"I''m scared," the child whispered, very softly.'
-    options: [bisik, bentak, sahut]
-    answers: [bisik]
-    words: [berbisik]
+      ar_eg: بعد ما اشتغل ستاشر ساعة، كان هلكان خالص.
+      ar: بعد العمل ست عشرة ساعة كان منهكًا جدًا.
+      en: After working sixteen hours, he was worn out.
+    words: [letih]
   - id: e04
-    type: build_sentence
-    source:
-      ar_eg: القصة دي بتستخدم ضمير المتكلم وحوار قليل.
-      ar: تستعمل هذه القصة ضمير المتكلّم وحوارًا قليلًا.
-      en: This story uses the first person and a little dialogue.
-    answer: Cerita ini memakai sudut pandang orang pertama dan sedikit dialog.
-    distractors: [ketiga, petik]
-    words: [orang pertama]
+    type: fill_blank
+    sentence: Ayahnya bekerja keras untuk mencari ___ bagi keluarganya.
+    meaning:
+      ar_eg: أبوه بيشتغل جامد عشان يجيب ___ للعيلة.
+      ar: يعمل أبوه بجدّ طلبًا لـ ___ أسرته.
+      en: His father works hard to earn a ___ for his family.
+    options: [nafkah, kehangatan, kekecewaan]
+    answers: [nafkah]
+    words: [nafkah, kehangatan, kekecewaan]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: '«"Diam!" bentak ayahnya.» الأب كان عامل إزاي؟'
-      ar: '«"Diam!" bentak ayahnya.» كيف كان الأب؟'
-      en: '«"Diam!" bentak ayahnya.» How was the father?'
-    options:
-      - زعلان ومتعصب.
-      - هادي ونعسان.
-      - فرحان ومبسوط.
-    answer: 0
-    words: [membentak]
+      ar_eg: تحس بإيه لما حد تثق فيه يخلف وعده؟
+      ar: بماذا تشعر حين يخلف وعدَه شخصٌ تثق به؟
+      en: What do you feel when someone you trust breaks a promise?
+    options: [kehangatan, kekecewaan, nafkah]
+    answer: 1
+    explain:
+      ar_eg: kekecewaan = خيبة الأمل، من kecewa.
+      ar: kekecewaan = خيبة الأمل، من kecewa.
+      en: kekecewaan = disappointment, from kecewa.
+    words: [kekecewaan, kehangatan, nafkah]
   - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الجملة الأولى في القصة القصيرة جدًا لازم تشد القارئ.
-      ar: يجب أن تشدّ الجملة الأولى في القصة القصيرة جدًا القارئ.
-      en: The opening line of a flash fiction must grab the reader.
-    answers:
-      - Kalimat pembuka cerita mini harus menarik pembaca.
-      - Kalimat pembuka dalam cerita mini harus menarik pembaca.
-      - Kalimat pembuka cerita mini harus menarik perhatian pembaca.
-    words: [kalimat pembuka, cerita mini]
-  - id: e07
     type: fill_blank
-    sentence: Ibunya memanggil dua kali, tetapi Rudi tidak ___.
+    sentence: Anak itu masih ___; dia percaya semua cerita ayahnya.
     meaning:
-      ar_eg: أمه ندهت عليه مرتين، بس رودي مارّدش.
-      ar: نادته أمّه مرّتين، لكنّ رودي لم يردّ.
-      en: His mother called twice, but Rudi didn't answer.
-    options: [menyahut, bergumam, diterbitkan]
-    answers: [menyahut]
-    words: [menyahut]
+      ar_eg: العيل ده لسه ___؛ مصدّق كل حكايات أبوه.
+      ar: ما زال الطفل ___؛ يصدّق كل حكايات أبيه.
+      en: The child is still ___; he believes all his father's stories.
+    options: [lugu, letih, begadang]
+    answers: [lugu]
+    words: [lugu, letih, begadang]
+  - id: e07
+    type: multiple_choice
+    question: Pelukan anaknya memberi ___ yang sudah lama hilang.
+    options: [begadang, tersadar, kehangatan]
+    answer: 2
+    explain:
+      ar_eg: 'حضن ابنه إداه دفا كان ضايع منه: kehangatan.'
+      ar: 'منحه عناق ابنه دفئًا فقده منذ زمن: kehangatan.'
+      en: 'His son''s hug gave him a long-lost warmth: kehangatan.'
+    words: [kehangatan, begadang, tersadar]
   - id: e08
-    type: speaking
-    text: Dalam cerita mini saya, pencerita bergumam tentang masa kecilnya.
-    meaning:
-      ar_eg: في القصة القصيرة جدًا بتاعتي، الراوي بيبرطم عن طفولته.
-      ar: في قصتي القصيرة جدًا، يتمتم الراوي عن طفولته.
-      en: In my flash fiction, the narrator mutters about his childhood.
-    words: [cerita mini, pencerita, bergumam]
+    type: build_sentence
+    source:
+      ar_eg: سهر لحد الصبح عشان يخلّص الشغل.
+      ar: سهر حتى الصباح لينهي العمل.
+      en: He stayed up till morning to finish the work.
+    answer: Dia begadang sampai pagi untuk menyelesaikan pekerjaan.
+    distractors: [riang, lugu]
+    words: [begadang]
   - id: e09
-    type: dictation
-    text: Redaktur suka kalimat pembuka yang pendek dan kuat.
-    meaning:
-      ar_eg: المحرر بيحب الجملة الأولى تبقى قصيرة وقوية.
-      ar: يحبّ المحرّر الجملة الافتتاحية القصيرة القوية.
-      en: The editor likes a short, strong opening line.
-    words: [kalimat pembuka, redaktur]
+    type: translate
+    direction: from_target
+    source_text: 'Ayahnya tersadar: anaknya tidak lagi riang.'
+    answers_meaning:
+      ar_eg: ['أبوه خد باله: ابنه ما بقاش فرحان', الأب انتبه إن ابنه مش مبسوط زي زمان]
+      ar: ['انتبه أبوه: لم يعد ابنه مرحًا', أدرك الأب أن ابنه لم يعد مبتهجًا]
+      en: [His father realised his son was no longer cheerful, 'The father suddenly saw that his son wasn''t happy any more']
+    words: [tersadar, riang]
   - id: e10
     type: speaking
-    text: Kursi itu sudah sepuluh tahun menunggu. "Dia akan pulang," bisik Pak Lubis.
+    text: Anak yang lugu itu menyambut ayahnya dengan riang.
     meaning:
-      ar_eg: الكرسي ده مستني من عشر سنين. «أكيد هيرجع»، وشوش الأستاذ لوبيس.
-      ar: انتظر ذلك الكرسي عشر سنين. «سيعود حتمًا»، همس الأستاذ لوبيس.
-      en: That chair has been waiting ten years. "He'll come home," Pak Lubis whispered.
-    words: [kalimat pembuka, berbisik, tanda petik]
+      ar_eg: العيل اللي على نياته ده استقبل أبوه فرحان.
+      ar: استقبل الطفل البريء أباه مرحًا.
+      en: The innocent child greeted his father cheerfully.
+    words: [lugu, riang]
 dialogue:
-  title: Seratus kata saja
   lines:
-    - speaker: Kak Mei
-      text: Mohamed, koran kampus mencari cerita mini. Maksimal seratus kata.
-      ar_eg: يا محمد، جرنال الجامعة عايز قصص قصيرة جدًا. مية كلمة بالكتير.
-      ar: يا محمد، صحيفة الجامعة تطلب قصصًا قصيرة جدًا، مئة كلمة على الأكثر.
-      en: Mohamed, the campus paper wants flash fiction. A hundred words at most.
+    - speaker: Bang Togar
+      text: 'Bagian favoritku: ayahnya pulang letih, anaknya menyambut dengan riang.'
+      ar_eg: 'الحتة اللي بحبها: الأب راجع هلكان، والابن مستقبله فرحان.'
+      ar: 'مقطعي المفضّل: يعود الأب منهكًا، فيستقبله الابن مرحًا.'
+      en: 'My favourite part: the father comes home weary, the son greets him cheerfully.'
     - speaker: Mohamed
-      text: Seratus kata? Kalau begitu kalimat pembukanya harus kuat sekali.
-      ar_eg: مية كلمة؟ يبقى الجملة الأولى لازم تبقى قوية جدًا.
-      ar: مئة كلمة؟ إذن ينبغي أن تكون الجملة الافتتاحية قوية جدًا.
-      en: A hundred words? Then the opening line has to be really strong.
-    - speaker: Kak Mei
-      text: Ya. Pilih satu pencerita, tambahkan sedikit dialog, lalu berhenti.
-      ar_eg: أيوه. اختار راوي واحد، وزوّد حوار صغير، وبعدين اقف.
-      ar: نعم. اختر راويًا واحدًا، وأضف حوارًا قليلًا، ثم توقّف.
-      en: Yes. Choose one narrator, add a bit of dialogue, then stop.
+      text: Ayahnya begadang di kantor. Ada kekecewaan dengan pekerjaannya, kan?
+      ar_eg: الأب بيسهر في المكتب. فيه خذلان من شغله، صح؟
+      ar: يسهر الأب في المكتب. ثمة خيبة من عمله، أليس كذلك؟
+      en: The father works late nights at the office. He's disappointed with his job, right?
+    - speaker: Bang Togar
+      text: Betul. Tapi dia bertahan demi nafkah keluarga.
+      ar_eg: مظبوط. بس مستحمل عشان لقمة عيش العيلة.
+      ar: صحيح. لكنه يصمد من أجل رزق الأسرة.
+      en: Right. But he hangs on to support the family.
     - speaker: Mohamed
-      text: Dengan akhir terbuka, supaya pembaca terus berpikir.
-      ar_eg: وبنهاية مفتوحة، عشان القارئ يفضل يفكر.
-      ar: وبنهاية مفتوحة، كي يظلّ القارئ يفكّر.
-      en: With an open ending, so the reader keeps thinking.
+      text: Lalu anaknya yang lugu bertanya, 'Ayah capek?' Dan ayahnya tersadar.
+      ar_eg: 'وبعدين الابن اللي على نياته يسأل: ''بابا تعبان؟'' والأب ياخد باله.'
+      ar: 'ثم يسأل الابن البريء: ''أبي، أأنت متعب؟'' فيفيق الأب.'
+      en: Then the innocent son asks, 'Tired, Dad?' And the father wakes up to it.
+    - speaker: Bang Togar
+      text: Ya. Cerpen ini selesai dengan kehangatan, bukan jawaban.
+      ar_eg: أيوه. القصة دي بتخلص بدفا، مش بإجابة.
+      ar: نعم. تنتهي هذه القصة بالدفء، لا بالجواب.
+      en: Yes. The story ends with warmth, not an answer.
 new_words:
-  - word: cerita mini
+  - word: nafkah
     pos: noun
-    ar_eg: قصة قصيرة جدًا
-    ar: قصة قصيرة جدًا
-    en: flash fiction
-  - word: kalimat pembuka
+    ar_eg: لقمة العيش، المصروف
+    ar: رزق، نفقة
+    en: livelihood, support
+  - word: begadang
+    pos: verb
+    ar_eg: يسهر لحد الصبح
+    ar: يسهر الليل
+    en: to stay up all night
+  - word: letih
+    pos: adjective
+    ar_eg: هلكان
+    ar: منهك، متعب
+    en: weary, worn out
+  - word: kekecewaan
     pos: noun
-    ar_eg: الجملة الأولى
-    ar: الجملة الافتتاحية
-    en: opening sentence
+    ar_eg: خذلان، خيبة أمل
+    ar: خيبة أمل
+    en: disappointment
+  - word: kehangatan
+    pos: noun
+    ar_eg: دفا
+    ar: دفء
+    en: warmth
+  - word: lugu
+    pos: adjective
+    ar_eg: على نياته، ساذج
+    ar: ساذج، بريء
+    en: naive, innocent
+  - word: riang
+    pos: adjective
+    ar_eg: فرحان، مبسوط
+    ar: مرِح، مبتهج
+    en: cheerful
+  - word: tersadar
+    pos: verb
+    ar_eg: فاق، خد باله فجأة
+    ar: أفاق، انتبه فجأة
+    en: to come to, suddenly realise
 review:
   status: draft
   verified: false

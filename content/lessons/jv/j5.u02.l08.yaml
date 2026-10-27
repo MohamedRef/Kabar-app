@@ -1,229 +1,197 @@
 schema: kabar.lesson/v1
 id: j5.u02.l08
 language: jv
-title: Sejarah Lawang Sewu
+title: Warta radio
 can_do:
-  ar_eg: تقرا فقرة من مجلة عن تاريخ لاوانج سيوو وتفهم اسمه وأصله.
-  ar: أن تقرأ فقرة من مجلة عن تاريخ لاوانغ سيوو وتفهم سبب اسمه وأصله.
-  en: Read a magazine paragraph on Lawang Sewu's history and explain its name.
-slides:
-  - title: Saka kalawarti
-    body:
-      ar_eg: |
-        فقرة من مجلة جاوية عن المبنى اللي إنت واقف قدّامه. هتقابل sinebut (= disebut، بالـ -in- الأدبية) وkasebut (= tersebut)، ومعاهم dibangun وdening.
-        كلمات جديدة: lawang = باب (pintu)، وlawange = أبوابه. kantor = مكتب / مقرّ (kantor). وamarga = عشان (karena)، وmuseum زي الإندونيسي.
-      ar: |
-        فقرة من مجلة جاوية عن المبنى الذي تقف أمامه. ستقابل sinebut (= disebut، بالـ -in- الأدبية) وkasebut (= tersebut)، ومعهما dibangun وdening.
-        كلمات جديدة: lawang = باب (pintu)، وlawange = أبوابه، وkantor = مكتب / مقرّ (kantor). وamarga = لأن (karena)، وmuseum كالإندونيسية.
-      en: |
-        A paragraph from a Javanese magazine about the building you're standing in front of. You'll meet sinebut (= disebut, with the literary -in-) and kasebut (= tersebut), along with dibangun and dening.
-        New words: lawang = door (pintu), and lawange = its doors. kantor = office, headquarters (kantor). amarga = because (karena), and museum is as in Indonesian.
-    grammar: jv.passive.written
-    examples:
-      - text: Gedhong iki sinebut Lawang Sewu, amarga lawange akeh banget.
-        ar_eg: المبنى ده اسمه «لاوانج سيوو» (ألف باب)، عشان أبوابه كتير أوي.
-        ar: يُسمّى هذا المبنى «لاوانغ سيوو» (ألف باب)، لأن أبوابه كثيرة جدًا.
-        en: This building is called Lawang Sewu (a thousand doors) because it has so many doors.
-      - text: Ing jaman Walanda, gedhong kasebut dadi kantor perusahaan sepur.
-        ar_eg: أيام الهولنديين، المبنى ده كان مقرّ شركة سكة حديد.
-        ar: في العهد الهولندي كان هذا المبنى مقرًّا لشركة سكك حديدية.
-        en: In the Dutch era, the building was the office of a railway company.
-      - text: Saiki Lawang Sewu dadi museum lan papan wisata kang misuwur.
-        ar_eg: دلوقتي لاوانج سيوو بقى متحف ومكان سياحي مشهور.
-        ar: صار لاوانغ سيوو اليوم متحفًا ومعلمًا سياحيًا مشهورًا.
-        en: Today Lawang Sewu is a museum and a famous tourist spot.
+  ar_eg: تسمع نشرة أخبار قصيرة بالجاوي وتفهم إيه اللي حصل ومين عمل إيه.
+  ar: أن تستمع إلى نشرة أخبار جاوية قصيرة وتفهم ما حدث ومن فعل ماذا.
+  en: Follow a short Javanese radio news bulletin by ear.
 exercises:
   - id: e01
     type: listen
-    text: Gedhong iki sinebut Lawang Sewu, amarga lawange akeh banget.
+    text: Warta saka Semarang. Esuk iki, dalan ing Kaligawe kebanjiran rob maneh.
     question:
-      ar_eg: ليه اسمه لاوانج سيوو؟
-      ar: لماذا سُمّي لاوانغ سيوو؟
-      en: Why is it called Lawang Sewu?
+      ar_eg: دي نشرة الراديو الصبح. إيه اللي حصل؟
+      ar: هذه نشرة الإذاعة صباحًا. ماذا حدث؟
+      en: This is the morning radio news. What happened?
     options:
-      - amarga gedhonge gedhe banget
-      - amarga lawange akeh banget
-      - amarga ana sepur sewu
+      - Dalan ing Kaligawe kebanjiran rob.
+      - Ana pameran ing Lawang Sewu.
+      - Sepur saka Jakarta wis teka.
+    answer: 0
+    meaning:
+      ar_eg: أخبار من سيمارانج. النهارده الصبح، الشارع في كاليجاوي غرق من المد تاني.
+      ar: أخبار من سيمارانج. صباح اليوم غمر المدُّ طريقَ كاليغاوي مرة أخرى.
+      en: News from Semarang. This morning the road in Kaligawe was flooded by the tide again.
+    explain:
+      ar_eg: maneh = تاني (lagi). يعني ده بيحصل كتير هناك، فاكر kerep؟
+      ar: maneh = مرة أخرى (lagi)، أي أن ذلك يتكرر هناك، كما في kerep.
+      en: maneh = again (lagi), so it happens often there; remember kerep?
+    words: [rob, kebanjiran, maneh]
+  - id: e02
+    type: listen
+    text: Dalan kasebut ditutup dening polisi nganti sore.
+    question:
+      ar_eg: مين اللي قفل الشارع؟
+      ar: من أغلق الطريق؟
+      en: Who closed the road?
+    options: [warga, polisi, lurah]
     answer: 1
     meaning:
-      ar_eg: المبنى ده اسمه «لاوانج سيوو»، عشان أبوابه كتير أوي.
-      ar: يُسمّى هذا المبنى «لاوانغ سيوو» لأن أبوابه كثيرة جدًا.
-      en: This building is called Lawang Sewu because it has so many doors.
-    words: [lawang, sinebut]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: المبنى كان إيه أيام الهولنديين؟
-      ar: ماذا كان المبنى في العهد الهولندي؟
-      en: What was the building in the Dutch era?
-    options: [kantor perusahaan sepur, museum, stasiun sepur]
-    answer: 0
+      ar_eg: الشرطة قفلت الشارع ده لحد العصر.
+      ar: أغلقت الشرطة هذا الطريق حتى المساء.
+      en: The road was closed by the police until the afternoon.
     explain:
-      ar_eg: «dadi kantor perusahaan sepur» = كان مقر شركة سكة حديد. المتحف ده دلوقتي (saiki).
-      ar: «dadi kantor perusahaan sepur» = كان مقرّ شركة سكك حديدية، أما المتحف فاليوم (saiki).
-      en: '"dadi kantor perusahaan sepur" = it was a railway company office; the museum is now (saiki).'
-    words: [kantor]
+      ar_eg: ditutup = اتقفل (ditutup). اللي بعد dening = الفاعل.
+      ar: ditutup = أُغلق (ditutup)، ومن يأتي بعد dening هو الفاعل.
+      en: ditutup = was closed (ditutup); whoever follows dening did it.
+    words: [ditutup, dening]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: لاوانج سيوو دلوقتي إيه؟
-      ar: ما لاوانغ سيوو اليوم؟
-      en: What is Lawang Sewu today?
-    options: [kantor perusahaan sepur, sekolah, museum lan papan wisata]
+    type: listen
+    text: Sesuk esuk, dalan kasebut bakal diresiki dening warga.
+    question:
+      ar_eg: الشارع هيتنضّف إمتى؟
+      ar: متى سيُنظَّف الطريق؟
+      en: When will the road be cleaned?
+    options: [esuk iki, nganti sore, sesuk esuk]
     answer: 2
-    words: [misuwur, sekolah]
+    meaning:
+      ar_eg: بكرة الصبح، السكان هينضّفوا الشارع ده.
+      ar: صباح الغد سينظّف السكانُ هذا الطريق.
+      en: Tomorrow morning the road will be cleaned by the residents.
+    words: [diresiki, warga, bakal]
   - id: e04
     type: match_pairs
     pairs:
-      - text: lawang
-        ar_eg: باب
-        ar: باب
-        en: door
-      - text: sinebut
-        ar_eg: اسمه / بيتسمّى
-        ar: يُسمّى
-        en: is called
-      - text: kasebut
-        ar_eg: المذكور / ده
-        ar: المذكور
-        en: the said, that
-      - text: kantor
-        ar_eg: مكتب / مقرّ
-        ar: مكتب / مقرّ
-        en: office
-      - text: amarga
-        ar_eg: عشان
-        ar: لأن
-        en: because
-    words: [lawang, sinebut, kasebut, kantor]
+      - text: ditutup
+        ar_eg: اتقفل
+        ar: أُغلق
+        en: was closed
+      - text: diresiki
+        ar_eg: اتنضّف
+        ar: نُظّف
+        en: was cleaned
+      - text: kebanjiran
+        ar_eg: غرق / اتغمر بالمية
+        ar: غمرته المياه
+        en: got flooded
+      - text: rob
+        ar_eg: فيضان المد
+        ar: فيضان المدّ
+        en: tidal flood
+      - text: kerep
+        ar_eg: كتير / غالبًا
+        ar: كثيرًا
+        en: often
+    words: [ditutup, diresiki, kebanjiran, rob, kerep]
   - id: e05
     type: fill_blank
-    sentence: Gedhong iki ___ Lawang Sewu.
+    sentence: Dalan kasebut ___ dening polisi nganti sore.
     meaning:
-      ar_eg: المبنى ده اسمه لاوانج سيوو.
-      ar: يُسمّى هذا المبنى لاوانغ سيوو.
-      en: This building is called Lawang Sewu.
-    options: [tinulis, kapilih, sinebut]
-    answers: [sinebut]
-    explain:
-      ar_eg: sinebut = disebut (sebut + -in-). tinulis = اتكتب، kapilih = اتنتخب.
-      ar: sinebut = disebut (sebut + -in-)، وtinulis = كُتب، وkapilih = انتُخب.
-      en: sinebut = disebut (sebut + -in-); tinulis = written, kapilih = elected.
-    words: [sinebut]
+      ar_eg: الشرطة قفلت الشارع ده لحد العصر.
+      ar: أغلقت الشرطة هذا الطريق حتى المساء.
+      en: The road was closed by the police until the afternoon.
+    options: [diresiki, dibangun, ditutup]
+    answers: [ditutup]
+    words: [ditutup]
   - id: e06
     type: dictation
-    text: Gedhong iki sinebut Lawang Sewu, amarga lawange akeh banget.
+    text: Sesuk esuk, dalan kasebut bakal diresiki dening warga.
     meaning:
-      ar_eg: المبنى ده اسمه «لاوانج سيوو»، عشان أبوابه كتير أوي.
-      ar: يُسمّى هذا المبنى «لاوانغ سيوو» لأن أبوابه كثيرة جدًا.
-      en: This building is called Lawang Sewu because it has so many doors.
-    words: [lawang, sinebut]
+      ar_eg: بكرة الصبح، السكان هينضّفوا الشارع ده.
+      ar: صباح الغد سينظّف السكانُ هذا الطريق.
+      en: Tomorrow morning the road will be cleaned by the residents.
+    words: [diresiki, warga, dening, bakal]
   - id: e07
     type: translate
-    direction: from_target
-    source_text: Ing jaman Walanda, gedhong kasebut dadi kantor perusahaan sepur.
-    answers_meaning:
-      ar_eg:
-        - أيام الهولنديين، المبنى ده كان مقرّ شركة سكة حديد.
-        - أيام الهولنديين، المبنى ده كان مكتب شركة قطرات.
-        - في عهد الهولنديين، المبنى المذكور كان مقر شركة سكة حديد.
-        - أيام هولندا المبنى ده كان مكاتب شركة السكة الحديد.
-      ar:
-        - في العهد الهولندي كان هذا المبنى مقرًّا لشركة سكك حديدية.
-        - في العهد الهولندي كان المبنى المذكور مكتبًا لشركة سكك حديدية.
-        - في زمن الهولنديين صار هذا المبنى مقرّ شركة قطارات.
-      en:
-        - In the Dutch era, the building was the office of a railway company.
-        - In the Dutch era, the building became a railway company's office.
-        - In the Dutch era, this building was the office of a railway company.
-        - In the Dutch era, the said building was a railway company office.
-        - In Dutch times, the building was a railway company's headquarters.
-        - In the Dutch era, the building was a railway company's headquarters.
-    words: [kantor, kasebut]
+    direction: to_target
+    source_meaning:
+      ar_eg: (بأسلوب الأخبار) الشرطة قفلت الشارع.
+      ar: (بأسلوب الأخبار) أغلقت الشرطة الطريق.
+      en: (news style) The road was closed by the police.
+    answers:
+      - Dalan kasebut ditutup dening polisi.
+      - Dalan iku ditutup dening polisi.
+      - Dalane ditutup dening polisi.
+      - Dalan ditutup dening polisi.
+      - Dalan iki ditutup dening polisi.
+    words: [ditutup, dening]
   - id: e08
-    type: build_sentence
-    source:
-      ar_eg: (بأسلوب المقالة) المبنى ده دلوقتي بقى متحف.
-      ar: (بأسلوب المقالة) صار هذا المبنى اليوم متحفًا.
-      en: (article style) The building is now a museum.
-    answer: Saiki gedhong kasebut dadi museum.
-    alternatives:
-      - Gedhong kasebut saiki dadi museum.
-    distractors: [sinebut, lawang]
-    words: [kasebut]
+    type: speaking
+    text: Warta saka Semarang. Dalan ing Kaligawe kebanjiran rob maneh.
+    meaning:
+      ar_eg: أخبار من سيمارانج. الشارع في كاليجاوي غرق من المد تاني.
+      ar: أخبار من سيمارانج. غمر المدُّ طريقَ كاليغاوي مرة أخرى.
+      en: News from Semarang. The road in Kaligawe was flooded by the tide again.
+    words: [kebanjiran, rob, maneh]
   - id: e09
     type: fill_blank
-    sentence: Saben esuk Bima lunga ___.
+    sentence: Sesuk dalan iki ___ diresiki.
     meaning:
-      ar_eg: كل يوم الصبح بيما بيروح المدرسة.
-      ar: كل صباح يذهب بيما إلى المدرسة.
-      en: Every morning Bima goes to school.
-    options: [sekolah, lawang, sewu]
-    answers: [sekolah]
-    words: [sekolah]
+      ar_eg: بكرة الشارع ده هيتنضّف.
+      ar: سيُنظَّف هذا الشارع غدًا.
+      en: Tomorrow this road will be cleaned.
+    options: [bakal, wis, lagi]
+    answers: [bakal]
+    words: [bakal]
   - id: e10
     type: multiple_choice
-    question: Bima sekolah ing Semarang.
+    question: Dalan ing Kaligawe kebanjiran rob maneh.
     question_meaning:
       ar_eg: معنى الجملة دي إيه؟
       ar: ما معنى هذه الجملة؟
       en: What does this sentence mean?
-    options: ['بيما بيدرس في سمارانج.', 'بيما بيشتغل في سمارانج.', 'بيما بيبيع في سمارانج.']
+    options: ['الشارع في كاليجاوي غرق تاني من مية البحر.', 'الشارع في كاليجاوي لسه ماغرقش.', 'الشارع في كاليجاوي عمره ما غرق.']
     answer: 0
     explain:
-      ar_eg: 'sekolah زي الإندونيسي: مدرسة، وكمان «يدرس في مدرسة».'
-      ar: 'sekolah كالإندونيسية: مدرسة، وأيضًا «يدرس».'
-      en: 'sekolah as in Indonesian: school, and also ''to go to school''.'
-    words: [sekolah]
+      ar_eg: maneh = تاني (lagi). بتيجي بعد الفعل.
+      ar: maneh = مرة أخرى (lagi)، وتأتي بعد الفعل.
+      en: maneh = again (lagi); it comes after the verb.
+    words: [maneh, rob]
 dialogue:
-  title: Lawange pira?
+  title: Krungu warta radio
   lines:
+    - speaker: Mbak Ayu
+      text: Mohamed, krungu warta radio esuk iki?
+      ar_eg: يا محمد، سمعت نشرة الراديو النهارده الصبح؟
+      ar: يا محمد، هل سمعت نشرة الإذاعة صباح اليوم؟
+      en: Mohamed, did you hear the radio news this morning?
     - speaker: Mohamed
-      text: Pak, lawangipun leres sewu?
-      ar_eg: يا عمّو، هو بجد عنده ألف باب؟
-      ar: يا سيدي، هل أبوابه ألفٌ حقًا؟
-      en: Sir, does it really have a thousand doors?
-    - speaker: Pak Harjo
-      text: Ora persis sewu, Mas. Nanging akeh banget, mula sinebut Lawang Sewu.
-      ar_eg: مش ألف بالظبط يا محمد. بس كتير أوي، عشان كده اسمه لاوانج سيوو.
-      ar: ليست ألفًا بالضبط يا محمد، لكنها كثيرة جدًا، لذلك يُسمّى لاوانغ سيوو.
-      en: Not exactly a thousand, Mohamed. But very many, so it's called Lawang Sewu.
+      text: Krungu. Dalan ing Kaligawe kebanjiran rob maneh.
+      ar_eg: سمعت. الشارع في كاليجاوي غرق من المد تاني.
+      ar: سمعت. غمر المدُّ طريق كاليغاوي مرة أخرى.
+      en: I did. The road in Kaligawe flooded with the tide again.
+    - speaker: Mbak Ayu
+      text: Waduh, aku arep menyang Kaligawe.
+      ar_eg: يا خبر، ده أنا رايحة كاليجاوي.
+      ar: يا للأسف، كنت أنوي الذهاب إلى كاليغاوي.
+      en: Oh no, I'm about to go to Kaligawe.
     - speaker: Mohamed
-      text: Oh, kados "Kutha Sewu Menara", nggih, Pak?
-      ar_eg: آه، زي «مدينة الألف مئذنة»، صح يا عمّو؟
-      ar: آه، مثل «مدينة الألف مئذنة»، أليس كذلك يا سيدي؟
-      en: Oh, like "the City of a Thousand Minarets", right, sir?
-    - speaker: Pak Harjo
-      text: Bener. Sewu ing kene padha karo akeh banget.
-      ar_eg: صح. «ألف» هنا يعني كتير أوي.
-      ar: صحيح. «ألف» هنا بمعنى كثير جدًا.
-      en: Right. A thousand here just means very many.
-    - speaker: Mohamed
-      text: Saiki gedhong menika dados museum, nggih?
-      ar_eg: والمبنى ده دلوقتي بقى متحف، صح؟
-      ar: وصار هذا المبنى الآن متحفًا، أليس كذلك؟
-      en: And now the building is a museum, isn't it?
-    - speaker: Pak Harjo
-      text: Iya, lan papan wisata kang misuwur.
-      ar_eg: آه، ومكان سياحي مشهور كمان.
-      ar: نعم، ومعلم سياحي مشهور.
-      en: Yes, and a famous tourist spot.
+      text: Aja saiki! Dalane ditutup dening polisi nganti sore.
+      ar_eg: بلاش دلوقتي! الشرطة قافلة الشارع لحد العصر.
+      ar: لا تذهبي الآن! أغلقت الشرطة الطريق حتى المساء.
+      en: Not now! The road's been closed by the police until the afternoon.
+    - speaker: Mbak Ayu
+      text: Ya wis, sesuk wae.
+      ar_eg: خلاص، بكرة بقى.
+      ar: حسنًا، غدًا إذن.
+      en: All right, tomorrow then.
 new_words:
-  - word: lawang
-    pos: noun
-    ar_eg: باب
-    ar: باب
-    en: door = pintu
-  - word: kantor
-    pos: noun
-    ar_eg: مكتب / مقرّ
-    ar: مكتب / مقرّ
-    en: office = kantor
-  - word: sekolah
-    pos: noun
-    ar_eg: مدرسة؛ يدرس
-    ar: مدرسة
-    en: school; to go to school = sekolah
+  - word: ditutup
+    pos: verb
+    ar_eg: اتقفل (من tutup = يقفل)
+    ar: أُغلق (من tutup = أغلق)
+    en: was closed (from tutup) = ditutup
+  - word: bakal
+    pos: particle
+    ar_eg: هـ (مستقبل)، حـ
+    ar: سوف، سـ
+    en: will (future) = akan
+  - word: maneh
+    pos: adverb
+    ar_eg: تاني / كمان مرة
+    ar: مرة أخرى
+    en: again = lagi
 review:
   status: draft
   verified: false

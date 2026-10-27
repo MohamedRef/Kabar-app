@@ -399,7 +399,7 @@ impl Updater {
             .is_none_or(|t| now_ms().saturating_sub(t) >= CHECK_EVERY.as_millis() as u64);
         // Automatic downloads wait for Wi-Fi (a ~45 MB APK on mobile data,
         // up to every merge on the preview channel); the offer still shows.
-        let auto = s.prefs.mode == Mode::Auto && !metered();
+        let auto = s.prefs.mode == Mode::Auto && !crate::platform::metered_network();
         if due {
             self.check(auto);
             crate::packs::update_installed();
@@ -738,18 +738,6 @@ pub fn apply_staged_on_launch() {
 pub fn restart() {
     if let Some(app) = bundle::running_bundle() {
         bundle::relaunch(&app);
-    }
-}
-
-/// Android: on mobile data or with Data Saver on.
-fn metered() -> bool {
-    #[cfg(target_os = "android")]
-    {
-        crate::platform::android::network_metered().unwrap_or(true)
-    }
-    #[cfg(not(target_os = "android"))]
-    {
-        false
     }
 }
 

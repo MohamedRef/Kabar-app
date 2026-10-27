@@ -2,7 +2,8 @@
 //! spacing and line width, kept per device like Settings › Text size, and a
 //! focus mode on tablet and Mac that sets the sidebar and the Reader's bar
 //! aside. On a phone the bar shrinks to one line so the text starts at the
-//! top; the voice picker moves into the settings sheet.
+//! top; the voice picker moves into the settings popover, which Escape, a
+//! click outside it and focus mode close.
 
 use dioxus::prelude::*;
 use kabar_core::layout::WidthClass;
@@ -47,6 +48,7 @@ pub fn OpenBar(sheet: Signal<bool>) -> Element {
     let shown = *sheet.read();
 
     rsx! {
+        div { class: "reader-bar-wrap",
         div { class: "card reader-bar one-line",
             h2 { "{ui.t(Msg::NavReader)}" }
             button {
@@ -64,7 +66,11 @@ pub fn OpenBar(sheet: Signal<bool>) -> Element {
                     title: if r.focus { ui.t(Msg::ReadFocusLeave) } else { ui.t(Msg::ReadFocus) },
                     onclick: {
                         let db = db.clone();
-                        move |_| prefs.set_reading(&db, Reading { focus: !r.focus, ..r })
+                        move |_| {
+                            // Focus means nothing over the text, the popover included.
+                            sheet.set(false);
+                            prefs.set_reading(&db, Reading { focus: !r.focus, ..r });
+                        }
                     },
                     if r.focus { "{ui.t(Msg::ReadFocusLeave)}" } else { "{ui.t(Msg::ReadFocus)}" }
                 }
@@ -72,7 +78,10 @@ pub fn OpenBar(sheet: Signal<bool>) -> Element {
             button { onclick: move |_| st.close(), "{ui.t(Msg::ReaderNew)}" }
         }
         if shown {
+            // A click anywhere outside the popover closes it.
+            div { class: "read-settings-scrim", onclick: move |_| sheet.set(false) }
             Sheet {}
+        }
         }
     }
 }
@@ -91,6 +100,7 @@ fn Sheet() -> Element {
     rsx! {
         div { id: "read-settings", class: "card read-settings", role: "group",
             aria_label: "{ui.t(Msg::ReadingSettings)}",
+            p { class: "read-preview", lang: "id", dir: "ltr", "Apa kabar? Kabar baik, terima kasih." }
             VoicePicker {}
             div { class: "field",
                 span { class: "label", "{ui.t(Msg::ReadSize)}" }
@@ -156,7 +166,7 @@ pub fn VoicePicker() -> Element {
     let st = use_context::<ReaderState>();
     let voice = *st.voice.read();
     rsx! {
-        div { class: "row",
+        div { class: "row voice-picker",
             span { class: "muted", "{ui.t(Msg::Voice)}" }
             div { class: "row", role: "group", aria_label: "{ui.t(Msg::Voice)}",
                 for v in UiLanguage::ALL {
