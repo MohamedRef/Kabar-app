@@ -172,13 +172,21 @@ exercises:
         en: animal
     words: [sungai, hotel, binatang]
   - id: e12
-    type: speaking
-    text: Permisi, boleh saya duduk?
-    meaning:
-      ar_eg: عن إذنك، ممكن أقعد؟
-      ar: عن إذنك، هل يمكنني الجلوس؟
-      en: Excuse me, may I sit down?
-    words: [permisi, boleh, duduk]
+    type: match_pairs
+    pairs:
+      - text: langit
+        ar_eg: سما
+        ar: سماء
+        en: sky
+      - text: angin
+        ar_eg: ريح، هوا
+        ar: ريح
+        en: wind
+      - text: matahari
+        ar_eg: شمس
+        ar: شمس
+        en: sun
+    words: [langit, angin, matahari]
 dialogue:
   title: Liburan di Ancol
   lines:
