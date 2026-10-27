@@ -8,12 +8,14 @@ mod cloud;
 mod coach;
 mod cost;
 mod data_export;
+mod fonts;
 mod i18n;
 mod icons;
 mod journey;
 mod lesson;
 mod listen;
 mod map_art;
+mod misc_art;
 mod packs;
 mod penlab;
 mod platform;
@@ -22,6 +24,7 @@ mod pron;
 mod reader;
 mod review;
 mod screens;
+mod sounds;
 mod souvenir_art;
 mod stats;
 mod store;
@@ -301,6 +304,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let width = ui.width.read().as_str();
     let theme_css = use_hook(theme::stylesheet);
     let pron_font = use_hook(pron::font_css);
+    let ui_fonts = use_hook(fonts::css);
     // The theme draws the kawung background in its own colour; a batik from
     // the Warung overrides it on this device.
     let batik = use_memo(move || {
@@ -318,6 +322,8 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         style { {MAIN_CSS} }
         style { {theme_css} }
         style { {pron_font} }
+        style { {ui_fonts} }
+        style { {misc_art::paper_css()} }
         div {
             class: "app",
             lang: lang.tag(),
