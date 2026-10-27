@@ -475,6 +475,7 @@ mod tests {
                     Example { text: "Apa  kabar?".into(), meaning: loc("") },
                 ],
                 grammar: None,
+                table: None,
             }],
             exercises: vec![
                 Exercise {
@@ -519,6 +520,8 @@ mod tests {
                 meaning: loc("news"),
                 arabic: Some("خبر".into()),
                 bridge: None,
+                false_friend: None,
+                same_as_id: false,
             }],
             souvenir: Some(Souvenir { id: "s".into(), title: "t".into(), note: loc("") }),
             review: Default::default(),

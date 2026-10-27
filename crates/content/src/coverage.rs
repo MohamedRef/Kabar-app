@@ -2,13 +2,15 @@
 //! Kabar Radio script or lesson dialogue that the curriculum has not taught by
 //! the time the learner meets it. Comfortable reading needs about 95–98% known
 //! words (Laufer 1989; Hu & Nation 2000), so items above [`Item::limit`] get
-//! flagged for glossing or re-wording.
+//! flagged for glossing or re-wording. Glosses in notes may close the gap, but
+//! only so far: the raw share, with notes ignored, has its own cap
+//! ([`Item::raw_limit`]), so a script cannot be glossed into shape.
 //!
 //! A word counts as known when a `new_words` entry at or before the item's
 //! position teaches it (a taught phrase covers its words; a suffixed or
 //! reduplicated form is covered by its root; a street form such as "nggak" by
-//! its formal twin in `content/freq/id.street.tsv`), when the line's own `note`
-//! explains it, or when it is not vocabulary at all: a name (capitalised and
+//! its formal twin in `content/freq/id.street.tsv`), when the note of that line
+//! or an earlier line of the same item explains it (the learner met the gloss), or when it is not vocabulary at all: a name (capitalised and
 //! either a cast name or absent from the frequency list), a number, or an
 //! entry in `content/freq/<lang>.core-exclude.tsv`.
 
@@ -38,6 +40,8 @@ pub struct Item {
     pub tokens: usize,
     /// Unknown tokens, with repeats.
     pub unknown: Vec<String>,
+    /// Unknown tokens when note glosses are ignored (raw coverage).
+    pub raw: usize,
 }
 
 impl Item {
@@ -54,6 +58,22 @@ impl Item {
 
     pub fn over(&self) -> bool {
         self.percent() > self.limit()
+    }
+
+    /// Unknown share when note glosses are ignored: what the script asks of
+    /// the learner before any help.
+    pub fn raw_percent(&self) -> f64 {
+        if self.tokens == 0 { 0.0 } else { 100.0 * self.raw as f64 / self.tokens as f64 }
+    }
+
+    /// The highest acceptable raw share: 15% in the first two levels, 18% later.
+    /// Glosses may close the gap to [`Item::limit`], but only this far.
+    pub fn raw_limit(&self) -> f64 {
+        if self.level < 2 { 15.0 } else { 18.0 }
+    }
+
+    pub fn raw_over(&self) -> bool {
+        self.raw_percent() > self.raw_limit()
     }
 
     /// The most frequent unknown words, most frequent first.
@@ -90,8 +110,12 @@ impl Track {
         if at(w) || self.exclude.contains(w) {
             return true;
         }
-        // A street form ("nggak", "makasih") is known once its formal twin is,
-        // and a street -in verb ("bacain", "dengerin") once its root is.
+        // A street form ("nggak", "makasih", Javanese "nggih") is known once
+        // its formal twin is, and a street -in verb ("bacain", "dengerin")
+        // once its root is.
+        if self.lang == "jv" && street::formal(Lang::Javanese, w).is_some_and(at) {
+            return true;
+        }
         if self.lang == "id" {
             let street = |w: &str| at(w) || street::formal(Lang::Indonesian, w).is_some_and(at);
             if street(w) {
@@ -122,6 +146,10 @@ impl Track {
         p.sort_by_key(|p| std::cmp::Reverse(p.len()));
         p
     }
+}
+
+fn tokens_of(note: &str) -> Vec<String> {
+    tokens(&note.to_lowercase())
 }
 
 fn str_field<'a>(v: &'a Value, key: &str) -> Option<&'a str> {
@@ -178,9 +206,8 @@ fn measure(
     names: &BTreeSet<String>,
     pos: usize,
     text: &str,
-    note: &str,
+    explained: &BTreeSet<String>,
 ) -> (usize, Vec<String>) {
-    let explained: BTreeSet<String> = tokens(&note.to_lowercase()).into_iter().collect();
     let text = track.phrases(pos).iter().fold(text.to_owned(), |t, p| mask_any_case(&t, p));
     let mut count = 0;
     let mut unknown = Vec::new();
@@ -210,6 +237,10 @@ fn tracks(root: &Path) -> Result<Vec<Track>, LoadError> {
     let mut files = Vec::new();
     yaml_files(&root.join("curriculum"), &mut files)?;
     let mut out = Vec::new();
+    // (track index, level index, required level ids) for cross-track prerequisites.
+    let mut requires = Vec::new();
+    // Level id -> (track index, position of its last lesson).
+    let mut level_end = BTreeMap::new();
     for file in files {
         let Ok(c) = serde_json::from_value::<Curriculum>(yaml_value(&file)?) else { continue };
         let lang = c.language.clone();
@@ -223,6 +254,7 @@ fn tracks(root: &Path) -> Result<Vec<Track>, LoadError> {
             lesson_level: BTreeMap::new(),
         };
         for (level, l) in c.levels.iter().enumerate() {
+            requires.push((out.len(), t.order.len(), l.requires.clone()));
             for u in &l.units {
                 for lesson in &u.lessons {
                     let path = root.join(format!("content/lessons/{}/{}.yaml", t.lang, lesson.id));
@@ -242,8 +274,27 @@ fn tracks(root: &Path) -> Result<Vec<Track>, LoadError> {
                     t.lesson_level.insert(lesson.id.clone(), level);
                 }
             }
+            if let Some(end) = t.order.len().checked_sub(1) {
+                level_end.insert(l.id.clone(), (out.len(), end));
+            }
         }
         out.push(t);
+    }
+    // A level that requires another track's level (J1 requires BIPA 1) starts
+    // with that level's words known: the learner has passed it.
+    for (track, start, levels) in requires {
+        for r in levels {
+            let Some(&(other, end)) = level_end.get(&r) else { continue };
+            if other == track {
+                continue;
+            }
+            let words: Vec<String> =
+                out[other].taught.iter().filter(|&(_, &p)| p <= end).map(|(w, _)| w.clone()).collect();
+            for w in words {
+                let p = out[track].taught.entry(w).or_insert(start);
+                *p = (*p).min(start);
+            }
+        }
     }
     Ok(out)
 }
@@ -292,13 +343,17 @@ fn item(
 ) -> Item {
     let mut ls = Vec::new();
     lines(doc, &mut ls);
-    let (mut tokens, mut unknown) = (0, Vec::new());
+    let (mut tokens, mut unknown, mut raw) = (0, Vec::new(), 0);
+    // A word glossed in a note stays known for the rest of the item.
+    let mut explained = BTreeSet::new();
     for (text, note) in ls {
-        let (n, u) = measure(track, names, pos, text, &note);
+        explained.extend(tokens_of(&note));
+        let (n, u) = measure(track, names, pos, text, &explained);
         tokens += n;
         unknown.extend(u);
+        raw += measure(track, names, pos, text, &BTreeSet::new()).1.len();
     }
-    Item { id, kind, after, level, tokens, unknown }
+    Item { id, kind, after, level, tokens, unknown, raw }
 }
 
 /// Coverage of every Sinetron episode, Radio script and lesson dialogue.
@@ -363,19 +418,35 @@ mod tests {
         }
     }
 
+    fn ex(note: &str) -> BTreeSet<String> {
+        tokens_of(note).into_iter().collect()
+    }
+
+    #[test]
+    fn a_glossed_word_stays_known_for_the_rest_of_the_item() {
+        let doc = serde_json::json!({"lines": [
+            {"speaker": "A", "text": "Saya makan pecel.", "note": {"en": "pecel = salad with peanut sauce"}},
+            {"speaker": "B", "text": "Pecel enak.", "note": {"en": ""}},
+        ]});
+        let i = item(&track(), &BTreeSet::new(), "x".into(), "radio", "u".into(), (0, 0), &doc);
+        assert_eq!(i.unknown, vec!["enak".to_owned()]);
+        assert_eq!(i.raw, 3);
+    }
+
     #[test]
     fn counts_unknown_words_against_the_position() {
         let names = BTreeSet::from(["sari".to_owned()]);
-        let (n, u) = measure(&track(), &names, 0, "Sari, saya makan nasi di rumah sakit.", "");
+        let (n, u) = measure(&track(), &names, 0, "Sari, saya makan nasi di rumah sakit.", &ex(""));
         assert_eq!((n, u), (4, vec!["nasi".to_owned(), "di".to_owned()]));
-        let (_, u) = measure(&track(), &names, 1, "Saya makan nasinya.", "");
+        let (_, u) = measure(&track(), &names, 1, "Saya makan nasinya.", &ex(""));
         assert!(u.is_empty());
     }
 
     #[test]
     fn notes_explain_words_and_names_and_numbers_are_skipped() {
         let names = BTreeSet::new();
-        let (n, u) = measure(&track(), &names, 0, "Saya makan pecel 2 kali, Pak Joko.", "pecel = طبق خضار");
+        let (n, u) =
+            measure(&track(), &names, 0, "Saya makan pecel 2 kali, Pak Joko.", &ex("pecel = طبق خضار"));
         assert_eq!(n, 4);
         assert_eq!(u, vec!["kali".to_owned()]);
     }
@@ -383,13 +454,13 @@ mod tests {
     #[test]
     fn street_forms_count_once_their_formal_twin_is_taught() {
         let names = BTreeSet::new();
-        let (_, u) = measure(&track(), &names, 0, "Saya nggak makan, makasih!", "");
+        let (_, u) = measure(&track(), &names, 0, "Saya nggak makan, makasih!", &ex(""));
         assert_eq!(u, vec!["nggak".to_owned(), "makasih".to_owned()]);
-        let (_, u) = measure(&track(), &names, 1, "Saya nggak makan, makasih!", "");
+        let (_, u) = measure(&track(), &names, 1, "Saya nggak makan, makasih!", &ex(""));
         assert!(u.is_empty());
-        let (_, u) = measure(&track(), &names, 1, "Saya bacain, dengerin, nggak dibacain.", "");
+        let (_, u) = measure(&track(), &names, 1, "Saya bacain, dengerin, nggak dibacain.", &ex(""));
         assert!(u.is_empty(), "{u:?}");
-        let (_, u) = measure(&track(), &names, 0, "Saya bacain.", "");
+        let (_, u) = measure(&track(), &names, 0, "Saya bacain.", &ex(""));
         assert_eq!(u, vec!["bacain".to_owned()]);
     }
 }

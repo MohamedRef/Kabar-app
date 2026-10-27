@@ -1,210 +1,236 @@
 schema: kabar.lesson/v1
 id: j5.u06.l06
 language: jv
-title: Tegese tembang
+title: Lelagon tresna
 can_do:
-  ar_eg: تشرح لصاحبك معنى أغنية.
-  ar: أن تشرح لصديقك معنى أغنية.
-  en: Explain what a song means to a friend.
+  ar_eg: 'تفهم كلمات أغنية كامبورساري حزينة: الحب، والدموع، والوعد اللي اتكسر.'
+  ar: 'أن تفهم كلمات أغنية كامبورساري حزينة: الحب والدموع والوعد المكسور.'
+  en: 'Follow a sad campursari song: love, tears and a broken promise.'
 slides:
-  - title: Critane, tegese, piwulange
+  - title: Lelagon campursari
     body:
       ar_eg: |
-        عشان تشرح أغنية لصاحبك، قول تلات حاجات بنغوكو بسيطة:
-        - critane = حكايتها (بتحكي عن إيه؟)
-        - tegese = معناها (tegese = artinya / maksudnya)
-        - piwulange = الدرس أو الحكمة اللي فيها (piwulang = ajaran)
+        lelagon = أغنية (أغاني)، nembang = يغني (غُنا جاوي). pesindhen = المغنية اللي بتغني مع الجاميلان.
+        gandrung = متيّم، واقع في الحب. wuyung = ولهان، تعبان من الحب. eluh = دموع.
+        lamis = كلامه حلو بس مش من قلبه. cidra = يخلف الوعد، يخون.
       ar: |
-        لتشرح أغنية لصديقك قل ثلاثة أشياء بنغوكو بسيطة:
-        - critane = حكايتها (عمَّ تتحدث؟)
-        - tegese = معناها (artinya / maksudnya)
-        - piwulange = العبرة أو الحكمة فيها (piwulang = ajaran)
+        lelagon = أغنية، nembang = يغني (غناءً جاويًا). pesindhen = المغنّية التي ترافق الجاميلان.
+        gandrung = متيّم. wuyung = مضنى بالحب. eluh = دموع.
+        lamis = معسول الكلام بلا صدق. cidra = يخلف الوعد، يخون.
       en: |
-        To explain a song to a friend, say three things in simple ngoko:
-        - critane = its story (what is it about?)
-        - tegese = its meaning (artinya / maksudnya)
-        - piwulange = its lesson, its wisdom (piwulang = ajaran)
-    grammar: jv.reading.written-style
+        lelagon = song, nembang = sing (Javanese style). pesindhen = the female singer with a gamelan.
+        gandrung = smitten, madly in love. wuyung = lovesick. eluh = tears.
+        lamis = sweet-talking but insincere. cidra = break a promise, betray.
     examples:
-      - text: Critane cah angon sing dikon menek blimbing.
-        ar_eg: حكايتها عن ولد راعي بيقولوله اطلع شجرة الـ blimbing.
-        ar: حكايتها عن فتى راعٍ يُطلب منه تسلّق شجرة الـ blimbing.
-        en: It's about a shepherd boy who is told to climb a starfruit tree.
-      - text: Tegese, atine ambyar merga kekasihe lunga.
-        ar_eg: معناها إن قلبه اتكسر عشان حبيبه مشي.
-        ar: معناها أن قلبه تحطّم لأن حبيبه رحل.
-        en: It means his heart is shattered because his love left.
-      - text: Piwulange, ngelmu kudu dilakoni.
-        ar_eg: الحكمة إن العلم لازم يتعمل بيه.
-        ar: والعبرة أن العلم يجب أن يُعمل به.
-        en: The lesson is that knowledge must be practised.
+      - text: Pesindhen iku nembang lelagon campursari.
+        ar_eg: المغنية دي بتغني أغنية كامبورساري.
+        ar: تغني تلك المغنية أغنية كامبورساري.
+        en: The singer is singing a campursari song.
+      - text: Lelagone babagan wong sing gandrung lan wuyung.
+        ar_eg: الأغنية عن واحد متيّم وتعبان من الحب.
+        ar: الأغنية عن شخص متيّم مضنى بالحب.
+        en: The song is about someone smitten and lovesick.
+      - text: Omongane lamis, banjur cidra janji.
+        ar_eg: كلامه كان حلو وفاضي، وبعدين خلف وعده.
+        ar: كان كلامه معسولًا كاذبًا، ثم أخلف وعده.
+        en: His words were sweet but hollow, then he broke his promise.
 exercises:
   - id: e01
-    type: multiple_choice
-    question: Ngelmu iku kalakone kanthi laku.
-    question_meaning:
-      ar_eg: إيه الـ piwulang (الحكمة) هنا؟
-      ar: ما الـ piwulang (العبرة) هنا؟
-      en: What is the piwulang (lesson) here?
-    options: ['Ilmu harus diamalkan.', 'Ilmu dibaca saja.', 'Ilmu itu mahal.']
-    answer: 0
-    words: [piwulang, ngelmu]
+    type: match_pairs
+    pairs:
+      - text: lelagon
+        ar_eg: أغنية
+        ar: أغنية
+        en: song
+      - text: nembang
+        ar_eg: يغني
+        ar: يغني
+        en: sing
+      - text: pesindhen
+        ar_eg: مغنية جاميلان
+        ar: مغنية الجاميلان
+        en: gamelan singer
+      - text: gandrung
+        ar_eg: متيّم
+        ar: متيّم
+        en: smitten
+    words: [lelagon, nembang, pesindhen, gandrung]
   - id: e02
-    type: listen
-    text: Critane wong sing ditinggal lunga, atine ambyar.
-    question:
-      ar_eg: الأغنية بتحكي عن مين؟
-      ar: عمّن تحكي الأغنية؟
-      en: Who is the song about?
-    options: [wong sing seneng, wong sing ditinggal lunga, wong sing lara]
-    answer: 1
-    meaning:
-      ar_eg: حكايتها عن واحد حبيبه سابه ومشي، وقلبه اتكسر.
-      ar: حكايتها عن شخص هجره حبيبه فتحطّم قلبه.
-      en: It's about someone who was left behind, and his heart is shattered.
-    words: [ati, ambyar]
+    type: match_pairs
+    pairs:
+      - text: eluh
+        ar_eg: دموع
+        ar: دموع
+        en: tears
+      - text: wuyung
+        ar_eg: ولهان
+        ar: مضنى بالحب
+        en: lovesick
+      - text: lamis
+        ar_eg: كلامه حلو وفاضي
+        ar: معسول الكلام بلا صدق
+        en: insincere
+      - text: cidra
+        ar_eg: يخلف الوعد
+        ar: يخلف الوعد
+        en: break a promise
+    words: [eluh, wuyung, lamis, cidra]
   - id: e03
-    type: fill_blank
-    sentence: ___ tembang iki apa?
+    type: listen
+    text: Pesindhen nembang nganti eluhe tiba.
+    question:
+      ar_eg: حصل إيه للمغنية؟
+      ar: ماذا حدث للمغنية؟
+      en: What happened to the singer?
+    options: [المغنية غنّت لحد ما دموعها نزلت, المغنية سابت المسرح, المغنية ضحكت]
+    answer: 0
     meaning:
-      ar_eg: معنى الأغنية دي إيه؟
-      ar: ما معنى هذه الأغنية؟
-      en: What does this song mean?
-    options: [Piwulange, Tegese, Pungkasane]
-    answers: [Tegese]
-    words: [tegese]
+      ar_eg: المغنية غنّت لحد ما دموعها نزلت.
+      ar: غنّت المغنية حتى سالت دموعها.
+      en: The singer sang until her tears fell.
+    words: [pesindhen, nembang, eluh]
   - id: e04
     type: fill_blank
-    sentence: ___, ngelmu kudu dilakoni.
+    sentence: Dheweke ___ janji, ora teka.
     meaning:
-      ar_eg: الحكمة إن العلم لازم يتعمل بيه.
-      ar: والعبرة أن العلم يجب أن يُعمل به.
-      en: The lesson is that knowledge must be practised.
-    options: [Dumadakan, Biyen, Piwulange]
-    answers: [Piwulange]
-    words: [piwulang, kudu, dilakoni]
+      ar_eg: هو ___ بوعده وماجاش.
+      ar: ___ وعده ولم يأتِ.
+      en: He ___ his promise and didn't come.
+    options: [cidra, nembang, gandrung]
+    answers: [cidra]
+    words: [cidra, nembang, gandrung]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: معناها إن قلبه اتكسر عشان حبيبه مشي.
-      ar: معناها أن قلبه تحطّم لأن حبيبه رحل.
-      en: It means his heart is shattered because his love left.
-    answer: Tegese, atine ambyar merga kekasihe lunga.
-    distractors: [kang, wus]
-    words: [tegese, ambyar]
-  - id: e06
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (لصاحبك) الحكمة إن العلم لازم يتعمل بيه.
-      ar: (لصديقك) العبرة أن العلم يجب أن يُعمل به.
-      en: (to a friend) The lesson is that knowledge must be practised.
-    answers:
-      - Piwulange, ngelmu kudu dilakoni.
-      - Piwulange, ilmu kudu dilakoni.
-      - Piwulange, ngelmu iku kudu dilakoni.
-      - Piwulange, ngelmu kudu ditindakake.
-    words: [piwulang, kudu, dilakoni]
-  - id: e07
-    type: translate
-    direction: from_target
-    source_text: Tegese, atine ambyar merga kekasihe lunga.
-    answers_meaning:
-      ar_eg:
-        - معناها إن قلبه اتكسر عشان حبيبه مشي.
-        - يعني قلبه اتكسر عشان حبيبته مشيت.
-        - معناها إن قلبه اتكسر حتت عشان حبيبه مشي.
-        - يعني قلبه اتكسر عشان حبيبه سابه.
-      ar:
-        - معناها أن قلبه تحطّم لأن حبيبه رحل.
-        - أي أن قلبه تحطّم لأن حبيبته رحلت.
-        - معناها أن قلبه انكسر لأن حبيبه رحل.
-      en:
-        - It means his heart is shattered because his love left.
-        - It means his heart is broken because his lover left.
-        - Meaning, his heart is shattered because his beloved left.
-        - It means her heart is shattered because her love left.
-        - It means he's heartbroken because his love left.
-    words: [tegese, ambyar]
-  - id: e08
-    type: dictation
-    text: Tak ijo royo-royo, tak sengguh temanten anyar.
-    meaning:
-      ar_eg: أخضر أخضر خالص، تقول عليه عريس جديد.
-      ar: شديد الخضرة، تحسبه عروسًا جديدًا.
-      en: So lush and green, you'd take it for a newlywed.
-    words: [ijo]
-  - id: e09
-    type: speaking
-    text: Tegese tembang iki, ngelmu iku kalakone kanthi laku.
-    meaning:
-      ar_eg: معنى الأغنية دي إن العلم بيتنال بالعمل.
-      ar: معنى هذه الأغنية أن العلم يُنال بالعمل.
-      en: This song means that knowledge is attained through practice.
-    words: [tegese, ngelmu]
-  - id: e10
     type: multiple_choice
-    question: Ngelmu kudu dilakoni.
     question_meaning:
-      ar_eg: معنى الجملة دي إيه؟
-      ar: ما معنى هذه الجملة؟
-      en: What does this sentence mean?
-    options: ['العلم لازم يتعمل بيه.', 'العلم يكفي يتقري.', 'العلم مالوش لازمة.']
+      ar_eg: اللي كلامه حلو بس مش من قلبه بيتقال عليه …
+      ar: من كان كلامه معسولًا بلا صدق يوصف بأنه …
+      en: Someone whose words are sweet but not heartfelt is …
+    options: [lamis, wuyung, eluh]
     answer: 0
     explain:
-      ar_eg: kudu = لازم (harus)، وdilakoni = يتعمل بيه، من laku (العمل / السلوك).
-      ar: kudu = يجب (harus)، وdilakoni = يُعمَل به، من laku.
-      en: kudu = must (harus); dilakoni = is put into practice, from laku (conduct).
-    words: [kudu, dilakoni]
+      ar_eg: lamis = كلامه حلو وفاضي. wuyung = ولهان، وeluh = دموع.
+      ar: lamis = معسول الكلام بلا صدق؛ wuyung = مضنى بالحب، وeluh = دموع.
+      en: lamis = insincere; wuyung = lovesick, eluh = tears.
+    words: [lamis, wuyung, eluh]
+  - id: e06
+    type: fill_blank
+    sentence: Dheweke ___ marang kancane, saben dina kelingan.
+    meaning:
+      ar_eg: هو ___ في صاحبته، كل يوم بيفتكرها.
+      ar: هو ___ بصديقته، يتذكرها كل يوم.
+      en: He is ___ with his friend and thinks of her every day.
+    options: [gandrung, lamis, pesindhen]
+    answers: [gandrung]
+    words: [gandrung, lamis, pesindhen]
+  - id: e07
+    type: multiple_choice
+    question: 'Ora bisa turu, ora gelem mangan: dheweke lagi ___.'
+    options: [cidra, wuyung, lelagon]
+    answer: 1
+    explain:
+      ar_eg: 'مش بينام ومش بياكل من كتر الحب: wuyung = ولهان.'
+      ar: 'لا ينام ولا يأكل من شدة الحب: wuyung = مضنى بالحب.'
+      en: 'Not sleeping, not eating from love: wuyung = lovesick.'
+    words: [cidra, wuyung, lelagon]
+  - id: e08
+    type: build_sentence
+    source:
+      ar_eg: الأغنية دي حلوة أوي.
+      ar: هذه الأغنية جميلة جدًا.
+      en: This song is really beautiful.
+    answer: Lelagon iki apik banget.
+    distractors: [eluh, lamis]
+    words: [lelagon]
+  - id: e09
+    type: translate
+    direction: from_target
+    source_text: Eluhe tiba amarga dheweke wuyung.
+    answers_meaning:
+      ar_eg: [دموعها نزلت عشان هي ولهانة, عيّطت عشان تعبانة من الحب]
+      ar: [سالت دموعها لأنها مضناة بالحب, انهمرت دموعها من شدة الوجد]
+      en: [Her tears fell because she was lovesick, She cried because she was lovesick]
+    words: [eluh, wuyung]
+  - id: e10
+    type: speaking
+    text: Aku seneng krungu pesindhen nembang.
+    meaning:
+      ar_eg: أنا بحب أسمع المغنية وهي بتغني.
+      ar: أحب أن أسمع المغنية تغني.
+      en: I love hearing the singer sing.
+    words: [pesindhen, nembang]
 dialogue:
-  title: Mohamed nerangake Lir-ilir
   lines:
-    - speaker: Mas Rizal
-      text: Mohamed, tegese Lir-ilir apa?
-      ar_eg: يا محمد، معنى Lir-ilir إيه؟
-      ar: يا محمد، ما معنى Lir-ilir؟
-      en: Mohamed, what does Lir-ilir mean?
     - speaker: Mohamed
-      text: Critane cah angon sing dikon menek blimbing.
-      ar_eg: حكايتها عن ولد راعي بيقولوله اطلع شجرة الـ blimbing.
-      ar: حكايتها عن فتى راعٍ يُطلب منه تسلّق شجرة الـ blimbing.
-      en: It's about a shepherd boy who is told to climb a starfruit tree.
-    - speaker: Mas Rizal
-      text: Lan piwulange?
-      ar_eg: والحكمة إيه؟
-      ar: وما العبرة؟
-      en: And the lesson?
+      text: Mbak, lelagon iki kok sedhih banget ta?
+      ar_eg: يا مبك، الأغنية دي حزينة أوي كده ليه؟
+      ar: يا مبك، لماذا هذه الأغنية حزينة جدًا؟
+      en: Mbak, why is this song so sad?
+    - speaker: Mbak Ayu
+      text: Iku 'Cidro', lelagone Didi Kempot. Babagan wong sing dicidrani.
+      ar_eg: دي «تشيدرو»، أغنية ديدي كيمبوت. عن واحد اتخان.
+      ar: هذه «تشيدرو»، أغنية ديدي كيمبوت، عن شخص خُذل.
+      en: That's 'Cidro', a Didi Kempot song. It's about someone who was let down.
     - speaker: Mohamed
-      text: Blimbing iku duwe limang sisi, kaya salat limang wektu. Nanging iku tafsiran.
-      ar_eg: الـ blimbing ليها خمس جوانب، زي الصلوات الخمسة. بس ده تفسير.
-      ar: للـ blimbing خمسة أضلاع كالصلوات الخمس، لكن هذا تفسير.
-      en: A starfruit has five sides, like the five daily prayers. But that's an interpretation.
-    - speaker: Mas Rizal
-      text: Lho, kowe wis bisa nerangake tembang!
-      ar_eg: يا سلام، إنت بقيت تعرف تشرح الأغاني!
-      ar: رائع، صرت تستطيع شرح الأغاني!
-      en: Wow, you can explain songs now!
+      text: Pesindhene nembang nganti eluhe tiba, lho.
+      ar_eg: المغنية غنّت لحد ما دموعها نزلت.
+      ar: غنّت المغنية حتى سالت دموعها.
+      en: The singer sang until her tears fell.
+    - speaker: Mbak Ayu
+      text: Ya ngono kuwi campursari. Sing gandrung dadi wuyung.
+      ar_eg: هو كده الكامبورساري. اللي يحب يتعب من الحب.
+      ar: 'هكذا الكامبورساري: المتيّم يصير مضنى.'
+      en: That's campursari for you. The smitten end up lovesick.
+    - speaker: Mohamed
+      text: Untung aku ora tau ketemu wong lamis.
+      ar_eg: الحمد لله عمري ما قابلت حد كلامه حلو وفاضي.
+      ar: لحسن حظي لم ألتقِ قط بشخص معسول الكلام كاذب.
+      en: Lucky I've never met a sweet-talking liar.
+    - speaker: Mbak Ayu
+      text: Hehe, aja kakehan sambat. Ayo njoged wae!
+      ar_eg: هههه، كفاية شكوى. يلا نرقص وخلاص!
+      ar: ههه، كفاك شكوى. هيا نرقص!
+      en: Heh, enough moaning. Let's just dance!
 new_words:
-  - word: tegese
+  - word: lelagon
     pos: noun
-    ar_eg: معناه (artinya)
-    ar: معناه (artinya)
-    en: its meaning; that is = artinya
-  - word: piwulang
-    pos: noun
-    ar_eg: درس / حكمة (ajaran)
-    ar: عبرة / تعليم (ajaran)
-    en: teaching, lesson = ajaran
-  - word: kudu
-    pos: particle
-    ar_eg: لازم
-    ar: يجب
-    en: must = harus
-  - word: dilakoni
+    ar_eg: أغنية
+    ar: أغنية
+    en: song
+  - word: nembang
     pos: verb
-    ar_eg: يتعمل بيه، يتطبّق
-    ar: يُعمَل به، يُطبَّق
-    en: to be practised, carried out = dijalani
+    ar_eg: يغني (غُنا جاوي)
+    ar: يغني
+    en: sing (Javanese style)
+  - word: pesindhen
+    pos: noun
+    ar_eg: مغنية الجاميلان
+    ar: مغنّية الجاميلان
+    en: female gamelan singer
+  - word: gandrung
+    pos: adjective
+    ar_eg: متيّم، واقع في الحب
+    ar: متيّم
+    en: smitten, madly in love
+  - word: eluh
+    pos: noun
+    ar_eg: دموع
+    ar: دموع
+    en: tears
+  - word: wuyung
+    pos: adjective
+    ar_eg: ولهان، تعبان من الحب
+    ar: مضنى بالحب
+    en: lovesick
+  - word: lamis
+    pos: adjective
+    ar_eg: كلامه حلو بس مش من قلبه
+    ar: معسول الكلام بلا صدق
+    en: sweet-talking but insincere
+  - word: cidra
+    pos: verb
+    ar_eg: يخلف الوعد، يخون
+    ar: يخلف الوعد، يخون
+    en: break a promise, betray
 review:
   status: draft
   verified: false

@@ -55,6 +55,10 @@
 
 .lp-slide-title { font-family: var(--font-latin); font-size: clamp(1.6rem, 6vw, 2.2rem); color: var(--indigo); margin-block: 0.5rem; }
 .lp-slide-body { font-size: 1.08rem; }
+.lp-table-wrap { overflow-x: auto; margin-block: 0.75rem; }
+.lp-table { border-collapse: collapse; inline-size: 100%; font-size: 0.95rem; }
+.lp-table th, .lp-table td { padding-block: 0.4rem; padding-inline: 0.6rem; text-align: start; border-block-end: 1px solid var(--line); }
+.lp-table th { font-weight: 600; color: var(--muted); }
 .lp-examples { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
 .lp-example {
   inline-size: 100%;
@@ -239,6 +243,17 @@
   font-size: 0.85rem;
 }
 .lp-bridge .ar { font-family: var(--font-arabic); font-size: 1.1rem; }
+/* A Javanese word spelled like an Indonesian one with another meaning (#290). */
+.lp-false-friend {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: baseline;
+  padding-inline: 0.6rem;
+  border-radius: 999px;
+  border: 1px dashed currentColor;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
 .lp-souvenir { border-color: var(--gold); background: linear-gradient(135deg, var(--surface), var(--gold-soft)); }
 .lp-souvenir h3 { color: var(--gold); font-size: 1.4rem; margin-block: 0.25rem; }
 

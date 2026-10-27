@@ -49,23 +49,28 @@ slides:
 exercises:
   - id: e01
     type: listen
-    text: Ada yang lebih murah?
-    options: ['Ada yang lebih murah?', 'Ada yang paling murah?', 'Ada yang lebih mahal?']
+    text: Suling bambu ini budaya Sunda.
+    options: ['Suling bambu ini budaya Sunda.', 'Suling bambu ini dari Sunda.', 'Suling bambu ini budaya Bali.']
     answer: 0
-    words: [lebih, murah]
+    meaning:
+      ar_eg: الناي البامبو ده من ثقافة السوندا.
+      ar: هذا الناي الخيزراني من ثقافة السوندا.
+      en: This bamboo flute is part of Sundanese culture.
+    words: [budaya, bambu]
   - id: e02
     type: multiple_choice
+    question: Angklung, suling, gamelan. Semua ini ___ Indonesia.
     question_meaning:
-      ar_eg: بو كومانج بتقول «Yang ini terbaik». قصدها إيه؟ اختار الجملة اللي بنفس المعنى.
-      ar: تقول بو كومانغ «Yang ini terbaik». اختر الجملة التي بالمعنى نفسه.
-      en: Bu Komang says "Yang ini terbaik". Pick the sentence with the same meaning.
-    options: [Yang ini cukup baik., Yang ini paling baik., Yang ini lebih baik.]
-    answer: 1
+      ar_eg: الأنكلونج والناي والجاميلان، كل دول من … إندونيسيا.
+      ar: الأنكلونغ والناي والغاميلان، كلها من … إندونيسيا.
+      en: Angklung, suling, gamelan. All of these are Indonesian …
+    options: [budaya, pilihan, bambu]
+    answer: 0
     explain:
-      ar_eg: terbaik = paling baik = الأحسن في الكل.
-      ar: terbaik = paling baik = الأفضل على الإطلاق.
-      en: terbaik = paling baik = the best of all.
-    words: [terbaik, paling]
+      ar_eg: budaya = ثقافة. الآلات دي جزء من ثقافة إندونيسيا. pilihan = اختيار، وbambu = بامبو.
+      ar: budaya = ثقافة، وهذه الآلات جزء من ثقافة إندونيسيا. أما pilihan فاختيار وbambu خيزران.
+      en: budaya = culture; these instruments are part of Indonesian culture. pilihan is choice, bambu bamboo.
+    words: [budaya]
   - id: e03
     type: fill_blank
     sentence: Ada banyak ___ di toko ini.
@@ -130,17 +135,18 @@ exercises:
     words: [kuat, bambu, indah]
   - id: e08
     type: fill_blank
-    sentence: Gitar ini bagus, tapi ___ berat untuk saya.
+    sentence: "Saya suka ___ Indonesia: musik, makanan, dan bahasanya."
     meaning:
-      ar_eg: الجيتار ده حلو، بس تقيل عليّا زيادة.
-      ar: هذه القيثارة جيدة، لكنها ثقيلة جدًا بالنسبة لي.
-      en: This guitar is nice, but too heavy for me.
-    answers: [terlalu]
-    words: [terlalu, berat]
+      ar_eg: "بحب ثقافة إندونيسيا: الموسيقى والأكل واللغة."
+      ar: "أحب ثقافة إندونيسيا: الموسيقى والطعام واللغة."
+      en: "I love Indonesian culture: its music, food and language."
+    options: [budaya, bambu, pilihan]
+    answers: [budaya]
+    words: [budaya, musik]
     explain:
-      ar_eg: "terlalu = «زيادة عن اللزوم»، وبتيجي قبل الصفة: terlalu berat = تقيل أوي عليّا."
-      ar: "terlalu = «أكثر من اللازم» وتسبق الصفة: terlalu berat."
-      en: "terlalu (too) goes before the adjective: terlalu berat = too heavy."
+      ar_eg: budaya = ثقافة (الموسيقى، الأكل، اللغة، العادات).
+      ar: budaya = ثقافة (الموسيقى والطعام واللغة والعادات).
+      en: budaya = culture (music, food, language, customs).
   - id: e09
     type: dictation
     text: Pilihannya banyak sekali!
@@ -207,6 +213,11 @@ new_words:
     ar_eg: اختيار
     ar: اختيار
     en: choice
+  - word: budaya
+    pos: noun
+    ar_eg: ثقافة (budaya Indonesia = ثقافة إندونيسيا)
+    ar: ثقافة (budaya Indonesia = الثقافة الإندونيسية)
+    en: culture (budaya Indonesia = Indonesian culture)
 review:
   status: draft
   verified: false

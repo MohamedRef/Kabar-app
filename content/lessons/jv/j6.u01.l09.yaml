@@ -1,174 +1,236 @@
 schema: kabar.lesson/v1
 id: j6.u01.l09
 language: jv
-title: Jeneng ing papan
+title: Omah Kalang
 can_do:
-  ar_eg: تقرا أسامي مكتوبة بالخط الجاوي على سبورة.
-  ar: أن تقرأ أسماء مكتوبة بالخط الجاوي على لوح.
-  en: Read names written in aksara Jawa on a board.
+  ar_eg: 'تزور بيت قديم في كوتاجيدي وتوصفه: البرندة، والسقف، والسور، والشبابيك، وإحساسك وانت ضيف.'
+  ar: 'أن تزور بيتًا قديمًا في كوتاغيدي وتصفه: الشرفة والسقف والسور والنوافذ وشعورك ضيفًا.'
+  en: 'Visit an old Kotagede house and describe it: the veranda, roof, wall and windows, and how it feels to be a guest.'
 slides:
-  - title: Kursus perak
+  - title: Omah lawas
     body:
       ar_eg: |
-        في ورشة فضة جنب Pasar Kotagedhe، المدرّب كتب أسامي الطلبة على السبورة بالخط الجاوي.
-        كل الأسامي دي حروف بس، كل حرف فيه a، ومفيش مسافات. اقرا حرف حرف: ꦩ ma + ꦪ ya = Maya.
+        emper = البرندة، الحتة المسقوفة قدام البيت. payon = السقف. pager = السور. cendhela = شباك.
+        mertamu = يزور حد كضيف. ndandani = يصلّح.
+        sumelang = قلقان، خايف من حاجة. ayem = مرتاح البال، هادي.
       ar: |
-        في ورشة فضة قرب Pasar Kotagedhe كتب المدرّب أسماء المتدرّبين على اللوح بالخط الجاوي.
-        كل هذه الأسماء حروف مجرّدة، في كل حرف a، بلا مسافات. اقرأ حرفًا حرفًا: ꦩ ma + ꦪ ya = Maya.
+        emper = الشرفة المسقوفة أمام البيت. payon = السقف. pager = السور. cendhela = نافذة.
+        mertamu = يزور ضيفًا. ndandani = يصلح.
+        sumelang = قلق. ayem = مطمئن البال، هادئ.
       en: |
-        At a silver workshop next to Pasar Kotagedhe, the trainer has written the students' names on the board in aksara Jawa.
-        Every name here is bare letters, each with its a, and no spaces. Read letter by letter: ꦩ ma + ꦪ ya = Maya.
-    grammar: jv.aksara.nglegena
+        emper = veranda, the roofed front porch. payon = roof. pager = fence, wall. cendhela = window.
+        mertamu = pay a visit, call on someone. ndandani = repair, fix.
+        sumelang = worried, anxious. ayem = at ease, calm.
     examples:
-      - text: ꦩꦪ · ꦗꦏ
-        ar_eg: Maya · Jaka (أسامي)
-        ar: Maya · Jaka (أسماء)
-        en: Maya · Jaka (names)
-      - text: ꦫꦏ · ꦫꦩ
-        ar_eg: Raka · Rama (أسامي)
-        ar: Raka · Rama (أسماء)
-        en: Raka · Rama (names)
-      - text: ꦢꦤ
-        ar_eg: Dana (اسم)
-        ar: Dana (اسم)
-        en: Dana (a name)
+      - text: Omah Kalang ing Kutha Gedhe payone saka gendheng.
+        ar_eg: بيوت كالانج في كوتاجيدي سقفها قرميد.
+        ar: سقوف بيوت كالانغ في كوتاغيدي من القرميد.
+        en: The Kalang houses in Kotagede have tiled roofs.
+      - text: Pak Slamet lungguh ing emper, ayem banget.
+        ar_eg: عم سلامت قاعد في البرندة، رايق خالص.
+        ar: يجلس السيد سلامت في الشرفة مطمئنًا تمامًا.
+        en: Pak Slamet sits on the veranda, completely at ease.
+      - text: Pagere tembok, cendhelane cilik-cilik.
+        ar_eg: السور حيطة، والشبابيك صغيرة.
+        ar: السور جدار، والنوافذ صغيرة.
+        en: The fence is a wall, and the windows are small.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: ꦩꦪ
-        ar_eg: Maya (مايا)
-        ar: Maya (مايا)
-        en: Maya
-      - text: ꦗꦏ
-        ar_eg: Jaka (جاكا)
-        ar: Jaka (جاكا)
-        en: Jaka
-      - text: ꦫꦏ
-        ar_eg: Raka (راكا)
-        ar: Raka (راكا)
-        en: Raka
-      - text: ꦢꦤ
-        ar_eg: Dana (دانا)
-        ar: Dana (دانا)
-        en: Dana
-    words: [ꦩ, ꦪ, ꦗ, ꦏ, ꦫ, ꦢ, ꦤ]
+      - text: emper
+        ar_eg: برندة
+        ar: شرفة
+        en: veranda
+      - text: payon
+        ar_eg: سقف
+        ar: سقف
+        en: roof
+      - text: pager
+        ar_eg: سور
+        ar: سور
+        en: fence, wall
+      - text: cendhela
+        ar_eg: شباك
+        ar: نافذة
+        en: window
+    words: [emper, payon, pager, cendhela]
   - id: e02
-    type: listen
-    text: Jaka
-    question:
-      ar_eg: المدرّب نادى اسم. أنهي اسم على السبورة؟
-      ar: نادى المدرّب اسمًا. أي اسم على اللوح؟
-      en: The trainer called a name. Which name on the board is it?
-    options: ["ꦗꦏ", "ꦒꦏ", "ꦗꦒ"]
-    answer: 0
-    explain:
-      ar_eg: ꦗ ja (الجيم الفصحى) + ꦏ ka = Jaka. ꦒ هي ga.
-      ar: ꦗ ja (الجيم الفصيحة) + ꦏ ka = Jaka، أما ꦒ فهي ga.
-      en: ꦗ ja + ꦏ ka = Jaka. ꦒ is ga.
-    words: [ꦗ, ꦏ]
+    type: match_pairs
+    pairs:
+      - text: mertamu
+        ar_eg: يزور كضيف
+        ar: يزور ضيفًا
+        en: pay a visit
+      - text: ndandani
+        ar_eg: يصلّح
+        ar: يصلح
+        en: repair
+      - text: sumelang
+        ar_eg: قلقان
+        ar: قلق
+        en: worried
+      - text: ayem
+        ar_eg: مرتاح البال
+        ar: مطمئن
+        en: at ease
+    words: [mertamu, ndandani, sumelang, ayem]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: "على السبورة: ꦫꦩ. ده مين؟"
-      ar: "على اللوح: ꦫꦩ. من هذا؟"
-      en: "On the board: ꦫꦩ. Who is it?"
-    options: [Raka, Mara, Rama]
-    answer: 2
-    explain:
-      ar_eg: ꦫ ra الأول، وبعدين ꦩ ma = Rama.
-      ar: ꦫ ra أولًا ثم ꦩ ma = Rama.
-      en: ꦫ ra first, then ꦩ ma = Rama.
-    words: [ꦫ, ꦩ]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: "السبورة فيها: ꦩꦪ · ꦗꦏ · ꦫꦏ · ꦫꦩ · ꦢꦤ. كام اسم بيبدأ بـ ra؟"
-      ar: "على اللوح: ꦩꦪ · ꦗꦏ · ꦫꦏ · ꦫꦩ · ꦢꦤ. كم اسمًا يبدأ بـ ra؟"
-      en: "The board says: ꦩꦪ · ꦗꦏ · ꦫꦏ · ꦫꦩ · ꦢꦤ. How many names start with ra?"
-    options: ["1", "2", "3"]
-    answer: 1
-    explain:
-      ar_eg: ꦫꦏ Raka وꦫꦩ Rama، الاتنين بيبدأوا بـ ꦫ.
-      ar: ꦫꦏ Raka وꦫꦩ Rama، كلاهما يبدأ بـ ꦫ.
-      en: ꦫꦏ Raka and ꦫꦩ Rama both start with ꦫ.
-    words: [ꦫ]
-  - id: e05
     type: listen
-    text: Dana
+    text: Dina Minggu aku mertamu menyang omahe Pak Slamet.
     question:
-      ar_eg: سمعت أنهي اسم؟
-      ar: أي اسم سمعت؟
-      en: Which name did you hear?
-    options: ["ꦝꦤ", "ꦢꦤ", "ꦢꦏ"]
+      ar_eg: هيعمل إيه يوم الحد؟
+      ar: ماذا سيفعل يوم الأحد؟
+      en: What will he do on Sunday?
+    options: [يوم الحد هزور بيت عم سلامت, يوم الحد هنضّف البيت, يوم الحد هقعد في البيت]
+    answer: 0
+    meaning:
+      ar_eg: يوم الحد هزور بيت عم سلامت.
+      ar: يوم الأحد سأزور بيت السيد سلامت.
+      en: On Sunday I'll pay a visit to Pak Slamet's house.
+    words: [mertamu]
+  - id: e04
+    type: fill_blank
+    sentence: Payone bocor, aku ___ yen udan.
+    meaning:
+      ar_eg: السقف بيخرّ، أنا ___ لما تمطر.
+      ar: السقف يسرّب، وأنا ___ حين تمطر.
+      en: The roof leaks; I get ___ when it rains.
+    options: [sumelang, ayem, mertamu]
+    answers: [sumelang]
+    words: [sumelang, ayem, mertamu]
+  - id: e05
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الحتة المسقوفة قدام البيت اللي الناس بتقعد فيها اسمها …
+      ar: الجزء المسقوف أمام البيت حيث يجلس الناس يسمّى …
+      en: The roofed part in front of the house where people sit is the …
+    options: [pager, emper, cendhela]
     answer: 1
     explain:
-      ar_eg: "Dana فيها d الخفيفة: ꦢ. الـ ꦝ دي dha التقيلة."
-      ar: في Dana الدال الخفيفة ꦢ، أما ꦝ فهي dha الثقيلة.
-      en: Dana has the light d, ꦢ. ꦝ is the heavy dha.
-    words: [ꦢ, ꦤ]
+      ar_eg: emper = البرندة. pager = السور، وcendhela = الشباك.
+      ar: emper = الشرفة؛ pager = السور، وcendhela = النافذة.
+      en: emper = veranda; pager = fence, cendhela = window.
+    words: [pager, emper, cendhela]
   - id: e06
     type: fill_blank
-    sentence: ꦩꦪ = ___
+    sentence: Tukang lagi ___ payon sing bocor.
     meaning:
-      ar_eg: اكتب الاسم بالحروف اللاتينية.
-      ar: اكتب الاسم بالحروف اللاتينية.
-      en: Type the name in Latin letters.
-    answers: [Maya]
-    words: [ꦩ, ꦪ]
+      ar_eg: الصنايعي بي___ السقف اللي بيخرّ.
+      ar: العامل ___ السقف الذي يسرّب.
+      en: The builder is ___ the leaking roof.
+    options: [ndandani, sumelang, pager]
+    answers: [ndandani]
+    words: [ndandani, sumelang, pager]
   - id: e07
+    type: multiple_choice
+    question: Sawise payone didandani, atiku ___.
+    options: [sumelang, ayem, pager]
+    answer: 1
+    explain:
+      ar_eg: لما السقف اتصلّح القلق راح، فبقيت ayem = مرتاح.
+      ar: بعد إصلاح السقف زال القلق، فصرت ayem = مطمئنًا.
+      en: 'Once the roof is fixed the worry is gone, so: ayem = at ease.'
+    words: [sumelang, ayem, pager]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: "اكتب الاسمين Maya وJaka بالترتيب، حرف حرف."
-      ar: "اكتب الاسمين Maya وJaka بالترتيب، حرفًا حرفًا."
-      en: "Write the names Maya and Jaka in order, letter by letter."
-    answer: ꦩ ꦪ ꦗ ꦏ
-    distractors: ["ꦒ"]
-    words: [ꦩ, ꦪ, ꦗ, ꦏ]
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: "اكتب الاسمين بالحروف اللاتينية: ꦫꦏ · ꦢꦤ"
-      ar: "اكتب الاسمين بالحروف اللاتينية: ꦫꦏ · ꦢꦤ"
-      en: "Write the two names in Latin letters: ꦫꦏ · ꦢꦤ"
-    answers: ["Raka, Dana", Raka Dana, RakaDana]
-    words: [ꦫ, ꦏ, ꦢ, ꦤ]
+      ar_eg: الشباك ده كبير أوي.
+      ar: هذه النافذة كبيرة جدًا.
+      en: This window is really big.
+    answer: Cendhela iki gedhe banget.
+    distractors: [pager, payon]
+    words: [cendhela]
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Payon lan empere omah iki isih apik.
+    answers_meaning:
+      ar_eg: [سقف البيت ده وبرندته لسه كويسين, سقف وبرندة البيت ده لسه سليمين]
+      ar: [سقف هذا البيت وشرفته ما زالا جيدين, ما زال سقف هذا البيت وشرفته سليمين]
+      en: ['This house''s roof and veranda are still good', The roof and veranda of this house are still fine]
+    words: [payon, emper]
+  - id: e10
     type: speaking
-    text: Maya, Jaka, Raka, Rama, Dana.
+    text: Bapak ndandani payon, aku ayem.
     meaning:
-      ar_eg: الخمس أسامي اللي على السبورة.
-      ar: الأسماء الخمسة التي على اللوح.
-      en: The five names on the board.
+      ar_eg: بابا بيصلّح السقف، وأنا مرتاح.
+      ar: يصلح أبي السقف، فأطمئن.
+      en: Dad is fixing the roof, so I feel at ease.
+    words: [ndandani, payon, ayem]
 dialogue:
-  title: Ing papan tulis
   lines:
-    - speaker: Dimas
-      text: Med, ing papan tulis ana jeneng-jeneng. Coba wacanen.
-      ar_eg: يا محمد، فيه أسامي على السبورة. جرّب تقراها.
-      ar: يا محمد، على السبورة أسماء. جرّب أن تقرأها.
-      en: Med, there are names on the board. Try reading them.
     - speaker: Mohamed
-      text: Ma, ya... Maya! Lan iki Jaka.
-      ar_eg: ما، يا... Maya! ودي Jaka.
-      ar: ما، يا... Maya! وهذا Jaka.
-      en: Ma, ya... Maya! And this is Jaka.
-    - speaker: Dimas
-      text: Bener. Sing iki?
-      ar_eg: صح. واللي هنا؟
-      ar: صحيح. وهذا؟
-      en: Right. And this one?
+      text: Mas, empere omah iki jembar tenan, lho.
+      ar_eg: يا ماس، برندة البيت ده واسعة أوي.
+      ar: يا ماس، شرفة هذا البيت واسعة جدًا.
+      en: Mas, this house's veranda is really wide.
+    - speaker: Mas Dimas
+      text: Iku omah Kalang. Payone isih asli, pagere tembok dhuwur.
+      ar_eg: ده بيت كالانج. السقف لسه أصلي، والسور حيطة عالية.
+      ar: هذا بيت كالانغ. سقفه ما زال أصليًا، وسوره جدار عالٍ.
+      en: It's a Kalang house. The roof is still original, the wall is high.
     - speaker: Mohamed
-      text: Ra, ka... Raka. Kabeh aksarane diwaca a!
-      ar_eg: را، كا... Raka. كل الحروف بتتقري بـ a!
-      ar: را، كا... Raka. كل الحروف تُقرأ بـ a!
-      en: Ra, ka... Raka. Every letter is read with a!
-    - speaker: Dimas
-      text: Iya. Kowe wis isa maca jeneng, lho!
-      ar_eg: أيوه. إنت بقيت تعرف تقرا أسامي!
-      ar: نعم. صرت تستطيع قراءة الأسماء!
-      en: Yes. You can read names now!
+      text: Cendhelane kok cilik-cilik ta?
+      ar_eg: أمال الشبابيك صغيرة ليه؟
+      ar: لماذا النوافذ صغيرة؟
+      en: Why are the windows so small?
+    - speaker: Mas Dimas
+      text: Supaya adhem. Ayo mertamu sik, sing duwe omah apikan kok.
+      ar_eg: عشان الجو يبقى بارد. يلا نزورهم الأول، أصحاب البيت ناس طيبين.
+      ar: ليبقى البيت باردًا. هيا نزورهم أولًا، أصحاب البيت طيبون.
+      en: To keep it cool. Let's call in first; the owners are nice.
+    - speaker: Mohamed
+      text: Aku sumelang, aku durung isa krama alus.
+      ar_eg: أنا قلقان، لسه مش بعرف كراما ألوس.
+      ar: أنا قلق، لا أجيد الكراما الراقية بعد.
+      en: I'm worried; I can't do high krama yet.
+    - speaker: Mas Dimas
+      text: Ayem wae. Ngomong alon-alon, mesthi dimangerteni.
+      ar_eg: ريّح بالك. اتكلم بالراحة، وأكيد هيفهموك.
+      ar: اطمئن. تكلّم ببطء وسيفهمونك حتمًا.
+      en: Relax. Speak slowly and they'll understand you.
+new_words:
+  - word: emper
+    pos: noun
+    ar_eg: برندة (قدام البيت)
+    ar: شرفة أمامية
+    en: veranda, front porch
+  - word: payon
+    pos: noun
+    ar_eg: سقف
+    ar: سقف
+    en: roof
+  - word: pager
+    pos: noun
+    ar_eg: سور
+    ar: سور
+    en: fence, wall
+  - word: cendhela
+    pos: noun
+    ar_eg: شباك
+    ar: نافذة
+    en: window
+  - word: mertamu
+    pos: verb
+    ar_eg: يزور كضيف
+    ar: يزور ضيفًا
+    en: pay a visit, call on
+  - word: ndandani
+    pos: verb
+    ar_eg: يصلّح
+    ar: يصلح
+    en: repair, fix
+  - word: sumelang
+    pos: adjective
+    ar_eg: قلقان
+    ar: قلق
+    en: worried, anxious
+  - word: ayem
+    pos: adjective
+    ar_eg: مرتاح البال، هادي
+    ar: مطمئن، هادئ
+    en: at ease, calm
 review:
   status: draft
   verified: false

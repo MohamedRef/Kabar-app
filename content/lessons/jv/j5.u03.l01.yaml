@@ -163,15 +163,19 @@ exercises:
       en: sega, not sego; wis, not wes.
     words: [mateng, sega]
   - id: e09
-    type: listen
-    text: Regane pira?
-    options: ['Regane sapa?', 'Regane pira?', 'Jenenge apa?']
-    answer: 1
-    meaning:
-      ar_eg: بكام؟
-      ar: بكم ثمنه؟
-      en: How much is it?
-    words: [pira]
+    type: multiple_choice
+    question: Ing chat, aku nulis kaya munine.
+    question_meaning:
+      ar_eg: 'Tembung kembar: kaya هنا معناها إيه؟ (اختار الإندونيسي)'
+      ar: 'Tembung kembar: ما معنى kaya هنا؟ (اختر الإندونيسية)'
+      en: 'Tembung kembar: what does kaya mean here? (Pick the Indonesian.)'
+    options: [seperti, punya banyak uang, karena]
+    answer: 0
+    explain:
+      ar_eg: kaya بالجاوي = زي (seperti). أما kaya الإندونيسي = غني. الجملة = في الشات بكتب زي ما بتتنطق.
+      ar: kaya بالجاوية = مثل (seperti)، أما kaya الإندونيسية فتعني غنيّ. الجملة = في الدردشة أكتب كما تُنطق.
+      en: Javanese kaya = like (seperti); Indonesian kaya = rich. So "In chat I write it the way it sounds".
+    words: [kaya]
   - id: e10
     type: speaking
     text: Tulisane pira, munine kaya piro.
@@ -221,9 +225,10 @@ new_words:
     en: cooked, ripe = matang
   - word: kaya
     pos: preposition
-    ar_eg: زي، كأنّ
-    ar: مثل
-    en: like, as = seperti
+    ar_eg: زي، كأنّ (≠ إندونيسي kaya = غني)
+    ar: مثل (≠ الإندونيسية kaya = غنيّ)
+    en: like, as = seperti (≠ Indonesian kaya "rich")
+    false_friend: kaya
 review:
   status: draft
   verified: false

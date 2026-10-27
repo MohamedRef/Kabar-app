@@ -307,7 +307,7 @@ impl TestRunner {
                 let wrong = missed.iter().collect::<HashSet<_>>().len().min(pairs.len()) as f32;
                 Scored::Earned(points * (n - wrong) / n)
             }
-            _ => match grade(&ex, answer, lang) {
+            _ => match grade(&ex, answer, lang, &self.test.language) {
                 Grade::Correct | Grade::Almost { .. } => Scored::Earned(points),
                 Grade::Wrong => Scored::Earned(0.0),
                 Grade::NeedsReview => Scored::Pending {
