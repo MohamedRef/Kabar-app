@@ -62,13 +62,14 @@ exercises:
     words: [terbaik, paling]
   - id: e03
     type: fill_blank
-    sentence: Suling ini ___ kecil daripada suling itu.
+    sentence: Ada banyak ___ di toko ini.
     meaning:
-      ar_eg: الناي ده أصغر من الناي ده.
-      ar: هذا الناي أصغر من ذلك الناي.
-      en: This flute is smaller than that flute.
-    answers: [lebih]
-    words: [lebih, kecil]
+      ar_eg: فيه اختيارات كتير في المحل ده.
+      ar: في هذا المتجر خيارات كثيرة.
+      en: There's lots of choice in this shop.
+    options: [pilihan, bambu, kuat]
+    answers: [pilihan]
+    words: [pilihan]
   - id: e04
     type: build_sentence
     source:
@@ -79,23 +80,23 @@ exercises:
     distractors: [lebih, daripada]
     words: [mana, paling, bagus]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: غالي عليّا زيادة.
-      ar: إنه غالٍ جدًا بالنسبة لي.
-      en: It's too expensive for me.
-    answers: [Terlalu mahal untuk saya., Terlalu mahal untuk saya, Terlalu mahal buat saya., Ini terlalu mahal untuk saya., Harganya terlalu mahal untuk saya., Terlalu mahal bagi saya., Itu terlalu mahal untuk saya.]
-    words: [terlalu, mahal]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: عايز ناي أمتن. تسأل البياعة إزاي؟
+      ar: تريد نايًا أمتن. كيف تسأل البائعة؟
+      en: You want a sturdier flute. How do you ask the seller?
+    options: ['Ada suling bambu yang lebih kuat?', 'Ada suling bambu yang lebih berat?', 'Ada bambu suling yang lebih kuat?']
+    answer: 0
+    words: [bambu, kuat]
   - id: e06
     type: build_sentence
     source:
-      ar_eg: الصغير أخف.
-      ar: الصغير أخف.
-      en: The small one is lighter.
-    answer: Yang kecil lebih ringan.
-    distractors: [paling, besar]
-    words: [lebih, ringan, kecil]
+      ar_eg: البامبو ده متين، بس خفيف.
+      ar: هذا الخيزران متين، لكنه خفيف.
+      en: This bamboo is strong, but light.
+    answer: Bambu ini kuat, tapi ringan.
+    distractors: [lebih, paling]
+    words: [bambu, kuat, ringan]
   - id: e07
     type: translate
     direction: to_target
@@ -116,20 +117,20 @@ exercises:
     words: [terlalu, berat]
   - id: e09
     type: dictation
-    text: Saya beli yang ini saja.
+    text: Pilihannya banyak sekali!
     meaning:
-      ar_eg: هشتري ده بس.
-      ar: سأشتري هذا فقط.
-      en: I'll just take this one.
-    words: [beli]
+      ar_eg: الاختيارات كتير أوي!
+      ar: الخيارات كثيرة جدًا!
+      en: There's so much to choose from!
+    words: [pilihan, banyak]
   - id: e10
     type: speaking
-    text: Wah, terlalu mahal untuk saya. Ada yang lebih murah?
+    text: Wah, terlalu mahal untuk saya. Ada pilihan yang lebih murah?
     meaning:
-      ar_eg: يا خبر، غالي عليّا زيادة. فيه حاجة أرخص؟
-      ar: آه، إنه غالٍ جدًا بالنسبة لي. هل يوجد ما هو أرخص؟
-      en: Oh, that's too expensive for me. Is there a cheaper one?
-    words: [terlalu, lebih, murah]
+      ar_eg: يا خبر، غالي عليّا زيادة. فيه اختيار أرخص؟
+      ar: آه، إنه غالٍ جدًا بالنسبة لي. هل يوجد خيار أرخص؟
+      en: Oh, that's too expensive for me. Is there a cheaper choice?
+    words: [terlalu, pilihan, lebih, murah]
 dialogue:
   title: Di toko Bu Komang, Ubud
   lines:

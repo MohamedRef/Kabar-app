@@ -94,27 +94,31 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: bersalaman
-        ar_eg: يسلّموا على بعض
-        ar: يتصافحون
-        en: shake hands with each other
       - text: berpelukan
         ar_eg: يحضنوا بعض
         ar: يتعانقون
         en: hug each other
-      - text: berdatangan
-        ar_eg: ييجوا ورا بعض
-        ar: يتوافدون
-        en: arrive one after another
+      - text: berkenalan
+        ar_eg: يتعرفوا على بعض
+        ar: يتعارفون
+        en: get acquainted
+      - text: berlarian
+        ar_eg: يجروا هنا وهناك
+        ar: يتراكضون
+        en: run about
       - text: berdekatan
         ar_eg: قريبين من بعض
         ar: متقاربون
         en: close together
+      - text: berjauhan
+        ar_eg: بعاد عن بعض
+        ar: متباعدون
+        en: far apart
       - text: berdasarkan
-        ar_eg: بناءً على
-        ar: بناءً على
+        ar_eg: بناءً على، حسب
+        ar: وفق
         en: based on
-    words: [bersalaman, berpelukan, berdatangan, berdekatan, berdasarkan]
+    words: [berpelukan, berkenalan, berlarian, berdekatan, berjauhan, berdasarkan]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -155,20 +159,38 @@ exercises:
     words: [berkenalan]
   - id: e06
     type: dictation
-    text: Rumah kami berjauhan.
+    text: Rumah kami berdekatan, tidak berjauhan.
     meaning:
-      ar_eg: بيوتنا بعيدة عن بعض.
-      ar: بيوتنا متباعدة.
-      en: Our houses are far apart.
-    words: [berjauhan]
+      ar_eg: بيوتنا قريبة من بعض، مش بعيدة.
+      ar: بيوتنا متقاربة لا متباعدة.
+      en: Our houses are close together, not far apart.
+    words: [berdekatan, berjauhan]
   - id: e07
     type: speaking
-    text: Setelah salat Id, semua orang bersalaman.
+    text: Setelah salat Id, tamu-tamu berdatangan. Kami bersalaman dan berpelukan.
     meaning:
-      ar_eg: بعد صلاة العيد كل الناس بتسلّم على بعض.
-      ar: بعد صلاة العيد يتصافح الجميع.
-      en: After Eid prayers everyone shakes hands.
-    words: [bersalaman]
+      ar_eg: بعد صلاة العيد، الضيوف بييجوا ورا بعض. بنسلّم على بعض وبنحضن بعض.
+      ar: بعد صلاة العيد يتوافد الضيوف، فنتصافح ونتعانق.
+      en: After Eid prayers, guests pour in. We shake hands and hug.
+    words: [berdatangan, bersalaman, berpelukan]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «العيال بيجروا هنا وهناك في الجنينة»؟
+      ar: كيف تقول «الأطفال يتراكضون في الحديقة»؟
+      en: How do you say "The children are running about in the park"?
+    options: ['Anak-anak berlarian di taman.', 'Anak-anak berkenalan di taman.', 'Anak-anak berpelukan di taman.', 'Anak-anak bersalaman di taman.']
+    answer: 0
+    words: [berlarian, berkenalan, berpelukan, bersalaman]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «حسب الجدول»؟
+      ar: كيف تقول «وفق الجدول»؟
+      en: How do you say "according to the schedule"?
+    options: ['berdasarkan jadwal', 'berdekatan jadwal', 'berjauhan jadwal']
+    answer: 0
+    words: [berdasarkan, berdekatan, berjauhan]
 dialogue:
   title: Pasar malam Gianyar
   lines:
