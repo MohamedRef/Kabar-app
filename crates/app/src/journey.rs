@@ -520,13 +520,13 @@ fn MapView(j: Journey, picked: Signal<Option<Option<String>>>) -> Element {
     let mut picked = picked;
     let chosen = picked.read().clone().unwrap_or_else(|| initial.clone());
     let stage_id = format!("jm-stage-{}", j.route.target_lang());
-    // Start centred on the place the learner is at.
-    let focus = chosen
-        .as_deref()
-        .or(initial.as_deref())
-        .and_then(|id| map.pin(id))
-        .map_or((map.view.x + map.view.w / 2.0, map.view.y + map.view.h / 2.0), |p| (p.x, p.y));
-    let script = format!("{PAN_ZOOM_JS}({stage_id:?}, {:.2}, {:.2});", focus.0, focus.1);
+    // Open on the whole journey, every stop in view (#307, #308); Reset
+    // comes back to the same view.
+    let (x0, y0, x1, y1) =
+        stops_box(map).unwrap_or((map.view.x, map.view.y, map.view.x + map.view.w, map.view.y + map.view.h));
+    let script = format!(
+        "{PAN_ZOOM_JS}({stage_id:?}, [{x0:.3}, {y0:.3}, {x1:.3}, {y1:.3}], {HOME_PAD}, {HOME_MAX_ZOOM});"
+    );
     let zoom = {
         let stage_id = stage_id.clone();
         move |how: &str| {
@@ -1054,9 +1054,11 @@ fn overlaps(a: (f64, f64, f64, f64), b: (f64, f64, f64, f64)) -> bool {
     a.0 < b.2 && b.0 < a.2 && a.1 < b.3 && b.1 < a.3
 }
 
-/// Every pin as (x, y, label length) in pin design units.
+/// Every pin as (x, y, label length) in pin design units. Laid out at the
+/// default zoom, the most crowded the stops get on a map-shaped stage:
+/// zooming in only spreads the places under the pins.
 fn design_pins(cur: &Curriculum, map: &MapLayout) -> Vec<(f64, f64, usize)> {
-    let k = map.view.w / 200.0;
+    let k = pin_scale(map);
     cur.levels
         .iter()
         .zip(map.pins.iter())
@@ -1070,9 +1072,24 @@ fn design_pins(cur: &Curriculum, map: &MapLayout) -> Vec<(f64, f64, usize)> {
 
 /// The map's view box (x0, y0, x1, y1) in pin design units.
 fn map_bounds(map: &MapLayout) -> (f64, f64, f64, f64) {
-    let k = map.view.w / 200.0;
+    let k = pin_scale(map);
     let v = &map.view;
     (v.x / k, v.y / k, (v.x + v.w) / k, (v.y + v.h) / k)
+}
+
+/// The view a map opens at, and Reset returns to, fits every stop with this
+/// much room around them (pin design units: a landmark sticker's reach and a
+/// name), zoomed in no further than `HOME_MAX_ZOOM` (journey.js `home`).
+const HOME_PAD: f64 = HALO + STICKER + 6.0;
+const HOME_MAX_ZOOM: f64 = 4.0;
+
+/// The box (x0, y0, x1, y1) in map units around every pin and unit stop.
+fn stops_box(map: &MapLayout) -> Option<(f64, f64, f64, f64)> {
+    let points = map.pins.iter().flat_map(|p| std::iter::once((p.x, p.y)).chain(p.units.iter().copied()));
+    points.fold(None, |b, (x, y)| {
+        let (x0, y0, x1, y1) = b.unwrap_or((x, y, x, y));
+        Some((x0.min(x), y0.min(y), x1.max(x), y1.max(y)))
+    })
 }
 
 /// Diameter of a landmark sticker, in pin design units.
@@ -1268,21 +1285,12 @@ mod tests {
         // At the west edge the name goes east; in the north-east corner, west.
         assert_eq!(spots, [LabelSpot::East, LabelSpot::West]);
 
-        // The real maps, as drawn at the default zoom.
+        // The real maps, as drawn in their home view.
         let r = ROUTES.as_ref().unwrap();
         for (cur, map) in [(&r.id, &r.id_map), (&r.jv, &r.jv_map)] {
             let k = pin_scale(map);
-            let v = map.view;
-            let bounds = (v.x / k, v.y / k, (v.x + v.w) / k, (v.y + v.h) / k);
-            let pins: Vec<_> = cur
-                .levels
-                .iter()
-                .zip(map.pins.iter())
-                .map(|(l, p)| {
-                    let (x, y) = p.drawn_at(1.0);
-                    (x / k, y / k, short_place(l.place()).chars().count())
-                })
-                .collect();
+            let bounds = map_bounds(map);
+            let pins = design_pins(cur, map);
             let spots = map_label_spots(cur, map);
             let rects: Vec<_> = pins.iter().zip(&spots).map(|(&(x, y, n), s)| s.rect(x, y, n)).collect();
             for (i, a) in rects.iter().enumerate() {
@@ -1326,6 +1334,26 @@ mod tests {
         assert_eq!(bali.drawn_at(3.0), (bali.x, bali.y));
         assert!(nudge_style(bali).contains("--fade"));
         assert_eq!(nudge_style(r.id_map.pin("bipa1").unwrap()), "");
+    }
+
+    #[test]
+    fn home_view_holds_every_stop() {
+        let r = ROUTES.as_ref().unwrap();
+        for map in [&r.id_map, &r.jv_map] {
+            let (x0, y0, x1, y1) = stops_box(map).unwrap();
+            for p in &map.pins {
+                for (x, y) in std::iter::once((p.x, p.y)).chain(p.units.iter().copied()) {
+                    assert!(x >= x0 && x <= x1 && y >= y0 && y <= y1, "{} outside the home box", p.level_id);
+                }
+            }
+        }
+        // The Javanese line runs Jogja to Madiun only, so its home view is
+        // a close-up of Central Java, not the whole map frame.
+        let (x0, _, x1, _) = stops_box(&r.jv_map).unwrap();
+        assert!((x1 - x0) < r.jv_map.view.w / 1.5);
+        // No place name is drawn twice.
+        let names: BTreeSet<String> = r.jv.levels.iter().map(|l| short_place(l.place())).collect();
+        assert_eq!(names.len(), r.jv.levels.len(), "{names:?}");
     }
 
     #[test]

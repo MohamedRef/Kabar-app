@@ -251,8 +251,10 @@ fn every_place_is_on_the_map_and_found_by_name() {
     for p in geo::PLACES {
         assert!((geo::LON_MIN..geo::LON_MAX).contains(&p.lon), "{}", p.name);
         assert!((geo::LAT_MIN..geo::LAT_MAX).contains(&p.lat), "{}", p.name);
-        // Nudged pins stay within ~20 km of the real place.
-        assert!((p.lon - p.map_lon).abs() < 0.2 && (p.lat - p.map_lat).abs() < 0.2, "{}", p.name);
+        // Nudged pins stay within ~20 km of the real place; Jogja's schematic
+        // (four levels a few km apart, #308) within ~40 km.
+        let reach = if matches!(p.level, "j1" | "j3" | "j6") { 0.4 } else { 0.2 };
+        assert!((p.lon - p.map_lon).abs() < reach && (p.lat - p.map_lat).abs() < reach, "{}", p.name);
     }
     assert_eq!(geo::place_for("x", "Malioboro, Yogyakarta").unwrap().level, "j1");
     assert_eq!(geo::place_for("x", "Raja Ampat, Papua").unwrap().level, "bipa7");
