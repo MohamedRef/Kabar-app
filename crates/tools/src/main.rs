@@ -2,8 +2,10 @@
 //!
 //! ```text
 //! batna-tools validate [--root DIR]   check content/ against the rules (SPLIT.md §4–5)
+//! batna-tools anki [--lecture hb.L01] [--verdicts FILE] [--out DIR]   Anki deck (docs/ANKI.md)
+//! batna-tools packs build [--out DIR] [--check]   the offline content pack
+//! batna-tools verdicts FILE [--approve]   fix list from the app's ✎/✗ export
 //! ```
-//! Chunk 9 adds `anki` and `packs` here.
 
 use std::collections::BTreeSet;
 use std::path::{Path, PathBuf};
@@ -11,6 +13,10 @@ use std::process::ExitCode;
 
 use batna_core::content::{Index, Lecture, SCHEMA};
 use batna_core::validate::{self, Context};
+
+mod anki;
+mod packs;
+mod verdicts;
 
 fn main() -> ExitCode {
     let args: Vec<String> = std::env::args().skip(1).collect();
@@ -35,12 +41,37 @@ fn main() -> ExitCode {
                 ExitCode::FAILURE
             }
         },
+        Some("anki") => report(anki::run(&root, &args[1..])),
+        Some("packs") => report(packs::run(&root, &args[1..])),
+        Some("verdicts") => report(verdicts::run(&root, &args[1..])),
         _ => usage(),
     }
 }
 
+fn report(result: Result<String, Vec<String>>) -> ExitCode {
+    match result {
+        Ok(out) => {
+            println!("{out}");
+            ExitCode::SUCCESS
+        }
+        Err(problems) => {
+            for p in &problems {
+                eprintln!("{p}");
+            }
+            ExitCode::FAILURE
+        }
+    }
+}
+
+/// The value after `name`, if given.
+fn flag<'a>(args: &'a [String], name: &str) -> Option<&'a str> {
+    args.iter().position(|a| a == name).and_then(|i| args.get(i + 1)).map(String::as_str)
+}
+
 fn usage() -> ExitCode {
-    eprintln!("usage: batna-tools validate [--root DIR]");
+    eprintln!(
+        "usage: batna-tools <validate | anki | packs build | verdicts FILE> [--root DIR] (see the top of crates/tools/src/main.rs)"
+    );
     ExitCode::from(2)
 }
 

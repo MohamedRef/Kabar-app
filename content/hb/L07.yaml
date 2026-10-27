@@ -1,0 +1,960 @@
+schema: batna.content/v1
+lecture: hb.L07
+title: Hepatitis B Virus
+author: Dr. FathAlla Sidkey Mohamed
+book: { chapter: 1, pages: [113, 124] }
+topics:
+  - { id: virology, title: "Virus structure, genotypes and life cycle" }
+  - { id: acute, title: "Acute HBV" }
+  - { id: serology, title: "HBV serology" }
+  - { id: phases, title: "Chronic HBV and its phases" }
+  - { id: treat-who, title: "Who to treat and monitoring" }
+  - { id: drugs, title: "Drugs, duration and resistance" }
+  - { id: cirrhosis, title: "HBV in cirrhosis" }
+  - { id: special, title: "Pregnancy, coinfection, occult HBV and healthcare workers" }
+  - { id: reactivation, title: "Reactivation and immunosuppression" }
+  - { id: pep, title: "Post-exposure prophylaxis" }
+items:
+  # --- Virology (p113) ---
+  - id: hb.L07.001
+    kind: enumerate
+    topic: virology
+    prompt: Name the components of the HBV virion shown in the lecture's diagram.
+    points:
+      - Envelope carrying HBsAg
+      - Nuclear capsid (HBcAg)
+      - HBeAg
+      - DNA polymerase
+      - Viral DNA inside the capsid
+    pass: 4
+    src: { page: 113 }
+    status: unverified
+  - id: hb.L07.002
+    kind: cloze
+    topic: virology
+    text: "HBV has {{c1::10}} genotypes, labelled {{c2::A to J}}."
+    src: { page: 113 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L07.003
+    kind: card
+    topic: virology
+    front: Which HBV genotype responds better to interferon?
+    back: Genotype A.
+    src: { page: 113 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.004
+    kind: card
+    topic: virology
+    front: Which HBV genotype has delayed HBeAg seroconversion and a higher HCC risk?
+    back: Genotype C.
+    src: { page: 113 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.005
+    kind: card
+    topic: virology
+    front: In the HBV life cycle, what forms in the nucleus after uncoating and serves as the transcription template?
+    back: cccDNA (covalently closed circular DNA).
+    src: { page: 113 }
+    status: unverified
+  - id: hb.L07.006
+    kind: card
+    topic: virology
+    front: Which steps of the HBV life cycle do nucleos(t)ide analogues block?
+    back: Reverse transcription of pregenomic RNA, i.e. negative-strand and positive-strand HBV DNA synthesis inside the capsid.
+    src: { page: 113 }
+    status: unverified
+
+  # --- Acute HBV (p114-116) ---
+  - id: hb.L07.007
+    kind: cloze
+    topic: acute
+    text: "The incubation period of acute HBV is {{c1::1 to 4 months}}."
+    src: { page: 114 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L07.008
+    kind: cloze
+    topic: acute
+    text: "Without prophylaxis, perinatal HBV transmission is {{c1::85–90%}} from HBeAg-positive mothers and about {{c2::30%}} from HBeAg-negative mothers."
+    src: { page: 114 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L07.009
+    kind: card
+    topic: acute
+    front: Can an HBsAg-positive mother breastfeed?
+    back: Yes. HBsAg can be found in breast milk, but there is no evidence that breastfeeding transmits HBV.
+    src: { page: 114 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.010
+    kind: enumerate
+    topic: acute
+    prompt: Mention the three clinical forms of acute HBV.
+    points:
+      - Asymptomatic, with raised transaminases only
+      - Anicteric, with GI and influenza-like symptoms but no jaundice
+      - Classic icteric hepatitis in 3 stages
+    pass: 3
+    src: { page: 114 }
+    status: unverified
+  - id: hb.L07.011
+    kind: order
+    topic: acute
+    prompt: Put the stages of classic acute hepatitis B in order.
+    steps:
+      - "Prodromal (3–4 days): malaise, fever, anorexia, nausea, vomiting, abdominal pain"
+      - "Icteric (1–4 weeks): dark urine then jaundice and itching; patient feels better; tender hepatomegaly"
+      - Convalescent
+    src: { page: 114 }
+    status: unverified
+  - id: hb.L07.012
+    kind: cloze
+    topic: acute
+    text: "Classic acute HBV: the prodrome lasts {{c1::3–4 days}} and the icteric phase {{c2::1–4 weeks}}."
+    src: { page: 114 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L07.013
+    kind: card
+    topic: acute
+    front: In the icteric phase of acute HBV, how does the patient feel?
+    back: Generally better, with appetite returning, even as jaundice and itching appear after the urine darkens.
+    src: { page: 114 }
+    status: unverified
+  - id: hb.L07.014
+    kind: cloze
+    topic: acute
+    text: "About {{c1::70%}} of acute HBV is subclinical or anicteric; only {{c2::30%}} is icteric."
+    src: { page: 114 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L07.015
+    kind: card
+    topic: acute
+    front: What immune syndrome can appear in the HBV prodrome?
+    back: A serum sickness–like syndrome with fever, skin rash and arthralgia.
+    src: { page: 114 }
+    status: unverified
+  - id: hb.L07.016
+    kind: cloze
+    topic: acute
+    text: "Fewer than {{c1::1%}} of patients with acute hepatitis B develop acute liver failure."
+    src: { page: 115 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L07.017
+    kind: card
+    topic: acute
+    front: Transaminases in acute HBV, when do they peak and how high?
+    back: They peak 1–2 days before or after the onset of jaundice, at more than 10× ULN.
+    src: { page: 115 }
+    status: unverified
+  - id: hb.L07.018
+    kind: card
+    topic: acute
+    front: Besides transaminases, which lab results go with acute HBV?
+    back: Bilirubin and ALP usually raised, PT prolonged.
+    src: { page: 115 }
+    status: unverified
+  - id: hb.L07.019
+    kind: enumerate
+    topic: acute
+    prompt: Enumerate the characteristics of severe acute hepatitis B.
+    points:
+      - Coagulopathy (INR >1.5)
+      - Protracted course (persistent symptoms or marked jaundice for more than 4 weeks)
+      - Hepatic encephalopathy or ascites
+    pass: 3
+    src: { page: 115 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.020
+    kind: card
+    topic: acute
+    front: Treatment of acute hepatitis B?
+    back: Symptomatic and supportive; antivirals (double-dose lamivudine, entecavir or tenofovir) only in severe acute hepatitis B.
+    src: { page: 115 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.021
+    kind: enumerate
+    topic: acute
+    prompt: Why should antivirals be used judiciously in early HBV infection?
+    points:
+      - Adverse effects such as nephrotoxicity and lactic acidosis
+      - Resistance
+      - Withdrawal flare
+      - Extra caution in pregnancy, the elderly and renal impairment
+      - Fast drop in HBV proteins may lessen antigen presentation and blunt immunity against HBV
+    pass: 3
+    src: { page: 116 }
+    status: unverified
+  - id: hb.L07.022
+    kind: cloze
+    topic: acute
+    text: "About {{c1::90%}} of acute HBV in infants becomes chronic, versus about {{c2::10%}} in adults."
+    src: { page: 116 }
+    status: unverified
+    tags: [numbers, high-yield]
+
+  # --- Serology (p115, p118) ---
+  - id: hb.L07.023
+    kind: card
+    topic: serology
+    front: In acute HBV, which marker remains after HBsAg disappears and before anti-HBs appears (the window)?
+    back: Anti-HBc IgM (with total anti-HBc).
+    src: { page: 115 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.024
+    kind: card
+    topic: serology
+    front: In the acute HBV serology curve, which marker stays positive for life?
+    back: Total anti-HBc.
+    src: { page: 115 }
+    status: unverified
+  - id: hb.L07.025
+    kind: card
+    topic: serology
+    front: Which three markers make up the HBV screening panel in the lecture's algorithm?
+    back: HBsAg, IgG anti-HBc and anti-HBs.
+    src: { page: 118 }
+    status: unverified
+  - id: hb.L07.026
+    kind: table
+    topic: serology
+    title: Interpreting the HBV serology panel (book algorithm)
+    columns: [HBsAg, Anti-HBc, Anti-HBs, Meaning]
+    rows:
+      - ["+", "IgM +", "−", "Acute HBV: follow clinical course for resolution"]
+      - ["+", "IgG +", "−", "Likely chronic HBV"]
+      - ["−", "IgG +", "−", "Occult HBV or false-positive anti-HBc: repeat in 4–6 weeks, check anti-HBe and HBV DNA"]
+      - ["−", "IgG +", "+", "Immunity after recovery from HBV infection"]
+      - ["−", "−", "+", "Immunity after vaccination"]
+    blanks: [[0, 3], [1, 3], [2, 3], [3, 3], [4, 3]]
+    src: { page: 118 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.027
+    kind: card
+    topic: serology
+    front: HBsAg positive. What extra tests does the algorithm ask for?
+    back: Liver panel, HBeAg, anti-HBe and HBV DNA.
+    src: { page: 118 }
+    status: unverified
+
+  # --- Chronic HBV and phases (p116-118) ---
+  - id: hb.L07.028
+    kind: card
+    topic: phases
+    front: Symptoms and signs of chronic HBV?
+    back: Often none; some have fatigue or RUQ discomfort. Exam may be normal or show mild hepatomegaly, or signs of cirrhosis.
+    src: { page: 116 }
+    status: unverified
+  - id: hb.L07.029
+    kind: order
+    topic: phases
+    prompt: Put the phases of chronic HBV in their natural order (EASL nomenclature).
+    steps:
+      - HBeAg-positive chronic infection
+      - HBeAg-positive chronic hepatitis
+      - HBeAg-negative chronic infection
+      - HBeAg-negative chronic hepatitis
+      - HBsAg loss
+    src: { page: 117 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.030
+    kind: table
+    topic: phases
+    title: Phases of chronic HBV (book table)
+    columns: [Phase, HBsAg, HBeAg, HBV DNA, ALT, Liver disease, Old name]
+    rows:
+      - ["HBeAg+ chronic infection", "High", "Positive", ">10^7 IU/mL", "Normal", "None or minimal", "Immune tolerant"]
+      - ["HBeAg+ chronic hepatitis", "High or intermediate", "Positive", "10^4–10^7 IU/mL", "Elevated", "Moderate or severe", "Immune reactive HBeAg positive"]
+      - ["HBeAg− chronic infection", "Low", "Negative", "<2,000 IU/mL", "Normal", "None", "Inactive carrier"]
+      - ["HBeAg− chronic hepatitis", "Intermediate", "Negative", ">2,000 IU/mL", "Elevated", "Moderate or severe", "HBeAg-negative chronic hepatitis"]
+    blanks: [[0, 3], [0, 6], [1, 4], [2, 3], [2, 6], [3, 3], [3, 4]]
+    src: { page: 117 }
+    status: unverified
+    tags: [high-yield, numbers]
+  - id: hb.L07.031
+    kind: cloze
+    topic: phases
+    text: "The old term \"inactive carrier\" is now {{c1::HBeAg-negative chronic infection}}: HBeAg negative, HBV DNA {{c2::<2,000 IU/mL}}, normal ALT."
+    src: { page: 117 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.032
+    kind: cloze
+    topic: phases
+    text: "The old term \"immune tolerant\" is now {{c1::HBeAg-positive chronic infection}}: HBV DNA {{c2::>10^7 IU/mL}}, normal ALT, minimal fibrosis."
+    src: { page: 117 }
+    status: unverified
+  - id: hb.L07.033
+    kind: card
+    topic: phases
+    front: Which chronic HBV phase has moderate to severe fibrosis with fluctuating ALT and DNA after HBeAg loss?
+    back: HBeAg-negative chronic hepatitis.
+    src: { page: 117 }
+    status: unverified
+  - id: hb.L07.034
+    kind: card
+    topic: phases
+    front: Which transmission route leads into the immune-tolerant phase, and which enters at the HBeAg+ immune-active phase?
+    back: Perinatal transmission leads to the immune-tolerant phase; horizontal transmission enters at the HBeAg-positive immune-active phase.
+    src: { page: 117 }
+    status: unverified
+  - id: hb.L07.035
+    kind: enumerate
+    topic: phases
+    prompt: Mention the extrahepatic manifestations of HBV.
+    points:
+      - Polyarteritis nodosa
+      - Glomerulonephritis
+      - Essential mixed cryoglobulinemia
+      - "Papular acrodermatitis: symmetrical, erythematous, maculopapular, non-itchy"
+    pass: 3
+    src: { page: 118 }
+    status: unverified
+    tags: [high-yield]
+
+  # --- Who to treat and monitoring (p118-120) ---
+  - id: hb.L07.036
+    kind: enumerate
+    topic: treat-who
+    prompt: The decision to treat chronic HBV rests on which three criteria?
+    points: [Serum HBV DNA level, Serum ALT level, Severity of liver disease]
+    pass: 3
+    src: { page: 118 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.037
+    kind: card
+    topic: treat-who
+    front: Do treatment indications differ between HBeAg-positive and HBeAg-negative chronic HBV?
+    back: No, they are generally the same.
+    src: { page: 118 }
+    status: unverified
+  - id: hb.L07.038
+    kind: order
+    topic: treat-who
+    prompt: "Who to treat (book algorithm): order the decisions for a non-cirrhotic chronic HBV patient."
+    steps:
+      - "Check HBV DNA: below 2,000 IU/mL means no treatment"
+      - "HBV DNA above 2,000 IU/mL: check ALT"
+      - "ALT abnormal: treat"
+      - "ALT normal: no treatment; liver biopsy or FibroScan if older than 30"
+      - "FibroScan above 9 kPa (severe fibrosis): treat; if no biopsy or FibroScan, observe"
+    src: { page: 119 }
+    status: unverified
+  - id: hb.L07.039
+    kind: cloze
+    topic: treat-who
+    text: "In the book's treatment algorithm, the ALT upper limit of normal is {{c1::40 IU/L}}, and FibroScan above {{c2::9 kPa}} means severe fibrosis."
+    src: { page: 119 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L07.040
+    kind: card
+    topic: treat-who
+    front: HBV DNA >2,000 IU/mL with normal ALT. When does the algorithm ask for biopsy or FibroScan?
+    back: If the patient is older than 30 years. Otherwise observe.
+    src: { page: 119 }
+    status: unverified
+  - id: hb.L07.041
+    kind: table
+    topic: treat-who
+    title: Monitoring untreated chronic HBV
+    columns: [Group, Interval]
+    rows:
+      - ["HBeAg-positive", "Every 3–6 months"]
+      - ["HBeAg-negative", "Every 6–12 months"]
+      - ["HBeAg-negative chronic infection with HBV DNA >2,000 IU/mL", "Every 3 months for the first year, then every 6 months"]
+    blanks: [[0, 1], [1, 1], [2, 1]]
+    src: { page: 120 }
+    status: unverified
+    tags: [numbers]
+
+  # --- Drugs, duration, resistance (p119-121) ---
+  - id: hb.L07.042
+    kind: table
+    topic: drugs
+    title: Oral drugs for chronic HBV (book table)
+    columns: [Generic, Trade name, Daily dose]
+    rows:
+      - ["Lamivudine", "Zeffix", "100 mg"]
+      - ["Adefovir", "Hepsera", "10 mg"]
+      - ["Entecavir", "Baraclude", "0.5–1 mg"]
+      - ["Tenofovir (TDF)", "Viread", "300 mg"]
+      - ["Tenofovir alafenamide (TAF)", "(book: Tenofenamide)", "25 mg"]
+    blanks: [[0, 2], [2, 2], [3, 2], [4, 2]]
+    src: { page: 119 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L07.043
+    kind: card
+    topic: drugs
+    front: How is pegylated interferon given for HBV, and what are the two brands in the lecture?
+    back: Subcutaneously. Peg-Intron and Pegasys.
+    src: { page: 119 }
+    status: unverified
+  - id: hb.L07.044
+    kind: card
+    topic: drugs
+    front: First-line drugs for chronic HBV, and why?
+    back: Entecavir, tenofovir and peginterferon alfa-2a, for superior efficacy, tolerability and favorable resistance profiles.
+    src: { page: 119 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.045
+    kind: card
+    topic: drugs
+    front: How long are NAs given in HBeAg-positive patients who seroconvert to anti-HBe?
+    back: Stop after 12 months of consolidation following HBeAg seroconversion.
+    src: { page: 120 }
+    status: unverified
+  - id: hb.L07.046
+    kind: card
+    topic: drugs
+    front: Treatment duration in HBeAg-negative chronic hepatitis B?
+    back: Long-term, until HBsAg seroconversion.
+    src: { page: 120 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.047
+    kind: card
+    topic: drugs
+    front: Endpoint at which any HBV patient may stop treatment, per the duration figure?
+    back: HBsAg seroconversion.
+    src: { page: 120 }
+    status: unverified
+  - id: hb.L07.048
+    kind: cloze
+    topic: drugs
+    text: "Cumulative lamivudine resistance reaches {{c1::24%}} at 1 year and {{c2::70%}} at 5 years; entecavir only {{c3::1.2%}} at 5 years."
+    src: { page: 121 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L07.049
+    kind: card
+    topic: drugs
+    front: Which two NAs show 0% resistance in the lecture's chart?
+    back: Tenofovir disoproxil (TDF) and tenofovir alafenamide (TAF).
+    src: { page: 121 }
+    status: unverified
+  - id: hb.L07.050
+    kind: cloze
+    topic: drugs
+    text: "Adefovir resistance reaches {{c1::29%}} at 5 years; telbivudine {{c2::17%}} at 2 years."
+    src: { page: 121 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L07.051
+    kind: table
+    topic: drugs
+    title: Rescue strategies for NA resistance (book table)
+    columns: [Resistance, Rescue]
+    rows:
+      - ["Lamivudine", "Switch to TDF or TAF"]
+      - ["Telbivudine", "Switch to TDF or TAF"]
+      - ["Entecavir", "Switch to TDF or TAF"]
+      - ["Adefovir", "LAM-naive: switch to ETV, TDF or TAF. LAM-resistant: switch to TDF or TAF. DNA plateau: add ETV or switch to ETV"]
+      - ["TDF or TAF", "LAM-naive: switch to ETV. LAM-resistant: add ETV"]
+      - ["Multidrug", "Switch to ETV plus TDF or TAF combination"]
+    blanks: [[0, 1], [2, 1], [4, 1], [5, 1]]
+    src: { page: 121 }
+    status: unverified
+    tags: [high-yield]
+
+  # --- Cirrhosis (p120) ---
+  - id: hb.L07.052
+    kind: card
+    topic: cirrhosis
+    front: Which HBV patients with cirrhosis need treatment?
+    back: All with compensated or decompensated cirrhosis and any detectable HBV DNA, regardless of ALT.
+    src: { page: 120 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.053
+    kind: enumerate
+    topic: cirrhosis
+    prompt: Mention the principles of treating HBV cirrhosis.
+    points:
+      - Treat with any detectable HBV DNA, regardless of ALT
+      - Use an NA with a high barrier to resistance
+      - Assess for liver transplantation
+      - In decompensated cirrhosis, adjust all NAs to renal function
+    pass: 3
+    src: { page: 120 }
+    status: unverified
+  - id: hb.L07.054
+    kind: cloze
+    topic: cirrhosis
+    text: "With NA therapy in decompensated HBV cirrhosis, about {{c1::35%}} can be delisted for transplant, and Child-Pugh improves by more than 2 points in {{c2::40–50%}}."
+    src: { page: 120 }
+    status: unverified
+    tags: [numbers]
+
+  # --- Special groups (p121-123) ---
+  - id: hb.L07.055
+    kind: cloze
+    topic: special
+    text: "Healthcare workers doing exposure-prone procedures with HBV DNA above {{c1::200 IU/mL}} may be treated with an NA to cut transmission risk."
+    src: { page: 121 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L07.056
+    kind: card
+    topic: special
+    front: HBV/HCV co-infection treated with DAAs. Who gets an NA, and how are the others followed?
+    back: Those meeting standard HBV treatment criteria get an NA. Others are monitored and tested for HBV reactivation if ALT rises.
+    src: { page: 121 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.057
+    kind: card
+    topic: special
+    front: Define occult HBV.
+    back: HBV DNA detected without HBsAg. DNA is usually in the liver, with undetectable or low levels in serum; anti-HBc is usually positive.
+    src: { page: 122, quote: "The detection of HBV DNA in the absence of HBsAg." }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.058
+    kind: card
+    topic: special
+    front: In whom is occult HBV more common, and why?
+    back: In cirrhosis and HCC. Many had chronic HBV for decades, but HBsAg is gone by the time cirrhosis or HCC is found.
+    src: { page: 122 }
+    status: unverified
+  - id: hb.L07.059
+    kind: order
+    topic: special
+    prompt: Order the steps for a pregnant woman with chronic HBV (book algorithm).
+    steps:
+      - "1st trimester: assess HBV replication and liver disease (treat with tenofovir if active disease or advanced fibrosis)"
+      - "End of 2nd trimester: quantitative HBV DNA and ALT"
+      - "HBV DNA >200,000 IU/mL: consider tenofovir, lamivudine or telbivudine at 28–32 weeks"
+      - "At birth: infant receives HBIG plus vaccine"
+    src: { page: 123 }
+    status: unverified
+    update:
+      text: "EASL advises tenofovir disoproxil (TDF) prophylaxis from week 24–28 when HBV DNA >200,000 IU/mL, continued up to 12 weeks after delivery; telbivudine is no longer marketed."
+      ref: "EASL CPG on HBV 2017"
+  - id: hb.L07.060
+    kind: cloze
+    topic: special
+    text: "In pregnancy, antiviral prophylaxis is considered when HBV DNA exceeds {{c1::200,000 IU/mL}}, starting at {{c2::28–32}} weeks (book)."
+    src: { page: 123 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L07.061
+    kind: card
+    topic: special
+    front: Infant of an HBsAg-positive mother with HBV DNA below 200,000 IU/mL. What does the infant get?
+    back: HBIG plus vaccine at birth (the mother is monitored, no antiviral).
+    src: { page: 123 }
+    status: unverified
+
+  # --- Reactivation (p123-124) ---
+  - id: hb.L07.062
+    kind: card
+    topic: reactivation
+    front: Before immunosuppression, which HBV markers are screened?
+    back: HBsAg and anti-HBc.
+    src: { page: 123 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.063
+    kind: table
+    topic: reactivation
+    title: HBV before immunosuppression (book algorithm)
+    columns: [Serology, Action]
+    rows:
+      - ["HBsAg−, anti-HBc−, anti-HBs+", "Vaccinated: nothing needed"]
+      - ["HBsAg−, anti-HBc−, anti-HBs−", "Naive: vaccinate if indicated"]
+      - ["HBsAg−, anti-HBc+, moderate-risk IS", "Monitor ALT, HBV DNA, HBsAg every 1–3 months; treat if reactivation"]
+      - ["HBsAg−, anti-HBc+, high-risk IS (B-cell depleting, SCT)", "Start antiviral prophylaxis"]
+      - ["HBsAg+, anti-HBc+ (CHB)", "Start antiviral prophylaxis"]
+    blanks: [[2, 1], [3, 1], [4, 1]]
+    src: { page: 123 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.064
+    kind: table
+    topic: reactivation
+    title: Definitions of HBV reactivation (book)
+    columns: [Group, Reactivation is]
+    rows:
+      - ["HBsAg+/anti-HBc+, baseline DNA undetectable", "HBV DNA ≥1,000 IU/mL"]
+      - ["HBsAg+/anti-HBc+, baseline DNA detectable", "≥100-fold rise in HBV DNA"]
+      - ["HBsAg−/anti-HBc+", "Detectable HBV DNA or reappearance of HBsAg"]
+    blanks: [[0, 1], [1, 1], [2, 1]]
+    src: { page: 123 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L07.065
+    kind: cloze
+    topic: reactivation
+    text: "A clinical hepatitis flare is ALT rising to at least {{c1::3 times baseline}} and above {{c2::100 U/L}}."
+    src: { page: 124 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L07.066
+    kind: card
+    topic: reactivation
+    front: Immunosuppressed patient with HBV reactivation and normal ALT. Treat?
+    back: Yes. Start antivirals as early as possible, regardless of ALT.
+    src: { page: 124 }
+    status: unverified
+  - id: hb.L07.067
+    kind: cloze
+    topic: reactivation
+    text: "Severe hepatitis or hepatic failure develops in {{c1::25–50%}} of patients with HBV reactivation."
+    src: { page: 124 }
+    status: unverified
+    tags: [numbers]
+
+  # --- Post-exposure prophylaxis (p124) ---
+  - id: hb.L07.068
+    kind: table
+    topic: pep
+    title: HBV post-exposure prophylaxis (book)
+    columns: [Exposed person, Anti-HBs, Action]
+    rows:
+      - ["Vaccinated", ">10 mIU/mL", "No treatment"]
+      - ["Vaccinated", "<10 mIU/mL", "HBIG + booster dose"]
+      - ["Not vaccinated (test HBsAg, anti-HBc, anti-HBs)", ">10 mIU/mL", "No treatment"]
+      - ["Not vaccinated (test HBsAg, anti-HBc, anti-HBs)", "<10 mIU/mL", "HBIG + vaccinate"]
+    blanks: [[0, 2], [1, 2], [3, 2]]
+    src: { page: 124 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.069
+    kind: cloze
+    topic: pep
+    text: "After HBV exposure, give vaccine no later than {{c1::7 days}} and HBIG within {{c2::72 hours}}."
+    src: { page: 124 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L07.070
+    kind: cloze
+    topic: pep
+    text: "After exposure, test HBsAg and anti-HBc IgM at {{c1::6, 12 and 24}} weeks."
+    src: { page: 124 }
+    status: unverified
+    tags: [numbers]
+
+  # --- MCQs ---
+  - id: hb.L07.071
+    kind: mcq
+    topic: serology
+    stem: A 27-year-old man has jaundice 6 weeks after unprotected sex. ALT 1,450 IU/L. HBsAg negative, anti-HBc IgM positive, anti-HBs negative. What is the diagnosis?
+    options:
+      - Chronic HBV
+      - Acute HBV in the window period
+      - Past HBV with immunity
+      - Immunity after vaccination
+      - Occult HBV
+    answer: 1
+    why:
+      - Chronic HBV needs HBsAg positivity with IgG anti-HBc.
+      - Correct. HBsAg has gone and anti-HBs has not yet appeared; anti-HBc IgM marks acute infection.
+      - Past infection shows IgG anti-HBc with anti-HBs.
+      - Vaccination gives anti-HBs alone.
+      - Occult HBV is IgG anti-HBc with HBV DNA and no HBsAg, not IgM in an acute illness.
+    src: { page: 115 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.072
+    kind: mcq
+    topic: serology
+    stem: A nursing student's pre-employment screen shows HBsAg negative, anti-HBc negative, anti-HBs 120 mIU/mL. What does this mean?
+    options:
+      - Recovered HBV infection
+      - Immunity after vaccination
+      - Occult HBV
+      - Window period of acute HBV
+      - Needs HBIG now
+    answer: 1
+    why:
+      - Recovery would also give IgG anti-HBc.
+      - Correct. Anti-HBs alone means vaccine immunity.
+      - Occult HBV usually has anti-HBc.
+      - The window period has anti-HBc IgM.
+      - She is immune; no prophylaxis needed.
+    src: { page: 118 }
+    status: unverified
+  - id: hb.L07.073
+    kind: mcq
+    topic: phases
+    stem: A 35-year-old woman is HBsAg positive, HBeAg negative, anti-HBe positive. HBV DNA 800 IU/mL, ALT normal on repeated tests, FibroScan 5 kPa. What is her phase?
+    options:
+      - HBeAg-positive chronic infection
+      - HBeAg-positive chronic hepatitis
+      - HBeAg-negative chronic infection
+      - HBeAg-negative chronic hepatitis
+      - Occult HBV
+    answer: 2
+    why:
+      - She is HBeAg negative.
+      - She is HBeAg negative with normal ALT.
+      - Correct. HBeAg negative, DNA <2,000 IU/mL, normal ALT; formerly inactive carrier.
+      - That needs DNA >2,000 IU/mL and raised ALT.
+      - She is HBsAg positive, so not occult.
+    src: { page: 117 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.074
+    kind: mcq
+    topic: treat-who
+    stem: A 42-year-old man with chronic HBV (HBeAg negative) has HBV DNA 25,000 IU/mL and ALT 85 IU/L. No cirrhosis. Per the book algorithm, what is next?
+    options:
+      - No treatment; recheck in 12 months
+      - Treat
+      - Liver biopsy before any decision
+      - Peginterferon is contraindicated, so observe
+      - Treat only if HBeAg turns positive
+    answer: 1
+    why:
+      - DNA >2,000 with abnormal ALT is a treatment indication.
+      - Correct. HBV DNA >2,000 IU/mL with abnormal ALT (ULN 40) means treat.
+      - Biopsy or FibroScan is for normal ALT in those over 30.
+      - Nothing contraindicates therapy here, and NAs are first line too.
+      - Indications are the same in HBeAg-positive and -negative patients.
+    src: { page: 119 }
+    status: unverified
+  - id: hb.L07.075
+    kind: mcq
+    topic: cirrhosis
+    stem: A 58-year-old man with HBV cirrhosis (Child B) has HBV DNA 150 IU/mL and normal ALT. What is the right management?
+    options:
+      - No treatment because DNA is below 2,000 IU/mL
+      - No treatment because ALT is normal
+      - Start an NA with a high barrier to resistance and assess for transplant
+      - Start lamivudine
+      - Start peginterferon
+    answer: 2
+    why:
+      - In cirrhosis any detectable DNA is an indication.
+      - ALT does not matter in cirrhosis.
+      - Correct. Treat any detectable DNA with a high-barrier NA, adjust to renal function, and assess for transplant.
+      - Lamivudine has a low barrier to resistance (70% at 5 years).
+      - Interferon is not used in decompensated cirrhosis.
+    src: { page: 120 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.076
+    kind: mcq
+    topic: drugs
+    stem: A patient on lamivudine for 4 years has rising HBV DNA with confirmed lamivudine resistance. What is the rescue?
+    options:
+      - Increase lamivudine dose
+      - Add adefovir
+      - Switch to TDF or TAF
+      - Switch to telbivudine
+      - Switch to entecavir 0.5 mg
+    answer: 2
+    why:
+      - Higher dose does not overcome resistance.
+      - Not the book's recommended rescue.
+      - Correct. LAM resistance means switch to TDF or TAF.
+      - Telbivudine shares cross-resistance with lamivudine.
+      - Entecavir is not the rescue for LAM resistance in the table.
+    src: { page: 121 }
+    status: unverified
+  - id: hb.L07.077
+    kind: mcq
+    topic: reactivation
+    stem: A 60-year-old woman with lymphoma is to start rituximab-CHOP. She is HBsAg negative, anti-HBc positive. What should be done?
+    options:
+      - Nothing; she has cleared HBV
+      - Vaccinate against HBV
+      - Start antiviral prophylaxis
+      - Monitor ALT every 6 months
+      - Give HBIG
+    answer: 2
+    why:
+      - Anti-HBc-positive patients can reactivate under strong immunosuppression.
+      - She has already been exposed; vaccination is for naive patients.
+      - Correct. Rituximab is high-risk (B-cell depleting), so start antiviral prophylaxis.
+      - Monitoring every 1–3 months is for moderate-risk regimens.
+      - HBIG is for post-exposure prophylaxis.
+    src: { page: 123 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L07.078
+    kind: mcq
+    topic: pep
+    stem: A vaccinated surgeon has a needlestick from an HBsAg-positive patient. His anti-HBs is 4 mIU/mL. What should he get?
+    options:
+      - Nothing
+      - HBIG plus a vaccine booster
+      - Full 3-dose vaccine course only
+      - Tenofovir for 4 weeks
+      - HBIG only
+    answer: 1
+    why:
+      - Anti-HBs below 10 mIU/mL is not protective.
+      - Correct. Vaccinated with anti-HBs <10 means HBIG plus a booster dose.
+      - He also needs HBIG.
+      - Antivirals are not HBV post-exposure prophylaxis.
+      - A booster is needed with HBIG.
+    src: { page: 124 }
+    status: unverified
+  - id: hb.L07.079
+    kind: mcq
+    topic: acute
+    stem: A 33-year-old man has acute hepatitis B. Five weeks in, he is still deeply jaundiced and his INR is 1.8. No encephalopathy. What is the best management?
+    options:
+      - Supportive care only
+      - Start entecavir or tenofovir
+      - Start peginterferon
+      - Corticosteroids
+      - Urgent liver transplant listing
+    answer: 1
+    why:
+      - Supportive care alone is for non-severe acute HBV.
+      - Correct. INR >1.5 and jaundice beyond 4 weeks define severe acute HBV, which gets an antiviral.
+      - Interferon is not used in acute severe HBV.
+      - Steroids are not part of acute HBV treatment.
+      - He has no encephalopathy; liver failure criteria are not met yet.
+    src: { page: 115 }
+    status: unverified
+  - id: hb.L07.080
+    kind: mcq
+    topic: special
+    stem: A 30-year-old pregnant woman with chronic HBV has HBV DNA 3 × 10^6 IU/mL and normal ALT at the end of the 2nd trimester. What does the book advise?
+    options:
+      - No action until delivery
+      - Consider tenofovir from 28–32 weeks, and HBIG plus vaccine for the baby at birth
+      - Caesarean section only
+      - Peginterferon
+      - Avoid breastfeeding
+    answer: 1
+    why:
+      - DNA above 200,000 IU/mL needs consideration of prophylaxis.
+      - Correct. DNA >200,000 IU/mL means consider an antiviral at 28–32 weeks, plus infant HBIG and vaccine.
+      - The algorithm does not mention caesarean section.
+      - Interferon is contraindicated in pregnancy.
+      - Breastfeeding does not transmit HBV.
+    src: { page: 123 }
+    status: unverified
+    update:
+      text: "EASL recommends TDF from week 24–28 at this viral load."
+      ref: "EASL CPG on HBV 2017"
+
+  # --- Cases ---
+  - id: hb.L07.081
+    kind: case
+    topic: serology
+    stem: A 40-year-old Egyptian man is found HBsAg positive at blood donation. He feels well.
+    steps:
+      - reveal: ""
+        question: Which tests come next per the book's serology algorithm?
+        options: ["Liver panel, HBeAg, anti-HBe and HBV DNA", Anti-HAV IgM, HCV RNA only, Liver biopsy]
+        answer: 0
+        why: An HBsAg-positive screen needs a liver panel, HBeAg, anti-HBe and HBV DNA.
+      - reveal: IgG anti-HBc positive, anti-HBs negative. HBeAg negative. HBV DNA 12,000 IU/mL. ALT 32 IU/L.
+        question: What is the next step?
+        options: [FibroScan or biopsy since he is over 30, Treat now, Discharge, Repeat HBsAg in 6 months]
+        answer: 0
+        why: DNA above 2,000 with normal ALT; over 30, so assess fibrosis.
+      - reveal: FibroScan is 11 kPa.
+        question: Decision?
+        options: [Treat with entecavir or tenofovir, Observe every 12 months, Peginterferon is the only choice, Wait for ALT to rise]
+        answer: 0
+        why: Above 9 kPa means severe fibrosis, so treat; first-line NAs have a high barrier to resistance.
+      - reveal: He has started tenofovir.
+        question: How long will he likely be treated?
+        options: ["Long term, until HBsAg seroconversion", 12 months, 48 weeks, Until ALT normalizes]
+        answer: 0
+        why: HBeAg-negative patients need long-term treatment.
+    src: { page: 119 }
+    status: unverified
+  - id: hb.L07.082
+    kind: case
+    topic: reactivation
+    stem: A 52-year-old woman with rheumatoid arthritis is to start rituximab. Screening shows HBsAg negative, anti-HBc positive, anti-HBs negative.
+    steps:
+      - reveal: ""
+        question: How is rituximab classified for HBV reactivation risk?
+        options: [High risk (B-cell depleting), Moderate risk, Low risk, No risk]
+        answer: 0
+        why: B-cell-depleting therapy and stem cell transplant are high risk.
+      - reveal: Her rheumatologist forgets the prophylaxis. Four months later HBsAg reappears and HBV DNA is detectable. ALT is normal.
+        question: Is this reactivation, and what do you do?
+        options: [Reactivation; start antiviral now regardless of ALT, Not reactivation because ALT is normal, Reactivation; wait for ALT to rise, Give HBIG]
+        answer: 0
+        why: In HBsAg-negative anti-HBc-positive patients, detectable DNA or HBsAg reappearance is reactivation; treat early regardless of ALT.
+      - reveal: Two weeks later ALT is 380 U/L (baseline 25).
+        question: What does this ALT pattern define?
+        options: [A clinical hepatitis flare, Normal fluctuation, Drug-induced liver injury only, HBeAg seroconversion]
+        answer: 0
+        why: A flare is ALT ≥3× baseline and above 100 U/L; severe hepatitis follows in 25–50%.
+    src: { page: 123 }
+    status: unverified
+  - id: hb.L07.083
+    kind: case
+    topic: phases
+    stem: A 22-year-old man, infected at birth, is HBsAg positive and HBeAg positive. HBV DNA 2 × 10^8 IU/mL. ALT 28 IU/L. FibroScan 5 kPa.
+    steps:
+      - reveal: ""
+        question: Which phase is he in?
+        options: [HBeAg-positive chronic infection (immune tolerant), HBeAg-positive chronic hepatitis, HBeAg-negative chronic infection, Acute HBV]
+        answer: 0
+        why: Very high DNA, normal ALT and minimal fibrosis after perinatal infection.
+      - reveal: ""
+        question: How often is he monitored untreated?
+        options: [Every 3–6 months, Every 6–12 months, Every 2 years, Only if symptomatic]
+        answer: 0
+        why: HBeAg-positive untreated patients are seen every 3–6 months.
+      - reveal: Three years later ALT is 110 IU/L and HBV DNA 3 × 10^6 IU/mL.
+        question: Which phase now, and what is the plan?
+        options: [HBeAg-positive chronic hepatitis; treat, Still immune tolerant; observe, Inactive carrier; observe, Occult HBV]
+        answer: 0
+        why: Rising ALT with DNA 10^4–10^7 is HBeAg-positive chronic hepatitis; DNA >2,000 with abnormal ALT means treat.
+    src: { page: 117 }
+    status: unverified
+
+  # --- Book questions (p124) ---
+  - id: hb.L07.084
+    kind: essay
+    topic: phases
+    prompt: Short account on the phases of chronic hepatitis B.
+    outline:
+      - "HBeAg+ chronic infection": ["Old: immune tolerant", "DNA >10^7, normal ALT, minimal fibrosis"]
+      - "HBeAg+ chronic hepatitis": ["DNA 10^4–10^7, raised ALT", "Moderate to severe disease"]
+      - "HBeAg− chronic infection": ["Old: inactive carrier", "DNA <2,000, normal ALT"]
+      - "HBeAg− chronic hepatitis": ["DNA >2,000, raised fluctuating ALT", "Moderate to severe fibrosis"]
+      - "HBsAg loss": ["Variable fibrosis, no immune infiltration", "Perinatal vs horizontal entry points"]
+    src: { page: 124 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L07.085
+    kind: essay
+    topic: special
+    prompt: Short account on the management of hepatitis B in pregnancy.
+    outline:
+      - "Transmission risk": ["85–90% if HBeAg+, 30% if HBeAg− without prophylaxis", "Breastfeeding allowed"]
+      - "1st trimester": ["Assess replication and liver disease", "Active disease or advanced fibrosis: tenofovir"]
+      - "End of 2nd trimester": ["HBV DNA and ALT", "DNA >200,000: tenofovir, lamivudine or telbivudine at 28–32 weeks"]
+      - "Infant": ["HBIG plus vaccine at birth in all"]
+    src: { page: 124 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L07.086
+    kind: essay
+    topic: cirrhosis
+    prompt: Short account on the management of hepatitis B in cirrhotic patients.
+    outline:
+      - "Indication": ["Any detectable HBV DNA", "Regardless of ALT; compensated or decompensated"]
+      - "Drug choice": ["NA with high barrier to resistance (entecavir, tenofovir)", "Adjust all NAs to renal function in decompensation"]
+      - "Transplant": ["Assess all for liver transplantation", "~35% delisted; Child-Pugh improves >2 points in 40–50%"]
+    src: { page: 124 }
+    status: unverified
+    tags: [book-question]

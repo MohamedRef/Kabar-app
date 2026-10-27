@@ -1,0 +1,969 @@
+schema: batna.content/v1
+lecture: hb.L02
+title: Non-invasive assessment of liver fibrosis and portal hypertension
+author: Dr. Waleed Ibrahim
+book: { chapter: 1, pages: [23, 36] }
+topics:
+  - { id: principles, title: "Who to test and how NITs are used" }
+  - { id: serum-tests, title: "Serum biomarkers and scores" }
+  - { id: elastography, title: "Elastography and its limitations" }
+  - { id: biopsy, title: "Liver biopsy and Metavir staging" }
+  - { id: pathways, title: "Risk pathways (NAFLD, ALD, HCV)" }
+  - { id: csph, title: "CSPH, varices and Baveno criteria" }
+items:
+  # ---------- p23-24: principles ----------
+  - id: hb.L02.001
+    kind: card
+    topic: principles
+    front: In low-prevalence populations, should non-invasive fibrosis tests be used to rule out or to diagnose advanced fibrosis?
+    back: To rule out rather than diagnose advanced fibrosis.
+    src: { page: 23, quote: "should be used for ruling out rather than diagnosing advanced fibrosis in low prevalence populations" }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L02.002
+    kind: card
+    topic: principles
+    front: In whom should non-invasive fibrosis tests preferentially be used?
+    back: Patients at risk of advanced fibrosis, such as those with metabolic risk factors and/or harmful use of alcohol, and not unselected general populations.
+    src: { page: 23 }
+    status: unverified
+  - id: hb.L02.003
+    kind: enumerate
+    topic: serum-tests
+    prompt: Mention the non-patented serum biomarkers of fibrosis.
+    points: [AST/ALT ratio, APRI, FIB-4, NAFLD fibrosis score (NFS)]
+    pass: 3
+    src: { page: 23 }
+    status: unverified
+  - id: hb.L02.004
+    kind: enumerate
+    topic: serum-tests
+    prompt: Mention the patented serum biomarkers of fibrosis.
+    points: [FibroTest, ELF, FibroMeter, Hepascore]
+    pass: 3
+    src: { page: 23 }
+    status: unverified
+  - id: hb.L02.005
+    kind: card
+    topic: elastography
+    front: Which elastography techniques does the lecture show, and how do availability and cost change across all NITs?
+    back: TE, ARFI/2D-SWE and MRE. Serum biomarkers are the most available and cheapest (primary care); availability falls and cost rises towards MRE (liver clinics).
+    src: { page: 23 }
+    status: unverified
+  - id: hb.L02.006
+    kind: card
+    topic: principles
+    front: Which tests should be routine in primary care for suspected liver disease, and why?
+    back: ALT, AST and platelet count, so that simple non-invasive scores can be calculated.
+    src: { page: 24, quote: "ALT, AST and platelet count should be part of the routin investigations in primary care" }
+    status: unverified
+  - id: hb.L02.007
+    kind: card
+    topic: principles
+    front: Where is automatic calculation and reporting of FIB-4 recommended?
+    back: In primary care, for populations at risk of liver fibrosis (metabolic risk factors and/or harmful alcohol use), to improve risk stratification.
+    src: { page: 24 }
+    status: unverified
+  - id: hb.L02.008
+    kind: card
+    topic: elastography
+    front: Two ways elastography displays tissue response, and an example of each?
+    back: Displacement without further processing (ARFI imaging), and shear wave speed (shear wave elastography).
+    src: { page: 24 }
+    status: unverified
+  - id: hb.L02.009
+    kind: cloze
+    topic: elastography
+    text: Shear wave elastography includes {{c1::transient elastography (TE)}}, {{c2::point shear wave elastography (pSWE)}}, and {{c3::2D-SWE and 3D-SWE}}.
+    src: { page: 24 }
+    status: unverified
+  - id: hb.L02.010
+    kind: card
+    topic: elastography
+    front: How is shear wave speed calculated?
+    back: By measuring the arrival time of a shear wave at different locations in the tissue.
+    src: { page: 24, quote: "calculated by measuring the arrival time of a shear wave at different locations in the tissue" }
+    status: unverified
+  - id: hb.L02.011
+    kind: card
+    topic: pathways
+    front: "Primary-care pathway (metabolic or alcohol risk only): what happens with FIB-4 below 1.30?"
+    back: Low risk. No referral; lifestyle modification; re-test in 1-3 years.
+    src: { page: 24 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L02.012
+    kind: card
+    topic: pathways
+    front: "Primary-care pathway: FIB-4 of 1.30 or more. What next, and how is the result read?"
+    back: Transient elastography. Below 8 kPa is low risk. 8 kPa or more is intermediate-high risk, so add patented serum tests if available; concordance means F3-F4 is highly likely, discordance (or no test) means consider liver biopsy.
+    src: { page: 24 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L02.013
+    kind: card
+    topic: pathways
+    front: In the primary-care fibrosis pathway, who is sent straight to a liver specialist?
+    back: Patients with viral hepatitis or other causes of chronic liver disease, or with clinical signs of advanced liver disease or cirrhosis.
+    src: { page: 24 }
+    status: unverified
+  # ---------- p25: ALD, HCV, NAFLD recommendations ----------
+  - id: hb.L02.014
+    kind: cloze
+    topic: pathways
+    text: In patients referred at risk of ALD, LSM by TE {{c1::above 12-15 kPa}} rules in advanced fibrosis, after considering causes of false positives.
+    src: { page: 25 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L02.015
+    kind: card
+    topic: pathways
+    front: An ALD patient has high liver stiffness and AST or GGT above 2x ULN. What should be done?
+    back: Repeat LSM by TE after at least 1 week of alcohol abstinence or reduced drinking.
+    src: { page: 25, quote: "LSM by TE should be repeated after at least 1 week of alcohol abstinence or reduced drinking" }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L02.016
+    kind: card
+    topic: pathways
+    front: Should NITs be used routinely to detect fibrosis regression after SVR in HCV?
+    back: No. Routine use of scores and elastography for this is not recommended, and untreated-HCV LSM cut-offs should not be used to stage fibrosis after SVR.
+    src: { page: 25 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L02.017
+    kind: card
+    topic: pathways
+    front: Reference standard for diagnosing NASH, and why?
+    back: Liver biopsy, because none of the available NITs has acceptable accuracy.
+    src: { page: 25, quote: "Liver biopsy remains the reference standard for the diagnosis of NASH" }
+    status: unverified
+    update:
+      text: Since 2023 NAFLD is called MASLD and NASH is called MASH (multi-society nomenclature). The book uses both names.
+      ref: AASLD/EASL/ALEH multi-society Delphi consensus 2023
+  - id: hb.L02.018
+    kind: cloze
+    topic: pathways
+    text: "In NAFLD, advanced fibrosis is ruled out by LSM by TE {{c1::below 8 kPa}}, FibroTest {{c2::below 0.48}}, or FIB-4 {{c3::below 1.3}}."
+    src: { page: 25 }
+    status: unverified
+    tags: [high-yield, numbers]
+  - id: hb.L02.019
+    kind: card
+    topic: pathways
+    front: A NAFLD patient is referred with FIB-4 above 1.3. What next?
+    back: TE and/or patented serum tests to rule out or rule in advanced fibrosis.
+    src: { page: 25 }
+    status: unverified
+  - id: hb.L02.020
+    kind: card
+    topic: elastography
+    front: Most accurate non-invasive method for staging fibrosis, and why is it not first line?
+    back: MR elastography (MRE). It is only marginally better than other NITs for F3-F4, and it is costly with limited availability.
+    src: { page: 25, quote: "MRE is the most accurate non-invasive method for staging liver fibrosis" }
+    status: unverified
+    tags: [high-yield]
+  # ---------- p26: biopsy ----------
+  - id: hb.L02.021
+    kind: cloze
+    topic: biopsy
+    text: "AASLD liver biopsy: at least {{c1::2-3 cm}} long, with a {{c2::16-gauge}} needle; fewer than {{c3::11}} complete portal tracts may give wrong grading and staging."
+    src: { page: 26 }
+    status: unverified
+    tags: [high-yield, numbers]
+  - id: hb.L02.022
+    kind: cloze
+    topic: biopsy
+    text: Even a 25 mm liver biopsy has a {{c1::25%}} rate of discordance for fibrosis staging.
+    src: { page: 26 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L02.023
+    kind: enumerate
+    topic: biopsy
+    prompt: Mention the contraindications of liver biopsy.
+    points:
+      - Uncooperative patient
+      - Coagulation disorders
+      - Severe ascites
+      - Cystic lesion
+      - Vascular tumour (hemangioma)
+      - Amyloidosis
+      - Congestive liver disease
+    pass: 5
+    src: { page: 26 }
+    status: unverified
+    tags: [high-yield]
+  # ---------- p27: comparison and cut-offs ----------
+  - id: hb.L02.024
+    kind: table
+    topic: principles
+    title: Comparison of methods for assessing liver fibrosis (book Table 1, p27)
+    columns: [Parameter, Liver biopsy, Indirect blood tests, Direct blood tests, US-based elastography, MR-based elastography]
+    rows:
+      - [Examples, "Percutaneous, transjugular, mini-laparoscopic", "APRI, FIB-4, NFS", "FibroTest, HepaScore, ELF", "VCTE, ARFI, 2D-SWE", Different manufacturers]
+      - [Accuracy, "++ to +++", "+ to ++", "++", "++", "++ to +++"]
+      - [Validation, "+++ (gold standard)", "++", "++", "++ to +++", "++ to +++"]
+      - [Safety, "-", "+++", "+++", "+++", "+++"]
+      - [Availability, "++", "+++", "+", "++", "+"]
+      - [Cost, "+++", "- to +", "+ to ++", "++", "+++"]
+      - [Monitoring, "+", "+++", "+", "++", "+"]
+    blanks: [[0, 1], [0, 2], [0, 3], [0, 4], [2, 1], [3, 1], [5, 2]]
+    src: { page: 27 }
+    status: unverified
+  - id: hb.L02.025
+    kind: card
+    topic: serum-tests
+    front: Which blood tests are indirect and which are direct fibrosis markers in the book's table?
+    back: "Indirect: APRI, FIB-4, NFS. Direct: FibroTest, HepaScore, ELF."
+    src: { page: 27 }
+    status: unverified
+  - id: hb.L02.026
+    kind: card
+    topic: principles
+    front: Which fibrosis method is best for monitoring, and which is the gold standard for validation?
+    back: Indirect blood tests are best for monitoring (+++, also safest, most available, cheapest). Liver biopsy is the gold standard (+++ validation) but the least safe.
+    src: { page: 27 }
+    status: unverified
+  - id: hb.L02.027
+    kind: cloze
+    topic: elastography
+    text: "Liver stiffness cut-offs figure (Metavir): F2 from {{c1::7}} kPa, F3 from {{c2::9.5}} kPa, F4 (cirrhosis) from {{c3::12.5}} kPa, on a scale of 2.5-75 kPa."
+    src: { page: 27 }
+    status: unverified
+    tags: [numbers]
+  # ---------- p28: Metavir ----------
+  - id: hb.L02.028
+    kind: card
+    topic: biopsy
+    front: What two scores does the Metavir system assign to a biopsy?
+    back: Activity (A0 none, A1 mild, A2 moderate, A3 severe) and fibrosis (F0-F4).
+    src: { page: 28 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L02.029
+    kind: cloze
+    topic: biopsy
+    text: "Metavir fibrosis: F1 = {{c1::portal fibrosis without septa}}; F2 = {{c2::portal fibrosis with infrequent septa}}; F3 = {{c3::numerous septa but no cirrhosis}}; F4 = cirrhosis."
+    src: { page: 28 }
+    status: unverified
+    tags: [high-yield]
+  # ---------- p29: LSM algorithm and CAP ----------
+  - id: hb.L02.030
+    kind: cloze
+    topic: elastography
+    text: "LSM algorithm (Vizzutti): {{c1::6 kPa or less}} = no significant fibrosis (F0-F1), no biopsy; {{c2::12.5 kPa or more}} = advanced fibrosis (F3-F4), no biopsy, treat or follow up."
+    src: { page: 29 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L02.031
+    kind: card
+    topic: elastography
+    front: What does the LSM algorithm advise for intermediate values (grey area, F2)?
+    back: Liver biopsy if the result would change management, and other non-invasive tests.
+    src: { page: 29 }
+    status: unverified
+  - id: hb.L02.032
+    kind: table
+    topic: elastography
+    title: Controlled attenuation parameter (CAP) and steatosis (p29)
+    columns: [CAP score, Steatosis grade, Liver with fatty change]
+    rows:
+      - ["238-260 dB/m", S1, "11-33%"]
+      - ["260-290 dB/m", S2, "34-66%"]
+      - ["Above 290 dB/m", S3, "67% or more"]
+    blanks: [[0, 1], [0, 2], [1, 1], [1, 2], [2, 1], [2, 2]]
+    src: { page: 29 }
+    status: unverified
+    tags: [numbers]
+  # ---------- p30: NAFLD algorithm and rule of five ----------
+  - id: hb.L02.033
+    kind: card
+    topic: pathways
+    front: "Step 1 of the fibrosis pathway: who is at risk?"
+    back: Patients with 2 or more metabolic risk factors, type 2 diabetes, or steatosis on any imaging or raised aminotransferases.
+    src: { page: 30 }
+    status: unverified
+  - id: hb.L02.034
+    kind: cloze
+    topic: pathways
+    text: "Step 3 FIB-4: below {{c1::1.3}} = low risk; 1.3-2.67 = indeterminate; above {{c2::2.67}} = high risk."
+    src: { page: 30 }
+    status: unverified
+    tags: [high-yield, numbers]
+  - id: hb.L02.035
+    kind: cloze
+    topic: pathways
+    text: "Step 4 LSM: below {{c1::8 kPa}} = low risk; 8-12 kPa = indeterminate; above {{c2::12 kPa}} = high risk."
+    src: { page: 30 }
+    status: unverified
+    tags: [high-yield, numbers]
+  - id: hb.L02.036
+    kind: card
+    topic: pathways
+    front: How is each risk level managed in the step-wise fibrosis pathway?
+    back: "Low: repeat NIT in 2-3 years unless things change. Indeterminate: hepatologist for biopsy or MR elastography, or monitoring with re-evaluation in 2-3 years. High: refer to a hepatologist."
+    src: { page: 30 }
+    status: unverified
+  - id: hb.L02.037
+    kind: order
+    topic: pathways
+    prompt: Put the step-wise fibrosis risk pathway in order.
+    steps:
+      - Identify patients at risk (metabolic risk factors, type 2 diabetes, steatosis or raised aminotransferases)
+      - History and laboratory tests (alcohol intake, CBC, liver function tests)
+      - Non-invasive fibrosis test such as FIB-4
+      - Liver stiffness measurement if FIB-4 is indeterminate
+      - Classify risk and refer or repeat testing
+    src: { page: 30 }
+    status: unverified
+  - id: hb.L02.038
+    kind: cloze
+    topic: csph
+    text: "Rule-of-five figure: LSM below {{c1::10}} kPa = no cACLD (very low risk of liver-related events); below 15 kPa with platelets above 150 = {{c2::no CSPH}}; {{c3::25}} kPa or more = CSPH."
+    src: { page: 30 }
+    status: unverified
+    tags: [high-yield, numbers]
+  # ---------- p31: Baveno flowchart and etiology cut-offs ----------
+  - id: hb.L02.039
+    kind: cloze
+    topic: csph
+    text: In compensated chronic liver disease, LSM above {{c1::10}} kPa makes advanced chronic liver disease probable, and above {{c2::12-15}} kPa very probable.
+    src: { page: 31 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L02.040
+    kind: card
+    topic: csph
+    front: Which imaging signs add to LSM for cACLD and for CSPH?
+    back: "cACLD: nodular liver surface. CSPH: portosystemic collaterals and spleen size."
+    src: { page: 31 }
+    status: unverified
+  - id: hb.L02.041
+    kind: cloze
+    topic: csph
+    text: LSM above {{c1::20 kPa}} makes CSPH very likely (about {{c2::90%}}).
+    src: { page: 31 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L02.042
+    kind: card
+    topic: csph
+    front: When are the Baveno criteria NOT met, and what follows?
+    back: When LSM is 20 kPa or more, or platelets are below 150 G/L. Then perform screening endoscopy.
+    src: { page: 31 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L02.043
+    kind: card
+    topic: csph
+    front: What follows when LSM is below 20 kPa and platelets above 150 G/L?
+    back: Varices needing treatment are very unlikely (under 5%), so endoscopic screening can be safely avoided; repeat LSM and platelets every year.
+    src: { page: 31 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L02.044
+    kind: card
+    topic: csph
+    front: What does likely CSPH mean for the patient, and which test quantifies it?
+    back: Increased risk of clinical decompensation. HVPG is needed to quantify the severity of portal hypertension exactly.
+    src: { page: 31 }
+    status: unverified
+  - id: hb.L02.045
+    kind: table
+    topic: elastography
+    title: Liver stiffness cut-offs (kPa) by etiology (p31)
+    columns: [Etiology, F0-F1, F2, F3, F4]
+    rows:
+      - [Hepatitis B, "2-7", "8-9", "8-11", "18 or higher"]
+      - [Hepatitis C, "2-7", "8-9", "9-14", "14 or higher"]
+      - [HIV/HCV coinfection, "2-7", "7-11", "11-14", "14 or higher"]
+      - [Cholestatic disease, "2-7", "7-9", "9-17", "17 or higher"]
+      - [NAFLD or NASH, "2-7", "7.5-10", "10-14", "14 or higher"]
+      - [Alcohol-related disease, "2-7", "7-11", "11-19", "19 or higher"]
+    blanks: [[0, 4], [1, 4], [2, 4], [3, 4], [4, 4], [5, 4], [1, 3], [5, 3]]
+    src: { page: 31 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L02.046
+    kind: cloze
+    topic: elastography
+    text: "Cirrhosis (F4) stiffness thresholds: hepatitis B {{c1::18}} kPa, hepatitis C {{c2::14}} kPa, alcohol-related disease {{c3::19}} kPa."
+    src: { page: 31 }
+    status: unverified
+    tags: [numbers]
+  # ---------- p32: TE limitations ----------
+  - id: hb.L02.047
+    kind: table
+    topic: elastography
+    title: Limitations of transient elastography with CAP (p32)
+    columns: [Limitation, Explanation]
+    rows:
+      - [Ascites, Elastic waves do not travel through liquids]
+      - [Obesity, "BMI above 30 is associated with TE failure; the XL probe has reduced the failure rate"]
+      - [Acute hepatitis, Tissue changes may increase LSM]
+      - [Chronic hepatitis with transaminase flare, "ALT above 5x ULN risks overestimating fibrosis stage"]
+      - [Extrahepatic cholestasis, Increases LSM independently of fibrosis stage]
+      - [Congestive heart failure, Increased blood volume in the liver may increase LSM]
+      - [Narrow intercostal spaces, "Lower success or failed acquisition; the S probe has reduced the failure rate"]
+    blanks: [[0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1]]
+    src: { page: 32 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L02.048
+    kind: cloze
+    topic: elastography
+    text: In a chronic hepatitis flare, ALT above {{c1::5 times}} the upper normal limit risks overestimating the fibrosis stage on TE.
+    src: { page: 32 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L02.049
+    kind: card
+    topic: elastography
+    front: Which TE probes help in obesity and in narrow intercostal spaces?
+    back: The XL probe for obesity (BMI above 30) and the S probe for narrow intercostal spaces.
+    src: { page: 32 }
+    status: unverified
+  - id: hb.L02.050
+    kind: card
+    topic: elastography
+    front: Why does ascites prevent transient elastography?
+    back: Elastic (shear) waves do not travel through liquids.
+    src: { page: 32 }
+    status: unverified
+  # ---------- p32-34: scores ----------
+  - id: hb.L02.051
+    kind: cloze
+    topic: serum-tests
+    text: "FIB-4 ranges in the book's figure: below {{c1::1.45}} = minimal or no fibrosis; 1.45-3.39 = significant fibrosis; {{c2::3.4}} or more = advanced fibrosis or cirrhosis."
+    src: { page: 33 }
+    status: unverified
+    tags: [numbers]
+    update:
+      text: "The original FIB-4 cut-offs (HIV/HCV cohort) are below 1.45 and above 3.25; for NAFLD the lecture's own pathway uses 1.3 and 2.67."
+      ref: Sterling et al., Hepatology 2006
+  - id: hb.L02.052
+    kind: card
+    topic: serum-tests
+    front: Which values are entered to calculate APRI?
+    back: AST, the upper limit of normal, and the platelet count. The book's figure says "ALT upper limit"; APRI uses the AST upper limit (see book issues).
+    src: { page: 33 }
+    status: unverified
+  - id: hb.L02.053
+    kind: cloze
+    topic: serum-tests
+    text: "APRI below {{c1::0.5}} = minimal or no fibrosis; 0.5-1.5 = moderate or significant fibrosis; above {{c2::1.5}} = severe fibrosis or cirrhosis."
+    src: { page: 34 }
+    status: unverified
+    tags: [high-yield, numbers]
+  - id: hb.L02.054
+    kind: enumerate
+    topic: serum-tests
+    prompt: Mention the five serum parameters of FibroTest, and what else it takes into account.
+    points:
+      - Apolipoprotein A1
+      - Alpha-2-macroglobulin
+      - Gamma-GT
+      - Total bilirubin
+      - Haptoglobin
+      - (Plus patient age and gender)
+    pass: 4
+    src: { page: 34 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L02.055
+    kind: card
+    topic: serum-tests
+    front: FibroTest - US name, standing, and main use?
+    back: FibroSure in the USA. It is the most studied and extensively validated algorithm, used mainly in chronic viral hepatitis, and is commercially available.
+    src: { page: 34 }
+    status: unverified
+  - id: hb.L02.056
+    kind: enumerate
+    topic: serum-tests
+    prompt: Mention the six blood indices of FibroMeter.
+    points: [Platelet count, Prothrombin index, AST, Alpha-2-macroglobulin, Hyaluronic acid, Blood urea]
+    pass: 4
+    src: { page: 34 }
+    status: unverified
+  - id: hb.L02.057
+    kind: card
+    topic: serum-tests
+    front: Components of the ELF score, and where is it most useful?
+    back: Hyaluronic acid, TIMP-1 and amino-terminal propeptide of type III collagen. Useful in many chronic liver diseases, especially ALD and NAFLD.
+    src: { page: 35 }
+    status: unverified
+  # ---------- p35-36: CSPH ----------
+  - id: hb.L02.058
+    kind: cloze
+    topic: csph
+    text: LSM by TE {{c1::above 20-25 kPa}} should be used to diagnose CSPH in patients with cACLD.
+    src: { page: 35, quote: "LSM by TE at a cut-off of >20-25 kPa should be used to diagnose CSPH" }
+    status: unverified
+    tags: [high-yield, numbers]
+  - id: hb.L02.059
+    kind: card
+    topic: csph
+    front: Which additional NITs improve risk stratification for CSPH?
+    back: Platelet count, spleen size, and spleen stiffness.
+    src: { page: 35 }
+    status: unverified
+  - id: hb.L02.060
+    kind: card
+    topic: csph
+    front: What do portosystemic collaterals on US, CT or MRI mean in cACLD?
+    back: They are a sign of CSPH and should be routinely reported.
+    src: { page: 35 }
+    status: unverified
+  - id: hb.L02.061
+    kind: card
+    topic: csph
+    front: What is the only validated tool for the exact severity of portal hypertension and the response to treatment?
+    back: HVPG. It should not be replaced by NITs.
+    src: { page: 35, quote: "HVPG remains the only validated tool and should not be substituted by NITS" }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L02.062
+    kind: cloze
+    topic: csph
+    text: "Baveno VI criteria: LSM by TE {{c1::below 20 kPa}} and platelets {{c2::above 150 G/L}} rule out high-risk varices, so endoscopic screening can be avoided."
+    src: { page: 35, quote: "LSM by TE <20 kPa and platelet count >150 G/L (Baveno VI criteria)" }
+    status: unverified
+    tags: [high-yield, numbers]
+  - id: hb.L02.063
+    kind: card
+    topic: csph
+    front: In which etiologies of cACLD are the Baveno VI criteria validated?
+    back: Untreated viral hepatitis, HIV-HCV coinfection, alcohol, NAFLD, PBC and PSC.
+    src: { page: 35 }
+    status: unverified
+  - id: hb.L02.064
+    kind: card
+    topic: csph
+    front: Role of spleen stiffness for varices in cACLD?
+    back: An additional tool to refine the risk of high-risk varices (weak recommendation).
+    src: { page: 35 }
+    status: unverified
+  - id: hb.L02.065
+    kind: card
+    topic: csph
+    front: Should CT be used to screen for oesophageal and gastric varices?
+    back: Not for primary screening, but varices seen on a routine CT should be looked for and reported.
+    src: { page: 36 }
+    status: unverified
+  - id: hb.L02.066
+    kind: card
+    topic: csph
+    front: How is liver stiffness used for prognosis in cACLD?
+    back: Stiffness at diagnosis, with liver function tests, stratifies the risk of decompensation and mortality. Annual repeat measurements can refine it (weak recommendation).
+    src: { page: 36 }
+    status: unverified
+  # ---------- MCQs ----------
+  - id: hb.L02.067
+    kind: mcq
+    topic: principles
+    stem: "A primary-care clinic wants to screen adults for advanced liver fibrosis. According to the lecture, how should NITs be used in this low-prevalence setting?"
+    options:
+      - To rule out advanced fibrosis
+      - To diagnose advanced fibrosis
+      - To replace liver biopsy for staging NASH
+      - In every adult, whatever their risk factors
+    answer: 0
+    why:
+      - "Correct: NITs should be used for ruling out rather than diagnosing advanced fibrosis in low-prevalence populations."
+      - "In low-prevalence populations, NITs are better at ruling out than diagnosing."
+      - "Biopsy remains the reference standard for NASH."
+      - "NITs should be used in at-risk patients, not unselected populations."
+    src: { page: 23 }
+    status: unverified
+  - id: hb.L02.068
+    kind: mcq
+    topic: pathways
+    stem: "A 48-year-old man drinks heavily. AST is 3x ULN and GGT 4x ULN. Liver stiffness by TE is 16 kPa. What is the best next step?"
+    options:
+      - Diagnose cirrhosis and start variceal screening
+      - Liver biopsy immediately
+      - Repeat TE after at least 1 week of abstinence or reduced drinking
+      - Ignore the reading; TE is invalid in alcohol-related disease
+      - MR elastography as first-line confirmation
+    answer: 2
+    why:
+      - "Inflammation can raise stiffness, so cirrhosis is not yet established."
+      - "Biopsy is not the next step; repeating TE after abstinence is."
+      - "Correct: with high stiffness and AST or GGT above 2x ULN, repeat LSM after at least 1 week of abstinence."
+      - "TE is used in ALD (above 12-15 kPa rules in advanced fibrosis), after excluding false positives."
+      - "MRE is not first line because of cost and limited availability."
+    src: { page: 25 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L02.069
+    kind: mcq
+    topic: pathways
+    stem: "A 52-year-old woman with type 2 diabetes and fatty liver on ultrasound has FIB-4 of 2.0. According to the lecture's pathway, what is the next step?"
+    options:
+      - Reassure and repeat FIB-4 in 2-3 years
+      - Refer for liver transplant assessment
+      - Liver biopsy for everyone with FIB-4 above 1.3
+      - Liver stiffness measurement
+      - No further tests; FIB-4 is diagnostic
+    answer: 3
+    why:
+      - "Repeating in 2-3 years is for FIB-4 below 1.3."
+      - "Nothing suggests decompensated disease."
+      - "Biopsy is reserved for indeterminate results after LSM or discordant tests."
+      - "Correct: FIB-4 1.3-2.67 is indeterminate, so the next step is LSM."
+      - "An indeterminate FIB-4 needs a second-line test."
+    src: { page: 30 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L02.070
+    kind: mcq
+    topic: pathways
+    stem: "A 56-year-old man had HCV cirrhosis treated to SVR 2 years ago. Liver stiffness is now 11 kPa. How should this reading be used?"
+    options:
+      - Apply the untreated-HCV cut-offs to restage him as F3
+      - Do not use untreated-HCV cut-offs to stage fibrosis after SVR
+      - Use it to prove fibrosis regression
+      - Repeat TE every 3 months to track regression
+    answer: 1
+    why:
+      - "Untreated-HCV cut-offs should not be used after SVR."
+      - "Correct: untreated-HCV LSM cut-offs should not be used to stage fibrosis after SVR."
+      - "Routine NITs are not recommended to detect regression after SVR."
+      - "Routine NIT monitoring of regression after SVR is not recommended."
+    src: { page: 25 }
+    status: unverified
+  - id: hb.L02.071
+    kind: mcq
+    topic: biopsy
+    stem: "Five patients are listed for percutaneous liver biopsy. Which one has a contraindication listed in the lecture?"
+    options:
+      - A man with ALT 3x ULN
+      - A woman with chronic HBV and normal coagulation
+      - A woman aged 68 with steatosis
+      - A man with a raised ferritin
+      - A man with severe ascites
+    answer: 4
+    why:
+      - "Raised ALT is not a contraindication."
+      - "HBV with normal coagulation is not a contraindication."
+      - "Age and steatosis are not contraindications."
+      - "Raised ferritin is not a contraindication."
+      - "Correct: severe ascites is a contraindication to liver biopsy."
+    src: { page: 26 }
+    status: unverified
+  - id: hb.L02.072
+    kind: mcq
+    topic: csph
+    stem: "A 60-year-old man with compensated alcohol-related cACLD, now abstinent, has LSM 17 kPa and platelets 180 G/L. What does the lecture advise about variceal screening?"
+    options:
+      - Screening endoscopy now
+      - CT abdomen to screen for varices
+      - Avoid endoscopic screening; repeat LSM and platelets every year
+      - HVPG measurement before deciding
+      - Start a beta blocker without endoscopy because LSM is above 15
+    answer: 2
+    why:
+      - "Endoscopy is needed only if LSM is 20 or more or platelets are below 150."
+      - "CT should not be used for primary variceal screening."
+      - "Correct: LSM below 20 kPa and platelets above 150 G/L meet the Baveno criteria, so screening can be avoided and both repeated yearly."
+      - "HVPG quantifies portal hypertension; it is not needed to decide screening here."
+      - "Not the lecture's rule for this patient."
+    src: { page: 35 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L02.073
+    kind: mcq
+    topic: csph
+    stem: "A 58-year-old woman with compensated HCV cirrhosis has LSM 18 kPa and platelets 120 G/L. What is the next step?"
+    options:
+      - Screening endoscopy
+      - Avoid endoscopy; Baveno criteria are met
+      - Repeat LSM in 3 years
+      - MR elastography
+    answer: 0
+    why:
+      - "Correct: the Baveno criteria are not met if platelets are below 150 or LSM is 20 or more, so screening endoscopy is needed."
+      - "Platelets below 150 G/L mean the criteria are not met."
+      - "Not appropriate when the criteria are not met."
+      - "MRE stages fibrosis; it does not replace variceal screening."
+    src: { page: 31 }
+    status: unverified
+  - id: hb.L02.074
+    kind: mcq
+    topic: csph
+    stem: "A 54-year-old man with compensated chronic liver disease has liver stiffness of 27 kPa. What does this most likely indicate?"
+    options:
+      - No cACLD
+      - cACLD without CSPH
+      - Clinically significant portal hypertension
+      - Steatosis grade S3
+    answer: 2
+    why:
+      - "No cACLD is below 10 kPa."
+      - "CSPH is ruled out only below 15 kPa with platelets above 150."
+      - "Correct: LSM above 20-25 kPa diagnoses CSPH in cACLD."
+      - "Steatosis is graded by CAP in dB/m, not by stiffness in kPa."
+    src: { page: 35 }
+    status: unverified
+  - id: hb.L02.075
+    kind: mcq
+    topic: elastography
+    stem: "A 45-year-old woman with a BMI of 41 has repeated failed transient elastography readings with the standard probe. What does the lecture say helps?"
+    options:
+      - The S probe
+      - Measuring after a fatty meal
+      - Measuring after exercise
+      - The XL probe
+    answer: 3
+    why:
+      - "The S probe is for narrow intercostal spaces."
+      - "Food ingestion overestimates stiffness (lecture 1)."
+      - "Exercise overestimates stiffness (lecture 1)."
+      - "Correct: BMI above 30 is linked to TE failure, and the XL probe has reduced the failure rate."
+    src: { page: 32 }
+    status: unverified
+  - id: hb.L02.076
+    kind: mcq
+    topic: elastography
+    stem: "A 70-year-old man with congestive heart failure and no known liver disease has liver stiffness of 15 kPa. What is the best explanation?"
+    options:
+      - Increased hepatic blood volume raises liver stiffness
+      - Cirrhosis is proven
+      - Congestion lowers stiffness, so true fibrosis is worse
+      - Ascites makes the reading falsely high
+    answer: 0
+    why:
+      - "Correct: congestive heart failure may increase LSM because of increased blood volume in the liver."
+      - "Congestion can raise stiffness without fibrosis."
+      - "Congestion raises, not lowers, stiffness."
+      - "Ascites prevents measurement because waves do not pass through liquid; it does not give a falsely high reading."
+    src: { page: 32 }
+    status: unverified
+  - id: hb.L02.077
+    kind: mcq
+    topic: csph
+    stem: "A 57-year-old man with cACLD is started on a non-selective beta blocker. The team wants to measure the exact severity of his portal hypertension and his haemodynamic response. Which test?"
+    options:
+      - Liver stiffness measurement
+      - Spleen stiffness
+      - HVPG
+      - Platelet count trend
+      - CT for collaterals
+    answer: 2
+    why:
+      - "LSM helps detect CSPH but cannot replace HVPG for exact severity."
+      - "Spleen stiffness is an additional tool, not a validated measure of response."
+      - "Correct: HVPG is the only validated tool for exact severity and treatment response."
+      - "Platelets help stratify risk but do not measure response."
+      - "Collaterals indicate CSPH but do not quantify it."
+    src: { page: 35 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L02.078
+    kind: mcq
+    topic: elastography
+    stem: "A hepatologist wants the most accurate non-invasive method to stage a patient's fibrosis, cost aside. Which method does the lecture name?"
+    options:
+      - FIB-4
+      - Transient elastography
+      - FibroTest
+      - MR elastography
+      - APRI
+    answer: 3
+    why:
+      - "FIB-4 is a simple, less accurate score."
+      - "TE is the most validated tool, but MRE is the most accurate."
+      - "FibroTest is a serum test, less accurate than MRE."
+      - "Correct: MRE is the most accurate NIT for staging, though not first line because of cost and availability."
+      - "APRI is a simple, less accurate score."
+    src: { page: 25 }
+    status: unverified
+  - id: hb.L02.079
+    kind: mcq
+    topic: serum-tests
+    stem: "Which of the following is NOT one of the five serum parameters of FibroTest?"
+    options:
+      - Apolipoprotein A1
+      - Hyaluronic acid
+      - Haptoglobin
+      - Alpha-2-macroglobulin
+      - Gamma-GT
+    answer: 1
+    why:
+      - "Part of FibroTest."
+      - "Correct: hyaluronic acid is part of ELF and FibroMeter, not FibroTest."
+      - "Part of FibroTest."
+      - "Part of FibroTest."
+      - "Part of FibroTest."
+    src: { page: 34 }
+    status: unverified
+  - id: hb.L02.080
+    kind: mcq
+    topic: biopsy
+    stem: "A biopsy report reads Metavir A2 F3. What does F3 mean?"
+    options:
+      - No fibrosis
+      - Portal fibrosis without septa
+      - Portal fibrosis with infrequent septa
+      - Numerous septa but no cirrhosis
+      - Cirrhosis
+    answer: 3
+    why:
+      - "That is F0."
+      - "That is F1."
+      - "That is F2."
+      - "Correct: F3 is numerous septa without cirrhosis."
+      - "That is F4."
+    src: { page: 28 }
+    status: unverified
+  - id: hb.L02.081
+    kind: mcq
+    topic: serum-tests
+    stem: "A 50-year-old man with chronic HCV has AST 90 U/L (ULN 40) and platelets 100 x10^9/L. His APRI is 2.25. How is this read?"
+    options:
+      - Minimal or no fibrosis
+      - Moderate or significant fibrosis
+      - Severe fibrosis or cirrhosis
+      - APRI cannot be used in HCV
+    answer: 2
+    why:
+      - "Minimal fibrosis is APRI below 0.5."
+      - "Moderate fibrosis is 0.5-1.5."
+      - "Correct: APRI above 1.5 suggests severe fibrosis or cirrhosis."
+      - "APRI is a routine non-invasive score in chronic hepatitis."
+    src: { page: 34 }
+    status: unverified
+  # ---------- Cases ----------
+  - id: hb.L02.082
+    kind: case
+    topic: pathways
+    stem: "A 52-year-old woman with type 2 diabetes and hypertension has a fatty liver on ultrasound. She drinks no alcohol."
+    steps:
+      - question: Which first-line test stratifies her fibrosis risk?
+        options: [FIB-4, Liver biopsy, MR elastography, HVPG]
+        answer: 0
+        why: "FIB-4, from routine AST, ALT, platelets and age, is the first-line non-invasive test; biopsy and MRE are not first line."
+      - reveal: "Age 52, AST 48 U/L, ALT 40 U/L, platelets 180 x10^9/L: FIB-4 is 2.2."
+        question: How is this FIB-4 read?
+        options: ["Low risk", "Indeterminate risk", "High risk", "Diagnostic of cirrhosis"]
+        answer: 1
+        why: "FIB-4 1.3-2.67 is indeterminate, so she needs liver stiffness measurement."
+      - reveal: "Transient elastography: LSM 10 kPa, CAP 300 dB/m."
+        question: What does the LSM mean, and what next?
+        options: ["Low risk; repeat FIB-4 in 2-3 years", "High risk; screen for varices now", "Cirrhosis proven; refer for transplant", "Indeterminate; hepatologist for biopsy or MR elastography, or monitoring with re-evaluation in 2-3 years"]
+        answer: 3
+        why: "LSM 8-12 kPa is indeterminate risk."
+      - question: What steatosis grade does CAP 300 dB/m indicate?
+        options: [S3, S2, S1, No steatosis]
+        answer: 0
+        why: "CAP above 290 dB/m is S3, meaning 67% or more of the liver has fatty change."
+    src: { page: 30 }
+    status: unverified
+  - id: hb.L02.083
+    kind: case
+    topic: csph
+    stem: "A 55-year-old man with alcohol-related liver disease is referred. He still drinks. AST is 3x ULN and GGT 5x ULN. LSM by TE is 19 kPa."
+    steps:
+      - question: What should be done with this stiffness reading?
+        options: ["Repeat TE after at least 1 week of abstinence or reduced drinking", "Accept it and diagnose CSPH", "Biopsy immediately", "Ignore TE in alcohol-related disease"]
+        answer: 0
+        why: "With AST or GGT above 2x ULN, inflammation may overestimate stiffness, so repeat TE after at least 1 week of abstinence."
+      - reveal: "After 3 weeks of abstinence, LSM is 22 kPa and platelets are 130 G/L. The liver surface is nodular on ultrasound."
+        question: What does this show?
+        options: ["No cACLD", "cACLD without CSPH", "cACLD with CSPH very likely", "Isolated steatosis"]
+        answer: 2
+        why: "LSM above 15 kPa makes cACLD very probable, and above 20 kPa makes CSPH very likely (about 90%)."
+      - question: Can he avoid screening endoscopy?
+        options: ["No; Baveno criteria are not met, so do screening endoscopy", "Yes; LSM is below 25 kPa", "Yes; use CT instead", "Yes; repeat LSM in a year"]
+        answer: 0
+        why: "LSM 20 or more and platelets below 150 both fail the Baveno criteria. CT should not be used for primary variceal screening."
+      - question: Which test would quantify his portal pressure and later his response to a beta blocker?
+        options: [HVPG, Spleen stiffness, Repeat LSM, Platelet count]
+        answer: 0
+        why: "HVPG is the only validated tool for exact severity and haemodynamic response, and it should not be replaced by NITs."
+    src: { page: 31 }
+    status: unverified
+  # ---------- Calculations ----------
+  - id: hb.L02.084
+    kind: calc
+    topic: serum-tests
+    calculator: fib4
+    stem: "A 45-year-old man with fatty liver: AST 30 U/L, ALT 36 U/L, platelets 250 x10^9/L."
+    inputs: { age_years: 45, ast_u_l: 30, alt_u_l: 36, platelets_10e9_l: 250 }
+    expect: "FIB-4 0.9"
+    question: What is his FIB-4, and what does the lecture's pathway advise?
+    interpret: "FIB-4 = (45 x 30) / (250 x 6) = 0.9. Below 1.3 is low risk: no referral, lifestyle advice, repeat the test later."
+    src: { page: 30 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L02.085
+    kind: calc
+    topic: serum-tests
+    calculator: fib4
+    stem: "A 55-year-old woman with type 2 diabetes: AST 60 U/L, ALT 40 U/L, platelets 150 x10^9/L."
+    inputs: { age_years: 55, ast_u_l: 60, alt_u_l: 40, platelets_10e9_l: 150 }
+    expect: "FIB-4 3.48"
+    question: What is her FIB-4, and what does the lecture's pathway advise?
+    interpret: "FIB-4 = (55 x 60) / (150 x 6.32) = 3.48. Above 2.67 is high risk: refer to a hepatologist."
+    src: { page: 30 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L02.086
+    kind: calc
+    topic: serum-tests
+    calculator: apri
+    stem: "A 50-year-old man with chronic HCV: AST 90 U/L (upper limit of normal 40 U/L), platelets 100 x10^9/L."
+    inputs: { ast_u_l: 90, ast_uln_u_l: 40, platelets_10e9_l: 100 }
+    expect: "APRI 2.25"
+    question: What is his APRI, and how is it read?
+    interpret: "APRI = (90 / 40) x 100 / 100 = 2.25. Above 1.5 suggests severe fibrosis or cirrhosis."
+    src: { page: 34 }
+    status: unverified
+    tags: [numbers]
+  # ---------- Book questions (essays) ----------
+  - id: hb.L02.087
+    kind: essay
+    topic: serum-tests
+    prompt: What are the laboratory non-invasive tests for evaluation of liver disorders?
+    outline:
+      - "Routine tests": ["ALT, AST and platelet count in primary care so scores can be calculated"]
+      - "Non-patented (indirect) scores": ["AST/ALT ratio, APRI, FIB-4, NAFLD fibrosis score", "Cheap, available, best for monitoring; best at ruling out"]
+      - "Patented (direct) tests": ["FibroTest: apolipoprotein A1, alpha-2-macroglobulin, GGT, bilirubin, haptoglobin, with age and gender", "FibroMeter: platelets, prothrombin index, AST, alpha-2-macroglobulin, HA, urea", "ELF: HA, TIMP-1, PIIINP; Hepascore"]
+    src: { page: 23 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L02.088
+    kind: essay
+    topic: biopsy
+    prompt: Mention the contraindications of liver biopsy.
+    outline:
+      - "Patient and coagulation": ["Uncooperative patient", "Coagulation disorders"]
+      - "Liver and abdominal findings": ["Severe ascites", "Cystic lesion; vascular tumour (hemangioma)", "Amyloidosis; congestive liver disease"]
+      - "Technique (AASLD)": ["At least 2-3 cm with a 16-gauge needle; 11 or more complete portal tracts", "Even a 25 mm core has 25% staging discordance"]
+    src: { page: 26 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L02.089
+    kind: essay
+    topic: elastography
+    prompt: What are the limitations of transient elastography?
+    outline:
+      - "Failed or unreliable acquisition": ["Ascites: shear waves do not pass through liquid", "Obesity (BMI above 30): XL probe", "Narrow intercostal spaces: S probe"]
+      - "Falsely high stiffness": ["Acute hepatitis; chronic hepatitis flare with ALT above 5x ULN", "Extrahepatic cholestasis; congestive heart failure", "Food ingestion and exercise (lecture 1)"]
+      - "Interpretation": ["Etiology-specific cut-offs; untreated-HCV cut-offs not valid after SVR", "Repeat after 1 week abstinence in ALD with AST or GGT above 2x ULN"]
+    src: { page: 32 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L02.090
+    kind: essay
+    topic: serum-tests
+    prompt: Mention the non-invasive scores and their significance.
+    outline:
+      - "FIB-4 (age, AST, ALT, platelets)": ["NAFLD pathway: below 1.3 low risk, 1.3-2.67 indeterminate, above 2.67 high risk", "Figure ranges: below 1.45 minimal, 3.4 or more advanced fibrosis"]
+      - "APRI (AST, ULN, platelets)": ["Below 0.5 minimal, 0.5-1.5 significant, above 1.5 severe fibrosis or cirrhosis"]
+      - "Patented scores": ["FibroTest rule-out below 0.48 in NAFLD; FibroMeter; ELF"]
+      - "Elastography-based": ["LSM below 8 kPa rules out advanced fibrosis in NAFLD", "Baveno VI: LSM below 20 and platelets above 150 avoid endoscopy; above 20-25 kPa = CSPH"]
+    src: { page: 33 }
+    status: unverified
+    tags: [book-question]

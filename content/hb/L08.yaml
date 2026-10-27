@@ -1,0 +1,1132 @@
+schema: batna.content/v1
+lecture: hb.L08
+title: Drug-induced Liver Diseases
+author: Prof. Dr. Ehab Mostafa Hassouna
+book: { chapter: 1, pages: [125, 144] }
+topics:
+  - { id: overview, title: "Definition, WHO grading and incidence" }
+  - { id: mechanism, title: "Mechanisms, predictable vs idiosyncratic" }
+  - { id: classification, title: "Histological and reaction-type classification" }
+  - { id: diagnosis, title: "Diagnosis, R ratio and causality" }
+  - { id: risk, title: "Risk factors by drug" }
+  - { id: hepatocellular, title: "Acute hepatocellular injury" }
+  - { id: cholestatic, title: "Cholestatic injury and vanishing bile duct syndrome" }
+  - { id: other-patterns, title: "Granulomatous, autoimmune-like, vascular and neoplastic" }
+  - { id: biomarkers, title: "Biomarkers" }
+  - { id: prognosis, title: "Natural history, prognosis and management" }
+items:
+  # --- Overview (p125-126) ---
+  - id: hb.L08.001
+    kind: card
+    topic: overview
+    front: What is the most important step to prevent acute or chronic liver failure in DILI?
+    back: Identify and stop the offending drug as soon as possible. Most benign cases improve after withdrawal.
+    src: { page: 125 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.002
+    kind: card
+    topic: overview
+    front: Who is more susceptible to DILI, even though no specific risk factors are established?
+    back: People with genetic susceptibility and those with pre-existing liver disease.
+    src: { page: 125 }
+    status: unverified
+  - id: hb.L08.003
+    kind: card
+    topic: overview
+    front: Treatment of drug- and herb-induced liver injury?
+    back: Rapid withdrawal of the drug plus supportive care for symptoms.
+    src: { page: 125 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.004
+    kind: table
+    topic: overview
+    title: WHO grading of hepatotoxicity (book)
+    columns: [Class, Fold ULN, ALT (U/L)]
+    rows:
+      - ["1 (mild)", "<2.5×", "51–125"]
+      - ["2 (mild)", "2.5–5×", "126–250"]
+      - ["3 (moderate)", "5–10×", "251–500"]
+      - ["4 (severe)", ">10×", ">500"]
+    blanks: [[0, 1], [1, 1], [2, 1], [3, 1], [3, 2]]
+    src: { page: 125 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L08.005
+    kind: cloze
+    topic: overview
+    text: "WHO severe (class 4) hepatotoxicity is ALT more than {{c1::10× ULN}}, i.e. above {{c2::500 U/L}}."
+    src: { page: 125 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L08.006
+    kind: cloze
+    topic: overview
+    text: "Drugs cause {{c1::25–40%}} of fulminant hepatic failure and about {{c2::20%}} of jaundice in the elderly (USA)."
+    src: { page: 126 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L08.007
+    kind: cloze
+    topic: overview
+    text: "DILI made up {{c1::10%}} of hepatitis cases at a major French hepatology center and {{c2::9%}} of UK inpatients with AST ≥400 IU/L."
+    src: { page: 126 }
+    status: unverified
+    tags: [numbers]
+
+  # --- Mechanisms (p126-127, 132) ---
+  - id: hb.L08.008
+    kind: table
+    topic: mechanism
+    title: Predictable vs unpredictable DILI (book)
+    columns: [Feature, Predictable, Unpredictable (idiosyncratic)]
+    rows:
+      - ["Dose relation", "Dose related", "Not dose related"]
+      - ["Drug", "Intrinsically hepatotoxic", "Any drug, in susceptible hosts"]
+      - ["Onset", "Acute (hours)", "Weeks to months"]
+      - ["Frequency", "Common with overdose", "Rare (0.01–1%)"]
+      - ["Pattern", "Usually necrosis; fulminant acute hepatitis", "Immune (hypersensitivity) or metabolic idiosyncrasy"]
+      - ["Example", "Acetaminophen", "Phenytoin, sulfonamides, valproate; INH, ketoconazole, diclofenac"]
+    blanks: [[0, 1], [0, 2], [2, 1], [2, 2], [3, 2], [5, 1]]
+    src: { page: 126 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.009
+    kind: enumerate
+    topic: mechanism
+    prompt: Mention the features of immune-mediated (hypersensitivity) idiosyncratic DILI.
+    points: [Rash, Fever, Arthralgia, Eosinophilia]
+    pass: 3
+    src: { page: 127 }
+    status: unverified
+  - id: hb.L08.010
+    kind: cloze
+    topic: mechanism
+    text: "Immune idiosyncrasy examples: {{c1::phenytoin, sulfonamides, valproate}}. Metabolic idiosyncrasy (toxic metabolites) examples: {{c2::INH, ketoconazole, diclofenac}}."
+    src: { page: 127 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.011
+    kind: cloze
+    topic: mechanism
+    text: "Idiosyncratic DILI is rare, at {{c1::0.01–1%}}, and appears {{c2::weeks to months}} after starting the drug."
+    src: { page: 127 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L08.012
+    kind: card
+    topic: mechanism
+    front: In the DILI mechanism figure, how can a drug metabolite trigger an immune attack?
+    back: It binds protein to form a hapten, which activates B and T cells; antibodies and cytotoxic T cells then injure the liver on re-exposure.
+    src: { page: 126 }
+    status: unverified
+  - id: hb.L08.013
+    kind: card
+    topic: mechanism
+    front: In the DILI mechanism figure, what are the two possible outcomes after liver injury?
+    back: Adaptation and recovery to a normal liver, or progression to liver failure.
+    src: { page: 126 }
+    status: unverified
+  - id: hb.L08.014
+    kind: table
+    topic: classification
+    title: Cells targeted in DILI (book figure)
+    columns: [Cell, Injuries]
+    rows:
+      - ["Hepatocyte", "Acute and chronic hepatitis, cholestasis, cirrhosis, steatosis, phospholipidosis, steatohepatitis, granulomatous hepatitis"]
+      - ["Cholangiocyte", "Acute and chronic cholangitis, sclerosing cholangitis"]
+      - ["Endothelial cell", "Veno-occlusive disease, sinusoidal dilation, peliosis hepatis, Budd-Chiari syndrome"]
+      - ["Ito (stellate) cell", "Perisinusoidal fibrosis"]
+    blanks: [[1, 1], [2, 1], [3, 1]]
+    src: { page: 128 }
+    status: unverified
+
+  # --- Classification (p128) ---
+  - id: hb.L08.015
+    kind: cloze
+    topic: classification
+    text: "Histologically, DILI is {{c1::hepatocellular}} (hepatocytes), {{c2::cholestatic}} (bile ducts or canaliculi), or {{c3::mixed}}."
+    src: { page: 128 }
+    status: unverified
+  - id: hb.L08.016
+    kind: enumerate
+    topic: classification
+    prompt: Enumerate the categories of DILI by type of reaction (10 in the book).
+    points:
+      - Direct toxic reactions
+      - Idiosyncratic reactions
+      - Combined toxic/allergic reactions
+      - Allergic hepatitis
+      - Cholestatic reactions
+      - Granulomatous reactions
+      - Chronic hepatitis and cirrhosis
+      - Fatty liver / NASH
+      - Veno-occlusive disease
+      - Neoplastic
+    pass: 7
+    src: { page: 128 }
+    status: unverified
+    tags: [high-yield]
+
+  # --- Diagnosis (p129-130) ---
+  - id: hb.L08.017
+    kind: card
+    topic: diagnosis
+    front: R value formula for DILI?
+    back: R = (ALT ÷ ALT ULN) ÷ (ALP ÷ ALP ULN).
+    src: { page: 129 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.018
+    kind: cloze
+    topic: diagnosis
+    text: "R value bands: {{c1::>5}} hepatocellular, {{c2::2–5}} mixed, {{c3::<2}} cholestatic."
+    src: { page: 129 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L08.019
+    kind: card
+    topic: diagnosis
+    front: How far back does the DILI workflow ask about drug and supplement intake?
+    back: 6 months.
+    src: { page: 129 }
+    status: unverified
+  - id: hb.L08.020
+    kind: order
+    topic: diagnosis
+    prompt: Order the work-up for suspected cholestatic DILI (R <2).
+    steps: [Abdominal ultrasound, MRI or MRCP, Liver biopsy]
+    src: { page: 129 }
+    status: unverified
+  - id: hb.L08.021
+    kind: enumerate
+    topic: diagnosis
+    prompt: For hepatocellular or mixed DILI (R ≥2), what does the workflow test?
+    points:
+      - Abdominal ultrasound
+      - Hepatitis A, B, C and E
+      - "Then: other viruses (CMV, EBV, HSV)"
+      - Autoimmune hepatitis
+      - Budd-Chiari syndrome
+      - Ischemic hepatitis
+      - Wilson disease
+    pass: 5
+    src: { page: 129 }
+    status: unverified
+  - id: hb.L08.022
+    kind: enumerate
+    topic: diagnosis
+    prompt: Mention the three drug-history elements needed to diagnose DILI.
+    points: [Dose, Duration of therapy, "Latency: time from starting the drug to liver injury"]
+    pass: 3
+    src: { page: 129 }
+    status: unverified
+  - id: hb.L08.023
+    kind: enumerate
+    topic: diagnosis
+    prompt: Which other liver diseases must be excluded before diagnosing DILI (book list)?
+    points: [Hepatitis B, Hepatitis C, Alcoholic liver disease, Non-alcoholic fatty liver disease, Hemochromatosis]
+    pass: 4
+    src: { page: 129 }
+    status: unverified
+  - id: hb.L08.024
+    kind: cloze
+    topic: diagnosis
+    text: "Most acute DILI occurs within {{c1::1 week to 3 months}} of exposure."
+    src: { page: 130 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L08.025
+    kind: cloze
+    topic: diagnosis
+    text: "Positive dechallenge in acute hepatocellular DILI: enzymes fall by {{c1::50%}} within {{c2::2 weeks}} and normalize by {{c3::4 weeks}}."
+    src: { page: 130 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L08.026
+    kind: card
+    topic: diagnosis
+    front: How does dechallenge differ in cholestatic DILI?
+    back: Recovery may be prolonged.
+    src: { page: 130 }
+    status: unverified
+  - id: hb.L08.027
+    kind: card
+    topic: diagnosis
+    front: What is a structured tool for assessing DILI causality?
+    back: RUCAM (Roussel Uclaf Causality Assessment Method). It scores latency, course after dechallenge, risk factors, concomitant drugs, exclusion of other causes, known hepatotoxicity and rechallenge.
+    src: { page: 130 }
+    status: unverified
+    update:
+      text: "Not named in the book. EASL recommends RUCAM as a structured aid to causality assessment, on top of expert judgment."
+      ref: "EASL CPG drug-induced liver injury 2019"
+  - id: hb.L08.028
+    kind: calc
+    topic: diagnosis
+    calculator: r_ratio
+    stem: A 45-year-old woman on amoxicillin-clavulanate for 10 days has jaundice and itching. ALT 120 U/L (ULN 40), ALP 600 U/L (ULN 120).
+    inputs: { alt: 120, alt_uln: 40, alp: 600, alp_uln: 120 }
+    expect: "R = 0.6, cholestatic"
+    interpret: "R = 3 ÷ 5 = 0.6, which is below 2: cholestatic pattern. Next: abdominal ultrasound, then MRCP if needed."
+    src: { page: 129 }
+    status: unverified
+  - id: hb.L08.029
+    kind: calc
+    topic: diagnosis
+    calculator: r_ratio
+    stem: A 35-year-old man on isoniazid for 6 weeks has nausea. ALT 900 U/L (ULN 40), ALP 130 U/L (ULN 130).
+    inputs: { alt: 900, alt_uln: 40, alp: 130, alp_uln: 130 }
+    expect: "R = 22.5, hepatocellular"
+    interpret: "R = 22.5 ÷ 1 = 22.5, which is above 5: hepatocellular pattern. Next: ultrasound and hepatitis A, B, C, E serology."
+    src: { page: 129 }
+    status: unverified
+  - id: hb.L08.030
+    kind: calc
+    topic: diagnosis
+    calculator: r_ratio
+    stem: A 60-year-old man on diclofenac has ALT 280 U/L (ULN 40) and ALP 300 U/L (ULN 120).
+    inputs: { alt: 280, alt_uln: 40, alp: 300, alp_uln: 120 }
+    expect: "R = 2.8, mixed"
+    interpret: "R = 7 ÷ 2.5 = 2.8, between 2 and 5: mixed pattern."
+    src: { page: 129 }
+    status: unverified
+  - id: hb.L08.031
+    kind: enumerate
+    topic: diagnosis
+    prompt: Mention the hypersensitivity features that may accompany DILI.
+    points: [Fever, Rash, Arthralgias, Eosinophilia]
+    pass: 3
+    src: { page: 130 }
+    status: unverified
+
+  # --- Risk factors (p130-132) ---
+  - id: hb.L08.032
+    kind: table
+    topic: risk
+    title: DILI risk factors, by group (book figure)
+    columns: [Group, Factors]
+    rows:
+      - ["Host", "Age, race and sex; genetics; immunology; pregnancy; underlying disease; metabolic syndrome; microbiota; NAFLD"]
+      - ["Environmental", "Alcohol, lifestyle, chemical exposure, workplace"]
+      - ["Drug", "Dose >50 mg, greater lipophilicity, >50% hepatic metabolism, drug and herbal interactions, special chemical moieties"]
+    blanks: [[2, 1]]
+    src: { page: 130 }
+    status: unverified
+  - id: hb.L08.033
+    kind: cloze
+    topic: risk
+    text: "Drug-dependent DILI risk: daily dose above {{c1::50 mg}}, high {{c2::lipophilicity}}, and more than {{c3::50%}} hepatic metabolism."
+    src: { page: 130 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L08.034
+    kind: table
+    topic: risk
+    title: Susceptibility factors for specific drugs (book)
+    columns: [Drug, Risk factors]
+    rows:
+      - ["Methotrexate", "Alcohol, obesity, diabetes, chronic hepatitis"]
+      - ["Isoniazid", "HBV, HCV, HIV; alcohol; older age; female"]
+      - ["Acetaminophen", "Alcohol, fasting, INH"]
+      - ["Valproate", "Young age, other anticonvulsants"]
+      - ["Diclofenac", "Female, osteoarthritis"]
+      - ["Sulfonamide", "HIV, slow acetylator, genetic defect in defense"]
+      - ["Anticonvulsants", "Genetic defect in detoxification"]
+      - ["Rifampicin", "Slow acetylators, INH"]
+      - ["Pyrazinamide", "Slow acetylators, INH"]
+    blanks: [[0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1]]
+    src: { page: 131 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.035
+    kind: card
+    topic: risk
+    front: Three factors that raise acetaminophen hepatotoxicity risk?
+    back: Alcohol, fasting and isoniazid.
+    src: { page: 131 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.036
+    kind: card
+    topic: risk
+    front: Valproate hepatotoxicity risk factors?
+    back: Young age and use of other anticonvulsants.
+    src: { page: 131 }
+    status: unverified
+
+  # --- Clinical presentations, hepatocellular (p132-134) ---
+  - id: hb.L08.037
+    kind: card
+    topic: hepatocellular
+    front: Drug tolerance in DILI, what is it and three examples?
+    back: Asymptomatic enzyme rise that does not progress despite continued use. Examples are INH, phenytoin and chlorpromazine.
+    src: { page: 132 }
+    status: unverified
+  - id: hb.L08.038
+    kind: card
+    topic: hepatocellular
+    front: Asymptomatic enzyme rise that progresses with continued drug use, what is the typical level and risk?
+    back: AST and ALT 3–5× ULN; it may progress to hepatic failure.
+    src: { page: 133 }
+    status: unverified
+  - id: hb.L08.039
+    kind: card
+    topic: hepatocellular
+    front: Biochemical pattern of acute hepatocellular (direct toxic) DILI?
+    back: Marked ALT and AST rise with normal or slightly raised ALP; bilirubin variably raised, and a high bilirubin means worse prognosis.
+    src: { page: 133 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.040
+    kind: cloze
+    topic: hepatocellular
+    text: "Drugs cause about {{c1::one third}} of fulminant hepatic failure in the US: {{c2::20%}} acetaminophen and {{c3::12–15%}} other drugs."
+    src: { page: 133 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L08.041
+    kind: cloze
+    topic: hepatocellular
+    text: "In alcoholic liver injury AST is {{c1::2–3×}} ALT, AST stays below {{c2::300 IU}}, and ALT is almost always below {{c3::100 IU}}."
+    src: { page: 133 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L08.042
+    kind: enumerate
+    topic: hepatocellular
+    prompt: Towering ALT and AST (5,000–10,000 IU), what are the causes?
+    points: [Drugs (acetaminophen), Chemical toxins, Toxic mushrooms, Shock liver]
+    pass: 3
+    src: { page: 133 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.043
+    kind: card
+    topic: hepatocellular
+    front: Is a transaminase level of 5,000–10,000 IU typical of viral hepatitis?
+    back: No, it is unusual. Think acetaminophen, toxins, mushrooms or shock liver.
+    src: { page: 133 }
+    status: unverified
+  - id: hb.L08.044
+    kind: table
+    topic: hepatocellular
+    title: Drugs causing acute hepatocellular injury (book examples)
+    columns: [Class, Drugs]
+    rows:
+      - ["Anesthetics", "Halothane, isoflurane"]
+      - ["Antimicrobials", "INH, rifampin, ketoconazole, sulfonamides"]
+      - ["Anticonvulsants", "Phenytoin, valproic acid, carbamazepine"]
+      - ["NSAIDs and analgesics", "Acetaminophen, piroxicam, diclofenac, sulindac"]
+      - ["Miscellaneous", "Labetalol, nicotinic acid, propylthiouracil"]
+    blanks: [[0, 1], [1, 1], [2, 1], [3, 1], [4, 1]]
+    src: { page: 133 }
+    status: unverified
+    tags: [high-yield]
+
+  # --- Cholestatic (p134-137) ---
+  - id: hb.L08.045
+    kind: card
+    topic: cholestatic
+    front: Definition of cholestatic DILI?
+    back: Reduced bile flow from reduced secretion or obstruction.
+    src: { page: 134 }
+    status: unverified
+  - id: hb.L08.046
+    kind: cloze
+    topic: cholestatic
+    text: "Cholestatic markers: raised {{c1::alkaline phosphatase}}, {{c2::GGT}} and {{c3::5'-nucleotidase}}. Clinically: jaundice and pruritus."
+    src: { page: 134 }
+    status: unverified
+  - id: hb.L08.047
+    kind: table
+    topic: cholestatic
+    title: Types of drug cholestasis (book table)
+    columns: [Type, Ductal lesion, ALP, AST/ALT, Example]
+    rows:
+      - ["Canalicular (bland jaundice)", "−", "<3×", "<5×", "Contraceptives, anabolic steroids"]
+      - ["Hepatocanalicular (cholestatic jaundice)", "±", ">3×", "2–10×", "Chlorpromazine, Augmentin, erythromycin"]
+      - ["Ductular (cholangiolar)", "+ (bile casts +++)", ">3×", "<5×", "Benoxaprofen"]
+      - ["Cholangiodestructive (vanishing bile duct)", "+++", ">3×", "<5×", "Paraquat, chlorpromazine"]
+      - ["Cholangiosclerotic (sclerosing cholangitis)", "+++", ">3×", "<5×", "Floxuridine, scolicides"]
+    blanks: [[0, 4], [1, 3], [1, 4], [2, 4], [4, 4]]
+    src: { page: 135 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.048
+    kind: card
+    topic: cholestatic
+    front: Bland (canalicular) drug cholestasis, what features and which drugs?
+    back: Jaundice with no portal inflammation, necrosis or duct lesion, and ALP below 3×. Caused by contraceptives and anabolic steroids.
+    src: { page: 135 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.049
+    kind: card
+    topic: cholestatic
+    front: Which type of drug cholestasis has the highest transaminases (2–10×)?
+    back: Hepatocanalicular (cholestatic jaundice), e.g. chlorpromazine, Augmentin and erythromycin.
+    src: { page: 135 }
+    status: unverified
+  - id: hb.L08.050
+    kind: enumerate
+    topic: cholestatic
+    prompt: Mention antibiotics that cause chronic cholestasis and vanishing bile duct syndrome.
+    points:
+      - Ampicillin
+      - Augmentin (amoxicillin-clavulanate)
+      - Clindamycin
+      - Erythromycin
+      - Organic arsenicals
+      - Septrin (co-trimoxazole)
+      - Tetracycline
+      - Thiabendazole
+      - Troleandomycin
+    pass: 5
+    src: { page: 135 }
+    status: unverified
+  - id: hb.L08.051
+    kind: enumerate
+    topic: cholestatic
+    prompt: Mention psychotropic drugs that cause chronic cholestasis and vanishing bile duct syndrome.
+    points: [Amitriptyline, Barbiturates, Carbamazepine, Chlorpromazine, Haloperidol, Imipramine, Phenothiazines]
+    pass: 4
+    src: { page: 136 }
+    status: unverified
+  - id: hb.L08.052
+    kind: cloze
+    topic: cholestatic
+    text: "Miscellaneous drugs causing vanishing bile duct syndrome include {{c1::azathioprine}}, {{c2::terbinafine}} and {{c3::ticlopidine}} (and ibuprofen, cimetidine, tolbutamide, ethinyl estradiol)."
+    src: { page: 136 }
+    status: unverified
+  - id: hb.L08.053
+    kind: table
+    topic: cholestatic
+    title: PBC vs drug-induced chronic cholestasis (book table)
+    columns: [Feature, PBC, DICC]
+    rows:
+      - ["Gender", "Women", "Both"]
+      - ["Age", "Middle-aged", "All ages"]
+      - ["AMA", "Positive", "Negative"]
+      - ["Onset", "Insidious", "Acute"]
+      - ["Jaundice", "Late feature", "Acute feature"]
+      - ["Xanthomas", "+", "+ (transient)"]
+      - ["Portal infiltrates", "+++", "+"]
+      - ["Granulomas", "+", "−"]
+      - ["Prognosis", "Often progresses to biliary cirrhosis", "Jaundice usually resolves after 6–76 months; rarely biliary cirrhosis"]
+    blanks: [[2, 1], [2, 2], [3, 2], [4, 1], [7, 2], [8, 2]]
+    src: { page: 137 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.054
+    kind: card
+    topic: cholestatic
+    front: Which features do PBC and drug-induced chronic cholestasis share?
+    back: Pruritus, hypercholesterolemia, steatorrhea, xanthomas and vanishing bile ducts.
+    src: { page: 137 }
+    status: unverified
+
+  # --- Granulomatous, AIH-like, vascular, neoplastic (p137-140) ---
+  - id: hb.L08.055
+    kind: enumerate
+    topic: other-patterns
+    prompt: Mention the clinical features of drug-induced granulomatous hepatitis.
+    points: [Fever, Diaphoresis, Malaise, Anorexia, Jaundice, RUQ discomfort, Granulomas on liver biopsy]
+    pass: 5
+    src: { page: 137 }
+    status: unverified
+  - id: hb.L08.056
+    kind: cloze
+    topic: other-patterns
+    text: "Drug-induced granulomatous hepatitis usually starts within the first {{c1::2 months}} of therapy."
+    src: { page: 137 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L08.057
+    kind: enumerate
+    topic: other-patterns
+    prompt: Mention drugs that cause granulomatous hepatitis.
+    points: [Quinidine, Carbamazepine, Allopurinol, Hydralazine, Phenytoin, Gold, Mineral oil ingestion, Phenylbutazone]
+    pass: 5
+    src: { page: 137 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.058
+    kind: table
+    topic: other-patterns
+    title: Drug-induced autoimmune hepatitis (book table)
+    columns: [Feature, Finding]
+    rows:
+      - ["Duration of drug intake", "≥2–24 months"]
+      - ["Female predominance", ">80%"]
+      - ["Onset", "Insidious, gradual"]
+      - ["Clinical", "Fatigue, anorexia, weight loss, jaundice, ascites, hepatosplenomegaly, portal hypertension"]
+      - ["Biochemistry", "AST, ALT 5–50× ULN; raised gamma globulin"]
+      - ["Serology (type 1)", "ANA, ASMA, LE factor"]
+      - ["Serology (type 2)", "Anti-P450 1A2, anti-P450 2C9"]
+      - ["Histology", "Very active necro-inflammation, prominent plasma cells"]
+      - ["Usual course", "Resolves on drug withdrawal"]
+    blanks: [[0, 1], [1, 1], [4, 1], [5, 1], [8, 1]]
+    src: { page: 138 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.059
+    kind: cloze
+    topic: other-patterns
+    text: "Drugs causing many cases of a type 1 AIH-like syndrome: {{c1::methyldopa}}, {{c2::nitrofurantoin}} and {{c3::minocycline}} (also clometacin and oxyphenisatin)."
+    src: { page: 138 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.060
+    kind: card
+    topic: other-patterns
+    front: Nitrofurantoin autoimmune-like hepatitis, how often are ANA and ASMA positive?
+    back: ANA in about 80% and ASMA in about 72%.
+    src: { page: 138 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L08.061
+    kind: card
+    topic: other-patterns
+    front: Which drug in the "few cases" AIH-like list gives AMA (anti-M2)?
+    back: Flucloxacillin.
+    src: { page: 139 }
+    status: unverified
+  - id: hb.L08.062
+    kind: card
+    topic: other-patterns
+    front: Which vessels can drug-induced vascular liver injury involve?
+    back: All of them, including the sinusoids, hepatic veins and hepatic arteries.
+    src: { page: 139 }
+    status: unverified
+  - id: hb.L08.063
+    kind: enumerate
+    topic: other-patterns
+    prompt: Mention the causes of veno-occlusive disease given in the lecture.
+    points:
+      - Toxic plant alkaloids (certain herbal teas)
+      - Bone marrow transplant (serious complication)
+      - Azathioprine (probable culprit)
+    pass: 3
+    src: { page: 139 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.064
+    kind: enumerate
+    topic: other-patterns
+    prompt: How does veno-occlusive disease present clinically?
+    points:
+      - Mild viral-like illness that may progress to fulminant hepatic failure
+      - Rapid weight gain
+      - Ascites
+      - Jaundice
+      - Evidence of portal hypertension
+    pass: 4
+    src: { page: 139 }
+    status: unverified
+  - id: hb.L08.065
+    kind: table
+    topic: other-patterns
+    title: Drug-induced neoplastic liver lesions (book table)
+    columns: [Lesion, Clinical finding, Examples]
+    rows:
+      - ["Focal nodular hyperplasia", "Hepatic mass", "Contraceptive steroids"]
+      - ["Adenoma", "Hepatic mass, hemoperitoneum", "Contraceptive steroids, anabolic steroids, danazol"]
+      - ["Hepatocellular carcinoma", "Malignant mass", "Anabolic and contraceptive steroids, vinyl chloride, Thorotrast"]
+      - ["Angiosarcoma", "Malignant mass", "Anabolic steroids, inorganic arsenicals, Thorotrast"]
+    blanks: [[1, 1], [1, 2], [2, 2], [3, 2]]
+    src: { page: 140 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.066
+    kind: card
+    topic: other-patterns
+    front: Which two agents cause both HCC and angiosarcoma in the book's table?
+    back: Anabolic steroids and thorium dioxide (Thorotrast).
+    src: { page: 140 }
+    status: unverified
+
+  # --- Biomarkers (p140-143) ---
+  - id: hb.L08.067
+    kind: card
+    topic: biomarkers
+    front: Main limitation of ALT as a DILI biomarker?
+    back: When it rises, the damage has already occurred. Its strength is liver specificity and prognostic value (Hy's law).
+    src: { page: 140 }
+    status: unverified
+  - id: hb.L08.068
+    kind: card
+    topic: biomarkers
+    front: Why is ALP an imperfect DILI marker?
+    back: It is not liver-specific; it also comes from bone, salivary glands, intestine and biliary tract. It marks the cholestatic phenotype.
+    src: { page: 140 }
+    status: unverified
+  - id: hb.L08.069
+    kind: card
+    topic: biomarkers
+    front: GLDH as a DILI biomarker, what does it reflect and what is its advantage?
+    back: Mitochondrial dysfunction. It is liver-specific, so it helps separate liver from muscle injury and detects injury early.
+    src: { page: 141 }
+    status: unverified
+  - id: hb.L08.070
+    kind: card
+    topic: biomarkers
+    front: Which mechanistic biomarkers are linked mainly to acetaminophen DILI?
+    back: HMGB1 (hyperacetylated form, a DAMP) and glutathione S-transferases.
+    src: { page: 141 }
+    status: unverified
+  - id: hb.L08.071
+    kind: card
+    topic: biomarkers
+    front: Which DILI biomarkers act as prognostic indicators of death or transplant?
+    back: M-CSF receptor 1, osteopontin and alpha-fetoprotein (AFP performs worse than osteopontin).
+    src: { page: 141 }
+    status: unverified
+
+  # --- Natural history and prognosis (p141-142) ---
+  - id: hb.L08.072
+    kind: card
+    topic: prognosis
+    front: What decides mortality in DILI?
+    back: Mainly the degree of hepatocellular injury. Jaundice with hepatocellular injury makes the prognosis worse.
+    src: { page: 141 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.073
+    kind: cloze
+    topic: prognosis
+    text: "Agents causing fulminant hepatitis or toxic steatosis carry about {{c1::10%}} mortality; cholestatic agents {{c2::rarely, if ever}} cause acute death."
+    src: { page: 141 }
+    status: unverified
+    tags: [numbers, high-yield]
+  - id: hb.L08.074
+    kind: card
+    topic: prognosis
+    front: Outcome of most DILI when the drug is stopped promptly?
+    back: Resolution without chronic sequelae.
+    src: { page: 141 }
+    status: unverified
+  - id: hb.L08.075
+    kind: card
+    topic: prognosis
+    front: What is Hy's law in DILI?
+    back: Hepatocellular injury (ALT >3× ULN) with jaundice (bilirubin >2× ULN) and no other cause predicts about 10% mortality or transplant.
+    src: { page: 141 }
+    status: unverified
+    update:
+      text: "The book names Hy's law as the prognostic value of ALT and bilirubin but does not define it; the definition here is from EASL."
+      ref: "EASL CPG drug-induced liver injury 2019"
+
+  # --- MCQs ---
+  - id: hb.L08.076
+    kind: mcq
+    topic: hepatocellular
+    stem: A 19-year-old woman is brought 18 hours after a deliberate overdose. ALT is 7,800 IU/L and INR 2.4. Which cause best explains such towering transaminases?
+    options:
+      - Acute hepatitis A
+      - Acetaminophen toxicity
+      - Alcoholic hepatitis
+      - Chlorpromazine cholestasis
+      - Primary biliary cholangitis
+    answer: 1
+    why:
+      - Levels of 5,000–10,000 IU are unusual in viral hepatitis.
+      - Correct. Acetaminophen is predictable, dose-related and causes towering ALT within hours.
+      - In alcohol, AST stays below 300 and ALT below 100.
+      - Cholestatic drugs mainly raise ALP and bilirubin.
+      - PBC is a chronic cholestatic disease.
+    src: { page: 133 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.077
+    kind: mcq
+    topic: mechanism
+    stem: A 30-year-old man develops fever, rash, eosinophilia and hepatitis 4 weeks after starting phenytoin. What type of DILI is this?
+    options:
+      - Predictable dose-related toxicity
+      - Immune-mediated idiosyncrasy (hypersensitivity)
+      - Metabolic idiosyncrasy
+      - Drug tolerance
+      - Veno-occlusive disease
+    answer: 1
+    why:
+      - Predictable injury occurs within hours and is dose related.
+      - Correct. Rash, fever, arthralgia and eosinophilia mark immune idiosyncrasy; phenytoin is the book example.
+      - Metabolic idiosyncrasy (INH, ketoconazole, diclofenac) lacks the allergic features.
+      - Tolerance is an enzyme rise that does not progress.
+      - VOD presents with weight gain, ascites and portal hypertension.
+    src: { page: 127 }
+    status: unverified
+  - id: hb.L08.078
+    kind: mcq
+    topic: diagnosis
+    stem: A 52-year-old man has ALT 400 U/L (ULN 40) and ALP 250 U/L (ULN 125) three weeks after starting a new drug. What is the R value and injury pattern?
+    options:
+      - 1.6, cholestatic
+      - 5.0, hepatocellular
+      - 2.0, cholestatic
+      - 3.2, mixed
+      - 10.0, hepatocellular
+    answer: 1
+    why:
+      - Wrong arithmetic.
+      - Correct. (400/40) ÷ (250/125) = 10 ÷ 2 = 5.0. The book calls R >5 hepatocellular and 2–5 mixed, so 5.0 sits at the border; most guidelines call R ≥5 hepatocellular.
+      - Wrong arithmetic.
+      - Wrong arithmetic.
+      - That ignores ALP.
+    src: { page: 129 }
+    status: unverified
+  - id: hb.L08.079
+    kind: mcq
+    topic: diagnosis
+    stem: A woman with cholestatic DILI (R = 0.8) has a normal abdominal ultrasound. What is the next step in the book's workflow?
+    options:
+      - Hepatitis A, B, C, E serology
+      - MRI or MRCP, then liver biopsy if needed
+      - Ceruloplasmin
+      - Immediate liver transplant evaluation
+      - Rechallenge with the drug
+    answer: 1
+    why:
+      - Viral serology is the first step for hepatocellular or mixed patterns.
+      - Correct. Cholestatic pattern goes ultrasound, MRI/MRCP, then biopsy.
+      - Wilson disease is in the hepatocellular arm.
+      - Cholestatic DILI rarely causes acute death.
+      - Rechallenge is not part of the workflow and can be dangerous.
+    src: { page: 129 }
+    status: unverified
+  - id: hb.L08.080
+    kind: mcq
+    topic: diagnosis
+    stem: A patient stops a suspected drug for acute hepatocellular DILI. Which course best supports the drug as the cause?
+    options:
+      - ALT falls by 50% within 2 weeks and normalizes by 4 weeks
+      - ALT stays the same for 3 months
+      - ALT normalizes only after 1 year
+      - ALT rises further after stopping
+      - ALP rises while ALT is unchanged
+    answer: 0
+    why:
+      - Correct. That is a positive dechallenge in hepatocellular injury.
+      - No improvement argues against the drug.
+      - Slow recovery fits cholestatic injury, not hepatocellular.
+      - Worsening after withdrawal points elsewhere.
+      - This does not show response to withdrawal.
+    src: { page: 130 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.081
+    kind: mcq
+    topic: cholestatic
+    stem: A 55-year-old man has persistent jaundice and pruritus 3 months after a course of amoxicillin-clavulanate. AMA is negative. Biopsy shows loss of interlobular bile ducts. What is the diagnosis?
+    options:
+      - Primary biliary cholangitis
+      - Drug-induced vanishing bile duct syndrome
+      - Granulomatous hepatitis
+      - Bland canalicular cholestasis
+      - Veno-occlusive disease
+    answer: 1
+    why:
+      - PBC is AMA positive, mostly middle-aged women, insidious onset.
+      - Correct. Augmentin is a known cause of chronic cholestasis and vanishing bile duct syndrome.
+      - Granulomatous hepatitis shows granulomas and fever.
+      - Bland cholestasis has no duct lesion.
+      - VOD presents with weight gain, ascites and portal hypertension.
+    src: { page: 135 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.082
+    kind: mcq
+    topic: cholestatic
+    stem: A young woman on oral contraceptives has jaundice. ALP is under 3× ULN, AST/ALT under 5×, and biopsy shows bile casts without inflammation or necrosis. What type of cholestasis is this?
+    options:
+      - Canalicular (bland)
+      - Hepatocanalicular
+      - Ductular
+      - Cholangiodestructive
+      - Cholangiosclerotic
+    answer: 0
+    why:
+      - Correct. Bland jaundice with no inflammation; contraceptives and anabolic steroids.
+      - Hepatocanalicular has portal inflammation, necrosis, ALP >3× and ALT 2–10×.
+      - Ductular has florid bile casts (+++), e.g. benoxaprofen.
+      - Cholangiodestructive has severe duct lesions (vanishing bile ducts).
+      - Cholangiosclerotic resembles sclerosing cholangitis (floxuridine).
+    src: { page: 135 }
+    status: unverified
+  - id: hb.L08.083
+    kind: mcq
+    topic: other-patterns
+    stem: A 62-year-old woman on long-term nitrofurantoin for recurrent UTI has fatigue, ALT 15× ULN, high gamma globulin and positive ANA and ASMA. Biopsy shows plasma cells. What is the most likely course after stopping the drug?
+    options:
+      - Resolution on drug withdrawal
+      - Lifelong immunosuppression is always needed
+      - Progression to PBC
+      - Hepatocellular carcinoma
+      - No change
+    answer: 0
+    why:
+      - Correct. Drug-induced AIH usually resolves when the drug is withdrawn.
+      - That fits idiopathic AIH, not the usual course of drug-induced AIH.
+      - This is a hepatitis, not AMA-positive cholestasis.
+      - Not the expected outcome.
+      - The book says it usually resolves.
+    src: { page: 138 }
+    status: unverified
+  - id: hb.L08.084
+    kind: mcq
+    topic: other-patterns
+    stem: Three weeks after a bone marrow transplant, a 40-year-old man gains 5 kg, develops tender hepatomegaly, ascites and jaundice. What is the most likely diagnosis?
+    options:
+      - Acute GVHD of the gut
+      - Veno-occlusive disease
+      - Acetaminophen toxicity
+      - Granulomatous hepatitis
+      - Bland cholestasis
+    answer: 1
+    why:
+      - Gut GVHD gives diarrhea, not ascites with weight gain.
+      - Correct. VOD follows bone marrow transplant, with weight gain, ascites, jaundice and portal hypertension.
+      - Nothing suggests overdose.
+      - Granulomatous hepatitis gives fever and granulomas, not ascites.
+      - Bland cholestasis does not cause ascites.
+    src: { page: 139 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.085
+    kind: mcq
+    topic: other-patterns
+    stem: A 28-year-old bodybuilder who uses anabolic steroids presents with sudden abdominal pain and hemoperitoneum from a liver mass. What is the most likely lesion?
+    options:
+      - Focal nodular hyperplasia
+      - Hepatic adenoma
+      - Hemangioma
+      - Hydatid cyst
+      - Angiosarcoma
+    answer: 1
+    why:
+      - FNH presents as a mass but is not listed with hemoperitoneum.
+      - Correct. Adenoma (contraceptive or anabolic steroids, danazol) can present with hemoperitoneum.
+      - Hemangioma is not drug-induced in this table.
+      - Not drug-induced.
+      - Angiosarcoma is malignant; hemoperitoneum is listed for adenoma.
+    src: { page: 140 }
+    status: unverified
+  - id: hb.L08.086
+    kind: mcq
+    topic: risk
+    stem: Which patient has the highest risk of isoniazid hepatotoxicity, by the book's risk factors?
+    options:
+      - A 25-year-old man, no other disease
+      - A 65-year-old woman with chronic HBV who drinks alcohol
+      - A 30-year-old man with osteoarthritis
+      - A 10-year-old on valproate
+      - A 40-year-old fast acetylator
+    answer: 1
+    why:
+      - Young, male and healthy, so lowest risk.
+      - Correct. Older age, female sex, HBV and alcohol are all INH risk factors.
+      - Osteoarthritis is a diclofenac risk factor.
+      - Young age with anticonvulsants is a valproate risk.
+      - Slow, not fast, acetylators are at risk with rifampicin and pyrazinamide.
+    src: { page: 131 }
+    status: unverified
+  - id: hb.L08.087
+    kind: mcq
+    topic: prognosis
+    stem: Which DILI pattern carries the worst prognosis?
+    options:
+      - Hepatocellular injury with jaundice
+      - Pure cholestatic injury
+      - Asymptomatic enzyme rise with tolerance
+      - Bland canalicular cholestasis
+      - Granulomatous hepatitis that resolves
+    answer: 0
+    why:
+      - Correct. Mortality depends on hepatocellular injury, and jaundice makes it worse.
+      - Cholestatic agents rarely, if ever, cause acute death.
+      - Tolerance does not progress.
+      - Bland cholestasis is benign.
+      - Resolving granulomatous hepatitis has a good outcome.
+    src: { page: 141 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L08.088
+    kind: mcq
+    topic: hepatocellular
+    stem: Which enzyme pattern points to alcohol rather than acute drug hepatotoxicity?
+    options:
+      - AST 240, ALT 90
+      - AST 1,800, ALT 2,400
+      - AST 6,000, ALT 7,500
+      - AST 60, ALT 400
+      - ALP 900 with normal AST and ALT
+    answer: 0
+    why:
+      - Correct. In alcohol AST is 2–3× ALT, AST under 300 and ALT under 100.
+      - Marked rises fit hepatocellular DILI or viral hepatitis.
+      - Towering levels suggest acetaminophen, toxins or shock liver.
+      - ALT-predominant rise does not fit alcohol.
+      - A cholestatic pattern.
+    src: { page: 133 }
+    status: unverified
+  - id: hb.L08.089
+    kind: mcq
+    topic: biomarkers
+    stem: A marathon runner has raised AST and ALT after a race. Which biomarker best separates muscle from liver injury?
+    options:
+      - Alkaline phosphatase
+      - GLDH
+      - Albumin
+      - INR
+      - Malate dehydrogenase
+    answer: 1
+    why:
+      - ALP is cholestatic and not liver-specific.
+      - Correct. GLDH is liver-specific and helps distinguish muscle from hepatic injury.
+      - Albumin reflects synthetic function and nutrition.
+      - INR reflects synthetic function and vitamin K.
+      - MDH is not liver-specific.
+    src: { page: 141 }
+    status: unverified
+
+  # --- Cases ---
+  - id: hb.L08.090
+    kind: case
+    topic: diagnosis
+    stem: A 48-year-old woman started anti-TB therapy (isoniazid, rifampicin, pyrazinamide, ethambutol) 5 weeks ago. She now has nausea and dark urine. She drinks no alcohol.
+    steps:
+      - reveal: ALT 640 U/L (ULN 40), ALP 140 U/L (ULN 120), bilirubin 3.1 mg/dL.
+        question: What is her R value pattern?
+        options: [Hepatocellular (R about 14), Cholestatic (R below 2), Mixed (R 2–5), Cannot calculate]
+        answer: 0
+        why: (640/40) ÷ (140/120) = 16 ÷ 1.17 ≈ 13.7, above 5.
+      - reveal: ""
+        question: Which tests come next in the workflow?
+        options: ["Ultrasound and hepatitis A, B, C, E serology", MRCP, Liver biopsy first, AMA]
+        answer: 0
+        why: Hepatocellular and mixed patterns get ultrasound and viral serology, then CMV, EBV, HSV, AIH, Budd-Chiari, ischemia and Wilson if needed.
+      - reveal: Viral serology and ultrasound are normal. Her timing is 5 weeks.
+        question: Does the timing fit DILI?
+        options: ["Yes, most acute DILI occurs within 1 week to 3 months", "No, DILI occurs within hours only", "No, DILI needs more than 6 months", Timing is irrelevant]
+        answer: 0
+        why: Most acute DILI occurs 1 week to 3 months after exposure.
+      - reveal: ""
+        question: What is the key management step, and what does her bilirubin mean?
+        options: [Stop the hepatotoxic drugs; jaundice with hepatocellular injury worsens prognosis, Continue therapy; drug tolerance, Add steroids; bilirubin is irrelevant, Rechallenge at full dose]
+        answer: 0
+        why: Prompt withdrawal is the treatment, and jaundice with hepatocellular injury signals worse prognosis (Hy's law).
+    src: { page: 129 }
+    status: unverified
+  - id: hb.L08.091
+    kind: case
+    topic: cholestatic
+    stem: A 50-year-old woman has had pruritus and jaundice for 4 months. She took a 2-week course of co-amoxiclav before it began.
+    steps:
+      - reveal: ALP 5× ULN, GGT high, ALT 2× ULN, high cholesterol.
+        question: Which pattern is this?
+        options: [Cholestatic, Hepatocellular, Mixed, Normal]
+        answer: 0
+        why: Raised ALP and GGT with modest ALT; R is below 2.
+      - reveal: Ultrasound and MRCP are normal. AMA is negative.
+        question: What favors drug-induced chronic cholestasis over PBC?
+        options: [AMA negative and acute onset with early jaundice, Female sex, Pruritus, Hypercholesterolemia]
+        answer: 0
+        why: PBC is AMA positive, insidious, with late jaundice; pruritus and high cholesterol occur in both.
+      - reveal: Biopsy shows ductopenia.
+        question: What is the expected prognosis?
+        options: [Jaundice usually resolves after 6–76 months; biliary cirrhosis is rare, Rapid death, Always biliary cirrhosis, HCC within 1 year]
+        answer: 0
+        why: DICC usually resolves; cholestatic drugs rarely cause acute death.
+    src: { page: 137 }
+    status: unverified
+  - id: hb.L08.092
+    kind: case
+    topic: other-patterns
+    stem: A 35-year-old man on allopurinol for 6 weeks has fever, sweats, malaise and RUQ discomfort, with mild jaundice.
+    steps:
+      - reveal: ""
+        question: Which DILI pattern does this suggest?
+        options: [Granulomatous hepatitis, Veno-occlusive disease, Drug-induced AIH, Bland cholestasis]
+        answer: 0
+        why: Fever, diaphoresis, malaise and RUQ pain in the first 2 months; allopurinol is a classic cause.
+      - reveal: ""
+        question: Which finding confirms it?
+        options: [Granulomas on liver biopsy, Positive AMA, Hepatic vein occlusion, Plasma cells and high IgG]
+        answer: 0
+        why: Granulomatous hepatitis is defined by granulomas on biopsy.
+    src: { page: 137 }
+    status: unverified
+
+  # --- Book essay questions (p144) ---
+  - id: hb.L08.093
+    kind: essay
+    topic: hepatocellular
+    prompt: What are the most common drug classes in drug-induced liver disease?
+    outline:
+      - "Anesthetics and antimicrobials": ["Halothane, isoflurane", "INH, rifampin, ketoconazole, sulfonamides; Augmentin, erythromycin (cholestasis)"]
+      - "Anticonvulsants and psychotropics": ["Phenytoin, valproate, carbamazepine", "Chlorpromazine, tricyclics"]
+      - "NSAIDs and analgesics": ["Acetaminophen, diclofenac, piroxicam, sulindac"]
+      - "Hormones and others": ["Contraceptive and anabolic steroids (cholestasis, tumors)", "Methyldopa, nitrofurantoin, minocycline (AIH-like); azathioprine (VOD)"]
+    src: { page: 144 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L08.094
+    kind: essay
+    topic: classification
+    prompt: Mention the different patterns of liver cell injury in drug-induced liver diseases.
+    outline:
+      - "By R value": ["Hepatocellular R >5, mixed 2–5, cholestatic <2"]
+      - "By reaction type": ["Direct toxic, idiosyncratic, toxic/allergic, allergic hepatitis", "Cholestatic, granulomatous, chronic hepatitis/cirrhosis"]
+      - "Other patterns": ["Fatty liver/NASH, veno-occlusive disease", "Neoplastic: FNH, adenoma, HCC, angiosarcoma"]
+      - "By target cell": ["Hepatocyte, cholangiocyte, endothelial cell, Ito cell"]
+    src: { page: 144 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L08.095
+    kind: essay
+    topic: hepatocellular
+    prompt: Discuss the different clinical manifestations of drug-induced liver injury.
+    outline:
+      - "Asymptomatic enzyme rise": ["Tolerance (INH, phenytoin, chlorpromazine)", "Or progression with 3–5× ULN to failure"]
+      - "Acute hepatocellular injury": ["Marked ALT/AST, normal ALP", "Up to fulminant failure (acetaminophen)"]
+      - "Cholestasis": ["Jaundice, pruritus, high ALP/GGT/5'NT", "Chronic forms: vanishing bile duct syndrome"]
+      - "Others": ["Hypersensitivity: fever, rash, arthralgia, eosinophilia", "Granulomatous, AIH-like, VOD, tumors"]
+    src: { page: 144 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L08.096
+    kind: essay
+    topic: diagnosis
+    prompt: What is the stepwise diagnostic approach to drug-induced liver disease?
+    outline:
+      - "Suspicion": ["Raised enzymes, hepatitis-like symptoms, jaundice", "6-month drug and supplement history: dose, duration, latency"]
+      - "Classify": ["R value: >5 hepatocellular, 2–5 mixed, <2 cholestatic"]
+      - "Exclude other causes": ["Hepatocellular: ultrasound, HAV, HBV, HCV, HEV, then CMV/EBV/HSV, AIH, Budd-Chiari, ischemia, Wilson", "Cholestatic: ultrasound, MRI/MRCP, biopsy"]
+      - "Causality": ["Latency 1 week to 3 months", "Dechallenge: 50% fall by 2 weeks, normal by 4 weeks (slower in cholestasis)"]
+    src: { page: 144 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L08.097
+    kind: essay
+    topic: prognosis
+    prompt: Give a brief comment on the management of drug-induced liver disease.
+    outline:
+      - "Stop the drug": ["Identify and withdraw the culprit as soon as possible"]
+      - "Supportive care": ["Relieve symptoms (e.g. pruritus)", "Watch for jaundice and coagulopathy"]
+      - "Prognosis": ["Most resolve without sequelae", "Worse with jaundice plus hepatocellular injury; ~10% mortality with fulminant hepatitis"]
+    src: { page: 144 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L08.098
+    kind: essay
+    topic: cholestatic
+    prompt: Give an account of vanishing bile duct syndrome.
+    outline:
+      - "Definition": ["Cholangiodestructive drug cholestasis with loss of bile ducts", "Ductal lesion +++, ALP >3×, high cholesterol"]
+      - "Causative drugs": ["Antibiotics: Augmentin, ampicillin, erythromycin, clindamycin, Septrin, tetracycline", "Psychotropics: chlorpromazine, tricyclics, carbamazepine; also azathioprine, terbinafine"]
+      - "Versus PBC": ["Both sexes, any age, AMA negative, acute onset, early jaundice"]
+      - "Prognosis": ["Jaundice usually resolves in 6–76 months", "Rarely biliary cirrhosis"]
+    src: { page: 144 }
+    status: unverified
+    tags: [book-question]

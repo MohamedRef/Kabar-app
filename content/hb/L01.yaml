@@ -1,0 +1,2192 @@
+schema: batna.content/v1
+lecture: hb.L01
+title: Liver Cirrhosis
+author: Dr. Mohamed Bakosh
+book: { chapter: 1, pages: [1, 22] }
+topics:
+  - { id: definition, title: "Sinusoid cells, definition and morphology" }
+  - { id: causes, title: "Causes of cirrhosis" }
+  - { id: pathogenesis, title: "Pathogenesis and portal hypertension" }
+  - { id: presentation, title: "Clinical picture, compensated and decompensated" }
+  - { id: aclf, title: "Acute-on-chronic liver failure" }
+  - { id: diagnosis, title: "Imaging, biopsy and non-invasive tests" }
+  - { id: labs, title: "Laboratory findings and etiology tests" }
+  - { id: prognosis, title: "Prognosis, Child-Pugh and MELD" }
+  - { id: treatment, title: "General measures and treatment of complications" }
+  - { id: specific-treatment, title: "Specific treatment and recompensation" }
+  - { id: transplant, title: "Liver transplantation" }
+  - { id: cardiopulmonary, title: "Cardiopulmonary complications" }
+items:
+  # ---------- p1-2: definition, morphology, causes ----------
+  - id: hb.L01.001
+    kind: card
+    topic: definition
+    front: Which liver cells are the major fibrogenic cells, and where do they live?
+    back: Hepatic stellate cells (HSCs), in the space of Disse between the hepatocytes and the sinusoidal endothelial lining.
+    src: { page: 1, quote: "The hepatic stellate cells (HSCs), the major fibrogenic cells in the liver" }
+    status: unverified
+  - id: hb.L01.002
+    kind: cloze
+    topic: definition
+    text: In the normal liver, HSCs are quiescent and store {{c1::vitamin A and retinoids}}.
+    src: { page: 1, quote: "their function is to store vitamin A and retinoids" }
+    status: unverified
+  - id: hb.L01.003
+    kind: card
+    topic: definition
+    front: Anatomical definition of cirrhosis?
+    back: A diffuse process of fibrosis and regenerative nodule formation that disrupts the normal liver architecture. It is the end result of fibrogenesis in chronic liver injury.
+    src: { page: 1, quote: "diffuse process with fibrosis and regenerative nodule formation" }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.004
+    kind: cloze
+    topic: definition
+    text: Morphologically, cirrhosis is {{c1::macronodular}}, {{c2::micronodular}}, or {{c3::mixed}}.
+    src: { page: 1 }
+    status: unverified
+  - id: hb.L01.005
+    kind: enumerate
+    topic: causes
+    prompt: Enumerate the causes of liver cirrhosis (book Table 1, 9 groups).
+    points:
+      - Viral hepatitis B, C and D
+      - Alcohol
+      - "Metabolic: MASH (formerly NASH), hemochromatosis, Wilson disease, alpha-1 antitrypsin deficiency, type IV glycogenosis, galactosemia, tyrosinemia"
+      - "Prolonged cholestasis: PBC, PSC, prolonged extrahepatic cholestasis"
+      - "Hepatic venous outflow block: Budd-Chiari, SOS (veno-occlusive disease), right heart failure (cardiac cirrhosis), constrictive pericarditis"
+      - Autoimmune hepatitis
+      - Toxins and drugs (methotrexate, amiodarone)
+      - Tertiary syphilis
+      - Cryptogenic (etiology cannot be determined)
+    pass: 7
+    src: { page: 2 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.006
+    kind: cloze
+    topic: causes
+    text: "Hepatic venous outflow block causes of cirrhosis: {{c1::Budd-Chiari syndrome}}, {{c2::sinusoidal obstruction syndrome (veno-occlusive disease)}}, {{c3::right heart failure and constrictive pericarditis}}."
+    src: { page: 2 }
+    status: unverified
+  - id: hb.L01.007
+    kind: card
+    topic: causes
+    front: Which two drugs does the book name as causes of cirrhosis?
+    back: Methotrexate and amiodarone.
+    src: { page: 2, quote: "Toxins and drugs, e.g. methotrexate, amiodarone" }
+    status: unverified
+  # ---------- p3-4: pathogenesis ----------
+  - id: hb.L01.008
+    kind: cloze
+    topic: pathogenesis
+    text: In viral hepatitis and hemochromatosis, fibrosis is mainly {{c1::periportal (zone 1)}}; in alcoholism and right heart failure it is mainly in {{c2::zone 3}}.
+    src: { page: 3 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.009
+    kind: card
+    topic: pathogenesis
+    front: During liver injury, what do activated HSCs become, and what do they do?
+    back: They transform into myofibroblasts and deposit collagen, which causes fibrosis.
+    src: { page: 3, quote: "HSCs become activated, transform into myofibroblasts, and start depositing collagen" }
+    status: unverified
+  - id: hb.L01.010
+    kind: cloze
+    topic: pathogenesis
+    text: Matrix laid down in the space of Disse ({{c1::collagenosis of Disse space}}) causes defenestration of the sinusoidal wall, called {{c2::capillarization of the sinusoids}}, which impedes metabolic exchange with liver cells.
+    src: { page: 3 }
+    status: unverified
+  - id: hb.L01.011
+    kind: card
+    topic: pathogenesis
+    front: Two mechanisms that raise portal pressure in cirrhosis?
+    back: First, increased intrahepatic vascular resistance (the initial cause). Then increased portal inflow from splanchnic arteriolar vasodilatation, which aggravates it.
+    src: { page: 4 }
+    status: unverified
+    tags: [high-yield]
+  # ---------- p4-8: clinical presentation ----------
+  - id: hb.L01.012
+    kind: card
+    topic: presentation
+    front: Which three major complications produce the symptoms and signs of cirrhosis?
+    back: Portal hypertension, hepatic decompensation (liver failure), and hepatocellular carcinoma.
+    src: { page: 4 }
+    status: unverified
+  - id: hb.L01.013
+    kind: card
+    topic: presentation
+    front: Earliest and most important consequence of cirrhosis?
+    back: Portal hypertension. It develops regardless of the severity of the liver disease.
+    src: { page: 4, quote: "PH is the earliest and most important consequence of cirrhosis" }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.014
+    kind: card
+    topic: presentation
+    front: How may portosystemic shunts present clinically?
+    back: Upper GI bleeding (hematemesis and melena, or melena alone), less often lower GI bleeding, dilated abdominal wall veins, caput medusae, and a venous hum.
+    src: { page: 5 }
+    status: unverified
+  - id: hb.L01.015
+    kind: card
+    topic: presentation
+    front: Definition of compensated cirrhosis?
+    back: Absence of clinical complications of hepatic decompensation, now or in the past.
+    src: { page: 5 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.016
+    kind: enumerate
+    topic: presentation
+    prompt: Enumerate the precipitating factors for hepatic decompensation.
+    points:
+      - Variceal bleeding
+      - Major surgery
+      - Bacterial infections
+      - HCC
+      - Superimposed acute alcoholic hepatitis
+      - Drug-induced liver injury
+      - Superimposed viral hepatitis (HAV, HEV)
+      - HBV flares
+    pass: 6
+    src: { page: 5 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.017
+    kind: card
+    topic: presentation
+    front: Most frequent first decompensating event in cirrhosis?
+    back: Ascites.
+    src: { page: 6, quote: "Ascites is the most frequent first decompensating event in cirrhosis" }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.018
+    kind: card
+    topic: presentation
+    front: Manifestations of hepatic encephalopathy listed in the lecture?
+    back: Fetor hepaticus, asterixis (flapping tremor), disturbed sleep rhythm, disturbed consciousness, and psychiatric, behaviour and motor changes.
+    src: { page: 6 }
+    status: unverified
+  - id: hb.L01.019
+    kind: card
+    topic: presentation
+    front: Is jaundice alone an early sign of non-cholestatic cirrhosis?
+    back: No. In most patients it is not early, and it may reflect superimposed liver injury.
+    src: { page: 6 }
+    status: unverified
+  - id: hb.L01.020
+    kind: card
+    topic: presentation
+    front: Cause of the endocrine changes of cirrhosis (hypogonadism, gynecomastia, loss of body hair)?
+    back: Decreased estrogen metabolism, causing hyperestrogenemia.
+    src: { page: 6, quote: "result of decreased estrogen metabolism and hyperestrogenemia" }
+    status: unverified
+  - id: hb.L01.021
+    kind: card
+    topic: presentation
+    front: "Spider angiomas: what are they, where are they, and why?"
+    back: A central arteriole surrounded by smaller radiating vessels, found invariably on the upper half of the body. Due to hyperestrogenemia.
+    src: { page: 7 }
+    status: unverified
+  - id: hb.L01.022
+    kind: enumerate
+    topic: cardiopulmonary
+    prompt: Mention the cardiopulmonary manifestations of cirrhosis.
+    points:
+      - Hyperdynamic circulatory syndrome
+      - Cirrhotic cardiomyopathy
+      - Portopulmonary hypertension
+      - Hepatopulmonary syndrome
+    pass: 4
+    src: { page: 7 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.023
+    kind: card
+    topic: presentation
+    front: Define bacterial translocation.
+    back: Passage of bacteria and their products from the gut into the circulation, through intestinal wall hyperpermeability caused by portal hypertension.
+    src: { page: 7 }
+    status: unverified
+  - id: hb.L01.024
+    kind: cloze
+    topic: presentation
+    text: "Patients with cirrhosis are in a state of {{c1::accelerated starvation}}: an impaired adaptive response to short periods of fasting."
+    src: { page: 7, quote: "accelerated starvation" }
+    status: unverified
+  - id: hb.L01.025
+    kind: enumerate
+    topic: presentation
+    prompt: Mention the mechanisms of sarcopenia in cirrhosis.
+    points:
+      - Altered protein turnover
+      - Altered energy disposal
+      - "Hormonal: increased myostatin, decreased anabolic hormones"
+      - "Metabolic: altered lipid and amino acid metabolism"
+      - Hyperammonemia
+    pass: 4
+    src: { page: 7 }
+    status: unverified
+  - id: hb.L01.026
+    kind: enumerate
+    topic: presentation
+    prompt: Enumerate the events that define further decompensation.
+    points:
+      - Recurrent variceal bleeding
+      - Recurrent HE
+      - Refractory ascites
+      - SBP
+      - HRS-AKI
+      - Bacterial infections
+      - ACLF
+    pass: 5
+    src: { page: 8 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.027
+    kind: card
+    topic: presentation
+    front: HCC is frequent with all forms of cirrhosis except which two?
+    back: Biliary and cardiac cirrhosis.
+    src: { page: 8, quote: "HCC is frequent with all forms of cirrhosis except the biliary and cardiac types" }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.028
+    kind: card
+    topic: presentation
+    front: Examination findings of a malignant (HCC) liver?
+    back: Enlarged and hard, with a sharp irregular edge and nodular surface, and an arterial bruit over the mass. Hemorrhagic ascites may develop.
+    src: { page: 8 }
+    status: unverified
+  - id: hb.L01.029
+    kind: enumerate
+    topic: presentation
+    prompt: Mention the "other manifestations" of cirrhosis.
+    points:
+      - Digital clubbing
+      - Bilateral parotid enlargement
+      - Dupuytren contracture
+      - Pigment gallstones
+      - Relative adrenal insufficiency
+    pass: 4
+    src: { page: 8 }
+    status: unverified
+  # ---------- p8-9: ACLF ----------
+  - id: hb.L01.030
+    kind: card
+    topic: aclf
+    front: Define acute-on-chronic liver failure (ACLF).
+    back: Acute hepatic decompensation in pre-existing chronic liver disease, with multiorgan failure and high short-term mortality (28-day mortality of 15% or more).
+    src: { page: 8 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.031
+    kind: cloze
+    topic: aclf
+    text: ACLF carries a {{c1::28}}-day mortality of {{c2::15% or more}}.
+    src: { page: 8, quote: "high short-term (28-day) mortality (≥ 15%)" }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L01.032
+    kind: card
+    topic: aclf
+    front: At which stage of cirrhosis can ACLF develop?
+    back: At any stage, from compensated to decompensated cirrhosis.
+    src: { page: 8 }
+    status: unverified
+  - id: hb.L01.033
+    kind: enumerate
+    topic: aclf
+    prompt: Enumerate the precipitating factors of ACLF.
+    points:
+      - Acute alcoholic injury
+      - Bacterial infections
+      - Reactivation of hepatitis B
+      - Flare of autoimmune hepatitis
+      - Superimposed acute hepatitis A or E
+      - GI bleeding
+      - Drug hepatotoxicity
+    pass: 5
+    src: { page: 9 }
+    status: unverified
+  - id: hb.L01.034
+    kind: enumerate
+    topic: aclf
+    prompt: Mention the extrahepatic organ failures in ACLF.
+    points: [Renal, Coagulation, Respiratory, Circulatory, Brain]
+    pass: 4
+    src: { page: 9 }
+    status: unverified
+  # ---------- p9-11: diagnosis ----------
+  - id: hb.L01.035
+    kind: card
+    topic: diagnosis
+    front: Ultrasound features of cirrhosis?
+    back: Surface nodularity, dense reflective (coarse) echoes, an enlarged caudate lobe and regenerating nodules. Splenomegaly and ascites can also be seen.
+    src: { page: 9 }
+    status: unverified
+  - id: hb.L01.036
+    kind: cloze
+    topic: diagnosis
+    text: "HCC screening in cirrhosis: {{c1::ultrasound}} with or without {{c2::AFP}} every {{c3::6 months}}."
+    src: { page: 13, quote: "Screening for HCC should be scheduled every 6 months with ultrasound" }
+    status: unverified
+    tags: [high-yield, numbers]
+  - id: hb.L01.037
+    kind: card
+    topic: diagnosis
+    front: Gold standard for diagnosing cirrhosis?
+    back: Liver biopsy, usually US- or CT-guided. It may also give a clue to the etiology and inflammatory activity.
+    src: { page: 10, quote: "is the gold standard for the diagnosis of cirrhosis" }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.038
+    kind: card
+    topic: diagnosis
+    front: When is the transjugular route used for liver biopsy?
+    back: When there are contraindications such as ascites or a coagulation defect.
+    src: { page: 10 }
+    status: unverified
+  - id: hb.L01.039
+    kind: cloze
+    topic: diagnosis
+    text: APRI is calculated from {{c1::AST and platelet count}}; FIB-4 from {{c2::age, AST, ALT and platelet count}}.
+    src: { page: 10 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.040
+    kind: card
+    topic: diagnosis
+    front: What does transient elastography (FibroScan) measure, and in what unit?
+    back: The velocity of shear waves through the liver (the stiffer the liver, the faster the wave), converted to a liver stiffness measurement (LSM) in kilopascals (kPa).
+    src: { page: 11 }
+    status: unverified
+  - id: hb.L01.041
+    kind: enumerate
+    topic: diagnosis
+    prompt: Mention the causes of overestimated liver stiffness on transient elastography.
+    points: [Hepatic inflammation, Cholestasis, Food ingestion, Exercise, Venous congestion]
+    pass: 4
+    src: { page: 11 }
+    status: unverified
+    tags: [high-yield]
+  # ---------- p11-13: labs ----------
+  - id: hb.L01.042
+    kind: card
+    topic: labs
+    front: Typical aminotransferase pattern in cirrhosis?
+    back: Mild to moderate elevation with AST greater than ALT. Normal levels do not exclude cirrhosis.
+    src: { page: 11 }
+    status: unverified
+  - id: hb.L01.043
+    kind: card
+    topic: labs
+    front: Why are immunoglobulins (especially gamma-globulins) high in cirrhosis?
+    back: Impaired clearance by the liver.
+    src: { page: 11 }
+    status: unverified
+  - id: hb.L01.044
+    kind: enumerate
+    topic: labs
+    prompt: Mention the three types of anemia in cirrhosis and their causes.
+    points:
+      - "Normocytic normochromic: acute GI bleeding, hypersplenism, marrow aplasia from alcohol or HCV"
+      - "Microcytic hypochromic: chronic occult GI blood loss, anemia of chronic disease"
+      - "Macrocytic: vitamin B12 and folate deficiency"
+    pass: 3
+    src: { page: 12 }
+    status: unverified
+  - id: hb.L01.045
+    kind: card
+    topic: labs
+    front: In a cirrhotic, erythrocytosis suggests what?
+    back: HCC. The book attributes it to excess thrombopoietin production by tumour cells (physiologically this is erythropoietin; logged in book issues).
+    src: { page: 12, quote: "Erythrocytosis may occur with HCC due to excess thrombopoietinproduction by tumor cells" }
+    status: unverified
+  - id: hb.L01.046
+    kind: enumerate
+    topic: labs
+    prompt: Mention the causes of thrombocytopenia in cirrhosis.
+    points:
+      - Hypersplenism
+      - Thrombopoietin deficiency
+      - Immune thrombocytopenia
+      - Bone marrow suppression by alcohol or HCV
+    pass: 3
+    src: { page: 12 }
+    status: unverified
+  - id: hb.L01.047
+    kind: card
+    topic: labs
+    front: Tests that point to Wilson disease as the cause of cirrhosis?
+    back: Low serum ceruloplasmin, high 24-hour urine copper, and increased hepatic copper concentration.
+    src: { page: 12 }
+    status: unverified
+  - id: hb.L01.048
+    kind: card
+    topic: labs
+    front: Tests that point to hemochromatosis as the cause of cirrhosis?
+    back: Increased transferrin saturation, serum ferritin, serum iron and hepatic iron concentration, plus genetic testing.
+    src: { page: 12 }
+    status: unverified
+  - id: hb.L01.049
+    kind: card
+    topic: labs
+    front: Which antibody points to PBC as the cause of cirrhosis?
+    back: Anti-mitochondrial antibodies (AMA).
+    src: { page: 13 }
+    status: unverified
+  - id: hb.L01.050
+    kind: card
+    topic: diagnosis
+    front: What can HVPG measurement establish in cirrhosis?
+    back: The presence and cause of portal hypertension, and the response to therapy.
+    src: { page: 13 }
+    status: unverified
+  # ---------- p13-15: prognosis ----------
+  - id: hb.L01.051
+    kind: cloze
+    topic: prognosis
+    text: Median survival is {{c1::more than 12 years}} in compensated cirrhosis and about {{c2::2 years}} in decompensated cirrhosis.
+    src: { page: 13, quote: "median survival time >12 years" }
+    status: unverified
+    tags: [high-yield, numbers]
+  - id: hb.L01.052
+    kind: cloze
+    topic: prognosis
+    text: Compensated cirrhosis becomes decompensated at about {{c1::5-7%}} per year.
+    src: { page: 13, quote: "occurs at a rate of about 5-7% per year" }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L01.053
+    kind: cloze
+    topic: prognosis
+    text: HCC develops in alcohol-associated and viral cirrhosis at {{c1::3-5%}} per year.
+    src: { page: 13, quote: "with rates of 3–5% per year" }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L01.054
+    kind: cloze
+    topic: prognosis
+    text: A mean arterial pressure of {{c1::82 mmHg or less}} is a poor prognostic factor in cirrhosis.
+    src: { page: 13, quote: "mean arterial pressure 82 mm Hg or less" }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L01.055
+    kind: enumerate
+    topic: prognosis
+    prompt: Enumerate the poor prognostic factors in cirrhosis.
+    points:
+      - Marked ascites (if refractory)
+      - Variceal bleeding
+      - Advanced age
+      - Mean arterial pressure 82 mmHg or less
+      - High daily alcohol consumption
+      - Prolonged prothrombin time
+      - High serum bilirubin and alkaline phosphatase
+      - Low albumin
+      - Hyponatremia
+      - Infections
+      - Severe kidney dysfunction
+      - Ventilatory insufficiency
+      - Poor nutrition
+    pass: 9
+    src: { page: 13 }
+    status: unverified
+  - id: hb.L01.056
+    kind: enumerate
+    topic: prognosis
+    prompt: Mention the five parameters of the Child-Pugh classification.
+    points: [Ascites, Encephalopathy, Serum albumin, Serum bilirubin, Prothrombin time]
+    pass: 5
+    src: { page: 14 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.057
+    kind: cloze
+    topic: prognosis
+    text: "Child-Pugh class A = {{c1::5-6}} points, class B = {{c2::7-9}} points, class C = {{c3::10-15}} points."
+    src: { page: 14 }
+    status: unverified
+    tags: [high-yield, numbers]
+  - id: hb.L01.058
+    kind: cloze
+    topic: prognosis
+    text: "Child-Pugh bilirubin: {{c1::below 2}} mg/dL = 1 point, {{c2::2-3}} mg/dL = 2 points, {{c3::above 3}} mg/dL = 3 points."
+    src: { page: 14 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L01.059
+    kind: cloze
+    topic: prognosis
+    text: "Child-Pugh albumin: {{c1::above 3.5}} g/dL = 1 point, {{c2::2.8-3.5}} g/dL = 2 points, {{c3::below 2.8}} g/dL = 3 points."
+    src: { page: 14 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L01.060
+    kind: cloze
+    topic: prognosis
+    text: "Child-Pugh prothrombin time (seconds prolonged): {{c1::below 4}} = 1 point, {{c2::4-6}} = 2 points, {{c3::above 6}} = 3 points."
+    src: { page: 14 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L01.061
+    kind: cloze
+    topic: prognosis
+    text: "Child-Pugh one- and two-year survival: class A {{c1::100% and 85%}}, class B {{c2::80% and 60%}}, class C {{c3::45% and 35%}}."
+    src: { page: 14 }
+    status: unverified
+    tags: [high-yield, numbers]
+  - id: hb.L01.062
+    kind: card
+    topic: prognosis
+    front: "MELD score: which three variables, and what range?"
+    back: Serum creatinine, INR and serum bilirubin. Range 6-40. Adding serum sodium (MELD-Na) improves its predictive ability.
+    src: { page: 14 }
+    status: unverified
+    tags: [high-yield]
+    update:
+      text: US organ allocation moved to MELD 3.0 in July 2023 (adds sex and albumin). Answer with MELD / MELD-Na in the exam, as the book does.
+      ref: OPTN/UNOS MELD 3.0 policy, July 2023
+  # ---------- p15-16: general treatment ----------
+  - id: hb.L01.063
+    kind: cloze
+    topic: treatment
+    text: "Diet in cirrhosis: {{c1::35-40}} kcal/kg/day and protein {{c2::1.2-1.5}} g/kg/day."
+    src: { page: 15, quote: "adequate calories (35–40 kcal/kg body weight per day)" }
+    status: unverified
+    tags: [high-yield, numbers]
+  - id: hb.L01.064
+    kind: card
+    topic: treatment
+    front: When may protein intake be reduced in cirrhosis, and to no less than what?
+    back: Only during an acute episode of hepatic encephalopathy, and to no less than 60-80 g/day.
+    src: { page: 15, quote: "reduced only in the presence of acute episode of HE to no less than 60–80 g/day" }
+    status: unverified
+    tags: [numbers]
+    update:
+      text: Current guidance advises against restricting protein in hepatic encephalopathy; keep 1.2-1.5 g/kg/day. Answer with the book's 60-80 g/day floor in the exam (lecture 20 already follows the newer advice).
+      ref: EASL CPG on nutrition in chronic liver disease 2019
+  - id: hb.L01.065
+    kind: card
+    topic: treatment
+    front: Why should proton pump inhibitors be avoided in cirrhosis?
+    back: They alter the gut microbiota (dysbiosis) and increase the risk of infection and hepatic encephalopathy.
+    src: { page: 15 }
+    status: unverified
+  - id: hb.L01.066
+    kind: enumerate
+    topic: treatment
+    prompt: Which vaccines should patients with cirrhosis receive?
+    points: [Hepatitis A, Hepatitis B, Pneumococcal, Yearly influenza, COVID-19 when available]
+    pass: 4
+    src: { page: 15 }
+    status: unverified
+  - id: hb.L01.067
+    kind: card
+    topic: treatment
+    front: Which operations carry a particularly bad prognosis in cirrhosis?
+    back: Upper abdominal operations on the biliary tract or for peptic ulcer disease.
+    src: { page: 16 }
+    status: unverified
+  - id: hb.L01.068
+    kind: card
+    topic: treatment
+    front: Which non-selective beta blocker does the lecture prefer in cirrhosis?
+    back: Carvedilol, over the traditional NSBBs propranolol and nadolol.
+    src: { page: 16, quote: "Carvedilol is more preferred than traditional NSBBs propranolol and nadolol" }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.069
+    kind: card
+    topic: treatment
+    front: Aims of treatment in compensated cirrhosis?
+    back: Prevent variceal bleeding and decompensation, and detect HCC early. NSBBs should also be considered, when indicated, to prevent decompensation.
+    src: { page: 16 }
+    status: unverified
+  - id: hb.L01.070
+    kind: card
+    topic: treatment
+    front: In variceal bleeding, when should coagulopathy be corrected?
+    back: Only after failure to control the bleeding with portal-hypertension-lowering agents and local hemostasis.
+    src: { page: 16 }
+    status: unverified
+  - id: hb.L01.071
+    kind: card
+    topic: treatment
+    front: "Thrombopoietin receptor agonists before procedures in cirrhosis: names and platelet threshold?"
+    back: Avatrombopag or lusutrombopag, when the platelet count is below 50,000/cmm and an invasive procedure is planned.
+    src: { page: 16 }
+    status: unverified
+    tags: [numbers]
+  # ---------- p17-18: specific treatment, recompensation, LT ----------
+  - id: hb.L01.072
+    kind: enumerate
+    topic: specific-treatment
+    prompt: Mention the etiology-specific treatments of cirrhosis.
+    points:
+      - "Hepatitis C: antivirals to eliminate the virus"
+      - "Hepatitis B: antivirals to suppress the virus"
+      - "Autoimmune liver disease: steroids and immunosuppressive drugs"
+      - "PBC: ursodeoxycholic acid, early and long term"
+      - "Wilson disease: chelation therapy"
+      - "Hemochromatosis: venesection and iron chelators"
+      - "Alcohol: long-term abstinence"
+      - "MASH: lifestyle change (weight loss, diet, exercise), statins, antidiabetics, antioxidants, bariatric surgery"
+    pass: 6
+    src: { page: 17 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.073
+    kind: enumerate
+    topic: specific-treatment
+    prompt: Mention the clinical criteria of cirrhosis recompensation.
+    points:
+      - "Removal, suppression or cure of the primary etiology (HCV elimination, sustained HBV suppression, sustained alcohol abstinence)"
+      - "Resolution of decompensating events: ascites off diuretics, HE off lactulose/rifaximin, no recurrent variceal bleeding for at least 12 months"
+      - "Sustained improvement of liver function tests: albumin, INR, bilirubin"
+    pass: 3
+    src: { page: 17 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.074
+    kind: card
+    topic: transplant
+    front: When should a patient with cirrhosis be referred for liver transplantation?
+    back: After the first signs of hepatic decompensation.
+    src: { page: 18, quote: "after the first signs of hepatic decompensation" }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.075
+    kind: cloze
+    topic: transplant
+    text: Patients with alcoholism should generally be abstinent for {{c1::6 months}} before liver transplantation.
+    src: { page: 18 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L01.076
+    kind: cloze
+    topic: transplant
+    text: HCV treatment with DAAs should be deferred until after transplantation when the MELD score is {{c1::21 or higher}}.
+    src: { page: 18, quote: "MELD score is 21 or higher" }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L01.077
+    kind: enumerate
+    topic: transplant
+    prompt: Mention the absolute contraindications to liver transplantation (lecture 1).
+    points:
+      - Malignancy (except a relatively small HCC in a cirrhotic liver)
+      - Advanced cardiopulmonary disease (except hepatopulmonary syndrome)
+      - Sepsis
+    pass: 3
+    src: { page: 18 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.078
+    kind: enumerate
+    topic: transplant
+    prompt: Mention the relative contraindications to liver transplantation (lecture 1).
+    points:
+      - Age over 70 years
+      - Morbid obesity
+      - Portal and mesenteric vein thrombosis
+      - Active alcohol or drug abuse
+      - Severe malnutrition
+      - Lack of patient understanding
+    pass: 4
+    src: { page: 18 }
+    status: unverified
+  - id: hb.L01.079
+    kind: card
+    topic: transplant
+    front: Which diseases may recur in the transplanted liver?
+    back: HCC, hepatitis B and C, Budd-Chiari syndrome, and autoimmune liver disease.
+    src: { page: 18 }
+    status: unverified
+  # ---------- p19: ACLF treatment ----------
+  - id: hb.L01.080
+    kind: card
+    topic: aclf
+    front: Principles of ACLF management?
+    back: ICU care; early recognition; treat precipitating factors and complications; organ support; antivirals (tenofovir, entecavir) as early as possible for HBV reactivation; consider early liver transplantation in selected grade 2 and 3 ACLF.
+    src: { page: 19 }
+    status: unverified
+  - id: hb.L01.081
+    kind: cloze
+    topic: aclf
+    text: Liver transplantation is contraindicated in ACLF with {{c1::4 or more organ failures}} or a CLIF-C ACLF score {{c2::above 64}}.
+    src: { page: 19, quote: "organ failures ≥4 or CLIF-C ACLF >64" }
+    status: unverified
+    tags: [numbers]
+  # ---------- p19-22: cardiopulmonary ----------
+  - id: hb.L01.082
+    kind: enumerate
+    topic: cardiopulmonary
+    prompt: Mention the features of the hyperdynamic circulatory syndrome.
+    points:
+      - Increased cardiac output
+      - Hypervolemia (sodium and water retention)
+      - Rapid heart rate
+      - Low arterial blood pressure
+      - Bounding pulse of increased rate and volume
+      - Systolic murmur
+    pass: 4
+    src: { page: 19 }
+    status: unverified
+  - id: hb.L01.083
+    kind: card
+    topic: cardiopulmonary
+    front: Main cause of the hyperdynamic circulation in cirrhosis?
+    back: Systemic vasodilatation, because portosystemic shunts let endogenous vasodilators bypass the liver and reach the systemic circulation.
+    src: { page: 19 }
+    status: unverified
+  - id: hb.L01.084
+    kind: card
+    topic: cardiopulmonary
+    front: Define cirrhotic cardiomyopathy, and how is it diagnosed?
+    back: Cardiac dysfunction in cirrhosis without known cardiac disease. Echocardiography showing diastolic and/or systolic dysfunction is essential for diagnosis.
+    src: { page: 20 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.085
+    kind: card
+    topic: cardiopulmonary
+    front: Define portopulmonary hypertension.
+    back: Pulmonary arterial hypertension associated with portal hypertension, with or without underlying liver disease, in the absence of other diseases associated with pulmonary hypertension.
+    src: { page: 20 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.086
+    kind: card
+    topic: cardiopulmonary
+    front: Define hepatopulmonary syndrome.
+    back: A defect in oxygenation due to pulmonary vascular dilatation with chronic liver disease and/or portal hypertension, without detectable primary cardiopulmonary disease.
+    src: { page: 20 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.087
+    kind: enumerate
+    topic: cardiopulmonary
+    prompt: Mention the diagnostic triad of hepatopulmonary syndrome.
+    points:
+      - Liver disease and/or portal hypertension
+      - Raised age-adjusted A-a O2 gradient (above 15 mmHg, or above 20 mmHg at age 65 or more) on room air, with or without hypoxemia (PaO2 below 80 mmHg)
+      - Evidence of intrapulmonary vasodilatation and AV shunts, especially in the lung bases
+    pass: 3
+    src: { page: 21 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.088
+    kind: card
+    topic: cardiopulmonary
+    front: Define platypnea and orthodeoxia.
+    back: "Platypnea: dyspnea that worsens on moving from supine to upright. Orthodeoxia: a fall in PaO2 of more than 5% or more than 4 mmHg on moving from supine to upright. Both come from vasodilatation mainly in the lung bases."
+    src: { page: 21 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.089
+    kind: card
+    topic: cardiopulmonary
+    front: Only effective therapy for hepatopulmonary syndrome, and when is it contraindicated?
+    back: Liver transplantation, which improves oxygenation at 1 year. Very severe HPS (PaO2 below 50 mmHg) is a contraindication because of a high-risk perioperative course. HPS patients get MELD exception points.
+    src: { page: 22, quote: "Very severe HPS (PaO2 <50 mmHg) is a contraindication to LT" }
+    status: unverified
+    tags: [high-yield]
+    update:
+      text: Under US allocation policy, HPS MELD exception points require a PaO2 below 60 mmHg on room air.
+      ref: OPTN policy 9 (MELD exceptions)
+  - id: hb.L01.090
+    kind: card
+    topic: cardiopulmonary
+    front: Why does TIPS have limited use in hepatopulmonary syndrome?
+    back: It aggravates the hyperkinetic circulation, increasing intrapulmonary vasodilatation and shunting, and worsens hypoxemia.
+    src: { page: 21 }
+    status: unverified
+  # ---------- MCQs (draft set, rewritten) ----------
+  - id: hb.L01.091
+    kind: mcq
+    topic: prognosis
+    stem: "A 58-year-old man with HCV cirrhosis has no encephalopathy and mild ascites. Bilirubin 2.5 mg/dL, albumin 3.0 g/dL, prothrombin time prolonged by 3 seconds. What is his Child-Pugh class?"
+    options:
+      - Class A
+      - Class B
+      - Class C
+      - It cannot be scored without the INR
+    answer: 1
+    why:
+      - "Class A is 5-6 points; he scores 8."
+      - "Correct: encephalopathy 1 + ascites 2 + bilirubin 2 + albumin 2 + PT 1 = 8 points, class B (7-9)."
+      - "Class C needs 10-15 points."
+      - "The book's table scores prothrombin time in seconds prolonged, so no INR is needed."
+    src: { page: 14 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L01.092
+    kind: mcq
+    topic: presentation
+    stem: "Four patients have cirrhosis of different causes. In which one is HCC least likely, according to the lecture?"
+    options:
+      - A 67-year-old woman with cardiac cirrhosis from long-standing right heart failure
+      - A 50-year-old man with HBV cirrhosis
+      - A 62-year-old man with alcohol-related cirrhosis
+      - A 55-year-old diabetic woman with MASH cirrhosis
+      - A 48-year-old man with HCV cirrhosis
+    answer: 0
+    why:
+      - "Correct: HCC is frequent in all forms of cirrhosis except the biliary and cardiac types."
+      - "HBV cirrhosis carries a high HCC risk (3-5% per year for viral cirrhosis)."
+      - "Alcohol-related cirrhosis carries a high HCC risk (3-5% per year)."
+      - "MASH cirrhosis is not one of the two exceptions, so HCC is frequent."
+      - "HCV cirrhosis carries a high HCC risk (3-5% per year for viral cirrhosis)."
+    src: { page: 8 }
+    status: unverified
+  - id: hb.L01.093
+    kind: mcq
+    topic: treatment
+    stem: "A 60-year-old man with Child B cirrhosis needs a planned dental extraction. Platelets are 38,000/cmm. Besides platelet transfusion, which drug does the lecture suggest to raise platelets before the procedure?"
+    options:
+      - Prednisolone
+      - Intravenous immunoglobulin
+      - Avatrombopag
+      - Vitamin K
+      - Tranexamic acid
+    answer: 2
+    why:
+      - "Steroids treat immune thrombocytopenia, not the hypersplenism and thrombopoietin deficiency of cirrhosis, and they raise infection risk."
+      - "IVIG is for immune thrombocytopenia and is not mentioned for cirrhosis."
+      - "Correct: thrombopoietin receptor agonists (avatrombopag or lusutrombopag) are used when platelets are below 50,000/cmm before invasive procedures."
+      - "Vitamin K addresses clotting factors, not the platelet count."
+      - "Tranexamic acid is an antifibrinolytic; it does not raise the platelet count."
+    src: { page: 16 }
+    status: unverified
+  - id: hb.L01.094
+    kind: mcq
+    topic: cardiopulmonary
+    stem: "A 50-year-old woman with cirrhosis has dyspnea that worsens when she sits up. Her PaO2 falls by 6 mmHg from supine to upright, and her A-a gradient on room air is 22 mmHg. Echocardiography shows normal pulmonary pressures. What is the most likely diagnosis?"
+    options:
+      - Portopulmonary hypertension
+      - Hepatic hydrothorax
+      - Cirrhotic cardiomyopathy
+      - Hepatopulmonary syndrome
+      - Hyperdynamic circulatory syndrome
+    answer: 3
+    why:
+      - "PoPH is pulmonary arterial hypertension; her pulmonary pressures are normal."
+      - "Hydrothorax is a pleural effusion with ascites; it does not cause orthodeoxia with a widened A-a gradient as its defining feature."
+      - "Cirrhotic cardiomyopathy is silent at rest and shows ventricular dysfunction on echo, not orthodeoxia."
+      - "Correct: platypnea and orthodeoxia with an A-a gradient above 15 mmHg reflect basal intrapulmonary vasodilatation, the hallmark of HPS."
+      - "The hyperdynamic circulation is the background state; it does not by itself define a gas-exchange syndrome."
+    src: { page: 21 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.095
+    kind: mcq
+    topic: diagnosis
+    stem: "A 45-year-old man with chronic HBV has an equivocal FIB-4 and a liver stiffness of 13 kPa. The team wants the gold-standard test to confirm cirrhosis. Which test is it?"
+    options:
+      - FIB-4 repeated after 3 months
+      - Liver biopsy
+      - Transient elastography repeated after fasting
+      - Multiphase CT
+      - APRI
+    answer: 1
+    why:
+      - "FIB-4 is a simple blood-based score, not the gold standard."
+      - "Correct: liver biopsy (usually US- or CT-guided) is the gold standard and may also show the etiology and activity."
+      - "TE is the most validated non-invasive tool, but it is not the gold standard."
+      - "Multiphase CT characterises nodules and HCC; it does not establish fibrosis stage."
+      - "APRI is a simple blood-based score, not the gold standard."
+    src: { page: 10 }
+    status: unverified
+  - id: hb.L01.096
+    kind: mcq
+    topic: specific-treatment
+    stem: "A 52-year-old man had decompensated HBV cirrhosis with ascites. On entecavir for 2 years his HBV DNA is undetectable, he has had no ascites off diuretics for over a year, and albumin, INR and bilirubin have improved steadily. Which finding is NOT one of the criteria for recompensation?"
+    options:
+      - Sustained HBV suppression
+      - Resolution of ascites off diuretics
+      - Absence of recurrent variceal bleeding for at least 12 months
+      - Sustained improvement of albumin, INR and bilirubin
+      - Normal liver stiffness on transient elastography
+    answer: 4
+    why:
+      - "Removal or suppression of the etiology (sustained HBV suppression) is criterion a."
+      - "Resolution of decompensating events (ascites off diuretics) is criterion b."
+      - "No recurrent variceal bleeding for at least 12 months is part of criterion b."
+      - "Sustained improvement of liver function tests is criterion c."
+      - "Correct: liver stiffness is not among the book's three recompensation criteria."
+    src: { page: 17 }
+    status: unverified
+  - id: hb.L01.097
+    kind: mcq
+    topic: aclf
+    stem: "A 49-year-old man with alcohol-related cirrhosis develops ACLF after an infection, with renal, coagulation, circulatory and respiratory failure (4 organ failures). According to the lecture, liver transplantation is:"
+    options:
+      - Indicated urgently because ACLF evolves rapidly
+      - Indicated only if MELD is above 30
+      - Contraindicated
+      - Indicated after 6 months of abstinence
+      - Indicated once the infection is controlled, whatever the number of organ failures
+    answer: 2
+    why:
+      - "Early LT is considered in selected ACLF grade 2 and 3, but not with 4 or more organ failures."
+      - "The book sets no MELD threshold for LT in ACLF."
+      - "Correct: LT is contraindicated with 4 or more organ failures or a CLIF-C ACLF score above 64."
+      - "The 6-month abstinence rule applies to elective LT in alcoholism, not to this decision."
+      - "The number of organ failures is itself a contraindication at 4 or more."
+    src: { page: 19 }
+    status: unverified
+  # ---------- Book questions (essays) ----------
+  - id: hb.L01.098
+    kind: essay
+    topic: presentation
+    prompt: Mention the clinical manifestations of cirrhosis.
+    outline:
+      - "The cirrhotic liver on examination": ["Shrunken, enlarged or normal size", "Sharp, possibly irregular edge; smooth or nodular surface; firm; usually not tender"]
+      - "A. Portal hypertension": ["Portosystemic shunts: upper or lower GI bleeding, dilated abdominal veins, caput medusae, venous hum", "Splenomegaly: left hypochondrial pain, hypersplenism", "Ascites"]
+      - "B. Hepatic decompensation": ["Ascites, HE, coagulopathy, jaundice", "Endocrine (hypogonadism, gynecomastia, hair loss) and vascular (spiders, palmar erythema) changes from hyperestrogenemia; white nails", "Cardiopulmonary syndromes, infections, weight loss and sarcopenia"]
+      - "C. Hepatocellular carcinoma": ["Right hypochondrial pain or focal lesion; hard nodular liver with arterial bruit; hemorrhagic ascites"]
+      - "Other manifestations": ["Clubbing, parotid enlargement, Dupuytren contracture, pigment stones, relative adrenal insufficiency", "Features of the underlying etiology"]
+    src: { page: 4 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L01.099
+    kind: essay
+    topic: treatment
+    prompt: Outline the management of liver cirrhosis.
+    outline:
+      - "General measures": ["Diet 35-40 kcal/kg/day, protein 1.2-1.5 g/kg/day (reduce only in acute HE, not below 60-80 g/day); salt restriction if retention; vitamins", "Avoid alcohol, sedatives, hepatotoxic drugs and PPIs; treat infections; correct electrolytes", "Vaccinate (HAV, HBV, pneumococcal, influenza, COVID-19); avoid surgery"]
+      - "Treatment of complications": ["Compensated: prevent variceal bleeding and decompensation (endoscopic therapy, NSBB, carvedilol preferred); screen for HCC every 6 months", "Decompensated: treat ascites, HE, HRS, SBP and precipitating factors; correct coagulopathy only after failed hemostasis; TPO receptor agonists or platelets before procedures"]
+      - "Specific treatment of the etiology": ["Antivirals, immunosuppression, UDCA, chelation, venesection, abstinence, MASH measures", "Recompensation criteria"]
+      - "Liver transplantation": ["Refer at first decompensation", "Abstinence 6 months; HBV on NAs; contraindications; recurrence; immunosuppression"]
+      - "ACLF": ["ICU, treat precipitants, organ support, early LT in selected grade 2-3"]
+    src: { page: 15 }
+    status: unverified
+    tags: [book-question]
+  - id: hb.L01.100
+    kind: essay
+    topic: cardiopulmonary
+    prompt: Discuss the cardiopulmonary complications of cirrhosis (definition, pathogenesis, clinical manifestations, treatment).
+    outline:
+      - "Hyperdynamic circulatory syndrome": ["High cardiac output, hypervolemia, tachycardia, low BP, bounding pulse, systolic murmur", "Systemic vasodilatation as PSS let vasodilators bypass the liver; basis of ascites, HRS and HPS"]
+      - "Cirrhotic cardiomyopathy": ["Cardiac dysfunction without known heart disease", "Silent at rest because vasodilatation lowers afterload; heart failure under stress", "Echo: diastolic and/or systolic dysfunction"]
+      - "Portopulmonary hypertension": ["PAH with portal hypertension, no other cause", "Splanchnic vasoactive mediators reach the lungs through PSS", "Mild: no treatment; liver transplantation; diuretics"]
+      - "Hepatopulmonary syndrome": ["Triad: liver disease/PH, A-a gradient >15 mmHg (>20 if 65+), intrapulmonary vasodilatation", "NO excess (endothelin-1, ET-B); dyspnea, platypnea, orthodeoxia, clubbing, cyanosis, spiders", "Oxygen; TIPS of limited use; LT is the only effective therapy (PaO2 <50 contraindicates); MELD exception points"]
+    src: { page: 19 }
+    status: unverified
+    tags: [book-question]
+  # ---------- New cards and clozes ----------
+  - id: hb.L01.101
+    kind: card
+    topic: definition
+    front: What is special about sinusoidal endothelial cells, and why does it matter?
+    back: They have fenestrations between them that allow exchange of fluid and nutrients between the sinusoids and the hepatocytes.
+    src: { page: 1 }
+    status: unverified
+  - id: hb.L01.102
+    kind: enumerate
+    topic: causes
+    prompt: Mention the metabolic causes of cirrhosis in the book's table.
+    points:
+      - MASH (formerly NASH)
+      - Hemochromatosis (iron overload)
+      - Wilson disease (copper overload)
+      - Alpha-1 antitrypsin deficiency
+      - Type IV glycogenosis
+      - Galactosemia
+      - Tyrosinemia
+    pass: 5
+    src: { page: 2 }
+    status: unverified
+  - id: hb.L01.103
+    kind: card
+    topic: causes
+    front: Which cholestatic conditions cause cirrhosis when prolonged?
+    back: Primary biliary cholangitis, primary sclerosing cholangitis, and prolonged extrahepatic cholestasis.
+    src: { page: 2 }
+    status: unverified
+  - id: hb.L01.104
+    kind: cloze
+    topic: causes
+    text: Cirrhosis is called {{c1::cryptogenic}} when the etiology cannot be determined; the infectious cause besides viral hepatitis in the book's list is {{c2::tertiary syphilis}}.
+    src: { page: 2 }
+    status: unverified
+  - id: hb.L01.105
+    kind: card
+    topic: pathogenesis
+    front: When does fibrosis become irreversible?
+    back: When it progresses to acellular permanent septa.
+    src: { page: 3, quote: "progresses from a reversible to an irreversible state where acellular permanent septa develop" }
+    status: unverified
+  - id: hb.L01.106
+    kind: card
+    topic: pathogenesis
+    front: How do regenerative nodules form in cirrhosis?
+    back: Dying cells secrete growth factors that act on surviving hepatocytes, which proliferate into regenerative nodules.
+    src: { page: 3 }
+    status: unverified
+  - id: hb.L01.107
+    kind: card
+    topic: pathogenesis
+    front: Why do portosystemic collaterals open in cirrhosis?
+    back: At a critical level of portal pressure, pre-existing collaterals open to decompress the portal circulation.
+    src: { page: 4 }
+    status: unverified
+  - id: hb.L01.108
+    kind: card
+    topic: pathogenesis
+    front: Two reasons capillarization and shunting cause hepatic dysfunction?
+    back: Loss of endothelial fenestrations and hepatocyte microvilli impedes exchange between blood and hepatocytes; and diversion of portal blood past functioning tissue causes vascular insufficiency at the centre of regenerative nodules.
+    src: { page: 4 }
+    status: unverified
+  - id: hb.L01.109
+    kind: card
+    topic: presentation
+    front: Clinical features of a cirrhotic liver on examination?
+    back: Shrunken, enlarged or normal in size; sharp edge that may be irregular; smooth or nodular surface; firm; usually not tender.
+    src: { page: 4 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.110
+    kind: card
+    topic: presentation
+    front: Three clinical presentations of portal hypertension in cirrhosis?
+    back: Manifestations of portosystemic shunts, splenomegaly, and ascites.
+    src: { page: 4 }
+    status: unverified
+  - id: hb.L01.111
+    kind: card
+    topic: presentation
+    front: How does splenomegaly present in cirrhosis?
+    back: Left hypochondrial pain and hypersplenism.
+    src: { page: 5 }
+    status: unverified
+  - id: hb.L01.112
+    kind: card
+    topic: presentation
+    front: Mechanism of ascites in cirrhosis, as stated in the lecture?
+    back: Accumulation of endogenous vasodilators; portal hypertension acts as a localizing factor that favours transudation of fluid into the peritoneal cavity.
+    src: { page: 5 }
+    status: unverified
+  - id: hb.L01.113
+    kind: card
+    topic: presentation
+    front: How does compensated cirrhosis usually present?
+    back: Usually asymptomatic and found incidentally on examination, labs or imaging. A cirrhotic liver and enlarged spleen are found on examination, and variceal bleeding may occur.
+    src: { page: 5 }
+    status: unverified
+  - id: hb.L01.114
+    kind: card
+    topic: presentation
+    front: Define decompensated cirrhosis.
+    back: A symptomatic disease state marked by manifestations of liver failure.
+    src: { page: 6 }
+    status: unverified
+  - id: hb.L01.115
+    kind: card
+    topic: presentation
+    front: Two ways the first decompensation can develop?
+    back: Insidiously, from slowly declining synthetic function and rising portal pressure; or acutely, over hours or days with rapid deterioration of liver function.
+    src: { page: 6 }
+    status: unverified
+  - id: hb.L01.116
+    kind: card
+    topic: presentation
+    front: Most frequent complications in decompensated cirrhosis?
+    back: Ascites, hepatic encephalopathy, and coagulopathy with or without jaundice.
+    src: { page: 6 }
+    status: unverified
+  - id: hb.L01.117
+    kind: card
+    topic: presentation
+    front: Clinical features of ascites in cirrhosis?
+    back: Abdominal distension, full flanks, umbilical hernia, scrotal edema with or without peripheral edema; may come with a pleural effusion (hepatic hydrothorax).
+    src: { page: 6 }
+    status: unverified
+  - id: hb.L01.118
+    kind: card
+    topic: presentation
+    front: Cause of coagulopathy in cirrhosis, and how it presents?
+    back: Deficient synthesis of clotting factors by the liver; it presents with easy bruising, ecchymosis and a bleeding tendency.
+    src: { page: 6 }
+    status: unverified
+  - id: hb.L01.119
+    kind: card
+    topic: presentation
+    front: Features of hypogonadism and feminization in men with cirrhosis, and the changes in women?
+    back: "Men: small soft testes, impotence, loss of libido, infertility, gynecomastia, scant chest, axillary and abdominal hair. Women: amenorrhea, irregular menstrual bleeding, infertility."
+    src: { page: 6 }
+    status: unverified
+  - id: hb.L01.120
+    kind: card
+    topic: presentation
+    front: Describe palmar erythema and its cause in cirrhosis.
+    back: Mottled redness of the thenar and hypothenar eminences, due to hyperestrogenemia.
+    src: { page: 7 }
+    status: unverified
+  - id: hb.L01.121
+    kind: card
+    topic: presentation
+    front: Why are infections more frequent in cirrhosis?
+    back: Bacterial translocation and cirrhosis-associated immune dysfunction, causing bacteremia and endotoxemia.
+    src: { page: 7 }
+    status: unverified
+  - id: hb.L01.122
+    kind: enumerate
+    topic: presentation
+    prompt: Mention the infections the lecture lists in cirrhosis.
+    points: [Urinary tract infection, Pneumonia, Tuberculous peritonitis, Spontaneous bacterial peritonitis, Fungal infections]
+    pass: 4
+    src: { page: 7 }
+    status: unverified
+  - id: hb.L01.123
+    kind: card
+    topic: presentation
+    front: Define sarcopenia and its significance in cirrhosis.
+    back: Loss of muscle mass. It is associated with greater risk of morbidity and mortality.
+    src: { page: 7 }
+    status: unverified
+  - id: hb.L01.124
+    kind: card
+    topic: presentation
+    front: What is further decompensation?
+    back: A more severe stage of decompensated cirrhosis, with worsening portal hypertension and circulatory dysfunction, and an even higher mortality than the first decompensation.
+    src: { page: 8 }
+    status: unverified
+  - id: hb.L01.125
+    kind: card
+    topic: presentation
+    front: Why may relative adrenal insufficiency occur in cirrhosis?
+    back: Partly from reduced cholesterol synthesis and increased proinflammatory cytokines.
+    src: { page: 8 }
+    status: unverified
+  - id: hb.L01.126
+    kind: card
+    topic: aclf
+    front: Pathophysiology of ACLF?
+    back: Intense systemic inflammation from infections, acute liver damage, and probably intestinal translocation of bacteria or their products.
+    src: { page: 9 }
+    status: unverified
+  - id: hb.L01.127
+    kind: card
+    topic: aclf
+    front: How does acute decompensation present?
+    back: Acute development or worsening of cirrhosis complications, such as ascites, GI bleeding, overt HE and/or jaundice, and bacterial infections.
+    src: { page: 9 }
+    status: unverified
+  - id: hb.L01.128
+    kind: card
+    topic: diagnosis
+    front: What does the diagnosis of cirrhosis depend on?
+    back: Showing widespread nodules in the liver combined with fibrosis.
+    src: { page: 9 }
+    status: unverified
+  - id: hb.L01.129
+    kind: card
+    topic: diagnosis
+    front: Role of CT in cirrhosis?
+    back: It identifies liver nodules, fatty change, and space-occupying lesions such as HCC (multiphase CT).
+    src: { page: 10 }
+    status: unverified
+  - id: hb.L01.130
+    kind: enumerate
+    topic: diagnosis
+    prompt: Mention the uses of MRI in cirrhosis.
+    points:
+      - Liver nodules and possible malignancy such as HCC (multiphase MRI)
+      - Hepatic iron level (hemochromatosis)
+      - Hepatic fat deposition (steatosis)
+      - Biliary obstruction (MRCP)
+    pass: 3
+    src: { page: 10 }
+    status: unverified
+  - id: hb.L01.131
+    kind: card
+    topic: diagnosis
+    front: Complications of liver biopsy?
+    back: Rare but can be severe. Bleeding, infection, and accidental injury to nearby organs.
+    src: { page: 10 }
+    status: unverified
+  - id: hb.L01.132
+    kind: card
+    topic: diagnosis
+    front: Which elastography tool is most widely validated for advanced fibrosis and cirrhosis?
+    back: Vibration-controlled transient elastography (FibroScan).
+    src: { page: 11 }
+    status: unverified
+  - id: hb.L01.133
+    kind: card
+    topic: diagnosis
+    front: Is transient elastography an imaging technique?
+    back: No. It is ultrasound-based but non-imaging (no B-mode image); a special transducer sends shear waves through the liver.
+    src: { page: 11 }
+    status: unverified
+  - id: hb.L01.134
+    kind: card
+    topic: labs
+    front: Albumin and prothrombin time in decompensated cirrhosis, and why?
+    back: Albumin is low because the liver synthesizes it; prothrombin time is prolonged because of coagulation factor defects.
+    src: { page: 11 }
+    status: unverified
+  - id: hb.L01.135
+    kind: card
+    topic: labs
+    front: Which other liver tests may be raised in cirrhosis besides aminotransferases?
+    back: Serum bilirubin and gamma-glutamyl transpeptidase (GGT).
+    src: { page: 11 }
+    status: unverified
+  - id: hb.L01.136
+    kind: card
+    topic: labs
+    front: What does a low or a high white cell count suggest in cirrhosis?
+    back: Low suggests hypersplenism; high suggests infection.
+    src: { page: 12 }
+    status: unverified
+  - id: hb.L01.137
+    kind: card
+    topic: labs
+    front: Which tests should be monitored in cirrhosis besides liver tests and blood count?
+    back: Renal function, serum electrolytes, and serum alpha-fetoprotein.
+    src: { page: 12 }
+    status: unverified
+  - id: hb.L01.138
+    kind: card
+    topic: labs
+    front: Tests for autoimmune and alpha-1 antitrypsin causes of cirrhosis?
+    back: "Autoimmune: autoantibodies and raised serum IgG. Alpha-1 antitrypsin deficiency: alpha-1 antitrypsin level and protease inhibitor phenotype."
+    src: { page: 12 }
+    status: unverified
+  - id: hb.L01.139
+    kind: card
+    topic: labs
+    front: Lab findings that support MASH as the cause of cirrhosis?
+    back: High fasting plasma glucose and HbA1c, and/or hyperlipidemia.
+    src: { page: 13 }
+    status: unverified
+  - id: hb.L01.140
+    kind: card
+    topic: diagnosis
+    front: Role of upper endoscopy in cirrhosis?
+    back: It confirms varices and finds specific causes of bleeding in the esophagus, stomach and proximal duodenum.
+    src: { page: 13 }
+    status: unverified
+  - id: hb.L01.141
+    kind: card
+    topic: prognosis
+    front: In compensated cirrhosis, how do varices affect mortality?
+    back: Patients without varices have significantly lower mortality than those with varices.
+    src: { page: 13 }
+    status: unverified
+  - id: hb.L01.142
+    kind: card
+    topic: prognosis
+    front: Two most used scoring systems for severity of liver disease, and what kind of prognosis does Child-Pugh give?
+    back: Child-Pugh and MELD. Child-Pugh gives a good short-term prognostic guide.
+    src: { page: 14 }
+    status: unverified
+  - id: hb.L01.143
+    kind: cloze
+    topic: prognosis
+    text: "Child-Pugh encephalopathy: none = 1, stage {{c1::1-2}} = 2, stage {{c2::3-4}} = 3. Ascites: absent = 1, {{c3::mild to moderate}} = 2, severe = 3."
+    src: { page: 14 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L01.144
+    kind: card
+    topic: prognosis
+    front: What was MELD first used for, and what else does it measure?
+    back: Prioritising donor liver allocation for transplantation. It also measures the risk of mortality and complications in cirrhosis.
+    src: { page: 15 }
+    status: unverified
+  - id: hb.L01.145
+    kind: card
+    topic: treatment
+    front: When is sodium restriction needed in cirrhosis?
+    back: When there is sodium and fluid retention. Vitamin supplementation is also desirable.
+    src: { page: 15 }
+    status: unverified
+  - id: hb.L01.146
+    kind: card
+    topic: treatment
+    front: When is surgery acceptable in a patient with cirrhosis?
+    back: Only when the clinical indication is clearly strong and transplantation is not imminent, because the patient is a poor operative risk.
+    src: { page: 15 }
+    status: unverified
+  - id: hb.L01.147
+    kind: card
+    topic: treatment
+    front: Aims of treatment in decompensated cirrhosis?
+    back: Treat complications (ascites, HE, HRS, SBP) and prevent progression to further decompensation. Treating precipitating factors may return the patient to a compensated state.
+    src: { page: 16 }
+    status: unverified
+  - id: hb.L01.148
+    kind: card
+    topic: treatment
+    front: How is thrombocytopenia treated in cirrhosis before invasive procedures?
+    back: Platelet concentrate infusion, or thrombopoietin receptor agonists (avatrombopag, lusutrombopag) when platelets are below 50,000/cmm.
+    src: { page: 16 }
+    status: unverified
+  - id: hb.L01.149
+    kind: card
+    topic: specific-treatment
+    front: Three goals of specific treatment of cirrhosis?
+    back: Remove or suppress the primary cause, suppress hepatic inflammation, and reduce fibrogenesis, to lower the risk of decompensation and improve survival.
+    src: { page: 17 }
+    status: unverified
+  - id: hb.L01.150
+    kind: card
+    topic: specific-treatment
+    front: What does recompensation of cirrhosis imply?
+    back: At least partial regression of the structural and functional changes of cirrhosis after removal of the etiology.
+    src: { page: 17 }
+    status: unverified
+  - id: hb.L01.151
+    kind: card
+    topic: transplant
+    front: How should HBV be managed in a patient awaiting liver transplantation?
+    back: Oral nucleos(t)ide analogues with a high barrier to resistance, to prevent flares and slow progression.
+    src: { page: 18 }
+    status: unverified
+  - id: hb.L01.152
+    kind: enumerate
+    topic: transplant
+    prompt: Mention the immunosuppressive drugs used after liver transplantation.
+    points: [Cyclosporine, Tacrolimus, Sirolimus, Corticosteroids, Azathioprine, Mycophenolate mofetil]
+    pass: 4
+    src: { page: 18 }
+    status: unverified
+  - id: hb.L01.153
+    kind: card
+    topic: transplant
+    front: Major impediment to liver transplantation, and two ways around it?
+    back: Organ shortage. Adult living donor transplantation and extended-criteria donors.
+    src: { page: 18 }
+    status: unverified
+  - id: hb.L01.154
+    kind: cloze
+    topic: aclf
+    text: In ACLF, liver transplantation should be considered early in selected patients with ACLF grade {{c1::2 and 3}}; antiviral therapy ({{c2::tenofovir or entecavir}}) is started as early as possible for HBV reactivation.
+    src: { page: 19 }
+    status: unverified
+  - id: hb.L01.155
+    kind: card
+    topic: cardiopulmonary
+    front: Which complications of cirrhosis rest on the hyperdynamic circulatory syndrome?
+    back: Ascites, hepatorenal syndrome, and hepatopulmonary syndrome.
+    src: { page: 19 }
+    status: unverified
+  - id: hb.L01.156
+    kind: card
+    topic: cardiopulmonary
+    front: Why is cirrhotic cardiomyopathy usually silent at rest, and when does it show?
+    back: Systemic vasodilatation reduces afterload and masks the abnormal cardiac function. Under stress, the impaired cardiac response produces congestive heart failure.
+    src: { page: 20 }
+    status: unverified
+  - id: hb.L01.157
+    kind: card
+    topic: cardiopulmonary
+    front: Pathogenesis of portopulmonary hypertension?
+    back: Vasoactive mediators from the splanchnic circulation, normally cleared by the liver, reach the lungs through portosystemic shunts, raising pulmonary vascular resistance and injuring pulmonary vessels.
+    src: { page: 20 }
+    status: unverified
+  - id: hb.L01.158
+    kind: card
+    topic: cardiopulmonary
+    front: Treatment of portopulmonary hypertension in the lecture?
+    back: No treatment in mild PoPH; otherwise liver transplantation and diuretics.
+    src: { page: 20 }
+    status: unverified
+  - id: hb.L01.159
+    kind: card
+    topic: cardiopulmonary
+    front: Pathogenesis of hepatopulmonary syndrome?
+    back: Pulmonary vascular dilatation from increased nitric oxide production, driven by increased hepatic endothelin-1 and pulmonary ET-B. This impairs gas exchange, widening the A-a gradient and causing hypoxemia.
+    src: { page: 21 }
+    status: unverified
+  - id: hb.L01.160
+    kind: card
+    topic: cardiopulmonary
+    front: Most common presenting symptom of hepatopulmonary syndrome, and its physical signs?
+    back: Dyspnea on exertion or at rest. Signs are digital clubbing, cyanosis, and spider angiomas.
+    src: { page: 21 }
+    status: unverified
+  - id: hb.L01.161
+    kind: card
+    topic: cardiopulmonary
+    front: Medical treatment of hepatopulmonary syndrome?
+    back: No approved medical therapy. Oxygen is recommended for severe hypoxemia to improve exercise tolerance and quality of life.
+    src: { page: 21 }
+    status: unverified
+  - id: hb.L01.162
+    kind: cloze
+    topic: cardiopulmonary
+    text: "HPS needs an A-a O2 gradient above {{c1::15 mmHg}} (above {{c2::20 mmHg}} at age 65 or more) on room air; hypoxemia means PaO2 below {{c3::80 mmHg}}."
+    src: { page: 21 }
+    status: unverified
+    tags: [numbers]
+  # ---------- New MCQs ----------
+  - id: hb.L01.163
+    kind: mcq
+    topic: pathogenesis
+    stem: "A 66-year-old woman has had severe tricuspid regurgitation with right heart failure for years and now has cirrhosis. Where is her fibrosis expected to predominate?"
+    options:
+      - Zone 3
+      - Periportal zone 1
+      - Evenly across all zones
+      - Limited to the portal tracts, without septa
+    answer: 0
+    why:
+      - "Correct: in alcoholism and right heart failure, fibrosis is predominantly in zone 3."
+      - "Zone 1 fibrosis is typical of viral hepatitis and hemochromatosis."
+      - "The lecture names a dominant zone for each cause; it is not uniform."
+      - "Cirrhosis by definition has diffuse fibrosis with nodules, not portal-limited fibrosis."
+    src: { page: 3 }
+    status: unverified
+  - id: hb.L01.164
+    kind: mcq
+    topic: presentation
+    stem: "A 57-year-old man with compensated HCV cirrhosis is followed in clinic. Which event is most likely to be his first decompensation?"
+    options:
+      - Variceal bleeding
+      - Overt hepatic encephalopathy
+      - Ascites
+      - Jaundice
+      - Hepatorenal syndrome
+    answer: 2
+    why:
+      - "Variceal bleeding happens but is less frequent as the first event."
+      - "HE is a common complication but not the most frequent first event."
+      - "Correct: ascites is the most frequent first decompensating event in cirrhosis."
+      - "Jaundice alone is not an early manifestation in most non-cholestatic cirrhosis."
+      - "HRS-AKI is an event of further decompensation."
+    src: { page: 6 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.165
+    kind: mcq
+    topic: presentation
+    stem: "A medical student asks which consequence of cirrhosis appears earliest, drives most complications, and develops regardless of the severity of liver disease. What is the answer?"
+    options:
+      - Hepatocellular carcinoma
+      - Hypoalbuminemia
+      - Coagulopathy
+      - Portal hypertension
+      - Hepatic encephalopathy
+    answer: 3
+    why:
+      - "HCC is a complication of established cirrhosis, not the earliest consequence."
+      - "Low albumin reflects synthetic failure in decompensated disease."
+      - "Coagulopathy reflects synthetic failure in decompensated disease."
+      - "Correct: portal hypertension is the earliest and most important consequence and develops regardless of disease severity."
+      - "HE is a decompensating event, not the earliest consequence."
+    src: { page: 4 }
+    status: unverified
+  - id: hb.L01.166
+    kind: mcq
+    topic: presentation
+    stem: "A 52-year-old man with alcohol-related cirrhosis has gynecomastia, small soft testes, loss of axillary hair, spider angiomas and palmar erythema. What is the common mechanism the lecture gives?"
+    options:
+      - Hypoalbuminemia
+      - Hyperestrogenemia from decreased estrogen metabolism
+      - Hyperammonemia
+      - Portal hypertension with splenomegaly
+      - Thrombocytopenia
+    answer: 1
+    why:
+      - "Low albumin causes edema and ascites, not feminization."
+      - "Correct: endocrine and vascular changes come from decreased estrogen metabolism and hyperestrogenemia."
+      - "Hyperammonemia drives HE and sarcopenia, not these signs."
+      - "Splenomegaly causes hypersplenism and left hypochondrial pain, not feminization."
+      - "Low platelets cause bleeding tendency, not these signs."
+    src: { page: 6 }
+    status: unverified
+  - id: hb.L01.167
+    kind: mcq
+    topic: diagnosis
+    stem: "A 38-year-old man with an acute HBV flare has ALT 620 U/L. FibroScan the same day reads 16 kPa. What is the best interpretation?"
+    options:
+      - He has cirrhosis; no further assessment is needed
+      - Inflammation makes liver stiffness falsely low
+      - FibroScan is not affected by inflammation, only by obesity
+      - He needs a transjugular biopsy because of the high ALT
+      - Liver stiffness may be overestimated by hepatic inflammation
+    answer: 4
+    why:
+      - "Stiffness readings during inflammation can overestimate fibrosis, so cirrhosis is not proven."
+      - "These factors raise, not lower, the reading."
+      - "The lecture lists inflammation among the causes of overestimation."
+      - "The transjugular route is for ascites or coagulation defects, not a high ALT."
+      - "Correct: inflammation, cholestasis, food, exercise and venous congestion can overestimate liver stiffness."
+    src: { page: 11 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.168
+    kind: mcq
+    topic: labs
+    stem: "A 59-year-old man with alcohol-related cirrhosis and a poor diet has hemoglobin 9.8 g/dL with MCV 112 fL. According to the lecture, the most likely cause is:"
+    options:
+      - Hypersplenism
+      - Chronic occult GI blood loss
+      - Vitamin B12 and folate deficiency
+      - Acute variceal bleeding
+      - Anemia of chronic disease
+    answer: 2
+    why:
+      - "Hypersplenism gives a normocytic normochromic anemia."
+      - "Chronic occult blood loss gives a microcytic hypochromic anemia."
+      - "Correct: macrocytic anemia in cirrhosis is due to vitamin B12 and folate deficiency."
+      - "Acute GI bleeding gives a normocytic normochromic anemia."
+      - "The lecture groups anemia of chronic disease with the microcytic type."
+    src: { page: 12 }
+    status: unverified
+  - id: hb.L01.169
+    kind: mcq
+    topic: labs
+    stem: "A 19-year-old student has cirrhosis on ultrasound and a recent tremor. Viral markers are negative. Which set of results would confirm the likely etiology?"
+    options:
+      - Low ceruloplasmin and high 24-hour urine copper
+      - High transferrin saturation and high ferritin
+      - Positive anti-mitochondrial antibodies
+      - High IgG and positive autoantibodies
+      - Low alpha-1 antitrypsin level
+    answer: 0
+    why:
+      - "Correct: Wilson disease shows low ceruloplasmin, high 24-hour urine copper and high hepatic copper."
+      - "These point to hemochromatosis, which rarely causes cirrhosis at 19 with a tremor."
+      - "AMA points to PBC, a disease of middle-aged women."
+      - "These point to autoimmune liver disease, which does not explain the tremor."
+      - "Alpha-1 antitrypsin deficiency does not explain a tremor."
+    src: { page: 12 }
+    status: unverified
+  - id: hb.L01.170
+    kind: mcq
+    topic: specific-treatment
+    stem: "A 54-year-old woman with pruritus and fatigue has early cirrhosis and positive anti-mitochondrial antibodies. What specific treatment does the lecture advise?"
+    options:
+      - Prednisolone and azathioprine
+      - Penicillamine chelation
+      - Venesection
+      - Ursodeoxycholic acid started early and continued long term
+      - Nucleos(t)ide analogues
+    answer: 3
+    why:
+      - "Steroids and immunosuppressants are for autoimmune hepatitis."
+      - "Chelation is for Wilson disease."
+      - "Venesection is for hemochromatosis."
+      - "Correct: UDCA given early in PBC and continued long term."
+      - "Nucleos(t)ide analogues are for hepatitis B."
+    src: { page: 17 }
+    status: unverified
+  - id: hb.L01.171
+    kind: mcq
+    topic: prognosis
+    stem: "A 63-year-old man with HCV cirrhosis develops ascites for the first time. His son asks about prognosis. What is the approximate median survival once cirrhosis decompensates?"
+    options:
+      - About 6 months
+      - About 2 years
+      - About 5-7 years
+      - More than 12 years
+      - Unchanged from compensated cirrhosis
+    answer: 1
+    why:
+      - "Too short; the lecture gives about two years for decompensated cirrhosis."
+      - "Correct: median survival drops to about two years in decompensated cirrhosis."
+      - "5-7% is the yearly rate of decompensation, not years of survival."
+      - "More than 12 years is the median survival of compensated cirrhosis."
+      - "Decompensation carries an entirely different, worse prognosis."
+    src: { page: 13 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L01.172
+    kind: mcq
+    topic: prognosis
+    stem: "A patient has Child-Pugh class C cirrhosis. According to the book's table, what is the expected one-year survival?"
+    options:
+      - 100%
+      - 85%
+      - 80%
+      - 45%
+      - 35%
+    answer: 3
+    why:
+      - "100% is the one-year survival of class A."
+      - "85% is the two-year survival of class A."
+      - "80% is the one-year survival of class B."
+      - "Correct: class C has 45% one-year and 35% two-year survival."
+      - "35% is the two-year survival of class C."
+    src: { page: 14 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L01.173
+    kind: mcq
+    topic: treatment
+    stem: "A 60-year-old woman with decompensated cirrhosis has taken omeprazole for years for mild dyspepsia, with no ulcer on endoscopy. Why does the lecture advise avoiding it?"
+    options:
+      - It causes gut dysbiosis and raises the risk of infection and hepatic encephalopathy
+      - It is hepatotoxic
+      - It interacts with carvedilol
+      - It worsens portal hypertension
+      - It causes hyponatremia
+    answer: 0
+    why:
+      - "Correct: PPIs alter gut microbiota and increase the risk of infection and HE."
+      - "The lecture does not call PPIs hepatotoxic."
+      - "No interaction with carvedilol is mentioned."
+      - "The lecture does not link PPIs to portal pressure."
+      - "Hyponatremia is not the reason given."
+    src: { page: 15 }
+    status: unverified
+  - id: hb.L01.174
+    kind: mcq
+    topic: treatment
+    stem: "A 70-kg man with cirrhosis is admitted with an acute episode of hepatic encephalopathy. What does the lecture say about his protein intake?"
+    options:
+      - Stop protein completely until he wakes up
+      - Keep it at 1.2-1.5 g/kg/day without change
+      - Reduce it temporarily, but to no less than 60-80 g/day
+      - Limit it to 20 g/day
+      - Give protein only intravenously
+    answer: 2
+    why:
+      - "The lecture never advises stopping protein."
+      - "The book allows a reduction during the acute episode."
+      - "Correct: protein is reduced only in an acute HE episode, and to no less than 60-80 g/day."
+      - "20 g/day is below the 60-80 g/day floor."
+      - "The route is not discussed; the floor is the point."
+    src: { page: 15 }
+    status: unverified
+    tags: [numbers]
+    update:
+      text: Current guidance advises against restricting protein in hepatic encephalopathy; keep 1.2-1.5 g/kg/day. Answer with the book's 60-80 g/day floor in the exam (lecture 20 already follows the newer advice).
+      ref: EASL CPG on nutrition in chronic liver disease 2019
+  - id: hb.L01.175
+    kind: mcq
+    topic: treatment
+    stem: "A 55-year-old man with compensated cirrhosis has medium esophageal varices and no contraindication to beta blockers. Which drug does the lecture prefer?"
+    options:
+      - Propranolol
+      - Nadolol
+      - Isosorbide mononitrate
+      - Carvedilol
+      - Spironolactone
+    answer: 3
+    why:
+      - "Propranolol is a traditional NSBB; carvedilol is preferred."
+      - "Nadolol is a traditional NSBB; carvedilol is preferred."
+      - "Nitrates are not the NSBB the lecture names."
+      - "Correct: carvedilol is preferred over propranolol and nadolol."
+      - "Spironolactone treats ascites, not varices."
+    src: { page: 16 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.176
+    kind: mcq
+    topic: transplant
+    stem: "A 49-year-old woman with autoimmune cirrhosis develops ascites for the first time. When should she be referred for liver transplant assessment?"
+    options:
+      - After a second decompensating event
+      - Now, at this first sign of decompensation
+      - Only when MELD exceeds 30
+      - Only after HCC develops
+      - Never, because autoimmune disease recurs in the graft
+    answer: 1
+    why:
+      - "Waiting for further decompensation delays referral."
+      - "Correct: patients should be referred after the first signs of hepatic decompensation."
+      - "The lecture sets no MELD threshold for referral."
+      - "HCC is not required for referral."
+      - "Autoimmune disease may recur, but this is not a contraindication."
+    src: { page: 18 }
+    status: unverified
+  - id: hb.L01.177
+    kind: mcq
+    topic: transplant
+    stem: "A 58-year-old man with decompensated HCV cirrhosis is on the transplant waiting list with a MELD score of 24. When should he receive direct-acting antivirals, per the lecture?"
+    options:
+      - Immediately, before transplantation
+      - Never; HCV does not recur after transplant
+      - Only if MELD falls below 30
+      - Only together with interferon
+      - After transplantation
+    answer: 4
+    why:
+      - "Treatment before LT is deferred when MELD is 21 or higher."
+      - "HCV can recur in the transplanted liver."
+      - "The threshold is 21, not 30."
+      - "Interferon is not part of the lecture's advice."
+      - "Correct: DAA treatment is deferred until after transplantation when MELD is 21 or higher."
+    src: { page: 18 }
+    status: unverified
+  - id: hb.L01.178
+    kind: mcq
+    topic: transplant
+    stem: "Five patients with decompensated cirrhosis are assessed for liver transplantation. Which one has an absolute contraindication?"
+    options:
+      - A 72-year-old man
+      - A woman with a BMI of 42
+      - A man with active sepsis
+      - A man with portal vein thrombosis
+      - A man with hepatopulmonary syndrome
+    answer: 2
+    why:
+      - "Age over 70 is a relative contraindication."
+      - "Morbid obesity is a relative contraindication."
+      - "Correct: sepsis is an absolute contraindication."
+      - "Portal and mesenteric vein thrombosis is a relative contraindication."
+      - "HPS is the stated exception to cardiopulmonary contraindications; LT is its only effective therapy."
+    src: { page: 18 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.179
+    kind: mcq
+    topic: cardiopulmonary
+    stem: "A 56-year-old man with cirrhosis, no known heart disease and no symptoms at rest develops pulmonary edema during severe sepsis. Echocardiography shows diastolic dysfunction. What is the most likely diagnosis?"
+    options:
+      - Cirrhotic cardiomyopathy
+      - Portopulmonary hypertension
+      - Hepatopulmonary syndrome
+      - Constrictive pericarditis
+      - Hepatic hydrothorax
+    answer: 0
+    why:
+      - "Correct: cardiac dysfunction without known cardiac disease, silent at rest and unmasked by stress, with diastolic and/or systolic dysfunction on echo."
+      - "PoPH is pulmonary arterial hypertension, not ventricular dysfunction."
+      - "HPS is an oxygenation defect from pulmonary vasodilatation."
+      - "Constrictive pericarditis is a cause of cirrhosis, not this stress-induced picture."
+      - "Hydrothorax is a pleural effusion, not pulmonary edema from cardiac dysfunction."
+    src: { page: 20 }
+    status: unverified
+  - id: hb.L01.180
+    kind: mcq
+    topic: cardiopulmonary
+    stem: "A 50-year-old woman with portal hypertension has exertional dyspnea. Echocardiography shows raised pulmonary artery pressure. She has no lung disease, no thromboembolism and no left heart disease. What is the most likely diagnosis?"
+    options:
+      - Hepatopulmonary syndrome
+      - Cirrhotic cardiomyopathy
+      - Hyperdynamic circulatory syndrome
+      - Portopulmonary hypertension
+    answer: 3
+    why:
+      - "HPS is an oxygenation defect with pulmonary vasodilatation, not pulmonary arterial hypertension."
+      - "Cirrhotic cardiomyopathy is ventricular dysfunction, not pulmonary arterial hypertension."
+      - "The hyperdynamic circulation has low systemic pressure; it does not define raised pulmonary pressure."
+      - "Correct: PoPH is pulmonary arterial hypertension with portal hypertension, without other causes of pulmonary hypertension."
+    src: { page: 20 }
+    status: unverified
+  - id: hb.L01.181
+    kind: mcq
+    topic: cardiopulmonary
+    stem: "A 45-year-old man with cirrhosis and confirmed hepatopulmonary syndrome has a PaO2 of 62 mmHg. Which treatment is the only known effective therapy?"
+    options:
+      - Liver transplantation
+      - TIPS
+      - Long-term carvedilol
+      - Inhaled nitric oxide
+      - Approved oral medical therapy for HPS
+    answer: 0
+    why:
+      - "Correct: LT is the only known effective therapy, improving oxygenation at 1 year."
+      - "TIPS can aggravate the hyperkinetic circulation and worsen hypoxemia."
+      - "Beta blockers are not a treatment for HPS in the lecture."
+      - "Increased NO causes the vasodilatation; giving NO is not a treatment."
+      - "There is currently no approved medical therapy for HPS."
+    src: { page: 22 }
+    status: unverified
+  - id: hb.L01.182
+    kind: mcq
+    topic: cardiopulmonary
+    stem: "A patient with cirrhosis has a bounding pulse, tachycardia, low blood pressure and a systolic murmur. What is the main cause of this circulatory state?"
+    options:
+      - Anemia from hypersplenism
+      - Thyrotoxicosis
+      - Systemic vasodilatation as portosystemic shunts let vasodilators bypass the liver
+      - Cirrhotic cardiomyopathy
+      - Increased intrahepatic vascular resistance
+    answer: 2
+    why:
+      - "Anemia is not the main cause given."
+      - "Not part of the cirrhosis mechanism in the lecture."
+      - "Correct: the hyperdynamic circulation is caused mainly by systemic vasodilatation through portosystemic shunts."
+      - "CCM is impaired cardiac function, not the cause of the hyperdynamic state."
+      - "Intrahepatic resistance starts portal hypertension; it does not by itself cause systemic vasodilatation."
+    src: { page: 19 }
+    status: unverified
+  - id: hb.L01.183
+    kind: mcq
+    topic: presentation
+    stem: "A 64-year-old man with cirrhosis has recurrent episodes of bacteremia. Which mechanism links portal hypertension to these infections?"
+    options:
+      - Splenic sequestration of neutrophils only
+      - Reduced gastric acid from cirrhosis itself
+      - Direct seeding from esophageal varices
+      - Bacterial translocation through a hyperpermeable intestinal wall
+      - Hyperestrogenemia
+    answer: 3
+    why:
+      - "Hypersplenism may lower white cells, but the lecture names translocation and immune dysfunction."
+      - "Not the mechanism given."
+      - "Not the mechanism given."
+      - "Correct: bacteria and their products pass from gut to circulation because portal hypertension makes the intestinal wall hyperpermeable."
+      - "Hyperestrogenemia causes endocrine and vascular signs, not infections."
+    src: { page: 7 }
+    status: unverified
+  - id: hb.L01.184
+    kind: mcq
+    topic: diagnosis
+    stem: "A 60-year-old man with compensated HBV cirrhosis asks how often he needs liver cancer screening. What does the lecture recommend?"
+    options:
+      - CT every year
+      - Ultrasound with or without AFP every 6 months
+      - AFP alone every 3 months
+      - MRI every 2 years
+      - No screening while compensated
+    answer: 1
+    why:
+      - "CT is for characterising lesions, not routine screening."
+      - "Correct: ultrasound with or without AFP every 6 months."
+      - "AFP alone is not the screening strategy given."
+      - "MRI is for evaluating nodules, not routine screening at this interval."
+      - "Early HCC detection is an aim of treatment in compensated cirrhosis."
+    src: { page: 13 }
+    status: unverified
+    tags: [high-yield]
+  - id: hb.L01.185
+    kind: mcq
+    topic: aclf
+    stem: "Two patients with cirrhosis are admitted with new ascites and jaundice. One also has kidney and circulatory failure. What best defines the second patient's syndrome as ACLF?"
+    options:
+      - The presence of jaundice
+      - Prior compensated cirrhosis
+      - A Child-Pugh score above 10
+      - Absence of a precipitating factor
+      - Acute decompensation with organ failure and a 28-day mortality of 15% or more
+    answer: 4
+    why:
+      - "Jaundice is a feature of acute decompensation in both patients."
+      - "ACLF can occur at any stage; prior compensation is not what defines it."
+      - "Child-Pugh is not part of the definition."
+      - "ACLF usually has a precipitant, such as infection or alcohol."
+      - "Correct: ACLF is acute decompensation with multiorgan failure and high short-term (28-day) mortality of 15% or more."
+    src: { page: 8 }
+    status: unverified
+  - id: hb.L01.186
+    kind: mcq
+    topic: diagnosis
+    stem: "A 51-year-old woman with tense ascites and INR 2.1 needs a liver biopsy to clarify the etiology of her cirrhosis. Which approach does the lecture recommend?"
+    options:
+      - Percutaneous US-guided biopsy after draining the ascites
+      - Laparoscopic wedge biopsy
+      - Transjugular liver biopsy
+      - No biopsy is possible
+      - CT-guided percutaneous biopsy
+    answer: 2
+    why:
+      - "Ascites and coagulopathy are contraindications to the percutaneous route."
+      - "Surgery is a poor risk in cirrhosis and is not the route given."
+      - "Correct: the transjugular route is used when there are contraindications such as ascites or a coagulation defect."
+      - "The transjugular route makes biopsy possible."
+      - "Still percutaneous, so the same contraindications apply."
+    src: { page: 10 }
+    status: unverified
+  - id: hb.L01.187
+    kind: mcq
+    topic: labs
+    stem: "A 62-year-old man has a nodular liver on ultrasound, splenomegaly and platelets of 85,000/cmm, but his ALT and AST are normal. What is the best conclusion?"
+    options:
+      - Normal aminotransferases do not exclude cirrhosis
+      - Normal aminotransferases exclude cirrhosis
+      - ALT higher than AST is expected in cirrhosis
+      - Aminotransferases are usually above 1000 U/L in cirrhosis
+    answer: 0
+    why:
+      - "Correct: aminotransferases are usually mildly to moderately raised, but normal levels do not exclude cirrhosis."
+      - "The lecture states normal levels do not exclude cirrhosis."
+      - "In cirrhosis AST is usually greater than ALT."
+      - "Elevations are usually mild to moderate."
+    src: { page: 11 }
+    status: unverified
+  - id: hb.L01.188
+    kind: mcq
+    topic: transplant
+    stem: "A 46-year-old man with alcohol-related decompensated cirrhosis stopped drinking 2 months ago and asks about transplantation. What does the lecture say about abstinence?"
+    options:
+      - No abstinence period is needed
+      - He needs 2 years of abstinence
+      - Alcohol-related cirrhosis is an absolute contraindication
+      - He should generally be abstinent for 6 months before LT
+    answer: 3
+    why:
+      - "The lecture asks for an abstinence period."
+      - "The period given is 6 months."
+      - "Only active alcohol abuse is listed, and as a relative contraindication."
+      - "Correct: patients with alcoholism should generally be abstinent for 6 months before LT."
+    src: { page: 18 }
+    status: unverified
+  - id: hb.L01.189
+    kind: mcq
+    topic: specific-treatment
+    stem: "A 50-year-old woman with MASH cirrhosis, type 2 diabetes and a BMI of 37 asks what can treat the cause of her liver disease. Which option is NOT among the lecture's measures?"
+    options:
+      - Venesection
+      - Weight loss, diet and exercise
+      - Statins
+      - Antidiabetic drugs
+      - Bariatric surgery
+    answer: 0
+    why:
+      - "Correct: venesection is for hemochromatosis, not MASH."
+      - "Lifestyle modification is listed for MASH cirrhosis."
+      - "Statins are listed for MASH cirrhosis."
+      - "Antidiabetic drugs are listed for MASH cirrhosis."
+      - "Bariatric surgery is listed for MASH cirrhosis."
+    src: { page: 17 }
+    status: unverified
+  # ---------- Cases ----------
+  - id: hb.L01.190
+    kind: case
+    topic: presentation
+    stem: "A 54-year-old man with untreated chronic HCV is found to have platelets of 110,000/cmm on routine tests before an elective inguinal hernia repair. He feels well."
+    steps:
+      - reveal: "Exam: firm liver with a sharp irregular edge, palpable spleen, no ascites, no jaundice, no asterixis. Ultrasound: nodular surface, coarse echoes, enlarged caudate lobe, splenomegaly."
+        question: What stage is his liver disease?
+        options: ["Decompensated cirrhosis", "Compensated cirrhosis", "Acute-on-chronic liver failure", "Chronic hepatitis without cirrhosis"]
+        answer: 1
+        why: "Cirrhosis with no present or past decompensating event is compensated; these patients are often asymptomatic and found incidentally."
+      - question: Which test confirms whether he has varices?
+        options: [Upper endoscopy, HVPG measurement, Transient elastography, Abdominal ultrasound]
+        answer: 0
+        why: "Endoscopy confirms varices and finds causes of bleeding. HVPG measures portal pressure; it does not show varices."
+      - reveal: "Endoscopy shows esophageal varices."
+        question: Which drug does the lecture prefer to prevent bleeding and decompensation?
+        options: ["Propranolol", "Nadolol", "Omeprazole", "Carvedilol"]
+        answer: 3
+        why: "Carvedilol is preferred over propranolol and nadolol. PPIs should be avoided in cirrhosis."
+      - question: What HCC surveillance does he need?
+        options: [Ultrasound with or without AFP every 6 months, CT every year, AFP alone every year, None while compensated]
+        answer: 0
+        why: "Screening for HCC is every 6 months with ultrasound, with or without AFP."
+      - question: He asks whether to go ahead with the elective hernia repair. What does the lecture advise?
+        options: ["Avoid surgery unless the indication is clearly strong", "Operate now; compensated cirrhosis carries no surgical risk", "Operate only after liver transplantation", "Surgery is absolutely contraindicated in all cirrhosis"]
+        answer: 0
+        why: "Surgery should be avoided unless the clinical indication is clearly strong, because the patient is a poor operative risk."
+    src: { page: 5 }
+    status: unverified
+  - id: hb.L01.191
+    kind: case
+    topic: presentation
+    stem: "A 61-year-old man with alcohol-related cirrhosis, previously well, is brought in drowsy after 5 days of fever and productive cough."
+    steps:
+      - reveal: "He has asterixis and fetor hepaticus. The abdomen is distended with full flanks. Chest X-ray: right lower lobe consolidation."
+        question: What has happened?
+        options: ["Compensated cirrhosis with pneumonia only", "Hepatocellular carcinoma rupture", "First decompensation (ascites and HE) precipitated by a bacterial infection", "Further decompensation from recurrent variceal bleeding"]
+        answer: 2
+        why: "New ascites and HE mark decompensation, and bacterial infection is a listed precipitating factor."
+      - reveal: "His home medicines are omeprazole for mild dyspepsia and lorazepam at night."
+        question: Which of his medicines should be stopped?
+        options: ["Both", "Omeprazole only", "Lorazepam only", "Neither"]
+        answer: 0
+        why: "Sedatives should be avoided, and PPIs cause dysbiosis with more infection and HE."
+      - question: What does the lecture say about his protein intake during this HE episode?
+        options: ["Reduce it, but to no less than 60-80 g/day", "Stop protein until he wakes", "Keep 1.2-1.5 g/kg/day unchanged", "Limit it to 20 g/day"]
+        answer: 0
+        why: "Protein is reduced only during an acute HE episode, and to no less than 60-80 g/day."
+      - reveal: "He recovers and leaves hospital. He has stopped drinking."
+        question: What is the next step regarding liver transplantation?
+        options: ["Wait for a second decompensation", "Refer now; he should generally be abstinent for 6 months before LT", "LT is contraindicated in alcohol-related cirrhosis", "Refer only when MELD exceeds 30"]
+        answer: 1
+        why: "Referral is after the first signs of decompensation, and patients with alcoholism should generally be abstinent for 6 months before LT."
+    src: { page: 6 }
+    status: unverified
+    update:
+      text: Current guidance advises against restricting protein in hepatic encephalopathy; keep 1.2-1.5 g/kg/day. Answer with the book's 60-80 g/day floor in the exam (lecture 20 already follows the newer advice).
+      ref: EASL CPG on nutrition in chronic liver disease 2019
+  - id: hb.L01.192
+    kind: case
+    topic: cardiopulmonary
+    stem: "A 47-year-old woman with PBC cirrhosis has 6 months of increasing breathlessness, worse when she sits or stands and better when she lies down."
+    steps:
+      - question: What is this symptom called?
+        options: [Platypnea, Orthopnea, Paroxysmal nocturnal dyspnea, Trepopnea]
+        answer: 0
+        why: "Platypnea is dyspnea that worsens on moving from supine to upright. Orthopnea is the opposite."
+      - reveal: "Room-air gases: PaO2 74 mmHg supine and 68 mmHg upright; A-a gradient 28 mmHg. Clubbing, cyanosis and spider angiomas. Chest X-ray clear; pulmonary pressures normal on echo."
+        question: What is the most likely diagnosis?
+        options: ["Portopulmonary hypertension", "Cirrhotic cardiomyopathy", "Hepatic hydrothorax", "Hepatopulmonary syndrome"]
+        answer: 3
+        why: "Orthodeoxia (a fall of more than 4 mmHg) and an A-a gradient above 15 mmHg point to HPS. Normal pulmonary pressures argue against PoPH."
+      - question: Which finding completes the diagnostic triad?
+        options: ["Evidence of intrapulmonary vasodilatation and AV shunts, mainly basal", "Raised pulmonary artery pressure", "Left ventricular diastolic dysfunction", "A pleural effusion"]
+        answer: 0
+        why: "The triad is liver disease and/or PH, a raised age-adjusted A-a gradient, and intrapulmonary vasodilatation with AV shunts."
+      - question: Which treatment improves her oxygenation?
+        options: [Liver transplantation, TIPS, Carvedilol, No treatment is needed]
+        answer: 0
+        why: "LT is the only known effective therapy. TIPS can worsen shunting and hypoxemia. Oxygen helps symptoms in severe hypoxemia."
+      - reveal: "A year later her room-air PaO2 has fallen to 46 mmHg."
+        question: What does the lecture say about liver transplantation now?
+        options: ["It becomes urgent and safest now", "TIPS must be done first", "Very severe HPS (PaO2 below 50 mmHg) is a contraindication", "PaO2 has no bearing on LT"]
+        answer: 2
+        why: "Very severe HPS with PaO2 below 50 mmHg is a contraindication because of a high-risk perioperative course."
+    src: { page: 21 }
+    status: unverified
+  - id: hb.L01.193
+    kind: case
+    topic: aclf
+    stem: "A 44-year-old man with compensated HBV cirrhosis stopped his tenofovir 3 months ago. He now has jaundice, increasing ascites and confusion."
+    steps:
+      - reveal: "Bilirubin 14 mg/dL, INR 2.6, creatinine 2.4 mg/dL; HBV DNA very high."
+        question: What is the best description of his condition?
+        options: ["ACLF precipitated by HBV reactivation", "Acute liver failure", "Simple first decompensation without organ failure", "Compensated cirrhosis with a lab error"]
+        answer: 0
+        why: "Acute decompensation in chronic liver disease with organ failure is ACLF; HBV reactivation is a listed precipitant. Pre-existing cirrhosis rules out acute liver failure."
+      - question: Where should he be managed?
+        options: [Intensive care unit, General ward, Outpatient clinic, Day-care unit]
+        answer: 0
+        why: "Patients with ACLF are best managed in the ICU."
+      - question: What specific treatment should start now?
+        options: ["Tenofovir or entecavir as early as possible", "Wait for HBV genotype before treating", "Pegylated interferon", "High-dose steroids"]
+        answer: 0
+        why: "Nucleoside analogues (tenofovir, entecavir) should be given for HBV reactivation as early as possible."
+      - reveal: "He develops kidney, coagulation and brain failure (ACLF grade 3, 3 organ failures). CLIF-C ACLF score is 58."
+        question: What about liver transplantation?
+        options: ["Contraindicated because he has grade 3 ACLF", "Consider early liver transplantation", "Wait for recompensation first", "Only after 6 months of antiviral therapy"]
+        answer: 1
+        why: "Early LT is considered in selected ACLF grade 2 and 3. It is contraindicated only with 4 or more organ failures or CLIF-C ACLF above 64."
+    src: { page: 19 }
+    status: unverified
+  # ---------- Tables ----------
+  - id: hb.L01.194
+    kind: table
+    topic: prognosis
+    title: Child-Pugh classification (book Table 2)
+    columns: [Variable, 1 point, 2 points, 3 points]
+    rows:
+      - [Encephalopathy, None, Stage 1-2, Stage 3-4]
+      - [Ascites, Absent, Mild to moderate, Severe]
+      - [Bilirubin (mg/dL), "<2", "2-3", ">3"]
+      - [Albumin (g/dL), ">3.5", "2.8-3.5", "<2.8"]
+      - [Prothrombin time (seconds prolonged), "<4", "4-6", ">6"]
+    blanks: [[0, 2], [0, 3], [1, 2], [2, 1], [2, 2], [2, 3], [3, 1], [3, 2], [3, 3], [4, 1], [4, 2], [4, 3]]
+    src: { page: 14 }
+    status: unverified
+    tags: [high-yield, numbers]
+  - id: hb.L01.195
+    kind: table
+    topic: specific-treatment
+    title: Etiology of cirrhosis, its specific tests (book p12-13) and specific treatment (p17)
+    columns: [Etiology, Specific tests, Specific treatment]
+    rows:
+      - [Hepatitis C, HCV markers, Antivirals to eliminate the virus]
+      - [Hepatitis B, HBV markers, Antivirals to suppress the virus]
+      - [Hemochromatosis, "High transferrin saturation, ferritin, serum and hepatic iron; genetic testing", Venesection and iron chelators]
+      - [Wilson disease, "Low ceruloplasmin, high 24-hour urine copper, high hepatic copper", Chelation therapy]
+      - [Autoimmune liver disease, Autoantibodies and high IgG, Steroids and immunosuppressive drugs]
+      - [PBC, Anti-mitochondrial antibodies, "Ursodeoxycholic acid, early and long term"]
+      - [MASH, "High fasting glucose and HbA1c, hyperlipidemia", "Lifestyle change, statins, antidiabetics, antioxidants, bariatric surgery"]
+    blanks: [[2, 1], [2, 2], [3, 1], [3, 2], [4, 1], [4, 2], [5, 1], [5, 2], [6, 2]]
+    src: { page: 17 }
+    status: unverified
+  - id: hb.L01.196
+    kind: table
+    topic: cardiopulmonary
+    title: Cardiopulmonary complications of cirrhosis
+    columns: [Complication, Key definition, Mechanism, Treatment in the lecture]
+    rows:
+      - [Hyperdynamic circulatory syndrome, "High cardiac output, hypervolemia, tachycardia, low BP, bounding pulse, systolic murmur", Systemic vasodilatation as PSS let vasodilators bypass the liver, Not specified]
+      - [Cirrhotic cardiomyopathy, Cardiac dysfunction without known cardiac disease, "Vasodilatation masks it at rest; stress unmasks heart failure", "Not specified (diagnosis by echo)"]
+      - [Portopulmonary hypertension, PAH with portal hypertension and no other cause, Splanchnic vasoactive mediators reach the lungs through PSS, "None if mild; liver transplantation; diuretics"]
+      - [Hepatopulmonary syndrome, Oxygenation defect from pulmonary vascular dilatation, "Increased NO (endothelin-1, ET-B)", "Oxygen if severe hypoxemia; LT is the only effective therapy"]
+    blanks: [[0, 2], [1, 1], [2, 1], [2, 2], [2, 3], [3, 1], [3, 2], [3, 3]]
+    src: { page: 19 }
+    status: unverified
+  # ---------- Order ----------
+  - id: hb.L01.197
+    kind: order
+    topic: pathogenesis
+    prompt: Put the steps of fibrogenesis in cirrhosis in order.
+    steps:
+      - Chronic liver injury with hepatocellular necrosis
+      - Hepatic stellate cells become activated
+      - Stellate cells transform into myofibroblasts
+      - Collagen is laid down in the space of Disse and along the sinusoids
+      - The sinusoids lose their fenestrations (capillarization)
+      - Metabolic exchange with hepatocytes is impaired, causing hepatic dysfunction
+    src: { page: 3 }
+    status: unverified
+  - id: hb.L01.198
+    kind: order
+    topic: pathogenesis
+    prompt: Put the development of portal hypertension in cirrhosis in order.
+    steps:
+      - Intrahepatic vascular resistance increases
+      - Portal pressure rises to a critical level
+      - Pre-existing portosystemic collaterals open to decompress the portal circulation
+      - Splanchnic arteriolar vasodilatation increases portal inflow and aggravates portal hypertension
+    src: { page: 4 }
+    status: unverified
+  # ---------- Calculations ----------
+  - id: hb.L01.199
+    kind: calc
+    topic: prognosis
+    calculator: child_pugh
+    stem: "A 48-year-old woman with compensated HBV cirrhosis: no encephalopathy, no ascites, bilirubin 1.4 mg/dL, albumin 3.8 g/dL, prothrombin time prolonged by 2 seconds."
+    inputs: { encephalopathy: none, ascites: absent, bilirubin_mg_dl: 1.4, albumin_g_dl: 3.8, pt_prolonged_s: 2 }
+    expect: "Child-Pugh A (5 points)"
+    question: What is her Child-Pugh score and class, and her expected one- and two-year survival?
+    interpret: "5 points, class A. One-year survival 100%, two-year 85%."
+    src: { page: 14 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L01.200
+    kind: calc
+    topic: prognosis
+    calculator: child_pugh
+    stem: "A 60-year-old man with alcohol-related cirrhosis: stage 1-2 encephalopathy, no ascites, bilirubin 1.8 mg/dL, albumin 2.9 g/dL, prothrombin time prolonged by 5 seconds."
+    inputs: { encephalopathy: stage_1_2, ascites: absent, bilirubin_mg_dl: 1.8, albumin_g_dl: 2.9, pt_prolonged_s: 5 }
+    expect: "Child-Pugh B (8 points)"
+    question: What is his Child-Pugh score and class, and his expected one- and two-year survival?
+    interpret: "8 points (2 + 1 + 1 + 2 + 2), class B. One-year survival 80%, two-year 60%."
+    src: { page: 14 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L01.201
+    kind: calc
+    topic: prognosis
+    calculator: child_pugh
+    stem: "A 57-year-old man with HCV cirrhosis: stage 1-2 encephalopathy, severe ascites, bilirubin 4.1 mg/dL, albumin 2.5 g/dL, prothrombin time prolonged by 7 seconds."
+    inputs: { encephalopathy: stage_1_2, ascites: severe, bilirubin_mg_dl: 4.1, albumin_g_dl: 2.5, pt_prolonged_s: 7 }
+    expect: "Child-Pugh C (14 points)"
+    question: What is his Child-Pugh score and class, and his expected one- and two-year survival?
+    interpret: "14 points (2 + 3 + 3 + 3 + 3), class C. One-year survival 45%, two-year 35%."
+    src: { page: 14 }
+    status: unverified
+    tags: [numbers]
+  - id: hb.L01.202
+    kind: calc
+    topic: transplant
+    calculator: meld
+    stem: "A 58-year-old man with decompensated HCV cirrhosis is listed for transplantation. Bilirubin 4.0 mg/dL, INR 2.0, creatinine 1.5 mg/dL."
+    inputs: { bilirubin_mg_dl: 4.0, inr: 2.0, creatinine_mg_dl: 1.5 }
+    expect: "MELD 23"
+    question: What is his MELD score, and what does it mean for his HCV treatment?
+    interpret: "MELD 23. At MELD 21 or higher, DAA treatment is deferred until after transplantation."
+    src: { page: 18 }
+    status: unverified
+    tags: [numbers]
+  # ---------- Book question (essay) ----------
+  - id: hb.L01.203
+    kind: essay
+    topic: presentation
+    prompt: Mention the complications of cirrhosis.
+    outline:
+      - "Portal hypertension": ["Variceal (GI) bleeding from portosystemic shunts", "Splenomegaly and hypersplenism", "Ascites"]
+      - "Hepatic decompensation": ["Ascites, hepatic encephalopathy, coagulopathy, jaundice", "Further decompensation: recurrent bleeding or HE, refractory ascites, SBP, HRS-AKI, infections"]
+      - "Acute-on-chronic liver failure": ["Acute decompensation with organ failure; 28-day mortality 15% or more"]
+      - "Hepatocellular carcinoma": ["3-5% per year in alcohol and viral cirrhosis; rare in biliary and cardiac types"]
+      - "Cardiopulmonary": ["Hyperdynamic circulation, cirrhotic cardiomyopathy", "Portopulmonary hypertension, hepatopulmonary syndrome"]
+      - "Others": ["Infections from bacterial translocation", "Malnutrition and sarcopenia; endocrine changes; relative adrenal insufficiency"]
+    src: { page: 8 }
+    status: unverified
+    tags: [book-question]
