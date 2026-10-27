@@ -66,40 +66,44 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: kemarin
-        ar_eg: امبارح
-        ar: أمس
-        en: yesterday
       - text: kemarin dulu
         ar_eg: أول امبارح
         ar: أول أمس
         en: the day before yesterday
-      - text: tadi
-        ar_eg: من شوية (النهارده)
-        ar: قبل قليل
-        en: earlier today
       - text: minggu lalu
         ar_eg: الأسبوع اللي فات
         ar: الأسبوع الماضي
         en: last week
+      - text: bulan lalu
+        ar_eg: الشهر اللي فات
+        ar: الشهر الماضي
+        en: last month
       - text: tahun lalu
         ar_eg: السنة اللي فاتت
         ar: العام الماضي
         en: last year
-    words: [kemarin, kemarin dulu, tadi, minggu lalu, tahun lalu]
+      - text: kepulauan
+        ar_eg: جزر (أرخبيل)
+        ar: أرخبيل
+        en: islands, archipelago
+      - text: laut
+        ar_eg: بحر
+        ar: بحر
+        en: sea
+    words: [kemarin dulu, minggu lalu, bulan lalu, tahun lalu, kepulauan, laut]
   - id: e02
     type: multiple_choice
     question_meaning:
       ar_eg: النهارده السبت. الحاجة حصلت يوم الجمعة. تقول إيه؟
       ar: اليوم السبت، والحدث كان يوم الجمعة. ماذا تقول؟
       en: Today is Saturday. It happened on Friday. Which word?
-    options: [tadi, besok, kemarin]
+    options: [tadi, kemarin dulu, kemarin]
     answer: 2
     explain:
       ar_eg: الجمعة امبارح، يعني kemarin. tadi للنهارده بس.
       ar: الجمعة هي أمس، أي kemarin، وtadi لليوم نفسه.
       en: Friday is yesterday → kemarin; tadi is only for today.
-    words: [kemarin, tadi]
+    words: [kemarin, tadi, kemarin dulu]
   - id: e03
     type: multiple_choice
     question_meaning:
@@ -131,44 +135,54 @@ exercises:
     words: [tahun lalu, sekarang]
   - id: e06
     type: fill_blank
-    sentence: ___ naik kapal, kami makan.
+    sentence: ___ naik kapal ke Kepulauan Seribu, kami makan.
     meaning:
-      ar_eg: قبل ما نركب المركب، كلنا.
-      ar: قبل أن نركب القارب، أكلنا.
-      en: Before boarding the boat, we ate.
+      ar_eg: قبل ما نركب المركب لجزر سريبو، كلنا.
+      ar: قبل أن نركب القارب إلى جزر سريبو، أكلنا.
+      en: Before boarding the boat to the Thousand Islands, we ate.
     options: [Sesudah, Sebelum, Lalu]
     answers: [Sebelum]
     explain:
       ar_eg: '(من الوحدة 6) sebelum = قبل، sesudah / setelah = بعد.'
       ar: '(من الوحدة 6) sebelum = قبل، وsesudah / setelah = بعد.'
       en: '(From Unit 6) sebelum = before, sesudah / setelah = after.'
-    words: [sebelum, sesudah]
+    words: [sebelum, sesudah, kapal, kepulauan]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: امبارح رحت السوق.
-      ar: أمس ذهبت إلى السوق.
-      en: Yesterday I went to the market.
-    answer: Kemarin saya ke pasar.
-    alternatives: [Saya ke pasar kemarin.]
+      ar_eg: الشهر اللي فات رحت جزر سريبو.
+      ar: ذهبت الشهر الماضي إلى جزر سريبو.
+      en: Last month I went to the Thousand Islands.
+    answer: Bulan lalu saya ke Kepulauan Seribu.
+    alternatives: [Saya ke Kepulauan Seribu bulan lalu.]
     distractors: [tadi, di]
-    words: [kemarin, pasar]
+    words: [bulan lalu, kepulauan]
   - id: e08
     type: dictation
-    text: Kemarin saya ke pulau.
+    text: Kemarin dulu saya ke pulau.
     meaning:
-      ar_eg: امبارح رحت الجزيرة.
-      ar: أمس ذهبت إلى الجزيرة.
-      en: Yesterday I went to the island.
-    words: [kemarin, pulau]
+      ar_eg: أول امبارح رحت الجزيرة.
+      ar: ذهبت أول أمس إلى الجزيرة.
+      en: The day before yesterday I went to the island.
+    words: [kemarin dulu, pulau]
   - id: e09
     type: speaking
-    text: Kemarin saya naik kapal. Setelah itu, saya berenang di laut.
+    text: Kemarin saya naik kapal ke pulau. Setelah itu, saya berenang di laut.
     meaning:
-      ar_eg: امبارح ركبت مركب. بعد كده، عُمت في البحر.
-      ar: أمس ركبت قاربًا، وبعد ذلك سبحت في البحر.
-      en: Yesterday I took a boat. After that, I swam in the sea.
-    words: [kemarin, kapal, setelah, laut]
+      ar_eg: امبارح ركبت مركب للجزيرة. بعد كده، عُمت في البحر.
+      ar: أمس ركبت قاربًا إلى الجزيرة، وبعد ذلك سبحت في البحر.
+      en: Yesterday I took a boat to the island. After that, I swam in the sea.
+    words: [kemarin, kapal, pulau, setelah, laut]
+  - id: e10
+    type: listen
+    text: Bulan lalu kami naik kapal ke pulau.
+    options: ['Bulan lalu kami naik kapal ke pulau.', 'Minggu lalu kami naik kapal ke pulau.', 'Tahun lalu kami naik kapal ke pulau.', 'Bulan lalu kami berenang di laut.']
+    answer: 0
+    meaning:
+      ar_eg: الشهر اللي فات ركبنا مركب للجزيرة.
+      ar: الشهر الماضي ركبنا السفينة إلى الجزيرة.
+      en: Last month we took a boat to the island.
+    words: [bulan lalu, minggu lalu, tahun lalu, kapal, pulau, laut]
 dialogue:
   title: Hari Senin pagi
   lines:
