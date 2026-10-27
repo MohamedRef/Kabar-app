@@ -86,7 +86,7 @@ every morning. CI warns when the table below is behind the content.
 | Javanese speech-level rows | 365 | ngoko / krama / krama inggil |
 | Pronunciation lexicon | 18,309 | plus 30 hand overrides |
 | Sinetron episodes | 107 | each unlocks after its unit |
-| Kabar Radio episodes | 70 | prebuilt, downloadable for offline |
+| Kabar Radio episodes | 107 | prebuilt, downloadable for offline |
 | Conversation personas | 10 |  |
 | Kabar Pagi stories | 24 | morning stories |
 | Games | 3 | Pasar!, Unggah-Ungguh, Minimal Pairs |
