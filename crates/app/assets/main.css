@@ -384,6 +384,11 @@ html:has(.app[data-text-size="larger"]) { font-size: 125%; }
 .card h2 { margin-block: 0 var(--sp-2); font-size: var(--fs-lg); }
 .muted { color: var(--muted); }
 .pill { display: inline-block; padding-inline: 0.6rem; border-radius: 999px; background: var(--dawn-soft); color: var(--text); font-size: 0.85rem; }
+/* Pill tones (docs/DESIGN.md): the default stays dawn for "new"/levels. */
+.pill.neutral { background: var(--surface-2); color: var(--muted); }
+.pill.info { background: color-mix(in srgb, var(--indigo) 12%, var(--surface)); color: var(--indigo); }
+.pill.gold { background: var(--gold-soft); color: var(--gold); }
+.pill.good { background: color-mix(in srgb, var(--sawah) 14%, var(--surface)); color: var(--sawah); }
 .row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
 .field { margin-block-end: 1.25rem; }
 .field > label, .field > .label { display: block; font-weight: 600; margin-block-end: 0.4rem; }
@@ -415,7 +420,11 @@ code, .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size:
 .small { font-size: 0.85rem; }
 .error { color: var(--dawn); font-weight: 600; }
 button.quiet { background: transparent; border-color: transparent; color: var(--muted); text-decoration: underline; }
-button:disabled { opacity: 0.5; cursor: not-allowed; }
+/* Disabled, one look app-wide: faded and inert. A disabled primary button
+   turns neutral instead of a washed-out green, so it never reads as "go".
+   Say why next to it when the reason isn't obvious (docs/DESIGN.md). */
+button:disabled { opacity: 0.55; cursor: not-allowed; }
+button.primary:disabled { opacity: 1; background: var(--surface-2); color: var(--muted); border-color: var(--line-soft); }
 h3 { font-size: var(--fs-md); margin-block: var(--sp-4) var(--sp-2); }
 
 .coach-grid { display: grid; gap: 0 1rem; align-items: start; }
@@ -761,7 +770,6 @@ button.icon-button { inline-size: 44px; padding: 0; flex: none; }
   padding-block: 0.55rem; padding-inline: 1rem;
 }
 .button-like:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
-button:disabled { opacity: 0.5; cursor: default; }
 
 .reader-input.dragging { outline: 3px dashed var(--sawah); outline-offset: -6px; }
 .reader-textarea {
