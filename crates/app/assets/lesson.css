@@ -96,12 +96,16 @@
 .chips .lp-choice { gap: 0.45rem; }
 .chips .lp-key { inline-size: 1.3rem; block-size: 1.3rem; border-radius: 999px; font-size: 0.7rem; }
 /* Touch screens have no number keys: the hints only help with a keyboard. */
-@media (hover: none) and (pointer: coarse) { .chips .lp-key { display: none; } }
+@media (hover: none) and (pointer: coarse) { .chips .lp-key:not(.lp-mark) { display: none; } }
 .lp-voice-note { margin-block: 0 0.75rem; }
 .lp-choice[aria-pressed="true"] { background: var(--lp-review); color: var(--text); border-color: var(--indigo); }
 .lp-choice.right { background: var(--lp-good); border-color: var(--sawah); color: var(--text); }
 .lp-choice.wrong { background: var(--lp-miss); border-color: var(--dawn); color: var(--text); }
 .lp-choice:disabled { cursor: default; opacity: 1; }
+/* Graded: a tick or cross in the key-badge slot, so right/wrong never rests on colour alone. */
+.lp-key.lp-mark { font-size: 1rem; font-weight: 700; color: var(--surface); border-color: transparent; }
+.lp-choice.right .lp-mark { background: var(--sawah); }
+.lp-choice.wrong .lp-mark { background: var(--dawn); }
 .lp-key {
   inline-size: 1.7rem;
   block-size: 1.7rem;
@@ -146,6 +150,8 @@
 }
 .lp-blank.filled { background: var(--lp-review); border-radius: 6px 6px 0 0; }
 .lp-blank-input { max-inline-size: 10ch; }
+/* Followed by ",", ".", "!"...: no gap before the punctuation (#156). */
+.lp-blank.hug-end, .lp-blank-input.hug-end { margin-inline-end: 0; padding-inline-end: 0.05rem; text-align: end; }
 
 /* build sentence */
 .lp-answer-line, .lp-bank { display: flex; flex-wrap: wrap; gap: 0.5rem; }
@@ -170,7 +176,24 @@
 .lp-pair-col { display: grid; gap: 0.6rem; align-content: start; }
 .lp-pair { border-radius: var(--radius); border-width: 2px; min-block-size: 52px; font-size: 1.05rem; }
 .lp-pair.selected { border-color: var(--indigo); background: var(--lp-review); }
-.lp-pair.done { border-color: transparent; background: var(--lp-good); color: var(--muted); opacity: 0.7; }
+/* A matched couple reads as done, not disabled: full-strength text, a tick and
+   one shared tint per couple so the pairing stays visible (#149). */
+.lp-pair.done {
+  --couple: var(--sawah);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-color: var(--couple);
+  border-style: solid;
+  background: color-mix(in srgb, var(--couple) 16%, var(--surface));
+  color: var(--text);
+}
+.lp-pair.done:disabled { opacity: 1; cursor: default; }
+.lp-pair.couple-1 { --couple: var(--wc-adj); }
+.lp-pair.couple-2 { --couple: var(--gold); }
+.lp-pair.couple-3 { --couple: var(--wp-suffix); }
+.lp-pair-tick { font-weight: 700; color: var(--couple); font-family: var(--font-latin); }
 .lp-pair.wrong { border-color: var(--dawn); background: var(--lp-miss); }
 
 /* dialogue */
