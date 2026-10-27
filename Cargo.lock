@@ -2875,6 +2875,8 @@ dependencies = [
 name = "kabar-core"
 version = "0.1.0"
 dependencies = [
+ "base64 0.22.1",
+ "ed25519-dalek",
  "fsrs",
  "getrandom 0.4.3",
  "kabar-protocol",
@@ -2924,7 +2926,9 @@ dependencies = [
  "bzip2",
  "clap",
  "csv",
+ "ed25519-dalek",
  "flate2",
+ "getrandom 0.3.4",
  "jsonschema 0.33.0",
  "kabar-core",
  "kabar-protocol",
@@ -2936,6 +2940,7 @@ dependencies = [
  "serde_json",
  "serde_yaml_ng",
  "tar",
+ "tempfile",
  "unicode-normalization",
  "ureq",
 ]

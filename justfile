@@ -121,13 +121,22 @@ apk:
 release:
     just check
     cargo run -q -p kabar-tools -- validate
-    just bundle-mac
-    just apk
+    KABAR_COMMIT="$(git rev-parse --short HEAD)" just bundle-mac
+    KABAR_COMMIT="$(git rev-parse --short HEAD)" just apk
     v="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"; \
       out="{{dist}}/release/$v"; rm -rf "$out" && mkdir -p "$out"; \
       cp -R "$(find {{dist}}/mac -maxdepth 4 -name '*.app' | head -1)" "$out/Kabar.app"; \
       cp {{dist}}/android/kabar.apk "$out/kabar-$v.apk"; \
       echo "Kabar $v → $out (Kabar.app, kabar-$v.apk). Next: docs/RELEASE.md §4."
+
+# One-time: the update signing key (public half → crates/app/update-key.pub, secret → Keychain)
+update-keygen:
+    scripts/update-keygen.sh
+
+# After `just release`, only once the learner says go: publish it as an
+# over-the-air update to the phone, tablet and Mac (docs/RELEASE.md §5)
+publish-update notes_en="" notes_ar_eg="":
+    scripts/update-publish.sh "{{notes_en}}" "{{notes_ar_eg}}"
 
 # Share a test text to Kabar on a device (M5): `just share-text "arp dicul piro"`
 share-text text serial="":

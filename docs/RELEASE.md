@@ -55,6 +55,8 @@ A release is cut only when every gate in this table is green.
   it means uninstalling and starting over.
 - The CI preview APK uses a throwaway preview key. Don't install it over
   the release: uninstall it first, or keep only the release build.
+- From the first alpha on, the devices update themselves (§5): publishing
+  a release is `just publish-update`, not a cable.
 - Before installing an update, Settings → **Your data → Export everything**
   is a cheap backup. Sync also keeps everything in Kabar Cloud.
 
@@ -67,14 +69,18 @@ are only steps 5 to 7.
    Developer.
 2. **Once:** tooling. `just setup-mac`, then `just check` (MAC-TODO §1).
 3. **Once:** the release key, `just android-keystore`, and its backup
-   (MAC-TODO §3).
+   (MAC-TODO §3). Then the update key, `just update-keygen`: commit
+   `crates/app/update-key.pub` and back the secret up with the Android key
+   (§5).
 4. **Once:** Kabar Cloud. The Google sign-in clients, `just cloud-setup`,
    the keys, then `just deploy-cloud` (MAC-TODO §4–5). Fill `.env` from
    `.env.example`.
 5. Set `version` in `Cargo.toml` (`1.0.0-alpha.1` the first time). `git pull`, then
    **`just release`**. It runs every check, then puts `Kabar.app` and
    `kabar-<version>.apk` in `dist/release/<version>/`.
-6. Install:
+6. Install. The first time by hand; every later release is
+   `just publish-update "<what's new>" "<الجديد>"` and the devices update
+   themselves (§5):
    - **Mac:** drag `Kabar.app` to Applications.
    - **S24 Ultra and Tab S11:** `just devices`, then
      `just install <serial>` for each. Use the APK from step 5;
@@ -83,4 +89,46 @@ are only steps 5 to 7.
    **devices** gates in §2. Tell me what fails; nothing gets tagged until
    they pass.
 8. Tag it, e.g. `git tag v1.0.0-alpha.1 && git push origin v1.0.0-alpha.1`. This is only a
-   marker; the builds stay on your devices and nothing gets published.
+   marker. The builds reach your devices only through the update feed
+   (§5), which nobody else installs from.
+
+## 5. Updates over the air
+
+Every device pulls a published update by itself: no cable, no store, still
+$0 (GitHub Releases of the public repository).
+
+| | Android (S24 Ultra, Tab S11) | Mac |
+|---|---|---|
+| Feed | `update.json` + `update.json.sig` on the channel's release | same |
+| Build | the signed APK | `Kabar.app` zipped with `ditto` |
+| Install | PackageInstaller; Android checks it's the same package and signing key | unzip beside the running app, swap with renames, reopen |
+| Automatic mode | downloads in the background; installs quietly when Kabar is in the background and not mid-lesson (Android 12+, once Kabar installed itself), otherwise one tap | downloads in the background; goes in at the next launch |
+
+**Channels.** `alpha`, `beta`, `stable` for release builds (the learner
+picks in Settings; a beta also reaches alpha, a release reaches everyone),
+and `preview` for CI builds of `main`, which is fixed for them. Each channel
+is its own GitHub release (`update-alpha`, …, and the existing `preview`).
+
+**What a device checks, in order.** (1) The Ed25519 signature over the exact
+bytes of `update.json`, with the public key built into the app; nothing in
+an unsigned or changed manifest is read. (2) The format, then that the
+manifest is for the channel it asked for and newer than what's installed
+(version, then build number), and that file names are plain names next to
+the manifest (no URLs or paths). (3) The download's size and SHA-256 against
+the signed manifest, streamed while downloading and again right before
+installing. (4) Android: the APK's package, signing certificate and
+`versionCode` against the installed Kabar, then Android's own checks.
+Anything that fails is deleted and never installed; the current Kabar stays.
+
+**Keys.** The release update key is made once on the Mac
+(`just update-keygen`): the secret goes straight into the Keychain
+(`kabar-update`), the public half into `crates/app/update-key.pub`, which is
+committed. Until then release builds say updates switch on after that step.
+Back the secret up with the Android key: losing it means one manual install
+on each device with a new key. Preview builds use a second CI key kept in the
+Actions cache next to the preview APK key; if the cache expires both keys
+change and a preview needs one manual reinstall anyway.
+
+**Nothing is published before the learner says go**: the preview feed
+follows `main` as the preview APK always has; the release feeds don't exist
+until `just publish-update` runs on release day (§4, after step 5).

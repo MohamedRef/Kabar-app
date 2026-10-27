@@ -100,6 +100,7 @@ pub fn Today() -> Element {
 
     rsx! {
         RewardsBar { today, welcome }
+        crate::update::view::UpdateBanner {}
         // Wide screens: the plan, with the side cards (recap, placement,
         // Kabar Pagi) in a second column when there are any.
         div { class: "coach-grid today-grid",

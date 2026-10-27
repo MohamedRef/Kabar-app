@@ -58,5 +58,14 @@
             android:excludeFromRecents="true"
             android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize|keyboardHidden"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- Settings › About › Updates: the installer's verdict on a self-update
+             (explicit PendingIntent), and "Kabar was updated" afterwards. -->
+        <receiver
+            android:name="app.kabar.UpdateInstallReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

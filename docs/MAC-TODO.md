@@ -68,6 +68,7 @@ just check                # fmt + clippy + tests: all green
 
 - [ ] On both devices, Settings → About → Software information → tap **Build number** 7 times. Then turn on Developer options → **USB debugging** and **Wireless debugging**.
 - [ ] `just android-keystore` (once). Back up `~/.kabar/kabar-release.jks` somewhere safe, such as an encrypted USB stick or a password manager attachment. Losing it means reinstalling the app from scratch.
+- [ ] `just update-keygen` (once, release day): the update key for over-the-air updates. Commit `crates/app/update-key.pub`; back the secret up with the keystore (`security find-generic-password -s kabar-update -w`). RELEASE.md §5.
 - [ ] `just apk` → `dist/android/kabar.apk`.
 - [ ] `just devices`, then `just install <serial>` for the S24 Ultra and again for the Tab S11. For wireless, use `just pair` / `just connect` (RUN.md §3).
 - [ ] Open every screen once on the release APK (R8 shrinks it; a missing keep rule would crash on that screen) and tell me if anything closes the app.

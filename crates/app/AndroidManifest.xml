@@ -26,6 +26,10 @@
          where the switch then works. (PlaybackService's media notification
          is exempt and works either way.) -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Settings › About › Updates: Kabar installs its own signed updates
+         (app.kabar.UpdateInstaller). Android still asks the learner to allow
+         "Install unknown apps" for Kabar once, and checks the signing key. -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <!-- Android 11+ package visibility: the app must be allowed to see installed
          text-to-speech engines (Samsung, Google) or TextToSpeech can't bind to one. -->

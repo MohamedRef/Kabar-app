@@ -20,6 +20,7 @@ pub mod srs;
 pub mod story;
 pub mod sync;
 pub mod test;
+pub mod update;
 
 pub use hlc::{DeviceId, Hlc};
 

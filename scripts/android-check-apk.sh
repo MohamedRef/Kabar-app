@@ -20,7 +20,7 @@ dex="$(mktemp)"
 trap 'rm -f "$dex"' EXIT
 unzip -p "$APK" 'classes*.dex' >"$dex"
 missing=0
-for cls in app/kabar/ShareActivity app/kabar/PendingShare app/kabar/OcrBridge app/kabar/ImagePickActivity app/kabar/ExportSaveActivity; do
+for cls in app/kabar/ShareActivity app/kabar/PendingShare app/kabar/OcrBridge app/kabar/ImagePickActivity app/kabar/ExportSaveActivity app/kabar/UpdateInstaller; do
   if ! LC_ALL=C grep -aqF "L$cls;" "$dex"; then
     echo "Missing $cls in $APK"
     [ -n "${GITHUB_ACTIONS:-}" ] && echo "::error::Missing $cls in the APK"
@@ -47,6 +47,7 @@ if command -v aapt2 >/dev/null; then
       "Check [application] android_manifest in crates/app/Dioxus.toml."
   fi
   grep -q "TTS_SERVICE" <<<"$manifest" || fail "The manifest lost its text-to-speech <queries> block."
+  grep -q "REQUEST_INSTALL_PACKAGES" <<<"$manifest" || fail "The manifest lost REQUEST_INSTALL_PACKAGES (self-updates)."
   # A debuggable APK runs slower and lets anyone with USB read Kabar's data.
   if grep -q "^application-debuggable" <<<"$badging"; then
     fail "The APK is debuggable: build it with scripts/android-release-apk.sh."
