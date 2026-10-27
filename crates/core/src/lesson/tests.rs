@@ -23,6 +23,11 @@ fn text(s: &str) -> Answer {
     Answer::Text(s.into())
 }
 
+/// Most fixtures are Indonesian lessons.
+fn grade(ex: &Exercise, answer: &Answer, lang: UiLanguage) -> Grade {
+    super::grade(ex, answer, lang, "id")
+}
+
 #[test]
 fn fixtures_parse_and_validate() {
     for (yaml, id) in [(L01, "bipa1.u01.l01"), (L02, "bipa1.u01.l02")] {
@@ -192,10 +197,19 @@ fn indonesian_answers_take_either_register() {
     assert_eq!(grade(&blank, &Answer::Choice(0), EG), Grade::Correct);
     assert_eq!(grade(&blank, &Answer::Choice(1), EG), Grade::Wrong);
 
+    // Dictation is writing down what was said: the register heard is the answer.
+    let dict = ex(ExerciseKind::Dictation {
+        text: "Saya udah makan.".into(),
+        audio: None,
+        meaning: Localized::default(),
+    });
+    assert_eq!(grade(&dict, &text("saya udah makan"), EG), Grade::Correct);
+    assert_ne!(grade(&dict, &text("saya sudah makan"), EG), Grade::Correct);
+
     // Javanese keeps its own words: "aja" there is "don't", not "saja".
     let jv = to_target(&["Aja mangan."]);
-    assert_ne!(grade_in(&jv, &text("Saja mangan."), EG, "jv"), Grade::Correct);
-    assert_eq!(grade_in(&jv, &text("Aja mangan"), EG, "jv"), Grade::Correct);
+    assert_ne!(super::grade(&jv, &text("Saja mangan."), EG, "jv"), Grade::Correct);
+    assert_eq!(super::grade(&jv, &text("Aja mangan"), EG, "jv"), Grade::Correct);
 }
 
 #[test]

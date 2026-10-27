@@ -522,17 +522,12 @@ fn grade_text(given: &str, refs: &[String], allow_almost: bool, compare: Compare
         .map(|r| Grade::Almost { expected: r.clone() })
 }
 
-/// Grades an answer in an Indonesian lesson. See [`grade_in`].
-pub fn grade(ex: &Exercise, answer: &Answer, lang: UiLanguage) -> Grade {
-    grade_in(ex, answer, lang, "id")
-}
-
 /// Grades an answer. Deterministic, offline, no AI. `lesson_language` is the
 /// lesson's (`id` or `jv`): Indonesian answers may use the spoken or the
 /// formal form of a word, whichever the reference has.
-pub fn grade_in(ex: &Exercise, answer: &Answer, lang: UiLanguage, lesson_language: &str) -> Grade {
+pub fn grade(ex: &Exercise, answer: &Answer, lang: UiLanguage, lesson_language: &str) -> Grade {
     use ExerciseKind as K;
-    let target = if lesson_language == "jv" { Compare::Plain } else { Compare::Registers };
+    let target = if lesson_language == "id" { Compare::Registers } else { Compare::Plain };
     let text = |a: &Answer| match a {
         Answer::Text(t) => Some(t.clone()),
         _ => None,
@@ -560,8 +555,9 @@ pub fn grade_in(ex: &Exercise, answer: &Answer, lang: UiLanguage, lesson_languag
             // Tiles can't have typos: right or not yet.
             text(a).and_then(|t| grade_text(&t, &refs, false, target)).unwrap_or(Grade::Wrong)
         }
+        // Writing down what was said: the register heard is the answer.
         (K::Listen { text: heard, .. } | K::Dictation { text: heard, .. }, a) => text(a)
-            .and_then(|t| grade_text(&t, std::slice::from_ref(heard), true, target))
+            .and_then(|t| grade_text(&t, std::slice::from_ref(heard), true, Compare::Plain))
             .unwrap_or(Grade::Wrong),
         (K::FillBlank { answers, .. }, a) => {
             text(a).and_then(|t| grade_text(&t, answers, true, target)).unwrap_or(Grade::Wrong)
@@ -829,7 +825,7 @@ impl Player {
             return g.clone();
         }
         let ex = self.retry_view.as_ref().unwrap_or(&self.lesson.exercises[index]);
-        let g = grade_in(ex, answer, lang, &self.lesson.language);
+        let g = grade(ex, answer, lang, &self.lesson.language);
         let mut mistakes = Vec::new();
         if let Answer::Matched { missed } = answer {
             mistakes.extend(missed.iter().cloned());
