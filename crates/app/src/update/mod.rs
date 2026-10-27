@@ -148,7 +148,6 @@ pub enum Failure {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(not(any(target_os = "android", target_os = "macos")), allow(dead_code))] // per-platform variants
 pub enum Phase {
     Idle,
     Checking,
@@ -164,8 +163,10 @@ pub enum Phase {
     Ready(Offer),
     Installing(Offer),
     /// Android: "Install unknown apps" is off for Kabar.
+    #[cfg_attr(not(target_os = "android"), allow(dead_code))]
     NeedsPermission(Offer),
     /// Mac: the new Kabar.app is in place; it starts at the next launch.
+    #[cfg_attr(not(target_os = "macos"), allow(dead_code))]
     Installed(Offer),
     Failed {
         offer: Option<Offer>,
