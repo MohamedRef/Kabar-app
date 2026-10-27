@@ -405,6 +405,7 @@ fn TestView(test: TestContent) -> Element {
             div { class: "lp-top",
                 button {
                     class: "lp-close",
+                    "data-back": "true",
                     aria_label: lt(lang, L::CloseTest),
                     title: lt(lang, L::CloseTest),
                     onclick: move |_| if midway { confirm_close.set(true) } else { ui.close_lesson() },
@@ -431,6 +432,7 @@ fn TestView(test: TestContent) -> Element {
                         div { class: "row lt-confirm-buttons",
                             button {
                                 class: "primary",
+                                "data-back": "true",
                                 autofocus: true,
                                 onclick: move |_| confirm_close.set(false),
                                 "{lt(lang, L::StayInTest)}"
