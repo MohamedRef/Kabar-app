@@ -2,9 +2,11 @@
 // one path: drag with one pointer, pinch with two, wheel/trackpad to zoom.
 // Moves only touch one transform attribute on `.jm-viewport` (batched per
 // frame), so Dioxus never re-renders while the map moves.
-// Called as `(this snippet)(stageId, focusX, focusY)`: the focus point (map
-// units) starts centred. Idempotent per element.
-(function (stageId, focusX, focusY) {
+// Called as `(this snippet)(stageId, [x0, y0, x1, y1], pad, maxZoom)`: the
+// box around every stop (map units), with `pad` pin design units of room for
+// stickers and names, fills the stage at the start and again on Reset.
+// Idempotent per element.
+(function (stageId, homeBox, homePad, homeMax) {
   const stage = document.getElementById(stageId);
   if (!stage || stage.__kz) return;
   const svg = stage.querySelector("svg");
@@ -96,6 +98,23 @@
     anim = requestAnimationFrame(step);
   }
   function center() { return { x: vb.x + vb.width / 2, y: vb.y + vb.height / 2 }; }
+  // The view that fits every stop into what the stage shows, centred. Pins
+  // and names keep their screen size (a design unit spans k * min(s, pinFit)
+  // map units at zoom s), so the padding is settled in a few rounds.
+  function home() {
+    if (!Array.isArray(homeBox)) return { s: 1, x: 0, y: 0 };
+    const [x0, y0, x1, y1] = homeBox;
+    const v = visible(), k = vb.width / 200, fitPins = pinFit();
+    const w = Math.max(x1 - x0, 1e-6), h = Math.max(y1 - y0, 1e-6);
+    let s = 1;
+    for (let i = 0; i < 4; i++) {
+      const pad = (homePad || 0) * k * Math.min(s, fitPins);
+      s = Math.min((v.x1 - v.x0 - 2 * pad) / w, (v.y1 - v.y0 - 2 * pad) / h);
+      if (!(s > 0 && isFinite(s))) return { s: 1, x: 0, y: 0 };
+    }
+    s = Math.min(homeMax || MAX, MAX, Math.max(meet(), s));
+    return { s, x: (v.x0 + v.x1) / 2 - s * (x0 + x1) / 2, y: (v.y0 + v.y1) / 2 - s * (y0 + y1) / 2 };
+  }
   function target(factor, p) {
     const ns = Math.min(MAX, Math.max(meet(), st.s * factor)), f = ns / st.s;
     return { s: ns, x: p.x - (p.x - st.x) * f, y: p.y - (p.y - st.y) * f };
@@ -124,6 +143,7 @@
     p.x = e.clientX; p.y = e.clientY;
     if (!moved && (pointers.size > 1 || Math.hypot(p.x - p.x0, p.y - p.y0) > DRAG_SLOP)) {
       moved = true;
+      touched = true;
       stage.dataset.dragging = "true";
       for (const id of pointers.keys()) { try { stage.setPointerCapture(id); } catch (_) {} }
     }
@@ -172,25 +192,27 @@
     const keys = {
       "+": () => glide(target(1.5, center())), "=": () => glide(target(1.5, center())),
       "-": () => glide(target(1 / 1.5, center())),
-      "0": () => glide({ s: 1, x: 0, y: 0 }),
+      "0": () => glide(home()),
       ArrowLeft: () => glide({ ...st, x: st.x + step }), ArrowRight: () => glide({ ...st, x: st.x - step }),
       ArrowUp: () => glide({ ...st, y: st.y + step }), ArrowDown: () => glide({ ...st, y: st.y - step }),
     };
     const f = keys[e.key];
-    if (f && !e.metaKey && !e.ctrlKey && !e.altKey) { e.preventDefault(); f(); }
+    if (f && !e.metaKey && !e.ctrlKey && !e.altKey) { e.preventDefault(); touched = e.key !== "0"; f(); }
   });
 
+  let touched = false;
   stage.__kz = {
-    zoom: (factor) => glide(target(factor, center())),
-    reset: () => glide({ s: 1, x: 0, y: 0 }),
+    zoom: (factor) => { touched = true; glide(target(factor, center())); },
+    reset: () => { touched = false; glide(home()); },
   };
-  if (typeof focusX === "number" && typeof focusY === "number") {
-    const v = visible();
-    st.x = (v.x0 + v.x1) / 2 - focusX;
-    st.y = (v.y0 + v.y1) / 2 - focusY;
-  }
+  Object.assign(st, home());
   clamp();
   apply();
-  // Window, split-screen or rotation changes: keep the map under the stage.
-  new ResizeObserver(() => schedule()).observe(stage);
+  // Window, split-screen or rotation changes: keep the map under the stage,
+  // and still on the whole journey until the learner moves it themselves.
+  stage.addEventListener("wheel", () => { touched = true; }, { passive: true });
+  new ResizeObserver(() => {
+    if (!touched) Object.assign(st, home());
+    schedule();
+  }).observe(stage);
 })

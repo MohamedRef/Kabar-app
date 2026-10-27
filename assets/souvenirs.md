@@ -141,7 +141,7 @@ Generated from `curriculum/*.yaml` and the lessons by `crates/app/src/souvenir_a
 | j3.u05 | Pasar Beringharjo | Batik Beringharjo (Batik from Beringharjo) | `j3.u05.png` |
 | j3.u06 | Giriloyo | Batik tulis Giriloyo (Giriloyo batik tulis) | `j3.u06.png` |
 
-## J4 · Malioboro, Yogyakarta
+## J4 · Kraton, Yogyakarta
 
 | unit | stop | souvenir | art |
 |---|---|---|---|
