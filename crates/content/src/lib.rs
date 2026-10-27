@@ -376,7 +376,15 @@ fn check_curricula(report: &mut Report) {
         report.curricula.iter().flat_map(|c| c.levels.iter().map(|l| l.id.as_str())).collect();
 
     for c in &report.curricula {
+        let mut last_target = 0;
         for level in &c.levels {
+            // Each level plans a vocabulary size, growing along the track (#137).
+            match level.vocab_target {
+                Some(t) if t > last_target => last_target = t,
+                Some(t) => problems
+                    .push(format!("{}: vocab_target {t} must be above the previous level's", level.id)),
+                None => problems.push(format!("{}: needs a vocab_target", level.id)),
+            }
             let prefix = if c.language == "id" { "bipa" } else { "j" };
             if !level.id.starts_with(prefix) {
                 problems.push(format!("{}: level does not belong to '{}'", level.id, c.language));

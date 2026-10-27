@@ -6,7 +6,7 @@
 //! Everything here is derived from committed files only (no clock, no git),
 //! so the same tree always renders the same block.
 
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, BTreeSet};
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -59,6 +59,9 @@ struct LevelRow {
     written: usize,
     exercises: usize,
     new_words: usize,
+    /// Distinct words taught up to the end of this level, and the plan.
+    known: usize,
+    target: Option<u64>,
     minutes: u64,
     test_items: usize,
 }
@@ -72,8 +75,8 @@ fn render(root: &Path) -> Result<String> {
     {
         let rows = levels(root, file, &lessons, &tests)?;
         out += &format!("\n**{name}**\n\n");
-        out += "| Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Lesson time | Level test items |\n";
-        out += "|---|---|---|--:|--:|--:|--:|--:|--:|\n";
+        out += "| Level | Journey | CEFR (approx.) | Units | Lessons written | Exercises | New words | Known / target | Lesson time | Level test items |\n";
+        out += "|---|---|---|--:|--:|--:|--:|--:|--:|--:|\n";
         let mut total = LevelRow::default();
         for r in &rows {
             out += &row(r, &r.code);
@@ -82,6 +85,7 @@ fn render(root: &Path) -> Result<String> {
             total.written += r.written;
             total.exercises += r.exercises;
             total.new_words += r.new_words;
+            (total.known, total.target) = (r.known, r.target);
             total.minutes += r.minutes;
             total.test_items += r.test_items;
         }
@@ -166,8 +170,12 @@ fn render(root: &Path) -> Result<String> {
 fn row(r: &LevelRow, label: &str) -> String {
     let written =
         if r.written == r.planned { n(r.written) } else { format!("{} / {}", n(r.written), n(r.planned)) };
+    let known = match r.target {
+        Some(t) => format!("{} / {}", n(r.known), n(t as usize)),
+        None => n(r.known),
+    };
     format!(
-        "| {label} | {} | {} | {} | {written} | {} | {} | {} | {} |\n",
+        "| {label} | {} | {} | {} | {written} | {} | {} | {known} | {} | {} |\n",
         r.place,
         if r.cefr.is_empty() { "—" } else { &r.cefr },
         r.units,
@@ -182,13 +190,15 @@ fn awaiting(open: usize) -> String {
     if open == 0 { "all approved".into() } else { format!("{} awaiting your review", n(open)) }
 }
 
-/// Lesson id → (exercises, new words), for every file in `content/lessons/`.
-fn lesson_files(root: &Path) -> Result<BTreeMap<String, (usize, usize)>> {
+/// Lesson id → (exercises, new words lower-cased), for every file in `content/lessons/`.
+fn lesson_files(root: &Path) -> Result<BTreeMap<String, (usize, Vec<String>)>> {
     let mut out = BTreeMap::new();
     for f in yaml_files(&root.join("content/lessons"))? {
         let v = yaml(&f)?;
         let id = v["id"].as_str().with_context(|| format!("{}: no id", f.display()))?.to_string();
-        out.insert(id, (len(&v["exercises"]), len(&v["new_words"])));
+        let words = v["new_words"].as_array().into_iter().flatten();
+        let words = words.map(|w| str_of(&w["word"]).to_lowercase()).collect();
+        out.insert(id, (len(&v["exercises"]), words));
     }
     Ok(out)
 }
@@ -208,16 +218,18 @@ fn test_items(root: &Path) -> Result<BTreeMap<String, usize>> {
 fn levels(
     root: &Path,
     file: &str,
-    lessons: &BTreeMap<String, (usize, usize)>,
+    lessons: &BTreeMap<String, (usize, Vec<String>)>,
     tests: &BTreeMap<String, usize>,
 ) -> Result<Vec<LevelRow>> {
     let c = yaml(&root.join("curriculum").join(file))?;
     let mut rows = Vec::new();
+    let mut known = BTreeSet::new();
     for level in c["levels"].as_array().into_iter().flatten() {
         let mut r = LevelRow {
             code: str_of(&level["code"]),
             place: str_of(&level["journey"]["place"]),
             cefr: str_of(&level["cefr"]["approx"]),
+            target: level["vocab_target"].as_u64(),
             ..LevelRow::default()
         };
         for unit in level["units"].as_array().into_iter().flatten() {
@@ -228,10 +240,12 @@ fn levels(
                 if let Some((ex, words)) = lessons.get(&str_of(&lesson["id"])) {
                     r.written += 1;
                     r.exercises += ex;
-                    r.new_words += words;
+                    r.new_words += words.len();
+                    known.extend(words.iter().cloned());
                 }
             }
         }
+        r.known = known.len();
         r.test_items = tests.get(&str_of(&level["level_test"]["id"])).copied().unwrap_or(0);
         rows.push(r);
     }

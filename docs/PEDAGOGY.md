@@ -202,12 +202,25 @@ The universities' working figure is **~100–136 contact hours per BIPA level** 
 
 The lesson spine runs on a different clock. At about 1 lesson a day (15 min) a 50-lesson level takes about 7 weeks. At 2 a day (30 min) it takes about 4 weeks. At about half a lesson a day (5 min) it takes about 14 weeks. That is far below the classroom-hour figures. **The conversion between app minutes and classroom hours is unknown.** No institution publishes one [42][44]. App study is denser: all retrieval, no waiting for others. But it lacks the free conversation and immersion that classroom hours include. So these tables are **planning ceilings, not forecasts.** The coach does not promise dates from them. It **recalibrates from real attempt times and level-check results** (SPEC §6 monthly check and forecast), and shows forecasts gently, without pressure.
 
+### 5.3 Vocabulary per level
+The lessons should teach about **4,000 Indonesian words by the end of BIPA 7** and about **1,500 Javanese words by the end of J6** (Mohamed's decision on #137). The Reader, Teach Kabar and graded reading cover the rest. Each level carries a cumulative `vocab_target` in `curriculum/*.yaml`, and the README shows the distinct words taught so far against it:
+
+| Level | BIPA 1 | BIPA 2 | BIPA 3 | BIPA 4 | BIPA 5 | BIPA 6 | BIPA 7 |
+|---|---|---|---|---|---|---|---|
+| Words known by the end | 600 | 1,100 | 1,600 | 2,100 | 2,700 | 3,300 | 4,000 |
+
+| Level | J1 | J2 | J3 | J4 | J5 | J6 |
+|---|---|---|---|---|---|---|
+| Words known by the end | 250 | 500 | 750 | 1,000 | 1,250 | 1,500 |
+
+The gap closes **without longer lessons and without raising the daily caps** (§3.3): the most frequent words go first (`content/freq/<lang>.tsv`, core words before everything else), practice lessons use their full new-word allowance, and each unit can add short word-set lessons drawn from its topic and the frequency list. These are ordinary lessons under §3.1, with the same retrieval rule. Mid-level counts (A2 ≈ 1,500–2,500 receptive words, B2 ≈ 3,250 [synth, after Milton & Alexiou 2009]) are orientation only.
+
 ---
 
 ## 6. How Kabar enforces it
 
-- **Validator (`crates/content`).** Every lesson file in `content/lessons/**` is checked against §3.1 for its `kind`: slide count, examples per slide, exercise count, distinct exercise types, dialogue lines, new-word count and grammar-point count. It also checks that **estimated time ≤ 7 min** under the §3.2 model. If a lesson file breaks a cap, `just check` fails. The caps and time-model constants live in one place, `kabar_core::lesson::pacing`, so the validator, the Lesson Player and the coach use the same numbers. The ≥ 3 retrievals per new word is an authoring target; the validator does not check it yet, because exercise `words` lists are not complete enough to count on.
-- **Curriculum `minutes`.** For each lesson in `curriculum/*.yaml`, `minutes` = **the time-model estimate rounded up to the next whole minute**. The validator flags any mismatch, so a hand-typed number can't drift away from the content. Lessons not written yet (BIPA 3–7, J4–J6) carry a placeholder of 6 minutes; every curriculum lesson must be ≤ 7.
+- **Validator (`crates/content`).** Every lesson file in `content/lessons/**` is checked against §3.1 for its `kind`: slide count, examples per slide, exercise count, distinct exercise types, dialogue lines, new-word count and grammar-point count. It also checks that **estimated time ≤ 7 min** under the §3.2 model. If a lesson file breaks a cap, `just check` fails. The caps and time-model constants live in one place, `kabar_core::lesson::pacing`, so the validator, the Lesson Player and the coach use the same numbers. It also checks that every new word comes back in **≥ 3 of the lesson's own exercises across ≥ 2 exercise types** (§4.2; tags in `words:` and the target text both count), and that each level's planned **vocabulary size** (§5.3) grows along the track.
+- **Curriculum `minutes`.** For each lesson in `curriculum/*.yaml`, `minutes` = **the time-model estimate rounded up to the next whole minute**. The validator flags any mismatch, so a hand-typed number can't drift away from the content. Every curriculum lesson must be ≤ 7.
 - **Coach daily plan (`crates/core`).** The plan builder sizes *Rencana Hari Ini* to §3.3. The order is: reviews first (card cap and time share), then the next lesson or lesson part (resumable with *Lanjut*), then weak spot, then reading/listening at 30 min. It enforces the per-day new-word and grammar caps across all devices through the synced attempt log. After a break it offers the comeback plan.
 - **Outside-cap content** (Radio, Pagi, games, tests) keeps its own validator rules (Radio 3–8 min already exists; tests ≤ 30 min in sections).
 - **Fixtures and tests** use SPEC §24 test texts. Time-model tests pin the worked examples in §3.2.
