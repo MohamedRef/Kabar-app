@@ -10,7 +10,7 @@
   --text: #23211f;
   --radius: 14px;
   --shadow: 0 1px 2px rgb(35 33 31 / 0.08), 0 4px 16px rgb(35 33 31 / 0.06);
-  --font-latin: "Inter", "Segoe UI", "Roboto", system-ui, sans-serif;
+  --font-latin: "Plus Jakarta Sans", "Inter", "Segoe UI", "Roboto", system-ui, sans-serif;
   --font-arabic: "IBM Plex Sans Arabic", "Noto Naskh Arabic", "Noto Sans Arabic", "Geeza Pro", system-ui, sans-serif;
 }
 
@@ -80,7 +80,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
 .welcome .hero .tall { display: none; }
 .app[data-width="compact"] .welcome .hero .wide { display: none; }
 .app[data-width="compact"] .welcome .hero .tall { display: block; block-size: 14rem; object-position: center 40%; }
-.welcome .hero .greeting { position: absolute; inset-block-start: 0.75rem; inset-inline: 0; margin: 0; color: #2B3A70; text-shadow: 0 1px 12px rgb(245 239 227 / 0.6); }
+.welcome .hero .greeting { font-size: clamp(2.2rem, 8vw, 3.4rem); position: absolute; inset-block-start: 0.75rem; inset-inline: 0; margin: 0; color: #2B3A70; text-shadow: 0 1px 12px rgb(245 239 227 / 0.6); }
 .greeting {
   font-family: var(--font-latin);
   font-size: clamp(2.6rem, 9vw, 4.5rem);
@@ -100,7 +100,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
   color: var(--gold);
   font-size: 1.6rem;
 }
-.bridge .ar { font-family: var(--font-arabic); font-size: 2rem; }
+.bridge .ar { font-family: "Amiri", var(--font-arabic); font-size: 2.2rem; }
 .bridge-word { text-decoration: underline 3px var(--gold); text-underline-offset: 6px; }
 
 /* Theme picker swatches: each shows that theme's surface, accent and gold. */
