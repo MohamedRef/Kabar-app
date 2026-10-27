@@ -132,22 +132,27 @@ exercises:
     distractors: [adhiku, saka]
     words: [mas, nyambut gawe]
   - id: e04
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: عندي اتنين إخوات أصغر مني.
-      ar: لي أخوان أصغر مني.
-      en: I have two younger siblings.
-    answers: ["Aku duwe adhi loro.", Aku duwe adhi loro, "Aku duwe adhik loro.", Aku duwe adhik loro, "Adhiku loro.", Adhiku loro, "Aku nduwe adhi loro.", Aku nduwe adhi loro]
-    words: [duwe, adhi, loro]
+    type: multiple_choice
+    question: Bapakku nyambut gawe, ibuku duwe warung.
+    question_meaning:
+      ar_eg: يعني إيه بالإندونيسي؟
+      ar: ما معناها بالإندونيسية؟
+      en: What does it mean in Indonesian?
+    options: ['Ayah saya bekerja, ibu saya punya warung.', 'Ayah saya punya warung, ibu saya bekerja.', 'Anak saya bekerja, ibu saya punya warung.']
+    answer: 0
+    explain:
+      ar_eg: nyambut gawe = bekerja (يشتغل)، duwe = punya (عنده).
+      ar: nyambut gawe = bekerja، وduwe = punya.
+      en: nyambut gawe = bekerja (work), duwe = punya (have).
+    words: [bapak, ibu, nyambut gawe, duwe, anak]
   - id: e05
     type: speaking
-    text: Aku duwe mas siji lan adhi loro.
+    text: Kulawargaku gedhe. Aku duwe mbakyu siji lan adhi loro.
     meaning:
-      ar_eg: عندي أخ كبير واحد واتنين إخوات أصغر مني.
-      ar: لي أخ أكبر واحد وأخوان أصغر مني.
-      en: I have one older brother and two younger siblings.
-    words: [mas, adhi, duwe]
+      ar_eg: عيلتي كبيرة. عندي أخت كبيرة واحدة واتنين إخوات أصغر مني.
+      ar: عائلتي كبيرة. لي أخت كبرى واحدة وأخوان أصغر مني.
+      en: My family is big. I have one older sister and two younger siblings.
+    words: [kulawarga, duwe, mbakyu, adhi]
   - id: e06
     type: match_pairs
     pairs:
@@ -171,13 +176,37 @@ exercises:
         ar_eg: أخويا / أختي الصغيرين
         ar: الأخ / الأخت الأصغر
         en: younger sibling
-    words: [bapak, ibu, anak, mbakyu, adhi]
+      - text: kulawarga
+        ar_eg: عيلة
+        ar: عائلة
+        en: family
+    words: [bapak, ibu, anak, mbakyu, adhi, kulawarga]
   - id: e07
     type: listen
     text: Bapak lan ibuku neng Kairo.
     options: [Bapak lan ibuku neng Kairo., Bapak lan adhiku neng Kairo., Mbakyu lan ibuku neng Kairo.]
     answer: 0
     words: [bapak, ibu]
+  - id: e08
+    type: listen
+    text: Iki kulawargaku, bapak, ibu lan mbakyuku.
+    options: ['Iki kulawargaku, bapak, ibu lan mbakyuku.', 'Iki kulawargaku, bapak, ibu lan adhiku.', 'Iki omahku, bapak, ibu lan mbakyuku.']
+    answer: 0
+    meaning:
+      ar_eg: دي عيلتي، بابا وماما وأختي الكبيرة.
+      ar: هذه عائلتي، أبي وأمي وأختي الكبرى.
+      en: This is my family, my dad, mum and older sister.
+    words: [kulawarga, bapak, ibu, mbakyu, adhi]
+  - id: e09
+    type: fill_blank
+    sentence: Mbakyuku ___ neng Suroboyo.
+    meaning:
+      ar_eg: أختي الكبيرة بتشتغل في سورابايا.
+      ar: أختي الكبرى تعمل في سورابايا.
+      en: My older sister works in Surabaya.
+    options: [nyambut gawe, duwe, anak]
+    answers: [nyambut gawe]
+    words: [mbakyu, nyambut gawe]
 dialogue:
   lines:
     - speaker: Sari
