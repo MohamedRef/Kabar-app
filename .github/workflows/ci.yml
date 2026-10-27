@@ -27,7 +27,7 @@ jobs:
       - run: cargo fmt --all --check
       - run: cargo clippy --workspace --all-targets -- -D warnings
       - run: cargo test --workspace
-      - name: Content checks (lessons, tests, glosses, offline pack manifests)
+      - name: Content checks (lessons, tests, glosses, offline pack manifests, README numbers)
         run: cargo run -p kabar-tools -- validate
 
   android:
