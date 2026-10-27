@@ -66,7 +66,7 @@ bakeoff-blind run:
 bakeoff-report run *args="":
     {{tools}} bakeoff report {{run}} {{args}}
 
-# Validate every content file (schemas, glosses, Bridge, speech levels, golden sets, pack manifests, README numbers); CI runs the same checks
+# Validate every content file (schemas, glosses, Bridge, speech levels, golden sets, pack manifests); CI runs the same checks
 content-check:
     {{tools}} validate
 
