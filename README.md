@@ -23,7 +23,7 @@ the Arabic words Indonesian already borrowed.
 | Placement test, level tests ("Take a flight"), monthly level check | ✓ | ✓ | ✓ |
 | Review (FSRS): classic cards, 1-minute bursts, typed answers | ✓ | ✓ | ✓ |
 | Stats: skill radar, pace and forecast | ✓ | ✓ | ✓ |
-| Kak Nur coach: onboarding, daily plan, recap, weekly report | ✓ | ✓ + reminders (FCM) | ✓ + reminders (FCM) |
+| Kak Nur coach: onboarding, daily plan, recap, weekly report | ✓ (reminders coming soon) | ✓ + local reminders (FCM next) | ✓ + local reminders (FCM next) |
 | Reader with word popovers, Arabic Bridge, speech levels, Arabic-script pronunciation | ✓ | ✓ | ✓ |
 | Screenshot Decoder | ✓ Apple Vision OCR | ✓ ML Kit OCR | ✓ ML Kit OCR |
 | Share-to-Kabar (text, selection, screenshots) | — | ✓ | ✓ |
@@ -86,7 +86,7 @@ every morning. CI warns when the table below is behind the content.
 | Javanese speech-level rows | 365 | ngoko / krama / krama inggil |
 | Pronunciation lexicon | 18,309 | plus 30 hand overrides |
 | Sinetron episodes | 70 | each unlocks after its unit |
-| Kabar Radio episodes | 15 | prebuilt, downloadable for offline |
+| Kabar Radio episodes | 70 | prebuilt, downloadable for offline |
 | Conversation personas | 10 |  |
 | Kabar Pagi stories | 24 | morning stories |
 | Games | 3 | Pasar!, Unggah-Ungguh, Minimal Pairs |

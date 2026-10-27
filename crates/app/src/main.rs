@@ -18,6 +18,7 @@ mod lesson;
 mod listen;
 mod map_art;
 mod misc_art;
+mod more;
 mod packs;
 mod penlab;
 mod platform;
@@ -118,7 +119,8 @@ impl Screen {
     fn secondary(self) -> bool {
         matches!(
             self,
-            Self::Coach
+            Self::Play
+                | Self::Coach
                 | Self::Journal
                 | Self::Settings
                 | Self::Studio
@@ -294,6 +296,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     use_context_provider(|| db.clone());
     let prefs = use_context_provider(|| settings::device::DevicePrefs::load(&db));
     use_context_provider(settings::SettingsNav::new);
+    use_context_provider(more::MoreNav::new);
     use_context_provider(play::PlayNav::new);
     use_context_provider(|| teach::TeachInbox(Signal::new(None)));
     let link = use_hook(cloud::link::CloudLink::default);
@@ -309,6 +312,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     coach::use_clock(coach, db.clone());
     schedule::use_optimizer(db.clone(), ui, coach);
     use_learner_profile(&db, coach);
+    coach::notify::use_local_reminders(&db, coach, ui);
     let inbox = use_context_provider(|| reader::Inbox(Signal::new(None)));
     use_context_provider(|| reader::ReaderState::new(ui.settings.peek().ui_language));
     use_share_inbox(ui, inbox);
@@ -336,6 +340,9 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let on_off = |on: bool| if on { "on" } else { "off" };
     let pen_hover = on_off(*prefs.pen_hover.read());
     let mouse_hover = on_off(*prefs.mouse_hover.read());
+    // One switch for word colours everywhere: main.css neutralizes the
+    // .wc-* / .wp-* colours under data-word-colours="off".
+    let word_colours = on_off(!settings.word_colours_off);
 
     rsx! {
         document::Title { "Kabar" }
@@ -343,6 +350,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
         style { {theme_css} }
         style { {pron_font} }
         style { {annotated::CSS} }
+        style { {reader::grammar::CSS} }
         style { {ui_fonts} }
         style { {misc_art::paper_css()} }
         div {
@@ -355,6 +363,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
             "data-nav": nav_style,
             "data-pen-hover": pen_hover,
             "data-mouse-hover": mouse_hover,
+            "data-word-colours": word_colours,
             style: "{batik}",
             if !settings.welcomed {
                 screens::Welcome {}
@@ -557,8 +566,10 @@ fn Shell() -> Element {
         Screen::Studio,
         Screen::Teach,
         Screen::PenLab,
-        Screen::Devices,
     ];
+    // Re-tapping the tab you're on starts that section over (Games → the
+    // hub, Chat → the list, Review → its home): the screen remounts.
+    let mut generation = use_signal(|| 0u32);
 
     rsx! {
         div { class: "shell",
@@ -569,14 +580,25 @@ fn Shell() -> Element {
                         key: "{item:?}",
                         class: if item.secondary() { "nav-item secondary" } else { "nav-item" },
                         aria_current: if item == current { "page" } else { "false" },
+                        title: "{ui.t(item.label())}",
                         onclick: move |_| {
+                            if item == *ui.screen.peek() {
+                                generation += 1;
+                            }
+                            if item == Screen::Play {
+                                let play::PlayNav(mut nav) = consume_context::<play::PlayNav>();
+                                nav.set(play::Route::Hub);
+                            }
                             let mut screen = ui.screen;
                             screen.set(item);
                         },
                         span { class: "nav-icon", aria_hidden: "true", {icons::nav(item)} }
-                        span { "{ui.t(item.label())}" }
+                        span { class: "nav-label",
+                            "{more::rail_label(ui.lang(), item).unwrap_or(ui.t(item.label()))}"
+                        }
                     }
                 }
+                more::MoreTab { current }
                 // Pinned to the foot of the rail and sidebar (hidden in the
                 // phone's bottom bar, which has the gear up top instead).
                 button {
@@ -589,12 +611,9 @@ fn Shell() -> Element {
                 }
             }
             if top_bar {
-                header { class: "top-bar",
-                    span { class: "brand-small latin", "Kabar" }
-                    settings::GearButton {}
-                }
+                more::TopBar { current }
             }
-            main { class: "content",
+            main { class: "content", key: "{current:?}-{generation}",
                 match current {
                     Screen::Today => rsx! { coach::today::Today {} },
                     Screen::Coach => rsx! { coach::coach_screen::CoachScreen {} },
@@ -617,6 +636,7 @@ fn Shell() -> Element {
                     Screen::LevelCheck => rsx! { stats::check::LevelCheckScreen {} },
                 }
             }
+            more::MoreSheet {}
             settings::SettingsSheet {}
         }
     }

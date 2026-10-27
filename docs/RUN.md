@@ -130,7 +130,7 @@ On the Mac: `just run-mac`. After the welcome screen, Kak Nur's onboarding asks 
 
 To start onboarding again, delete the database (§2). On the Galaxy devices: `just apk` and `just install <serial>` as in §3.
 
-Reminders arrive as push notifications once Kabar Cloud's reminder alarm and Firebase are set up (CLOUD.md §3.4).
+On the S24 Ultra and Tab S11, reminders are local notifications from Kak Nur: choosing a reminder style asks for Android's notification permission, and the app schedules the next few reminders itself, so they work offline and without Kabar Cloud. Studying, snoozing or changing a setting re-plans them; a goal met on another device silences the rest once this device has synced. If notifications are off, Settings → Kak Nur says so and opens the system setting. Push through FCM (reminders even when the app hasn't been opened for days) and Mac notifications come next (issue #127); the Mac shows reminders as "coming soon".
 
 ### Settings: Cost & limits, and Export everything
 
@@ -163,6 +163,8 @@ Writing the draft needs an AI engine, so until the app is connected to Kabar Clo
 
 ### App icon on Android and the Mac
 The phone and tablet show Kabar's own launcher icon (adaptive, with a themed-icon layer for One UI). dx always writes its default Dioxus icon into the app it generates, so Kabar ships its icon from the `android/` module under the name `ic_kabar_launcher` and uses its own manifest, `crates/app/AndroidManifest.xml` (`[application] android_manifest` in `crates/app/Dioxus.toml`). That file is dx's template with Kabar's icon and the text-to-speech `<queries>`: **add any new Android permission or intent there**, Dioxus.toml no longer feeds the manifest. `just apk` (and CI's preview build) stops if the APK's icon is not Kabar's, as long as the Android build-tools' `aapt2` is on your PATH.
+
+`just apk` builds a real release: dx 0.7.10 only runs gradle's release build when the keystore passwords sit in `Dioxus.toml`, which would put a secret in the repo, so `scripts/android-release-apk.sh` re-runs `assembleRelease` on the gradle project dx generated. The APK is not debuggable, is shrunk by R8, and takes its `versionCode` from the workspace version (`1.0.0-alpha.1` → 10000101, so every alpha installs over the one before). The check stops if an APK is debuggable or still has versionCode 1.
 
 After changing the icon masters in `assets/src/icon/`, run `python3 scripts/assets/export_icons.py`; it refreshes `assets/export/` and the copies in `android/src/main/res/`. The Mac `.app` icon is built by `dx bundle` from the 1024 px PNG in `assets/export/macos/Kabar.iconset/`.
 
