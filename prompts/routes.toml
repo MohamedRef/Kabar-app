@@ -22,6 +22,14 @@ max_tokens = 4096
 engines = ["workers_ai", "gemini_free", "local", "claude"]
 status = "provisional"
 
+# The Reader's translation under each line. The app flags every request
+# personal (texts are often someone's chat), so gemini_free is skipped.
+[translate_text]
+engines = ["workers_ai", "gemini_free", "local", "claude"]
+status = "provisional"
+# Three voices per line, up to ~25 lines per request.
+max_tokens = 4096
+
 # Teach Kabar (spec §26). Learning text; screenshot sources are flagged
 # personal per request, so the router skips gemini_free for those.
 [learn_entry]
