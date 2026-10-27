@@ -161,6 +161,7 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
     if dir.exists() {
         yaml_files(&dir, &mut files)?;
     }
+    let mut lesson_values = BTreeMap::new();
     for file in &files {
         let value = yaml_value(file)?;
         if let Some(v) = &lesson_validator {
@@ -169,7 +170,9 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
         let lang = file.parent().and_then(Path::file_name).and_then(|s| s.to_str()).unwrap_or("");
         lessons::check_lesson(&file.display().to_string(), stem(file), lang, &value, &index, &mut problems);
         report.lessons.push(stem(file).to_owned());
+        lesson_values.insert(stem(file).to_owned(), value);
     }
+    check_forward_words(&report.curricula, &lesson_values, &mut problems);
     for level in LESSON_LEVELS {
         for id in index.lessons_of(level) {
             if !report.lessons.iter().any(|l| l == id) {
@@ -208,6 +211,54 @@ fn check_lessons_and_tests(root: &Path, report: &mut Report) -> Result<(), LoadE
     }
     report.problems.extend(problems);
     Ok(())
+}
+
+/// An exercise's `words:` tags are the words it practises, so none may be a
+/// word that a later lesson (in curriculum order, any level) first teaches in
+/// its `new_words`: the learner would be drilled on it before meeting it.
+fn check_forward_words(
+    curricula: &[Curriculum],
+    lessons: &BTreeMap<String, serde_json::Value>,
+    problems: &mut Vec<String>,
+) {
+    use serde_json::Value;
+    let words = |v: Option<&Value>, key: &str| -> Vec<String> {
+        v.and_then(Value::as_array)
+            .into_iter()
+            .flatten()
+            .filter_map(|w| if key.is_empty() { w.as_str() } else { w.get(key).and_then(Value::as_str) })
+            .map(str::to_lowercase)
+            .collect()
+    };
+    for c in curricula {
+        let order: Vec<&str> = c
+            .levels
+            .iter()
+            .flat_map(|l| &l.units)
+            .flat_map(|u| &u.lessons)
+            .map(|l| l.id.as_str())
+            .filter(|id| lessons.contains_key(*id))
+            .collect();
+        let mut first: BTreeMap<String, usize> = BTreeMap::new();
+        for (pos, id) in order.iter().enumerate() {
+            for w in words(lessons[*id].get("new_words"), "word") {
+                first.entry(w).or_insert(pos);
+            }
+        }
+        for (pos, id) in order.iter().enumerate() {
+            for e in lessons[*id].get("exercises").and_then(Value::as_array).into_iter().flatten() {
+                let ex = e.get("id").and_then(Value::as_str).unwrap_or("?");
+                for w in words(e.get("words"), "") {
+                    if let Some(&later) = first.get(&w).filter(|&&p| p > pos) {
+                        problems.push(format!(
+                            "{id} {ex}: practises '{w}', which is first taught later in {} (teach it earlier or drop the tag)",
+                            order[later]
+                        ));
+                    }
+                }
+            }
+        }
+    }
 }
 
 fn check_curricula(report: &mut Report) {
