@@ -7,7 +7,7 @@
 task: roleplay_turn
 version: 1
 rubric: |
-  Stays in character: Mas Dimas (Yogyakarta student, ngoko with friends, krama with elders), Bu Siti (Solo market seller, Javanese, mirrors the learner's politeness), Mbak Gadis (Jakarta office colleague, colloquial Jakarta Indonesian with English), Mas Ardi (Bali hotel receptionist, polite standard Indonesian).
+  Stays in character: Mas Dimas (Yogyakarta student, ngoko with friends, krama with elders), Bu Siti (Jogja market seller, Javanese, mirrors the learner's politeness), Mbak Gadis (Jakarta office colleague, colloquial Jakarta Indonesian with English), Mas Ardi (Bali hotel receptionist, polite standard Indonesian).
   The reply moves the scene forward (answers, then asks or offers something) in 1-3 short sentences sized to the level: bipa1/j1 short high-frequency words, higher levels richer.
   corrections hold only real mistakes (grammar, word choice, wrong language, register for the situation); valid slang, dialect and casual forms are never corrected. Zero corrections is right when the learner was right.
   Each correction is gentle and specific: why_en in plain English, why_ar in Egyptian Arabic; the persona never breaks the flow to lecture.
@@ -195,13 +195,13 @@ items:
     tags: [dimas, adversarial, prompt-injection]
     verified: false
 
-  # --- Bu Siti: market seller in Solo ---
+  # --- Bu Siti: market seller in Jogja ---
   - id: roleplay_turn-009
     lang: jv
     input:
       persona: bu_siti
       level: j3
-      scenario: "Buying tomatoes at Pasar Gede, Solo."
+      scenario: "Buying tomatoes at Pasar Kranggan, Jogja."
       history:
         - { role: persona, text: "Monggo, Mas, pados napa?" }
       learner: "Bu, menika pinten sekilo?"
@@ -221,7 +221,7 @@ items:
     input:
       persona: bu_siti
       level: j2
-      scenario: "Buying tomatoes at Pasar Gede, Solo."
+      scenario: "Buying tomatoes at Pasar Kranggan, Jogja."
       history:
         - { role: persona, text: "Monggo, Mas, pados napa?" }
       learner: "Bu, iki piro?"
@@ -244,7 +244,7 @@ items:
     input:
       persona: bu_siti
       level: j2
-      scenario: "Haggling for a batik shirt at Pasar Klewer, Solo."
+      scenario: "Haggling for a batik shirt at Pasar Beringharjo, Jogja."
       history:
         - { role: persona, text: "Kemeja batik niki satus ewu, Mas." }
       learner: "Larang banget, Bu. Pitung puluh ewu nggih?"
@@ -254,7 +254,7 @@ items:
       register: madya
     criteria:
       - "Counter-offers between 70 and 100 thousand, playful and realistic."
-      - "Mixes krama/madya as a Solo seller would with a polite customer."
+      - "Mixes krama/madya as a Jogja seller would with a polite customer."
     avoid:
       - "Accepting immediately (no haggle) or refusing rudely."
       - "Correcting larang (correct ngoko/madya market word)."
@@ -265,7 +265,7 @@ items:
     input:
       persona: bu_siti
       level: j1
-      scenario: "Buying bananas at a market in Solo."
+      scenario: "Buying bananas at a market in Jogja."
       history:
         - { role: persona, text: "Monggo, Mas, gedhange seger-seger." }
       learner: "Berapa harganya, Bu?"
@@ -288,7 +288,7 @@ items:
     input:
       persona: bu_siti
       level: j3
-      scenario: "Buying rice at the market in Solo."
+      scenario: "Buying rice at the market in Jogja."
       history:
         - { role: persona, text: "Beras niki sekilo kalih welas ewu. Badhe pinten?" }
       learner: "Kalih kilo, Bu."
@@ -349,7 +349,7 @@ items:
     input:
       persona: bu_siti
       level: j2
-      scenario: "Haggling for a batik shirt at Pasar Klewer, Solo."
+      scenario: "Haggling for a batik shirt at Pasar Beringharjo, Jogja."
       history:
         - { role: persona, text: "Kemeja batik niki satus ewu, Mas." }
       learner: "Sewu wae ya Bu 😂"
