@@ -16,8 +16,8 @@ OUT = ROOT / "assets" / "export" / "map"
 BACKDROPS = ("paper-light", "paper-dark")
 VIGNETTES = (
     "jakarta", "bali", "lombok", "sulawesi", "kalimantan", "sumatra",
-    "raja-ampat", "surabaya", "madiun", "solo", "yogyakarta", "semarang",
-    "kotagede",
+    "raja-ampat", "malioboro", "madiun", "beringharjo", "yogyakarta",
+    "madiun-pendekar", "kotagede",
 )
 RESAMPLE = Image.Resampling.LANCZOS
 
