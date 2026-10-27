@@ -17,6 +17,11 @@ slides:
         - semoga / mudah-mudahan في أول الجملة: Semoga cepat sembuh! والرد: Amin.
         - insya Allah، alhamdulillah زي عندنا.
         - ayo / yuk = يلا، mari = هيا بنا (رسمية): Ayo, istirahat dulu!
+        في الشارع بيقولوا:
+        - nggak = tidak (مش، لأ)
+        - udah = sudah (خلاص، بقى)
+        - aku و-ku = saya (أنا، ـي) مع الأصحاب واللي في سنك؛ مع الكبار والغُرب saya
+        - makasih = terima kasih (متشكر)
       ar: |
         - Saya sakit + عضو: sakit kepala، sakit perut، sakit gigi، sakit tenggorokan (بلا punya).
         - أو: Kepala saya sakit = رأسي يؤلمني.
@@ -25,6 +30,11 @@ slides:
         - semoga / mudah-mudahan تتصدر الجملة: Semoga cepat sembuh! والجواب: Amin.
         - insya Allah وalhamdulillah كما في العربية.
         - ayo / yuk = هيّا، mari = هلمّ (رسمية): Ayo, istirahat dulu!
+        في كلام الشارع:
+        - nggak = tidak (لا، ليس)
+        - udah = sudah (قد، بالفعل)
+        - aku و-ku = saya (أنا، ـي) مع الأصدقاء والأقران؛ ومع الكبار والغرباء saya
+        - makasih = terima kasih (شكرًا)
       en: |
         - Saya sakit + body part: sakit kepala, sakit perut, sakit gigi, sakit tenggorokan (no punya!).
         - Or: Kepala saya sakit = my head hurts.
@@ -33,6 +43,11 @@ slides:
         - semoga / mudah-mudahan open the sentence: Semoga cepat sembuh! Reply: Amin.
         - insya Allah, alhamdulillah — just as in Arabic.
         - ayo / yuk = let's / come on, mari = let us (formal): Ayo, istirahat dulu!
+        On the street:
+        - nggak = tidak (not, no)
+        - udah = sudah (already)
+        - aku / -ku = saya (I, my) with friends and people your age; saya with elders and strangers
+        - makasih = terima kasih (thanks)
     grammar: id.pattern.sakit
 exercises:
   - id: e01
@@ -103,6 +118,10 @@ exercises:
     options: ['Semoga betah, ya!', Selamat ulang tahun!, 'Semoga cepat sembuh, ya!']
     answer: 2
     words: [semoga, sembuh]
+    explain:
+      ar_eg: Semoga cepat sembuh = ربنا يشفيكي. Semoga betah = يا رب ترتاحي في المكان، وSelamat ulang tahun = عيد ميلاد سعيد.
+      ar: Semoga cepat sembuh = شفاكِ الله. أما Semoga betah فـ«أتمنى أن ترتاحي في المكان» وSelamat ulang tahun للميلاد.
+      en: Semoga cepat sembuh = get well soon. Semoga betah is "hope you settle in", the other is "happy birthday".
   - id: e06
     type: fill_blank
     sentence: ___ besok kamu sudah sehat.
@@ -113,6 +132,10 @@ exercises:
     options: [Kok, Mudah-mudahan, Ayo]
     answers: [Mudah-mudahan]
     words: [mudah-mudahan, sehat]
+    explain:
+      ar_eg: Mudah-mudahan = يا رب/إن شاء الله (زي semoga). Kok للاستغراب، وAyo = يلا.
+      ar: Mudah-mudahan = عسى (كـ semoga). أما Kok فللاستغراب وAyo دعوة.
+      en: Mudah-mudahan = hopefully (like semoga). Kok shows surprise, Ayo invites.
   - id: e07
     type: fill_blank
     sentence: Sirup ini diminum dua ___ sehari.
@@ -123,6 +146,10 @@ exercises:
     options: [kali, jam, sendok]
     answers: [kali]
     words: [kali, sehari]
+    explain:
+      ar_eg: dua kali sehari = مرتين في اليوم. jam = ساعة، وsendok = معلقة (الكمية مش عدد المرات).
+      ar: dua kali sehari = مرتين يوميًا. أما jam فساعة وsendok ملعقة (كمية لا عدد مرات).
+      en: dua kali sehari = twice a day. jam is hour; sendok (spoon) is the amount, not how often.
   - id: e08
     type: build_sentence
     source:
@@ -133,6 +160,10 @@ exercises:
     alternatives: [Saya sakit kepala dan saya merasa mual.]
     distractors: [punya, semoga]
     words: [kepala, sakit, merasa, mual]
+    explain:
+      ar_eg: Kepala saya sakit = راسي بتوجعني، وmerasa mual = نفسي غامّة. punya وsemoga زيادة.
+      ar: Kepala saya sakit = رأسي يؤلمني، وmerasa mual = أشعر بالغثيان. أما punya وsemoga فزائدتان.
+      en: Kepala saya sakit = my head hurts, merasa mual = feel nauseous. punya and semoga don't fit.
   - id: e09
     type: build_sentence
     source:
@@ -153,7 +184,7 @@ exercises:
       ar_eg: عندي وجع سنان.
       ar: عندي ألم في الأسنان.
       en: I have a toothache.
-    answers: [Saya sakit gigi., Saya sakit gigi, Aku sakit gigi., Aku sakit gigi, Gigi saya sakit., Gigi saya sakit, Gigiku sakit.]
+    answers: ["Saya sakit gigi.", "Saya sakit gigi", "Aku sakit gigi.", "Aku sakit gigi", "Gigi saya sakit.", "Gigi saya sakit", "Gigiku sakit.", "Gigiku sakit"]
     words: [sakit, gigi]
   - id: e11
     type: match_pairs
@@ -187,22 +218,22 @@ dialogue:
   title: Telepon untuk Rina
   lines:
     - speaker: Rina
-      text: Halo, Mohamed! Kok kemarin tidak ikut kelas online?
+      text: Halo, Mohamed! Kok kemarin nggak ikut kelas online?
       ar_eg: ألو يا محمد! إزاي ماحضرتش الكلاس الأونلاين امبارح؟
       ar: مرحبًا يا محمد! لماذا لم تحضر الدرس عبر الإنترنت أمس؟
       en: Hi Mohamed! How come you missed the online class yesterday?
     - speaker: Mohamed
-      text: Maaf, Rina. Saya sakit. Demam dan sakit tenggorokan.
+      text: Maaf, Rina. Aku sakit. Demam dan sakit tenggorokan.
       ar_eg: آسف يا رينا. كنت عيان. سخونية والتهاب زور.
       ar: آسف يا رينا. كنت مريضًا، عندي حمّى والتهاب في الحلق.
       en: Sorry, Rina. I was ill. A fever and a sore throat.
     - speaker: Rina
-      text: Aduh! Sudah ke dokter?
+      text: Aduh! Udah ke dokter?
       ar_eg: يا خبر! رحت للدكتور؟
       ar: يا للأسف! هل ذهبت إلى الطبيب؟
       en: Oh no! Have you seen a doctor?
     - speaker: Mohamed
-      text: Sudah. Obatnya diminum tiga kali sehari. Sekarang sudah lebih baik, alhamdulillah.
+      text: Udah. Obatnya diminum tiga kali sehari. Sekarang udah lebih baik, alhamdulillah.
       ar_eg: أيوه. الدوا ٣ مرات في اليوم. ودلوقتي بقيت أحسن، الحمد لله.
       ar: نعم. الدواء ثلاث مرات يوميًا، وأنا الآن أفضل، الحمد لله.
       en: Yes. The medicine is three times a day. I'm better now, alhamdulillah.
@@ -212,7 +243,7 @@ dialogue:
       ar: الحمد لله! هيّا استرح قليلًا. شفاك الله سريعًا!
       en: Thank goodness! Come on, get some rest. Get well soon!
     - speaker: Mohamed
-      text: Amin. Terima kasih, Rina. Insya Allah minggu depan saya ikut kelas.
+      text: Amin. Makasih, Rina. Insya Allah minggu depan aku ikut kelas.
       ar_eg: آمين. شكرًا يا رينا. إن شاء الله الأسبوع الجاي هحضر الكلاس.
       ar: آمين. شكرًا يا رينا. إن شاء الله سأحضر الدرس الأسبوع القادم.
       en: Amen. Thanks, Rina. God willing, I'll join class next week.

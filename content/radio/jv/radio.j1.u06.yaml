@@ -4,10 +4,10 @@ language: jv
 level: j1
 unit: j1.u06
 title:
-  target: Nang endi?
-  ar_eg: على فين؟
-  ar: إلى أين؟
-  en: Where to?
+  target: Arep neng ndi?
+  ar_eg: رايح فين؟
+  ar: إلى أين أنت ذاهب؟
+  en: Where are you off to?
 hosts:
 - name: Mbak Sekar
   voice: jv-ID-SitiNeural
@@ -16,25 +16,34 @@ hosts:
 minutes: 5
 segments:
 - kind: intro
-  title: Wonokromo
+  title: Prawirotaman
   lines:
   - speaker: Mbak Sekar
-    text: Sugeng enjing saka Wonokromo! Ing kene ana terminal, pasar, lan kebun binatang Suroboyo. Aku Sekar.
-    ar_eg: صباح الخير من وونوكرومو! هنا فيه موقف، وسوق، وجنينة حيوانات سورابايا. أنا سيكار.
-    ar: صباح الخير من وونوكرومو! هنا موقف حافلات وسوق وحديقة حيوان سورابايا. أنا سيكار.
-    en: Good morning from Wonokromo! There's a bus terminal, a market and the Surabaya zoo here. I'm Sekar.
+    text: Sugeng enjing saka Prawirotaman! Neng kene akeh kafe lan losmen cilik. Aku Sekar.
+    ar_eg: صباح الخير من پراويروتامان! هنا فيه كافيهات كتير وبنسيونات صغيّرة. أنا سيكار.
+    ar: صباح الخير من براويروتامان! هنا مقاهٍ كثيرة ونُزُل صغيرة. أنا سيكار.
+    en: Good morning from Prawirotaman! Lots of cafés and little guesthouses here. I'm Sekar.
+    note:
+      ar_eg: پراويروتامان حيّ في جنوب جوجا، مليان سيّاح وكافيهات ورسومات على الحيطان.
+      ar: براويروتامان حيّ في جنوب جوغجا، مليء بالسيّاح والمقاهي والرسوم على الجدران.
+      en: Prawirotaman is a south Jogja neighbourhood full of travellers, cafés and murals.
   - speaker: Mas Danang
-    text: Aku Danang. Lan aku kesasar, hehe. Dina iki kita sinau takon dalan.
-    ar_eg: أنا دانانج. وأنا تايه، هههه. النهارده هنتعلّم نسأل على الطريق.
-    ar: أنا دانانغ. وقد ضللت الطريق، هههه. اليوم نتعلّم السؤال عن الطريق.
-    en: I'm Danang. And I'm lost, hehe. Today we learn to ask the way.
+    text: Aku Danang. Wingi aku numpak Trans Jogja mrene, lan aku kesasar, hehe.
+    ar_eg: أنا دانانج. امبارح ركبت ترانس جوجا لحدّ هنا، وتهت، هههه.
+    ar: أنا دانانغ. أمس ركبت ترانس جوغجا إلى هنا، وضللت الطريق، هههه.
+    en: I'm Danang. Yesterday I took the Trans Jogja here, and I got lost, hehe.
   - speaker: Mbak Sekar
-    text: 'Tembunge: nang, neng, saka. Kene, kono, kana. Iki, kuwi, kae.'
-    ar_eg: 'الكلمات: nang، neng، saka. هنا، هناك، هناك بعيد. ده، ده (اللي جنبك)، ده (اللي بعيد).'
-    ar: 'الكلمات: nang وneng وsaka. هنا، هناك، هنالك. هذا، ذاك، ذلك البعيد.'
-    en: 'The words: nang, neng, saka. Here, there, over there. This, that, that one over there.'
+    text: Mula dina iki kita sinau takon dalan. Neng ndi, saka ngendi, mrene, mrana.
+    ar_eg: عشان كده النهارده هنتعلّم نسأل على الطريق. لفين، منين، لهنا، لهناك.
+    ar: لذلك نتعلّم اليوم السؤال عن الطريق. إلى أين، من أين، إلى هنا، إلى هناك.
+    en: So today we learn to ask the way. Where to, where from, over here, over there.
+  - speaker: Mas Danang
+    text: Neng dalan, wong Jogja ngomong "neng". "Menyang" lan "ing" kanggo omongan sing rada resmi.
+    ar_eg: في الشارع، أهل جوجا بيقولوا «neng». و«menyang» و«ing» للكلام الرسمي شويّة.
+    ar: في الشارع يقول أهل جوغجا «neng». أمّا «menyang» و«ing» فللكلام الأقرب إلى الرسمي.
+    en: On the street, Jogja people say "neng". "Menyang" and "ing" are for slightly more formal talk.
 - kind: dialogue
-  title: Takon dalan nang kebun binatang
+  title: Neng Gembira Loka
   lines:
   - speaker: Mas Danang
     text: Sekar, aku turis sing kesasar. Kowe wong kene, ya.
@@ -42,93 +51,115 @@ segments:
     ar: يا سيكار، أنا سائح تائه وأنتِ من أهل المنطقة.
     en: Sekar, I'm a lost tourist. You're a local.
   - speaker: Mas Danang
-    text: Nuwun sewu, Mbak. Kebun binatang nang endi, ya?
-    ar_eg: لا مؤاخذة يا مباك. جنينة الحيوانات فين؟
-    ar: عذرًا يا مباك. أين حديقة الحيوان؟
-    en: Excuse me, Mbak. Where's the zoo?
+    text: Nuwun sewu, Mbak. Gembira Loka neng ndi, ya?
+    ar_eg: لا مؤاخذة يا مباك. جمبيرا لوكا فين؟
+    ar: عذرًا يا مباك. أين غمبيرا لوكا؟
+    en: Excuse me, Mbak. Where's Gembira Loka?
     note:
-      ar_eg: Nuwun sewu = لا مؤاخذة / بعد إذنك. مؤدّبة ومناسبة مع أي حدّ غريب.
-      ar: Nuwun sewu = عذرًا / بعد إذنك. مهذّبة ومناسبة مع أيّ غريب.
-      en: Nuwun sewu = excuse me. Polite, safe with any stranger.
+      ar_eg: Gembira Loka هي جنينة الحيوانات بتاعة جوجا (kebun binatang). وNuwun sewu = لا مؤاخذة، مؤدّبة مع أي حدّ غريب.
+      ar: Gembira Loka هي حديقة حيوان جوغجا (kebun binatang). وNuwun sewu = عذرًا، مهذّبة مع أيّ غريب.
+      en: Gembira Loka is Jogja's zoo (kebun binatang). Nuwun sewu = excuse me, polite with any stranger.
   - speaker: Mbak Sekar
-    text: Ora adoh, Mas. Saka kene lurus wae, banjur ngiwa ing prapatan.
-    ar_eg: مش بعيد يا ماس. من هنا على طول، وبعدين شمال عند التقاطع.
-    ar: ليست بعيدة يا ماس. من هنا مباشرة، ثمّ يسارًا عند التقاطع.
-    en: Not far, Mas. Straight on from here, then left at the crossroads.
+    text: Kebun binatang? Ora cedhak, Mas. Luwih kepenak numpak Trans Jogja.
+    ar_eg: جنينة الحيوانات؟ مش قريبة يا ماس. الأريح تركب ترانس جوجا.
+    ar: حديقة الحيوان؟ ليست قريبة يا ماس. الأسهل أن تركب ترانس جوغجا.
+    en: The zoo? It's not close, Mas. Easier to take the Trans Jogja.
   - speaker: Mas Danang
-    text: Prapatan sing endi? Sing kuwi?
-    ar_eg: أنهي تقاطع؟ اللي هناك ده؟
-    ar: أيّ تقاطع؟ ذاك؟
-    en: Which crossroads? That one?
+    text: Haltene neng ndi?
+    ar_eg: المحطّة فين؟
+    ar: أين المحطّة؟
+    en: Where's the stop?
   - speaker: Mbak Sekar
-    text: Dudu sing kuwi. Sing kae, sing ana patung baya lan iwak hiu.
-    ar_eg: مش ده. اللي هناك بعيد، اللي فيه تمثال التمساح وسمكة القرش.
-    ar: ليس ذاك. ذلك البعيد، الذي فيه تمثال التمساح وسمكة القرش.
-    en: Not that one. That one over there, with the crocodile and shark statue.
+    text: Saka kene lurus wae, banjur ngiwa neng prapatan. Haltene neng kono, sing dhuwur kae.
+    ar_eg: من هنا على طول، وبعدين شمال عند التقاطع. المحطّة هناك، العالية اللي هناك دي.
+    ar: من هنا مباشرة، ثمّ يسارًا عند التقاطع. المحطّة هناك، تلك المرتفعة.
+    en: Straight on from here, then left at the crossroads. The stop's there, that raised one over there.
     note:
-      ar_eg: تمثال القرش (sura) والتمساح (baya) رمز سورابايا، ومنه جه اسم المدينة حسب الحكاية.
-      ar: تمثال القرش (sura) والتمساح (baya) رمز سورابايا، ومنه اسم المدينة بحسب الحكاية.
-      en: The shark (sura) and crocodile (baya) statue is Surabaya's symbol; the legend says the city's name comes from them.
+      ar_eg: 'محطّات ترانس جوجا (halte) عالية عن الأرض: تطلع السلّم، تدفع، وتستنّى الأتوبيس جوّه.'
+      ar: 'محطّات ترانس جوغجا (halte) مرتفعة عن الأرض: تصعد الدرج، تدفع، وتنتظر الحافلة في داخلها.'
+      en: 'Trans Jogja stops (halte) are raised: you climb the steps, pay, and wait inside.'
   - speaker: Mas Danang
-    text: Oh, sing kae! Banjur sawise ngiwa?
-    ar_eg: آه، اللي هناك! وبعد ما أخش شمال؟
-    ar: آه، ذاك البعيد! وبعد الانعطاف يسارًا؟
-    en: Oh, that one! And after turning left?
+    text: Banjur mudhun neng ndi?
+    ar_eg: وبعدين أنزل فين؟
+    ar: ثمّ أين أنزل؟
+    en: Then where do I get off?
   - speaker: Mbak Sekar
-    text: Mlaku sithik, kebun binatange ana ing sisih tengen dalan.
-    ar_eg: تمشي شويّة، وجنينة الحيوانات على يمين الطريق.
-    ar: تمشي قليلًا، وتكون الحديقة على يمين الطريق.
-    en: Walk a little, the zoo is on the right side of the road.
+    text: Mudhun neng halte sing cedhak Gembira Loka. Ora adoh saka terminal Giwangan.
+    ar_eg: انزل في المحطّة اللي جنب جمبيرا لوكا. مش بعيدة عن موقف جيوانجان.
+    ar: انزل في المحطّة القريبة من غمبيرا لوكا. ليست بعيدة عن موقف غيوانغان.
+    en: Get off at the stop near Gembira Loka. It's not far from Giwangan terminal.
   - speaker: Mas Danang
-    text: Matur nuwun, Mbak. Sampeyan saka kene?
-    ar_eg: متشكّر يا مباك. انتي من هنا؟
-    ar: شكرًا يا مباك. هل أنتِ من هنا؟
-    en: Thank you, Mbak. Are you from here?
+    text: Yen numpak becak wae, piye?
+    ar_eg: ولو ركبت بيچاك أحسن، إيه رأيك؟
+    ar: وماذا لو ركبت بيتشاك؟
+    en: What if I just take a becak?
   - speaker: Mbak Sekar
-    text: Ora, aku saka Solo. Nanging aku wis suwe manggon ing kene.
-    ar_eg: لأ، أنا من سولو. بس أنا عايشة هنا من زمان.
-    ar: لا، أنا من سولو، لكنّني أسكن هنا منذ زمن.
-    en: No, I'm from Solo. But I've lived here a long time.
+    text: Isa, nanging tawa regane dhisik, sadurunge munggah.
+    ar_eg: ينفع، بس اتّفق على السعر الأوّل، قبل ما تركب.
+    ar: ممكن، لكن اتّفق على السعر أوّلًا قبل أن تركب.
+    en: Sure, but agree the price first, before you get on.
+    note:
+      ar_eg: البيچاك عجلة بتلات عجلات والراكب قاعد قدّام. في جوجا بتتّفق على الأجرة قبل الركوب، مش بعده.
+      ar: البيتشاك دراجة بثلاث عجلات يجلس الراكب في مقدّمتها. في جوغجا يُتّفق على الأجرة قبل الركوب لا بعده.
+      en: A becak is a three-wheeled cycle with the passenger sitting in front. In Jogja you agree the fare before the ride, not after.
+  - speaker: Mas Danang
+    text: Matur nuwun, Mbak. Sampeyan wong Prawirotaman?
+    ar_eg: متشكّر يا مباك. انتي من پراويروتامان؟
+    ar: شكرًا يا مباك. هل أنتِ من براويروتامان؟
+    en: Thank you, Mbak. Are you from Prawirotaman?
+  - speaker: Mbak Sekar
+    text: Ora, omahku cedhak Kotabaru. Nanging aku seneng ngopi neng kene.
+    ar_eg: لأ، بيتي جنب كوتابارو. بس بحبّ أشرب قهوة هنا.
+    ar: لا، بيتي قرب كوتابارو. لكنّني أحبّ شرب القهوة هنا.
+    en: No, my home's near Kotabaru. But I like having coffee here.
 - kind: word_spotlight
-  title: Iki, kuwi, kae
+  title: Mrene, mrana
   lines:
   - speaker: Mas Danang
-    text: Iki cedhak aku. Kuwi cedhak kowe. Kae adoh saka awake dhewe loro.
+    text: Kene, kono, kana. Kene cedhak aku, kono rada adoh, kana adoh banget.
+    ar_eg: kene هنا جنبي، kono هناك شويّة، kana هناك بعيد أوي.
+    ar: kene هنا قربي، kono هناك أبعد قليلًا، kana هناك بعيد جدًّا.
+    en: Kene, kono, kana. Kene is near me, kono a bit further, kana really far.
+  - speaker: Mbak Sekar
+    text: Mrene tegese "neng kene". Mrana tegese "neng kana". Ayo, mrene!
+    ar_eg: mrene يعني «لهنا». mrana يعني «لهناك». يلّا، تعالى هنا!
+    ar: mrene تعني «إلى هنا». mrana تعني «إلى هناك». هيّا، تعالَ إلى هنا!
+    en: Mrene means "to here". Mrana means "to there". Come on, over here!
+    note:
+      ar_eg: 'بتسمعها كتير في الشارع: Mrene, Mas! = تعالى يا ماس!'
+      ar: 'تسمعها كثيرًا في الشارع: Mrene, Mas! = تعالَ يا ماس!'
+      en: 'You''ll hear it a lot on the street: Mrene, Mas! = come here, Mas!'
+  - speaker: Mas Danang
+    text: Iki, kuwi, kae. Iki cedhak aku. Kuwi cedhak kowe. Kae adoh saka awake dhewe.
     ar_eg: iki جنبي أنا. kuwi جنبك انت. kae بعيد عن الاتنين.
-    ar: iki قربي. kuwi قربك. kae بعيد عنّا نحن الاثنين.
-    en: Iki is near me. Kuwi is near you. Kae is far from both of us.
+    ar: iki قربي. kuwi قربك. kae بعيد عنّا كلينا.
+    en: Iki, kuwi, kae. Iki is near me. Kuwi is near you. Kae is far from both of us.
     note:
       ar_eg: زي «ده» و«ده اللي عندك» و«ده اللي هناك». الإندونيسي فيه itu بس، الجاوي فيه مسافتين.
       ar: مثل «هذا» و«ذاك» و«ذلك»؛ في الإندونيسية itu فقط، وفي الجاوية مسافتان.
-      en: Like "this", "that (by you)" and "that over there". Indonesian has just itu; Javanese has two distances.
+      en: Like "this", "that (by you)" and "that over there". Indonesian has only itu; Javanese has two distances.
   - speaker: Mbak Sekar
-    text: Kene, kono, kana padha. Kene cedhak, kono rada adoh, kana adoh banget.
-    ar_eg: kene وkono وkana نفس الفكرة. kene قريب، kono بعيد شويّة، kana بعيد أوي.
-    ar: وكذلك kene وkono وkana. kene قريب، kono أبعد قليلًا، kana بعيد جدًّا.
-    en: Kene, kono, kana work the same. Kene is near, kono a bit far, kana very far.
-  - speaker: Mas Danang
-    text: Ngiwa, nengen, lurus. Ngarep, mburi.
-    ar_eg: شمال، يمين، على طول. قدّام، ورا.
-    ar: يسارًا، يمينًا، مباشرة. أمام، خلف.
-    en: Left, right, straight. In front, behind.
-  - speaker: Mbak Sekar
-    text: Lan nang utawa neng kanggo "menyang" utawa "ing". Ing chat ditulis "ng" wae.
-    ar_eg: وnang أو neng يعني «لـ» أو «في». في الشات بتتكتب «ng» بس.
-    ar: وnang أو neng تعني «إلى» أو «في». وفي الدردشة تُكتب «ng» فقط.
-    en: And nang or neng means "to" or "at". In chats it's just "ng".
+    text: 'Ngiwa, nengen, lurus wae. Lan "neng" kanggo kabeh: neng kene, neng kono, neng Jogja.'
+    ar_eg: 'شمال، يمين، على طول. و«neng» لكل حاجة: هنا، هناك، في جوجا.'
+    ar: 'يسارًا، يمينًا، مباشرة. و«neng» لكلّ شيء: هنا، هناك، في جوغجا.'
+    en: 'Left, right, straight on. And "neng" for everything: here, there, in Jogja.'
+    note:
+      ar_eg: 'neng = لـ / في. في الشات بتتكتب «ng»: «ng ndi?» = على فين؟'
+      ar: 'neng = إلى / في. وفي الدردشة تُكتب «ng»: «ng ndi?» = إلى أين؟'
+      en: 'Neng = to / in. In chat it''s written "ng": "ng ndi?" = where to?'
 - kind: recap
   title: Baleni, ya!
   lines:
   - speaker: Mbak Sekar
-    text: Nuwun sewu, kebun binatang nang endi?
-    ar_eg: لا مؤاخذة، جنينة الحيوانات فين؟
-    ar: عذرًا، أين حديقة الحيوان؟
-    en: Excuse me, where's the zoo?
+    text: Nuwun sewu, Gembira Loka neng ndi?
+    ar_eg: لا مؤاخذة، جمبيرا لوكا فين؟
+    ar: عذرًا، أين غمبيرا لوكا؟
+    en: Excuse me, where's Gembira Loka?
   - speaker: Mas Danang
-    text: Nuwun sewu, kebun binatang nang endi?
-    ar_eg: لا مؤاخذة، جنينة الحيوانات فين؟
-    ar: عذرًا، أين حديقة الحيوان؟
-    en: Excuse me, where's the zoo?
+    text: Nuwun sewu, Gembira Loka neng ndi?
+    ar_eg: لا مؤاخذة، جمبيرا لوكا فين؟
+    ar: عذرًا، أين غمبيرا لوكا؟
+    en: Excuse me, where's Gembira Loka?
   - speaker: Mbak Sekar
     text: Lurus wae, banjur ngiwa.
     ar_eg: على طول، وبعدين شمال.
@@ -140,71 +171,85 @@ segments:
     ar: مباشرة، ثمّ يسارًا.
     en: Straight on, then left.
   - speaker: Mbak Sekar
-    text: Dudu sing kuwi, sing kae.
-    ar_eg: مش ده، اللي هناك.
-    ar: ليس ذاك، بل ذلك البعيد.
-    en: Not that one, that one over there.
+    text: Haltene neng kono, sing kae.
+    ar_eg: المحطّة هناك، اللي هناك دي.
+    ar: المحطّة هناك، تلك البعيدة.
+    en: The stop's there, that one over there.
   - speaker: Mas Danang
-    text: Dudu sing kuwi, sing kae.
-    ar_eg: مش ده، اللي هناك.
-    ar: ليس ذاك، بل ذلك البعيد.
-    en: Not that one, that one over there.
+    text: Haltene neng kono, sing kae.
+    ar_eg: المحطّة هناك، اللي هناك دي.
+    ar: المحطّة هناك، تلك البعيدة.
+    en: The stop's there, that one over there.
   - speaker: Mbak Sekar
-    text: Ana ing sisih tengen.
-    ar_eg: على الجنب اليمين.
-    ar: على الجانب الأيمن.
-    en: It's on the right side.
+    text: Tawa regane dhisik, ya.
+    ar_eg: اتّفق على السعر الأوّل، ماشي.
+    ar: اتّفق على السعر أوّلًا، حسنًا.
+    en: Agree the price first, okay.
   - speaker: Mas Danang
-    text: Ana ing sisih tengen.
-    ar_eg: على الجنب اليمين.
-    ar: على الجانب الأيمن.
-    en: It's on the right side.
+    text: Tawa regane dhisik, ya.
+    ar_eg: اتّفق على السعر الأوّل، ماشي.
+    ar: اتّفق على السعر أوّلًا، حسنًا.
+    en: Agree the price first, okay.
+  - speaker: Mbak Sekar
+    text: Mrene, Mas!
+    ar_eg: تعالى هنا يا ماس!
+    ar: تعالَ إلى هنا يا ماس!
+    en: Come here, Mas!
   - speaker: Mas Danang
-    text: Lan saka iku "dari". Saka Kairo nang Suroboyo, adoh banget!
-    ar_eg: وsaka يعني «من». من القاهرة لسورابايا، بعيد أوي!
-    ar: وsaka تعني «من». من القاهرة إلى سورابايا، بعيد جدًّا!
-    en: And saka is "from". From Cairo to Surabaya, so far!
+    text: Mrene, Mas!
+    ar_eg: تعالى هنا يا ماس!
+    ar: تعالَ إلى هنا يا ماس!
+    en: Come here, Mas!
+  - speaker: Mas Danang
+    text: Lan saka iku "dari". Saka Kairo menyang Jogja, adoh banget!
+    ar_eg: وsaka يعني «من». من القاهرة لجوجا، بعيد أوي!
+    ar: وsaka تعني «من». من القاهرة إلى جوغجا، بعيد جدًّا!
+    en: And saka is "from". From Cairo to Jogja, that's really far!
 - kind: outro
-  title: Saka omah nang masjid
+  title: Saka omah neng masjid
   lines:
   - speaker: Mbak Sekar
-    text: Mas Mohamed, saiki critakna dalan saka omahmu nang masjid sing paling cedhak.
+    text: Mas Mohamed, saiki critakna dalan saka omahmu neng masjid sing paling cedhak.
     ar_eg: يا ماس محمد، دلوقتي احكي الطريق من بيتك لأقرب جامع.
-    ar: يا ماس محمد، صِف الطريق من بيتك إلى أقرب مسجد.
-    en: Mas Mohamed, now describe the way from your house to the nearest mosque.
+    ar: يا ماس محمد، صِف الآن الطريق من بيتك إلى أقرب مسجد.
+    en: Mas Mohamed, now describe the way from your home to the nearest mosque.
     note:
       ar_eg: دورك! استخدم lurus وngiwa وnengen، وكلمة من iki أو kuwi أو kae.
       ar: دورك! استعمل lurus وngiwa وnengen، وواحدة من iki أو kuwi أو kae.
       en: Your turn! Use lurus, ngiwa and nengen, and one of iki, kuwi or kae.
   - speaker: Mas Danang
-    text: 'Contone: Saka omahku lurus wae, banjur nengen. Masjide ana ing sisih kiwa.'
+    text: 'Contone: Saka omahku lurus wae, banjur nengen. Masjide neng sisih kiwa.'
     ar_eg: 'مثلًا: من بيتي على طول، وبعدين يمين. الجامع على الشمال.'
     ar: 'مثلًا: من بيتي مباشرة ثمّ يمينًا. والمسجد على اليسار.'
-    en: 'For example: From my house straight on, then right. The mosque is on the left.'
+    en: 'For example: from my home straight on, then right. The mosque is on the left.'
   - speaker: Mbak Sekar
     text: PR-mu, gambaren peta cilik lan tulisen dalan telu nganggo basa Jawa.
     ar_eg: واجبك، ارسم خريطة صغيّرة واكتب تلات طرق بالجاوي.
     ar: 'واجبك: ارسم خريطة صغيرة واكتب ثلاثة طرق بالجاوية.'
-    en: 'Your homework: draw a small map and write three routes in Javanese.'
+    en: 'Your homework: draw a little map and write three routes in Javanese.'
   - speaker: Mas Danang
-    text: Sesuk dina pungkasan ing Suroboyo. Kita nang Pasar Atom, tawar-tawaran! Nganti ketemu, rek!
-    ar_eg: بكرة آخر يوم في سورابايا. رايحين باسار أتوم، فِصال! نتقابل يا جدعان!
-    ar: غدًا آخر يوم في سورابايا. نذهب إلى باسار أتوم للمساومة! إلى اللقاء!
-    en: Tomorrow is our last day in Surabaya. We're off to Pasar Atom to haggle! See you, mates!
+    text: Sesuk dina pungkasan neng Jogja. Kita menyang Pasar Klithikan, tawa-tawaran HP lawas! Nganti ketemu, cah!
+    ar_eg: بكرة آخر يوم في جوجا. رايحين باسار كليتيكان نفاصل على موبايلات قديمة! نتقابل يا جماعة!
+    ar: غدًا آخر يوم في جوغجا. سنذهب إلى سوق كليتيكان لنساوم على هواتف مستعملة! إلى اللقاء يا جماعة!
+    en: Tomorrow's our last day in Jogja. We're off to Pasar Klithikan to haggle over second-hand phones! See you, guys!
 words:
 - neng
+- menyang
 - saka
 - kene
 - kono
 - kana
+- mrene
+- mrana
 - iki
 - kae
 - ngiwa
 - nengen
 - lurus
 - kebun binatang
+- becak
 - cedhak
 review:
   status: draft
   verified: false
-  notes: Directions and place words around Wonokromo and the Surabaya zoo (Kebun Binatang Surabaya). "ng prabowo?" in the curriculum is chat for "nang Prabowo?" - not used here to avoid politics.
+  notes: 'Directions around Prawirotaman in south Jogja: Trans Jogja buses with raised halte shelters, becak (agree the fare before riding), Giwangan terminal and Gembira Loka zoo. Street "neng" vs careful "menyang"/"ing"; mrene/mrana. The lessons put the zoo next to Giwangan terminal; here it is only "not far from" it.'

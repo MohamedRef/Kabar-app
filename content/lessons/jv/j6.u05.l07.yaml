@@ -1,185 +1,161 @@
 schema: kabar.lesson/v1
 id: j6.u05.l07
 language: jv
-title: Absen murid
+title: Ing Imogiri
 can_do:
-  ar_eg: تسمع أسامي عربية وتلاقيها مكتوبة بحروف rekan.
-  ar: أن تسمع أسماء عربية فتجدها مكتوبة بحروف rekan.
-  en: Hear Arabic names and find them written with rekan letters.
+  ar_eg: تقرا أسامي وكلمات عربية وأرقام في زيارة.
+  ar: أن تقرأ أسماء وألفاظًا عربية وأعدادًا في زيارة.
+  en: Read names, loanwords and numbers on a visit.
 slides:
-  - title: Jeneng Arab
+  - title: Murda, rekan, angka
     body:
       ar_eg: |
-        في مدرسة قرآن صغيرة جنب Imogiri، المدرّسة بتنده أسامي العيال من كشف مكتوب بالخط الجاوي. اسمع الأول.
-        أسامي كتير جاية من العربي، فبتتكتب بحروف rekan: ꦥ꦳ = ف، ꦗ꦳ = ز، ꦏ꦳ = خ.
-        أسامي الناس العاديين مابتاخدش murda؛ الـ murda للتكريم بس.
+        في إيموغيري هتشوف التلاتة مع بعض:
+        - murda للأسامي والألقاب المحترمة: ꦓꦸꦱ꧀ꦠꦶ.
+        - rekan للأصوات العربية: ꦢ꦳ꦶꦏꦶꦂ.
+        - الأرقام بين ꧇…꧇: ꧇꧔꧐꧙꧇.
       ar: |
-        في مدرسة قرآن صغيرة قرب Imogiri تنادي المعلّمة أسماء الأطفال من كشف بالخط الجاوي. استمع أولًا.
-        أسماء كثيرة أصلها عربي، فتُكتب بحروف rekan: ꦥ꦳ = ف، ꦗ꦳ = ز، ꦏ꦳ = خ.
-        ولا تأخذ أسماء عامة الناس murda، فالـ murda للتكريم فقط.
+        في إيموغيري تجد الثلاثة معًا:
+        - murda لأسماء المحترمين وألقابهم: ꦓꦸꦱ꧀ꦠꦶ.
+        - rekan للأصوات العربية: ꦢ꦳ꦶꦏꦶꦂ.
+        - الأعداد بين ꧇…꧇: ꧇꧔꧐꧙꧇.
       en: |
-        At a small Qur'an school near Imogiri, the teacher calls the roll from a list in aksara Jawa. Listen first.
-        Many names come from Arabic, so they're written with rekan letters: ꦥ꦳ = f, ꦗ꦳ = z, ꦏ꦳ = kh.
-        Ordinary people's names don't take murda; murda is only for honour.
+        At Imogiri you'll see all three together:
+        - murda for honoured names and titles: ꦓꦸꦱ꧀ꦠꦶ.
+        - rekan for Arabic sounds: ꦢ꦳ꦶꦏꦶꦂ.
+        - numbers between ꧇…꧇: ꧇꧔꧐꧙꧇.
     grammar: jv.aksara.murda-rekan
     examples:
-      - text: ꦥ꦳ꦗꦂ · ꦗ꦳ꦏꦶ (Fajar · Zaki)
-        ar_eg: فجر · زكي
-        ar: فجر · زكي
-        en: Fajar · Zaki
-      - text: ꦗ꦳ꦃꦫ · ꦥ꦳ꦠꦶꦩꦃ (Zahra · Fatimah)
-        ar_eg: زهرة · فاطمة
-        ar: زهرة · فاطمة
-        en: Zahra · Fatimah
-      - text: ꦏ꦳ꦢꦶꦗꦃ (Khadijah)
-        ar_eg: خديجة
-        ar: خديجة
-        en: Khadijah
+      - text: ꦯꦸꦭ꧀ꦠꦤ꧀ (Sultan)
+        ar_eg: السلطان
+        ar: السلطان
+        en: Sultan
+      - text: ꧇꧔꧐꧙꧇ (409)
+        ar_eg: أربعمية وتسعة
+        ar: أربعمائة وتسعة
+        en: four hundred and nine
 exercises:
   - id: e01
-    type: listen
-    text: Fajar
-    question:
-      ar_eg: المدرّسة ندهت اسم. أنهي واحد في الكشف؟
-      ar: نادت المعلّمة اسمًا. أيّه في الكشف؟
-      en: The teacher called a name. Which one on the list?
-    options: ["ꦥꦗꦂ", "ꦥ꦳ꦗꦂ", "ꦗ꦳ꦃꦫ"]
-    answer: 1
-    meaning:
-      ar_eg: فجر
-      ar: فجر
-      en: Fajar
-    words: [aksara rekan]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة على البوابة مكتوبة بحرف murda؟
+      ar: أي كلمة على البوابة مكتوبة بحرف murda؟
+      en: Which word on the gate is written with a murda letter?
+    options: ["ꦱꦼꦒ", "ꦧꦸꦏꦸ", "ꦓꦸꦱ꧀ꦠꦶ"]
+    answer: 2
   - id: e02
     type: listen
-    text: Khadijah
+    text: Undhak-undhakane ana patang atus sanga.
     question:
-      ar_eg: المدرّسة ندهت اسم. أنهي واحد في الكشف؟
-      ar: نادت المعلّمة اسمًا. أيّه في الكشف؟
-      en: The teacher called a name. Which one on the list?
-    options: ["ꦏꦢꦶꦗꦃ", "ꦥ꦳ꦠꦶꦩꦃ", "ꦏ꦳ꦢꦶꦗꦃ"]
-    answer: 2
-    explain:
-      ar_eg: خ = ꦏ + تلات نقط. من غير النقط تبقى kadijah.
-      ar: خ = ꦏ + ثلاث نقاط، وبدون النقاط تصير kadijah.
-      en: kh = ꦏ + three dots. Without the dots it reads kadijah.
+      ar_eg: السلالم عددها كام؟
+      ar: كم عدد الدرجات؟
+      en: How many steps are there?
+    options: ["꧇꧔꧐꧙꧇", "꧇꧔꧙꧐꧇", "꧇꧔꧙꧇"]
+    answer: 0
     meaning:
-      ar_eg: خديجة
-      ar: خديجة
-      en: Khadijah
-    words: [aksara rekan]
+      ar_eg: السلالم عددها أربعمية وتسعة.
+      ar: عدد الدرجات أربعمائة وتسع.
+      en: There are four hundred and nine steps.
+    words: [undhak-undhakan]
   - id: e03
-    type: listen
-    text: Zaki
-    question:
-      ar_eg: المدرّسة ندهت اسم. أنهي واحد في الكشف؟
-      ar: نادت المعلّمة اسمًا. أيّه في الكشف؟
-      en: The teacher called a name. Which one on the list?
-    options: ["ꦗ꦳ꦏꦶ", "ꦗꦏꦶ", "ꦱꦏꦶ"]
-    answer: 0
-    meaning:
-      ar_eg: زكي
-      ar: زكي
-      en: Zaki
-    words: [aksara rekan]
-  - id: e04
-    type: match_pairs
-    pairs:
-      - text: ꦥ꦳ꦗꦂ
-        ar_eg: فجر
-        ar: فجر
-        en: Fajar (فجر)
-      - text: ꦗ꦳ꦃꦫ
-        ar_eg: زهرة
-        ar: زهرة
-        en: Zahra (زهرة)
-      - text: ꦏ꦳ꦢꦶꦗꦃ
-        ar_eg: خديجة
-        ar: خديجة
-        en: Khadijah (خديجة)
-      - text: ꦥ꦳ꦠꦶꦩꦃ
-        ar_eg: فاطمة
-        ar: فاطمة
-        en: Fatimah (فاطمة)
-    words: [aksara rekan]
-  - id: e05
-    type: multiple_choice
-    question_meaning:
-      ar_eg: "في ꦗ꦳ꦃꦫ، الـ h مكتوبة بإيه؟"
-      ar: "في ꦗ꦳ꦃꦫ، بماذا كُتبت الـ h؟"
-      en: "In ꦗ꦳ꦃꦫ, how is the h written?"
-    options: [wignyan, pasangan ha, layar]
-    answer: 0
-    explain:
-      ar_eg: "h بتقفل المقطع zah، فبتتكتب wignyan، ومفيش pasangan بعدها: ra بتتكتب عادي."
-      ar: الـ h تُغلق المقطع zah فتُكتب wignyan، ولا pasangan بعدها، فتُكتب ra عادية.
-      en: "The h closes the syllable zah, so it's wignyan, and no pasangan follows: ra is written normally."
-    words: [aksara rekan]
-  - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: ليه الأسامي دي من غير murda؟
-      ar: لماذا لا murda في هذه الأسماء؟
-      en: Why do these names have no murda letters?
-    options: ["Iku jeneng bocah, dudu sesebutan kanggo ngurmati.", "Iku basa Arab.", "Iku angka."]
-    answer: 0
-    explain:
-      ar_eg: الـ murda للألقاب والأسامي اللي بنكرّمها (Gusti، Sultan). أسامي العيال بتتكتب بحروف عادية (مع rekan للأصوات العربية).
-      ar: الـ murda للألقاب والأسماء المكرَّمة (Gusti، Sultan)، أما أسماء الأطفال فبحروف عادية (مع rekan للأصوات العربية).
-      en: Murda is for honoured titles and names (Gusti, Sultan). Children's names use ordinary letters (with rekan for Arabic sounds).
-    words: [aksara murda]
-  - id: e07
     type: fill_blank
-    sentence: ꦥ꦳ꦠꦶꦩꦃ = ___
+    sentence: ꦢ꦳ꦶꦏꦶꦂ = ___
     meaning:
-      ar_eg: اكتب الاسم بالحروف اللاتينية.
-      ar: اكتب الاسم بالحروف اللاتينية.
-      en: Type the name in Latin letters.
-    answers: [Fatimah]
-    words: [aksara rekan]
-  - id: e08
-    type: dictation
-    text: Fajar karo Zaki teka.
-    meaning:
-      ar_eg: فجر وزكي جم.
-      ar: جاء فجر وزكي.
-      en: Fajar and Zaki are here.
-  - id: e09
+      ar_eg: اكتب القراية بالحروف اللاتينية.
+      ar: اكتب القراءة بالحروف اللاتينية.
+      en: Type the reading in Latin letters.
+    answers: [dzikir]
+  - id: e04
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: "اكتب بالحروف اللاتينية: ꦥ꦳ꦗꦂꦏꦫꦺꦴꦗ꦳ꦏꦶ"
-      ar: "اكتب بالحروف اللاتينية: ꦥ꦳ꦗꦂꦏꦫꦺꦴꦗ꦳ꦏꦶ"
-      en: "Write in Latin letters: ꦥ꦳ꦗꦂꦏꦫꦺꦴꦗ꦳ꦏꦶ"
-    answers: [Fajar karo Zaki, fajarkarozaki]
-    explain:
-      ar_eg: Fajar بتخلص بـ layar، فـ ka بتتكتب عادي. karo = مع / و.
-      ar: تنتهي Fajar بـ layar فتُكتب ka عادية. karo = مع / و.
-      en: Fajar ends with layar, so ka is written normally. karo = with, and.
-    words: [aksara rekan]
+      ar_eg: "اكتب التاريخ بالحروف والأرقام اللاتينية: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇"
+      ar: "اكتب التاريخ بالحروف والأرقام اللاتينية: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇"
+      en: "Write the date in Latin letters and digits: ꦠꦁꦒꦭ꧀꧇꧑꧗꧇"
+    answers: [tanggal 17, tanggal pitulas]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: السلالم عددها أربعمية وتسعة.
+      ar: عدد الدرجات أربعمائة وتسع.
+      en: There are four hundred and nine steps.
+    answer: Undhak-undhakane ana patang atus sanga.
+    distractors: [papat, satus]
+    words: [undhak-undhakan]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: الراجل اللي بيحرس القبور الملكية اسمه إيه؟
+      ar: ما اسم حارس المقابر الملكية؟
+      en: What do you call the keeper of the royal tombs?
+    options: [juru kunci, dhalang, bakul]
+    answer: 0
+    words: [juru kunci]
+  - id: e07
+    type: fill_blank
+    sentence: ___ njaga makam raja-raja.
+    meaning:
+      ar_eg: حارس المقابر بيحرس قبور الملوك.
+      ar: يحرس حارسُ المقابر قبورَ الملوك.
+      en: The tomb keeper looks after the kings' graves.
+    options: [juru kunci, undhak-undhakan, zakat]
+    answers: [juru kunci]
+    words: [juru kunci]
+  - id: e08
+    type: dictation
+    text: Juru kunci njaga makam.
+    meaning:
+      ar_eg: حارس المقابر بيحرس القبر.
+      ar: يحرس حارسُ المقابر القبر.
+      en: The tomb keeper looks after the grave.
+    words: [juru kunci]
+  - id: e09
+    type: speaking
+    text: Undhak-undhakane akeh banget!
+    meaning:
+      ar_eg: السلالم كتير قوي!
+      ar: الدرجات كثيرة جدًا!
+      en: There are so many steps!
+    words: [undhak-undhakan]
 dialogue:
-  title: Absen
+  title: Juru kunci
   lines:
-    - speaker: Bu Guru
-      text: Fajar? Zahra? Khadijah?
-      ar_eg: فجر؟ زهرة؟ خديجة؟
-      ar: فجر؟ زهرة؟ خديجة؟
-      en: Fajar? Zahra? Khadijah?
-    - speaker: Bocah-bocah
-      text: Wonten, Bu!
-      ar_eg: موجودين يا أبلة!
-      ar: حاضرون يا معلّمة!
-      en: Here, miss!
+    - speaker: Pak Harjo
+      text: Kula juru kunci ing Imogiri, Mas.
+      ar_eg: أنا حارس المقابر في إيموغيري يا ابني.
+      ar: أنا حارس المقابر في إيموغيري يا بني.
+      en: I'm the tomb keeper at Imogiri.
     - speaker: Mohamed
-      text: Bu, jeneng-jenenge kaya ing Mesir!
-      ar_eg: يا أبلة، الأسامي زي اللي عندنا في مصر!
-      ar: يا معلّمة، الأسماء مثل أسمائنا في مصر!
-      en: Miss, the names are just like in Egypt!
-    - speaker: Bu Guru
-      text: Inggih, Mas. Mula ditulis nganggo aksara rekan.
-      ar_eg: أيوه. عشان كده بتتكتب بحروف rekan.
-      ar: نعم، ولهذا تُكتب بحروف rekan.
-      en: Yes. That's why they're written with aksara rekan.
+      text: Pak, kula badhe minggah dhateng makam.
+      ar_eg: يا عمّو، أنا عايز أطلع للمقابر.
+      ar: يا سيدي، أريد الصعود إلى المقابر.
+      en: Sir, I'd like to go up to the tombs.
+    - speaker: Pak Harjo
+      text: Mangga. Undhak-undhakanipun kathah sanget.
+      ar_eg: اتفضل. السلالم كتير قوي.
+      ar: تفضّل. الدرجات كثيرة جدًا.
+      en: Please do. There are a great many steps.
+    - speaker: Mohamed
+      text: Kula sampun maos ing papan, sekawan atus sanga!
+      ar_eg: "أنا قريت على اللوحة: أربعمية وتسعة!"
+      ar: "قرأتُ على اللوحة: أربعمائة وتسع!"
+      en: "I read it on the sign: four hundred and nine!"
+    - speaker: Pak Harjo
+      text: Leres! Ngatos-atos, Mas.
+      ar_eg: صح! خلي بالك من نفسك يا ابني.
+      ar: صحيح! انتبه لنفسك يا بني.
+      en: That's right! Take care.
+new_words:
+  - word: juru kunci
+    pos: noun
+    ar_eg: حارس المقابر / المكان المقدس
+    ar: حارس المقابر أو المزار
+    en: keeper of a tomb or sacred site = juru kunci
+  - word: undhak-undhakan
+    pos: noun
+    ar_eg: سلالم / درجات
+    ar: درجات السلّم
+    en: steps, stairs = anak tangga
 review:
   status: draft
   verified: false

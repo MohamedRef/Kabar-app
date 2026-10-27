@@ -15,18 +15,30 @@ slides:
         - cukup = إلى حد كبير / كفاية: cukup mahal = غالي برضه
         - sangat / … sekali = جدًا (عارفينها من BIPA 1)
         - terlalu = زيادة عن اللزوم: terlalu mahal = غالي زيادة
+        في الشارع بيقولوا:
+        - gimana = bagaimana (إزاي، عامل إيه)
+        - banget = sekali (أوي)، وبتيجي بعد الصفة زيها
+        - aku و-ku = saya (أنا، ـي) مع الأصحاب واللي في سنك؛ مع الكبار والغُرب saya
       ar: |
         سُلّم صغير للصفة، وكل كلماته تسبقها:
         - agak = قليلًا / نوعًا ما: agak mahal
         - cukup = إلى حد كبير / بما يكفي: cukup mahal
         - sangat / … sekali = جدًا (من BIPA 1)
         - terlalu = أكثر من اللازم: terlalu mahal
+        في كلام الشارع:
+        - gimana = bagaimana (كيف)
+        - banget = sekali (جدًّا)، وتأتي بعد الصفة مثلها
+        - aku و-ku = saya (أنا، ـي) مع الأصدقاء والأقران؛ ومع الكبار والغرباء saya
       en: |
         A little ladder; all of these go before the adjective:
         - agak = a bit, rather: agak mahal
         - cukup = quite, fairly; enough: cukup mahal
         - sangat / … sekali = very (from BIPA 1)
         - terlalu = too: terlalu mahal
+        On the street:
+        - gimana = bagaimana (how)
+        - banget = sekali (very), after the adjective just like sekali
+        - aku / -ku = saya (I, my) with friends and people your age; saya with elders and strangers
     grammar: id.adverb.degree
     examples:
       - text: Rumah Ni Luh agak jauh.
@@ -167,6 +179,10 @@ exercises:
     options: [kurang, terlalu, cukup]
     answers: [kurang]
     words: [kurang, garam]
+    explain:
+      ar_eg: "kurang + اسم = ناقصه حاجة: kurang garam = ناقصه ملح. terlalu = زيادة عن اللزوم، وcukup = كفاية."
+      ar: "kurang + اسم = ينقصه: kurang garam = ينقصه ملح. terlalu = أكثر من اللازم، وcukup = كافٍ."
+      en: "kurang + noun means \"short of\": kurang garam = needs more salt. terlalu is \"too\", cukup is \"enough\"."
   - id: e05
     type: fill_blank
     sentence: Suaranya terlalu ___. Saya tidak bisa mendengar.
@@ -177,6 +193,10 @@ exercises:
     options: [pelan, garam, biola]
     answers: [pelan]
     words: [pelan, terlalu]
+    explain:
+      ar_eg: pelan = واطي أو بالراحة، وهي اللي تمشي مع «مش قادر أسمع». garam ملح وbiola كمنجة، ودول أسماء مش صفات.
+      ar: pelan = منخفض أو بطيء، وتناسب «لا أستطيع أن أسمع». garam وbiola اسمان لا صفتان.
+      en: pelan (quiet, slow) fits "I can't hear". garam (salt) and biola (violin) are nouns, not adjectives.
   - id: e06
     type: speaking
     text: Biola ini lumayan, tapi suaranya terlalu pelan.
@@ -194,11 +214,15 @@ exercises:
     options: ['Ikannya kurang garam.', 'Ikannya cukup garam.', 'Ikannya garam kurang.']
     answer: 0
     words: [garam, cukup]
+    explain:
+      ar_eg: "kurang بتيجي قبل الاسم: kurang garam. «garam kurang» ترتيب غلط، وcukup garam معناها «ملحه مظبوط»."
+      ar: "تأتي kurang قبل الاسم: kurang garam. و«garam kurang» ترتيب خاطئ، وcukup garam معناها «ملحه كافٍ»."
+      en: "kurang goes before the noun: kurang garam. \"garam kurang\" is the wrong order; cukup garam means \"salted just right\"."
 dialogue:
   title: Biola tua Ni Luh
   lines:
     - speaker: Ni Luh
-      text: Bagaimana suara biola saya?
+      text: Gimana suara biolaku?
       ar_eg: صوت الكمنجة بتاعتي عامل إزاي؟
       ar: كيف صوت كماني؟
       en: How does my violin sound?
@@ -223,7 +247,7 @@ dialogue:
       ar: هذا الكمان قديم نوعًا ما، لكن صوته ما زال جيدًا.
       en: This violin is fairly old, but it still sounds good.
     - speaker: Mohamed
-      text: Betul, suaranya indah sekali.
+      text: Betul, suaranya indah banget.
       ar_eg: صح، صوتها جميل أوي.
       ar: صحيح، صوته جميل جدًا.
       en: True, it sounds really beautiful.

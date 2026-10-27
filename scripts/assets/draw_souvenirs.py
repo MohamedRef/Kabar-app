@@ -2380,61 +2380,105 @@ def ramayana():
     return "".join(z)
 
 
-# ---------------------------------------------------------------- J5 · Semarang and the north coast
+# ---------------------------------------------------------------- J5 · Madiun, Kota Pendekar
+
+
+def sawtooth(x, y, bays, w=110, h=70, wall="#D9C4A0", roof="#5A5060"):
+    """A railway workshop: a long brick-and-plaster hall under saw-tooth roof lights."""
+    z = [rect(x, y, bays * w, 150, wall, 2, C, 6)]
+    for k in range(bays):
+        bx = x + k * w
+        z.append(path(f"M{bx} {y} L{bx + w} {y} L{bx + w} {y - h} Z", roof, C, 5))
+        z.append(rect(bx + w - 14, y - h + 8, 10, h - 10, P, 0, op=0.6))
+        z.append(rect(bx + 22, y + 40, w - 44, 80, I, 4, C, 4))
+    return "".join(z)
+
+
+def silat(x, y, s=1.0, sash=R, flip=False):
+    """A pencak silat player in black pangsi: low wide stance, one arm forward."""
+    f = -1 if flip else 1
+    b = path("M-40 0 L-14 -80 L14 -80 L44 0 L30 0 L4 -54 L-24 0Z", C, C, 4)
+    b += path("M-20 -80 L-16 -150 L18 -150 L20 -80Z", C, C, 4) + rect(-22, -98, 44, 12, sash, 2)
+    b += line(10, -140, 70, -160, C, 12) + line(-12, -138, -50, -110, C, 12)
+    b += circle(0, -172, 18, C) + rect(-18, -190, 36, 8, sash, 2)
+    return group(f'<g transform="scale({f} 1)">{b}</g>', x, y, s)
+
+
+def street_lamp(x, y, s=1.0):
+    """An ornate boulevard lamp: a slim post with two glowing globes."""
+    b = line(0, 0, 0, -260, C, 8) + path("M-50 -240 Q0 -290 50 -240", stroke=C, sw=6)
+    for dx in (-50, 50):
+        b += circle(dx, -228, 16, "#F2C94C", C, 3) + circle(dx, -228, 44, "#F2C94C", op=0.18)
+    return group(b, x, y, s)
+
+
+def eiffel(x, y, s=1.0, color="#5A5060"):
+    """A small replica of the Eiffel Tower: splayed legs, two decks, a spire."""
+    b = path("M-70 0 Q-30 -60 -14 -200 L-6 -320 L6 -320 L14 -200 Q30 -60 70 0 L44 0 Q20 -40 0 -46 Q-20 -40 -44 0Z", color, C, 4)
+    b += rect(-34, -110, 68, 10, color, 2, C, 3) + rect(-20, -210, 40, 8, color, 2, C, 3) + line(0, -320, 0, -350, C, 4)
+    return group(b, x, y, s)
+
+
+def liberty(x, y, s=1.0, color="#6FA59A"):
+    """A small replica of the Statue of Liberty on its plinth, torch raised."""
+    b = rect(-36, -60, 72, 60, S, 2, C, 4) + path("M-22 -60 L-14 -190 L14 -190 L22 -60Z", color, C, 4)
+    b += circle(0, -206, 16, color, C, 3) + line(10, -180, 34, -260, color, 10) + circle(36, -270, 10, "#F2C94C", C, 3)
+    b += path("M-14 -222 L-20 -236 M0 -224 L0 -240 M14 -222 L20 -236", stroke=color, sw=5)
+    return group(b, x, y, s)
+
+
+def kaaba(x, y, s=1.0):
+    """A small replica of the Ka'bah: a black cube with its gold band."""
+    b = path("M-80 0 L-80 -130 L40 -130 L40 0Z", C, C, 4) + path("M40 0 L40 -130 L90 -150 L90 -20Z", "#3A3A40", C, 4)
+    b += path("M-80 -130 L-30 -150 L90 -150 L40 -130Z", "#4A4A50", C, 4)
+    b += rect(-80, -104, 120, 12, "#D4A94A") + path("M40 -104 L90 -124 L90 -112 L40 -92Z", "#D4A94A")
+    return group(b, x, y, s)
 
 
 @scene("j5.u01")
-def kota_lama():
-    """Kota Lama Semarang: the domed Blenduk church among old warehouses."""
-    z = [sky(sun=(780, 250), r=60)]
-    for cx in (210, 814):
-        z.append(rect(cx - 90, 520, 180, 260, "#E3C9A8", 4, C, 6) + path(f"M{cx - 100} 530 L{cx + 100} 530 L{cx + 80} 490 L{cx - 80} 490Z", "#B5654A", C, 5))
-        z.append(windows(cx - 70, 560, 3, 2, 34, 60, 19, 40, G, shutter=True))
-    z.append(rect(330, 500, 364, 280, P, 4, C, 7))
-    z.append(path("M350 500 Q350 320 512 300 Q674 320 674 500Z", "#B5654A", C, 7) + path("M380 480 Q400 360 512 340", stroke=P, sw=6, op=0.4))
-    z.append(rect(490, 270, 44, 40, P, 3, C, 5) + path("M486 270 Q512 230 538 270Z", "#B5654A", C, 4))
-    for tx in (350, 674):
-        z.append(rect(tx - 22, 400, 44, 120, P, 3, C, 5) + path(f"M{tx - 26} 400 L{tx} 360 L{tx + 26} 400Z", "#B5654A", C, 4))
-    z.append(path("M400 620 L624 620 L512 560Z", P, C, 5))
-    for k in range(4):
-        z.append(rect(410 + k * 60, 620, 24, 160, P, 2, C, 4))
-    z.append(rect(X0, 780, W, 192, "#8C8478"))
-    for r_ in range(4):
-        for c in range(12):
-            z.append(rect(126 + c * 66 + (r_ % 2) * 33, 790 + r_ * 44, 60, 38, "none", 6, C, 2, 0.3))
+def jalan_pahlawan():
+    """Jalan Pahlawan at night (Pahlawan Street Center): a lamplit promenade with small replicas of far-off landmarks."""
+    z = [rect(X0, Y0, W, H, I)]
+    z.append(circle(250, 220, 46, P, op=0.7))
+    z.append(city_far(600, 0.25))
+    for x in (150, 880):
+        z.append(tree(x, 660, 0.6))
+    z.append(rect(X0, 660, W, 312, "#5A5060"))
+    for k in range(6):
+        z.append(line(X0, 700 + k * 48, X0 + W, 700 + k * 48, P, 2, 0.15))
+    z.append(eiffel(330, 760, 0.95) + liberty(560, 760, 0.95) + kaaba(770, 770, 0.8))
+    for x in (200, 460, 680, 900):
+        z.append(street_lamp(x, 860, 0.9))
+    z.append(person(250, 920, 0.6, O) + person(300, 924, 0.5, K) + person(620, 924, 0.6, P, scarf=G))
     return "".join(z)
 
 
 @scene("j5.u02")
-def lawang_sewu():
-    """Lawang Sewu, the 'thousand doors': long arcades and twin corner towers."""
-    z = [sky(sun=(250, 260), r=70)]
-    z.append(rect(126, 500, 772, 300, P, 4, C, 7))
-    z.append(windows(150, 540, 12, 2, 40, 90, 22, 30, "#4A3A30", arch=True))
-    z.append(path("M110 500 L914 500 L880 450 L144 450Z", "#B5654A", C, 6))
-    for tx in (420, 604):
-        z.append(rect(tx - 50, 300, 100, 500, P, 4, C, 7) + path(f"M{tx - 56} 300 Q{tx - 56} 220 {tx} 210 Q{tx + 56} 220 {tx + 56} 300Z", "#6E5A50", C, 6))
-        z.append(windows(tx - 20, 340, 1, 2, 40, 70, 0, 30, I, arch=True))
-    z.append(rect(X0, 800, W, 172, G) + rect(420, 800, 184, 172, S))
-    z.append(tree(200, 900, 0.7) + tree(830, 900, 0.7))
+def gerbong_inka():
+    """INKA, Madiun's rail-car works: saw-tooth workshop halls and a brand-new carriage rolling out."""
+    z = [sky(sun=(780, 250), r=60)]
+    z.append(sawtooth(120, 540, 7))
+    z.append(tree(900, 720, 0.6))
+    z.append(rect(X0, 690, W, 282, "#9C9488"))
+    # a gantry crane over the yard
+    z.append(line(150, 690, 150, 470, C, 10) + line(880, 690, 880, 470, C, 10) + rect(130, 456, 770, 22, O, 2, C, 4))
+    z.append(line(420, 478, 420, 560, C, 4) + rect(400, 556, 40, 20, R, 2, C, 3))
+    z.append(train(170, 850, 1.05, P, 3))
+    z.append(rails(860))
     return "".join(z)
 
 
 @scene("j5.u03")
-def simpang_lima():
-    """Simpang Lima at night: the square's lights and glowing pedal carts."""
-    z = [rect(X0, Y0, W, H, I)]
-    z.append(circle(250, 230, 46, P, op=0.7))
-    z.append(city_far(560, 0.5) + "".join(rect(150 + k * 60, 470 + (k % 3) * 20, 10, 10, "#F2C94C", 0) for k in range(12)))
-    z.append(tajug(640, 600, 300, 2, "#5A5060"))
-    z.append(rect(X0, 600, W, 372, "#3A3A48"))
-    z.append(ellipse(512, 760, 320, 100, "#4F7A4A", C, 5) + ellipse(512, 760, 320, 100, "none", P, 3, 0.4))
-    for k, col in enumerate((R, "#F2C94C", G, K, O)):
-        x = 200 + k * 150
-        y = 880 + (k % 2) * 30
-        z.append(rect(x - 60, y - 70, 120, 60, col, 10, C, 4) + circle(x - 60, y - 70, 40, col, op=0.18))
-        z.append("".join(circle(x - 50 + j * 25, y - 76, 5, P) for j in range(5)))
-        z.append(circle(x - 40, y - 6, 12, C) + circle(x + 40, y - 6, 12, C))
+def alun_alun_madiun():
+    """Alun-alun Madiun: the great mosque beyond the square, banyans, and silat practice on the grass."""
+    z = [sky(sun=(250, 260), r=70)]
+    z.append(tajug(640, 620, 380, 3))
+    z.append(path("M840 620 L840 360 L870 360 L870 620Z", P, C, 5) + path("M832 360 L855 300 L878 360Z", "#4A4A50", C, 4))
+    z.append(rect(X0, 620, W, 352, G))
+    z.append(ellipse(512, 800, 380, 110, "#6FA05A", op=0.5))
+    z.append(banyan(190, 720, 0.75))
+    z.append(silat(470, 880, 0.9) + silat(640, 880, 0.9, sash=O, flip=True))
+    z.append(person(800, 900, 0.55, K) + person(850, 904, 0.5, I))
     return "".join(z)
 
 
