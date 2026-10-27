@@ -87,7 +87,7 @@ table below doesn't match the content.
 | Pronunciation lexicon | 18,309 | plus 30 hand overrides |
 | Sinetron episodes | 70 | each unlocks after its unit |
 | Kabar Radio episodes | 15 | prebuilt, downloadable for offline |
-| Conversation personas | 4 |  |
+| Conversation personas | 10 |  |
 | Kabar Pagi stories | 24 | morning stories |
 | Games | 3 | Pasar!, Unggah-Ungguh, Minimal Pairs |
 | Aksara Jawa glyphs | 41 | stroke order is a draft (pen work paused) |
