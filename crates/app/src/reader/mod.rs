@@ -7,6 +7,7 @@ pub mod doc;
 pub mod explain;
 pub mod glossary;
 pub mod grammar;
+pub mod morph;
 pub mod translate;
 mod web;
 
@@ -833,6 +834,10 @@ fn ReadView(open: Open) -> Element {
                 c.push_str(statuses.get(k).copied().unwrap_or_default().as_str());
             }
             None => c.push_str(" name"),
+        }
+        if let Some(class) = morph::class_of_word(w) {
+            c.push_str(" wc-ink ");
+            c.push_str(morph::class_css(class));
         }
         if w.is_bridge() {
             c.push_str(" from-arabic");

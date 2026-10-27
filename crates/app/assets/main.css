@@ -734,6 +734,39 @@ canvas.reader-ink { position: absolute; inset: 0; inline-size: 100%; block-size:
 .word-card { display: grid; gap: 0.75rem; }
 .word-card .field { margin: 0; }
 .word-card .field p { margin-block: 0.15rem; }
+
+/* Word breakdown (reader/morph.rs): pieces in their --wp-* colours with a
+   "+" and the kind under each, so colour is never the only cue. */
+.parts-line { display: inline-flex; flex-wrap: wrap; align-items: flex-start; gap: 0.15rem 0.35rem; }
+.parts-line .piece { display: inline-grid; justify-items: center; font-weight: 600; }
+.parts-line .plus { color: var(--muted); }
+.piece-kind { font-size: 0.7rem; font-weight: 400; color: var(--muted); }
+.class-chip {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding-inline: 0.55rem;
+  border-radius: 999px;
+  color: var(--wc);
+  background: color-mix(in srgb, var(--wc) 12%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--wc) 45%, transparent);
+  margin-inline-end: 0.25rem;
+}
+.morph-detail { border-block-start: 1px solid var(--line); padding-block-start: 0.5rem; }
+.morph-detail > summary { cursor: pointer; display: flex; gap: 0.5rem; align-items: center; min-block-size: 44px; font-weight: 600; }
+.morph-body { display: grid; gap: 0.6rem; padding-block: 0.25rem 0.5rem; }
+.morph-notes { margin: 0; padding-inline-start: 1.1rem; display: grid; gap: 0.3rem; }
+.morph-notes .piece { font-weight: 700; }
+.morph-notes bdi { white-space: nowrap; }
+.morph-entry > summary { cursor: pointer; min-block-size: 32px; }
+.morph-entry p { margin-block: 0.25rem; color: var(--muted); }
+.colour-legend { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; font-size: 0.75rem; color: var(--muted); }
+.legend-item { display: inline-flex; align-items: center; gap: 0.3rem; }
+.legend-item .dot { inline-size: 0.7rem; block-size: 0.7rem; border-radius: 50%; background: var(--wc, currentColor); }
+.legend-item.wp-prefix .dot { background: var(--wp-prefix); }
+.legend-item.wp-suffix .dot { background: var(--wp-suffix); }
+.legend-item.wp-confix .dot { background: var(--wp-confix); }
+.legend-item.wp-clitic .dot { background: var(--wp-clitic); }
+.legend-item[class*="wp-"] { color: var(--muted); }
 .levels dl { display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 0.75rem; margin: 0; }
 .levels dt { color: var(--muted); }
 .levels dd { margin: 0; font-weight: 600; }
