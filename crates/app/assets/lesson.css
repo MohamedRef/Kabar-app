@@ -245,8 +245,9 @@
 .app[data-width="compact"] .lp-primary { flex: 1 1 100%; order: 3; margin-inline-start: 0; min-block-size: 52px; }
 .app[data-width="compact"] .lp-pair { font-size: 0.98rem; }
 
-/* tablets and up: a little more air */
+/* tablets and up: a little more air, and a big, steady primary button */
 .app:not([data-width="compact"]) .lp-body { padding-block-start: 1.5rem; }
+.app:not([data-width="compact"]) .lp-primary { min-inline-size: 12rem; min-block-size: 52px; font-size: var(--fs-lg); }
 
 /* The lesson-end gong (prompt 7); its sound ring pulses once. */
 .lp-gong { position: relative; inline-size: 7rem; margin-inline: auto; margin-block-end: 0.25rem; }
