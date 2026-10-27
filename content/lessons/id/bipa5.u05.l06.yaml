@@ -1,166 +1,175 @@
 schema: kabar.lesson/v1
 id: bipa5.u05.l06
 language: id
-title: Ulangan Unit 5
+title: Sudut pandang
 can_do:
-  ar_eg: تناقش الغابات وزيت النخيل من أكتر من زاوية، وبكلام دقيق.
-  ar: أن تناقش الغابات وزيت النخيل من أكثر من زاوية وبعبارة دقيقة.
-  en: Discuss forests and palm oil from more than one side, with careful wording.
+  ar_eg: تعرض وجهتين نظر مختلفتين عن موضوع، بعدل وبالترتيب.
+  ar: أن تعرض وجهتي نظر مختلفتين في موضوع بإنصاف وترتيب.
+  en: Present two viewpoints on an issue fairly and in order.
+slides:
+  - title: Dua sudut pandang
+    grammar: id.passive.ter-ke-an
+    body:
+      ar_eg: |
+        عشان تعرض رأيين بعدل:
+        - Dari sudut pandang petani, … = من وجهة نظر الفلاح …
+        - Bagi para aktivis, … = بالنسبة للناشطين …
+        - Kedua pihak setuju bahwa … = الطرفين متفقين إن …
+        وهتحتاج ter- وke-…-an كتير: petani kehilangan penghasilan، hutan terbakar.
+      ar: |
+        لتعرض رأيين بإنصاف:
+        - Dari sudut pandang petani, … = من وجهة نظر المزارع …
+        - Bagi para aktivis, … = بالنسبة إلى الناشطين …
+        - Kedua pihak setuju bahwa … = يتّفق الطرفان على أنّ …
+        وستحتاج ter- وke-…-an كثيرًا: petani kehilangan penghasilan، hutan terbakar.
+      en: |
+        To present two views fairly:
+        - Dari sudut pandang petani, … = From the farmers' point of view, …
+        - Bagi para aktivis, … = For the activists, …
+        - Kedua pihak setuju bahwa … = Both sides agree that …
+        You'll need ter- and ke-…-an a lot: petani kehilangan penghasilan, hutan terbakar.
+    examples:
+      - text: Dari sudut pandang petani, sawit adalah sumber penghasilan utama.
+        ar_eg: من وجهة نظر الفلاح، النخيل هو مصدر الدخل الأساسي.
+        ar: من وجهة نظر المزارع، النخيل مصدر الدخل الرئيسي.
+        en: From the farmers' point of view, oil palm is the main source of income.
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: terbakar
-        ar_eg: ولّع / اتحرق
-        ar: احترق
-        en: caught fire
-      - text: punah
-        ar_eg: ينقرض
-        ar: ينقرض
-        en: to go extinct
-      - text: petani
-        ar_eg: فلاح
-        ar: مزارع
-        en: farmer
       - text: sudut pandang
         ar_eg: وجهة نظر
         ar: وجهة نظر
         en: point of view
-      - text: terancam
-        ar_eg: مهدَّد
-        ar: مهدَّد
-        en: threatened
-    words: [terbakar, punah, petani, sudut pandang, terancam]
+      - text: pihak
+        ar_eg: طرف
+        ar: طرف
+        en: side, party
+      - text: penghasilan
+        ar_eg: دخل
+        ar: دخل
+        en: income
+      - text: bagi
+        ar_eg: بالنسبة لـ
+        ar: بالنسبة إلى
+        en: for, to
+    words: [sudut pandang, pihak, penghasilan, bagi]
   - id: e02
     type: multiple_choice
     question_meaning:
-      ar_eg: الحريقة حصلت من غير قصد بسبب الجفاف. تقول إيه؟
-      ar: شبّ الحريق بلا قصد بسبب الجفاف. ماذا تقول؟
-      en: The fire started by accident because of the drought. What do you say?
+      ar_eg: أنهي جملة بتعرض رأي الطرفين؟
+      ar: أيّ جملة تعرض رأي الطرفين؟
+      en: Which sentence presents both sides?
     options:
-      - Lahan itu dibakar.
-      - Lahan itu terbakar.
-      - Lahan itu membakar.
+      - Sawit itu jahat dan harus dilarang.
+      - Bagi petani, sawit penting. Bagi aktivis, hutan lebih penting.
+      - Petani selalu benar.
     answer: 1
-    words: [terbakar]
+    words: [bagi]
   - id: e03
     type: fill_blank
-    sentence: Warga desa ___ karena hujan turun tiga hari.
+    sentence: Kedua ___ setuju bahwa kebakaran hutan harus dihentikan.
     meaning:
-      ar_eg: أهل القرية غرقوا في الفيضان عشان المطر نزل تلات أيام.
-      ar: غمر الفيضان أهل القرية بعد مطر دام ثلاثة أيام.
-      en: The villagers got flooded because it rained for three days.
-    options: [kebanjiran, terbakar, punah]
-    answers: [kebanjiran]
-    words: [kebanjiran]
+      ar_eg: الطرفين متفقين إن حرايق الغابات لازم تقف.
+      ar: يتّفق الطرفان على وجوب وقف حرائق الغابات.
+      en: Both sides agree that forest fires must be stopped.
+    options: [pihak, sudut, bagi]
+    answers: [pihak]
+    words: [pihak]
   - id: e04
     type: listen
-    text: Menurut aktivis, pemerintah seharusnya melindungi hutan adat.
+    text: Kalau kebun ditutup, petani kehilangan penghasilan.
     question:
-      ar_eg: ده رأي ولا حقيقة؟ وبيقول إيه؟
-      ar: أهذا رأي أم حقيقة؟ وماذا يقول؟
-      en: Opinion or fact, and what does it say?
+      ar_eg: إيه اللي هيحصل لو المزارع اتقفلت؟
+      ar: ماذا يحدث إن أُغلقت المزارع؟
+      en: What happens if the plantations close?
     options:
-      - حقيقة، الحكومة حمت الغابة.
-      - رأي، الناشطين شايفين إن الحكومة المفروض تحمي غابة الأعراف.
-      - حقيقة، مفيش غابات عرفية.
-    answer: 1
-    words: [seharusnya, hutan adat]
+      - الفلاحين هيخسروا دخلهم.
+      - الغابة هتولّع.
+      - الفلاحين هيكسبوا أكتر.
+    answer: 0
+    words: [penghasilan]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: أغلب الفلاحين محتاجين دخل ثابت.
-      ar: يحتاج معظم المزارعين إلى دخل ثابت.
-      en: Most farmers need a steady income.
-    answer: Sebagian besar petani membutuhkan penghasilan yang tetap.
-    distractors: [semua, punah]
-    words: [sebagian besar, petani, penghasilan]
+      ar_eg: من وجهة نظر الناشطين، الغابة لازم تتحمي.
+      ar: من وجهة نظر الناشطين، يجب حماية الغابة.
+      en: From the activists' point of view, the forest must be protected.
+    answer: Dari sudut pandang aktivis, hutan harus dilindungi.
+    distractors: [pihak, terbakar]
+    words: [sudut pandang]
   - id: e06
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: لو الغابة اختفت، الأورانجوتان ممكن ينقرض.
-      ar: إن اختفت الغابة قد ينقرض إنسان الغاب.
-      en: If the forest disappears, orangutans could go extinct.
+      ar_eg: بالنسبة للفلاحين، الدخل أهم حاجة.
+      ar: بالنسبة إلى المزارعين، الدخل أهمّ شيء.
+      en: For the farmers, income is the most important thing.
     answers:
-      - Kalau hutan hilang, orangutan bisa punah.
-      - Jika hutan hilang, orangutan bisa punah.
-      - Kalau hutannya hilang, orangutan bisa punah.
-      - Jika hutan hilang, orangutan dapat punah.
-    words: [punah]
+      - Bagi petani, penghasilan adalah hal yang paling penting.
+      - Bagi para petani, penghasilan adalah hal yang paling penting.
+      - Bagi petani, penghasilan paling penting.
+      - Bagi petani, penghasilan adalah yang paling penting.
+    words: [bagi, penghasilan]
   - id: e07
-    type: translate
-    direction: from_target
-    source_text: Bagi petani, perluasan kebun berarti penghasilan baru.
-    answers_meaning:
-      ar_eg:
-        - بالنسبة للفلاحين، توسّع المزارع معناه دخل جديد.
-        - للفلاحين، توسيع المزرعة يعني دخل جديد.
-      ar:
-        - بالنسبة إلى المزارعين، يعني توسّع المزارع دخلًا جديدًا.
-        - توسّع المزارع عند المزارعين يعني مصدر دخل جديد.
-      en:
-        - For farmers, expanding the plantations means new income.
-        - To the farmers, plantation expansion means new income.
-    words: [bagi, perluasan]
-  - id: e08
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي جملة بتختم مقال وجهة نظر؟
-      ar: أيّ جملة تختم مقالة وجهة النظر؟
-      en: Which sentence closes a viewpoint essay?
-    options:
-      - Setelah menimbang kedua pendapat, penulis berpendapat bahwa kita butuh jalan tengah.
-      - Hutan Kalimantan terancam.
-      - Bagi para aktivis, hutan sangat penting.
-    answer: 0
-    words: [menimbang, berpendapat]
-  - id: e09
     type: dictation
-    text: Kedua pihak harus mencari solusi bersama.
+    text: Setiap pihak punya sudut pandang sendiri.
     meaning:
-      ar_eg: الطرفين لازم يدوّروا على حل مع بعض.
-      ar: على الطرفين أن يبحثا عن حلّ معًا.
-      en: Both sides must look for a solution together.
-    words: [pihak, solusi]
-  - id: e10
+      ar_eg: كل طرف عنده وجهة نظره.
+      ar: لكلّ طرف وجهة نظره.
+      en: Each side has its own point of view.
+    words: [pihak, sudut pandang]
+  - id: e08
     type: speaking
-    text: Situasinya cukup serius, tetapi masyarakat adat membantu melestarikan hutan.
+    text: Dari sudut pandang saya, kedua pihak ada benarnya.
     meaning:
-      ar_eg: الوضع خطير لحد ما، بس المجتمعات الأصلية بتساعد تحافظ على الغابة.
-      ar: الوضع خطير إلى حدّ ما، لكنّ الشعوب الأصلية تساعد على صون الغابة.
-      en: The situation is fairly serious, but indigenous communities help conserve the forest.
-    words: [masyarakat adat, melestarikan]
+      ar_eg: من وجهة نظري، الطرفين عندهم حق في حاجات.
+      ar: من وجهة نظري، لكلا الطرفين شيء من الحقّ.
+      en: From my point of view, both sides have a point.
+    words: [sudut pandang, pihak]
 dialogue:
-  title: Perpisahan di Tanjung Puting
+  title: Diskusi di perahu klotok
   lines:
-    - speaker: Mas Rizal
-      text: Bagaimana, Mohamed? Apa yang paling kamu ingat dari Tanjung Puting?
-      ar_eg: إيه يا محمد؟ إيه أكتر حاجة هتفتكرها من تانجونج بوتينج؟
-      ar: ما رأيك يا محمد؟ ما أكثر ما ستذكره من تانجونغ بوتينغ؟
-      en: So, Mohamed? What will you remember most from Tanjung Puting?
+    - speaker: Rina
+      text: Mohamed, menurutmu siapa yang benar, petani atau aktivis?
+      ar_eg: يا محمد، في رأيك مين اللي معاه حق، الفلاحين ولا الناشطين؟
+      ar: يا محمد، من المحقّ في رأيك، المزارعون أم الناشطون؟
+      en: Mohamed, who do you think is right, the farmers or the activists?
     - speaker: Mohamed
-      text: Orangutan muda yang dirawat di Camp Leakey. Mereka terancam, tetapi masih ada harapan.
-      ar_eg: الأورانجوتان الصغيرين اللي بيتربّوا في كامب ليكي. هما مهدّدين، بس لسه فيه أمل.
-      ar: صغار إنسان الغاب في كامب ليكي؛ إنها مهدَّدة لكنّ الأمل باقٍ.
-      en: The young orangutans being cared for at Camp Leakey. They're threatened, but there's still hope.
-    - speaker: Mas Rizal
-      text: Dan masalah sawit?
-      ar_eg: وموضوع النخيل؟
-      ar: وماذا عن مسألة النخيل؟
-      en: And the palm oil issue?
+      text: Bagi petani, sawit berarti penghasilan. Itu masuk akal.
+      ar_eg: بالنسبة للفلاحين، النخيل يعني دخل. وده منطقي.
+      ar: بالنسبة إلى المزارعين، النخيل يعني الدخل، وهذا منطقي.
+      en: For the farmers, palm oil means income. That makes sense.
+    - speaker: Rina
+      text: Tetapi dari sudut pandang aktivis, hutan tidak bisa diganti.
+      ar_eg: بس من وجهة نظر الناشطين، الغابة مالهاش بديل.
+      ar: لكن من وجهة نظر الناشطين، الغابة لا تُعوَّض.
+      en: But from the activists' point of view, the forest can't be replaced.
     - speaker: Mohamed
-      text: Dari sudut pandang saya, petani dan hutan sama-sama harus dilindungi.
-      ar_eg: من وجهة نظري، الفلاحين والغابة الاتنين لازم يتحموا.
-      ar: من وجهة نظري، يجب أن يُحمى المزارعون والغابة معًا.
-      en: From my point of view, both the farmers and the forest must be protected.
-souvenir:
-  id: bipa5.u05.souvenir
-  title: Orangutan di Camp Leakey
-  note:
-    ar_eg: كامب ليكي في محمية تانجونج بوتينج مركز اتأسس سنة 1971 لدراسة الأورانجوتان ورعاية اليتامى منهم. بتوصله بمركب خشب اسمه klotok، بتنام فيه على النهر. الاسم نفسه ملايو، orang hutan يعني «إنسان الغابة»، وده سبب إن العربي بيسمّيه «إنسان الغاب».
-    ar: كامب ليكي في منتزه تانجونغ بوتينغ مركز أُسّس سنة 1971 لدراسة إنسان الغاب ورعاية أيتامه، ويُبلَغ بمركب خشبي يسمّى klotok يُبات فيه على النهر. والاسم ملايوي، فـ orang hutan تعني «إنسان الغابة»، ومنه جاءت تسميته العربية «إنسان الغاب».
-    en: Camp Leakey in Tanjung Puting National Park was founded in 1971 to study orangutans and care for orphans. You reach it by a wooden boat called a klotok and sleep aboard on the river. The name itself is Malay, orang hutan meaning "person of the forest", which is why Arabic calls it "insan al-ghab".
+      text: Setuju. Kedua pihak ada benarnya, jadi solusinya harus adil.
+      ar_eg: موافق. الطرفين عندهم حق، فالحل لازم يكون عادل.
+      ar: أوافق. لكلّ طرف شيء من الحقّ، فيجب أن يكون الحلّ عادلًا.
+      en: Agreed. Both sides have a point, so the solution must be fair.
+new_words:
+  - word: sudut pandang
+    pos: noun
+    ar_eg: وجهة نظر
+    ar: وجهة نظر
+    en: point of view
+  - word: pihak
+    pos: noun
+    ar_eg: طرف
+    ar: طرف
+    en: side, party
+  - word: penghasilan
+    pos: noun
+    ar_eg: دخل
+    ar: دخل
+    en: income
+  - word: bagi
+    ar_eg: بالنسبة لـ
+    ar: بالنسبة إلى
+    en: for, to
 review:
   status: draft
   verified: false
