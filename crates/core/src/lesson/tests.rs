@@ -356,6 +356,88 @@ fn resume_keeps_step_and_results() {
     assert_eq!(q.summary().graded, 11);
 }
 
+/// The text of a choice item's options, in the order shown.
+fn option_texts(ex: &Exercise) -> Vec<String> {
+    match &ex.kind {
+        ExerciseKind::MultipleChoice { options, options_meaning, .. } if options.is_empty() => {
+            options_meaning.iter().map(|m| pick(m, EG).to_owned()).collect()
+        }
+        ExerciseKind::MultipleChoice { options, .. }
+        | ExerciseKind::Listen { options, .. }
+        | ExerciseKind::FillBlank { options, .. } => options.clone(),
+        _ => Vec::new(),
+    }
+}
+
+#[test]
+fn a_retried_choice_item_reshuffles_its_options_and_grades_the_same() {
+    // e03 is a multiple-choice item: miss it, and it comes back at the end.
+    let mut p = Player::new(l01());
+    while p.exercise().is_none_or(|e| e.id != "e03") {
+        p.advance();
+    }
+    let first = p.exercise().unwrap().clone();
+    answer(&mut p, &["e03"]);
+    p.advance();
+    while !matches!(p.step(), Step::Exercise { retry: true, .. }) {
+        if p.exercise().is_some() {
+            answer(&mut p, &[]);
+        }
+        p.advance();
+    }
+    let retry = p.exercise().unwrap().clone();
+    assert_eq!(retry.id, "e03");
+    let (before, after) = (option_texts(&first), option_texts(&retry));
+    assert_ne!(before, after, "same order as the first time");
+    let mut sorted = (before.clone(), after.clone());
+    sorted.0.sort();
+    sorted.1.sort();
+    assert_eq!(sorted.0, sorted.1, "the same options, reordered");
+    // The answer follows its option.
+    assert_eq!(display_answer(&retry, EG), display_answer(&first, EG));
+    let ExerciseKind::MultipleChoice { answer: right, .. } = retry.kind else { panic!("e03 is a choice") };
+    let ExerciseKind::MultipleChoice { answer: old, .. } = first.kind else { panic!("e03 is a choice") };
+    assert_eq!(after[right], before[old]);
+    // A resumed lesson shows the same order on the retry.
+    let q = Player::resume(l01(), &p.position());
+    assert_eq!(q.exercise(), Some(&retry));
+    // Grading follows the shown order: the remembered old spot is not the answer.
+    let wrong = (0..after.len()).find(|&i| i != right).unwrap();
+    let mut q2 = q.clone();
+    assert_eq!(q2.check(&Answer::Choice(wrong), EG), Grade::Wrong);
+    let mut q3 = q.clone();
+    assert_eq!(q3.check(&Answer::Choice(right), EG), Grade::Correct);
+    // The first time, an item keeps its written order.
+    assert_eq!(&first, ex(&l01(), "e03"));
+}
+
+#[test]
+fn retry_options_keep_grading_for_every_choice_item() {
+    for l in [l01(), l02()] {
+        for ex in &l.exercises {
+            let Some(view) = retry_options(ex, 42) else {
+                assert!(option_texts(ex).len() < 2, "{} has options but no retry order", ex.id);
+                continue;
+            };
+            assert_eq!(view.id, ex.id);
+            let (before, after) = (option_texts(ex), option_texts(&view));
+            assert_ne!(before, after, "{}", ex.id);
+            // Picking the same option text grades the same, wherever it moved.
+            for (k, text) in after.iter().enumerate() {
+                let j = before.iter().position(|t| t == text).unwrap();
+                assert_eq!(
+                    grade(&view, &Answer::Choice(k), EG),
+                    grade(ex, &Answer::Choice(j), EG),
+                    "{} option {text:?}",
+                    ex.id
+                );
+            }
+            // Deterministic.
+            assert_eq!(retry_options(ex, 42), Some(view));
+        }
+    }
+}
+
 #[test]
 fn resume_falls_back_to_the_start_for_unknown_positions() {
     let pos = LessonPosition {

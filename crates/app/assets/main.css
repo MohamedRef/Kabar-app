@@ -14,6 +14,48 @@
   --font-arabic: "IBM Plex Sans Arabic", "Noto Naskh Arabic", "Noto Sans Arabic", "Geeza Pro", system-ui, sans-serif;
 }
 
+/* Word colours (kabar_core::grammar::word, theme.rs WordColors): one fixed
+   colour per kind of word and per piece of a word, the same in the text, the
+   breakdown and the grammar notes. The theme stylesheet sets them per theme;
+   these are the Paper / Merapi values for the first paint. */
+:root {
+  --wc-verb: #a61e4d;
+  --wc-noun: #1f5fa6;
+  --wc-adj: #6b3fa0;
+  --wc-func: #5d574e;
+  --wp-prefix: #a84300;
+  --wp-suffix: #0b7062;
+  --wp-confix: #4d6b0f;
+  --wp-clitic: #5d574e;
+  --wp-root: #23211f;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --wc-verb: #f28fae;
+    --wc-noun: #8fbcf2;
+    --wc-adj: #c6a6f0;
+    --wc-func: #b3aa9c;
+    --wp-prefix: #f39f6c;
+    --wp-suffix: #6fd0bd;
+    --wp-confix: #b9d47a;
+    --wp-clitic: #b3aa9c;
+    --wp-root: #efe9df;
+  }
+}
+.wc-verb { --wc: var(--wc-verb); }
+.wc-noun { --wc: var(--wc-noun); }
+.wc-adj { --wc: var(--wc-adj); }
+.wc-func { --wc: var(--wc-func); }
+/* Colour the text itself with .wc-ink; a word span gets only an underline,
+   so the status highlight and Bridge gold keep their meaning. */
+.wc-ink.wc-verb, .wc-ink.wc-noun, .wc-ink.wc-adj, .wc-ink.wc-func { color: var(--wc); }
+.wc-line { text-decoration: underline 2px var(--wc, transparent); text-underline-offset: 0.28em; }
+.wp-prefix { color: var(--wp-prefix); }
+.wp-suffix { color: var(--wp-suffix); }
+.wp-confix { color: var(--wp-confix); }
+.wp-clitic { color: var(--wp-clitic); }
+.wp-root { color: var(--wc, var(--wp-root)); font-weight: 600; }
+
 * { box-sizing: border-box; }
 
 html, body {
