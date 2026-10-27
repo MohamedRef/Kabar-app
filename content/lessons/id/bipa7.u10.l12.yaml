@@ -1,0 +1,201 @@
+schema: kabar.lesson/v1
+id: bipa7.u10.l12
+language: id
+title: Tanya jawab seminar
+can_do:
+  ar_eg: تجاوب على أسئلة الجمهور بعد العرض بهدوء وأمانة.
+  ar: أن تجيب عن أسئلة الحضور بعد العرض بهدوء وأمانة.
+  en: Answer audience questions after a talk, calmly and honestly.
+slides:
+  - title: Menjawab dengan tenang
+    grammar: id.register.academic
+    body:
+      ar_eg: |
+        خطوات الرد على penanya (السائل)، والأمثلة متألّفة للدرس:
+        1. اشكره: Terima kasih atas pertanyaannya, Bu.
+        2. اطلب klarifikasi (توضيح) لو السؤال مش واضح: Mohon klarifikasi, yang Ibu maksud distrik yang mana?
+        3. جاوب من البيانات: Berdasarkan data kami, …
+        4. اعترف بـ keterbatasan (حدود) البحث: Penelitian ini memiliki keterbatasan, yaitu jumlah partisipan yang kecil.
+        5. لو السؤال مش relevan (له علاقة) بالموضوع، ارجع بأدب: Pertanyaan yang menarik, tetapi kurang relevan dengan makalah ini.
+      ar: |
+        خطوات الردّ على الـ penanya (السائل)، والأمثلة مؤلَّفة للدرس:
+        1. اشكره: Terima kasih atas pertanyaannya, Bu.
+        2. اطلب klarifikasi (توضيحًا) إن كان السؤال غامضًا: Mohon klarifikasi, yang Ibu maksud distrik yang mana?
+        3. أجب من البيانات: Berdasarkan data kami, …
+        4. اعترف بـ keterbatasan (حدود) البحث: Penelitian ini memiliki keterbatasan, yaitu jumlah partisipan yang kecil.
+        5. وإن لم يكن السؤال relevan (ذا صلة) بالموضوع، فعُد إليه بلطف: Pertanyaan yang menarik, tetapi kurang relevan dengan makalah ini.
+      en: |
+        Steps for answering a penanya (questioner), with examples invented for the lesson:
+        1. Thank them: Terima kasih atas pertanyaannya, Bu.
+        2. Ask for klarifikasi (clarification) if it's unclear: Mohon klarifikasi, yang Ibu maksud distrik yang mana?
+        3. Answer from the data: Berdasarkan data kami, …
+        4. Admit the keterbatasan (limitations) of the study: Penelitian ini memiliki keterbatasan, yaitu jumlah partisipan yang kecil.
+        5. If it isn't relevan (relevant), steer back politely: Pertanyaan yang menarik, tetapi kurang relevan dengan makalah ini.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: penanya
+        ar_eg: السائل
+        ar: السائل
+        en: questioner
+      - text: klarifikasi
+        ar_eg: توضيح
+        ar: توضيح
+        en: clarification
+      - text: keterbatasan
+        ar_eg: حدود / قصور
+        ar: حدود البحث
+        en: limitation
+      - text: relevan
+        ar_eg: ليه علاقة
+        ar: ذو صلة
+        en: relevant
+    words: [penanya, klarifikasi, keterbatasan, relevan]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: السؤال مش واضح. تقول إيه؟
+      ar: السؤال غير واضح، فماذا تقول؟
+      en: The question isn't clear. What do you say?
+    options:
+      - Pertanyaan Ibu salah.
+      - Mohon klarifikasi, yang Ibu maksud yang mana?
+      - Saya tidak mau menjawab.
+    answer: 1
+    words: [klarifikasi]
+  - id: e03
+    type: fill_blank
+    sentence: Jumlah partisipan yang kecil adalah salah satu ___ penelitian ini.
+    meaning:
+      ar_eg: إن عدد المشاركين قليل ده من حدود البحث ده.
+      ar: قلّة عدد المشاركين من حدود هذا البحث.
+      en: The small number of participants is one of this study's limitations.
+    options: [keterbatasan, klarifikasi, penanya]
+    answers: [keterbatasan]
+    words: [keterbatasan]
+  - id: e04
+    type: listen
+    text: Penanya kedua bertanya tentang harga ubi di pasar Jibama.
+    question:
+      ar_eg: السائل التاني سأل عن إيه؟
+      ar: عمَّ سأل السائل الثاني؟
+      en: What did the second questioner ask about?
+    options:
+      - سعر البطاطا في سوق جيباما.
+      - عدد البيوت.
+      - تاريخ الوادي.
+    answer: 0
+    words: [penanya]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: السؤال ده ليه علاقة قوية بالبحث بتاعنا.
+      ar: هذا السؤال وثيق الصلة ببحثنا.
+      en: This question is highly relevant to our research.
+    answer: Pertanyaan ini sangat relevan dengan penelitian kami.
+    distractors: [klarifikasi, penanya]
+    words: [relevan]
+  - id: e06
+    type: multiple_choice
+    question_meaning:
+      ar_eg: ليه الباحث الأمين بيعترف بحدود بحثه؟
+      ar: لماذا يعترف الباحث الأمين بحدود بحثه؟
+      en: Why does an honest researcher admit their study's limits?
+    options:
+      - علشان الجمهور يسكت.
+      - علشان الوقت يخلص.
+      - علشان القارئ يعرف النتايج تنفع لحدّ فين.
+    answer: 2
+    words: [keterbatasan]
+  - id: e07
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: شكرًا على السؤال. ممكن توضيح؟
+      ar: شكرًا على السؤال. هل من توضيح؟
+      en: Thank you for the question. Could you clarify?
+    answers:
+      - Terima kasih atas pertanyaannya. Mohon klarifikasi.
+      - Terima kasih atas pertanyaannya. Boleh minta klarifikasi?
+      - Terima kasih atas pertanyaan Anda. Mohon klarifikasi.
+      - Terima kasih atas pertanyaannya. Bisa minta klarifikasi?
+    words: [klarifikasi]
+  - id: e08
+    type: speaking
+    text: Pertanyaan Bapak menarik, tetapi kurang relevan dengan makalah ini.
+    meaning:
+      ar_eg: سؤال حضرتك حلو، بس مالوش علاقة أوي بالورقة دي.
+      ar: سؤالك مثير يا سيّدي، لكنّه قليل الصلة بهذه الورقة.
+      en: Your question is interesting, sir, but not very relevant to this paper.
+    words: [relevan]
+  - id: e09
+    type: dictation
+    text: Setiap penanya mendapat waktu dua menit.
+    meaning:
+      ar_eg: كل سائل ليه دقيقتين.
+      ar: لكلّ سائل دقيقتان.
+      en: Each questioner gets two minutes.
+    words: [penanya]
+  - id: e10
+    type: translate
+    direction: from_target
+    source_text: Peneliti itu mengakui keterbatasan datanya dan mengucapkan terima kasih kepada penanya.
+    answers_meaning:
+      ar_eg:
+        - الباحث اعترف بحدود بياناته وشكر السائل.
+        - الباحث قال إن بياناته ليها حدود، وشكر اللي سأل.
+      ar:
+        - اعترف الباحث بحدود بياناته وشكر السائل.
+        - أقرّ الباحث بقصور بياناته وشكر صاحب السؤال.
+      en:
+        - The researcher admitted the limits of his data and thanked the questioner.
+        - The researcher acknowledged his data's limitations and thanked the person who asked.
+    words: [keterbatasan, penanya]
+dialogue:
+  title: Pertanyaan dari barisan belakang
+  lines:
+    - speaker: Pak Elias
+      text: Kita buka sesi tanya jawab. Silakan, Ibu di belakang.
+      ar_eg: نفتح جلسة الأسئلة. اتفضّلي يا مدام اللي ورا.
+      ar: نفتتح جلسة الأسئلة. تفضّلي يا سيّدتي في الخلف.
+      en: Let's open the Q&A. Go ahead, the lady at the back.
+    - speaker: Penanya
+      text: Apakah temuan ini berlaku untuk seluruh Papua?
+      ar_eg: النتايج دي تنفع على بابوا كلها؟
+      ar: هل تصحّ هذه النتائج على بابوا كلّها؟
+      en: Do these findings hold for all of Papua?
+    - speaker: Mohamed
+      text: Terima kasih atas pertanyaannya. Belum, Bu. Itulah keterbatasan penelitian kami.
+      ar_eg: شكرًا على السؤال. لسّه لأ يا مدام. ودي حدود بحثنا.
+      ar: شكرًا على السؤال. ليس بعدُ يا سيّدتي، وهذا من حدود بحثنا.
+      en: Thank you for the question. Not yet, Bu. That's our study's limitation.
+    - speaker: Mohamed
+      text: Data kami hanya dari tiga distrik. Penelitian lanjutan sangat relevan untuk itu.
+      ar_eg: بياناتنا من تلات مناطق بس. وبحث تاني بعد كده هيبقى مهمّ جدًّا للنقطة دي.
+      ar: بياناتنا من ثلاث مناطق فقط، والبحث اللاحق وثيق الصلة بهذه المسألة.
+      en: Our data comes from only three districts. Follow-up research would be very relevant to that.
+new_words:
+  - word: penanya
+    pos: noun
+    ar_eg: السائل
+    ar: السائل
+    en: questioner
+  - word: klarifikasi
+    pos: noun
+    ar_eg: توضيح
+    ar: توضيح
+    en: clarification
+  - word: keterbatasan
+    pos: noun
+    ar_eg: حدود / قصور
+    ar: حدود البحث
+    en: limitation
+  - word: relevan
+    pos: adjective
+    ar_eg: ليه علاقة
+    ar: ذو صلة
+    en: relevant
+review:
+  status: draft
+  verified: false

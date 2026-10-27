@@ -2146,7 +2146,7 @@ mod tests {
         assert!(problems.is_empty(), "{}", problems.join("\n"));
         assert!(lesson_content("bipa1.u01.l01").is_some());
         assert!(lesson_content("bipa2.u10.l06").is_some());
-        assert!(lesson_content("bipa7.u10.l10").is_some());
+        assert!(lesson_content("bipa7.u10.l14").is_some());
         assert!(lesson_content("bipa8.u01.l01").is_none());
     }
 
