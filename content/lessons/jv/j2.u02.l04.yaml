@@ -87,21 +87,40 @@ exercises:
   - id: e04
     type: build_sentence
     source:
-      ar_eg: اتنين رز بيتشل يا طنط.
-      ar: طبقان من أرز البيتشل يا سيدتي.
-      en: Two pecel rice, ma'am.
-    answer: Sega pecel loro, Bu.
+      ar_eg: عايز اتنين رز بيتشل يا طنط.
+      ar: أطلب طبقين من أرز البيتشل يا سيدتي.
+      en: I'll order two pecel rice, ma'am.
+    answer: Aku pesen sega pecel loro, Bu.
     distractors: [siji, pedhes]
-    words: [sega, pecel, loro]
+    words: [pesen, sega, pecel, loro]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: الحساب كله كام يا طنط؟
-      ar: كم الحساب كله يا سيدتي؟
-      en: How much is it altogether, ma'am?
-    answers: ["Kabeh pira, Bu?", "Kabeh pira, Bu", "Kabeh piro, Bu?", "Kabeh piro, Bu", "Pira kabeh, Bu?", "Pira kabeh, Bu", "Kabeh pira?", Kabeh pira]
-    words: [kabeh, pira]
+    type: match_pairs
+    pairs:
+      - text: pesen
+        ar_eg: يطلب (أكل)
+        ar: يطلب (طعامًا)
+        en: order (food)
+      - text: nganggo
+        ar_eg: بـ / بيستخدم
+        ar: بـ / يستعمل
+        en: with, using
+      - text: sithik
+        ar_eg: شوية
+        ar: قليلًا
+        en: a little
+      - text: dibungkus
+        ar_eg: تيك أواي
+        ar: سفري
+        en: to take away
+      - text: kabeh
+        ar_eg: كله
+        ar: الكل
+        en: all, in total
+      - text: sambel
+        ar_eg: صوص حرّاق
+        ar: صلصة حارة
+        en: chilli sauce
+    words: [pesen, nganggo, sithik, dibungkus, kabeh, sambel]
   - id: e06
     type: translate
     direction: to_target
@@ -116,14 +135,15 @@ exercises:
       en: sithik = sedikit, wae = saja. Chats write sitik.
     words: [sithik, wae, sambel]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: هناكل هنا يا طنط.
-      ar: سنأكل هنا يا سيدتي.
-      en: We'll eat here, ma'am.
-    answers: ["Mangan kene, Bu.", "Mangan kene, Bu", "Mangan kene wae, Bu.", "Mangan kene wae, Bu", "Mangan kene.", Mangan kene]
-    words: [mangan, kene]
+    type: listen
+    text: Aku pesen sega pecel, dibungkus.
+    options: ['Aku pesen sega pecel, dibungkus.', 'Aku pesen sega pecel, mangan kene.', 'Aku pesen sega pecel, sambele sithik.']
+    answer: 0
+    meaning:
+      ar_eg: أنا عايز رز بيتشل، تيك أواي.
+      ar: أطلب أرز بيتشل، سفري.
+      en: I'll order rice with pecel, to take away.
+    words: [pesen, sega, pecel, dibungkus, sithik]
   - id: e08
     type: listen
     text: Kabeh telung puluh ewu.

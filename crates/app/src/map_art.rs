@@ -3,10 +3,8 @@
 //! `scripts/assets/export_map.py`; they are embedded as `data:` URLs like
 //! the Naskh font, so the map needs no file access on any platform.
 
-use std::collections::HashMap;
 use std::sync::LazyLock;
 
-use base64::Engine as _;
 use kabar_core::settings::Theme;
 use kabar_core::theme::{self as palette, Palette, Scheme};
 
@@ -47,34 +45,31 @@ pub enum Size {
 }
 
 fn data_url(bytes: &[u8]) -> String {
-    format!("data:image/webp;base64,{}", base64::engine::general_purpose::STANDARD.encode(bytes))
+    crate::embedded::data_url("image/webp", bytes)
 }
-
-static URLS: LazyLock<HashMap<(&'static str, Size), String>> = LazyLock::new(|| {
-    VIGNETTES
-        .iter()
-        .flat_map(|&(id, large, small)| {
-            [((id, Size::Large), data_url(large)), ((id, Size::Small), data_url(small))]
-        })
-        .collect()
-});
 
 /// The landmark vignette of a level, as a `data:` URL.
 pub fn vignette(level_id: &str, size: Size) -> Option<&'static str> {
-    let id = VIGNETTES.iter().find(|v| v.0 == level_id)?.0;
-    URLS.get(&(id, size)).map(String::as_str)
+    let &(_, large, small) = VIGNETTES.iter().find(|v| v.0 == level_id)?;
+    let bytes = if size == Size::Large { large } else { small };
+    Some(crate::embedded::cached_data_url("image/webp", bytes))
 }
 
 /// `--map-paper` for every theme: light paper for light themes, Merapi
 /// charcoal paper for dark ones. `system` follows the OS like the colours.
 pub fn paper_css() -> &'static str {
     static CSS: LazyLock<String> = LazyLock::new(|| {
-        let (light, dark) = (data_url(PAPER_LIGHT), data_url(PAPER_DARK));
+        // Each tile once; the themes only pick one.
+        let mut css = format!(
+            ".app {{ --map-paper-light: url({}); --map-paper-dark: url({}); }}\n",
+            data_url(PAPER_LIGHT),
+            data_url(PAPER_DARK)
+        );
         let rule = |id: &str, p: &Palette| {
-            let url = if p.scheme == Scheme::Dark { &dark } else { &light };
-            format!(".app[data-theme=\"{id}\"] {{ --map-paper: url({url}); }}\n")
+            let scheme = if p.scheme == Scheme::Dark { "dark" } else { "light" };
+            format!(".app[data-theme=\"{id}\"] {{ --map-paper: var(--map-paper-{scheme}); }}\n")
         };
-        let mut css = rule("system", &palette::LIGHT);
+        css.push_str(&rule("system", &palette::LIGHT));
         css.push_str(&format!(
             "@media (prefers-color-scheme: dark) {{ {}}}\n",
             rule("system", &palette::DARK)
@@ -109,13 +104,13 @@ mod tests {
     #[test]
     fn dark_themes_get_dark_paper() {
         let css = paper_css();
-        let light = data_url(PAPER_LIGHT);
-        let dark = data_url(PAPER_DARK);
+        assert_eq!(css.matches(&data_url(PAPER_LIGHT)).count(), 1);
+        assert_eq!(css.matches(&data_url(PAPER_DARK)).count(), 1);
         for theme in Theme::ALL {
             let Some(p) = theme.palette() else { continue };
-            let want = if p.scheme == Scheme::Dark { &dark } else { &light };
+            let want = if p.scheme == Scheme::Dark { "dark" } else { "light" };
             assert!(css.contains(&format!(
-                ".app[data-theme=\"{}\"] {{ --map-paper: url({want}); }}",
+                ".app[data-theme=\"{}\"] {{ --map-paper: var(--map-paper-{want}); }}",
                 theme.as_str()
             )));
         }

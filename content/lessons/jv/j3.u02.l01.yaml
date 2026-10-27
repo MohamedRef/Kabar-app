@@ -102,42 +102,56 @@ exercises:
       ar_eg: Bu Siti نادتك «Mas Mohamed!». ترد تقول إيه؟
       ar: نادتك Bu Siti «Mas Mohamed!». بمَ تجيب؟
       en: Bu Siti calls "Mas Mohamed!". What do you answer?
-    options: ['Dalem, Bu?', 'Kowe?', 'Apa?']
+    options: ['Dalem, Bu?', 'Sugeng rawuh, Bu!', 'Apa?']
     answer: 0
     explain:
-      ar_eg: «Dalem?» = «أفندم؟». «Apa?» لوحدها تبان ناشفة مع حد أكبر منك.
-      ar: «Dalem?» = «أفندم؟»، أما «Apa?» وحدها فجافة مع الأكبر.
-      en: '"Dalem?" = «أفندم؟». A bare "Apa?" sounds blunt to an elder.'
-    words: [dalem]
+      ar_eg: «Dalem?» = «أفندم؟». «Sugeng rawuh» بتقولها لضيف لسه واصل، و«Apa?» لوحدها تبان ناشفة مع حد أكبر منك.
+      ar: «Dalem?» = «أفندم؟». «Sugeng rawuh» ترحيب بضيف وصل، و«Apa?» وحدها جافة مع الأكبر.
+      en: '"Dalem?" = «أفندم؟». "Sugeng rawuh" welcomes an arriving guest; a bare "Apa?" sounds blunt to an elder.'
+    words: [dalem, sugeng rawuh]
   - id: e02
     type: listen
-    text: Nami kula Mohamed.
-    options: [Jenengku Mohamed., Nami kula Mohamed., Kula saking Mesir.]
-    answer: 1
-    words: [nami, kula]
+    text: Dalem, Bu? Menika griya kula.
+    options: ['Dalem, Bu? Menika griya kula.', 'Dalem, Bu? Menika griya sampeyan.', 'Apa, Bu? Iki omahku.']
+    answer: 0
+    words: [dalem, menika, griya, kula]
   - id: e03
-    type: fill_blank
-    sentence: Nami ___ Mohamed.
-    meaning:
-      ar_eg: اسمي محمد.
-      ar: اسمي محمد.
-      en: My name is Mohamed.
-    options: [panjenengan, aku, kula]
-    answers: [kula]
-    explain:
-      ar_eg: nami كلمة كراما، فبتمشي مع kula. aku ngoko.
-      ar: nami من الكراما فتأتي مع kula، وaku من الـ ngoko.
-      en: nami is krama, so it pairs with kula; aku is ngoko.
-    words: [kula]
+    type: match_pairs
+    pairs:
+      - text: nami
+        ar_eg: اسم (krama) = nama
+        ar: اسم (krama) = nama
+        en: name (krama) = nama
+      - text: griya
+        ar_eg: بيت (krama) = rumah
+        ar: بيت (krama) = rumah
+        en: house (krama) = rumah
+      - text: dalem
+        ar_eg: أفندم؟ لما حد كبير يناديك
+        ar: أفندم؟ حين يناديك الأكبر
+        en: Yes? (answering an elder)
+      - text: saking
+        ar_eg: من (krama) = dari
+        ar: من (krama) = dari
+        en: from (krama) = dari
+      - text: menika
+        ar_eg: ده / دي (krama) = ini
+        ar: هذا / هذه (krama) = ini
+        en: this (krama) = ini
+      - text: sugeng rawuh
+        ar_eg: أهلًا بيك = selamat datang
+        ar: أهلًا بك = selamat datang
+        en: welcome = selamat datang
+    words: [nami, griya, dalem, saking, menika, sugeng rawuh]
   - id: e04
     type: build_sentence
     source:
-      ar_eg: أنا من مصر. (بالكراما)
-      ar: أنا من مصر. (بالكراما)
-      en: I'm from Egypt. (krama)
-    answer: Kula saking Mesir.
-    distractors: [aku, saka]
-    words: [kula, saking]
+      ar_eg: اسمي محمد. أنا من مصر. (بالكراما)
+      ar: اسمي محمد. أنا من مصر. (بالكراما)
+      en: My name is Mohamed. I'm from Egypt. (krama)
+    answer: Nami kula Mohamed. Kula saking Mesir.
+    distractors: [jeneng, aku, saka]
+    words: [nami, kula, saking]
   - id: e05
     type: translate
     direction: to_target
@@ -153,12 +167,12 @@ exercises:
     words: [menika, griya, kula]
   - id: e06
     type: speaking
-    text: Nami kula Mohamed, saking Mesir.
+    text: Sugeng rawuh, Bu. Nami kula Mohamed, saking Mesir.
     meaning:
-      ar_eg: اسمي محمد، من مصر.
-      ar: اسمي محمد، من مصر.
-      en: My name is Mohamed, from Egypt.
-    words: [nami, kula, saking]
+      ar_eg: أهلًا بحضرتك يا مدام. اسمي محمد، من مصر.
+      ar: أهلًا بكِ يا سيدتي. اسمي محمد، من مصر.
+      en: Welcome, ma'am. My name is Mohamed, from Egypt.
+    words: [sugeng rawuh, nami, kula, saking]
 dialogue:
   title: Kenalan ing Pasar Gede
   lines:

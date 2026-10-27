@@ -114,33 +114,33 @@ exercises:
       ar_eg: أنهي جملة فيها نكهة سورابايا (Arek)؟
       ar: أيّ جملة فيها طابع سورابايا (Arek)؟
       en: Which sentence has the Surabaya (Arek) flavour?
-    options: [Mbok mangan sek., Aku teh ae., Aku teh wae.]
+    options: [Mbok mangan sek., Aku teh ae., Aku teh wae., 'Kok larang?']
     answer: 1
     explain:
       ar_eg: ae علامة سورابايا. wae وmbok من وسط جاوة.
       ar: ae من علامات سورابايا، وwae وmbok من وسط جاوة.
       en: ae is Surabaya; wae and mbok are Central Javanese.
-    words: [ae]
+    words: [ae, mbok, kok, larang]
   - id: e02
     type: listen
     text: Kurmane enak lho!
-    options: [Kurmane enak lho!, 'Kurmane enak ta?', 'Kok kurmane larang?']
+    options: [Kurmane enak lho!, 'Minyak wangine enak ta?', 'Kok kurmane larang?', Mbok tuku kurmane.]
     answer: 0
-    words: [lho, kurma]
+    words: [lho, kurma, minyak wangi, ta, kok, larang, mbok]
   - id: e03
     type: fill_blank
-    sentence: Ora apa-apa ___.
+    sentence: Aku mulih ___, rek.
     meaning:
-      ar_eg: مفيش حاجة والله. (بتطمّن حد)
-      ar: لا بأس، صدقني. (للطمأنة)
-      en: It's fine, really. (reassuring someone)
-    options: [ae, kok, ta]
-    answers: [kok]
+      ar_eg: أنا هروّح وخلاص يا جماعة. (سورابايا)
+      ar: سأعود إلى البيت فحسب يا رفاق. (سورابايا)
+      en: I'll just head home, guys. (Surabaya)
+    options: [ae, mbok, lho]
+    answers: [ae]
     explain:
-      ar_eg: kok في آخر الجملة بتطمّن.
-      ar: kok في آخر الجملة للطمأنة.
-      en: kok at the end reassures.
-    words: [kok]
+      ar_eg: ae = saja (بس / وخلاص) على طريقة سورابايا.
+      ar: ae = saja (فحسب) بلهجة سورابايا.
+      en: ae = saja (just), Surabaya style.
+    words: [mulih, ae, rek]
   - id: e04
     type: build_sentence
     source:
@@ -151,26 +151,55 @@ exercises:
     distractors: [kok, lho]
     words: [koen, wis, mangan, ta, rek]
   - id: e05
-    type: translate
-    direction: from_target
-    source_text: Aku mulih sek, ya.
-    answers_meaning:
-      ar_eg: [أنا هروّح بقى، ماشي؟, أنا مروّح، ماشي؟, هروّح الأول، ماشي؟, أنا هروّح، ماشي]
-      ar: [سأعود إلى البيت الآن، حسنًا؟, سأذهب إلى البيت، اتفقنا؟, سأعود إلى البيت أولًا، حسنًا؟]
-      en: ['I''m heading home now, OK?', 'I''m going home first, OK?', 'I''ll head home now, OK?', 'I''m off home, OK?']
-    explain:
-      ar_eg: mulih = pulang، sek = الأول، ya = ماشي؟
-      ar: mulih = pulang، وsek = أولًا، وya = حسنًا؟
-      en: mulih = pulang, sek = first, ya = OK?
-    words: [mulih, sek]
+    type: match_pairs
+    pairs:
+      - text: ta
+        ar_eg: ولا إيه؟ (سورابايا)
+        ar: أليس كذلك؟ (سورابايا)
+        en: right? (Surabaya)
+      - text: ae
+        ar_eg: بس (سورابايا)
+        ar: فقط (سورابايا)
+        en: just (Surabaya)
+      - text: lho
+        ar_eg: على فكرة! / إيه ده!
+        ar: انتبه! / يا للعجب!
+        en: you know! / whoa!
+      - text: mbok
+        ar_eg: ما تـ… (حثّ لطيف)
+        ar: هلّا… (حثّ لطيف)
+        en: why don't you… (gentle nudge)
+      - text: mulih
+        ar_eg: يروّح البيت
+        ar: يعود إلى البيت
+        en: go home
+      - text: minyak wangi
+        ar_eg: برفان
+        ar: عطر
+        en: perfume
+    words: [ta, ae, lho, mbok, mulih, minyak wangi]
   - id: e06
     type: speaking
-    text: Kok larang, Cak?
+    text: Lho, minyak wangine kok larang, Cak?
     meaning:
-      ar_eg: غالي كده ليه يا معلم؟
-      ar: لماذا هو غالٍ هكذا يا أخي؟
-      en: How come it's so expensive, brother?
-    words: [kok, larang]
+      ar_eg: إيه ده، البرفان غالي كده ليه يا معلم؟
+      ar: يا للعجب، لماذا العطر غالٍ هكذا يا أخي؟
+      en: Whoa, how come the perfume's so expensive, Cak?
+    words: [lho, minyak wangi, kok, larang, cak]
+  - id: e07
+    type: multiple_choice
+    question: Mbok mulih sek.
+    question_meaning:
+      ar_eg: مامة صاحبك قالتلك كده بالليل. تقصد إيه بالإندونيسي؟
+      ar: قالت لك والدة صديقك هذا ليلًا. ماذا تقصد بالإندونيسية؟
+      en: Your friend's mum says this at night. What does she mean in Indonesian?
+    options: ['Pulang dulu, ya.', 'Makan dulu, ya.', 'Tidur dulu, ya.']
+    answer: 0
+    explain:
+      ar_eg: mbok = ما تـ… (حثّ لطيف)، mulih = pulang، sek = dulu.
+      ar: mbok للحثّ اللطيف، وmulih = pulang، وsek = dulu.
+      en: mbok is a gentle nudge, mulih = pulang, sek = dulu.
+    words: [mbok, mulih, sek]
 dialogue:
   title: Minyak wangi nang Ampel
   lines:

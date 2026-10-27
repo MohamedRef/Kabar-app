@@ -117,14 +117,6 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: tuku
-        ar_eg: يشتري (beli)
-        ar: يشتري (beli)
-        en: buy (beli)
-      - text: lapor
-        ar_eg: يبلّغ (lapor)
-        ar: يُبلغ (lapor)
-        en: report (lapor)
       - text: takon
         ar_eg: يسأل (tanya)
         ar: يسأل (tanya)
@@ -135,9 +127,21 @@ exercises:
         en: wait (tunggu)
       - text: ngomong
         ar_eg: يتكلم / يقول (bicara)
-        ar: يتكلم / يقول (bicara)
-        en: speak, say (bicara)
-    words: [tuku, lapor, takon, tunggu, ngomong]
+        ar: يتكلم (bicara)
+        en: talk, say (bicara)
+      - text: terke
+        ar_eg: يوصّل (antar)
+        ar: يوصِل (antar)
+        en: take, drop off (antar)
+      - text: layang
+        ar_eg: جواب، رسالة (surat)
+        ar: رسالة (surat)
+        en: letter (surat)
+      - text: pusat
+        ar_eg: الإدارة (pusat)
+        ar: المركز الرئيسي (pusat)
+        en: head office (pusat)
+    words: [takon, tunggu, ngomong, terke, layang, pusat]
   - id: e02
     type: multiple_choice
     question: Sek, tak lapor pusat.
@@ -154,10 +158,14 @@ exercises:
     words: [lapor]
   - id: e03
     type: listen
-    text: Tak tunggu, ya.
-    options: ['Ditunggu, ya.', 'Tak tuku, ya.', 'Tak tunggu, ya.']
-    answer: 2
-    words: [tunggu]
+    text: Tak terke, ya.
+    options: ['Tak terke, ya.', 'Tak tunggu, ya.', 'Tak takon, ya.', 'Tak tuku, ya.']
+    answer: 0
+    meaning:
+      ar_eg: هوصّلك، ماشي؟
+      ar: سأوصلك، اتفقنا؟
+      en: I'll take you there, OK?
+    words: [terke, tunggu, takon, tuku]
   - id: e04
     type: fill_blank
     sentence: Kurmane wis ___ Mohamed.
@@ -173,22 +181,36 @@ exercises:
       en: 'The doer is a name after the verb, so use di-: dituku Mohamed = dibeli Mohamed.'
     words: [tuku]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: استنى، هبلّغ الإدارة.
-      ar: انتظر، سأبلغ المركز.
-      en: Hold on, I'll report to HQ.
-    answer: Sek, tak lapor pusat.
-    distractors: [tidak, kok]
-    words: [sek, lapor]
+    type: listen
+    text: Sek, tak lapor pusat. Tunggu, ya.
+    options: ['Sek, tak lapor pusat. Tunggu, ya.', 'Sek, tak takon pusat. Tunggu, ya.', 'Sek, tak terke layange. Tunggu, ya.']
+    answer: 0
+    meaning:
+      ar_eg: استنى، هبلّغ الإدارة. استنى شوية.
+      ar: لحظة، سأبلغ المركز. انتظر قليلًا.
+      en: Hang on, I'll report to head office. Please wait.
+    words: [sek, lapor, pusat, tunggu, takon, terke, layang]
   - id: e06
     type: speaking
-    text: Iya, tak tuku, Pak. Matur nuwun.
+    text: Iya, tak tuku. Ngomong karo pusat sek, ya.
     meaning:
-      ar_eg: أيوه، هاخده يا حاج. شكرًا.
-      ar: نعم، سأشتريه يا سيدي. شكرًا.
-      en: Yes, I'll buy it, sir. Thank you.
-    words: [tuku]
+      ar_eg: أيوه، هاخده. كلّم الإدارة الأول، ماشي؟
+      ar: نعم، سأشتريه. تحدّث مع المركز أولًا، اتفقنا؟
+      en: Yes, I'll buy it. Check with head office first, OK?
+    words: [tuku, ngomong, karo, pusat, sek]
+  - id: e07
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي كلمة معناها «جواب / رسالة»؟
+      ar: أيّ كلمة تعني «رسالة»؟
+      en: Which word means "letter"?
+    options: [layang, lapor, ngomong, terke]
+    answer: 0
+    explain:
+      ar_eg: layang = surat. lapor = يبلّغ، ngomong = يتكلم، terke = يوصّل.
+      ar: layang = surat، وlapor = يبلّغ، وngomong = يتكلم، وterke = يوصِل.
+      en: layang = surat; lapor = report, ngomong = talk, terke = take someone.
+    words: [layang, lapor, ngomong, terke]
 dialogue:
   title: Kurma nang Ampel
   lines:

@@ -92,27 +92,31 @@ exercises:
   - id: e02
     type: match_pairs
     pairs:
-      - text: sapa
-        ar_eg: siapa (مين)
-        ar: siapa (مَن)
-        en: siapa
-      - text: ngendi
-        ar_eg: mana (فين)
-        ar: mana (أين)
-        en: mana
+      - text: ngapa
+        ar_eg: kenapa (ليه)
+        ar: kenapa (لماذا)
+        en: kenapa (why)
+      - text: lapo
+        ar_eg: kenapa (ليه، سورابايا)
+        ar: kenapa (لماذا، سورابايا)
+        en: kenapa (why, Surabaya)
+      - text: yok opo
+        ar_eg: bagaimana (إزاي، سورابايا)
+        ar: bagaimana (كيف، سورابايا)
+        en: bagaimana (how, Surabaya)
       - text: piye
         ar_eg: bagaimana (إزاي)
         ar: bagaimana (كيف)
-        en: bagaimana
+        en: bagaimana (how)
+      - text: rega
+        ar_eg: harga (سعر)
+        ar: harga (سعر)
+        en: harga (price)
       - text: pira
         ar_eg: berapa (كام)
         ar: berapa (كم)
-        en: berapa
-    explain:
-      ar_eg: وصّل كل كلمة جاوي بتوأمها الإندونيسي.
-      ar: صِل كل كلمة جاوية بنظيرها الإندونيسي.
-      en: Match each Javanese word with its Indonesian twin.
-    words: [sapa, ngendi, piye, pira]
+        en: berapa (how much)
+    words: [ngapa, lapo, yok opo, piye, rega, pira]
   - id: e03
     type: multiple_choice
     question_meaning:
@@ -137,14 +141,15 @@ exercises:
     answers: [pira]
     words: [rega, pira]
   - id: e05
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: بكام؟
-      ar: بكم؟
-      en: How much is it?
-    answers: ["Regane pira?", Regane pira, "Regane piro?", Regane piro]
-    words: [rega, pira]
+    type: listen
+    text: Yok opo kabare, rek?
+    options: ['Yok opo kabare, rek?', 'Lapo koen, rek?', 'Piye kabare, rek?']
+    answer: 0
+    meaning:
+      ar_eg: إزيكم يا جدعان؟ (سورابايا)
+      ar: كيف حالكم يا رفاق؟ (سورابايا)
+      en: How's it going, guys? (Surabaya)
+    words: [yok opo, kabare, lapo, piye]
   - id: e06
     type: translate
     direction: from_target
@@ -166,6 +171,30 @@ exercises:
       ar: ما بك؟ / ماذا تفعل؟
       en: What's up? / What are you doing?
     words: [ngapa]
+  - id: e08
+    type: multiple_choice
+    question: Yok opo?
+    question_meaning:
+      ar_eg: في سورابايا حد قالك «Yok opo?». معناها إيه بالجاوي العادي؟
+      ar: في سورابايا قال لك أحدهم «Yok opo?». ما معناها في الجاوية العامة؟
+      en: In Surabaya someone says "Yok opo?". What is it in standard Javanese?
+    options: ['Piye?', 'Pira?', 'Sapa?']
+    answer: 0
+    explain:
+      ar_eg: yok opo بتاعة سورابايا = piye = إزاي.
+      ar: yok opo في سورابايا = piye = كيف.
+      en: Surabaya yok opo = piye = how.
+    words: [yok opo, piye, pira, sapa]
+  - id: e09
+    type: listen
+    text: Regane pira, Cak?
+    options: ['Regane pira, Cak?', 'Jenenge sapa, Cak?', 'Omahe ngendi, Cak?']
+    answer: 0
+    meaning:
+      ar_eg: بكام يا معلم؟
+      ar: بكم السعر يا أخي؟
+      en: How much is it, Cak?
+    words: [rega, pira]
 dialogue:
   lines:
     - speaker: Cak Heru

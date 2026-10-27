@@ -68,18 +68,6 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: saka
-        ar_eg: من (= dari)
-        ar: من (= dari)
-        en: from (= dari)
-      - text: kene
-        ar_eg: هنا (= sini)
-        ar: هنا (= sini)
-        en: here (= sini)
-      - text: kana
-        ar_eg: هناك بعيد (= sana)
-        ar: هنالك (= sana)
-        en: over there (= sana)
       - text: ngarep
         ar_eg: قدام (= depan)
         ar: أمام (= depan)
@@ -88,7 +76,23 @@ exercises:
         ar_eg: ورا (= belakang)
         ar: خلف (= belakang)
         en: behind (= belakang)
-    words: [saka, kene, kana, ngarep, mburi]
+      - text: jejere
+        ar_eg: جنب (= sebelah)
+        ar: بجانب (= sebelah)
+        en: next to (= sebelah)
+      - text: ngiwa
+        ar_eg: يخش شمال
+        ar: ينعطف يسارًا
+        en: turn left
+      - text: nengen
+        ar_eg: يخش يمين
+        ar: ينعطف يمينًا
+        en: turn right
+      - text: kebun binatang
+        ar_eg: جنينة الحيوانات
+        ar: حديقة الحيوان
+        en: zoo
+    words: [ngarep, mburi, jejere, ngiwa, nengen, kebun binatang]
   - id: e02
     type: multiple_choice
     question: ng prabowo?
@@ -119,14 +123,15 @@ exercises:
     distractors: [nengen, saka]
     words: [lurus, terus, ngiwa]
   - id: e05
-    type: translate
-    direction: from_target
-    source_text: Warunge nang ngarep stasiun.
-    answers_meaning:
-      ar_eg: [المحل قدام المحطة, المحل قدام المحطة., الكشك قدام المحطة, المطعم قدام المحطة]
-      ar: [الكشك أمام المحطة, المحل أمام المحطة, المطعم أمام المحطة]
-      en: [The stall is in front of the station, The warung is in front of the station, The stall is in front of the station., The shop is in front of the station]
-    words: [ngarep, nang]
+    type: listen
+    text: Kebun binatange nang mburi masjid.
+    options: [Kebun binatange nang mburi masjid., Kebun binatange nang jejere masjid., Kebun binatange nang ngarep masjid.]
+    answer: 0
+    meaning:
+      ar_eg: جنينة الحيوانات ورا الجامع.
+      ar: حديقة الحيوان خلف المسجد.
+      en: The zoo is behind the mosque.
+    words: [kebun binatang, mburi, jejere, ngarep, nang]
   - id: e06
     type: translate
     direction: to_target
@@ -136,6 +141,30 @@ exercises:
       en: Turn right, then go straight.
     answers: ['Nengen, terus lurus.', 'Nengen, terus lurus', Nengen terus lurus., Nengen terus lurus, 'Nengen, terus lurus wae.', 'Nengen, terus lurus wae', Nengen terus lurus wae., Nengen terus lurus wae]
     words: [nengen, terus, lurus]
+  - id: e07
+    type: multiple_choice
+    question: Lurus wae, terus ngiwa.
+    question_meaning:
+      ar_eg: معناها إيه بالإندونيسي؟
+      ar: ما معناها بالإندونيسية؟
+      en: What does it mean in Indonesian?
+    options: ['Lurus, lalu belok kiri.', 'Lurus, lalu belok kanan.', 'Belok kiri, lalu lurus.']
+    answer: 0
+    explain:
+      ar_eg: terus = lalu (وبعدين)، ngiwa = belok kiri (شمال). nengen = يمين.
+      ar: terus = lalu، وngiwa = belok kiri، وnengen = يمين.
+      en: terus = lalu (then), ngiwa = belok kiri; nengen = right.
+    words: [lurus, terus, ngiwa]
+  - id: e08
+    type: fill_blank
+    sentence: Kebun binatang? Saka kene ___, terus lurus.
+    meaning:
+      ar_eg: جنينة الحيوانات؟ من هنا خش يمين، وبعدين على طول.
+      ar: حديقة الحيوان؟ من هنا انعطف يمينًا، ثم سر مستقيمًا.
+      en: The zoo? From here turn right, then go straight.
+    options: [nengen, mburi, jejere]
+    answers: [nengen]
+    words: [kebun binatang, nengen, terus, lurus]
 dialogue:
   title: Nang stasiun Wonokromo
   lines:

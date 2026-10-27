@@ -12,12 +12,14 @@ use kabar_core::ai::tasks::{LineTranslation, TranslateText};
 use kabar_core::lang::Lang;
 use kabar_core::locale::UiLanguage;
 use kabar_core::reader::translate::{self, MAX_CHARS, MAX_LINES};
+use kabar_core::settings::TranslationMode;
 use kabar_protocol::ai::Task;
 
 use super::ReaderState;
 use super::doc::{ReadDoc, SegKind};
 use crate::Ui;
 use crate::account::Cloud;
+use crate::annotated::text::{T, tt};
 use crate::i18n::Msg;
 use crate::teach::Ai;
 
@@ -143,6 +145,7 @@ fn failure(r: FriendlyReason) -> Msg {
 /// the second time, offline too.
 pub fn use_translation(st: ReaderState) {
     let retry = st.retry;
+    let ui = consume_context::<Ui>();
     let ai = try_consume_context::<Ai>();
     let cloud = try_consume_context::<Cloud>();
     // Only a different text (or a retry) starts over, not a re-read of this one.
@@ -153,6 +156,8 @@ pub fn use_translation(st: ReaderState) {
     use_resource(move || {
         let ai = ai.clone();
         let mut translated = st.translated;
+        // Off spends no quota; turning it back on starts again (from cache).
+        let off = ui.settings.read().translation == TranslationMode::Off;
         async move {
             let Some((text_id, _, _)) = key.read().clone() else { return };
             let Some(doc) = st.open.peek().as_ref().map(|o| o.doc.clone()) else { return };
@@ -169,6 +174,9 @@ pub fn use_translation(st: ReaderState) {
                 unverified: lang == Lang::Javanese,
                 fallback,
             });
+            if off {
+                return;
+            }
             let Some(ai) = ai else {
                 translated.write().progress = Progress::Failed(Msg::TranslationNeedsCloud);
                 return;
@@ -218,6 +226,9 @@ pub fn use_translation(st: ReaderState) {
 pub fn TranslationStatus() -> Element {
     let ui = use_context::<Ui>();
     let st = use_context::<ReaderState>();
+    if ui.settings.read().translation == TranslationMode::Off {
+        return rsx! {};
+    }
     let (msg, busy, failed, unverified) = {
         let t = st.translated.read();
         let (msg, busy, failed) = match &t.progress {
@@ -249,11 +260,13 @@ pub fn TranslationStatus() -> Element {
 }
 
 /// The line under one segment: its translation, a placeholder while it's
-/// coming, or the word-by-word fallback.
+/// coming, or the word-by-word fallback. Follows the translation setting:
+/// Tap keeps each line behind a "what does it mean?" chip, Off shows none.
 #[component]
 pub fn LineUnder(seg: usize) -> Element {
     let ui = use_context::<Ui>();
     let st = use_context::<ReaderState>();
+    let mut revealed = use_signal(|| false);
     // Each line re-renders only when what it shows changes, not on every
     // chunk that lands elsewhere in the text.
     let under = use_memo(move || {
@@ -268,6 +281,17 @@ pub fn LineUnder(seg: usize) -> Element {
         }
     });
     let lang = st.voice.read().tag();
+    match ui.settings.read().translation {
+        TranslationMode::Off => return rsx! {},
+        TranslationMode::Tap if !revealed() => {
+            return rsx! {
+                button { class: "annot-reveal tr-reveal", onclick: move |_| revealed.set(true),
+                    "{tt(ui.lang(), T::ShowTranslation)}"
+                }
+            };
+        }
+        _ => {}
+    }
     match under() {
         Under::Line(text) => rsx! {
             p { class: "tr-line", lang, dir: "auto", "{text}" }

@@ -150,14 +150,10 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: koen
+      - text: awakmu
         ar_eg: إنت (= kowe)
         ar: أنت (= kowe)
         en: you (= kowe)
-      - text: gak
-        ar_eg: مش (= ora)
-        ar: لا / ليس (= ora)
-        en: not (= ora)
       - text: onok
         ar_eg: فيه (= ana)
         ar: يوجد (= ana)
@@ -166,11 +162,19 @@ exercises:
         ar_eg: هـ / ناوي (= arep)
         ar: سوف (= arep)
         en: going to (= arep)
-      - text: yok opo
-        ar_eg: إزاي (= piye)
-        ar: كيف (= piye)
-        en: how (= piye)
-    words: [koen, gak, onok, kate, yok opo]
+      - text: teko
+        ar_eg: من (= saka)
+        ar: مِن (= saka)
+        en: from (= saka)
+      - text: koen
+        ar_eg: إنت (= kowe)
+        ar: أنت (= kowe)
+        en: you (= kowe)
+      - text: gak
+        ar_eg: مش (= ora)
+        ar: لا (= ora)
+        en: not (= ora)
+    words: [awakmu, onok, kate, teko, koen, gak]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -187,23 +191,23 @@ exercises:
   - id: e03
     type: listen
     text: Yok opo kabare?
-    options: ['Yok opo kabare?', 'Piye kabare?', 'Lapo koen?']
+    options: ['Yok opo kabare?', 'Onok opo, rek?', 'Awakmu teko endi?']
     answer: 0
-    words: [yok opo, kabar]
+    words: [yok opo, kabar, onok, awakmu, teko]
   - id: e04
     type: fill_blank
-    sentence: ___ kabare, rek?
+    sentence: Awakmu ___ endi?
     meaning:
-      ar_eg: أخباركم إيه يا جماعة؟ (Arek)
-      ar: كيف حالكم يا جماعة؟ (Arek)
-      en: How are you, guys? (Arek)
-    options: [Lapo, Yok opo, Kate]
-    answers: [Yok opo]
+      ar_eg: إنت منين؟ (Arek)
+      ar: من أين أنت؟ (Arek)
+      en: Where are you from? (Arek)
+    options: [teko, kate, onok]
+    answers: [teko]
     explain:
-      ar_eg: yok opo = piye (إزاي). lapo = ليه، kate = هـ.
-      ar: yok opo = piye (كيف)، أما lapo فلماذا، وkate سوف.
-      en: yok opo = piye (how). lapo = why, kate = going to.
-    words: [yok opo]
+      ar_eg: teko = saka (من). kate = هـ، onok = فيه.
+      ar: teko = saka (مِن)، وkate = سوف، وonok = يوجد.
+      en: teko = saka (from); kate = going to, onok = there is.
+    words: [awakmu, teko]
   - id: e05
     type: build_sentence
     source:
@@ -215,12 +219,12 @@ exercises:
     words: [kate, nang, endi, cak]
   - id: e06
     type: speaking
-    text: Yok opo kabare, rek?
+    text: Onok kopi, rek? Aku kate tuku.
     meaning:
-      ar_eg: أخباركم إيه يا جماعة؟
-      ar: كيف حالكم يا جماعة؟
-      en: How are you, guys?
-    words: [yok opo, rek]
+      ar_eg: فيه قهوة يا جماعة؟ أنا عايز أشتري.
+      ar: هل توجد قهوة يا رفاق؟ أريد أن أشتري.
+      en: Is there coffee, guys? I'm going to buy some.
+    words: [onok, kopi, rek, kate, tuku]
 dialogue:
   title: Nang Kenjeran
   lines:

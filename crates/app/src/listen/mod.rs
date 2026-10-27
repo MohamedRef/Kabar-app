@@ -12,7 +12,7 @@ use std::sync::LazyLock;
 use dioxus::prelude::*;
 use kabar_core::journey::Progress;
 use kabar_core::lesson::pick;
-use kabar_core::locale::{UiLanguage, eastern_arabic_digits};
+use kabar_core::locale::UiLanguage;
 use kabar_core::story::{Program, parse_radio, parse_story, quiz, unlocked};
 use kabar_protocol::coach::{ActivityKind, Skill};
 use kabar_protocol::story::{RadioEpisode, Story};
@@ -68,8 +68,7 @@ enum Open {
 
 /// "3.4 MB", in the UI's digits.
 fn megabytes(ui: &Ui, bytes: u64) -> String {
-    let s = format!("{:.1} MB", bytes as f64 / 1_000_000.0);
-    if ui.eastern() { eastern_arabic_digits(&s) } else { s }
+    ui.digits(&format!("{:.1} MB", bytes as f64 / 1_000_000.0))
 }
 
 #[component]

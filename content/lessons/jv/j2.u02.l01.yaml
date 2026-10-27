@@ -111,27 +111,31 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: nulis
-        ar_eg: يكتب
-        ar: يكتب
-        en: write
-      - text: maca
-        ar_eg: يقرا
-        ar: يقرأ
-        en: read
-      - text: ngombe
-        ar_eg: يشرب
-        ar: يشرب
-        en: drink
       - text: nyapu
         ar_eg: يكنس
         ar: يكنس
         en: sweep
-      - text: nggawe
-        ar_eg: يعمل / يصنع
-        ar: يصنع
-        en: make
-    words: [nulis, maca, ngombe, nyapu, nggawe]
+      - text: ngirim
+        ar_eg: يبعت
+        ar: يرسل
+        en: send
+      - text: mikir
+        ar_eg: يفكر
+        ar: يفكر
+        en: think
+      - text: njupuk
+        ar_eg: ياخد
+        ar: يأخذ
+        en: take
+      - text: seneng
+        ar_eg: يحب / مبسوط
+        ar: يحب / سعيد
+        en: like, happy
+      - text: ngombe
+        ar_eg: يشرب
+        ar: يشرب
+        en: drink
+    words: [nyapu, ngirim, mikir, njupuk, seneng, ngombe]
   - id: e02
     type: multiple_choice
     question: N- + tulis → ?
@@ -149,9 +153,9 @@ exercises:
   - id: e03
     type: listen
     text: Bapak ngombe kopi.
-    options: [Bapak ngombe kopi., Bapak tuku kopi., Bapak nggawe kopi.]
+    options: [Bapak ngombe kopi., Bapak tuku kopi., Bapak nggawe kopi., Bapak njupuk kopi.]
     answer: 0
-    words: [ngombe, kopi]
+    words: [ngombe, kopi, nggawe, njupuk]
   - id: e04
     type: fill_blank
     sentence: Bukune wis di___.
@@ -167,30 +171,63 @@ exercises:
       en: di- takes the base waca, not maca — like dibaca, not dimembaca.
     words: [waca, maca]
   - id: e05
-    type: build_sentence
-    source:
+    type: fill_blank
+    sentence: Aku lagi ___ layang.
+    meaning:
       ar_eg: أنا بكتب جواب.
       ar: أنا أكتب رسالة.
       en: I'm writing a letter.
-    answer: Aku lagi nulis layang.
-    distractors: [tulis, kowe]
+    options: [nulis, mikir, nyapu]
+    answers: [nulis]
+    explain:
+      ar_eg: nulis = N- + tulis، زي menulis.
+      ar: nulis = N- + tulis، مثل menulis.
+      en: nulis = N- + tulis, like menulis.
     words: [nulis, layang]
   - id: e06
-    type: dictation
-    text: Aku seneng maca buku.
+    type: listen
+    text: Aku seneng nulis layang.
+    options: ['Aku seneng nulis layang.', 'Aku arep ngirim layang.', 'Aku lagi mikir.']
+    answer: 0
     meaning:
-      ar_eg: أنا بحب القراية.
-      ar: أحب قراءة الكتب.
-      en: I like reading books.
-    words: [seneng, maca]
+      ar_eg: أنا بحب أكتب جوابات.
+      ar: أحب كتابة الرسائل.
+      en: I like writing letters.
+    words: [seneng, nulis, layang, ngirim, mikir]
   - id: e07
     type: speaking
-    text: Ibu nggawe sambel pecel.
+    text: Aku seneng ngombe kopi. Ibu nggawe sambel, bapak nyapu.
     meaning:
-      ar_eg: ماما بتعمل صوص البيتشل.
-      ar: أمي تصنع صلصة البيتشل.
-      en: Mum is making pecel sauce.
-    words: [nggawe, sambel]
+      ar_eg: أنا بحب أشرب قهوة. ماما بتعمل الصوص، وبابا بيكنس.
+      ar: أحب شرب القهوة. أمي تصنع الصلصة، وأبي يكنس.
+      en: I like drinking coffee. Mum makes the sambal, Dad sweeps.
+    words: [seneng, ngombe, nggawe, sambel, nyapu]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي فعل معناه «يفكر»؟
+      ar: أيّ فعل يعني «يفكر»؟
+      en: Which verb means "think"?
+    options: [mikir, ngirim, nyapu, njupuk]
+    answer: 0
+    explain:
+      ar_eg: mikir ← pikir (p بتبقى m). ngirim = يبعت، nyapu = يكنس، njupuk = ياخد.
+      ar: mikir من pikir (تصير p ‏m)، وngirim = يرسل، وnyapu = يكنس، وnjupuk = يأخذ.
+      en: mikir comes from pikir (p becomes m); ngirim = send, nyapu = sweep, njupuk = take.
+    words: [mikir, ngirim, nyapu, njupuk]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي فعل معناه «يعمل / يصنع»؟
+      ar: أيّ فعل يعني «يصنع»؟
+      en: Which verb means "make"?
+    options: [njupuk, nggawe, mikir]
+    answer: 1
+    explain:
+      ar_eg: nggawe ← gawe (قبل g بتيجي ng).
+      ar: nggawe من gawe (قبل g تأتي ng).
+      en: nggawe comes from gawe (ng goes before g).
+    words: [nggawe, njupuk, mikir]
 dialogue:
   title: Layang saka Caruban
   lines:

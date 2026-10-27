@@ -109,11 +109,14 @@ pub fn MacSection() -> Element {
     let prefs = use_context::<DevicePrefs>();
     let lang = ui.lang();
     let hover = *prefs.mouse_hover.read();
-    let rows: [(S, &[&str]); 5] = [
+    let rows: [(S, &[&str]); 8] = [
         (S::ShortcutSettings, &["⌘", ","]),
         (S::ShortcutScreens, &["⌘1", "…", "⌘7"]),
         (S::ShortcutPick, &["1", "2", "3"]),
         (S::ShortcutCheck, &["Return"]),
+        (S::ShortcutReveal, &["Space"]),
+        (S::ShortcutRate, &["1", "…", "4"]),
+        (S::ShortcutHelp, &["?"]),
         (S::ShortcutClose, &["Esc"]),
     ];
 

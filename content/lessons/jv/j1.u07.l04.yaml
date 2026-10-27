@@ -138,27 +138,31 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: tukokke
-        ar_eg: يشتري لحد (belikan)
-        ar: يشتري لغيره (belikan)
-        en: buy for someone (belikan)
+      - text: jupuk
+        ar_eg: ياخد (ambil)
+        ar: يأخذ (ambil)
+        en: take (ambil)
       - text: jupukke
         ar_eg: يجيب لحد (ambilkan)
-        ar: يُحضر لغيره (ambilkan)
+        ar: يُحضر لأحد (ambilkan)
         en: fetch for someone (ambilkan)
+      - text: tukokke
+        ar_eg: يشتري لحد (belikan)
+        ar: يشتري لأحد (belikan)
+        en: buy for someone (belikan)
+      - text: ucul
+        ar_eg: يتفك / يفلت (lepas)
+        ar: يفلت (lepas)
+        en: come loose, slip (lepas)
       - text: diculke
         ar_eg: يتساب / يتباع (dilepas)
         ar: يُترك / يُباع (dilepas)
-        en: let go, sold off (dilepas)
-      - text: terke
-        ar_eg: يوصّل حد (antarkan)
-        ar: يُوصل أحدًا (antarkan)
-        en: take someone (antarkan)
-      - text: mulih
-        ar_eg: يروّح البيت (pulang)
-        ar: يعود إلى البيت (pulang)
-        en: go home (pulang)
-    words: [tukokke, jupukke, diculke, terke, mulih]
+        en: let go, sold (dilepas)
+      - text: HP
+        ar_eg: موبايل
+        ar: هاتف محمول
+        en: mobile phone
+    words: [jupuk, jupukke, tukokke, ucul, diculke, HP]
   - id: e02
     type: multiple_choice
     question: arp dicul piro
@@ -203,21 +207,23 @@ exercises:
     distractors: [tuku, diculke]
     words: [tak, tukokke, kopi]
   - id: e06
-    type: dictation
-    text: arp dicul piro
+    type: listen
+    text: Sek, HP-ne tak jupuk.
+    options: ['Sek, HP-ne tak jupuk.', 'Sek, HP-ne tak tukokke.', 'Sek, HP-ne ucul.']
+    answer: 0
     meaning:
-      ar_eg: ناوي تبيعه بكام؟ (شات)
-      ar: بكم ستبيعه؟ (دردشة)
-      en: How much will you sell it for? (chat)
-    words: [diculke]
+      ar_eg: استنى، هاخد الموبايل.
+      ar: لحظة، سآخذ الهاتف.
+      en: Hang on, I'll grab the phone.
+    words: [sek, HP, jupuk, tukokke, ucul]
   - id: e07
     type: speaking
-    text: Tak tukokke kopi, ya.
+    text: Aduh, HP-ku ucul! Tak jupuk sek.
     meaning:
-      ar_eg: هجيبلك قهوة، ماشي؟
-      ar: سأشتري لك قهوة، حسنًا؟
-      en: I'll buy you a coffee, OK?
-    words: [tukokke]
+      ar_eg: يا خبر، الموبايل وقع مني! هجيبه الأول.
+      ar: يا للمصيبة، أفلتَ الهاتف من يدي! سألتقطه أولًا.
+      en: Oh no, my phone slipped! Let me grab it first.
+    words: [HP, ucul, jupuk, sek]
 dialogue:
   title: HP-ne Cak Heru
   lines:
