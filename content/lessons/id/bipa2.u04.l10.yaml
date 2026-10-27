@@ -79,7 +79,7 @@ exercises:
     words: [merah muda, persen, sentimeter]
   - id: e03
     type: listen
-    text: Ada diskon dua puluh persen untuk nanas.
+    text: Nanasnya sudah habis, tapi ada diskon dua puluh persen untuk pisang.
     question:
       ar_eg: الخصم كام؟
       ar: كم الخصم؟
@@ -87,10 +87,10 @@ exercises:
     options: [٢٠٪, ١٢٪, ٢٪]
     answer: 0
     meaning:
-      ar_eg: فيه خصم عشرين في المية على الأناناس.
-      ar: هناك خصم عشرين بالمئة على الأناناس.
-      en: There's twenty percent off pineapples.
-    words: [persen, nanas]
+      ar_eg: الأناناس خلص، بس فيه خصم عشرين في المية على الموز.
+      ar: نفد الأناناس، لكن هناك خصم عشرين بالمئة على الموز.
+      en: The pineapples are sold out, but there's twenty percent off bananas.
+    words: [habis, persen, nanas, pisang]
   - id: e04
     type: fill_blank
     sentence: Terong ini warnanya ___.
@@ -135,16 +135,16 @@ exercises:
   - id: e07
     type: build_sentence
     source:
-      ar_eg: الموز ده حلو أوي!
-      ar: هذا الموز لذيذ جدًا!
-      en: This banana is so good!
-    answer: Pisang ini enak sekali!
+      ar_eg: آسف، الموز خلص.
+      ar: عذرًا، نفد الموز.
+      en: Sorry, the bananas are sold out.
+    answer: Maaf, pisangnya sudah habis.
     distractors: [nanas, ungu]
-    words: [pisang]
+    words: [pisang, habis]
     explain:
-      ar_eg: pisang = موز، وenak sekali = حلو أوي. nanas أناناس، وungu لون.
-      ar: pisang = موز، وenak sekali = لذيذ جدًا. أما nanas فأناناس وungu لون.
-      en: pisang = banana, enak sekali = really good. nanas is pineapple, ungu purple.
+      ar_eg: "sudah habis = خلص (اتباع كله). وفي الشارع بيقولوا abis: udah abis!"
+      ar: "sudah habis = نفد. وفي العامية abis: udah abis!"
+      en: "sudah habis = sold out, all gone. On the street it's abis: udah abis!"
   - id: e08
     type: translate
     direction: from_target
@@ -156,12 +156,12 @@ exercises:
     words: [terong, ungu, sentimeter]
   - id: e09
     type: speaking
-    text: Saya mau dua ikat pisang dan sebuah nanas.
+    text: Nanasnya sudah habis? Saya mau dua ikat pisang saja.
     meaning:
-      ar_eg: عايز سباطتين موز وأناناساية.
-      ar: أريد عنقودين من الموز وحبّة أناناس.
-      en: I'd like two bunches of bananas and a pineapple.
-    words: [pisang, nanas]
+      ar_eg: الأناناس خلص؟ خلاص، عايز سباطتين موز بس.
+      ar: نفد الأناناس؟ إذن أريد عنقودين من الموز فقط.
+      en: The pineapples are sold out? Then just two bunches of bananas.
+    words: [habis, pisang, nanas]
   - id: e10
     type: multiple_choice
     question_meaning:
@@ -243,6 +243,11 @@ new_words:
     ar_eg: سنتيمتر
     ar: سنتيمتر
     en: centimetre
+  - word: habis / abis
+    pos: adjective
+    ar_eg: خلص، نفد (sudah habis = خلص خالص)؛ في الشارع abis
+    ar: نفد، انتهى (sudah habis = نفد)؛ وفي العامية abis
+    en: finished, sold out, used up (sudah habis = all gone); on the street abis
 review:
   status: draft
   verified: false
