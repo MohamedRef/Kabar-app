@@ -98,14 +98,29 @@ exercises:
     distractors: [tahap, letusan]
     words: [magma]
   - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: أنهي كلمة أنسب لبداية آخر مرحلة؟
-      ar: أيّ كلمة أنسب لافتتاح المرحلة الأخيرة؟
-      en: Which word best opens the final stage?
-    options: [Pertama, Kemudian, Akhirnya]
-    answer: 2
-    words: [tahap]
+    type: match_pairs
+    pairs:
+      - text: asteroid
+        ar_eg: كويكب
+        ar: كويكب
+        en: asteroid
+      - text: diameter
+        ar_eg: قطر
+        ar: قُطر
+        en: diameter
+      - text: migrasi
+        ar_eg: هجرة
+        ar: هجرة
+        en: migration
+      - text: berevolusi
+        ar_eg: يتطور
+        ar: يتطوّر
+        en: to evolve
+      - text: genetika
+        ar_eg: علم الوراثة
+        ar: علم الوراثة
+        en: genetics
+    words: [asteroid, diameter, migrasi, berevolusi, genetika]
   - id: e07
     type: translate
     direction: to_target

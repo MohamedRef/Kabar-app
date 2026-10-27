@@ -96,17 +96,29 @@ exercises:
     distractors: [pesanan, konfirmasi]
     words: [penawaran]
   - id: e06
-    type: multiple_choice
-    question_meaning:
-      ar_eg: في «Pesanan Anda sudah kami terima»، pesanan معناها إيه؟
-      ar: ما معنى pesanan في «Pesanan Anda sudah kami terima»؟
-      en: In "Pesanan Anda sudah kami terima", what does pesanan mean?
-    options:
-      - رسالتك.
-      - عرضك.
-      - طلبيتك.
-    answer: 2
-    words: [pesanan]
+    type: match_pairs
+    pairs:
+      - text: pendanaan
+        ar_eg: تمويل
+        ar: تمويل
+        en: funding
+      - text: berinvestasi
+        ar_eg: يستثمر
+        ar: يستثمر
+        en: to invest
+      - text: melunasi
+        ar_eg: يسدّ الدين كله
+        ar: يسدّد كاملًا
+        en: to pay off in full
+      - text: katalog
+        ar_eg: كتالوج
+        ar: كتالوج، فهرس
+        en: catalogue
+      - text: porsi
+        ar_eg: حصة، طبق
+        ar: حصّة
+        en: portion, serving
+    words: [pendanaan, berinvestasi, melunasi, katalog, porsi]
   - id: e07
     type: translate
     direction: to_target

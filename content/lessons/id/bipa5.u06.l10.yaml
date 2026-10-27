@@ -1,0 +1,168 @@
+schema: kabar.lesson/v1
+id: bipa5.u06.l10
+language: id
+title: Menulis ulasan
+can_do:
+  ar_eg: تكتب نقد قصير لعرض فني، فيه مدح ونقد وحكم في الآخر.
+  ar: أن تكتب مراجعة قصيرة لعرض فنّي فيها مديح ونقد وحكم ختامي.
+  en: Write a short review of a show with praise, criticism and a verdict.
+slides:
+  - title: Kerangka ulasan
+    grammar: id.prefix.memper
+    body:
+      ar_eg: |
+        النقد الكويس 4 جمل:
+        1. إيه العرض وفين: Tadi malam, Sanggar Enggang mempertunjukkan …
+        2. المدح: Yang paling saya sukai adalah … = أكتر حاجة عجبتني …
+        3. النقد بأدب: Sayangnya, … sebaiknya diperbaiki. = للأسف، … ياريت يتصلّح.
+        4. الحكم: Secara keseluruhan, …
+        خد بالك، diperbaiki وmempertunjukkan من أفعال memper- اللي اتعلمتها.
+      ar: |
+        المراجعة الجيّدة أربع جمل:
+        1. ما العرض وأين: Tadi malam, Sanggar Enggang mempertunjukkan …
+        2. المديح: Yang paling saya sukai adalah … = أكثر ما أعجبني …
+        3. النقد بلطف: Sayangnya, … sebaiknya diperbaiki. = للأسف … حبّذا لو أُصلح.
+        4. الحكم: Secara keseluruhan, …
+        ولاحظ أنّ diperbaiki وmempertunjukkan من أفعال memper- التي تعلّمتها.
+      en: |
+        A good review is four sentences:
+        1. What and where: Tadi malam, Sanggar Enggang mempertunjukkan …
+        2. Praise: Yang paling saya sukai adalah … = What I liked most was …
+        3. Polite criticism: Sayangnya, … sebaiknya diperbaiki. = Unfortunately, … should be improved.
+        4. Verdict: Secara keseluruhan, …
+        Note diperbaiki and mempertunjukkan, memper- verbs you know.
+    examples:
+      - text: Yang paling saya sukai adalah musik sape yang lembut.
+        ar_eg: أكتر حاجة عجبتني هي موسيقى السابي الهادية.
+        ar: أكثر ما أعجبني موسيقى السابي الناعمة.
+        en: What I liked most was the soft sape music.
+exercises:
+  - id: e01
+    type: match_pairs
+    pairs:
+      - text: yang paling saya sukai
+        ar_eg: أكتر حاجة عجبتني
+        ar: أكثر ما أعجبني
+        en: what I liked most
+      - text: sebaiknya
+        ar_eg: ياريت / الأحسن
+        ar: يُستحسن
+        en: should, it would be better
+      - text: penonton
+        ar_eg: جمهور
+        ar: جمهور
+        en: audience
+      - text: panggung
+        ar_eg: مسرح / خشبة
+        ar: خشبة المسرح
+        en: stage
+    words: [yang paling saya sukai, sebaiknya, penonton, panggung]
+  - id: e02
+    type: multiple_choice
+    question_meaning:
+      ar_eg: أنهي جملة نقد مؤدب؟
+      ar: أيّ جملة نقد مهذّب؟
+      en: Which is polite criticism?
+    options:
+      - Panggungnya jelek sekali.
+      - Sayangnya, panggungnya terlalu kecil dan sebaiknya diperluas.
+      - Saya benci panggungnya.
+    answer: 1
+    words: [sebaiknya, panggung]
+  - id: e03
+    type: fill_blank
+    sentence: ___ adalah kostum penari yang penuh warna.
+    meaning:
+      ar_eg: أكتر حاجة عجبتني هي لبس الراقصين المليان ألوان.
+      ar: أكثر ما أعجبني أزياء الراقصين الزاهية.
+      en: What I liked most was the dancers' colourful costumes.
+    options: [Yang paling saya sukai, Sayangnya, Sebaiknya]
+    answers: [Yang paling saya sukai]
+    words: [yang paling saya sukai]
+  - id: e04
+    type: listen
+    text: Penonton memenuhi gedung sampai tidak ada kursi kosong.
+    question:
+      ar_eg: القاعة كانت عاملة إزاي؟
+      ar: كيف كانت القاعة؟
+      en: What was the hall like?
+    options:
+      - فاضية.
+      - نصها فاضي.
+      - مليانة لدرجة إن مفيش ولا كرسي فاضي.
+    answer: 2
+    words: [penonton]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: ياريت الصوت يتصلّح.
+      ar: يُستحسن إصلاح الصوت.
+      en: The sound should be improved.
+    answer: Sebaiknya suaranya diperbaiki.
+    distractors: [penonton, memperbaiki]
+    words: [sebaiknya]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: الجمهور سقّف كتير في آخر العرض.
+      ar: صفّق الجمهور طويلًا في نهاية العرض.
+      en: The audience clapped a lot at the end of the show.
+    answers:
+      - Penonton bertepuk tangan lama di akhir pertunjukan.
+      - Penonton bertepuk tangan lama pada akhir pertunjukan.
+      - Para penonton bertepuk tangan lama di akhir pertunjukan.
+      - Penonton bertepuk tangan panjang di akhir pertunjukan.
+    words: [penonton]
+  - id: e07
+    type: dictation
+    text: Sayangnya, panggungnya terlalu kecil untuk tarian itu.
+    meaning:
+      ar_eg: للأسف، المسرح صغير قوي على الرقصة دي.
+      ar: للأسف، الخشبة أصغر من أن تتّسع لتلك الرقصة.
+      en: Unfortunately, the stage was too small for that dance.
+    words: [panggung]
+  - id: e08
+    type: speaking
+    text: Yang paling saya sukai adalah gerakan penari yang kompak.
+    meaning:
+      ar_eg: أكتر حاجة عجبتني هي حركة الراقصين المتناسقة.
+      ar: أكثر ما أعجبني حركات الراقصين المتناسقة.
+      en: What I liked most was how in sync the dancers were.
+    words: [yang paling saya sukai]
+dialogue:
+  title: Menulis untuk koran kampus
+  lines:
+    - speaker: Mohamed
+      text: Rina, tolong baca kalimat pertama ulasan saya.
+      ar_eg: يا رينا، اقري أول جملة في النقد بتاعي لو سمحتي.
+      ar: يا رينا، اقرئي أوّل جملة في مراجعتي من فضلك.
+      en: Rina, please read the first sentence of my review.
+    - speaker: Rina
+      text: Bagus. Tetapi kritiknya terlalu keras. Pakai sebaiknya.
+      ar_eg: حلوة. بس النقد شديد قوي. استخدم sebaiknya.
+      ar: جيّدة، لكنّ النقد قاسٍ. استعمل sebaiknya.
+      en: Good. But the criticism is too harsh. Use sebaiknya.
+    - speaker: Mohamed
+      text: Oke. Sayangnya, panggungnya kecil, jadi sebaiknya diperluas.
+      ar_eg: ماشي. للأسف المسرح صغير، فياريت يتوسّع.
+      ar: حسنًا. للأسف الخشبة صغيرة، فيُستحسن توسيعها.
+      en: Okay. Unfortunately the stage is small, so it should be enlarged.
+    - speaker: Rina
+      text: Nah, itu sopan. Penonton juga pasti setuju.
+      ar_eg: أهو كده مؤدب. والجمهور أكيد هيوافق.
+      ar: هكذا أكثر تهذيبًا، وسيوافق الجمهور بلا شكّ.
+      en: There, that's polite. The audience would surely agree too.
+new_words:
+  - word: yang paling saya sukai
+    ar_eg: أكتر حاجة عجبتني
+    ar: أكثر ما أعجبني
+    en: what I liked most
+  - word: panggung
+    pos: noun
+    ar_eg: مسرح / خشبة
+    ar: خشبة المسرح
+    en: stage
+review:
+  status: draft
+  verified: false

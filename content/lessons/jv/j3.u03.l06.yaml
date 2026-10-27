@@ -1,162 +1,181 @@
 schema: kabar.lesson/v1
 id: j3.u03.l06
 language: jv
-title: Ngoko dadi krama
+title: Sampeyan sampun nedha?
 can_do:
-  ar_eg: تقرا رسالة ngoko من صاحبك وتنقلها بالكراما لراجل كبير.
-  ar: أن تقرأ رسالة ngoko من صديقك وتنقلها بالكراما إلى رجل كبير.
-  en: Read a friend's ngoko message and pass it on in krama to an older man.
+  ar_eg: تسأل وترد بأدب.
+  ar: أن تسأل وتجيب بأدب.
+  en: Ask and answer politely.
 slides:
-  - title: Saka Dimas, kanggo Pak Harjo
+  - title: Ganti tembunge
     body:
       ar_eg: |
-        Dimas بعت لمحمد رسالة ngoko. Pak Harjo سأل محمد عن Dimas، فمحمد نقل له نفس الكلام بالكراما. قارن:
-        durung ← dereng، arep ← badhe، nang ← dhateng، karo ← kaliyan، pasar ← peken، uga ← ugi.
-        وعن Dimas بيقول piyambakipun (هو، بأدب).
+        النهارده الضهر في كاومان، جنب الجامع الكبير. هتسأل وترد بالكراما. السر: بدّل كل كلمة صغيرة:
+        - aku ← kula، kowe ← sampeyan
+        - wis ← sampun، durung ← dereng، arep ← badhe، isih ← taksih
+        - ora ← mboten، ana ← wonten، iya ← inggih
+        - neng ← dhateng، saka ← saking، karo ← kaliyan
+        Kowe wis mangan? ← Sampeyan sampun nedha?
       ar: |
-        أرسل Dimas إلى محمد رسالة بالـ ngoko، ثم سأل Pak Harjo محمدًا عن Dimas فنقل له الكلام نفسه بالكراما. قارن:
-        durung ← dereng، وarep ← badhe، وnang ← dhateng، وkaro ← kaliyan، وpasar ← peken، وuga ← ugi.
-        ويقول عن Dimas piyambakipun (هو، بأدب).
+        اليوم ظهرًا في كاومان قرب المسجد الكبير، ستسأل وتجيب بالكراما. والسر أن تبدّل كل لفظ صغير:
+        - aku ← kula، وkowe ← sampeyan
+        - wis ← sampun، وdurung ← dereng، وarep ← badhe، وisih ← taksih
+        - ora ← mboten، وana ← wonten، وiya ← inggih
+        - neng ← dhateng، وsaka ← saking، وkaro ← kaliyan
+        Kowe wis mangan? ← Sampeyan sampun nedha?
       en: |
-        Dimas sent Mohamed an ngoko message. When Pak Harjo asks about Dimas, Mohamed passes the same news on in krama. Compare:
-        durung → dereng, arep → badhe, nang → dhateng, karo → kaliyan, pasar → peken, uga → ugi.
-        And for Dimas he says piyambakipun (he, politely).
-    examples:
-      - text: "Dimas (ngoko): Aku durung mangan. Aku arep nang pasar karo Mohamed."
-        ar_eg: "Dimas: أنا لسه ماكلتش. أنا رايح السوق مع محمد."
-        ar: "Dimas: لم آكل بعد. سأذهب إلى السوق مع محمد."
-        en: "Dimas: I haven't eaten yet. I'm going to the market with Mohamed."
-      - text: "Mohamed (krama): Mas Dimas dereng nedha. Piyambakipun badhe dhateng peken kaliyan kula."
-        ar_eg: "محمد: Dimas لسه ماكلش. هو رايح السوق معايا."
-        ar: "محمد: لم يأكل Dimas بعد. سيذهب إلى السوق معي."
-        en: "Mohamed: Dimas hasn't eaten yet. He's going to the market with me."
-      - text: Kula ugi dereng nedha, Pak.
-        ar_eg: وأنا كمان لسه ماكلتش يا حاج.
-        ar: وأنا أيضًا لم آكل بعد يا سيدي.
-        en: I haven't eaten yet either, sir.
+        Today at noon in Kauman, by the Grand Mosque, you'll ask and answer in krama. The secret: swap every small word:
+        - aku → kula, kowe → sampeyan
+        - wis → sampun, durung → dereng, arep → badhe, isih → taksih
+        - ora → mboten, ana → wonten, iya → inggih
+        - neng → dhateng, saka → saking, karo → kaliyan
+        Kowe wis mangan? → Sampeyan sampun nedha?
     grammar: jv.krama.function-words
 exercises:
   - id: e01
-    type: match_pairs
-    pairs:
-      - text: pasar
-        ar_eg: بالكراما peken (سوق)
-        ar: بالكراما peken (سوق)
-        en: in krama → peken (market)
-      - text: mangan
-        ar_eg: بالكراما nedha (ياكل)
-        ar: بالكراما nedha (يأكل)
-        en: in krama → nedha (eat)
-      - text: aku
-        ar_eg: بالكراما kula (أنا)
-        ar: بالكراما kula (أنا)
-        en: in krama → kula (I)
-      - text: uga
-        ar_eg: بالكراما ugi (كمان)
-        ar: بالكراما ugi (أيضًا)
-        en: in krama → ugi (also)
-    words: [peken, nedha, kula, ugi]
-  - id: e02
     type: multiple_choice
+    question: Kowe wis mangan?
     question_meaning:
-      ar_eg: (من الرسالتين) Dimas كل؟
-      ar: (من الرسالتين) هل أكل Dimas؟
-      en: (from the messages) Has Dimas eaten?
-    options: [Sampun, Dereng]
+      ar_eg: حوّلها لكراما (لـ Pak Harjo البياع).
+      ar: حوّلها إلى الكراما (للبائع Pak Harjo).
+      en: Turn it into krama (for Pak Harjo, the seller).
+    options: ['Sampeyan wis nedha?', 'Sampeyan sampun nedha?', 'Kowe sampun mangan?']
     answer: 1
-    words: [dereng]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من الرسالتين) Dimas ومحمد رايحين فين؟
-      ar: (من الرسالتين) إلى أين سيذهب Dimas ومحمد؟
-      en: (from the messages) Where are Dimas and Mohamed going?
-    options: [dhateng masjid, dhateng peken, dhateng Kauman]
-    answer: 1
-    words: [dhateng, peken]
-  - id: e04
-    type: multiple_choice
-    question_meaning:
-      ar_eg: في نسخة محمد بالكراما، أنهي كلمة خدت مكان karo؟
-      ar: في نسخة محمد بالكراما، أيّ كلمة حلّت محل karo؟
-      en: In Mohamed's krama version, which word replaced karo?
-    options: [kaliyan, kula, ugi]
-    answer: 0
-    words: [kaliyan]
-  - id: e05
-    type: listen
-    text: Piyambakipun badhe dhateng peken kaliyan kula.
-    options: ['Piyambakipun badhe dhateng masjid kaliyan kula.', 'Piyambakipun badhe dhateng peken kaliyan kula.', 'Piyambakipun sampun dhateng peken kaliyan kula.']
-    answer: 1
-    meaning:
-      ar_eg: هو رايح السوق معايا.
-      ar: سيذهب إلى السوق معي.
-      en: He's going to the market with me.
-    words: [piyambakipun, badhe, dhateng, peken, kaliyan]
-  - id: e06
-    type: fill_blank
-    sentence: Mas Dimas ___ nedha, Pak.
-    meaning:
-      ar_eg: Dimas لسه ماكلش يا حاج.
-      ar: لم يأكل Dimas بعد يا سيدي.
-      en: Dimas hasn't eaten yet, sir.
-    options: [durung, mboten, dereng]
-    answers: [dereng]
     explain:
-      ar_eg: '«لسه» بالكراما dereng. durung نغوكو، وmboten يعني «لأ / مش».'
-      ar: '«ليس بعد» بالكراما dereng؛ durung من الـ ngoko، وmboten نفي عام.'
-      en: '"Not yet" in krama is dereng. durung is ngoko; mboten is plain "not".'
-    words: [dereng, nedha]
-  - id: e07
+      ar_eg: 'لازم كل الكلمات تتبدل: kowe ← sampeyan، wis ← sampun، mangan ← nedha.'
+      ar: 'تُبدّل الألفاظ كلها: kowe ← sampeyan، وwis ← sampun، وmangan ← nedha.'
+      en: Every word swaps — kowe → sampeyan, wis → sampun, mangan → nedha.
+    words: [sampeyan, sampun, nedha]
+  - id: e02
+    type: listen
+    text: Kula badhe dhateng masjid.
+    options: [Kula badhe dhateng masjid., Kula badhe dhateng peken., Aku arep neng masjid.]
+    answer: 0
+    words: [badhe, dhateng, masjid]
+  - id: e03
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: 'حوّلها لكراما: Dimas uga durung mangan.'
-      ar: 'حوّلها إلى الكراما: Dimas uga durung mangan.'
-      en: 'Make it krama: Dimas uga durung mangan.'
-    answers: ["Mas Dimas ugi dereng nedha.", "Dimas ugi dereng nedha.", "Piyambakipun ugi dereng nedha."]
+      ar_eg: حضرتك كلت يا عم؟ (لـ Pak Harjo)
+      ar: هل أكلتَ يا سيدي؟ (لـ Pak Harjo)
+      en: Have you eaten, sir? (to Pak Harjo)
+    answers: ["Sampeyan sampun nedha, Pak?", "Sampeyan sampun nedha, Pak", "Pak, sampeyan sampun nedha?", "Pak, sampeyan sampun nedha", "Sampeyan sampun nedha?", Sampeyan sampun nedha, "Panjenengan sampun dhahar, Pak?", "Panjenengan sampun dhahar, Pak", "Pak, panjenengan sampun dhahar?", "Pak, panjenengan sampun dhahar"]
     explain:
-      ar_eg: 'uga ← ugi، durung ← dereng، mangan ← nedha.'
-      ar: 'uga ← ugi، وdurung ← dereng، وmangan ← nedha.'
-      en: 'uga → ugi, durung → dereng, mangan → nedha.'
-    words: [ugi, dereng, nedha]
-  - id: e08
+      ar_eg: 'للبياع: Sampeyan sampun nedha. ولو قلت panjenengan + dhahar لراجل كبير، ده أدب زيادة ومقبول.'
+      ar: للبائع Sampeyan sampun nedha، وpanjenengan مع dhahar للرجل المسنّ أدب زائد مقبول.
+      en: For a seller, Sampeyan sampun nedha; panjenengan + dhahar for an older man is extra polite and fine.
+    words: [sampeyan, sampun, nedha]
+  - id: e04
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: لسه يا عم. (ماكلتش لسه)
+      ar: ليس بعد يا سيدي. (لم آكل بعد)
+      en: Not yet, sir. (you haven't eaten)
+    answers: ["Dereng, Pak.", "Dereng, Pak", "Dereng, Pak. Kula dereng nedha.", "Dereng, Pak. Kulo dereng nedha.", "Dereng, Pak. Kula dereng nedha", "Dereng, Pak. Kulo dereng nedha", "Kula dereng nedha, Pak.", "Kulo dereng nedha, Pak.", "Kula dereng nedha, Pak", "Kulo dereng nedha, Pak"]
+    words: [dereng]
+  - id: e05
     type: build_sentence
     source:
-      ar_eg: وأنا كمان لسه ماكلتش يا حاج.
-      ar: وأنا أيضًا لم آكل بعد يا سيدي.
-      en: I haven't eaten yet either, sir.
-    answer: Kula ugi dereng nedha, Pak.
-    distractors: [uga, durung]
-    words: [kula, ugi, dereng, nedha]
+      ar_eg: أنا رايح الجامع مع دِيماس.
+      ar: سأذهب إلى المسجد مع ديماس.
+      en: I'm going to the mosque with Dimas.
+    answer: Kula badhe dhateng masjid kaliyan Mas Dimas.
+    distractors: [arep, karo]
+    words: [badhe, dhateng, kaliyan, masjid]
+  - id: e06
+    type: fill_blank
+    sentence: Inggih, kula ___ sinau krama.
+    meaning:
+      ar_eg: أيوه، أنا لسه بتعلم كراما.
+      ar: نعم، ما زلتُ أتعلم الكراما.
+      en: Yes, I'm still learning krama.
+    answers: [taksih]
+    explain:
+      ar_eg: «لسه بـ» = isih ← taksih.
+      ar: «ما زال» = isih ← taksih.
+      en: '"Still" = isih → taksih.'
+    words: [taksih]
+  - id: e07
+    type: fill_blank
+    sentence: Nyuwun sewu, Pak, teh ___ wonten.
+    meaning:
+      ar_eg: لا مؤاخذة يا عم، مفيش شاي.
+      ar: عفوًا يا سيدي، لا يوجد شاي.
+      en: Sorry, sir, there's no tea.
+    answers: [mboten]
+    words: [mboten, teh]
+  - id: e08
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: فيه شاي يا عم؟ (بالكراما — «شاي» = teh)
+      ar: هل يوجد شاي يا سيدي؟ (بالكراما — «شاي» = teh)
+      en: Is there tea, sir? (krama — "tea" = teh)
+    answers: ["Wonten teh, Pak?", "Wonten teh, Pak", "Pak, wonten teh?", "Pak, wonten teh", "Nyuwun sewu, wonten teh, Pak?", "Nyuwun sewu, wonten teh, Pak", "Nyuwun sewu, Pak, wonten teh?", "Nyuwun sewu, Pak, wonten teh"]
+    words: [wonten, teh]
+  - id: e09
+    type: dictation
+    text: Wonten teh, Pak?
+    meaning:
+      ar_eg: فيه شاي يا عم؟
+      ar: هل يوجد شاي يا سيدي؟
+      en: Is there any tea, sir?
+    words: [wonten, teh]
+  - id: e10
+    type: speaking
+    text: Dereng, Pak. Kula badhe dhateng masjid kaliyan Mas Dimas.
+    meaning:
+      ar_eg: لسه يا عم. أنا رايح الجامع مع دِيماس.
+      ar: ليس بعد يا سيدي. سأذهب إلى المسجد مع ديماس.
+      en: Not yet, sir. I'm going to the mosque with Dimas.
+    words: [dereng, badhe, dhateng, masjid, kaliyan]
 dialogue:
-  title: Pak Harjo takon
+  title: Awan ing Kauman
   lines:
     - speaker: Pak Harjo
-      text: Mas Mohamed, sampeyan sampun nedha?
-      ar_eg: يا أستاذ محمد، حضرتك كلت؟
-      ar: يا أخي محمد، هل أكلتَ؟
-      en: Mohamed, have you eaten?
+      text: Mas Mohamed! Sampeyan sampun nedha?
+      ar_eg: يا أستاذ محمد! حضرتك كلت؟
+      ar: يا محمد! هل أكلتَ؟
+      en: Mohamed! Have you eaten?
     - speaker: Mohamed
-      text: Dereng, Pak. Mas Dimas ugi dereng.
-      ar_eg: لسه يا حاج. وDimas كمان لسه.
-      ar: ليس بعد يا سيدي. وDimas أيضًا لم يأكل.
-      en: Not yet, sir. Dimas hasn't either.
+      text: Dereng, Pak. Sampeyan?
+      ar_eg: لسه يا عم. وحضرتك؟
+      ar: ليس بعد يا سيدي. وأنت؟
+      en: Not yet, sir. And you?
     - speaker: Pak Harjo
-      text: Sampeyan badhe dhateng peken?
-      ar_eg: حضرتك رايح السوق؟
-      ar: هل ستذهب إلى السوق؟
-      en: Are you going to the market?
+      text: Sampun, Mas. Sampeyan badhe nedha?
+      ar_eg: كلت يا أستاذ. وحضرتك هتاكل دلوقتي؟
+      ar: نعم أكلت. وهل ستأكل الآن؟
+      en: I have. Are you going to eat?
     - speaker: Mohamed
-      text: Inggih, Pak, kaliyan Mas Dimas.
-      ar_eg: أيوه يا حاج، مع Dimas.
-      ar: نعم يا سيدي، مع Dimas.
-      en: Yes, sir, with Dimas.
+      text: Inggih, Pak. Kula badhe nedha kaliyan Mas Dimas.
+      ar_eg: أيوه يا عم. أنا هاكل مع دِيماس.
+      ar: نعم يا سيدي. سآكل مع ديماس.
+      en: Yes, sir. I'm going to eat with Dimas.
     - speaker: Pak Harjo
-      text: Sae. Mangga, Mas.
-      ar_eg: كويس. اتفضلوا يا أستاذ.
-      ar: جميل. تفضّلا يا أخي.
-      en: Good. Off you go, then.
+      text: Oh, inggih. Mangga, Mas.
+      ar_eg: آه، ماشي. اتفضل يا أستاذ.
+      ar: آه، حسنًا. تفضّل يا أخي.
+      en: Oh, I see. Go ahead, then.
+    - speaker: Mohamed
+      text: Matur nuwun, Pak.
+      ar_eg: شكرًا يا عم.
+      ar: شكرًا يا سيدي.
+      en: Thank you, sir.
+new_words:
+  - word: masjid
+    pos: noun
+    ar_eg: جامع
+    ar: مسجد
+    en: mosque
+    arabic: مسجد
+  - word: teh
+    pos: noun
+    ar_eg: شاي
+    ar: شاي
+    en: tea
 review:
   status: draft
   verified: false
+game: uu.teacher

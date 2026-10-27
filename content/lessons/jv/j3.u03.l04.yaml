@@ -1,167 +1,239 @@
 schema: kabar.lesson/v1
 id: j3.u03.l04
 language: jv
-title: Tulisan ing toko
+title: Langkung sae
 can_do:
-  ar_eg: تقرا ورقة معلّقة على باب محل بالكراما وتسأل بأدب صاحب المحل موجود ولا لأ.
-  ar: أن تقرأ ورقة معلّقة على باب متجر بالكراما وتسأل بأدب إن كان صاحبه موجودًا.
-  en: Read a krama note on a shop door and ask politely whether the owner is in.
+  ar_eg: 'تقارن بالكراما: أكبر وأصغر، كتير وقليل، سهل وصعب، وتقول «زي».'
+  ar: 'أن تقارن بالكراما: أكثر، صغير، كثير وقليل، سهل وصعب، وتقول «مثل».'
+  en: 'Compare things in krama: more, small, many and few, easy and hard, and say "like".'
 slides:
-  - title: Ing lawang toko batik
+  - title: Langkung, kados
     body:
       ar_eg: |
-        في Kauman، محمد راح محل الباتيك بتاع Pak Harjo وقت الضهر، ولقى ورقة على الباب. اقراها:
-        mboten = ora، wonten = ana، taksih = isih، dhateng = nang.
+        الصفات الشائعة ليها كراما:
+        - cilik ← alit = صغير، akeh ← kathah = كتير، sithik ← sekedhik = شوية
+        - ala / elek ← awon = وحش، gampang ← gampil = سهل، abot ← awrat = تقيل، صعب
+        - luwih ← langkung = أكتر: langkung sae = أحسن
+        - kaya ← kados = زي: kados tiyang Jogja = زي أهل يوجيا
       ar: |
-        ذهب محمد في Kauman إلى متجر الباتيك الخاص بـ Pak Harjo وقت الظهر، فوجد ورقة على الباب. اقرأها:
-        mboten = ora، وwonten = ana، وtaksih = isih، وdhateng = nang.
+        للصفات الشائعة كراما:
+        - cilik ← alit = صغير، akeh ← kathah = كثير، sithik ← sekedhik = قليل
+        - ala / elek ← awon = سيّئ، gampang ← gampil = سهل، abot ← awrat = ثقيل، صعب
+        - luwih ← langkung = أكثر: langkung sae = أفضل
+        - kaya ← kados = مثل: kados tiyang Jogja = مثل أهل يوجيا
       en: |
-        In Kauman, Mohamed goes to Pak Harjo's batik shop at midday and finds a note on the door. Read it:
-        mboten = ora, wonten = ana, taksih = isih, dhateng = nang.
+        Common adjectives have krama forms:
+        - cilik → alit = small, akeh → kathah = many, sithik → sekedhik = a little
+        - ala / elek → awon = bad, gampang → gampil = easy, abot → awrat = heavy, hard
+        - luwih → langkung = more: langkung sae = better
+        - kaya → kados = like: kados tiyang Jogja = like a Jogja local
     examples:
-      - text: Nyuwun sewu, kula dhateng masjid.
-        ar_eg: لا مؤاخذة، أنا رحت الجامع.
-        ar: عفوًا، ذهبتُ إلى المسجد.
-        en: Excuse me, I've gone to the mosque.
-      - text: Bu Harjo wonten ing griya.
-        ar_eg: Bu Harjo موجودة في البيت.
-        ar: Bu Harjo في البيت.
-        en: Bu Harjo is at home.
-      - text: Batik taksih wonten. Matur nuwun! — Pak Harjo
-        ar_eg: لسه فيه باتيك. شكرًا! — Pak Harjo
-        ar: ما زال الباتيك متوفرًا. شكرًا! — Pak Harjo
-        en: There's still batik. Thank you! — Pak Harjo
-    grammar: jv.krama.function-words
+      - text: Krama langkung awrat tinimbang ngoko.
+        ar_eg: الكراما أصعب من الـ ngoko.
+        ar: الكراما أصعب من الـ ngoko.
+        en: Krama is harder than ngoko.
+      - text: Griya Mbah alit, nanging kepenak.
+        ar_eg: بيت تيتة صغير، بس مريح.
+        ar: بيت الجدة صغير لكنه مريح.
+        en: Grandma's house is small but comfortable.
+      - text: Tiyangipun kathah sanget.
+        ar_eg: الناس كتير أوي.
+        ar: الناس كثيرون جدًا.
+        en: There are so many people.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من الورقة) Pak Harjo فين؟
-      ar: (من الورقة) أين Pak Harjo؟
-      en: (from the note) Where is Pak Harjo?
-    options: [ing griya, ing peken, ing masjid]
-    answer: 2
-    words: [dhateng, masjid]
-  - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من الورقة) مين موجود في البيت؟
-      ar: (من الورقة) من الموجود في البيت؟
-      en: (from the note) Who is at home?
-    options: [Pak Harjo, Bu Harjo, Mas Dimas]
-    answer: 1
-    words: [wonten]
-  - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: (من الورقة) محمد لسه يقدر يشتري باتيك؟
-      ar: (من الورقة) هل ما زال محمد يستطيع شراء الباتيك؟
-      en: (from the note) Can Mohamed still buy batik?
-    options: ['Mboten wonten.', 'Inggih, taksih wonten.']
-    answer: 1
-    explain:
-      ar_eg: taksih wonten = isih ana = لسه موجود.
-      ar: taksih wonten = isih ana = ما زال موجودًا.
-      en: taksih wonten = isih ana = still there, still available.
-    words: [taksih, wonten]
-  - id: e04
     type: match_pairs
     pairs:
-      - text: Nyuwun sewu
-        ar_eg: لا مؤاخذة / بعد إذنك
-        ar: عفوًا / بعد إذنك
-        en: Excuse me
-      - text: dhateng masjid
-        ar_eg: (راح) على الجامع
-        ar: إلى المسجد
-        en: to the mosque
-      - text: wonten ing griya
-        ar_eg: موجود في البيت
-        ar: موجود في البيت
-        en: is at home
-      - text: taksih wonten
-        ar_eg: لسه موجود
-        ar: ما زال موجودًا
-        en: is still there
-    words: [nyuwun sewu, dhateng, wonten, taksih]
-  - id: e05
+      - text: langkung
+        ar_eg: أكتر (كراما)
+        ar: أكثر (كراما)
+        en: more (krama)
+      - text: kados
+        ar_eg: زي (كراما)
+        ar: مثل (كراما)
+        en: like (krama)
+      - text: alit
+        ar_eg: صغير (كراما)
+        ar: صغير (كراما)
+        en: small (krama)
+      - text: kathah
+        ar_eg: كتير (كراما)
+        ar: كثير (كراما)
+        en: many (krama)
+    words: [langkung, kados, alit, kathah]
+  - id: e02
+    type: match_pairs
+    pairs:
+      - text: sekedhik
+        ar_eg: شوية (كراما)
+        ar: قليل (كراما)
+        en: a little (krama)
+      - text: awon
+        ar_eg: وحش (كراما)
+        ar: سيّئ (كراما)
+        en: bad (krama)
+      - text: gampil
+        ar_eg: سهل (كراما)
+        ar: سهل (كراما)
+        en: easy (krama)
+      - text: awrat
+        ar_eg: تقيل، صعب (كراما)
+        ar: ثقيل، صعب (كراما)
+        en: heavy, hard (krama)
+    words: [sekedhik, awon, gampil, awrat]
+  - id: e03
     type: listen
-    text: Bu Harjo wonten ing griya.
-    options: ['Pak Harjo wonten ing griya.', 'Bu Harjo wonten ing griya.', 'Bu Harjo mboten wonten.']
+    text: Tiyangipun kathah sanget wonten peken.
+    question:
+      ar_eg: السوق عامل إزاي؟
+      ar: كيف حال السوق؟
+      en: What's the market like?
+    options: [السوق فاضي, الناس كتير أوي في السوق, السوق مقفول]
     answer: 1
     meaning:
-      ar_eg: Bu Harjo موجودة في البيت.
-      ar: Bu Harjo في البيت.
-      en: Bu Harjo is at home.
-    words: [wonten]
+      ar_eg: الناس كتير أوي في السوق.
+      ar: الناس كثيرون جدًا في السوق.
+      en: There are so many people at the market.
+    words: [kathah]
+  - id: e04
+    type: fill_blank
+    sentence: Basa ngoko ___, krama langkung awrat.
+    meaning:
+      ar_eg: الـ ngoko ___، والكراما أصعب.
+      ar: الـ ngoko ___، والكراما أصعب.
+      en: Ngoko is ___; krama is harder.
+    options: [gampil, awon, kathah]
+    answers: [gampil]
+    words: [gampil, awon, kathah, langkung, awrat]
+  - id: e05
+    type: multiple_choice
+    question: Teh menika legi ___ gendhis.
+    options: [kados, langkung, sekedhik]
+    answer: 0
+    explain:
+      ar_eg: kados = زي (kaya بالكراما).
+      ar: kados = مثل (kaya بالكراما).
+      en: kados = like (krama for kaya).
+    words: [kados, langkung, sekedhik]
   - id: e06
     type: fill_blank
-    sentence: Pak Harjo ___ wonten. Pak Harjo dhateng masjid.
+    sentence: Kula namung ngertos krama ___.
     meaning:
-      ar_eg: Pak Harjo مش موجود. Pak Harjo راح الجامع.
-      ar: Pak Harjo ليس موجودًا. ذهب Pak Harjo إلى المسجد.
-      en: Pak Harjo isn't in. Pak Harjo has gone to the mosque.
-    options: [ora, dereng, mboten]
-    answers: [mboten]
-    explain:
-      ar_eg: 'النفي في الكراما mboten. ora نغوكو، وdereng معناها «لسه».'
-      ar: 'النفي في الكراما mboten؛ ora من الـ ngoko، وdereng تعني «ليس بعد».'
-      en: Krama negation is mboten. ora is ngoko; dereng means "not yet".
-    words: [mboten, wonten]
+      ar_eg: أنا فاهم كراما ___ بس.
+      ar: لا أفهم من الكراما إلا ___.
+      en: I only understand ___ krama.
+    options: [sekedhik, alit, awrat]
+    answers: [sekedhik]
+    words: [sekedhik, alit, awrat]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: 'اسأل Bu Harjo: لا مؤاخذة يا مدام، Pak Harjo موجود؟'
-      ar: 'اسأل Bu Harjo: عفوًا يا سيدتي، هل Pak Harjo موجود؟'
-      en: "Ask Bu Harjo: Excuse me, ma'am, is Pak Harjo in?"
-    answers: ["Nyuwun sewu, Bu, Pak Harjo wonten?", "Nyuwun sewu, Bu, Pak Harjo wonten ing griya?", "Nyuwun sewu, Pak Harjo wonten, Bu?", "Nyuwun sewu, Bu, wonten Pak Harjo?", "Nyuwun sewu, Bu Harjo, Pak Harjo wonten?"]
-    explain:
-      ar_eg: 'wonten = «موجود». ابدأ بـ Nyuwun sewu زي «لا مؤاخذة».'
-      ar: 'wonten = «موجود»، وابدأ بـ Nyuwun sewu أي «عفوًا».'
-      en: wonten = "is in / is there". Open with Nyuwun sewu, "excuse me".
-    words: [nyuwun sewu, wonten]
-  - id: e08
     type: build_sentence
     source:
-      ar_eg: أنا كمان رايح الجامع.
-      ar: سأذهب أنا أيضًا إلى المسجد.
-      en: I'm going to the mosque too.
-    answer: Kula ugi badhe dhateng masjid.
-    distractors: [uga, nang]
+      ar_eg: بيت تيتة صغير، بس مريح.
+      ar: بيت الجدة صغير لكنه مريح.
+      en: Grandma's house is small but comfortable.
+    answer: Griya Mbah alit, nanging kepenak.
+    distractors: [kathah, awon]
+    words: [alit]
+  - id: e08
+    type: translate
+    direction: from_target
+    source_text: Tas menika awrat sanget.
+    answers_meaning:
+      ar_eg: [الشنطة دي تقيلة أوي, الشنطة دي تقيلة جدًا]
+      ar: [هذه الحقيبة ثقيلة جدًا]
+      en: [This bag is very heavy, This bag is really heavy]
+    words: [awrat]
+  - id: e09
+    type: speaking
+    text: Krama langkung awrat tinimbang ngoko.
+    meaning:
+      ar_eg: الكراما أصعب من الـ ngoko.
+      ar: الكراما أصعب من الـ ngoko.
+      en: Krama is harder than ngoko.
+    words: [langkung, awrat]
+  - id: e10
+    type: multiple_choice
+    question: Batik menika mirah, nanging ___.
+    options: [awon, gampil, kados]
+    answer: 0
     explain:
-      ar_eg: 'كله krama: ugi (= uga)، badhe (= arep)، dhateng (= nang).'
-      ar: 'كلها krama: ugi بدل uga، وbadhe بدل arep، وdhateng بدل nang.'
-      en: 'All krama: ugi (= uga), badhe (= arep), dhateng (= nang).'
-    words: [ugi, badhe, dhateng, masjid]
+      ar_eg: awon = وحش، مش كويس (ala أو elek بالكراما).
+      ar: awon = سيّئ (ala أو elek بالكراما).
+      en: awon = bad, poor quality (krama for ala, elek).
+    words: [awon, gampil, kados]
 dialogue:
-  title: Ing ngarep toko
   lines:
+    - speaker: Bu Siti
+      text: Mas Mohamed, tumbas menapa?
+      ar_eg: تشتري إيه يا أستاذ محمد؟
+      ar: ماذا تشتري يا محمد؟
+      en: What are you buying, Mohamed?
     - speaker: Mohamed
-      text: Nyuwun sewu, Bu. Pak Harjo wonten?
-      ar_eg: لا مؤاخذة يا مدام. Pak Harjo موجود؟
-      ar: عفوًا يا سيدتي. هل Pak Harjo موجود؟
-      en: Excuse me, ma'am. Is Pak Harjo in?
-    - speaker: Bu Harjo
-      text: Mboten wonten, Mas. Pak Harjo dhateng masjid.
-      ar_eg: مش موجود يا أستاذ. راح الجامع.
-      ar: ليس موجودًا يا أخي. ذهب إلى المسجد.
-      en: He isn't in. Pak Harjo has gone to the mosque.
+      text: Batik alit setunggal, Bu.
+      ar_eg: باتيك صغير واحد يا طنط.
+      ar: قطعة باتيك صغيرة واحدة يا سيدتي.
+      en: One small batik, ma'am.
+    - speaker: Bu Siti
+      text: Menika langkung sae, nanging regi langkung awis.
+      ar_eg: ده أحسن، بس السعر أغلى.
+      ar: هذا أفضل، لكن سعره أغلى.
+      en: This one is better, but the price is higher.
     - speaker: Mohamed
-      text: Oh, inggih. Batik taksih wonten, Bu?
-      ar_eg: آه، ماشي. لسه فيه باتيك يا مدام؟
-      ar: آه، حسنًا. هل ما زال هناك باتيك يا سيدتي؟
-      en: Oh, I see. Is there still batik, ma'am?
-    - speaker: Bu Harjo
-      text: Taksih, Mas. Mangga!
-      ar_eg: لسه يا أستاذ. اتفضل!
-      ar: ما زال يا أخي. تفضّل!
-      en: There is. Please, come in!
+      text: Wah, kathah sanget batikipun! Arta kula namung sekedhik.
+      ar_eg: ياه، الباتيك كتير أوي! وفلوسي قليلة.
+      ar: يا لكثرة الباتيك! ومالي قليل.
+      en: Wow, so much batik! I've only got a little money.
+    - speaker: Bu Siti
+      text: Mboten menapa-menapa. Krama panjenengan sampun sae, kados tiyang Jogja!
+      ar_eg: ولا يهمك. الكراما بتاعتك بقت حلوة، زي أهل يوجيا!
+      ar: لا بأس. كراماك جيدة، مثل أهل يوجيا!
+      en: No problem. Your krama is good already, like a Jogja local!
     - speaker: Mohamed
-      text: Matur nuwun, Bu.
-      ar_eg: شكرًا يا مدام.
-      ar: شكرًا يا سيدتي.
-      en: Thank you, ma'am.
+      text: Matur nuwun, Bu. Krama taksih awrat kangge kula.
+      ar_eg: متشكر يا طنط. الكراما لسه صعبة عليّ.
+      ar: شكرًا يا سيدتي. ما زالت الكراما صعبة عليّ.
+      en: Thank you, ma'am. Krama is still hard for me.
+new_words:
+  - word: langkung
+    pos: adverb
+    ar_eg: أكتر (luwih ← langkung)، كراما
+    ar: أكثر (luwih ← langkung)، كراما
+    en: more (ngoko luwih, Indonesian lebih), krama
+  - word: kados
+    pos: preposition
+    ar_eg: زي (kaya ← kados)، كراما
+    ar: مثل (kaya ← kados)، كراما
+    en: like, as (ngoko kaya, Indonesian seperti), krama
+  - word: alit
+    pos: adjective
+    ar_eg: صغير (cilik ← alit)، كراما
+    ar: صغير (cilik ← alit)، كراما
+    en: small (ngoko cilik, Indonesian kecil), krama
+  - word: kathah
+    pos: adjective
+    ar_eg: كتير (akeh ← kathah)، كراما
+    ar: كثير (akeh ← kathah)، كراما
+    en: many, a lot (ngoko akeh, Indonesian banyak), krama
+  - word: sekedhik
+    pos: adverb
+    ar_eg: شوية (sithik ← sekedhik)، كراما
+    ar: قليل (sithik ← sekedhik)، كراما
+    en: a little (ngoko sithik, Indonesian sedikit), krama
+  - word: awon
+    pos: adjective
+    ar_eg: وحش (ala / elek ← awon)، كراما
+    ar: سيّئ (ala / elek ← awon)، كراما
+    en: bad (ngoko ala, elek; Indonesian jelek), krama
+  - word: gampil
+    pos: adjective
+    ar_eg: سهل (gampang ← gampil)، كراما
+    ar: سهل (gampang ← gampil)، كراما
+    en: easy (ngoko gampang, Indonesian mudah), krama
+  - word: awrat
+    pos: adjective
+    ar_eg: تقيل، صعب (abot ← awrat)، كراما
+    ar: ثقيل، صعب (abot ← awrat)، كراما
+    en: heavy, hard (ngoko abot, Indonesian berat), krama
 review:
   status: draft
   verified: false

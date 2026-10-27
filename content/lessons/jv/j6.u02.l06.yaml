@@ -11,16 +11,16 @@ slides:
     body:
       ar_eg: |
         في الجوابات المؤدبة بنستعمل كراما: maos = يقرا، nyerat = يكتب، kintun = يبعت.
-        wekdal = وقت (wektu)، swanten = صوت (swara)، piyambak = بنفسه أو لوحده (dhewe).
-        pinanggih = يتقابل، وmekaten = «كده» أو «بس كده»: Mekaten rumiyin = ده كل اللي عندي دلوقتي.
+        seratan = جواب أو كتابة (tulisan)، piyambak = بنفسه أو لوحده (dhewe)، mugi = يا رب / إن شاء الله (muga).
+        pangapunten = سماح: Nyuwun pangapunten = لا مؤاخذة. وmekaten = «كده»: Mekaten rumiyin = ده كل اللي عندي دلوقتي. وهتقابل كمان wekdal وpinanggih من J3.
       ar: |
         في الرسائل المهذّبة نستعمل الكراما: maos = يقرأ، nyerat = يكتب، kintun = يرسل.
-        wekdal = وقت (wektu)، swanten = صوت (swara)، piyambak = بنفسه أو وحده (dhewe).
-        pinanggih = يلتقي، وmekaten = «هكذا»: Mekaten rumiyin = هذا ما لديّ الآن.
+        seratan = رسالة أو كتابة (tulisan)، وpiyambak = بنفسه أو وحده (dhewe)، وmugi = عسى / أرجو (muga).
+        وpangapunten = عفو: Nyuwun pangapunten = المعذرة. وmekaten = «هكذا»: Mekaten rumiyin = هذا ما لديّ الآن. وستلقى أيضًا wekdal وpinanggih من J3.
       en: |
         Polite letters use krama: maos = read, nyerat = write, kintun = send.
-        wekdal = time (wektu), swanten = voice (swara), piyambak = oneself, alone (dhewe).
-        pinanggih = meet; mekaten = thus, like this: Mekaten rumiyin = that's all for now.
+        seratan = letter, writing (tulisan), piyambak = oneself, alone (dhewe), mugi = may, hopefully (muga).
+        pangapunten = forgiveness: Nyuwun pangapunten = I'm sorry, excuse me. mekaten = thus, like this: Mekaten rumiyin = that's all for now. You'll also meet wekdal and pinanggih again from J3.
     examples:
       - text: Kula sampun maos pesen panjenengan.
         ar_eg: قريت رسالتك.
@@ -62,19 +62,19 @@ exercises:
         ar_eg: لوحده، بنفسه
         ar: بنفسه، وحده
         en: oneself, alone
-      - text: pinanggih
-        ar_eg: يتقابل
-        ar: يلتقي
-        en: meet
-      - text: swanten
-        ar_eg: صوت
-        ar: صوت
-        en: voice, sound
-      - text: wekdal
-        ar_eg: وقت
-        ar: وقت
-        en: time
-    words: [piyambak, pinanggih, swanten, wekdal]
+      - text: mugi
+        ar_eg: يا رب / إن شاء الله
+        ar: عسى، أرجو
+        en: may, hopefully
+      - text: seratan
+        ar_eg: جواب، كتابة
+        ar: رسالة، كتابة
+        en: letter, writing
+      - text: pangapunten
+        ar_eg: سماح
+        ar: عفو
+        en: forgiveness, pardon
+    words: [piyambak, mugi, seratan, pangapunten]
   - id: e03
     type: listen
     text: Kula sampun maos pesen panjenengan.
@@ -96,22 +96,22 @@ exercises:
       ar_eg: هـ___ رد لعم هارجو.
       ar: سأ___ ردًا إلى السيد هارجو.
       en: I'll ___ a reply to Pak Harjo.
-    options: [nyerat, wekdal, swanten]
+    options: [nyerat, mugi, seratan]
     answers: [nyerat]
-    words: [nyerat, wekdal, swanten]
+    words: [nyerat, mugi, seratan]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي كلمة هي الكراما بتاعة wektu (وقت)؟
-      ar: أي كلمة هي صيغة الكراما لـ wektu (وقت)؟
-      en: Which is the krama word for wektu (time)?
-    options: [mekaten, wekdal, kintun]
+      ar_eg: إزاي تقول «لا مؤاخذة» بأدب في جواب كراما؟ Nyuwun ___.
+      ar: كيف تقول «المعذرة» بأدب في رسالة بالكراما؟ Nyuwun ___.
+      en: How do you say "I'm sorry" politely in a krama letter? Nyuwun ___.
+    options: [mekaten, pangapunten, kintun]
     answer: 1
     explain:
-      ar_eg: wekdal = وقت بالكراما.
-      ar: wekdal = وقت بالكراما.
-      en: wekdal = time in krama.
-    words: [mekaten, wekdal, kintun]
+      ar_eg: Nyuwun pangapunten = بطلب السماح، يعني لا مؤاخذة.
+      ar: Nyuwun pangapunten = أطلب العفو، أي المعذرة.
+      en: Nyuwun pangapunten = I ask forgiveness, i.e. I'm sorry.
+    words: [mekaten, pangapunten, kintun]
   - id: e06
     type: fill_blank
     sentence: Panjenengan rawuh ___ menapa kaliyan rencang?
@@ -119,45 +119,45 @@ exercises:
       ar_eg: حضرتك جاي ___ ولا مع صحابك؟
       ar: هل أتيتَ ___ أم مع أصدقائك؟
       en: Did you come ___ or with friends?
-    options: [piyambak, pinanggih, maos]
+    options: [piyambak, mugi, maos]
     answers: [piyambak]
-    words: [piyambak, pinanggih, maos]
+    words: [piyambak, mugi, maos]
   - id: e07
     type: multiple_choice
     question: Kula remen sanget saged ___ kaliyan panjenengan.
-    options: [nyerat, swanten, pinanggih]
+    options: [nyerat, seratan, pinanggih]
     answer: 2
     explain:
-      ar_eg: 'pinanggih = نتقابل: مبسوط إني قابلتك.'
-      ar: 'pinanggih = نلتقي: سعيد بلقائك.'
-      en: 'pinanggih = meet: glad to meet you.'
-    words: [nyerat, swanten, pinanggih]
+      ar_eg: 'pinanggih (من J3) = نتقابل: مبسوط إني قابلتك. seratan = جواب، مش فعل.'
+      ar: 'pinanggih (من J3) = نلتقي: سعيد بلقائك. وseratan = رسالة، لا فعل.'
+      en: 'pinanggih (from J3) = meet: glad to meet you. seratan is a letter, not a verb.'
+    words: [nyerat, seratan]
   - id: e08
     type: build_sentence
     source:
-      ar_eg: ده كل اللي عندي دلوقتي.
-      ar: هذا ما لديّ الآن.
-      en: That's all from me for now.
-    answer: Mekaten rumiyin saking kula.
-    distractors: [maos, wekdal]
-    words: [mekaten]
+      ar_eg: لا مؤاخذة، ده كل اللي عندي دلوقتي.
+      ar: المعذرة، هذا ما لديّ الآن.
+      en: Sorry, that's all from me for now.
+    answer: Nyuwun pangapunten, mekaten rumiyin saking kula.
+    distractors: [maos, mugi]
+    words: [mekaten, pangapunten]
   - id: e09
     type: translate
     direction: from_target
-    source_text: Kula badhe kintun layang menika piyambak.
+    source_text: Kula badhe kintun seratan menika piyambak.
     answers_meaning:
       ar_eg: [هبعت الجواب ده بنفسي, أنا هبعت الجواب ده بنفسي]
       ar: [سأرسل هذه الرسالة بنفسي, سأبعث هذه الرسالة بنفسي]
       en: ['I''ll send this letter myself', I will send this letter on my own]
-    words: [kintun, piyambak]
+    words: [kintun, piyambak, seratan]
   - id: e10
     type: speaking
-    text: Menawi wonten wekdal, kula badhe pinanggih panjenengan.
+    text: Mugi kita saged pinanggih malih.
     meaning:
-      ar_eg: لو فيه وقت، هقابل حضرتك.
-      ar: إن اتسع الوقت سألتقي بك.
-      en: If there's time, I'll come and meet you.
-    words: [wekdal, pinanggih]
+      ar_eg: يا رب نتقابل تاني.
+      ar: عسى أن نلتقي مرة أخرى.
+      en: I hope we can meet again.
+    words: [mugi]
 dialogue:
   lines:
     - speaker: Mohamed
@@ -216,21 +216,21 @@ new_words:
     ar_eg: بنفسه، لوحده (كراما)
     ar: بنفسه، وحده (كراما)
     en: oneself, alone (krama)
-  - word: pinanggih
-    pos: verb
-    ar_eg: يتقابل (كراما)
-    ar: يلتقي (كراما)
-    en: meet (krama)
-  - word: swanten
+  - word: mugi
+    pos: adverb
+    ar_eg: يا رب / إن شاء الله (كراما)
+    ar: عسى، أرجو (كراما)
+    en: may, hopefully (krama of muga) = semoga
+  - word: seratan
     pos: noun
-    ar_eg: صوت (كراما)
-    ar: صوت (كراما)
-    en: voice, sound (krama)
-  - word: wekdal
+    ar_eg: جواب، كتابة (كراما)
+    ar: رسالة، كتابة (كراما)
+    en: letter, writing (krama of tulisan) = tulisan
+  - word: pangapunten
     pos: noun
-    ar_eg: وقت (كراما)
-    ar: وقت (كراما)
-    en: time (krama)
+    ar_eg: سماح (Nyuwun pangapunten = لا مؤاخذة)
+    ar: عفو (Nyuwun pangapunten = المعذرة)
+    en: forgiveness (Nyuwun pangapunten = I'm sorry) = maaf
 review:
   status: draft
   verified: false

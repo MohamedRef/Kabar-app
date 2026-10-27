@@ -1,157 +1,210 @@
 schema: kabar.lesson/v1
 id: j3.u06.l06
 language: jv
-title: Pesen swara saka Laweyan
+title: Damel batik
 can_do:
-  ar_eg: تفهم رسالة صوتية بالكراما فيها dipun- و-ipun و-aken وترد عليها.
-  ar: أن تفهم رسالة صوتية بالكراما فيها dipun- و-ipun و-aken وتردّ عليها.
-  en: Understand a krama voice message with dipun-, -ipun and -aken, and reply to it.
+  ar_eg: توصف صناعة الباتيك بالكراما.
+  ar: أن تصف صناعة الباتيك بالكراما.
+  en: Describe batik-making in krama.
 slides:
-  - title: Rungokna Pak Harjo
+  - title: Batik dipundamel kados pundi?
     body:
       ar_eg: |
-        بعد الورشة، Pak Harjo بعت لمحمد رسالة صوتية عن الباتيك اللي محمد عمله. اسمعها من غير ما تقرا.
-        dipuncelup = اتصبغ (اتغطس في الصبغة)، damelaken = يعمل لحد (زي «أعملّك»).
+        في ورشة الحاج هارجو في Giriloyo هتسمع خطوات الباتيك بالمبني للمجهول الكراما (dipun-):
+        - **Rumiyin**، motifipun dipungambar wonten kain. = الأول، الرسمة بتترسم على القماش. (rumiyin = dhisik، الأول)
+        - **Lajeng**، dipunbatik ngginakaken canthing lan malam. = وبعدين بيترسم بالـ canthing والشمع (malam = شمع الباتيك).
+        - Lajeng kainipun dipuncelup. = وبعدين القماش بيتغطس في الصبغة.
+        وللوقت: **dangu** = suwe (وقت طويل)، **sewulan** = شهر. Batik tulis saged sewulan. = الباتيك المرسوم ممكن ياخد شهر.
       ar: |
-        بعد الورشة أرسل Pak Harjo إلى محمد رسالة صوتية عن الباتيك الذي صنعه محمد. استمع إليها دون قراءة.
-        dipuncelup = صُبغ (غُمس في الصبغة)، وdamelaken = يصنع لأجل أحد.
+        في ورشة السيد هارجو في Giriloyo ستسمع خطوات الباتيك بصيغة المبني للمجهول في الكراما (dipun-):
+        - **Rumiyin**، motifipun dipungambar wonten kain. = أولًا تُرسم النقوش على القماش. (rumiyin = dhisik)
+        - **Lajeng**، dipunbatik ngginakaken canthing lan malam. = ثم يُرسم بالشمع (malam) بالـ canthing.
+        - Lajeng kainipun dipuncelup. = ثم يُغمس القماش في الصبغة.
+        وللوقت: **dangu** = suwe (مدة طويلة)، و**sewulan** = شهر: Batik tulis saged sewulan. = قد يستغرق الباتيك المرسوم شهرًا.
       en: |
-        After the class, Pak Harjo sends Mohamed a voice message about the batik Mohamed made. Listen without reading.
-        dipuncelup = has been dyed (dipped), damelaken = make for someone.
+        In Pak Harjo's workshop in Giriloyo you'll hear the batik steps in the krama passive (dipun-):
+        - **Rumiyin**, motifipun dipungambar wonten kain. = First, the pattern is drawn on the cloth. (rumiyin = dhisik, first)
+        - **Lajeng**, dipunbatik ngginakaken canthing lan malam. = Then it's waxed using a canthing and malam (batik wax).
+        - Lajeng kainipun dipuncelup. = Then the cloth is dipped in dye.
+        For time: **dangu** = suwe (a long time), **sewulan** = one month. Batik tulis saged sewulan. = Hand-drawn batik can take a month.
     grammar: jv.krama.affixes
+    examples:
+      - text: Rumiyin, motifipun dipungambar wonten kain.
+        ar_eg: الأول، الرسمة بتترسم على القماش.
+        ar: أولًا تُرسم النقوش على القماش.
+        en: First, the pattern is drawn on the cloth.
+      - text: Damelipun dangu.
+        ar_eg: عمله بياخد وقت طويل.
+        ar: صنعه يستغرق وقتًا طويلًا.
+        en: Making it takes a long time.
 exercises:
   - id: e01
-    type: listen
-    text: Mas Mohamed, batik sampeyan sampun dipuncelup.
-    question:
-      ar_eg: إيه اللي حصل لباتيك محمد؟
-      ar: ماذا حدث لباتيك محمد؟
-      en: What has happened to Mohamed's batik?
-    options: [sampun dipuncelup, dereng dipundamel, sampun dipuntumbas]
-    answer: 0
-    meaning:
-      ar_eg: يا أستاذ محمد، الباتيك بتاعك اتصبغ خلاص.
-      ar: يا أخي محمد، قد صُبغ الباتيك الخاص بك.
-      en: Mohamed, your batik has been dyed.
-    words: [sampun, celup]
-  - id: e02
-    type: listen
-    text: Batikipun sae sanget, Mas.
-    question:
-      ar_eg: Pak Harjo شايف الباتيك إزاي؟
-      ar: ما رأي Pak Harjo في الباتيك؟
-      en: What does Pak Harjo think of the batik?
-    options: [awis sanget, sae sanget, ageng sanget]
-    answer: 1
-    meaning:
-      ar_eg: الباتيك حلو أوي يا أستاذ.
-      ar: الباتيك جميل جدًا يا أخي.
-      en: The batik is very nice.
-    words: [batik, sae, sanget]
-  - id: e03
-    type: listen
-    text: Mangga dhateng griya kula. Kula damelaken teh.
-    question:
-      ar_eg: Pak Harjo هيعمل إيه لمحمد؟
-      ar: ماذا سيصنع Pak Harjo لمحمد؟
-      en: What will Pak Harjo make for Mohamed?
-    options: [batik, canthing, teh]
-    answer: 2
-    meaning:
-      ar_eg: اتفضل تعالى بيتي. هعملّك شاي.
-      ar: تفضّل إلى بيتي. سأصنع لك شايًا.
-      en: Please come to my house. I'll make you some tea.
-    words: [damelaken, teh]
-  - id: e04
     type: multiple_choice
     question_meaning:
-      ar_eg: أنهي جملة معناها «الباتيك بتاعك اتصبغ»؟
-      ar: أيّ جملة تعني «قد صُبغ الباتيك الخاص بك»؟
-      en: Which sentence means "Your batik has been dyed"?
-    options: ['Batik sampeyan dereng dipuncelup.', 'Batik sampeyan badhe dipuncelup.', 'Batik sampeyan sampun dipuncelup.']
-    answer: 2
+      ar_eg: إيه أول خطوة في الباتيك المرسوم؟
+      ar: ما أول خطوة في الباتيك المرسوم؟
+      en: What is the first step of hand-drawn batik?
+    options: [Motifipun dipungambar wonten kain., Batikipun dipuntumbas., Kainipun dipuncelup.]
+    answer: 0
     explain:
-      ar_eg: 'sampun = خلاص، dereng = لسه، badhe = هيحصل.'
-      ar: 'sampun = قد تمّ، وdereng = ليس بعد، وbadhe = سوف.'
-      en: 'sampun = already, dereng = not yet, badhe = going to.'
-    words: [sampun, celup]
-  - id: e05
-    type: match_pairs
-    pairs:
-      - text: dipuncelup
-        ar_eg: اتصبغ (اتغطس في الصبغة)
-        ar: صُبغ (غُمس في الصبغة)
-        en: was dyed (dipped)
-      - text: dipundamel
-        ar_eg: اتعمل
-        ar: صُنع
-        en: was made
-      - text: dipunwaos
-        ar_eg: اتقرا
-        ar: قُرئ
-        en: was read
-      - text: damelaken
-        ar_eg: يعمل لحد
-        ar: يصنع لأجل أحد
-        en: make for someone
-    words: [celup, damel, waos, damelaken]
-  - id: e06
-    type: dictation
-    text: Batikipun sae sanget.
+      ar_eg: الأول الرسمة بتترسم على القماش (dipungambar)، وبعدين الشمع، وبعدين الصبغة.
+      ar: أولًا تُرسم النقوش (dipungambar)، ثم الشمع، ثم الصبغة.
+      en: First the pattern is drawn (dipungambar), then the wax, then the dye.
+    words: [rumiyin, gambar, kain, celup]
+  - id: e02
+    type: listen
+    text: Lajeng kainipun dipuncelup.
+    options: [Lajeng kainipun dipuncelup., Lajeng malamipun dipuncelup., Rumiyin kainipun dipuncelup.]
+    answer: 0
+    words: [lajeng, kain, celup, malam]
+  - id: e03
+    type: fill_blank
+    sentence: ___, motifipun dipungambar wonten kain.
     meaning:
-      ar_eg: الباتيك حلو أوي.
-      ar: الباتيك جميل جدًا.
-      en: The batik is very nice.
-    words: [batik, sae, sanget]
+      ar_eg: الأول، الرسمة بتترسم على القماش.
+      ar: أولًا تُرسم النقوش على القماش.
+      en: First, the pattern is drawn on the cloth.
+    options: [Dangu, Lajeng, Rumiyin]
+    answers: [Rumiyin]
+    explain:
+      ar_eg: rumiyin = dhisik (الأول). lajeng = وبعدين، dangu = وقت طويل.
+      ar: rumiyin = dhisik (أولًا)، وlajeng = ثم، وdangu = مدة طويلة.
+      en: rumiyin = dhisik (first); lajeng = then, dangu = long time.
+    words: [rumiyin]
+  - id: e04
+    type: fill_blank
+    sentence: Batik tulis damel___ dangu, saged sewulan.
+    meaning:
+      ar_eg: الباتيك المرسوم عمله بياخد وقت طويل، ممكن شهر.
+      ar: الباتيك المرسوم يستغرق صنعه وقتًا طويلًا، قد يبلغ شهرًا.
+      en: Hand-drawn batik takes a long time to make, maybe a month.
+    options: [nipun, e, ipun]
+    answers: [ipun]
+    explain:
+      ar_eg: 'damel بتخلص بحرف ساكن (l)، يبقى -ipun: damelipun = عمله (gawene).'
+      ar: 'تنتهي damel بساكن فتأخذ -ipun: damelipun = صنعه.'
+      en: 'damel ends in a consonant, so -ipun: damelipun = the making of it.'
+    words: [damel, dangu, sewulan]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: (بالكراما) وبعدين القماش بيتغطس في الصبغة.
+      ar: (بالكراما) ثم يُغمس القماش في الصبغة.
+      en: (in krama) Then the cloth is dipped in dye.
+    answer: Lajeng kainipun dipuncelup.
+    distractors: [terus, kaine, dicelup]
+    words: [lajeng, kain, celup]
+  - id: e06
+    type: build_sentence
+    source:
+      ar_eg: (بالكراما) أنا بستخدم الشمع والـ canthing.
+      ar: (بالكراما) أستخدم الشمع والـ canthing.
+      en: (in krama) I use wax and a canthing.
+    answer: Kula ngginakaken malam lan canthing.
+    distractors: [nganggo, aku]
+    words: [kula, ngginakaken, malam, canthing]
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: 'رد على Pak Harjo: شكرًا جدًا يا حاج. أنا جاي Laweyan.'
-      ar: 'ردّ على Pak Harjo: شكرًا جزيلًا يا سيدي. سآتي إلى Laweyan.'
-      en: "Reply to Pak Harjo: Thank you very much, sir. I'm coming to Laweyan."
-    answers: ["Matur nuwun sanget, Pak. Kula badhe dhateng Laweyan.", "Matur nuwun sanget, Pak. Kulo badhe dhateng Laweyan.", "Matur nuwun sanget, Pak Harjo. Kula badhe dhateng Laweyan.", "Matur nuwun sanget, Pak. Kula badhe teng Laweyan.", "Matur nuwun sanget, Pak. Kula dhateng Laweyan."]
+      ar_eg: (بالكراما) الباتيك المرسوم بيتعمل بالـ canthing.
+      ar: (بالكراما) يُصنع الباتيك المرسوم بالـ canthing.
+      en: (in krama) Hand-drawn batik is made using a canthing.
+    answers: [Batik tulis dipundamel ngginakaken canthing., Batik tulis dipundamel ngginakaken canthing, Batik tulis didamel ngginakaken canthing., Batik tulis didamel ngginakaken canthing, Batik tulis dipundamel ngginakaken canting., Batik tulis dipundamel ngginakaken canting, Batik tulis didamel ngginakaken canting., Batik tulis didamel ngginakaken canting]
     explain:
-      ar_eg: 'badhe = arep، dhateng = nang (في الكلام teng).'
-      ar: 'badhe = arep، وdhateng = nang (وفي الكلام teng).'
-      en: 'badhe = arep, dhateng = nang (spoken teng).'
-    words: [sanget, badhe, dhateng]
+      ar_eg: dipundamel (أو didamel في الكلام) = اتعمل، ngginakaken = باستخدام.
+      ar: dipundamel (أو didamel في الكلام) = يُصنع، وngginakaken = باستعمال.
+      en: dipundamel (spoken didamel) = is made, ngginakaken = using.
+    words: [damel, ngginakaken, canthing]
   - id: e08
+    type: translate
+    direction: from_target
+    source_text: Batik tulis saged sewulan.
+    answers_meaning:
+      ar_eg: [الباتيك المرسوم ممكن ياخد شهر., الباتيك المرسوم ممكن ياخد شهر كامل., batik tulis ممكن ياخد شهر.]
+      ar: [قد يستغرق الباتيك المرسوم شهرًا., يمكن أن يستغرق الباتيك المرسوم شهرًا.]
+      en: [Hand-drawn batik can take a month., Batik tulis can take a month., Hand-drawn batik can take one month.]
+    words: [sewulan]
+  - id: e09
     type: speaking
-    text: Batikipun sae sanget! Matur nuwun, Pak.
+    text: Damelipun dangu. Rumiyin, motifipun dipungambar. Lajeng dipunbatik ngginakaken malam, lajeng dipuncelup.
     meaning:
-      ar_eg: الباتيك حلو أوي! شكرًا يا حاج.
-      ar: الباتيك جميل جدًا! شكرًا يا سيدي.
-      en: The batik is lovely! Thank you, sir.
-    words: [batik, sae, sanget]
+      ar_eg: عمله بياخد وقت. الأول الرسمة بتترسم، وبعدين بيتشمّع بالشمع، وبعدين بيتصبغ.
+      ar: صنعه يطول. أولًا تُرسم النقوش، ثم تُغطّى بالشمع، ثم تُصبغ.
+      en: It takes a long time. First the pattern is drawn, then it's waxed with malam, then it's dyed.
+    words: [damel, dangu, rumiyin, lajeng, malam, celup]
+  - id: e10
+    type: dictation
+    text: Damelipun dangu, saged sewulan.
+    meaning:
+      ar_eg: عمله بياخد وقت طويل، ممكن شهر.
+      ar: صنعه يستغرق وقتًا طويلًا، قد يبلغ شهرًا.
+      en: Making it takes a long time, maybe a month.
+    words: [damel, dangu, sewulan]
 dialogue:
-  title: Ing griya Pak Harjo
+  title: Wonten griya batik Pak Harjo
   lines:
-    - speaker: Pak Harjo
-      text: Mas Mohamed, mangga! Menika batik sampeyan.
-      ar_eg: اتفضل يا أستاذ محمد! ده الباتيك بتاعك.
-      ar: تفضّل يا أخي محمد! هذا الباتيك الخاص بك.
-      en: Come in, Mohamed! Here's your batik.
     - speaker: Mohamed
-      text: Wah, sampun dipuncelup! Sae sanget, Pak.
-      ar_eg: الله، اتصبغ خلاص! حلو أوي يا حاج.
-      ar: ما شاء الله، قد صُبغ! جميل جدًا يا سيدي.
-      en: Wow, it's been dyed! It's lovely, sir.
+      text: Pak, batik tulis dipundamel kados pundi?
+      ar_eg: يا أستاذ، الباتيك المرسوم بالإيد بيتعمل إزاي؟
+      ar: يا سيدي، كيف يُصنع الباتيك المرسوم باليد؟
+      en: Sir, how is hand-drawn batik made?
     - speaker: Pak Harjo
-      text: Inggih. Kula damelaken teh, nggih?
-      ar_eg: أيوه. أعملّك شاي، ماشي؟
-      ar: نعم. أصنع لك شايًا، حسنًا؟
-      en: Yes. Shall I make you some tea?
+      text: Rumiyin, motifipun dipungambar wonten kain.
+      ar_eg: الأول، الرسمة بتترسم على القماش.
+      ar: أولًا تُرسم النقوش على القماش.
+      en: First, the pattern is drawn on the cloth.
+    - speaker: Pak Harjo
+      text: Lajeng dipunbatik ngginakaken canthing lan malam.
+      ar_eg: وبعدين بيترسم بالشمع بالـ canthing.
+      ar: ثم يُرسم بالشمع بالـ canthing.
+      en: Then it's waxed using a canthing and wax.
+    - speaker: Pak Harjo
+      text: Malam menika lilin kangge batik, Mas. Lajeng kainipun dipuncelup.
+      ar_eg: malam ده الشمع بتاع الباتيك يا ابني. وبعدين القماش بيتغطس في الصبغة.
+      ar: malam هو شمع الباتيك يا بني. ثم يُغمس القماش في الصبغة.
+      en: Malam is wax for batik. Then the cloth is dipped in dye.
     - speaker: Mohamed
-      text: Inggih, matur nuwun, Pak.
-      ar_eg: ياريت، شكرًا يا حاج.
-      ar: نعم، شكرًا يا سيدي.
-      en: Yes please, thank you, sir.
+      text: Damelipun dangu, nggih, Pak?
+      ar_eg: عمله بياخد وقت طويل، صح يا حاج؟
+      ar: صنعه يستغرق وقتًا طويلًا، أليس كذلك يا سيدي؟
+      en: It takes a long time to make, doesn't it, sir?
     - speaker: Pak Harjo
-      text: Mangga, Mas, mangga.
-      ar_eg: اتفضل يا أستاذ، اتفضل.
-      ar: تفضّل يا أخي، تفضّل.
-      en: Please, sit down.
+      text: Inggih, dangu. Batik tulis saged sewulan.
+      ar_eg: أيوه، وقت طويل. الباتيك المرسوم ممكن ياخد شهر.
+      ar: نعم، وقت طويل. قد يستغرق الباتيك المرسوم شهرًا.
+      en: Yes, a long time. Hand-drawn batik can take a month.
+new_words:
+  - word: rumiyin
+    pos: adverb
+    ar_eg: الأول / قبل كده (dhisik ← dulu)، كراما
+    ar: أولًا (dhisik ← dulu)، كراما
+    en: first, beforehand (ngoko dhisik, Indonesian dulu), krama
+  - word: dangu
+    pos: adjective
+    ar_eg: وقت طويل (suwe ← lama)، كراما
+    ar: مدة طويلة (suwe ← lama)، كراما
+    en: (a) long time (ngoko suwe, Indonesian lama), krama
+  - word: sewulan
+    pos: noun
+    ar_eg: شهر (sesasi ← sebulan)، كراما
+    ar: شهر (sesasi ← sebulan)، كراما
+    en: one month (ngoko sesasi, Indonesian sebulan), krama
+  - word: malam
+    pos: noun
+    ar_eg: شمع الباتيك (lilin)
+    ar: شمع الباتيك (lilin)
+    en: batik wax (lilin)
+  - word: kain
+    pos: noun
+    ar_eg: قماش
+    ar: قماش
+    en: cloth
+  - word: celup
+    pos: verb
+    ar_eg: يغطّس في الصبغة (dipuncelup = اتغطس)
+    ar: يغمس في الصبغة (dipuncelup = غُمس)
+    en: to dip in dye (dipuncelup = is dipped)
 review:
   status: draft
   verified: false
