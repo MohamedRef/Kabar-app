@@ -1,204 +1,197 @@
 schema: kabar.lesson/v1
 id: bipa2.u08.l05
 language: id
-title: Pesan suara dari Raka
+title: Pesan ojek
 can_do:
-  ar_eg: تسمع رسالة صوتية فيها طريق الرحلة وتفهم تركب إيه وبعدين إيه.
-  ar: أن تفهم رسالة صوتية تشرح طريق الرحلة بالترتيب.
-  en: Follow travel directions in a voice message.
+  ar_eg: تطلب أوجيك من الأبلكيشن وتدردش مع السواق.
+  ar: أن تحجز رحلة بدرّاجة الأجرة وتتحدث مع السائق.
+  en: Book a ride and chat with the driver.
 slides:
-  - title: Pesan suara dari Raka
+  - title: Pesan ojek online
     body:
       ar_eg: |
-        راكا بعتلك رسالة صوتية (pesan suara) عشان تيجي له بِدوجول بكرة. المرة دي اسمع الأول من غير ما تقرا.
-        ركّز على كلمات الترتيب: pertama، lalu، ketika. وفيه كلمتين جداد: dingin (برد) و jaket (جاكت)، عشان بدوجول فوق الجبل وجوّها ساقع.
+        في بالي أغلب الناس بتطلب ojek من أبلكيشن على الموبايل. الخطوات بالترتيب:
+        - Pertama, buka aplikasi. (الأول افتح الأبلكيشن)
+        - Lalu, tulis tujuan. (وبعدين اكتب المكان اللي رايحه)
+        - Setelah itu, tunggu sopir. (بعد كده استنى السواق) وابعتله إنت فين ولابس إيه.
+        - Akhirnya, bayar: tunai (كاش) أو في الأبلكيشن.
+        والسواق هيديك helm (خوذة). وقوله «Pelan-pelan, Pak» لو الطريق بيزحلق.
       ar: |
-        أرسل لك راكا رسالة صوتية (pesan suara) لتلحق به في بِدوغول غدًا. هذه المرة استمع أولًا دون قراءة.
-        انتبه إلى كلمات الترتيب: pertama، lalu، ketika. وهناك كلمتان جديدتان: dingin (بارد) و jaket (سترة)، لأن بدوغول في الجبال وجوّها بارد.
+        يطلب أكثر الناس في بالي درّاجة الأجرة بتطبيق على الهاتف، بهذا الترتيب:
+        - Pertama, buka aplikasi. (أولًا افتح التطبيق)
+        - Lalu, tulis tujuan. (ثم اكتب وجهتك)
+        - Setelah itu, tunggu sopir. (بعد ذلك انتظر السائق) وأخبره بمكانك وما ترتديه.
+        - Akhirnya, bayar: tunai (نقدًا) أو عبر التطبيق.
+        وسيعطيك السائق helm (خوذة).
       en: |
-        Raka sent you a voice message (pesan suara) so you can meet him in Bedugul tomorrow. This time, listen first, without reading.
-        Listen for the order words: pertama, lalu, ketika. Two new words: dingin (cold) and jaket (jacket) — Bedugul is up in the mountains and it's cool there.
+        In Bali most people book an ojek in a phone app. In order:
+        - Pertama, buka aplikasi. (First, open the app.)
+        - Lalu, tulis tujuan. (Then, type your destination.)
+        - Setelah itu, tunggu sopir. (After that, wait for the driver) and tell him where you are and what you're wearing.
+        - Akhirnya, bayar: tunai (cash) or in the app.
+        The driver hands you a helm (helmet). Say "Pelan-pelan, Pak" if the road is slippery.
+    grammar: id.conjunction.sequence
+    examples:
+      - text: Saya di depan pura, pakai baju biru.
+        ar_eg: أنا قدام المعبد، لابس قميص أزرق.
+        ar: أنا أمام المعبد، أرتدي قميصًا أزرق.
+        en: I'm in front of the temple, wearing a blue shirt.
 exercises:
   - id: e01
-    type: listen
-    text: Pertama, kamu naik angkot ke terminal.
-    question:
-      ar_eg: محمد يروح المحطة (terminal) بإيه؟
-      ar: بماذا يذهب محمد إلى المحطة (terminal)؟
-      en: How does Mohamed get to the bus terminal?
-    options: [naik ojek, naik angkot, naik bus]
-    answer: 1
-    meaning:
-      ar_eg: الأول، اركب ميكروباص لحد موقف الأتوبيسات.
-      ar: أولًا، اركب الحافلة الصغيرة إلى محطة الحافلات.
-      en: First, take an angkot to the bus terminal.
-    words: [pertama, angkot, terminal]
-  - id: e02
-    type: listen
-    text: Lalu, kamu naik bus ke Bedugul. Busnya bolak-balik dari Denpasar ke Bedugul.
-    question:
-      ar_eg: الأتوبيس رايح جاي بين أنهي مكانين؟
-      ar: بين أيّ مكانين تذهب الحافلة وتعود؟
-      en: Between which two places does the bus go back and forth?
-    options: [Denpasar dan Bedugul, Sanur dan Bedugul, Denpasar dan Ubud]
-    answer: 0
-    meaning:
-      ar_eg: بعدين اركب الأتوبيس لبدوجول. الأتوبيس رايح جاي من دنباسار لبدوجول.
-      ar: ثم اركب الحافلة إلى بدوغول. الحافلة تذهب وتعود بين دنباسار وبدوغول.
-      en: Then take the bus to Bedugul. The bus goes back and forth between Denpasar and Bedugul.
-    words: [lalu, bolak-balik]
-  - id: e03
-    type: listen
-    text: Ketika kamu sampai di Bedugul, aku tunggu di dekat danau.
-    question:
-      ar_eg: راكا هيستنّى فين؟
-      ar: أين سينتظر راكا؟
-      en: Where will Raka wait?
-    options: [di terminal, di dekat danau, di hotel]
-    answer: 1
-    meaning:
-      ar_eg: لما توصل بدوجول، هستناك جنب البحيرة.
-      ar: عندما تصل إلى بدوغول، سأنتظرك قرب البحيرة.
-      en: When you get to Bedugul, I'll wait near the lake.
-    words: [ketika, danau, tunggu]
-  - id: e04
-    type: listen
-    text: Jangan lupa bawa jaket, ya! Di Bedugul dingin.
-    question:
-      ar_eg: محمد لازم ياخد معاه إيه؟
-      ar: ماذا يجب أن يأخذ محمد معه؟
-      en: What should Mohamed bring?
-    options: [payung, helm, jaket]
-    answer: 2
-    meaning:
-      ar_eg: ما تنساش تجيب جاكت! بدوجول برد.
-      ar: لا تنسَ أن تحضر سترة! الجو بارد في بدوغول.
-      en: Don't forget to bring a jacket! It's cold in Bedugul.
-    words: [jaket, dingin, jangan, lupa]
-  - id: e05
-    type: match_pairs
-    pairs:
-      - text: dingin
-        ar_eg: برد، ساقع
-        ar: بارد
-        en: cold
-      - text: jaket
-        ar_eg: جاكت
-        ar: سترة
-        en: jacket
-      - text: bolak-balik
-        ar_eg: رايح جاي
-        ar: ذهابًا وإيابًا
-        en: back and forth
-      - text: danau
-        ar_eg: بحيرة
-        ar: بحيرة
-        en: lake
-      - text: terminal
-        ar_eg: موقف أتوبيسات
-        ar: محطة حافلات
-        en: bus terminal
-    words: [dingin, jaket, bolak-balik, danau, terminal]
-  - id: e06
     type: multiple_choice
     question_meaning:
-      ar_eg: حسب الرسالة، محمد هيركب إيه بالترتيب؟
-      ar: بحسب الرسالة، ماذا سيركب محمد بالترتيب؟
-      en: According to the message, what will Mohamed take, in order?
-    options:
-      - "Pertama angkot, lalu bus."
-      - "Pertama bus, lalu angkot."
-      - "Pertama ojek, lalu bus."
+      ar_eg: السواق بعتلك «Mas di mana?». ترد بإيه؟
+      ar: أرسل إليك السائق «Mas di mana?». بماذا تردّ؟
+      en: The driver texts "Mas di mana?" (Where are you?). Your reply?
+    options: [Saya naik ojek sambil makan., 'Saya di depan pura, pakai baju biru.', Akhirnya saya pulang.]
+    answer: 1
+    words: [di depan, pakai]
+  - id: e02
+    type: listen
+    text: Tunggu lima menit, ya.
+    options: ['Tunggu lima menit, ya.', 'Tunggu satu menit, ya.', 'Tunggu lima belas menit, ya.']
     answer: 0
-    words: [pertama, lalu]
-  - id: e07
+    words: [tunggu, menit]
+  - id: e03
     type: fill_blank
-    sentence: Di Bedugul ___ sekali, jadi saya pakai jaket.
+    sentence: Bayar ___ atau pakai aplikasi?
     meaning:
-      ar_eg: في بدوجول برد أوي، فأنا لابس جاكت.
-      ar: الجو بارد جدًا في بدوغول، لذلك ألبس سترة.
-      en: It's very cold in Bedugul, so I'm wearing a jacket.
-    answers: [dingin]
-    words: [dingin, jaket]
-  - id: e08
+      ar_eg: هتدفع كاش ولا بالأبلكيشن؟
+      ar: هل تدفع نقدًا أم عبر التطبيق؟
+      en: Paying cash or with the app?
+    options: [tujuan, helm, tunai]
+    answers: [tunai]
+    words: [tunai, aplikasi]
+  - id: e04
     type: build_sentence
     source:
-      ar_eg: بعدين اركب الأتوبيس لبدوجول.
-      ar: ثم اركب الحافلة إلى بدوغول.
-      en: Then take the bus to Bedugul.
-    answer: Lalu, kamu naik bus ke Bedugul.
-    distractors: [sambil, ketika]
-    words: [lalu]
+      ar_eg: الأول، افتح أبلكيشن الأوجيك.
+      ar: أولًا، افتح تطبيق درّاجة الأجرة.
+      en: First, open the ojek app.
+    answer: Pertama, buka aplikasi ojek.
+    distractors: [akhirnya, tutup]
+    words: [pertama, buka, aplikasi]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: لو سمحت بالراحة، الطريق بيزحلق.
+      ar: من فضلك تمهّل، الطريق زلق.
+      en: Please go slowly, the road is slippery.
+    answer: Tolong pelan-pelan, jalannya licin.
+    distractors: [cepat-cepat, sambil]
+    words: [tolong, pelan-pelan, licin]
+  - id: e06
+    type: fill_blank
+    sentence: Saya melihat pemandangan ___ naik ojek.
+    meaning:
+      ar_eg: بتفرج على المنظر وأنا راكب الأوجيك.
+      ar: أتأمل المناظر وأنا أركب درّاجة الأجرة.
+      en: I look at the scenery while riding the ojek.
+    options: [akhirnya, pertama, sambil]
+    answers: [sambil]
+    words: [sambil, pemandangan]
+  - id: e07
+    type: listen
+    text: Saya bayar tunai, ya, Pak.
+    options: ['Saya bayar tunai, ya, Pak.', 'Saya bayar pakai aplikasi, ya, Pak.', 'Saya pakai helm, ya, Pak.']
+    answer: 0
+    meaning:
+      ar_eg: هدفع كاش يا أسطى.
+      ar: سأدفع نقدًا يا سيدي.
+      en: I'll pay cash, sir.
+    words: [tunai, aplikasi, helm]
+  - id: e08
+    type: match_pairs
+    pairs:
+      - text: aplikasi
+        ar_eg: أبلكيشن
+        ar: تطبيق
+        en: app
+      - text: helm
+        ar_eg: خوذة
+        ar: خوذة
+        en: helmet
+      - text: tunai
+        ar_eg: كاش
+        ar: نقدًا
+        en: cash
+      - text: ojek
+        ar_eg: موتوسيكل أجرة
+        ar: درّاجة نارية أجرة
+        en: motorbike taxi
+      - text: sopir
+        ar_eg: سوّاق
+        ar: سائق
+        en: driver
+      - text: pelan-pelan
+        ar_eg: بالراحة
+        ar: ببطء
+        en: slowly
+    words: [aplikasi, helm, tunai, ojek, sopir, pelan-pelan]
   - id: e09
     type: dictation
-    text: Busnya bolak-balik dari Denpasar ke Bedugul.
+    text: Ini helmnya, Mas. Tolong pakai, ya.
     meaning:
-      ar_eg: الأتوبيس رايح جاي من دنباسار لبدوجول.
-      ar: الحافلة تذهب وتعود بين دنباسار وبدوغول.
-      en: The bus goes back and forth between Denpasar and Bedugul.
-    words: [bolak-balik]
+      ar_eg: اتفضل الخوذة يا باشا. البسها لو سمحت.
+      ar: هذه خوذتك يا أخي. ارتدها من فضلك.
+      en: Here's your helmet, Mas. Please put it on.
+    words: [helm, tolong, pakai]
   - id: e10
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: ما تنساش تجيب جاكت!
-      ar: لا تنسَ أن تحضر سترة!
-      en: Don't forget to bring a jacket!
-    answers:
-      - Jangan lupa bawa jaket!
-      - Jangan lupa bawa jaket
-      - Jangan lupa bawa jaket.
-      - Jangan lupa bawa jaket, ya!
-      - Jangan lupa bawa jaket, ya.
-      - Jangan lupa membawa jaket!
-      - Jangan lupa membawa jaket
-      - Jangan lupa membawa jaket.
-      - Jangan lupa membawa jaket, ya!
-    words: [jaket, jangan, lupa]
+    type: speaking
+    text: Selamat sore, Pak. Saya di depan pura, pakai baju biru.
+    meaning:
+      ar_eg: مساء الخير يا أسطى. أنا قدام المعبد، لابس قميص أزرق.
+      ar: مساء الخير يا سيدي. أنا أمام المعبد، أرتدي قميصًا أزرق.
+      en: Good afternoon, sir. I'm in front of the temple, wearing a blue shirt.
 dialogue:
-  title: Telepon dari terminal
+  title: Ojek dari Pura Ulun Danu
   lines:
     - speaker: Mohamed
-      text: Halo, Raka! Saya sudah di terminal.
-      ar_eg: ألو يا راكا! أنا وصلت الموقف.
-      ar: مرحبًا يا راكا! أنا الآن في المحطة.
-      en: Hi, Raka! I'm at the terminal now.
-    - speaker: Raka
-      text: Bagus! Sekarang naik bus ke Bedugul, ya.
-      ar_eg: حلو! دلوقتي اركب الأتوبيس لبدوجول.
-      ar: جيد! الآن اركب الحافلة إلى بدوغول.
-      en: Great! Now take the bus to Bedugul.
+      text: Selamat sore, Pak. Saya di depan Pura Ulun Danu, pakai baju biru.
+      ar_eg: مساء الخير يا أسطى. أنا قدام معبد أولون دانو، لابس قميص أزرق.
+      ar: مساء الخير يا سيدي. أنا أمام معبد أولون دانو، أرتدي قميصًا أزرق.
+      en: Good afternoon, sir. I'm in front of Ulun Danu Temple, wearing a blue shirt.
+    - speaker: Pak Wayan
+      text: Baik, Mas. Saya sudah dekat. Tunggu lima menit, ya.
+      ar_eg: تمام يا أستاذ. أنا قربت. استنى خمس دقايق.
+      ar: حسنًا يا أخي، أنا قريب. انتظر خمس دقائق.
+      en: OK. I'm close. Wait five minutes.
+    - speaker: Pak Wayan
+      text: Mas Mohamed? Ini helmnya. Ke terminal, ya?
+      ar_eg: أستاذ محمد؟ اتفضل الخوذة. على الموقف، صح؟
+      ar: الأستاذ محمد؟ تفضل الخوذة. إلى المحطة، صحيح؟
+      en: Mohamed? Here's your helmet. To the terminal, right?
     - speaker: Mohamed
-      text: Di sini banyak bus. Yang mana?
-      ar_eg: هنا فيه أتوبيسات كتير. أنهي واحد؟
-      ar: هنا حافلات كثيرة. أيّها؟
-      en: There are lots of buses here. Which one?
-    - speaker: Raka
-      text: Yang biru, di sebelah loket.
-      ar_eg: الأزرق، اللي جنب الشباك بتاع التذاكر.
-      ar: الزرقاء، التي بجانب شباك التذاكر.
-      en: The blue one, next to the ticket window.
+      text: Betul, Pak. Tolong pelan-pelan saja, jalannya licin.
+      ar_eg: مظبوط يا أسطى. لو سمحت بالراحة، الطريق بيزحلق.
+      ar: صحيح يا سيدي. تمهّل من فضلك، الطريق زلق.
+      en: That's right. Please go slowly, the road is slippery.
+    - speaker: Pak Wayan
+      text: Sudah sampai, Mas. Bayar tunai atau pakai aplikasi?
+      ar_eg: وصلنا يا أستاذ. هتدفع كاش ولا بالأبلكيشن؟
+      ar: وصلنا. هل تدفع نقدًا أم عبر التطبيق؟
+      en: We're here. Paying cash or with the app?
     - speaker: Mohamed
-      text: Oke. Saya juga sudah bawa jaket.
-      ar_eg: تمام. وأنا كمان جبت الجاكت.
-      ar: حسنًا. وقد أحضرت السترة أيضًا.
-      en: OK. And I've brought a jacket too.
-    - speaker: Raka
-      text: Bagus! Di sini dingin sekali. Sampai nanti!
-      ar_eg: حلو! هنا برد أوي. أشوفك بعدين!
-      ar: جيد! الجو هنا بارد جدًا. إلى اللقاء!
-      en: Good! It's really cold here. See you soon!
+      text: Tunai saja. Ini uangnya. Terima kasih, Pak!
+      ar_eg: كاش. اتفضل الفلوس. شكرًا يا أسطى!
+      ar: نقدًا. تفضّل المال. شكرًا يا سيدي!
+      en: Cash. Here's the money. Thank you!
 new_words:
-  - word: dingin
-    pos: adjective
-    ar_eg: برد، ساقع
-    ar: بارد
-    en: cold
-  - word: jaket
+  - word: aplikasi
     pos: noun
-    ar_eg: جاكت
-    ar: سترة
-    en: jacket
+    ar_eg: أبلكيشن، تطبيق
+    ar: تطبيق
+    en: app
+  - word: helm
+    pos: noun
+    ar_eg: خوذة
+    ar: خوذة
+    en: helmet
+  - word: tunai
+    pos: adjective
+    ar_eg: كاش
+    ar: نقدًا
+    en: cash
 review:
   status: draft
   verified: false

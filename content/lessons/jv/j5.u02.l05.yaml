@@ -1,201 +1,195 @@
 schema: kabar.lesson/v1
 id: j5.u02.l05
 language: jv
-title: Pameran ing Lawang Sewu
+title: Warta cekak
 can_do:
-  ar_eg: تقرا خبر عن معرض وتعرف مين عمل إيه وإمتى.
-  ar: أن تقرأ خبرًا عن معرض وتعرف من فعل ماذا ومتى.
-  en: Read a news item about an exhibition and find who did what, and when.
+  ar_eg: تقرا خبر قصير.
+  ar: أن تقرأ خبرًا قصيرًا.
+  en: Read a short news item.
 slides:
-  - title: Warta pameran
+  - title: Rob ing Semarang
     body:
       ar_eg: |
-        خبر قصير من جرنان سيمارانج، كله مبني للمجهول زي الأخبار الإندونيسي. اسأل كل جملة: إيه اللي حصل؟ ومين عمله (dening)؟
-        كلمات جديدة: pameran = معرض (pameran)، dianakake = اتعمل / اتنظّم (diadakan، من ana + -ake)، dibukak = اتفتح (dibuka). وWalikota = عمدة المدينة (wali kota)، وdijupuk من jupuk = اتاخدت (diambil).
+        خبر قصير من جرنال سيمارانج. اسأل نفسك تلات أسئلة: حصل إيه؟ مين عمل؟ إمتى؟
+        rob = لما مية البحر تطلع على الشوارع وقت المد العالي، وده بيحصل كتير في سيمارانج. kebanjiran = غرقت مية (ke-…-an = حاجة حصلتلها). diresiki = اتنضّفت (resik = نضيف).
       ar: |
-        خبر قصير من صحيفة سيمارانج، كله بالمبني للمجهول كالأخبار الإندونيسية. اسأل عن كل جملة: ماذا حدث؟ ومن فعله (dening)؟
-        كلمات جديدة: pameran = معرض (pameran)، وdianakake = أُقيم (diadakan، من ana + -ake)، وdibukak = افتُتح (dibuka). وWalikota = عمدة المدينة (wali kota)، وdijupuk من jupuk = التُقطت (diambil).
+        خبر قصير من جريدة في سيمارانج. اسأل نفسك ثلاثة أسئلة: ماذا حدث؟ من فعل؟ متى؟
+        rob = طغيان ماء البحر على الشوارع عند المدّ العالي، وهو كثير في سيمارانج. وkebanjiran = غمرته المياه (ke-…-an لما أصاب الشيء)، وdiresiki = نُظِّف (resik = نظيف).
       en: |
-        A short item from a Semarang paper, all in the passive like Indonesian news. Ask of each sentence: what happened, and who did it (dening)?
-        New words: pameran = exhibition (pameran), dianakake = was held (diadakan, from ana + -ake), dibukak = was opened (dibuka). Walikota = mayor (wali kota), and dijupuk, from jupuk, = was taken (diambil).
+        A short news item from a Semarang paper. Ask three questions: what happened? who did it? when?
+        rob = seawater spilling onto the streets at high tide, common in Semarang. kebanjiran = got flooded (ke-…-an = something happened to it). diresiki = was cleaned (resik = clean).
     grammar: jv.passive.written
     examples:
-      - text: Pameran foto sepur lawas dianakake ing Lawang Sewu.
-        ar_eg: اتعمل معرض صور للقطرات القديمة في لاوانج سيوو.
-        ar: أُقيم معرض صور للقطارات القديمة في لاوانغ سيوو.
-        en: An exhibition of photos of old trains is being held at Lawang Sewu.
-      - text: Pameran kasebut dibukak dening Walikota Semarang wingi esuk.
-        ar_eg: المعرض ده افتتحه عمدة سيمارانج امبارح الصبح.
-        ar: افتتح عمدة سيمارانج المعرض المذكور صباح أمس.
-        en: The exhibition was opened by the Mayor of Semarang yesterday morning.
-      - text: Foto-foto kasebut dijupuk ing jaman Walanda.
-        ar_eg: الصور دي اتصوّرت أيام الهولنديين.
-        ar: التُقطت هذه الصور في العهد الهولندي.
-        en: The photos were taken in the Dutch era.
+      - text: Dalan ing Kutha Lama kebanjiran rob wingi sore.
+        ar_eg: الشارع في كوتا لاما غرق من مية البحر امبارح العصر.
+        ar: غمر ماءُ المدّ الشارعَ في كوتا لاما عصر أمس.
+        en: The road in Kota Lama was flooded by the tide yesterday afternoon.
+      - text: Esuk iki, dalan kasebut wis diresiki dening warga.
+        ar_eg: الصبح ده، الأهالي نضّفوا الشارع المذكور خلاص.
+        ar: وفي صباح اليوم نظّف الأهالي الشارع المذكور.
+        en: This morning, the said road was cleaned up by the residents.
+      - text: Rob kerep teka ing pesisir lor.
+        ar_eg: المد العالي بييجي كتير على الساحل الشمالي.
+        ar: يأتي المدّ العالي كثيرًا على الساحل الشمالي.
+        en: Tidal floods often come to the north coast.
 exercises:
   - id: e01
-    type: multiple_choice
-    question_meaning:
-      ar_eg: المعرض عن إيه؟
-      ar: عمَّ هذا المعرض؟
-      en: What is the exhibition about?
-    options: [buku lawas, foto sepur lawas, panganan Semarang]
-    answer: 1
-    words: [pameran]
-  - id: e02
     type: listen
-    text: Pameran kasebut dibukak dening Walikota Semarang wingi esuk.
+    text: Dalan ing Kutha Lama kebanjiran rob wingi sore.
     question:
-      ar_eg: مين اللي افتتح المعرض؟
-      ar: من افتتح المعرض؟
-      en: Who opened the exhibition?
-    options: [warga, perusahaan sepur, Walikota Semarang]
-    answer: 2
+      ar_eg: إيه اللي حصل للشارع؟
+      ar: ماذا حدث للشارع؟
+      en: What happened to the road?
+    options: [didandani dening warga, kebanjiran rob, ditutup dening polisi]
+    answer: 1
     meaning:
-      ar_eg: المعرض ده افتتحه عمدة سيمارانج امبارح الصبح.
-      ar: افتتح عمدة سيمارانج المعرض المذكور صباح أمس.
-      en: The exhibition was opened by the Mayor of Semarang yesterday morning.
-    explain:
-      ar_eg: اللي بعد dening هو اللي عمل الفعل.
-      ar: من يأتي بعد dening هو الفاعل.
-      en: Whoever comes after dening did the action.
-    words: [dibukak, dening]
-  - id: e03
+      ar_eg: الشارع في كوتا لاما غرق من مية البحر امبارح العصر.
+      ar: غمر ماءُ المدّ الشارعَ في كوتا لاما عصر أمس.
+      en: The road in Kota Lama was flooded by the tide yesterday afternoon.
+    words: [kebanjiran, rob]
+  - id: e02
     type: multiple_choice
+    question: Esuk iki, dalan kasebut wis diresiki dening warga.
     question_meaning:
-      ar_eg: الصور اتصوّرت إمتى؟
-      ar: متى التُقطت الصور؟
-      en: When were the photos taken?
-    options: [ing jaman Walanda, wingi esuk, saiki]
+      ar_eg: مين اللي نضّف الشارع؟
+      ar: من نظّف الشارع؟
+      en: Who cleaned the road?
+    options: [warga, lurah, Pak Harjo]
     answer: 0
-    explain:
-      ar_eg: wingi esuk ده وقت افتتاح المعرض، مش وقت الصور.
-      ar: wingi esuk وقت افتتاح المعرض، لا وقت التقاط الصور.
-      en: wingi esuk is when the exhibition opened, not when the photos were taken.
-    words: [dijupuk]
-  - id: e04
-    type: match_pairs
-    pairs:
-      - text: pameran
-        ar_eg: معرض
-        ar: معرض
-        en: exhibition
-      - text: dianakake
-        ar_eg: اتعمل / اتنظّم
-        ar: أُقيم
-        en: was held
-      - text: dibukak
-        ar_eg: اتفتح
-        ar: افتُتح
-        en: was opened
-      - text: dijupuk
-        ar_eg: اتاخد
-        ar: أُخذ / التُقط
-        en: was taken
-      - text: kasebut
-        ar_eg: المذكور / ده
-        ar: المذكور
-        en: the said, that
-    words: [pameran, dianakake, dibukak, kasebut]
-  - id: e05
+    words: [diresiki, dening]
+  - id: e03
     type: fill_blank
-    sentence: Pameran foto sepur lawas ___ ing Lawang Sewu.
+    sentence: Dalan kasebut wis ___ dening warga.
     meaning:
-      ar_eg: اتعمل معرض صور للقطرات القديمة في لاوانج سيوو.
-      ar: أُقيم معرض صور للقطارات القديمة في لاوانغ سيوو.
-      en: An exhibition of photos of old trains is being held at Lawang Sewu.
-    options: [dijupuk, dianakake, didandani]
-    answers: [dianakake]
-    explain:
-      ar_eg: المعرض «بيتعمل» = dianakake. الصور هي اللي dijupuk.
-      ar: المعرض «يُقام» = dianakake، أما الصور فهي التي dijupuk.
-      en: An exhibition is held = dianakake; it's the photos that were dijupuk.
-    words: [dianakake, pameran]
-  - id: e06
-    type: dictation
-    text: Pameran foto sepur lawas dianakake ing Lawang Sewu.
+      ar_eg: الأهالي نضّفوا الشارع المذكور خلاص.
+      ar: نظّف الأهالي الشارع المذكور.
+      en: The said road has been cleaned up by the residents.
+    options: [kebanjiran, kapilih, diresiki]
+    answers: [diresiki]
+    words: [diresiki]
+  - id: e04
+    type: fill_blank
+    sentence: Rob ___ teka ing pesisir lor.
     meaning:
-      ar_eg: اتعمل معرض صور للقطرات القديمة في لاوانج سيوو.
-      ar: أُقيم معرض صور للقطارات القديمة في لاوانغ سيوو.
-      en: An exhibition of photos of old trains is being held at Lawang Sewu.
-    words: [pameran, dianakake]
-  - id: e07
+      ar_eg: المد العالي بييجي كتير على الساحل الشمالي.
+      ar: يأتي المدّ العالي كثيرًا على الساحل الشمالي.
+      en: Tidal floods often come to the north coast.
+    options: [lawas, kerep, misuwur]
+    answers: [kerep]
+    words: [kerep, rob]
+  - id: e05
     type: build_sentence
     source:
-      ar_eg: (بأسلوب الأخبار) المعرض ده افتتحه عمدة سيمارانج.
-      ar: (بأسلوب الأخبار) افتتح عمدة سيمارانج المعرض المذكور.
-      en: (news style) The exhibition was opened by the Mayor of Semarang.
-    answer: Pameran kasebut dibukak dening Walikota Semarang.
-    distractors: [dianakake, saka]
-    words: [pameran, dibukak, dening, kasebut]
-  - id: e08
+      ar_eg: الساحل الشمالي كتير بيغرق من المد العالي.
+      ar: كثيرًا ما يغمر المدُّ الساحلَ الشمالي.
+      en: The north coast often gets flooded by the tide.
+    answer: Pesisir lor kerep kebanjiran rob.
+    distractors: [kidul, dening]
+    words: [kerep, kebanjiran, rob]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (بأسلوب الخبر) الشارع غرق من مية البحر امبارح.
+      ar: (بأسلوب الخبر) غمر ماءُ المدّ الشارعَ أمس.
+      en: (news style) The road was flooded by the tide yesterday.
+    answers:
+      - Dalan iku kebanjiran rob wingi.
+      - Wingi dalan iku kebanjiran rob.
+      - Dalan kasebut kebanjiran rob wingi.
+      - Wingi dalan kasebut kebanjiran rob.
+      - Dalane kebanjiran rob wingi.
+      - Wingi dalane kebanjiran rob.
+      - Dalan iki kebanjiran rob wingi.
+    words: [kebanjiran, rob]
+  - id: e07
     type: translate
     direction: from_target
-    source_text: Foto-foto kasebut dijupuk ing jaman Walanda.
+    source_text: Rob kerep teka ing pesisir lor.
     answers_meaning:
       ar_eg:
-        - الصور دي اتصوّرت أيام الهولنديين.
-        - الصور دي اتاخدت أيام الهولنديين.
-        - الصور دي اتصوّرت في عهد الهولنديين.
-        - الصور المذكورة اتصوّرت أيام هولندا.
-        - الصور دي اتصورت في العصر الهولندي.
+        - المد العالي بييجي كتير على الساحل الشمالي.
+        - مية البحر بتطلع كتير على الساحل الشمالي.
+        - الـ rob بييجي كتير على الساحل الشمالي.
+        - المد بييجي كتير في الساحل الشمالي.
       ar:
-        - التُقطت هذه الصور في العهد الهولندي.
-        - التُقطت الصور المذكورة في العهد الهولندي.
-        - التُقطت هذه الصور في زمن الهولنديين.
-        - أُخذت هذه الصور في العهد الهولندي.
+        - يأتي المدّ العالي كثيرًا على الساحل الشمالي.
+        - كثيرًا ما يأتي المدّ على الساحل الشمالي.
+        - يكثر طغيان ماء البحر على الساحل الشمالي.
+        - يأتي الـ rob كثيرًا على الساحل الشمالي.
       en:
-        - The photos were taken in the Dutch era.
-        - These photos were taken in the Dutch era.
-        - The said photos were taken in the Dutch era.
-        - The photos were taken in the Dutch colonial era.
-        - The photos were taken during the Dutch era.
-        - Those photos were taken in Dutch times.
-    words: [dijupuk, kasebut]
+        - Tidal floods often come to the north coast.
+        - Tidal flooding often comes to the north coast.
+        - The tide often floods the north coast.
+        - Rob often comes to the north coast.
+        - Tidal floods often hit the north coast.
+        - Tidal flooding often hits the north coast.
+    words: [kerep, rob]
+  - id: e08
+    type: dictation
+    text: Esuk iki, dalan kasebut wis diresiki dening warga.
+    meaning:
+      ar_eg: الصبح ده، الأهالي نضّفوا الشارع المذكور خلاص.
+      ar: وفي صباح اليوم نظّف الأهالي الشارع المذكور.
+      en: This morning, the said road was cleaned up by the residents.
+    words: [diresiki, kasebut]
+  - id: e09
+    type: speaking
+    text: Dalan ing Kutha Lama kebanjiran rob.
+    meaning:
+      ar_eg: الشارع في كوتا لاما غرق من مية البحر.
+      ar: غمر ماءُ المدّ الشارعَ في كوتا لاما.
+      en: The road in Kota Lama got flooded by the tide.
+    words: [kebanjiran, rob]
 dialogue:
-  title: Ayo menyang pameran
+  title: Warta ing warung
   lines:
-    - speaker: Pak Harjo
-      text: Mas, wis maca warta? Ana pameran foto ing Lawang Sewu.
-      ar_eg: يا محمد، قريت الخبر؟ فيه معرض صور في لاوانج سيوو.
-      ar: يا محمد، هل قرأت الخبر؟ هناك معرض صور في لاوانغ سيوو.
-      en: Mohamed, have you read the news? There's a photo exhibition at Lawang Sewu.
     - speaker: Mohamed
-      text: Sampun, Pak. Fotonipun saking jaman Walanda, nggih?
-      ar_eg: قريته يا عمّو. الصور من أيام الهولنديين، صح؟
-      ar: قرأته يا سيدي. الصور من العهد الهولندي، أليس كذلك؟
-      en: I have, sir. The photos are from the Dutch era, aren't they?
+      text: Pak, wonten warta menapa ing koran?
+      ar_eg: يا عمّو، فيه أخبار إيه في الجرنال؟
+      ar: يا سيدي، ما الأخبار في الجريدة؟
+      en: Sir, what news is in the paper?
     - speaker: Pak Harjo
-      text: Iya. Foto-foto iku dijupuk ing jaman Walanda.
-      ar_eg: آه. الصور دي اتصوّرت أيام الهولنديين.
-      ar: نعم. التُقطت تلك الصور في العهد الهولندي.
-      en: Yes. Those photos were taken in the Dutch era.
+      text: Dalan ing Kutha Lama kebanjiran rob wingi sore.
+      ar_eg: الشارع في كوتا لاما غرق من مية البحر امبارح العصر.
+      ar: غمر المدُّ الشارعَ في كوتا لاما عصر أمس.
+      en: The road in Kota Lama was flooded by the tide yesterday afternoon.
     - speaker: Mohamed
-      text: Kula badhe ningali, Pak.
-      ar_eg: أنا عايز أتفرّج عليها يا عمّو.
-      ar: أريد أن أراها يا سيدي.
-      en: I'd like to see them, sir.
+      text: Rob menika menapa, Pak?
+      ar_eg: يعني إيه rob يا عمّو؟
+      ar: ما الـ rob يا سيدي؟
+      en: What's rob, sir?
     - speaker: Pak Harjo
-      text: Ayo, saiki wae. Pamerane dibukak nganti sore.
-      ar_eg: يلا، دلوقتي حالًا. المعرض مفتوح لحد العصر.
-      ar: هيا، الآن. المعرض مفتوح حتى المساء.
-      en: Come on, right now. The exhibition is open until the afternoon.
+      text: Banyu segara sing munggah menyang dalan. Ing Semarang kerep.
+      ar_eg: مية البحر اللي بتطلع على الشوارع. بتحصل كتير في سيمارانج.
+      ar: ماء البحر حين يصعد إلى الشوارع، ويكثر في سيمارانج.
+      en: Seawater that comes up onto the streets. It happens a lot in Semarang.
+    - speaker: Mohamed
+      text: Oh, kula ngertos. Matur nuwun, Pak.
+      ar_eg: آه، فهمت. متشكر يا عمّو.
+      ar: آه، فهمت. شكرًا يا سيدي.
+      en: Oh, I see. Thank you, sir.
 new_words:
-  - word: pameran
+  - word: rob
     pos: noun
-    ar_eg: معرض
-    ar: معرض
-    en: exhibition = pameran
-  - word: dianakake
+    ar_eg: طغيان مية البحر على الشوارع وقت المد العالي
+    ar: طغيان ماء البحر على اليابسة عند المدّ العالي
+    en: tidal flood = banjir rob
+  - word: kebanjiran
     pos: verb
-    ar_eg: اتعمل / اتنظّم (من ana + -ake)
-    ar: أُقيم (من ana + -ake)
-    en: was held (from ana + -ake) = diadakan
-  - word: dibukak
+    ar_eg: غرق مية (اتعرّض لفيضان)
+    ar: غمرته المياه
+    en: got flooded = kebanjiran
+  - word: diresiki
     pos: verb
-    ar_eg: اتفتح (من bukak = يفتح)
-    ar: افتُتح (من bukak = فتح)
-    en: was opened (from bukak, open) = dibuka
+    ar_eg: اتنضّف (من resik = نضيف)
+    ar: نُظِّف (من resik = نظيف)
+    en: was cleaned (from resik, clean) = dibersihkan
+  - word: kerep
+    pos: adverb
+    ar_eg: كتير / غالبًا
+    ar: كثيرًا / غالبًا
+    en: often = sering
 review:
   status: draft
   verified: false

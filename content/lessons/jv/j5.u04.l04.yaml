@@ -1,191 +1,236 @@
 schema: kabar.lesson/v1
 id: j5.u04.l04
 language: jv
-title: Screenshot Decoder
+title: Aja sombong
 can_do:
-  ar_eg: تقرا سكرين شوت من جروب شات بمساعدة الـ Reader.
-  ar: أن تقرأ لقطة شاشة من محادثة جماعية بمساعدة القارئ (Reader).
-  en: Read a group-chat screenshot with the Reader.
+  ar_eg: 'تقرا خناقة في الكومنتات: مين بيتنك، ومين غيران، وإزاي اتصالحوا.'
+  ar: 'أن تقرأ شجارًا في التعليقات: من يتكبّر ومن يحسد وكيف تصالحوا.'
+  en: 'Read a comment-thread fight: who''s showing off, who''s jealous and how they made up.'
 slides:
-  - title: Grup "Dolan Ambarawa"
+  - title: Ing kolom komentar
     body:
       ar_eg: |
-        سكرين شوت من جروب صحاب بيخططوا لفسحة. لو فتحته في الـ Reader بتاع Kabar، هيلوّن كل كلمة حسب لغتها. بس جرّب الأول لوحدك:
-        blm = belum (لسه)، iso = isa (يقدر) بإملا الشات، gpp = gak papa (مفيش مشكلة)، kuliah = محاضرة / جامعة.
+        sombong = متكبر أو بيتنك، iri = حاسد (عايز اللي عند غيره)، cemburu = غيران (على حبيبه).
+        sambat = يشتكي ويتأفف، kapok = اتعلم الدرس ومش هيعملها تاني.
+        njaluk ngapura = يطلب السماح، nyapa = يسلّم على حد، selo = فاضي.
       ar: |
-        لقطة شاشة من مجموعة أصدقاء يخططون لنزهة. لو فتحتها في القارئ (Reader) في Kabar للوّن كل كلمة بحسب لغتها، لكن جرّب وحدك أولًا:
-        blm = belum (لم بعد)، وiso = isa (يستطيع) بإملاء الدردشة، وgpp = gak papa (لا بأس)، وkuliah = محاضرة / دراسة جامعية.
+        sombong = متكبّر، iri = حاسد (يتمنى ما عند غيره)، cemburu = غيور (على حبيبه).
+        sambat = يشكو ويتذمّر، kapok = تعلّم الدرس فلن يكررها.
+        njaluk ngapura = يطلب الصفح، nyapa = يحيّي أحدًا، selo = متفرّغ.
       en: |
-        A screenshot from a friends' group planning an outing. Open it in Kabar's Reader and every word gets coloured by language. But try it yourself first:
-        blm = belum (not yet), iso = isa (can) in chat spelling, gpp = gak papa (no problem), kuliah = lectures, university.
-    grammar: jv.codemix
+        sombong = arrogant, showing off; iri = envious; cemburu = jealous (over a partner).
+        sambat = complain, moan; kapok = learned one's lesson, never again.
+        njaluk ngapura = ask forgiveness, nyapa = greet someone, selo = free, not busy.
     examples:
-      - text: Guys, sesuk jadi dolan neng Ambarawa ora?
-        ar_eg: يا جماعة، الفسحة بتاعة بكرة في أمباراوا لسه قايمة؟
-        ar: يا جماعة، هل ما زالت نزهة الغد إلى أمباراوا قائمة؟
-        en: Guys, is tomorrow's trip to Ambarawa still on?
-      - text: Aku blm iso, ana kuliah. Sorry yo.
-        ar_eg: أنا لسه مش هقدر، عندي محاضرة. سوري.
-        ar: لا أستطيع بعد، عندي محاضرة. آسف.
-        en: I can't yet, I have class. Sorry.
-      - text: Gpp, mengko fotone tak kirim neng grup.
-        ar_eg: مفيش مشكلة، هبعت الصور على الجروب بعدين.
-        ar: لا بأس، سأرسل الصور إلى المجموعة لاحقًا.
-        en: No problem, I'll send the photos to the group later.
+      - text: Aja sombong, kabeh wong bisa salah.
+        ar_eg: ماتتكبرش، كل الناس بتغلط.
+        ar: لا تتكبّر، فكل الناس يخطئون.
+        en: Don't be arrogant; everyone makes mistakes.
+      - text: Kowe kok sambat terus ing status?
+        ar_eg: إنت ليه على طول بتشتكي في الستيتس؟
+        ar: لماذا تشكو دائمًا في منشوراتك؟
+        en: Why do you keep moaning in your status?
+      - text: Aku kapok, ora arep nyebarake warta palsu maneh.
+        ar_eg: اتعلمت الدرس، مش هنشر أخبار كدب تاني.
+        ar: تعلّمت الدرس، لن أنشر أخبارًا كاذبة مرة أخرى.
+        en: 'Lesson learned: I won''t spread fake news again.'
 exercises:
   - id: e01
-    type: multiple_choice
-    question: Aku blm iso, ana kuliah. Sorry yo.
-    question_meaning:
-      ar_eg: الشخص ده هييجي؟
-      ar: هل سيأتي هذا الشخص؟
-      en: Is this person coming?
-    options: ['Bisa datang.', 'Belum bisa datang.', 'Sudah datang.']
-    answer: 1
-    explain:
-      ar_eg: blm = belum، وiso = isa (يقدر). يعني «لسه مش قادر».
-      ar: blm = belum وiso = isa، أي «لا يستطيع بعد».
-      en: "blm = belum and iso = isa (can): \"can't yet\"."
-    words: [blm, iso]
+    type: match_pairs
+    pairs:
+      - text: sambat
+        ar_eg: يشتكي
+        ar: يشكو
+        en: complain
+      - text: sombong
+        ar_eg: متكبر
+        ar: متكبّر
+        en: arrogant
+      - text: iri
+        ar_eg: حاسد
+        ar: حاسد
+        en: envious
+      - text: kapok
+        ar_eg: اتعلم الدرس
+        ar: تعلّم الدرس
+        en: never again
+    words: [sambat, sombong, iri, kapok]
   - id: e02
-    type: multiple_choice
-    question: gpp
-    question_meaning:
-      ar_eg: gpp اختصار لإيه؟
-      ar: gpp اختصار لأي عبارة؟
-      en: What is gpp short for?
-    options: [gak papa, gak pakai, gimana]
-    answer: 0
-    words: [gpp]
+    type: match_pairs
+    pairs:
+      - text: ngapura
+        ar_eg: يسامح
+        ar: يصفح
+        en: forgive
+      - text: nyapa
+        ar_eg: يسلّم على
+        ar: يحيّي
+        en: greet
+      - text: selo
+        ar_eg: فاضي
+        ar: متفرّغ
+        en: free, not busy
+      - text: cemburu
+        ar_eg: غيران
+        ar: غيور
+        en: jealous
+    words: [ngapura, nyapa, selo, cemburu]
   - id: e03
     type: listen
-    text: Mengko fotone tak kirim neng grup.
-    options: ['Mengko fotone dishare neng grup.', 'Sesuk fotone tak kirim neng grup.', 'Mengko fotone tak kirim neng grup.']
-    answer: 2
+    text: Yen selo, nyapa simbah ing omah, ya.
+    question:
+      ar_eg: المطلوب إيه؟
+      ar: ما المطلوب؟
+      en: What's being asked?
+    options: [لما يفضى يسلّم على جدته, يشتكي من الشغل, يرفع فيديو]
+    answer: 0
     meaning:
-      ar_eg: هبعت الصور على الجروب بعدين.
-      ar: سأرسل الصور إلى المجموعة لاحقًا.
-      en: I'll send the photos to the group later.
-    words: [grup]
+      ar_eg: لما تفضى، سلّم على جدتك في البيت.
+      ar: حين تتفرّغ، حيِّ جدتك في البيت.
+      en: When you're free, go and say hello to Grandma at home.
+    words: [selo, nyapa]
   - id: e04
     type: fill_blank
-    sentence: Aku ___ iso, ana kuliah.
+    sentence: Dheweke ___ amarga kancane duwe HP anyar.
     meaning:
-      ar_eg: أنا لسه مش هقدر، عندي محاضرة.
-      ar: لا أستطيع بعد، عندي محاضرة.
-      en: I can't yet, I have class.
-    options: [udh, blm, bgt]
-    answers: [blm]
-    words: [blm, iso, kuliah]
+      ar_eg: هو ___ عشان صاحبه عنده موبايل جديد.
+      ar: هو ___ لأن صديقه لديه هاتف جديد.
+      en: He's ___ because his friend has a new phone.
+    options: [iri, sombong, nyapa]
+    answers: [iri]
+    words: [iri, sombong, nyapa]
   - id: e05
-    type: fill_blank
-    sentence: Sorry, aku ana ___.
-    meaning:
-      ar_eg: سوري، عندي محاضرة.
-      ar: آسف، عندي محاضرة.
-      en: Sorry, I have class.
-    options: [akun, kuliah, grup]
-    answers: [kuliah]
-    words: [kuliah]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: واحد على طول بيتفشخر بعربيته وفلوسه. هو …
+      ar: شخص يتباهى دائمًا بسيارته وماله. هو …
+      en: Someone always boasts about his car and money. He is …
+    options: [kapok, sombong, selo]
+    answer: 1
+    explain:
+      ar_eg: sombong = متكبر بيتنك.
+      ar: sombong = متكبّر متباهٍ.
+      en: sombong = arrogant, a show-off.
+    words: [kapok, sombong, selo]
   - id: e06
+    type: fill_blank
+    sentence: Aku wis ___, ora arep telat maneh.
+    meaning:
+      ar_eg: أنا خلاص ___، مش هتأخر تاني.
+      ar: لقد ___، لن أتأخر مرة أخرى.
+      en: I've ___; I won't be late again.
+    options: [kapok, cemburu, sambat]
+    answers: [kapok]
+    words: [kapok, cemburu, sambat]
+  - id: e07
+    type: multiple_choice
+    question: Bojone ___ yen dheweke chatting karo wong wadon.
+    options: [ngapura, nyapa, cemburu]
+    answer: 2
+    explain:
+      ar_eg: cemburu = غيرة على الحبيب. iri = حسد على حاجة.
+      ar: cemburu = غيرة على الحبيب، وiri = حسد على شيء.
+      en: cemburu = jealous over a partner; iri = envious of things.
+    words: [ngapura, nyapa, cemburu]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: "رجّع الشات ده لجاوي رسمي: «Aku blm iso, ana kuliah.»"
-      ar: "ردّ هذه الدردشة إلى جاوية قياسية: «Aku blm iso, ana kuliah.»"
-      en: "Turn this chat into standard Javanese: «Aku blm iso, ana kuliah.»"
-    answer: Aku durung isa, ana kuliah.
-    distractors: [blm, iso]
-    words: [blm, iso]
-  - id: e07
+      ar_eg: أنا بطلب السماح، أنا غلطت.
+      ar: أطلب الصفح، لقد أخطأت.
+      en: I'm sorry, I was wrong.
+    answer: Aku njaluk ngapura, aku salah.
+    distractors: [sombong, sambat]
+    words: [ngapura]
+  - id: e09
     type: translate
     direction: from_target
-    source_text: Gpp, mengko fotone tak kirim neng grup.
+    source_text: Dheweke iri lan sambat terus ing medsos.
     answers_meaning:
-      ar_eg:
-        - مفيش مشكلة، هبعت الصور على الجروب بعدين.
-        - ولا يهمك، هبعت الصور على الجروب بعدين.
-        - مفيش مشكلة، بعدين هبعت الصور على الجروب.
-        - مش مشكلة، هبعت الصور على الجروب بعدين.
-        - عادي، هبعت الصور على الجروب بعدين.
-      ar:
-        - لا بأس، سأرسل الصور إلى المجموعة لاحقًا.
-        - لا مشكلة، سأرسل الصور إلى المجموعة لاحقًا.
-        - لا بأس، سأرسل الصور في المجموعة لاحقًا.
-      en:
-        - No problem, I'll send the photos to the group later.
-        - No problem, I'll send the photos in the group later.
-        - It's fine, I'll send the photos to the group later.
-        - No worries, I'll send the photos to the group later.
-        - No problem, later I'll send the photos to the group.
-        - No problem, I'll send the photo to the group later.
-    words: [gpp]
-  - id: e08
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (شات) مفيش مشكلة، هبعتها بعدين.
-      ar: (دردشة) لا بأس، سأرسلها لاحقًا.
-      en: (chat) No problem, I'll send it later.
-    answers:
-      - Gpp, mengko tak kirim.
-      - Gpp, mengko tak kirim ya.
-      - Gpp, tak kirim mengko.
-      - Ora apa-apa, mengko tak kirim.
-      - Gak papa, mengko tak kirim.
-      - Gpp, mengko takkirim.
-    words: [gpp]
-  - id: e09
+      ar_eg: [هو حاسد وعلى طول بيشتكي على السوشيال ميديا, هو غيران من الناس وبيتأفف على طول في السوشيال]
+      ar: [هو حاسد ويشكو دائمًا في وسائل التواصل, إنه يحسد غيره ويتذمّر باستمرار على وسائل التواصل]
+      en: ['He''s envious and keeps complaining on social media', He is jealous and always moaning on social media]
+    words: [iri, sambat]
+  - id: e10
     type: speaking
-    text: Aku durung isa teka, ana kuliah.
+    text: Aku selo saiki, ayo nyapa Mbak Ayu.
     meaning:
-      ar_eg: لسه مش هقدر آجي، عندي محاضرة.
-      ar: لا أستطيع المجيء بعد، عندي محاضرة.
-      en: I can't come yet, I have class.
-    words: [kuliah]
+      ar_eg: أنا فاضي دلوقتي، يلا نسلّم على ميباك أيو.
+      ar: أنا متفرّغ الآن، هيا نحيّي مباك أيو.
+      en: I'm free now; let's go and say hi to Mbak Ayu.
+    words: [selo, nyapa]
 dialogue:
-  title: Maca screenshot
   lines:
-    - speaker: Mas Yudha
-      text: Mohamed, wis maca grup?
-      ar_eg: يا محمد، قريت الجروب؟
-      ar: يا محمد، هل قرأت المجموعة؟
-      en: Mohamed, have you read the group?
+    - speaker: Mbak Ayu
+      text: 'Delengen komentar iki: ''Sombong tenan, mung pamer mobil anyar!'''
+      ar_eg: 'بص الكومنت ده: «متكبر بجد، كل همه يتفشخر بالعربية الجديدة!»'
+      ar: 'انظر إلى هذا التعليق: «متكبّر حقًا، لا يفعل إلا التباهي بسيارته الجديدة!»'
+      en: 'Look at this comment: ''So arrogant, just showing off his new car!'''
     - speaker: Mohamed
-      text: Wis. "Gpp" iku apa, Mas?
-      ar_eg: آه. يعني إيه «gpp» يا يودا؟
-      ar: نعم. ما «gpp» يا يودا؟
-      en: Yes. What's "gpp", Yudha?
-    - speaker: Mas Yudha
-      text: Gak papa, padha karo ora apa-apa.
-      ar_eg: gak papa، يعني زي ora apa-apa، مفيش مشكلة.
-      ar: gak papa، مثل ora apa-apa، أي لا بأس.
-      en: Gak papa, same as ora apa-apa, no problem.
+      text: Wong sing nulis iku iri, ta?
+      ar_eg: اللي كاتبه ده حاسد، صح؟
+      ar: من كتبه حاسد، أليس كذلك؟
+      en: The one who wrote it is envious, right?
+    - speaker: Mbak Ayu
+      text: Mbok menawa. Sing duwe akun banjur sambat dawa.
+      ar_eg: يمكن. وصاحب الحساب قعد يشتكي كتير.
+      ar: ربما. ثم أطال صاحب الحساب الشكوى.
+      en: Maybe. Then the account owner moaned at length.
     - speaker: Mohamed
-      text: Lan "iso" iku "isa", ta?
-      ar_eg: وiso هي isa، صح؟
-      ar: وiso هي isa، أليس كذلك؟
-      en: And "iso" is "isa", right?
-    - speaker: Mas Yudha
-      text: Bener! Kowe wis dadi Screenshot Decoder.
-      ar_eg: صح! إنت بقيت «فكّاك سكرين شوتات».
-      ar: صحيح! صرت «مفكّك لقطات الشاشة».
-      en: Right! You've become a Screenshot Decoder.
+      text: Pungkasane piye?
+      ar_eg: وفي الآخر حصل إيه؟
+      ar: وكيف انتهى الأمر؟
+      en: How did it end?
+    - speaker: Mbak Ayu
+      text: Wong loro iku njaluk ngapura. Saiki padha nyapa maneh.
+      ar_eg: الاتنين طلبوا السماح. ودلوقتي بيسلموا على بعض تاني.
+      ar: طلب الاثنان الصفح، والآن يحيّي أحدهما الآخر من جديد.
+      en: Both of them said sorry. Now they say hi to each other again.
+    - speaker: Mohamed
+      text: Apik. Aku kapok padu ing medsos!
+      ar_eg: حلو. أنا خلاص اتعلمت، مش هتخانق على السوشيال تاني!
+      ar: جميل. تعلّمت الدرس، لن أتشاجر على وسائل التواصل!
+      en: Good. I've learned my lesson about arguing online!
 new_words:
-  - word: blm
-    pos: adverb
-    ar_eg: لسه / لم بعد (اختصار belum)
-    ar: لم بعد (اختصار belum)
-    en: not yet (short for belum)
-  - word: gpp
-    pos: phrase
-    ar_eg: مفيش مشكلة (اختصار gak papa)
-    ar: لا بأس (اختصار gak papa)
-    en: no problem (short for gak papa)
-  - word: kuliah
-    pos: noun
-    ar_eg: محاضرة / دراسة في الجامعة
-    ar: محاضرة / دراسة جامعية
-    en: lectures, university classes = kuliah
+  - word: sambat
+    pos: verb
+    ar_eg: يشتكي، يتأفف
+    ar: يشكو، يتذمّر
+    en: complain, moan
+  - word: sombong
+    pos: adjective
+    ar_eg: متكبر، بيتنك
+    ar: متكبّر
+    en: arrogant, show-off
+  - word: iri
+    pos: adjective
+    ar_eg: حاسد
+    ar: حاسد
+    en: envious
+  - word: kapok
+    pos: adjective
+    ar_eg: اتعلم الدرس (مش هيكررها)
+    ar: تعلّم الدرس (فلن يكررها)
+    en: learned one's lesson, never again
+  - word: ngapura
+    pos: verb
+    ar_eg: يسامح (njaluk ngapura = يطلب السماح)
+    ar: يصفح (njaluk ngapura = يعتذر)
+    en: forgive (njaluk ngapura = say sorry)
+  - word: nyapa
+    pos: verb
+    ar_eg: يسلّم على حد
+    ar: يحيّي
+    en: greet
+  - word: selo
+    pos: adjective
+    ar_eg: فاضي
+    ar: متفرّغ
+    en: free, not busy
+  - word: cemburu
+    pos: adjective
+    ar_eg: غيران (على حبيبه)
+    ar: غيور
+    en: jealous
 review:
   status: draft
   verified: false

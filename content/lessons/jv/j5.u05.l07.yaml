@@ -1,158 +1,176 @@
 schema: kabar.lesson/v1
 id: j5.u05.l07
 language: jv
-title: Critane Bu Retno
+title: Critakna maneh
 can_do:
-  ar_eg: تسمع حكاية قصيرة عن الطفولة وتتابع «لما» و«بعد» من غير ما تشوف النص.
-  ar: أن تستمع إلى حكاية قصيرة عن الطفولة وتتابع «حين» و«بعد» دون رؤية النص.
-  en: Follow a short childhood story by ear, with its "when" and "after".
+  ar_eg: تحكي القصة تاني بجاوي بسيط.
+  ar: أن تعيد رواية القصة بجاوية بسيطة.
+  en: Retell it in simple Javanese.
+slides:
+  - title: Saka tulisan menyang omongan
+    body:
+      ar_eg: |
+        critakna maneh = احكيها تاني (critakna = احكي، maneh = تاني). ولما تحكي لحد، اتكلم نغوكو الكلام العادي، مش لغة الكتب:
+        - ing → neng، lan → karo (مع)، nuli / banjur → terus
+        - جمل قصيرة (cekak): مين؟ عمل إيه؟ وحصل إيه في الآخر؟
+      ar: |
+        critakna maneh = احكِها مرة أخرى (critakna = احكِ، maneh = مجددًا). وحين تحكي لأحد فتكلّم بنغوكو الحديث لا بلغة الكتب:
+        - ing ← neng، وlan ← karo (مع)، وnuli / banjur ← terus
+        - جمل قصيرة (cekak): من؟ ماذا فعل؟ وماذا حدث في النهاية؟
+      en: |
+        critakna maneh = tell it again (critakna = tell it, maneh = again). When you retell it to someone, speak everyday ngoko, not book language:
+        - ing → neng, lan → karo (with), nuli / banjur → terus
+        - short (cekak) sentences: who? did what? and what happened in the end?
+    grammar: jv.narrative.connectors
+    examples:
+      - text: Bima karo simbahe lunga neng Menara Kudus.
+        ar_eg: بيما وجدّه راحوا منارة كودوس.
+        ar: ذهب بيما وجدّه إلى منارة كودوس.
+        en: Bima and his grandpa went to the Menara Kudus.
+      - text: Sawise salat, Bima ilang.
+        ar_eg: بعد الصلاة، بيما تاه.
+        ar: بعد الصلاة ضاع بيما.
+        en: After the prayer, Bima went missing.
+      - text: Terus simbah nemokake Bima, lagi mangan jenang.
+        ar_eg: وبعدين الجدّ لقى بيما بياكل jenang.
+        ar: ثم وجد الجدّ بيما يأكل jenang.
+        en: Then grandpa found Bima, eating jenang.
 exercises:
   - id: e01
-    type: listen
-    text: Nalika isih cilik, aku manggon ing cedhak Menara Kudus.
-    question:
-      ar_eg: بو ريتنو بتحكيلك عن طفولتها. كانت ساكنة فين وهي صغيرة؟
-      ar: تحكي لك بو ريتنو عن طفولتها. أين كانت تسكن وهي صغيرة؟
-      en: Bu Retno is telling you about her childhood. Where did she live as a child?
-    options: [ing Semarang, ing cedhak Menara Kudus, ing Demak]
+    type: multiple_choice
+    question: "Critakna maneh: Ing sawijining dina, Bima lan simbahe lunga menyang Menara Kudus."
+    question_meaning:
+      ar_eg: أنهي جملة أحسن حكاية بالكلام العادي؟
+      ar: أي جملة أفضل إعادة رواية بلغة الحديث؟
+      en: Which sentence is the best spoken retelling?
+    options: ['Bima kang cilik lunga ing Menara Kudus.', 'Bima karo simbahe lunga neng Menara Kudus.']
     answer: 1
-    meaning:
-      ar_eg: لما كنت صغيرة، كنت ساكنة جنب منارة قدس.
-      ar: حين كنت صغيرة، كنت أسكن قرب منارة قدس.
-      en: When I was little, I lived near the Menara Kudus.
-    words: [nalika, menara]
+    explain:
+      ar_eg: في الكلام neng وkaro بدل ing وlan، وkang للكتابة.
+      ar: في الحديث neng وkaro بدل ing وlan، وkang للكتابة.
+      en: Speech uses neng and karo instead of ing and lan; kang is for writing.
+    words: [critakna, maneh]
   - id: e02
     type: listen
-    text: Saben sore, aku dolanan ing ngarep menara karo kanca-kanca.
-    question:
-      ar_eg: كانت بتلعب إمتى؟
-      ar: متى كانت تلعب؟
-      en: When did she play?
-    options: [saben esuk, saben bengi, saben sore]
-    answer: 2
-    meaning:
-      ar_eg: كل يوم العصر، كنت بلعب قدّام المنارة مع صحابي.
-      ar: كل مساء كنت ألعب أمام المنارة مع أصدقائي.
-      en: Every afternoon I played in front of the minaret with my friends.
-    words: [menara]
-  - id: e03
-    type: listen
-    text: Sawise maghrib, simbah crita babagan Sunan Kudus.
-    question:
-      ar_eg: جدّتها كانت بتحكي عن إيه؟
-      ar: عمَّ كانت جدتها تحكي؟
-      en: What did her grandmother tell stories about?
-    options: [babagan Sunan Kudus, babagan kancil, babagan sepur]
+    text: Critakna maneh, nanging cekak wae.
+    options: ['Critakna maneh, nanging cekak wae.', 'Wacanen maneh, nanging alon-alon.', 'Critakna sesuk, nanging cekak wae.']
     answer: 0
     meaning:
-      ar_eg: بعد المغرب، جدّتي كانت بتحكي عن سونان قدس.
-      ar: بعد المغرب كانت جدتي تحكي عن سونان قدس.
-      en: After maghrib, Grandma told stories about Sunan Kudus.
-    explain:
-      ar_eg: maghrib = المغرب، من العربي. babagan = عن (tentang).
-      ar: maghrib = المغرب، من العربية، وbabagan = عن (tentang).
-      en: maghrib = the sunset prayer, from Arabic; babagan = about (tentang).
-    words: [sawise, maghrib, babagan]
-  - id: e04
-    type: match_pairs
-    pairs:
-      - text: nalika
-        ar_eg: لما (في الماضي)
-        ar: حين (في الماضي)
-        en: when (past)
-      - text: sawise
-        ar_eg: بعد
-        ar: بعد
-        en: after
-      - text: maghrib
-        ar_eg: المغرب
-        ar: المغرب
-        en: sunset prayer
-      - text: babagan
-        ar_eg: عن
-        ar: عن / حول
-        en: about
-      - text: saben
-        ar_eg: كل
-        ar: كل
-        en: every
-    words: [nalika, sawise, maghrib, babagan]
-  - id: e05
+      ar_eg: احكيها تاني، بس باختصار.
+      ar: احكِها مرة أخرى، لكن باختصار.
+      en: Tell it again, but keep it short.
+    words: [critakna, maneh, cekak]
+  - id: e03
     type: fill_blank
-    sentence: ___ isih cilik, aku manggon ing cedhak Menara Kudus.
+    sentence: Critakna ___, ya.
     meaning:
-      ar_eg: لما كنت صغيرة، كنت ساكنة جنب منارة قدس.
-      ar: حين كنت صغيرة، كنت أسكن قرب منارة قدس.
-      en: When I was little, I lived near the Menara Kudus.
-    options: [Sawise, Dumadakan, Nalika]
-    answers: [Nalika]
-    words: [nalika]
+      ar_eg: احكيها تاني، ماشي؟
+      ar: احكِها مرة أخرى، اتفقنا؟
+      en: Tell it again, okay?
+    options: [biyen, maneh, cekak]
+    answers: [maneh]
+    words: [maneh]
+  - id: e04
+    type: fill_blank
+    sentence: Critane ___ wae.
+    meaning:
+      ar_eg: الحكاية قصيرة وبس.
+      ar: الحكاية قصيرة فقط.
+      en: The story is just a short one.
+    options: [cekak, maneh, lawas]
+    answers: [cekak]
+    words: [cekak]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: (حكاية بالكلام) وبعدين الجدّ لقى بيما بياكل jenang.
+      ar: (رواية شفهية) ثم وجد الجدّ بيما يأكل jenang.
+      en: (spoken retelling) Then grandpa found Bima, eating jenang.
+    answer: Terus simbah nemokake Bima, lagi mangan jenang.
+    distractors: [kang, ing]
+    words: [nemokake, jenang]
   - id: e06
-    type: dictation
-    text: Sawise maghrib, simbah crita babagan Sunan Kudus.
-    meaning:
-      ar_eg: بعد المغرب، جدّتي كانت بتحكي عن سونان قدس.
-      ar: بعد المغرب كانت جدتي تحكي عن سونان قدس.
-      en: After maghrib, Grandma told stories about Sunan Kudus.
-    words: [sawise, maghrib, babagan]
+    type: build_sentence
+    source:
+      ar_eg: بعد الصلاة، بيما تاه.
+      ar: بعد الصلاة ضاع بيما.
+      en: After the prayer, Bima went missing.
+    answer: Sawise salat, Bima ilang.
+    distractors: [sadurunge, nalika]
+    words: [sawise]
   - id: e07
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: (بأسلوب الحكاية) بعد المغرب، جدّي كان بيحكي عن المنارة.
-      ar: (بأسلوب الحكاية) بعد المغرب كان جدي يحكي عن المنارة.
-      en: (story style) After maghrib, Grandpa told stories about the minaret.
+      ar_eg: (بتحكي لصاحبك) بيما وجدّه راحوا منارة كودوس.
+      ar: (تحكي لصديقك) ذهب بيما وجدّه إلى منارة كودوس.
+      en: (telling a friend) Bima and his grandpa went to the Menara Kudus.
     answers:
-      - Sawise maghrib, simbah crita babagan menara.
-      - Sawise maghrib simbah crita babagan menara.
-      - Sawise maghrib, simbah crita babagan menarane.
-      - Sawise maghrib, simbah crita babagan Menara Kudus.
-      - Sawise salat maghrib, simbah crita babagan menara.
-      - Sawise maghrib, simbah banjur crita babagan menara.
-    words: [sawise, maghrib, babagan]
+      - Bima karo simbahe lunga neng Menara Kudus.
+      - Bima lan simbahe lunga neng Menara Kudus.
+      - Bima karo simbahe lunga menyang Menara Kudus.
+      - Bima lan simbahe lunga menyang Menara Kudus.
+      - Bima karo simbahe menyang Menara Kudus.
+      - Bima lan simbahe menyang Menara Kudus.
+      - Bima karo simbahe lunga nang Menara Kudus.
+      - Bima karo mbahe lunga neng Menara Kudus.
+      - Bima karo simbahe dolan neng Menara Kudus.
+    words: [menara]
   - id: e08
-    type: speaking
-    text: Nalika isih cilik, aku manggon ing Kairo.
+    type: dictation
+    text: Critakna maneh, nanging cekak wae.
     meaning:
-      ar_eg: لما كنت صغير، كنت ساكن في القاهرة.
-      ar: حين كنت صغيرًا، كنت أسكن في القاهرة.
-      en: When I was little, I lived in Cairo.
-    words: [nalika]
+      ar_eg: احكيها تاني، بس باختصار.
+      ar: احكِها مرة أخرى، لكن باختصار.
+      en: Tell it again, but keep it short.
+    words: [critakna, maneh, cekak]
+  - id: e09
+    type: speaking
+    text: Bima karo simbahe lunga neng Menara Kudus. Sawise salat, Bima ilang. Pungkasane, simbah nemokake Bima.
+    meaning:
+      ar_eg: بيما وجدّه راحوا منارة كودوس. بعد الصلاة، بيما تاه. وفي الآخر، الجدّ لقاه.
+      ar: ذهب بيما وجدّه إلى منارة كودوس. بعد الصلاة ضاع بيما. وفي النهاية وجده الجدّ.
+      en: Bima and his grandpa went to the Menara Kudus. After the prayer, Bima went missing. In the end, grandpa found him.
+    words: [nemokake, pungkasane]
 dialogue:
-  title: Babagan Sunan Kudus
+  title: Critakna maneh, Mas!
   lines:
-    - speaker: Mohamed
-      text: Bu, Sunan Kudus menika sinten?
-      ar_eg: يا مدام، سونان قدس ده مين؟
-      ar: يا سيدتي، من سونان قدس؟
-      en: Ma'am, who was Sunan Kudus?
     - speaker: Bu Retno
-      text: Sunan Kudus iku sawijining Wali Sanga. Dheweke sing mbangun masjid ing cedhak menara.
-      ar_eg: سونان قدس واحد من الأولياء التسعة. هو اللي بنى الجامع اللي جنب المنارة.
-      ar: سونان قدس أحد الأولياء التسعة، وهو من بنى المسجد المجاور للمنارة.
-      en: Sunan Kudus was one of the Wali Sanga. He's the one who built the mosque by the minaret.
+      text: Mas, critakna maneh cerkakku, nanging cekak wae.
+      ar_eg: يا محمد، احكي قصتي تاني، بس باختصار.
+      ar: يا محمد، أعد رواية قصتي، لكن باختصار.
+      en: Mohamed, tell my story again, but keep it short.
     - speaker: Mohamed
-      text: Lan nami Kudus saking Al-Quds, nggih?
-      ar_eg: واسم قدس جاي من «القدس»، صح؟
-      ar: واسم قدس مأخوذ من «القدس»، أليس كذلك؟
-      en: And the name Kudus comes from Al-Quds, right?
+      text: Bima karo simbahe lunga neng Menara Kudus.
+      ar_eg: بيما وجدّه راحوا منارة كودوس.
+      ar: ذهب بيما وجدّه إلى منارة كودوس.
+      en: Bima and his grandpa went to the Menara Kudus.
     - speaker: Bu Retno
-      text: Bener, Mas. Simbahku crita kaya ngono saben sawise maghrib.
-      ar_eg: صح يا محمد. جدّتي كانت بتحكي كده كل يوم بعد المغرب.
-      ar: صحيح يا محمد. كانت جدتي تحكي ذلك كل يوم بعد المغرب.
-      en: Right. My grandmother told it like that every evening after maghrib.
+      text: Terus?
+      ar_eg: وبعدين؟
+      ar: ثم؟
+      en: And then?
+    - speaker: Mohamed
+      text: Sawise salat, Bima ilang. Pungkasane, simbah nemokake Bima, lagi mangan jenang.
+      ar_eg: بعد الصلاة، بيما تاه. وفي الآخر، الجدّ لقاه بياكل jenang.
+      ar: بعد الصلاة ضاع بيما، وفي النهاية وجده الجدّ يأكل jenang.
+      en: After the prayer, Bima went missing. In the end, grandpa found him eating jenang.
+    - speaker: Bu Retno
+      text: Apik banget! Critamu cekak lan cetha.
+      ar_eg: حلو أوي! حكايتك قصيرة وواضحة.
+      ar: رائع جدًا! روايتك قصيرة وواضحة.
+      en: Excellent! Your retelling is short and clear.
 new_words:
-  - word: maghrib
-    pos: noun
-    ar_eg: المغرب (الصلاة ووقتها)
-    ar: المغرب (الصلاة ووقتها)
-    en: sunset prayer, dusk = magrib
-    arabic: مغرب
-  - word: babagan
-    pos: preposition
-    ar_eg: عن
-    ar: عن / حول
-    en: about = tentang
+  - word: critakna
+    pos: verb
+    ar_eg: احكيها (أمر)
+    ar: احكِها (أمر)
+    en: tell it (imperative) = ceritakan
+  - word: cekak
+    pos: adjective
+    ar_eg: قصير / مختصر
+    ar: قصير / مختصر
+    en: short, brief = singkat, pendek
 review:
   status: draft
   verified: false

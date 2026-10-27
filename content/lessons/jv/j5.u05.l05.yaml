@@ -1,176 +1,236 @@
 schema: kabar.lesson/v1
 id: j5.u05.l05
 language: jv
-title: Critakna maneh
+title: Dumadakan noleh
 can_do:
-  ar_eg: تحكي القصة تاني بجاوي بسيط.
-  ar: أن تعيد رواية القصة بجاوية بسيطة.
-  en: Retell it in simple Javanese.
+  ar_eg: 'تحكي قصة قصيرة عن إنك تهت: نزلت فين، وبصيت لمين، ومين قابلت بالصدفة.'
+  ar: 'أن تحكي قصة قصيرة عن ضياعك: أين نزلت، وإلى من نظرت، ومن قابلت صدفة.'
+  en: 'Tell a short story about getting lost: where you got off, who you looked at and who you happened to meet.'
 slides:
-  - title: Saka tulisan menyang omongan
+  - title: Kesasar
     body:
       ar_eg: |
-        critakna maneh = احكيها تاني (critakna = احكي، maneh = تاني). ولما تحكي لحد، اتكلم نغوكو الكلام العادي، مش لغة الكتب:
-        - ing → neng، lan → karo (مع)، nuli / banjur → terus
-        - جمل قصيرة (cekak): مين؟ عمل إيه؟ وحصل إيه في الآخر؟
+        kesasar = تاه، medun = ينزل (من أتوبيس أو سلم)، mabur = يطير.
+        noleh = يلف راسه ويبص، nyawang = يبص لبعيد ويتأمل، gemeter = يترعش.
+        ndilalah = وبالصدفة (زي «وكان من حسن الحظ»)، nemoni = يقابل أو يروح يشوف حد.
       ar: |
-        critakna maneh = احكِها مرة أخرى (critakna = احكِ، maneh = مجددًا). وحين تحكي لأحد فتكلّم بنغوكو الحديث لا بلغة الكتب:
-        - ing ← neng، وlan ← karo (مع)، وnuli / banjur ← terus
-        - جمل قصيرة (cekak): من؟ ماذا فعل؟ وماذا حدث في النهاية؟
+        kesasar = ضلّ الطريق، medun = ينزل (من حافلة أو درج)، mabur = يطير.
+        noleh = يلتفت، nyawang = ينظر بعيدًا متأمّلًا، gemeter = يرتجف.
+        ndilalah = وصادف أن (كأنها «ومن حسن الحظ»)، nemoni = يلقى أو يزور أحدًا.
       en: |
-        critakna maneh = tell it again (critakna = tell it, maneh = again). When you retell it to someone, speak everyday ngoko, not book language:
-        - ing → neng, lan → karo (with), nuli / banjur → terus
-        - short (cekak) sentences: who? did what? and what happened in the end?
-    grammar: jv.narrative.connectors
+        kesasar = get lost, medun = get off, go down, mabur = fly.
+        noleh = turn one's head, look back; nyawang = gaze; gemeter = tremble.
+        ndilalah = as luck would have it, nemoni = meet, go and see someone.
     examples:
-      - text: Bima karo simbahe lunga neng Menara Kudus.
-        ar_eg: بيما وجدّه راحوا منارة كودوس.
-        ar: ذهب بيما وجدّه إلى منارة كودوس.
-        en: Bima and his grandpa went to the Menara Kudus.
-      - text: Sawise salat, Bima ilang.
-        ar_eg: بعد الصلاة، بيما تاه.
-        ar: بعد الصلاة ضاع بيما.
-        en: After the prayer, Bima went missing.
-      - text: Terus simbah nemokake Bima, lagi mangan jenang.
-        ar_eg: وبعدين الجدّ لقى بيما بياكل jenang.
-        ar: ثم وجد الجدّ بيما يأكل jenang.
-        en: Then grandpa found Bima, eating jenang.
+      - text: Aku kesasar ing Kutha Lawas Semarang.
+        ar_eg: تهت في المدينة القديمة في سيمارانج.
+        ar: ضللت الطريق في المدينة القديمة في سيمارانغ.
+        en: I got lost in Semarang's Old Town.
+      - text: Dumadakan ana sing nyeluk, aku noleh.
+        ar_eg: فجأة حد نادى، فلفّيت.
+        ar: فجأة ناداني أحدهم فالتفتّ.
+        en: Suddenly someone called, and I turned round.
+      - text: Ndilalah aku nemoni kanca lawas.
+        ar_eg: وبالصدفة قابلت صاحب قديم.
+        ar: وصادف أن لقيت صديقًا قديمًا.
+        en: As luck would have it, I met an old friend.
 exercises:
   - id: e01
-    type: multiple_choice
-    question: "Critakna maneh: Ing sawijining dina, Bima lan simbahe lunga menyang Menara Kudus."
-    question_meaning:
-      ar_eg: أنهي جملة أحسن حكاية بالكلام العادي؟
-      ar: أي جملة أفضل إعادة رواية بلغة الحديث؟
-      en: Which sentence is the best spoken retelling?
-    options: ['Bima kang cilik lunga ing Menara Kudus.', 'Bima karo simbahe lunga neng Menara Kudus.']
-    answer: 1
-    explain:
-      ar_eg: في الكلام neng وkaro بدل ing وlan، وkang للكتابة.
-      ar: في الحديث neng وkaro بدل ing وlan، وkang للكتابة.
-      en: Speech uses neng and karo instead of ing and lan; kang is for writing.
-    words: [critakna, maneh]
+    type: match_pairs
+    pairs:
+      - text: noleh
+        ar_eg: يلف ويبص
+        ar: يلتفت
+        en: turn and look
+      - text: nyawang
+        ar_eg: يبص لبعيد
+        ar: يتأمّل
+        en: gaze
+      - text: gemeter
+        ar_eg: يترعش
+        ar: يرتجف
+        en: tremble
+      - text: kesasar
+        ar_eg: تاه
+        ar: ضلّ الطريق
+        en: get lost
+    words: [noleh, nyawang, gemeter, kesasar]
   - id: e02
+    type: match_pairs
+    pairs:
+      - text: ndilalah
+        ar_eg: وبالصدفة
+        ar: وصادف أن
+        en: as luck would have it
+      - text: nemoni
+        ar_eg: يقابل
+        ar: يلقى
+        en: meet
+      - text: mabur
+        ar_eg: يطير
+        ar: يطير
+        en: fly
+      - text: medun
+        ar_eg: ينزل
+        ar: ينزل
+        en: get off, go down
+    words: [ndilalah, nemoni, mabur, medun]
+  - id: e03
     type: listen
-    text: Critakna maneh, nanging cekak wae.
-    options: ['Critakna maneh, nanging cekak wae.', 'Wacanen maneh, nanging alon-alon.', 'Critakna sesuk, nanging cekak wae.']
+    text: Manuk mabur, aku nyawang langit.
+    question:
+      ar_eg: بيعمل إيه؟
+      ar: ماذا يفعل؟
+      en: What is he doing?
+    options: [بيبص للسما والعصفور طاير, بينزل من الأتوبيس, تاه في المدينة]
     answer: 0
     meaning:
-      ar_eg: احكيها تاني، بس باختصار.
-      ar: احكِها مرة أخرى، لكن باختصار.
-      en: Tell it again, but keep it short.
-    words: [critakna, maneh, cekak]
-  - id: e03
-    type: fill_blank
-    sentence: Critakna ___, ya.
-    meaning:
-      ar_eg: احكيها تاني، ماشي؟
-      ar: احكِها مرة أخرى، اتفقنا؟
-      en: Tell it again, okay?
-    options: [biyen, maneh, cekak]
-    answers: [maneh]
-    words: [maneh]
+      ar_eg: العصفور طار، وأنا ببص للسما.
+      ar: طار الطائر وأنا أتأمّل السماء.
+      en: A bird flies off; I gaze at the sky.
+    words: [mabur, nyawang]
   - id: e04
     type: fill_blank
-    sentence: Critane ___ wae.
+    sentence: Aku ___ saka bis ing Kutha Lawas.
     meaning:
-      ar_eg: الحكاية قصيرة وبس.
-      ar: الحكاية قصيرة فقط.
-      en: The story is just a short one.
-    options: [cekak, maneh, lawas]
-    answers: [cekak]
-    words: [cekak]
+      ar_eg: أنا ___ من الأتوبيس في المدينة القديمة.
+      ar: ___ من الحافلة في المدينة القديمة.
+      en: I ___ the bus in the Old Town.
+    options: [medun, mabur, noleh]
+    answers: [medun]
+    words: [medun, mabur, noleh]
   - id: e05
-    type: build_sentence
-    source:
-      ar_eg: (حكاية بالكلام) وبعدين الجدّ لقى بيما بياكل jenang.
-      ar: (رواية شفهية) ثم وجد الجدّ بيما يأكل jenang.
-      en: (spoken retelling) Then grandpa found Bima, eating jenang.
-    answer: Terus simbah nemokake Bima, lagi mangan jenang.
-    distractors: [kang, ing]
-    words: [nemokake, jenang]
+    type: multiple_choice
+    question_meaning:
+      ar_eg: مش عارف إنت فين ومش لاقي الطريق. إنت …
+      ar: لا تعرف أين أنت ولا تجد الطريق. أنت …
+      en: You don't know where you are and can't find the way. You're …
+    options: [gemeter, ndilalah, kesasar]
+    answer: 2
+    explain:
+      ar_eg: kesasar = تايه.
+      ar: kesasar = ضالّ الطريق.
+      en: kesasar = lost.
+    words: [gemeter, ndilalah, kesasar]
   - id: e06
+    type: fill_blank
+    sentence: Sikilku ___ amarga wedi banget.
+    meaning:
+      ar_eg: رجلي ___ من كتر الخوف.
+      ar: رجلاي ___ من شدة الخوف.
+      en: My legs are ___ because I'm so scared.
+    options: [gemeter, nyawang, nemoni]
+    answers: [gemeter]
+    words: [gemeter, nyawang, nemoni]
+  - id: e07
+    type: multiple_choice
+    question: Aku lali dalane. ___ ana polisi sing nulungi.
+    options: [ndilalah, medun, noleh]
+    answer: 0
+    explain:
+      ar_eg: ndilalah = وبالصدفة، ومن حسن الحظ.
+      ar: ndilalah = وصادف، ومن حسن الحظ.
+      en: ndilalah = as luck would have it.
+    words: [ndilalah, medun, noleh]
+  - id: e08
     type: build_sentence
     source:
-      ar_eg: بعد الصلاة، بيما تاه.
-      ar: بعد الصلاة ضاع بيما.
-      en: After the prayer, Bima went missing.
-    answer: Sawise salat, Bima ilang.
-    distractors: [sadurunge, nalika]
-    words: [sawise]
-  - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: (بتحكي لصاحبك) بيما وجدّه راحوا منارة كودوس.
-      ar: (تحكي لصديقك) ذهب بيما وجدّه إلى منارة كودوس.
-      en: (telling a friend) Bima and his grandpa went to the Menara Kudus.
-    answers:
-      - Bima karo simbahe lunga neng Menara Kudus.
-      - Bima lan simbahe lunga neng Menara Kudus.
-      - Bima karo simbahe lunga menyang Menara Kudus.
-      - Bima lan simbahe lunga menyang Menara Kudus.
-      - Bima karo simbahe menyang Menara Kudus.
-      - Bima lan simbahe menyang Menara Kudus.
-      - Bima karo simbahe lunga nang Menara Kudus.
-      - Bima karo mbahe lunga neng Menara Kudus.
-      - Bima karo simbahe dolan neng Menara Kudus.
-    words: [menara]
-  - id: e08
-    type: dictation
-    text: Critakna maneh, nanging cekak wae.
-    meaning:
-      ar_eg: احكيها تاني، بس باختصار.
-      ar: احكِها مرة أخرى، لكن باختصار.
-      en: Tell it again, but keep it short.
-    words: [critakna, maneh, cekak]
+      ar_eg: رحت أشوف صاحبي القديم في سيمارانج.
+      ar: ذهبت لزيارة صديقي القديم في سيمارانغ.
+      en: I went to see my old friend in Semarang.
+    answer: Aku nemoni kanca lawas ing Semarang.
+    distractors: [mabur, medun]
+    words: [nemoni]
   - id: e09
+    type: translate
+    direction: from_target
+    source_text: Dumadakan ana sing nyeluk, aku noleh.
+    answers_meaning:
+      ar_eg: [فجأة حد نادى، فلفّيت, فجأة حد نده عليا، فبصيت ورايا]
+      ar: [فجأة ناداني أحدهم فالتفتّ, فجأة نادى أحدهم فالتفتّ]
+      en: ['Suddenly someone called, and I turned round', Suddenly someone called out and I looked back]
+    words: [noleh]
+  - id: e10
     type: speaking
-    text: Bima karo simbahe lunga neng Menara Kudus. Sawise salat, Bima ilang. Pungkasane, simbah nemokake Bima.
+    text: Wingi aku kesasar, nanging ndilalah nemoni kanca.
     meaning:
-      ar_eg: بيما وجدّه راحوا منارة كودوس. بعد الصلاة، بيما تاه. وفي الآخر، الجدّ لقاه.
-      ar: ذهب بيما وجدّه إلى منارة كودوس. بعد الصلاة ضاع بيما. وفي النهاية وجده الجدّ.
-      en: Bima and his grandpa went to the Menara Kudus. After the prayer, Bima went missing. In the end, grandpa found him.
-    words: [nemokake, pungkasane]
+      ar_eg: امبارح تهت، بس بالصدفة قابلت صاحبي.
+      ar: أمس ضللت الطريق، لكنني صادفت صديقًا.
+      en: Yesterday I got lost, but as luck would have it I met a friend.
+    words: [kesasar, ndilalah, nemoni]
 dialogue:
-  title: Critakna maneh, Mas!
   lines:
-    - speaker: Bu Retno
-      text: Mas, critakna maneh cerkakku, nanging cekak wae.
-      ar_eg: يا محمد، احكي قصتي تاني، بس باختصار.
-      ar: يا محمد، أعد رواية قصتي، لكن باختصار.
-      en: Mohamed, tell my story again, but keep it short.
     - speaker: Mohamed
-      text: Bima karo simbahe lunga neng Menara Kudus.
-      ar_eg: بيما وجدّه راحوا منارة كودوس.
-      ar: ذهب بيما وجدّه إلى منارة كودوس.
-      en: Bima and his grandpa went to the Menara Kudus.
-    - speaker: Bu Retno
-      text: Terus?
+      text: Mbak, wingi aku kesasar ing Kutha Lawas.
+      ar_eg: ميباك، امبارح تهت في المدينة القديمة.
+      ar: أختي، أمس ضللت الطريق في المدينة القديمة.
+      en: Mbak, yesterday I got lost in the Old Town.
+    - speaker: Mbak Ayu
+      text: Lho, kok bisa?
+      ar_eg: يا خبر، إزاي؟
+      ar: كيف حدث ذلك؟
+      en: Oh, how come?
+    - speaker: Mohamed
+      text: Aku medun saka bis ing panggonan sing salah.
+      ar_eg: نزلت من الأتوبيس في مكان غلط.
+      ar: نزلت من الحافلة في المكان الخطأ.
+      en: I got off the bus at the wrong place.
+    - speaker: Mbak Ayu
+      text: Banjur?
       ar_eg: وبعدين؟
       ar: ثم؟
       en: And then?
     - speaker: Mohamed
-      text: Sawise salat, Bima ilang. Pungkasane, simbah nemokake Bima, lagi mangan jenang.
-      ar_eg: بعد الصلاة، بيما تاه. وفي الآخر، الجدّ لقاه بياكل jenang.
-      ar: بعد الصلاة ضاع بيما، وفي النهاية وجده الجدّ يأكل jenang.
-      en: After the prayer, Bima went missing. In the end, grandpa found him eating jenang.
-    - speaker: Bu Retno
-      text: Apik banget! Critamu cekak lan cetha.
-      ar_eg: حلو أوي! حكايتك قصيرة وواضحة.
-      ar: رائع جدًا! روايتك قصيرة وواضحة.
-      en: Excellent! Your retelling is short and clear.
+      text: Dumadakan ana sing nyeluk. Aku noleh... ndilalah kanca saka kampus!
+      ar_eg: فجأة حد نادى. لفّيت... طلع بالصدفة صاحبي من الجامعة!
+      ar: فجأة ناداني أحدهم. التفتّ... فإذا هو صديق من الجامعة!
+      en: Suddenly someone called. I turned round... and it happened to be a friend from uni!
+    - speaker: Mbak Ayu
+      text: Wah, kaya cerkak wae!
+      ar_eg: الله، زي القصص بالظبط!
+      ar: رائع، كأنها قصة قصيرة!
+      en: Wow, just like a short story!
 new_words:
-  - word: critakna
+  - word: noleh
     pos: verb
-    ar_eg: احكيها (أمر)
-    ar: احكِها (أمر)
-    en: tell it (imperative) = ceritakan
-  - word: cekak
-    pos: adjective
-    ar_eg: قصير / مختصر
-    ar: قصير / مختصر
-    en: short, brief = singkat, pendek
+    ar_eg: يلف راسه ويبص
+    ar: يلتفت
+    en: turn one's head, look back
+  - word: nyawang
+    pos: verb
+    ar_eg: يبص لبعيد، يتأمل
+    ar: ينظر متأمّلًا
+    en: gaze, look at
+  - word: gemeter
+    pos: verb
+    ar_eg: يترعش
+    ar: يرتجف
+    en: tremble, shake
+  - word: kesasar
+    pos: verb
+    ar_eg: تاه
+    ar: ضلّ الطريق
+    en: get lost
+  - word: ndilalah
+    pos: adverb
+    ar_eg: وبالصدفة
+    ar: وصادف أن
+    en: as luck would have it
+  - word: nemoni
+    pos: verb
+    ar_eg: يقابل، يروح يشوف حد
+    ar: يلقى، يزور
+    en: meet, go and see
+  - word: mabur
+    pos: verb
+    ar_eg: يطير
+    ar: يطير
+    en: fly
+  - word: medun
+    pos: verb
+    ar_eg: ينزل
+    ar: ينزل
+    en: get off, go down
 review:
   status: draft
   verified: false

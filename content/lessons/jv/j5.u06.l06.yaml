@@ -1,193 +1,210 @@
 schema: kabar.lesson/v1
 id: j5.u06.l06
 language: jv
-title: Lir-ilir, sambungane
+title: Tegese tembang
 can_do:
-  ar_eg: تسمع بقية «Lir-ilir» وتفهم الراعي المطلوب منه إيه.
-  ar: أن تستمع إلى بقية «Lir-ilir» وتفهم ما يُطلب من الراعي.
-  en: Follow the next lines of "Lir-ilir" by ear and say what the shepherd boy is asked to do.
+  ar_eg: تشرح لصاحبك معنى أغنية.
+  ar: أن تشرح لصديقك معنى أغنية.
+  en: Explain what a song means to a friend.
+slides:
+  - title: Critane, tegese, piwulange
+    body:
+      ar_eg: |
+        عشان تشرح أغنية لصاحبك، قول تلات حاجات بنغوكو بسيطة:
+        - critane = حكايتها (بتحكي عن إيه؟)
+        - tegese = معناها (tegese = artinya / maksudnya)
+        - piwulange = الدرس أو الحكمة اللي فيها (piwulang = ajaran)
+      ar: |
+        لتشرح أغنية لصديقك قل ثلاثة أشياء بنغوكو بسيطة:
+        - critane = حكايتها (عمَّ تتحدث؟)
+        - tegese = معناها (artinya / maksudnya)
+        - piwulange = العبرة أو الحكمة فيها (piwulang = ajaran)
+      en: |
+        To explain a song to a friend, say three things in simple ngoko:
+        - critane = its story (what is it about?)
+        - tegese = its meaning (artinya / maksudnya)
+        - piwulange = its lesson, its wisdom (piwulang = ajaran)
+    grammar: jv.reading.written-style
+    examples:
+      - text: Critane cah angon sing dikon menek blimbing.
+        ar_eg: حكايتها عن ولد راعي بيقولوله اطلع شجرة الـ blimbing.
+        ar: حكايتها عن فتى راعٍ يُطلب منه تسلّق شجرة الـ blimbing.
+        en: It's about a shepherd boy who is told to climb a starfruit tree.
+      - text: Tegese, atine ambyar merga kekasihe lunga.
+        ar_eg: معناها إن قلبه اتكسر عشان حبيبه مشي.
+        ar: معناها أن قلبه تحطّم لأن حبيبه رحل.
+        en: It means his heart is shattered because his love left.
+      - text: Piwulange, ngelmu kudu dilakoni.
+        ar_eg: الحكمة إن العلم لازم يتعمل بيه.
+        ar: والعبرة أن العلم يجب أن يُعمل به.
+        en: The lesson is that knowledge must be practised.
 exercises:
   - id: e01
-    type: listen
-    text: Lunyu-lunyu ya penekna, kanggo mbasuh dodotira.
-    question:
-      ar_eg: بعد «يا راعي، اطلع شجرة البلمبينج»، بيقوله اطلعها ليه؟
-      ar: بعد «أيها الراعي، اصعد شجرة البلمبينغ»، لماذا يصعدها؟
-      en: After "shepherd boy, climb that starfruit tree", why should he climb it?
-    options: [kanggo mangan blimbing, kanggo mbasuh dodotira, kanggo dolanan]
-    answer: 1
-    meaning:
-      ar_eg: حتى لو زلقة، اطلعها، عشان تغسل هدومك (الدودوت).
-      ar: ولو كانت زلقة فاصعدها، لتغسل ثوبك (الدودوت).
-      en: Slippery as it is, climb it, to wash your dodot.
-    explain:
-      ar_eg: lunyu = زلق، mbasuh = يغسل، dodot = توب جاوي قديم. والـ ‑ira في dodotira قديمة، وأغلب الشروح بتفهمها «بتاعك».
-      ar: lunyu = زلق، وmbasuh = يغسل، وdodot = ثوب جاوي قديم. و‑ira في dodotira قديمة، وأكثر الشروح تفهمها «ثوبك».
-      en: lunyu = slippery, mbasuh = wash, dodot = an old Javanese garment. The -ira in dodotira is archaic; most readings take it as "your".
-    words: [lunyu, mbasuh, dodot]
+    type: multiple_choice
+    question: Ngelmu iku kalakone kanthi laku.
+    question_meaning:
+      ar_eg: إيه الـ piwulang (الحكمة) هنا؟
+      ar: ما الـ piwulang (العبرة) هنا؟
+      en: What is the piwulang (lesson) here?
+    options: ['Ilmu harus diamalkan.', 'Ilmu dibaca saja.', 'Ilmu itu mahal.']
+    answer: 0
+    words: [piwulang, ngelmu]
   - id: e02
     type: listen
-    text: Dodotira, dodotira, kumitir bedhah ing pinggir.
+    text: Critane wong sing ditinggal lunga, atine ambyar.
     question:
-      ar_eg: التوب ماله؟
-      ar: ما بال الثوب؟
-      en: What's wrong with the garment?
-    options: [wis resik, ilang, bedhah ing pinggir]
-    answer: 2
-    meaning:
-      ar_eg: هدومك، هدومك، بترفرف ومقطوعة من الطرف.
-      ar: ثوبك، ثوبك، يرفرف ممزقًا عند الحافة.
-      en: Your dodot, your dodot, flaps about, torn at the edge.
-    explain:
-      ar_eg: bedhah = مقطوع / متقطّع. kumitir = بيرفرف.
-      ar: bedhah = ممزق، وkumitir = يرفرف.
-      en: bedhah = torn; kumitir = flapping.
-    words: [dodot, bedhah]
-  - id: e03
-    type: listen
-    text: Dondomana, jlumatana, kanggo seba mengko sore.
-    question:
-      ar_eg: الـ «seba» (المقابلة الرسمية) إمتى؟
-      ar: متى «seba» (المثول الرسمي)؟
-      en: When is the "seba" (the formal audience)?
-    options: [mengko sore, esuk iki, sesuk]
-    answer: 0
-    meaning:
-      ar_eg: خيّطه ورقّعه، عشان تقابل بيه (الملك) النهارده بالليل.
-      ar: خِطه ورقّعه، لتمثل به (بين يدي الملك) هذا المساء.
-      en: Sew it, mend it, to present yourself (before the king) this evening.
-    words: [dondomana]
-  - id: e04
-    type: match_pairs
-    pairs:
-      - text: lunyu
-        ar_eg: زلق
-        ar: زلق
-        en: slippery
-      - text: mbasuh
-        ar_eg: يغسل
-        ar: يغسل
-        en: wash
-      - text: dodot
-        ar_eg: توب جاوي قديم
-        ar: ثوب جاوي قديم
-        en: old Javanese garment
-      - text: bedhah
-        ar_eg: مقطوع
-        ar: ممزق
-        en: torn
-      - text: dondomana
-        ar_eg: خيّطه
-        ar: خِطه
-        en: sew it
-    words: [lunyu, mbasuh, dodot, bedhah, dondomana]
-  - id: e05
-    type: multiple_choice
-    question: Dondomana, jlumatana, kanggo seba mengko sore.
-    question_meaning:
-      ar_eg: الأغنية بتقول للراعي يعمل إيه في التوب المقطوع؟
-      ar: ماذا تطلب الأغنية من الراعي أن يفعل بالثوب الممزق؟
-      en: What does the song tell the boy to do with the torn garment?
-    options: ["Buanglah.", "Jahit dan tamballah.", "Juallah di pasar."]
+      ar_eg: الأغنية بتحكي عن مين؟
+      ar: عمّن تحكي الأغنية؟
+      en: Who is the song about?
+    options: [wong sing seneng, wong sing ditinggal lunga, wong sing lara]
     answer: 1
-    explain:
-      ar_eg: dondomana = خيّطه، وjlumatana = رقّعه. الاتنين أمر.
-      ar: dondomana = خِطه، وjlumatana = رقّعه، وكلاهما أمر.
-      en: dondomana = sew it, jlumatana = mend it; both are commands.
-    words: [dondomana]
-  - id: e06
+    meaning:
+      ar_eg: حكايتها عن واحد حبيبه سابه ومشي، وقلبه اتكسر.
+      ar: حكايتها عن شخص هجره حبيبه فتحطّم قلبه.
+      en: It's about someone who was left behind, and his heart is shattered.
+    words: [ati, ambyar]
+  - id: e03
     type: fill_blank
-    sentence: Dodotira kumitir ___ ing pinggir.
+    sentence: ___ tembang iki apa?
     meaning:
-      ar_eg: هدومك بترفرف ومقطوعة من الطرف.
-      ar: ثوبك يرفرف ممزقًا عند الحافة.
-      en: Your dodot flaps about, torn at the edge.
-    options: [lunyu, resik, bedhah]
-    answers: [bedhah]
-    words: [bedhah, dodot]
+      ar_eg: معنى الأغنية دي إيه؟
+      ar: ما معنى هذه الأغنية؟
+      en: What does this song mean?
+    options: [Piwulange, Tegese, Pungkasane]
+    answers: [Tegese]
+    words: [tegese]
+  - id: e04
+    type: fill_blank
+    sentence: ___, ngelmu kudu dilakoni.
+    meaning:
+      ar_eg: الحكمة إن العلم لازم يتعمل بيه.
+      ar: والعبرة أن العلم يجب أن يُعمل به.
+      en: The lesson is that knowledge must be practised.
+    options: [Dumadakan, Biyen, Piwulange]
+    answers: [Piwulange]
+    words: [piwulang, kudu, dilakoni]
+  - id: e05
+    type: build_sentence
+    source:
+      ar_eg: معناها إن قلبه اتكسر عشان حبيبه مشي.
+      ar: معناها أن قلبه تحطّم لأن حبيبه رحل.
+      en: It means his heart is shattered because his love left.
+    answer: Tegese, atine ambyar merga kekasihe lunga.
+    distractors: [kang, wus]
+    words: [tegese, ambyar]
+  - id: e06
+    type: translate
+    direction: to_target
+    source_meaning:
+      ar_eg: (لصاحبك) الحكمة إن العلم لازم يتعمل بيه.
+      ar: (لصديقك) العبرة أن العلم يجب أن يُعمل به.
+      en: (to a friend) The lesson is that knowledge must be practised.
+    answers:
+      - Piwulange, ngelmu kudu dilakoni.
+      - Piwulange, ilmu kudu dilakoni.
+      - Piwulange, ngelmu iku kudu dilakoni.
+      - Piwulange, ngelmu kudu ditindakake.
+    words: [piwulang, kudu, dilakoni]
   - id: e07
-    type: dictation
-    text: Lunyu-lunyu ya penekna, kanggo mbasuh dodotira.
-    meaning:
-      ar_eg: حتى لو زلقة، اطلعها، عشان تغسل هدومك.
-      ar: ولو كانت زلقة فاصعدها، لتغسل ثوبك.
-      en: Slippery as it is, climb it, to wash your dodot.
-    words: [lunyu, mbasuh, dodot]
-  - id: e08
     type: translate
     direction: from_target
-    source_text: Dondomana, jlumatana, kanggo seba mengko sore.
+    source_text: Tegese, atine ambyar merga kekasihe lunga.
     answers_meaning:
       ar_eg:
-        - خيّطه ورقّعه، عشان تقابل بيه النهارده بالليل.
-        - خيّطه ورقّعه، عشان المقابلة بالليل.
-        - خيّطه وصلّحه، عشان تروح تقابل الملك بالليل.
-        - خيّطه ورقّعه عشان تمثل بيه قدّام الملك الليلة.
+        - معناها إن قلبه اتكسر عشان حبيبه مشي.
+        - يعني قلبه اتكسر عشان حبيبته مشيت.
+        - معناها إن قلبه اتكسر حتت عشان حبيبه مشي.
+        - يعني قلبه اتكسر عشان حبيبه سابه.
       ar:
-        - خِطه ورقّعه، لتمثل به هذا المساء.
-        - خِطه ورقّعه للمثول بين يدي الملك هذا المساء.
-        - خِطه وأصلحه، لتحضر به المقابلة هذا المساء.
+        - معناها أن قلبه تحطّم لأن حبيبه رحل.
+        - أي أن قلبه تحطّم لأن حبيبته رحلت.
+        - معناها أن قلبه انكسر لأن حبيبه رحل.
       en:
-        - Sew it, mend it, to present yourself this evening.
-        - Sew it and mend it, for your audience this evening.
-        - Sew it and patch it, to appear before the king this evening.
-        - Stitch it and mend it, to go before the king this evening.
-        - Sew it, mend it, for the audience later this evening.
-    words: [dondomana]
+        - It means his heart is shattered because his love left.
+        - It means his heart is broken because his lover left.
+        - Meaning, his heart is shattered because his beloved left.
+        - It means her heart is shattered because her love left.
+        - It means he's heartbroken because his love left.
+    words: [tegese, ambyar]
+  - id: e08
+    type: dictation
+    text: Tak ijo royo-royo, tak sengguh temanten anyar.
+    meaning:
+      ar_eg: أخضر أخضر خالص، تقول عليه عريس جديد.
+      ar: شديد الخضرة، تحسبه عروسًا جديدًا.
+      en: So lush and green, you'd take it for a newlywed.
+    words: [ijo]
+  - id: e09
+    type: speaking
+    text: Tegese tembang iki, ngelmu iku kalakone kanthi laku.
+    meaning:
+      ar_eg: معنى الأغنية دي إن العلم بيتنال بالعمل.
+      ar: معنى هذه الأغنية أن العلم يُنال بالعمل.
+      en: This song means that knowledge is attained through practice.
+    words: [tegese, ngelmu]
+  - id: e10
+    type: multiple_choice
+    question: Ngelmu kudu dilakoni.
+    question_meaning:
+      ar_eg: معنى الجملة دي إيه؟
+      ar: ما معنى هذه الجملة؟
+      en: What does this sentence mean?
+    options: ['العلم لازم يتعمل بيه.', 'العلم يكفي يتقري.', 'العلم مالوش لازمة.']
+    answer: 0
+    explain:
+      ar_eg: kudu = لازم (harus)، وdilakoni = يتعمل بيه، من laku (العمل / السلوك).
+      ar: kudu = يجب (harus)، وdilakoni = يُعمَل به، من laku.
+      en: kudu = must (harus); dilakoni = is put into practice, from laku (conduct).
+    words: [kudu, dilakoni]
 dialogue:
-  title: Tegese dodot
+  title: Mohamed nerangake Lir-ilir
   lines:
+    - speaker: Mas Rizal
+      text: Mohamed, tegese Lir-ilir apa?
+      ar_eg: يا محمد، معنى Lir-ilir إيه؟
+      ar: يا محمد، ما معنى Lir-ilir؟
+      en: Mohamed, what does Lir-ilir mean?
     - speaker: Mohamed
-      text: Pak, dodot menika menapa?
-      ar_eg: يا حاج، الدودوت ده إيه؟
-      ar: يا سيدي، ما الدودوت؟
-      en: Sir, what is a dodot?
-    - speaker: Pak Ahmad
-      text: Dodot iku klambi Jawa jaman biyen, Mas.
-      ar_eg: الدودوت ده لبس جاوي من زمان يا محمد.
-      ar: الدودوت ثوب جاوي من الزمن القديم يا محمد.
-      en: A dodot is old-time Javanese clothing, Mohamed.
+      text: Critane cah angon sing dikon menek blimbing.
+      ar_eg: حكايتها عن ولد راعي بيقولوله اطلع شجرة الـ blimbing.
+      ar: حكايتها عن فتى راعٍ يُطلب منه تسلّق شجرة الـ blimbing.
+      en: It's about a shepherd boy who is told to climb a starfruit tree.
+    - speaker: Mas Rizal
+      text: Lan piwulange?
+      ar_eg: والحكمة إيه؟
+      ar: وما العبرة؟
+      en: And the lesson?
     - speaker: Mohamed
-      text: Lajeng, tegesipun lirik menika menapa?
-      ar_eg: طب والكلام ده معناه إيه؟
-      ar: وما معنى هذه الكلمات إذن؟
-      en: Then what do these lines mean?
-    - speaker: Pak Ahmad
-      text: Miturut tafsiran, dodot iku iman. Yen bedhah, kudu didondomi.
-      ar_eg: حسب التفسير، التوب ده هو الإيمان. لو اتقطع، لازم يتخيّط.
-      ar: بحسب التفسير، الثوب هو الإيمان؛ إن تمزّق وجبت خياطته.
-      en: In the usual reading, the dodot is faith. If it's torn, it must be sewn.
-    - speaker: Mohamed
-      text: Piwulangipun sae sanget, Pak.
-      ar_eg: الدرس ده حلو أوي يا حاج.
-      ar: إنه درس جميل جدًا يا سيدي.
-      en: That's a beautiful lesson, sir.
+      text: Blimbing iku duwe limang sisi, kaya salat limang wektu. Nanging iku tafsiran.
+      ar_eg: الـ blimbing ليها خمس جوانب، زي الصلوات الخمسة. بس ده تفسير.
+      ar: للـ blimbing خمسة أضلاع كالصلوات الخمس، لكن هذا تفسير.
+      en: A starfruit has five sides, like the five daily prayers. But that's an interpretation.
+    - speaker: Mas Rizal
+      text: Wah, kowe wis bisa nerangake tembang!
+      ar_eg: يا سلام، إنت بقيت تعرف تشرح الأغاني!
+      ar: رائع، صرت تستطيع شرح الأغاني!
+      en: Wow, you can explain songs now!
 new_words:
-  - word: lunyu
-    pos: adjective
-    ar_eg: زلق
-    ar: زلق
-    en: slippery = licin
-  - word: mbasuh
-    pos: verb
-    ar_eg: يغسل
-    ar: يغسل
-    en: wash = mencuci, membasuh
-  - word: dodot
+  - word: tegese
     pos: noun
-    ar_eg: توب جاوي قديم (dodotira = توبك)
-    ar: ثوب جاوي قديم (dodotira = ثوبك)
-    en: old Javanese ceremonial cloth (dodotira = your dodot)
-  - word: bedhah
-    pos: adjective
-    ar_eg: مقطوع / متقطّع
-    ar: ممزق
-    en: torn = sobek
-  - word: dondomana
+    ar_eg: معناه (artinya)
+    ar: معناه (artinya)
+    en: its meaning; that is = artinya
+  - word: piwulang
+    pos: noun
+    ar_eg: درس / حكمة (ajaran)
+    ar: عبرة / تعليم (ajaran)
+    en: teaching, lesson = ajaran
+  - word: kudu
+    pos: particle
+    ar_eg: لازم
+    ar: يجب
+    en: must = harus
+  - word: dilakoni
     pos: verb
-    ar_eg: خيّطه (أمر من dondom)
-    ar: خِطه (أمر من dondom)
-    en: sew it (command, from dondom) = jahitlah
+    ar_eg: يتعمل بيه، يتطبّق
+    ar: يُعمَل به، يُطبَّق
+    en: to be practised, carried out = dijalani
 review:
   status: draft
   verified: false
