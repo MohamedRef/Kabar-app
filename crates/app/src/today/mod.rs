@@ -27,7 +27,7 @@ pub fn Today() -> Element {
                     span { class: "num", "{number}" }
                     div { class: "lecture-main",
                         bdi { class: "lecture-title", "{title}" }
-                        span { class: "muted small", "{tx::PAGES} " bdi { "{pages}" } }
+                        span { class: "muted small", "{tx::PAGES} " bdi { dir: "ltr", "{pages}" } }
                     }
                     match items {
                         Some(n) => rsx! { span { class: "chip ready", "{tx::READY} · {n} {tx::ITEMS}" } },
