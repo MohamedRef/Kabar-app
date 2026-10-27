@@ -934,9 +934,11 @@ mod tests {
     fn fixture_feed() -> tempfile::TempDir {
         let src = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../fixtures/update");
         let feed = tempfile::tempdir().unwrap();
-        for name in [MANIFEST_FILE, SIGNATURE_FILE, "kabar-1.0.0-alpha.2-android-arm64.apk"] {
+        for name in [MANIFEST_FILE, SIGNATURE_FILE] {
             fs::copy(src.join(name), feed.path().join(name)).unwrap();
         }
+        // The signed manifest's Android asset: these bytes (no .apk is tracked).
+        fs::write(feed.path().join("kabar-1.0.0-alpha.2-android-arm64.apk"), b"fixture apk bytes").unwrap();
         feed
     }
 

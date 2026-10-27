@@ -384,6 +384,7 @@ mod tests {
             ),
         )
         .unwrap();
+        // The app tests write these bytes as the feed's APK (no .apk is tracked).
         let apk = b"fixture apk bytes".to_vec();
         let m = UpdateManifest {
             format: UPDATE_FORMAT,
@@ -418,6 +419,5 @@ mod tests {
         fs::write(root.join(MANIFEST_FILE), &json).unwrap();
         fs::write(root.join(SIGNATURE_FILE), format!("{}\n", B64.encode(key.sign(&json).to_bytes())))
             .unwrap();
-        fs::write(root.join("kabar-1.0.0-alpha.2-android-arm64.apk"), &apk).unwrap();
     }
 }
