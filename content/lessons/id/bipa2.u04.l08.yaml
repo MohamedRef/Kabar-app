@@ -1,239 +1,234 @@
 schema: kabar.lesson/v1
 id: bipa2.u04.l08
 language: id
-title: Tomat dan kentang
+title: Belanja dan bayar
 can_do:
-  ar_eg: تسمّي الخضار وتسأل إذا كانت طازة.
-  ar: أن تسمّي الخضروات وتسأل إن كانت طازجة.
-  en: Name vegetables and ask whether they're fresh.
+  ar_eg: 'تتسوق في سوبر ماركت: السلة والكيس والكاشير والخصم والدفع والباقي.'
+  ar: 'أن تتسوّق في متجر كبير: السلة والكيس والمحاسب والخصم والدفع والباقي.'
+  en: 'Shop at a supermarket: basket, bag, cashier, discount, paying and change.'
 slides:
-  - title: Di pasar sayur
+  - title: Di kasir
     body:
       ar_eg: |
-        tomat = طماطم، kentang = بطاطس، wortel = جزر (من الهولندي)، kubis = كرنب، timun = خيار، terong = باذنجان.
-        kacang = فول سوداني أو أي بقول: kacang tanah، kacang panjang (لوبيا).
-        segar = طازة ومنعشة: Sayurnya segar! وكمان الجو: udaranya segar.
+        belanja = يتسوق (والرسمي berbelanja). keranjang = سلة، kantong = كيس (kantong plastik).
+        timbangan = ميزان (timbang = يوزن).
+        bayar = يدفع: Bayar di kasir. وkasir = الكاشير.
+        kembalian = الباقي (من kembali = يرجع). وdiskon = خصم.
       ar: |
-        tomat = طماطم، kentang = بطاطس، wortel = جزر (من الهولندية)، kubis = ملفوف، timun = خيار، terong = باذنجان.
-        kacang = فول سوداني أو أي بقول: kacang tanah، وkacang panjang (لوبيا).
-        segar = طازج ومنعش: Sayurnya segar! والهواء أيضًا: udaranya segar.
+        belanja = يتسوّق (والفصيح berbelanja). keranjang = سلّة، kantong = كيس (kantong plastik).
+        timbangan = ميزان (timbang = يزن).
+        bayar = يدفع: Bayar di kasir، وkasir = المحاسب.
+        kembalian = الباقي (من kembali = يعود). وdiskon = خصم.
       en: |
-        tomat = tomato, kentang = potato, wortel = carrot (from Dutch), kubis = cabbage, timun = cucumber, terong = aubergine.
-        kacang = peanut or any bean: kacang tanah, kacang panjang (long beans).
-        segar = fresh, refreshing: Sayurnya segar! The air too: udaranya segar.
+        belanja = shop (formal berbelanja). keranjang = basket, kantong = bag (kantong plastik).
+        timbangan = scales (timbang = weigh).
+        bayar = pay: Bayar di kasir; kasir = cashier.
+        kembalian = change (from kembali, return). diskon = discount.
     examples:
-      - text: Tomat ini segar dan merah.
-        ar_eg: الطماطم دي طازة وحمرا.
-        ar: هذه الطماطم طازجة وحمراء.
-        en: These tomatoes are fresh and red.
-      - text: Ibu membeli kentang dan wortel untuk makan malam.
-        ar_eg: ماما اشترت بطاطس وجزر للعشا.
-        ar: اشترت أمي بطاطس وجزرًا للعشاء.
-        en: Mum bought potatoes and carrots for dinner.
-      - text: Kacang ini enak.
-        ar_eg: الفول السوداني ده حلو.
-        ar: هذا الفول السوداني لذيذ.
-        en: These peanuts are good.
+      - text: Ibu belanja di pasar setiap pagi.
+        ar_eg: ماما بتتسوق في السوق كل يوم الصبح.
+        ar: تتسوّق أمي في السوق كل صباح.
+        en: Mum shops at the market every morning.
+      - text: Bayar di kasir, ya.
+        ar_eg: ادفع عند الكاشير.
+        ar: ادفع عند المحاسب.
+        en: Pay at the till, please.
+      - text: Ini kembaliannya, Pak. Terima kasih!
+        ar_eg: اتفضل الباقي يا أستاذ. شكرًا!
+        ar: تفضّل الباقي يا سيدي. شكرًا!
+        en: Here's your change, sir. Thank you!
 exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: tomat
-        ar_eg: طماطم
-        ar: طماطم
-        en: tomato
-      - text: kentang
-        ar_eg: بطاطس
-        ar: بطاطس
-        en: potato
-      - text: wortel
-        ar_eg: جزر
-        ar: جزر
-        en: carrot
-      - text: kacang
-        ar_eg: فول سوداني
-        ar: فول سوداني
-        en: peanut, bean
-    words: [tomat, kentang, wortel, kacang]
+      - text: belanja
+        ar_eg: يتسوق
+        ar: يتسوّق
+        en: shop
+      - text: kasir
+        ar_eg: كاشير
+        ar: محاسب
+        en: cashier
+      - text: kembalian
+        ar_eg: الباقي
+        ar: الباقي
+        en: change
+      - text: keranjang
+        ar_eg: سلة
+        ar: سلّة
+        en: basket
+    words: [belanja, kasir, kembalian, keranjang]
   - id: e02
     type: match_pairs
     pairs:
-      - text: kubis
-        ar_eg: كرنب
-        ar: ملفوف
-        en: cabbage
-      - text: timun
-        ar_eg: خيار
-        ar: خيار
-        en: cucumber
-      - text: terong
-        ar_eg: باذنجان
-        ar: باذنجان
-        en: aubergine
-      - text: segar
-        ar_eg: طازة
-        ar: طازج
-        en: fresh
-    words: [kubis, timun, terong, segar]
+      - text: kantong
+        ar_eg: كيس
+        ar: كيس
+        en: bag
+      - text: timbangan
+        ar_eg: ميزان
+        ar: ميزان
+        en: scales
+      - text: diskon
+        ar_eg: خصم
+        ar: خصم
+        en: discount
+      - text: bayar
+        ar_eg: يدفع
+        ar: يدفع
+        en: pay
+    words: [kantong, timbangan, diskon, bayar]
   - id: e03
     type: listen
-    text: Ibu membeli kentang dan wortel di pasar.
+    text: Ini kembaliannya, lima ribu. Terima kasih!
     question:
-      ar_eg: اشترت إيه؟
-      ar: ماذا اشترت؟
-      en: What did she buy?
-    options: [بطاطس وجزر, طماطم وخيار, كرنب وباذنجان]
+      ar_eg: الكاشير بيدّيه إيه؟
+      ar: ماذا يعطيه المحاسب؟
+      en: What is the cashier giving him?
+    options: [الباقي, كيس, سلة]
     answer: 0
     meaning:
-      ar_eg: ماما اشترت بطاطس وجزر من السوق.
-      ar: اشترت أمي بطاطس وجزرًا من السوق.
-      en: Mum bought potatoes and carrots at the market.
-    words: [kentang, wortel]
+      ar_eg: اتفضل الباقي، خمس تلاف. شكرًا!
+      ar: تفضّل الباقي، خمسة آلاف. شكرًا!
+      en: Here's your change, five thousand. Thank you!
+    words: [kembalian]
   - id: e04
     type: fill_blank
-    sentence: Tomat ini masih ___. Baru datang pagi ini.
+    sentence: Silakan ke ___ di depan.
     meaning:
-      ar_eg: الطماطم دي لسه ___. لسه واصلة الصبح.
-      ar: هذه الطماطم ما زالت ___، وصلت هذا الصباح.
-      en: These tomatoes are still ___. They arrived this morning.
-    options: [segar, kubis, terong]
-    answers: [segar]
-    words: [segar, kubis, terong, tomat]
+      ar_eg: اتفضل على ___ اللي قدام.
+      ar: تفضّل إلى ___ في الأمام.
+      en: Please go to the ___ at the front.
+    options: [kasir, timbangan, diskon]
+    answers: [kasir]
+    words: [kasir, timbangan, diskon]
   - id: e05
     type: multiple_choice
     question_meaning:
-      ar_eg: خضار بنفسجي غامق وطويل.
-      ar: خضار بنفسجي داكن طويل.
-      en: A long dark-purple vegetable.
-    options: [terong, timun, wortel]
+      ar_eg: البياع بيوزن الفاكهة بإيه؟
+      ar: بمَ يزن البائع الفاكهة؟
+      en: What does the seller weigh fruit on?
+    options: [timbangan, keranjang, kantong]
     answer: 0
     explain:
-      ar_eg: terong = باذنجان.
-      ar: terong = باذنجان.
-      en: terong = aubergine.
-    words: [terong, timun, wortel]
+      ar_eg: timbangan = ميزان.
+      ar: timbangan = ميزان.
+      en: timbangan = scales.
+    words: [timbangan, keranjang, kantong]
   - id: e06
     type: fill_blank
-    sentence: Saya beli sebungkus ___ untuk teman.
+    sentence: 'Hari ini ada ___: semua baju lebih murah!'
     meaning:
-      ar_eg: اشتريت كيس ___ لصاحبي.
-      ar: اشتريت كيسًا من ___ لصديقي.
-      en: I bought a packet of ___ for a friend.
-    options: [kacang, kubis, timun]
-    answers: [kacang]
-    words: [kacang, kubis, timun]
+      ar_eg: 'النهارده فيه ___: كل الهدوم أرخص!'
+      ar: 'اليوم ___: كل الملابس أرخص!'
+      en: 'Today there''s a ___: all clothes are cheaper!'
+    options: [diskon, kembalian, belanja]
+    answers: [diskon]
+    words: [diskon, kembalian, belanja]
   - id: e07
     type: build_sentence
     source:
-      ar_eg: الطماطم والخيار دول طازة.
-      ar: هذه الطماطم والخيار طازجة.
-      en: These tomatoes and cucumbers are fresh.
-    answer: Tomat dan timun ini segar.
-    distractors: [kentang, kacang]
-    words: [tomat, timun, segar, kacang]
+      ar_eg: مش محتاج كيس بلاستيك، معايا سلة.
+      ar: لا أحتاج كيسًا بلاستيكيًا، معي سلّة.
+      en: No plastic bag, thanks; I've brought a basket.
+    answer: Tidak usah kantong plastik, saya bawa keranjang.
+    distractors: [kasir, bayar]
+    words: [kantong, keranjang, kasir, bayar]
   - id: e08
     type: translate
     direction: from_target
-    source_text: Kubis di pasar ini murah.
+    source_text: Ada diskon hari ini. Bayar di kasir, ya!
     answers_meaning:
-      ar_eg: [الكرنب في السوق ده رخيص, الكرنب رخيص في السوق ده]
-      ar: [الملفوف في هذا السوق رخيص]
-      en: [Cabbage is cheap at this market, The cabbage at this market is cheap]
-    words: [kubis]
+      ar_eg: [فيه خصم النهارده. ادفع عند الكاشير!, النهارده فيه خصم. الدفع عند الكاشير!]
+      ar: [هناك خصم اليوم. ادفع عند المحاسب!]
+      en: ['There''s a discount today. Pay at the till!', Discount today. Please pay at the cashier!]
+    words: [diskon, bayar, kasir]
   - id: e09
     type: speaking
-    text: Saya mau setengah kilo terong dan sekilo kentang.
+    text: Saya mau belanja di pasar.
     meaning:
-      ar_eg: عايز نص كيلو باذنجان وكيلو بطاطس.
-      ar: أريد نصف كيلو باذنجان وكيلو بطاطس.
-      en: I'd like half a kilo of aubergines and a kilo of potatoes.
-    words: [terong, kentang]
+      ar_eg: عايز أتسوق في السوق.
+      ar: أريد التسوّق في السوق.
+      en: I want to go shopping at the market.
+    words: [belanja]
   - id: e10
     type: multiple_choice
-    question_meaning:
-      ar_eg: حاجة برتقاني وطويلة والأرانب بتحبها.
-      ar: شيء برتقالي طويل تحبّه الأرانب.
-      en: Something long and orange that rabbits love.
-    options: [wortel, tomat, kubis]
+    question: Harganya delapan ribu, uang saya sepuluh ribu. Kembaliannya ___.
+    options: [dua ribu, delapan ribu, sepuluh ribu]
     answer: 0
     explain:
-      ar_eg: wortel = جزر.
-      ar: wortel = جزر.
-      en: wortel = carrot.
-    words: [wortel, tomat, kubis]
+      ar_eg: '١٠ - ٨ = ٢: dua ribu.'
+      ar: 'عشرة ناقص ثمانية يساوي اثنين: dua ribu.'
+      en: '10 − 8 = 2: dua ribu.'
+    words: [kembalian, bayar]
 dialogue:
   lines:
-    - speaker: Bu Yanti
-      text: Mohamed, kita ke pasar, yuk! Saya mau memasak untuk makan malam.
-      ar_eg: يلّا يا محمد نروح السوق! عايزة أطبخ للعشا.
-      ar: هيّا يا محمد إلى السوق! أريد أن أطبخ العشاء.
-      en: Mohamed, let's go to the market! I want to cook dinner.
+    - speaker: Rina
+      text: Mohamed, ayo belanja! Ada diskon di toko itu.
+      ar_eg: يلّا يا محمد نتسوق! فيه خصم في المحل ده.
+      ar: هيّا يا محمد نتسوّق! هناك خصم في ذلك المتجر.
+      en: Mohamed, let's go shopping! That shop has a sale.
     - speaker: Mohamed
-      text: Mau beli apa, Bu?
-      ar_eg: هتشتري إيه يا طنط؟
-      ar: ماذا ستشترين يا سيدتي؟
-      en: What are you going to buy?
-    - speaker: Bu Yanti
-      text: Tomat, kentang, wortel, dan kubis.
-      ar_eg: طماطم وبطاطس وجزر وكرنب.
-      ar: طماطم وبطاطس وجزرًا وملفوفًا.
-      en: Tomatoes, potatoes, carrots and cabbage.
-    - speaker: Penjual
-      text: Semua segar, Bu! Baru datang pagi ini.
-      ar_eg: كله طازة يا ست! لسه جاي الصبح.
-      ar: كلّها طازجة يا سيدتي! وصلت هذا الصباح.
-      en: It's all fresh! It came in this morning.
-    - speaker: Bu Yanti
-      text: Timunnya berapa sekilo?
-      ar_eg: الخيار بكام الكيلو؟
-      ar: بكم كيلو الخيار؟
-      en: How much a kilo are the cucumbers?
-    - speaker: Penjual
-      text: Delapan ribu. Terongnya juga murah!
-      ar_eg: بتمن تلاف. والباذنجان رخيص كمان!
-      ar: بثمانية آلاف، والباذنجان رخيص أيضًا!
-      en: Eight thousand. The aubergines are cheap too!
+      text: Ayo! Ini keranjangnya.
+      ar_eg: يلّا! دي السلة.
+      ar: هيّا! هذه السلّة.
+      en: Let's go! Here's a basket.
+    - speaker: Kasir
+      text: Semuanya delapan puluh ribu. Pakai kantong plastik?
+      ar_eg: الحساب تمانين ألف. عايز كيس بلاستيك؟
+      ar: المجموع ثمانون ألفًا. أتريد كيسًا بلاستيكيًا؟
+      en: That's eighty thousand altogether. Plastic bag?
+    - speaker: Mohamed
+      text: Tidak usah, terima kasih. Saya bayar seratus ribu.
+      ar_eg: لأ، شكرًا. هدفع مية ألف.
+      ar: لا داعي، شكرًا. أدفع مئة ألف.
+      en: No need, thanks. I'll pay with a hundred thousand.
+    - speaker: Kasir
+      text: Ini kembaliannya, dua puluh ribu.
+      ar_eg: اتفضل الباقي، عشرين ألف.
+      ar: تفضّل الباقي، عشرون ألفًا.
+      en: Here's your change, twenty thousand.
 new_words:
-  - word: tomat
+  - word: belanja
+    pos: verb
+    ar_eg: يتسوق
+    ar: يتسوّق
+    en: shop, go shopping
+  - word: kasir
     pos: noun
-    ar_eg: طماطم
-    ar: طماطم
-    en: tomato
-  - word: kentang
+    ar_eg: كاشير
+    ar: محاسب (أمين صندوق)
+    en: cashier
+  - word: kembalian
     pos: noun
-    ar_eg: بطاطس
-    ar: بطاطس
-    en: potato
-  - word: wortel
+    ar_eg: الباقي (فلوس)
+    ar: الباقي (من النقود)
+    en: change (money)
+  - word: keranjang
     pos: noun
-    ar_eg: جزر
-    ar: جزر
-    en: carrot
-  - word: kacang
+    ar_eg: سلة
+    ar: سلّة
+    en: basket
+  - word: kantong
     pos: noun
-    ar_eg: فول سوداني، بقول
-    ar: فول سوداني، بقول
-    en: peanut, bean
-  - word: kubis
+    ar_eg: كيس، جيب
+    ar: كيس، جيب
+    en: bag, pocket
+  - word: timbangan
     pos: noun
-    ar_eg: كرنب
-    ar: ملفوف
-    en: cabbage
-  - word: timun
+    ar_eg: ميزان
+    ar: ميزان
+    en: scales
+  - word: diskon
     pos: noun
-    ar_eg: خيار
-    ar: خيار
-    en: cucumber
-  - word: terong
-    pos: noun
-    ar_eg: باذنجان
-    ar: باذنجان
-    en: aubergine, eggplant
-  - word: segar
-    pos: adjective
-    ar_eg: طازة، منعش
-    ar: طازج، منعش
-    en: fresh
+    ar_eg: خصم
+    ar: خصم
+    en: discount
+  - word: bayar
+    pos: verb
+    ar_eg: يدفع
+    ar: يدفع
+    en: pay
 review:
   status: draft
   verified: false

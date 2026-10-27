@@ -151,13 +151,21 @@ exercises:
       en: ['At first we took an ojek, then we took a bus to Bedugul.', 'First we rode a motorbike taxi, then a bus to Bedugul.']
     words: [mula-mula, kemudian]
   - id: e11
-    type: dictation
-    text: Akhirnya kami sampai di Bedugul.
-    meaning:
-      ar_eg: في الآخر وصلنا بيدوجول.
-      ar: وصلنا أخيرًا إلى بيدوغول.
-      en: We finally arrived in Bedugul.
-    words: [akhirnya]
+    type: match_pairs
+    pairs:
+      - text: kendaraan
+        ar_eg: عربية، مركبة
+        ar: مركبة
+        en: vehicle
+      - text: bensin
+        ar_eg: بنزين
+        ar: وقود (بنزين)
+        en: petrol
+      - text: ban
+        ar_eg: كاوتش
+        ar: إطار
+        en: tyre
+    words: [kendaraan, bensin, ban]
   - id: e12
     type: speaking
     text: Pertama, saya naik ojek. Lalu, saya naik bus. Setelah itu, saya jalan-jalan di danau. Akhirnya, saya pulang.

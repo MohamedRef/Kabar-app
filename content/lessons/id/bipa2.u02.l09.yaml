@@ -52,18 +52,21 @@ exercises:
         en: colleague
     words: [kantor, rapat, lembur, rekan kerja]
   - id: e03
-    type: multiple_choice
-    question_meaning:
-      ar_eg: menulis = بيكتب. الكاتب اسمه إيه؟
-      ar: menulis = يكتب. ما اسم الكاتب؟
-      en: menulis = to write. What's a writer?
-    options: [penulis, pemulis, petulis]
-    answer: 0
-    explain:
-      ar_eg: 'زي menulis: t بتقع، وتبقى pen-.'
-      ar: 'كما في menulis: تسقط t وتصير pen-.'
-      en: As in menulis, t drops → pen-.
-    words: [penulis]
+    type: match_pairs
+    pairs:
+      - text: perusahaan
+        ar_eg: شركة
+        ar: شركة
+        en: company
+      - text: pengacara
+        ar_eg: محامي
+        ar: محامٍ
+        en: lawyer
+      - text: tukang
+        ar_eg: صنايعي (tukang kayu = نجار)
+        ar: حِرفي (tukang kayu = نجّار)
+        en: tradesperson (tukang kayu = carpenter)
+    words: [perusahaan, pengacara, tukang]
   - id: e04
     type: multiple_choice
     question_meaning:

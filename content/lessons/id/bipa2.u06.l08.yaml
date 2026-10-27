@@ -63,18 +63,25 @@ exercises:
         en: rent
     words: [ruang tamu, rumah makan, tetangga, seberang, sewa]
   - id: e02
-    type: multiple_choice
-    question_meaning:
-      ar_eg: مدام يانتي عاملة أكل وعايزة تعزم عليك. تقول إيه؟
-      ar: أعدّت السيدة يانتي طعامًا وتريد أن تدعوك إليه. ماذا تقول؟
-      en: Bu Yanti has made food and wants to offer you some. What does she say?
-    options: ['Tolong makan, Pak.', 'Minta makan, Pak.', 'Silakan makan, Pak.']
-    answer: 2
-    explain:
-      ar_eg: عزومة = silakan.
-      ar: الدعوة بـ silakan.
-      en: An offer = silakan.
-    words: [silakan]
+    type: match_pairs
+    pairs:
+      - text: apartemen
+        ar_eg: شقة
+        ar: شقة
+        en: flat, apartment
+      - text: garasi
+        ar_eg: جراج
+        ar: مرآب
+        en: garage
+      - text: kampung
+        ar_eg: قرية، حتة شعبية
+        ar: قرية، حيّ شعبي
+        en: village, neighbourhood
+      - text: sepi
+        ar_eg: هادي، فاضي
+        ar: هادئ، خالٍ
+        en: quiet, deserted
+    words: [apartemen, garasi, kampung, sepi]
   - id: e03
     type: multiple_choice
     question: Pak Wayan punya tiga ___ ayam.
