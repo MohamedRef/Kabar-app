@@ -10,7 +10,7 @@
   --text: #23211f;
   --radius: 14px;
   --shadow: 0 1px 2px rgb(35 33 31 / 0.08), 0 4px 16px rgb(35 33 31 / 0.06);
-  --font-latin: "Inter", "Segoe UI", "Roboto", system-ui, sans-serif;
+  --font-latin: "Plus Jakarta Sans", "Inter", "Segoe UI", "Roboto", system-ui, sans-serif;
   --font-arabic: "IBM Plex Sans Arabic", "Noto Naskh Arabic", "Noto Sans Arabic", "Geeza Pro", system-ui, sans-serif;
 }
 
@@ -116,6 +116,13 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
   text-align: center;
 }
 .welcome .card { max-inline-size: 34rem; }
+/* The hero (prompt 7): dawn over the terraces, "Apa kabar?" in its empty sky. */
+.welcome .hero { position: relative; margin: -1.25rem -1.25rem 1rem; border-start-start-radius: var(--radius); border-start-end-radius: var(--radius); overflow: hidden; }
+.welcome .hero img { display: block; inline-size: 100%; block-size: 16rem; object-fit: cover; object-position: center 0%; }
+.welcome .hero .tall { display: none; }
+.app[data-width="compact"] .welcome .hero .wide { display: none; }
+.app[data-width="compact"] .welcome .hero .tall { display: block; block-size: 14rem; object-position: center 40%; }
+.welcome .hero .greeting { font-size: clamp(2.2rem, 8vw, 3.4rem); position: absolute; inset-block-start: 0.75rem; inset-inline: 0; margin: 0; color: #2B3A70; text-shadow: 0 1px 12px rgb(245 239 227 / 0.6); }
 .greeting {
   font-family: var(--font-latin);
   font-size: clamp(2.6rem, 9vw, 4.5rem);
@@ -135,7 +142,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline
   color: var(--gold);
   font-size: 1.6rem;
 }
-.bridge .ar { font-family: var(--font-arabic); font-size: 2rem; }
+.bridge .ar { font-family: "Amiri", var(--font-arabic); font-size: 2.2rem; }
 .bridge-word { text-decoration: underline 3px var(--gold); text-underline-offset: 6px; }
 
 /* Theme picker swatches: each shows that theme's surface, accent and gold. */
@@ -346,6 +353,12 @@ button.check[aria-checked="true"] { background: var(--sawah); }
   padding-block-start: clamp(1rem, 10vh, 5rem);
 }
 .onboarding .card { inline-size: 100%; max-inline-size: 40rem; }
+/* Pictures for empty and calm moments (prompt 7). */
+.misc-art { display: block; }
+.empty-art { inline-size: 9rem; block-size: auto; margin-inline: auto; }
+.empty-art.small { inline-size: 6rem; }
+/* Journal pages: notebook paper on light themes; --notebook-paper comes from misc_art.rs. */
+.journal > .card { background: var(--notebook-paper, none) repeat center / 512px, var(--surface); }
 .dots { display: flex; gap: 0.35rem; list-style: none; padding: 0; margin: 0 0 0.5rem; }
 .dot { flex: 1; block-size: 0.3rem; border-radius: 999px; background: var(--surface-2); }
 .dot.done { background: var(--sawah); }
