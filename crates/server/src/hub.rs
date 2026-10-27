@@ -41,6 +41,9 @@ CREATE TABLE IF NOT EXISTS row_state (
     PRIMARY KEY (tbl, row_id)
 )";
 
+/// `meta` key set once the log written before compaction was swept.
+const SWEPT_KEY: &str = "hub_swept_superseded";
+
 /// Per-connection state, kept as the WebSocket's attachment so it survives
 /// hibernation.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
@@ -105,6 +108,28 @@ impl<'a, S: Sql> Hub<'a, S> {
     /// Opens without touching the schema (the Durable Object migrates once at start).
     pub fn open(db: &'a S) -> Self {
         Self { db }
+    }
+
+    /// Drops ops no row points at any more (older versions of LWW rows, the
+    /// strokes behind a tombstone), once: [`Self::apply`] keeps the log
+    /// compact from then on. Returns how many went.
+    ///
+    /// Catch-up pages by `seq`, so a compacted log is already a snapshot: a
+    /// fresh device gets each row's current op plus every append, and a
+    /// device part-way through still gets every row that changed after its
+    /// `last_seq`, because a row's current op is never older than the ones it
+    /// replaced.
+    pub fn compact_once(&self) -> Result<u64, SqlError> {
+        self.db.exec_batch(crate::sql::META_SCHEMA)?;
+        if crate::sql::meta_get(self.db, SWEPT_KEY)?.is_some() {
+            return Ok(0);
+        }
+        let gone = self
+            .db
+            .exec("DELETE FROM ops WHERE seq NOT IN (SELECT seq FROM row_state) RETURNING seq", &[])?
+            .len() as u64;
+        crate::sql::meta_set(self.db, SWEPT_KEY, "1")?;
+        Ok(gone)
     }
 
     pub fn head_seq(&self) -> Result<u64, SqlError> {
@@ -371,6 +396,15 @@ impl<'a, S: Sql> Hub<'a, S> {
             .and_then(|r| r.first())
             .and_then(Value::as_u64)
             .ok_or_else(|| SqlError("insert returned no seq".into()))?;
+        // The version this op replaces is dead weight for every device: those
+        // that had it get this op next, the rest never need it. A replay of
+        // it still merges as a no-op against the newer row.
+        if existing.is_some() {
+            self.db.exec(
+                "DELETE FROM ops WHERE seq = (SELECT seq FROM row_state WHERE tbl = ? AND row_id = ?)",
+                &[op.table.as_str().into(), op.row_id.as_str().into()],
+            )?;
+        }
         self.db.exec(
             "INSERT INTO row_state (tbl, row_id, wall_ms, counter, device, deleted, seq)
              VALUES (?, ?, ?, ?, ?, ?, ?)
@@ -768,9 +802,85 @@ mod tests {
         let erase = Op { id: "s2".into(), kind: OpKind::Delete, payload: None, ..stroke.clone() };
         let out = send(&hub, &mut tab, &ClientMsg::Push { batch: 1, ops: vec![stroke, erase] });
         assert_eq!(out.broadcast.len(), 2);
+        assert_eq!(out.broadcast[0].op.payload.as_ref().unwrap()["points"][0][2], 0.5);
+        // An erased stroke reaches a new device as its tombstone alone.
         let ServerMsg::Ops { ops, .. } = &hub.catch_up(0).unwrap()[0] else { panic!() };
-        assert_eq!(ops[1].op.kind, OpKind::Delete);
-        assert_eq!(ops[1].op.payload, None);
-        assert_eq!(ops[0].op.payload.as_ref().unwrap()["points"][0][2], 0.5);
+        assert_eq!(ops.len(), 1);
+        assert_eq!(ops[0].op.kind, OpKind::Delete);
+        assert_eq!(ops[0].op.payload, None);
+    }
+
+    /// Replays every op of a catch-up into (table, row) → (kind, payload),
+    /// the way a device's store merges them.
+    fn replay(
+        msgs: &[ServerMsg],
+    ) -> std::collections::BTreeMap<(String, String), (OpKind, Option<serde_json::Value>)> {
+        let mut rows = std::collections::BTreeMap::new();
+        for m in msgs {
+            if let ServerMsg::Ops { ops, .. } = m {
+                for SeqOp { op, .. } in ops {
+                    rows.insert((op.table.clone(), op.row_id.clone()), (op.kind, op.payload.clone()));
+                }
+            }
+        }
+        rows
+    }
+
+    #[test]
+    fn superseded_versions_leave_the_log() {
+        let db = MemSql::new();
+        let hub = Hub::new(&db).unwrap();
+        let mut phone = conn("s24u");
+        send(&hub, &mut phone, &hello(0));
+        let statuses = ["new", "learning", "known"];
+        for (i, status) in statuses.iter().enumerate() {
+            let op = word(&format!("r{i}"), "s24u", NOW + i as u64, "rumah", status);
+            send(&hub, &mut phone, &ClientMsg::Push { batch: i as u64, ops: vec![op] });
+        }
+        let mid = hub.head_seq().unwrap();
+        send(
+            &hub,
+            &mut phone,
+            &ClientMsg::Push { batch: 9, ops: vec![word("k1", "s24u", NOW, "kabar", "new")] },
+        );
+
+        // A new tablet gets one op per row: the current one.
+        let fresh = hub.catch_up(0).unwrap();
+        let ServerMsg::Ops { ops, .. } = &fresh[0] else { panic!() };
+        assert_eq!(ops.iter().map(|o| o.op.id.as_str()).collect::<Vec<_>>(), ["r2", "k1"]);
+        assert_eq!(fresh.last(), Some(&ServerMsg::CaughtUp { head_seq: 4 }));
+        // A device part-way through still gets every row that changed since.
+        let ServerMsg::Ops { ops, .. } = &hub.catch_up(mid - 1).unwrap()[0] else { panic!() };
+        assert_eq!(ops.iter().map(|o| o.op.id.as_str()).collect::<Vec<_>>(), ["r2", "k1"]);
+        // Replaying a dropped version (a lost ack) is still a no-op.
+        let out = send(
+            &hub,
+            &mut phone,
+            &ClientMsg::Push { batch: 10, ops: vec![word("r0", "s24u", NOW, "rumah", "new")] },
+        );
+        assert!(out.broadcast.is_empty());
+        assert_eq!(hub.current_payload("word_status", "rumah").unwrap().unwrap()["status"], "known");
+    }
+
+    #[test]
+    fn the_old_log_is_swept_once_to_the_same_state() {
+        let db = MemSql::new();
+        let hub = Hub::new(&db).unwrap();
+        let mut phone = conn("s24u");
+        send(&hub, &mut phone, &hello(0));
+        let ops = vec![word("a", "s24u", NOW, "rumah", "known"), word("b", "s24u", NOW, "kabar", "learning")];
+        send(&hub, &mut phone, &ClientMsg::Push { batch: 1, ops });
+        let before = replay(&hub.catch_up(0).unwrap());
+        // A version a server from before compaction kept.
+        db.exec(
+            "INSERT INTO ops (op_id, tbl, row_id, kind, wall_ms, counter, device, payload, received_ms)
+             VALUES ('old', 'word_status', 'rumah', 'upsert', 1, 0, 's24u', '{\"lexeme\":\"rumah\",\"status\":\"new\"}', 1)",
+            &[],
+        )
+        .unwrap();
+        assert_ne!(replay(&hub.catch_up(0).unwrap()), before, "the stale version replays last");
+        assert_eq!(hub.compact_once().unwrap(), 1);
+        assert_eq!(replay(&hub.catch_up(0).unwrap()), before);
+        assert_eq!(hub.compact_once().unwrap(), 0, "only once");
     }
 }

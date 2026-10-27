@@ -4,6 +4,7 @@
 //! Everything outside `wasm` is plain Rust, tested natively against real
 //! SQLite. `wasm` binds it to the Cloudflare runtime (Worker + Durable Object).
 
+pub mod account;
 pub mod ai;
 pub mod blobs;
 pub mod coach;

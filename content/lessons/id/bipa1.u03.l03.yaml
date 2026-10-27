@@ -108,7 +108,15 @@ exercises:
         ar_eg: كتاب رينا
         ar: كتاب رينا
         en: Rina's book
-    words: [-ku, -mu, -nya, buku]
+      - text: rumah
+        ar_eg: بيت
+        ar: بيت
+        en: house
+      - text: tas
+        ar_eg: شنطة
+        ar: حقيبة
+        en: bag
+    words: [-ku, -mu, -nya, buku, rumah, tas]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -124,49 +132,53 @@ exercises:
     words: [tas]
   - id: e03
     type: listen
-    text: Ini punya saya.
-    options: ['Itu punya siapa?', Ini rumah saya., Ini punya saya.]
-    answer: 2
-    words: [punya]
+    text: Tas ini punya saya.
+    options: ['Tas ini punya saya.', 'Tas itu punyamu?', 'Buku ini punya saya.']
+    answer: 0
+    meaning:
+      ar_eg: الشنطة دي بتاعتي.
+      ar: هذه الحقيبة لي.
+      en: This bag is mine.
+    words: [tas, punya]
   - id: e04
     type: fill_blank
-    sentence: Raka, siapa nama ibu___?
+    sentence: Raka, buku ini punya___?
     meaning:
-      ar_eg: يا راكا، اسم مامتك إيه؟
-      ar: يا راكا، ما اسم أمك؟
-      en: Raka, what's your mother's name?
+      ar_eg: يا راكا، الكتاب ده بتاعك؟
+      ar: يا راكا، أهذا الكتاب لك؟
+      en: Raka, is this book yours?
     options: [nya, ku, mu]
     answers: [mu]
     explain:
-      ar_eg: بتكلم Raka صاحبك، يبقى -mu = بتاعك.
-      ar: تخاطب صديقك Raka، فتلزم -mu.
-      en: You're talking to your friend Raka, so it's -mu (your).
-    words: [-mu, ibu]
+      ar_eg: بتكلم Raka صاحبك، يبقى -mu = بتاعك. punyamu = بتاعك.
+      ar: تخاطب صديقك Raka، فتلزم -mu، وpunyamu = لك.
+      en: You're talking to your friend Raka, so it's -mu (your); punyamu = yours.
+    words: [-mu, buku, punya]
   - id: e05
     type: build_sentence
     source:
-      ar_eg: ده بيتي.
-      ar: هذا بيتي.
-      en: This is my house.
-    answer: Ini rumah saya.
+      ar_eg: دي شنطتي، وده كتابه.
+      ar: هذه حقيبتي، وذاك كتابه.
+      en: This is my bag, and that's his book.
+    answer: Ini tasku, dan itu bukunya.
     distractors: [punya, dia]
-    words: [rumah]
+    words: [tas, -ku, buku, -nya]
   - id: e06
     type: dictation
-    text: Rumah saya di Menteng.
+    text: Rumahnya di Menteng.
     meaning:
-      ar_eg: بيتي في منتنج.
-      ar: بيتي في منتنج.
-      en: My house is in Menteng.
-    words: [rumah]
+      ar_eg: بيته في منتنج.
+      ar: بيته في منتنج.
+      en: His house is in Menteng.
+    words: [rumah, -nya]
   - id: e07
     type: speaking
-    text: Ini buku saya, dan itu bukumu.
+    text: Ini rumahku. Itu punya Rina.
     meaning:
-      ar_eg: ده كتابي، وده (هناك) كتابك.
-      ar: هذا كتابي، وذاك كتابك.
-      en: This is my book, and that's your book.
-    words: [buku, -mu]
+      ar_eg: ده بيتي. وده (هناك) بتاع رينا.
+      ar: هذا بيتي. وذاك لرينا.
+      en: This is my house. That one is Rina's.
+    words: [rumah, -ku, punya]
 dialogue:
   title: Tas siapa?
   lines:

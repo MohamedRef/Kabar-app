@@ -64,20 +64,24 @@ exercises:
     words: [sesudah, mandi, sarapan]
   - id: e02
     type: listen
-    text: Saya selalu bangun jam lima.
-    options: [Saya selalu bangun jam lima., Saya selalu bangun jam sembilan., Saya jarang bangun jam lima.]
+    text: Sesudah itu, saya makan nasi uduk.
+    options: ['Sesudah itu, saya makan nasi uduk.', 'Sesudah itu, saya makan siang.', 'Sebelum itu, saya makan nasi uduk.']
     answer: 0
-    words: [selalu, bangun]
+    meaning:
+      ar_eg: بعد كده بكل نَسي أودوك.
+      ar: بعد ذلك آكل «نَسي أودوك».
+      en: After that, I eat nasi uduk.
+    words: [sesudah itu, nasi uduk, makan siang]
   - id: e03
     type: fill_blank
-    sentence: Saya bekerja ___ jam lima sore.
+    sentence: Saya rajin. Saya bekerja ___ jam lima sore.
     meaning:
-      ar_eg: بشتغل لحد الساعة خمسة العصر.
-      ar: أعمل حتى الساعة الخامسة مساءً.
-      en: I work until five in the afternoon.
-    options: [sampai, sering, sebelum]
+      ar_eg: أنا مجتهد. بشتغل لحد الساعة خمسة العصر.
+      ar: أنا مجتهد. أعمل حتى الخامسة عصرًا.
+      en: I'm hard-working. I work until five p.m.
+    options: [sampai, rajin, sesudah]
     answers: [sampai]
-    words: [sampai]
+    words: [rajin, sampai]
   - id: e04
     type: fill_blank
     sentence: Saya ___ makan siang.
@@ -94,13 +98,12 @@ exercises:
   - id: e05
     type: build_sentence
     source:
-      ar_eg: قبل ما أنام بقرا كتاب.
-      ar: أقرأ كتابًا قبل النوم.
-      en: Before sleeping, I read a book.
-    answer: Sebelum tidur, saya membaca buku.
-    alternatives: [Saya membaca buku sebelum tidur.]
-    distractors: [sesudah, menulis]
-    words: [sebelum, membaca]
+      ar_eg: راكا بيشتغل بجد لحد العصر.
+      ar: يعمل راكا بجد حتى العصر.
+      en: Raka works hard until the afternoon.
+    answer: Raka rajin bekerja sampai sore.
+    distractors: [sebelum, nasi]
+    words: [rajin, sampai]
   - id: e06
     type: build_sentence
     source:
@@ -112,14 +115,33 @@ exercises:
     distractors: [sebelum, pulang]
     words: [lalu, pergi, kantor]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: أنا دايمًا بصحى الساعة خمسة.
-      ar: أستيقظ دائمًا في الساعة الخامسة.
-      en: I always wake up at five.
-    answers: [Saya selalu bangun jam lima., Saya selalu bangun jam lima, Aku selalu bangun jam lima., Saya selalu bangun pukul lima., Saya selalu bangun pukul 05.00.]
-    words: [selalu, bangun]
+    type: match_pairs
+    pairs:
+      - text: sesudah itu
+        ar_eg: بعد كده
+        ar: بعد ذلك
+        en: after that
+      - text: rajin
+        ar_eg: مجتهد
+        ar: مجتهد
+        en: diligent, hard-working
+      - text: sampai
+        ar_eg: لحد
+        ar: حتى
+        en: until
+      - text: makan siang
+        ar_eg: غدا
+        ar: الغداء
+        en: lunch
+      - text: nasi uduk
+        ar_eg: رز بلبن جوز الهند
+        ar: أرز بحليب جوز الهند
+        en: coconut rice
+      - text: sarapan
+        ar_eg: فطار
+        ar: الفطور
+        en: breakfast
+    words: [sesudah itu, rajin, sampai, makan siang, nasi uduk, sarapan]
   - id: e08
     type: translate
     direction: to_target
@@ -139,12 +161,12 @@ exercises:
     words: [bekerja, sampai]
   - id: e10
     type: speaking
-    text: Sesudah mandi, saya sarapan.
+    text: Sesudah itu, kami makan siang. Saya makan nasi uduk.
     meaning:
-      ar_eg: بعد ما أستحمى بفطر.
-      ar: بعد الاستحمام أتناول الفطور.
-      en: After showering, I have breakfast.
-    words: [sesudah, mandi, sarapan]
+      ar_eg: بعد كده اتغدينا. أنا كلت نَسي أودوك.
+      ar: بعد ذلك تغدّينا. أكلت «نَسي أودوك».
+      en: After that, we had lunch. I had nasi uduk.
+    words: [sesudah itu, makan siang, nasi uduk]
 dialogue:
   title: Di kelas Pak Irwan
   lines:

@@ -67,7 +67,15 @@ exercises:
         ar_eg: الجنسية
         ar: الجنسية
         en: nationality
-    words: [nama, alamat, pekerjaan, kewarganegaraan]
+      - text: formulir
+        ar_eg: استمارة
+        ar: استمارة
+        en: form
+      - text: kursus
+        ar_eg: كورس
+        ar: دورة
+        en: course
+    words: [nama, alamat, pekerjaan, kewarganegaraan, formulir, kursus]
   - id: e02
     type: multiple_choice
     question: 'Kewarganegaraan: ...'
@@ -93,13 +101,14 @@ exercises:
     words: [pekerjaan, mahasiswa]
   - id: e04
     type: fill_blank
-    sentence: Siapa ___ Bapak?
+    sentence: Pak, minta ___ daftar kursus, ya.
     meaning:
-      ar_eg: اسم حضرتك إيه؟
-      ar: ما اسمك يا سيدي؟
-      en: What is your name, sir?
-    answers: [nama]
-    words: [nama, siapa]
+      ar_eg: يا أستاذ، استمارة التسجيل في الكورس لو سمحت.
+      ar: يا سيدي، استمارة التسجيل في الدورة من فضلك.
+      en: Sir, the course registration form, please.
+    options: [formulir, alamat, kopi]
+    answers: [formulir]
+    words: [formulir, daftar, kursus]
   - id: e05
     type: build_sentence
     source:
@@ -127,36 +136,36 @@ exercises:
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: اسمي محمد. أنا مصري.
-      ar: اسمي محمد. أنا مصري.
-      en: My name is Mohamed. I'm Egyptian.
-    answers: [Nama saya Mohamed. Saya orang Mesir., Nama saya Mohamed. Saya orang Mesir, 'Nama saya Mohamed, saya orang Mesir.', Nama saya Mohamed dan saya orang Mesir., Nama aku Mohamed. Aku orang Mesir., Namaku Mohamed. Aku orang Mesir.]
-    words: [nama, orang, Mesir]
+      ar_eg: يا آنسة، الاستمارة لو سمحتي.
+      ar: يا آنسة، الاستمارة من فضلكِ.
+      en: Miss, the form, please.
+    answers: ['Mbak, minta formulir, ya.', 'Mbak, minta formulir, ya', 'Mbak, minta formulir.', 'Mbak, minta formulirnya, ya.', 'Minta formulir, Mbak.', 'Mbak, saya minta formulir.']
+    words: [formulir]
   - id: e08
     type: translate
     direction: to_target
     source_meaning:
-      ar_eg: أنا ساكن في منتنج.
-      ar: أسكن في منتنج.
-      en: I live in Menteng.
-    answers: [Saya tinggal di Menteng., Saya tinggal di Menteng, Aku tinggal di Menteng., Aku tinggal di Menteng]
-    words: [tinggal]
+      ar_eg: عنواني في منتنج.
+      ar: عنواني في منتنج.
+      en: My address is in Menteng.
+    answers: ['Alamat saya di Menteng.', 'Alamat saya di Menteng', 'Alamat saya Menteng.', 'Alamatku di Menteng.']
+    words: [alamat]
   - id: e09
     type: dictation
-    text: Saya tinggal di Menteng.
+    text: Saya mau daftar kursus.
     meaning:
-      ar_eg: أنا ساكن في منتنج.
-      ar: أسكن في منتنج.
-      en: I live in Menteng.
-    words: [tinggal]
+      ar_eg: عايز أسجّل في الكورس.
+      ar: أريد التسجيل في الدورة.
+      en: I want to sign up for the course.
+    words: [mau, daftar, kursus]
   - id: e10
     type: speaking
-    text: Nama saya Mohamed. Saya orang Mesir. Saya mahasiswa. Saya tinggal di Menteng.
+    text: 'Nama: Mohamed. Kewarganegaraan: Mesir. Alamat: Menteng.'
     meaning:
-      ar_eg: اسمي محمد. أنا مصري. أنا طالب. ساكن في منتنج.
-      ar: اسمي محمد. أنا مصري. أنا طالب جامعي. أسكن في منتنج.
-      en: My name is Mohamed. I'm Egyptian. I'm a student. I live in Menteng.
-    words: [nama, orang, mahasiswa, tinggal]
+      ar_eg: '(بتقرا الاستمارة للموظف) الاسم: محمد. الجنسية: مصري. العنوان: منتنج.'
+      ar: '(تقرأ الاستمارة للموظف) الاسم: محمد. الجنسية: مصري. العنوان: منتنج.'
+      en: '(reading your form to the clerk) Name: Mohamed. Nationality: Egyptian. Address: Menteng.'
+    words: [nama, kewarganegaraan, alamat]
 dialogue:
   title: Di kursus bahasa
   lines:

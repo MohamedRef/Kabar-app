@@ -114,10 +114,14 @@ exercises:
     words: [tidak]
   - id: e02
     type: listen
-    text: Itu bukan buku saya.
-    options: [Ini bukan buku saya., Itu buku saya., Itu bukan buku saya.]
-    answer: 2
-    words: [bukan, buku]
+    text: Saya tahu, itu bukan daging.
+    options: ['Saya tahu, itu bukan daging.', 'Saya tahu, itu tidak daging.', 'Saya nggak tahu, itu daging.']
+    answer: 0
+    meaning:
+      ar_eg: أنا عارف، ده مش لحمة.
+      ar: أعرف، هذا ليس لحمًا.
+      en: I know, that isn't meat.
+    words: [tahu, bukan, daging, tidak, nggak]
   - id: e03
     type: fill_blank
     sentence: Rumahnya ___ besar, tapi nyaman.
@@ -141,21 +145,43 @@ exercises:
     distractors: [tidak, dan]
     words: [bukan, tapi, kopi, teh]
   - id: e05
-    type: dictation
+    type: listen
     text: Saya nggak tahu.
+    options: ['Saya nggak tahu.', 'Saya bukan tahu.', 'Saya tahu.']
+    answer: 0
     meaning:
-      ar_eg: معرفش.
+      ar_eg: مش عارف.
       ar: لا أعرف.
       en: I don't know.
-    words: [nggak, tahu]
+    words: [nggak, tahu, bukan]
   - id: e06
     type: speaking
-    text: Dia bukan guru, dia dokter.
+    text: Rumah ini bukan rumah saya, tapi nyaman.
     meaning:
-      ar_eg: هو مش مدرس، هو دكتور.
-      ar: ليس معلمًا، بل طبيب.
-      en: He's not a teacher, he's a doctor.
-    words: [bukan]
+      ar_eg: البيت ده مش بيتي، بس مريح.
+      ar: هذا ليس بيتي، لكنه مريح.
+      en: This isn't my house, but it's comfortable.
+    words: [bukan, nyaman]
+  - id: e07
+    type: fill_blank
+    sentence: Saya ___ makan daging. Saya tidak suka.
+    meaning:
+      ar_eg: أنا مباكلش لحمة. مش بحبها.
+      ar: لا آكل اللحم. لا أحبه.
+      en: I don't eat meat. I don't like it.
+    options: [nggak, bukan, nyaman]
+    answers: [nggak]
+    words: [nggak, daging, tidak]
+  - id: e08
+    type: multiple_choice
+    question: Kamu tahu rumah Rina?
+    question_meaning:
+      ar_eg: «تعرف بيت رينا؟» — ترد إزاي بالعامية إنك مش عارف؟
+      ar: «هل تعرف بيت رينا؟» — كيف تقول بالعامية إنك لا تعرف؟
+      en: '"Do you know Rina''s house?" — how do you say casually that you don''t?'
+    options: ['Nggak tahu.', 'Bukan tahu.', 'Nyaman.']
+    answer: 0
+    words: [tahu, nggak, nyaman]
 dialogue:
   title: Di toko teh Glodok
   lines:
