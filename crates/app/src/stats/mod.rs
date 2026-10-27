@@ -16,7 +16,6 @@ use dioxus::prelude::*;
 use kabar_core::journey::{Curriculum, Progress, parse_curriculum};
 use kabar_core::locale::{Direction, UiLanguage};
 use kabar_core::review::Deck;
-use kabar_core::srs::Scheduler;
 use kabar_core::stats::level_check::{self as lc, check_due};
 use kabar_core::stats::{
     self as core_stats, DayTotal, FORECAST_DAYS, HEATMAP_WEEKS, KNOWN_STABILITY_DAYS, MATURE_INTERVAL_DAYS,
@@ -293,7 +292,7 @@ fn numbers(db: &Db, coach: &Coach) -> Numbers {
     let Logs { cards, log, checks } = load_logs(db);
     let events = coach.events.read();
     let totals = core_stats::day_totals(&events, &log, coach.offset());
-    let sched = Scheduler::default();
+    let sched = crate::schedule::scheduler(coach, &db.0.borrow());
     // One pass over the log for both windows and every card's state (#116).
     let (states, windows) = core_stats::replay_with_retention(&sched, &log, now, &[7, 30]);
     let (week, month) = (windows[0], windows[1]);
@@ -320,9 +319,12 @@ pub fn StatsScreen() -> Element {
     let db = use_context::<Db>();
     let coach = use_context::<Coach>();
     let lang = ui.lang();
-    // Recomputed when the coach's events change (a finished session), not
-    // on every render.
-    let n = use_memo(move || numbers(&db, &coach));
+    // Recomputed when the coach's events, clock or offset change, or the
+    // review settings do (a new FSRS fit), not on every render.
+    let n = use_memo(move || {
+        let _ = (ui.settings.read().desired_retention, ui.settings.read().fsrs.clone());
+        numbers(&db, &coach)
+    });
     let n = n.read();
     rsx! {
         style { {STATS_CSS} }

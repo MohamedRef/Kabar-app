@@ -115,6 +115,8 @@ fn read_deck(db: &Db, sched: &Scheduler) -> Deck {
 struct CachedDeck {
     db: Weak<RefCell<Store>>,
     stamp: (u64, i64),
+    /// Held so its address can't be reused by a different scheduler.
+    sched: Rc<Scheduler>,
     deck: Rc<Deck>,
 }
 
@@ -122,10 +124,12 @@ thread_local! {
     static DECK_CACHE: RefCell<Option<CachedDeck>> = const { RefCell::new(None) };
 }
 
-/// The deck, replayed from the store only when the store changed since the
-/// last call (#116): Today, Kabar Pagi, the plan and Review all ask for it,
-/// and parsing plus replaying a year of reviews is not free on a phone.
-pub(crate) fn deck(db: &Db, sched: &Scheduler) -> Rc<Deck> {
+/// The deck, replayed from the store only when the store or the scheduler
+/// changed since the last call (#116): Today, Kabar Pagi, the plan and
+/// Review all ask for it, and parsing plus replaying a year of reviews is
+/// not free on a phone. `sched` comes from [`crate::schedule`], which hands
+/// out the same `Rc` while its inputs stay the same.
+pub(crate) fn deck(db: &Db, sched: &Rc<Scheduler>) -> Rc<Deck> {
     let stamp = match db.0.borrow().change_stamp() {
         Ok(stamp) => stamp,
         Err(e) => {
@@ -135,29 +139,37 @@ pub(crate) fn deck(db: &Db, sched: &Scheduler) -> Rc<Deck> {
     };
     let hit = DECK_CACHE.with_borrow(|c| {
         c.as_ref()
-            .filter(|c| c.stamp == stamp && c.db.upgrade().is_some_and(|s| Rc::ptr_eq(&s, &db.0)))
+            .filter(|c| {
+                c.stamp == stamp
+                    && Rc::ptr_eq(&c.sched, sched)
+                    && c.db.upgrade().is_some_and(|s| Rc::ptr_eq(&s, &db.0))
+            })
             .map(|c| c.deck.clone())
     });
     hit.unwrap_or_else(|| {
         let deck = Rc::new(read_deck(db, sched));
-        DECK_CACHE.set(Some(CachedDeck { db: Rc::downgrade(&db.0), stamp, deck: deck.clone() }));
+        DECK_CACHE.set(Some(CachedDeck {
+            db: Rc::downgrade(&db.0),
+            stamp,
+            sched: sched.clone(),
+            deck: deck.clone(),
+        }));
         deck
     })
 }
 
 /// An owned deck for a review session to update as answers come in.
-pub(crate) fn load_deck(db: &Db, sched: &Scheduler) -> Deck {
+pub(crate) fn load_deck(db: &Db, sched: &Rc<Scheduler>) -> Deck {
     Deck::clone(&deck(db, sched))
 }
 
 /// Words of the cards due now, least likely to be remembered first, without
 /// duplicates (a word can have several card kinds). Feeds the daily plan and
 /// Kabar Pagi.
-pub(crate) fn due_words(db: &Db, now_ms: u64) -> Vec<String> {
-    let sched = Scheduler::default();
-    let deck = deck(db, &sched);
+pub(crate) fn due_words(db: &Db, sched: &Rc<Scheduler>, now_ms: u64) -> Vec<String> {
+    let deck = deck(db, sched);
     let mut due: Vec<(f32, &Card)> = deck
-        .due(&sched, now_ms)
+        .due(sched, now_ms)
         .into_iter()
         .map(|c| (sched.retrievability(&deck.state(&c.id), now_ms).unwrap_or(0.0), c))
         .collect();
@@ -499,12 +511,12 @@ fn speak(text: &str, language: StudyLanguage) {
 #[component]
 pub fn ReviewScreen() -> Element {
     let db = use_context::<Db>();
-    let sched = use_hook(|| Rc::new(Scheduler::default()));
+    let coach = use_context::<Coach>();
+    let sched = use_hook(|| crate::schedule::scheduler(&coach, &db.0.borrow()));
     let deck = use_signal({
         let (db, sched) = (db.clone(), sched.clone());
         move || load_deck(&db, &sched)
     });
-    let coach = use_context::<Coach>();
     let engine = use_context_provider(|| Engine {
         db: db.clone(),
         coach,
@@ -1478,7 +1490,7 @@ mod tests {
     #[test]
     fn the_deck_is_rebuilt_only_after_the_store_changes() {
         let db = Db(Rc::new(RefCell::new(Store::open_in_memory().unwrap())));
-        let sched = Scheduler::default();
+        let sched = Rc::new(Scheduler::default());
         db.0.borrow_mut().upsert_cards(&seed_bridge_deck()).unwrap();
         let first = deck(&db, &sched);
         assert!(Rc::ptr_eq(&first, &deck(&db, &sched)), "nothing changed: the cached deck");
@@ -1492,5 +1504,8 @@ mod tests {
         // Another store never gets this one's deck.
         let other = Db(Rc::new(RefCell::new(Store::open_in_memory().unwrap())));
         assert!(deck(&other, &sched).is_empty());
+        // Nor does a deck built with another scheduler.
+        let travel = crate::schedule::scheduler_at(420, &Default::default());
+        assert!(!Rc::ptr_eq(&deck(&db, &sched), &deck(&db, &travel)));
     }
 }
