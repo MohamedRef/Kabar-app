@@ -334,6 +334,9 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
     let on_off = |on: bool| if on { "on" } else { "off" };
     let pen_hover = on_off(*prefs.pen_hover.read());
     let mouse_hover = on_off(*prefs.mouse_hover.read());
+    // One switch for word colours everywhere: main.css neutralizes the
+    // .wc-* / .wp-* colours under data-word-colours="off".
+    let word_colours = on_off(!settings.word_colours_off);
 
     rsx! {
         document::Title { "Kabar" }
@@ -353,6 +356,7 @@ fn Loaded(db: Db, path: std::path::PathBuf) -> Element {
             "data-nav": nav_style,
             "data-pen-hover": pen_hover,
             "data-mouse-hover": mouse_hover,
+            "data-word-colours": word_colours,
             style: "{batik}",
             if !settings.welcomed {
                 screens::Welcome {}

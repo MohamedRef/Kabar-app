@@ -280,3 +280,22 @@ fn word_detail_links_grammar_and_time_words() {
     let d = detail("Saya sedang membaca buku.", "buku", Some("noun"));
     assert!(d.is_empty());
 }
+
+#[test]
+fn latin_inside_arabic_notes_is_isolated() {
+    // Without isolates, "(زي -kan)" reorders and wraps after the hyphen in RTL.
+    let labels = ["meN-", "di-", "ke-", "se-", "-kan", "-i", "ke-an", "-nya"]
+        .into_iter()
+        .filter_map(|l| affix_note(Lang::Indonesian, l))
+        .chain(["N-", "-ake", "-i", "-e", "-ipun"].into_iter().filter_map(|l| affix_note(Lang::Javanese, l)))
+        .map(|n| n.meaning);
+    for l in labels {
+        for text in [l.ar, l.arz] {
+            let bare: String = text
+                .split('\u{2068}')
+                .map(|piece| piece.split_once('\u{2069}').map_or(piece, |(_, rest)| rest))
+                .collect();
+            assert!(!bare.chars().any(|c| c.is_ascii_alphabetic()), "{text}");
+        }
+    }
+}
