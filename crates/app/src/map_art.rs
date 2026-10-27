@@ -23,11 +23,11 @@ const VIGNETTES: [(&str, &[u8], &[u8]); 13] = [
     ("bipa5", art!("kalimantan"), art!("kalimantan-sm")),
     ("bipa6", art!("sumatra"), art!("sumatra-sm")),
     ("bipa7", art!("raja-ampat"), art!("raja-ampat-sm")),
-    ("j1", art!("surabaya"), art!("surabaya-sm")),
+    ("j1", art!("malioboro"), art!("malioboro-sm")),
     ("j2", art!("madiun"), art!("madiun-sm")),
-    ("j3", art!("solo"), art!("solo-sm")),
+    ("j3", art!("beringharjo"), art!("beringharjo-sm")),
     ("j4", art!("yogyakarta"), art!("yogyakarta-sm")),
-    ("j5", art!("semarang"), art!("semarang-sm")),
+    ("j5", art!("madiun-pendekar"), art!("madiun-pendekar-sm")),
     ("j6", art!("kotagede"), art!("kotagede-sm")),
 ];
 
