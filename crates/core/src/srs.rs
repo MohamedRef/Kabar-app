@@ -2,7 +2,7 @@
 //! log. Every device replays the same events in HLC order and gets the same
 //! state, so concurrent reviews on the phone and the tablet never conflict.
 
-use std::collections::{BTreeMap, HashSet};
+use std::collections::{BTreeMap, HashMap, HashSet};
 
 use fsrs::{FSRS, FSRSItem, FSRSReview, MemoryState};
 use kabar_protocol::srs::{Rating, ReviewEvent};
@@ -143,7 +143,8 @@ impl Scheduler {
 
     /// Rebuilds a card from its events: sorted by HLC, duplicates ignored.
     pub fn replay<'a>(&self, card_id: &str, events: impl IntoIterator<Item = &'a ReviewEvent>) -> CardState {
-        let mut evs: Vec<&ReviewEvent> = events.into_iter().filter(|e| e.card_id == card_id).collect();
+        let mut evs: Vec<&ReviewEvent> =
+            events.into_iter().inspect(|_| ops::scanned(1)).filter(|e| e.card_id == card_id).collect();
         evs.sort_by(|a, b| a.hlc.cmp(&b.hlc));
         let mut seen = HashSet::new();
         evs.into_iter()
@@ -151,12 +152,34 @@ impl Scheduler {
             .fold(CardState::new(card_id), |s, e| self.apply(&s, e.rating, e.at_ms))
     }
 
-    /// Replays every card in a log.
+    /// Replays a whole log in one pass: sorted by HLC once, duplicate event
+    /// ids ignored, each answer applied to its card's running state.
+    /// `visit` sees every event with its card's state just before the answer
+    /// (stats use it for retention). O(n log n) for the sort,
+    /// linear otherwise; the store already returns the log in HLC order, so
+    /// the (stable, adaptive) sort is close to free.
+    pub fn fold_log<'a>(
+        &self,
+        events: &'a [ReviewEvent],
+        mut visit: impl FnMut(&ReviewEvent, &CardState),
+    ) -> HashMap<&'a str, CardState> {
+        ops::scanned(events.len());
+        let mut sorted: Vec<&ReviewEvent> = events.iter().collect();
+        sorted.sort_by(|a, b| a.hlc.cmp(&b.hlc));
+        let mut seen = HashSet::with_capacity(events.len());
+        let mut states: HashMap<&str, CardState> = HashMap::new();
+        for e in sorted.into_iter().filter(|e| seen.insert(e.id.as_str())) {
+            let state =
+                states.entry(e.card_id.as_str()).or_insert_with(|| CardState::new(e.card_id.as_str()));
+            visit(e, state);
+            *state = self.apply(state, e.rating, e.at_ms);
+        }
+        states
+    }
+
+    /// Replays every card in a log; same result as [`Self::replay`] per card.
     pub fn replay_all(&self, events: &[ReviewEvent]) -> BTreeMap<String, CardState> {
-        let mut ids: Vec<&str> = events.iter().map(|e| e.card_id.as_str()).collect();
-        ids.sort_unstable();
-        ids.dedup();
-        ids.into_iter().map(|id| (id.to_string(), self.replay(id, events))).collect()
+        self.fold_log(events, |_, _| {}).into_iter().map(|(id, s)| (id.to_string(), s)).collect()
     }
 
     pub fn preview(&self, state: &CardState, at_ms: u64) -> [Preview; 4] {
@@ -249,6 +272,30 @@ impl Scheduler {
     }
 }
 
+/// Counts log events scanned while replaying, so a test can guard against
+/// replay going back to one full log scan per card (#116). Free outside tests.
+pub(crate) mod ops {
+    #[cfg(test)]
+    thread_local! {
+        static SCANNED: std::cell::Cell<usize> = const { std::cell::Cell::new(0) };
+    }
+
+    #[cfg(test)]
+    pub(crate) fn scanned(n: usize) {
+        SCANNED.with(|c| c.set(c.get() + n));
+    }
+
+    #[cfg(not(test))]
+    #[inline(always)]
+    pub(crate) fn scanned(_: usize) {}
+
+    /// Resets the counter and returns what it held.
+    #[cfg(test)]
+    pub(crate) fn take() -> usize {
+        SCANNED.with(|c| c.replace(0))
+    }
+}
+
 /// Card Wall piles on the tablet.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
@@ -326,6 +373,53 @@ mod tests {
         let tablet = s.replay("kabar", [&c, &a, &b, &b]);
         assert_eq!(phone, tablet);
         assert_eq!(phone.reps, 3);
+    }
+
+    /// A log of `cards` cards with several answers each, interleaved, from two devices.
+    fn mixed_log(cards: usize, per_card: usize) -> Vec<ReviewEvent> {
+        let ratings = [Rating::Good, Rating::Again, Rating::Easy, Rating::Hard, Rating::Good];
+        (0..cards * per_card)
+            .map(|i| {
+                let (card, round) = (i % cards, i / cards);
+                let device = if i % 3 == 0 { "tab" } else { "s24u" };
+                let at = T0 + round as u64 * 2 * DAY_MS + (card as u64) * 60_000;
+                ev(&format!("e{i}"), &format!("c{card}"), at, device, ratings[(i * 7 + card) % ratings.len()])
+            })
+            .collect()
+    }
+
+    #[test]
+    fn replay_all_matches_per_card_replay_on_a_shuffled_log_with_duplicates() {
+        let s = Scheduler::default();
+        let mut log = mixed_log(12, 6);
+        // Sync can deliver an event twice, and devices merge out of order.
+        let dupes: Vec<ReviewEvent> = log.iter().step_by(5).cloned().collect();
+        log.extend(dupes);
+        let mut x: u64 = 0x2545_F491_4F6C_DD1D;
+        for i in (1..log.len()).rev() {
+            x ^= x << 13;
+            x ^= x >> 7;
+            x ^= x << 17;
+            log.swap(i, (x % (i as u64 + 1)) as usize);
+        }
+        let all = s.replay_all(&log);
+        assert_eq!(all.len(), 12);
+        for (id, state) in &all {
+            assert_eq!(state, &s.replay(id, &log), "card {id}");
+            assert_eq!(state.reps, 6, "duplicates are ignored");
+        }
+    }
+
+    #[test]
+    fn replay_all_scans_the_log_once() {
+        // Coarse performance guard (#116): counted, not timed, so CI speed
+        // does not matter. Replaying per card would scan cards × events.
+        let s = Scheduler::default();
+        let log = mixed_log(200, 3);
+        ops::take();
+        let states = s.replay_all(&log);
+        assert_eq!(states.len(), 200);
+        assert_eq!(ops::take(), log.len());
     }
 
     #[test]

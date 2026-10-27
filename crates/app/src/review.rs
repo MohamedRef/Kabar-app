@@ -2,7 +2,8 @@
 //! bursts, on top of `kabar_core::review` (queues, stats) and the FSRS
 //! scheduler. Card state is always derived from the review log.
 
-use std::rc::Rc;
+use std::cell::RefCell;
+use std::rc::{Rc, Weak};
 
 use dioxus::prelude::*;
 use kabar_core::layout::WidthClass;
@@ -21,6 +22,7 @@ use crate::coach::Coach;
 use crate::i18n::Msg;
 use crate::platform::{self, SpeakError};
 use crate::pron::Pron;
+use crate::store::Store;
 use crate::{Db, Ui};
 
 const REVIEW_CSS: &str = include_str!("../assets/review.css");
@@ -95,7 +97,7 @@ impl PartialEq for Engine {
     }
 }
 
-pub(crate) fn load_deck(db: &Db, sched: &Scheduler) -> Deck {
+fn read_deck(db: &Db, sched: &Scheduler) -> Deck {
     let store = db.0.borrow();
     let cards = store.cards().unwrap_or_else(|e| {
         eprintln!("kabar: reading cards failed: {e}");
@@ -108,12 +110,52 @@ pub(crate) fn load_deck(db: &Db, sched: &Scheduler) -> Deck {
     Deck::new(cards, log, sched)
 }
 
+/// The last deck built, with what it was built from. The weak handle keeps
+/// a dropped store's address from being mistaken for a new one.
+struct CachedDeck {
+    db: Weak<RefCell<Store>>,
+    stamp: (u64, i64),
+    deck: Rc<Deck>,
+}
+
+thread_local! {
+    static DECK_CACHE: RefCell<Option<CachedDeck>> = const { RefCell::new(None) };
+}
+
+/// The deck, replayed from the store only when the store changed since the
+/// last call (#116): Today, Kabar Pagi, the plan and Review all ask for it,
+/// and parsing plus replaying a year of reviews is not free on a phone.
+pub(crate) fn deck(db: &Db, sched: &Scheduler) -> Rc<Deck> {
+    let stamp = match db.0.borrow().change_stamp() {
+        Ok(stamp) => stamp,
+        Err(e) => {
+            eprintln!("kabar: reading the store's change stamp failed: {e}");
+            return Rc::new(read_deck(db, sched));
+        }
+    };
+    let hit = DECK_CACHE.with_borrow(|c| {
+        c.as_ref()
+            .filter(|c| c.stamp == stamp && c.db.upgrade().is_some_and(|s| Rc::ptr_eq(&s, &db.0)))
+            .map(|c| c.deck.clone())
+    });
+    hit.unwrap_or_else(|| {
+        let deck = Rc::new(read_deck(db, sched));
+        DECK_CACHE.set(Some(CachedDeck { db: Rc::downgrade(&db.0), stamp, deck: deck.clone() }));
+        deck
+    })
+}
+
+/// An owned deck for a review session to update as answers come in.
+pub(crate) fn load_deck(db: &Db, sched: &Scheduler) -> Deck {
+    Deck::clone(&deck(db, sched))
+}
+
 /// Words of the cards due now, least likely to be remembered first, without
 /// duplicates (a word can have several card kinds). Feeds the daily plan and
 /// Kabar Pagi.
 pub(crate) fn due_words(db: &Db, now_ms: u64) -> Vec<String> {
     let sched = Scheduler::default();
-    let deck = load_deck(db, &sched);
+    let deck = deck(db, &sched);
     let mut due: Vec<(f32, &Card)> = deck
         .due(&sched, now_ms)
         .into_iter()
@@ -1424,5 +1466,31 @@ fn Done() -> Element {
             }
             button { class: "primary", onclick: move |_| engine.home(), "{ui.t(Msg::RevBackHome)}" }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use kabar_protocol::srs::{Rating, ReviewMode};
+
+    use super::*;
+
+    #[test]
+    fn the_deck_is_rebuilt_only_after_the_store_changes() {
+        let db = Db(Rc::new(RefCell::new(Store::open_in_memory().unwrap())));
+        let sched = Scheduler::default();
+        db.0.borrow_mut().upsert_cards(&seed_bridge_deck()).unwrap();
+        let first = deck(&db, &sched);
+        assert!(Rc::ptr_eq(&first, &deck(&db, &sched)), "nothing changed: the cached deck");
+        let card = seed_bridge_deck()[0].id.clone();
+        db.0.borrow_mut()
+            .record_review(&card, Rating::Good, 1_761_472_800_000, 2000, ReviewMode::Classic)
+            .unwrap();
+        let second = deck(&db, &sched);
+        assert!(!Rc::ptr_eq(&first, &second));
+        assert_eq!(second.state(&card).reps, 1);
+        // Another store never gets this one's deck.
+        let other = Db(Rc::new(RefCell::new(Store::open_in_memory().unwrap())));
+        assert!(deck(&other, &sched).is_empty());
     }
 }
