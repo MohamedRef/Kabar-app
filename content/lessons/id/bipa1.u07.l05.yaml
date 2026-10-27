@@ -58,18 +58,6 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: indah
-        ar_eg: جميل
-        ar: جميل
-        en: beautiful
-      - text: mahal
-        ar_eg: غالي
-        ar: غالٍ
-        en: expensive
-      - text: murah
-        ar_eg: رخيص
-        ar: رخيص
-        en: cheap
       - text: capek
         ar_eg: تعبان
         ar: متعب
@@ -77,8 +65,24 @@ exercises:
       - text: ramai
         ar_eg: زحمة
         ar: مزدحم
-        en: busy, crowded
-    words: [indah, mahal, murah, capek, ramai]
+        en: crowded, lively
+      - text: sibuk
+        ar_eg: مشغول
+        ar: مشغول
+        en: busy
+      - text: kafe
+        ar_eg: كافيه
+        ar: مقهى
+        en: café
+      - text: musik
+        ar_eg: مزيكا
+        ar: موسيقى
+        en: music
+      - text: banget
+        ar_eg: أوي
+        ar: جدًا (عامية)
+        en: really, so (casual)
+    words: [capek, ramai, sibuk, kafe, musik, banget]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -94,36 +98,33 @@ exercises:
     words: [banget]
   - id: e03
     type: fill_blank
-    sentence: Kopi ini enak ___!
+    sentence: Kafe ini ramai ___!
     meaning:
-      ar_eg: القهوة دي حلوة أوي!
-      ar: هذه القهوة لذيذة جدًا!
-      en: This coffee is really good!
-    options: [sering, sekali, sangat]
-    answers: [sekali]
-    explain:
-      ar_eg: بعد الصفة يبقى sekali. sering معناها «كتير» في التكرار.
-      ar: بعد الصفة تأتي sekali، أما sering فللتكرار.
-      en: After the adjective → sekali. sering means "often".
-    words: [sekali]
+      ar_eg: الكافيه ده زحمة أوي!
+      ar: هذا المقهى مزدحم جدًا!
+      en: This café is so busy!
+    options: [banget, sibuk, capek]
+    answers: [banget]
+    words: [kafe, ramai, banget]
   - id: e04
     type: build_sentence
     source:
-      ar_eg: الأكل في كيمانج حلو أوي.
-      ar: الطعام في كيمانغ لذيذ جدًا.
-      en: The food in Kemang is really tasty.
-    answer: Makanan di Kemang enak sekali.
-    distractors: [mahal, sering]
-    words: [makanan, enak, sekali]
+      ar_eg: أنا مشغول أوي النهارده.
+      ar: أنا مشغول جدًا اليوم.
+      en: I'm really busy today.
+    answer: Saya sibuk banget hari ini.
+    distractors: [capek, kafe]
+    words: [sibuk, banget]
   - id: e05
-    type: translate
-    direction: from_target
-    source_text: Mahal banget!
-    answers_meaning:
-      ar_eg: [غالي أوي!, غالي جدًا, غالي قوي]
-      ar: [غالٍ جدًا!, باهظ جدًا, غالي جدًا]
-      en: [So expensive!, Very expensive, That's really expensive]
-    words: [mahal, banget]
+    type: listen
+    text: Musik di kafe itu bagus banget.
+    options: ['Musik di kafe itu bagus banget.', 'Musik di kafe itu ramai banget.', 'Makanan di kafe itu bagus banget.']
+    answer: 0
+    meaning:
+      ar_eg: المزيكا في الكافيه ده حلوة أوي.
+      ar: الموسيقى في ذلك المقهى رائعة.
+      en: The music at that café is really good.
+    words: [musik, kafe, ramai, banget]
   - id: e06
     type: translate
     direction: to_target
@@ -143,12 +144,21 @@ exercises:
     words: [ramai, sekali]
   - id: e08
     type: speaking
-    text: Enak banget!
+    text: Saya sibuk dan capek. Saya mau ke kafe.
     meaning:
-      ar_eg: حلو أوي أوي!
-      ar: لذيذ جدًا!
-      en: Sooo good!
-    words: [enak, banget]
+      ar_eg: أنا مشغول وتعبان. عايز أروح الكافيه.
+      ar: أنا مشغول ومتعب. أريد الذهاب إلى المقهى.
+      en: I'm busy and tired. I want to go to a café.
+    words: [sibuk, capek, kafe]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول بالعامية «المزيكا حلوة أوي!»؟
+      ar: كيف تقول بالعامية «الموسيقى رائعة جدًا!»؟
+      en: How do you say casually "The music is so good!"?
+    options: ['Musiknya bagus banget!', 'Musiknya sibuk banget!', 'Musiknya capek banget!']
+    answer: 0
+    words: [musik, banget, sibuk, capek]
 dialogue:
   title: Kopi di Kemang
   lines:

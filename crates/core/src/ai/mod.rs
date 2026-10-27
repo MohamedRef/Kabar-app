@@ -28,6 +28,7 @@ pub use routes::{Route, RouteStatus, RouteTable};
 pub use tasks::AiOutput;
 
 pub type EngineFuture<'a> = Pin<Box<dyn Future<Output = Result<EngineReply, EngineError>> + 'a>>;
+pub type ForgetFuture<'a> = Pin<Box<dyn Future<Output = ()> + 'a>>;
 
 /// One AI backend. Implemented in the app (HTTP to Kabar Cloud / Kabar Home)
 /// and in Kabar Cloud (Workers AI, Gemini, Anthropic). Not `Send`: Workers
@@ -37,6 +38,11 @@ pub trait Engine {
     /// Calling it costs nothing (free tier, or Claude via plan credits).
     fn is_free(&self) -> bool;
     fn call<'a>(&'a self, call: &'a EngineCall) -> EngineFuture<'a>;
+    /// 👎: drop a rejected answer from any cache this engine keeps on its own
+    /// side (Kabar Cloud's shared one). Best effort; nothing by default.
+    fn forget<'a>(&'a self, _key: &'a CacheKey) -> ForgetFuture<'a> {
+        Box::pin(std::future::ready(()))
+    }
 }
 
 /// Validated answers keyed by (task, input hash, engine, prompt version).
@@ -177,7 +183,9 @@ pub struct Router {
     engines: Vec<Box<dyn Engine>>,
     cache: Box<dyn Cache>,
     pub settings: RouterSettings,
-    pub profile: LearnerProfile,
+    /// Who the prompts are written for; the app refreshes it as the
+    /// learner's level, words and coach data change.
+    profile: RefCell<LearnerProfile>,
 }
 
 impl Router {
@@ -188,8 +196,16 @@ impl Router {
             engines: Vec::new(),
             cache,
             settings: RouterSettings::default(),
-            profile: LearnerProfile::default(),
+            profile: RefCell::new(LearnerProfile::default()),
         }
+    }
+
+    pub fn set_profile(&self, profile: LearnerProfile) {
+        *self.profile.borrow_mut() = profile;
+    }
+
+    pub fn profile(&self) -> LearnerProfile {
+        self.profile.borrow().clone()
     }
 
     pub fn with_engine(mut self, engine: Box<dyn Engine>) -> Self {
@@ -228,13 +244,17 @@ impl Router {
         self.run_plan(req, &plan).await
     }
 
-    /// 👎 on an answer: drop it from the cache and ask the next engine up.
+    /// 👎 on an answer: drop it from the local cache and the engine's own
+    /// (Kabar Cloud's shared one), then ask the next engine up.
     pub async fn regenerate<T: AiOutput>(
         &self,
         req: &AiRequest,
         rejected: &Answer<T>,
     ) -> Result<Answer<T>, AiError> {
         self.cache.remove(&rejected.cache_key);
+        if let Some(e) = self.engine(rejected.engine) {
+            e.forget(&rejected.cache_key).await;
+        }
         let plan = self.plan(T::TASK, req.personal)?;
         let after: Vec<EngineId> =
             plan.iter().copied().skip_while(|&e| e != rejected.engine).skip(1).collect();
@@ -249,11 +269,14 @@ impl Router {
         let route = self.routes.get(task);
         let template = self.prompts.get(task, route.prompt_version).ok_or(AiError::NoPrompt(task))?;
         let input_hash = json::input_hash(&req.input);
+        let profile = self.profile();
+        let profile_hash = profile.cache_tag();
         let key_for = |engine| CacheKey {
             task,
             input_hash: input_hash.clone(),
             engine,
             prompt_version: template.version,
+            profile_hash: profile_hash.clone(),
         };
         let answer = |value: T, key: CacheKey, from_cache| Answer {
             needs_review: value.needs_review() || T::input_needs_review(&req.input),
@@ -280,7 +303,7 @@ impl Router {
         for &engine in plan {
             let Some(e) = self.engine(engine) else { continue };
             let key = key_for(engine);
-            let (system, user) = template.render(&self.profile, &req.input, engine);
+            let (system, user) = template.render(&profile, &req.input, engine);
             let mut call = EngineCall {
                 cache_key: key.clone(),
                 system,

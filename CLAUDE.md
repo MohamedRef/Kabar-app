@@ -17,7 +17,7 @@ Kabar is a personal Indonesian + Javanese learning app in Rust for one learner (
 - Go milestone by milestone (`docs/SPEC.md` §23). Don't start app code for a milestone until its plan is approved.
 - Before every commit: `just check` (= `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D warnings`, `cargo test --workspace`). All green. CI also clippy-checks the Android arm64 build.
 - Run/install instructions live in `docs/RUN.md`; keep them current.
-- `README.md` shows the current state. Its content numbers are generated: after changing `content/` or `curriculum/`, run `just readme` (CI fails on stale numbers). Update its feature, roadmap and run tables by hand when a PR changes them.
+- `README.md` shows the current state. Its content numbers are generated: the daily README routine refreshes them, and running `just readme` in a content PR is welcome but never required (CI only warns, so parallel PRs can't turn main red). Update its feature, roadmap and run tables by hand when a PR changes them.
 - After each milestone: tell the user exactly how to run it on the Mac and install it on the S24 Ultra and Tab S11, summarize changes, commit with a clear message.
 - Tests never call live APIs. AI parsing is tested against recorded JSON fixtures in `fixtures/`.
 - Use the test texts in `docs/SPEC.md` §24 in unit tests, golden sets and demos.

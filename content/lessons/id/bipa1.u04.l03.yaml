@@ -97,7 +97,11 @@ exercises:
         ar_eg: قميص / هدوم
         ar: قميص / ملابس
         en: shirt, clothes
-    words: [harga, murah, mahal, kain, baju]
+      - text: batik
+        ar_eg: باتيك (قماش مرسوم بالشمع)
+        ar: باتيك (قماش مصبوغ بالشمع)
+        en: batik (wax-dyed cloth)
+    words: [harga, murah, mahal, kain, baju, batik]
   - id: e06
     type: multiple_choice
     question_meaning:
@@ -117,6 +121,34 @@ exercises:
       ar: كم سعرها؟
       en: How much is it?
     words: ['Berapa harganya?']
+  - id: e08
+    type: fill_blank
+    sentence: Berapa ___, Bu?
+    meaning:
+      ar_eg: بكام يا مدام؟
+      ar: بكم هذا يا سيدتي؟
+      en: How much is it, ma'am?
+    options: [harganya, mahal, batik]
+    answers: [harganya]
+    words: ['Berapa harganya?']
+  - id: e09
+    type: listen
+    text: Batik ini mahal, tapi kain itu murah.
+    options: ['Batik ini mahal, tapi kain itu murah.', 'Batik ini murah, tapi kain itu mahal.', 'Baju ini mahal, tapi kain itu murah.']
+    answer: 0
+    meaning:
+      ar_eg: الباتيك ده غالي، بس القماش ده رخيص.
+      ar: هذا الباتيك غالٍ، لكن ذلك القماش رخيص.
+      en: This batik is expensive, but that cloth is cheap.
+    words: [batik, kain, mahal, murah]
+  - id: e10
+    type: speaking
+    text: Batik ini, berapa harganya?
+    meaning:
+      ar_eg: الباتيك ده بكام؟
+      ar: بكم هذا الباتيك؟
+      en: How much is this batik?
+    words: [batik, 'Berapa harganya?']
 dialogue:
   title: Di Pasar Tanah Abang
   lines:

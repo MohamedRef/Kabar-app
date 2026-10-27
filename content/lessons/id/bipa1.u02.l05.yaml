@@ -41,14 +41,6 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: Bapak
-        ar_eg: يا أستاذ / حضرتك (راجل أكبر)
-        ar: سيدي (رجل أكبر سنًّا)
-        en: sir (older man)
-      - text: Ibu
-        ar_eg: يا مدام / حضرتك (ست أكبر)
-        ar: سيدتي (امرأة أكبر سنًّا)
-        en: ma'am (older woman)
       - text: Mas
         ar_eg: لشاب في سنك
         ar: للشاب في مثل سنك
@@ -57,23 +49,35 @@ exercises:
         ar_eg: لبنت في سنك
         ar: للشابة في مثل سنك
         en: young woman
+      - text: Kak
+        ar_eg: لحد أكبر منك شوية (ولد أو بنت)
+        ar: لمن هو أكبر منك قليلًا (ذكرًا أو أنثى)
+        en: someone a bit older (either gender)
       - text: Dik
         ar_eg: لحد أصغر منك
         ar: لمن هو أصغر منك
         en: someone younger
-    words: [Bapak, Ibu, Mas, Mbak, Dik]
+      - text: teh
+        ar_eg: شاي
+        ar: شاي
+        en: tea
+      - text: air putih
+        ar_eg: مية سادة
+        ar: ماء عادي
+        en: plain water
+    words: [Mas, Mbak, Kak, Dik, teh, air putih]
   - id: e02
     type: multiple_choice
     question_meaning:
       ar_eg: الجرسون شاب حوالي ٢٥ سنة. تناديه بإيه؟
       ar: النادل شاب في نحو الخامسة والعشرين. بماذا تناديه؟
       en: The waiter is a young man of about 25. What do you call him?
-    options: [Mas, Ibu, Mbak]
+    options: [Mas, Kak, Mbak]
     answer: 0
     explain:
-      ar_eg: Mas لشاب، Mbak لبنت، وIbu لست أكبر.
-      ar: Mas للشاب، وMbak للشابة، وIbu للمرأة الأكبر.
-      en: Mas for a young man, Mbak for a young woman, Ibu for an older woman.
+      ar_eg: Mas لشاب في سنك، Mbak لبنت، وKak لحد أكبر منك شوية (وشائعة في جاكرتا).
+      ar: Mas للشاب في سنك، وMbak للشابة، وKak لمن يكبرك قليلًا (وتشيع في جاكرتا).
+      en: Mas for a young man your age, Mbak for a young woman, Kak for someone a bit older (common in Jakarta).
     words: [Mas]
   - id: e03
     type: multiple_choice
@@ -87,19 +91,19 @@ exercises:
   - id: e04
     type: listen
     text: Mbak, minta teh, ya.
-    options: ['Mas, minta kopi, ya.', 'Mbak, minta teh, ya.', 'Bu, minta air, ya.']
+    options: ['Mas, minta kopi, ya.', 'Mbak, minta teh, ya.', 'Dik, minta air putih, ya.']
     answer: 1
     words: [Mbak, minta, teh]
   - id: e05
     type: fill_blank
-    sentence: Selamat pagi, ___ Yanti!
+    sentence: Dik, minta ___, ya.
     meaning:
-      ar_eg: (صاحبة البيت، ست كبيرة) صباح الخير يا مدام يانتي!
-      ar: (صاحبة البيت، سيدة كبيرة) صباح الخير يا سيدة يانتي!
-      en: (the landlady, an older woman) Good morning, Bu Yanti!
-    options: [Mbak, Dik, Bu]
-    answers: [Bu]
-    words: [Ibu]
+      ar_eg: (لولد صغير بيشتغل في الوارونج) يا شاطر، مية سادة لو سمحت.
+      ar: (لفتى صغير يعمل في الوارونغ) يا بني، ماءً عاديًّا من فضلك.
+      en: (to a young boy at the warung) Water, please.
+    options: [air putih, kopi, Mbak]
+    answers: [air putih]
+    words: [Dik, minta, air putih]
   - id: e06
     type: build_sentence
     source:

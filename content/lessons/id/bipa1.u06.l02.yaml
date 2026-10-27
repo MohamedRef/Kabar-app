@@ -65,27 +65,31 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: membaca
-        ar_eg: يقرا
-        ar: يقرأ
-        en: read
-      - text: menulis
-        ar_eg: يكتب
-        ar: يكتب
-        en: write
-      - text: memasak
-        ar_eg: يطبخ
-        ar: يطبخ
-        en: cook
-      - text: menonton
-        ar_eg: يتفرج
-        ar: يشاهد
-        en: watch
+      - text: mendengar
+        ar_eg: يسمع
+        ar: يسمع
+        en: hear, listen
       - text: mencuci
         ar_eg: يغسل
         ar: يغسل
         en: wash
-    words: [membaca, menulis, memasak, menonton, mencuci]
+      - text: menonton
+        ar_eg: يتفرج
+        ar: يشاهد
+        en: watch
+      - text: menyapu
+        ar_eg: يكنس
+        ar: يكنس
+        en: sweep
+      - text: mengajar
+        ar_eg: يدرّس
+        ar: يدرّس
+        en: teach
+      - text: menggoreng
+        ar_eg: يقلي
+        ar: يقلي
+        en: fry
+    words: [mendengar, mencuci, menonton, menyapu, mengajar, menggoreng]
   - id: e02
     type: multiple_choice
     question_meaning:
@@ -101,6 +105,7 @@ exercises:
     words: [menyapu]
   - id: e03
     type: multiple_choice
+    question: Raka ___ pesan.
     question_meaning:
       ar_eg: meN- + kirim تبقى إيه؟
       ar: ما ناتج meN- + kirim؟
@@ -111,7 +116,7 @@ exercises:
       ar_eg: قبل k بتبقى meng-، والـ k بتقع.
       ar: قبل k تصير meng- وتسقط k.
       en: Before k it's meng-, and the k drops.
-    words: [mengirim]
+    words: [mengirim, pesan]
   - id: e04
     type: fill_blank
     sentence: Pak Irwan ___ bahasa Indonesia.
@@ -142,6 +147,43 @@ exercises:
       ar_eg: [راكا بيبعت رسالة., راكا بعت رسالة, راكا بيبعت مسج]
       ar: [راكا يرسل رسالة., أرسل راكا رسالة, راكا يُرسل رسالة]
       en: [Raka is sending a message., Raka sends a message, Raka sent a message]
+    words: [mengirim, pesan]
+  - id: e07
+    type: listen
+    text: Ibu mencuci baju dan menyapu rumah.
+    options: ['Ibu mencuci baju dan menyapu rumah.', 'Ibu mencuci baju dan menggoreng nasi.', 'Ibu menonton TV dan menyapu rumah.']
+    answer: 0
+    meaning:
+      ar_eg: ماما بتغسل الهدوم وبتكنس البيت.
+      ar: أمي تغسل الملابس وتكنس البيت.
+      en: Mum is washing clothes and sweeping the house.
+    words: [mencuci, menyapu, menggoreng, menonton]
+  - id: e08
+    type: fill_blank
+    sentence: Saya ___ Pak Irwan mengajar.
+    meaning:
+      ar_eg: أنا سامع أستاذ إيروان وهو بيدرّس.
+      ar: أسمع الأستاذ إيروان وهو يدرّس.
+      en: I can hear Pak Irwan teaching.
+    options: [mendengar, mencuci, menggoreng]
+    answers: [mendengar]
+    words: [mendengar, mengajar]
+  - id: e09
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «ماما بتقلي رز»؟
+      ar: كيف تقول «أمي تقلي الأرز»؟
+      en: How do you say "Mum is frying rice"?
+    options: ['Ibu menggoreng nasi.', 'Ibu mencuci nasi.', 'Ibu mendengar nasi.']
+    answer: 0
+    words: [menggoreng, mencuci, mendengar]
+  - id: e10
+    type: speaking
+    text: Saya mengirim pesan ke Pak Irwan.
+    meaning:
+      ar_eg: أنا ببعت رسالة لأستاذ إيروان.
+      ar: أرسل رسالة إلى الأستاذ إيروان.
+      en: I'm sending a message to Pak Irwan.
     words: [mengirim, pesan]
 dialogue:
   lines:

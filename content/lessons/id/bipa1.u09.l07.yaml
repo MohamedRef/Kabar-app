@@ -69,17 +69,14 @@ exercises:
     words: [loket, samping, pintu masuk]
   - id: e03
     type: fill_blank
-    sentence: Permisi, Pak. Saya mau ___ Monas.
+    sentence: Saya ___ peta Jakarta.
     meaning:
-      ar_eg: لو سمحت يا عمّ. أنا عايز أروح موناس.
-      ar: عفوًا يا سيدي، أريد الذهاب إلى موناس.
-      en: Excuse me, sir. I want to go to Monas.
-    answers: [ke, pergi ke]
-    explain:
-      ar_eg: فيه حركة لمكان، يبقى ke.
-      ar: الحركة نحو مكان تستلزم ke.
-      en: Movement to a place → ke.
-    words: [ke]
+      ar_eg: أنا معايا خريطة جاكرتا.
+      ar: أحمل خريطة جاكرتا.
+      en: I've brought a map of Jakarta.
+    options: [bawa, satpam, peta]
+    answers: [bawa]
+    words: [bawa, peta]
   - id: e04
     type: fill_blank
     sentence: Belok kanan di lampu merah, ___ jalan lurus.
@@ -113,22 +110,41 @@ exercises:
     distractors: [belakang, ke]
     words: [halte, depan, stasiun]
   - id: e07
-    type: translate
-    direction: to_target
-    source_meaning:
-      ar_eg: لو سمحت، شباك التذاكر فين؟
-      ar: عفوًا، أين شباك التذاكر؟
-      en: Excuse me, where is the ticket counter?
-    answers: ['Permisi, loketnya di mana?', 'Permisi, loket di mana?', 'Permisi, di mana loketnya?', 'Permisi, loket tiketnya di mana?', 'Permisi, loketnya di mana', 'Permisi, loketnya di mana, ya?']
-    words: [permisi, loket]
+    type: match_pairs
+    pairs:
+      - text: peta
+        ar_eg: خريطة
+        ar: خريطة
+        en: map
+      - text: pintu masuk
+        ar_eg: باب الدخول
+        ar: المدخل
+        en: entrance
+      - text: satpam
+        ar_eg: أمن، حارس
+        ar: حارس أمن
+        en: security guard
+      - text: bawa
+        ar_eg: يجيب معاه، يشيل
+        ar: يحمل، يُحضر
+        en: bring, carry
+      - text: loket
+        ar_eg: شباك التذاكر
+        ar: شباك التذاكر
+        en: ticket counter
+      - text: halte
+        ar_eg: محطة أتوبيس
+        ar: موقف حافلات
+        en: bus stop
+    words: [peta, pintu masuk, satpam, bawa, loket, halte]
   - id: e08
     type: dictation
-    text: Terima kasih banyak, Pak!
+    text: Satpam itu di pintu masuk.
     meaning:
-      ar_eg: شكرًا جزيلًا يا عمّ!
-      ar: شكرًا جزيلًا يا سيدي!
-      en: Thank you very much, sir!
-    words: [terima kasih]
+      ar_eg: الأمن عند باب الدخول.
+      ar: حارس الأمن عند المدخل.
+      en: The security guard is at the entrance.
+    words: [satpam, pintu masuk]
   - id: e09
     type: speaking
     text: Dari stasiun, jalan lurus, lalu belok kanan di lampu merah. Monas di sebelah kiri.
@@ -139,12 +155,12 @@ exercises:
     words: [dari, lurus, lalu, belok, sebelah]
   - id: e10
     type: speaking
-    text: Permisi, Pak. Masjid Istiqlal di mana, ya?
+    text: Permisi, Pak Satpam. Boleh saya bawa peta ini?
     meaning:
-      ar_eg: لو سمحت يا عمّ. جامع الاستقلال فين؟
-      ar: عفوًا يا سيدي، أين مسجد الاستقلال؟
-      en: Excuse me, sir. Where is Istiqlal Mosque?
-    words: [permisi, masjid]
+      ar_eg: لو سمحت يا أستاذ (الأمن). ممكن آخد الخريطة دي معايا؟
+      ar: عذرًا يا حضرة الحارس. هل يمكنني أخذ هذه الخريطة؟
+      en: Excuse me, sir (security). May I take this map?
+    words: [satpam, bawa, peta]
 dialogue:
   title: Dari Stasiun Gambir ke Monas
   lines:
