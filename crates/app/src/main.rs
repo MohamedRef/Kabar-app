@@ -5,6 +5,8 @@
 
 mod content;
 mod i18n;
+mod order;
+mod table;
 mod today;
 
 use dioxus::prelude::*;

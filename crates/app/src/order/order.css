@@ -1,0 +1,89 @@
+/* order items. Logical properties only; the step text is English (LTR)
+   inside the Arabic UI, so each step is isolated in a bdi. */
+
+.or-item { display: flex; flex-direction: column; gap: var(--sp-3); }
+.or-prompt { font-size: var(--fs-lg); line-height: 1.45; }
+.or-board { display: grid; gap: var(--sp-4); }
+@media (min-width: 840px) {
+  .or-board { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+.or-col { display: flex; flex-direction: column; gap: var(--sp-2); min-width: 0; }
+.or-head { font-size: var(--fs-sm); color: var(--muted); font-weight: 600; margin: 0; }
+
+.or-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--sp-2); }
+.or-step, .or-slot {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-block-size: 48px;
+  padding-inline: var(--sp-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.or-step[draggable="true"] { cursor: grab; }
+.or-step[data-dragging="yes"] { opacity: 0.5; }
+.or-slot { border-style: dashed; background: none; }
+.or-step.ok { border-color: var(--good); background: var(--good-soft); }
+.or-step.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.or-key { background: var(--bg); }
+
+.or-num {
+  flex: none;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
+}
+.or-step.wrong .or-num { background: var(--bad); color: var(--surface); }
+.or-step.ok .or-num { background: var(--good); color: var(--surface); }
+
+.or-text { flex: 1; min-width: 0; overflow-wrap: anywhere; padding-block: var(--sp-2); line-height: 1.45; }
+.or-back { border: 0; background: none; text-align: start; cursor: pointer; }
+.or-nudge { display: flex; gap: 2px; flex: none; }
+.or-mini {
+  inline-size: 36px;
+  block-size: 36px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  cursor: pointer;
+}
+.or-mini:disabled { opacity: 0.35; cursor: default; }
+.or-should { flex: none; font-size: var(--fs-sm); color: var(--bad); font-weight: 600; white-space: nowrap; }
+.or-tick { flex: none; color: var(--good); font-weight: 700; padding-inline: var(--sp-2); }
+
+.or-pool { display: flex; flex-direction: column; gap: var(--sp-2); }
+.or-tile {
+  min-block-size: 48px;
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-align: start;
+  line-height: 1.45;
+  cursor: pointer;
+  transition: background var(--dur) var(--ease);
+}
+.or-tile:hover { background: var(--accent-soft); }
+
+.or-actions { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
+.or-button {
+  min-block-size: 44px;
+  padding-inline: var(--sp-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  cursor: pointer;
+}
+.or-button.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); font-weight: 700; }
+.or-button:disabled { opacity: 0.45; cursor: default; }
+
+.or-verdict { font-weight: 600; }
+.or-verdict.good { color: var(--good); }

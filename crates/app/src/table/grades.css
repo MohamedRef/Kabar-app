@@ -1,0 +1,22 @@
+/* The grade row that ends table and order items. */
+
+.tb-grades { display: flex; flex-direction: column; gap: var(--sp-2); }
+.tb-grade-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-2); }
+.tb-grade {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 52px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.tb-grade[data-suggested="yes"] { border: 2px solid var(--accent); background: var(--accent-soft); }
+.tb-grade[aria-pressed="true"] { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+.tb-grade:disabled:not([aria-pressed="true"]) { opacity: 0.45; cursor: default; }
+.tb-suggested { font-size: 0.75rem; font-weight: 500; color: var(--accent); }
+.tb-grade[aria-pressed="true"] .tb-suggested { color: inherit; }
