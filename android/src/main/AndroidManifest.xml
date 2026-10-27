@@ -5,11 +5,23 @@
          notifications don't need POST_NOTIFICATIONS. -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <!-- Kak Nur's local reminders (ReminderBridge): the Android 13+ prompt, asked at
+         the onboarding reminder step, and re-arming the schedule after a reboot. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <application>
         <service
             android:name="app.kabar.PlaybackService"
             android:exported="false"
             android:foregroundServiceType="mediaPlayback" />
+        <receiver
+            android:name="app.kabar.ReminderReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
         <!-- Share-to-Kabar: text and images from any app, plus "Kabar" in the
              text-selection menu. Invisible; it hands the item over and opens Kabar. -->
         <activity

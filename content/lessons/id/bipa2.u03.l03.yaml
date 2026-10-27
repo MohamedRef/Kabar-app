@@ -59,27 +59,31 @@ exercises:
   - id: e01
     type: match_pairs
     pairs:
-      - text: Dilarang merokok
-        ar_eg: ممنوع التدخين
-        ar: يُمنع التدخين
-        en: No smoking
-      - text: Dilarang masuk
-        ar_eg: ممنوع الدخول
-        ar: يُمنع الدخول
-        en: No entry
-      - text: Harap tenang
-        ar_eg: برجاء الهدوء
-        ar: يُرجى الهدوء
-        en: Quiet please
-      - text: Harap antre
-        ar_eg: برجاء الوقوف في الطابور
-        ar: يُرجى الوقوف في الصف
-        en: Please queue
-      - text: Mohon perhatian
-        ar_eg: انتباه من فضلكم
-        ar: انتباه من فضلكم
-        en: Attention please
-    words: [dilarang, merokok, harap, tenang, antre, mohon, perhatian]
+      - text: awas
+        ar_eg: احترس، حاسب
+        ar: احذر
+        en: watch out
+      - text: hati-hati
+        ar_eg: خلي بالك
+        ar: انتبه
+        en: careful
+      - text: parkir
+        ar_eg: يركن
+        ar: يركن
+        en: park
+      - text: licin
+        ar_eg: بيزحلق
+        ar: زَلِق
+        en: slippery
+      - text: galak
+        ar_eg: شرس
+        ar: شرس
+        en: fierce
+      - text: merokok
+        ar_eg: يدخن
+        ar: يدخّن
+        en: smoke
+    words: [awas, hati-hati, parkir, licin, galak, merokok]
   - id: e02
     type: fill_blank
     sentence: ___ merokok di dalam pesawat.
@@ -107,12 +111,12 @@ exercises:
   - id: e04
     type: build_sentence
     source:
-      ar_eg: ممنوع التدخين في المنطقة دي.
-      ar: يُمنع التدخين في هذه المنطقة.
-      en: No smoking in this area.
-    answer: Dilarang merokok di area ini.
-    distractors: [harap, larang]
-    words: [dilarang, merokok]
+      ar_eg: احترس، الكلب ده شرس.
+      ar: احذر، ذلك الكلب شرس.
+      en: Watch out, that dog is fierce.
+    answer: Awas, anjing itu galak.
+    distractors: [licin, parkir]
+    words: [awas, galak]
   - id: e05
     type: translate
     direction: to_target
@@ -133,12 +137,21 @@ exercises:
     words: [awas]
   - id: e07
     type: dictation
-    text: Dilarang masuk.
+    text: Hati-hati, jalannya licin!
     meaning:
-      ar_eg: ممنوع الدخول.
-      ar: يُمنع الدخول.
-      en: No entry.
-    words: [dilarang, masuk]
+      ar_eg: خلي بالك، الطريق بيزحلق!
+      ar: انتبه، الطريق زَلِق!
+      en: Careful, the road is slippery!
+    words: [hati-hati, licin]
+  - id: e08
+    type: multiple_choice
+    question_meaning:
+      ar_eg: إزاي تقول «خلّي بالك، الأرض بتزحلق!»؟
+      ar: كيف تقول «انتبه، الأرض زلقة!»؟
+      en: How do you say "Careful, the floor is slippery!"?
+    options: ['Hati-hati, lantainya licin!', 'Hati-hati, lantainya galak!', 'Dilarang parkir, lantainya licin!', 'Dilarang merokok, lantainya licin!']
+    answer: 0
+    words: [hati-hati, licin, galak, parkir, merokok]
 dialogue:
   title: Tanda di bandara
   lines:

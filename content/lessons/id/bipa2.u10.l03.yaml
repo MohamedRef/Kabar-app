@@ -118,15 +118,23 @@ exercises:
         ar_eg: دوا
         ar: دواء
         en: medicine
-      - text: resep
-        ar_eg: روشتة
-        ar: وصفة طبية
-        en: prescription
+      - text: sirup
+        ar_eg: شراب (دوا)
+        ar: شراب دوائي
+        en: syrup
       - text: sendok teh
         ar_eg: معلقة صغيرة
         ar: ملعقة صغيرة
         en: teaspoon
-    words: [apotek, obat, sendok teh]
+      - text: aturan pakai
+        ar_eg: طريقة الاستعمال
+        ar: طريقة الاستعمال
+        en: directions for use
+      - text: kocok
+        ar_eg: رُجّ
+        ar: رُجّ
+        en: shake
+    words: [apotek, obat, sirup, sendok teh, aturan pakai, kocok]
   - id: e02
     type: multiple_choice
     question: 3 x sehari 1 tablet
@@ -143,38 +151,48 @@ exercises:
     words: [kali, sehari, tablet]
   - id: e03
     type: listen
-    text: Minum obat ini dua kali sehari.
-    options: [Minum obat ini dua hari sekali., Minum obat ini tiga kali sehari., Minum obat ini dua kali sehari.]
+    text: Obat ini diminum dua kali sehari.
+    options: [Obat ini diminum dua hari sekali., Obat ini diminum tiga kali sehari., Obat ini diminum dua kali sehari.]
     answer: 2
-    words: [obat, kali, sehari]
+    words: [obat, diminum, kali, sehari]
   - id: e04
     type: fill_blank
-    sentence: Sirup ini diminum tiga ___ sehari, satu sendok teh.
+    sentence: Sirup dari apotek ini diminum tiga ___ sehari, satu sendok teh.
     meaning:
-      ar_eg: الشراب ده يتاخد ٣ مرات في اليوم، معلقة صغيرة.
-      ar: يؤخذ هذا الشراب ثلاث مرات يوميًا، ملعقة صغيرة.
-      en: This syrup is taken three times a day, one teaspoon.
+      ar_eg: شراب الصيدلية ده يتاخد ٣ مرات في اليوم، معلقة صغيرة.
+      ar: يؤخذ شراب الصيدلية هذا ثلاث مرات يوميًا، ملعقة صغيرة.
+      en: This pharmacy syrup is taken three times a day, one teaspoon.
     options: [hari, jam, kali]
     answers: [kali]
-    words: [kali, sirup]
+    words: [kali, sirup, apotek, diminum, sendok teh]
   - id: e05
     type: fill_blank
-    sentence: ___ dahulu sebelum diminum.
+    sentence: 'Aturan pakai: ___ dahulu sebelum diminum.'
     meaning:
       ar_eg: رجّ الزجاجة قبل الاستعمال.
       ar: رُجّ العبوة قبل الاستعمال.
       en: Shake well before use.
     options: [Makan, Simpan, Kocok]
     answers: [Kocok]
-    words: [kocok]
+    words: [aturan pakai, kocok, diminum]
   - id: e06
     type: speaking
-    text: Saya mau beli obat sakit kepala.
+    text: Di apotek, saya beli sirup obat batuk.
     meaning:
-      ar_eg: عايز أشتري دوا صداع.
-      ar: أريد شراء دواء للصداع.
-      en: I'd like to buy some headache medicine.
-    words: [obat, sakit kepala]
+      ar_eg: اشتريت شراب كحة من الصيدلية.
+      ar: اشتريت من الصيدلية شرابًا للسعال.
+      en: At the pharmacy, I bought cough syrup.
+    words: [apotek, sirup, obat, batuk]
+  - id: e07
+    type: multiple_choice
+    question: 'Aturan pakai: kocok dahulu, diminum 3 x sehari 1 sendok teh.'
+    question_meaning:
+      ar_eg: ده مكتوب على علبة الشراب. تعمل إيه الأول؟
+      ar: هذا مكتوب على علبة الشراب. ماذا تفعل أولًا؟
+      en: This is on the syrup box. What do you do first?
+    options: [Kocok dahulu., Makan dahulu., Tidur dahulu.]
+    answer: 0
+    words: [aturan pakai, kocok, diminum, sendok teh]
 dialogue:
   title: Apotek di Amed
   lines:

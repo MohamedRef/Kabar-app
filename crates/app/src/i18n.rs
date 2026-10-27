@@ -279,6 +279,9 @@ pub enum Msg {
     StyleOff,
     StyleOffHint,
     QuietHours,
+    RemindersElsewhere,
+    RemindersBlocked,
+    RemindersAllow,
     QuietFrom,
     QuietTo,
     ReportWhen,
@@ -330,6 +333,8 @@ pub enum Msg {
     Use,
     InUse,
     NotEnoughKoin,
+    KoinToGo,
+    KoinEarnedFrom,
     JournalTitle,
     JournalEmpty,
     NavJournal,
@@ -594,6 +599,13 @@ pub enum Msg {
     PairsTipTitle,
     PairsTheTwoWords,
     SettingsPron,
+    SettingsRetention,
+    RetentionLight,
+    RetentionBalanced,
+    RetentionFirm,
+    RetentionHint,
+    RetentionTuned,
+    RetentionLearning,
     PronModeOn,
     PronModeTap,
     PronModeOff,
@@ -1443,6 +1455,23 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (QuietHours, ArEg) => "ساعات الهدوء",
         (QuietHours, Ar) => "ساعات الهدوء",
         (QuietHours, En) => "Quiet hours",
+        (RemindersElsewhere, ArEg) => "التذكيرات بتوصلك على الموبايل والتابلت. على الماك لسه جاية قريب.",
+        (RemindersElsewhere, Ar) => "تصلك التذكيرات على الهاتف والجهاز اللوحي، وعلى الماك قريبًا.",
+        (RemindersElsewhere, En) => {
+            "Reminders reach you on your phone and tablet. On the Mac they're coming soon."
+        }
+        (RemindersBlocked, ArEg) => {
+            "الإشعارات مقفولة لـ\u{2068}Kabar\u{2069} على الجهاز ده، فمش هقدر أفكّرك هنا."
+        }
+        (RemindersBlocked, Ar) => {
+            "الإشعارات مغلقة لـ\u{2068}Kabar\u{2069} على هذا الجهاز، فلن أستطيع تذكيرك هنا."
+        }
+        (RemindersBlocked, En) => {
+            "Notifications are off for Kabar on this device, so I can't remind you here."
+        }
+        (RemindersAllow, ArEg) => "اسمح بالإشعارات",
+        (RemindersAllow, Ar) => "اسمح بالإشعارات",
+        (RemindersAllow, En) => "Allow notifications",
         (QuietFrom, ArEg | Ar) => "من",
         (QuietFrom, En) => "From",
         (QuietTo, ArEg) => "لحد",
@@ -1580,6 +1609,12 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (NotEnoughKoin, ArEg) => "محتاج كوين أكتر شوية",
         (NotEnoughKoin, Ar) => "تحتاج إلى مزيد من العملات",
         (NotEnoughKoin, En) => "A few more Koin needed",
+        (KoinToGo, ArEg) => "فاضلك {n}",
+        (KoinToGo, Ar) => "يتبقّى لك {n}",
+        (KoinToGo, En) => "{n} more",
+        (KoinEarnedFrom, ArEg) => "بتكسب الكوين من الدروس والمراجعة والألعاب.",
+        (KoinEarnedFrom, Ar) => "تكسب العملات من الدروس والمراجعة والألعاب.",
+        (KoinEarnedFrom, En) => "You earn Koin from lessons, reviews and games.",
         (JournalTitle, ArEg) => "يومياتك في التعلم",
         (JournalTitle, Ar) => "سجل التعلّم",
         (JournalTitle, En) => "Learning journal",
@@ -2449,6 +2484,39 @@ pub fn t(lang: UiLanguage, msg: Msg) -> &'static str {
         (SettingsPron, ArEg) => "تعريب النطق (النطق بالحروف العربي)",
         (SettingsPron, Ar) => "النطق بالحروف العربية",
         (SettingsPron, En) => "Pronunciation in Arabic script",
+        (SettingsRetention, ArEg) => "عايز تفتكر الكلمات قد إيه؟",
+        (SettingsRetention, Ar) => "إلى أي حد تريد أن تتذكر الكلمات؟",
+        (SettingsRetention, En) => "How firmly to remember words",
+        (RetentionLight, ArEg) => "خفيف",
+        (RetentionLight, Ar) => "خفيف",
+        (RetentionLight, En) => "Light",
+        (RetentionBalanced, ArEg) => "متوازن",
+        (RetentionBalanced, Ar) => "متوازن",
+        (RetentionBalanced, En) => "Balanced",
+        (RetentionFirm, ArEg) => "ثابت",
+        (RetentionFirm, Ar) => "ثابت",
+        (RetentionFirm, En) => "Firm",
+        (RetentionHint, ArEg) => {
+            "كل كلمة بترجعلك في المعاد اللي هتكون فيه على وشك تنساها. كل ما النسبة تعلى، المراجعات تكتر. المتوازن هو الأنسب لمعظم الناس."
+        }
+        (RetentionHint, Ar) => {
+            "تعود كل كلمة في الوقت الذي تكون فيه على وشك نسيانها. كلما ارتفعت النسبة زادت المراجعات. المتوازن هو الأنسب لمعظم المتعلمين."
+        }
+        (RetentionHint, En) => {
+            "Each word comes back just as you're about to forget it. A higher target means more reviews. Balanced suits most learners."
+        }
+        (RetentionTuned, ArEg) => "المواعيد متظبطة على ذاكرتك انت، من {n} مراجعة.",
+        (RetentionTuned, Ar) => "المواعيد مضبوطة على ذاكرتك أنت، من {n} مراجعة.",
+        (RetentionTuned, En) => "Timing is tuned to your own memory, from {n} reviews.",
+        (RetentionLearning, ArEg) => {
+            "\u{2068}Kabar\u{2069} بيتعلم ذاكرتك: بعد حوالي {n} مراجعة هيظبط المواعيد عليك انت."
+        }
+        (RetentionLearning, Ar) => {
+            "يتعلّم \u{2068}Kabar\u{2069} ذاكرتك: بعد نحو {n} مراجعة سيضبط المواعيد عليك أنت."
+        }
+        (RetentionLearning, En) => {
+            "Kabar is learning your memory: after about {n} reviews it tunes the timing to you."
+        }
         (PronModeOn, ArEg) => "ظاهر على طول",
         (PronModeOn, Ar) => "ظاهر دائمًا",
         (PronModeOn, En) => "Always shown",

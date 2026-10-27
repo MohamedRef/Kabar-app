@@ -34,7 +34,7 @@ use self::text::{T, tt};
 use crate::annotated::Annotated;
 use crate::coach::Coach;
 use crate::coach::labels::level_name;
-use crate::lesson::embedded::PERSONAS;
+use crate::embedded::{self, PERSONAS};
 use crate::lesson::{Rich, target_tag};
 use crate::listen::player::ProgramPlayer;
 use crate::reader::translate::in_voice;
@@ -60,9 +60,8 @@ static PERSONA_LIST: LazyLock<Vec<Result<Persona, (String, String)>>> = LazyLock
         "mbak-ayu",
         "pak-slamet",
     ];
-    let mut all: Vec<_> = PERSONAS
-        .iter()
-        .map(|(id, yaml)| parse_persona(yaml).map_err(|e| (id.to_string(), e.to_string())))
+    let mut all: Vec<_> = embedded::all(PERSONAS)
+        .map(|(id, yaml)| parse_persona(&yaml).map_err(|e| (id.to_string(), e.to_string())))
         .collect();
     all.sort_by_key(|p| {
         let id = match p {
@@ -149,6 +148,7 @@ enum View {
 
 #[component]
 pub fn ChatScreen() -> Element {
+    use_hook(crate::reader::warm_up);
     let ui = use_context::<Ui>();
     let db = use_context::<Db>();
     let coach = use_context::<Coach>();

@@ -59,6 +59,10 @@ pub enum Command {
     LoadUsage,
     /// A local write landed in the outbox.
     Kick,
+    /// The app went to the background (`true`: push what's waiting, then
+    /// close the socket so a phone in a pocket keeps its radio asleep) or came
+    /// back (`false`: reconnect and catch up).
+    Background(bool),
     /// A fresh access token for calls made off the sync thread (AI, TTS).
     /// `None` when signed out. `force` refreshes even an unexpired token
     /// (after a 401).
